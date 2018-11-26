@@ -10,14 +10,17 @@ llc_util_ns_inside_rx_window
 
     check if sequence number is in rx window
 
-    :param u8 ns:
+    :param ns:
         sequence number of received pdu.
+    :type ns: u8
 
-    :param u8 vr:
+    :param vr:
         sequence number which receiver expects to receive.
+    :type vr: u8
 
-    :param u8 rw:
+    :param rw:
         receive window size of receiver.
+    :type rw: u8
 
 .. _`llc_util_ns_inside_rx_window.description`:
 
@@ -36,11 +39,13 @@ llc_util_nr_inside_tx_window
 
     check if sequence number is in tx window
 
-    :param struct sock \*sk:
+    :param sk:
         current connection.
+    :type sk: struct sock \*
 
-    :param u8 nr:
+    :param nr:
         N(R) of received PDU.
+    :type nr: u8
 
 .. _`llc_util_nr_inside_tx_window.description`:
 
@@ -61,11 +66,13 @@ llc_conn_ev_qlfy_last_frame_eq_1
 
     checks if frame is last in tx window
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ev_qlfy_last_frame_eq_1.description`:
 
@@ -87,11 +94,13 @@ llc_conn_ev_qlfy_last_frame_eq_0
 
     checks if frame isn't last in tx window
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ev_qlfy_last_frame_eq_0.description`:
 

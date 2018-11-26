@@ -10,8 +10,9 @@ bman_new_pool
 
     Allocates a Buffer Pool object
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bman_new_pool.description`:
 
@@ -29,8 +30,9 @@ bman_free_pool
 
     Deallocates a Buffer Pool object
 
-    :param struct bman_pool \*pool:
+    :param pool:
         the pool object to release
+    :type pool: struct bman_pool \*
 
 .. _`bman_get_bpid`:
 
@@ -41,8 +43,9 @@ bman_get_bpid
 
     Returns a pool object's BPID.
 
-    :param const struct bman_pool \*pool:
+    :param pool:
         the pool object
+    :type pool: const struct bman_pool \*
 
 .. _`bman_get_bpid.description`:
 
@@ -61,14 +64,17 @@ bman_release
 
     Release buffer(s) to the buffer pool
 
-    :param struct bman_pool \*pool:
+    :param pool:
         the buffer pool object to release to
+    :type pool: struct bman_pool \*
 
-    :param const struct bm_buffer \*bufs:
+    :param bufs:
         an array of buffers to release
+    :type bufs: const struct bm_buffer \*
 
-    :param u8 num:
+    :param num:
         the number of buffers in \ ``bufs``\  (1-8)
+    :type num: u8
 
 .. _`bman_release.description`:
 
@@ -87,14 +93,17 @@ bman_acquire
 
     Acquire buffer(s) from a buffer pool
 
-    :param struct bman_pool \*pool:
+    :param pool:
         the buffer pool object to acquire from
+    :type pool: struct bman_pool \*
 
-    :param struct bm_buffer \*bufs:
+    :param bufs:
         array for storing the acquired buffers
+    :type bufs: struct bm_buffer \*
 
-    :param u8 num:
+    :param num:
         the number of buffers desired (@bufs is at least this big)
+    :type num: u8
 
 .. _`bman_acquire.description`:
 
@@ -105,6 +114,27 @@ Issues an "Acquire" command via the portal's management command interface.
 The return value will be the number of buffers obtained from the pool, or a
 negative error code if a h/w error or pool starvation was encountered. In
 the latter case, the content of \ ``bufs``\  is undefined.
+
+.. _`bman_is_probed`:
+
+bman_is_probed
+==============
+
+.. c:function:: int bman_is_probed( void)
+
+    Check if bman is probed
+
+    :param void:
+        no arguments
+    :type void: 
+
+.. _`bman_is_probed.description`:
+
+Description
+-----------
+
+Returns 1 if the bman driver successfully probed, -1 if the bman driver
+failed to probe or 0 if the bman driver did not probed yet.
 
 .. This file was automatic generated / don't edit.
 

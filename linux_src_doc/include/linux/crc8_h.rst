@@ -10,11 +10,13 @@ crc8_populate_lsb
 
     fill crc table for given polynomial in regular bit order.
 
-    :param u8 table:
+    :param table:
         table to be filled.
+    :type table: u8
 
-    :param u8 polynomial:
+    :param polynomial:
         polynomial for which table is to be filled.
+    :type polynomial: u8
 
 .. _`crc8_populate_lsb.description`:
 
@@ -40,11 +42,13 @@ crc8_populate_msb
 
     fill crc table for given polynomial in reverse bit order.
 
-    :param u8 table:
+    :param table:
         table to be filled.
+    :type table: u8
 
-    :param u8 polynomial:
+    :param polynomial:
         polynomial for which table is to be filled.
+    :type polynomial: u8
 
 .. _`crc8_populate_msb.description`:
 
@@ -70,17 +74,21 @@ crc8
 
     calculate a crc8 over the given input data.
 
-    :param const u8 table:
+    :param table:
         crc table used for calculation.
+    :type table: const u8
 
-    :param u8 \*pdata:
+    :param pdata:
         pointer to data buffer.
+    :type pdata: u8 \*
 
-    :param size_t nbytes:
+    :param nbytes:
         number of bytes in data buffer.
+    :type nbytes: size_t
 
-    :param u8 crc:
+    :param crc:
         previous returned crc8 value.
+    :type crc: u8
 
 .. _`crc8.description`:
 

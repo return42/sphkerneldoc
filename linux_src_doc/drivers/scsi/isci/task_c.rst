@@ -10,17 +10,21 @@ isci_task_refuse
 
     complete the request to the upper layer driver in the case where an I/O needs to be completed back in the submit path.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         host on which the the request was queued
+    :type ihost: struct isci_host \*
 
-    :param struct sas_task \*task:
+    :param task:
         request to complete
+    :type task: struct sas_task \*
 
-    :param enum service_response response:
+    :param response:
         response code for the completed task.
+    :type response: enum service_response
 
-    :param enum exec_status status:
+    :param status:
         status code for the completed task.
+    :type status: enum exec_status
 
 .. _`isci_task_execute_task`:
 
@@ -31,11 +35,13 @@ isci_task_execute_task
 
     This function is one of the SAS Domain Template functions. This function is called by libsas to send a task down to hardware.
 
-    :param struct sas_task \*task:
+    :param task:
         This parameter specifies the SAS task to send.
+    :type task: struct sas_task \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         This parameter specifies the context of this call.
+    :type gfp_flags: gfp_t
 
 .. _`isci_task_execute_task.description`:
 
@@ -53,14 +59,17 @@ isci_task_send_lu_reset_sas
 
     This function is called by of the SAS Domain Template functions.
 
-    :param struct isci_host \*isci_host:
+    :param isci_host:
         *undescribed*
+    :type isci_host: struct isci_host \*
 
-    :param struct isci_remote_device \*isci_device:
+    :param isci_device:
         *undescribed*
+    :type isci_device: struct isci_remote_device \*
 
-    :param u8 \*lun:
+    :param lun:
         This parameter specifies the lun to be reset.
+    :type lun: u8 \*
 
 .. _`isci_task_send_lu_reset_sas.description`:
 
@@ -78,8 +87,9 @@ isci_task_abort_task
 
     This function is one of the SAS Domain Template functions. This function is called by libsas to abort a specified task.
 
-    :param struct sas_task \*task:
+    :param task:
         This parameter specifies the SAS task to abort.
+    :type task: struct sas_task \*
 
 .. _`isci_task_abort_task.description`:
 
@@ -97,12 +107,14 @@ isci_task_abort_task_set
 
     This function is one of the SAS Domain Template functions. This is one of the Task Management functoins called by libsas, to abort all task for the given lun.
 
-    :param struct domain_device \*d_device:
+    :param d_device:
         This parameter specifies the domain device associated with this
         request.
+    :type d_device: struct domain_device \*
 
-    :param u8 \*lun:
+    :param lun:
         This parameter specifies the lun associated with this request.
+    :type lun: u8 \*
 
 .. _`isci_task_abort_task_set.description`:
 
@@ -120,12 +132,14 @@ isci_task_clear_aca
 
     This function is one of the SAS Domain Template functions. This is one of the Task Management functoins called by libsas.
 
-    :param struct domain_device \*d_device:
+    :param d_device:
         This parameter specifies the domain device associated with this
         request.
+    :type d_device: struct domain_device \*
 
-    :param u8 \*lun:
+    :param lun:
         This parameter specifies the lun        associated with this request.
+    :type lun: u8 \*
 
 .. _`isci_task_clear_aca.description`:
 
@@ -143,12 +157,14 @@ isci_task_clear_task_set
 
     This function is one of the SAS Domain Template functions. This is one of the Task Management functoins called by libsas.
 
-    :param struct domain_device \*d_device:
+    :param d_device:
         This parameter specifies the domain device associated with this
         request.
+    :type d_device: struct domain_device \*
 
-    :param u8 \*lun:
+    :param lun:
         This parameter specifies the lun        associated with this request.
+    :type lun: u8 \*
 
 .. _`isci_task_clear_task_set.description`:
 
@@ -166,8 +182,9 @@ isci_task_query_task
 
     This function is implemented to cause libsas to correctly escalate the failed abort to a LUN or target reset (this is because sas_scsi_find_task libsas function does not correctly interpret all return codes from the abort task call).  When TMF_RESP_FUNC_SUCC is returned, libsas turns this into a LUN reset; when FUNC_FAILED is returned, libsas will turn this into a target reset
 
-    :param struct sas_task \*task:
+    :param task:
         This parameter specifies the sas task being queried.
+    :type task: struct sas_task \*
 
 .. _`isci_task_query_task.description`:
 

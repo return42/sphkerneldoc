@@ -10,17 +10,21 @@ ntfs_bitmap_set_bits_in_run
 
     set a run of bits in a bitmap to a value
 
-    :param struct inode \*vi:
+    :param vi:
         vfs inode describing the bitmap
+    :type vi: struct inode \*
 
-    :param const s64 start_bit:
+    :param start_bit:
         first bit to set
+    :type start_bit: const s64
 
-    :param const s64 count:
+    :param count:
         number of bits to set
+    :type count: const s64
 
-    :param const u8 value:
+    :param value:
         value to set the bits to (i.e. 0 or 1)
+    :type value: const u8
 
 .. _`ntfs_bitmap_set_bits_in_run.description`:
 
@@ -41,14 +45,17 @@ ntfs_bitmap_set_run
 
     set a run of bits in a bitmap
 
-    :param struct inode \*vi:
+    :param vi:
         vfs inode describing the bitmap
+    :type vi: struct inode \*
 
-    :param const s64 start_bit:
+    :param start_bit:
         first bit to set
+    :type start_bit: const s64
 
-    :param const s64 count:
+    :param count:
         number of bits to set
+    :type count: const s64
 
 .. _`ntfs_bitmap_set_run.description`:
 
@@ -69,14 +76,17 @@ ntfs_bitmap_clear_run
 
     clear a run of bits in a bitmap
 
-    :param struct inode \*vi:
+    :param vi:
         vfs inode describing the bitmap
+    :type vi: struct inode \*
 
-    :param const s64 start_bit:
+    :param start_bit:
         first bit to clear
+    :type start_bit: const s64
 
-    :param const s64 count:
+    :param count:
         number of bits to clear
+    :type count: const s64
 
 .. _`ntfs_bitmap_clear_run.description`:
 
@@ -97,11 +107,13 @@ ntfs_bitmap_set_bit
 
     set a bit in a bitmap
 
-    :param struct inode \*vi:
+    :param vi:
         vfs inode describing the bitmap
+    :type vi: struct inode \*
 
-    :param const s64 bit:
+    :param bit:
         bit to set
+    :type bit: const s64
 
 .. _`ntfs_bitmap_set_bit.description`:
 
@@ -121,11 +133,13 @@ ntfs_bitmap_clear_bit
 
     clear a bit in a bitmap
 
-    :param struct inode \*vi:
+    :param vi:
         vfs inode describing the bitmap
+    :type vi: struct inode \*
 
-    :param const s64 bit:
+    :param bit:
         bit to clear
+    :type bit: const s64
 
 .. _`ntfs_bitmap_clear_bit.description`:
 

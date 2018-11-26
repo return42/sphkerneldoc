@@ -10,8 +10,9 @@ is_highmem
 
     helper function to quickly check if a struct zone is a highmem zone or not.  This is an attempt to keep references to ZONE_{DMA/NORMAL/HIGHMEM/etc} in general code to a minimum. \ ``zone``\  - pointer to struct zone variable
 
-    :param struct zone \*zone:
+    :param zone:
         *undescribed*
+    :type zone: struct zone \*
 
 .. _`for_each_online_pgdat`:
 
@@ -22,8 +23,9 @@ for_each_online_pgdat
 
     helper macro to iterate over all online nodes \ ``pgdat``\  - pointer to a pg_data_t variable
 
-    :param  pgdat:
+    :param pgdat:
         *undescribed*
+    :type pgdat: 
 
 .. _`for_each_zone`:
 
@@ -34,8 +36,9 @@ for_each_zone
 
     helper macro to iterate over all memory zones \ ``zone``\  - pointer to struct zone variable
 
-    :param  zone:
+    :param zone:
         *undescribed*
+    :type zone: 
 
 .. _`for_each_zone.description`:
 
@@ -54,14 +57,17 @@ next_zones_zonelist
 
     Returns the next zone at or below highest_zoneidx within the allowed nodemask using a cursor within a zonelist as a starting point \ ``z``\  - The cursor used as a starting point for the search \ ``highest_zoneidx``\  - The zone index of the highest zone to return \ ``nodes``\  - An optional nodemask to filter the zonelist with
 
-    :param struct zoneref \*z:
+    :param z:
         *undescribed*
+    :type z: struct zoneref \*
 
-    :param enum zone_type highest_zoneidx:
+    :param highest_zoneidx:
         *undescribed*
+    :type highest_zoneidx: enum zone_type
 
-    :param nodemask_t \*nodes:
+    :param nodes:
         *undescribed*
+    :type nodes: nodemask_t \*
 
 .. _`next_zones_zonelist.description`:
 
@@ -83,14 +89,17 @@ first_zones_zonelist
 
     Returns the first zone at or below highest_zoneidx within the allowed nodemask in a zonelist \ ``zonelist``\  - The zonelist to search for a suitable zone \ ``highest_zoneidx``\  - The zone index of the highest zone to return \ ``nodes``\  - An optional nodemask to filter the zonelist with \ ``return``\  - Zoneref pointer for the first suitable zone found (see below)
 
-    :param struct zonelist \*zonelist:
+    :param zonelist:
         *undescribed*
+    :type zonelist: struct zonelist \*
 
-    :param enum zone_type highest_zoneidx:
+    :param highest_zoneidx:
         *undescribed*
+    :type highest_zoneidx: enum zone_type
 
-    :param nodemask_t \*nodes:
+    :param nodes:
         *undescribed*
+    :type nodes: nodemask_t \*
 
 .. _`first_zones_zonelist.description`:
 
@@ -115,20 +124,25 @@ for_each_zone_zonelist_nodemask
 
     helper macro to iterate over valid zones in a zonelist at or below a given zone index and within a nodemask \ ``zone``\  - The current zone in the iterator \ ``z``\  - The current pointer within zonelist->zones being iterated \ ``zlist``\  - The zonelist being iterated \ ``highidx``\  - The zone index of the highest zone to return \ ``nodemask``\  - Nodemask allowed by the allocator
 
-    :param  zone:
+    :param zone:
         *undescribed*
+    :type zone: 
 
-    :param  z:
+    :param z:
         *undescribed*
+    :type z: 
 
-    :param  zlist:
+    :param zlist:
         *undescribed*
+    :type zlist: 
 
-    :param  highidx:
+    :param highidx:
         *undescribed*
+    :type highidx: 
 
-    :param  nodemask:
+    :param nodemask:
         *undescribed*
+    :type nodemask: 
 
 .. _`for_each_zone_zonelist_nodemask.description`:
 
@@ -147,17 +161,21 @@ for_each_zone_zonelist
 
     helper macro to iterate over valid zones in a zonelist at or below a given zone index \ ``zone``\  - The current zone in the iterator \ ``z``\  - The current pointer within zonelist->zones being iterated \ ``zlist``\  - The zonelist being iterated \ ``highidx``\  - The zone index of the highest zone to return
 
-    :param  zone:
+    :param zone:
         *undescribed*
+    :type zone: 
 
-    :param  z:
+    :param z:
         *undescribed*
+    :type z: 
 
-    :param  zlist:
+    :param zlist:
         *undescribed*
+    :type zlist: 
 
-    :param  highidx:
+    :param highidx:
         *undescribed*
+    :type highidx: 
 
 .. _`for_each_zone_zonelist.description`:
 

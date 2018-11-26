@@ -19,15 +19,19 @@ Definition
 
     struct nfp_app_bpf {
         struct nfp_app *app;
+        struct bpf_offload_dev *bpf_dev;
         DECLARE_BITMAP(tag_allocator, U16_MAX + 1);
         u16 tag_alloc_next;
         u16 tag_alloc_last;
         struct sk_buff_head cmsg_replies;
         struct wait_queue_head cmsg_wq;
+        unsigned int cmsg_key_sz;
+        unsigned int cmsg_val_sz;
         struct list_head map_list;
         unsigned int maps_in_use;
         unsigned int map_elems_in_use;
         struct rhashtable maps_neutral;
+        u32 abi_version;
         struct nfp_bpf_cap_adjust_head {
             u32 flags;
             int off_min;
@@ -51,6 +55,7 @@ Definition
         } helpers;
         bool pseudo_random;
         bool queue_select;
+        bool adjust_tail;
     }
 
 .. _`nfp_app_bpf.members`:
@@ -60,6 +65,9 @@ Members
 
 app
     backpointer to the app
+
+bpf_dev
+    BPF offload device handle
 
 tag_allocator
     bitmap of control message tags in use
@@ -76,6 +84,12 @@ cmsg_replies
 cmsg_wq
     work queue for waiting for cmsg replies
 
+cmsg_key_sz
+    size of key in cmsg element array
+
+cmsg_val_sz
+    size of value in cmsg element array
+
 map_list
     list of offloaded maps
 
@@ -87,6 +101,9 @@ map_elems_in_use
 
 maps_neutral
     hash table of offload-neutral maps (on pointer)
+
+abi_version
+    global BPF ABI version
 
 adjust_head
     adjust head capability
@@ -148,6 +165,9 @@ pseudo_random
 queue_select
     BPF can set the RX queue ID in packet vector
 
+adjust_tail
+    BPF can simply trunc packet size for adjust tail
+
 .. _`nfp_bpf_map`:
 
 struct nfp_bpf_map
@@ -169,7 +189,7 @@ Definition
         struct nfp_app_bpf *bpf;
         u32 tid;
         struct list_head l;
-        enum nfp_bpf_map_use use_map[];
+        struct nfp_bpf_map_word use_map[];
     }
 
 .. _`nfp_bpf_map.members`:
@@ -259,6 +279,7 @@ Definition
             struct {
                 struct nfp_insn_meta *jmp_dst;
                 bool jump_neg_op;
+                u32 num_insns_after_br;
             } ;
             struct {
                 u32 func_id;
@@ -266,13 +287,16 @@ Definition
                 struct nfp_bpf_reg_state arg2;
             } ;
             struct {
-                u64 umin;
-                u64 umax;
+                u64 umin_src;
+                u64 umax_src;
+                u64 umin_dst;
+                u64 umax_dst;
             } ;
         } ;
         unsigned int off;
         unsigned short n;
         unsigned short flags;
+        unsigned short subprog_idx;
         bool skip;
         instr_cb_t double_cb;
         struct list_head l;
@@ -331,6 +355,9 @@ jmp_dst
 jump_neg_op
     jump instruction has inverted immediate, use ADD instead of SUB
 
+num_insns_after_br
+    number of insns following a branch jump, used for fixup
+
 {unnamed_struct}
     anonymous
 
@@ -346,11 +373,17 @@ arg2
 {unnamed_struct}
     anonymous
 
-umin
-    copy of core verifier umin_value.
+umin_src
+    copy of core verifier umin_value for src opearnd.
 
-umax
-    copy of core verifier umax_value.
+umax_src
+    copy of core verifier umax_value for src operand.
+
+umin_dst
+    copy of core verifier umin_value for dst opearnd.
+
+umax_dst
+    copy of core verifier umax_value for dst operand.
 
 off
     index of first generated machine instruction (in nfp_prog.prog)
@@ -361,6 +394,9 @@ n
 flags
     eBPF instruction extra optimization flags
 
+subprog_idx
+    index of subprogram to which the instruction belongs
+
 skip
     skip this instruction (optimized out)
 
@@ -369,6 +405,38 @@ double_cb
 
 l
     link on nfp_prog->insns list
+
+.. _`nfp_bpf_subprog_info`:
+
+struct nfp_bpf_subprog_info
+===========================
+
+.. c:type:: struct nfp_bpf_subprog_info
+
+    nfp BPF sub-program (a.k.a. function) info
+
+.. _`nfp_bpf_subprog_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nfp_bpf_subprog_info {
+        u16 stack_depth;
+        u8 needs_reg_push : 1;
+    }
+
+.. _`nfp_bpf_subprog_info.members`:
+
+Members
+-------
+
+stack_depth
+    maximum stack depth used by this sub-program
+
+needs_reg_push
+    whether sub-program uses callee-saved registers
 
 .. _`nfp_prog`:
 
@@ -391,17 +459,22 @@ Definition
         u64 *prog;
         unsigned int prog_len;
         unsigned int __prog_alloc_len;
+        unsigned int stack_size;
         struct nfp_insn_meta *verifier_meta;
         enum bpf_prog_type type;
         unsigned int last_bpf_off;
         unsigned int tgt_out;
         unsigned int tgt_abort;
+        unsigned int tgt_call_push_regs;
+        unsigned int tgt_call_pop_regs;
         unsigned int n_translated;
         int error;
-        unsigned int stack_depth;
+        unsigned int stack_frame_depth;
         unsigned int adjust_head_location;
         unsigned int map_records_cnt;
+        unsigned int subprog_cnt;
         struct nfp_bpf_neutral_map **map_records;
+        struct nfp_bpf_subprog_info *subprog;
         struct list_head insns;
     }
 
@@ -422,6 +495,9 @@ prog_len
 \__prog_alloc_len
     alloc size of \ ``prog``\  array
 
+stack_size
+    total amount of stack used
+
 verifier_meta
     temporary storage for verifier's insn meta
 
@@ -437,14 +513,20 @@ tgt_out
 tgt_abort
     jump target for abort (e.g. access outside of packet buffer)
 
+tgt_call_push_regs
+    jump target for subroutine for saving R6~R9 to stack
+
+tgt_call_pop_regs
+    jump target for subroutine used for restoring R6~R9
+
 n_translated
     number of successfully translated instructions (for errors)
 
 error
     error code if something went wrong
 
-stack_depth
-    max stack depth from the verifier
+stack_frame_depth
+    max stack depth for current frame
 
 adjust_head_location
     if program has single adjust head call - the insn no.
@@ -452,8 +534,14 @@ adjust_head_location
 map_records_cnt
     the number of map pointers recorded for this prog
 
+subprog_cnt
+    number of sub-programs, including main function
+
 map_records
     the map record pointers from bpf->maps_neutral
+
+subprog
+    pointer to an array of objects holding info about sub-programs
 
 insns
     list of BPF instruction wrappers (struct nfp_insn_meta)

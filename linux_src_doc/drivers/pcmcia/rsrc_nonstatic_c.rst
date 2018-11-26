@@ -10,14 +10,17 @@ readable
 
     iomem validation function for cards with a valid CIS
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         *undescribed*
+    :type s: struct pcmcia_socket \*
 
-    :param struct resource \*res:
+    :param res:
         *undescribed*
+    :type res: struct resource \*
 
-    :param unsigned int \*count:
+    :param count:
         *undescribed*
+    :type count: unsigned int \*
 
 .. _`checksum`:
 
@@ -28,14 +31,17 @@ checksum
 
     iomem validation function for simple memory cards
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         *undescribed*
+    :type s: struct pcmcia_socket \*
 
-    :param struct resource \*res:
+    :param res:
         *undescribed*
+    :type res: struct resource \*
 
-    :param unsigned int \*value:
+    :param value:
         *undescribed*
+    :type value: unsigned int \*
 
 .. _`do_validate_mem`:
 
@@ -46,17 +52,21 @@ do_validate_mem
 
     low level validate a memory region for PCMCIA use
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         PCMCIA socket to validate
+    :type s: struct pcmcia_socket \*
 
-    :param unsigned long base:
+    :param base:
         start address of resource to check
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         size of resource to check
+    :type size: unsigned long
 
-    :param int validate (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*value:
+    :param value:
         *undescribed*
+    :type value: int validate (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*
 
 .. _`do_validate_mem.description`:
 
@@ -78,20 +88,25 @@ do_mem_probe
 
     validate a memory region for PCMCIA use
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         PCMCIA socket to validate
+    :type s: struct pcmcia_socket \*
 
-    :param u_long base:
+    :param base:
         start address of resource to check
+    :type base: u_long
 
-    :param u_long num:
+    :param num:
         size of resource to check
+    :type num: u_long
 
-    :param int fallback (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*value:
+    :param value:
         *undescribed*
+    :type value: int fallback (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*
 
-    :param int fallback (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*value:
+    :param value:
         *undescribed*
+    :type value: int fallback (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*
 
 .. _`do_mem_probe.description`:
 
@@ -113,11 +128,13 @@ inv_probe
 
     top-to-bottom search for one usuable high memory area
 
-    :param struct resource_map \*m:
+    :param m:
         resource_map to check
+    :type m: struct resource_map \*
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         PCMCIA socket to validate
+    :type s: struct pcmcia_socket \*
 
 .. _`validate_mem`:
 
@@ -128,11 +145,13 @@ validate_mem
 
     memory probe function
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         PCMCIA socket to validate
+    :type s: struct pcmcia_socket \*
 
-    :param unsigned int probe_mask:
+    :param probe_mask:
         MEM_PROBE_LOW \| MEM_PROBE_HIGH
+    :type probe_mask: unsigned int
 
 .. _`validate_mem.description`:
 
@@ -152,11 +171,13 @@ validate_mem
 
     memory probe function
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         PCMCIA socket to validate
+    :type s: struct pcmcia_socket \*
 
-    :param unsigned int probe_mask:
+    :param probe_mask:
         ignored
+    :type probe_mask: unsigned int
 
 .. _`validate_mem.description`:
 
@@ -174,8 +195,9 @@ pcmcia_nonstatic_validate_mem
 
     try to validate iomem for PCMCIA use
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         PCMCIA socket to validate
+    :type s: struct pcmcia_socket \*
 
 .. _`pcmcia_nonstatic_validate_mem.description`:
 

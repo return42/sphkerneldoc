@@ -10,11 +10,13 @@ radeon_invalid_rreg
 
     dummy reg read function
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint32_t reg:
+    :param reg:
         offset of register
+    :type reg: uint32_t
 
 .. _`radeon_invalid_rreg.description`:
 
@@ -34,14 +36,17 @@ radeon_invalid_wreg
 
     dummy reg write function
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint32_t reg:
+    :param reg:
         offset of register
+    :type reg: uint32_t
 
-    :param uint32_t v:
+    :param v:
         value to write to the register
+    :type v: uint32_t
 
 .. _`radeon_invalid_wreg.description`:
 
@@ -60,8 +65,9 @@ radeon_register_accessor_init
 
     sets up the register accessor callbacks
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_register_accessor_init.description`:
 
@@ -80,8 +86,9 @@ radeon_agp_disable
 
     AGP disable helper function
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_agp_disable.description`:
 
@@ -100,8 +107,9 @@ radeon_asic_init
 
     register asic specific callbacks
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_asic_init.description`:
 

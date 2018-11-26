@@ -10,8 +10,9 @@ pci_msi_mask_irq
 
     Generic irq chip callback to mask PCI/MSI interrupts
 
-    :param struct irq_data \*data:
+    :param data:
         pointer to irqdata associated to that interrupt
+    :type data: struct irq_data \*
 
 .. _`pci_msi_unmask_irq`:
 
@@ -22,8 +23,9 @@ pci_msi_unmask_irq
 
     Generic irq chip callback to unmask PCI/MSI interrupts
 
-    :param struct irq_data \*data:
+    :param data:
         pointer to irqdata associated to that interrupt
+    :type data: struct irq_data \*
 
 .. _`msi_capability_init`:
 
@@ -34,14 +36,17 @@ msi_capability_init
 
     configure device's MSI capability structure
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to the pci_dev data structure of MSI device function
+    :type dev: struct pci_dev \*
 
-    :param int nvec:
+    :param nvec:
         number of interrupts to allocate
+    :type nvec: int
 
-    :param const struct irq_affinity \*affd:
+    :param affd:
         description of automatic irq affinity assignments (may be \ ``NULL``\ )
+    :type affd: const struct irq_affinity \*
 
 .. _`msi_capability_init.description`:
 
@@ -63,17 +68,21 @@ msix_capability_init
 
     configure device's MSI-X capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to the pci_dev data structure of MSI-X device function
+    :type dev: struct pci_dev \*
 
-    :param struct msix_entry \*entries:
+    :param entries:
         pointer to an array of struct msix_entry entries
+    :type entries: struct msix_entry \*
 
-    :param int nvec:
+    :param nvec:
         number of \ ``entries``\ 
+    :type nvec: int
 
-    :param const struct irq_affinity \*affd:
+    :param affd:
         Optional pointer to enable automatic affinity assignement
+    :type affd: const struct irq_affinity \*
 
 .. _`msix_capability_init.description`:
 
@@ -93,11 +102,13 @@ pci_msi_supported
 
     check whether MSI may be enabled on a device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to the pci_dev data structure of MSI device function
+    :type dev: struct pci_dev \*
 
-    :param int nvec:
+    :param nvec:
         how many MSIs have been requested ?
+    :type nvec: int
 
 .. _`pci_msi_supported.description`:
 
@@ -117,8 +128,9 @@ pci_msi_vec_count
 
     Return the number of MSI vectors a device can send
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device to report about
+    :type dev: struct pci_dev \*
 
 .. _`pci_msi_vec_count.description`:
 
@@ -140,12 +152,13 @@ pci_msix_vec_count
 
     return the number of device's MSI-X table entries
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to the pci_dev data structure of MSI-X device function
         This function returns the number of device's MSI-X table entries and
         therefore the number of MSI-X vectors device is capable of sending.
         It returns a negative errno if the device is not capable of sending MSI-X
         interrupts.
+    :type dev: struct pci_dev \*
 
 .. _`pci_msi_enabled`:
 
@@ -156,8 +169,9 @@ pci_msi_enabled
 
     is MSI enabled?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pci_msi_enabled.description`:
 
@@ -176,17 +190,21 @@ pci_enable_msix_range
 
     configure device's MSI-X capability structure
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to the pci_dev data structure of MSI-X device function
+    :type dev: struct pci_dev \*
 
-    :param struct msix_entry \*entries:
+    :param entries:
         pointer to an array of MSI-X entries
+    :type entries: struct msix_entry \*
 
-    :param int minvec:
+    :param minvec:
         minimum number of MSI-X irqs requested
+    :type minvec: int
 
-    :param int maxvec:
+    :param maxvec:
         maximum number of MSI-X irqs requested
+    :type maxvec: int
 
 .. _`pci_enable_msix_range.description`:
 
@@ -210,20 +228,25 @@ pci_alloc_irq_vectors_affinity
 
     allocate multiple IRQs for a device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to operate on
+    :type dev: struct pci_dev \*
 
-    :param unsigned int min_vecs:
+    :param min_vecs:
         minimum number of vectors required (must be >= 1)
+    :type min_vecs: unsigned int
 
-    :param unsigned int max_vecs:
+    :param max_vecs:
         maximum (desired) number of vectors
+    :type max_vecs: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         flags or quirks for the allocation
+    :type flags: unsigned int
 
-    :param const struct irq_affinity \*affd:
+    :param affd:
         optional description of the affinity requirements
+    :type affd: const struct irq_affinity \*
 
 .. _`pci_alloc_irq_vectors_affinity.description`:
 
@@ -249,8 +272,9 @@ pci_free_irq_vectors
 
     free previously allocated IRQs for a device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to operate on
+    :type dev: struct pci_dev \*
 
 .. _`pci_free_irq_vectors.description`:
 
@@ -268,11 +292,13 @@ pci_irq_vector
 
     return Linux IRQ number of a device vector
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to operate on
+    :type dev: struct pci_dev \*
 
-    :param unsigned int nr:
+    :param nr:
         device-relative interrupt vector index (0-based).
+    :type nr: unsigned int
 
 .. _`pci_irq_get_affinity`:
 
@@ -283,11 +309,13 @@ pci_irq_get_affinity
 
     return the affinity of a particular msi vector
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to operate on
+    :type dev: struct pci_dev \*
 
-    :param int nr:
+    :param nr:
         device-relative interrupt vector index (0-based).
+    :type nr: int
 
 .. _`pci_irq_get_node`:
 
@@ -298,11 +326,13 @@ pci_irq_get_node
 
     return the numa node of a particular msi vector
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to operate on
+    :type pdev: struct pci_dev \*
 
-    :param int vec:
+    :param vec:
         device-relative interrupt vector index (0-based).
+    :type vec: int
 
 .. _`pci_msi_domain_write_msg`:
 
@@ -313,11 +343,13 @@ pci_msi_domain_write_msg
 
     Helper to write MSI message to PCI config space
 
-    :param struct irq_data \*irq_data:
+    :param irq_data:
         Pointer to interrupt data of the MSI interrupt
+    :type irq_data: struct irq_data \*
 
-    :param struct msi_msg \*msg:
+    :param msg:
         Pointer to the message
+    :type msg: struct msi_msg \*
 
 .. _`pci_msi_domain_calc_hwirq`:
 
@@ -328,11 +360,13 @@ pci_msi_domain_calc_hwirq
 
     Generate a unique ID for an MSI source
 
-    :param struct pci_dev \*dev:
+    :param dev:
         Pointer to the PCI device
+    :type dev: struct pci_dev \*
 
-    :param struct msi_desc \*desc:
+    :param desc:
         Pointer to the msi descriptor
+    :type desc: struct msi_desc \*
 
 .. _`pci_msi_domain_calc_hwirq.description`:
 
@@ -350,14 +384,17 @@ pci_msi_domain_check_cap
 
     Verify that \ ``domain``\  supports the capabilities for \ ``dev``\ 
 
-    :param struct irq_domain \*domain:
+    :param domain:
         The interrupt domain to check
+    :type domain: struct irq_domain \*
 
-    :param struct msi_domain_info \*info:
+    :param info:
         The domain info for verification
+    :type info: struct msi_domain_info \*
 
-    :param struct device \*dev:
+    :param dev:
         The device to check
+    :type dev: struct device \*
 
 .. _`pci_msi_domain_check_cap.return`:
 
@@ -377,14 +414,17 @@ pci_msi_create_irq_domain
 
     Create a MSI interrupt domain
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Optional fwnode of the interrupt controller
+    :type fwnode: struct fwnode_handle \*
 
-    :param struct msi_domain_info \*info:
+    :param info:
         MSI domain info
+    :type info: struct msi_domain_info \*
 
-    :param struct irq_domain \*parent:
+    :param parent:
         Parent irq domain
+    :type parent: struct irq_domain \*
 
 .. _`pci_msi_create_irq_domain.description`:
 
@@ -409,11 +449,13 @@ pci_msi_domain_get_msi_rid
 
     Get the MSI requester id (RID)
 
-    :param struct irq_domain \*domain:
+    :param domain:
         The interrupt domain
+    :type domain: struct irq_domain \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The PCI device.
+    :type pdev: struct pci_dev \*
 
 .. _`pci_msi_domain_get_msi_rid.description`:
 
@@ -439,8 +481,9 @@ pci_msi_get_device_domain
 
     Get the MSI domain for a given PCI device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`pci_msi_get_device_domain.description`:
 

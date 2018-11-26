@@ -212,15 +212,18 @@ crypto_alloc_aead
 
     allocate AEAD cipher handle
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         AEAD cipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_alloc_aead.description`:
 
@@ -248,8 +251,9 @@ crypto_free_aead
 
     zeroize and free aead handle
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         cipher handle to be freed
+    :type tfm: struct crypto_aead \*
 
 .. _`crypto_aead_ivsize`:
 
@@ -260,8 +264,9 @@ crypto_aead_ivsize
 
     obtain IV size
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_aead \*
 
 .. _`crypto_aead_ivsize.description`:
 
@@ -287,8 +292,9 @@ crypto_aead_authsize
 
     obtain maximum authentication data size
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_aead \*
 
 .. _`crypto_aead_authsize.description`:
 
@@ -317,8 +323,9 @@ crypto_aead_blocksize
 
     obtain block size of cipher
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_aead \*
 
 .. _`crypto_aead_blocksize.description`:
 
@@ -345,14 +352,17 @@ crypto_aead_setkey
 
     set key for cipher
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_aead \*
 
-    :param const u8 \*key:
+    :param key:
         buffer holding the key
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         length of the key in bytes
+    :type keylen: unsigned int
 
 .. _`crypto_aead_setkey.description`:
 
@@ -383,11 +393,13 @@ crypto_aead_setauthsize
 
     set authentication data size
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_aead \*
 
-    :param unsigned int authsize:
+    :param authsize:
         size of the authentication data / tag in bytes
+    :type authsize: unsigned int
 
 .. _`crypto_aead_setauthsize.description`:
 
@@ -413,9 +425,10 @@ crypto_aead_encrypt
 
     encrypt plaintext
 
-    :param struct aead_request \*req:
+    :param req:
         reference to the aead_request handle that holds all information
         needed to perform the cipher operation
+    :type req: struct aead_request \*
 
 .. _`crypto_aead_encrypt.description`:
 
@@ -450,9 +463,10 @@ crypto_aead_decrypt
 
     decrypt ciphertext
 
-    :param struct aead_request \*req:
+    :param req:
         reference to the ablkcipher_request handle that holds all information
         needed to perform the cipher operation
+    :type req: struct aead_request \*
 
 .. _`crypto_aead_decrypt.description`:
 
@@ -501,8 +515,9 @@ crypto_aead_reqsize
 
     obtain size of the request data structure
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_aead \*
 
 .. _`crypto_aead_reqsize.return`:
 
@@ -520,11 +535,13 @@ aead_request_set_tfm
 
     update cipher handle reference in request
 
-    :param struct aead_request \*req:
+    :param req:
         request handle to be modified
+    :type req: struct aead_request \*
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         cipher handle that shall be added to the request handle
+    :type tfm: struct crypto_aead \*
 
 .. _`aead_request_set_tfm.description`:
 
@@ -543,11 +560,13 @@ aead_request_alloc
 
     allocate request data structure
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         cipher handle to be registered with the request
+    :type tfm: struct crypto_aead \*
 
-    :param gfp_t gfp:
+    :param gfp:
         memory allocation flag that is handed to kmalloc by the API call.
+    :type gfp: gfp_t
 
 .. _`aead_request_alloc.description`:
 
@@ -574,8 +593,9 @@ aead_request_free
 
     zeroize and free request data structure
 
-    :param struct aead_request \*req:
+    :param req:
         request data structure cipher handle to be freed
+    :type req: struct aead_request \*
 
 .. _`aead_request_set_callback`:
 
@@ -586,19 +606,22 @@ aead_request_set_callback
 
     set asynchronous callback function
 
-    :param struct aead_request \*req:
+    :param req:
         request handle
+    :type req: struct aead_request \*
 
-    :param u32 flags:
+    :param flags:
         specify zero or an ORing of the flags
         CRYPTO_TFM_REQ_MAY_BACKLOG the request queue may back log and
         increase the wait queue beyond the initial maximum size;
         CRYPTO_TFM_REQ_MAY_SLEEP the request processing may sleep
+    :type flags: u32
 
-    :param crypto_completion_t compl:
+    :param compl:
         callback function pointer to be registered with the request handle
+    :type compl: crypto_completion_t
 
-    :param void \*data:
+    :param data:
         The data pointer refers to memory that is not used by the kernel
         crypto API, but provided to the callback function for it to use. Here,
         the caller can provide a reference to memory the callback function can
@@ -607,6 +630,7 @@ aead_request_set_callback
         related functionality which can be referenced using this pointer. The
         callback function can access the memory via the "data" field in the
         crypto_async_request data structure provided to the callback function.
+    :type data: void \*
 
 .. _`aead_request_set_callback.description`:
 
@@ -630,21 +654,26 @@ aead_request_set_crypt
 
     set data buffers
 
-    :param struct aead_request \*req:
+    :param req:
         request handle
+    :type req: struct aead_request \*
 
-    :param struct scatterlist \*src:
+    :param src:
         source scatter / gather list
+    :type src: struct scatterlist \*
 
-    :param struct scatterlist \*dst:
+    :param dst:
         destination scatter / gather list
+    :type dst: struct scatterlist \*
 
-    :param unsigned int cryptlen:
+    :param cryptlen:
         number of bytes to process from \ ``src``\ 
+    :type cryptlen: unsigned int
 
-    :param u8 \*iv:
+    :param iv:
         IV for the cipher operation which must comply with the IV size defined
         by \ :c:func:`crypto_aead_ivsize`\ 
+    :type iv: u8 \*
 
 .. _`aead_request_set_crypt.description`:
 
@@ -685,11 +714,13 @@ aead_request_set_ad
 
     set associated data information
 
-    :param struct aead_request \*req:
+    :param req:
         request handle
+    :type req: struct aead_request \*
 
-    :param unsigned int assoclen:
+    :param assoclen:
         number of bytes in associated data
+    :type assoclen: unsigned int
 
 .. _`aead_request_set_ad.description`:
 

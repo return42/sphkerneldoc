@@ -10,14 +10,17 @@ mptspi_setTargetNegoParms
 
     Update the target negotiation parameters
 
-    :param MPT_SCSI_HOST \*hd:
+    :param hd:
         Pointer to a SCSI Host Structure
+    :type hd: MPT_SCSI_HOST \*
 
-    :param VirtTarget \*target:
+    :param target:
         per target private data
+    :type target: VirtTarget \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device
+    :type sdev: struct scsi_device \*
 
 .. _`mptspi_settargetnegoparms.description`:
 
@@ -36,14 +39,17 @@ mptspi_writeIOCPage4
 
     write IOC Page 4
 
-    :param MPT_SCSI_HOST \*hd:
+    :param hd:
         Pointer to a SCSI Host Structure
+    :type hd: MPT_SCSI_HOST \*
 
-    :param u8 channel:
+    :param channel:
         channel number
+    :type channel: u8
 
-    :param u8 id:
+    :param id:
         write IOC Page4 for this ID & Bus
+    :type id: u8
 
 .. _`mptspi_writeiocpage4.return`:
 
@@ -69,14 +75,17 @@ mptspi_initTarget
 
     Target, LUN alloc/free functionality.
 
-    :param MPT_SCSI_HOST \*hd:
+    :param hd:
         Pointer to MPT_SCSI_HOST structure
+    :type hd: MPT_SCSI_HOST \*
 
-    :param VirtTarget \*vtarget:
+    :param vtarget:
         per target private data
+    :type vtarget: VirtTarget \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device
+    :type sdev: struct scsi_device \*
 
 .. _`mptspi_inittarget.note`:
 
@@ -98,11 +107,13 @@ mptspi_is_raid
 
     Determines whether target is belonging to volume
 
-    :param struct _MPT_SCSI_HOST \*hd:
+    :param hd:
         Pointer to a SCSI HOST structure
+    :type hd: struct _MPT_SCSI_HOST \*
 
-    :param u32 id:
+    :param id:
         target device id
+    :type id: u32
 
 .. _`mptspi_is_raid.return`:
 
@@ -121,14 +132,17 @@ mptspi_print_write_nego
 
     negotiation parameters debug info that is being sent
 
-    :param struct _MPT_SCSI_HOST \*hd:
+    :param hd:
         Pointer to a SCSI HOST structure
+    :type hd: struct _MPT_SCSI_HOST \*
 
-    :param struct scsi_target \*starget:
+    :param starget:
         SCSI target
+    :type starget: struct scsi_target \*
 
-    :param u32 ii:
+    :param ii:
         negotiation parameters
+    :type ii: u32
 
 .. _`mptspi_print_read_nego`:
 
@@ -139,14 +153,17 @@ mptspi_print_read_nego
 
     negotiation parameters debug info that is being read
 
-    :param struct _MPT_SCSI_HOST \*hd:
+    :param hd:
         Pointer to a SCSI HOST structure
+    :type hd: struct _MPT_SCSI_HOST \*
 
-    :param struct scsi_target \*starget:
+    :param starget:
         SCSI target
+    :type starget: struct scsi_target \*
 
-    :param u32 ii:
+    :param ii:
         negotiation parameters
+    :type ii: u32
 
 .. _`mptspi_init`:
 
@@ -157,8 +174,9 @@ mptspi_init
 
     Register MPT adapter(s) as SCSI host(s) with SCSI mid-layer.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mptspi_init.description`:
 
@@ -176,8 +194,9 @@ mptspi_exit
 
     Unregisters MPT adapter(s)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

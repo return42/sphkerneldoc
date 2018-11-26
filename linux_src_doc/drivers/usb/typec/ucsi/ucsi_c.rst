@@ -10,8 +10,9 @@ ucsi_notify
 
     PPM notification handler
 
-    :param struct ucsi \*ucsi:
+    :param ucsi:
         Source UCSI Interface for the notifications
+    :type ucsi: struct ucsi \*
 
 .. _`ucsi_notify.description`:
 
@@ -29,11 +30,13 @@ ucsi_register_ppm
 
     Register UCSI PPM Interface
 
-    :param struct device \*dev:
+    :param dev:
         Device interface to the PPM
+    :type dev: struct device \*
 
-    :param struct ucsi_ppm \*ppm:
+    :param ppm:
         The PPM interface
+    :type ppm: struct ucsi_ppm \*
 
 .. _`ucsi_register_ppm.description`:
 
@@ -52,8 +55,9 @@ ucsi_unregister_ppm
 
     Unregister UCSI PPM Interface
 
-    :param struct ucsi \*ucsi:
+    :param ucsi:
         struct ucsi associated with the PPM
+    :type ucsi: struct ucsi \*
 
 .. _`ucsi_unregister_ppm.description`:
 

@@ -10,11 +10,13 @@
 
     Computes the return address and do emulate branch simulation, if required.
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Pointer to pt_regs
+    :type regs: struct pt_regs \*
 
-    :param union mips_instruction insn:
+    :param insn:
         branch instruction to decode
+    :type insn: union mips_instruction
 
 .. _`__compute_return_epc_for_insn.return`:
 

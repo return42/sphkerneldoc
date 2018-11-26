@@ -10,17 +10,21 @@ slim_msg_response
 
     Deliver Message response received from a device to the framework.
 
-    :param struct slim_controller \*ctrl:
+    :param ctrl:
         Controller handle
+    :type ctrl: struct slim_controller \*
 
-    :param u8 \*reply:
+    :param reply:
         Reply received from the device
+    :type reply: u8 \*
 
-    :param u8 tid:
+    :param tid:
         Transaction ID received with which framework can associate reply.
+    :type tid: u8
 
-    :param u8 len:
+    :param len:
         Length of the reply
+    :type len: u8
 
 .. _`slim_msg_response.description`:
 
@@ -32,6 +36,47 @@ This helps in making the API asynchronous, and controller-driver doesn't need
 to manage 1 more table other than the one managed by framework mapping TID
 with buffers
 
+.. _`slim_alloc_txn_tid`:
+
+slim_alloc_txn_tid
+==================
+
+.. c:function:: int slim_alloc_txn_tid(struct slim_controller *ctrl, struct slim_msg_txn *txn)
+
+    Allocate a tid to txn
+
+    :param ctrl:
+        Controller handle
+    :type ctrl: struct slim_controller \*
+
+    :param txn:
+        transaction to be allocated with tid.
+    :type txn: struct slim_msg_txn \*
+
+.. _`slim_alloc_txn_tid.return`:
+
+Return
+------
+
+zero on success with valid txn->tid and error code on failures.
+
+.. _`slim_free_txn_tid`:
+
+slim_free_txn_tid
+=================
+
+.. c:function:: void slim_free_txn_tid(struct slim_controller *ctrl, struct slim_msg_txn *txn)
+
+    Freee tid of txn
+
+    :param ctrl:
+        Controller handle
+    :type ctrl: struct slim_controller \*
+
+    :param txn:
+        transaction whose tid should be freed
+    :type txn: struct slim_msg_txn \*
+
 .. _`slim_do_transfer`:
 
 slim_do_transfer
@@ -41,11 +86,13 @@ slim_do_transfer
 
     Process a SLIMbus-messaging transaction
 
-    :param struct slim_controller \*ctrl:
+    :param ctrl:
         Controller handle
+    :type ctrl: struct slim_controller \*
 
-    :param struct slim_msg_txn \*txn:
+    :param txn:
         Transaction to be sent over SLIMbus
+    :type txn: struct slim_msg_txn \*
 
 .. _`slim_do_transfer.description`:
 
@@ -73,14 +120,17 @@ slim_xfer_msg
 
     Transfer a value info message on slim device
 
-    :param struct slim_device \*sbdev:
+    :param sbdev:
         slim device to which this msg has to be transfered
+    :type sbdev: struct slim_device \*
 
-    :param struct slim_val_inf \*msg:
+    :param msg:
         value info message pointer
+    :type msg: struct slim_val_inf \*
 
-    :param u8 mc:
+    :param mc:
         message code of the message
+    :type mc: u8
 
 .. _`slim_xfer_msg.description`:
 
@@ -105,17 +155,21 @@ slim_read
 
     Read SLIMbus value element
 
-    :param struct slim_device \*sdev:
+    :param sdev:
         client handle.
+    :type sdev: struct slim_device \*
 
-    :param u32 addr:
+    :param addr:
         address of value element to read.
+    :type addr: u32
 
-    :param size_t count:
+    :param count:
         number of bytes to read. Maximum bytes allowed are 16.
+    :type count: size_t
 
-    :param u8 \*val:
+    :param val:
         will return what the value element value was
+    :type val: u8 \*
 
 .. _`slim_read.return`:
 
@@ -135,11 +189,13 @@ slim_readb
 
     Read byte from SLIMbus value element
 
-    :param struct slim_device \*sdev:
+    :param sdev:
         client handle.
+    :type sdev: struct slim_device \*
 
-    :param u32 addr:
+    :param addr:
         address in the value element to read.
+    :type addr: u32
 
 .. _`slim_readb.return`:
 
@@ -157,17 +213,21 @@ slim_write
 
     Write SLIMbus value element
 
-    :param struct slim_device \*sdev:
+    :param sdev:
         client handle.
+    :type sdev: struct slim_device \*
 
-    :param u32 addr:
+    :param addr:
         address in the value element to write.
+    :type addr: u32
 
-    :param size_t count:
+    :param count:
         number of bytes to write. Maximum bytes allowed are 16.
+    :type count: size_t
 
-    :param u8 \*val:
+    :param val:
         value to write to value element
+    :type val: u8 \*
 
 .. _`slim_write.return`:
 
@@ -187,14 +247,17 @@ slim_writeb
 
     Write byte to SLIMbus value element
 
-    :param struct slim_device \*sdev:
+    :param sdev:
         client handle.
+    :type sdev: struct slim_device \*
 
-    :param u32 addr:
+    :param addr:
         address of value element to write.
+    :type addr: u32
 
-    :param u8 value:
+    :param value:
         value to write to value element
+    :type value: u8
 
 .. _`slim_writeb.return`:
 

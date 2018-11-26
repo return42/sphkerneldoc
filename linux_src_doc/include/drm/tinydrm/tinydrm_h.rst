@@ -43,7 +43,7 @@ fb_funcs
     Framebuffer functions used when creating framebuffers
 
 fb_dirty
-    *undescribed*
+    Framebuffer dirty callback
 
 .. _`tinydrm_gem_driver_ops`:
 
@@ -71,17 +71,21 @@ TINYDRM_MODE
 
     tinydrm display mode
 
-    :param  hd:
+    :param hd:
         Horizontal resolution, width
+    :type hd: 
 
-    :param  vd:
+    :param vd:
         Vertical resolution, height
+    :type vd: 
 
-    :param  hd_mm:
+    :param hd_mm:
         Display width in millimeters
+    :type hd_mm: 
 
-    :param  vd_mm:
+    :param vd_mm:
         Display height in millimeters
+    :type vd_mm: 
 
 .. _`tinydrm_mode.description`:
 

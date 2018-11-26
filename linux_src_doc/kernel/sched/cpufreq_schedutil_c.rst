@@ -10,14 +10,17 @@ get_next_freq
 
     Compute a new frequency for a given cpufreq policy.
 
-    :param struct sugov_policy \*sg_policy:
+    :param sg_policy:
         schedutil policy object to compute the new frequency for.
+    :type sg_policy: struct sugov_policy \*
 
-    :param unsigned long util:
+    :param util:
         Current CPU utilization.
+    :type util: unsigned long
 
-    :param unsigned long max:
+    :param max:
         CPU capacity.
+    :type max: unsigned long
 
 .. _`get_next_freq.description`:
 
@@ -49,14 +52,17 @@ sugov_iowait_reset
 
     Reset the IO boost status of a CPU.
 
-    :param struct sugov_cpu \*sg_cpu:
+    :param sg_cpu:
         the sugov data for the CPU to boost
+    :type sg_cpu: struct sugov_cpu \*
 
-    :param u64 time:
+    :param time:
         the update time from the caller
+    :type time: u64
 
-    :param bool set_iowait_boost:
+    :param set_iowait_boost:
         true if an IO boost has been requested
+    :type set_iowait_boost: bool
 
 .. _`sugov_iowait_reset.description`:
 
@@ -77,14 +83,17 @@ sugov_iowait_boost
 
     Updates the IO boost status of a CPU.
 
-    :param struct sugov_cpu \*sg_cpu:
+    :param sg_cpu:
         the sugov data for the CPU to boost
+    :type sg_cpu: struct sugov_cpu \*
 
-    :param u64 time:
+    :param time:
         the update time from the caller
+    :type time: u64
 
-    :param unsigned int flags:
+    :param flags:
         SCHED_CPUFREQ_IOWAIT if the task is waking up after an IO wait
+    :type flags: unsigned int
 
 .. _`sugov_iowait_boost.description`:
 
@@ -107,17 +116,21 @@ sugov_iowait_apply
 
     Apply the IO boost to a CPU.
 
-    :param struct sugov_cpu \*sg_cpu:
+    :param sg_cpu:
         the sugov data for the cpu to boost
+    :type sg_cpu: struct sugov_cpu \*
 
-    :param u64 time:
+    :param time:
         the update time from the caller
+    :type time: u64
 
-    :param unsigned long \*util:
+    :param util:
         the utilization to (eventually) boost
+    :type util: unsigned long \*
 
-    :param unsigned long \*max:
+    :param max:
         the maximum value the utilization can be boosted to
+    :type max: unsigned long \*
 
 .. _`sugov_iowait_apply.description`:
 

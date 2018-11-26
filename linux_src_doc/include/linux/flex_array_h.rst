@@ -10,14 +10,17 @@ flex_array_alloc
 
     Creates a flexible array.
 
-    :param int element_size:
+    :param element_size:
         individual object size.
+    :type element_size: int
 
-    :param unsigned int total:
+    :param total:
         maximum number of objects which can be stored.
+    :type total: unsigned int
 
-    :param gfp_t flags:
+    :param flags:
         GFP flags
+    :type flags: gfp_t
 
 .. _`flex_array_alloc.return`:
 
@@ -35,17 +38,21 @@ flex_array_prealloc
 
     Ensures that memory for the elements indexed in the range defined by start and nr_elements has been allocated.
 
-    :param struct flex_array \*fa:
+    :param fa:
         array to allocate memory to.
+    :type fa: struct flex_array \*
 
-    :param unsigned int start:
+    :param start:
         start address
+    :type start: unsigned int
 
-    :param unsigned int nr_elements:
+    :param nr_elements:
         number of elements to be allocated.
+    :type nr_elements: unsigned int
 
-    :param gfp_t flags:
+    :param flags:
         GFP flags
+    :type flags: gfp_t
 
 .. _`flex_array_free`:
 
@@ -56,8 +63,9 @@ flex_array_free
 
     Removes all elements of a flexible array.
 
-    :param struct flex_array \*fa:
+    :param fa:
         array to be freed.
+    :type fa: struct flex_array \*
 
 .. _`flex_array_free_parts`:
 
@@ -68,8 +76,9 @@ flex_array_free_parts
 
     Removes all elements of a flexible array, but leaves the array itself in place.
 
-    :param struct flex_array \*fa:
+    :param fa:
         array to be emptied.
+    :type fa: struct flex_array \*
 
 .. _`flex_array_put`:
 
@@ -80,18 +89,22 @@ flex_array_put
 
     Stores data into a flexible array.
 
-    :param struct flex_array \*fa:
+    :param fa:
         array where element is to be stored.
+    :type fa: struct flex_array \*
 
-    :param unsigned int element_nr:
+    :param element_nr:
         position to copy, must be less than the maximum specified when
         the array was created.
+    :type element_nr: unsigned int
 
-    :param void \*src:
+    :param src:
         data source to be copied into the array.
+    :type src: void \*
 
-    :param gfp_t flags:
+    :param flags:
         GFP flags
+    :type flags: gfp_t
 
 .. _`flex_array_put.return`:
 
@@ -109,11 +122,13 @@ flex_array_clear
 
     Clears an individual element in the array, sets the given element to FLEX_ARRAY_FREE.
 
-    :param struct flex_array \*fa:
+    :param fa:
         array to which element to be cleared belongs.
+    :type fa: struct flex_array \*
 
-    :param unsigned int element_nr:
+    :param element_nr:
         element position to clear.
+    :type element_nr: unsigned int
 
 .. _`flex_array_clear.return`:
 
@@ -131,11 +146,13 @@ flex_array_get
 
     Retrieves data into a flexible array.
 
-    :param struct flex_array \*fa:
+    :param fa:
         array from which data is to be retrieved.
+    :type fa: struct flex_array \*
 
-    :param unsigned int element_nr:
+    :param element_nr:
         Element position to retrieve data from.
+    :type element_nr: unsigned int
 
 .. _`flex_array_get.return`:
 
@@ -154,8 +171,9 @@ flex_array_shrink
 
     Reduces the allocated size of an array.
 
-    :param struct flex_array \*fa:
+    :param fa:
         array to shrink.
+    :type fa: struct flex_array \*
 
 .. _`flex_array_shrink.return`:
 

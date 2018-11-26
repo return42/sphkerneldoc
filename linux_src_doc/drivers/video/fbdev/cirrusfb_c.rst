@@ -8,14 +8,17 @@ cirrusfb_dbg_print_regs
 
 .. c:function:: void cirrusfb_dbg_print_regs(struct fb_info *info, caddr_t regbase, enum cirrusfb_dbg_reg_class reg_class,  ...)
 
-    :param struct fb_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct fb_info \*
 
-    :param caddr_t regbase:
+    :param regbase:
         *undescribed*
+    :type regbase: caddr_t
 
-    :param enum cirrusfb_dbg_reg_class reg_class:
+    :param reg_class:
         type of registers to read: \ ``CRT``\ , or \ ``SEQ``\ 
+    :type reg_class: enum cirrusfb_dbg_reg_class
 
     :param ellipsis ellipsis:
         variable arguments
@@ -36,11 +39,13 @@ cirrusfb_dbg_reg_dump
 
 .. c:function:: void cirrusfb_dbg_reg_dump(struct fb_info *info, caddr_t regbase)
 
-    :param struct fb_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct fb_info \*
 
-    :param caddr_t regbase:
+    :param regbase:
         *undescribed*
+    :type regbase: caddr_t
 
 .. _`cirrusfb_dbg_reg_dump.description`:
 

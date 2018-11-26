@@ -10,8 +10,9 @@ clear_root_gid
 
     Set GuestCtl1.RID for normal root operation.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`set_root_gid_to_guest_gid`:
 
@@ -22,8 +23,9 @@ set_root_gid_to_guest_gid
 
     Set GuestCtl1.RID to match GuestCtl1.ID.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`set_root_gid_to_guest_gid.description`:
 
@@ -45,14 +47,17 @@ kvm_vz_guest_tlb_lookup
 
     Lookup a guest VZ TLB mapping.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         KVM VCPU pointer.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gva:
+    :param gva:
         *undescribed*
+    :type gva: unsigned long
 
-    :param unsigned long \*gpa:
+    :param gpa:
         Ponter to output guest physical address it maps to.
+    :type gpa: unsigned long \*
 
 .. _`kvm_vz_guest_tlb_lookup.description`:
 
@@ -81,8 +86,9 @@ kvm_vz_local_flush_roottlb_all_guests
 
     Flush all root TLB entries for guests.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kvm_vz_local_flush_roottlb_all_guests.description`:
 
@@ -100,8 +106,9 @@ kvm_vz_local_flush_guesttlb_all
 
     Flush all guest TLB entries.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kvm_vz_local_flush_guesttlb_all.description`:
 
@@ -119,14 +126,17 @@ kvm_vz_save_guesttlb
 
     Save a range of guest TLB entries.
 
-    :param struct kvm_mips_tlb \*buf:
+    :param buf:
         Buffer to write TLB entries into.
+    :type buf: struct kvm_mips_tlb \*
 
-    :param unsigned int index:
+    :param index:
         Start index.
+    :type index: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of entries to save.
+    :type count: unsigned int
 
 .. _`kvm_vz_save_guesttlb.description`:
 
@@ -145,14 +155,17 @@ kvm_vz_load_guesttlb
 
     Save a range of guest TLB entries.
 
-    :param const struct kvm_mips_tlb \*buf:
+    :param buf:
         Buffer to read TLB entries from.
+    :type buf: const struct kvm_mips_tlb \*
 
-    :param unsigned int index:
+    :param index:
         Start index.
+    :type index: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of entries to load.
+    :type count: unsigned int
 
 .. _`kvm_vz_load_guesttlb.description`:
 
@@ -171,8 +184,9 @@ kvm_mips_suspend_mm
 
     Suspend the active mm. \ ``cpu``\          The CPU we're running on.
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. _`kvm_mips_suspend_mm.description`:
 
@@ -198,8 +212,9 @@ kvm_mips_resume_mm
 
     Resume the current process mm. \ ``cpu``\          The CPU we're running on.
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. _`kvm_mips_resume_mm.description`:
 

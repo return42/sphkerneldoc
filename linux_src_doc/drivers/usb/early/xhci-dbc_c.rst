@@ -10,8 +10,9 @@ pr_fmt
 
     dbc.c - xHCI debug capability early driver
 
-    :param  fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: 
 
 .. _`pr_fmt.description`:
 

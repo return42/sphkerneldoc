@@ -104,7 +104,7 @@ Definition
 .. code-block:: c
 
     struct ti_sci_desc {
-        u8 host_id;
+        u8 default_host_id;
         int max_rx_timeout_ms;
         int max_msgs;
         int max_msg_size;
@@ -115,7 +115,7 @@ Definition
 Members
 -------
 
-host_id
+default_host_id
     Host identifier representing the compute entity
 
 max_rx_timeout_ms
@@ -158,6 +158,7 @@ Definition
         struct mbox_chan *chan_rx;
         struct ti_sci_xfers_info minfo;
         struct list_head node;
+        u8 host_id;
         int users;
     }
 
@@ -205,6 +206,9 @@ minfo
 node
     list head
 
+host_id
+    Host ID
+
 users
     Number of users of this instance
 
@@ -217,11 +221,13 @@ ti_sci_debug_show
 
     Helper to dump the debug log
 
-    :param struct seq_file \*s:
+    :param s:
         sequence file pointer
+    :type s: struct seq_file \*
 
-    :param void \*unused:
+    :param unused:
         unused.
+    :type unused: void \*
 
 .. _`ti_sci_debug_show.return`:
 
@@ -239,11 +245,13 @@ ti_sci_debug_open
 
     debug file open
 
-    :param struct inode \*inode:
+    :param inode:
         inode pointer
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
 .. _`ti_sci_debug_open.return`:
 
@@ -261,11 +269,13 @@ ti_sci_debugfs_create
 
     Create log debug file
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer
+    :type pdev: struct platform_device \*
 
-    :param struct ti_sci_info \*info:
+    :param info:
         Pointer to SCI entity information
+    :type info: struct ti_sci_info \*
 
 .. _`ti_sci_debugfs_create.return`:
 
@@ -283,11 +293,13 @@ ti_sci_debugfs_destroy
 
     clean up log debug file
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer
+    :type pdev: struct platform_device \*
 
-    :param struct ti_sci_info \*info:
+    :param info:
         Pointer to SCI entity information
+    :type info: struct ti_sci_info \*
 
 .. _`ti_sci_dump_header_dbg`:
 
@@ -298,11 +310,13 @@ ti_sci_dump_header_dbg
 
     Helper to dump a message header.
 
-    :param struct device \*dev:
+    :param dev:
         Device pointer corresponding to the SCI entity
+    :type dev: struct device \*
 
-    :param struct ti_sci_msg_hdr \*hdr:
+    :param hdr:
         pointer to header.
+    :type hdr: struct ti_sci_msg_hdr \*
 
 .. _`ti_sci_rx_callback`:
 
@@ -313,11 +327,13 @@ ti_sci_rx_callback
 
     mailbox client callback for receive messages
 
-    :param struct mbox_client \*cl:
+    :param cl:
         client pointer
+    :type cl: struct mbox_client \*
 
-    :param void \*m:
+    :param m:
         mailbox message
+    :type m: void \*
 
 .. _`ti_sci_rx_callback.description`:
 
@@ -344,20 +360,25 @@ ti_sci_get_one_xfer
 
     Allocate one message
 
-    :param struct ti_sci_info \*info:
+    :param info:
         Pointer to SCI entity information
+    :type info: struct ti_sci_info \*
 
-    :param u16 msg_type:
+    :param msg_type:
         Message type
+    :type msg_type: u16
 
-    :param u32 msg_flags:
+    :param msg_flags:
         Flag to set for the message
+    :type msg_flags: u32
 
-    :param size_t tx_message_size:
+    :param tx_message_size:
         transmit message size
+    :type tx_message_size: size_t
 
-    :param size_t rx_message_size:
+    :param rx_message_size:
         receive message size
+    :type rx_message_size: size_t
 
 .. _`ti_sci_get_one_xfer.description`:
 
@@ -387,11 +408,13 @@ ti_sci_put_one_xfer
 
     Release a message
 
-    :param struct ti_sci_xfers_info \*minfo:
+    :param minfo:
         transfer info pointer
+    :type minfo: struct ti_sci_xfers_info \*
 
-    :param struct ti_sci_xfer \*xfer:
+    :param xfer:
         message that was reserved by ti_sci_get_one_xfer
+    :type xfer: struct ti_sci_xfer \*
 
 .. _`ti_sci_put_one_xfer.description`:
 
@@ -409,11 +432,13 @@ ti_sci_do_xfer
 
     Do one transfer
 
-    :param struct ti_sci_info \*info:
+    :param info:
         Pointer to SCI entity information
+    :type info: struct ti_sci_info \*
 
-    :param struct ti_sci_xfer \*xfer:
+    :param xfer:
         Transfer to initiate and wait for response
+    :type xfer: struct ti_sci_xfer \*
 
 .. _`ti_sci_do_xfer.return`:
 
@@ -433,8 +458,9 @@ ti_sci_cmd_get_revision
 
     command to get the revision of the SCI entity
 
-    :param struct ti_sci_info \*info:
+    :param info:
         Pointer to SCI entity information
+    :type info: struct ti_sci_info \*
 
 .. _`ti_sci_cmd_get_revision.description`:
 
@@ -459,8 +485,9 @@ ti_sci_is_response_ack
 
     Generic ACK/NACK message checkup
 
-    :param void \*r:
+    :param r:
         pointer to response buffer
+    :type r: void \*
 
 .. _`ti_sci_is_response_ack.return`:
 
@@ -478,17 +505,21 @@ ti_sci_set_device_state
 
     Set device state helper
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device identifier
+    :type id: u32
 
-    :param u32 flags:
+    :param flags:
         flags to setup for the device
+    :type flags: u32
 
-    :param u8 state:
+    :param state:
         State to move the device to
+    :type state: u8
 
 .. _`ti_sci_set_device_state.return`:
 
@@ -506,23 +537,29 @@ ti_sci_get_device_state
 
     Get device state helper
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Handle to the device
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
-    :param u32 \*clcnt:
+    :param clcnt:
         Pointer to Context Loss Count
+    :type clcnt: u32 \*
 
-    :param u32 \*resets:
+    :param resets:
         pointer to resets
+    :type resets: u32 \*
 
-    :param u8 \*p_state:
+    :param p_state:
         pointer to p_state
+    :type p_state: u8 \*
 
-    :param u8 \*c_state:
+    :param c_state:
         pointer to c_state
+    :type c_state: u8 \*
 
 .. _`ti_sci_get_device_state.return`:
 
@@ -540,11 +577,13 @@ ti_sci_cmd_get_device
 
     command to request for device managed by TISCI
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle as retrieved by \*ti_sci_get_handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
 .. _`ti_sci_cmd_get_device.description`:
 
@@ -578,11 +617,13 @@ ti_sci_cmd_idle_device
 
     Command to idle a device managed by TISCI
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle as retrieved by \*ti_sci_get_handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
 .. _`ti_sci_cmd_idle_device.description`:
 
@@ -609,11 +650,13 @@ ti_sci_cmd_put_device
 
     command to release a device managed by TISCI
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle as retrieved by \*ti_sci_get_handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
 .. _`ti_sci_cmd_put_device.description`:
 
@@ -640,11 +683,13 @@ ti_sci_cmd_dev_is_valid
 
     Is the device valid
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle as retrieved by \*ti_sci_get_handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
 .. _`ti_sci_cmd_dev_is_valid.return`:
 
@@ -663,14 +708,17 @@ ti_sci_cmd_dev_get_clcnt
 
     Get context loss counter
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
-    :param u32 \*count:
+    :param count:
         Pointer to Context Loss counter to populate
+    :type count: u32 \*
 
 .. _`ti_sci_cmd_dev_get_clcnt.return`:
 
@@ -688,14 +736,17 @@ ti_sci_cmd_dev_is_idle
 
     Check if the device is requested to be idle
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
-    :param bool \*r_state:
+    :param r_state:
         true if requested to be idle
+    :type r_state: bool \*
 
 .. _`ti_sci_cmd_dev_is_idle.return`:
 
@@ -713,17 +764,21 @@ ti_sci_cmd_dev_is_stop
 
     Check if the device is requested to be stopped
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
-    :param bool \*r_state:
+    :param r_state:
         true if requested to be stopped
+    :type r_state: bool \*
 
-    :param bool \*curr_state:
+    :param curr_state:
         true if currently stopped.
+    :type curr_state: bool \*
 
 .. _`ti_sci_cmd_dev_is_stop.return`:
 
@@ -741,17 +796,21 @@ ti_sci_cmd_dev_is_on
 
     Check if the device is requested to be ON
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
-    :param bool \*r_state:
+    :param r_state:
         true if requested to be ON
+    :type r_state: bool \*
 
-    :param bool \*curr_state:
+    :param curr_state:
         true if currently ON and active
+    :type curr_state: bool \*
 
 .. _`ti_sci_cmd_dev_is_on.return`:
 
@@ -769,14 +828,17 @@ ti_sci_cmd_dev_is_trans
 
     Check if the device is currently transitioning
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
-    :param bool \*curr_state:
+    :param curr_state:
         true if currently transitioning.
+    :type curr_state: bool \*
 
 .. _`ti_sci_cmd_dev_is_trans.return`:
 
@@ -794,14 +856,17 @@ ti_sci_cmd_set_device_resets
 
     command to set resets for device managed by TISCI
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle as retrieved by \*ti_sci_get_handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
-    :param u32 reset_state:
+    :param reset_state:
         Device specific reset bit field
+    :type reset_state: u32
 
 .. _`ti_sci_cmd_set_device_resets.return`:
 
@@ -819,14 +884,17 @@ ti_sci_cmd_get_device_resets
 
     Get reset state for device managed by TISCI
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Pointer to TISCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 id:
+    :param id:
         Device Identifier
+    :type id: u32
 
-    :param u32 \*reset_state:
+    :param reset_state:
         Pointer to reset state to populate
+    :type reset_state: u32 \*
 
 .. _`ti_sci_cmd_get_device_resets.return`:
 
@@ -844,22 +912,27 @@ ti_sci_set_clock_state
 
     Set clock state helper
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param u32 flags:
+    :param flags:
         Header flags as needed
+    :type flags: u32
 
-    :param u8 state:
+    :param state:
         State to request for the clock.
+    :type state: u8
 
 .. _`ti_sci_set_clock_state.return`:
 
@@ -877,22 +950,27 @@ ti_sci_cmd_get_clock_state
 
     Get clock state helper
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param u8 \*programmed_state:
+    :param programmed_state:
         State requested for clock to move to
+    :type programmed_state: u8 \*
 
-    :param u8 \*current_state:
+    :param current_state:
         State that the clock is currently in
+    :type current_state: u8 \*
 
 .. _`ti_sci_cmd_get_clock_state.return`:
 
@@ -910,25 +988,31 @@ ti_sci_cmd_get_clock
 
     Get control of a clock from TI SCI
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param bool needs_ssc:
+    :param needs_ssc:
         'true' if Spread Spectrum clock is desired, else 'false'
+    :type needs_ssc: bool
 
-    :param bool can_change_freq:
+    :param can_change_freq:
         'true' if frequency change is desired, else 'false'
+    :type can_change_freq: bool
 
-    :param bool enable_input_term:
+    :param enable_input_term:
         'true' if input termination is desired, else 'false'
+    :type enable_input_term: bool
 
 .. _`ti_sci_cmd_get_clock.return`:
 
@@ -946,16 +1030,19 @@ ti_sci_cmd_idle_clock
 
     Idle a clock which is in our control
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
 .. _`ti_sci_cmd_idle_clock.note`:
 
@@ -980,16 +1067,19 @@ ti_sci_cmd_put_clock
 
     Release a clock from our control back to TISCI
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
 .. _`ti_sci_cmd_put_clock.note`:
 
@@ -1014,19 +1104,23 @@ ti_sci_cmd_clk_is_auto
 
     Is the clock being auto managed
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param bool \*req_state:
+    :param req_state:
         state indicating if the clock is auto managed
+    :type req_state: bool \*
 
 .. _`ti_sci_cmd_clk_is_auto.return`:
 
@@ -1044,22 +1138,27 @@ ti_sci_cmd_clk_is_on
 
     Is the clock ON
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param bool \*req_state:
+    :param req_state:
         state indicating if the clock is managed by us and enabled
+    :type req_state: bool \*
 
-    :param bool \*curr_state:
+    :param curr_state:
         state indicating if the clock is ready for operation
+    :type curr_state: bool \*
 
 .. _`ti_sci_cmd_clk_is_on.return`:
 
@@ -1077,22 +1176,27 @@ ti_sci_cmd_clk_is_off
 
     Is the clock OFF
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param bool \*req_state:
+    :param req_state:
         state indicating if the clock is managed by us and disabled
+    :type req_state: bool \*
 
-    :param bool \*curr_state:
+    :param curr_state:
         state indicating if the clock is NOT ready for operation
+    :type curr_state: bool \*
 
 .. _`ti_sci_cmd_clk_is_off.return`:
 
@@ -1110,19 +1214,23 @@ ti_sci_cmd_clk_set_parent
 
     Set the clock source of a specific device clock
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param u8 parent_id:
+    :param parent_id:
         Parent clock identifier to set
+    :type parent_id: u8
 
 .. _`ti_sci_cmd_clk_set_parent.return`:
 
@@ -1140,19 +1248,23 @@ ti_sci_cmd_clk_get_parent
 
     Get current parent clock source
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param u8 \*parent_id:
+    :param parent_id:
         Current clock parent
+    :type parent_id: u8 \*
 
 .. _`ti_sci_cmd_clk_get_parent.return`:
 
@@ -1170,19 +1282,23 @@ ti_sci_cmd_clk_get_num_parents
 
     Get num parents of the current clk source
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param u8 \*num_parents:
+    :param num_parents:
         Returns he number of parents to the current clock.
+    :type num_parents: u8 \*
 
 .. _`ti_sci_cmd_clk_get_num_parents.return`:
 
@@ -1200,33 +1316,40 @@ ti_sci_cmd_clk_get_match_freq
 
     Find a good match for frequency
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param u64 min_freq:
+    :param min_freq:
         The minimum allowable frequency in Hz. This is the minimum
         allowable programmed frequency and does not account for clock
         tolerances and jitter.
+    :type min_freq: u64
 
-    :param u64 target_freq:
+    :param target_freq:
         The target clock frequency in Hz. A frequency will be
         processed as close to this target frequency as possible.
+    :type target_freq: u64
 
-    :param u64 max_freq:
+    :param max_freq:
         The maximum allowable frequency in Hz. This is the maximum
         allowable programmed frequency and does not account for clock
         tolerances and jitter.
+    :type max_freq: u64
 
-    :param u64 \*match_freq:
+    :param match_freq:
         Frequency match in Hz response.
+    :type match_freq: u64 \*
 
 .. _`ti_sci_cmd_clk_get_match_freq.return`:
 
@@ -1244,30 +1367,36 @@ ti_sci_cmd_clk_set_freq
 
     Set a frequency for clock
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param u64 min_freq:
+    :param min_freq:
         The minimum allowable frequency in Hz. This is the minimum
         allowable programmed frequency and does not account for clock
         tolerances and jitter.
+    :type min_freq: u64
 
-    :param u64 target_freq:
+    :param target_freq:
         The target clock frequency in Hz. A frequency will be
         processed as close to this target frequency as possible.
+    :type target_freq: u64
 
-    :param u64 max_freq:
+    :param max_freq:
         The maximum allowable frequency in Hz. This is the maximum
         allowable programmed frequency and does not account for clock
         tolerances and jitter.
+    :type max_freq: u64
 
 .. _`ti_sci_cmd_clk_set_freq.return`:
 
@@ -1285,19 +1414,23 @@ ti_sci_cmd_clk_get_freq
 
     Get current frequency
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         pointer to TI SCI handle
+    :type handle: const struct ti_sci_handle \*
 
-    :param u32 dev_id:
+    :param dev_id:
         Device identifier this request is for
+    :type dev_id: u32
 
-    :param u8 clk_id:
+    :param clk_id:
         Clock identifier for the device for this request.
         Each device has it's own set of clock inputs. This indexes
         which clock input to modify.
+    :type clk_id: u8
 
-    :param u64 \*freq:
+    :param freq:
         Currently frequency in Hz
+    :type freq: u64 \*
 
 .. _`ti_sci_cmd_clk_get_freq.return`:
 
@@ -1315,8 +1448,9 @@ ti_sci_get_handle
 
     Get the TI SCI handle for a device
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to device for which we want SCI handle
+    :type dev: struct device \*
 
 .. _`ti_sci_get_handle.note`:
 
@@ -1346,8 +1480,9 @@ ti_sci_put_handle
 
     Release the handle acquired by ti_sci_get_handle
 
-    :param const struct ti_sci_handle \*handle:
+    :param handle:
         Handle acquired by ti_sci_get_handle
+    :type handle: const struct ti_sci_handle \*
 
 .. _`ti_sci_put_handle.note`:
 
@@ -1376,8 +1511,9 @@ devm_ti_sci_get_handle
 
     Managed get handle
 
-    :param struct device \*dev:
+    :param dev:
         device for which we want SCI handle for.
+    :type dev: struct device \*
 
 .. _`devm_ti_sci_get_handle.note`:
 

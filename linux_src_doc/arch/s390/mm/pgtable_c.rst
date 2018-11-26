@@ -10,20 +10,25 @@ ptep_force_prot
 
     change access rights of a locked pte
 
-    :param struct mm_struct \*mm:
+    :param mm:
         pointer to the process mm_struct
+    :type mm: struct mm_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         virtual address in the guest address space
+    :type addr: unsigned long
 
-    :param pte_t \*ptep:
+    :param ptep:
         pointer to the page table entry
+    :type ptep: pte_t \*
 
-    :param int prot:
+    :param prot:
         indicates guest access rights: PROT_NONE, PROT_READ or PROT_WRITE
+    :type prot: int
 
-    :param unsigned long bit:
+    :param bit:
         pgste bit to set (e.g. for notification)
+    :type bit: unsigned long
 
 .. _`ptep_force_prot.description`:
 
@@ -42,26 +47,33 @@ cond_set_guest_storage_key
 
     oldkey will be updated when either mr or mc is set and a pointer is given.
 
-    :param struct mm_struct \*mm:
+    :param mm:
         *undescribed*
+    :type mm: struct mm_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         *undescribed*
+    :type addr: unsigned long
 
-    :param unsigned char key:
+    :param key:
         *undescribed*
+    :type key: unsigned char
 
-    :param unsigned char \*oldkey:
+    :param oldkey:
         *undescribed*
+    :type oldkey: unsigned char \*
 
-    :param bool nq:
+    :param nq:
         *undescribed*
+    :type nq: bool
 
-    :param bool mr:
+    :param mr:
         *undescribed*
+    :type mr: bool
 
-    :param bool mc:
+    :param mc:
         *undescribed*
+    :type mc: bool
 
 .. _`cond_set_guest_storage_key.description`:
 
@@ -78,11 +90,13 @@ reset_guest_reference_bit
 
 .. c:function:: int reset_guest_reference_bit(struct mm_struct *mm, unsigned long addr)
 
-    :param struct mm_struct \*mm:
+    :param mm:
         *undescribed*
+    :type mm: struct mm_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         *undescribed*
+    :type addr: unsigned long
 
 .. _`reset_guest_reference_bit.description`:
 
@@ -100,20 +114,25 @@ pgste_perform_essa
 
     perform ESSA actions on the PGSTE.
 
-    :param struct mm_struct \*mm:
+    :param mm:
         the memory context. It must have PGSTEs, no check is performed here!
+    :type mm: struct mm_struct \*
 
-    :param unsigned long hva:
+    :param hva:
         the host virtual address of the page whose PGSTE is to be processed
+    :type hva: unsigned long
 
-    :param int orc:
+    :param orc:
         the specific action to perform, see the ESSA_SET\_\* macros.
+    :type orc: int
 
-    :param unsigned long \*oldpte:
+    :param oldpte:
         the PTE will be saved there if the pointer is not NULL.
+    :type oldpte: unsigned long \*
 
-    :param unsigned long \*oldpgste:
+    :param oldpgste:
         the old PGSTE will be saved there if the pointer is not NULL.
+    :type oldpgste: unsigned long \*
 
 .. _`pgste_perform_essa.return`:
 
@@ -133,18 +152,22 @@ set_pgste_bits
 
     set specific PGSTE bits.
 
-    :param struct mm_struct \*mm:
+    :param mm:
         the memory context. It must have PGSTEs, no check is performed here!
+    :type mm: struct mm_struct \*
 
-    :param unsigned long hva:
+    :param hva:
         the host virtual address of the page whose PGSTE is to be processed
+    :type hva: unsigned long
 
-    :param unsigned long bits:
+    :param bits:
         a bitmask representing the bits that will be touched
+    :type bits: unsigned long
 
-    :param unsigned long value:
+    :param value:
         the values of the bits to be written. Only the bits in the mask
         will be written.
+    :type value: unsigned long
 
 .. _`set_pgste_bits.return`:
 
@@ -162,14 +185,17 @@ get_pgste
 
     get the current PGSTE for the given address.
 
-    :param struct mm_struct \*mm:
+    :param mm:
         the memory context. It must have PGSTEs, no check is performed here!
+    :type mm: struct mm_struct \*
 
-    :param unsigned long hva:
+    :param hva:
         the host virtual address of the page whose PGSTE is to be processed
+    :type hva: unsigned long
 
-    :param unsigned long \*pgstep:
+    :param pgstep:
         will be written with the current PGSTE for the given address.
+    :type pgstep: unsigned long \*
 
 .. _`get_pgste.return`:
 

@@ -10,8 +10,9 @@ intel_sst_reset_dsp_mrfld
 
     Resetting SST DSP
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         *undescribed*
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
 .. _`intel_sst_reset_dsp_mrfld.description`:
 
@@ -29,8 +30,9 @@ sst_start_mrfld
 
     Start the SST DSP processor
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         *undescribed*
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
 .. _`sst_start_mrfld.description`:
 
@@ -48,16 +50,19 @@ sst_parse_module_memcpy
 
     Parse audio FW modules and populate the memcpy list
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         driver context
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
-    :param struct fw_module_header \*module:
+    :param module:
         FW module header
+    :type module: struct fw_module_header \*
 
-    :param struct list_head \*memcpy_list:
+    :param memcpy_list:
         Pointer to the list to be populated
         Create the memcpy list as the number of block to be copied
         returns error or 0 if module sizes are proper
+    :type memcpy_list: struct list_head \*
 
 .. _`sst_parse_fw_memcpy`:
 
@@ -68,16 +73,19 @@ sst_parse_fw_memcpy
 
     parse the firmware image & populate the list for memcpy
 
-    :param struct intel_sst_drv \*ctx:
+    :param ctx:
         pointer to drv context
+    :type ctx: struct intel_sst_drv \*
 
-    :param unsigned long size:
+    :param size:
         size of the firmware
+    :type size: unsigned long
 
-    :param struct list_head \*fw_list:
+    :param fw_list:
         pointer to list_head to be populated
         This function parses the FW image and saves the parsed image in the list
         for memcpy
+    :type fw_list: struct list_head \*
 
 .. _`sst_do_memcpy`:
 
@@ -88,8 +96,9 @@ sst_do_memcpy
 
     function initiates the memcpy
 
-    :param struct list_head \*memcpy_list:
+    :param memcpy_list:
         Pter to memcpy list on which the memcpy needs to be initiated
+    :type memcpy_list: struct list_head \*
 
 .. _`sst_do_memcpy.description`:
 
@@ -107,8 +116,9 @@ sst_load_fw
 
     function to load FW into DSP Transfers the FW to DSP using dma/memcpy
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         *undescribed*
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
 .. This file was automatic generated / don't edit.
 

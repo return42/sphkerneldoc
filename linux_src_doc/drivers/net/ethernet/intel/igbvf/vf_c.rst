@@ -10,8 +10,9 @@ e1000_init_mac_params_vf
 
     Inits MAC params
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_function_pointers_vf`:
 
@@ -22,8 +23,9 @@ e1000_init_function_pointers_vf
 
     Inits function pointers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_link_up_info_vf`:
 
@@ -34,14 +36,17 @@ e1000_get_link_up_info_vf
 
     Gets link info.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*speed:
+    :param speed:
         pointer to 16 bit value to store link speed.
+    :type speed: u16 \*
 
-    :param u16 \*duplex:
+    :param duplex:
         pointer to 16 bit value to store duplex.
+    :type duplex: u16 \*
 
 .. _`e1000_get_link_up_info_vf.description`:
 
@@ -60,8 +65,9 @@ e1000_reset_hw_vf
 
     Resets the HW
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_reset_hw_vf.description`:
 
@@ -80,8 +86,9 @@ e1000_init_hw_vf
 
     Inits the HW
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_hw_vf.description`:
 
@@ -99,11 +106,13 @@ e1000_hash_mc_addr_vf
 
     Generate a multicast hash value
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*mc_addr:
+    :param mc_addr:
         pointer to a multicast address
+    :type mc_addr: u8 \*
 
 .. _`e1000_hash_mc_addr_vf.description`:
 
@@ -123,20 +132,25 @@ e1000_update_mc_addr_list_vf
 
     Update Multicast addresses
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*mc_addr_list:
+    :param mc_addr_list:
         array of multicast addresses to program
+    :type mc_addr_list: u8 \*
 
-    :param u32 mc_addr_count:
+    :param mc_addr_count:
         number of multicast addresses to program
+    :type mc_addr_count: u32
 
-    :param u32 rar_used_count:
+    :param rar_used_count:
         the first RAR register free to program
+    :type rar_used_count: u32
 
-    :param u32 rar_count:
+    :param rar_count:
         total number of supported Receive Address Registers
+    :type rar_count: u32
 
 .. _`e1000_update_mc_addr_list_vf.description`:
 
@@ -157,14 +171,17 @@ e1000_set_vfta_vf
 
     Set/Unset vlan filter table address
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 vid:
+    :param vid:
         determines the vfta register and bit to set/unset
+    :type vid: u16
 
-    :param bool set:
+    :param set:
         if true then set bit, else clear bit
+    :type set: bool
 
 .. _`e1000_rlpml_set_vf`:
 
@@ -175,11 +192,13 @@ e1000_rlpml_set_vf
 
     Set the maximum receive packet length
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 max_size:
+    :param max_size:
         value to assign to max frame size
+    :type max_size: u16
 
 .. _`e1000_rar_set_vf`:
 
@@ -190,14 +209,17 @@ e1000_rar_set_vf
 
     set device MAC address
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*addr:
+    :param addr:
         pointer to the receive address
+    :type addr: u8 \*
 
-    :param u32 index:
+    :param index:
         receive address array register
+    :type index: u32
 
 .. _`e1000_read_mac_addr_vf`:
 
@@ -208,8 +230,9 @@ e1000_read_mac_addr_vf
 
     Read device MAC address
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_set_uc_addr_vf`:
 
@@ -220,14 +243,17 @@ e1000_set_uc_addr_vf
 
     Set or clear unicast filters
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 sub_cmd:
+    :param sub_cmd:
         add or clear filters
+    :type sub_cmd: u32
 
-    :param u8 \*addr:
+    :param addr:
         pointer to the filter MAC address
+    :type addr: u8 \*
 
 .. _`e1000_check_for_link_vf`:
 
@@ -238,8 +264,9 @@ e1000_check_for_link_vf
 
     Check for link for a virtual interface
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_for_link_vf.description`:
 

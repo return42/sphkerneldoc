@@ -10,8 +10,9 @@ spu_acquire_saved
 
     lock spu contex and make sure it is in saved state
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         spu contex to lock
+    :type ctx: struct spu_context \*
 
 .. _`spu_release_saved`:
 
@@ -22,8 +23,9 @@ spu_release_saved
 
     unlock spu context and return it to the runqueue
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         context to unlock
+    :type ctx: struct spu_context \*
 
 .. This file was automatic generated / don't edit.
 

@@ -1,6 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mmc/host/dw_mmc-exynos.c
 
+.. _`dw_mci_exynos_suspend_noirq`:
+
+dw_mci_exynos_suspend_noirq
+===========================
+
+.. c:function:: int dw_mci_exynos_suspend_noirq(struct device *dev)
+
+    Exynos-specific suspend code
+
+    :param dev:
+        *undescribed*
+    :type dev: struct device \*
+
+.. _`dw_mci_exynos_suspend_noirq.description`:
+
+Description
+-----------
+
+This ensures that device will be in runtime active state in
+dw_mci_exynos_resume_noirq after calling \ :c:func:`pm_runtime_force_resume`\ 
+
 .. _`dw_mci_exynos_resume_noirq`:
 
 dw_mci_exynos_resume_noirq
@@ -10,8 +31,9 @@ dw_mci_exynos_resume_noirq
 
     Exynos-specific resume code
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`dw_mci_exynos_resume_noirq.description`:
 

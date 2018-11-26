@@ -447,12 +447,14 @@ uwb_dev_for_each_f
 
 .. c:function:: int uwb_dev_for_each_f(struct device *dev, void *priv)
 
-    :param struct device \*dev:
+    :param dev:
         Linux device instance
         'uwb_dev = container_of(dev, struct uwb_dev, dev)'
+    :type dev: struct device \*
 
-    :param void \*priv:
+    :param priv:
         Data passed by the caller to 'uwb_{dev,rc}_foreach()'.
+    :type priv: void \*
 
 .. _`uwb_rsv_is_owner`:
 
@@ -463,8 +465,9 @@ uwb_rsv_is_owner
 
     is the owner of this reservation the RC?
 
-    :param struct uwb_rsv \*rsv:
+    :param rsv:
         the reservation
+    :type rsv: struct uwb_rsv \*
 
 .. _`uwb_notifs`:
 

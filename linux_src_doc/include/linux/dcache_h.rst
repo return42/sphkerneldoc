@@ -10,8 +10,9 @@ dget_dlock
 
     get a reference to a dentry
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to get a reference to
+    :type dentry: struct dentry \*
 
 .. _`dget_dlock.description`:
 
@@ -31,8 +32,9 @@ d_unhashed
 
     is dentry hashed
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         entry to check
+    :type dentry: const struct dentry \*
 
 .. _`d_unhashed.description`:
 
@@ -50,8 +52,9 @@ d_really_is_negative
 
     Determine if a dentry is really negative (ignoring fallthroughs)
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         The dentry in question
+    :type dentry: const struct dentry \*
 
 .. _`d_really_is_negative.description`:
 
@@ -78,8 +81,9 @@ d_really_is_positive
 
     Determine if a dentry is really positive (ignoring fallthroughs)
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         The dentry in question
+    :type dentry: const struct dentry \*
 
 .. _`d_really_is_positive.description`:
 
@@ -104,8 +108,9 @@ d_inode
 
     Get the actual inode of this dentry
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         The dentry to query
+    :type dentry: const struct dentry \*
 
 .. _`d_inode.description`:
 
@@ -124,8 +129,9 @@ d_inode_rcu
 
     Get the actual inode of this dentry with \ :c:func:`READ_ONCE`\ 
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         The dentry to query
+    :type dentry: const struct dentry \*
 
 .. _`d_inode_rcu.description`:
 
@@ -144,8 +150,9 @@ d_backing_inode
 
     Get upper or lower inode we should be using
 
-    :param const struct dentry \*upper:
+    :param upper:
         The upper layer
+    :type upper: const struct dentry \*
 
 .. _`d_backing_inode.description`:
 
@@ -167,8 +174,9 @@ d_backing_dentry
 
     Get upper or lower dentry we should be using
 
-    :param struct dentry \*upper:
+    :param upper:
         The upper layer
+    :type upper: struct dentry \*
 
 .. _`d_backing_dentry.description`:
 
@@ -186,21 +194,17 @@ Normal filesystems should not use this to access their own dentries.
 d_real
 ======
 
-.. c:function:: struct dentry *d_real(struct dentry *dentry, const struct inode *inode, unsigned int open_flags, unsigned int flags)
+.. c:function:: struct dentry *d_real(struct dentry *dentry, const struct inode *inode)
 
     Return the real dentry
 
-    :param struct dentry \*dentry:
+    :param dentry:
         the dentry to query
+    :type dentry: struct dentry \*
 
-    :param const struct inode \*inode:
+    :param inode:
         inode to select the dentry from multiple layers (can be NULL)
-
-    :param unsigned int open_flags:
-        open flags to control copy-up behavior
-
-    :param unsigned int flags:
-        flags to control what is returned by this function
+    :type inode: const struct inode \*
 
 .. _`d_real.description`:
 
@@ -221,8 +225,9 @@ d_real_inode
 
     Return the real inode
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         The dentry to query
+    :type dentry: const struct dentry \*
 
 .. _`d_real_inode.description`:
 

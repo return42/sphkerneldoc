@@ -10,11 +10,13 @@ st_reg_complete
 
     to call registration complete callbacks of all protocol stack drivers This function is being called with spin lock held, protocol drivers are only expected to complete their waits and do nothing more than that.
 
-    :param struct st_data_s \*st_gdata:
+    :param st_gdata:
         *undescribed*
+    :type st_gdata: struct st_data_s \*
 
-    :param int err:
+    :param err:
         *undescribed*
+    :type err: int
 
 .. _`st_wakeup_ack`:
 
@@ -25,11 +27,13 @@ st_wakeup_ack
 
     internal function for action when wake-up ack received
 
-    :param struct st_data_s \*st_gdata:
+    :param st_gdata:
         *undescribed*
+    :type st_gdata: struct st_data_s \*
 
-    :param unsigned char cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: unsigned char
 
 .. _`st_int_recv`:
 
@@ -40,14 +44,17 @@ st_int_recv
 
     ST's internal receive function. Decodes received RAW data and forwards to corresponding client drivers (Bluetooth,FM,GPS..etc). This can receive various types of packets, HCI-Events, ACL, SCO, 4 types of HCI-LL PM packets CH-8 packets from FM, CH-9 packets from GPS cores.
 
-    :param void \*disc_data:
+    :param disc_data:
         *undescribed*
+    :type disc_data: void \*
 
-    :param const unsigned char \*data:
+    :param data:
         *undescribed*
+    :type data: const unsigned char \*
 
-    :param long count:
+    :param count:
         *undescribed*
+    :type count: long
 
 .. _`st_int_dequeue`:
 
@@ -58,8 +65,9 @@ st_int_dequeue
 
     internal de-Q function. If the previous data set was not written completely, return that skb which has the pending data. In normal cases, return top of txq.
 
-    :param struct st_data_s \*st_gdata:
+    :param st_gdata:
         *undescribed*
+    :type st_gdata: struct st_data_s \*
 
 .. _`st_int_enqueue`:
 
@@ -70,11 +78,13 @@ st_int_enqueue
 
     internal Q-ing function. Will either Q the skb to txq or the tx_waitq depending on the ST LL state. If the chip is asleep, then Q it onto waitq and wakeup the chip. txq and waitq needs protection since the other contexts may be sending data, waking up chip.
 
-    :param struct st_data_s \*st_gdata:
+    :param st_gdata:
         *undescribed*
+    :type st_gdata: struct st_data_s \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. This file was automatic generated / don't edit.
 

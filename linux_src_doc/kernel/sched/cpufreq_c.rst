@@ -10,11 +10,13 @@ cpufreq_add_update_util_hook
 
     Populate the CPU's update_util_data pointer.
 
-    :param int cpu:
+    :param cpu:
         The CPU to set the pointer for.
+    :type cpu: int
 
-    :param struct update_util_data \*data:
+    :param data:
         New pointer value.
+    :type data: struct update_util_data \*
 
     :param void (\*func)(struct update_util_data \*data, u64 time, unsigned int flags):
         Callback function to set for the CPU.
@@ -45,8 +47,9 @@ cpufreq_remove_update_util_hook
 
     Clear the CPU's update_util_data pointer.
 
-    :param int cpu:
+    :param cpu:
         The CPU to clear the pointer for.
+    :type cpu: int
 
 .. _`cpufreq_remove_update_util_hook.description`:
 

@@ -10,23 +10,29 @@ calculate_fb_and_fractional_fb_divider
 
     calculate_fb_and_fractional_fb_divider
 
-    :param struct calc_pll_clock_source \*calc_pll_cs:
+    :param calc_pll_cs:
         *undescribed*
+    :type calc_pll_cs: struct calc_pll_clock_source \*
 
-    :param uint32_t target_pix_clk_khz:
+    :param target_pix_clk_khz:
         *undescribed*
+    :type target_pix_clk_khz: uint32_t
 
-    :param uint32_t ref_divider:
+    :param ref_divider:
         *undescribed*
+    :type ref_divider: uint32_t
 
-    :param uint32_t post_divider:
+    :param post_divider:
         *undescribed*
+    :type post_divider: uint32_t
 
-    :param uint32_t \*feedback_divider_param:
+    :param feedback_divider_param:
         *undescribed*
+    :type feedback_divider_param: uint32_t \*
 
-    :param uint32_t \*fract_feedback_divider_param:
+    :param fract_feedback_divider_param:
         *undescribed*
+    :type fract_feedback_divider_param: uint32_t \*
 
 .. _`calculate_fb_and_fractional_fb_divider.description`:
 
@@ -57,20 +63,25 @@ calc_fb_divider_checking_tolerance
 
 .. c:function:: bool calc_fb_divider_checking_tolerance(struct calc_pll_clock_source *calc_pll_cs, struct pll_settings *pll_settings, uint32_t ref_divider, uint32_t post_divider, uint32_t tolerance)
 
-    :param struct calc_pll_clock_source \*calc_pll_cs:
+    :param calc_pll_cs:
         *undescribed*
+    :type calc_pll_cs: struct calc_pll_clock_source \*
 
-    :param struct pll_settings \*pll_settings:
+    :param pll_settings:
         *undescribed*
+    :type pll_settings: struct pll_settings \*
 
-    :param uint32_t ref_divider:
+    :param ref_divider:
         *undescribed*
+    :type ref_divider: uint32_t
 
-    :param uint32_t post_divider:
+    :param post_divider:
         *undescribed*
+    :type post_divider: uint32_t
 
-    :param uint32_t tolerance:
+    :param tolerance:
         *undescribed*
+    :type tolerance: uint32_t
 
 .. _`calc_fb_divider_checking_tolerance.description`:
 
@@ -100,14 +111,17 @@ dce110_get_pix_clk_dividers_helper
 
     First will call VBIOS Adjust Exec table to check if requested Pixel clock will be Adjusted based on usage. Then it will calculate PLL Dividers for this Adjusted clock using preferred method (Maximum VCO frequency).
 
-    :param struct dce110_clk_src \*clk_src:
+    :param clk_src:
         *undescribed*
+    :type clk_src: struct dce110_clk_src \*
 
-    :param struct pll_settings \*pll_settings:
+    :param pll_settings:
         *undescribed*
+    :type pll_settings: struct pll_settings \*
 
-    :param struct pixel_clk_params \*pix_clk_params:
+    :param pix_clk_params:
         *undescribed*
+    :type pix_clk_params: struct pixel_clk_params \*
 
 .. _`dce110_get_pix_clk_dividers_helper.description`:
 

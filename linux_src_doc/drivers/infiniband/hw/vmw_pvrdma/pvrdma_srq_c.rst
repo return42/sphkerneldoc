@@ -10,11 +10,13 @@ pvrdma_query_srq
 
     query shared receive queue
 
-    :param struct ib_srq \*ibsrq:
+    :param ibsrq:
         the shared receive queue to query
+    :type ibsrq: struct ib_srq \*
 
-    :param struct ib_srq_attr \*srq_attr:
+    :param srq_attr:
         attributes to query and return to client
+    :type srq_attr: struct ib_srq_attr \*
 
 .. _`pvrdma_create_srq`:
 
@@ -25,14 +27,17 @@ pvrdma_create_srq
 
     create shared receive queue
 
-    :param struct ib_pd \*pd:
+    :param pd:
         protection domain
+    :type pd: struct ib_pd \*
 
-    :param struct ib_srq_init_attr \*init_attr:
+    :param init_attr:
         shared receive queue attributes
+    :type init_attr: struct ib_srq_init_attr \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`pvrdma_destroy_srq`:
 
@@ -43,8 +48,9 @@ pvrdma_destroy_srq
 
     destroy shared receive queue
 
-    :param struct ib_srq \*srq:
+    :param srq:
         the shared receive queue to destroy
+    :type srq: struct ib_srq \*
 
 .. _`pvrdma_modify_srq`:
 
@@ -55,17 +61,21 @@ pvrdma_modify_srq
 
     modify shared receive queue attributes
 
-    :param struct ib_srq \*ibsrq:
+    :param ibsrq:
         the shared receive queue to modify
+    :type ibsrq: struct ib_srq \*
 
-    :param struct ib_srq_attr \*attr:
+    :param attr:
         the shared receive queue's new attributes
+    :type attr: struct ib_srq_attr \*
 
-    :param enum ib_srq_attr_mask attr_mask:
+    :param attr_mask:
         attributes mask
+    :type attr_mask: enum ib_srq_attr_mask
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`pvrdma_modify_srq.description`:
 

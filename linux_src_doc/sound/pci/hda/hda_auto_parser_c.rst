@@ -10,8 +10,9 @@ snd_hda_get_input_pin_attr
 
     Get the input pin attribute from pin config
 
-    :param unsigned int def_conf:
+    :param def_conf:
         pin configuration value
+    :type def_conf: unsigned int
 
 .. _`snd_hda_get_input_pin_attr.description`:
 
@@ -30,17 +31,21 @@ hda_get_input_pin_label
 
     Give a label for the given input pin
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct auto_pin_cfg_item \*item:
+    :param item:
         ping config item to refer
+    :type item: const struct auto_pin_cfg_item \*
 
-    :param hda_nid_t pin:
+    :param pin:
         the pin NID
+    :type pin: hda_nid_t
 
-    :param bool check_location:
+    :param check_location:
         flag to add the jack location prefix
+    :type check_location: bool
 
 .. _`hda_get_input_pin_label.description`:
 
@@ -60,14 +65,17 @@ hda_get_autocfg_input_label
 
     Get a label for the given input
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct auto_pin_cfg \*cfg:
+    :param cfg:
         the parsed pin configuration
+    :type cfg: const struct auto_pin_cfg \*
 
-    :param int input:
+    :param input:
         the input index number
+    :type input: int
 
 .. _`hda_get_autocfg_input_label.description`:
 
@@ -88,23 +96,29 @@ snd_hda_get_pin_label
 
     Get a label for the given I/O pin
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         pin NID
+    :type nid: hda_nid_t
 
-    :param const struct auto_pin_cfg \*cfg:
+    :param cfg:
         the parsed pin configuration
+    :type cfg: const struct auto_pin_cfg \*
 
-    :param char \*label:
+    :param label:
         the string buffer to store
+    :type label: char \*
 
-    :param int maxlen:
+    :param maxlen:
         the max length of string buffer (including termination)
+    :type maxlen: int
 
-    :param int \*indexp:
+    :param indexp:
         the pointer to return the index number (for multiple ctls)
+    :type indexp: int \*
 
 .. _`snd_hda_get_pin_label.description`:
 
@@ -130,11 +144,13 @@ snd_hda_add_verbs
 
     Add verbs to the init list
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct hda_verb \*list:
+    :param list:
         zero-terminated verb list to add
+    :type list: const struct hda_verb \*
 
 .. _`snd_hda_add_verbs.description`:
 
@@ -153,8 +169,9 @@ snd_hda_apply_verbs
 
     Execute the init verb lists
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_apply_pincfgs`:
 
@@ -165,11 +182,13 @@ snd_hda_apply_pincfgs
 
     Set each pin config in the given list
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct hda_pintbl \*cfg:
+    :param cfg:
         NULL-terminated pin config table
+    :type cfg: const struct hda_pintbl \*
 
 .. _`snd_hda_apply_fixup`:
 
@@ -180,11 +199,13 @@ snd_hda_apply_fixup
 
     Apply the fixup chain with the given action
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param int action:
+    :param action:
         fixup action (HDA_FIXUP_ACT_XXX)
+    :type action: int
 
 .. _`snd_hda_pick_pin_fixup`:
 
@@ -195,14 +216,17 @@ snd_hda_pick_pin_fixup
 
     Pick up a fixup matching with the pin quirk list
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct snd_hda_pin_quirk \*pin_quirk:
+    :param pin_quirk:
         zero-terminated pin quirk list
+    :type pin_quirk: const struct snd_hda_pin_quirk \*
 
-    :param const struct hda_fixup \*fixlist:
+    :param fixlist:
         the fixup list
+    :type fixlist: const struct hda_fixup \*
 
 .. _`snd_hda_pick_fixup`:
 
@@ -213,17 +237,21 @@ snd_hda_pick_fixup
 
     Pick up a fixup matching with PCI/codec SSID or model string
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct hda_model_fixup \*models:
+    :param models:
         NULL-terminated model string list
+    :type models: const struct hda_model_fixup \*
 
-    :param const struct snd_pci_quirk \*quirk:
+    :param quirk:
         zero-terminated PCI/codec SSID quirk list
+    :type quirk: const struct snd_pci_quirk \*
 
-    :param const struct hda_fixup \*fixlist:
+    :param fixlist:
         the fixup list
+    :type fixlist: const struct hda_fixup \*
 
 .. _`snd_hda_pick_fixup.description`:
 

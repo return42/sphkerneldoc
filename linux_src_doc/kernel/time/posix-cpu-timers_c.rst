@@ -10,8 +10,9 @@ task_cputime_zero
 
     Check a task_cputime struct for all zero fields.
 
-    :param const struct task_cputime \*cputime:
+    :param cputime:
         The struct to compare.
+    :type cputime: const struct task_cputime \*
 
 .. _`task_cputime_zero.description`:
 
@@ -30,11 +31,13 @@ task_cputime_expired
 
     Compare two task_cputime entities.
 
-    :param const struct task_cputime \*sample:
+    :param sample:
         The task_cputime structure to be checked for expiration.
+    :type sample: const struct task_cputime \*
 
-    :param const struct task_cputime \*expires:
+    :param expires:
         Expiration times, against which \ ``sample``\  will be checked.
+    :type expires: const struct task_cputime \*
 
 .. _`task_cputime_expired.description`:
 
@@ -54,8 +57,9 @@ fastpath_timer_check
 
     POSIX CPU timers fast path.
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         The task (thread) being checked.
+    :type tsk: struct task_struct \*
 
 .. _`fastpath_timer_check.description`:
 

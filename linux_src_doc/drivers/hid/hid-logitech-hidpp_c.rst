@@ -10,14 +10,17 @@ hidpp_send_message_sync
 
     in case of a failure. - If ' something else' is positive, that means that an error has been raised by the protocol itself. - If ' something else' is negative, that means that we had a classic error (-ENOMEM, -EPIPE, etc...)
 
-    :param struct hidpp_device \*hidpp:
+    :param hidpp:
         *undescribed*
+    :type hidpp: struct hidpp_device \*
 
-    :param struct hidpp_report \*message:
+    :param message:
         *undescribed*
+    :type message: struct hidpp_report \*
 
-    :param struct hidpp_report \*response:
+    :param response:
         *undescribed*
+    :type response: struct hidpp_report \*
 
 .. _`hidpp_prefix_name`:
 
@@ -26,11 +29,13 @@ hidpp_prefix_name
 
 .. c:function:: void hidpp_prefix_name(char **name, int name_length)
 
-    :param char \*\*name:
+    :param name:
         *undescribed*
+    :type name: char \*\*
 
-    :param int name_length:
+    :param name_length:
         *undescribed*
+    :type name_length: int
 
 .. _`hidpp_touchpad_fw_items_set`:
 
@@ -41,14 +46,17 @@ hidpp_touchpad_fw_items_set
 
     >state field. items is then filled with the current state.
 
-    :param struct hidpp_device \*hidpp:
+    :param hidpp:
         *undescribed*
+    :type hidpp: struct hidpp_device \*
 
-    :param u8 feature_index:
+    :param feature_index:
         *undescribed*
+    :type feature_index: u8
 
-    :param struct hidpp_touchpad_fw_items \*items:
+    :param items:
         *undescribed*
+    :type items: struct hidpp_touchpad_fw_items \*
 
 .. This file was automatic generated / don't edit.
 

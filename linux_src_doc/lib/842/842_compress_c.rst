@@ -8,20 +8,25 @@ sw842_compress
 
 .. c:function:: int sw842_compress(const u8 *in, unsigned int ilen, u8 *out, unsigned int *olen, void *wmem)
 
-    :param const u8 \*in:
+    :param in:
         *undescribed*
+    :type in: const u8 \*
 
-    :param unsigned int ilen:
+    :param ilen:
         *undescribed*
+    :type ilen: unsigned int
 
-    :param u8 \*out:
+    :param out:
         *undescribed*
+    :type out: u8 \*
 
-    :param unsigned int \*olen:
+    :param olen:
         *undescribed*
+    :type olen: unsigned int \*
 
-    :param void \*wmem:
+    :param wmem:
         *undescribed*
+    :type wmem: void \*
 
 .. _`sw842_compress.description`:
 

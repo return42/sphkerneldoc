@@ -10,11 +10,13 @@ gfxhub_v1_0_set_fault_enable_default
 
     update GART/VM fault handling
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param bool value:
+    :param value:
         true redirects VM faults to the default page
+    :type value: bool
 
 .. This file was automatic generated / don't edit.
 

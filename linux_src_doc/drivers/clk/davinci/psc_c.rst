@@ -66,8 +66,9 @@ best_dev_name
 
     get the "best" device name.
 
-    :param struct device \*dev:
+    :param dev:
         the device
+    :type dev: struct device \*
 
 .. _`best_dev_name.description`:
 
@@ -88,26 +89,33 @@ davinci_lpsc_clk_register
 
     register LPSC clock
 
-    :param struct device \*dev:
+    :param dev:
         the clocks's device or NULL
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         name of clock's parent
+    :type parent_name: const char \*
 
-    :param struct regmap \*regmap:
+    :param regmap:
         PSC MMIO region
+    :type regmap: struct regmap \*
 
-    :param u32 md:
+    :param md:
         local PSC number
+    :type md: u32
 
-    :param u32 pd:
+    :param pd:
         power domain
+    :type pd: u32
 
-    :param u32 flags:
+    :param flags:
         LPSC\_\* flags
+    :type flags: u32
 
 .. This file was automatic generated / don't edit.
 

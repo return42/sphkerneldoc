@@ -10,22 +10,27 @@ add_to_list
 
     add a new resource tracker to the list
 
-    :param struct list_head \*head:
+    :param head:
         Head of the list
+    :type head: struct list_head \*
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device corresponding to which the resource
         belongs
+    :type dev: struct pci_dev \*
 
-    :param struct resource \*res:
+    :param res:
         The resource to be tracked
+    :type res: struct resource \*
 
-    :param resource_size_t add_size:
+    :param add_size:
         additional size to be optionally added
         to the resource
+    :type add_size: resource_size_t
 
-    :param resource_size_t min_align:
+    :param min_align:
         *undescribed*
+    :type min_align: resource_size_t
 
 .. _`reassign_resources_sorted`:
 
@@ -36,13 +41,15 @@ reassign_resources_sorted
 
     satisfy any additional resource requests
 
-    :param struct list_head \*realloc_head:
+    :param realloc_head:
         head of the list tracking requests requiring additional
         resources
+    :type realloc_head: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         head of the list tracking requests with allocated
         resources
+    :type head: struct list_head \*
 
 .. _`reassign_resources_sorted.description`:
 
@@ -62,12 +69,14 @@ assign_requested_resources_sorted
 
     satisfy resource requests
 
-    :param struct list_head \*head:
+    :param head:
         head of the list tracking requests for resources
+    :type head: struct list_head \*
 
-    :param struct list_head \*fail_head:
+    :param fail_head:
         head of the list tracking requests that could
         not be allocated
+    :type fail_head: struct list_head \*
 
 .. _`assign_requested_resources_sorted.description`:
 
@@ -86,17 +95,21 @@ pbus_size_io
 
     size the io window of a given bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         the bus
+    :type bus: struct pci_bus \*
 
-    :param resource_size_t min_size:
+    :param min_size:
         the minimum io window that must to be allocated
+    :type min_size: resource_size_t
 
-    :param resource_size_t add_size:
+    :param add_size:
         additional optional io window
+    :type add_size: resource_size_t
 
-    :param struct list_head \*realloc_head:
+    :param realloc_head:
         track the additional io window on this list
+    :type realloc_head: struct list_head \*
 
 .. _`pbus_size_io.description`:
 
@@ -117,29 +130,37 @@ pbus_size_mem
 
     size the memory window of a given bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         the bus
+    :type bus: struct pci_bus \*
 
-    :param unsigned long mask:
+    :param mask:
         mask the resource flag, then compare it with type
+    :type mask: unsigned long
 
-    :param unsigned long type:
+    :param type:
         the type of free resource from bridge
+    :type type: unsigned long
 
-    :param unsigned long type2:
+    :param type2:
         second match type
+    :type type2: unsigned long
 
-    :param unsigned long type3:
+    :param type3:
         third match type
+    :type type3: unsigned long
 
-    :param resource_size_t min_size:
+    :param min_size:
         the minimum memory window that must to be allocated
+    :type min_size: resource_size_t
 
-    :param resource_size_t add_size:
+    :param add_size:
         additional optional memory window
+    :type add_size: resource_size_t
 
-    :param struct list_head \*realloc_head:
+    :param realloc_head:
         track the additional memory window on this list
+    :type realloc_head: struct list_head \*
 
 .. _`pbus_size_mem.description`:
 

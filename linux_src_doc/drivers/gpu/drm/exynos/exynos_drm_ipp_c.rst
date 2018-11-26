@@ -10,26 +10,33 @@ exynos_drm_ipp_register
 
     Register a new picture processor hardware module
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct exynos_drm_ipp \*ipp:
+    :param ipp:
         ipp module to init
+    :type ipp: struct exynos_drm_ipp \*
 
-    :param const struct exynos_drm_ipp_funcs \*funcs:
+    :param funcs:
         callbacks for the new ipp object
+    :type funcs: const struct exynos_drm_ipp_funcs \*
 
-    :param unsigned int caps:
+    :param caps:
         bitmask of ipp capabilities (%DRM_EXYNOS_IPP_CAP\_\*)
+    :type caps: unsigned int
 
-    :param const struct exynos_drm_ipp_formats \*formats:
+    :param formats:
         array of supported formats
+    :type formats: const struct exynos_drm_ipp_formats \*
 
-    :param unsigned int num_formats:
+    :param num_formats:
         size of the supported formats array
+    :type num_formats: unsigned int
 
-    :param const char \*name:
+    :param name:
         name (for debugging purposes)
+    :type name: const char \*
 
 .. _`exynos_drm_ipp_register.description`:
 
@@ -54,11 +61,13 @@ exynos_drm_ipp_unregister
 
     Unregister the picture processor module
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct exynos_drm_ipp \*ipp:
+    :param ipp:
         ipp module
+    :type ipp: struct exynos_drm_ipp \*
 
 .. _`exynos_drm_ipp_get_res_ioctl`:
 
@@ -69,14 +78,17 @@ exynos_drm_ipp_get_res_ioctl
 
     enumerate all ipp modules
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file info
+    :type file_priv: struct drm_file \*
 
 .. _`exynos_drm_ipp_get_res_ioctl.description`:
 
@@ -103,14 +115,17 @@ exynos_drm_ipp_get_caps_ioctl
 
     get ipp module capabilities and formats
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file info
+    :type file_priv: struct drm_file \*
 
 .. _`exynos_drm_ipp_get_caps_ioctl.description`:
 
@@ -137,14 +152,17 @@ exynos_drm_ipp_get_limits_ioctl
 
     get ipp module limits
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file info
+    :type file_priv: struct drm_file \*
 
 .. _`exynos_drm_ipp_get_limits_ioctl.description`:
 
@@ -172,11 +190,13 @@ exynos_drm_ipp_task_done
 
     finish given task and set return code
 
-    :param struct exynos_drm_ipp_task \*task:
+    :param task:
         ipp task to finish
+    :type task: struct exynos_drm_ipp_task \*
 
-    :param int ret:
+    :param ret:
         error code or 0 if operation has been performed successfully
+    :type ret: int
 
 .. _`exynos_drm_ipp_commit_ioctl`:
 
@@ -187,14 +207,17 @@ exynos_drm_ipp_commit_ioctl
 
     perform image processing operation
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file info
+    :type file_priv: struct drm_file \*
 
 .. _`exynos_drm_ipp_commit_ioctl.description`:
 

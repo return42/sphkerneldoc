@@ -10,8 +10,9 @@ asd_ascb_free
 
     - free a single aSCB after is has completed
 
-    :param struct asd_ascb \*ascb:
+    :param ascb:
         pointer to the aSCB of interest
+    :type ascb: struct asd_ascb \*
 
 .. _`asd_ascb_free.description`:
 
@@ -30,8 +31,9 @@ asd_ascb_free_list
 
     - free a list of ascbs
 
-    :param struct asd_ascb \*ascb_list:
+    :param ascb_list:
         a list of ascbs
+    :type ascb_list: struct asd_ascb \*
 
 .. _`asd_ascb_free_list.description`:
 

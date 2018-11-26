@@ -10,8 +10,9 @@ hvc_set_winsz
 
     Resize the hvc tty terminal window.
 
-    :param struct work_struct \*work:
+    :param work:
         work structure.
+    :type work: struct work_struct \*
 
 .. _`hvc_set_winsz.description`:
 
@@ -37,11 +38,13 @@ hp->lock
 
     Update terminal window size information.
 
-    :param struct hvc_struct \*hp:
+    :param hp:
         HVC console pointer
+    :type hp: struct hvc_struct \*
 
-    :param struct winsize ws:
+    :param ws:
         Terminal window size structure
+    :type ws: struct winsize
 
 .. _`__hvc_resize.description`:
 

@@ -10,11 +10,13 @@ trace_ipi_raise
 
     called when a smp cross call is made
 
-    :param const struct cpumask \*mask:
+    :param mask:
         mask of recipient CPUs for the IPI
+    :type mask: const struct cpumask \*
 
-    :param const char \*reason:
+    :param reason:
         string identifying the IPI purpose
+    :type reason: const char \*
 
 .. _`trace_ipi_raise.description`:
 
@@ -33,8 +35,9 @@ trace_ipi_entry
 
     called immediately before the IPI handler
 
-    :param const char \*reason:
+    :param reason:
         string identifying the IPI purpose
+    :type reason: const char \*
 
 .. _`trace_ipi_entry.description`:
 
@@ -54,8 +57,9 @@ trace_ipi_exit
 
     called immediately after the IPI handler returns
 
-    :param const char \*reason:
+    :param reason:
         string identifying the IPI purpose
+    :type reason: const char \*
 
 .. _`trace_ipi_exit.description`:
 

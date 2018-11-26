@@ -10,20 +10,23 @@
 
     Initiates listening on the specified service ID for connection and service ID resolution requests.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier associated with the listen request.
+    :type cm_id: struct ib_cm_id \*
 
-    :param __be64 service_id:
+    :param service_id:
         Service identifier matched against incoming connection
         and service ID resolution requests.  The service ID should be specified
         network-byte order.  If set to IB_CM_ASSIGN_SERVICE_ID, the CM will
         assign a service ID to the caller.
+    :type service_id: __be64
 
-    :param __be64 service_mask:
+    :param service_mask:
         Mask applied to service ID used to listen across a
         range of service IDs.  If set to 0, the service ID is matched
         exactly.  This parameter is ignored if \ ``service_id``\  is set to
         IB_CM_ASSIGN_SERVICE_ID.
+    :type service_mask: __be64
 
 .. _`ib_cm_insert_listen`:
 
@@ -32,18 +35,21 @@ ib_cm_insert_listen
 
 .. c:function:: struct ib_cm_id *ib_cm_insert_listen(struct ib_device *device, ib_cm_handler cm_handler, __be64 service_id)
 
-    :param struct ib_device \*device:
+    :param device:
         Device associated with the cm_id.  All related communication will
         be associated with the specified device.
+    :type device: struct ib_device \*
 
-    :param ib_cm_handler cm_handler:
+    :param cm_handler:
         Callback invoked to notify the user of CM events.
+    :type cm_handler: ib_cm_handler
 
-    :param __be64 service_id:
+    :param service_id:
         Service identifier matched against incoming connection
         and service ID resolution requests.  The service ID should be specified
         network-byte order.  If set to IB_CM_ASSIGN_SERVICE_ID, the CM will
         assign a service ID to the caller.
+    :type service_id: __be64
 
 .. _`ib_cm_insert_listen.description`:
 
@@ -64,11 +70,13 @@ cm_opa_to_ib_sgid
 
     ULPs (such as IPoIB) do not understand OPA GIDs and will reject them as the local_gid will not match the sgid. Therefore, change the pathrec's SGID to an IB SGID.
 
-    :param struct cm_work \*work:
+    :param work:
         Work completion
+    :type work: struct cm_work \*
 
-    :param struct sa_path_rec \*path:
+    :param path:
         Path record
+    :type path: struct sa_path_rec \*
 
 .. This file was automatic generated / don't edit.
 

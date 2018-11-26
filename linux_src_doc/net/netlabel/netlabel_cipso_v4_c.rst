@@ -10,11 +10,13 @@ netlbl_cipsov4_add_common
 
     Parse the common sections of a ADD message
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
-    :param struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the CIPSO V4 DOI definition
+    :type doi_def: struct cipso_v4_doi \*
 
 .. _`netlbl_cipsov4_add_common.description`:
 
@@ -33,11 +35,13 @@ netlbl_cipsov4_add_std
 
     Adds a CIPSO V4 DOI definition
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cipsov4_add_std.description`:
 
@@ -57,11 +61,13 @@ netlbl_cipsov4_add_pass
 
     Adds a CIPSO V4 DOI definition
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cipsov4_add_pass.description`:
 
@@ -81,11 +87,13 @@ netlbl_cipsov4_add_local
 
     Adds a CIPSO V4 DOI definition
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cipsov4_add_local.description`:
 
@@ -105,11 +113,13 @@ netlbl_cipsov4_add
 
     Handle an ADD message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_cipsov4_add.description`:
 
@@ -128,11 +138,13 @@ netlbl_cipsov4_list
 
     Handle a LIST message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_cipsov4_list.description`:
 
@@ -158,11 +170,13 @@ netlbl_cipsov4_listall_cb
 
     \ :c:func:`cipso_v4_doi_walk`\  callback for LISTALL
 
-    :param struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the CIPSOv4 DOI definition
+    :type doi_def: struct cipso_v4_doi \*
 
-    :param void \*arg:
+    :param arg:
         the netlbl_cipsov4_doiwalk_arg structure
+    :type arg: void \*
 
 .. _`netlbl_cipsov4_listall_cb.description`:
 
@@ -183,11 +197,13 @@ netlbl_cipsov4_listall
 
     Handle a LISTALL message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         the NETLINK callback
+    :type cb: struct netlink_callback \*
 
 .. _`netlbl_cipsov4_listall.description`:
 
@@ -206,11 +222,13 @@ netlbl_cipsov4_remove_cb
 
     \ :c:func:`netlbl_cipsov4_remove`\  callback for REMOVE
 
-    :param struct netlbl_dom_map \*entry:
+    :param entry:
         LSM domain mapping entry
+    :type entry: struct netlbl_dom_map \*
 
-    :param void \*arg:
+    :param arg:
         the netlbl_domhsh_walk_arg structure
+    :type arg: void \*
 
 .. _`netlbl_cipsov4_remove_cb.description`:
 
@@ -231,11 +249,13 @@ netlbl_cipsov4_remove
 
     Handle a REMOVE message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_cipsov4_remove.description`:
 
@@ -254,8 +274,9 @@ netlbl_cipsov4_genl_init
 
     Register the CIPSOv4 NetLabel component
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`netlbl_cipsov4_genl_init.description`:
 

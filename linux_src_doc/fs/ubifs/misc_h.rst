@@ -10,8 +10,9 @@ ubifs_zn_dirty
 
     check if znode is dirty.
 
-    :param const struct ubifs_znode \*znode:
+    :param znode:
         znode to check
+    :type znode: const struct ubifs_znode \*
 
 .. _`ubifs_zn_dirty.description`:
 
@@ -29,8 +30,9 @@ ubifs_zn_obsolete
 
     check if znode is obsolete.
 
-    :param const struct ubifs_znode \*znode:
+    :param znode:
         znode to check
+    :type znode: const struct ubifs_znode \*
 
 .. _`ubifs_zn_obsolete.description`:
 
@@ -48,8 +50,9 @@ ubifs_zn_cow
 
     check if znode has to be copied on write.
 
-    :param const struct ubifs_znode \*znode:
+    :param znode:
         znode to check
+    :type znode: const struct ubifs_znode \*
 
 .. _`ubifs_zn_cow.description`:
 
@@ -68,8 +71,9 @@ ubifs_wake_up_bgt
 
     wake up background thread.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_tnc_find_child`:
 
@@ -80,11 +84,13 @@ ubifs_tnc_find_child
 
     find next child in znode.
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to search at
+    :type znode: struct ubifs_znode \*
 
-    :param int start:
+    :param start:
         the zbranch index to start at
+    :type start: int
 
 .. _`ubifs_tnc_find_child.description`:
 
@@ -103,20 +109,26 @@ ubifs_inode
 
     get UBIFS inode information by VFS 'struct inode' object.
 
-    :param const struct inode \*inode:
+    :param inode:
         the VFS 'struct inode' pointer
+    :type inode: const struct inode \*
 
 .. _`ubifs_compr_present`:
 
 ubifs_compr_present
 ===================
 
-.. c:function:: int ubifs_compr_present(int compr_type)
+.. c:function:: int ubifs_compr_present(struct ubifs_info *c, int compr_type)
 
     check if compressor was compiled in.
 
-    :param int compr_type:
+    :param c:
+        the UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param compr_type:
         compressor type to check
+    :type compr_type: int
 
 .. _`ubifs_compr_present.description`:
 
@@ -131,12 +143,17 @@ This function returns \ ``1``\  of compressor of type \ ``compr_type``\  is pres
 ubifs_compr_name
 ================
 
-.. c:function:: const char *ubifs_compr_name(int compr_type)
+.. c:function:: const char *ubifs_compr_name(struct ubifs_info *c, int compr_type)
 
     get compressor name string by its type.
 
-    :param int compr_type:
+    :param c:
+        the UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param compr_type:
         compressor type
+    :type compr_type: int
 
 .. _`ubifs_compr_name.description`:
 
@@ -154,8 +171,9 @@ ubifs_wbuf_sync
 
     synchronize write-buffer.
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         write-buffer to synchronize
+    :type wbuf: struct ubifs_wbuf \*
 
 .. _`ubifs_wbuf_sync.description`:
 
@@ -174,11 +192,13 @@ ubifs_encode_dev
 
     encode device node IDs.
 
-    :param union ubifs_dev_desc \*dev:
+    :param dev:
         UBIFS device node information
+    :type dev: union ubifs_dev_desc \*
 
-    :param dev_t rdev:
+    :param rdev:
         device IDs to encode
+    :type rdev: dev_t
 
 .. _`ubifs_encode_dev.description`:
 
@@ -198,14 +218,17 @@ ubifs_add_dirt
 
     add dirty space to LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB to add dirty space for
+    :type lnum: int
 
-    :param int dirty:
+    :param dirty:
         dirty space to add
+    :type dirty: int
 
 .. _`ubifs_add_dirt.description`:
 
@@ -224,11 +247,13 @@ ubifs_return_leb
 
     return LEB to lprops.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB to return
+    :type lnum: int
 
 .. _`ubifs_return_leb.description`:
 
@@ -248,11 +273,13 @@ ubifs_idx_node_sz
 
     return index node size.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param int child_cnt:
+    :param child_cnt:
         number of children of this index node
+    :type child_cnt: int
 
 .. _`ubifs_idx_branch`:
 
@@ -263,14 +290,17 @@ ubifs_idx_branch
 
     return pointer to an index branch.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const struct ubifs_idx_node \*idx:
+    :param idx:
         index node
+    :type idx: const struct ubifs_idx_node \*
 
-    :param int bnum:
+    :param bnum:
         branch number
+    :type bnum: int
 
 .. _`ubifs_idx_key`:
 
@@ -281,11 +311,13 @@ ubifs_idx_key
 
     return pointer to an index key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const struct ubifs_idx_node \*idx:
+    :param idx:
         index node
+    :type idx: const struct ubifs_idx_node \*
 
 .. _`ubifs_tnc_lookup`:
 
@@ -296,14 +328,17 @@ ubifs_tnc_lookup
 
     look up a file-system node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         node key to lookup
+    :type key: const union ubifs_key \*
 
-    :param void \*node:
+    :param node:
         the node is returned here
+    :type node: void \*
 
 .. _`ubifs_tnc_lookup.description`:
 
@@ -324,8 +359,9 @@ ubifs_get_lprops
 
     get reference to LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_get_lprops.description`:
 
@@ -344,8 +380,9 @@ ubifs_release_lprops
 
     release lprops lock.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_release_lprops.description`:
 
@@ -364,11 +401,13 @@ ubifs_next_log_lnum
 
     switch to the next log LEB.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         current log LEB
+    :type lnum: int
 
 .. _`ubifs_next_log_lnum.description`:
 

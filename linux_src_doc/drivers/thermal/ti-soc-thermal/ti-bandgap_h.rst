@@ -69,11 +69,8 @@ Definition
         u32 bgap_mask_ctrl;
         u32 mask_hot_mask;
         u32 mask_cold_mask;
-        u32 mask_sidlemode_mask;
         u32 mask_counter_delay_mask;
         u32 mask_freeze_mask;
-        u32 mask_clear_mask;
-        u32 mask_clear_accum_mask;
         u32 bgap_mode_ctrl;
         u32 mode_ctrl_mask;
         u32 bgap_counter;
@@ -82,21 +79,13 @@ Definition
         u32 threshold_thot_mask;
         u32 threshold_tcold_mask;
         u32 tshut_threshold;
-        u32 tshut_efuse_mask;
-        u32 tshut_efuse_shift;
         u32 tshut_hot_mask;
         u32 tshut_cold_mask;
         u32 bgap_status;
-        u32 status_clean_stop_mask;
-        u32 status_bgap_alert_mask;
         u32 status_hot_mask;
         u32 status_cold_mask;
-        u32 bgap_cumul_dtemp;
-        u32 ctrl_dtemp_0;
         u32 ctrl_dtemp_1;
         u32 ctrl_dtemp_2;
-        u32 ctrl_dtemp_3;
-        u32 ctrl_dtemp_4;
         u32 bgap_efuse;
     }
 
@@ -129,20 +118,11 @@ mask_hot_mask
 mask_cold_mask
     mask to bandgap_mask_ctrl.mask_cold
 
-mask_sidlemode_mask
-    mask to bandgap_mask_ctrl.mask_sidlemode
-
 mask_counter_delay_mask
     mask to bandgap_mask_ctrl.mask_counter_delay
 
 mask_freeze_mask
     mask to bandgap_mask_ctrl.mask_free
-
-mask_clear_mask
-    mask to bandgap_mask_ctrl.mask_clear
-
-mask_clear_accum_mask
-    mask to bandgap_mask_ctrl.mask_clear_accum
 
 bgap_mode_ctrl
     BANDGAP_MODE_CTRL register offset
@@ -168,12 +148,6 @@ threshold_tcold_mask
 tshut_threshold
     TSHUT_THRESHOLD register offset (TSHUT thresholds)
 
-tshut_efuse_mask
-    mask to tshut_threshold.tshut_efuse
-
-tshut_efuse_shift
-    shift to tshut_threshold.tshut_efuse
-
 tshut_hot_mask
     mask to tshut_threhold.thot
 
@@ -183,35 +157,17 @@ tshut_cold_mask
 bgap_status
     BANDGAP_STATUS register offset
 
-status_clean_stop_mask
-    mask to bandgap_status.clean_stop
-
-status_bgap_alert_mask
-    mask to bandgap_status.bandgap_alert
-
 status_hot_mask
     mask to bandgap_status.hot
 
 status_cold_mask
     mask to bandgap_status.cold
 
-bgap_cumul_dtemp
-    BANDGAP_CUMUL_DTEMP register offset
-
-ctrl_dtemp_0
-    CTRL_DTEMP0 register offset
-
 ctrl_dtemp_1
     CTRL_DTEMP1 register offset
 
 ctrl_dtemp_2
     CTRL_DTEMP2 register offset
-
-ctrl_dtemp_3
-    CTRL_DTEMP3 register offset
-
-ctrl_dtemp_4
-    CTRL_DTEMP4 register offset
 
 bgap_efuse
     BANDGAP_EFUSE register offset
@@ -252,11 +208,6 @@ Definition
         u32 t_cold;
         u32 min_freq;
         u32 max_freq;
-        int max_temp;
-        int min_temp;
-        int hyst_val;
-        u32 update_int1;
-        u32 update_int2;
     }
 
 .. _`temp_sensor_data.members`:
@@ -281,21 +232,6 @@ min_freq
 
 max_freq
     sensor maximum clock rate
-
-max_temp
-    sensor maximum temperature
-
-min_temp
-    sensor minimum temperature
-
-hyst_val
-    temperature hysteresis considered while converting ADC values
-
-update_int1
-    update interval
-
-update_int2
-    update interval
 
 .. _`temp_sensor_data.description`:
 
@@ -540,8 +476,6 @@ a history buffer of temperatures.
 
 TI_BANDGAP_FEATURE_ERRATA_814 - used to workaorund when the bandgap device
 has Errata 814
-TI_BANDGAP_FEATURE_ERRATA_813 - used to workaorund when the bandgap device
-has Errata 813
 TI_BANDGAP_FEATURE_UNRELIABLE - used when the sensor readings are too
 inaccurate.
 TI_BANDGAP_HAS(b, f) - macro to check if a bandgap device is capable of a

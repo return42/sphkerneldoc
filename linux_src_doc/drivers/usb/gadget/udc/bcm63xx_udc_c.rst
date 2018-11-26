@@ -378,11 +378,13 @@ bcm63xx_ep_dma_select
 
     Helper function to set up the init_sel signal.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param int idx:
+    :param idx:
         Desired init_sel value.
+    :type idx: int
 
 .. _`bcm63xx_ep_dma_select.description`:
 
@@ -402,14 +404,17 @@ bcm63xx_set_stall
 
     Enable/disable stall on one endpoint.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param struct bcm63xx_ep \*bep:
+    :param bep:
         Endpoint on which to operate.
+    :type bep: struct bcm63xx_ep \*
 
-    :param bool is_stalled:
+    :param is_stalled:
         true to enable stall, false to disable.
+    :type is_stalled: bool
 
 .. _`bcm63xx_set_stall.description`:
 
@@ -428,8 +433,9 @@ bcm63xx_fifo_setup
 
     (Re)initialize FIFO boundaries and settings.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_fifo_setup.description`:
 
@@ -448,11 +454,13 @@ bcm63xx_fifo_reset_ep
 
     Flush a single endpoint's FIFO.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param int ep_num:
+    :param ep_num:
         Endpoint number.
+    :type ep_num: int
 
 .. _`bcm63xx_fifo_reset`:
 
@@ -463,8 +471,9 @@ bcm63xx_fifo_reset
 
     Flush all hardware FIFOs.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_ep_init`:
 
@@ -475,8 +484,9 @@ bcm63xx_ep_init
 
     Initial (one-time) endpoint initialization.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_ep_setup`:
 
@@ -487,8 +497,9 @@ bcm63xx_ep_setup
 
     Configure per-endpoint settings.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_ep_setup.description`:
 
@@ -506,14 +517,17 @@ iudma_write
 
     Queue a single IUDMA transaction.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param struct iudma_ch \*iudma:
+    :param iudma:
         IUDMA channel to use.
+    :type iudma: struct iudma_ch \*
 
-    :param struct bcm63xx_req \*breq:
+    :param breq:
         Request containing the transaction data.
+    :type breq: struct bcm63xx_req \*
 
 .. _`iudma_write.description`:
 
@@ -536,11 +550,13 @@ iudma_read
 
     Check for IUDMA buffer completion.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param struct iudma_ch \*iudma:
+    :param iudma:
         IUDMA channel to use.
+    :type iudma: struct iudma_ch \*
 
 .. _`iudma_read.description`:
 
@@ -560,11 +576,13 @@ iudma_reset_channel
 
     Stop DMA on a single channel.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param struct iudma_ch \*iudma:
+    :param iudma:
         IUDMA channel to reset.
+    :type iudma: struct iudma_ch \*
 
 .. _`iudma_init_channel`:
 
@@ -575,11 +593,13 @@ iudma_init_channel
 
     One-time IUDMA channel initialization.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param unsigned int ch_idx:
+    :param ch_idx:
         Channel to initialize.
+    :type ch_idx: unsigned int
 
 .. _`iudma_init`:
 
@@ -590,8 +610,9 @@ iudma_init
 
     One-time initialization of all IUDMA channels.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`iudma_init.description`:
 
@@ -609,8 +630,9 @@ iudma_uninit
 
     Uninitialize IUDMA channels.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`iudma_uninit.description`:
 
@@ -628,11 +650,13 @@ bcm63xx_set_ctrl_irqs
 
     Mask/unmask control path interrupts.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param bool enable_irqs:
+    :param enable_irqs:
         true to enable, false to disable.
+    :type enable_irqs: bool
 
 .. _`bcm63xx_select_phy_mode`:
 
@@ -643,11 +667,13 @@ bcm63xx_select_phy_mode
 
     Select between USB device and host mode.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param bool is_device:
+    :param is_device:
         true for device, false for host.
+    :type is_device: bool
 
 .. _`bcm63xx_select_phy_mode.description`:
 
@@ -669,11 +695,13 @@ bcm63xx_select_pullup
 
     Enable/disable the pullup on D+
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param bool is_on:
+    :param is_on:
         true to enable the pullup, false to disable.
+    :type is_on: bool
 
 .. _`bcm63xx_select_pullup.description`:
 
@@ -693,8 +721,9 @@ bcm63xx_uninit_udc_hw
 
     Shut down the hardware prior to driver removal.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_uninit_udc_hw.description`:
 
@@ -713,8 +742,9 @@ bcm63xx_init_udc_hw
 
     Initialize the controller hardware and data structures.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_ep_enable`:
 
@@ -725,11 +755,13 @@ bcm63xx_ep_enable
 
     Enable one endpoint.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         Endpoint to enable.
+    :type ep: struct usb_ep \*
 
-    :param const struct usb_endpoint_descriptor \*desc:
+    :param desc:
         Contains max packet, direction, etc.
+    :type desc: const struct usb_endpoint_descriptor \*
 
 .. _`bcm63xx_ep_enable.description`:
 
@@ -748,8 +780,9 @@ bcm63xx_ep_disable
 
     Disable one endpoint.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         Endpoint to disable.
+    :type ep: struct usb_ep \*
 
 .. _`bcm63xx_udc_alloc_request`:
 
@@ -760,11 +793,13 @@ bcm63xx_udc_alloc_request
 
     Allocate a new request.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         Endpoint associated with the request.
+    :type ep: struct usb_ep \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         Flags to pass to \ :c:func:`kzalloc`\ .
+    :type mem_flags: gfp_t
 
 .. _`bcm63xx_udc_free_request`:
 
@@ -775,11 +810,13 @@ bcm63xx_udc_free_request
 
     Free a request.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         Endpoint associated with the request.
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         Request to free.
+    :type req: struct usb_request \*
 
 .. _`bcm63xx_udc_queue`:
 
@@ -790,14 +827,17 @@ bcm63xx_udc_queue
 
     Queue up a new request.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         Endpoint associated with the request.
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         Request to add.
+    :type req: struct usb_request \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         Unused.
+    :type mem_flags: gfp_t
 
 .. _`bcm63xx_udc_queue.description`:
 
@@ -821,11 +861,13 @@ bcm63xx_udc_dequeue
 
     Remove a pending request from the queue.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         Endpoint associated with the request.
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         Request to remove.
+    :type req: struct usb_request \*
 
 .. _`bcm63xx_udc_dequeue.description`:
 
@@ -845,11 +887,13 @@ bcm63xx_udc_set_halt
 
     Enable/disable STALL flag in the hardware.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         Endpoint to halt.
+    :type ep: struct usb_ep \*
 
-    :param int value:
+    :param value:
         Zero to clear halt; nonzero to set halt.
+    :type value: int
 
 .. _`bcm63xx_udc_set_halt.description`:
 
@@ -867,8 +911,9 @@ bcm63xx_udc_set_wedge
 
     Stall the endpoint until the next reset.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         Endpoint to wedge.
+    :type ep: struct usb_ep \*
 
 .. _`bcm63xx_udc_set_wedge.description`:
 
@@ -886,11 +931,13 @@ bcm63xx_ep0_setup_callback
 
     Drop spinlock to invoke ->setup callback.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param struct usb_ctrlrequest \*ctrl:
+    :param ctrl:
         8-byte SETUP request.
+    :type ctrl: struct usb_ctrlrequest \*
 
 .. _`bcm63xx_ep0_spoof_set_cfg`:
 
@@ -901,8 +948,9 @@ bcm63xx_ep0_spoof_set_cfg
 
     Synthesize a SET_CONFIGURATION request.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_ep0_spoof_set_cfg.description`:
 
@@ -926,8 +974,9 @@ bcm63xx_ep0_spoof_set_iface
 
     Synthesize a SET_INTERFACE request.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_ep0_map_write`:
 
@@ -938,14 +987,17 @@ bcm63xx_ep0_map_write
 
     dma_map and iudma_write a single request.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param int ch_idx:
+    :param ch_idx:
         IUDMA channel number.
+    :type ch_idx: int
 
-    :param struct usb_request \*req:
+    :param req:
         USB gadget layer representation of the request.
+    :type req: struct usb_request \*
 
 .. _`bcm63xx_ep0_complete`:
 
@@ -956,14 +1008,17 @@ bcm63xx_ep0_complete
 
     Set completion status and "stage" the callback.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param struct usb_request \*req:
+    :param req:
         USB gadget layer representation of the request.
+    :type req: struct usb_request \*
 
-    :param int status:
+    :param status:
         Status to return to the gadget driver.
+    :type status: int
 
 .. _`bcm63xx_ep0_nuke_reply`:
 
@@ -974,11 +1029,13 @@ bcm63xx_ep0_nuke_reply
 
     Abort request from the gadget driver due to reset/shutdown.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param int is_tx:
+    :param is_tx:
         Nonzero for TX (IN), zero for RX (OUT).
+    :type is_tx: int
 
 .. _`bcm63xx_ep0_read_complete`:
 
@@ -989,8 +1046,9 @@ bcm63xx_ep0_read_complete
 
     Close out the pending ep0 request; return transfer len.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_ep0_internal_request`:
 
@@ -1001,14 +1059,17 @@ bcm63xx_ep0_internal_request
 
     Helper function to submit an ep0 request.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param int ch_idx:
+    :param ch_idx:
         IUDMA channel number.
+    :type ch_idx: int
 
-    :param int length:
+    :param length:
         Number of bytes to TX/RX.
+    :type length: int
 
 .. _`bcm63xx_ep0_internal_request.description`:
 
@@ -1027,8 +1088,9 @@ bcm63xx_ep0_do_setup
 
     Parse new SETUP packet and decide how to handle it.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_ep0_do_setup.description`:
 
@@ -1048,8 +1110,9 @@ bcm63xx_ep0_do_idle
 
     Check for outstanding requests if ep0 is idle.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_ep0_do_idle.description`:
 
@@ -1072,8 +1135,9 @@ bcm63xx_ep0_one_round
 
     Handle the current ep0 state.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_ep0_one_round.description`:
 
@@ -1091,8 +1155,9 @@ bcm63xx_ep0_process
 
     ep0 worker thread / state machine.
 
-    :param struct work_struct \*w:
+    :param w:
         Workqueue struct.
+    :type w: struct work_struct \*
 
 .. _`bcm63xx_ep0_process.description`:
 
@@ -1118,8 +1183,9 @@ bcm63xx_udc_get_frame
 
     Read current SOF frame number from the HW.
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         USB slave device.
+    :type gadget: struct usb_gadget \*
 
 .. _`bcm63xx_udc_pullup`:
 
@@ -1130,11 +1196,13 @@ bcm63xx_udc_pullup
 
     Enable/disable pullup on D+ line.
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         USB slave device.
+    :type gadget: struct usb_gadget \*
 
-    :param int is_on:
+    :param is_on:
         0 to disable pullup, 1 to enable.
+    :type is_on: int
 
 .. _`bcm63xx_udc_pullup.description`:
 
@@ -1152,11 +1220,13 @@ bcm63xx_udc_start
 
     Start the controller.
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         USB slave device.
+    :type gadget: struct usb_gadget \*
 
-    :param struct usb_gadget_driver \*driver:
+    :param driver:
         Driver for USB slave devices.
+    :type driver: struct usb_gadget_driver \*
 
 .. _`bcm63xx_udc_stop`:
 
@@ -1167,8 +1237,9 @@ bcm63xx_udc_stop
 
     Shut down the controller.
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         USB slave device.
+    :type gadget: struct usb_gadget \*
 
 .. _`bcm63xx_update_cfg_iface`:
 
@@ -1179,8 +1250,9 @@ bcm63xx_update_cfg_iface
 
     Read current configuration/interface settings.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_update_cfg_iface.description`:
 
@@ -1201,8 +1273,9 @@ bcm63xx_update_link_speed
 
     Check to see if the link speed has changed.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_update_link_speed.description`:
 
@@ -1221,11 +1294,13 @@ bcm63xx_update_wedge
 
     Iterate through wedged endpoints.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
-    :param bool new_status:
+    :param new_status:
         true to "refresh" wedge status; false to clear it.
+    :type new_status: bool
 
 .. _`bcm63xx_update_wedge.description`:
 
@@ -1247,11 +1322,13 @@ bcm63xx_udc_ctrl_isr
 
     ISR for control path events (USBD).
 
-    :param int irq:
+    :param irq:
         IRQ number (unused).
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Reference to the device controller.
+    :type dev_id: void \*
 
 .. _`bcm63xx_udc_ctrl_isr.description`:
 
@@ -1270,11 +1347,13 @@ bcm63xx_udc_data_isr
 
     ISR for data path events (IUDMA).
 
-    :param int irq:
+    :param irq:
         IRQ number (unused).
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Reference to the IUDMA channel that generated the interrupt.
+    :type dev_id: void \*
 
 .. _`bcm63xx_udc_data_isr.description`:
 
@@ -1295,8 +1374,9 @@ bcm63xx_udc_init_debugfs
 
     Create debugfs entries.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_udc_cleanup_debugfs`:
 
@@ -1307,8 +1387,9 @@ bcm63xx_udc_cleanup_debugfs
 
     Remove debugfs entries.
 
-    :param struct bcm63xx_udc \*udc:
+    :param udc:
         Reference to the device controller.
+    :type udc: struct bcm63xx_udc \*
 
 .. _`bcm63xx_udc_cleanup_debugfs.description`:
 
@@ -1326,8 +1407,9 @@ bcm63xx_udc_probe
 
     Initialize a new instance of the UDC.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Platform device struct from the bcm63xx BSP code.
+    :type pdev: struct platform_device \*
 
 .. _`bcm63xx_udc_probe.description`:
 
@@ -1346,8 +1428,9 @@ bcm63xx_udc_remove
 
     Remove the device from the system.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Platform device struct from the bcm63xx BSP code.
+    :type pdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

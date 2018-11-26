@@ -54,15 +54,18 @@ zynq_pll_round_rate
 
     Round a clock frequency
 
-    :param struct clk_hw \*hw:
+    :param hw:
         Handle between common and hardware-specific interfaces
+    :type hw: struct clk_hw \*
 
-    :param unsigned long rate:
+    :param rate:
         Desired clock frequency
+    :type rate: unsigned long
 
-    :param unsigned long \*prate:
+    :param prate:
         Clock frequency of parent clock
         Returns frequency closest to \ ``rate``\  the hardware can generate.
+    :type prate: unsigned long \*
 
 .. _`zynq_pll_recalc_rate`:
 
@@ -73,12 +76,14 @@ zynq_pll_recalc_rate
 
     Recalculate clock frequency
 
-    :param struct clk_hw \*hw:
+    :param hw:
         Handle between common and hardware-specific interfaces
+    :type hw: struct clk_hw \*
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         Clock frequency of parent clock
         Returns current clock frequency.
+    :type parent_rate: unsigned long
 
 .. _`zynq_pll_is_enabled`:
 
@@ -89,9 +94,10 @@ zynq_pll_is_enabled
 
     Check if a clock is enabled
 
-    :param struct clk_hw \*hw:
+    :param hw:
         Handle between common and hardware-specific interfaces
         Returns 1 if the clock is enabled, 0 otherwise.
+    :type hw: struct clk_hw \*
 
 .. _`zynq_pll_is_enabled.description`:
 
@@ -110,9 +116,10 @@ zynq_pll_enable
 
     Enable clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         Handle between common and hardware-specific interfaces
         Returns 0 on success
+    :type hw: struct clk_hw \*
 
 .. _`zynq_pll_disable`:
 
@@ -123,9 +130,10 @@ zynq_pll_disable
 
     Disable clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         Handle between common and hardware-specific interfaces
         Returns 0 on success
+    :type hw: struct clk_hw \*
 
 .. _`clk_register_zynq_pll`:
 
@@ -136,23 +144,29 @@ clk_register_zynq_pll
 
     Register PLL with the clock framework \ ``name``\         PLL name \ ``parent``\       Parent clock name \ ``pll_ctrl``\     Pointer to PLL control register \ ``pll_status``\   Pointer to PLL status register \ ``lock_index``\   Bit index to this PLL's lock status bit in \ ``pll_status``\  \ ``lock``\         Register lock Returns handle to the registered clock.
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param const char \*parent:
+    :param parent:
         *undescribed*
+    :type parent: const char \*
 
-    :param void __iomem \*pll_ctrl:
+    :param pll_ctrl:
         *undescribed*
+    :type pll_ctrl: void __iomem \*
 
-    :param void __iomem \*pll_status:
+    :param pll_status:
         *undescribed*
+    :type pll_status: void __iomem \*
 
-    :param u8 lock_index:
+    :param lock_index:
         *undescribed*
+    :type lock_index: u8
 
-    :param spinlock_t \*lock:
+    :param lock:
         *undescribed*
+    :type lock: spinlock_t \*
 
 .. This file was automatic generated / don't edit.
 

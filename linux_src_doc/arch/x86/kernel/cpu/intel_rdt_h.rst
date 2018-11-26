@@ -37,6 +37,66 @@ name
 list
     *undescribed*
 
+.. _`rdtgrp_mode`:
+
+enum rdtgrp_mode
+================
+
+.. c:type:: enum rdtgrp_mode
+
+    Mode of a RDT resource group
+
+.. _`rdtgrp_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum rdtgrp_mode {
+        RDT_MODE_SHAREABLE,
+        RDT_MODE_EXCLUSIVE,
+        RDT_MODE_PSEUDO_LOCKSETUP,
+        RDT_MODE_PSEUDO_LOCKED,
+        RDT_NUM_MODES
+    };
+
+.. _`rdtgrp_mode.constants`:
+
+Constants
+---------
+
+RDT_MODE_SHAREABLE
+    This resource group allows sharing of its allocations
+
+RDT_MODE_EXCLUSIVE
+    No sharing of this resource group's allocations allowed
+
+RDT_MODE_PSEUDO_LOCKSETUP
+    Resource group will be used for Pseudo-Locking
+
+RDT_MODE_PSEUDO_LOCKED
+    No sharing of this resource group's allocations
+    allowed AND the allocations are Cache Pseudo-Locked
+
+RDT_NUM_MODES
+    *undescribed*
+
+.. _`rdtgrp_mode.description`:
+
+Description
+-----------
+
+The mode of a resource group enables control over the allowed overlap
+between allocations associated with different resource groups (classes
+of service). User is able to modify the mode of a resource group by
+writing to the "mode" resctrl file associated with the resource group.
+
+The "shareable", "exclusive", and "pseudo-locksetup" modes are set by
+writing the appropriate text to the "mode" file. A resource group enters
+"pseudo-locked" mode after the schemata is written while the resource
+group is in "pseudo-locksetup" mode.
+
 .. _`mongroup`:
 
 struct mongroup
@@ -77,6 +137,85 @@ crdtgrp_list
 rmid
     rmid for this rdtgroup
 
+.. _`pseudo_lock_region`:
+
+struct pseudo_lock_region
+=========================
+
+.. c:type:: struct pseudo_lock_region
+
+    pseudo-lock region information
+
+.. _`pseudo_lock_region.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct pseudo_lock_region {
+        struct rdt_resource *r;
+        struct rdt_domain *d;
+        u32 cbm;
+        wait_queue_head_t lock_thread_wq;
+        int thread_done;
+        int cpu;
+        unsigned int line_size;
+        unsigned int size;
+        void *kmem;
+        unsigned int minor;
+        struct dentry *debugfs_dir;
+        struct list_head pm_reqs;
+    }
+
+.. _`pseudo_lock_region.members`:
+
+Members
+-------
+
+r
+    RDT resource to which this pseudo-locked region
+    belongs
+
+d
+    RDT domain to which this pseudo-locked region
+    belongs
+
+cbm
+    bitmask of the pseudo-locked region
+
+lock_thread_wq
+    waitqueue used to wait on the pseudo-locking thread
+    completion
+
+thread_done
+    variable used by waitqueue to test if pseudo-locking
+    thread completed
+
+cpu
+    core associated with the cache on which the setup code
+    will be run
+
+line_size
+    size of the cache lines
+
+size
+    size of pseudo-locked region in bytes
+
+kmem
+    the kernel memory associated with pseudo-locked region
+
+minor
+    minor number of character device associated with this
+    region
+
+debugfs_dir
+    pointer to this region's directory in the debugfs
+    filesystem
+
+pm_reqs
+    Power management QoS requests related to this region
+
 .. _`rdtgroup`:
 
 struct rdtgroup
@@ -102,6 +241,8 @@ Definition
         atomic_t waitcount;
         enum rdt_group_type type;
         struct mongroup mon;
+        enum rdtgrp_mode mode;
+        struct pseudo_lock_region *plr;
     }
 
 .. _`rdtgroup.members`:
@@ -134,6 +275,12 @@ type
 
 mon
     mongroup related data
+
+mode
+    mode of resource group
+
+plr
+    pseudo-locked region
 
 .. _`rftype`:
 
@@ -275,6 +422,7 @@ Definition
         u32 *mbps_val;
         u32 new_ctrl;
         bool have_new_ctrl;
+        struct pseudo_lock_region *plr;
     }
 
 .. _`rdt_domain.members`:
@@ -323,6 +471,9 @@ new_ctrl
 
 have_new_ctrl
     did user provide new_ctrl for this domain
+
+plr
+    pseudo-locked region (if any) associated with domain
 
 .. _`msr_param`:
 
@@ -489,7 +640,7 @@ Definition
         struct rdt_cache cache;
         struct rdt_membw membw;
         const char *format_str;
-        int (*parse_ctrlval) (char *buf, struct rdt_resource *r, struct rdt_domain *d);
+        int (*parse_ctrlval)(struct rdt_parse_data *data,struct rdt_resource *r, struct rdt_domain *d);
         struct list_head evt_list;
         int num_rmid;
         unsigned int mon_scale;

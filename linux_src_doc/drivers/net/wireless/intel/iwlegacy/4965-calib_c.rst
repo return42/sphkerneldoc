@@ -10,14 +10,17 @@ il4965_find_disconn_antenna
 
     disconnected.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u32 \*average_sig:
+    :param average_sig:
         *undescribed*
+    :type average_sig: u32 \*
 
-    :param struct il_chain_noise_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct il_chain_noise_data \*
 
 .. This file was automatic generated / don't edit.
 

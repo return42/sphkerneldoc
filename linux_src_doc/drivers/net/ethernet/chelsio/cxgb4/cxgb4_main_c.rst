@@ -10,8 +10,9 @@ link_start
 
     enable a port
 
-    :param struct net_device \*dev:
+    :param dev:
         the port to enable
+    :type dev: struct net_device \*
 
 .. _`link_start.description`:
 
@@ -29,11 +30,13 @@ cxgb4_write_rss
 
     write the RSS table for a given port
 
-    :param const struct port_info \*pi:
+    :param pi:
         the port
+    :type pi: const struct port_info \*
 
-    :param const u16 \*queues:
+    :param queues:
         array of queue indices for RSS
+    :type queues: const u16 \*
 
 .. _`cxgb4_write_rss.description`:
 
@@ -53,8 +56,9 @@ setup_rss
 
     configure RSS
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`setup_rss.description`:
 
@@ -72,8 +76,9 @@ setup_sge_queues
 
     configure SGE Tx/Rx/response queues
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`setup_sge_queues.description`:
 
@@ -93,14 +98,17 @@ cxgb4_set_rspq_intr_params
 
     set a queue's interrupt holdoff parameters
 
-    :param struct sge_rspq \*q:
+    :param q:
         the Rx queue
+    :type q: struct sge_rspq \*
 
-    :param unsigned int us:
+    :param us:
         the hold-off time in us, or 0 to disable timer
+    :type us: unsigned int
 
-    :param unsigned int cnt:
+    :param cnt:
         the hold-off packet count, or 0 to disable counter
+    :type cnt: unsigned int
 
 .. _`cxgb4_set_rspq_intr_params.description`:
 
@@ -119,23 +127,29 @@ cxgb4_create_server
 
     create an IP server
 
-    :param const struct net_device \*dev:
+    :param dev:
         the device
+    :type dev: const struct net_device \*
 
-    :param unsigned int stid:
+    :param stid:
         the server TID
+    :type stid: unsigned int
 
-    :param __be32 sip:
+    :param sip:
         local IP address to bind server to
+    :type sip: __be32
 
-    :param __be16 sport:
+    :param sport:
         the server's TCP port
+    :type sport: __be16
 
-    :param __be16 vlan:
+    :param vlan:
         *undescribed*
+    :type vlan: __be16
 
-    :param unsigned int queue:
+    :param queue:
         queue to direct messages from this server to
+    :type queue: unsigned int
 
 .. _`cxgb4_create_server.description`:
 
@@ -154,14 +168,17 @@ cxgb4_best_mtu
 
     find the entry in the MTU table closest to an MTU
 
-    :param const unsigned short \*mtus:
+    :param mtus:
         the HW MTU table
+    :type mtus: const unsigned short \*
 
-    :param unsigned short mtu:
+    :param mtu:
         the target MTU
+    :type mtu: unsigned short
 
-    :param unsigned int \*idx:
+    :param idx:
         index of selected entry in the MTU table
+    :type idx: unsigned int \*
 
 .. _`cxgb4_best_mtu.description`:
 
@@ -181,20 +198,25 @@ cxgb4_best_aligned_mtu
 
     find best MTU, [hopefully] data size aligned
 
-    :param const unsigned short \*mtus:
+    :param mtus:
         the HW MTU table
+    :type mtus: const unsigned short \*
 
-    :param unsigned short header_size:
+    :param header_size:
         Header Size
+    :type header_size: unsigned short
 
-    :param unsigned short data_size_max:
+    :param data_size_max:
         maximum Data Segment Size
+    :type data_size_max: unsigned short
 
-    :param unsigned short data_size_align:
+    :param data_size_align:
         desired Data Segment Size Alignment (2^N)
+    :type data_size_align: unsigned short
 
-    :param unsigned int \*mtu_idxp:
+    :param mtu_idxp:
         HW MTU Table Index return value pointer (possibly NULL)
+    :type mtu_idxp: unsigned int \*
 
 .. _`cxgb4_best_aligned_mtu.description`:
 
@@ -218,11 +240,13 @@ cxgb4_tp_smt_idx
 
     Get the Source Mac Table index for this VI
 
-    :param enum chip_type chip:
+    :param chip:
         chip type
+    :type chip: enum chip_type
 
-    :param unsigned int viid:
+    :param viid:
         VI id of the given port
+    :type viid: unsigned int
 
 .. _`cxgb4_tp_smt_idx.description`:
 
@@ -240,8 +264,9 @@ cxgb4_port_chan
 
     get the HW channel of a port
 
-    :param const struct net_device \*dev:
+    :param dev:
         the net device for the port
+    :type dev: const struct net_device \*
 
 .. _`cxgb4_port_chan.description`:
 
@@ -259,8 +284,9 @@ cxgb4_port_viid
 
     get the VI id of a port
 
-    :param const struct net_device \*dev:
+    :param dev:
         the net device for the port
+    :type dev: const struct net_device \*
 
 .. _`cxgb4_port_viid.description`:
 
@@ -278,8 +304,9 @@ cxgb4_port_idx
 
     get the index of a port
 
-    :param const struct net_device \*dev:
+    :param dev:
         the net device for the port
+    :type dev: const struct net_device \*
 
 .. _`cxgb4_port_idx.description`:
 
@@ -297,8 +324,9 @@ cxgb_up
 
     enable the adapter
 
-    :param struct adapter \*adap:
+    :param adap:
         adapter being enabled
+    :type adap: struct adapter \*
 
 .. _`cxgb_up.description`:
 

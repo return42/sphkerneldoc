@@ -54,11 +54,13 @@ write_to_ucd_unit
 
     Write Firmware to NITROX UCD unit
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct nitrox_device \*
 
-    :param struct ucode \*ucode:
+    :param ucode:
         *undescribed*
+    :type ucode: struct ucode \*
 
 .. _`nitrox_add_to_devlist`:
 
@@ -69,8 +71,9 @@ nitrox_add_to_devlist
 
     add NITROX device to global device list
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         NITROX device
+    :type ndev: struct nitrox_device \*
 
 .. _`nitrox_remove_from_devlist`:
 
@@ -81,8 +84,9 @@ nitrox_remove_from_devlist
 
     remove NITROX device from global device list
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         NITROX device
+    :type ndev: struct nitrox_device \*
 
 .. _`nitrox_bist_check`:
 
@@ -93,8 +97,9 @@ nitrox_bist_check
 
     Check NITORX BIST registers status
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         NITROX device
+    :type ndev: struct nitrox_device \*
 
 .. _`nitrox_probe`:
 
@@ -105,11 +110,13 @@ nitrox_probe
 
     NITROX Initialization function.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         entry in nitrox_pci_tbl
+    :type id: const struct pci_device_id \*
 
 .. _`nitrox_probe.return`:
 
@@ -128,8 +135,9 @@ nitrox_remove
 
     Unbind the driver from the device.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. This file was automatic generated / don't edit.
 

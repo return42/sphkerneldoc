@@ -10,17 +10,21 @@ adis_read_reg
 
     read 2 bytes from a 16-bit register
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
-    :param unsigned int reg:
+    :param reg:
         The address of the lower of the two registers
+    :type reg: unsigned int
 
-    :param unsigned int \*val:
+    :param val:
         The value read back from the device
+    :type val: unsigned int \*
 
-    :param unsigned int size:
+    :param size:
         *undescribed*
+    :type size: unsigned int
 
 .. _`adis_enable_irq`:
 
@@ -31,11 +35,13 @@ adis_enable_irq
 
     Enable or disable data ready IRQ
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
-    :param bool enable:
+    :param enable:
         Whether to enable the IRQ
+    :type enable: bool
 
 .. _`adis_enable_irq.description`:
 
@@ -53,8 +59,9 @@ adis_check_status
 
     Check the device for error conditions
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
 .. _`adis_check_status.description`:
 
@@ -72,8 +79,9 @@ adis_reset
 
     Reset the device
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
 .. _`adis_reset.description`:
 
@@ -91,8 +99,9 @@ adis_initial_startup
 
     Performs device self-test
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
 .. _`adis_initial_startup.description`:
 
@@ -113,17 +122,21 @@ adis_single_conversion
 
     Performs a single sample conversion
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param const struct iio_chan_spec \*chan:
+    :param chan:
         The IIO channel
+    :type chan: const struct iio_chan_spec \*
 
-    :param unsigned int error_mask:
+    :param error_mask:
         Mask for the error bit
+    :type error_mask: unsigned int
 
-    :param int \*val:
+    :param val:
         Result of the conversion
+    :type val: int \*
 
 .. _`adis_single_conversion.description`:
 
@@ -147,17 +160,21 @@ adis_init
 
     Initialize adis device structure
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The iio device
+    :type indio_dev: struct iio_dev \*
 
-    :param struct spi_device \*spi:
+    :param spi:
         The spi device
+    :type spi: struct spi_device \*
 
-    :param const struct adis_data \*data:
+    :param data:
         Chip specific data
+    :type data: const struct adis_data \*
 
 .. _`adis_init.description`:
 

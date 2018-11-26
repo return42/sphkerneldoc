@@ -19,14 +19,17 @@ vc4_atomic_commit
 
     commit validated state object
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         the driver state object
+    :type state: struct drm_atomic_state \*
 
-    :param bool nonblock:
+    :param nonblock:
         nonblocking commit
+    :type nonblock: bool
 
 .. _`vc4_atomic_commit.description`:
 

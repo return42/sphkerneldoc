@@ -10,17 +10,21 @@ iommu_fill_pdir
 
     Insert coalesced scatter/gather chunks into the I/O Pdir.
 
-    :param struct ioc \*ioc:
+    :param ioc:
         The I/O Controller.
+    :type ioc: struct ioc \*
 
-    :param struct scatterlist \*startsg:
+    :param startsg:
         The scatter/gather list of coalesced chunks.
+    :type startsg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         The number of entries in the scatter/gather list.
+    :type nents: int
 
-    :param unsigned long hint:
+    :param hint:
         The DMA Hint.
+    :type hint: unsigned long
 
     :param void (\*iommu_io_pdir_entry)(u64 \*, space_t, unsigned long, unsigned long):
         *undescribed*

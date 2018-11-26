@@ -10,8 +10,9 @@ dmi_set_dump_stack_arch_desc
 
     set arch description for \ :c:func:`dump_stack`\ 
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dmi_set_dump_stack_arch_desc.description`:
 
@@ -32,8 +33,9 @@ dmi_matches
 
     check if dmi_system_id structure matches system DMI data
 
-    :param const struct dmi_system_id \*dmi:
+    :param dmi:
         pointer to the dmi_system_id structure to check
+    :type dmi: const struct dmi_system_id \*
 
 .. _`dmi_is_end_of_table`:
 
@@ -44,8 +46,9 @@ dmi_is_end_of_table
 
     check for end-of-table marker
 
-    :param const struct dmi_system_id \*dmi:
+    :param dmi:
         pointer to the dmi_system_id structure to check
+    :type dmi: const struct dmi_system_id \*
 
 .. _`dmi_check_system`:
 
@@ -56,13 +59,14 @@ dmi_check_system
 
     check system DMI data
 
-    :param const struct dmi_system_id \*list:
+    :param list:
         array of dmi_system_id structures to match against
         All non-null elements of the list must match
         their slot's (field index's) data (i.e., each
         list string must be a substring of the specified
         DMI slot's string data) to be considered a
         successful match.
+    :type list: const struct dmi_system_id \*
 
 .. _`dmi_check_system.description`:
 
@@ -84,13 +88,14 @@ dmi_first_match
 
     find dmi_system_id structure matching system DMI data
 
-    :param const struct dmi_system_id \*list:
+    :param list:
         array of dmi_system_id structures to match against
         All non-null elements of the list must match
         their slot's (field index's) data (i.e., each
         list string must be a substring of the specified
         DMI slot's string data) to be considered a
         successful match.
+    :type list: const struct dmi_system_id \*
 
 .. _`dmi_first_match.description`:
 
@@ -111,8 +116,9 @@ dmi_get_system_info
 
     return DMI data value
 
-    :param int field:
+    :param field:
         data index (see enum dmi_field)
+    :type field: int
 
 .. _`dmi_get_system_info.description`:
 
@@ -131,8 +137,9 @@ dmi_name_in_serial
 
     Check if string is in the DMI product serial information
 
-    :param const char \*str:
+    :param str:
         string to check for
+    :type str: const char \*
 
 .. _`dmi_name_in_vendors`:
 
@@ -143,8 +150,9 @@ dmi_name_in_vendors
 
     Check if string is in the DMI system or board vendor name
 
-    :param const char \*str:
+    :param str:
         Case sensitive Name
+    :type str: const char \*
 
 .. _`dmi_find_device`:
 
@@ -155,14 +163,17 @@ dmi_find_device
 
     find onboard device by type/name
 
-    :param int type:
+    :param type:
         device type or \ ``DMI_DEV_TYPE_ANY``\  to match all device types
+    :type type: int
 
-    :param const char \*name:
+    :param name:
         device name string or \ ``NULL``\  to match all
+    :type name: const char \*
 
-    :param const struct dmi_device \*from:
+    :param from:
         previous device found in search, or \ ``NULL``\  for new search.
+    :type from: const struct dmi_device \*
 
 .. _`dmi_find_device.description`:
 
@@ -184,17 +195,21 @@ dmi_get_date
 
     parse a DMI date
 
-    :param int field:
+    :param field:
         data index (see enum dmi_field)
+    :type field: int
 
-    :param int \*yearp:
+    :param yearp:
         optional out parameter for the year
+    :type yearp: int \*
 
-    :param int \*monthp:
+    :param monthp:
         optional out parameter for the month
+    :type monthp: int \*
 
-    :param int \*dayp:
+    :param dayp:
         optional out parameter for the day
+    :type dayp: int \*
 
 .. _`dmi_get_date.description`:
 
@@ -221,8 +236,9 @@ dmi_get_bios_year
 
     get a year out of DMI_BIOS_DATE field
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dmi_get_bios_year.description`:
 
@@ -245,8 +261,9 @@ dmi_walk
     :param void (\*decode)(const struct dmi_header \*, void \*):
         Callback function
 
-    :param void \*private_data:
+    :param private_data:
         Private data to be passed to the callback function
+    :type private_data: void \*
 
 .. _`dmi_walk.description`:
 
@@ -265,11 +282,13 @@ dmi_match
 
     compare a string to the dmi field (if exists)
 
-    :param enum dmi_field f:
+    :param f:
         DMI field identifier
+    :type f: enum dmi_field
 
-    :param const char \*str:
+    :param str:
         string to compare the DMI field to
+    :type str: const char \*
 
 .. _`dmi_match.description`:
 

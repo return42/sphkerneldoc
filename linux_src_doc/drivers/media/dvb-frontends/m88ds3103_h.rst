@@ -252,15 +252,18 @@ m88ds3103_attach
 
 .. c:function:: struct dvb_frontend *m88ds3103_attach(const struct m88ds3103_config *config, struct i2c_adapter *i2c, struct i2c_adapter **tuner_i2c)
 
-    :param const struct m88ds3103_config \*config:
+    :param config:
         pointer to \ :c:type:`struct m88ds3103_config <m88ds3103_config>`\  with demod configuration.
+    :type config: const struct m88ds3103_config \*
 
-    :param struct i2c_adapter \*i2c:
+    :param i2c:
         i2c adapter to use.
+    :type i2c: struct i2c_adapter \*
 
-    :param struct i2c_adapter \*\*tuner_i2c:
+    :param tuner_i2c:
         on success, returns the I2C adapter associated with
         m88ds3103 tuner.
+    :type tuner_i2c: struct i2c_adapter \*\*
 
 .. _`m88ds3103_attach.return`:
 

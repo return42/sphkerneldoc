@@ -6,15 +6,21 @@
 ubifs_tnc_levelorder_next
 =========================
 
-.. c:function:: struct ubifs_znode *ubifs_tnc_levelorder_next(struct ubifs_znode *zr, struct ubifs_znode *znode)
+.. c:function:: struct ubifs_znode *ubifs_tnc_levelorder_next(const struct ubifs_info *c, struct ubifs_znode *zr, struct ubifs_znode *znode)
 
     next TNC tree element in levelorder traversal.
 
-    :param struct ubifs_znode \*zr:
-        root of the subtree to traverse
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param zr:
+        root of the subtree to traverse
+    :type zr: struct ubifs_znode \*
+
+    :param znode:
         previous znode
+    :type znode: struct ubifs_znode \*
 
 .. _`ubifs_tnc_levelorder_next.description`:
 
@@ -33,17 +39,21 @@ ubifs_search_zbranch
 
     search znode branch.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const struct ubifs_znode \*znode:
+    :param znode:
         znode to search in
+    :type znode: const struct ubifs_znode \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key to search for
+    :type key: const union ubifs_key \*
 
-    :param int \*n:
+    :param n:
         znode branch slot number is returned here
+    :type n: int \*
 
 .. _`ubifs_search_zbranch.description`:
 
@@ -67,8 +77,9 @@ ubifs_tnc_postorder_first
 
     find first znode to do postorder tree traversal.
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to start at (root of the sub-tree to traverse)
+    :type znode: struct ubifs_znode \*
 
 .. _`ubifs_tnc_postorder_first.description`:
 
@@ -83,12 +94,17 @@ ignored.
 ubifs_tnc_postorder_next
 ========================
 
-.. c:function:: struct ubifs_znode *ubifs_tnc_postorder_next(struct ubifs_znode *znode)
+.. c:function:: struct ubifs_znode *ubifs_tnc_postorder_next(const struct ubifs_info *c, struct ubifs_znode *znode)
 
     next TNC tree element in postorder traversal.
 
-    :param struct ubifs_znode \*znode:
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
+
+    :param znode:
         previous znode
+    :type znode: struct ubifs_znode \*
 
 .. _`ubifs_tnc_postorder_next.description`:
 
@@ -103,12 +119,17 @@ Returns the next element or \ ``NULL``\  if \ ``znode``\  is already the last on
 ubifs_destroy_tnc_subtree
 =========================
 
-.. c:function:: long ubifs_destroy_tnc_subtree(struct ubifs_znode *znode)
+.. c:function:: long ubifs_destroy_tnc_subtree(const struct ubifs_info *c, struct ubifs_znode *znode)
 
     destroy all znodes connected to a subtree.
 
-    :param struct ubifs_znode \*znode:
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
+
+    :param znode:
         znode defining subtree to destroy
+    :type znode: struct ubifs_znode \*
 
 .. _`ubifs_destroy_tnc_subtree.description`:
 
@@ -123,24 +144,21 @@ znodes in the subtree.
 read_znode
 ==========
 
-.. c:function:: int read_znode(struct ubifs_info *c, int lnum, int offs, int len, struct ubifs_znode *znode)
+.. c:function:: int read_znode(struct ubifs_info *c, struct ubifs_zbranch *zzbr, struct ubifs_znode *znode)
 
     read an indexing node from flash and fill znode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
-        LEB of the indexing node to read
+    :param zzbr:
+        the zbranch describing the node to read
+    :type zzbr: struct ubifs_zbranch \*
 
-    :param int offs:
-        node offset
-
-    :param int len:
-        node length
-
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to read to
+    :type znode: struct ubifs_znode \*
 
 .. _`read_znode.description`:
 
@@ -162,17 +180,21 @@ ubifs_load_znode
 
     load znode to TNC cache.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         znode branch
+    :type zbr: struct ubifs_zbranch \*
 
-    :param struct ubifs_znode \*parent:
+    :param parent:
         znode's parent
+    :type parent: struct ubifs_znode \*
 
-    :param int iip:
+    :param iip:
         index in parent
+    :type iip: int
 
 .. _`ubifs_load_znode.description`:
 
@@ -192,14 +214,17 @@ ubifs_tnc_read_node
 
     read a leaf node from the flash media.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         key and position of the node
+    :type zbr: struct ubifs_zbranch \*
 
-    :param void \*node:
+    :param node:
         node is returned here
+    :type node: void \*
 
 .. _`ubifs_tnc_read_node.description`:
 

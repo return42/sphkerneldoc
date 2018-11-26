@@ -10,8 +10,9 @@ fimc_capture_config_update
 
     apply the camera interface configuration
 
-    :param struct fimc_ctx \*ctx:
+    :param ctx:
         FIMC capture context
+    :type ctx: struct fimc_ctx \*
 
 .. _`fimc_capture_config_update.description`:
 
@@ -31,17 +32,21 @@ fimc_pipeline_try_format
 
     negotiate and/or set formats at pipeline elements
 
-    :param struct fimc_ctx \*ctx:
+    :param ctx:
         FIMC capture context
+    :type ctx: struct fimc_ctx \*
 
-    :param struct v4l2_mbus_framefmt \*tfmt:
+    :param tfmt:
         media bus format to try/set on subdevs
+    :type tfmt: struct v4l2_mbus_framefmt \*
 
-    :param struct fimc_fmt \*\*fmt_id:
+    :param fmt_id:
         fimc pixel format id corresponding to returned \ ``tfmt``\  (output)
+    :type fmt_id: struct fimc_fmt \*\*
 
-    :param bool set:
+    :param set:
         true to set format on subdevs, false to try only
+    :type set: bool
 
 .. _`fimc_get_sensor_frame_desc`:
 
@@ -52,17 +57,21 @@ fimc_get_sensor_frame_desc
 
     query the sensor for media bus frame parameters
 
-    :param struct v4l2_subdev \*sensor:
+    :param sensor:
         pointer to the sensor subdev
+    :type sensor: struct v4l2_subdev \*
 
-    :param struct v4l2_plane_pix_format \*plane_fmt:
+    :param plane_fmt:
         provides plane sizes corresponding to the frame layout entries
+    :type plane_fmt: struct v4l2_plane_pix_format \*
 
-    :param unsigned int num_planes:
+    :param num_planes:
         number of planes
+    :type num_planes: unsigned int
 
-    :param bool try:
+    :param try:
         true to set the frame parameters, false to query only
+    :type try: bool
 
 .. _`fimc_get_sensor_frame_desc.description`:
 
@@ -80,8 +89,9 @@ fimc_pipeline_validate
 
     check for formats inconsistencies between source and sink pad of each link
 
-    :param struct fimc_dev \*fimc:
+    :param fimc:
         the FIMC device this context applies to
+    :type fimc: struct fimc_dev \*
 
 .. _`fimc_pipeline_validate.description`:
 
@@ -99,14 +109,17 @@ fimc_sensor_notify
 
     v4l2_device notification from a sensor subdev
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to a subdev generating the notification
+    :type sd: struct v4l2_subdev \*
 
-    :param unsigned int notification:
+    :param notification:
         the notification type, must be S5P_FIMC_TX_END_NOTIFY
+    :type notification: unsigned int
 
-    :param void \*arg:
+    :param arg:
         pointer to an u32 type integer that stores the frame payload value
+    :type arg: void \*
 
 .. _`fimc_sensor_notify.description`:
 

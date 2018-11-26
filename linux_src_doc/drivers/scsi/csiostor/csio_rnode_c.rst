@@ -10,11 +10,13 @@ csio_rnode_lookup_portid
 
     Finds the rnode with the given portid
 
-    :param struct csio_lnode \*ln:
+    :param ln:
         lnode
+    :type ln: struct csio_lnode \*
 
-    :param uint32_t portid:
+    :param portid:
         port id
+    :type portid: uint32_t
 
 .. _`csio_rnode_lookup_portid.description`:
 
@@ -33,11 +35,13 @@ csio_rnode_fwevt_handler
 
     Event handler for firmware rnode events.
 
-    :param struct csio_rnode \*rn:
+    :param rn:
         rnode
+    :type rn: struct csio_rnode \*
 
-    :param uint8_t fwevt:
+    :param fwevt:
         *undescribed*
+    :type fwevt: uint8_t
 
 .. This file was automatic generated / don't edit.
 

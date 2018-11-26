@@ -10,11 +10,13 @@ fsl_upm_start_pattern
 
     start UPM patterns execution
 
-    :param struct fsl_upm \*upm:
+    :param upm:
         pointer to the fsl_upm structure obtained via fsl_upm_find
+    :type upm: struct fsl_upm \*
 
-    :param u8 pat_offset:
+    :param pat_offset:
         UPM pattern offset for the command to be executed
+    :type pat_offset: u8
 
 .. _`fsl_upm_start_pattern.description`:
 
@@ -33,8 +35,9 @@ fsl_upm_end_pattern
 
     end UPM patterns execution
 
-    :param struct fsl_upm \*upm:
+    :param upm:
         pointer to the fsl_upm structure obtained via fsl_upm_find
+    :type upm: struct fsl_upm \*
 
 .. _`fsl_upm_end_pattern.description`:
 

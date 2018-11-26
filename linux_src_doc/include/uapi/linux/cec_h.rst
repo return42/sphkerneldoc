@@ -114,8 +114,9 @@ cec_msg_initiator
 
     return the initiator's logical address.
 
-    :param const struct cec_msg \*msg:
+    :param msg:
         the message structure
+    :type msg: const struct cec_msg \*
 
 .. _`cec_msg_destination`:
 
@@ -126,8 +127,9 @@ cec_msg_destination
 
     return the destination's logical address.
 
-    :param const struct cec_msg \*msg:
+    :param msg:
         the message structure
+    :type msg: const struct cec_msg \*
 
 .. _`cec_msg_opcode`:
 
@@ -138,8 +140,9 @@ cec_msg_opcode
 
     return the opcode of the message, -1 for poll
 
-    :param const struct cec_msg \*msg:
+    :param msg:
         the message structure
+    :type msg: const struct cec_msg \*
 
 .. _`cec_msg_is_broadcast`:
 
@@ -150,8 +153,9 @@ cec_msg_is_broadcast
 
     return true if this is a broadcast message.
 
-    :param const struct cec_msg \*msg:
+    :param msg:
         the message structure
+    :type msg: const struct cec_msg \*
 
 .. _`cec_msg_init`:
 
@@ -162,14 +166,17 @@ cec_msg_init
 
     initialize the message structure.
 
-    :param struct cec_msg \*msg:
+    :param msg:
         the message structure
+    :type msg: struct cec_msg \*
 
-    :param __u8 initiator:
+    :param initiator:
         the logical address of the initiator
+    :type initiator: __u8
 
-    :param __u8 destination:
+    :param destination:
         the logical address of the destination (0xf for broadcast)
+    :type destination: __u8
 
 .. _`cec_msg_init.description`:
 
@@ -188,11 +195,13 @@ cec_msg_set_reply_to
 
     fill in destination/initiator in a reply message.
 
-    :param struct cec_msg \*msg:
+    :param msg:
         the message structure for the reply
+    :type msg: struct cec_msg \*
 
-    :param struct cec_msg \*orig:
+    :param orig:
         the original message structure
+    :type orig: struct cec_msg \*
 
 .. _`cec_msg_set_reply_to.description`:
 

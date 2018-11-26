@@ -10,8 +10,9 @@ hfi1_rcd_free
 
     When reference is zero clean up.
 
-    :param struct kref \*kref:
+    :param kref:
         pointer to an initialized rcd data structure
+    :type kref: struct kref \*
 
 .. _`hfi1_rcd_put`:
 
@@ -22,8 +23,9 @@ hfi1_rcd_put
 
     decrement reference for rcd
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         pointer to an initialized rcd data structure
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`hfi1_rcd_put.description`:
 
@@ -41,8 +43,9 @@ hfi1_rcd_get
 
     increment reference for rcd
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         pointer to an initialized rcd data structure
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`hfi1_rcd_get.description`:
 
@@ -60,14 +63,17 @@ allocate_rcd_index
 
     allocate an rcd index from the rcd array
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         pointer to a valid devdata structure
+    :type dd: struct hfi1_devdata \*
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         rcd data structure to assign
+    :type rcd: struct hfi1_ctxtdata \*
 
-    :param u16 \*index:
+    :param index:
         pointer to index that is allocated
+    :type index: u16 \*
 
 .. _`allocate_rcd_index.description`:
 
@@ -86,11 +92,13 @@ hfi1_rcd_get_by_index_safe
 
     validate the ctxt index before accessing the array
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         pointer to a valid devdata structure
+    :type dd: struct hfi1_devdata \*
 
-    :param u16 ctxt:
+    :param ctxt:
         the index of an possilbe rcd
+    :type ctxt: u16
 
 .. _`hfi1_rcd_get_by_index_safe.description`:
 
@@ -109,11 +117,13 @@ hfi1_rcd_get_by_index
 
 .. c:function:: struct hfi1_ctxtdata *hfi1_rcd_get_by_index(struct hfi1_devdata *dd, u16 ctxt)
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         pointer to a valid devdata structure
+    :type dd: struct hfi1_devdata \*
 
-    :param u16 ctxt:
+    :param ctxt:
         the index of an possilbe rcd
+    :type ctxt: u16
 
 .. _`hfi1_rcd_get_by_index.description`:
 
@@ -133,8 +143,9 @@ hfi1_free_ctxt
 
 .. c:function:: void hfi1_free_ctxt(struct hfi1_ctxtdata *rcd)
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         pointer to an initialized rcd data structure
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`hfi1_free_ctxt.description`:
 
@@ -156,8 +167,9 @@ init_after_reset
 
     re-initialize after a reset
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the hfi1_ib device
+    :type dd: struct hfi1_devdata \*
 
 .. _`init_after_reset.description`:
 
@@ -177,8 +189,22 @@ create_workqueues
 
     create per port workqueues
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the hfi1_ib device
+    :type dd: struct hfi1_devdata \*
+
+.. _`enable_general_intr`:
+
+enable_general_intr
+===================
+
+.. c:function:: void enable_general_intr(struct hfi1_devdata *dd)
+
+    Enable the IRQs that will be handled by the general interrupt handler.
+
+    :param dd:
+        valid devdata
+    :type dd: struct hfi1_devdata \*
 
 .. _`hfi1_init`:
 
@@ -189,11 +215,13 @@ hfi1_init
 
     do the actual initialization sequence on the chip
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the hfi1_ib device
+    :type dd: struct hfi1_devdata \*
 
-    :param int reinit:
+    :param reinit:
         re-initializing, so don't allocate new memory
+    :type reinit: int
 
 .. _`hfi1_init.description`:
 
@@ -219,8 +247,9 @@ shutdown_device
 
     shut down a device
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the hfi1_ib device
+    :type dd: struct hfi1_devdata \*
 
 .. _`shutdown_device.description`:
 
@@ -241,11 +270,13 @@ hfi1_free_ctxtdata
 
     free a context's allocated data
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the hfi1_ib device
+    :type dd: struct hfi1_devdata \*
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         the ctxtdata structure
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`hfi1_free_ctxtdata.description`:
 
@@ -264,8 +295,9 @@ hfi1_clean_devdata
 
     cleans up per-unit data structure
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         pointer to a valid devdata structure
+    :type dd: struct hfi1_devdata \*
 
 .. _`hfi1_clean_devdata.description`:
 
@@ -274,6 +306,34 @@ Description
 
 It cleans up all data structures set up by
 by \ :c:func:`hfi1_alloc_devdata`\ .
+
+.. _`hfi1_alloc_devdata`:
+
+hfi1_alloc_devdata
+==================
+
+.. c:function:: struct hfi1_devdata *hfi1_alloc_devdata(struct pci_dev *pdev, size_t extra)
+
+    Allocate our primary per-unit data structure.
+
+    :param pdev:
+        Valid PCI device
+    :type pdev: struct pci_dev \*
+
+    :param extra:
+        How many bytes to alloc past the default
+    :type extra: size_t
+
+.. _`hfi1_alloc_devdata.description`:
+
+Description
+-----------
+
+Must be done via verbs allocator, because the verbs cleanup process
+both does cleanup and free of the data structure.
+"extra" is for chip-specific data.
+
+Use the idr mechanism to get a unit number for this unit.
 
 .. _`hfi1_create_rcvhdrq`:
 
@@ -284,11 +344,13 @@ hfi1_create_rcvhdrq
 
     create a receive header queue
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the hfi1_ib device
+    :type dd: struct hfi1_devdata \*
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         the context data
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`hfi1_create_rcvhdrq.description`:
 
@@ -306,8 +368,9 @@ hfi1_setup_eagerbufs
 
 .. c:function:: int hfi1_setup_eagerbufs(struct hfi1_ctxtdata *rcd)
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         the context we are setting up.
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`hfi1_setup_eagerbufs.description`:
 

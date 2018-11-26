@@ -10,11 +10,13 @@ atlx_set_mac
 
     Change the Ethernet Address of the NIC
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         pointer to an address structure
+    :type p: void \*
 
 .. _`atlx_set_mac.description`:
 
@@ -32,8 +34,9 @@ atlx_set_multi
 
     Multicast and Promiscuous mode set
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atlx_set_multi.description`:
 
@@ -54,8 +57,9 @@ atlx_irq_enable
 
     Enable default interrupt generation settings
 
-    :param struct atlx_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atlx_adapter \*
 
 .. _`atlx_irq_disable`:
 
@@ -66,8 +70,9 @@ atlx_irq_disable
 
     Mask off interrupt generation on the NIC
 
-    :param struct atlx_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atlx_adapter \*
 
 .. _`atlx_tx_timeout`:
 
@@ -78,8 +83,9 @@ atlx_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. This file was automatic generated / don't edit.
 

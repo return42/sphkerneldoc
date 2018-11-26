@@ -10,11 +10,13 @@ ubi_do_get_device_info
 
     get information about UBI device.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_device_info \*di:
+    :param di:
         the information is stored here
+    :type di: struct ubi_device_info \*
 
 .. _`ubi_do_get_device_info.description`:
 
@@ -33,11 +35,13 @@ ubi_get_device_info
 
     get information about UBI device.
 
-    :param int ubi_num:
+    :param ubi_num:
         UBI device number
+    :type ubi_num: int
 
-    :param struct ubi_device_info \*di:
+    :param di:
         the information is stored here
+    :type di: struct ubi_device_info \*
 
 .. _`ubi_get_device_info.description`:
 
@@ -56,14 +60,17 @@ ubi_do_get_volume_info
 
     get information about UBI volume.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param struct ubi_volume_info \*vi:
+    :param vi:
         the information is stored here
+    :type vi: struct ubi_volume_info \*
 
 .. _`ubi_get_volume_info`:
 
@@ -74,11 +81,13 @@ ubi_get_volume_info
 
     get information about UBI volume.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param struct ubi_volume_info \*vi:
+    :param vi:
         the information is stored here
+    :type vi: struct ubi_volume_info \*
 
 .. _`ubi_open_volume`:
 
@@ -89,14 +98,17 @@ ubi_open_volume
 
     open UBI volume.
 
-    :param int ubi_num:
+    :param ubi_num:
         UBI device number
+    :type ubi_num: int
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
-    :param int mode:
+    :param mode:
         open mode
+    :type mode: int
 
 .. _`ubi_open_volume.description`:
 
@@ -124,14 +136,17 @@ ubi_open_volume_nm
 
     open UBI volume by name.
 
-    :param int ubi_num:
+    :param ubi_num:
         UBI device number
+    :type ubi_num: int
 
-    :param const char \*name:
+    :param name:
         volume name
+    :type name: const char \*
 
-    :param int mode:
+    :param mode:
         open mode
+    :type mode: int
 
 .. _`ubi_open_volume_nm.description`:
 
@@ -149,11 +164,13 @@ ubi_open_volume_path
 
     open UBI volume by its character device node path.
 
-    :param const char \*pathname:
+    :param pathname:
         volume character device node path
+    :type pathname: const char \*
 
-    :param int mode:
+    :param mode:
         open mode
+    :type mode: int
 
 .. _`ubi_open_volume_path.description`:
 
@@ -172,8 +189,9 @@ ubi_close_volume
 
     close UBI volume.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
 .. _`leb_read_sanity_check`:
 
@@ -184,17 +202,21 @@ leb_read_sanity_check
 
     does sanity checks on read requests.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number to read from
+    :type lnum: int
 
-    :param int offset:
+    :param offset:
         offset within the logical eraseblock to read from
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes to read
+    :type len: int
 
 .. _`leb_read_sanity_check.description`:
 
@@ -213,23 +235,29 @@ ubi_leb_read
 
     read data.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number to read from
+    :type lnum: int
 
-    :param char \*buf:
+    :param buf:
         buffer where to store the read data
+    :type buf: char \*
 
-    :param int offset:
+    :param offset:
         offset within the logical eraseblock to read from
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes to read
+    :type len: int
 
-    :param int check:
+    :param check:
         whether UBI has to check the read data's CRC or not.
+    :type check: int
 
 .. _`ubi_leb_read.description`:
 
@@ -263,23 +291,29 @@ ubi_leb_read_sg
 
     read data into a scatter gather list.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number to read from
+    :type lnum: int
 
-    :param struct ubi_sgl \*sgl:
+    :param sgl:
         *undescribed*
+    :type sgl: struct ubi_sgl \*
 
-    :param int offset:
+    :param offset:
         offset within the logical eraseblock to read from
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes to read
+    :type len: int
 
-    :param int check:
+    :param check:
         whether UBI has to check the read data's CRC or not.
+    :type check: int
 
 .. _`ubi_leb_read_sg.description`:
 
@@ -299,20 +333,25 @@ ubi_leb_write
 
     write data.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number to write to
+    :type lnum: int
 
-    :param const void \*buf:
+    :param buf:
         data to write
+    :type buf: const void \*
 
-    :param int offset:
+    :param offset:
         offset within the logical eraseblock where to write
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes to write
+    :type len: int
 
 .. _`ubi_leb_write.description`:
 
@@ -345,11 +384,13 @@ ubi_leb_erase
 
     erase logical eraseblock.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`ubi_leb_erase.description`:
 
@@ -372,11 +413,13 @@ ubi_leb_unmap
 
     un-map logical eraseblock.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`ubi_leb_unmap.description`:
 
@@ -423,11 +466,13 @@ ubi_leb_map
 
     map logical eraseblock to a physical eraseblock.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`ubi_leb_map.description`:
 
@@ -454,11 +499,13 @@ ubi_is_mapped
 
     check if logical eraseblock is mapped.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`ubi_is_mapped.description`:
 
@@ -485,8 +532,9 @@ ubi_sync
 
     synchronize UBI device buffers.
 
-    :param int ubi_num:
+    :param ubi_num:
         UBI device to synchronize
+    :type ubi_num: int
 
 .. _`ubi_sync.description`:
 
@@ -506,14 +554,17 @@ ubi_flush
 
     flush UBI work queue.
 
-    :param int ubi_num:
+    :param ubi_num:
         UBI device to flush work queue
+    :type ubi_num: int
 
-    :param int vol_id:
+    :param vol_id:
         volume id to flush for
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number to flush for
+    :type lnum: int
 
 .. _`ubi_flush.description`:
 
@@ -535,12 +586,14 @@ ubi_register_volume_notifier
 
     register a volume notifier.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         the notifier description object
+    :type nb: struct notifier_block \*
 
-    :param int ignore_existing:
+    :param ignore_existing:
         if non-zero, do not send "added" notification for all
         already existing volumes
+    :type ignore_existing: int
 
 .. _`ubi_register_volume_notifier.description`:
 
@@ -566,8 +619,9 @@ ubi_unregister_volume_notifier
 
     unregister the volume notifier.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         the notifier description object
+    :type nb: struct notifier_block \*
 
 .. _`ubi_unregister_volume_notifier.description`:
 

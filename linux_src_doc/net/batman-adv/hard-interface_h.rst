@@ -130,8 +130,9 @@ batadv_hardif_put
 
     decrement the hard interface refcounter and possibly release it
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the hard interface to free
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_primary_if_get_selected`:
 
@@ -142,8 +143,9 @@ batadv_primary_if_get_selected
 
     Get reference to primary interface
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_primary_if_get_selected.return`:
 

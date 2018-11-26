@@ -10,8 +10,9 @@ early_sn_setup
 
     early setup routine for SN platforms
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`early_sn_setup.description`:
 
@@ -30,8 +31,9 @@ sn_setup
 
     SN platform setup routine
 
-    :param char \*\*cmdline_p:
+    :param cmdline_p:
         kernel command line
+    :type cmdline_p: char \*\*
 
 .. _`sn_setup.description`:
 
@@ -51,8 +53,9 @@ sn_init_pdas
 
     setup node data areas
 
-    :param char \*\*cmdline_p:
+    :param cmdline_p:
         *undescribed*
+    :type cmdline_p: char \*\*
 
 .. _`sn_init_pdas.description`:
 
@@ -70,8 +73,9 @@ sn_cpu_init
 
     initialize per-cpu data areas
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sn_cpu_init.description`:
 

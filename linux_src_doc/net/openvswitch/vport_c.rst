@@ -10,8 +10,9 @@ ovs_vport_init
 
     initialize vport subsystem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ovs_vport_init.description`:
 
@@ -29,8 +30,9 @@ ovs_vport_exit
 
     shutdown vport subsystem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ovs_vport_exit.description`:
 
@@ -48,11 +50,13 @@ ovs_vport_locate
 
     find a port that has already been created
 
-    :param const struct net \*net:
+    :param net:
         *undescribed*
+    :type net: const struct net \*
 
-    :param const char \*name:
+    :param name:
         name of port to find
+    :type name: const char \*
 
 .. _`ovs_vport_locate.description`:
 
@@ -70,14 +74,17 @@ ovs_vport_alloc
 
     allocate and initialize new vport
 
-    :param int priv_size:
+    :param priv_size:
         Size of private data area to allocate.
+    :type priv_size: int
 
-    :param const struct vport_ops \*ops:
+    :param ops:
         vport device ops
+    :type ops: const struct vport_ops \*
 
-    :param const struct vport_parms \*parms:
+    :param parms:
         *undescribed*
+    :type parms: const struct vport_parms \*
 
 .. _`ovs_vport_alloc.description`:
 
@@ -98,8 +105,9 @@ ovs_vport_free
 
     uninitialize and free vport
 
-    :param struct vport \*vport:
+    :param vport:
         vport to free
+    :type vport: struct vport \*
 
 .. _`ovs_vport_free.description`:
 
@@ -120,8 +128,9 @@ ovs_vport_add
 
     add vport device (for kernel callers)
 
-    :param const struct vport_parms \*parms:
+    :param parms:
         Information about new vport.
+    :type parms: const struct vport_parms \*
 
 .. _`ovs_vport_add.description`:
 
@@ -140,11 +149,13 @@ ovs_vport_set_options
 
     modify existing vport device (for kernel callers)
 
-    :param struct vport \*vport:
+    :param vport:
         vport to modify.
+    :type vport: struct vport \*
 
-    :param struct nlattr \*options:
+    :param options:
         New configuration.
+    :type options: struct nlattr \*
 
 .. _`ovs_vport_set_options.description`:
 
@@ -163,8 +174,9 @@ ovs_vport_del
 
     delete existing vport device
 
-    :param struct vport \*vport:
+    :param vport:
         vport to delete.
+    :type vport: struct vport \*
 
 .. _`ovs_vport_del.description`:
 
@@ -183,11 +195,13 @@ ovs_vport_get_stats
 
     retrieve device stats
 
-    :param struct vport \*vport:
+    :param vport:
         vport from which to retrieve the stats
+    :type vport: struct vport \*
 
-    :param struct ovs_vport_stats \*stats:
+    :param stats:
         location to store stats
+    :type stats: struct ovs_vport_stats \*
 
 .. _`ovs_vport_get_stats.description`:
 
@@ -207,11 +221,13 @@ ovs_vport_get_options
 
     retrieve device options
 
-    :param const struct vport \*vport:
+    :param vport:
         vport from which to retrieve the options.
+    :type vport: const struct vport \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff where options should be appended.
+    :type skb: struct sk_buff \*
 
 .. _`ovs_vport_get_options.description`:
 
@@ -237,11 +253,13 @@ ovs_vport_set_upcall_portids
 
     set upcall portids of \ ``vport``\ .
 
-    :param struct vport \*vport:
+    :param vport:
         vport to modify.
+    :type vport: struct vport \*
 
-    :param const struct nlattr \*ids:
+    :param ids:
         new configuration, an array of port ids.
+    :type ids: const struct nlattr \*
 
 .. _`ovs_vport_set_upcall_portids.description`:
 
@@ -264,11 +282,13 @@ ovs_vport_get_upcall_portids
 
     get the upcall_portids of \ ``vport``\ .
 
-    :param const struct vport \*vport:
+    :param vport:
         vport from which to retrieve the portids.
+    :type vport: const struct vport \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff where portids should be appended.
+    :type skb: struct sk_buff \*
 
 .. _`ovs_vport_get_upcall_portids.description`:
 
@@ -292,11 +312,13 @@ ovs_vport_find_upcall_portid
 
     find the upcall portid to send upcall.
 
-    :param const struct vport \*vport:
+    :param vport:
         vport from which the missed packet is received.
+    :type vport: const struct vport \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb that the missed packet was received.
+    :type skb: struct sk_buff \*
 
 .. _`ovs_vport_find_upcall_portid.description`:
 
@@ -317,14 +339,17 @@ ovs_vport_receive
 
     pass up received packet to the datapath for processing
 
-    :param struct vport \*vport:
+    :param vport:
         vport that received the packet
+    :type vport: struct vport \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb that was received
+    :type skb: struct sk_buff \*
 
-    :param const struct ip_tunnel_info \*tun_info:
+    :param tun_info:
         *undescribed*
+    :type tun_info: const struct ip_tunnel_info \*
 
 .. _`ovs_vport_receive.description`:
 

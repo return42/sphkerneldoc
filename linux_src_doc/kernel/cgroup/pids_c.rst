@@ -10,11 +10,13 @@ pids_cancel
 
     uncharge the local pid count
 
-    :param struct pids_cgroup \*pids:
+    :param pids:
         the pid cgroup state
+    :type pids: struct pids_cgroup \*
 
-    :param int num:
+    :param num:
         the number of pids to cancel
+    :type num: int
 
 .. _`pids_cancel.description`:
 
@@ -33,11 +35,13 @@ pids_uncharge
 
     hierarchically uncharge the pid count
 
-    :param struct pids_cgroup \*pids:
+    :param pids:
         the pid cgroup state
+    :type pids: struct pids_cgroup \*
 
-    :param int num:
+    :param num:
         the number of pids to uncharge
+    :type num: int
 
 .. _`pids_charge`:
 
@@ -48,11 +52,13 @@ pids_charge
 
     hierarchically charge the pid count
 
-    :param struct pids_cgroup \*pids:
+    :param pids:
         the pid cgroup state
+    :type pids: struct pids_cgroup \*
 
-    :param int num:
+    :param num:
         the number of pids to charge
+    :type num: int
 
 .. _`pids_charge.description`:
 
@@ -72,11 +78,13 @@ pids_try_charge
 
     hierarchically try to charge the pid count
 
-    :param struct pids_cgroup \*pids:
+    :param pids:
         the pid cgroup state
+    :type pids: struct pids_cgroup \*
 
-    :param int num:
+    :param num:
         the number of pids to charge
+    :type num: int
 
 .. _`pids_try_charge.description`:
 

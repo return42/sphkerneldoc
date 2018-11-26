@@ -10,20 +10,24 @@ mpage_readpages
 
     populate an address space with some pages & start reads against them
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space
+    :type mapping: struct address_space \*
 
-    :param struct list_head \*pages:
+    :param pages:
         The address of a list_head which contains the target pages.  These
         pages have their ->index populated and are otherwise uninitialised.
-        The page at \ ``pages``\ ->prev has the lowest file offset, and reads should be
-        issued in \ ``pages``\ ->prev to \ ``pages``\ ->next order.
+        The page at \ ``pages->prev``\  has the lowest file offset, and reads should be
+        issued in \ ``pages->prev``\  to \ ``pages->next``\  order.
+    :type pages: struct list_head \*
 
-    :param unsigned nr_pages:
+    :param nr_pages:
         The number of pages at *@pages
+    :type nr_pages: unsigned
 
-    :param get_block_t get_block:
+    :param get_block:
         The filesystem's block mapper function.
+    :type get_block: get_block_t
 
 .. _`mpage_readpages.description`:
 
@@ -82,16 +86,19 @@ mpage_writepages
 
     walk the list of dirty pages of the given address space & \ :c:func:`writepage`\  all of them
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space structure to write
+    :type mapping: struct address_space \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         subtract the number of written pages from *@wbc->nr_to_write
+    :type wbc: struct writeback_control \*
 
-    :param get_block_t get_block:
+    :param get_block:
         the filesystem's block mapper function.
         If this is NULL then use a_ops->writepage.  Otherwise, go
         direct-to-BIO.
+    :type get_block: get_block_t
 
 .. _`mpage_writepages.description`:
 

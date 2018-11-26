@@ -49,8 +49,9 @@ meson_spifc_wait_ready
 
     wait for the current operation to terminate
 
-    :param struct meson_spifc \*spifc:
+    :param spifc:
         the Meson SPI device
+    :type spifc: struct meson_spifc \*
 
 .. _`meson_spifc_wait_ready.return`:
 
@@ -68,14 +69,17 @@ meson_spifc_drain_buffer
 
     copy data from device buffer to memory
 
-    :param struct meson_spifc \*spifc:
+    :param spifc:
         the Meson SPI device
+    :type spifc: struct meson_spifc \*
 
-    :param u8 \*buf:
+    :param buf:
         the destination buffer
+    :type buf: u8 \*
 
-    :param int len:
+    :param len:
         number of bytes to copy
+    :type len: int
 
 .. _`meson_spifc_fill_buffer`:
 
@@ -86,14 +90,17 @@ meson_spifc_fill_buffer
 
     copy data from memory to device buffer
 
-    :param struct meson_spifc \*spifc:
+    :param spifc:
         the Meson SPI device
+    :type spifc: struct meson_spifc \*
 
-    :param const u8 \*buf:
+    :param buf:
         the source buffer
+    :type buf: const u8 \*
 
-    :param int len:
+    :param len:
         number of bytes to copy
+    :type len: int
 
 .. _`meson_spifc_setup_speed`:
 
@@ -104,11 +111,13 @@ meson_spifc_setup_speed
 
     program the clock divider
 
-    :param struct meson_spifc \*spifc:
+    :param spifc:
         the Meson SPI device
+    :type spifc: struct meson_spifc \*
 
-    :param u32 speed:
+    :param speed:
         desired speed in Hz
+    :type speed: u32
 
 .. _`meson_spifc_txrx`:
 
@@ -119,23 +128,29 @@ meson_spifc_txrx
 
     transfer a chunk of data
 
-    :param struct meson_spifc \*spifc:
+    :param spifc:
         the Meson SPI device
+    :type spifc: struct meson_spifc \*
 
-    :param struct spi_transfer \*xfer:
+    :param xfer:
         the current SPI transfer
+    :type xfer: struct spi_transfer \*
 
-    :param int offset:
+    :param offset:
         offset of the data to transfer
+    :type offset: int
 
-    :param int len:
+    :param len:
         length of the data to transfer
+    :type len: int
 
-    :param bool last_xfer:
+    :param last_xfer:
         whether this is the last transfer of the message
+    :type last_xfer: bool
 
-    :param bool last_chunk:
+    :param last_chunk:
         whether this is the last chunk of the transfer
+    :type last_chunk: bool
 
 .. _`meson_spifc_txrx.return`:
 
@@ -153,14 +168,17 @@ meson_spifc_transfer_one
 
     perform a single transfer
 
-    :param struct spi_master \*master:
+    :param master:
         the SPI master
+    :type master: struct spi_master \*
 
-    :param struct spi_device \*spi:
+    :param spi:
         the SPI device
+    :type spi: struct spi_device \*
 
-    :param struct spi_transfer \*xfer:
+    :param xfer:
         the current SPI transfer
+    :type xfer: struct spi_transfer \*
 
 .. _`meson_spifc_transfer_one.return`:
 
@@ -178,8 +196,9 @@ meson_spifc_hw_init
 
     reset and initialize the SPI controller
 
-    :param struct meson_spifc \*spifc:
+    :param spifc:
         the Meson SPI device
+    :type spifc: struct meson_spifc \*
 
 .. This file was automatic generated / don't edit.
 

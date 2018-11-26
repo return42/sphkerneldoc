@@ -10,20 +10,24 @@ find_cpio_data
 
     Search for files in an uncompressed cpio
 
-    :param const char \*path:
+    :param path:
         The directory to search for, including a slash at the end
+    :type path: const char \*
 
-    :param void \*data:
+    :param data:
         Pointer to the the cpio archive or a header inside
+    :type data: void \*
 
-    :param size_t len:
+    :param len:
         Remaining length of the cpio based on data pointer
+    :type len: size_t
 
-    :param long \*nextoff:
+    :param nextoff:
         When a matching file is found, this is the offset from the
         beginning of the cpio to the beginning of the next file, not the
         matching file itself. It can be used to iterate through the cpio
         to find all files inside of a directory path.
+    :type nextoff: long \*
 
 .. This file was automatic generated / don't edit.
 

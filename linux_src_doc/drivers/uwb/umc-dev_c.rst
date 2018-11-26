@@ -10,11 +10,13 @@ umc_device_create
 
     allocate a child UMC device
 
-    :param struct device \*parent:
+    :param parent:
         parent of the new UMC device.
+    :type parent: struct device \*
 
-    :param int n:
+    :param n:
         index of the new device.
+    :type n: int
 
 .. _`umc_device_create.description`:
 
@@ -33,8 +35,9 @@ umc_device_register
 
     register a UMC device
 
-    :param struct umc_dev \*umc:
+    :param umc:
         pointer to the UMC device
+    :type umc: struct umc_dev \*
 
 .. _`umc_device_register.description`:
 
@@ -53,8 +56,9 @@ umc_device_unregister
 
     unregister a UMC device
 
-    :param struct umc_dev \*umc:
+    :param umc:
         pointer to the UMC device
+    :type umc: struct umc_dev \*
 
 .. _`umc_device_unregister.description`:
 

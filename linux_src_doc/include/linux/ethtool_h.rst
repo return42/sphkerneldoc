@@ -52,11 +52,13 @@ ethtool_rxfh_indir_default
 
     get default value for RX flow hash indirection
 
-    :param u32 index:
+    :param index:
         Index in RX flow hash indirection table
+    :type index: u32
 
-    :param u32 n_rx_rings:
+    :param n_rx_rings:
         Number of RX rings to use
+    :type n_rx_rings: u32
 
 .. _`ethtool_rxfh_indir_default.description`:
 
@@ -74,11 +76,13 @@ ethtool_link_ksettings_zero_link_mode
 
     clear link_ksettings link mode mask
 
-    :param  ptr:
+    :param ptr:
         pointer to struct ethtool_link_ksettings
+    :type ptr: 
 
-    :param  name:
+    :param name:
         one of supported/advertising/lp_advertising
+    :type name: 
 
 .. _`ethtool_link_ksettings_add_link_mode`:
 
@@ -89,15 +93,18 @@ ethtool_link_ksettings_add_link_mode
 
     set bit in link_ksettings link mode mask
 
-    :param  ptr:
+    :param ptr:
         pointer to struct ethtool_link_ksettings
+    :type ptr: 
 
-    :param  name:
+    :param name:
         one of supported/advertising/lp_advertising
+    :type name: 
 
-    :param  mode:
+    :param mode:
         one of the ETHTOOL_LINK_MODE\_\*\_BIT
         (not atomic, no bound checking)
+    :type mode: 
 
 .. _`ethtool_link_ksettings_del_link_mode`:
 
@@ -108,15 +115,18 @@ ethtool_link_ksettings_del_link_mode
 
     clear bit in link_ksettings link mode mask
 
-    :param  ptr:
+    :param ptr:
         pointer to struct ethtool_link_ksettings
+    :type ptr: 
 
-    :param  name:
+    :param name:
         one of supported/advertising/lp_advertising
+    :type name: 
 
-    :param  mode:
+    :param mode:
         one of the ETHTOOL_LINK_MODE\_\*\_BIT
         (not atomic, no bound checking)
+    :type mode: 
 
 .. _`ethtool_link_ksettings_test_link_mode`:
 
@@ -127,15 +137,18 @@ ethtool_link_ksettings_test_link_mode
 
     test bit in ksettings link mode mask
 
-    :param  ptr:
+    :param ptr:
         pointer to struct ethtool_link_ksettings
+    :type ptr: 
 
-    :param  name:
+    :param name:
         one of supported/advertising/lp_advertising
+    :type name: 
 
-    :param  mode:
+    :param mode:
         one of the ETHTOOL_LINK_MODE\_\*\_BIT
         (not atomic, no bound checking)
+    :type mode: 
 
 .. _`ethtool_link_ksettings_test_link_mode.description`:
 
@@ -153,11 +166,13 @@ ethtool_intersect_link_masks
 
     Given two link masks, AND them together
 
-    :param struct ethtool_link_ksettings \*dst:
+    :param dst:
         first mask and where result is stored
+    :type dst: struct ethtool_link_ksettings \*
 
-    :param struct ethtool_link_ksettings \*src:
+    :param src:
         second mask to intersect with
+    :type src: struct ethtool_link_ksettings \*
 
 .. _`ethtool_intersect_link_masks.description`:
 
@@ -183,8 +198,6 @@ Definition
 .. code-block:: c
 
     struct ethtool_ops {
-        int (*get_settings)(struct net_device *, struct ethtool_cmd *);
-        int (*set_settings)(struct net_device *, struct ethtool_cmd *);
         void (*get_drvinfo)(struct net_device *, struct ethtool_drvinfo *);
         int (*get_regs_len)(struct net_device *);
         void (*get_regs)(struct net_device *, struct ethtool_regs *, void *);
@@ -247,18 +260,6 @@ Definition
 
 Members
 -------
-
-get_settings
-    DEPRECATED, use \ ``get_link_ksettings``\ /%set_link_ksettings
-    API. Get various device settings including Ethernet link
-    settings. The \ ``cmd``\  parameter is expected to have been cleared
-    before get_settings is called. Returns a negative error code
-    or zero.
-
-set_settings
-    DEPRECATED, use \ ``get_link_ksettings``\ /%set_link_ksettings
-    API. Set various device settings including Ethernet link
-    settings.  Returns a negative error code or zero.
 
 get_drvinfo
     Report driver/device information.  Should only set the
@@ -474,21 +475,18 @@ set_per_queue_coalesce
     Returns a negative error code or zero.
 
 get_link_ksettings
-    When defined, takes precedence over the
-    \ ``get_settings``\  method. Get various device settings
-    including Ethernet link settings. The \ ``cmd``\  and
-    \ ``link_mode_masks_nwords``\  fields should be ignored (use
-    \ ``__ETHTOOL_LINK_MODE_MASK_NBITS``\  instead of the latter), any
-    change to them will be overwritten by kernel. Returns a
-    negative error code or zero.
+    Get various device settings including Ethernet link
+    settings. The \ ``cmd``\  and \ ``link_mode_masks_nwords``\  fields should be
+    ignored (use \ ``__ETHTOOL_LINK_MODE_MASK_NBITS``\  instead of the latter),
+    any change to them will be overwritten by kernel. Returns a negative
+    error code or zero.
 
 set_link_ksettings
-    When defined, takes precedence over the
-    \ ``set_settings``\  method. Set various device settings including
-    Ethernet link settings. The \ ``cmd``\  and \ ``link_mode_masks_nwords``\ 
-    fields should be ignored (use \ ``__ETHTOOL_LINK_MODE_MASK_NBITS``\ 
-    instead of the latter), any change to them will be overwritten
-    by kernel. Returns a negative error code or zero.
+    Set various device settings including Ethernet link
+    settings. The \ ``cmd``\  and \ ``link_mode_masks_nwords``\  fields should be
+    ignored (use \ ``__ETHTOOL_LINK_MODE_MASK_NBITS``\  instead of the latter),
+    any change to them will be overwritten by kernel. Returns a negative
+    error code or zero.
 
 get_fecparam
     Get the network device Forward Error Correction parameters.

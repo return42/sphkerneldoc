@@ -10,11 +10,13 @@ scif_recv_mark
 
     Handle SCIF_MARK request
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_mark.description`:
 
@@ -32,11 +34,13 @@ scif_recv_mark_resp
 
     Handle SCIF_MARK_(N)ACK messages.
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_mark_resp.description`:
 
@@ -54,11 +58,13 @@ scif_recv_wait
 
     Handle SCIF_WAIT request
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_wait.description`:
 
@@ -76,11 +82,13 @@ scif_recv_wait_resp
 
     Handle SCIF_WAIT_(N)ACK messages.
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_wait_resp.description`:
 
@@ -98,11 +106,13 @@ scif_recv_sig_local
 
     Handle SCIF_SIG_LOCAL request
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_sig_local.description`:
 
@@ -120,11 +130,13 @@ scif_recv_sig_remote
 
     Handle SCIF_SIGNAL_REMOTE request
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_sig_remote.description`:
 
@@ -142,11 +154,13 @@ scif_recv_sig_resp
 
     Handle SCIF_SIG_(N)ACK messages.
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_sig_resp.description`:
 
@@ -162,8 +176,9 @@ scif_rma_handle_remote_fences
 
 .. c:function:: void scif_rma_handle_remote_fences( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`scif_rma_handle_remote_fences.description`:
 
@@ -179,11 +194,13 @@ scif_send_fence_mark
 
 .. c:function:: int scif_send_fence_mark(scif_epd_t epd, int *out_mark)
 
-    :param scif_epd_t epd:
+    :param epd:
         end point descriptor.
+    :type epd: scif_epd_t
 
-    :param int \*out_mark:
+    :param out_mark:
         Output DMA mark reported by peer.
+    :type out_mark: int \*
 
 .. _`scif_send_fence_mark.description`:
 
@@ -199,11 +216,13 @@ scif_send_fence_wait
 
 .. c:function:: int scif_send_fence_wait(scif_epd_t epd, int mark)
 
-    :param scif_epd_t epd:
+    :param epd:
         end point descriptor.
+    :type epd: scif_epd_t
 
-    :param int mark:
+    :param mark:
         DMA mark to wait for.
+    :type mark: int
 
 .. _`scif_send_fence_wait.description`:
 
@@ -221,23 +240,29 @@ scif_send_fence_signal
 
     \ ``epd``\  - endpoint descriptor \ ``loff``\  - local offset \ ``lval``\  - local value to write to loffset \ ``roff``\  - remote offset \ ``rval``\  - remote value to write to roffset \ ``flags``\  - flags
 
-    :param scif_epd_t epd:
+    :param epd:
         *undescribed*
+    :type epd: scif_epd_t
 
-    :param off_t roff:
+    :param roff:
         *undescribed*
+    :type roff: off_t
 
-    :param u64 rval:
+    :param rval:
         *undescribed*
+    :type rval: u64
 
-    :param off_t loff:
+    :param loff:
         *undescribed*
+    :type loff: off_t
 
-    :param u64 lval:
+    :param lval:
         *undescribed*
+    :type lval: u64
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`scif_send_fence_signal.description`:
 

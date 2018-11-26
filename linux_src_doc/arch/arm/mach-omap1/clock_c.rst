@@ -10,8 +10,9 @@ recalculate_root_clocks
 
     recalculate and propagate all root clocks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`recalculate_root_clocks.description`:
 
@@ -31,8 +32,9 @@ clk_preinit
 
     initialize any fields in the struct clk before clk init
 
-    :param struct clk \*clk:
+    :param clk:
         struct clk \* to initialize
+    :type clk: struct clk \*
 
 .. _`clk_preinit.description`:
 
@@ -51,8 +53,9 @@ omap_clk_get_by_name
 
     locate OMAP struct clk by its name
 
-    :param const char \*name:
+    :param name:
         name of the struct clk to locate
+    :type name: const char \*
 
 .. _`omap_clk_get_by_name.description`:
 

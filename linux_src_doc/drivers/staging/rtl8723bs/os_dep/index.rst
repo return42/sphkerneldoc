@@ -7,5 +7,4 @@ os_dep
 .. toctree::
     :maxdepth: 1
 
-    ioctl_linux_c
     osdep_service_c

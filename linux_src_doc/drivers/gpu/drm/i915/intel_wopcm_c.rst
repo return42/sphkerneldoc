@@ -45,8 +45,9 @@ intel_wopcm_init_early
 
     Early initialization of the WOPCM.
 
-    :param struct intel_wopcm \*wopcm:
+    :param wopcm:
         pointer to intel_wopcm.
+    :type wopcm: struct intel_wopcm \*
 
 .. _`intel_wopcm_init_early.description`:
 
@@ -64,8 +65,9 @@ intel_wopcm_init
 
     Initialize the WOPCM structure.
 
-    :param struct intel_wopcm \*wopcm:
+    :param wopcm:
         pointer to intel_wopcm.
+    :type wopcm: struct intel_wopcm \*
 
 .. _`intel_wopcm_init.description`:
 
@@ -94,8 +96,9 @@ intel_wopcm_init_hw
 
     Setup GuC WOPCM registers.
 
-    :param struct intel_wopcm \*wopcm:
+    :param wopcm:
         pointer to intel_wopcm.
+    :type wopcm: struct intel_wopcm \*
 
 .. _`intel_wopcm_init_hw.description`:
 

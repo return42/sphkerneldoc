@@ -66,11 +66,13 @@ pm8xxx_vib_set
 
     handler to start/stop vibration
 
-    :param struct pm8xxx_vib \*vib:
+    :param vib:
         pointer to vibrator structure
+    :type vib: struct pm8xxx_vib \*
 
-    :param bool on:
+    :param on:
         state to set
+    :type on: bool
 
 .. _`pm8xxx_work_handler`:
 
@@ -81,8 +83,9 @@ pm8xxx_work_handler
 
     worker to set vibration level
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work_struct
+    :type work: struct work_struct \*
 
 .. _`pm8xxx_vib_close`:
 
@@ -93,8 +96,9 @@ pm8xxx_vib_close
 
     callback of input close callback
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device pointer
+    :type dev: struct input_dev \*
 
 .. _`pm8xxx_vib_close.description`:
 
@@ -112,14 +116,17 @@ pm8xxx_vib_play_effect
 
     function to handle vib effects.
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device pointer
+    :type dev: struct input_dev \*
 
-    :param void \*data:
+    :param data:
         data of effect
+    :type data: void \*
 
-    :param struct ff_effect \*effect:
+    :param effect:
         effect to play
+    :type effect: struct ff_effect \*
 
 .. _`pm8xxx_vib_play_effect.description`:
 

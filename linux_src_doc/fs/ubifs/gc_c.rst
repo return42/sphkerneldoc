@@ -10,8 +10,9 @@ switch_gc_head
 
     switch the garbage collection journal head.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`switch_gc_head.description`:
 
@@ -19,7 +20,7 @@ Description
 -----------
 
 This function switch the GC head to the next LEB which is reserved in
-\ ``c``\ ->gc_lnum. Returns \ ``0``\  in case of success, \ ``-EAGAIN``\  if commit is required,
+\ ``c->gc_lnum``\ . Returns \ ``0``\  in case of success, \ ``-EAGAIN``\  if commit is required,
 and other negative error code in case of failures.
 
 .. _`data_nodes_cmp`:
@@ -31,14 +32,17 @@ data_nodes_cmp
 
     compare 2 data nodes.
 
-    :param void \*priv:
+    :param priv:
         UBIFS file-system description object
+    :type priv: void \*
 
-    :param struct list_head \*a:
+    :param a:
         first data node
+    :type a: struct list_head \*
 
-    :param struct list_head \*b:
+    :param b:
         second data node
+    :type b: struct list_head \*
 
 .. _`data_nodes_cmp.description`:
 
@@ -57,17 +61,21 @@ sort_nodes
 
     sort nodes for GC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_scan_leb \*sleb:
+    :param sleb:
         describes nodes to sort and contains the result on exit
+    :type sleb: struct ubifs_scan_leb \*
 
-    :param struct list_head \*nondata:
+    :param nondata:
         contains non-data nodes on exit
+    :type nondata: struct list_head \*
 
-    :param int \*min:
+    :param min:
         minimum node size is returned here
+    :type min: int \*
 
 .. _`sort_nodes.description`:
 
@@ -76,7 +84,7 @@ Description
 
 This function sorts the list of inodes to garbage collect. First of all, it
 kills obsolete nodes and separates data and non-data nodes to the
-\ ``sleb``\ ->nodes and \ ``nondata``\  lists correspondingly.
+\ ``sleb->nodes``\  and \ ``nondata``\  lists correspondingly.
 
 Data nodes are then sorted in block number order - this is important for
 bulk-read; data nodes with lower inode number go before data nodes with
@@ -103,17 +111,21 @@ move_node
 
     move a node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_scan_leb \*sleb:
+    :param sleb:
         describes the LEB to move nodes from
+    :type sleb: struct ubifs_scan_leb \*
 
-    :param struct ubifs_scan_node \*snod:
+    :param snod:
         the mode to move
+    :type snod: struct ubifs_scan_node \*
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         write-buffer to move node to
+    :type wbuf: struct ubifs_wbuf \*
 
 .. _`move_node.description`:
 
@@ -133,11 +145,13 @@ move_nodes
 
     move nodes.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_scan_leb \*sleb:
+    :param sleb:
         describes the LEB to move nodes from
+    :type sleb: struct ubifs_scan_leb \*
 
 .. _`move_nodes.description`:
 
@@ -158,8 +172,9 @@ gc_sync_wbufs
 
     sync write-buffers for GC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`gc_sync_wbufs.description`:
 
@@ -184,11 +199,13 @@ ubifs_garbage_collect_leb
 
     garbage-collect a logical eraseblock.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*lp:
+    :param lp:
         describes the LEB to garbage collect
+    :type lp: struct ubifs_lprops \*
 
 .. _`ubifs_garbage_collect_leb.description`:
 
@@ -208,11 +225,13 @@ ubifs_garbage_collect
 
     UBIFS garbage collector.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int anyway:
+    :param anyway:
         do GC even if there are free LEBs
+    :type anyway: int
 
 .. _`ubifs_garbage_collect.description`:
 
@@ -234,7 +253,7 @@ if there is still no free space.
 
 There are many reasons why this function may return \ ``-EAGAIN``\ :
 o the log is full and there is no space to write an LEB reference for
-\ ``c``\ ->gc_lnum;
+\ ``c->gc_lnum``\ ;
 o the journal is too large and exceeds size limitations;
 o GC moved indexing LEBs, but they can be used only after the commit;
 o the shrinker fails to find clean znodes to free and requests the commit;
@@ -259,8 +278,9 @@ ubifs_gc_start_commit
 
     garbage collection at start of commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_gc_start_commit.description`:
 
@@ -283,8 +303,9 @@ ubifs_gc_end_commit
 
     garbage collection at end of commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_gc_end_commit.description`:
 
@@ -302,15 +323,16 @@ ubifs_destroy_idx_gc
 
     destroy idx_gc list.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_destroy_idx_gc.description`:
 
 Description
 -----------
 
-This function destroys the \ ``c``\ ->idx_gc list. It is called when unmounting
+This function destroys the \ ``c->idx_gc``\  list. It is called when unmounting
 so locks are not needed. Returns zero in case of success and a negative
 error code in case of failure.
 
@@ -323,8 +345,9 @@ ubifs_get_idx_gc_leb
 
     get a LEB from GC'd index LEB list.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_get_idx_gc_leb.description`:
 

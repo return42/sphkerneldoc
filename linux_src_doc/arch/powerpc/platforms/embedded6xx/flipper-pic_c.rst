@@ -10,8 +10,9 @@ flipper_quiesce
 
     quiesce flipper irq controller
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`flipper_quiesce.description`:
 

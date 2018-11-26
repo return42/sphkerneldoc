@@ -10,23 +10,29 @@ ntfs_collate
 
     collate two data items using a specified collation rule
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume to which the data items belong
+    :type vol: ntfs_volume \*
 
-    :param COLLATION_RULE cr:
+    :param cr:
         collation rule to use when comparing the items
+    :type cr: COLLATION_RULE
 
-    :param const void \*data1:
+    :param data1:
         first data item to collate
+    :type data1: const void \*
 
-    :param const int data1_len:
+    :param data1_len:
         length in bytes of \ ``data1``\ 
+    :type data1_len: const int
 
-    :param const void \*data2:
+    :param data2:
         second data item to collate
+    :type data2: const void \*
 
-    :param const int data2_len:
+    :param data2_len:
         length in bytes of \ ``data2``\ 
+    :type data2_len: const int
 
 .. _`ntfs_collate.description`:
 

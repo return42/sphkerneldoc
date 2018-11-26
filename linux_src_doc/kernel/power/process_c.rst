@@ -10,8 +10,9 @@ freeze_processes
 
     Signal user space processes to enter the refrigerator. The current thread will not be frozen.  The same process that calls freeze_processes must later call thaw_processes.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`freeze_processes.description`:
 
@@ -29,8 +30,9 @@ freeze_kernel_threads
 
     Make freezable kernel threads go to the refrigerator.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`freeze_kernel_threads.description`:
 

@@ -31,11 +31,13 @@ wil6210_thread_irq
 
 .. c:function:: irqreturn_t wil6210_thread_irq(int irq, void *cookie)
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*cookie:
+    :param cookie:
         *undescribed*
+    :type cookie: void \*
 
 .. This file was automatic generated / don't edit.
 

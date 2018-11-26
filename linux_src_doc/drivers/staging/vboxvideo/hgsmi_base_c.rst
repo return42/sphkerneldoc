@@ -10,11 +10,13 @@ hgsmi_report_flags_location
 
     \ ``param``\     ctx          the context of the guest heap to use. \ ``param``\     location     the offset chosen for the flags within guest VRAM. \ ``returns``\  0 on success, -errno on failure
 
-    :param struct gen_pool \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct gen_pool \*
 
-    :param u32 location:
+    :param location:
         *undescribed*
+    :type location: u32
 
 .. _`hgsmi_send_caps_info`:
 
@@ -25,11 +27,13 @@ hgsmi_send_caps_info
 
     related guest capabilities via an HGSMI command. \ ``param``\     ctx                 the context of the guest heap to use. \ ``param``\     caps                the capabilities to report, see vbva_caps. \ ``returns``\  0 on success, -errno on failure
 
-    :param struct gen_pool \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct gen_pool \*
 
-    :param u32 caps:
+    :param caps:
         *undescribed*
+    :type caps: u32
 
 .. _`hgsmi_query_conf`:
 
@@ -40,14 +44,17 @@ hgsmi_query_conf
 
     \ ``param``\   ctx        the context containing the heap used \ ``param``\   index      the index of the parameter to query, \ ``see``\  vbva_conf32::index \ ``param``\   value_ret  where to store the value of the parameter on success \ ``returns``\  0 on success, -errno on failure
 
-    :param struct gen_pool \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct gen_pool \*
 
-    :param u32 index:
+    :param index:
         *undescribed*
+    :type index: u32
 
-    :param u32 \*value_ret:
+    :param value_ret:
         *undescribed*
+    :type value_ret: u32 \*
 
 .. _`hgsmi_update_pointer_shape`:
 
@@ -56,29 +63,37 @@ hgsmi_update_pointer_shape
 
 .. c:function:: int hgsmi_update_pointer_shape(struct gen_pool *ctx, u32 flags, u32 hot_x, u32 hot_y, u32 width, u32 height, u8 *pixels, u32 len)
 
-    :param struct gen_pool \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct gen_pool \*
 
-    :param u32 flags:
+    :param flags:
         *undescribed*
+    :type flags: u32
 
-    :param u32 hot_x:
+    :param hot_x:
         *undescribed*
+    :type hot_x: u32
 
-    :param u32 hot_y:
+    :param hot_y:
         *undescribed*
+    :type hot_y: u32
 
-    :param u32 width:
+    :param width:
         *undescribed*
+    :type width: u32
 
-    :param u32 height:
+    :param height:
         *undescribed*
+    :type height: u32
 
-    :param u8 \*pixels:
+    :param pixels:
         *undescribed*
+    :type pixels: u8 \*
 
-    :param u32 len:
+    :param len:
         *undescribed*
+    :type len: u32
 
 .. _`hgsmi_update_pointer_shape.description`:
 
@@ -96,23 +111,29 @@ hgsmi_cursor_position
 
     to re-position its own cursor (though this is currently unlikely).  The current host cursor position is returned. \ ``param``\   ctx              The context containing the heap used. \ ``param``\   report_position  Are we reporting a position? \ ``param``\   x                Guest cursor X position. \ ``param``\   y                Guest cursor Y position. \ ``param``\   x_host           Host cursor X position is stored here.  Optional. \ ``param``\   y_host           Host cursor Y position is stored here.  Optional. \ ``returns``\  0 on success, -errno on failure
 
-    :param struct gen_pool \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct gen_pool \*
 
-    :param bool report_position:
+    :param report_position:
         *undescribed*
+    :type report_position: bool
 
-    :param u32 x:
+    :param x:
         *undescribed*
+    :type x: u32
 
-    :param u32 y:
+    :param y:
         *undescribed*
+    :type y: u32
 
-    :param u32 \*x_host:
+    :param x_host:
         *undescribed*
+    :type x_host: u32 \*
 
-    :param u32 \*y_host:
+    :param y_host:
         *undescribed*
+    :type y_host: u32 \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,20 +10,25 @@ rsi_sdio_set_cmd52_arg
 
     This function prepares cmd 52 read/write arg.
 
-    :param bool rw:
+    :param rw:
         Read/write
+    :type rw: bool
 
-    :param u8 func:
+    :param func:
         function number
+    :type func: u8
 
-    :param u8 raw:
+    :param raw:
         indicates whether to perform read after write
+    :type raw: u8
 
-    :param u32 address:
+    :param address:
         address to which to read/write
+    :type address: u32
 
-    :param u8 writedata:
+    :param writedata:
         data to write
+    :type writedata: u8
 
 .. _`rsi_sdio_set_cmd52_arg.return`:
 
@@ -41,14 +46,17 @@ rsi_cmd52writebyte
 
     This function issues cmd52 byte write onto the card.
 
-    :param struct mmc_card \*card:
+    :param card:
         Pointer to the mmc_card.
+    :type card: struct mmc_card \*
 
-    :param u32 address:
+    :param address:
         Address to write.
+    :type address: u32
 
-    :param u8 byte:
+    :param byte:
         Data to write.
+    :type byte: u8
 
 .. _`rsi_cmd52writebyte.return`:
 
@@ -66,14 +74,17 @@ rsi_cmd52readbyte
 
     This function issues cmd52 byte read onto the card.
 
-    :param struct mmc_card \*card:
+    :param card:
         Pointer to the mmc_card.
+    :type card: struct mmc_card \*
 
-    :param u32 address:
+    :param address:
         Address to read from.
+    :type address: u32
 
-    :param u8 \*byte:
+    :param byte:
         Variable to store read value.
+    :type byte: u8 \*
 
 .. _`rsi_cmd52readbyte.return`:
 
@@ -91,20 +102,25 @@ rsi_issue_sdiocommand
 
     This function issues sdio commands.
 
-    :param struct sdio_func \*func:
+    :param func:
         Pointer to the sdio_func structure.
+    :type func: struct sdio_func \*
 
-    :param u32 opcode:
+    :param opcode:
         Opcode value.
+    :type opcode: u32
 
-    :param u32 arg:
+    :param arg:
         Arguments to pass.
+    :type arg: u32
 
-    :param u32 flags:
+    :param flags:
         Flags which are set.
+    :type flags: u32
 
-    :param u32 \*resp:
+    :param resp:
         Pointer to store response.
+    :type resp: u32 \*
 
 .. _`rsi_issue_sdiocommand.return`:
 
@@ -122,8 +138,9 @@ rsi_handle_interrupt
 
     This function is called upon the occurence of an interrupt.
 
-    :param struct sdio_func \*function:
+    :param function:
         Pointer to the sdio_func structure.
+    :type function: struct sdio_func \*
 
 .. _`rsi_handle_interrupt.return`:
 
@@ -141,8 +158,9 @@ rsi_reset_card
 
     This function resets and re-initializes the card.
 
-    :param struct sdio_func \*pfunction:
+    :param pfunction:
         Pointer to the sdio_func structure.
+    :type pfunction: struct sdio_func \*
 
 .. _`rsi_reset_card.return`:
 
@@ -160,11 +178,13 @@ rsi_setclock
 
     This function sets the clock frequency.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u32 freq:
+    :param freq:
         Clock frequency.
+    :type freq: u32
 
 .. _`rsi_setclock.return`:
 
@@ -182,11 +202,13 @@ rsi_setblocklength
 
     This function sets the host block length.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u32 length:
+    :param length:
         Block length to be set.
+    :type length: u32
 
 .. _`rsi_setblocklength.return`:
 
@@ -204,8 +226,9 @@ rsi_setupcard
 
     This function queries and sets the card's features.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
 .. _`rsi_setupcard.return`:
 
@@ -223,14 +246,17 @@ rsi_sdio_read_register
 
     This function reads one byte of information from a register.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u32 addr:
+    :param addr:
         Address of the register.
+    :type addr: u32
 
-    :param u8 \*data:
+    :param data:
         Pointer to the data that stores the data read.
+    :type data: u8 \*
 
 .. _`rsi_sdio_read_register.return`:
 
@@ -248,17 +274,21 @@ rsi_sdio_write_register
 
     This function writes one byte of information into a register.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u8 function:
+    :param function:
         Function Number.
+    :type function: u8
 
-    :param u32 addr:
+    :param addr:
         Address of the register.
+    :type addr: u32
 
-    :param u8 \*data:
+    :param data:
         Pointer to the data tha has to be written.
+    :type data: u8 \*
 
 .. _`rsi_sdio_write_register.return`:
 
@@ -276,11 +306,13 @@ rsi_sdio_ack_intr
 
     This function acks the interrupt received.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u8 int_bit:
+    :param int_bit:
         Interrupt bit to write into register.
+    :type int_bit: u8
 
 .. _`rsi_sdio_ack_intr.return`:
 
@@ -298,17 +330,21 @@ rsi_sdio_read_register_multiple
 
     This function read multiple bytes of information from the SD card.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u32 addr:
+    :param addr:
         Address of the register.
+    :type addr: u32
 
-    :param u8 \*data:
+    :param data:
         Pointer to the read data.
+    :type data: u8 \*
 
-    :param u16 count:
+    :param count:
         Number of multiple bytes to be read.
+    :type count: u16
 
 .. _`rsi_sdio_read_register_multiple.return`:
 
@@ -326,17 +362,21 @@ rsi_sdio_write_register_multiple
 
     This function writes multiple bytes of information to the SD card.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u32 addr:
+    :param addr:
         Address of the register.
+    :type addr: u32
 
-    :param u8 \*data:
+    :param data:
         Pointer to the data that has to be written.
+    :type data: u8 \*
 
-    :param u16 count:
+    :param count:
         Number of multiple bytes to be written.
+    :type count: u16
 
 .. _`rsi_sdio_write_register_multiple.return`:
 
@@ -354,14 +394,17 @@ rsi_sdio_host_intf_write_pkt
 
     This function writes the packet to device.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u8 \*pkt:
+    :param pkt:
         Pointer to the data to be written on to the device.
+    :type pkt: u8 \*
 
-    :param u32 len:
+    :param len:
         length of the data to be written on to the device.
+    :type len: u32
 
 .. _`rsi_sdio_host_intf_write_pkt.return`:
 
@@ -379,14 +422,17 @@ rsi_sdio_host_intf_read_pkt
 
     This function reads the packet
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter data structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u8 \*pkt:
+    :param pkt:
         Pointer to the packet data to be read from the the device.
+    :type pkt: u8 \*
 
-    :param u32 length:
+    :param length:
         Length of the data to be read from the device.
+    :type length: u32
 
 .. _`rsi_sdio_host_intf_read_pkt.return`:
 
@@ -404,11 +450,13 @@ rsi_init_sdio_interface
 
     This function does init specific to SDIO.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter data structure.
+    :type adapter: struct rsi_hw \*
 
-    :param struct sdio_func \*pfunction:
+    :param pfunction:
         *undescribed*
+    :type pfunction: struct sdio_func \*
 
 .. _`rsi_init_sdio_interface.return`:
 
@@ -426,11 +474,13 @@ rsi_probe
 
     This function is called by kernel when the driver provided Vendor and device IDs are matched. All the initialization work is done here.
 
-    :param struct sdio_func \*pfunction:
+    :param pfunction:
         Pointer to the sdio_func structure.
+    :type pfunction: struct sdio_func \*
 
-    :param const struct sdio_device_id \*id:
+    :param id:
         Pointer to sdio_device_id structure.
+    :type id: const struct sdio_device_id \*
 
 .. _`rsi_probe.return`:
 
@@ -448,8 +498,9 @@ rsi_disconnect
 
     This function performs the reverse of the probe function.
 
-    :param struct sdio_func \*pfunction:
+    :param pfunction:
         Pointer to the sdio_func structure.
+    :type pfunction: struct sdio_func \*
 
 .. _`rsi_disconnect.return`:
 
@@ -467,8 +518,9 @@ rsi_module_init
 
     This function registers the sdio module.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rsi_module_init.return`:
 
@@ -486,8 +538,9 @@ rsi_module_exit
 
     This function unregisters the sdio module.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rsi_module_exit.return`:
 

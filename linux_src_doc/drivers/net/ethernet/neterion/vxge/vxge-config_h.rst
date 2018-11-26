@@ -8,8 +8,9 @@ vxge_assert
 
 .. c:function::  vxge_assert( test)
 
-    :param  test:
+    :param test:
         C-condition to check
+    :type test: 
 
 .. _`vxge_assert.description`:
 
@@ -1302,8 +1303,9 @@ vxge_hw_ring_rxd_size_get
 
     Get the size of ring descriptor.
 
-    :param u32 buf_mode:
+    :param buf_mode:
         Buffer mode (1, 3 or 5)
+    :type buf_mode: u32
 
 .. _`vxge_hw_ring_rxd_size_get.description`:
 
@@ -1321,8 +1323,9 @@ vxge_hw_ring_rxds_per_block_get
 
     Get the number of rxds per block.
 
-    :param u32 buf_mode:
+    :param buf_mode:
         Buffer mode (1 buffer mode only)
+    :type buf_mode: u32
 
 .. _`vxge_hw_ring_rxds_per_block_get.description`:
 
@@ -1340,16 +1343,19 @@ vxge_hw_ring_rxd_1b_set
 
     Prepare 1-buffer-mode descriptor.
 
-    :param void \*rxdh:
+    :param rxdh:
         Descriptor handle.
+    :type rxdh: void \*
 
-    :param dma_addr_t dma_pointer:
+    :param dma_pointer:
         DMA address of a single receive buffer this descriptor
         should carry. Note that by the time vxge_hw_ring_rxd_1b_set is called,
         the receive buffer should be already mapped to the device
+    :type dma_pointer: dma_addr_t
 
-    :param u32 size:
+    :param size:
         Size of the receive \ ``dma_pointer``\  buffer.
+    :type size: u32
 
 .. _`vxge_hw_ring_rxd_1b_set.description`:
 
@@ -1371,14 +1377,17 @@ vxge_hw_ring_rxd_1b_get
 
     Get data from the completed 1-buf descriptor.
 
-    :param struct __vxge_hw_ring \*ring_handle:
+    :param ring_handle:
         *undescribed*
+    :type ring_handle: struct __vxge_hw_ring \*
 
-    :param void \*rxdh:
+    :param rxdh:
         Descriptor handle.
+    :type rxdh: void \*
 
-    :param u32 \*pkt_length:
+    :param pkt_length:
         Length (in bytes) of the data in the buffer pointed by
+    :type pkt_length: u32 \*
 
 .. _`vxge_hw_ring_rxd_1b_get.description`:
 
@@ -1398,14 +1407,17 @@ vxge_hw_ring_rxd_1b_info_get
 
     Get extended information associated with a completed receive descriptor for 1b mode.
 
-    :param struct __vxge_hw_ring \*ring_handle:
+    :param ring_handle:
         *undescribed*
+    :type ring_handle: struct __vxge_hw_ring \*
 
-    :param void \*rxdh:
+    :param rxdh:
         Descriptor handle.
+    :type rxdh: void \*
 
-    :param struct vxge_hw_ring_rxd_info \*rxd_info:
+    :param rxd_info:
         Descriptor information
+    :type rxd_info: struct vxge_hw_ring_rxd_info \*
 
 .. _`vxge_hw_ring_rxd_1b_info_get.description`:
 
@@ -1423,8 +1435,9 @@ vxge_hw_ring_rxd_private_get
 
     Get driver private per-descriptor data of 1b mode 3b mode ring.
 
-    :param void \*rxdh:
+    :param rxdh:
         Descriptor handle.
+    :type rxdh: void \*
 
 .. _`vxge_hw_ring_rxd_private_get.return`:
 
@@ -1443,12 +1456,14 @@ vxge_hw_fifo_txdl_cksum_set_bits
 
     Offload checksum.
 
-    :param void \*txdlh:
+    :param txdlh:
         Descriptor handle.
+    :type txdlh: void \*
 
-    :param u64 cksum_bits:
+    :param cksum_bits:
         Specifies which checksums are to be offloaded: IPv4,
         and/or TCP and/or UDP.
+    :type cksum_bits: u64
 
 .. _`vxge_hw_fifo_txdl_cksum_set_bits.description`:
 
@@ -1473,12 +1488,14 @@ vxge_hw_fifo_txdl_mss_set
 
     Set MSS.
 
-    :param void \*txdlh:
+    :param txdlh:
         Descriptor handle.
+    :type txdlh: void \*
 
-    :param int mss:
+    :param mss:
         MSS size for \_this\_ TCP connection. Passed by TCP stack down to the
         driver, which in turn inserts the MSS into the \ ``txdlh``\ .
+    :type mss: int
 
 .. _`vxge_hw_fifo_txdl_mss_set.description`:
 
@@ -1501,11 +1518,13 @@ vxge_hw_fifo_txdl_vlan_set
 
     Set VLAN tag.
 
-    :param void \*txdlh:
+    :param txdlh:
         Descriptor handle.
+    :type txdlh: void \*
 
-    :param u16 vlan_tag:
+    :param vlan_tag:
         16bit VLAN tag.
+    :type vlan_tag: u16
 
 .. _`vxge_hw_fifo_txdl_vlan_set.description`:
 
@@ -1524,8 +1543,9 @@ vxge_hw_fifo_txdl_private_get
 
     Retrieve per-descriptor private data.
 
-    :param void \*txdlh:
+    :param txdlh:
         Descriptor handle.
+    :type txdlh: void \*
 
 .. _`vxge_hw_fifo_txdl_private_get.description`:
 
@@ -1661,8 +1681,9 @@ vxge_hw_device_link_state_get
 
     Get link state.
 
-    :param struct __vxge_hw_device \*devh:
+    :param devh:
         HW device handle.
+    :type devh: struct __vxge_hw_device \*
 
 .. _`vxge_hw_device_link_state_get.description`:
 
@@ -1685,14 +1706,17 @@ vxge_debug_ll
 
 .. c:function::  vxge_debug_ll( level,  mask,  fmt,  ...)
 
-    :param  level:
+    :param level:
         level of debug verbosity.
+    :type level: 
 
-    :param  mask:
+    :param mask:
         mask for the debug
+    :type mask: 
 
-    :param  fmt:
+    :param fmt:
         printf like format string
+    :type fmt: 
 
     :param ellipsis ellipsis:
         variable arguments

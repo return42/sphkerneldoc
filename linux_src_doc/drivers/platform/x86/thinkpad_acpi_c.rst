@@ -10,11 +10,13 @@ tpacpi_check_quirks
 
     search BIOS/EC version on a list
 
-    :param const struct tpacpi_quirk \*qlist:
+    :param qlist:
         array of \ :c:type:`struct tpacpi_quirk <tpacpi_quirk>`\ 
+    :type qlist: const struct tpacpi_quirk \*
 
-    :param unsigned int qlist_size:
+    :param qlist_size:
         number of elements in \ ``qlist``\ 
+    :type qlist_size: unsigned int
 
 .. _`tpacpi_check_quirks.description`:
 
@@ -43,14 +45,17 @@ tpacpi_battery_acpi_eval
 
     ACPI extension. The specifics are that an error is marked in the 32rd bit of the response, so we just check that here.
 
-    :param char \*method:
+    :param method:
         *undescribed*
+    :type method: char \*
 
-    :param int \*ret:
+    :param ret:
         *undescribed*
+    :type ret: int \*
 
-    :param int param:
+    :param param:
         *undescribed*
+    :type param: int
 
 .. This file was automatic generated / don't edit.
 

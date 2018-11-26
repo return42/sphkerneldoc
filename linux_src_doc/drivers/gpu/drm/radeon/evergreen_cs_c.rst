@@ -10,8 +10,9 @@ evergreen_cs_packet_parse_vline
 
     parse userspace VLINE packet
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         *undescribed*
+    :type p: struct radeon_cs_parser \*
 
 .. _`evergreen_cs_packet_parse_vline.description`:
 
@@ -32,14 +33,17 @@ evergreen_cs_handle_reg
 
     process registers that need special handling.
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         *undescribed*
+    :type p: struct radeon_cs_parser \*
 
-    :param u32 reg:
+    :param reg:
         register we are testing
+    :type reg: u32
 
-    :param u32 idx:
+    :param idx:
         index into the cs buffer
+    :type idx: u32
 
 .. _`evergreen_is_safe_reg`:
 
@@ -50,11 +54,13 @@ evergreen_is_safe_reg
 
     check if register is authorized or not
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         *undescribed*
+    :type p: struct radeon_cs_parser \*
 
-    :param u32 reg:
+    :param reg:
         register we are testing
+    :type reg: u32
 
 .. _`evergreen_is_safe_reg.description`:
 
@@ -73,8 +79,9 @@ evergreen_dma_cs_parse
 
     parse the DMA IB
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         parser structure holding parsing context.
+    :type p: struct radeon_cs_parser \*
 
 .. _`evergreen_dma_cs_parse.description`:
 
@@ -95,11 +102,13 @@ evergreen_dma_ib_parse
 
     parse the DMA IB for VM
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         radeon_ib pointer
+    :type ib: struct radeon_ib \*
 
 .. _`evergreen_dma_ib_parse.description`:
 

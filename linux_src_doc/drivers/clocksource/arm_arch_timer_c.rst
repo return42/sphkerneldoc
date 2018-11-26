@@ -10,8 +10,9 @@ arch_timer_select_ppi
 
     Select suitable PPI for the current system.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`arch_timer_select_ppi.description`:
 

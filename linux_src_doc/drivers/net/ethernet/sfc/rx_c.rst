@@ -10,11 +10,13 @@ efx_init_rx_buffers
 
     create EFX_RX_BATCH page-based RX buffers
 
-    :param struct efx_rx_queue \*rx_queue:
+    :param rx_queue:
         Efx RX queue
+    :type rx_queue: struct efx_rx_queue \*
 
-    :param bool atomic:
+    :param atomic:
         *undescribed*
+    :type atomic: bool
 
 .. _`efx_init_rx_buffers.description`:
 
@@ -35,11 +37,13 @@ efx_fast_push_rx_descriptors
 
     push new RX descriptors quickly
 
-    :param struct efx_rx_queue \*rx_queue:
+    :param rx_queue:
         RX descriptor queue
+    :type rx_queue: struct efx_rx_queue \*
 
-    :param bool atomic:
+    :param atomic:
         *undescribed*
+    :type atomic: bool
 
 .. _`efx_fast_push_rx_descriptors.description`:
 
@@ -63,8 +67,9 @@ efx_filter_is_mc_recipient
 
     test whether spec is a multicast recipient
 
-    :param const struct efx_filter_spec \*spec:
+    :param spec:
         Specification to test
+    :type spec: const struct efx_filter_spec \*
 
 .. _`efx_filter_is_mc_recipient.return`:
 

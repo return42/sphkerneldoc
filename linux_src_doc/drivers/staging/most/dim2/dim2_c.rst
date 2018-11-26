@@ -162,8 +162,9 @@ dimcb_io_read
 
     callback from HAL to read an I/O register
 
-    :param u32 __iomem \*ptr32:
+    :param ptr32:
         register address
+    :type ptr32: u32 __iomem \*
 
 .. _`dimcb_io_write`:
 
@@ -174,11 +175,13 @@ dimcb_io_write
 
     callback from HAL to write value to an I/O register
 
-    :param u32 __iomem \*ptr32:
+    :param ptr32:
         register address
+    :type ptr32: u32 __iomem \*
 
-    :param u32 value:
+    :param value:
         value to write
+    :type value: u32
 
 .. _`dimcb_on_error`:
 
@@ -189,11 +192,13 @@ dimcb_on_error
 
     callback from HAL to report miscommunication between HDM and HAL
 
-    :param u8 error_id:
+    :param error_id:
         Error ID
+    :type error_id: u8
 
-    :param const char \*error_message:
+    :param error_message:
         Error message. Some text in a free format
+    :type error_message: const char \*
 
 .. _`try_start_dim_transfer`:
 
@@ -204,8 +209,9 @@ try_start_dim_transfer
 
     try to transfer a buffer on a channel
 
-    :param struct hdm_channel \*hdm_ch:
+    :param hdm_ch:
         channel specific data
+    :type hdm_ch: struct hdm_channel \*
 
 .. _`try_start_dim_transfer.description`:
 
@@ -223,8 +229,9 @@ deliver_netinfo_thread
 
     thread to deliver network status to mostcore
 
-    :param void \*data:
+    :param data:
         private data
+    :type data: void \*
 
 .. _`deliver_netinfo_thread.description`:
 
@@ -242,11 +249,13 @@ retrieve_netinfo
 
     retrieve network status from received buffer
 
-    :param struct dim2_hdm \*dev:
+    :param dev:
         private data
+    :type dev: struct dim2_hdm \*
 
-    :param struct mbo \*mbo:
+    :param mbo:
         received MBO
+    :type mbo: struct mbo \*
 
 .. _`retrieve_netinfo.description`:
 
@@ -265,11 +274,13 @@ service_done_flag
 
     handle completed buffers
 
-    :param struct dim2_hdm \*dev:
+    :param dev:
         private data
+    :type dev: struct dim2_hdm \*
 
-    :param int ch_idx:
+    :param ch_idx:
         channel index
+    :type ch_idx: int
 
 .. _`service_done_flag.description`:
 
@@ -287,8 +298,9 @@ dim2_tasklet_fn
 
     tasklet function
 
-    :param unsigned long data:
+    :param data:
         private data
+    :type data: unsigned long
 
 .. _`dim2_tasklet_fn.description`:
 
@@ -306,11 +318,13 @@ dim2_ahb_isr
 
     interrupt service routine
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*_dev:
+    :param _dev:
         private data
+    :type _dev: void \*
 
 .. _`dim2_ahb_isr.description`:
 
@@ -329,8 +343,9 @@ complete_all_mbos
 
     complete MBO's in a list
 
-    :param struct list_head \*head:
+    :param head:
         list head
+    :type head: struct list_head \*
 
 .. _`complete_all_mbos.description`:
 
@@ -349,14 +364,17 @@ configure_channel
 
     initialize a channel
 
-    :param struct most_interface \*most_iface:
+    :param most_iface:
         *undescribed*
+    :type most_iface: struct most_interface \*
 
-    :param int ch_idx:
+    :param ch_idx:
         *undescribed*
+    :type ch_idx: int
 
-    :param struct most_channel_config \*ccfg:
+    :param ccfg:
         *undescribed*
+    :type ccfg: struct most_channel_config \*
 
 .. _`configure_channel.description`:
 
@@ -375,14 +393,17 @@ enqueue
 
     enqueue a buffer for data transfer
 
-    :param struct most_interface \*most_iface:
+    :param most_iface:
         *undescribed*
+    :type most_iface: struct most_interface \*
 
-    :param int ch_idx:
+    :param ch_idx:
         *undescribed*
+    :type ch_idx: int
 
-    :param struct mbo \*mbo:
+    :param mbo:
         pointer to the buffer object
+    :type mbo: struct mbo \*
 
 .. _`enqueue.description`:
 
@@ -401,11 +422,13 @@ request_netinfo
 
     triggers retrieving of network info
 
-    :param struct most_interface \*most_iface:
+    :param most_iface:
         *undescribed*
+    :type most_iface: struct most_interface \*
 
-    :param int ch_idx:
+    :param ch_idx:
         *undescribed*
+    :type ch_idx: int
 
     :param void (\*on_netinfo)(struct most_interface \*, unsigned char, unsigned char \*):
         *undescribed*
@@ -427,11 +450,13 @@ poison_channel
 
     poison buffers of a channel
 
-    :param struct most_interface \*most_iface:
+    :param most_iface:
         *undescribed*
+    :type most_iface: struct most_interface \*
 
-    :param int ch_idx:
+    :param ch_idx:
         *undescribed*
+    :type ch_idx: int
 
 .. _`poison_channel.description`:
 
@@ -450,11 +475,13 @@ get_dim2_clk_speed
 
     converts string to DIM2 clock speed value
 
-    :param const char \*clock_speed:
+    :param clock_speed:
         string in the format "{NUMBER}fs"
+    :type clock_speed: const char \*
 
-    :param u8 \*val:
+    :param val:
         pointer to get one of the CLK_{NUMBER}FS values
+    :type val: u8 \*
 
 .. _`get_dim2_clk_speed.description`:
 
@@ -473,8 +500,9 @@ dim2_remove
 
     dim2 remove handler
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`dim2_remove.description`:
 

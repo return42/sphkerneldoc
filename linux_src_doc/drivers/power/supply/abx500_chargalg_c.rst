@@ -194,8 +194,9 @@ abx500_chargalg_safety_timer_expired
 
     Expiration of the safety timer
 
-    :param struct hrtimer \*timer:
+    :param timer:
         pointer to the hrtimer structure
+    :type timer: struct hrtimer \*
 
 .. _`abx500_chargalg_safety_timer_expired.description`:
 
@@ -214,8 +215,9 @@ abx500_chargalg_maintenance_timer_expired
 
     Expiration of the maintenance timer
 
-    :param struct hrtimer \*timer:
+    :param timer:
         pointer to the timer structure
+    :type timer: struct hrtimer \*
 
 .. _`abx500_chargalg_maintenance_timer_expired.description`:
 
@@ -234,11 +236,13 @@ abx500_chargalg_state_to
 
     Change charge state
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
-    :param enum abx500_chargalg_states state:
+    :param state:
         *undescribed*
+    :type state: enum abx500_chargalg_states
 
 .. _`abx500_chargalg_state_to.description`:
 
@@ -256,8 +260,9 @@ abx500_chargalg_check_charger_connection
 
     Check charger connection change
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_check_charger_connection.description`:
 
@@ -276,8 +281,9 @@ abx500_chargalg_check_current_step_status
 
     Check charging current step status.
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_check_current_step_status.description`:
 
@@ -296,8 +302,9 @@ abx500_chargalg_start_safety_timer
 
     Start charging safety timer
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_start_safety_timer.description`:
 
@@ -316,8 +323,9 @@ abx500_chargalg_stop_safety_timer
 
     Stop charging safety timer
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_stop_safety_timer.description`:
 
@@ -335,11 +343,13 @@ abx500_chargalg_start_maintenance_timer
 
     Start charging maintenance timer
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
-    :param int duration:
+    :param duration:
         duration of ther maintenance timer in hours
+    :type duration: int
 
 .. _`abx500_chargalg_start_maintenance_timer.description`:
 
@@ -359,8 +369,9 @@ abx500_chargalg_stop_maintenance_timer
 
     Stop maintenance timer
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_stop_maintenance_timer.description`:
 
@@ -379,8 +390,9 @@ abx500_chargalg_kick_watchdog
 
     Kick charger watchdog
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_kick_watchdog.description`:
 
@@ -399,17 +411,21 @@ abx500_chargalg_ac_en
 
     Turn on/off the AC charger
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
-    :param int enable:
+    :param enable:
         charger on/off
+    :type enable: int
 
-    :param int vset:
+    :param vset:
         requested charger output voltage
+    :type vset: int
 
-    :param int iset:
+    :param iset:
         requested charger output current
+    :type iset: int
 
 .. _`abx500_chargalg_ac_en.description`:
 
@@ -428,17 +444,21 @@ abx500_chargalg_usb_en
 
     Turn on/off the USB charger
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
-    :param int enable:
+    :param enable:
         charger on/off
+    :type enable: int
 
-    :param int vset:
+    :param vset:
         requested charger output voltage
+    :type vset: int
 
-    :param int iset:
+    :param iset:
         requested charger output current
+    :type iset: int
 
 .. _`abx500_chargalg_usb_en.description`:
 
@@ -457,11 +477,13 @@ abx500_chargalg_update_chg_curr
 
     Update charger current
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
-    :param int iset:
+    :param iset:
         requested charger output current
+    :type iset: int
 
 .. _`abx500_chargalg_update_chg_curr.description`:
 
@@ -480,8 +502,9 @@ abx500_chargalg_stop_charging
 
     Stop charging
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_stop_charging.description`:
 
@@ -501,8 +524,9 @@ abx500_chargalg_hold_charging
 
     Pauses charging
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_hold_charging.description`:
 
@@ -522,14 +546,17 @@ abx500_chargalg_start_charging
 
     Start the charger
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
-    :param int vset:
+    :param vset:
         requested charger output voltage
+    :type vset: int
 
-    :param int iset:
+    :param iset:
         requested charger output current
+    :type iset: int
 
 .. _`abx500_chargalg_start_charging.description`:
 
@@ -548,8 +575,9 @@ abx500_chargalg_check_temp
 
     Check battery temperature ranges
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_check_temp.description`:
 
@@ -568,8 +596,9 @@ abx500_chargalg_check_charger_voltage
 
     Check charger voltage
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_check_charger_voltage.description`:
 
@@ -587,8 +616,9 @@ abx500_chargalg_end_of_charge
 
     Check if end-of-charge criteria is fulfilled
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_end_of_charge.description`:
 
@@ -608,8 +638,9 @@ abx500_chargalg_chg_curr_maxim
 
     increases the charger current to compensate for the system load \ ``di``\           pointer to the abx500_chargalg structure
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         *undescribed*
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_chg_curr_maxim.description`:
 
@@ -629,8 +660,9 @@ abx500_chargalg_external_power_changed
 
     callback for power supply changes
 
-    :param struct power_supply \*psy:
+    :param psy:
         pointer to the structure power_supply
+    :type psy: struct power_supply \*
 
 .. _`abx500_chargalg_external_power_changed.description`:
 
@@ -651,8 +683,9 @@ abx500_chargalg_algorithm
 
     Main function for the algorithm
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the abx500_chargalg structure
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_algorithm.description`:
 
@@ -672,8 +705,9 @@ abx500_chargalg_periodic_work
 
     Periodic work for the algorithm
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`abx500_chargalg_periodic_work.description`:
 
@@ -691,8 +725,9 @@ abx500_chargalg_wd_work
 
     periodic work to kick the charger watchdog
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`abx500_chargalg_wd_work.description`:
 
@@ -710,8 +745,9 @@ abx500_chargalg_work
 
     Work to run the charging algorithm instantly
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`abx500_chargalg_work.description`:
 
@@ -729,14 +765,17 @@ abx500_chargalg_get_property
 
     get the chargalg properties
 
-    :param struct power_supply \*psy:
+    :param psy:
         pointer to the power_supply structure
+    :type psy: struct power_supply \*
 
-    :param enum power_supply_property psp:
+    :param psp:
         pointer to the power_supply_property structure
+    :type psp: enum power_supply_property
 
-    :param union power_supply_propval \*val:
+    :param val:
         pointer to the power_supply_propval union
+    :type val: union power_supply_propval \*
 
 .. _`abx500_chargalg_get_property.description`:
 
@@ -770,8 +809,9 @@ abx500_chargalg_sysfs_exit
 
     de-init of sysfs entry
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the struct abx500_chargalg
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_sysfs_exit.description`:
 
@@ -789,8 +829,9 @@ abx500_chargalg_sysfs_init
 
     init of sysfs entry
 
-    :param struct abx500_chargalg \*di:
+    :param di:
         pointer to the struct abx500_chargalg
+    :type di: struct abx500_chargalg \*
 
 .. _`abx500_chargalg_sysfs_init.description`:
 

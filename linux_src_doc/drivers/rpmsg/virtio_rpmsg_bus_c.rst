@@ -237,14 +237,17 @@ rpmsg_sg_init
 
     initialize scatterlist according to cpu address location
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatterlist to fill
+    :type sg: struct scatterlist \*
 
-    :param void \*cpu_addr:
+    :param cpu_addr:
         virtual address of the buffer
+    :type cpu_addr: void \*
 
-    :param unsigned int len:
+    :param len:
         buffer length
+    :type len: unsigned int
 
 .. _`rpmsg_sg_init.description`:
 
@@ -263,8 +266,9 @@ location (in vmalloc or in kernel).
 
     deallocate an rpmsg endpoint
 
-    :param struct kref \*kref:
+    :param kref:
         the ept's reference count
+    :type kref: struct kref \*
 
 .. _`__ept_release.description`:
 
@@ -285,11 +289,13 @@ Never invoke this function directly!
 
     destroy an existing rpmsg endpoint
 
-    :param struct virtproc_info \*vrp:
+    :param vrp:
         virtproc which owns this ept
+    :type vrp: struct virtproc_info \*
 
-    :param struct rpmsg_endpoint \*ept:
+    :param ept:
         endpoing to destroy
+    :type ept: struct rpmsg_endpoint \*
 
 .. _`__rpmsg_destroy_ept.description`:
 
@@ -310,8 +316,9 @@ rpmsg_upref_sleepers
 
     enable "tx-complete" interrupts, if needed
 
-    :param struct virtproc_info \*vrp:
+    :param vrp:
         virtual remote processor state
+    :type vrp: struct virtproc_info \*
 
 .. _`rpmsg_upref_sleepers.description`:
 
@@ -339,8 +346,9 @@ rpmsg_downref_sleepers
 
     disable "tx-complete" interrupts, if needed
 
-    :param struct virtproc_info \*vrp:
+    :param vrp:
         virtual remote processor state
+    :type vrp: struct virtproc_info \*
 
 .. _`rpmsg_downref_sleepers.description`:
 
@@ -366,23 +374,29 @@ rpmsg_send_offchannel_raw
 
     send a message across to the remote processor
 
-    :param struct rpmsg_device \*rpdev:
+    :param rpdev:
         the rpmsg channel
+    :type rpdev: struct rpmsg_device \*
 
-    :param u32 src:
+    :param src:
         source address
+    :type src: u32
 
-    :param u32 dst:
+    :param dst:
         destination address
+    :type dst: u32
 
-    :param void \*data:
+    :param data:
         payload of message
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length of payload
+    :type len: int
 
-    :param bool wait:
+    :param wait:
         indicates whether caller should block in case no TX buffers available
+    :type wait: bool
 
 .. _`rpmsg_send_offchannel_raw.description`:
 

@@ -137,7 +137,7 @@ struct bfq_weight_counter
 
 .. c:type:: struct bfq_weight_counter
 
-    counter of the number of all active entities with a given weight.
+    counter of the number of all active queues with a given weight.
 
 .. _`bfq_weight_counter.definition`:
 
@@ -184,7 +184,6 @@ Definition
 
     struct bfq_entity {
         struct rb_node rb_node;
-        struct bfq_weight_counter *weight_counter;
         bool on_st;
         u64 start, finish;
         struct rb_root *tree;
@@ -206,9 +205,6 @@ Members
 -------
 
 rb_node
-    *undescribed*
-
-weight_counter
     *undescribed*
 
 on_st
@@ -353,6 +349,7 @@ Definition
         int meta_pending;
         struct list_head fifo;
         struct bfq_entity entity;
+        struct bfq_weight_counter *weight_counter;
         int max_budget;
         unsigned long budget_timeout;
         int dispatched;
@@ -375,6 +372,9 @@ Definition
         unsigned long wr_start_at_switch_to_srt;
         unsigned long split_time;
         unsigned long first_IO_time;
+        u32 max_service_rate;
+        unsigned int inject_coeff;
+        unsigned int injected_service;
     }
 
 .. _`bfq_queue.members`:
@@ -428,6 +428,9 @@ fifo
     *undescribed*
 
 entity
+    *undescribed*
+
+weight_counter
     *undescribed*
 
 max_budget
@@ -494,6 +497,15 @@ split_time
     *undescribed*
 
 first_IO_time
+    *undescribed*
+
+max_service_rate
+    *undescribed*
+
+inject_coeff
+    *undescribed*
+
+injected_service
     *undescribed*
 
 .. _`bfq_queue.description`:
@@ -608,7 +620,7 @@ Definition
         struct list_head dispatch;
         struct bfq_group *root_group;
         struct rb_root queue_weights_tree;
-        struct rb_root group_weights_tree;
+        unsigned int num_active_groups;
         int busy_queues;
         int wr_busy_queues;
         int queued;
@@ -681,7 +693,7 @@ root_group
 queue_weights_tree
     *undescribed*
 
-group_weights_tree
+num_active_groups
     *undescribed*
 
 busy_queues

@@ -10,14 +10,17 @@ arm_cpuidle_simple_enter
 
     a wrapper to \ :c:func:`cpu_do_idle`\ 
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         not used
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         not used
+    :type drv: struct cpuidle_driver \*
 
-    :param int index:
+    :param index:
         not used
+    :type index: int
 
 .. _`arm_cpuidle_simple_enter.description`:
 
@@ -38,8 +41,9 @@ arm_cpuidle_suspend
 
     function to enter low power idle states
 
-    :param int index:
+    :param index:
         an integer used as an identifier for the low level PM callbacks
+    :type index: int
 
 .. _`arm_cpuidle_suspend.description`:
 
@@ -60,8 +64,9 @@ arm_cpuidle_get_ops
 
     find a registered cpuidle_ops by name
 
-    :param const char \*method:
+    :param method:
         the method name
+    :type method: const char \*
 
 .. _`arm_cpuidle_get_ops.description`:
 
@@ -82,11 +87,13 @@ arm_cpuidle_read_ops
 
     Initialize the cpuidle ops with the device tree
 
-    :param struct device_node \*dn:
+    :param dn:
         a pointer to a struct device node corresponding to a cpu node
+    :type dn: struct device_node \*
 
-    :param int cpu:
+    :param cpu:
         the cpu identifier
+    :type cpu: int
 
 .. _`arm_cpuidle_read_ops.description`:
 
@@ -111,8 +118,9 @@ arm_cpuidle_init
 
     Initialize cpuidle_ops for a specific cpu
 
-    :param int cpu:
+    :param cpu:
         the cpu to be initialized
+    :type cpu: int
 
 .. _`arm_cpuidle_init.description`:
 

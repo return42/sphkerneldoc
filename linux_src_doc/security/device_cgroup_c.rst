@@ -10,8 +10,9 @@ dev_exception_clean
 
     frees all entries of the exception list
 
-    :param struct dev_cgroup \*dev_cgroup:
+    :param dev_cgroup:
         dev_cgroup with the exception list to be cleaned
+    :type dev_cgroup: struct dev_cgroup \*
 
 .. _`dev_exception_clean.description`:
 
@@ -29,9 +30,10 @@ devcgroup_online
 
     initializes devcgroup's behavior and exceptions based on parent's
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         css getting online
         returns 0 in case of success, error code otherwise
+    :type css: struct cgroup_subsys_state \*
 
 .. _`match_exception`:
 
@@ -42,20 +44,25 @@ match_exception
 
     iterates the exception list trying to find a complete match
 
-    :param struct list_head \*exceptions:
+    :param exceptions:
         list of exceptions
+    :type exceptions: struct list_head \*
 
-    :param short type:
+    :param type:
         device type (DEVCG_DEV_BLOCK or DEVCG_DEV_CHAR)
+    :type type: short
 
-    :param u32 major:
+    :param major:
         device file major number, ~0 to match all
+    :type major: u32
 
-    :param u32 minor:
+    :param minor:
         device file minor number, ~0 to match all
+    :type minor: u32
 
-    :param short access:
+    :param access:
         permission mask (DEVCG_ACC_READ, DEVCG_ACC_WRITE, DEVCG_ACC_MKNOD)
+    :type access: short
 
 .. _`match_exception.description`:
 
@@ -81,20 +88,25 @@ match_exception_partial
 
     iterates the exception list trying to find a partial match
 
-    :param struct list_head \*exceptions:
+    :param exceptions:
         list of exceptions
+    :type exceptions: struct list_head \*
 
-    :param short type:
+    :param type:
         device type (DEVCG_DEV_BLOCK or DEVCG_DEV_CHAR)
+    :type type: short
 
-    :param u32 major:
+    :param major:
         device file major number, ~0 to match all
+    :type major: u32
 
-    :param u32 minor:
+    :param minor:
         device file minor number, ~0 to match all
+    :type minor: u32
 
-    :param short access:
+    :param access:
         permission mask (DEVCG_ACC_READ, DEVCG_ACC_WRITE, DEVCG_ACC_MKNOD)
+    :type access: short
 
 .. _`match_exception_partial.description`:
 
@@ -122,14 +134,17 @@ verify_new_ex
 
     verifies if a new exception is allowed by parent cgroup's permissions
 
-    :param struct dev_cgroup \*dev_cgroup:
+    :param dev_cgroup:
         dev cgroup to be tested against
+    :type dev_cgroup: struct dev_cgroup \*
 
-    :param struct dev_exception_item \*refex:
+    :param refex:
         new exception
+    :type refex: struct dev_exception_item \*
 
-    :param enum devcg_behavior behavior:
+    :param behavior:
         behavior of the exception's dev_cgroup
+    :type behavior: enum devcg_behavior
 
 .. _`verify_new_ex.description`:
 
@@ -148,11 +163,13 @@ parent_allows_removal
 
     verify if it's ok to remove an exception
 
-    :param struct dev_cgroup \*childcg:
+    :param childcg:
         child cgroup from where the exception will be removed
+    :type childcg: struct dev_cgroup \*
 
-    :param struct dev_exception_item \*ex:
+    :param ex:
         exception being removed
+    :type ex: struct dev_exception_item \*
 
 .. _`parent_allows_removal.description`:
 
@@ -179,8 +196,9 @@ may_allow_all
 
     checks if it's possible to change the behavior to allow based on parent's rules.
 
-    :param struct dev_cgroup \*parent:
+    :param parent:
         device cgroup's parent
+    :type parent: struct dev_cgroup \*
 
 .. _`may_allow_all.return`:
 
@@ -198,8 +216,9 @@ revalidate_active_exceptions
 
     walks through the active exception list and revalidates the exceptions based on parent's behavior and exceptions. The exceptions that are no longer valid will be removed. Called with devcgroup_mutex held.
 
-    :param struct dev_cgroup \*devcg:
+    :param devcg:
         cgroup which exceptions will be checked
+    :type devcg: struct dev_cgroup \*
 
 .. _`revalidate_active_exceptions.description`:
 
@@ -220,11 +239,13 @@ propagate_exception
 
     propagates a new exception to the children
 
-    :param struct dev_cgroup \*devcg_root:
+    :param devcg_root:
         device cgroup that added a new exception
+    :type devcg_root: struct dev_cgroup \*
 
-    :param struct dev_exception_item \*ex:
+    :param ex:
         new exception to be propagated
+    :type ex: struct dev_exception_item \*
 
 .. _`propagate_exception.return`:
 
@@ -242,17 +263,21 @@ Return
 
     checks if an inode operation is permitted
 
-    :param short type:
+    :param type:
         device type
+    :type type: short
 
-    :param u32 major:
+    :param major:
         device major number
+    :type major: u32
 
-    :param u32 minor:
+    :param minor:
         device minor number
+    :type minor: u32
 
-    :param short access:
+    :param access:
         combination of DEVCG_ACC_WRITE, DEVCG_ACC_READ and DEVCG_ACC_MKNOD
+    :type access: short
 
 .. _`__devcgroup_check_permission.description`:
 

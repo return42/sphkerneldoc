@@ -10,8 +10,9 @@ ioat_dma_self_test
 
     Perform a IOAT transaction to verify the HW works.
 
-    :param struct ioatdma_device \*ioat_dma:
+    :param ioat_dma:
         dma device to be tested
+    :type ioat_dma: struct ioatdma_device \*
 
 .. _`ioat_dma_setup_interrupts`:
 
@@ -22,20 +23,22 @@ ioat_dma_setup_interrupts
 
     setup interrupt handler
 
-    :param struct ioatdma_device \*ioat_dma:
+    :param ioat_dma:
         ioat dma device
+    :type ioat_dma: struct ioatdma_device \*
 
 .. _`ioat_enumerate_channels`:
 
 ioat_enumerate_channels
 =======================
 
-.. c:function:: int ioat_enumerate_channels(struct ioatdma_device *ioat_dma)
+.. c:function:: void ioat_enumerate_channels(struct ioatdma_device *ioat_dma)
 
     find and initialize the device's channels
 
-    :param struct ioatdma_device \*ioat_dma:
+    :param ioat_dma:
         the ioat dma device to be enumerated
+    :type ioat_dma: struct ioatdma_device \*
 
 .. _`ioat_free_chan_resources`:
 
@@ -46,8 +49,9 @@ ioat_free_chan_resources
 
     release all the descriptors
 
-    :param struct dma_chan \*c:
+    :param c:
         *undescribed*
+    :type c: struct dma_chan \*
 
 .. This file was automatic generated / don't edit.
 

@@ -235,8 +235,9 @@ ab8500_fg_get
 
     returns a reference to the primary AB8500 fuel gauge (i.e. the first fuel gauge in the instance list)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ab8500_fg_is_low_curr`:
 
@@ -247,11 +248,13 @@ ab8500_fg_is_low_curr
 
     Low or high current mode
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param int curr:
+    :param curr:
         the current to base or our decision on
+    :type curr: int
 
 .. _`ab8500_fg_is_low_curr.description`:
 
@@ -269,11 +272,13 @@ ab8500_fg_add_cap_sample
 
     Add capacity to average filter
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param int sample:
+    :param sample:
         the capacity in mAh to add to the filter
+    :type sample: int
 
 .. _`ab8500_fg_add_cap_sample.description`:
 
@@ -292,8 +297,9 @@ ab8500_fg_clear_cap_samples
 
     Clear average filter
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_clear_cap_samples.description`:
 
@@ -311,11 +317,13 @@ ab8500_fg_fill_cap_sample
 
     Fill average filter
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param int sample:
+    :param sample:
         the capacity in mAh to fill the filter with
+    :type sample: int
 
 .. _`ab8500_fg_fill_cap_sample.description`:
 
@@ -333,11 +341,13 @@ ab8500_fg_coulomb_counter
 
     enable coulomb counter
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param bool enable:
+    :param enable:
         enable/disable
+    :type enable: bool
 
 .. _`ab8500_fg_coulomb_counter.description`:
 
@@ -356,8 +366,9 @@ ab8500_fg_inst_curr_start
 
     start battery instantaneous current
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_inst_curr_start.description`:
 
@@ -383,8 +394,9 @@ ab8500_fg_inst_curr_started
 
     check if fg conversion has started
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_inst_curr_started.description`:
 
@@ -402,8 +414,9 @@ ab8500_fg_inst_curr_done
 
     check if fg conversion is done
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_inst_curr_done.description`:
 
@@ -421,11 +434,13 @@ ab8500_fg_inst_curr_finalize
 
     battery instantaneous current
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param int \*res:
+    :param res:
         battery instantenous current(on success)
+    :type res: int \*
 
 .. _`ab8500_fg_inst_curr_finalize.description`:
 
@@ -451,8 +466,9 @@ ab8500_fg_inst_curr_blocking
 
     battery instantaneous current
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_inst_curr_blocking.description`:
 
@@ -470,8 +486,9 @@ ab8500_fg_acc_cur_work
 
     average battery current
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_fg_acc_cur_work.description`:
 
@@ -490,8 +507,9 @@ ab8500_fg_bat_voltage
 
     get battery voltage
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_bat_voltage.description`:
 
@@ -509,11 +527,13 @@ ab8500_fg_volt_to_capacity
 
     Voltage based capacity
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param int voltage:
+    :param voltage:
         The voltage to convert to a capacity
+    :type voltage: int
 
 .. _`ab8500_fg_volt_to_capacity.description`:
 
@@ -531,8 +551,9 @@ ab8500_fg_uncomp_volt_to_capacity
 
     Uncompensated voltage based capacity
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_uncomp_volt_to_capacity.description`:
 
@@ -551,8 +572,9 @@ ab8500_fg_battery_resistance
 
     Returns the battery inner resistance
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_battery_resistance.description`:
 
@@ -571,8 +593,9 @@ ab8500_fg_load_comp_volt_to_capacity
 
     Load compensated voltage based capacity
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_load_comp_volt_to_capacity.description`:
 
@@ -591,11 +614,13 @@ ab8500_fg_convert_mah_to_permille
 
     Capacity in mAh to permille
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param int cap_mah:
+    :param cap_mah:
         capacity in mAh
+    :type cap_mah: int
 
 .. _`ab8500_fg_convert_mah_to_permille.description`:
 
@@ -613,11 +638,13 @@ ab8500_fg_convert_permille_to_mah
 
     Capacity in permille to mAh
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param int cap_pm:
+    :param cap_pm:
         capacity in permille
+    :type cap_pm: int
 
 .. _`ab8500_fg_convert_permille_to_mah.description`:
 
@@ -635,11 +662,13 @@ ab8500_fg_convert_mah_to_uwh
 
     Capacity in mAh to uWh
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param int cap_mah:
+    :param cap_mah:
         capacity in mAh
+    :type cap_mah: int
 
 .. _`ab8500_fg_convert_mah_to_uwh.description`:
 
@@ -657,8 +686,9 @@ ab8500_fg_calc_cap_charging
 
     Calculate remaining capacity while charging
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_calc_cap_charging.description`:
 
@@ -677,11 +707,13 @@ ab8500_fg_calc_cap_discharge_voltage
 
     Capacity in discharge with voltage
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param bool comp:
+    :param comp:
         if voltage should be load compensated before capacity calc
+    :type comp: bool
 
 .. _`ab8500_fg_calc_cap_discharge_voltage.description`:
 
@@ -701,8 +733,9 @@ ab8500_fg_calc_cap_discharge_fg
 
     Capacity in discharge with FG
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_calc_cap_discharge_fg.description`:
 
@@ -722,8 +755,9 @@ ab8500_fg_capacity_level
 
     Get the battery capacity level
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_capacity_level.description`:
 
@@ -741,8 +775,9 @@ ab8500_fg_calculate_scaled_capacity
 
     Capacity scaling
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_calculate_scaled_capacity.description`:
 
@@ -762,8 +797,9 @@ ab8500_fg_update_cap_scalers
 
     Capacity scaling
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_update_cap_scalers.description`:
 
@@ -782,11 +818,13 @@ ab8500_fg_check_capacity_limits
 
     Check if capacity has changed
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param bool init:
+    :param init:
         capacity is allowed to go up in init mode
+    :type init: bool
 
 .. _`ab8500_fg_check_capacity_limits.description`:
 
@@ -805,8 +843,9 @@ ab8500_fg_algorithm_charging
 
     FG algorithm for when charging
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_algorithm_charging.description`:
 
@@ -824,8 +863,9 @@ ab8500_fg_algorithm_discharging
 
     FG algorithm for when discharging
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_algorithm_discharging.description`:
 
@@ -843,8 +883,9 @@ ab8500_fg_algorithm_calibrate
 
     Internal columb counter offset calibration
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_algorithm`:
 
@@ -855,8 +896,9 @@ ab8500_fg_algorithm
 
     Entry point for the FG algorithm
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_algorithm.description`:
 
@@ -874,8 +916,9 @@ ab8500_fg_periodic_work
 
     Run the FG state machine periodically
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_fg_periodic_work.description`:
 
@@ -893,8 +936,9 @@ ab8500_fg_check_hw_failure_work
 
     Check OVV_BAT condition
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_fg_check_hw_failure_work.description`:
 
@@ -912,8 +956,9 @@ ab8500_fg_low_bat_work
 
     Check LOW_BAT condition
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_fg_low_bat_work.description`:
 
@@ -931,11 +976,13 @@ ab8500_fg_battok_calc
 
     calculate the bit pattern corresponding to the target voltage.
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
-    :param int target:
+    :param target:
         target voltage
+    :type target: int
 
 .. _`ab8500_fg_battok_calc.description`:
 
@@ -954,8 +1001,9 @@ ab8500_fg_battok_init_hw_register
 
     init battok levels
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_instant_work`:
 
@@ -966,8 +1014,9 @@ ab8500_fg_instant_work
 
     Run the FG state machine instantly
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_fg_instant_work.description`:
 
@@ -985,11 +1034,13 @@ ab8500_fg_cc_data_end_handler
 
     end of data conversion isr.
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_fg structure
+    :type _di: void \*
 
 .. _`ab8500_fg_cc_data_end_handler.description`:
 
@@ -1007,11 +1058,13 @@ ab8500_fg_cc_int_calib_handler
 
     end of calibration isr.
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_fg structure
+    :type _di: void \*
 
 .. _`ab8500_fg_cc_int_calib_handler.description`:
 
@@ -1029,11 +1082,13 @@ ab8500_fg_cc_convend_handler
 
     isr to get battery avg current.
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_fg structure
+    :type _di: void \*
 
 .. _`ab8500_fg_cc_convend_handler.description`:
 
@@ -1051,11 +1106,13 @@ ab8500_fg_batt_ovv_handler
 
     Battery OVV occured
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_fg structure
+    :type _di: void \*
 
 .. _`ab8500_fg_batt_ovv_handler.description`:
 
@@ -1073,11 +1130,13 @@ ab8500_fg_lowbatf_handler
 
     Battery voltage is below LOW threshold
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_fg structure
+    :type _di: void \*
 
 .. _`ab8500_fg_lowbatf_handler.description`:
 
@@ -1095,14 +1154,17 @@ ab8500_fg_get_property
 
     get the fg properties
 
-    :param struct power_supply \*psy:
+    :param psy:
         pointer to the power_supply structure
+    :type psy: struct power_supply \*
 
-    :param enum power_supply_property psp:
+    :param psp:
         pointer to the power_supply_property structure
+    :type psp: enum power_supply_property
 
-    :param union power_supply_propval \*val:
+    :param val:
         pointer to the power_supply_propval union
+    :type val: union power_supply_propval \*
 
 .. _`ab8500_fg_get_property.description`:
 
@@ -1172,8 +1234,9 @@ ab8500_fg_init_hw_registers
 
     Set up FG related registers
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the ab8500_fg structure
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_init_hw_registers.description`:
 
@@ -1191,8 +1254,9 @@ ab8500_fg_external_power_changed
 
     callback for power supply changes
 
-    :param struct power_supply \*psy:
+    :param psy:
         pointer to the structure power_supply
+    :type psy: struct power_supply \*
 
 .. _`ab8500_fg_external_power_changed.description`:
 
@@ -1213,8 +1277,9 @@ ab8500_fg_reinit_work
 
     work to reset the FG algorithm
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_fg_reinit_work.description`:
 
@@ -1234,8 +1299,9 @@ ab8500_fg_sysfs_exit
 
     de-init of sysfs entry
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the struct ab8500_chargalg
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_sysfs_exit.description`:
 
@@ -1253,8 +1319,9 @@ ab8500_fg_sysfs_init
 
     init of sysfs entry
 
-    :param struct ab8500_fg \*di:
+    :param di:
         pointer to the struct ab8500_chargalg
+    :type di: struct ab8500_fg \*
 
 .. _`ab8500_fg_sysfs_init.description`:
 

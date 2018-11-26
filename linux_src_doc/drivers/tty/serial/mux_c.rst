@@ -10,8 +10,9 @@ get_mux_port_count
 
     Get the number of available ports on the Mux.
 
-    :param struct parisc_device \*dev:
+    :param dev:
         The parisc device.
+    :type dev: struct parisc_device \*
 
 .. _`get_mux_port_count.description`:
 
@@ -33,8 +34,9 @@ mux_tx_empty
 
     Check if the transmitter fifo is empty.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_tx_empty.description`:
 
@@ -54,11 +56,13 @@ mux_set_mctrl
 
     Set the current state of the modem control inputs.
 
-    :param struct uart_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct uart_port \*
 
-    :param unsigned int mctrl:
+    :param mctrl:
         Modem control bits.
+    :type mctrl: unsigned int
 
 .. _`mux_set_mctrl.description`:
 
@@ -77,8 +81,9 @@ mux_get_mctrl
 
     Returns the current state of modem control inputs.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_get_mctrl.description`:
 
@@ -97,8 +102,9 @@ mux_stop_tx
 
     Stop transmitting characters.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_stop_tx.description`:
 
@@ -116,8 +122,9 @@ mux_start_tx
 
     Start transmitting characters.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_start_tx.description`:
 
@@ -135,8 +142,9 @@ mux_stop_rx
 
     Stop receiving characters.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_stop_rx.description`:
 
@@ -154,11 +162,13 @@ mux_break_ctl
 
     Control the transmitssion of a break signal.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
-    :param int break_state:
+    :param break_state:
         Raise/Lower the break signal.
+    :type break_state: int
 
 .. _`mux_break_ctl.description`:
 
@@ -176,8 +186,9 @@ mux_write
 
     Write chars to the mux fifo.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_write.description`:
 
@@ -196,8 +207,9 @@ mux_read
 
     Read chars from the mux fifo.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_read.description`:
 
@@ -216,8 +228,9 @@ mux_startup
 
     Initialize the port.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_startup.description`:
 
@@ -236,8 +249,9 @@ mux_shutdown
 
     Disable the port.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_shutdown.description`:
 
@@ -255,14 +269,17 @@ mux_set_termios
 
     Chane port parameters.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
-    :param struct ktermios \*termios:
+    :param termios:
         new termios settings.
+    :type termios: struct ktermios \*
 
-    :param struct ktermios \*old:
+    :param old:
         old termios settings.
+    :type old: struct ktermios \*
 
 .. _`mux_set_termios.description`:
 
@@ -280,8 +297,9 @@ mux_type
 
     Describe the port.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_type.description`:
 
@@ -300,8 +318,9 @@ mux_release_port
 
     Release memory and IO regions.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_release_port.description`:
 
@@ -320,8 +339,9 @@ mux_request_port
 
     Request memory and IO regions.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
 .. _`mux_request_port.description`:
 
@@ -341,11 +361,13 @@ mux_config_port
 
     Perform port autoconfiguration.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
-    :param int type:
+    :param type:
         Bitmask of required configurations.
+    :type type: int
 
 .. _`mux_config_port.description`:
 
@@ -367,11 +389,13 @@ mux_verify_port
 
     Verify the port information.
 
-    :param struct uart_port \*port:
+    :param port:
         Ptr to the uart_port.
+    :type port: struct uart_port \*
 
-    :param struct serial_struct \*ser:
+    :param ser:
         Ptr to the serial information.
+    :type ser: struct serial_struct \*
 
 .. _`mux_verify_port.description`:
 
@@ -390,8 +414,9 @@ mux_poll
 
     Mux poll function.
 
-    :param struct timer_list \*unused:
+    :param unused:
         Unused variable
+    :type unused: struct timer_list \*
 
 .. _`mux_poll.description`:
 
@@ -409,8 +434,9 @@ mux_probe
 
     Determine if the Serial Mux should claim this device.
 
-    :param struct parisc_device \*dev:
+    :param dev:
         The parisc device.
+    :type dev: struct parisc_device \*
 
 .. _`mux_probe.description`:
 
@@ -429,8 +455,9 @@ mux_init
 
     Serial MUX initialization procedure.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mux_init.description`:
 
@@ -448,8 +475,9 @@ mux_exit
 
     Serial MUX cleanup procedure.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mux_exit.description`:
 

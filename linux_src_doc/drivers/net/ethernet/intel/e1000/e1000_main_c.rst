@@ -10,8 +10,9 @@ e1000_get_hw_dev
 
     return device used by hardware layer to print debugging information
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_module`:
 
@@ -22,8 +23,9 @@ e1000_init_module
 
     Driver Registration Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`e1000_init_module.description`:
 
@@ -42,8 +44,9 @@ e1000_exit_module
 
     Driver Exit Cleanup Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`e1000_exit_module.description`:
 
@@ -62,8 +65,9 @@ e1000_irq_disable
 
     Mask off interrupt generation on the NIC
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_irq_enable`:
 
@@ -74,8 +78,9 @@ e1000_irq_enable
 
     Enable default interrupt generation settings
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_configure`:
 
@@ -86,8 +91,9 @@ e1000_configure
 
     configure the hardware for RX and TX \ ``adapter``\  = private board structure
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_power_up_phy`:
 
@@ -98,8 +104,9 @@ e1000_power_up_phy
 
     restore link in case the phy was powered down
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_power_up_phy.description`:
 
@@ -119,8 +126,9 @@ e1000_is_need_ioport
 
     determine if an adapter needs ioport resources or not
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`e1000_is_need_ioport.description`:
 
@@ -138,11 +146,13 @@ e1000_init_hw_struct
 
     initialize members of hw struct
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private struct
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         structure used by e1000_hw.c
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_hw_struct.description`:
 
@@ -164,11 +174,13 @@ e1000_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in e1000_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`e1000_probe.description`:
 
@@ -190,8 +202,9 @@ e1000_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`e1000_remove.description`:
 
@@ -212,8 +225,9 @@ e1000_sw_init
 
     Initialize general software structures (struct e1000_adapter)
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_sw_init.description`:
 
@@ -232,8 +246,9 @@ e1000_alloc_queues
 
     Allocate memory for all rings
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_alloc_queues.description`:
 
@@ -252,8 +267,9 @@ e1000_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`e1000_open.description`:
 
@@ -277,8 +293,9 @@ e1000_close
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`e1000_close.description`:
 
@@ -301,14 +318,17 @@ e1000_check_64k_bound
 
     check that memory doesn't cross 64kB boundary
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param void \*start:
+    :param start:
         address of beginning of memory
+    :type start: void \*
 
-    :param unsigned long len:
+    :param len:
         length of memory
+    :type len: unsigned long
 
 .. _`e1000_setup_tx_resources`:
 
@@ -319,11 +339,13 @@ e1000_setup_tx_resources
 
     allocate Tx resources (Descriptors)
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_tx_ring \*txdr:
+    :param txdr:
         tx descriptor ring (for a specific queue) to setup
+    :type txdr: struct e1000_tx_ring \*
 
 .. _`e1000_setup_tx_resources.description`:
 
@@ -341,8 +363,9 @@ e1000_setup_all_tx_resources
 
     wrapper to allocate Tx resources (Descriptors) for all queues
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_setup_all_tx_resources.description`:
 
@@ -360,8 +383,9 @@ e1000_configure_tx
 
     Configure 8254x Transmit Unit after Reset
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_configure_tx.description`:
 
@@ -379,11 +403,13 @@ e1000_setup_rx_resources
 
     allocate Rx resources (Descriptors)
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_rx_ring \*rxdr:
+    :param rxdr:
         rx descriptor ring (for a specific queue) to setup
+    :type rxdr: struct e1000_rx_ring \*
 
 .. _`e1000_setup_rx_resources.description`:
 
@@ -401,8 +427,9 @@ e1000_setup_all_rx_resources
 
     wrapper to allocate Rx resources (Descriptors) for all queues
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_setup_all_rx_resources.description`:
 
@@ -420,8 +447,9 @@ e1000_setup_rctl
 
     configure the receive control registers
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_configure_rx`:
 
@@ -432,8 +460,9 @@ e1000_configure_rx
 
     Configure 8254x Receive Unit after Reset
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_configure_rx.description`:
 
@@ -451,11 +480,13 @@ e1000_free_tx_resources
 
     Free Tx Resources per Queue
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_tx_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring for a specific queue
+    :type tx_ring: struct e1000_tx_ring \*
 
 .. _`e1000_free_tx_resources.description`:
 
@@ -473,8 +504,9 @@ e1000_free_all_tx_resources
 
     Free Tx Resources for All Queues
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_free_all_tx_resources.description`:
 
@@ -492,11 +524,13 @@ e1000_clean_tx_ring
 
     Free Tx Buffers
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_tx_ring \*tx_ring:
+    :param tx_ring:
         ring to be cleaned
+    :type tx_ring: struct e1000_tx_ring \*
 
 .. _`e1000_clean_all_tx_rings`:
 
@@ -507,8 +541,9 @@ e1000_clean_all_tx_rings
 
     Free Tx Buffers for all queues
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_free_rx_resources`:
 
@@ -519,11 +554,13 @@ e1000_free_rx_resources
 
     Free Rx Resources
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_rx_ring \*rx_ring:
+    :param rx_ring:
         ring to clean the resources from
+    :type rx_ring: struct e1000_rx_ring \*
 
 .. _`e1000_free_rx_resources.description`:
 
@@ -541,8 +578,9 @@ e1000_free_all_rx_resources
 
     Free Rx Resources for All Queues
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_free_all_rx_resources.description`:
 
@@ -560,11 +598,13 @@ e1000_clean_rx_ring
 
     Free Rx Buffers per Queue
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_rx_ring \*rx_ring:
+    :param rx_ring:
         ring to free buffers from
+    :type rx_ring: struct e1000_rx_ring \*
 
 .. _`e1000_clean_all_rx_rings`:
 
@@ -575,8 +615,9 @@ e1000_clean_all_rx_rings
 
     Free Rx Buffers for all queues
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_set_mac`:
 
@@ -587,11 +628,13 @@ e1000_set_mac
 
     Change the Ethernet Address of the NIC
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         pointer to an address structure
+    :type p: void \*
 
 .. _`e1000_set_mac.description`:
 
@@ -609,8 +652,9 @@ e1000_set_rx_mode
 
     Secondary Unicast, Multicast and Promiscuous mode set
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`e1000_set_rx_mode.description`:
 
@@ -631,8 +675,9 @@ e1000_update_phy_info_task
 
     get phy info
 
-    :param struct work_struct \*work:
+    :param work:
         work struct contained inside adapter struct
+    :type work: struct work_struct \*
 
 .. _`e1000_update_phy_info_task.description`:
 
@@ -651,8 +696,9 @@ e1000_82547_tx_fifo_stall_task
 
     task to complete work
 
-    :param struct work_struct \*work:
+    :param work:
         work struct contained inside adapter struct
+    :type work: struct work_struct \*
 
 .. _`e1000_watchdog`:
 
@@ -663,8 +709,9 @@ e1000_watchdog
 
     work function
 
-    :param struct work_struct \*work:
+    :param work:
         work struct contained inside adapter struct
+    :type work: struct work_struct \*
 
 .. _`e1000_update_itr`:
 
@@ -675,17 +722,21 @@ e1000_update_itr
 
     update the dynamic ITR value based on statistics
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         pointer to adapter
+    :type adapter: struct e1000_adapter \*
 
-    :param u16 itr_setting:
+    :param itr_setting:
         current adapter->itr
+    :type itr_setting: u16
 
-    :param int packets:
+    :param packets:
         the number of packets during this measurement interval
+    :type packets: int
 
-    :param int bytes:
+    :param bytes:
         the number of bytes during this measurement interval
+    :type bytes: int
 
 .. _`e1000_update_itr.description`:
 
@@ -711,8 +762,9 @@ e1000_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`e1000_change_mtu`:
 
@@ -723,11 +775,13 @@ e1000_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`e1000_change_mtu.description`:
 
@@ -745,8 +799,9 @@ e1000_update_stats
 
     Update the board statistics counters
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_intr`:
 
@@ -757,11 +812,13 @@ e1000_intr
 
     Interrupt Handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a network interface device structure
+    :type data: void \*
 
 .. _`e1000_clean`:
 
@@ -772,11 +829,13 @@ e1000_clean
 
     NAPI Rx polling callback
 
-    :param struct napi_struct \*napi:
+    :param napi:
         *undescribed*
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         *undescribed*
+    :type budget: int
 
 .. _`e1000_clean_tx_irq`:
 
@@ -787,11 +846,13 @@ e1000_clean_tx_irq
 
     Reclaim resources after transmit completes
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_tx_ring \*tx_ring:
+    :param tx_ring:
         *undescribed*
+    :type tx_ring: struct e1000_tx_ring \*
 
 .. _`e1000_rx_checksum`:
 
@@ -802,17 +863,21 @@ e1000_rx_checksum
 
     Receive Checksum Offload for 82543
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param u32 status_err:
+    :param status_err:
         receive descriptor status and error fields
+    :type status_err: u32
 
-    :param u32 csum:
+    :param csum:
         receive descriptor csum field
+    :type csum: u32
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`e1000_consume_page`:
 
@@ -823,14 +888,17 @@ e1000_consume_page
 
     helper function for jumbo Rx path
 
-    :param struct e1000_rx_buffer \*bi:
+    :param bi:
         *undescribed*
+    :type bi: struct e1000_rx_buffer \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param u16 length:
+    :param length:
         *undescribed*
+    :type length: u16
 
 .. _`e1000_receive_skb`:
 
@@ -841,17 +909,21 @@ e1000_receive_skb
 
     helper function to handle rx indications
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param u8 status:
+    :param status:
         descriptor status field as written by hardware
+    :type status: u8
 
-    :param __le16 vlan:
+    :param vlan:
         descriptor vlan field as written by hardware (no le/be conversion)
+    :type vlan: __le16
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to sk_buff to be indicated to stack
+    :type skb: struct sk_buff \*
 
 .. _`e1000_tbi_adjust_stats`:
 
@@ -860,17 +932,21 @@ e1000_tbi_adjust_stats
 
 .. c:function:: void e1000_tbi_adjust_stats(struct e1000_hw *hw, struct e1000_hw_stats *stats, u32 frame_len, const u8 *mac_addr)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param struct e1000_hw_stats \*stats:
+    :param stats:
         *undescribed*
+    :type stats: struct e1000_hw_stats \*
 
-    :param u32 frame_len:
+    :param frame_len:
         The length of the frame in question
+    :type frame_len: u32
 
-    :param const u8 \*mac_addr:
+    :param mac_addr:
         The Ethernet destination address of the frame in question
+    :type mac_addr: const u8 \*
 
 .. _`e1000_tbi_adjust_stats.description`:
 
@@ -888,17 +964,21 @@ e1000_clean_jumbo_rx_irq
 
     Send received data up the network stack; legacy
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_rx_ring \*rx_ring:
+    :param rx_ring:
         ring to clean
+    :type rx_ring: struct e1000_rx_ring \*
 
-    :param int \*work_done:
+    :param work_done:
         amount of napi work completed this call
+    :type work_done: int \*
 
-    :param int work_to_do:
+    :param work_to_do:
         max amount of work allowed for this call to do
+    :type work_to_do: int
 
 .. _`e1000_clean_jumbo_rx_irq.description`:
 
@@ -917,17 +997,21 @@ e1000_clean_rx_irq
 
     Send received data up the network stack; legacy
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_rx_ring \*rx_ring:
+    :param rx_ring:
         ring to clean
+    :type rx_ring: struct e1000_rx_ring \*
 
-    :param int \*work_done:
+    :param work_done:
         amount of napi work completed this call
+    :type work_done: int \*
 
-    :param int work_to_do:
+    :param work_to_do:
         max amount of work allowed for this call to do
+    :type work_to_do: int
 
 .. _`e1000_alloc_jumbo_rx_buffers`:
 
@@ -938,14 +1022,17 @@ e1000_alloc_jumbo_rx_buffers
 
     Replace used jumbo receive buffers
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_rx_ring \*rx_ring:
+    :param rx_ring:
         pointer to receive ring structure
+    :type rx_ring: struct e1000_rx_ring \*
 
-    :param int cleaned_count:
+    :param cleaned_count:
         number of buffers to allocate this pass
+    :type cleaned_count: int
 
 .. _`e1000_alloc_rx_buffers`:
 
@@ -956,14 +1043,17 @@ e1000_alloc_rx_buffers
 
     Replace used receive buffers; legacy & extended
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct e1000_adapter \*
 
-    :param struct e1000_rx_ring \*rx_ring:
+    :param rx_ring:
         *undescribed*
+    :type rx_ring: struct e1000_rx_ring \*
 
-    :param int cleaned_count:
+    :param cleaned_count:
         *undescribed*
+    :type cleaned_count: int
 
 .. _`e1000_smartspeed`:
 
@@ -974,8 +1064,9 @@ e1000_smartspeed
 
     Workaround for SmartSpeed on 82541 and 82547 controllers.
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_ioctl`:
 
@@ -984,14 +1075,17 @@ e1000_ioctl
 
 .. c:function:: int e1000_ioctl(struct net_device *netdev, struct ifreq *ifr, int cmd)
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         *undescribed*
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
 .. _`e1000_mii_ioctl`:
 
@@ -1000,14 +1094,17 @@ e1000_mii_ioctl
 
 .. c:function:: int e1000_mii_ioctl(struct net_device *netdev, struct ifreq *ifr, int cmd)
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         *undescribed*
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
 .. _`e1000_io_error_detected`:
 
@@ -1018,11 +1115,13 @@ e1000_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`e1000_io_error_detected.description`:
 
@@ -1041,8 +1140,9 @@ e1000_io_slot_reset
 
     called after the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`e1000_io_slot_reset.description`:
 
@@ -1061,8 +1161,9 @@ e1000_io_resume
 
     called when traffic can start flowing again.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`e1000_io_resume.description`:
 

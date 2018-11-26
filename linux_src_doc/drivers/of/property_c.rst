@@ -10,14 +10,17 @@ of_property_count_elems_of_size
 
     Count the number of elements in a property
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param int elem_size:
+    :param elem_size:
         size of the individual element
+    :type elem_size: int
 
 .. _`of_property_count_elems_of_size.description`:
 
@@ -36,20 +39,25 @@ of_find_property_value_of_size
 
 .. c:function:: void *of_find_property_value_of_size(const struct device_node *np, const char *propname, u32 min, u32 max, size_t *len)
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u32 min:
+    :param min:
         minimum allowed length of property value
+    :type min: u32
 
-    :param u32 max:
+    :param max:
         maximum allowed length of property value (0 means unlimited)
+    :type max: u32
 
-    :param size_t \*len:
+    :param len:
         if !=NULL, actual length is written to here
+    :type len: size_t \*
 
 .. _`of_find_property_value_of_size.description`:
 
@@ -70,17 +78,21 @@ of_property_read_u32_index
 
     Find and read a u32 from a multi-value property.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u32 index:
+    :param index:
         index of the u32 in the list of values
+    :type index: u32
 
-    :param u32 \*out_value:
+    :param out_value:
         pointer to return value, modified only if no error.
+    :type out_value: u32 \*
 
 .. _`of_property_read_u32_index.description`:
 
@@ -103,17 +115,21 @@ of_property_read_u64_index
 
     Find and read a u64 from a multi-value property.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u32 index:
+    :param index:
         index of the u64 in the list of values
+    :type index: u32
 
-    :param u64 \*out_value:
+    :param out_value:
         pointer to return value, modified only if no error.
+    :type out_value: u64 \*
 
 .. _`of_property_read_u64_index.description`:
 
@@ -136,22 +152,27 @@ of_property_read_variable_u8_array
 
     Find and read an array of u8 from a property, with bounds on the minimum and maximum array size.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u8 \*out_values:
+    :param out_values:
         pointer to return value, modified only if return value is 0.
+    :type out_values: u8 \*
 
-    :param size_t sz_min:
+    :param sz_min:
         minimum number of array elements to read
+    :type sz_min: size_t
 
-    :param size_t sz_max:
+    :param sz_max:
         maximum number of array elements to read, if zero there is no
         upper limit on the number of elements in the dts entry but only
         sz_min will be read.
+    :type sz_max: size_t
 
 .. _`of_property_read_variable_u8_array.description`:
 
@@ -181,22 +202,27 @@ of_property_read_variable_u16_array
 
     Find and read an array of u16 from a property, with bounds on the minimum and maximum array size.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u16 \*out_values:
+    :param out_values:
         pointer to return value, modified only if return value is 0.
+    :type out_values: u16 \*
 
-    :param size_t sz_min:
+    :param sz_min:
         minimum number of array elements to read
+    :type sz_min: size_t
 
-    :param size_t sz_max:
+    :param sz_max:
         maximum number of array elements to read, if zero there is no
         upper limit on the number of elements in the dts entry but only
         sz_min will be read.
+    :type sz_max: size_t
 
 .. _`of_property_read_variable_u16_array.description`:
 
@@ -226,22 +252,27 @@ of_property_read_variable_u32_array
 
     Find and read an array of 32 bit integers from a property, with bounds on the minimum and maximum array size.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u32 \*out_values:
+    :param out_values:
         pointer to return value, modified only if return value is 0.
+    :type out_values: u32 \*
 
-    :param size_t sz_min:
+    :param sz_min:
         minimum number of array elements to read
+    :type sz_min: size_t
 
-    :param size_t sz_max:
+    :param sz_max:
         maximum number of array elements to read, if zero there is no
         upper limit on the number of elements in the dts entry but only
         sz_min will be read.
+    :type sz_max: size_t
 
 .. _`of_property_read_variable_u32_array.description`:
 
@@ -264,14 +295,17 @@ of_property_read_u64
 
     Find and read a 64 bit integer from a property
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u64 \*out_value:
+    :param out_value:
         pointer to return value, modified only if return value is 0.
+    :type out_value: u64 \*
 
 .. _`of_property_read_u64.description`:
 
@@ -294,22 +328,27 @@ of_property_read_variable_u64_array
 
     Find and read an array of 64 bit integers from a property, with bounds on the minimum and maximum array size.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u64 \*out_values:
+    :param out_values:
         pointer to return value, modified only if return value is 0.
+    :type out_values: u64 \*
 
-    :param size_t sz_min:
+    :param sz_min:
         minimum number of array elements to read
+    :type sz_min: size_t
 
-    :param size_t sz_max:
+    :param sz_max:
         maximum number of array elements to read, if zero there is no
         upper limit on the number of elements in the dts entry but only
         sz_min will be read.
+    :type sz_max: size_t
 
 .. _`of_property_read_variable_u64_array.description`:
 
@@ -332,15 +371,18 @@ of_property_read_string
 
     Find and read a string from a property
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param const char \*\*out_string:
+    :param out_string:
         pointer to null terminated return string, modified only if
         return value is 0.
+    :type out_string: const char \*\*
 
 .. _`of_property_read_string.description`:
 
@@ -364,14 +406,17 @@ of_property_match_string
 
     Find string in a list and return index
 
-    :param const struct device_node \*np:
+    :param np:
         pointer to node containing string list property
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         string list property name
+    :type propname: const char \*
 
-    :param const char \*string:
+    :param string:
         pointer to string to search for in string list
+    :type string: const char \*
 
 .. _`of_property_match_string.description`:
 
@@ -390,20 +435,25 @@ of_property_read_string_helper
 
     Utility helper for parsing string properties
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param const char \*\*out_strs:
+    :param out_strs:
         output array of string pointers.
+    :type out_strs: const char \*\*
 
-    :param size_t sz:
+    :param sz:
         number of array elements to read.
+    :type sz: size_t
 
-    :param int skip:
+    :param skip:
         Number of strings to skip over at beginning of list.
+    :type skip: int
 
 .. _`of_property_read_string_helper.description`:
 
@@ -422,11 +472,13 @@ of_graph_parse_endpoint
 
     parse common endpoint node properties
 
-    :param const struct device_node \*node:
+    :param node:
         pointer to endpoint device_node
+    :type node: const struct device_node \*
 
-    :param struct of_endpoint \*endpoint:
+    :param endpoint:
         pointer to the OF endpoint data structure
+    :type endpoint: struct of_endpoint \*
 
 .. _`of_graph_parse_endpoint.description`:
 
@@ -444,11 +496,13 @@ of_graph_get_port_by_id
 
     get the port matching a given id
 
-    :param struct device_node \*parent:
+    :param parent:
         pointer to the parent device node
+    :type parent: struct device_node \*
 
-    :param u32 id:
+    :param id:
         id of the port
+    :type id: u32
 
 .. _`of_graph_get_port_by_id.return`:
 
@@ -467,11 +521,13 @@ of_graph_get_next_endpoint
 
     get next endpoint node
 
-    :param const struct device_node \*parent:
+    :param parent:
         pointer to the parent device node
+    :type parent: const struct device_node \*
 
-    :param struct device_node \*prev:
+    :param prev:
         previous endpoint node, or NULL to get first
+    :type prev: struct device_node \*
 
 .. _`of_graph_get_next_endpoint.return`:
 
@@ -490,14 +546,17 @@ of_graph_get_endpoint_by_regs
 
     get endpoint node of specific identifiers
 
-    :param const struct device_node \*parent:
+    :param parent:
         pointer to the parent device node
+    :type parent: const struct device_node \*
 
-    :param int port_reg:
+    :param port_reg:
         identifier (value of reg property) of the parent port node
+    :type port_reg: int
 
-    :param int reg:
+    :param reg:
         identifier (value of reg property) of the endpoint node
+    :type reg: int
 
 .. _`of_graph_get_endpoint_by_regs.return`:
 
@@ -517,8 +576,9 @@ of_graph_get_remote_endpoint
 
     get remote endpoint node
 
-    :param const struct device_node \*node:
+    :param node:
         pointer to a local endpoint device_node
+    :type node: const struct device_node \*
 
 .. _`of_graph_get_remote_endpoint.return`:
 
@@ -537,8 +597,9 @@ of_graph_get_port_parent
 
     get port's parent node
 
-    :param struct device_node \*node:
+    :param node:
         pointer to a local endpoint device_node
+    :type node: struct device_node \*
 
 .. _`of_graph_get_port_parent.return`:
 
@@ -557,8 +618,9 @@ of_graph_get_remote_port_parent
 
     get remote port's parent node
 
-    :param const struct device_node \*node:
+    :param node:
         pointer to a local endpoint device_node
+    :type node: const struct device_node \*
 
 .. _`of_graph_get_remote_port_parent.return`:
 
@@ -577,8 +639,9 @@ of_graph_get_remote_port
 
     get remote port node
 
-    :param const struct device_node \*node:
+    :param node:
         pointer to a local endpoint device_node
+    :type node: const struct device_node \*
 
 .. _`of_graph_get_remote_port.return`:
 
@@ -597,14 +660,17 @@ of_graph_get_remote_node
 
     get remote parent device_node for given port/endpoint
 
-    :param const struct device_node \*node:
+    :param node:
         pointer to parent device_node containing graph port/endpoint
+    :type node: const struct device_node \*
 
-    :param u32 port:
+    :param port:
         identifier (value of reg property) of the parent port node
+    :type port: u32
 
-    :param u32 endpoint:
+    :param endpoint:
         identifier (value of reg property) of the endpoint node
+    :type endpoint: u32
 
 .. _`of_graph_get_remote_node.return`:
 

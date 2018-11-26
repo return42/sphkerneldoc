@@ -10,14 +10,17 @@ module_param
 
     typesafe helper for a module/cmdline parameter
 
-    :param  name:
+    :param name:
         *undescribed*
+    :type name: 
 
-    :param  type:
+    :param type:
         the type of the parameter
+    :type type: 
 
-    :param  perm:
+    :param perm:
         visibility in sysfs.
+    :type perm: 
 
 .. _`module_param.description`:
 
@@ -74,14 +77,17 @@ module_param_unsafe
 
     same as module_param but taints kernel
 
-    :param  name:
+    :param name:
         *undescribed*
+    :type name: 
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
-    :param  perm:
+    :param perm:
         *undescribed*
+    :type perm: 
 
 .. _`module_param_named`:
 
@@ -92,17 +98,21 @@ module_param_named
 
     typesafe helper for a renamed module/cmdline parameter
 
-    :param  name:
+    :param name:
         a valid C identifier which is the parameter name.
+    :type name: 
 
-    :param  value:
+    :param value:
         the actual lvalue to alter.
+    :type value: 
 
-    :param  type:
+    :param type:
         the type of the parameter
+    :type type: 
 
-    :param  perm:
+    :param perm:
         visibility in sysfs.
+    :type perm: 
 
 .. _`module_param_named.description`:
 
@@ -122,17 +132,21 @@ module_param_named_unsafe
 
     same as module_param_named but taints kernel
 
-    :param  name:
+    :param name:
         *undescribed*
+    :type name: 
 
-    :param  value:
+    :param value:
         *undescribed*
+    :type value: 
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
-    :param  perm:
+    :param perm:
         *undescribed*
+    :type perm: 
 
 .. _`module_param_cb`:
 
@@ -143,17 +157,21 @@ module_param_cb
 
     general callback for a module/cmdline parameter
 
-    :param  name:
+    :param name:
         a valid C identifier which is the parameter name.
+    :type name: 
 
-    :param  ops:
+    :param ops:
         the set & get operations for this parameter.
+    :type ops: 
 
-    :param  arg:
+    :param arg:
         *undescribed*
+    :type arg: 
 
-    :param  perm:
+    :param perm:
         visibility in sysfs.
+    :type perm: 
 
 .. _`module_param_cb.description`:
 
@@ -171,17 +189,21 @@ core_param
 
     define a historical core kernel parameter.
 
-    :param  name:
+    :param name:
         the name of the cmdline and sysfs parameter (often the same as var)
+    :type name: 
 
-    :param  var:
+    :param var:
         the variable
+    :type var: 
 
-    :param  type:
+    :param type:
         the type of the parameter
+    :type type: 
 
-    :param  perm:
+    :param perm:
         visibility in sysfs
+    :type perm: 
 
 .. _`core_param.description`:
 
@@ -202,17 +224,21 @@ core_param_unsafe
 
     same as core_param but taints kernel
 
-    :param  name:
+    :param name:
         *undescribed*
+    :type name: 
 
-    :param  var:
+    :param var:
         *undescribed*
+    :type var: 
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
-    :param  perm:
+    :param perm:
         *undescribed*
+    :type perm: 
 
 .. _`module_param_string`:
 
@@ -223,17 +249,21 @@ module_param_string
 
     a char array parameter
 
-    :param  name:
+    :param name:
         the name of the parameter
+    :type name: 
 
-    :param  string:
+    :param string:
         the string variable
+    :type string: 
 
-    :param  len:
+    :param len:
         the maximum length of the string, incl. terminator
+    :type len: 
 
-    :param  perm:
+    :param perm:
         visibility in sysfs.
+    :type perm: 
 
 .. _`module_param_string.description`:
 
@@ -252,11 +282,13 @@ parameq
 
     checks if two parameter names match
 
-    :param const char \*name1:
+    :param name1:
         parameter name 1
+    :type name1: const char \*
 
-    :param const char \*name2:
+    :param name2:
         parameter name 2
+    :type name2: const char \*
 
 .. _`parameq.description`:
 
@@ -275,14 +307,17 @@ parameqn
 
     checks if two parameter names match
 
-    :param const char \*name1:
+    :param name1:
         parameter name 1
+    :type name1: const char \*
 
-    :param const char \*name2:
+    :param name2:
         parameter name 2
+    :type name2: const char \*
 
-    :param size_t n:
+    :param n:
         the length to compare
+    :type n: size_t
 
 .. _`parameqn.description`:
 
@@ -300,17 +335,21 @@ module_param_array
 
     a parameter which is an array of some type
 
-    :param  name:
+    :param name:
         the name of the array variable
+    :type name: 
 
-    :param  type:
+    :param type:
         the type, as per \ :c:func:`module_param`\ 
+    :type type: 
 
-    :param  nump:
+    :param nump:
         optional pointer filled in with the number written
+    :type nump: 
 
-    :param  perm:
+    :param perm:
         visibility in sysfs
+    :type perm: 
 
 .. _`module_param_array.description`:
 
@@ -332,20 +371,25 @@ module_param_array_named
 
     renamed parameter which is an array of some type
 
-    :param  name:
+    :param name:
         a valid C identifier which is the parameter name
+    :type name: 
 
-    :param  array:
+    :param array:
         the name of the array variable
+    :type array: 
 
-    :param  type:
+    :param type:
         the type, as per \ :c:func:`module_param`\ 
+    :type type: 
 
-    :param  nump:
+    :param nump:
         optional pointer filled in with the number written
+    :type nump: 
 
-    :param  perm:
+    :param perm:
         visibility in sysfs
+    :type perm: 
 
 .. _`module_param_array_named.description`:
 
@@ -364,20 +408,25 @@ module_param_hw_named
 
     A parameter representing a hw parameters
 
-    :param  name:
+    :param name:
         a valid C identifier which is the parameter name.
+    :type name: 
 
-    :param  value:
+    :param value:
         the actual lvalue to alter.
+    :type value: 
 
-    :param  type:
+    :param type:
         the type of the parameter
+    :type type: 
 
-    :param  hwtype:
+    :param hwtype:
         what the value represents (enum hwparam_type)
+    :type hwtype: 
 
-    :param  perm:
+    :param perm:
         visibility in sysfs.
+    :type perm: 
 
 .. _`module_param_hw_named.description`:
 
@@ -397,20 +446,25 @@ module_param_hw_array
 
     A parameter representing an array of hw parameters
 
-    :param  name:
+    :param name:
         the name of the array variable
+    :type name: 
 
-    :param  type:
+    :param type:
         the type, as per \ :c:func:`module_param`\ 
+    :type type: 
 
-    :param  hwtype:
+    :param hwtype:
         what the value represents (enum hwparam_type)
+    :type hwtype: 
 
-    :param  nump:
+    :param nump:
         optional pointer filled in with the number written
+    :type nump: 
 
-    :param  perm:
+    :param perm:
         visibility in sysfs
+    :type perm: 
 
 .. _`module_param_hw_array.description`:
 

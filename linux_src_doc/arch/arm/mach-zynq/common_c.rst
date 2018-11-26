@@ -10,8 +10,9 @@ zynq_memory_init
 
     Initialize special memory
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zynq_memory_init.description`:
 
@@ -30,8 +31,9 @@ zynq_get_revision
 
     Get Zynq silicon revision
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zynq_get_revision.return`:
 
@@ -49,8 +51,9 @@ zynq_init_machine
 
     System specific initialization, intended to be called from board specific initialization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zynq_map_io`:
 
@@ -61,8 +64,9 @@ zynq_map_io
 
     Create memory mappings needed for early I/O.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -102,8 +102,9 @@ UI_GET_SYSNAME
 
     get the sysfs name of the created uinput device
 
-    :param  len:
+    :param len:
         *undescribed*
+    :type len: 
 
 .. _`ui_get_sysname.description`:
 

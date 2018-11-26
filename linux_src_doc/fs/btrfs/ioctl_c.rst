@@ -10,26 +10,33 @@ btrfs_clone
 
     clone a range from inode file to another
 
-    :param struct inode \*src:
+    :param src:
         Inode to clone from
+    :type src: struct inode \*
 
-    :param struct inode \*inode:
+    :param inode:
         Inode to clone to
+    :type inode: struct inode \*
 
-    :param const u64 off:
+    :param off:
         Offset within source to start clone from
+    :type off: const u64
 
-    :param const u64 olen:
+    :param olen:
         Original length, passed by user, of range to clone
+    :type olen: const u64
 
-    :param const u64 olen_aligned:
+    :param olen_aligned:
         Block-aligned value of olen
+    :type olen_aligned: const u64
 
-    :param const u64 destoff:
+    :param destoff:
         Offset within \ ``inode``\  to start clone
+    :type destoff: const u64
 
-    :param int no_time_update:
+    :param no_time_update:
         Whether to update mtime/ctime on the target inode
+    :type no_time_update: int
 
 .. This file was automatic generated / don't edit.
 

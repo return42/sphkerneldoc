@@ -170,8 +170,9 @@ cmd_db_ready
 
     Indicates if command DB is available
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cmd_db_ready.return`:
 
@@ -189,8 +190,9 @@ cmd_db_read_addr
 
     Query command db for resource id address.
 
-    :param const char \*id:
+    :param id:
         resource id to query for address
+    :type id: const char \*
 
 .. _`cmd_db_read_addr.return`:
 
@@ -211,14 +213,17 @@ cmd_db_read_aux_data
 
     Query command db for aux data.
 
-    :param const char \*id:
+    :param id:
         Resource to retrieve AUX Data on.
+    :type id: const char \*
 
-    :param u8 \*data:
+    :param data:
         Data buffer to copy returned aux data to. Returns size on NULL
+    :type data: u8 \*
 
-    :param size_t len:
+    :param len:
         Caller provides size of data buffer passed in.
+    :type len: size_t
 
 .. _`cmd_db_read_aux_data.return`:
 
@@ -236,8 +241,9 @@ cmd_db_read_aux_data_len
 
     Get the length of the auxiliary data stored in DB.
 
-    :param const char \*id:
+    :param id:
         Resource to retrieve AUX Data.
+    :type id: const char \*
 
 .. _`cmd_db_read_aux_data_len.return`:
 
@@ -255,8 +261,9 @@ cmd_db_read_slave_id
 
     Get the slave ID for a given resource address
 
-    :param const char \*id:
+    :param id:
         Resource id to query the DB for version
+    :type id: const char \*
 
 .. _`cmd_db_read_slave_id.return`:
 

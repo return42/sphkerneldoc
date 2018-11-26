@@ -10,23 +10,26 @@ posix_acl_update_mode
 
     update mode in set_acl
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param umode_t \*mode_p:
+    :param mode_p:
         *undescribed*
+    :type mode_p: umode_t \*
 
-    :param struct posix_acl \*\*acl:
+    :param acl:
         *undescribed*
+    :type acl: struct posix_acl \*\*
 
-.. _`posix_acl_update_mode.update-the-file-mode-when-setting-an-acl`:
+.. _`posix_acl_update_mode.description`:
 
-Update the file mode when setting an ACL
-----------------------------------------
+Description
+-----------
 
-compute the new file permission
+Update the file mode when setting an ACL: compute the new file permission
 bits based on the ACL.  In addition, if the ACL is equivalent to the new
-file mode, set \*acl to NULL to indicate that no ACL should be set.
+file mode, set *acl to NULL to indicate that no ACL should be set.
 
 As with chmod, clear the setgit bit if the caller is not in the owning group
 or capable of CAP_FSETID (see inode_change_ok).

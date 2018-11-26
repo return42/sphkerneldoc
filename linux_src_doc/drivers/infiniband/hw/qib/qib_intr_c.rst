@@ -10,14 +10,17 @@ qib_format_hwmsg
 
     format a single hwerror message \ ``msg``\  message buffer \ ``msgl``\  length of message buffer \ ``hwmsg``\  message to add to message buffer
 
-    :param char \*msg:
+    :param msg:
         *undescribed*
+    :type msg: char \*
 
-    :param size_t msgl:
+    :param msgl:
         *undescribed*
+    :type msgl: size_t
 
-    :param const char \*hwmsg:
+    :param hwmsg:
         *undescribed*
+    :type hwmsg: const char \*
 
 .. _`qib_format_hwerrors`:
 
@@ -28,20 +31,25 @@ qib_format_hwerrors
 
     format hardware error messages for display \ ``hwerrs``\  hardware errors bit vector \ ``hwerrmsgs``\  hardware error descriptions \ ``nhwerrmsgs``\  number of hwerrmsgs \ ``msg``\  message buffer \ ``msgl``\  message buffer length
 
-    :param u64 hwerrs:
+    :param hwerrs:
         *undescribed*
+    :type hwerrs: u64
 
-    :param const struct qib_hwerror_msgs \*hwerrmsgs:
+    :param hwerrmsgs:
         *undescribed*
+    :type hwerrmsgs: const struct qib_hwerror_msgs \*
 
-    :param size_t nhwerrmsgs:
+    :param nhwerrmsgs:
         *undescribed*
+    :type nhwerrmsgs: size_t
 
-    :param char \*msg:
+    :param msg:
         *undescribed*
+    :type msg: char \*
 
-    :param size_t msgl:
+    :param msgl:
         *undescribed*
+    :type msgl: size_t
 
 .. This file was automatic generated / don't edit.
 

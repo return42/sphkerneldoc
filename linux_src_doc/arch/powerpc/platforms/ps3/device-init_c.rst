@@ -10,8 +10,9 @@ ps3_setup_gelic_device
 
     Setup and register a gelic device instance.
 
-    :param const struct ps3_repository_device \*repo:
+    :param repo:
         *undescribed*
+    :type repo: const struct ps3_repository_device \*
 
 .. _`ps3_setup_gelic_device.description`:
 
@@ -30,8 +31,9 @@ ps3_setup_dynamic_device
 
     Setup a dynamic device from the repository
 
-    :param const struct ps3_repository_device \*repo:
+    :param repo:
         *undescribed*
+    :type repo: const struct ps3_repository_device \*
 
 .. _`ps3_setup_static_device`:
 
@@ -42,8 +44,9 @@ ps3_setup_static_device
 
     Setup a static device from the repository
 
-    :param const struct ps3_repository_device \*repo:
+    :param repo:
         *undescribed*
+    :type repo: const struct ps3_repository_device \*
 
 .. _`ps3_probe_thread`:
 
@@ -54,8 +57,9 @@ ps3_probe_thread
 
     Background repository probing at system startup.
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`ps3_probe_thread.description`:
 
@@ -77,14 +81,17 @@ ps3_stop_probe_thread
 
     Stops the background probe thread.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         *undescribed*
+    :type nb: struct notifier_block \*
 
-    :param unsigned long code:
+    :param code:
         *undescribed*
+    :type code: unsigned long
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`ps3_start_probe_thread`:
 
@@ -95,8 +102,9 @@ ps3_start_probe_thread
 
     Starts the background probe thread.
 
-    :param enum ps3_bus_type bus_type:
+    :param bus_type:
         *undescribed*
+    :type bus_type: enum ps3_bus_type
 
 .. _`ps3_register_devices`:
 
@@ -107,8 +115,9 @@ ps3_register_devices
 
     Probe the system and register devices found.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ps3_register_devices.description`:
 

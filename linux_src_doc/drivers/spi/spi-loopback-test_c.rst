@@ -10,17 +10,21 @@ spi_test_execute_msg
 
     default implementation to run a test
 
-    :param struct spi_device \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct spi_device \*
 
-    :param struct spi_test \*test:
+    :param test:
         *undescribed*
+    :type test: struct spi_test \*
 
-    :param void \*tx:
+    :param tx:
         *undescribed*
+    :type tx: void \*
 
-    :param void \*rx:
+    :param rx:
         *undescribed*
+    :type rx: void \*
 
 .. _`spi_test_execute_msg.spi`:
 
@@ -54,17 +58,21 @@ spi_test_run_test
 
     run an individual spi_test including all the relevant iterations on: length and buffer alignment
 
-    :param struct spi_device \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct spi_device \*
 
-    :param const struct spi_test \*test:
+    :param test:
         *undescribed*
+    :type test: const struct spi_test \*
 
-    :param void \*tx:
+    :param tx:
         *undescribed*
+    :type tx: void \*
 
-    :param void \*rx:
+    :param rx:
         *undescribed*
+    :type rx: void \*
 
 .. _`spi_test_run_test.spi`:
 
@@ -98,11 +106,13 @@ spi_test_run_tests
 
     run an array of spi_messages tests
 
-    :param struct spi_device \*spi:
+    :param spi:
         the spi device on which to run the tests
+    :type spi: struct spi_device \*
 
-    :param struct spi_test \*tests:
+    :param tests:
         NULL-terminated array of \ ``spi_test``\ 
+    :type tests: struct spi_test \*
 
 .. _`spi_test_run_tests.return`:
 

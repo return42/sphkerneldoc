@@ -10,8 +10,9 @@ omap_usb2_set_comparator
 
     links the comparator present in the sytem with this phy \ ``comparator``\  - the companion phy(comparator) for this phy
 
-    :param struct phy_companion \*comparator:
+    :param comparator:
         *undescribed*
+    :type comparator: struct phy_companion \*
 
 .. _`omap_usb2_set_comparator.description`:
 

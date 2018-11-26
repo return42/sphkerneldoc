@@ -114,7 +114,7 @@ Members
 -------
 
 lineoffsets
-    an array desired lines, specified by offset index for the
+    an array of desired lines, specified by offset index for the
     associated GPIO device
 
 flags

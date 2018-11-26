@@ -10,11 +10,13 @@ pnp_assign_resources
 
     assigns resources to the device based on the specified dependent number
 
-    :param struct pnp_dev \*dev:
+    :param dev:
         pointer to the desired device
+    :type dev: struct pnp_dev \*
 
-    :param int set:
+    :param set:
         the dependent function number
+    :type set: int
 
 .. _`pnp_auto_config_dev`:
 
@@ -25,8 +27,9 @@ pnp_auto_config_dev
 
     automatically assigns resources to a device
 
-    :param struct pnp_dev \*dev:
+    :param dev:
         pointer to the desired device
+    :type dev: struct pnp_dev \*
 
 .. _`pnp_start_dev`:
 
@@ -37,8 +40,9 @@ pnp_start_dev
 
     low-level start of the PnP device
 
-    :param struct pnp_dev \*dev:
+    :param dev:
         pointer to the desired device
+    :type dev: struct pnp_dev \*
 
 .. _`pnp_start_dev.description`:
 
@@ -56,8 +60,9 @@ pnp_stop_dev
 
     low-level disable of the PnP device
 
-    :param struct pnp_dev \*dev:
+    :param dev:
         pointer to the desired device
+    :type dev: struct pnp_dev \*
 
 .. _`pnp_stop_dev.description`:
 
@@ -75,8 +80,9 @@ pnp_activate_dev
 
     activates a PnP device for use
 
-    :param struct pnp_dev \*dev:
+    :param dev:
         pointer to the desired device
+    :type dev: struct pnp_dev \*
 
 .. _`pnp_activate_dev.description`:
 
@@ -94,8 +100,9 @@ pnp_disable_dev
 
     disables device
 
-    :param struct pnp_dev \*dev:
+    :param dev:
         pointer to the desired device
+    :type dev: struct pnp_dev \*
 
 .. _`pnp_disable_dev.description`:
 

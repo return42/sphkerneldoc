@@ -10,17 +10,21 @@ rza1_pinmux_get_flags
 
     return pinmux flags associated to a pin
 
-    :param unsigned int port:
+    :param port:
         *undescribed*
+    :type port: unsigned int
 
-    :param unsigned int pin:
+    :param pin:
         *undescribed*
+    :type pin: unsigned int
 
-    :param unsigned int func:
+    :param func:
         *undescribed*
+    :type func: unsigned int
 
-    :param struct rza1_pinctrl \*rza1_pctl:
+    :param rza1_pctl:
         *undescribed*
+    :type rza1_pctl: struct rza1_pinctrl \*
 
 .. _`rza1_set_bit`:
 
@@ -31,17 +35,21 @@ rza1_set_bit
 
     un-locked set/clear a single bit in pin configuration registers
 
-    :param struct rza1_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct rza1_port \*
 
-    :param unsigned int reg:
+    :param reg:
         *undescribed*
+    :type reg: unsigned int
 
-    :param unsigned int bit:
+    :param bit:
         *undescribed*
+    :type bit: unsigned int
 
-    :param bool set:
+    :param set:
         *undescribed*
+    :type set: bool
 
 .. _`rza1_pin_reset`:
 
@@ -52,11 +60,13 @@ rza1_pin_reset
 
     reset a pin to default initial state
 
-    :param struct rza1_port \*port:
+    :param port:
         port where pin sits on
+    :type port: struct rza1_port \*
 
-    :param unsigned int pin:
+    :param pin:
         pin offset
+    :type pin: unsigned int
 
 .. _`rza1_pin_reset.description`:
 
@@ -77,14 +87,17 @@ rza1_pin_set_direction
 
     set I/O direction on a pin in port mode
 
-    :param struct rza1_port \*port:
+    :param port:
         port where pin sits on
+    :type port: struct rza1_port \*
 
-    :param unsigned int pin:
+    :param pin:
         pin offset
+    :type pin: unsigned int
 
-    :param bool input:
+    :param input:
         input enable/disable flag
+    :type input: bool
 
 .. _`rza1_pin_set_direction.description`:
 
@@ -103,11 +116,13 @@ rza1_pin_mux_single
 
     configure pin multiplexing on a single pin
 
-    :param struct rza1_pinctrl \*rza1_pctl:
+    :param rza1_pctl:
         *undescribed*
+    :type rza1_pctl: struct rza1_pinctrl \*
 
-    :param struct rza1_mux_conf \*mux_conf:
+    :param mux_conf:
         pin multiplexing descriptor
+    :type mux_conf: struct rza1_mux_conf \*
 
 .. _`rza1_gpio_request`:
 
@@ -118,11 +133,13 @@ rza1_gpio_request
 
     configure pin in port mode
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         gpio chip where the gpio sits on
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int gpio:
+    :param gpio:
         gpio offset
+    :type gpio: unsigned int
 
 .. _`rza1_gpio_request.description`:
 
@@ -142,11 +159,13 @@ rza1_gpio_free
 
     reset a pin
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         gpio chip where the gpio sits on
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int gpio:
+    :param gpio:
         gpio offset
+    :type gpio: unsigned int
 
 .. _`rza1_gpio_free.description`:
 
@@ -166,11 +185,13 @@ rza1_gpio_get
 
     read a gpio pin value
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         gpio chip where the gpio sits on
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int gpio:
+    :param gpio:
         gpio offset
+    :type gpio: unsigned int
 
 .. _`rza1_gpio_get.description`:
 
@@ -190,8 +211,9 @@ rza1_dt_node_pin_count
 
     Count number of pins in a dt node or in all its children sub-nodes
 
-    :param struct device_node \*np:
+    :param np:
         device tree node to parse
+    :type np: struct device_node \*
 
 .. _`rza1_parse_pinmux_node`:
 
@@ -202,17 +224,21 @@ rza1_parse_pinmux_node
 
     parse a pin mux sub-node
 
-    :param struct rza1_pinctrl \*rza1_pctl:
+    :param rza1_pctl:
         RZ/A1 pin controller device
+    :type rza1_pctl: struct rza1_pinctrl \*
 
-    :param struct device_node \*np:
+    :param np:
         of pmx sub-node
+    :type np: struct device_node \*
 
-    :param struct rza1_mux_conf \*mux_confs:
+    :param mux_confs:
         array of pin mux configurations to fill with parsed info
+    :type mux_confs: struct rza1_mux_conf \*
 
-    :param unsigned int \*grpins:
+    :param grpins:
         array of pin ids to mux
+    :type grpins: unsigned int \*
 
 .. _`rza1_dt_node_to_map`:
 
@@ -223,17 +249,21 @@ rza1_dt_node_to_map
 
     map a pin mux node to a function/group
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param struct device_node \*np:
+    :param np:
         device tree node to parse
+    :type np: struct device_node \*
 
-    :param struct pinctrl_map \*\*map:
+    :param map:
         pointer to pin map (output)
+    :type map: struct pinctrl_map \*\*
 
-    :param unsigned int \*num_maps:
+    :param num_maps:
         number of collected maps (output)
+    :type num_maps: unsigned int \*
 
 .. _`rza1_dt_node_to_map.description`:
 
@@ -251,14 +281,17 @@ rza1_set_mux
 
     retrieve pins from a group and apply their mux settings
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         function selector
+    :type selector: unsigned int
 
-    :param unsigned int group:
+    :param group:
         group selector
+    :type group: unsigned int
 
 .. _`rza1_parse_gpiochip`:
 
@@ -269,17 +302,21 @@ rza1_parse_gpiochip
 
     parse and register a gpio chip and pin range
 
-    :param struct rza1_pinctrl \*rza1_pctl:
+    :param rza1_pctl:
         RZ/A1 pin controller device
+    :type rza1_pctl: struct rza1_pinctrl \*
 
-    :param struct device_node \*np:
+    :param np:
         of gpio-controller node
+    :type np: struct device_node \*
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         gpio chip to register to gpiolib
+    :type chip: struct gpio_chip \*
 
-    :param struct pinctrl_gpio_range \*range:
+    :param range:
         pin range to register to pinctrl core
+    :type range: struct pinctrl_gpio_range \*
 
 .. _`rza1_parse_gpiochip.description`:
 
@@ -298,8 +335,9 @@ rza1_gpio_register
 
     parse DT to collect gpio-chips and gpio-ranges
 
-    :param struct rza1_pinctrl \*rza1_pctl:
+    :param rza1_pctl:
         RZ/A1 pin controller device
+    :type rza1_pctl: struct rza1_pinctrl \*
 
 .. _`rza1_pinctrl_register`:
 
@@ -310,8 +348,9 @@ rza1_pinctrl_register
 
     Enumerate pins, ports and gpiochips; register them to pinctrl and gpio cores.
 
-    :param struct rza1_pinctrl \*rza1_pctl:
+    :param rza1_pctl:
         RZ/A1 pin controller device
+    :type rza1_pctl: struct rza1_pinctrl \*
 
 .. This file was automatic generated / don't edit.
 

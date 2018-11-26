@@ -10,11 +10,13 @@ cifs_wait_bit_killable
 
     helper for functions that are sleeping on bit locks
 
-    :param struct wait_bit_key \*key:
+    :param key:
         *undescribed*
+    :type key: struct wait_bit_key \*
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
 .. This file was automatic generated / don't edit.
 

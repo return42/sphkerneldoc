@@ -10,13 +10,15 @@ trace_s390_zcrypt_req
 
     zcrypt request tracepoint function
 
-    :param void \*ptr:
+    :param ptr:
         Address of the local buffer where the request from userspace
         is stored. Can be used as a unique id to relate together
         request and reply.
+    :type ptr: void \*
 
-    :param u32 type:
+    :param type:
         One of the TP\_ defines above.
+    :type type: u32
 
 .. _`trace_s390_zcrypt_req.description`:
 
@@ -36,23 +38,28 @@ trace_s390_zcrypt_rep
 
     zcrypt reply tracepoint function
 
-    :param void \*ptr:
+    :param ptr:
         Address of the local buffer where the request from userspace
         is stored. Can be used as a unique id to match together
         request and reply.
+    :type ptr: void \*
 
-    :param u32 fc:
+    :param fc:
         Function code.
+    :type fc: u32
 
-    :param u32 rc:
+    :param rc:
         The bare returncode as returned by the device driver ioctl
         function.
+    :type rc: u32
 
-    :param u16 dev:
+    :param dev:
         The adapter nr where this request was actually processed.
+    :type dev: u16
 
-    :param u16 dom:
+    :param dom:
         Domain id of the device where this request was processed.
+    :type dom: u16
 
 .. _`trace_s390_zcrypt_rep.description`:
 

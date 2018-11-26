@@ -10,8 +10,9 @@ intel_gvt_init_vgpu_types
 
     initialize vGPU type list
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_init_vgpu_types.description`:
 
@@ -29,8 +30,9 @@ intel_gvt_activate_vgpu
 
     activate a virtual GPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         virtual GPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_activate_vgpu.description`:
 
@@ -48,8 +50,9 @@ intel_gvt_deactivate_vgpu
 
     deactivate a virtual GPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         virtual GPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_deactivate_vgpu.description`:
 
@@ -57,7 +60,29 @@ Description
 -----------
 
 This function is called when user wants to deactivate a virtual GPU.
-All virtual GPU runtime information will be destroyed.
+The virtual GPU will be stopped.
+
+.. _`intel_gvt_release_vgpu`:
+
+intel_gvt_release_vgpu
+======================
+
+.. c:function:: void intel_gvt_release_vgpu(struct intel_vgpu *vgpu)
+
+    release a virtual GPU
+
+    :param vgpu:
+        virtual GPU
+    :type vgpu: struct intel_vgpu \*
+
+.. _`intel_gvt_release_vgpu.description`:
+
+Description
+-----------
+
+This function is called when user wants to release a virtual GPU.
+The virtual GPU will be stopped and all runtime information will be
+destroyed.
 
 .. _`intel_gvt_destroy_vgpu`:
 
@@ -68,8 +93,9 @@ intel_gvt_destroy_vgpu
 
     destroy a virtual GPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         virtual GPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_destroy_vgpu.description`:
 
@@ -87,8 +113,9 @@ intel_gvt_create_idle_vgpu
 
     create an idle virtual GPU
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_create_idle_vgpu.description`:
 
@@ -113,8 +140,9 @@ intel_gvt_destroy_idle_vgpu
 
     destroy an idle virtual GPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         virtual GPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_destroy_idle_vgpu.description`:
 
@@ -132,11 +160,13 @@ intel_gvt_create_vgpu
 
     create a virtual GPU
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         GVT device
+    :type gvt: struct intel_gvt \*
 
-    :param struct intel_vgpu_type \*type:
+    :param type:
         type of the vGPU to create
+    :type type: struct intel_vgpu_type \*
 
 .. _`intel_gvt_create_vgpu.description`:
 
@@ -161,14 +191,17 @@ intel_gvt_reset_vgpu_locked
 
     reset a virtual GPU by DMLR or GT reset
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         virtual GPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param bool dmlr:
+    :param dmlr:
         vGPU Device Model Level Reset or GT Reset
+    :type dmlr: bool
 
-    :param unsigned int engine_mask:
+    :param engine_mask:
         engines to reset for GT reset
+    :type engine_mask: unsigned int
 
 .. _`intel_gvt_reset_vgpu_locked.description`:
 
@@ -176,7 +209,7 @@ Description
 -----------
 
 This function is called when user wants to reset a virtual GPU through
-device model reset or GT reset. The caller should hold the gvt lock.
+device model reset or GT reset. The caller should hold the vgpu lock.
 
 vGPU Device Model Level Reset (DMLR) simulates the PCI level reset to reset
 the whole vGPU to default state as when it is created. This vGPU function
@@ -206,8 +239,9 @@ intel_gvt_reset_vgpu
 
     reset a virtual GPU (Function Level)
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         virtual GPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_reset_vgpu.description`:
 

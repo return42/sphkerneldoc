@@ -17,11 +17,13 @@ tioce_dma_d64
 
     create a DMA mapping using 64-bit direct mode
 
-    :param unsigned long ct_addr:
+    :param ct_addr:
         system coretalk address
+    :type ct_addr: unsigned long
 
-    :param int dma_flags:
+    :param dma_flags:
         *undescribed*
+    :type dma_flags: int
 
 .. _`tioce_dma_d64.description`:
 
@@ -53,17 +55,21 @@ pcidev_to_tioce
 
     return misc ce related pointers given a pci_dev
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param struct tioce __iomem \*\*base:
+    :param base:
         ptr to store struct tioce_mmr \* for the CE holding this device
+    :type base: struct tioce __iomem \*\*
 
-    :param struct tioce_kernel \*\*kernel:
+    :param kernel:
         ptr to store struct tioce_kernel \* for the CE holding this device
+    :type kernel: struct tioce_kernel \*\*
 
-    :param int \*port:
+    :param port:
         ptr to store the CE port number that this device is on
+    :type port: int \*
 
 .. _`pcidev_to_tioce.description`:
 
@@ -82,23 +88,29 @@ tioce_alloc_map
 
     Given a coretalk address, map it to pcie bus address space using one of the various ATE-based address modes.
 
-    :param struct tioce_kernel \*ce_kern:
+    :param ce_kern:
         tioce context
+    :type ce_kern: struct tioce_kernel \*
 
-    :param int type:
+    :param type:
         map mode to use
+    :type type: int
 
-    :param int port:
+    :param port:
         0-based port that the requesting device is downstream of
+    :type port: int
 
-    :param u64 ct_addr:
+    :param ct_addr:
         the coretalk address to map
+    :type ct_addr: u64
 
-    :param int len:
+    :param len:
         number of bytes to map
+    :type len: int
 
-    :param int dma_flags:
+    :param dma_flags:
         *undescribed*
+    :type dma_flags: int
 
 .. _`tioce_alloc_map.description`:
 
@@ -119,14 +131,17 @@ tioce_dma_d32
 
     create a DMA mapping using 32-bit direct mode
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         linux pci_dev representing the function
+    :type pdev: struct pci_dev \*
 
-    :param u64 ct_addr:
+    :param ct_addr:
         *undescribed*
+    :type ct_addr: u64
 
-    :param int dma_flags:
+    :param dma_flags:
         *undescribed*
+    :type dma_flags: int
 
 .. _`tioce_dma_d32.description`:
 
@@ -144,11 +159,13 @@ tioce_dma_barrier
 
     swizzle a TIOCE bus address to include or exclude the barrier bit.
 
-    :param u64 bus_addr:
+    :param bus_addr:
         bus address to swizzle
+    :type bus_addr: u64
 
-    :param int on:
+    :param on:
         *undescribed*
+    :type on: int
 
 .. _`tioce_dma_barrier.description`:
 
@@ -167,14 +184,17 @@ tioce_dma_unmap
 
     release CE mapping resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         linux pci_dev representing the function
+    :type pdev: struct pci_dev \*
 
-    :param dma_addr_t bus_addr:
+    :param bus_addr:
         bus address returned by an earlier tioce_dma_map
+    :type bus_addr: dma_addr_t
 
-    :param int dir:
+    :param dir:
         mapping direction (unused)
+    :type dir: int
 
 .. _`tioce_dma_unmap.description`:
 
@@ -194,20 +214,25 @@ tioce_do_dma_map
 
     map pages for PCI DMA
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         linux pci_dev representing the function
+    :type pdev: struct pci_dev \*
 
-    :param u64 paddr:
+    :param paddr:
         host physical address to map
+    :type paddr: u64
 
-    :param size_t byte_count:
+    :param byte_count:
         bytes to map
+    :type byte_count: size_t
 
-    :param int barrier:
+    :param barrier:
         *undescribed*
+    :type barrier: int
 
-    :param int dma_flags:
+    :param dma_flags:
         *undescribed*
+    :type dma_flags: int
 
 .. _`tioce_do_dma_map.description`:
 
@@ -226,17 +251,21 @@ tioce_dma
 
     standard pci dma map interface
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device requesting the map
+    :type pdev: struct pci_dev \*
 
-    :param unsigned long paddr:
+    :param paddr:
         system physical address to map into pci space
+    :type paddr: unsigned long
 
-    :param size_t byte_count:
+    :param byte_count:
         # bytes to map
+    :type byte_count: size_t
 
-    :param int dma_flags:
+    :param dma_flags:
         *undescribed*
+    :type dma_flags: int
 
 .. _`tioce_dma.description`:
 
@@ -255,17 +284,21 @@ tioce_dma_consistent
 
     consistent pci dma map interface
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device requesting the map
+    :type pdev: struct pci_dev \*
 
-    :param unsigned long paddr:
+    :param paddr:
         system physical address to map into pci space
+    :type paddr: unsigned long
 
-    :param size_t byte_count:
+    :param byte_count:
         # bytes to map
+    :type byte_count: size_t
 
-    :param int dma_flags:
+    :param dma_flags:
         *undescribed*
+    :type dma_flags: int
 
 .. _`tioce_dma_consistent.description`:
 
@@ -284,11 +317,13 @@ tioce_error_intr_handler
 
     SGI TIO CE error interrupt handler
 
-    :param int irq:
+    :param irq:
         unused
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         pointer to tioce_common struct for the given CE
+    :type arg: void \*
 
 .. _`tioce_error_intr_handler.description`:
 
@@ -307,14 +342,17 @@ tioce_reserve_m32
 
     reserve M32 ATEs for the indicated address range
 
-    :param struct tioce_kernel \*ce_kern:
+    :param ce_kern:
         *undescribed*
+    :type ce_kern: struct tioce_kernel \*
 
-    :param u64 base:
+    :param base:
         starting bus address to reserve
+    :type base: u64
 
-    :param u64 limit:
+    :param limit:
         last bus address to reserve
+    :type limit: u64
 
 .. _`tioce_reserve_m32.description`:
 
@@ -333,8 +371,9 @@ tioce_kern_init
 
     init kernel structures related to a given TIOCE
 
-    :param struct tioce_common \*tioce_common:
+    :param tioce_common:
         ptr to a cached tioce_common struct that originated in prom
+    :type tioce_common: struct tioce_common \*
 
 .. _`tioce_force_interrupt`:
 
@@ -345,8 +384,9 @@ tioce_force_interrupt
 
     implement altix \ :c:func:`force_interrupt`\  backend for CE
 
-    :param struct sn_irq_info \*sn_irq_info:
+    :param sn_irq_info:
         sn asic irq that we need an interrupt generated for
+    :type sn_irq_info: struct sn_irq_info \*
 
 .. _`tioce_force_interrupt.description`:
 
@@ -367,8 +407,9 @@ tioce_target_interrupt
 
     implement set_irq_affinity for tioce resident functions.  Note:  only applies to line interrupts, not MSI's.
 
-    :param struct sn_irq_info \*sn_irq_info:
+    :param sn_irq_info:
         SN IRQ context
+    :type sn_irq_info: struct sn_irq_info \*
 
 .. _`tioce_target_interrupt.description`:
 
@@ -389,11 +430,13 @@ tioce_bus_fixup
 
     perform final PCI fixup for a TIO CE bus
 
-    :param struct pcibus_bussoft \*prom_bussoft:
+    :param prom_bussoft:
         Common prom/kernel struct representing the bus
+    :type prom_bussoft: struct pcibus_bussoft \*
 
-    :param struct pci_controller \*controller:
+    :param controller:
         *undescribed*
+    :type controller: struct pci_controller \*
 
 .. _`tioce_bus_fixup.description`:
 
@@ -416,8 +459,9 @@ tioce_init_provider
 
     init SN PCI provider ops for TIO CE
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

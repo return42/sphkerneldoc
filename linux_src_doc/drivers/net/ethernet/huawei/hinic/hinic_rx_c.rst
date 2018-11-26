@@ -10,8 +10,9 @@ hinic_rxq_clean_stats
 
     Clean the statistics of specific queue
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         Logical Rx Queue
+    :type rxq: struct hinic_rxq \*
 
 .. _`hinic_rxq_get_stats`:
 
@@ -22,11 +23,13 @@ hinic_rxq_get_stats
 
     get statistics of Rx Queue
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         Logical Rx Queue
+    :type rxq: struct hinic_rxq \*
 
-    :param struct hinic_rxq_stats \*stats:
+    :param stats:
         return updated stats here
+    :type stats: struct hinic_rxq_stats \*
 
 .. _`rxq_stats_init`:
 
@@ -37,8 +40,9 @@ rxq_stats_init
 
     Initialize the statistics of specific queue
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         Logical Rx Queue
+    :type rxq: struct hinic_rxq \*
 
 .. _`rx_alloc_skb`:
 
@@ -49,11 +53,13 @@ rx_alloc_skb
 
     allocate skb and map it to dma address
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         rx queue
+    :type rxq: struct hinic_rxq \*
 
-    :param dma_addr_t \*dma_addr:
+    :param dma_addr:
         returned dma address for the skb
+    :type dma_addr: dma_addr_t \*
 
 .. _`rx_alloc_skb.description`:
 
@@ -71,11 +77,13 @@ rx_unmap_skb
 
     unmap the dma address of the skb
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         rx queue
+    :type rxq: struct hinic_rxq \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         dma address of the skb
+    :type dma_addr: dma_addr_t
 
 .. _`rx_free_skb`:
 
@@ -86,14 +94,17 @@ rx_free_skb
 
     unmap and free skb
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         rx queue
+    :type rxq: struct hinic_rxq \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to free
+    :type skb: struct sk_buff \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         dma address of the skb
+    :type dma_addr: dma_addr_t
 
 .. _`rx_alloc_pkts`:
 
@@ -104,8 +115,9 @@ rx_alloc_pkts
 
     allocate pkts in rx queue
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         rx queue
+    :type rxq: struct hinic_rxq \*
 
 .. _`rx_alloc_pkts.description`:
 
@@ -123,8 +135,9 @@ free_all_rx_skbs
 
     free all skbs in rx queue
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         rx queue
+    :type rxq: struct hinic_rxq \*
 
 .. _`rx_alloc_task`:
 
@@ -135,8 +148,9 @@ rx_alloc_task
 
     tasklet for queue allocation
 
-    :param unsigned long data:
+    :param data:
         rx queue
+    :type data: unsigned long
 
 .. _`rx_recv_jumbo_pkt`:
 
@@ -147,17 +161,21 @@ rx_recv_jumbo_pkt
 
     Rx handler for jumbo pkt
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         rx queue
+    :type rxq: struct hinic_rxq \*
 
-    :param struct sk_buff \*head_skb:
+    :param head_skb:
         the first skb in the list
+    :type head_skb: struct sk_buff \*
 
-    :param unsigned int left_pkt_len:
+    :param left_pkt_len:
         left size of the pkt exclude head skb
+    :type left_pkt_len: unsigned int
 
-    :param u16 ci:
+    :param ci:
         consumer index
+    :type ci: u16
 
 .. _`rx_recv_jumbo_pkt.description`:
 
@@ -175,11 +193,13 @@ rxq_recv
 
     Rx handler
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         rx queue
+    :type rxq: struct hinic_rxq \*
 
-    :param int budget:
+    :param budget:
         maximum pkts to process
+    :type budget: int
 
 .. _`rxq_recv.description`:
 
@@ -197,14 +217,17 @@ hinic_init_rxq
 
     Initialize the Rx Queue
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         Logical Rx Queue
+    :type rxq: struct hinic_rxq \*
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         Hardware Rx Queue to connect the Logical queue with
+    :type rq: struct hinic_rq \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network device to connect the Logical queue with
+    :type netdev: struct net_device \*
 
 .. _`hinic_init_rxq.description`:
 
@@ -222,8 +245,9 @@ hinic_clean_rxq
 
     Clean the Rx Queue
 
-    :param struct hinic_rxq \*rxq:
+    :param rxq:
         Logical Rx Queue
+    :type rxq: struct hinic_rxq \*
 
 .. This file was automatic generated / don't edit.
 

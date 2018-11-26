@@ -67,11 +67,13 @@ btree_alloc
 
     allocate function for the mempool
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         gfp mask for the allocation
+    :type gfp_mask: gfp_t
 
-    :param void \*pool_data:
+    :param pool_data:
         unused
+    :type pool_data: void \*
 
 .. _`btree_free`:
 
@@ -82,11 +84,13 @@ btree_free
 
     free function for the mempool
 
-    :param void \*element:
+    :param element:
         the element to free
+    :type element: void \*
 
-    :param void \*pool_data:
+    :param pool_data:
         unused
+    :type pool_data: void \*
 
 .. _`btree_init_mempool`:
 
@@ -97,11 +101,13 @@ btree_init_mempool
 
     initialise a btree with given mempool
 
-    :param struct btree_head \*head:
+    :param head:
         the btree head to initialise
+    :type head: struct btree_head \*
 
-    :param mempool_t \*mempool:
+    :param mempool:
         the mempool to use
+    :type mempool: mempool_t \*
 
 .. _`btree_init_mempool.description`:
 
@@ -120,8 +126,9 @@ btree_init
 
     initialise a btree
 
-    :param struct btree_head \*head:
+    :param head:
         the btree head to initialise
+    :type head: struct btree_head \*
 
 .. _`btree_init.description`:
 
@@ -141,8 +148,9 @@ btree_destroy
 
     destroy mempool
 
-    :param struct btree_head \*head:
+    :param head:
         the btree head to destroy
+    :type head: struct btree_head \*
 
 .. _`btree_destroy.description`:
 
@@ -161,14 +169,17 @@ btree_lookup
 
     look up a key in the btree
 
-    :param struct btree_head \*head:
+    :param head:
         the btree to look in
+    :type head: struct btree_head \*
 
-    :param struct btree_geo \*geo:
+    :param geo:
         the btree geometry
+    :type geo: struct btree_geo \*
 
-    :param unsigned long \*key:
+    :param key:
         the key to look up
+    :type key: unsigned long \*
 
 .. _`btree_lookup.description`:
 
@@ -186,20 +197,25 @@ btree_insert
 
     insert an entry into the btree
 
-    :param struct btree_head \*head:
+    :param head:
         the btree to add to
+    :type head: struct btree_head \*
 
-    :param struct btree_geo \*geo:
+    :param geo:
         the btree geometry
+    :type geo: struct btree_geo \*
 
-    :param unsigned long \*key:
+    :param key:
         the key to add (must not already be present)
+    :type key: unsigned long \*
 
-    :param void \*val:
+    :param val:
         the value to add (must not be \ ``NULL``\ )
+    :type val: void \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags for node allocations
+    :type gfp: gfp_t
 
 .. _`btree_insert.description`:
 
@@ -218,17 +234,21 @@ btree_update
 
     update an entry in the btree
 
-    :param struct btree_head \*head:
+    :param head:
         the btree to update
+    :type head: struct btree_head \*
 
-    :param struct btree_geo \*geo:
+    :param geo:
         the btree geometry
+    :type geo: struct btree_geo \*
 
-    :param unsigned long \*key:
+    :param key:
         the key to update
+    :type key: unsigned long \*
 
-    :param void \*val:
+    :param val:
         the value to change it to (must not be \ ``NULL``\ )
+    :type val: void \*
 
 .. _`btree_update.description`:
 
@@ -247,14 +267,17 @@ btree_remove
 
     remove an entry from the btree
 
-    :param struct btree_head \*head:
+    :param head:
         the btree to update
+    :type head: struct btree_head \*
 
-    :param struct btree_geo \*geo:
+    :param geo:
         the btree geometry
+    :type geo: struct btree_geo \*
 
-    :param unsigned long \*key:
+    :param key:
         the key to remove
+    :type key: unsigned long \*
 
 .. _`btree_remove.description`:
 
@@ -273,17 +296,21 @@ btree_merge
 
     merge two btrees
 
-    :param struct btree_head \*target:
+    :param target:
         the tree that gets all the entries
+    :type target: struct btree_head \*
 
-    :param struct btree_head \*victim:
+    :param victim:
         the tree that gets merged into \ ``target``\ 
+    :type victim: struct btree_head \*
 
-    :param struct btree_geo \*geo:
+    :param geo:
         the btree geometry
+    :type geo: struct btree_geo \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`btree_merge.description`:
 
@@ -306,14 +333,17 @@ btree_last
 
     get last entry in btree
 
-    :param struct btree_head \*head:
+    :param head:
         btree head
+    :type head: struct btree_head \*
 
-    :param struct btree_geo \*geo:
+    :param geo:
         btree geometry
+    :type geo: struct btree_geo \*
 
-    :param unsigned long \*key:
+    :param key:
         last key
+    :type key: unsigned long \*
 
 .. _`btree_last.description`:
 
@@ -333,14 +363,17 @@ btree_get_prev
 
     get previous entry
 
-    :param struct btree_head \*head:
+    :param head:
         btree head
+    :type head: struct btree_head \*
 
-    :param struct btree_geo \*geo:
+    :param geo:
         btree geometry
+    :type geo: struct btree_geo \*
 
-    :param unsigned long \*key:
+    :param key:
         pointer to key
+    :type key: unsigned long \*
 
 .. _`btree_get_prev.description`:
 

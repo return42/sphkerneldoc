@@ -10,11 +10,13 @@ find_volume
 
     find volume supported HW port by HW port number
 
-    :param struct uniphier_aio_chip \*chip:
+    :param chip:
         the AIO chip pointer
+    :type chip: struct uniphier_aio_chip \*
 
-    :param int oport_hw:
+    :param oport_hw:
         HW port number, one of AUD_HW_XXXX
+    :type oport_hw: int
 
 .. _`find_volume.description`:
 
@@ -41,14 +43,17 @@ find_spec
 
     find HW specification info by name
 
-    :param struct uniphier_aio \*aio:
+    :param aio:
         the AIO device pointer
+    :type aio: struct uniphier_aio \*
 
-    :param const char \*name:
+    :param name:
         name of device
+    :type name: const char \*
 
-    :param int direction:
+    :param direction:
         the direction of substream, SNDRV_PCM_STREAM\_\*
+    :type direction: int
 
 .. _`find_spec.description`:
 
@@ -78,14 +83,17 @@ find_divider
 
     find clock divider by frequency
 
-    :param struct uniphier_aio \*aio:
+    :param aio:
         the AIO device pointer
+    :type aio: struct uniphier_aio \*
 
-    :param int pll_id:
+    :param pll_id:
         PLL ID, should be AUD_PLL_XX
+    :type pll_id: int
 
-    :param unsigned int freq:
+    :param freq:
         required frequency
+    :type freq: unsigned int
 
 .. _`find_divider.description`:
 

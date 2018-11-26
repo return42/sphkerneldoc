@@ -10,11 +10,13 @@ wm831x_auxadc_read
 
     Read a value from the WM831x AUXADC
 
-    :param struct wm831x \*wm831x:
+    :param wm831x:
         Device to read from.
+    :type wm831x: struct wm831x \*
 
-    :param enum wm831x_auxadc input:
+    :param input:
         AUXADC input to read.
+    :type input: enum wm831x_auxadc
 
 .. _`wm831x_auxadc_read_uv`:
 
@@ -25,11 +27,13 @@ wm831x_auxadc_read_uv
 
     Read a voltage from the WM831x AUXADC
 
-    :param struct wm831x \*wm831x:
+    :param wm831x:
         Device to read from.
+    :type wm831x: struct wm831x \*
 
-    :param enum wm831x_auxadc input:
+    :param input:
         AUXADC input to read.
+    :type input: enum wm831x_auxadc
 
 .. This file was automatic generated / don't edit.
 

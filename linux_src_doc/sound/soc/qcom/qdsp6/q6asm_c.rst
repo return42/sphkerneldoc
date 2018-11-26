@@ -10,11 +10,13 @@ q6asm_unmap_memory_regions
 
     unmap memory regions in the dsp.
 
-    :param unsigned int dir:
+    :param dir:
         direction of audio stream
+    :type dir: unsigned int
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client instanace
+    :type ac: struct audio_client \*
 
 .. _`q6asm_unmap_memory_regions.return`:
 
@@ -32,20 +34,25 @@ q6asm_map_memory_regions
 
     map memory regions in the dsp.
 
-    :param unsigned int dir:
+    :param dir:
         direction of audio stream
+    :type dir: unsigned int
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client instanace
+    :type ac: struct audio_client \*
 
-    :param phys_addr_t phys:
+    :param phys:
         physcial address that needs mapping.
+    :type phys: phys_addr_t
 
-    :param size_t period_sz:
+    :param period_sz:
         audio period size
+    :type period_sz: size_t
 
-    :param unsigned int periods:
+    :param periods:
         number of periods
+    :type periods: unsigned int
 
 .. _`q6asm_map_memory_regions.return`:
 
@@ -63,8 +70,9 @@ q6asm_audio_client_free
 
     Freee allocated audio client
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client to free
+    :type ac: struct audio_client \*
 
 .. _`q6asm_get_session_id`:
 
@@ -75,8 +83,9 @@ q6asm_get_session_id
 
     get session id for audio client
 
-    :param struct audio_client \*c:
+    :param c:
         audio client pointer
+    :type c: struct audio_client \*
 
 .. _`q6asm_get_session_id.return`:
 
@@ -94,20 +103,25 @@ q6asm_audio_client_alloc
 
     Allocate a new audio client
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to asm child device.
+    :type dev: struct device \*
 
-    :param q6asm_cb cb:
+    :param cb:
         event callback.
+    :type cb: q6asm_cb
 
-    :param void \*priv:
+    :param priv:
         private data associated with this client.
+    :type priv: void \*
 
-    :param int stream_id:
+    :param stream_id:
         stream id
+    :type stream_id: int
 
-    :param int perf_mode:
+    :param perf_mode:
         performace mode for this client
+    :type perf_mode: int
 
 .. _`q6asm_audio_client_alloc.return`:
 
@@ -126,14 +140,17 @@ q6asm_open_write
 
     Open audio client for writing
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client pointer
+    :type ac: struct audio_client \*
 
-    :param uint32_t format:
+    :param format:
         audio sample format
+    :type format: uint32_t
 
-    :param uint16_t bits_per_sample:
+    :param bits_per_sample:
         bits per sample
+    :type bits_per_sample: uint16_t
 
 .. _`q6asm_open_write.return`:
 
@@ -151,17 +168,21 @@ q6asm_run
 
     start the audio client
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client pointer
+    :type ac: struct audio_client \*
 
-    :param uint32_t flags:
+    :param flags:
         flags associated with write
+    :type flags: uint32_t
 
-    :param uint32_t msw_ts:
+    :param msw_ts:
         timestamp msw
+    :type msw_ts: uint32_t
 
-    :param uint32_t lsw_ts:
+    :param lsw_ts:
         timestamp lsw
+    :type lsw_ts: uint32_t
 
 .. _`q6asm_run.return`:
 
@@ -179,17 +200,21 @@ q6asm_run_nowait
 
     start the audio client withou blocking
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client pointer
+    :type ac: struct audio_client \*
 
-    :param uint32_t flags:
+    :param flags:
         flags associated with write
+    :type flags: uint32_t
 
-    :param uint32_t msw_ts:
+    :param msw_ts:
         timestamp msw
+    :type msw_ts: uint32_t
 
-    :param uint32_t lsw_ts:
+    :param lsw_ts:
         timestamp lsw
+    :type lsw_ts: uint32_t
 
 .. _`q6asm_run_nowait.return`:
 
@@ -207,20 +232,25 @@ q6asm_media_format_block_multi_ch_pcm
 
     setup pcm configuration
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client pointer
+    :type ac: struct audio_client \*
 
-    :param uint32_t rate:
+    :param rate:
         audio sample rate
+    :type rate: uint32_t
 
-    :param uint32_t channels:
+    :param channels:
         number of audio channels.
+    :type channels: uint32_t
 
-    :param u8 channel_map:
+    :param channel_map:
         channel map pointer
+    :type channel_map: u8
 
-    :param uint16_t bits_per_sample:
+    :param bits_per_sample:
         bits per sample
+    :type bits_per_sample: uint16_t
 
 .. _`q6asm_media_format_block_multi_ch_pcm.return`:
 
@@ -238,17 +268,21 @@ q6asm_enc_cfg_blk_pcm_format_support
 
     setup pcm configuration for capture
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client pointer
+    :type ac: struct audio_client \*
 
-    :param uint32_t rate:
+    :param rate:
         audio sample rate
+    :type rate: uint32_t
 
-    :param uint32_t channels:
+    :param channels:
         number of audio channels.
+    :type channels: uint32_t
 
-    :param uint16_t bits_per_sample:
+    :param bits_per_sample:
         bits per sample
+    :type bits_per_sample: uint16_t
 
 .. _`q6asm_enc_cfg_blk_pcm_format_support.return`:
 
@@ -266,8 +300,9 @@ q6asm_read
 
     read data of period size from audio client
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client pointer
+    :type ac: struct audio_client \*
 
 .. _`q6asm_read.return`:
 
@@ -285,14 +320,17 @@ q6asm_open_read
 
     Open audio client for reading
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client pointer
+    :type ac: struct audio_client \*
 
-    :param uint32_t format:
+    :param format:
         audio sample format
+    :type format: uint32_t
 
-    :param uint16_t bits_per_sample:
+    :param bits_per_sample:
         bits per sample
+    :type bits_per_sample: uint16_t
 
 .. _`q6asm_open_read.return`:
 
@@ -310,20 +348,25 @@ q6asm_write_async
 
     non blocking write
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client pointer
+    :type ac: struct audio_client \*
 
-    :param uint32_t len:
+    :param len:
         lenght in bytes
+    :type len: uint32_t
 
-    :param uint32_t msw_ts:
+    :param msw_ts:
         timestamp msw
+    :type msw_ts: uint32_t
 
-    :param uint32_t lsw_ts:
+    :param lsw_ts:
         timestamp lsw
+    :type lsw_ts: uint32_t
 
-    :param uint32_t wflags:
+    :param wflags:
         flags associated with write
+    :type wflags: uint32_t
 
 .. _`q6asm_write_async.return`:
 
@@ -341,11 +384,13 @@ q6asm_cmd
 
     run cmd on audio client
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client pointer
+    :type ac: struct audio_client \*
 
-    :param int cmd:
+    :param cmd:
         command to run on audio client.
+    :type cmd: int
 
 .. _`q6asm_cmd.return`:
 
@@ -363,11 +408,13 @@ q6asm_cmd_nowait
 
     non blocking, run cmd on audio client
 
-    :param struct audio_client \*ac:
+    :param ac:
         audio client pointer
+    :type ac: struct audio_client \*
 
-    :param int cmd:
+    :param cmd:
         command to run on audio client.
+    :type cmd: int
 
 .. _`q6asm_cmd_nowait.return`:
 

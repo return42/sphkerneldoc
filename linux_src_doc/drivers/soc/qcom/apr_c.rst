@@ -10,11 +10,13 @@ apr_send_pkt
 
     Send a apr message from apr device
 
-    :param struct apr_device \*adev:
+    :param adev:
         Pointer to previously registered apr device.
+    :type adev: struct apr_device \*
 
-    :param struct apr_pkt \*pkt:
+    :param pkt:
         Pointer to apr packet to send
+    :type pkt: struct apr_pkt \*
 
 .. _`apr_send_pkt.return`:
 

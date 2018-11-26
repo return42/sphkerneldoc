@@ -10,18 +10,25 @@ nvme_fc_register_localport
 
     transport entry point called by an LLDD to register the existence of a NVME host FC port.
 
-    :param struct nvme_fc_port_info \*pinfo:
+    :param pinfo:
         pointer to information about the port to be registered
+    :type pinfo: struct nvme_fc_port_info \*
 
-    :param struct nvme_fc_port_template \*template:
+    :param template:
         LLDD entrypoints and operational parameters for the port
+    :type template: struct nvme_fc_port_template \*
 
-    :param struct device \*dev:
+    :param dev:
         physical hardware device node port corresponds to. Will be
         used for DMA mappings
+    :type dev: struct device \*
 
-    :param struct nvme_fc_local_port \*\*portptr:
-        *undescribed*
+    :param portptr:
+        pointer to a local port pointer. Upon success, the routine
+        will allocate a nvme_fc_local_port structure and place its
+        address in the local port pointer. Upon failure, local port
+        pointer will be set to 0.
+    :type portptr: struct nvme_fc_local_port \*\*
 
 .. _`nvme_fc_register_localport.return`:
 
@@ -40,8 +47,9 @@ nvme_fc_unregister_localport
 
     transport entry point called by an LLDD to deregister/remove a previously registered a NVME host FC port.
 
-    :param struct nvme_fc_local_port \*portptr:
-        *undescribed*
+    :param portptr:
+        pointer to the (registered) local port that is to be deregistered.
+    :type portptr: struct nvme_fc_local_port \*
 
 .. _`nvme_fc_unregister_localport.return`:
 
@@ -60,15 +68,21 @@ nvme_fc_register_remoteport
 
     transport entry point called by an LLDD to register the existence of a NVME subsystem FC port on its fabric.
 
-    :param struct nvme_fc_local_port \*localport:
+    :param localport:
         pointer to the (registered) local port that the remote
         subsystem port is connected to.
+    :type localport: struct nvme_fc_local_port \*
 
-    :param struct nvme_fc_port_info \*pinfo:
+    :param pinfo:
         pointer to information about the port to be registered
+    :type pinfo: struct nvme_fc_port_info \*
 
-    :param struct nvme_fc_remote_port \*\*portptr:
-        *undescribed*
+    :param portptr:
+        pointer to a remote port pointer. Upon success, the routine
+        will allocate a nvme_fc_remote_port structure and place its
+        address in the remote port pointer. Upon failure, remote port
+        pointer will be set to 0.
+    :type portptr: struct nvme_fc_remote_port \*\*
 
 .. _`nvme_fc_register_remoteport.return`:
 
@@ -87,8 +101,10 @@ nvme_fc_unregister_remoteport
 
     transport entry point called by an LLDD to deregister/remove a previously registered a NVME subsystem FC port.
 
-    :param struct nvme_fc_remote_port \*portptr:
-        *undescribed*
+    :param portptr:
+        pointer to the (registered) remote port that is to be
+        deregistered.
+    :type portptr: struct nvme_fc_remote_port \*
 
 .. _`nvme_fc_unregister_remoteport.return`:
 
@@ -107,9 +123,10 @@ nvme_fc_rescan_remoteport
 
     transport entry point called by an LLDD to request a nvme device rescan.
 
-    :param struct nvme_fc_remote_port \*remoteport:
+    :param remoteport:
         pointer to the (registered) remote port that is to be
         rescanned.
+    :type remoteport: struct nvme_fc_remote_port \*
 
 .. _`nvme_fc_rescan_remoteport.return`:
 

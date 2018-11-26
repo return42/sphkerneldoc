@@ -10,14 +10,17 @@ tfrc_calc_x
 
     Calculate the send rate as per section 3.1 of RFC3448
 
-    :param u16 s:
+    :param s:
         packet size          in bytes
+    :type s: u16
 
-    :param u32 R:
+    :param R:
         RTT                  scaled by 1000000   (i.e., microseconds)
+    :type R: u32
 
-    :param u32 p:
+    :param p:
         loss ratio estimate  scaled by 1000000
+    :type p: u32
 
 .. _`tfrc_calc_x.description`:
 
@@ -35,8 +38,9 @@ tfrc_calc_x_reverse_lookup
 
     try to find p given f(p)
 
-    :param u32 fvalue:
+    :param fvalue:
         function value to match, scaled by 1000000
+    :type fvalue: u32
 
 .. _`tfrc_calc_x_reverse_lookup.description`:
 
@@ -54,8 +58,9 @@ tfrc_invert_loss_event_rate
 
     Compute p so that 10^6 corresponds to 100% When \ ``loss_event_rate``\  is large, there is a chance that p is truncated to 0. To avoid re-entering slow-start in that case, we set p = TFRC_SMALLEST_P > 0.
 
-    :param u32 loss_event_rate:
+    :param loss_event_rate:
         *undescribed*
+    :type loss_event_rate: u32
 
 .. This file was automatic generated / don't edit.
 

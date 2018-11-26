@@ -10,8 +10,9 @@ nfs_mark_delegation_referenced
 
     set delegation's REFERENCED flag
 
-    :param struct nfs_delegation \*delegation:
+    :param delegation:
         delegation to process
+    :type delegation: struct nfs_delegation \*
 
 .. _`nfs4_have_delegation`:
 
@@ -22,11 +23,13 @@ nfs4_have_delegation
 
     check if inode has a delegation, mark it NFS_DELEGATION_REFERENCED if there is one.
 
-    :param struct inode \*inode:
+    :param inode:
         inode to check
+    :type inode: struct inode \*
 
-    :param fmode_t flags:
+    :param flags:
         delegation types to check for
+    :type flags: fmode_t
 
 .. _`nfs4_have_delegation.description`:
 
@@ -44,20 +47,25 @@ nfs_inode_reclaim_delegation
 
     process a delegation reclaim request
 
-    :param struct inode \*inode:
+    :param inode:
         inode to process
+    :type inode: struct inode \*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         credential to use for request
+    :type cred: struct rpc_cred \*
 
-    :param fmode_t type:
+    :param type:
         delegation type
+    :type type: fmode_t
 
-    :param const nfs4_stateid \*stateid:
+    :param stateid:
         delegation stateid
+    :type stateid: const nfs4_stateid \*
 
-    :param unsigned long pagemod_limit:
+    :param pagemod_limit:
         write delegation "space_limit"
+    :type pagemod_limit: unsigned long
 
 .. _`nfs_inode_set_delegation`:
 
@@ -68,20 +76,25 @@ nfs_inode_set_delegation
 
     set up a delegation on an inode
 
-    :param struct inode \*inode:
+    :param inode:
         inode to which delegation applies
+    :type inode: struct inode \*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         cred to use for subsequent delegation processing
+    :type cred: struct rpc_cred \*
 
-    :param fmode_t type:
+    :param type:
         delegation type
+    :type type: fmode_t
 
-    :param const nfs4_stateid \*stateid:
+    :param stateid:
         delegation stateid
+    :type stateid: const nfs4_stateid \*
 
-    :param unsigned long pagemod_limit:
+    :param pagemod_limit:
         write delegation "space_limit"
+    :type pagemod_limit: unsigned long
 
 .. _`nfs_inode_set_delegation.description`:
 
@@ -99,8 +112,9 @@ nfs_client_return_marked_delegations
 
     return previously marked delegations
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client to process
+    :type clp: struct nfs_client \*
 
 .. _`nfs_client_return_marked_delegations.description`:
 
@@ -122,8 +136,9 @@ nfs_inode_return_delegation_noreclaim
 
     return delegation, don't reclaim opens
 
-    :param struct inode \*inode:
+    :param inode:
         inode to process
+    :type inode: struct inode \*
 
 .. _`nfs_inode_return_delegation_noreclaim.description`:
 
@@ -142,8 +157,9 @@ nfs4_inode_return_delegation
 
     synchronously return a delegation
 
-    :param struct inode \*inode:
+    :param inode:
         inode to process
+    :type inode: struct inode \*
 
 .. _`nfs4_inode_return_delegation.description`:
 
@@ -163,8 +179,9 @@ nfs4_inode_make_writeable
 
 .. c:function:: int nfs4_inode_make_writeable(struct inode *inode)
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to inode
+    :type inode: struct inode \*
 
 .. _`nfs4_inode_make_writeable.description`:
 
@@ -182,8 +199,9 @@ nfs_expire_all_delegations
 
 .. c:function:: void nfs_expire_all_delegations(struct nfs_client *clp)
 
-    :param struct nfs_client \*clp:
+    :param clp:
         client to process
+    :type clp: struct nfs_client \*
 
 .. _`nfs_server_return_all_delegations`:
 
@@ -194,8 +212,9 @@ nfs_server_return_all_delegations
 
     return delegations for one superblock
 
-    :param struct nfs_server \*server:
+    :param server:
         *undescribed*
+    :type server: struct nfs_server \*
 
 .. _`nfs_expire_unused_delegation_types`:
 
@@ -204,11 +223,13 @@ nfs_expire_unused_delegation_types
 
 .. c:function:: void nfs_expire_unused_delegation_types(struct nfs_client *clp, fmode_t flags)
 
-    :param struct nfs_client \*clp:
+    :param clp:
         client to process
+    :type clp: struct nfs_client \*
 
-    :param fmode_t flags:
+    :param flags:
         delegation types to expire
+    :type flags: fmode_t
 
 .. _`nfs_expire_unreferenced_delegations`:
 
@@ -219,8 +240,9 @@ nfs_expire_unreferenced_delegations
 
     Eliminate unused delegations
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client to process
+    :type clp: struct nfs_client \*
 
 .. _`nfs_async_inode_return_delegation`:
 
@@ -231,11 +253,13 @@ nfs_async_inode_return_delegation
 
     asynchronously return a delegation
 
-    :param struct inode \*inode:
+    :param inode:
         inode to process
+    :type inode: struct inode \*
 
-    :param const nfs4_stateid \*stateid:
+    :param stateid:
         state ID information
+    :type stateid: const nfs4_stateid \*
 
 .. _`nfs_async_inode_return_delegation.description`:
 
@@ -253,11 +277,13 @@ nfs_delegation_find_inode
 
     retrieve the inode associated with a delegation
 
-    :param struct nfs_client \*clp:
+    :param clp:
         client state handle
+    :type clp: struct nfs_client \*
 
-    :param const struct nfs_fh \*fhandle:
+    :param fhandle:
         filehandle from a delegation recall
+    :type fhandle: const struct nfs_fh \*
 
 .. _`nfs_delegation_find_inode.description`:
 
@@ -276,8 +302,9 @@ nfs_delegation_mark_reclaim
 
     mark all delegations as needing to be reclaimed
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client to process
+    :type clp: struct nfs_client \*
 
 .. _`nfs_delegation_reap_unclaimed`:
 
@@ -288,8 +315,9 @@ nfs_delegation_reap_unclaimed
 
     reap unclaimed delegations after reboot recovery is done
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client to process
+    :type clp: struct nfs_client \*
 
 .. _`nfs_mark_test_expired_all_delegations`:
 
@@ -300,8 +328,9 @@ nfs_mark_test_expired_all_delegations
 
     mark all delegations for testing
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client to process
+    :type clp: struct nfs_client \*
 
 .. _`nfs_mark_test_expired_all_delegations.description`:
 
@@ -320,8 +349,9 @@ nfs_reap_expired_delegations
 
     reap expired delegations
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client to process
+    :type clp: struct nfs_client \*
 
 .. _`nfs_reap_expired_delegations.description`:
 
@@ -342,8 +372,9 @@ nfs_delegations_present
 
     check for existence of delegations
 
-    :param struct nfs_client \*clp:
+    :param clp:
         client state handle
+    :type clp: struct nfs_client \*
 
 .. _`nfs_delegations_present.description`:
 
@@ -362,11 +393,13 @@ nfs4_refresh_delegation_stateid
 
     Update delegation stateid seqid
 
-    :param nfs4_stateid \*dst:
+    :param dst:
         stateid to refresh
+    :type dst: nfs4_stateid \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode to check
+    :type inode: struct inode \*
 
 .. _`nfs4_refresh_delegation_stateid.description`:
 
@@ -385,17 +418,21 @@ nfs4_copy_delegation_stateid
 
     Copy inode's state ID information
 
-    :param struct inode \*inode:
+    :param inode:
         inode to check
+    :type inode: struct inode \*
 
-    :param fmode_t flags:
+    :param flags:
         delegation type requirement
+    :type flags: fmode_t
 
-    :param nfs4_stateid \*dst:
+    :param dst:
         stateid data structure to fill in
+    :type dst: nfs4_stateid \*
 
-    :param struct rpc_cred \*\*cred:
+    :param cred:
         optional argument to retrieve credential
+    :type cred: struct rpc_cred \*\*
 
 .. _`nfs4_copy_delegation_stateid.description`:
 
@@ -414,8 +451,9 @@ nfs4_delegation_flush_on_close
 
     Check if we must flush file on close
 
-    :param const struct inode \*inode:
+    :param inode:
         inode to check
+    :type inode: const struct inode \*
 
 .. _`nfs4_delegation_flush_on_close.description`:
 

@@ -10,8 +10,9 @@ rt_mutex_is_locked
 
     is the mutex locked
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the mutex to be queried
+    :type lock: struct rt_mutex \*
 
 .. _`rt_mutex_is_locked.description`:
 

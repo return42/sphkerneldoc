@@ -10,11 +10,13 @@ mdev_register_driver
 
     register a new MDEV driver
 
-    :param struct mdev_driver \*drv:
+    :param drv:
         the driver to register
+    :type drv: struct mdev_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         module owner of driver to be registered
+    :type owner: struct module \*
 
 .. _`mdev_register_driver.description`:
 

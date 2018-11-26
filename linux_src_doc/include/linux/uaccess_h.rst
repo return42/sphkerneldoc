@@ -10,14 +10,17 @@
 
     - Copy a block of data into user space, with less checking.
 
-    :param void __user \*to:
+    :param to:
         Destination address, in user space.
+    :type to: void __user \*
 
-    :param const void \*from:
+    :param from:
         Source address, in kernel space.
+    :type from: const void \*
 
-    :param unsigned long n:
+    :param n:
         Number of bytes to copy.
+    :type n: unsigned long
 
 .. _`__copy_to_user_inatomic.context`:
 
@@ -45,11 +48,13 @@ probe_kernel_address
 
     safely attempt to read from a location
 
-    :param  addr:
+    :param addr:
         address to read from
+    :type addr: 
 
-    :param  retval:
+    :param retval:
         read into this variable
+    :type retval: 
 
 .. _`probe_kernel_address.description`:
 

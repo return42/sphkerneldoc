@@ -10,32 +10,41 @@ bnx2x_exe_queue_init
 
     init the Exe Queue object
 
-    :param struct bnx2x \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_exe_queue_obj \*o:
+    :param o:
         pointer to the object
+    :type o: struct bnx2x_exe_queue_obj \*
 
-    :param int exe_len:
+    :param exe_len:
         length
+    :type exe_len: int
 
-    :param union bnx2x_qable_obj \*owner:
+    :param owner:
         pointer to the owner
+    :type owner: union bnx2x_qable_obj \*
 
-    :param exe_q_validate validate:
+    :param validate:
         validate function pointer
+    :type validate: exe_q_validate
 
-    :param exe_q_remove remove:
+    :param remove:
         *undescribed*
+    :type remove: exe_q_remove
 
-    :param exe_q_optimize optimize:
+    :param optimize:
         optimize function pointer
+    :type optimize: exe_q_optimize
 
-    :param exe_q_execute exec:
+    :param exec:
         execute function pointer
+    :type exec: exe_q_execute
 
-    :param exe_q_get get:
+    :param get:
         get function pointer
+    :type get: exe_q_get
 
 .. _`bnx2x_exe_queue_add`:
 
@@ -46,17 +55,21 @@ bnx2x_exe_queue_add
 
     add a new element to the execution queue
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_exe_queue_obj \*o:
+    :param o:
         queue
+    :type o: struct bnx2x_exe_queue_obj \*
 
-    :param struct bnx2x_exeq_elem \*elem:
+    :param elem:
         *undescribed*
+    :type elem: struct bnx2x_exeq_elem \*
 
-    :param bool restore:
+    :param restore:
         true - do not optimize the command
+    :type restore: bool
 
 .. _`bnx2x_exe_queue_add.description`:
 
@@ -74,14 +87,17 @@ bnx2x_exe_queue_step
 
     execute one execution chunk atomically
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_exe_queue_obj \*o:
+    :param o:
         queue
+    :type o: struct bnx2x_exe_queue_obj \*
 
-    :param unsigned long \*ramrod_flags:
+    :param ramrod_flags:
         flags
+    :type ramrod_flags: unsigned long \*
 
 .. _`bnx2x_exe_queue_step.description`:
 
@@ -99,14 +115,17 @@ bnx2x_state_wait
 
     wait until the given bit(state) is cleared
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param int state:
+    :param state:
         state which is to be cleared
+    :type state: int
 
-    :param unsigned long \*pstate:
+    :param pstate:
         *undescribed*
+    :type pstate: unsigned long \*
 
 .. _`__bnx2x_vlan_mac_h_write_trylock`:
 
@@ -117,11 +136,13 @@ bnx2x_state_wait
 
     try getting the vlan mac writer lock
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         vlan_mac object
+    :type o: struct bnx2x_vlan_mac_obj \*
 
 .. _`__bnx2x_vlan_mac_h_exec_pending`:
 
@@ -132,11 +153,13 @@ bnx2x_state_wait
 
     execute step instead of a previous step
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         vlan_mac object
+    :type o: struct bnx2x_vlan_mac_obj \*
 
 .. _`__bnx2x_vlan_mac_h_exec_pending.description`:
 
@@ -155,14 +178,17 @@ and reclaim it during its run.
 
     Pend an execution step which couldn't run
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         vlan_mac object
+    :type o: struct bnx2x_vlan_mac_obj \*
 
-    :param unsigned long ramrod_flags:
+    :param ramrod_flags:
         ramrod flags of missed execution
+    :type ramrod_flags: unsigned long
 
 .. _`__bnx2x_vlan_mac_h_pend.description`:
 
@@ -180,11 +206,13 @@ Description
 
     unlock the vlan mac head list writer lock
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         vlan_mac object
+    :type o: struct bnx2x_vlan_mac_obj \*
 
 .. _`__bnx2x_vlan_mac_h_write_unlock.description`:
 
@@ -204,11 +232,13 @@ reclaiming the execution queue lock.
 
     lock the vlan mac head list reader lock
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         vlan_mac object
+    :type o: struct bnx2x_vlan_mac_obj \*
 
 .. _`__bnx2x_vlan_mac_h_read_lock.description`:
 
@@ -227,11 +257,13 @@ bnx2x_vlan_mac_h_read_lock
 
     lock the vlan mac head list reader lock
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         vlan_mac object
+    :type o: struct bnx2x_vlan_mac_obj \*
 
 .. _`bnx2x_vlan_mac_h_read_lock.description`:
 
@@ -249,11 +281,13 @@ Description
 
     unlock the vlan mac head list reader lock
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         vlan_mac object
+    :type o: struct bnx2x_vlan_mac_obj \*
 
 .. _`__bnx2x_vlan_mac_h_read_unlock.description`:
 
@@ -273,11 +307,13 @@ bnx2x_vlan_mac_h_read_unlock
 
     unlock the vlan mac head list reader lock
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         vlan_mac object
+    :type o: struct bnx2x_vlan_mac_obj \*
 
 .. _`bnx2x_vlan_mac_h_read_unlock.description`:
 
@@ -297,20 +333,25 @@ bnx2x_vlan_mac_set_cmd_hdr_e2
 
     set a header in a single classify ramrod
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         queue for which we want to configure this rule
+    :type o: struct bnx2x_vlan_mac_obj \*
 
-    :param bool add:
+    :param add:
         if true the command is an ADD command, DEL otherwise
+    :type add: bool
 
-    :param int opcode:
+    :param opcode:
         CLASSIFY_RULE_OPCODE_XXX
+    :type opcode: int
 
-    :param struct eth_classify_cmd_header \*hdr:
+    :param hdr:
         pointer to a header to setup
+    :type hdr: struct eth_classify_cmd_header \*
 
 .. _`bnx2x_vlan_mac_set_rdata_hdr_e2`:
 
@@ -321,17 +362,21 @@ bnx2x_vlan_mac_set_rdata_hdr_e2
 
     set the classify ramrod data header
 
-    :param u32 cid:
+    :param cid:
         connection id
+    :type cid: u32
 
-    :param int type:
+    :param type:
         BNX2X_FILTER_XXX_PENDING
+    :type type: int
 
-    :param struct eth_classify_header \*hdr:
+    :param hdr:
         pointer to header to setup
+    :type hdr: struct eth_classify_header \*
 
-    :param int rule_cnt:
+    :param rule_cnt:
         *undescribed*
+    :type rule_cnt: int
 
 .. _`bnx2x_vlan_mac_set_rdata_hdr_e2.description`:
 
@@ -350,20 +395,25 @@ bnx2x_vlan_mac_set_rdata_hdr_e1x
 
     set a header in a single classify ramrod
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         queue
+    :type o: struct bnx2x_vlan_mac_obj \*
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
-    :param int cam_offset:
+    :param cam_offset:
         offset in cam memory
+    :type cam_offset: int
 
-    :param struct mac_configuration_hdr \*hdr:
+    :param hdr:
         pointer to a header to setup
+    :type hdr: struct mac_configuration_hdr \*
 
 .. _`bnx2x_vlan_mac_set_rdata_hdr_e1x.description`:
 
@@ -381,20 +431,25 @@ bnx2x_set_one_mac_e1x
 
     fill a single MAC rule ramrod data
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         bnx2x_vlan_mac_obj
+    :type o: struct bnx2x_vlan_mac_obj \*
 
-    :param struct bnx2x_exeq_elem \*elem:
+    :param elem:
         bnx2x_exeq_elem
+    :type elem: struct bnx2x_exeq_elem \*
 
-    :param int rule_idx:
+    :param rule_idx:
         rule_idx
+    :type rule_idx: int
 
-    :param int cam_offset:
+    :param cam_offset:
         cam_offset
+    :type cam_offset: int
 
 .. _`bnx2x_set_one_vlan_mac_e1h`:
 
@@ -403,20 +458,25 @@ bnx2x_set_one_vlan_mac_e1h
 
 .. c:function:: void bnx2x_set_one_vlan_mac_e1h(struct bnx2x *bp, struct bnx2x_vlan_mac_obj *o, struct bnx2x_exeq_elem *elem, int rule_idx, int cam_offset)
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         bnx2x_vlan_mac_obj
+    :type o: struct bnx2x_vlan_mac_obj \*
 
-    :param struct bnx2x_exeq_elem \*elem:
+    :param elem:
         bnx2x_exeq_elem
+    :type elem: struct bnx2x_exeq_elem \*
 
-    :param int rule_idx:
+    :param rule_idx:
         rule_idx
+    :type rule_idx: int
 
-    :param int cam_offset:
+    :param cam_offset:
         cam_offset
+    :type cam_offset: int
 
 .. _`bnx2x_vlan_mac_restore`:
 
@@ -427,14 +487,17 @@ bnx2x_vlan_mac_restore
 
     reconfigure next MAC/VLAN/VLAN-MAC element
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_ramrod_params \*p:
+    :param p:
         command parameters
+    :type p: struct bnx2x_vlan_mac_ramrod_params \*
 
-    :param struct bnx2x_vlan_mac_registry_elem \*\*ppos:
+    :param ppos:
         pointer to the cookie
+    :type ppos: struct bnx2x_vlan_mac_registry_elem \*\*
 
 .. _`bnx2x_vlan_mac_restore.description`:
 
@@ -461,14 +524,17 @@ bnx2x_validate_vlan_mac_add
 
     check if an ADD command can be executed
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param union bnx2x_qable_obj \*qo:
+    :param qo:
         bnx2x_qable_obj
+    :type qo: union bnx2x_qable_obj \*
 
-    :param struct bnx2x_exeq_elem \*elem:
+    :param elem:
         bnx2x_exeq_elem
+    :type elem: struct bnx2x_exeq_elem \*
 
 .. _`bnx2x_validate_vlan_mac_add.description`:
 
@@ -489,14 +555,17 @@ bnx2x_validate_vlan_mac_del
 
     check if the DEL command can be executed
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param union bnx2x_qable_obj \*qo:
+    :param qo:
         quable object to check
+    :type qo: union bnx2x_qable_obj \*
 
-    :param struct bnx2x_exeq_elem \*elem:
+    :param elem:
         element that needs to be deleted
+    :type elem: struct bnx2x_exeq_elem \*
 
 .. _`bnx2x_validate_vlan_mac_del.description`:
 
@@ -517,14 +586,17 @@ bnx2x_validate_vlan_mac_move
 
     check if the MOVE command can be executed
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param union bnx2x_qable_obj \*qo:
+    :param qo:
         quable object to check (source)
+    :type qo: union bnx2x_qable_obj \*
 
-    :param struct bnx2x_exeq_elem \*elem:
+    :param elem:
         element that needs to be moved
+    :type elem: struct bnx2x_exeq_elem \*
 
 .. _`bnx2x_validate_vlan_mac_move.description`:
 
@@ -545,11 +617,13 @@ bnx2x_wait_vlan_mac
 
     passively wait for 5 seconds until all work completes.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         bnx2x_vlan_mac_obj
+    :type o: struct bnx2x_vlan_mac_obj \*
 
 .. _`bnx2x_complete_vlan_mac`:
 
@@ -560,17 +634,21 @@ bnx2x_complete_vlan_mac
 
     complete one VLAN-MAC ramrod
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         bnx2x_vlan_mac_obj
+    :type o: struct bnx2x_vlan_mac_obj \*
 
-    :param union event_ring_elem \*cqe:
+    :param cqe:
         *undescribed*
+    :type cqe: union event_ring_elem \*
 
-    :param unsigned long \*ramrod_flags:
+    :param ramrod_flags:
         *undescribed*
+    :type ramrod_flags: unsigned long \*
 
 .. _`bnx2x_optimize_vlan_mac`:
 
@@ -581,14 +659,17 @@ bnx2x_optimize_vlan_mac
 
     optimize ADD and DEL commands.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param union bnx2x_qable_obj \*qo:
+    :param qo:
         *undescribed*
+    :type qo: union bnx2x_qable_obj \*
 
-    :param struct bnx2x_exeq_elem \*elem:
+    :param elem:
         bnx2x_exeq_elem
+    :type elem: struct bnx2x_exeq_elem \*
 
 .. _`bnx2x_vlan_mac_get_registry_elem`:
 
@@ -599,20 +680,25 @@ bnx2x_vlan_mac_get_registry_elem
 
     prepare a registry element
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_vlan_mac_obj \*
 
-    :param struct bnx2x_exeq_elem \*elem:
+    :param elem:
         *undescribed*
+    :type elem: struct bnx2x_exeq_elem \*
 
-    :param bool restore:
+    :param restore:
         *undescribed*
+    :type restore: bool
 
-    :param struct bnx2x_vlan_mac_registry_elem \*\*re:
+    :param re:
         *undescribed*
+    :type re: struct bnx2x_vlan_mac_registry_elem \*\*
 
 .. _`bnx2x_vlan_mac_get_registry_elem.description`:
 
@@ -630,17 +716,21 @@ bnx2x_execute_vlan_mac
 
     execute vlan mac command
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param union bnx2x_qable_obj \*qo:
+    :param qo:
         *undescribed*
+    :type qo: union bnx2x_qable_obj \*
 
-    :param struct list_head \*exe_chunk:
+    :param exe_chunk:
         *undescribed*
+    :type exe_chunk: struct list_head \*
 
-    :param unsigned long \*ramrod_flags:
+    :param ramrod_flags:
         *undescribed*
+    :type ramrod_flags: unsigned long \*
 
 .. _`bnx2x_execute_vlan_mac.description`:
 
@@ -658,11 +748,13 @@ bnx2x_config_vlan_mac
 
     configure VLAN/MAC/VLAN_MAC filtering rules.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_ramrod_params \*p:
+    :param p:
         *undescribed*
+    :type p: struct bnx2x_vlan_mac_ramrod_params \*
 
 .. _`bnx2x_vlan_mac_del_all`:
 
@@ -673,17 +765,21 @@ bnx2x_vlan_mac_del_all
 
     delete elements with given vlan_mac_flags spec
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_vlan_mac_obj \*
 
-    :param unsigned long \*vlan_mac_flags:
+    :param vlan_mac_flags:
         *undescribed*
+    :type vlan_mac_flags: unsigned long \*
 
-    :param unsigned long \*ramrod_flags:
+    :param ramrod_flags:
         execution flags to be used for this deletion
+    :type ramrod_flags: unsigned long \*
 
 .. _`bnx2x_vlan_mac_del_all.description`:
 
@@ -704,11 +800,13 @@ bnx2x_mcast_get_next_bin
 
     get the next set bin (index)
 
-    :param struct bnx2x_mcast_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_mcast_obj \*
 
-    :param int last:
+    :param last:
         index to start looking from (including)
+    :type last: int
 
 .. _`bnx2x_mcast_get_next_bin.description`:
 
@@ -726,8 +824,9 @@ bnx2x_mcast_clear_first_bin
 
     find the first set bin and clear it
 
-    :param struct bnx2x_mcast_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_mcast_obj \*
 
 .. _`bnx2x_mcast_clear_first_bin.description`:
 
@@ -745,17 +844,21 @@ bnx2x_mcast_handle_restore_cmd_e2
 
     restore configuration from the registry
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_mcast_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_mcast_obj \*
 
-    :param int start_bin:
+    :param start_bin:
         index in the registry to start from (including)
+    :type start_bin: int
 
-    :param int \*rdata_idx:
+    :param rdata_idx:
         index in the ramrod data to start from
+    :type rdata_idx: int \*
 
 .. _`bnx2x_mcast_handle_restore_cmd_e2.description`:
 
@@ -771,17 +874,21 @@ bnx2x_mcast_handle_current_cmd
 
 .. c:function:: int bnx2x_mcast_handle_current_cmd(struct bnx2x *bp, struct bnx2x_mcast_ramrod_params *p, enum bnx2x_mcast_cmd cmd, int start_cnt)
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_mcast_ramrod_params \*p:
+    :param p:
         *undescribed*
+    :type p: struct bnx2x_mcast_ramrod_params \*
 
-    :param enum bnx2x_mcast_cmd cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: enum bnx2x_mcast_cmd
 
-    :param int start_cnt:
+    :param start_cnt:
         first line in the ramrod data that may be used
+    :type start_cnt: int
 
 .. _`bnx2x_mcast_handle_current_cmd.description`:
 
@@ -801,14 +908,17 @@ bnx2x_mcast_set_rdata_hdr_e2
 
     sets a header values
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_mcast_ramrod_params \*p:
+    :param p:
         *undescribed*
+    :type p: struct bnx2x_mcast_ramrod_params \*
 
-    :param u8 len:
+    :param len:
         number of rules to handle
+    :type len: u8
 
 .. _`bnx2x_mcast_refresh_registry_e2`:
 
@@ -819,11 +929,13 @@ bnx2x_mcast_refresh_registry_e2
 
     recalculate the actual number of set bins
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_mcast_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_mcast_obj \*
 
 .. _`bnx2x_mcast_refresh_registry_e2.description`:
 
@@ -844,14 +956,17 @@ bnx2x_mcast_set_rdata_hdr_e1
 
     set header values in mac_configuration_cmd
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_mcast_ramrod_params \*p:
+    :param p:
         *undescribed*
+    :type p: struct bnx2x_mcast_ramrod_params \*
 
-    :param u8 len:
+    :param len:
         number of rules to handle
+    :type len: u8
 
 .. _`bnx2x_mcast_handle_restore_cmd_e1`:
 
@@ -862,17 +977,21 @@ bnx2x_mcast_handle_restore_cmd_e1
 
     restore command for 57710
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_mcast_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_mcast_obj \*
 
-    :param int start_idx:
+    :param start_idx:
         index in the registry to start from
+    :type start_idx: int
 
-    :param int \*rdata_idx:
+    :param rdata_idx:
         index in the ramrod data to start from
+    :type rdata_idx: int \*
 
 .. _`bnx2x_mcast_handle_restore_cmd_e1.description`:
 
@@ -893,17 +1012,21 @@ bnx2x_get_fw_mac_addr
 
     revert the \ :c:func:`bnx2x_set_fw_mac_addr`\ .
 
-    :param __le16 \*fw_hi:
+    :param fw_hi:
         *undescribed*
+    :type fw_hi: __le16 \*
 
-    :param __le16 \*fw_mid:
+    :param fw_mid:
         *undescribed*
+    :type fw_mid: __le16 \*
 
-    :param __le16 \*fw_lo:
+    :param fw_lo:
         *undescribed*
+    :type fw_lo: __le16 \*
 
-    :param u8 \*mac:
+    :param mac:
         *undescribed*
+    :type mac: u8 \*
 
 .. _`bnx2x_mcast_refresh_registry_e1`:
 
@@ -912,11 +1035,13 @@ bnx2x_mcast_refresh_registry_e1
 
 .. c:function:: int bnx2x_mcast_refresh_registry_e1(struct bnx2x *bp, struct bnx2x_mcast_obj *o)
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_mcast_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_mcast_obj \*
 
 .. _`bnx2x_mcast_refresh_registry_e1.description`:
 
@@ -943,14 +1068,17 @@ the memory.
 
     add if the result is less than a given value.
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
-    :param int a:
+    :param a:
         the amount to add to v...
+    :type a: int
 
-    :param int u:
+    :param u:
         ...if (v + a) is less than u.
+    :type u: int
 
 .. _`__atomic_add_ifless.description`:
 
@@ -968,14 +1096,17 @@ returns true if (v + a) was less than u, and false otherwise.
 
     dec if the result is more or equal than a given value.
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
-    :param int a:
+    :param a:
         the amount to dec from v...
+    :type a: int
 
-    :param int u:
+    :param u:
         ...if (v - a) is more or equal than u.
+    :type u: int
 
 .. _`__atomic_dec_ifmoe.description`:
 
@@ -994,14 +1125,17 @@ bnx2x_init_credit_pool
 
     initialize credit pool internals.
 
-    :param struct bnx2x_credit_pool_obj \*p:
+    :param p:
         *undescribed*
+    :type p: struct bnx2x_credit_pool_obj \*
 
-    :param int base:
+    :param base:
         Base entry in the CAM to use.
+    :type base: int
 
-    :param int credit:
+    :param credit:
         pool size.
+    :type credit: int
 
 .. _`bnx2x_init_credit_pool.description`:
 
@@ -1020,11 +1154,13 @@ bnx2x_debug_print_ind_table
 
     prints the indirection table configuration.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_config_rss_params \*p:
+    :param p:
         pointer to rss configuration
+    :type p: struct bnx2x_config_rss_params \*
 
 .. _`bnx2x_debug_print_ind_table.description`:
 
@@ -1042,11 +1178,13 @@ bnx2x_setup_rss
 
     configure RSS
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_config_rss_params \*p:
+    :param p:
         rss configuration
+    :type p: struct bnx2x_config_rss_params \*
 
 .. _`bnx2x_setup_rss.description`:
 
@@ -1064,11 +1202,13 @@ bnx2x_queue_state_change
 
     perform Queue state change transition
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_queue_state_params \*params:
+    :param params:
         parameters to perform the transition
+    :type params: struct bnx2x_queue_state_params \*
 
 .. _`bnx2x_queue_state_change.description`:
 
@@ -1089,14 +1229,17 @@ bnx2x_queue_comp_cmd
 
     complete the state change command.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_queue_sp_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_queue_sp_obj \*
 
-    :param enum bnx2x_queue_cmd cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: enum bnx2x_queue_cmd
 
 .. _`bnx2x_queue_comp_cmd.description`:
 
@@ -1114,11 +1257,13 @@ bnx2x_q_init
 
     init HW/FW queue
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_queue_state_params \*params:
+    :param params:
         *undescribed*
+    :type params: struct bnx2x_queue_state_params \*
 
 .. _`bnx2x_q_init.description`:
 
@@ -1138,11 +1283,13 @@ bnx2x_q_send_deactivate
 
     send DEACTIVATE command
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_queue_state_params \*params:
+    :param params:
         *undescribed*
+    :type params: struct bnx2x_queue_state_params \*
 
 .. _`bnx2x_q_send_deactivate.description`:
 
@@ -1160,11 +1307,13 @@ bnx2x_q_send_activate
 
     send ACTIVATE command
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_queue_state_params \*params:
+    :param params:
         *undescribed*
+    :type params: struct bnx2x_queue_state_params \*
 
 .. _`bnx2x_q_send_activate.description`:
 
@@ -1182,14 +1331,17 @@ bnx2x_queue_chk_transition
 
     check state machine of a regular Queue
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_queue_sp_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_queue_sp_obj \*
 
-    :param struct bnx2x_queue_state_params \*params:
+    :param params:
         *undescribed*
+    :type params: struct bnx2x_queue_state_params \*
 
 .. _`bnx2x_queue_chk_transition.description`:
 
@@ -1214,14 +1366,17 @@ bnx2x_func_state_change_comp
 
     complete the state machine transition
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_func_sp_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_func_sp_obj \*
 
-    :param enum bnx2x_func_cmd cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: enum bnx2x_func_cmd
 
 .. _`bnx2x_func_state_change_comp.description`:
 
@@ -1240,14 +1395,17 @@ bnx2x_func_comp_cmd
 
     complete the state change command
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_func_sp_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_func_sp_obj \*
 
-    :param enum bnx2x_func_cmd cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: enum bnx2x_func_cmd
 
 .. _`bnx2x_func_comp_cmd.description`:
 
@@ -1265,14 +1423,17 @@ bnx2x_func_chk_transition
 
     perform function state machine transition
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_func_sp_obj \*o:
+    :param o:
         *undescribed*
+    :type o: struct bnx2x_func_sp_obj \*
 
-    :param struct bnx2x_func_state_params \*params:
+    :param params:
         *undescribed*
+    :type params: struct bnx2x_func_state_params \*
 
 .. _`bnx2x_func_chk_transition.description`:
 
@@ -1296,11 +1457,13 @@ bnx2x_func_init_func
 
     performs HW init at function stage
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param const struct bnx2x_func_sp_drv_ops \*drv:
+    :param drv:
         *undescribed*
+    :type drv: const struct bnx2x_func_sp_drv_ops \*
 
 .. _`bnx2x_func_init_func.description`:
 
@@ -1326,11 +1489,13 @@ bnx2x_func_init_port
 
     performs HW init at port stage
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param const struct bnx2x_func_sp_drv_ops \*drv:
+    :param drv:
         *undescribed*
+    :type drv: const struct bnx2x_func_sp_drv_ops \*
 
 .. _`bnx2x_func_init_port.description`:
 
@@ -1356,11 +1521,13 @@ bnx2x_func_init_cmn_chip
 
     performs HW init at chip-common stage
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param const struct bnx2x_func_sp_drv_ops \*drv:
+    :param drv:
         *undescribed*
+    :type drv: const struct bnx2x_func_sp_drv_ops \*
 
 .. _`bnx2x_func_init_cmn_chip.description`:
 
@@ -1386,11 +1553,13 @@ bnx2x_func_init_cmn
 
     performs HW init at common stage
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param const struct bnx2x_func_sp_drv_ops \*drv:
+    :param drv:
         *undescribed*
+    :type drv: const struct bnx2x_func_sp_drv_ops \*
 
 .. _`bnx2x_func_init_cmn.description`:
 
@@ -1416,11 +1585,13 @@ bnx2x_func_reset_func
 
     reset HW at function stage
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param const struct bnx2x_func_sp_drv_ops \*drv:
+    :param drv:
         *undescribed*
+    :type drv: const struct bnx2x_func_sp_drv_ops \*
 
 .. _`bnx2x_func_reset_func.reset-hw-at-fw_msg_code_drv_unload_function-stage`:
 
@@ -1439,11 +1610,13 @@ bnx2x_func_reset_port
 
     reset HW at port stage
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param const struct bnx2x_func_sp_drv_ops \*drv:
+    :param drv:
         *undescribed*
+    :type drv: const struct bnx2x_func_sp_drv_ops \*
 
 .. _`bnx2x_func_reset_port.reset-hw-at-fw_msg_code_drv_unload_port-stage`:
 
@@ -1468,11 +1641,13 @@ bnx2x_func_reset_cmn
 
     reset HW at common stage
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param const struct bnx2x_func_sp_drv_ops \*drv:
+    :param drv:
         *undescribed*
+    :type drv: const struct bnx2x_func_sp_drv_ops \*
 
 .. _`bnx2x_func_reset_cmn.description`:
 
@@ -1498,11 +1673,13 @@ bnx2x_func_state_change
 
     perform Function state change transition
 
-    :param struct bnx2x \*bp:
+    :param bp:
         device handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_func_state_params \*params:
+    :param params:
         parameters to perform the transaction
+    :type params: struct bnx2x_func_state_params \*
 
 .. _`bnx2x_func_state_change.description`:
 

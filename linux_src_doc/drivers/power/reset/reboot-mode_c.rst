@@ -10,8 +10,9 @@ reboot_mode_register
 
     register a reboot mode driver
 
-    :param struct reboot_mode_driver \*reboot:
+    :param reboot:
         reboot mode driver
+    :type reboot: struct reboot_mode_driver \*
 
 .. _`reboot_mode_register.return`:
 
@@ -29,8 +30,9 @@ reboot_mode_unregister
 
     unregister a reboot mode driver
 
-    :param struct reboot_mode_driver \*reboot:
+    :param reboot:
         reboot mode driver
+    :type reboot: struct reboot_mode_driver \*
 
 .. _`devm_reboot_mode_register`:
 
@@ -41,11 +43,13 @@ devm_reboot_mode_register
 
     resource managed \ :c:func:`reboot_mode_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device to associate this resource with
+    :type dev: struct device \*
 
-    :param struct reboot_mode_driver \*reboot:
+    :param reboot:
         reboot mode driver
+    :type reboot: struct reboot_mode_driver \*
 
 .. _`devm_reboot_mode_register.return`:
 
@@ -63,11 +67,13 @@ devm_reboot_mode_unregister
 
     resource managed \ :c:func:`reboot_mode_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device to associate this resource with
+    :type dev: struct device \*
 
-    :param struct reboot_mode_driver \*reboot:
+    :param reboot:
         reboot mode driver
+    :type reboot: struct reboot_mode_driver \*
 
 .. This file was automatic generated / don't edit.
 

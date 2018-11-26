@@ -10,8 +10,9 @@ scif_invalidate_ep
 
     Set state for all connected endpoints to disconnected and wake up all send/recv waitqueues
 
-    :param int node:
+    :param node:
         *undescribed*
+    :type node: int
 
 .. _`scif_disconnect_node`:
 
@@ -20,11 +21,13 @@ scif_disconnect_node
 
 .. c:function:: void scif_disconnect_node(u32 node_id, bool mgmt_initiated)
 
-    :param u32 node_id:
+    :param node_id:
         source node id.
+    :type node_id: u32
 
-    :param bool mgmt_initiated:
+    :param mgmt_initiated:
         Disconnection initiated from the mgmt node
+    :type mgmt_initiated: bool
 
 .. _`scif_disconnect_node.description`:
 

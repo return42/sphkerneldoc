@@ -10,8 +10,9 @@ i2c_smbus_read_byte
 
     SMBus "receive byte" protocol
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
 .. _`i2c_smbus_read_byte.description`:
 
@@ -30,11 +31,13 @@ i2c_smbus_write_byte
 
     SMBus "send byte" protocol
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param u8 value:
+    :param value:
         Byte to be sent
+    :type value: u8
 
 .. _`i2c_smbus_write_byte.description`:
 
@@ -53,11 +56,13 @@ i2c_smbus_read_byte_data
 
     SMBus "read byte" protocol
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param u8 command:
+    :param command:
         Byte interpreted by slave
+    :type command: u8
 
 .. _`i2c_smbus_read_byte_data.description`:
 
@@ -76,14 +81,17 @@ i2c_smbus_write_byte_data
 
     SMBus "write byte" protocol
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param u8 command:
+    :param command:
         Byte interpreted by slave
+    :type command: u8
 
-    :param u8 value:
+    :param value:
         Byte being written
+    :type value: u8
 
 .. _`i2c_smbus_write_byte_data.description`:
 
@@ -102,11 +110,13 @@ i2c_smbus_read_word_data
 
     SMBus "read word" protocol
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param u8 command:
+    :param command:
         Byte interpreted by slave
+    :type command: u8
 
 .. _`i2c_smbus_read_word_data.description`:
 
@@ -125,14 +135,17 @@ i2c_smbus_write_word_data
 
     SMBus "write word" protocol
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param u8 command:
+    :param command:
         Byte interpreted by slave
+    :type command: u8
 
-    :param u16 value:
+    :param value:
         16-bit "word" being written
+    :type value: u16
 
 .. _`i2c_smbus_write_word_data.description`:
 
@@ -151,15 +164,18 @@ i2c_smbus_read_block_data
 
     SMBus "block read" protocol
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param u8 command:
+    :param command:
         Byte interpreted by slave
+    :type command: u8
 
-    :param u8 \*values:
+    :param values:
         Byte array into which data will be read; big enough to hold
         the data returned by the slave.  SMBus allows at most 32 bytes.
+    :type values: u8 \*
 
 .. _`i2c_smbus_read_block_data.description`:
 
@@ -183,17 +199,21 @@ i2c_smbus_write_block_data
 
     SMBus "block write" protocol
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param u8 command:
+    :param command:
         Byte interpreted by slave
+    :type command: u8
 
-    :param u8 length:
+    :param length:
         Size of data block; SMBus allows at most 32 bytes
+    :type length: u8
 
-    :param const u8 \*values:
+    :param values:
         Byte array which will be written.
+    :type values: const u8 \*
 
 .. _`i2c_smbus_write_block_data.description`:
 
@@ -212,26 +232,33 @@ i2c_smbus_xfer
 
     execute SMBus protocol operations
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         Handle to I2C bus
+    :type adapter: struct i2c_adapter \*
 
-    :param u16 addr:
+    :param addr:
         Address of SMBus slave on that bus
+    :type addr: u16
 
-    :param unsigned short flags:
+    :param flags:
         I2C_CLIENT_* flags (usually zero or I2C_CLIENT_PEC)
+    :type flags: unsigned short
 
-    :param char read_write:
+    :param read_write:
         I2C_SMBUS_READ or I2C_SMBUS_WRITE
+    :type read_write: char
 
-    :param u8 command:
+    :param command:
         Byte interpreted by slave, for protocols which use such bytes
+    :type command: u8
 
-    :param int protocol:
+    :param protocol:
         SMBus protocol operation to execute, such as I2C_SMBUS_PROC_CALL
+    :type protocol: int
 
-    :param union i2c_smbus_data \*data:
+    :param data:
         Data to be read or written
+    :type data: union i2c_smbus_data \*
 
 .. _`i2c_smbus_xfer.description`:
 
@@ -250,19 +277,23 @@ i2c_smbus_read_i2c_block_data_or_emulated
 
     read block or emulate
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param u8 command:
+    :param command:
         Byte interpreted by slave
+    :type command: u8
 
-    :param u8 length:
+    :param length:
         Size of data block; SMBus allows at most I2C_SMBUS_BLOCK_MAX bytes
+    :type length: u8
 
-    :param u8 \*values:
+    :param values:
         Byte array into which data will be read; big enough to hold
         the data returned by the slave.  SMBus allows at most
         I2C_SMBUS_BLOCK_MAX bytes.
+    :type values: u8 \*
 
 .. _`i2c_smbus_read_i2c_block_data_or_emulated.description`:
 
@@ -288,11 +319,13 @@ i2c_setup_smbus_alert
 
     Setup SMBus alert support
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         the target adapter
+    :type adapter: struct i2c_adapter \*
 
-    :param struct i2c_smbus_alert_setup \*setup:
+    :param setup:
         setup data for the SMBus alert handler
+    :type setup: struct i2c_smbus_alert_setup \*
 
 .. _`i2c_setup_smbus_alert.context`:
 

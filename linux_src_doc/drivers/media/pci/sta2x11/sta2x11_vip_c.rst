@@ -35,6 +35,7 @@ Definition
         unsigned int sequence;
         struct vip_buffer *active;
         spinlock_t lock;
+        struct mutex v4l_lock;
         int tcount, bcount;
         int overflow;
         void __iomem *iomem;
@@ -97,6 +98,9 @@ active
 lock
     used in videobuf2 callback
 
+v4l_lock
+    serialize its video4linux ioctls
+
 tcount
     Number of top frames
 
@@ -128,14 +132,17 @@ vidioc_querycap
 
     return capabilities of device
 
-    :param struct file \*file:
+    :param file:
         descriptor of device
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param struct v4l2_capability \*cap:
+    :param cap:
         contains return values
+    :type cap: struct v4l2_capability \*
 
 .. _`vidioc_querycap.description`:
 
@@ -160,14 +167,17 @@ vidioc_s_std
 
     set video standard
 
-    :param struct file \*file:
+    :param file:
         descriptor of device
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param v4l2_std_id std:
+    :param std:
         contains standard to be set
+    :type std: v4l2_std_id
 
 .. _`vidioc_s_std.description`:
 
@@ -196,14 +206,17 @@ vidioc_g_std
 
     get video standard
 
-    :param struct file \*file:
+    :param file:
         descriptor of device
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param v4l2_std_id \*std:
+    :param std:
         contains return values
+    :type std: v4l2_std_id \*
 
 .. _`vidioc_g_std.description`:
 
@@ -228,14 +241,17 @@ vidioc_querystd
 
     get possible video standards
 
-    :param struct file \*file:
+    :param file:
         descriptor of device
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param v4l2_std_id \*std:
+    :param std:
         contains return values
+    :type std: v4l2_std_id \*
 
 .. _`vidioc_querystd.description`:
 
@@ -260,14 +276,17 @@ vidioc_s_input
 
     set input line
 
-    :param struct file \*file:
+    :param file:
         descriptor of device
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param unsigned int i:
+    :param i:
         new input line number
+    :type i: unsigned int
 
 .. _`vidioc_s_input.description`:
 
@@ -294,14 +313,17 @@ vidioc_g_input
 
     return input line
 
-    :param struct file \*file:
+    :param file:
         descriptor of device
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param unsigned int \*i:
+    :param i:
         returned input line number
+    :type i: unsigned int \*
 
 .. _`vidioc_g_input.description`:
 
@@ -326,14 +348,17 @@ vidioc_enum_fmt_vid_cap
 
     return video capture format
 
-    :param struct file \*file:
+    :param file:
         descriptor of device
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param struct v4l2_fmtdesc \*f:
+    :param f:
         returned format information
+    :type f: struct v4l2_fmtdesc \*
 
 .. _`vidioc_enum_fmt_vid_cap.description`:
 
@@ -359,14 +384,17 @@ vidioc_try_fmt_vid_cap
 
     set video capture format
 
-    :param struct file \*file:
+    :param file:
         descriptor of device
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param struct v4l2_format \*f:
+    :param f:
         new format
+    :type f: struct v4l2_format \*
 
 .. _`vidioc_try_fmt_vid_cap.description`:
 
@@ -396,14 +424,17 @@ vidioc_s_fmt_vid_cap
 
     set current video format parameters
 
-    :param struct file \*file:
+    :param file:
         descriptor of device
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param struct v4l2_format \*f:
+    :param f:
         returned format information
+    :type f: struct v4l2_format \*
 
 .. _`vidioc_s_fmt_vid_cap.description`:
 
@@ -430,14 +461,17 @@ vidioc_g_fmt_vid_cap
 
     get current video format parameters
 
-    :param struct file \*file:
+    :param file:
         descriptor of device
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param struct v4l2_format \*f:
+    :param f:
         contains format information
+    :type f: struct v4l2_format \*
 
 .. _`vidioc_g_fmt_vid_cap.description`:
 
@@ -462,11 +496,13 @@ vip_irq
 
     interrupt routine
 
-    :param int irq:
+    :param irq:
         Number of interrupt ( not used, correct number is assumed )
+    :type irq: int
 
-    :param struct sta2x11_vip \*vip:
+    :param vip:
         local data structure containing all information
+    :type vip: struct sta2x11_vip \*
 
 .. _`vip_irq.description`:
 
@@ -495,17 +531,21 @@ vip_gpio_reserve
 
     reserve gpio pin
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param int pin:
+    :param pin:
         GPIO pin number
+    :type pin: int
 
-    :param int dir:
+    :param dir:
         direction, input or output
+    :type dir: int
 
-    :param const char \*name:
+    :param name:
         GPIO pin name
+    :type name: const char \*
 
 .. _`vip_gpio_release`:
 
@@ -516,14 +556,17 @@ vip_gpio_release
 
     release gpio pin
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param int pin:
+    :param pin:
         GPIO pin number
+    :type pin: int
 
-    :param const char \*name:
+    :param name:
         GPIO pin name
+    :type name: const char \*
 
 .. _`sta2x11_vip_init_one`:
 
@@ -534,11 +577,13 @@ sta2x11_vip_init_one
 
     init one instance of video device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         (not used)
+    :type ent: const struct pci_device_id \*
 
 .. _`sta2x11_vip_init_one.description`:
 
@@ -573,8 +618,9 @@ sta2x11_vip_remove_one
 
     release device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`sta2x11_vip_remove_one.description`:
 
@@ -598,11 +644,13 @@ sta2x11_vip_suspend
 
     set device into power save mode
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t state:
+    :param state:
         new state of device
+    :type state: pm_message_t
 
 .. _`sta2x11_vip_suspend.description`:
 
@@ -628,8 +676,9 @@ sta2x11_vip_resume
 
     resume device operation
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`sta2x11_vip_resume.description`:
 

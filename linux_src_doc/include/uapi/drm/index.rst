@@ -8,6 +8,7 @@ drm
     :maxdepth: 1
 
     amdgpu_drm_h
+    drm_fourcc_h
     drm_h
     i915_drm_h
     tegra_drm_h

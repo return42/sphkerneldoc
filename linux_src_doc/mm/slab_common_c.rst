@@ -10,8 +10,9 @@ slab_deactivate_memcg_cache_rcu_sched
 
     schedule deactivation after a sched RCU grace period
 
-    :param struct kmem_cache \*s:
+    :param s:
         target kmem_cache
+    :type s: struct kmem_cache \*
 
     :param void (\*deact_fn)(struct kmem_cache \*):
         deactivation function to call
@@ -35,8 +36,9 @@ kmem_cache_shrink
 
     Shrink a cache.
 
-    :param struct kmem_cache \*cachep:
+    :param cachep:
         The cache to shrink.
+    :type cachep: struct kmem_cache \*
 
 .. _`kmem_cache_shrink.description`:
 
@@ -55,14 +57,17 @@ To help debugging, a zero exit status indicates all slabs were released.
 
     like \ :c:func:`krealloc`\  but don't free \ ``p``\ .
 
-    :param const void \*p:
+    :param p:
         object to reallocate memory for.
+    :type p: const void \*
 
-    :param size_t new_size:
+    :param new_size:
         how many bytes of memory are required.
+    :type new_size: size_t
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate.
+    :type flags: gfp_t
 
 .. _`__krealloc.description`:
 
@@ -82,14 +87,17 @@ krealloc
 
     reallocate memory. The contents will remain unchanged.
 
-    :param const void \*p:
+    :param p:
         object to reallocate memory for.
+    :type p: const void \*
 
-    :param size_t new_size:
+    :param new_size:
         how many bytes of memory are required.
+    :type new_size: size_t
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate.
+    :type flags: gfp_t
 
 .. _`krealloc.description`:
 
@@ -110,8 +118,9 @@ kzfree
 
     like kfree but zero memory
 
-    :param const void \*p:
+    :param p:
         object to free memory of
+    :type p: const void \*
 
 .. _`kzfree.description`:
 

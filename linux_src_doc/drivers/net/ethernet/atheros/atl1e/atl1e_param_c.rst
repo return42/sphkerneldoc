@@ -10,8 +10,9 @@ atl1e_check_options
 
     Range Checking for Command Line Parameters
 
-    :param struct atl1e_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1e_adapter \*
 
 .. _`atl1e_check_options.description`:
 

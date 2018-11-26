@@ -28,12 +28,15 @@ Definition
         irq_flow_handler_t parent_handler;
         void *parent_handler_data;
         unsigned int num_parents;
+        unsigned int parent_irq;
         unsigned int *parents;
         unsigned int *map;
         bool threaded;
         bool need_valid_mask;
         unsigned long *valid_mask;
         unsigned int first;
+        void (*irq_enable)(struct irq_data *data);
+        void (*irq_disable)(struct irq_data *data);
     }
 
 .. _`gpio_irq_chip.members`:
@@ -66,10 +69,11 @@ default_type
 
 lock_key
 
-    Per GPIO IRQ chip lockdep classes.
+    Per GPIO IRQ chip lockdep class for IRQ lock.
 
 request_key
-    *undescribed*
+
+    Per GPIO IRQ chip lockdep class for IRQ request.
 
 parent_handler
 
@@ -84,6 +88,10 @@ parent_handler_data
 num_parents
 
     The number of interrupt parents of a GPIO chip.
+
+parent_irq
+
+    For use by \ :c:func:`gpiochip_set_cascaded_irqchip`\ 
 
 parents
 
@@ -111,6 +119,14 @@ first
 
     Required for static IRQ allocation. If set, \ :c:func:`irq_domain_add_simple`\ 
     will allocate and map all IRQs during initialization.
+
+irq_enable
+
+    Store old irq_chip irq_enable callback
+
+irq_disable
+
+    Store old irq_chip irq_disable callback
 
 .. _`gpio_chip`:
 
@@ -145,6 +161,7 @@ Definition
         int (*set_config)(struct gpio_chip *chip,unsigned offset, unsigned long config);
         int (*to_irq)(struct gpio_chip *chip, unsigned offset);
         void (*dbg_show)(struct seq_file *s, struct gpio_chip *chip);
+        int (*init_valid_mask)(struct gpio_chip *chip);
         int base;
         u16 ngpio;
         const char *const *names;
@@ -157,6 +174,7 @@ Definition
         void __iomem *reg_set;
         void __iomem *reg_clr;
         void __iomem *reg_dir;
+        bool bgpio_dir_inverted;
         int bgpio_bits;
         spinlock_t bgpio_lock;
         unsigned long bgpio_data;
@@ -202,13 +220,17 @@ free
 
 get_direction
     returns direction for signal "offset", 0=out, 1=in,
-    (same as GPIOF_DIR_XXX), or negative error
+    (same as GPIOF_DIR_XXX), or negative error.
+    It is recommended to always implement this function, even on
+    input-only or output-only gpio chips.
 
 direction_input
     configures signal "offset" as input, or returns error
+    This can be omitted on input-only or output-only gpio chips.
 
 direction_output
     configures signal "offset" as output, or returns error
+    This can be omitted on input-only or output-only gpio chips.
 
 get
     returns value for signal "offset", 0=low, 1=high, or negative error
@@ -235,6 +257,9 @@ dbg_show
     optional routine to show contents in debugfs; default code
     will be used when this is omitted, but custom code can show extra
     state (such as pullup/pulldown configuration).
+
+init_valid_mask
+    *undescribed*
 
 base
     identifies the first GPIO number handled by this chip;
@@ -286,6 +311,10 @@ reg_clr
 reg_dir
     direction setting register for generic GPIO
 
+bgpio_dir_inverted
+    indicates that the direction register is inverted
+    (gpiolib private state variable)
+
 bgpio_bits
     number of register bits used for a generic GPIO i.e.
     <register width> * 8
@@ -309,7 +338,9 @@ irq
 
 need_valid_mask
 
-    If set core allocates \ ``valid_mask``\  with all bits set to one.
+    If set core allocates \ ``valid_mask``\  with all its values initialized
+    with \ :c:func:`init_valid_mask`\  or set to one if \ :c:func:`init_valid_mask`\  is not
+    defined
 
 valid_mask
 
@@ -353,11 +384,13 @@ gpiochip_add_data
 
     register a gpio_chip
 
-    :param  chip:
+    :param chip:
         the chip to register, with chip->base initialized
+    :type chip: 
 
-    :param  data:
+    :param data:
         driver-private data associated with this chip
+    :type data: 
 
 .. _`gpiochip_add_data.context`:
 

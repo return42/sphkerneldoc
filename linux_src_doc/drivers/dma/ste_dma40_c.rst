@@ -574,6 +574,7 @@ Definition
         u32 reg_val_backup[BACKUP_REGS_SZ];
         u32 reg_val_backup_v4[BACKUP_REGS_SZ_MAX];
         u32 *reg_val_backup_chan;
+        u32 *regs_interrupt;
         u16 gcc_pwr_off_mask;
         struct d40_gen_dmac gen_dmac;
     }
@@ -685,6 +686,9 @@ reg_val_backup_v4
 
 reg_val_backup_chan
     Backup data for standard channel parameter registers.
+
+regs_interrupt
+    Scratch space for registers during interrupt.
 
 gcc_pwr_off_mask
     Mask to maintain the channels that can be turned off.

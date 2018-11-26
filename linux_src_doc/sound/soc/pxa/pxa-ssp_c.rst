@@ -10,23 +10,13 @@ pxa_ssp_set_scr
 
     set SSP clock divider
 
-    :param struct ssp_device \*ssp:
+    :param ssp:
         *undescribed*
+    :type ssp: struct ssp_device \*
 
-    :param u32 div:
+    :param div:
         serial clock rate divider
-
-.. _`pxa_ssp_get_scr`:
-
-pxa_ssp_get_scr
-===============
-
-.. c:function:: u32 pxa_ssp_get_scr(struct ssp_device *ssp)
-
-    get SSP clock divider
-
-    :param struct ssp_device \*ssp:
-        *undescribed*
+    :type div: u32
 
 .. This file was automatic generated / don't edit.
 

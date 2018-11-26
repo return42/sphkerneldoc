@@ -10,8 +10,9 @@ update_pm_runtime_accounting
 
     Update the time accounting of power states
 
-    :param struct device \*dev:
+    :param dev:
         Device to update the accounting for
+    :type dev: struct device \*
 
 .. _`update_pm_runtime_accounting.description`:
 
@@ -34,8 +35,9 @@ pm_runtime_deactivate_timer
 
     Deactivate given device's suspend timer.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_runtime_cancel_pending`:
 
@@ -46,8 +48,9 @@ pm_runtime_cancel_pending
 
     Deactivate suspend timer and cancel requests.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`rpm_check_suspend_allowed`:
 
@@ -58,8 +61,9 @@ rpm_check_suspend_allowed
 
     Test whether a device may be suspended.
 
-    :param struct device \*dev:
+    :param dev:
         Device to test.
+    :type dev: struct device \*
 
 .. _`__rpm_callback`:
 
@@ -82,11 +86,13 @@ rpm_idle
 
     Notify device bus type if the device can be suspended.
 
-    :param struct device \*dev:
+    :param dev:
         Device to notify the bus type about.
+    :type dev: struct device \*
 
-    :param int rpmflags:
+    :param rpmflags:
         Flag bits.
+    :type rpmflags: int
 
 .. _`rpm_idle.description`:
 
@@ -113,8 +119,9 @@ rpm_callback
     :param int (\*cb)(struct device \*):
         Runtime PM callback to run.
 
-    :param struct device \*dev:
+    :param dev:
         Device to run the callback for.
+    :type dev: struct device \*
 
 .. _`rpm_suspend`:
 
@@ -125,11 +132,13 @@ rpm_suspend
 
     Carry out runtime suspend of given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
-    :param int rpmflags:
+    :param rpmflags:
         Flag bits.
+    :type rpmflags: int
 
 .. _`rpm_suspend.description`:
 
@@ -161,11 +170,13 @@ rpm_resume
 
     Carry out runtime resume of given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to resume.
+    :type dev: struct device \*
 
-    :param int rpmflags:
+    :param rpmflags:
         Flag bits.
+    :type rpmflags: int
 
 .. _`rpm_resume.description`:
 
@@ -193,8 +204,9 @@ pm_runtime_work
 
     Universal runtime PM work function.
 
-    :param struct work_struct \*work:
+    :param work:
         Work structure used for scheduling the execution of this function.
+    :type work: struct work_struct \*
 
 .. _`pm_runtime_work.description`:
 
@@ -213,8 +225,9 @@ pm_suspend_timer_fn
 
     Timer function for \ :c:func:`pm_schedule_suspend`\ .
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`pm_suspend_timer_fn.description`:
 
@@ -232,11 +245,13 @@ pm_schedule_suspend
 
     Set up a timer to submit a suspend request in future.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
-    :param unsigned int delay:
+    :param delay:
         Time to wait before submitting a suspend request, in milliseconds.
+    :type delay: unsigned int
 
 .. _`__pm_runtime_idle`:
 
@@ -247,11 +262,13 @@ pm_schedule_suspend
 
     Entry point for runtime idle operations.
 
-    :param struct device \*dev:
+    :param dev:
         Device to send idle notification for.
+    :type dev: struct device \*
 
-    :param int rpmflags:
+    :param rpmflags:
         Flag bits.
+    :type rpmflags: int
 
 .. _`__pm_runtime_idle.description`:
 
@@ -274,11 +291,13 @@ or if \ :c:func:`pm_runtime_irq_safe`\  has been called.
 
     Entry point for runtime put/suspend operations.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
-    :param int rpmflags:
+    :param rpmflags:
         Flag bits.
+    :type rpmflags: int
 
 .. _`__pm_runtime_suspend.description`:
 
@@ -301,11 +320,13 @@ or if \ :c:func:`pm_runtime_irq_safe`\  has been called.
 
     Entry point for runtime resume operations.
 
-    :param struct device \*dev:
+    :param dev:
         Device to resume.
+    :type dev: struct device \*
 
-    :param int rpmflags:
+    :param rpmflags:
         Flag bits.
+    :type rpmflags: int
 
 .. _`__pm_runtime_resume.description`:
 
@@ -327,8 +348,9 @@ pm_runtime_get_if_in_use
 
     Conditionally bump up the device's usage counter.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_runtime_get_if_in_use.description`:
 
@@ -350,11 +372,13 @@ return 1.  Otherwise return 0 without changing the counter.
 
     Set runtime PM status of a device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param unsigned int status:
+    :param status:
         New runtime PM status of the device.
+    :type status: unsigned int
 
 .. _`__pm_runtime_set_status.description`:
 
@@ -382,8 +406,9 @@ notification request for the parent is submitted.
 
     Cancel pending requests and wait for completions.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`__pm_runtime_barrier.description`:
 
@@ -404,8 +429,9 @@ pm_runtime_barrier
 
     Flush pending requests and wait for completions.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_runtime_barrier.description`:
 
@@ -435,11 +461,13 @@ Return value
 
     Disable runtime PM of a device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param bool check_resume:
+    :param check_resume:
         If set, check if there's a resume request for the device.
+    :type check_resume: bool
 
 .. _`__pm_runtime_disable.description`:
 
@@ -464,8 +492,9 @@ pm_runtime_enable
 
     Enable runtime PM of a device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_runtime_forbid`:
 
@@ -476,8 +505,9 @@ pm_runtime_forbid
 
     Block runtime PM of a device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_runtime_forbid.description`:
 
@@ -497,8 +527,9 @@ pm_runtime_allow
 
     Unblock runtime PM of a device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_runtime_allow.description`:
 
@@ -516,8 +547,9 @@ pm_runtime_no_callbacks
 
     Ignore runtime PM callbacks for a device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_runtime_no_callbacks.description`:
 
@@ -537,8 +569,9 @@ pm_runtime_irq_safe
 
     Leave interrupts disabled during callbacks.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle
+    :type dev: struct device \*
 
 .. _`pm_runtime_irq_safe.description`:
 
@@ -561,14 +594,17 @@ update_autosuspend
 
     Handle a change to a device's autosuspend settings.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param int old_delay:
+    :param old_delay:
         The former autosuspend_delay value.
+    :type old_delay: int
 
-    :param int old_use:
+    :param old_use:
         The former use_autosuspend value.
+    :type old_use: int
 
 .. _`update_autosuspend.description`:
 
@@ -589,11 +625,13 @@ pm_runtime_set_autosuspend_delay
 
     Set a device's autosuspend_delay value.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param int delay:
+    :param delay:
         Value of the new delay in milliseconds.
+    :type delay: int
 
 .. _`pm_runtime_set_autosuspend_delay.description`:
 
@@ -613,11 +651,13 @@ changes the other way, allow runtime suspends.
 
     Set a device's use_autosuspend flag.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param bool use:
+    :param use:
         New value for use_autosuspend.
+    :type use: bool
 
 .. _`__pm_runtime_use_autosuspend.description`:
 
@@ -636,8 +676,9 @@ pm_runtime_init
 
     Initialize runtime PM fields in given device object.
 
-    :param struct device \*dev:
+    :param dev:
         Device object to initialize.
+    :type dev: struct device \*
 
 .. _`pm_runtime_reinit`:
 
@@ -648,8 +689,9 @@ pm_runtime_reinit
 
     Re-initialize runtime PM fields in given device object.
 
-    :param struct device \*dev:
+    :param dev:
         Device object to re-initialize.
+    :type dev: struct device \*
 
 .. _`pm_runtime_remove`:
 
@@ -660,8 +702,9 @@ pm_runtime_remove
 
     Prepare for removing a device from device hierarchy.
 
-    :param struct device \*dev:
+    :param dev:
         Device object being removed from device hierarchy.
+    :type dev: struct device \*
 
 .. _`pm_runtime_clean_up_links`:
 
@@ -672,8 +715,9 @@ pm_runtime_clean_up_links
 
     Prepare links to consumers for driver removal.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose driver is going to be removed.
+    :type dev: struct device \*
 
 .. _`pm_runtime_clean_up_links.description`:
 
@@ -702,8 +746,9 @@ pm_runtime_get_suppliers
 
     Resume and reference-count supplier devices.
 
-    :param struct device \*dev:
+    :param dev:
         Consumer device.
+    :type dev: struct device \*
 
 .. _`pm_runtime_put_suppliers`:
 
@@ -714,8 +759,9 @@ pm_runtime_put_suppliers
 
     Drop references to supplier devices.
 
-    :param struct device \*dev:
+    :param dev:
         Consumer device.
+    :type dev: struct device \*
 
 .. _`pm_runtime_force_suspend`:
 
@@ -726,8 +772,9 @@ pm_runtime_force_suspend
 
     Force a device into suspend state if needed.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
 .. _`pm_runtime_force_suspend.description`:
 
@@ -756,8 +803,9 @@ pm_runtime_force_resume
 
     Force a device into resume state if needed.
 
-    :param struct device \*dev:
+    :param dev:
         Device to resume.
+    :type dev: struct device \*
 
 .. _`pm_runtime_force_resume.description`:
 

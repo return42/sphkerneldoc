@@ -10,8 +10,9 @@ pamu_get_max_subwin_cnt
 
     Return the maximum supported subwindow count per liodn.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pamu_get_ppaace`:
 
@@ -22,8 +23,9 @@ pamu_get_ppaace
 
     Return the primary PACCE
 
-    :param int liodn:
+    :param liodn:
         liodn PAACT index for desired PAACE
+    :type liodn: int
 
 .. _`pamu_get_ppaace.description`:
 
@@ -42,8 +44,9 @@ pamu_enable_liodn
 
     Set valid bit of PACCE
 
-    :param int liodn:
+    :param liodn:
         liodn PAACT index for desired PAACE
+    :type liodn: int
 
 .. _`pamu_enable_liodn.description`:
 
@@ -61,8 +64,9 @@ pamu_disable_liodn
 
     Clears valid bit of PACCE
 
-    :param int liodn:
+    :param liodn:
         liodn PAACT index for desired PAACE
+    :type liodn: int
 
 .. _`pamu_disable_liodn.description`:
 
@@ -80,8 +84,9 @@ pamu_get_fspi_and_allocate
 
     Allocates fspi index and reserves subwindows required for primary PAACE in the secondary PAACE table.
 
-    :param u32 subwin_cnt:
+    :param subwin_cnt:
         Number of subwindows to be reserved.
+    :type subwin_cnt: u32
 
 .. _`pamu_get_fspi_and_allocate.description`:
 
@@ -107,34 +112,43 @@ pamu_config_ppaace
 
     Sets up PPAACE entry for specified liodn
 
-    :param int liodn:
+    :param liodn:
         Logical IO device number
+    :type liodn: int
 
-    :param phys_addr_t win_addr:
+    :param win_addr:
         starting address of DSA window
+    :type win_addr: phys_addr_t
 
-    :param phys_addr_t win_size:
+    :param win_size:
         *undescribed*
+    :type win_size: phys_addr_t
 
-    :param u32 omi:
+    :param omi:
         Operation mapping index -- if ~omi == 0 then omi not defined
+    :type omi: u32
 
-    :param unsigned long rpn:
+    :param rpn:
         real (true physical) page number
+    :type rpn: unsigned long
 
-    :param u32 snoopid:
+    :param snoopid:
         snoop id for hardware coherency -- if ~snoopid == 0 then
         snoopid not defined
+    :type snoopid: u32
 
-    :param u32 stashid:
+    :param stashid:
         cache stash id for associated cpu -- if ~stashid == 0 then
         stashid not defined
+    :type stashid: u32
 
-    :param u32 subwin_cnt:
+    :param subwin_cnt:
         number of sub-windows
+    :type subwin_cnt: u32
 
-    :param int prot:
+    :param prot:
         window permissions
+    :type prot: int
 
 .. _`pamu_config_ppaace.description`:
 
@@ -152,36 +166,46 @@ pamu_config_spaace
 
     Sets up SPAACE entry for specified subwindow
 
-    :param int liodn:
+    :param liodn:
         Logical IO device number
+    :type liodn: int
 
-    :param u32 subwin_cnt:
+    :param subwin_cnt:
         number of sub-windows associated with dma-window
+    :type subwin_cnt: u32
 
-    :param u32 subwin:
+    :param subwin:
         subwindow index
+    :type subwin: u32
 
-    :param phys_addr_t subwin_size:
+    :param subwin_size:
         size of subwindow
+    :type subwin_size: phys_addr_t
 
-    :param u32 omi:
+    :param omi:
         Operation mapping index
+    :type omi: u32
 
-    :param unsigned long rpn:
+    :param rpn:
         real (true physical) page number
+    :type rpn: unsigned long
 
-    :param u32 snoopid:
+    :param snoopid:
         snoop id for hardware coherency -- if ~snoopid == 0 then
         snoopid not defined
+    :type snoopid: u32
 
-    :param u32 stashid:
+    :param stashid:
         cache stash id for associated cpu
+    :type stashid: u32
 
-    :param int enable:
+    :param enable:
         enable/disable subwindow after reconfiguration
+    :type enable: int
 
-    :param int prot:
+    :param prot:
         sub window permissions
+    :type prot: int
 
 .. _`pamu_config_spaace.description`:
 
@@ -199,11 +223,13 @@ get_ome_index
 
     Returns the index in the operation mapping table for device. \ ````\ \*omi_index: pointer for storing the index value
 
-    :param u32 \*omi_index:
+    :param omi_index:
         *undescribed*
+    :type omi_index: u32 \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`get_stash_id`:
 
@@ -214,11 +240,13 @@ get_stash_id
 
     Returns stash destination id corresponding to a cache type and vcpu.
 
-    :param u32 stash_dest_hint:
+    :param stash_dest_hint:
         L1, L2 or L3
+    :type stash_dest_hint: u32
 
-    :param u32 vcpu:
+    :param vcpu:
         vpcu target for a particular cache type.
+    :type vcpu: u32
 
 .. _`get_stash_id.description`:
 
@@ -236,11 +264,13 @@ setup_qbman_paace
 
     Memory accesses to QMAN and BMAN private memory need not be coherent, so clear the PAACE entry coherency attribute for them.
 
-    :param struct paace \*ppaace:
+    :param ppaace:
         *undescribed*
+    :type ppaace: struct paace \*
 
-    :param int paace_type:
+    :param paace_type:
         *undescribed*
+    :type paace_type: int
 
 .. _`setup_omt`:
 
@@ -251,8 +281,9 @@ setup_omt
 
     table where each table index corresponds to a particular device. PAMU uses this table to translate device transaction to appropriate corenet transaction.
 
-    :param struct ome \*omt:
+    :param omt:
         *undescribed*
+    :type omt: struct ome \*
 
 .. This file was automatic generated / don't edit.
 

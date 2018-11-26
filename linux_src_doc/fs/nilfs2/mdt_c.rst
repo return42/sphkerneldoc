@@ -10,20 +10,24 @@ nilfs_mdt_get_block
 
     read or create a buffer on meta data file.
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the meta data file
+    :type inode: struct inode \*
 
-    :param unsigned long blkoff:
+    :param blkoff:
         block offset
+    :type blkoff: unsigned long
 
-    :param int create:
+    :param create:
         create flag
+    :type create: int
 
     :param void (\*init_block)(struct inode \*, struct buffer_head \*, void \*):
         initializer used for newly allocated block
 
-    :param struct buffer_head \*\*out_bh:
+    :param out_bh:
         output of a pointer to the buffer_head
+    :type out_bh: struct buffer_head \*\*
 
 .. _`nilfs_mdt_get_block.description`:
 
@@ -60,20 +64,25 @@ nilfs_mdt_find_block
 
     find and get a buffer on meta data file.
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the meta data file
+    :type inode: struct inode \*
 
-    :param unsigned long start:
+    :param start:
         start block offset (inclusive)
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         end block offset (inclusive)
+    :type end: unsigned long
 
-    :param unsigned long \*blkoff:
+    :param blkoff:
         block offset
+    :type blkoff: unsigned long \*
 
-    :param struct buffer_head \*\*out_bh:
+    :param out_bh:
         place to store a pointer to buffer_head struct
+    :type out_bh: struct buffer_head \*\*
 
 .. _`nilfs_mdt_find_block.description`:
 
@@ -108,11 +117,13 @@ nilfs_mdt_delete_block
 
     make a hole on the meta data file.
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the meta data file
+    :type inode: struct inode \*
 
-    :param unsigned long block:
+    :param block:
         block offset
+    :type block: unsigned long
 
 .. _`nilfs_mdt_delete_block.return-value`:
 
@@ -135,11 +146,13 @@ nilfs_mdt_forget_block
 
     discard dirty state and try to remove the page
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the meta data file
+    :type inode: struct inode \*
 
-    :param unsigned long block:
+    :param block:
         block offset
+    :type block: unsigned long
 
 .. _`nilfs_mdt_forget_block.description`:
 
@@ -170,8 +183,9 @@ nilfs_mdt_clear
 
     do cleanup for the metadata file
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the metadata file
+    :type inode: struct inode \*
 
 .. _`nilfs_mdt_destroy`:
 
@@ -182,8 +196,9 @@ nilfs_mdt_destroy
 
     release resources used by the metadata file
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the metadata file
+    :type inode: struct inode \*
 
 .. _`nilfs_mdt_setup_shadow_map`:
 
@@ -194,11 +209,13 @@ nilfs_mdt_setup_shadow_map
 
     setup shadow map and bind it to metadata file
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the metadata file
+    :type inode: struct inode \*
 
-    :param struct nilfs_shadow_map \*shadow:
+    :param shadow:
         shadow mapping
+    :type shadow: struct nilfs_shadow_map \*
 
 .. _`nilfs_mdt_save_to_shadow_map`:
 
@@ -209,8 +226,9 @@ nilfs_mdt_save_to_shadow_map
 
     copy bmap and dirty pages to shadow map
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the metadata file
+    :type inode: struct inode \*
 
 .. _`nilfs_mdt_restore_from_shadow_map`:
 
@@ -221,8 +239,9 @@ nilfs_mdt_restore_from_shadow_map
 
     restore dirty pages and bmap state
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the metadata file
+    :type inode: struct inode \*
 
 .. _`nilfs_mdt_clear_shadow_map`:
 
@@ -233,8 +252,9 @@ nilfs_mdt_clear_shadow_map
 
     truncate pages in shadow map caches
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the metadata file
+    :type inode: struct inode \*
 
 .. This file was automatic generated / don't edit.
 

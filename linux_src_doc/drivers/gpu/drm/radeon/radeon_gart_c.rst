@@ -10,8 +10,9 @@ radeon_gart_table_ram_alloc
 
     allocate system ram for gart page table
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_gart_table_ram_alloc.description`:
 
@@ -32,8 +33,9 @@ radeon_gart_table_ram_free
 
     free system ram for gart page table
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_gart_table_ram_free.description`:
 
@@ -53,8 +55,9 @@ radeon_gart_table_vram_alloc
 
     allocate vram for gart page table
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_gart_table_vram_alloc.description`:
 
@@ -75,8 +78,9 @@ radeon_gart_table_vram_pin
 
     pin gart page table in vram
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_gart_table_vram_pin.description`:
 
@@ -97,8 +101,9 @@ radeon_gart_table_vram_unpin
 
     unpin gart page table in vram
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_gart_table_vram_unpin.description`:
 
@@ -117,8 +122,9 @@ radeon_gart_table_vram_free
 
     free gart page table vram
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_gart_table_vram_free.description`:
 
@@ -138,14 +144,17 @@ radeon_gart_unbind
 
     unbind pages from the gart page table
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param unsigned offset:
+    :param offset:
         offset into the GPU's gart aperture
+    :type offset: unsigned
 
-    :param int pages:
+    :param pages:
         number of pages to unbind
+    :type pages: int
 
 .. _`radeon_gart_unbind.description`:
 
@@ -164,23 +173,29 @@ radeon_gart_bind
 
     bind pages into the gart page table
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param unsigned offset:
+    :param offset:
         offset into the GPU's gart aperture
+    :type offset: unsigned
 
-    :param int pages:
+    :param pages:
         number of pages to bind
+    :type pages: int
 
-    :param struct page \*\*pagelist:
+    :param pagelist:
         pages to bind
+    :type pagelist: struct page \*\*
 
-    :param dma_addr_t \*dma_addr:
+    :param dma_addr:
         DMA addresses of pages
+    :type dma_addr: dma_addr_t \*
 
-    :param uint32_t flags:
+    :param flags:
         RADEON_GART_PAGE\_\* flags
+    :type flags: uint32_t
 
 .. _`radeon_gart_bind.description`:
 
@@ -200,8 +215,9 @@ radeon_gart_init
 
     init the driver info for managing the gart
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_gart_init.description`:
 
@@ -220,8 +236,9 @@ radeon_gart_fini
 
     tear down the driver info for managing the gart
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_gart_fini.description`:
 

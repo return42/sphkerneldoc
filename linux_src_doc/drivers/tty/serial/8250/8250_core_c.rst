@@ -10,8 +10,9 @@ serial8250_get_port
 
     retrieve struct uart_8250_port
 
-    :param int line:
+    :param line:
         serial line number
+    :type line: int
 
 .. _`serial8250_get_port.description`:
 
@@ -35,17 +36,21 @@ univ8250_console_match
 
     non-standard console matching
 
-    :param struct console \*co:
+    :param co:
         registering console
+    :type co: struct console \*
 
-    :param char \*name:
+    :param name:
         name from console command line
+    :type name: char \*
 
-    :param int idx:
+    :param idx:
         index from console command line
+    :type idx: int
 
-    :param char \*options:
+    :param options:
         ptr to option string from console command line
+    :type options: char \*
 
 .. _`univ8250_console_match.only-attempts-to-match-console-command-lines-of-the-form`:
 
@@ -71,8 +76,9 @@ serial8250_suspend_port
 
     suspend one serial port
 
-    :param int line:
+    :param line:
         serial line number
+    :type line: int
 
 .. _`serial8250_suspend_port.description`:
 
@@ -90,8 +96,9 @@ serial8250_resume_port
 
     resume one serial port
 
-    :param int line:
+    :param line:
         serial line number
+    :type line: int
 
 .. _`serial8250_resume_port.description`:
 
@@ -109,8 +116,9 @@ serial8250_register_8250_port
 
     register a serial port
 
-    :param struct uart_8250_port \*up:
+    :param up:
         serial port template
+    :type up: struct uart_8250_port \*
 
 .. _`serial8250_register_8250_port.description`:
 
@@ -135,8 +143,9 @@ serial8250_unregister_port
 
     remove a 16x50 serial port at runtime
 
-    :param int line:
+    :param line:
         serial line number
+    :type line: int
 
 .. _`serial8250_unregister_port.description`:
 

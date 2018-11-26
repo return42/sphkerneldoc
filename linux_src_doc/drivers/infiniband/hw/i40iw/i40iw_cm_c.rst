@@ -10,11 +10,13 @@ i40iw_free_sqbuf
 
     put back puda buffer if refcount = 0
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         pointer to vsi structure
+    :type vsi: struct i40iw_sc_vsi \*
 
-    :param void \*bufp:
+    :param bufp:
         *undescribed*
+    :type bufp: void \*
 
 .. _`i40iw_derive_hw_ird_setting`:
 
@@ -25,8 +27,9 @@ i40iw_derive_hw_ird_setting
 
     Calculate IRD
 
-    :param u16 cm_ird:
+    :param cm_ird:
         IRD of connection's node
+    :type cm_ird: u16
 
 .. _`i40iw_derive_hw_ird_setting.description`:
 
@@ -46,14 +49,17 @@ i40iw_record_ird_ord
 
     Record IRD/ORD passed in
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param u32 conn_ird:
+    :param conn_ird:
         connection IRD
+    :type conn_ird: u32
 
-    :param u32 conn_ord:
+    :param conn_ord:
         connection ORD
+    :type conn_ord: u32
 
 .. _`i40iw_copy_ip_ntohl`:
 
@@ -64,11 +70,13 @@ i40iw_copy_ip_ntohl
 
     change network to host ip
 
-    :param u32 \*dst:
+    :param dst:
         host ip
+    :type dst: u32 \*
 
-    :param __be32 \*src:
+    :param src:
         big endian
+    :type src: __be32 \*
 
 .. _`i40iw_copy_ip_htonl`:
 
@@ -79,11 +87,13 @@ i40iw_copy_ip_htonl
 
     change host addr to network ip
 
-    :param __be32 \*dst:
+    :param dst:
         host ip
+    :type dst: __be32 \*
 
-    :param u32 \*src:
+    :param src:
         little endian
+    :type src: u32 \*
 
 .. _`i40iw_fill_sockaddr4`:
 
@@ -94,11 +104,13 @@ i40iw_fill_sockaddr4
 
     get addr info for passive connection
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct iw_cm_event \*event:
+    :param event:
         upper layer's cm event
+    :type event: struct iw_cm_event \*
 
 .. _`i40iw_fill_sockaddr6`:
 
@@ -109,11 +121,13 @@ i40iw_fill_sockaddr6
 
     get ipv6 addr info for passive side
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct iw_cm_event \*event:
+    :param event:
         upper layer's cm event
+    :type event: struct iw_cm_event \*
 
 .. _`i40iw_get_addr_info`:
 
@@ -122,11 +136,13 @@ i40iw_get_addr_info
 
 .. c:function:: void i40iw_get_addr_info(struct i40iw_cm_node *cm_node, struct i40iw_cm_info *cm_info)
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         contains ip/tcp info
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_cm_info \*cm_info:
+    :param cm_info:
         to get a copy of the cm_node ip/tcp info
+    :type cm_info: struct i40iw_cm_info \*
 
 .. _`i40iw_get_cmevent_info`:
 
@@ -137,14 +153,17 @@ i40iw_get_cmevent_info
 
     for cm event upcall
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         upper layers cm struct for the event
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct iw_cm_event \*event:
+    :param event:
         upper layer's cm event
+    :type event: struct iw_cm_event \*
 
 .. _`i40iw_send_cm_event`:
 
@@ -155,17 +174,21 @@ i40iw_send_cm_event
 
     upcall cm's event handler
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         upper layer's cm info struct
+    :type cm_id: struct iw_cm_id \*
 
-    :param enum iw_cm_event_type type:
+    :param type:
         Event type to indicate
+    :type type: enum iw_cm_event_type
 
-    :param int status:
+    :param status:
         status for the event type
+    :type status: int
 
 .. _`i40iw_create_event`:
 
@@ -176,11 +199,13 @@ i40iw_create_event
 
     create cm event
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param enum i40iw_cm_event_type type:
+    :param type:
         Event type to generate
+    :type type: enum i40iw_cm_event_type
 
 .. _`i40iw_free_retrans_entry`:
 
@@ -191,8 +216,9 @@ i40iw_free_retrans_entry
 
     free send entry
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_cleanup_retrans_entry`:
 
@@ -203,8 +229,9 @@ i40iw_cleanup_retrans_entry
 
     free send entry with lock
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_form_cm_frame`:
 
@@ -215,20 +242,25 @@ i40iw_form_cm_frame
 
     get a free packet and build frame
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node ionfo to use in frame
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_kmem_info \*options:
+    :param options:
         pointer to options info
+    :type options: struct i40iw_kmem_info \*
 
-    :param struct i40iw_kmem_info \*hdr:
+    :param hdr:
         pointer mpa header
+    :type hdr: struct i40iw_kmem_info \*
 
-    :param struct i40iw_kmem_info \*pdata:
+    :param pdata:
         pointer to private data
+    :type pdata: struct i40iw_kmem_info \*
 
-    :param u8 flags:
+    :param flags:
         indicates FIN or ACK
+    :type flags: u8
 
 .. _`i40iw_send_reset`:
 
@@ -239,8 +271,9 @@ i40iw_send_reset
 
     Send RST packet
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_active_open_err`:
 
@@ -251,11 +284,13 @@ i40iw_active_open_err
 
     send event for active side cm error
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param bool reset:
+    :param reset:
         Flag to send reset or not
+    :type reset: bool
 
 .. _`i40iw_passive_open_err`:
 
@@ -266,11 +301,13 @@ i40iw_passive_open_err
 
     handle passive side cm error
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param bool reset:
+    :param reset:
         send reset or just free cm_node
+    :type reset: bool
 
 .. _`i40iw_event_connect_error`:
 
@@ -281,8 +318,9 @@ i40iw_event_connect_error
 
     to create connect error event
 
-    :param struct i40iw_cm_event \*event:
+    :param event:
         cm information for connect event
+    :type event: struct i40iw_cm_event \*
 
 .. _`i40iw_process_options`:
 
@@ -291,17 +329,21 @@ i40iw_process_options
 
 .. c:function:: int i40iw_process_options(struct i40iw_cm_node *cm_node, u8 *optionsloc, u32 optionsize, u32 syn_packet)
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param u8 \*optionsloc:
+    :param optionsloc:
         point to start of options
+    :type optionsloc: u8 \*
 
-    :param u32 optionsize:
+    :param optionsize:
         size of all options
+    :type optionsize: u32
 
-    :param u32 syn_packet:
+    :param syn_packet:
         flag if syn packet
+    :type syn_packet: u32
 
 .. _`i40iw_handle_tcp_options`:
 
@@ -310,17 +352,21 @@ i40iw_handle_tcp_options
 
 .. c:function:: int i40iw_handle_tcp_options(struct i40iw_cm_node *cm_node, struct tcphdr *tcph, int optionsize, int passive)
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct tcphdr \*tcph:
+    :param tcph:
         pointer tcp header
+    :type tcph: struct tcphdr \*
 
-    :param int optionsize:
+    :param optionsize:
         size of options rcvd
+    :type optionsize: int
 
-    :param int passive:
+    :param passive:
         active or passive flag
+    :type passive: int
 
 .. _`i40iw_build_mpa_v1`:
 
@@ -331,14 +377,17 @@ i40iw_build_mpa_v1
 
     build a MPA V1 frame
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param void \*start_addr:
+    :param start_addr:
         *undescribed*
+    :type start_addr: void \*
 
-    :param u8 mpa_key:
+    :param mpa_key:
         to do read0 or write0
+    :type mpa_key: u8
 
 .. _`i40iw_build_mpa_v2`:
 
@@ -349,14 +398,17 @@ i40iw_build_mpa_v2
 
     build a MPA V2 frame
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param void \*start_addr:
+    :param start_addr:
         buffer start address
+    :type start_addr: void \*
 
-    :param u8 mpa_key:
+    :param mpa_key:
         to do read0 or write0
+    :type mpa_key: u8
 
 .. _`i40iw_cm_build_mpa_frame`:
 
@@ -367,14 +419,17 @@ i40iw_cm_build_mpa_frame
 
     build mpa frame for mpa version 1 or version 2
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_kmem_info \*mpa:
+    :param mpa:
         mpa: data buffer
+    :type mpa: struct i40iw_kmem_info \*
 
-    :param u8 mpa_key:
+    :param mpa_key:
         to do read0 or write0
+    :type mpa_key: u8
 
 .. _`i40iw_send_mpa_request`:
 
@@ -385,8 +440,9 @@ i40iw_send_mpa_request
 
     active node send mpa request to passive node
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_send_mpa_reject`:
 
@@ -395,14 +451,17 @@ i40iw_send_mpa_reject
 
 .. c:function:: int i40iw_send_mpa_reject(struct i40iw_cm_node *cm_node, const void *pdata, u8 plen)
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param const void \*pdata:
+    :param pdata:
         reject data for connection
+    :type pdata: const void \*
 
-    :param u8 plen:
+    :param plen:
         length of reject data
+    :type plen: u8
 
 .. _`i40iw_parse_mpa`:
 
@@ -413,17 +472,21 @@ i40iw_parse_mpa
 
     process an IETF MPA frame
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param u8 \*buffer:
+    :param buffer:
         Data pointer
+    :type buffer: u8 \*
 
-    :param u32 \*type:
+    :param type:
         to return accept or reject
+    :type type: u32 \*
 
-    :param u32 len:
+    :param len:
         Len of mpa buffer
+    :type len: u32
 
 .. _`i40iw_schedule_cm_timer`:
 
@@ -434,20 +497,25 @@ i40iw_schedule_cm_timer
 
     \ ````\ @cm_node: connection's node
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_puda_buf \*sqbuf:
+    :param sqbuf:
         buffer to send
+    :type sqbuf: struct i40iw_puda_buf \*
 
-    :param enum i40iw_timer_type type:
+    :param type:
         if it is send or close
+    :type type: enum i40iw_timer_type
 
-    :param int send_retrans:
+    :param send_retrans:
         if rexmits to be done
+    :type send_retrans: int
 
-    :param int close_when_complete:
+    :param close_when_complete:
         is cm_node to be removed
+    :type close_when_complete: int
 
 .. _`i40iw_schedule_cm_timer.description`:
 
@@ -468,8 +536,9 @@ i40iw_retrans_expired
 
     Could not rexmit the packet
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_handle_close_entry`:
 
@@ -480,11 +549,13 @@ i40iw_handle_close_entry
 
     for handling retry/timeouts
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param u32 rem_node:
+    :param rem_node:
         flag for remove cm_node
+    :type rem_node: u32
 
 .. _`i40iw_build_timer_list`:
 
@@ -495,11 +566,13 @@ i40iw_build_timer_list
 
     Add cm_nodes to timer list
 
-    :param struct list_head \*timer_list:
+    :param timer_list:
         ptr to timer list
+    :type timer_list: struct list_head \*
 
-    :param struct list_head \*hte:
+    :param hte:
         ptr to accelerated or non-accelerated list
+    :type hte: struct list_head \*
 
 .. _`i40iw_cm_timer_tick`:
 
@@ -510,8 +583,9 @@ i40iw_cm_timer_tick
 
     system's timer expired callback
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`i40iw_send_syn`:
 
@@ -522,11 +596,13 @@ i40iw_send_syn
 
     send SYN packet
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param u32 sendack:
+    :param sendack:
         flag to set ACK bit or not
+    :type sendack: u32
 
 .. _`i40iw_send_ack`:
 
@@ -537,8 +613,9 @@ i40iw_send_ack
 
     Send ACK packet
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_send_fin`:
 
@@ -549,8 +626,9 @@ i40iw_send_fin
 
     Send FIN pkt
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_find_node`:
 
@@ -561,26 +639,33 @@ i40iw_find_node
 
     find a cm node that matches the reference cm node
 
-    :param struct i40iw_cm_core \*cm_core:
+    :param cm_core:
         cm's core
+    :type cm_core: struct i40iw_cm_core \*
 
-    :param u16 rem_port:
+    :param rem_port:
         remote tcp port num
+    :type rem_port: u16
 
-    :param u32 \*rem_addr:
+    :param rem_addr:
         remote ip addr
+    :type rem_addr: u32 \*
 
-    :param u16 loc_port:
+    :param loc_port:
         local tcp port num
+    :type loc_port: u16
 
-    :param u32 \*loc_addr:
+    :param loc_addr:
         loc ip addr
+    :type loc_addr: u32 \*
 
-    :param bool add_refcnt:
+    :param add_refcnt:
         flag to increment refcount of cm_node
+    :type add_refcnt: bool
 
-    :param bool accelerated_list:
+    :param accelerated_list:
         flag for accelerated vs non-accelerated list to search
+    :type accelerated_list: bool
 
 .. _`i40iw_find_listener`:
 
@@ -591,20 +676,25 @@ i40iw_find_listener
 
     find a cm node listening on this addr-port pair
 
-    :param struct i40iw_cm_core \*cm_core:
+    :param cm_core:
         cm's core
+    :type cm_core: struct i40iw_cm_core \*
 
-    :param u32 \*dst_addr:
+    :param dst_addr:
         listener ip addr
+    :type dst_addr: u32 \*
 
-    :param u16 dst_port:
+    :param dst_port:
         listener tcp port num
+    :type dst_port: u16
 
-    :param u16 vlan_id:
+    :param vlan_id:
         *undescribed*
+    :type vlan_id: u16
 
-    :param enum i40iw_cm_listener_state listener_state:
+    :param listener_state:
         state to match with listen node's
+    :type listener_state: enum i40iw_cm_listener_state
 
 .. _`i40iw_add_hte_node`:
 
@@ -615,11 +705,13 @@ i40iw_add_hte_node
 
     add a cm node to the hash table
 
-    :param struct i40iw_cm_core \*cm_core:
+    :param cm_core:
         cm's core
+    :type cm_core: struct i40iw_cm_core \*
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_find_port`:
 
@@ -630,11 +722,13 @@ i40iw_find_port
 
     find port that matches reference port
 
-    :param struct list_head \*hte:
+    :param hte:
         ptr to accelerated or non-accelerated list
+    :type hte: struct list_head \*
 
-    :param u16 port:
+    :param port:
         *undescribed*
+    :type port: u16
 
 .. _`i40iw_port_in_use`:
 
@@ -645,11 +739,13 @@ i40iw_port_in_use
 
     determine if port is in use
 
-    :param struct i40iw_cm_core \*cm_core:
+    :param cm_core:
         cm's core
+    :type cm_core: struct i40iw_cm_core \*
 
-    :param u16 port:
+    :param port:
         port number
+    :type port: u16
 
 .. _`i40iw_del_multiple_qhash`:
 
@@ -660,14 +756,17 @@ i40iw_del_multiple_qhash
 
     Remove qhash and child listens
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iWarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_cm_info \*cm_info:
+    :param cm_info:
         CM info for parent listen node
+    :type cm_info: struct i40iw_cm_info \*
 
-    :param struct i40iw_cm_listener \*cm_parent_listen_node:
+    :param cm_parent_listen_node:
         The parent listen node
+    :type cm_parent_listen_node: struct i40iw_cm_listener \*
 
 .. _`i40iw_netdev_vlan_ipv6`:
 
@@ -678,11 +777,13 @@ i40iw_netdev_vlan_ipv6
 
     Gets the netdev and vlan
 
-    :param u32 \*addr:
+    :param addr:
         local IPv6 address
+    :type addr: u32 \*
 
-    :param u16 \*vlan_id:
+    :param vlan_id:
         vlan id for the given IPv6 address
+    :type vlan_id: u16 \*
 
 .. _`i40iw_netdev_vlan_ipv6.description`:
 
@@ -701,8 +802,9 @@ i40iw_get_vlan_ipv4
 
     Returns the vlan_id for IPv4 address
 
-    :param u32 \*addr:
+    :param addr:
         local IPv4 address
+    :type addr: u32 \*
 
 .. _`i40iw_add_mqh_6`:
 
@@ -713,14 +815,17 @@ i40iw_add_mqh_6
 
     Adds multiple qhashes for IPv6
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iWarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_cm_info \*cm_info:
+    :param cm_info:
         CM info for parent listen node
+    :type cm_info: struct i40iw_cm_info \*
 
-    :param struct i40iw_cm_listener \*cm_parent_listen_node:
+    :param cm_parent_listen_node:
         The parent listen node
+    :type cm_parent_listen_node: struct i40iw_cm_listener \*
 
 .. _`i40iw_add_mqh_6.description`:
 
@@ -739,14 +844,17 @@ i40iw_add_mqh_4
 
     Adds multiple qhashes for IPv4
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iWarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_cm_info \*cm_info:
+    :param cm_info:
         CM info for parent listen node
+    :type cm_info: struct i40iw_cm_info \*
 
-    :param struct i40iw_cm_listener \*cm_parent_listen_node:
+    :param cm_parent_listen_node:
         The parent listen node
+    :type cm_parent_listen_node: struct i40iw_cm_listener \*
 
 .. _`i40iw_add_mqh_4.description`:
 
@@ -765,17 +873,21 @@ i40iw_dec_refcnt_listen
 
     delete listener and associated cm nodes
 
-    :param struct i40iw_cm_core \*cm_core:
+    :param cm_core:
         cm's core
+    :type cm_core: struct i40iw_cm_core \*
 
-    :param struct i40iw_cm_listener \*listener:
+    :param listener:
         *undescribed*
+    :type listener: struct i40iw_cm_listener \*
 
-    :param int free_hanging_nodes:
+    :param free_hanging_nodes:
         to free associated cm_nodes
+    :type free_hanging_nodes: int
 
-    :param bool apbvt_del:
+    :param apbvt_del:
         flag to delete the apbvt
+    :type apbvt_del: bool
 
 .. _`i40iw_cm_del_listen`:
 
@@ -786,14 +898,17 @@ i40iw_cm_del_listen
 
     delete a linstener
 
-    :param struct i40iw_cm_core \*cm_core:
+    :param cm_core:
         cm's core
+    :type cm_core: struct i40iw_cm_core \*
 
-    :param struct i40iw_cm_listener \*listener:
+    :param listener:
         passive connection's listener
+    :type listener: struct i40iw_cm_listener \*
 
-    :param bool apbvt_del:
+    :param apbvt_del:
         flag to delete apbvt
+    :type apbvt_del: bool
 
 .. _`i40iw_addr_resolve_neigh`:
 
@@ -804,17 +919,21 @@ i40iw_addr_resolve_neigh
 
     resolve neighbor address
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device structure
+    :type iwdev: struct i40iw_device \*
 
-    :param u32 src_ip:
+    :param src_ip:
         local ip address
+    :type src_ip: u32
 
-    :param u32 dst_ip:
+    :param dst_ip:
         remote ip address
+    :type dst_ip: u32
 
-    :param int arpindex:
+    :param arpindex:
         if there is an arp entry
+    :type arpindex: int
 
 .. _`i40iw_get_dst_ipv6`:
 
@@ -823,11 +942,13 @@ i40iw_get_dst_ipv6
 
 .. c:function:: struct dst_entry *i40iw_get_dst_ipv6(struct sockaddr_in6 *src_addr, struct sockaddr_in6 *dst_addr)
 
-    :param struct sockaddr_in6 \*src_addr:
+    :param src_addr:
         *undescribed*
+    :type src_addr: struct sockaddr_in6 \*
 
-    :param struct sockaddr_in6 \*dst_addr:
+    :param dst_addr:
         *undescribed*
+    :type dst_addr: struct sockaddr_in6 \*
 
 .. _`i40iw_addr_resolve_neigh_ipv6`:
 
@@ -838,17 +959,21 @@ i40iw_addr_resolve_neigh_ipv6
 
     resolve neighbor ipv6 address
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device structure
+    :type iwdev: struct i40iw_device \*
 
-    :param u32 \*src:
+    :param src:
         *undescribed*
+    :type src: u32 \*
 
-    :param u32 \*dest:
+    :param dest:
         *undescribed*
+    :type dest: u32 \*
 
-    :param int arpindex:
+    :param arpindex:
         if there is an arp entry
+    :type arpindex: int
 
 .. _`i40iw_ipv4_is_loopback`:
 
@@ -859,11 +984,13 @@ i40iw_ipv4_is_loopback
 
     check if loopback
 
-    :param u32 loc_addr:
+    :param loc_addr:
         local addr to compare
+    :type loc_addr: u32
 
-    :param u32 rem_addr:
+    :param rem_addr:
         remote address
+    :type rem_addr: u32
 
 .. _`i40iw_ipv6_is_loopback`:
 
@@ -874,11 +1001,13 @@ i40iw_ipv6_is_loopback
 
     check if loopback
 
-    :param u32 \*loc_addr:
+    :param loc_addr:
         local addr to compare
+    :type loc_addr: u32 \*
 
-    :param u32 \*rem_addr:
+    :param rem_addr:
         remote address
+    :type rem_addr: u32 \*
 
 .. _`i40iw_make_cm_node`:
 
@@ -889,17 +1018,21 @@ i40iw_make_cm_node
 
     create a new instance of a cm node
 
-    :param struct i40iw_cm_core \*cm_core:
+    :param cm_core:
         cm's core
+    :type cm_core: struct i40iw_cm_core \*
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device structure
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_cm_info \*cm_info:
+    :param cm_info:
         quad info for connection
+    :type cm_info: struct i40iw_cm_info \*
 
-    :param struct i40iw_cm_listener \*listener:
+    :param listener:
         passive connection's listener
+    :type listener: struct i40iw_cm_listener \*
 
 .. _`i40iw_rem_ref_cm_node`:
 
@@ -910,8 +1043,9 @@ i40iw_rem_ref_cm_node
 
     destroy an instance of a cm node
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_handle_fin_pkt`:
 
@@ -922,8 +1056,9 @@ i40iw_handle_fin_pkt
 
     FIN packet received
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_handle_rst_pkt`:
 
@@ -934,11 +1069,13 @@ i40iw_handle_rst_pkt
 
     process received RST packet
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_puda_buf \*rbuf:
+    :param rbuf:
         receive buffer
+    :type rbuf: struct i40iw_puda_buf \*
 
 .. _`i40iw_handle_rcv_mpa`:
 
@@ -949,11 +1086,13 @@ i40iw_handle_rcv_mpa
 
     Process a recv'd mpa buffer
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_puda_buf \*rbuf:
+    :param rbuf:
         receive buffer
+    :type rbuf: struct i40iw_puda_buf \*
 
 .. _`i40iw_indicate_pkt_err`:
 
@@ -964,8 +1103,9 @@ i40iw_indicate_pkt_err
 
     Send up err event to cm
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_check_syn`:
 
@@ -976,11 +1116,13 @@ i40iw_check_syn
 
     Check for error on received syn ack
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct tcphdr \*tcph:
+    :param tcph:
         pointer tcp header
+    :type tcph: struct tcphdr \*
 
 .. _`i40iw_check_seq`:
 
@@ -991,11 +1133,13 @@ i40iw_check_seq
 
     check seq numbers if OK
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct tcphdr \*tcph:
+    :param tcph:
         pointer tcp header
+    :type tcph: struct tcphdr \*
 
 .. _`i40iw_handle_syn_pkt`:
 
@@ -1006,11 +1150,13 @@ i40iw_handle_syn_pkt
 
     is for Passive node
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_puda_buf \*rbuf:
+    :param rbuf:
         receive buffer
+    :type rbuf: struct i40iw_puda_buf \*
 
 .. _`i40iw_handle_synack_pkt`:
 
@@ -1021,11 +1167,13 @@ i40iw_handle_synack_pkt
 
     Process SYN+ACK packet (active side)
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_puda_buf \*rbuf:
+    :param rbuf:
         receive buffer
+    :type rbuf: struct i40iw_puda_buf \*
 
 .. _`i40iw_handle_ack_pkt`:
 
@@ -1036,11 +1184,13 @@ i40iw_handle_ack_pkt
 
     process packet with ACK
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_puda_buf \*rbuf:
+    :param rbuf:
         receive buffer
+    :type rbuf: struct i40iw_puda_buf \*
 
 .. _`i40iw_process_packet`:
 
@@ -1051,11 +1201,13 @@ i40iw_process_packet
 
     process cm packet
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_puda_buf \*rbuf:
+    :param rbuf:
         receive buffer
+    :type rbuf: struct i40iw_puda_buf \*
 
 .. _`i40iw_make_listen_node`:
 
@@ -1066,14 +1218,17 @@ i40iw_make_listen_node
 
     create a listen node with params
 
-    :param struct i40iw_cm_core \*cm_core:
+    :param cm_core:
         cm's core
+    :type cm_core: struct i40iw_cm_core \*
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device structure
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_cm_info \*cm_info:
+    :param cm_info:
         quad info for connection
+    :type cm_info: struct i40iw_cm_info \*
 
 .. _`i40iw_create_cm_node`:
 
@@ -1084,17 +1239,21 @@ i40iw_create_cm_node
 
     make a connection node with params
 
-    :param struct i40iw_cm_core \*cm_core:
+    :param cm_core:
         cm's core
+    :type cm_core: struct i40iw_cm_core \*
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device structure
+    :type iwdev: struct i40iw_device \*
 
-    :param struct iw_cm_conn_param \*conn_param:
+    :param conn_param:
         upper layer connection parameters
+    :type conn_param: struct iw_cm_conn_param \*
 
-    :param struct i40iw_cm_info \*cm_info:
+    :param cm_info:
         quad info for connection
+    :type cm_info: struct i40iw_cm_info \*
 
 .. _`i40iw_cm_reject`:
 
@@ -1105,14 +1264,17 @@ i40iw_cm_reject
 
     reject and teardown a connection
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param const void \*pdata:
+    :param pdata:
         *undescribed*
+    :type pdata: const void \*
 
-    :param u8 plen:
+    :param plen:
         size of private data
+    :type plen: u8
 
 .. _`i40iw_cm_close`:
 
@@ -1123,8 +1285,9 @@ i40iw_cm_close
 
     close of cm connection
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_receive_ilq`:
 
@@ -1135,11 +1298,13 @@ i40iw_receive_ilq
 
     recv an ETHERNET packet, and process it through CM
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         pointer to the vsi structure
+    :type vsi: struct i40iw_sc_vsi \*
 
-    :param struct i40iw_puda_buf \*rbuf:
+    :param rbuf:
         receive buffer
+    :type rbuf: struct i40iw_puda_buf \*
 
 .. _`i40iw_setup_cm_core`:
 
@@ -1150,8 +1315,9 @@ i40iw_setup_cm_core
 
     allocate a top level instance of a cm core
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device structure
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_cleanup_cm_core`:
 
@@ -1162,8 +1328,9 @@ i40iw_cleanup_cm_core
 
     deallocate a top level instance of a cm core
 
-    :param struct i40iw_cm_core \*cm_core:
+    :param cm_core:
         cm's core
+    :type cm_core: struct i40iw_cm_core \*
 
 .. _`i40iw_init_tcp_ctx`:
 
@@ -1174,14 +1341,17 @@ i40iw_init_tcp_ctx
 
     setup qp context
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
-    :param struct i40iw_tcp_offload_info \*tcp_info:
+    :param tcp_info:
         offload info for tcp
+    :type tcp_info: struct i40iw_tcp_offload_info \*
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         associate qp for the connection
+    :type iwqp: struct i40iw_qp \*
 
 .. _`i40iw_cm_init_tsa_conn`:
 
@@ -1192,11 +1362,13 @@ i40iw_cm_init_tsa_conn
 
     setup qp for RTS
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         associate qp for the connection
+    :type iwqp: struct i40iw_qp \*
 
-    :param struct i40iw_cm_node \*cm_node:
+    :param cm_node:
         connection's node
+    :type cm_node: struct i40iw_cm_node \*
 
 .. _`i40iw_cm_disconn`:
 
@@ -1207,8 +1379,9 @@ i40iw_cm_disconn
 
     when a connection is being closed
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         associate qp for the connection
+    :type iwqp: struct i40iw_qp \*
 
 .. _`i40iw_qp_disconnect`:
 
@@ -1219,8 +1392,9 @@ i40iw_qp_disconnect
 
     free qp and close cm
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         associate qp for the connection
+    :type iwqp: struct i40iw_qp \*
 
 .. _`i40iw_cm_disconn_true`:
 
@@ -1231,8 +1405,9 @@ i40iw_cm_disconn_true
 
     called by worker thread to disconnect qp
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         associate qp for the connection
+    :type iwqp: struct i40iw_qp \*
 
 .. _`i40iw_disconnect_worker`:
 
@@ -1243,8 +1418,9 @@ i40iw_disconnect_worker
 
     worker for connection close
 
-    :param struct work_struct \*work:
+    :param work:
         points or disconn structure
+    :type work: struct work_struct \*
 
 .. _`i40iw_accept`:
 
@@ -1255,11 +1431,13 @@ i40iw_accept
 
     registered call for connection to be accepted
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         cm information for passive connection
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct iw_cm_conn_param \*conn_param:
+    :param conn_param:
         accpet parameters
+    :type conn_param: struct iw_cm_conn_param \*
 
 .. _`i40iw_reject`:
 
@@ -1270,14 +1448,17 @@ i40iw_reject
 
     registered call for connection to be rejected
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         cm information for passive connection
+    :type cm_id: struct iw_cm_id \*
 
-    :param const void \*pdata:
+    :param pdata:
         private data to be sent
+    :type pdata: const void \*
 
-    :param u8 pdata_len:
+    :param pdata_len:
         private data length
+    :type pdata_len: u8
 
 .. _`i40iw_connect`:
 
@@ -1288,11 +1469,13 @@ i40iw_connect
 
     registered call for connection to be established
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         cm information for passive connection
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct iw_cm_conn_param \*conn_param:
+    :param conn_param:
         Information about the connection
+    :type conn_param: struct iw_cm_conn_param \*
 
 .. _`i40iw_create_listen`:
 
@@ -1303,11 +1486,13 @@ i40iw_create_listen
 
     registered call creating listener
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         cm information for passive connection
+    :type cm_id: struct iw_cm_id \*
 
-    :param int backlog:
+    :param backlog:
         to max accept pending count
+    :type backlog: int
 
 .. _`i40iw_destroy_listen`:
 
@@ -1318,8 +1503,9 @@ i40iw_destroy_listen
 
     registered call to destroy listener
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         cm information for passive connection
+    :type cm_id: struct iw_cm_id \*
 
 .. _`i40iw_cm_event_connected`:
 
@@ -1330,8 +1516,9 @@ i40iw_cm_event_connected
 
     handle connected active node
 
-    :param struct i40iw_cm_event \*event:
+    :param event:
         the info for cm_node of connection
+    :type event: struct i40iw_cm_event \*
 
 .. _`i40iw_cm_event_reset`:
 
@@ -1342,8 +1529,9 @@ i40iw_cm_event_reset
 
     handle reset
 
-    :param struct i40iw_cm_event \*event:
+    :param event:
         the info for cm_node of connection
+    :type event: struct i40iw_cm_event \*
 
 .. _`i40iw_cm_event_handler`:
 
@@ -1354,8 +1542,9 @@ i40iw_cm_event_handler
 
     worker thread callback to send event to cm upper layer
 
-    :param struct work_struct \*work:
+    :param work:
         pointer of cm event info.
+    :type work: struct work_struct \*
 
 .. _`i40iw_cm_post_event`:
 
@@ -1366,8 +1555,9 @@ i40iw_cm_post_event
 
     queue event request for worker thread
 
-    :param struct i40iw_cm_event \*event:
+    :param event:
         cm node's info for up event call
+    :type event: struct i40iw_cm_event \*
 
 .. _`i40iw_qhash_ctrl`:
 
@@ -1378,23 +1568,29 @@ i40iw_qhash_ctrl
 
     enable/disable qhash for list
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         device pointer
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_cm_listener \*parent_listen_node:
+    :param parent_listen_node:
         parent listen node
+    :type parent_listen_node: struct i40iw_cm_listener \*
 
-    :param struct i40iw_cm_info \*nfo:
+    :param nfo:
         cm info node
+    :type nfo: struct i40iw_cm_info \*
 
-    :param u32 \*ipaddr:
+    :param ipaddr:
         Pointer to IPv4 or IPv6 address
+    :type ipaddr: u32 \*
 
-    :param bool ipv4:
+    :param ipv4:
         flag indicating IPv4 when true
+    :type ipv4: bool
 
-    :param bool ifup:
+    :param ifup:
         flag indicating interface up when true
+    :type ifup: bool
 
 .. _`i40iw_qhash_ctrl.description`:
 
@@ -1416,18 +1612,22 @@ i40iw_cm_teardown_connections
 
     teardown QPs
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         device pointer
+    :type iwdev: struct i40iw_device \*
 
-    :param u32 \*ipaddr:
+    :param ipaddr:
         Pointer to IPv4 or IPv6 address
+    :type ipaddr: u32 \*
 
-    :param struct i40iw_cm_info \*nfo:
+    :param nfo:
         *undescribed*
+    :type nfo: struct i40iw_cm_info \*
 
-    :param bool disconnect_all:
+    :param disconnect_all:
         flag indicating disconnect all QPs
         teardown QPs where source or destination addr matches ip addr
+    :type disconnect_all: bool
 
 .. _`i40iw_if_notify`:
 
@@ -1438,20 +1638,25 @@ i40iw_if_notify
 
     process an ifdown on an interface
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         device pointer
+    :type iwdev: struct i40iw_device \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param u32 \*ipaddr:
+    :param ipaddr:
         Pointer to IPv4 or IPv6 address
+    :type ipaddr: u32 \*
 
-    :param bool ipv4:
+    :param ipv4:
         flag indicating IPv4 when true
+    :type ipv4: bool
 
-    :param bool ifup:
+    :param ifup:
         flag indicating interface up when true
+    :type ifup: bool
 
 .. This file was automatic generated / don't edit.
 

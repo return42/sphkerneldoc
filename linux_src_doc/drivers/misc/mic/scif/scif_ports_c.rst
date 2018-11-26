@@ -10,11 +10,13 @@
 
     Reserve a specified port # for SCIF and add it to the global list.
 
-    :param int start:
+    :param start:
         *undescribed*
+    :type start: int
 
-    :param int end:
+    :param end:
         *undescribed*
+    :type end: int
 
 .. _`scif_rsrv_port`:
 
@@ -25,8 +27,9 @@ scif_rsrv_port
 
     Reserve a specified port # for SCIF.
 
-    :param u16 port:
+    :param port:
         port # to be reserved.
+    :type port: u16
 
 .. _`scif_get_new_port`:
 
@@ -37,8 +40,9 @@ scif_get_new_port
 
     Get and reserve any port # for SCIF in the range SCIF_PORT_RSVD + 1 to SCIF_PORT_COUNT - 1.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`scif_get_port`:
 
@@ -49,8 +53,9 @@ scif_get_port
 
     Increment the reference count for a SCIF port
 
-    :param u16 id:
+    :param id:
         SCIF port
+    :type id: u16
 
 .. _`scif_put_port`:
 
@@ -61,8 +66,9 @@ scif_put_port
 
     Release a reserved SCIF port
 
-    :param u16 id:
+    :param id:
         SCIF port to be released.
+    :type id: u16
 
 .. This file was automatic generated / don't edit.
 

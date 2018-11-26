@@ -28,11 +28,13 @@ refcount_set
 
     set a refcount's value
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
-    :param unsigned int n:
+    :param n:
         value to which the refcount will be set
+    :type n: unsigned int
 
 .. _`refcount_read`:
 
@@ -43,8 +45,9 @@ refcount_read
 
     get a refcount's value
 
-    :param const refcount_t \*r:
+    :param r:
         the refcount
+    :type r: const refcount_t \*
 
 .. _`refcount_read.return`:
 

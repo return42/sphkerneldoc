@@ -10,10 +10,11 @@ usb_speed_string
 
     Returns human readable-name of the speed.
 
-    :param enum usb_device_speed speed:
+    :param speed:
         The speed to return human-readable name for.  If it's not
         any of the speeds defined in usb_device_speed enum, string for
         USB_SPEED_UNKNOWN will be returned.
+    :type speed: enum usb_device_speed
 
 .. _`usb_get_maximum_speed`:
 
@@ -24,8 +25,9 @@ usb_get_maximum_speed
 
     Get maximum requested speed for a given USB controller.
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to the given USB controller device
+    :type dev: struct device \*
 
 .. _`usb_get_maximum_speed.description`:
 
@@ -44,10 +46,11 @@ usb_state_string
 
     Returns human readable name for the state.
 
-    :param enum usb_device_state state:
+    :param state:
         The state to return a human-readable name for. If it's not
         any of the states devices in usb_device_state_string enum,
         the string UNKNOWN will be returned.
+    :type state: enum usb_device_state
 
 .. This file was automatic generated / don't edit.
 

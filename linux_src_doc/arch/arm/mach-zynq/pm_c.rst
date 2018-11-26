@@ -10,8 +10,9 @@ zynq_pm_ioremap
 
     Create IO mappings
 
-    :param const char \*comp:
+    :param comp:
         DT compatible string
+    :type comp: const char \*
 
 .. _`zynq_pm_ioremap.return`:
 
@@ -31,8 +32,9 @@ zynq_pm_late_init
 
     Power management init
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zynq_pm_late_init.description`:
 

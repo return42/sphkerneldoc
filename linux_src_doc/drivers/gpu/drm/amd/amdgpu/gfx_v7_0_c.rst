@@ -10,8 +10,9 @@ gfx_v7_0_init_microcode
 
     load ucode images from disk
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_init_microcode.description`:
 
@@ -31,8 +32,9 @@ gfx_v7_0_tiling_mode_table_init
 
     init the hw tiling table
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_tiling_mode_table_init.description`:
 
@@ -54,17 +56,21 @@ gfx_v7_0_select_se_sh
 
     select which SE, SH to address
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 se_num:
+    :param se_num:
         shader engine to address
+    :type se_num: u32
 
-    :param u32 sh_num:
+    :param sh_num:
         sh block to address
+    :type sh_num: u32
 
-    :param u32 instance:
+    :param instance:
         *undescribed*
+    :type instance: u32
 
 .. _`gfx_v7_0_select_se_sh.description`:
 
@@ -84,8 +90,9 @@ gfx_v7_0_get_rb_active_bitmap
 
     computes the mask of enabled RBs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_get_rb_active_bitmap.description`:
 
@@ -104,8 +111,9 @@ gfx_v7_0_setup_rb
 
     setup the RBs on the asic
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_setup_rb.description`:
 
@@ -130,25 +138,26 @@ Description
 
 Initialize compute vmid sh_mem registers
 
-.. _`gfx_v7_0_gpu_init`:
+.. _`gfx_v7_0_constants_init`:
 
-gfx_v7_0_gpu_init
-=================
+gfx_v7_0_constants_init
+=======================
 
-.. c:function:: void gfx_v7_0_gpu_init(struct amdgpu_device *adev)
+.. c:function:: void gfx_v7_0_constants_init(struct amdgpu_device *adev)
 
     setup the 3D engine
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-.. _`gfx_v7_0_gpu_init.description`:
+.. _`gfx_v7_0_constants_init.description`:
 
 Description
 -----------
 
-Configures the 3D engine and tiling configuration
-registers so that the 3D engine is usable.
+init the gfx constants such as the 3D engine, tiling configuration
+registers, maximum number of quad pipes, render backends...
 
 .. _`gfx_v7_0_scratch_init`:
 
@@ -159,8 +168,9 @@ gfx_v7_0_scratch_init
 
     setup driver info for CP scratch regs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_scratch_init.description`:
 
@@ -187,8 +197,9 @@ gfx_v7_0_ring_test_ring
 
     basic gfx ring test
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
 .. _`gfx_v7_0_ring_test_ring.description`:
 
@@ -209,8 +220,9 @@ gfx_v7_0_ring_emit_hdp_flush
 
     emit an hdp flush on the cp
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct amdgpu_ring \*
 
 .. _`gfx_v7_0_ring_emit_hdp_flush.description`:
 
@@ -228,17 +240,21 @@ gfx_v7_0_ring_emit_fence_gfx
 
     emit a fence on the gfx ring
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct amdgpu_ring \*
 
-    :param u64 addr:
+    :param addr:
         *undescribed*
+    :type addr: u64
 
-    :param u64 seq:
+    :param seq:
         *undescribed*
+    :type seq: u64
 
-    :param unsigned flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned
 
 .. _`gfx_v7_0_ring_emit_fence_gfx.description`:
 
@@ -257,17 +273,21 @@ gfx_v7_0_ring_emit_fence_compute
 
     emit a fence on the compute ring
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct amdgpu_ring \*
 
-    :param u64 addr:
+    :param addr:
         *undescribed*
+    :type addr: u64
 
-    :param u64 seq:
+    :param seq:
         *undescribed*
+    :type seq: u64
 
-    :param unsigned flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned
 
 .. _`gfx_v7_0_ring_emit_fence_compute.description`:
 
@@ -286,17 +306,21 @@ gfx_v7_0_ring_emit_ib_gfx
 
     emit an IB (Indirect Buffer) on the ring
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         amdgpu indirect buffer object
+    :type ib: struct amdgpu_ib \*
 
-    :param unsigned vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: unsigned
 
-    :param bool ctx_switch:
+    :param ctx_switch:
         *undescribed*
+    :type ctx_switch: bool
 
 .. _`gfx_v7_0_ring_emit_ib_gfx.description`:
 
@@ -318,11 +342,13 @@ gfx_v7_0_ring_test_ib
 
     basic ring IB test
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
-    :param long timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: long
 
 .. _`gfx_v7_0_ring_test_ib.description`:
 
@@ -342,11 +368,13 @@ gfx_v7_0_cp_gfx_enable
 
     enable/disable the gfx CP MEs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param bool enable:
+    :param enable:
         enable or disable the MEs
+    :type enable: bool
 
 .. _`gfx_v7_0_cp_gfx_enable.description`:
 
@@ -364,8 +392,9 @@ gfx_v7_0_cp_gfx_load_microcode
 
     load the gfx CP ME ucode
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_cp_gfx_load_microcode.description`:
 
@@ -384,8 +413,9 @@ gfx_v7_0_cp_gfx_start
 
     start the gfx ring
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_cp_gfx_start.description`:
 
@@ -405,8 +435,9 @@ gfx_v7_0_cp_gfx_resume
 
     setup the gfx ring buffer registers
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_cp_gfx_resume.description`:
 
@@ -426,11 +457,13 @@ gfx_v7_0_cp_compute_enable
 
     enable/disable the compute CP MEs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param bool enable:
+    :param enable:
         enable or disable the MEs
+    :type enable: bool
 
 .. _`gfx_v7_0_cp_compute_enable.description`:
 
@@ -448,8 +481,9 @@ gfx_v7_0_cp_compute_load_microcode
 
     load the compute CP ME ucode
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_cp_compute_load_microcode.description`:
 
@@ -468,8 +502,9 @@ gfx_v7_0_cp_compute_fini
 
     stop the compute queues
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_cp_compute_fini.description`:
 
@@ -488,8 +523,9 @@ gfx_v7_0_cp_compute_resume
 
     setup the compute queue registers
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_cp_compute_resume.description`:
 
@@ -509,8 +545,9 @@ gfx_v7_0_ring_emit_pipeline_sync
 
     cik vm flush using the CP
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         the ring to emmit the commands to
+    :type ring: struct amdgpu_ring \*
 
 .. _`gfx_v7_0_ring_emit_pipeline_sync.description`:
 
@@ -529,14 +566,17 @@ gfx_v7_0_ring_emit_vm_flush
 
     cik vm flush using the CP
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct amdgpu_ring \*
 
-    :param unsigned vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: unsigned
 
-    :param uint64_t pd_addr:
+    :param pd_addr:
         *undescribed*
+    :type pd_addr: uint64_t
 
 .. _`gfx_v7_0_ring_emit_vm_flush.description`:
 
@@ -555,8 +595,9 @@ gfx_v7_0_rlc_stop
 
     stop the RLC ME
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_rlc_stop.description`:
 
@@ -574,8 +615,9 @@ gfx_v7_0_rlc_start
 
     start the RLC ME
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_rlc_start.description`:
 
@@ -593,8 +635,9 @@ gfx_v7_0_rlc_resume
 
     setup the RLC hw
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_rlc_resume.description`:
 
@@ -614,8 +657,9 @@ gfx_v7_0_get_gpu_clock_counter
 
     return GPU clock counter snapshot
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v7_0_get_gpu_clock_counter.description`:
 

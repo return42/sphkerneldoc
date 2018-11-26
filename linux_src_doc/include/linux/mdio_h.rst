@@ -63,11 +63,13 @@ mdio45_ethtool_gset
 
     get settings for ETHTOOL_GSET
 
-    :param const struct mdio_if_info \*mdio:
+    :param mdio:
         MDIO interface
+    :type mdio: const struct mdio_if_info \*
 
-    :param struct ethtool_cmd \*ecmd:
+    :param ecmd:
         Ethtool request structure
+    :type ecmd: struct ethtool_cmd \*
 
 .. _`mdio45_ethtool_gset.description`:
 
@@ -88,11 +90,13 @@ mdio45_ethtool_ksettings_get
 
     get settings for ETHTOOL_GLINKSETTINGS
 
-    :param const struct mdio_if_info \*mdio:
+    :param mdio:
         MDIO interface
+    :type mdio: const struct mdio_if_info \*
 
-    :param struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         Ethtool request structure
+    :type cmd: struct ethtool_link_ksettings \*
 
 .. _`mdio45_ethtool_ksettings_get.description`:
 
@@ -111,8 +115,9 @@ mmd_eee_cap_to_ethtool_sup_t
 
 .. c:function:: u32 mmd_eee_cap_to_ethtool_sup_t(u16 eee_cap)
 
-    :param u16 eee_cap:
+    :param eee_cap:
         value of the MMD EEE Capability register
+    :type eee_cap: u16
 
 .. _`mmd_eee_cap_to_ethtool_sup_t.description`:
 
@@ -129,8 +134,9 @@ mmd_eee_adv_to_ethtool_adv_t
 
 .. c:function:: u32 mmd_eee_adv_to_ethtool_adv_t(u16 eee_adv)
 
-    :param u16 eee_adv:
+    :param eee_adv:
         value of the MMD EEE Advertisement/Link Partner Ability registers
+    :type eee_adv: u16
 
 .. _`mmd_eee_adv_to_ethtool_adv_t.description`:
 
@@ -148,8 +154,9 @@ ethtool_adv_to_mmd_eee_adv_t
 
 .. c:function:: u16 ethtool_adv_to_mmd_eee_adv_t(u32 adv)
 
-    :param u32 adv:
+    :param adv:
         the ethtool advertisement settings
+    :type adv: u32
 
 .. _`ethtool_adv_to_mmd_eee_adv_t.description`:
 
@@ -169,8 +176,9 @@ mdio_module_driver
 
     Helper macro for registering mdio drivers
 
-    :param  _mdio_driver:
+    :param _mdio_driver:
         *undescribed*
+    :type _mdio_driver: 
 
 .. _`mdio_module_driver.description`:
 

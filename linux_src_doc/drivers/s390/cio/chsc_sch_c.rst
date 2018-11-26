@@ -10,11 +10,13 @@ chsc_async
 
     try to start a chsc request asynchronously
 
-    :param struct chsc_async_area \*chsc_area:
+    :param chsc_area:
         request to be started
+    :type chsc_area: struct chsc_async_area \*
 
-    :param struct chsc_request \*request:
+    :param request:
         request structure to associate
+    :type request: struct chsc_request \*
 
 .. _`chsc_async.description`:
 

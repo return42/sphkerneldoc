@@ -10,8 +10,9 @@ rvt_driver_srq_init
 
     init srq resources on a per driver basis
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev structure
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_driver_srq_init.description`:
 
@@ -29,14 +30,17 @@ rvt_create_srq
 
     create a shared receive queue
 
-    :param struct ib_pd \*ibpd:
+    :param ibpd:
         the protection domain of the SRQ to create
+    :type ibpd: struct ib_pd \*
 
-    :param struct ib_srq_init_attr \*srq_init_attr:
+    :param srq_init_attr:
         the attributes of the SRQ
+    :type srq_init_attr: struct ib_srq_init_attr \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         data from libibverbs when creating a user SRQ
+    :type udata: struct ib_udata \*
 
 .. _`rvt_create_srq.return`:
 
@@ -54,17 +58,21 @@ rvt_modify_srq
 
     modify a shared receive queue
 
-    :param struct ib_srq \*ibsrq:
+    :param ibsrq:
         the SRQ to modify
+    :type ibsrq: struct ib_srq \*
 
-    :param struct ib_srq_attr \*attr:
+    :param attr:
         the new attributes of the SRQ
+    :type attr: struct ib_srq_attr \*
 
-    :param enum ib_srq_attr_mask attr_mask:
+    :param attr_mask:
         indicates which attributes to modify
+    :type attr_mask: enum ib_srq_attr_mask
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data for libibverbs.so
+    :type udata: struct ib_udata \*
 
 .. _`rvt_modify_srq.return`:
 
@@ -82,8 +90,9 @@ rvt_destroy_srq
 
     destory an srq
 
-    :param struct ib_srq \*ibsrq:
+    :param ibsrq:
         srq object to destroy
+    :type ibsrq: struct ib_srq \*
 
 .. _`rvt_destroy_srq.description`:
 

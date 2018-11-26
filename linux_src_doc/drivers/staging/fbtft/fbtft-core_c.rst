@@ -10,14 +10,17 @@ fbtft_framebuffer_alloc
 
     creates a new frame buffer info structure
 
-    :param struct fbtft_display \*display:
+    :param display:
         pointer to structure describing the display
+    :type display: struct fbtft_display \*
 
-    :param struct device \*dev:
+    :param dev:
         pointer to the device for this fb, this can be NULL
+    :type dev: struct device \*
 
-    :param struct fbtft_platform_data \*pdata:
+    :param pdata:
         *undescribed*
+    :type pdata: struct fbtft_platform_data \*
 
 .. _`fbtft_framebuffer_alloc.description`:
 
@@ -48,8 +51,9 @@ fbtft_framebuffer_release
 
     frees up all memory used by the framebuffer
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. _`fbtft_register_framebuffer`:
 
@@ -60,8 +64,9 @@ fbtft_register_framebuffer
 
     registers a tft frame buffer device
 
-    :param struct fb_info \*fb_info:
+    :param fb_info:
         frame buffer info structure
+    :type fb_info: struct fb_info \*
 
 .. _`fbtft_register_framebuffer.description`:
 
@@ -85,8 +90,9 @@ fbtft_unregister_framebuffer
 
     releases a tft frame buffer device
 
-    :param struct fb_info \*fb_info:
+    :param fb_info:
         frame buffer info structure
+    :type fb_info: struct fb_info \*
 
 .. _`fbtft_unregister_framebuffer.description`:
 
@@ -106,8 +112,9 @@ fbtft_init_display_dt
 
     Device Tree \ :c:func:`init_display`\  function
 
-    :param struct fbtft_par \*par:
+    :param par:
         Driver data
+    :type par: struct fbtft_par \*
 
 .. _`fbtft_init_display_dt.return`:
 
@@ -125,8 +132,9 @@ fbtft_init_display
 
     Generic \ :c:func:`init_display`\  function
 
-    :param struct fbtft_par \*par:
+    :param par:
         Driver data
+    :type par: struct fbtft_par \*
 
 .. _`fbtft_init_display.description`:
 
@@ -151,8 +159,9 @@ fbtft_verify_gpios
 
     Generic \ :c:func:`verify_gpios`\  function
 
-    :param struct fbtft_par \*par:
+    :param par:
         Driver data
+    :type par: struct fbtft_par \*
 
 .. _`fbtft_verify_gpios.description`:
 
@@ -177,14 +186,17 @@ fbtft_probe_common
 
     Generic device \ :c:func:`probe`\  helper function
 
-    :param struct fbtft_display \*display:
+    :param display:
         Display properties
+    :type display: struct fbtft_display \*
 
-    :param struct spi_device \*sdev:
+    :param sdev:
         SPI device
+    :type sdev: struct spi_device \*
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Platform device
+    :type pdev: struct platform_device \*
 
 .. _`fbtft_probe_common.description`:
 
@@ -211,11 +223,13 @@ fbtft_remove_common
 
     Generic device \ :c:func:`remove`\  helper function
 
-    :param struct device \*dev:
+    :param dev:
         Device
+    :type dev: struct device \*
 
-    :param struct fb_info \*info:
+    :param info:
         Framebuffer
+    :type info: struct fb_info \*
 
 .. _`fbtft_remove_common.description`:
 

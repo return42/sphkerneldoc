@@ -10,11 +10,13 @@ vchnl_vf_send_get_ver_req
 
     Request Channel version
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_virtchnl_req \*vchnl_req:
+    :param vchnl_req:
         Virtual channel message request pointer
+    :type vchnl_req: struct i40iw_virtchnl_req \*
 
 .. _`vchnl_vf_send_get_hmc_fcn_req`:
 
@@ -25,11 +27,13 @@ vchnl_vf_send_get_hmc_fcn_req
 
     Request HMC Function from VF
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_virtchnl_req \*vchnl_req:
+    :param vchnl_req:
         Virtual channel message request pointer
+    :type vchnl_req: struct i40iw_virtchnl_req \*
 
 .. _`vchnl_vf_send_get_pe_stats_req`:
 
@@ -40,11 +44,13 @@ vchnl_vf_send_get_pe_stats_req
 
     Request PE stats from VF
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_virtchnl_req \*vchnl_req:
+    :param vchnl_req:
         Virtual channel message request pointer
+    :type vchnl_req: struct i40iw_virtchnl_req \*
 
 .. _`vchnl_vf_send_add_hmc_objs_req`:
 
@@ -55,20 +61,25 @@ vchnl_vf_send_add_hmc_objs_req
 
     Add HMC objects
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_virtchnl_req \*vchnl_req:
+    :param vchnl_req:
         Virtual channel message request pointer
+    :type vchnl_req: struct i40iw_virtchnl_req \*
 
-    :param enum i40iw_hmc_rsrc_type rsrc_type:
+    :param rsrc_type:
         *undescribed*
+    :type rsrc_type: enum i40iw_hmc_rsrc_type
 
-    :param u32 start_index:
+    :param start_index:
         *undescribed*
+    :type start_index: u32
 
-    :param u32 rsrc_count:
+    :param rsrc_count:
         *undescribed*
+    :type rsrc_count: u32
 
 .. _`vchnl_vf_send_del_hmc_objs_req`:
 
@@ -79,23 +90,28 @@ vchnl_vf_send_del_hmc_objs_req
 
     del HMC objects
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_virtchnl_req \*vchnl_req:
+    :param vchnl_req:
         Virtual channel message request pointer
         \ ````\  rsrc_type - resource type to delete
         \ ````\  start_index - starting index for resource
         \ ````\  rsrc_count - number of resource type to delete
+    :type vchnl_req: struct i40iw_virtchnl_req \*
 
-    :param enum i40iw_hmc_rsrc_type rsrc_type:
+    :param rsrc_type:
         *undescribed*
+    :type rsrc_type: enum i40iw_hmc_rsrc_type
 
-    :param u32 start_index:
+    :param start_index:
         *undescribed*
+    :type start_index: u32
 
-    :param u32 rsrc_count:
+    :param rsrc_count:
         *undescribed*
+    :type rsrc_count: u32
 
 .. _`vchnl_pf_send_get_ver_resp`:
 
@@ -106,14 +122,17 @@ vchnl_pf_send_get_ver_resp
 
     Send channel version to VF
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 vf_id:
+    :param vf_id:
         Virtual function ID associated with the message
+    :type vf_id: u32
 
-    :param struct i40iw_virtchnl_op_buf \*vchnl_msg:
+    :param vchnl_msg:
         Virtual channel message buffer pointer
+    :type vchnl_msg: struct i40iw_virtchnl_op_buf \*
 
 .. _`vchnl_pf_send_get_hmc_fcn_resp`:
 
@@ -124,17 +143,21 @@ vchnl_pf_send_get_hmc_fcn_resp
 
     Send HMC Function to VF
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 vf_id:
+    :param vf_id:
         Virtual function ID associated with the message
+    :type vf_id: u32
 
-    :param struct i40iw_virtchnl_op_buf \*vchnl_msg:
+    :param vchnl_msg:
         Virtual channel message buffer pointer
+    :type vchnl_msg: struct i40iw_virtchnl_op_buf \*
 
-    :param u16 hmc_fcn:
+    :param hmc_fcn:
         *undescribed*
+    :type hmc_fcn: u16
 
 .. _`vchnl_pf_send_get_pe_stats_resp`:
 
@@ -145,17 +168,21 @@ vchnl_pf_send_get_pe_stats_resp
 
     Send PE Stats to VF
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 vf_id:
+    :param vf_id:
         Virtual function ID associated with the message
+    :type vf_id: u32
 
-    :param struct i40iw_virtchnl_op_buf \*vchnl_msg:
+    :param vchnl_msg:
         Virtual channel message buffer pointer
+    :type vchnl_msg: struct i40iw_virtchnl_op_buf \*
 
-    :param struct i40iw_dev_hw_stats \*hw_stats:
+    :param hw_stats:
         HW Stats struct
+    :type hw_stats: struct i40iw_dev_hw_stats \*
 
 .. _`vchnl_pf_send_error_resp`:
 
@@ -166,17 +193,21 @@ vchnl_pf_send_error_resp
 
     Send an error response to VF
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 vf_id:
+    :param vf_id:
         Virtual function ID associated with the message
+    :type vf_id: u32
 
-    :param struct i40iw_virtchnl_op_buf \*vchnl_msg:
+    :param vchnl_msg:
         Virtual channel message buffer pointer
+    :type vchnl_msg: struct i40iw_virtchnl_op_buf \*
 
-    :param u16 op_ret_code:
+    :param op_ret_code:
         *undescribed*
+    :type op_ret_code: u16
 
 .. _`pf_cqp_get_hmc_fcn_callback`:
 
@@ -187,14 +218,17 @@ pf_cqp_get_hmc_fcn_callback
 
     Callback for Get HMC Fcn
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct i40iw_sc_dev \*
 
-    :param void \*callback_param:
+    :param callback_param:
         *undescribed*
+    :type callback_param: void \*
 
-    :param struct i40iw_ccq_cqe_info \*cqe_info:
+    :param cqe_info:
         *undescribed*
+    :type cqe_info: struct i40iw_ccq_cqe_info \*
 
 .. _`pf_add_hmc_obj_callback`:
 
@@ -205,8 +239,9 @@ pf_add_hmc_obj_callback
 
     Callback for Add HMC Object
 
-    :param void \*work_vf_dev:
+    :param work_vf_dev:
         *undescribed*
+    :type work_vf_dev: void \*
 
 .. _`pf_del_hmc_obj_callback`:
 
@@ -217,8 +252,9 @@ pf_del_hmc_obj_callback
 
     Callback for delete HMC Object
 
-    :param void \*work_vf_dev:
+    :param work_vf_dev:
         pointer to the VF Device
+    :type work_vf_dev: void \*
 
 .. _`i40iw_vf_init_pestat`:
 
@@ -229,14 +265,17 @@ i40iw_vf_init_pestat
 
     Initialize stats for VF \ ``devL``\  pointer to the VF Device
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_vsi_pestat \*stats:
+    :param stats:
         Statistics structure pointer
+    :type stats: struct i40iw_vsi_pestat \*
 
-    :param u16 index:
+    :param index:
         Stats index
+    :type index: u16
 
 .. _`i40iw_vchnl_recv_pf`:
 
@@ -247,17 +286,21 @@ i40iw_vchnl_recv_pf
 
     Receive PF virtual channel messages
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 vf_id:
+    :param vf_id:
         Virtual function ID associated with the message
+    :type vf_id: u32
 
-    :param u8 \*msg:
+    :param msg:
         Virtual channel message buffer pointer
+    :type msg: u8 \*
 
-    :param u16 len:
+    :param len:
         Length of the virtual channels message
+    :type len: u16
 
 .. _`i40iw_vchnl_recv_vf`:
 
@@ -268,17 +311,21 @@ i40iw_vchnl_recv_vf
 
     Receive VF virtual channel messages
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 vf_id:
+    :param vf_id:
         Virtual function ID associated with the message
+    :type vf_id: u32
 
-    :param u8 \*msg:
+    :param msg:
         Virtual channel message buffer pointer
+    :type msg: u8 \*
 
-    :param u16 len:
+    :param len:
         Length of the virtual channels message
+    :type len: u16
 
 .. _`i40iw_vchnl_vf_get_ver`:
 
@@ -289,11 +336,13 @@ i40iw_vchnl_vf_get_ver
 
     Request Channel version
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 \*vchnl_ver:
+    :param vchnl_ver:
         Virtual channel message version pointer
+    :type vchnl_ver: u32 \*
 
 .. _`i40iw_vchnl_vf_get_hmc_fcn`:
 
@@ -304,11 +353,13 @@ i40iw_vchnl_vf_get_hmc_fcn
 
     Request HMC Function
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u16 \*hmc_fcn:
+    :param hmc_fcn:
         HMC function index pointer
+    :type hmc_fcn: u16 \*
 
 .. _`i40iw_vchnl_vf_add_hmc_objs`:
 
@@ -319,17 +370,21 @@ i40iw_vchnl_vf_add_hmc_objs
 
     Add HMC Object
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param enum i40iw_hmc_rsrc_type rsrc_type:
+    :param rsrc_type:
         HMC Resource type
+    :type rsrc_type: enum i40iw_hmc_rsrc_type
 
-    :param u32 start_index:
+    :param start_index:
         Starting index of the objects to be added
+    :type start_index: u32
 
-    :param u32 rsrc_count:
+    :param rsrc_count:
         Number of resources to be added
+    :type rsrc_count: u32
 
 .. _`i40iw_vchnl_vf_del_hmc_obj`:
 
@@ -340,17 +395,21 @@ i40iw_vchnl_vf_del_hmc_obj
 
     del HMC obj
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param enum i40iw_hmc_rsrc_type rsrc_type:
+    :param rsrc_type:
         HMC Resource type
+    :type rsrc_type: enum i40iw_hmc_rsrc_type
 
-    :param u32 start_index:
+    :param start_index:
         Starting index of the object to delete
+    :type start_index: u32
 
-    :param u32 rsrc_count:
+    :param rsrc_count:
         Number of resources to be delete
+    :type rsrc_count: u32
 
 .. _`i40iw_vchnl_vf_get_pe_stats`:
 
@@ -361,11 +420,13 @@ i40iw_vchnl_vf_get_pe_stats
 
     Get PE stats
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_dev_hw_stats \*hw_stats:
+    :param hw_stats:
         HW stats struct
+    :type hw_stats: struct i40iw_dev_hw_stats \*
 
 .. This file was automatic generated / don't edit.
 

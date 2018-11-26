@@ -10,8 +10,9 @@ sas_form_port
 
     add this phy to a port
 
-    :param struct asd_sas_phy \*phy:
+    :param phy:
         the phy of interest
+    :type phy: struct asd_sas_phy \*
 
 .. _`sas_form_port.description`:
 
@@ -30,11 +31,13 @@ sas_deform_port
 
     remove this phy from the port it belongs to
 
-    :param struct asd_sas_phy \*phy:
+    :param phy:
         the phy of interest
+    :type phy: struct asd_sas_phy \*
 
-    :param int gone:
+    :param gone:
         whether or not the PHY is gone
+    :type gone: int
 
 .. _`sas_deform_port.description`:
 

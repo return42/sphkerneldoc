@@ -10,9 +10,10 @@ iop_adma_free_slots
 
     flags descriptor slots for reuse
 
-    :param struct iop_adma_desc_slot \*slot:
+    :param slot:
         Slot to free
         Caller must hold \ :c:type:`iop_chan->lock <iop_chan>`\  while calling this function
+    :type slot: struct iop_adma_desc_slot \*
 
 .. _`iop_adma_alloc_chan_resources`:
 
@@ -23,8 +24,9 @@ iop_adma_alloc_chan_resources
 
     returns the number of allocated descriptors \ ``chan``\  - allocate descriptor resources for this channel \ ``client``\  - current client requesting the channel be ready for requests
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
 .. _`iop_adma_alloc_chan_resources.note`:
 
@@ -45,14 +47,17 @@ iop_adma_status
 
     poll the status of an ADMA transaction
 
-    :param struct dma_chan \*chan:
+    :param chan:
         ADMA channel handle
+    :type chan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         ADMA transaction identifier
+    :type cookie: dma_cookie_t
 
-    :param struct dma_tx_state \*txstate:
+    :param txstate:
         a holder for the current state of the channel or NULL
+    :type txstate: struct dma_tx_state \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ pci_create_slot
 
     create or increment refcount for physical PCI slot
 
-    :param struct pci_bus \*parent:
+    :param parent:
         struct pci_bus of parent bridge
+    :type parent: struct pci_bus \*
 
-    :param int slot_nr:
+    :param slot_nr:
         PCI_SLOT(pci_dev->devfn) or -1 for placeholder
+    :type slot_nr: int
 
-    :param const char \*name:
+    :param name:
         user visible string presented in /sys/bus/pci/slots/<name>
+    :type name: const char \*
 
-    :param struct hotplug_slot \*hotplug:
+    :param hotplug:
         set if caller is hotplug driver, NULL otherwise
+    :type hotplug: struct hotplug_slot \*
 
 .. _`pci_create_slot.description`:
 
@@ -76,8 +80,9 @@ pci_destroy_slot
 
     decrement refcount for physical PCI slot
 
-    :param struct pci_slot \*slot:
+    :param slot:
         struct pci_slot to decrement
+    :type slot: struct pci_slot \*
 
 .. _`pci_destroy_slot.description`:
 
@@ -97,8 +102,9 @@ pci_hp_create_module_link
 
     create symbolic link to the hotplug driver module.
 
-    :param struct pci_slot \*pci_slot:
+    :param pci_slot:
         struct pci_slot
+    :type pci_slot: struct pci_slot \*
 
 .. _`pci_hp_create_module_link.description`:
 
@@ -117,8 +123,9 @@ pci_hp_remove_module_link
 
     remove symbolic link to the hotplug driver module.
 
-    :param struct pci_slot \*pci_slot:
+    :param pci_slot:
         struct pci_slot
+    :type pci_slot: struct pci_slot \*
 
 .. _`pci_hp_remove_module_link.description`:
 

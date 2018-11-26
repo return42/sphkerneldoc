@@ -10,17 +10,21 @@ vx_set_pipe_cmd_params
 
     fill first command word for pipe commands
 
-    :param struct vx_rmh \*rmh:
+    :param rmh:
         the rmh to be modified
+    :type rmh: struct vx_rmh \*
 
-    :param int is_capture:
+    :param is_capture:
         0 = playback, 1 = capture operation
+    :type is_capture: int
 
-    :param int param1:
+    :param param1:
         first pipe-parameter
+    :type param1: int
 
-    :param int param2:
+    :param param2:
         second pipe-parameter
+    :type param2: int
 
 .. _`vx_set_stream_cmd_params`:
 
@@ -31,14 +35,17 @@ vx_set_stream_cmd_params
 
     fill first command word for stream commands
 
-    :param struct vx_rmh \*rmh:
+    :param rmh:
         the rmh to be modified
+    :type rmh: struct vx_rmh \*
 
-    :param int is_capture:
+    :param is_capture:
         0 = playback, 1 = capture operation
+    :type is_capture: int
 
-    :param int pipe:
+    :param pipe:
         the pipe index (zero-based)
+    :type pipe: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ rol64
 
     rotate a 64-bit value left
 
-    :param __u64 word:
+    :param word:
         value to rotate
+    :type word: __u64
 
-    :param unsigned int shift:
+    :param shift:
         bits to roll
+    :type shift: unsigned int
 
 .. _`ror64`:
 
@@ -25,11 +27,13 @@ ror64
 
     rotate a 64-bit value right
 
-    :param __u64 word:
+    :param word:
         value to rotate
+    :type word: __u64
 
-    :param unsigned int shift:
+    :param shift:
         bits to roll
+    :type shift: unsigned int
 
 .. _`rol32`:
 
@@ -40,11 +44,13 @@ rol32
 
     rotate a 32-bit value left
 
-    :param __u32 word:
+    :param word:
         value to rotate
+    :type word: __u32
 
-    :param unsigned int shift:
+    :param shift:
         bits to roll
+    :type shift: unsigned int
 
 .. _`ror32`:
 
@@ -55,11 +61,13 @@ ror32
 
     rotate a 32-bit value right
 
-    :param __u32 word:
+    :param word:
         value to rotate
+    :type word: __u32
 
-    :param unsigned int shift:
+    :param shift:
         bits to roll
+    :type shift: unsigned int
 
 .. _`rol16`:
 
@@ -70,11 +78,13 @@ rol16
 
     rotate a 16-bit value left
 
-    :param __u16 word:
+    :param word:
         value to rotate
+    :type word: __u16
 
-    :param unsigned int shift:
+    :param shift:
         bits to roll
+    :type shift: unsigned int
 
 .. _`ror16`:
 
@@ -85,11 +95,13 @@ ror16
 
     rotate a 16-bit value right
 
-    :param __u16 word:
+    :param word:
         value to rotate
+    :type word: __u16
 
-    :param unsigned int shift:
+    :param shift:
         bits to roll
+    :type shift: unsigned int
 
 .. _`rol8`:
 
@@ -100,11 +112,13 @@ rol8
 
     rotate an 8-bit value left
 
-    :param __u8 word:
+    :param word:
         value to rotate
+    :type word: __u8
 
-    :param unsigned int shift:
+    :param shift:
         bits to roll
+    :type shift: unsigned int
 
 .. _`ror8`:
 
@@ -115,11 +129,13 @@ ror8
 
     rotate an 8-bit value right
 
-    :param __u8 word:
+    :param word:
         value to rotate
+    :type word: __u8
 
-    :param unsigned int shift:
+    :param shift:
         bits to roll
+    :type shift: unsigned int
 
 .. _`sign_extend32`:
 
@@ -130,11 +146,13 @@ sign_extend32
 
     sign extend a 32-bit value using specified bit as sign-bit
 
-    :param __u32 value:
+    :param value:
         value to sign extend
+    :type value: __u32
 
-    :param int index:
+    :param index:
         0 based bit index (0<=index<32) to sign bit
+    :type index: int
 
 .. _`sign_extend32.description`:
 
@@ -152,11 +170,13 @@ sign_extend64
 
     sign extend a 64-bit value using specified bit as sign-bit
 
-    :param __u64 value:
+    :param value:
         value to sign extend
+    :type value: __u64
 
-    :param int index:
+    :param index:
         0 based bit index (0<=index<64) to sign bit
+    :type index: int
 
 .. _`get_count_order_long`:
 
@@ -167,8 +187,9 @@ get_count_order_long
 
     get order after rounding \ ``l``\  up to power of 2
 
-    :param unsigned long l:
+    :param l:
         parameter
+    :type l: unsigned long
 
 .. _`get_count_order_long.description`:
 
@@ -186,8 +207,9 @@ it is same as \ :c:func:`get_count_order`\  but with long type parameter
 
     find first set bit in a 64 bit word
 
-    :param u64 word:
+    :param word:
         The 64 bit word
+    :type word: u64
 
 .. _`__ffs64.description`:
 
@@ -207,14 +229,17 @@ assign_bit
 
     Assign value to a bit in memory
 
-    :param long nr:
+    :param nr:
         the bit to set
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile unsigned long \*
 
-    :param bool value:
+    :param value:
         the value to assign
+    :type value: bool
 
 .. _`find_last_bit`:
 
@@ -225,11 +250,13 @@ find_last_bit
 
     find the last set bit in a memory region
 
-    :param const unsigned long \*addr:
+    :param addr:
         The address to start the search at
+    :type addr: const unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The number of bits to search
+    :type size: unsigned long
 
 .. _`find_last_bit.description`:
 

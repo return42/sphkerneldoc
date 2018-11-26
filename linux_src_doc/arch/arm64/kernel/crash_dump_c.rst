@@ -10,20 +10,25 @@ copy_oldmem_page
 
     copy one page from old kernel memory
 
-    :param unsigned long pfn:
+    :param pfn:
         page frame number to be copied
+    :type pfn: unsigned long
 
-    :param char \*buf:
+    :param buf:
         buffer where the copied page is placed
+    :type buf: char \*
 
-    :param size_t csize:
+    :param csize:
         number of bytes to copy
+    :type csize: size_t
 
-    :param unsigned long offset:
+    :param offset:
         offset in bytes into the page
+    :type offset: unsigned long
 
-    :param int userbuf:
+    :param userbuf:
         if set, \ ``buf``\  is in a user address space
+    :type userbuf: int
 
 .. _`copy_oldmem_page.description`:
 
@@ -43,14 +48,17 @@ elfcorehdr_read
 
     read from ELF core header
 
-    :param char \*buf:
+    :param buf:
         buffer where the data is placed
+    :type buf: char \*
 
-    :param size_t count:
-        *undescribed*
+    :param count:
+        number of bytes to read
+    :type count: size_t
 
-    :param u64 \*ppos:
+    :param ppos:
         address in the memory
+    :type ppos: u64 \*
 
 .. _`elfcorehdr_read.description`:
 

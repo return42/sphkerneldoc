@@ -10,17 +10,21 @@ tracepoint_probe_register_prio
 
     Connect a probe to a tracepoint with priority
 
-    :param struct tracepoint \*tp:
+    :param tp:
         tracepoint
+    :type tp: struct tracepoint \*
 
-    :param void \*probe:
+    :param probe:
         probe handler
+    :type probe: void \*
 
-    :param void \*data:
+    :param data:
         tracepoint data
+    :type data: void \*
 
-    :param int prio:
+    :param prio:
         priority of this function over other registered functions
+    :type prio: int
 
 .. _`tracepoint_probe_register_prio.description`:
 
@@ -48,14 +52,17 @@ tracepoint_probe_register
 
     Connect a probe to a tracepoint
 
-    :param struct tracepoint \*tp:
+    :param tp:
         tracepoint
+    :type tp: struct tracepoint \*
 
-    :param void \*probe:
+    :param probe:
         probe handler
+    :type probe: void \*
 
-    :param void \*data:
+    :param data:
         tracepoint data
+    :type data: void \*
 
 .. _`tracepoint_probe_register.description`:
 
@@ -83,14 +90,17 @@ tracepoint_probe_unregister
 
     Disconnect a probe from a tracepoint
 
-    :param struct tracepoint \*tp:
+    :param tp:
         tracepoint
+    :type tp: struct tracepoint \*
 
-    :param void \*probe:
+    :param probe:
         probe function pointer
+    :type probe: void \*
 
-    :param void \*data:
+    :param data:
         tracepoint data
+    :type data: void \*
 
 .. _`tracepoint_probe_unregister.description`:
 
@@ -108,8 +118,9 @@ register_tracepoint_module_notifier
 
     register tracepoint coming/going notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
 .. _`register_tracepoint_module_notifier.description`:
 
@@ -130,8 +141,9 @@ unregister_tracepoint_module_notifier
 
     unregister tracepoint coming/going notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
 .. _`unregister_tracepoint_module_notifier.description`:
 
@@ -153,8 +165,9 @@ for_each_kernel_tracepoint
     :param void (\*fct)(struct tracepoint \*tp, void \*priv):
         callback
 
-    :param void \*priv:
+    :param priv:
         private data
+    :type priv: void \*
 
 .. This file was automatic generated / don't edit.
 

@@ -19,14 +19,14 @@ DRA752_BANDGAP_BASE          0x4a0021e0
 
 Register below are grouped by domain (not necessarily in offset order)
 
-.. _`dra752_bandgap_status_1_alert_mask`:
+.. _`dra752_bandgap_status_1_hot_core_mask`:
 
-DRA752_BANDGAP_STATUS_1_ALERT_MASK
-==================================
+DRA752_BANDGAP_STATUS_1_HOT_CORE_MASK
+=====================================
 
-.. c:function::  DRA752_BANDGAP_STATUS_1_ALERT_MASK()
+.. c:function::  DRA752_BANDGAP_STATUS_1_HOT_CORE_MASK()
 
-.. _`dra752_bandgap_status_1_alert_mask.description`:
+.. _`dra752_bandgap_status_1_hot_core_mask.description`:
 
 Description
 -----------

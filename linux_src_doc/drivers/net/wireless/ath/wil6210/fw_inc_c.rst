@@ -10,14 +10,17 @@ wil_fw_verify
 
     verify firmware file validity
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param const u8 \*data:
+    :param data:
         *undescribed*
+    :type data: const u8 \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`wil_fw_verify.description`:
 
@@ -38,17 +41,21 @@ wil_fw_process
 
     process section from FW file
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param const void \*data:
+    :param data:
         *undescribed*
+    :type data: const void \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param bool load:
+    :param load:
         *undescribed*
+    :type load: bool
 
 .. _`wil_fw_process.if-load-is-true`:
 
@@ -70,14 +77,17 @@ wil_request_firmware
 
     Request firmware
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param bool load:
+    :param load:
         *undescribed*
+    :type load: bool
 
 .. _`wil_request_firmware.description`:
 
@@ -99,14 +109,17 @@ wil_brd_process
 
     process section from BRD file
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param const void \*data:
+    :param data:
         *undescribed*
+    :type data: const void \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`wil_brd_process.description`:
 
@@ -124,11 +137,13 @@ wil_request_board
 
     Request board file
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
 .. _`wil_request_board.description`:
 
@@ -151,11 +166,13 @@ wil_fw_verify_file_exists
 
     checks if firmware file exist
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         driver context
+    :type wil: struct wil6210_priv \*
 
-    :param const char \*name:
+    :param name:
         firmware file name
+    :type name: const char \*
 
 .. _`wil_fw_verify_file_exists.description`:
 

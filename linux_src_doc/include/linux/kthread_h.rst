@@ -10,14 +10,17 @@ kthread_create
 
     create a kthread on the current node
 
-    :param  threadfn:
+    :param threadfn:
         the function to run in the thread
+    :type threadfn: 
 
-    :param  data:
+    :param data:
         data pointer for \ ``threadfn``\ ()
+    :type data: 
 
-    :param  namefmt:
+    :param namefmt:
         printf-style format string for the thread name
+    :type namefmt: 
 
 .. _`kthread_create.description`:
 
@@ -37,14 +40,17 @@ kthread_run
 
     create and wake a thread.
 
-    :param  threadfn:
+    :param threadfn:
         the function to run until signal_pending(current).
+    :type threadfn: 
 
-    :param  data:
+    :param data:
         data ptr for \ ``threadfn``\ .
+    :type data: 
 
-    :param  namefmt:
+    :param namefmt:
         printf-style name for the thread.
+    :type namefmt: 
 
     :param ellipsis ellipsis:
         variable arguments

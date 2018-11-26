@@ -854,6 +854,54 @@ Flags
 TEGRA_DIVIDER_2 - LP cluster has additional divider. This flag indicates
 that this is LP cluster clock.
 
+.. _`tegra_sdmmc_mux`:
+
+struct tegra_sdmmc_mux
+======================
+
+.. c:type:: struct tegra_sdmmc_mux
+
+    switch divider with Low Jitter inputs for SDMMC
+
+.. _`tegra_sdmmc_mux.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct tegra_sdmmc_mux {
+        struct clk_hw hw;
+        void __iomem *reg;
+        spinlock_t *lock;
+        const struct clk_ops *gate_ops;
+        struct tegra_clk_periph_gate gate;
+        u8 div_flags;
+    }
+
+.. _`tegra_sdmmc_mux.members`:
+
+Members
+-------
+
+hw
+    handle between common and hardware-specific interfaces
+
+reg
+    register controlling mux and divider
+
+lock
+    optional register lock
+
+gate_ops
+    gate clock ops
+
+gate
+    gate clock
+
+div_flags
+    *undescribed*
+
 .. _`tegra_clk_init_table`:
 
 struct tegra_clk_init_table

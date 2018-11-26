@@ -10,30 +10,38 @@ sg_split
 
     split a scatterlist into several scatterlists
 
-    :param struct scatterlist \*in:
+    :param in:
         the input sg list
+    :type in: struct scatterlist \*
 
-    :param const int in_mapped_nents:
+    :param in_mapped_nents:
         the result of a dma_map_sg(in, ...), or 0 if not mapped.
+    :type in_mapped_nents: const int
 
-    :param const off_t skip:
+    :param skip:
         the number of bytes to skip in the input sg list
+    :type skip: const off_t
 
-    :param const int nb_splits:
+    :param nb_splits:
         the number of desired sg outputs
+    :type nb_splits: const int
 
-    :param const size_t \*split_sizes:
+    :param split_sizes:
         the respective size of each output sg list in bytes
+    :type split_sizes: const size_t \*
 
-    :param struct scatterlist \*\*out:
+    :param out:
         an array where to store the allocated output sg lists
+    :type out: struct scatterlist \*\*
 
-    :param int \*out_mapped_nents:
+    :param out_mapped_nents:
         the resulting sg lists mapped number of sg entries. Might
         be NULL if sglist not already mapped (in_mapped_nents = 0)
+    :type out_mapped_nents: int \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         the allocation flag
+    :type gfp_mask: gfp_t
 
 .. _`sg_split.description`:
 

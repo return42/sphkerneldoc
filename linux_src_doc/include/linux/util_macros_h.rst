@@ -10,15 +10,18 @@ find_closest
 
     locate the closest element in a sorted array
 
-    :param  x:
+    :param x:
         The reference value.
+    :type x: 
 
-    :param  a:
+    :param a:
         The array in which to look for the closest element. Must be sorted
         in ascending order.
+    :type a: 
 
-    :param  as:
+    :param as:
         Size of 'a'.
+    :type as: 
 
 .. _`find_closest.description`:
 
@@ -36,15 +39,18 @@ find_closest_descending
 
     locate the closest element in a sorted array
 
-    :param  x:
+    :param x:
         The reference value.
+    :type x: 
 
-    :param  a:
+    :param a:
         The array in which to look for the closest element. Must be sorted
         in descending order.
+    :type a: 
 
-    :param  as:
+    :param as:
         Size of 'a'.
+    :type as: 
 
 .. _`find_closest_descending.description`:
 

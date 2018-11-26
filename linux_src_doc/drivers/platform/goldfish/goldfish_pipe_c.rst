@@ -10,11 +10,13 @@ goldfish_pipe_open
 
     open a channel to the AVD
 
-    :param struct inode \*inode:
+    :param inode:
         inode of device
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file struct of opener
+    :type file: struct file \*
 
 .. _`goldfish_pipe_open.description`:
 

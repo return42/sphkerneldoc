@@ -614,14 +614,43 @@ For devices up to 22000
 \ ``tfd_offset``\   0-12 - tx command byte count
 12-16 - station index
 
-.. _`iwlagn_scd_bc_tbl.for-22000-and-on`:
+.. _`iwlagn_scd_bc_tbl.for-22000`:
 
-For 22000 and on
-----------------
+For 22000
+---------
 
 \ ``tfd_offset``\   0-12 - tx command byte count
 12-13 - number of 64 byte chunks
 14-16 - reserved
+
+.. _`iwl_gen3_bc_tbl`:
+
+struct iwl_gen3_bc_tbl
+======================
+
+.. c:type:: struct iwl_gen3_bc_tbl
+
+
+.. _`iwl_gen3_bc_tbl.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_gen3_bc_tbl {
+        __le16 tfd_offset[TFD_QUEUE_BC_SIZE_GEN3];
+    }
+
+.. _`iwl_gen3_bc_tbl.members`:
+
+Members
+-------
+
+tfd_offset
+    0-12 - tx command byte count
+    12-13 - number of 64 byte chunks
+    14-16 - reserved
 
 .. This file was automatic generated / don't edit.
 

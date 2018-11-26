@@ -10,23 +10,29 @@ arm_dma_map_page
 
     map a portion of a page for streaming DMA
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer, or NULL for ISA and EISA-like devices
+    :type dev: struct device \*
 
-    :param struct page \*page:
+    :param page:
         page that buffer resides in
+    :type page: struct page \*
 
-    :param unsigned long offset:
+    :param offset:
         offset into page for start of buffer
+    :type offset: unsigned long
 
-    :param size_t size:
+    :param size:
         size of buffer to map
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_dma_map_page.description`:
 
@@ -48,20 +54,25 @@ arm_dma_unmap_page
 
     unmap a buffer previously mapped through \ :c:func:`dma_map_page`\ 
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer, or NULL for ISA and EISA-like devices
+    :type dev: struct device \*
 
-    :param dma_addr_t handle:
+    :param handle:
         DMA address of buffer
+    :type handle: dma_addr_t
 
-    :param size_t size:
+    :param size:
         size of buffer (same as passed to dma_map_page)
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction (same as passed to dma_map_page)
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_dma_unmap_page.description`:
 
@@ -84,20 +95,25 @@ arm_dma_map_sg
 
     map a set of SG buffers for streaming mode DMA
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer, or NULL for ISA and EISA-like devices
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         list of buffers
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of buffers to map
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_dma_map_sg.description`:
 
@@ -122,20 +138,25 @@ arm_dma_unmap_sg
 
     unmap a set of SG buffers mapped by dma_map_sg
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer, or NULL for ISA and EISA-like devices
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         list of buffers
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of buffers to unmap (same as was passed to dma_map_sg)
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction (same as was passed to dma_map_sg)
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_dma_unmap_sg.description`:
 
@@ -152,17 +173,21 @@ arm_dma_sync_sg_for_cpu
 
 .. c:function:: void arm_dma_sync_sg_for_cpu(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir)
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer, or NULL for ISA and EISA-like devices
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         list of buffers
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of buffers to map (returned from dma_map_sg)
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction (same as was passed to dma_map_sg)
+    :type dir: enum dma_data_direction
 
 .. _`arm_dma_sync_sg_for_device`:
 
@@ -171,17 +196,21 @@ arm_dma_sync_sg_for_device
 
 .. c:function:: void arm_dma_sync_sg_for_device(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir)
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer, or NULL for ISA and EISA-like devices
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         list of buffers
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of buffers to map (returned from dma_map_sg)
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction (same as was passed to dma_map_sg)
+    :type dir: enum dma_data_direction
 
 .. _`arm_coherent_iommu_map_sg`:
 
@@ -192,20 +221,25 @@ arm_coherent_iommu_map_sg
 
     map a set of SG buffers for streaming mode DMA
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         list of buffers
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of buffers to map
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_coherent_iommu_map_sg.description`:
 
@@ -226,20 +260,25 @@ arm_iommu_map_sg
 
     map a set of SG buffers for streaming mode DMA
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         list of buffers
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of buffers to map
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_iommu_map_sg.description`:
 
@@ -260,20 +299,25 @@ arm_coherent_iommu_unmap_sg
 
     unmap a set of SG buffers mapped by dma_map_sg
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         list of buffers
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of buffers to unmap (same as was passed to dma_map_sg)
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction (same as was passed to dma_map_sg)
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_coherent_iommu_unmap_sg.description`:
 
@@ -292,20 +336,25 @@ arm_iommu_unmap_sg
 
     unmap a set of SG buffers mapped by dma_map_sg
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         list of buffers
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of buffers to unmap (same as was passed to dma_map_sg)
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction (same as was passed to dma_map_sg)
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_iommu_unmap_sg.description`:
 
@@ -322,17 +371,21 @@ arm_iommu_sync_sg_for_cpu
 
 .. c:function:: void arm_iommu_sync_sg_for_cpu(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir)
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         list of buffers
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of buffers to map (returned from dma_map_sg)
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction (same as was passed to dma_map_sg)
+    :type dir: enum dma_data_direction
 
 .. _`arm_iommu_sync_sg_for_device`:
 
@@ -341,17 +394,21 @@ arm_iommu_sync_sg_for_device
 
 .. c:function:: void arm_iommu_sync_sg_for_device(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir)
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         list of buffers
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of buffers to map (returned from dma_map_sg)
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction (same as was passed to dma_map_sg)
+    :type dir: enum dma_data_direction
 
 .. _`arm_coherent_iommu_map_page`:
 
@@ -360,23 +417,29 @@ arm_coherent_iommu_map_page
 
 .. c:function:: dma_addr_t arm_coherent_iommu_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param struct page \*page:
+    :param page:
         page that buffer resides in
+    :type page: struct page \*
 
-    :param unsigned long offset:
+    :param offset:
         offset into page for start of buffer
+    :type offset: unsigned long
 
-    :param size_t size:
+    :param size:
         size of buffer to map
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_coherent_iommu_map_page.description`:
 
@@ -392,23 +455,29 @@ arm_iommu_map_page
 
 .. c:function:: dma_addr_t arm_iommu_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param struct page \*page:
+    :param page:
         page that buffer resides in
+    :type page: struct page \*
 
-    :param unsigned long offset:
+    :param offset:
         offset into page for start of buffer
+    :type offset: unsigned long
 
-    :param size_t size:
+    :param size:
         size of buffer to map
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_iommu_map_page.description`:
 
@@ -424,20 +493,25 @@ arm_coherent_iommu_unmap_page
 
 .. c:function:: void arm_coherent_iommu_unmap_page(struct device *dev, dma_addr_t handle, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param dma_addr_t handle:
+    :param handle:
         DMA address of buffer
+    :type handle: dma_addr_t
 
-    :param size_t size:
+    :param size:
         size of buffer (same as passed to dma_map_page)
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction (same as passed to dma_map_page)
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_coherent_iommu_unmap_page.description`:
 
@@ -453,20 +527,25 @@ arm_iommu_unmap_page
 
 .. c:function:: void arm_iommu_unmap_page(struct device *dev, dma_addr_t handle, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param dma_addr_t handle:
+    :param handle:
         DMA address of buffer
+    :type handle: dma_addr_t
 
-    :param size_t size:
+    :param size:
         size of buffer (same as passed to dma_map_page)
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction (same as passed to dma_map_page)
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_iommu_unmap_page.description`:
 
@@ -484,20 +563,25 @@ arm_iommu_map_resource
 
     map a device resource for DMA
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param phys_addr_t phys_addr:
+    :param phys_addr:
         physical address of resource
+    :type phys_addr: phys_addr_t
 
-    :param size_t size:
+    :param size:
         size of resource to map
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_iommu_unmap_resource`:
 
@@ -508,20 +592,25 @@ arm_iommu_unmap_resource
 
     unmap a device DMA resource
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param dma_addr_t dma_handle:
+    :param dma_handle:
         DMA address to resource
+    :type dma_handle: dma_addr_t
 
-    :param size_t size:
+    :param size:
         size of resource to map
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`arm_iommu_create_mapping`:
 
@@ -530,14 +619,17 @@ arm_iommu_create_mapping
 
 .. c:function:: struct dma_iommu_mapping *arm_iommu_create_mapping(struct bus_type *bus, dma_addr_t base, u64 size)
 
-    :param struct bus_type \*bus:
+    :param bus:
         pointer to the bus holding the client device (for IOMMU calls)
+    :type bus: struct bus_type \*
 
-    :param dma_addr_t base:
+    :param base:
         start address of the valid IO address space
+    :type base: dma_addr_t
 
-    :param u64 size:
+    :param size:
         maximum size of the valid IO address space
+    :type size: u64
 
 .. _`arm_iommu_create_mapping.description`:
 
@@ -558,12 +650,14 @@ arm_iommu_attach_device
 
 .. c:function:: int arm_iommu_attach_device(struct device *dev, struct dma_iommu_mapping *mapping)
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
-    :param struct dma_iommu_mapping \*mapping:
+    :param mapping:
         io address space mapping structure (returned from
         arm_iommu_create_mapping)
+    :type mapping: struct dma_iommu_mapping \*
 
 .. _`arm_iommu_attach_device.description`:
 
@@ -584,8 +678,9 @@ arm_iommu_detach_device
 
 .. c:function:: void arm_iommu_detach_device(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer
+    :type dev: struct device \*
 
 .. _`arm_iommu_detach_device.description`:
 

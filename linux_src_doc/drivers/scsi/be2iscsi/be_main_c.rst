@@ -10,8 +10,9 @@ beiscsi_get_params
 
     Set the config paramters
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         ptr  device priv structure
+    :type phba: struct beiscsi_hba \*
 
 .. _`be_isr_mcc`:
 
@@ -22,11 +23,13 @@ be_isr_mcc
 
     The isr routine of the driver.
 
-    :param int irq:
+    :param irq:
         Not used
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to host adapter structure
+    :type dev_id: void \*
 
 .. _`be_isr_msix`:
 
@@ -37,11 +40,13 @@ be_isr_msix
 
     The isr routine of the driver.
 
-    :param int irq:
+    :param irq:
         Not used
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to host adapter structure
+    :type dev_id: void \*
 
 .. _`be_isr`:
 
@@ -52,11 +57,13 @@ be_isr
 
     The isr routine of the driver.
 
-    :param int irq:
+    :param irq:
         Not used
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to host adapter structure
+    :type dev_id: void \*
 
 .. _`alloc_wrb_handle`:
 
@@ -67,14 +74,17 @@ alloc_wrb_handle
 
     To allocate a wrb handle
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         The hba pointer
+    :type phba: struct beiscsi_hba \*
 
-    :param unsigned int cid:
+    :param cid:
         The cid to use for allocation
+    :type cid: unsigned int
 
-    :param struct hwi_wrb_context \*\*pcontext:
+    :param pcontext:
         *undescribed*
+    :type pcontext: struct hwi_wrb_context \*\*
 
 .. _`alloc_wrb_handle.description`:
 
@@ -92,14 +102,17 @@ free_wrb_handle
 
     To free the wrb handle back to pool
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         The hba pointer
+    :type phba: struct beiscsi_hba \*
 
-    :param struct hwi_wrb_context \*pwrb_context:
+    :param pwrb_context:
         The context to free from
+    :type pwrb_context: struct hwi_wrb_context \*
 
-    :param struct wrb_handle \*pwrb_handle:
+    :param pwrb_handle:
         The wrb_handle to free
+    :type pwrb_handle: struct wrb_handle \*
 
 .. _`free_wrb_handle.description`:
 
@@ -117,17 +130,21 @@ beiscsi_complete_pdu
 
     a. Unsolicited NOP-In (target initiated NOP-In) b. ASYNC Messages c. Reject PDU d. Login response These headers arrive unprocessed by the EP firmware. iSCSI layer processes them.
 
-    :param struct beiscsi_conn \*beiscsi_conn:
+    :param beiscsi_conn:
         *undescribed*
+    :type beiscsi_conn: struct beiscsi_conn \*
 
-    :param struct pdu_base \*phdr:
+    :param phdr:
         *undescribed*
+    :type phdr: struct pdu_base \*
 
-    :param void \*pdata:
+    :param pdata:
         *undescribed*
+    :type pdata: void \*
 
-    :param unsigned int dlen:
+    :param dlen:
         *undescribed*
+    :type dlen: unsigned int
 
 .. _`beiscsi_process_cq`:
 
@@ -138,11 +155,13 @@ beiscsi_process_cq
 
     Process the Completion Queue
 
-    :param struct be_eq_obj \*pbe_eq:
+    :param pbe_eq:
         Event Q on which the Completion has come
+    :type pbe_eq: struct be_eq_obj \*
 
-    :param int budget:
+    :param budget:
         Max number of events to processed
+    :type budget: int
 
 .. _`beiscsi_process_cq.description`:
 
@@ -161,11 +180,13 @@ hwi_write_buffer
 
     Populate the WRB with task info
 
-    :param struct iscsi_wrb \*pwrb:
+    :param pwrb:
         ptr to the WRB entry
+    :type pwrb: struct iscsi_wrb \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task which is to be executed
+    :type task: struct iscsi_task \*
 
 .. _`beiscsi_find_mem_req`:
 
@@ -176,8 +197,9 @@ beiscsi_find_mem_req
 
     Find mem needed
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         ptr to HBA struct
+    :type phba: struct beiscsi_hba \*
 
 .. _`beiscsi_free_mgmt_task_handles`:
 
@@ -188,11 +210,13 @@ beiscsi_free_mgmt_task_handles
 
     Free driver CXN resources
 
-    :param struct beiscsi_conn \*beiscsi_conn:
+    :param beiscsi_conn:
         ptr to the conn to be cleaned up
+    :type beiscsi_conn: struct beiscsi_conn \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         ptr to iscsi_task resource to be freed.
+    :type task: struct iscsi_task \*
 
 .. _`beiscsi_free_mgmt_task_handles.description`:
 
@@ -210,8 +234,9 @@ beiscsi_cleanup_task
 
     Free driver resources of the task
 
-    :param struct iscsi_task \*task:
+    :param task:
         ptr to the iscsi task
+    :type task: struct iscsi_task \*
 
 .. _`beiscsi_alloc_pdu`:
 
@@ -222,11 +247,13 @@ beiscsi_alloc_pdu
 
     allocates pdu and related resources
 
-    :param struct iscsi_task \*task:
+    :param task:
         libiscsi task
+    :type task: struct iscsi_task \*
 
-    :param uint8_t opcode:
+    :param opcode:
         opcode of pdu for task
+    :type opcode: uint8_t
 
 .. _`beiscsi_alloc_pdu.description`:
 
@@ -247,8 +274,9 @@ beiscsi_bsg_request
 
     handle bsg request from ISCSI transport
 
-    :param struct bsg_job \*job:
+    :param job:
         job to handle
+    :type job: struct bsg_job \*
 
 .. _`beiscsi_sysfs_iscsi_boot_flags`:
 

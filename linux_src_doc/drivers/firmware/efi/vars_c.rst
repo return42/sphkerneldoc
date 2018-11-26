@@ -13,14 +13,17 @@ efivar_init
     :param int (\*func)(efi_char16_t \*, efi_guid_t, unsigned long, void \*):
         callback function to invoke for every variable
 
-    :param void \*data:
+    :param data:
         function-specific data to pass to \ ``func``\ 
+    :type data: void \*
 
-    :param bool duplicates:
+    :param duplicates:
         error if we encounter duplicates on \ ``head``\ ?
+    :type duplicates: bool
 
-    :param struct list_head \*head:
+    :param head:
         initialised head of variable list
+    :type head: struct list_head \*
 
 .. _`efivar_init.description`:
 
@@ -41,11 +44,13 @@ efivar_entry_add
 
     add entry to variable list
 
-    :param struct efivar_entry \*entry:
+    :param entry:
         entry to add to list
+    :type entry: struct efivar_entry \*
 
-    :param struct list_head \*head:
+    :param head:
         list head
+    :type head: struct list_head \*
 
 .. _`efivar_entry_add.description`:
 
@@ -63,8 +68,9 @@ efivar_entry_remove
 
     remove entry from variable list
 
-    :param struct efivar_entry \*entry:
+    :param entry:
         entry to remove from list
+    :type entry: struct efivar_entry \*
 
 .. _`efivar_entry_remove.description`:
 
@@ -82,8 +88,9 @@ Returns 0 on success, or a kernel error code on failure.
 
     delete an EFI variable
 
-    :param struct efivar_entry \*entry:
+    :param entry:
         entry containing EFI variable to delete
+    :type entry: struct efivar_entry \*
 
 .. _`__efivar_entry_delete.description`:
 
@@ -110,8 +117,9 @@ efivar_entry_delete
 
     delete variable and remove entry from list
 
-    :param struct efivar_entry \*entry:
+    :param entry:
         entry containing variable to delete
+    :type entry: struct efivar_entry \*
 
 .. _`efivar_entry_delete.description`:
 
@@ -134,20 +142,25 @@ efivar_entry_set
 
     call \ :c:func:`set_variable`\ 
 
-    :param struct efivar_entry \*entry:
+    :param entry:
         entry containing the EFI variable to write
+    :type entry: struct efivar_entry \*
 
-    :param u32 attributes:
+    :param attributes:
         variable attributes
+    :type attributes: u32
 
-    :param unsigned long size:
+    :param size:
         size of \ ``data``\  buffer
+    :type size: unsigned long
 
-    :param void \*data:
+    :param data:
         buffer containing variable data
+    :type data: void \*
 
-    :param struct list_head \*head:
+    :param head:
         head of variable list
+    :type head: struct list_head \*
 
 .. _`efivar_entry_set.description`:
 
@@ -176,23 +189,29 @@ efivar_entry_set_safe
 
     call \ :c:func:`set_variable`\  if enough space in firmware
 
-    :param efi_char16_t \*name:
+    :param name:
         buffer containing the variable name
+    :type name: efi_char16_t \*
 
-    :param efi_guid_t vendor:
+    :param vendor:
         variable vendor guid
+    :type vendor: efi_guid_t
 
-    :param u32 attributes:
+    :param attributes:
         variable attributes
+    :type attributes: u32
 
-    :param bool block:
+    :param block:
         can we block in this context?
+    :type block: bool
 
-    :param unsigned long size:
+    :param size:
         size of \ ``data``\  buffer
+    :type size: unsigned long
 
-    :param void \*data:
+    :param data:
         buffer containing variable data
+    :type data: void \*
 
 .. _`efivar_entry_set_safe.description`:
 
@@ -216,17 +235,21 @@ efivar_entry_find
 
     search for an entry
 
-    :param efi_char16_t \*name:
+    :param name:
         the EFI variable name
+    :type name: efi_char16_t \*
 
-    :param efi_guid_t guid:
+    :param guid:
         the EFI variable vendor's guid
+    :type guid: efi_guid_t
 
-    :param struct list_head \*head:
+    :param head:
         head of the variable list
+    :type head: struct list_head \*
 
-    :param bool remove:
+    :param remove:
         should we remove the entry from the list?
+    :type remove: bool
 
 .. _`efivar_entry_find.description`:
 
@@ -252,11 +275,13 @@ efivar_entry_size
 
     obtain the size of a variable
 
-    :param struct efivar_entry \*entry:
+    :param entry:
         entry for this variable
+    :type entry: struct efivar_entry \*
 
-    :param unsigned long \*size:
+    :param size:
         location to store the variable's size
+    :type size: unsigned long \*
 
 .. _`__efivar_entry_get`:
 
@@ -267,17 +292,21 @@ efivar_entry_size
 
     call \ :c:func:`get_variable`\ 
 
-    :param struct efivar_entry \*entry:
+    :param entry:
         read data for this variable
+    :type entry: struct efivar_entry \*
 
-    :param u32 \*attributes:
+    :param attributes:
         variable attributes
+    :type attributes: u32 \*
 
-    :param unsigned long \*size:
+    :param size:
         size of \ ``data``\  buffer
+    :type size: unsigned long \*
 
-    :param void \*data:
+    :param data:
         buffer to store variable data
+    :type data: void \*
 
 .. _`__efivar_entry_get.description`:
 
@@ -297,17 +326,21 @@ efivar_entry_get
 
     call \ :c:func:`get_variable`\ 
 
-    :param struct efivar_entry \*entry:
+    :param entry:
         read data for this variable
+    :type entry: struct efivar_entry \*
 
-    :param u32 \*attributes:
+    :param attributes:
         variable attributes
+    :type attributes: u32 \*
 
-    :param unsigned long \*size:
+    :param size:
         size of \ ``data``\  buffer
+    :type size: unsigned long \*
 
-    :param void \*data:
+    :param data:
         buffer to store variable data
+    :type data: void \*
 
 .. _`efivar_entry_set_get_size`:
 
@@ -318,20 +351,25 @@ efivar_entry_set_get_size
 
     call \ :c:func:`set_variable`\  and get new size (atomic)
 
-    :param struct efivar_entry \*entry:
+    :param entry:
         entry containing variable to set and get
+    :type entry: struct efivar_entry \*
 
-    :param u32 attributes:
+    :param attributes:
         attributes of variable to be written
+    :type attributes: u32
 
-    :param unsigned long \*size:
+    :param size:
         size of data buffer
+    :type size: unsigned long \*
 
-    :param void \*data:
+    :param data:
         buffer containing data to write
+    :type data: void \*
 
-    :param bool \*set:
+    :param set:
         did the \ :c:func:`set_variable`\  call succeed?
+    :type set: bool \*
 
 .. _`efivar_entry_set_get_size.description`:
 
@@ -361,8 +399,9 @@ efivar_entry_iter_begin
 
     begin iterating the variable list
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`efivar_entry_iter_begin.description`:
 
@@ -382,8 +421,9 @@ efivar_entry_iter_end
 
     finish iterating the variable list
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`efivar_entry_iter_end.description`:
 
@@ -404,14 +444,17 @@ Unlock the variable list and allow modifications to the list again.
     :param int (\*func)(struct efivar_entry \*, void \*):
         callback function
 
-    :param struct list_head \*head:
+    :param head:
         head of the variable list
+    :type head: struct list_head \*
 
-    :param void \*data:
+    :param data:
         function-specific data to pass to callback
+    :type data: void \*
 
-    :param struct efivar_entry \*\*prev:
+    :param prev:
         entry to begin iterating from
+    :type prev: struct efivar_entry \*\*
 
 .. _`__efivar_entry_iter.description`:
 
@@ -445,11 +488,13 @@ efivar_entry_iter
     :param int (\*func)(struct efivar_entry \*, void \*):
         callback function
 
-    :param struct list_head \*head:
+    :param head:
         head of variable list
+    :type head: struct list_head \*
 
-    :param void \*data:
+    :param data:
         function-specific data to pass to callback
+    :type data: void \*
 
 .. _`efivar_entry_iter.description`:
 
@@ -477,8 +522,9 @@ efivars_kobject
 
     get the kobject for the registered efivars
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`efivars_kobject.description`:
 
@@ -497,8 +543,9 @@ efivar_run_worker
 
     schedule the efivar worker thread
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`efivars_register`:
 
@@ -509,14 +556,17 @@ efivars_register
 
     register an efivars
 
-    :param struct efivars \*efivars:
+    :param efivars:
         efivars to register
+    :type efivars: struct efivars \*
 
-    :param const struct efivar_operations \*ops:
+    :param ops:
         efivars operations
+    :type ops: const struct efivar_operations \*
 
-    :param struct kobject \*kobject:
+    :param kobject:
         \ ``efivars``\ -specific kobject
+    :type kobject: struct kobject \*
 
 .. _`efivars_register.description`:
 
@@ -534,8 +584,9 @@ efivars_unregister
 
     unregister an efivars
 
-    :param struct efivars \*efivars:
+    :param efivars:
         efivars to unregister
+    :type efivars: struct efivars \*
 
 .. _`efivars_unregister.description`:
 

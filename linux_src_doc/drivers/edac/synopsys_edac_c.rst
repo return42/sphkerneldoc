@@ -138,11 +138,13 @@ synps_edac_geterror_info
 
     Get the current ecc error info
 
-    :param void __iomem \*base:
+    :param base:
         Pointer to the base address of the ddr memory controller
+    :type base: void __iomem \*
 
-    :param struct synps_ecc_status \*p:
+    :param p:
         Pointer to the synopsys ecc status structure
+    :type p: struct synps_ecc_status \*
 
 .. _`synps_edac_geterror_info.description`:
 
@@ -167,11 +169,13 @@ synps_edac_handle_error
 
     Handle controller error types CE and UE
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         Pointer to the edac memory controller instance
+    :type mci: struct mem_ctl_info \*
 
-    :param struct synps_ecc_status \*p:
+    :param p:
         Pointer to the synopsys ecc status structure
+    :type p: struct synps_ecc_status \*
 
 .. _`synps_edac_handle_error.description`:
 
@@ -189,8 +193,9 @@ synps_edac_check
 
     Check controller for ECC errors
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         Pointer to the edac memory controller instance
+    :type mci: struct mem_ctl_info \*
 
 .. _`synps_edac_check.description`:
 
@@ -208,8 +213,9 @@ synps_edac_get_dtype
 
     Return the controller memory width
 
-    :param const void __iomem \*base:
+    :param base:
         Pointer to the ddr memory controller base address
+    :type base: const void __iomem \*
 
 .. _`synps_edac_get_dtype.description`:
 
@@ -235,8 +241,9 @@ synps_edac_get_eccstate
 
     Return the controller ecc enable/disable status
 
-    :param void __iomem \*base:
+    :param base:
         Pointer to the ddr memory controller base address
+    :type base: void __iomem \*
 
 .. _`synps_edac_get_eccstate.description`:
 
@@ -261,8 +268,9 @@ synps_edac_get_memsize
 
     reads the size of the attached memory device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`synps_edac_get_memsize.return`:
 
@@ -280,8 +288,9 @@ synps_edac_get_mtype
 
     Returns controller memory type
 
-    :param const void __iomem \*base:
+    :param base:
         pointer to the synopsys ecc status structure
+    :type base: const void __iomem \*
 
 .. _`synps_edac_get_mtype.description`:
 
@@ -307,8 +316,9 @@ synps_edac_init_csrows
 
     Initialize the cs row data
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         Pointer to the edac memory controller instance
+    :type mci: struct mem_ctl_info \*
 
 .. _`synps_edac_init_csrows.description`:
 
@@ -334,11 +344,13 @@ synps_edac_mc_init
 
     Initialize driver instance
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         Pointer to the edac memory controller instance
+    :type mci: struct mem_ctl_info \*
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device struct
+    :type pdev: struct platform_device \*
 
 .. _`synps_edac_mc_init.description`:
 
@@ -365,8 +377,9 @@ synps_edac_mc_probe
 
     Check controller and bind driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device struct
+    :type pdev: struct platform_device \*
 
 .. _`synps_edac_mc_probe.description`:
 
@@ -392,8 +405,9 @@ synps_edac_mc_remove
 
     Unbind driver from controller
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device struct
+    :type pdev: struct platform_device \*
 
 .. _`synps_edac_mc_remove.return`:
 

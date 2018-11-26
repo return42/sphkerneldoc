@@ -10,11 +10,13 @@ eadm_subchannel_sch_event
 
     process subchannel event
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel
+    :type sch: struct subchannel \*
 
-    :param int process:
+    :param process:
         non-zero if function is called in process context
+    :type process: int
 
 .. _`eadm_subchannel_sch_event.description`:
 

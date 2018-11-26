@@ -10,8 +10,9 @@ radeon_mem_type_to_domain
 
     return domain corresponding to mem_type
 
-    :param u32 mem_type:
+    :param mem_type:
         ttm memory type
+    :type mem_type: u32
 
 .. _`radeon_mem_type_to_domain.description`:
 
@@ -29,11 +30,13 @@ radeon_bo_reserve
 
     reserve bo
 
-    :param struct radeon_bo \*bo:
+    :param bo:
         bo structure
+    :type bo: struct radeon_bo \*
 
-    :param bool no_intr:
+    :param no_intr:
         don't return -ERESTARTSYS on pending signal
+    :type no_intr: bool
 
 .. _`radeon_bo_reserve.return`:
 
@@ -52,8 +55,9 @@ radeon_bo_gpu_offset
 
     return GPU offset of bo
 
-    :param struct radeon_bo \*bo:
+    :param bo:
         radeon object for which we query the offset
+    :type bo: struct radeon_bo \*
 
 .. _`radeon_bo_gpu_offset.description`:
 
@@ -79,8 +83,9 @@ radeon_bo_mmap_offset
 
     return mmap offset of bo
 
-    :param struct radeon_bo \*bo:
+    :param bo:
         radeon object for which we query the offset
+    :type bo: struct radeon_bo \*
 
 .. _`radeon_bo_mmap_offset.description`:
 

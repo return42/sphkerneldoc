@@ -10,8 +10,9 @@ ssp_write_word
 
     write a word to the SSP port
 
-    :param u16 data:
+    :param data:
         16-bit, MSB justified data to write.
+    :type data: u16
 
 .. _`ssp_write_word.description`:
 
@@ -41,8 +42,9 @@ ssp_read_word
 
     read a word from the SSP port
 
-    :param u16 \*data:
+    :param data:
         *undescribed*
+    :type data: u16 \*
 
 .. _`ssp_read_word.description`:
 
@@ -79,8 +81,9 @@ ssp_flush
 
     flush the transmit and receive FIFOs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ssp_flush.description`:
 
@@ -109,8 +112,9 @@ ssp_enable
 
     enable the SSP port
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ssp_enable.description`:
 
@@ -128,8 +132,9 @@ ssp_disable
 
     shut down the SSP port
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ssp_disable.description`:
 
@@ -147,8 +152,9 @@ ssp_save_state
 
     save the SSP configuration
 
-    :param struct ssp_state \*ssp:
+    :param ssp:
         pointer to structure to save SSP configuration
+    :type ssp: struct ssp_state \*
 
 .. _`ssp_save_state.description`:
 
@@ -166,8 +172,9 @@ ssp_restore_state
 
     restore a previously saved SSP configuration
 
-    :param struct ssp_state \*ssp:
+    :param ssp:
         pointer to configuration saved by ssp_save_state
+    :type ssp: struct ssp_state \*
 
 .. _`ssp_restore_state.description`:
 
@@ -185,8 +192,9 @@ ssp_init
 
     setup the SSP port
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ssp_init.description`:
 
@@ -213,8 +221,9 @@ ssp_exit
 
     undo the effects of ssp_init
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ssp_exit.description`:
 

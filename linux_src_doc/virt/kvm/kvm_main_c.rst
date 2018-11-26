@@ -10,14 +10,17 @@ kvm_get_dirty_log_protect
 
     get a snapshot of dirty pages, and if any pages are dirty write protect them for next write.
 
-    :param struct kvm \*kvm:
+    :param kvm:
         pointer to kvm instance
+    :type kvm: struct kvm \*
 
-    :param struct kvm_dirty_log \*log:
+    :param log:
         slot id and address to which we copy the log
+    :type log: struct kvm_dirty_log \*
 
-    :param bool \*is_dirty:
+    :param is_dirty:
         flag set if any page is dirty
+    :type is_dirty: bool \*
 
 .. _`kvm_get_dirty_log_protect.description`:
 

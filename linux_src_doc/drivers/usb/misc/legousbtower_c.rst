@@ -8,17 +8,21 @@ lego_usb_tower_debug_data
 
 .. c:function:: void lego_usb_tower_debug_data(struct device *dev, const char *function, int size, const unsigned char *data)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param int size:
+    :param size:
         *undescribed*
+    :type size: int
 
-    :param const unsigned char \*data:
+    :param data:
         *undescribed*
+    :type data: const unsigned char \*
 
 .. _`tower_delete`:
 
@@ -27,8 +31,9 @@ tower_delete
 
 .. c:function:: void tower_delete(struct lego_usb_tower *dev)
 
-    :param struct lego_usb_tower \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct lego_usb_tower \*
 
 .. _`tower_open`:
 
@@ -37,11 +42,13 @@ tower_open
 
 .. c:function:: int tower_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
 .. _`tower_release`:
 
@@ -50,11 +57,13 @@ tower_release
 
 .. c:function:: int tower_release(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
 .. _`tower_abort_transfers`:
 
@@ -65,8 +74,9 @@ tower_abort_transfers
 
     aborts transfers and frees associated data structures
 
-    :param struct lego_usb_tower \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct lego_usb_tower \*
 
 .. _`tower_check_for_read_packet`:
 
@@ -75,8 +85,9 @@ tower_check_for_read_packet
 
 .. c:function:: void tower_check_for_read_packet(struct lego_usb_tower *dev)
 
-    :param struct lego_usb_tower \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct lego_usb_tower \*
 
 .. _`tower_check_for_read_packet.description`:
 
@@ -95,11 +106,13 @@ tower_poll
 
 .. c:function:: __poll_t tower_poll(struct file *file, poll_table *wait)
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         *undescribed*
+    :type wait: poll_table \*
 
 .. _`tower_llseek`:
 
@@ -108,14 +121,17 @@ tower_llseek
 
 .. c:function:: loff_t tower_llseek(struct file *file, loff_t off, int whence)
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param loff_t off:
+    :param off:
         *undescribed*
+    :type off: loff_t
 
-    :param int whence:
+    :param whence:
         *undescribed*
+    :type whence: int
 
 .. _`tower_read`:
 
@@ -124,17 +140,21 @@ tower_read
 
 .. c:function:: ssize_t tower_read(struct file *file, char __user *buffer, size_t count, loff_t *ppos)
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param char __user \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         *undescribed*
+    :type ppos: loff_t \*
 
 .. _`tower_write`:
 
@@ -143,17 +163,21 @@ tower_write
 
 .. c:function:: ssize_t tower_write(struct file *file, const char __user *buffer, size_t count, loff_t *ppos)
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param const char __user \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: const char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         *undescribed*
+    :type ppos: loff_t \*
 
 .. _`tower_interrupt_in_callback`:
 
@@ -162,8 +186,9 @@ tower_interrupt_in_callback
 
 .. c:function:: void tower_interrupt_in_callback(struct urb *urb)
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`tower_interrupt_out_callback`:
 
@@ -172,8 +197,9 @@ tower_interrupt_out_callback
 
 .. c:function:: void tower_interrupt_out_callback(struct urb *urb)
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`tower_probe`:
 
@@ -182,11 +208,13 @@ tower_probe
 
 .. c:function:: int tower_probe(struct usb_interface *interface, const struct usb_device_id *id)
 
-    :param struct usb_interface \*interface:
+    :param interface:
         *undescribed*
+    :type interface: struct usb_interface \*
 
-    :param const struct usb_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct usb_device_id \*
 
 .. _`tower_probe.description`:
 
@@ -203,8 +231,9 @@ tower_disconnect
 
 .. c:function:: void tower_disconnect(struct usb_interface *interface)
 
-    :param struct usb_interface \*interface:
+    :param interface:
         *undescribed*
+    :type interface: struct usb_interface \*
 
 .. _`tower_disconnect.description`:
 

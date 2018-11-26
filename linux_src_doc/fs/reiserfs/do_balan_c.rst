@@ -10,23 +10,29 @@ balance_leaf
 
     reiserfs tree balancing algorithm
 
-    :param struct tree_balance \*tb:
+    :param tb:
         tree balance state
+    :type tb: struct tree_balance \*
 
-    :param struct item_head \*ih:
+    :param ih:
         item header of inserted item (little endian)
+    :type ih: struct item_head \*
 
-    :param const char \*body:
+    :param body:
         body of inserted item or bytes to paste
+    :type body: const char \*
 
-    :param int flag:
+    :param flag:
         i - insert, d - delete, c - cut, p - paste (see do_balance)
+    :type flag: int
 
-    :param struct item_head \*insert_key:
+    :param insert_key:
         key to insert new nodes
+    :type insert_key: struct item_head \*
 
-    :param struct buffer_head \*\*insert_ptr:
+    :param insert_ptr:
         array of nodes to insert at the next level
+    :type insert_ptr: struct buffer_head \*\*
 
 .. _`balance_leaf.description`:
 

@@ -52,11 +52,13 @@ as it's first element and pass it to \ :c:func:`ext4_journal_callback_add`\ .
 
     add a function to call after transaction commit
 
-    :param handle_t \*handle:
+    :param handle:
         active journal transaction handle to register callback on
+    :type handle: handle_t \*
 
-    :param struct ext4_journal_cb_entry \*jce:
+    :param jce:
         journal callback data (internal and function private data struct)
+    :type jce: struct ext4_journal_cb_entry \*
 
 .. _`_ext4_journal_callback_add.description`:
 
@@ -84,12 +86,14 @@ ext4_journal_callback_try_del
 
     delete a registered callback
 
-    :param handle_t \*handle:
+    :param handle:
         active journal transaction handle on which callback was registered
+    :type handle: handle_t \*
 
-    :param struct ext4_journal_cb_entry \*jce:
+    :param jce:
         registered journal callback entry to unregister
         Return true if object was successfully removed
+    :type jce: struct ext4_journal_cb_entry \*
 
 .. This file was automatic generated / don't edit.
 

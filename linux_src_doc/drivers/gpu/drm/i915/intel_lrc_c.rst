@@ -105,51 +105,6 @@ the new request (the GPU detects the condition of a context getting preempted
 with the same context and optimizes the context switch flow by not doing
 preemption, but just sampling the new tail pointer).
 
-.. _`intel_lr_context_descriptor_update`:
-
-intel_lr_context_descriptor_update
-==================================
-
-.. c:function:: void intel_lr_context_descriptor_update(struct i915_gem_context *ctx, struct intel_engine_cs *engine)
-
-    calculate & cache the descriptor descriptor for a pinned context
-
-    :param struct i915_gem_context \*ctx:
-        Context to work on
-
-    :param struct intel_engine_cs \*engine:
-        Engine the descriptor will be used with
-
-.. _`intel_lr_context_descriptor_update.description`:
-
-Description
------------
-
-The context descriptor encodes various attributes of a context,
-including its GTT address and some flags. Because it's fairly
-expensive to calculate, we'll just do it once and cache the result,
-which remains valid until the context is unpinned.
-
-This is what a descriptor looks like, from LSB to MSB::
-
-     bits  0-11:    flags, GEN8_CTX_* (cached in ctx->desc_template)
-     bits 12-31:    LRCA, GTT address of (the HWSP of) this context
-     bits 32-52:    ctx ID, a globally unique tag
-     bits 53-54:    mbz, reserved for use by hardware
-     bits 55-63:    group ID, currently unused and set to 0
-
-Starting from Gen11, the upper dword of the descriptor has a new format:
-
-     bits 32-36:    reserved
-     bits 37-47:    SW context ID
-     bits 48:53:    engine instance
-     bit 54:        mbz, reserved for use by hardware
-     bits 55-60:    SW counter
-     bits 61-63:    engine class
-
-engine info, SW context ID and SW counter need to form a unique number
-(Context ID) per lrc.
-
 .. _`intel_logical_ring_cleanup`:
 
 intel_logical_ring_cleanup
@@ -159,8 +114,9 @@ intel_logical_ring_cleanup
 
     deallocate the Engine Command Streamer
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         Engine Command Streamer.
+    :type engine: struct intel_engine_cs \*
 
 .. This file was automatic generated / don't edit.
 

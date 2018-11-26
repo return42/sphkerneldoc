@@ -1,26 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/display/dc/bios/bios_parser.c
 
-.. _`get_i2c_record`:
-
-get_i2c_record
-==============
-
-.. c:function:: ATOM_I2C_RECORD *get_i2c_record(struct bios_parser *bp, ATOM_OBJECT *object)
-
-    :param struct bios_parser \*bp:
-        *undescribed*
-
-    :param ATOM_OBJECT \*object:
-        *undescribed*
-
-.. _`get_i2c_record.description`:
-
-Description
------------
-
-search all records to find the ATOM_I2C_RECORD_TYPE record IR
-
 .. _`bios_parser_get_spread_spectrum_info`:
 
 bios_parser_get_spread_spectrum_info
@@ -30,17 +10,21 @@ bios_parser_get_spread_spectrum_info
 
     Get spread spectrum information from the ASIC_InternalSS_Info(ver 2.1 or ver 3.1) or SS_Info table from the VBIOS. Currently ASIC_InternalSS_Info ver 2.1 can co-exist with SS_Info table. Expect ASIC_InternalSS_Info ver 3.1, there is only one entry for each signal /ss id.  However, there is no planning of supporting multiple spread Sprectum entry for EverGreen \ ``param``\  [in] this \ ``param``\  [in] signal, ASSignalType to be converted to info index \ ``param``\  [in] index, number of entries that match the converted info index \ ``param``\  [out] ss_info, sprectrum information structure, \ ``return``\  Bios parser result code
 
-    :param struct dc_bios \*dcb:
+    :param dcb:
         *undescribed*
+    :type dcb: struct dc_bios \*
 
-    :param enum as_signal_type signal:
+    :param signal:
         *undescribed*
+    :type signal: enum as_signal_type
 
-    :param uint32_t index:
+    :param index:
         *undescribed*
+    :type index: uint32_t
 
-    :param struct spread_spectrum_info \*ss_info:
+    :param ss_info:
         *undescribed*
+    :type ss_info: struct spread_spectrum_info \*
 
 .. _`get_ss_info_from_tbl`:
 
@@ -51,14 +35,17 @@ get_ss_info_from_tbl
 
     Get spread sprectrum information from the ASIC_InternalSS_Info Ver 2.1 or SS_Info table from the VBIOS There can not be more than 1 entry for  ASIC_InternalSS_Info Ver 2.1 or SS_Info.
 
-    :param struct bios_parser \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bios_parser \*
 
-    :param uint32_t id:
+    :param id:
         *undescribed*
+    :type id: uint32_t
 
-    :param struct spread_spectrum_info \*ss_info:
+    :param ss_info:
         *undescribed*
+    :type ss_info: struct spread_spectrum_info \*
 
 .. _`get_ss_info_from_tbl.description`:
 
@@ -79,14 +66,17 @@ get_ss_info_from_internal_ss_info_tbl_V2_1
 
     Get spread sprectrum information from the ASIC_InternalSS_Info table Ver 2.1 from the VBIOS There will not be multiple entry for Ver 2.1
 
-    :param struct bios_parser \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bios_parser \*
 
-    :param uint32_t id:
+    :param id:
         *undescribed*
+    :type id: uint32_t
 
-    :param struct spread_spectrum_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct spread_spectrum_info \*
 
 .. _`get_ss_info_from_internal_ss_info_tbl_v2_1.description`:
 
@@ -106,14 +96,17 @@ get_ss_info_from_ss_info_table
 
     Get spread sprectrum information from the SS_Info table from the VBIOS if the pointer to info is NULL, indicate the caller what to know the number of entries that matches the id for, the SS_Info table, there should not be more than 1 entry match.
 
-    :param struct bios_parser \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bios_parser \*
 
-    :param uint32_t id:
+    :param id:
         *undescribed*
+    :type id: uint32_t
 
-    :param struct spread_spectrum_info \*ss_info:
+    :param ss_info:
         *undescribed*
+    :type ss_info: struct spread_spectrum_info \*
 
 .. _`get_ss_info_from_ss_info_table.description`:
 
@@ -131,14 +124,17 @@ bios_parser_get_encoder_cap_info
 
 .. c:function:: enum bp_result bios_parser_get_encoder_cap_info(struct dc_bios *dcb, struct graphics_object_id object_id, struct bp_encoder_cap_info *info)
 
-    :param struct dc_bios \*dcb:
+    :param dcb:
         *undescribed*
+    :type dcb: struct dc_bios \*
 
-    :param struct graphics_object_id object_id:
+    :param object_id:
         *undescribed*
+    :type object_id: struct graphics_object_id
 
-    :param struct bp_encoder_cap_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct bp_encoder_cap_info \*
 
 .. _`bios_parser_get_encoder_cap_info.description`:
 
@@ -160,11 +156,13 @@ get_encoder_cap_record
 
 .. c:function:: ATOM_ENCODER_CAP_RECORD_V2 *get_encoder_cap_record(struct bios_parser *bp, ATOM_OBJECT *object)
 
-    :param struct bios_parser \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bios_parser \*
 
-    :param ATOM_OBJECT \*object:
+    :param object:
         *undescribed*
+    :type object: ATOM_OBJECT \*
 
 .. _`get_encoder_cap_record.description`:
 
@@ -190,11 +188,13 @@ bios_parser_get_ss_entry_number
 
     :GetNumberofSpreadSpectrumEntry Get Number of SpreadSpectrum Entry from the ASIC_InternalSS_Info table from the VBIOS that match the SSid (to be converted from signal)
 
-    :param struct dc_bios \*dcb:
+    :param dcb:
         *undescribed*
+    :type dcb: struct dc_bios \*
 
-    :param enum as_signal_type signal:
+    :param signal:
         *undescribed*
+    :type signal: enum as_signal_type
 
 .. _`bios_parser_get_ss_entry_number.description`:
 
@@ -213,11 +213,13 @@ get_ss_entry_number_from_ss_info_tbl
 
     Get Number of spread spectrum entry from the SS_Info table from the VBIOS.
 
-    :param struct bios_parser \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bios_parser \*
 
-    :param uint32_t id:
+    :param id:
         *undescribed*
+    :type id: uint32_t
 
 .. _`get_ss_entry_number_from_ss_info_tbl.description`:
 
@@ -238,11 +240,13 @@ get_ss_entry_number
 
     Get spread sprectrum information from the ASIC_InternalSS_Info Ver 2.1 or SS_Info table from the VBIOS There can not be more than 1 entry for  ASIC_InternalSS_Info Ver 2.1 or SS_Info.
 
-    :param struct bios_parser \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bios_parser \*
 
-    :param uint32_t id:
+    :param id:
         *undescribed*
+    :type id: uint32_t
 
 .. _`get_ss_entry_number.description`:
 
@@ -261,11 +265,13 @@ get_ss_entry_number_from_internal_ss_info_tbl_v2_1
 
     Get NUmber of spread sprectrum entry from the ASIC_InternalSS_Info table Ver 2.1 from the VBIOS There will not be multiple entry for Ver 2.1
 
-    :param struct bios_parser \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bios_parser \*
 
-    :param uint32_t id:
+    :param id:
         *undescribed*
+    :type id: uint32_t
 
 .. _`get_ss_entry_number_from_internal_ss_info_tbl_v2_1.description`:
 
@@ -284,11 +290,13 @@ get_ss_entry_number_from_internal_ss_info_tbl_V3_1
 
     Get Number of SpreadSpectrum Entry from the ASIC_InternalSS_Info table of the VBIOS that matches id
 
-    :param struct bios_parser \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bios_parser \*
 
-    :param uint32_t id:
+    :param id:
         *undescribed*
+    :type id: uint32_t
 
 .. _`get_ss_entry_number_from_internal_ss_info_tbl_v3_1.description`:
 
@@ -307,14 +315,17 @@ bios_parser_get_gpio_pin_info
 
     Get GpioPin information of input gpio id
 
-    :param struct dc_bios \*dcb:
+    :param dcb:
         *undescribed*
+    :type dcb: struct dc_bios \*
 
-    :param uint32_t gpio_id:
+    :param gpio_id:
         *undescribed*
+    :type gpio_id: uint32_t
 
-    :param struct gpio_pin_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct gpio_pin_info \*
 
 .. _`bios_parser_get_gpio_pin_info.description`:
 
@@ -330,50 +341,6 @@ to get the GPIO PIN INFO, we need:
 2. in DATA_TABLE.GPIO_Pin_LUT, search all records, to get the registerA
 offset/mask
 
-.. _`i2c_read`:
-
-i2c_read
-========
-
-.. c:function:: bool i2c_read(struct bios_parser *bp, struct graphics_object_i2c_info *i2c_info, uint8_t *buffer, uint32_t length)
-
-    :param struct bios_parser \*bp:
-        *undescribed*
-
-    :param struct graphics_object_i2c_info \*i2c_info:
-        *undescribed*
-
-    :param uint8_t \*buffer:
-        *undescribed*
-
-    :param uint32_t length:
-        *undescribed*
-
-.. _`get_ext_display_connection_info`:
-
-get_ext_display_connection_info
-===============================
-
-.. c:function:: enum bp_result get_ext_display_connection_info(struct bios_parser *bp, ATOM_OBJECT *opm_object, ATOM_EXTERNAL_DISPLAY_CONNECTION_INFO *ext_display_connection_info_tbl)
-
-    validate the GUID and checksum.
-
-    :param struct bios_parser \*bp:
-        *undescribed*
-
-    :param ATOM_OBJECT \*opm_object:
-        *undescribed*
-
-    :param ATOM_EXTERNAL_DISPLAY_CONNECTION_INFO \*ext_display_connection_info_tbl:
-        *undescribed*
-
-.. _`get_ext_display_connection_info.description`:
-
-Description
------------
-
-\ ``return``\  enum bp_result whether all data was sucessfully read
-
 .. _`bios_parser_set_scratch_critical_state`:
 
 bios_parser_set_scratch_critical_state
@@ -381,11 +348,13 @@ bios_parser_set_scratch_critical_state
 
 .. c:function:: void bios_parser_set_scratch_critical_state(struct dc_bios *dcb, bool state)
 
-    :param struct dc_bios \*dcb:
+    :param dcb:
         *undescribed*
+    :type dcb: struct dc_bios \*
 
-    :param bool state:
+    :param state:
         *undescribed*
+    :type state: bool
 
 .. _`bios_parser_set_scratch_critical_state.description`:
 

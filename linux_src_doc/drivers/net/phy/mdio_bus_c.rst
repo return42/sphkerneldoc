@@ -10,9 +10,10 @@ mdiobus_alloc_size
 
     allocate a mii_bus structure
 
-    :param size_t size:
+    :param size:
         extra amount of memory to allocate for private storage.
         If non-zero, then bus->priv is points to that memory.
+    :type size: size_t
 
 .. _`mdiobus_alloc_size.description`:
 
@@ -31,11 +32,13 @@ devm_mdiobus_alloc_size
 
     Resource-managed \ :c:func:`mdiobus_alloc_size`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate mii_bus for
+    :type dev: struct device \*
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         Space to allocate for private structure.
+    :type sizeof_priv: int
 
 .. _`devm_mdiobus_alloc_size.description`:
 
@@ -64,11 +67,13 @@ devm_mdiobus_free
 
     Resource-managed \ :c:func:`mdiobus_free`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device this mii_bus belongs to
+    :type dev: struct device \*
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the mii_bus associated with the device
+    :type bus: struct mii_bus \*
 
 .. _`devm_mdiobus_free.description`:
 
@@ -86,8 +91,9 @@ mdiobus_release
 
     mii_bus device release callback
 
-    :param struct device \*d:
+    :param d:
         the target struct device that contains the mii_bus
+    :type d: struct device \*
 
 .. _`mdiobus_release.description`:
 
@@ -106,8 +112,9 @@ of_mdio_find_bus
 
     Given an mii_bus node, find the mii_bus.
 
-    :param struct device_node \*mdio_bus_np:
+    :param mdio_bus_np:
         Pointer to the mii_bus.
+    :type mdio_bus_np: struct device_node \*
 
 .. _`of_mdio_find_bus.description`:
 
@@ -131,11 +138,13 @@ mdiobus_create_device
 
     create a full MDIO device given a mdio_board_info structure
 
-    :param struct mii_bus \*bus:
+    :param bus:
         MDIO bus to create the devices on
+    :type bus: struct mii_bus \*
 
-    :param struct mdio_board_info \*bi:
+    :param bi:
         mdio_board_info structure describing the devices
+    :type bi: struct mdio_board_info \*
 
 .. _`mdiobus_create_device.description`:
 
@@ -153,11 +162,13 @@ __mdiobus_register
 
     bring up all the PHYs on a given bus and attach them to bus
 
-    :param struct mii_bus \*bus:
+    :param bus:
         target mii_bus
+    :type bus: struct mii_bus \*
 
-    :param struct module \*owner:
+    :param owner:
         module containing bus accessor functions
+    :type owner: struct module \*
 
 .. _`__mdiobus_register.description`:
 
@@ -182,8 +193,9 @@ mdiobus_free
 
     free a struct mii_bus
 
-    :param struct mii_bus \*bus:
+    :param bus:
         mii_bus to free
+    :type bus: struct mii_bus \*
 
 .. _`mdiobus_free.description`:
 
@@ -203,11 +215,13 @@ mdiobus_scan
 
     scan a bus for MDIO devices.
 
-    :param struct mii_bus \*bus:
+    :param bus:
         mii_bus to scan
+    :type bus: struct mii_bus \*
 
-    :param int addr:
+    :param addr:
         address on bus to scan
+    :type addr: int
 
 .. _`mdiobus_scan.description`:
 
@@ -230,14 +244,17 @@ __mdiobus_read
 
     Unlocked version of the mdiobus_read function
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the mii_bus struct
+    :type bus: struct mii_bus \*
 
-    :param int addr:
+    :param addr:
         the phy address
+    :type addr: int
 
-    :param u32 regnum:
+    :param regnum:
         register number to read
+    :type regnum: u32
 
 .. _`__mdiobus_read.description`:
 
@@ -262,17 +279,21 @@ __mdiobus_write
 
     Unlocked version of the mdiobus_write function
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the mii_bus struct
+    :type bus: struct mii_bus \*
 
-    :param int addr:
+    :param addr:
         the phy address
+    :type addr: int
 
-    :param u32 regnum:
+    :param regnum:
         register number to write
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         value to write to \ ``regnum``\ 
+    :type val: u16
 
 .. _`__mdiobus_write.description`:
 
@@ -297,14 +318,17 @@ mdiobus_read_nested
 
     Nested version of the mdiobus_read function
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the mii_bus struct
+    :type bus: struct mii_bus \*
 
-    :param int addr:
+    :param addr:
         the phy address
+    :type addr: int
 
-    :param u32 regnum:
+    :param regnum:
         register number to read
+    :type regnum: u32
 
 .. _`mdiobus_read_nested.description`:
 
@@ -332,14 +356,17 @@ mdiobus_read
 
     Convenience function for reading a given MII mgmt register
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the mii_bus struct
+    :type bus: struct mii_bus \*
 
-    :param int addr:
+    :param addr:
         the phy address
+    :type addr: int
 
-    :param u32 regnum:
+    :param regnum:
         register number to read
+    :type regnum: u32
 
 .. _`mdiobus_read.note`:
 
@@ -359,17 +386,21 @@ mdiobus_write_nested
 
     Nested version of the mdiobus_write function
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the mii_bus struct
+    :type bus: struct mii_bus \*
 
-    :param int addr:
+    :param addr:
         the phy address
+    :type addr: int
 
-    :param u32 regnum:
+    :param regnum:
         register number to write
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         value to write to \ ``regnum``\ 
+    :type val: u16
 
 .. _`mdiobus_write_nested.description`:
 
@@ -397,17 +428,21 @@ mdiobus_write
 
     Convenience function for writing a given MII mgmt register
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the mii_bus struct
+    :type bus: struct mii_bus \*
 
-    :param int addr:
+    :param addr:
         the phy address
+    :type addr: int
 
-    :param u32 regnum:
+    :param regnum:
         register number to write
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         value to write to \ ``regnum``\ 
+    :type val: u16
 
 .. _`mdiobus_write.note`:
 
@@ -427,11 +462,13 @@ mdio_bus_match
 
     determine if given MDIO driver supports the given MDIO device
 
-    :param struct device \*dev:
+    :param dev:
         target MDIO device
+    :type dev: struct device \*
 
-    :param struct device_driver \*drv:
+    :param drv:
         given MDIO driver
+    :type drv: struct device_driver \*
 
 .. _`mdio_bus_match.description`:
 

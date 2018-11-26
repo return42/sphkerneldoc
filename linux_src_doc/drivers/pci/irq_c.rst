@@ -10,8 +10,9 @@ pci_lost_interrupt
 
     reports a lost PCI interrupt
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         device whose interrupt is lost
+    :type pdev: struct pci_dev \*
 
 .. _`pci_lost_interrupt.description`:
 
@@ -39,27 +40,33 @@ pci_request_irq
 
     allocate an interrupt line for a PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to operate on
+    :type dev: struct pci_dev \*
 
-    :param unsigned int nr:
+    :param nr:
         device-relative interrupt vector index (0-based).
+    :type nr: unsigned int
 
-    :param irq_handler_t handler:
+    :param handler:
         Function to be called when the IRQ occurs.
         Primary handler for threaded interrupts.
         If NULL and thread_fn != NULL the default primary handler is
         installed.
+    :type handler: irq_handler_t
 
-    :param irq_handler_t thread_fn:
+    :param thread_fn:
         Function called from the IRQ handler thread
         If NULL, no IRQ thread is created
+    :type thread_fn: irq_handler_t
 
-    :param void \*dev_id:
+    :param dev_id:
         Cookie passed back to the handler function
+    :type dev_id: void \*
 
-    :param const char \*fmt:
+    :param fmt:
         Printf-like format string naming the handler
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -84,14 +91,17 @@ pci_free_irq
 
     free an interrupt allocated with pci_request_irq
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to operate on
+    :type dev: struct pci_dev \*
 
-    :param unsigned int nr:
+    :param nr:
         device-relative interrupt vector index (0-based).
+    :type nr: unsigned int
 
-    :param void \*dev_id:
+    :param dev_id:
         Device identity to free
+    :type dev_id: void \*
 
 .. _`pci_free_irq.description`:
 

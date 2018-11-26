@@ -10,11 +10,13 @@ cpqhp_find_slot
 
     find the struct slot of given device
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         scan lots of this controller
+    :type ctrl: struct controller \*
 
-    :param u8 device:
+    :param device:
         the device id to find
+    :type device: u8
 
 .. _`sort_by_size`:
 
@@ -25,8 +27,9 @@ sort_by_size
 
     sort nodes on the list by their length, smallest first.
 
-    :param struct pci_resource \*\*head:
+    :param head:
         list to sort
+    :type head: struct pci_resource \*\*
 
 .. _`sort_by_max_size`:
 
@@ -37,8 +40,9 @@ sort_by_max_size
 
     sort nodes on the list by their length, largest first.
 
-    :param struct pci_resource \*\*head:
+    :param head:
         list to sort
+    :type head: struct pci_resource \*\*
 
 .. _`do_pre_bridge_resource_split`:
 
@@ -49,14 +53,17 @@ do_pre_bridge_resource_split
 
     find node of resources that are unused
 
-    :param struct pci_resource \*\*head:
+    :param head:
         new list head
+    :type head: struct pci_resource \*\*
 
-    :param struct pci_resource \*\*orig_head:
+    :param orig_head:
         original list head
+    :type orig_head: struct pci_resource \*\*
 
-    :param u32 alignment:
+    :param alignment:
         max node size (?)
+    :type alignment: u32
 
 .. _`do_bridge_resource_split`:
 
@@ -67,11 +74,13 @@ do_bridge_resource_split
 
     find one node of resources that aren't in use
 
-    :param struct pci_resource \*\*head:
+    :param head:
         list head
+    :type head: struct pci_resource \*\*
 
-    :param u32 alignment:
+    :param alignment:
         max node size (?)
+    :type alignment: u32
 
 .. _`get_io_resource`:
 
@@ -82,11 +91,13 @@ get_io_resource
 
     find first node of given size not in ISA aliasing window.
 
-    :param struct pci_resource \*\*head:
+    :param head:
         list to search
+    :type head: struct pci_resource \*\*
 
-    :param u32 size:
+    :param size:
         size of node to find, must be a power of two.
+    :type size: u32
 
 .. _`get_io_resource.description`:
 
@@ -106,11 +117,13 @@ get_max_resource
 
     get largest node which has at least the given size.
 
-    :param struct pci_resource \*\*head:
+    :param head:
         the list to search the node in
+    :type head: struct pci_resource \*\*
 
-    :param u32 size:
+    :param size:
         the minimum size of the node to find
+    :type size: u32
 
 .. _`get_max_resource.description`:
 
@@ -130,11 +143,13 @@ get_resource
 
     find resource of given size and split up larger ones.
 
-    :param struct pci_resource \*\*head:
+    :param head:
         the list to search for resources
+    :type head: struct pci_resource \*\*
 
-    :param u32 size:
+    :param size:
         the size limit to use
+    :type size: u32
 
 .. _`get_resource.description`:
 
@@ -156,8 +171,9 @@ cpqhp_resource_sort_and_combine
 
     sort nodes by base addresses and clean up
 
-    :param struct pci_resource \*\*head:
+    :param head:
         the list to sort and clean up
+    :type head: struct pci_resource \*\*
 
 .. _`cpqhp_resource_sort_and_combine.description`:
 
@@ -179,8 +195,9 @@ cpqhp_slot_create
 
     Creates a node and adds it to the proper bus.
 
-    :param u8 busnumber:
+    :param busnumber:
         bus where new node is to be located
+    :type busnumber: u8
 
 .. _`cpqhp_slot_create.description`:
 
@@ -198,8 +215,9 @@ slot_remove
 
     Removes a node from the linked list of slots.
 
-    :param struct pci_func \*old_slot:
+    :param old_slot:
         slot to remove
+    :type old_slot: struct pci_func \*
 
 .. _`slot_remove.description`:
 
@@ -217,8 +235,9 @@ bridge_slot_remove
 
     Removes a node from the linked list of slots.
 
-    :param struct pci_func \*bridge:
+    :param bridge:
         bridge to remove
+    :type bridge: struct pci_func \*
 
 .. _`bridge_slot_remove.description`:
 
@@ -236,14 +255,17 @@ cpqhp_slot_find
 
     Looks for a node by bus, and device, multiple functions accessed
 
-    :param u8 bus:
+    :param bus:
         bus to find
+    :type bus: u8
 
-    :param u8 device:
+    :param device:
         device to find
+    :type device: u8
 
-    :param u8 index:
+    :param index:
         is \ ``0``\  for first function found, \ ``1``\  for the second...
+    :type index: u8
 
 .. _`cpqhp_slot_find.description`:
 
@@ -261,14 +283,17 @@ set_controller_speed
 
     set the frequency and/or mode of a specific controller segment.
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         controller to change frequency/mode for.
+    :type ctrl: struct controller \*
 
-    :param u8 adapter_speed:
+    :param adapter_speed:
         the speed of the adapter we want to match.
+    :type adapter_speed: u8
 
-    :param u8 hp_slot:
+    :param hp_slot:
         the slot number where the adapter is installed.
+    :type hp_slot: u8
 
 .. _`set_controller_speed.description`:
 
@@ -287,11 +312,13 @@ board_replaced
 
     Called after a board has been replaced in the system.
 
-    :param struct pci_func \*func:
+    :param func:
         PCI device/function information
+    :type func: struct pci_func \*
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         hotplug controller
+    :type ctrl: struct controller \*
 
 .. _`board_replaced.description`:
 
@@ -313,11 +340,13 @@ board_added
 
     Called after a board has been added to the system.
 
-    :param struct pci_func \*func:
+    :param func:
         PCI device/function info
+    :type func: struct pci_func \*
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         hotplug controller
+    :type ctrl: struct controller \*
 
 .. _`board_added.description`:
 
@@ -336,14 +365,17 @@ remove_board
 
     Turns off slot and LEDs
 
-    :param struct pci_func \*func:
+    :param func:
         PCI device/function info
+    :type func: struct pci_func \*
 
-    :param u32 replace_flag:
+    :param replace_flag:
         whether replacing or adding a new device
+    :type replace_flag: u32
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         target controller
+    :type ctrl: struct controller \*
 
 .. _`cpqhp_pushbutton_thread`:
 
@@ -354,8 +386,9 @@ cpqhp_pushbutton_thread
 
     handle pushbutton events
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`cpqhp_pushbutton_thread.description`:
 
@@ -374,17 +407,21 @@ switch_leds
 
     switch the leds, go from one site to the other.
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         controller to use
+    :type ctrl: struct controller \*
 
-    :param const int num_of_slots:
+    :param num_of_slots:
         number of slots to use
+    :type num_of_slots: const int
 
-    :param u32 \*work_LED:
+    :param work_LED:
         LED control value
+    :type work_LED: u32 \*
 
-    :param const int direction:
+    :param direction:
         1 to start from the left side, 0 to start right.
+    :type direction: const int
 
 .. _`cpqhp_hardware_test`:
 
@@ -395,11 +432,13 @@ cpqhp_hardware_test
 
     runs hardware tests
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         target controller
+    :type ctrl: struct controller \*
 
-    :param int test_num:
+    :param test_num:
         the number written to the "test" file in sysfs.
+    :type test_num: int
 
 .. _`cpqhp_hardware_test.description`:
 
@@ -417,17 +456,21 @@ configure_new_device
 
     Configures the PCI header information of one board.
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         pointer to controller structure
+    :type ctrl: struct controller \*
 
-    :param struct pci_func \*func:
+    :param func:
         pointer to function structure
+    :type func: struct pci_func \*
 
-    :param u8 behind_bridge:
+    :param behind_bridge:
         1 if this is a recursive call, 0 if not
+    :type behind_bridge: u8
 
-    :param struct resource_lists \*resources:
+    :param resources:
         pointer to set of resource lists
+    :type resources: struct resource_lists \*
 
 .. _`configure_new_device.description`:
 
@@ -445,17 +488,21 @@ configure_new_function
 
     Configures the PCI header information of one device
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         pointer to controller structure
+    :type ctrl: struct controller \*
 
-    :param struct pci_func \*func:
+    :param func:
         pointer to function structure
+    :type func: struct pci_func \*
 
-    :param u8 behind_bridge:
+    :param behind_bridge:
         1 if this is a recursive call, 0 if not
+    :type behind_bridge: u8
 
-    :param struct resource_lists \*resources:
+    :param resources:
         pointer to set of resource lists
+    :type resources: struct resource_lists \*
 
 .. _`configure_new_function.description`:
 

@@ -8,23 +8,29 @@ enic_api_devcmd_proxy_by_index
 
 .. c:function:: int enic_api_devcmd_proxy_by_index(struct net_device *netdev, int vf, enum vnic_devcmd_cmd cmd, u64 *a0, u64 *a1, int wait)
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param int vf:
+    :param vf:
         *undescribed*
+    :type vf: int
 
-    :param enum vnic_devcmd_cmd cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: enum vnic_devcmd_cmd
 
-    :param u64 \*a0:
+    :param a0:
         *undescribed*
+    :type a0: u64 \*
 
-    :param u64 \*a1:
+    :param a1:
         *undescribed*
+    :type a1: u64 \*
 
-    :param int wait:
+    :param wait:
         *undescribed*
+    :type wait: int
 
 .. _`enic_api_devcmd_proxy_by_index.description`:
 

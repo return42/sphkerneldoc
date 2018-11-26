@@ -10,17 +10,21 @@ omap2430_clk_i2chs_find_idlest
 
     return CM_IDLEST info for 2430 I2CHS
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* being enabled
+    :type clk: struct clk_hw_omap \*
 
-    :param struct clk_omap_reg \*idlest_reg:
+    :param idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
+    :type idlest_reg: struct clk_omap_reg \*
 
-    :param u8 \*idlest_bit:
+    :param idlest_bit:
         pointer to a u8 to store the CM_IDLEST bit shift into
+    :type idlest_bit: u8 \*
 
-    :param u8 \*idlest_val:
+    :param idlest_val:
         pointer to a u8 to store the CM_IDLEST indicator
+    :type idlest_val: u8 \*
 
 .. _`omap2430_clk_i2chs_find_idlest.description`:
 

@@ -10,11 +10,13 @@ kvm_handle_wfx
 
     handle a WFI or WFE instructions trapped in guests
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         the vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_run \*run:
+    :param run:
         the kvm_run structure pointer
+    :type run: struct kvm_run \*
 
 .. _`kvm_handle_wfx.wfe`:
 

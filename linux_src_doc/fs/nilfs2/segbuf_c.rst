@@ -10,11 +10,13 @@ nilfs_segbuf_map_cont
 
     map a new log behind a given log
 
-    :param struct nilfs_segment_buffer \*segbuf:
+    :param segbuf:
         new segment buffer
+    :type segbuf: struct nilfs_segment_buffer \*
 
-    :param struct nilfs_segment_buffer \*prev:
+    :param prev:
         segment buffer containing a log to be continued
+    :type prev: struct nilfs_segment_buffer \*
 
 .. _`nilfs_add_checksums_on_logs`:
 
@@ -25,11 +27,13 @@ nilfs_add_checksums_on_logs
 
     add checksums on the logs
 
-    :param struct list_head \*logs:
+    :param logs:
         list of segment buffers storing target logs
+    :type logs: struct list_head \*
 
-    :param u32 seed:
+    :param seed:
         checksum seed value
+    :type seed: u32
 
 .. _`nilfs_alloc_seg_bio`:
 
@@ -40,14 +44,17 @@ nilfs_alloc_seg_bio
 
     allocate a new bio for writing log
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param sector_t start:
+    :param start:
         start block number of the bio
+    :type start: sector_t
 
-    :param int nr_vecs:
+    :param nr_vecs:
         request size of page vector.
+    :type nr_vecs: int
 
 .. _`nilfs_alloc_seg_bio.return-value`:
 
@@ -66,11 +73,13 @@ nilfs_segbuf_write
 
     submit write requests of a log
 
-    :param struct nilfs_segment_buffer \*segbuf:
+    :param segbuf:
         buffer storing a log to be written
+    :type segbuf: struct nilfs_segment_buffer \*
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
 .. _`nilfs_segbuf_write.return-value`:
 
@@ -93,8 +102,9 @@ nilfs_segbuf_wait
 
     wait for completion of requested BIOs
 
-    :param struct nilfs_segment_buffer \*segbuf:
+    :param segbuf:
         segment buffer
+    :type segbuf: struct nilfs_segment_buffer \*
 
 .. _`nilfs_segbuf_wait.return-value`:
 

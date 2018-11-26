@@ -8,17 +8,21 @@ lpfc_nvme_create_queue
 
 .. c:function:: int lpfc_nvme_create_queue(struct nvme_fc_local_port *pnvme_lport, unsigned int qidx, u16 qsize, void **handle)
 
-    :param struct nvme_fc_local_port \*pnvme_lport:
+    :param pnvme_lport:
         *undescribed*
+    :type pnvme_lport: struct nvme_fc_local_port \*
 
-    :param unsigned int qidx:
+    :param qidx:
         An cpu index used to affinitize IO queues and MSIX vectors.
+    :type qidx: unsigned int
 
-    :param u16 qsize:
+    :param qsize:
         *undescribed*
+    :type qsize: u16
 
-    :param void \*\*handle:
+    :param handle:
         An opaque driver handle used in follow-up calls.
+    :type handle: void \*\*
 
 .. _`lpfc_nvme_create_queue.description`:
 
@@ -41,14 +45,17 @@ lpfc_nvme_delete_queue
 
 .. c:function:: void lpfc_nvme_delete_queue(struct nvme_fc_local_port *pnvme_lport, unsigned int qidx, void *handle)
 
-    :param struct nvme_fc_local_port \*pnvme_lport:
+    :param pnvme_lport:
         *undescribed*
+    :type pnvme_lport: struct nvme_fc_local_port \*
 
-    :param unsigned int qidx:
+    :param qidx:
         An cpu index used to affinitize IO queues and MSIX vectors.
+    :type qidx: unsigned int
 
-    :param void \*handle:
+    :param handle:
         An opaque driver handle from lpfc_nvme_create_queue
+    :type handle: void \*
 
 .. _`lpfc_nvme_delete_queue.description`:
 
@@ -78,14 +85,17 @@ lpfc_nvme_ls_req
 
     Issue an Link Service request
 
-    :param struct nvme_fc_local_port \*pnvme_lport:
+    :param pnvme_lport:
         *undescribed*
+    :type pnvme_lport: struct nvme_fc_local_port \*
 
-    :param struct nvme_fc_remote_port \*pnvme_rport:
+    :param pnvme_rport:
         *undescribed*
+    :type pnvme_rport: struct nvme_fc_remote_port \*
 
-    :param struct nvmefc_ls_req \*pnvme_lsreq:
+    :param pnvme_lsreq:
         *undescribed*
+    :type pnvme_lsreq: struct nvmefc_ls_req \*
 
 .. _`lpfc_nvme_ls_req.description`:
 
@@ -114,14 +124,17 @@ lpfc_nvme_ls_abort
 
     Issue an Link Service request
 
-    :param struct nvme_fc_local_port \*pnvme_lport:
+    :param pnvme_lport:
         *undescribed*
+    :type pnvme_lport: struct nvme_fc_local_port \*
 
-    :param struct nvme_fc_remote_port \*pnvme_rport:
+    :param pnvme_rport:
         *undescribed*
+    :type pnvme_rport: struct nvme_fc_remote_port \*
 
-    :param struct nvmefc_ls_req \*pnvme_lsreq:
+    :param pnvme_lsreq:
         *undescribed*
+    :type pnvme_lsreq: struct nvmefc_ls_req \*
 
 .. _`lpfc_nvme_ls_abort.description`:
 
@@ -150,14 +163,17 @@ lpfc_nvme_io_cmd_wqe_cmpl
 
     Complete an NVME-over-FCP IO
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*pwqeIn:
+    :param pwqeIn:
         *undescribed*
+    :type pwqeIn: struct lpfc_iocbq \*
 
-    :param struct lpfc_wcqe_complete \*wcqe:
+    :param wcqe:
         *undescribed*
+    :type wcqe: struct lpfc_wcqe_complete \*
 
 .. _`lpfc_nvme_io_cmd_wqe_cmpl.description`:
 
@@ -187,17 +203,21 @@ lpfc_nvme_prep_io_cmd
 
     Issue an NVME-over-FCP IO
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         *undescribed*
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nvme_buf \*lpfc_ncmd:
+    :param lpfc_ncmd:
         *undescribed*
+    :type lpfc_ncmd: struct lpfc_nvme_buf \*
 
-    :param struct lpfc_nodelist \*pnode:
+    :param pnode:
         *undescribed*
+    :type pnode: struct lpfc_nodelist \*
 
-    :param struct lpfc_nvme_ctrl_stat \*cstat:
+    :param cstat:
         *undescribed*
+    :type cstat: struct lpfc_nvme_ctrl_stat \*
 
 .. _`lpfc_nvme_prep_io_cmd.description`:
 
@@ -227,11 +247,13 @@ lpfc_nvme_prep_io_dma
 
     Issue an NVME-over-FCP IO
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         *undescribed*
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nvme_buf \*lpfc_ncmd:
+    :param lpfc_ncmd:
         *undescribed*
+    :type lpfc_ncmd: struct lpfc_nvme_buf \*
 
 .. _`lpfc_nvme_prep_io_dma.description`:
 
@@ -261,17 +283,21 @@ lpfc_nvme_fcp_io_submit
 
     Issue an NVME-over-FCP IO
 
-    :param struct nvme_fc_local_port \*pnvme_lport:
+    :param pnvme_lport:
         *undescribed*
+    :type pnvme_lport: struct nvme_fc_local_port \*
 
-    :param struct nvme_fc_remote_port \*pnvme_rport:
+    :param pnvme_rport:
         *undescribed*
+    :type pnvme_rport: struct nvme_fc_remote_port \*
 
-    :param void \*hw_queue_handle:
+    :param hw_queue_handle:
         Driver-returned handle in lpfc_nvme_create_queue
+    :type hw_queue_handle: void \*
 
-    :param struct nvmefc_fcp_req \*pnvme_fcreq:
+    :param pnvme_fcreq:
         *undescribed*
+    :type pnvme_fcreq: struct nvmefc_fcp_req \*
 
 .. _`lpfc_nvme_fcp_io_submit.description`:
 
@@ -301,14 +327,17 @@ lpfc_nvme_abort_fcreq_cmpl
 
     Complete an NVME FCP abort request.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         Pointer to command iocb object.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_wcqe_complete \*abts_cmpl:
+    :param abts_cmpl:
         *undescribed*
+    :type abts_cmpl: struct lpfc_wcqe_complete \*
 
 .. _`lpfc_nvme_abort_fcreq_cmpl.description`:
 
@@ -333,17 +362,21 @@ lpfc_nvme_fcp_abort
 
     Issue an NVME-over-FCP ABTS
 
-    :param struct nvme_fc_local_port \*pnvme_lport:
+    :param pnvme_lport:
         *undescribed*
+    :type pnvme_lport: struct nvme_fc_local_port \*
 
-    :param struct nvme_fc_remote_port \*pnvme_rport:
+    :param pnvme_rport:
         *undescribed*
+    :type pnvme_rport: struct nvme_fc_remote_port \*
 
-    :param void \*hw_queue_handle:
+    :param hw_queue_handle:
         Driver-returned handle in lpfc_nvme_create_queue
+    :type hw_queue_handle: void \*
 
-    :param struct nvmefc_fcp_req \*pnvme_fcreq:
+    :param pnvme_fcreq:
         *undescribed*
+    :type pnvme_fcreq: struct nvmefc_fcp_req \*
 
 .. _`lpfc_nvme_fcp_abort.description`:
 
@@ -372,14 +405,17 @@ lpfc_sli4_post_nvme_sgl_block
 
     post a block of nvme sgl list to firmware
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct list_head \*nblist:
+    :param nblist:
         pointer to nvme buffer list.
+    :type nblist: struct list_head \*
 
-    :param int count:
+    :param count:
         number of scsi buffers on the list.
+    :type count: int
 
 .. _`lpfc_sli4_post_nvme_sgl_block.description`:
 
@@ -399,14 +435,17 @@ lpfc_post_nvme_sgl_list
 
     Post blocks of nvme buffer sgls from a list
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct list_head \*post_nblist:
+    :param post_nblist:
         pointer to the nvme buffer list.
+    :type post_nblist: struct list_head \*
 
-    :param int sb_count:
+    :param sb_count:
         *undescribed*
+    :type sb_count: int
 
 .. _`lpfc_post_nvme_sgl_list.description`:
 
@@ -436,8 +475,9 @@ lpfc_repost_nvme_sgl_list
 
     Repost all the allocated nvme buffer sgls
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_repost_nvme_sgl_list.description`:
 
@@ -466,11 +506,13 @@ lpfc_new_nvme_buf
 
     Scsi buffer allocator for HBA with SLI4 IF spec
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port for which this call being executed.
+    :type vport: struct lpfc_vport \*
 
-    :param int num_to_alloc:
+    :param num_to_alloc:
         *undescribed*
+    :type num_to_alloc: int
 
 .. _`lpfc_new_nvme_buf.description`:
 
@@ -499,14 +541,17 @@ lpfc_get_nvme_buf
 
     Get a nvme buffer from lpfc_nvme_buf_list of the HBA
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The HBA for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         *undescribed*
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param int expedite:
+    :param expedite:
         *undescribed*
+    :type expedite: int
 
 .. _`lpfc_get_nvme_buf.description`:
 
@@ -533,11 +578,13 @@ lpfc_release_nvme_buf
 
     Return a nvme buffer back to hba nvme buf list.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_nvme_buf \*lpfc_ncmd:
+    :param lpfc_ncmd:
         The nvme buffer which is being released.
+    :type lpfc_ncmd: struct lpfc_nvme_buf \*
 
 .. _`lpfc_release_nvme_buf.description`:
 
@@ -558,8 +605,9 @@ lpfc_nvme_create_localport
 
     Create/Bind an nvme localport instance. \ ``pvport``\  - the lpfc_vport instance requesting a localport.
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         *undescribed*
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_nvme_create_localport.description`:
 
@@ -587,8 +635,9 @@ lpfc_nvme_destroy_localport
 
     Destroy lpfc_nvme bound to nvme transport.
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         *undescribed*
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_nvme_destroy_localport.description`:
 
@@ -609,11 +658,13 @@ lpfc_sli4_nvme_xri_aborted
 
     Fast-path process of NVME xri abort
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct sli4_wcqe_xri_aborted \*axri:
+    :param axri:
         pointer to the fcp xri abort wcqe structure.
+    :type axri: struct sli4_wcqe_xri_aborted \*
 
 .. _`lpfc_sli4_nvme_xri_aborted.description`:
 
@@ -633,8 +684,9 @@ lpfc_nvme_wait_for_io_drain
 
     Wait for all NVME wqes to complete
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_nvme_wait_for_io_drain.description`:
 

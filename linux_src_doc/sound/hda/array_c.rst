@@ -10,8 +10,9 @@ snd_array_new
 
     get a new element from the given array
 
-    :param struct snd_array \*array:
+    :param array:
         the array object
+    :type array: struct snd_array \*
 
 .. _`snd_array_new.description`:
 
@@ -32,8 +33,9 @@ snd_array_free
 
     free the given array elements
 
-    :param struct snd_array \*array:
+    :param array:
         the array object
+    :type array: struct snd_array \*
 
 .. This file was automatic generated / don't edit.
 

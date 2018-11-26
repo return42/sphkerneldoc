@@ -8,14 +8,17 @@ bw_calcs_init
 
 .. c:function:: void bw_calcs_init(struct bw_calcs_dceip *bw_dceip, struct bw_calcs_vbios *bw_vbios, struct hw_asic_id asic_id)
 
-    :param struct bw_calcs_dceip \*bw_dceip:
+    :param bw_dceip:
         *undescribed*
+    :type bw_dceip: struct bw_calcs_dceip \*
 
-    :param struct bw_calcs_vbios \*bw_vbios:
+    :param bw_vbios:
         *undescribed*
+    :type bw_vbios: struct bw_calcs_vbios \*
 
-    :param struct hw_asic_id asic_id:
+    :param asic_id:
         *undescribed*
+    :type asic_id: struct hw_asic_id
 
 .. _`bw_calcs`:
 
@@ -26,23 +29,29 @@ bw_calcs
 
     true -  Display(s) configuration supported. In this case 'calcs_output' contains data for HW programming false - Display(s) configuration not supported (not enough bandwidth).
 
-    :param struct dc_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct dc_context \*
 
-    :param const struct bw_calcs_dceip \*dceip:
+    :param dceip:
         *undescribed*
+    :type dceip: const struct bw_calcs_dceip \*
 
-    :param const struct bw_calcs_vbios \*vbios:
+    :param vbios:
         *undescribed*
+    :type vbios: const struct bw_calcs_vbios \*
 
-    :param const struct pipe_ctx \*pipe:
+    :param pipe:
         *undescribed*
+    :type pipe: const struct pipe_ctx \*
 
-    :param int pipe_count:
+    :param pipe_count:
         *undescribed*
+    :type pipe_count: int
 
-    :param struct dce_bw_output \*calcs_output:
+    :param calcs_output:
         *undescribed*
+    :type calcs_output: struct dce_bw_output \*
 
 .. This file was automatic generated / don't edit.
 

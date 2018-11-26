@@ -8,11 +8,13 @@ snd_interval_refine_set
 
 .. c:function:: int snd_interval_refine_set(struct snd_interval *i, unsigned int val)
 
-    :param struct snd_interval \*i:
+    :param i:
         *undescribed*
+    :type i: struct snd_interval \*
 
-    :param unsigned int val:
+    :param val:
         *undescribed*
+    :type val: unsigned int
 
 .. _`playback_default_hw_params`:
 
@@ -21,8 +23,9 @@ playback_default_hw_params
 
 .. c:function:: int playback_default_hw_params(struct gaudio_snd_dev *snd)
 
-    :param struct gaudio_snd_dev \*snd:
+    :param snd:
         *undescribed*
+    :type snd: struct gaudio_snd_dev \*
 
 .. _`u_audio_playback`:
 
@@ -31,14 +34,17 @@ u_audio_playback
 
 .. c:function:: size_t u_audio_playback(struct gaudio *card, void *buf, size_t count)
 
-    :param struct gaudio \*card:
+    :param card:
         *undescribed*
+    :type card: struct gaudio \*
 
-    :param void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: void \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`gaudio_open_snd_dev`:
 
@@ -49,8 +55,9 @@ gaudio_open_snd_dev
 
     Initial the PCM or control device
 
-    :param struct gaudio \*card:
+    :param card:
         *undescribed*
+    :type card: struct gaudio \*
 
 .. _`gaudio_close_snd_dev`:
 
@@ -59,8 +66,9 @@ gaudio_close_snd_dev
 
 .. c:function:: int gaudio_close_snd_dev(struct gaudio *gau)
 
-    :param struct gaudio \*gau:
+    :param gau:
         *undescribed*
+    :type gau: struct gaudio \*
 
 .. _`gaudio_setup`:
 
@@ -71,8 +79,9 @@ gaudio_setup
 
     setup ALSA interface and preparing for USB transfer
 
-    :param struct gaudio \*card:
+    :param card:
         *undescribed*
+    :type card: struct gaudio \*
 
 .. _`gaudio_setup.description`:
 
@@ -92,8 +101,9 @@ gaudio_cleanup
 
     remove ALSA device interface
 
-    :param struct gaudio \*the_card:
+    :param the_card:
         *undescribed*
+    :type the_card: struct gaudio \*
 
 .. _`gaudio_cleanup.description`:
 

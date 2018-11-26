@@ -10,14 +10,17 @@ vchan_tx_prep
 
     prepare a descriptor
 
-    :param struct virt_dma_chan \*vc:
+    :param vc:
         virtual channel allocating this descriptor
+    :type vc: struct virt_dma_chan \*
 
-    :param struct virt_dma_desc \*vd:
+    :param vd:
         virtual descriptor to prepare
+    :type vd: struct virt_dma_desc \*
 
-    :param unsigned long tx_flags:
+    :param tx_flags:
         flags argument passed in to prepare function
+    :type tx_flags: unsigned long
 
 .. _`vchan_issue_pending`:
 
@@ -28,8 +31,9 @@ vchan_issue_pending
 
     move submitted descriptors to issued list
 
-    :param struct virt_dma_chan \*vc:
+    :param vc:
         virtual channel to update
+    :type vc: struct virt_dma_chan \*
 
 .. _`vchan_issue_pending.description`:
 
@@ -47,8 +51,9 @@ vchan_cookie_complete
 
     report completion of a descriptor
 
-    :param struct virt_dma_desc \*vd:
+    :param vd:
         virtual descriptor to update
+    :type vd: struct virt_dma_desc \*
 
 .. _`vchan_cookie_complete.description`:
 
@@ -66,8 +71,9 @@ vchan_vdesc_fini
 
     Free or reuse a descriptor
 
-    :param struct virt_dma_desc \*vd:
+    :param vd:
         virtual descriptor to free/reuse
+    :type vd: struct virt_dma_desc \*
 
 .. _`vchan_cyclic_callback`:
 
@@ -78,8 +84,9 @@ vchan_cyclic_callback
 
     report the completion of a period
 
-    :param struct virt_dma_desc \*vd:
+    :param vd:
         virtual descriptor
+    :type vd: struct virt_dma_desc \*
 
 .. _`vchan_terminate_vdesc`:
 
@@ -90,8 +97,9 @@ vchan_terminate_vdesc
 
     Disable pending cyclic callback
 
-    :param struct virt_dma_desc \*vd:
+    :param vd:
         virtual descriptor to be terminated
+    :type vd: struct virt_dma_desc \*
 
 .. _`vchan_terminate_vdesc.description`:
 
@@ -109,8 +117,9 @@ vchan_next_desc
 
     peek at the next descriptor to be processed
 
-    :param struct virt_dma_chan \*vc:
+    :param vc:
         virtual channel to obtain descriptor from
+    :type vc: struct virt_dma_chan \*
 
 .. _`vchan_next_desc.description`:
 
@@ -128,11 +137,13 @@ vchan_get_all_descriptors
 
     obtain all submitted and issued descriptors
 
-    :param struct virt_dma_chan \*vc:
+    :param vc:
         virtual channel to get descriptors from
+    :type vc: struct virt_dma_chan \*
 
-    :param struct list_head \*head:
+    :param head:
         list of descriptors found
+    :type head: struct list_head \*
 
 .. _`vchan_get_all_descriptors.description`:
 
@@ -153,8 +164,9 @@ vchan_synchronize
 
     synchronize callback execution to the current context
 
-    :param struct virt_dma_chan \*vc:
+    :param vc:
         virtual channel to synchronize
+    :type vc: struct virt_dma_chan \*
 
 .. _`vchan_synchronize.description`:
 

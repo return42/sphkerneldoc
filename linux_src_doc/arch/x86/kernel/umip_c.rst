@@ -10,11 +10,13 @@
 
     Print a rate-limited message
 
-    :param  3:
+    :param 3:
         *undescribed*
+    :type 3: 
 
-    :param  4:
+    :param 4:
         *undescribed*
+    :type 4: 
 
 .. _`__printf.description`:
 
@@ -45,8 +47,9 @@ identify_insn
 
     Identify a UMIP-protected instruction
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction structure with opcode and ModRM byte.
+    :type insn: struct insn \*
 
 .. _`identify_insn.description`:
 
@@ -77,17 +80,21 @@ emulate_umip_insn
 
     Emulate UMIP instructions and return dummy values
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction structure with operands
+    :type insn: struct insn \*
 
-    :param int umip_inst:
+    :param umip_inst:
         A constant indicating the instruction to emulate
+    :type umip_inst: int
 
-    :param unsigned char \*data:
+    :param data:
         Buffer into which the dummy result is stored
+    :type data: unsigned char \*
 
-    :param int \*data_size:
+    :param data_size:
         Size of the emulated result
+    :type data_size: int \*
 
 .. _`emulate_umip_insn.description`:
 
@@ -118,11 +125,13 @@ force_sig_info_umip_fault
 
     Force a SIGSEGV with SEGV_MAPERR
 
-    :param void __user \*addr:
+    :param addr:
         Address that caused the signal
+    :type addr: void __user \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register set containing the instruction pointer
+    :type regs: struct pt_regs \*
 
 .. _`force_sig_info_umip_fault.description`:
 
@@ -149,8 +158,9 @@ fixup_umip_exception
 
     Fixup a general protection fault caused by UMIP
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Registers as saved when entering the #GP handler
+    :type regs: struct pt_regs \*
 
 .. _`fixup_umip_exception.description`:
 

@@ -10,14 +10,17 @@ nfp_net_get_mac_addr
 
     Get the MAC address.
 
-    :param struct nfp_pf \*pf:
+    :param pf:
         NFP PF handle
+    :type pf: struct nfp_pf \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         net_device to set MAC address on
+    :type netdev: struct net_device \*
 
-    :param struct nfp_port \*port:
+    :param port:
         NFP port structure
+    :type port: struct nfp_port \*
 
 .. _`nfp_net_get_mac_addr.description`:
 

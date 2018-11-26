@@ -10,8 +10,9 @@ printk_safe_flush
 
     flush all per-cpu nmi buffers.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`printk_safe_flush.description`:
 
@@ -31,8 +32,9 @@ printk_safe_flush_on_panic
 
     flush all per-cpu nmi buffers when the system goes down.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`printk_safe_flush_on_panic.description`:
 

@@ -218,14 +218,17 @@ xudc_write32
 
     little endian write to device registers
 
-    :param void __iomem \*addr:
+    :param addr:
         base addr of device registers
+    :type addr: void __iomem \*
 
-    :param u32 offset:
+    :param offset:
         register offset
+    :type offset: u32
 
-    :param u32 val:
+    :param val:
         data to be written
+    :type val: u32
 
 .. _`xudc_read32`:
 
@@ -236,8 +239,9 @@ xudc_read32
 
     little endian read from device registers
 
-    :param void __iomem \*addr:
+    :param addr:
         addr of device register
+    :type addr: void __iomem \*
 
 .. _`xudc_read32.return`:
 
@@ -255,14 +259,17 @@ xudc_write32_be
 
     big endian write to device registers
 
-    :param void __iomem \*addr:
+    :param addr:
         base addr of device registers
+    :type addr: void __iomem \*
 
-    :param u32 offset:
+    :param offset:
         register offset
+    :type offset: u32
 
-    :param u32 val:
+    :param val:
         data to be written
+    :type val: u32
 
 .. _`xudc_read32_be`:
 
@@ -273,8 +280,9 @@ xudc_read32_be
 
     big endian read from device registers
 
-    :param void __iomem \*addr:
+    :param addr:
         addr of device register
+    :type addr: void __iomem \*
 
 .. _`xudc_read32_be.return`:
 
@@ -292,8 +300,9 @@ xudc_wrstatus
 
     Sets up the usb device status stages.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the usb device controller structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_epconfig`:
 
@@ -304,11 +313,13 @@ xudc_epconfig
 
     Configures the given endpoint.
 
-    :param struct xusb_ep \*ep:
+    :param ep:
         pointer to the usb device endpoint structure.
+    :type ep: struct xusb_ep \*
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the usb peripheral controller structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_epconfig.description`:
 
@@ -327,17 +338,21 @@ xudc_start_dma
 
     Starts DMA transfer.
 
-    :param struct xusb_ep \*ep:
+    :param ep:
         pointer to the usb device endpoint structure.
+    :type ep: struct xusb_ep \*
 
-    :param dma_addr_t src:
+    :param src:
         DMA source address.
+    :type src: dma_addr_t
 
-    :param dma_addr_t dst:
+    :param dst:
         DMA destination address.
+    :type dst: dma_addr_t
 
-    :param u32 length:
+    :param length:
         number of bytes to transfer.
+    :type length: u32
 
 .. _`xudc_start_dma.return`:
 
@@ -358,17 +373,21 @@ xudc_dma_send
 
     Sends IN data using DMA.
 
-    :param struct xusb_ep \*ep:
+    :param ep:
         pointer to the usb device endpoint structure.
+    :type ep: struct xusb_ep \*
 
-    :param struct xusb_req \*req:
+    :param req:
         pointer to the usb request structure.
+    :type req: struct xusb_req \*
 
-    :param u8 \*buffer:
+    :param buffer:
         pointer to data to be sent.
+    :type buffer: u8 \*
 
-    :param u32 length:
+    :param length:
         number of bytes to send.
+    :type length: u32
 
 .. _`xudc_dma_send.return`:
 
@@ -389,17 +408,21 @@ xudc_dma_receive
 
     Receives OUT data using DMA.
 
-    :param struct xusb_ep \*ep:
+    :param ep:
         pointer to the usb device endpoint structure.
+    :type ep: struct xusb_ep \*
 
-    :param struct xusb_req \*req:
+    :param req:
         pointer to the usb request structure.
+    :type req: struct xusb_req \*
 
-    :param u8 \*buffer:
+    :param buffer:
         pointer to storage buffer of received data.
+    :type buffer: u8 \*
 
-    :param u32 length:
+    :param length:
         number of bytes to receive.
+    :type length: u32
 
 .. _`xudc_dma_receive.return`:
 
@@ -420,17 +443,21 @@ xudc_eptxrx
 
     Transmits or receives data to or from an endpoint.
 
-    :param struct xusb_ep \*ep:
+    :param ep:
         pointer to the usb endpoint configuration structure.
+    :type ep: struct xusb_ep \*
 
-    :param struct xusb_req \*req:
+    :param req:
         pointer to the usb request structure.
+    :type req: struct xusb_req \*
 
-    :param u8 \*bufferptr:
+    :param bufferptr:
         pointer to buffer containing the data to be sent.
+    :type bufferptr: u8 \*
 
-    :param u32 bufferlen:
+    :param bufferlen:
         The number of data bytes to be sent.
+    :type bufferlen: u32
 
 .. _`xudc_eptxrx.return`:
 
@@ -451,14 +478,17 @@ xudc_done
 
     Exeutes the endpoint data transfer completion tasks.
 
-    :param struct xusb_ep \*ep:
+    :param ep:
         pointer to the usb device endpoint structure.
+    :type ep: struct xusb_ep \*
 
-    :param struct xusb_req \*req:
+    :param req:
         pointer to the usb request structure.
+    :type req: struct xusb_req \*
 
-    :param int status:
+    :param status:
         Status of the data transfer.
+    :type status: int
 
 .. _`xudc_done.description`:
 
@@ -477,11 +507,13 @@ xudc_read_fifo
 
     Reads the data from the given endpoint buffer.
 
-    :param struct xusb_ep \*ep:
+    :param ep:
         pointer to the usb device endpoint structure.
+    :type ep: struct xusb_ep \*
 
-    :param struct xusb_req \*req:
+    :param req:
         pointer to the usb request structure.
+    :type req: struct xusb_req \*
 
 .. _`xudc_read_fifo.return`:
 
@@ -501,11 +533,13 @@ xudc_write_fifo
 
     Writes data into the given endpoint buffer.
 
-    :param struct xusb_ep \*ep:
+    :param ep:
         pointer to the usb device endpoint structure.
+    :type ep: struct xusb_ep \*
 
-    :param struct xusb_req \*req:
+    :param req:
         pointer to the usb request structure.
+    :type req: struct xusb_req \*
 
 .. _`xudc_write_fifo.return`:
 
@@ -525,11 +559,13 @@ xudc_nuke
 
     Cleans up the data transfer message list.
 
-    :param struct xusb_ep \*ep:
+    :param ep:
         pointer to the usb device endpoint structure.
+    :type ep: struct xusb_ep \*
 
-    :param int status:
+    :param status:
         Status of the data transfer.
+    :type status: int
 
 .. _`xudc_ep_set_halt`:
 
@@ -540,11 +576,13 @@ xudc_ep_set_halt
 
     Stalls/unstalls the given endpoint.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         pointer to the usb device endpoint structure.
+    :type _ep: struct usb_ep \*
 
-    :param int value:
+    :param value:
         value to indicate stall/unstall.
+    :type value: int
 
 .. _`xudc_ep_set_halt.return`:
 
@@ -562,11 +600,13 @@ Return
 
     Enables the given endpoint.
 
-    :param struct xusb_ep \*ep:
+    :param ep:
         pointer to the xusb endpoint structure.
+    :type ep: struct xusb_ep \*
 
-    :param const struct usb_endpoint_descriptor \*desc:
+    :param desc:
         pointer to usb endpoint descriptor.
+    :type desc: const struct usb_endpoint_descriptor \*
 
 .. _`__xudc_ep_enable.return`:
 
@@ -584,11 +624,13 @@ xudc_ep_enable
 
     Enables the given endpoint.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         pointer to the usb endpoint structure.
+    :type _ep: struct usb_ep \*
 
-    :param const struct usb_endpoint_descriptor \*desc:
+    :param desc:
         pointer to usb endpoint descriptor.
+    :type desc: const struct usb_endpoint_descriptor \*
 
 .. _`xudc_ep_enable.return`:
 
@@ -606,8 +648,9 @@ xudc_ep_disable
 
     Disables the given endpoint.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         pointer to the usb endpoint structure.
+    :type _ep: struct usb_ep \*
 
 .. _`xudc_ep_disable.return`:
 
@@ -625,11 +668,13 @@ xudc_ep_alloc_request
 
     Initializes the request queue.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         pointer to the usb endpoint structure.
+    :type _ep: struct usb_ep \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         Flags related to the request call.
+    :type gfp_flags: gfp_t
 
 .. _`xudc_ep_alloc_request.return`:
 
@@ -647,11 +692,13 @@ xudc_free_request
 
     Releases the request from queue.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         pointer to the usb device endpoint structure.
+    :type _ep: struct usb_ep \*
 
-    :param struct usb_request \*_req:
+    :param _req:
         pointer to the usb request structure.
+    :type _req: struct usb_request \*
 
 .. _`__xudc_ep0_queue`:
 
@@ -662,11 +709,13 @@ xudc_free_request
 
     Adds the request to endpoint 0 queue.
 
-    :param struct xusb_ep \*ep0:
+    :param ep0:
         pointer to the xusb endpoint 0 structure.
+    :type ep0: struct xusb_ep \*
 
-    :param struct xusb_req \*req:
+    :param req:
         pointer to the xusb request structure.
+    :type req: struct xusb_req \*
 
 .. _`__xudc_ep0_queue.return`:
 
@@ -684,14 +733,17 @@ xudc_ep0_queue
 
     Adds the request to endpoint 0 queue.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         pointer to the usb endpoint 0 structure.
+    :type _ep: struct usb_ep \*
 
-    :param struct usb_request \*_req:
+    :param _req:
         pointer to the usb request structure.
+    :type _req: struct usb_request \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         Flags related to the request call.
+    :type gfp_flags: gfp_t
 
 .. _`xudc_ep0_queue.return`:
 
@@ -709,14 +761,17 @@ xudc_ep_queue
 
     Adds the request to endpoint queue.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         pointer to the usb endpoint structure.
+    :type _ep: struct usb_ep \*
 
-    :param struct usb_request \*_req:
+    :param _req:
         pointer to the usb request structure.
+    :type _req: struct usb_request \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         Flags related to the request call.
+    :type gfp_flags: gfp_t
 
 .. _`xudc_ep_queue.return`:
 
@@ -734,11 +789,13 @@ xudc_ep_dequeue
 
     Removes the request from the queue.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         pointer to the usb device endpoint structure.
+    :type _ep: struct usb_ep \*
 
-    :param struct usb_request \*_req:
+    :param _req:
         pointer to the usb request structure.
+    :type _req: struct usb_request \*
 
 .. _`xudc_ep_dequeue.return`:
 
@@ -756,11 +813,13 @@ xudc_ep0_enable
 
     Enables the given endpoint.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         pointer to the usb endpoint structure.
+    :type ep: struct usb_ep \*
 
-    :param const struct usb_endpoint_descriptor \*desc:
+    :param desc:
         pointer to usb endpoint descriptor.
+    :type desc: const struct usb_endpoint_descriptor \*
 
 .. _`xudc_ep0_enable.return`:
 
@@ -780,8 +839,9 @@ xudc_ep0_disable
 
     Disables the given endpoint.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         pointer to the usb endpoint structure.
+    :type ep: struct usb_ep \*
 
 .. _`xudc_ep0_disable.return`:
 
@@ -801,8 +861,9 @@ xudc_get_frame
 
     Reads the current usb frame number.
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         pointer to the usb gadget structure.
+    :type gadget: struct usb_gadget \*
 
 .. _`xudc_get_frame.return`:
 
@@ -820,8 +881,9 @@ xudc_wakeup
 
     Send remote wakeup signal to host
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         pointer to the usb gadget structure.
+    :type gadget: struct usb_gadget \*
 
 .. _`xudc_wakeup.return`:
 
@@ -839,11 +901,13 @@ xudc_pullup
 
     start/stop USB traffic
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         pointer to the usb gadget structure.
+    :type gadget: struct usb_gadget \*
 
-    :param int is_on:
+    :param is_on:
         flag to start or stop
+    :type is_on: int
 
 .. _`xudc_pullup.return`:
 
@@ -863,8 +927,9 @@ xudc_eps_init
 
     initialize endpoints.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the usb device controller structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_stop_activity`:
 
@@ -875,8 +940,9 @@ xudc_stop_activity
 
     Stops any further activity on the device.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the usb device controller structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_start`:
 
@@ -887,11 +953,13 @@ xudc_start
 
     Starts the device.
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         pointer to the usb gadget structure
+    :type gadget: struct usb_gadget \*
 
-    :param struct usb_gadget_driver \*driver:
+    :param driver:
         pointer to gadget driver structure
+    :type driver: struct usb_gadget_driver \*
 
 .. _`xudc_start.return`:
 
@@ -909,8 +977,9 @@ xudc_stop
 
     stops the device.
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         pointer to the usb gadget structure
+    :type gadget: struct usb_gadget \*
 
 .. _`xudc_stop.return`:
 
@@ -928,8 +997,9 @@ xudc_clear_stall_all_ep
 
     clears stall of every endpoint.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the udc structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_startup_handler`:
 
@@ -940,11 +1010,13 @@ xudc_startup_handler
 
     The usb device controller interrupt handler.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the udc structure.
+    :type udc: struct xusb_udc \*
 
-    :param u32 intrstatus:
+    :param intrstatus:
         The mask value containing the interrupt sources.
+    :type intrstatus: u32
 
 .. _`xudc_startup_handler.description`:
 
@@ -962,8 +1034,9 @@ xudc_ep0_stall
 
     Stall endpoint zero.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the udc structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_ep0_stall.description`:
 
@@ -981,8 +1054,9 @@ xudc_setaddress
 
     executes SET_ADDRESS command
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the udc structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_setaddress.description`:
 
@@ -1000,8 +1074,9 @@ xudc_getstatus
 
     executes GET_STATUS command
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the udc structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_getstatus.description`:
 
@@ -1019,8 +1094,9 @@ xudc_set_clear_feature
 
     Executes the set feature and clear feature commands.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the usb device controller structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_set_clear_feature.description`:
 
@@ -1038,8 +1114,9 @@ xudc_handle_setup
 
     Processes the setup packet.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the usb device controller structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_handle_setup.description`:
 
@@ -1057,8 +1134,9 @@ xudc_ep0_out
 
     Processes the endpoint 0 OUT token.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the usb device controller structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_ep0_in`:
 
@@ -1069,8 +1147,9 @@ xudc_ep0_in
 
     Processes the endpoint 0 IN token.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the usb device controller structure.
+    :type udc: struct xusb_udc \*
 
 .. _`xudc_ctrl_ep_handler`:
 
@@ -1081,11 +1160,13 @@ xudc_ctrl_ep_handler
 
     Endpoint 0 interrupt handler.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the udc structure.
+    :type udc: struct xusb_udc \*
 
-    :param u32 intrstatus:
+    :param intrstatus:
         It's the mask value for the interrupt sources on endpoint 0.
+    :type intrstatus: u32
 
 .. _`xudc_ctrl_ep_handler.description`:
 
@@ -1103,15 +1184,18 @@ xudc_nonctrl_ep_handler
 
     Non control endpoint interrupt handler.
 
-    :param struct xusb_udc \*udc:
+    :param udc:
         pointer to the udc structure.
+    :type udc: struct xusb_udc \*
 
-    :param u8 epnum:
+    :param epnum:
         End point number for which the interrupt is to be processed
+    :type epnum: u8
 
-    :param u32 intrstatus:
+    :param intrstatus:
         mask value for interrupt sources of endpoints other
         than endpoint 0.
+    :type intrstatus: u32
 
 .. _`xudc_nonctrl_ep_handler.description`:
 
@@ -1129,11 +1213,13 @@ xudc_irq
 
     The main interrupt handler.
 
-    :param int irq:
+    :param irq:
         The interrupt number.
+    :type irq: int
 
-    :param void \*_udc:
+    :param _udc:
         pointer to the usb device controller structure.
+    :type _udc: void \*
 
 .. _`xudc_irq.return`:
 
@@ -1151,8 +1237,9 @@ xudc_probe
 
     The device probe function for driver initialization.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to the platform device structure.
+    :type pdev: struct platform_device \*
 
 .. _`xudc_probe.return`:
 
@@ -1170,8 +1257,9 @@ xudc_remove
 
     Releases the resources allocated during the initialization.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to the platform device structure.
+    :type pdev: struct platform_device \*
 
 .. _`xudc_remove.return`:
 

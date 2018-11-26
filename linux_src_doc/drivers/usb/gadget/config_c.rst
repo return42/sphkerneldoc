@@ -10,14 +10,17 @@ usb_descriptor_fillbuf
 
     fill buffer with descriptors
 
-    :param void \*buf:
+    :param buf:
         Buffer to be filled
+    :type buf: void \*
 
-    :param unsigned buflen:
+    :param buflen:
         Size of buf
+    :type buflen: unsigned
 
-    :param const struct usb_descriptor_header \*\*src:
+    :param src:
         Array of descriptor pointers, terminated by null pointer.
+    :type src: const struct usb_descriptor_header \*\*
 
 .. _`usb_descriptor_fillbuf.description`:
 
@@ -39,20 +42,24 @@ usb_gadget_config_buf
 
     builts a complete configuration descriptor
 
-    :param const struct usb_config_descriptor \*config:
+    :param config:
         Header for the descriptor, including characteristics such
         as power requirements and number of interfaces.
+    :type config: const struct usb_config_descriptor \*
 
-    :param void \*buf:
+    :param buf:
         Buffer for the resulting configuration descriptor.
+    :type buf: void \*
 
-    :param unsigned length:
+    :param length:
         Length of buffer.  If this is not big enough to hold the
         entire configuration descriptor, an error code will be returned.
+    :type length: unsigned
 
-    :param const struct usb_descriptor_header \*\*desc:
+    :param desc:
         Null-terminated vector of pointers to the descriptors (interface,
         endpoint, etc) defining all functions in this device configuration.
+    :type desc: const struct usb_descriptor_header \*\*
 
 .. _`usb_gadget_config_buf.description`:
 
@@ -78,8 +85,9 @@ usb_copy_descriptors
 
     copy a vector of USB descriptors
 
-    :param struct usb_descriptor_header \*\*src:
+    :param src:
         null-terminated vector to copy
+    :type src: struct usb_descriptor_header \*\*
 
 .. _`usb_copy_descriptors.context`:
 

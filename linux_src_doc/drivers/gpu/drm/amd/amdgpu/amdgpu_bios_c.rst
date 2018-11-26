@@ -10,17 +10,21 @@ amdgpu_atrm_call
 
     fetch a chunk of the vbios
 
-    :param acpi_handle atrm_handle:
+    :param atrm_handle:
         acpi ATRM handle
+    :type atrm_handle: acpi_handle
 
-    :param uint8_t \*bios:
+    :param bios:
         vbios image pointer
+    :type bios: uint8_t \*
 
-    :param int offset:
+    :param offset:
         offset of vbios image data to fetch
+    :type offset: int
 
-    :param int len:
+    :param len:
         length of vbios image data to fetch
+    :type len: int
 
 .. _`amdgpu_atrm_call.description`:
 

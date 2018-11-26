@@ -10,8 +10,9 @@ sys_acct
 
     enable/disable process accounting
 
-    :param const char __user \*name:
+    :param name:
         file name for accounting records or NULL to shutdown accounting
+    :type name: const char __user \*
 
 .. _`sys_acct.description`:
 
@@ -34,11 +35,13 @@ acct_collect
 
     collect accounting information into pacct_struct
 
-    :param long exitcode:
+    :param exitcode:
         task exit code
+    :type exitcode: long
 
-    :param int group_dead:
+    :param group_dead:
         not 0, if this thread is the last one in the process.
+    :type group_dead: int
 
 .. _`acct_process`:
 
@@ -47,8 +50,9 @@ acct_process
 
 .. c:function:: void acct_process( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`acct_process.description`:
 

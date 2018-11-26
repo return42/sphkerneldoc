@@ -10,8 +10,9 @@ list_first_mbo
 
     get the first mbo from a list
 
-    :param  ptr:
+    :param ptr:
         the list head to take the mbo from.
+    :type ptr: 
 
 .. _`configure_channel`:
 
@@ -22,14 +23,17 @@ configure_channel
 
     called from MOST core to configure a channel
 
-    :param struct most_interface \*most_iface:
+    :param most_iface:
         *undescribed*
+    :type most_iface: struct most_interface \*
 
-    :param int ch_idx:
+    :param ch_idx:
         *undescribed*
+    :type ch_idx: int
 
-    :param struct most_channel_config \*channel_config:
+    :param channel_config:
         structure that holds the configuration information
+    :type channel_config: struct most_channel_config \*
 
 .. _`configure_channel.description`:
 
@@ -50,14 +54,17 @@ enqueue
 
     called from MOST core to enqueue a buffer for data transfer
 
-    :param struct most_interface \*most_iface:
+    :param most_iface:
         *undescribed*
+    :type most_iface: struct most_interface \*
 
-    :param int ch_idx:
+    :param ch_idx:
         *undescribed*
+    :type ch_idx: int
 
-    :param struct mbo \*mbo:
+    :param mbo:
         pointer to the buffer object
+    :type mbo: struct mbo \*
 
 .. _`enqueue.description`:
 
@@ -78,11 +85,13 @@ poison_channel
 
     called from MOST core to poison buffers of a channel
 
-    :param struct most_interface \*most_iface:
+    :param most_iface:
         *undescribed*
+    :type most_iface: struct most_interface \*
 
-    :param int ch_idx:
+    :param ch_idx:
         *undescribed*
+    :type ch_idx: int
 
 .. _`poison_channel.description`:
 
@@ -103,8 +112,9 @@ pending_rx_work
 
     Read pending messages through I2C
 
-    :param struct work_struct \*work:
+    :param work:
         definition of this work item
+    :type work: struct work_struct \*
 
 .. _`pending_rx_work.description`:
 

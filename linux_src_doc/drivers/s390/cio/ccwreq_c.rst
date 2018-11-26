@@ -10,11 +10,13 @@ lpm_adjust
 
     adjust path mask
 
-    :param int lpm:
+    :param lpm:
         path mask to adjust
+    :type lpm: int
 
-    :param int mask:
+    :param mask:
         mask of available paths
+    :type mask: int
 
 .. _`lpm_adjust.description`:
 
@@ -33,8 +35,9 @@ ccw_request_start
 
     perform I/O request
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_request_start.description`:
 
@@ -52,8 +55,9 @@ ccw_request_cancel
 
     cancel running I/O request
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_request_cancel.description`:
 
@@ -72,8 +76,9 @@ ccw_request_handler
 
     interrupt handler for I/O request procedure.
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_request_handler.description`:
 
@@ -91,8 +96,9 @@ ccw_request_timeout
 
     timeout handler for I/O request procedure
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_request_timeout.description`:
 
@@ -110,8 +116,9 @@ ccw_request_notoper
 
     notoper handler for I/O request procedure
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_request_notoper.description`:
 

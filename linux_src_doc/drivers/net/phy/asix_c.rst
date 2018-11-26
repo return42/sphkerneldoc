@@ -10,8 +10,9 @@ asix_soft_reset
 
     software reset the PHY via BMCR_RESET bit
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`asix_soft_reset.description`:
 

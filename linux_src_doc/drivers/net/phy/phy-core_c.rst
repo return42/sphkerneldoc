@@ -10,20 +10,25 @@ phy_lookup_setting
 
     lookup a PHY setting
 
-    :param int speed:
+    :param speed:
         speed to match
+    :type speed: int
 
-    :param int duplex:
+    :param duplex:
         duplex to match
+    :type duplex: int
 
-    :param const unsigned long \*mask:
+    :param mask:
         allowed link modes
+    :type mask: const unsigned long \*
 
-    :param size_t maxbit:
+    :param maxbit:
         bit size of link modes
+    :type maxbit: size_t
 
-    :param bool exact:
+    :param exact:
         an exact match is required
+    :type exact: bool
 
 .. _`phy_lookup_setting.description`:
 
@@ -49,8 +54,9 @@ phy_resolve_aneg_linkmode
 
     resolve the advertisements into phy settings
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         The phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_resolve_aneg_linkmode.description`:
 
@@ -70,14 +76,17 @@ phy_read_mmd
 
     Convenience function for reading a register from an MMD on a given PHY.
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         The phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param int devad:
+    :param devad:
         The MMD to read from (0..31)
+    :type devad: int
 
-    :param u32 regnum:
+    :param regnum:
         The register on the MMD to read (0..65535)
+    :type regnum: u32
 
 .. _`phy_read_mmd.description`:
 
@@ -95,17 +104,21 @@ phy_write_mmd
 
     Convenience function for writing a register on an MMD on a given PHY.
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         The phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param int devad:
+    :param devad:
         The MMD to read from
+    :type devad: int
 
-    :param u32 regnum:
+    :param regnum:
         The register on the MMD to read
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         value to write to \ ``regnum``\ 
+    :type val: u16
 
 .. _`phy_write_mmd.description`:
 
@@ -123,17 +136,21 @@ Same rules as for \ :c:func:`phy_write`\ ;
 
     Convenience function for modifying a PHY register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         a pointer to a \ :c:type:`struct phy_device <phy_device>`\ 
+    :type phydev: struct phy_device \*
 
-    :param u32 regnum:
+    :param regnum:
         register number
+    :type regnum: u32
 
-    :param u16 mask:
+    :param mask:
         bit mask of bits to clear
+    :type mask: u16
 
-    :param u16 set:
+    :param set:
         bit mask of bits to set
+    :type set: u16
 
 .. _`__phy_modify.description`:
 
@@ -152,17 +169,21 @@ phy_modify
 
     Convenience function for modifying a given PHY register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 regnum:
+    :param regnum:
         register number to write
+    :type regnum: u32
 
-    :param u16 mask:
+    :param mask:
         bit mask of bits to clear
+    :type mask: u16
 
-    :param u16 set:
+    :param set:
         new value of bits set in mask to write to \ ``regnum``\ 
+    :type set: u16
 
 .. _`phy_modify.note`:
 
@@ -182,8 +203,9 @@ phy_save_page
 
     take the bus lock and save the current page
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         a pointer to a \ :c:type:`struct phy_device <phy_device>`\ 
+    :type phydev: struct phy_device \*
 
 .. _`phy_save_page.description`:
 
@@ -203,11 +225,13 @@ phy_select_page
 
     take the bus lock, save the current page, and set a page
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         a pointer to a \ :c:type:`struct phy_device <phy_device>`\ 
+    :type phydev: struct phy_device \*
 
-    :param int page:
+    :param page:
         desired page
+    :type page: int
 
 .. _`phy_select_page.description`:
 
@@ -229,14 +253,17 @@ phy_restore_page
 
     restore the page register and release the bus lock
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         a pointer to a \ :c:type:`struct phy_device <phy_device>`\ 
+    :type phydev: struct phy_device \*
 
-    :param int oldpage:
+    :param oldpage:
         the old page, return value from \ :c:func:`phy_save_page`\  or \ :c:func:`phy_select_page`\ 
+    :type oldpage: int
 
-    :param int ret:
+    :param ret:
         operation's return code
+    :type ret: int
 
 .. _`phy_restore_page.description`:
 
@@ -266,14 +293,17 @@ phy_read_paged
 
     Convenience function for reading a paged register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         a pointer to a \ :c:type:`struct phy_device <phy_device>`\ 
+    :type phydev: struct phy_device \*
 
-    :param int page:
+    :param page:
         the page for the phy
+    :type page: int
 
-    :param u32 regnum:
+    :param regnum:
         register number
+    :type regnum: u32
 
 .. _`phy_read_paged.description`:
 
@@ -291,17 +321,21 @@ phy_write_paged
 
     Convenience function for writing a paged register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         a pointer to a \ :c:type:`struct phy_device <phy_device>`\ 
+    :type phydev: struct phy_device \*
 
-    :param int page:
+    :param page:
         the page for the phy
+    :type page: int
 
-    :param u32 regnum:
+    :param regnum:
         register number
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         value to write
+    :type val: u16
 
 .. _`phy_write_paged.description`:
 
@@ -319,20 +353,25 @@ phy_modify_paged
 
     Convenience function for modifying a paged register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         a pointer to a \ :c:type:`struct phy_device <phy_device>`\ 
+    :type phydev: struct phy_device \*
 
-    :param int page:
+    :param page:
         the page for the phy
+    :type page: int
 
-    :param u32 regnum:
+    :param regnum:
         register number
+    :type regnum: u32
 
-    :param u16 mask:
+    :param mask:
         bit mask of bits to clear
+    :type mask: u16
 
-    :param u16 set:
+    :param set:
         bit mask of bits to set
+    :type set: u16
 
 .. _`phy_modify_paged.description`:
 

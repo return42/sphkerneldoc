@@ -10,14 +10,17 @@ llc_mac_hdr_init
 
     fills MAC header fields
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the frame to initialize its MAC header
+    :type skb: struct sk_buff \*
 
-    :param const unsigned char \*sa:
+    :param sa:
         The MAC source address
+    :type sa: const unsigned char \*
 
-    :param const unsigned char \*da:
+    :param da:
         The MAC destination address
+    :type da: const unsigned char \*
 
 .. _`llc_mac_hdr_init.description`:
 
@@ -36,17 +39,21 @@ llc_build_and_send_ui_pkt
 
     unitdata request interface for upper layers
 
-    :param struct llc_sap \*sap:
+    :param sap:
         sap to use
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send
+    :type skb: struct sk_buff \*
 
-    :param unsigned char \*dmac:
+    :param dmac:
         destination mac address
+    :type dmac: unsigned char \*
 
-    :param unsigned char dsap:
+    :param dsap:
         destination sap
+    :type dsap: unsigned char
 
 .. _`llc_build_and_send_ui_pkt.description`:
 

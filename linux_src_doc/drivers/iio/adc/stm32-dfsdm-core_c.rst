@@ -10,8 +10,9 @@ stm32_dfsdm_start_dfsdm
 
     start global dfsdm interface.
 
-    :param struct stm32_dfsdm \*dfsdm:
+    :param dfsdm:
         Handle used to retrieve dfsdm context.
+    :type dfsdm: struct stm32_dfsdm \*
 
 .. _`stm32_dfsdm_start_dfsdm.description`:
 
@@ -29,8 +30,9 @@ stm32_dfsdm_stop_dfsdm
 
     stop global DFSDM interface.
 
-    :param struct stm32_dfsdm \*dfsdm:
+    :param dfsdm:
         Handle used to retrieve dfsdm context.
+    :type dfsdm: struct stm32_dfsdm \*
 
 .. _`stm32_dfsdm_stop_dfsdm.description`:
 

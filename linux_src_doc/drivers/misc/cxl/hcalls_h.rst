@@ -10,11 +10,13 @@ cxl_h_detach_process
 
     Detach a process element from a coherent platform function.
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 process_token:
+    :param process_token:
         *undescribed*
+    :type process_token: u64
 
 .. _`cxl_h_reset_afu`:
 
@@ -25,8 +27,9 @@ cxl_h_reset_afu
 
     Perform a reset to the coherent platform function.
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
 .. _`cxl_h_suspend_process`:
 
@@ -37,11 +40,13 @@ cxl_h_suspend_process
 
     Suspend a process from being executed Parameter1 = process-token as returned from H_ATTACH_CA_PROCESS when process was attached.
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 process_token:
+    :param process_token:
         *undescribed*
+    :type process_token: u64
 
 .. _`cxl_h_resume_process`:
 
@@ -52,11 +57,13 @@ cxl_h_resume_process
 
     Resume a process to be executed Parameter1 = process-token as returned from H_ATTACH_CA_PROCESS when process was attached.
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 process_token:
+    :param process_token:
         *undescribed*
+    :type process_token: u64
 
 .. _`cxl_h_read_error_state`:
 
@@ -67,11 +74,13 @@ cxl_h_read_error_state
 
     Reads the error state of the coherent platform function. R4 contains the error state
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 \*state:
+    :param state:
         *undescribed*
+    :type state: u64 \*
 
 .. _`cxl_h_get_afu_err`:
 
@@ -82,17 +91,21 @@ cxl_h_get_afu_err
 
     collect the AFU error buffer Parameter1 = byte offset into error buffer to retrieve, valid values are between 0 and (ibm,error-buffer-size - 1) Parameter2 = 4K aligned real address of error buffer, to be filled in Parameter3 = length of error buffer, valid values are 4K or less
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 offset:
+    :param offset:
         *undescribed*
+    :type offset: u64
 
-    :param u64 buf_address:
+    :param buf_address:
         *undescribed*
+    :type buf_address: u64
 
-    :param u64 len:
+    :param len:
         *undescribed*
+    :type len: u64
 
 .. _`cxl_h_get_config`:
 
@@ -103,20 +116,25 @@ cxl_h_get_config
 
     collect configuration record for the coherent platform function Parameter1 = # of configuration record to retrieve, valid values are between 0 and (ibm,#config-records - 1) Parameter2 = byte offset into configuration record to retrieve, valid values are between 0 and (ibm,config-record-size - 1) Parameter3 = 4K aligned real address of configuration record buffer, to be filled in Parameter4 = length of configuration buffer, valid values are 4K or less
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 cr_num:
+    :param cr_num:
         *undescribed*
+    :type cr_num: u64
 
-    :param u64 offset:
+    :param offset:
         *undescribed*
+    :type offset: u64
 
-    :param u64 buf_address:
+    :param buf_address:
         *undescribed*
+    :type buf_address: u64
 
-    :param u64 len:
+    :param len:
         *undescribed*
+    :type len: u64
 
 .. _`cxl_h_terminate_process`:
 
@@ -127,11 +145,13 @@ cxl_h_terminate_process
 
     Terminate the process before completion Parameter1 = process-token as returned from H_ATTACH_CA_PROCESS when process was attached.
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 process_token:
+    :param process_token:
         *undescribed*
+    :type process_token: u64
 
 .. _`cxl_h_collect_vpd`:
 
@@ -142,20 +162,25 @@ cxl_h_collect_vpd
 
     Collect VPD for the coherent platform function. Parameter1 = # of VPD record to retrieve, valid values are between 0 and (ibm,#config-records - 1). Parameter2 = 4K naturally aligned real buffer containing block list entries Parameter3 = number of block list entries in the block list, valid values are between 0 and 256
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 record:
+    :param record:
         *undescribed*
+    :type record: u64
 
-    :param u64 list_address:
+    :param list_address:
         *undescribed*
+    :type list_address: u64
 
-    :param u64 num:
+    :param num:
         *undescribed*
+    :type num: u64
 
-    :param u64 \*out:
+    :param out:
         *undescribed*
+    :type out: u64 \*
 
 .. _`cxl_h_get_fn_error_interrupt`:
 
@@ -166,11 +191,13 @@ cxl_h_get_fn_error_interrupt
 
     Read the function-wide error data based on an interrupt
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 \*reg:
+    :param reg:
         *undescribed*
+    :type reg: u64 \*
 
 .. _`cxl_h_ack_fn_error_interrupt`:
 
@@ -181,11 +208,13 @@ cxl_h_ack_fn_error_interrupt
 
     Acknowledge function-wide error data based on an interrupt Parameter1 = value to write to the function-wide error interrupt register
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 value:
+    :param value:
         *undescribed*
+    :type value: u64
 
 .. _`cxl_h_get_error_log`:
 
@@ -196,11 +225,13 @@ cxl_h_get_error_log
 
     Retrieve the Platform Log ID (PLID) of an error log
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 value:
+    :param value:
         *undescribed*
+    :type value: u64
 
 .. _`cxl_h_collect_int_info`:
 
@@ -211,14 +242,17 @@ cxl_h_collect_int_info
 
     Collect interrupt info about a coherent platform function after an interrupt occurred.
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 process_token:
+    :param process_token:
         *undescribed*
+    :type process_token: u64
 
-    :param struct cxl_irq_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct cxl_irq_info \*
 
 .. _`cxl_h_control_faults`:
 
@@ -229,17 +263,21 @@ cxl_h_control_faults
 
     Control the operation of a coherent platform function after a fault occurs.
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 process_token:
+    :param process_token:
         *undescribed*
+    :type process_token: u64
 
-    :param u64 control_mask:
+    :param control_mask:
         *undescribed*
+    :type control_mask: u64
 
-    :param u64 reset_mask:
+    :param reset_mask:
         *undescribed*
+    :type reset_mask: u64
 
 .. _`cxl_h_control_faults.description`:
 
@@ -261,8 +299,9 @@ cxl_h_reset_adapter
 
     Perform a reset to the coherent platform facility.
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
 .. _`cxl_h_collect_vpd_adapter`:
 
@@ -273,17 +312,21 @@ cxl_h_collect_vpd_adapter
 
     Collect VPD for the coherent platform function. Parameter1 = 4K naturally aligned real buffer containing block list entries Parameter2 = number of block list entries in the block list, valid values are between 0 and 256
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 list_address:
+    :param list_address:
         *undescribed*
+    :type list_address: u64
 
-    :param u64 num:
+    :param num:
         *undescribed*
+    :type num: u64
 
-    :param u64 \*out:
+    :param out:
         *undescribed*
+    :type out: u64 \*
 
 .. _`cxl_h_download_adapter_image`:
 
@@ -294,17 +337,21 @@ cxl_h_download_adapter_image
 
     Download the base image to the coherent platform facility.
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 list_address:
+    :param list_address:
         *undescribed*
+    :type list_address: u64
 
-    :param u64 num:
+    :param num:
         *undescribed*
+    :type num: u64
 
-    :param u64 \*out:
+    :param out:
         *undescribed*
+    :type out: u64 \*
 
 .. _`cxl_h_validate_adapter_image`:
 
@@ -315,17 +362,21 @@ cxl_h_validate_adapter_image
 
     Validate the base image in the coherent platform facility.
 
-    :param u64 unit_address:
+    :param unit_address:
         *undescribed*
+    :type unit_address: u64
 
-    :param u64 list_address:
+    :param list_address:
         *undescribed*
+    :type list_address: u64
 
-    :param u64 num:
+    :param num:
         *undescribed*
+    :type num: u64
 
-    :param u64 \*out:
+    :param out:
         *undescribed*
+    :type out: u64 \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ wm9713_set_pll
 
     resynchronisation with the AC97 controller.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
-    :param int pll_id:
+    :param pll_id:
         *undescribed*
+    :type pll_id: int
 
-    :param unsigned int freq_in:
+    :param freq_in:
         *undescribed*
+    :type freq_in: unsigned int
 
-    :param unsigned int freq_out:
+    :param freq_out:
         *undescribed*
+    :type freq_out: unsigned int
 
 .. This file was automatic generated / don't edit.
 

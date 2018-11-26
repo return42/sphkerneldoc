@@ -28,6 +28,7 @@ Definition
         rwlock_t resource_lock;
         wait_queue_head_t waitq;
         u32 imb_cat_table[16];
+        unsigned int mu_locality_lsb;
         struct mutex area_cache_mutex;
         struct list_head area_cache_list;
     }
@@ -67,6 +68,9 @@ waitq
 imb_cat_table
     CPP Mapping Table
 
+mu_locality_lsb
+    MU access type bit offset
+
 area_cache_mutex
     protects \ ``area_cache_list``\ 
 
@@ -82,8 +86,9 @@ nfp_cpp_free
 
     free the CPP handle
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_cpp_model`:
 
@@ -94,8 +99,9 @@ nfp_cpp_model
 
     Retrieve the Model ID of the NFP
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_cpp_model.return`:
 
@@ -113,8 +119,9 @@ nfp_cpp_interface
 
     Retrieve the Interface ID of the NFP
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_cpp_interface.return`:
 
@@ -132,11 +139,13 @@ nfp_cpp_serial
 
     Retrieve the Serial ID of the NFP
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param const u8 \*\*serial:
+    :param serial:
         Pointer to NFP serial number
+    :type serial: const u8 \*\*
 
 .. _`nfp_cpp_serial.return`:
 
@@ -154,20 +163,25 @@ nfp_cpp_area_alloc_with_name
 
     allocate a new CPP area
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP device handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 dest:
+    :param dest:
         NFP CPP ID
+    :type dest: u32
 
-    :param const char \*name:
+    :param name:
         Name of region
+    :type name: const char \*
 
-    :param unsigned long long address:
+    :param address:
         Address of region
+    :type address: unsigned long long
 
-    :param unsigned long size:
+    :param size:
         Size of region
+    :type size: unsigned long
 
 .. _`nfp_cpp_area_alloc_with_name.description`:
 
@@ -200,17 +214,21 @@ nfp_cpp_area_alloc
 
     allocate a new CPP area
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 dest:
+    :param dest:
         CPP id
+    :type dest: u32
 
-    :param unsigned long long address:
+    :param address:
         Start address on CPP target
+    :type address: unsigned long long
 
-    :param unsigned long size:
+    :param size:
         Size of area in bytes
+    :type size: unsigned long
 
 .. _`nfp_cpp_area_alloc.description`:
 
@@ -243,20 +261,25 @@ nfp_cpp_area_alloc_acquire
 
     allocate a new CPP area and lock it down
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param const char \*name:
+    :param name:
         Name of region
+    :type name: const char \*
 
-    :param u32 dest:
+    :param dest:
         CPP id
+    :type dest: u32
 
-    :param unsigned long long address:
+    :param address:
         Start address on CPP target
+    :type address: unsigned long long
 
-    :param unsigned long size:
+    :param size:
         Size of area
+    :type size: unsigned long
 
 .. _`nfp_cpp_area_alloc_acquire.description`:
 
@@ -290,8 +313,9 @@ nfp_cpp_area_free
 
     free up the CPP area
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area handle
+    :type area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_free.description`:
 
@@ -309,8 +333,9 @@ nfp_cpp_area_acquire
 
     lock down a CPP area for access
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area handle
+    :type area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_acquire.description`:
 
@@ -336,8 +361,9 @@ nfp_cpp_area_acquire_nonblocking
 
     lock down a CPP area for access
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area handle
+    :type area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_acquire_nonblocking.description`:
 
@@ -370,8 +396,9 @@ nfp_cpp_area_release
 
     release a locked down CPP area
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area handle
+    :type area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_release.description`:
 
@@ -389,8 +416,9 @@ nfp_cpp_area_release_free
 
     release CPP area and free it
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area handle
+    :type area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_release_free.description`:
 
@@ -408,17 +436,21 @@ nfp_cpp_area_read
 
     read data from CPP area
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area handle
+    :type area: struct nfp_cpp_area \*
 
-    :param unsigned long offset:
+    :param offset:
         offset into CPP area
+    :type offset: unsigned long
 
-    :param void \*kernel_vaddr:
+    :param kernel_vaddr:
         kernel address to put data into
+    :type kernel_vaddr: void \*
 
-    :param size_t length:
+    :param length:
         number of bytes to read
+    :type length: size_t
 
 .. _`nfp_cpp_area_read.description`:
 
@@ -451,17 +483,21 @@ nfp_cpp_area_write
 
     write data to CPP area
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area handle
+    :type area: struct nfp_cpp_area \*
 
-    :param unsigned long offset:
+    :param offset:
         offset into CPP area
+    :type offset: unsigned long
 
-    :param const void \*kernel_vaddr:
+    :param kernel_vaddr:
         kernel address to read data from
+    :type kernel_vaddr: const void \*
 
-    :param size_t length:
+    :param length:
         number of bytes to write
+    :type length: size_t
 
 .. _`nfp_cpp_area_write.description`:
 
@@ -494,8 +530,9 @@ nfp_cpp_area_size
 
     return size of a CPP area
 
-    :param struct nfp_cpp_area \*cpp_area:
+    :param cpp_area:
         CPP area handle
+    :type cpp_area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_size.return`:
 
@@ -513,8 +550,9 @@ nfp_cpp_area_name
 
     return name of a CPP area
 
-    :param struct nfp_cpp_area \*cpp_area:
+    :param cpp_area:
         CPP area handle
+    :type cpp_area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_name.return`:
 
@@ -532,8 +570,9 @@ nfp_cpp_area_priv
 
     return private struct for CPP area
 
-    :param struct nfp_cpp_area \*cpp_area:
+    :param cpp_area:
         CPP area handle
+    :type cpp_area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_priv.return`:
 
@@ -551,8 +590,9 @@ nfp_cpp_area_cpp
 
     return CPP handle for CPP area
 
-    :param struct nfp_cpp_area \*cpp_area:
+    :param cpp_area:
         CPP area handle
+    :type cpp_area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_cpp.return`:
 
@@ -570,8 +610,9 @@ nfp_cpp_area_resource
 
     get resource
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area handle
+    :type area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_resource.note`:
 
@@ -596,8 +637,9 @@ nfp_cpp_area_phys
 
     get physical address of CPP area
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area handle
+    :type area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_phys.note`:
 
@@ -622,8 +664,9 @@ nfp_cpp_area_iomem
 
     get IOMEM region for CPP area
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area handle
+    :type area: struct nfp_cpp_area \*
 
 .. _`nfp_cpp_area_iomem.description`:
 
@@ -656,14 +699,17 @@ nfp_cpp_area_readl
 
     Read a u32 word from an area
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP Area handle
+    :type area: struct nfp_cpp_area \*
 
-    :param unsigned long offset:
+    :param offset:
         Offset into area
+    :type offset: unsigned long
 
-    :param u32 \*value:
+    :param value:
         Pointer to read buffer
+    :type value: u32 \*
 
 .. _`nfp_cpp_area_readl.return`:
 
@@ -681,14 +727,17 @@ nfp_cpp_area_writel
 
     Write a u32 word to an area
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP Area handle
+    :type area: struct nfp_cpp_area \*
 
-    :param unsigned long offset:
+    :param offset:
         Offset into area
+    :type offset: unsigned long
 
-    :param u32 value:
+    :param value:
         Value to write
+    :type value: u32
 
 .. _`nfp_cpp_area_writel.return`:
 
@@ -706,14 +755,17 @@ nfp_cpp_area_readq
 
     Read a u64 word from an area
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP Area handle
+    :type area: struct nfp_cpp_area \*
 
-    :param unsigned long offset:
+    :param offset:
         Offset into area
+    :type offset: unsigned long
 
-    :param u64 \*value:
+    :param value:
         Pointer to read buffer
+    :type value: u64 \*
 
 .. _`nfp_cpp_area_readq.return`:
 
@@ -731,14 +783,17 @@ nfp_cpp_area_writeq
 
     Write a u64 word to an area
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP Area handle
+    :type area: struct nfp_cpp_area \*
 
-    :param unsigned long offset:
+    :param offset:
         Offset into area
+    :type offset: unsigned long
 
-    :param u64 value:
+    :param value:
         Value to write
+    :type value: u64
 
 .. _`nfp_cpp_area_writeq.return`:
 
@@ -756,17 +811,21 @@ nfp_cpp_area_fill
 
     fill a CPP area with a value
 
-    :param struct nfp_cpp_area \*area:
+    :param area:
         CPP area
+    :type area: struct nfp_cpp_area \*
 
-    :param unsigned long offset:
+    :param offset:
         offset into CPP area
+    :type offset: unsigned long
 
-    :param u32 value:
+    :param value:
         value to fill with
+    :type value: u32
 
-    :param size_t length:
+    :param length:
         length of area to fill
+    :type length: size_t
 
 .. _`nfp_cpp_area_fill.description`:
 
@@ -791,11 +850,13 @@ nfp_cpp_area_cache_add
 
     Permanently reserve and area for the hot cache
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param size_t size:
+    :param size:
         Size of the area - MUST BE A POWER OF 2.
+    :type size: size_t
 
 .. _`nfp_cpp_read`:
 
@@ -806,20 +867,25 @@ nfp_cpp_read
 
     read from CPP target
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 destination:
+    :param destination:
         CPP id
+    :type destination: u32
 
-    :param unsigned long long address:
+    :param address:
         offset into CPP target
+    :type address: unsigned long long
 
-    :param void \*kernel_vaddr:
+    :param kernel_vaddr:
         kernel buffer for result
+    :type kernel_vaddr: void \*
 
-    :param size_t length:
+    :param length:
         number of bytes to read
+    :type length: size_t
 
 .. _`nfp_cpp_read.return`:
 
@@ -837,20 +903,25 @@ nfp_cpp_write
 
     write to CPP target
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 destination:
+    :param destination:
         CPP id
+    :type destination: u32
 
-    :param unsigned long long address:
+    :param address:
         offset into CPP target
+    :type address: unsigned long long
 
-    :param const void \*kernel_vaddr:
+    :param kernel_vaddr:
         kernel buffer to read from
+    :type kernel_vaddr: const void \*
 
-    :param size_t length:
+    :param length:
         number of bytes to write
+    :type length: size_t
 
 .. _`nfp_cpp_write.return`:
 
@@ -868,14 +939,17 @@ nfp_xpb_readl
 
     Read a u32 word from a XPB location
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP device handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 xpb_addr:
+    :param xpb_addr:
         Address for operation
+    :type xpb_addr: u32
 
-    :param u32 \*value:
+    :param value:
         Pointer to read buffer
+    :type value: u32 \*
 
 .. _`nfp_xpb_readl.return`:
 
@@ -893,14 +967,17 @@ nfp_xpb_writel
 
     Write a u32 word to a XPB location
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP device handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 xpb_addr:
+    :param xpb_addr:
         Address for operation
+    :type xpb_addr: u32
 
-    :param u32 value:
+    :param value:
         Value to write
+    :type value: u32
 
 .. _`nfp_xpb_writel.return`:
 
@@ -918,17 +995,21 @@ nfp_xpb_writelm
 
     Modify bits of a 32-bit value from the XPB bus
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP device handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 xpb_tgt:
+    :param xpb_tgt:
         XPB target and address
+    :type xpb_tgt: u32
 
-    :param u32 mask:
+    :param mask:
         mask of bits to alter
+    :type mask: u32
 
-    :param u32 value:
+    :param value:
         value to modify
+    :type value: u32
 
 .. _`nfp_xpb_writelm.kernel`:
 
@@ -953,14 +1034,17 @@ nfp_cpp_from_operations
 
     Create a NFP CPP handle from an operations structure
 
-    :param const struct nfp_cpp_operations \*ops:
+    :param ops:
         NFP CPP operations structure
+    :type ops: const struct nfp_cpp_operations \*
 
-    :param struct device \*parent:
+    :param parent:
         Parent device
+    :type parent: struct device \*
 
-    :param void \*priv:
+    :param priv:
         Private data of low-level implementation
+    :type priv: void \*
 
 .. _`nfp_cpp_from_operations.note`:
 
@@ -985,8 +1069,9 @@ nfp_cpp_priv
 
     Get the operations private data of a CPP handle
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_cpp_priv.return`:
 
@@ -1004,8 +1089,9 @@ nfp_cpp_device
 
     Get the Linux device handle of a CPP handle
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_cpp_device.return`:
 
@@ -1023,8 +1109,9 @@ nfp_cpp_explicit_acquire
 
     Acquire explicit access handle
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_cpp_explicit_acquire.description`:
 
@@ -1050,17 +1137,21 @@ nfp_cpp_explicit_set_target
 
     Set target fields for explicit
 
-    :param struct nfp_cpp_explicit \*expl:
+    :param expl:
         Explicit handle
+    :type expl: struct nfp_cpp_explicit \*
 
-    :param u32 cpp_id:
+    :param cpp_id:
         CPP ID field
+    :type cpp_id: u32
 
-    :param u8 len:
+    :param len:
         CPP Length field
+    :type len: u8
 
-    :param u8 mask:
+    :param mask:
         CPP Mask field
+    :type mask: u8
 
 .. _`nfp_cpp_explicit_set_target.return`:
 
@@ -1078,14 +1169,17 @@ nfp_cpp_explicit_set_data
 
     Set data fields for explicit
 
-    :param struct nfp_cpp_explicit \*expl:
+    :param expl:
         Explicit handle
+    :type expl: struct nfp_cpp_explicit \*
 
-    :param u8 data_master:
+    :param data_master:
         CPP Data Master field
+    :type data_master: u8
 
-    :param u16 data_ref:
+    :param data_ref:
         CPP Data Ref field
+    :type data_ref: u16
 
 .. _`nfp_cpp_explicit_set_data.return`:
 
@@ -1103,14 +1197,17 @@ nfp_cpp_explicit_set_signal
 
     Set signal fields for explicit
 
-    :param struct nfp_cpp_explicit \*expl:
+    :param expl:
         Explicit handle
+    :type expl: struct nfp_cpp_explicit \*
 
-    :param u8 signal_master:
+    :param signal_master:
         CPP Signal Master field
+    :type signal_master: u8
 
-    :param u8 signal_ref:
+    :param signal_ref:
         CPP Signal Ref field
+    :type signal_ref: u8
 
 .. _`nfp_cpp_explicit_set_signal.return`:
 
@@ -1128,23 +1225,29 @@ nfp_cpp_explicit_set_posted
 
     Set completion fields for explicit
 
-    :param struct nfp_cpp_explicit \*expl:
+    :param expl:
         Explicit handle
+    :type expl: struct nfp_cpp_explicit \*
 
-    :param int posted:
+    :param posted:
         True for signaled completion, false otherwise
+    :type posted: int
 
-    :param u8 siga:
+    :param siga:
         CPP Signal A field
+    :type siga: u8
 
-    :param enum nfp_cpp_explicit_signal_mode siga_mode:
+    :param siga_mode:
         CPP Signal A Mode field
+    :type siga_mode: enum nfp_cpp_explicit_signal_mode
 
-    :param u8 sigb:
+    :param sigb:
         CPP Signal B field
+    :type sigb: u8
 
-    :param enum nfp_cpp_explicit_signal_mode sigb_mode:
+    :param sigb_mode:
         CPP Signal B Mode field
+    :type sigb_mode: enum nfp_cpp_explicit_signal_mode
 
 .. _`nfp_cpp_explicit_set_posted.return`:
 
@@ -1162,14 +1265,17 @@ nfp_cpp_explicit_put
 
     Set up the write (pull) data for a explicit access
 
-    :param struct nfp_cpp_explicit \*expl:
+    :param expl:
         NFP CPP Explicit handle
+    :type expl: struct nfp_cpp_explicit \*
 
-    :param const void \*buff:
+    :param buff:
         Data to have the target pull in the transaction
+    :type buff: const void \*
 
-    :param size_t len:
+    :param len:
         Length of data, in bytes
+    :type len: size_t
 
 .. _`nfp_cpp_explicit_put.description`:
 
@@ -1197,11 +1303,13 @@ nfp_cpp_explicit_do
 
     Execute a transaction, and wait for it to complete
 
-    :param struct nfp_cpp_explicit \*expl:
+    :param expl:
         NFP CPP Explicit handle
+    :type expl: struct nfp_cpp_explicit \*
 
-    :param u64 address:
+    :param address:
         Address to send in the explicit transaction
+    :type address: u64
 
 .. _`nfp_cpp_explicit_do.description`:
 
@@ -1227,14 +1335,17 @@ nfp_cpp_explicit_get
 
     Get the 'push' (read) data from a explicit access
 
-    :param struct nfp_cpp_explicit \*expl:
+    :param expl:
         NFP CPP Explicit handle
+    :type expl: struct nfp_cpp_explicit \*
 
-    :param void \*buff:
+    :param buff:
         Data that the target pushed in the transaction
+    :type buff: void \*
 
-    :param size_t len:
+    :param len:
         Length of data, in bytes
+    :type len: size_t
 
 .. _`nfp_cpp_explicit_get.description`:
 
@@ -1265,8 +1376,9 @@ nfp_cpp_explicit_release
 
     Release explicit access handle
 
-    :param struct nfp_cpp_explicit \*expl:
+    :param expl:
         NFP CPP Explicit handle
+    :type expl: struct nfp_cpp_explicit \*
 
 .. _`nfp_cpp_explicit_cpp`:
 
@@ -1277,8 +1389,9 @@ nfp_cpp_explicit_cpp
 
     return CPP handle for CPP explicit
 
-    :param struct nfp_cpp_explicit \*cpp_explicit:
+    :param cpp_explicit:
         CPP explicit handle
+    :type cpp_explicit: struct nfp_cpp_explicit \*
 
 .. _`nfp_cpp_explicit_cpp.return`:
 
@@ -1296,8 +1409,9 @@ nfp_cpp_explicit_priv
 
     return private struct for CPP explicit
 
-    :param struct nfp_cpp_explicit \*cpp_explicit:
+    :param cpp_explicit:
         CPP explicit handle
+    :type cpp_explicit: struct nfp_cpp_explicit \*
 
 .. _`nfp_cpp_explicit_priv.return`:
 

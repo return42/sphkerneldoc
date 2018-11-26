@@ -18,9 +18,9 @@ Definition
 .. code-block:: c
 
     struct clkctrl_provider {
-        u32 addr;
-        u32 size;
-        u16 offset;
+        int num_addrs;
+        u32 *addr;
+        u32 *size;
         struct device_node *node;
         struct list_head link;
     }
@@ -30,14 +30,14 @@ Definition
 Members
 -------
 
+num_addrs
+    number of base address ranges for the provider
+
 addr
-    base address for the provider
+    base address(es) for the provider
 
 size
-    size of the provider address space
-
-offset
-    offset of the provider from PRCM instance base
+    size(s) of the provider address space(s)
 
 node
     device node associated with the provider
@@ -131,8 +131,9 @@ conditionals in this code.
 
     return the module OCP_SYSCONFIG register, keep copy
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_update_sysc_cache.description`:
 
@@ -152,11 +153,13 @@ OCP_SYSCONFIG register or 0 upon success.
 
     write a value to the module's OCP_SYSCONFIG register
 
-    :param u32 v:
+    :param v:
         OCP_SYSCONFIG value to write
+    :type v: u32
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_write_sysconfig.description`:
 
@@ -175,14 +178,17 @@ one.  No return value.
 
     set the OCP_SYSCONFIG MIDLEMODE field in \ ``v``\ 
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param u8 standbymode:
+    :param standbymode:
         MIDLEMODE field bits
+    :type standbymode: u8
 
-    :param u32 \*v:
+    :param v:
         pointer to register contents to modify
+    :type v: u32 \*
 
 .. _`_set_master_standbymode.description`:
 
@@ -202,14 +208,17 @@ upon error or 0 upon success.
 
     set the OCP_SYSCONFIG SIDLEMODE field in \ ``v``\ 
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param u8 idlemode:
+    :param idlemode:
         SIDLEMODE field bits
+    :type idlemode: u8
 
-    :param u32 \*v:
+    :param v:
         pointer to register contents to modify
+    :type v: u32 \*
 
 .. _`_set_slave_idlemode.description`:
 
@@ -229,14 +238,17 @@ or 0 upon success.
 
     set OCP_SYSCONFIG.CLOCKACTIVITY bits in \ ``v``\ 
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param u8 clockact:
+    :param clockact:
         CLOCKACTIVITY field bits
+    :type clockact: u8
 
-    :param u32 \*v:
+    :param v:
         pointer to register contents to modify
+    :type v: u32 \*
 
 .. _`_set_clockactivity.description`:
 
@@ -257,11 +269,13 @@ success.
 
     set OCP_SYSCONFIG.SOFTRESET bit in \ ``v``\ 
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param u32 \*v:
+    :param v:
         pointer to register contents to modify
+    :type v: u32 \*
 
 .. _`_set_softreset.description`:
 
@@ -280,11 +294,13 @@ error or 0 upon success.
 
     clear OCP_SYSCONFIG.SOFTRESET bit in \ ``v``\ 
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param u32 \*v:
+    :param v:
         pointer to register contents to modify
+    :type v: u32 \*
 
 .. _`_clear_softreset.description`:
 
@@ -303,8 +319,9 @@ error or 0 upon success.
 
     wait for an OCP softreset to complete
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* to wait on
+    :type oh: struct omap_hwmod \*
 
 .. _`_wait_softreset_complete.description`:
 
@@ -326,8 +343,9 @@ microseconds.  Returns the number of microseconds waited.
 
     set OCP_SYSCONFIG.DMADISABLE bit in \ ``v``\ 
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_set_dmadisable.description`:
 
@@ -351,14 +369,17 @@ error or 0 upon success.
 
     set the OCP_SYSCONFIG AUTOIDLE field in \ ``v``\ 
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param u8 autoidle:
+    :param autoidle:
         desired AUTOIDLE bitfield value (0 or 1)
+    :type autoidle: u8
 
-    :param u32 \*v:
+    :param v:
         pointer to register contents to modify
+    :type v: u32 \*
 
 .. _`_set_module_autoidle.description`:
 
@@ -381,11 +402,13 @@ error or 0 upon success.
 
     set OCP_SYSCONFIG.ENAWAKEUP bit in the hardware
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param u32 \*v:
+    :param v:
         *undescribed*
+    :type v: u32 \*
 
 .. _`_enable_wakeup.description`:
 
@@ -404,11 +427,13 @@ upon error or 0 upon success.
 
     clear OCP_SYSCONFIG.ENAWAKEUP bit in the hardware
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param u32 \*v:
+    :param v:
         *undescribed*
+    :type v: u32 \*
 
 .. _`_disable_wakeup.description`:
 
@@ -427,11 +452,13 @@ upon error or 0 upon success.
 
     prevent \ ``oh``\  from smart-idling while \ ``init_oh``\  is active
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param struct omap_hwmod \*init_oh:
+    :param init_oh:
         *undescribed*
+    :type init_oh: struct omap_hwmod \*
 
 .. _`_add_initiator_dep.description`:
 
@@ -456,11 +483,13 @@ passes along \ :c:func:`clkdm_add_sleepdep`\  value upon success.
 
     allow \ ``oh``\  to smart-idle even if \ ``init_oh``\  is active
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param struct omap_hwmod \*init_oh:
+    :param init_oh:
         *undescribed*
+    :type init_oh: struct omap_hwmod \*
 
 .. _`_del_initiator_dep.description`:
 
@@ -485,8 +514,9 @@ along \ :c:func:`clkdm_del_sleepdep`\  value upon success.
 
     get a struct clk \* for the the hwmod's main functional clk
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_init_main_clk.description`:
 
@@ -506,8 +536,9 @@ or a main_clk is present.  Returns 0 on success or -EINVAL on error.
 
     get a struct clk \* for the the hwmod's interface clks
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_init_interface_clks.description`:
 
@@ -526,8 +557,9 @@ clock pointers.  Returns 0 on success or -EINVAL on error.
 
     get a struct clk \* for the the hwmod's optional clocks
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_init_opt_clks.description`:
 
@@ -546,8 +578,9 @@ clock pointers.  Returns 0 on success or -EINVAL on error.
 
     enable hwmod main clock and interface clocks
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_enable_clocks.description`:
 
@@ -566,8 +599,9 @@ on the hwmod \ ``oh``\ .  Returns 0.
 
     true if clkctrl managed by clock framework
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_omap4_has_clkctrl_clock`:
 
@@ -578,8 +612,9 @@ on the hwmod \ ``oh``\ .  Returns 0.
 
     returns true if a module has clkctrl clock
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_disable_clocks`:
 
@@ -590,8 +625,9 @@ on the hwmod \ ``oh``\ .  Returns 0.
 
     disable hwmod main clock and interface clocks
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_disable_clocks.description`:
 
@@ -609,8 +645,9 @@ Disables the hwmod \ ``oh``\  main functional and interface clocks.  Returns 0.
 
     enable CLKCTRL modulemode on OMAP4
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_omap4_enable_module.description`:
 
@@ -629,8 +666,9 @@ No return value.
 
     wait for a module to be disabled on OMAP4
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_omap4_wait_target_disable.description`:
 
@@ -651,8 +689,9 @@ appropriate \*\_cm\*\_wait_module_idle() function.
 
     find and save the index to \ ``oh``\ 's MPU port
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_save_mpu_port_index.description`:
 
@@ -673,8 +712,9 @@ value.
 
     return omap_hwmod_ocp_if accessible by the MPU
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_find_mpu_rt_port.description`:
 
@@ -699,8 +739,9 @@ IP block.
 
     try to bring a module out of idle via OCP_SYSCONFIG
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_enable_sysc.description`:
 
@@ -723,8 +764,9 @@ no-idle variants of these modes.  No return value.
 
     try to put a module into idle via OCP_SYSCONFIG
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_idle_sysc.description`:
 
@@ -745,8 +787,9 @@ configure it for smart-standby.  No return value.
 
     force a module into idle via OCP_SYSCONFIG
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_shutdown_sysc.description`:
 
@@ -765,8 +808,9 @@ value.
 
     find an omap_hwmod by name
 
-    :param const char \*name:
+    :param name:
         find an omap_hwmod by name
+    :type name: const char \*
 
 .. _`_lookup.description`:
 
@@ -784,8 +828,9 @@ Return a pointer to an omap_hwmod by name, or NULL if not found.
 
     look up a clockdomain name, store pointer in omap_hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_init_clkdm.description`:
 
@@ -805,11 +850,13 @@ Return -EINVAL if the clkdm_name lookup failed.
 
     \ :c:func:`clk_get`\  all clocks associated with this hwmod. Retrieve as well the clockdomain.
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param struct device_node \*np:
+    :param np:
         device_node mapped to this hwmod
+    :type np: struct device_node \*
 
 .. _`_init_clocks.description`:
 
@@ -829,14 +876,17 @@ success, or a negative error code on failure.
 
     fill register bit info for this hwmod/reset line
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param const char \*name:
+    :param name:
         name of the reset line in the context of this hwmod
+    :type name: const char \*
 
-    :param struct omap_hwmod_rst_info \*ohri:
+    :param ohri:
         struct omap_hwmod_rst_info \* that this function will fill in
+    :type ohri: struct omap_hwmod_rst_info \*
 
 .. _`_lookup_hardreset.description`:
 
@@ -855,11 +905,13 @@ input name. Return -ENOENT if not found.
 
     assert the HW reset line of submodules contained in the hwmod module.
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param const char \*name:
+    :param name:
         name of the reset line to lookup and assert
+    :type name: const char \*
 
 .. _`_assert_hardreset.description`:
 
@@ -882,11 +934,13 @@ assert_hardreset code.
 
     deassert the HW reset line of submodules contained in the hwmod module.
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param const char \*name:
+    :param name:
         name of the reset line to look up and deassert
+    :type name: const char \*
 
 .. _`_deassert_hardreset.description`:
 
@@ -909,11 +963,13 @@ deassert_hardreset code.
 
     read the HW reset line state of submodules contained in the hwmod module
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param const char \*name:
+    :param name:
         name of the reset line to look up and read
+    :type name: const char \*
 
 .. _`_read_hardreset.description`:
 
@@ -935,8 +991,9 @@ code.
 
     return true if the \ ``oh``\  is hard-reset
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_are_all_hardreset_lines_asserted.description`:
 
@@ -958,8 +1015,9 @@ enable/disable sequence if its hardreset line is set.
 
     return true if any part of \ ``oh``\  is hard-reset
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_are_any_hardreset_lines_asserted.description`:
 
@@ -981,8 +1039,9 @@ enable/disable sequence if any hardreset line is set.
 
     enable CLKCTRL modulemode on OMAP4
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_omap4_disable_module.description`:
 
@@ -1001,8 +1060,9 @@ Return EINVAL if the modulemode is not supported and 0 in case of success.
 
     reset an omap_hwmod via the OCP_SYSCONFIG bit
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_ocp_softreset.description`:
 
@@ -1030,8 +1090,9 @@ reset status.
 
     reset an omap_hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_reset.description`:
 
@@ -1076,8 +1137,9 @@ cannot be reset this way or if the hwmod is in the wrong state,
 
     increment hwmod context loss counter if hwmod context was lost, and clear hardware context loss reg
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         hwmod to check for context loss
+    :type oh: struct omap_hwmod \*
 
 .. _`_omap4_update_context_lost.description`:
 
@@ -1097,8 +1159,9 @@ bits. No return value.
 
     get context loss counter for a hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         hwmod to get context loss counter for
+    :type oh: struct omap_hwmod \*
 
 .. _`_omap4_get_context_lost.description`:
 
@@ -1116,8 +1179,9 @@ Returns the in-memory context loss counter for a hwmod.
 
     Pre-program an IP block during the \_enable() process
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_enable_preprogram.description`:
 
@@ -1138,8 +1202,9 @@ return value; otherwise, return 0.
 
     enable an omap_hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_enable.description`:
 
@@ -1159,8 +1224,9 @@ state or passes along the return value of \_wait_target_ready().
 
     idle an omap_hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_idle.description`:
 
@@ -1180,8 +1246,9 @@ state or returns 0.
 
     shutdown an omap_hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_shutdown.description`:
 
@@ -1202,17 +1269,21 @@ of_dev_hwmod_lookup
 
     look up needed hwmod from dt blob
 
-    :param struct device_node \*np:
+    :param np:
         struct device_node \*
+    :type np: struct device_node \*
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param int \*index:
+    :param index:
         index of the entry found
+    :type index: int \*
 
-    :param struct device_node \*\*found:
+    :param found:
         struct device_node \* found or NULL
+    :type found: struct device_node \*\*
 
 .. _`of_dev_hwmod_lookup.description`:
 
@@ -1229,6 +1300,40 @@ Return
 
 Returns 0 on success, -ENODEV when not found.
 
+.. _`omap_hwmod_fix_mpu_rt_idx`:
+
+omap_hwmod_fix_mpu_rt_idx
+=========================
+
+.. c:function:: void omap_hwmod_fix_mpu_rt_idx(struct omap_hwmod *oh, struct device_node *np, struct resource *res)
+
+    fix up mpu_rt_idx register offsets
+
+    :param oh:
+        struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
+
+    :param np:
+        struct device_node \*
+    :type np: struct device_node \*
+
+    :param res:
+        *undescribed*
+    :type res: struct resource \*
+
+.. _`omap_hwmod_fix_mpu_rt_idx.description`:
+
+Description
+-----------
+
+Fix up module register offsets for modules with mpu_rt_idx.
+Only needed for cpsw with interconnect target module defined
+in device tree while still using legacy hwmod platform data
+for rev, sysc and syss registers.
+
+Can be removed when all cpsw hwmod platform data has been
+dropped.
+
 .. _`omap_hwmod_parse_module_range`:
 
 omap_hwmod_parse_module_range
@@ -1238,14 +1343,17 @@ omap_hwmod_parse_module_range
 
     map module IO range from device tree
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param struct device_node \*np:
+    :param np:
         struct device_node \*
+    :type np: struct device_node \*
 
-    :param struct resource \*res:
+    :param res:
         *undescribed*
+    :type res: struct resource \*
 
 .. _`omap_hwmod_parse_module_range.description`:
 
@@ -1267,17 +1375,21 @@ nodes available in the dts.
 
     populate the virtual address for a hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* to locate the virtual address
+    :type oh: struct omap_hwmod \*
 
-    :param void \*data:
+    :param data:
         (unused, caller should pass NULL)
+    :type data: void \*
 
-    :param int index:
+    :param index:
         index of the reg entry iospace in device tree
+    :type index: int
 
-    :param struct device_node \*np:
+    :param np:
         struct device_node \* of the IP block's device node in the DT data
+    :type np: struct device_node \*
 
 .. _`_init_mpu_rt_base.description`:
 
@@ -1303,11 +1415,13 @@ Returns 0 on success, -EINVAL if an invalid hwmod is passed, and
 
     initialize internal data for the hwmod \ ``oh``\ 
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`_init.description`:
 
@@ -1331,8 +1445,9 @@ address space is not defined, or -EINVAL upon failure.
 
     configure an IP block's interface clocks
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_setup_iclk_autoidle.description`:
 
@@ -1352,8 +1467,9 @@ the clock code.   No return value.
 
     reset an IP block during the setup process
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_setup_reset.description`:
 
@@ -1374,8 +1490,9 @@ failure.
 
     transition to the appropriate state after \_setup
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_setup_postsetup.description`:
 
@@ -1423,11 +1540,13 @@ No return value.
 
     prepare IP block hardware for use
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`_setup.description`:
 
@@ -1454,8 +1573,9 @@ associated with the IP block.  Returns 0.
 
     register a struct omap_hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_register.description`:
 
@@ -1484,8 +1604,9 @@ of substructures.
 
     add an interconnect between two IP blocks
 
-    :param struct omap_hwmod_ocp_if \*oi:
+    :param oi:
         pointer to a struct omap_hwmod_ocp_if record
+    :type oi: struct omap_hwmod_ocp_if \*
 
 .. _`_add_link.description`:
 
@@ -1493,7 +1614,7 @@ Description
 -----------
 
 Add struct omap_hwmod_link records connecting the slave IP block
-specified in \ ``oi``\ ->slave to \ ``oi``\ .  This code is assumed to run before
+specified in \ ``oi->slave``\  to \ ``oi``\ .  This code is assumed to run before
 preemption or SMP has been enabled, thus avoiding the need for
 locking in this code.  Changes to this assumption will require
 additional locking.  Returns 0.
@@ -1507,8 +1628,9 @@ additional locking.  Returns 0.
 
     register a struct omap_hwmod_ocp_if
 
-    :param struct omap_hwmod_ocp_if \*oi:
+    :param oi:
         struct omap_hwmod_ocp_if \*
+    :type oi: struct omap_hwmod_ocp_if \*
 
 .. _`_register_link.description`:
 
@@ -1533,8 +1655,9 @@ unneeded omap_hwmods to be freed on multi-OMAP configurations.
 
     wait for a module to leave slave idle
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_omap2xxx_3xxx_wait_target_ready.description`:
 
@@ -1555,8 +1678,9 @@ appropriate \*\_cm\*\_wait_module_ready() function.
 
     wait for a module to leave slave idle
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`_omap4_wait_target_ready.description`:
 
@@ -1577,11 +1701,13 @@ appropriate \*\_cm\*\_wait_module_ready() function.
 
     call OMAP2 PRM hardreset fn with hwmod args
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* to assert hardreset
+    :type oh: struct omap_hwmod \*
 
-    :param struct omap_hwmod_rst_info \*ohri:
+    :param ohri:
         hardreset line data
+    :type ohri: struct omap_hwmod_rst_info \*
 
 .. _`_omap2_assert_hardreset.description`:
 
@@ -1603,11 +1729,13 @@ for removal when the PRM code is moved into drivers/.
 
     call OMAP2 PRM hardreset fn with hwmod args
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* to deassert hardreset
+    :type oh: struct omap_hwmod \*
 
-    :param struct omap_hwmod_rst_info \*ohri:
+    :param ohri:
         hardreset line data
+    :type ohri: struct omap_hwmod_rst_info \*
 
 .. _`_omap2_deassert_hardreset.description`:
 
@@ -1629,11 +1757,13 @@ scheduled for removal when the PRM code is moved into drivers/.
 
     call OMAP2 PRM hardreset fn with hwmod args
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* to test hardreset
+    :type oh: struct omap_hwmod \*
 
-    :param struct omap_hwmod_rst_info \*ohri:
+    :param ohri:
         hardreset line data
+    :type ohri: struct omap_hwmod_rst_info \*
 
 .. _`_omap2_is_hardreset_asserted.description`:
 
@@ -1656,11 +1786,13 @@ drivers/.
 
     call OMAP4 PRM hardreset fn with hwmod args
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* to assert hardreset
+    :type oh: struct omap_hwmod \*
 
-    :param struct omap_hwmod_rst_info \*ohri:
+    :param ohri:
         hardreset line data
+    :type ohri: struct omap_hwmod_rst_info \*
 
 .. _`_omap4_assert_hardreset.description`:
 
@@ -1683,11 +1815,13 @@ drivers/.
 
     call OMAP4 PRM hardreset fn with hwmod args
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* to deassert hardreset
+    :type oh: struct omap_hwmod \*
 
-    :param struct omap_hwmod_rst_info \*ohri:
+    :param ohri:
         hardreset line data
+    :type ohri: struct omap_hwmod_rst_info \*
 
 .. _`_omap4_deassert_hardreset.description`:
 
@@ -1710,11 +1844,13 @@ drivers/.
 
     call OMAP4 PRM hardreset fn with hwmod args
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* to test hardreset
+    :type oh: struct omap_hwmod \*
 
-    :param struct omap_hwmod_rst_info \*ohri:
+    :param ohri:
         hardreset line data
+    :type ohri: struct omap_hwmod_rst_info \*
 
 .. _`_omap4_is_hardreset_asserted.description`:
 
@@ -1737,8 +1873,9 @@ into drivers/.
 
     disable direct PRCM control for hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* to disable control for
+    :type oh: struct omap_hwmod \*
 
 .. _`_omap4_disable_direct_prcm.description`:
 
@@ -1758,11 +1895,13 @@ will be using its main_clk to enable/disable the module. Returns
 
     call AM33XX PRM hardreset fn with hwmod args
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* to deassert hardreset
+    :type oh: struct omap_hwmod \*
 
-    :param struct omap_hwmod_rst_info \*ohri:
+    :param ohri:
         hardreset line data
+    :type ohri: struct omap_hwmod_rst_info \*
 
 .. _`_am33xx_deassert_hardreset.description`:
 
@@ -1785,8 +1924,9 @@ omap_hwmod_softreset
 
     reset a module via SYSCONFIG.SOFTRESET bit
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_softreset.description`:
 
@@ -1807,8 +1947,9 @@ omap_hwmod_lookup
 
     look up a registered omap_hwmod by name
 
-    :param const char \*name:
+    :param name:
         name of the omap_hwmod to look up
+    :type name: const char \*
 
 .. _`omap_hwmod_lookup.description`:
 
@@ -1830,8 +1971,9 @@ omap_hwmod_for_each
     :param int (\*fn)(struct omap_hwmod \*oh, void \*data):
         pointer to a callback function
 
-    :param void \*data:
+    :param data:
         void \* data to pass to callback function
+    :type data: void \*
 
 .. _`omap_hwmod_for_each.description`:
 
@@ -1854,8 +1996,9 @@ omap_hwmod_register_links
 
     register an array of hwmod links
 
-    :param struct omap_hwmod_ocp_if \*\*ois:
+    :param ois:
         pointer to an array of omap_hwmod_ocp_if to register
+    :type ois: struct omap_hwmod_ocp_if \*\*
 
 .. _`omap_hwmod_register_links.description`:
 
@@ -1878,8 +2021,9 @@ success.
 
     ensure the MPU SS hwmod is init'ed and set up
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         pointer to the hwmod currently being set up (usually not the MPU)
+    :type oh: struct omap_hwmod \*
 
 .. _`_ensure_mpu_hwmod_is_setup.description`:
 
@@ -1901,8 +2045,9 @@ omap_hwmod_setup_one
 
     set up a single hwmod
 
-    :param const char \*oh_name:
+    :param oh_name:
         const char \* name of the already-registered hwmod to set up
+    :type oh_name: const char \*
 
 .. _`omap_hwmod_setup_one.description`:
 
@@ -1925,14 +2070,17 @@ omap_hwmod_check_sysc
 
     check sysc against platform sysc
 
-    :param struct device \*dev:
+    :param dev:
         struct device
+    :type dev: struct device \*
 
-    :param const struct ti_sysc_module_data \*data:
+    :param data:
         module data
+    :type data: const struct ti_sysc_module_data \*
 
-    :param struct sysc_regbits \*sysc_fields:
+    :param sysc_fields:
         new sysc configuration
+    :type sysc_fields: struct sysc_regbits \*
 
 .. _`omap_hwmod_init_regbits`:
 
@@ -1943,14 +2091,17 @@ omap_hwmod_init_regbits
 
     init sysconfig specific register bits
 
-    :param struct device \*dev:
+    :param dev:
         struct device
+    :type dev: struct device \*
 
-    :param const struct ti_sysc_module_data \*data:
+    :param data:
         module data
+    :type data: const struct ti_sysc_module_data \*
 
-    :param struct sysc_regbits \*\*sysc_fields:
+    :param sysc_fields:
         new sysc configuration
+    :type sysc_fields: struct sysc_regbits \*\*
 
 .. _`omap_hwmod_init_reg_offs`:
 
@@ -1961,20 +2112,25 @@ omap_hwmod_init_reg_offs
 
     initialize sysconfig register offsets
 
-    :param struct device \*dev:
+    :param dev:
         struct device
+    :type dev: struct device \*
 
-    :param const struct ti_sysc_module_data \*data:
+    :param data:
         module data
+    :type data: const struct ti_sysc_module_data \*
 
-    :param s32 \*rev_offs:
+    :param rev_offs:
         revision register offset
+    :type rev_offs: s32 \*
 
-    :param s32 \*sysc_offs:
+    :param sysc_offs:
         sysc register offset
+    :type sysc_offs: s32 \*
 
-    :param s32 \*syss_offs:
+    :param syss_offs:
         syss register offset
+    :type syss_offs: s32 \*
 
 .. _`omap_hwmod_init_sysc_flags`:
 
@@ -1985,14 +2141,17 @@ omap_hwmod_init_sysc_flags
 
     initialize sysconfig features
 
-    :param struct device \*dev:
+    :param dev:
         struct device
+    :type dev: struct device \*
 
-    :param const struct ti_sysc_module_data \*data:
+    :param data:
         module data
+    :type data: const struct ti_sysc_module_data \*
 
-    :param u32 \*sysc_flags:
+    :param sysc_flags:
         module configuration
+    :type sysc_flags: u32 \*
 
 .. _`omap_hwmod_init_idlemodes`:
 
@@ -2003,14 +2162,17 @@ omap_hwmod_init_idlemodes
 
     initialize module idle modes
 
-    :param struct device \*dev:
+    :param dev:
         struct device
+    :type dev: struct device \*
 
-    :param const struct ti_sysc_module_data \*data:
+    :param data:
         module data
+    :type data: const struct ti_sysc_module_data \*
 
-    :param u32 \*idlemodes:
+    :param idlemodes:
         module supported idle modes
+    :type idlemodes: u32 \*
 
 .. _`omap_hwmod_check_module`:
 
@@ -2021,32 +2183,41 @@ omap_hwmod_check_module
 
     check new module against platform data
 
-    :param struct device \*dev:
+    :param dev:
         struct device
+    :type dev: struct device \*
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         module
+    :type oh: struct omap_hwmod \*
 
-    :param const struct ti_sysc_module_data \*data:
+    :param data:
         new module data
+    :type data: const struct ti_sysc_module_data \*
 
-    :param struct sysc_regbits \*sysc_fields:
+    :param sysc_fields:
         sysc register bits
+    :type sysc_fields: struct sysc_regbits \*
 
-    :param s32 rev_offs:
+    :param rev_offs:
         revision register offset
+    :type rev_offs: s32
 
-    :param s32 sysc_offs:
+    :param sysc_offs:
         sysconfig register offset
+    :type sysc_offs: s32
 
-    :param s32 syss_offs:
+    :param syss_offs:
         sysstatus register offset
+    :type syss_offs: s32
 
-    :param u32 sysc_flags:
+    :param sysc_flags:
         sysc specific flags
+    :type sysc_flags: u32
 
-    :param u32 idlemodes:
+    :param idlemodes:
         sysc supported idlemodes
+    :type idlemodes: u32
 
 .. _`omap_hwmod_allocate_module`:
 
@@ -2057,32 +2228,41 @@ omap_hwmod_allocate_module
 
     allocate new module
 
-    :param struct device \*dev:
+    :param dev:
         struct device
+    :type dev: struct device \*
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         module
+    :type oh: struct omap_hwmod \*
 
-    :param const struct ti_sysc_module_data \*data:
+    :param data:
         *undescribed*
+    :type data: const struct ti_sysc_module_data \*
 
-    :param struct sysc_regbits \*sysc_fields:
+    :param sysc_fields:
         sysc register bits
+    :type sysc_fields: struct sysc_regbits \*
 
-    :param s32 rev_offs:
+    :param rev_offs:
         revision register offset
+    :type rev_offs: s32
 
-    :param s32 sysc_offs:
+    :param sysc_offs:
         sysconfig register offset
+    :type sysc_offs: s32
 
-    :param s32 syss_offs:
+    :param syss_offs:
         sysstatus register offset
+    :type syss_offs: s32
 
-    :param u32 sysc_flags:
+    :param sysc_flags:
         sysc specific flags
+    :type sysc_flags: u32
 
-    :param u32 idlemodes:
+    :param idlemodes:
         sysc supported idlemodes
+    :type idlemodes: u32
 
 .. _`omap_hwmod_allocate_module.description`:
 
@@ -2100,14 +2280,17 @@ omap_hwmod_init_module
 
     initialize new module
 
-    :param struct device \*dev:
+    :param dev:
         struct device
+    :type dev: struct device \*
 
-    :param const struct ti_sysc_module_data \*data:
+    :param data:
         module data
+    :type data: const struct ti_sysc_module_data \*
 
-    :param struct ti_sysc_cookie \*cookie:
+    :param cookie:
         cookie for the caller to use for later calls
+    :type cookie: struct ti_sysc_cookie \*
 
 .. _`omap_hwmod_setup_earlycon_flags`:
 
@@ -2118,8 +2301,9 @@ omap_hwmod_setup_earlycon_flags
 
     set up flags for early console
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_hwmod_setup_earlycon_flags.description`:
 
@@ -2139,8 +2323,9 @@ omap_hwmod_setup_all
 
     set up all registered IP blocks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_hwmod_setup_all.description`:
 
@@ -2161,8 +2346,9 @@ omap_hwmod_enable
 
     enable an omap_hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_enable.description`:
 
@@ -2181,8 +2367,9 @@ omap_hwmod_idle
 
     idle an omap_hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_idle.description`:
 
@@ -2201,8 +2388,9 @@ omap_hwmod_shutdown
 
     shutdown an omap_hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_shutdown.description`:
 
@@ -2222,8 +2410,9 @@ omap_hwmod_get_pwrdm
 
     return pointer to this module's main powerdomain
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_get_pwrdm.description`:
 
@@ -2246,8 +2435,9 @@ omap_hwmod_get_mpu_rt_va
 
     return the module's base address (for the MPU)
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_get_mpu_rt_va.description`:
 
@@ -2268,8 +2458,9 @@ omap_hwmod_enable_wakeup
 
     allow device to wake up the system
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_enable_wakeup.description`:
 
@@ -2294,8 +2485,9 @@ omap_hwmod_disable_wakeup
 
     prevent device from waking the system
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_disable_wakeup.description`:
 
@@ -2320,11 +2512,13 @@ omap_hwmod_assert_hardreset
 
     assert the HW reset line of submodules contained in the hwmod module.
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param const char \*name:
+    :param name:
         name of the reset line to lookup and assert
+    :type name: const char \*
 
 .. _`omap_hwmod_assert_hardreset.description`:
 
@@ -2346,11 +2540,13 @@ omap_hwmod_deassert_hardreset
 
     deassert the HW reset line of submodules contained in the hwmod module.
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param const char \*name:
+    :param name:
         name of the reset line to look up and deassert
+    :type name: const char \*
 
 .. _`omap_hwmod_deassert_hardreset.description`:
 
@@ -2372,14 +2568,16 @@ omap_hwmod_for_each_by_class
 
     call \ ``fn``\  for each hwmod of class \ ``classname``\ 
 
-    :param const char \*classname:
+    :param classname:
         struct omap_hwmod_class name to search for
+    :type classname: const char \*
 
     :param int (\*fn)(struct omap_hwmod \*oh, void \*user):
         callback function pointer to call for each hwmod in class \ ``classname``\ 
 
-    :param void \*user:
+    :param user:
         arbitrary context data to pass to the callback function
+    :type user: void \*
 
 .. _`omap_hwmod_for_each_by_class.description`:
 
@@ -2401,11 +2599,13 @@ omap_hwmod_set_postsetup_state
 
     set the post-_setup() state for this hwmod
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
-    :param u8 state:
+    :param state:
         state that \_setup() should leave the hwmod in
+    :type state: u8
 
 .. _`omap_hwmod_set_postsetup_state.description`:
 
@@ -2427,8 +2627,9 @@ omap_hwmod_get_context_loss_count
 
     get lost context count
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_get_context_loss_count.description`:
 
@@ -2451,8 +2652,9 @@ omap_hwmod_init
 
     initialize the hwmod code
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_hwmod_init.description`:
 
@@ -2472,8 +2674,9 @@ omap_hwmod_get_main_clk
 
     get pointer to main clock name
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_get_main_clk.description`:
 

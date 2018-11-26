@@ -10,11 +10,13 @@ nps_enet_poll
 
     NAPI poll handler.
 
-    :param struct napi_struct \*napi:
+    :param napi:
         Pointer to napi_struct structure.
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         How many frames to process on one call.
+    :type budget: int
 
 .. _`nps_enet_poll.return`:
 
@@ -32,11 +34,13 @@ nps_enet_irq_handler
 
     Global interrupt handler for ENET.
 
-    :param s32 irq:
+    :param irq:
         irq number.
+    :type irq: s32
 
-    :param void \*dev_instance:
+    :param dev_instance:
         device instance.
+    :type dev_instance: void \*
 
 .. _`nps_enet_irq_handler.return`:
 
@@ -58,8 +62,9 @@ nps_enet_hw_reset
 
     Reset the network device.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
 .. _`nps_enet_hw_reset.description`:
 
@@ -81,11 +86,13 @@ nps_enet_set_mac_address
 
     Set the MAC address for this device.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure.
+    :type ndev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         6 byte Address to be written as MAC address.
+    :type p: void \*
 
 .. _`nps_enet_set_mac_address.description`:
 
@@ -112,8 +119,9 @@ nps_enet_set_rx_mode
 
     Change the receive filtering mode.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
 .. _`nps_enet_set_rx_mode.description`:
 
@@ -131,8 +139,9 @@ nps_enet_open
 
     Open the network device.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
 .. _`nps_enet_open.return`:
 
@@ -153,8 +162,9 @@ nps_enet_stop
 
     Close the network device.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
 .. _`nps_enet_stop.description`:
 
@@ -172,11 +182,13 @@ nps_enet_start_xmit
 
     Starts the data transmission.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff pointer that contains data to be Transmitted.
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure.
+    :type ndev: struct net_device \*
 
 .. _`nps_enet_start_xmit.return`:
 

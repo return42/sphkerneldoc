@@ -1,20 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/arm64/kvm/reset.c
 
-.. _`kvm_arch_dev_ioctl_check_extension`:
+.. _`kvm_arch_vm_ioctl_check_extension`:
 
-kvm_arch_dev_ioctl_check_extension
-==================================
+kvm_arch_vm_ioctl_check_extension
+=================================
 
-.. c:function:: int kvm_arch_dev_ioctl_check_extension(struct kvm *kvm, long ext)
+.. c:function:: int kvm_arch_vm_ioctl_check_extension(struct kvm *kvm, long ext)
 
-    :param struct kvm \*kvm:
+    :param kvm:
         *undescribed*
+    :type kvm: struct kvm \*
 
-    :param long ext:
+    :param ext:
         *undescribed*
+    :type ext: long
 
-.. _`kvm_arch_dev_ioctl_check_extension.description`:
+.. _`kvm_arch_vm_ioctl_check_extension.description`:
 
 Description
 -----------
@@ -31,8 +33,9 @@ kvm_reset_vcpu
 
     sets core registers and sys_regs to reset value
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_reset_vcpu.description`:
 

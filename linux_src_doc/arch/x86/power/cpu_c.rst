@@ -10,8 +10,9 @@
 
     save CPU registers before creating a hibernation image and before restoring the memory state from it \ ``ctxt``\  - structure to store the registers contents in
 
-    :param struct saved_context \*ctxt:
+    :param ctxt:
         *undescribed*
+    :type ctxt: struct saved_context \*
 
 .. _`__save_processor_state.note`:
 
@@ -37,8 +38,9 @@ regardless of what kernel B does in the meantime.
 
     restore the contents of CPU registers saved by \__save_processor_state() \ ``ctxt``\  - structure to load the registers contents from
 
-    :param struct saved_context \*ctxt:
+    :param ctxt:
         *undescribed*
+    :type ctxt: struct saved_context \*
 
 .. _`__restore_processor_state.description`:
 

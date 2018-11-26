@@ -10,8 +10,9 @@ mic_request_dma_chans
 
     Request DMA channels
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_request_dma_chans.description`:
 
@@ -29,8 +30,9 @@ mic_free_dma_chans
 
     release DMA channels
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_free_dma_chans.description`:
 
@@ -48,11 +50,13 @@ returns none
 
     Start the MIC.
 
-    :param struct cosm_device \*cdev:
+    :param cdev:
         pointer to cosm_device instance
+    :type cdev: struct cosm_device \*
 
-    :param int id:
+    :param id:
         MIC device id/index provided by COSM used in other drivers like SCIF
+    :type id: int
 
 .. _`_mic_start.description`:
 
@@ -79,11 +83,13 @@ For all cosm_hw_ops the caller holds a mutex to ensure serialization.
 
     Prepare the MIC for reset and trigger reset.
 
-    :param struct cosm_device \*cdev:
+    :param cdev:
         pointer to cosm_device instance
+    :type cdev: struct cosm_device \*
 
-    :param bool force:
+    :param force:
         force a MIC to reset even if it is already offline.
+    :type force: bool
 
 .. _`_mic_stop.return`:
 

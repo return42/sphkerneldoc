@@ -19,17 +19,21 @@ intel_digital_connector_atomic_get_property
 
     hook for connector->atomic_get_property.
 
-    :param struct drm_connector \*connector:
+    :param connector:
         Connector to get the property for.
+    :type connector: struct drm_connector \*
 
-    :param const struct drm_connector_state \*state:
+    :param state:
         Connector state to retrieve the property from.
+    :type state: const struct drm_connector_state \*
 
-    :param struct drm_property \*property:
+    :param property:
         Property to retrieve.
+    :type property: struct drm_property \*
 
-    :param uint64_t \*val:
+    :param val:
         Return value for the property.
+    :type val: uint64_t \*
 
 .. _`intel_digital_connector_atomic_get_property.description`:
 
@@ -47,17 +51,21 @@ intel_digital_connector_atomic_set_property
 
     hook for connector->atomic_set_property.
 
-    :param struct drm_connector \*connector:
+    :param connector:
         Connector to set the property for.
+    :type connector: struct drm_connector \*
 
-    :param struct drm_connector_state \*state:
+    :param state:
         Connector state to set the property on.
+    :type state: struct drm_connector_state \*
 
-    :param struct drm_property \*property:
+    :param property:
         Property to set.
+    :type property: struct drm_property \*
 
-    :param uint64_t val:
+    :param val:
         New value for the property.
+    :type val: uint64_t
 
 .. _`intel_digital_connector_atomic_set_property.description`:
 
@@ -75,8 +83,9 @@ intel_digital_connector_duplicate_state
 
     duplicate connector state
 
-    :param struct drm_connector \*connector:
+    :param connector:
         digital connector
+    :type connector: struct drm_connector \*
 
 .. _`intel_digital_connector_duplicate_state.description`:
 
@@ -102,8 +111,9 @@ intel_crtc_duplicate_state
 
     duplicate crtc state
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`intel_crtc_duplicate_state.description`:
 
@@ -129,11 +139,13 @@ intel_crtc_destroy_state
 
     destroy crtc state
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_crtc_state \*state:
+    :param state:
         the state to destroy
+    :type state: struct drm_crtc_state \*
 
 .. _`intel_crtc_destroy_state.description`:
 
@@ -152,14 +164,17 @@ intel_atomic_setup_scalers
 
     setup scalers for crtc per staged requests
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param struct intel_crtc \*intel_crtc:
+    :param intel_crtc:
         intel crtc
+    :type intel_crtc: struct intel_crtc \*
 
-    :param struct intel_crtc_state \*crtc_state:
+    :param crtc_state:
         incoming crtc_state to validate and setup scalers
+    :type crtc_state: struct intel_crtc_state \*
 
 .. _`intel_atomic_setup_scalers.description`:
 

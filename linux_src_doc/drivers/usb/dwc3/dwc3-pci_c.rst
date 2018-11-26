@@ -1,23 +1,23 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/usb/dwc3/dwc3-pci.c
 
-.. _`pci_device_id_synopsys_hapsusb3`:
+.. _`pci_device_id_intel_byt`:
 
-PCI_DEVICE_ID_SYNOPSYS_HAPSUSB3
-===============================
+PCI_DEVICE_ID_INTEL_BYT
+=======================
 
-.. c:function::  PCI_DEVICE_ID_SYNOPSYS_HAPSUSB3()
+.. c:function::  PCI_DEVICE_ID_INTEL_BYT()
 
     pci.c - PCI Specific glue layer
 
-.. _`pci_device_id_synopsys_hapsusb3.description`:
+.. _`pci_device_id_intel_byt.description`:
 
 Description
 -----------
 
 Copyright (C) 2010-2011 Texas Instruments Incorporated - http://www.ti.com
 
-.. _`pci_device_id_synopsys_hapsusb3.authors`:
+.. _`pci_device_id_intel_byt.authors`:
 
 Authors
 -------
@@ -67,7 +67,7 @@ has_dsm_for_pm
     true for devices which need to run \_DSM on runtime PM
 
 wakeup_work
-    *undescribed*
+    work for asynchronous resume
 
 .. This file was automatic generated / don't edit.
 

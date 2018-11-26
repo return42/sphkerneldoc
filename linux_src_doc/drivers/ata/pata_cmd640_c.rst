@@ -10,11 +10,13 @@ cmd640_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`cmd640_set_piomode.description`:
 
@@ -32,8 +34,9 @@ cmd640_qc_issue
 
     command preparation hook
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command to be issued
+    :type qc: struct ata_queued_cmd \*
 
 .. _`cmd640_qc_issue.description`:
 
@@ -52,8 +55,9 @@ cmd640_port_start
 
     port setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port being set up
+    :type ap: struct ata_port \*
 
 .. _`cmd640_port_start.description`:
 

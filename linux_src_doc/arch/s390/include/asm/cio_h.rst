@@ -626,11 +626,13 @@ ccw_dev_id_is_equal
 
     compare two ccw_dev_ids
 
-    :param struct ccw_dev_id \*dev_id1:
+    :param dev_id1:
         a ccw_dev_id
+    :type dev_id1: struct ccw_dev_id \*
 
-    :param struct ccw_dev_id \*dev_id2:
+    :param dev_id2:
         another ccw_dev_id
+    :type dev_id2: struct ccw_dev_id \*
 
 .. _`ccw_dev_id_is_equal.return`:
 
@@ -656,8 +658,9 @@ pathmask_to_pos
 
     find the position of the left-most bit in a pathmask
 
-    :param u8 mask:
+    :param mask:
         pathmask with at least one bit set
+    :type mask: u8
 
 .. This file was automatic generated / don't edit.
 

@@ -33,30 +33,32 @@ fourcc
 bpp
     Bytes per pixel
 
-.. _`rvin_graph_entity`:
+.. _`rvin_parallel_entity`:
 
-struct rvin_graph_entity
-========================
+struct rvin_parallel_entity
+===========================
 
-.. c:type:: struct rvin_graph_entity
+.. c:type:: struct rvin_parallel_entity
 
-    Video endpoint from async framework
+    Parallel video input endpoint descriptor
 
-.. _`rvin_graph_entity.definition`:
+.. _`rvin_parallel_entity.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct rvin_graph_entity {
+    struct rvin_parallel_entity {
         struct v4l2_async_subdev asd;
         struct v4l2_subdev *subdev;
+        enum v4l2_mbus_type mbus_type;
+        unsigned int mbus_flags;
         unsigned int source_pad;
         unsigned int sink_pad;
     }
 
-.. _`rvin_graph_entity.members`:
+.. _`rvin_parallel_entity.members`:
 
 Members
 -------
@@ -66,6 +68,12 @@ asd
 
 subdev
     subdevice matched using async framework
+
+mbus_type
+    media bus type
+
+mbus_flags
+    media bus configuration flags
 
 source_pad
     source pad of remote subdevice
@@ -202,7 +210,7 @@ Definition
         struct v4l2_device v4l2_dev;
         struct v4l2_ctrl_handler ctrl_handler;
         struct v4l2_async_notifier notifier;
-        struct rvin_graph_entity *digital;
+        struct rvin_parallel_entity *parallel;
         struct rvin_group *group;
         unsigned int id;
         struct media_pad pad;
@@ -215,7 +223,7 @@ Definition
         struct list_head buf_list;
         unsigned int sequence;
         enum rvin_dma_state state;
-        struct v4l2_mbus_config mbus_cfg;
+        bool is_csi;
         u32 mbus_code;
         struct v4l2_pix_format format;
         struct v4l2_rect crop;
@@ -250,8 +258,8 @@ ctrl_handler
 notifier
     V4L2 asynchronous subdevs notifier
 
-digital
-    entity in the DT for local digital subdevice
+parallel
+    parallel input subdevice descriptor
 
 group
     Gen3 CSI group
@@ -290,8 +298,8 @@ sequence
 state
     keeps track of operation state
 
-mbus_cfg
-    media bus configuration from DT
+is_csi
+    flag to mark the VIN as using a CSI-2 subdevice
 
 mbus_code
     media bus format code
@@ -332,7 +340,7 @@ Definition
         struct media_device mdev;
         struct mutex lock;
         unsigned int count;
-        struct v4l2_async_notifier *notifier;
+        struct v4l2_async_notifier notifier;
         struct rvin_dev *vin[RCAR_VIN_NUM];
         struct {
             struct fwnode_handle *fwnode;
@@ -358,8 +366,7 @@ count
     number of enabled VIN instances found in DT
 
 notifier
-    pointer to the notifier of a VIN which handles the
-    groups async sub-devices.
+    group notifier for CSI-2 async subdevices
 
 vin
     VIN instances which are part of the group

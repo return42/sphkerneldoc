@@ -10,11 +10,13 @@ gcd
 
     calculate and return the greatest common divisor of 2 unsigned longs
 
-    :param unsigned long a:
+    :param a:
         first value
+    :type a: unsigned long
 
-    :param unsigned long b:
+    :param b:
         second value
+    :type b: unsigned long
 
 .. This file was automatic generated / don't edit.
 

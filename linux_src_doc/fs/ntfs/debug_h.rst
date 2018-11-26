@@ -10,8 +10,9 @@ ntfs_debug
 
     write a debug level message to syslog
 
-    :param  f:
+    :param f:
         a printf format string containing the message
+    :type f: 
 
 .. _`ntfs_debug.description`:
 

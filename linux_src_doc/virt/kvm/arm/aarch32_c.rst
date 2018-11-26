@@ -10,8 +10,9 @@ kvm_adjust_itstate
 
     adjust ITSTATE when emulating instructions in IT-block
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_adjust_itstate.description`:
 
@@ -33,11 +34,13 @@ kvm_skip_instr32
 
     skip a trapped instruction and proceed to the next
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param bool is_wide_instr:
+    :param is_wide_instr:
         *undescribed*
+    :type is_wide_instr: bool
 
 .. This file was automatic generated / don't edit.
 

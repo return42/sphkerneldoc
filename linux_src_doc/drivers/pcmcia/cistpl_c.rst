@@ -10,14 +10,17 @@ set_cis_map
 
     map the card memory at "card_offset" into virtual space.
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         *undescribed*
+    :type s: struct pcmcia_socket \*
 
-    :param unsigned int card_offset:
+    :param card_offset:
         *undescribed*
+    :type card_offset: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`set_cis_map.description`:
 
@@ -38,20 +41,25 @@ pcmcia_read_cis_mem
 
     low-level function to read CIS memory
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         *undescribed*
+    :type s: struct pcmcia_socket \*
 
-    :param int attr:
+    :param attr:
         *undescribed*
+    :type attr: int
 
-    :param u_int addr:
+    :param addr:
         *undescribed*
+    :type addr: u_int
 
-    :param u_int len:
+    :param len:
         *undescribed*
+    :type len: u_int
 
-    :param void \*ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: void \*
 
 .. _`pcmcia_read_cis_mem.description`:
 
@@ -69,20 +77,25 @@ pcmcia_write_cis_mem
 
     low-level function to write CIS memory
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         *undescribed*
+    :type s: struct pcmcia_socket \*
 
-    :param int attr:
+    :param attr:
         *undescribed*
+    :type attr: int
 
-    :param u_int addr:
+    :param addr:
         *undescribed*
+    :type addr: u_int
 
-    :param u_int len:
+    :param len:
         *undescribed*
+    :type len: u_int
 
-    :param void \*ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: void \*
 
 .. _`pcmcia_write_cis_mem.description`:
 
@@ -101,20 +114,25 @@ read_cis_cache
 
     read CIS memory or its associated cache
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         *undescribed*
+    :type s: struct pcmcia_socket \*
 
-    :param int attr:
+    :param attr:
         *undescribed*
+    :type attr: int
 
-    :param u_int addr:
+    :param addr:
         *undescribed*
+    :type addr: u_int
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param void \*ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: void \*
 
 .. _`read_cis_cache.description`:
 
@@ -134,8 +152,9 @@ destroy_cis_cache
 
     destroy the CIS cache
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         pcmcia_socket for which CIS cache shall be destroyed
+    :type s: struct pcmcia_socket \*
 
 .. _`destroy_cis_cache.description`:
 
@@ -154,8 +173,9 @@ verify_cis_cache
 
     does the CIS match what is in the CIS cache?
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         *undescribed*
+    :type s: struct pcmcia_socket \*
 
 .. _`pcmcia_replace_cis`:
 
@@ -166,14 +186,17 @@ pcmcia_replace_cis
 
     use a replacement CIS instead of the card's CIS
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         *undescribed*
+    :type s: struct pcmcia_socket \*
 
-    :param const u8 \*data:
+    :param data:
         *undescribed*
+    :type data: const u8 \*
 
-    :param const size_t len:
+    :param len:
         *undescribed*
+    :type len: const size_t
 
 .. _`pcmcia_replace_cis.description`:
 
@@ -192,11 +215,13 @@ pccard_validate_cis
 
     check whether card has a sensible CIS
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         the struct pcmcia_socket we are to check
+    :type s: struct pcmcia_socket \*
 
-    :param unsigned int \*info:
+    :param info:
         returns the number of tuples in the (valid) CIS, or 0
+    :type info: unsigned int \*
 
 .. _`pccard_validate_cis.description`:
 

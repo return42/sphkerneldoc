@@ -10,8 +10,9 @@ eeh_pcid_get
 
     Get the PCI device driver
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`eeh_pcid_get.description`:
 
@@ -32,8 +33,9 @@ eeh_pcid_put
 
     Dereference on the PCI device driver
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`eeh_pcid_put.description`:
 
@@ -52,8 +54,9 @@ eeh_disable_irq
 
     Disable interrupt for the recovering device
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         *undescribed*
+    :type edev: struct eeh_dev \*
 
 .. _`eeh_disable_irq.description`:
 
@@ -75,8 +78,9 @@ eeh_enable_irq
 
     Enable interrupt for the recovering device
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         *undescribed*
+    :type edev: struct eeh_dev \*
 
 .. _`eeh_enable_irq.description`:
 
@@ -95,11 +99,13 @@ eeh_report_error
 
     Report pci error to each device driver
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         eeh device
+    :type edev: struct eeh_dev \*
 
-    :param struct pci_driver \*driver:
+    :param driver:
         device's PCI driver
+    :type driver: struct pci_driver \*
 
 .. _`eeh_report_error.description`:
 
@@ -117,11 +123,13 @@ eeh_report_mmio_enabled
 
     Tell drivers that MMIO has been enabled
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         eeh device
+    :type edev: struct eeh_dev \*
 
-    :param struct pci_driver \*driver:
+    :param driver:
         device's PCI driver
+    :type driver: struct pci_driver \*
 
 .. _`eeh_report_mmio_enabled.description`:
 
@@ -140,11 +148,13 @@ eeh_report_reset
 
     Tell device that slot has been reset
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         eeh device
+    :type edev: struct eeh_dev \*
 
-    :param struct pci_driver \*driver:
+    :param driver:
         device's PCI driver
+    :type driver: struct pci_driver \*
 
 .. _`eeh_report_reset.description`:
 
@@ -165,11 +175,13 @@ eeh_report_resume
 
     Tell device to resume normal operations
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         eeh device
+    :type edev: struct eeh_dev \*
 
-    :param struct pci_driver \*driver:
+    :param driver:
         device's PCI driver
+    :type driver: struct pci_driver \*
 
 .. _`eeh_report_resume.description`:
 
@@ -189,11 +201,13 @@ eeh_report_failure
 
     Tell device driver that device is dead.
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         eeh device
+    :type edev: struct eeh_dev \*
 
-    :param struct pci_driver \*driver:
+    :param driver:
         device's PCI driver
+    :type driver: struct pci_driver \*
 
 .. _`eeh_report_failure.description`:
 
@@ -212,17 +226,21 @@ eeh_reset_device
 
     Perform actual reset of a pci slot
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus corresponding to the isolcated slot
+    :type bus: struct pci_bus \*
 
-    :param struct eeh_rmv_data \*rmv_data:
+    :param rmv_data:
         Optional, list to record removed devices
+    :type rmv_data: struct eeh_rmv_data \*
 
-    :param bool driver_eeh_aware:
+    :param driver_eeh_aware:
         Does the device's driver provide EEH support?
+    :type driver_eeh_aware: bool
 
 .. _`eeh_reset_device.description`:
 
@@ -242,9 +260,10 @@ eeh_handle_normal_event
 
     Handle EEH events on a specific PE
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE - which should not be used after we return, as it may
         have been invalidated.
+    :type pe: struct eeh_pe \*
 
 .. _`eeh_handle_normal_event.description`:
 
@@ -276,8 +295,9 @@ eeh_handle_special_event
 
     Handle EEH events without a specific failing PE
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`eeh_handle_special_event.description`:
 

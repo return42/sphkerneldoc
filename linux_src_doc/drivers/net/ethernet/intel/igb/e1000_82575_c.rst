@@ -10,14 +10,17 @@ igb_write_vfta_i350
 
     Write value to VLAN filter table
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset in VLAN filter table
+    :type offset: u32
 
-    :param u32 value:
+    :param value:
         register value written to VLAN filter table
+    :type value: u32
 
 .. _`igb_write_vfta_i350.description`:
 
@@ -36,8 +39,9 @@ igb_sgmii_uses_mdio_82575
 
     Determine if I2C pins are for external MDIO
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_sgmii_uses_mdio_82575.description`:
 
@@ -56,8 +60,9 @@ igb_check_for_link_media_swap
 
     Check which M88E1112 interface linked
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_check_for_link_media_swap.description`:
 
@@ -75,8 +80,9 @@ igb_init_phy_params_82575
 
     Init PHY func ptrs.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_init_nvm_params_82575`:
 
@@ -87,8 +93,9 @@ igb_init_nvm_params_82575
 
     Init NVM func ptrs.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_init_mac_params_82575`:
 
@@ -99,8 +106,9 @@ igb_init_mac_params_82575
 
     Init MAC func ptrs.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_set_sfp_media_type_82575`:
 
@@ -111,8 +119,9 @@ igb_set_sfp_media_type_82575
 
     derives SFP module media type.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_set_sfp_media_type_82575.description`:
 
@@ -131,8 +140,9 @@ igb_acquire_phy_82575
 
     Acquire rights to access PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_acquire_phy_82575.description`:
 
@@ -151,8 +161,9 @@ igb_release_phy_82575
 
     Release rights to access PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_release_phy_82575.description`:
 
@@ -171,14 +182,17 @@ igb_read_phy_reg_sgmii_82575
 
     Read PHY register using sgmii
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`igb_read_phy_reg_sgmii_82575.description`:
 
@@ -197,14 +211,17 @@ igb_write_phy_reg_sgmii_82575
 
     Write PHY register using sgmii
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`igb_write_phy_reg_sgmii_82575.description`:
 
@@ -223,8 +240,9 @@ igb_get_phy_id_82575
 
     Retrieve PHY addr and id
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_phy_id_82575.description`:
 
@@ -243,8 +261,9 @@ igb_phy_hw_reset_sgmii_82575
 
     Performs a PHY reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_phy_hw_reset_sgmii_82575.description`:
 
@@ -262,11 +281,13 @@ igb_set_d0_lplu_state_82575
 
     Set Low Power Linkup D0 state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         true to enable LPLU, false to disable
+    :type active: bool
 
 .. _`igb_set_d0_lplu_state_82575.description`:
 
@@ -290,11 +311,13 @@ igb_set_d0_lplu_state_82580
 
     Set Low Power Linkup D0 state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         true to enable LPLU, false to disable
+    :type active: bool
 
 .. _`igb_set_d0_lplu_state_82580.description`:
 
@@ -318,11 +341,13 @@ igb_set_d3_lplu_state_82580
 
     Sets low power link up state for D3
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         boolean used to enable/disable lplu
+    :type active: bool
 
 .. _`igb_set_d3_lplu_state_82580.description`:
 
@@ -347,8 +372,9 @@ igb_acquire_nvm_82575
 
     Request for access to EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_acquire_nvm_82575.description`:
 
@@ -369,8 +395,9 @@ igb_release_nvm_82575
 
     Release exclusive access to EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_release_nvm_82575.description`:
 
@@ -389,11 +416,13 @@ igb_acquire_swfw_sync_82575
 
     Acquire SW/FW semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mask:
+    :param mask:
         specifies which semaphore to acquire
+    :type mask: u16
 
 .. _`igb_acquire_swfw_sync_82575.description`:
 
@@ -412,11 +441,13 @@ igb_release_swfw_sync_82575
 
     Release SW/FW semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mask:
+    :param mask:
         specifies which semaphore to acquire
+    :type mask: u16
 
 .. _`igb_release_swfw_sync_82575.description`:
 
@@ -435,8 +466,9 @@ igb_get_cfg_done_82575
 
     Read config done bit
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_cfg_done_82575.description`:
 
@@ -458,14 +490,17 @@ igb_get_link_up_info_82575
 
     Get link speed/duplex info
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*speed:
+    :param speed:
         stores the current speed
+    :type speed: u16 \*
 
-    :param u16 \*duplex:
+    :param duplex:
         stores the current duplex
+    :type duplex: u16 \*
 
 .. _`igb_get_link_up_info_82575.description`:
 
@@ -485,8 +520,9 @@ igb_check_for_link_82575
 
     Check for link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_check_for_link_82575.description`:
 
@@ -505,8 +541,9 @@ igb_power_up_serdes_link_82575
 
     Power up the serdes link after shutdown
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_pcs_speed_and_duplex_82575`:
 
@@ -517,14 +554,17 @@ igb_get_pcs_speed_and_duplex_82575
 
     Retrieve current speed/duplex
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*speed:
+    :param speed:
         stores the current speed
+    :type speed: u16 \*
 
-    :param u16 \*duplex:
+    :param duplex:
         stores the current duplex
+    :type duplex: u16 \*
 
 .. _`igb_get_pcs_speed_and_duplex_82575.description`:
 
@@ -543,8 +583,9 @@ igb_shutdown_serdes_link_82575
 
     Remove link during power down
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_shutdown_serdes_link_82575.description`:
 
@@ -563,8 +604,9 @@ igb_reset_hw_82575
 
     Reset hardware
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_reset_hw_82575.description`:
 
@@ -583,8 +625,9 @@ igb_init_hw_82575
 
     Initialize hardware
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_init_hw_82575.description`:
 
@@ -602,8 +645,9 @@ igb_setup_copper_link_82575
 
     Configure copper link settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_setup_copper_link_82575.description`:
 
@@ -623,8 +667,9 @@ igb_setup_serdes_link_82575
 
     Setup link for serdes
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_setup_serdes_link_82575.description`:
 
@@ -645,8 +690,9 @@ igb_sgmii_active_82575
 
     Return sgmii state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_sgmii_active_82575.description`:
 
@@ -666,8 +712,9 @@ igb_reset_init_script_82575
 
     Inits HW defaults after reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_reset_init_script_82575.description`:
 
@@ -686,8 +733,9 @@ igb_read_mac_addr_82575
 
     Read device MAC address
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_power_down_phy_copper_82575`:
 
@@ -698,8 +746,9 @@ igb_power_down_phy_copper_82575
 
     Remove link during PHY power down
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_power_down_phy_copper_82575.description`:
 
@@ -718,8 +767,9 @@ igb_clear_hw_cntrs_82575
 
     Clear device specific hardware counters
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_clear_hw_cntrs_82575.description`:
 
@@ -737,8 +787,9 @@ igb_rx_fifo_flush_82575
 
     Clean rx fifo after RX enable
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_rx_fifo_flush_82575.description`:
 
@@ -759,8 +810,9 @@ igb_set_pcie_completion_timeout
 
     set pci-e completion timeout
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_set_pcie_completion_timeout.description`:
 
@@ -782,14 +834,17 @@ igb_vmdq_set_anti_spoofing_pf
 
     enable or disable anti-spoofing
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the hardware struct
+    :type hw: struct e1000_hw \*
 
-    :param bool enable:
+    :param enable:
         state to enter, either enabled or disabled
+    :type enable: bool
 
-    :param int pf:
+    :param pf:
         Physical Function pool - do not set anti-spoofing for the PF
+    :type pf: int
 
 .. _`igb_vmdq_set_anti_spoofing_pf.description`:
 
@@ -807,11 +862,13 @@ igb_vmdq_set_loopback_pf
 
     enable or disable vmdq loopback
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the hardware struct
+    :type hw: struct e1000_hw \*
 
-    :param bool enable:
+    :param enable:
         state to enter, either enabled or disabled
+    :type enable: bool
 
 .. _`igb_vmdq_set_loopback_pf.description`:
 
@@ -829,11 +886,13 @@ igb_vmdq_set_replication_pf
 
     enable or disable vmdq replication
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the hardware struct
+    :type hw: struct e1000_hw \*
 
-    :param bool enable:
+    :param enable:
         state to enter, either enabled or disabled
+    :type enable: bool
 
 .. _`igb_vmdq_set_replication_pf.description`:
 
@@ -851,14 +910,17 @@ igb_read_phy_reg_82580
 
     Read 82580 MDI control register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`igb_read_phy_reg_82580.description`:
 
@@ -877,14 +939,17 @@ igb_write_phy_reg_82580
 
     Write 82580 MDI control register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write to register at offset
+    :type data: u16
 
 .. _`igb_write_phy_reg_82580.description`:
 
@@ -902,8 +967,9 @@ igb_reset_mdicnfg_82580
 
     Reset MDICNFG destination and com_mdio bits
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_reset_mdicnfg_82580.description`:
 
@@ -923,8 +989,9 @@ igb_reset_hw_82580
 
     Reset hardware
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_reset_hw_82580.description`:
 
@@ -943,8 +1010,9 @@ igb_rxpbs_adjust_82580
 
     adjust RXPBS value to reflect actual RX PBA size
 
-    :param u32 data:
+    :param data:
         data received by reading RXPBS register
+    :type data: u32
 
 .. _`igb_rxpbs_adjust_82580.description`:
 
@@ -966,11 +1034,13 @@ igb_validate_nvm_checksum_with_offset
 
     Validate EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset in words of the checksum protected region
+    :type offset: u16
 
 .. _`igb_validate_nvm_checksum_with_offset.description`:
 
@@ -989,11 +1059,13 @@ igb_update_nvm_checksum_with_offset
 
     Update EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset in words of the checksum protected region
+    :type offset: u16
 
 .. _`igb_update_nvm_checksum_with_offset.description`:
 
@@ -1013,8 +1085,9 @@ igb_validate_nvm_checksum_82580
 
     Validate EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_validate_nvm_checksum_82580.description`:
 
@@ -1034,8 +1107,9 @@ igb_update_nvm_checksum_82580
 
     Update EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_update_nvm_checksum_82580.description`:
 
@@ -1055,8 +1129,9 @@ igb_validate_nvm_checksum_i350
 
     Validate EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_validate_nvm_checksum_i350.description`:
 
@@ -1076,8 +1151,9 @@ igb_update_nvm_checksum_i350
 
     Update EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_update_nvm_checksum_i350.description`:
 
@@ -1097,17 +1173,21 @@ checksum and writes the value to the EEPROM.
 
     Read/write EMI register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 address:
+    :param address:
         *undescribed*
+    :type address: u16
 
-    :param u16 \*data:
+    :param data:
         pointer to value to read/write from/to the EMI address
+    :type data: u16 \*
 
-    :param bool read:
+    :param read:
         boolean flag to indicate read or write
+    :type read: bool
 
 .. _`igb_read_emi_reg`:
 
@@ -1118,14 +1198,17 @@ igb_read_emi_reg
 
     Read Extended Management Interface register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 addr:
+    :param addr:
         EMI address to program
+    :type addr: u16
 
-    :param u16 \*data:
+    :param data:
         value to be read from the EMI address
+    :type data: u16 \*
 
 .. _`igb_set_eee_i350`:
 
@@ -1136,14 +1219,17 @@ igb_set_eee_i350
 
     Enable/disable EEE support
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool adv1G:
+    :param adv1G:
         boolean flag enabling 1G EEE advertisement
+    :type adv1G: bool
 
-    :param bool adv100M:
+    :param adv100M:
         *undescribed*
+    :type adv100M: bool
 
 .. _`igb_set_eee_i350.description`:
 
@@ -1161,14 +1247,17 @@ igb_set_eee_i354
 
     Enable/disable EEE support
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool adv1G:
+    :param adv1G:
         boolean flag enabling 1G EEE advertisement
+    :type adv1G: bool
 
-    :param bool adv100M:
+    :param adv100M:
         *undescribed*
+    :type adv100M: bool
 
 .. _`igb_set_eee_i354.description`:
 
@@ -1186,11 +1275,13 @@ igb_get_eee_status_i354
 
     Get EEE status
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool \*status:
+    :param status:
         EEE status
+    :type status: bool \*
 
 .. _`igb_get_eee_status_i354.description`:
 
@@ -1209,8 +1300,9 @@ igb_get_thermal_sensor_data_generic
 
     Gathers thermal sensor data
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_thermal_sensor_data_generic.description`:
 
@@ -1228,8 +1320,9 @@ igb_init_thermal_sensor_thresh_generic
 
     Sets thermal sensor thresholds
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_init_thermal_sensor_thresh_generic.description`:
 

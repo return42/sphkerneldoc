@@ -10,17 +10,21 @@ qib_diagpkt_write
 
     write an IB packet
 
-    :param struct file \*fp:
+    :param fp:
         the diag data device file pointer
+    :type fp: struct file \*
 
-    :param const char __user \*data:
+    :param data:
         qib_diag_pkt structure saying where to get the packet
+    :type data: const char __user \*
 
-    :param size_t count:
+    :param count:
         size of data to write
+    :type count: size_t
 
-    :param loff_t \*off:
+    :param off:
         unused by this code
+    :type off: loff_t \*
 
 .. This file was automatic generated / don't edit.
 

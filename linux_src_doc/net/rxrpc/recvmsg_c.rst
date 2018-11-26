@@ -6,33 +6,33 @@
 rxrpc_kernel_recv_data
 ======================
 
-.. c:function:: int rxrpc_kernel_recv_data(struct socket *sock, struct rxrpc_call *call, void *buf, size_t size, size_t *_offset, bool want_more, u32 *_abort, u16 *_service)
+.. c:function:: int rxrpc_kernel_recv_data(struct socket *sock, struct rxrpc_call *call, struct iov_iter *iter, bool want_more, u32 *_abort, u16 *_service)
 
     Allow a kernel service to receive data/info
 
-    :param struct socket \*sock:
+    :param sock:
         The socket that the call exists on
+    :type sock: struct socket \*
 
-    :param struct rxrpc_call \*call:
+    :param call:
         The call to send data through
+    :type call: struct rxrpc_call \*
 
-    :param void \*buf:
+    :param iter:
         The buffer to receive into
+    :type iter: struct iov_iter \*
 
-    :param size_t size:
-        The size of the buffer, including data already read
-
-    :param size_t \*_offset:
-        The running offset into the buffer.
-
-    :param bool want_more:
+    :param want_more:
         True if more data is expected to be read
+    :type want_more: bool
 
-    :param u32 \*_abort:
+    :param _abort:
         Where the abort code is stored if -ECONNABORTED is returned
+    :type _abort: u32 \*
 
-    :param u16 \*_service:
+    :param _service:
         Where to store the actual service ID (may be upgraded)
+    :type _service: u16 \*
 
 .. _`rxrpc_kernel_recv_data.description`:
 
@@ -47,11 +47,36 @@ and -EAGAIN if we need more data.
 Note that we may return -EAGAIN to drain empty packets at the end of the
 data, even if we've already copied over the requested data.
 
-This function adds the amount it transfers to \*\_offset, so this should be
-precleared as appropriate.  Note that the amount remaining in the buffer is
-taken to be size - \*\_offset.
-
 \*\_abort should also be initialised to 0.
+
+.. _`rxrpc_kernel_get_reply_time`:
+
+rxrpc_kernel_get_reply_time
+===========================
+
+.. c:function:: bool rxrpc_kernel_get_reply_time(struct socket *sock, struct rxrpc_call *call, ktime_t *_ts)
+
+    Get timestamp on first reply packet
+
+    :param sock:
+        The socket that the call exists on
+    :type sock: struct socket \*
+
+    :param call:
+        The call to query
+    :type call: struct rxrpc_call \*
+
+    :param _ts:
+        Where to put the timestamp
+    :type _ts: ktime_t \*
+
+.. _`rxrpc_kernel_get_reply_time.description`:
+
+Description
+-----------
+
+Retrieve the timestamp from the first DATA packet of the reply if it is
+in the ring.  Returns true if successful, false if not.
 
 .. This file was automatic generated / don't edit.
 

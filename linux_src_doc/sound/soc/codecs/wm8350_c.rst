@@ -10,17 +10,21 @@ wm8350_hp_jack_detect
 
     Enable headphone jack detection.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         WM8350 component
+    :type component: struct snd_soc_component \*
 
-    :param enum wm8350_jack which:
+    :param which:
         left or right jack detect signal
+    :type which: enum wm8350_jack
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         jack to report detection events on
+    :type jack: struct snd_soc_jack \*
 
-    :param int report:
+    :param report:
         value to report
+    :type report: int
 
 .. _`wm8350_hp_jack_detect.description`:
 
@@ -39,17 +43,21 @@ wm8350_mic_jack_detect
 
     Enable microphone jack detection.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         WM8350 component
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         jack to report detection events on
+    :type jack: struct snd_soc_jack \*
 
-    :param int detect_report:
+    :param detect_report:
         value to report when presence detected
+    :type detect_report: int
 
-    :param int short_report:
+    :param short_report:
         value to report when microphone short detected
+    :type short_report: int
 
 .. _`wm8350_mic_jack_detect.description`:
 

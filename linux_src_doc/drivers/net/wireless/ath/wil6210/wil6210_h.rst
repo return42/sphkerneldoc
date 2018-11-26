@@ -10,14 +10,17 @@ WIL_GET_BITS
 
     \ ``b1``\ ] (inclusive) from the value \ ``x``\  it should be \ ``b0``\  <= \ ``b1``\ , or result is incorrect
 
-    :param u32 x:
+    :param x:
         *undescribed*
+    :type x: u32
 
-    :param int b0:
+    :param b0:
         *undescribed*
+    :type b0: int
 
-    :param int b1:
+    :param b1:
         *undescribed*
+    :type b1: int
 
 .. _`mk_cidxtid`:
 
@@ -28,11 +31,13 @@ mk_cidxtid
 
     construct \ ``cidxtid``\  field
 
-    :param u8 cid:
+    :param cid:
         CID value
+    :type cid: u8
 
-    :param u8 tid:
+    :param tid:
         TID value
+    :type tid: u8
 
 .. _`mk_cidxtid.description`:
 
@@ -50,14 +55,17 @@ parse_cidxtid
 
     parse \ ``cidxtid``\  field
 
-    :param u8 cidxtid:
+    :param cidxtid:
         *undescribed*
+    :type cidxtid: u8
 
-    :param u8 \*cid:
+    :param cid:
         store CID value here
+    :type cid: u8 \*
 
-    :param u8 \*tid:
+    :param tid:
         store TID value here
+    :type tid: u8 \*
 
 .. _`parse_cidxtid.description`:
 
@@ -66,6 +74,19 @@ Description
 
 \ ``cidxtid``\  field encoded as bits 0..3 - CID; 4..7 - TID
 
+.. _`wil_cid_valid`:
+
+wil_cid_valid
+=============
+
+.. c:function:: bool wil_cid_valid(u8 cid)
+
+    check cid is valid
+
+    :param cid:
+        CID value
+    :type cid: u8
+
 .. _`wil_ctx`:
 
 struct wil_ctx
@@ -73,7 +94,7 @@ struct wil_ctx
 
 .. c:type:: struct wil_ctx
 
-    software context for Vring descriptor
+    software context for ring descriptor
 
 .. _`wil_ctx.definition`:
 
@@ -100,6 +121,110 @@ nr_frags
     *undescribed*
 
 mapped_as
+    *undescribed*
+
+.. _`wil_txrx_ops`:
+
+struct wil_txrx_ops
+===================
+
+.. c:type:: struct wil_txrx_ops
+
+    different TX/RX ops for legacy and enhanced DMA flow
+
+.. _`wil_txrx_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct wil_txrx_ops {
+        void (*configure_interrupt_moderation)(struct wil6210_priv *wil);
+        int (*ring_init_tx)(struct wil6210_vif *vif, int ring_id, int size, int cid, int tid);
+        void (*ring_fini_tx)(struct wil6210_priv *wil, struct wil_ring *ring);
+        int (*ring_init_bcast)(struct wil6210_vif *vif, int id, int size);
+        int (*tx_init)(struct wil6210_priv *wil);
+        void (*tx_fini)(struct wil6210_priv *wil);
+        int (*tx_desc_map)(union wil_tx_desc *desc, dma_addr_t pa, u32 len, int ring_index);
+        void (*tx_desc_unmap)(struct device *dev,union wil_tx_desc *desc, struct wil_ctx *ctx);
+        int (*tx_ring_tso)(struct wil6210_priv *wil, struct wil6210_vif *vif, struct wil_ring *ring, struct sk_buff *skb);
+        int (*tx_ring_modify)(struct wil6210_vif *vif, int ring_id, int cid, int tid);
+        irqreturn_t (*irq_tx)(int irq, void *cookie);
+        int (*rx_init)(struct wil6210_priv *wil, u16 ring_size);
+        void (*rx_fini)(struct wil6210_priv *wil);
+        int (*wmi_addba_rx_resp)(struct wil6210_priv *wil, u8 mid, u8 cid,u8 tid, u8 token, u16 status, bool amsdu, u16 agg_wsize, u16 timeout);
+        void (*get_reorder_params)(struct wil6210_priv *wil,struct sk_buff *skb, int *tid, int *cid, int *mid, u16 *seq, int *mcast, int *retry);
+        void (*get_netif_rx_params)(struct sk_buff *skb, int *cid, int *security);
+        int (*rx_crypto_check)(struct wil6210_priv *wil, struct sk_buff *skb);
+        int (*rx_error_check)(struct wil6210_priv *wil, struct sk_buff *skb, struct wil_net_stats *stats);
+        bool (*is_rx_idle)(struct wil6210_priv *wil);
+        irqreturn_t (*irq_rx)(int irq, void *cookie);
+    }
+
+.. _`wil_txrx_ops.members`:
+
+Members
+-------
+
+configure_interrupt_moderation
+    *undescribed*
+
+ring_init_tx
+    *undescribed*
+
+ring_fini_tx
+    *undescribed*
+
+ring_init_bcast
+    *undescribed*
+
+tx_init
+    *undescribed*
+
+tx_fini
+    *undescribed*
+
+tx_desc_map
+    *undescribed*
+
+tx_desc_unmap
+    *undescribed*
+
+tx_ring_tso
+    *undescribed*
+
+tx_ring_modify
+    *undescribed*
+
+irq_tx
+    *undescribed*
+
+rx_init
+    *undescribed*
+
+rx_fini
+    *undescribed*
+
+wmi_addba_rx_resp
+    *undescribed*
+
+get_reorder_params
+    *undescribed*
+
+get_netif_rx_params
+    *undescribed*
+
+rx_crypto_check
+    *undescribed*
+
+rx_error_check
+    *undescribed*
+
+is_rx_idle
+    *undescribed*
+
+irq_rx
     *undescribed*
 
 .. _`wil_tid_ampdu_rx`:
@@ -130,6 +255,8 @@ Definition
         unsigned long long drop_dup;
         unsigned long long drop_old;
         bool first_time;
+        u16 mcast_last_seq;
+        unsigned long long drop_dup_mcast;
     }
 
 .. _`wil_tid_ampdu_rx.members`:
@@ -169,6 +296,12 @@ drop_old
 
 first_time
     true when this buffer used 1-st time
+
+mcast_last_seq
+    sequence number (SN) of last received multicast packet
+
+drop_dup_mcast
+    duplicate multicast frames dropped for this reorder buffer
 
 .. _`wil_tid_crypto_rx_single`:
 
@@ -223,6 +356,8 @@ Definition
         u8 mid;
         enum wil_sta_status status;
         struct wil_net_stats stats;
+        u64 *tx_latency_bins;
+        struct wmi_link_stats_basic fw_stats_basic;
         struct wil_tid_ampdu_rx *tid_rx[WIL_STA_TID_NUM];
         spinlock_t tid_rx_lock;
         unsigned long tid_rx_timer_expired[BITS_TO_LONGS(WIL_STA_TID_NUM)];
@@ -247,6 +382,12 @@ status
     *undescribed*
 
 stats
+    *undescribed*
+
+tx_latency_bins
+    *undescribed*
+
+fw_stats_basic
     *undescribed*
 
 tid_rx

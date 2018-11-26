@@ -10,8 +10,9 @@ mite_bytes_in_transit
 
     Returns the number of unread bytes in the fifo.
 
-    :param struct mite_channel \*mite_chan:
+    :param mite_chan:
         MITE dma channel.
+    :type mite_chan: struct mite_channel \*
 
 .. _`mite_sync_dma`:
 
@@ -22,11 +23,13 @@ mite_sync_dma
 
     Sync the MITE dma with the COMEDI async buffer.
 
-    :param struct mite_channel \*mite_chan:
+    :param mite_chan:
         MITE dma channel.
+    :type mite_chan: struct mite_channel \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`mite_ack_linkc`:
 
@@ -37,14 +40,17 @@ mite_ack_linkc
 
     Check and ack the LINKC interrupt,
 
-    :param struct mite_channel \*mite_chan:
+    :param mite_chan:
         MITE dma channel.
+    :type mite_chan: struct mite_channel \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param bool sync:
+    :param sync:
         flag to force a \ :c:func:`mite_sync_dma`\ .
+    :type sync: bool
 
 .. _`mite_ack_linkc.description`:
 
@@ -62,8 +68,9 @@ mite_done
 
     Check is a MITE dma transfer is complete.
 
-    :param struct mite_channel \*mite_chan:
+    :param mite_chan:
         MITE dma channel.
+    :type mite_chan: struct mite_channel \*
 
 .. _`mite_done.description`:
 
@@ -81,8 +88,9 @@ mite_dma_arm
 
     Start a MITE dma transfer.
 
-    :param struct mite_channel \*mite_chan:
+    :param mite_chan:
         MITE dma channel.
+    :type mite_chan: struct mite_channel \*
 
 .. _`mite_dma_disarm`:
 
@@ -93,8 +101,9 @@ mite_dma_disarm
 
     Stop a MITE dma transfer.
 
-    :param struct mite_channel \*mite_chan:
+    :param mite_chan:
         MITE dma channel.
+    :type mite_chan: struct mite_channel \*
 
 .. _`mite_prep_dma`:
 
@@ -105,14 +114,17 @@ mite_prep_dma
 
     Prepare a MITE dma channel for transfers.
 
-    :param struct mite_channel \*mite_chan:
+    :param mite_chan:
         MITE dma channel.
+    :type mite_chan: struct mite_channel \*
 
-    :param unsigned int num_device_bits:
+    :param num_device_bits:
         device transfer size (8, 16, or 32-bits).
+    :type num_device_bits: unsigned int
 
-    :param unsigned int num_memory_bits:
+    :param num_memory_bits:
         memory transfer size (8, 16, or 32-bits).
+    :type num_memory_bits: unsigned int
 
 .. _`mite_request_channel_in_range`:
 
@@ -123,17 +135,21 @@ mite_request_channel_in_range
 
     Request a MITE dma channel.
 
-    :param struct mite \*mite:
+    :param mite:
         MITE device.
+    :type mite: struct mite \*
 
-    :param struct mite_ring \*ring:
+    :param ring:
         MITE dma ring.
+    :type ring: struct mite_ring \*
 
-    :param unsigned int min_channel:
+    :param min_channel:
         minimum channel index to use.
+    :type min_channel: unsigned int
 
-    :param unsigned int max_channel:
+    :param max_channel:
         maximum channel index to use.
+    :type max_channel: unsigned int
 
 .. _`mite_request_channel`:
 
@@ -144,11 +160,13 @@ mite_request_channel
 
     Request a MITE dma channel.
 
-    :param struct mite \*mite:
+    :param mite:
         MITE device.
+    :type mite: struct mite \*
 
-    :param struct mite_ring \*ring:
+    :param ring:
         MITE dma ring.
+    :type ring: struct mite_ring \*
 
 .. _`mite_release_channel`:
 
@@ -159,8 +177,9 @@ mite_release_channel
 
     Release a MITE dma channel.
 
-    :param struct mite_channel \*mite_chan:
+    :param mite_chan:
         MITE dma channel.
+    :type mite_chan: struct mite_channel \*
 
 .. _`mite_init_ring_descriptors`:
 
@@ -171,14 +190,17 @@ mite_init_ring_descriptors
 
     Initialize a MITE dma ring descriptors.
 
-    :param struct mite_ring \*ring:
+    :param ring:
         MITE dma ring.
+    :type ring: struct mite_ring \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         the size of the dma ring (in bytes).
+    :type nbytes: unsigned int
 
 .. _`mite_init_ring_descriptors.description`:
 
@@ -201,11 +223,13 @@ mite_buf_change
 
     COMEDI subdevice (\*buf_change) for a MITE dma ring.
 
-    :param struct mite_ring \*ring:
+    :param ring:
         MITE dma ring.
+    :type ring: struct mite_ring \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`mite_alloc_ring`:
 
@@ -216,8 +240,9 @@ mite_alloc_ring
 
     Allocate a MITE dma ring.
 
-    :param struct mite \*mite:
+    :param mite:
         MITE device.
+    :type mite: struct mite \*
 
 .. _`mite_free_ring`:
 
@@ -228,8 +253,9 @@ mite_free_ring
 
     Free a MITE dma ring and its descriptors.
 
-    :param struct mite_ring \*ring:
+    :param ring:
         MITE dma ring.
+    :type ring: struct mite_ring \*
 
 .. _`mite_attach`:
 
@@ -240,11 +266,13 @@ mite_attach
 
     Allocate and initialize a MITE device for a comedi driver.
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param bool use_win1:
+    :param use_win1:
         flag to use I/O Window 1 instead of I/O Window 0.
+    :type use_win1: bool
 
 .. _`mite_attach.description`:
 
@@ -265,8 +293,9 @@ mite_detach
 
     Unmap and free a MITE device for a comedi driver.
 
-    :param struct mite \*mite:
+    :param mite:
         MITE device.
+    :type mite: struct mite \*
 
 .. _`mite_detach.description`:
 

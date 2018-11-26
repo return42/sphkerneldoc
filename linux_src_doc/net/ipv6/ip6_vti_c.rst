@@ -10,14 +10,17 @@ vti6_tnl_lookup
 
     fetch tunnel matching the end-point addresses
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param const struct in6_addr \*remote:
+    :param remote:
         the address of the tunnel exit-point
+    :type remote: const struct in6_addr \*
 
-    :param const struct in6_addr \*local:
+    :param local:
         the address of the tunnel entry-point
+    :type local: const struct in6_addr \*
 
 .. _`vti6_tnl_lookup.return`:
 
@@ -37,11 +40,13 @@ vti6_tnl_bucket
 
     get head of list matching given tunnel parameters
 
-    :param struct vti6_net \*ip6n:
+    :param ip6n:
         *undescribed*
+    :type ip6n: struct vti6_net \*
 
-    :param const struct __ip6_tnl_parm \*p:
+    :param p:
         parameters containing tunnel end-points
+    :type p: const struct __ip6_tnl_parm \*
 
 .. _`vti6_tnl_bucket.description`:
 
@@ -67,14 +72,17 @@ vti6_locate
 
     find or create tunnel matching given parameters
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param struct __ip6_tnl_parm \*p:
+    :param p:
         tunnel parameters
+    :type p: struct __ip6_tnl_parm \*
 
-    :param int create:
+    :param create:
         != 0 if allowed to create new tunnel if no match found
+    :type create: int
 
 .. _`vti6_locate.description`:
 
@@ -101,8 +109,9 @@ vti6_dev_uninit
 
     tunnel device uninitializer
 
-    :param struct net_device \*dev:
+    :param dev:
         the device to be destroyed
+    :type dev: struct net_device \*
 
 .. _`vti6_dev_uninit.description`:
 
@@ -120,11 +129,13 @@ vti6_addr_conflict
 
     compare packet addresses to tunnel's own
 
-    :param const struct ip6_tnl \*t:
+    :param t:
         the outgoing tunnel device
+    :type t: const struct ip6_tnl \*
 
-    :param const struct ipv6hdr \*hdr:
+    :param hdr:
         IPv6 header from the incoming packet
+    :type hdr: const struct ipv6hdr \*
 
 .. _`vti6_addr_conflict.description`:
 
@@ -151,14 +162,17 @@ vti6_xmit
 
     send a packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the outgoing socket buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the outgoing tunnel device
+    :type dev: struct net_device \*
 
-    :param struct flowi \*fl:
+    :param fl:
         the flow informations for the xfrm_lookup
+    :type fl: struct flowi \*
 
 .. _`vti6_tnl_change`:
 
@@ -169,14 +183,17 @@ vti6_tnl_change
 
     update the tunnel parameters
 
-    :param struct ip6_tnl \*t:
+    :param t:
         tunnel to be changed
+    :type t: struct ip6_tnl \*
 
-    :param const struct __ip6_tnl_parm \*p:
+    :param p:
         tunnel configuration parameters
+    :type p: const struct __ip6_tnl_parm \*
 
-    :param bool keep_mtu:
+    :param keep_mtu:
         MTU was set from userspace, don't re-compute it
+    :type keep_mtu: bool
 
 .. _`vti6_tnl_change.description`:
 
@@ -194,14 +211,17 @@ vti6_ioctl
 
     configure vti6 tunnels from userspace
 
-    :param struct net_device \*dev:
+    :param dev:
         virtual device associated with tunnel
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         parameters passed from userspace
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         command to be performed
+    :type cmd: int
 
 .. _`vti6_ioctl.description`:
 
@@ -245,8 +265,9 @@ vti6_dev_setup
 
     setup virtual tunnel device
 
-    :param struct net_device \*dev:
+    :param dev:
         virtual device associated with tunnel
+    :type dev: struct net_device \*
 
 .. _`vti6_dev_setup.description`:
 
@@ -264,8 +285,9 @@ vti6_dev_init_gen
 
     general initializer for all tunnel devices
 
-    :param struct net_device \*dev:
+    :param dev:
         virtual device associated with tunnel
+    :type dev: struct net_device \*
 
 .. _`vti6_dev_init`:
 
@@ -276,8 +298,9 @@ vti6_dev_init
 
     initializer for all non fallback tunnel devices
 
-    :param struct net_device \*dev:
+    :param dev:
         virtual device associated with tunnel
+    :type dev: struct net_device \*
 
 .. _`vti6_fb_tnl_dev_init`:
 
@@ -288,8 +311,9 @@ vti6_fb_tnl_dev_init
 
     initializer for fallback tunnel device
 
-    :param struct net_device \*dev:
+    :param dev:
         fallback device
+    :type dev: struct net_device \*
 
 .. _`vti6_fb_tnl_dev_init.return`:
 
@@ -307,8 +331,9 @@ vti6_tunnel_init
 
     register protocol and reserve needed resources
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vti6_tunnel_init.return`:
 
@@ -326,8 +351,9 @@ vti6_tunnel_cleanup
 
     free resources and unregister protocol
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

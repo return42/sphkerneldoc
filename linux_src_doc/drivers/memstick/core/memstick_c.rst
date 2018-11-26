@@ -10,8 +10,9 @@ memstick_detect_change
 
     schedule media detection on memstick host \ ``host``\  - host to use
 
-    :param struct memstick_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct memstick_host \*
 
 .. _`memstick_next_req`:
 
@@ -22,11 +23,13 @@ memstick_next_req
 
     called by host driver to obtain next request to process \ ``host``\  - host to use \ ``mrq``\  - pointer to stick the request to
 
-    :param struct memstick_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct memstick_host \*
 
-    :param struct memstick_request \*\*mrq:
+    :param mrq:
         *undescribed*
+    :type mrq: struct memstick_request \*\*
 
 .. _`memstick_next_req.description`:
 
@@ -47,8 +50,9 @@ memstick_new_req
 
     notify the host that some requests are pending \ ``host``\  - host to use
 
-    :param struct memstick_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct memstick_host \*
 
 .. _`memstick_init_req_sg`:
 
@@ -59,14 +63,17 @@ memstick_init_req_sg
 
     set request fields needed for bulk data transfer \ ``mrq``\  - request to use \ ``tpc``\  - memstick Transport Protocol Command \ ``sg``\  - TPC argument
 
-    :param struct memstick_request \*mrq:
+    :param mrq:
         *undescribed*
+    :type mrq: struct memstick_request \*
 
-    :param unsigned char tpc:
+    :param tpc:
         *undescribed*
+    :type tpc: unsigned char
 
-    :param const struct scatterlist \*sg:
+    :param sg:
         *undescribed*
+    :type sg: const struct scatterlist \*
 
 .. _`memstick_init_req`:
 
@@ -77,17 +84,21 @@ memstick_init_req
 
     set request fields needed for short data transfer \ ``mrq``\  - request to use \ ``tpc``\  - memstick Transport Protocol Command \ ``buf``\  - TPC argument buffer \ ``length``\  - TPC argument size
 
-    :param struct memstick_request \*mrq:
+    :param mrq:
         *undescribed*
+    :type mrq: struct memstick_request \*
 
-    :param unsigned char tpc:
+    :param tpc:
         *undescribed*
+    :type tpc: unsigned char
 
-    :param const void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const void \*
 
-    :param size_t length:
+    :param length:
         *undescribed*
+    :type length: size_t
 
 .. _`memstick_init_req.description`:
 
@@ -107,8 +118,9 @@ memstick_set_rw_addr
 
     issue SET_RW_REG_ADDR request and wait for it to complete \ ``card``\  - media device to use
 
-    :param struct memstick_dev \*card:
+    :param card:
         *undescribed*
+    :type card: struct memstick_dev \*
 
 .. _`memstick_alloc_host`:
 
@@ -119,11 +131,13 @@ memstick_alloc_host
 
     allocate a memstick_host structure
 
-    :param unsigned int extra:
+    :param extra:
         size of the user private data to allocate
+    :type extra: unsigned int
 
-    :param struct device \*dev:
+    :param dev:
         parent device of the host
+    :type dev: struct device \*
 
 .. _`memstick_add_host`:
 
@@ -134,8 +148,9 @@ memstick_add_host
 
     start request processing on memstick host \ ``host``\  - host to use
 
-    :param struct memstick_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct memstick_host \*
 
 .. _`memstick_remove_host`:
 
@@ -146,8 +161,9 @@ memstick_remove_host
 
     stop request processing on memstick host \ ``host``\  - host to use
 
-    :param struct memstick_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct memstick_host \*
 
 .. _`memstick_free_host`:
 
@@ -158,8 +174,9 @@ memstick_free_host
 
     free memstick host \ ``host``\  - host to use
 
-    :param struct memstick_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct memstick_host \*
 
 .. _`memstick_suspend_host`:
 
@@ -170,8 +187,9 @@ memstick_suspend_host
 
     notify bus driver of host suspension \ ``host``\  - host to use
 
-    :param struct memstick_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct memstick_host \*
 
 .. _`memstick_resume_host`:
 
@@ -182,8 +200,9 @@ memstick_resume_host
 
     notify bus driver of host resumption \ ``host``\  - host to use
 
-    :param struct memstick_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct memstick_host \*
 
 .. This file was automatic generated / don't edit.
 

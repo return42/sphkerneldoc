@@ -10,8 +10,9 @@ get_highest_supported_ivhd_type
 
     Look up the appropriate IVHD type \ ``ivrs``\           Pointer to the IVRS header
 
-    :param struct acpi_table_header \*ivrs:
+    :param ivrs:
         *undescribed*
+    :type ivrs: struct acpi_table_header \*
 
 .. _`get_highest_supported_ivhd_type.description`:
 

@@ -10,8 +10,9 @@ scsi_dma_map
 
     perform DMA mapping against command's sg lists
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         scsi command
+    :type cmd: struct scsi_cmnd \*
 
 .. _`scsi_dma_map.description`:
 
@@ -30,8 +31,9 @@ scsi_dma_unmap
 
     unmap command's sg lists mapped by scsi_dma_map
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         scsi command
+    :type cmd: struct scsi_cmnd \*
 
 .. This file was automatic generated / don't edit.
 

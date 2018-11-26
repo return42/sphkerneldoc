@@ -10,17 +10,21 @@ fw_csr_string
 
     reads a string from the configuration ROM
 
-    :param const u32 \*directory:
+    :param directory:
         e.g. root directory or unit directory
+    :type directory: const u32 \*
 
-    :param int key:
+    :param key:
         the key of the preceding directory entry
+    :type key: int
 
-    :param char \*buf:
+    :param buf:
         where to put the string
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         size of \ ``buf``\ , in bytes
+    :type size: size_t
 
 .. _`fw_csr_string.description`:
 

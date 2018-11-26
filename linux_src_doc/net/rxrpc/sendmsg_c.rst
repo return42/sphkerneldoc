@@ -10,20 +10,25 @@ rxrpc_kernel_send_data
 
     Allow a kernel service to send data on a call
 
-    :param struct socket \*sock:
+    :param sock:
         The socket the call is on
+    :type sock: struct socket \*
 
-    :param struct rxrpc_call \*call:
+    :param call:
         The call to send data through
+    :type call: struct rxrpc_call \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         The data to send
+    :type msg: struct msghdr \*
 
-    :param size_t len:
+    :param len:
         The amount of data to send
+    :type len: size_t
 
-    :param rxrpc_notify_end_tx_t notify_end_tx:
+    :param notify_end_tx:
         Notification that the last packet is queued.
+    :type notify_end_tx: rxrpc_notify_end_tx_t
 
 .. _`rxrpc_kernel_send_data.description`:
 
@@ -44,20 +49,25 @@ rxrpc_kernel_abort_call
 
     Allow a kernel service to abort a call
 
-    :param struct socket \*sock:
+    :param sock:
         The socket the call is on
+    :type sock: struct socket \*
 
-    :param struct rxrpc_call \*call:
+    :param call:
         The call to be aborted
+    :type call: struct rxrpc_call \*
 
-    :param u32 abort_code:
+    :param abort_code:
         The abort code to stick into the ABORT packet
+    :type abort_code: u32
 
-    :param int error:
+    :param error:
         Local error value
+    :type error: int
 
-    :param const char \*why:
+    :param why:
         3-char string indicating why.
+    :type why: const char \*
 
 .. _`rxrpc_kernel_abort_call.description`:
 
@@ -76,14 +86,17 @@ rxrpc_kernel_set_tx_length
 
     Set the total Tx length on a call
 
-    :param struct socket \*sock:
+    :param sock:
         The socket the call is on
+    :type sock: struct socket \*
 
-    :param struct rxrpc_call \*call:
+    :param call:
         The call to be informed
+    :type call: struct rxrpc_call \*
 
-    :param s64 tx_total_len:
+    :param tx_total_len:
         The amount of data to be transmitted for this call
+    :type tx_total_len: s64
 
 .. _`rxrpc_kernel_set_tx_length.description`:
 

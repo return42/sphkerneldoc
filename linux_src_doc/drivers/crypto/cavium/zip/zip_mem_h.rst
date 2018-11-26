@@ -10,11 +10,13 @@ zip_cmd_qbuf_free
 
     Frees the cmd Queue buffer
 
-    :param struct zip_device \*zip:
+    :param zip:
         Pointer to zip device structure
+    :type zip: struct zip_device \*
 
-    :param int q:
+    :param q:
         Queue nmber to free buffer of
+    :type q: int
 
 .. _`zip_cmd_qbuf_alloc`:
 
@@ -25,11 +27,13 @@ zip_cmd_qbuf_alloc
 
     Allocates a Chunk/cmd buffer for ZIP Inst(cmd) Queue
 
-    :param struct zip_device \*zip:
+    :param zip:
         Pointer to zip device structure
+    :type zip: struct zip_device \*
 
-    :param int q:
+    :param q:
         Queue number to allocate bufffer to
+    :type q: int
 
 .. _`zip_cmd_qbuf_alloc.return`:
 
@@ -47,8 +51,9 @@ zip_data_buf_alloc
 
     Allocates memory for a data bufffer
 
-    :param u64 size:
+    :param size:
         Size of the buffer to allocate
+    :type size: u64
 
 .. _`zip_data_buf_alloc.return`:
 
@@ -66,11 +71,13 @@ zip_data_buf_free
 
     Frees the memory of a data buffer
 
-    :param u8 \*ptr:
+    :param ptr:
         Pointer to the buffer
+    :type ptr: u8 \*
 
-    :param u64 size:
+    :param size:
         Buffer size
+    :type size: u64
 
 .. This file was automatic generated / don't edit.
 

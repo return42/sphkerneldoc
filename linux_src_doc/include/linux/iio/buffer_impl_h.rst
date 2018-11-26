@@ -166,14 +166,17 @@ iio_update_buffers
 
     add or remove buffer from active list
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         device to add buffer to
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_buffer \*insert_buffer:
+    :param insert_buffer:
         buffer to insert
+    :type insert_buffer: struct iio_buffer \*
 
-    :param struct iio_buffer \*remove_buffer:
+    :param remove_buffer:
         buffer_to_remove
+    :type remove_buffer: struct iio_buffer \*
 
 .. _`iio_update_buffers.description`:
 
@@ -191,8 +194,9 @@ iio_buffer_init
 
     Initialize the buffer structure
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         buffer to be initialized
+    :type buffer: struct iio_buffer \*
 
 .. This file was automatic generated / don't edit.
 

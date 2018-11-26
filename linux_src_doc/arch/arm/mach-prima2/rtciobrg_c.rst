@@ -10,11 +10,13 @@ devm_regmap_init_iobg
 
     Initialise managed register map
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param const struct regmap_config \*config:
+    :param config:
         Configuration for register map
+    :type config: const struct regmap_config \*
 
 .. _`devm_regmap_init_iobg.description`:
 

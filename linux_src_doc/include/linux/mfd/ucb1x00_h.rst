@@ -10,8 +10,9 @@ ucb1x00_clkrate
 
     return the UCB1x00 SIB clock rate
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
 .. _`ucb1x00_clkrate.description`:
 
@@ -29,8 +30,9 @@ ucb1x00_enable
 
     enable the UCB1x00 SIB clock
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
 .. _`ucb1x00_enable.description`:
 
@@ -48,8 +50,9 @@ ucb1x00_disable
 
     disable the UCB1x00 SIB clock
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
 .. _`ucb1x00_disable.description`:
 
@@ -69,14 +72,17 @@ ucb1x00_reg_write
 
     write a UCB1x00 register
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
-    :param unsigned int reg:
+    :param reg:
         UCB1x00 4-bit register index to write
+    :type reg: unsigned int
 
-    :param unsigned int val:
+    :param val:
         UCB1x00 16-bit value to write
+    :type val: unsigned int
 
 .. _`ucb1x00_reg_write.description`:
 
@@ -95,11 +101,13 @@ ucb1x00_reg_read
 
     read a UCB1x00 register
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
-    :param unsigned int reg:
+    :param reg:
         UCB1x00 4-bit register index to write
+    :type reg: unsigned int
 
 .. _`ucb1x00_reg_read.description`:
 
@@ -116,11 +124,13 @@ ucb1x00_set_audio_divisor
 
 .. c:function:: void ucb1x00_set_audio_divisor(struct ucb1x00 *ucb, unsigned int div)
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
-    :param unsigned int div:
+    :param div:
         SIB clock divisor
+    :type div: unsigned int
 
 .. _`ucb1x00_set_telecom_divisor`:
 
@@ -129,11 +139,13 @@ ucb1x00_set_telecom_divisor
 
 .. c:function:: void ucb1x00_set_telecom_divisor(struct ucb1x00 *ucb, unsigned int div)
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
-    :param unsigned int div:
+    :param div:
         SIB clock divisor
+    :type div: unsigned int
 
 .. This file was automatic generated / don't edit.
 

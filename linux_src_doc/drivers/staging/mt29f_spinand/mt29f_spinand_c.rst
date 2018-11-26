@@ -10,11 +10,13 @@ spinand_cmd
 
     process a command to send to the SPI Nand
 
-    :param struct spi_device \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct spi_device \*
 
-    :param struct spinand_cmd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct spinand_cmd \*
 
 .. _`spinand_cmd.description`:
 
@@ -33,11 +35,13 @@ spinand_read_id
 
     Read SPI Nand ID
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u8 \*id:
+    :param id:
         *undescribed*
+    :type id: u8 \*
 
 .. _`spinand_read_id.description`:
 
@@ -55,11 +59,13 @@ spinand_read_status
 
     send command 0xf to the SPI Nand status register
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u8 \*status:
+    :param status:
         *undescribed*
+    :type status: u8 \*
 
 .. _`spinand_read_status.description`:
 
@@ -88,11 +94,13 @@ spinand_get_otp
 
     send command 0xf to read the SPI Nand OTP register
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u8 \*otp:
+    :param otp:
         *undescribed*
+    :type otp: u8 \*
 
 .. _`spinand_get_otp.description`:
 
@@ -112,11 +120,13 @@ spinand_set_otp
 
     send command 0x1f to write the SPI Nand OTP register
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u8 \*otp:
+    :param otp:
         *undescribed*
+    :type otp: u8 \*
 
 .. _`spinand_set_otp.description`:
 
@@ -136,8 +146,9 @@ spinand_enable_ecc
 
     send command 0x1f to write the SPI Nand OTP register
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
 .. _`spinand_enable_ecc.description`:
 
@@ -157,8 +168,9 @@ spinand_write_enable
 
     send command 0x06 to enable write or erase the Nand cells
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
 .. _`spinand_write_enable.description`:
 
@@ -179,20 +191,25 @@ spinand_read_from_cache
 
     send command 0x03 to read out the data from the cache register (2112 bytes max)
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u16 page_id:
+    :param page_id:
         *undescribed*
+    :type page_id: u16
 
-    :param u16 byte_id:
+    :param byte_id:
         *undescribed*
+    :type byte_id: u16
 
-    :param u16 len:
+    :param len:
         *undescribed*
+    :type len: u16
 
-    :param u8 \*rbuf:
+    :param rbuf:
         *undescribed*
+    :type rbuf: u8 \*
 
 .. _`spinand_read_from_cache.description`:
 
@@ -212,20 +229,25 @@ spinand_read_page
 
     read a page
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u16 page_id:
+    :param page_id:
         the physical page number
+    :type page_id: u16
 
-    :param u16 offset:
+    :param offset:
         the location from 0 to 2111
+    :type offset: u16
 
-    :param u16 len:
+    :param len:
         number of bytes to read
+    :type len: u16
 
-    :param u8 \*rbuf:
+    :param rbuf:
         read buffer to hold \ ``len``\  bytes
+    :type rbuf: u8 \*
 
 .. _`spinand_read_page.description`:
 
@@ -244,20 +266,25 @@ spinand_program_data_to_cache
 
     write a page to cache
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u16 page_id:
+    :param page_id:
         *undescribed*
+    :type page_id: u16
 
-    :param u16 byte_id:
+    :param byte_id:
         the location to write to the cache
+    :type byte_id: u16
 
-    :param u16 len:
+    :param len:
         number of bytes to write
+    :type len: u16
 
-    :param u8 \*wbuf:
+    :param wbuf:
         write buffer holding \ ``len``\  bytes
+    :type wbuf: u8 \*
 
 .. _`spinand_program_data_to_cache.description`:
 
@@ -277,11 +304,13 @@ spinand_program_execute
 
     write a page from cache to the Nand array
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u16 page_id:
+    :param page_id:
         the physical page location to write the page.
+    :type page_id: u16
 
 .. _`spinand_program_execute.description`:
 
@@ -301,20 +330,25 @@ spinand_program_page
 
     write a page
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u16 page_id:
+    :param page_id:
         the physical page location to write the page.
+    :type page_id: u16
 
-    :param u16 offset:
+    :param offset:
         the location from the cache starting from 0 to 2111
+    :type offset: u16
 
-    :param u16 len:
+    :param len:
         the number of bytes to write
+    :type len: u16
 
-    :param u8 \*buf:
+    :param buf:
         the buffer holding \ ``len``\  bytes
+    :type buf: u8 \*
 
 .. _`spinand_program_page.description`:
 
@@ -335,11 +369,13 @@ spinand_erase_block_erase
 
     erase a page
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u16 block_id:
+    :param block_id:
         the physical block location to erase.
+    :type block_id: u16
 
 .. _`spinand_erase_block_erase.description`:
 
@@ -359,11 +395,13 @@ spinand_erase_block
 
     erase a page
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u16 block_id:
+    :param block_id:
         the physical block location to erase.
+    :type block_id: u16
 
 .. _`spinand_erase_block.description`:
 
@@ -385,11 +423,13 @@ spinand_lock_block
 
     send write register 0x1f command to the Nand device
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         *undescribed*
+    :type spi_nand: struct spi_device \*
 
-    :param u8 lock:
+    :param lock:
         *undescribed*
+    :type lock: u8
 
 .. _`spinand_lock_block.description`:
 
@@ -408,8 +448,9 @@ spinand_probe
 
     [spinand Interface]
 
-    :param struct spi_device \*spi_nand:
+    :param spi_nand:
         registered device driver.
+    :type spi_nand: struct spi_device \*
 
 .. _`spinand_probe.description`:
 
@@ -427,8 +468,9 @@ spinand_remove
 
     remove the device driver
 
-    :param struct spi_device \*spi:
+    :param spi:
         the spi device.
+    :type spi: struct spi_device \*
 
 .. _`spinand_remove.description`:
 

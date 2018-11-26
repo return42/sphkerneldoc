@@ -10,11 +10,13 @@ irq_create_affinity_masks
 
     Create affinity masks for multiqueue spreading
 
-    :param int nvecs:
+    :param nvecs:
         The total number of vectors
+    :type nvecs: int
 
-    :param const struct irq_affinity \*affd:
+    :param affd:
         Description of the affinity requirements
+    :type affd: const struct irq_affinity \*
 
 .. _`irq_create_affinity_masks.description`:
 
@@ -32,14 +34,17 @@ irq_calc_affinity_vectors
 
     Calculate the optimal number of vectors
 
-    :param int minvec:
+    :param minvec:
         The minimum number of vectors available
+    :type minvec: int
 
-    :param int maxvec:
+    :param maxvec:
         The maximum number of vectors available
+    :type maxvec: int
 
-    :param const struct irq_affinity \*affd:
+    :param affd:
         Description of the affinity requirements
+    :type affd: const struct irq_affinity \*
 
 .. This file was automatic generated / don't edit.
 

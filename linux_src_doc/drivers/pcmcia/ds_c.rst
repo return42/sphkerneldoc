@@ -10,14 +10,17 @@ new_id_store
 
     add a new PCMCIA device ID to this driver and re-probe devices
 
-    :param struct device_driver \*driver:
+    :param driver:
         target device driver
+    :type driver: struct device_driver \*
 
-    :param const char \*buf:
+    :param buf:
         buffer for scanning device ID data
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         input size
+    :type count: size_t
 
 .. _`new_id_store.description`:
 
@@ -36,8 +39,9 @@ pcmcia_register_driver
 
     register a PCMCIA driver with the bus core
 
-    :param struct pcmcia_driver \*driver:
+    :param driver:
         the \ :c:type:`struct driver <driver>`\  being registered
+    :type driver: struct pcmcia_driver \*
 
 .. _`pcmcia_register_driver.description`:
 
@@ -55,8 +59,9 @@ pcmcia_unregister_driver
 
     unregister a PCMCIA driver with the bus core
 
-    :param struct pcmcia_driver \*driver:
+    :param driver:
         the \ :c:type:`struct driver <driver>`\  being unregistered
+    :type driver: struct pcmcia_driver \*
 
 .. _`pcmcia_load_firmware`:
 
@@ -67,11 +72,13 @@ pcmcia_load_firmware
 
     load CIS from userspace if device-provided is broken
 
-    :param struct pcmcia_device \*dev:
+    :param dev:
         the pcmcia device which needs a CIS override
+    :type dev: struct pcmcia_device \*
 
-    :param char \*filename:
+    :param filename:
         requested filename in /lib/firmware/
+    :type filename: char \*
 
 .. _`pcmcia_load_firmware.description`:
 

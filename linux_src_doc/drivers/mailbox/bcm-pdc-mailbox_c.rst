@@ -10,8 +10,9 @@ pdc_setup_debugfs
 
     Create the debug FS directories. If the top-level directory has not yet been created, create it now. Create a stats file in this directory for a SPU.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state structure
+    :type pdcs: struct pdc_state \*
 
 .. _`pdc_build_rxd`:
 
@@ -22,17 +23,21 @@ pdc_build_rxd
 
     Build DMA descriptor to receive SPU result.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state for SPU that will generate result
+    :type pdcs: struct pdc_state \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         DMA address of buffer that descriptor is being built for
+    :type dma_addr: dma_addr_t
 
-    :param u32 buf_len:
+    :param buf_len:
         Length of the receive buffer, in bytes
+    :type buf_len: u32
 
-    :param u32 flags:
+    :param flags:
         Flags to be stored in descriptor
+    :type flags: u32
 
 .. _`pdc_build_txd`:
 
@@ -43,17 +48,21 @@ pdc_build_txd
 
     Build a DMA descriptor to transmit a SPU request to hardware.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state for the SPU that will process this request
+    :type pdcs: struct pdc_state \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         DMA address of packet to be transmitted
+    :type dma_addr: dma_addr_t
 
-    :param u32 buf_len:
+    :param buf_len:
         Length of tx buffer, in bytes
+    :type buf_len: u32
 
-    :param u32 flags:
+    :param flags:
         Flags to be stored in descriptor
+    :type flags: u32
 
 .. _`pdc_receive_one`:
 
@@ -64,8 +73,9 @@ pdc_receive_one
 
     Receive a response message from a given SPU.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state for the SPU to receive from
+    :type pdcs: struct pdc_state \*
 
 .. _`pdc_receive_one.description`:
 
@@ -93,8 +103,9 @@ pdc_receive
 
     Process as many responses as are available in the rx ring.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state
+    :type pdcs: struct pdc_state \*
 
 .. _`pdc_receive.description`:
 
@@ -112,11 +123,13 @@ pdc_tx_list_sg_add
 
     Add the buffers in a scatterlist to the transmit descriptors for a given SPU. The scatterlist buffers contain the data for a SPU request message.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         *undescribed*
+    :type pdcs: struct pdc_state \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         Scatterlist whose buffers contain part of the SPU request
+    :type sg: struct scatterlist \*
 
 .. _`pdc_tx_list_sg_add.description`:
 
@@ -143,8 +156,9 @@ pdc_tx_list_final
 
     Initiate DMA transfer of last frame written to tx ring.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state for SPU to process the request
+    :type pdcs: struct pdc_state \*
 
 .. _`pdc_tx_list_final.description`:
 
@@ -169,15 +183,18 @@ pdc_rx_list_init
 
     Start a new receive descriptor list for a given PDC.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state for SPU handling request
+    :type pdcs: struct pdc_state \*
 
-    :param struct scatterlist \*dst_sg:
+    :param dst_sg:
         scatterlist providing rx buffers for response to be returned to
         mailbox client
+    :type dst_sg: struct scatterlist \*
 
-    :param void \*ctx:
+    :param ctx:
         Opaque context for this request
+    :type ctx: void \*
 
 .. _`pdc_rx_list_init.description`:
 
@@ -206,11 +223,13 @@ pdc_rx_list_sg_add
 
     Add the buffers in a scatterlist to the receive descriptors for a given SPU. The caller must have already DMA mapped the scatterlist.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         *undescribed*
+    :type pdcs: struct pdc_state \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         Scatterlist whose buffers are added to the receive ring
+    :type sg: struct scatterlist \*
 
 .. _`pdc_rx_list_sg_add.description`:
 
@@ -238,11 +257,13 @@ pdc_irq_handler
 
     Interrupt handler called in interrupt context.
 
-    :param int irq:
+    :param irq:
         Interrupt number that has fired
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         device struct for DMA engine that generated the interrupt
+    :type data: void \*
 
 .. _`pdc_irq_handler.description`:
 
@@ -270,8 +291,9 @@ pdc_tasklet_cb
 
     Tasklet callback that runs the deferred processing after a DMA receive interrupt. Reenables the receive interrupt.
 
-    :param unsigned long data:
+    :param data:
         PDC state structure
+    :type data: unsigned long
 
 .. _`pdc_ring_init`:
 
@@ -282,11 +304,13 @@ pdc_ring_init
 
     Allocate DMA rings and initialize constant fields of descriptors in one ringset.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC instance state
+    :type pdcs: struct pdc_state \*
 
-    :param int ringset:
+    :param ringset:
         index of ringset being used
+    :type ringset: int
 
 .. _`pdc_ring_init.return`:
 
@@ -305,8 +329,9 @@ pdc_desc_count
 
     Count the number of DMA descriptors that will be required for a given scatterlist. Account for the max length of a DMA buffer.
 
-    :param struct scatterlist \*sg:
+    :param sg:
         Scatterlist to be DMA'd
+    :type sg: struct scatterlist \*
 
 .. _`pdc_desc_count.return`:
 
@@ -324,14 +349,17 @@ pdc_rings_full
 
     Check whether the tx ring has room for tx_cnt descriptors and the rx ring has room for rx_cnt descriptors.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state
+    :type pdcs: struct pdc_state \*
 
-    :param int tx_cnt:
+    :param tx_cnt:
         The number of descriptors required in the tx ring
+    :type tx_cnt: int
 
-    :param int rx_cnt:
+    :param rx_cnt:
         The number of descriptors required i the rx ring
+    :type rx_cnt: int
 
 .. _`pdc_rings_full.return`:
 
@@ -350,8 +378,9 @@ pdc_last_tx_done
 
     If both the tx and rx rings have at least PDC_RING_SPACE_MIN descriptors available, then indicate that the mailbox framework can submit another message.
 
-    :param struct mbox_chan \*chan:
+    :param chan:
         mailbox channel to check
+    :type chan: struct mbox_chan \*
 
 .. _`pdc_last_tx_done.return`:
 
@@ -369,13 +398,15 @@ pdc_send_data
 
     mailbox send_data function
 
-    :param struct mbox_chan \*chan:
+    :param chan:
         The mailbox channel on which the data is sent. The channel
         corresponds to a DMA ringset.
+    :type chan: struct mbox_chan \*
 
-    :param void \*data:
+    :param data:
         The mailbox message to be sent. The message must be a
         brcm_message structure.
+    :type data: void \*
 
 .. _`pdc_send_data.description`:
 
@@ -411,8 +442,9 @@ pdc_hw_init
 
     Use the given initialization parameters to initialize the state for one of the PDCs.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         state of the PDC
+    :type pdcs: struct pdc_state \*
 
 .. _`pdc_hw_disable`:
 
@@ -423,8 +455,9 @@ pdc_hw_disable
 
     Disable the tx and rx control in the hw.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state structure
+    :type pdcs: struct pdc_state \*
 
 .. _`pdc_rx_buf_pool_create`:
 
@@ -435,8 +468,9 @@ pdc_rx_buf_pool_create
 
     Pool of receive buffers used to catch the metadata header returned with each response message.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state structure
+    :type pdcs: struct pdc_state \*
 
 .. _`pdc_rx_buf_pool_create.description`:
 
@@ -463,8 +497,9 @@ pdc_interrupts_init
 
     Initialize the interrupt configuration for a PDC and specify a threaded IRQ handler for deferred handling of interrupts outside of interrupt context.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state
+    :type pdcs: struct pdc_state \*
 
 .. _`pdc_interrupts_init.description`:
 
@@ -491,8 +526,9 @@ pdc_mb_init
 
     Initialize the mailbox controller.
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state
+    :type pdcs: struct pdc_state \*
 
 .. _`pdc_mb_init.description`:
 
@@ -521,11 +557,13 @@ pdc_dt_read
 
     Read application-specific data from device tree.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Platform device
+    :type pdev: struct platform_device \*
 
-    :param struct pdc_state \*pdcs:
+    :param pdcs:
         PDC state
+    :type pdcs: struct pdc_state \*
 
 .. _`pdc_dt_read.description`:
 
@@ -553,8 +591,9 @@ pdc_probe
 
     Probe function for PDC driver.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         PDC platform device
+    :type pdev: struct platform_device \*
 
 .. _`pdc_probe.description`:
 

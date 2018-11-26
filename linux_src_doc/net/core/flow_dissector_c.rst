@@ -10,17 +10,21 @@ skb_flow_get_be16
 
     extract be16 entity
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         sk_buff to extract from
+    :type skb: const struct sk_buff \*
 
-    :param int poff:
+    :param poff:
         offset to extract at
+    :type poff: int
 
-    :param void \*data:
+    :param data:
         raw buffer pointer to the packet
+    :type data: void \*
 
-    :param int hlen:
+    :param hlen:
         packet header length
+    :type hlen: int
 
 .. _`skb_flow_get_be16.description`:
 
@@ -39,20 +43,25 @@ offset poff
 
     extract the upper layer ports and return them
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         sk_buff to extract the ports from
+    :type skb: const struct sk_buff \*
 
-    :param int thoff:
+    :param thoff:
         transport header offset
+    :type thoff: int
 
-    :param u8 ip_proto:
+    :param ip_proto:
         protocol for which to get port offset
+    :type ip_proto: u8
 
-    :param void \*data:
+    :param data:
         raw buffer pointer to the packet, if NULL use skb->data
+    :type data: void \*
 
-    :param int hlen:
+    :param hlen:
         packet header length, if \ ``data``\  is NULL use skb_headlen(skb)
+    :type hlen: int
 
 .. _`__skb_flow_get_ports.description`:
 
@@ -71,26 +80,33 @@ is the protocol port offset returned from proto_ports_offset
 
     dissect batman-adv header
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         sk_buff to with the batman-adv header
+    :type skb: const struct sk_buff \*
 
-    :param struct flow_dissector_key_control \*key_control:
+    :param key_control:
         flow dissectors control key
+    :type key_control: struct flow_dissector_key_control \*
 
-    :param void \*data:
+    :param data:
         raw buffer pointer to the packet, if NULL use skb->data
+    :type data: void \*
 
-    :param __be16 \*p_proto:
+    :param p_proto:
         pointer used to update the protocol to process next
+    :type p_proto: __be16 \*
 
-    :param int \*p_nhoff:
+    :param p_nhoff:
         pointer used to update inner network header offset
+    :type p_nhoff: int \*
 
-    :param int hlen:
+    :param hlen:
         packet header length
+    :type hlen: int
 
-    :param unsigned int flags:
+    :param flags:
         any combination of FLOW_DISSECTOR_F\_\*
+    :type flags: unsigned int
 
 .. _`__skb_flow_dissect_batadv.description`:
 
@@ -120,29 +136,37 @@ otherwise FLOW_DISSECT_RET_OUT_BAD
 
     extract the flow_keys struct and return it
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         sk_buff to extract the flow from, can be NULL if the rest are specified
+    :type skb: const struct sk_buff \*
 
-    :param struct flow_dissector \*flow_dissector:
+    :param flow_dissector:
         list of keys to dissect
+    :type flow_dissector: struct flow_dissector \*
 
-    :param void \*target_container:
+    :param target_container:
         target structure to put dissected values into
+    :type target_container: void \*
 
-    :param void \*data:
+    :param data:
         raw buffer pointer to the packet, if NULL use skb->data
+    :type data: void \*
 
-    :param __be16 proto:
+    :param proto:
         protocol for which to get the flow, if \ ``data``\  is NULL use skb->protocol
+    :type proto: __be16
 
-    :param int nhoff:
+    :param nhoff:
         network header offset, if \ ``data``\  is NULL use skb_network_offset(skb)
+    :type nhoff: int
 
-    :param int hlen:
+    :param hlen:
         packet header length, if \ ``data``\  is NULL use skb_headlen(skb)
+    :type hlen: int
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`__skb_flow_dissect.description`:
 
@@ -164,8 +188,9 @@ Caller must take care of zeroing target container memory.
 
     calculate a flow hash
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff to calculate flow hash from
+    :type skb: struct sk_buff \*
 
 .. _`__skb_get_hash.description`:
 
@@ -186,8 +211,9 @@ skb_get_poff
 
     get the offset to the payload
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         sk_buff to get the payload offset from
+    :type skb: const struct sk_buff \*
 
 .. _`skb_get_poff.description`:
 

@@ -10,23 +10,29 @@ clk_hw_register_fixed_rate_with_accuracy
 
     register fixed-rate clock with the clock framework
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         name of clock's parent
+    :type parent_name: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         framework-specific flags
+    :type flags: unsigned long
 
-    :param unsigned long fixed_rate:
+    :param fixed_rate:
         non-adjustable clock rate
+    :type fixed_rate: unsigned long
 
-    :param unsigned long fixed_accuracy:
+    :param fixed_accuracy:
         non-adjustable clock rate
+    :type fixed_accuracy: unsigned long
 
 .. _`clk_hw_register_fixed_rate`:
 
@@ -37,20 +43,25 @@ clk_hw_register_fixed_rate
 
     register fixed-rate clock with the clock framework
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         name of clock's parent
+    :type parent_name: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         framework-specific flags
+    :type flags: unsigned long
 
-    :param unsigned long fixed_rate:
+    :param fixed_rate:
         non-adjustable clock rate
+    :type fixed_rate: unsigned long
 
 .. _`of_fixed_clk_setup`:
 
@@ -61,8 +72,9 @@ of_fixed_clk_setup
 
     Setup function for simple fixed rate clock
 
-    :param struct device_node \*node:
+    :param node:
         *undescribed*
+    :type node: struct device_node \*
 
 .. This file was automatic generated / don't edit.
 

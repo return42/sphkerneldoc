@@ -10,8 +10,9 @@ pci_enable_rom
 
     enable ROM decoding for a PCI device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to enable
+    :type pdev: struct pci_dev \*
 
 .. _`pci_enable_rom.description`:
 
@@ -32,8 +33,9 @@ pci_disable_rom
 
     disable ROM decoding for a PCI device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to disable
+    :type pdev: struct pci_dev \*
 
 .. _`pci_disable_rom.description`:
 
@@ -52,14 +54,17 @@ pci_get_rom_size
 
     obtain the actual size of the ROM image
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         target PCI device
+    :type pdev: struct pci_dev \*
 
-    :param void __iomem \*rom:
+    :param rom:
         kernel virtual pointer to image of ROM
+    :type rom: void __iomem \*
 
-    :param size_t size:
+    :param size:
         size of PCI window
+    :type size: size_t
 
 .. _`pci_get_rom_size.return`:
 
@@ -81,11 +86,13 @@ pci_map_rom
 
     map a PCI ROM to kernel space
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to pci device struct
+    :type pdev: struct pci_dev \*
 
-    :param size_t \*size:
+    :param size:
         pointer to receive size of pci window over ROM
+    :type size: size_t \*
 
 .. _`pci_map_rom.return`:
 
@@ -107,11 +114,13 @@ pci_unmap_rom
 
     unmap the ROM from kernel space
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to pci device struct
+    :type pdev: struct pci_dev \*
 
-    :param void __iomem \*rom:
+    :param rom:
         virtual address of the previous mapping
+    :type rom: void __iomem \*
 
 .. _`pci_unmap_rom.description`:
 
@@ -129,11 +138,13 @@ pci_platform_rom
 
     provides a pointer to any ROM image provided by the platform
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to pci device struct
+    :type pdev: struct pci_dev \*
 
-    :param size_t \*size:
+    :param size:
         pointer to receive size of pci window over ROM
+    :type size: size_t \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ omap_cm_base_init
 
     Populates the cm partitions
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_cm_base_init.description`:
 
@@ -30,14 +31,17 @@ array used for read/write of cm module registers.
 
     read a CM\_\*\_CLKCTRL register; mask & shift IDLEST bitfield
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the CM_CLKCTRL register exists in
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
 .. _`_clkctrl_idlest.description`:
 
@@ -56,14 +60,17 @@ bit 0.
 
     can module registers be accessed without causing an abort?
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the CM_CLKCTRL register exists in
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
 .. _`_is_module_ready.description`:
 
@@ -82,17 +89,21 @@ Returns true if the module's CM\_\*\_CLKCTRL.IDLEST bitfield is either
 
     write \ ``c``\  to a CM_CLKSTCTRL.CLKTRCTRL register bitfield
 
-    :param u8 c:
+    :param c:
         CLKTRCTRL register bitfield (LSB = bit 0, i.e., unshifted)
+    :type c: u8
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the CM_CLKSTCTRL register exists in
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`_clktrctrl_write.description`:
 
@@ -111,14 +122,17 @@ omap4_cminst_is_clkdm_in_hwsup
 
     is a clockdomain in hwsup idle mode?
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the CM_CLKSTCTRL register exists in
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`omap4_cminst_is_clkdm_in_hwsup.description`:
 
@@ -137,14 +151,17 @@ omap4_cminst_clkdm_enable_hwsup
 
     put a clockdomain in hwsup-idle mode
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the clockdomain registers exist in
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`omap4_cminst_clkdm_enable_hwsup.description`:
 
@@ -163,14 +180,17 @@ omap4_cminst_clkdm_disable_hwsup
 
     put a clockdomain in swsup-idle mode
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the clockdomain registers exist in
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`omap4_cminst_clkdm_disable_hwsup.description`:
 
@@ -190,14 +210,17 @@ omap4_cminst_clkdm_force_wakeup
 
     try to take a clockdomain out of idle
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the clockdomain registers exist in
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`omap4_cminst_clkdm_force_wakeup.description`:
 
@@ -216,17 +239,21 @@ omap4_cminst_wait_module_ready
 
     wait for a module to be in 'func' state
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the CM_CLKCTRL register exists in
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: s16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
-    :param u8 bit_shift:
+    :param bit_shift:
         bit shift for the register, ignored for OMAP4+
+    :type bit_shift: u8
 
 .. _`omap4_cminst_wait_module_ready.description`:
 
@@ -247,17 +274,21 @@ omap4_cminst_wait_module_idle
 
     wait for a module to be in 'disabled' state
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the CM_CLKCTRL register exists in
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: s16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
-    :param u8 bit_shift:
+    :param bit_shift:
         Bit shift for the register, ignored for OMAP4+
+    :type bit_shift: u8
 
 .. _`omap4_cminst_wait_module_idle.description`:
 
@@ -277,17 +308,21 @@ omap4_cminst_module_enable
 
     Enable the modulemode inside CLKCTRL
 
-    :param u8 mode:
+    :param mode:
         Module mode (SW or HW)
+    :type mode: u8
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the CM_CLKCTRL register exists in
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
 .. _`omap4_cminst_module_enable.description`:
 
@@ -305,14 +340,17 @@ omap4_cminst_module_disable
 
     Disable the module inside CLKCTRL
 
-    :param u8 part:
+    :param part:
         PRCM partition ID that the CM_CLKCTRL register exists in
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
 .. _`omap4_cminst_module_disable.description`:
 
@@ -330,8 +368,9 @@ omap4_clkdm_save_context
 
     Save the clockdomain modulemode context
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         The clockdomain pointer whose context needs to be saved
+    :type clkdm: struct clockdomain \*
 
 .. _`omap4_clkdm_save_context.description`:
 
@@ -349,8 +388,9 @@ omap4_clkdm_restore_context
 
     Restore the clockdomain modulemode context
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         The clockdomain pointer whose context needs to be restored
+    :type clkdm: struct clockdomain \*
 
 .. _`omap4_clkdm_restore_context.description`:
 

@@ -10,8 +10,9 @@ arch_kexec_walk_mem
 
     call func(data) on free memory regions
 
-    :param struct kexec_buf \*kbuf:
+    :param kbuf:
         Context info for the search. Also passed to \ ``func``\ .
+    :type kbuf: struct kexec_buf \*
 
     :param int (\*func)(struct resource \*, void \*):
         Function to call for each memory region.
@@ -34,8 +35,9 @@ kexec_locate_mem_hole
 
     find free memory for the purgatory or the next kernel
 
-    :param struct kexec_buf \*kbuf:
+    :param kbuf:
         Parameters for the memory search.
+    :type kbuf: struct kexec_buf \*
 
 .. _`kexec_locate_mem_hole.description`:
 
@@ -60,8 +62,9 @@ kexec_add_buffer
 
     place a buffer in a kexec segment
 
-    :param struct kexec_buf \*kbuf:
+    :param kbuf:
         Buffer contents and memory parameters.
+    :type kbuf: struct kexec_buf \*
 
 .. _`kexec_add_buffer.description`:
 
@@ -69,7 +72,7 @@ Description
 -----------
 
 This function assumes that kexec_mutex is held.
-On successful return, \ ``kbuf``\ ->mem will have the physical address of
+On successful return, \ ``kbuf->mem``\  will have the physical address of
 the buffer in memory.
 
 .. _`kexec_add_buffer.return`:

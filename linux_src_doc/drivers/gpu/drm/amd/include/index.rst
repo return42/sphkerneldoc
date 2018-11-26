@@ -8,5 +8,6 @@ include
     :maxdepth: 1
 
     linux/index
+    amd_shared_h
     cgs_common_h
     kgd_kfd_interface_h

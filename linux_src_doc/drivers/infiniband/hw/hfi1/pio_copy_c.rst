@@ -10,20 +10,25 @@ pio_copy
 
     copy data block to MMIO space
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         *undescribed*
+    :type dd: struct hfi1_devdata \*
 
-    :param struct pio_buf \*pbuf:
+    :param pbuf:
         a number of blocks allocated within a PIO send context
+    :type pbuf: struct pio_buf \*
 
-    :param u64 pbc:
+    :param pbc:
         PBC to send
+    :type pbc: u64
 
-    :param const void \*from:
+    :param from:
         source, must be 8 byte aligned
+    :type from: const void \*
 
-    :param size_t count:
+    :param count:
         number of DWORD (32-bit) quantities to copy from source
+    :type count: size_t
 
 .. _`pio_copy.description`:
 

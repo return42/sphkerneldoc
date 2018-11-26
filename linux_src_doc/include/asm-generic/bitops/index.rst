@@ -9,7 +9,6 @@ bitops
 
     __ffs_h
     __fls_h
-    atomic_h
     builtin-__ffs_h
     builtin-__fls_h
     builtin-ffs_h

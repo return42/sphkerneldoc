@@ -10,11 +10,13 @@ usb_hcd_pci_probe
 
     initialize PCI-based HCDs
 
-    :param struct pci_dev \*dev:
+    :param dev:
         USB Host Controller being probed
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         pci hotplug id connecting controller to HCD framework
+    :type id: const struct pci_device_id \*
 
 .. _`usb_hcd_pci_probe.context`:
 
@@ -50,8 +52,9 @@ usb_hcd_pci_remove
 
     shutdown processing for PCI-based HCDs
 
-    :param struct pci_dev \*dev:
+    :param dev:
         USB Host Controller being removed
+    :type dev: struct pci_dev \*
 
 .. _`usb_hcd_pci_remove.context`:
 
@@ -80,8 +83,9 @@ usb_hcd_pci_shutdown
 
     shutdown host controller
 
-    :param struct pci_dev \*dev:
+    :param dev:
         USB Host Controller being shutdown
+    :type dev: struct pci_dev \*
 
 .. This file was automatic generated / don't edit.
 

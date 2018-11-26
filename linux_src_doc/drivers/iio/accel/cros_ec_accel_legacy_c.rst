@@ -10,8 +10,9 @@ read_ec_until_not_busy
 
     Read from EC status byte until it reads not busy.
 
-    :param struct cros_ec_accel_legacy_state \*st:
+    :param st:
         Pointer to state information for device.
+    :type st: struct cros_ec_accel_legacy_state \*
 
 .. _`read_ec_until_not_busy.description`:
 
@@ -38,14 +39,17 @@ read_ec_accel_data_unsafe
 
     Read acceleration data from EC shared memory.
 
-    :param struct cros_ec_accel_legacy_state \*st:
+    :param st:
         Pointer to state information for device.
+    :type st: struct cros_ec_accel_legacy_state \*
 
-    :param unsigned long scan_mask:
+    :param scan_mask:
         Bitmap of the sensor indices to scan.
+    :type scan_mask: unsigned long
 
-    :param s16 \*data:
+    :param data:
         Location to store data.
+    :type data: s16 \*
 
 .. _`read_ec_accel_data_unsafe.description`:
 
@@ -64,14 +68,17 @@ read_ec_accel_data
 
     Read acceleration data from EC shared memory.
 
-    :param struct cros_ec_accel_legacy_state \*st:
+    :param st:
         Pointer to state information for device.
+    :type st: struct cros_ec_accel_legacy_state \*
 
-    :param unsigned long scan_mask:
+    :param scan_mask:
         Bitmap of the sensor indices to scan.
+    :type scan_mask: unsigned long
 
-    :param s16 \*data:
+    :param data:
         Location to store data.
+    :type data: s16 \*
 
 .. _`read_ec_accel_data.description`:
 
@@ -97,11 +104,13 @@ cros_ec_accel_legacy_capture
 
     The trigger handler function
 
-    :param int irq:
+    :param irq:
         The interrupt number.
+    :type irq: int
 
-    :param void \*p:
+    :param p:
         Private data - always a pointer to the poll func.
+    :type p: void \*
 
 .. _`cros_ec_accel_legacy_capture.description`:
 

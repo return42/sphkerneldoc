@@ -10,8 +10,9 @@ llc_station_rcv
 
     send received pdu to the station state machine
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received frame.
+    :type skb: struct sk_buff \*
 
 .. _`llc_station_rcv.description`:
 

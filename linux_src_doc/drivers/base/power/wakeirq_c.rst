@@ -10,14 +10,17 @@ dev_pm_attach_wake_irq
 
     Attach device interrupt as a wake IRQ
 
-    :param struct device \*dev:
+    :param dev:
         Device entry
+    :type dev: struct device \*
 
-    :param int irq:
+    :param irq:
         Device wake-up capable interrupt
+    :type irq: int
 
-    :param struct wake_irq \*wirq:
+    :param wirq:
         Wake irq specific data
+    :type wirq: struct wake_irq \*
 
 .. _`dev_pm_attach_wake_irq.description`:
 
@@ -36,11 +39,13 @@ dev_pm_set_wake_irq
 
     Attach device IO interrupt as wake IRQ
 
-    :param struct device \*dev:
+    :param dev:
         Device entry
+    :type dev: struct device \*
 
-    :param int irq:
+    :param irq:
         Device IO interrupt
+    :type irq: int
 
 .. _`dev_pm_set_wake_irq.description`:
 
@@ -61,8 +66,9 @@ dev_pm_clear_wake_irq
 
     Detach a device IO interrupt wake IRQ
 
-    :param struct device \*dev:
+    :param dev:
         Device entry
+    :type dev: struct device \*
 
 .. _`dev_pm_clear_wake_irq.description`:
 
@@ -85,11 +91,13 @@ handle_threaded_wake_irq
 
     Handler for dedicated wake-up interrupts
 
-    :param int irq:
+    :param irq:
         Device specific dedicated wake-up interrupt
+    :type irq: int
 
-    :param void \*_wirq:
+    :param _wirq:
         Wake IRQ data
+    :type _wirq: void \*
 
 .. _`handle_threaded_wake_irq.description`:
 
@@ -118,11 +126,13 @@ dev_pm_set_dedicated_wake_irq
 
     Request a dedicated wake-up interrupt
 
-    :param struct device \*dev:
+    :param dev:
         Device entry
+    :type dev: struct device \*
 
-    :param int irq:
+    :param irq:
         Device wake-up interrupt
+    :type irq: int
 
 .. _`dev_pm_set_dedicated_wake_irq.description`:
 
@@ -150,8 +160,9 @@ dev_pm_enable_wake_irq
 
     Enable device wake-up interrupt
 
-    :param struct device \*dev:
+    :param dev:
         Device
+    :type dev: struct device \*
 
 .. _`dev_pm_enable_wake_irq.description`:
 
@@ -175,8 +186,9 @@ dev_pm_disable_wake_irq
 
     Disable device wake-up interrupt
 
-    :param struct device \*dev:
+    :param dev:
         Device
+    :type dev: struct device \*
 
 .. _`dev_pm_disable_wake_irq.description`:
 
@@ -196,11 +208,13 @@ dev_pm_enable_wake_irq_check
 
     Checks and enables wake-up interrupt
 
-    :param struct device \*dev:
+    :param dev:
         Device
+    :type dev: struct device \*
 
-    :param bool can_change_status:
+    :param can_change_status:
         Can change wake-up interrupt status
+    :type can_change_status: bool
 
 .. _`dev_pm_enable_wake_irq_check.description`:
 
@@ -225,8 +239,9 @@ dev_pm_disable_wake_irq_check
 
     Checks and disables wake-up interrupt
 
-    :param struct device \*dev:
+    :param dev:
         Device
+    :type dev: struct device \*
 
 .. _`dev_pm_disable_wake_irq_check.description`:
 
@@ -245,8 +260,9 @@ dev_pm_arm_wake_irq
 
     Arm device wake-up
 
-    :param struct wake_irq \*wirq:
+    :param wirq:
         Device wake-up interrupt
+    :type wirq: struct wake_irq \*
 
 .. _`dev_pm_arm_wake_irq.description`:
 
@@ -265,8 +281,9 @@ dev_pm_disarm_wake_irq
 
     Disarm device wake-up
 
-    :param struct wake_irq \*wirq:
+    :param wirq:
         Device wake-up interrupt
+    :type wirq: struct wake_irq \*
 
 .. _`dev_pm_disarm_wake_irq.description`:
 

@@ -21,7 +21,10 @@ Definition
         DQA_ENABLE_CMD,
         UPDATE_MU_GROUPS_CMD,
         TRIGGER_RX_QUEUES_NOTIF_CMD,
+        STA_HE_CTXT_CMD,
+        RFH_QUEUE_CONFIG_CMD,
         TLC_MNG_CONFIG_CMD,
+        HE_AIR_SNIFFER_CONFIG_CMD,
         TLC_MNG_UPDATE_NOTIF,
         STA_PM_NOTIF,
         MU_GROUP_MGMT_NOTIF,
@@ -42,8 +45,17 @@ UPDATE_MU_GROUPS_CMD
 TRIGGER_RX_QUEUES_NOTIF_CMD
     \ :c:type:`struct iwl_rxq_sync_cmd <iwl_rxq_sync_cmd>`\ 
 
+STA_HE_CTXT_CMD
+    \ :c:type:`struct iwl_he_sta_context_cmd <iwl_he_sta_context_cmd>`\ 
+
+RFH_QUEUE_CONFIG_CMD
+    \ :c:type:`struct iwl_rfh_queue_config <iwl_rfh_queue_config>`\ 
+
 TLC_MNG_CONFIG_CMD
     \ :c:type:`struct iwl_tlc_config_cmd <iwl_tlc_config_cmd>`\ 
+
+HE_AIR_SNIFFER_CONFIG_CMD
+    \ :c:type:`struct iwl_he_monitor_cmd <iwl_he_monitor_cmd>`\ 
 
 TLC_MNG_UPDATE_NOTIF
     \ :c:type:`struct iwl_tlc_update_notif <iwl_tlc_update_notif>`\ 

@@ -10,8 +10,9 @@ pci_stop_and_remove_bus_device
 
     remove a PCI device and any children
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the device to remove
+    :type dev: struct pci_dev \*
 
 .. _`pci_stop_and_remove_bus_device.description`:
 

@@ -10,11 +10,13 @@ tee_shm_pool_alloc_res_mem
 
     Create a shared memory pool from reserved memory range
 
-    :param struct tee_shm_pool_mem_info \*priv_info:
+    :param priv_info:
         Information for driver private shared memory pool
+    :type priv_info: struct tee_shm_pool_mem_info \*
 
-    :param struct tee_shm_pool_mem_info \*dmabuf_info:
+    :param dmabuf_info:
         Information for dma-buf shared memory pool
+    :type dmabuf_info: struct tee_shm_pool_mem_info \*
 
 .. _`tee_shm_pool_alloc_res_mem.description`:
 
@@ -37,8 +39,9 @@ tee_shm_pool_free
 
     Free a shared memory pool
 
-    :param struct tee_shm_pool \*pool:
+    :param pool:
         The shared memory pool to free
+    :type pool: struct tee_shm_pool \*
 
 .. _`tee_shm_pool_free.description`:
 

@@ -10,17 +10,21 @@ trace_print_hex_seq
 
     print buffer as hex sequence
 
-    :param struct trace_seq \*p:
+    :param p:
         trace seq struct to write to
+    :type p: struct trace_seq \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         The buffer to print
+    :type buf: const unsigned char \*
 
-    :param int buf_len:
+    :param buf_len:
         Length of \ ``buf``\  in bytes
+    :type buf_len: int
 
-    :param bool concatenate:
+    :param concatenate:
         Print \ ``buf``\  as single hex string or with spacing
+    :type concatenate: bool
 
 .. _`trace_print_hex_seq.description`:
 
@@ -40,11 +44,13 @@ trace_print_lat_fmt
 
     print the irq, preempt and lockdep fields
 
-    :param struct trace_seq \*s:
+    :param s:
         trace seq struct to write to
+    :type s: struct trace_seq \*
 
-    :param struct trace_entry \*entry:
+    :param entry:
         The trace entry field from the ring buffer
+    :type entry: struct trace_entry \*
 
 .. _`trace_print_lat_fmt.description`:
 
@@ -63,8 +69,9 @@ ftrace_find_event
 
     find a registered event
 
-    :param int type:
+    :param type:
         the type of event to look for
+    :type type: int
 
 .. _`ftrace_find_event.description`:
 
@@ -83,8 +90,9 @@ register_trace_event
 
     register output for an event type
 
-    :param struct trace_event \*event:
+    :param event:
         the event type to register
+    :type event: struct trace_event \*
 
 .. _`register_trace_event.description`:
 
@@ -92,7 +100,7 @@ Description
 -----------
 
 Event types are stored in a hash and this hash is used to
-find a way to print an event. If the \ ``event``\ ->type is set
+find a way to print an event. If the \ ``event->type``\  is set
 then it will use that type, otherwise it will assign a
 type to use.
 
@@ -111,8 +119,9 @@ unregister_trace_event
 
     remove a no longer used event
 
-    :param struct trace_event \*event:
+    :param event:
         the event to remove
+    :type event: struct trace_event \*
 
 .. This file was automatic generated / don't edit.
 

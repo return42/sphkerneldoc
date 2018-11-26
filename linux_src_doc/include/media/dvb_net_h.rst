@@ -68,14 +68,17 @@ dvb_net_init
 
     nitializes a digital TV network device and registers it.
 
-    :param struct dvb_adapter \*adap:
+    :param adap:
         pointer to \ :c:type:`struct dvb_adapter <dvb_adapter>`\ .
+    :type adap: struct dvb_adapter \*
 
-    :param struct dvb_net \*dvbnet:
+    :param dvbnet:
         pointer to \ :c:type:`struct dvb_net <dvb_net>`\ .
+    :type dvbnet: struct dvb_net \*
 
-    :param struct dmx_demux \*dmxdemux:
+    :param dmxdemux:
         pointer to \ :c:type:`struct dmx_demux <dmx_demux>`\ .
+    :type dmxdemux: struct dmx_demux \*
 
 .. _`dvb_net_release`:
 
@@ -86,8 +89,9 @@ dvb_net_release
 
     releases a digital TV network device and unregisters it.
 
-    :param struct dvb_net \*dvbnet:
+    :param dvbnet:
         pointer to \ :c:type:`struct dvb_net <dvb_net>`\ .
+    :type dvbnet: struct dvb_net \*
 
 .. This file was automatic generated / don't edit.
 

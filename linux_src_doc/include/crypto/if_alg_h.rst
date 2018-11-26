@@ -153,8 +153,9 @@ af_alg_sndbuf
 
 .. c:function:: int af_alg_sndbuf(struct sock *sk)
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`af_alg_sndbuf.description`:
 
@@ -171,8 +172,9 @@ af_alg_writable
 
 .. c:function:: bool af_alg_writable(struct sock *sk)
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`af_alg_writable.description`:
 
@@ -189,8 +191,9 @@ af_alg_rcvbuf
 
 .. c:function:: int af_alg_rcvbuf(struct sock *sk)
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`af_alg_rcvbuf.description`:
 
@@ -207,8 +210,9 @@ af_alg_readable
 
 .. c:function:: bool af_alg_readable(struct sock *sk)
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`af_alg_readable.description`:
 

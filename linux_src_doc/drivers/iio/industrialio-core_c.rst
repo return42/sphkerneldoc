@@ -10,11 +10,13 @@ iio_find_channel_from_si
 
     get channel from its scan index
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         device
+    :type indio_dev: struct iio_dev \*
 
-    :param int si:
+    :param si:
         scan index to match
+    :type si: int
 
 .. _`iio_get_time_ns`:
 
@@ -25,8 +27,9 @@ iio_get_time_ns
 
     utility function to get a time stamp for events etc
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         device
+    :type indio_dev: const struct iio_dev \*
 
 .. _`iio_get_time_res`:
 
@@ -37,8 +40,9 @@ iio_get_time_res
 
     utility function to get time stamp clock resolution in nano seconds.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         device
+    :type indio_dev: const struct iio_dev \*
 
 .. _`of_iio_read_mount_matrix`:
 
@@ -49,14 +53,17 @@ of_iio_read_mount_matrix
 
     retrieve iio device mounting matrix from device-tree "mount-matrix" property
 
-    :param const struct device \*dev:
+    :param dev:
         device the mounting matrix property is assigned to
+    :type dev: const struct device \*
 
-    :param const char \*propname:
+    :param propname:
         device specific mounting matrix property name
+    :type propname: const char \*
 
-    :param struct iio_mount_matrix \*matrix:
+    :param matrix:
         where to store retrieved matrix
+    :type matrix: struct iio_mount_matrix \*
 
 .. _`of_iio_read_mount_matrix.description`:
 
@@ -82,20 +89,24 @@ iio_format_value
 
     Formats a IIO value into its string representation
 
-    :param char \*buf:
+    :param buf:
         The buffer to which the formatted value gets written
         which is assumed to be big enough (i.e. PAGE_SIZE).
+    :type buf: char \*
 
-    :param unsigned int type:
+    :param type:
         One of the IIO_VAL_* constants. This decides how the val
         and val2 parameters are formatted.
+    :type type: unsigned int
 
-    :param int size:
+    :param size:
         Number of IIO value entries contained in vals
+    :type size: int
 
-    :param int \*vals:
+    :param vals:
         Pointer to the values, exact meaning depends on the
         type parameter.
+    :type vals: int \*
 
 .. _`iio_format_value.return`:
 
@@ -115,17 +126,21 @@ iio_str_to_fixpoint
 
     Parse a fixed-point number from a string
 
-    :param const char \*str:
+    :param str:
         The string to parse
+    :type str: const char \*
 
-    :param int fract_mult:
+    :param fract_mult:
         Multiplier for the first decimal place, should be a power of 10
+    :type fract_mult: int
 
-    :param int \*integer:
+    :param integer:
         The integer part of the number
+    :type integer: int \*
 
-    :param int \*fract:
+    :param fract:
         The fractional part of the number
+    :type fract: int \*
 
 .. _`iio_str_to_fixpoint.description`:
 
@@ -144,8 +159,9 @@ iio_free_chan_devattr_list
 
     Free a list of IIO device attributes
 
-    :param struct list_head \*attr_list:
+    :param attr_list:
         List of IIO device attributes
+    :type attr_list: struct list_head \*
 
 .. _`iio_free_chan_devattr_list.description`:
 
@@ -164,8 +180,9 @@ iio_device_alloc
 
     allocate an iio_dev from a driver
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         Space to allocate for private structure.
+    :type sizeof_priv: int
 
 .. _`iio_device_free`:
 
@@ -176,8 +193,9 @@ iio_device_free
 
     free an iio_dev from a driver
 
-    :param struct iio_dev \*dev:
+    :param dev:
         the iio_dev associated with the device
+    :type dev: struct iio_dev \*
 
 .. _`devm_iio_device_alloc`:
 
@@ -188,11 +206,13 @@ devm_iio_device_alloc
 
     Resource-managed \ :c:func:`iio_device_alloc`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate iio_dev for
+    :type dev: struct device \*
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         Space to allocate for private structure.
+    :type sizeof_priv: int
 
 .. _`devm_iio_device_alloc.description`:
 
@@ -221,11 +241,13 @@ devm_iio_device_free
 
     Resource-managed \ :c:func:`iio_device_free`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device this iio_dev belongs to
+    :type dev: struct device \*
 
-    :param struct iio_dev \*iio_dev:
+    :param iio_dev:
         the iio_dev associated with the device
+    :type iio_dev: struct iio_dev \*
 
 .. _`devm_iio_device_free.description`:
 
@@ -243,12 +265,14 @@ iio_chrdev_open
 
     chrdev file open for buffer access and ioctls
 
-    :param struct inode \*inode:
+    :param inode:
         Inode structure for identifying the device in the file system
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         File structure for iio device used to keep and later access
         private data
+    :type filp: struct file \*
 
 .. _`iio_chrdev_open.return`:
 
@@ -266,11 +290,13 @@ iio_chrdev_release
 
     chrdev file close buffer access and ioctls
 
-    :param struct inode \*inode:
+    :param inode:
         Inode structure pointer for the char device
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         File structure pointer for the char device
+    :type filp: struct file \*
 
 .. _`iio_chrdev_release.return`:
 
@@ -288,8 +314,9 @@ iio_device_unregister
 
     unregister a device from the IIO subsystem
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         Device structure representing the device.
+    :type indio_dev: struct iio_dev \*
 
 .. _`devm_iio_device_unregister`:
 
@@ -300,11 +327,13 @@ devm_iio_device_unregister
 
     Resource-managed \ :c:func:`iio_device_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device this iio_dev belongs to
+    :type dev: struct device \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         the iio_dev associated with the device
+    :type indio_dev: struct iio_dev \*
 
 .. _`devm_iio_device_unregister.description`:
 
@@ -322,8 +351,9 @@ iio_device_claim_direct_mode
 
     Keep device in direct mode
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         the iio_dev associated with the device
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_device_claim_direct_mode.description`:
 
@@ -351,8 +381,9 @@ iio_device_release_direct_mode
 
     releases claim on direct mode
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         the iio_dev associated with the device
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_device_release_direct_mode.description`:
 

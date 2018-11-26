@@ -10,11 +10,13 @@
 
     Synchonize device's multicast list
 
-    :param struct netdev_hw_addr_list \*list:
+    :param list:
         address list to syncronize
+    :type list: struct netdev_hw_addr_list \*
 
-    :param struct net_device \*dev:
+    :param dev:
         device to sync
+    :type dev: struct net_device \*
 
     :param int (\*sync)(struct net_device \*, const unsigned char \*):
         function to call if address should be added
@@ -42,11 +44,13 @@ any notification to the device.
 
     Remove synchronized addresses from device
 
-    :param struct netdev_hw_addr_list \*list:
+    :param list:
         address list to remove synchronized addresses from
+    :type list: struct netdev_hw_addr_list \*
 
-    :param struct net_device \*dev:
+    :param dev:
         device to sync
+    :type dev: struct net_device \*
 
     :param int (\*unsync)(struct net_device \*, const unsigned char \*):
         function to call if address should be removed
@@ -71,8 +75,9 @@ dev_addr_flush
 
     Flush device address list
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`dev_addr_flush.description`:
 
@@ -92,8 +97,9 @@ dev_addr_init
 
     Init device address list
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`dev_addr_init.description`:
 
@@ -114,14 +120,17 @@ dev_addr_add
 
     Add a device address
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         address to add
+    :type addr: const unsigned char \*
 
-    :param unsigned char addr_type:
+    :param addr_type:
         address type
+    :type addr_type: unsigned char
 
 .. _`dev_addr_add.description`:
 
@@ -142,14 +151,17 @@ dev_addr_del
 
     Release a device address.
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         address to delete
+    :type addr: const unsigned char \*
 
-    :param unsigned char addr_type:
+    :param addr_type:
         address type
+    :type addr_type: unsigned char
 
 .. _`dev_addr_del.description`:
 
@@ -170,11 +182,13 @@ dev_uc_add_excl
 
     Add a global secondary unicast address
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         address to add
+    :type addr: const unsigned char \*
 
 .. _`dev_uc_add`:
 
@@ -185,11 +199,13 @@ dev_uc_add
 
     Add a secondary unicast address
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         address to add
+    :type addr: const unsigned char \*
 
 .. _`dev_uc_add.description`:
 
@@ -208,11 +224,13 @@ dev_uc_del
 
     Release secondary unicast address.
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         address to delete
+    :type addr: const unsigned char \*
 
 .. _`dev_uc_del.description`:
 
@@ -231,11 +249,13 @@ dev_uc_sync
 
     Synchronize device's unicast list to another device
 
-    :param struct net_device \*to:
+    :param to:
         destination device
+    :type to: struct net_device \*
 
-    :param struct net_device \*from:
+    :param from:
         source device
+    :type from: struct net_device \*
 
 .. _`dev_uc_sync.description`:
 
@@ -259,11 +279,13 @@ dev_uc_sync_multiple
 
     Synchronize device's unicast list to another device, but allow for multiple calls to sync to multiple devices.
 
-    :param struct net_device \*to:
+    :param to:
         destination device
+    :type to: struct net_device \*
 
-    :param struct net_device \*from:
+    :param from:
         source device
+    :type from: struct net_device \*
 
 .. _`dev_uc_sync_multiple.description`:
 
@@ -287,11 +309,13 @@ dev_uc_unsync
 
     Remove synchronized addresses from the destination device
 
-    :param struct net_device \*to:
+    :param to:
         destination device
+    :type to: struct net_device \*
 
-    :param struct net_device \*from:
+    :param from:
         source device
+    :type from: struct net_device \*
 
 .. _`dev_uc_unsync.description`:
 
@@ -311,8 +335,9 @@ dev_uc_flush
 
     Flush unicast addresses
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`dev_uc_flush.description`:
 
@@ -330,8 +355,9 @@ dev_uc_init
 
     Init unicast address list
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`dev_uc_init.description`:
 
@@ -349,11 +375,13 @@ dev_mc_add_excl
 
     Add a global secondary multicast address
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         address to add
+    :type addr: const unsigned char \*
 
 .. _`dev_mc_add`:
 
@@ -364,11 +392,13 @@ dev_mc_add
 
     Add a multicast address
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         address to add
+    :type addr: const unsigned char \*
 
 .. _`dev_mc_add.description`:
 
@@ -387,11 +417,13 @@ dev_mc_add_global
 
     Add a global multicast address
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         address to add
+    :type addr: const unsigned char \*
 
 .. _`dev_mc_add_global.description`:
 
@@ -409,11 +441,13 @@ dev_mc_del
 
     Delete a multicast address.
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         address to delete
+    :type addr: const unsigned char \*
 
 .. _`dev_mc_del.description`:
 
@@ -432,11 +466,13 @@ dev_mc_del_global
 
     Delete a global multicast address.
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         address to delete
+    :type addr: const unsigned char \*
 
 .. _`dev_mc_del_global.description`:
 
@@ -455,11 +491,13 @@ dev_mc_sync
 
     Synchronize device's multicast list to another device
 
-    :param struct net_device \*to:
+    :param to:
         destination device
+    :type to: struct net_device \*
 
-    :param struct net_device \*from:
+    :param from:
         source device
+    :type from: struct net_device \*
 
 .. _`dev_mc_sync.description`:
 
@@ -482,11 +520,13 @@ dev_mc_sync_multiple
 
     Synchronize device's multicast list to another device, but allow for multiple calls to sync to multiple devices.
 
-    :param struct net_device \*to:
+    :param to:
         destination device
+    :type to: struct net_device \*
 
-    :param struct net_device \*from:
+    :param from:
         source device
+    :type from: struct net_device \*
 
 .. _`dev_mc_sync_multiple.description`:
 
@@ -510,11 +550,13 @@ dev_mc_unsync
 
     Remove synchronized addresses from the destination device
 
-    :param struct net_device \*to:
+    :param to:
         destination device
+    :type to: struct net_device \*
 
-    :param struct net_device \*from:
+    :param from:
         source device
+    :type from: struct net_device \*
 
 .. _`dev_mc_unsync.description`:
 
@@ -534,8 +576,9 @@ dev_mc_flush
 
     Flush multicast addresses
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`dev_mc_flush.description`:
 
@@ -553,8 +596,9 @@ dev_mc_init
 
     Init multicast address list
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`dev_mc_init.description`:
 

@@ -10,17 +10,21 @@ tps65218_reg_write
 
     Write a single tps65218 register.
 
-    :param struct tps65218 \*tps:
+    :param tps:
         *undescribed*
+    :type tps: struct tps65218 \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to write to.
+    :type reg: unsigned int
 
-    :param unsigned int val:
+    :param val:
         Value to write.
+    :type val: unsigned int
 
-    :param unsigned int level:
+    :param level:
         Password protected level
+    :type level: unsigned int
 
 .. _`tps65218_update_bits`:
 
@@ -31,20 +35,25 @@ tps65218_update_bits
 
     Modify bits w.r.t mask, val and level.
 
-    :param struct tps65218 \*tps:
+    :param tps:
         *undescribed*
+    :type tps: struct tps65218 \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to read-write to.
+    :type reg: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         Mask.
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         Value to write.
+    :type val: unsigned int
 
-    :param unsigned int level:
+    :param level:
         Password protected level
+    :type level: unsigned int
 
 .. This file was automatic generated / don't edit.
 

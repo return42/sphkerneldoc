@@ -95,11 +95,13 @@ mipi_dbi_command
 
     MIPI DCS command with optional parameter(s)
 
-    :param  mipi:
+    :param mipi:
         MIPI structure
+    :type mipi: 
 
-    :param  cmd:
+    :param cmd:
         Command
+    :type cmd: 
 
 .. _`mipi_dbi_command.description`:
 

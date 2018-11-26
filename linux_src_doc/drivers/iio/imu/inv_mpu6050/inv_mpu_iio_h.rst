@@ -124,7 +124,7 @@ Definition
         unsigned int accl_fs:2;
         unsigned int accl_fifo_enable:1;
         unsigned int gyro_fifo_enable:1;
-        u16 fifo_rate;
+        u8 divider;
         u8 user_ctrl;
     }
 
@@ -148,8 +148,8 @@ accl_fifo_enable
 gyro_fifo_enable
     enable gyro data output
 
-fifo_rate
-    FIFO update rate.
+divider
+    chip sample rate divider (sample rate divider - 1)
 
 user_ctrl
     *undescribed*

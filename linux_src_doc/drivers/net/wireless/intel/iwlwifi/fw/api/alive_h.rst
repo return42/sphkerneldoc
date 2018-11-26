@@ -129,47 +129,5 @@ Members
 flags
     \ :c:type:`enum iwl_card_state_flags <iwl_card_state_flags>`\ 
 
-.. _`iwl_fseq_ver_mismatch_ntf`:
-
-struct iwl_fseq_ver_mismatch_ntf
-================================
-
-.. c:type:: struct iwl_fseq_ver_mismatch_ntf
-
-    Notification about version
-
-.. _`iwl_fseq_ver_mismatch_ntf.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_fseq_ver_mismatch_ntf {
-        __le32 aux_read_fseq_ver;
-        __le32 wifi_fseq_ver;
-    }
-
-.. _`iwl_fseq_ver_mismatch_ntf.members`:
-
-Members
--------
-
-aux_read_fseq_ver
-    auxiliary read FSEQ version
-
-wifi_fseq_ver
-    FSEQ version (embedded in WiFi)
-
-.. _`iwl_fseq_ver_mismatch_ntf.description`:
-
-Description
------------
-
-This notification does not have a direct impact on the init flow.
-It means that another core (not WiFi) has initiated the FSEQ flow
-and updated the FSEQ version.  The driver only prints an error when
-this occurs.
-
 .. This file was automatic generated / don't edit.
 

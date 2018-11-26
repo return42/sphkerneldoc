@@ -10,17 +10,21 @@ i2400m_tx
 
     send the data in a buffer to the device
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         *undescribed*
+    :type i2400m: struct i2400m \*
 
-    :param const void \*buf:
+    :param buf:
         pointer to the buffer to transmit
+    :type buf: const void \*
 
-    :param size_t buf_len:
+    :param buf_len:
         buffer size
+    :type buf_len: size_t
 
-    :param enum i2400m_pt pl_type:
+    :param pl_type:
         type of the payload we are sending.
+    :type pl_type: enum i2400m_pt
 
 .. _`i2400m_tx.return`:
 
@@ -62,11 +66,13 @@ i2400m_tx_msg_get
 
     Get the first TX message in the FIFO to start sending it
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptors
+    :type i2400m: struct i2400m \*
 
-    :param size_t \*bus_size:
+    :param bus_size:
         where to place the size of the TX message
+    :type bus_size: size_t \*
 
 .. _`i2400m_tx_msg_get.description`:
 
@@ -106,8 +112,9 @@ i2400m_tx_msg_sent
 
     indicate the transmission of a TX message
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
 .. _`i2400m_tx_msg_sent.description`:
 
@@ -130,8 +137,9 @@ i2400m_tx_setup
 
     Initialize the TX queue and infrastructure
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         *undescribed*
+    :type i2400m: struct i2400m \*
 
 .. _`i2400m_tx_setup.description`:
 
@@ -152,8 +160,9 @@ i2400m_tx_release
 
     Tear down the TX queue and infrastructure
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         *undescribed*
+    :type i2400m: struct i2400m \*
 
 .. This file was automatic generated / don't edit.
 

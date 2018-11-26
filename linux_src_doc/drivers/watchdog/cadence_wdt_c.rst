@@ -69,8 +69,9 @@ cdns_wdt_stop
 
     Stop the watchdog.
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
 .. _`cdns_wdt_stop.description`:
 
@@ -96,8 +97,9 @@ cdns_wdt_reload
 
     Reload the watchdog timer (i.e. pat the watchdog).
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
 .. _`cdns_wdt_reload.description`:
 
@@ -122,8 +124,9 @@ cdns_wdt_start
 
     Enable and start the watchdog.
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
 .. _`cdns_wdt_start.the-counter-value-is-calculated-according-to-the-formula`:
 
@@ -156,11 +159,13 @@ cdns_wdt_settimeout
 
     Set a new timeout value for the watchdog device.
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
-    :param unsigned int new_time:
+    :param new_time:
         new timeout value that needs to be set
+    :type new_time: unsigned int
 
 .. _`cdns_wdt_settimeout.return`:
 
@@ -181,11 +186,13 @@ cdns_wdt_irq_handler
 
     Notifies of watchdog timeout.
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         pointer to a platform device structure
+    :type dev_id: void \*
 
 .. _`cdns_wdt_irq_handler.return`:
 
@@ -206,8 +213,9 @@ cdns_wdt_probe
 
     Probe call for the device.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         handle to the platform device structure.
+    :type pdev: struct platform_device \*
 
 .. _`cdns_wdt_probe.return`:
 
@@ -227,8 +235,9 @@ cdns_wdt_remove
 
     Probe call for the device.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         handle to the platform device structure.
+    :type pdev: struct platform_device \*
 
 .. _`cdns_wdt_remove.return`:
 
@@ -248,8 +257,9 @@ cdns_wdt_shutdown
 
     Stop the device.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         handle to the platform structure.
+    :type pdev: struct platform_device \*
 
 .. _`cdns_wdt_suspend`:
 
@@ -260,8 +270,9 @@ cdns_wdt_suspend
 
     Stop the device.
 
-    :param struct device \*dev:
+    :param dev:
         handle to the device structure.
+    :type dev: struct device \*
 
 .. _`cdns_wdt_suspend.return`:
 
@@ -279,8 +290,9 @@ cdns_wdt_resume
 
     Resume the device.
 
-    :param struct device \*dev:
+    :param dev:
         handle to the device structure.
+    :type dev: struct device \*
 
 .. _`cdns_wdt_resume.return`:
 

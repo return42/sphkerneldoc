@@ -10,14 +10,17 @@ radeon_bo_fence
 
     add fence to buffer object
 
-    :param struct radeon_bo \*bo:
+    :param bo:
         buffer object in question
+    :type bo: struct radeon_bo \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         fence to add
+    :type fence: struct radeon_fence \*
 
-    :param bool shared:
+    :param shared:
         true if fence should be added shared
+    :type shared: bool
 
 .. This file was automatic generated / don't edit.
 

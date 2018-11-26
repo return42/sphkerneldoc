@@ -8,11 +8,13 @@ hw_read_otgsc
 
 .. c:function:: u32 hw_read_otgsc(struct ci_hdrc *ci, u32 mask)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param u32 mask:
+    :param mask:
         bitfield mask
+    :type mask: u32
 
 .. _`hw_write_otgsc`:
 
@@ -21,14 +23,17 @@ hw_write_otgsc
 
 .. c:function:: void hw_write_otgsc(struct ci_hdrc *ci, u32 mask, u32 data)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param u32 mask:
+    :param mask:
         bitfield mask
+    :type mask: u32
 
-    :param u32 data:
+    :param data:
         to be written
+    :type data: u32
 
 .. _`ci_otg_role`:
 
@@ -39,8 +44,9 @@ ci_otg_role
 
     pick role based on ID pin state
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_wait_vbus_lower_bsv`:
 
@@ -51,8 +57,9 @@ hw_wait_vbus_lower_bsv
 
     than OTGSC_BSV before connecting to host.
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_wait_vbus_lower_bsv.description`:
 
@@ -70,8 +77,9 @@ ci_otg_work
 
     perform otg (vbus/id) event handle
 
-    :param struct work_struct \*work:
+    :param work:
         work struct
+    :type work: struct work_struct \*
 
 .. _`ci_hdrc_otg_init`:
 
@@ -82,8 +90,9 @@ ci_hdrc_otg_init
 
     initialize otg struct ci: the controller
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
 .. _`ci_hdrc_otg_destroy`:
 
@@ -94,8 +103,9 @@ ci_hdrc_otg_destroy
 
     destroy otg struct ci: the controller
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
 .. This file was automatic generated / don't edit.
 

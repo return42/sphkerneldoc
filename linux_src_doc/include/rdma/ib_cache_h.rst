@@ -1,39 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/rdma/ib_cache.h
 
-.. _`ib_get_cached_gid`:
-
-ib_get_cached_gid
-=================
-
-.. c:function:: int ib_get_cached_gid(struct ib_device *device, u8 port_num, int index, union ib_gid *gid, struct ib_gid_attr *attr)
-
-    Returns a cached GID table entry
-
-    :param struct ib_device \*device:
-        The device to query.
-
-    :param u8 port_num:
-        The port number of the device to query.
-
-    :param int index:
-        The index into the cached GID table to query.
-
-    :param union ib_gid \*gid:
-        The GID value found at the specified index.
-
-    :param struct ib_gid_attr \*attr:
-        The GID attribute found at the specified index (only in RoCE).
-        NULL means ignore (output parameter).
-
-.. _`ib_get_cached_gid.description`:
-
-Description
------------
-
-\ :c:func:`ib_get_cached_gid`\  fetches the specified GID table entry stored in
-the local software cache.
-
 .. _`ib_get_cached_pkey`:
 
 ib_get_cached_pkey
@@ -43,17 +10,21 @@ ib_get_cached_pkey
 
     Returns a cached PKey table entry
 
-    :param struct ib_device \*device_handle:
+    :param device_handle:
         *undescribed*
+    :type device_handle: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         The port number of the device to query.
+    :type port_num: u8
 
-    :param int index:
+    :param index:
         The index into the cached PKey table to query.
+    :type index: int
 
-    :param u16 \*pkey:
+    :param pkey:
         The PKey value found at the specified index.
+    :type pkey: u16 \*
 
 .. _`ib_get_cached_pkey.description`:
 
@@ -72,17 +43,21 @@ ib_find_cached_pkey
 
     Returns the PKey table index where a specified PKey value occurs.
 
-    :param struct ib_device \*device:
+    :param device:
         The device to query.
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         The port number of the device to search for the PKey.
+    :type port_num: u8
 
-    :param u16 pkey:
+    :param pkey:
         The PKey value to search for.
+    :type pkey: u16
 
-    :param u16 \*index:
+    :param index:
         The index into the cached PKey table where the PKey was found.
+    :type index: u16 \*
 
 .. _`ib_find_cached_pkey.description`:
 
@@ -101,17 +76,21 @@ ib_find_exact_cached_pkey
 
     Returns the PKey table index where a specified PKey value occurs. Comparison uses the FULL 16 bits (incl membership bit)
 
-    :param struct ib_device \*device:
+    :param device:
         The device to query.
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         The port number of the device to search for the PKey.
+    :type port_num: u8
 
-    :param u16 pkey:
+    :param pkey:
         The PKey value to search for.
+    :type pkey: u16
 
-    :param u16 \*index:
+    :param index:
         The index into the cached PKey table where the PKey was found.
+    :type index: u16 \*
 
 .. _`ib_find_exact_cached_pkey.description`:
 
@@ -130,14 +109,17 @@ ib_get_cached_lmc
 
     Returns a cached lmc table entry
 
-    :param struct ib_device \*device:
+    :param device:
         The device to query.
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         The port number of the device to query.
+    :type port_num: u8
 
-    :param u8 \*lmc:
+    :param lmc:
         The lmc value for the specified port for that device.
+    :type lmc: u8 \*
 
 .. _`ib_get_cached_lmc.description`:
 
@@ -156,14 +138,17 @@ ib_get_cached_port_state
 
     Returns a cached port state table entry
 
-    :param struct ib_device \*device:
+    :param device:
         The device to query.
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         The port number of the device to query.
+    :type port_num: u8
 
-    :param enum ib_port_state \*port_active:
+    :param port_active:
         *undescribed*
+    :type port_active: enum ib_port_state \*
 
 .. _`ib_get_cached_port_state.description`:
 

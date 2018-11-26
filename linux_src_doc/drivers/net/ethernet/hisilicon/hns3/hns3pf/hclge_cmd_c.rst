@@ -10,14 +10,17 @@ hclge_cmd_send
 
     send command to command queue
 
-    :param struct hclge_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct hclge_hw \*
 
-    :param struct hclge_desc \*desc:
+    :param desc:
         prefilled descriptor for describing the command
+    :type desc: struct hclge_desc \*
 
-    :param int num:
+    :param num:
         the number of descriptors to be sent
+    :type num: int
 
 .. _`hclge_cmd_send.description`:
 

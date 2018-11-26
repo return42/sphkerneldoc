@@ -10,14 +10,17 @@ cs5520_set_timings
 
     program PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param int pio:
+    :param pio:
         *undescribed*
+    :type pio: int
 
 .. _`cs5520_set_timings.description`:
 
@@ -36,11 +39,13 @@ cs5520_set_piomode
 
     program PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`cs5520_set_piomode.description`:
 
@@ -59,8 +64,9 @@ cs5520_reinit_one
 
     device resume
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`cs5520_reinit_one.description`:
 
@@ -79,11 +85,13 @@ cs5520_pci_device_suspend
 
     device suspend
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t mesg:
+    :param mesg:
         *undescribed*
+    :type mesg: pm_message_t
 
 .. _`cs5520_pci_device_suspend.description`:
 

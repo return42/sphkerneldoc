@@ -10,17 +10,21 @@ ntfs_lookup_inode_by_name
 
     find an inode in a directory given its name
 
-    :param ntfs_inode \*dir_ni:
+    :param dir_ni:
         ntfs inode of the directory in which to search for the name
+    :type dir_ni: ntfs_inode \*
 
-    :param const ntfschar \*uname:
+    :param uname:
         Unicode name for which to search in the directory
+    :type uname: const ntfschar \*
 
-    :param const int uname_len:
+    :param uname_len:
         length of the name \ ``uname``\  in Unicode characters
+    :type uname_len: const int
 
-    :param ntfs_name \*\*res:
+    :param res:
         return the found file name if necessary (see below)
+    :type res: ntfs_name \*\*
 
 .. _`ntfs_lookup_inode_by_name.description`:
 
@@ -75,14 +79,17 @@ ntfs_lookup_inode_by_name
 
     find an inode in a directory given its name
 
-    :param ntfs_inode \*dir_ni:
+    :param dir_ni:
         ntfs inode of the directory in which to search for the name
+    :type dir_ni: ntfs_inode \*
 
-    :param const ntfschar \*uname:
+    :param uname:
         Unicode name for which to search in the directory
+    :type uname: const ntfschar \*
 
-    :param const int uname_len:
+    :param uname_len:
         length of the name \ ``uname``\  in Unicode characters
+    :type uname_len: const int
 
 .. _`ntfs_lookup_inode_by_name.description`:
 
@@ -112,23 +119,29 @@ ntfs_filldir
 
     ntfs specific filldir method
 
-    :param ntfs_volume \*vol:
+    :param vol:
         current ntfs volume
+    :type vol: ntfs_volume \*
 
-    :param ntfs_inode \*ndir:
+    :param ndir:
         ntfs inode of current directory
+    :type ndir: ntfs_inode \*
 
-    :param struct page \*ia_page:
+    :param ia_page:
         page in which the index allocation buffer \ ``ie``\  is in resides
+    :type ia_page: struct page \*
 
-    :param INDEX_ENTRY \*ie:
+    :param ie:
         current index entry
+    :type ie: INDEX_ENTRY \*
 
-    :param u8 \*name:
+    :param name:
         buffer to use for the converted name
+    :type name: u8 \*
 
-    :param struct dir_context \*actor:
+    :param actor:
         what to feed the entries to
+    :type actor: struct dir_context \*
 
 .. _`ntfs_filldir.description`:
 
@@ -156,11 +169,13 @@ ntfs_dir_open
 
     called when an inode is about to be opened
 
-    :param struct inode \*vi:
+    :param vi:
         inode to be opened
+    :type vi: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file structure describing the inode
+    :type filp: struct file \*
 
 .. _`ntfs_dir_open.description`:
 
@@ -187,17 +202,21 @@ ntfs_dir_fsync
 
     sync a directory to disk
 
-    :param struct file \*filp:
+    :param filp:
         directory to be synced
+    :type filp: struct file \*
 
-    :param loff_t start:
+    :param start:
         *undescribed*
+    :type start: loff_t
 
-    :param loff_t end:
+    :param end:
         *undescribed*
+    :type end: loff_t
 
-    :param int datasync:
+    :param datasync:
         if non-zero only flush user data and not metadata
+    :type datasync: int
 
 .. _`ntfs_dir_fsync.description`:
 

@@ -10,11 +10,13 @@ tiocx_match
 
     Try to match driver id list with device.
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver pointer
+    :type drv: struct device_driver \*
 
 .. _`tiocx_match.description`:
 
@@ -32,11 +34,13 @@ cx_device_match
 
     Find cx_device in the id table.
 
-    :param const struct cx_device_id \*ids:
+    :param ids:
         id table from driver
+    :type ids: const struct cx_device_id \*
 
-    :param struct cx_dev \*cx_device:
+    :param cx_device:
         part/mfg id for the device
+    :type cx_device: struct cx_dev \*
 
 .. _`cx_device_probe`:
 
@@ -47,8 +51,9 @@ cx_device_probe
 
     Look for matching device. Call driver probe routine if found.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`cx_driver_remove`:
 
@@ -59,8 +64,9 @@ cx_driver_remove
 
     Remove driver from device struct.
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
 .. _`cx_driver_register`:
 
@@ -71,8 +77,9 @@ cx_driver_register
 
     Register the driver.
 
-    :param struct cx_drv \*cx_driver:
+    :param cx_driver:
         driver table (cx_drv struct) from driver
+    :type cx_driver: struct cx_drv \*
 
 .. _`cx_driver_register.description`:
 
@@ -93,8 +100,9 @@ cx_driver_unregister
 
     Unregister the driver.
 
-    :param struct cx_drv \*cx_driver:
+    :param cx_driver:
         driver table (cx_drv struct) from driver
+    :type cx_driver: struct cx_drv \*
 
 .. _`cx_device_register`:
 
@@ -105,20 +113,25 @@ cx_device_register
 
     Register a device.
 
-    :param nasid_t nasid:
+    :param nasid:
         device's nasid
+    :type nasid: nasid_t
 
-    :param int part_num:
+    :param part_num:
         device's part number
+    :type part_num: int
 
-    :param int mfg_num:
+    :param mfg_num:
         device's manufacturer number
+    :type mfg_num: int
 
-    :param struct hubdev_info \*hubdev:
+    :param hubdev:
         hub info associated with this device
+    :type hubdev: struct hubdev_info \*
 
-    :param int bt:
+    :param bt:
         board type of the device
+    :type bt: int
 
 .. _`cx_device_unregister`:
 
@@ -129,8 +142,9 @@ cx_device_unregister
 
     Unregister a device.
 
-    :param struct cx_dev \*cx_dev:
+    :param cx_dev:
         part/mfg id for the device
+    :type cx_dev: struct cx_dev \*
 
 .. _`cx_device_reload`:
 
@@ -141,8 +155,9 @@ cx_device_reload
 
     Reload the device.
 
-    :param struct cx_dev \*cx_dev:
+    :param cx_dev:
         *undescribed*
+    :type cx_dev: struct cx_dev \*
 
 .. _`cx_device_reload.description`:
 

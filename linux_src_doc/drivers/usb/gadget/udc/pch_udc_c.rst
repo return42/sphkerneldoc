@@ -373,8 +373,9 @@ pch_udc_csr_busy
 
     Wait till idle.
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_dev structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_write_csr`:
 
@@ -385,14 +386,17 @@ pch_udc_write_csr
 
     Write the command and status registers.
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_dev structure
+    :type dev: struct pch_udc_dev \*
 
-    :param unsigned long val:
+    :param val:
         value to be written to CSR register
+    :type val: unsigned long
 
-    :param unsigned int ep:
+    :param ep:
         *undescribed*
+    :type ep: unsigned int
 
 .. _`pch_udc_read_csr`:
 
@@ -403,11 +407,13 @@ pch_udc_read_csr
 
     Read the command and status registers.
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_dev structure
+    :type dev: struct pch_udc_dev \*
 
-    :param unsigned int ep:
+    :param ep:
         *undescribed*
+    :type ep: unsigned int
 
 .. _`pch_udc_read_csr.return-codes`:
 
@@ -425,8 +431,9 @@ pch_udc_rmt_wakeup
 
     Initiate for remote wakeup
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_dev structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_get_frame`:
 
@@ -437,9 +444,10 @@ pch_udc_get_frame
 
     Get the current frame from device status register
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_dev structure
         Retern       current frame
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_clear_selfpowered`:
 
@@ -450,8 +458,9 @@ pch_udc_clear_selfpowered
 
     Clear the self power control
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_regs structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_set_selfpowered`:
 
@@ -462,8 +471,9 @@ pch_udc_set_selfpowered
 
     Set the self power control
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_regs structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_set_disconnect`:
 
@@ -474,8 +484,9 @@ pch_udc_set_disconnect
 
     Set the disconnect status.
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_regs structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_clear_disconnect`:
 
@@ -486,8 +497,9 @@ pch_udc_clear_disconnect
 
     Clear the disconnect status.
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_regs structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_init`:
 
@@ -498,8 +510,9 @@ pch_udc_init
 
     This API initializes usb device controller, and clear the disconnect status.
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_regs structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_vbus_session`:
 
@@ -510,13 +523,15 @@ pch_udc_vbus_session
 
     set or clearr the disconnect status.
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_regs structure
+    :type dev: struct pch_udc_dev \*
 
-    :param int is_active:
+    :param is_active:
         Parameter specifying the action
         0:   indicating VBUS power is ending
         !0:  indicating VBUS power is starting
+    :type is_active: int
 
 .. _`pch_udc_ep_set_stall`:
 
@@ -527,8 +542,9 @@ pch_udc_ep_set_stall
 
     Set the stall of endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_ep_clear_stall`:
 
@@ -539,8 +555,9 @@ pch_udc_ep_clear_stall
 
     Clear the stall of endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_ep_set_trfr_type`:
 
@@ -551,11 +568,13 @@ pch_udc_ep_set_trfr_type
 
     Set the transfer type of endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
-    :param u8 type:
+    :param type:
         Type of endpoint
+    :type type: u8
 
 .. _`pch_udc_ep_set_bufsz`:
 
@@ -566,14 +585,17 @@ pch_udc_ep_set_bufsz
 
     Set the maximum packet size for the endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
-    :param u32 buf_size:
+    :param buf_size:
         The buffer word size
+    :type buf_size: u32
 
-    :param u32 ep_in:
+    :param ep_in:
         *undescribed*
+    :type ep_in: u32
 
 .. _`pch_udc_ep_set_maxpkt`:
 
@@ -584,11 +606,13 @@ pch_udc_ep_set_maxpkt
 
     Set the Max packet size for the endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
-    :param u32 pkt_size:
+    :param pkt_size:
         The packet byte size
+    :type pkt_size: u32
 
 .. _`pch_udc_ep_set_subptr`:
 
@@ -599,11 +623,13 @@ pch_udc_ep_set_subptr
 
     Set the Setup buffer pointer for the endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
-    :param u32 addr:
+    :param addr:
         Address of the register
+    :type addr: u32
 
 .. _`pch_udc_ep_set_ddptr`:
 
@@ -614,11 +640,13 @@ pch_udc_ep_set_ddptr
 
     Set the Data descriptor pointer for the endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
-    :param u32 addr:
+    :param addr:
         Address of the register
+    :type addr: u32
 
 .. _`pch_udc_ep_set_pd`:
 
@@ -629,8 +657,9 @@ pch_udc_ep_set_pd
 
     Set the poll demand bit for the endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_ep_set_rrdy`:
 
@@ -641,8 +670,9 @@ pch_udc_ep_set_rrdy
 
     Set the receive ready bit for the endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_ep_clear_rrdy`:
 
@@ -653,8 +683,9 @@ pch_udc_ep_clear_rrdy
 
     Clear the receive ready bit for the endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_set_dma`:
 
@@ -665,13 +696,15 @@ pch_udc_set_dma
 
     Set the 'TDE' or RDE bit of device control register depending on the direction specified
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
+    :type dev: struct pch_udc_dev \*
 
-    :param int dir:
+    :param dir:
         whether Tx or Rx
         DMA_DIR_RX: Receive
         DMA_DIR_TX: Transmit
+    :type dir: int
 
 .. _`pch_udc_clear_dma`:
 
@@ -682,13 +715,15 @@ pch_udc_clear_dma
 
     Clear the 'TDE' or RDE bit of device control register depending on the direction specified
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
+    :type dev: struct pch_udc_dev \*
 
-    :param int dir:
+    :param dir:
         Whether Tx or Rx
         DMA_DIR_RX: Receive
         DMA_DIR_TX: Transmit
+    :type dir: int
 
 .. _`pch_udc_set_csr_done`:
 
@@ -699,8 +734,9 @@ pch_udc_set_csr_done
 
     Set the device control register CSR done field (bit 13)
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         reference to structure of type pch_udc_regs
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_disable_interrupts`:
 
@@ -711,11 +747,13 @@ pch_udc_disable_interrupts
 
     Disables the specified interrupts
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
+    :type dev: struct pch_udc_dev \*
 
-    :param u32 mask:
+    :param mask:
         Mask to disable interrupts
+    :type mask: u32
 
 .. _`pch_udc_enable_interrupts`:
 
@@ -726,11 +764,13 @@ pch_udc_enable_interrupts
 
     Enable the specified interrupts
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
+    :type dev: struct pch_udc_dev \*
 
-    :param u32 mask:
+    :param mask:
         Mask to enable interrupts
+    :type mask: u32
 
 .. _`pch_udc_disable_ep_interrupts`:
 
@@ -741,11 +781,13 @@ pch_udc_disable_ep_interrupts
 
     Disable endpoint interrupts
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
+    :type dev: struct pch_udc_dev \*
 
-    :param u32 mask:
+    :param mask:
         Mask to disable interrupts
+    :type mask: u32
 
 .. _`pch_udc_enable_ep_interrupts`:
 
@@ -756,11 +798,13 @@ pch_udc_enable_ep_interrupts
 
     Enable endpoint interrupts
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
+    :type dev: struct pch_udc_dev \*
 
-    :param u32 mask:
+    :param mask:
         Mask to enable interrupts
+    :type mask: u32
 
 .. _`pch_udc_read_device_interrupts`:
 
@@ -771,9 +815,10 @@ pch_udc_read_device_interrupts
 
     Read the device interrupts
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
         Retern       The device interrupts
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_write_device_interrupts`:
 
@@ -784,11 +829,13 @@ pch_udc_write_device_interrupts
 
     Write device interrupts
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
+    :type dev: struct pch_udc_dev \*
 
-    :param u32 val:
+    :param val:
         The value to be written to interrupt register
+    :type val: u32
 
 .. _`pch_udc_read_ep_interrupts`:
 
@@ -799,9 +846,10 @@ pch_udc_read_ep_interrupts
 
     Read the endpoint interrupts
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
         Retern       The endpoint interrupt
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_write_ep_interrupts`:
 
@@ -812,11 +860,13 @@ pch_udc_write_ep_interrupts
 
     Clear endpoint interupts
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
+    :type dev: struct pch_udc_dev \*
 
-    :param u32 val:
+    :param val:
         The value to be written to interrupt register
+    :type val: u32
 
 .. _`pch_udc_read_device_status`:
 
@@ -827,9 +877,10 @@ pch_udc_read_device_status
 
     Read the device status
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to structure of type pch_udc_regs
         Retern       The device status
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_read_ep_control`:
 
@@ -840,9 +891,10 @@ pch_udc_read_ep_control
 
     Read the endpoint control
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
         Retern       The endpoint control register value
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_clear_ep_control`:
 
@@ -853,9 +905,10 @@ pch_udc_clear_ep_control
 
     Clear the endpoint control register
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
         Retern       The endpoint control register value
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_read_ep_status`:
 
@@ -866,9 +919,10 @@ pch_udc_read_ep_status
 
     Read the endpoint status
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
         Retern       The endpoint status
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_clear_ep_status`:
 
@@ -879,11 +933,13 @@ pch_udc_clear_ep_status
 
     Clear the endpoint status
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
-    :param u32 stat:
+    :param stat:
         Endpoint status
+    :type stat: u32
 
 .. _`pch_udc_ep_set_nak`:
 
@@ -894,8 +950,9 @@ pch_udc_ep_set_nak
 
     Set the bit 7 (SNAK field) of the endpoint control register
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_ep_clear_nak`:
 
@@ -906,8 +963,9 @@ pch_udc_ep_clear_nak
 
     Set the bit 8 (CNAK field) of the endpoint control register
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_ep_fifo_flush`:
 
@@ -918,13 +976,15 @@ pch_udc_ep_fifo_flush
 
     Flush the endpoint fifo
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         reference to structure of type pch_udc_ep_regs
+    :type ep: struct pch_udc_ep \*
 
-    :param int dir:
+    :param dir:
         direction of endpoint
         0:  endpoint is OUT
         !0: endpoint is IN
+    :type dir: int
 
 .. _`pch_udc_ep_enable`:
 
@@ -935,14 +995,17 @@ pch_udc_ep_enable
 
     This api enables endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct pch_udc_ep \*
 
-    :param struct pch_udc_cfg_data \*cfg:
+    :param cfg:
         *undescribed*
+    :type cfg: struct pch_udc_cfg_data \*
 
-    :param const struct usb_endpoint_descriptor \*desc:
+    :param desc:
         endpoint descriptor
+    :type desc: const struct usb_endpoint_descriptor \*
 
 .. _`pch_udc_ep_disable`:
 
@@ -953,8 +1016,9 @@ pch_udc_ep_disable
 
     This api disables endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_wait_ep_stall`:
 
@@ -965,8 +1029,9 @@ pch_udc_wait_ep_stall
 
     Wait EP stall.
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_init`:
 
@@ -977,8 +1042,9 @@ pch_udc_init
 
     This API initializes usb device controller
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Rreference to pch_udc_regs structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_exit`:
 
@@ -989,8 +1055,9 @@ pch_udc_exit
 
     This API exit usb device controller
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to pch_udc_regs structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_pcd_get_frame`:
 
@@ -1001,8 +1068,9 @@ pch_udc_pcd_get_frame
 
     This API is invoked to get the current frame number
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         Reference to the gadget driver
+    :type gadget: struct usb_gadget \*
 
 .. _`pch_udc_pcd_get_frame.return-codes`:
 
@@ -1021,8 +1089,9 @@ pch_udc_pcd_wakeup
 
     This API is invoked to initiate a remote wakeup
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         Reference to the gadget driver
+    :type gadget: struct usb_gadget \*
 
 .. _`pch_udc_pcd_wakeup.return-codes`:
 
@@ -1041,11 +1110,13 @@ pch_udc_pcd_selfpowered
 
     This API is invoked to specify whether the device is self powered or not
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         Reference to the gadget driver
+    :type gadget: struct usb_gadget \*
 
-    :param int value:
+    :param value:
         Specifies self powered or not
+    :type value: int
 
 .. _`pch_udc_pcd_selfpowered.return-codes`:
 
@@ -1064,11 +1135,13 @@ pch_udc_pcd_pullup
 
     This API is invoked to make the device visible/invisible to the host
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         Reference to the gadget driver
+    :type gadget: struct usb_gadget \*
 
-    :param int is_on:
+    :param is_on:
         Specifies whether the pull up is made active or inactive
+    :type is_on: int
 
 .. _`pch_udc_pcd_pullup.return-codes`:
 
@@ -1087,11 +1160,13 @@ pch_udc_pcd_vbus_session
 
     This API is used by a driver for an external transceiver (or GPIO) that detects a VBUS power session starting/ending
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         Reference to the gadget driver
+    :type gadget: struct usb_gadget \*
 
-    :param int is_active:
+    :param is_active:
         specifies whether the session is starting or ending
+    :type is_active: int
 
 .. _`pch_udc_pcd_vbus_session.return-codes`:
 
@@ -1110,11 +1185,13 @@ pch_udc_pcd_vbus_draw
 
     This API is used by gadget drivers during SET_CONFIGURATION calls to specify how much power the device can consume
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         Reference to the gadget driver
+    :type gadget: struct usb_gadget \*
 
-    :param unsigned int mA:
+    :param mA:
         specifies the current limit in 2mA unit
+    :type mA: unsigned int
 
 .. _`pch_udc_pcd_vbus_draw.return-codes`:
 
@@ -1133,8 +1210,9 @@ pch_vbus_gpio_get_value
 
     This API gets value of GPIO port as VBUS status.
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the driver structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_vbus_gpio_get_value.return-value`:
 
@@ -1154,8 +1232,9 @@ pch_vbus_gpio_work_fall
 
     This API keeps watch on VBUS becoming Low. If VBUS is Low, disconnect is processed
 
-    :param struct work_struct \*irq_work:
+    :param irq_work:
         Structure for WorkQueue
+    :type irq_work: struct work_struct \*
 
 .. _`pch_vbus_gpio_work_rise`:
 
@@ -1166,8 +1245,9 @@ pch_vbus_gpio_work_rise
 
     This API checks VBUS is High. If VBUS is High, connect is processed
 
-    :param struct work_struct \*irq_work:
+    :param irq_work:
         Structure for WorkQueue
+    :type irq_work: struct work_struct \*
 
 .. _`pch_vbus_gpio_irq`:
 
@@ -1178,11 +1258,13 @@ pch_vbus_gpio_irq
 
     IRQ handler for GPIO intrerrupt for changing VBUS
 
-    :param int irq:
+    :param irq:
         Interrupt request number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`pch_vbus_gpio_irq.return-codes`:
 
@@ -1201,12 +1283,14 @@ pch_vbus_gpio_init
 
     This API initializes GPIO port detecting VBUS.
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the driver structure
         \ ``vbus_gpio``\    Number of GPIO port to detect gpio
+    :type dev: struct pch_udc_dev \*
 
-    :param int vbus_gpio_port:
+    :param vbus_gpio_port:
         *undescribed*
+    :type vbus_gpio_port: int
 
 .. _`pch_vbus_gpio_init.return-codes`:
 
@@ -1225,8 +1309,9 @@ pch_vbus_gpio_free
 
     This API frees resources of GPIO port
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the driver structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`complete_req`:
 
@@ -1237,14 +1322,17 @@ complete_req
 
     This API is invoked from the driver when processing of a request is complete
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to the endpoint structure
+    :type ep: struct pch_udc_ep \*
 
-    :param struct pch_udc_request \*req:
+    :param req:
         Reference to the request structure
+    :type req: struct pch_udc_request \*
 
-    :param int status:
+    :param status:
         Indicates the success/failure of completion
+    :type status: int
 
 .. _`empty_req_queue`:
 
@@ -1255,8 +1343,9 @@ empty_req_queue
 
     This API empties the request queue of an endpoint
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to the endpoint structure
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_free_dma_chain`:
 
@@ -1267,11 +1356,13 @@ pch_udc_free_dma_chain
 
     This function frees the DMA chain created for the request \ ``dev``\          Reference to the driver structure \ ``req``\          Reference to the request to be freed
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct pch_udc_dev \*
 
-    :param struct pch_udc_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct pch_udc_request \*
 
 .. _`pch_udc_free_dma_chain.return-codes`:
 
@@ -1289,17 +1380,21 @@ pch_udc_create_dma_chain
 
     This function creates or reinitializes a DMA chain
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to the endpoint structure
+    :type ep: struct pch_udc_ep \*
 
-    :param struct pch_udc_request \*req:
+    :param req:
         Reference to the request
+    :type req: struct pch_udc_request \*
 
-    :param unsigned long buf_len:
+    :param buf_len:
         The buffer length
+    :type buf_len: unsigned long
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         Flags to be used while mapping the data buffer
+    :type gfp_flags: gfp_t
 
 .. _`pch_udc_create_dma_chain.return-codes`:
 
@@ -1318,14 +1413,17 @@ prepare_dma
 
     This function creates and initializes the DMA chain for the request
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to the endpoint structure
+    :type ep: struct pch_udc_ep \*
 
-    :param struct pch_udc_request \*req:
+    :param req:
         Reference to the request
+    :type req: struct pch_udc_request \*
 
-    :param gfp_t gfp:
+    :param gfp:
         Flag to be used while mapping the data buffer
+    :type gfp: gfp_t
 
 .. _`prepare_dma.return-codes`:
 
@@ -1350,11 +1448,13 @@ process_zlp
 
     This function process zero length packets from the gadget driver
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to the endpoint structure
+    :type ep: struct pch_udc_ep \*
 
-    :param struct pch_udc_request \*req:
+    :param req:
         Reference to the request
+    :type req: struct pch_udc_request \*
 
 .. _`pch_udc_start_rxrequest`:
 
@@ -1365,11 +1465,13 @@ pch_udc_start_rxrequest
 
     This function starts the receive requirement.
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to the endpoint structure
+    :type ep: struct pch_udc_ep \*
 
-    :param struct pch_udc_request \*req:
+    :param req:
         Reference to the request structure
+    :type req: struct pch_udc_request \*
 
 .. _`pch_udc_pcd_ep_enable`:
 
@@ -1380,11 +1482,13 @@ pch_udc_pcd_ep_enable
 
     This API enables the endpoint. It is called from gadget driver
 
-    :param struct usb_ep \*usbep:
+    :param usbep:
         Reference to the USB endpoint structure
+    :type usbep: struct usb_ep \*
 
-    :param const struct usb_endpoint_descriptor \*desc:
+    :param desc:
         Reference to the USB endpoint descriptor structure
+    :type desc: const struct usb_endpoint_descriptor \*
 
 .. _`pch_udc_pcd_ep_enable.return-codes`:
 
@@ -1404,8 +1508,9 @@ pch_udc_pcd_ep_disable
 
     This API disables endpoint and is called from gadget driver \ ``usbep``\        Reference to the USB endpoint structure
 
-    :param struct usb_ep \*usbep:
+    :param usbep:
         *undescribed*
+    :type usbep: struct usb_ep \*
 
 .. _`pch_udc_pcd_ep_disable.return-codes`:
 
@@ -1424,11 +1529,13 @@ pch_udc_alloc_request
 
     This function allocates request structure. It is called by gadget driver
 
-    :param struct usb_ep \*usbep:
+    :param usbep:
         Reference to the USB endpoint structure
+    :type usbep: struct usb_ep \*
 
-    :param gfp_t gfp:
+    :param gfp:
         Flag to be used while allocating memory
+    :type gfp: gfp_t
 
 .. _`pch_udc_alloc_request.null`:
 
@@ -1453,11 +1560,13 @@ pch_udc_free_request
 
     This function frees request structure. It is called by gadget driver
 
-    :param struct usb_ep \*usbep:
+    :param usbep:
         Reference to the USB endpoint structure
+    :type usbep: struct usb_ep \*
 
-    :param struct usb_request \*usbreq:
+    :param usbreq:
         Reference to the USB request
+    :type usbreq: struct usb_request \*
 
 .. _`pch_udc_pcd_queue`:
 
@@ -1468,14 +1577,17 @@ pch_udc_pcd_queue
 
     This function queues a request packet. It is called by gadget driver
 
-    :param struct usb_ep \*usbep:
+    :param usbep:
         Reference to the USB endpoint structure
+    :type usbep: struct usb_ep \*
 
-    :param struct usb_request \*usbreq:
+    :param usbreq:
         Reference to the USB request
+    :type usbreq: struct usb_request \*
 
-    :param gfp_t gfp:
+    :param gfp:
         Flag to be used while mapping the data buffer
+    :type gfp: gfp_t
 
 .. _`pch_udc_pcd_queue.return-codes`:
 
@@ -1500,11 +1612,13 @@ pch_udc_pcd_dequeue
 
     This function de-queues a request packet. It is called by gadget driver
 
-    :param struct usb_ep \*usbep:
+    :param usbep:
         Reference to the USB endpoint structure
+    :type usbep: struct usb_ep \*
 
-    :param struct usb_request \*usbreq:
+    :param usbreq:
         Reference to the USB request
+    :type usbreq: struct usb_request \*
 
 .. _`pch_udc_pcd_dequeue.return-codes`:
 
@@ -1529,11 +1643,13 @@ pch_udc_pcd_set_halt
 
     This function Sets or clear the endpoint halt feature
 
-    :param struct usb_ep \*usbep:
+    :param usbep:
         Reference to the USB endpoint structure
+    :type usbep: struct usb_ep \*
 
-    :param int halt:
+    :param halt:
         Specifies whether to set or clear the feature
+    :type halt: int
 
 .. _`pch_udc_pcd_set_halt.return-codes`:
 
@@ -1558,8 +1674,9 @@ pch_udc_pcd_set_wedge
 
     This function Sets or clear the endpoint halt feature
 
-    :param struct usb_ep \*usbep:
+    :param usbep:
         Reference to the USB endpoint structure
+    :type usbep: struct usb_ep \*
 
 .. _`pch_udc_pcd_set_wedge.return-codes`:
 
@@ -1584,8 +1701,9 @@ pch_udc_pcd_fifo_flush
 
     This function Flush the FIFO of specified endpoint
 
-    :param struct usb_ep \*usbep:
+    :param usbep:
         Reference to the USB endpoint structure
+    :type usbep: struct usb_ep \*
 
 .. _`pch_udc_init_setup_buff`:
 
@@ -1596,8 +1714,9 @@ pch_udc_init_setup_buff
 
     This function initializes the SETUP buffer
 
-    :param struct pch_udc_stp_dma_desc \*td_stp:
+    :param td_stp:
         Reference to the SETP buffer structure
+    :type td_stp: struct pch_udc_stp_dma_desc \*
 
 .. _`pch_udc_start_next_txrequest`:
 
@@ -1608,8 +1727,9 @@ pch_udc_start_next_txrequest
 
     This function starts the next transmission requirement
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to the endpoint structure
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_complete_transfer`:
 
@@ -1620,8 +1740,9 @@ pch_udc_complete_transfer
 
     This function completes a transfer
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to the endpoint structure
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_complete_receiver`:
 
@@ -1632,8 +1753,9 @@ pch_udc_complete_receiver
 
     This function completes a receiver
 
-    :param struct pch_udc_ep \*ep:
+    :param ep:
         Reference to the endpoint structure
+    :type ep: struct pch_udc_ep \*
 
 .. _`pch_udc_svc_data_in`:
 
@@ -1644,11 +1766,13 @@ pch_udc_svc_data_in
 
     This function process endpoint interrupts for IN endpoints
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the device structure
+    :type dev: struct pch_udc_dev \*
 
-    :param int ep_num:
+    :param ep_num:
         Endpoint that generated the interrupt
+    :type ep_num: int
 
 .. _`pch_udc_svc_data_out`:
 
@@ -1659,11 +1783,13 @@ pch_udc_svc_data_out
 
     Handles interrupts from OUT endpoint
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the device structure
+    :type dev: struct pch_udc_dev \*
 
-    :param int ep_num:
+    :param ep_num:
         Endpoint that generated the interrupt
+    :type ep_num: int
 
 .. _`pch_udc_svc_control_in`:
 
@@ -1674,8 +1800,9 @@ pch_udc_svc_control_in
 
     Handle Control IN endpoint interrupts
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the device structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_svc_control_out`:
 
@@ -1686,8 +1813,9 @@ pch_udc_svc_control_out
 
     Routine that handle Control OUT endpoint interrupts
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the device structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_postsvc_epinters`:
 
@@ -1698,11 +1826,13 @@ pch_udc_postsvc_epinters
 
     This function enables end point interrupts and clears NAK status
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the device structure
+    :type dev: struct pch_udc_dev \*
 
-    :param int ep_num:
+    :param ep_num:
         End point number
+    :type ep_num: int
 
 .. _`pch_udc_read_all_epstatus`:
 
@@ -1713,11 +1843,13 @@ pch_udc_read_all_epstatus
 
     This function read all endpoint status
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the device structure
+    :type dev: struct pch_udc_dev \*
 
-    :param u32 ep_intr:
+    :param ep_intr:
         Status of endpoint interrupt
+    :type ep_intr: u32
 
 .. _`pch_udc_activate_control_ep`:
 
@@ -1728,8 +1860,9 @@ pch_udc_activate_control_ep
 
     This function enables the control endpoints for traffic after a reset
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the device structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_svc_ur_interrupt`:
 
@@ -1740,8 +1873,9 @@ pch_udc_svc_ur_interrupt
 
     This function handles a USB reset interrupt
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to driver structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_svc_enum_interrupt`:
 
@@ -1752,8 +1886,9 @@ pch_udc_svc_enum_interrupt
 
     This function handles a USB speed enumeration done interrupt
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to driver structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_svc_intf_interrupt`:
 
@@ -1764,8 +1899,9 @@ pch_udc_svc_intf_interrupt
 
     This function handles a set interface interrupt
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to driver structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_svc_cfg_interrupt`:
 
@@ -1776,8 +1912,9 @@ pch_udc_svc_cfg_interrupt
 
     This function handles a set configuration interrupt
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to driver structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_dev_isr`:
 
@@ -1788,11 +1925,13 @@ pch_udc_dev_isr
 
     This function services device interrupts by invoking appropriate routines.
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the device structure
+    :type dev: struct pch_udc_dev \*
 
-    :param u32 dev_intr:
+    :param dev_intr:
         The Device interrupt status.
+    :type dev_intr: u32
 
 .. _`pch_udc_isr`:
 
@@ -1803,11 +1942,13 @@ pch_udc_isr
 
     This function handles interrupts from the PCH USB Device
 
-    :param int irq:
+    :param irq:
         Interrupt request number
+    :type irq: int
 
-    :param void \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: void \*
 
 .. _`pch_udc_setup_ep0`:
 
@@ -1818,8 +1959,9 @@ pch_udc_setup_ep0
 
     This function enables control endpoint for traffic
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the device structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_pcd_reinit`:
 
@@ -1830,8 +1972,9 @@ pch_udc_pcd_reinit
 
     This API initializes the endpoint structures
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the driver structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_pcd_init`:
 
@@ -1842,8 +1985,9 @@ pch_udc_pcd_init
 
     This API initializes the driver structure
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         Reference to the driver structure
+    :type dev: struct pch_udc_dev \*
 
 .. _`pch_udc_pcd_init.return-codes`:
 
@@ -1861,8 +2005,9 @@ init_dma_pools
 
     create dma pools during initialization
 
-    :param struct pch_udc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct pch_udc_dev \*
 
 .. This file was automatic generated / don't edit.
 

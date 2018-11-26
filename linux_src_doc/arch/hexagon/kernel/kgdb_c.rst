@@ -10,8 +10,9 @@ hexagon_kgdb_nmi_hook
 
     Get other CPUs into a holding pattern
 
-    :param void \*ignored:
+    :param ignored:
         *undescribed*
+    :type ignored: void \*
 
 .. _`hexagon_kgdb_nmi_hook.description`:
 
@@ -39,23 +40,29 @@ kgdb_arch_handle_exception
 
     Handle architecture specific GDB packets.
 
-    :param int vector:
+    :param vector:
         The error vector of the exception that happened.
+    :type vector: int
 
-    :param int signo:
+    :param signo:
         The signal number of the exception that happened.
+    :type signo: int
 
-    :param int err_code:
+    :param err_code:
         The error code of the exception that happened.
+    :type err_code: int
 
-    :param char \*remcom_in_buffer:
+    :param remcom_in_buffer:
         The buffer of the packet we have read.
+    :type remcom_in_buffer: char \*
 
-    :param char \*remcom_out_buffer:
+    :param remcom_out_buffer:
         The buffer of \ ``BUFMAX``\  bytes to write a packet into.
+    :type remcom_out_buffer: char \*
 
-    :param struct pt_regs \*linux_regs:
+    :param linux_regs:
         *undescribed*
+    :type linux_regs: struct pt_regs \*
 
 .. _`kgdb_arch_handle_exception.description`:
 
@@ -80,8 +87,9 @@ kgdb_arch_init
 
     Perform any architecture specific initialization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_arch_init.description`:
 
@@ -100,8 +108,9 @@ kgdb_arch_exit
 
     Perform any architecture specific uninitalization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_arch_exit.description`:
 

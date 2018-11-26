@@ -10,14 +10,17 @@ vfs_ioctl
 
     call filesystem specific ioctl methods
 
-    :param struct file \*filp:
+    :param filp:
         open file to invoke ioctl method on
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command to execute
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         command-specific argument for ioctl
+    :type arg: unsigned long
 
 .. _`vfs_ioctl.description`:
 
@@ -59,11 +62,13 @@ fiemap_check_flags
 
     check validity of requested flags for fiemap
 
-    :param struct fiemap_extent_info \*fieinfo:
+    :param fieinfo:
         Fiemap context passed into ->fiemap
+    :type fieinfo: struct fiemap_extent_info \*
 
-    :param u32 fs_flags:
+    :param fs_flags:
         Set of fiemap flags that the file system understands
+    :type fs_flags: u32
 
 .. _`fiemap_check_flags.description`:
 
@@ -88,20 +93,25 @@ Returns 0 on success, -EBADR on bad flags.
 
     FIEMAP for block based inodes (no locking)
 
-    :param struct inode \*inode:
+    :param inode:
         the inode to map
+    :type inode: struct inode \*
 
-    :param struct fiemap_extent_info \*fieinfo:
+    :param fieinfo:
         the fiemap info struct that will be passed back to userspace
+    :type fieinfo: struct fiemap_extent_info \*
 
-    :param loff_t start:
+    :param start:
         where to start mapping in the inode
+    :type start: loff_t
 
-    :param loff_t len:
+    :param len:
         how much space to map
+    :type len: loff_t
 
-    :param get_block_t \*get_block:
+    :param get_block:
         the fs's get_block function
+    :type get_block: get_block_t \*
 
 .. _`__generic_block_fiemap.description`:
 
@@ -112,7 +122,7 @@ This does FIEMAP for block based inodes.  Basically it will just loop
 through get_block until we hit the number of extents we want to map, or we
 go past the end of the file and hit a hole.
 
-If it is possible to have data blocks beyond a hole past \ ``inode``\ ->i_size, then
+If it is possible to have data blocks beyond a hole past \ ``inode->i_size``\ , then
 please do not use this function, it will stop at the first unmapped block
 beyond i_size.
 
@@ -128,20 +138,25 @@ generic_block_fiemap
 
     FIEMAP for block based inodes
 
-    :param struct inode \*inode:
+    :param inode:
         The inode to map
+    :type inode: struct inode \*
 
-    :param struct fiemap_extent_info \*fieinfo:
+    :param fieinfo:
         The mapping information
+    :type fieinfo: struct fiemap_extent_info \*
 
-    :param u64 start:
+    :param start:
         The initial block to map
+    :type start: u64
 
-    :param u64 len:
+    :param len:
         The length of the extect to attempt to map
+    :type len: u64
 
-    :param get_block_t \*get_block:
+    :param get_block:
         The block mapping function for the fs
+    :type get_block: get_block_t \*
 
 .. _`generic_block_fiemap.description`:
 

@@ -17,11 +17,13 @@ rt2x00queue_alloc_rxskb
 
     allocate a skb for RX purposes.
 
-    :param struct queue_entry \*entry:
+    :param entry:
         The entry for which the skb will be applicable.
+    :type entry: struct queue_entry \*
 
-    :param gfp_t gfp:
+    :param gfp:
         *undescribed*
+    :type gfp: gfp_t
 
 .. _`rt2x00queue_free_skb`:
 
@@ -32,8 +34,9 @@ rt2x00queue_free_skb
 
     free a skb
 
-    :param struct queue_entry \*entry:
+    :param entry:
         The entry for which the skb will be applicable.
+    :type entry: struct queue_entry \*
 
 .. _`rt2x00queue_align_frame`:
 
@@ -44,8 +47,9 @@ rt2x00queue_align_frame
 
     Align 802.11 frame to 4-byte boundary
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb to align
+    :type skb: struct sk_buff \*
 
 .. _`rt2x00queue_align_frame.description`:
 
@@ -64,11 +68,13 @@ rt2x00queue_insert_l2pad
 
     Align 802.11 header & payload to 4-byte boundary
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb to align
+    :type skb: struct sk_buff \*
 
-    :param unsigned int header_length:
+    :param header_length:
         Length of 802.11 header
+    :type header_length: unsigned int
 
 .. _`rt2x00queue_insert_l2pad.description`:
 
@@ -86,11 +92,13 @@ rt2x00queue_remove_l2pad
 
     Remove L2 padding from 802.11 frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb to align
+    :type skb: struct sk_buff \*
 
-    :param unsigned int header_length:
+    :param header_length:
         Length of 802.11 header
+    :type header_length: unsigned int
 
 .. _`rt2x00queue_remove_l2pad.description`:
 
@@ -109,17 +117,21 @@ rt2x00queue_write_tx_frame
 
     Write TX frame to hardware
 
-    :param struct data_queue \*queue:
+    :param queue:
         Queue over which the frame should be send
+    :type queue: struct data_queue \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb to send
+    :type skb: struct sk_buff \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
-    :param bool local:
+    :param local:
         frame is not from mac80211
+    :type local: bool
 
 .. _`rt2x00queue_update_beacon`:
 
@@ -130,11 +142,13 @@ rt2x00queue_update_beacon
 
     Send new beacon from mac80211 to hardware. Handles locking by itself (mutex).
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Interface for which the beacon should be updated.
+    :type vif: struct ieee80211_vif \*
 
 .. _`rt2x00queue_update_beacon_locked`:
 
@@ -145,11 +159,13 @@ rt2x00queue_update_beacon_locked
 
     Send new beacon from mac80211 to hardware. Caller needs to ensure locking.
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Interface for which the beacon should be updated.
+    :type vif: struct ieee80211_vif \*
 
 .. _`rt2x00queue_clear_beacon`:
 
@@ -160,11 +176,13 @@ rt2x00queue_clear_beacon
 
     Clear beacon in hardware
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Interface for which the beacon should be updated.
+    :type vif: struct ieee80211_vif \*
 
 .. _`rt2x00queue_index_inc`:
 
@@ -175,11 +193,13 @@ rt2x00queue_index_inc
 
     Index incrementation function
 
-    :param struct queue_entry \*entry:
+    :param entry:
         Queue entry (&struct queue_entry) to perform the action on.
+    :type entry: struct queue_entry \*
 
-    :param enum queue_index index:
+    :param index:
         Index type (&enum queue_index) to perform the action on.
+    :type index: enum queue_index
 
 .. _`rt2x00queue_index_inc.description`:
 
@@ -199,8 +219,9 @@ rt2x00queue_init_queues
 
     Initialize all data queues
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
 .. _`rt2x00queue_init_queues.description`:
 
@@ -220,14 +241,17 @@ rt2x00link_update_stats
 
     Update link statistics from RX frame
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Received frame
+    :type skb: struct sk_buff \*
 
-    :param struct rxdone_entry_desc \*rxdesc:
+    :param rxdesc:
         Received frame descriptor
+    :type rxdesc: struct rxdone_entry_desc \*
 
 .. _`rt2x00link_update_stats.description`:
 
@@ -246,8 +270,9 @@ rt2x00link_start_tuner
 
     Start periodic link tuner work
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
 .. _`rt2x00link_start_tuner.description`:
 
@@ -267,8 +292,9 @@ rt2x00link_stop_tuner
 
     Stop periodic link tuner work
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
 .. _`rt2x00link_stop_tuner.description`:
 
@@ -287,11 +313,13 @@ rt2x00link_reset_tuner
 
     Reset periodic link tuner work
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param bool antenna:
+    :param antenna:
         Should the antenna tuning also be reset
+    :type antenna: bool
 
 .. _`rt2x00link_reset_tuner.description`:
 
@@ -321,8 +349,9 @@ rt2x00link_start_watchdog
 
     Start periodic watchdog monitoring
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
 .. _`rt2x00link_start_watchdog.description`:
 
@@ -342,8 +371,9 @@ rt2x00link_stop_watchdog
 
     Stop periodic watchdog monitoring
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
 .. _`rt2x00link_stop_watchdog.description`:
 
@@ -362,8 +392,9 @@ rt2x00link_register
 
     Initialize link tuning & watchdog functionality
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
 .. _`rt2x00link_register.description`:
 

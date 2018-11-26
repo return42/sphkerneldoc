@@ -10,11 +10,13 @@ blk_end_sync_rq
 
     executes a completion event on a request
 
-    :param struct request \*rq:
+    :param rq:
         request to complete
+    :type rq: struct request \*
 
-    :param blk_status_t error:
+    :param error:
         end I/O status of the request
+    :type error: blk_status_t
 
 .. _`blk_execute_rq_nowait`:
 
@@ -25,20 +27,25 @@ blk_execute_rq_nowait
 
     insert a request into queue for execution
 
-    :param struct request_queue \*q:
+    :param q:
         queue to insert the request in
+    :type q: struct request_queue \*
 
-    :param struct gendisk \*bd_disk:
+    :param bd_disk:
         matching gendisk
+    :type bd_disk: struct gendisk \*
 
-    :param struct request \*rq:
+    :param rq:
         request to insert
+    :type rq: struct request \*
 
-    :param int at_head:
+    :param at_head:
         insert request at head or tail of queue
+    :type at_head: int
 
-    :param rq_end_io_fn \*done:
+    :param done:
         I/O completion handler
+    :type done: rq_end_io_fn \*
 
 .. _`blk_execute_rq_nowait.description`:
 
@@ -64,17 +71,21 @@ blk_execute_rq
 
     insert a request into queue for execution
 
-    :param struct request_queue \*q:
+    :param q:
         queue to insert the request in
+    :type q: struct request_queue \*
 
-    :param struct gendisk \*bd_disk:
+    :param bd_disk:
         matching gendisk
+    :type bd_disk: struct gendisk \*
 
-    :param struct request \*rq:
+    :param rq:
         request to insert
+    :type rq: struct request \*
 
-    :param int at_head:
+    :param at_head:
         insert request at head or tail of queue
+    :type at_head: int
 
 .. _`blk_execute_rq.description`:
 

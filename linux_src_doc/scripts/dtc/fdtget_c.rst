@@ -8,14 +8,17 @@ show_data
 
 .. c:function:: int show_data(struct display_info *disp, const char *data, int len)
 
-    :param struct display_info \*disp:
+    :param disp:
         *undescribed*
+    :type disp: struct display_info \*
 
-    :param const char \*data:
+    :param data:
         *undescribed*
+    :type data: const char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
 .. _`show_data.description`:
 
@@ -37,11 +40,13 @@ list_properties
 
 .. c:function:: int list_properties(const void *blob, int node)
 
-    :param const void \*blob:
+    :param blob:
         *undescribed*
+    :type blob: const void \*
 
-    :param int node:
+    :param node:
         *undescribed*
+    :type node: int
 
 .. _`list_properties.description`:
 
@@ -59,11 +64,13 @@ list_subnodes
 
 .. c:function:: int list_subnodes(const void *blob, int node)
 
-    :param const void \*blob:
+    :param blob:
         *undescribed*
+    :type blob: const void \*
 
-    :param int node:
+    :param node:
         *undescribed*
+    :type node: int
 
 .. _`list_subnodes.description`:
 
@@ -83,17 +90,21 @@ show_data_for_item
 
     display option provided.
 
-    :param const void \*blob:
+    :param blob:
         *undescribed*
+    :type blob: const void \*
 
-    :param struct display_info \*disp:
+    :param disp:
         *undescribed*
+    :type disp: struct display_info \*
 
-    :param int node:
+    :param node:
         *undescribed*
+    :type node: int
 
-    :param const char \*property:
+    :param property:
         *undescribed*
+    :type property: const char \*
 
 .. _`show_data_for_item.description`:
 
@@ -113,20 +124,25 @@ do_fdtget
 
 .. c:function:: int do_fdtget(struct display_info *disp, const char *filename, char **arg, int arg_count, int args_per_step)
 
-    :param struct display_info \*disp:
+    :param disp:
         *undescribed*
+    :type disp: struct display_info \*
 
-    :param const char \*filename:
+    :param filename:
         *undescribed*
+    :type filename: const char \*
 
-    :param char \*\*arg:
+    :param arg:
         *undescribed*
+    :type arg: char \*\*
 
-    :param int arg_count:
+    :param arg_count:
         *undescribed*
+    :type arg_count: int
 
-    :param int args_per_step:
+    :param args_per_step:
         *undescribed*
+    :type args_per_step: int
 
 .. _`do_fdtget.description`:
 

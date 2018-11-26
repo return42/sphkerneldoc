@@ -98,25 +98,31 @@ caif_connect_client
 
     Connect a client to CAIF Core Stack.
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct caif_connect_request \*conn_req:
+    :param conn_req:
         *undescribed*
+    :type conn_req: struct caif_connect_request \*
 
-    :param struct cflayer \*client_layer:
+    :param client_layer:
         User implementation of client layer. This layer
         MUST have receive and control callback functions
         implemented.
+    :type client_layer: struct cflayer \*
 
-    :param int \*ifindex:
+    :param ifindex:
         Link layer interface index used for this connection.
+    :type ifindex: int \*
 
-    :param int \*headroom:
+    :param headroom:
         Head room needed by CAIF protocol.
+    :type headroom: int \*
 
-    :param int \*tailroom:
+    :param tailroom:
         Tail room needed by CAIF protocol.
+    :type tailroom: int \*
 
 .. _`caif_connect_client.description`:
 
@@ -140,11 +146,13 @@ caif_disconnect_client
 
     Disconnects a client from the CAIF stack.
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct cflayer \*client_layer:
+    :param client_layer:
         Client layer to be disconnected.
+    :type client_layer: struct cflayer \*
 
 .. _`caif_client_register_refcnt`:
 
@@ -155,8 +163,9 @@ caif_client_register_refcnt
 
     register ref-count functions provided by client.
 
-    :param struct cflayer \*adapt_layer:
+    :param adapt_layer:
         Client layer using CAIF Stack.
+    :type adapt_layer: struct cflayer \*
 
     :param void (\*hold)(struct cflayer \*lyr):
         Function provided by client layer increasing ref-count
@@ -184,8 +193,9 @@ caif_free_client
 
     Free memory used to manage the client in the CAIF Stack.
 
-    :param struct cflayer \*adap_layer:
+    :param adap_layer:
         *undescribed*
+    :type adap_layer: struct cflayer \*
 
 .. _`caif_free_client.description`:
 

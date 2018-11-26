@@ -10,17 +10,21 @@ vfs_fsync_range
 
     helper to sync a range of data & metadata to disk
 
-    :param struct file \*file:
+    :param file:
         file to sync
+    :type file: struct file \*
 
-    :param loff_t start:
+    :param start:
         offset in bytes of the beginning of data range to sync
+    :type start: loff_t
 
-    :param loff_t end:
+    :param end:
         offset in bytes of the end of data range (inclusive)
+    :type end: loff_t
 
-    :param int datasync:
+    :param datasync:
         perform only datasync
+    :type datasync: int
 
 .. _`vfs_fsync_range.description`:
 
@@ -40,11 +44,13 @@ vfs_fsync
 
     perform a fsync or fdatasync on a file
 
-    :param struct file \*file:
+    :param file:
         file to sync
+    :type file: struct file \*
 
-    :param int datasync:
+    :param datasync:
         only perform a fdatasync operation
+    :type datasync: int
 
 .. _`vfs_fsync.description`:
 

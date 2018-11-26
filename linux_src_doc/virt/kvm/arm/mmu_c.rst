@@ -10,8 +10,9 @@ kvm_flush_remote_tlbs
 
     flush all VM TLB entries for v7/8
 
-    :param struct kvm \*kvm:
+    :param kvm:
         pointer to kvm structure.
+    :type kvm: struct kvm \*
 
 .. _`kvm_flush_remote_tlbs.description`:
 
@@ -29,14 +30,17 @@ stage2_dissolve_pmd
 
     clear and flush huge PMD entry
 
-    :param struct kvm \*kvm:
+    :param kvm:
         pointer to kvm structure.
+    :type kvm: struct kvm \*
 
-    :param phys_addr_t addr:
+    :param addr:
         IPA
+    :type addr: phys_addr_t
 
-    :param pmd_t \*pmd:
+    :param pmd:
         pmd pointer for IPA
+    :type pmd: pmd_t \*
 
 .. _`stage2_dissolve_pmd.description`:
 
@@ -55,14 +59,17 @@ unmap_stage2_range
 
     - Clear stage2 page table entries to unmap a range
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The VM pointer
+    :type kvm: struct kvm \*
 
-    :param phys_addr_t start:
+    :param start:
         The intermediate physical base address of the range to unmap
+    :type start: phys_addr_t
 
-    :param u64 size:
+    :param size:
         The size of the area to unmap
+    :type size: u64
 
 .. _`unmap_stage2_range.description`:
 
@@ -83,8 +90,9 @@ stage2_flush_vm
 
     Invalidate cache for pages mapped in stage 2
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The struct kvm pointer
+    :type kvm: struct kvm \*
 
 .. _`stage2_flush_vm.description`:
 
@@ -103,8 +111,9 @@ free_hyp_pgds
 
     free Hyp-mode page tables
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`free_hyp_pgds.description`:
 
@@ -127,14 +136,17 @@ create_hyp_mappings
 
     duplicate a kernel virtual address range in Hyp mode
 
-    :param void \*from:
+    :param from:
         The virtual kernel start address of the range
+    :type from: void \*
 
-    :param void \*to:
+    :param to:
         The virtual kernel end address of the range (exclusive)
+    :type to: void \*
 
-    :param pgprot_t prot:
+    :param prot:
         The protection to be applied to this range
+    :type prot: pgprot_t
 
 .. _`create_hyp_mappings.description`:
 
@@ -154,17 +166,21 @@ create_hyp_io_mappings
 
     Map IO into both kernel and HYP
 
-    :param phys_addr_t phys_addr:
+    :param phys_addr:
         The physical start address which gets mapped
+    :type phys_addr: phys_addr_t
 
-    :param size_t size:
+    :param size:
         Size of the region being mapped
+    :type size: size_t
 
-    :param void __iomem \*\*kaddr:
+    :param kaddr:
         Kernel VA for this mapping
+    :type kaddr: void __iomem \*\*
 
-    :param void __iomem \*\*haddr:
+    :param haddr:
         HYP VA for this mapping
+    :type haddr: void __iomem \*\*
 
 .. _`create_hyp_exec_mappings`:
 
@@ -175,14 +191,17 @@ create_hyp_exec_mappings
 
     Map an executable range into HYP
 
-    :param phys_addr_t phys_addr:
+    :param phys_addr:
         The physical start address which gets mapped
+    :type phys_addr: phys_addr_t
 
-    :param size_t size:
+    :param size:
         Size of the region being mapped
+    :type size: size_t
 
-    :param void \*\*haddr:
+    :param haddr:
         HYP VA for this mapping
+    :type haddr: void \*\*
 
 .. _`kvm_alloc_stage2_pgd`:
 
@@ -193,8 +212,9 @@ kvm_alloc_stage2_pgd
 
     allocate level-1 table for stage-2 translation.
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The KVM struct pointer for the VM.
+    :type kvm: struct kvm \*
 
 .. _`kvm_alloc_stage2_pgd.description`:
 
@@ -217,8 +237,9 @@ stage2_unmap_vm
 
     Unmap Stage-2 RAM mappings
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The struct kvm pointer
+    :type kvm: struct kvm \*
 
 .. _`stage2_unmap_vm.description`:
 
@@ -237,8 +258,9 @@ kvm_free_stage2_pgd
 
     free all stage-2 tables
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The KVM struct pointer for the VM.
+    :type kvm: struct kvm \*
 
 .. _`kvm_free_stage2_pgd.description`:
 
@@ -258,20 +280,25 @@ kvm_phys_addr_ioremap
 
     map a device range to guest IPA
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The KVM pointer
+    :type kvm: struct kvm \*
 
-    :param phys_addr_t guest_ipa:
+    :param guest_ipa:
         The IPA at which to insert the mapping
+    :type guest_ipa: phys_addr_t
 
-    :param phys_addr_t pa:
+    :param pa:
         The physical address of the device
+    :type pa: phys_addr_t
 
-    :param unsigned long size:
+    :param size:
         The size of the mapping
+    :type size: unsigned long
 
-    :param bool writable:
+    :param writable:
         *undescribed*
+    :type writable: bool
 
 .. _`stage2_wp_ptes`:
 
@@ -282,50 +309,74 @@ stage2_wp_ptes
 
     write protect PMD range
 
-    :param pmd_t \*pmd:
+    :param pmd:
         pointer to pmd entry
+    :type pmd: pmd_t \*
 
-    :param phys_addr_t addr:
+    :param addr:
         range start address
+    :type addr: phys_addr_t
 
-    :param phys_addr_t end:
+    :param end:
         range end address
+    :type end: phys_addr_t
 
 .. _`stage2_wp_pmds`:
 
 stage2_wp_pmds
 ==============
 
-.. c:function:: void stage2_wp_pmds(pud_t *pud, phys_addr_t addr, phys_addr_t end)
+.. c:function:: void stage2_wp_pmds(struct kvm *kvm, pud_t *pud, phys_addr_t addr, phys_addr_t end)
 
     write protect PUD range
 
-    :param pud_t \*pud:
+    :param kvm:
+        *undescribed*
+    :type kvm: struct kvm \*
+
+    :param pud:
         pointer to pud entry
+    :type pud: pud_t \*
 
-    :param phys_addr_t addr:
+    :param addr:
         range start address
+    :type addr: phys_addr_t
 
-    :param phys_addr_t end:
+    :param end:
         range end address
+    :type end: phys_addr_t
+
+.. _`stage2_wp_pmds.kvm`:
+
+kvm
+---
+
+kvm instance for the VM
 
 .. _`stage2_wp_puds`:
 
 stage2_wp_puds
 ==============
 
-.. c:function:: void stage2_wp_puds(pgd_t *pgd, phys_addr_t addr, phys_addr_t end)
+.. c:function:: void stage2_wp_puds(struct kvm *kvm, pgd_t *pgd, phys_addr_t addr, phys_addr_t end)
 
     write protect PGD range
 
-    :param pgd_t \*pgd:
+    :param kvm:
+        *undescribed*
+    :type kvm: struct kvm \*
+
+    :param pgd:
         pointer to pgd entry
+    :type pgd: pgd_t \*
 
-    :param phys_addr_t addr:
+    :param addr:
         range start address
+    :type addr: phys_addr_t
 
-    :param phys_addr_t end:
+    :param end:
         range end address
+    :type end: phys_addr_t
 
 .. _`stage2_wp_puds.description`:
 
@@ -343,14 +394,17 @@ stage2_wp_range
 
     write protect stage2 memory region range
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The KVM pointer
+    :type kvm: struct kvm \*
 
-    :param phys_addr_t addr:
+    :param addr:
         Start address of range
+    :type addr: phys_addr_t
 
-    :param phys_addr_t end:
+    :param end:
         End address of range
+    :type end: phys_addr_t
 
 .. _`kvm_mmu_wp_memory_region`:
 
@@ -361,11 +415,13 @@ kvm_mmu_wp_memory_region
 
     write protect stage 2 entries for memory slot
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The KVM pointer
+    :type kvm: struct kvm \*
 
-    :param int slot:
+    :param slot:
         The memory slot to write protect
+    :type slot: int
 
 .. _`kvm_mmu_wp_memory_region.description`:
 
@@ -389,18 +445,22 @@ kvm_mmu_write_protect_pt_masked
 
     write protect dirty pages
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The KVM pointer
+    :type kvm: struct kvm \*
 
-    :param struct kvm_memory_slot \*slot:
+    :param slot:
         The memory slot associated with mask
+    :type slot: struct kvm_memory_slot \*
 
-    :param gfn_t gfn_offset:
+    :param gfn_offset:
         The gfn offset in memory slot
+    :type gfn_offset: gfn_t
 
-    :param unsigned long mask:
+    :param mask:
         The mask of dirty pages at offset 'gfn_offset' in this memory
         slot to be write protected
+    :type mask: unsigned long
 
 .. _`kvm_mmu_write_protect_pt_masked.description`:
 
@@ -419,11 +479,13 @@ kvm_handle_guest_abort
 
     handles all 2nd stage aborts
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         the VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_run \*run:
+    :param run:
         the kvm_run structure
+    :type run: struct kvm_run \*
 
 .. _`kvm_handle_guest_abort.description`:
 

@@ -10,14 +10,17 @@ tlb_remove_tlb_entry
 
     remember a pte unmapping for later tlb invalidation.
 
-    :param  tlb:
+    :param tlb:
         *undescribed*
+    :type tlb: 
 
-    :param  ptep:
+    :param ptep:
         *undescribed*
+    :type ptep: 
 
-    :param  address:
+    :param address:
         *undescribed*
+    :type address: 
 
 .. _`tlb_remove_tlb_entry.description`:
 

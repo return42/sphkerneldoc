@@ -10,8 +10,9 @@ xdr_stream_remaining
 
     Return the number of bytes remaining in the stream
 
-    :param const struct xdr_stream \*xdr:
+    :param xdr:
         pointer to struct xdr_stream
+    :type xdr: const struct xdr_stream \*
 
 .. _`xdr_stream_remaining.return-value`:
 
@@ -29,8 +30,9 @@ xdr_align_size
 
     Calculate padded size of an object
 
-    :param size_t n:
+    :param n:
         Size of an object being XDR encoded (in bytes)
+    :type n: size_t
 
 .. _`xdr_align_size.return-value`:
 
@@ -48,11 +50,13 @@ xdr_stream_encode_u32
 
     Encode a 32-bit integer
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param __u32 n:
+    :param n:
         integer to encode
+    :type n: __u32
 
 .. _`xdr_stream_encode_u32.return-values`:
 
@@ -71,11 +75,13 @@ xdr_stream_encode_u64
 
     Encode a 64-bit integer
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param __u64 n:
+    :param n:
         64-bit integer to encode
+    :type n: __u64
 
 .. _`xdr_stream_encode_u64.return-values`:
 
@@ -94,14 +100,17 @@ xdr_stream_encode_opaque_inline
 
     Encode opaque xdr data
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param void \*\*ptr:
+    :param ptr:
         pointer to void pointer
+    :type ptr: void \*\*
 
-    :param size_t len:
+    :param len:
         size of object
+    :type len: size_t
 
 .. _`xdr_stream_encode_opaque_inline.return-values`:
 
@@ -120,14 +129,17 @@ xdr_stream_encode_opaque_fixed
 
     Encode fixed length opaque xdr data
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to opaque data object
+    :type ptr: const void \*
 
-    :param size_t len:
+    :param len:
         size of object pointed to by \ ``ptr``\ 
+    :type len: size_t
 
 .. _`xdr_stream_encode_opaque_fixed.return-values`:
 
@@ -146,14 +158,17 @@ xdr_stream_encode_opaque
 
     Encode variable length opaque xdr data
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to opaque data object
+    :type ptr: const void \*
 
-    :param size_t len:
+    :param len:
         size of object pointed to by \ ``ptr``\ 
+    :type len: size_t
 
 .. _`xdr_stream_encode_opaque.return-values`:
 
@@ -172,14 +187,17 @@ xdr_stream_encode_uint32_array
 
     Encode variable length array of integers
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param const __u32 \*array:
+    :param array:
         array of integers
+    :type array: const __u32 \*
 
-    :param size_t array_size:
+    :param array_size:
         number of elements in \ ``array``\ 
+    :type array_size: size_t
 
 .. _`xdr_stream_encode_uint32_array.return-values`:
 
@@ -198,11 +216,13 @@ xdr_stream_decode_u32
 
     Decode a 32-bit integer
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param __u32 \*ptr:
+    :param ptr:
         location to store integer
+    :type ptr: __u32 \*
 
 .. _`xdr_stream_decode_u32.return-values`:
 
@@ -221,14 +241,17 @@ xdr_stream_decode_opaque_fixed
 
     Decode fixed length opaque xdr data
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param void \*ptr:
+    :param ptr:
         location to store data
+    :type ptr: void \*
 
-    :param size_t len:
+    :param len:
         size of buffer pointed to by \ ``ptr``\ 
+    :type len: size_t
 
 .. _`xdr_stream_decode_opaque_fixed.return-values`:
 
@@ -247,14 +270,17 @@ xdr_stream_decode_opaque_inline
 
     Decode variable length opaque xdr data
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param void \*\*ptr:
+    :param ptr:
         location to store pointer to opaque data
+    :type ptr: void \*\*
 
-    :param size_t maxlen:
+    :param maxlen:
         maximum acceptable object size
+    :type maxlen: size_t
 
 .. _`xdr_stream_decode_opaque_inline.note`:
 
@@ -284,14 +310,17 @@ xdr_stream_decode_uint32_array
 
     Decode variable length array of integers
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param __u32 \*array:
+    :param array:
         location to store the integer array or NULL
+    :type array: __u32 \*
 
-    :param size_t array_size:
+    :param array_size:
         number of elements to store
+    :type array_size: size_t
 
 .. _`xdr_stream_decode_uint32_array.return-values`:
 

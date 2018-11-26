@@ -10,8 +10,9 @@ rockchip_drm_psr_inhibit_put
 
     release PSR inhibit on given encoder
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         encoder to obtain the PSR encoder
+    :type encoder: struct drm_encoder \*
 
 .. _`rockchip_drm_psr_inhibit_put.description`:
 
@@ -39,8 +40,9 @@ rockchip_drm_psr_inhibit_get
 
     acquire PSR inhibit on given encoder
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         encoder to obtain the PSR encoder
+    :type encoder: struct drm_encoder \*
 
 .. _`rockchip_drm_psr_inhibit_get.description`:
 
@@ -68,8 +70,9 @@ rockchip_drm_psr_flush_all
 
     force to flush all registered PSR encoders
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
 .. _`rockchip_drm_psr_flush_all.description`:
 
@@ -97,8 +100,9 @@ rockchip_drm_psr_register
 
     register encoder to psr driver
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         encoder that obtain the PSR function
+    :type encoder: struct drm_encoder \*
 
     :param int (\*psr_set)(struct drm_encoder \*, bool enable):
         call back to set PSR state
@@ -129,8 +133,9 @@ rockchip_drm_psr_unregister
 
     unregister encoder to psr driver
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         encoder that obtain the PSR function
+    :type encoder: struct drm_encoder \*
 
 .. _`rockchip_drm_psr_unregister.description`:
 

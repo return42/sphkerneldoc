@@ -8,8 +8,9 @@ octeon_is_simulation
 
 .. c:function:: int octeon_is_simulation( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_is_simulation.description`:
 
@@ -27,8 +28,9 @@ octeon_is_pci_host
 
     Linux can control the PCI bus.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_is_pci_host.description`:
 
@@ -44,8 +46,9 @@ octeon_get_clock_rate
 
 .. c:function:: uint64_t octeon_get_clock_rate( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_get_clock_rate.description`:
 
@@ -63,8 +66,9 @@ octeon_write_lcd
 
     exists on most Cavium evaluation boards. If it doesn't exist, then this function doesn't do anything.
 
-    :param const char \*s:
+    :param s:
         String to write
+    :type s: const char \*
 
 .. _`octeon_get_boot_uart`:
 
@@ -73,8 +77,9 @@ octeon_get_boot_uart
 
 .. c:function:: int octeon_get_boot_uart( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_get_boot_uart.description`:
 
@@ -90,8 +95,9 @@ octeon_get_boot_coremask
 
 .. c:function:: int octeon_get_boot_coremask( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_get_boot_coremask.description`:
 
@@ -107,8 +113,9 @@ octeon_check_cpu_bist
 
 .. c:function:: void octeon_check_cpu_bist( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_restart`:
 
@@ -117,8 +124,9 @@ octeon_restart
 
 .. c:function:: void octeon_restart(char *command)
 
-    :param char \*command:
+    :param command:
         Command to pass to the bootloader. Currently ignored.
+    :type command: char \*
 
 .. _`octeon_kill_core`:
 
@@ -127,8 +135,9 @@ octeon_kill_core
 
 .. c:function:: void octeon_kill_core(void *arg)
 
-    :param void \*arg:
+    :param arg:
         Ignored.
+    :type arg: void \*
 
 .. _`octeon_halt`:
 
@@ -137,8 +146,9 @@ octeon_halt
 
 .. c:function:: void octeon_halt( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_board_type_string`:
 
@@ -147,8 +157,9 @@ octeon_board_type_string
 
 .. c:function:: const char *octeon_board_type_string( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_board_type_string.description`:
 
@@ -164,8 +175,9 @@ prom_init
 
 .. c:function:: void prom_init( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

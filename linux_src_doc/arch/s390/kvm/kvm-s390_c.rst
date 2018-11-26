@@ -10,14 +10,17 @@ kvm_arch_fault_in_page
 
     fault-in guest page if necessary
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The corresponding virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param gpa_t gpa:
+    :param gpa:
         Guest physical address
+    :type gpa: gpa_t
 
-    :param int writable:
+    :param writable:
         Whether the page should be writable or not
+    :type writable: int
 
 .. _`kvm_arch_fault_in_page.description`:
 

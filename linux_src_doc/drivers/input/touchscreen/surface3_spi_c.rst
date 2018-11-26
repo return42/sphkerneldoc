@@ -10,8 +10,9 @@ surface3_spi_get_gpio_config
 
     Get GPIO config from ACPI/DT
 
-    :param struct surface3_ts_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct surface3_ts_data \*
 
 .. This file was automatic generated / don't edit.
 

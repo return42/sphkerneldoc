@@ -10,11 +10,13 @@ validate_inode
 
     validate inode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*inode:
+    :param inode:
         the inode to validate
+    :type inode: const struct inode \*
 
 .. _`validate_inode.description`:
 
@@ -35,8 +37,9 @@ init_constants_early
 
     initialize UBIFS constants.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`init_constants_early.description`:
 
@@ -57,17 +60,21 @@ bud_wbuf_callback
 
     bud LEB write-buffer synchronization call-back.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB the write-buffer was synchronized to
+    :type lnum: int
 
-    :param int free:
+    :param free:
         how many free bytes left in this LEB
+    :type free: int
 
-    :param int pad:
+    :param pad:
         how many bytes were padded
+    :type pad: int
 
 .. _`bud_wbuf_callback.description`:
 
@@ -91,8 +98,9 @@ take_gc_lnum
 
     reserve GC LEB.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`take_gc_lnum.description`:
 
@@ -115,8 +123,9 @@ alloc_wbufs
 
     allocate write-buffers.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`alloc_wbufs.description`:
 
@@ -135,8 +144,9 @@ free_wbufs
 
     free write-buffers.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`free_orphans`:
 
@@ -147,8 +157,9 @@ free_orphans
 
     free orphans.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`free_buds`:
 
@@ -159,8 +170,9 @@ free_buds
 
     free per-bud objects.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`check_volume_empty`:
 
@@ -171,8 +183,9 @@ check_volume_empty
 
     check if the UBI volume is empty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`check_volume_empty.description`:
 
@@ -180,7 +193,7 @@ Description
 -----------
 
 This function checks if the UBIFS volume is empty by looking if its LEBs are
-mapped or not. The result of checking is stored in the \ ``c``\ ->empty variable.
+mapped or not. The result of checking is stored in the \ ``c->empty``\  variable.
 Returns zero in case of success and a negative error code in case of
 failure.
 
@@ -193,8 +206,9 @@ parse_standard_option
 
     parse a standard mount option.
 
-    :param const char \*option:
+    :param option:
         the option to parse
+    :type option: const char \*
 
 .. _`parse_standard_option.description`:
 
@@ -219,14 +233,17 @@ ubifs_parse_options
 
     parse mount parameters.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param char \*options:
+    :param options:
         parameters to parse
+    :type options: char \*
 
-    :param int is_remount:
+    :param is_remount:
         non-zero if this is FS re-mount
+    :type is_remount: int
 
 .. _`ubifs_parse_options.description`:
 
@@ -245,8 +262,9 @@ destroy_journal
 
     destroy journal data structures.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`destroy_journal.description`:
 
@@ -265,8 +283,9 @@ bu_init
 
     initialize bulk-read information.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`check_free_space`:
 
@@ -277,8 +296,9 @@ check_free_space
 
     check if there is enough free space to mount.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`check_free_space.description`:
 
@@ -297,8 +317,9 @@ mount_ubifs
 
     mount UBIFS file-system.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`mount_ubifs.description`:
 
@@ -317,8 +338,9 @@ ubifs_umount
 
     un-mount UBIFS file-system.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_umount.description`:
 
@@ -339,8 +361,9 @@ ubifs_remount_rw
 
     re-mount in read-write mode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_remount_rw.description`:
 
@@ -360,8 +383,9 @@ ubifs_remount_ro
 
     re-mount in read-only mode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_remount_ro.description`:
 
@@ -380,11 +404,13 @@ open_ubi
 
     parse UBI device name string and open the UBI device.
 
-    :param const char \*name:
+    :param name:
         UBI volume name
+    :type name: const char \*
 
-    :param int mode:
+    :param mode:
         UBI volume open mode
+    :type mode: int
 
 .. _`open_ubi.description`:
 

@@ -10,11 +10,13 @@ apm_error
 
     display an APM error
 
-    :param char \*str:
+    :param str:
         information string
+    :type str: char \*
 
-    :param int err:
+    :param err:
         APM BIOS return code
+    :type err: int
 
 .. _`apm_error.description`:
 
@@ -33,8 +35,9 @@ an APM error.  Note that this also handles (negative) kernel errors.
 
     Make an APM BIOS 32bit call
 
-    :param void \*_call:
+    :param _call:
         pointer to struct apm_bios_call.
+    :type _call: void \*
 
 .. _`__apm_bios_call.description`:
 
@@ -65,8 +68,9 @@ apm_bios_call
 
     Make an APM BIOS 32bit call (on CPU 0)
 
-    :param struct apm_bios_call \*call:
+    :param call:
         the apm_bios_call registers.
+    :type call: struct apm_bios_call \*
 
 .. _`apm_bios_call.description`:
 
@@ -84,8 +88,9 @@ If there is an error, it is returned in \ ``call.err``\ .
 
     Make an APM BIOS 32bit call (on CPU 0)
 
-    :param void \*_call:
+    :param _call:
         pointer to struct apm_bios_call.
+    :type _call: void \*
 
 .. _`__apm_bios_call_simple.description`:
 
@@ -114,20 +119,25 @@ apm_bios_call_simple
 
     make a simple APM BIOS 32bit call
 
-    :param u32 func:
+    :param func:
         APM function to invoke
+    :type func: u32
 
-    :param u32 ebx_in:
+    :param ebx_in:
         EBX register value for BIOS call
+    :type ebx_in: u32
 
-    :param u32 ecx_in:
+    :param ecx_in:
         ECX register value for BIOS call
+    :type ecx_in: u32
 
-    :param u32 \*eax:
+    :param eax:
         EAX register on return from the BIOS call
+    :type eax: u32 \*
 
-    :param int \*err:
+    :param err:
         bits
+    :type err: int \*
 
 .. _`apm_bios_call_simple.description`:
 
@@ -149,8 +159,9 @@ apm_driver_version
 
     APM driver version
 
-    :param u_short \*val:
+    :param val:
         loaded with the APM version on return
+    :type val: u_short \*
 
 .. _`apm_driver_version.description`:
 
@@ -177,11 +188,13 @@ apm_get_event
 
     get an APM event from the BIOS
 
-    :param apm_event_t \*event:
+    :param event:
         pointer to the event
+    :type event: apm_event_t \*
 
-    :param apm_eventinfo_t \*info:
+    :param info:
         point to the event information
+    :type info: apm_eventinfo_t \*
 
 .. _`apm_get_event.description`:
 
@@ -208,11 +221,13 @@ set_power_state
 
     set the power management state
 
-    :param u_short what:
+    :param what:
         which items to transition
+    :type what: u_short
 
-    :param u_short state:
+    :param state:
         state to transition to
+    :type state: u_short
 
 .. _`set_power_state.description`:
 
@@ -236,8 +251,9 @@ set_system_power_state
 
     set system wide power state
 
-    :param u_short state:
+    :param state:
         which state to enter
+    :type state: u_short
 
 .. _`set_system_power_state.description`:
 
@@ -255,8 +271,9 @@ apm_do_idle
 
     perform power saving
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`apm_do_idle.description`:
 
@@ -277,8 +294,9 @@ apm_do_busy
 
     inform the BIOS the CPU is busy
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`apm_do_busy.description`:
 
@@ -296,14 +314,17 @@ apm_cpu_idle
 
     cpu idling for APM capable Linux
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct cpuidle_driver \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. _`apm_cpu_idle.description`:
 
@@ -323,8 +344,9 @@ apm_power_off
 
     ask the BIOS to power off
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`apm_power_off.description`:
 
@@ -346,8 +368,9 @@ apm_enable_power_management
 
     enable BIOS APM power management
 
-    :param int enable:
+    :param enable:
         enable yes/no
+    :type enable: int
 
 .. _`apm_enable_power_management.description`:
 
@@ -365,14 +388,17 @@ apm_get_power_status
 
     get current power state
 
-    :param u_short \*status:
+    :param status:
         returned status
+    :type status: u_short \*
 
-    :param u_short \*bat:
+    :param bat:
         battery info
+    :type bat: u_short \*
 
-    :param u_short \*life:
+    :param life:
         estimated life
+    :type life: u_short \*
 
 .. _`apm_get_power_status.description`:
 
@@ -395,11 +421,13 @@ apm_engage_power_management
 
     enable PM on a device
 
-    :param u_short device:
+    :param device:
         identity of device
+    :type device: u_short
 
-    :param int enable:
+    :param enable:
         on/off
+    :type enable: int
 
 .. _`apm_engage_power_management.description`:
 
@@ -418,8 +446,9 @@ apm_console_blank
 
     blank the display
 
-    :param int blank:
+    :param blank:
         on/off
+    :type blank: int
 
 .. _`apm_console_blank.description`:
 

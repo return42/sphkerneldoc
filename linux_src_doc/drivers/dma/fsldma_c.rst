@@ -10,11 +10,13 @@ fsl_chan_set_src_loop_size
 
     Set source address hold transfer size
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
-    :param int size:
+    :param size:
         Address loop size, 0 for disable loop
+    :type size: int
 
 .. _`fsl_chan_set_src_loop_size.description`:
 
@@ -36,11 +38,13 @@ fsl_chan_set_dst_loop_size
 
     Set destination address hold transfer size
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
-    :param int size:
+    :param size:
         Address loop size, 0 for disable loop
+    :type size: int
 
 .. _`fsl_chan_set_dst_loop_size.description`:
 
@@ -62,11 +66,13 @@ fsl_chan_set_request_count
 
     Set DMA Request Count for external control
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
-    :param int size:
+    :param size:
         Number of bytes to transfer in a single request
+    :type size: int
 
 .. _`fsl_chan_set_request_count.description`:
 
@@ -89,11 +95,13 @@ fsl_chan_toggle_ext_pause
 
     Toggle channel external pause status
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
-    :param int enable:
+    :param enable:
         0 is disabled, 1 is enabled.
+    :type enable: int
 
 .. _`fsl_chan_toggle_ext_pause.description`:
 
@@ -113,11 +121,13 @@ fsl_chan_toggle_ext_start
 
     Toggle channel external start status
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
-    :param int enable:
+    :param enable:
         0 is disabled, 1 is enabled.
+    :type enable: int
 
 .. _`fsl_chan_toggle_ext_start.description`:
 
@@ -138,11 +148,13 @@ fsl_dma_free_descriptor
 
     Free descriptor from channel's DMA pool.
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
-    :param struct fsl_desc_sw \*desc:
+    :param desc:
         descriptor to be freed
+    :type desc: struct fsl_desc_sw \*
 
 .. _`fsl_dma_alloc_descriptor`:
 
@@ -153,8 +165,9 @@ fsl_dma_alloc_descriptor
 
     Allocate descriptor from channel's DMA pool.
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
 .. _`fsl_dma_alloc_descriptor.description`:
 
@@ -172,8 +185,9 @@ fsldma_clean_completed_descriptor
 
     free all descriptors which has been completed and acked
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
 .. _`fsldma_clean_completed_descriptor.description`:
 
@@ -192,14 +206,17 @@ fsldma_run_tx_complete_actions
 
     cleanup a single link descriptor
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
-    :param struct fsl_desc_sw \*desc:
+    :param desc:
         descriptor to cleanup and free
+    :type desc: struct fsl_desc_sw \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         Freescale DMA transaction identifier
+    :type cookie: dma_cookie_t
 
 .. _`fsldma_run_tx_complete_actions.description`:
 
@@ -218,11 +235,13 @@ fsldma_clean_running_descriptor
 
     move the completed descriptor from ld_running to ld_completed
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
-    :param struct fsl_desc_sw \*desc:
+    :param desc:
         the descriptor which is completed
+    :type desc: struct fsl_desc_sw \*
 
 .. _`fsldma_clean_running_descriptor.description`:
 
@@ -241,8 +260,9 @@ fsl_chan_xfer_ld_queue
 
     transfer any pending transactions
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
 .. _`fsl_chan_xfer_ld_queue.hardware-state`:
 
@@ -267,8 +287,9 @@ fsldma_cleanup_descriptors
 
     cleanup link descriptors which are completed and move them to ld_completed to free until flag 'ack' is set
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescale DMA channel
+    :type chan: struct fsldma_chan \*
 
 .. _`fsldma_cleanup_descriptors.description`:
 
@@ -288,8 +309,9 @@ fsl_dma_alloc_chan_resources
 
     Allocate resources for DMA channel.
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         *undescribed*
+    :type dchan: struct dma_chan \*
 
 .. _`fsl_dma_alloc_chan_resources.description`:
 
@@ -309,11 +331,13 @@ fsldma_free_desc_list
 
     Free all descriptors in a queue
 
-    :param struct fsldma_chan \*chan:
+    :param chan:
         Freescae DMA channel
+    :type chan: struct fsldma_chan \*
 
-    :param struct list_head \*list:
+    :param list:
         the list to free
+    :type list: struct list_head \*
 
 .. _`fsldma_free_desc_list.locking`:
 
@@ -331,8 +355,9 @@ fsl_dma_free_chan_resources
 
     Free all resources of the channel.
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         *undescribed*
+    :type dchan: struct dma_chan \*
 
 .. _`fsl_dma_memcpy_issue_pending`:
 
@@ -343,8 +368,9 @@ fsl_dma_memcpy_issue_pending
 
     Issue the DMA start command
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         *undescribed*
+    :type dchan: struct dma_chan \*
 
 .. _`fsl_tx_status`:
 
@@ -355,14 +381,17 @@ fsl_tx_status
 
     Determine the DMA status
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         *undescribed*
+    :type dchan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         *undescribed*
+    :type cookie: dma_cookie_t
 
-    :param struct dma_tx_state \*txstate:
+    :param txstate:
         *undescribed*
+    :type txstate: struct dma_tx_state \*
 
 .. This file was automatic generated / don't edit.
 

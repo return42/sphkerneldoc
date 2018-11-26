@@ -10,8 +10,9 @@ ohci_hcd_pxa27x_probe
 
     initialize pxa27x-based HCDs
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`ohci_hcd_pxa27x_probe.context`:
 
@@ -38,8 +39,9 @@ ohci_hcd_pxa27x_remove
 
     shutdown processing for pxa27x-based HCDs
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`ohci_hcd_pxa27x_remove.context`:
 

@@ -10,8 +10,9 @@ scsi_schedule_eh
 
     schedule EH for SCSI host
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         SCSI host to invoke error handling on.
+    :type shost: struct Scsi_Host \*
 
 .. _`scsi_schedule_eh.description`:
 
@@ -29,8 +30,9 @@ scmd_eh_abort_handler
 
     Handle command aborts
 
-    :param struct work_struct \*work:
+    :param work:
         command to be aborted.
+    :type work: struct work_struct \*
 
 .. _`scmd_eh_abort_handler.note`:
 
@@ -52,8 +54,9 @@ scsi_abort_command
 
     schedule a command abort
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         scmd to abort.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_abort_command.description`:
 
@@ -71,8 +74,9 @@ scsi_eh_reset
 
     call into ->eh_action to reset internal counters
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         scmd to run eh on.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_eh_reset.description`:
 
@@ -92,8 +96,9 @@ scsi_eh_scmd_add
 
     add scsi cmd to error handling.
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         scmd to run eh on.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_times_out`:
 
@@ -104,8 +109,9 @@ scsi_times_out
 
     Timeout function for normal scsi commands.
 
-    :param struct request \*req:
+    :param req:
         request that is timing out.
+    :type req: struct request \*
 
 .. _`scsi_times_out.notes`:
 
@@ -126,8 +132,9 @@ scsi_block_when_processing_errors
 
     Prevent cmds from being queued.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Device on which we are performing recovery.
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_block_when_processing_errors.description`:
 
@@ -153,11 +160,13 @@ scsi_eh_prt_fail_stats
 
     Log info on failures.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host being recovered.
+    :type shost: struct Scsi_Host \*
 
-    :param struct list_head \*work_q:
+    :param work_q:
         Queue of scsi cmds to process.
+    :type work_q: struct list_head \*
 
 .. _`scsi_report_sense`:
 
@@ -168,11 +177,13 @@ scsi_report_sense
 
     Examine scsi sense information and log messages for certain conditions, also issue uevents for some of them.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Device reporting the sense code
+    :type sdev: struct scsi_device \*
 
-    :param struct scsi_sense_hdr \*sshdr:
+    :param sshdr:
         sshdr to be examined
+    :type sshdr: struct scsi_sense_hdr \*
 
 .. _`scsi_check_sense`:
 
@@ -183,8 +194,9 @@ scsi_check_sense
 
     Examine scsi cmd sense
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         Cmd to have sense checked.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_check_sense.return-value`:
 
@@ -210,8 +222,9 @@ scsi_eh_completed_normally
 
     Disposition a eh cmd on return from LLD.
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI cmd to examine.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_eh_completed_normally.notes`:
 
@@ -232,8 +245,9 @@ scsi_eh_done
 
     Completion function for error handling.
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         Cmd that is done.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_try_host_reset`:
 
@@ -244,8 +258,9 @@ scsi_try_host_reset
 
     ask host adapter to reset itself
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI cmd to send host reset.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_try_bus_reset`:
 
@@ -256,8 +271,9 @@ scsi_try_bus_reset
 
     ask host to perform a bus reset
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI cmd to send bus reset.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_try_target_reset`:
 
@@ -268,8 +284,9 @@ scsi_try_target_reset
 
     Ask host to perform a target reset
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI cmd used to send a target reset
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_try_target_reset.notes`:
 
@@ -290,8 +307,9 @@ scsi_try_bus_device_reset
 
     Ask host to perform a BDR on a dev
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI cmd used to send BDR
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_try_bus_device_reset.notes`:
 
@@ -312,11 +330,13 @@ scsi_try_to_abort_cmd
 
     Ask host to abort a SCSI command
 
-    :param struct scsi_host_template \*hostt:
+    :param hostt:
         SCSI driver host template
+    :type hostt: struct scsi_host_template \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI cmd used to send a target reset
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_try_to_abort_cmd.return-value`:
 
@@ -347,20 +367,25 @@ scsi_eh_prep_cmnd
 
     Save a scsi command info as part of error recovery
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command structure to hijack
+    :type scmd: struct scsi_cmnd \*
 
-    :param struct scsi_eh_save \*ses:
+    :param ses:
         structure to save restore information
+    :type ses: struct scsi_eh_save \*
 
-    :param unsigned char \*cmnd:
+    :param cmnd:
         CDB to send. Can be NULL if no new cmnd is needed
+    :type cmnd: unsigned char \*
 
-    :param int cmnd_size:
+    :param cmnd_size:
         size in bytes of \ ``cmnd``\  (must be <= BLK_MAX_CDB)
+    :type cmnd_size: int
 
-    :param unsigned sense_bytes:
+    :param sense_bytes:
         size of sense data to copy. or 0 (if != 0 \ ``cmnd``\  is ignored)
+    :type sense_bytes: unsigned
 
 .. _`scsi_eh_prep_cmnd.description`:
 
@@ -371,22 +396,24 @@ This function is used to save a scsi command information before re-execution
 as part of the error recovery process.  If \ ``sense_bytes``\  is 0 the command
 sent must be one that does not transfer any data.  If \ ``sense_bytes``\  != 0
 \ ``cmnd``\  is ignored and this functions sets up a REQUEST_SENSE command
-and cmnd buffers to read \ ``sense_bytes``\  into \ ``scmd``\ ->sense_buffer.
+and cmnd buffers to read \ ``sense_bytes``\  into \ ``scmd->sense_buffer``\ .
 
 .. _`scsi_eh_restore_cmnd`:
 
 scsi_eh_restore_cmnd
 ====================
 
-.. c:function:: void scsi_eh_restore_cmnd(struct scsi_cmnd*scmd, struct scsi_eh_save *ses)
+.. c:function:: void scsi_eh_restore_cmnd(struct scsi_cmnd* scmd, struct scsi_eh_save *ses)
 
     Restore a scsi command info as part of error recovery
 
-    :param struct scsi_cmnd\*scmd:
+    :param scmd:
         SCSI command structure to restore
+    :type scmd: struct scsi_cmnd\*
 
-    :param struct scsi_eh_save \*ses:
+    :param ses:
         saved information from a coresponding call to scsi_eh_prep_cmnd
+    :type ses: struct scsi_eh_save \*
 
 .. _`scsi_eh_restore_cmnd.description`:
 
@@ -404,20 +431,25 @@ scsi_send_eh_cmnd
 
     submit a scsi command as part of error recovery
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command structure to hijack
+    :type scmd: struct scsi_cmnd \*
 
-    :param unsigned char \*cmnd:
+    :param cmnd:
         CDB to send
+    :type cmnd: unsigned char \*
 
-    :param int cmnd_size:
+    :param cmnd_size:
         size in bytes of \ ``cmnd``\ 
+    :type cmnd_size: int
 
-    :param int timeout:
+    :param timeout:
         timeout for this request
+    :type timeout: int
 
-    :param unsigned sense_bytes:
+    :param sense_bytes:
         size of sense data to copy or 0
+    :type sense_bytes: unsigned
 
 .. _`scsi_send_eh_cmnd.description`:
 
@@ -443,8 +475,9 @@ scsi_request_sense
 
     Request sense data from a particular target.
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI cmd for request sense.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_request_sense.notes`:
 
@@ -464,11 +497,13 @@ scsi_eh_finish_cmd
 
     Handle a cmd that eh is finished with.
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         Original SCSI cmd that eh has finished.
+    :type scmd: struct scsi_cmnd \*
 
-    :param struct list_head \*done_q:
+    :param done_q:
         Queue for processed commands.
+    :type done_q: struct list_head \*
 
 .. _`scsi_eh_finish_cmd.notes`:
 
@@ -490,11 +525,13 @@ scsi_eh_get_sense
 
     Get device sense data.
 
-    :param struct list_head \*work_q:
+    :param work_q:
         Queue of commands to process.
+    :type work_q: struct list_head \*
 
-    :param struct list_head \*done_q:
+    :param done_q:
         Queue of processed commands.
+    :type done_q: struct list_head \*
 
 .. _`scsi_eh_get_sense.description`:
 
@@ -528,8 +565,9 @@ scsi_eh_tur
 
     Send TUR to device.
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         \ :c:type:`struct scsi_cmnd <scsi_cmnd>`\  to send TUR
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_eh_tur.return-value`:
 
@@ -547,17 +585,21 @@ scsi_eh_test_devices
 
     check if devices are responding from error recovery.
 
-    :param struct list_head \*cmd_list:
+    :param cmd_list:
         scsi commands in error recovery.
+    :type cmd_list: struct list_head \*
 
-    :param struct list_head \*work_q:
+    :param work_q:
         queue for commands which still need more error recovery
+    :type work_q: struct list_head \*
 
-    :param struct list_head \*done_q:
+    :param done_q:
         queue for commands which are finished
+    :type done_q: struct list_head \*
 
-    :param int try_stu:
+    :param try_stu:
         boolean on if a STU command should be tried in addition to TUR.
+    :type try_stu: int
 
 .. _`scsi_eh_test_devices.decription`:
 
@@ -578,8 +620,9 @@ scsi_eh_try_stu
 
     Send START_UNIT to device.
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         \ :c:type:`struct scsi_cmnd <scsi_cmnd>`\  to send START_UNIT
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_eh_try_stu.return-value`:
 
@@ -597,14 +640,17 @@ scsi_eh_bus_device_reset
 
     send bdr if needed
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host being recovered.
+    :type shost: struct Scsi_Host \*
 
-    :param struct list_head \*work_q:
+    :param work_q:
         \ :c:type:`struct list_head <list_head>`\  for pending commands.
+    :type work_q: struct list_head \*
 
-    :param struct list_head \*done_q:
+    :param done_q:
         \ :c:type:`struct list_head <list_head>`\  for processed commands.
+    :type done_q: struct list_head \*
 
 .. _`scsi_eh_bus_device_reset.notes`:
 
@@ -625,14 +671,17 @@ scsi_eh_target_reset
 
     send target reset if needed
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host being recovered.
+    :type shost: struct Scsi_Host \*
 
-    :param struct list_head \*work_q:
+    :param work_q:
         \ :c:type:`struct list_head <list_head>`\  for pending commands.
+    :type work_q: struct list_head \*
 
-    :param struct list_head \*done_q:
+    :param done_q:
         \ :c:type:`struct list_head <list_head>`\  for processed commands.
+    :type done_q: struct list_head \*
 
 .. _`scsi_eh_target_reset.notes`:
 
@@ -650,14 +699,17 @@ scsi_eh_bus_reset
 
     send a bus reset
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         \ :c:type:`struct scsi <scsi>`\  host being recovered.
+    :type shost: struct Scsi_Host \*
 
-    :param struct list_head \*work_q:
+    :param work_q:
         \ :c:type:`struct list_head <list_head>`\  for pending commands.
+    :type work_q: struct list_head \*
 
-    :param struct list_head \*done_q:
+    :param done_q:
         \ :c:type:`struct list_head <list_head>`\  for processed commands.
+    :type done_q: struct list_head \*
 
 .. _`scsi_eh_host_reset`:
 
@@ -668,14 +720,17 @@ scsi_eh_host_reset
 
     send a host reset
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         host to be reset.
+    :type shost: struct Scsi_Host \*
 
-    :param struct list_head \*work_q:
+    :param work_q:
         \ :c:type:`struct list_head <list_head>`\  for pending commands.
+    :type work_q: struct list_head \*
 
-    :param struct list_head \*done_q:
+    :param done_q:
         \ :c:type:`struct list_head <list_head>`\  for processed commands.
+    :type done_q: struct list_head \*
 
 .. _`scsi_eh_offline_sdevs`:
 
@@ -686,11 +741,13 @@ scsi_eh_offline_sdevs
 
     offline scsi devices that fail to recover
 
-    :param struct list_head \*work_q:
+    :param work_q:
         \ :c:type:`struct list_head <list_head>`\  for pending commands.
+    :type work_q: struct list_head \*
 
-    :param struct list_head \*done_q:
+    :param done_q:
         \ :c:type:`struct list_head <list_head>`\  for processed commands.
+    :type done_q: struct list_head \*
 
 .. _`scsi_noretry_cmd`:
 
@@ -701,8 +758,9 @@ scsi_noretry_cmd
 
     determine if command should be failed fast
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI cmd to examine.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_decide_disposition`:
 
@@ -713,8 +771,9 @@ scsi_decide_disposition
 
     Disposition a cmd on return from LLD.
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI cmd to examine.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsi_decide_disposition.notes`:
 
@@ -739,8 +798,9 @@ scsi_eh_lock_door
 
     Prevent medium removal for the specified device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to prevent medium removal
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_eh_lock_door.locking`:
 
@@ -766,8 +826,9 @@ scsi_restart_operations
 
     restart io operations to the specified host.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Host we are restarting.
+    :type shost: struct Scsi_Host \*
 
 .. _`scsi_restart_operations.notes`:
 
@@ -786,14 +847,17 @@ scsi_eh_ready_devs
 
     check device ready state and recover if not.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         host to be recovered.
+    :type shost: struct Scsi_Host \*
 
-    :param struct list_head \*work_q:
+    :param work_q:
         \ :c:type:`struct list_head <list_head>`\  for pending commands.
+    :type work_q: struct list_head \*
 
-    :param struct list_head \*done_q:
+    :param done_q:
         \ :c:type:`struct list_head <list_head>`\  for processed commands.
+    :type done_q: struct list_head \*
 
 .. _`scsi_eh_flush_done_q`:
 
@@ -804,8 +868,9 @@ scsi_eh_flush_done_q
 
     finish processed commands or retry them.
 
-    :param struct list_head \*done_q:
+    :param done_q:
         list_head of processed commands.
+    :type done_q: struct list_head \*
 
 .. _`scsi_unjam_host`:
 
@@ -816,8 +881,9 @@ scsi_unjam_host
 
     Attempt to fix a host which has a cmd that failed.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Host to unjam.
+    :type shost: struct Scsi_Host \*
 
 .. _`scsi_unjam_host.notes`:
 
@@ -851,8 +917,9 @@ scsi_error_handler
 
     SCSI error handler thread
 
-    :param void \*data:
+    :param data:
         Host for which we are running.
+    :type data: void \*
 
 .. _`scsi_error_handler.notes`:
 
@@ -871,11 +938,13 @@ scsi_ioctl_reset
 
     explicitly reset a host/bus/target/device
 
-    :param struct scsi_device \*dev:
+    :param dev:
         scsi_device to operate on
+    :type dev: struct scsi_device \*
 
-    :param int __user \*arg:
+    :param arg:
         reset type (see sg.h)
+    :type arg: int __user \*
 
 .. _`scsi_get_sense_info_fld`:
 
@@ -886,15 +955,18 @@ scsi_get_sense_info_fld
 
     get information field from sense data (either fixed or descriptor format)
 
-    :param const u8 \*sense_buffer:
+    :param sense_buffer:
         byte array of sense data
+    :type sense_buffer: const u8 \*
 
-    :param int sb_len:
+    :param sb_len:
         number of valid bytes in sense_buffer
+    :type sb_len: int
 
-    :param u64 \*info_out:
+    :param info_out:
         pointer to 64 integer where 8 or 4 byte information
         field will be placed if found.
+    :type info_out: u64 \*
 
 .. _`scsi_get_sense_info_fld.return-value`:
 

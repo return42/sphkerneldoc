@@ -10,8 +10,9 @@ build_cpu_to_node_map
 
     setup cpu to node and node to cpumask arrays
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`build_cpu_to_node_map.description`:
 

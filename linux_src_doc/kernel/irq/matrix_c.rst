@@ -10,15 +10,18 @@ irq_alloc_matrix
 
     Allocate a irq_matrix structure and initialize it
 
-    :param unsigned int matrix_bits:
+    :param matrix_bits:
         Number of matrix bits must be <= IRQ_MATRIX_BITS
+    :type matrix_bits: unsigned int
 
-    :param unsigned int alloc_start:
+    :param alloc_start:
         From which bit the allocation search starts
+    :type alloc_start: unsigned int
 
-    :param unsigned int alloc_end:
+    :param alloc_end:
         At which bit the allocation search ends, i.e first
         invalid bit
+    :type alloc_end: unsigned int
 
 .. _`irq_matrix_online`:
 
@@ -29,8 +32,9 @@ irq_matrix_online
 
     Bring the local CPU matrix online
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
 .. _`irq_matrix_offline`:
 
@@ -41,8 +45,9 @@ irq_matrix_offline
 
     Bring the local CPU matrix offline
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
 .. _`irq_matrix_assign_system`:
 
@@ -53,15 +58,18 @@ irq_matrix_assign_system
 
     Assign system wide entry in the matrix
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
-    :param unsigned int bit:
+    :param bit:
         Which bit to reserve
+    :type bit: unsigned int
 
-    :param bool replace:
+    :param replace:
         Replace an already allocated vector with a system
         vector at the same bit position.
+    :type replace: bool
 
 .. _`irq_matrix_assign_system.description`:
 
@@ -81,11 +89,13 @@ irq_matrix_reserve_managed
 
     Reserve a managed interrupt in a CPU map
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
-    :param const struct cpumask \*msk:
+    :param msk:
         On which CPUs the bits should be reserved.
+    :type msk: const struct cpumask \*
 
 .. _`irq_matrix_reserve_managed.description`:
 
@@ -105,11 +115,13 @@ irq_matrix_remove_managed
 
     Remove managed interrupts in a CPU map
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
-    :param const struct cpumask \*msk:
+    :param msk:
         On which CPUs the bits should be removed
+    :type msk: const struct cpumask \*
 
 .. _`irq_matrix_remove_managed.description`:
 
@@ -128,15 +140,21 @@ but all what can be done at this point is warn about it.
 irq_matrix_alloc_managed
 ========================
 
-.. c:function:: int irq_matrix_alloc_managed(struct irq_matrix *m, unsigned int cpu)
+.. c:function:: int irq_matrix_alloc_managed(struct irq_matrix *m, const struct cpumask *msk, unsigned int *mapped_cpu)
 
     Allocate a managed interrupt in a CPU map
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
-    :param unsigned int cpu:
-        On which CPU the interrupt should be allocated
+    :param msk:
+        *undescribed*
+    :type msk: const struct cpumask \*
+
+    :param mapped_cpu:
+        *undescribed*
+    :type mapped_cpu: unsigned int \*
 
 .. _`irq_matrix_assign`:
 
@@ -147,11 +165,13 @@ irq_matrix_assign
 
     Assign a preallocated interrupt in the local CPU map
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
-    :param unsigned int bit:
+    :param bit:
         Which bit to mark
+    :type bit: unsigned int
 
 .. _`irq_matrix_assign.description`:
 
@@ -169,8 +189,9 @@ irq_matrix_reserve
 
     Reserve interrupts
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
 .. _`irq_matrix_reserve.description`:
 
@@ -191,8 +212,9 @@ irq_matrix_remove_reserved
 
     Remove interrupt reservation
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
 .. _`irq_matrix_remove_reserved.description`:
 
@@ -213,17 +235,21 @@ irq_matrix_alloc
 
     Allocate a regular interrupt in a CPU map
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
-    :param const struct cpumask \*msk:
+    :param msk:
         Which CPUs to search in
+    :type msk: const struct cpumask \*
 
-    :param bool reserved:
+    :param reserved:
         Allocate previously reserved interrupts
+    :type reserved: bool
 
-    :param unsigned int \*mapped_cpu:
+    :param mapped_cpu:
         Pointer to store the CPU for which the irq was allocated
+    :type mapped_cpu: unsigned int \*
 
 .. _`irq_matrix_free`:
 
@@ -234,18 +260,22 @@ irq_matrix_free
 
     Free allocated interrupt in the matrix
 
-    :param struct irq_matrix \*m:
+    :param m:
         Matrix pointer
+    :type m: struct irq_matrix \*
 
-    :param unsigned int cpu:
+    :param cpu:
         Which CPU map needs be updated
+    :type cpu: unsigned int
 
-    :param unsigned int bit:
+    :param bit:
         The bit to remove
+    :type bit: unsigned int
 
-    :param bool managed:
+    :param managed:
         If true, the interrupt is managed and not accounted
         as available.
+    :type managed: bool
 
 .. _`irq_matrix_available`:
 
@@ -256,12 +286,14 @@ irq_matrix_available
 
     Get the number of globally available irqs
 
-    :param struct irq_matrix \*m:
+    :param m:
         Pointer to the matrix to query
+    :type m: struct irq_matrix \*
 
-    :param bool cpudown:
+    :param cpudown:
         If true, the local CPU is about to go down, adjust
         the number of available irqs accordingly
+    :type cpudown: bool
 
 .. _`irq_matrix_reserved`:
 
@@ -272,8 +304,9 @@ irq_matrix_reserved
 
     Get the number of globally reserved irqs
 
-    :param struct irq_matrix \*m:
+    :param m:
         Pointer to the matrix to query
+    :type m: struct irq_matrix \*
 
 .. _`irq_matrix_allocated`:
 
@@ -284,8 +317,9 @@ irq_matrix_allocated
 
     Get the number of allocated irqs on the local cpu
 
-    :param struct irq_matrix \*m:
+    :param m:
         Pointer to the matrix to search
+    :type m: struct irq_matrix \*
 
 .. _`irq_matrix_allocated.description`:
 
@@ -303,14 +337,17 @@ irq_matrix_debug_show
 
     Show detailed allocation information
 
-    :param struct seq_file \*sf:
+    :param sf:
         Pointer to the seq_file to print to
+    :type sf: struct seq_file \*
 
-    :param struct irq_matrix \*m:
+    :param m:
         Pointer to the matrix allocator
+    :type m: struct irq_matrix \*
 
-    :param int ind:
+    :param ind:
         Indentation for the print format
+    :type ind: int
 
 .. _`irq_matrix_debug_show.description`:
 

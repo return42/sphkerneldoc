@@ -44,10 +44,10 @@ Members
 -------
 
 dev
-    *undescribed*
+    device associated with this edge
 
 name
-    *undescribed*
+    name of this edge
 
 of_node
     of_node handle for information related to this edge
@@ -89,7 +89,7 @@ smem_available
     last available amount of smem triggering a channel scan
 
 new_channel_event
-    *undescribed*
+    wait queue for new channel events
 
 scan_work
     work item for discovering new channels
@@ -144,10 +144,10 @@ edge
     qcom_smd_edge this channel is living on
 
 qsept
-    *undescribed*
+    reference to a associated smd endpoint
 
 registered
-    *undescribed*
+    flag to indicate if the channel is registered
 
 name
     name of the channel
@@ -159,7 +159,7 @@ remote_state
     remote state of the channel
 
 state_change_event
-    *undescribed*
+    state change event
 
 info
     byte aligned outgoing/incoming channel info
@@ -192,7 +192,7 @@ pkt_size
     size of the currently handled packet
 
 drvdata
-    *undescribed*
+    driver private data
 
 list
     lite entry for \ ``channels``\  in qcom_smd_edge
@@ -246,17 +246,21 @@ ref_count
 
     write data to smd channel
 
-    :param struct qcom_smd_channel \*channel:
+    :param channel:
         channel handle
+    :type channel: struct qcom_smd_channel \*
 
-    :param const void \*data:
+    :param data:
         buffer of data to write
+    :type data: const void \*
 
-    :param int len:
+    :param len:
         number of bytes to write
+    :type len: int
 
-    :param bool wait:
-        *undescribed*
+    :param wait:
+        flag to indicate if write has ca wait
+    :type wait: bool
 
 .. _`__qcom_smd_send.description`:
 
@@ -277,11 +281,13 @@ qcom_smd_register_edge
 
     register an edge based on an device_node
 
-    :param struct device \*parent:
+    :param parent:
         parent device for the edge
+    :type parent: struct device \*
 
-    :param struct device_node \*node:
+    :param node:
         device_node describing the edge
+    :type node: struct device_node \*
 
 .. _`qcom_smd_register_edge.description`:
 
@@ -299,8 +305,9 @@ qcom_smd_unregister_edge
 
     release an edge and its children
 
-    :param struct qcom_smd_edge \*edge:
+    :param edge:
         edge reference acquired from qcom_smd_register_edge
+    :type edge: struct qcom_smd_edge \*
 
 .. This file was automatic generated / don't edit.
 

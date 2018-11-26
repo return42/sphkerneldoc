@@ -10,14 +10,17 @@ obj_to_location
 
     get (<page>, <obj_idx>) from encoded object value
 
-    :param unsigned long obj:
+    :param obj:
         the encoded object value
+    :type obj: unsigned long
 
-    :param struct page \*\*page:
+    :param page:
         page object resides in zspage
+    :type page: struct page \*\*
 
-    :param unsigned int \*obj_idx:
+    :param obj_idx:
         object index
+    :type obj_idx: unsigned int \*
 
 .. _`location_to_obj`:
 
@@ -28,11 +31,13 @@ location_to_obj
 
     get obj value encoded from (<page>, <obj_idx>)
 
-    :param struct page \*page:
+    :param page:
         page object resides in zspage
+    :type page: struct page \*
 
-    :param unsigned int obj_idx:
+    :param obj_idx:
         object index
+    :type obj_idx: unsigned int
 
 .. _`zs_map_object`:
 
@@ -43,14 +48,17 @@ zs_map_object
 
     get address of allocated object from handle.
 
-    :param struct zs_pool \*pool:
+    :param pool:
         pool from which the object was allocated
+    :type pool: struct zs_pool \*
 
-    :param unsigned long handle:
+    :param handle:
         handle returned from zs_malloc
+    :type handle: unsigned long
 
-    :param enum zs_mapmode mm:
+    :param mm:
         maping mode to use
+    :type mm: enum zs_mapmode
 
 .. _`zs_map_object.description`:
 
@@ -75,8 +83,9 @@ zs_huge_class_size
 
     Returns the size (in bytes) of the first huge zsmalloc \ :c:type:`struct size_class <size_class>`\ .
 
-    :param struct zs_pool \*pool:
+    :param pool:
         zsmalloc pool to use
+    :type pool: struct zs_pool \*
 
 .. _`zs_huge_class_size.description`:
 
@@ -110,14 +119,17 @@ zs_malloc
 
     Allocate block of given size from pool.
 
-    :param struct zs_pool \*pool:
+    :param pool:
         pool to allocate from
+    :type pool: struct zs_pool \*
 
-    :param size_t size:
+    :param size:
         size of block to allocate
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp flags when allocating object
+    :type gfp: gfp_t
 
 .. _`zs_malloc.description`:
 
@@ -137,8 +149,9 @@ zs_create_pool
 
     Creates an allocation pool to work from.
 
-    :param const char \*name:
+    :param name:
         pool name to be created
+    :type name: const char \*
 
 .. _`zs_create_pool.description`:
 

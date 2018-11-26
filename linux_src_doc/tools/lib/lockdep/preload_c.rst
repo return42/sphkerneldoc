@@ -55,8 +55,9 @@ name
 
     find or create a lock instance
 
-    :param void \*lock:
+    :param lock:
         pointer to a pthread lock function
+    :type lock: void \*
 
 .. _`__get_lock.description`:
 

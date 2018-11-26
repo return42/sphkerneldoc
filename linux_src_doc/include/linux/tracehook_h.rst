@@ -10,8 +10,9 @@ tracehook_report_syscall_entry
 
     task is about to attempt a system call
 
-    :param struct pt_regs \*regs:
+    :param regs:
         user register state of current task
+    :type regs: struct pt_regs \*
 
 .. _`tracehook_report_syscall_entry.description`:
 
@@ -42,11 +43,13 @@ tracehook_report_syscall_exit
 
     task has just finished a system call
 
-    :param struct pt_regs \*regs:
+    :param regs:
         user register state of current task
+    :type regs: struct pt_regs \*
 
-    :param int step:
+    :param step:
         nonzero if simulating single-step or block-step
+    :type step: int
 
 .. _`tracehook_report_syscall_exit.description`:
 
@@ -74,8 +77,9 @@ tracehook_signal_handler
 
     signal handler setup is complete
 
-    :param int stepping:
+    :param stepping:
         nonzero if debugger single-step or block-step in use
+    :type stepping: int
 
 .. _`tracehook_signal_handler.description`:
 
@@ -98,8 +102,9 @@ set_notify_resume
 
     cause \ :c:func:`tracehook_notify_resume`\  to be called
 
-    :param struct task_struct \*task:
+    :param task:
         task that will call \ :c:func:`tracehook_notify_resume`\ 
+    :type task: struct task_struct \*
 
 .. _`set_notify_resume.description`:
 
@@ -120,8 +125,9 @@ tracehook_notify_resume
 
     report when about to return to user mode
 
-    :param struct pt_regs \*regs:
+    :param regs:
         user-mode registers of \ ``current``\  task
+    :type regs: struct pt_regs \*
 
 .. _`tracehook_notify_resume.description`:
 

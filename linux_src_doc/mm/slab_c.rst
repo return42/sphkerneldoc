@@ -10,11 +10,13 @@ slab_destroy
 
     destroy and release all objects in a slab
 
-    :param struct kmem_cache \*cachep:
+    :param cachep:
         cache pointer being destroyed
+    :type cachep: struct kmem_cache \*
 
-    :param struct page \*page:
+    :param page:
         page pointer being destroyed
+    :type page: struct page \*
 
 .. _`slab_destroy.description`:
 
@@ -34,14 +36,17 @@ calculate_slab_order
 
     calculate size (page order) of slabs
 
-    :param struct kmem_cache \*cachep:
+    :param cachep:
         pointer to the cache that is being created
+    :type cachep: struct kmem_cache \*
 
-    :param size_t size:
+    :param size:
         size of objects to be created in this cache.
+    :type size: size_t
 
-    :param slab_flags_t flags:
+    :param flags:
         slab allocation flags
+    :type flags: slab_flags_t
 
 .. _`calculate_slab_order.description`:
 
@@ -63,11 +68,13 @@ __kmem_cache_create
 
     Create a cache.
 
-    :param struct kmem_cache \*cachep:
+    :param cachep:
         cache management descriptor
+    :type cachep: struct kmem_cache \*
 
-    :param slab_flags_t flags:
+    :param flags:
         SLAB flags
+    :type flags: slab_flags_t
 
 .. _`__kmem_cache_create.description`:
 
@@ -99,11 +106,13 @@ kmem_cache_alloc
 
     Allocate an object
 
-    :param struct kmem_cache \*cachep:
+    :param cachep:
         The cache to allocate from.
+    :type cachep: struct kmem_cache \*
 
-    :param gfp_t flags:
+    :param flags:
         See \ :c:func:`kmalloc`\ .
+    :type flags: gfp_t
 
 .. _`kmem_cache_alloc.description`:
 
@@ -122,14 +131,17 @@ kmem_cache_alloc_node
 
     Allocate an object on the specified node
 
-    :param struct kmem_cache \*cachep:
+    :param cachep:
         The cache to allocate from.
+    :type cachep: struct kmem_cache \*
 
-    :param gfp_t flags:
+    :param flags:
         See \ :c:func:`kmalloc`\ .
+    :type flags: gfp_t
 
-    :param int nodeid:
+    :param nodeid:
         node number of the target node.
+    :type nodeid: int
 
 .. _`kmem_cache_alloc_node.description`:
 
@@ -150,14 +162,17 @@ __do_kmalloc
 
     allocate memory
 
-    :param size_t size:
+    :param size:
         how many bytes of memory are required.
+    :type size: size_t
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate (see kmalloc).
+    :type flags: gfp_t
 
-    :param unsigned long caller:
+    :param caller:
         function caller for debug tracking of the caller
+    :type caller: unsigned long
 
 .. _`kmem_cache_free`:
 
@@ -168,11 +183,13 @@ kmem_cache_free
 
     Deallocate an object
 
-    :param struct kmem_cache \*cachep:
+    :param cachep:
         The cache the allocation was from.
+    :type cachep: struct kmem_cache \*
 
-    :param void \*objp:
+    :param objp:
         The previously allocated object.
+    :type objp: void \*
 
 .. _`kmem_cache_free.description`:
 
@@ -191,8 +208,9 @@ kfree
 
     free previously allocated memory
 
-    :param const void \*objp:
+    :param objp:
         pointer returned by kmalloc.
+    :type objp: const void \*
 
 .. _`kfree.description`:
 
@@ -213,8 +231,9 @@ cache_reap
 
     Reclaim memory from caches.
 
-    :param struct work_struct \*w:
+    :param w:
         work descriptor
+    :type w: struct work_struct \*
 
 .. _`cache_reap.description`:
 
@@ -243,17 +262,21 @@ slabinfo_write
 
     Tuning for the slab allocator
 
-    :param struct file \*file:
+    :param file:
         unused
+    :type file: struct file \*
 
-    :param const char __user \*buffer:
+    :param buffer:
         user buffer
+    :type buffer: const char __user \*
 
-    :param size_t count:
+    :param count:
         data length
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         unused
+    :type ppos: loff_t \*
 
 .. _`ksize`:
 
@@ -264,8 +287,9 @@ ksize
 
     get the actual amount of memory allocated for a given object
 
-    :param const void \*objp:
+    :param objp:
         Pointer to the object
+    :type objp: const void \*
 
 .. _`ksize.description`:
 

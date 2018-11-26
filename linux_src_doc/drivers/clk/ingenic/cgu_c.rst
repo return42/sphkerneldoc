@@ -10,11 +10,13 @@ ingenic_cgu_gate_get
 
     get the value of clock gate register bit
 
-    :param struct ingenic_cgu \*cgu:
+    :param cgu:
         reference to the CGU whose registers should be read
+    :type cgu: struct ingenic_cgu \*
 
-    :param const struct ingenic_cgu_gate_info \*info:
+    :param info:
         info struct describing the gate bit
+    :type info: const struct ingenic_cgu_gate_info \*
 
 .. _`ingenic_cgu_gate_get.description`:
 
@@ -40,14 +42,17 @@ ingenic_cgu_gate_set
 
     set the value of clock gate register bit
 
-    :param struct ingenic_cgu \*cgu:
+    :param cgu:
         reference to the CGU whose registers should be modified
+    :type cgu: struct ingenic_cgu \*
 
-    :param const struct ingenic_cgu_gate_info \*info:
+    :param info:
         info struct describing the gate bit
+    :type info: const struct ingenic_cgu_gate_info \*
 
-    :param bool val:
+    :param val:
         non-zero to gate a clock, otherwise zero
+    :type val: bool
 
 .. _`ingenic_cgu_gate_set.description`:
 

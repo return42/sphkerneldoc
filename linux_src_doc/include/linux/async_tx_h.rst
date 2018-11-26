@@ -54,8 +54,9 @@ async_tx_issue_pending
 
     send pending descriptor to the hardware channel
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         descriptor handle to retrieve hardware context
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`async_tx_issue_pending.note`:
 
@@ -75,8 +76,9 @@ async_tx_sync_epilog
 
     actions to take if an operation is run synchronously
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         *undescribed*
+    :type submit: struct async_submit_ctl \*
 
 .. This file was automatic generated / don't edit.
 

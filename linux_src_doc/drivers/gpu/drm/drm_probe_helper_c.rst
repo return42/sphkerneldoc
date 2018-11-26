@@ -30,8 +30,9 @@ drm_kms_helper_poll_enable
 
     re-enable output polling.
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device
+    :type dev: struct drm_device \*
 
 .. _`drm_kms_helper_poll_enable.description`:
 
@@ -58,14 +59,17 @@ drm_helper_probe_detect
 
     probe connector status
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to probe
+    :type connector: struct drm_connector \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         acquire_ctx, or NULL to let this function handle locking.
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
-    :param bool force:
+    :param force:
         Whether destructive probe operations should be performed.
+    :type force: bool
 
 .. _`drm_helper_probe_detect.description`:
 
@@ -85,14 +89,17 @@ drm_helper_probe_single_connector_modes
 
     get complete set of display modes
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to probe
+    :type connector: struct drm_connector \*
 
-    :param uint32_t maxX:
+    :param maxX:
         max width for modes
+    :type maxX: uint32_t
 
-    :param uint32_t maxY:
+    :param maxY:
         max height for modes
+    :type maxY: uint32_t
 
 .. _`drm_helper_probe_single_connector_modes.description`:
 
@@ -127,7 +134,7 @@ The basic procedure is as follows
    using the VESA GTF/CVT formulas.
 
 3. Modes are moved from the probed_modes list to the modes list. Potential
-   duplicates are merged together (see \ :c:func:`drm_mode_connector_list_update`\ ).
+   duplicates are merged together (see \ :c:func:`drm_connector_list_update`\ ).
    After this step the probed_modes list will be empty again.
 
 4. Any non-stale mode on the modes list then undergoes validation
@@ -164,8 +171,9 @@ drm_kms_helper_hotplug_event
 
     fire off KMS hotplug events
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device whose connector state changed
+    :type dev: struct drm_device \*
 
 .. _`drm_kms_helper_hotplug_event.description`:
 
@@ -193,8 +201,9 @@ drm_kms_helper_is_poll_worker
 
     is \ ``current``\  task an output poll worker?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`drm_kms_helper_is_poll_worker.description`:
 
@@ -219,8 +228,9 @@ drm_kms_helper_poll_disable
 
     disable output polling
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device
+    :type dev: struct drm_device \*
 
 .. _`drm_kms_helper_poll_disable.description`:
 
@@ -246,8 +256,9 @@ drm_kms_helper_poll_init
 
     initialize and enable output polling
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device
+    :type dev: struct drm_device \*
 
 .. _`drm_kms_helper_poll_init.description`:
 
@@ -278,8 +289,9 @@ drm_kms_helper_poll_fini
 
     disable output polling and clean it up
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device
+    :type dev: struct drm_device \*
 
 .. _`drm_helper_hpd_irq_event`:
 
@@ -290,8 +302,9 @@ drm_helper_hpd_irq_event
 
     hotplug processing
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device
+    :type dev: struct drm_device \*
 
 .. _`drm_helper_hpd_irq_event.description`:
 

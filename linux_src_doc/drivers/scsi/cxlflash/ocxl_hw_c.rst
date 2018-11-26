@@ -10,8 +10,9 @@ ocxlflash_psa_map
 
     map the process specific MMIO space
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context for which the mapping needs to be done.
+    :type ctx_cookie: void \*
 
 .. _`ocxlflash_psa_map.return`:
 
@@ -29,8 +30,9 @@ ocxlflash_psa_unmap
 
     unmap the process specific MMIO space
 
-    :param void __iomem \*addr:
+    :param addr:
         MMIO pointer to unmap.
+    :type addr: void __iomem \*
 
 .. _`ocxlflash_process_element`:
 
@@ -41,8 +43,9 @@ ocxlflash_process_element
 
     get process element of the adapter context
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context associated with the process element.
+    :type ctx_cookie: void \*
 
 .. _`ocxlflash_process_element.return`:
 
@@ -60,23 +63,29 @@ afu_map_irq
 
     map the interrupt of the adapter context
 
-    :param u64 flags:
+    :param flags:
         Flags.
+    :type flags: u64
 
-    :param struct ocxlflash_context \*ctx:
+    :param ctx:
         Adapter context.
+    :type ctx: struct ocxlflash_context \*
 
-    :param int num:
+    :param num:
         Per-context AFU interrupt number.
+    :type num: int
 
-    :param irq_handler_t handler:
+    :param handler:
         Interrupt handler to register.
+    :type handler: irq_handler_t
 
-    :param void \*cookie:
+    :param cookie:
         Interrupt handler private data.
+    :type cookie: void \*
 
-    :param char \*name:
+    :param name:
         Name of the interrupt.
+    :type name: char \*
 
 .. _`afu_map_irq.return`:
 
@@ -94,20 +103,25 @@ ocxlflash_map_afu_irq
 
     map the interrupt of the adapter context
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context.
+    :type ctx_cookie: void \*
 
-    :param int num:
+    :param num:
         Per-context AFU interrupt number.
+    :type num: int
 
-    :param irq_handler_t handler:
+    :param handler:
         Interrupt handler to register.
+    :type handler: irq_handler_t
 
-    :param void \*cookie:
+    :param cookie:
         Interrupt handler private data.
+    :type cookie: void \*
 
-    :param char \*name:
+    :param name:
         Name of the interrupt.
+    :type name: char \*
 
 .. _`ocxlflash_map_afu_irq.return`:
 
@@ -125,17 +139,21 @@ afu_unmap_irq
 
     unmap the interrupt
 
-    :param u64 flags:
+    :param flags:
         Flags.
+    :type flags: u64
 
-    :param struct ocxlflash_context \*ctx:
+    :param ctx:
         Adapter context.
+    :type ctx: struct ocxlflash_context \*
 
-    :param int num:
+    :param num:
         Per-context AFU interrupt number.
+    :type num: int
 
-    :param void \*cookie:
+    :param cookie:
         Interrupt handler private data.
+    :type cookie: void \*
 
 .. _`ocxlflash_unmap_afu_irq`:
 
@@ -146,14 +164,17 @@ ocxlflash_unmap_afu_irq
 
     unmap the interrupt
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context.
+    :type ctx_cookie: void \*
 
-    :param int num:
+    :param num:
         Per-context AFU interrupt number.
+    :type num: int
 
-    :param void \*cookie:
+    :param cookie:
         Interrupt handler private data.
+    :type cookie: void \*
 
 .. _`ocxlflash_get_irq_objhndl`:
 
@@ -164,11 +185,13 @@ ocxlflash_get_irq_objhndl
 
     get the object handle for an interrupt
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Context associated with the interrupt.
+    :type ctx_cookie: void \*
 
-    :param int irq:
+    :param irq:
         Interrupt number.
+    :type irq: int
 
 .. _`ocxlflash_get_irq_objhndl.return`:
 
@@ -186,14 +209,17 @@ ocxlflash_xsl_fault
 
     callback when translation error is triggered
 
-    :param void \*data:
+    :param data:
         Private data provided at callback registration, the context.
+    :type data: void \*
 
-    :param u64 addr:
+    :param addr:
         Address that triggered the error.
+    :type addr: u64
 
-    :param u64 dsisr:
+    :param dsisr:
         Value of dsisr register.
+    :type dsisr: u64
 
 .. _`start_context`:
 
@@ -204,8 +230,9 @@ start_context
 
     local routine to start a context
 
-    :param struct ocxlflash_context \*ctx:
+    :param ctx:
         Adapter context to be started.
+    :type ctx: struct ocxlflash_context \*
 
 .. _`start_context.description`:
 
@@ -230,8 +257,9 @@ ocxlflash_start_context
 
     start a kernel context
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context to be started.
+    :type ctx_cookie: void \*
 
 .. _`ocxlflash_start_context.return`:
 
@@ -249,8 +277,9 @@ ocxlflash_stop_context
 
     stop a context
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context to be stopped.
+    :type ctx_cookie: void \*
 
 .. _`ocxlflash_stop_context.return`:
 
@@ -268,8 +297,9 @@ ocxlflash_afu_reset
 
     reset the AFU
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context.
+    :type ctx_cookie: void \*
 
 .. _`ocxlflash_set_master`:
 
@@ -280,8 +310,9 @@ ocxlflash_set_master
 
     sets the context as master
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context to set as master.
+    :type ctx_cookie: void \*
 
 .. _`ocxlflash_get_context`:
 
@@ -292,11 +323,13 @@ ocxlflash_get_context
 
     obtains the context associated with the host
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device associated with the host.
+    :type pdev: struct pci_dev \*
 
-    :param void \*afu_cookie:
+    :param afu_cookie:
         Hardware AFU associated with the host.
+    :type afu_cookie: void \*
 
 .. _`ocxlflash_get_context.return`:
 
@@ -314,11 +347,13 @@ ocxlflash_dev_context_init
 
     allocate and initialize an adapter context
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device associated with the host.
+    :type pdev: struct pci_dev \*
 
-    :param void \*afu_cookie:
+    :param afu_cookie:
         Hardware AFU associated with the host.
+    :type afu_cookie: void \*
 
 .. _`ocxlflash_dev_context_init.return`:
 
@@ -336,8 +371,9 @@ ocxlflash_release_context
 
     releases an adapter context
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context to be released.
+    :type ctx_cookie: void \*
 
 .. _`ocxlflash_release_context.return`:
 
@@ -355,11 +391,13 @@ ocxlflash_perst_reloads_same_image
 
     sets the image reload policy
 
-    :param void \*afu_cookie:
+    :param afu_cookie:
         Hardware AFU associated with the host.
+    :type afu_cookie: void \*
 
-    :param bool image:
+    :param image:
         Whether to load the same image on PERST.
+    :type image: bool
 
 .. _`ocxlflash_read_adapter_vpd`:
 
@@ -370,14 +408,17 @@ ocxlflash_read_adapter_vpd
 
     reads the adapter VPD
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device associated with the host.
+    :type pdev: struct pci_dev \*
 
-    :param void \*buf:
+    :param buf:
         Buffer to get the VPD data.
+    :type buf: void \*
 
-    :param size_t count:
+    :param count:
         Size of buffer (maximum bytes that can be read).
+    :type count: size_t
 
 .. _`ocxlflash_read_adapter_vpd.return`:
 
@@ -395,8 +436,9 @@ free_afu_irqs
 
     internal service to free interrupts
 
-    :param struct ocxlflash_context \*ctx:
+    :param ctx:
         Adapter context.
+    :type ctx: struct ocxlflash_context \*
 
 .. _`alloc_afu_irqs`:
 
@@ -407,11 +449,13 @@ alloc_afu_irqs
 
     internal service to allocate interrupts
 
-    :param struct ocxlflash_context \*ctx:
+    :param ctx:
         Context associated with the request.
+    :type ctx: struct ocxlflash_context \*
 
-    :param int num:
+    :param num:
         Number of interrupts requested.
+    :type num: int
 
 .. _`alloc_afu_irqs.return`:
 
@@ -429,11 +473,13 @@ ocxlflash_allocate_afu_irqs
 
     allocates the requested number of interrupts
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Context associated with the request.
+    :type ctx_cookie: void \*
 
-    :param int num:
+    :param num:
         Number of interrupts requested.
+    :type num: int
 
 .. _`ocxlflash_allocate_afu_irqs.return`:
 
@@ -451,8 +497,9 @@ ocxlflash_free_afu_irqs
 
     frees the interrupts of an adapter context
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context.
+    :type ctx_cookie: void \*
 
 .. _`ocxlflash_unconfig_afu`:
 
@@ -463,8 +510,9 @@ ocxlflash_unconfig_afu
 
     unconfigure the AFU
 
-    :param struct ocxl_hw_afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct ocxl_hw_afu \*
 
 .. _`ocxlflash_destroy_afu`:
 
@@ -475,8 +523,9 @@ ocxlflash_destroy_afu
 
     destroy the AFU structure
 
-    :param void \*afu_cookie:
+    :param afu_cookie:
         AFU to be freed.
+    :type afu_cookie: void \*
 
 .. _`ocxlflash_config_fn`:
 
@@ -487,11 +536,13 @@ ocxlflash_config_fn
 
     configure the host function
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device associated with the host.
+    :type pdev: struct pci_dev \*
 
-    :param struct ocxl_hw_afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct ocxl_hw_afu \*
 
 .. _`ocxlflash_config_fn.return`:
 
@@ -509,11 +560,13 @@ ocxlflash_unconfig_fn
 
     unconfigure the host function
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device associated with the host.
+    :type pdev: struct pci_dev \*
 
-    :param struct ocxl_hw_afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct ocxl_hw_afu \*
 
 .. _`ocxlflash_map_mmio`:
 
@@ -524,8 +577,9 @@ ocxlflash_map_mmio
 
     map the AFU MMIO space
 
-    :param struct ocxl_hw_afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct ocxl_hw_afu \*
 
 .. _`ocxlflash_map_mmio.return`:
 
@@ -543,11 +597,13 @@ ocxlflash_config_afu
 
     configure the host AFU
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device associated with the host.
+    :type pdev: struct pci_dev \*
 
-    :param struct ocxl_hw_afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct ocxl_hw_afu \*
 
 .. _`ocxlflash_config_afu.description`:
 
@@ -572,8 +628,9 @@ ocxlflash_create_afu
 
     create the AFU for OCXL
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device associated with the host.
+    :type pdev: struct pci_dev \*
 
 .. _`ocxlflash_create_afu.return`:
 
@@ -591,8 +648,9 @@ ctx_event_pending
 
     check for any event pending on the context
 
-    :param struct ocxlflash_context \*ctx:
+    :param ctx:
         Context to be checked.
+    :type ctx: struct ocxlflash_context \*
 
 .. _`ctx_event_pending.return`:
 
@@ -610,11 +668,13 @@ afu_poll
 
     poll the AFU for events on the context
 
-    :param struct file \*file:
+    :param file:
         File associated with the adapter context.
+    :type file: struct file \*
 
-    :param struct poll_table_struct \*poll:
+    :param poll:
         Poll structure from the user.
+    :type poll: struct poll_table_struct \*
 
 .. _`afu_poll.return`:
 
@@ -632,17 +692,21 @@ afu_read
 
     perform a read on the context for any event
 
-    :param struct file \*file:
+    :param file:
         File associated with the adapter context.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         Buffer to receive the data.
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         Size of buffer (maximum bytes that can be read).
+    :type count: size_t
 
-    :param loff_t \*off:
+    :param off:
         Offset.
+    :type off: loff_t \*
 
 .. _`afu_read.return`:
 
@@ -660,11 +724,13 @@ afu_release
 
     release and free the context
 
-    :param struct inode \*inode:
+    :param inode:
         File inode pointer.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         File associated with the context.
+    :type file: struct file \*
 
 .. _`afu_release.return`:
 
@@ -678,12 +744,13 @@ Return
 ocxlflash_mmap_fault
 ====================
 
-.. c:function:: int ocxlflash_mmap_fault(struct vm_fault *vmf)
+.. c:function:: vm_fault_t ocxlflash_mmap_fault(struct vm_fault *vmf)
 
     mmap fault handler
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         VM fault associated with current fault.
+    :type vmf: struct vm_fault \*
 
 .. _`ocxlflash_mmap_fault.return`:
 
@@ -701,11 +768,13 @@ afu_mmap
 
     map the fault handler operations
 
-    :param struct file \*file:
+    :param file:
         File associated with the context.
+    :type file: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VM area associated with mapping.
+    :type vma: struct vm_area_struct \*
 
 .. _`afu_mmap.return`:
 
@@ -723,14 +792,17 @@ ocxlflash_get_fd
 
     get file descriptor for an adapter context
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Adapter context.
+    :type ctx_cookie: void \*
 
-    :param struct file_operations \*fops:
+    :param fops:
         File operations to be associated.
+    :type fops: struct file_operations \*
 
-    :param int \*fd:
+    :param fd:
         File descriptor to be returned back.
+    :type fd: int \*
 
 .. _`ocxlflash_get_fd.return`:
 
@@ -748,8 +820,9 @@ ocxlflash_fops_get_context
 
     get the context associated with the file
 
-    :param struct file \*file:
+    :param file:
         File associated with the adapter context.
+    :type file: struct file \*
 
 .. _`ocxlflash_fops_get_context.return`:
 
@@ -767,11 +840,13 @@ ocxlflash_afu_irq
 
     interrupt handler for user contexts
 
-    :param int irq:
+    :param irq:
         Interrupt number.
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Private data provided at interrupt registration, the context.
+    :type data: void \*
 
 .. _`ocxlflash_afu_irq.return`:
 
@@ -789,11 +864,13 @@ ocxlflash_start_work
 
     start a user context
 
-    :param void \*ctx_cookie:
+    :param ctx_cookie:
         Context to be started.
+    :type ctx_cookie: void \*
 
-    :param u64 num_irqs:
+    :param num_irqs:
         Number of interrupts requested.
+    :type num_irqs: u64
 
 .. _`ocxlflash_start_work.return`:
 
@@ -811,11 +888,13 @@ ocxlflash_fd_mmap
 
     mmap handler for adapter file descriptor
 
-    :param struct file \*file:
+    :param file:
         File installed with adapter file descriptor.
+    :type file: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VM area associated with mapping.
+    :type vma: struct vm_area_struct \*
 
 .. _`ocxlflash_fd_mmap.return`:
 
@@ -833,11 +912,13 @@ ocxlflash_fd_release
 
     release the context associated with the file
 
-    :param struct inode \*inode:
+    :param inode:
         File inode pointer.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         File associated with the adapter context.
+    :type file: struct file \*
 
 .. _`ocxlflash_fd_release.return`:
 

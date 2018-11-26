@@ -29,7 +29,7 @@ Definition
         DECLARE_BITMAP(dual_edge_irqs, MAX_NR_GPIO);
         DECLARE_BITMAP(enabled_irqs, MAX_NR_GPIO);
         const struct msm_pinctrl_soc_data *soc;
-        void __iomem *regs;
+        void __iomem *regs[MAX_NR_TILES];
     }
 
 .. _`msm_pinctrl.members`:
@@ -74,7 +74,7 @@ soc
     *undescribed*
 
 regs
-    Base address for the TLMM register map.
+    Base addresses for the TLMM tiles.
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ setup_machine_fdt
 
     Machine setup when an dtb was passed to the kernel
 
-    :param unsigned int dt_phys:
+    :param dt_phys:
         physical address of dt blob
+    :type dt_phys: unsigned int
 
 .. _`setup_machine_fdt.description`:
 

@@ -58,8 +58,9 @@ geni_se_read_proto
 
     Read the protocol configured for a serial engine
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_read_proto.return`:
 
@@ -77,14 +78,17 @@ geni_se_setup_m_cmd
 
     Setup the primary sequencer
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
-    :param u32 cmd:
+    :param cmd:
         Command/Operation to setup in the primary sequencer.
+    :type cmd: u32
 
-    :param u32 params:
+    :param params:
         Parameter for the sequencer command.
+    :type params: u32
 
 .. _`geni_se_setup_m_cmd.description`:
 
@@ -103,14 +107,17 @@ geni_se_setup_s_cmd
 
     Setup the secondary sequencer
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
-    :param u32 cmd:
+    :param cmd:
         Command/Operation to setup in the secondary sequencer.
+    :type cmd: u32
 
-    :param u32 params:
+    :param params:
         Parameter for the sequencer command.
+    :type params: u32
 
 .. _`geni_se_setup_s_cmd.description`:
 
@@ -129,8 +136,9 @@ geni_se_cancel_m_cmd
 
     Cancel the command configured in the primary sequencer
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_cancel_m_cmd.description`:
 
@@ -149,8 +157,9 @@ geni_se_cancel_s_cmd
 
     Cancel the command configured in the secondary sequencer
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_cancel_s_cmd.description`:
 
@@ -169,8 +178,9 @@ geni_se_abort_m_cmd
 
     Abort the command configured in the primary sequencer
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_abort_m_cmd.description`:
 
@@ -189,8 +199,9 @@ geni_se_abort_s_cmd
 
     Abort the command configured in the secondary sequencer
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_abort_s_cmd.description`:
 
@@ -209,8 +220,9 @@ geni_se_get_tx_fifo_depth
 
     Get the TX fifo depth of the serial engine
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_get_tx_fifo_depth.description`:
 
@@ -236,8 +248,9 @@ geni_se_get_tx_fifo_width
 
     Get the TX fifo width of the serial engine
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_get_tx_fifo_width.description`:
 
@@ -263,8 +276,9 @@ geni_se_get_rx_fifo_depth
 
     Get the RX fifo depth of the serial engine
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_get_rx_fifo_depth.description`:
 

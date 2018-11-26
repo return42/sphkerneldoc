@@ -246,6 +246,26 @@ devfreq_governor, the governor should protect its access with the
 struct mutex lock in struct devfreq. A governor may use this mutex
 to protect its own private data in void \*data as well.
 
+.. _`update_devfreq`:
+
+update_devfreq
+==============
+
+.. c:function:: int update_devfreq(struct devfreq *devfreq)
+
+    Reevaluate the device and configure frequency
+
+    :param devfreq:
+        the devfreq device
+    :type devfreq: struct devfreq \*
+
+.. _`update_devfreq.note`:
+
+Note
+----
+
+devfreq->lock must be held
+
 .. _`devfreq_simple_ondemand_data`:
 
 struct devfreq_simple_ondemand_data

@@ -19,11 +19,14 @@ amdgpu
     amdgpu_debugfs_c
     amdgpu_device_c
     amdgpu_display_c
+    amdgpu_drv_c
     amdgpu_fence_c
     amdgpu_gart_c
     amdgpu_gem_c
     amdgpu_gfx_c
     amdgpu_gfx_h
+    amdgpu_gmc_c
+    amdgpu_gmc_h
     amdgpu_gtt_mgr_c
     amdgpu_ib_c
     amdgpu_ids_c
@@ -35,7 +38,7 @@ amdgpu
     amdgpu_object_h
     amdgpu_pll_c
     amdgpu_pm_c
-    amdgpu_queue_mgr_c
+    amdgpu_prime_c
     amdgpu_ring_c
     amdgpu_sa_c
     amdgpu_sync_c

@@ -10,20 +10,25 @@ brcmf_sdiod_sglist_rw
 
     SDIO interface function for block data access
 
-    :param struct brcmf_sdio_dev \*sdiodev:
+    :param sdiodev:
         brcmfmac sdio device
+    :type sdiodev: struct brcmf_sdio_dev \*
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function
+    :type func: struct sdio_func \*
 
-    :param bool write:
+    :param write:
         direction flag
+    :type write: bool
 
-    :param u32 addr:
+    :param addr:
         dongle memory address as source/destination
+    :type addr: u32
 
-    :param struct sk_buff_head \*pktlist:
+    :param pktlist:
         *undescribed*
+    :type pktlist: struct sk_buff_head \*
 
 .. _`brcmf_sdiod_sglist_rw.description`:
 

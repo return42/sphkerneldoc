@@ -10,11 +10,13 @@ vx2_inb
 
     read a byte from the register
 
-    :param struct vx_core \*chip:
+    :param chip:
         VX core instance
+    :type chip: struct vx_core \*
 
-    :param int offset:
+    :param offset:
         register enum
+    :type offset: int
 
 .. _`vx2_outb`:
 
@@ -25,14 +27,17 @@ vx2_outb
 
     write a byte on the register
 
-    :param struct vx_core \*chip:
+    :param chip:
         VX core instance
+    :type chip: struct vx_core \*
 
-    :param int offset:
+    :param offset:
         the register offset
+    :type offset: int
 
-    :param unsigned char val:
+    :param val:
         the value to write
+    :type val: unsigned char
 
 .. _`vx2_inl`:
 
@@ -43,11 +48,13 @@ vx2_inl
 
     read a 32bit word from the register
 
-    :param struct vx_core \*chip:
+    :param chip:
         VX core instance
+    :type chip: struct vx_core \*
 
-    :param int offset:
+    :param offset:
         register enum
+    :type offset: int
 
 .. _`vx2_outl`:
 
@@ -58,14 +65,17 @@ vx2_outl
 
     write a 32bit word on the register
 
-    :param struct vx_core \*chip:
+    :param chip:
         VX core instance
+    :type chip: struct vx_core \*
 
-    :param int offset:
+    :param offset:
         the register enum
+    :type offset: int
 
-    :param unsigned int val:
+    :param val:
         the value to write
+    :type val: unsigned int
 
 .. _`vx2_setup_pseudo_dma`:
 
@@ -76,11 +86,13 @@ vx2_setup_pseudo_dma
 
     set up the pseudo dma read/write mode.
 
-    :param struct vx_core \*chip:
+    :param chip:
         VX core instance
+    :type chip: struct vx_core \*
 
-    :param int do_write:
+    :param do_write:
         0 = read, 1 = set up for DMA write
+    :type do_write: int
 
 .. This file was automatic generated / don't edit.
 

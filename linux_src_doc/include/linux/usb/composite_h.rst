@@ -512,8 +512,9 @@ module_usb_composite_driver
 
     Helper macro for registering a USB gadget composite driver
 
-    :param  __usb_composite_driver:
+    :param __usb_composite_driver:
         usb_composite_driver struct
+    :type __usb_composite_driver: 
 
 .. _`module_usb_composite_driver.description`:
 

@@ -10,14 +10,17 @@ rds_page_remainder_alloc
 
     build up regions of a message.
 
-    :param struct scatterlist \*scat:
+    :param scat:
         Scatter list for message
+    :type scat: struct scatterlist \*
 
-    :param unsigned long bytes:
+    :param bytes:
         the number of bytes needed.
+    :type bytes: unsigned long
 
-    :param gfp_t gfp:
+    :param gfp:
         the waiting behaviour of the allocation
+    :type gfp: gfp_t
 
 .. _`rds_page_remainder_alloc.description`:
 

@@ -10,17 +10,21 @@ selinux_audit_rule_init
 
     alloc/init an selinux audit rule structure.
 
-    :param u32 field:
+    :param field:
         the field this rule refers to
+    :type field: u32
 
-    :param u32 op:
+    :param op:
         the operater the rule uses
+    :type op: u32
 
-    :param char \*rulestr:
+    :param rulestr:
         the text "target" of the rule
+    :type rulestr: char \*
 
-    :param void \*\*rule:
+    :param rule:
         pointer to the new rule structure returned via this
+    :type rule: void \*\*
 
 .. _`selinux_audit_rule_init.description`:
 
@@ -40,8 +44,9 @@ selinux_audit_rule_free
 
     free an selinux audit rule structure.
 
-    :param void \*rule:
+    :param rule:
         pointer to the audit rule to be freed
+    :type rule: void \*
 
 .. _`selinux_audit_rule_free.description`:
 
@@ -60,20 +65,25 @@ selinux_audit_rule_match
 
     determine if a context ID matches a rule.
 
-    :param u32 sid:
+    :param sid:
         the context ID to check
+    :type sid: u32
 
-    :param u32 field:
+    :param field:
         the field this rule refers to
+    :type field: u32
 
-    :param u32 op:
+    :param op:
         the operater the rule uses
+    :type op: u32
 
-    :param void \*rule:
+    :param rule:
         pointer to the audit rule to check against
+    :type rule: void \*
 
-    :param struct audit_context \*actx:
+    :param actx:
         the audit context (can be NULL) associated with the check
+    :type actx: struct audit_context \*
 
 .. _`selinux_audit_rule_match.description`:
 
@@ -92,8 +102,9 @@ selinux_audit_rule_known
 
     check to see if rule contains selinux fields.
 
-    :param struct audit_krule \*krule:
+    :param krule:
         *undescribed*
+    :type krule: struct audit_krule \*
 
 .. This file was automatic generated / don't edit.
 

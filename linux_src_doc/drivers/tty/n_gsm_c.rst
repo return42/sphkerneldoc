@@ -49,11 +49,13 @@ gsm_fcs_add
 
     update FCS
 
-    :param u8 fcs:
+    :param fcs:
         Current FCS
+    :type fcs: u8
 
-    :param u8 c:
+    :param c:
         Next data
+    :type c: u8
 
 .. _`gsm_fcs_add.description`:
 
@@ -72,14 +74,17 @@ gsm_fcs_add_block
 
     update FCS for a block
 
-    :param u8 fcs:
+    :param fcs:
         Current FCS
+    :type fcs: u8
 
-    :param u8 \*c:
+    :param c:
         buffer of data
+    :type c: u8 \*
 
-    :param int len:
+    :param len:
         length of buffer
+    :type len: int
 
 .. _`gsm_fcs_add_block.description`:
 
@@ -98,12 +103,14 @@ gsm_read_ea
 
     read a byte into an EA
 
-    :param unsigned int \*val:
+    :param val:
         variable holding value
         c: byte going into the EA
+    :type val: unsigned int \*
 
-    :param u8 c:
+    :param c:
         *undescribed*
+    :type c: u8
 
 .. _`gsm_read_ea.description`:
 
@@ -122,8 +129,9 @@ gsm_encode_modem
 
     encode modem data bits
 
-    :param const struct gsm_dlci \*dlci:
+    :param dlci:
         DLCI to encode from
+    :type dlci: const struct gsm_dlci \*
 
 .. _`gsm_encode_modem.description`:
 
@@ -142,23 +150,29 @@ gsm_print_packet
 
     display a frame for debug
 
-    :param const char \*hdr:
+    :param hdr:
         header to print before decode
+    :type hdr: const char \*
 
-    :param int addr:
+    :param addr:
         address EA from the frame
+    :type addr: int
 
-    :param int cr:
+    :param cr:
         C/R bit from the frame
+    :type cr: int
 
-    :param u8 control:
+    :param control:
         control including PF bit
+    :type control: u8
 
-    :param const u8 \*data:
+    :param data:
         following data bytes
+    :type data: const u8 \*
 
-    :param int dlen:
+    :param dlen:
         length of data
+    :type dlen: int
 
 .. _`gsm_print_packet.description`:
 
@@ -177,14 +191,17 @@ gsm_stuff_frame
 
     bytestuff a packet
 
-    :param const u8 \*input:
+    :param input:
         *undescribed*
+    :type input: const u8 \*
 
-    :param u8 \*output:
+    :param output:
         *undescribed*
+    :type output: u8 \*
 
-    :param int len:
+    :param len:
         length of input
+    :type len: int
 
 .. _`gsm_stuff_frame.description`:
 
@@ -204,17 +221,21 @@ gsm_send
 
     send a control frame
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         our GSM mux
+    :type gsm: struct gsm_mux \*
 
-    :param int addr:
+    :param addr:
         address for control frame
+    :type addr: int
 
-    :param int cr:
+    :param cr:
         command/response bit
+    :type cr: int
 
-    :param int control:
+    :param control:
         control byte including PF bit
+    :type control: int
 
 .. _`gsm_send.description`:
 
@@ -241,14 +262,17 @@ gsm_response
 
     send a control response
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         our GSM mux
+    :type gsm: struct gsm_mux \*
 
-    :param int addr:
+    :param addr:
         address for control frame
+    :type addr: int
 
-    :param int control:
+    :param control:
         control byte including PF bit
+    :type control: int
 
 .. _`gsm_response.description`:
 
@@ -266,14 +290,17 @@ gsm_command
 
     send a control command
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         our GSM mux
+    :type gsm: struct gsm_mux \*
 
-    :param int addr:
+    :param addr:
         address for control frame
+    :type addr: int
 
-    :param int control:
+    :param control:
         control byte including PF bit
+    :type control: int
 
 .. _`gsm_command.description`:
 
@@ -291,17 +318,21 @@ gsm_data_alloc
 
     allocate data frame
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         GSM mux
+    :type gsm: struct gsm_mux \*
 
-    :param u8 addr:
+    :param addr:
         DLCI address
+    :type addr: u8
 
-    :param int len:
+    :param len:
         length excluding header and FCS
+    :type len: int
 
-    :param u8 ctrl:
+    :param ctrl:
         control byte
+    :type ctrl: u8
 
 .. _`gsm_data_alloc.description`:
 
@@ -321,8 +352,9 @@ gsm_data_kick
 
     poke the queue
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         GSM Mux
+    :type gsm: struct gsm_mux \*
 
 .. _`gsm_data_kick.description`:
 
@@ -350,11 +382,13 @@ lock against link layer control transmissions
 
     queue a UI or UIH frame
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         DLCI sending the data
+    :type dlci: struct gsm_dlci \*
 
-    :param struct gsm_msg \*msg:
+    :param msg:
         message queued
+    :type msg: struct gsm_msg \*
 
 .. _`__gsm_data_queue.description`:
 
@@ -374,11 +408,13 @@ gsm_data_queue
 
     queue a UI or UIH frame
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         DLCI sending the data
+    :type dlci: struct gsm_dlci \*
 
-    :param struct gsm_msg \*msg:
+    :param msg:
         message queued
+    :type msg: struct gsm_msg \*
 
 .. _`gsm_data_queue.description`:
 
@@ -398,11 +434,13 @@ gsm_dlci_data_output
 
     try and push data out of a DLCI
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         mux
+    :type gsm: struct gsm_mux \*
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         the DLCI to pull data from
+    :type dlci: struct gsm_dlci \*
 
 .. _`gsm_dlci_data_output.description`:
 
@@ -424,11 +462,13 @@ gsm_dlci_data_output_framed
 
     try and push data out of a DLCI
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         mux
+    :type gsm: struct gsm_mux \*
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         the DLCI to pull data from
+    :type dlci: struct gsm_dlci \*
 
 .. _`gsm_dlci_data_output_framed.description`:
 
@@ -450,8 +490,9 @@ gsm_dlci_data_sweep
 
     look for data to send
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         the GSM mux
+    :type gsm: struct gsm_mux \*
 
 .. _`gsm_dlci_data_sweep.description`:
 
@@ -480,8 +521,9 @@ gsm_dlci_data_kick
 
     transmit if possible
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         DLCI to kick
+    :type dlci: struct gsm_dlci \*
 
 .. _`gsm_dlci_data_kick.description`:
 
@@ -501,17 +543,21 @@ gsm_control_reply
 
     send a response frame to a control
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         gsm channel
+    :type gsm: struct gsm_mux \*
 
-    :param int cmd:
+    :param cmd:
         the command to use
+    :type cmd: int
 
-    :param u8 \*data:
+    :param data:
         data to follow encoded info
+    :type data: u8 \*
 
-    :param int dlen:
+    :param dlen:
         length of data
+    :type dlen: int
 
 .. _`gsm_control_reply.description`:
 
@@ -529,17 +575,21 @@ gsm_process_modem
 
     process received modem status
 
-    :param struct tty_struct \*tty:
+    :param tty:
         virtual tty bound to the DLCI
+    :type tty: struct tty_struct \*
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         DLCI to affect
+    :type dlci: struct gsm_dlci \*
 
-    :param u32 modem:
+    :param modem:
         modem bits (full EA)
+    :type modem: u32
 
-    :param int clen:
+    :param clen:
         *undescribed*
+    :type clen: int
 
 .. _`gsm_process_modem.description`:
 
@@ -558,14 +608,17 @@ gsm_control_modem
 
     modem status received
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         GSM channel
+    :type gsm: struct gsm_mux \*
 
-    :param u8 \*data:
+    :param data:
         data following command
+    :type data: u8 \*
 
-    :param int clen:
+    :param clen:
         command length
+    :type clen: int
 
 .. _`gsm_control_modem.description`:
 
@@ -586,14 +639,17 @@ gsm_control_rls
 
     remote line status
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         GSM channel
+    :type gsm: struct gsm_mux \*
 
-    :param u8 \*data:
+    :param data:
         data bytes
+    :type data: u8 \*
 
-    :param int clen:
+    :param clen:
         data length
+    :type clen: int
 
 .. _`gsm_control_rls.description`:
 
@@ -613,17 +669,21 @@ gsm_control_message
 
     DLCI 0 control processing
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         our GSM mux
+    :type gsm: struct gsm_mux \*
 
-    :param unsigned int command:
+    :param command:
         the command EA
+    :type command: unsigned int
 
-    :param u8 \*data:
+    :param data:
         data beyond the command/length EAs
+    :type data: u8 \*
 
-    :param int clen:
+    :param clen:
         length
+    :type clen: int
 
 .. _`gsm_control_message.description`:
 
@@ -643,17 +703,21 @@ gsm_control_response
 
     process a response to our control
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         our GSM mux
+    :type gsm: struct gsm_mux \*
 
-    :param unsigned int command:
+    :param command:
         the command (response) EA
+    :type command: unsigned int
 
-    :param u8 \*data:
+    :param data:
         data beyond the command/length EA
+    :type data: u8 \*
 
-    :param int clen:
+    :param clen:
         length
+    :type clen: int
 
 .. _`gsm_control_response.description`:
 
@@ -674,11 +738,13 @@ gsm_control_transmit
 
     send control packet
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         gsm mux
+    :type gsm: struct gsm_mux \*
 
-    :param struct gsm_control \*ctrl:
+    :param ctrl:
         frame to send
+    :type ctrl: struct gsm_control \*
 
 .. _`gsm_control_transmit.description`:
 
@@ -696,8 +762,9 @@ gsm_control_retransmit
 
     retransmit a control frame
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`gsm_control_retransmit.description`:
 
@@ -719,17 +786,21 @@ gsm_control_send
 
     send a control frame on DLCI 0
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         the GSM channel
+    :type gsm: struct gsm_mux \*
 
-    :param unsigned int command:
+    :param command:
         command  to send including CR bit
+    :type command: unsigned int
 
-    :param u8 \*data:
+    :param data:
         bytes of data (must be kmalloced)
+    :type data: u8 \*
 
-    :param int clen:
+    :param clen:
         *undescribed*
+    :type clen: int
 
 .. _`gsm_control_send.description`:
 
@@ -749,11 +820,13 @@ gsm_control_wait
 
     wait for a control to finish
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         GSM mux
+    :type gsm: struct gsm_mux \*
 
-    :param struct gsm_control \*control:
+    :param control:
         control we are waiting on
+    :type control: struct gsm_control \*
 
 .. _`gsm_control_wait.description`:
 
@@ -773,8 +846,9 @@ gsm_dlci_close
 
     a DLCI has closed
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         DLCI that closed
+    :type dlci: struct gsm_dlci \*
 
 .. _`gsm_dlci_close.description`:
 
@@ -793,8 +867,9 @@ gsm_dlci_open
 
     a DLCI has opened
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         DLCI that opened
+    :type dlci: struct gsm_dlci \*
 
 .. _`gsm_dlci_open.description`:
 
@@ -812,8 +887,9 @@ gsm_dlci_t1
 
     T1 timer expiry
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`gsm_dlci_t1.description`:
 
@@ -839,8 +915,9 @@ gsm_dlci_begin_open
 
     start channel open procedure
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         DLCI to open
+    :type dlci: struct gsm_dlci \*
 
 .. _`gsm_dlci_begin_open.description`:
 
@@ -861,8 +938,9 @@ gsm_dlci_begin_close
 
     start channel open procedure
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         DLCI to open
+    :type dlci: struct gsm_dlci \*
 
 .. _`gsm_dlci_begin_close.description`:
 
@@ -884,14 +962,17 @@ gsm_dlci_data
 
     data arrived
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         channel
+    :type dlci: struct gsm_dlci \*
 
-    :param u8 \*data:
+    :param data:
         block of bytes received
+    :type data: u8 \*
 
-    :param int clen:
+    :param clen:
         *undescribed*
+    :type clen: int
 
 .. _`gsm_dlci_data.description`:
 
@@ -911,14 +992,17 @@ gsm_dlci_command
 
     data arrived on control channel
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         channel
+    :type dlci: struct gsm_dlci \*
 
-    :param u8 \*data:
+    :param data:
         block of bytes received
+    :type data: u8 \*
 
-    :param int len:
+    :param len:
         length of received block
+    :type len: int
 
 .. _`gsm_dlci_command.description`:
 
@@ -939,11 +1023,13 @@ gsm_dlci_alloc
 
     allocate a DLCI
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         GSM mux
+    :type gsm: struct gsm_mux \*
 
-    :param int addr:
+    :param addr:
         address of the DLCI
+    :type addr: int
 
 .. _`gsm_dlci_alloc.description`:
 
@@ -968,8 +1054,9 @@ gsm_dlci_free
 
     free DLCI
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
 .. _`gsm_dlci_free.description`:
 
@@ -989,8 +1076,9 @@ gsm_dlci_release
 
     release DLCI
 
-    :param struct gsm_dlci \*dlci:
+    :param dlci:
         DLCI to destroy
+    :type dlci: struct gsm_dlci \*
 
 .. _`gsm_dlci_release.description`:
 
@@ -1011,8 +1099,9 @@ gsm_queue
 
     a GSM frame is ready to process
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         pointer to our gsm mux
+    :type gsm: struct gsm_mux \*
 
 .. _`gsm_queue.description`:
 
@@ -1033,11 +1122,13 @@ gsm0_receive
 
     perform processing for non-transparency
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         gsm data for this ldisc instance
+    :type gsm: struct gsm_mux \*
 
-    :param unsigned char c:
+    :param c:
         character
+    :type c: unsigned char
 
 .. _`gsm0_receive.description`:
 
@@ -1055,11 +1146,13 @@ gsm1_receive
 
     perform processing for non-transparency
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         gsm data for this ldisc instance
+    :type gsm: struct gsm_mux \*
 
-    :param unsigned char c:
+    :param c:
         character
+    :type c: unsigned char
 
 .. _`gsm1_receive.description`:
 
@@ -1077,14 +1170,17 @@ gsm_error
 
     handle tty error
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         ldisc data
+    :type gsm: struct gsm_mux \*
 
-    :param unsigned char data:
+    :param data:
         byte received (may be invalid)
+    :type data: unsigned char
 
-    :param unsigned char flag:
+    :param flag:
         error received
+    :type flag: unsigned char
 
 .. _`gsm_error.description`:
 
@@ -1110,8 +1206,9 @@ gsm_cleanup_mux
 
     generic GSM protocol cleanup
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         our mux
+    :type gsm: struct gsm_mux \*
 
 .. _`gsm_cleanup_mux.description`:
 
@@ -1131,8 +1228,9 @@ gsm_activate_mux
 
     generic GSM setup
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         our mux
+    :type gsm: struct gsm_mux \*
 
 .. _`gsm_activate_mux.description`:
 
@@ -1152,8 +1250,9 @@ gsm_free_mux
 
     free up a mux
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         *undescribed*
+    :type gsm: struct gsm_mux \*
 
 .. _`gsm_free_mux.description`:
 
@@ -1171,8 +1270,9 @@ gsm_free_muxr
 
     free up a mux
 
-    :param struct kref \*ref:
+    :param ref:
         *undescribed*
+    :type ref: struct kref \*
 
 .. _`gsm_free_muxr.description`:
 
@@ -1190,8 +1290,9 @@ gsm_alloc_mux
 
     allocate a mux
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`gsm_alloc_mux.description`:
 
@@ -1209,14 +1310,17 @@ gsmld_output
 
     write to link
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         our mux
+    :type gsm: struct gsm_mux \*
 
-    :param u8 \*data:
+    :param data:
         bytes to output
+    :type data: u8 \*
 
-    :param int len:
+    :param len:
         size
+    :type len: int
 
 .. _`gsmld_output.description`:
 
@@ -1235,11 +1339,13 @@ gsmld_attach_gsm
 
     mode set up
 
-    :param struct tty_struct \*tty:
+    :param tty:
         our tty structure
+    :type tty: struct tty_struct \*
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         our mux
+    :type gsm: struct gsm_mux \*
 
 .. _`gsmld_attach_gsm.description`:
 
@@ -1259,11 +1365,13 @@ gsmld_detach_gsm
 
     stop doing 0710 mux
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty attached to the mux
+    :type tty: struct tty_struct \*
 
-    :param struct gsm_mux \*gsm:
+    :param gsm:
         mux
+    :type gsm: struct gsm_mux \*
 
 .. _`gsmld_detach_gsm.description`:
 
@@ -1281,8 +1389,9 @@ gsmld_flush_buffer
 
     clean input queue
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
 .. _`gsmld_flush_buffer.description`:
 
@@ -1302,8 +1411,9 @@ gsmld_close
 
     close the ldisc for this tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         device
+    :type tty: struct tty_struct \*
 
 .. _`gsmld_close.description`:
 
@@ -1324,8 +1434,9 @@ gsmld_open
 
     open an ldisc
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal to open
+    :type tty: struct tty_struct \*
 
 .. _`gsmld_open.description`:
 
@@ -1346,8 +1457,9 @@ gsmld_write_wakeup
 
     asynchronous I/O notifier
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
 .. _`gsmld_write_wakeup.description`:
 
@@ -1367,17 +1479,21 @@ gsmld_read
 
     read function for tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         file object
+    :type file: struct file \*
 
-    :param unsigned char __user \*buf:
+    :param buf:
         userspace buffer pointer
+    :type buf: unsigned char __user \*
 
-    :param size_t nr:
+    :param nr:
         size of I/O
+    :type nr: size_t
 
 .. _`gsmld_read.description`:
 
@@ -1400,17 +1516,21 @@ gsmld_write
 
     write function for tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         file object
+    :type file: struct file \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         userspace buffer pointer
+    :type buf: const unsigned char \*
 
-    :param size_t nr:
+    :param nr:
         size of I/O
+    :type nr: size_t
 
 .. _`gsmld_write.description`:
 
@@ -1432,14 +1552,17 @@ gsmld_poll
 
     poll method for N_GSM0710
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         file accessing it
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         poll table
+    :type wait: poll_table \*
 
 .. _`gsmld_poll.description`:
 

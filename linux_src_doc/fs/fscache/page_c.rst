@@ -10,11 +10,13 @@ fscache_mark_page_cached
 
     Mark a page as being cached
 
-    :param struct fscache_retrieval \*op:
+    :param op:
         The retrieval op pages are being marked for
+    :type op: struct fscache_retrieval \*
 
-    :param struct page \*page:
+    :param page:
         The page to be marked
+    :type page: struct page \*
 
 .. _`fscache_mark_page_cached.description`:
 
@@ -33,11 +35,13 @@ fscache_mark_pages_cached
 
     Mark pages as being cached
 
-    :param struct fscache_retrieval \*op:
+    :param op:
         The retrieval op pages are being marked for
+    :type op: struct fscache_retrieval \*
 
-    :param struct pagevec \*pagevec:
+    :param pagevec:
         The pages to be marked
+    :type pagevec: struct pagevec \*
 
 .. _`fscache_mark_pages_cached.description`:
 

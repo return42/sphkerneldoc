@@ -10,8 +10,9 @@ tcp_write_err
 
     close socket and save error info
 
-    :param struct sock \*sk:
+    :param sk:
         The socket the error has appeared on.
+    :type sk: struct sock \*
 
 .. _`tcp_write_err.return`:
 
@@ -29,11 +30,13 @@ tcp_out_of_resources
 
     Close socket if out of resources
 
-    :param struct sock \*sk:
+    :param sk:
         pointer to current socket
+    :type sk: struct sock \*
 
-    :param bool do_reset:
+    :param do_reset:
         send a last packet with reset flag
+    :type do_reset: bool
 
 .. _`tcp_out_of_resources.description`:
 
@@ -68,11 +71,13 @@ tcp_orphan_retries
 
     Returns maximal number of retries on an orphaned socket
 
-    :param struct sock \*sk:
+    :param sk:
         Pointer to the current socket.
+    :type sk: struct sock \*
 
-    :param bool alive:
+    :param alive:
         bool, socket alive state
+    :type alive: bool
 
 .. _`retransmits_timed_out`:
 
@@ -83,16 +88,19 @@ retransmits_timed_out
 
     returns true if this connection has timed out
 
-    :param struct sock \*sk:
+    :param sk:
         The current socket
+    :type sk: struct sock \*
 
-    :param unsigned int boundary:
+    :param boundary:
         max number of retransmissions
+    :type boundary: unsigned int
 
-    :param unsigned int timeout:
+    :param timeout:
         A custom timeout value.
         If set to 0 the default timeout is calculated and used.
         Using TCP_RTO_MIN and the number of unsuccessful retransmits.
+    :type timeout: unsigned int
 
 .. _`retransmits_timed_out.description`:
 
@@ -113,8 +121,9 @@ tcp_delack_timer
 
     The TCP delayed ACK timeout handler
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`tcp_delack_timer.description`:
 
@@ -140,8 +149,9 @@ tcp_retransmit_timer
 
     The TCP retransmit timeout handler
 
-    :param struct sock \*sk:
+    :param sk:
         Pointer to the current socket.
+    :type sk: struct sock \*
 
 .. _`tcp_retransmit_timer.description`:
 

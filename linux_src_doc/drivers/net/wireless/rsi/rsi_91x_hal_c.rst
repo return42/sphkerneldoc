@@ -10,11 +10,13 @@ rsi_send_mgmt_pkt
 
     This functions sends the received management packet from driver to device.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Pointer to the socket buffer structure.
+    :type skb: struct sk_buff \*
 
 .. _`rsi_send_mgmt_pkt.return`:
 

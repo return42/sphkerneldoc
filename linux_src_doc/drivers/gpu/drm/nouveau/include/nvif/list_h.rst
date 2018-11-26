@@ -8,8 +8,9 @@ LIST_HEAD_INIT
 
 .. c:function::  LIST_HEAD_INIT( name)
 
-    :param  name:
+    :param name:
         *undescribed*
+    :type name: 
 
 .. _`list_head_init.example`:
 
@@ -32,11 +33,13 @@ list_add
 
     need to be initialised as empty list.
 
-    :param struct list_head \*entry:
+    :param entry:
         *undescribed*
+    :type entry: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         *undescribed*
+    :type head: struct list_head \*
 
 .. _`list_add.the-list-changes-from`:
 
@@ -68,11 +71,13 @@ list_add_tail
 
 .. c:function:: void list_add_tail(struct list_head *entry, struct list_head *head)
 
-    :param struct list_head \*entry:
+    :param entry:
         *undescribed*
+    :type entry: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         *undescribed*
+    :type head: struct list_head \*
 
 .. _`list_add_tail.the-list-changes-from`:
 
@@ -106,8 +111,9 @@ list_del
 
     the pointers to/from this element so it is removed from the list. It does NOT free the element itself or manipulate it otherwise.
 
-    :param struct list_head \*entry:
+    :param entry:
         *undescribed*
+    :type entry: struct list_head \*
 
 .. _`list_del.description`:
 
@@ -137,8 +143,9 @@ list_empty
 
 .. c:function:: bool list_empty(struct list_head *head)
 
-    :param struct list_head \*head:
+    :param head:
         *undescribed*
+    :type head: struct list_head \*
 
 .. _`list_empty.example`:
 
@@ -159,14 +166,17 @@ container_of
 
 .. c:function::  container_of( ptr,  type,  member)
 
-    :param  ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: 
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
-    :param  member:
+    :param member:
         *undescribed*
+    :type member: 
 
 .. _`container_of.example`:
 
@@ -192,14 +202,17 @@ list_entry
 
 .. c:function::  list_entry( ptr,  type,  member)
 
-    :param  ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: 
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
-    :param  member:
+    :param member:
         *undescribed*
+    :type member: 
 
 .. _`list_first_entry`:
 
@@ -208,14 +221,17 @@ list_first_entry
 
 .. c:function::  list_first_entry( ptr,  type,  member)
 
-    :param  ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: 
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
-    :param  member:
+    :param member:
         *undescribed*
+    :type member: 
 
 .. _`list_first_entry.example`:
 
@@ -240,14 +256,17 @@ list_last_entry
 
 .. c:function::  list_last_entry( ptr,  type,  member)
 
-    :param  ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: 
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
-    :param  member:
+    :param member:
         *undescribed*
+    :type member: 
 
 .. _`list_last_entry.example`:
 
@@ -272,14 +291,17 @@ list_for_each_entry
 
 .. c:function::  list_for_each_entry( pos,  head,  member)
 
-    :param  pos:
+    :param pos:
         *undescribed*
+    :type pos: 
 
-    :param  head:
+    :param head:
         *undescribed*
+    :type head: 
 
-    :param  member:
+    :param member:
         *undescribed*
+    :type member: 
 
 .. _`list_for_each_entry.example`:
 
@@ -310,17 +332,21 @@ list_for_each_entry_safe
 
     macro allows for the deletion of a list element while looping through the list.
 
-    :param  pos:
+    :param pos:
         *undescribed*
+    :type pos: 
 
-    :param  tmp:
+    :param tmp:
         *undescribed*
+    :type tmp: 
 
-    :param  head:
+    :param head:
         *undescribed*
+    :type head: 
 
-    :param  member:
+    :param member:
         *undescribed*
+    :type member: 
 
 .. _`list_for_each_entry_safe.description`:
 

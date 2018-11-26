@@ -10,8 +10,9 @@ fpga_region_get
 
     get an exclusive reference to a fpga region
 
-    :param struct fpga_region \*region:
+    :param region:
         FPGA Region struct
+    :type region: struct fpga_region \*
 
 .. _`fpga_region_get.description`:
 
@@ -33,8 +34,9 @@ fpga_region_put
 
     release a reference to a region
 
-    :param struct fpga_region \*region:
+    :param region:
         FPGA region
+    :type region: struct fpga_region \*
 
 .. _`fpga_region_program_fpga`:
 
@@ -45,8 +47,9 @@ fpga_region_program_fpga
 
     program FPGA
 
-    :param struct fpga_region \*region:
+    :param region:
         FPGA region
+    :type region: struct fpga_region \*
 
 .. _`fpga_region_program_fpga.description`:
 
@@ -71,14 +74,25 @@ fpga_region_create
 
     alloc and init a struct fpga_region
 
-    :param struct device \*dev:
+    :param dev:
         device parent
+    :type dev: struct device \*
 
-    :param struct fpga_manager \*mgr:
+    :param mgr:
         manager that programs this region
+    :type mgr: struct fpga_manager \*
 
     :param int (\*get_bridges)(struct fpga_region \*):
         optional function to get bridges to a list
+
+.. _`fpga_region_create.description`:
+
+Description
+-----------
+
+The caller of this function is responsible for freeing the resulting region
+struct with \ :c:func:`fpga_region_free`\ .  Using \ :c:func:`devm_fpga_region_create`\  instead is
+recommended.
 
 .. _`fpga_region_create.return`:
 
@@ -94,10 +108,51 @@ fpga_region_free
 
 .. c:function:: void fpga_region_free(struct fpga_region *region)
 
-    free a struct fpga_region
+    free a FPGA region created by \ :c:func:`fpga_region_create`\ 
 
-    :param struct fpga_region \*region:
-        FPGA region created by fpga_region_create
+    :param region:
+        FPGA region
+    :type region: struct fpga_region \*
+
+.. _`devm_fpga_region_create`:
+
+devm_fpga_region_create
+=======================
+
+.. c:function:: struct fpga_region *devm_fpga_region_create(struct device *dev, struct fpga_manager *mgr, int (*get_bridges)(struct fpga_region *))
+
+    create and initialize a managed FPGA region struct
+
+    :param dev:
+        device parent
+    :type dev: struct device \*
+
+    :param mgr:
+        manager that programs this region
+    :type mgr: struct fpga_manager \*
+
+    :param int (\*get_bridges)(struct fpga_region \*):
+        optional function to get bridges to a list
+
+.. _`devm_fpga_region_create.description`:
+
+Description
+-----------
+
+This function is intended for use in a FPGA region driver's probe function.
+After the region driver creates the region struct with
+\ :c:func:`devm_fpga_region_create`\ , it should register it with \ :c:func:`fpga_region_register`\ .
+The region driver's remove function should call \ :c:func:`fpga_region_unregister`\ .
+The region struct allocated with this function will be freed automatically on
+driver detach.  This includes the case of a probe function returning error
+before calling \ :c:func:`fpga_region_register`\ , the struct will still get cleaned up.
+
+.. _`devm_fpga_region_create.return`:
+
+Return
+------
+
+struct fpga_region or NULL
 
 .. _`fpga_region_register`:
 
@@ -108,8 +163,9 @@ fpga_region_register
 
     register a FPGA region
 
-    :param struct fpga_region \*region:
-        FPGA region created by fpga_region_create
+    :param region:
+        FPGA region
+    :type region: struct fpga_region \*
 
 .. _`fpga_region_register.return`:
 
@@ -125,10 +181,18 @@ fpga_region_unregister
 
 .. c:function:: void fpga_region_unregister(struct fpga_region *region)
 
-    unregister and free a FPGA region
+    unregister a FPGA region
 
-    :param struct fpga_region \*region:
+    :param region:
         FPGA region
+    :type region: struct fpga_region \*
+
+.. _`fpga_region_unregister.description`:
+
+Description
+-----------
+
+This function is intended for use in a FPGA region driver's remove function.
 
 .. _`fpga_region_init`:
 
@@ -139,8 +203,9 @@ fpga_region_init
 
     init function for fpga_region class Creates the fpga_region class and registers a reconfig notifier.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

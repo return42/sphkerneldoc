@@ -8,11 +8,13 @@ gt_compare_set
 
 .. c:function:: void gt_compare_set(unsigned long delta, int periodic)
 
-    :param unsigned long delta:
+    :param delta:
         *undescribed*
+    :type delta: unsigned long
 
-    :param int periodic:
+    :param periodic:
         *undescribed*
+    :type periodic: int
 
 .. _`gt_compare_set.interrupt-status-register-proceed-as-follows`:
 

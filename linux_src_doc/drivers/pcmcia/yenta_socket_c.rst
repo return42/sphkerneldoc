@@ -10,8 +10,9 @@ yenta_fixup_parent_bridge
 
     Fix subordinate bus# of the parent bridge
 
-    :param struct pci_bus \*cardbus_bridge:
+    :param cardbus_bridge:
         The PCI bus which the CardBus bridge bridges to
+    :type cardbus_bridge: struct pci_bus \*
 
 .. _`yenta_fixup_parent_bridge.description`:
 

@@ -10,8 +10,9 @@ tc_register_driver
 
     register a new TC driver
 
-    :param struct tc_driver \*tdrv:
+    :param tdrv:
         *undescribed*
+    :type tdrv: struct tc_driver \*
 
 .. _`tc_register_driver.description`:
 
@@ -32,8 +33,9 @@ tc_unregister_driver
 
     unregister a TC driver
 
-    :param struct tc_driver \*tdrv:
+    :param tdrv:
         *undescribed*
+    :type tdrv: struct tc_driver \*
 
 .. _`tc_unregister_driver.description`:
 
@@ -54,11 +56,13 @@ tc_match_device
 
     tell if a TC device structure has a matching TC device ID structure
 
-    :param struct tc_driver \*tdrv:
+    :param tdrv:
         the TC driver to earch for matching TC device ID strings
+    :type tdrv: struct tc_driver \*
 
-    :param struct tc_dev \*tdev:
+    :param tdev:
         the TC device structure to match against
+    :type tdev: struct tc_dev \*
 
 .. _`tc_match_device.description`:
 
@@ -78,11 +82,13 @@ tc_bus_match
 
     Tell if a device structure has a matching TC device ID structure
 
-    :param struct device \*dev:
+    :param dev:
         the device structure to match against
+    :type dev: struct device \*
 
-    :param struct device_driver \*drv:
+    :param drv:
         the device driver to search for matching TC device ID strings
+    :type drv: struct device_driver \*
 
 .. _`tc_bus_match.description`:
 

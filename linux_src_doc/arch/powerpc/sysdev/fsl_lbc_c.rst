@@ -10,8 +10,9 @@ fsl_lbc_addr
 
     convert the base address
 
-    :param phys_addr_t addr_base:
+    :param addr_base:
         base address of the memory bank
+    :type addr_base: phys_addr_t
 
 .. _`fsl_lbc_addr.description`:
 
@@ -32,8 +33,9 @@ fsl_lbc_find
 
     find Localbus bank
 
-    :param phys_addr_t addr_base:
+    :param addr_base:
         base address of the memory bank
+    :type addr_base: phys_addr_t
 
 .. _`fsl_lbc_find.description`:
 
@@ -54,11 +56,13 @@ fsl_upm_find
 
     find pre-programmed UPM via base address
 
-    :param phys_addr_t addr_base:
+    :param addr_base:
         base address of the memory bank controlled by the UPM
+    :type addr_base: phys_addr_t
 
-    :param struct fsl_upm \*upm:
+    :param upm:
         pointer to the allocated fsl_upm structure
+    :type upm: struct fsl_upm \*
 
 .. _`fsl_upm_find.description`:
 
@@ -78,14 +82,17 @@ fsl_upm_run_pattern
 
     actually run an UPM pattern
 
-    :param struct fsl_upm \*upm:
+    :param upm:
         pointer to the fsl_upm structure obtained via fsl_upm_find
+    :type upm: struct fsl_upm \*
 
-    :param void __iomem \*io_base:
+    :param io_base:
         remapped pointer to where memory access should happen
+    :type io_base: void __iomem \*
 
-    :param u32 mar:
+    :param mar:
         MAR register content during pattern execution
+    :type mar: u32
 
 .. _`fsl_upm_run_pattern.description`:
 

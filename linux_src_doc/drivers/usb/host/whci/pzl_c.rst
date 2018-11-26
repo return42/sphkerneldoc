@@ -10,11 +10,13 @@ pzl_process_qset
 
     process any recently inactivated or halted qTDs in a qset.
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
 .. _`pzl_process_qset.description`:
 
@@ -35,8 +37,9 @@ pzl_start
 
     start the periodic schedule
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI host controller
+    :type whc: struct whc \*
 
 .. _`pzl_start.description`:
 
@@ -55,8 +58,9 @@ pzl_stop
 
     stop the periodic schedule
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI host controller
+    :type whc: struct whc \*
 
 .. _`pzl_update`:
 
@@ -67,11 +71,13 @@ pzl_update
 
     request a PZL update and wait for the hardware to be synced
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI HC
+    :type whc: struct whc \*
 
-    :param uint32_t wusbcmd:
+    :param wusbcmd:
         WUSBCMD value to start the update.
+    :type wusbcmd: uint32_t
 
 .. _`pzl_update.description`:
 
@@ -91,8 +97,9 @@ scan_periodic_work
 
     scan the PZL for qsets to process.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`scan_periodic_work.description`:
 
@@ -113,14 +120,17 @@ pzl_urb_enqueue
 
     queue an URB onto the periodic list (PZL)
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI host controller
+    :type whc: struct whc \*
 
-    :param struct urb \*urb:
+    :param urb:
         the URB to enqueue
+    :type urb: struct urb \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         flags for any memory allocations
+    :type mem_flags: gfp_t
 
 .. _`pzl_urb_enqueue.description`:
 
@@ -140,14 +150,17 @@ pzl_urb_dequeue
 
     remove an URB (qset) from the periodic list
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI host controller
+    :type whc: struct whc \*
 
-    :param struct urb \*urb:
+    :param urb:
         the URB to dequeue
+    :type urb: struct urb \*
 
-    :param int status:
+    :param status:
         the current status of the URB
+    :type status: int
 
 .. _`pzl_urb_dequeue.description`:
 
@@ -167,11 +180,13 @@ pzl_qset_delete
 
     delete a qset from the PZL
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
 .. _`pzl_init`:
 
@@ -182,8 +197,9 @@ pzl_init
 
     initialize the periodic zone list
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI host controller
+    :type whc: struct whc \*
 
 .. _`pzl_clean_up`:
 
@@ -194,8 +210,9 @@ pzl_clean_up
 
     free PZL resources
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI host controller
+    :type whc: struct whc \*
 
 .. _`pzl_clean_up.description`:
 

@@ -10,24 +10,30 @@ acpi_parse_entries_array
 
     for each proc_num find a suitable subtable
 
-    :param char \*id:
+    :param id:
         table id (for debugging purposes)
+    :type id: char \*
 
-    :param unsigned long table_size:
+    :param table_size:
         size of the root table
+    :type table_size: unsigned long
 
-    :param struct acpi_table_header \*table_header:
+    :param table_header:
         where does the table start?
+    :type table_header: struct acpi_table_header \*
 
-    :param struct acpi_subtable_proc \*proc:
+    :param proc:
         array of acpi_subtable_proc struct containing entry id
         and associated handler with it
+    :type proc: struct acpi_subtable_proc \*
 
-    :param int proc_num:
+    :param proc_num:
         how big proc is?
+    :type proc_num: int
 
-    :param unsigned int max_entries:
+    :param max_entries:
         how many entries can we process?
+    :type max_entries: unsigned int
 
 .. _`acpi_parse_entries_array.description`:
 
@@ -55,11 +61,13 @@ acpi_table_parse
 
     find table with \ ``id``\ , run \ ``handler``\  on it
 
-    :param char \*id:
+    :param id:
         table id to find
+    :type id: char \*
 
-    :param acpi_tbl_table_handler handler:
+    :param handler:
         handler to run
+    :type handler: acpi_tbl_table_handler
 
 .. _`acpi_table_parse.description`:
 

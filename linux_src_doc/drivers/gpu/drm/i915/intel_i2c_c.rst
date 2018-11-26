@@ -10,8 +10,9 @@ intel_setup_gmbus
 
     instantiate all Intel i2c GMBuses
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. This file was automatic generated / don't edit.
 

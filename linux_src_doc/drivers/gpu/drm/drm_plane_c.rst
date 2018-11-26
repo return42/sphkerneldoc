@@ -36,33 +36,42 @@ drm_universal_plane_init
 
     Initialize a new universal plane object
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane object to init
+    :type plane: struct drm_plane \*
 
-    :param uint32_t possible_crtcs:
+    :param possible_crtcs:
         bitmask of possible CRTCs
+    :type possible_crtcs: uint32_t
 
-    :param const struct drm_plane_funcs \*funcs:
+    :param funcs:
         callbacks for the new plane
+    :type funcs: const struct drm_plane_funcs \*
 
-    :param const uint32_t \*formats:
+    :param formats:
         array of supported formats (DRM_FORMAT\_\*)
+    :type formats: const uint32_t \*
 
-    :param unsigned int format_count:
+    :param format_count:
         number of elements in \ ``formats``\ 
+    :type format_count: unsigned int
 
-    :param const uint64_t \*format_modifiers:
+    :param format_modifiers:
         array of struct drm_format modifiers terminated by
         DRM_FORMAT_MOD_INVALID
+    :type format_modifiers: const uint64_t \*
 
-    :param enum drm_plane_type type:
+    :param type:
         type of plane (overlay, primary, cursor)
+    :type type: enum drm_plane_type
 
-    :param const char \*name:
+    :param name:
         printf style format string for the plane name, or NULL for default name
+    :type name: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -90,26 +99,33 @@ drm_plane_init
 
     Initialize a legacy plane
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane object to init
+    :type plane: struct drm_plane \*
 
-    :param uint32_t possible_crtcs:
+    :param possible_crtcs:
         bitmask of possible CRTCs
+    :type possible_crtcs: uint32_t
 
-    :param const struct drm_plane_funcs \*funcs:
+    :param funcs:
         callbacks for the new plane
+    :type funcs: const struct drm_plane_funcs \*
 
-    :param const uint32_t \*formats:
+    :param formats:
         array of supported formats (DRM_FORMAT\_\*)
+    :type formats: const uint32_t \*
 
-    :param unsigned int format_count:
+    :param format_count:
         number of elements in \ ``formats``\ 
+    :type format_count: unsigned int
 
-    :param bool is_primary:
+    :param is_primary:
         plane type (primary vs overlay)
+    :type is_primary: bool
 
 .. _`drm_plane_init.description`:
 
@@ -136,8 +152,9 @@ drm_plane_cleanup
 
     Clean up the core plane usage
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to cleanup
+    :type plane: struct drm_plane \*
 
 .. _`drm_plane_cleanup.description`:
 
@@ -157,11 +174,13 @@ drm_plane_from_index
 
     find the registered plane at an index
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param int idx:
+    :param idx:
         index of registered plane to find for
+    :type idx: int
 
 .. _`drm_plane_from_index.description`:
 
@@ -180,8 +199,9 @@ drm_plane_force_disable
 
     Forcibly disable a plane
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to disable
+    :type plane: struct drm_plane \*
 
 .. _`drm_plane_force_disable.description`:
 
@@ -208,14 +228,17 @@ drm_mode_plane_set_obj_prop
 
     set the value of a property
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane object to set property value for
+    :type plane: struct drm_plane \*
 
-    :param struct drm_property \*property:
+    :param property:
         property to set
+    :type property: struct drm_property \*
 
-    :param uint64_t value:
+    :param value:
         value the property should be set to
+    :type value: uint64_t
 
 .. _`drm_mode_plane_set_obj_prop.description`:
 

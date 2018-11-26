@@ -10,8 +10,9 @@ mdp_ctl_flush_mask_lm
 
     Register FLUSH masks
 
-    :param int lm:
+    :param lm:
         *undescribed*
+    :type lm: int
 
 .. _`mdp_ctl_flush_mask_lm.description`:
 

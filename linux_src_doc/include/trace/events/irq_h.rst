@@ -10,11 +10,13 @@ trace_irq_handler_entry
 
     called immediately before the irq action handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param struct irqaction \*action:
+    :param action:
         pointer to struct irqaction
+    :type action: struct irqaction \*
 
 .. _`trace_irq_handler_entry.description`:
 
@@ -23,7 +25,7 @@ Description
 
 The struct irqaction pointed to by \ ``action``\  contains various
 information about the handler, including the device name,
-\ ``action``\ ->name, and the device id, \ ``action``\ ->dev_id. When used in
+\ ``action->name``\ , and the device id, \ ``action->dev_id``\ . When used in
 conjunction with the irq_handler_exit tracepoint, we can figure
 out irq handler latencies.
 
@@ -36,14 +38,17 @@ trace_irq_handler_exit
 
     called immediately after the irq action handler returns
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param struct irqaction \*action:
+    :param action:
         pointer to struct irqaction
+    :type action: struct irqaction \*
 
-    :param int ret:
+    :param ret:
         return value
+    :type ret: int
 
 .. _`trace_irq_handler_exit.description`:
 
@@ -51,7 +56,7 @@ Description
 -----------
 
 If the \ ``ret``\  value is set to IRQ_HANDLED, then we know that the corresponding
-\ ``action``\ ->handler successfully handled this irq. Otherwise, the irq might be
+\ ``action->handler``\  successfully handled this irq. Otherwise, the irq might be
 a shared irq line, or the irq was not handled successfully. Can be used in
 conjunction with the irq_handler_entry to understand irq handler latencies.
 
@@ -64,8 +69,9 @@ trace_softirq_entry
 
     called immediately before the softirq handler
 
-    :param unsigned int vec_nr:
+    :param vec_nr:
         softirq vector number
+    :type vec_nr: unsigned int
 
 .. _`trace_softirq_entry.description`:
 
@@ -84,8 +90,9 @@ trace_softirq_exit
 
     called immediately after the softirq handler returns
 
-    :param unsigned int vec_nr:
+    :param vec_nr:
         softirq vector number
+    :type vec_nr: unsigned int
 
 .. _`trace_softirq_exit.description`:
 
@@ -104,8 +111,9 @@ trace_softirq_raise
 
     called immediately when a softirq is raised
 
-    :param unsigned int vec_nr:
+    :param vec_nr:
         softirq vector number
+    :type vec_nr: unsigned int
 
 .. _`trace_softirq_raise.description`:
 

@@ -10,11 +10,13 @@ pcibios_enable_device
 
     Enable I/O and memory.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to be enabled
+    :type dev: struct pci_dev \*
 
-    :param int mask:
+    :param mask:
         *undescribed*
+    :type mask: int
 
 .. This file was automatic generated / don't edit.
 

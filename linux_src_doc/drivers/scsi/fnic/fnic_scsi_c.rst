@@ -10,14 +10,17 @@
 
     Sets/Clears bits in fnic's state_flags
 
-    :param struct fnic \*fnic:
+    :param fnic:
         *undescribed*
+    :type fnic: struct fnic \*
 
-    :param unsigned long st_flags:
+    :param st_flags:
         *undescribed*
+    :type st_flags: unsigned long
 
-    :param unsigned long clearbits:
+    :param clearbits:
         *undescribed*
+    :type clearbits: unsigned long
 
 .. _`fnic_scsi_host_start_tag`:
 
@@ -28,11 +31,13 @@ fnic_scsi_host_start_tag
 
     Allocates tagid from host's tag list
 
-    :param struct fnic \*fnic:
+    :param fnic:
         *undescribed*
+    :type fnic: struct fnic \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         *undescribed*
+    :type sc: struct scsi_cmnd \*
 
 .. _`fnic_scsi_host_end_tag`:
 
@@ -43,11 +48,13 @@ fnic_scsi_host_end_tag
 
     frees tag allocated by fnic_scsi_host_start_tag.
 
-    :param struct fnic \*fnic:
+    :param fnic:
         *undescribed*
+    :type fnic: struct fnic \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         *undescribed*
+    :type sc: struct scsi_cmnd \*
 
 .. This file was automatic generated / don't edit.
 

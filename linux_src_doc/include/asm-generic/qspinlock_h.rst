@@ -10,8 +10,9 @@ queued_spin_is_locked
 
     is the spinlock locked?
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. _`queued_spin_is_locked.return`:
 
@@ -29,8 +30,9 @@ queued_spin_value_unlocked
 
     is the spinlock structure unlocked?
 
-    :param struct qspinlock lock:
+    :param lock:
         queued spinlock structure
+    :type lock: struct qspinlock
 
 .. _`queued_spin_value_unlocked.return`:
 
@@ -53,8 +55,9 @@ queued_spin_is_contended
 
     check if the lock is contended
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. _`queued_spin_is_contended.return`:
 
@@ -72,8 +75,9 @@ queued_spin_trylock
 
     try to acquire the queued spinlock
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. _`queued_spin_trylock.return`:
 
@@ -91,8 +95,9 @@ queued_spin_lock
 
     acquire a queued spinlock
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. _`queued_spin_unlock`:
 
@@ -103,8 +108,9 @@ queued_spin_unlock
 
     release a queued spinlock
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. This file was automatic generated / don't edit.
 

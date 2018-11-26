@@ -38,17 +38,21 @@ i915_gem_fence_size
 
     required global GTT size for a fence
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         i915 device
+    :type i915: struct drm_i915_private \*
 
-    :param u32 size:
+    :param size:
         object size
+    :type size: u32
 
-    :param unsigned int tiling:
+    :param tiling:
         tiling mode
+    :type tiling: unsigned int
 
-    :param unsigned int stride:
+    :param stride:
         tiling stride
+    :type stride: unsigned int
 
 .. _`i915_gem_fence_size.description`:
 
@@ -67,17 +71,21 @@ i915_gem_fence_alignment
 
     required global GTT alignment for a fence
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         i915 device
+    :type i915: struct drm_i915_private \*
 
-    :param u32 size:
+    :param size:
         object size
+    :type size: u32
 
-    :param unsigned int tiling:
+    :param tiling:
         tiling mode
+    :type tiling: unsigned int
 
-    :param unsigned int stride:
+    :param stride:
         tiling stride
+    :type stride: unsigned int
 
 .. _`i915_gem_fence_alignment.description`:
 
@@ -96,14 +104,17 @@ i915_gem_set_tiling_ioctl
 
     IOCTL handler to set tiling mode
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data pointer for the ioctl
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         DRM file for the ioctl call
+    :type file: struct drm_file \*
 
 .. _`i915_gem_set_tiling_ioctl.description`:
 
@@ -131,14 +142,17 @@ i915_gem_get_tiling_ioctl
 
     IOCTL handler to get tiling mode
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data pointer for the ioctl
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         DRM file for the ioctl call
+    :type file: struct drm_file \*
 
 .. _`i915_gem_get_tiling_ioctl.description`:
 

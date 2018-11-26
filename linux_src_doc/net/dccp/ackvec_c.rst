@@ -10,14 +10,17 @@ dccp_ackvec_update_records
 
     Record information about sent Ack Vectors
 
-    :param struct dccp_ackvec \*av:
+    :param av:
         Ack Vector records to update
+    :type av: struct dccp_ackvec \*
 
-    :param u64 seqno:
+    :param seqno:
         Sequence number of the packet carrying the Ack Vector just sent
+    :type seqno: u64
 
-    :param u8 nonce_sum:
+    :param nonce_sum:
         The sum of all buffer nonces contained in the Ack Vector
+    :type nonce_sum: u8
 
 .. _`dccp_ackvec_update_old`:
 
@@ -28,17 +31,21 @@ dccp_ackvec_update_old
 
     Update previous state as per RFC 4340, 11.4.1
 
-    :param struct dccp_ackvec \*av:
+    :param av:
         non-empty buffer to update
+    :type av: struct dccp_ackvec \*
 
-    :param s64 distance:
+    :param distance:
         negative or zero distance of \ ``seqno``\  from buf_ackno downward
+    :type distance: s64
 
-    :param u64 seqno:
+    :param seqno:
         the (old) sequence number whose record is to be updated
+    :type seqno: u64
 
-    :param enum dccp_ackvec_states state:
+    :param state:
         state in which packet carrying \ ``seqno``\  was received
+    :type state: enum dccp_ackvec_states
 
 .. _`dccp_ackvec_add_new`:
 
@@ -49,17 +56,21 @@ dccp_ackvec_add_new
 
     Record one or more new entries in Ack Vector buffer
 
-    :param struct dccp_ackvec \*av:
+    :param av:
         container of buffer to update (can be empty or non-empty)
+    :type av: struct dccp_ackvec \*
 
-    :param u32 num_packets:
+    :param num_packets:
         number of packets to register (must be >= 1)
+    :type num_packets: u32
 
-    :param u64 seqno:
+    :param seqno:
         sequence number of the first packet in \ ``num_packets``\ 
+    :type seqno: u64
 
-    :param enum dccp_ackvec_states state:
+    :param state:
         state in which packet carrying \ ``seqno``\  was received
+    :type state: enum dccp_ackvec_states
 
 .. _`dccp_ackvec_input`:
 
@@ -70,11 +81,13 @@ dccp_ackvec_input
 
     Register incoming packet in the buffer
 
-    :param struct dccp_ackvec \*av:
+    :param av:
         *undescribed*
+    :type av: struct dccp_ackvec \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`dccp_ackvec_clear_state`:
 
@@ -85,11 +98,13 @@ dccp_ackvec_clear_state
 
     Perform house-keeping / garbage-collection This routine is called when the peer acknowledges the receipt of Ack Vectors up to and including \ ``ackno``\ . While based on on section A.3 of RFC 4340, here are additional precautions to prevent corrupted buffer state. In particular, we use tail_ackno to identify outdated records; it always marks the earliest packet of group (2) in 11.4.2.
 
-    :param struct dccp_ackvec \*av:
+    :param av:
         *undescribed*
+    :type av: struct dccp_ackvec \*
 
-    :param const u64 ackno:
+    :param ackno:
         *undescribed*
+    :type ackno: const u64
 
 .. This file was automatic generated / don't edit.
 

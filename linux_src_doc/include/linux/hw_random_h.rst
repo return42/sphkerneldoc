@@ -65,7 +65,8 @@ priv
 
 quality
     Estimation of true entropy in RNG's bitstream
-    (per mill).
+    (in bits of entropy per 1024 bits of input;
+    valid values: 1 to 1024, or 0 for unknown).
 
 list
     *undescribed*

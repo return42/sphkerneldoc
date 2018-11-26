@@ -22,9 +22,6 @@ Definition
         uint32_t dsa;
         uint32_t dta;
         uint32_t dtc;
-        uint32_t sd;
-        uint32_t drt;
-        uint32_t reserved[2];
     }
 
 .. _`jz4780_dma_hwdesc.members`:
@@ -45,15 +42,6 @@ dtc
     transfer count (number of blocks of the transfer size specified in DCM
     to transfer) in the low 24 bits, offset of the next descriptor from the
     descriptor base address in the upper 8 bits.
-
-sd
-    target/source stride difference (in stride transfer mode).
-
-drt
-    request type
-
-reserved
-    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

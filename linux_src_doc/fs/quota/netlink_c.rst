@@ -10,14 +10,17 @@ quota_send_warning
 
     Send warning to userspace about exceeded quota
 
-    :param struct kqid qid:
+    :param qid:
         The kernel internal quota identifier.
+    :type qid: struct kqid
 
-    :param dev_t dev:
+    :param dev:
         The device on which the fs is mounted (sb->s_dev)
+    :type dev: dev_t
 
-    :param const char warntype:
+    :param warntype:
         The type of the warning: QUOTA_NL_...
+    :type warntype: const char
 
 .. _`quota_send_warning.description`:
 

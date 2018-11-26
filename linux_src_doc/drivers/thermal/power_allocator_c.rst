@@ -10,11 +10,13 @@ mul_frac
 
     multiply two fixed-point numbers
 
-    :param s64 x:
+    :param x:
         first multiplicand
+    :type x: s64
 
-    :param s64 y:
+    :param y:
         second multiplicand
+    :type y: s64
 
 .. _`mul_frac.return`:
 
@@ -33,11 +35,13 @@ div_frac
 
     divide two fixed-point numbers
 
-    :param s64 x:
+    :param x:
         the dividend
+    :type x: s64
 
-    :param s64 y:
+    :param y:
         the divisor
+    :type y: s64
 
 .. _`div_frac.return`:
 
@@ -107,8 +111,9 @@ estimate_sustainable_power
 
     Estimate the sustainable power of a thermal zone
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         thermal zone we are operating in
+    :type tz: struct thermal_zone_device \*
 
 .. _`estimate_sustainable_power.description`:
 
@@ -131,20 +136,25 @@ estimate_pid_constants
 
     Estimate the constants for the PID controller
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         thermal zone for which to estimate the constants
+    :type tz: struct thermal_zone_device \*
 
-    :param u32 sustainable_power:
+    :param sustainable_power:
         sustainable power for the thermal zone
+    :type sustainable_power: u32
 
-    :param int trip_switch_on:
+    :param trip_switch_on:
         trip point number for the switch on temperature
+    :type trip_switch_on: int
 
-    :param int control_temp:
+    :param control_temp:
         target temperature for the power allocator governor
+    :type control_temp: int
 
-    :param bool force:
+    :param force:
         whether to force the update of the constants
+    :type force: bool
 
 .. _`estimate_pid_constants.description`:
 
@@ -171,14 +181,17 @@ pid_controller
 
     PID controller
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         thermal zone we are operating in
+    :type tz: struct thermal_zone_device \*
 
-    :param int control_temp:
+    :param control_temp:
         the target temperature in millicelsius
+    :type control_temp: int
 
-    :param u32 max_allocatable_power:
+    :param max_allocatable_power:
         maximum allocatable power for this thermal zone
+    :type max_allocatable_power: u32
 
 .. _`pid_controller.description`:
 
@@ -211,28 +224,35 @@ divvy_up_power
 
     divvy the allocated power between the actors
 
-    :param u32 \*req_power:
+    :param req_power:
         each actor's requested power
+    :type req_power: u32 \*
 
-    :param u32 \*max_power:
+    :param max_power:
         each actor's maximum available power
+    :type max_power: u32 \*
 
-    :param int num_actors:
+    :param num_actors:
         size of the \ ``req_power``\ , \ ``max_power``\  and \ ``granted_power``\ 's array
+    :type num_actors: int
 
-    :param u32 total_req_power:
+    :param total_req_power:
         sum of \ ``req_power``\ 
+    :type total_req_power: u32
 
-    :param u32 power_range:
+    :param power_range:
         total allocated power
+    :type power_range: u32
 
-    :param u32 \*granted_power:
+    :param granted_power:
         output array: each actor's granted power
+    :type granted_power: u32 \*
 
-    :param u32 \*extra_actor_power:
+    :param extra_actor_power:
         an appropriately sized array to be used in the
         function as temporary storage of the extra power given
         to the actors
+    :type extra_actor_power: u32 \*
 
 .. _`divvy_up_power.description`:
 
@@ -263,11 +283,13 @@ get_governor_trips
 
     get the number of the two trip points that are key for this governor
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         thermal zone to operate on
+    :type tz: struct thermal_zone_device \*
 
-    :param struct power_allocator_params \*params:
+    :param params:
         pointer to private data for this governor
+    :type params: struct power_allocator_params \*
 
 .. _`get_governor_trips.the-power-allocator-governor-works-optimally-with-two-trips-points`:
 
@@ -292,8 +314,9 @@ power_allocator_bind
 
     bind the power_allocator governor to a thermal zone
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         thermal zone to bind it to
+    :type tz: struct thermal_zone_device \*
 
 .. _`power_allocator_bind.description`:
 

@@ -10,17 +10,21 @@ ql_update_mac_hdr_len
 
     helper routine to update the mac header length based on vlan tags if present
 
-    :param struct ql_adapter \*qdev:
+    :param qdev:
         *undescribed*
+    :type qdev: struct ql_adapter \*
 
-    :param struct ib_mac_iocb_rsp \*ib_mac_rsp:
+    :param ib_mac_rsp:
         *undescribed*
+    :type ib_mac_rsp: struct ib_mac_iocb_rsp \*
 
-    :param void \*page:
+    :param page:
         *undescribed*
+    :type page: void \*
 
-    :param size_t \*len:
+    :param len:
         *undescribed*
+    :type len: size_t \*
 
 .. _`qlge_update_hw_vlan_features`:
 
@@ -31,11 +35,13 @@ qlge_update_hw_vlan_features
 
     helper routine to reinitialize the adapter based on the features to enable/disable hardware vlan accel
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
-    :param netdev_features_t features:
+    :param features:
         *undescribed*
+    :type features: netdev_features_t
 
 .. This file was automatic generated / don't edit.
 

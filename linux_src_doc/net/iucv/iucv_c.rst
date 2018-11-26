@@ -8,11 +8,13 @@
 
 .. c:function:: int __iucv_call_b2f0(int command, union iucv_param *parm)
 
-    :param int command:
+    :param command:
         *undescribed*
+    :type command: int
 
-    :param union iucv_param \*parm:
+    :param parm:
         pointer to a struct iucv_parm block
+    :type parm: union iucv_param \*
 
 .. _`__iucv_call_b2f0.description`:
 
@@ -30,11 +32,13 @@ Returns the result of the CP IUCV call.
 
 .. c:function:: int __iucv_query_maxconn(void *param, unsigned long *max_pathid)
 
-    :param void \*param:
+    :param param:
         *undescribed*
+    :type param: void \*
 
-    :param unsigned long \*max_pathid:
+    :param max_pathid:
         *undescribed*
+    :type max_pathid: unsigned long \*
 
 .. _`__iucv_query_maxconn.description`:
 
@@ -53,8 +57,9 @@ iucv_allow_cpu
 
 .. c:function:: void iucv_allow_cpu(void *data)
 
-    :param void \*data:
+    :param data:
         unused
+    :type data: void \*
 
 .. _`iucv_allow_cpu.description`:
 
@@ -70,8 +75,9 @@ iucv_block_cpu
 
 .. c:function:: void iucv_block_cpu(void *data)
 
-    :param void \*data:
+    :param data:
         unused
+    :type data: void \*
 
 .. _`iucv_block_cpu.description`:
 
@@ -87,8 +93,9 @@ iucv_block_cpu_almost
 
 .. c:function:: void iucv_block_cpu_almost(void *data)
 
-    :param void \*data:
+    :param data:
         unused
+    :type data: void \*
 
 .. _`iucv_block_cpu_almost.description`:
 
@@ -104,8 +111,9 @@ iucv_declare_cpu
 
 .. c:function:: void iucv_declare_cpu(void *data)
 
-    :param void \*data:
+    :param data:
         unused
+    :type data: void \*
 
 .. _`iucv_declare_cpu.description`:
 
@@ -121,8 +129,9 @@ iucv_retrieve_cpu
 
 .. c:function:: void iucv_retrieve_cpu(void *data)
 
-    :param void \*data:
+    :param data:
         unused
+    :type data: void \*
 
 .. _`iucv_retrieve_cpu.description`:
 
@@ -138,8 +147,9 @@ iucv_setmask_mp
 
 .. c:function:: void iucv_setmask_mp( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iucv_setmask_mp.description`:
 
@@ -155,8 +165,9 @@ iucv_setmask_up
 
 .. c:function:: void iucv_setmask_up( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iucv_setmask_up.description`:
 
@@ -172,8 +183,9 @@ iucv_enable
 
 .. c:function:: int iucv_enable( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iucv_enable.description`:
 
@@ -192,8 +204,9 @@ iucv_disable
 
 .. c:function:: void iucv_disable( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iucv_disable.description`:
 
@@ -211,11 +224,13 @@ iucv_sever_pathid
 
 .. c:function:: int iucv_sever_pathid(u16 pathid, u8 *userdata)
 
-    :param u16 pathid:
+    :param pathid:
         path identification number.
+    :type pathid: u16
 
-    :param u8 \*userdata:
+    :param userdata:
         16-bytes of user data.
+    :type userdata: u8 \*
 
 .. _`iucv_sever_pathid.description`:
 
@@ -231,8 +246,9 @@ Sever an iucv path to free up the pathid. Used internally.
 
 .. c:function:: void __iucv_cleanup_queue(void *dummy)
 
-    :param void \*dummy:
+    :param dummy:
         unused dummy argument
+    :type dummy: void \*
 
 .. _`__iucv_cleanup_queue.description`:
 
@@ -249,8 +265,9 @@ iucv_cleanup_queue
 
 .. c:function:: void iucv_cleanup_queue( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iucv_cleanup_queue.description`:
 
@@ -268,11 +285,13 @@ iucv_register
 
 .. c:function:: int iucv_register(struct iucv_handler *handler, int smp)
 
-    :param struct iucv_handler \*handler:
+    :param handler:
         address of iucv handler structure
+    :type handler: struct iucv_handler \*
 
-    :param int smp:
+    :param smp:
         != 0 indicates that the handler can deal with out of order messages
+    :type smp: int
 
 .. _`iucv_register.description`:
 
@@ -291,11 +310,13 @@ iucv_unregister
 
 .. c:function:: void iucv_unregister(struct iucv_handler *handler, int smp)
 
-    :param struct iucv_handler \*handler:
+    :param handler:
         address of iucv handler structure
+    :type handler: struct iucv_handler \*
 
-    :param int smp:
+    :param smp:
         != 0 indicates that the handler can deal with out of order messages
+    :type smp: int
 
 .. _`iucv_unregister.description`:
 
@@ -311,17 +332,21 @@ iucv_path_accept
 
 .. c:function:: int iucv_path_accept(struct iucv_path *path, struct iucv_handler *handler, u8 *userdata, void *private)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_handler \*handler:
+    :param handler:
         address of iucv handler structure
+    :type handler: struct iucv_handler \*
 
-    :param u8 \*userdata:
+    :param userdata:
         16 bytes of data reflected to the communication partner
+    :type userdata: u8 \*
 
-    :param void \*private:
+    :param private:
         private data passed to interrupt handlers for this path
+    :type private: void \*
 
 .. _`iucv_path_accept.description`:
 
@@ -340,23 +365,29 @@ iucv_path_connect
 
 .. c:function:: int iucv_path_connect(struct iucv_path *path, struct iucv_handler *handler, u8 *userid, u8 *system, u8 *userdata, void *private)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_handler \*handler:
+    :param handler:
         address of iucv handler structure
+    :type handler: struct iucv_handler \*
 
-    :param u8 \*userid:
+    :param userid:
         8-byte user identification
+    :type userid: u8 \*
 
-    :param u8 \*system:
+    :param system:
         8-byte target system identification
+    :type system: u8 \*
 
-    :param u8 \*userdata:
+    :param userdata:
         16 bytes of data reflected to the communication partner
+    :type userdata: u8 \*
 
-    :param void \*private:
+    :param private:
         private data passed to interrupt handlers for this path
+    :type private: void \*
 
 .. _`iucv_path_connect.description`:
 
@@ -376,11 +407,13 @@ iucv_path_quiesce
 
 .. c:function:: int iucv_path_quiesce(struct iucv_path *path, u8 *userdata)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param u8 \*userdata:
+    :param userdata:
         16 bytes of data reflected to the communication partner
+    :type userdata: u8 \*
 
 .. _`iucv_path_quiesce.description`:
 
@@ -399,11 +432,13 @@ iucv_path_resume
 
 .. c:function:: int iucv_path_resume(struct iucv_path *path, u8 *userdata)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param u8 \*userdata:
+    :param userdata:
         16 bytes of data reflected to the communication partner
+    :type userdata: u8 \*
 
 .. _`iucv_path_resume.description`:
 
@@ -422,11 +457,13 @@ iucv_path_sever
 
 .. c:function:: int iucv_path_sever(struct iucv_path *path, u8 *userdata)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param u8 \*userdata:
+    :param userdata:
         16 bytes of data reflected to the communication partner
+    :type userdata: u8 \*
 
 .. _`iucv_path_sever.description`:
 
@@ -444,14 +481,17 @@ iucv_message_purge
 
 .. c:function:: int iucv_message_purge(struct iucv_path *path, struct iucv_message *msg, u32 srccls)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         address of iucv msg structure
+    :type msg: struct iucv_message \*
 
-    :param u32 srccls:
+    :param srccls:
         source class of message
+    :type srccls: u32
 
 .. _`iucv_message_purge.description`:
 
@@ -469,23 +509,29 @@ iucv_message_receive_iprmdata
 
 .. c:function:: int iucv_message_receive_iprmdata(struct iucv_path *path, struct iucv_message *msg, u8 flags, void *buffer, size_t size, size_t *residual)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         address of iucv msg structure
+    :type msg: struct iucv_message \*
 
-    :param u8 flags:
+    :param flags:
         how the message is received (IUCV_IPBUFLST)
+    :type flags: u8
 
-    :param void \*buffer:
+    :param buffer:
         address of data buffer or address of struct iucv_array
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         length of data buffer
+    :type size: size_t
 
-    :param size_t \*residual:
+    :param residual:
         *undescribed*
+    :type residual: size_t \*
 
 .. _`iucv_message_receive_iprmdata.description`:
 
@@ -502,23 +548,29 @@ to receive RMDATA data stored in struct iucv_message.
 
 .. c:function:: int __iucv_message_receive(struct iucv_path *path, struct iucv_message *msg, u8 flags, void *buffer, size_t size, size_t *residual)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         address of iucv msg structure
+    :type msg: struct iucv_message \*
 
-    :param u8 flags:
+    :param flags:
         how the message is received (IUCV_IPBUFLST)
+    :type flags: u8
 
-    :param void \*buffer:
+    :param buffer:
         address of data buffer or address of struct iucv_array
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         length of data buffer
+    :type size: size_t
 
-    :param size_t \*residual:
+    :param residual:
         *undescribed*
+    :type residual: size_t \*
 
 .. _`__iucv_message_receive.description`:
 
@@ -545,23 +597,29 @@ iucv_message_receive
 
 .. c:function:: int iucv_message_receive(struct iucv_path *path, struct iucv_message *msg, u8 flags, void *buffer, size_t size, size_t *residual)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         address of iucv msg structure
+    :type msg: struct iucv_message \*
 
-    :param u8 flags:
+    :param flags:
         how the message is received (IUCV_IPBUFLST)
+    :type flags: u8
 
-    :param void \*buffer:
+    :param buffer:
         address of data buffer or address of struct iucv_array
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         length of data buffer
+    :type size: size_t
 
-    :param size_t \*residual:
+    :param residual:
         *undescribed*
+    :type residual: size_t \*
 
 .. _`iucv_message_receive.description`:
 
@@ -588,11 +646,13 @@ iucv_message_reject
 
 .. c:function:: int iucv_message_reject(struct iucv_path *path, struct iucv_message *msg)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         address of iucv msg structure
+    :type msg: struct iucv_message \*
 
 .. _`iucv_message_reject.description`:
 
@@ -612,20 +672,25 @@ iucv_message_reply
 
 .. c:function:: int iucv_message_reply(struct iucv_path *path, struct iucv_message *msg, u8 flags, void *reply, size_t size)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         address of iucv msg structure
+    :type msg: struct iucv_message \*
 
-    :param u8 flags:
+    :param flags:
         how the reply is sent (IUCV_IPRMDATA, IUCV_IPPRTY, IUCV_IPBUFLST)
+    :type flags: u8
 
-    :param void \*reply:
+    :param reply:
         address of reply data buffer or address of struct iucv_array
+    :type reply: void \*
 
-    :param size_t size:
+    :param size:
         length of reply data buffer
+    :type size: size_t
 
 .. _`iucv_message_reply.description`:
 
@@ -646,23 +711,29 @@ Returns the result from the CP IUCV call.
 
 .. c:function:: int __iucv_message_send(struct iucv_path *path, struct iucv_message *msg, u8 flags, u32 srccls, void *buffer, size_t size)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         address of iucv msg structure
+    :type msg: struct iucv_message \*
 
-    :param u8 flags:
+    :param flags:
         how the message is sent (IUCV_IPRMDATA, IUCV_IPPRTY, IUCV_IPBUFLST)
+    :type flags: u8
 
-    :param u32 srccls:
+    :param srccls:
         source class of message
+    :type srccls: u32
 
-    :param void \*buffer:
+    :param buffer:
         address of send buffer or address of struct iucv_array
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         length of send buffer
+    :type size: size_t
 
 .. _`__iucv_message_send.description`:
 
@@ -689,23 +760,29 @@ iucv_message_send
 
 .. c:function:: int iucv_message_send(struct iucv_path *path, struct iucv_message *msg, u8 flags, u32 srccls, void *buffer, size_t size)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         address of iucv msg structure
+    :type msg: struct iucv_message \*
 
-    :param u8 flags:
+    :param flags:
         how the message is sent (IUCV_IPRMDATA, IUCV_IPPRTY, IUCV_IPBUFLST)
+    :type flags: u8
 
-    :param u32 srccls:
+    :param srccls:
         source class of message
+    :type srccls: u32
 
-    :param void \*buffer:
+    :param buffer:
         address of send buffer or address of struct iucv_array
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         length of send buffer
+    :type size: size_t
 
 .. _`iucv_message_send.description`:
 
@@ -732,33 +809,42 @@ iucv_message_send2way
 
 .. c:function:: int iucv_message_send2way(struct iucv_path *path, struct iucv_message *msg, u8 flags, u32 srccls, void *buffer, size_t size, void *answer, size_t asize, size_t *residual)
 
-    :param struct iucv_path \*path:
+    :param path:
         address of iucv path structure
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         address of iucv msg structure
+    :type msg: struct iucv_message \*
 
-    :param u8 flags:
+    :param flags:
         how the message is sent and the reply is received
         (IUCV_IPRMDATA, IUCV_IPBUFLST, IUCV_IPPRTY, IUCV_ANSLST)
+    :type flags: u8
 
-    :param u32 srccls:
+    :param srccls:
         source class of message
+    :type srccls: u32
 
-    :param void \*buffer:
+    :param buffer:
         address of send buffer or address of struct iucv_array
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         length of send buffer
+    :type size: size_t
 
-    :param void \*answer:
+    :param answer:
         *undescribed*
+    :type answer: void \*
 
-    :param size_t asize:
+    :param asize:
         size of reply buffer
+    :type asize: size_t
 
-    :param size_t \*residual:
+    :param residual:
         *undescribed*
+    :type residual: size_t \*
 
 .. _`iucv_message_send2way.description`:
 
@@ -779,8 +865,9 @@ iucv_tasklet_fn
 
 .. c:function:: void iucv_tasklet_fn(unsigned long ignored)
 
-    :param unsigned long ignored:
+    :param ignored:
         *undescribed*
+    :type ignored: unsigned long
 
 .. _`iucv_tasklet_fn.description`:
 
@@ -798,8 +885,9 @@ iucv_work_fn
 
 .. c:function:: void iucv_work_fn(struct work_struct *work)
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`iucv_work_fn.description`:
 
@@ -817,14 +905,17 @@ iucv_external_interrupt
 
 .. c:function:: void iucv_external_interrupt(struct ext_code ext_code, unsigned int param32, unsigned long param64)
 
-    :param struct ext_code ext_code:
+    :param ext_code:
         *undescribed*
+    :type ext_code: struct ext_code
 
-    :param unsigned int param32:
+    :param param32:
         *undescribed*
+    :type param32: unsigned int
 
-    :param unsigned long param64:
+    :param param64:
         *undescribed*
+    :type param64: unsigned long
 
 .. _`iucv_external_interrupt.description`:
 
@@ -843,8 +934,9 @@ iucv_path_table_empty
 
     determine if iucv path table is empty
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iucv_path_table_empty.description`:
 
@@ -863,8 +955,9 @@ iucv_pm_freeze
 
     Freeze PM callback
 
-    :param struct device \*dev:
+    :param dev:
         iucv-based device
+    :type dev: struct device \*
 
 .. _`iucv_pm_freeze.description`:
 
@@ -884,8 +977,9 @@ iucv_pm_thaw
 
     Thaw PM callback
 
-    :param struct device \*dev:
+    :param dev:
         iucv-based device
+    :type dev: struct device \*
 
 .. _`iucv_pm_thaw.make-iucv-ready-for-use-again`:
 
@@ -905,8 +999,9 @@ iucv_pm_restore
 
     Restore PM callback
 
-    :param struct device \*dev:
+    :param dev:
         iucv-based device
+    :type dev: struct device \*
 
 .. _`iucv_pm_restore.make-iucv-ready-for-use-again`:
 
@@ -924,8 +1019,9 @@ iucv_init
 
 .. c:function:: int iucv_init( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iucv_init.description`:
 
@@ -941,8 +1037,9 @@ iucv_exit
 
 .. c:function:: void __exit iucv_exit( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iucv_exit.description`:
 

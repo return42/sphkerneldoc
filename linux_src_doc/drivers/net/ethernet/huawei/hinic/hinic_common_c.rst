@@ -10,11 +10,13 @@ hinic_cpu_to_be32
 
     convert data to big endian 32 bit format
 
-    :param void \*data:
+    :param data:
         the data to convert
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length of data to convert
+    :type len: int
 
 .. _`hinic_be32_to_cpu`:
 
@@ -25,11 +27,13 @@ hinic_be32_to_cpu
 
     convert data from big endian 32 bit format
 
-    :param void \*data:
+    :param data:
         the data to convert
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length of data to convert
+    :type len: int
 
 .. _`hinic_set_sge`:
 
@@ -40,14 +44,17 @@ hinic_set_sge
 
     set dma area in scatter gather entry
 
-    :param struct hinic_sge \*sge:
+    :param sge:
         scatter gather entry
+    :type sge: struct hinic_sge \*
 
-    :param dma_addr_t addr:
+    :param addr:
         dma address
+    :type addr: dma_addr_t
 
-    :param int len:
+    :param len:
         length of relevant data in the dma address
+    :type len: int
 
 .. _`hinic_sge_to_dma`:
 
@@ -58,8 +65,9 @@ hinic_sge_to_dma
 
     get dma address from scatter gather entry
 
-    :param struct hinic_sge \*sge:
+    :param sge:
         scatter gather entry
+    :type sge: struct hinic_sge \*
 
 .. _`hinic_sge_to_dma.description`:
 

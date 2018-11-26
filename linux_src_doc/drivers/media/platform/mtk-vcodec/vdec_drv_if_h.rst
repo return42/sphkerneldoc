@@ -43,11 +43,13 @@ vdec_if_init
 
     initialize decode driver
 
-    :param struct mtk_vcodec_ctx \*ctx:
+    :param ctx:
         [in] v4l2 context
+    :type ctx: struct mtk_vcodec_ctx \*
 
-    :param unsigned int fourcc:
+    :param fourcc:
         [in] video format fourcc, V4L2_PIX_FMT_H264/VP8/VP9..
+    :type fourcc: unsigned int
 
 .. _`vdec_if_deinit`:
 
@@ -58,8 +60,9 @@ vdec_if_deinit
 
     deinitialize decode driver
 
-    :param struct mtk_vcodec_ctx \*ctx:
+    :param ctx:
         [in] v4l2 context
+    :type ctx: struct mtk_vcodec_ctx \*
 
 .. _`vdec_if_decode`:
 
@@ -70,19 +73,23 @@ vdec_if_decode
 
     trigger decode
 
-    :param struct mtk_vcodec_ctx \*ctx:
+    :param ctx:
         [in] v4l2 context
+    :type ctx: struct mtk_vcodec_ctx \*
 
-    :param struct mtk_vcodec_mem \*bs:
+    :param bs:
         [in] input bitstream
+    :type bs: struct mtk_vcodec_mem \*
 
-    :param struct vdec_fb \*fb:
+    :param fb:
         [in] frame buffer to store decoded frame, when null menas parse
         header only
+    :type fb: struct vdec_fb \*
 
-    :param bool \*res_chg:
+    :param res_chg:
         [out] resolution change happens if current bs have different
         picture width/height
+    :type res_chg: bool \*
 
 .. _`vdec_if_decode.note`:
 
@@ -107,14 +114,17 @@ vdec_if_get_param
 
     get driver's parameter
 
-    :param struct mtk_vcodec_ctx \*ctx:
+    :param ctx:
         [in] v4l2 context
+    :type ctx: struct mtk_vcodec_ctx \*
 
-    :param enum vdec_get_param_type type:
+    :param type:
         [in] input parameter type
+    :type type: enum vdec_get_param_type
 
-    :param void \*out:
+    :param out:
         [out] buffer to store query result
+    :type out: void \*
 
 .. This file was automatic generated / don't edit.
 

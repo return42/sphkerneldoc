@@ -85,6 +85,7 @@ Definition
         struct list_head free_list;
         u32 runtime_addr;
         u32 runtime_ctrl;
+        struct dma_slave_config slave_config;
     }
 
 .. _`ep93xx_dma_chan.members`:
@@ -135,6 +136,9 @@ runtime_addr
 
 runtime_ctrl
     M2M runtime values for the control register.
+
+slave_config
+    *undescribed*
 
 .. _`ep93xx_dma_chan.description`:
 
@@ -241,11 +245,13 @@ ep93xx_dma_set_active
 
     set new active descriptor chain
 
-    :param struct ep93xx_dma_chan \*edmac:
+    :param edmac:
         channel
+    :type edmac: struct ep93xx_dma_chan \*
 
-    :param struct ep93xx_dma_desc \*desc:
+    :param desc:
         head of the new active descriptor chain
+    :type desc: struct ep93xx_dma_desc \*
 
 .. _`ep93xx_dma_set_active.description`:
 
@@ -256,7 +262,7 @@ Sets \ ``desc``\  to be the head of the new active descriptor chain. This is the
 chain which is processed next. The active list must be empty before calling
 this function.
 
-Called with \ ``edmac``\ ->lock held and interrupts disabled.
+Called with \ ``edmac->lock``\  held and interrupts disabled.
 
 .. _`ep93xx_dma_advance_active`:
 
@@ -267,21 +273,22 @@ ep93xx_dma_advance_active
 
     advances to the next active descriptor
 
-    :param struct ep93xx_dma_chan \*edmac:
+    :param edmac:
         channel
+    :type edmac: struct ep93xx_dma_chan \*
 
 .. _`ep93xx_dma_advance_active.description`:
 
 Description
 -----------
 
-Function advances active descriptor to the next in the \ ``edmac``\ ->active and
+Function advances active descriptor to the next in the \ ``edmac->active``\  and
 returns \ ``true``\  if we still have descriptors in the chain to process.
 Otherwise returns \ ``false``\ .
 
 When the channel is in cyclic mode always returns \ ``true``\ .
 
-Called with \ ``edmac``\ ->lock held and interrupts disabled.
+Called with \ ``edmac->lock``\  held and interrupts disabled.
 
 .. _`ep93xx_dma_advance_work`:
 
@@ -292,8 +299,9 @@ ep93xx_dma_advance_work
 
     start processing the next pending transaction
 
-    :param struct ep93xx_dma_chan \*edmac:
+    :param edmac:
         channel
+    :type edmac: struct ep93xx_dma_chan \*
 
 .. _`ep93xx_dma_advance_work.description`:
 
@@ -301,7 +309,7 @@ Description
 -----------
 
 If we have pending transactions queued and we are currently idling, this
-function takes the next queued transaction from the \ ``edmac``\ ->queue and
+function takes the next queued transaction from the \ ``edmac->queue``\  and
 pushes it to the hardware for execution.
 
 .. _`ep93xx_dma_tx_submit`:
@@ -313,8 +321,9 @@ ep93xx_dma_tx_submit
 
     set the prepared descriptor(s) to be executed
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         descriptor to be executed
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`ep93xx_dma_tx_submit.description`:
 
@@ -334,8 +343,9 @@ ep93xx_dma_alloc_chan_resources
 
     allocate resources for the channel
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel to allocate resources
+    :type chan: struct dma_chan \*
 
 .. _`ep93xx_dma_alloc_chan_resources.description`:
 
@@ -355,8 +365,9 @@ ep93xx_dma_free_chan_resources
 
     release resources for the channel
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel
+    :type chan: struct dma_chan \*
 
 .. _`ep93xx_dma_free_chan_resources.description`:
 
@@ -375,20 +386,25 @@ ep93xx_dma_prep_dma_memcpy
 
     prepare a memcpy DMA operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t dest:
+    :param dest:
         destination bus address
+    :type dest: dma_addr_t
 
-    :param dma_addr_t src:
+    :param src:
         source bus address
+    :type src: dma_addr_t
 
-    :param size_t len:
+    :param len:
         size of the transaction
+    :type len: size_t
 
-    :param unsigned long flags:
+    :param flags:
         flags for the descriptor
+    :type flags: unsigned long
 
 .. _`ep93xx_dma_prep_dma_memcpy.description`:
 
@@ -406,23 +422,29 @@ ep93xx_dma_prep_slave_sg
 
     prepare a slave DMA operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel
+    :type chan: struct dma_chan \*
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         list of buffers to transfer
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int sg_len:
+    :param sg_len:
         number of entries in \ ``sgl``\ 
+    :type sg_len: unsigned int
 
-    :param enum dma_transfer_direction dir:
+    :param dir:
         direction of tha DMA transfer
+    :type dir: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         flags for the descriptor
+    :type flags: unsigned long
 
-    :param void \*context:
+    :param context:
         operation context (ignored)
+    :type context: void \*
 
 .. _`ep93xx_dma_prep_slave_sg.description`:
 
@@ -440,23 +462,29 @@ ep93xx_dma_prep_dma_cyclic
 
     prepare a cyclic DMA operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         DMA mapped address of the buffer
+    :type dma_addr: dma_addr_t
 
-    :param size_t buf_len:
+    :param buf_len:
         length of the buffer (in bytes)
+    :type buf_len: size_t
 
-    :param size_t period_len:
+    :param period_len:
         length of a single period
+    :type period_len: size_t
 
-    :param enum dma_transfer_direction dir:
+    :param dir:
         direction of the operation
+    :type dir: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         tx descriptor status flags
+    :type flags: unsigned long
 
 .. _`ep93xx_dma_prep_dma_cyclic.description`:
 
@@ -480,8 +508,9 @@ ep93xx_dma_synchronize
 
     Synchronizes the termination of transfers to the current context.
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel
+    :type chan: struct dma_chan \*
 
 .. _`ep93xx_dma_synchronize.description`:
 
@@ -504,8 +533,9 @@ ep93xx_dma_terminate_all
 
     terminate all transactions
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel
+    :type chan: struct dma_chan \*
 
 .. _`ep93xx_dma_terminate_all.description`:
 
@@ -513,7 +543,7 @@ Description
 -----------
 
 Stops all DMA transactions. All descriptors are put back to the
-\ ``edmac``\ ->free_list and callbacks are \_not\_ called.
+\ ``edmac->free_list``\  and callbacks are \_not\_ called.
 
 .. _`ep93xx_dma_tx_status`:
 
@@ -524,14 +554,17 @@ ep93xx_dma_tx_status
 
     check if a transaction is completed
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel
+    :type chan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         transaction specific cookie
+    :type cookie: dma_cookie_t
 
-    :param struct dma_tx_state \*state:
+    :param state:
         state of the transaction is stored here if given
+    :type state: struct dma_tx_state \*
 
 .. _`ep93xx_dma_tx_status.description`:
 
@@ -549,8 +582,9 @@ ep93xx_dma_issue_pending
 
     push pending transactions to the hardware
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel
+    :type chan: struct dma_chan \*
 
 .. _`ep93xx_dma_issue_pending.description`:
 

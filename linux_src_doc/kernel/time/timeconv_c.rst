@@ -10,17 +10,20 @@ time64_to_tm
 
     converts the calendar time to local broken-down time
 
-    :param time64_t totalsecs:
+    :param totalsecs:
         00:00 on January 1, 1970,
         Coordinated Universal Time (UTC).
         \ ``offset``\       offset seconds adding to totalsecs.
         \ ``result``\       pointer to struct tm variable to receive broken-down time
+    :type totalsecs: time64_t
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param struct tm \*result:
+    :param result:
         *undescribed*
+    :type result: struct tm \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ i915_gem_shrink
 
     Shrink buffer object caches
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         i915 device
+    :type i915: struct drm_i915_private \*
 
-    :param unsigned long target:
+    :param target:
         amount of memory to make available, in pages
+    :type target: unsigned long
 
-    :param unsigned long \*nr_scanned:
+    :param nr_scanned:
         optional output for number of pages scanned (incremental)
+    :type nr_scanned: unsigned long \*
 
-    :param unsigned flags:
+    :param flags:
         control flags for selecting cache types
+    :type flags: unsigned
 
 .. _`i915_gem_shrink.description`:
 
@@ -58,8 +62,9 @@ i915_gem_shrink_all
 
     Shrink buffer object caches completely
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         i915 device
+    :type i915: struct drm_i915_private \*
 
 .. _`i915_gem_shrink_all.description`:
 
@@ -89,8 +94,9 @@ i915_gem_shrinker_register
 
     Register the i915 shrinker
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         i915 device
+    :type i915: struct drm_i915_private \*
 
 .. _`i915_gem_shrinker_register.description`:
 
@@ -108,8 +114,9 @@ i915_gem_shrinker_unregister
 
     Unregisters the i915 shrinker
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         i915 device
+    :type i915: struct drm_i915_private \*
 
 .. _`i915_gem_shrinker_unregister.description`:
 

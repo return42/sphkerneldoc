@@ -10,16 +10,19 @@ phy_register_fixup
 
     creates a new phy_fixup and adds it to the list
 
-    :param const char \*bus_id:
+    :param bus_id:
         A string which matches phydev->mdio.dev.bus_id (or PHY_ANY_ID)
+    :type bus_id: const char \*
 
-    :param u32 phy_uid:
+    :param phy_uid:
         Used to match against phydev->phy_id (the UID of the PHY)
         It can also be PHY_ANY_UID
+    :type phy_uid: u32
 
-    :param u32 phy_uid_mask:
+    :param phy_uid_mask:
         Applied to phydev->phy_id and fixup->phy_uid before
         comparison
+    :type phy_uid_mask: u32
 
     :param int (\*run)(struct phy_device \*):
         The actual code to be run when a matching PHY is found
@@ -33,14 +36,17 @@ phy_unregister_fixup
 
     remove a phy_fixup from the list
 
-    :param const char \*bus_id:
+    :param bus_id:
         A string matches fixup->bus_id (or PHY_ANY_ID) in phy_fixup_list
+    :type bus_id: const char \*
 
-    :param u32 phy_uid:
+    :param phy_uid:
         A phy id matches fixup->phy_id (or PHY_ANY_UID) in phy_fixup_list
+    :type phy_uid: u32
 
-    :param u32 phy_uid_mask:
+    :param phy_uid_mask:
         Applied to phy_uid and fixup->phy_uid before comparison
+    :type phy_uid_mask: u32
 
 .. _`get_phy_c45_ids`:
 
@@ -51,17 +57,21 @@ get_phy_c45_ids
 
     reads the specified addr for its 802.3-c45 IDs.
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the target MII bus
+    :type bus: struct mii_bus \*
 
-    :param int addr:
+    :param addr:
         PHY address on the MII bus
+    :type addr: int
 
-    :param u32 \*phy_id:
+    :param phy_id:
         where to store the ID retrieved.
+    :type phy_id: u32 \*
 
-    :param struct phy_c45_device_ids \*c45_ids:
+    :param c45_ids:
         where to store the c45 ID information.
+    :type c45_ids: struct phy_c45_device_ids \*
 
 .. _`get_phy_c45_ids.description`:
 
@@ -82,20 +92,25 @@ get_phy_id
 
     reads the specified addr for its ID.
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the target MII bus
+    :type bus: struct mii_bus \*
 
-    :param int addr:
+    :param addr:
         PHY address on the MII bus
+    :type addr: int
 
-    :param u32 \*phy_id:
+    :param phy_id:
         where to store the ID retrieved.
+    :type phy_id: u32 \*
 
-    :param bool is_c45:
+    :param is_c45:
         If true the PHY uses the 802.3 clause 45 protocol
+    :type is_c45: bool
 
-    :param struct phy_c45_device_ids \*c45_ids:
+    :param c45_ids:
         where to store the c45 ID information.
+    :type c45_ids: struct phy_c45_device_ids \*
 
 .. _`get_phy_id.description`:
 
@@ -118,14 +133,17 @@ get_phy_device
 
     reads the specified PHY device and returns its \ ``phy_device``\  struct
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the target MII bus
+    :type bus: struct mii_bus \*
 
-    :param int addr:
+    :param addr:
         PHY address on the MII bus
+    :type addr: int
 
-    :param bool is_c45:
+    :param is_c45:
         If true the PHY uses the 802.3 clause 45 protocol
+    :type is_c45: bool
 
 .. _`get_phy_device.description`:
 
@@ -144,8 +162,9 @@ phy_device_register
 
     Register the phy device on the MDIO bus
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         phy_device structure to be added to the MDIO bus
+    :type phydev: struct phy_device \*
 
 .. _`phy_device_remove`:
 
@@ -156,8 +175,9 @@ phy_device_remove
 
     Remove a previously registered phy device from the MDIO bus
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         phy_device structure to remove
+    :type phydev: struct phy_device \*
 
 .. _`phy_device_remove.description`:
 
@@ -177,8 +197,9 @@ phy_find_first
 
     finds the first PHY device on the bus
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the target MII bus
+    :type bus: struct mii_bus \*
 
 .. _`phy_prepare_link`:
 
@@ -189,8 +210,9 @@ phy_prepare_link
 
     prepares the PHY layer to monitor link status
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
     :param void (\*handler)(struct net_device \*):
         callback function for link status change notifications
@@ -216,17 +238,20 @@ phy_connect_direct
 
     connect an ethernet device to a specific phy_device
 
-    :param struct net_device \*dev:
+    :param dev:
         the network device to connect
+    :type dev: struct net_device \*
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the pointer to the phy device
+    :type phydev: struct phy_device \*
 
     :param void (\*handler)(struct net_device \*):
         callback function for state change notifications
 
-    :param phy_interface_t interface:
+    :param interface:
         PHY device's interface
+    :type interface: phy_interface_t
 
 .. _`phy_connect`:
 
@@ -237,17 +262,20 @@ phy_connect
 
     connect an ethernet device to a PHY device
 
-    :param struct net_device \*dev:
+    :param dev:
         the network device to connect
+    :type dev: struct net_device \*
 
-    :param const char \*bus_id:
+    :param bus_id:
         the id string of the PHY device to connect
+    :type bus_id: const char \*
 
     :param void (\*handler)(struct net_device \*):
         callback function for state change notifications
 
-    :param phy_interface_t interface:
+    :param interface:
         PHY device's interface
+    :type interface: phy_interface_t
 
 .. _`phy_connect.description`:
 
@@ -271,8 +299,9 @@ phy_disconnect
 
     disable interrupts, stop state machine, and detach a PHY device
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_poll_reset`:
 
@@ -283,8 +312,9 @@ phy_poll_reset
 
     Safely wait until a PHY reset has properly completed
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         The PHY device to poll
+    :type phydev: struct phy_device \*
 
 .. _`phy_poll_reset.description`:
 
@@ -314,17 +344,21 @@ phy_attach_direct
 
     attach a network device to a given PHY device pointer
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to attach
+    :type dev: struct net_device \*
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         Pointer to phy_device to attach
+    :type phydev: struct phy_device \*
 
-    :param u32 flags:
+    :param flags:
         PHY device's dev_flags
+    :type flags: u32
 
-    :param phy_interface_t interface:
+    :param interface:
         PHY device's interface
+    :type interface: phy_interface_t
 
 .. _`phy_attach_direct.description`:
 
@@ -348,14 +382,17 @@ phy_attach
 
     attach a network device to a particular PHY device
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to attach
+    :type dev: struct net_device \*
 
-    :param const char \*bus_id:
+    :param bus_id:
         Bus ID of PHY device to attach
+    :type bus_id: const char \*
 
-    :param phy_interface_t interface:
+    :param interface:
         PHY device's interface
+    :type interface: phy_interface_t
 
 .. _`phy_attach.description`:
 
@@ -374,8 +411,9 @@ phy_detach
 
     detach a PHY device from its network device
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_detach.description`:
 
@@ -394,8 +432,9 @@ phy_reset_after_clk_enable
 
     perform a PHY reset if needed
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_reset_after_clk_enable.description`:
 
@@ -416,8 +455,9 @@ genphy_config_advert
 
     sanitize and advertise auto-negotiation parameters
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_config_advert.description`:
 
@@ -438,8 +478,9 @@ genphy_config_eee_advert
 
     disable unwanted eee mode advertisement
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_config_eee_advert.description`:
 
@@ -459,8 +500,9 @@ genphy_setup_forced
 
     configures/forces speed/duplex from \ ``phydev``\ 
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_setup_forced.description`:
 
@@ -480,8 +522,9 @@ genphy_restart_aneg
 
     Enable and Restart Autonegotiation
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_config_aneg`:
 
@@ -492,8 +535,9 @@ genphy_config_aneg
 
     restart auto-negotiation or write BMCR
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_config_aneg.description`:
 
@@ -513,8 +557,9 @@ genphy_aneg_done
 
     return auto-negotiation status
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_aneg_done.description`:
 
@@ -534,8 +579,9 @@ genphy_update_link
 
     update link status in \ ``phydev``\ 
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_update_link.description`:
 
@@ -555,8 +601,9 @@ genphy_read_status
 
     check the link status and update current link state
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_read_status.description`:
 
@@ -577,8 +624,9 @@ genphy_soft_reset
 
     software reset the PHY via BMCR_RESET bit
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_soft_reset.description`:
 
@@ -595,6 +643,164 @@ Return
 
 0 on success, < 0 on failure
 
+.. _`phy_remove_link_mode`:
+
+phy_remove_link_mode
+====================
+
+.. c:function:: void phy_remove_link_mode(struct phy_device *phydev, u32 link_mode)
+
+    Remove a supported link mode
+
+    :param phydev:
+        phy_device structure to remove link mode from
+    :type phydev: struct phy_device \*
+
+    :param link_mode:
+        Link mode to be removed
+    :type link_mode: u32
+
+.. _`phy_remove_link_mode.description`:
+
+Description
+-----------
+
+Some MACs don't support all link modes which the PHY
+does.  e.g. a 1G MAC often does not support 1000Half. Add a helper
+to remove a link mode.
+
+.. _`phy_support_sym_pause`:
+
+phy_support_sym_pause
+=====================
+
+.. c:function:: void phy_support_sym_pause(struct phy_device *phydev)
+
+    Enable support of symmetrical pause
+
+    :param phydev:
+        target phy_device struct
+    :type phydev: struct phy_device \*
+
+.. _`phy_support_sym_pause.description`:
+
+Description
+-----------
+
+Called by the MAC to indicate is supports symmetrical
+Pause, but not asym pause.
+
+.. _`phy_support_asym_pause`:
+
+phy_support_asym_pause
+======================
+
+.. c:function:: void phy_support_asym_pause(struct phy_device *phydev)
+
+    Enable support of asym pause
+
+    :param phydev:
+        target phy_device struct
+    :type phydev: struct phy_device \*
+
+.. _`phy_support_asym_pause.description`:
+
+Description
+-----------
+
+Called by the MAC to indicate is supports Asym Pause.
+
+.. _`phy_set_sym_pause`:
+
+phy_set_sym_pause
+=================
+
+.. c:function:: void phy_set_sym_pause(struct phy_device *phydev, bool rx, bool tx, bool autoneg)
+
+    Configure symmetric Pause
+
+    :param phydev:
+        target phy_device struct
+    :type phydev: struct phy_device \*
+
+    :param rx:
+        Receiver Pause is supported
+    :type rx: bool
+
+    :param tx:
+        Transmit Pause is supported
+    :type tx: bool
+
+    :param autoneg:
+        Auto neg should be used
+    :type autoneg: bool
+
+.. _`phy_set_sym_pause.description`:
+
+Description
+-----------
+
+Configure advertised Pause support depending on if
+receiver pause and pause auto neg is supported. Generally called
+from the set_pauseparam .ndo.
+
+.. _`phy_set_asym_pause`:
+
+phy_set_asym_pause
+==================
+
+.. c:function:: void phy_set_asym_pause(struct phy_device *phydev, bool rx, bool tx)
+
+    Configure Pause and Asym Pause
+
+    :param phydev:
+        target phy_device struct
+    :type phydev: struct phy_device \*
+
+    :param rx:
+        Receiver Pause is supported
+    :type rx: bool
+
+    :param tx:
+        Transmit Pause is supported
+    :type tx: bool
+
+.. _`phy_set_asym_pause.description`:
+
+Description
+-----------
+
+Configure advertised Pause support depending on if
+transmit and receiver pause is supported. If there has been a
+change in adverting, trigger a new autoneg. Generally called from
+the set_pauseparam .ndo.
+
+.. _`phy_validate_pause`:
+
+phy_validate_pause
+==================
+
+.. c:function:: bool phy_validate_pause(struct phy_device *phydev, struct ethtool_pauseparam *pp)
+
+    Test if the PHY/MAC support the pause configuration
+
+    :param phydev:
+        phy_device struct
+    :type phydev: struct phy_device \*
+
+    :param pp:
+        requested pause configuration
+    :type pp: struct ethtool_pauseparam \*
+
+.. _`phy_validate_pause.description`:
+
+Description
+-----------
+
+Test if the PHY/MAC combination supports the Pause
+configuration the user is requesting. Returns True if it is
+supported, false otherwise.
+
 .. _`phy_probe`:
 
 phy_probe
@@ -604,8 +810,9 @@ phy_probe
 
     probe and init a PHY device
 
-    :param struct device \*dev:
+    :param dev:
         device to probe and init
+    :type dev: struct device \*
 
 .. _`phy_probe.description`:
 
@@ -625,11 +832,13 @@ phy_driver_register
 
     register a phy_driver with the PHY layer
 
-    :param struct phy_driver \*new_driver:
+    :param new_driver:
         new phy_driver to register
+    :type new_driver: struct phy_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         module owning this PHY
+    :type owner: struct module \*
 
 .. This file was automatic generated / don't edit.
 

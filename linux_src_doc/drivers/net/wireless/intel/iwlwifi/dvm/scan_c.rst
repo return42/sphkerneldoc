@@ -10,8 +10,9 @@ iwl_scan_cancel
 
     Cancel any currently executing HW scan
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
 .. _`iwl_scan_cancel_timeout`:
 
@@ -22,11 +23,13 @@ iwl_scan_cancel_timeout
 
     Cancel any currently executing HW scan
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param unsigned long ms:
+    :param ms:
         amount of time to wait (in milliseconds) for scan to abort
+    :type ms: unsigned long
 
 .. _`iwl_fill_probe_req`:
 
@@ -37,26 +40,33 @@ iwl_fill_probe_req
 
     fill in all required fields and IE for probe request
 
-    :param struct ieee80211_mgmt \*frame:
+    :param frame:
         *undescribed*
+    :type frame: struct ieee80211_mgmt \*
 
-    :param const u8 \*ta:
+    :param ta:
         *undescribed*
+    :type ta: const u8 \*
 
-    :param const u8 \*ies:
+    :param ies:
         *undescribed*
+    :type ies: const u8 \*
 
-    :param int ie_len:
+    :param ie_len:
         *undescribed*
+    :type ie_len: int
 
-    :param const u8 \*ssid:
+    :param ssid:
         *undescribed*
+    :type ssid: const u8 \*
 
-    :param u8 ssid_len:
+    :param ssid_len:
         *undescribed*
+    :type ssid_len: u8
 
-    :param int left:
+    :param left:
         *undescribed*
+    :type left: int
 
 .. This file was automatic generated / don't edit.
 

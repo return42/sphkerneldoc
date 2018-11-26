@@ -8,11 +8,13 @@ alb_change_hw_addr_on_detach
 
 .. c:function:: void alb_change_hw_addr_on_detach(struct bonding *bond, struct slave *slave)
 
-    :param struct bonding \*bond:
+    :param bond:
         bonding we're working on
+    :type bond: struct bonding \*
 
-    :param struct slave \*slave:
+    :param slave:
         the slave that was just detached
+    :type slave: struct slave \*
 
 .. _`alb_change_hw_addr_on_detach.description`:
 
@@ -35,11 +37,13 @@ alb_handle_addr_collision_on_attach
 
 .. c:function:: int alb_handle_addr_collision_on_attach(struct bonding *bond, struct slave *slave)
 
-    :param struct bonding \*bond:
+    :param bond:
         bonding we're working on
+    :type bond: struct bonding \*
 
-    :param struct slave \*slave:
+    :param slave:
         the slave that was just attached
+    :type slave: struct slave \*
 
 .. _`alb_handle_addr_collision_on_attach.description`:
 
@@ -75,11 +79,13 @@ alb_set_mac_address
 
 .. c:function:: int alb_set_mac_address(struct bonding *bond, void *addr)
 
-    :param struct bonding \*bond:
+    :param bond:
         *undescribed*
+    :type bond: struct bonding \*
 
-    :param void \*addr:
+    :param addr:
         *undescribed*
+    :type addr: void \*
 
 .. _`alb_set_mac_address.description`:
 
@@ -104,11 +110,13 @@ bond_alb_handle_active_change
 
     assign new curr_active_slave
 
-    :param struct bonding \*bond:
+    :param bond:
         our bonding struct
+    :type bond: struct bonding \*
 
-    :param struct slave \*new_slave:
+    :param new_slave:
         new slave to assign
+    :type new_slave: struct slave \*
 
 .. _`bond_alb_handle_active_change.description`:
 

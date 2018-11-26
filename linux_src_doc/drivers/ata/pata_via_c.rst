@@ -10,8 +10,9 @@ via_cable_detect
 
     cable detection
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
 .. _`via_cable_detect.description`:
 
@@ -34,20 +35,25 @@ via_do_set_mode
 
     set transfer mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param int mode:
+    :param mode:
         ATA mode being programmed
+    :type mode: int
 
-    :param int set_ast:
+    :param set_ast:
         Set to program address setup
+    :type set_ast: int
 
-    :param int udma_type:
+    :param udma_type:
         UDMA mode/format of registers
+    :type udma_type: int
 
 .. _`via_do_set_mode.description`:
 
@@ -74,11 +80,13 @@ via_mode_filter
 
     filter buggy device/mode pairs
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device
+    :type dev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         Mode bitmask
+    :type mask: unsigned long
 
 .. _`via_mode_filter.description`:
 
@@ -97,11 +105,13 @@ via_tf_load
 
     send taskfile registers to host controller
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to which output is sent
+    :type ap: struct ata_port \*
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         ATA taskfile register set
+    :type tf: const struct ata_taskfile \*
 
 .. _`via_tf_load.description`:
 
@@ -128,11 +138,13 @@ via_config_fifo
 
     set up the FIFO
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param unsigned int flags:
+    :param flags:
         configuration flags
+    :type flags: unsigned int
 
 .. _`via_config_fifo.description`:
 
@@ -151,11 +163,13 @@ via_init_one
 
     discovery callback
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         PCI table info
+    :type id: const struct pci_device_id \*
 
 .. _`via_init_one.description`:
 
@@ -174,8 +188,9 @@ via_reinit_one
 
     reinit after resume \ ``pdev``\ ; PCI device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`via_reinit_one.description`:
 

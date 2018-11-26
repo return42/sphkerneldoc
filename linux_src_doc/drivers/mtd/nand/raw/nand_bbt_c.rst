@@ -10,17 +10,21 @@ check_pattern
 
     [GENERIC] check if a pattern is in the buffer
 
-    :param uint8_t \*buf:
+    :param buf:
         the buffer to search
+    :type buf: uint8_t \*
 
-    :param int len:
+    :param len:
         the length of buffer to search
+    :type len: int
 
-    :param int paglen:
+    :param paglen:
         the pagelength
+    :type paglen: int
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         search pattern descriptor
+    :type td: struct nand_bbt_descr \*
 
 .. _`check_pattern.description`:
 
@@ -39,11 +43,13 @@ check_short_pattern
 
     [GENERIC] check if a pattern is in the buffer
 
-    :param uint8_t \*buf:
+    :param buf:
         the buffer to search
+    :type buf: uint8_t \*
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         search pattern descriptor
+    :type td: struct nand_bbt_descr \*
 
 .. _`check_short_pattern.description`:
 
@@ -63,8 +69,9 @@ add_marker_len
 
     compute the length of the marker in data area
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         BBT descriptor used for computation
+    :type td: struct nand_bbt_descr \*
 
 .. _`add_marker_len.description`:
 
@@ -82,23 +89,29 @@ read_bbt
 
     [GENERIC] Read the bad block table starting from page
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         temporary buffer
+    :type buf: uint8_t \*
 
-    :param int page:
+    :param page:
         the starting page
+    :type page: int
 
-    :param int num:
+    :param num:
         the number of bbt descriptors to read
+    :type num: int
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         the bbt describtion table
+    :type td: struct nand_bbt_descr \*
 
-    :param int offs:
+    :param offs:
         block number offset in the table
+    :type offs: int
 
 .. _`read_bbt.description`:
 
@@ -116,18 +129,22 @@ read_abs_bbt
 
     [GENERIC] Read the bad block table starting at a given page
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         temporary buffer
+    :type buf: uint8_t \*
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         descriptor for the bad block table
+    :type td: struct nand_bbt_descr \*
 
-    :param int chip:
+    :param chip:
         read the table for a specific chip, -1 read all chips; applies only if
         NAND_BBT_PERCHIP option is set
+    :type chip: int
 
 .. _`read_abs_bbt.description`:
 
@@ -146,17 +163,21 @@ scan_read_oob
 
     [GENERIC] Scan data+OOB region to buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         temporary buffer
+    :type buf: uint8_t \*
 
-    :param loff_t offs:
+    :param offs:
         offset at which to scan
+    :type offs: loff_t
 
-    :param size_t len:
+    :param len:
         length of data region to read
+    :type len: size_t
 
 .. _`scan_read_oob.description`:
 
@@ -176,17 +197,21 @@ read_abs_bbts
 
     [GENERIC] Read the bad block table(s) for all chips starting at a given page
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         temporary buffer
+    :type buf: uint8_t \*
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         descriptor for the bad block table
+    :type td: struct nand_bbt_descr \*
 
-    :param struct nand_bbt_descr \*md:
+    :param md:
         descriptor for the bad block table mirror
+    :type md: struct nand_bbt_descr \*
 
 .. _`read_abs_bbts.description`:
 
@@ -205,18 +230,22 @@ create_bbt
 
     [GENERIC] Create a bad block table by scanning the device
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         temporary buffer
+    :type buf: uint8_t \*
 
-    :param struct nand_bbt_descr \*bd:
+    :param bd:
         descriptor for the good/bad block search pattern
+    :type bd: struct nand_bbt_descr \*
 
-    :param int chip:
+    :param chip:
         create the table for a specific chip, -1 read all chips; applies only
         if NAND_BBT_PERCHIP option is set
+    :type chip: int
 
 .. _`create_bbt.description`:
 
@@ -235,14 +264,17 @@ search_bbt
 
     [GENERIC] scan the device for a specific bad block table
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         temporary buffer
+    :type buf: uint8_t \*
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         descriptor for the bad block table
+    :type td: struct nand_bbt_descr \*
 
 .. _`search_bbt.description`:
 
@@ -267,17 +299,21 @@ search_read_bbts
 
     [GENERIC] scan the device for bad block table(s)
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         temporary buffer
+    :type buf: uint8_t \*
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         descriptor for the bad block table
+    :type td: struct nand_bbt_descr \*
 
-    :param struct nand_bbt_descr \*md:
+    :param md:
         descriptor for the bad block table mirror
+    :type md: struct nand_bbt_descr \*
 
 .. _`search_read_bbts.description`:
 
@@ -295,17 +331,21 @@ get_bbt_block
 
     Get the first valid eraseblock suitable to store a BBT
 
-    :param struct nand_chip \*this:
+    :param this:
         the NAND device
+    :type this: struct nand_chip \*
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         the BBT description
+    :type td: struct nand_bbt_descr \*
 
-    :param struct nand_bbt_descr \*md:
+    :param md:
         the mirror BBT descriptor
+    :type md: struct nand_bbt_descr \*
 
-    :param int chip:
+    :param chip:
         the CHIP selector
+    :type chip: int
 
 .. _`get_bbt_block.description`:
 
@@ -327,17 +367,21 @@ mark_bbt_block_bad
 
     Mark one of the block reserved for BBT bad
 
-    :param struct nand_chip \*this:
+    :param this:
         the NAND device
+    :type this: struct nand_chip \*
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         the BBT description
+    :type td: struct nand_bbt_descr \*
 
-    :param int chip:
+    :param chip:
         the CHIP selector
+    :type chip: int
 
-    :param int block:
+    :param block:
         the BBT block to mark
+    :type block: int
 
 .. _`mark_bbt_block_bad.description`:
 
@@ -358,20 +402,25 @@ write_bbt
 
     [GENERIC] (Re)write the bad block table
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         temporary buffer
+    :type buf: uint8_t \*
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         descriptor for the bad block table
+    :type td: struct nand_bbt_descr \*
 
-    :param struct nand_bbt_descr \*md:
+    :param md:
         descriptor for the bad block table mirror
+    :type md: struct nand_bbt_descr \*
 
-    :param int chipsel:
+    :param chipsel:
         selector for a specific chip, -1 for all
+    :type chipsel: int
 
 .. _`write_bbt.description`:
 
@@ -389,11 +438,13 @@ nand_memory_bbt
 
     [GENERIC] create a memory based bad block table
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param struct nand_bbt_descr \*bd:
+    :param bd:
         descriptor for the good/bad block search pattern
+    :type bd: struct nand_bbt_descr \*
 
 .. _`nand_memory_bbt.description`:
 
@@ -412,14 +463,17 @@ check_create
 
     [GENERIC] create and write bbt(s) if necessary
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         temporary buffer
+    :type buf: uint8_t \*
 
-    :param struct nand_bbt_descr \*bd:
+    :param bd:
         descriptor for the good/bad block search pattern
+    :type bd: struct nand_bbt_descr \*
 
 .. _`check_create.description`:
 
@@ -440,11 +494,13 @@ mark_bbt_region
 
     [GENERIC] mark the bad block table regions
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         bad block table descriptor
+    :type td: struct nand_bbt_descr \*
 
 .. _`mark_bbt_region.description`:
 
@@ -463,11 +519,13 @@ verify_bbt_descr
 
     verify the bad block description
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param struct nand_bbt_descr \*bd:
+    :param bd:
         the table to verify
+    :type bd: struct nand_bbt_descr \*
 
 .. _`verify_bbt_descr.description`:
 
@@ -486,11 +544,13 @@ nand_scan_bbt
 
     [NAND Interface] scan, find, read and maybe create bad block table(s)
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param struct nand_bbt_descr \*bd:
+    :param bd:
         descriptor for the good/bad block search pattern
+    :type bd: struct nand_bbt_descr \*
 
 .. _`nand_scan_bbt.description`:
 
@@ -513,11 +573,13 @@ nand_update_bbt
 
     update bad block table(s)
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t offs:
+    :param offs:
         the offset of the newly marked block
+    :type offs: loff_t
 
 .. _`nand_update_bbt.description`:
 
@@ -535,8 +597,9 @@ nand_create_badblock_pattern
 
     [INTERN] Creates a BBT descriptor structure
 
-    :param struct nand_chip \*this:
+    :param this:
         NAND chip to create descriptor for
+    :type this: struct nand_chip \*
 
 .. _`nand_create_badblock_pattern.description`:
 
@@ -548,19 +611,20 @@ based on the properties of \ ``this``\ . The new descriptor is stored in
 this->badblock_pattern. Thus, this->badblock_pattern should be NULL when
 passed to this function.
 
-.. _`nand_default_bbt`:
+.. _`nand_create_bbt`:
 
-nand_default_bbt
-================
+nand_create_bbt
+===============
 
-.. c:function:: int nand_default_bbt(struct mtd_info *mtd)
+.. c:function:: int nand_create_bbt(struct nand_chip *this)
 
     [NAND Interface] Select a default bad block table for the device
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-.. _`nand_default_bbt.description`:
+.. _`nand_create_bbt.description`:
 
 Description
 -----------
@@ -573,48 +637,55 @@ calls the nand_scan_bbt function.
 nand_isreserved_bbt
 ===================
 
-.. c:function:: int nand_isreserved_bbt(struct mtd_info *mtd, loff_t offs)
+.. c:function:: int nand_isreserved_bbt(struct nand_chip *this, loff_t offs)
 
     [NAND Interface] Check if a block is reserved
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param loff_t offs:
+    :param offs:
         offset in the device
+    :type offs: loff_t
 
 .. _`nand_isbad_bbt`:
 
 nand_isbad_bbt
 ==============
 
-.. c:function:: int nand_isbad_bbt(struct mtd_info *mtd, loff_t offs, int allowbbt)
+.. c:function:: int nand_isbad_bbt(struct nand_chip *this, loff_t offs, int allowbbt)
 
     [NAND Interface] Check if a block is bad
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param loff_t offs:
+    :param offs:
         offset in the device
+    :type offs: loff_t
 
-    :param int allowbbt:
+    :param allowbbt:
         allow access to bad block table region
+    :type allowbbt: int
 
 .. _`nand_markbad_bbt`:
 
 nand_markbad_bbt
 ================
 
-.. c:function:: int nand_markbad_bbt(struct mtd_info *mtd, loff_t offs)
+.. c:function:: int nand_markbad_bbt(struct nand_chip *this, loff_t offs)
 
     [NAND Interface] Mark a block bad in the BBT
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param loff_t offs:
+    :param offs:
         offset of the bad block
+    :type offs: loff_t
 
 .. This file was automatic generated / don't edit.
 

@@ -8,11 +8,13 @@ iwl_mvm_hwrate_to_tx_status
 
 .. c:function:: void iwl_mvm_hwrate_to_tx_status(u32 rate_n_flags, struct ieee80211_tx_info *info)
 
-    :param u32 rate_n_flags:
+    :param rate_n_flags:
         *undescribed*
+    :type rate_n_flags: u32
 
-    :param struct ieee80211_tx_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct ieee80211_tx_info \*
 
 .. _`iwl_mvm_get_scd_ssn`:
 
@@ -23,11 +25,13 @@ iwl_mvm_get_scd_ssn
 
     returns the SSN of the SCD
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         *undescribed*
+    :type mvm: struct iwl_mvm \*
 
-    :param struct iwl_mvm_tx_resp \*tx_resp:
+    :param tx_resp:
         the Tx response from the fw (agg or non-agg)
+    :type tx_resp: struct iwl_mvm_tx_resp \*
 
 .. _`iwl_mvm_get_scd_ssn.description`:
 

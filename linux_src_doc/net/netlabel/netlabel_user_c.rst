@@ -10,8 +10,9 @@ netlbl_netlink_init
 
     Initialize the NETLINK communication channel
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`netlbl_netlink_init.description`:
 
@@ -31,11 +32,13 @@ netlbl_audit_start_common
 
     Start an audit message
 
-    :param int type:
+    :param type:
         audit message type
+    :type type: int
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_audit_start_common.description`:
 

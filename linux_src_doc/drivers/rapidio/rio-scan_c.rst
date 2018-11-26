@@ -10,8 +10,9 @@ rio_destid_alloc
 
     Allocate next available destID for given network
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network
+    :type net: struct rio_net \*
 
 .. _`rio_destid_alloc.description`:
 
@@ -31,11 +32,13 @@ rio_destid_reserve
 
     Reserve the specified destID
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network
+    :type net: struct rio_net \*
 
-    :param u16 destid:
+    :param destid:
         destID to reserve
+    :type destid: u16
 
 .. _`rio_destid_reserve.description`:
 
@@ -54,11 +57,13 @@ rio_destid_free
 
     free a previously allocated destID
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network
+    :type net: struct rio_net \*
 
-    :param u16 destid:
+    :param destid:
         destID to free
+    :type destid: u16
 
 .. _`rio_destid_free.description`:
 
@@ -76,8 +81,9 @@ rio_destid_first
 
     return first destID in use
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network
+    :type net: struct rio_net \*
 
 .. _`rio_destid_next`:
 
@@ -88,11 +94,13 @@ rio_destid_next
 
     return next destID in use
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network
+    :type net: struct rio_net \*
 
-    :param u16 from:
+    :param from:
         destination ID from which search shall continue
+    :type from: u16
 
 .. _`rio_get_device_id`:
 
@@ -103,14 +111,17 @@ rio_get_device_id
 
     Get the base/extended device id for a device
 
-    :param struct rio_mport \*port:
+    :param port:
         RIO master port
+    :type port: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         Destination ID of device
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Hopcount to device
+    :type hopcount: u8
 
 .. _`rio_get_device_id.description`:
 
@@ -129,17 +140,21 @@ rio_set_device_id
 
     Set the base/extended device id for a device
 
-    :param struct rio_mport \*port:
+    :param port:
         RIO master port
+    :type port: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         Destination ID of device
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Hopcount to device
+    :type hopcount: u8
 
-    :param u16 did:
+    :param did:
         Device ID value to be written
+    :type did: u16
 
 .. _`rio_set_device_id.description`:
 
@@ -157,8 +172,9 @@ rio_clear_locks
 
     Release all host locks and signal enumeration complete
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network to run on
+    :type net: struct rio_net \*
 
 .. _`rio_clear_locks.description`:
 
@@ -178,8 +194,9 @@ rio_enum_host
 
     Set host lock and initialize host destination ID
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to issue transaction
+    :type port: struct rio_mport \*
 
 .. _`rio_enum_host.description`:
 
@@ -199,14 +216,17 @@ rio_device_has_destid
 
     Test if a device contains a destination ID register
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to issue transaction
+    :type port: struct rio_mport \*
 
-    :param int src_ops:
+    :param src_ops:
         RIO device source operations
+    :type src_ops: int
 
-    :param int dst_ops:
+    :param dst_ops:
         RIO device destination operations
+    :type dst_ops: int
 
 .. _`rio_device_has_destid.description`:
 
@@ -226,8 +246,9 @@ rio_release_dev
 
     Frees a RIO device struct
 
-    :param struct device \*dev:
+    :param dev:
         LDM device associated with a RIO device struct
+    :type dev: struct device \*
 
 .. _`rio_release_dev.description`:
 
@@ -246,8 +267,9 @@ rio_is_switch
 
     Tests if a RIO device has switch capabilities
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
 .. _`rio_is_switch.description`:
 
@@ -268,20 +290,25 @@ rio_setup_device
 
     Allocates and sets up a RIO device
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network
+    :type net: struct rio_net \*
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to send transactions
+    :type port: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         Current destination ID
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Current hopcount
+    :type hopcount: u8
 
-    :param int do_enum:
+    :param do_enum:
         Enumeration/Discovery mode flag
+    :type do_enum: int
 
 .. _`rio_setup_device.description`:
 
@@ -304,11 +331,13 @@ rio_sport_is_active
 
     Tests if a switch port has an active connection.
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RapidIO device object
+    :type rdev: struct rio_dev \*
 
-    :param int sp:
+    :param sp:
         Switch port number
+    :type sp: int
 
 .. _`rio_sport_is_active.description`:
 
@@ -329,11 +358,13 @@ rio_get_host_deviceid_lock
 
     Reads the Host Device ID Lock CSR on a device
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to send transaction
+    :type port: struct rio_mport \*
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of hops to the device
+    :type hopcount: u8
 
 .. _`rio_get_host_deviceid_lock.description`:
 
@@ -352,20 +383,25 @@ rio_enum_peer
 
     Recursively enumerate a RIO network through a master port
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network being enumerated
+    :type net: struct rio_net \*
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to send transactions
+    :type port: struct rio_mport \*
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of hops into the network
+    :type hopcount: u8
 
-    :param struct rio_dev \*prev:
+    :param prev:
         Previous RIO device connected to the enumerated one
+    :type prev: struct rio_dev \*
 
-    :param int prev_port:
+    :param prev_port:
         Port on previous RIO device
+    :type prev_port: int
 
 .. _`rio_enum_peer.description`:
 
@@ -384,8 +420,9 @@ rio_enum_complete
 
     Tests if enumeration of a network is complete
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to send transaction
+    :type port: struct rio_mport \*
 
 .. _`rio_enum_complete.description`:
 
@@ -405,23 +442,29 @@ rio_disc_peer
 
     Recursively discovers a RIO network through a master port
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network being discovered
+    :type net: struct rio_net \*
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to send transactions
+    :type port: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         Current destination ID in network
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of hops into the network
+    :type hopcount: u8
 
-    :param struct rio_dev \*prev:
+    :param prev:
         previous rio_dev
+    :type prev: struct rio_dev \*
 
-    :param int prev_port:
+    :param prev_port:
         previous port number
+    :type prev_port: int
 
 .. _`rio_disc_peer.description`:
 
@@ -440,8 +483,9 @@ rio_mport_is_active
 
     Tests if master port link is active
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to test
+    :type port: struct rio_mport \*
 
 .. _`rio_mport_is_active.description`:
 
@@ -462,8 +506,9 @@ rio_update_route_tables
 
     Updates route tables in switches
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network to run update on
+    :type net: struct rio_net \*
 
 .. _`rio_update_route_tables.description`:
 
@@ -483,8 +528,9 @@ rio_init_em
 
     Initializes RIO Error Management (for switches)
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
 .. _`rio_init_em.description`:
 
@@ -503,11 +549,13 @@ rio_enum_mport
 
     Start enumeration through a master port
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port to send transactions
+    :type mport: struct rio_mport \*
 
-    :param u32 flags:
+    :param flags:
         Enumeration control flags
+    :type flags: u32
 
 .. _`rio_enum_mport.description`:
 
@@ -528,8 +576,9 @@ rio_build_route_tables
 
     Generate route tables from switch route entries
 
-    :param struct rio_net \*net:
+    :param net:
         RIO network to run route tables scan on
+    :type net: struct rio_net \*
 
 .. _`rio_build_route_tables.description`:
 
@@ -548,11 +597,13 @@ rio_disc_mport
 
     Start discovery through a master port
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port to send transactions
+    :type mport: struct rio_mport \*
 
-    :param u32 flags:
+    :param flags:
         discovery control flags
+    :type flags: u32
 
 .. _`rio_disc_mport.description`:
 
@@ -573,8 +624,9 @@ rio_basic_attach
 
 .. c:function:: int rio_basic_attach( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rio_basic_attach.description`:
 

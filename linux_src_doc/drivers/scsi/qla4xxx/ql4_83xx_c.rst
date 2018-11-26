@@ -10,8 +10,9 @@ qla4_83xx_need_reset_handler
 
     Code to start reset sequence
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_83xx_need_reset_handler.note`:
 
@@ -29,20 +30,25 @@ qla4_83xx_poll_reg
 
     Poll the given CRB addr for duration msecs till value read ANDed with test_mask is equal to test_result.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param uint32_t addr:
+    :param addr:
         CRB register address
+    :type addr: uint32_t
 
-    :param int duration:
+    :param duration:
         Poll for total of "duration" msecs
+    :type duration: int
 
-    :param uint32_t test_mask:
+    :param test_mask:
         Mask value read with "test_mask"
+    :type test_mask: uint32_t
 
-    :param uint32_t test_result:
+    :param test_result:
         Compare (value&test_mask) with test_result.
+    :type test_result: uint32_t
 
 .. _`qla4_83xx_read_reset_template`:
 
@@ -53,8 +59,9 @@ qla4_83xx_read_reset_template
 
     Read Reset Template from Flash
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_83xx_read_write_crb_reg`:
 
@@ -65,14 +72,17 @@ qla4_83xx_read_write_crb_reg
 
     Read from raddr and write value to waddr.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param uint32_t raddr:
+    :param raddr:
         CRB address to read from
+    :type raddr: uint32_t
 
-    :param uint32_t waddr:
+    :param waddr:
         CRB address to write to
+    :type waddr: uint32_t
 
 .. _`qla4_83xx_rmw_crb_reg`:
 
@@ -83,17 +93,21 @@ qla4_83xx_rmw_crb_reg
 
     Read Modify Write crb register
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param uint32_t raddr:
+    :param raddr:
         CRB address to read from
+    :type raddr: uint32_t
 
-    :param uint32_t waddr:
+    :param waddr:
         CRB address to write to
+    :type waddr: uint32_t
 
-    :param struct qla4_83xx_rmw \*p_rmw_hdr:
+    :param p_rmw_hdr:
         header with shift/or/xor values.
+    :type p_rmw_hdr: struct qla4_83xx_rmw \*
 
 .. _`qla4_83xx_rmw_crb_reg.description`:
 
@@ -112,11 +126,13 @@ qla4_83xx_process_reset_template
 
     Process reset template.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param char \*p_buff:
+    :param p_buff:
         Common reset entry header.
+    :type p_buff: char \*
 
 .. _`qla4_83xx_process_reset_template.description`:
 
@@ -137,8 +153,9 @@ qla4_83xx_isp_reset
 
     Resets ISP and aborts all outstanding commands.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_83xx_eport_init`:
 
@@ -149,8 +166,9 @@ qla4_83xx_eport_init
 
     Initialize EPort.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_83xx_eport_init.description`:
 
@@ -170,8 +188,9 @@ qla4_83xx_is_detached
 
     Check if we are marked invisible.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. This file was automatic generated / don't edit.
 

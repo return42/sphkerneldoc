@@ -10,8 +10,9 @@ llc_pdu_type
 
     returns which LLC component must handle for PDU
 
-    :param struct sk_buff \*skb:
+    :param skb:
         input skb
+    :type skb: struct sk_buff \*
 
 .. _`llc_pdu_type.description`:
 
@@ -29,8 +30,9 @@ llc_fixup_skb
 
     initializes skb pointers
 
-    :param struct sk_buff \*skb:
+    :param skb:
         This argument points to incoming skb
+    :type skb: struct sk_buff \*
 
 .. _`llc_fixup_skb.description`:
 
@@ -51,17 +53,21 @@ llc_rcv
 
     802.2 entry point from net lower layers
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received pdu
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         device that receive pdu
+    :type dev: struct net_device \*
 
-    :param struct packet_type \*pt:
+    :param pt:
         packet type
+    :type pt: struct packet_type \*
 
-    :param struct net_device \*orig_dev:
+    :param orig_dev:
         *undescribed*
+    :type orig_dev: struct net_device \*
 
 .. _`llc_rcv.description`:
 

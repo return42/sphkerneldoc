@@ -10,11 +10,13 @@ gen_pool_create
 
     create a new special memory pool
 
-    :param int min_alloc_order:
+    :param min_alloc_order:
         log base 2 of number of bytes each bitmap bit represents
+    :type min_alloc_order: int
 
-    :param int nid:
+    :param nid:
         node id of the node the pool structure should be allocated on, or -1
+    :type nid: int
 
 .. _`gen_pool_create.description`:
 
@@ -33,21 +35,26 @@ gen_pool_add_virt
 
     add a new chunk of special memory to the pool
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to add new memory chunk to
+    :type pool: struct gen_pool \*
 
-    :param unsigned long virt:
+    :param virt:
         virtual starting address of memory chunk to add to pool
+    :type virt: unsigned long
 
-    :param phys_addr_t phys:
+    :param phys:
         physical starting address of memory chunk to add to pool
+    :type phys: phys_addr_t
 
-    :param size_t size:
+    :param size:
         size in bytes of the memory chunk to add to pool
+    :type size: size_t
 
-    :param int nid:
+    :param nid:
         node id of the node the chunk structure and bitmap should be
         allocated on, or -1
+    :type nid: int
 
 .. _`gen_pool_add_virt.description`:
 
@@ -67,11 +74,13 @@ gen_pool_virt_to_phys
 
     return the physical address of memory
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to allocate from
+    :type pool: struct gen_pool \*
 
-    :param unsigned long addr:
+    :param addr:
         starting address of memory
+    :type addr: unsigned long
 
 .. _`gen_pool_virt_to_phys.description`:
 
@@ -89,8 +98,9 @@ gen_pool_destroy
 
     destroy a special memory pool
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to destroy
+    :type pool: struct gen_pool \*
 
 .. _`gen_pool_destroy.description`:
 
@@ -109,11 +119,13 @@ gen_pool_alloc
 
     allocate special memory from the pool
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to allocate from
+    :type pool: struct gen_pool \*
 
-    :param size_t size:
+    :param size:
         number of bytes to allocate from the pool
+    :type size: size_t
 
 .. _`gen_pool_alloc.description`:
 
@@ -134,17 +146,21 @@ gen_pool_alloc_algo
 
     allocate special memory from the pool
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to allocate from
+    :type pool: struct gen_pool \*
 
-    :param size_t size:
+    :param size:
         number of bytes to allocate from the pool
+    :type size: size_t
 
-    :param genpool_algo_t algo:
+    :param algo:
         algorithm passed from caller
+    :type algo: genpool_algo_t
 
-    :param void \*data:
+    :param data:
         data passed to algorithm
+    :type data: void \*
 
 .. _`gen_pool_alloc_algo.description`:
 
@@ -165,14 +181,17 @@ gen_pool_dma_alloc
 
     allocate special memory from the pool for DMA usage
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to allocate from
+    :type pool: struct gen_pool \*
 
-    :param size_t size:
+    :param size:
         number of bytes to allocate from the pool
+    :type size: size_t
 
-    :param dma_addr_t \*dma:
+    :param dma:
         dma-view physical address return value.  Use NULL if unneeded.
+    :type dma: dma_addr_t \*
 
 .. _`gen_pool_dma_alloc.description`:
 
@@ -193,14 +212,17 @@ gen_pool_free
 
     free allocated special memory back to the pool
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to free to
+    :type pool: struct gen_pool \*
 
-    :param unsigned long addr:
+    :param addr:
         starting address of memory to free back to pool
+    :type addr: unsigned long
 
-    :param size_t size:
+    :param size:
         size in bytes of memory to free
+    :type size: size_t
 
 .. _`gen_pool_free.description`:
 
@@ -220,14 +242,16 @@ gen_pool_for_each_chunk
 
     call func for every chunk of generic memory pool
 
-    :param struct gen_pool \*pool:
+    :param pool:
         the generic memory pool
+    :type pool: struct gen_pool \*
 
     :param void (\*func)(struct gen_pool \*pool, struct gen_pool_chunk \*chunk, void \*data):
         func to call
 
-    :param void \*data:
+    :param data:
         additional data used by \ ``func``\ 
+    :type data: void \*
 
 .. _`gen_pool_for_each_chunk.description`:
 
@@ -246,14 +270,17 @@ addr_in_gen_pool
 
     checks if an address falls within the range of a pool
 
-    :param struct gen_pool \*pool:
+    :param pool:
         the generic memory pool
+    :type pool: struct gen_pool \*
 
-    :param unsigned long start:
+    :param start:
         start address
+    :type start: unsigned long
 
-    :param size_t size:
+    :param size:
         size of the region
+    :type size: size_t
 
 .. _`addr_in_gen_pool.description`:
 
@@ -272,8 +299,9 @@ gen_pool_avail
 
     get available free space of the pool
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to get available free space
+    :type pool: struct gen_pool \*
 
 .. _`gen_pool_avail.description`:
 
@@ -291,8 +319,9 @@ gen_pool_size
 
     get size in bytes of memory managed by the pool
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to get size
+    :type pool: struct gen_pool \*
 
 .. _`gen_pool_size.description`:
 
@@ -310,14 +339,17 @@ gen_pool_set_algo
 
     set the allocation algorithm
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to change allocation algorithm
+    :type pool: struct gen_pool \*
 
-    :param genpool_algo_t algo:
+    :param algo:
         custom algorithm function
+    :type algo: genpool_algo_t
 
-    :param void \*data:
+    :param data:
         additional data used by \ ``algo``\ 
+    :type data: void \*
 
 .. _`gen_pool_set_algo.description`:
 
@@ -337,23 +369,29 @@ gen_pool_first_fit
 
     find the first available region of memory matching the size requirement (no alignment constraint)
 
-    :param unsigned long \*map:
+    :param map:
         The address to base the search on
+    :type map: unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The bitmap size in bits
+    :type size: unsigned long
 
-    :param unsigned long start:
+    :param start:
         The bitnumber to start searching at
+    :type start: unsigned long
 
-    :param unsigned int nr:
+    :param nr:
         The number of zeroed bits we're looking for
+    :type nr: unsigned int
 
-    :param void \*data:
+    :param data:
         additional data - unused
+    :type data: void \*
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to find the fit region memory from
+    :type pool: struct gen_pool \*
 
 .. _`gen_pool_first_fit_align`:
 
@@ -364,23 +402,29 @@ gen_pool_first_fit_align
 
     find the first available region of memory matching the size requirement (alignment constraint)
 
-    :param unsigned long \*map:
+    :param map:
         The address to base the search on
+    :type map: unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The bitmap size in bits
+    :type size: unsigned long
 
-    :param unsigned long start:
+    :param start:
         The bitnumber to start searching at
+    :type start: unsigned long
 
-    :param unsigned int nr:
+    :param nr:
         The number of zeroed bits we're looking for
+    :type nr: unsigned int
 
-    :param void \*data:
+    :param data:
         data for alignment
+    :type data: void \*
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to get order from
+    :type pool: struct gen_pool \*
 
 .. _`gen_pool_fixed_alloc`:
 
@@ -391,23 +435,29 @@ gen_pool_fixed_alloc
 
     reserve a specific region
 
-    :param unsigned long \*map:
+    :param map:
         The address to base the search on
+    :type map: unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The bitmap size in bits
+    :type size: unsigned long
 
-    :param unsigned long start:
+    :param start:
         The bitnumber to start searching at
+    :type start: unsigned long
 
-    :param unsigned int nr:
+    :param nr:
         The number of zeroed bits we're looking for
+    :type nr: unsigned int
 
-    :param void \*data:
+    :param data:
         data for alignment
+    :type data: void \*
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to get order from
+    :type pool: struct gen_pool \*
 
 .. _`gen_pool_first_fit_order_align`:
 
@@ -418,23 +468,29 @@ gen_pool_first_fit_order_align
 
     find the first available region of memory matching the size requirement. The region will be aligned to the order of the size specified.
 
-    :param unsigned long \*map:
+    :param map:
         The address to base the search on
+    :type map: unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The bitmap size in bits
+    :type size: unsigned long
 
-    :param unsigned long start:
+    :param start:
         The bitnumber to start searching at
+    :type start: unsigned long
 
-    :param unsigned int nr:
+    :param nr:
         The number of zeroed bits we're looking for
+    :type nr: unsigned int
 
-    :param void \*data:
+    :param data:
         additional data - unused
+    :type data: void \*
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to find the fit region memory from
+    :type pool: struct gen_pool \*
 
 .. _`gen_pool_best_fit`:
 
@@ -445,23 +501,29 @@ gen_pool_best_fit
 
     find the best fitting region of memory macthing the size requirement (no alignment constraint)
 
-    :param unsigned long \*map:
+    :param map:
         The address to base the search on
+    :type map: unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The bitmap size in bits
+    :type size: unsigned long
 
-    :param unsigned long start:
+    :param start:
         The bitnumber to start searching at
+    :type start: unsigned long
 
-    :param unsigned int nr:
+    :param nr:
         The number of zeroed bits we're looking for
+    :type nr: unsigned int
 
-    :param void \*data:
+    :param data:
         additional data - unused
+    :type data: void \*
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool to find the fit region memory from
+    :type pool: struct gen_pool \*
 
 .. _`gen_pool_best_fit.description`:
 
@@ -480,11 +542,13 @@ gen_pool_get
 
     Obtain the gen_pool (if any) for a device
 
-    :param struct device \*dev:
+    :param dev:
         device to retrieve the gen_pool from
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of a gen_pool or NULL, identifies a particular gen_pool on device
+    :type name: const char \*
 
 .. _`gen_pool_get.description`:
 
@@ -502,17 +566,21 @@ devm_gen_pool_create
 
     managed gen_pool_create
 
-    :param struct device \*dev:
+    :param dev:
         device that provides the gen_pool
+    :type dev: struct device \*
 
-    :param int min_alloc_order:
+    :param min_alloc_order:
         log base 2 of number of bytes each bitmap bit represents
+    :type min_alloc_order: int
 
-    :param int nid:
+    :param nid:
         node selector for allocated gen_pool, \ ``NUMA_NO_NODE``\  for all nodes
+    :type nid: int
 
-    :param const char \*name:
+    :param name:
         name of a gen_pool or NULL, identifies a particular gen_pool on device
+    :type name: const char \*
 
 .. _`devm_gen_pool_create.description`:
 
@@ -532,14 +600,17 @@ of_gen_pool_get
 
     find a pool by phandle property
 
-    :param struct device_node \*np:
+    :param np:
         device node
+    :type np: struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         property name containing phandle(s)
+    :type propname: const char \*
 
-    :param int index:
+    :param index:
         index into the phandle array
+    :type index: int
 
 .. _`of_gen_pool_get.description`:
 

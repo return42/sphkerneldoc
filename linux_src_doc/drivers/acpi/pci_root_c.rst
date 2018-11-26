@@ -10,8 +10,9 @@ acpi_is_root_bridge
 
     determine whether an ACPI CA node is a PCI root bridge \ ``handle``\  - the ACPI CA node in question.
 
-    :param acpi_handle handle:
+    :param handle:
         *undescribed*
+    :type handle: acpi_handle
 
 .. _`acpi_is_root_bridge.note`:
 
@@ -30,8 +31,9 @@ acpi_get_pci_dev
 
     convert ACPI CA handle to struct pci_dev
 
-    :param acpi_handle handle:
+    :param handle:
         the handle in question
+    :type handle: acpi_handle
 
 .. _`acpi_get_pci_dev.description`:
 
@@ -55,14 +57,17 @@ acpi_pci_osc_control_set
 
     Request control of PCI root \_OSC features.
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI handle of a PCI root bridge (or PCIe Root Complex).
+    :type handle: acpi_handle
 
-    :param u32 \*mask:
+    :param mask:
         Mask of \_OSC bits to request control of, place to store control mask.
+    :type mask: u32 \*
 
-    :param u32 req:
+    :param req:
         Mask of \_OSC bits the control of is essential to the caller.
+    :type req: u32
 
 .. _`acpi_pci_osc_control_set.description`:
 

@@ -10,8 +10,9 @@ cpdma_chan_split_pool
 
     Splits ctrl pool between all channels. Has to be called under ctlr lock
 
-    :param struct cpdma_ctlr \*ctlr:
+    :param ctlr:
         *undescribed*
+    :type ctlr: struct cpdma_ctlr \*
 
 .. This file was automatic generated / don't edit.
 

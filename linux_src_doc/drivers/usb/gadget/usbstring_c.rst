@@ -10,14 +10,17 @@ usb_gadget_get_string
 
     fill out a string descriptor
 
-    :param const struct usb_gadget_strings \*table:
+    :param table:
         of c strings encoded using UTF-8
+    :type table: const struct usb_gadget_strings \*
 
-    :param int id:
+    :param id:
         string id, from low byte of wValue in get string descriptor
+    :type id: int
 
-    :param u8 \*buf:
+    :param buf:
         at least 256 bytes, must be 16-bit aligned
+    :type buf: u8 \*
 
 .. _`usb_gadget_get_string.description`:
 

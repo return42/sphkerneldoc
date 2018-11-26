@@ -10,17 +10,21 @@ sram_exec_copy
 
     copy data to a protected executable region of sram
 
-    :param struct gen_pool \*pool:
+    :param pool:
         struct gen_pool retrieved that is part of this sram
+    :type pool: struct gen_pool \*
 
-    :param void \*dst:
+    :param dst:
         Destination address for the copy, that must be inside pool
+    :type dst: void \*
 
-    :param void \*src:
+    :param src:
         Source address for the data to copy
+    :type src: void \*
 
-    :param size_t size:
+    :param size:
         Size of copy to perform, which starting from dst, must reside in pool
+    :type size: size_t
 
 .. _`sram_exec_copy.return`:
 

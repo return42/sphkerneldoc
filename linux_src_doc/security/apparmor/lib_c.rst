@@ -10,11 +10,13 @@ aa_split_fqname
 
     split a fqname into a profile and namespace name
 
-    :param char \*fqname:
+    :param fqname:
         a full qualified name in namespace profile format (NOT NULL)
+    :type fqname: char \*
 
-    :param char \*\*ns_name:
+    :param ns_name:
         pointer to portion of the string containing the ns name (NOT NULL)
+    :type ns_name: char \*\*
 
 .. _`aa_split_fqname.return`:
 
@@ -44,11 +46,13 @@ skipn_spaces
 
     Removes leading whitespace from \ ``str``\ .
 
-    :param const char \*str:
+    :param str:
         The string to be stripped.
+    :type str: const char \*
 
-    :param size_t n:
+    :param n:
         *undescribed*
+    :type n: size_t
 
 .. _`skipn_spaces.description`:
 
@@ -67,26 +71,34 @@ aa_info_message
 
     log a none profile related status message
 
-    :param const char \*str:
+    :param str:
         message to log
+    :type str: const char \*
 
 .. _`aa_perm_mask_to_str`:
 
 aa_perm_mask_to_str
 ===================
 
-.. c:function:: void aa_perm_mask_to_str(char *str, const char *chrs, u32 mask)
+.. c:function:: void aa_perm_mask_to_str(char *str, size_t str_size, const char *chrs, u32 mask)
 
     convert a perm mask to its short string
 
-    :param char \*str:
+    :param str:
         character buffer to store string in (at least 10 characters)
+    :type str: char \*
 
-    :param const char \*chrs:
-        *undescribed*
+    :param str_size:
+        size of the \ ``str``\  buffer
+    :type str_size: size_t
 
-    :param u32 mask:
+    :param chrs:
+        NUL-terminated character buffer of permission characters
+    :type chrs: const char \*
+
+    :param mask:
         permission mask to convert
+    :type mask: u32
 
 .. _`aa_audit_perms_cb`:
 
@@ -97,11 +109,13 @@ aa_audit_perms_cb
 
     generic callback fn for auditing perms
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         audit buffer (NOT NULL)
+    :type ab: struct audit_buffer \*
 
-    :param void \*va:
+    :param va:
         audit struct to audit values of (NOT NULL)
+    :type va: void \*
 
 .. _`aa_apply_modes_to_perms`:
 
@@ -112,11 +126,13 @@ aa_apply_modes_to_perms
 
     apply namespace and profile flags to perms
 
-    :param struct aa_profile \*profile:
+    :param profile:
         that perms where computed from
+    :type profile: struct aa_profile \*
 
-    :param struct aa_perms \*perms:
+    :param perms:
         perms to apply mode modifiers to
+    :type perms: struct aa_perms \*
 
 .. _`aa_apply_modes_to_perms.todo`:
 
@@ -134,11 +150,13 @@ aa_perms_accum_raw
 
     accumulate perms with out masking off overlapping perms \ ``accum``\  - perms struct to accumulate into \ ``addend``\  - perms struct to add to \ ``accum``\ 
 
-    :param struct aa_perms \*accum:
+    :param accum:
         *undescribed*
+    :type accum: struct aa_perms \*
 
-    :param struct aa_perms \*addend:
+    :param addend:
         *undescribed*
+    :type addend: struct aa_perms \*
 
 .. _`aa_perms_accum`:
 
@@ -149,11 +167,13 @@ aa_perms_accum
 
     accumulate perms, masking off overlapping perms \ ``accum``\  - perms struct to accumulate into \ ``addend``\  - perms struct to add to \ ``accum``\ 
 
-    :param struct aa_perms \*accum:
+    :param accum:
         *undescribed*
+    :type accum: struct aa_perms \*
 
-    :param struct aa_perms \*addend:
+    :param addend:
         *undescribed*
+    :type addend: struct aa_perms \*
 
 .. _`aa_check_perms`:
 
@@ -164,17 +184,21 @@ aa_check_perms
 
     do audit mode selection based on perms set
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile being checked
+    :type profile: struct aa_profile \*
 
-    :param struct aa_perms \*perms:
+    :param perms:
         perms computed for the request
+    :type perms: struct aa_perms \*
 
-    :param u32 request:
+    :param request:
         requested perms
+    :type request: u32
 
-    :param struct common_audit_data \*sa:
+    :param sa:
         initialized audit structure (MAY BE NULL if not auditing)
+    :type sa: struct common_audit_data \*
 
     :param void (\*cb)(struct audit_buffer \*, void \*):
         callback fn for type specific fields (MAY BE NULL)
@@ -207,17 +231,21 @@ aa_policy_init
 
     initialize a policy structure
 
-    :param struct aa_policy \*policy:
+    :param policy:
         policy to initialize  (NOT NULL)
+    :type policy: struct aa_policy \*
 
-    :param const char \*prefix:
+    :param prefix:
         prefix name if any is required.  (MAYBE NULL)
+    :type prefix: const char \*
 
-    :param const char \*name:
+    :param name:
         name of the policy, init will make a copy of it  (NOT NULL)
+    :type name: const char \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation mode
+    :type gfp: gfp_t
 
 .. _`aa_policy_init.note`:
 
@@ -242,8 +270,9 @@ aa_policy_destroy
 
     free the elements referenced by \ ``policy``\ 
 
-    :param struct aa_policy \*policy:
+    :param policy:
         policy that is to have its elements freed  (NOT NULL)
+    :type policy: struct aa_policy \*
 
 .. This file was automatic generated / don't edit.
 

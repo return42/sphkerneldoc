@@ -1,6 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/ubifs/master.c
 
+.. _`ubifs_compare_master_node`:
+
+ubifs_compare_master_node
+=========================
+
+.. c:function:: int ubifs_compare_master_node(struct ubifs_info *c, void *m1, void *m2)
+
+    compare two UBIFS master nodes
+
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param m1:
+        the first node
+    :type m1: void \*
+
+    :param m2:
+        the second node
+    :type m2: void \*
+
+.. _`ubifs_compare_master_node.description`:
+
+Description
+-----------
+
+This function compares two UBIFS master nodes. Returns 0 if they are equal
+and nonzero if not.
+
 .. _`scan_for_master`:
 
 scan_for_master
@@ -10,8 +39,9 @@ scan_for_master
 
     search the valid master node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`scan_for_master.description`:
 
@@ -32,8 +62,9 @@ validate_master
 
     validate master node.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
 .. _`validate_master.description`:
 
@@ -52,8 +83,9 @@ ubifs_read_master
 
     read master node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_read_master.description`:
 
@@ -73,8 +105,9 @@ ubifs_write_master
 
     write master node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_write_master.description`:
 

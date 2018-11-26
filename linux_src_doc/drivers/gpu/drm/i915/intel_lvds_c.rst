@@ -10,8 +10,9 @@ intel_lvds_destroy
 
     unregister and free LVDS structures
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to free
+    :type connector: struct drm_connector \*
 
 .. _`intel_lvds_destroy.description`:
 
@@ -30,8 +31,9 @@ intel_lvds_init
 
     setup LVDS connectors on this device
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_lvds_init.description`:
 

@@ -10,14 +10,17 @@ pm8001_ctl_mpi_interface_rev_show
 
     MPI interface revision number
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_mpi_interface_rev_show.description`:
 
@@ -35,14 +38,17 @@ pm8001_ctl_fw_version_show
 
     firmware version
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_fw_version_show.description`:
 
@@ -60,14 +66,17 @@ pm8001_ctl_ila_version_show
 
     ila version
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_ila_version_show.description`:
 
@@ -85,14 +94,17 @@ pm8001_ctl_inactive_fw_version_show
 
     Inacative firmware version number
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_inactive_fw_version_show.description`:
 
@@ -110,14 +122,17 @@ pm8001_ctl_max_out_io_show
 
     max outstanding io supported
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_max_out_io_show.description`:
 
@@ -135,14 +150,17 @@ pm8001_ctl_max_devices_show
 
     max devices support
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_max_devices_show.description`:
 
@@ -160,14 +178,17 @@ pm8001_ctl_max_sg_list_show
 
     max sg list supported iff not 0.0 for no hardware limitation
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_max_sg_list_show.description`:
 
@@ -185,14 +206,17 @@ pm8001_ctl_sas_spec_support_show
 
     sas spec supported
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_sas_spec_support_show.description`:
 
@@ -210,14 +234,17 @@ pm8001_ctl_host_sas_address_show
 
     sas address
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_host_sas_address_show.description`:
 
@@ -237,14 +264,17 @@ pm8001_ctl_logging_level_show
 
     logging level
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_logging_level_show.description`:
 
@@ -262,14 +292,17 @@ pm8001_ctl_aap_log_show
 
     aap1 event log
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_aap_log_show.description`:
 
@@ -287,15 +320,18 @@ pm8001_ctl_ib_queue_log_show
 
     Out bound Queue log
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
         A sysfs 'read-only' shost attribute.
+    :type buf: char \*
 
 .. _`pm8001_ctl_ob_queue_log_show`:
 
@@ -306,15 +342,18 @@ pm8001_ctl_ob_queue_log_show
 
     Out bound Queue log
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
         A sysfs 'read-only' shost attribute.
+    :type buf: char \*
 
 .. _`pm8001_ctl_bios_version_show`:
 
@@ -325,15 +364,18 @@ pm8001_ctl_bios_version_show
 
     Bios version Display
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
         A sysfs 'read-only' shost attribute.
+    :type buf: char \*
 
 .. _`pm8001_ctl_iop_log_show`:
 
@@ -344,14 +386,17 @@ pm8001_ctl_iop_log_show
 
     IOP event log
 
-    :param struct device \*cdev:
+    :param cdev:
         pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer returned
+    :type buf: char \*
 
 .. _`pm8001_ctl_iop_log_show.description`:
 

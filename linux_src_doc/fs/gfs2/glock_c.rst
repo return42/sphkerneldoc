@@ -10,8 +10,9 @@ wake_up_glock
 
     Wake up waiters on a glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
 .. _`gfs2_glock_hold`:
 
@@ -22,8 +23,9 @@ gfs2_glock_hold
 
     increment reference count on glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock to hold
+    :type gl: struct gfs2_glock \*
 
 .. _`demote_ok`:
 
@@ -34,8 +36,9 @@ demote_ok
 
     Check to see if it's ok to unlock a glock
 
-    :param const struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: const struct gfs2_glock \*
 
 .. _`demote_ok.return`:
 
@@ -53,8 +56,9 @@ gfs2_glock_put
 
     Decrement reference count on glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock to put
+    :type gl: struct gfs2_glock \*
 
 .. _`may_grant`:
 
@@ -65,11 +69,13 @@ may_grant
 
     check if its ok to grant a new lock
 
-    :param const struct gfs2_glock \*gl:
+    :param gl:
         The glock
+    :type gl: const struct gfs2_glock \*
 
-    :param const struct gfs2_holder \*gh:
+    :param gh:
         The lock request which we wish to grant
+    :type gh: const struct gfs2_holder \*
 
 .. _`may_grant.return`:
 
@@ -87,11 +93,13 @@ do_error
 
     Something unexpected has happened during a lock request
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         *undescribed*
+    :type gl: struct gfs2_glock \*
 
-    :param const int ret:
+    :param ret:
         *undescribed*
+    :type ret: const int
 
 .. _`do_promote`:
 
@@ -102,8 +110,9 @@ do_promote
 
     promote as many requests as possible on the current queue
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock
+    :type gl: struct gfs2_glock \*
 
 .. _`do_promote.return`:
 
@@ -122,8 +131,9 @@ find_first_waiter
 
     find the first gh that's waiting for the glock
 
-    :param const struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: const struct gfs2_glock \*
 
 .. _`state_change`:
 
@@ -134,12 +144,14 @@ state_change
 
     record that the glock is now in a different state
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
         \ ``new_state``\  the new state
+    :type gl: struct gfs2_glock \*
 
-    :param unsigned int new_state:
+    :param new_state:
         *undescribed*
+    :type new_state: unsigned int
 
 .. _`finish_xmote`:
 
@@ -150,11 +162,13 @@ finish_xmote
 
     The DLM has replied to one of our lock requests
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock
+    :type gl: struct gfs2_glock \*
 
-    :param unsigned int ret:
+    :param ret:
         The status from the DLM
+    :type ret: unsigned int
 
 .. _`do_xmote`:
 
@@ -165,14 +179,17 @@ do_xmote
 
     Calls the DLM to change the state of a lock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The lock state
+    :type gl: struct gfs2_glock \*
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         The holder (only for promotes)
+    :type gh: struct gfs2_holder \*
 
-    :param unsigned int target:
+    :param target:
         The target lock state
+    :type target: unsigned int
 
 .. _`find_first_holder`:
 
@@ -183,8 +200,9 @@ find_first_holder
 
     find the first "holder" gh
 
-    :param const struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: const struct gfs2_glock \*
 
 .. _`run_queue`:
 
@@ -195,11 +213,13 @@ run_queue
 
     do all outstanding tasks related to a glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock in question
+    :type gl: struct gfs2_glock \*
 
-    :param const int nonblock:
+    :param nonblock:
         True if we must not block in run_queue
+    :type nonblock: const int
 
 .. _`gfs2_glock_get`:
 
@@ -210,20 +230,25 @@ gfs2_glock_get
 
     Get a glock, or create one if one doesn't exist
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param u64 number:
+    :param number:
         the lock number
+    :type number: u64
 
-    :param const struct gfs2_glock_operations \*glops:
+    :param glops:
         The glock_operations to use
+    :type glops: const struct gfs2_glock_operations \*
 
-    :param int create:
+    :param create:
         If 0, don't create the glock if it doesn't exist
+    :type create: int
 
-    :param struct gfs2_glock \*\*glp:
+    :param glp:
         the glock is returned here
+    :type glp: struct gfs2_glock \*\*
 
 .. _`gfs2_glock_get.description`:
 
@@ -248,17 +273,21 @@ gfs2_holder_init
 
     initialize a struct gfs2_holder in the default way
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param unsigned int state:
+    :param state:
         the state we're requesting
+    :type state: unsigned int
 
-    :param u16 flags:
+    :param flags:
         the modifier flags
+    :type flags: u16
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the holder structure
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_holder_reinit`:
 
@@ -269,14 +298,17 @@ gfs2_holder_reinit
 
     reinitialize a struct gfs2_holder so we can requeue it
 
-    :param unsigned int state:
+    :param state:
         the state we're requesting
+    :type state: unsigned int
 
-    :param u16 flags:
+    :param flags:
         the modifier flags
+    :type flags: u16
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the holder structure
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_holder_reinit.description`:
 
@@ -294,8 +326,9 @@ gfs2_holder_uninit
 
     uninitialize a holder structure (drop glock reference)
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the holder structure
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_glock_wait`:
 
@@ -306,8 +339,9 @@ gfs2_glock_wait
 
     wait on a glock acquisition
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the glock holder
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_glock_wait.return`:
 
@@ -325,17 +359,21 @@ handle_callback
 
     process a demote request
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param unsigned int state:
+    :param state:
         the state the caller wants us to change to
+    :type state: unsigned int
 
-    :param unsigned long delay:
+    :param delay:
         *undescribed*
+    :type delay: unsigned long
 
-    :param bool remote:
+    :param remote:
         *undescribed*
+    :type remote: bool
 
 .. _`handle_callback.description`:
 
@@ -360,8 +398,9 @@ add_to_queue
 
     Add a holder to the wait queue (but look for recursion)
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the holder structure to add
+    :type gh: struct gfs2_holder \*
 
 .. _`add_to_queue.description`:
 
@@ -381,8 +420,9 @@ gfs2_glock_nq
 
     enqueue a struct gfs2_holder onto a glock (acquire a glock)
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the holder structure
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_glock_nq.description`:
 
@@ -407,8 +447,9 @@ gfs2_glock_poll
 
     poll to see if an async request has been completed
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the holder
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_glock_poll.return`:
 
@@ -426,8 +467,9 @@ gfs2_glock_dq
 
     dequeue a struct gfs2_holder from a glock (release a glock)
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the glock holder
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_glock_dq_uninit`:
 
@@ -438,8 +480,9 @@ gfs2_glock_dq_uninit
 
     dequeue a holder from a glock and initialize it
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the holder structure
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_glock_nq_num`:
 
@@ -450,23 +493,29 @@ gfs2_glock_nq_num
 
     acquire a glock based on lock number
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param u64 number:
+    :param number:
         the lock number
+    :type number: u64
 
-    :param const struct gfs2_glock_operations \*glops:
+    :param glops:
         the glock operations for the type of glock
+    :type glops: const struct gfs2_glock_operations \*
 
-    :param unsigned int state:
+    :param state:
         the state to acquire the glock in
+    :type state: unsigned int
 
-    :param u16 flags:
+    :param flags:
         modifier flags for the acquisition
+    :type flags: u16
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the struct gfs2_holder
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_glock_nq_num.return`:
 
@@ -484,11 +533,13 @@ glock_compare
 
     Compare two struct gfs2_glock structures for sorting
 
-    :param const void \*arg_a:
+    :param arg_a:
         the first structure
+    :type arg_a: const void \*
 
-    :param const void \*arg_b:
+    :param arg_b:
         the second structure
+    :type arg_b: const void \*
 
 .. _`nq_m_sync`:
 
@@ -499,14 +550,17 @@ nq_m_sync
 
     synchonously acquire more than one glock in deadlock free order
 
-    :param unsigned int num_gh:
+    :param num_gh:
         the number of structures
+    :type num_gh: unsigned int
 
-    :param struct gfs2_holder \*ghs:
+    :param ghs:
         an array of struct gfs2_holder structures
+    :type ghs: struct gfs2_holder \*
 
-    :param struct gfs2_holder \*\*p:
+    :param p:
         *undescribed*
+    :type p: struct gfs2_holder \*\*
 
 .. _`nq_m_sync.return`:
 
@@ -525,11 +579,13 @@ gfs2_glock_nq_m
 
     acquire multiple glocks
 
-    :param unsigned int num_gh:
+    :param num_gh:
         the number of structures
+    :type num_gh: unsigned int
 
-    :param struct gfs2_holder \*ghs:
+    :param ghs:
         an array of struct gfs2_holder structures
+    :type ghs: struct gfs2_holder \*
 
 .. _`gfs2_glock_nq_m.return`:
 
@@ -548,11 +604,13 @@ gfs2_glock_dq_m
 
     release multiple glocks
 
-    :param unsigned int num_gh:
+    :param num_gh:
         the number of structures
+    :type num_gh: unsigned int
 
-    :param struct gfs2_holder \*ghs:
+    :param ghs:
         an array of struct gfs2_holder structures
+    :type ghs: struct gfs2_holder \*
 
 .. _`gfs2_should_freeze`:
 
@@ -563,8 +621,9 @@ gfs2_should_freeze
 
     Figure out if glock should be frozen
 
-    :param const struct gfs2_glock \*gl:
+    :param gl:
         The glock in question
+    :type gl: const struct gfs2_glock \*
 
 .. _`gfs2_should_freeze.description`:
 
@@ -591,11 +650,13 @@ gfs2_glock_complete
 
     Callback used by locking
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         Pointer to the glock
+    :type gl: struct gfs2_glock \*
 
-    :param int ret:
+    :param ret:
         The return value from the dlm
+    :type ret: int
 
 .. _`gfs2_glock_complete.description`:
 
@@ -614,8 +675,9 @@ gfs2_dispose_glock_lru
 
     Demote a list of glocks
 
-    :param struct list_head \*list:
+    :param list:
         The list to dispose of
+    :type list: struct list_head \*
 
 .. _`gfs2_dispose_glock_lru.description`:
 
@@ -640,8 +702,9 @@ gfs2_scan_glock_lru
 
     Scan the LRU looking for locks to demote
 
-    :param int nr:
+    :param nr:
         The number of entries to scan
+    :type nr: int
 
 .. _`gfs2_scan_glock_lru.description`:
 
@@ -661,11 +724,13 @@ glock_hash_walk
 
     Call a function for glock in a hash bucket
 
-    :param glock_examiner examiner:
+    :param examiner:
         the function
+    :type examiner: glock_examiner
 
-    :param const struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: const struct gfs2_sbd \*
 
 .. _`glock_hash_walk.description`:
 
@@ -685,8 +750,9 @@ thaw_glock
 
     thaw out a glock which has an unprocessed reply waiting
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock to thaw
+    :type gl: struct gfs2_glock \*
 
 .. _`clear_glock`:
 
@@ -697,8 +763,9 @@ clear_glock
 
     look at a glock and see if we can free it from glock cache
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock to look at
+    :type gl: struct gfs2_glock \*
 
 .. _`gfs2_glock_thaw`:
 
@@ -709,8 +776,9 @@ gfs2_glock_thaw
 
     Thaw any frozen glocks
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The super block
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_gl_hash_clear`:
 
@@ -721,8 +789,9 @@ gfs2_gl_hash_clear
 
     Empty out the glock hash table
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_gl_hash_clear.description`:
 
@@ -740,11 +809,13 @@ dump_holder
 
     print information about a glock holder
 
-    :param struct seq_file \*seq:
+    :param seq:
         the seq_file struct
+    :type seq: struct seq_file \*
 
-    :param const struct gfs2_holder \*gh:
+    :param gh:
         the glock holder
+    :type gh: const struct gfs2_holder \*
 
 .. _`gfs2_dump_glock`:
 
@@ -755,11 +826,13 @@ gfs2_dump_glock
 
     print information about a glock
 
-    :param struct seq_file \*seq:
+    :param seq:
         The seq_file struct
+    :type seq: struct seq_file \*
 
-    :param const struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: const struct gfs2_glock \*
 
 .. _`gfs2_dump_glock.the-file-format-is-as-follows`:
 

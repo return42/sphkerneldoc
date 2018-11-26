@@ -10,11 +10,13 @@ tty_register_ldisc
 
     install a line discipline
 
-    :param int disc:
+    :param disc:
         ldisc number
+    :type disc: int
 
-    :param struct tty_ldisc_ops \*new_ldisc:
+    :param new_ldisc:
         pointer to the ldisc object
+    :type new_ldisc: struct tty_ldisc_ops \*
 
 .. _`tty_register_ldisc.description`:
 
@@ -41,8 +43,9 @@ tty_unregister_ldisc
 
     unload a line discipline
 
-    :param int disc:
+    :param disc:
         ldisc number
+    :type disc: int
 
 .. _`tty_unregister_ldisc.description`:
 
@@ -68,11 +71,13 @@ tty_ldisc_get
 
     take a reference to an ldisc
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param int disc:
+    :param disc:
         ldisc number
+    :type disc: int
 
 .. _`tty_ldisc_get.description`:
 
@@ -112,8 +117,9 @@ tty_ldisc_put
 
     release the ldisc
 
-    :param struct tty_ldisc \*ld:
+    :param ld:
         *undescribed*
+    :type ld: struct tty_ldisc \*
 
 .. _`tty_ldisc_put.description`:
 
@@ -131,8 +137,9 @@ tty_ldisc_ref_wait
 
     wait for the tty ldisc
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
 .. _`tty_ldisc_ref_wait.description`:
 
@@ -173,8 +180,9 @@ tty_ldisc_ref
 
     get the tty ldisc
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
 .. _`tty_ldisc_ref.description`:
 
@@ -194,8 +202,9 @@ tty_ldisc_deref
 
     free a tty ldisc reference
 
-    :param struct tty_ldisc \*ld:
+    :param ld:
         reference to free up
+    :type ld: struct tty_ldisc \*
 
 .. _`tty_ldisc_deref.description`:
 
@@ -214,8 +223,9 @@ tty_ldisc_flush
 
     flush line discipline queue
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty
+    :type tty: struct tty_struct \*
 
 .. _`tty_ldisc_flush.description`:
 
@@ -234,11 +244,13 @@ tty_set_termios_ldisc
 
     set ldisc field
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty structure
+    :type tty: struct tty_struct \*
 
-    :param int disc:
+    :param disc:
         line discipline number
+    :type disc: int
 
 .. _`tty_set_termios_ldisc.description`:
 
@@ -269,11 +281,13 @@ tty_ldisc_open
 
     open a line discipline
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty we are opening the ldisc on
+    :type tty: struct tty_struct \*
 
-    :param struct tty_ldisc \*ld:
+    :param ld:
         discipline to open
+    :type ld: struct tty_ldisc \*
 
 .. _`tty_ldisc_open.description`:
 
@@ -299,11 +313,13 @@ tty_ldisc_close
 
     close a line discipline
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty we are opening the ldisc on
+    :type tty: struct tty_struct \*
 
-    :param struct tty_ldisc \*ld:
+    :param ld:
         discipline to close
+    :type ld: struct tty_ldisc \*
 
 .. _`tty_ldisc_close.description`:
 
@@ -322,11 +338,13 @@ tty_ldisc_failto
 
     helper for ldisc failback
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to open the ldisc on
+    :type tty: struct tty_struct \*
 
-    :param int ld:
+    :param ld:
         ldisc we are trying to fail back to
+    :type ld: int
 
 .. _`tty_ldisc_failto.description`:
 
@@ -345,11 +363,13 @@ tty_ldisc_restore
 
     helper for tty ldisc change
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to recover
+    :type tty: struct tty_struct \*
 
-    :param struct tty_ldisc \*old:
+    :param old:
         previous ldisc
+    :type old: struct tty_ldisc \*
 
 .. _`tty_ldisc_restore.description`:
 
@@ -368,11 +388,13 @@ tty_set_ldisc
 
     set line discipline
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the terminal to set
+    :type tty: struct tty_struct \*
 
-    :param int disc:
+    :param disc:
         *undescribed*
+    :type disc: int
 
 .. _`tty_set_ldisc.description`:
 
@@ -393,8 +415,9 @@ tty_ldisc_kill
 
     teardown ldisc
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty being released
+    :type tty: struct tty_struct \*
 
 .. _`tty_ldisc_kill.description`:
 
@@ -412,8 +435,9 @@ tty_reset_termios
 
     reset terminal state
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to reset
+    :type tty: struct tty_struct \*
 
 .. _`tty_reset_termios.description`:
 
@@ -431,11 +455,13 @@ tty_ldisc_reinit
 
     reinitialise the tty ldisc
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to reinit
+    :type tty: struct tty_struct \*
 
-    :param int disc:
+    :param disc:
         line discipline to reinitialize
+    :type disc: int
 
 .. _`tty_ldisc_reinit.description`:
 
@@ -459,11 +485,13 @@ tty_ldisc_hangup
 
     hangup ldisc reset
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty being hung up
+    :type tty: struct tty_struct \*
 
-    :param bool reinit:
+    :param reinit:
         *undescribed*
+    :type reinit: bool
 
 .. _`tty_ldisc_hangup.description`:
 
@@ -494,11 +522,13 @@ tty_ldisc_setup
 
     open line discipline
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty being shut down
+    :type tty: struct tty_struct \*
 
-    :param struct tty_struct \*o_tty:
+    :param o_tty:
         pair tty for pty/tty pairs
+    :type o_tty: struct tty_struct \*
 
 .. _`tty_ldisc_setup.description`:
 
@@ -518,8 +548,9 @@ tty_ldisc_release
 
     release line discipline
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty being shut down (or one end of pty pair)
+    :type tty: struct tty_struct \*
 
 .. _`tty_ldisc_release.description`:
 
@@ -538,8 +569,9 @@ tty_ldisc_init
 
     ldisc setup for new tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty being allocated
+    :type tty: struct tty_struct \*
 
 .. _`tty_ldisc_init.description`:
 
@@ -558,8 +590,9 @@ tty_ldisc_deinit
 
     ldisc cleanup for new tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty that was allocated recently
+    :type tty: struct tty_struct \*
 
 .. _`tty_ldisc_deinit.description`:
 

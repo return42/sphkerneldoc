@@ -10,8 +10,9 @@ uniphier_aiodma_soc_register_platform
 
     register the AIO DMA
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         the platform device
+    :type pdev: struct platform_device \*
 
 .. _`uniphier_aiodma_soc_register_platform.description`:
 

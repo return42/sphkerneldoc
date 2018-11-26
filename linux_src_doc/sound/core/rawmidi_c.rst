@@ -10,14 +10,17 @@ snd_rawmidi_receive
 
     receive the input data from the device
 
-    :param struct snd_rawmidi_substream \*substream:
+    :param substream:
         the rawmidi substream
+    :type substream: struct snd_rawmidi_substream \*
 
-    :param const unsigned char \*buffer:
+    :param buffer:
         the buffer pointer
+    :type buffer: const unsigned char \*
 
-    :param int count:
+    :param count:
         the data size to read
+    :type count: int
 
 .. _`snd_rawmidi_receive.description`:
 
@@ -42,8 +45,9 @@ snd_rawmidi_transmit_empty
 
     check whether the output buffer is empty
 
-    :param struct snd_rawmidi_substream \*substream:
+    :param substream:
         the rawmidi substream
+    :type substream: struct snd_rawmidi_substream \*
 
 .. _`snd_rawmidi_transmit_empty.return`:
 
@@ -61,14 +65,17 @@ __snd_rawmidi_transmit_peek
 
     copy data from the internal buffer
 
-    :param struct snd_rawmidi_substream \*substream:
+    :param substream:
         the rawmidi substream
+    :type substream: struct snd_rawmidi_substream \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         the buffer pointer
+    :type buffer: unsigned char \*
 
-    :param int count:
+    :param count:
         data size to transfer
+    :type count: int
 
 .. _`__snd_rawmidi_transmit_peek.description`:
 
@@ -86,14 +93,17 @@ snd_rawmidi_transmit_peek
 
     copy data from the internal buffer
 
-    :param struct snd_rawmidi_substream \*substream:
+    :param substream:
         the rawmidi substream
+    :type substream: struct snd_rawmidi_substream \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         the buffer pointer
+    :type buffer: unsigned char \*
 
-    :param int count:
+    :param count:
         data size to transfer
+    :type count: int
 
 .. _`snd_rawmidi_transmit_peek.description`:
 
@@ -122,11 +132,13 @@ __snd_rawmidi_transmit_ack
 
     acknowledge the transmission
 
-    :param struct snd_rawmidi_substream \*substream:
+    :param substream:
         the rawmidi substream
+    :type substream: struct snd_rawmidi_substream \*
 
-    :param int count:
+    :param count:
         the transferred count
+    :type count: int
 
 .. _`__snd_rawmidi_transmit_ack.description`:
 
@@ -144,11 +156,13 @@ snd_rawmidi_transmit_ack
 
     acknowledge the transmission
 
-    :param struct snd_rawmidi_substream \*substream:
+    :param substream:
         the rawmidi substream
+    :type substream: struct snd_rawmidi_substream \*
 
-    :param int count:
+    :param count:
         the transferred count
+    :type count: int
 
 .. _`snd_rawmidi_transmit_ack.description`:
 
@@ -175,14 +189,17 @@ snd_rawmidi_transmit
 
     copy from the buffer to the device
 
-    :param struct snd_rawmidi_substream \*substream:
+    :param substream:
         the rawmidi substream
+    :type substream: struct snd_rawmidi_substream \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         the buffer pointer
+    :type buffer: unsigned char \*
 
-    :param int count:
+    :param count:
         the data size to transfer
+    :type count: int
 
 .. _`snd_rawmidi_transmit.description`:
 
@@ -198,6 +215,26 @@ Return
 
 The copied size if successful, or a negative error code on failure.
 
+.. _`snd_rawmidi_proceed`:
+
+snd_rawmidi_proceed
+===================
+
+.. c:function:: int snd_rawmidi_proceed(struct snd_rawmidi_substream *substream)
+
+    Discard the all pending bytes and proceed
+
+    :param substream:
+        rawmidi substream
+    :type substream: struct snd_rawmidi_substream \*
+
+.. _`snd_rawmidi_proceed.return`:
+
+Return
+------
+
+the number of discarded bytes
+
 .. _`snd_rawmidi_new`:
 
 snd_rawmidi_new
@@ -207,23 +244,29 @@ snd_rawmidi_new
 
     create a rawmidi instance
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param char \*id:
+    :param id:
         the id string
+    :type id: char \*
 
-    :param int device:
+    :param device:
         the device index
+    :type device: int
 
-    :param int output_count:
+    :param output_count:
         the number of output streams
+    :type output_count: int
 
-    :param int input_count:
+    :param input_count:
         the number of input streams
+    :type input_count: int
 
-    :param struct snd_rawmidi \*\*rrawmidi:
+    :param rrawmidi:
         the pointer to store the new rawmidi instance
+    :type rrawmidi: struct snd_rawmidi \*\*
 
 .. _`snd_rawmidi_new.description`:
 
@@ -249,14 +292,17 @@ snd_rawmidi_set_ops
 
     set the rawmidi operators
 
-    :param struct snd_rawmidi \*rmidi:
+    :param rmidi:
         the rawmidi instance
+    :type rmidi: struct snd_rawmidi \*
 
-    :param int stream:
+    :param stream:
         the stream direction, SNDRV_RAWMIDI_STREAM_XXX
+    :type stream: int
 
-    :param const struct snd_rawmidi_ops \*ops:
+    :param ops:
         the operator table
+    :type ops: const struct snd_rawmidi_ops \*
 
 .. _`snd_rawmidi_set_ops.description`:
 

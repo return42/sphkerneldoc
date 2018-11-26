@@ -10,8 +10,9 @@ rsctrl_enable_rspll_write
 
     enable access to RSCTRL, RSCFG To be able to access to RSCTRL, RSCFG registers we have to write a key before
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

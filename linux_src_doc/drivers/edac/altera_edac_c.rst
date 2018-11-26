@@ -10,14 +10,17 @@ s10_protected_reg_write
 
     Write to a protected SMC register.
 
-    :param void \*context:
+    :param context:
         Not used.
+    :type context: void \*
 
-    :param unsigned int reg:
+    :param reg:
         Address of register
+    :type reg: unsigned int
 
-    :param unsigned int val:
+    :param val:
         *undescribed*
+    :type val: unsigned int
 
 .. _`s10_protected_reg_write.return`:
 
@@ -37,14 +40,17 @@ s10_protected_reg_read
 
     Read the status of a protected SMC register
 
-    :param void \*context:
+    :param context:
         Not used.
+    :type context: void \*
 
-    :param unsigned int reg:
+    :param reg:
         Address of register
+    :type reg: unsigned int
 
-    :param unsigned int \*val:
+    :param val:
         *undescribed*
+    :type val: unsigned int \*
 
 .. _`s10_protected_reg_read.return`:
 

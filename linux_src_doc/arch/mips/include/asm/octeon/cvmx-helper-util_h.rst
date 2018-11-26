@@ -8,8 +8,9 @@ cvmx_helper_interface_mode_to_string
 
 .. c:function:: const char *cvmx_helper_interface_mode_to_string(cvmx_helper_interface_mode_t mode)
 
-    :param cvmx_helper_interface_mode_t mode:
+    :param mode:
         Mode to convert
+    :type mode: cvmx_helper_interface_mode_t
 
 .. _`cvmx_helper_interface_mode_to_string.description`:
 
@@ -25,9 +26,10 @@ cvmx_helper_dump_packet
 
 .. c:function:: int cvmx_helper_dump_packet(cvmx_wqe_t *work)
 
-    :param cvmx_wqe_t \*work:
+    :param work:
         Work queue entry containing the packet to dump
         Returns
+    :type work: cvmx_wqe_t \*
 
 .. _`cvmx_helper_setup_red_queue`:
 
@@ -36,17 +38,20 @@ cvmx_helper_setup_red_queue
 
 .. c:function:: int cvmx_helper_setup_red_queue(int queue, int pass_thresh, int drop_thresh)
 
-    :param int queue:
+    :param queue:
         Input queue to setup RED on (0-7)
+    :type queue: int
 
-    :param int pass_thresh:
+    :param pass_thresh:
         Packets will begin slowly dropping when there are less than
         this many packet buffers free in FPA 0.
+    :type pass_thresh: int
 
-    :param int drop_thresh:
+    :param drop_thresh:
         All incoming packets will be dropped when there are less
         than this many free packet buffers in FPA 0.
         Returns Zero on success. Negative on failure
+    :type drop_thresh: int
 
 .. _`cvmx_helper_setup_red`:
 
@@ -55,14 +60,16 @@ cvmx_helper_setup_red
 
 .. c:function:: int cvmx_helper_setup_red(int pass_thresh, int drop_thresh)
 
-    :param int pass_thresh:
+    :param pass_thresh:
         Packets will begin slowly dropping when there are less than
         this many packet buffers free in FPA 0.
+    :type pass_thresh: int
 
-    :param int drop_thresh:
+    :param drop_thresh:
         All incoming packets will be dropped when there are less
         than this many free packet buffers in FPA 0.
         Returns Zero on success. Negative on failure
+    :type drop_thresh: int
 
 .. _`cvmx_helper_get_version`:
 
@@ -71,8 +78,9 @@ cvmx_helper_get_version
 
 .. c:function:: const char *cvmx_helper_get_version( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_helper_get_version.description`:
 
@@ -91,11 +99,13 @@ and will be shared by all callers.
 
     ports. These setting apply to almost all configurations of all chips.
 
-    :param int interface:
+    :param interface:
         Interface to configure
+    :type interface: int
 
-    :param int num_ports:
+    :param num_ports:
         Number of ports on the interface
+    :type num_ports: int
 
 .. _`__cvmx_helper_setup_gmx.description`:
 
@@ -113,11 +123,13 @@ cvmx_helper_get_ipd_port
 
     interface.
 
-    :param int interface:
+    :param interface:
         Interface to use
+    :type interface: int
 
-    :param int port:
+    :param port:
         Port on the interface
+    :type port: int
 
 .. _`cvmx_helper_get_ipd_port.description`:
 
@@ -135,8 +147,9 @@ cvmx_helper_get_first_ipd_port
 
     interface.
 
-    :param int interface:
+    :param interface:
         Interface to use
+    :type interface: int
 
 .. _`cvmx_helper_get_first_ipd_port.description`:
 
@@ -154,8 +167,9 @@ cvmx_helper_get_last_ipd_port
 
     interface.
 
-    :param int interface:
+    :param interface:
         Interface to use
+    :type interface: int
 
 .. _`cvmx_helper_get_last_ipd_port.description`:
 
@@ -173,8 +187,9 @@ cvmx_helper_free_packet_data
 
     The work queue entry is not freed.
 
-    :param cvmx_wqe_t \*work:
+    :param work:
         Work queue entry with packet to free
+    :type work: cvmx_wqe_t \*
 
 .. _`cvmx_helper_get_interface_num`:
 
@@ -183,8 +198,9 @@ cvmx_helper_get_interface_num
 
 .. c:function:: int cvmx_helper_get_interface_num(int ipd_port)
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port number
+    :type ipd_port: int
 
 .. _`cvmx_helper_get_interface_num.description`:
 
@@ -202,8 +218,9 @@ cvmx_helper_get_interface_index_num
 
     number.
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port number
+    :type ipd_port: int
 
 .. _`cvmx_helper_get_interface_index_num.description`:
 

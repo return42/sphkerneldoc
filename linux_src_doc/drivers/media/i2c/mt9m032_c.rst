@@ -10,14 +10,17 @@
 
     get crop rect
 
-    :param struct mt9m032 \*sensor:
+    :param sensor:
         pointer to the sensor struct
+    :type sensor: struct mt9m032 \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         v4l2_subdev_pad_config for getting the try crop rect from
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param enum v4l2_subdev_format_whence which:
+    :param which:
         select try or active crop rect
+    :type which: enum v4l2_subdev_format_whence
 
 .. _`__mt9m032_get_pad_crop.description`:
 
@@ -35,14 +38,17 @@ Returns a pointer the current active or fh relative try crop rect
 
     get format
 
-    :param struct mt9m032 \*sensor:
+    :param sensor:
         pointer to the sensor struct
+    :type sensor: struct mt9m032 \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         v4l2_subdev_pad_config for getting the try format from
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param enum v4l2_subdev_format_whence which:
+    :param which:
         select try or active format
+    :type which: enum v4l2_subdev_format_whence
 
 .. _`__mt9m032_get_pad_format.description`:
 

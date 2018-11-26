@@ -10,11 +10,13 @@ emac_get_drvinfo
 
     Get EMAC driver information
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_drvinfo \*info:
+    :param info:
         ethtool info structure containing name and version
+    :type info: struct ethtool_drvinfo \*
 
 .. _`emac_get_drvinfo.description`:
 
@@ -32,11 +34,13 @@ emac_get_coalesce
 
     Get interrupt coalesce settings for this device
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_coalesce \*coal:
+    :param coal:
         ethtool coalesce settings structure
+    :type coal: struct ethtool_coalesce \*
 
 .. _`emac_get_coalesce.description`:
 
@@ -54,11 +58,13 @@ emac_set_coalesce
 
     Set interrupt coalesce settings for this device
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_coalesce \*coal:
+    :param coal:
         ethtool coalesce settings structure
+    :type coal: struct ethtool_coalesce \*
 
 .. _`emac_set_coalesce.description`:
 
@@ -76,8 +82,9 @@ emac_update_phystatus
 
     Update Phy status
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
 .. _`emac_update_phystatus.description`:
 
@@ -96,8 +103,9 @@ hash_get
 
     Calculate hash value from mac address
 
-    :param u8 \*addr:
+    :param addr:
         mac address to delete from hash table
+    :type addr: u8 \*
 
 .. _`hash_get.description`:
 
@@ -115,11 +123,13 @@ emac_hash_add
 
     Hash function to add mac addr from hash table
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         mac address to delete from hash table
+    :type mac_addr: u8 \*
 
 .. _`emac_hash_add.description`:
 
@@ -137,11 +147,13 @@ emac_hash_del
 
     Hash function to delete mac addr from hash table
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         mac address to delete from hash table
+    :type mac_addr: u8 \*
 
 .. _`emac_hash_del.description`:
 
@@ -159,14 +171,17 @@ emac_add_mcast
 
     Set multicast address in the EMAC adapter (Internal)
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
-    :param u32 action:
+    :param action:
         multicast operation to perform
+    :type action: u32
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         *undescribed*
+    :type mac_addr: u8 \*
 
 .. _`emac_add_mcast.mac_addr`:
 
@@ -186,8 +201,9 @@ emac_dev_mcast_set
 
     Set multicast address in the EMAC adapter
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
 .. _`emac_dev_mcast_set.description`:
 
@@ -205,8 +221,9 @@ emac_int_disable
 
     Disable EMAC module interrupt (from adapter)
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
 .. _`emac_int_disable.description`:
 
@@ -224,8 +241,9 @@ emac_int_enable
 
     Enable EMAC module interrupt (from adapter)
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
 .. _`emac_int_enable.description`:
 
@@ -243,11 +261,13 @@ emac_irq
 
     EMAC interrupt handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         EMAC network adapter data structure ptr
+    :type dev_id: void \*
 
 .. _`emac_irq.description`:
 
@@ -268,11 +288,13 @@ emac_dev_xmit
 
     EMAC Transmit function
 
-    :param struct sk_buff \*skb:
+    :param skb:
         SKB pointer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
 .. _`emac_dev_xmit.description`:
 
@@ -293,8 +315,9 @@ emac_dev_tx_timeout
 
     EMAC Transmit timeout function
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
 .. _`emac_dev_tx_timeout.description`:
 
@@ -315,14 +338,17 @@ emac_set_type0addr
 
     Set EMAC Type0 mac address
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
-    :param u32 ch:
+    :param ch:
         RX channel number
+    :type ch: u32
 
-    :param char \*mac_addr:
+    :param mac_addr:
         MAC address to set in device
+    :type mac_addr: char \*
 
 .. _`emac_set_type0addr.description`:
 
@@ -342,14 +368,17 @@ emac_set_type1addr
 
     Set EMAC Type1 mac address
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
-    :param u32 ch:
+    :param ch:
         RX channel number
+    :type ch: u32
 
-    :param char \*mac_addr:
+    :param mac_addr:
         MAC address to set in device
+    :type mac_addr: char \*
 
 .. _`emac_set_type1addr.description`:
 
@@ -369,20 +398,25 @@ emac_set_type2addr
 
     Set EMAC Type2 mac address
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
-    :param u32 ch:
+    :param ch:
         RX channel number
+    :type ch: u32
 
-    :param char \*mac_addr:
+    :param mac_addr:
         MAC address to set in device
+    :type mac_addr: char \*
 
-    :param int index:
+    :param index:
         index into RX address entries
+    :type index: int
 
-    :param int match:
+    :param match:
         match parameter for RX address matching logic
+    :type match: int
 
 .. _`emac_set_type2addr.description`:
 
@@ -402,14 +436,17 @@ emac_setmac
 
     Set mac address in the adapter (internal function)
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
-    :param u32 ch:
+    :param ch:
         RX channel number
+    :type ch: u32
 
-    :param char \*mac_addr:
+    :param mac_addr:
         MAC address to set in device
+    :type mac_addr: char \*
 
 .. _`emac_setmac.description`:
 
@@ -429,11 +466,13 @@ emac_dev_setmac_addr
 
     Set mac address in the adapter
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
-    :param void \*addr:
+    :param addr:
         MAC address to set in device
+    :type addr: void \*
 
 .. _`emac_dev_setmac_addr.description`:
 
@@ -453,8 +492,9 @@ emac_hw_enable
 
     Enable EMAC hardware for packet transmission/reception
 
-    :param struct emac_priv \*priv:
+    :param priv:
         The DaVinci EMAC private adapter structure
+    :type priv: struct emac_priv \*
 
 .. _`emac_hw_enable.description`:
 
@@ -475,11 +515,13 @@ emac_poll
 
     EMAC NAPI Poll function
 
-    :param struct napi_struct \*napi:
+    :param napi:
         *undescribed*
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         Number of receive packets to process (as told by NAPI layer)
+    :type budget: int
 
 .. _`emac_poll.description`:
 
@@ -503,8 +545,9 @@ emac_poll_controller
 
     EMAC Poll controller function
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
 .. _`emac_poll_controller.description`:
 
@@ -522,14 +565,17 @@ emac_devioctl
 
     EMAC adapter ioctl
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
-    :param struct ifreq \*ifrq:
+    :param ifrq:
         request parameter
+    :type ifrq: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         command parameter
+    :type cmd: int
 
 .. _`emac_devioctl.description`:
 
@@ -549,8 +595,9 @@ emac_dev_open
 
     EMAC device open
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
 .. _`emac_dev_open.description`:
 
@@ -572,8 +619,9 @@ emac_dev_stop
 
     EMAC device stop
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
 .. _`emac_dev_stop.description`:
 
@@ -594,8 +642,9 @@ emac_dev_getnetstats
 
     EMAC get statistics function
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The DaVinci EMAC network adapter
+    :type ndev: struct net_device \*
 
 .. _`emac_dev_getnetstats.description`:
 
@@ -615,8 +664,9 @@ davinci_emac_probe
 
     EMAC device probe
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The DaVinci EMAC device that we are removing
+    :type pdev: struct platform_device \*
 
 .. _`davinci_emac_probe.description`:
 
@@ -636,8 +686,9 @@ davinci_emac_remove
 
     EMAC device remove
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The DaVinci EMAC device that we are removing
+    :type pdev: struct platform_device \*
 
 .. _`davinci_emac_remove.description`:
 
@@ -656,8 +707,9 @@ davinci_emac_init
 
     EMAC driver module init
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`davinci_emac_init.description`:
 
@@ -676,8 +728,9 @@ davinci_emac_exit
 
     EMAC driver module exit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`davinci_emac_exit.description`:
 

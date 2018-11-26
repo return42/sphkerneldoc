@@ -10,11 +10,13 @@ memory_map_top_down
 
     Map [map_start, map_end) top down
 
-    :param unsigned long map_start:
+    :param map_start:
         start address of the target memory range
+    :type map_start: unsigned long
 
-    :param unsigned long map_end:
+    :param map_end:
         end address of the target memory range
+    :type map_end: unsigned long
 
 .. _`memory_map_top_down.description`:
 
@@ -35,11 +37,13 @@ memory_map_bottom_up
 
     Map [map_start, map_end) bottom up
 
-    :param unsigned long map_start:
+    :param map_start:
         start address of the target memory range
+    :type map_start: unsigned long
 
-    :param unsigned long map_end:
+    :param map_end:
         end address of the target memory range
+    :type map_end: unsigned long
 
 .. _`memory_map_bottom_up.description`:
 

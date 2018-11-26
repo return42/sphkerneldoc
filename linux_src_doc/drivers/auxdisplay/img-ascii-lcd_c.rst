@@ -119,8 +119,9 @@ img_ascii_lcd_scroll
 
     scroll the display by a character
 
-    :param struct timer_list \*t:
+    :param t:
         really a pointer to the private data structure
+    :type t: struct timer_list \*
 
 .. _`img_ascii_lcd_scroll.description`:
 
@@ -139,14 +140,17 @@ img_ascii_lcd_display
 
     set the message to be displayed
 
-    :param struct img_ascii_lcd_ctx \*ctx:
+    :param ctx:
         pointer to the private data structure
+    :type ctx: struct img_ascii_lcd_ctx \*
 
-    :param const char \*msg:
+    :param msg:
         the message to display
+    :type msg: const char \*
 
-    :param ssize_t count:
+    :param count:
         length of msg, or -1
+    :type count: ssize_t
 
 .. _`img_ascii_lcd_display.description`:
 
@@ -173,14 +177,17 @@ message_show
 
     read message via sysfs
 
-    :param struct device \*dev:
+    :param dev:
         the LCD device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         the LCD message attribute
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         the buffer to read the message into
+    :type buf: char \*
 
 .. _`message_show.description`:
 
@@ -206,17 +213,21 @@ message_store
 
     write a new message via sysfs
 
-    :param struct device \*dev:
+    :param dev:
         the LCD device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         the LCD message attribute
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         the buffer containing the new message
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         the size of the message in \ ``buf``\ 
+    :type count: size_t
 
 .. _`message_store.description`:
 
@@ -241,8 +252,9 @@ img_ascii_lcd_probe
 
     probe an LCD display device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         the LCD platform device
+    :type pdev: struct platform_device \*
 
 .. _`img_ascii_lcd_probe.description`:
 
@@ -268,8 +280,9 @@ img_ascii_lcd_remove
 
     remove an LCD display device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         the LCD platform device
+    :type pdev: struct platform_device \*
 
 .. _`img_ascii_lcd_remove.description`:
 

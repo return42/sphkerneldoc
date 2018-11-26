@@ -10,8 +10,9 @@ intel_device_info_runtime_init
 
     initialize runtime info
 
-    :param struct intel_device_info \*info:
+    :param info:
         intel device info struct
+    :type info: struct intel_device_info \*
 
 .. _`intel_device_info_runtime_init.description`:
 

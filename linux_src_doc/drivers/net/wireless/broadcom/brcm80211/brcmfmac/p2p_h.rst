@@ -244,6 +244,7 @@ Definition
         bool gon_req_action;
         bool block_gon_req_tx;
         bool p2pdev_dynamically;
+        bool wait_for_offchan_complete;
     }
 
 .. _`brcmf_p2p_info.members`:
@@ -304,6 +305,9 @@ block_gon_req_tx
 
 p2pdev_dynamically
     is p2p device if created by module param or supplicant.
+
+wait_for_offchan_complete
+    wait for off-channel tx completion event.
 
 .. This file was automatic generated / don't edit.
 

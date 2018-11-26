@@ -10,8 +10,9 @@ ohci_hcd_sa1111_probe
 
     initialize SA-1111-based HCDs
 
-    :param struct sa1111_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct sa1111_dev \*
 
 .. _`ohci_hcd_sa1111_probe.description`:
 
@@ -30,8 +31,9 @@ ohci_hcd_sa1111_remove
 
     shutdown processing for SA-1111-based HCDs
 
-    :param struct sa1111_dev \*dev:
+    :param dev:
         USB Host Controller being removed
+    :type dev: struct sa1111_dev \*
 
 .. _`ohci_hcd_sa1111_remove.description`:
 

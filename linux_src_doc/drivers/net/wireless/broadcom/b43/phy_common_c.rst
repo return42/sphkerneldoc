@@ -10,8 +10,9 @@ b43_phy_txpower_adjust_work
 
     TX power workqueue.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`b43_phy_txpower_adjust_work.description`:
 

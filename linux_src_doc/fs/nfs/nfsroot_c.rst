@@ -10,11 +10,13 @@ nfs_root_data
 
     Return prepared 'data' for NFSROOT mount
 
-    :param char \*\*root_device:
+    :param root_device:
         OUT: address of string containing NFSROOT device
+    :type root_device: char \*\*
 
-    :param char \*\*root_data:
+    :param root_data:
         OUT: address of string containing NFSROOT mount options
+    :type root_data: char \*\*
 
 .. _`nfs_root_data.description`:
 

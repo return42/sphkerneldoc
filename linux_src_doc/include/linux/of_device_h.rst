@@ -10,11 +10,13 @@ of_driver_match_device
 
     Tell if a driver's of_match_table matches a device.
 
-    :param struct device \*dev:
+    :param dev:
         the device structure to match against
+    :type dev: struct device \*
 
-    :param const struct device_driver \*drv:
+    :param drv:
         the device_driver structure to test
+    :type drv: const struct device_driver \*
 
 .. This file was automatic generated / don't edit.
 

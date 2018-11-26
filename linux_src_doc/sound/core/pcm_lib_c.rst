@@ -10,14 +10,17 @@ snd_pcm_set_ops
 
     set the PCM operators
 
-    :param struct snd_pcm \*pcm:
+    :param pcm:
         the pcm instance
+    :type pcm: struct snd_pcm \*
 
-    :param int direction:
+    :param direction:
         stream direction, SNDRV_PCM_STREAM_XXX
+    :type direction: int
 
-    :param const struct snd_pcm_ops \*ops:
+    :param ops:
         the operator table
+    :type ops: const struct snd_pcm_ops \*
 
 .. _`snd_pcm_set_ops.description`:
 
@@ -35,8 +38,9 @@ snd_pcm_set_sync
 
     set the PCM sync id
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_set_sync.description`:
 
@@ -54,11 +58,13 @@ snd_interval_refine
 
     refine the interval value of configurator
 
-    :param struct snd_interval \*i:
+    :param i:
         the interval value to refine
+    :type i: struct snd_interval \*
 
-    :param const struct snd_interval \*v:
+    :param v:
         the interval value to refer to
+    :type v: const struct snd_interval \*
 
 .. _`snd_interval_refine.description`:
 
@@ -86,14 +92,17 @@ snd_interval_div
 
     refine the interval value with division
 
-    :param const struct snd_interval \*a:
+    :param a:
         dividend
+    :type a: const struct snd_interval \*
 
-    :param const struct snd_interval \*b:
+    :param b:
         divisor
+    :type b: const struct snd_interval \*
 
-    :param struct snd_interval \*c:
+    :param c:
         quotient
+    :type c: struct snd_interval \*
 
 .. _`snd_interval_div.description`:
 
@@ -113,17 +122,21 @@ snd_interval_muldivk
 
     refine the interval value
 
-    :param const struct snd_interval \*a:
+    :param a:
         dividend 1
+    :type a: const struct snd_interval \*
 
-    :param const struct snd_interval \*b:
+    :param b:
         dividend 2
+    :type b: const struct snd_interval \*
 
-    :param unsigned int k:
+    :param k:
         divisor (as integer)
+    :type k: unsigned int
 
-    :param struct snd_interval \*c:
+    :param c:
         result
+    :type c: struct snd_interval \*
 
 .. _`snd_interval_muldivk.description`:
 
@@ -143,17 +156,21 @@ snd_interval_mulkdiv
 
     refine the interval value
 
-    :param const struct snd_interval \*a:
+    :param a:
         dividend 1
+    :type a: const struct snd_interval \*
 
-    :param unsigned int k:
+    :param k:
         dividend 2 (as integer)
+    :type k: unsigned int
 
-    :param const struct snd_interval \*b:
+    :param b:
         divisor
+    :type b: const struct snd_interval \*
 
-    :param struct snd_interval \*c:
+    :param c:
         result
+    :type c: struct snd_interval \*
 
 .. _`snd_interval_mulkdiv.description`:
 
@@ -173,20 +190,25 @@ snd_interval_ratnum
 
     refine the interval value
 
-    :param struct snd_interval \*i:
+    :param i:
         interval to refine
+    :type i: struct snd_interval \*
 
-    :param unsigned int rats_count:
+    :param rats_count:
         number of ratnum_t
+    :type rats_count: unsigned int
 
-    :param const struct snd_ratnum \*rats:
+    :param rats:
         ratnum_t array
+    :type rats: const struct snd_ratnum \*
 
-    :param unsigned int \*nump:
+    :param nump:
         pointer to store the resultant numerator
+    :type nump: unsigned int \*
 
-    :param unsigned int \*denp:
+    :param denp:
         pointer to store the resultant denominator
+    :type denp: unsigned int \*
 
 .. _`snd_interval_ratnum.return`:
 
@@ -205,20 +227,25 @@ snd_interval_ratden
 
     refine the interval value
 
-    :param struct snd_interval \*i:
+    :param i:
         interval to refine
+    :type i: struct snd_interval \*
 
-    :param unsigned int rats_count:
+    :param rats_count:
         number of struct ratden
+    :type rats_count: unsigned int
 
-    :param const struct snd_ratden \*rats:
+    :param rats:
         struct ratden array
+    :type rats: const struct snd_ratden \*
 
-    :param unsigned int \*nump:
+    :param nump:
         pointer to store the resultant numerator
+    :type nump: unsigned int \*
 
-    :param unsigned int \*denp:
+    :param denp:
         pointer to store the resultant denominator
+    :type denp: unsigned int \*
 
 .. _`snd_interval_ratden.return`:
 
@@ -237,17 +264,21 @@ snd_interval_list
 
     refine the interval value from the list
 
-    :param struct snd_interval \*i:
+    :param i:
         the interval value to refine
+    :type i: struct snd_interval \*
 
-    :param unsigned int count:
+    :param count:
         the number of elements in the list
+    :type count: unsigned int
 
-    :param const unsigned int \*list:
+    :param list:
         the value list
+    :type list: const unsigned int \*
 
-    :param unsigned int mask:
+    :param mask:
         the bit-mask to evaluate
+    :type mask: unsigned int
 
 .. _`snd_interval_list.description`:
 
@@ -275,17 +306,21 @@ snd_interval_ranges
 
     refine the interval value from the list of ranges
 
-    :param struct snd_interval \*i:
+    :param i:
         the interval value to refine
+    :type i: struct snd_interval \*
 
-    :param unsigned int count:
+    :param count:
         the number of elements in the list of ranges
+    :type count: unsigned int
 
-    :param const struct snd_interval \*ranges:
+    :param ranges:
         the ranges list
+    :type ranges: const struct snd_interval \*
 
-    :param unsigned int mask:
+    :param mask:
         the bit-mask to evaluate
+    :type mask: unsigned int
 
 .. _`snd_interval_ranges.description`:
 
@@ -313,23 +348,29 @@ snd_pcm_hw_rule_add
 
     add the hw-constraint rule
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         the pcm runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param unsigned int cond:
+    :param cond:
         condition bits
+    :type cond: unsigned int
 
-    :param int var:
+    :param var:
         the variable to evaluate
+    :type var: int
 
-    :param snd_pcm_hw_rule_func_t func:
+    :param func:
         the evaluation function
+    :type func: snd_pcm_hw_rule_func_t
 
-    :param void \*private:
+    :param private:
         the private data pointer passed to function
+    :type private: void \*
 
-    :param int dep:
+    :param dep:
         the dependent variables
+    :type dep: int
 
     :param ellipsis ellipsis:
         variable arguments
@@ -350,14 +391,17 @@ snd_pcm_hw_constraint_mask
 
     apply the given bitmap mask constraint
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         hw_params variable to apply the mask
+    :type var: snd_pcm_hw_param_t
 
-    :param u_int32_t mask:
+    :param mask:
         the bitmap mask
+    :type mask: u_int32_t
 
 .. _`snd_pcm_hw_constraint_mask.description`:
 
@@ -382,14 +426,17 @@ snd_pcm_hw_constraint_mask64
 
     apply the given bitmap mask constraint
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         hw_params variable to apply the mask
+    :type var: snd_pcm_hw_param_t
 
-    :param u_int64_t mask:
+    :param mask:
         the 64bit bitmap mask
+    :type mask: u_int64_t
 
 .. _`snd_pcm_hw_constraint_mask64.description`:
 
@@ -414,11 +461,13 @@ snd_pcm_hw_constraint_integer
 
     apply an integer constraint to an interval
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         hw_params variable to apply the integer constraint
+    :type var: snd_pcm_hw_param_t
 
 .. _`snd_pcm_hw_constraint_integer.description`:
 
@@ -444,17 +493,21 @@ snd_pcm_hw_constraint_minmax
 
     apply a min/max range constraint to an interval
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         hw_params variable to apply the range
+    :type var: snd_pcm_hw_param_t
 
-    :param unsigned int min:
+    :param min:
         the minimal value
+    :type min: unsigned int
 
-    :param unsigned int max:
+    :param max:
         the maximal value
+    :type max: unsigned int
 
 .. _`snd_pcm_hw_constraint_minmax.description`:
 
@@ -480,17 +533,21 @@ snd_pcm_hw_constraint_list
 
     apply a list of constraints to a parameter
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param unsigned int cond:
+    :param cond:
         condition bits
+    :type cond: unsigned int
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         hw_params variable to apply the list constraint
+    :type var: snd_pcm_hw_param_t
 
-    :param const struct snd_pcm_hw_constraint_list \*l:
+    :param l:
         list
+    :type l: const struct snd_pcm_hw_constraint_list \*
 
 .. _`snd_pcm_hw_constraint_list.description`:
 
@@ -515,17 +572,21 @@ snd_pcm_hw_constraint_ranges
 
     apply list of range constraints to a parameter
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param unsigned int cond:
+    :param cond:
         condition bits
+    :type cond: unsigned int
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         hw_params variable to apply the list of range constraints
+    :type var: snd_pcm_hw_param_t
 
-    :param const struct snd_pcm_hw_constraint_ranges \*r:
+    :param r:
         ranges
+    :type r: const struct snd_pcm_hw_constraint_ranges \*
 
 .. _`snd_pcm_hw_constraint_ranges.description`:
 
@@ -550,17 +611,21 @@ snd_pcm_hw_constraint_ratnums
 
     apply ratnums constraint to a parameter
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param unsigned int cond:
+    :param cond:
         condition bits
+    :type cond: unsigned int
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         hw_params variable to apply the ratnums constraint
+    :type var: snd_pcm_hw_param_t
 
-    :param const struct snd_pcm_hw_constraint_ratnums \*r:
+    :param r:
         struct snd_ratnums constriants
+    :type r: const struct snd_pcm_hw_constraint_ratnums \*
 
 .. _`snd_pcm_hw_constraint_ratnums.return`:
 
@@ -578,17 +643,21 @@ snd_pcm_hw_constraint_ratdens
 
     apply ratdens constraint to a parameter
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param unsigned int cond:
+    :param cond:
         condition bits
+    :type cond: unsigned int
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         hw_params variable to apply the ratdens constraint
+    :type var: snd_pcm_hw_param_t
 
-    :param const struct snd_pcm_hw_constraint_ratdens \*r:
+    :param r:
         struct snd_ratdens constriants
+    :type r: const struct snd_pcm_hw_constraint_ratdens \*
 
 .. _`snd_pcm_hw_constraint_ratdens.return`:
 
@@ -606,17 +675,21 @@ snd_pcm_hw_constraint_msbits
 
     add a hw constraint msbits rule
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param unsigned int cond:
+    :param cond:
         condition bits
+    :type cond: unsigned int
 
-    :param unsigned int width:
+    :param width:
         sample bits width
+    :type width: unsigned int
 
-    :param unsigned int msbits:
+    :param msbits:
         msbits width
+    :type msbits: unsigned int
 
 .. _`snd_pcm_hw_constraint_msbits.description`:
 
@@ -644,17 +717,21 @@ snd_pcm_hw_constraint_step
 
     add a hw constraint step rule
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param unsigned int cond:
+    :param cond:
         condition bits
+    :type cond: unsigned int
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         hw_params variable to apply the step constraint
+    :type var: snd_pcm_hw_param_t
 
-    :param unsigned long step:
+    :param step:
         step size
+    :type step: unsigned long
 
 .. _`snd_pcm_hw_constraint_step.return`:
 
@@ -672,14 +749,17 @@ snd_pcm_hw_constraint_pow2
 
     add a hw constraint power-of-2 rule
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param unsigned int cond:
+    :param cond:
         condition bits
+    :type cond: unsigned int
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         hw_params variable to apply the power-of-2 constraint
+    :type var: snd_pcm_hw_param_t
 
 .. _`snd_pcm_hw_constraint_pow2.return`:
 
@@ -697,11 +777,13 @@ snd_pcm_hw_rule_noresample
 
     add a rule to allow disabling hw resampling
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param unsigned int base_rate:
+    :param base_rate:
         the rate at which the hardware does not resample
+    :type base_rate: unsigned int
 
 .. _`snd_pcm_hw_rule_noresample.return`:
 
@@ -719,14 +801,17 @@ snd_pcm_hw_param_value
 
     return \ ``params``\  field \ ``var``\  value
 
-    :param const struct snd_pcm_hw_params \*params:
+    :param params:
         the hw_params instance
+    :type params: const struct snd_pcm_hw_params \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         parameter to retrieve
+    :type var: snd_pcm_hw_param_t
 
-    :param int \*dir:
+    :param dir:
         pointer to the direction (-1,0,1) or \ ``NULL``\ 
+    :type dir: int \*
 
 .. _`snd_pcm_hw_param_value.return`:
 
@@ -745,17 +830,21 @@ snd_pcm_hw_param_first
 
     refine config space and return minimum value
 
-    :param struct snd_pcm_substream \*pcm:
+    :param pcm:
         PCM instance
+    :type pcm: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         the hw_params instance
+    :type params: struct snd_pcm_hw_params \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         parameter to retrieve
+    :type var: snd_pcm_hw_param_t
 
-    :param int \*dir:
+    :param dir:
         pointer to the direction (-1,0,1) or \ ``NULL``\ 
+    :type dir: int \*
 
 .. _`snd_pcm_hw_param_first.description`:
 
@@ -781,17 +870,21 @@ snd_pcm_hw_param_last
 
     refine config space and return maximum value
 
-    :param struct snd_pcm_substream \*pcm:
+    :param pcm:
         PCM instance
+    :type pcm: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         the hw_params instance
+    :type params: struct snd_pcm_hw_params \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         parameter to retrieve
+    :type var: snd_pcm_hw_param_t
 
-    :param int \*dir:
+    :param dir:
         pointer to the direction (-1,0,1) or \ ``NULL``\ 
+    :type dir: int \*
 
 .. _`snd_pcm_hw_param_last.description`:
 
@@ -817,14 +910,17 @@ snd_pcm_lib_ioctl
 
     a generic PCM ioctl callback
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command
+    :type cmd: unsigned int
 
-    :param void \*arg:
+    :param arg:
         ioctl argument
+    :type arg: void \*
 
 .. _`snd_pcm_lib_ioctl.description`:
 
@@ -850,8 +946,9 @@ snd_pcm_period_elapsed
 
     update the pcm status for the next period
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_period_elapsed.description`:
 
@@ -874,23 +971,29 @@ snd_pcm_add_chmap_ctls
 
     create channel-mapping control elements
 
-    :param struct snd_pcm \*pcm:
+    :param pcm:
         the assigned PCM instance
+    :type pcm: struct snd_pcm \*
 
-    :param int stream:
+    :param stream:
         stream direction
+    :type stream: int
 
-    :param const struct snd_pcm_chmap_elem \*chmap:
+    :param chmap:
         channel map elements (for query)
+    :type chmap: const struct snd_pcm_chmap_elem \*
 
-    :param int max_channels:
+    :param max_channels:
         the max number of channels for the stream
+    :type max_channels: int
 
-    :param unsigned long private_value:
+    :param private_value:
         the value passed to each kcontrol's private_value field
+    :type private_value: unsigned long
 
-    :param struct snd_pcm_chmap \*\*info_ret:
+    :param info_ret:
         store struct snd_pcm_chmap instance if non-NULL
+    :type info_ret: struct snd_pcm_chmap \*\*
 
 .. _`snd_pcm_add_chmap_ctls.description`:
 

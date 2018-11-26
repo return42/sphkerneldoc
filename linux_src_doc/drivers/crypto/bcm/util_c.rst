@@ -10,18 +10,22 @@ spu_sg_at_offset
 
     Find the scatterlist entry at a given distance from the start of a scatterlist.
 
-    :param struct scatterlist \*sg:
+    :param sg:
         [in]  Start of a scatterlist
+    :type sg: struct scatterlist \*
 
-    :param unsigned int skip:
+    :param skip:
         [in]  Distance from the start of the scatterlist, in bytes
+    :type skip: unsigned int
 
-    :param struct scatterlist \*\*sge:
+    :param sge:
         [out] Scatterlist entry at skip bytes from start
+    :type sge: struct scatterlist \*\*
 
-    :param unsigned int \*sge_offset:
+    :param sge_offset:
         [out] Number of bytes from start of sge buffer to get to
         requested distance.
+    :type sge_offset: unsigned int \*
 
 .. _`spu_sg_at_offset.return`:
 
@@ -40,15 +44,18 @@ spu_sg_count
 
     Determine number of elements in scatterlist to provide a specified number of bytes.
 
-    :param struct scatterlist \*sg_list:
+    :param sg_list:
         scatterlist to examine
+    :type sg_list: struct scatterlist \*
 
-    :param unsigned int skip:
+    :param skip:
         index of starting point
+    :type skip: unsigned int
 
-    :param int nbytes:
+    :param nbytes:
         consider elements of scatterlist until reaching this number of
         bytes
+    :type nbytes: int
 
 .. _`spu_sg_count.return`:
 
@@ -66,25 +73,30 @@ spu_msg_sg_add
 
     Copy scatterlist entries from one sg to another, up to a given length.
 
-    :param struct scatterlist \*\*to_sg:
+    :param to_sg:
         scatterlist to copy to
+    :type to_sg: struct scatterlist \*\*
 
-    :param struct scatterlist \*\*from_sg:
+    :param from_sg:
         scatterlist to copy from
+    :type from_sg: struct scatterlist \*\*
 
-    :param u32 \*from_skip:
+    :param from_skip:
         number of bytes to skip in from_sg. Non-zero when previous
         request included part of the buffer in entry in from_sg.
         Assumes from_skip < from_sg->length.
         \ ``from_nents``\    number of entries in from_sg
         \ ``length``\        number of bytes to copy. may reach this limit before exhausting
         from_sg.
+    :type from_skip: u32 \*
 
-    :param u8 from_nents:
+    :param from_nents:
         *undescribed*
+    :type from_nents: u8
 
-    :param u32 length:
+    :param length:
         *undescribed*
+    :type length: u32
 
 .. _`spu_msg_sg_add.description`:
 
@@ -112,29 +124,37 @@ do_shash
 
     Do a synchronous hash operation in software
 
-    :param unsigned char \*name:
+    :param name:
         The name of the hash algorithm
+    :type name: unsigned char \*
 
-    :param unsigned char \*result:
+    :param result:
         Buffer where digest is to be written
+    :type result: unsigned char \*
 
-    :param const u8 \*data1:
+    :param data1:
         First part of data to hash. May be NULL.
+    :type data1: const u8 \*
 
-    :param unsigned int data1_len:
+    :param data1_len:
         Length of data1, in bytes
+    :type data1_len: unsigned int
 
-    :param const u8 \*data2:
+    :param data2:
         Second part of data to hash. May be NULL.
+    :type data2: const u8 \*
 
-    :param unsigned int data2_len:
+    :param data2_len:
         Length of data2, in bytes
+    :type data2_len: unsigned int
 
-    :param const u8 \*key:
+    :param key:
         Key (if keyed hash)
+    :type key: const u8 \*
 
-    :param unsigned int key_len:
+    :param key_len:
         Length of key, in bytes (or 0 if non-keyed hash)
+    :type key_len: unsigned int
 
 .. _`do_shash.description`:
 
@@ -161,14 +181,17 @@ format_value_ccm
 
     Format a value into a buffer, using a specified number of bytes (i.e. maybe writing value X into a 4 byte buffer, or maybe into a 12 byte buffer), as per the SPU CCM spec.
 
-    :param unsigned int val:
+    :param val:
         value to write (up to max of unsigned int)
+    :type val: unsigned int
 
-    :param u8 \*buf:
+    :param buf:
         (pointer to) buffer to write the value
+    :type buf: u8 \*
 
-    :param u8 len:
+    :param len:
         number of bytes to use (0 to 255)
+    :type len: u8
 
 .. This file was automatic generated / don't edit.
 

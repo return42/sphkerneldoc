@@ -10,14 +10,17 @@ rvt_cq_enter
 
     add a new entry to the completion queue
 
-    :param struct rvt_cq \*cq:
+    :param cq:
         completion queue
+    :type cq: struct rvt_cq \*
 
-    :param struct ib_wc \*entry:
+    :param entry:
         work completion entry to add
+    :type entry: struct ib_wc \*
 
-    :param bool solicited:
+    :param solicited:
         true if \ ``entry``\  is solicited
+    :type solicited: bool
 
 .. _`rvt_cq_enter.description`:
 
@@ -35,17 +38,21 @@ rvt_create_cq
 
     create a completion queue
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the device this completion queue is attached to
+    :type ibdev: struct ib_device \*
 
-    :param const struct ib_cq_init_attr \*attr:
+    :param attr:
         creation attributes
+    :type attr: const struct ib_cq_init_attr \*
 
-    :param struct ib_ucontext \*context:
+    :param context:
         unused by the QLogic_IB driver
+    :type context: struct ib_ucontext \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data for libibverbs.so
+    :type udata: struct ib_udata \*
 
 .. _`rvt_create_cq.description`:
 
@@ -71,8 +78,9 @@ rvt_destroy_cq
 
     destroy a completion queue
 
-    :param struct ib_cq \*ibcq:
+    :param ibcq:
         the completion queue to destroy.
+    :type ibcq: struct ib_cq \*
 
 .. _`rvt_destroy_cq.description`:
 
@@ -97,11 +105,13 @@ rvt_req_notify_cq
 
     change the notification type for a completion queue
 
-    :param struct ib_cq \*ibcq:
+    :param ibcq:
         the completion queue
+    :type ibcq: struct ib_cq \*
 
-    :param enum ib_cq_notify_flags notify_flags:
+    :param notify_flags:
         the type of notification to request
+    :type notify_flags: enum ib_cq_notify_flags
 
 .. _`rvt_req_notify_cq.description`:
 
@@ -127,14 +137,17 @@ rvt_resize_cq
 
     change the size of the CQ
 
-    :param struct ib_cq \*ibcq:
+    :param ibcq:
         the completion queue
+    :type ibcq: struct ib_cq \*
 
-    :param int cqe:
+    :param cqe:
         *undescribed*
+    :type cqe: int
 
-    :param struct ib_udata \*udata:
+    :param udata:
         *undescribed*
+    :type udata: struct ib_udata \*
 
 .. _`rvt_resize_cq.return`:
 
@@ -152,14 +165,17 @@ rvt_poll_cq
 
     poll for work completion entries
 
-    :param struct ib_cq \*ibcq:
+    :param ibcq:
         the completion queue to poll
+    :type ibcq: struct ib_cq \*
 
-    :param int num_entries:
+    :param num_entries:
         the maximum number of entries to return
+    :type num_entries: int
 
-    :param struct ib_wc \*entry:
+    :param entry:
         pointer to array where work completions are placed
+    :type entry: struct ib_wc \*
 
 .. _`rvt_poll_cq.description`:
 
@@ -185,8 +201,9 @@ rvt_driver_cq_init
 
     Init cq resources on behalf of driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rvt_driver_cq_init.return`:
 
@@ -204,8 +221,9 @@ rvt_cq_exit
 
     tear down cq reources
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

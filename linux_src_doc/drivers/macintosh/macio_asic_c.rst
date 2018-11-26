@@ -10,8 +10,9 @@ macio_release_dev
 
     free a macio device structure when all users of it are finished.
 
-    :param struct device \*dev:
+    :param dev:
         device that's been disconnected
+    :type dev: struct device \*
 
 .. _`macio_release_dev.description`:
 
@@ -32,14 +33,17 @@ macio_resource_quirks
 
     tweak or skip some resources for a device
 
-    :param struct device_node \*np:
+    :param np:
         pointer to the device node
+    :type np: struct device_node \*
 
-    :param struct resource \*res:
+    :param res:
         resulting resource
+    :type res: struct resource \*
 
-    :param int index:
+    :param index:
         index of resource in node
+    :type index: int
 
 .. _`macio_resource_quirks.description`:
 
@@ -58,20 +62,25 @@ macio_add_one_device
 
     Add one device from OF node to the device tree
 
-    :param struct macio_chip \*chip:
+    :param chip:
         pointer to the macio_chip holding the device
+    :type chip: struct macio_chip \*
 
-    :param struct device \*parent:
+    :param parent:
         *undescribed*
+    :type parent: struct device \*
 
-    :param struct device_node \*np:
+    :param np:
         pointer to the device node in the OF tree
+    :type np: struct device_node \*
 
-    :param struct macio_dev \*in_bay:
+    :param in_bay:
         set to 1 if device is part of a media-bay
+    :type in_bay: struct macio_dev \*
 
-    :param struct resource \*parent_res:
+    :param parent_res:
         *undescribed*
+    :type parent_res: struct resource \*
 
 .. _`macio_add_one_device.description`:
 
@@ -90,8 +99,9 @@ macio_pci_add_devices
 
     Adds sub-devices of mac-io to the device tree
 
-    :param struct macio_chip \*chip:
+    :param chip:
         pointer to the macio_chip holding the devices
+    :type chip: struct macio_chip \*
 
 .. _`macio_pci_add_devices.description`:
 
@@ -114,8 +124,9 @@ macio_register_driver
 
     Registers a new MacIO device driver
 
-    :param struct macio_driver \*drv:
+    :param drv:
         pointer to the driver definition structure
+    :type drv: struct macio_driver \*
 
 .. _`macio_unregister_driver`:
 
@@ -126,8 +137,9 @@ macio_unregister_driver
 
     Unregisters a new MacIO device driver
 
-    :param struct macio_driver \*drv:
+    :param drv:
         pointer to the driver definition structure
+    :type drv: struct macio_driver \*
 
 .. _`macio_request_resource`:
 
@@ -138,14 +150,17 @@ macio_request_resource
 
     Request an MMIO resource
 
-    :param struct macio_dev \*dev:
+    :param dev:
         pointer to the device holding the resource
+    :type dev: struct macio_dev \*
 
-    :param int resource_no:
+    :param resource_no:
         resource number to request
+    :type resource_no: int
 
-    :param const char \*name:
+    :param name:
         resource name
+    :type name: const char \*
 
 .. _`macio_request_resource.description`:
 
@@ -169,11 +184,13 @@ macio_release_resource
 
     Release an MMIO resource
 
-    :param struct macio_dev \*dev:
+    :param dev:
         pointer to the device holding the resource
+    :type dev: struct macio_dev \*
 
-    :param int resource_no:
+    :param resource_no:
         resource number to release
+    :type resource_no: int
 
 .. _`macio_request_resources`:
 
@@ -184,11 +201,13 @@ macio_request_resources
 
     Reserve all memory resources
 
-    :param struct macio_dev \*dev:
+    :param dev:
         MacIO device whose resources are to be reserved
+    :type dev: struct macio_dev \*
 
-    :param const char \*name:
+    :param name:
         Name to be associated with resource.
+    :type name: const char \*
 
 .. _`macio_request_resources.description`:
 
@@ -211,8 +230,9 @@ macio_release_resources
 
     Release reserved memory resources
 
-    :param struct macio_dev \*dev:
+    :param dev:
         MacIO device whose resources were previously reserved
+    :type dev: struct macio_dev \*
 
 .. This file was automatic generated / don't edit.
 

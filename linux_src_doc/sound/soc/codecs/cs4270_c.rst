@@ -82,17 +82,21 @@ cs4270_set_dai_sysclk
 
     determine the CS4270 samples rates.
 
-    :param struct snd_soc_dai \*codec_dai:
+    :param codec_dai:
         the codec DAI
+    :type codec_dai: struct snd_soc_dai \*
 
-    :param int clk_id:
+    :param clk_id:
         the clock ID (ignored)
+    :type clk_id: int
 
-    :param unsigned int freq:
+    :param freq:
         the MCLK input frequency
+    :type freq: unsigned int
 
-    :param int dir:
+    :param dir:
         the clock direction (ignored)
+    :type dir: int
 
 .. _`cs4270_set_dai_sysclk.description`:
 
@@ -128,11 +132,13 @@ cs4270_set_dai_fmt
 
     configure the codec for the selected audio format
 
-    :param struct snd_soc_dai \*codec_dai:
+    :param codec_dai:
         the codec DAI
+    :type codec_dai: struct snd_soc_dai \*
 
-    :param unsigned int format:
+    :param format:
         a SND_SOC_DAIFMT_x value indicating the data format
+    :type format: unsigned int
 
 .. _`cs4270_set_dai_fmt.description`:
 
@@ -156,14 +162,17 @@ cs4270_hw_params
 
     program the CS4270 with the given hardware parameters.
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the audio stream
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         the hardware parameters to set
+    :type params: struct snd_pcm_hw_params \*
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         the SOC DAI (ignored)
+    :type dai: struct snd_soc_dai \*
 
 .. _`cs4270_hw_params.description`:
 
@@ -187,11 +196,13 @@ cs4270_dai_mute
 
     enable/disable the CS4270 external mute
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         the SOC DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param int mute:
+    :param mute:
         0 = disable mute, 1 = enable mute
+    :type mute: int
 
 .. _`cs4270_dai_mute.description`:
 
@@ -212,11 +223,13 @@ cs4270_soc_put_mute
 
     put callback for the 'Master Playback switch' alsa control.
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`cs4270_soc_put_mute.description`:
 
@@ -240,8 +253,9 @@ cs4270_probe
 
     ASoC probe function
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
 .. _`cs4270_probe.description`:
 
@@ -260,8 +274,9 @@ cs4270_remove
 
     ASoC remove function
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
 .. _`cs4270_remove.description`:
 
@@ -279,11 +294,13 @@ cs4270_i2c_probe
 
     initialize the I2C interface of the CS4270
 
-    :param struct i2c_client \*i2c_client:
+    :param i2c_client:
         the I2C client object
+    :type i2c_client: struct i2c_client \*
 
-    :param const struct i2c_device_id \*id:
+    :param id:
         the I2C device ID (ignored)
+    :type id: const struct i2c_device_id \*
 
 .. _`cs4270_i2c_probe.description`:
 

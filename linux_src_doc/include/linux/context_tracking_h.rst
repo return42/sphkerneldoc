@@ -10,8 +10,9 @@ ct_state
 
     return the current context tracking state if known
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ct_state.description`:
 

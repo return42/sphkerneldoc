@@ -10,8 +10,9 @@ kvm_trap_emul_handle_msa_disabled
 
     Guest used MSA while disabled in root.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU context.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_trap_emul_handle_msa_disabled.description`:
 
@@ -29,8 +30,9 @@ kvm_trap_emul_gva_lockless_begin
 
     Begin lockless access to GVA space.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         VCPU pointer.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_trap_emul_gva_lockless_begin.description`:
 
@@ -52,8 +54,9 @@ kvm_trap_emul_gva_lockless_end
 
     End lockless access to GVA space.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         VCPU pointer.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_trap_emul_gva_lockless_end.description`:
 

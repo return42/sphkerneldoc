@@ -326,14 +326,17 @@ ps3_sys_manager_write
 
     Helper to write a two part message to the vuart.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
-    :param const struct ps3_sys_manager_header \*header:
+    :param header:
         *undescribed*
+    :type header: const struct ps3_sys_manager_header \*
 
-    :param const void \*payload:
+    :param payload:
         *undescribed*
+    :type payload: const void \*
 
 .. _`ps3_sys_manager_send_attr`:
 
@@ -344,11 +347,13 @@ ps3_sys_manager_send_attr
 
     Send a 'set attribute' to the system manager.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
-    :param enum ps3_sys_manager_attr attr:
+    :param attr:
         *undescribed*
+    :type attr: enum ps3_sys_manager_attr
 
 .. _`ps3_sys_manager_send_next_op`:
 
@@ -359,14 +364,17 @@ ps3_sys_manager_send_next_op
 
     Send a 'set next op' to the system manager.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
-    :param enum ps3_sys_manager_next_op op:
+    :param op:
         *undescribed*
+    :type op: enum ps3_sys_manager_next_op
 
-    :param enum ps3_sys_manager_wake_source wake_source:
+    :param wake_source:
         *undescribed*
+    :type wake_source: enum ps3_sys_manager_wake_source
 
 .. _`ps3_sys_manager_send_next_op.description`:
 
@@ -384,8 +392,9 @@ ps3_sys_manager_send_request_shutdown
 
     Send 'request' to the system manager.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_sys_manager_send_request_shutdown.description`:
 
@@ -409,11 +418,13 @@ ps3_sys_manager_send_response
 
     Send a 'response' to the system manager.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
-    :param u64 status:
+    :param status:
         zero = success, others fail.
+    :type status: u64
 
 .. _`ps3_sys_manager_send_response.description`:
 
@@ -432,8 +443,9 @@ ps3_sys_manager_handle_event
 
     Second stage event msg handler.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_sys_manager_handle_cmd`:
 
@@ -444,8 +456,9 @@ ps3_sys_manager_handle_cmd
 
     Second stage command msg handler.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_sys_manager_handle_cmd.description`:
 
@@ -463,8 +476,9 @@ ps3_sys_manager_handle_msg
 
     First stage msg handler.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_sys_manager_handle_msg.description`:
 
@@ -482,8 +496,9 @@ ps3_sys_manager_final_power_off
 
     The final platform machine_power_off routine.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_sys_manager_final_power_off.description`:
 
@@ -506,8 +521,9 @@ ps3_sys_manager_final_restart
 
     The final platform machine_restart routine.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_sys_manager_final_restart.description`:
 
@@ -529,8 +545,9 @@ ps3_sys_manager_get_wol
 
     Get wake-on-lan setting.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ps3_sys_manager_set_wol`:
 
@@ -541,8 +558,9 @@ ps3_sys_manager_set_wol
 
     Set wake-on-lan setting.
 
-    :param int state:
+    :param state:
         *undescribed*
+    :type state: int
 
 .. _`ps3_sys_manager_work`:
 
@@ -553,8 +571,9 @@ ps3_sys_manager_work
 
     Asynchronous read handler.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_sys_manager_work.description`:
 

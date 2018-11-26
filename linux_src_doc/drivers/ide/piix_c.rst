@@ -10,11 +10,13 @@ piix_set_pio_mode
 
     set host controller for PIO mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         *undescribed*
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`piix_set_pio_mode.description`:
 
@@ -32,11 +34,13 @@ piix_set_dma_mode
 
     set host controller for DMA mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`piix_set_dma_mode.description`:
 
@@ -55,8 +59,9 @@ init_chipset_ich
 
     set up the ICH chipset
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to set up
+    :type dev: struct pci_dev \*
 
 .. _`init_chipset_ich.description`:
 
@@ -75,8 +80,9 @@ ich_clear_irq
 
     clear BMDMA status
 
-    :param ide_drive_t \*drive:
+    :param drive:
         IDE drive
+    :type drive: ide_drive_t \*
 
 .. _`ich_clear_irq.description`:
 
@@ -96,8 +102,9 @@ init_hwif_piix
 
     fill in the hwif for the PIIX
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         IDE interface
+    :type hwif: ide_hwif_t \*
 
 .. _`init_hwif_piix.description`:
 
@@ -116,11 +123,13 @@ piix_init_one
 
     called when a PIIX is found
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the piix device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         the matching pci id
+    :type id: const struct pci_device_id \*
 
 .. _`piix_init_one.description`:
 
@@ -139,8 +148,9 @@ piix_check_450nx
 
     Check for problem 450NX setup
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`piix_check_450nx.description`:
 

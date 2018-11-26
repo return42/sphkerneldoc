@@ -10,11 +10,13 @@ page_counter_cancel
 
     take pages out of the local counter
 
-    :param struct page_counter \*counter:
+    :param counter:
         counter
+    :type counter: struct page_counter \*
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         number of pages to cancel
+    :type nr_pages: unsigned long
 
 .. _`page_counter_charge`:
 
@@ -25,11 +27,13 @@ page_counter_charge
 
     hierarchically charge pages
 
-    :param struct page_counter \*counter:
+    :param counter:
         counter
+    :type counter: struct page_counter \*
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         number of pages to charge
+    :type nr_pages: unsigned long
 
 .. _`page_counter_charge.note`:
 
@@ -47,14 +51,17 @@ page_counter_try_charge
 
     try to hierarchically charge pages
 
-    :param struct page_counter \*counter:
+    :param counter:
         counter
+    :type counter: struct page_counter \*
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         number of pages to charge
+    :type nr_pages: unsigned long
 
-    :param struct page_counter \*\*fail:
+    :param fail:
         points first counter to hit its limit, if any
+    :type fail: struct page_counter \*\*
 
 .. _`page_counter_try_charge.description`:
 
@@ -73,11 +80,13 @@ page_counter_uncharge
 
     hierarchically uncharge pages
 
-    :param struct page_counter \*counter:
+    :param counter:
         counter
+    :type counter: struct page_counter \*
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         number of pages to uncharge
+    :type nr_pages: unsigned long
 
 .. _`page_counter_set_max`:
 
@@ -88,11 +97,13 @@ page_counter_set_max
 
     set the maximum number of pages allowed
 
-    :param struct page_counter \*counter:
+    :param counter:
         counter
+    :type counter: struct page_counter \*
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         limit to set
+    :type nr_pages: unsigned long
 
 .. _`page_counter_set_max.description`:
 
@@ -113,11 +124,13 @@ page_counter_set_min
 
     set the amount of protected memory
 
-    :param struct page_counter \*counter:
+    :param counter:
         counter
+    :type counter: struct page_counter \*
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         value to set
+    :type nr_pages: unsigned long
 
 .. _`page_counter_set_min.description`:
 
@@ -135,11 +148,13 @@ page_counter_set_low
 
     set the amount of protected memory
 
-    :param struct page_counter \*counter:
+    :param counter:
         counter
+    :type counter: struct page_counter \*
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         value to set
+    :type nr_pages: unsigned long
 
 .. _`page_counter_set_low.description`:
 
@@ -157,14 +172,17 @@ page_counter_memparse
 
     \ :c:func:`memparse`\  for page counter limits
 
-    :param const char \*buf:
+    :param buf:
         string to parse
+    :type buf: const char \*
 
-    :param const char \*max:
+    :param max:
         string meaning maximum possible value
+    :type max: const char \*
 
-    :param unsigned long \*nr_pages:
+    :param nr_pages:
         returns the result in number of pages
+    :type nr_pages: unsigned long \*
 
 .. _`page_counter_memparse.description`:
 

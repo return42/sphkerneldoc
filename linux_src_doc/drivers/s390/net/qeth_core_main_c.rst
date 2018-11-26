@@ -10,20 +10,24 @@ qeth_send_control_data
 
     send control command to the card
 
-    :param struct qeth_card \*card:
+    :param card:
         qeth_card structure pointer
+    :type card: struct qeth_card \*
 
-    :param int len:
+    :param len:
         size of the command buffer
+    :type len: int
 
-    :param struct qeth_cmd_buffer \*iob:
+    :param iob:
         qeth_cmd_buffer pointer
+    :type iob: struct qeth_cmd_buffer \*
 
     :param int (\*reply_cb)(struct qeth_card \*cb_card, struct qeth_reply \*cb_reply, unsigned long cb_cmd):
         callback function pointer
 
-    :param void \*reply_param:
+    :param reply_param:
         private pointer passed to the callback
+    :type reply_param: void \*
 
 .. _`qeth_send_control_data.description`:
 
@@ -50,17 +54,20 @@ qeth_send_ipa_cmd
 
     send an IPA command
 
-    :param struct qeth_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct qeth_card \*
 
-    :param struct qeth_cmd_buffer \*iob:
+    :param iob:
         *undescribed*
+    :type iob: struct qeth_cmd_buffer \*
 
     :param int (\*reply_cb)(struct qeth_card \*, struct qeth_reply\*, unsigned long):
         *undescribed*
 
-    :param void \*reply_param:
+    :param reply_param:
         *undescribed*
+    :type reply_param: void \*
 
 .. _`qeth_send_ipa_cmd.description`:
 
@@ -78,8 +85,9 @@ qeth_prep_flush_pack_buffer
 
     Prepares flushing of a packing buffer.
 
-    :param struct qeth_qdio_out_q \*queue:
+    :param queue:
         queue to check for packing buffer
+    :type queue: struct qeth_qdio_out_q \*
 
 .. _`qeth_prep_flush_pack_buffer.description`:
 
@@ -93,21 +101,21 @@ Returns number of buffers that were prepared for flush.
 qeth_get_priority_queue
 =======================
 
-.. c:function:: int qeth_get_priority_queue(struct qeth_card *card, struct sk_buff *skb, int ipv, int cast_type)
+.. c:function:: int qeth_get_priority_queue(struct qeth_card *card, struct sk_buff *skb, int ipv)
 
     Function assumes that we have 4 outbound queues.
 
-    :param struct qeth_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct qeth_card \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param int ipv:
+    :param ipv:
         *undescribed*
-
-    :param int cast_type:
-        *undescribed*
+    :type ipv: int
 
 .. _`qeth_get_elements_for_frags`:
 
@@ -118,8 +126,9 @@ qeth_get_elements_for_frags
 
     find number of SBALEs for skb frags.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         SKB address
+    :type skb: struct sk_buff \*
 
 .. _`qeth_get_elements_for_frags.description`:
 
@@ -129,63 +138,67 @@ Description
 Returns the number of pages, and thus QDIO buffer elements, needed to cover
 fragmented part of the SKB. Returns zero for linear SKB.
 
-.. _`qeth_get_elements_no`:
+.. _`qeth_count_elements`:
 
-qeth_get_elements_no
-====================
+qeth_count_elements
+===================
 
-.. c:function:: int qeth_get_elements_no(struct qeth_card *card, struct sk_buff *skb, int extra_elems, int data_offset)
+.. c:function:: unsigned int qeth_count_elements(struct sk_buff *skb, unsigned int data_offset)
 
-    find number of SBALEs for skb data, inc. frags.
+    Counts the number of QDIO buffer elements needed to transmit an skb.
 
-    :param struct qeth_card \*card:
-        qeth card structure, to check max. elems.
+    :param skb:
+        the skb to operate on.
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff \*skb:
-        SKB address
+    :param data_offset:
+        skip this part of the skb's linear data
+    :type data_offset: unsigned int
 
-    :param int extra_elems:
-        extra elems needed, to check against max.
-
-    :param int data_offset:
-        range starts at skb->data + data_offset
-
-.. _`qeth_get_elements_no.description`:
+.. _`qeth_count_elements.description`:
 
 Description
 -----------
 
-Returns the number of pages, and thus QDIO buffer elements, needed to cover
-skb data, including linear part and fragments. Checks if the result plus
-extra_elems fits under the limit for the card. Returns 0 if it does not.
+Returns the number of pages, and thus QDIO buffer elements, needed to map the
+skb's data (both its linear part and paged fragments).
 
-.. _`qeth_get_elements_no.note`:
+.. _`qeth_add_hw_header`:
 
-Note
-----
+qeth_add_hw_header
+==================
 
-extra_elems is not included in the returned result.
+.. c:function:: int qeth_add_hw_header(struct qeth_card *card, struct sk_buff *skb, struct qeth_hdr **hdr, unsigned int hdr_len, unsigned int proto_len, unsigned int *elements)
 
-.. _`qeth_push_hdr`:
+    add a HW header to an skb.
 
-qeth_push_hdr
-=============
+    :param card:
+        *undescribed*
+    :type card: struct qeth_card \*
 
-.. c:function:: int qeth_push_hdr(struct sk_buff *skb, struct qeth_hdr **hdr, unsigned int len)
+    :param skb:
+        skb that the HW header should be added to.
+    :type skb: struct sk_buff \*
 
-    push a qeth_hdr onto an skb.
-
-    :param struct sk_buff \*skb:
-        skb that the qeth_hdr should be pushed onto.
-
-    :param struct qeth_hdr \*\*hdr:
+    :param hdr:
         double pointer to a qeth_hdr. When returning with >= 0,
         it contains a valid pointer to a qeth_hdr.
+    :type hdr: struct qeth_hdr \*\*
 
-    :param unsigned int len:
-        length of the hdr that needs to be pushed on.
+    :param hdr_len:
+        length of the HW header.
+    :type hdr_len: unsigned int
 
-.. _`qeth_push_hdr.description`:
+    :param proto_len:
+        length of protocol headers that need to be in same page as the
+        HW header.
+    :type proto_len: unsigned int
+
+    :param elements:
+        *undescribed*
+    :type elements: unsigned int \*
+
+.. _`qeth_add_hw_header.description`:
 
 Description
 -----------
@@ -193,6 +206,7 @@ Description
 Returns the pushed length. If the header can't be pushed on
 (eg. because it would cross a page boundary), it is allocated from
 the cache instead and 0 is returned.
+The number of needed buffer elements is returned in \ ``elements``\ .
 Error to create the hdr is indicated by returning with < 0.
 
 .. _`qeth_fill_buffer`:
@@ -204,24 +218,30 @@ qeth_fill_buffer
 
     map skb into an output buffer
 
-    :param struct qeth_qdio_out_q \*queue:
+    :param queue:
         QDIO queue to submit the buffer on
+    :type queue: struct qeth_qdio_out_q \*
 
-    :param struct qeth_qdio_out_buffer \*buf:
+    :param buf:
         buffer to transport the skb
+    :type buf: struct qeth_qdio_out_buffer \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to map into the buffer
+    :type skb: struct sk_buff \*
 
-    :param struct qeth_hdr \*hdr:
+    :param hdr:
         qeth_hdr for this skb. Either at skb->data, or allocated
         from qeth_core_header_cache.
+    :type hdr: struct qeth_hdr \*
 
-    :param unsigned int offset:
+    :param offset:
         when mapping the skb, start at skb->data + offset
+    :type offset: unsigned int
 
-    :param unsigned int hd_len:
+    :param hd_len:
         if > 0, build a dedicated header element of this size
+    :type hd_len: unsigned int
 
 .. _`qeth_vm_request_mac`:
 
@@ -232,8 +252,9 @@ qeth_vm_request_mac
 
     Request a hypervisor-managed MAC address
 
-    :param struct qeth_card \*card:
+    :param card:
         pointer to a qeth_card
+    :type card: struct qeth_card \*
 
 .. _`qeth_vm_request_mac.description`:
 
@@ -253,8 +274,9 @@ qeth_enable_hw_features
 
     (Re-)Enable HW functions for device features
 
-    :param struct net_device \*dev:
+    :param dev:
         a net_device
+    :type dev: struct net_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -59,11 +59,13 @@ drm_mm_reserve_node
 
     insert an pre-initialized node
 
-    :param struct drm_mm \*mm:
+    :param mm:
         drm_mm allocator to insert \ ``node``\  into
+    :type mm: struct drm_mm \*
 
-    :param struct drm_mm_node \*node:
+    :param node:
         drm_mm_node to insert
+    :type node: struct drm_mm_node \*
 
 .. _`drm_mm_reserve_node.description`:
 
@@ -92,29 +94,37 @@ drm_mm_insert_node_in_range
 
     ranged search for space and insert \ ``node``\ 
 
-    :param struct drm_mm \* const mm:
+    :param mm:
         drm_mm to allocate from
+    :type mm: struct drm_mm \* const
 
-    :param struct drm_mm_node \* const node:
+    :param node:
         preallocate node to insert
+    :type node: struct drm_mm_node \* const
 
-    :param u64 size:
+    :param size:
         size of the allocation
+    :type size: u64
 
-    :param u64 alignment:
+    :param alignment:
         alignment of the allocation
+    :type alignment: u64
 
-    :param unsigned long color:
+    :param color:
         opaque tag value to use for this node
+    :type color: unsigned long
 
-    :param u64 range_start:
+    :param range_start:
         start of the allowed range for this node
+    :type range_start: u64
 
-    :param u64 range_end:
+    :param range_end:
         end of the allowed range for this node
+    :type range_end: u64
 
-    :param enum drm_mm_insert_mode mode:
+    :param mode:
         fine-tune the allocation search and placement
+    :type mode: enum drm_mm_insert_mode
 
 .. _`drm_mm_insert_node_in_range.description`:
 
@@ -139,8 +149,9 @@ drm_mm_remove_node
 
     Remove a memory node from the allocator.
 
-    :param struct drm_mm_node \*node:
+    :param node:
         drm_mm_node to remove
+    :type node: struct drm_mm_node \*
 
 .. _`drm_mm_remove_node.description`:
 
@@ -160,11 +171,13 @@ drm_mm_replace_node
 
     move an allocation from \ ``old``\  to \ ``new``\ 
 
-    :param struct drm_mm_node \*old:
+    :param old:
         drm_mm_node to remove from the allocator
+    :type old: struct drm_mm_node \*
 
-    :param struct drm_mm_node \*new:
+    :param new:
         drm_mm_node which should inherit \ ``old``\ 's allocation
+    :type new: struct drm_mm_node \*
 
 .. _`drm_mm_replace_node.description`:
 
@@ -217,29 +230,37 @@ drm_mm_scan_init_with_range
 
     initialize range-restricted lru scanning
 
-    :param struct drm_mm_scan \*scan:
+    :param scan:
         scan state
+    :type scan: struct drm_mm_scan \*
 
-    :param struct drm_mm \*mm:
+    :param mm:
         drm_mm to scan
+    :type mm: struct drm_mm \*
 
-    :param u64 size:
+    :param size:
         size of the allocation
+    :type size: u64
 
-    :param u64 alignment:
+    :param alignment:
         alignment of the allocation
+    :type alignment: u64
 
-    :param unsigned long color:
+    :param color:
         opaque tag value to use for the allocation
+    :type color: unsigned long
 
-    :param u64 start:
+    :param start:
         start of the allowed range for the allocation
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         end of the allowed range for the allocation
+    :type end: u64
 
-    :param enum drm_mm_insert_mode mode:
+    :param mode:
         fine-tune the allocation search and placement
+    :type mode: enum drm_mm_insert_mode
 
 .. _`drm_mm_scan_init_with_range.description`:
 
@@ -266,11 +287,13 @@ drm_mm_scan_add_block
 
     add a node to the scan list
 
-    :param struct drm_mm_scan \*scan:
+    :param scan:
         the active drm_mm scanner
+    :type scan: struct drm_mm_scan \*
 
-    :param struct drm_mm_node \*node:
+    :param node:
         drm_mm_node to add
+    :type node: struct drm_mm_node \*
 
 .. _`drm_mm_scan_add_block.description`:
 
@@ -296,11 +319,13 @@ drm_mm_scan_remove_block
 
     remove a node from the scan list
 
-    :param struct drm_mm_scan \*scan:
+    :param scan:
         the active drm_mm scanner
+    :type scan: struct drm_mm_scan \*
 
-    :param struct drm_mm_node \*node:
+    :param node:
         drm_mm_node to remove
+    :type node: struct drm_mm_node \*
 
 .. _`drm_mm_scan_remove_block.description`:
 
@@ -334,8 +359,9 @@ drm_mm_scan_color_evict
 
     evict overlapping nodes on either side of hole
 
-    :param struct drm_mm_scan \*scan:
+    :param scan:
         drm_mm scan with target hole
+    :type scan: struct drm_mm_scan \*
 
 .. _`drm_mm_scan_color_evict.description`:
 
@@ -362,14 +388,17 @@ drm_mm_init
 
     initialize a drm-mm allocator
 
-    :param struct drm_mm \*mm:
+    :param mm:
         the drm_mm structure to initialize
+    :type mm: struct drm_mm \*
 
-    :param u64 start:
+    :param start:
         start of the range managed by \ ``mm``\ 
+    :type start: u64
 
-    :param u64 size:
+    :param size:
         end of the range managed by \ ``mm``\ 
+    :type size: u64
 
 .. _`drm_mm_init.description`:
 
@@ -387,8 +416,9 @@ drm_mm_takedown
 
     clean up a drm_mm allocator
 
-    :param struct drm_mm \*mm:
+    :param mm:
         drm_mm allocator to clean up
+    :type mm: struct drm_mm \*
 
 .. _`drm_mm_takedown.description`:
 
@@ -407,11 +437,13 @@ drm_mm_print
 
     print allocator state
 
-    :param const struct drm_mm \*mm:
+    :param mm:
         drm_mm allocator to print
+    :type mm: const struct drm_mm \*
 
-    :param struct drm_printer \*p:
+    :param p:
         DRM printer to use
+    :type p: struct drm_printer \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ uvd_v3_1_semaphore_emit
 
     emit semaphore command
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring pointer
+    :type ring: struct radeon_ring \*
 
-    :param struct radeon_semaphore \*semaphore:
+    :param semaphore:
         semaphore to emit commands for
+    :type semaphore: struct radeon_semaphore \*
 
-    :param bool emit_wait:
+    :param emit_wait:
         true if we should emit a wait command
+    :type emit_wait: bool
 
 .. _`uvd_v3_1_semaphore_emit.description`:
 

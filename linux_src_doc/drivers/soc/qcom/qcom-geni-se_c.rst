@@ -77,8 +77,9 @@ geni_se_get_qup_hw_version
 
     Read the QUP wrapper Hardware version
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the corresponding serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_get_qup_hw_version.return`:
 
@@ -96,14 +97,17 @@ geni_se_init
 
     Initialize the GENI serial engine
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
-    :param u32 rx_wm:
+    :param rx_wm:
         Receive watermark, in units of FIFO words.
+    :type rx_wm: u32
 
-    :param u32 rx_rfr:
+    :param rx_rfr:
         *undescribed*
+    :type rx_rfr: u32
 
 .. _`geni_se_init.description`:
 
@@ -122,11 +126,13 @@ geni_se_select_mode
 
     Select the serial engine transfer mode
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
-    :param enum geni_se_xfer_mode mode:
+    :param mode:
         Transfer mode to be selected.
+    :type mode: enum geni_se_xfer_mode
 
 .. _`overview`:
 
@@ -181,23 +187,29 @@ geni_se_config_packing
 
     Packing configuration of the serial engine
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine
+    :type se: struct geni_se \*
 
-    :param int bpw:
+    :param bpw:
         Bits of data per transfer word.
+    :type bpw: int
 
-    :param int pack_words:
+    :param pack_words:
         Number of words per fifo element.
+    :type pack_words: int
 
-    :param bool msb_to_lsb:
+    :param msb_to_lsb:
         Transfer from MSB to LSB or vice-versa.
+    :type msb_to_lsb: bool
 
-    :param bool tx_cfg:
+    :param tx_cfg:
         Flag to configure the TX Packing.
+    :type tx_cfg: bool
 
-    :param bool rx_cfg:
+    :param rx_cfg:
         Flag to configure the RX Packing.
+    :type rx_cfg: bool
 
 .. _`geni_se_config_packing.description`:
 
@@ -216,8 +228,9 @@ geni_se_resources_off
 
     Turn off resources associated with the serial engine
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_resources_off.return`:
 
@@ -235,8 +248,9 @@ geni_se_resources_on
 
     Turn on resources associated with the serial engine
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
 .. _`geni_se_resources_on.return`:
 
@@ -254,11 +268,13 @@ geni_se_clk_tbl_get
 
     Get the clock table to program DFS
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
-    :param unsigned long \*\*tbl:
+    :param tbl:
         Table in which the output is returned.
+    :type tbl: unsigned long \*\*
 
 .. _`geni_se_clk_tbl_get.description`:
 
@@ -287,33 +303,43 @@ geni_se_clk_freq_match
 
     Get the matching or closest SE clock frequency
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
-    :param unsigned long req_freq:
+    :param req_freq:
         Requested clock frequency.
+    :type req_freq: unsigned long
 
-    :param unsigned int \*index:
+    :param index:
         Index of the resultant frequency in the table.
+    :type index: unsigned int \*
 
-    :param unsigned long \*res_freq:
-        Resultant frequency which matches or is closer to the
-        requested frequency.
+    :param res_freq:
+        Resultant frequency of the source clock.
+    :type res_freq: unsigned long \*
 
-    :param bool exact:
+    :param exact:
         Flag to indicate exact multiple requirement of the requested
         frequency.
+    :type exact: bool
 
 .. _`geni_se_clk_freq_match.description`:
 
 Description
 -----------
 
-This function is called by the protocol drivers to determine the matching
-or exact multiple of the requested frequency, as provided by the serial
-engine clock in order to meet the performance requirements. If there is
-no matching or exact multiple of the requested frequency found, then it
-selects the closest floor frequency, if exact flag is not set.
+This function is called by the protocol drivers to determine the best match
+of the requested frequency as provided by the serial engine clock in order
+to meet the performance requirements.
+
+.. _`geni_se_clk_freq_match.if-we-return-success`:
+
+If we return success
+--------------------
+
+- if \ ``exact``\  is true  then \ ``res_freq``\  / <an_integer> == \ ``req_freq``\ 
+- if \ ``exact``\  is false then \ ``res_freq``\  / <an_integer> <= \ ``req_freq``\ 
 
 .. _`geni_se_clk_freq_match.return`:
 
@@ -331,17 +357,21 @@ geni_se_tx_dma_prep
 
     Prepare the serial engine for TX DMA transfer
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
-    :param void \*buf:
+    :param buf:
         Pointer to the TX buffer.
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         Length of the TX buffer.
+    :type len: size_t
 
-    :param dma_addr_t \*iova:
+    :param iova:
         Pointer to store the mapped DMA address.
+    :type iova: dma_addr_t \*
 
 .. _`geni_se_tx_dma_prep.description`:
 
@@ -366,17 +396,21 @@ geni_se_rx_dma_prep
 
     Prepare the serial engine for RX DMA transfer
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
-    :param void \*buf:
+    :param buf:
         Pointer to the RX buffer.
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         Length of the RX buffer.
+    :type len: size_t
 
-    :param dma_addr_t \*iova:
+    :param iova:
         Pointer to store the mapped DMA address.
+    :type iova: dma_addr_t \*
 
 .. _`geni_se_rx_dma_prep.description`:
 
@@ -401,14 +435,17 @@ geni_se_tx_dma_unprep
 
     Unprepare the serial engine after TX DMA transfer
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
-    :param dma_addr_t iova:
+    :param iova:
         DMA address of the TX buffer.
+    :type iova: dma_addr_t
 
-    :param size_t len:
+    :param len:
         Length of the TX buffer.
+    :type len: size_t
 
 .. _`geni_se_tx_dma_unprep.description`:
 
@@ -426,14 +463,17 @@ geni_se_rx_dma_unprep
 
     Unprepare the serial engine after RX DMA transfer
 
-    :param struct geni_se \*se:
+    :param se:
         Pointer to the concerned serial engine.
+    :type se: struct geni_se \*
 
-    :param dma_addr_t iova:
+    :param iova:
         DMA address of the RX buffer.
+    :type iova: dma_addr_t
 
-    :param size_t len:
+    :param len:
         Length of the RX buffer.
+    :type len: size_t
 
 .. _`geni_se_rx_dma_unprep.description`:
 

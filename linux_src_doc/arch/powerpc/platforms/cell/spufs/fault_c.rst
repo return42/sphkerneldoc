@@ -8,14 +8,17 @@ spufs_handle_event
 
 .. c:function:: void spufs_handle_event(struct spu_context *ctx, unsigned long ea, int type)
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct spu_context \*
 
-    :param unsigned long ea:
+    :param ea:
         *undescribed*
+    :type ea: unsigned long
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
 .. _`spufs_handle_event.description`:
 

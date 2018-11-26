@@ -10,11 +10,13 @@ pvrdma_req_notify_cq
 
     request notification for a completion queue
 
-    :param struct ib_cq \*ibcq:
+    :param ibcq:
         the completion queue
+    :type ibcq: struct ib_cq \*
 
-    :param enum ib_cq_notify_flags notify_flags:
+    :param notify_flags:
         notification flags
+    :type notify_flags: enum ib_cq_notify_flags
 
 .. _`pvrdma_create_cq`:
 
@@ -25,17 +27,21 @@ pvrdma_create_cq
 
     create completion queue
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the device
+    :type ibdev: struct ib_device \*
 
-    :param const struct ib_cq_init_attr \*attr:
+    :param attr:
         completion queue attributes
+    :type attr: const struct ib_cq_init_attr \*
 
-    :param struct ib_ucontext \*context:
+    :param context:
         user context
+    :type context: struct ib_ucontext \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`pvrdma_destroy_cq`:
 
@@ -46,26 +52,9 @@ pvrdma_destroy_cq
 
     destroy completion queue
 
-    :param struct ib_cq \*cq:
+    :param cq:
         the completion queue to destroy.
-
-.. _`pvrdma_modify_cq`:
-
-pvrdma_modify_cq
-================
-
-.. c:function:: int pvrdma_modify_cq(struct ib_cq *cq, u16 cq_count, u16 cq_period)
-
-    modify the CQ moderation parameters
-
-    :param struct ib_cq \*cq:
-        *undescribed*
-
-    :param u16 cq_count:
-        number of CQEs that will trigger an event
-
-    :param u16 cq_period:
-        max period of time in usec before triggering an event
+    :type cq: struct ib_cq \*
 
 .. _`pvrdma_poll_cq`:
 
@@ -76,32 +65,17 @@ pvrdma_poll_cq
 
     poll for work completion queue entries
 
-    :param struct ib_cq \*ibcq:
+    :param ibcq:
         completion queue
+    :type ibcq: struct ib_cq \*
 
-    :param int num_entries:
+    :param num_entries:
         the maximum number of entries
+    :type num_entries: int
 
-    :param struct ib_wc \*wc:
+    :param wc:
         *undescribed*
-
-.. _`pvrdma_resize_cq`:
-
-pvrdma_resize_cq
-================
-
-.. c:function:: int pvrdma_resize_cq(struct ib_cq *ibcq, int entries, struct ib_udata *udata)
-
-    resize CQ
-
-    :param struct ib_cq \*ibcq:
-        the completion queue
-
-    :param int entries:
-        CQ entries
-
-    :param struct ib_udata \*udata:
-        user data
+    :type wc: struct ib_wc \*
 
 .. This file was automatic generated / don't edit.
 

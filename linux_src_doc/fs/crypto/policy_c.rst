@@ -10,11 +10,13 @@ fscrypt_has_permitted_context
 
     is a file's encryption policy permitted within its directory?
 
-    :param struct inode \*parent:
+    :param parent:
         inode for parent directory
+    :type parent: struct inode \*
 
-    :param struct inode \*child:
+    :param child:
         inode for file being looked up, opened, or linked into \ ``parent``\ 
+    :type child: struct inode \*
 
 .. _`fscrypt_has_permitted_context.description`:
 
@@ -48,17 +50,21 @@ fscrypt_inherit_context
 
     Sets a child context from its parent
 
-    :param struct inode \*parent:
+    :param parent:
         Parent inode from which the context is inherited.
+    :type parent: struct inode \*
 
-    :param struct inode \*child:
+    :param child:
         Child inode that inherits the context from \ ``parent``\ .
+    :type child: struct inode \*
 
-    :param void \*fs_data:
+    :param fs_data:
         private data given by FS.
+    :type fs_data: void \*
 
-    :param bool preload:
+    :param preload:
         preload child i_crypt_info if true
+    :type preload: bool
 
 .. _`fscrypt_inherit_context.return`:
 

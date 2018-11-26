@@ -10,11 +10,13 @@ cail_pll_read
 
     read PLL register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         PLL register offset
+    :type reg: uint32_t
 
 .. _`cail_pll_read.description`:
 
@@ -33,14 +35,17 @@ cail_pll_write
 
     write PLL register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         PLL register offset
+    :type reg: uint32_t
 
-    :param uint32_t val:
+    :param val:
         value to write to the pll register
+    :type val: uint32_t
 
 .. _`cail_pll_write.description`:
 
@@ -58,11 +63,13 @@ cail_mc_read
 
     read MC (Memory Controller) register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         MC register offset
+    :type reg: uint32_t
 
 .. _`cail_mc_read.description`:
 
@@ -81,14 +88,17 @@ cail_mc_write
 
     write MC (Memory Controller) register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         MC register offset
+    :type reg: uint32_t
 
-    :param uint32_t val:
+    :param val:
         value to write to the pll register
+    :type val: uint32_t
 
 .. _`cail_mc_write.description`:
 
@@ -106,14 +116,17 @@ cail_reg_write
 
     write MMIO register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         MMIO register offset
+    :type reg: uint32_t
 
-    :param uint32_t val:
+    :param val:
         value to write to the pll register
+    :type val: uint32_t
 
 .. _`cail_reg_write.description`:
 
@@ -131,11 +144,13 @@ cail_reg_read
 
     read MMIO register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         MMIO register offset
+    :type reg: uint32_t
 
 .. _`cail_reg_read.description`:
 
@@ -154,14 +169,17 @@ cail_ioreg_write
 
     write IO register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         IO register offset
+    :type reg: uint32_t
 
-    :param uint32_t val:
+    :param val:
         value to write to the pll register
+    :type val: uint32_t
 
 .. _`cail_ioreg_write.description`:
 
@@ -179,11 +197,13 @@ cail_ioreg_read
 
     read IO register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         IO register offset
+    :type reg: uint32_t
 
 .. _`cail_ioreg_read.description`:
 
@@ -202,8 +222,9 @@ amdgpu_atombios_fini
 
     free the driver info and callbacks for atombios
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_atombios_fini.description`:
 
@@ -223,8 +244,9 @@ amdgpu_atombios_init
 
     init the driver info and callbacks for atombios
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_atombios_init.description`:
 

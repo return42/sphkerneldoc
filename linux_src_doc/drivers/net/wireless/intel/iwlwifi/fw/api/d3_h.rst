@@ -394,6 +394,172 @@ flags
 reserved
     reserved
 
+.. _`iwl_wowlan_gtk_status`:
+
+struct iwl_wowlan_gtk_status
+============================
+
+.. c:type:: struct iwl_wowlan_gtk_status
+
+    GTK status
+
+.. _`iwl_wowlan_gtk_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_wowlan_gtk_status {
+        u8 key[WOWLAN_KEY_MAX_SIZE];
+        u8 key_len;
+        u8 key_flags;
+        u8 reserved[2];
+        u8 tkip_mic_key[8];
+        struct iwl_wowlan_rsc_tsc_params_cmd rsc;
+    }
+
+.. _`iwl_wowlan_gtk_status.members`:
+
+Members
+-------
+
+key
+    GTK material
+
+key_len
+    GTK legth, if set to 0, the key is not available
+
+key_flags
+    information about the key:
+    bits[0:1]:  key index assigned by the AP
+    bits[2:6]:  GTK index of the key in the internal DB
+    bit[7]:     Set iff this is the currently used GTK
+
+reserved
+    padding
+
+tkip_mic_key
+    TKIP RX MIC key
+
+rsc
+    TSC RSC counters
+
+.. _`iwl_wowlan_igtk_status`:
+
+struct iwl_wowlan_igtk_status
+=============================
+
+.. c:type:: struct iwl_wowlan_igtk_status
+
+    IGTK status
+
+.. _`iwl_wowlan_igtk_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_wowlan_igtk_status {
+        u8 key[WOWLAN_KEY_MAX_SIZE];
+        u8 ipn[6];
+        u8 key_len;
+        u8 key_flags;
+    }
+
+.. _`iwl_wowlan_igtk_status.members`:
+
+Members
+-------
+
+key
+    IGTK material
+
+ipn
+    the IGTK packet number (replay counter)
+
+key_len
+    IGTK length, if set to 0, the key is not available
+
+key_flags
+    information about the key:
+    bits[0]:    key index assigned by the AP (0: index 4, 1: index 5)
+    bits[1:5]:  IGTK index of the key in the internal DB
+    bit[6]:     Set iff this is the currently used IGTK
+
+.. _`iwl_wowlan_status_v6`:
+
+struct iwl_wowlan_status_v6
+===========================
+
+.. c:type:: struct iwl_wowlan_status_v6
+
+    WoWLAN status
+
+.. _`iwl_wowlan_status_v6.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_wowlan_status_v6 {
+        struct iwl_wowlan_gtk_status_v1 gtk;
+        __le64 replay_ctr;
+        __le16 pattern_number;
+        __le16 non_qos_seq_ctr;
+        __le16 qos_seq_ctr[8];
+        __le32 wakeup_reasons;
+        __le32 num_of_gtk_rekeys;
+        __le32 transmitted_ndps;
+        __le32 received_beacons;
+        __le32 wake_packet_length;
+        __le32 wake_packet_bufsize;
+        u8 wake_packet[];
+    }
+
+.. _`iwl_wowlan_status_v6.members`:
+
+Members
+-------
+
+gtk
+    GTK data
+
+replay_ctr
+    GTK rekey replay counter
+
+pattern_number
+    number of the matched pattern
+
+non_qos_seq_ctr
+    non-QoS sequence counter to use next
+
+qos_seq_ctr
+    QoS sequence counters to use next
+
+wakeup_reasons
+    wakeup reasons, see \ :c:type:`enum iwl_wowlan_wakeup_reason <iwl_wowlan_wakeup_reason>`\ 
+
+num_of_gtk_rekeys
+    number of GTK rekeys
+
+transmitted_ndps
+    number of transmitted neighbor discovery packets
+
+received_beacons
+    number of received beacons
+
+wake_packet_length
+    wakeup packet length
+
+wake_packet_bufsize
+    wakeup packet buffer size
+
+wake_packet
+    wakeup packet
+
 .. _`iwl_wowlan_status`:
 
 struct iwl_wowlan_status
@@ -411,7 +577,8 @@ Definition
 .. code-block:: c
 
     struct iwl_wowlan_status {
-        struct iwl_wowlan_gtk_status gtk;
+        struct iwl_wowlan_gtk_status gtk[WOWLAN_GTK_KEYS_NUM];
+        struct iwl_wowlan_igtk_status igtk[WOWLAN_IGTK_KEYS_NUM];
         __le64 replay_ctr;
         __le16 pattern_number;
         __le16 non_qos_seq_ctr;
@@ -432,6 +599,9 @@ Members
 
 gtk
     GTK data
+
+igtk
+    IGTK data
 
 replay_ctr
     GTK rekey replay counter

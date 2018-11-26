@@ -10,8 +10,9 @@ mutex_lock
 
     acquire the mutex
 
-    :param struct mutex \*lock:
+    :param lock:
         the mutex to be acquired
+    :type lock: struct mutex \*
 
 .. _`mutex_lock.description`:
 
@@ -44,8 +45,9 @@ mutex_unlock
 
     release the mutex
 
-    :param struct mutex \*lock:
+    :param lock:
         the mutex to be released
+    :type lock: struct mutex \*
 
 .. _`mutex_unlock.description`:
 
@@ -68,8 +70,9 @@ ww_mutex_unlock
 
     release the w/w mutex
 
-    :param struct ww_mutex \*lock:
+    :param lock:
         the mutex to be released
+    :type lock: struct ww_mutex \*
 
 .. _`ww_mutex_unlock.description`:
 
@@ -92,8 +95,9 @@ mutex_lock_interruptible
 
     Acquire the mutex, interruptible by signals.
 
-    :param struct mutex \*lock:
+    :param lock:
         The mutex to be acquired.
+    :type lock: struct mutex \*
 
 .. _`mutex_lock_interruptible.description`:
 
@@ -128,8 +132,9 @@ mutex_lock_killable
 
     Acquire the mutex, interruptible by fatal signals.
 
-    :param struct mutex \*lock:
+    :param lock:
         The mutex to be acquired.
+    :type lock: struct mutex \*
 
 .. _`mutex_lock_killable.description`:
 
@@ -164,8 +169,9 @@ mutex_lock_io
 
     Acquire the mutex and mark the process as waiting for I/O
 
-    :param struct mutex \*lock:
+    :param lock:
         The mutex to be acquired.
+    :type lock: struct mutex \*
 
 .. _`mutex_lock_io.description`:
 
@@ -192,8 +198,9 @@ mutex_trylock
 
     try to acquire the mutex, without waiting
 
-    :param struct mutex \*lock:
+    :param lock:
         the mutex to be acquired
+    :type lock: struct mutex \*
 
 .. _`mutex_trylock.description`:
 
@@ -224,11 +231,13 @@ atomic_dec_and_mutex_lock
 
     return holding mutex if we dec to 0
 
-    :param atomic_t \*cnt:
+    :param cnt:
         the atomic which we are to dec
+    :type cnt: atomic_t \*
 
-    :param struct mutex \*lock:
+    :param lock:
         the mutex to return holding if we dec to 0
+    :type lock: struct mutex \*
 
 .. _`atomic_dec_and_mutex_lock.description`:
 

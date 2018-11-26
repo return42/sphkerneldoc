@@ -10,11 +10,13 @@ module_comedi_usb_driver
 
     Helper macro for registering a comedi USB driver
 
-    :param  __comedi_driver:
+    :param __comedi_driver:
         comedi_driver struct
+    :type __comedi_driver: 
 
-    :param  __usb_driver:
+    :param __usb_driver:
         usb_driver struct
+    :type __usb_driver: 
 
 .. _`module_comedi_usb_driver.description`:
 

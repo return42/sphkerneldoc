@@ -10,8 +10,9 @@ efi_free_all_buff_pages
 
     free all previous allocated buffer pages
 
-    :param struct capsule_info \*cap_info:
+    :param cap_info:
         pointer to current instance of capsule_info structure
+    :type cap_info: struct capsule_info \*
 
 .. _`efi_free_all_buff_pages.description`:
 
@@ -31,14 +32,17 @@ efi_capsule_setup_info
 
     obtain the efi capsule header in the binary and setup capsule_info structure
 
-    :param struct capsule_info \*cap_info:
+    :param cap_info:
         pointer to current instance of capsule_info structure
+    :type cap_info: struct capsule_info \*
 
-    :param void \*kbuff:
+    :param kbuff:
         a mapped first page buffer pointer
+    :type kbuff: void \*
 
-    :param size_t hdr_bytes:
+    :param hdr_bytes:
         the total received number of bytes for efi header
+    :type hdr_bytes: size_t
 
 .. _`efi_capsule_setup_info.description`:
 
@@ -58,8 +62,9 @@ efi_capsule_submit_update
 
     invoke the efi_capsule_update API once binary upload done
 
-    :param struct capsule_info \*cap_info:
+    :param cap_info:
         pointer to current instance of capsule_info structure
+    :type cap_info: struct capsule_info \*
 
 .. _`efi_capsule_write`:
 
@@ -70,17 +75,21 @@ efi_capsule_write
 
     store the capsule binary and pass it to \ :c:func:`efi_capsule_update`\  API
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param const char __user \*buff:
+    :param buff:
         buffer pointer
+    :type buff: const char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes in \ ``buff``\ 
+    :type count: size_t
 
-    :param loff_t \*offp:
+    :param offp:
         not used
+    :type offp: loff_t \*
 
 .. _`efi_capsule_write.expectation`:
 
@@ -106,11 +115,13 @@ efi_capsule_flush
 
     called by file close or file flush
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param fl_owner_t id:
+    :param id:
         not used
+    :type id: fl_owner_t
 
 .. _`efi_capsule_flush.description`:
 
@@ -130,11 +141,13 @@ efi_capsule_release
 
     called by file close
 
-    :param struct inode \*inode:
+    :param inode:
         not used
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
 .. _`efi_capsule_release.description`:
 
@@ -153,11 +166,13 @@ efi_capsule_open
 
     called by file open
 
-    :param struct inode \*inode:
+    :param inode:
         not used
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
 .. _`efi_capsule_open.description`:
 

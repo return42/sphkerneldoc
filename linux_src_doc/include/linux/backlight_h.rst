@@ -10,8 +10,9 @@ backlight_enable
 
     Enable backlight
 
-    :param struct backlight_device \*bd:
+    :param bd:
         the backlight device to enable
+    :type bd: struct backlight_device \*
 
 .. _`backlight_disable`:
 
@@ -22,8 +23,9 @@ backlight_disable
 
     Disable backlight
 
-    :param struct backlight_device \*bd:
+    :param bd:
         the backlight device to disable
+    :type bd: struct backlight_device \*
 
 .. _`backlight_put`:
 
@@ -34,8 +36,9 @@ backlight_put
 
     Drop backlight reference
 
-    :param struct backlight_device \*bd:
+    :param bd:
         the backlight device to put
+    :type bd: struct backlight_device \*
 
 .. This file was automatic generated / don't edit.
 

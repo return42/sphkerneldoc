@@ -10,11 +10,13 @@
 
     allocate memory in multiples of pages
 
-    :param unsigned long size:
+    :param size:
         number of bytes to allocate
+    :type size: unsigned long
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         extra flags for the allocator
+    :type gfp_mask: gfp_t
 
 .. _`__ntfs_malloc.description`:
 
@@ -38,8 +40,9 @@ ntfs_malloc_nofs
 
     allocate memory in multiples of pages
 
-    :param unsigned long size:
+    :param size:
         number of bytes to allocate
+    :type size: unsigned long
 
 .. _`ntfs_malloc_nofs.description`:
 
@@ -60,8 +63,9 @@ ntfs_malloc_nofs_nofail
 
     allocate memory in multiples of pages
 
-    :param unsigned long size:
+    :param size:
         number of bytes to allocate
+    :type size: unsigned long
 
 .. _`ntfs_malloc_nofs_nofail.description`:
 

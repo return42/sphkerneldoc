@@ -10,14 +10,17 @@ radeon_atif_call
 
     call an ATIF method
 
-    :param acpi_handle handle:
+    :param handle:
         acpi handle
+    :type handle: acpi_handle
 
-    :param int function:
+    :param function:
         the ATIF function to execute
+    :type function: int
 
-    :param struct acpi_buffer \*params:
+    :param params:
         ATIF function params
+    :type params: struct acpi_buffer \*
 
 .. _`radeon_atif_call.description`:
 
@@ -36,11 +39,13 @@ radeon_atif_parse_notification
 
     parse supported notifications
 
-    :param struct radeon_atif_notifications \*n:
+    :param n:
         supported notifications struct
+    :type n: struct radeon_atif_notifications \*
 
-    :param u32 mask:
+    :param mask:
         supported notifications mask from ATIF
+    :type mask: u32
 
 .. _`radeon_atif_parse_notification.description`:
 
@@ -60,11 +65,13 @@ radeon_atif_parse_functions
 
     parse supported functions
 
-    :param struct radeon_atif_functions \*f:
+    :param f:
         supported functions struct
+    :type f: struct radeon_atif_functions \*
 
-    :param u32 mask:
+    :param mask:
         supported functions mask from ATIF
+    :type mask: u32
 
 .. _`radeon_atif_parse_functions.description`:
 
@@ -84,11 +91,13 @@ radeon_atif_verify_interface
 
     verify ATIF
 
-    :param acpi_handle handle:
+    :param handle:
         acpi handle
+    :type handle: acpi_handle
 
-    :param struct radeon_atif \*atif:
+    :param atif:
         radeon atif struct
+    :type atif: struct radeon_atif \*
 
 .. _`radeon_atif_verify_interface.description`:
 
@@ -109,11 +118,13 @@ radeon_atif_get_notification_params
 
     determine notify configuration
 
-    :param acpi_handle handle:
+    :param handle:
         acpi handle
+    :type handle: acpi_handle
 
-    :param struct radeon_atif_notification_cfg \*n:
+    :param n:
         atif notification configuration struct
+    :type n: struct radeon_atif_notification_cfg \*
 
 .. _`radeon_atif_get_notification_params.description`:
 
@@ -135,11 +146,13 @@ radeon_atif_get_sbios_requests
 
     get requested sbios event
 
-    :param acpi_handle handle:
+    :param handle:
         acpi handle
+    :type handle: acpi_handle
 
-    :param struct atif_sbios_requests \*req:
+    :param req:
         atif sbios request struct
+    :type req: struct atif_sbios_requests \*
 
 .. _`radeon_atif_get_sbios_requests.description`:
 
@@ -160,11 +173,13 @@ radeon_atif_handler
 
     handle ATIF notify requests
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct acpi_bus_event \*event:
+    :param event:
         atif sbios request struct
+    :type event: struct acpi_bus_event \*
 
 .. _`radeon_atif_handler.description`:
 
@@ -184,14 +199,17 @@ radeon_atcs_call
 
     call an ATCS method
 
-    :param acpi_handle handle:
+    :param handle:
         acpi handle
+    :type handle: acpi_handle
 
-    :param int function:
+    :param function:
         the ATCS function to execute
+    :type function: int
 
-    :param struct acpi_buffer \*params:
+    :param params:
         ATCS function params
+    :type params: struct acpi_buffer \*
 
 .. _`radeon_atcs_call.description`:
 
@@ -210,11 +228,13 @@ radeon_atcs_parse_functions
 
     parse supported functions
 
-    :param struct radeon_atcs_functions \*f:
+    :param f:
         supported functions struct
+    :type f: struct radeon_atcs_functions \*
 
-    :param u32 mask:
+    :param mask:
         supported functions mask from ATCS
+    :type mask: u32
 
 .. _`radeon_atcs_parse_functions.description`:
 
@@ -234,11 +254,13 @@ radeon_atcs_verify_interface
 
     verify ATCS
 
-    :param acpi_handle handle:
+    :param handle:
         acpi handle
+    :type handle: acpi_handle
 
-    :param struct radeon_atcs \*atcs:
+    :param atcs:
         radeon atcs struct
+    :type atcs: struct radeon_atcs \*
 
 .. _`radeon_atcs_verify_interface.description`:
 
@@ -257,8 +279,9 @@ radeon_acpi_is_pcie_performance_request_supported
 
 .. c:function:: bool radeon_acpi_is_pcie_performance_request_supported(struct radeon_device *rdev)
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_acpi_is_pcie_performance_request_supported.description`:
 
@@ -276,8 +299,9 @@ radeon_acpi_pcie_notify_device_ready
 
 .. c:function:: int radeon_acpi_pcie_notify_device_ready(struct radeon_device *rdev)
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_acpi_pcie_notify_device_ready.description`:
 
@@ -295,14 +319,17 @@ radeon_acpi_pcie_performance_request
 
 .. c:function:: int radeon_acpi_pcie_performance_request(struct radeon_device *rdev, u8 perf_req, bool advertise)
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u8 perf_req:
+    :param perf_req:
         requested perf level (pcie gen speed)
+    :type perf_req: u8
 
-    :param bool advertise:
+    :param advertise:
         set advertise caps flag if set
+    :type advertise: bool
 
 .. _`radeon_acpi_pcie_performance_request.description`:
 
@@ -322,14 +349,17 @@ radeon_acpi_event
 
     handle notify events
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
-    :param unsigned long val:
+    :param val:
         val
+    :type val: unsigned long
 
-    :param void \*data:
+    :param data:
         acpi event
+    :type data: void \*
 
 .. _`radeon_acpi_event.description`:
 
@@ -349,8 +379,9 @@ radeon_acpi_init
 
     init driver acpi support
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_acpi_init.description`:
 
@@ -370,8 +401,9 @@ radeon_acpi_fini
 
     tear down driver acpi support
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_acpi_fini.description`:
 

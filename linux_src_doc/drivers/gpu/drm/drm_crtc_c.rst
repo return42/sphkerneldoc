@@ -32,11 +32,13 @@ drm_crtc_from_index
 
     find the registered CRTC at an index
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param int idx:
+    :param idx:
         index of registered CRTC to find for
+    :type idx: int
 
 .. _`drm_crtc_from_index.description`:
 
@@ -58,8 +60,9 @@ drm_crtc_force_disable
 
     Forcibly turn off a CRTC
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC to turn off
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_force_disable.note`:
 
@@ -84,8 +87,9 @@ drm_crtc_force_disable_all
 
     Forcibly turn off all enabled CRTCs
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device whose CRTCs to turn off
+    :type dev: struct drm_device \*
 
 .. _`drm_crtc_force_disable_all.description`:
 
@@ -119,23 +123,29 @@ drm_crtc_init_with_planes
 
     Initialise a new CRTC object with specified primary and cursor planes.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC object to init
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_plane \*primary:
+    :param primary:
         Primary plane for CRTC
+    :type primary: struct drm_plane \*
 
-    :param struct drm_plane \*cursor:
+    :param cursor:
         Cursor plane for CRTC
+    :type cursor: struct drm_plane \*
 
-    :param const struct drm_crtc_funcs \*funcs:
+    :param funcs:
         callbacks for the new CRTC
+    :type funcs: const struct drm_crtc_funcs \*
 
-    :param const char \*name:
+    :param name:
         printf style format string for the CRTC name, or NULL for default name
+    :type name: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -167,8 +177,9 @@ drm_crtc_cleanup
 
     Clean up the core crtc usage
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC to cleanup
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_cleanup.description`:
 
@@ -188,14 +199,17 @@ drm_mode_getcrtc
 
     get CRTC configuration
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device for the ioctl
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data pointer for the ioctl
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file for the ioctl call
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_getcrtc.description`:
 
@@ -222,8 +236,9 @@ drm_mode_set_config_internal
 
     helper to call \ :c:type:`drm_mode_config_funcs.set_config <drm_mode_config_funcs>`\ 
 
-    :param struct drm_mode_set \*set:
+    :param set:
         modeset config to set
+    :type set: struct drm_mode_set \*
 
 .. _`drm_mode_set_config_internal.description`:
 
@@ -252,20 +267,25 @@ drm_crtc_check_viewport
 
     Checks that a framebuffer is big enough for the CRTC viewport
 
-    :param const struct drm_crtc \*crtc:
+    :param crtc:
         CRTC that framebuffer will be displayed on
+    :type crtc: const struct drm_crtc \*
 
-    :param int x:
+    :param x:
         x panning
+    :type x: int
 
-    :param int y:
+    :param y:
         y panning
+    :type y: int
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         mode that framebuffer will be displayed under
+    :type mode: const struct drm_display_mode \*
 
-    :param const struct drm_framebuffer \*fb:
+    :param fb:
         framebuffer to check size of
+    :type fb: const struct drm_framebuffer \*
 
 .. _`drm_mode_setcrtc`:
 
@@ -276,14 +296,17 @@ drm_mode_setcrtc
 
     set CRTC configuration
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device for the ioctl
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data pointer for the ioctl
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file for the ioctl call
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_setcrtc.description`:
 

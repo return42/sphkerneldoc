@@ -196,8 +196,9 @@ drm_i2c_encoder_get_client
 
     Get the I2C client corresponding to an encoder
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         *undescribed*
+    :type encoder: struct drm_encoder \*
 
 .. _`drm_i2c_encoder_register`:
 
@@ -208,11 +209,13 @@ drm_i2c_encoder_register
 
     Register an I2C encoder driver
 
-    :param struct module \*owner:
+    :param owner:
         Module containing the driver.
+    :type owner: struct module \*
 
-    :param struct drm_i2c_encoder_driver \*driver:
+    :param driver:
         Driver to be registered.
+    :type driver: struct drm_i2c_encoder_driver \*
 
 .. _`drm_i2c_encoder_unregister`:
 
@@ -223,8 +226,9 @@ drm_i2c_encoder_unregister
 
     Unregister an I2C encoder driver
 
-    :param struct drm_i2c_encoder_driver \*driver:
+    :param driver:
         Driver to be unregistered.
+    :type driver: struct drm_i2c_encoder_driver \*
 
 .. This file was automatic generated / don't edit.
 

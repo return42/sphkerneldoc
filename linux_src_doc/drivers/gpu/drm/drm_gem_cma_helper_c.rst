@@ -22,11 +22,13 @@ __drm_gem_cma_create
 
     Create a GEM CMA object without allocating memory
 
-    :param struct drm_device \*drm:
+    :param drm:
         DRM device
+    :type drm: struct drm_device \*
 
-    :param size_t size:
+    :param size:
         size of the object to allocate
+    :type size: size_t
 
 .. _`__drm_gem_cma_create.description`:
 
@@ -53,11 +55,13 @@ drm_gem_cma_create
 
     allocate an object with the given size
 
-    :param struct drm_device \*drm:
+    :param drm:
         DRM device
+    :type drm: struct drm_device \*
 
-    :param size_t size:
+    :param size:
         size of the object to allocate
+    :type size: size_t
 
 .. _`drm_gem_cma_create.description`:
 
@@ -85,17 +89,21 @@ drm_gem_cma_create_with_handle
 
     allocate an object with the given size and return a GEM handle to it
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file-private structure to register the handle for
+    :type file_priv: struct drm_file \*
 
-    :param struct drm_device \*drm:
+    :param drm:
         DRM device
+    :type drm: struct drm_device \*
 
-    :param size_t size:
+    :param size:
         size of the object to allocate
+    :type size: size_t
 
-    :param uint32_t \*handle:
+    :param handle:
         return location for the GEM handle
+    :type handle: uint32_t \*
 
 .. _`drm_gem_cma_create_with_handle.description`:
 
@@ -123,8 +131,9 @@ drm_gem_cma_free_object
 
     free resources associated with a CMA GEM object
 
-    :param struct drm_gem_object \*gem_obj:
+    :param gem_obj:
         GEM object to free
+    :type gem_obj: struct drm_gem_object \*
 
 .. _`drm_gem_cma_free_object.description`:
 
@@ -145,14 +154,17 @@ drm_gem_cma_dumb_create_internal
 
     create a dumb buffer object
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file-private structure to create the dumb buffer for
+    :type file_priv: struct drm_file \*
 
-    :param struct drm_device \*drm:
+    :param drm:
         DRM device
+    :type drm: struct drm_device \*
 
-    :param struct drm_mode_create_dumb \*args:
+    :param args:
         IOCTL data
+    :type args: struct drm_mode_create_dumb \*
 
 .. _`drm_gem_cma_dumb_create_internal.description`:
 
@@ -180,14 +192,17 @@ drm_gem_cma_dumb_create
 
     create a dumb buffer object
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file-private structure to create the dumb buffer for
+    :type file_priv: struct drm_file \*
 
-    :param struct drm_device \*drm:
+    :param drm:
         DRM device
+    :type drm: struct drm_device \*
 
-    :param struct drm_mode_create_dumb \*args:
+    :param args:
         IOCTL data
+    :type args: struct drm_mode_create_dumb \*
 
 .. _`drm_gem_cma_dumb_create.description`:
 
@@ -219,11 +234,13 @@ drm_gem_cma_mmap
 
     memory-map a CMA GEM object
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMA for the area to be mapped
+    :type vma: struct vm_area_struct \*
 
 .. _`drm_gem_cma_mmap.description`:
 
@@ -256,20 +273,25 @@ drm_gem_cma_get_unmapped_area
 
     propose address for mapping in noMMU cases
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param unsigned long addr:
+    :param addr:
         memory address
+    :type addr: unsigned long
 
-    :param unsigned long len:
+    :param len:
         buffer size
+    :type len: unsigned long
 
-    :param unsigned long pgoff:
+    :param pgoff:
         page offset
+    :type pgoff: unsigned long
 
-    :param unsigned long flags:
+    :param flags:
         memory flags
+    :type flags: unsigned long
 
 .. _`drm_gem_cma_get_unmapped_area.description`:
 
@@ -297,14 +319,17 @@ drm_gem_cma_print_info
 
     Print \ :c:type:`struct drm_gem_cma_object <drm_gem_cma_object>`\  info for debugfs
 
-    :param struct drm_printer \*p:
+    :param p:
         DRM printer
+    :type p: struct drm_printer \*
 
-    :param unsigned int indent:
+    :param indent:
         Tab indentation level
+    :type indent: unsigned int
 
-    :param const struct drm_gem_object \*obj:
+    :param obj:
         GEM object
+    :type obj: const struct drm_gem_object \*
 
 .. _`drm_gem_cma_print_info.description`:
 
@@ -323,8 +348,9 @@ drm_gem_cma_prime_get_sg_table
 
     provide a scatter/gather table of pinned pages for a CMA GEM object
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM object
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_cma_prime_get_sg_table.description`:
 
@@ -351,14 +377,17 @@ drm_gem_cma_prime_import_sg_table
 
     produce a CMA GEM object from another driver's scatter/gather table of pinned pages
 
-    :param struct drm_device \*dev:
+    :param dev:
         device to import into
+    :type dev: struct drm_device \*
 
-    :param struct dma_buf_attachment \*attach:
+    :param attach:
         DMA-BUF attachment
+    :type attach: struct dma_buf_attachment \*
 
-    :param struct sg_table \*sgt:
+    :param sgt:
         scatter/gather table of pinned pages
+    :type sgt: struct sg_table \*
 
 .. _`drm_gem_cma_prime_import_sg_table.description`:
 
@@ -388,11 +417,13 @@ drm_gem_cma_prime_mmap
 
     memory-map an exported CMA GEM object
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM object
+    :type obj: struct drm_gem_object \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMA for the area to be mapped
+    :type vma: struct vm_area_struct \*
 
 .. _`drm_gem_cma_prime_mmap.description`:
 
@@ -419,8 +450,9 @@ drm_gem_cma_prime_vmap
 
     map a CMA GEM object into the kernel's virtual address space
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM object
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_cma_prime_vmap.description`:
 
@@ -449,11 +481,13 @@ drm_gem_cma_prime_vunmap
 
     unmap a CMA GEM object from the kernel's virtual address space
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM object
+    :type obj: struct drm_gem_object \*
 
-    :param void \*vaddr:
+    :param vaddr:
         kernel virtual address where the CMA GEM object was mapped
+    :type vaddr: void \*
 
 .. _`drm_gem_cma_prime_vunmap.description`:
 

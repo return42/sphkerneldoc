@@ -22,9 +22,6 @@ Definition
         unsigned long next_index;
         unsigned long tags;
         struct radix_tree_node *node;
-    #ifdef CONFIG_RADIX_TREE_MULTIORDER
-        unsigned int shift;
-    #endif
     }
 
 .. _`radix_tree_iter.members`:
@@ -43,9 +40,6 @@ tags
 
 node
     node that contains current slot
-
-shift
-    shift for the node that holds our slots
 
 .. _`radix_tree_iter.description`:
 
@@ -68,8 +62,9 @@ radix_tree_deref_slot
 
     tree synchronization
 
-    :param void __rcu \*\*slot:
+    :param slot:
         *undescribed*
+    :type slot: void __rcu \*\*
 
 .. _`radix_tree_deref_slot.description`:
 
@@ -100,12 +95,11 @@ radix_tree_lookup
 radix_tree_lookup_slot
 radix_tree_tag_get
 radix_tree_gang_lookup
-radix_tree_gang_lookup_slot
 radix_tree_gang_lookup_tag
 radix_tree_gang_lookup_tag_slot
 radix_tree_tagged
 
-The first 8 functions are able to be called locklessly, using RCU. The
+The first 7 functions are able to be called locklessly, using RCU. The
 caller must ensure calls to these functions are made within \ :c:func:`rcu_read_lock`\ 
 regions. Other readers (lock-free or otherwise) and modifications may be
 running concurrently.
@@ -137,11 +131,13 @@ radix_tree_deref_slot_protected
 
     dereference a slot with tree lock held
 
-    :param void __rcu \*\*slot:
+    :param slot:
         slot pointer, returned by radix_tree_lookup_slot
+    :type slot: void __rcu \*\*
 
-    :param spinlock_t \*treelock:
+    :param treelock:
         *undescribed*
+    :type treelock: spinlock_t \*
 
 .. _`radix_tree_deref_slot_protected.description`:
 
@@ -167,8 +163,9 @@ radix_tree_deref_retry
 
     check radix_tree_deref_slot
 
-    :param void \*arg:
+    :param arg:
         pointer returned by radix_tree_deref_slot
+    :type arg: void \*
 
 .. _`radix_tree_deref_retry.return`:
 
@@ -179,25 +176,6 @@ Return
 
 radix_tree_deref_retry must be used with radix_tree_deref_slot.
 
-.. _`radix_tree_exceptional_entry`:
-
-radix_tree_exceptional_entry
-============================
-
-.. c:function:: int radix_tree_exceptional_entry(void *arg)
-
-    radix_tree_deref_slot gave exceptional entry?
-
-    :param void \*arg:
-        value returned by radix_tree_deref_slot
-
-.. _`radix_tree_exceptional_entry.return`:
-
-Return
-------
-
-0 if well-aligned pointer, non-0 if exceptional entry.
-
 .. _`radix_tree_exception`:
 
 radix_tree_exception
@@ -207,8 +185,9 @@ radix_tree_exception
 
     radix_tree_deref_slot returned either exception?
 
-    :param void \*arg:
+    :param arg:
         value returned by radix_tree_deref_slot
+    :type arg: void \*
 
 .. _`radix_tree_exception.return`:
 
@@ -226,11 +205,13 @@ radix_tree_iter_init
 
     initialize radix tree iterator
 
-    :param struct radix_tree_iter \*iter:
+    :param iter:
         pointer to iterator state
+    :type iter: struct radix_tree_iter \*
 
-    :param unsigned long start:
+    :param start:
         iteration starting index
+    :type start: unsigned long
 
 .. _`radix_tree_iter_init.return`:
 
@@ -248,14 +229,17 @@ radix_tree_next_chunk
 
     find next chunk of slots for iteration
 
-    :param const struct radix_tree_root \*:
+    :param :
         *undescribed*
+    :type : const struct radix_tree_root \*
 
-    :param struct radix_tree_iter \*iter:
+    :param iter:
         iterator state
+    :type iter: struct radix_tree_iter \*
 
-    :param unsigned flags:
+    :param flags:
         RADIX_TREE_ITER\_\* flags and tag index
+    :type flags: unsigned
 
 .. _`radix_tree_next_chunk.return`:
 
@@ -265,7 +249,7 @@ Return
 pointer to chunk first slot, or NULL if there no more left
 
 This function looks up the next chunk in the radix tree starting from
-\ ``iter``\ ->next_index.  It returns a pointer to the chunk's first slot.
+\ ``iter->next_index``\ .  It returns a pointer to the chunk's first slot.
 Also it fills \ ``iter``\  with data about chunk: position in the tree (index),
 its end (next_index), and constructs a bit mask for tagged iterating (tags).
 
@@ -278,14 +262,17 @@ radix_tree_iter_lookup
 
     look up an index in the radix tree
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param struct radix_tree_iter \*iter:
+    :param iter:
         iterator state
+    :type iter: struct radix_tree_iter \*
 
-    :param unsigned long index:
+    :param index:
         key to look up
+    :type index: unsigned long
 
 .. _`radix_tree_iter_lookup.description`:
 
@@ -305,14 +292,17 @@ radix_tree_iter_find
 
     find a present entry
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param struct radix_tree_iter \*iter:
+    :param iter:
         iterator state
+    :type iter: struct radix_tree_iter \*
 
-    :param unsigned long index:
+    :param index:
         start location
+    :type index: unsigned long
 
 .. _`radix_tree_iter_find.description`:
 
@@ -332,8 +322,9 @@ radix_tree_iter_retry
 
     retry this chunk of the iteration
 
-    :param struct radix_tree_iter \*iter:
+    :param iter:
         iterator state
+    :type iter: struct radix_tree_iter \*
 
 .. _`radix_tree_iter_retry.description`:
 
@@ -354,11 +345,13 @@ radix_tree_iter_resume
 
     resume iterating when the chunk may be invalid
 
-    :param void __rcu \*\*slot:
+    :param slot:
         pointer to current slot
+    :type slot: void __rcu \*\*
 
-    :param struct radix_tree_iter \*iter:
+    :param iter:
         iterator state
+    :type iter: struct radix_tree_iter \*
 
 .. _`radix_tree_iter_resume.return`:
 
@@ -380,8 +373,9 @@ radix_tree_chunk_size
 
     get current chunk size
 
-    :param struct radix_tree_iter \*iter:
+    :param iter:
         pointer to radix tree iterator
+    :type iter: struct radix_tree_iter \*
 
 .. _`radix_tree_chunk_size.return`:
 
@@ -399,14 +393,17 @@ radix_tree_next_slot
 
     find next slot in chunk
 
-    :param void __rcu \*\*slot:
+    :param slot:
         pointer to current slot
+    :type slot: void __rcu \*\*
 
-    :param struct radix_tree_iter \*iter:
+    :param iter:
         pointer to interator state
+    :type iter: struct radix_tree_iter \*
 
-    :param unsigned flags:
+    :param flags:
         RADIX_TREE_ITER\_\*, should be constant
+    :type flags: unsigned
 
 .. _`radix_tree_next_slot.return`:
 
@@ -415,8 +412,8 @@ Return
 
 pointer to next slot, or NULL if there no more left
 
-This function updates \ ``iter``\ ->index in the case of a successful lookup.
-For tagged lookup it also eats \ ``iter``\ ->tags.
+This function updates \ ``iter->index``\  in the case of a successful lookup.
+For tagged lookup it also eats \ ``iter->tags``\ .
 
 There are several cases where 'slot' can be passed in as NULL to this
 function.  These cases result from the use of \ :c:func:`radix_tree_iter_resume`\  or
@@ -435,52 +432,28 @@ radix_tree_for_each_slot
 
     iterate over non-empty slots
 
-    :param  slot:
+    :param slot:
         the void\*\* variable for pointer to slot
+    :type slot: 
 
-    :param  root:
+    :param root:
         the struct radix_tree_root pointer
+    :type root: 
 
-    :param  iter:
+    :param iter:
         the struct radix_tree_iter pointer
+    :type iter: 
 
-    :param  start:
+    :param start:
         iteration starting index
+    :type start: 
 
 .. _`radix_tree_for_each_slot.description`:
 
 Description
 -----------
 
-\ ``slot``\  points to radix tree slot, \ ``iter``\ ->index contains its index.
-
-.. _`radix_tree_for_each_contig`:
-
-radix_tree_for_each_contig
-==========================
-
-.. c:function::  radix_tree_for_each_contig( slot,  root,  iter,  start)
-
-    iterate over contiguous slots
-
-    :param  slot:
-        the void\*\* variable for pointer to slot
-
-    :param  root:
-        the struct radix_tree_root pointer
-
-    :param  iter:
-        the struct radix_tree_iter pointer
-
-    :param  start:
-        iteration starting index
-
-.. _`radix_tree_for_each_contig.description`:
-
-Description
------------
-
-\ ``slot``\  points to radix tree slot, \ ``iter``\ ->index contains its index.
+\ ``slot``\  points to radix tree slot, \ ``iter->index``\  contains its index.
 
 .. _`radix_tree_for_each_tagged`:
 
@@ -491,27 +464,32 @@ radix_tree_for_each_tagged
 
     iterate over tagged slots
 
-    :param  slot:
+    :param slot:
         the void\*\* variable for pointer to slot
+    :type slot: 
 
-    :param  root:
+    :param root:
         the struct radix_tree_root pointer
+    :type root: 
 
-    :param  iter:
+    :param iter:
         the struct radix_tree_iter pointer
+    :type iter: 
 
-    :param  start:
+    :param start:
         iteration starting index
+    :type start: 
 
-    :param  tag:
+    :param tag:
         tag index
+    :type tag: 
 
 .. _`radix_tree_for_each_tagged.description`:
 
 Description
 -----------
 
-\ ``slot``\  points to radix tree slot, \ ``iter``\ ->index contains its index.
+\ ``slot``\  points to radix tree slot, \ ``iter->index``\  contains its index.
 
 .. This file was automatic generated / don't edit.
 

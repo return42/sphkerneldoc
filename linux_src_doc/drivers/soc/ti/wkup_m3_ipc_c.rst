@@ -10,11 +10,13 @@ wkup_m3_set_mem_type
 
     Pass wkup_m3 which type of memory is in use
 
-    :param struct wkup_m3_ipc \*m3_ipc:
+    :param m3_ipc:
         *undescribed*
+    :type m3_ipc: struct wkup_m3_ipc \*
 
-    :param int mem_type:
+    :param mem_type:
         memory type value read directly from emif
+    :type mem_type: int
 
 .. _`wkup_m3_set_mem_type.description`:
 
@@ -33,11 +35,13 @@ wkup_m3_set_resume_address
 
     Pass wkup_m3 resume address
 
-    :param struct wkup_m3_ipc \*m3_ipc:
+    :param m3_ipc:
         *undescribed*
+    :type m3_ipc: struct wkup_m3_ipc \*
 
-    :param void \*addr:
+    :param addr:
         Physical address from which resume code should execute
+    :type addr: void \*
 
 .. _`wkup_m3_request_pm_status`:
 
@@ -48,8 +52,9 @@ wkup_m3_request_pm_status
 
     Retrieve wkup_m3 status code after suspend
 
-    :param struct wkup_m3_ipc \*m3_ipc:
+    :param m3_ipc:
         *undescribed*
+    :type m3_ipc: struct wkup_m3_ipc \*
 
 .. _`wkup_m3_request_pm_status.description`:
 
@@ -69,11 +74,13 @@ wkup_m3_prepare_low_power
 
     Request preparation for transition to low power state
 
-    :param struct wkup_m3_ipc \*m3_ipc:
+    :param m3_ipc:
         *undescribed*
+    :type m3_ipc: struct wkup_m3_ipc \*
 
-    :param int state:
+    :param state:
         A kernel suspend state to enter, either MEM or STANDBY
+    :type state: int
 
 .. _`wkup_m3_prepare_low_power.description`:
 
@@ -91,8 +98,9 @@ wkup_m3_finish_low_power
 
     Return m3 to reset state
 
-    :param struct wkup_m3_ipc \*m3_ipc:
+    :param m3_ipc:
         *undescribed*
+    :type m3_ipc: struct wkup_m3_ipc \*
 
 .. _`wkup_m3_finish_low_power.description`:
 
@@ -100,6 +108,32 @@ Description
 -----------
 
 Returns 0 if reset was successful, otherwise returns error code
+
+.. _`wkup_m3_request_wake_src`:
+
+wkup_m3_request_wake_src
+========================
+
+.. c:function:: const char *wkup_m3_request_wake_src(struct wkup_m3_ipc *m3_ipc)
+
+    Get the wakeup source info passed from wkup_m3
+
+    :param m3_ipc:
+        Pointer to wkup_m3_ipc context
+    :type m3_ipc: struct wkup_m3_ipc \*
+
+.. _`wkup_m3_set_rtc_only`:
+
+wkup_m3_set_rtc_only
+====================
+
+.. c:function:: void wkup_m3_set_rtc_only(struct wkup_m3_ipc *m3_ipc)
+
+    Set the rtc_only flag
+
+    :param m3_ipc:
+        *undescribed*
+    :type m3_ipc: struct wkup_m3_ipc \*
 
 .. _`wkup_m3_ipc_get`:
 
@@ -110,8 +144,9 @@ wkup_m3_ipc_get
 
     Return handle to wkup_m3_ipc
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wkup_m3_ipc_get.description`:
 
@@ -130,8 +165,9 @@ wkup_m3_ipc_put
 
     Free handle to wkup_m3_ipc returned from wkup_m3_ipc_get
 
-    :param struct wkup_m3_ipc \*m3_ipc:
+    :param m3_ipc:
         A pointer to wkup_m3_ipc struct returned by wkup_m3_ipc_get
+    :type m3_ipc: struct wkup_m3_ipc \*
 
 .. This file was automatic generated / don't edit.
 

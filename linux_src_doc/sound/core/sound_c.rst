@@ -10,8 +10,9 @@ snd_request_card
 
     try to load the card module
 
-    :param int card:
+    :param card:
         the card number
+    :type card: int
 
 .. _`snd_request_card.description`:
 
@@ -30,11 +31,13 @@ snd_lookup_minor_data
 
     get user data of a registered device
 
-    :param unsigned int minor:
+    :param minor:
         the minor number
+    :type minor: unsigned int
 
-    :param int type:
+    :param type:
         device type (SNDRV_DEVICE_TYPE_XXX)
+    :type type: int
 
 .. _`snd_lookup_minor_data.description`:
 
@@ -65,23 +68,29 @@ snd_register_device
 
     Register the ALSA device file for the card
 
-    :param int type:
+    :param type:
         the device type, SNDRV_DEVICE_TYPE_XXX
+    :type type: int
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param int dev:
+    :param dev:
         the device index
+    :type dev: int
 
-    :param const struct file_operations \*f_ops:
+    :param f_ops:
         the file operations
+    :type f_ops: const struct file_operations \*
 
-    :param void \*private_data:
+    :param private_data:
         user pointer for f_ops->open()
+    :type private_data: void \*
 
-    :param struct device \*device:
+    :param device:
         the device to register
+    :type device: struct device \*
 
 .. _`snd_register_device.description`:
 
@@ -107,8 +116,9 @@ snd_unregister_device
 
     unregister the device on the given card
 
-    :param struct device \*dev:
+    :param dev:
         the device instance
+    :type dev: struct device \*
 
 .. _`snd_unregister_device.description`:
 

@@ -171,8 +171,9 @@ flush_i2c_fifo
 
     This function flushes the I2C FIFO
 
-    :param struct nmk_i2c_dev \*dev:
+    :param dev:
         private data of I2C Driver
+    :type dev: struct nmk_i2c_dev \*
 
 .. _`flush_i2c_fifo.description`:
 
@@ -191,8 +192,9 @@ disable_all_interrupts
 
     Disable all interrupts of this I2c Bus
 
-    :param struct nmk_i2c_dev \*dev:
+    :param dev:
         private data of I2C Driver
+    :type dev: struct nmk_i2c_dev \*
 
 .. _`clear_all_interrupts`:
 
@@ -203,8 +205,9 @@ clear_all_interrupts
 
     Clear all interrupts of I2C Controller
 
-    :param struct nmk_i2c_dev \*dev:
+    :param dev:
         private data of I2C Driver
+    :type dev: struct nmk_i2c_dev \*
 
 .. _`init_hw`:
 
@@ -215,8 +218,9 @@ init_hw
 
     initialize the I2C hardware
 
-    :param struct nmk_i2c_dev \*dev:
+    :param dev:
         private data of I2C Driver
+    :type dev: struct nmk_i2c_dev \*
 
 .. _`load_i2c_mcr_reg`:
 
@@ -227,11 +231,13 @@ load_i2c_mcr_reg
 
     load the MCR register
 
-    :param struct nmk_i2c_dev \*dev:
+    :param dev:
         private data of controller
+    :type dev: struct nmk_i2c_dev \*
 
-    :param u16 flags:
+    :param flags:
         message flags
+    :type flags: u16
 
 .. _`setup_i2c_controller`:
 
@@ -242,8 +248,9 @@ setup_i2c_controller
 
     setup the controller
 
-    :param struct nmk_i2c_dev \*dev:
+    :param dev:
         private data of controller
+    :type dev: struct nmk_i2c_dev \*
 
 .. _`read_i2c`:
 
@@ -254,11 +261,13 @@ read_i2c
 
     Read from I2C client device
 
-    :param struct nmk_i2c_dev \*dev:
+    :param dev:
         private data of I2C Driver
+    :type dev: struct nmk_i2c_dev \*
 
-    :param u16 flags:
+    :param flags:
         message flags
+    :type flags: u16
 
 .. _`read_i2c.description`:
 
@@ -278,11 +287,13 @@ write_i2c
 
     Write data to I2C client.
 
-    :param struct nmk_i2c_dev \*dev:
+    :param dev:
         private data of I2C Driver
+    :type dev: struct nmk_i2c_dev \*
 
-    :param u16 flags:
+    :param flags:
         message flags
+    :type flags: u16
 
 .. _`write_i2c.description`:
 
@@ -300,11 +311,13 @@ nmk_i2c_xfer_one
 
     transmit a single I2C message
 
-    :param struct nmk_i2c_dev \*dev:
+    :param dev:
         device with a message encoded into it
+    :type dev: struct nmk_i2c_dev \*
 
-    :param u16 flags:
+    :param flags:
         message flags
+    :type flags: u16
 
 .. _`nmk_i2c_xfer`:
 
@@ -315,14 +328,17 @@ nmk_i2c_xfer
 
     I2C transfer function used by kernel framework
 
-    :param struct i2c_adapter \*i2c_adap:
+    :param i2c_adap:
         Adapter pointer to the controller
+    :type i2c_adap: struct i2c_adapter \*
 
-    :param struct i2c_msg msgs:
+    :param msgs:
         Pointer to data to be written.
+    :type msgs: struct i2c_msg
 
-    :param int num_msgs:
+    :param num_msgs:
         Number of messages to be executed
+    :type num_msgs: int
 
 .. _`nmk_i2c_xfer.description`:
 
@@ -383,11 +399,13 @@ disable_interrupts
 
     disable the interrupts
 
-    :param struct nmk_i2c_dev \*dev:
+    :param dev:
         private data of controller
+    :type dev: struct nmk_i2c_dev \*
 
-    :param u32 irq:
+    :param irq:
         interrupt number
+    :type irq: u32
 
 .. _`i2c_irq_handler`:
 
@@ -398,11 +416,13 @@ i2c_irq_handler
 
     interrupt routine
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         data passed to the handler
+    :type arg: void \*
 
 .. _`i2c_irq_handler.description`:
 

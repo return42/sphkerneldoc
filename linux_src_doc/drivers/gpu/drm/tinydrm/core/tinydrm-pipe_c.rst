@@ -10,11 +10,13 @@ tinydrm_display_pipe_update
 
     Display pipe update helper
 
-    :param struct drm_simple_display_pipe \*pipe:
+    :param pipe:
         Simple display pipe
+    :type pipe: struct drm_simple_display_pipe \*
 
-    :param struct drm_plane_state \*old_state:
+    :param old_state:
         Old plane state
+    :type old_state: struct drm_plane_state \*
 
 .. _`tinydrm_display_pipe_update.description`:
 
@@ -34,26 +36,33 @@ tinydrm_display_pipe_init
 
     Initialize display pipe
 
-    :param struct tinydrm_device \*tdev:
+    :param tdev:
         tinydrm device
+    :type tdev: struct tinydrm_device \*
 
-    :param const struct drm_simple_display_pipe_funcs \*funcs:
+    :param funcs:
         Display pipe functions
+    :type funcs: const struct drm_simple_display_pipe_funcs \*
 
-    :param int connector_type:
+    :param connector_type:
         Connector type
+    :type connector_type: int
 
-    :param const uint32_t \*formats:
+    :param formats:
         Array of supported formats (DRM_FORMAT\_\*)
+    :type formats: const uint32_t \*
 
-    :param unsigned int format_count:
+    :param format_count:
         Number of elements in \ ``formats``\ 
+    :type format_count: unsigned int
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         Supported mode
+    :type mode: const struct drm_display_mode \*
 
-    :param unsigned int rotation:
+    :param rotation:
         Initial \ ``mode``\  rotation in degrees Counter Clock Wise
+    :type rotation: unsigned int
 
 .. _`tinydrm_display_pipe_init.description`:
 

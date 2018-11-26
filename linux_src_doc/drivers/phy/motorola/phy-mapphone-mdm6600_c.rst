@@ -10,11 +10,13 @@ phy_mdm6600_cmd
 
     send a command request to mdm6600
 
-    :param struct phy_mdm6600 \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct phy_mdm6600 \*
 
-    :param int val:
+    :param val:
         *undescribed*
+    :type val: int
 
 .. _`phy_mdm6600_cmd.description`:
 
@@ -32,8 +34,9 @@ phy_mdm6600_status
 
     read mdm6600 status lines
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`phy_mdm6600_wakeirq_thread`:
 
@@ -44,11 +47,13 @@ phy_mdm6600_wakeirq_thread
 
     handle mode1 line OOB wake after booting
 
-    :param int irq:
+    :param irq:
         interrupt
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         interrupt handler data
+    :type data: void \*
 
 .. _`phy_mdm6600_wakeirq_thread.description`:
 
@@ -69,8 +74,9 @@ phy_mdm6600_init_irq
 
     initialize mdm6600 status IRQ lines
 
-    :param struct phy_mdm6600 \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct phy_mdm6600 \*
 
 .. _`phy_mdm6600_init_lines`:
 
@@ -81,8 +87,9 @@ phy_mdm6600_init_lines
 
     initialize mdm6600 GPIO lines
 
-    :param struct phy_mdm6600 \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct phy_mdm6600 \*
 
 .. _`phy_mdm6600_device_power_on`:
 
@@ -93,8 +100,9 @@ phy_mdm6600_device_power_on
 
     power on mdm6600 device
 
-    :param struct phy_mdm6600 \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct phy_mdm6600 \*
 
 .. _`phy_mdm6600_device_power_on.description`:
 
@@ -116,8 +124,9 @@ phy_mdm6600_device_power_off
 
     power off mdm6600 device
 
-    :param struct phy_mdm6600 \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct phy_mdm6600 \*
 
 .. This file was automatic generated / don't edit.
 

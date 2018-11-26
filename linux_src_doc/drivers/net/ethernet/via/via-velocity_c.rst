@@ -10,11 +10,13 @@ mac_get_cam_mask
 
     Read a CAM mask
 
-    :param struct mac_regs __iomem \*regs:
+    :param regs:
         register block for this velocity
+    :type regs: struct mac_regs __iomem \*
 
-    :param u8 \*mask:
+    :param mask:
         buffer to store mask
+    :type mask: u8 \*
 
 .. _`mac_get_cam_mask.description`:
 
@@ -33,11 +35,13 @@ mac_set_cam_mask
 
     Set a CAM mask
 
-    :param struct mac_regs __iomem \*regs:
+    :param regs:
         register block for this velocity
+    :type regs: struct mac_regs __iomem \*
 
-    :param u8 \*mask:
+    :param mask:
         CAM mask to load
+    :type mask: u8 \*
 
 .. _`mac_set_cam_mask.description`:
 
@@ -55,14 +59,17 @@ mac_set_cam
 
     set CAM data
 
-    :param struct mac_regs __iomem \*regs:
+    :param regs:
         register block of this velocity
+    :type regs: struct mac_regs __iomem \*
 
-    :param int idx:
+    :param idx:
         Cam index
+    :type idx: int
 
-    :param const u8 \*addr:
+    :param addr:
         2 or 6 bytes of CAM data
+    :type addr: const u8 \*
 
 .. _`mac_set_cam.description`:
 
@@ -80,8 +87,9 @@ mac_wol_reset
 
     reset WOL after exiting low power
 
-    :param struct mac_regs __iomem \*regs:
+    :param regs:
         register block of this velocity
+    :type regs: struct mac_regs __iomem \*
 
 .. _`mac_wol_reset.description`:
 
@@ -101,8 +109,9 @@ get_chip_name
 
     identifier to name
 
-    :param enum chip_type chip_id:
+    :param chip_id:
         *undescribed*
+    :type chip_id: enum chip_type
 
 .. _`get_chip_name.description`:
 
@@ -121,26 +130,33 @@ velocity_set_int_opt
 
     parser for integer options
 
-    :param int \*opt:
+    :param opt:
         pointer to option value
+    :type opt: int \*
 
-    :param int val:
+    :param val:
         value the user requested (or -1 for default)
+    :type val: int
 
-    :param int min:
+    :param min:
         lowest value allowed
+    :type min: int
 
-    :param int max:
+    :param max:
         highest value allowed
+    :type max: int
 
-    :param int def:
+    :param def:
         default value
+    :type def: int
 
-    :param char \*name:
+    :param name:
         property name
+    :type name: char \*
 
-    :param const char \*devname:
+    :param devname:
         *undescribed*
+    :type devname: const char \*
 
 .. _`velocity_set_int_opt.description`:
 
@@ -160,23 +176,29 @@ velocity_set_bool_opt
 
     parser for boolean options
 
-    :param u32 \*opt:
+    :param opt:
         pointer to option value
+    :type opt: u32 \*
 
-    :param int val:
+    :param val:
         value the user requested (or -1 for default)
+    :type val: int
 
-    :param int def:
+    :param def:
         default value (yes/no)
+    :type def: int
 
-    :param u32 flag:
+    :param flag:
         numeric value to set for true.
+    :type flag: u32
 
-    :param char \*name:
+    :param name:
         property name
+    :type name: char \*
 
-    :param const char \*devname:
+    :param devname:
         *undescribed*
+    :type devname: const char \*
 
 .. _`velocity_set_bool_opt.description`:
 
@@ -196,14 +218,17 @@ velocity_get_options
 
     set options on device
 
-    :param struct velocity_opt \*opts:
+    :param opts:
         option structure for the device
+    :type opts: struct velocity_opt \*
 
-    :param int index:
+    :param index:
         index of option to use in module options array
+    :type index: int
 
-    :param const char \*devname:
+    :param devname:
         device name
+    :type devname: const char \*
 
 .. _`velocity_get_options.description`:
 
@@ -222,8 +247,9 @@ velocity_init_cam_filter
 
     initialise CAM
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity to program
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_init_cam_filter.description`:
 
@@ -242,8 +268,9 @@ velocity_rx_reset
 
     handle a receive reset
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity we are resetting
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_rx_reset.description`:
 
@@ -262,8 +289,9 @@ velocity_get_opt_media_mode
 
     get media selection
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity adapter
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_get_opt_media_mode.description`:
 
@@ -283,8 +311,9 @@ safe_disable_mii_autopoll
 
     autopoll off
 
-    :param struct mac_regs __iomem \*regs:
+    :param regs:
         velocity registers
+    :type regs: struct mac_regs __iomem \*
 
 .. _`safe_disable_mii_autopoll.description`:
 
@@ -302,8 +331,9 @@ enable_mii_autopoll
 
     turn on autopolling
 
-    :param struct mac_regs __iomem \*regs:
+    :param regs:
         velocity registers
+    :type regs: struct mac_regs __iomem \*
 
 .. _`enable_mii_autopoll.description`:
 
@@ -322,14 +352,17 @@ velocity_mii_read
 
     read MII data
 
-    :param struct mac_regs __iomem \*regs:
+    :param regs:
         velocity registers
+    :type regs: struct mac_regs __iomem \*
 
-    :param u8 index:
+    :param index:
         MII register index
+    :type index: u8
 
-    :param u16 \*data:
+    :param data:
         buffer for received data
+    :type data: u16 \*
 
 .. _`velocity_mii_read.description`:
 
@@ -348,8 +381,9 @@ mii_check_media_mode
 
     check media state
 
-    :param struct mac_regs __iomem \*regs:
+    :param regs:
         velocity registers
+    :type regs: struct mac_regs __iomem \*
 
 .. _`mii_check_media_mode.description`:
 
@@ -368,14 +402,17 @@ velocity_mii_write
 
     write MII data
 
-    :param struct mac_regs __iomem \*regs:
+    :param regs:
         velocity registers
+    :type regs: struct mac_regs __iomem \*
 
-    :param u8 mii_addr:
+    :param mii_addr:
         *undescribed*
+    :type mii_addr: u8
 
-    :param u16 data:
+    :param data:
         16bit data for the MII register
+    :type data: u16
 
 .. _`velocity_mii_write.description`:
 
@@ -394,8 +431,9 @@ set_mii_flow_control
 
     flow control setup
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity interface
+    :type vptr: struct velocity_info \*
 
 .. _`set_mii_flow_control.description`:
 
@@ -414,8 +452,9 @@ mii_set_auto_on
 
     autonegotiate on
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity
+    :type vptr: struct velocity_info \*
 
 .. _`mii_set_auto_on.description`:
 
@@ -433,11 +472,13 @@ velocity_set_media_mode
 
     set media mode
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         *undescribed*
+    :type vptr: struct velocity_info \*
 
-    :param u32 mii_status:
+    :param mii_status:
         old MII link state
+    :type mii_status: u32
 
 .. _`velocity_set_media_mode.description`:
 
@@ -457,8 +498,9 @@ velocity_print_link_status
 
     link status reporting
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity to report on
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_print_link_status.description`:
 
@@ -478,8 +520,9 @@ enable_flow_control_ability
 
     flow control
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         veloity to configure
+    :type vptr: struct velocity_info \*
 
 .. _`enable_flow_control_ability.description`:
 
@@ -498,8 +541,9 @@ velocity_soft_reset
 
     soft reset
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity to reset
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_soft_reset.description`:
 
@@ -518,8 +562,9 @@ velocity_set_multi
 
     filter list change callback
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`velocity_set_multi.description`:
 
@@ -539,11 +584,13 @@ mii_init
 
     set up MII
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity adapter
+    :type vptr: struct velocity_info \*
 
-    :param u32 mii_status:
+    :param mii_status:
         links tatus
+    :type mii_status: u32
 
 .. _`mii_init.description`:
 
@@ -561,8 +608,9 @@ setup_queue_timers
 
     Setup interrupt timers
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         *undescribed*
+    :type vptr: struct velocity_info \*
 
 .. _`setup_queue_timers.description`:
 
@@ -581,8 +629,9 @@ setup_adaptive_interrupts
 
     Setup interrupt suppression
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         *undescribed*
+    :type vptr: struct velocity_info \*
 
 .. _`setup_adaptive_interrupts.description`:
 
@@ -603,11 +652,13 @@ velocity_init_registers
 
     initialise MAC registers
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity to init
+    :type vptr: struct velocity_info \*
 
-    :param enum velocity_init_type type:
+    :param type:
         type of initialisation (hot or cold)
+    :type type: enum velocity_init_type
 
 .. _`velocity_init_registers.description`:
 
@@ -626,8 +677,9 @@ velocity_init_dma_rings
 
     set up DMA rings
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         Velocity to set up
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_init_dma_rings.description`:
 
@@ -646,11 +698,13 @@ velocity_alloc_rx_buf
 
     allocate aligned receive buffer
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity
+    :type vptr: struct velocity_info \*
 
-    :param int idx:
+    :param idx:
         ring index
+    :type idx: int
 
 .. _`velocity_alloc_rx_buf.description`:
 
@@ -671,8 +725,9 @@ velocity_free_rd_ring
 
     free receive ring
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity to clean up
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_free_rd_ring.description`:
 
@@ -691,8 +746,9 @@ velocity_init_rd_ring
 
     set up receive ring
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity to configure
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_init_rd_ring.description`:
 
@@ -711,8 +767,9 @@ velocity_init_td_ring
 
     set up transmit ring
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_init_td_ring.description`:
 
@@ -732,8 +789,9 @@ velocity_free_dma_rings
 
     free PCI ring pointers
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         Velocity to free from
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_free_dma_rings.description`:
 
@@ -751,14 +809,17 @@ velocity_free_tx_buf
 
     free transmit buffer
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity
+    :type vptr: struct velocity_info \*
 
-    :param struct velocity_td_info \*tdinfo:
+    :param tdinfo:
         buffer
+    :type tdinfo: struct velocity_td_info \*
 
-    :param struct tx_desc \*td:
+    :param td:
         *undescribed*
+    :type td: struct tx_desc \*
 
 .. _`velocity_free_tx_buf.description`:
 
@@ -777,8 +838,9 @@ velocity_free_td_ring
 
     free td ring
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_free_td_ring.description`:
 
@@ -797,11 +859,13 @@ velocity_error
 
     handle error from controller
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity
+    :type vptr: struct velocity_info \*
 
-    :param int status:
+    :param status:
         card status
+    :type status: int
 
 .. _`velocity_error.description`:
 
@@ -822,8 +886,9 @@ velocity_tx_srv
 
     transmit interrupt service \ ``vptr``\ ; Velocity
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         *undescribed*
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_tx_srv.description`:
 
@@ -843,11 +908,13 @@ velocity_rx_csum
 
     checksum process
 
-    :param struct rx_desc \*rd:
+    :param rd:
         receive packet descriptor
+    :type rd: struct rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         network layer packet buffer
+    :type skb: struct sk_buff \*
 
 .. _`velocity_rx_csum.description`:
 
@@ -866,14 +933,17 @@ velocity_rx_copy
 
     in place Rx copy for small packets
 
-    :param struct sk_buff \*\*rx_skb:
+    :param rx_skb:
         network layer packet buffer candidate
+    :type rx_skb: struct sk_buff \*\*
 
-    :param int pkt_size:
+    :param pkt_size:
         received data size
+    :type pkt_size: int
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         *undescribed*
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_rx_copy.description`:
 
@@ -894,14 +964,17 @@ velocity_iph_realign
 
     IP header alignment
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity we are handling
+    :type vptr: struct velocity_info \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         network layer packet buffer
+    :type skb: struct sk_buff \*
 
-    :param int pkt_size:
+    :param pkt_size:
         received data size
+    :type pkt_size: int
 
 .. _`velocity_iph_realign.description`:
 
@@ -920,11 +993,13 @@ velocity_receive_frame
 
     received packet processor
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity we are handling
+    :type vptr: struct velocity_info \*
 
-    :param int idx:
+    :param idx:
         ring index
+    :type idx: int
 
 .. _`velocity_receive_frame.description`:
 
@@ -943,11 +1018,13 @@ velocity_rx_srv
 
     service RX interrupt
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity
+    :type vptr: struct velocity_info \*
 
-    :param int budget_left:
+    :param budget_left:
         *undescribed*
+    :type budget_left: int
 
 .. _`velocity_rx_srv.description`:
 
@@ -967,11 +1044,13 @@ velocity_intr
 
     interrupt callback
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         interrupting device
+    :type dev_instance: void \*
 
 .. _`velocity_intr.description`:
 
@@ -992,8 +1071,9 @@ velocity_open
 
     interface activation callback
 
-    :param struct net_device \*dev:
+    :param dev:
         network layer device to open
+    :type dev: struct net_device \*
 
 .. _`velocity_open.description`:
 
@@ -1015,8 +1095,9 @@ velocity_shutdown
 
     shut down the chip
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity to deactivate
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_shutdown.description`:
 
@@ -1035,11 +1116,13 @@ velocity_change_mtu
 
     MTU change callback
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         desired MTU
+    :type new_mtu: int
 
 .. _`velocity_change_mtu.description`:
 
@@ -1059,8 +1142,9 @@ velocity_poll_controller
 
     Velocity Poll controller function
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`velocity_poll_controller.description`:
 
@@ -1080,14 +1164,17 @@ velocity_mii_ioctl
 
     MII ioctl handler
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         the ifreq block for the ioctl
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         the command
+    :type cmd: int
 
 .. _`velocity_mii_ioctl.description`:
 
@@ -1107,14 +1194,17 @@ velocity_ioctl
 
     ioctl entry point
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*rq:
+    :param rq:
         interface request ioctl
+    :type rq: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         command code
+    :type cmd: int
 
 .. _`velocity_ioctl.description`:
 
@@ -1133,8 +1223,9 @@ velocity_get_stats
 
     statistics callback
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`velocity_get_stats.description`:
 
@@ -1156,8 +1247,9 @@ velocity_close
 
     close adapter callback
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`velocity_close.description`:
 
@@ -1176,11 +1268,13 @@ velocity_xmit
 
     transmit packet callback
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to transmit
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`velocity_xmit.description`:
 
@@ -1199,11 +1293,13 @@ velocity_init_info
 
     init private data
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         Velocity info
+    :type vptr: struct velocity_info \*
 
-    :param const struct velocity_info_tbl \*info:
+    :param info:
         Board type
+    :type info: const struct velocity_info_tbl \*
 
 .. _`velocity_init_info.description`:
 
@@ -1222,8 +1318,9 @@ velocity_get_pci_info
 
     retrieve PCI info for device
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity device
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_get_pci_info.description`:
 
@@ -1242,8 +1339,9 @@ velocity_get_platform_info
 
     retrieve platform info for device
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity device
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_get_platform_info.description`:
 
@@ -1261,8 +1359,9 @@ velocity_print_info
 
     per driver data
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_print_info.description`:
 
@@ -1281,17 +1380,21 @@ velocity_probe
 
     set up discovered velocity device
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param const struct velocity_info_tbl \*info:
+    :param info:
         *undescribed*
+    :type info: const struct velocity_info_tbl \*
 
-    :param enum velocity_bus_type bustype:
+    :param bustype:
         bus that device is connected to
+    :type bustype: enum velocity_bus_type
 
 .. _`velocity_probe.description`:
 
@@ -1310,8 +1413,9 @@ velocity_remove
 
     device unplug
 
-    :param struct device \*dev:
+    :param dev:
         device being removed
+    :type dev: struct device \*
 
 .. _`velocity_remove.description`:
 
@@ -1331,14 +1435,17 @@ wol_calc_crc
 
     WOL CRC
 
-    :param int size:
+    :param size:
         *undescribed*
+    :type size: int
 
-    :param u8 \*pattern:
+    :param pattern:
         data pattern
+    :type pattern: u8 \*
 
-    :param u8 \*mask_pattern:
+    :param mask_pattern:
         mask
+    :type mask_pattern: u8 \*
 
 .. _`wol_calc_crc.description`:
 
@@ -1357,8 +1464,9 @@ velocity_set_wol
 
     set up for wake on lan
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity to set WOL status on
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_set_wol.description`:
 
@@ -1384,11 +1492,13 @@ velocity_save_context
 
     save registers
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity
+    :type vptr: struct velocity_info \*
 
-    :param struct velocity_context \*context:
+    :param context:
         buffer for stored context
+    :type context: struct velocity_context \*
 
 .. _`velocity_save_context.description`:
 
@@ -1409,11 +1519,13 @@ velocity_restore_context
 
     restore registers
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity
+    :type vptr: struct velocity_info \*
 
-    :param struct velocity_context \*context:
+    :param context:
         buffer for stored context
+    :type context: struct velocity_context \*
 
 .. _`velocity_restore_context.description`:
 
@@ -1432,8 +1544,9 @@ velocity_ethtool_up
 
     pre hook for ethtool
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`velocity_ethtool_up.description`:
 
@@ -1452,8 +1565,9 @@ velocity_ethtool_down
 
     post hook for ethtool
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`velocity_ethtool_down.description`:
 
@@ -1472,8 +1586,9 @@ velocity_init_module
 
     load time function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`velocity_init_module.description`:
 
@@ -1494,8 +1609,9 @@ velocity_cleanup_module
 
     module unload
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`velocity_cleanup_module.description`:
 

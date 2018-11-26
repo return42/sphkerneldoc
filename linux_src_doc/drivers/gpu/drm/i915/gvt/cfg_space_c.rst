@@ -10,17 +10,21 @@ vgpu_pci_cfg_mem_write
 
     write virtual cfg space memory
 
-    :param struct intel_vgpu \*vgpu:
-        *undescribed*
+    :param vgpu:
+        target vgpu
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int off:
-        *undescribed*
+    :param off:
+        offset
+    :type off: unsigned int
 
-    :param u8 \*src:
-        *undescribed*
+    :param src:
+        src ptr to write
+    :type src: u8 \*
 
-    :param unsigned int bytes:
-        *undescribed*
+    :param bytes:
+        number of bytes
+    :type bytes: unsigned int
 
 .. _`vgpu_pci_cfg_mem_write.description`:
 
@@ -40,17 +44,21 @@ intel_vgpu_emulate_cfg_read
 
     emulate vGPU configuration space read
 
-    :param struct intel_vgpu \*vgpu:
-        *undescribed*
+    :param vgpu:
+        target vgpu
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int offset:
-        *undescribed*
+    :param offset:
+        offset
+    :type offset: unsigned int
 
-    :param void \*p_data:
-        *undescribed*
+    :param p_data:
+        return data ptr
+    :type p_data: void \*
 
-    :param unsigned int bytes:
-        *undescribed*
+    :param bytes:
+        number of bytes to read
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_emulate_cfg_read.return`:
 
@@ -68,17 +76,21 @@ intel_vgpu_emulate_cfg_write
 
     emulate vGPU configuration space write
 
-    :param struct intel_vgpu \*vgpu:
-        *undescribed*
+    :param vgpu:
+        target vgpu
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int offset:
-        *undescribed*
+    :param offset:
+        offset
+    :type offset: unsigned int
 
-    :param void \*p_data:
-        *undescribed*
+    :param p_data:
+        write data ptr
+    :type p_data: void \*
 
-    :param unsigned int bytes:
-        *undescribed*
+    :param bytes:
+        number of bytes to write
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_emulate_cfg_write.return`:
 
@@ -96,11 +108,13 @@ intel_vgpu_init_cfg_space
 
     init vGPU configuration space when create vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param bool primary:
+    :param primary:
         is the vGPU presented as primary
+    :type primary: bool
 
 .. _`intel_vgpu_reset_cfg_space`:
 
@@ -111,8 +125,9 @@ intel_vgpu_reset_cfg_space
 
     reset vGPU configuration space
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. This file was automatic generated / don't edit.
 

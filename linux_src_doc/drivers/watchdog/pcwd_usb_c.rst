@@ -8,8 +8,9 @@ usb_pcwd_delete
 
 .. c:function:: void usb_pcwd_delete(struct usb_pcwd_private *usb_pcwd)
 
-    :param struct usb_pcwd_private \*usb_pcwd:
+    :param usb_pcwd:
         *undescribed*
+    :type usb_pcwd: struct usb_pcwd_private \*
 
 .. _`usb_pcwd_probe`:
 
@@ -18,11 +19,13 @@ usb_pcwd_probe
 
 .. c:function:: int usb_pcwd_probe(struct usb_interface *interface, const struct usb_device_id *id)
 
-    :param struct usb_interface \*interface:
+    :param interface:
         *undescribed*
+    :type interface: struct usb_interface \*
 
-    :param const struct usb_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct usb_device_id \*
 
 .. _`usb_pcwd_probe.description`:
 
@@ -39,8 +42,9 @@ usb_pcwd_disconnect
 
 .. c:function:: void usb_pcwd_disconnect(struct usb_interface *interface)
 
-    :param struct usb_interface \*interface:
+    :param interface:
         *undescribed*
+    :type interface: struct usb_interface \*
 
 .. _`usb_pcwd_disconnect.description`:
 

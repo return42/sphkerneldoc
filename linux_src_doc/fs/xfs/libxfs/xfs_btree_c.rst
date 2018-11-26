@@ -10,8 +10,9 @@ xfs_btree_sblock_v5hdr_verify
 
     - verify the v5 fields of a short-format btree block
 
-    :param struct xfs_buf \*bp:
+    :param bp:
         buffer containing the btree block
+    :type bp: struct xfs_buf \*
 
 .. _`xfs_btree_sblock_verify`:
 
@@ -22,11 +23,13 @@ xfs_btree_sblock_verify
 
     - verify a short-format btree block
 
-    :param struct xfs_buf \*bp:
+    :param bp:
         buffer containing the btree block
+    :type bp: struct xfs_buf \*
 
-    :param unsigned int max_recs:
+    :param max_recs:
         maximum records allowed in this btree node
+    :type max_recs: unsigned int
 
 .. This file was automatic generated / don't edit.
 

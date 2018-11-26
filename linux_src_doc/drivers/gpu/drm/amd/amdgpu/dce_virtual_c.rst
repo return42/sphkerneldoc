@@ -10,8 +10,9 @@ dce_virtual_bandwidth_update
 
     program display watermarks
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`dce_virtual_bandwidth_update.description`:
 

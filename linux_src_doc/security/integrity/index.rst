@@ -9,4 +9,5 @@ integrity
 
     evm/index
     ima/index
+    digsig_asymmetric_c
     iint_c

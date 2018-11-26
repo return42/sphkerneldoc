@@ -10,17 +10,21 @@ iosf_mbi_read
 
     MailBox Interface read command
 
-    :param u8 port:
+    :param port:
         port indicating subunit being accessed
+    :type port: u8
 
-    :param u8 opcode:
+    :param opcode:
         port specific read or write opcode
+    :type opcode: u8
 
-    :param u32 offset:
+    :param offset:
         register address offset
+    :type offset: u32
 
-    :param u32 \*mdr:
+    :param mdr:
         register data to be read
+    :type mdr: u32 \*
 
 .. _`iosf_mbi_read.description`:
 
@@ -45,17 +49,21 @@ iosf_mbi_write
 
     MailBox unmasked write command
 
-    :param u8 port:
+    :param port:
         port indicating subunit being accessed
+    :type port: u8
 
-    :param u8 opcode:
+    :param opcode:
         port specific read or write opcode
+    :type opcode: u8
 
-    :param u32 offset:
+    :param offset:
         register address offset
+    :type offset: u32
 
-    :param u32 mdr:
+    :param mdr:
         register data to be written
+    :type mdr: u32
 
 .. _`iosf_mbi_write.description`:
 
@@ -80,20 +88,25 @@ iosf_mbi_modify
 
     MailBox masked write command
 
-    :param u8 port:
+    :param port:
         port indicating subunit being accessed
+    :type port: u8
 
-    :param u8 opcode:
+    :param opcode:
         port specific read or write opcode
+    :type opcode: u8
 
-    :param u32 offset:
+    :param offset:
         register address offset
+    :type offset: u32
 
-    :param u32 mdr:
+    :param mdr:
         register data being modified
+    :type mdr: u32
 
-    :param u32 mask:
+    :param mask:
         mask indicating bits in mdr to be modified
+    :type mask: u32
 
 .. _`iosf_mbi_modify.description`:
 
@@ -118,8 +131,9 @@ iosf_mbi_punit_acquire
 
     Acquire access to the P-Unit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iosf_mbi_punit_acquire.description`:
 
@@ -133,8 +147,10 @@ If a driver sends requests to the P-Unit which require the P-Unit to access
 the PMIC bus while another driver is also accessing the PMIC bus various bad
 things happen.
 
-To avoid these problems this function must be called before accessing the
-P-Unit or the PMIC, be it through iosf_mbi\* functions or through other means.
+Call this function before sending requests to the P-Unit which may make it
+access the PMIC, be it through iosf_mbi\* functions or through other means.
+This function will block all kernel access to the PMIC I2C bus, so that the
+P-Unit can safely access the PMIC over the shared I2C bus.
 
 Note on these systems the i2c-bus driver will request a sempahore from the
 P-Unit for exclusive access to the PMIC bus when i2c drivers are accessing
@@ -152,8 +168,45 @@ iosf_mbi_punit_release
 
     Release access to the P-Unit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
+
+.. _`iosf_mbi_block_punit_i2c_access`:
+
+iosf_mbi_block_punit_i2c_access
+===============================
+
+.. c:function:: int iosf_mbi_block_punit_i2c_access( void)
+
+    Block P-Unit accesses to the PMIC bus
+
+    :param void:
+        no arguments
+    :type void: 
+
+.. _`iosf_mbi_block_punit_i2c_access.description`:
+
+Description
+-----------
+
+Call this function to block P-Unit access to the PMIC I2C bus, so that the
+kernel can safely access the PMIC over the shared I2C bus.
+
+This function acquires the P-Unit bus semaphore and notifies
+pmic_bus_access_notifier listeners that they may no longer access the
+P-Unit in a way which may cause it to access the shared I2C bus.
+
+Note this function may be called multiple times and the bus will not
+be released until \ :c:func:`iosf_mbi_unblock_punit_i2c_access`\  has been called the
+same amount of times.
+
+.. _`iosf_mbi_block_punit_i2c_access.return`:
+
+Return
+------
+
+Nonzero on error
 
 .. _`iosf_mbi_register_pmic_bus_access_notifier`:
 
@@ -164,8 +217,9 @@ iosf_mbi_register_pmic_bus_access_notifier
 
     Register PMIC bus notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier_block to register
+    :type nb: struct notifier_block \*
 
 .. _`iosf_mbi_register_pmic_bus_access_notifier.description`:
 
@@ -191,8 +245,9 @@ iosf_mbi_unregister_pmic_bus_access_notifier
 
     Unregister PMIC bus notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier_block to unregister
+    :type nb: struct notifier_block \*
 
 .. _`iosf_mbi_unregister_pmic_bus_access_notifier_unlocked`:
 
@@ -203,8 +258,9 @@ iosf_mbi_unregister_pmic_bus_access_notifier_unlocked
 
     Unregister PMIC bus notifier, unlocked
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier_block to unregister
+    :type nb: struct notifier_block \*
 
 .. _`iosf_mbi_unregister_pmic_bus_access_notifier_unlocked.description`:
 
@@ -213,21 +269,6 @@ Description
 
 Like \ :c:func:`iosf_mbi_unregister_pmic_bus_access_notifier`\ , but for use when the
 caller has already called \ :c:func:`iosf_mbi_punit_acquire`\  itself.
-
-.. _`iosf_mbi_call_pmic_bus_access_notifier_chain`:
-
-iosf_mbi_call_pmic_bus_access_notifier_chain
-============================================
-
-.. c:function:: int iosf_mbi_call_pmic_bus_access_notifier_chain(unsigned long val, void *v)
-
-    Call PMIC bus notifier chain
-
-    :param unsigned long val:
-        action to pass into listener's notifier_call function
-
-    :param void \*v:
-        data pointer to pass into listener's notifier_call function
 
 .. _`iosf_mbi_assert_punit_acquired`:
 
@@ -238,8 +279,9 @@ iosf_mbi_assert_punit_acquired
 
     Assert that the P-Unit has been acquired.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ nfs_request_add_commit_list_locked
 
     add request to a commit list
 
-    :param struct nfs_page \*req:
+    :param req:
         pointer to a struct nfs_page
+    :type req: struct nfs_page \*
 
-    :param struct list_head \*dst:
+    :param dst:
         commit list head
+    :type dst: struct list_head \*
 
-    :param struct nfs_commit_info \*cinfo:
+    :param cinfo:
         holds list lock and accounting info
+    :type cinfo: struct nfs_commit_info \*
 
 .. _`nfs_request_add_commit_list_locked.description`:
 
@@ -40,11 +43,13 @@ nfs_request_add_commit_list
 
     add request to a commit list
 
-    :param struct nfs_page \*req:
+    :param req:
         pointer to a struct nfs_page
+    :type req: struct nfs_page \*
 
-    :param struct nfs_commit_info \*cinfo:
+    :param cinfo:
         holds list lock and accounting info
+    :type cinfo: struct nfs_commit_info \*
 
 .. _`nfs_request_add_commit_list.description`:
 
@@ -67,11 +72,13 @@ nfs_request_remove_commit_list
 
     Remove request from a commit list
 
-    :param struct nfs_page \*req:
+    :param req:
         pointer to a nfs_page
+    :type req: struct nfs_page \*
 
-    :param struct nfs_commit_info \*cinfo:
+    :param cinfo:
         holds list lock and accounting info
+    :type cinfo: struct nfs_commit_info \*
 
 .. _`nfs_request_remove_commit_list.description`:
 

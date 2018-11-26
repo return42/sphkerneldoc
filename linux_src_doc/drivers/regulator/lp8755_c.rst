@@ -10,14 +10,17 @@ lp8755_read
 
     read a single register value from lp8755. \ ``pchip``\  : device to read from \ ``reg``\    : register to read from \ ``val``\    : pointer to store read value
 
-    :param struct lp8755_chip \*pchip:
+    :param pchip:
         *undescribed*
+    :type pchip: struct lp8755_chip \*
 
-    :param unsigned int reg:
+    :param reg:
         *undescribed*
+    :type reg: unsigned int
 
-    :param unsigned int \*val:
+    :param val:
         *undescribed*
+    :type val: unsigned int \*
 
 .. _`lp8755_write`:
 
@@ -28,14 +31,17 @@ lp8755_write
 
     write a single register value to lp8755. \ ``pchip``\  : device to write to \ ``reg``\    : register to write to \ ``val``\    : value to be written
 
-    :param struct lp8755_chip \*pchip:
+    :param pchip:
         *undescribed*
+    :type pchip: struct lp8755_chip \*
 
-    :param unsigned int reg:
+    :param reg:
         *undescribed*
+    :type reg: unsigned int
 
-    :param unsigned int val:
+    :param val:
         *undescribed*
+    :type val: unsigned int
 
 .. _`lp8755_update_bits`:
 
@@ -46,17 +52,21 @@ lp8755_update_bits
 
     set the values of bit fields in lp8755 register. \ ``pchip``\  : device to read from \ ``reg``\    : register to update \ ``mask``\   : bitmask to be changed \ ``val``\    : value for bitmask
 
-    :param struct lp8755_chip \*pchip:
+    :param pchip:
         *undescribed*
+    :type pchip: struct lp8755_chip \*
 
-    :param unsigned int reg:
+    :param reg:
         *undescribed*
+    :type reg: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         *undescribed*
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         *undescribed*
+    :type val: unsigned int
 
 .. This file was automatic generated / don't edit.
 

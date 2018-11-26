@@ -10,11 +10,13 @@ pm_vt_switch_required
 
     indicate VT switch at suspend requirements
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param bool required:
+    :param required:
         if true, caller needs VT switch at suspend/resume time
+    :type required: bool
 
 .. _`pm_vt_switch_required.description`:
 
@@ -40,8 +42,9 @@ pm_vt_switch_unregister
 
     stop tracking a device's VT switching needs
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
 .. _`pm_vt_switch_unregister.description`:
 

@@ -1239,8 +1239,9 @@ fc_lport_test_ready
 
     Determine if a local port is in the READY state
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to test
+    :type lport: struct fc_lport \*
 
 .. _`fc_set_wwnn`:
 
@@ -1251,11 +1252,13 @@ fc_set_wwnn
 
     Set the World Wide Node Name of a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose WWNN is to be set
+    :type lport: struct fc_lport \*
 
-    :param u64 wwnn:
+    :param wwnn:
         The new WWNN
+    :type wwnn: u64
 
 .. _`fc_set_wwpn`:
 
@@ -1266,11 +1269,13 @@ fc_set_wwpn
 
     Set the World Wide Port Name of a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose WWPN is to be set
+    :type lport: struct fc_lport \*
 
-    :param u64 wwpn:
+    :param wwpn:
         The new WWPN
+    :type wwpn: u64
 
 .. _`fc_lport_state_enter`:
 
@@ -1281,11 +1286,13 @@ fc_lport_state_enter
 
     Change a local port's state
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose state is to change
+    :type lport: struct fc_lport \*
 
-    :param enum fc_lport_state state:
+    :param state:
         The new state
+    :type state: enum fc_lport_state
 
 .. _`fc_lport_init_stats`:
 
@@ -1296,8 +1303,9 @@ fc_lport_init_stats
 
     Allocate per-CPU statistics for a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose statistics are to be initialized
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_free_stats`:
 
@@ -1308,8 +1316,9 @@ fc_lport_free_stats
 
     Free memory for a local port's statistics
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose statistics are to be freed
+    :type lport: struct fc_lport \*
 
 .. _`lport_priv`:
 
@@ -1320,8 +1329,9 @@ lport_priv
 
     Return the private data from a local port
 
-    :param const struct fc_lport \*lport:
+    :param lport:
         The local port whose private data is to be retreived
+    :type lport: const struct fc_lport \*
 
 .. _`libfc_host_alloc`:
 
@@ -1332,11 +1342,13 @@ libfc_host_alloc
 
     Allocate a Scsi_Host with room for a local port and LLD private data
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         The SCSI host template
+    :type sht: struct scsi_host_template \*
 
-    :param int priv_size:
+    :param priv_size:
         Size of private data
+    :type priv_size: int
 
 .. _`libfc_host_alloc.return`:
 

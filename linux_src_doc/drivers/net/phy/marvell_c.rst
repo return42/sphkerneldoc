@@ -8,8 +8,9 @@ ethtool_adv_to_fiber_adv_t
 
 .. c:function:: u32 ethtool_adv_to_fiber_adv_t(u32 ethadv)
 
-    :param u32 ethadv:
+    :param ethadv:
         the ethtool advertisement settings
+    :type ethadv: u32
 
 .. _`ethtool_adv_to_fiber_adv_t.description`:
 
@@ -29,8 +30,9 @@ marvell_config_aneg_fiber
 
     restart auto-negotiation or write BMCR
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`marvell_config_aneg_fiber.description`:
 
@@ -49,8 +51,9 @@ fiber_lpa_to_ethtool_lpa_t
 
 .. c:function:: u32 fiber_lpa_to_ethtool_lpa_t(u32 lpa)
 
-    :param u32 lpa:
+    :param lpa:
         value of the MII_LPA register for fiber link
+    :type lpa: u32
 
 .. _`fiber_lpa_to_ethtool_lpa_t.description`:
 
@@ -69,11 +72,13 @@ marvell_update_link
 
     update link status in real time in \ ``phydev``\ 
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param int fiber:
+    :param fiber:
         *undescribed*
+    :type fiber: int
 
 .. _`marvell_update_link.description`:
 

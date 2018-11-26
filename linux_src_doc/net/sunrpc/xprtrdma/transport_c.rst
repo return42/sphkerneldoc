@@ -1,6 +1,70 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/sunrpc/xprtrdma/transport.c
 
+.. _`xprt_rdma_connect_worker`:
+
+xprt_rdma_connect_worker
+========================
+
+.. c:function:: void xprt_rdma_connect_worker(struct work_struct *work)
+
+    establish connection in the background
+
+    :param work:
+        worker thread context
+    :type work: struct work_struct \*
+
+.. _`xprt_rdma_connect_worker.description`:
+
+Description
+-----------
+
+Requester holds the xprt's send lock to prevent activity on this
+transport while a fresh connection is being established. RPC tasks
+sleep on the xprt's pending queue waiting for connect to complete.
+
+.. _`xprt_rdma_inject_disconnect`:
+
+xprt_rdma_inject_disconnect
+===========================
+
+.. c:function:: void xprt_rdma_inject_disconnect(struct rpc_xprt *xprt)
+
+    inject a connection fault
+
+    :param xprt:
+        transport context
+    :type xprt: struct rpc_xprt \*
+
+.. _`xprt_rdma_inject_disconnect.description`:
+
+Description
+-----------
+
+If \ ``xprt``\  is connected, disconnect it to simulate spurious connection
+loss.
+
+.. _`xprt_rdma_destroy`:
+
+xprt_rdma_destroy
+=================
+
+.. c:function:: void xprt_rdma_destroy(struct rpc_xprt *xprt)
+
+    Full tear down of transport
+
+    :param xprt:
+        doomed transport context
+    :type xprt: struct rpc_xprt \*
+
+.. _`xprt_rdma_destroy.description`:
+
+Description
+-----------
+
+Caller guarantees there will be no more calls to us with
+this \ ``xprt``\ .
+
 .. _`xprt_setup_rdma`:
 
 xprt_setup_rdma
@@ -10,8 +74,9 @@ xprt_setup_rdma
 
     Set up transport to use RDMA
 
-    :param struct xprt_create \*args:
+    :param args:
         rpc transport arguments
+    :type args: struct xprt_create \*
 
 .. _`xprt_rdma_close`:
 
@@ -20,18 +85,20 @@ xprt_rdma_close
 
 .. c:function:: void xprt_rdma_close(struct rpc_xprt *xprt)
 
-    Close down RDMA connection
+    close a transport connection
 
-    :param struct rpc_xprt \*xprt:
-        generic transport to be closed
+    :param xprt:
+        transport context
+    :type xprt: struct rpc_xprt \*
 
 .. _`xprt_rdma_close.description`:
 
 Description
 -----------
 
-Called during transport shutdown reconnect, or device
-removal. Caller holds the transport's write lock.
+Called during transport shutdown, reconnect, or device removal.
+Caller holds \ ``xprt``\ 's send lock to prevent activity on this
+transport while the connection is torn down.
 
 .. _`xprt_rdma_set_port`:
 
@@ -42,11 +109,13 @@ xprt_rdma_set_port
 
     update server port with rpcbind result
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         controlling RPC transport
+    :type xprt: struct rpc_xprt \*
 
-    :param u16 port:
+    :param port:
         new port value
+    :type port: u16
 
 .. _`xprt_rdma_set_port.description`:
 
@@ -64,11 +133,13 @@ xprt_rdma_timer
 
     invoked when an RPC times out
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         controlling RPC transport
+    :type xprt: struct rpc_xprt \*
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC task that timed out
+    :type task: struct rpc_task \*
 
 .. _`xprt_rdma_timer.description`:
 
@@ -83,6 +154,23 @@ disconnect and retry to connect. This drives full
 detection of the network path, and retransmissions of
 all pending RPCs.
 
+.. _`xprt_rdma_connect`:
+
+xprt_rdma_connect
+=================
+
+.. c:function:: void xprt_rdma_connect(struct rpc_xprt *xprt, struct rpc_task *task)
+
+    try to establish a transport connection
+
+    :param xprt:
+        transport state
+    :type xprt: struct rpc_xprt \*
+
+    :param task:
+        RPC scheduler context
+    :type task: struct rpc_task \*
+
 .. _`xprt_rdma_alloc_slot`:
 
 xprt_rdma_alloc_slot
@@ -92,11 +180,13 @@ xprt_rdma_alloc_slot
 
     allocate an rpc_rqst
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         controlling RPC transport
+    :type xprt: struct rpc_xprt \*
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC task requesting a fresh rpc_rqst
+    :type task: struct rpc_task \*
 
 .. _`xprt_rdma_alloc_slot.tk_status-values`:
 
@@ -115,11 +205,13 @@ xprt_rdma_free_slot
 
     release an rpc_rqst
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         controlling RPC transport
+    :type xprt: struct rpc_xprt \*
 
-    :param struct rpc_rqst \*rqst:
+    :param rqst:
         rpc_rqst to release
+    :type rqst: struct rpc_rqst \*
 
 .. _`xprt_rdma_allocate`:
 
@@ -130,8 +222,9 @@ xprt_rdma_allocate
 
     allocate transport resources for an RPC
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC task
+    :type task: struct rpc_task \*
 
 .. _`xprt_rdma_allocate.return-values`:
 
@@ -154,13 +247,6 @@ EIO
 
 A permanent error occurred, do not retry
 
-The RDMA allocate/free functions need the task structure as a place
-to hide the struct rpcrdma_req, which is necessary for the actual
-send/recv sequence.
-
-xprt_rdma_allocate provides buffers that are already mapped for
-DMA, and a local DMA lkey is provided for each.
-
 .. _`xprt_rdma_free`:
 
 xprt_rdma_free
@@ -170,8 +256,9 @@ xprt_rdma_free
 
     release resources allocated by xprt_rdma_allocate
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC task
+    :type task: struct rpc_task \*
 
 .. _`xprt_rdma_free.description`:
 
@@ -185,12 +272,13 @@ Caller guarantees rqst->rq_buffer is non-NULL.
 xprt_rdma_send_request
 ======================
 
-.. c:function:: int xprt_rdma_send_request(struct rpc_task *task)
+.. c:function:: int xprt_rdma_send_request(struct rpc_rqst *rqst)
 
     marshal and send an RPC request
 
-    :param struct rpc_task \*task:
-        RPC task with an RPC message in rq_snd_buf
+    :param rqst:
+        RPC message in rq_snd_buf
+    :type rqst: struct rpc_rqst \*
 
 .. _`xprt_rdma_send_request.description`:
 

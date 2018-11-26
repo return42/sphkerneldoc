@@ -10,11 +10,13 @@ snd_soc_info_enum_double
 
     enumerated double mixer info callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         control element information
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_soc_info_enum_double.description`:
 
@@ -35,11 +37,13 @@ snd_soc_get_enum_double
 
     enumerated double mixer get callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_get_enum_double.description`:
 
@@ -59,11 +63,13 @@ snd_soc_put_enum_double
 
     enumerated double mixer put callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_put_enum_double.description`:
 
@@ -83,23 +89,29 @@ snd_soc_read_signed
 
     Read a codec register and interpret as signed value
 
-    :param struct snd_soc_component \*component:
+    :param component:
         component
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to read
+    :type reg: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         Mask to use after shifting the register value
+    :type mask: unsigned int
 
-    :param unsigned int shift:
+    :param shift:
         Right shift of register value
+    :type shift: unsigned int
 
-    :param unsigned int sign_bit:
+    :param sign_bit:
         Bit that describes if a number is negative or not.
+    :type sign_bit: unsigned int
 
-    :param int \*signed_val:
+    :param signed_val:
         Pointer to where the read value should be stored
+    :type signed_val: int \*
 
 .. _`snd_soc_read_signed.description`:
 
@@ -121,11 +133,13 @@ snd_soc_info_volsw
 
     single mixer info callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         control element information
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_soc_info_volsw.description`:
 
@@ -146,11 +160,13 @@ snd_soc_info_volsw_sx
 
     Mixer info callback for SX TLV controls
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         control element information
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_soc_info_volsw_sx.description`:
 
@@ -173,11 +189,13 @@ snd_soc_get_volsw
 
     single mixer get callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_get_volsw.description`:
 
@@ -198,11 +216,13 @@ snd_soc_put_volsw
 
     single mixer put callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_put_volsw.description`:
 
@@ -223,11 +243,13 @@ snd_soc_get_volsw_sx
 
     single mixer get callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_get_volsw_sx.description`:
 
@@ -248,11 +270,13 @@ snd_soc_put_volsw_sx
 
     double mixer set callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_put_volsw_sx.description`:
 
@@ -272,11 +296,13 @@ snd_soc_info_volsw_range
 
     single mixer info callback with range.
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         control element information
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_soc_info_volsw_range.description`:
 
@@ -297,11 +323,13 @@ snd_soc_put_volsw_range
 
     single mixer put value callback with range.
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_put_volsw_range.description`:
 
@@ -321,11 +349,13 @@ snd_soc_get_volsw_range
 
     single mixer get callback with range
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_get_volsw_range.description`:
 
@@ -345,14 +375,17 @@ snd_soc_limit_volume
 
     Set new limit to an existing volume control.
 
-    :param struct snd_soc_card \*card:
+    :param card:
         where to look for the control
+    :type card: struct snd_soc_card \*
 
-    :param const char \*name:
+    :param name:
         Name of the control
+    :type name: const char \*
 
-    :param int max:
+    :param max:
         new maximum limit
+    :type max: int
 
 .. _`snd_soc_limit_volume.description`:
 
@@ -370,11 +403,13 @@ snd_soc_info_xr_sx
 
     signed multi register info callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mreg control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         control element information
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_soc_info_xr_sx.description`:
 
@@ -396,11 +431,13 @@ snd_soc_get_xr_sx
 
     signed multi register get callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mreg control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_get_xr_sx.description`:
 
@@ -424,11 +461,13 @@ snd_soc_put_xr_sx
 
     signed multi register get callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mreg control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_put_xr_sx.description`:
 
@@ -452,11 +491,13 @@ snd_soc_get_strobe
 
     strobe get callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_get_strobe.description`:
 
@@ -476,11 +517,13 @@ snd_soc_put_strobe
 
     strobe put callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_put_strobe.description`:
 

@@ -10,17 +10,21 @@ vc_do_resize
 
     resizing method for the tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty being resized
+    :type tty: struct tty_struct \*
 
-    :param struct vc_data \*vc:
+    :param vc:
         virtual console private data
+    :type vc: struct vc_data \*
 
-    :param unsigned int cols:
+    :param cols:
         columns
+    :type cols: unsigned int
 
-    :param unsigned int lines:
+    :param lines:
         lines
+    :type lines: unsigned int
 
 .. _`vc_do_resize.description`:
 
@@ -43,14 +47,17 @@ vc_resize
 
     resize a VT
 
-    :param struct vc_data \*vc:
+    :param vc:
         virtual console
+    :type vc: struct vc_data \*
 
-    :param unsigned int cols:
+    :param cols:
         columns
+    :type cols: unsigned int
 
-    :param unsigned int rows:
+    :param rows:
         rows
+    :type rows: unsigned int
 
 .. _`vc_resize.description`:
 
@@ -71,11 +78,13 @@ vt_resize
 
     resize a VT
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to resize
+    :type tty: struct tty_struct \*
 
-    :param struct winsize \*ws:
+    :param ws:
         winsize attributes
+    :type ws: struct winsize \*
 
 .. _`vt_resize.description`:
 
@@ -98,9 +107,10 @@ vt_kmsg_redirect
 
     Sets/gets the kernel message console
 
-    :param int new:
+    :param new:
         The new virtual terminal number or -1 if the console should stay
         unchanged
+    :type new: int
 
 .. _`vt_kmsg_redirect.description`:
 
@@ -132,8 +142,9 @@ con_is_bound
 
     checks if driver is bound to the console
 
-    :param const struct consw \*csw:
+    :param csw:
         console driver
+    :type csw: const struct consw \*
 
 .. _`con_is_bound.return`:
 
@@ -154,8 +165,9 @@ con_debug_enter
 
     prepare the console for the kernel debugger
 
-    :param struct vc_data \*vc:
+    :param vc:
         *undescribed*
+    :type vc: struct vc_data \*
 
 .. _`con_debug_enter.description`:
 
@@ -183,8 +195,9 @@ con_debug_leave
 
     restore console state
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`con_debug_leave.description`:
 
@@ -211,8 +224,9 @@ do_unregister_con_driver
 
     unregister console driver from console layer
 
-    :param const struct consw \*csw:
+    :param csw:
         console driver
+    :type csw: const struct consw \*
 
 .. _`do_unregister_con_driver.description`:
 

@@ -10,8 +10,9 @@ copy_edd
 
     Copy the BIOS EDD information from boot_params into a safe place.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

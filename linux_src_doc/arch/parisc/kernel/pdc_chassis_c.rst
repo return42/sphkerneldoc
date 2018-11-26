@@ -10,9 +10,10 @@ pdc_chassis_setup
 
     Enable/disable pdc_chassis code at boot time.
 
-    :param char \*str:
+    :param str:
         0 to disable chassis log
         \ ``return``\  1
+    :type str: char \*
 
 .. _`pdc_chassis_checkold`:
 
@@ -23,8 +24,9 @@ pdc_chassis_checkold
 
     Checks for old PDC_CHASSIS compatibility
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pdc_chassis_checkold.description`:
 
@@ -43,14 +45,17 @@ pdc_chassis_panic_event
 
     Called by the panic handler.
 
-    :param struct notifier_block \*this:
+    :param this:
         *undescribed*
+    :type this: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         *undescribed*
+    :type event: unsigned long
 
-    :param void \*ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: void \*
 
 .. _`pdc_chassis_panic_event.description`:
 
@@ -68,14 +73,17 @@ pdc_chassis_reboot_event
 
     Called by the reboot handler.
 
-    :param struct notifier_block \*this:
+    :param this:
         *undescribed*
+    :type this: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         *undescribed*
+    :type event: unsigned long
 
-    :param void \*ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: void \*
 
 .. _`pdc_chassis_reboot_event.description`:
 
@@ -93,8 +101,9 @@ parisc_pdc_chassis_init
 
     Called at boot time.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pdc_chassis_send_status`:
 
@@ -105,8 +114,9 @@ pdc_chassis_send_status
 
     Sends a predefined message to the chassis, and changes the front panel LEDs according to the new system state
 
-    :param int message:
+    :param message:
         *undescribed*
+    :type message: int
 
 .. _`pdc_chassis_send_status.description`:
 

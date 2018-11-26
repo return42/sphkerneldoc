@@ -10,8 +10,9 @@ arc_mdio_complete_wait
 
     Waits until MDIO transaction is completed.
 
-    :param struct arc_emac_priv \*priv:
+    :param priv:
         Pointer to ARC EMAC private data structure.
+    :type priv: struct arc_emac_priv \*
 
 .. _`arc_mdio_complete_wait.return`:
 
@@ -29,14 +30,17 @@ arc_mdio_read
 
     MDIO interface read function.
 
-    :param struct mii_bus \*bus:
+    :param bus:
         Pointer to MII bus structure.
+    :type bus: struct mii_bus \*
 
-    :param int phy_addr:
+    :param phy_addr:
         Address of the PHY device.
+    :type phy_addr: int
 
-    :param int reg_num:
+    :param reg_num:
         PHY register to read.
+    :type reg_num: int
 
 .. _`arc_mdio_read.return`:
 
@@ -57,17 +61,21 @@ arc_mdio_write
 
     MDIO interface write function.
 
-    :param struct mii_bus \*bus:
+    :param bus:
         Pointer to MII bus structure.
+    :type bus: struct mii_bus \*
 
-    :param int phy_addr:
+    :param phy_addr:
         Address of the PHY device.
+    :type phy_addr: int
 
-    :param int reg_num:
+    :param reg_num:
         PHY register to write to.
+    :type reg_num: int
 
-    :param u16 value:
+    :param value:
         Value to be written into the register.
+    :type value: u16
 
 .. _`arc_mdio_write.return`:
 
@@ -85,8 +93,9 @@ arc_mdio_reset
 
 .. c:function:: int arc_mdio_reset(struct mii_bus *bus)
 
-    :param struct mii_bus \*bus:
+    :param bus:
         points to the mii_bus structure
+    :type bus: struct mii_bus \*
 
 .. _`arc_mdio_reset.description`:
 
@@ -104,8 +113,9 @@ arc_mdio_probe
 
     MDIO probe function.
 
-    :param struct arc_emac_priv \*priv:
+    :param priv:
         Pointer to ARC EMAC private data structure.
+    :type priv: struct arc_emac_priv \*
 
 .. _`arc_mdio_probe.return`:
 
@@ -126,8 +136,9 @@ arc_mdio_remove
 
     MDIO remove function.
 
-    :param struct arc_emac_priv \*priv:
+    :param priv:
         Pointer to ARC EMAC private data structure.
+    :type priv: struct arc_emac_priv \*
 
 .. _`arc_mdio_remove.description`:
 

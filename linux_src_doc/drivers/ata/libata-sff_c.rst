@@ -10,8 +10,9 @@ ata_sff_check_status
 
     Read device status reg & clear interrupt
 
-    :param struct ata_port \*ap:
+    :param ap:
         port where the device is
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_check_status.description`:
 
@@ -38,8 +39,9 @@ ata_sff_altstatus
 
     Read device alternate status reg
 
-    :param struct ata_port \*ap:
+    :param ap:
         port where the device is
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_altstatus.description`:
 
@@ -73,8 +75,9 @@ ata_sff_irq_status
 
     Check if the device is busy
 
-    :param struct ata_port \*ap:
+    :param ap:
         port where the device is
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_irq_status.description`:
 
@@ -102,8 +105,9 @@ ata_sff_sync
 
     Flush writes
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to wait for.
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_sync.caution`:
 
@@ -129,8 +133,9 @@ ata_sff_pause
 
     Flush writes and wait 400nS
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to pause for.
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_pause.caution`:
 
@@ -156,8 +161,9 @@ ata_sff_dma_pause
 
     Pause before commencing DMA
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to pause for.
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_dma_pause.description`:
 
@@ -176,14 +182,17 @@ ata_sff_busy_sleep
 
     sleep until BSY clears, or timeout
 
-    :param struct ata_port \*ap:
+    :param ap:
         port containing status register to be polled
+    :type ap: struct ata_port \*
 
-    :param unsigned long tmout_pat:
+    :param tmout_pat:
         impatience timeout in msecs
+    :type tmout_pat: unsigned long
 
-    :param unsigned long tmout:
+    :param tmout:
         overall timeout in msecs
+    :type tmout: unsigned long
 
 .. _`ata_sff_busy_sleep.description`:
 
@@ -216,11 +225,13 @@ ata_sff_wait_ready
 
     sleep until BSY clears, or timeout
 
-    :param struct ata_link \*link:
+    :param link:
         SFF link to wait ready status for
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`ata_sff_wait_ready.description`:
 
@@ -253,11 +264,13 @@ ata_sff_set_devctl
 
     Write device control reg
 
-    :param struct ata_port \*ap:
+    :param ap:
         port where the device is
+    :type ap: struct ata_port \*
 
-    :param u8 ctl:
+    :param ctl:
         value to write
+    :type ctl: u8
 
 .. _`ata_sff_set_devctl.description`:
 
@@ -290,11 +303,13 @@ ata_sff_dev_select
 
     Select device 0/1 on ATA bus
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA channel to manipulate
+    :type ap: struct ata_port \*
 
-    :param unsigned int device:
+    :param device:
         ATA device (numbered from zero) to select
+    :type device: unsigned int
 
 .. _`ata_sff_dev_select.description`:
 
@@ -323,17 +338,21 @@ ata_dev_select
 
     Select device 0/1 on ATA bus
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA channel to manipulate
+    :type ap: struct ata_port \*
 
-    :param unsigned int device:
+    :param device:
         ATA device (numbered from zero) to select
+    :type device: unsigned int
 
-    :param unsigned int wait:
+    :param wait:
         non-zero to wait for Status register BSY bit to clear
+    :type wait: unsigned int
 
-    :param unsigned int can_sleep:
+    :param can_sleep:
         non-zero if context allows sleeping
+    :type can_sleep: unsigned int
 
 .. _`ata_dev_select.description`:
 
@@ -364,8 +383,9 @@ ata_sff_irq_on
 
     Enable interrupts on a port.
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port on which interrupts are enabled.
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_irq_on.description`:
 
@@ -399,11 +419,13 @@ ata_sff_tf_load
 
     send taskfile registers to host controller
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to which output is sent
+    :type ap: struct ata_port \*
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         ATA taskfile register set
+    :type tf: const struct ata_taskfile \*
 
 .. _`ata_sff_tf_load.description`:
 
@@ -428,11 +450,13 @@ ata_sff_tf_read
 
     input device's ATA taskfile shadow registers
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port from which input is read
+    :type ap: struct ata_port \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         ATA taskfile register set for storing input
+    :type tf: struct ata_taskfile \*
 
 .. _`ata_sff_tf_read.description`:
 
@@ -460,11 +484,13 @@ ata_sff_exec_command
 
     issue ATA command to host controller
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to which command is being issued
+    :type ap: struct ata_port \*
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         ATA taskfile register set
+    :type tf: const struct ata_taskfile \*
 
 .. _`ata_sff_exec_command.description`:
 
@@ -490,11 +516,13 @@ ata_tf_to_host
 
     issue ATA taskfile to host controller
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to which command is being issued
+    :type ap: struct ata_port \*
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         ATA taskfile register set
+    :type tf: const struct ata_taskfile \*
 
 .. _`ata_tf_to_host.description`:
 
@@ -521,17 +549,21 @@ ata_sff_data_xfer
 
     Transfer data by PIO
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command
+    :type qc: struct ata_queued_cmd \*
 
-    :param unsigned char \*buf:
+    :param buf:
         data buffer
+    :type buf: unsigned char \*
 
-    :param unsigned int buflen:
+    :param buflen:
         buffer length
+    :type buflen: unsigned int
 
-    :param int rw:
+    :param rw:
         read/write
+    :type rw: int
 
 .. _`ata_sff_data_xfer.description`:
 
@@ -563,17 +595,21 @@ ata_sff_data_xfer32
 
     Transfer data by PIO
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command
+    :type qc: struct ata_queued_cmd \*
 
-    :param unsigned char \*buf:
+    :param buf:
         data buffer
+    :type buf: unsigned char \*
 
-    :param unsigned int buflen:
+    :param buflen:
         buffer length
+    :type buflen: unsigned int
 
-    :param int rw:
+    :param rw:
         read/write
+    :type rw: int
 
 .. _`ata_sff_data_xfer32.description`:
 
@@ -597,49 +633,6 @@ Return
 
 Bytes consumed.
 
-.. _`ata_sff_data_xfer_noirq`:
-
-ata_sff_data_xfer_noirq
-=======================
-
-.. c:function:: unsigned int ata_sff_data_xfer_noirq(struct ata_queued_cmd *qc, unsigned char *buf, unsigned int buflen, int rw)
-
-    Transfer data by PIO
-
-    :param struct ata_queued_cmd \*qc:
-        queued command
-
-    :param unsigned char \*buf:
-        data buffer
-
-    :param unsigned int buflen:
-        buffer length
-
-    :param int rw:
-        read/write
-
-.. _`ata_sff_data_xfer_noirq.description`:
-
-Description
------------
-
-Transfer data from/to the device data register by PIO. Do the
-transfer with interrupts disabled.
-
-.. _`ata_sff_data_xfer_noirq.locking`:
-
-LOCKING
--------
-
-Inherited from caller.
-
-.. _`ata_sff_data_xfer_noirq.return`:
-
-Return
-------
-
-Bytes consumed.
-
 .. _`ata_pio_sector`:
 
 ata_pio_sector
@@ -649,8 +642,9 @@ ata_pio_sector
 
     Transfer a sector of data.
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command on going
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_pio_sector.description`:
 
@@ -675,8 +669,9 @@ ata_pio_sectors
 
     Transfer one or many sectors.
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command on going
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_pio_sectors.description`:
 
@@ -702,11 +697,13 @@ atapi_send_cdb
 
     Write CDB bytes to hardware
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to which ATAPI device is attached.
+    :type ap: struct ata_port \*
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Taskfile currently active
+    :type qc: struct ata_queued_cmd \*
 
 .. _`atapi_send_cdb.description`:
 
@@ -732,11 +729,13 @@ caller.
 
     Transfer data from/to the ATAPI device.
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command on going
+    :type qc: struct ata_queued_cmd \*
 
-    :param unsigned int bytes:
+    :param bytes:
         number of bytes
+    :type bytes: unsigned int
 
 .. _`__atapi_pio_bytes.description`:
 
@@ -761,8 +760,9 @@ atapi_pio_bytes
 
     Transfer data from/to the ATAPI device.
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command on going
+    :type qc: struct ata_queued_cmd \*
 
 .. _`atapi_pio_bytes.description`:
 
@@ -787,11 +787,13 @@ ata_hsm_ok_in_wq
 
     Check if the qc can be handled in the workqueue.
 
-    :param struct ata_port \*ap:
+    :param ap:
         the target ata_port
+    :type ap: struct ata_port \*
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         qc on going
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_hsm_ok_in_wq.return`:
 
@@ -809,11 +811,13 @@ ata_hsm_qc_complete
 
     finish a qc running on standard HSM
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command to complete
+    :type qc: struct ata_queued_cmd \*
 
-    :param int in_wq:
+    :param in_wq:
         1 if called from workqueue, 0 otherwise
+    :type in_wq: int
 
 .. _`ata_hsm_qc_complete.description`:
 
@@ -839,17 +843,21 @@ ata_sff_hsm_move
 
     move the HSM to the next state.
 
-    :param struct ata_port \*ap:
+    :param ap:
         the target ata_port
+    :type ap: struct ata_port \*
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         qc on going
+    :type qc: struct ata_queued_cmd \*
 
-    :param u8 status:
+    :param status:
         current device status
+    :type status: u8
 
-    :param int in_wq:
+    :param in_wq:
         1 if called from workqueue, 0 otherwise
+    :type in_wq: int
 
 .. _`ata_sff_hsm_move.return`:
 
@@ -867,8 +875,9 @@ ata_sff_qc_issue
 
     issue taskfile to a SFF controller
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command to issue to device
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_sff_qc_issue.description`:
 
@@ -901,8 +910,9 @@ ata_sff_qc_fill_rtf
 
     fill result TF using ->sff_tf_read
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         qc to fill result TF for
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_sff_qc_fill_rtf.description`:
 
@@ -935,11 +945,13 @@ ata_sff_port_intr
 
     Handle SFF port interrupt
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port on which interrupt arrived (possibly...)
+    :type ap: struct ata_port \*
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Taskfile currently active in engine
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_sff_port_intr.description`:
 
@@ -971,11 +983,13 @@ ata_sff_interrupt
 
     Default SFF ATA host interrupt handler
 
-    :param int irq:
+    :param irq:
         irq line (unused)
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         pointer to our ata_host information structure
+    :type dev_instance: void \*
 
 .. _`ata_sff_interrupt.description`:
 
@@ -1008,8 +1022,9 @@ ata_sff_lost_interrupt
 
     Check for an apparent lost interrupt
 
-    :param struct ata_port \*ap:
+    :param ap:
         port that appears to have timed out
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_lost_interrupt.description`:
 
@@ -1037,8 +1052,9 @@ ata_sff_freeze
 
     Freeze SFF controller port
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to freeze
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_freeze.description`:
 
@@ -1063,8 +1079,9 @@ ata_sff_thaw
 
     Thaw SFF controller port
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to thaw
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_thaw.description`:
 
@@ -1089,11 +1106,13 @@ ata_sff_prereset
 
     prepare SFF link for reset
 
-    :param struct ata_link \*link:
+    :param link:
         SFF link to be reset
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`ata_sff_prereset.description`:
 
@@ -1127,11 +1146,13 @@ ata_devchk
 
     PATA device presence detection
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA channel to examine
+    :type ap: struct ata_port \*
 
-    :param unsigned int device:
+    :param device:
         Device to examine (starting at zero)
+    :type device: unsigned int
 
 .. _`ata_devchk.description`:
 
@@ -1163,14 +1184,17 @@ ata_sff_dev_classify
 
     Parse returned ATA device signature
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device to classify (starting at zero)
+    :type dev: struct ata_device \*
 
-    :param int present:
+    :param present:
         device seems present
+    :type present: int
 
-    :param u8 \*r_err:
+    :param r_err:
         Value of error register on completion
+    :type r_err: u8 \*
 
 .. _`ata_sff_dev_classify.description`:
 
@@ -1209,14 +1233,17 @@ ata_sff_wait_after_reset
 
     wait for devices to become ready after reset
 
-    :param struct ata_link \*link:
+    :param link:
         SFF link which is just reset
+    :type link: struct ata_link \*
 
-    :param unsigned int devmask:
+    :param devmask:
         mask of present devices
+    :type devmask: unsigned int
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`ata_sff_wait_after_reset.description`:
 
@@ -1251,14 +1278,17 @@ ata_sff_softreset
 
     reset host port via ATA SRST
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to reset
+    :type link: struct ata_link \*
 
-    :param unsigned int \*classes:
+    :param classes:
         resulting classes of attached devices
+    :type classes: unsigned int \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`ata_sff_softreset.description`:
 
@@ -1290,14 +1320,17 @@ sata_sff_hardreset
 
     reset host port via SATA phy reset
 
-    :param struct ata_link \*link:
+    :param link:
         link to reset
+    :type link: struct ata_link \*
 
-    :param unsigned int \*class:
+    :param class:
         resulting class of attached device
+    :type class: unsigned int \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`sata_sff_hardreset.description`:
 
@@ -1330,11 +1363,13 @@ ata_sff_postreset
 
     SFF postreset callback
 
-    :param struct ata_link \*link:
+    :param link:
         the target SFF ata_link
+    :type link: struct ata_link \*
 
-    :param unsigned int \*classes:
+    :param classes:
         classes of attached devices
+    :type classes: unsigned int \*
 
 .. _`ata_sff_postreset.description`:
 
@@ -1361,8 +1396,9 @@ ata_sff_drain_fifo
 
     Stock FIFO drain logic for SFF controllers
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_sff_drain_fifo.description`:
 
@@ -1382,8 +1418,9 @@ ata_sff_error_handler
 
     Stock error handler for SFF controller
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to handle error for
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_error_handler.description`:
 
@@ -1411,8 +1448,9 @@ ata_sff_std_ports
 
     initialize ioaddr with standard port offsets.
 
-    :param struct ata_ioports \*ioaddr:
+    :param ioaddr:
         IO address structure to be initialized
+    :type ioaddr: struct ata_ioports \*
 
 .. _`ata_sff_std_ports.description`:
 
@@ -1435,8 +1473,9 @@ ata_pci_sff_init_host
 
     acquire native PCI ATA resources and init host
 
-    :param struct ata_host \*host:
+    :param host:
         target ATA host
+    :type host: struct ata_host \*
 
 .. _`ata_pci_sff_init_host.description`:
 
@@ -1475,14 +1514,17 @@ ata_pci_sff_prepare_host
 
     helper to prepare PCI PIO-only SFF ATA host
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         target PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct ata_port_info \* const \*ppi:
+    :param ppi:
         array of port_info, must be enough for two ports
+    :type ppi: const struct ata_port_info \* const \*
 
-    :param struct ata_host \*\*r_host:
+    :param r_host:
         out argument for the initialized ATA host
+    :type r_host: struct ata_host \*\*
 
 .. _`ata_pci_sff_prepare_host.description`:
 
@@ -1515,14 +1557,17 @@ ata_pci_sff_activate_host
 
     start SFF host, request IRQ and register it
 
-    :param struct ata_host \*host:
+    :param host:
         target SFF ATA host
+    :type host: struct ata_host \*
 
-    :param irq_handler_t irq_handler:
+    :param irq_handler:
         irq_handler used when requesting IRQ(s)
+    :type irq_handler: irq_handler_t
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         scsi_host_template to use when registering the host
+    :type sht: struct scsi_host_template \*
 
 .. _`ata_pci_sff_activate_host.description`:
 
@@ -1556,20 +1601,25 @@ ata_pci_sff_init_one
 
     Initialize/register PIO-only PCI IDE controller
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Controller to be initialized
+    :type pdev: struct pci_dev \*
 
-    :param const struct ata_port_info \* const \*ppi:
+    :param ppi:
         array of port_info, must be enough for two ports
+    :type ppi: const struct ata_port_info \* const \*
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         scsi_host_template to use when registering the host
+    :type sht: struct scsi_host_template \*
 
-    :param void \*host_priv:
+    :param host_priv:
         host private_data
+    :type host_priv: void \*
 
-    :param int hflag:
+    :param hflag:
         host flags
+    :type hflag: int
 
 .. _`ata_pci_sff_init_one.description`:
 
@@ -1611,8 +1661,9 @@ ata_bmdma_fill_sg
 
     Fill PCI IDE PRD table
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Metadata associated with taskfile to be transferred
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_bmdma_fill_sg.description`:
 
@@ -1638,8 +1689,9 @@ ata_bmdma_fill_sg_dumb
 
     Fill PCI IDE PRD table
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Metadata associated with taskfile to be transferred
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_bmdma_fill_sg_dumb.description`:
 
@@ -1667,8 +1719,9 @@ ata_bmdma_qc_prep
 
     Prepare taskfile for submission
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Metadata associated with taskfile to be prepared
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_bmdma_qc_prep.description`:
 
@@ -1693,8 +1746,9 @@ ata_bmdma_dumb_qc_prep
 
     Prepare taskfile for submission
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Metadata associated with taskfile to be prepared
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_bmdma_dumb_qc_prep.description`:
 
@@ -1719,8 +1773,9 @@ ata_bmdma_qc_issue
 
     issue taskfile to a BMDMA controller
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command to issue to device
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_bmdma_qc_issue.description`:
 
@@ -1754,11 +1809,13 @@ ata_bmdma_port_intr
 
     Handle BMDMA port interrupt
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port on which interrupt arrived (possibly...)
+    :type ap: struct ata_port \*
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Taskfile currently active in engine
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_bmdma_port_intr.description`:
 
@@ -1790,11 +1847,13 @@ ata_bmdma_interrupt
 
     Default BMDMA ATA host interrupt handler
 
-    :param int irq:
+    :param irq:
         irq line (unused)
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         pointer to our ata_host information structure
+    :type dev_instance: void \*
 
 .. _`ata_bmdma_interrupt.description`:
 
@@ -1827,8 +1886,9 @@ ata_bmdma_error_handler
 
     Stock error handler for BMDMA controller
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to handle error for
+    :type ap: struct ata_port \*
 
 .. _`ata_bmdma_error_handler.description`:
 
@@ -1856,8 +1916,9 @@ ata_bmdma_post_internal_cmd
 
     Stock post_internal_cmd for BMDMA
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         internal command to clean up
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_bmdma_post_internal_cmd.locking`:
 
@@ -1875,8 +1936,9 @@ ata_bmdma_irq_clear
 
     Clear PCI IDE BMDMA interrupt.
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port associated with this ATA transaction.
+    :type ap: struct ata_port \*
 
 .. _`ata_bmdma_irq_clear.description`:
 
@@ -1903,8 +1965,9 @@ ata_bmdma_setup
 
     Set up PCI IDE BMDMA transaction
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Info associated with this ATA transaction.
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_bmdma_setup.locking`:
 
@@ -1922,8 +1985,9 @@ ata_bmdma_start
 
     Start a PCI IDE BMDMA transaction
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Info associated with this ATA transaction.
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_bmdma_start.locking`:
 
@@ -1941,8 +2005,9 @@ ata_bmdma_stop
 
     Stop PCI IDE BMDMA transfer
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command we are ending DMA for
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_bmdma_stop.description`:
 
@@ -1969,8 +2034,9 @@ ata_bmdma_status
 
     Read PCI IDE BMDMA status
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port associated with this ATA transaction.
+    :type ap: struct ata_port \*
 
 .. _`ata_bmdma_status.description`:
 
@@ -1997,8 +2063,9 @@ ata_bmdma_port_start
 
     Set port up for bmdma.
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to initialize
+    :type ap: struct ata_port \*
 
 .. _`ata_bmdma_port_start.description`:
 
@@ -2026,8 +2093,9 @@ ata_bmdma_port_start32
 
     Set port up for dma.
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to initialize
+    :type ap: struct ata_port \*
 
 .. _`ata_bmdma_port_start32.description`:
 
@@ -2057,8 +2125,9 @@ ata_pci_bmdma_clear_simplex
 
     attempt to kick device out of simplex
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`ata_pci_bmdma_clear_simplex.description`:
 
@@ -2079,8 +2148,9 @@ ata_pci_bmdma_init
 
     acquire PCI BMDMA resources and init ATA host
 
-    :param struct ata_host \*host:
+    :param host:
         target ATA host
+    :type host: struct ata_host \*
 
 .. _`ata_pci_bmdma_init.description`:
 
@@ -2105,14 +2175,17 @@ ata_pci_bmdma_prepare_host
 
     helper to prepare PCI BMDMA ATA host
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         target PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct ata_port_info \* const \*ppi:
+    :param ppi:
         array of port_info, must be enough for two ports
+    :type ppi: const struct ata_port_info \* const \*
 
-    :param struct ata_host \*\*r_host:
+    :param r_host:
         out argument for the initialized ATA host
+    :type r_host: struct ata_host \*\*
 
 .. _`ata_pci_bmdma_prepare_host.description`:
 
@@ -2145,20 +2218,25 @@ ata_pci_bmdma_init_one
 
     Initialize/register BMDMA PCI IDE controller
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Controller to be initialized
+    :type pdev: struct pci_dev \*
 
-    :param const struct ata_port_info \* const \*ppi:
+    :param ppi:
         array of port_info, must be enough for two ports
+    :type ppi: const struct ata_port_info \* const \*
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         scsi_host_template to use when registering the host
+    :type sht: struct scsi_host_template \*
 
-    :param void \*host_priv:
+    :param host_priv:
         host private_data
+    :type host_priv: void \*
 
-    :param int hflags:
+    :param hflags:
         host flags
+    :type hflags: int
 
 .. _`ata_pci_bmdma_init_one.description`:
 
@@ -2191,8 +2269,9 @@ ata_sff_port_init
 
     Initialize SFF/BMDMA ATA port
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to initialize
+    :type ap: struct ata_port \*
 
 .. _`ata_sff_port_init.description`:
 

@@ -10,8 +10,9 @@ update_vsyscall
 
     update the vdso data page
 
-    :param struct timekeeper \*tk:
+    :param tk:
         *undescribed*
+    :type tk: struct timekeeper \*
 
 .. _`update_vsyscall.description`:
 

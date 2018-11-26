@@ -10,8 +10,9 @@ aa_free_domain_entries
 
     free entries in a domain table
 
-    :param struct aa_domain \*domain:
+    :param domain:
         the domain table to free  (MAYBE NULL)
+    :type domain: struct aa_domain \*
 
 .. _`may_change_ptraced_domain`:
 
@@ -22,11 +23,13 @@ may_change_ptraced_domain
 
     check if can change profile on ptraced task
 
-    :param struct aa_label \*to_label:
+    :param to_label:
         profile to change to  (NOT NULL)
+    :type to_label: struct aa_label \*
 
-    :param const char \*\*info:
+    :param info:
         message if there is an error
+    :type info: const char \*\*
 
 .. _`may_change_ptraced_domain.description`:
 
@@ -52,26 +55,33 @@ label_compound_match
 
     find perms for full compound label
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to find perms for
+    :type profile: struct aa_profile \*
 
-    :param struct aa_label \*label:
+    :param label:
         label to check access permissions for
+    :type label: struct aa_label \*
 
-    :param bool stack:
+    :param stack:
         whether this is a stacking request
+    :type stack: bool
 
-    :param unsigned int state:
+    :param state:
         *undescribed*
+    :type state: unsigned int
 
-    :param bool subns:
+    :param subns:
         whether to do permission checks on components in a subns
+    :type subns: bool
 
-    :param u32 request:
+    :param request:
         permissions to request
+    :type request: u32
 
-    :param struct aa_perms \*perms:
+    :param perms:
         perms struct to set
+    :type perms: struct aa_perms \*
 
 .. _`label_compound_match.return`:
 
@@ -93,26 +103,33 @@ label_components_match
 
     find perms for all subcomponents of a label
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to find perms for
+    :type profile: struct aa_profile \*
 
-    :param struct aa_label \*label:
+    :param label:
         label to check access permissions for
+    :type label: struct aa_label \*
 
-    :param bool stack:
+    :param stack:
         whether this is a stacking request
+    :type stack: bool
 
-    :param unsigned int start:
+    :param start:
         state to start match in
+    :type start: unsigned int
 
-    :param bool subns:
+    :param subns:
         whether to do permission checks on components in a subns
+    :type subns: bool
 
-    :param u32 request:
+    :param request:
         permissions to request
+    :type request: u32
 
-    :param struct aa_perms \*perms:
+    :param perms:
         an initialized perms struct to add accumulation to
+    :type perms: struct aa_perms \*
 
 .. _`label_components_match.return`:
 
@@ -134,26 +151,33 @@ label_match
 
     do a multi-component label match
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to match against (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param struct aa_label \*label:
+    :param label:
         label to match (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param bool stack:
+    :param stack:
         whether this is a stacking request
+    :type stack: bool
 
-    :param unsigned int state:
+    :param state:
         state to start in
+    :type state: unsigned int
 
-    :param bool subns:
+    :param subns:
         whether to match subns components
+    :type subns: bool
 
-    :param u32 request:
+    :param request:
         permission request
+    :type request: u32
 
-    :param struct aa_perms \*perms:
+    :param perms:
         Returns computed perms (NOT NULL)
+    :type perms: struct aa_perms \*
 
 .. _`label_match.return`:
 
@@ -171,23 +195,29 @@ change_profile_perms
 
     find permissions for change_profile
 
-    :param struct aa_profile \*profile:
+    :param profile:
         the current profile  (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param struct aa_label \*target:
+    :param target:
         label to transition to (NOT NULL)
+    :type target: struct aa_label \*
 
-    :param bool stack:
+    :param stack:
         whether this is a stacking request
+    :type stack: bool
 
-    :param u32 request:
+    :param request:
         requested perms
+    :type request: u32
 
-    :param unsigned int start:
+    :param start:
         state to start matching in
+    :type start: unsigned int
 
-    :param struct aa_perms \*perms:
+    :param perms:
         *undescribed*
+    :type perms: struct aa_perms \*
 
 .. _`change_profile_perms.return`:
 
@@ -208,14 +238,17 @@ aa_xattrs_match
 
     check whether a file matches the xattrs defined in profile
 
-    :param const struct linux_binprm \*bprm:
+    :param bprm:
         binprm struct for the process to validate
+    :type bprm: const struct linux_binprm \*
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to match against (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param unsigned int state:
+    :param state:
         state to start match in
+    :type state: unsigned int
 
 .. _`aa_xattrs_match.return`:
 
@@ -233,17 +266,21 @@ number of extended attributes that matched, or < 0 on error
 
     find an attachment match \ ``bprm``\  - binprm structure of transitioning task \ ``name``\  - to match against  (NOT NULL) \ ``head``\  - profile list to walk  (NOT NULL) \ ``info``\  - info message if there was an error (NOT NULL)
 
-    :param const struct linux_binprm \*bprm:
+    :param bprm:
         *undescribed*
+    :type bprm: const struct linux_binprm \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param struct list_head \*head:
+    :param head:
         *undescribed*
+    :type head: struct list_head \*
 
-    :param const char \*\*info:
+    :param info:
         *undescribed*
+    :type info: const char \*\*
 
 .. _`__attach_match.description`:
 
@@ -278,20 +315,25 @@ find_attach
 
     do attachment search for unconfined processes \ ``bprm``\  - binprm structure of transitioning task
 
-    :param const struct linux_binprm \*bprm:
+    :param bprm:
         *undescribed*
+    :type bprm: const struct linux_binprm \*
 
-    :param struct aa_ns \*ns:
+    :param ns:
         the current namespace  (NOT NULL)
+    :type ns: struct aa_ns \*
 
-    :param struct list_head \*list:
+    :param list:
         list to search  (NOT NULL)
+    :type list: struct list_head \*
 
-    :param const char \*name:
+    :param name:
         the executable name to match against  (NOT NULL)
+    :type name: const char \*
 
-    :param const char \*\*info:
+    :param info:
         info message if there was an error
+    :type info: const char \*\*
 
 .. _`find_attach.return`:
 
@@ -309,14 +351,17 @@ x_table_lookup
 
     lookup an x transition name via transition table
 
-    :param struct aa_profile \*profile:
+    :param profile:
         current profile (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param u32 xindex:
+    :param xindex:
         index into x transition table
+    :type xindex: u32
 
-    :param const char \*\*name:
+    :param name:
         returns: name tested to find label (NOT NULL)
+    :type name: const char \*\*
 
 .. _`x_table_lookup.return`:
 
@@ -334,23 +379,29 @@ x_to_label
 
     get target label for a given xindex
 
-    :param struct aa_profile \*profile:
+    :param profile:
         current profile  (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param const struct linux_binprm \*bprm:
+    :param bprm:
         binprm structure of transitioning task
+    :type bprm: const struct linux_binprm \*
 
-    :param const char \*name:
+    :param name:
         name to lookup (NOT NULL)
+    :type name: const char \*
 
-    :param u32 xindex:
+    :param xindex:
         index into x transition table
+    :type xindex: u32
 
-    :param const char \*\*lookupname:
+    :param lookupname:
         returns: name used in lookup if one was specified (NOT NULL)
+    :type lookupname: const char \*\*
 
-    :param const char \*\*info:
+    :param info:
         *undescribed*
+    :type info: const char \*\*
 
 .. _`x_to_label.description`:
 
@@ -375,8 +426,9 @@ apparmor_bprm_set_creds
 
     set the new creds on the bprm struct
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         binprm for the exec  (NOT NULL)
+    :type bprm: struct linux_binprm \*
 
 .. _`apparmor_bprm_set_creds.return`:
 
@@ -401,17 +453,21 @@ aa_change_hat
 
     change hat to/from subprofile
 
-    :param const char  \*hats:
+    :param hats:
         vector of hat names to try changing into (MAYBE NULL if \ ``count``\  == 0)
+    :type hats: const char  \*
 
-    :param int count:
+    :param count:
         number of hat names in \ ``hats``\ 
+    :type count: int
 
-    :param u64 token:
+    :param token:
         magic value to validate the hat change
+    :type token: u64
 
-    :param int flags:
+    :param flags:
         flags affecting behavior of the change
+    :type flags: int
 
 .. _`aa_change_hat.description`:
 
@@ -437,11 +493,13 @@ aa_change_profile
 
     perform a one-way profile transition
 
-    :param const char \*fqname:
+    :param fqname:
         name of profile may include namespace (NOT NULL)
+    :type fqname: const char \*
 
-    :param int flags:
+    :param flags:
         flags affecting change behavior
+    :type flags: int
 
 .. _`aa_change_profile.description`:
 

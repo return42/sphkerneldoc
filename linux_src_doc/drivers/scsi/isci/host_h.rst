@@ -119,11 +119,13 @@ sci_controller_clear_invalid_phy
 
 .. c:function::  sci_controller_clear_invalid_phy( controller,  phy)
 
-    :param  controller:
+    :param controller:
         *undescribed*
+    :type controller: 
 
-    :param  phy:
+    :param phy:
         *undescribed*
+    :type phy: 
 
 .. _`sci_controller_clear_invalid_phy.description`:
 

@@ -10,8 +10,9 @@ open_queue
 
     open the global queue for testing \ ``attr``\  - An attr struct specifying the desired queue traits \ ``result``\  - An attr struct that lists the actual traits the queue has
 
-    :param struct mq_attr \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct mq_attr \*
 
 .. _`open_queue.description`:
 
@@ -30,8 +31,9 @@ perf_test_thread
 
 .. c:function:: void *perf_test_thread(void *arg)
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`perf_test_thread.description`:
 

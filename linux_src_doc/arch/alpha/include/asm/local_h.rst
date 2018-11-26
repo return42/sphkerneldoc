@@ -10,14 +10,17 @@ local_add_unless
 
     add unless the number is a given value
 
-    :param  l:
+    :param l:
         pointer of type local_t
+    :type l: 
 
-    :param  a:
+    :param a:
         the amount to add to l...
+    :type a: 
 
-    :param  u:
+    :param u:
         ...unless l is equal to u.
+    :type u: 
 
 .. _`local_add_unless.description`:
 

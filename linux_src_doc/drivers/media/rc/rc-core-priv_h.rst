@@ -10,8 +10,9 @@ rc_open
 
     Opens a RC device
 
-    :param struct rc_dev \*rdev:
+    :param rdev:
         pointer to struct rc_dev.
+    :type rdev: struct rc_dev \*
 
 .. _`rc_close`:
 
@@ -22,8 +23,9 @@ rc_close
 
     Closes a RC device
 
-    :param struct rc_dev \*rdev:
+    :param rdev:
         pointer to struct rc_dev.
+    :type rdev: struct rc_dev \*
 
 .. _`ir_raw_timings_manchester`:
 
@@ -80,19 +82,23 @@ ir_raw_gen_pulse_space
 
     generate pulse and space raw events.
 
-    :param struct ir_raw_event \*\*ev:
+    :param ev:
         Pointer to pointer to next free raw event.
         Will be incremented for each raw event written.
+    :type ev: struct ir_raw_event \*\*
 
-    :param unsigned int \*max:
+    :param max:
         Pointer to number of raw events available in buffer.
         Will be decremented for each raw event written.
+    :type max: unsigned int \*
 
-    :param unsigned int pulse_width:
+    :param pulse_width:
         Width of pulse in ns.
+    :type pulse_width: unsigned int
 
-    :param unsigned int space_width:
+    :param space_width:
         Width of space in ns.
+    :type space_width: unsigned int
 
 .. _`ir_raw_gen_pulse_space.return`:
 

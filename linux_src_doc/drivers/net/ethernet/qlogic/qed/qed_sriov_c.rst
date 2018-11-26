@@ -10,11 +10,13 @@ qed_schedule_iov
 
     schedules IOV task for VF and PF
 
-    :param struct qed_hwfn \*hwfn:
+    :param hwfn:
         hardware function pointer
+    :type hwfn: struct qed_hwfn \*
 
-    :param enum qed_iov_wq_flag flag:
+    :param flag:
         IOV flag for VF/PF
+    :type flag: enum qed_iov_wq_flag
 
 .. This file was automatic generated / don't edit.
 

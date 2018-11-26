@@ -50,8 +50,9 @@ TH_LOG
 
 .. c:function::  TH_LOG( fmt,  ...)
 
-    :param  fmt:
+    :param fmt:
         format string
+    :type fmt: 
 
     :param ellipsis ellipsis:
         optional arguments
@@ -86,11 +87,13 @@ XFAIL
 
 .. c:function::  XFAIL( statement,  fmt,  ...)
 
-    :param  statement:
+    :param statement:
         statement to run after reporting XFAIL
+    :type statement: 
 
-    :param  fmt:
+    :param fmt:
         format string
+    :type fmt: 
 
     :param ellipsis ellipsis:
         optional arguments
@@ -112,8 +115,9 @@ TEST
 
     Defines the test function and creates the registration stub
 
-    :param  test_name:
+    :param test_name:
         test name
+    :type test_name: 
 
 .. _`test.description`:
 
@@ -138,11 +142,13 @@ TEST_SIGNAL
 
 .. c:function::  TEST_SIGNAL( test_name,  signal)
 
-    :param  test_name:
+    :param test_name:
         test name
+    :type test_name: 
 
-    :param  signal:
+    :param signal:
         signal number
+    :type signal: 
 
 .. _`test_signal.description`:
 
@@ -169,8 +175,9 @@ FIXTURE_DATA
 
     Wraps the struct name so we have one less argument to pass around
 
-    :param  datatype_name:
+    :param datatype_name:
         datatype name
+    :type datatype_name: 
 
 .. _`fixture_data.description`:
 
@@ -194,8 +201,9 @@ FIXTURE
 
     Called once per fixture to setup the data and register
 
-    :param  fixture_name:
+    :param fixture_name:
         fixture name
+    :type fixture_name: 
 
 .. _`fixture.description`:
 
@@ -221,8 +229,9 @@ FIXTURE_SETUP
 
     Prepares the setup function for the fixture. *_metadata* is included so that EXPECT_* and ASSERT_* work correctly.
 
-    :param  fixture_name:
+    :param fixture_name:
         fixture name
+    :type fixture_name: 
 
 .. _`fixture_setup.description`:
 
@@ -251,8 +260,9 @@ FIXTURE_TEARDOWN
 
     *_metadata* is included so that EXPECT_* and ASSERT_* work correctly.
 
-    :param  fixture_name:
+    :param fixture_name:
         fixture name
+    :type fixture_name: 
 
 .. _`fixture_teardown.description`:
 
@@ -278,11 +288,13 @@ TEST_F
 
     Emits test registration and helpers for fixture-based test cases
 
-    :param  fixture_name:
+    :param fixture_name:
         fixture name
+    :type fixture_name: 
 
-    :param  test_name:
+    :param test_name:
         test name
+    :type test_name: 
 
 .. _`test_f.description`:
 
@@ -335,11 +347,13 @@ ASSERT_EQ
 
 .. c:function::  ASSERT_EQ( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_eq.description`:
 
@@ -355,11 +369,13 @@ ASSERT_NE
 
 .. c:function::  ASSERT_NE( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_ne.description`:
 
@@ -375,11 +391,13 @@ ASSERT_LT
 
 .. c:function::  ASSERT_LT( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_lt.description`:
 
@@ -395,11 +413,13 @@ ASSERT_LE
 
 .. c:function::  ASSERT_LE( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_le.description`:
 
@@ -415,11 +435,13 @@ ASSERT_GT
 
 .. c:function::  ASSERT_GT( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_gt.description`:
 
@@ -435,11 +457,13 @@ ASSERT_GE
 
 .. c:function::  ASSERT_GE( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_ge.description`:
 
@@ -455,8 +479,9 @@ ASSERT_NULL
 
 .. c:function::  ASSERT_NULL( seen)
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_null.description`:
 
@@ -472,8 +497,9 @@ ASSERT_TRUE
 
 .. c:function::  ASSERT_TRUE( seen)
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_true.description`:
 
@@ -489,8 +515,9 @@ ASSERT_FALSE
 
 .. c:function::  ASSERT_FALSE( seen)
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_false.description`:
 
@@ -506,11 +533,13 @@ ASSERT_STREQ
 
 .. c:function::  ASSERT_STREQ( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_streq.description`:
 
@@ -526,11 +555,13 @@ ASSERT_STRNE
 
 .. c:function::  ASSERT_STRNE( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`assert_strne.description`:
 
@@ -546,11 +577,13 @@ EXPECT_EQ
 
 .. c:function::  EXPECT_EQ( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_eq.description`:
 
@@ -566,11 +599,13 @@ EXPECT_NE
 
 .. c:function::  EXPECT_NE( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_ne.description`:
 
@@ -586,11 +621,13 @@ EXPECT_LT
 
 .. c:function::  EXPECT_LT( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_lt.description`:
 
@@ -606,11 +643,13 @@ EXPECT_LE
 
 .. c:function::  EXPECT_LE( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_le.description`:
 
@@ -626,11 +665,13 @@ EXPECT_GT
 
 .. c:function::  EXPECT_GT( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_gt.description`:
 
@@ -646,11 +687,13 @@ EXPECT_GE
 
 .. c:function::  EXPECT_GE( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_ge.description`:
 
@@ -666,8 +709,9 @@ EXPECT_NULL
 
 .. c:function::  EXPECT_NULL( seen)
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_null.description`:
 
@@ -683,8 +727,9 @@ EXPECT_TRUE
 
 .. c:function::  EXPECT_TRUE( seen)
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_true.description`:
 
@@ -700,8 +745,9 @@ EXPECT_FALSE
 
 .. c:function::  EXPECT_FALSE( seen)
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_false.description`:
 
@@ -717,11 +763,13 @@ EXPECT_STREQ
 
 .. c:function::  EXPECT_STREQ( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_streq.description`:
 
@@ -737,11 +785,13 @@ EXPECT_STRNE
 
 .. c:function::  EXPECT_STRNE( expected,  seen)
 
-    :param  expected:
+    :param expected:
         expected value
+    :type expected: 
 
-    :param  seen:
+    :param seen:
         measured value
+    :type seen: 
 
 .. _`expect_strne.description`:
 

@@ -10,11 +10,13 @@ simple_setattr
 
     setattr for simple filesystem
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry
+    :type dentry: struct dentry \*
 
-    :param struct iattr \*iattr:
+    :param iattr:
         iattr structure
+    :type iattr: struct iattr \*
 
 .. _`simple_setattr.description`:
 
@@ -39,26 +41,33 @@ simple_write_end
 
     .write_end helper for non-block-device FSes
 
-    :param struct file \*file:
+    :param file:
         "
+    :type file: struct file \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         "
+    :type mapping: struct address_space \*
 
-    :param loff_t pos:
+    :param pos:
         "
+    :type pos: loff_t
 
-    :param unsigned len:
+    :param len:
         "
+    :type len: unsigned
 
-    :param unsigned copied:
+    :param copied:
         "
+    :type copied: unsigned
 
-    :param struct page \*page:
+    :param page:
         "
+    :type page: struct page \*
 
-    :param void \*fsdata:
+    :param fsdata:
         "
+    :type fsdata: void \*
 
 .. _`simple_write_end.description`:
 
@@ -81,7 +90,7 @@ is not called, so a filesystem that actually does store data in .write_inode
 should extend on what's done here with a call to \ :c:func:`mark_inode_dirty`\  in the
 case that i_size has changed.
 
-Use \*ONLY\* with \ :c:func:`simple_readpage`\ 
+Use *ONLY* with \ :c:func:`simple_readpage`\ 
 
 .. _`simple_read_from_buffer`:
 
@@ -92,20 +101,25 @@ simple_read_from_buffer
 
     copy data from the buffer to user space
 
-    :param void __user \*to:
+    :param to:
         the user space buffer to read to
+    :type to: void __user \*
 
-    :param size_t count:
+    :param count:
         the maximum number of bytes to read
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         the current position in the buffer
+    :type ppos: loff_t \*
 
-    :param const void \*from:
+    :param from:
         the buffer to read from
+    :type from: const void \*
 
-    :param size_t available:
+    :param available:
         the size of the buffer
+    :type available: size_t
 
 .. _`simple_read_from_buffer.description`:
 
@@ -127,20 +141,25 @@ simple_write_to_buffer
 
     copy data from user space to the buffer
 
-    :param void \*to:
+    :param to:
         the buffer to write to
+    :type to: void \*
 
-    :param size_t available:
+    :param available:
         the size of the buffer
+    :type available: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         the current position in the buffer
+    :type ppos: loff_t \*
 
-    :param const void __user \*from:
+    :param from:
         the user space buffer to read from
+    :type from: const void __user \*
 
-    :param size_t count:
+    :param count:
         the maximum number of bytes to read
+    :type count: size_t
 
 .. _`simple_write_to_buffer.description`:
 
@@ -162,20 +181,25 @@ memory_read_from_buffer
 
     copy data from the buffer
 
-    :param void \*to:
+    :param to:
         the kernel space buffer to read to
+    :type to: void \*
 
-    :param size_t count:
+    :param count:
         the maximum number of bytes to read
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         the current position in the buffer
+    :type ppos: loff_t \*
 
-    :param const void \*from:
+    :param from:
         the buffer to read from
+    :type from: const void \*
 
-    :param size_t available:
+    :param available:
         the size of the buffer
+    :type available: size_t
 
 .. _`memory_read_from_buffer.description`:
 
@@ -197,17 +221,21 @@ generic_fh_to_dentry
 
     generic helper for the fh_to_dentry export operation
 
-    :param struct super_block \*sb:
+    :param sb:
         filesystem to do the file handle conversion on
+    :type sb: struct super_block \*
 
-    :param struct fid \*fid:
+    :param fid:
         file handle to convert
+    :type fid: struct fid \*
 
-    :param int fh_len:
+    :param fh_len:
         length of the file handle in bytes
+    :type fh_len: int
 
-    :param int fh_type:
+    :param fh_type:
         type of file handle
+    :type fh_type: int
 
     :param struct inode \*(\*get_inode)(struct super_block \*sb, u64 ino, u32 gen):
         filesystem callback to retrieve inode
@@ -230,17 +258,21 @@ generic_fh_to_parent
 
     generic helper for the fh_to_parent export operation
 
-    :param struct super_block \*sb:
+    :param sb:
         filesystem to do the file handle conversion on
+    :type sb: struct super_block \*
 
-    :param struct fid \*fid:
+    :param fid:
         file handle to convert
+    :type fid: struct fid \*
 
-    :param int fh_len:
+    :param fh_len:
         length of the file handle in bytes
+    :type fh_len: int
 
-    :param int fh_type:
+    :param fh_type:
         type of file handle
+    :type fh_type: int
 
     :param struct inode \*(\*get_inode)(struct super_block \*sb, u64 ino, u32 gen):
         filesystem callback to retrieve inode
@@ -252,29 +284,33 @@ Description
 
 This function decodes \ ``fid``\  as long as it has one of the well-known
 Linux filehandle types and calls \ ``get_inode``\  on it to retrieve the
-inode for the \_parent\_ object specified in the file handle if it
+inode for the _parent_ object specified in the file handle if it
 is specified in the file handle, or NULL otherwise.
 
 .. _`__generic_file_fsync`:
 
-\__generic_file_fsync
-=====================
+__generic_file_fsync
+====================
 
 .. c:function:: int __generic_file_fsync(struct file *file, loff_t start, loff_t end, int datasync)
 
     generic fsync implementation for simple filesystems
 
-    :param struct file \*file:
+    :param file:
         file to synchronize
+    :type file: struct file \*
 
-    :param loff_t start:
+    :param start:
         start offset in bytes
+    :type start: loff_t
 
-    :param loff_t end:
+    :param end:
         end offset in bytes (inclusive)
+    :type end: loff_t
 
-    :param int datasync:
+    :param datasync:
         only synchronize essential metadata if true
+    :type datasync: int
 
 .. _`__generic_file_fsync.description`:
 
@@ -294,17 +330,21 @@ generic_file_fsync
 
     generic fsync implementation for simple filesystems with flush
 
-    :param struct file \*file:
+    :param file:
         file to synchronize
+    :type file: struct file \*
 
-    :param loff_t start:
+    :param start:
         start offset in bytes
+    :type start: loff_t
 
-    :param loff_t end:
+    :param end:
         end offset in bytes (inclusive)
+    :type end: loff_t
 
-    :param int datasync:
+    :param datasync:
         only synchronize essential metadata if true
+    :type datasync: int
 
 .. _`generic_check_addressable`:
 
@@ -315,11 +355,13 @@ generic_check_addressable
 
     Check addressability of file system
 
-    :param unsigned blocksize_bits:
+    :param blocksize_bits:
         log of file system block size
+    :type blocksize_bits: unsigned
 
-    :param u64 num_blocks:
+    :param num_blocks:
         number of blocks in file system
+    :type num_blocks: u64
 
 .. _`generic_check_addressable.description`:
 
@@ -327,7 +369,7 @@ Description
 -----------
 
 Determine whether a file system with \ ``num_blocks``\  blocks (and a
-block size of 2\*\*@blocksize_bits) is addressable by the sector_t
+block size of 2**@blocksize_bits) is addressable by the sector_t
 and page cache of the system.  Return 0 if so and -EFBIG otherwise.
 
 .. _`simple_nosetlease`:
@@ -339,17 +381,21 @@ simple_nosetlease
 
     generic helper for prohibiting leases
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param long arg:
+    :param arg:
         type of lease to obtain
+    :type arg: long
 
-    :param struct file_lock \*\*flp:
+    :param flp:
         new lease supplied for insertion
+    :type flp: struct file_lock \*\*
 
-    :param void \*\*priv:
+    :param priv:
         private data for lm_setup operation
+    :type priv: void \*\*
 
 .. _`simple_nosetlease.description`:
 

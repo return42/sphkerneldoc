@@ -10,14 +10,17 @@ platform_msi_create_irq_domain
 
     Create a platform MSI interrupt domain
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Optional fwnode of the interrupt controller
+    :type fwnode: struct fwnode_handle \*
 
-    :param struct msi_domain_info \*info:
+    :param info:
         MSI domain info
+    :type info: struct msi_domain_info \*
 
-    :param struct irq_domain \*parent:
+    :param parent:
         Parent irq domain
+    :type parent: struct irq_domain \*
 
 .. _`platform_msi_create_irq_domain.description`:
 
@@ -43,14 +46,17 @@ platform_msi_domain_alloc_irqs
 
     Allocate MSI interrupts for \ ``dev``\ 
 
-    :param struct device \*dev:
+    :param dev:
         The device for which to allocate interrupts
+    :type dev: struct device \*
 
-    :param unsigned int nvec:
+    :param nvec:
         The number of interrupts to allocate
+    :type nvec: unsigned int
 
-    :param irq_write_msi_msg_t write_msi_msg:
+    :param write_msi_msg:
         Callback to write an interrupt message for \ ``dev``\ 
+    :type write_msi_msg: irq_write_msi_msg_t
 
 .. _`platform_msi_domain_alloc_irqs.return`:
 
@@ -68,8 +74,9 @@ platform_msi_domain_free_irqs
 
     Free MSI interrupts for \ ``dev``\ 
 
-    :param struct device \*dev:
+    :param dev:
         The device for which to free interrupts
+    :type dev: struct device \*
 
 .. _`platform_msi_get_host_data`:
 
@@ -80,8 +87,9 @@ platform_msi_get_host_data
 
     Query the private data associated with a platform-msi domain
 
-    :param struct irq_domain \*domain:
+    :param domain:
         The platform-msi domain
+    :type domain: struct irq_domain \*
 
 .. _`platform_msi_get_host_data.description`:
 
@@ -91,31 +99,40 @@ Description
 Returns the private data provided when calling
 platform_msi_create_device_domain.
 
-.. _`platform_msi_create_device_domain`:
+.. _`__platform_msi_create_device_domain`:
 
-platform_msi_create_device_domain
-=================================
+\__platform_msi_create_device_domain
+====================================
 
-.. c:function:: struct irq_domain *platform_msi_create_device_domain(struct device *dev, unsigned int nvec, irq_write_msi_msg_t write_msi_msg, const struct irq_domain_ops *ops, void *host_data)
+.. c:function:: struct irq_domain *__platform_msi_create_device_domain(struct device *dev, unsigned int nvec, bool is_tree, irq_write_msi_msg_t write_msi_msg, const struct irq_domain_ops *ops, void *host_data)
 
     Create a platform-msi domain
 
-    :param struct device \*dev:
+    :param dev:
         The device generating the MSIs
+    :type dev: struct device \*
 
-    :param unsigned int nvec:
+    :param nvec:
         The number of MSIs that need to be allocated
+    :type nvec: unsigned int
 
-    :param irq_write_msi_msg_t write_msi_msg:
+    :param is_tree:
+        *undescribed*
+    :type is_tree: bool
+
+    :param write_msi_msg:
         Callback to write an interrupt message for \ ``dev``\ 
+    :type write_msi_msg: irq_write_msi_msg_t
 
-    :param const struct irq_domain_ops \*ops:
+    :param ops:
         The hierarchy domain operations to use
+    :type ops: const struct irq_domain_ops \*
 
-    :param void \*host_data:
+    :param host_data:
         Private data associated to this domain
+    :type host_data: void \*
 
-.. _`platform_msi_create_device_domain.description`:
+.. _`__platform_msi_create_device_domain.description`:
 
 Description
 -----------
@@ -131,14 +148,17 @@ platform_msi_domain_free
 
     Free interrupts associated with a platform-msi domain
 
-    :param struct irq_domain \*domain:
+    :param domain:
         The platform-msi domain
+    :type domain: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         The base irq from which to perform the free operation
+    :type virq: unsigned int
 
-    :param unsigned int nvec:
+    :param nvec:
         How many interrupts to free from \ ``virq``\ 
+    :type nvec: unsigned int
 
 .. _`platform_msi_domain_alloc`:
 
@@ -149,14 +169,17 @@ platform_msi_domain_alloc
 
     Allocate interrupts associated with a platform-msi domain
 
-    :param struct irq_domain \*domain:
+    :param domain:
         The platform-msi domain
+    :type domain: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         The base irq from which to perform the allocate operation
+    :type virq: unsigned int
 
-    :param unsigned int nr_irqs:
+    :param nr_irqs:
         *undescribed*
+    :type nr_irqs: unsigned int
 
 .. _`platform_msi_domain_alloc.description`:
 

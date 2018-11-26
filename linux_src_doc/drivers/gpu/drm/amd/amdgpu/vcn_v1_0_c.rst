@@ -10,8 +10,9 @@ vcn_v1_0_early_init
 
     set function pointers
 
-    :param void \*handle:
+    :param handle:
         amdgpu_device pointer
+    :type handle: void \*
 
 .. _`vcn_v1_0_early_init.description`:
 
@@ -29,8 +30,9 @@ vcn_v1_0_sw_init
 
     sw init for VCN block
 
-    :param void \*handle:
+    :param handle:
         amdgpu_device pointer
+    :type handle: void \*
 
 .. _`vcn_v1_0_sw_init.description`:
 
@@ -48,8 +50,9 @@ vcn_v1_0_sw_fini
 
     sw fini for VCN block
 
-    :param void \*handle:
+    :param handle:
         amdgpu_device pointer
+    :type handle: void \*
 
 .. _`vcn_v1_0_sw_fini.description`:
 
@@ -67,8 +70,9 @@ vcn_v1_0_hw_init
 
     start and test VCN block
 
-    :param void \*handle:
+    :param handle:
         amdgpu_device pointer
+    :type handle: void \*
 
 .. _`vcn_v1_0_hw_init.description`:
 
@@ -86,8 +90,9 @@ vcn_v1_0_hw_fini
 
     stop the hardware block
 
-    :param void \*handle:
+    :param handle:
         amdgpu_device pointer
+    :type handle: void \*
 
 .. _`vcn_v1_0_hw_fini.description`:
 
@@ -105,8 +110,9 @@ vcn_v1_0_suspend
 
     suspend VCN block
 
-    :param void \*handle:
+    :param handle:
         amdgpu_device pointer
+    :type handle: void \*
 
 .. _`vcn_v1_0_suspend.description`:
 
@@ -124,8 +130,9 @@ vcn_v1_0_resume
 
     resume VCN block
 
-    :param void \*handle:
+    :param handle:
         amdgpu_device pointer
+    :type handle: void \*
 
 .. _`vcn_v1_0_resume.description`:
 
@@ -134,19 +141,20 @@ Description
 
 Resume firmware and hw init VCN block
 
-.. _`vcn_v1_0_mc_resume`:
+.. _`vcn_v1_0_mc_resume_spg_mode`:
 
-vcn_v1_0_mc_resume
-==================
+vcn_v1_0_mc_resume_spg_mode
+===========================
 
-.. c:function:: void vcn_v1_0_mc_resume(struct amdgpu_device *adev)
+.. c:function:: void vcn_v1_0_mc_resume_spg_mode(struct amdgpu_device *adev)
 
     memory controller programming
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-.. _`vcn_v1_0_mc_resume.description`:
+.. _`vcn_v1_0_mc_resume_spg_mode.description`:
 
 Description
 -----------
@@ -162,8 +170,9 @@ vcn_v1_0_disable_clock_gating
 
     disable VCN clock gating
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`vcn_v1_0_disable_clock_gating.description`:
 
@@ -181,8 +190,9 @@ vcn_v1_0_enable_clock_gating
 
     enable VCN clock gating
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`vcn_v1_0_enable_clock_gating.description`:
 
@@ -191,38 +201,40 @@ Description
 
 Enable clock gating for VCN block
 
-.. _`vcn_v1_0_start`:
+.. _`vcn_v1_0_start_spg_mode`:
 
-vcn_v1_0_start
-==============
+vcn_v1_0_start_spg_mode
+=======================
 
-.. c:function:: int vcn_v1_0_start(struct amdgpu_device *adev)
+.. c:function:: int vcn_v1_0_start_spg_mode(struct amdgpu_device *adev)
 
     start VCN block
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-.. _`vcn_v1_0_start.description`:
+.. _`vcn_v1_0_start_spg_mode.description`:
 
 Description
 -----------
 
 Setup and start the VCN block
 
-.. _`vcn_v1_0_stop`:
+.. _`vcn_v1_0_stop_spg_mode`:
 
-vcn_v1_0_stop
-=============
+vcn_v1_0_stop_spg_mode
+======================
 
-.. c:function:: int vcn_v1_0_stop(struct amdgpu_device *adev)
+.. c:function:: int vcn_v1_0_stop_spg_mode(struct amdgpu_device *adev)
 
     stop VCN block
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-.. _`vcn_v1_0_stop.description`:
+.. _`vcn_v1_0_stop_spg_mode.description`:
 
 Description
 -----------
@@ -238,8 +250,9 @@ vcn_v1_0_dec_ring_get_rptr
 
     get read pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`vcn_v1_0_dec_ring_get_rptr.description`:
 
@@ -257,8 +270,9 @@ vcn_v1_0_dec_ring_get_wptr
 
     get write pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`vcn_v1_0_dec_ring_get_wptr.description`:
 
@@ -276,8 +290,9 @@ vcn_v1_0_dec_ring_set_wptr
 
     set write pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`vcn_v1_0_dec_ring_set_wptr.description`:
 
@@ -295,8 +310,9 @@ vcn_v1_0_dec_ring_insert_start
 
     insert a start command
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`vcn_v1_0_dec_ring_insert_start.description`:
 
@@ -314,8 +330,9 @@ vcn_v1_0_dec_ring_insert_end
 
     insert a end command
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`vcn_v1_0_dec_ring_insert_end.description`:
 
@@ -333,17 +350,21 @@ vcn_v1_0_dec_ring_emit_fence
 
     emit an fence & trap command
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
-    :param u64 addr:
+    :param addr:
         *undescribed*
+    :type addr: u64
 
-    :param u64 seq:
+    :param seq:
         *undescribed*
+    :type seq: u64
 
-    :param unsigned flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned
 
 .. _`vcn_v1_0_dec_ring_emit_fence.description`:
 
@@ -361,17 +382,21 @@ vcn_v1_0_dec_ring_emit_ib
 
     execute indirect buffer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         indirect buffer to execute
+    :type ib: struct amdgpu_ib \*
 
-    :param unsigned vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: unsigned
 
-    :param bool ctx_switch:
+    :param ctx_switch:
         *undescribed*
+    :type ctx_switch: bool
 
 .. _`vcn_v1_0_dec_ring_emit_ib.description`:
 
@@ -389,8 +414,9 @@ vcn_v1_0_enc_ring_get_rptr
 
     get enc read pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`vcn_v1_0_enc_ring_get_rptr.description`:
 
@@ -408,17 +434,21 @@ vcn_v1_0_enc_ring_emit_fence
 
     emit an enc fence & trap command
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
-    :param u64 addr:
+    :param addr:
         *undescribed*
+    :type addr: u64
 
-    :param u64 seq:
+    :param seq:
         *undescribed*
+    :type seq: u64
 
-    :param unsigned flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned
 
 .. _`vcn_v1_0_enc_ring_emit_fence.description`:
 
@@ -436,17 +466,21 @@ vcn_v1_0_enc_ring_emit_ib
 
     enc execute indirect buffer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         indirect buffer to execute
+    :type ib: struct amdgpu_ib \*
 
-    :param unsigned int vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: unsigned int
 
-    :param bool ctx_switch:
+    :param ctx_switch:
         *undescribed*
+    :type ctx_switch: bool
 
 .. _`vcn_v1_0_enc_ring_emit_ib.description`:
 
@@ -454,6 +488,170 @@ Description
 -----------
 
 Write enc ring commands to execute the indirect buffer
+
+.. _`vcn_v1_0_jpeg_ring_get_rptr`:
+
+vcn_v1_0_jpeg_ring_get_rptr
+===========================
+
+.. c:function:: uint64_t vcn_v1_0_jpeg_ring_get_rptr(struct amdgpu_ring *ring)
+
+    get read pointer
+
+    :param ring:
+        amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
+
+.. _`vcn_v1_0_jpeg_ring_get_rptr.description`:
+
+Description
+-----------
+
+Returns the current hardware read pointer
+
+.. _`vcn_v1_0_jpeg_ring_get_wptr`:
+
+vcn_v1_0_jpeg_ring_get_wptr
+===========================
+
+.. c:function:: uint64_t vcn_v1_0_jpeg_ring_get_wptr(struct amdgpu_ring *ring)
+
+    get write pointer
+
+    :param ring:
+        amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
+
+.. _`vcn_v1_0_jpeg_ring_get_wptr.description`:
+
+Description
+-----------
+
+Returns the current hardware write pointer
+
+.. _`vcn_v1_0_jpeg_ring_set_wptr`:
+
+vcn_v1_0_jpeg_ring_set_wptr
+===========================
+
+.. c:function:: void vcn_v1_0_jpeg_ring_set_wptr(struct amdgpu_ring *ring)
+
+    set write pointer
+
+    :param ring:
+        amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
+
+.. _`vcn_v1_0_jpeg_ring_set_wptr.description`:
+
+Description
+-----------
+
+Commits the write pointer to the hardware
+
+.. _`vcn_v1_0_jpeg_ring_insert_start`:
+
+vcn_v1_0_jpeg_ring_insert_start
+===============================
+
+.. c:function:: void vcn_v1_0_jpeg_ring_insert_start(struct amdgpu_ring *ring)
+
+    insert a start command
+
+    :param ring:
+        amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
+
+.. _`vcn_v1_0_jpeg_ring_insert_start.description`:
+
+Description
+-----------
+
+Write a start command to the ring.
+
+.. _`vcn_v1_0_jpeg_ring_insert_end`:
+
+vcn_v1_0_jpeg_ring_insert_end
+=============================
+
+.. c:function:: void vcn_v1_0_jpeg_ring_insert_end(struct amdgpu_ring *ring)
+
+    insert a end command
+
+    :param ring:
+        amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
+
+.. _`vcn_v1_0_jpeg_ring_insert_end.description`:
+
+Description
+-----------
+
+Write a end command to the ring.
+
+.. _`vcn_v1_0_jpeg_ring_emit_fence`:
+
+vcn_v1_0_jpeg_ring_emit_fence
+=============================
+
+.. c:function:: void vcn_v1_0_jpeg_ring_emit_fence(struct amdgpu_ring *ring, u64 addr, u64 seq, unsigned flags)
+
+    emit an fence & trap command
+
+    :param ring:
+        amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
+
+    :param addr:
+        *undescribed*
+    :type addr: u64
+
+    :param seq:
+        *undescribed*
+    :type seq: u64
+
+    :param flags:
+        *undescribed*
+    :type flags: unsigned
+
+.. _`vcn_v1_0_jpeg_ring_emit_fence.description`:
+
+Description
+-----------
+
+Write a fence and a trap command to the ring.
+
+.. _`vcn_v1_0_jpeg_ring_emit_ib`:
+
+vcn_v1_0_jpeg_ring_emit_ib
+==========================
+
+.. c:function:: void vcn_v1_0_jpeg_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vmid, bool ctx_switch)
+
+    execute indirect buffer
+
+    :param ring:
+        amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
+
+    :param ib:
+        indirect buffer to execute
+    :type ib: struct amdgpu_ib \*
+
+    :param vmid:
+        *undescribed*
+    :type vmid: unsigned
+
+    :param ctx_switch:
+        *undescribed*
+    :type ctx_switch: bool
+
+.. _`vcn_v1_0_jpeg_ring_emit_ib.description`:
+
+Description
+-----------
+
+Write ring commands to execute the indirect buffer.
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ osd_sec_set_caps
 
     set cap-bits into the capabilities header
 
-    :param struct osd_capability_head \*cap:
+    :param cap:
         The osd_capability_head to set cap bits to.
+    :type cap: struct osd_capability_head \*
 
-    :param u16 bit_mask:
+    :param bit_mask:
         Use an ORed list of enum osd_capability_bit_masks values
+    :type bit_mask: u16
 
 .. _`osd_sec_set_caps.description`:
 

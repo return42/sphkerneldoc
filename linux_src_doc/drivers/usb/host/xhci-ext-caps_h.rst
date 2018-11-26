@@ -8,14 +8,17 @@ xhci_find_next_ext_cap
 
 .. c:function:: int xhci_find_next_ext_cap(void __iomem *base, u32 start, int id)
 
-    :param void __iomem \*base:
+    :param base:
         *undescribed*
+    :type base: void __iomem \*
 
-    :param u32 start:
+    :param start:
         *undescribed*
+    :type start: u32
 
-    :param int id:
+    :param id:
         *undescribed*
+    :type id: int
 
 .. _`xhci_find_next_ext_cap.description`:
 

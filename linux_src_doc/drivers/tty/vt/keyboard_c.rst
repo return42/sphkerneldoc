@@ -10,11 +10,13 @@ vt_get_leds
 
     helper for braille console
 
-    :param int console:
+    :param console:
         console to read
+    :type console: int
 
-    :param int flag:
+    :param flag:
         flag we want to check
+    :type flag: int
 
 .. _`vt_get_leds.description`:
 
@@ -32,11 +34,13 @@ vt_set_led_state
 
     set LED state of a console
 
-    :param int console:
+    :param console:
         console to set
+    :type console: int
 
-    :param int leds:
+    :param leds:
         LED bits
+    :type leds: int
 
 .. _`vt_set_led_state.description`:
 
@@ -55,8 +59,9 @@ vt_kbd_con_start
 
     Keyboard side of console start
 
-    :param int console:
+    :param console:
         console
+    :type console: int
 
 .. _`vt_kbd_con_start.description`:
 
@@ -86,8 +91,9 @@ vt_kbd_con_stop
 
     Keyboard side of console stop
 
-    :param int console:
+    :param console:
         console
+    :type console: int
 
 .. _`vt_kbd_con_stop.description`:
 
@@ -106,14 +112,17 @@ vt_do_diacrit
 
     diacritical table updates
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl request
+    :type cmd: unsigned int
 
-    :param void __user \*udp:
+    :param udp:
         pointer to user data for ioctl
+    :type udp: void __user \*
 
-    :param int perm:
+    :param perm:
         permissions check computed by caller
+    :type perm: int
 
 .. _`vt_do_diacrit.description`:
 
@@ -132,11 +141,13 @@ vt_do_kdskbmode
 
     set keyboard mode ioctl
 
-    :param int console:
+    :param console:
         the console to use
+    :type console: int
 
-    :param unsigned int arg:
+    :param arg:
         the requested mode
+    :type arg: unsigned int
 
 .. _`vt_do_kdskbmode.description`:
 
@@ -155,11 +166,13 @@ vt_do_kdskbmeta
 
     set keyboard meta state
 
-    :param int console:
+    :param console:
         the console to use
+    :type console: int
 
-    :param unsigned int arg:
+    :param arg:
         the requested meta state
+    :type arg: unsigned int
 
 .. _`vt_do_kdskbmeta.description`:
 
@@ -178,8 +191,9 @@ vt_do_kdgkbmeta
 
     report meta status
 
-    :param int console:
+    :param console:
         console to report
+    :type console: int
 
 .. _`vt_do_kdgkbmeta.description`:
 
@@ -197,8 +211,9 @@ vt_reset_unicode
 
     reset the unicode status
 
-    :param int console:
+    :param console:
         console being reset
+    :type console: int
 
 .. _`vt_reset_unicode.description`:
 
@@ -216,8 +231,9 @@ vt_get_shift_state
 
     shift bit state
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vt_get_shift_state.description`:
 
@@ -236,8 +252,9 @@ vt_reset_keyboard
 
     reset keyboard state
 
-    :param int console:
+    :param console:
         console to reset
+    :type console: int
 
 .. _`vt_reset_keyboard.description`:
 
@@ -256,11 +273,13 @@ vt_get_kbd_mode_bit
 
     read keyboard status bits
 
-    :param int console:
+    :param console:
         console to read from
+    :type console: int
 
-    :param int bit:
+    :param bit:
         mode bit to read
+    :type bit: int
 
 .. _`vt_get_kbd_mode_bit.description`:
 
@@ -279,11 +298,13 @@ vt_set_kbd_mode_bit
 
     read keyboard status bits
 
-    :param int console:
+    :param console:
         console to read from
+    :type console: int
 
-    :param int bit:
+    :param bit:
         mode bit to read
+    :type bit: int
 
 .. _`vt_set_kbd_mode_bit.description`:
 
@@ -302,11 +323,13 @@ vt_clr_kbd_mode_bit
 
     read keyboard status bits
 
-    :param int console:
+    :param console:
         console to read from
+    :type console: int
 
-    :param int bit:
+    :param bit:
         mode bit to read
+    :type bit: int
 
 .. _`vt_clr_kbd_mode_bit.description`:
 

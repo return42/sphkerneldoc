@@ -10,11 +10,13 @@
 
     add a fid to a dentry
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry that the fid is being added to
+    :type dentry: struct dentry \*
 
-    :param struct p9_fid \*fid:
+    :param fid:
         fid to add
+    :type fid: struct p9_fid \*
 
 .. _`v9fs_fid_find`:
 
@@ -25,14 +27,17 @@ v9fs_fid_find
 
     retrieve a fid that belongs to the specified uid
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to look for fid in
+    :type dentry: struct dentry \*
 
-    :param kuid_t uid:
+    :param uid:
         return fid that belongs to the specified user
+    :type uid: kuid_t
 
-    :param int any:
+    :param any:
         if non-zero, return any fid associated with the dentry
+    :type any: int
 
 .. _`v9fs_fid_lookup`:
 
@@ -43,8 +48,9 @@ v9fs_fid_lookup
 
     lookup for a fid, try to walk if not found
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to look for fid in
+    :type dentry: struct dentry \*
 
 .. _`v9fs_fid_lookup.description`:
 

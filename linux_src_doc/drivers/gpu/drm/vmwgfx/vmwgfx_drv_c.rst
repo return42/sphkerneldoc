@@ -17,14 +17,17 @@ VMW_IOCTL_DEF
 
     DRM_COMMAND_BASE.
 
-    :param  ioctl:
+    :param ioctl:
         *undescribed*
+    :type ioctl: 
 
-    :param  func:
+    :param func:
         *undescribed*
+    :type func: 
 
-    :param  flags:
+    :param flags:
         *undescribed*
+    :type flags: 
 
 .. _`vmw_dummy_query_bo_create`:
 
@@ -35,8 +38,9 @@ vmw_dummy_query_bo_create
 
     create a bo to hold a dummy query result
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         A device private structure.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_dummy_query_bo_create.description`:
 
@@ -60,8 +64,9 @@ vmw_request_device_late
 
     Perform late device setup
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_request_device_late.description`:
 
@@ -82,8 +87,9 @@ vmw_release_device_early
 
     Early part of fifo takedown.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private struct.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_release_device_early.description`:
 
@@ -102,8 +108,9 @@ vmw_release_device_late
 
     Late part of fifo takedown.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private struct.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_release_device_late.description`:
 
@@ -120,8 +127,9 @@ vmw_get_initial_size
 
 .. c:function:: void vmw_get_initial_size(struct vmw_private *dev_priv)
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_get_initial_size.description`:
 
@@ -143,8 +151,9 @@ vmw_dma_select_mode
 
     Determine how DMA mappings should be set up for this system.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a struct vmw_private
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_dma_select_mode.description`:
 
@@ -167,8 +176,9 @@ vmw_dma_masks
 
     set required page- and dma masks
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_dma_masks.description`:
 
@@ -187,9 +197,10 @@ restriction also for 64-bit systems.
 
     Enable SVGA mode, FIFO and use of VRAM.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private struct.
         Needs the reservation sem to be held in non-exclusive mode.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_svga_enable`:
 
@@ -200,8 +211,9 @@ vmw_svga_enable
 
     Enable SVGA mode, FIFO and use of VRAM.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private struct.
+    :type dev_priv: struct vmw_private \*
 
 .. _`__vmw_svga_disable`:
 
@@ -212,10 +224,11 @@ vmw_svga_enable
 
     Disable SVGA mode and use of VRAM.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private struct.
         Needs the reservation sem to be held in exclusive mode.
         Will not empty VRAM. VRAM must be emptied by caller.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_svga_disable`:
 
@@ -226,9 +239,10 @@ vmw_svga_disable
 
     Disable SVGA_MODE, and use of VRAM. Keep the fifo running.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private struct.
         Will empty VRAM.
+    :type dev_priv: struct vmw_private \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ il4965_dma_addr2rbd_ptr
 
     convert a DMA address to a uCode read buffer ptr
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         *undescribed*
+    :type dma_addr: dma_addr_t
 
 .. _`il4965_rx_queue_restock`:
 
@@ -25,8 +27,9 @@ il4965_rx_queue_restock
 
     refill RX queue from pre-allocated pool
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_rx_queue_restock.description`:
 
@@ -50,11 +53,13 @@ il4965_rx_allocate
 
     Move all used packet from rx_used to rx_free
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param gfp_t priority:
+    :param priority:
         *undescribed*
+    :type priority: gfp_t
 
 .. _`il4965_rx_allocate.description`:
 
@@ -75,8 +80,9 @@ il4965_set_rxon_chain
 
     Set up Rx chain usage in "staging" RXON image
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_set_rxon_chain.description`:
 
@@ -95,8 +101,9 @@ il4965_hw_txq_ctx_free
 
     Free TXQ Context
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_hw_txq_ctx_free.description`:
 
@@ -114,8 +121,9 @@ il4965_txq_ctx_alloc
 
     allocate TX queue context Allocate all Tx DMA structures and initialize them
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_txq_ctx_alloc.description`:
 
@@ -134,8 +142,9 @@ il4965_txq_ctx_stop
 
     Stop all Tx DMA channels
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_tx_queue_stop_scheduler`:
 
@@ -146,11 +155,13 @@ il4965_tx_queue_stop_scheduler
 
     Stop queue, but keep configuration
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u16 txq_id:
+    :param txq_id:
         *undescribed*
+    :type txq_id: u16
 
 .. _`il4965_tx_queue_set_q2ratid`:
 
@@ -161,14 +172,17 @@ il4965_tx_queue_set_q2ratid
 
     Map unique receiver/tid combination to a queue
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u16 ra_tid:
+    :param ra_tid:
         *undescribed*
+    :type ra_tid: u16
 
-    :param u16 txq_id:
+    :param txq_id:
         *undescribed*
+    :type txq_id: u16
 
 .. _`il4965_txq_agg_enable`:
 
@@ -179,23 +193,29 @@ il4965_txq_agg_enable
 
     Set up & enable aggregation for selected queue
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param int txq_id:
+    :param txq_id:
         *undescribed*
+    :type txq_id: int
 
-    :param int tx_fifo:
+    :param tx_fifo:
         *undescribed*
+    :type tx_fifo: int
 
-    :param int sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: int
 
-    :param int tid:
+    :param tid:
         *undescribed*
+    :type tid: int
 
-    :param u16 ssn_idx:
+    :param ssn_idx:
         *undescribed*
+    :type ssn_idx: u16
 
 .. _`il4965_txq_agg_enable.note`:
 
@@ -214,17 +234,21 @@ il4965_txq_agg_disable
 
     il->lock must be held by the caller
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u16 txq_id:
+    :param txq_id:
         *undescribed*
+    :type txq_id: u16
 
-    :param u16 ssn_idx:
+    :param ssn_idx:
         *undescribed*
+    :type ssn_idx: u16
 
-    :param u8 tx_fifo:
+    :param tx_fifo:
         *undescribed*
+    :type tx_fifo: u8
 
 .. _`il4965_tx_status_reply_compressed_ba`:
 
@@ -235,14 +259,17 @@ il4965_tx_status_reply_compressed_ba
 
     Update tx status from block-ack
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_ht_agg \*agg:
+    :param agg:
         *undescribed*
+    :type agg: struct il_ht_agg \*
 
-    :param struct il_compressed_ba_resp \*ba_resp:
+    :param ba_resp:
         *undescribed*
+    :type ba_resp: struct il_compressed_ba_resp \*
 
 .. _`il4965_tx_status_reply_compressed_ba.description`:
 
@@ -261,20 +288,25 @@ il4965_tx_status_reply_tx
 
     Handle Tx response for frames in aggregation queue
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_ht_agg \*agg:
+    :param agg:
         *undescribed*
+    :type agg: struct il_ht_agg \*
 
-    :param struct il4965_tx_resp \*tx_resp:
+    :param tx_resp:
         *undescribed*
+    :type tx_resp: struct il4965_tx_resp \*
 
-    :param int txq_id:
+    :param txq_id:
         *undescribed*
+    :type txq_id: int
 
-    :param u16 start_idx:
+    :param start_idx:
         *undescribed*
+    :type start_idx: u16
 
 .. _`il4965_hdl_tx`:
 
@@ -285,11 +317,13 @@ il4965_hdl_tx
 
     Handle standard (non-aggregation) Tx response
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_rx_buf \*rxb:
+    :param rxb:
         *undescribed*
+    :type rxb: struct il_rx_buf \*
 
 .. _`il4965_hwrate_to_tx_control`:
 
@@ -298,14 +332,17 @@ il4965_hwrate_to_tx_control
 
 .. c:function:: void il4965_hwrate_to_tx_control(struct il_priv *il, u32 rate_n_flags, struct ieee80211_tx_info *info)
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u32 rate_n_flags:
+    :param rate_n_flags:
         *undescribed*
+    :type rate_n_flags: u32
 
-    :param struct ieee80211_tx_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct ieee80211_tx_info \*
 
 .. _`il4965_hdl_compressed_ba`:
 
@@ -316,11 +353,13 @@ il4965_hdl_compressed_ba
 
     Handler for N_COMPRESSED_BA
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_rx_buf \*rxb:
+    :param rxb:
         *undescribed*
+    :type rxb: struct il_rx_buf \*
 
 .. _`il4965_hdl_compressed_ba.description`:
 
@@ -339,8 +378,9 @@ il4965_alloc_bcast_station
 
     add broadcast station into driver's station table.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_alloc_bcast_station.description`:
 
@@ -360,8 +400,9 @@ il4965_update_bcast_station
 
     update broadcast station's LQ command
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_update_bcast_station.description`:
 
@@ -380,14 +421,17 @@ il4965_sta_tx_modify_enable_tid
 
     Enable Tx for this TID in station table
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param int sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: int
 
-    :param int tid:
+    :param tid:
         *undescribed*
+    :type tid: int
 
 .. _`il4965_hw_txq_free_tfd`:
 
@@ -398,11 +442,13 @@ il4965_hw_txq_free_tfd
 
     Free all chunks referenced by TFD [txq->q.read_ptr] \ ``il``\  - driver ilate data \ ``txq``\  - tx queue
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_tx_queue \*txq:
+    :param txq:
         *undescribed*
+    :type txq: struct il_tx_queue \*
 
 .. _`il4965_hw_txq_free_tfd.description`:
 
@@ -421,8 +467,9 @@ il4965_bg_stats_periodic
 
     Timer callback to queue stats
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`il4965_bg_stats_periodic.description`:
 
@@ -445,8 +492,9 @@ il4965_setup_handlers
 
     Initialize Rx handler callbacks
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_setup_handlers.description`:
 
@@ -468,8 +516,9 @@ il4965_rx_handle
 
     Main entry function for receiving responses from uCode
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_rx_handle.description`:
 
@@ -489,11 +538,13 @@ il4965_ucode_callback
 
     callback when firmware was loaded
 
-    :param const struct firmware \*ucode_raw:
+    :param ucode_raw:
         *undescribed*
+    :type ucode_raw: const struct firmware \*
 
-    :param void \*context:
+    :param context:
         *undescribed*
+    :type context: void \*
 
 .. _`il4965_ucode_callback.description`:
 
@@ -512,8 +563,9 @@ il4965_alive_start
 
     called after N_ALIVE notification received from protocol/runtime uCode (initialization uCode's Alive gets handled by \ :c:func:`il_init_alive_start`\ ).
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. This file was automatic generated / don't edit.
 

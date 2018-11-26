@@ -10,27 +10,32 @@ sys_name_to_handle_at
 
     convert name to handle
 
-    :param int dfd:
+    :param dfd:
         directory relative to which name is interpreted if not absolute
+    :type dfd: int
 
-    :param const char __user \*name:
+    :param name:
         name that should be converted to handle.
+    :type name: const char __user \*
 
-    :param struct file_handle __user \*handle:
+    :param handle:
         resulting file handle
+    :type handle: struct file_handle __user \*
 
-    :param int __user \*mnt_id:
+    :param mnt_id:
         mount id of the file system containing the file
+    :type mnt_id: int __user \*
 
-    :param int flag:
+    :param flag:
         flag value to indicate whether to follow symlink or not
+    :type flag: int
 
 .. _`sys_name_to_handle_at.description`:
 
 Description
 -----------
 
-\ ``handle``\ ->handle_size indicate the space available to store the
+\ ``handle->handle_size``\  indicate the space available to store the
 variable part of the file handle in bytes. If there is not
 enough space, the field is updated to return the minimum
 value required.
@@ -44,14 +49,17 @@ sys_open_by_handle_at
 
     Open the file handle
 
-    :param int mountdirfd:
+    :param mountdirfd:
         directory file descriptor
+    :type mountdirfd: int
 
-    :param struct file_handle __user \*handle:
+    :param handle:
         file handle to be opened
+    :type handle: struct file_handle __user \*
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`sys_open_by_handle_at.description`:
 

@@ -8,11 +8,13 @@ pc87413_open
 
 .. c:function:: int pc87413_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode of device
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle to device
+    :type file: struct file \*
 
 .. _`pc87413_release`:
 
@@ -21,11 +23,13 @@ pc87413_release
 
 .. c:function:: int pc87413_release(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode to board
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle to board
+    :type file: struct file \*
 
 .. _`pc87413_release.description`:
 
@@ -45,8 +49,9 @@ pc87413_status
 
 .. c:function:: int pc87413_status( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pc87413_status.description`:
 
@@ -62,17 +67,21 @@ pc87413_write
 
 .. c:function:: ssize_t pc87413_write(struct file *file, const char __user *data, size_t len, loff_t *ppos)
 
-    :param struct file \*file:
+    :param file:
         file handle to the watchdog
+    :type file: struct file \*
 
-    :param const char __user \*data:
+    :param data:
         data buffer to write
+    :type data: const char __user \*
 
-    :param size_t len:
+    :param len:
         length in bytes
+    :type len: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         pointer to the position to write. No seeks allowed
+    :type ppos: loff_t \*
 
 .. _`pc87413_write.description`:
 
@@ -89,14 +98,17 @@ pc87413_ioctl
 
 .. c:function:: long pc87413_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
-    :param struct file \*file:
+    :param file:
         file handle to the device
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         watchdog command
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         argument pointer
+    :type arg: unsigned long
 
 .. _`pc87413_ioctl.description`:
 
@@ -114,14 +126,17 @@ pc87413_notify_sys
 
 .. c:function:: int pc87413_notify_sys(struct notifier_block *this, unsigned long code, void *unused)
 
-    :param struct notifier_block \*this:
+    :param this:
         our notifier block
+    :type this: struct notifier_block \*
 
-    :param unsigned long code:
+    :param code:
         the event being reported
+    :type code: unsigned long
 
-    :param void \*unused:
+    :param unused:
         unused
+    :type unused: void \*
 
 .. _`pc87413_notify_sys.description`:
 
@@ -142,8 +157,9 @@ pc87413_init
 
     module's "constructor"
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pc87413_init.description`:
 
@@ -163,8 +179,9 @@ pc87413_exit
 
     module's "destructor"
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pc87413_exit.description`:
 

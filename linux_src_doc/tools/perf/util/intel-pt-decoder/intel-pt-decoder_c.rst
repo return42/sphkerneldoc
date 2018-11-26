@@ -10,11 +10,13 @@ intel_pt_next_psb
 
     move buffer pointer to the start of the next PSB packet.
 
-    :param unsigned char \*\*buf:
+    :param buf:
         pointer to buffer pointer
+    :type buf: unsigned char \*\*
 
-    :param size_t \*len:
+    :param len:
         size of buffer
+    :type len: size_t \*
 
 .. _`intel_pt_next_psb.description`:
 
@@ -41,11 +43,13 @@ intel_pt_step_psb
 
     move buffer pointer to the start of the following PSB packet.
 
-    :param unsigned char \*\*buf:
+    :param buf:
         pointer to buffer pointer
+    :type buf: unsigned char \*\*
 
-    :param size_t \*len:
+    :param len:
         size of buffer
+    :type len: size_t \*
 
 .. _`intel_pt_step_psb.description`:
 
@@ -72,11 +76,13 @@ intel_pt_last_psb
 
     find the last PSB packet in a buffer.
 
-    :param unsigned char \*buf:
+    :param buf:
         buffer
+    :type buf: unsigned char \*
 
-    :param size_t len:
+    :param len:
         size of buffer
+    :type len: size_t
 
 .. _`intel_pt_last_psb.description`:
 
@@ -101,17 +107,21 @@ intel_pt_next_tsc
 
     find and return next TSC.
 
-    :param unsigned char \*buf:
+    :param buf:
         buffer
+    :type buf: unsigned char \*
 
-    :param size_t len:
+    :param len:
         size of buffer
+    :type len: size_t
 
-    :param uint64_t \*tsc:
+    :param tsc:
         TSC value returned
+    :type tsc: uint64_t \*
 
-    :param size_t \*rem:
+    :param rem:
         returns remaining size when TSC is found
+    :type rem: size_t \*
 
 .. _`intel_pt_next_tsc.description`:
 
@@ -138,11 +148,13 @@ intel_pt_tsc_cmp
 
     compare 7-byte TSCs.
 
-    :param uint64_t tsc1:
+    :param tsc1:
         first TSC to compare
+    :type tsc1: uint64_t
 
-    :param uint64_t tsc2:
+    :param tsc2:
         second TSC to compare
+    :type tsc2: uint64_t
 
 .. _`intel_pt_tsc_cmp.description`:
 
@@ -171,21 +183,26 @@ intel_pt_find_overlap_tsc
 
     determine start of non-overlapped trace data using TSC.
 
-    :param unsigned char \*buf_a:
+    :param buf_a:
         first buffer
+    :type buf_a: unsigned char \*
 
-    :param size_t len_a:
+    :param len_a:
         size of first buffer
+    :type len_a: size_t
 
-    :param unsigned char \*buf_b:
+    :param buf_b:
         second buffer
+    :type buf_b: unsigned char \*
 
-    :param size_t len_b:
+    :param len_b:
         size of second buffer
+    :type len_b: size_t
 
-    :param bool \*consecutive:
+    :param consecutive:
         returns true if there is data in buf_b that is consecutive
         to buf_a
+    :type consecutive: bool \*
 
 .. _`intel_pt_find_overlap_tsc.description`:
 
@@ -214,24 +231,30 @@ intel_pt_find_overlap
 
     determine start of non-overlapped trace data.
 
-    :param unsigned char \*buf_a:
+    :param buf_a:
         first buffer
+    :type buf_a: unsigned char \*
 
-    :param size_t len_a:
+    :param len_a:
         size of first buffer
+    :type len_a: size_t
 
-    :param unsigned char \*buf_b:
+    :param buf_b:
         second buffer
+    :type buf_b: unsigned char \*
 
-    :param size_t len_b:
+    :param len_b:
         size of second buffer
+    :type len_b: size_t
 
-    :param bool have_tsc:
+    :param have_tsc:
         can use TSC packets to detect overlap
+    :type have_tsc: bool
 
-    :param bool \*consecutive:
+    :param consecutive:
         returns true if there is data in buf_b that is consecutive
         to buf_a
+    :type consecutive: bool \*
 
 .. _`intel_pt_find_overlap.description`:
 

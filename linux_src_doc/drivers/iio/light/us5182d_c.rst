@@ -10,11 +10,13 @@ us5182d_update_dark_th
 
     update Darh_Th registers \ ``data``\         us5182d_data structure \ ``index``\        index in us5182d_dark_ths array to use for the updated value
 
-    :param struct us5182d_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct us5182d_data \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. _`us5182d_update_dark_th.description`:
 
@@ -34,11 +36,13 @@ us5182d_apply_scale
 
     update the ALS scale \ ``data``\         us5182d_data structure \ ``index``\        index in us5182d_scales array to use for the updated value
 
-    :param struct us5182d_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct us5182d_data \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. _`us5182d_apply_scale.description`:
 

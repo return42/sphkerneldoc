@@ -10,14 +10,17 @@ lpfc_nvmet_xmt_ls_rsp_cmp
 
     Completion handler for LS Response
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdwqe:
+    :param cmdwqe:
         Pointer to driver command WQE object.
+    :type cmdwqe: struct lpfc_iocbq \*
 
-    :param struct lpfc_wcqe_complete \*wcqe:
+    :param wcqe:
         Pointer to driver response CQE object.
+    :type wcqe: struct lpfc_wcqe_complete \*
 
 .. _`lpfc_nvmet_xmt_ls_rsp_cmp.description`:
 
@@ -37,11 +40,13 @@ lpfc_nvmet_ctxbuf_post
 
     Repost a NVMET RQ DMA buffer and clean up context
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA buffer is associated with
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_nvmet_ctxbuf \*ctx_buf:
+    :param ctx_buf:
         *undescribed*
+    :type ctx_buf: struct lpfc_nvmet_ctxbuf \*
 
 .. _`lpfc_nvmet_ctxbuf_post.description`:
 
@@ -74,14 +79,17 @@ lpfc_nvmet_xmt_fcp_op_cmp
 
     Completion handler for FCP Response
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdwqe:
+    :param cmdwqe:
         Pointer to driver command WQE object.
+    :type cmdwqe: struct lpfc_iocbq \*
 
-    :param struct lpfc_wcqe_complete \*wcqe:
+    :param wcqe:
         Pointer to driver response CQE object.
+    :type wcqe: struct lpfc_wcqe_complete \*
 
 .. _`lpfc_nvmet_xmt_fcp_op_cmp.description`:
 
@@ -101,11 +109,13 @@ lpfc_sli4_nvmet_xri_aborted
 
     Fast-path process of nvmet xri abort
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct sli4_wcqe_xri_aborted \*axri:
+    :param axri:
         pointer to the nvmet xri abort wcqe structure.
+    :type axri: struct sli4_wcqe_xri_aborted \*
 
 .. _`lpfc_sli4_nvmet_xri_aborted.description`:
 
@@ -124,14 +134,17 @@ lpfc_nvmet_unsol_ls_buffer
 
     Process an unsolicited event data buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_sli_ring \*pring:
+    :param pring:
         pointer to a SLI ring.
+    :type pring: struct lpfc_sli_ring \*
 
-    :param struct hbq_dmabuf \*nvmebuf:
+    :param nvmebuf:
         pointer to lpfc nvme command HBQ data structure.
+    :type nvmebuf: struct hbq_dmabuf \*
 
 .. _`lpfc_nvmet_unsol_ls_buffer.description`:
 
@@ -154,17 +167,21 @@ lpfc_nvmet_unsol_fcp_buffer
 
     Process an unsolicited event data buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t idx:
+    :param idx:
         relative index of MRQ vector
+    :type idx: uint32_t
 
-    :param struct rqb_dmabuf \*nvmebuf:
+    :param nvmebuf:
         pointer to lpfc nvme command HBQ data structure.
+    :type nvmebuf: struct rqb_dmabuf \*
 
-    :param uint64_t isr_timestamp:
+    :param isr_timestamp:
         *undescribed*
+    :type isr_timestamp: uint64_t
 
 .. _`lpfc_nvmet_unsol_fcp_buffer.description`:
 
@@ -187,14 +204,17 @@ lpfc_nvmet_unsol_ls_event
 
     Process an unsolicited event from an nvme nport
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_sli_ring \*pring:
+    :param pring:
         pointer to a SLI ring.
+    :type pring: struct lpfc_sli_ring \*
 
-    :param struct lpfc_iocbq \*piocb:
+    :param piocb:
         *undescribed*
+    :type piocb: struct lpfc_iocbq \*
 
 .. _`lpfc_nvmet_unsol_ls_event.description`:
 
@@ -216,17 +236,21 @@ lpfc_nvmet_unsol_fcp_event
 
     Process an unsolicited event from an nvme nport
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t idx:
+    :param idx:
         relative index of MRQ vector
+    :type idx: uint32_t
 
-    :param struct rqb_dmabuf \*nvmebuf:
+    :param nvmebuf:
         pointer to received nvme data structure.
+    :type nvmebuf: struct rqb_dmabuf \*
 
-    :param uint64_t isr_timestamp:
+    :param isr_timestamp:
         *undescribed*
+    :type isr_timestamp: uint64_t
 
 .. _`lpfc_nvmet_unsol_fcp_event.description`:
 
@@ -248,17 +272,21 @@ lpfc_nvmet_prep_ls_wqe
 
     Allocate and prepare a lpfc wqe data structure
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to a host N_Port data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_nvmet_rcv_ctx \*ctxp:
+    :param ctxp:
         Context info for NVME LS Request
+    :type ctxp: struct lpfc_nvmet_rcv_ctx \*
 
-    :param dma_addr_t rspbuf:
+    :param rspbuf:
         DMA buffer of NVME command.
+    :type rspbuf: dma_addr_t
 
-    :param uint16_t rspsize:
+    :param rspsize:
         size of the NVME command.
+    :type rspsize: uint16_t
 
 .. _`lpfc_nvmet_prep_ls_wqe.description`:
 
@@ -292,14 +320,17 @@ lpfc_nvmet_sol_fcp_abort_cmp
 
     Completion handler for ABTS
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdwqe:
+    :param cmdwqe:
         Pointer to driver command WQE object.
+    :type cmdwqe: struct lpfc_iocbq \*
 
-    :param struct lpfc_wcqe_complete \*wcqe:
+    :param wcqe:
         Pointer to driver response CQE object.
+    :type wcqe: struct lpfc_wcqe_complete \*
 
 .. _`lpfc_nvmet_sol_fcp_abort_cmp.description`:
 
@@ -319,14 +350,17 @@ lpfc_nvmet_unsol_fcp_abort_cmp
 
     Completion handler for ABTS
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdwqe:
+    :param cmdwqe:
         Pointer to driver command WQE object.
+    :type cmdwqe: struct lpfc_iocbq \*
 
-    :param struct lpfc_wcqe_complete \*wcqe:
+    :param wcqe:
         Pointer to driver response CQE object.
+    :type wcqe: struct lpfc_wcqe_complete \*
 
 .. _`lpfc_nvmet_unsol_fcp_abort_cmp.description`:
 
@@ -346,14 +380,17 @@ lpfc_nvmet_xmt_ls_abort_cmp
 
     Completion handler for ABTS
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdwqe:
+    :param cmdwqe:
         Pointer to driver command WQE object.
+    :type cmdwqe: struct lpfc_iocbq \*
 
-    :param struct lpfc_wcqe_complete \*wcqe:
+    :param wcqe:
         Pointer to driver response CQE object.
+    :type wcqe: struct lpfc_wcqe_complete \*
 
 .. _`lpfc_nvmet_xmt_ls_abort_cmp.description`:
 

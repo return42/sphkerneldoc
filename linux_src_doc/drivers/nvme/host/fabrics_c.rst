@@ -10,14 +10,17 @@ nvmf_get_address
 
     Get address/port
 
-    :param struct nvme_ctrl \*ctrl:
+    :param ctrl:
         Host NVMe controller instance which we got the address
+    :type ctrl: struct nvme_ctrl \*
 
-    :param char \*buf:
+    :param buf:
         OUTPUT parameter that will contain the address/port
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         buffer size
+    :type size: int
 
 .. _`nvmf_reg_read32`:
 
@@ -28,18 +31,21 @@ nvmf_reg_read32
 
     NVMe Fabrics "Property Get" API function.
 
-    :param struct nvme_ctrl \*ctrl:
+    :param ctrl:
         Host NVMe controller instance maintaining the admin
         queue used to submit the property read command to
         the allocated NVMe controller resource on the target system.
+    :type ctrl: struct nvme_ctrl \*
 
-    :param u32 off:
+    :param off:
         Starting offset value of the targeted property
         register (see the fabrics section of the NVMe standard).
+    :type off: u32
 
-    :param u32 \*val:
+    :param val:
         OUTPUT parameter that will contain the value of
         the property after a successful read.
+    :type val: u32 \*
 
 .. _`nvmf_reg_read32.description`:
 
@@ -70,18 +76,21 @@ nvmf_reg_read64
 
     NVMe Fabrics "Property Get" API function.
 
-    :param struct nvme_ctrl \*ctrl:
+    :param ctrl:
         Host NVMe controller instance maintaining the admin
         queue used to submit the property read command to
         the allocated controller resource on the target system.
+    :type ctrl: struct nvme_ctrl \*
 
-    :param u32 off:
+    :param off:
         Starting offset value of the targeted property
         register (see the fabrics section of the NVMe standard).
+    :type off: u32
 
-    :param u64 \*val:
+    :param val:
         OUTPUT parameter that will contain the value of
         the property after a successful read.
+    :type val: u64 \*
 
 .. _`nvmf_reg_read64.description`:
 
@@ -112,18 +121,21 @@ nvmf_reg_write32
 
     NVMe Fabrics "Property Write" API function.
 
-    :param struct nvme_ctrl \*ctrl:
+    :param ctrl:
         Host NVMe controller instance maintaining the admin
         queue used to submit the property read command to
         the allocated NVMe controller resource on the target system.
+    :type ctrl: struct nvme_ctrl \*
 
-    :param u32 off:
+    :param off:
         Starting offset value of the targeted property
         register (see the fabrics section of the NVMe standard).
+    :type off: u32
 
-    :param u32 val:
+    :param val:
         Input parameter that contains the value to be
         written to the property.
+    :type val: u32
 
 .. _`nvmf_reg_write32.description`:
 
@@ -154,21 +166,26 @@ nvmf_log_connect_error
 
     Error-parsing-diagnostic print out function for \ :c:func:`connect`\  errors.
 
-    :param struct nvme_ctrl \*ctrl:
+    :param ctrl:
         the specific /dev/nvmeX device that had the error.
+    :type ctrl: struct nvme_ctrl \*
 
-    :param int errval:
+    :param errval:
         Error code to be decoded in a more human-friendly
         printout.
+    :type errval: int
 
-    :param int offset:
+    :param offset:
         For use with the NVMe error code NVME_SC_CONNECT_INVALID_PARAM.
+    :type offset: int
 
-    :param struct nvme_command \*cmd:
+    :param cmd:
         This is the SQE portion of a submission capsule.
+    :type cmd: struct nvme_command \*
 
-    :param struct nvmf_connect_data \*data:
+    :param data:
         This is the "Data" portion of a submission capsule.
+    :type data: struct nvmf_connect_data \*
 
 .. _`nvmf_connect_admin_queue`:
 
@@ -179,11 +196,12 @@ nvmf_connect_admin_queue
 
     NVMe Fabrics Admin Queue "Connect" API function.
 
-    :param struct nvme_ctrl \*ctrl:
+    :param ctrl:
         Host nvme controller instance used to request
         a new NVMe controller allocation on the target
         system and  establish an NVMe Admin connection to
         that controller.
+    :type ctrl: struct nvme_ctrl \*
 
 .. _`nvmf_connect_admin_queue.description`:
 
@@ -214,15 +232,17 @@ nvmf_connect_io_queue
 
     NVMe Fabrics I/O Queue "Connect" API function.
 
-    :param struct nvme_ctrl \*ctrl:
+    :param ctrl:
         Host nvme controller instance used to establish an
         NVMe I/O queue connection to the already allocated NVMe
         controller on the target system.
+    :type ctrl: struct nvme_ctrl \*
 
-    :param u16 qid:
+    :param qid:
         NVMe I/O queue number for the new I/O connection between
         host and target (note qid == 0 is illegal as this is
         the Admin queue, per NVMe standard).
+    :type qid: u16
 
 .. _`nvmf_connect_io_queue.description`:
 
@@ -252,9 +272,10 @@ nvmf_register_transport
 
     NVMe Fabrics Library registration function.
 
-    :param struct nvmf_transport_ops \*ops:
+    :param ops:
         Transport ops instance to be registered to the
         common fabrics library.
+    :type ops: struct nvmf_transport_ops \*
 
 .. _`nvmf_register_transport.description`:
 
@@ -274,9 +295,10 @@ nvmf_unregister_transport
 
     NVMe Fabrics Library unregistration function.
 
-    :param struct nvmf_transport_ops \*ops:
+    :param ops:
         Transport ops instance to be unregistered from the
         common fabrics library.
+    :type ops: struct nvmf_transport_ops \*
 
 .. _`nvmf_unregister_transport.description`:
 

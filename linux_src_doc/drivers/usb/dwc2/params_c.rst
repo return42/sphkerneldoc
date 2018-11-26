@@ -10,8 +10,9 @@ dwc2_set_default_params
 
     Set all core parameters to their auto-detected default values.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_get_device_properties`:
 
@@ -22,8 +23,9 @@ dwc2_get_device_properties
 
     Read in device properties.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_get_device_properties.description`:
 
@@ -41,8 +43,9 @@ dwc2_get_hwparams
 
     registers and interpret the contents.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. This file was automatic generated / don't edit.
 

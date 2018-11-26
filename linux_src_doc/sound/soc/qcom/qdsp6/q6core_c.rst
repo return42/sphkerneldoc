@@ -10,11 +10,13 @@ q6core_get_svc_api_info
 
     Get version number of a service.
 
-    :param int svc_id:
+    :param svc_id:
         service id of the service.
+    :type svc_id: int
 
-    :param struct q6core_svc_api_info \*ainfo:
+    :param ainfo:
         Valid struct pointer to fill svc api information.
+    :type ainfo: struct q6core_svc_api_info \*
 
 .. _`q6core_get_svc_api_info.return`:
 
@@ -32,8 +34,9 @@ q6core_is_adsp_ready
 
     Get status of adsp
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`q6core_is_adsp_ready.return`:
 

@@ -69,6 +69,7 @@ Definition
     #define IO_PGTABLE_QUIRK_TLBI_ON_MAP BIT(2)
     #define IO_PGTABLE_QUIRK_ARM_MTK_4GB BIT(3)
     #define IO_PGTABLE_QUIRK_NO_DMA BIT(4)
+    #define IO_PGTABLE_QUIRK_NON_STRICT BIT(5)
         unsigned long quirks;
         unsigned long pgsize_bitmap;
         unsigned int ias;
@@ -185,17 +186,20 @@ alloc_io_pgtable_ops
 
     Allocate a page table allocator for use by an IOMMU.
 
-    :param enum io_pgtable_fmt fmt:
+    :param fmt:
         The page table format.
+    :type fmt: enum io_pgtable_fmt
 
-    :param struct io_pgtable_cfg \*cfg:
+    :param cfg:
         The page table configuration. This will be modified to represent
         the configuration actually provided by the allocator (e.g. the
         pgsize_bitmap may be restricted).
+    :type cfg: struct io_pgtable_cfg \*
 
-    :param void \*cookie:
+    :param cookie:
         An opaque token provided by the IOMMU driver and passed back to
         the callback routines in cfg->tlb.
+    :type cookie: void \*
 
 .. _`free_io_pgtable_ops`:
 
@@ -206,8 +210,9 @@ free_io_pgtable_ops
 
     Free an io_pgtable_ops structure. The caller \*must\* ensure that the page table is no longer live, but the TLB can be dirty.
 
-    :param struct io_pgtable_ops \*ops:
+    :param ops:
         The ops returned from alloc_io_pgtable_ops.
+    :type ops: struct io_pgtable_ops \*
 
 .. _`io_pgtable`:
 

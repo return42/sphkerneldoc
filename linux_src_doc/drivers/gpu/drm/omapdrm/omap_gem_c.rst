@@ -6,12 +6,13 @@
 omap_gem_fault
 ==============
 
-.. c:function:: int omap_gem_fault(struct vm_fault *vmf)
+.. c:function:: vm_fault_t omap_gem_fault(struct vm_fault *vmf)
 
     pagefault handler for GEM objects
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         fault detail
+    :type vmf: struct vm_fault \*
 
 .. _`omap_gem_fault.description`:
 
@@ -35,14 +36,17 @@ omap_gem_dumb_create
 
     create a dumb buffer
 
-    :param struct drm_file \*file:
+    :param file:
         *undescribed*
+    :type file: struct drm_file \*
 
-    :param struct drm_device \*dev:
+    :param dev:
         our device
+    :type dev: struct drm_device \*
 
-    :param struct drm_mode_create_dumb \*args:
+    :param args:
         the requested arguments copied from userspace
+    :type args: struct drm_mode_create_dumb \*
 
 .. _`omap_gem_dumb_create.description`:
 
@@ -62,17 +66,21 @@ omap_gem_dumb_map_offset
 
     buffer mapping for dumb interface
 
-    :param struct drm_file \*file:
+    :param file:
         our drm client file
+    :type file: struct drm_file \*
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param u32 handle:
+    :param handle:
         GEM handle to the object (from dumb_create)
+    :type handle: u32
 
-    :param u64 \*offset:
+    :param offset:
         *undescribed*
+    :type offset: u64 \*
 
 .. _`omap_gem_dumb_map_offset.description`:
 
@@ -91,11 +99,13 @@ omap_gem_pin
 
     Pin a GEM object in memory
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         the GEM object
+    :type obj: struct drm_gem_object \*
 
-    :param dma_addr_t \*dma_addr:
+    :param dma_addr:
         the DMA address
+    :type dma_addr: dma_addr_t \*
 
 .. _`omap_gem_pin.description`:
 
@@ -120,8 +130,9 @@ omap_gem_unpin
 
     Unpin a GEM object from memory
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         the GEM object
+    :type obj: struct drm_gem_object \*
 
 .. _`omap_gem_unpin.description`:
 

@@ -128,8 +128,9 @@ suspend_set_ops
 
     set platform dependent suspend operations
 
-    :param const struct platform_suspend_ops \*ops:
+    :param ops:
         The new suspend operations to set.
+    :type ops: const struct platform_suspend_ops \*
 
 .. _`arch_suspend_disable_irqs`:
 
@@ -140,8 +141,9 @@ arch_suspend_disable_irqs
 
     disable IRQs for suspend
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`arch_suspend_disable_irqs.description`:
 
@@ -161,8 +163,9 @@ arch_suspend_enable_irqs
 
     enable IRQs after suspend
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`arch_suspend_enable_irqs.description`:
 

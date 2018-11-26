@@ -10,11 +10,13 @@ irq_sim_init
 
     Initialize the interrupt simulator: allocate a range of dummy interrupts.
 
-    :param struct irq_sim \*sim:
+    :param sim:
         The interrupt simulator object to initialize.
+    :type sim: struct irq_sim \*
 
-    :param unsigned int num_irqs:
+    :param num_irqs:
         Number of interrupts to allocate
+    :type num_irqs: unsigned int
 
 .. _`irq_sim_init.on-success`:
 
@@ -39,8 +41,9 @@ irq_sim_fini
 
     Deinitialize the interrupt simulator: free the interrupt descriptors and allocated memory.
 
-    :param struct irq_sim \*sim:
+    :param sim:
         The interrupt simulator to tear down.
+    :type sim: struct irq_sim \*
 
 .. _`devm_irq_sim_init`:
 
@@ -51,14 +54,17 @@ devm_irq_sim_init
 
     Initialize the interrupt simulator for a managed device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to initialize the simulator object for.
+    :type dev: struct device \*
 
-    :param struct irq_sim \*sim:
+    :param sim:
         The interrupt simulator object to initialize.
+    :type sim: struct irq_sim \*
 
-    :param unsigned int num_irqs:
+    :param num_irqs:
         Number of interrupts to allocate
+    :type num_irqs: unsigned int
 
 .. _`devm_irq_sim_init.on-success`:
 
@@ -83,11 +89,13 @@ irq_sim_fire
 
     Enqueue an interrupt.
 
-    :param struct irq_sim \*sim:
+    :param sim:
         The interrupt simulator object.
+    :type sim: struct irq_sim \*
 
-    :param unsigned int offset:
+    :param offset:
         Offset of the simulated interrupt which should be fired.
+    :type offset: unsigned int
 
 .. _`irq_sim_irqnum`:
 
@@ -98,12 +106,14 @@ irq_sim_irqnum
 
     Get the allocated number of a dummy interrupt.
 
-    :param struct irq_sim \*sim:
+    :param sim:
         The interrupt simulator object.
+    :type sim: struct irq_sim \*
 
-    :param unsigned int offset:
+    :param offset:
         Offset of the simulated interrupt for which to retrieve
         the number.
+    :type offset: unsigned int
 
 .. This file was automatic generated / don't edit.
 

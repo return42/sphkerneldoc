@@ -10,8 +10,9 @@ of_resolve_phandles
 
     Relocate and resolve overlay against live tree
 
-    :param struct device_node \*overlay:
+    :param overlay:
         Pointer to devicetree overlay to relocate and resolve
+    :type overlay: struct device_node \*
 
 .. _`of_resolve_phandles.description`:
 

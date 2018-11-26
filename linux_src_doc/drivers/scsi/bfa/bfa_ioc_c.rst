@@ -8,20 +8,25 @@ bfa_flash_set_cmd
 
 .. c:function:: void bfa_flash_set_cmd(void __iomem *pci_bar, u8 wr_cnt, u8 rd_cnt, u8 ad_cnt, u8 op)
 
-    :param void __iomem \*pci_bar:
+    :param pci_bar:
         *undescribed*
+    :type pci_bar: void __iomem \*
 
-    :param u8 wr_cnt:
+    :param wr_cnt:
         *undescribed*
+    :type wr_cnt: u8
 
-    :param u8 rd_cnt:
+    :param rd_cnt:
         *undescribed*
+    :type rd_cnt: u8
 
-    :param u8 ad_cnt:
+    :param ad_cnt:
         *undescribed*
+    :type ad_cnt: u8
 
-    :param u8 op:
+    :param op:
         *undescribed*
+    :type op: u8
 
 .. This file was automatic generated / don't edit.
 

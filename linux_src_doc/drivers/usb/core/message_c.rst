@@ -10,33 +10,42 @@ usb_control_msg
 
     Builds a control urb, sends it off and waits for completion
 
-    :param struct usb_device \*dev:
+    :param dev:
         pointer to the usb device to send the message to
+    :type dev: struct usb_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         endpoint "pipe" to send the message to
+    :type pipe: unsigned int
 
-    :param __u8 request:
+    :param request:
         USB message request value
+    :type request: __u8
 
-    :param __u8 requesttype:
+    :param requesttype:
         USB message request type value
+    :type requesttype: __u8
 
-    :param __u16 value:
+    :param value:
         USB message value
+    :type value: __u16
 
-    :param __u16 index:
+    :param index:
         USB message index value
+    :type index: __u16
 
-    :param void \*data:
+    :param data:
         pointer to the data to send
+    :type data: void \*
 
-    :param __u16 size:
+    :param size:
         length in bytes of the data to send
+    :type size: __u16
 
-    :param int timeout:
+    :param timeout:
         time in msecs to wait for the message to complete before timing
         out (if 0 the wait is forever)
+    :type timeout: int
 
 .. _`usb_control_msg.context`:
 
@@ -76,25 +85,31 @@ usb_interrupt_msg
 
     Builds an interrupt urb, sends it off and waits for completion
 
-    :param struct usb_device \*usb_dev:
+    :param usb_dev:
         pointer to the usb device to send the message to
+    :type usb_dev: struct usb_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         endpoint "pipe" to send the message to
+    :type pipe: unsigned int
 
-    :param void \*data:
+    :param data:
         pointer to the data to send
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length in bytes of the data to send
+    :type len: int
 
-    :param int \*actual_length:
+    :param actual_length:
         pointer to a location to put the actual length transferred
         in bytes
+    :type actual_length: int \*
 
-    :param int timeout:
+    :param timeout:
         time in msecs to wait for the message to complete before
         timing out (if 0 the wait is forever)
+    :type timeout: int
 
 .. _`usb_interrupt_msg.context`:
 
@@ -134,25 +149,31 @@ usb_bulk_msg
 
     Builds a bulk urb, sends it off and waits for completion
 
-    :param struct usb_device \*usb_dev:
+    :param usb_dev:
         pointer to the usb device to send the message to
+    :type usb_dev: struct usb_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         endpoint "pipe" to send the message to
+    :type pipe: unsigned int
 
-    :param void \*data:
+    :param data:
         pointer to the data to send
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length in bytes of the data to send
+    :type len: int
 
-    :param int \*actual_length:
+    :param actual_length:
         pointer to a location to put the actual length transferred
         in bytes
+    :type actual_length: int \*
 
-    :param int timeout:
+    :param timeout:
         time in msecs to wait for the message to complete before
         timing out (if 0 the wait is forever)
+    :type timeout: int
 
 .. _`usb_bulk_msg.context`:
 
@@ -197,32 +218,40 @@ usb_sg_init
 
     initializes scatterlist-based bulk/interrupt I/O request
 
-    :param struct usb_sg_request \*io:
+    :param io:
         request block being initialized.  until \ :c:func:`usb_sg_wait`\  returns,
         treat this as a pointer to an opaque block of memory,
+    :type io: struct usb_sg_request \*
 
-    :param struct usb_device \*dev:
+    :param dev:
         the usb device that will send or receive the data
+    :type dev: struct usb_device \*
 
-    :param unsigned pipe:
+    :param pipe:
         endpoint "pipe" used to transfer the data
+    :type pipe: unsigned
 
-    :param unsigned period:
+    :param period:
         polling rate for interrupt endpoints, in frames or
         (for high speed endpoints) microframes; ignored for bulk
+    :type period: unsigned
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatterlist entries
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         how many entries in the scatterlist
+    :type nents: int
 
-    :param size_t length:
+    :param length:
         how many bytes to send from the scatterlist, or zero to
         send every byte identified in the list.
+    :type length: size_t
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         SLAB_* flags affecting memory allocations in this call
+    :type mem_flags: gfp_t
 
 .. _`usb_sg_init.description`:
 
@@ -256,9 +285,10 @@ usb_sg_wait
 
     synchronously execute scatter/gather request
 
-    :param struct usb_sg_request \*io:
+    :param io:
         request block handle, as initialized with \ :c:func:`usb_sg_init`\ .
         some fields become accessible when this call returns.
+    :type io: struct usb_sg_request \*
 
 .. _`usb_sg_wait.context`:
 
@@ -323,8 +353,9 @@ usb_sg_cancel
 
     stop scatter/gather i/o issued by \ :c:func:`usb_sg_wait`\ 
 
-    :param struct usb_sg_request \*io:
+    :param io:
         request block, initialized with \ :c:func:`usb_sg_init`\ 
+    :type io: struct usb_sg_request \*
 
 .. _`usb_sg_cancel.description`:
 
@@ -344,20 +375,25 @@ usb_get_descriptor
 
     issues a generic GET_DESCRIPTOR request
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose descriptor is being retrieved
+    :type dev: struct usb_device \*
 
-    :param unsigned char type:
+    :param type:
         the descriptor type (USB_DT_*)
+    :type type: unsigned char
 
-    :param unsigned char index:
+    :param index:
         the number of the descriptor
+    :type index: unsigned char
 
-    :param void \*buf:
+    :param buf:
         where to put the descriptor
+    :type buf: void \*
 
-    :param int size:
+    :param size:
         how big is "buf"?
+    :type size: int
 
 .. _`usb_get_descriptor.context`:
 
@@ -398,20 +434,25 @@ usb_get_string
 
     gets a string descriptor
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose string descriptor is being retrieved
+    :type dev: struct usb_device \*
 
-    :param unsigned short langid:
+    :param langid:
         code for language chosen (from string descriptor zero)
+    :type langid: unsigned short
 
-    :param unsigned char index:
+    :param index:
         the number of the descriptor
+    :type index: unsigned char
 
-    :param void \*buf:
+    :param buf:
         where to put the string
+    :type buf: void \*
 
-    :param int size:
+    :param size:
         how big is "buf"?
+    :type size: int
 
 .. _`usb_get_string.context`:
 
@@ -452,17 +493,21 @@ usb_string
 
     returns UTF-8 version of a string descriptor
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose string descriptor is being retrieved
+    :type dev: struct usb_device \*
 
-    :param int index:
+    :param index:
         the number of the descriptor
+    :type index: int
 
-    :param char \*buf:
+    :param buf:
         where to put the string
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         how big is "buf"?
+    :type size: size_t
 
 .. _`usb_string.context`:
 
@@ -499,11 +544,13 @@ usb_cache_string
 
     read a string descriptor and cache it for later use
 
-    :param struct usb_device \*udev:
+    :param udev:
         the device whose string descriptor is being read
+    :type udev: struct usb_device \*
 
-    :param int index:
+    :param index:
         the descriptor index
+    :type index: int
 
 .. _`usb_cache_string.return`:
 
@@ -522,20 +569,25 @@ usb_get_status
 
     issues a GET_STATUS call
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose status is being checked
+    :type dev: struct usb_device \*
 
-    :param int recip:
+    :param recip:
         USB_RECIP_*; for device, interface, or endpoint
+    :type recip: int
 
-    :param int type:
+    :param type:
         USB_STATUS_TYPE_*; for standard or PTM status types
+    :type type: int
 
-    :param int target:
+    :param target:
         zero (for device), else interface or endpoint number
+    :type target: int
 
-    :param void \*data:
+    :param data:
         pointer to two bytes of bitmap data
+    :type data: void \*
 
 .. _`usb_get_status.context`:
 
@@ -572,11 +624,13 @@ usb_clear_halt
 
     tells device to clear endpoint halt/stall condition
 
-    :param struct usb_device \*dev:
+    :param dev:
         device whose endpoint is halted
+    :type dev: struct usb_device \*
 
-    :param int pipe:
+    :param pipe:
         endpoint "pipe" being cleared
+    :type pipe: int
 
 .. _`usb_clear_halt.context`:
 
@@ -621,16 +675,19 @@ usb_disable_endpoint
 
     - Disable an endpoint by address
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose endpoint is being disabled
+    :type dev: struct usb_device \*
 
-    :param unsigned int epaddr:
+    :param epaddr:
         the endpoint's address.  Endpoint number for output,
         endpoint number + USB_DIR_IN for input
+    :type epaddr: unsigned int
 
-    :param bool reset_hardware:
+    :param reset_hardware:
         flag to erase any endpoint state stored in the
         controller hardware
+    :type reset_hardware: bool
 
 .. _`usb_disable_endpoint.description`:
 
@@ -650,12 +707,14 @@ usb_reset_endpoint
 
     Reset an endpoint's state.
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose endpoint is to be reset
+    :type dev: struct usb_device \*
 
-    :param unsigned int epaddr:
+    :param epaddr:
         the endpoint's address.  Endpoint number for output,
         endpoint number + USB_DIR_IN for input
+    :type epaddr: unsigned int
 
 .. _`usb_reset_endpoint.description`:
 
@@ -674,15 +733,18 @@ usb_disable_interface
 
     - Disable all endpoints for an interface
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose interface is being disabled
+    :type dev: struct usb_device \*
 
-    :param struct usb_interface \*intf:
+    :param intf:
         pointer to the interface descriptor
+    :type intf: struct usb_interface \*
 
-    :param bool reset_hardware:
+    :param reset_hardware:
         flag to erase any endpoint state stored in the
         controller hardware
+    :type reset_hardware: bool
 
 .. _`usb_disable_interface.description`:
 
@@ -700,11 +762,13 @@ usb_disable_device
 
     Disable all the endpoints for a USB device
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose endpoints are being disabled
+    :type dev: struct usb_device \*
 
-    :param int skip_ep0:
+    :param skip_ep0:
         0 to disable endpoint 0, 1 to skip it.
+    :type skip_ep0: int
 
 .. _`usb_disable_device.description`:
 
@@ -725,14 +789,17 @@ usb_enable_endpoint
 
     Enable an endpoint for USB communications
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose interface is being enabled
+    :type dev: struct usb_device \*
 
-    :param struct usb_host_endpoint \*ep:
+    :param ep:
         the endpoint
+    :type ep: struct usb_host_endpoint \*
 
-    :param bool reset_ep:
+    :param reset_ep:
         flag to reset the endpoint state
+    :type reset_ep: bool
 
 .. _`usb_enable_endpoint.description`:
 
@@ -751,14 +818,17 @@ usb_enable_interface
 
     Enable all the endpoints for an interface
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose interface is being enabled
+    :type dev: struct usb_device \*
 
-    :param struct usb_interface \*intf:
+    :param intf:
         pointer to the interface descriptor
+    :type intf: struct usb_interface \*
 
-    :param bool reset_eps:
+    :param reset_eps:
         flag to reset the endpoints' state
+    :type reset_eps: bool
 
 .. _`usb_enable_interface.description`:
 
@@ -776,14 +846,17 @@ usb_set_interface
 
     Makes a particular alternate setting be current
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose interface is being updated
+    :type dev: struct usb_device \*
 
-    :param int interface:
+    :param interface:
         the interface being updated
+    :type interface: int
 
-    :param int alternate:
+    :param alternate:
         the setting being chosen.
+    :type alternate: int
 
 .. _`usb_set_interface.context`:
 
@@ -815,6 +888,11 @@ an endpoint in a given alternate setting is not reserved until an URB
 is submitted that needs that bandwidth.  Some other operating systems
 allocate bandwidth early, when a configuration is chosen.
 
+xHCI reserves bandwidth and configures the alternate setting in
+\ :c:func:`usb_hcd_alloc_bandwidth`\ . If it fails the original interface altsetting
+may be disabled. Drivers cannot rely on any particular alternate
+setting being in effect after a failure.
+
 This call is synchronous, and may not be used in an interrupt context.
 Also, drivers must not change altsettings while urbs are scheduled for
 endpoints in that interface; all such urbs must first be completed
@@ -837,8 +915,9 @@ usb_reset_configuration
 
     lightweight device reset
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose configuration is being reset
+    :type dev: struct usb_device \*
 
 .. _`usb_reset_configuration.description`:
 
@@ -877,11 +956,13 @@ usb_driver_set_configuration
 
     Provide a way for drivers to change device configurations
 
-    :param struct usb_device \*udev:
+    :param udev:
         the device whose configuration is being updated
+    :type udev: struct usb_device \*
 
-    :param int config:
+    :param config:
         the configuration being chosen.
+    :type config: int
 
 .. _`usb_driver_set_configuration.context`:
 
@@ -923,17 +1004,21 @@ cdc_parse_cdc_header
 
     parse the extra headers present in CDC devices
 
-    :param struct usb_cdc_parsed_header \*hdr:
+    :param hdr:
         the place to put the results of the parsing
+    :type hdr: struct usb_cdc_parsed_header \*
 
-    :param struct usb_interface \*intf:
+    :param intf:
         the interface for which parsing is requested
+    :type intf: struct usb_interface \*
 
-    :param u8 \*buffer:
+    :param buffer:
         pointer to the extra headers to be parsed
+    :type buffer: u8 \*
 
-    :param int buflen:
+    :param buflen:
         length of the extra headers
+    :type buflen: int
 
 .. _`cdc_parse_cdc_header.description`:
 

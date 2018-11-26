@@ -10,20 +10,25 @@ intel_pt_compare_buffers
 
     compare bytes in a buffer to a circular buffer.
 
-    :param void \*buf1:
+    :param buf1:
         first buffer
+    :type buf1: void \*
 
-    :param size_t compare_size:
+    :param compare_size:
         number of bytes to compare
+    :type compare_size: size_t
 
-    :param void \*buf2:
+    :param buf2:
         second buffer (a circular buffer)
+    :type buf2: void \*
 
-    :param size_t offs2:
+    :param offs2:
         offset in second buffer
+    :type offs2: size_t
 
-    :param size_t buf2_size:
+    :param buf2_size:
         size of second buffer
+    :type buf2_size: size_t
 
 .. _`intel_pt_compare_buffers.description`:
 

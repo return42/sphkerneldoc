@@ -112,11 +112,13 @@ iwl_req_fw_callback
 
     callback when firmware was loaded
 
-    :param const struct firmware \*ucode_raw:
+    :param ucode_raw:
         *undescribed*
+    :type ucode_raw: const struct firmware \*
 
-    :param void \*context:
+    :param context:
         *undescribed*
+    :type context: void \*
 
 .. _`iwl_req_fw_callback.description`:
 

@@ -10,14 +10,17 @@ tb_pci_alloc
 
     allocate a pci tunnel
 
-    :param struct tb \*tb:
+    :param tb:
         *undescribed*
+    :type tb: struct tb \*
 
-    :param struct tb_port \*up:
+    :param up:
         *undescribed*
+    :type up: struct tb_port \*
 
-    :param struct tb_port \*down:
+    :param down:
         *undescribed*
+    :type down: struct tb_port \*
 
 .. _`tb_pci_alloc.description`:
 
@@ -50,8 +53,9 @@ tb_pci_free
 
     free a tunnel
 
-    :param struct tb_pci_tunnel \*tunnel:
+    :param tunnel:
         *undescribed*
+    :type tunnel: struct tb_pci_tunnel \*
 
 .. _`tb_pci_free.description`:
 
@@ -69,8 +73,9 @@ tb_pci_is_invalid
 
     check whether an activated path is still valid
 
-    :param struct tb_pci_tunnel \*tunnel:
+    :param tunnel:
         *undescribed*
+    :type tunnel: struct tb_pci_tunnel \*
 
 .. _`tb_pci_port_active`:
 
@@ -81,11 +86,13 @@ tb_pci_port_active
 
     activate/deactivate PCI capability
 
-    :param struct tb_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tb_port \*
 
-    :param bool active:
+    :param active:
         *undescribed*
+    :type active: bool
 
 .. _`tb_pci_port_active.return`:
 
@@ -103,8 +110,9 @@ tb_pci_restart
 
     activate a tunnel after a hardware reset
 
-    :param struct tb_pci_tunnel \*tunnel:
+    :param tunnel:
         *undescribed*
+    :type tunnel: struct tb_pci_tunnel \*
 
 .. _`tb_pci_activate`:
 
@@ -115,8 +123,9 @@ tb_pci_activate
 
     activate a tunnel
 
-    :param struct tb_pci_tunnel \*tunnel:
+    :param tunnel:
         *undescribed*
+    :type tunnel: struct tb_pci_tunnel \*
 
 .. _`tb_pci_activate.return`:
 
@@ -134,8 +143,9 @@ tb_pci_deactivate
 
     deactivate a tunnel
 
-    :param struct tb_pci_tunnel \*tunnel:
+    :param tunnel:
         *undescribed*
+    :type tunnel: struct tb_pci_tunnel \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ strstarts
 
     does \ ``str``\  start with \ ``prefix``\ ?
 
-    :param const char \*str:
+    :param str:
         string to examine
+    :type str: const char \*
 
-    :param const char \*prefix:
+    :param prefix:
         prefix to look for.
+    :type prefix: const char \*
 
 .. This file was automatic generated / don't edit.
 

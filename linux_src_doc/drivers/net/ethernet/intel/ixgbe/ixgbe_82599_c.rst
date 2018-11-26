@@ -10,14 +10,17 @@ prot_autoc_read_82599
 
     Hides MAC differences needed for AUTOC read
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param bool \*locked:
+    :param locked:
         Return the if we locked for this read.
+    :type locked: bool \*
 
-    :param u32 \*reg_val:
+    :param reg_val:
         Value we read from AUTOC
+    :type reg_val: u32 \*
 
 .. _`prot_autoc_read_82599.description`:
 
@@ -38,15 +41,18 @@ prot_autoc_write_82599
 
     Hides MAC differences needed for AUTOC write
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 autoc:
+    :param autoc:
         value to write to AUTOC
+    :type autoc: u32
 
-    :param bool locked:
+    :param locked:
         bool to indicate whether the SW/FW lock was already taken by
         previous proc_autoc_read_82599.
+    :type locked: bool
 
 .. _`prot_autoc_write_82599.description`:
 
@@ -65,8 +71,9 @@ ixgbe_init_phy_ops_82599
 
     PHY/SFP specific init
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_init_phy_ops_82599.description`:
 
@@ -86,14 +93,17 @@ ixgbe_get_link_capabilities_82599
 
     Determines link capabilities
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed \*speed:
+    :param speed:
         pointer to link speed
+    :type speed: ixgbe_link_speed \*
 
-    :param bool \*autoneg:
+    :param autoneg:
         true when autoneg or autotry is enabled
+    :type autoneg: bool \*
 
 .. _`ixgbe_get_link_capabilities_82599.description`:
 
@@ -111,8 +121,9 @@ ixgbe_get_media_type_82599
 
     Get media type
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_media_type_82599.description`:
 
@@ -130,8 +141,9 @@ ixgbe_stop_mac_link_on_d3_82599
 
     Disables link on D3
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_stop_mac_link_on_d3_82599.description`:
 
@@ -149,11 +161,13 @@ ixgbe_start_mac_link_82599
 
     Setup MAC link settings
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         true when waiting for completion is needed
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbe_start_mac_link_82599.description`:
 
@@ -172,8 +186,9 @@ ixgbe_disable_tx_laser_multispeed_fiber
 
     Disable Tx laser
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_disable_tx_laser_multispeed_fiber.description`:
 
@@ -193,8 +208,9 @@ ixgbe_enable_tx_laser_multispeed_fiber
 
     Enable Tx laser
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_enable_tx_laser_multispeed_fiber.description`:
 
@@ -214,8 +230,9 @@ ixgbe_flap_tx_laser_multispeed_fiber
 
     Flap Tx laser
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_flap_tx_laser_multispeed_fiber.description`:
 
@@ -239,11 +256,13 @@ ixgbe_set_hard_rate_select_speed
 
     Set module link speed
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         link speed to set
+    :type speed: ixgbe_link_speed
 
 .. _`ixgbe_set_hard_rate_select_speed.description`:
 
@@ -261,14 +280,17 @@ ixgbe_setup_mac_link_smartspeed
 
     Set MAC link speed using SmartSpeed
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         new link speed
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         true when waiting for completion is needed
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbe_setup_mac_link_smartspeed.description`:
 
@@ -286,14 +308,17 @@ ixgbe_setup_mac_link_82599
 
     Set MAC link speed
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         new link speed
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         true when waiting for completion is needed
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbe_setup_mac_link_82599.description`:
 
@@ -311,14 +336,17 @@ ixgbe_setup_copper_link_82599
 
     Set the PHY autoneg advertised field
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         new link speed
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         true if waiting is needed to complete
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbe_setup_copper_link_82599.description`:
 
@@ -336,8 +364,9 @@ ixgbe_reset_hw_82599
 
     Perform hardware reset
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_reset_hw_82599.description`:
 
@@ -357,11 +386,13 @@ ixgbe_fdir_check_cmd_complete
 
     poll to check whether FDIRCMD is complete
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*fdircmd:
+    :param fdircmd:
         current value of FDIRCMD register
+    :type fdircmd: u32 \*
 
 .. _`ixgbe_reinit_fdir_tables_82599`:
 
@@ -372,8 +403,9 @@ ixgbe_reinit_fdir_tables_82599
 
     Reinitialize Flow Director tables.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fdir_enable_82599`:
 
@@ -384,11 +416,13 @@ ixgbe_fdir_enable_82599
 
     Initialize Flow Director control registers
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 fdirctrl:
+    :param fdirctrl:
         value to write to flow director control register
+    :type fdirctrl: u32
 
 .. _`ixgbe_init_fdir_signature_82599`:
 
@@ -399,12 +433,14 @@ ixgbe_init_fdir_signature_82599
 
     Initialize Flow Director signature filters
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 fdirctrl:
+    :param fdirctrl:
         value to write to flow director control register, initially
         contains just the value of the Rx packet buffer allocation
+    :type fdirctrl: u32
 
 .. _`ixgbe_init_fdir_perfect_82599`:
 
@@ -415,12 +451,14 @@ ixgbe_init_fdir_perfect_82599
 
     Initialize Flow Director perfect filters
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 fdirctrl:
+    :param fdirctrl:
         value to write to flow director control register, initially
         contains just the value of the Rx packet buffer allocation
+    :type fdirctrl: u32
 
 .. _`ixgbe_atr_compute_sig_hash_82599`:
 
@@ -431,11 +469,13 @@ ixgbe_atr_compute_sig_hash_82599
 
     Compute the signature hash
 
-    :param union ixgbe_atr_hash_dword input:
+    :param input:
         input bitstream to compute the hash on
+    :type input: union ixgbe_atr_hash_dword
 
-    :param union ixgbe_atr_hash_dword common:
+    :param common:
         compressed common input dword
+    :type common: union ixgbe_atr_hash_dword
 
 .. _`ixgbe_atr_compute_sig_hash_82599.description`:
 
@@ -457,17 +497,21 @@ ixgbe_fdir_add_signature_filter_82599
 
     Adds a signature hash filter
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param union ixgbe_atr_hash_dword input:
+    :param input:
         unique input dword
+    :type input: union ixgbe_atr_hash_dword
 
-    :param union ixgbe_atr_hash_dword common:
+    :param common:
         compressed common input dword
+    :type common: union ixgbe_atr_hash_dword
 
-    :param u8 queue:
+    :param queue:
         queue index to direct traffic to
+    :type queue: u8
 
 .. _`ixgbe_fdir_add_signature_filter_82599.description`:
 
@@ -486,11 +530,13 @@ ixgbe_atr_compute_perfect_hash_82599
 
     Compute the perfect filter hash
 
-    :param union ixgbe_atr_input \*input:
+    :param input:
         input bitstream to compute the hash on
+    :type input: union ixgbe_atr_input \*
 
-    :param union ixgbe_atr_input \*input_mask:
+    :param input_mask:
         mask for the input bitstream
+    :type input_mask: union ixgbe_atr_input \*
 
 .. _`ixgbe_atr_compute_perfect_hash_82599.description`:
 
@@ -512,8 +558,9 @@ ixgbe_get_fdirtcpm_82599
 
     generate a tcp port from atr_input_masks
 
-    :param union ixgbe_atr_input \*input_mask:
+    :param input_mask:
         mask to be bit swapped
+    :type input_mask: union ixgbe_atr_input \*
 
 .. _`ixgbe_get_fdirtcpm_82599.description`:
 
@@ -534,14 +581,17 @@ ixgbe_read_analog_reg8_82599
 
     Reads 8 bit Omer analog register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg:
+    :param reg:
         analog register to read
+    :type reg: u32
 
-    :param u8 \*val:
+    :param val:
         read value
+    :type val: u8 \*
 
 .. _`ixgbe_read_analog_reg8_82599.description`:
 
@@ -559,14 +609,17 @@ ixgbe_write_analog_reg8_82599
 
     Writes 8 bit Omer analog register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg:
+    :param reg:
         atlas register to write
+    :type reg: u32
 
-    :param u8 val:
+    :param val:
         value to write
+    :type val: u8
 
 .. _`ixgbe_write_analog_reg8_82599.description`:
 
@@ -584,8 +637,9 @@ ixgbe_start_hw_82599
 
     Prepare hardware for Tx/Rx
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_start_hw_82599.description`:
 
@@ -605,8 +659,9 @@ ixgbe_identify_phy_82599
 
     Get physical layer module
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_identify_phy_82599.description`:
 
@@ -626,11 +681,13 @@ ixgbe_enable_rx_dma_82599
 
     Enable the Rx DMA unit on 82599
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 regval:
+    :param regval:
         register value to write to RXCTRL
+    :type regval: u32
 
 .. _`ixgbe_enable_rx_dma_82599.description`:
 
@@ -648,8 +705,9 @@ ixgbe_verify_fw_version_82599
 
     verify fw version for 82599
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_verify_fw_version_82599.description`:
 
@@ -671,8 +729,9 @@ ixgbe_verify_lesm_fw_enabled_82599
 
     Checks LESM FW module state.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_verify_lesm_fw_enabled_82599.description`:
 
@@ -691,17 +750,21 @@ ixgbe_read_eeprom_buffer_82599
 
     Read EEPROM word(s) using fastest available method
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of  word in EEPROM to read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         word(s) read from the EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_read_eeprom_buffer_82599.description`:
 
@@ -719,14 +782,17 @@ ixgbe_read_eeprom_82599
 
     Read EEPROM word using fastest available method
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of  word in the EEPROM to read
+    :type offset: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_read_eeprom_82599.description`:
 
@@ -744,8 +810,9 @@ ixgbe_reset_pipeline_82599
 
     perform pipeline reset
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_reset_pipeline_82599.description`:
 
@@ -765,17 +832,21 @@ ixgbe_read_i2c_byte_82599
 
     Reads 8 bit word over I2C
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to read
+    :type byte_offset: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         address to read from
+    :type dev_addr: u8
 
-    :param u8 \*data:
+    :param data:
         value read
+    :type data: u8 \*
 
 .. _`ixgbe_read_i2c_byte_82599.description`:
 
@@ -794,17 +865,21 @@ ixgbe_write_i2c_byte_82599
 
     Writes 8 bit word over I2C
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to write
+    :type byte_offset: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         address to write to
+    :type dev_addr: u8
 
-    :param u8 data:
+    :param data:
         value to write
+    :type data: u8
 
 .. _`ixgbe_write_i2c_byte_82599.description`:
 

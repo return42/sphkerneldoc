@@ -10,8 +10,9 @@ csum_fold
 
     Fold and invert a 32bit checksum.
 
-    :param __wsum sum:
+    :param sum:
         *undescribed*
+    :type sum: __wsum
 
 .. _`csum_fold.sum`:
 
@@ -33,11 +34,13 @@ ip_fast_csum
 
     Compute the IPv4 header checksum efficiently.
 
-    :param const void \*iph:
+    :param iph:
         *undescribed*
+    :type iph: const void \*
 
-    :param unsigned int ihl:
+    :param ihl:
         *undescribed*
+    :type ihl: unsigned int
 
 .. _`ip_fast_csum.iph`:
 
@@ -62,20 +65,25 @@ csum_tcpudp_nofold
 
     Compute an IPv4 pseudo header checksum.
 
-    :param __be32 saddr:
+    :param saddr:
         source address
+    :type saddr: __be32
 
-    :param __be32 daddr:
+    :param daddr:
         destination address
+    :type daddr: __be32
 
-    :param __u32 len:
+    :param len:
         length of packet
+    :type len: __u32
 
-    :param __u8 proto:
+    :param proto:
         ip protocol of packet
+    :type proto: __u8
 
-    :param __wsum sum:
+    :param sum:
         initial sum to be added in (32bit unfolded)
+    :type sum: __wsum
 
 .. _`csum_tcpudp_nofold.description`:
 
@@ -94,20 +102,25 @@ csum_tcpudp_magic
 
     Compute an IPv4 pseudo header checksum.
 
-    :param __be32 saddr:
+    :param saddr:
         source address
+    :type saddr: __be32
 
-    :param __be32 daddr:
+    :param daddr:
         destination address
+    :type daddr: __be32
 
-    :param __u32 len:
+    :param len:
         length of packet
+    :type len: __u32
 
-    :param __u8 proto:
+    :param proto:
         ip protocol of packet
+    :type proto: __u8
 
-    :param __wsum sum:
+    :param sum:
         initial sum to be added in (32bit unfolded)
+    :type sum: __wsum
 
 .. _`csum_tcpudp_magic.description`:
 
@@ -126,14 +139,17 @@ csum_partial
 
     Compute an internet checksum.
 
-    :param const void \*buff:
+    :param buff:
         buffer to be checksummed
+    :type buff: const void \*
 
-    :param int len:
+    :param len:
         length of buffer.
+    :type len: int
 
-    :param __wsum sum:
+    :param sum:
         initial sum to be added in (32bit unfolded)
+    :type sum: __wsum
 
 .. _`csum_partial.description`:
 
@@ -153,11 +169,13 @@ ip_compute_csum
 
     Compute an 16bit IP checksum.
 
-    :param const void \*buff:
+    :param buff:
         buffer address.
+    :type buff: const void \*
 
-    :param int len:
+    :param len:
         length of buffer.
+    :type len: int
 
 .. _`ip_compute_csum.description`:
 

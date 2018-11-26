@@ -10,8 +10,9 @@
 
     register a powerdomain
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to register
+    :type pwrdm: struct powerdomain \*
 
 .. _`_pwrdm_register.description`:
 
@@ -31,14 +32,17 @@ already registered by the provided name, or 0 upon success.
 
     prepare for power state change
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to operate on
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 curr_pwrst:
+    :param curr_pwrst:
         current power state of \ ``pwrdm``\ 
+    :type curr_pwrst: u8
 
-    :param u8 pwrst:
+    :param pwrst:
         power state to switch to
+    :type pwrst: u8
 
 .. _`_pwrdm_save_clkdm_state_and_activate.description`:
 
@@ -62,11 +66,13 @@ Returns the power state switch mode currently in use (see the
 
     restore the clkdm hwsup state after pwrst change
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to operate on
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 sleep_switch:
+    :param sleep_switch:
         return value from \_pwrdm_save_clkdm_state_and_activate()
+    :type sleep_switch: u8
 
 .. _`_pwrdm_restore_clkdm_state.description`:
 
@@ -90,8 +96,9 @@ pwrdm_register_platform_funcs
 
     register powerdomain implementation fns
 
-    :param struct pwrdm_ops \*po:
+    :param po:
         func pointers for arch specific implementations
+    :type po: struct pwrdm_ops \*
 
 .. _`pwrdm_register_platform_funcs.description`:
 
@@ -113,8 +120,9 @@ pwrdm_register_pwrdms
 
     register SoC powerdomains
 
-    :param struct powerdomain \*\*ps:
+    :param ps:
         pointer to an array of struct powerdomain to register
+    :type ps: struct powerdomain \*\*
 
 .. _`pwrdm_register_pwrdms.description`:
 
@@ -136,8 +144,9 @@ pwrdm_complete_init
 
     set up the powerdomain layer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pwrdm_complete_init.description`:
 
@@ -161,8 +170,9 @@ pwrdm_lock
 
     acquire a Linux spinlock on a powerdomain
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to lock
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_lock.description`:
 
@@ -180,8 +190,9 @@ pwrdm_unlock
 
     release a Linux spinlock on a powerdomain
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to unlock
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_unlock.description`:
 
@@ -199,8 +210,9 @@ pwrdm_lookup
 
     look up a powerdomain by name, return a pointer
 
-    :param const char \*name:
+    :param name:
         name of powerdomain
+    :type name: const char \*
 
 .. _`pwrdm_lookup.description`:
 
@@ -222,8 +234,9 @@ pwrdm_for_each
     :param int (\*fn)(struct powerdomain \*pwrdm, void \*user):
         callback function \*
 
-    :param void \*user:
+    :param user:
         *undescribed*
+    :type user: void \*
 
 .. _`pwrdm_for_each.description`:
 
@@ -245,11 +258,13 @@ pwrdm_add_clkdm
 
     add a clockdomain to a powerdomain
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to add the clockdomain to
+    :type pwrdm: struct powerdomain \*
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \* to associate with a powerdomain
+    :type clkdm: struct clockdomain \*
 
 .. _`pwrdm_add_clkdm.description`:
 
@@ -270,8 +285,9 @@ pwrdm_get_mem_bank_count
 
     get number of memory banks in this powerdomain
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \*
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_get_mem_bank_count.description`:
 
@@ -290,11 +306,13 @@ pwrdm_set_next_pwrst
 
     set next powerdomain power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to set
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 pwrst:
+    :param pwrst:
         one of the PWRDM_POWER\_\* macros
+    :type pwrst: u8
 
 .. _`pwrdm_set_next_pwrst.description`:
 
@@ -316,8 +334,9 @@ pwrdm_read_next_pwrst
 
     get next powerdomain power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to get power state
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_read_next_pwrst.description`:
 
@@ -337,8 +356,9 @@ pwrdm_read_pwrst
 
     get current powerdomain power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to get power state
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_read_pwrst.description`:
 
@@ -359,8 +379,9 @@ pwrdm_read_prev_pwrst
 
     get previous powerdomain power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to get previous power state
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_read_prev_pwrst.description`:
 
@@ -380,11 +401,13 @@ pwrdm_set_logic_retst
 
     set powerdomain logic power state upon retention
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to set
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 pwrst:
+    :param pwrst:
         one of the PWRDM_POWER\_\* macros
+    :type pwrst: u8
 
 .. _`pwrdm_set_logic_retst.description`:
 
@@ -406,14 +429,17 @@ pwrdm_set_mem_onst
 
     set memory power state while powerdomain ON
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to set
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 bank:
+    :param bank:
         memory bank number to set (0-3)
+    :type bank: u8
 
-    :param u8 pwrst:
+    :param pwrst:
         one of the PWRDM_POWER\_\* macros
+    :type pwrst: u8
 
 .. _`pwrdm_set_mem_onst.description`:
 
@@ -438,14 +464,17 @@ pwrdm_set_mem_retst
 
     set memory power state while powerdomain in RET
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to set
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 bank:
+    :param bank:
         memory bank number to set (0-3)
+    :type bank: u8
 
-    :param u8 pwrst:
+    :param pwrst:
         one of the PWRDM_POWER\_\* macros
+    :type pwrst: u8
 
 .. _`pwrdm_set_mem_retst.description`:
 
@@ -471,8 +500,9 @@ pwrdm_read_logic_pwrst
 
     get current powerdomain logic retention power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to get current logic retention power state
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_read_logic_pwrst.description`:
 
@@ -493,8 +523,9 @@ pwrdm_read_prev_logic_pwrst
 
     get previous powerdomain logic power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to get previous logic power state
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_read_prev_logic_pwrst.description`:
 
@@ -514,8 +545,9 @@ pwrdm_read_logic_retst
 
     get next powerdomain logic power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to get next logic power state
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_read_logic_retst.description`:
 
@@ -535,11 +567,13 @@ pwrdm_read_mem_pwrst
 
     get current memory bank power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to get current memory bank power state
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 bank:
+    :param bank:
         memory bank number (0-3)
+    :type bank: u8
 
 .. _`pwrdm_read_mem_pwrst.description`:
 
@@ -560,11 +594,13 @@ pwrdm_read_prev_mem_pwrst
 
     get previous memory bank power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to get previous memory bank power state
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 bank:
+    :param bank:
         memory bank number (0-3)
+    :type bank: u8
 
 .. _`pwrdm_read_prev_mem_pwrst.description`:
 
@@ -586,11 +622,13 @@ pwrdm_read_mem_retst
 
     get next memory bank power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to get mext memory bank power state
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 bank:
+    :param bank:
         memory bank number (0-3)
+    :type bank: u8
 
 .. _`pwrdm_read_mem_retst.description`:
 
@@ -611,8 +649,9 @@ pwrdm_clear_all_prev_pwrst
 
     clear previous powerstate register for a pwrdm
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to clear
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_clear_all_prev_pwrst.description`:
 
@@ -633,8 +672,9 @@ pwrdm_enable_hdwr_sar
 
     enable automatic hardware SAR for a pwrdm
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \*
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_enable_hdwr_sar.description`:
 
@@ -657,8 +697,9 @@ pwrdm_disable_hdwr_sar
 
     disable automatic hardware SAR for a pwrdm
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \*
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_disable_hdwr_sar.description`:
 
@@ -681,8 +722,9 @@ pwrdm_has_hdwr_sar
 
     test whether powerdomain supports hardware SAR
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \*
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_has_hdwr_sar.description`:
 
@@ -701,15 +743,18 @@ pwrdm_get_valid_lp_state
 
     Find best match deep power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         power domain for which we want to find best match
+    :type pwrdm: struct powerdomain \*
 
-    :param bool is_logic_state:
+    :param is_logic_state:
         Are we looking for logic state match here? Should
         be one of PWRDM_xxx macro values
+    :type is_logic_state: bool
 
-    :param u8 req_state:
+    :param req_state:
         requested power state
+    :type req_state: u8
 
 .. _`pwrdm_get_valid_lp_state.return`:
 
@@ -746,11 +791,13 @@ omap_set_pwrdm_state
 
     change a powerdomain's current power state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to change the power state of
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 pwrst:
+    :param pwrst:
         power state to change to
+    :type pwrst: u8
 
 .. _`omap_set_pwrdm_state.description`:
 
@@ -774,8 +821,9 @@ pwrdm_get_context_loss_count
 
     get powerdomain's context loss count
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to wait for
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_get_context_loss_count.description`:
 
@@ -795,8 +843,9 @@ pwrdm_can_ever_lose_context
 
     can this powerdomain ever lose context?
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \*
+    :type pwrdm: struct powerdomain \*
 
 .. _`pwrdm_can_ever_lose_context.description`:
 
@@ -820,11 +869,13 @@ pwrdm_save_context
 
     save powerdomain registers
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         *undescribed*
+    :type pwrdm: struct powerdomain \*
 
-    :param void \*unused:
+    :param unused:
         *undescribed*
+    :type unused: void \*
 
 .. _`pwrdm_save_context.description`:
 
@@ -843,11 +894,13 @@ pwrdm_restore_context
 
     restore powerdomain registers
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         *undescribed*
+    :type pwrdm: struct powerdomain \*
 
-    :param void \*unused:
+    :param unused:
         *undescribed*
+    :type unused: void \*
 
 .. _`pwrdm_restore_context.description`:
 

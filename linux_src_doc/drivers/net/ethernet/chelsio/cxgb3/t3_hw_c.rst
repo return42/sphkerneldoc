@@ -10,26 +10,33 @@ t3_wait_op_done_val
 
     wait until an operation is completed
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter performing the operation
+    :type adapter: struct adapter \*
 
-    :param int reg:
+    :param reg:
         the register to check for completion
+    :type reg: int
 
-    :param u32 mask:
+    :param mask:
         a single-bit field within \ ``reg``\  that indicates completion
+    :type mask: u32
 
-    :param int polarity:
+    :param polarity:
         the value of the field when the operation is completed
+    :type polarity: int
 
-    :param int attempts:
+    :param attempts:
         number of check iterations
+    :type attempts: int
 
-    :param int delay:
+    :param delay:
         delay in usecs between iterations
+    :type delay: int
 
-    :param u32 \*valp:
+    :param valp:
         where to store the value of the register at completion time
+    :type valp: u32 \*
 
 .. _`t3_wait_op_done_val.description`:
 
@@ -50,17 +57,21 @@ t3_write_regs
 
     write a bunch of registers
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter to program
+    :type adapter: struct adapter \*
 
-    :param const struct addr_val_pair \*p:
+    :param p:
         an array of register address/register value pairs
+    :type p: const struct addr_val_pair \*
 
-    :param int n:
+    :param n:
         the number of address/value pairs
+    :type n: int
 
-    :param unsigned int offset:
+    :param offset:
         register address offset
+    :type offset: unsigned int
 
 .. _`t3_write_regs.description`:
 
@@ -80,17 +91,21 @@ t3_set_reg_field
 
     set a register field to a value
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter to program
+    :type adapter: struct adapter \*
 
-    :param unsigned int addr:
+    :param addr:
         the register address
+    :type addr: unsigned int
 
-    :param u32 mask:
+    :param mask:
         specifies the portion of the register to modify
+    :type mask: u32
 
-    :param u32 val:
+    :param val:
         the new value for the register field
+    :type val: u32
 
 .. _`t3_set_reg_field.description`:
 
@@ -109,23 +124,29 @@ t3_read_indirect
 
     read indirectly addressed registers
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int addr_reg:
+    :param addr_reg:
         register holding the indirect address
+    :type addr_reg: unsigned int
 
-    :param unsigned int data_reg:
+    :param data_reg:
         register holding the value of the indirect register
+    :type data_reg: unsigned int
 
-    :param u32 \*vals:
+    :param vals:
         where the read register values are stored
+    :type vals: u32 \*
 
-    :param unsigned int nregs:
+    :param nregs:
         how many indirect registers to read
+    :type nregs: unsigned int
 
-    :param unsigned int start_idx:
+    :param start_idx:
         index of first indirect register to read
+    :type start_idx: unsigned int
 
 .. _`t3_read_indirect.description`:
 
@@ -144,17 +165,21 @@ t3_mc7_bd_read
 
     read from MC7 through backdoor accesses
 
-    :param struct mc7 \*mc7:
+    :param mc7:
         identifies MC7 to read from
+    :type mc7: struct mc7 \*
 
-    :param unsigned int start:
+    :param start:
         index of first 64-bit word to read
+    :type start: unsigned int
 
-    :param unsigned int n:
+    :param n:
         number of 64-bit words to read
+    :type n: unsigned int
 
-    :param u64 \*buf:
+    :param buf:
         where to store the read result
+    :type buf: u64 \*
 
 .. _`t3_mc7_bd_read.description`:
 
@@ -173,20 +198,25 @@ t3_mdio_change_bits
 
     modify the value of a PHY register
 
-    :param struct cphy \*phy:
+    :param phy:
         the PHY to operate on
+    :type phy: struct cphy \*
 
-    :param int mmd:
+    :param mmd:
         the device address
+    :type mmd: int
 
-    :param int reg:
+    :param reg:
         the register address
+    :type reg: int
 
-    :param unsigned int clear:
+    :param clear:
         what part of the register value to mask off
+    :type clear: unsigned int
 
-    :param unsigned int set:
+    :param set:
         what part of the register value to set
+    :type set: unsigned int
 
 .. _`t3_mdio_change_bits.description`:
 
@@ -205,14 +235,17 @@ t3_phy_reset
 
     reset a PHY block
 
-    :param struct cphy \*phy:
+    :param phy:
         the PHY to operate on
+    :type phy: struct cphy \*
 
-    :param int mmd:
+    :param mmd:
         the device address of the PHY block to reset
+    :type mmd: int
 
-    :param int wait:
+    :param wait:
         how long to wait for the reset to complete in 1ms increments
+    :type wait: int
 
 .. _`t3_phy_reset.description`:
 
@@ -232,11 +265,13 @@ t3_phy_advertise
 
     set the PHY advertisement registers for autoneg
 
-    :param struct cphy \*phy:
+    :param phy:
         the PHY to operate on
+    :type phy: struct cphy \*
 
-    :param unsigned int advert:
+    :param advert:
         bitmap of capabilities the PHY should advertise
+    :type advert: unsigned int
 
 .. _`t3_phy_advertise.description`:
 
@@ -255,11 +290,13 @@ t3_phy_advertise_fiber
 
     set fiber PHY advertisement register
 
-    :param struct cphy \*phy:
+    :param phy:
         the PHY to operate on
+    :type phy: struct cphy \*
 
-    :param unsigned int advert:
+    :param advert:
         bitmap of capabilities the PHY should advertise
+    :type advert: unsigned int
 
 .. _`t3_phy_advertise_fiber.description`:
 
@@ -278,14 +315,17 @@ t3_set_phy_speed_duplex
 
     force PHY speed and duplex
 
-    :param struct cphy \*phy:
+    :param phy:
         the PHY to operate on
+    :type phy: struct cphy \*
 
-    :param int speed:
+    :param speed:
         requested PHY speed
+    :type speed: int
 
-    :param int duplex:
+    :param duplex:
         requested PHY duplex
+    :type duplex: int
 
 .. _`t3_set_phy_speed_duplex.description`:
 
@@ -304,14 +344,17 @@ t3_seeprom_read
 
     read a VPD EEPROM location
 
-    :param struct adapter \*adapter:
+    :param adapter:
         adapter to read
+    :type adapter: struct adapter \*
 
-    :param u32 addr:
+    :param addr:
         EEPROM address
+    :type addr: u32
 
-    :param __le32 \*data:
+    :param data:
         where to store the read data
+    :type data: __le32 \*
 
 .. _`t3_seeprom_read.description`:
 
@@ -332,14 +375,17 @@ t3_seeprom_write
 
     write a VPD EEPROM location
 
-    :param struct adapter \*adapter:
+    :param adapter:
         adapter to write
+    :type adapter: struct adapter \*
 
-    :param u32 addr:
+    :param addr:
         EEPROM address
+    :type addr: u32
 
-    :param __le32 data:
+    :param data:
         value to write
+    :type data: __le32
 
 .. _`t3_seeprom_write.description`:
 
@@ -358,11 +404,13 @@ t3_seeprom_wp
 
     enable/disable EEPROM write protection
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int enable:
+    :param enable:
         1 to enable write protection, 0 to disable it
+    :type enable: int
 
 .. _`t3_seeprom_wp.description`:
 
@@ -380,11 +428,13 @@ get_vpd_params
 
     read VPD parameters from VPD EEPROM
 
-    :param struct adapter \*adapter:
+    :param adapter:
         adapter to read
+    :type adapter: struct adapter \*
 
-    :param struct vpd_params \*p:
+    :param p:
         where to store the parameters
+    :type p: struct vpd_params \*
 
 .. _`get_vpd_params.description`:
 
@@ -402,17 +452,21 @@ sf1_read
 
     read data from the serial flash
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int byte_cnt:
+    :param byte_cnt:
         number of bytes to read
+    :type byte_cnt: unsigned int
 
-    :param int cont:
+    :param cont:
         whether another operation will be chained
+    :type cont: int
 
-    :param u32 \*valp:
+    :param valp:
         where to store the read data
+    :type valp: u32 \*
 
 .. _`sf1_read.description`:
 
@@ -432,17 +486,21 @@ sf1_write
 
     write data to the serial flash
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int byte_cnt:
+    :param byte_cnt:
         number of bytes to write
+    :type byte_cnt: unsigned int
 
-    :param int cont:
+    :param cont:
         whether another operation will be chained
+    :type cont: int
 
-    :param u32 val:
+    :param val:
         value to write
+    :type val: u32
 
 .. _`sf1_write.description`:
 
@@ -462,14 +520,17 @@ flash_wait_op
 
     wait for a flash operation to complete
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int attempts:
+    :param attempts:
         max number of polls of the status register
+    :type attempts: int
 
-    :param int delay:
+    :param delay:
         delay between polls in ms
+    :type delay: int
 
 .. _`flash_wait_op.description`:
 
@@ -487,20 +548,25 @@ t3_read_flash
 
     read words from serial flash
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int addr:
+    :param addr:
         the start address for the read
+    :type addr: unsigned int
 
-    :param unsigned int nwords:
+    :param nwords:
         how many 32-bit words to read
+    :type nwords: unsigned int
 
-    :param u32 \*data:
+    :param data:
         where to store the read data
+    :type data: u32 \*
 
-    :param int byte_oriented:
+    :param byte_oriented:
         whether to store data as bytes or as words
+    :type byte_oriented: int
 
 .. _`t3_read_flash.description`:
 
@@ -521,17 +587,21 @@ t3_write_flash
 
     write up to a page of data to the serial flash
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int addr:
+    :param addr:
         the start address to write
+    :type addr: unsigned int
 
-    :param unsigned int n:
+    :param n:
         length of data to write
+    :type n: unsigned int
 
-    :param const u8 \*data:
+    :param data:
         the data to write
+    :type data: const u8 \*
 
 .. _`t3_write_flash.description`:
 
@@ -550,11 +620,13 @@ t3_get_tp_version
 
     read the tp sram version
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 \*vers:
+    :param vers:
         where to place the version
+    :type vers: u32 \*
 
 .. _`t3_get_tp_version.description`:
 
@@ -572,8 +644,9 @@ t3_check_tpsram_version
 
     read the tp sram version
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t3_check_tpsram_version.description`:
 
@@ -591,14 +664,17 @@ t3_check_tpsram
 
     check if provided protocol SRAM is compatible with this driver
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param const u8 \*tp_sram:
+    :param tp_sram:
         the firmware image to write
+    :type tp_sram: const u8 \*
 
-    :param unsigned int size:
+    :param size:
         image size
+    :type size: unsigned int
 
 .. _`t3_check_tpsram.description`:
 
@@ -617,11 +693,13 @@ t3_get_fw_version
 
     read the firmware version
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 \*vers:
+    :param vers:
         where to place the version
+    :type vers: u32 \*
 
 .. _`t3_get_fw_version.description`:
 
@@ -639,8 +717,9 @@ t3_check_fw_version
 
     check if the FW is compatible with this driver
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t3_check_fw_version.description`:
 
@@ -659,14 +738,17 @@ t3_flash_erase_sectors
 
     erase a range of flash sectors
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int start:
+    :param start:
         the first sector to erase
+    :type start: int
 
-    :param int end:
+    :param end:
         the last sector to erase
+    :type end: int
 
 .. _`t3_flash_erase_sectors.description`:
 
@@ -684,14 +766,17 @@ t3_load_fw
 
     download firmware
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param const u8 \*fw_data:
+    :param fw_data:
         the firmware image to write
+    :type fw_data: const u8 \*
 
-    :param unsigned int size:
+    :param size:
         image size
+    :type size: unsigned int
 
 .. _`t3_load_fw.description`:
 
@@ -718,17 +803,21 @@ t3_cim_ctl_blk_read
 
     read a block from CIM control region
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int addr:
+    :param addr:
         the start address within the CIM control region
+    :type addr: unsigned int
 
-    :param unsigned int n:
+    :param n:
         number of words to read
+    :type n: unsigned int
 
-    :param unsigned int \*valp:
+    :param valp:
         where to store the result
+    :type valp: unsigned int \*
 
 .. _`t3_cim_ctl_blk_read.description`:
 
@@ -746,11 +835,13 @@ t3_link_changed
 
     handle interface link changes
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int port_id:
+    :param port_id:
         the port index that changed link state
+    :type port_id: int
 
 .. _`t3_link_changed.description`:
 
@@ -770,14 +861,17 @@ t3_link_start
 
     apply link configuration to MAC/PHY
 
-    :param struct cphy \*phy:
+    :param phy:
         the PHY to setup
+    :type phy: struct cphy \*
 
-    :param struct cmac \*mac:
+    :param mac:
         the MAC to setup
+    :type mac: struct cmac \*
 
-    :param struct link_config \*lc:
+    :param lc:
         the requested link configuration
+    :type lc: struct link_config \*
 
 .. _`t3_link_start.description`:
 
@@ -800,14 +894,17 @@ t3_set_vlan_accel
 
     control HW VLAN extraction
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int ports:
+    :param ports:
         bitmap of adapter ports to operate on
+    :type ports: unsigned int
 
-    :param int on:
+    :param on:
         enable (1) or disable (0) HW VLAN extraction
+    :type on: int
 
 .. _`t3_set_vlan_accel.description`:
 
@@ -825,20 +922,25 @@ t3_handle_intr_status
 
     table driven interrupt handler
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter that generated the interrupt
+    :type adapter: struct adapter \*
 
-    :param unsigned int reg:
+    :param reg:
         the interrupt status register to process
+    :type reg: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         a mask to apply to the interrupt status
+    :type mask: unsigned int
 
-    :param const struct intr_info \*acts:
+    :param acts:
         table of interrupt actions
+    :type acts: const struct intr_info \*
 
-    :param unsigned long \*stats:
+    :param stats:
         statistics counters tracking interrupt occurrences
+    :type stats: unsigned long \*
 
 .. _`t3_handle_intr_status.description`:
 
@@ -861,8 +963,9 @@ t3_intr_enable
 
     enable interrupts
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter whose interrupts should be enabled
+    :type adapter: struct adapter \*
 
 .. _`t3_intr_enable.description`:
 
@@ -882,8 +985,9 @@ t3_intr_disable
 
     disable a card's interrupts
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter whose interrupts should be disabled
+    :type adapter: struct adapter \*
 
 .. _`t3_intr_disable.description`:
 
@@ -902,8 +1006,9 @@ t3_intr_clear
 
     clear all interrupts
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter whose interrupts should be cleared
+    :type adapter: struct adapter \*
 
 .. _`t3_intr_clear.description`:
 
@@ -921,11 +1026,13 @@ t3_port_intr_enable
 
     enable port-specific interrupts
 
-    :param struct adapter \*adapter:
+    :param adapter:
         associated adapter
+    :type adapter: struct adapter \*
 
-    :param int idx:
+    :param idx:
         index of port whose interrupts should be enabled
+    :type idx: int
 
 .. _`t3_port_intr_enable.description`:
 
@@ -944,11 +1051,13 @@ t3_port_intr_disable
 
     disable port-specific interrupts
 
-    :param struct adapter \*adapter:
+    :param adapter:
         associated adapter
+    :type adapter: struct adapter \*
 
-    :param int idx:
+    :param idx:
         index of port whose interrupts should be disabled
+    :type idx: int
 
 .. _`t3_port_intr_disable.description`:
 
@@ -967,11 +1076,13 @@ t3_port_intr_clear
 
     clear port-specific interrupts
 
-    :param struct adapter \*adapter:
+    :param adapter:
         associated adapter
+    :type adapter: struct adapter \*
 
-    :param int idx:
+    :param idx:
         index of port whose interrupts to clear
+    :type idx: int
 
 .. _`t3_port_intr_clear.description`:
 
@@ -990,14 +1101,17 @@ t3_sge_write_context
 
     write an SGE context
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the context id
+    :type id: unsigned int
 
-    :param unsigned int type:
+    :param type:
         the context type
+    :type type: unsigned int
 
 .. _`t3_sge_write_context.description`:
 
@@ -1016,14 +1130,17 @@ clear_sge_ctxt
 
     completely clear an SGE context
 
-    :param struct adapter \*adap:
+    :param adap:
         *undescribed*
+    :type adap: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the context id
+    :type id: unsigned int
 
-    :param unsigned int type:
+    :param type:
         the context type
+    :type type: unsigned int
 
 .. _`clear_sge_ctxt.description`:
 
@@ -1044,35 +1161,45 @@ t3_sge_init_ecntxt
 
     initialize an SGE egress context
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter to configure
+    :type adapter: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the context id
+    :type id: unsigned int
 
-    :param int gts_enable:
+    :param gts_enable:
         whether to enable GTS for the context
+    :type gts_enable: int
 
-    :param enum sge_context_type type:
+    :param type:
         the egress context type
+    :type type: enum sge_context_type
 
-    :param int respq:
+    :param respq:
         associated response queue
+    :type respq: int
 
-    :param u64 base_addr:
+    :param base_addr:
         base address of queue
+    :type base_addr: u64
 
-    :param unsigned int size:
+    :param size:
         number of queue entries
+    :type size: unsigned int
 
-    :param unsigned int token:
+    :param token:
         uP token
+    :type token: unsigned int
 
-    :param int gen:
+    :param gen:
         initial generation value for the context
+    :type gen: int
 
-    :param unsigned int cidx:
+    :param cidx:
         consumer pointer
+    :type cidx: unsigned int
 
 .. _`t3_sge_init_ecntxt.description`:
 
@@ -1092,32 +1219,41 @@ t3_sge_init_flcntxt
 
     initialize an SGE free-buffer list context
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter to configure
+    :type adapter: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the context id
+    :type id: unsigned int
 
-    :param int gts_enable:
+    :param gts_enable:
         whether to enable GTS for the context
+    :type gts_enable: int
 
-    :param u64 base_addr:
+    :param base_addr:
         base address of queue
+    :type base_addr: u64
 
-    :param unsigned int size:
+    :param size:
         number of queue entries
+    :type size: unsigned int
 
-    :param unsigned int bsize:
+    :param bsize:
         size of each buffer for this queue
+    :type bsize: unsigned int
 
-    :param unsigned int cong_thres:
+    :param cong_thres:
         threshold to signal congestion to upstream producers
+    :type cong_thres: unsigned int
 
-    :param int gen:
+    :param gen:
         initial generation value for the context
+    :type gen: int
 
-    :param unsigned int cidx:
+    :param cidx:
         consumer pointer
+    :type cidx: unsigned int
 
 .. _`t3_sge_init_flcntxt.description`:
 
@@ -1137,29 +1273,37 @@ t3_sge_init_rspcntxt
 
     initialize an SGE response queue context
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter to configure
+    :type adapter: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the context id
+    :type id: unsigned int
 
-    :param int irq_vec_idx:
+    :param irq_vec_idx:
         MSI-X interrupt vector index, 0 if no MSI-X, -1 if no IRQ
+    :type irq_vec_idx: int
 
-    :param u64 base_addr:
+    :param base_addr:
         base address of queue
+    :type base_addr: u64
 
-    :param unsigned int size:
+    :param size:
         number of queue entries
+    :type size: unsigned int
 
-    :param unsigned int fl_thres:
+    :param fl_thres:
         threshold for selecting the normal or jumbo free list
+    :type fl_thres: unsigned int
 
-    :param int gen:
+    :param gen:
         initial generation value for the context
+    :type gen: int
 
-    :param unsigned int cidx:
+    :param cidx:
         consumer pointer
+    :type cidx: unsigned int
 
 .. _`t3_sge_init_rspcntxt.description`:
 
@@ -1179,29 +1323,37 @@ t3_sge_init_cqcntxt
 
     initialize an SGE completion queue context
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter to configure
+    :type adapter: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the context id
+    :type id: unsigned int
 
-    :param u64 base_addr:
+    :param base_addr:
         base address of queue
+    :type base_addr: u64
 
-    :param unsigned int size:
+    :param size:
         number of queue entries
+    :type size: unsigned int
 
-    :param int rspq:
+    :param rspq:
         response queue for async notifications
+    :type rspq: int
 
-    :param int ovfl_mode:
+    :param ovfl_mode:
         CQ overflow mode
+    :type ovfl_mode: int
 
-    :param unsigned int credits:
+    :param credits:
         completion queue credits
+    :type credits: unsigned int
 
-    :param unsigned int credit_thres:
+    :param credit_thres:
         the credit threshold
+    :type credit_thres: unsigned int
 
 .. _`t3_sge_init_cqcntxt.description`:
 
@@ -1221,14 +1373,17 @@ t3_sge_enable_ecntxt
 
     enable/disable an SGE egress context
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the egress context id
+    :type id: unsigned int
 
-    :param int enable:
+    :param enable:
         enable (1) or disable (0) the context
+    :type enable: int
 
 .. _`t3_sge_enable_ecntxt.description`:
 
@@ -1247,11 +1402,13 @@ t3_sge_disable_fl
 
     disable an SGE free-buffer list
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the free list context id
+    :type id: unsigned int
 
 .. _`t3_sge_disable_fl.description`:
 
@@ -1270,11 +1427,13 @@ t3_sge_disable_rspcntxt
 
     disable an SGE response queue
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the response queue context id
+    :type id: unsigned int
 
 .. _`t3_sge_disable_rspcntxt.description`:
 
@@ -1293,11 +1452,13 @@ t3_sge_disable_cqcntxt
 
     disable an SGE completion queue
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the completion queue context id
+    :type id: unsigned int
 
 .. _`t3_sge_disable_cqcntxt.description`:
 
@@ -1316,17 +1477,21 @@ t3_sge_cqcntxt_op
 
     perform an operation on a completion queue context
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int id:
+    :param id:
         the context id
+    :type id: unsigned int
 
-    :param unsigned int op:
+    :param op:
         the operation to perform
+    :type op: unsigned int
 
-    :param unsigned int credits:
+    :param credits:
         *undescribed*
+    :type credits: unsigned int
 
 .. _`t3_sge_cqcntxt_op.description`:
 
@@ -1346,17 +1511,21 @@ t3_config_rss
 
     configure Rx packet steering
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int rss_config:
+    :param rss_config:
         RSS settings (written to TP_RSS_CONFIG)
+    :type rss_config: unsigned int
 
-    :param const u8 \*cpus:
+    :param cpus:
         values for the CPU lookup table (0xff terminated)
+    :type cpus: const u8 \*
 
-    :param const u16 \*rspq:
+    :param rspq:
         values for the response queue lookup table (0xffff terminated)
+    :type rspq: const u16 \*
 
 .. _`t3_config_rss.description`:
 
@@ -1377,11 +1546,13 @@ t3_tp_set_offload_mode
 
     put TP in NIC/offload mode
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int enable:
+    :param enable:
         1 to select offload mode, 0 for regular NIC
+    :type enable: int
 
 .. _`t3_tp_set_offload_mode.description`:
 
@@ -1399,11 +1570,13 @@ pm_num_pages
 
     calculate the number of pages of the payload memory
 
-    :param unsigned int mem_size:
+    :param mem_size:
         the size of the payload memory
+    :type mem_size: unsigned int
 
-    :param unsigned int pg_size:
+    :param pg_size:
         the size of each payload memory page
+    :type pg_size: unsigned int
 
 .. _`pm_num_pages.description`:
 
@@ -1423,11 +1596,13 @@ partition_mem
 
     partition memory and configure TP memory settings
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param const struct tp_params \*p:
+    :param p:
         the TP parameters
+    :type p: const struct tp_params \*
 
 .. _`partition_mem.description`:
 
@@ -1446,11 +1621,13 @@ tp_set_timers
 
     set TP timing parameters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter to set
+    :type adap: struct adapter \*
 
-    :param unsigned int core_clk:
+    :param core_clk:
         the core clock frequency in Hz
+    :type core_clk: unsigned int
 
 .. _`tp_set_timers.description`:
 
@@ -1469,14 +1646,17 @@ t3_tp_set_coalescing_size
 
     set receive coalescing size
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int size:
+    :param size:
         the receive coalescing size
+    :type size: unsigned int
 
-    :param int psh:
+    :param psh:
         whether a set PSH bit should deliver coalesced data
+    :type psh: int
 
 .. _`t3_tp_set_coalescing_size.description`:
 
@@ -1494,11 +1674,13 @@ t3_tp_set_max_rxsize
 
     set the max receive size
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int size:
+    :param size:
         the max receive size
+    :type size: unsigned int
 
 .. _`t3_tp_set_max_rxsize.description`:
 
@@ -1517,20 +1699,25 @@ t3_load_mtus
 
     write the MTU and congestion control HW tables
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned short mtus:
+    :param mtus:
         the unrestricted values for the MTU table
+    :type mtus: unsigned short
 
-    :param unsigned short alpha:
+    :param alpha:
         *undescribed*
+    :type alpha: unsigned short
 
-    :param unsigned short beta:
+    :param beta:
         the values for the congestion control beta parameter
+    :type beta: unsigned short
 
-    :param unsigned short mtu_cap:
+    :param mtu_cap:
         the maximum permitted effective MTU
+    :type mtu_cap: unsigned short
 
 .. _`t3_load_mtus.description`:
 
@@ -1550,11 +1737,13 @@ t3_tp_get_mib_stats
 
     read TP's MIB counters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct tp_mib_stats \*tps:
+    :param tps:
         holds the returned counter values
+    :type tps: struct tp_mib_stats \*
 
 .. _`t3_tp_get_mib_stats.description`:
 
@@ -1572,11 +1761,13 @@ t3_set_proto_sram
 
     set the contents of the protocol sram
 
-    :param struct adapter \*adap:
+    :param adap:
         *undescribed*
+    :type adap: struct adapter \*
 
-    :param const u8 \*data:
+    :param data:
         the protocol image
+    :type data: const u8 \*
 
 .. _`t3_set_proto_sram.description`:
 
@@ -1594,14 +1785,17 @@ t3_config_sched
 
     configure a HW traffic scheduler
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int kbps:
+    :param kbps:
         target rate in Kbps
+    :type kbps: unsigned int
 
-    :param int sched:
+    :param sched:
         the scheduler index
+    :type sched: int
 
 .. _`t3_config_sched.description`:
 
@@ -1619,11 +1813,13 @@ get_pci_mode
 
     determine a card's PCI mode
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct pci_params \*p:
+    :param p:
         where to store the PCI settings
+    :type p: struct pci_params \*
 
 .. _`get_pci_mode.description`:
 
@@ -1642,11 +1838,13 @@ init_link_config
 
     initialize a link's SW state
 
-    :param struct link_config \*lc:
+    :param lc:
         structure holding the link state
+    :type lc: struct link_config \*
 
-    :param unsigned int caps:
+    :param caps:
         *undescribed*
+    :type caps: unsigned int
 
 .. _`init_link_config.description`:
 
@@ -1666,8 +1864,9 @@ mc7_calc_size
 
     calculate MC7 memory size
 
-    :param u32 cfg:
+    :param cfg:
         the MC7 configuration
+    :type cfg: u32
 
 .. _`mc7_calc_size.description`:
 

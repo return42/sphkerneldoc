@@ -10,8 +10,9 @@ wm831x_reg_lock
 
     Unlock user keyed registers
 
-    :param struct wm831x \*wm831x:
+    :param wm831x:
         *undescribed*
+    :type wm831x: struct wm831x \*
 
 .. _`wm831x_reg_lock.description`:
 
@@ -31,8 +32,9 @@ wm831x_reg_unlock
 
     Unlock user keyed registers
 
-    :param struct wm831x \*wm831x:
+    :param wm831x:
         *undescribed*
+    :type wm831x: struct wm831x \*
 
 .. _`wm831x_reg_unlock.description`:
 
@@ -52,11 +54,13 @@ wm831x_reg_read
 
     Read a single WM831x register.
 
-    :param struct wm831x \*wm831x:
+    :param wm831x:
         Device to read from.
+    :type wm831x: struct wm831x \*
 
-    :param unsigned short reg:
+    :param reg:
         Register to read.
+    :type reg: unsigned short
 
 .. _`wm831x_bulk_read`:
 
@@ -67,17 +71,21 @@ wm831x_bulk_read
 
     Read multiple WM831x registers
 
-    :param struct wm831x \*wm831x:
+    :param wm831x:
         Device to read from
+    :type wm831x: struct wm831x \*
 
-    :param unsigned short reg:
+    :param reg:
         First register
+    :type reg: unsigned short
 
-    :param int count:
+    :param count:
         Number of registers
+    :type count: int
 
-    :param u16 \*buf:
+    :param buf:
         Buffer to fill.
+    :type buf: u16 \*
 
 .. _`wm831x_reg_write`:
 
@@ -88,14 +96,17 @@ wm831x_reg_write
 
     Write a single WM831x register.
 
-    :param struct wm831x \*wm831x:
+    :param wm831x:
         Device to write to.
+    :type wm831x: struct wm831x \*
 
-    :param unsigned short reg:
+    :param reg:
         Register to write to.
+    :type reg: unsigned short
 
-    :param unsigned short val:
+    :param val:
         Value to write.
+    :type val: unsigned short
 
 .. _`wm831x_set_bits`:
 
@@ -106,17 +117,21 @@ wm831x_set_bits
 
     Set the value of a bitfield in a WM831x register
 
-    :param struct wm831x \*wm831x:
+    :param wm831x:
         Device to write to.
+    :type wm831x: struct wm831x \*
 
-    :param unsigned short reg:
+    :param reg:
         Register to write to.
+    :type reg: unsigned short
 
-    :param unsigned short mask:
+    :param mask:
         Mask of bits to set.
+    :type mask: unsigned short
 
-    :param unsigned short val:
+    :param val:
         Value to set (unshifted)
+    :type val: unsigned short
 
 .. This file was automatic generated / don't edit.
 

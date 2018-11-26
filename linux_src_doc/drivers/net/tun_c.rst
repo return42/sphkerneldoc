@@ -10,11 +10,13 @@ tun_flow_save_rps_rxhash
 
     flow_hash table accordingly.
 
-    :param struct tun_flow_entry \*e:
+    :param e:
         *undescribed*
+    :type e: struct tun_flow_entry \*
 
-    :param u32 hash:
+    :param hash:
         *undescribed*
+    :type hash: u32
 
 .. This file was automatic generated / don't edit.
 

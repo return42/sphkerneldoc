@@ -8,11 +8,13 @@ GENWQE_DEBUGFS_RO
 
 .. c:function::  GENWQE_DEBUGFS_RO( _name,  _showfn)
 
-    :param  _name:
+    :param _name:
         *undescribed*
+    :type _name: 
 
-    :param  _showfn:
+    :param _showfn:
         *undescribed*
+    :type _showfn: 
 
 .. _`genwqe_debugfs_ro.description`:
 

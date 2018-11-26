@@ -10,14 +10,17 @@ memcpy_mcsafe
 
     copy memory with indication if a machine check happened
 
-    :param void \*dst:
+    :param dst:
         destination address
+    :type dst: void \*
 
-    :param const void \*src:
+    :param src:
         source address
+    :type src: const void \*
 
-    :param size_t cnt:
+    :param cnt:
         number of bytes to copy
+    :type cnt: size_t
 
 .. _`memcpy_mcsafe.description`:
 

@@ -106,23 +106,29 @@ IIO_DEV_ATTR_FREQ
 
 .. c:function::  IIO_DEV_ATTR_FREQ( 0,  0,  0200,  NULL,  ad9832_write,  AD9832_FREQ0HM)
 
-    :param  0:
+    :param 0:
         *undescribed*
+    :type 0: 
 
-    :param  0:
+    :param 0:
         *undescribed*
+    :type 0: 
 
-    :param  0200:
+    :param 0200:
         *undescribed*
+    :type 0200: 
 
-    :param  NULL:
+    :param NULL:
         *undescribed*
+    :type NULL: 
 
-    :param  ad9832_write:
+    :param ad9832_write:
         *undescribed*
+    :type ad9832_write: 
 
-    :param  AD9832_FREQ0HM:
+    :param AD9832_FREQ0HM:
         *undescribed*
+    :type AD9832_FREQ0HM: 
 
 .. This file was automatic generated / don't edit.
 

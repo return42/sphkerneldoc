@@ -78,8 +78,9 @@ is_nvram_char
 
     check if char is a valid one for NVRAM entry
 
-    :param char c:
+    :param c:
         *undescribed*
+    :type c: char
 
 .. _`is_nvram_char.description`:
 

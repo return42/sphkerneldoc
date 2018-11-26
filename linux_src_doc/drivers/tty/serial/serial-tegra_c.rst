@@ -10,11 +10,13 @@ tegra_uart_wait_cycle_time
 
     Wait for N UART clock periods
 
-    :param struct tegra_uart_port \*tup:
+    :param tup:
         Tegra serial port data structure.
+    :type tup: struct tegra_uart_port \*
 
-    :param unsigned int cycles:
+    :param cycles:
         Number of clock periods to wait.
+    :type cycles: unsigned int
 
 .. _`tegra_uart_wait_cycle_time.description`:
 

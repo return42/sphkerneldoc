@@ -10,8 +10,9 @@ acpi_extract_apple_properties
 
     retrieve and convert Apple \_DSM properties
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device for which to retrieve the properties
+    :type adev: struct acpi_device \*
 
 .. _`acpi_extract_apple_properties.description`:
 

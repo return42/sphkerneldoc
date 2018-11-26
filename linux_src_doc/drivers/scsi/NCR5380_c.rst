@@ -10,8 +10,9 @@ initialize_SCp
 
     init the scsi pointer field
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         command block to set up
+    :type cmd: struct scsi_cmnd \*
 
 .. _`initialize_scp.description`:
 
@@ -29,29 +30,37 @@ NCR5380_poll_politely2
 
     wait for two chip register values
 
-    :param struct NCR5380_hostdata \*hostdata:
+    :param hostdata:
         host private data
+    :type hostdata: struct NCR5380_hostdata \*
 
-    :param unsigned int reg1:
+    :param reg1:
         5380 register to poll
+    :type reg1: unsigned int
 
-    :param u8 bit1:
+    :param bit1:
         Bitmask to check
+    :type bit1: u8
 
-    :param u8 val1:
+    :param val1:
         Expected value
+    :type val1: u8
 
-    :param unsigned int reg2:
+    :param reg2:
         Second 5380 register to poll
+    :type reg2: unsigned int
 
-    :param u8 bit2:
+    :param bit2:
         Second bitmask to check
+    :type bit2: u8
 
-    :param u8 val2:
+    :param val2:
         Second expected value
+    :type val2: u8
 
-    :param unsigned long wait:
+    :param wait:
         Time-out in jiffies
+    :type wait: unsigned long
 
 .. _`ncr5380_poll_politely2.description`:
 
@@ -74,8 +83,9 @@ NCR5380_print
 
     print scsi bus signals
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         adapter state to dump
+    :type instance: struct Scsi_Host \*
 
 .. _`ncr5380_print.description`:
 
@@ -93,8 +103,9 @@ NCR5380_print_phase
 
     show SCSI phase
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         adapter to dump
+    :type instance: struct Scsi_Host \*
 
 .. _`ncr5380_print_phase.description`:
 
@@ -112,8 +123,9 @@ NCR5380_info
 
     report driver and host information
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         relevant scsi host instance
+    :type instance: struct Scsi_Host \*
 
 .. _`ncr5380_info.description`:
 
@@ -131,11 +143,13 @@ NCR5380_init
 
     initialise an NCR5380
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         adapter to configure
+    :type instance: struct Scsi_Host \*
 
-    :param int flags:
+    :param flags:
         control flags
+    :type flags: int
 
 .. _`ncr5380_init.description`:
 
@@ -159,8 +173,9 @@ NCR5380_maybe_reset_bus
 
     Detect and correct bus wedge problems.
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         adapter to check
+    :type instance: struct Scsi_Host \*
 
 .. _`ncr5380_maybe_reset_bus.description`:
 
@@ -185,8 +200,9 @@ NCR5380_exit
 
     remove an NCR5380
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         adapter to remove
+    :type instance: struct Scsi_Host \*
 
 .. _`ncr5380_exit.description`:
 
@@ -204,11 +220,13 @@ complete_cmd
 
     finish processing a command and return it to the SCSI ML
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         the host instance
+    :type instance: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         command to complete
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ncr5380_queue_command`:
 
@@ -219,11 +237,13 @@ NCR5380_queue_command
 
     queue a command
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         the relevant SCSI adapter
+    :type instance: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ncr5380_queue_command.description`:
 
@@ -243,8 +263,9 @@ dequeue_next_cmd
 
     dequeue a command for processing
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         the scsi host instance
+    :type instance: struct Scsi_Host \*
 
 .. _`dequeue_next_cmd.description`:
 
@@ -266,8 +287,9 @@ NCR5380_main
 
     NCR state machines
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`ncr5380_main.description`:
 
@@ -288,11 +310,13 @@ NCR5380_intr
 
     generic NCR5380 irq handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         device info
+    :type dev_id: void \*
 
 .. _`ncr5380_intr.description`:
 
@@ -342,6 +366,47 @@ is unnecessary because that interrupt is never enabled. A Loss of BSY
 condition will clear DMA Mode. We can tell when this occurs because the
 the Busy Monitor interrupt is enabled together with DMA Mode.
 
+.. _`ncr5380_select`:
+
+NCR5380_select
+==============
+
+.. c:function:: bool NCR5380_select(struct Scsi_Host *instance, struct scsi_cmnd *cmd)
+
+    attempt arbitration and selection for a given command
+
+    :param instance:
+        the Scsi_Host instance
+    :type instance: struct Scsi_Host \*
+
+    :param cmd:
+        the scsi_cmnd to execute
+    :type cmd: struct scsi_cmnd \*
+
+.. _`ncr5380_select.description`:
+
+Description
+-----------
+
+This routine establishes an I_T_L nexus for a SCSI command. This involves
+ARBITRATION, SELECTION and MESSAGE OUT phases and an IDENTIFY message.
+
+Returns true if the operation should be retried.
+Returns false if it should not be retried.
+
+Side effects :
+If bus busy, arbitration failed, etc, \ :c:func:`NCR5380_select`\  will exit
+with registers as they should have been on entry - ie
+SELECT_ENABLE will be set appropriately, the NCR5380
+will cease to drive any SCSI bus signals.
+
+If successful : the I_T_L nexus will be established, and
+hostdata->connected will be set to cmd.
+SELECT interrupt will be disabled.
+
+If failed (no target) : cmd->scsi_done() will be called, and the
+cmd->result host byte set to DID_BAD_TARGET.
+
 .. _`do_reset`:
 
 do_reset
@@ -351,8 +416,9 @@ do_reset
 
     issue a reset command
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         adapter to reset
+    :type instance: struct Scsi_Host \*
 
 .. _`do_reset.description`:
 
@@ -375,8 +441,9 @@ do_abort
 
     abort the currently established nexus by going to MESSAGE OUT phase and sending an ABORT message.
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         relevant scsi host instance
+    :type instance: struct Scsi_Host \*
 
 .. _`do_abort.description`:
 
@@ -394,11 +461,13 @@ list_find_cmd
 
     test for presence of a command in a linked list
 
-    :param struct list_head \*haystack:
+    :param haystack:
         list of commands
+    :type haystack: struct list_head \*
 
-    :param struct scsi_cmnd \*needle:
+    :param needle:
         command to search for
+    :type needle: struct scsi_cmnd \*
 
 .. _`list_del_cmd`:
 
@@ -409,11 +478,13 @@ list_del_cmd
 
     remove a command from linked list
 
-    :param struct list_head \*haystack:
+    :param haystack:
         list of commands
+    :type haystack: struct list_head \*
 
-    :param struct scsi_cmnd \*needle:
+    :param needle:
         command to remove
+    :type needle: struct scsi_cmnd \*
 
 .. _`ncr5380_abort`:
 
@@ -424,8 +495,9 @@ NCR5380_abort
 
     scsi host \ :c:func:`eh_abort_handler`\  method
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         the command to be aborted
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ncr5380_abort.description`:
 
@@ -465,8 +537,9 @@ NCR5380_host_reset
 
     reset the SCSI host
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command undergoing EH
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ncr5380_host_reset.description`:
 

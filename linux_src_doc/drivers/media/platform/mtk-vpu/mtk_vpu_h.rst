@@ -10,14 +10,17 @@ ipi_handler_t
 
     related to video codec, scaling and color format converting. VPU interfaces with other blocks by share memory and interrupt.
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param unsigned int len:
+    :param len:
         *undescribed*
+    :type len: unsigned int
 
-    :param void \*priv:
+    :param priv:
         *undescribed*
+    :type priv: void \*
 
 .. _`ipi_id`:
 
@@ -142,20 +145,25 @@ vpu_ipi_register
 
     register an ipi function
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         VPU platform device
+    :type pdev: struct platform_device \*
 
-    :param enum ipi_id id:
+    :param id:
         IPI ID
+    :type id: enum ipi_id
 
-    :param ipi_handler_t handler:
+    :param handler:
         IPI handler
+    :type handler: ipi_handler_t
 
-    :param const char \*name:
+    :param name:
         IPI name
+    :type name: const char \*
 
-    :param void \*priv:
+    :param priv:
         private data for IPI handler
+    :type priv: void \*
 
 .. _`vpu_ipi_register.description`:
 
@@ -180,17 +188,21 @@ vpu_ipi_send
 
     send data from AP to vpu.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         VPU platform device
+    :type pdev: struct platform_device \*
 
-    :param enum ipi_id id:
+    :param id:
         IPI ID
+    :type id: enum ipi_id
 
-    :param void \*buf:
+    :param buf:
         the data buffer
+    :type buf: void \*
 
-    :param unsigned int len:
+    :param len:
         the data buffer length
+    :type len: unsigned int
 
 .. _`vpu_ipi_send.description`:
 
@@ -218,9 +230,10 @@ vpu_get_plat_device
 
     get VPU's platform device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         the platform device of the module requesting VPU platform
         device for using VPU API.
+    :type pdev: struct platform_device \*
 
 .. _`vpu_get_plat_device.return`:
 
@@ -239,17 +252,21 @@ vpu_wdt_reg_handler
 
     register a VPU watchdog handler
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         VPU platform device
+    :type pdev: struct platform_device \*
 
-    :param void vpu_wdt_reset_func(void \*:
+    :param :
         *undescribed*
+    :type : void vpu_wdt_reset_func(void \*
 
-    :param void \*priv:
+    :param priv:
         *undescribed*
+    :type priv: void \*
 
-    :param enum rst_id id:
+    :param id:
         *undescribed*
+    :type id: enum rst_id
 
 .. _`vpu_wdt_reg_handler.description`:
 
@@ -275,8 +292,9 @@ vpu_get_vdec_hw_capa
 
     get video decoder hardware capability
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         VPU platform device
+    :type pdev: struct platform_device \*
 
 .. _`vpu_get_vdec_hw_capa.return`:
 
@@ -294,8 +312,9 @@ vpu_get_venc_hw_capa
 
     get video encoder hardware capability
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         VPU platform device
+    :type pdev: struct platform_device \*
 
 .. _`vpu_get_venc_hw_capa.return`:
 
@@ -313,8 +332,9 @@ vpu_load_firmware
 
     download VPU firmware and boot it
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         VPU platform device
+    :type pdev: struct platform_device \*
 
 .. _`vpu_load_firmware.return`:
 
@@ -333,11 +353,13 @@ vpu_mapping_dm_addr
 
     Mapping DTCM/DMEM to kernel virtual address
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         VPU platform device
+    :type pdev: struct platform_device \*
 
-    :param u32 dtcm_dmem_addr:
+    :param dtcm_dmem_addr:
         *undescribed*
+    :type dtcm_dmem_addr: u32
 
 .. _`vpu_mapping_dm_addr.description`:
 

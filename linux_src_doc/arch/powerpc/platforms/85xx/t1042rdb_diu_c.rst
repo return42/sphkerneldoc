@@ -10,8 +10,9 @@ t1042rdb_set_monitor_port
 
     switch the output to a different monitor port
 
-    :param enum fsl_diu_monitor_port port:
+    :param port:
         *undescribed*
+    :type port: enum fsl_diu_monitor_port
 
 .. _`t1042rdb_set_pixel_clock`:
 
@@ -22,8 +23,9 @@ t1042rdb_set_pixel_clock
 
     program the DIU's clock
 
-    :param unsigned int pixclock:
+    :param pixclock:
         pixel clock in ps (pico seconds)
+    :type pixclock: unsigned int
 
 .. _`t1042rdb_valid_monitor_port`:
 
@@ -34,8 +36,9 @@ t1042rdb_valid_monitor_port
 
     set the monitor port for sysfs
 
-    :param enum fsl_diu_monitor_port port:
+    :param port:
         *undescribed*
+    :type port: enum fsl_diu_monitor_port
 
 .. This file was automatic generated / don't edit.
 

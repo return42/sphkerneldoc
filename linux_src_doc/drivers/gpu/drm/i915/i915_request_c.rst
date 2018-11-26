@@ -10,11 +10,13 @@ i915_request_alloc
 
     allocate a request structure
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         engine that we wish to issue the request on.
+    :type engine: struct intel_engine_cs \*
 
-    :param struct i915_gem_context \*ctx:
+    :param ctx:
         context that the request will be associated with.
+    :type ctx: struct i915_gem_context \*
 
 .. _`i915_request_alloc.description`:
 
@@ -33,14 +35,17 @@ i915_request_await_object
 
     set this request to (async) wait upon a bo
 
-    :param struct i915_request \*to:
+    :param to:
         request we are wishing to use
+    :type to: struct i915_request \*
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         object which may be in use on another ring.
+    :type obj: struct drm_i915_gem_object \*
 
-    :param bool write:
+    :param write:
         whether the wait is on behalf of a writer
+    :type write: bool
 
 .. _`i915_request_await_object.description`:
 
@@ -70,14 +75,17 @@ i915_request_wait
 
     wait until execution of request has finished
 
-    :param struct i915_request \*rq:
+    :param rq:
         the request to wait upon
+    :type rq: struct i915_request \*
 
-    :param unsigned int flags:
+    :param flags:
         how to wait
+    :type flags: unsigned int
 
-    :param long timeout:
+    :param timeout:
         how long to wait in jiffies
+    :type timeout: long
 
 .. _`i915_request_wait.description`:
 

@@ -10,8 +10,9 @@ mips_cpu_save
 
     Save general CPU state. Ensures that general CPU context is saved, notably FPU and DSP.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cpu_restore`:
 
@@ -22,8 +23,9 @@ mips_cpu_restore
 
     Restore general CPU state. Restores important CPU context.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_pm_notifier`:
 
@@ -34,14 +36,17 @@ mips_pm_notifier
 
     Notifier for preserving general CPU context.
 
-    :param struct notifier_block \*self:
+    :param self:
         Notifier block.
+    :type self: struct notifier_block \*
 
-    :param unsigned long cmd:
+    :param cmd:
         CPU PM event.
+    :type cmd: unsigned long
 
-    :param void \*v:
+    :param v:
         Private data (unused).
+    :type v: void \*
 
 .. _`mips_pm_notifier.description`:
 

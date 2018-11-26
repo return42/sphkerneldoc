@@ -10,32 +10,41 @@ clk_register_divider
 
     register a divider clock with the clock framework
 
-    :param struct device \*dev:
+    :param dev:
         device registering this clock
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         name of clock's parent
+    :type parent_name: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         framework-specific flags
+    :type flags: unsigned long
 
-    :param void __iomem \*reg:
+    :param reg:
         register address to adjust divider
+    :type reg: void __iomem \*
 
-    :param u8 shift:
+    :param shift:
         number of bits to shift the bitfield
+    :type shift: u8
 
-    :param u8 width:
+    :param width:
         width of the bitfield
+    :type width: u8
 
-    :param u8 clk_divider_flags:
+    :param clk_divider_flags:
         divider-specific flags for this clock
+    :type clk_divider_flags: u8
 
-    :param spinlock_t \*lock:
+    :param lock:
         shared register lock for this clock
+    :type lock: spinlock_t \*
 
 .. _`clk_hw_register_divider`:
 
@@ -46,32 +55,41 @@ clk_hw_register_divider
 
     register a divider clock with the clock framework
 
-    :param struct device \*dev:
+    :param dev:
         device registering this clock
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         name of clock's parent
+    :type parent_name: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         framework-specific flags
+    :type flags: unsigned long
 
-    :param void __iomem \*reg:
+    :param reg:
         register address to adjust divider
+    :type reg: void __iomem \*
 
-    :param u8 shift:
+    :param shift:
         number of bits to shift the bitfield
+    :type shift: u8
 
-    :param u8 width:
+    :param width:
         width of the bitfield
+    :type width: u8
 
-    :param u8 clk_divider_flags:
+    :param clk_divider_flags:
         divider-specific flags for this clock
+    :type clk_divider_flags: u8
 
-    :param spinlock_t \*lock:
+    :param lock:
         shared register lock for this clock
+    :type lock: spinlock_t \*
 
 .. _`clk_register_divider_table`:
 
@@ -82,35 +100,45 @@ clk_register_divider_table
 
     register a table based divider clock with the clock framework
 
-    :param struct device \*dev:
+    :param dev:
         device registering this clock
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         name of clock's parent
+    :type parent_name: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         framework-specific flags
+    :type flags: unsigned long
 
-    :param void __iomem \*reg:
+    :param reg:
         register address to adjust divider
+    :type reg: void __iomem \*
 
-    :param u8 shift:
+    :param shift:
         number of bits to shift the bitfield
+    :type shift: u8
 
-    :param u8 width:
+    :param width:
         width of the bitfield
+    :type width: u8
 
-    :param u8 clk_divider_flags:
+    :param clk_divider_flags:
         divider-specific flags for this clock
+    :type clk_divider_flags: u8
 
-    :param const struct clk_div_table \*table:
+    :param table:
         array of divider/value pairs ending with a div set to 0
+    :type table: const struct clk_div_table \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         shared register lock for this clock
+    :type lock: spinlock_t \*
 
 .. _`clk_hw_register_divider_table`:
 
@@ -121,35 +149,45 @@ clk_hw_register_divider_table
 
     register a table based divider clock with the clock framework
 
-    :param struct device \*dev:
+    :param dev:
         device registering this clock
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         name of clock's parent
+    :type parent_name: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         framework-specific flags
+    :type flags: unsigned long
 
-    :param void __iomem \*reg:
+    :param reg:
         register address to adjust divider
+    :type reg: void __iomem \*
 
-    :param u8 shift:
+    :param shift:
         number of bits to shift the bitfield
+    :type shift: u8
 
-    :param u8 width:
+    :param width:
         width of the bitfield
+    :type width: u8
 
-    :param u8 clk_divider_flags:
+    :param clk_divider_flags:
         divider-specific flags for this clock
+    :type clk_divider_flags: u8
 
-    :param const struct clk_div_table \*table:
+    :param table:
         array of divider/value pairs ending with a div set to 0
+    :type table: const struct clk_div_table \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         shared register lock for this clock
+    :type lock: spinlock_t \*
 
 .. _`clk_hw_unregister_divider`:
 
@@ -160,8 +198,9 @@ clk_hw_unregister_divider
 
     unregister a clk divider
 
-    :param struct clk_hw \*hw:
+    :param hw:
         hardware-specific clock data to unregister
+    :type hw: struct clk_hw \*
 
 .. This file was automatic generated / don't edit.
 

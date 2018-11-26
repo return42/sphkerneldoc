@@ -10,8 +10,9 @@ select_channel
 
     Select a SPU channel to handle a crypto request. Selects channel in round robin order.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`select_channel.return`:
 
@@ -29,22 +30,27 @@ spu_ablkcipher_rx_sg_create
 
     Build up the scatterlist of buffers used to receive a SPU response message for an ablkcipher request. Includes buffers to catch SPU message headers and the response data.
 
-    :param struct brcm_message \*mssg:
+    :param mssg:
         mailbox message containing the receive sg
+    :type mssg: struct brcm_message \*
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
-    :param u8 rx_frag_num:
+    :param rx_frag_num:
         number of scatterlist elements required to hold the
         SPU response message
+    :type rx_frag_num: u8
 
-    :param unsigned int chunksize:
+    :param chunksize:
         Number of bytes of response data expected
+    :type chunksize: unsigned int
 
-    :param u32 stat_pad_len:
+    :param stat_pad_len:
         Number of bytes required to pad the STAT field to
         a 4-byte boundary
+    :type stat_pad_len: u32
 
 .. _`spu_ablkcipher_rx_sg_create.description`:
 
@@ -72,21 +78,26 @@ spu_ablkcipher_tx_sg_create
 
     Build up the scatterlist of buffers used to send a SPU request message for an ablkcipher request. Includes SPU message headers and the request data.
 
-    :param struct brcm_message \*mssg:
+    :param mssg:
         mailbox message containing the transmit sg
+    :type mssg: struct brcm_message \*
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
-    :param u8 tx_frag_num:
+    :param tx_frag_num:
         number of scatterlist elements required to construct the
         SPU request message
+    :type tx_frag_num: u8
 
-    :param unsigned int chunksize:
+    :param chunksize:
         Number of bytes of request data
+    :type chunksize: unsigned int
 
-    :param u32 pad_len:
+    :param pad_len:
         Number of pad bytes
+    :type pad_len: u32
 
 .. _`spu_ablkcipher_tx_sg_create.description`:
 
@@ -114,8 +125,9 @@ handle_ablkcipher_req
 
     Submit as much of a block cipher request as fits in a single SPU request message, starting at the current position in the request data.
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         Crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
 .. _`handle_ablkcipher_req.description`:
 
@@ -148,8 +160,9 @@ handle_ablkcipher_resp
 
     Process a block cipher SPU response. Updates the total received count for the request and updates global stats.
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         Crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
 .. _`spu_ahash_rx_sg_create`:
 
@@ -160,22 +173,27 @@ spu_ahash_rx_sg_create
 
     Build up the scatterlist of buffers used to receive a SPU response message for an ahash request.
 
-    :param struct brcm_message \*mssg:
+    :param mssg:
         mailbox message containing the receive sg
+    :type mssg: struct brcm_message \*
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
-    :param u8 rx_frag_num:
+    :param rx_frag_num:
         number of scatterlist elements required to hold the
         SPU response message
+    :type rx_frag_num: u8
 
-    :param unsigned int digestsize:
+    :param digestsize:
         length of hash digest, in bytes
+    :type digestsize: unsigned int
 
-    :param u32 stat_pad_len:
+    :param stat_pad_len:
         Number of bytes required to pad the STAT field to
         a 4-byte boundary
+    :type stat_pad_len: u32
 
 .. _`spu_ahash_rx_sg_create.description`:
 
@@ -203,27 +221,34 @@ spu_ahash_tx_sg_create
 
     Build up the scatterlist of buffers used to send a SPU request message for an ahash request. Includes SPU message headers and the request data.
 
-    :param struct brcm_message \*mssg:
+    :param mssg:
         mailbox message containing the transmit sg
+    :type mssg: struct brcm_message \*
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
-    :param u8 tx_frag_num:
+    :param tx_frag_num:
         number of scatterlist elements required to construct the
         SPU request message
+    :type tx_frag_num: u8
 
-    :param u32 spu_hdr_len:
+    :param spu_hdr_len:
         length in bytes of SPU message header
+    :type spu_hdr_len: u32
 
-    :param unsigned int hash_carry_len:
+    :param hash_carry_len:
         Number of bytes of data carried over from previous req
+    :type hash_carry_len: unsigned int
 
-    :param unsigned int new_data_len:
+    :param new_data_len:
         Number of bytes of new request data
+    :type new_data_len: unsigned int
 
-    :param u32 pad_len:
+    :param pad_len:
         Number of pad bytes
+    :type pad_len: u32
 
 .. _`spu_ahash_tx_sg_create.description`:
 
@@ -251,8 +276,9 @@ handle_ahash_req
 
     Process an asynchronous hash request from the crypto API.
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         Crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
 .. _`handle_ahash_req.description`:
 
@@ -299,11 +325,13 @@ spu_hmac_outer_hash
 
     Request synchonous software compute of the outer hash for an HMAC request.
 
-    :param struct ahash_request \*req:
+    :param req:
         The HMAC request from the crypto API
+    :type req: struct ahash_request \*
 
-    :param struct iproc_ctx_s \*ctx:
+    :param ctx:
         The session context
+    :type ctx: struct iproc_ctx_s \*
 
 .. _`spu_hmac_outer_hash.return`:
 
@@ -323,8 +351,9 @@ ahash_req_done
 
     Process a hash result from the SPU hardware.
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         Crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
 .. _`ahash_req_done.return`:
 
@@ -343,8 +372,9 @@ handle_ahash_resp
 
     Process a SPU response message for a hash request. Checks if the entire crypto API request has been processed, and if so, invokes post processing on the result.
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         Crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
 .. _`spu_aead_rx_sg_create`:
 
@@ -355,35 +385,44 @@ spu_aead_rx_sg_create
 
     Build up the scatterlist of buffers used to receive a SPU response message for an AEAD request. Includes buffers to catch SPU message headers and the response data.
 
-    :param struct brcm_message \*mssg:
+    :param mssg:
         mailbox message containing the receive sg
+    :type mssg: struct brcm_message \*
 
-    :param struct aead_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct aead_request \*
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
-    :param u8 rx_frag_num:
+    :param rx_frag_num:
         number of scatterlist elements required to hold the
         SPU response message
+    :type rx_frag_num: u8
 
-    :param unsigned int assoc_len:
+    :param assoc_len:
         Length of associated data included in the crypto request
+    :type assoc_len: unsigned int
 
-    :param u32 ret_iv_len:
+    :param ret_iv_len:
         Length of IV returned in response
+    :type ret_iv_len: u32
 
-    :param unsigned int resp_len:
+    :param resp_len:
         Number of bytes of response data expected to be written to
         dst buffer from crypto API
+    :type resp_len: unsigned int
 
-    :param unsigned int digestsize:
+    :param digestsize:
         Length of hash digest, in bytes
+    :type digestsize: unsigned int
 
-    :param u32 stat_pad_len:
+    :param stat_pad_len:
         Number of bytes required to pad the STAT field to
         a 4-byte boundary
+    :type stat_pad_len: u32
 
 .. _`spu_aead_rx_sg_create.description`:
 
@@ -411,43 +450,55 @@ spu_aead_tx_sg_create
 
     Build up the scatterlist of buffers used to send a SPU request message for an AEAD request. Includes SPU message headers and the request data.
 
-    :param struct brcm_message \*mssg:
+    :param mssg:
         mailbox message containing the transmit sg
+    :type mssg: struct brcm_message \*
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
-    :param u8 tx_frag_num:
+    :param tx_frag_num:
         number of scatterlist elements required to construct the
         SPU request message
+    :type tx_frag_num: u8
 
-    :param u32 spu_hdr_len:
+    :param spu_hdr_len:
         length of SPU message header in bytes
+    :type spu_hdr_len: u32
 
-    :param struct scatterlist \*assoc:
+    :param assoc:
         crypto API associated data scatterlist
+    :type assoc: struct scatterlist \*
 
-    :param unsigned int assoc_len:
+    :param assoc_len:
         length of associated data
+    :type assoc_len: unsigned int
 
-    :param int assoc_nents:
+    :param assoc_nents:
         number of scatterlist entries containing assoc data
+    :type assoc_nents: int
 
-    :param unsigned int aead_iv_len:
+    :param aead_iv_len:
         length of AEAD IV, if included
+    :type aead_iv_len: unsigned int
 
-    :param unsigned int chunksize:
+    :param chunksize:
         Number of bytes of request data
+    :type chunksize: unsigned int
 
-    :param u32 aad_pad_len:
+    :param aad_pad_len:
         Number of bytes of padding at end of AAD. For GCM/CCM.
+    :type aad_pad_len: u32
 
-    :param u32 pad_len:
+    :param pad_len:
         Number of pad bytes
+    :type pad_len: u32
 
-    :param bool incl_icv:
+    :param incl_icv:
         If true, write separate ICV buffer after data and
         any padding
+    :type incl_icv: bool
 
 .. _`spu_aead_tx_sg_create.description`:
 
@@ -475,8 +526,9 @@ handle_aead_req
 
     Submit a SPU request message for the next chunk of the current AEAD request.
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         Crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
 .. _`handle_aead_req.description`:
 
@@ -509,8 +561,9 @@ handle_aead_resp
 
     Process a SPU response message for an AEAD request.
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         Crypto request context
+    :type rctx: struct iproc_reqctx_s \*
 
 .. _`spu_chunk_cleanup`:
 
@@ -521,8 +574,9 @@ spu_chunk_cleanup
 
     Do cleanup after processing one chunk of a request
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         request context
+    :type rctx: struct iproc_reqctx_s \*
 
 .. _`spu_chunk_cleanup.description`:
 
@@ -541,11 +595,13 @@ finish_req
 
     Used to invoke the complete callback from the requester when a request has been handled asynchronously.
 
-    :param struct iproc_reqctx_s \*rctx:
+    :param rctx:
         Request context
+    :type rctx: struct iproc_reqctx_s \*
 
-    :param int err:
+    :param err:
         Indicates whether the request was successful or not
+    :type err: int
 
 .. _`finish_req.description`:
 
@@ -563,11 +619,13 @@ spu_rx_callback
 
     Callback from mailbox framework with a SPU response.
 
-    :param struct mbox_client \*cl:
+    :param cl:
         mailbox client structure for SPU driver
+    :type cl: struct mbox_client \*
 
-    :param void \*msg:
+    :param msg:
         mailbox message containing SPU response
+    :type msg: void \*
 
 .. _`ablkcipher_enqueue`:
 
@@ -578,11 +636,13 @@ ablkcipher_enqueue
 
     Handle ablkcipher encrypt or decrypt request.
 
-    :param struct ablkcipher_request \*req:
+    :param req:
         Crypto API request
+    :type req: struct ablkcipher_request \*
 
-    :param bool encrypt:
+    :param encrypt:
         true if encrypting; false if decrypting
+    :type encrypt: bool
 
 .. _`ablkcipher_enqueue.return`:
 
@@ -602,8 +662,9 @@ spu_no_incr_hash
 
     Determine whether incremental hashing is supported.
 
-    :param struct iproc_ctx_s \*ctx:
+    :param ctx:
         Crypto session context
+    :type ctx: struct iproc_ctx_s \*
 
 .. _`spu_no_incr_hash.description`:
 
@@ -633,14 +694,17 @@ aead_gcm_esp_setkey
 
     \ :c:func:`setkey`\  operation for ESP variant of GCM AES.
 
-    :param struct crypto_aead \*cipher:
+    :param cipher:
         AEAD structure
+    :type cipher: struct crypto_aead \*
 
-    :param const u8 \*key:
+    :param key:
         Key followed by 4 bytes of salt
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         Length of key plus salt, in bytes
+    :type keylen: unsigned int
 
 .. _`aead_gcm_esp_setkey.description`:
 
@@ -666,14 +730,17 @@ rfc4543_gcm_esp_setkey
 
     setkey operation for RFC4543 variant of GCM/GMAC.
 
-    :param struct crypto_aead \*cipher:
+    :param cipher:
         *undescribed*
+    :type cipher: struct crypto_aead \*
 
-    :param const u8 \*key:
+    :param key:
         *undescribed*
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         *undescribed*
+    :type keylen: unsigned int
 
 .. _`rfc4543_gcm_esp_setkey.cipher`:
 
@@ -715,14 +782,17 @@ aead_ccm_esp_setkey
 
     \ :c:func:`setkey`\  operation for ESP variant of CCM AES.
 
-    :param struct crypto_aead \*cipher:
+    :param cipher:
         AEAD structure
+    :type cipher: struct crypto_aead \*
 
-    :param const u8 \*key:
+    :param key:
         Key followed by 4 bytes of salt
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         Length of key plus salt, in bytes
+    :type keylen: unsigned int
 
 .. _`aead_ccm_esp_setkey.description`:
 
@@ -748,14 +818,17 @@ spu_functions_register
 
     Specify hardware-specific SPU functions based on SPU type read from device tree.
 
-    :param struct device \*dev:
+    :param dev:
         device structure
+    :type dev: struct device \*
 
-    :param enum spu_spu_type spu_type:
+    :param spu_type:
         SPU hardware generation
+    :type spu_type: enum spu_spu_type
 
-    :param enum spu_spu_subtype spu_subtype:
+    :param spu_subtype:
         SPU hardware version
+    :type spu_subtype: enum spu_spu_subtype
 
 .. _`spu_mb_init`:
 
@@ -766,8 +839,9 @@ spu_mb_init
 
     Initialize mailbox client. Request ownership of a mailbox channel for the SPU being probed.
 
-    :param struct device \*dev:
+    :param dev:
         SPU driver device structure
+    :type dev: struct device \*
 
 .. _`spu_mb_init.return`:
 

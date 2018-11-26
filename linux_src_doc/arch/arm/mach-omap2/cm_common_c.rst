@@ -10,11 +10,13 @@ omap2_set_globals_cm
 
     set the CM/CM2 base addresses (for early use)
 
-    :param void __iomem \*cm:
+    :param cm:
         CM base virtual address
+    :type cm: void __iomem \*
 
-    :param void __iomem \*cm2:
+    :param cm2:
         CM2 base virtual address (if present on the booted SoC)
+    :type cm2: void __iomem \*
 
 .. _`omap2_set_globals_cm.description`:
 
@@ -32,14 +34,17 @@ cm_split_idlest_reg
 
     split CM_IDLEST reg addr into its components
 
-    :param struct clk_omap_reg \*idlest_reg:
+    :param idlest_reg:
         CM_IDLEST\* virtual address
+    :type idlest_reg: struct clk_omap_reg \*
 
-    :param s16 \*prcm_inst:
+    :param prcm_inst:
         pointer to an s16 to return the PRCM instance offset
+    :type prcm_inst: s16 \*
 
-    :param u8 \*idlest_reg_id:
+    :param idlest_reg_id:
         pointer to a u8 to return the CM_IDLESTx register ID
+    :type idlest_reg_id: u8 \*
 
 .. _`cm_split_idlest_reg.description`:
 
@@ -61,17 +66,21 @@ omap_cm_wait_module_ready
 
     wait for a module to leave idle or standby
 
-    :param u8 part:
+    :param part:
         PRCM partition
+    :type part: u8
 
-    :param s16 prcm_mod:
+    :param prcm_mod:
         PRCM module offset
+    :type prcm_mod: s16
 
-    :param u16 idlest_reg:
+    :param idlest_reg:
         CM_IDLESTx register
+    :type idlest_reg: u16
 
-    :param u8 idlest_shift:
+    :param idlest_shift:
         shift of the bit in the CM_IDLEST\* register to check
+    :type idlest_shift: u8
 
 .. _`omap_cm_wait_module_ready.description`:
 
@@ -93,17 +102,21 @@ omap_cm_wait_module_idle
 
     wait for a module to enter idle or standby
 
-    :param u8 part:
+    :param part:
         PRCM partition
+    :type part: u8
 
-    :param s16 prcm_mod:
+    :param prcm_mod:
         PRCM module offset
+    :type prcm_mod: s16
 
-    :param u16 idlest_reg:
+    :param idlest_reg:
         CM_IDLESTx register
+    :type idlest_reg: u16
 
-    :param u8 idlest_shift:
+    :param idlest_shift:
         shift of the bit in the CM_IDLEST\* register to check
+    :type idlest_shift: u8
 
 .. _`omap_cm_wait_module_idle.description`:
 
@@ -125,17 +138,21 @@ omap_cm_module_enable
 
     enable a module
 
-    :param u8 mode:
+    :param mode:
         target mode for the module
+    :type mode: u8
 
-    :param u8 part:
+    :param part:
         PRCM partition
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         PRCM instance
+    :type inst: u16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         CM_CLKCTRL register offset for the module
+    :type clkctrl_offs: u16
 
 .. _`omap_cm_module_enable.description`:
 
@@ -155,14 +172,17 @@ omap_cm_module_disable
 
     disable a module
 
-    :param u8 part:
+    :param part:
         PRCM partition
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         PRCM instance
+    :type inst: u16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         CM_CLKCTRL register offset for the module
+    :type clkctrl_offs: u16
 
 .. _`omap_cm_module_disable.description`:
 
@@ -182,8 +202,9 @@ cm_register
 
     register per-SoC low-level data with the CM
 
-    :param const struct cm_ll_data \*cld:
+    :param cld:
         low-level per-SoC OMAP CM data & function pointers to register
+    :type cld: const struct cm_ll_data \*
 
 .. _`cm_register.description`:
 
@@ -206,8 +227,9 @@ cm_unregister
 
     unregister per-SoC low-level data & function pointers
 
-    :param const struct cm_ll_data \*cld:
+    :param cld:
         low-level per-SoC OMAP CM data & function pointers to unregister
+    :type cld: const struct cm_ll_data \*
 
 .. _`cm_unregister.description`:
 
@@ -230,8 +252,9 @@ omap2_cm_base_init
 
     initialize iomappings for the CM drivers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2_cm_base_init.description`:
 
@@ -251,8 +274,9 @@ omap_cm_init
 
     low level init for the CM drivers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_cm_init.description`:
 

@@ -10,11 +10,13 @@ serial_omap_irq
 
     This handles the interrupt from one port
 
-    :param int irq:
+    :param irq:
         uart port irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         uart port info
+    :type dev_id: void \*
 
 .. This file was automatic generated / don't edit.
 

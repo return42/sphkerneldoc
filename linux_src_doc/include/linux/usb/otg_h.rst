@@ -51,8 +51,9 @@ usb_get_dr_mode
 
     Get dual role mode for given device
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to the given device
+    :type dev: struct device \*
 
 .. _`usb_get_dr_mode.description`:
 

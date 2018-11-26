@@ -10,12 +10,14 @@ wusbhc_next_tkid
 
     generate a new, currently unused, TKID
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         the WUSB host controller
+    :type wusbhc: struct wusbhc \*
 
-    :param struct wusb_dev \*wusb_dev:
+    :param wusb_dev:
         the device whose PTK the TKID is for
         (or NULL for a TKID for a GTK)
+    :type wusb_dev: struct wusb_dev \*
 
 .. _`wusbhc_next_tkid.the-generated-tkid-consists-of-two-parts`:
 
@@ -37,8 +39,9 @@ wusbhc_sec_start
 
     start the security management process
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         the WUSB host controller
+    :type wusbhc: struct wusbhc \*
 
 .. _`wusbhc_sec_start.description`:
 
@@ -58,8 +61,9 @@ wusbhc_sec_stop
 
     stop the security management process
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         the WUSB host controller
+    :type wusbhc: struct wusbhc \*
 
 .. _`wusbhc_sec_stop.description`:
 
@@ -75,11 +79,13 @@ wusb_dev_update_address
 
 .. c:function:: int wusb_dev_update_address(struct wusbhc *wusbhc, struct wusb_dev *wusb_dev)
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         *undescribed*
+    :type wusbhc: struct wusbhc \*
 
-    :param struct wusb_dev \*wusb_dev:
+    :param wusb_dev:
         *undescribed*
+    :type wusb_dev: struct wusb_dev \*
 
 .. _`wusb_dev_update_address.description`:
 
@@ -101,8 +107,9 @@ wusbhc_gtk_rekey
 
     generate and distribute a new GTK
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         the WUSB host controller
+    :type wusbhc: struct wusbhc \*
 
 .. _`wusbhc_gtk_rekey.description`:
 

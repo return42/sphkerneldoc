@@ -10,11 +10,13 @@ edd_show_raw_data
 
     copies raw data to buffer for userspace to parse
 
-    :param struct edd_device \*edev:
+    :param edev:
         target edd_device
+    :type edev: struct edd_device \*
 
-    :param char \*buf:
+    :param buf:
         output buffer
+    :type buf: char \*
 
 .. _`edd_show_raw_data.return`:
 
@@ -32,8 +34,9 @@ edd_release
 
     free edd structure
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject of edd structure
+    :type kobj: struct kobject \*
 
 .. _`edd_release.description`:
 
@@ -53,11 +56,13 @@ edd_dev_is_type
 
     is this EDD device a 'type' device?
 
-    :param struct edd_device \*edev:
+    :param edev:
         target edd_device
+    :type edev: struct edd_device \*
 
-    :param const char \*type:
+    :param type:
         a host bus or interface identifier string per the EDD spec
+    :type type: const char \*
 
 .. _`edd_dev_is_type.description`:
 
@@ -75,8 +80,9 @@ edd_get_pci_dev
 
     finds pci_dev that matches edev
 
-    :param struct edd_device \*edev:
+    :param edev:
         edd_device
+    :type edev: struct edd_device \*
 
 .. _`edd_get_pci_dev.description`:
 
@@ -94,8 +100,9 @@ edd_init
 
     creates sysfs tree of EDD data
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ encode_bch
 
     calculate BCH ecc parity of data
 
-    :param struct bch_control \*bch:
+    :param bch:
         BCH control structure
+    :type bch: struct bch_control \*
 
-    :param const uint8_t \*data:
+    :param data:
         data to encode
+    :type data: const uint8_t \*
 
-    :param unsigned int len:
+    :param len:
         data length in bytes
+    :type len: unsigned int
 
-    :param uint8_t \*ecc:
+    :param ecc:
         ecc parity data, must be initialized by caller
+    :type ecc: uint8_t \*
 
 .. _`encode_bch.description`:
 
@@ -43,26 +47,33 @@ decode_bch
 
     decode received codeword and find bit error locations
 
-    :param struct bch_control \*bch:
+    :param bch:
         BCH control structure
+    :type bch: struct bch_control \*
 
-    :param const uint8_t \*data:
+    :param data:
         received data, ignored if \ ``calc_ecc``\  is provided
+    :type data: const uint8_t \*
 
-    :param unsigned int len:
+    :param len:
         data length in bytes, must always be provided
+    :type len: unsigned int
 
-    :param const uint8_t \*recv_ecc:
+    :param recv_ecc:
         received ecc, if NULL then assume it was XORed in \ ``calc_ecc``\ 
+    :type recv_ecc: const uint8_t \*
 
-    :param const uint8_t \*calc_ecc:
+    :param calc_ecc:
         calculated ecc, if NULL then calc_ecc is computed from \ ``data``\ 
+    :type calc_ecc: const uint8_t \*
 
-    :param const unsigned int \*syn:
+    :param syn:
         hw computed syndrome data (if NULL, syndrome is calculated)
+    :type syn: const unsigned int \*
 
-    :param unsigned int \*errloc:
+    :param errloc:
         output array of error locations
+    :type errloc: unsigned int \*
 
 .. _`decode_bch.return`:
 
@@ -109,14 +120,17 @@ init_bch
 
     initialize a BCH encoder/decoder
 
-    :param int m:
+    :param m:
         Galois field order, should be in the range 5-15
+    :type m: int
 
-    :param int t:
+    :param t:
         maximum error correction capability, in bits
+    :type t: int
 
-    :param unsigned int prim_poly:
+    :param prim_poly:
         user-provided primitive polynomial (or 0 to use default)
+    :type prim_poly: unsigned int
 
 .. _`init_bch.return`:
 
@@ -146,8 +160,9 @@ free_bch
 
     free the BCH control structure
 
-    :param struct bch_control \*bch:
+    :param bch:
         BCH control structure to release
+    :type bch: struct bch_control \*
 
 .. This file was automatic generated / don't edit.
 

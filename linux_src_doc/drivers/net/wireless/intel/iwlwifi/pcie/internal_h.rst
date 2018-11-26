@@ -22,6 +22,7 @@ Definition
         u16 vid;
         bool invalid;
         struct list_head list;
+        u32 size;
     }
 
 .. _`iwl_rx_mem_buffer.members`:
@@ -43,6 +44,9 @@ invalid
 
 list
     *undescribed*
+
+size
+    size used from the buffer
 
 .. _`isr_statistics`:
 
@@ -112,6 +116,109 @@ tx
 unhandled
     *undescribed*
 
+.. _`iwl_rx_transfer_desc`:
+
+struct iwl_rx_transfer_desc
+===========================
+
+.. c:type:: struct iwl_rx_transfer_desc
+
+    transfer descriptor
+
+.. _`iwl_rx_transfer_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_rx_transfer_desc {
+        __le32 type_n_size;
+        __le64 addr;
+        __le16 rbid;
+        __le16 reserved;
+    }
+
+.. _`iwl_rx_transfer_desc.members`:
+
+Members
+-------
+
+type_n_size
+    buffer type (bit 0: external buff valid,
+
+addr
+    ptr to free buffer start address
+
+rbid
+    unique tag of the buffer
+
+reserved
+    reserved
+
+.. _`iwl_rx_transfer_desc.bit-1`:
+
+bit 1
+-----
+
+optional footer valid, bit 2-7: reserved)
+and buffer size
+
+.. _`iwl_rx_completion_desc`:
+
+struct iwl_rx_completion_desc
+=============================
+
+.. c:type:: struct iwl_rx_completion_desc
+
+    completion descriptor
+
+.. _`iwl_rx_completion_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_rx_completion_desc {
+        u8 type;
+        u8 status;
+        __le16 reserved1;
+        __le16 rbid;
+        __le32 size;
+        u8 reserved2[22];
+    }
+
+.. _`iwl_rx_completion_desc.members`:
+
+Members
+-------
+
+type
+    buffer type (bit 0: external buff valid,
+
+status
+    status of the completion
+
+reserved1
+    reserved
+
+rbid
+    unique tag of the received buffer
+
+size
+    buffer size, masked by IWL_RX_CD_SIZE
+
+reserved2
+    reserved
+
+.. _`iwl_rx_completion_desc.bit-1`:
+
+bit 1
+-----
+
+optional footer valid, bit 2-7: reserved)
+
 .. _`iwl_rxq`:
 
 struct iwl_rxq
@@ -132,8 +239,16 @@ Definition
         int id;
         void *bd;
         dma_addr_t bd_dma;
-        __le32 *used_bd;
+        union {
+            void *used_bd;
+            __le32 *bd_32;
+            struct iwl_rx_completion_desc *cd;
+        } ;
         dma_addr_t used_bd_dma;
+        __le16 *tr_tail;
+        dma_addr_t tr_tail_dma;
+        __le16 *cr_tail;
+        dma_addr_t cr_tail_dma;
         u32 read;
         u32 write;
         u32 free_count;
@@ -143,7 +258,7 @@ Definition
         struct list_head rx_free;
         struct list_head rx_used;
         bool need_update;
-        struct iwl_rb_status *rb_stts;
+        void *rb_stts;
         dma_addr_t rb_stts_dma;
         spinlock_t lock;
         struct napi_struct napi;
@@ -161,15 +276,37 @@ id
 bd
     driver's pointer to buffer of receive buffer descriptors (rbd).
     Address size is 32 bit in pre-9000 devices and 64 bit in 9000 devices.
+    In 22560 devices it is a pointer to a list of iwl_rx_transfer_desc's
 
 bd_dma
     bus address of buffer of receive buffer descriptors (rbd)
 
+{unnamed_union}
+    anonymous
+
 used_bd
+    *undescribed*
+
+bd_32
+    *undescribed*
+
+cd
     *undescribed*
 
 used_bd_dma
     *undescribed*
+
+tr_tail
+    driver's pointer to the transmission ring tail buffer
+
+tr_tail_dma
+    physical address of the buffer for the transmission ring tail
+
+cr_tail
+    driver's pointer to the completion ring tail buffer
+
+cr_tail_dma
+    physical address of the buffer for the completion ring tail
 
 read
     Shared index to newest available Rx buffer
@@ -279,24 +416,51 @@ rx_alloc
 iwl_queue_inc_wrap
 ==================
 
-.. c:function:: int iwl_queue_inc_wrap(int index)
+.. c:function:: int iwl_queue_inc_wrap(struct iwl_trans *trans, int index)
 
     increment queue index, wrap back to beginning \ ``index``\  -- current index
 
-    :param int index:
+    :param trans:
         *undescribed*
+    :type trans: struct iwl_trans \*
+
+    :param index:
+        *undescribed*
+    :type index: int
+
+.. _`iwl_get_closed_rb_stts`:
+
+iwl_get_closed_rb_stts
+======================
+
+.. c:function:: __le16 iwl_get_closed_rb_stts(struct iwl_trans *trans, struct iwl_rxq *rxq)
+
+    get closed rb stts from different structs \ ``rxq``\  - the rxq to get the rb stts from
+
+    :param trans:
+        *undescribed*
+    :type trans: struct iwl_trans \*
+
+    :param rxq:
+        *undescribed*
+    :type rxq: struct iwl_rxq \*
 
 .. _`iwl_queue_dec_wrap`:
 
 iwl_queue_dec_wrap
 ==================
 
-.. c:function:: int iwl_queue_dec_wrap(int index)
+.. c:function:: int iwl_queue_dec_wrap(struct iwl_trans *trans, int index)
 
     decrement queue index, wrap back to end \ ``index``\  -- current index
 
-    :param int index:
+    :param trans:
         *undescribed*
+    :type trans: struct iwl_trans \*
+
+    :param index:
+        *undescribed*
+    :type index: int
 
 .. _`iwl_txq`:
 
@@ -481,40 +645,41 @@ IWL_SHARED_IRQ_NON_RX
 IWL_SHARED_IRQ_FIRST_RSS
     interrupt vector serves first RSS queue.
 
-.. _`iwl_dram_data`:
+.. _`iwl_image_response_code`:
 
-struct iwl_dram_data
-====================
+enum iwl_image_response_code
+============================
 
-.. c:type:: struct iwl_dram_data
+.. c:type:: enum iwl_image_response_code
 
+    image response values
 
-.. _`iwl_dram_data.definition`:
+.. _`iwl_image_response_code.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct iwl_dram_data {
-        dma_addr_t physical;
-        void *block;
-        int size;
-    }
+    enum iwl_image_response_code {
+        IWL_IMAGE_RESP_DEF,
+        IWL_IMAGE_RESP_SUCCESS,
+        IWL_IMAGE_RESP_FAIL
+    };
 
-.. _`iwl_dram_data.members`:
+.. _`iwl_image_response_code.constants`:
 
-Members
--------
+Constants
+---------
 
-physical
-    page phy pointer
+IWL_IMAGE_RESP_DEF
+    the default value of the register
 
-block
-    pointer to the allocated block/page
+IWL_IMAGE_RESP_SUCCESS
+    iml was read successfully
 
-size
-    size of the block/page
+IWL_IMAGE_RESP_FAIL
+    iml reading failed
 
 .. _`iwl_self_init_dram`:
 
@@ -577,8 +742,16 @@ Definition
         struct iwl_rx_mem_buffer rx_pool[RX_POOL_SIZE];
         struct iwl_rx_mem_buffer *global_table[RX_POOL_SIZE];
         struct iwl_rb_allocator rba;
-        struct iwl_context_info *ctxt_info;
+        union {
+            struct iwl_context_info *ctxt_info;
+            struct iwl_context_info_gen3 *ctxt_info_gen3;
+        } ;
+        struct iwl_prph_info *prph_info;
+        struct iwl_prph_scratch *prph_scratch;
         dma_addr_t ctxt_info_dma_addr;
+        dma_addr_t prph_info_dma_addr;
+        dma_addr_t prph_scratch_dma_addr;
+        dma_addr_t iml_dma_addr;
         struct iwl_self_init_dram init_dram;
         struct iwl_trans *trans;
         struct net_device napi_dev;
@@ -608,6 +781,7 @@ Definition
         wait_queue_head_t d0i3_waitq;
         u8 page_offs, dev_cmd_offs;
         u8 cmd_queue;
+        u8 def_rx_queue;
         u8 cmd_fifo;
         unsigned int cmd_q_wdg_timeout;
         u8 n_no_reclaim_cmds;
@@ -623,9 +797,6 @@ Definition
         spinlock_t reg_lock;
         bool cmd_hold_nic_awake;
         bool ref_cmd_in_flight;
-        dma_addr_t fw_mon_phys;
-        struct page *fw_mon_page;
-        u32 fw_mon_size;
         struct msix_entry msix_entries[IWL_MAX_RX_HW_QUEUES];
         bool msix_enabled;
         u8 shared_vec_mask;
@@ -638,7 +809,6 @@ Definition
         cpumask_t affinity_mask[IWL_MAX_RX_HW_QUEUES];
         u16 tx_cmd_queue_size;
         bool in_rescan;
-        bool scheduled_for_removal;
     }
 
 .. _`iwl_trans_pcie.members`:
@@ -658,11 +828,32 @@ global_table
 rba
     allocator for RX replenishing
 
+{unnamed_union}
+    anonymous
+
 ctxt_info
     context information for FW self init
 
+ctxt_info_gen3
+    context information for gen3 devices
+
+prph_info
+    prph info for self init
+
+prph_scratch
+    prph scratch for self init
+
 ctxt_info_dma_addr
     dma addr of context information
+
+prph_info_dma_addr
+    dma addr of prph info
+
+prph_scratch_dma_addr
+    dma addr of prph scratch
+
+iml_dma_addr
+    *undescribed*
 
 init_dram
     DRAM data of firmware image (including paging).
@@ -745,6 +936,7 @@ ucode_write_complete
 ucode_write_waitq
     wait queue for uCode load
     \ ``cmd_queue``\  - command queue number
+    \ ``def_rx_queue``\  - default rx queue number
 
 wait_command_queue
     *undescribed*
@@ -759,6 +951,9 @@ dev_cmd_offs
     *undescribed*
 
 cmd_queue
+    *undescribed*
+
+def_rx_queue
     *undescribed*
 
 cmd_fifo
@@ -807,15 +1002,6 @@ cmd_hold_nic_awake
 ref_cmd_in_flight
     *undescribed*
 
-fw_mon_phys
-    physical address of the buffer for the firmware monitor
-
-fw_mon_page
-    points to the first page of the buffer for the firmware monitor
-
-fw_mon_size
-    size of the buffer for the firmware monitor
-
 msix_entries
     array of MSI-X entries
 
@@ -852,9 +1038,6 @@ tx_cmd_queue_size
 
 in_rescan
     true if we have triggered a device rescan
-
-scheduled_for_removal
-    true if we have scheduled a device removal
 
 .. This file was automatic generated / don't edit.
 

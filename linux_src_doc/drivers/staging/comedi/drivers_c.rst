@@ -10,11 +10,13 @@ comedi_set_hw_dev
 
     Set hardware device associated with COMEDI device
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param struct device \*hw_dev:
+    :param hw_dev:
         Hardware device.
+    :type hw_dev: struct device \*
 
 .. _`comedi_set_hw_dev.description`:
 
@@ -29,13 +31,13 @@ called directly by "legacy" low-level COMEDI drivers that rely on the
 \ ``COMEDI_DEVCONFIG``\  ioctl to configure the hardware as long as the hardware
 has a \ :c:type:`struct device <device>`\ .
 
-If \ ``dev``\ ->hw_dev is NULL, it gets a reference to \ ``hw_dev``\  and sets
-\ ``dev``\ ->hw_dev, otherwise, it does nothing.  Calling it multiple times
+If \ ``dev->hw_dev``\  is NULL, it gets a reference to \ ``hw_dev``\  and sets
+\ ``dev->hw_dev``\ , otherwise, it does nothing.  Calling it multiple times
 with the same hardware device is not considered an error.  If it gets
 a reference to the hardware device, it will be automatically 'put' when
 the device is detached from COMEDI.
 
-Returns 0 if \ ``dev``\ ->hw_dev was NULL or the same as \ ``hw_dev``\ , otherwise
+Returns 0 if \ ``dev->hw_dev``\  was NULL or the same as \ ``hw_dev``\ , otherwise
 returns -EEXIST.
 
 .. _`comedi_alloc_devpriv`:
@@ -47,18 +49,20 @@ comedi_alloc_devpriv
 
     Allocate memory for the device private data
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param size_t size:
+    :param size:
         Size of the memory to allocate.
+    :type size: size_t
 
 .. _`comedi_alloc_devpriv.description`:
 
 Description
 -----------
 
-The allocated memory is zero-filled.  \ ``dev``\ ->private points to it on
+The allocated memory is zero-filled.  \ ``dev->private``\  points to it on
 return.  The memory will be automatically freed when the COMEDI device is
 "detached".
 
@@ -73,11 +77,13 @@ comedi_alloc_subdevices
 
     Allocate subdevices for COMEDI device
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param int num_subdevices:
+    :param num_subdevices:
         Number of subdevices to allocate.
+    :type num_subdevices: int
 
 .. _`comedi_alloc_subdevices.description`:
 
@@ -85,8 +91,8 @@ Description
 -----------
 
 Allocates and initializes an array of \ :c:type:`struct comedi_subdevice <comedi_subdevice>`\  for the
-COMEDI device.  If successful, sets \ ``dev``\ ->subdevices to point to the
-first one and \ ``dev``\ ->n_subdevices to the number.
+COMEDI device.  If successful, sets \ ``dev->subdevices``\  to point to the
+first one and \ ``dev->n_subdevices``\  to the number.
 
 Returns 0 on success, -EINVAL if \ ``num_subdevices``\  is < 1, or -ENOMEM if
 failed to allocate the memory.
@@ -100,8 +106,9 @@ comedi_alloc_subdev_readback
 
     Allocate memory for the subdevice readback
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`comedi_alloc_subdev_readback.description`:
 
@@ -114,9 +121,9 @@ by the \ ``INSN_WRITE``\  instruction), to allow them to be read back by an
 \ ``INSN_READ``\  instruction.  It also provides a default handler for the
 \ ``INSN_READ``\  instruction unless one has already been set.
 
-On success, \ ``s``\ ->readback points to the first element of the array, which
+On success, \ ``s->readback``\  points to the first element of the array, which
 is zero-filled.  The low-level driver is responsible for updating its
-contents.  \ ``s``\ ->insn_read will be set to \ :c:func:`comedi_readback_insn_read`\ 
+contents.  \ ``s->insn_read``\  will be set to \ :c:func:`comedi_readback_insn_read`\ 
 unless it is already non-NULL.
 
 Returns 0 on success, -EINVAL if the subdevice has no channels, or
@@ -131,17 +138,21 @@ comedi_readback_insn_read
 
     A generic (\*insn_read) for subdevice readback.
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param struct comedi_insn \*insn:
+    :param insn:
         COMEDI instruction.
+    :type insn: struct comedi_insn \*
 
-    :param unsigned int \*data:
+    :param data:
         Pointer to return the readback data.
+    :type data: unsigned int \*
 
 .. _`comedi_readback_insn_read.description`:
 
@@ -153,10 +164,10 @@ array allocated by \ :c:func:`comedi_alloc_subdev_readback`\ .  It may be used
 directly as the subdevice's handler (@s->insn_read) or called via a
 wrapper.
 
-\ ``insn``\ ->n is normally 1, which will read a single value.  If higher, the
+\ ``insn->n``\  is normally 1, which will read a single value.  If higher, the
 same element of the readback array will be read multiple times.
 
-Returns \ ``insn``\ ->n on success, or -EINVAL if \ ``s``\ ->readback is NULL.
+Returns \ ``insn->n``\  on success, or -EINVAL if \ ``s->readback``\  is NULL.
 
 .. _`comedi_timeout`:
 
@@ -167,20 +178,24 @@ comedi_timeout
 
     Busy-wait for a driver condition to occur
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param struct comedi_insn \*insn:
+    :param insn:
         COMEDI instruction.
+    :type insn: struct comedi_insn \*
 
     :param int (\*cb)(struct comedi_device \*dev, struct comedi_subdevice \*s, struct comedi_insn \*insn, unsigned long context):
         Callback to check for the condition.
 
-    :param unsigned long context:
+    :param context:
         Private context from the driver.
+    :type context: unsigned long
 
 .. _`comedi_timeout.description`:
 
@@ -205,20 +220,25 @@ comedi_dio_insn_config
 
     Boilerplate (\*insn_config) for DIO subdevices
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param struct comedi_insn \*insn:
+    :param insn:
         COMEDI instruction.
+    :type insn: struct comedi_insn \*
 
-    :param unsigned int \*data:
+    :param data:
         Instruction parameters and return data.
+    :type data: unsigned int \*
 
-    :param unsigned int mask:
+    :param mask:
         io_bits mask for grouped channels, or 0 for single channel.
+    :type mask: unsigned int
 
 .. _`comedi_dio_insn_config.description`:
 
@@ -226,21 +246,21 @@ Description
 -----------
 
 If \ ``mask``\  is 0, it is replaced with a single-bit mask corresponding to the
-channel number specified by \ ``insn``\ ->chanspec.  Otherwise, \ ``mask``\ 
+channel number specified by \ ``insn->chanspec``\ .  Otherwise, \ ``mask``\ 
 corresponds to a group of channels (which should include the specified
 channel) that are always configured together as inputs or outputs.
 
 Partially handles the \ ``INSN_CONFIG_DIO_INPUT``\ , \ ``INSN_CONFIG_DIO_OUTPUTS``\ ,
 and \ ``INSN_CONFIG_DIO_QUERY``\  instructions.  The first two update
-\ ``s``\ ->io_bits to record the directions of the masked channels.  The last
+\ ``s->io_bits``\  to record the directions of the masked channels.  The last
 one sets \ ``data``\ [1] to the current direction of the group of channels
-(%COMEDI_INPUT) or \ ``COMEDI_OUTPUT``\ ) as recorded in \ ``s``\ ->io_bits.
+(%COMEDI_INPUT) or \ ``COMEDI_OUTPUT``\ ) as recorded in \ ``s->io_bits``\ .
 
 The caller is responsible for updating the DIO direction in the hardware
 registers if this function returns 0.
 
 Returns 0 for a \ ``INSN_CONFIG_DIO_INPUT``\  or \ ``INSN_CONFIG_DIO_OUTPUT``\ 
-instruction, \ ``insn``\ ->n (> 0) for a \ ``INSN_CONFIG_DIO_QUERY``\  instruction, or
+instruction, \ ``insn->n``\  (> 0) for a \ ``INSN_CONFIG_DIO_QUERY``\  instruction, or
 -EINVAL for some other instruction.
 
 .. _`comedi_dio_update_state`:
@@ -252,22 +272,24 @@ comedi_dio_update_state
 
     Update the internal state of DIO subdevices
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int \*data:
+    :param data:
         The channel mask and bits to update.
+    :type data: unsigned int \*
 
 .. _`comedi_dio_update_state.description`:
 
 Description
 -----------
 
-Updates \ ``s``\ ->state which holds the internal state of the outputs for DIO
+Updates \ ``s->state``\  which holds the internal state of the outputs for DIO
 or DO subdevices (up to 32 channels).  \ ``data``\ [0] contains a bit-mask of
 the channels to be updated.  \ ``data``\ [1] contains a bit-mask of those
 channels to be set to '1'.  The caller is responsible for updating the
-outputs in hardware according to \ ``s``\ ->state.  As a minimum, the channels
+outputs in hardware according to \ ``s->state``\ .  As a minimum, the channels
 in the returned bit-mask need to be updated.
 
 Returns \ ``mask``\  with non-existent channels removed.
@@ -281,8 +303,9 @@ comedi_bytes_per_scan
 
     Get length of asynchronous command "scan" in bytes
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`comedi_bytes_per_scan.description`:
 
@@ -309,11 +332,13 @@ comedi_nscans_left
 
     Return the number of scans left in the command
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int nscans:
+    :param nscans:
         The expected number of scans or 0 for all available scans.
+    :type nscans: unsigned int
 
 .. _`comedi_nscans_left.description`:
 
@@ -338,11 +363,13 @@ comedi_nsamples_left
 
     Return the number of samples left in the command
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int nsamples:
+    :param nsamples:
         The expected number of samples.
+    :type nsamples: unsigned int
 
 .. _`comedi_nsamples_left.description`:
 
@@ -361,11 +388,13 @@ comedi_inc_scan_progress
 
     Update scan progress in asynchronous command
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int num_bytes:
+    :param num_bytes:
         Amount of data in bytes to increment scan progress.
+    :type num_bytes: unsigned int
 
 .. _`comedi_inc_scan_progress.description`:
 
@@ -386,11 +415,13 @@ comedi_handle_events
 
     Handle events and possibly stop acquisition
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`comedi_handle_events.description`:
 
@@ -398,7 +429,7 @@ Description
 -----------
 
 Handles outstanding asynchronous acquisition event flags associated
-with the subdevice.  Call the subdevice's \ ``s``\ ->cancel() handler if the
+with the subdevice.  Call the subdevice's \ ``s->cancel``\ () handler if the
 "end of acquisition", "error" or "overflow" event flags are set in order
 to stop the acquisition at the driver level.
 
@@ -417,20 +448,24 @@ comedi_load_firmware
 
     Request and load firmware for a device
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param struct device \*device:
+    :param device:
         Hardware device.
+    :type device: struct device \*
 
-    :param const char \*name:
+    :param name:
         The name of the firmware image.
+    :type name: const char \*
 
     :param int (\*cb)(struct comedi_device \*dev, const u8 \*data, size_t size, unsigned long context):
         Callback to the upload the firmware image.
 
-    :param unsigned long context:
+    :param context:
         Private context from the driver.
+    :type context: unsigned long
 
 .. _`comedi_load_firmware.description`:
 
@@ -453,14 +488,17 @@ from the firmware request or the callback function.
 
     Request an I/O region for a legacy driver
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param unsigned long start:
+    :param start:
         Base address of the I/O region.
+    :type start: unsigned long
 
-    :param unsigned long len:
+    :param len:
         Length of the I/O region.
+    :type len: unsigned long
 
 .. _`__comedi_request_region.description`:
 
@@ -482,14 +520,17 @@ comedi_request_region
 
     Request an I/O region for a legacy driver
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param unsigned long start:
+    :param start:
         Base address of the I/O region.
+    :type start: unsigned long
 
-    :param unsigned long len:
+    :param len:
         Length of the I/O region.
+    :type len: unsigned long
 
 .. _`comedi_request_region.description`:
 
@@ -499,8 +540,8 @@ Description
 Requests the specified I/O port region which must start at a non-zero
 address.
 
-On success, \ ``dev``\ ->iobase is set to the base address of the region and
-\ ``dev``\ ->iolen is set to its length.
+On success, \ ``dev->iobase``\  is set to the base address of the region and
+\ ``dev->iolen``\  is set to its length.
 
 Returns 0 on success, -EINVAL if \ ``start``\  is 0, or -EIO if the request
 fails.
@@ -514,8 +555,9 @@ comedi_legacy_detach
 
     A generic (\*detach) function for legacy drivers
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
 .. _`comedi_legacy_detach.description`:
 
@@ -527,8 +569,8 @@ just use a single I/O port region and possibly an IRQ and that don't need
 any special clean-up for their private device or subdevice storage.  It
 can also be called by a driver-specific 'detach' handler.
 
-If \ ``dev``\ ->irq is non-zero, the IRQ will be freed.  If \ ``dev``\ ->iobase and
-\ ``dev``\ ->iolen are both non-zero, the I/O port region will be released.
+If \ ``dev->irq``\  is non-zero, the IRQ will be freed.  If \ ``dev->iobase``\  and
+\ ``dev->iolen``\  are both non-zero, the I/O port region will be released.
 
 .. _`comedi_auto_config`:
 
@@ -539,14 +581,17 @@ comedi_auto_config
 
     Create a COMEDI device for a hardware device
 
-    :param struct device \*hardware_device:
+    :param hardware_device:
         Hardware device.
+    :type hardware_device: struct device \*
 
-    :param struct comedi_driver \*driver:
+    :param driver:
         COMEDI low-level driver for the hardware device.
+    :type driver: struct comedi_driver \*
 
-    :param unsigned long context:
+    :param context:
         Driver context for the auto_attach handler.
+    :type context: unsigned long
 
 .. _`comedi_auto_config.description`:
 
@@ -579,9 +624,10 @@ comedi_auto_unconfig
 
     Unconfigure auto-allocated COMEDI device
 
-    :param struct device \*hardware_device:
+    :param hardware_device:
         Hardware device previously passed to
         \ :c:func:`comedi_auto_config`\ .
+    :type hardware_device: struct device \*
 
 .. _`comedi_auto_unconfig.description`:
 
@@ -608,8 +654,9 @@ comedi_driver_register
 
     Register a low-level COMEDI driver
 
-    :param struct comedi_driver \*driver:
+    :param driver:
         Low-level COMEDI driver.
+    :type driver: struct comedi_driver \*
 
 .. _`comedi_driver_register.description`:
 
@@ -632,8 +679,9 @@ comedi_driver_unregister
 
     Unregister a low-level COMEDI driver
 
-    :param struct comedi_driver \*driver:
+    :param driver:
         Low-level COMEDI driver.
+    :type driver: struct comedi_driver \*
 
 .. _`comedi_driver_unregister.description`:
 

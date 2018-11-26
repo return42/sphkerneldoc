@@ -10,11 +10,13 @@ gigaset_skb_sent
 
     acknowledge transmission of outgoing skb
 
-    :param struct bc_state \*bcs:
+    :param bcs:
         B channel descriptor structure.
+    :type bcs: struct bc_state \*
 
-    :param struct sk_buff \*dskb:
+    :param dskb:
         *undescribed*
+    :type dskb: struct sk_buff \*
 
 .. _`gigaset_skb_sent.description`:
 
@@ -33,11 +35,13 @@ gigaset_skb_rcvd
 
     pass received skb to LL
 
-    :param struct bc_state \*bcs:
+    :param bcs:
         B channel descriptor structure.
+    :type bcs: struct bc_state \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received data.
+    :type skb: struct sk_buff \*
 
 .. _`gigaset_skb_rcvd.description`:
 
@@ -63,8 +67,9 @@ gigaset_isdn_rcv_err
 
     signal receive error
 
-    :param struct bc_state \*bcs:
+    :param bcs:
         B channel descriptor structure.
+    :type bcs: struct bc_state \*
 
 .. _`gigaset_isdn_rcv_err.description`:
 
@@ -83,8 +88,9 @@ gigaset_isdn_icall
 
     signal incoming call
 
-    :param struct at_state_t \*at_state:
+    :param at_state:
         connection state structure.
+    :type at_state: struct at_state_t \*
 
 .. _`gigaset_isdn_icall.description`:
 
@@ -110,8 +116,9 @@ gigaset_isdn_connD
 
     signal D channel connect
 
-    :param struct bc_state \*bcs:
+    :param bcs:
         B channel descriptor structure.
+    :type bcs: struct bc_state \*
 
 .. _`gigaset_isdn_connd.description`:
 
@@ -130,8 +137,9 @@ gigaset_isdn_hupD
 
     signal D channel hangup
 
-    :param struct bc_state \*bcs:
+    :param bcs:
         B channel descriptor structure.
+    :type bcs: struct bc_state \*
 
 .. _`gigaset_isdn_hupd.description`:
 
@@ -150,8 +158,9 @@ gigaset_isdn_connB
 
     signal B channel connect
 
-    :param struct bc_state \*bcs:
+    :param bcs:
         B channel descriptor structure.
+    :type bcs: struct bc_state \*
 
 .. _`gigaset_isdn_connb.description`:
 
@@ -170,8 +179,9 @@ gigaset_isdn_hupB
 
     signal B channel hangup
 
-    :param struct bc_state \*bcs:
+    :param bcs:
         B channel descriptor structure.
+    :type bcs: struct bc_state \*
 
 .. _`gigaset_isdn_hupb.description`:
 
@@ -190,8 +200,9 @@ gigaset_isdn_start
 
     signal device availability
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
 .. _`gigaset_isdn_start.description`:
 
@@ -210,8 +221,9 @@ gigaset_isdn_stop
 
     signal device unavailability
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
 .. _`gigaset_isdn_stop.description`:
 
@@ -230,11 +242,13 @@ gigaset_send_message
 
     accept a CAPI message from an application
 
-    :param struct capi_ctr \*ctr:
+    :param ctr:
         controller descriptor structure.
+    :type ctr: struct capi_ctr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         CAPI message.
+    :type skb: struct sk_buff \*
 
 .. _`gigaset_send_message.return-value`:
 
@@ -260,8 +274,9 @@ gigaset_procinfo
 
     build single line description for controller
 
-    :param struct capi_ctr \*ctr:
+    :param ctr:
         controller descriptor structure.
+    :type ctr: struct capi_ctr \*
 
 .. _`gigaset_procinfo.return-value`:
 
@@ -279,11 +294,13 @@ gigaset_isdn_regdev
 
     register device to LL
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
-    :param const char \*isdnid:
+    :param isdnid:
         device name.
+    :type isdnid: const char \*
 
 .. _`gigaset_isdn_regdev.return-value`:
 
@@ -301,8 +318,9 @@ gigaset_isdn_unregdev
 
     unregister device from LL
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
 .. _`gigaset_isdn_regdrv`:
 
@@ -313,8 +331,9 @@ gigaset_isdn_regdrv
 
     register driver to LL
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`gigaset_isdn_unregdrv`:
 
@@ -325,8 +344,9 @@ gigaset_isdn_unregdrv
 
     unregister driver from LL
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

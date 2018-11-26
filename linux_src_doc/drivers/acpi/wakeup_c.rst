@@ -10,8 +10,9 @@ acpi_enable_wakeup_devices
 
     Enable wake-up device GPEs.
 
-    :param u8 sleep_state:
+    :param sleep_state:
         ACPI system sleep state.
+    :type sleep_state: u8
 
 .. _`acpi_enable_wakeup_devices.description`:
 
@@ -31,8 +32,9 @@ acpi_disable_wakeup_devices
 
     Disable devices' wakeup capability.
 
-    :param u8 sleep_state:
+    :param sleep_state:
         ACPI system sleep state.
+    :type sleep_state: u8
 
 .. This file was automatic generated / don't edit.
 

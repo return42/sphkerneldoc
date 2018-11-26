@@ -106,11 +106,13 @@ xvcu_read
 
     Read from the VCU register space
 
-    :param void __iomem \*iomem:
+    :param iomem:
         vcu reg space base address
+    :type iomem: void __iomem \*
 
-    :param u32 offset:
+    :param offset:
         vcu reg offset from base
+    :type offset: u32
 
 .. _`xvcu_read.return`:
 
@@ -128,14 +130,17 @@ xvcu_write
 
     Write to the VCU register space
 
-    :param void __iomem \*iomem:
+    :param iomem:
         vcu reg space base address
+    :type iomem: void __iomem \*
 
-    :param u32 offset:
+    :param offset:
         vcu reg offset from base
+    :type offset: u32
 
-    :param u32 value:
+    :param value:
         Value to write
+    :type value: u32
 
 .. _`xvcu_write_field_reg`:
 
@@ -146,20 +151,25 @@ xvcu_write_field_reg
 
     Write to the vcu reg field
 
-    :param void __iomem \*iomem:
+    :param iomem:
         vcu reg space base address
+    :type iomem: void __iomem \*
 
-    :param int offset:
+    :param offset:
         vcu reg offset from base
+    :type offset: int
 
-    :param u32 field:
+    :param field:
         vcu reg field to write to
+    :type field: u32
 
-    :param u32 mask:
+    :param mask:
         vcu reg mask
+    :type mask: u32
 
-    :param int shift:
+    :param shift:
         vcu reg number of bits to shift the bitfield
+    :type shift: int
 
 .. _`xvcu_set_vcu_pll_info`:
 
@@ -170,8 +180,9 @@ xvcu_set_vcu_pll_info
 
     Set the VCU PLL info
 
-    :param struct xvcu_device \*xvcu:
+    :param xvcu:
         Pointer to the xvcu_device structure
+    :type xvcu: struct xvcu_device \*
 
 .. _`xvcu_set_vcu_pll_info.description`:
 
@@ -203,8 +214,9 @@ xvcu_set_pll
 
     PLL init sequence
 
-    :param struct xvcu_device \*xvcu:
+    :param xvcu:
         Pointer to the xvcu_device structure
+    :type xvcu: struct xvcu_device \*
 
 .. _`xvcu_set_pll.description`:
 
@@ -230,8 +242,9 @@ xvcu_probe
 
     Probe existence of the logicoreIP and initialize PLL
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`xvcu_probe.return`:
 
@@ -250,8 +263,9 @@ xvcu_remove
 
     Insert gasket isolation and disable the clock
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`xvcu_remove.return`:
 

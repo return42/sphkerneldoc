@@ -10,17 +10,21 @@ adv748x_csi2_register_link
 
     Register and link internal entities
 
-    :param struct adv748x_csi2 \*tx:
+    :param tx:
         CSI2 private entity
+    :type tx: struct adv748x_csi2 \*
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         Video registration device
+    :type v4l2_dev: struct v4l2_device \*
 
-    :param struct v4l2_subdev \*src:
+    :param src:
         Source subdevice to establish link
+    :type src: struct v4l2_subdev \*
 
-    :param unsigned int src_pad:
+    :param src_pad:
         Pad number of source to link to this \ ``tx``\ 
+    :type src_pad: unsigned int
 
 .. _`adv748x_csi2_register_link.description`:
 

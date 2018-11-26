@@ -8,14 +8,17 @@ vt_event_post
 
 .. c:function:: void vt_event_post(unsigned int event, unsigned int old, unsigned int new)
 
-    :param unsigned int event:
+    :param event:
         the event that occurred
+    :type event: unsigned int
 
-    :param unsigned int old:
+    :param old:
         old console
+    :type old: unsigned int
 
-    :param unsigned int new:
+    :param new:
         new console
+    :type new: unsigned int
 
 .. _`vt_event_post.description`:
 
@@ -33,8 +36,9 @@ vt_event_wait
 
     wait for an event
 
-    :param struct vt_event_wait \*vw:
+    :param vw:
         our event
+    :type vw: struct vt_event_wait \*
 
 .. _`vt_event_wait.description`:
 
@@ -54,8 +58,9 @@ vt_event_wait_ioctl
 
     event ioctl handler
 
-    :param struct vt_event __user \*event:
+    :param event:
         *undescribed*
+    :type event: struct vt_event __user \*
 
 .. _`vt_event_wait_ioctl.description`:
 
@@ -73,8 +78,9 @@ vt_waitactive
 
     active console wait
 
-    :param int n:
+    :param n:
         new console
+    :type n: int
 
 .. _`vt_waitactive.description`:
 

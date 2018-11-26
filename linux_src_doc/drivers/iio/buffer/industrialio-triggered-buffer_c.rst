@@ -10,8 +10,9 @@ iio_triggered_buffer_setup
 
     Setup triggered buffer and pollfunc
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure
+    :type indio_dev: struct iio_dev \*
 
     :param irqreturn_t (\*h)(int irq, void \*p):
         Function which will be used as pollfunc top half
@@ -19,10 +20,11 @@ iio_triggered_buffer_setup
     :param irqreturn_t (\*thread)(int irq, void \*p):
         Function which will be used as pollfunc bottom half
 
-    :param const struct iio_buffer_setup_ops \*setup_ops:
+    :param setup_ops:
         Buffer setup functions to use for this device.
         If NULL the default setup functions for triggered
         buffers will be used.
+    :type setup_ops: const struct iio_buffer_setup_ops \*
 
 .. _`iio_triggered_buffer_setup.description`:
 
@@ -49,8 +51,9 @@ iio_triggered_buffer_cleanup
 
     Free resources allocated by \ :c:func:`iio_triggered_buffer_setup`\ 
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure
+    :type indio_dev: struct iio_dev \*
 
 .. This file was automatic generated / don't edit.
 

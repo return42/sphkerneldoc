@@ -10,8 +10,9 @@ read_barrier_depends
 
     Flush all pending reads that subsequents reads depend on.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`read_barrier_depends.description`:
 

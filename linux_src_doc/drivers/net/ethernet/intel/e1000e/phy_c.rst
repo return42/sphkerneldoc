@@ -10,8 +10,9 @@ e1000e_check_reset_block_generic
 
     Check if PHY reset is blocked
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_check_reset_block_generic.description`:
 
@@ -31,8 +32,9 @@ e1000e_get_phy_id
 
     Retrieve the PHY ID and revision
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_get_phy_id.description`:
 
@@ -51,8 +53,9 @@ e1000e_phy_reset_dsp
 
     Reset PHY DSP
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_phy_reset_dsp.description`:
 
@@ -70,14 +73,17 @@ e1000e_read_phy_reg_mdic
 
     Read MDI control register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000e_read_phy_reg_mdic.description`:
 
@@ -96,14 +102,17 @@ e1000e_write_phy_reg_mdic
 
     Write MDI control register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write to register at offset
+    :type data: u16
 
 .. _`e1000e_write_phy_reg_mdic.description`:
 
@@ -121,14 +130,17 @@ e1000e_read_phy_reg_m88
 
     Read m88 PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000e_read_phy_reg_m88.description`:
 
@@ -148,14 +160,17 @@ e1000e_write_phy_reg_m88
 
     Write m88 PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000e_write_phy_reg_m88.description`:
 
@@ -174,11 +189,13 @@ e1000_set_page_igp
 
     Set page as on IGP-like PHY(s)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 page:
+    :param page:
         page to set (shifted left when necessary)
+    :type page: u16
 
 .. _`e1000_set_page_igp.description`:
 
@@ -198,17 +215,21 @@ must set it appropriately (if necessary) after this function returns.
 
     Read igp PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
-    :param bool locked:
+    :param locked:
         semaphore has already been acquired or not
+    :type locked: bool
 
 .. _`__e1000e_read_phy_reg_igp.description`:
 
@@ -228,14 +249,17 @@ e1000e_read_phy_reg_igp
 
     Read igp PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000e_read_phy_reg_igp.description`:
 
@@ -255,14 +279,17 @@ e1000e_read_phy_reg_igp_locked
 
     Read igp PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000e_read_phy_reg_igp_locked.description`:
 
@@ -281,17 +308,21 @@ in data.  Assumes semaphore already acquired.
 
     Write igp PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
-    :param bool locked:
+    :param locked:
         semaphore has already been acquired or not
+    :type locked: bool
 
 .. _`__e1000e_write_phy_reg_igp.description`:
 
@@ -310,14 +341,17 @@ e1000e_write_phy_reg_igp
 
     Write igp PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000e_write_phy_reg_igp.description`:
 
@@ -336,14 +370,17 @@ e1000e_write_phy_reg_igp_locked
 
     Write igp PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000e_write_phy_reg_igp_locked.description`:
 
@@ -362,17 +399,21 @@ Assumes semaphore already acquired.
 
     Read kumeran register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
-    :param bool locked:
+    :param locked:
         semaphore has already been acquired or not
+    :type locked: bool
 
 .. _`__e1000_read_kmrn_reg.description`:
 
@@ -392,14 +433,17 @@ e1000e_read_kmrn_reg
 
     Read kumeran register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000e_read_kmrn_reg.description`:
 
@@ -419,14 +463,17 @@ e1000e_read_kmrn_reg_locked
 
     Read kumeran register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000e_read_kmrn_reg_locked.description`:
 
@@ -446,17 +493,21 @@ Assumes semaphore already acquired.
 
     Write kumeran register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
-    :param bool locked:
+    :param locked:
         semaphore has already been acquired or not
+    :type locked: bool
 
 .. _`__e1000_write_kmrn_reg.description`:
 
@@ -476,14 +527,17 @@ e1000e_write_kmrn_reg
 
     Write kumeran register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000e_write_kmrn_reg.description`:
 
@@ -502,14 +556,17 @@ e1000e_write_kmrn_reg_locked
 
     Write kumeran register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000e_write_kmrn_reg_locked.description`:
 
@@ -528,8 +585,9 @@ e1000_set_master_slave_mode
 
     Setup PHY for Master/slave mode
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_set_master_slave_mode.description`:
 
@@ -547,8 +605,9 @@ e1000_copper_link_setup_82577
 
     Setup 82577 PHY for copper link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_copper_link_setup_82577.description`:
 
@@ -566,8 +625,9 @@ e1000e_copper_link_setup_m88
 
     Setup m88 PHY's for copper link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_copper_link_setup_m88.description`:
 
@@ -586,8 +646,9 @@ e1000e_copper_link_setup_igp
 
     Setup igp PHY's for copper link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_copper_link_setup_igp.description`:
 
@@ -606,8 +667,9 @@ e1000_phy_setup_autoneg
 
     Configure PHY for auto-negotiation
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_setup_autoneg.description`:
 
@@ -628,8 +690,9 @@ e1000_copper_link_autoneg
 
     Setup/Enable autoneg for copper link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_copper_link_autoneg.description`:
 
@@ -650,8 +713,9 @@ e1000e_setup_copper_link
 
     Configure copper link settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_setup_copper_link.description`:
 
@@ -672,8 +736,9 @@ e1000e_phy_force_speed_duplex_igp
 
     Force speed/duplex for igp PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_phy_force_speed_duplex_igp.description`:
 
@@ -693,8 +758,9 @@ e1000e_phy_force_speed_duplex_m88
 
     Force speed/duplex for m88 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_phy_force_speed_duplex_m88.description`:
 
@@ -716,8 +782,9 @@ e1000_phy_force_speed_duplex_ife
 
     Force PHY speed & duplex
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_force_speed_duplex_ife.description`:
 
@@ -737,11 +804,13 @@ e1000e_phy_force_speed_duplex_setup
 
     Configure forced PHY speed/duplex
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*phy_ctrl:
+    :param phy_ctrl:
         pointer to current value of MII_BMCR
+    :type phy_ctrl: u16 \*
 
 .. _`e1000e_phy_force_speed_duplex_setup.forces-speed-and-duplex-on-the-phy-by-doing-the-following`:
 
@@ -764,11 +833,13 @@ e1000e_set_d3_lplu_state
 
     Sets low power link up state for D3
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         boolean used to enable/disable lplu
+    :type active: bool
 
 .. _`e1000e_set_d3_lplu_state.description`:
 
@@ -793,8 +864,9 @@ e1000e_check_downshift
 
     Checks whether a downshift in speed occurred
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_check_downshift.description`:
 
@@ -814,8 +886,9 @@ e1000_check_polarity_m88
 
     Checks the polarity.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_polarity_m88.description`:
 
@@ -835,8 +908,9 @@ e1000_check_polarity_igp
 
     Checks the polarity.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_polarity_igp.description`:
 
@@ -857,8 +931,9 @@ e1000_check_polarity_ife
 
     Check cable polarity for IFE PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_polarity_ife.description`:
 
@@ -876,8 +951,9 @@ e1000_wait_autoneg
 
     Wait for auto-neg completion
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_wait_autoneg.description`:
 
@@ -896,17 +972,21 @@ e1000e_phy_has_link_generic
 
     Polls PHY for link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 iterations:
+    :param iterations:
         number of times to poll for link
+    :type iterations: u32
 
-    :param u32 usec_interval:
+    :param usec_interval:
         delay between polling attempts
+    :type usec_interval: u32
 
-    :param bool \*success:
+    :param success:
         pointer to whether polling was successful or not
+    :type success: bool \*
 
 .. _`e1000e_phy_has_link_generic.description`:
 
@@ -924,8 +1004,9 @@ e1000e_get_cable_length_m88
 
     Determine cable length for m88 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_get_cable_length_m88.description`:
 
@@ -952,8 +1033,9 @@ e1000e_get_cable_length_igp_2
 
     Determine cable length for igp2 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_get_cable_length_igp_2.description`:
 
@@ -976,8 +1058,9 @@ e1000e_get_phy_info_m88
 
     Retrieve PHY information
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_get_phy_info_m88.description`:
 
@@ -999,8 +1082,9 @@ e1000e_get_phy_info_igp
 
     Retrieve igp PHY information
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_get_phy_info_igp.description`:
 
@@ -1021,8 +1105,9 @@ e1000_get_phy_info_ife
 
     Retrieves various IFE PHY states
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_phy_info_ife.description`:
 
@@ -1040,8 +1125,9 @@ e1000e_phy_sw_reset
 
     PHY software reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_phy_sw_reset.description`:
 
@@ -1060,8 +1146,9 @@ e1000e_phy_hw_reset_generic
 
     PHY hardware reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_phy_hw_reset_generic.description`:
 
@@ -1082,8 +1169,9 @@ e1000e_get_cfg_done_generic
 
     Generic configuration done
 
-    :param struct e1000_hw __always_unused \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw __always_unused \*
 
 .. _`e1000e_get_cfg_done_generic.description`:
 
@@ -1102,8 +1190,9 @@ e1000e_phy_init_script_igp3
 
     Inits the IGP3 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_phy_init_script_igp3.description`:
 
@@ -1121,8 +1210,9 @@ e1000e_get_phy_type_from_id
 
     Get PHY type from id
 
-    :param u32 phy_id:
+    :param phy_id:
         phy_id read from the phy
+    :type phy_id: u32
 
 .. _`e1000e_get_phy_type_from_id.description`:
 
@@ -1140,8 +1230,9 @@ e1000e_determine_phy_address
 
     Determines PHY address.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_determine_phy_address.description`:
 
@@ -1161,11 +1252,13 @@ e1000_get_phy_addr_for_bm_page
 
     Retrieve PHY page address
 
-    :param u32 page:
+    :param page:
         page to access
+    :type page: u32
 
-    :param u32 reg:
+    :param reg:
         *undescribed*
+    :type reg: u32
 
 .. _`e1000_get_phy_addr_for_bm_page.description`:
 
@@ -1183,14 +1276,17 @@ e1000e_write_phy_reg_bm
 
     Write BM PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000e_write_phy_reg_bm.description`:
 
@@ -1209,14 +1305,17 @@ e1000e_read_phy_reg_bm
 
     Read BM PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000e_read_phy_reg_bm.description`:
 
@@ -1236,14 +1335,17 @@ e1000e_read_phy_reg_bm2
 
     Read BM PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000e_read_phy_reg_bm2.description`:
 
@@ -1263,14 +1365,17 @@ e1000e_write_phy_reg_bm2
 
     Write BM PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000e_write_phy_reg_bm2.description`:
 
@@ -1289,11 +1394,13 @@ e1000_enable_phy_wakeup_reg_access_bm
 
     enable access to BM wakeup registers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*phy_reg:
+    :param phy_reg:
         pointer to store original contents of BM_WUC_ENABLE_REG
+    :type phy_reg: u16 \*
 
 .. _`e1000_enable_phy_wakeup_reg_access_bm.description`:
 
@@ -1312,11 +1419,13 @@ e1000_disable_phy_wakeup_reg_access_bm
 
     disable access to BM wakeup regs
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*phy_reg:
+    :param phy_reg:
         pointer to original contents of BM_WUC_ENABLE_REG
+    :type phy_reg: u16 \*
 
 .. _`e1000_disable_phy_wakeup_reg_access_bm.description`:
 
@@ -1338,20 +1447,25 @@ e1000_access_phy_wakeup_reg_bm
 
     Read/write BM PHY wakeup register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read or written
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the data to read or write
+    :type data: u16 \*
 
-    :param bool read:
+    :param read:
         determines if operation is read or write
+    :type read: bool
 
-    :param bool page_set:
+    :param page_set:
         BM_WUC_PAGE already set and access enabled
+    :type page_set: bool
 
 .. _`e1000_access_phy_wakeup_reg_bm.description`:
 
@@ -1384,8 +1498,9 @@ e1000_power_up_phy_copper
 
     Restore copper link in case of PHY power down
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_power_up_phy_copper.description`:
 
@@ -1405,8 +1520,9 @@ e1000_power_down_phy_copper
 
     Restore copper link in case of PHY power down
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_power_down_phy_copper.description`:
 
@@ -1426,20 +1542,25 @@ settings.
 
     Read HV PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
-    :param bool locked:
+    :param locked:
         semaphore has already been acquired or not
+    :type locked: bool
 
-    :param bool page_set:
+    :param page_set:
         *undescribed*
+    :type page_set: bool
 
 .. _`__e1000_read_phy_reg_hv.description`:
 
@@ -1459,14 +1580,17 @@ e1000_read_phy_reg_hv
 
     Read HV PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000_read_phy_reg_hv.description`:
 
@@ -1486,14 +1610,17 @@ e1000_read_phy_reg_hv_locked
 
     Read HV PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000_read_phy_reg_hv_locked.description`:
 
@@ -1512,14 +1639,17 @@ e1000_read_phy_reg_page_hv
 
     Read HV PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         data to write at register offset
+    :type data: u16 \*
 
 .. _`e1000_read_phy_reg_page_hv.description`:
 
@@ -1538,20 +1668,25 @@ in data.  Assumes semaphore already acquired and page already set.
 
     Write HV PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
-    :param bool locked:
+    :param locked:
         semaphore has already been acquired or not
+    :type locked: bool
 
-    :param bool page_set:
+    :param page_set:
         *undescribed*
+    :type page_set: bool
 
 .. _`__e1000_write_phy_reg_hv.description`:
 
@@ -1570,14 +1705,17 @@ e1000_write_phy_reg_hv
 
     Write HV PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000_write_phy_reg_hv.description`:
 
@@ -1596,14 +1734,17 @@ e1000_write_phy_reg_hv_locked
 
     Write HV PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000_write_phy_reg_hv_locked.description`:
 
@@ -1622,14 +1763,17 @@ e1000_write_phy_reg_page_hv
 
     Write HV PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000_write_phy_reg_page_hv.description`:
 
@@ -1648,8 +1792,9 @@ e1000_get_phy_addr_for_hv_page
 
     Get PHY address based on page
 
-    :param u32 page:
+    :param page:
         page to be accessed
+    :type page: u32
 
 .. _`e1000_access_phy_debug_regs_hv`:
 
@@ -1660,17 +1805,21 @@ e1000_access_phy_debug_regs_hv
 
     Read HV PHY vendor specific high registers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read or written
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the data to be read or written
+    :type data: u16 \*
 
-    :param bool read:
+    :param read:
         determines if operation is read or write
+    :type read: bool
 
 .. _`e1000_access_phy_debug_regs_hv.description`:
 
@@ -1691,8 +1840,9 @@ e1000_link_stall_workaround_hv
 
     Si workaround
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_link_stall_workaround_hv.description`:
 
@@ -1715,8 +1865,9 @@ e1000_check_polarity_82577
 
     Checks the polarity.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_polarity_82577.description`:
 
@@ -1736,8 +1887,9 @@ e1000_phy_force_speed_duplex_82577
 
     Force speed/duplex for I82577 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_force_speed_duplex_82577.description`:
 
@@ -1755,8 +1907,9 @@ e1000_get_phy_info_82577
 
     Retrieve I82577 PHY information
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_phy_info_82577.description`:
 
@@ -1777,8 +1930,9 @@ e1000_get_cable_length_82577
 
     Determine cable length for 82577 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_cable_length_82577.description`:
 

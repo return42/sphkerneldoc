@@ -10,18 +10,22 @@ batadv_bit_get_packet
 
     receive and process one packet within the sequence number window
 
-    :param void \*priv:
+    :param priv:
         the bat priv with all the soft interface information
+    :type priv: void \*
 
-    :param unsigned long \*seq_bits:
+    :param seq_bits:
         pointer to the sequence number receive packet
+    :type seq_bits: unsigned long \*
 
-    :param s32 seq_num_diff:
+    :param seq_num_diff:
         difference between the current/received sequence number and
         the last sequence number
+    :type seq_num_diff: s32
 
-    :param int set_mark:
+    :param set_mark:
         whether this packet should be marked in seq_bits
+    :type set_mark: int
 
 .. _`batadv_bit_get_packet.return`:
 

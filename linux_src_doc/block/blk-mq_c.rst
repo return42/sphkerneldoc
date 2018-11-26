@@ -10,8 +10,9 @@ blk_mq_quiesce_queue
 
     wait until all ongoing dispatches have finished
 
-    :param struct request_queue \*q:
+    :param q:
         request queue.
+    :type q: struct request_queue \*
 
 .. _`blk_mq_quiesce_queue.note`:
 
@@ -32,8 +33,9 @@ blk_mq_complete_request
 
     end I/O on a request
 
-    :param struct request \*rq:
+    :param rq:
         the request being processed
+    :type rq: struct request \*
 
 .. _`blk_mq_complete_request.description`:
 
@@ -52,8 +54,9 @@ blk_mq_queue_stopped
 
     check whether one or more hctxs have been stopped
 
-    :param struct request_queue \*q:
+    :param q:
         request queue.
+    :type q: struct request_queue \*
 
 .. _`blk_mq_queue_stopped.description`:
 

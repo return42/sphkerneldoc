@@ -10,17 +10,21 @@ wm8903_mic_detect
 
     Enable microphone detection via the WM8903 IRQ
 
-    :param struct snd_soc_component \*component:
+    :param component:
         WM8903 component
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         jack to report detection events on
+    :type jack: struct snd_soc_jack \*
 
-    :param int det:
+    :param det:
         value to report for presence detection
+    :type det: int
 
-    :param int shrt:
+    :param shrt:
         value to report for short detection
+    :type shrt: int
 
 .. _`wm8903_mic_detect.description`:
 

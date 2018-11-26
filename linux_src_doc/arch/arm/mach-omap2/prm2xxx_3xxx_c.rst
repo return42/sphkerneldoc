@@ -10,17 +10,21 @@ omap2_prm_is_hardreset_asserted
 
     read the HW reset line state of submodules contained in the hwmod module
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line to check
+    :type shift: u8
 
-    :param u8 part:
+    :param part:
         PRM partition, ignored for OMAP2
+    :type part: u8
 
-    :param s16 prm_mod:
+    :param prm_mod:
         PRM submodule base (e.g. CORE_MOD)
+    :type prm_mod: s16
 
-    :param u16 offset:
+    :param offset:
         register offset, ignored for OMAP2
+    :type offset: u16
 
 .. _`omap2_prm_is_hardreset_asserted.description`:
 
@@ -40,17 +44,21 @@ omap2_prm_assert_hardreset
 
     assert the HW reset line of a submodule
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line to assert
+    :type shift: u8
 
-    :param u8 part:
+    :param part:
         PRM partition, ignored for OMAP2
+    :type part: u8
 
-    :param s16 prm_mod:
+    :param prm_mod:
         PRM submodule base (e.g. CORE_MOD)
+    :type prm_mod: s16
 
-    :param u16 offset:
+    :param offset:
         register offset, ignored for OMAP2
+    :type offset: u16
 
 .. _`omap2_prm_assert_hardreset.description`:
 
@@ -73,23 +81,29 @@ omap2_prm_deassert_hardreset
 
     deassert a submodule hardreset line and wait
 
-    :param u8 rst_shift:
+    :param rst_shift:
         register bit shift corresponding to the reset line to deassert
+    :type rst_shift: u8
 
-    :param u8 st_shift:
+    :param st_shift:
         register bit shift for the status of the deasserted submodule
+    :type st_shift: u8
 
-    :param u8 part:
+    :param part:
         PRM partition, not used for OMAP2
+    :type part: u8
 
-    :param s16 prm_mod:
+    :param prm_mod:
         PRM submodule base (e.g. CORE_MOD)
+    :type prm_mod: s16
 
-    :param u16 rst_offset:
+    :param rst_offset:
         reset register offset, not used for OMAP2
+    :type rst_offset: u16
 
-    :param u16 st_offset:
+    :param st_offset:
         reset status register offset, not used for OMAP2
+    :type st_offset: u16
 
 .. _`omap2_prm_deassert_hardreset.description`:
 

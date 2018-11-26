@@ -10,14 +10,17 @@ hackkit_uart_pm
 
     powermgmt callback function for system 3 UART
 
-    :param struct uart_port \*port:
+    :param port:
         uart port structure
+    :type port: struct uart_port \*
 
-    :param u_int state:
+    :param state:
         pm state
+    :type state: u_int
 
-    :param u_int oldstate:
+    :param oldstate:
         old pm state
+    :type oldstate: u_int
 
 .. This file was automatic generated / don't edit.
 

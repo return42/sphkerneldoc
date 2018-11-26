@@ -10,11 +10,13 @@ host1x_channel_get_index
 
     Attempt to get channel reference by index
 
-    :param struct host1x \*host:
+    :param host:
         Host1x device object
+    :type host: struct host1x \*
 
-    :param unsigned int index:
+    :param index:
         Index of channel
+    :type index: unsigned int
 
 .. _`host1x_channel_get_index.description`:
 
@@ -33,8 +35,9 @@ host1x_channel_request
 
     Allocate a channel
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`host1x_channel_request.description`:
 

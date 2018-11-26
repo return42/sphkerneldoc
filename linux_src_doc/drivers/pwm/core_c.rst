@@ -10,11 +10,13 @@ pwm_set_chip_data
 
     set private chip data for a PWM
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
-    :param void \*data:
+    :param data:
         pointer to chip-specific data
+    :type data: void \*
 
 .. _`pwm_set_chip_data.return`:
 
@@ -32,8 +34,9 @@ pwm_get_chip_data
 
     get private chip data for a PWM
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
 .. _`pwm_get_chip_data.return`:
 
@@ -51,11 +54,13 @@ pwmchip_add_with_polarity
 
     register a new PWM chip
 
-    :param struct pwm_chip \*chip:
+    :param chip:
         the PWM chip to add
+    :type chip: struct pwm_chip \*
 
-    :param enum pwm_polarity polarity:
+    :param polarity:
         initial polarity of PWM channels
+    :type polarity: enum pwm_polarity
 
 .. _`pwmchip_add_with_polarity.description`:
 
@@ -82,8 +87,9 @@ pwmchip_add
 
     register a new PWM chip
 
-    :param struct pwm_chip \*chip:
+    :param chip:
         the PWM chip to add
+    :type chip: struct pwm_chip \*
 
 .. _`pwmchip_add.description`:
 
@@ -109,8 +115,9 @@ pwmchip_remove
 
     remove a PWM chip
 
-    :param struct pwm_chip \*chip:
+    :param chip:
         the PWM chip to remove
+    :type chip: struct pwm_chip \*
 
 .. _`pwmchip_remove.description`:
 
@@ -136,11 +143,13 @@ pwm_request
 
     request a PWM device
 
-    :param int pwm:
+    :param pwm:
         global PWM device index
+    :type pwm: int
 
-    :param const char \*label:
+    :param label:
         PWM device label
+    :type label: const char \*
 
 .. _`pwm_request.description`:
 
@@ -166,14 +175,17 @@ pwm_request_from_chip
 
     request a PWM device relative to a PWM chip
 
-    :param struct pwm_chip \*chip:
+    :param chip:
         PWM chip
+    :type chip: struct pwm_chip \*
 
-    :param unsigned int index:
+    :param index:
         per-chip index of the PWM to request
+    :type index: unsigned int
 
-    :param const char \*label:
+    :param label:
         a literal description string of this PWM
+    :type label: const char \*
 
 .. _`pwm_request_from_chip.return`:
 
@@ -193,8 +205,9 @@ pwm_free
 
     free a PWM device
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
 .. _`pwm_free.description`:
 
@@ -212,13 +225,15 @@ pwm_apply_state
 
     atomically apply a new state to a PWM device
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
-    :param struct pwm_state \*state:
+    :param state:
         new state to apply. This can be adjusted by the PWM driver
         if the requested config is not achievable, for example,
         ->duty_cycle and ->period might be approximated.
+    :type state: struct pwm_state \*
 
 .. _`pwm_capture`:
 
@@ -229,14 +244,17 @@ pwm_capture
 
     capture and report a PWM signal
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
-    :param struct pwm_capture \*result:
+    :param result:
         structure to fill with capture result
+    :type result: struct pwm_capture \*
 
-    :param unsigned long timeout:
+    :param timeout:
         time to wait, in milliseconds, before giving up on capture
+    :type timeout: unsigned long
 
 .. _`pwm_capture.return`:
 
@@ -254,8 +272,9 @@ pwm_adjust_config
 
     adjust the current PWM config to the PWM arguments
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
 .. _`pwm_adjust_config.description`:
 
@@ -275,11 +294,13 @@ of_pwm_get
 
     request a PWM via the PWM framework
 
-    :param struct device_node \*np:
+    :param np:
         device node to get the PWM from
+    :type np: struct device_node \*
 
-    :param const char \*con_id:
+    :param con_id:
         consumer name
+    :type con_id: const char \*
 
 .. _`of_pwm_get.description`:
 
@@ -314,11 +335,13 @@ pwm_add_table
 
     register PWM device consumers
 
-    :param struct pwm_lookup \*table:
+    :param table:
         array of consumers to register
+    :type table: struct pwm_lookup \*
 
-    :param size_t num:
+    :param num:
         number of consumers in table
+    :type num: size_t
 
 .. _`pwm_remove_table`:
 
@@ -329,11 +352,13 @@ pwm_remove_table
 
     unregister PWM device consumers
 
-    :param struct pwm_lookup \*table:
+    :param table:
         array of consumers to unregister
+    :type table: struct pwm_lookup \*
 
-    :param size_t num:
+    :param num:
         number of consumers in table
+    :type num: size_t
 
 .. _`pwm_get`:
 
@@ -344,11 +369,13 @@ pwm_get
 
     look up and request a PWM device
 
-    :param struct device \*dev:
+    :param dev:
         device for PWM consumer
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         consumer name
+    :type con_id: const char \*
 
 .. _`pwm_get.description`:
 
@@ -379,8 +406,9 @@ pwm_put
 
     release a PWM device
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
 .. _`devm_pwm_get`:
 
@@ -391,11 +419,13 @@ devm_pwm_get
 
     resource managed \ :c:func:`pwm_get`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device for PWM consumer
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         consumer name
+    :type con_id: const char \*
 
 .. _`devm_pwm_get.description`:
 
@@ -422,14 +452,17 @@ devm_of_pwm_get
 
     resource managed \ :c:func:`of_pwm_get`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device for PWM consumer
+    :type dev: struct device \*
 
-    :param struct device_node \*np:
+    :param np:
         device node to get the PWM from
+    :type np: struct device_node \*
 
-    :param const char \*con_id:
+    :param con_id:
         consumer name
+    :type con_id: const char \*
 
 .. _`devm_of_pwm_get.description`:
 
@@ -456,11 +489,13 @@ devm_pwm_put
 
     resource managed \ :c:func:`pwm_put`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device for PWM consumer
+    :type dev: struct device \*
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
 .. _`devm_pwm_put.description`:
 

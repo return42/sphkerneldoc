@@ -10,8 +10,9 @@ cs5536_cable_detect
 
     detect cable type
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to detect on
+    :type ap: struct ata_port \*
 
 .. _`cs5536_cable_detect.description`:
 
@@ -31,11 +32,13 @@ cs5536_set_piomode
 
     PIO setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device on the interface
+    :type adev: struct ata_device \*
 
 .. _`cs5536_set_dmamode`:
 
@@ -46,11 +49,13 @@ cs5536_set_dmamode
 
     DMA timing setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device being configured
+    :type adev: struct ata_device \*
 
 .. _`cs5536_init_one`:
 
@@ -59,11 +64,13 @@ cs5536_init_one
 
 .. c:function:: int cs5536_init_one(struct pci_dev *dev, const struct pci_device_id *id)
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         Entry in match table
+    :type id: const struct pci_device_id \*
 
 .. This file was automatic generated / don't edit.
 

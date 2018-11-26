@@ -22,8 +22,9 @@ LIST_HEAD
 
 .. c:function::  LIST_HEAD( iucv_connection_list)
 
-    :param  iucv_connection_list:
+    :param iucv_connection_list:
         *undescribed*
+    :type iucv_connection_list: 
 
 .. _`netiucv_clear_busy`:
 
@@ -34,8 +35,9 @@ netiucv_clear_busy
 
     of network devices.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`netiucv_printname`:
 
@@ -46,11 +48,13 @@ netiucv_printname
 
     form (strip whitespace at end).
 
-    :param char \*name:
+    :param name:
         *undescribed*
+    :type name: char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
 .. _`netiucv_printname.description`:
 
@@ -68,14 +72,17 @@ netiucv_action_nop
 
 .. c:function:: void netiucv_action_nop(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`netiucv_unpack_skb`:
 
@@ -84,11 +91,13 @@ netiucv_unpack_skb
 
 .. c:function:: void netiucv_unpack_skb(struct iucv_connection *conn, struct sk_buff *pskb)
 
-    :param struct iucv_connection \*conn:
+    :param conn:
         The connection where this skb has been received.
+    :type conn: struct iucv_connection \*
 
-    :param struct sk_buff \*pskb:
+    :param pskb:
         The received skb.
+    :type pskb: struct sk_buff \*
 
 .. _`netiucv_unpack_skb.description`:
 
@@ -105,14 +114,17 @@ dev_action_start
 
 .. c:function:: void dev_action_start(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         An instance of an interface statemachine.
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         The event, just happened.
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         Generic pointer, casted from struct net_device \* upon call.
+    :type arg: void \*
 
 .. _`dev_action_start.description`:
 
@@ -128,14 +140,17 @@ dev_action_stop
 
 .. c:function:: void dev_action_stop(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`dev_action_stop.description`:
 
@@ -155,14 +170,17 @@ dev_action_connup
 
     when a connection is up and running.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`dev_action_connup.description`:
 
@@ -182,14 +200,17 @@ dev_action_conndown
 
     when a connection has been shutdown.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`dev_action_conndown.description`:
 
@@ -209,11 +230,13 @@ netiucv_transmit_skb
 
     This is a helper function for \ :c:func:`netiucv_tx`\ .
 
-    :param struct iucv_connection \*conn:
+    :param conn:
         *undescribed*
+    :type conn: struct iucv_connection \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`netiucv_transmit_skb.description`:
 
@@ -236,8 +259,9 @@ netiucv_open
 
     Called from generic network layer when ifconfig up is run.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`netiucv_open.description`:
 
@@ -257,8 +281,9 @@ netiucv_close
 
     Called from generic network layer when ifconfig down is run.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`netiucv_close.description`:
 
@@ -278,8 +303,9 @@ netiucv_pm_freeze
 
     Freeze PM callback
 
-    :param struct device \*dev:
+    :param dev:
         netiucv device
+    :type dev: struct device \*
 
 .. _`netiucv_pm_freeze.description`:
 
@@ -297,8 +323,9 @@ netiucv_pm_restore_thaw
 
     Thaw and restore PM callback
 
-    :param struct device \*dev:
+    :param dev:
         netiucv device
+    :type dev: struct device \*
 
 .. _`netiucv_pm_restore_thaw.description`:
 
@@ -316,11 +343,13 @@ netiucv_tx
 
     Called from generic network device layer.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`netiucv_tx.description`:
 
@@ -341,8 +370,9 @@ netiucv_stats
 
 .. c:function:: struct net_device_stats *netiucv_stats(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to interface struct.
+    :type dev: struct net_device \*
 
 .. _`netiucv_stats.description`:
 
@@ -362,14 +392,17 @@ netiucv_new_connection
 
     Add it to the list of netiucv connections;
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param char \*username:
+    :param username:
         *undescribed*
+    :type username: char \*
 
-    :param char \*userdata:
+    :param userdata:
         *undescribed*
+    :type userdata: char \*
 
 .. _`netiucv_remove_connection`:
 
@@ -380,8 +413,9 @@ netiucv_remove_connection
 
     list of netiucv connections.
 
-    :param struct iucv_connection \*conn:
+    :param conn:
         *undescribed*
+    :type conn: struct iucv_connection \*
 
 .. _`netiucv_free_netdevice`:
 
@@ -390,8 +424,9 @@ netiucv_free_netdevice
 
 .. c:function:: void netiucv_free_netdevice(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`netiucv_init_netdevice`:
 
@@ -400,11 +435,13 @@ netiucv_init_netdevice
 
 .. c:function:: struct net_device *netiucv_init_netdevice(char *username, char *userdata)
 
-    :param char \*username:
+    :param username:
         *undescribed*
+    :type username: char \*
 
-    :param char \*userdata:
+    :param userdata:
         *undescribed*
+    :type userdata: char \*
 
 .. This file was automatic generated / don't edit.
 

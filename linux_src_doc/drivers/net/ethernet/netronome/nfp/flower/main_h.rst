@@ -135,7 +135,10 @@ Definition
         struct nfp_fl_stats_id stats_ids;
         struct nfp_fl_mask_id mask_ids;
         DECLARE_HASHTABLE(mask_table, NFP_FLOWER_MASK_HASH_BITS);
-        DECLARE_HASHTABLE(flow_table, NFP_FLOWER_HASH_BITS);
+        u32 stats_ring_size;
+        struct rhashtable flow_table;
+        struct nfp_fl_stats *stats;
+        spinlock_t stats_lock;
         struct work_struct cmsg_work;
         struct sk_buff_head cmsg_skbs_high;
         struct sk_buff_head cmsg_skbs_low;
@@ -186,8 +189,17 @@ mask_ids
 mask_table
     Hash table used to store masks
 
+stats_ring_size
+    Maximum number of allowed stats ids
+
 flow_table
     Hash table used to store flower rules
+
+stats
+    Stored stats updates for flower rules
+
+stats_lock
+    Lock for flower rule stats updates
 
 cmsg_work
     Workqueue for control messages processing

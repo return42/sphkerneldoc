@@ -50,8 +50,9 @@ ieee80211_get_radiotap_len
 
     get radiotap header length
 
-    :param const char \*data:
+    :param data:
         *undescribed*
+    :type data: const char \*
 
 .. This file was automatic generated / don't edit.
 

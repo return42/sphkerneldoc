@@ -10,14 +10,17 @@ request_firmware
 
     send firmware request and wait for it
 
-    :param const struct firmware \*\*firmware_p:
+    :param firmware_p:
         pointer to firmware image
+    :type firmware_p: const struct firmware \*\*
 
-    :param const char \*name:
+    :param name:
         name of firmware file
+    :type name: const char \*
 
-    :param struct device \*device:
+    :param device:
         device for which firmware is being loaded
+    :type device: struct device \*
 
 .. _`request_firmware.description`:
 
@@ -47,14 +50,17 @@ firmware_request_nowarn
 
     request for an optional fw module
 
-    :param const struct firmware \*\*firmware:
+    :param firmware:
         pointer to firmware image
+    :type firmware: const struct firmware \*\*
 
-    :param const char \*name:
+    :param name:
         name of firmware file
+    :type name: const char \*
 
-    :param struct device \*device:
+    :param device:
         device for which firmware is being loaded
+    :type device: struct device \*
 
 .. _`firmware_request_nowarn.description`:
 
@@ -77,14 +83,17 @@ request_firmware_direct
 
     load firmware directly without usermode helper
 
-    :param const struct firmware \*\*firmware_p:
+    :param firmware_p:
         pointer to firmware image
+    :type firmware_p: const struct firmware \*\*
 
-    :param const char \*name:
+    :param name:
         name of firmware file
+    :type name: const char \*
 
-    :param struct device \*device:
+    :param device:
         device for which firmware is being loaded
+    :type device: struct device \*
 
 .. _`request_firmware_direct.description`:
 
@@ -105,11 +114,13 @@ firmware_request_cache
 
     cache firmware for suspend so resume can use it
 
-    :param struct device \*device:
+    :param device:
         device for which firmware should be cached for
+    :type device: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of firmware file
+    :type name: const char \*
 
 .. _`firmware_request_cache.description`:
 
@@ -132,20 +143,25 @@ request_firmware_into_buf
 
     load firmware into a previously allocated buffer
 
-    :param const struct firmware \*\*firmware_p:
+    :param firmware_p:
         pointer to firmware image
+    :type firmware_p: const struct firmware \*\*
 
-    :param const char \*name:
+    :param name:
         name of firmware file
+    :type name: const char \*
 
-    :param struct device \*device:
+    :param device:
         device for which firmware is being loaded and DMA region allocated
+    :type device: struct device \*
 
-    :param void \*buf:
+    :param buf:
         address of buffer to load firmware into
+    :type buf: void \*
 
-    :param size_t size:
+    :param size:
         size of buffer
+    :type size: size_t
 
 .. _`request_firmware_into_buf.description`:
 
@@ -168,8 +184,9 @@ release_firmware
 
     release the resource associated with a firmware image
 
-    :param const struct firmware \*fw:
+    :param fw:
         firmware resource to release
+    :type fw: const struct firmware \*
 
 .. _`request_firmware_nowait`:
 
@@ -180,25 +197,31 @@ request_firmware_nowait
 
     asynchronous version of request_firmware
 
-    :param struct module \*module:
+    :param module:
         module requesting the firmware
+    :type module: struct module \*
 
-    :param bool uevent:
+    :param uevent:
         sends uevent to copy the firmware image if this flag
         is non-zero else the firmware copy must be done manually.
+    :type uevent: bool
 
-    :param const char \*name:
+    :param name:
         name of firmware file
+    :type name: const char \*
 
-    :param struct device \*device:
+    :param device:
         device for which firmware is being loaded
+    :type device: struct device \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
-    :param void \*context:
+    :param context:
         will be passed over to \ ``cont``\ , and
         \ ``fw``\  may be \ ``NULL``\  if firmware request fails.
+    :type context: void \*
 
     :param void (\*cont)(const struct firmware \*fw, void \*context):
         function will be called asynchronously when the firmware
@@ -228,8 +251,9 @@ cache_firmware
 
     cache one firmware image in kernel memory space
 
-    :param const char \*fw_name:
+    :param fw_name:
         the firmware image name
+    :type fw_name: const char \*
 
 .. _`cache_firmware.description`:
 
@@ -254,8 +278,9 @@ uncache_firmware
 
     remove one cached firmware image
 
-    :param const char \*fw_name:
+    :param fw_name:
         the firmware image name
+    :type fw_name: const char \*
 
 .. _`uncache_firmware.description`:
 
@@ -277,8 +302,9 @@ device_cache_fw_images
 
     cache devices' firmware
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`device_cache_fw_images.description`:
 
@@ -301,8 +327,9 @@ device_uncache_fw_images
 
     uncache devices' firmware
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`device_uncache_fw_images.description`:
 
@@ -321,8 +348,9 @@ device_uncache_fw_images_delay
 
     uncache devices firmwares
 
-    :param unsigned long delay:
+    :param delay:
         number of milliseconds to delay uncache device firmwares
+    :type delay: unsigned long
 
 .. _`device_uncache_fw_images_delay.description`:
 

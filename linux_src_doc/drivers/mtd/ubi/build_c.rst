@@ -51,14 +51,17 @@ ubi_volume_notify
 
     send a volume change notification.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object of the changed volume
+    :type vol: struct ubi_volume \*
 
-    :param int ntype:
+    :param ntype:
         notification type to send (%UBI_VOLUME_ADDED, etc)
+    :type ntype: int
 
 .. _`ubi_volume_notify.description`:
 
@@ -78,14 +81,17 @@ ubi_notify_all
 
     send a notification to all volumes.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int ntype:
+    :param ntype:
         notification type to send (%UBI_VOLUME_ADDED, etc)
+    :type ntype: int
 
-    :param struct notifier_block \*nb:
+    :param nb:
         the notifier to call
+    :type nb: struct notifier_block \*
 
 .. _`ubi_notify_all.description`:
 
@@ -106,8 +112,9 @@ ubi_enumerate_volumes
 
     send "add" notification for all existing volumes.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         the notifier to call
+    :type nb: struct notifier_block \*
 
 .. _`ubi_enumerate_volumes.description`:
 
@@ -128,8 +135,9 @@ ubi_get_device
 
     get UBI device.
 
-    :param int ubi_num:
+    :param ubi_num:
         UBI device number
+    :type ubi_num: int
 
 .. _`ubi_get_device.description`:
 
@@ -150,8 +158,9 @@ ubi_put_device
 
     drop an UBI device reference.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_get_by_major`:
 
@@ -162,8 +171,9 @@ ubi_get_by_major
 
     get UBI device by character device major number.
 
-    :param int major:
+    :param major:
         major number
+    :type major: int
 
 .. _`ubi_get_by_major.description`:
 
@@ -182,8 +192,9 @@ ubi_major2num
 
     get UBI device number by character device major number.
 
-    :param int major:
+    :param major:
         major number
+    :type major: int
 
 .. _`ubi_major2num.description`:
 
@@ -203,8 +214,9 @@ kill_volumes
 
     destroy all user volumes.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`uif_init`:
 
@@ -215,8 +227,9 @@ uif_init
 
     initialize user interfaces for an UBI device.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`uif_init.description`:
 
@@ -239,8 +252,9 @@ uif_close
 
     close user interfaces for an UBI device.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`uif_close.description`:
 
@@ -260,8 +274,9 @@ ubi_free_internal_volumes
 
     free internal volumes.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`io_init`:
 
@@ -272,18 +287,20 @@ io_init
 
     initialize I/O sub-system for a given UBI device.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int max_beb_per1024:
+    :param max_beb_per1024:
         maximum expected number of bad PEB per 1024 PEBs
+    :type max_beb_per1024: int
 
 .. _`io_init.description`:
 
 Description
 -----------
 
-If \ ``ubi``\ ->vid_hdr_offset or \ ``ubi``\ ->leb_start is zero, default offsets are
+If \ ``ubi->vid_hdr_offset``\  or \ ``ubi->leb_start``\  is zero, default offsets are
 
 .. _`io_init.assumed`:
 
@@ -292,9 +309,9 @@ assumed
 
 o EC header is always at offset zero - this cannot be changed;
 o VID header starts just after the EC header at the closest address
-aligned to \ ``io``\ ->hdrs_min_io_size;
+aligned to \ ``io->hdrs_min_io_size``\ ;
 o data starts just after the VID header at the closest address aligned to
-\ ``io``\ ->min_io_size
+\ ``io->min_io_size``\ 
 
 This function returns zero in case of success and a negative error code in
 case of failure.
@@ -308,11 +325,13 @@ autoresize
 
     re-size the volume which has the "auto-resize" flag set.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         ID of the volume to re-size
+    :type vol_id: int
 
 .. _`autoresize.description`:
 
@@ -333,17 +352,21 @@ ubi_attach_mtd_dev
 
     attach an MTD device.
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device description object
+    :type mtd: struct mtd_info \*
 
-    :param int ubi_num:
+    :param ubi_num:
         number to assign to the new UBI device
+    :type ubi_num: int
 
-    :param int vid_hdr_offset:
+    :param vid_hdr_offset:
         VID header offset
+    :type vid_hdr_offset: int
 
-    :param int max_beb_per1024:
+    :param max_beb_per1024:
         maximum expected number of bad PEB per 1024 PEBs
+    :type max_beb_per1024: int
 
 .. _`ubi_attach_mtd_dev.description`:
 
@@ -368,11 +391,13 @@ ubi_detach_mtd_dev
 
     detach an MTD device.
 
-    :param int ubi_num:
+    :param ubi_num:
         UBI device number to detach from
+    :type ubi_num: int
 
-    :param int anyway:
+    :param anyway:
         detach MTD even if device reference count is not zero
+    :type anyway: int
 
 .. _`ubi_detach_mtd_dev.description`:
 
@@ -396,8 +421,9 @@ open_mtd_by_chdev
 
     open an MTD device by its character device node path.
 
-    :param const char \*mtd_dev:
+    :param mtd_dev:
         MTD character device node path
+    :type mtd_dev: const char \*
 
 .. _`open_mtd_by_chdev.description`:
 
@@ -417,8 +443,9 @@ open_mtd_device
 
     open MTD device by name, character device path, or number.
 
-    :param const char \*mtd_dev:
+    :param mtd_dev:
         name, character device node path, or MTD device device number
+    :type mtd_dev: const char \*
 
 .. _`open_mtd_device.description`:
 
@@ -440,8 +467,9 @@ bytes_str_to_int
 
     convert a number of bytes string into an integer.
 
-    :param const char \*str:
+    :param str:
         the string to convert
+    :type str: const char \*
 
 .. _`bytes_str_to_int.description`:
 
@@ -460,11 +488,13 @@ ubi_mtd_param_parse
 
     parse the 'mtd=' UBI parameter.
 
-    :param const char \*val:
+    :param val:
         the parameter value to parse
+    :type val: const char \*
 
-    :param const struct kernel_param \*kp:
+    :param kp:
         not used
+    :type kp: const struct kernel_param \*
 
 .. _`ubi_mtd_param_parse.description`:
 

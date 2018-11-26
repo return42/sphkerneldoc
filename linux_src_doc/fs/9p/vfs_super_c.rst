@@ -10,11 +10,13 @@ v9fs_set_super
 
     set the superblock
 
-    :param struct super_block \*s:
+    :param s:
         super block
+    :type s: struct super_block \*
 
-    :param void \*data:
+    :param data:
         file system specific data
+    :type data: void \*
 
 .. _`v9fs_fill_super`:
 
@@ -25,17 +27,21 @@ v9fs_fill_super
 
     populate superblock with info
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         session information
+    :type v9ses: struct v9fs_session_info \*
 
-    :param int flags:
+    :param flags:
         flags propagated from \ :c:func:`v9fs_mount`\ 
+    :type flags: int
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`v9fs_mount`:
 
@@ -46,17 +52,21 @@ v9fs_mount
 
     mount a superblock
 
-    :param struct file_system_type \*fs_type:
+    :param fs_type:
         file system type
+    :type fs_type: struct file_system_type \*
 
-    :param int flags:
+    :param flags:
         mount flags
+    :type flags: int
 
-    :param const char \*dev_name:
+    :param dev_name:
         device name that was mounted
+    :type dev_name: const char \*
 
-    :param void \*data:
+    :param data:
         mount options
+    :type data: void \*
 
 .. _`v9fs_kill_super`:
 
@@ -67,8 +77,9 @@ v9fs_kill_super
 
     Kill Superblock
 
-    :param struct super_block \*s:
+    :param s:
         superblock
+    :type s: struct super_block \*
 
 .. This file was automatic generated / don't edit.
 

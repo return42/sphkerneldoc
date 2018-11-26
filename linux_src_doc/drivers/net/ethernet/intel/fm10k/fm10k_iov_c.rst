@@ -10,14 +10,17 @@ fm10k_iov_msg_queue_mac_vlan
 
     Message handler for MAC/VLAN request from VF
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         Pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param u32 \*\*results:
+    :param results:
         Pointer array to message, results[0] is pointer to message
+    :type results: u32 \*\*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         Pointer to mailbox information structure
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_iov_msg_queue_mac_vlan.description`:
 

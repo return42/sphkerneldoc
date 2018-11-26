@@ -46,8 +46,9 @@ drm_crtc_accurate_vblank_count
 
     retrieve the master vblank counter
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         which counter to retrieve
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_accurate_vblank_count.description`:
 
@@ -70,11 +71,13 @@ drm_vblank_init
 
     initialize vblank support
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param unsigned int num_crtcs:
+    :param num_crtcs:
         number of CRTCs supported by \ ``dev``\ 
+    :type num_crtcs: unsigned int
 
 .. _`drm_vblank_init.description`:
 
@@ -101,8 +104,9 @@ drm_crtc_vblank_waitqueue
 
     get vblank waitqueue for the CRTC
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         which CRTC's vblank waitqueue to retrieve
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_vblank_waitqueue.description`:
 
@@ -122,11 +126,13 @@ drm_calc_timestamping_constants
 
     calculate vblank timestamp constants
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm_crtc whose timestamp constants should be updated.
+    :type crtc: struct drm_crtc \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         display mode containing the scanout timings
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_calc_timestamping_constants.description`:
 
@@ -148,23 +154,28 @@ drm_calc_vbltimestamp_from_scanoutpos
 
     precise vblank timestamp helper
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         index of CRTC whose vblank timestamp to retrieve
+    :type pipe: unsigned int
 
-    :param int \*max_error:
+    :param max_error:
         Desired maximum allowable error in timestamps (nanosecs)
         On return contains true maximum error of timestamp
+    :type max_error: int \*
 
-    :param ktime_t \*vblank_time:
+    :param vblank_time:
         Pointer to time which should receive the timestamp
+    :type vblank_time: ktime_t \*
 
-    :param bool in_vblank_irq:
+    :param in_vblank_irq:
         True when called from \ :c:func:`drm_crtc_handle_vblank`\ .  Some drivers
         need to apply some workarounds for gpu-specific vblank irq quirks
         if flag is set.
+    :type in_vblank_irq: bool
 
 .. _`drm_calc_vbltimestamp_from_scanoutpos.description`:
 
@@ -203,19 +214,23 @@ drm_get_last_vbltimestamp
 
     retrieve raw timestamp for the most recent vblank interval
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         index of CRTC whose vblank timestamp to retrieve
+    :type pipe: unsigned int
 
-    :param ktime_t \*tvblank:
+    :param tvblank:
         Pointer to target time which should receive the timestamp
+    :type tvblank: ktime_t \*
 
-    :param bool in_vblank_irq:
+    :param in_vblank_irq:
         True when called from \ :c:func:`drm_crtc_handle_vblank`\ .  Some drivers
         need to apply some workarounds for gpu-specific vblank irq quirks
         if flag is set.
+    :type in_vblank_irq: bool
 
 .. _`drm_get_last_vbltimestamp.description`:
 
@@ -245,8 +260,9 @@ drm_crtc_vblank_count
 
     retrieve "cooked" vblank counter value
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         which counter to retrieve
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_vblank_count.description`:
 
@@ -275,14 +291,17 @@ drm_vblank_count_and_time
 
     retrieve "cooked" vblank counter value and the system timestamp corresponding to that vblank counter value.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         index of CRTC whose counter to retrieve
+    :type pipe: unsigned int
 
-    :param ktime_t \*vblanktime:
+    :param vblanktime:
         Pointer to ktime_t to receive the vblank timestamp.
+    :type vblanktime: ktime_t \*
 
 .. _`drm_vblank_count_and_time.description`:
 
@@ -305,11 +324,13 @@ drm_crtc_vblank_count_and_time
 
     retrieve "cooked" vblank counter value and the system timestamp corresponding to that vblank counter value
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         which counter to retrieve
+    :type crtc: struct drm_crtc \*
 
-    :param ktime_t \*vblanktime:
+    :param vblanktime:
         Pointer to time to receive the vblank timestamp.
+    :type vblanktime: ktime_t \*
 
 .. _`drm_crtc_vblank_count_and_time.description`:
 
@@ -330,11 +351,13 @@ drm_crtc_arm_vblank_event
 
     arm vblank event after pageflip
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         the source CRTC of the vblank event
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_pending_vblank_event \*e:
+    :param e:
         the event to send
+    :type e: struct drm_pending_vblank_event \*
 
 .. _`drm_crtc_arm_vblank_event.description`:
 
@@ -376,8 +399,8 @@ Instead drivers need to manually send out the event from their interrupt
 handler by calling \ :c:func:`drm_crtc_send_vblank_event`\  and make sure that there's no
 possible race with the hardware committing the atomic update.
 
-Caller must hold a vblank reference for the event \ ``e``\ , which will be dropped
-when the next vblank arrives.
+Caller must hold a vblank reference for the event \ ``e``\  acquired by a
+\ :c:func:`drm_crtc_vblank_get`\ , which will be dropped when the next vblank arrives.
 
 .. _`drm_crtc_send_vblank_event`:
 
@@ -388,11 +411,13 @@ drm_crtc_send_vblank_event
 
     helper to send vblank event after pageflip
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         the source CRTC of the vblank event
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_pending_vblank_event \*e:
+    :param e:
         the event to send
+    :type e: struct drm_pending_vblank_event \*
 
 .. _`drm_crtc_send_vblank_event.description`:
 
@@ -414,8 +439,9 @@ drm_crtc_vblank_get
 
     get a reference count on vblank events
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         which CRTC to own
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_vblank_get.description`:
 
@@ -441,8 +467,9 @@ drm_crtc_vblank_put
 
     give up ownership of vblank events
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         which counter to give up
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_vblank_put.description`:
 
@@ -461,11 +488,13 @@ drm_wait_one_vblank
 
     wait for one vblank
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         CRTC index
+    :type pipe: unsigned int
 
 .. _`drm_wait_one_vblank.description`:
 
@@ -487,8 +516,9 @@ drm_crtc_wait_one_vblank
 
     wait for one vblank
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_wait_one_vblank.description`:
 
@@ -508,8 +538,9 @@ drm_crtc_vblank_off
 
     disable vblank events on a CRTC
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC in question
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_vblank_off.description`:
 
@@ -532,8 +563,9 @@ drm_crtc_vblank_reset
 
     reset vblank state to off on a CRTC
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC in question
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_vblank_reset.description`:
 
@@ -557,8 +589,9 @@ drm_crtc_vblank_on
 
     enable vblank events on a CRTC
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC in question
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_vblank_on.description`:
 
@@ -580,11 +613,13 @@ drm_vblank_restore
 
     estimate missed vblanks and update vblank count.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         CRTC index
+    :type pipe: unsigned int
 
 .. _`drm_vblank_restore.description`:
 
@@ -608,8 +643,9 @@ drm_crtc_vblank_restore
 
     estimate missed vblanks and update vblank count.
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC in question
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_vblank_restore.description`:
 
@@ -631,11 +667,13 @@ drm_handle_vblank
 
     handle a vblank event
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         index of CRTC where this event occurred
+    :type pipe: unsigned int
 
 .. _`drm_handle_vblank.description`:
 
@@ -656,8 +694,9 @@ drm_crtc_handle_vblank
 
     handle a vblank event
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         where this event occurred
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_crtc_handle_vblank.description`:
 

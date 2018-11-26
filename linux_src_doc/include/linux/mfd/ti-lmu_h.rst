@@ -19,7 +19,7 @@ Definition
     struct ti_lmu {
         struct device *dev;
         struct regmap *regmap;
-        int en_gpio;
+        struct gpio_desc *en_gpio;
         struct blocking_notifier_head notifier;
     }
 

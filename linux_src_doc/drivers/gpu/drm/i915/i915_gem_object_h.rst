@@ -10,11 +10,13 @@ i915_gem_object_lookup_rcu
 
     look up a temporary GEM object from its handle
 
-    :param struct drm_file \*file:
+    :param file:
         *undescribed*
+    :type file: struct drm_file \*
 
-    :param u32 handle:
+    :param handle:
         userspace handle
+    :type handle: u32
 
 .. _`i915_gem_object_lookup_rcu.return`:
 

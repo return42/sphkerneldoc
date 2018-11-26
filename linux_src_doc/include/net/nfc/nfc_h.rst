@@ -10,15 +10,18 @@ data_exchange_cb_t
 
     Definition of nfc_data_exchange callback
 
-    :param void \*context:
+    :param context:
         nfc_data_exchange cb_context parameter
+    :type context: void \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         response data
+    :type skb: struct sk_buff \*
 
-    :param int err:
+    :param err:
         If an error has occurred during data exchange, it is the
         error number. Zero means no error.
+    :type err: int
 
 .. _`data_exchange_cb_t.description`:
 
@@ -141,8 +144,9 @@ nfc_free_device
 
     free nfc device
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device to free
+    :type dev: struct nfc_dev \*
 
 .. _`nfc_set_parent_dev`:
 
@@ -153,11 +157,13 @@ nfc_set_parent_dev
 
     set the parent device
 
-    :param struct nfc_dev \*nfc_dev:
+    :param nfc_dev:
         The nfc device whose parent is being set
+    :type nfc_dev: struct nfc_dev \*
 
-    :param struct device \*dev:
+    :param dev:
         The parent device
+    :type dev: struct device \*
 
 .. _`nfc_set_drvdata`:
 
@@ -168,11 +174,13 @@ nfc_set_drvdata
 
     set driver specifc data
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device
+    :type dev: struct nfc_dev \*
 
-    :param void \*data:
+    :param data:
         Pointer to driver specifc data
+    :type data: void \*
 
 .. _`nfc_get_drvdata`:
 
@@ -183,8 +191,9 @@ nfc_get_drvdata
 
     get driver specifc data
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device
+    :type dev: struct nfc_dev \*
 
 .. _`nfc_device_name`:
 
@@ -195,8 +204,9 @@ nfc_device_name
 
     get the nfc device name
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device whose name to return
+    :type dev: struct nfc_dev \*
 
 .. _`nfc_vendor_cmd_alloc_reply_skb`:
 
@@ -207,18 +217,22 @@ nfc_vendor_cmd_alloc_reply_skb
 
     allocate vendor command reply
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         nfc device
+    :type dev: struct nfc_dev \*
 
-    :param u32 oui:
+    :param oui:
         vendor oui
+    :type oui: u32
 
-    :param u32 subcmd:
+    :param subcmd:
         *undescribed*
+    :type subcmd: u32
 
-    :param int approxlen:
+    :param approxlen:
         an upper bound of the length of the data that will
         be put into the skb
+    :type approxlen: int
 
 .. _`nfc_vendor_cmd_alloc_reply_skb.description`:
 

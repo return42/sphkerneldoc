@@ -10,24 +10,30 @@ fcp_avc_transaction
 
     send an AV/C command and wait for its response
 
-    :param struct fw_unit \*unit:
+    :param unit:
         a unit on the target device
+    :type unit: struct fw_unit \*
 
-    :param const void \*command:
+    :param command:
         a buffer containing the command frame; must be DMA-able
+    :type command: const void \*
 
-    :param unsigned int command_size:
+    :param command_size:
         the size of \ ``command``\ 
+    :type command_size: unsigned int
 
-    :param void \*response:
+    :param response:
         a buffer for the response frame
+    :type response: void \*
 
-    :param unsigned int response_size:
+    :param response_size:
         the maximum size of \ ``response``\ 
+    :type response_size: unsigned int
 
-    :param unsigned int response_match_bytes:
+    :param response_match_bytes:
         a bitmap specifying the bytes used to detect the
         correct response frame
+    :type response_match_bytes: unsigned int
 
 .. _`fcp_avc_transaction.description`:
 
@@ -55,8 +61,9 @@ fcp_bus_reset
 
     inform the target handler about a bus reset
 
-    :param struct fw_unit \*unit:
+    :param unit:
         the unit that might be used by \ :c:func:`fcp_avc_transaction`\ 
+    :type unit: struct fw_unit \*
 
 .. _`fcp_bus_reset.description`:
 

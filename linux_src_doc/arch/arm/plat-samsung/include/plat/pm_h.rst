@@ -10,11 +10,13 @@ s3c_pm_debug_smdkled
 
     Debug PM suspend/resume via SMDK Board LEDs
 
-    :param u32 set:
+    :param set:
         set bits for the state of the LEDs
+    :type set: u32
 
-    :param u32 clear:
+    :param clear:
         clear bits for the state of the LEDs.
+    :type clear: u32
 
 .. _`s3c_pm_configure_extint`:
 
@@ -25,8 +27,9 @@ s3c_pm_configure_extint
 
     ensure pins are correctly set for IRQ
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`s3c_pm_configure_extint.description`:
 
@@ -45,8 +48,9 @@ samsung_pm_restore_gpios
 
     restore the state of the gpios after sleep.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`samsung_pm_restore_gpios.description`:
 
@@ -66,8 +70,9 @@ samsung_pm_save_gpios
 
     save the state of the GPIOs for restoring after sleep.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`samsung_pm_save_gpios.description`:
 

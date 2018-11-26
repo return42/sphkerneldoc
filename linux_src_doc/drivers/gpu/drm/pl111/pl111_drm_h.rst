@@ -20,9 +20,11 @@ Definition
     struct pl111_variant_data {
         const char *name;
         bool is_pl110;
+        bool is_lcdc;
         bool external_bgr;
         bool broken_clockdivider;
         bool broken_vblank;
+        bool st_bitmux_control;
         const u32 *formats;
         unsigned int nformats;
         unsigned int fb_bpp;
@@ -39,6 +41,9 @@ name
 is_pl110
     this is the early PL110 variant
 
+is_lcdc
+    this is the ST Microelectronics Nomadik LCDC variant
+
 external_bgr
     this is the Versatile Pl110 variant with external
     BGR/RGB routing
@@ -49,6 +54,10 @@ broken_clockdivider
 
 broken_vblank
     the vblank IRQ is broken on this variant
+
+st_bitmux_control
+    this variant is using the ST Micro bitmux
+    extensions to the control register
 
 formats
     array of supported pixel formats on this variant

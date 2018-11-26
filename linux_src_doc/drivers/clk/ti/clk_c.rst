@@ -10,8 +10,9 @@ ti_clk_setup_ll_ops
 
     setup low level clock operations
 
-    :param struct ti_clk_ll_ops \*ops:
+    :param ops:
         low level clock ops descriptor
+    :type ops: struct ti_clk_ll_ops \*
 
 .. _`ti_clk_setup_ll_ops.description`:
 
@@ -32,8 +33,9 @@ ti_dt_clocks_register
 
     register DT alias clocks during boot
 
-    :param struct ti_dt_clk oclks:
+    :param oclks:
         list of clocks to register
+    :type oclks: struct ti_dt_clk
 
 .. _`ti_dt_clocks_register.description`:
 
@@ -54,14 +56,17 @@ ti_clk_retry_init
 
     retries a failed clock init at later phase
 
-    :param struct device_node \*node:
+    :param node:
         device not for the clock
+    :type node: struct device_node \*
 
-    :param void \*user:
+    :param user:
         user data pointer
+    :type user: void \*
 
-    :param ti_of_clk_init_cb_t func:
+    :param func:
         init function to be called for the clock
+    :type func: ti_of_clk_init_cb_t
 
 .. _`ti_clk_retry_init.description`:
 
@@ -80,14 +85,17 @@ ti_clk_get_reg_addr
 
     get register address for a clock register
 
-    :param struct device_node \*node:
+    :param node:
         device node for the clock
+    :type node: struct device_node \*
 
-    :param int index:
+    :param index:
         register index from the clock node
+    :type index: int
 
-    :param struct clk_omap_reg \*reg:
+    :param reg:
         pointer to target register struct
+    :type reg: struct clk_omap_reg \*
 
 .. _`ti_clk_get_reg_addr.description`:
 
@@ -107,18 +115,22 @@ omap2_clk_provider_init
 
     init master clock provider
 
-    :param struct device_node \*parent:
+    :param parent:
         master node
+    :type parent: struct device_node \*
 
-    :param int index:
+    :param index:
         internal index for clk_reg_ops
+    :type index: int
 
-    :param struct regmap \*syscon:
+    :param syscon:
         syscon regmap pointer for accessing clock registers
+    :type syscon: struct regmap \*
 
-    :param void __iomem \*mem:
+    :param mem:
         iomem pointer for the clock provider memory area, only used if
         syscon is not provided
+    :type mem: void __iomem \*
 
 .. _`omap2_clk_provider_init.description`:
 
@@ -140,11 +152,13 @@ omap2_clk_legacy_provider_init
 
     initialize a legacy clock provider
 
-    :param int index:
+    :param index:
         index for the clock provider
+    :type index: int
 
-    :param void __iomem \*mem:
+    :param mem:
         iomem pointer for the clock provider memory area
+    :type mem: void __iomem \*
 
 .. _`omap2_clk_legacy_provider_init.description`:
 
@@ -162,8 +176,9 @@ ti_dt_clk_init_retry_clks
 
     init clocks from the retry list
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ti_dt_clk_init_retry_clks.description`:
 
@@ -184,8 +199,9 @@ ti_clk_add_aliases
 
     setup clock aliases
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ti_clk_add_aliases.description`:
 
@@ -203,8 +219,9 @@ ti_clk_setup_features
 
     setup clock features flags
 
-    :param struct ti_clk_features \*features:
+    :param features:
         features definition to use
+    :type features: struct ti_clk_features \*
 
 .. _`ti_clk_setup_features.description`:
 
@@ -223,8 +240,9 @@ ti_clk_get_features
 
     get clock driver features flags
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ti_clk_get_features.description`:
 
@@ -243,11 +261,13 @@ omap2_clk_enable_init_clocks
 
     prepare & enable a list of clocks
 
-    :param const char \*\*clk_names:
+    :param clk_names:
         ptr to an array of strings of clock names to enable
+    :type clk_names: const char \*\*
 
-    :param u8 num_clocks:
+    :param num_clocks:
         number of clock names in \ ``clk_names``\ 
+    :type num_clocks: u8
 
 .. _`omap2_clk_enable_init_clocks.description`:
 
@@ -268,14 +288,17 @@ ti_clk_add_alias
 
     add a clock alias for a TI clock
 
-    :param struct device \*dev:
+    :param dev:
         device alias for this clock
+    :type dev: struct device \*
 
-    :param struct clk \*clk:
+    :param clk:
         clock handle to create alias for
+    :type clk: struct clk \*
 
-    :param const char \*con:
+    :param con:
         connection ID for this clock
+    :type con: const char \*
 
 .. _`ti_clk_add_alias.description`:
 
@@ -295,14 +318,17 @@ ti_clk_register
 
     register a TI clock to the common clock framework
 
-    :param struct device \*dev:
+    :param dev:
         device for this clock
+    :type dev: struct device \*
 
-    :param struct clk_hw \*hw:
+    :param hw:
         hardware clock handle
+    :type hw: struct clk_hw \*
 
-    :param const char \*con:
+    :param con:
         connection ID for this clock
+    :type con: const char \*
 
 .. _`ti_clk_register.description`:
 

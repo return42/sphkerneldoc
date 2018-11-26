@@ -10,9 +10,10 @@ edac_device_add_device
 
     Insert the 'edac_dev' structure into the edac_device global list and create sysfs entries associated with edac_device structure.
 
-    :param struct edac_device_ctl_info \*edac_dev:
+    :param edac_dev:
         pointer to edac_device structure to be added to the list
         'edac_device' structure.
+    :type edac_dev: struct edac_device_ctl_info \*
 
 .. _`edac_device_add_device.return`:
 
@@ -30,9 +31,10 @@ edac_device_del_device
 
     Remove sysfs entries for specified edac_device structure and then remove edac_device structure from global list
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to struct \ :c:type:`struct device <device>`\  representing the edac device
         structure to remove.
+    :type dev: struct device \*
 
 .. _`edac_device_del_device.return`:
 
@@ -51,17 +53,21 @@ edac_device_handle_ue
 
     perform a common output and handling of an 'edac_dev' UE event
 
-    :param struct edac_device_ctl_info \*edac_dev:
+    :param edac_dev:
         pointer to struct \ :c:type:`struct edac_device_ctl_info <edac_device_ctl_info>`\ 
+    :type edac_dev: struct edac_device_ctl_info \*
 
-    :param int inst_nr:
+    :param inst_nr:
         number of the instance where the UE error happened
+    :type inst_nr: int
 
-    :param int block_nr:
+    :param block_nr:
         number of the block where the UE error happened
+    :type block_nr: int
 
-    :param const char \*msg:
+    :param msg:
         message to be printed
+    :type msg: const char \*
 
 .. _`edac_device_handle_ce`:
 
@@ -72,17 +78,21 @@ edac_device_handle_ce
 
     perform a common output and handling of an 'edac_dev' CE event
 
-    :param struct edac_device_ctl_info \*edac_dev:
+    :param edac_dev:
         pointer to struct \ :c:type:`struct edac_device_ctl_info <edac_device_ctl_info>`\ 
+    :type edac_dev: struct edac_device_ctl_info \*
 
-    :param int inst_nr:
+    :param inst_nr:
         number of the instance where the CE error happened
+    :type inst_nr: int
 
-    :param int block_nr:
+    :param block_nr:
         number of the block where the CE error happened
+    :type block_nr: int
 
-    :param const char \*msg:
+    :param msg:
         message to be printed
+    :type msg: const char \*
 
 .. _`edac_device_alloc_index`:
 
@@ -93,8 +103,9 @@ edac_device_alloc_index
 
     Allocate a unique device index number
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`edac_device_alloc_index.return`:
 

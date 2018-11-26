@@ -10,11 +10,13 @@ errseq_set
 
     set a errseq_t for later reporting
 
-    :param errseq_t \*eseq:
+    :param eseq:
         errseq_t field that should be set
+    :type eseq: errseq_t \*
 
-    :param int err:
+    :param err:
         error to set (must be between -1 and -MAX_ERRNO)
+    :type err: int
 
 .. _`errseq_set.description`:
 
@@ -44,8 +46,9 @@ errseq_sample
 
     Grab current errseq_t value.
 
-    :param errseq_t \*eseq:
+    :param eseq:
         Pointer to errseq_t to be sampled.
+    :type eseq: errseq_t \*
 
 .. _`errseq_sample.description`:
 
@@ -80,11 +83,13 @@ errseq_check
 
     Has an error occurred since a particular sample point?
 
-    :param errseq_t \*eseq:
+    :param eseq:
         Pointer to errseq_t value to be checked.
+    :type eseq: errseq_t \*
 
-    :param errseq_t since:
+    :param since:
         Previously-sampled errseq_t from which to check.
+    :type since: errseq_t
 
 .. _`errseq_check.description`:
 
@@ -111,11 +116,13 @@ errseq_check_and_advance
 
     Check an errseq_t and advance to current value.
 
-    :param errseq_t \*eseq:
+    :param eseq:
         Pointer to value being checked and reported.
+    :type eseq: errseq_t \*
 
-    :param errseq_t \*since:
+    :param since:
         Pointer to previously-sampled errseq_t to check against and advance.
+    :type since: errseq_t \*
 
 .. _`errseq_check_and_advance.description`:
 

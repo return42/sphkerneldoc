@@ -10,14 +10,17 @@ uart_update_timeout
 
     update per-port FIFO timeout.
 
-    :param struct uart_port \*port:
+    :param port:
         uart_port structure describing the port
+    :type port: struct uart_port \*
 
-    :param unsigned int cflag:
+    :param cflag:
         termios cflag value
+    :type cflag: unsigned int
 
-    :param unsigned int baud:
+    :param baud:
         speed of the port
+    :type baud: unsigned int
 
 .. _`uart_update_timeout.description`:
 
@@ -36,20 +39,25 @@ uart_get_baud_rate
 
     return baud rate for a particular port
 
-    :param struct uart_port \*port:
+    :param port:
         uart_port structure describing the port in question.
+    :type port: struct uart_port \*
 
-    :param struct ktermios \*termios:
+    :param termios:
         desired termios settings.
+    :type termios: struct ktermios \*
 
-    :param struct ktermios \*old:
+    :param old:
         old termios (or NULL)
+    :type old: struct ktermios \*
 
-    :param unsigned int min:
+    :param min:
         minimum acceptable baud rate
+    :type min: unsigned int
 
-    :param unsigned int max:
+    :param max:
         maximum acceptable baud rate
+    :type max: unsigned int
 
 .. _`uart_get_baud_rate.description`:
 
@@ -76,11 +84,13 @@ uart_get_divisor
 
     return uart clock divisor
 
-    :param struct uart_port \*port:
+    :param port:
         uart_port structure describing the port.
+    :type port: struct uart_port \*
 
-    :param unsigned int baud:
+    :param baud:
         desired baud rate
+    :type baud: unsigned int
 
 .. _`uart_get_divisor.description`:
 
@@ -98,14 +108,17 @@ uart_get_lsr_info
 
     get line status register info
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty associated with the UART
+    :type tty: struct tty_struct \*
 
-    :param struct uart_state \*state:
+    :param state:
         UART being queried
+    :type state: struct uart_state \*
 
-    :param unsigned int __user \*value:
+    :param value:
         returned modem value
+    :type value: unsigned int __user \*
 
 .. _`uart_console_write`:
 
@@ -116,14 +129,17 @@ uart_console_write
 
     write a console message to a serial port
 
-    :param struct uart_port \*port:
+    :param port:
         the port to write the message
+    :type port: struct uart_port \*
 
-    :param const char \*s:
+    :param s:
         array of characters
+    :type s: const char \*
 
-    :param unsigned int count:
+    :param count:
         number of characters in string to write
+    :type count: unsigned int
 
     :param void (\*putchar)(struct uart_port \*, int):
         function to write character to port
@@ -137,17 +153,21 @@ uart_parse_earlycon
 
     Parse earlycon options
 
-    :param char \*p:
+    :param p:
         ptr to 2nd field (ie., just beyond '<name>,')
+    :type p: char \*
 
-    :param unsigned char \*iotype:
+    :param iotype:
         ptr for decoded iotype (out)
+    :type iotype: unsigned char \*
 
-    :param resource_size_t \*addr:
+    :param addr:
         ptr for decoded mapbase/iobase (out)
+    :type addr: resource_size_t \*
 
-    :param char \*\*options:
+    :param options:
         ptr for <options> field; NULL if not present (out)
+    :type options: char \*\*
 
 .. _`uart_parse_earlycon.description`:
 
@@ -174,20 +194,25 @@ uart_parse_options
 
     Parse serial port baud/parity/bits/flow control.
 
-    :param const char \*options:
+    :param options:
         pointer to option string
+    :type options: const char \*
 
-    :param int \*baud:
+    :param baud:
         pointer to an 'int' variable for the baud rate.
+    :type baud: int \*
 
-    :param int \*parity:
+    :param parity:
         pointer to an 'int' variable for the parity.
+    :type parity: int \*
 
-    :param int \*bits:
+    :param bits:
         pointer to an 'int' variable for the number of data bits.
+    :type bits: int \*
 
-    :param int \*flow:
+    :param flow:
         pointer to an 'int' variable for the flow control character.
+    :type flow: int \*
 
 .. _`uart_parse_options.description`:
 
@@ -207,23 +232,29 @@ uart_set_options
 
     setup the serial console parameters
 
-    :param struct uart_port \*port:
+    :param port:
         pointer to the serial ports uart_port structure
+    :type port: struct uart_port \*
 
-    :param struct console \*co:
+    :param co:
         console pointer
+    :type co: struct console \*
 
-    :param int baud:
+    :param baud:
         baud rate
+    :type baud: int
 
-    :param int parity:
+    :param parity:
         parity character - 'n' (none), 'o' (odd), 'e' (even)
+    :type parity: int
 
-    :param int bits:
+    :param bits:
         number of data bits
+    :type bits: int
 
-    :param int flow:
+    :param flow:
         flow control character - 'r' (rts)
+    :type flow: int
 
 .. _`uart_change_pm`:
 
@@ -234,11 +265,13 @@ uart_change_pm
 
     set power state of the port
 
-    :param struct uart_state \*state:
+    :param state:
         port descriptor
+    :type state: struct uart_state \*
 
-    :param enum uart_pm_state pm_state:
+    :param pm_state:
         new state
+    :type pm_state: enum uart_pm_state
 
 .. _`uart_change_pm.description`:
 
@@ -256,8 +289,9 @@ uart_register_driver
 
     register a driver with the uart core layer
 
-    :param struct uart_driver \*drv:
+    :param drv:
         low level driver structure
+    :type drv: struct uart_driver \*
 
 .. _`uart_register_driver.description`:
 
@@ -282,8 +316,9 @@ uart_unregister_driver
 
     remove a driver from the uart core layer
 
-    :param struct uart_driver \*drv:
+    :param drv:
         low level driver structure
+    :type drv: struct uart_driver \*
 
 .. _`uart_unregister_driver.description`:
 
@@ -304,11 +339,13 @@ uart_add_one_port
 
     attach a driver-defined port structure
 
-    :param struct uart_driver \*drv:
+    :param drv:
         pointer to the uart low level driver structure for this port
+    :type drv: struct uart_driver \*
 
-    :param struct uart_port \*uport:
+    :param uport:
         uart port structure to use for this port.
+    :type uport: struct uart_port \*
 
 .. _`uart_add_one_port.description`:
 
@@ -329,11 +366,13 @@ uart_remove_one_port
 
     detach a driver defined port structure
 
-    :param struct uart_driver \*drv:
+    :param drv:
         pointer to the uart low level driver structure for this port
+    :type drv: struct uart_driver \*
 
-    :param struct uart_port \*uport:
+    :param uport:
         uart port structure for this port
+    :type uport: struct uart_port \*
 
 .. _`uart_remove_one_port.description`:
 
@@ -353,11 +392,13 @@ uart_handle_dcd_change
 
     handle a change of carrier detect state
 
-    :param struct uart_port \*uport:
+    :param uport:
         uart_port structure for the open port
+    :type uport: struct uart_port \*
 
-    :param unsigned int status:
+    :param status:
         new carrier detect status, nonzero if active
+    :type status: unsigned int
 
 .. _`uart_handle_dcd_change.description`:
 
@@ -375,11 +416,13 @@ uart_handle_cts_change
 
     handle a change of clear-to-send state
 
-    :param struct uart_port \*uport:
+    :param uport:
         uart_port structure for the open port
+    :type uport: struct uart_port \*
 
-    :param unsigned int status:
+    :param status:
         new clear to send status, nonzero if active
+    :type status: unsigned int
 
 .. _`uart_handle_cts_change.description`:
 
@@ -397,20 +440,25 @@ uart_insert_char
 
     push a char to the uart layer
 
-    :param struct uart_port \*port:
+    :param port:
         corresponding port
+    :type port: struct uart_port \*
 
-    :param unsigned int status:
+    :param status:
         state of the serial port RX buffer (LSR for 8250)
+    :type status: unsigned int
 
-    :param unsigned int overrun:
+    :param overrun:
         mask of overrun bits in \ ``status``\ 
+    :type overrun: unsigned int
 
-    :param unsigned int ch:
+    :param ch:
         character to push
+    :type ch: unsigned int
 
-    :param unsigned int flag:
+    :param flag:
         flag for the character (see TTY_NORMAL and friends)
+    :type flag: unsigned int
 
 .. _`uart_insert_char.description`:
 
@@ -429,11 +477,13 @@ uart_get_rs485_mode
 
     retrieve rs485 properties for given uart
 
-    :param struct device \*dev:
+    :param dev:
         uart device
+    :type dev: struct device \*
 
-    :param struct serial_rs485 \*rs485conf:
+    :param rs485conf:
         output parameter
+    :type rs485conf: struct serial_rs485 \*
 
 .. _`uart_get_rs485_mode.description`:
 

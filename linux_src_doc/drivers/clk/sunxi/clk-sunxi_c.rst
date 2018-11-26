@@ -10,8 +10,9 @@ sun4i_get_pll1_factors
 
     calculates n, k, m, p factors for PLL1 PLL1 rate is calculated as follows rate = (parent_rate \* n \* (k + 1) >> p) / (m + 1); parent_rate is always 24Mhz
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun6i_a31_get_pll1_factors`:
 
@@ -22,8 +23,9 @@ sun6i_a31_get_pll1_factors
 
     calculates n, k and m factors for PLL1 PLL1 rate is calculated as follows rate = parent_rate \* (n + 1) \* (k + 1) / (m + 1); parent_rate should always be 24MHz
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun8i_a23_get_pll1_factors`:
 
@@ -34,8 +36,9 @@ sun8i_a23_get_pll1_factors
 
     calculates n, k, m, p factors for PLL1 PLL1 rate is calculated as follows rate = (parent_rate \* (n + 1) \* (k + 1) >> p) / (m + 1); parent_rate is always 24Mhz
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun4i_get_pll5_factors`:
 
@@ -46,8 +49,9 @@ sun4i_get_pll5_factors
 
     calculates n, k factors for PLL5 PLL5 rate is calculated as follows rate = parent_rate \* n \* (k + 1) parent_rate is always 24Mhz
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun6i_a31_get_pll6_factors`:
 
@@ -58,8 +62,9 @@ sun6i_a31_get_pll6_factors
 
     calculates n, k factors for A31 PLL6x2 PLL6x2 rate is calculated as follows rate = parent_rate \* (n + 1) \* (k + 1) parent_rate is always 24Mhz
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun5i_a13_get_ahb_factors`:
 
@@ -70,8 +75,9 @@ sun5i_a13_get_ahb_factors
 
     calculates m, p factors for AHB AHB rate is calculated as follows rate = parent_rate >> p
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun6i_get_ahb1_factors`:
 
@@ -82,8 +88,9 @@ sun6i_get_ahb1_factors
 
     calculates m, p factors for AHB AHB rate is calculated as follows rate = parent_rate >> p
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun6i_get_ahb1_factors.description`:
 
@@ -102,8 +109,9 @@ sun6i_ahb1_recalc
 
     calculates AHB clock rate from m, p factors and parent index
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun4i_get_apb1_factors`:
 
@@ -114,8 +122,9 @@ sun4i_get_apb1_factors
 
     calculates m, p factors for APB1 APB1 rate is calculated as follows rate = (parent_rate >> p) / (m + 1);
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun7i_a20_get_out_factors`:
 
@@ -126,8 +135,9 @@ sun7i_a20_get_out_factors
 
     calculates m, p factors for CLK_OUT_A/B CLK_OUT rate is calculated as follows rate = (parent_rate >> p) / (m + 1);
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sunxi_mux_gate_width`:
 
@@ -163,11 +173,13 @@ sunxi_divs_clk_setup
 
     Setup function for leaf divisors on clocks
 
-    :param struct device_node \*node:
+    :param node:
         *undescribed*
+    :type node: struct device_node \*
 
-    :param const struct divs_data \*data:
+    :param data:
         *undescribed*
+    :type data: const struct divs_data \*
 
 .. _`sunxi_divs_clk_setup.description`:
 

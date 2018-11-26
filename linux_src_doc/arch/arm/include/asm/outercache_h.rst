@@ -10,11 +10,13 @@ outer_inv_range
 
     invalidate range of outer cache lines
 
-    :param phys_addr_t start:
+    :param start:
         starting physical address, inclusive
+    :type start: phys_addr_t
 
-    :param phys_addr_t end:
+    :param end:
         end physical address, exclusive
+    :type end: phys_addr_t
 
 .. _`outer_clean_range`:
 
@@ -25,11 +27,13 @@ outer_clean_range
 
     clean dirty outer cache lines
 
-    :param phys_addr_t start:
+    :param start:
         starting physical address, inclusive
+    :type start: phys_addr_t
 
-    :param phys_addr_t end:
+    :param end:
         end physical address, exclusive
+    :type end: phys_addr_t
 
 .. _`outer_flush_range`:
 
@@ -40,11 +44,13 @@ outer_flush_range
 
     clean and invalidate outer cache lines
 
-    :param phys_addr_t start:
+    :param start:
         starting physical address, inclusive
+    :type start: phys_addr_t
 
-    :param phys_addr_t end:
+    :param end:
         end physical address, exclusive
+    :type end: phys_addr_t
 
 .. _`outer_flush_all`:
 
@@ -55,8 +61,9 @@ outer_flush_all
 
     clean and invalidate all cache lines in the outer cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`outer_flush_all.note`:
 
@@ -80,8 +87,9 @@ outer_disable
 
     clean, invalidate and disable the outer cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`outer_disable.description`:
 
@@ -101,8 +109,9 @@ outer_resume
 
     restore the cache configuration and re-enable outer cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`outer_resume.description`:
 

@@ -532,28 +532,34 @@ ieee80211_parse_ch_switch_ie
 
     parses channel switch IEs
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         the sdata of the interface which has received the frame
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct ieee802_11_elems \*elems:
+    :param elems:
         parsed 802.11 elements received with the frame
+    :type elems: struct ieee802_11_elems \*
 
-    :param enum nl80211_band current_band:
+    :param current_band:
         indicates the current band
+    :type current_band: enum nl80211_band
 
-    :param u32 sta_flags:
+    :param sta_flags:
         contains information about own capabilities and restrictions
         to decide which channel switch announcements can be accepted. Only the
         following subset of \ :c:type:`enum ieee80211_sta_flags <ieee80211_sta_flags>`\  are evaluated:
         \ ``IEEE80211_STA_DISABLE_HT``\ , \ ``IEEE80211_STA_DISABLE_VHT``\ ,
         \ ``IEEE80211_STA_DISABLE_40MHZ``\ , \ ``IEEE80211_STA_DISABLE_80P80MHZ``\ ,
         \ ``IEEE80211_STA_DISABLE_160MHZ``\ .
+    :type sta_flags: u32
 
-    :param u8 \*bssid:
+    :param bssid:
         the currently connected bssid (for reporting)
+    :type bssid: u8 \*
 
-    :param struct ieee80211_csa_ie \*csa_ie:
+    :param csa_ie:
         parsed 802.11 csa elements on count, mode, chandef and mesh ttl.
+    :type csa_ie: struct ieee80211_csa_ie \*
 
 .. _`ieee80211_parse_ch_switch_ie.return`:
 

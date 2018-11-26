@@ -10,8 +10,9 @@ dma_contiguous_reserve
 
     reserve area(s) for contiguous memory handling
 
-    :param phys_addr_t limit:
+    :param limit:
         End address of the reserved memory (optional, 0 for any).
+    :type limit: phys_addr_t
 
 .. _`dma_contiguous_reserve.description`:
 
@@ -32,20 +33,25 @@ dma_contiguous_reserve_area
 
     reserve custom contiguous area
 
-    :param phys_addr_t size:
+    :param size:
         Size of the reserved area (in bytes),
+    :type size: phys_addr_t
 
-    :param phys_addr_t base:
+    :param base:
         Base address of the reserved area optional, use 0 for any
+    :type base: phys_addr_t
 
-    :param phys_addr_t limit:
+    :param limit:
         End address of the reserved memory (optional, 0 for any).
+    :type limit: phys_addr_t
 
-    :param struct cma \*\*res_cma:
+    :param res_cma:
         Pointer to store the created cma region.
+    :type res_cma: struct cma \*\*
 
-    :param bool fixed:
+    :param fixed:
         hint about where to place the reserved area
+    :type fixed: bool
 
 .. _`dma_contiguous_reserve_area.description`:
 
@@ -66,21 +72,25 @@ reserve in range from \ ``base``\  to \ ``limit``\ .
 dma_alloc_from_contiguous
 =========================
 
-.. c:function:: struct page *dma_alloc_from_contiguous(struct device *dev, size_t count, unsigned int align, gfp_t gfp_mask)
+.. c:function:: struct page *dma_alloc_from_contiguous(struct device *dev, size_t count, unsigned int align, bool no_warn)
 
     allocate pages from contiguous area
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to device for which the allocation is performed.
+    :type dev: struct device \*
 
-    :param size_t count:
+    :param count:
         Requested number of pages.
+    :type count: size_t
 
-    :param unsigned int align:
+    :param align:
         Requested alignment of pages (in PAGE_SIZE order).
+    :type align: unsigned int
 
-    :param gfp_t gfp_mask:
-        GFP flags to use for this allocation.
+    :param no_warn:
+        Avoid printing message about failed allocation.
+    :type no_warn: bool
 
 .. _`dma_alloc_from_contiguous.description`:
 
@@ -101,14 +111,17 @@ dma_release_from_contiguous
 
     release allocated pages
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to device for which the pages were allocated.
+    :type dev: struct device \*
 
-    :param struct page \*pages:
+    :param pages:
         Allocated pages.
+    :type pages: struct page \*
 
-    :param int count:
+    :param count:
         Number of allocated pages.
+    :type count: int
 
 .. _`dma_release_from_contiguous.description`:
 

@@ -10,11 +10,13 @@ set_groups
 
     Change a group subscription in a set of credentials
 
-    :param struct cred \*new:
+    :param new:
         The newly prepared set of credentials to alter
+    :type new: struct cred \*
 
-    :param struct group_info \*group_info:
+    :param group_info:
         The group list to install
+    :type group_info: struct group_info \*
 
 .. _`set_current_groups`:
 
@@ -25,8 +27,9 @@ set_current_groups
 
     Change current's group subscription
 
-    :param struct group_info \*group_info:
+    :param group_info:
         The group list to impose
+    :type group_info: struct group_info \*
 
 .. _`set_current_groups.description`:
 

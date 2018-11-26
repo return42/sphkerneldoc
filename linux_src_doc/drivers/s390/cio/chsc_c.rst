@@ -10,8 +10,9 @@ chsc_error_from_response
 
     convert a chsc response to an error
 
-    :param int response:
+    :param response:
         chsc response code
+    :type response: int
 
 .. _`chsc_error_from_response.description`:
 
@@ -29,11 +30,13 @@ chsc_ssqd
 
     store subchannel QDIO data (SSQD)
 
-    :param struct subchannel_id schid:
+    :param schid:
         id of the subchannel on which SSQD is performed
+    :type schid: struct subchannel_id
 
-    :param struct chsc_ssqd_area \*ssqd:
+    :param ssqd:
         request and response block for SSQD
+    :type ssqd: struct chsc_ssqd_area \*
 
 .. _`chsc_ssqd.description`:
 
@@ -51,17 +54,21 @@ chsc_sadc
 
     set adapter device controls (SADC)
 
-    :param struct subchannel_id schid:
+    :param schid:
         id of the subchannel on which SADC is performed
+    :type schid: struct subchannel_id
 
-    :param struct chsc_scssc_area \*scssc:
+    :param scssc:
         request and response block for SADC
+    :type scssc: struct chsc_scssc_area \*
 
-    :param u64 summary_indicator_addr:
+    :param summary_indicator_addr:
         summary indicator address
+    :type summary_indicator_addr: u64
 
-    :param u64 subchannel_indicator_addr:
+    :param subchannel_indicator_addr:
         subchannel indicator address
+    :type subchannel_indicator_addr: u64
 
 .. _`chsc_sadc.description`:
 
@@ -79,11 +86,13 @@ chsc_chp_vary
 
     propagate channel-path vary operation to subchannels
 
-    :param struct chp_id chpid:
+    :param chpid:
         channl-path ID
+    :type chpid: struct chp_id
 
-    :param int on:
+    :param on:
         non-zero for vary online, zero for vary offline
+    :type on: int
 
 .. _`chsc_scm_info`:
 
@@ -94,11 +103,13 @@ chsc_scm_info
 
     store SCM information (SSI)
 
-    :param struct chsc_scm_info \*scm_area:
+    :param scm_area:
         request and response block for SSI
+    :type scm_area: struct chsc_scm_info \*
 
-    :param u64 token:
+    :param token:
         continuation token
+    :type token: u64
 
 .. _`chsc_scm_info.description`:
 
@@ -116,17 +127,21 @@ chsc_pnso_brinfo
 
     Perform Network-Subchannel Operation, Bridge Info.
 
-    :param struct subchannel_id schid:
+    :param schid:
         id of the subchannel on which PNSO is performed
+    :type schid: struct subchannel_id
 
-    :param struct chsc_pnso_area \*brinfo_area:
+    :param brinfo_area:
         request and response block for the operation
+    :type brinfo_area: struct chsc_pnso_area \*
 
-    :param struct chsc_brinfo_resume_token resume_token:
+    :param resume_token:
         resume token for multiblock response
+    :type resume_token: struct chsc_brinfo_resume_token
 
-    :param int cnc:
+    :param cnc:
         Boolean change-notification control
+    :type cnc: int
 
 .. _`chsc_pnso_brinfo.description`:
 

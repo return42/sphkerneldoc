@@ -10,23 +10,29 @@
 
     write out cached info to an inode \ ``root``\  - the root the inode belongs to \ ``ctl``\  - the free space cache we are going to write out \ ``block_group``\  - the block_group for this cache if it belongs to a block_group \ ``trans``\  - the trans handle
 
-    :param struct btrfs_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct btrfs_root \*
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct btrfs_free_space_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct btrfs_free_space_ctl \*
 
-    :param struct btrfs_block_group_cache \*block_group:
+    :param block_group:
         *undescribed*
+    :type block_group: struct btrfs_block_group_cache \*
 
-    :param struct btrfs_io_ctl \*io_ctl:
+    :param io_ctl:
         *undescribed*
+    :type io_ctl: struct btrfs_io_ctl \*
 
-    :param struct btrfs_trans_handle \*trans:
+    :param trans:
         *undescribed*
+    :type trans: struct btrfs_trans_handle \*
 
 .. _`__btrfs_write_out_cache.description`:
 

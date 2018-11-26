@@ -8,14 +8,17 @@ memswap
 
 .. c:function:: void memswap(void *a, void *b, size_t len)
 
-    :param void \*a:
+    :param a:
         pointer to first memory area
+    :type a: void \*
 
-    :param void \*b:
+    :param b:
         pointer to second memory area
+    :type b: void \*
 
-    :param size_t len:
+    :param len:
         number of bytes to swap
+    :type len: size_t
 
 .. _`swap_inode_data`:
 
@@ -26,11 +29,13 @@ swap_inode_data
 
     This function is used for the primary swap between inode1 and inode2 and also to revert this primary swap in case of errors.
 
-    :param struct inode \*inode1:
+    :param inode1:
         pointer to first inode
+    :type inode1: struct inode \*
 
-    :param struct inode \*inode2:
+    :param inode2:
         pointer to second inode
+    :type inode2: struct inode \*
 
 .. _`swap_inode_data.description`:
 
@@ -49,11 +54,13 @@ swap_inode_boot_loader
 
     EXT4_BOOT_LOADER_INO. It will basically swap i_data and all other important fields of the inodes.
 
-    :param struct super_block \*sb:
+    :param sb:
         the super block of the filesystem
+    :type sb: struct super_block \*
 
-    :param struct inode \*inode:
+    :param inode:
         the inode to swap with EXT4_BOOT_LOADER_INO
+    :type inode: struct inode \*
 
 .. This file was automatic generated / don't edit.
 

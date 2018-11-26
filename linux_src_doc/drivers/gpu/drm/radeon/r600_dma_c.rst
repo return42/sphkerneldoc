@@ -10,11 +10,13 @@ r600_dma_get_rptr
 
     get the current read pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`r600_dma_get_rptr.description`:
 
@@ -32,11 +34,13 @@ r600_dma_get_wptr
 
     get the current write pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`r600_dma_get_wptr.description`:
 
@@ -54,11 +58,13 @@ r600_dma_set_wptr
 
     commit the write pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`r600_dma_set_wptr.description`:
 
@@ -76,8 +82,9 @@ r600_dma_stop
 
     stop the async dma engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r600_dma_stop.description`:
 
@@ -95,8 +102,9 @@ r600_dma_resume
 
     setup and start the async dma engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r600_dma_resume.description`:
 
@@ -115,8 +123,9 @@ r600_dma_fini
 
     tear down the async dma engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r600_dma_fini.description`:
 
@@ -134,11 +143,13 @@ r600_dma_is_lockup
 
     Check if the DMA engine is locked up
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`r600_dma_is_lockup.description`:
 
@@ -157,11 +168,13 @@ r600_dma_ring_test
 
     simple async dma engine test
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`r600_dma_ring_test.description`:
 
@@ -181,11 +194,13 @@ r600_dma_fence_ring_emit
 
     emit a fence on the DMA ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
 .. _`r600_dma_fence_ring_emit.description`:
 
@@ -205,17 +220,21 @@ r600_dma_semaphore_ring_emit
 
     emit a semaphore on the dma ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
-    :param struct radeon_semaphore \*semaphore:
+    :param semaphore:
         radeon semaphore object
+    :type semaphore: struct radeon_semaphore \*
 
-    :param bool emit_wait:
+    :param emit_wait:
         wait or signal semaphore
+    :type emit_wait: bool
 
 .. _`r600_dma_semaphore_ring_emit.description`:
 
@@ -234,11 +253,13 @@ r600_dma_ib_test
 
     test an IB on the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`r600_dma_ib_test.description`:
 
@@ -257,11 +278,13 @@ r600_dma_ring_ib_execute
 
     Schedule an IB on the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         IB object to schedule
+    :type ib: struct radeon_ib \*
 
 .. _`r600_dma_ring_ib_execute.description`:
 
@@ -279,20 +302,25 @@ r600_copy_dma
 
     copy pages using the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint64_t src_offset:
+    :param src_offset:
         src GPU address
+    :type src_offset: uint64_t
 
-    :param uint64_t dst_offset:
+    :param dst_offset:
         dst GPU address
+    :type dst_offset: uint64_t
 
-    :param unsigned num_gpu_pages:
+    :param num_gpu_pages:
         number of GPU pages to xfer
+    :type num_gpu_pages: unsigned
 
-    :param struct reservation_object \*resv:
+    :param resv:
         reservation object to sync to
+    :type resv: struct reservation_object \*
 
 .. _`r600_copy_dma.description`:
 

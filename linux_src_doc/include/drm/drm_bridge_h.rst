@@ -84,7 +84,7 @@ mode_valid
 
 mode_fixup
 
-    This callback is used to validate and adjust a mode. The paramater
+    This callback is used to validate and adjust a mode. The parameter
     mode is the display mode that should be fed to the next element in
     the display chain, either the final \ :c:type:`struct drm_connector <drm_connector>`\  or the next
     \ :c:type:`struct drm_bridge <drm_bridge>`\ . The parameter adjusted_mode is the input mode the bridge
@@ -155,6 +155,22 @@ mode_set
     then this would be \ :c:type:`drm_encoder_helper_funcs.mode_set <drm_encoder_helper_funcs>`\ . The display
     pipe (i.e.  clocks and timing signals) is off when this function is
     called.
+
+    The adjusted_mode parameter is the mode output by the CRTC for the
+    first bridge in the chain. It can be different from the mode
+    parameter that contains the desired mode for the connector at the end
+    of the bridges chain, for instance when the first bridge in the chain
+    performs scaling. The adjusted mode is mostly useful for the first
+    bridge in the chain and is likely irrelevant for the other bridges.
+
+    For atomic drivers the adjusted_mode is the mode stored in
+    \ :c:type:`drm_crtc_state.adjusted_mode <drm_crtc_state>`\ .
+
+    NOTE:
+
+    If a need arises to store and access modes adjusted for other
+    locations than the connection between the CRTC and the first bridge,
+    the DRM framework will have to be extended with DRM bridge states.
 
 pre_enable
 
@@ -284,8 +300,8 @@ list
     to keep track of all added bridges
 
 timings
-    the timing specification for the bridge, if any (may
-    be NULL)
+
+    the timing specification for the bridge, if any (may be NULL)
 
 funcs
     control functions

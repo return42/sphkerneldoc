@@ -10,8 +10,9 @@ ishtp_dev_state_str
 
     Convert to string format
 
-    :param int state:
+    :param state:
         state to convert
+    :type state: int
 
 .. _`ishtp_dev_state_str.description`:
 
@@ -36,8 +37,9 @@ ishtp_device_init
 
     ishtp device init
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_device_init.description`:
 
@@ -56,8 +58,9 @@ ishtp_start
 
     Start ISH processing
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_start.description`:
 

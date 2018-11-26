@@ -10,14 +10,17 @@ get_pkeys
 
     return the PKEY table
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the hfi1_ib device
+    :type dd: struct hfi1_devdata \*
 
-    :param u8 port:
+    :param port:
         the IB port number
+    :type port: u8
 
-    :param u16 \*pkeys:
+    :param pkeys:
         the pkey table is placed here
+    :type pkeys: u16 \*
 
 .. _`__subn_set_opa_portinfo`:
 
@@ -28,29 +31,37 @@ get_pkeys
 
     set port information
 
-    :param struct opa_smp \*smp:
+    :param smp:
         the incoming SM packet
+    :type smp: struct opa_smp \*
 
-    :param u32 am:
+    :param am:
         *undescribed*
+    :type am: u32
 
-    :param u8 \*data:
+    :param data:
         *undescribed*
+    :type data: u8 \*
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the infiniband device
+    :type ibdev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         the port on the device
+    :type port: u8
 
-    :param u32 \*resp_len:
+    :param resp_len:
         *undescribed*
+    :type resp_len: u32 \*
 
-    :param u32 max_len:
+    :param max_len:
         *undescribed*
+    :type max_len: u32
 
-    :param int local_mad:
+    :param local_mad:
         *undescribed*
+    :type local_mad: int
 
 .. _`set_pkeys`:
 
@@ -61,14 +72,17 @@ set_pkeys
 
     set the PKEY table for ctxt 0
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the hfi1_ib device
+    :type dd: struct hfi1_devdata \*
 
-    :param u8 port:
+    :param port:
         the IB port number
+    :type port: u8
 
-    :param u16 \*pkeys:
+    :param pkeys:
         the PKEY table
+    :type pkeys: u16 \*
 
 .. _`tx_link_width`:
 
@@ -79,8 +93,9 @@ tx_link_width
 
     convert link width bitmask to integer value representing actual link width.
 
-    :param u16 link_width:
+    :param link_width:
         width of active link
+    :type link_width: u16
 
 .. _`tx_link_width.description`:
 
@@ -99,19 +114,23 @@ get_xmit_wait_counters
 
     Convert HFI 's SendWaitCnt/SendWaitVlCnt counter in unit of TXE cycle times to flit times.
 
-    :param struct hfi1_pportdata \*ppd:
+    :param ppd:
         info of physical Hfi port
+    :type ppd: struct hfi1_pportdata \*
 
-    :param u16 link_width:
+    :param link_width:
         width of active link
+    :type link_width: u16
 
-    :param u16 link_speed:
+    :param link_speed:
         speed of active link
+    :type link_speed: u16
 
-    :param int vl:
+    :param vl:
         represent VL0-VL7, VL15 for PortVLXmitWait counters request
         and if vl value is C_VL_COUNT, it represent SendWaitCnt
         counter request
+    :type vl: int
 
 .. _`get_xmit_wait_counters.description`:
 
@@ -133,14 +152,17 @@ hfi1_pkey_validation_pma
 
     It validates PKEYs for incoming PMA MAD packets.
 
-    :param struct hfi1_ibport \*ibp:
+    :param ibp:
         IB port data
+    :type ibp: struct hfi1_ibport \*
 
-    :param const struct opa_mad \*in_mad:
+    :param in_mad:
         MAD packet with header and data
+    :type in_mad: const struct opa_mad \*
 
-    :param const struct ib_wc \*in_wc:
+    :param in_wc:
         Work completion data such as source LID, port number, etc.
+    :type in_wc: const struct ib_wc \*
 
 .. _`hfi1_pkey_validation_pma.these-are-all-the-possible-logic-rules-for-validating-a-pkey`:
 
@@ -190,35 +212,45 @@ hfi1_process_mad
 
     process an incoming MAD packet
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the infiniband device this packet came in on
+    :type ibdev: struct ib_device \*
 
-    :param int mad_flags:
+    :param mad_flags:
         MAD flags
+    :type mad_flags: int
 
-    :param u8 port:
+    :param port:
         the port number this packet came in on
+    :type port: u8
 
-    :param const struct ib_wc \*in_wc:
+    :param in_wc:
         the work completion entry for this packet
+    :type in_wc: const struct ib_wc \*
 
-    :param const struct ib_grh \*in_grh:
+    :param in_grh:
         the global route header for this packet
+    :type in_grh: const struct ib_grh \*
 
-    :param const struct ib_mad_hdr \*in_mad:
+    :param in_mad:
         the incoming MAD
+    :type in_mad: const struct ib_mad_hdr \*
 
-    :param size_t in_mad_size:
+    :param in_mad_size:
         *undescribed*
+    :type in_mad_size: size_t
 
-    :param struct ib_mad_hdr \*out_mad:
+    :param out_mad:
         any outgoing MAD reply
+    :type out_mad: struct ib_mad_hdr \*
 
-    :param size_t \*out_mad_size:
+    :param out_mad_size:
         *undescribed*
+    :type out_mad_size: size_t \*
 
-    :param u16 \*out_mad_pkey_index:
+    :param out_mad_pkey_index:
         *undescribed*
+    :type out_mad_pkey_index: u16 \*
 
 .. _`hfi1_process_mad.description`:
 

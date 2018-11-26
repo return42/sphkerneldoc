@@ -8,8 +8,9 @@ uwbd
 
 .. c:function:: int uwbd(void *param)
 
-    :param void \*param:
+    :param param:
         *undescribed*
+    :type param: void \*
 
 .. _`uwbd.description`:
 

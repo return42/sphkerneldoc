@@ -1,14 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/bluetooth/btrsi.c
 
-.. _`rsi_headroom_for_bt_hal`:
+.. _`rsi_dma_align`:
 
-RSI_HEADROOM_FOR_BT_HAL
-=======================
+RSI_DMA_ALIGN
+=============
 
-.. c:function::  RSI_HEADROOM_FOR_BT_HAL()
+.. c:function::  RSI_DMA_ALIGN()
 
-.. _`rsi_headroom_for_bt_hal.description`:
+.. _`rsi_dma_align.description`:
 
 Description
 -----------

@@ -10,17 +10,21 @@ qib_eeprom_read
 
     receives bytes from the eeprom via I2C
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param u8 eeprom_offset:
+    :param eeprom_offset:
         address to read from
+    :type eeprom_offset: u8
 
-    :param void \*buff:
+    :param buff:
         *undescribed*
+    :type buff: void \*
 
-    :param int len:
+    :param len:
         number of bytes to receive
+    :type len: int
 
 .. _`qib_eeprom_write`:
 
@@ -31,17 +35,21 @@ qib_eeprom_write
 
     writes data to the eeprom via I2C
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param u8 eeprom_offset:
+    :param eeprom_offset:
         where to place data
+    :type eeprom_offset: u8
 
-    :param const void \*buff:
+    :param buff:
         *undescribed*
+    :type buff: const void \*
 
-    :param int len:
+    :param len:
         number of bytes to write
+    :type len: int
 
 .. _`qib_get_eeprom_info`:
 
@@ -52,8 +60,9 @@ qib_get_eeprom_info
 
     get the GUID et al. from the TSWI EEPROM device
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`qib_get_eeprom_info.description`:
 

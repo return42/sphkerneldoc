@@ -10,14 +10,17 @@ crc_itu_t
 
     Compute the CRC-ITU-T for the data buffer
 
-    :param u16 crc:
+    :param crc:
         previous CRC value
+    :type crc: u16
 
-    :param const u8 \*buffer:
+    :param buffer:
         data pointer
+    :type buffer: const u8 \*
 
-    :param size_t len:
+    :param len:
         number of bytes in the buffer
+    :type len: size_t
 
 .. _`crc_itu_t.description`:
 

@@ -10,8 +10,9 @@ get_controller_speed
 
     find the current frequency/mode of controller.
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         controller to get frequency/mode for.
+    :type ctrl: struct controller \*
 
 .. _`get_controller_speed.description`:
 
@@ -29,11 +30,13 @@ get_adapter_speed
 
     find the max supported frequency/mode of adapter.
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         hotplug controller.
+    :type ctrl: struct controller \*
 
-    :param u8 hp_slot:
+    :param hp_slot:
         hotplug slot where adapter is installed.
+    :type hp_slot: u8
 
 .. _`get_adapter_speed.description`:
 

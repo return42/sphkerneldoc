@@ -10,15 +10,18 @@ i2c_register_board_info
 
     statically declare I2C devices
 
-    :param int busnum:
+    :param busnum:
         identifies the bus to which these devices belong
+    :type busnum: int
 
-    :param struct i2c_board_info const \*info:
+    :param info:
         vector of i2c device descriptors
+    :type info: struct i2c_board_info const \*
 
-    :param unsigned len:
+    :param len:
         how many descriptors in the vector; may be zero to reserve
         the specified bus number.
+    :type len: unsigned
 
 .. _`i2c_register_board_info.description`:
 

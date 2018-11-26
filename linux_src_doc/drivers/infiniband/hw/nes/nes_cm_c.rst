@@ -8,11 +8,13 @@ create_event
 
 .. c:function:: struct nes_cm_event *create_event(struct nes_cm_node *cm_node, enum nes_cm_event_type type)
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param enum nes_cm_event_type type:
+    :param type:
         *undescribed*
+    :type type: enum nes_cm_event_type
 
 .. _`send_mpa_request`:
 
@@ -21,11 +23,13 @@ send_mpa_request
 
 .. c:function:: int send_mpa_request(struct nes_cm_node *cm_node, struct sk_buff *skb)
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`parse_mpa`:
 
@@ -36,17 +40,21 @@ parse_mpa
 
     process a received TCP pkt, we are expecting an IETF MPA frame
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param u8 \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: u8 \*
 
-    :param u32 \*type:
+    :param type:
         *undescribed*
+    :type type: u32 \*
 
-    :param u32 len:
+    :param len:
         *undescribed*
+    :type len: u32
 
 .. _`form_cm_frame`:
 
@@ -57,26 +65,33 @@ form_cm_frame
 
     get a free packet and build empty frame Use node info to build.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param void \*options:
+    :param options:
         *undescribed*
+    :type options: void \*
 
-    :param u32 optionsize:
+    :param optionsize:
         *undescribed*
+    :type optionsize: u32
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param u32 datasize:
+    :param datasize:
         *undescribed*
+    :type datasize: u32
 
-    :param u8 flags:
+    :param flags:
         *undescribed*
+    :type flags: u8
 
 .. _`print_core`:
 
@@ -87,8 +102,9 @@ print_core
 
     dump a cm core
 
-    :param struct nes_cm_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct nes_cm_core \*
 
 .. _`cm_build_mpa_frame`:
 
@@ -99,20 +115,25 @@ cm_build_mpa_frame
 
     build a MPA V1 frame or MPA V2 frame
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param u8 \*\*start_buff:
+    :param start_buff:
         *undescribed*
+    :type start_buff: u8 \*\*
 
-    :param u16 \*buff_len:
+    :param buff_len:
         *undescribed*
+    :type buff_len: u16 \*
 
-    :param u8 \*pci_mem:
+    :param pci_mem:
         *undescribed*
+    :type pci_mem: u8 \*
 
-    :param u8 mpa_key:
+    :param mpa_key:
         *undescribed*
+    :type mpa_key: u8
 
 .. _`build_mpa_v2`:
 
@@ -123,14 +144,17 @@ build_mpa_v2
 
     build a MPA V2 frame
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param void \*start_addr:
+    :param start_addr:
         *undescribed*
+    :type start_addr: void \*
 
-    :param u8 mpa_key:
+    :param mpa_key:
         *undescribed*
+    :type mpa_key: u8
 
 .. _`build_mpa_v1`:
 
@@ -141,14 +165,17 @@ build_mpa_v1
 
     build a MPA V1 frame
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param void \*start_addr:
+    :param start_addr:
         *undescribed*
+    :type start_addr: void \*
 
-    :param u8 mpa_key:
+    :param mpa_key:
         *undescribed*
+    :type mpa_key: u8
 
 .. _`schedule_nes_timer`:
 
@@ -159,20 +186,25 @@ schedule_nes_timer
 
     note - cm_node needs to be protected before calling this. Encase in: rem_ref_cm_node(cm_core, cm_node);add_ref_cm_node(cm_node);
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param enum nes_timer_type type:
+    :param type:
         *undescribed*
+    :type type: enum nes_timer_type
 
-    :param int send_retrans:
+    :param send_retrans:
         *undescribed*
+    :type send_retrans: int
 
-    :param int close_when_complete:
+    :param close_when_complete:
         *undescribed*
+    :type close_when_complete: int
 
 .. _`nes_cm_timer_tick`:
 
@@ -181,8 +213,9 @@ nes_cm_timer_tick
 
 .. c:function:: void nes_cm_timer_tick(struct timer_list *unused)
 
-    :param struct timer_list \*unused:
+    :param unused:
         *undescribed*
+    :type unused: struct timer_list \*
 
 .. _`send_syn`:
 
@@ -191,14 +224,17 @@ send_syn
 
 .. c:function:: int send_syn(struct nes_cm_node *cm_node, u32 sendack, struct sk_buff *skb)
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param u32 sendack:
+    :param sendack:
         *undescribed*
+    :type sendack: u32
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`send_reset`:
 
@@ -207,11 +243,13 @@ send_reset
 
 .. c:function:: int send_reset(struct nes_cm_node *cm_node, struct sk_buff *skb)
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`send_ack`:
 
@@ -220,11 +258,13 @@ send_ack
 
 .. c:function:: int send_ack(struct nes_cm_node *cm_node, struct sk_buff *skb)
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`send_fin`:
 
@@ -233,11 +273,13 @@ send_fin
 
 .. c:function:: int send_fin(struct nes_cm_node *cm_node, struct sk_buff *skb)
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`find_node`:
 
@@ -248,20 +290,25 @@ find_node
 
     find a cm node that matches the reference cm node
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param u16 rem_port:
+    :param rem_port:
         *undescribed*
+    :type rem_port: u16
 
-    :param nes_addr_t rem_addr:
+    :param rem_addr:
         *undescribed*
+    :type rem_addr: nes_addr_t
 
-    :param u16 loc_port:
+    :param loc_port:
         *undescribed*
+    :type loc_port: u16
 
-    :param nes_addr_t loc_addr:
+    :param loc_addr:
         *undescribed*
+    :type loc_addr: nes_addr_t
 
 .. _`find_listener`:
 
@@ -272,17 +319,21 @@ find_listener
 
     find a cm node listening on this addr-port pair
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param nes_addr_t dst_addr:
+    :param dst_addr:
         *undescribed*
+    :type dst_addr: nes_addr_t
 
-    :param u16 dst_port:
+    :param dst_port:
         *undescribed*
+    :type dst_port: u16
 
-    :param enum nes_cm_listener_state listener_state:
+    :param listener_state:
         *undescribed*
+    :type listener_state: enum nes_cm_listener_state
 
 .. _`add_hte_node`:
 
@@ -293,11 +344,13 @@ add_hte_node
 
     add a cm node to the hash table
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
 .. _`mini_cm_dec_refcnt_listen`:
 
@@ -306,14 +359,17 @@ mini_cm_dec_refcnt_listen
 
 .. c:function:: int mini_cm_dec_refcnt_listen(struct nes_cm_core *cm_core, struct nes_cm_listener *listener, int free_hanging_nodes)
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_cm_listener \*listener:
+    :param listener:
         *undescribed*
+    :type listener: struct nes_cm_listener \*
 
-    :param int free_hanging_nodes:
+    :param free_hanging_nodes:
         *undescribed*
+    :type free_hanging_nodes: int
 
 .. _`mini_cm_del_listen`:
 
@@ -322,11 +378,13 @@ mini_cm_del_listen
 
 .. c:function:: int mini_cm_del_listen(struct nes_cm_core *cm_core, struct nes_cm_listener *listener)
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_cm_listener \*listener:
+    :param listener:
         *undescribed*
+    :type listener: struct nes_cm_listener \*
 
 .. _`mini_cm_accelerated`:
 
@@ -335,11 +393,13 @@ mini_cm_accelerated
 
 .. c:function:: int mini_cm_accelerated(struct nes_cm_core *cm_core, struct nes_cm_node *cm_node)
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
 .. _`nes_addr_resolve_neigh`:
 
@@ -348,14 +408,17 @@ nes_addr_resolve_neigh
 
 .. c:function:: int nes_addr_resolve_neigh(struct nes_vnic *nesvnic, u32 dst_ip, int arpindex)
 
-    :param struct nes_vnic \*nesvnic:
+    :param nesvnic:
         *undescribed*
+    :type nesvnic: struct nes_vnic \*
 
-    :param u32 dst_ip:
+    :param dst_ip:
         *undescribed*
+    :type dst_ip: u32
 
-    :param int arpindex:
+    :param arpindex:
         *undescribed*
+    :type arpindex: int
 
 .. _`make_cm_node`:
 
@@ -366,17 +429,21 @@ make_cm_node
 
     create a new instance of a cm node
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_vnic \*nesvnic:
+    :param nesvnic:
         *undescribed*
+    :type nesvnic: struct nes_vnic \*
 
-    :param struct nes_cm_info \*cm_info:
+    :param cm_info:
         *undescribed*
+    :type cm_info: struct nes_cm_info \*
 
-    :param struct nes_cm_listener \*listener:
+    :param listener:
         *undescribed*
+    :type listener: struct nes_cm_listener \*
 
 .. _`add_ref_cm_node`:
 
@@ -387,8 +454,9 @@ add_ref_cm_node
 
     destroy an instance of a cm node
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
 .. _`rem_ref_cm_node`:
 
@@ -399,11 +467,13 @@ rem_ref_cm_node
 
     destroy an instance of a cm node
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
 .. _`process_options`:
 
@@ -412,17 +482,21 @@ process_options
 
 .. c:function:: int process_options(struct nes_cm_node *cm_node, u8 *optionsloc, u32 optionsize, u32 syn_packet)
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param u8 \*optionsloc:
+    :param optionsloc:
         *undescribed*
+    :type optionsloc: u8 \*
 
-    :param u32 optionsize:
+    :param optionsize:
         *undescribed*
+    :type optionsize: u32
 
-    :param u32 syn_packet:
+    :param syn_packet:
         *undescribed*
+    :type syn_packet: u32
 
 .. _`process_packet`:
 
@@ -433,14 +507,17 @@ process_packet
 
     Returns skb if to be freed, else it will return NULL if already used..
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
 .. _`mini_cm_listen`:
 
@@ -451,14 +528,17 @@ mini_cm_listen
 
     create a listen node with params
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_vnic \*nesvnic:
+    :param nesvnic:
         *undescribed*
+    :type nesvnic: struct nes_vnic \*
 
-    :param struct nes_cm_info \*cm_info:
+    :param cm_info:
         *undescribed*
+    :type cm_info: struct nes_cm_info \*
 
 .. _`mini_cm_connect`:
 
@@ -469,20 +549,25 @@ mini_cm_connect
 
     make a connection node with params
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_vnic \*nesvnic:
+    :param nesvnic:
         *undescribed*
+    :type nesvnic: struct nes_vnic \*
 
-    :param u16 private_data_len:
+    :param private_data_len:
         *undescribed*
+    :type private_data_len: u16
 
-    :param void \*private_data:
+    :param private_data:
         *undescribed*
+    :type private_data: void \*
 
-    :param struct nes_cm_info \*cm_info:
+    :param cm_info:
         *undescribed*
+    :type cm_info: struct nes_cm_info \*
 
 .. _`mini_cm_accept`:
 
@@ -493,11 +578,13 @@ mini_cm_accept
 
     accept a connection This function is never called
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
 .. _`mini_cm_reject`:
 
@@ -508,11 +595,13 @@ mini_cm_reject
 
     reject and teardown a connection
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
 .. _`mini_cm_close`:
 
@@ -521,11 +610,13 @@ mini_cm_close
 
 .. c:function:: int mini_cm_close(struct nes_cm_core *cm_core, struct nes_cm_node *cm_node)
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
 .. _`mini_cm_recv_pkt`:
 
@@ -536,14 +627,17 @@ mini_cm_recv_pkt
 
     recv an ETHERNET packet, and process it through CM node state machine
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param struct nes_vnic \*nesvnic:
+    :param nesvnic:
         *undescribed*
+    :type nesvnic: struct nes_vnic \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`nes_cm_alloc_core`:
 
@@ -554,8 +648,9 @@ nes_cm_alloc_core
 
     allocate a top level instance of a cm core
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mini_cm_dealloc_core`:
 
@@ -566,8 +661,9 @@ mini_cm_dealloc_core
 
     deallocate a top level instance of a cm core
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
 .. _`mini_cm_get`:
 
@@ -576,8 +672,9 @@ mini_cm_get
 
 .. c:function:: int mini_cm_get(struct nes_cm_core *cm_core)
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
 .. _`mini_cm_set`:
 
@@ -586,14 +683,17 @@ mini_cm_set
 
 .. c:function:: int mini_cm_set(struct nes_cm_core *cm_core, u32 type, u32 value)
 
-    :param struct nes_cm_core \*cm_core:
+    :param cm_core:
         *undescribed*
+    :type cm_core: struct nes_cm_core \*
 
-    :param u32 type:
+    :param type:
         *undescribed*
+    :type type: u32
 
-    :param u32 value:
+    :param value:
         *undescribed*
+    :type value: u32
 
 .. _`nes_cm_init_tsa_conn`:
 
@@ -604,11 +704,13 @@ nes_cm_init_tsa_conn
 
     successfully exchanged when this is called
 
-    :param struct nes_qp \*nesqp:
+    :param nesqp:
         *undescribed*
+    :type nesqp: struct nes_qp \*
 
-    :param struct nes_cm_node \*cm_node:
+    :param cm_node:
         *undescribed*
+    :type cm_node: struct nes_cm_node \*
 
 .. _`nes_cm_disconn`:
 
@@ -617,8 +719,9 @@ nes_cm_disconn
 
 .. c:function:: int nes_cm_disconn(struct nes_qp *nesqp)
 
-    :param struct nes_qp \*nesqp:
+    :param nesqp:
         *undescribed*
+    :type nesqp: struct nes_qp \*
 
 .. _`nes_disconnect_worker`:
 
@@ -627,8 +730,9 @@ nes_disconnect_worker
 
 .. c:function:: void nes_disconnect_worker(struct work_struct *work)
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`nes_cm_disconn_true`:
 
@@ -637,8 +741,9 @@ nes_cm_disconn_true
 
 .. c:function:: int nes_cm_disconn_true(struct nes_qp *nesqp)
 
-    :param struct nes_qp \*nesqp:
+    :param nesqp:
         *undescribed*
+    :type nesqp: struct nes_qp \*
 
 .. _`nes_disconnect`:
 
@@ -647,11 +752,13 @@ nes_disconnect
 
 .. c:function:: int nes_disconnect(struct nes_qp *nesqp, int abrupt)
 
-    :param struct nes_qp \*nesqp:
+    :param nesqp:
         *undescribed*
+    :type nesqp: struct nes_qp \*
 
-    :param int abrupt:
+    :param abrupt:
         *undescribed*
+    :type abrupt: int
 
 .. _`nes_accept`:
 
@@ -660,11 +767,13 @@ nes_accept
 
 .. c:function:: int nes_accept(struct iw_cm_id *cm_id, struct iw_cm_conn_param *conn_param)
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         *undescribed*
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct iw_cm_conn_param \*conn_param:
+    :param conn_param:
         *undescribed*
+    :type conn_param: struct iw_cm_conn_param \*
 
 .. _`nes_reject`:
 
@@ -673,14 +782,17 @@ nes_reject
 
 .. c:function:: int nes_reject(struct iw_cm_id *cm_id, const void *pdata, u8 pdata_len)
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         *undescribed*
+    :type cm_id: struct iw_cm_id \*
 
-    :param const void \*pdata:
+    :param pdata:
         *undescribed*
+    :type pdata: const void \*
 
-    :param u8 pdata_len:
+    :param pdata_len:
         *undescribed*
+    :type pdata_len: u8
 
 .. _`nes_connect`:
 
@@ -691,11 +803,13 @@ nes_connect
 
     setup and launch cm connect node
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         *undescribed*
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct iw_cm_conn_param \*conn_param:
+    :param conn_param:
         *undescribed*
+    :type conn_param: struct iw_cm_conn_param \*
 
 .. _`nes_create_listen`:
 
@@ -704,11 +818,13 @@ nes_create_listen
 
 .. c:function:: int nes_create_listen(struct iw_cm_id *cm_id, int backlog)
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         *undescribed*
+    :type cm_id: struct iw_cm_id \*
 
-    :param int backlog:
+    :param backlog:
         *undescribed*
+    :type backlog: int
 
 .. _`nes_destroy_listen`:
 
@@ -717,8 +833,9 @@ nes_destroy_listen
 
 .. c:function:: int nes_destroy_listen(struct iw_cm_id *cm_id)
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         *undescribed*
+    :type cm_id: struct iw_cm_id \*
 
 .. _`nes_cm_recv`:
 
@@ -727,11 +844,13 @@ nes_cm_recv
 
 .. c:function:: int nes_cm_recv(struct sk_buff *skb, struct net_device *netdevice)
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*netdevice:
+    :param netdevice:
         *undescribed*
+    :type netdevice: struct net_device \*
 
 .. _`nes_cm_start`:
 
@@ -742,8 +861,9 @@ nes_cm_start
 
     Start and init a cm core module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nes_cm_stop`:
 
@@ -754,8 +874,9 @@ nes_cm_stop
 
     stop and dealloc all cm core instances
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cm_event_connected`:
 
@@ -766,8 +887,9 @@ cm_event_connected
 
     handle a connected event, setup QPs and HW
 
-    :param struct nes_cm_event \*event:
+    :param event:
         *undescribed*
+    :type event: struct nes_cm_event \*
 
 .. _`cm_event_connect_error`:
 
@@ -776,8 +898,9 @@ cm_event_connect_error
 
 .. c:function:: void cm_event_connect_error(struct nes_cm_event *event)
 
-    :param struct nes_cm_event \*event:
+    :param event:
         *undescribed*
+    :type event: struct nes_cm_event \*
 
 .. _`cm_event_reset`:
 
@@ -786,8 +909,9 @@ cm_event_reset
 
 .. c:function:: void cm_event_reset(struct nes_cm_event *event)
 
-    :param struct nes_cm_event \*event:
+    :param event:
         *undescribed*
+    :type event: struct nes_cm_event \*
 
 .. _`cm_event_mpa_req`:
 
@@ -796,8 +920,9 @@ cm_event_mpa_req
 
 .. c:function:: void cm_event_mpa_req(struct nes_cm_event *event)
 
-    :param struct nes_cm_event \*event:
+    :param event:
         *undescribed*
+    :type event: struct nes_cm_event \*
 
 .. _`nes_cm_post_event`:
 
@@ -808,8 +933,9 @@ nes_cm_post_event
 
     post an event to the cm event handler
 
-    :param struct nes_cm_event \*event:
+    :param event:
         *undescribed*
+    :type event: struct nes_cm_event \*
 
 .. _`nes_cm_event_handler`:
 
@@ -820,8 +946,9 @@ nes_cm_event_handler
 
     worker function to handle cm events will free instance of nes_cm_event
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. This file was automatic generated / don't edit.
 

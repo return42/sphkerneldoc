@@ -10,18 +10,22 @@ dc_stream_configure_crc
 
     Configure CRC capture for the given stream.
 
-    :param struct dc \*dc:
+    :param dc:
         DC Object
+    :type dc: struct dc \*
 
-    :param struct dc_stream_state \*stream:
+    :param stream:
         The stream to configure CRC on.
+    :type stream: struct dc_stream_state \*
 
-    :param bool enable:
+    :param enable:
         Enable CRC if true, disable otherwise.
+    :type enable: bool
 
-    :param bool continuous:
+    :param continuous:
         Capture CRC on every frame if true. Otherwise, only capture
         once.
+    :type continuous: bool
 
 .. _`dc_stream_configure_crc.description`:
 
@@ -40,20 +44,25 @@ dc_stream_get_crc
 
     Get CRC values for the given stream.
 
-    :param struct dc \*dc:
+    :param dc:
         DC object
+    :type dc: struct dc \*
 
-    :param struct dc_stream_state \*stream:
+    :param stream:
         The DC stream state of the stream to get CRCs from.
+    :type stream: struct dc_stream_state \*
 
-    :param uint32_t \*r_cr:
+    :param r_cr:
         CRC values for the three channels are stored here.
+    :type r_cr: uint32_t \*
 
-    :param uint32_t \*g_y:
+    :param g_y:
         *undescribed*
+    :type g_y: uint32_t \*
 
-    :param uint32_t \*b_cb:
+    :param b_cb:
         *undescribed*
+    :type b_cb: uint32_t \*
 
 .. _`dc_stream_get_crc.description`:
 

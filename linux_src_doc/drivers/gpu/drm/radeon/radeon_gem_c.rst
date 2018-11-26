@@ -10,11 +10,13 @@ radeon_gem_va_update_vm
 
     update the bo_va in its VM
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_bo_va \*bo_va:
+    :param bo_va:
         bo_va to update
+    :type bo_va: struct radeon_bo_va \*
 
 .. _`radeon_gem_va_update_vm.description`:
 

@@ -10,8 +10,9 @@ at91_activate_rx_low
 
     activate lower rx mailboxes
 
-    :param const struct at91_priv \*priv:
+    :param priv:
         a91 context
+    :type priv: const struct at91_priv \*
 
 .. _`at91_activate_rx_low.description`:
 
@@ -29,11 +30,13 @@ at91_activate_rx_mb
 
     reactive single rx mailbox
 
-    :param const struct at91_priv \*priv:
+    :param priv:
         a91 context
+    :type priv: const struct at91_priv \*
 
-    :param unsigned int mb:
+    :param mb:
         mailbox to reactivate
+    :type mb: unsigned int
 
 .. _`at91_activate_rx_mb.description`:
 
@@ -51,8 +54,9 @@ at91_rx_overflow_err
 
     send error frame due to rx overflow
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
 .. _`at91_read_mb`:
 
@@ -63,14 +67,17 @@ at91_read_mb
 
     read CAN msg from mailbox (lowlevel impl)
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param unsigned int mb:
+    :param mb:
         mailbox number to read from
+    :type mb: unsigned int
 
-    :param struct can_frame \*cf:
+    :param cf:
         can frame where to store message
+    :type cf: struct can_frame \*
 
 .. _`at91_read_mb.description`:
 
@@ -89,11 +96,13 @@ at91_read_msg
 
     read CAN message from mailbox
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param unsigned int mb:
+    :param mb:
         mail box to read from
+    :type mb: unsigned int
 
 .. _`at91_read_msg.description`:
 
@@ -112,11 +121,13 @@ at91_poll_rx
 
     read multiple CAN messages from mailboxes
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param int quota:
+    :param quota:
         max number of pkgs we're allowed to receive
+    :type quota: int
 
 .. _`at91_poll_rx.theory-of-operation`:
 

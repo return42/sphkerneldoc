@@ -10,8 +10,9 @@ i2c_verify_client
 
     return parameter as i2c_client, or NULL
 
-    :param struct device \*dev:
+    :param dev:
         device, probably from some driver model iterator
+    :type dev: struct device \*
 
 .. _`i2c_verify_client.description`:
 
@@ -32,12 +33,14 @@ i2c_adapter_lock_bus
 
     Get exclusive access to an I2C bus segment
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         Target I2C bus segment
+    :type adapter: struct i2c_adapter \*
 
-    :param unsigned int flags:
+    :param flags:
         I2C_LOCK_ROOT_ADAPTER locks the root i2c adapter, I2C_LOCK_SEGMENT
         locks only this branch in the adapter tree
+    :type flags: unsigned int
 
 .. _`i2c_adapter_trylock_bus`:
 
@@ -48,12 +51,14 @@ i2c_adapter_trylock_bus
 
     Try to get exclusive access to an I2C bus segment
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         Target I2C bus segment
+    :type adapter: struct i2c_adapter \*
 
-    :param unsigned int flags:
+    :param flags:
         I2C_LOCK_ROOT_ADAPTER trylocks the root i2c adapter, I2C_LOCK_SEGMENT
         trylocks only this branch in the adapter tree
+    :type flags: unsigned int
 
 .. _`i2c_adapter_unlock_bus`:
 
@@ -64,12 +69,14 @@ i2c_adapter_unlock_bus
 
     Release exclusive access to an I2C bus segment
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         Target I2C bus segment
+    :type adapter: struct i2c_adapter \*
 
-    :param unsigned int flags:
+    :param flags:
         I2C_LOCK_ROOT_ADAPTER unlocks the root i2c adapter, I2C_LOCK_SEGMENT
         unlocks only this branch in the adapter tree
+    :type flags: unsigned int
 
 .. _`i2c_new_device`:
 
@@ -80,11 +87,13 @@ i2c_new_device
 
     instantiate an i2c device
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         the adapter managing the device
+    :type adap: struct i2c_adapter \*
 
-    :param struct i2c_board_info const \*info:
+    :param info:
         describes one I2C device; bus_num is ignored
+    :type info: struct i2c_board_info const \*
 
 .. _`i2c_new_device.context`:
 
@@ -117,8 +126,9 @@ i2c_unregister_device
 
     reverse effect of \ :c:func:`i2c_new_device`\ 
 
-    :param struct i2c_client \*client:
+    :param client:
         value returned from \ :c:func:`i2c_new_device`\ 
+    :type client: struct i2c_client \*
 
 .. _`i2c_unregister_device.context`:
 
@@ -136,11 +146,13 @@ i2c_new_dummy
 
     return a new i2c device bound to a dummy driver
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         the adapter managing the device
+    :type adapter: struct i2c_adapter \*
 
-    :param u16 address:
+    :param address:
         seven bit address to be used
+    :type address: u16
 
 .. _`i2c_new_dummy.context`:
 
@@ -175,14 +187,17 @@ i2c_new_secondary_device
 
     Helper to get the instantiated secondary address and create the associated device
 
-    :param struct i2c_client \*client:
+    :param client:
         Handle to the primary client
+    :type client: struct i2c_client \*
 
-    :param const char \*name:
+    :param name:
         Handle to specify which secondary address to get
+    :type name: const char \*
 
-    :param u16 default_addr:
+    :param default_addr:
         Used as a fallback if no secondary address was specified
+    :type default_addr: u16
 
 .. _`i2c_new_secondary_device.context`:
 
@@ -219,8 +234,9 @@ i2c_verify_adapter
 
     return parameter as i2c_adapter or NULL
 
-    :param struct device \*dev:
+    :param dev:
         device, probably from some driver model iterator
+    :type dev: struct device \*
 
 .. _`i2c_verify_adapter.description`:
 
@@ -241,11 +257,13 @@ i2c_handle_smbus_host_notify
 
     Forward a Host Notify event to the correct I2C client.
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct i2c_adapter \*
 
-    :param unsigned short addr:
+    :param addr:
         the I2C address of the notifying device
+    :type addr: unsigned short
 
 .. _`i2c_handle_smbus_host_notify.context`:
 
@@ -271,8 +289,9 @@ __i2c_add_numbered_adapter
 
     i2c_add_numbered_adapter where nr is never -1
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         the adapter to register (with adap->nr initialized)
+    :type adap: struct i2c_adapter \*
 
 .. _`__i2c_add_numbered_adapter.context`:
 
@@ -297,8 +316,9 @@ i2c_add_adapter
 
     declare i2c adapter, use dynamic bus number
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         the adapter to add
+    :type adapter: struct i2c_adapter \*
 
 .. _`i2c_add_adapter.context`:
 
@@ -330,8 +350,9 @@ i2c_add_numbered_adapter
 
     declare i2c adapter, use static bus number
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         the adapter to register (with adap->nr initialized)
+    :type adap: struct i2c_adapter \*
 
 .. _`i2c_add_numbered_adapter.context`:
 
@@ -372,8 +393,9 @@ i2c_del_adapter
 
     unregister I2C adapter
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         the adapter being unregistered
+    :type adap: struct i2c_adapter \*
 
 .. _`i2c_del_adapter.context`:
 
@@ -399,15 +421,18 @@ i2c_parse_fw_timings
 
     get I2C related timing parameters from firmware
 
-    :param struct device \*dev:
+    :param dev:
         The device to scan for I2C timing properties
+    :type dev: struct device \*
 
-    :param struct i2c_timings \*t:
+    :param t:
         the i2c_timings struct to be filled with values
+    :type t: struct i2c_timings \*
 
-    :param bool use_defaults:
+    :param use_defaults:
         bool to use sane defaults derived from the I2C specification
         when properties are not found, otherwise use 0
+    :type use_defaults: bool
 
 .. _`i2c_parse_fw_timings.description`:
 
@@ -431,8 +456,9 @@ i2c_del_driver
 
     unregister I2C driver
 
-    :param struct i2c_driver \*driver:
+    :param driver:
         the driver being unregistered
+    :type driver: struct i2c_driver \*
 
 .. _`i2c_del_driver.context`:
 
@@ -450,8 +476,9 @@ i2c_use_client
 
     increments the reference count of the i2c client structure
 
-    :param struct i2c_client \*client:
+    :param client:
         the client being referenced
+    :type client: struct i2c_client \*
 
 .. _`i2c_use_client.description`:
 
@@ -474,8 +501,9 @@ i2c_release_client
 
     release a use of the i2c client structure
 
-    :param struct i2c_client \*client:
+    :param client:
         the client being no longer referenced
+    :type client: struct i2c_client \*
 
 .. _`i2c_release_client.description`:
 
@@ -493,15 +521,18 @@ __i2c_transfer
 
     unlocked flavor of i2c_transfer
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         Handle to I2C bus
+    :type adap: struct i2c_adapter \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         One or more messages to execute before STOP is issued to
         terminate the operation; each message begins with a START.
+    :type msgs: struct i2c_msg \*
 
-    :param int num:
+    :param num:
         Number of messages to be executed.
+    :type num: int
 
 .. _`__i2c_transfer.description`:
 
@@ -522,15 +553,18 @@ i2c_transfer
 
     execute a single or combined I2C message
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         Handle to I2C bus
+    :type adap: struct i2c_adapter \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         One or more messages to execute before STOP is issued to
         terminate the operation; each message begins with a START.
+    :type msgs: struct i2c_msg \*
 
-    :param int num:
+    :param num:
         Number of messages to be executed.
+    :type num: int
 
 .. _`i2c_transfer.description`:
 
@@ -551,17 +585,21 @@ i2c_transfer_buffer_flags
 
     issue a single I2C message transferring data to/from a buffer
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param char \*buf:
+    :param buf:
         Where the data is stored
+    :type buf: char \*
 
-    :param int count:
+    :param count:
         How many bytes to transfer, must be less than 64k since msg.len is u16
+    :type count: int
 
-    :param u16 flags:
+    :param flags:
         The flags to be used for the message, e.g. I2C_M_RD for reads
+    :type flags: u16
 
 .. _`i2c_transfer_buffer_flags.description`:
 
@@ -579,11 +617,13 @@ i2c_get_device_id
 
     get manufacturer, part id and die revision of a device
 
-    :param const struct i2c_client \*client:
+    :param client:
         The device to query
+    :type client: const struct i2c_client \*
 
-    :param struct i2c_device_identity \*id:
+    :param id:
         The queried information
+    :type id: struct i2c_device_identity \*
 
 .. _`i2c_get_device_id.description`:
 
@@ -601,11 +641,13 @@ i2c_get_dma_safe_msg_buf
 
     get a DMA safe buffer for the given i2c_msg
 
-    :param struct i2c_msg \*msg:
+    :param msg:
         the message to be checked
+    :type msg: struct i2c_msg \*
 
-    :param unsigned int threshold:
+    :param threshold:
         the minimum number of bytes for which using DMA makes sense
+    :type threshold: unsigned int
 
 .. _`i2c_get_dma_safe_msg_buf.return`:
 
@@ -614,24 +656,30 @@ Return
 
 NULL if a DMA safe buffer was not obtained. Use msg->buf with PIO.
         Or a valid pointer to be used with DMA. After use, release it by
-        calling \ :c:func:`i2c_release_dma_safe_msg_buf`\ .
+        calling \ :c:func:`i2c_put_dma_safe_msg_buf`\ .
 
 This function must only be called from process context!
 
-.. _`i2c_release_dma_safe_msg_buf`:
+.. _`i2c_put_dma_safe_msg_buf`:
 
-i2c_release_dma_safe_msg_buf
-============================
+i2c_put_dma_safe_msg_buf
+========================
 
-.. c:function:: void i2c_release_dma_safe_msg_buf(struct i2c_msg *msg, u8 *buf)
+.. c:function:: void i2c_put_dma_safe_msg_buf(u8 *buf, struct i2c_msg *msg, bool xferred)
 
     release DMA safe buffer and sync with i2c_msg
 
-    :param struct i2c_msg \*msg:
-        the message to be synced with
-
-    :param u8 \*buf:
+    :param buf:
         the buffer obtained from \ :c:func:`i2c_get_dma_safe_msg_buf`\ . May be NULL.
+    :type buf: u8 \*
+
+    :param msg:
+        the message which the buffer corresponds to
+    :type msg: struct i2c_msg \*
+
+    :param xferred:
+        bool saying if the message was transferred
+    :type xferred: bool
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ fpga_image_info_alloc
 
     Allocate a FPGA image info struct
 
-    :param struct device \*dev:
+    :param dev:
         owning device
+    :type dev: struct device \*
 
 .. _`fpga_image_info_alloc.return`:
 
@@ -29,8 +30,9 @@ fpga_image_info_free
 
     Free a FPGA image info struct
 
-    :param struct fpga_image_info \*info:
+    :param info:
         FPGA image info struct to free
+    :type info: struct fpga_image_info \*
 
 .. _`fpga_mgr_buf_load_sg`:
 
@@ -41,14 +43,17 @@ fpga_mgr_buf_load_sg
 
     load fpga from image in buffer from a scatter list
 
-    :param struct fpga_manager \*mgr:
+    :param mgr:
         fpga manager
+    :type mgr: struct fpga_manager \*
 
-    :param struct fpga_image_info \*info:
+    :param info:
         fpga image specific information
+    :type info: struct fpga_image_info \*
 
-    :param struct sg_table \*sgt:
+    :param sgt:
         scatterlist table
+    :type sgt: struct sg_table \*
 
 .. _`fpga_mgr_buf_load_sg.description`:
 
@@ -80,17 +85,21 @@ fpga_mgr_buf_load
 
     load fpga from image in buffer
 
-    :param struct fpga_manager \*mgr:
+    :param mgr:
         fpga manager
+    :type mgr: struct fpga_manager \*
 
-    :param struct fpga_image_info \*info:
+    :param info:
         fpga image info
+    :type info: struct fpga_image_info \*
 
-    :param const char \*buf:
+    :param buf:
         buffer contain fpga image
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         byte count of buf
+    :type count: size_t
 
 .. _`fpga_mgr_buf_load.description`:
 
@@ -118,14 +127,17 @@ fpga_mgr_firmware_load
 
     request firmware and load to fpga
 
-    :param struct fpga_manager \*mgr:
+    :param mgr:
         fpga manager
+    :type mgr: struct fpga_manager \*
 
-    :param struct fpga_image_info \*info:
+    :param info:
         fpga image specific information
+    :type info: struct fpga_image_info \*
 
-    :param const char \*image_name:
+    :param image_name:
         name of image file on the firmware search path
+    :type image_name: const char \*
 
 .. _`fpga_mgr_firmware_load.description`:
 
@@ -154,11 +166,13 @@ fpga_mgr_load
 
     load FPGA from scatter/gather table, buffer, or firmware
 
-    :param struct fpga_manager \*mgr:
+    :param mgr:
         fpga manager
+    :type mgr: struct fpga_manager \*
 
-    :param struct fpga_image_info \*info:
+    :param info:
         fpga image information.
+    :type info: struct fpga_image_info \*
 
 .. _`fpga_mgr_load.description`:
 
@@ -184,8 +198,9 @@ fpga_mgr_get
 
     Given a device, get a reference to a fpga mgr.
 
-    :param struct device \*dev:
+    :param dev:
         parent device that fpga mgr was registered with
+    :type dev: struct device \*
 
 .. _`fpga_mgr_get.return`:
 
@@ -203,8 +218,9 @@ of_fpga_mgr_get
 
     Given a device node, get a reference to a fpga mgr.
 
-    :param struct device_node \*node:
+    :param node:
         device node
+    :type node: struct device_node \*
 
 .. _`of_fpga_mgr_get.return`:
 
@@ -222,8 +238,9 @@ fpga_mgr_put
 
     release a reference to a fpga manager
 
-    :param struct fpga_manager \*mgr:
+    :param mgr:
         fpga manager structure
+    :type mgr: struct fpga_manager \*
 
 .. _`fpga_mgr_lock`:
 
@@ -234,8 +251,9 @@ fpga_mgr_lock
 
     Lock FPGA manager for exclusive use
 
-    :param struct fpga_manager \*mgr:
+    :param mgr:
         fpga manager
+    :type mgr: struct fpga_manager \*
 
 .. _`fpga_mgr_lock.description`:
 
@@ -264,8 +282,9 @@ fpga_mgr_unlock
 
     Unlock FPGA manager after done programming
 
-    :param struct fpga_manager \*mgr:
+    :param mgr:
         fpga manager
+    :type mgr: struct fpga_manager \*
 
 .. _`fpga_mgr_create`:
 
@@ -276,17 +295,29 @@ fpga_mgr_create
 
     create and initialize a FPGA manager struct
 
-    :param struct device \*dev:
+    :param dev:
         fpga manager device from pdev
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         fpga manager name
+    :type name: const char \*
 
-    :param const struct fpga_manager_ops \*mops:
+    :param mops:
         pointer to structure of fpga manager ops
+    :type mops: const struct fpga_manager_ops \*
 
-    :param void \*priv:
+    :param priv:
         fpga manager private data
+    :type priv: void \*
+
+.. _`fpga_mgr_create.description`:
+
+Description
+-----------
+
+The caller of this function is responsible for freeing the struct with
+\ :c:func:`fpga_mgr_free`\ .  Using \ :c:func:`devm_fpga_mgr_create`\  instead is recommended.
 
 .. _`fpga_mgr_create.return`:
 
@@ -302,10 +333,56 @@ fpga_mgr_free
 
 .. c:function:: void fpga_mgr_free(struct fpga_manager *mgr)
 
-    deallocate a FPGA manager
+    free a FPGA manager created with \ :c:func:`fpga_mgr_create`\ 
 
-    :param struct fpga_manager \*mgr:
-        fpga manager struct created by fpga_mgr_create
+    :param mgr:
+        fpga manager struct
+    :type mgr: struct fpga_manager \*
+
+.. _`devm_fpga_mgr_create`:
+
+devm_fpga_mgr_create
+====================
+
+.. c:function:: struct fpga_manager *devm_fpga_mgr_create(struct device *dev, const char *name, const struct fpga_manager_ops *mops, void *priv)
+
+    create and initialize a managed FPGA manager struct
+
+    :param dev:
+        fpga manager device from pdev
+    :type dev: struct device \*
+
+    :param name:
+        fpga manager name
+    :type name: const char \*
+
+    :param mops:
+        pointer to structure of fpga manager ops
+    :type mops: const struct fpga_manager_ops \*
+
+    :param priv:
+        fpga manager private data
+    :type priv: void \*
+
+.. _`devm_fpga_mgr_create.description`:
+
+Description
+-----------
+
+This function is intended for use in a FPGA manager driver's probe function.
+After the manager driver creates the manager struct with
+\ :c:func:`devm_fpga_mgr_create`\ , it should register it with \ :c:func:`fpga_mgr_register`\ .  The
+manager driver's remove function should call \ :c:func:`fpga_mgr_unregister`\ .  The
+manager struct allocated with this function will be freed automatically on
+driver detach.  This includes the case of a probe function returning error
+before calling \ :c:func:`fpga_mgr_register`\ , the struct will still get cleaned up.
+
+.. _`devm_fpga_mgr_create.return`:
+
+Return
+------
+
+pointer to struct fpga_manager or NULL
 
 .. _`fpga_mgr_register`:
 
@@ -316,8 +393,9 @@ fpga_mgr_register
 
     register a FPGA manager
 
-    :param struct fpga_manager \*mgr:
-        fpga manager struct created by fpga_mgr_create
+    :param mgr:
+        fpga manager struct
+    :type mgr: struct fpga_manager \*
 
 .. _`fpga_mgr_register.return`:
 
@@ -333,10 +411,18 @@ fpga_mgr_unregister
 
 .. c:function:: void fpga_mgr_unregister(struct fpga_manager *mgr)
 
-    unregister and free a FPGA manager
+    unregister a FPGA manager
 
-    :param struct fpga_manager \*mgr:
+    :param mgr:
         fpga manager struct
+    :type mgr: struct fpga_manager \*
+
+.. _`fpga_mgr_unregister.description`:
+
+Description
+-----------
+
+This function is intended for use in a FPGA manager driver's remove function.
 
 .. This file was automatic generated / don't edit.
 

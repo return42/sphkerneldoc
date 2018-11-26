@@ -10,8 +10,9 @@ plpar_hcall_norets
 
     - Make a pseries hypervisor call with no return arguments
 
-    :param unsigned long opcode:
+    :param opcode:
         The hypervisor call to make.
+    :type opcode: unsigned long
 
     :param ellipsis ellipsis:
         variable arguments
@@ -53,11 +54,13 @@ plpar_hcall_raw
 
     - Make a hypervisor call without calculating hcall stats
 
-    :param unsigned long opcode:
+    :param opcode:
         The hypervisor call to make.
+    :type opcode: unsigned long
 
-    :param unsigned long \*retbuf:
+    :param retbuf:
         Buffer to store up to 4 return arguments in.
+    :type retbuf: unsigned long \*
 
     :param ellipsis ellipsis:
         variable arguments

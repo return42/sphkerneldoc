@@ -8,3 +8,5 @@ dsa
     :maxdepth: 1
 
     mv88e6xxx/index
+    realtek-smi_h
+    vitesse-vsc73xx_c

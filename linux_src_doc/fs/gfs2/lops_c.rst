@@ -10,11 +10,13 @@ gfs2_pin
 
     Pin a buffer in memory
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         The buffer to be pinned
+    :type bh: struct buffer_head \*
 
 .. _`gfs2_pin.description`:
 
@@ -32,14 +34,17 @@ gfs2_unpin
 
     Unpin a buffer
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem the buffer belongs to
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         The buffer to unpin
+    :type bh: struct buffer_head \*
 
-    :param struct gfs2_trans \*tr:
+    :param tr:
         *undescribed*
+    :type tr: struct gfs2_trans \*
 
 .. _`gfs2_end_log_write_bh`:
 
@@ -50,14 +55,17 @@ gfs2_end_log_write_bh
 
     end log write of pagecache data with buffers
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct bio_vec \*bvec:
+    :param bvec:
         The bio_vec
+    :type bvec: struct bio_vec \*
 
-    :param blk_status_t error:
+    :param error:
         The i/o status
+    :type error: blk_status_t
 
 .. _`gfs2_end_log_write_bh.description`:
 
@@ -78,8 +86,9 @@ gfs2_end_log_write
 
     end of i/o to the log
 
-    :param struct bio \*bio:
+    :param bio:
         The bio
+    :type bio: struct bio \*
 
 .. _`gfs2_end_log_write.description`:
 
@@ -99,14 +108,17 @@ gfs2_log_flush_bio
 
     Submit any pending log bio
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param int op:
+    :param op:
         REQ_OP
+    :type op: int
 
-    :param int op_flags:
+    :param op_flags:
         req_flag_bits
+    :type op_flags: int
 
 .. _`gfs2_log_flush_bio.description`:
 
@@ -125,11 +137,13 @@ gfs2_log_alloc_bio
 
     Allocate a new bio for log writing
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param u64 blkno:
+    :param blkno:
         The next device block number we want to write to
+    :type blkno: u64
 
 .. _`gfs2_log_alloc_bio.description`:
 
@@ -157,11 +171,13 @@ gfs2_log_get_bio
 
     Get cached log bio, or allocate a new one
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param u64 blkno:
+    :param blkno:
         The device block number we want to write to
+    :type blkno: u64
 
 .. _`gfs2_log_get_bio.description`:
 
@@ -189,20 +205,25 @@ gfs2_log_write
 
     write to log
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct page \*page:
+    :param page:
         the page to write
+    :type page: struct page \*
 
-    :param unsigned size:
+    :param size:
         the size of the data to write
+    :type size: unsigned
 
-    :param unsigned offset:
+    :param offset:
         the offset within the page
+    :type offset: unsigned
 
-    :param u64 blkno:
+    :param blkno:
         block number of the log entry
+    :type blkno: u64
 
 .. _`gfs2_log_write.description`:
 
@@ -222,11 +243,13 @@ gfs2_log_write_bh
 
     write a buffer's content to the log
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The super block
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         The buffer pointing to the in-place location
+    :type bh: struct buffer_head \*
 
 .. _`gfs2_log_write_bh.description`:
 
@@ -246,11 +269,13 @@ gfs2_log_write_page
 
     write one block stored in a page, into the log
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct page \*page:
+    :param page:
         The struct page
+    :type page: struct page \*
 
 .. _`gfs2_log_write_page.description`:
 
@@ -271,8 +296,9 @@ gfs2_meta_sync
 
     Sync all buffers associated with a glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock
+    :type gl: struct gfs2_glock \*
 
 .. _`databuf_lo_before_commit`:
 
@@ -283,11 +309,13 @@ databuf_lo_before_commit
 
     Scan the data buffers, writing as we go
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         *undescribed*
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_trans \*tr:
+    :param tr:
         *undescribed*
+    :type tr: struct gfs2_trans \*
 
 .. This file was automatic generated / don't edit.
 

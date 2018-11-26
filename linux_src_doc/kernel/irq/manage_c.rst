@@ -10,8 +10,9 @@ synchronize_hardirq
 
     wait for pending hard IRQ handlers (on other CPUs)
 
-    :param unsigned int irq:
+    :param irq:
         interrupt number to wait for
+    :type irq: unsigned int
 
 .. _`synchronize_hardirq.description`:
 
@@ -45,8 +46,9 @@ synchronize_irq
 
     wait for pending IRQ handlers (on other CPUs)
 
-    :param unsigned int irq:
+    :param irq:
         interrupt number to wait for
+    :type irq: unsigned int
 
 .. _`synchronize_irq.description`:
 
@@ -68,8 +70,9 @@ irq_can_set_affinity
 
     Check if the affinity of a given irq can be set
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt to check
+    :type irq: unsigned int
 
 .. _`irq_can_set_affinity_usr`:
 
@@ -80,8 +83,9 @@ irq_can_set_affinity_usr
 
     Check if affinity of a irq can be set from user space
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt to check
+    :type irq: unsigned int
 
 .. _`irq_can_set_affinity_usr.description`:
 
@@ -100,8 +104,9 @@ irq_set_thread_affinity
 
     Notify irq threads to adjust affinity
 
-    :param struct irq_desc \*desc:
+    :param desc:
         irq descriptor which has affitnity changed
+    :type desc: struct irq_desc \*
 
 .. _`irq_set_thread_affinity.description`:
 
@@ -122,13 +127,15 @@ irq_set_affinity_notifier
 
     control notification of IRQ affinity changes
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt for which to enable/disable notification
+    :type irq: unsigned int
 
-    :param struct irq_affinity_notify \*notify:
+    :param notify:
         Context for notification, or \ ``NULL``\  to disable
         notification.  Function pointers must be initialised;
         the other fields will be initialised by this function.
+    :type notify: struct irq_affinity_notify \*
 
 .. _`irq_set_affinity_notifier.description`:
 
@@ -148,12 +155,14 @@ irq_set_vcpu_affinity
 
     Set vcpu affinity for the interrupt
 
-    :param unsigned int irq:
+    :param irq:
         interrupt number to set affinity
+    :type irq: unsigned int
 
-    :param void \*vcpu_info:
+    :param vcpu_info:
         vCPU specific data or pointer to a percpu array of vCPU
         specific data for percpu_devid interrupts
+    :type vcpu_info: void \*
 
 .. _`irq_set_vcpu_affinity.description`:
 
@@ -174,8 +183,9 @@ disable_irq_nosync
 
     disable an irq without waiting
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt to disable
+    :type irq: unsigned int
 
 .. _`disable_irq_nosync.description`:
 
@@ -198,8 +208,9 @@ disable_irq
 
     disable an irq and wait for completion
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt to disable
+    :type irq: unsigned int
 
 .. _`disable_irq.description`:
 
@@ -223,8 +234,9 @@ disable_hardirq
 
     disables an irq and waits for hardirq completion
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt to disable
+    :type irq: unsigned int
 
 .. _`disable_hardirq.description`:
 
@@ -258,8 +270,9 @@ enable_irq
 
     enable handling of an irq
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt to enable
+    :type irq: unsigned int
 
 .. _`enable_irq.description`:
 
@@ -282,11 +295,13 @@ irq_set_irq_wake
 
     control irq power management wakeup
 
-    :param unsigned int irq:
+    :param irq:
         interrupt to control
+    :type irq: unsigned int
 
-    :param unsigned int on:
+    :param on:
         enable/disable power management wakeup
+    :type on: unsigned int
 
 .. _`irq_set_irq_wake.description`:
 
@@ -309,11 +324,13 @@ irq_wake_thread
 
     wake the irq thread for the action identified by dev_id
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line
+    :type irq: unsigned int
 
-    :param void \*dev_id:
+    :param dev_id:
         Device identity for which the thread should be woken
+    :type dev_id: void \*
 
 .. _`setup_irq`:
 
@@ -324,11 +341,13 @@ setup_irq
 
     setup an interrupt
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to setup
+    :type irq: unsigned int
 
-    :param struct irqaction \*act:
+    :param act:
         irqaction for the interrupt
+    :type act: struct irqaction \*
 
 .. _`setup_irq.description`:
 
@@ -346,11 +365,13 @@ remove_irq
 
     free an interrupt
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to free
+    :type irq: unsigned int
 
-    :param struct irqaction \*act:
+    :param act:
         irqaction for the interrupt
+    :type act: struct irqaction \*
 
 .. _`remove_irq.description`:
 
@@ -368,11 +389,13 @@ free_irq
 
     free an interrupt allocated with request_irq
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to free
+    :type irq: unsigned int
 
-    :param void \*dev_id:
+    :param dev_id:
         Device identity to free
+    :type dev_id: void \*
 
 .. _`free_irq.description`:
 
@@ -399,27 +422,33 @@ request_threaded_irq
 
     allocate an interrupt line
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to allocate
+    :type irq: unsigned int
 
-    :param irq_handler_t handler:
+    :param handler:
         Function to be called when the IRQ occurs.
         Primary handler for threaded interrupts
         If NULL and thread_fn != NULL the default
         primary handler is installed
+    :type handler: irq_handler_t
 
-    :param irq_handler_t thread_fn:
+    :param thread_fn:
         Function called from the irq handler thread
         If NULL, no irq thread is created
+    :type thread_fn: irq_handler_t
 
-    :param unsigned long irqflags:
+    :param irqflags:
         Interrupt type flags
+    :type irqflags: unsigned long
 
-    :param const char \*devname:
+    :param devname:
         An ascii name for the claiming device
+    :type devname: const char \*
 
-    :param void \*dev_id:
+    :param dev_id:
         A cookie passed back to the handler function
+    :type dev_id: void \*
 
 .. _`request_threaded_irq.description`:
 
@@ -467,21 +496,26 @@ request_any_context_irq
 
     allocate an interrupt line
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to allocate
+    :type irq: unsigned int
 
-    :param irq_handler_t handler:
+    :param handler:
         Function to be called when the IRQ occurs.
         Threaded handler for threaded interrupts.
+    :type handler: irq_handler_t
 
-    :param unsigned long flags:
+    :param flags:
         Interrupt type flags
+    :type flags: unsigned long
 
-    :param const char \*name:
+    :param name:
         An ascii name for the claiming device
+    :type name: const char \*
 
-    :param void \*dev_id:
+    :param dev_id:
         A cookie passed back to the handler function
+    :type dev_id: void \*
 
 .. _`request_any_context_irq.description`:
 
@@ -505,8 +539,9 @@ irq_percpu_is_enabled
 
     Check whether the per cpu irq is enabled
 
-    :param unsigned int irq:
+    :param irq:
         Linux irq number to check for
+    :type irq: unsigned int
 
 .. _`irq_percpu_is_enabled.description`:
 
@@ -525,11 +560,13 @@ remove_percpu_irq
 
     free a per-cpu interrupt
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to free
+    :type irq: unsigned int
 
-    :param struct irqaction \*act:
+    :param act:
         irqaction for the interrupt
+    :type act: struct irqaction \*
 
 .. _`remove_percpu_irq.description`:
 
@@ -547,11 +584,13 @@ free_percpu_irq
 
     free an interrupt allocated with request_percpu_irq
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to free
+    :type irq: unsigned int
 
-    :param void __percpu \*dev_id:
+    :param dev_id:
         Device identity to free
+    :type dev_id: void __percpu \*
 
 .. _`free_percpu_irq.description`:
 
@@ -574,11 +613,13 @@ setup_percpu_irq
 
     setup a per-cpu interrupt
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to setup
+    :type irq: unsigned int
 
-    :param struct irqaction \*act:
+    :param act:
         irqaction for the interrupt
+    :type act: struct irqaction \*
 
 .. _`setup_percpu_irq.description`:
 
@@ -596,20 +637,25 @@ __request_percpu_irq
 
     allocate a percpu interrupt line
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to allocate
+    :type irq: unsigned int
 
-    :param irq_handler_t handler:
+    :param handler:
         Function to be called when the IRQ occurs.
+    :type handler: irq_handler_t
 
-    :param unsigned long flags:
+    :param flags:
         Interrupt type flags (IRQF_TIMER only)
+    :type flags: unsigned long
 
-    :param const char \*devname:
+    :param devname:
         An ascii name for the claiming device
+    :type devname: const char \*
 
-    :param void __percpu \*dev_id:
+    :param dev_id:
         A percpu cookie passed back to the handler function
+    :type dev_id: void __percpu \*
 
 .. _`__request_percpu_irq.description`:
 
@@ -634,14 +680,17 @@ irq_get_irqchip_state
 
     returns the irqchip state of a interrupt.
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line that is forwarded to a VM
+    :type irq: unsigned int
 
-    :param enum irqchip_irq_state which:
+    :param which:
         One of IRQCHIP_STATE_* the caller wants to know about
+    :type which: enum irqchip_irq_state
 
-    :param bool \*state:
+    :param state:
         a pointer to a boolean where the state is to be storeed
+    :type state: bool \*
 
 .. _`irq_get_irqchip_state.description`:
 
@@ -664,14 +713,17 @@ irq_set_irqchip_state
 
     set the state of a forwarded interrupt.
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line that is forwarded to a VM
+    :type irq: unsigned int
 
-    :param enum irqchip_irq_state which:
+    :param which:
         State to be restored (one of IRQCHIP_STATE_*)
+    :type which: enum irqchip_irq_state
 
-    :param bool val:
+    :param val:
         Value corresponding to \ ``which``\ 
+    :type val: bool
 
 .. _`irq_set_irqchip_state.description`:
 

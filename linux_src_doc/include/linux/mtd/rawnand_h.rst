@@ -1,62 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/mtd/rawnand.h
 
-.. _`onfi_params`:
-
-struct onfi_params
-==================
-
-.. c:type:: struct onfi_params
-
-    ONFI specific parameters that will be reused
-
-.. _`onfi_params.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct onfi_params {
-        int version;
-        u16 tPROG;
-        u16 tBERS;
-        u16 tR;
-        u16 tCCS;
-        u16 async_timing_mode;
-        u16 vendor_revision;
-        u8 vendor[88];
-    }
-
-.. _`onfi_params.members`:
-
-Members
--------
-
-version
-    ONFI version (BCD encoded), 0 if ONFI is not supported
-
-tPROG
-    Page program time
-
-tBERS
-    Block erase time
-
-tR
-    Page read time
-
-tCCS
-    Change column setup time
-
-async_timing_mode
-    Supported asynchronous timing mode
-
-vendor_revision
-    Vendor specific revision number
-
-vendor
-    Vendor specific data
-
 .. _`nand_parameters`:
 
 struct nand_parameters
@@ -74,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct nand_parameters {
-        char model[100];
+        const char *model;
         bool supports_set_get_features;
         DECLARE_BITMAP(set_feature_list, ONFI_FEATURE_NUMBER);
         DECLARE_BITMAP(get_feature_list, ONFI_FEATURE_NUMBER);
-        struct onfi_params onfi;
+        struct onfi_params *onfi;
     }
 
 .. _`nand_parameters.members`:
@@ -133,29 +77,70 @@ data
 len
     ID length.
 
-.. _`nand_hw_control`:
+.. _`nand_controller_ops`:
 
-struct nand_hw_control
-======================
+struct nand_controller_ops
+==========================
 
-.. c:type:: struct nand_hw_control
+.. c:type:: struct nand_controller_ops
 
-    Control structure for hardware controller (e.g ECC generator) shared among independent devices
+    Controller operations
 
-.. _`nand_hw_control.definition`:
+.. _`nand_controller_ops.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct nand_hw_control {
+    struct nand_controller_ops {
+        int (*attach_chip)(struct nand_chip *chip);
+        void (*detach_chip)(struct nand_chip *chip);
+    }
+
+.. _`nand_controller_ops.members`:
+
+Members
+-------
+
+attach_chip
+    this method is called after the NAND detection phase after
+    flash ID and MTD fields such as erase size, page size and OOB
+    size have been set up. ECC requirements are available if
+    provided by the NAND chip or device tree. Typically used to
+    choose the appropriate ECC configuration and allocate
+    associated resources.
+    This hook is optional.
+
+detach_chip
+    free all resources allocated/claimed in
+    nand_controller_ops->attach_chip().
+    This hook is optional.
+
+.. _`nand_controller`:
+
+struct nand_controller
+======================
+
+.. c:type:: struct nand_controller
+
+    Structure used to describe a NAND controller
+
+.. _`nand_controller.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_controller {
         spinlock_t lock;
         struct nand_chip *active;
         wait_queue_head_t wq;
+        const struct nand_controller_ops *ops;
     }
 
-.. _`nand_hw_control.members`:
+.. _`nand_controller.members`:
 
 Members
 -------
@@ -170,6 +155,9 @@ wq
     wait queue to sleep on if a NAND operation is in
     progress used instead of the per chip wait queue
     when a hw controller is available.
+
+ops
+    NAND controller operations.
 
 .. _`nand_ecc_step_info`:
 
@@ -273,19 +261,19 @@ Definition
         void *priv;
         u8 *calc_buf;
         u8 *code_buf;
-        void (*hwctl)(struct mtd_info *mtd, int mode);
-        int (*calculate)(struct mtd_info *mtd, const uint8_t *dat, uint8_t *ecc_code);
-        int (*correct)(struct mtd_info *mtd, uint8_t *dat, uint8_t *read_ecc, uint8_t *calc_ecc);
-        int (*read_page_raw)(struct mtd_info *mtd, struct nand_chip *chip, uint8_t *buf, int oob_required, int page);
-        int (*write_page_raw)(struct mtd_info *mtd, struct nand_chip *chip, const uint8_t *buf, int oob_required, int page);
-        int (*read_page)(struct mtd_info *mtd, struct nand_chip *chip, uint8_t *buf, int oob_required, int page);
-        int (*read_subpage)(struct mtd_info *mtd, struct nand_chip *chip, uint32_t offs, uint32_t len, uint8_t *buf, int page);
-        int (*write_subpage)(struct mtd_info *mtd, struct nand_chip *chip,uint32_t offset, uint32_t data_len, const uint8_t *data_buf, int oob_required, int page);
-        int (*write_page)(struct mtd_info *mtd, struct nand_chip *chip, const uint8_t *buf, int oob_required, int page);
-        int (*write_oob_raw)(struct mtd_info *mtd, struct nand_chip *chip, int page);
-        int (*read_oob_raw)(struct mtd_info *mtd, struct nand_chip *chip, int page);
-        int (*read_oob)(struct mtd_info *mtd, struct nand_chip *chip, int page);
-        int (*write_oob)(struct mtd_info *mtd, struct nand_chip *chip, int page);
+        void (*hwctl)(struct nand_chip *chip, int mode);
+        int (*calculate)(struct nand_chip *chip, const uint8_t *dat, uint8_t *ecc_code);
+        int (*correct)(struct nand_chip *chip, uint8_t *dat, uint8_t *read_ecc, uint8_t *calc_ecc);
+        int (*read_page_raw)(struct nand_chip *chip, uint8_t *buf, int oob_required, int page);
+        int (*write_page_raw)(struct nand_chip *chip, const uint8_t *buf, int oob_required, int page);
+        int (*read_page)(struct nand_chip *chip, uint8_t *buf, int oob_required, int page);
+        int (*read_subpage)(struct nand_chip *chip, uint32_t offs, uint32_t len, uint8_t *buf, int page);
+        int (*write_subpage)(struct nand_chip *chip, uint32_t offset,uint32_t data_len, const uint8_t *data_buf, int oob_required, int page);
+        int (*write_page)(struct nand_chip *chip, const uint8_t *buf, int oob_required, int page);
+        int (*write_oob_raw)(struct nand_chip *chip, int page);
+        int (*read_oob_raw)(struct nand_chip *chip, int page);
+        int (*read_oob)(struct nand_chip *chip, int page);
+        int (*write_oob)(struct nand_chip *chip, int page);
     }
 
 .. _`nand_ecc_ctrl.members`:
@@ -664,46 +652,9 @@ nand_get_sdr_timings
 
     get SDR timing from data interface
 
-    :param const struct nand_data_interface \*conf:
+    :param conf:
         The data interface
-
-.. _`nand_manufacturer_ops`:
-
-struct nand_manufacturer_ops
-============================
-
-.. c:type:: struct nand_manufacturer_ops
-
-    NAND Manufacturer operations
-
-.. _`nand_manufacturer_ops.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct nand_manufacturer_ops {
-        void (*detect)(struct nand_chip *chip);
-        int (*init)(struct nand_chip *chip);
-        void (*cleanup)(struct nand_chip *chip);
-    }
-
-.. _`nand_manufacturer_ops.members`:
-
-Members
--------
-
-detect
-    detect the NAND memory organization and capabilities
-
-init
-    initialize all vendor specific fields (like the ->read_retry()
-    implementation) if any.
-
-cleanup
-    the ->init() function may have allocated resources, ->cleanup()
-    is here to let vendor specific code release those resources.
+    :type conf: const struct nand_data_interface \*
 
 .. _`nand_op_cmd_instr`:
 
@@ -1243,6 +1194,106 @@ Description
 
 The actual operation structure that will be passed to chip->exec_op().
 
+.. _`nand_legacy`:
+
+struct nand_legacy
+==================
+
+.. c:type:: struct nand_legacy
+
+    NAND chip legacy fields/hooks
+
+.. _`nand_legacy.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_legacy {
+        void __iomem *IO_ADDR_R;
+        void __iomem *IO_ADDR_W;
+        u8 (*read_byte)(struct nand_chip *chip);
+        void (*write_byte)(struct nand_chip *chip, u8 byte);
+        void (*write_buf)(struct nand_chip *chip, const u8 *buf, int len);
+        void (*read_buf)(struct nand_chip *chip, u8 *buf, int len);
+        void (*cmd_ctrl)(struct nand_chip *chip, int dat, unsigned int ctrl);
+        void (*cmdfunc)(struct nand_chip *chip, unsigned command, int column, int page_addr);
+        int (*dev_ready)(struct nand_chip *chip);
+        int (*waitfunc)(struct nand_chip *chip);
+        int (*block_bad)(struct nand_chip *chip, loff_t ofs);
+        int (*block_markbad)(struct nand_chip *chip, loff_t ofs);
+        int (*erase)(struct nand_chip *chip, int page);
+        int (*set_features)(struct nand_chip *chip, int feature_addr, u8 *subfeature_para);
+        int (*get_features)(struct nand_chip *chip, int feature_addr, u8 *subfeature_para);
+        int chip_delay;
+    }
+
+.. _`nand_legacy.members`:
+
+Members
+-------
+
+IO_ADDR_R
+    address to read the 8 I/O lines of the flash device
+
+IO_ADDR_W
+    address to write the 8 I/O lines of the flash device
+
+read_byte
+    read one byte from the chip
+
+write_byte
+    write a single byte to the chip on the low 8 I/O lines
+
+write_buf
+    write data from the buffer to the chip
+
+read_buf
+    read data from the chip into the buffer
+
+cmd_ctrl
+    hardware specific function for controlling ALE/CLE/nCE. Also used
+    to write command and address
+
+cmdfunc
+    hardware specific function for writing commands to the chip.
+
+dev_ready
+    hardware specific function for accessing device ready/busy line.
+    If set to NULL no access to ready/busy is available and the
+    ready/busy information is read from the chip status register.
+
+waitfunc
+    hardware specific function for wait on ready.
+
+block_bad
+    check if a block is bad, using OOB markers
+
+block_markbad
+    mark a block bad
+
+erase
+    erase function
+
+set_features
+    set the NAND chip features
+
+get_features
+    get the NAND chip features
+
+chip_delay
+    chip dependent delay for transferring data from array to read
+    regs (tR).
+
+.. _`nand_legacy.description`:
+
+Description
+-----------
+
+If you look at this structure you're already wrong. These fields/hooks are
+all deprecated.
+
 .. _`nand_chip`:
 
 struct nand_chip
@@ -1261,28 +1312,11 @@ Definition
 
     struct nand_chip {
         struct mtd_info mtd;
-        void __iomem *IO_ADDR_R;
-        void __iomem *IO_ADDR_W;
-        uint8_t (*read_byte)(struct mtd_info *mtd);
-        u16 (*read_word)(struct mtd_info *mtd);
-        void (*write_byte)(struct mtd_info *mtd, uint8_t byte);
-        void (*write_buf)(struct mtd_info *mtd, const uint8_t *buf, int len);
-        void (*read_buf)(struct mtd_info *mtd, uint8_t *buf, int len);
-        void (*select_chip)(struct mtd_info *mtd, int chip);
-        int (*block_bad)(struct mtd_info *mtd, loff_t ofs);
-        int (*block_markbad)(struct mtd_info *mtd, loff_t ofs);
-        void (*cmd_ctrl)(struct mtd_info *mtd, int dat, unsigned int ctrl);
-        int (*dev_ready)(struct mtd_info *mtd);
-        void (*cmdfunc)(struct mtd_info *mtd, unsigned command, int column, int page_addr);
-        int(*waitfunc)(struct mtd_info *mtd, struct nand_chip *this);
+        struct nand_legacy legacy;
+        void (*select_chip)(struct nand_chip *chip, int cs);
         int (*exec_op)(struct nand_chip *chip,const struct nand_operation *op, bool check_only);
-        int (*erase)(struct mtd_info *mtd, int page);
-        int (*scan_bbt)(struct mtd_info *mtd);
-        int (*set_features)(struct mtd_info *mtd, struct nand_chip *chip, int feature_addr, uint8_t *subfeature_para);
-        int (*get_features)(struct mtd_info *mtd, struct nand_chip *chip, int feature_addr, uint8_t *subfeature_para);
-        int (*setup_read_retry)(struct mtd_info *mtd, int retry_mode);
-        int (*setup_data_interface)(struct mtd_info *mtd, int chipnr, const struct nand_data_interface *conf);
-        int chip_delay;
+        int (*setup_read_retry)(struct nand_chip *chip, int retry_mode);
+        int (*setup_data_interface)(struct nand_chip *chip, int chipnr, const struct nand_data_interface *conf);
         unsigned int options;
         unsigned int bbt_options;
         int page_shift;
@@ -1310,10 +1344,10 @@ Definition
         int read_retries;
         flstate_t state;
         uint8_t *oob_poi;
-        struct nand_hw_control *controller;
+        struct nand_controller *controller;
         struct nand_ecc_ctrl ecc;
         unsigned long buf_align;
-        struct nand_hw_control hwcontrol;
+        struct nand_controller dummy_controller;
         uint8_t *bbt;
         struct nand_bbt_descr *bbt_td;
         struct nand_bbt_descr *bbt_md;
@@ -1333,74 +1367,21 @@ Members
 mtd
     MTD device registered to the MTD framework
 
-IO_ADDR_R
-    [BOARDSPECIFIC] address to read the 8 I/O lines of the
-    flash device
-
-IO_ADDR_W
-    [BOARDSPECIFIC] address to write the 8 I/O lines of the
-    flash device.
-
-read_byte
-    [REPLACEABLE] read one byte from the chip
-
-read_word
-    [REPLACEABLE] read one word from the chip
-
-write_byte
-    [REPLACEABLE] write a single byte to the chip on the
-    low 8 I/O lines
-
-write_buf
-    [REPLACEABLE] write data from the buffer to the chip
-
-read_buf
-    [REPLACEABLE] read data from the chip into the buffer
+legacy
+    All legacy fields/hooks. If you develop a new driver,
+    don't even try to use any of these fields/hooks, and if
+    you're modifying an existing driver that is using those
+    fields/hooks, you should consider reworking the driver
+    avoid using them.
 
 select_chip
     [REPLACEABLE] select chip nr
 
-block_bad
-    [REPLACEABLE] check if a block is bad, using OOB markers
-
-block_markbad
-    [REPLACEABLE] mark a block bad
-
-cmd_ctrl
-    [BOARDSPECIFIC] hardwarespecific function for controlling
-    ALE/CLE/nCE. Also used to write command and address
-
-dev_ready
-    [BOARDSPECIFIC] hardwarespecific function for accessing
-    device ready/busy line. If set to NULL no access to
-    ready/busy is available and the ready/busy information
-    is read from the chip status register.
-
-cmdfunc
-    [REPLACEABLE] hardwarespecific function for writing
-    commands to the chip.
-
-waitfunc
-    [REPLACEABLE] hardwarespecific function for wait on
-    ready.
-
 exec_op
     controller specific method to execute NAND operations.
     This method replaces ->cmdfunc(),
-    ->{read,write}_{buf,byte,word}(), ->dev_ready() and
-    ->waifunc().
-
-erase
-    [REPLACEABLE] erase function
-
-scan_bbt
-    [REPLACEABLE] function to scan bad block table
-
-set_features
-    [REPLACEABLE] set the NAND chip features
-
-get_features
-    [REPLACEABLE] get the NAND chip features
+    ->legacy.{read,write}_{buf,byte,word}(),
+    ->legacy.dev_ready() and ->waifunc().
 
 setup_read_retry
     [FLASHSPECIFIC] flash (vendor) specific function for
@@ -1411,10 +1392,6 @@ setup_data_interface
     chipnr is set to \ ``NAND_DATA_IFACE_CHECK_ONLY``\  this
     means the configuration should not be applied but
     only checked.
-
-chip_delay
-    [BOARDSPECIFIC] chip dependent delay for transferring
-    data from array to read regs (tR).
 
 options
     [BOARDSPECIFIC] various chip options. They can partly
@@ -1528,8 +1505,9 @@ ecc
 buf_align
     minimum buffer alignment required by a platform
 
-hwcontrol
-    platform-specific hardware control structure
+dummy_controller
+    dummy controller implementation for drivers that can
+    only control a single chip
 
 bbt
     [INTERN] bad block table pointer
@@ -1658,202 +1636,6 @@ onfi_timing_mode_default
     reset. Should be deduced from timings described
     in the datasheet.
 
-.. _`nand_manufacturer`:
-
-struct nand_manufacturer
-========================
-
-.. c:type:: struct nand_manufacturer
-
-    NAND Flash Manufacturer structure
-
-.. _`nand_manufacturer.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct nand_manufacturer {
-        int id;
-        char *name;
-        const struct nand_manufacturer_ops *ops;
-    }
-
-.. _`nand_manufacturer.members`:
-
-Members
--------
-
-id
-    manufacturer ID code of device.
-
-name
-    Manufacturer name
-
-ops
-    manufacturer operations
-
-.. _`platform_nand_chip`:
-
-struct platform_nand_chip
-=========================
-
-.. c:type:: struct platform_nand_chip
-
-    chip level device structure
-
-.. _`platform_nand_chip.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct platform_nand_chip {
-        int nr_chips;
-        int chip_offset;
-        int nr_partitions;
-        struct mtd_partition *partitions;
-        int chip_delay;
-        unsigned int options;
-        unsigned int bbt_options;
-        const char **part_probe_types;
-    }
-
-.. _`platform_nand_chip.members`:
-
-Members
--------
-
-nr_chips
-    max. number of chips to scan for
-
-chip_offset
-    chip number offset
-
-nr_partitions
-    number of partitions pointed to by partitions (or zero)
-
-partitions
-    mtd partition list
-
-chip_delay
-    R/B delay value in us
-
-options
-    Option flags, e.g. 16bit buswidth
-
-bbt_options
-    BBT option flags, e.g. NAND_BBT_USE_FLASH
-
-part_probe_types
-    NULL-terminated array of probe types
-
-.. _`platform_nand_ctrl`:
-
-struct platform_nand_ctrl
-=========================
-
-.. c:type:: struct platform_nand_ctrl
-
-    controller level device structure
-
-.. _`platform_nand_ctrl.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct platform_nand_ctrl {
-        int (*probe)(struct platform_device *pdev);
-        void (*remove)(struct platform_device *pdev);
-        void (*hwcontrol)(struct mtd_info *mtd, int cmd);
-        int (*dev_ready)(struct mtd_info *mtd);
-        void (*select_chip)(struct mtd_info *mtd, int chip);
-        void (*cmd_ctrl)(struct mtd_info *mtd, int dat, unsigned int ctrl);
-        void (*write_buf)(struct mtd_info *mtd, const uint8_t *buf, int len);
-        void (*read_buf)(struct mtd_info *mtd, uint8_t *buf, int len);
-        unsigned char (*read_byte)(struct mtd_info *mtd);
-        void *priv;
-    }
-
-.. _`platform_nand_ctrl.members`:
-
-Members
--------
-
-probe
-    platform specific function to probe/setup hardware
-
-remove
-    platform specific function to remove/teardown hardware
-
-hwcontrol
-    platform specific hardware control structure
-
-dev_ready
-    platform specific function to read ready/busy pin
-
-select_chip
-    platform specific chip select function
-
-cmd_ctrl
-    platform specific function for controlling
-    ALE/CLE/nCE. Also used to write command and address
-
-write_buf
-    platform specific function for write buffer
-
-read_buf
-    platform specific function for read buffer
-
-read_byte
-    platform specific function to read one byte from chip
-
-priv
-    private data to transport driver specific settings
-
-.. _`platform_nand_ctrl.description`:
-
-Description
------------
-
-All fields are optional and depend on the hardware driver requirements
-
-.. _`platform_nand_data`:
-
-struct platform_nand_data
-=========================
-
-.. c:type:: struct platform_nand_data
-
-    container structure for platform-specific data
-
-.. _`platform_nand_data.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct platform_nand_data {
-        struct platform_nand_chip chip;
-        struct platform_nand_ctrl ctrl;
-    }
-
-.. _`platform_nand_data.members`:
-
-Members
--------
-
-chip
-    chip level chip structure
-
-ctrl
-    controller level device structure
-
 .. _`nand_opcode_8bits`:
 
 nand_opcode_8bits
@@ -1861,8 +1643,9 @@ nand_opcode_8bits
 
 .. c:function:: int nand_opcode_8bits(unsigned int command)
 
-    :param unsigned int command:
+    :param command:
         opcode to check
+    :type command: unsigned int
 
 .. This file was automatic generated / don't edit.
 

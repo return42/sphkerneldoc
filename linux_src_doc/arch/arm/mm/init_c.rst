@@ -10,11 +10,13 @@ update_sections_early
 
     framework and executed by only one CPU while all other CPUs will spin and wait, so no locking is required in this function.
 
-    :param struct section_perm perms:
+    :param perms:
         *undescribed*
+    :type perms: struct section_perm
 
-    :param int n:
+    :param n:
         *undescribed*
+    :type n: int
 
 .. This file was automatic generated / don't edit.
 

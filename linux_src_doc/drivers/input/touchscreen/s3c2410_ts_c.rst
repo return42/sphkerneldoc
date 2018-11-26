@@ -78,11 +78,13 @@ get_down
 
     return the down state of the pen
 
-    :param unsigned long data0:
+    :param data0:
         The data read from ADCDAT0 register.
+    :type data0: unsigned long
 
-    :param unsigned long data1:
+    :param data1:
         The data read from ADCDAT1 register.
+    :type data1: unsigned long
 
 .. _`get_down.description`:
 
@@ -100,11 +102,13 @@ stylus_irq
 
     touchscreen stylus event interrupt
 
-    :param int irq:
+    :param irq:
         The interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         The device ID.
+    :type dev_id: void \*
 
 .. _`stylus_irq.description`:
 
@@ -122,17 +126,21 @@ s3c24xx_ts_conversion
 
     ADC conversion callback
 
-    :param struct s3c_adc_client \*client:
+    :param client:
         The client that was registered with the ADC core.
+    :type client: struct s3c_adc_client \*
 
-    :param unsigned data0:
+    :param data0:
         The reading from ADCDAT0.
+    :type data0: unsigned
 
-    :param unsigned data1:
+    :param data1:
         The reading from ADCDAT1.
+    :type data1: unsigned
 
-    :param unsigned \*left:
+    :param left:
         The number of samples left.
+    :type left: unsigned \*
 
 .. _`s3c24xx_ts_conversion.description`:
 
@@ -150,11 +158,13 @@ s3c24xx_ts_select
 
     ADC selection callback.
 
-    :param struct s3c_adc_client \*client:
+    :param client:
         The client that was registered with the ADC core.
+    :type client: struct s3c_adc_client \*
 
-    :param unsigned select:
+    :param select:
         The reason for select.
+    :type select: unsigned
 
 .. _`s3c24xx_ts_select.description`:
 
@@ -172,8 +182,9 @@ s3c2410ts_probe
 
     device core probe entry point
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The device we are being bound to.
+    :type pdev: struct platform_device \*
 
 .. _`s3c2410ts_probe.description`:
 
@@ -192,8 +203,9 @@ s3c2410ts_remove
 
     device core removal entry point
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The device we are being removed from.
+    :type pdev: struct platform_device \*
 
 .. _`s3c2410ts_remove.description`:
 

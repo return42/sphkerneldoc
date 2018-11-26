@@ -10,11 +10,13 @@ rproc_vq_interrupt
 
     tell remoteproc that a virtqueue is interrupted
 
-    :param struct rproc \*rproc:
+    :param rproc:
         handle to the remote processor
+    :type rproc: struct rproc \*
 
-    :param int notifyid:
+    :param notifyid:
         index of the signalled virtqueue (unique per this \ ``rproc``\ )
+    :type notifyid: int
 
 .. _`rproc_vq_interrupt.description`:
 
@@ -37,11 +39,13 @@ rproc_add_virtio_dev
 
     register an rproc-induced virtio device
 
-    :param struct rproc_vdev \*rvdev:
+    :param rvdev:
         the remote vdev
+    :type rvdev: struct rproc_vdev \*
 
-    :param int id:
+    :param id:
         *undescribed*
+    :type id: int
 
 .. _`rproc_add_virtio_dev.description`:
 
@@ -62,8 +66,9 @@ rproc_remove_virtio_dev
 
     remove an rproc-induced virtio device
 
-    :param struct rproc_vdev \*rvdev:
+    :param rvdev:
         the remote vdev
+    :type rvdev: struct rproc_vdev \*
 
 .. _`rproc_remove_virtio_dev.description`:
 

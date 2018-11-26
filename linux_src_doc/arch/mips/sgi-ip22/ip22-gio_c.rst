@@ -10,11 +10,13 @@ gio_match_device
 
     Tell if an of_device structure has a matching gio_match structure
 
-    :param const struct gio_device_id \*match:
+    :param match:
         *undescribed*
+    :type match: const struct gio_device_id \*
 
-    :param const struct gio_device \*dev:
+    :param dev:
         the of device structure to match against
+    :type dev: const struct gio_device \*
 
 .. _`gio_match_device.description`:
 
@@ -33,8 +35,9 @@ gio_release_dev
 
     free an gio device structure when all users of it are finished.
 
-    :param struct device \*dev:
+    :param dev:
         device that's been disconnected
+    :type dev: struct device \*
 
 .. _`gio_release_dev.description`:
 

@@ -8,8 +8,9 @@ dw_pcie_ep_linkup
 
 .. c:function:: void dw_pcie_ep_linkup(struct dw_pcie_ep *ep)
 
-    :param struct dw_pcie_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct dw_pcie_ep \*
 
 .. _`dw_pcie_ep_linkup.description`:
 

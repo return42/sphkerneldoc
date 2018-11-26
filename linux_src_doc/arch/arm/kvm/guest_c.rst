@@ -10,8 +10,9 @@ kvm_arm_num_regs
 
     how many registers do we present via KVM_GET_ONE_REG
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_arm_num_regs.description`:
 
@@ -29,11 +30,13 @@ kvm_arm_copy_reg_indices
 
     get indices of all registers.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u64 __user \*uindices:
+    :param uindices:
         *undescribed*
+    :type uindices: u64 __user \*
 
 .. _`kvm_arm_copy_reg_indices.description`:
 

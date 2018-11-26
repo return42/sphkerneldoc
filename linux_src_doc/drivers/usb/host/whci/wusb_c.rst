@@ -10,20 +10,25 @@ whc_set_ptk
 
     set the PTK to use for a device.
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         *undescribed*
+    :type wusbhc: struct wusbhc \*
 
-    :param u8 port_idx:
+    :param port_idx:
         *undescribed*
+    :type port_idx: u8
 
-    :param u32 tkid:
+    :param tkid:
         *undescribed*
+    :type tkid: u32
 
-    :param const void \*ptk:
+    :param ptk:
         *undescribed*
+    :type ptk: const void \*
 
-    :param size_t key_size:
+    :param key_size:
         *undescribed*
+    :type key_size: size_t
 
 .. _`whc_set_ptk.description`:
 
@@ -42,17 +47,21 @@ whc_set_gtk
 
     set the GTK for subsequent broadcast packets
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         *undescribed*
+    :type wusbhc: struct wusbhc \*
 
-    :param u32 tkid:
+    :param tkid:
         *undescribed*
+    :type tkid: u32
 
-    :param const void \*gtk:
+    :param gtk:
         *undescribed*
+    :type gtk: const void \*
 
-    :param size_t key_size:
+    :param key_size:
         *undescribed*
+    :type key_size: size_t
 
 .. _`whc_set_gtk.description`:
 

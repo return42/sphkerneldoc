@@ -36,8 +36,9 @@ ld_usb_abort_transfers
 
     aborts transfers and frees associated data structures
 
-    :param struct ld_usb \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ld_usb \*
 
 .. _`ld_usb_delete`:
 
@@ -46,8 +47,9 @@ ld_usb_delete
 
 .. c:function:: void ld_usb_delete(struct ld_usb *dev)
 
-    :param struct ld_usb \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ld_usb \*
 
 .. _`ld_usb_interrupt_in_callback`:
 
@@ -56,8 +58,9 @@ ld_usb_interrupt_in_callback
 
 .. c:function:: void ld_usb_interrupt_in_callback(struct urb *urb)
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`ld_usb_interrupt_out_callback`:
 
@@ -66,8 +69,9 @@ ld_usb_interrupt_out_callback
 
 .. c:function:: void ld_usb_interrupt_out_callback(struct urb *urb)
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`ld_usb_open`:
 
@@ -76,11 +80,13 @@ ld_usb_open
 
 .. c:function:: int ld_usb_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
 .. _`ld_usb_release`:
 
@@ -89,11 +95,13 @@ ld_usb_release
 
 .. c:function:: int ld_usb_release(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
 .. _`ld_usb_poll`:
 
@@ -102,11 +110,13 @@ ld_usb_poll
 
 .. c:function:: __poll_t ld_usb_poll(struct file *file, poll_table *wait)
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         *undescribed*
+    :type wait: poll_table \*
 
 .. _`ld_usb_read`:
 
@@ -115,17 +125,21 @@ ld_usb_read
 
 .. c:function:: ssize_t ld_usb_read(struct file *file, char __user *buffer, size_t count, loff_t *ppos)
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param char __user \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         *undescribed*
+    :type ppos: loff_t \*
 
 .. _`ld_usb_write`:
 
@@ -134,17 +148,21 @@ ld_usb_write
 
 .. c:function:: ssize_t ld_usb_write(struct file *file, const char __user *buffer, size_t count, loff_t *ppos)
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param const char __user \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: const char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         *undescribed*
+    :type ppos: loff_t \*
 
 .. _`ld_usb_probe`:
 
@@ -153,11 +171,13 @@ ld_usb_probe
 
 .. c:function:: int ld_usb_probe(struct usb_interface *intf, const struct usb_device_id *id)
 
-    :param struct usb_interface \*intf:
+    :param intf:
         *undescribed*
+    :type intf: struct usb_interface \*
 
-    :param const struct usb_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct usb_device_id \*
 
 .. _`ld_usb_probe.description`:
 
@@ -174,8 +194,9 @@ ld_usb_disconnect
 
 .. c:function:: void ld_usb_disconnect(struct usb_interface *intf)
 
-    :param struct usb_interface \*intf:
+    :param intf:
         *undescribed*
+    :type intf: struct usb_interface \*
 
 .. _`ld_usb_disconnect.description`:
 

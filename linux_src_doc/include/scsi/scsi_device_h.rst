@@ -46,11 +46,13 @@ shost_for_each_device
 
     iterate over all devices of a host
 
-    :param  sdev:
+    :param sdev:
         the \ :c:type:`struct scsi_device <scsi_device>`\  to use as a cursor
+    :type sdev: 
 
-    :param  shost:
+    :param shost:
         the \ :c:type:`struct scsi_host <scsi_host>`\  to iterate over
+    :type shost: 
 
 .. _`shost_for_each_device.description`:
 
@@ -70,11 +72,13 @@ __shost_for_each_device
 
     iterate over all devices of a host (UNLOCKED)
 
-    :param  sdev:
+    :param sdev:
         the \ :c:type:`struct scsi_device <scsi_device>`\  to use as a cursor
+    :type sdev: 
 
-    :param  shost:
+    :param shost:
         the \ :c:type:`struct scsi_host <scsi_host>`\  to iterate over
+    :type shost: 
 
 .. _`__shost_for_each_device.description`:
 
@@ -103,8 +107,9 @@ scsi_device_supports_vpd
 
     test if a device supports VPD pages
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         the \ :c:type:`struct scsi_device <scsi_device>`\  to test
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_device_supports_vpd.description`:
 

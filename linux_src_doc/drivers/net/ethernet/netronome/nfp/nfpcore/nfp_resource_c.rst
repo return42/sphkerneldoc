@@ -80,11 +80,13 @@ nfp_resource_acquire
 
     Acquire a resource handle
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param const char \*name:
+    :param name:
         Name of the resource
+    :type name: const char \*
 
 .. _`nfp_resource_acquire.note`:
 
@@ -109,8 +111,9 @@ nfp_resource_release
 
     Release a NFP Resource handle
 
-    :param struct nfp_resource \*res:
+    :param res:
         NFP Resource handle
+    :type res: struct nfp_resource \*
 
 .. _`nfp_resource_release.note`:
 
@@ -128,14 +131,17 @@ nfp_resource_wait
 
     Wait for resource to appear
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param const char \*name:
+    :param name:
         Name of the resource
+    :type name: const char \*
 
-    :param unsigned int secs:
+    :param secs:
         Number of seconds to wait
+    :type secs: unsigned int
 
 .. _`nfp_resource_wait.description`:
 
@@ -161,8 +167,9 @@ nfp_resource_cpp_id
 
     Return the cpp_id of a resource handle
 
-    :param struct nfp_resource \*res:
+    :param res:
         NFP Resource handle
+    :type res: struct nfp_resource \*
 
 .. _`nfp_resource_cpp_id.return`:
 
@@ -180,8 +187,9 @@ nfp_resource_name
 
     Return the name of a resource handle
 
-    :param struct nfp_resource \*res:
+    :param res:
         NFP Resource handle
+    :type res: struct nfp_resource \*
 
 .. _`nfp_resource_name.return`:
 
@@ -199,8 +207,9 @@ nfp_resource_address
 
     Return the address of a resource handle
 
-    :param struct nfp_resource \*res:
+    :param res:
         NFP Resource handle
+    :type res: struct nfp_resource \*
 
 .. _`nfp_resource_address.return`:
 
@@ -218,8 +227,9 @@ nfp_resource_size
 
     Return the size in bytes of a resource handle
 
-    :param struct nfp_resource \*res:
+    :param res:
         NFP Resource handle
+    :type res: struct nfp_resource \*
 
 .. _`nfp_resource_size.return`:
 
@@ -237,8 +247,9 @@ nfp_resource_table_init
 
     Run initial checks on the resource table
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_resource_table_init.description`:
 

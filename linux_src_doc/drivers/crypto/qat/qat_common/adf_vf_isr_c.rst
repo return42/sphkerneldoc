@@ -10,8 +10,9 @@ adf_vf_isr_resource_free
 
     Free IRQ for acceleration device
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_vf_isr_resource_free.description`:
 
@@ -29,8 +30,9 @@ adf_vf_isr_resource_alloc
 
     Allocate IRQ for acceleration device
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_vf_isr_resource_alloc.description`:
 

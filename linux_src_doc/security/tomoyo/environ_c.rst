@@ -10,11 +10,13 @@ tomoyo_check_env_acl
 
     Check permission for environment variable's name.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_acl_info \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_acl_info".
+    :type ptr: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_check_env_acl.description`:
 
@@ -32,8 +34,9 @@ tomoyo_audit_env_log
 
     Audit environment variable name log.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
 .. _`tomoyo_audit_env_log.description`:
 
@@ -51,11 +54,13 @@ tomoyo_env_perm
 
     Check permission for environment variable's name.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const char \*env:
+    :param env:
         The name of environment variable.
+    :type env: const char \*
 
 .. _`tomoyo_env_perm.description`:
 
@@ -75,11 +80,13 @@ tomoyo_same_env_acl
 
     Check for duplicated "struct tomoyo_env_acl" entry.
 
-    :param const struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: const struct tomoyo_acl_info \*
 
-    :param const struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_same_env_acl.description`:
 
@@ -97,8 +104,9 @@ tomoyo_write_env
 
     Write "struct tomoyo_env_acl" list.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_write_env.description`:
 
@@ -118,8 +126,9 @@ tomoyo_write_misc
 
     Update environment variable list.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_write_misc.description`:
 

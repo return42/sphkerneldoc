@@ -7,6 +7,7 @@ ubifs
 .. toctree::
     :maxdepth: 1
 
+    auth_c
     budget_c
     commit_c
     compress_c

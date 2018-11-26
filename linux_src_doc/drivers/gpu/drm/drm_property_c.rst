@@ -35,17 +35,21 @@ drm_property_create
 
     create a new property type
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param u32 flags:
+    :param flags:
         flags specifying the property type
+    :type flags: u32
 
-    :param const char \*name:
+    :param name:
         name of the property
+    :type name: const char \*
 
-    :param int num_values:
+    :param num_values:
         number of pre-defined values
+    :type num_values: int
 
 .. _`drm_property_create.description`:
 
@@ -73,20 +77,25 @@ drm_property_create_enum
 
     create a new enumeration property type
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param u32 flags:
+    :param flags:
         flags specifying the property type
+    :type flags: u32
 
-    :param const char \*name:
+    :param name:
         name of the property
+    :type name: const char \*
 
-    :param const struct drm_prop_enum_list \*props:
+    :param props:
         enumeration lists with property values
+    :type props: const struct drm_prop_enum_list \*
 
-    :param int num_values:
+    :param num_values:
         number of pre-defined values
+    :type num_values: int
 
 .. _`drm_property_create_enum.description`:
 
@@ -117,23 +126,29 @@ drm_property_create_bitmask
 
     create a new bitmask property type
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param u32 flags:
+    :param flags:
         flags specifying the property type
+    :type flags: u32
 
-    :param const char \*name:
+    :param name:
         name of the property
+    :type name: const char \*
 
-    :param const struct drm_prop_enum_list \*props:
+    :param props:
         enumeration lists with property bitflags
+    :type props: const struct drm_prop_enum_list \*
 
-    :param int num_props:
+    :param num_props:
         size of the \ ``props``\  array
+    :type num_props: int
 
-    :param uint64_t supported_bits:
+    :param supported_bits:
         bitmask of all supported enumeration values
+    :type supported_bits: uint64_t
 
 .. _`drm_property_create_bitmask.description`:
 
@@ -164,20 +179,25 @@ drm_property_create_range
 
     create a new unsigned ranged property type
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param u32 flags:
+    :param flags:
         flags specifying the property type
+    :type flags: u32
 
-    :param const char \*name:
+    :param name:
         name of the property
+    :type name: const char \*
 
-    :param uint64_t min:
+    :param min:
         minimum value of the property
+    :type min: uint64_t
 
-    :param uint64_t max:
+    :param max:
         maximum value of the property
+    :type max: uint64_t
 
 .. _`drm_property_create_range.description`:
 
@@ -208,20 +228,25 @@ drm_property_create_signed_range
 
     create a new signed ranged property type
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param u32 flags:
+    :param flags:
         flags specifying the property type
+    :type flags: u32
 
-    :param const char \*name:
+    :param name:
         name of the property
+    :type name: const char \*
 
-    :param int64_t min:
+    :param min:
         minimum value of the property
+    :type min: int64_t
 
-    :param int64_t max:
+    :param max:
         maximum value of the property
+    :type max: int64_t
 
 .. _`drm_property_create_signed_range.description`:
 
@@ -252,17 +277,21 @@ drm_property_create_object
 
     create a new object property type
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param u32 flags:
+    :param flags:
         flags specifying the property type
+    :type flags: u32
 
-    :param const char \*name:
+    :param name:
         name of the property
+    :type name: const char \*
 
-    :param uint32_t type:
+    :param type:
         object type from DRM_MODE_OBJECT_* defines
+    :type type: uint32_t
 
 .. _`drm_property_create_object.description`:
 
@@ -293,14 +322,17 @@ drm_property_create_bool
 
     create a new boolean property type
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param u32 flags:
+    :param flags:
         flags specifying the property type
+    :type flags: u32
 
-    :param const char \*name:
+    :param name:
         name of the property
+    :type name: const char \*
 
 .. _`drm_property_create_bool.description`:
 
@@ -330,14 +362,17 @@ drm_property_add_enum
 
     add a possible value to an enumeration property
 
-    :param struct drm_property \*property:
+    :param property:
         enumeration property to change
+    :type property: struct drm_property \*
 
-    :param uint64_t value:
+    :param value:
         value of the new enumeration
+    :type value: uint64_t
 
-    :param const char \*name:
+    :param name:
         symbolic name of the new enumeration
+    :type name: const char \*
 
 .. _`drm_property_add_enum.description`:
 
@@ -365,11 +400,13 @@ drm_property_destroy
 
     destroy a drm property
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct drm_property \*property:
+    :param property:
         property to destry
+    :type property: struct drm_property \*
 
 .. _`drm_property_destroy.description`:
 
@@ -388,14 +425,17 @@ drm_property_create_blob
 
     Create new blob property
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device to create property for
+    :type dev: struct drm_device \*
 
-    :param size_t length:
+    :param length:
         Length to allocate for blob data
+    :type length: size_t
 
-    :param const void \*data:
+    :param data:
         If specified, copies data into blob
+    :type data: const void \*
 
 .. _`drm_property_create_blob.description`:
 
@@ -423,8 +463,9 @@ drm_property_blob_put
 
     release a blob property reference
 
-    :param struct drm_property_blob \*blob:
+    :param blob:
         DRM blob property
+    :type blob: struct drm_property_blob \*
 
 .. _`drm_property_blob_put.description`:
 
@@ -442,8 +483,9 @@ drm_property_blob_get
 
     acquire blob property reference
 
-    :param struct drm_property_blob \*blob:
+    :param blob:
         DRM blob property
+    :type blob: struct drm_property_blob \*
 
 .. _`drm_property_blob_get.description`:
 
@@ -462,11 +504,13 @@ drm_property_lookup_blob
 
     look up a blob property and take a reference
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param uint32_t id:
+    :param id:
         id of the blob property
+    :type id: uint32_t
 
 .. _`drm_property_lookup_blob.description`:
 
@@ -493,24 +537,30 @@ drm_property_replace_global_blob
 
     replace existing blob property
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct drm_property_blob \*\*replace:
+    :param replace:
         location of blob property pointer to be replaced
+    :type replace: struct drm_property_blob \*\*
 
-    :param size_t length:
+    :param length:
         length of data for new blob, or 0 for no data
+    :type length: size_t
 
-    :param const void \*data:
+    :param data:
         content for new blob, or NULL for no data
+    :type data: const void \*
 
-    :param struct drm_mode_object \*obj_holds_id:
+    :param obj_holds_id:
         optional object for property holding blob ID
+    :type obj_holds_id: struct drm_mode_object \*
 
-    :param struct drm_property \*prop_holds_id:
+    :param prop_holds_id:
         optional property holding blob ID
         \ ``return``\  0 on success or error on failure
+    :type prop_holds_id: struct drm_property \*
 
 .. _`drm_property_replace_global_blob.description`:
 
@@ -543,11 +593,13 @@ drm_property_replace_blob
 
     replace a blob property
 
-    :param struct drm_property_blob \*\*blob:
+    :param blob:
         a pointer to the member blob to be replaced
+    :type blob: struct drm_property_blob \*\*
 
-    :param struct drm_property_blob \*new_blob:
+    :param new_blob:
         the new blob to replace with
+    :type new_blob: struct drm_property_blob \*
 
 .. _`drm_property_replace_blob.return`:
 

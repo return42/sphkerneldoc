@@ -50,14 +50,17 @@ s3c_hwmon_read_ch
 
     read a value from a given adc channel.
 
-    :param struct device \*dev:
+    :param dev:
         The device.
+    :type dev: struct device \*
 
-    :param struct s3c_hwmon \*hwmon:
+    :param hwmon:
         Our state.
+    :type hwmon: struct s3c_hwmon \*
 
-    :param int channel:
+    :param channel:
         The channel we're reading from.
+    :type channel: int
 
 .. _`s3c_hwmon_read_ch.description`:
 
@@ -77,14 +80,17 @@ s3c_hwmon_show_raw
 
     show a conversion from the raw channel number.
 
-    :param struct device \*dev:
+    :param dev:
         The device that the attribute belongs to.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         The attribute being read.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The result buffer.
+    :type buf: char \*
 
 .. _`s3c_hwmon_show_raw.description`:
 
@@ -104,14 +110,17 @@ s3c_hwmon_ch_show
 
     show value of a given channel
 
-    :param struct device \*dev:
+    :param dev:
         The device that the attribute belongs to.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         The attribute being read.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The result buffer.
+    :type buf: char \*
 
 .. _`s3c_hwmon_ch_show.description`:
 
@@ -131,14 +140,17 @@ s3c_hwmon_label_show
 
     show label name of the given channel.
 
-    :param struct device \*dev:
+    :param dev:
         The device that the attribute belongs to.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         The attribute being read.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The result buffer.
+    :type buf: char \*
 
 .. _`s3c_hwmon_label_show.description`:
 
@@ -156,17 +168,21 @@ s3c_hwmon_create_attr
 
     create hwmon attribute for given channel.
 
-    :param struct device \*dev:
+    :param dev:
         The device to create the attribute on.
+    :type dev: struct device \*
 
-    :param struct s3c_hwmon_chcfg \*cfg:
+    :param cfg:
         The channel configuration passed from the platform data.
+    :type cfg: struct s3c_hwmon_chcfg \*
 
-    :param struct s3c_hwmon_attr \*attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: struct s3c_hwmon_attr \*
 
-    :param int channel:
+    :param channel:
         The ADC channel number to process.
+    :type channel: int
 
 .. _`s3c_hwmon_create_attr.description`:
 
@@ -190,8 +206,9 @@ s3c_hwmon_probe
 
     device probe entry.
 
-    :param struct platform_device \*dev:
+    :param dev:
         The device being probed.
+    :type dev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

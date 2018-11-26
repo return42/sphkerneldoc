@@ -10,14 +10,17 @@ stop_machine
 
     freeze the machine on all CPUs and run this function
 
-    :param cpu_stop_fn_t fn:
+    :param fn:
         the function to run
+    :type fn: cpu_stop_fn_t
 
-    :param void \*data:
+    :param data:
         the data ptr for the \ ``fn``\ ()
+    :type data: void \*
 
-    :param const struct cpumask \*cpus:
+    :param cpus:
         the cpus to run the \ ``fn``\ () on (NULL = any online cpu)
+    :type cpus: const struct cpumask \*
 
 .. _`stop_machine.description`:
 
@@ -43,14 +46,17 @@ stop_machine_cpuslocked
 
     freeze the machine on all CPUs and run this function
 
-    :param cpu_stop_fn_t fn:
+    :param fn:
         the function to run
+    :type fn: cpu_stop_fn_t
 
-    :param void \*data:
+    :param data:
         the data ptr for the \ ``fn``\ ()
+    :type data: void \*
 
-    :param const struct cpumask \*cpus:
+    :param cpus:
         the cpus to run the \ ``fn``\ () on (NULL = any online cpu)
+    :type cpus: const struct cpumask \*
 
 .. _`stop_machine_cpuslocked.description`:
 

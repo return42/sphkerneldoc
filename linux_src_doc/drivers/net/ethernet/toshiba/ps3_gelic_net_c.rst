@@ -10,8 +10,9 @@ gelic_descr_get_status
 
     - returns the status of a descriptor
 
-    :param struct gelic_descr \*descr:
+    :param descr:
         descriptor to look at
+    :type descr: struct gelic_descr \*
 
 .. _`gelic_descr_get_status.description`:
 
@@ -29,8 +30,9 @@ gelic_card_disable_txdmac
 
     disables the transmit DMA controller
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
 .. _`gelic_card_disable_txdmac.description`:
 
@@ -49,8 +51,9 @@ gelic_card_enable_rxdmac
 
     enables the receive DMA controller
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
 .. _`gelic_card_enable_rxdmac.description`:
 
@@ -69,8 +72,9 @@ gelic_card_disable_rxdmac
 
     disables the receive DMA controller
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
 .. _`gelic_card_disable_rxdmac.description`:
 
@@ -89,11 +93,13 @@ gelic_descr_set_status
 
     - sets the status of a descriptor
 
-    :param struct gelic_descr \*descr:
+    :param descr:
         descriptor to change
+    :type descr: struct gelic_descr \*
 
-    :param enum gelic_descr_dma_status status:
+    :param status:
         status to set in the descriptor
+    :type status: enum gelic_descr_dma_status
 
 .. _`gelic_descr_set_status.description`:
 
@@ -112,14 +118,17 @@ gelic_card_reset_chain
 
     reset status of a descriptor chain
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
-    :param struct gelic_descr_chain \*chain:
+    :param chain:
         address of chain
+    :type chain: struct gelic_descr_chain \*
 
-    :param struct gelic_descr \*start_descr:
+    :param start_descr:
         address of descriptor array
+    :type start_descr: struct gelic_descr \*
 
 .. _`gelic_card_reset_chain.description`:
 
@@ -138,11 +147,13 @@ gelic_card_free_chain
 
     free descriptor chain
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
-    :param struct gelic_descr \*descr_in:
+    :param descr_in:
         address of desc
+    :type descr_in: struct gelic_descr \*
 
 .. _`gelic_card_init_chain`:
 
@@ -153,17 +164,21 @@ gelic_card_init_chain
 
     links descriptor chain
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
-    :param struct gelic_descr_chain \*chain:
+    :param chain:
         address of chain
+    :type chain: struct gelic_descr_chain \*
 
-    :param struct gelic_descr \*start_descr:
+    :param start_descr:
         address of descriptor array
+    :type start_descr: struct gelic_descr \*
 
-    :param int no:
+    :param no:
         number of descriptors
+    :type no: int
 
 .. _`gelic_card_init_chain.description`:
 
@@ -184,11 +199,13 @@ gelic_descr_prepare_rx
 
     reinitializes a rx descriptor
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
-    :param struct gelic_descr \*descr:
+    :param descr:
         descriptor to re-init
+    :type descr: struct gelic_descr \*
 
 .. _`gelic_descr_prepare_rx.description`:
 
@@ -209,8 +226,9 @@ gelic_card_release_rx_chain
 
     free all skb of rx descr
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
 .. _`gelic_card_fill_rx_chain`:
 
@@ -221,8 +239,9 @@ gelic_card_fill_rx_chain
 
     fills descriptors/skbs in the rx chains
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
 .. _`gelic_card_fill_rx_chain.fills-all-descriptors-in-the-rx-chain`:
 
@@ -242,8 +261,9 @@ gelic_card_alloc_rx_skbs
 
     allocates rx skbs in rx descriptor chains
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
 .. _`gelic_card_alloc_rx_skbs.description`:
 
@@ -261,11 +281,13 @@ gelic_descr_release_tx
 
     processes a used tx descriptor
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
-    :param struct gelic_descr \*descr:
+    :param descr:
         descriptor to release
+    :type descr: struct gelic_descr \*
 
 .. _`gelic_descr_release_tx.description`:
 
@@ -283,11 +305,13 @@ gelic_card_release_tx_chain
 
     processes sent tx descriptors
 
-    :param struct gelic_card \*card:
+    :param card:
         adapter structure
+    :type card: struct gelic_card \*
 
-    :param int stop:
+    :param stop:
         net_stop sequence
+    :type stop: int
 
 .. _`gelic_card_release_tx_chain.description`:
 
@@ -305,8 +329,9 @@ gelic_net_set_multi
 
     sets multicast addresses and promisc flags
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`gelic_net_set_multi.description`:
 
@@ -326,8 +351,9 @@ gelic_net_stop
 
     called upon ifconfig down
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`gelic_net_stop.description`:
 
@@ -345,8 +371,9 @@ gelic_card_get_next_tx_descr
 
     returns the next available tx descriptor
 
-    :param struct gelic_card \*card:
+    :param card:
         device structure to get descriptor from
+    :type card: struct gelic_card \*
 
 .. _`gelic_card_get_next_tx_descr.description`:
 
@@ -364,11 +391,13 @@ gelic_descr_set_tx_cmdstat
 
     sets the tx descriptor command field
 
-    :param struct gelic_descr \*descr:
+    :param descr:
         descriptor structure to fill out
+    :type descr: struct gelic_descr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to consider
+    :type skb: struct sk_buff \*
 
 .. _`gelic_descr_set_tx_cmdstat.description`:
 
@@ -388,14 +417,17 @@ gelic_descr_prepare_tx
 
     setup a descriptor for sending packets
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
-    :param struct gelic_descr \*descr:
+    :param descr:
         descriptor structure
+    :type descr: struct gelic_descr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to use
+    :type skb: struct sk_buff \*
 
 .. _`gelic_descr_prepare_tx.description`:
 
@@ -413,33 +445,37 @@ gelic_card_kick_txdma
 
     enables TX DMA processing
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
-    :param struct gelic_descr \*descr:
+    :param descr:
         descriptor address to enable TX processing at
+    :type descr: struct gelic_descr \*
 
 .. _`gelic_net_xmit`:
 
 gelic_net_xmit
 ==============
 
-.. c:function:: int gelic_net_xmit(struct sk_buff *skb, struct net_device *netdev)
+.. c:function:: netdev_tx_t gelic_net_xmit(struct sk_buff *skb, struct net_device *netdev)
 
     transmits a frame over the device
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send out
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`gelic_net_xmit.description`:
 
 Description
 -----------
 
-returns 0 on success, <0 on failure
+returns NETDEV_TX_OK on success, NETDEV_TX_BUSY on failure
 
 .. _`gelic_net_pass_skb_up`:
 
@@ -450,14 +486,17 @@ gelic_net_pass_skb_up
 
     takes an skb from a descriptor and passes it on
 
-    :param struct gelic_descr \*descr:
+    :param descr:
         descriptor to process
+    :type descr: struct gelic_descr \*
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         net_device structure to be passed packet
+    :type netdev: struct net_device \*
 
 .. _`gelic_net_pass_skb_up.description`:
 
@@ -476,8 +515,9 @@ gelic_card_decode_one_descr
 
     processes an rx descriptor
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
 .. _`gelic_card_decode_one_descr.description`:
 
@@ -498,11 +538,13 @@ gelic_net_poll
 
     NAPI poll function called by the stack to return packets
 
-    :param struct napi_struct \*napi:
+    :param napi:
         napi structure
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         number of packets we can pass to the stack at most
+    :type budget: int
 
 .. _`gelic_net_poll.description`:
 
@@ -520,11 +562,13 @@ gelic_card_interrupt
 
     event handler for gelic_net
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: void \*
 
 .. _`gelic_net_poll_controller`:
 
@@ -535,8 +579,9 @@ gelic_net_poll_controller
 
     artificial interrupt for netconsole etc.
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`gelic_net_poll_controller.description`:
 
@@ -554,8 +599,9 @@ gelic_net_open
 
     called upon ifconfig up
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`gelic_net_open.description`:
 
@@ -576,8 +622,9 @@ gelic_net_tx_timeout_task
 
     task scheduled by the watchdog timeout function (to be called not under interrupt status)
 
-    :param struct work_struct \*work:
+    :param work:
         work is context of tx timout task
+    :type work: struct work_struct \*
 
 .. _`gelic_net_tx_timeout_task.description`:
 
@@ -595,8 +642,9 @@ gelic_net_tx_timeout
 
     called when the tx timeout watchdog kicks in.
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`gelic_net_tx_timeout.description`:
 
@@ -614,11 +662,13 @@ gelic_ether_setup_netdev_ops
 
     initialization of net_device operations
 
-    :param struct net_device \*netdev:
+    :param netdev:
         net_device structure
+    :type netdev: struct net_device \*
 
-    :param struct napi_struct \*napi:
+    :param napi:
         *undescribed*
+    :type napi: struct napi_struct \*
 
 .. _`gelic_ether_setup_netdev_ops.description`:
 
@@ -636,11 +686,13 @@ gelic_net_setup_netdev
 
     initialization of net_device
 
-    :param struct net_device \*netdev:
+    :param netdev:
         net_device structure
+    :type netdev: struct net_device \*
 
-    :param struct gelic_card \*card:
+    :param card:
         card structure
+    :type card: struct gelic_card \*
 
 .. _`gelic_net_setup_netdev.description`:
 
@@ -679,8 +731,9 @@ ps3_gelic_driver_probe
 
     add a device to the control of this driver
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_gelic_driver_remove`:
 
@@ -691,8 +744,9 @@ ps3_gelic_driver_remove
 
     remove a device from the control of this driver
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. This file was automatic generated / don't edit.
 

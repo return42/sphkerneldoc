@@ -6,21 +6,26 @@
 follow_page_mask
 ================
 
-.. c:function:: struct page *follow_page_mask(struct vm_area_struct *vma, unsigned long address, unsigned int flags, unsigned int *page_mask)
+.. c:function:: struct page *follow_page_mask(struct vm_area_struct *vma, unsigned long address, unsigned int flags, struct follow_page_context *ctx)
 
     look up a page descriptor from a user-virtual address
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vm_area_struct mapping \ ``address``\ 
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long address:
+    :param address:
         virtual address to look up
+    :type address: unsigned long
 
-    :param unsigned int flags:
+    :param flags:
         flags modifying lookup behaviour
+    :type flags: unsigned int
 
-    :param unsigned int \*page_mask:
-        on output, \*page_mask is set according to the size of the page
+    :param ctx:
+        contains dev_pagemap for \ ``ZONE_DEVICE``\  memory pinning and a
+        pointer to output page_mask
+    :type ctx: struct follow_page_context \*
 
 .. _`follow_page_mask.description`:
 
@@ -29,7 +34,17 @@ Description
 
 \ ``flags``\  can have FOLL\_ flags set, defined in <linux/mm.h>
 
-Returns the mapped (struct page \*), \ ``NULL``\  if no mapping exists, or
+When getting pages from ZONE_DEVICE memory, the \ ``ctx->pgmap``\  caches
+the device's dev_pagemap metadata to avoid repeating expensive lookups.
+
+On output, the \ ``ctx->page_mask``\  is set according to the size of the page.
+
+.. _`follow_page_mask.return`:
+
+Return
+------
+
+the mapped (struct page \*), \ ``NULL``\  if no mapping exists, or
 an error pointer if there is a mapping to something not represented
 by a page descriptor (see also \ :c:func:`vm_normal_page`\ ).
 
@@ -42,32 +57,40 @@ by a page descriptor (see also \ :c:func:`vm_normal_page`\ ).
 
     pin user pages in memory
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         task_struct of target task
+    :type tsk: struct task_struct \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         mm_struct of target mm
+    :type mm: struct mm_struct \*
 
-    :param unsigned long start:
+    :param start:
         starting user address
+    :type start: unsigned long
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         number of pages from start to pin
+    :type nr_pages: unsigned long
 
-    :param unsigned int gup_flags:
+    :param gup_flags:
         flags modifying pin behaviour
+    :type gup_flags: unsigned int
 
-    :param struct page \*\*pages:
+    :param pages:
         array that receives pointers to the pages pinned.
         Should be at least nr_pages long. Or NULL, if caller
         only intends to ensure the pages are faulted in.
+    :type pages: struct page \*\*
 
-    :param struct vm_area_struct \*\*vmas:
+    :param vmas:
         array of pointers to vmas corresponding to each page.
         Or NULL if the caller does not require them.
+    :type vmas: struct vm_area_struct \*\*
 
-    :param int \*nonblocking:
+    :param nonblocking:
         whether waiting for disk IO or mmap_sem contention
+    :type nonblocking: int \*
 
 .. _`__get_user_pages.description`:
 
@@ -125,17 +148,21 @@ populate_vma_page_range
 
     populate a range of pages in the vma.
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         target vma
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long start:
+    :param start:
         start address
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         end address
+    :type end: unsigned long
 
-    :param int \*nonblocking:
+    :param nonblocking:
         *undescribed*
+    :type nonblocking: int \*
 
 .. _`populate_vma_page_range.description`:
 
@@ -163,8 +190,9 @@ get_dump_page
 
     pin user page in memory while writing it to core dump
 
-    :param unsigned long addr:
+    :param addr:
         user address
+    :type addr: unsigned long
 
 .. _`get_dump_page.description`:
 
@@ -190,18 +218,22 @@ get_user_pages_fast
 
     pin user pages in memory
 
-    :param unsigned long start:
+    :param start:
         starting user address
+    :type start: unsigned long
 
-    :param int nr_pages:
+    :param nr_pages:
         number of pages from start to pin
+    :type nr_pages: int
 
-    :param int write:
+    :param write:
         whether pages will be written to
+    :type write: int
 
-    :param struct page \*\*pages:
+    :param pages:
         array that receives pointers to the pages pinned.
         Should be at least nr_pages long.
+    :type pages: struct page \*\*
 
 .. _`get_user_pages_fast.description`:
 

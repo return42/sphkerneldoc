@@ -10,8 +10,9 @@ sxgbe_verify_args
 
     verify the driver parameters.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sxgbe_verify_args.description`:
 
@@ -28,8 +29,9 @@ sxgbe_eee_ctrl_timer
 
 .. c:function:: void sxgbe_eee_ctrl_timer(struct timer_list *t)
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`sxgbe_eee_ctrl_timer.description`:
 
@@ -46,8 +48,9 @@ sxgbe_eee_init
 
 .. c:function:: bool sxgbe_eee_init(struct sxgbe_priv_data * const priv)
 
-    :param struct sxgbe_priv_data \* const priv:
+    :param priv:
         private device pointer
+    :type priv: struct sxgbe_priv_data \* const
 
 .. _`sxgbe_eee_init.description`:
 
@@ -68,8 +71,9 @@ sxgbe_clk_csr_set
 
     dynamically set the MDC clock
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
 .. _`sxgbe_clk_csr_set.description`:
 
@@ -86,8 +90,9 @@ sxgbe_adjust_link
 
 .. c:function:: void sxgbe_adjust_link(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct net_device \*
 
 .. _`sxgbe_adjust_link.description`:
 
@@ -105,8 +110,9 @@ sxgbe_init_phy
 
     PHY initialization
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
 .. _`sxgbe_init_phy.description`:
 
@@ -132,8 +138,9 @@ sxgbe_clear_descriptors
 
     clear descriptors
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
 .. _`sxgbe_clear_descriptors.description`:
 
@@ -152,20 +159,25 @@ sxgbe_free_rx_buffers
 
     free what \ :c:func:`sxgbe_init_rx_buffers`\  allocated
 
-    :param struct net_device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct net_device \*
 
-    :param struct sxgbe_rx_norm_desc \*p:
+    :param p:
         *undescribed*
+    :type p: struct sxgbe_rx_norm_desc \*
 
-    :param int i:
+    :param i:
         *undescribed*
+    :type i: int
 
-    :param unsigned int dma_buf_sz:
+    :param dma_buf_sz:
         *undescribed*
+    :type dma_buf_sz: unsigned int
 
-    :param struct sxgbe_rx_queue \*rx_ring:
+    :param rx_ring:
         ring to be freed
+    :type rx_ring: struct sxgbe_rx_queue \*
 
 .. _`sxgbe_free_rx_buffers.description`:
 
@@ -183,17 +195,21 @@ init_tx_ring
 
     init the TX descriptor ring
 
-    :param struct device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct device \*
 
-    :param u8 queue_no:
+    :param queue_no:
         *undescribed*
+    :type queue_no: u8
 
-    :param struct sxgbe_tx_queue \*tx_ring:
+    :param tx_ring:
         ring to be initialised
+    :type tx_ring: struct sxgbe_tx_queue \*
 
-    :param int tx_rsize:
+    :param tx_rsize:
         ring size
+    :type tx_rsize: int
 
 .. _`init_tx_ring.description`:
 
@@ -211,14 +227,17 @@ free_rx_ring
 
     free the RX descriptor ring
 
-    :param struct device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct device \*
 
-    :param struct sxgbe_rx_queue \*rx_ring:
+    :param rx_ring:
         ring to be initialised
+    :type rx_ring: struct sxgbe_rx_queue \*
 
-    :param int rx_rsize:
+    :param rx_rsize:
         ring size
+    :type rx_rsize: int
 
 .. _`free_rx_ring.description`:
 
@@ -236,17 +255,21 @@ init_rx_ring
 
     init the RX descriptor ring
 
-    :param struct net_device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct net_device \*
 
-    :param u8 queue_no:
+    :param queue_no:
         *undescribed*
+    :type queue_no: u8
 
-    :param struct sxgbe_rx_queue \*rx_ring:
+    :param rx_ring:
         ring to be initialised
+    :type rx_ring: struct sxgbe_rx_queue \*
 
-    :param int rx_rsize:
+    :param rx_rsize:
         ring size
+    :type rx_rsize: int
 
 .. _`init_rx_ring.description`:
 
@@ -264,14 +287,17 @@ free_tx_ring
 
     free the TX descriptor ring
 
-    :param struct device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct device \*
 
-    :param struct sxgbe_tx_queue \*tx_ring:
+    :param tx_ring:
         ring to be initialised
+    :type tx_ring: struct sxgbe_tx_queue \*
 
-    :param int tx_rsize:
+    :param tx_rsize:
         ring size
+    :type tx_rsize: int
 
 .. _`free_tx_ring.description`:
 
@@ -289,8 +315,9 @@ init_dma_desc_rings
 
     init the RX/TX descriptor rings
 
-    :param struct net_device \*netd:
+    :param netd:
         *undescribed*
+    :type netd: struct net_device \*
 
 .. _`init_dma_desc_rings.description`:
 
@@ -310,8 +337,9 @@ sxgbe_mtl_operation_mode
 
     HW MTL operation mode
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
 .. _`sxgbe_mtl_operation_mode.description`:
 
@@ -328,8 +356,9 @@ sxgbe_tx_queue_clean
 
 .. c:function:: void sxgbe_tx_queue_clean(struct sxgbe_tx_queue *tqueue)
 
-    :param struct sxgbe_tx_queue \*tqueue:
+    :param tqueue:
         *undescribed*
+    :type tqueue: struct sxgbe_tx_queue \*
 
 .. _`sxgbe_tx_queue_clean.description`:
 
@@ -345,8 +374,9 @@ sxgbe_tx_all_clean
 
 .. c:function:: void sxgbe_tx_all_clean(struct sxgbe_priv_data * const priv)
 
-    :param struct sxgbe_priv_data \* const priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \* const
 
 .. _`sxgbe_tx_all_clean.description`:
 
@@ -364,11 +394,13 @@ sxgbe_restart_tx_queue
 
     irq tx error mng function
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
-    :param int queue_num:
+    :param queue_num:
         *undescribed*
+    :type queue_num: int
 
 .. _`sxgbe_restart_tx_queue.description`:
 
@@ -387,8 +419,9 @@ sxgbe_reset_all_tx_queues
 
     irq tx error mng function
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
 .. _`sxgbe_reset_all_tx_queues.description`:
 
@@ -407,8 +440,9 @@ sxgbe_get_hw_features
 
     get XMAC capabilities from the HW cap. register.
 
-    :param struct sxgbe_priv_data \* const priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \* const
 
 .. _`sxgbe_get_hw_features.description`:
 
@@ -429,8 +463,9 @@ sxgbe_check_ether_addr
 
     check if the MAC addr is valid
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
 .. _`sxgbe_check_ether_addr.description`:
 
@@ -449,8 +484,9 @@ sxgbe_init_dma_engine
 
     DMA init.
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
 .. _`sxgbe_init_dma_engine.description`:
 
@@ -470,8 +506,9 @@ sxgbe_init_mtl_engine
 
     MTL init.
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
 .. _`sxgbe_init_mtl_engine.description`:
 
@@ -489,8 +526,9 @@ sxgbe_disable_mtl_engine
 
     MTL disable.
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
 .. _`sxgbe_disable_mtl_engine.description`:
 
@@ -508,8 +546,9 @@ sxgbe_tx_timer
 
     mitigation sw timer for tx.
 
-    :param struct timer_list \*t:
+    :param t:
         timer pointer
+    :type t: struct timer_list \*
 
 .. _`sxgbe_tx_timer.description`:
 
@@ -527,8 +566,9 @@ sxgbe_tx_init_coalesce
 
     init tx mitigation options.
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
 .. _`sxgbe_tx_init_coalesce.this-inits-the-transmit-coalesce-parameters`:
 
@@ -548,8 +588,9 @@ sxgbe_open
 
     open entry point of the driver
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure.
+    :type dev: struct net_device \*
 
 .. _`sxgbe_open.description`:
 
@@ -575,8 +616,9 @@ sxgbe_release
 
     close entry point of the driver
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
 .. _`sxgbe_release.description`:
 
@@ -594,14 +636,16 @@ sxgbe_xmit
 
     Tx entry point of the driver
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the socket buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer
         Description : this is the tx entry point of the driver.
         It programs the chain or the ring and supports oversized frames
         and SG feature.
+    :type dev: struct net_device \*
 
 .. _`sxgbe_rx_refill`:
 
@@ -612,10 +656,11 @@ sxgbe_rx_refill
 
     refill used skb preallocated buffers
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
         Description : this is to reallocate the skb for the reception process
         that is based on zero-copy.
+    :type priv: struct sxgbe_priv_data \*
 
 .. _`sxgbe_rx`:
 
@@ -626,13 +671,15 @@ sxgbe_rx
 
     receive the frames from the remote host
 
-    :param struct sxgbe_priv_data \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \*
 
-    :param int limit:
+    :param limit:
         napi bugget.
         Description :  this the function called by the napi poll method.
         It gets all the frames inside the ring.
+    :type limit: int
 
 .. _`sxgbe_poll`:
 
@@ -643,14 +690,16 @@ sxgbe_poll
 
     sxgbe poll method (NAPI)
 
-    :param struct napi_struct \*napi:
+    :param napi:
         pointer to the napi structure.
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         maximum number of packets that the current CPU can receive from
         all interfaces.
         Description :
         To look at the incoming frames and clear the tx resources.
+    :type budget: int
 
 .. _`sxgbe_tx_timeout`:
 
@@ -659,8 +708,9 @@ sxgbe_tx_timeout
 
 .. c:function:: void sxgbe_tx_timeout(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to net device structure
+    :type dev: struct net_device \*
 
 .. _`sxgbe_tx_timeout.description`:
 
@@ -681,11 +731,13 @@ sxgbe_common_interrupt
 
     main ISR
 
-    :param int irq:
+    :param irq:
         interrupt number.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         to pass the net device pointer.
+    :type dev_id: void \*
 
 .. _`sxgbe_common_interrupt.description`:
 
@@ -705,11 +757,13 @@ sxgbe_tx_interrupt
 
     TX DMA ISR
 
-    :param int irq:
+    :param irq:
         interrupt number.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         to pass the net device pointer.
+    :type dev_id: void \*
 
 .. _`sxgbe_tx_interrupt.description`:
 
@@ -727,11 +781,13 @@ sxgbe_rx_interrupt
 
     RX DMA ISR
 
-    :param int irq:
+    :param irq:
         interrupt number.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         to pass the net device pointer.
+    :type dev_id: void \*
 
 .. _`sxgbe_rx_interrupt.description`:
 
@@ -749,8 +805,9 @@ sxgbe_set_rx_mode
 
     entry point for setting different receive mode of a device. unicast, multicast addressing
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct net_device \*
 
 .. _`sxgbe_set_rx_mode.description`:
 
@@ -777,8 +834,9 @@ sxgbe_poll_controller
 
     entry point for polling receive by device
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct net_device \*
 
 .. _`sxgbe_poll_controller.description`:
 
@@ -804,8 +862,9 @@ sxgbe_hw_init
 
     Init the GMAC device
 
-    :param struct sxgbe_priv_data \* const priv:
+    :param priv:
         driver private structure
+    :type priv: struct sxgbe_priv_data \* const
 
 .. _`sxgbe_hw_init.description`:
 
@@ -822,14 +881,17 @@ sxgbe_drv_probe
 
 .. c:function:: struct sxgbe_priv_data *sxgbe_drv_probe(struct device *device, struct sxgbe_plat_data *plat_dat, void __iomem *addr)
 
-    :param struct device \*device:
+    :param device:
         device pointer
+    :type device: struct device \*
 
-    :param struct sxgbe_plat_data \*plat_dat:
+    :param plat_dat:
         platform data pointer
+    :type plat_dat: struct sxgbe_plat_data \*
 
-    :param void __iomem \*addr:
+    :param addr:
         iobase memory address
+    :type addr: void __iomem \*
 
 .. _`sxgbe_drv_probe.description`:
 
@@ -846,8 +908,9 @@ sxgbe_drv_remove
 
 .. c:function:: int sxgbe_drv_remove(struct net_device *ndev)
 
-    :param struct net_device \*ndev:
+    :param ndev:
         net device pointer
+    :type ndev: struct net_device \*
 
 .. _`sxgbe_drv_remove.description`:
 

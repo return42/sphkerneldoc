@@ -10,8 +10,9 @@ snd_soc_alloc_ac97_component
 
     Allocate new a AC'97 device
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The COMPONENT for which to create the AC'97 device
+    :type component: struct snd_soc_component \*
 
 .. _`snd_soc_alloc_ac97_component.description`:
 
@@ -38,14 +39,17 @@ snd_soc_new_ac97_component
 
     initailise AC97 device
 
-    :param struct snd_soc_component \*component:
+    :param component:
         audio component
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int id:
+    :param id:
         The expected device ID
+    :type id: unsigned int
 
-    :param unsigned int id_mask:
+    :param id_mask:
         Mask that is applied to the device ID before comparing with \ ``id``\ 
+    :type id_mask: unsigned int
 
 .. _`snd_soc_new_ac97_component.description`:
 
@@ -74,8 +78,9 @@ snd_soc_free_ac97_component
 
     free AC97 component device
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         snd_ac97 device to be freed
+    :type ac97: struct snd_ac97 \*
 
 .. _`snd_soc_free_ac97_component.description`:
 
@@ -93,11 +98,13 @@ snd_soc_set_ac97_ops_of_reset
 
     Set ac97 ops with generic ac97 reset functions
 
-    :param struct snd_ac97_bus_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct snd_ac97_bus_ops \*
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`snd_soc_set_ac97_ops_of_reset.description`:
 

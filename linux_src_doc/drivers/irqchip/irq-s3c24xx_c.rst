@@ -10,11 +10,13 @@ s3c24xx_set_fiq
 
     set the FIQ routing
 
-    :param unsigned int irq:
+    :param irq:
         IRQ number to route to FIQ on processor.
+    :type irq: unsigned int
 
-    :param bool on:
+    :param on:
         Whether to route \ ``irq``\  to the FIQ, or to remove the FIQ routing.
+    :type on: bool
 
 .. _`s3c24xx_set_fiq.description`:
 

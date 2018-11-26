@@ -10,11 +10,13 @@ snd_ctl_add_slave
 
     Add a virtual slave control
 
-    :param struct snd_kcontrol \*master:
+    :param master:
         vmaster element
+    :type master: struct snd_kcontrol \*
 
-    :param struct snd_kcontrol \*slave:
+    :param slave:
         slave element to add
+    :type slave: struct snd_kcontrol \*
 
 .. _`snd_ctl_add_slave.description`:
 
@@ -49,11 +51,13 @@ snd_ctl_add_slave_uncached
 
     Add a virtual slave control
 
-    :param struct snd_kcontrol \*master:
+    :param master:
         vmaster element
+    :type master: struct snd_kcontrol \*
 
-    :param struct snd_kcontrol \*slave:
+    :param slave:
         slave element to add
+    :type slave: struct snd_kcontrol \*
 
 .. _`snd_ctl_add_slave_uncached.description`:
 

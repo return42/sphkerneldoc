@@ -8,8 +8,9 @@ DEFINE_MUTEX
 
 .. c:function::  DEFINE_MUTEX( devcon_lock)
 
-    :param  devcon_lock:
+    :param devcon_lock:
         *undescribed*
+    :type devcon_lock: 
 
 .. _`define_mutex.description`:
 
@@ -28,14 +29,17 @@ device_connection_find_match
 
     Find physical connection to a device
 
-    :param struct device \*dev:
+    :param dev:
         Device with the connection
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         Identifier for the connection
+    :type con_id: const char \*
 
-    :param void \*data:
+    :param data:
         Data for the match function
+    :type data: void \*
 
     :param void \*(\*match)(struct device_connection \*con, int ep, void \*data):
         Function to check and convert the connection description
@@ -58,11 +62,13 @@ device_connection_find
 
     Find two devices connected together
 
-    :param struct device \*dev:
+    :param dev:
         Device with the connection
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         Identifier for the connection
+    :type con_id: const char \*
 
 .. _`device_connection_find.description`:
 
@@ -84,8 +90,9 @@ device_connection_add
 
     Register a connection description
 
-    :param struct device_connection \*con:
+    :param con:
         The connection description to be registered
+    :type con: struct device_connection \*
 
 .. _`device_connection_remove`:
 
@@ -96,8 +103,9 @@ device_connection_remove
 
     Unregister connection description
 
-    :param struct device_connection \*con:
+    :param con:
         The connection description to be unregistered
+    :type con: struct device_connection \*
 
 .. This file was automatic generated / don't edit.
 

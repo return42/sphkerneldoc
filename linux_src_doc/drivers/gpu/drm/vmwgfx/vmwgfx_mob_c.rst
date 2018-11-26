@@ -10,11 +10,13 @@ vmw_mob_assign_ppn
 
     Assign a value to a page table entry
 
-    :param u32 \*\*addr:
+    :param addr:
         Pointer to pointer to page table entry.
+    :type addr: u32 \*\*
 
-    :param dma_addr_t val:
+    :param val:
         The page table entry
+    :type val: dma_addr_t
 
 .. _`vmw_mob_assign_ppn.description`:
 

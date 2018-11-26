@@ -191,14 +191,17 @@ ti_abb_rmw
 
     handy wrapper to set specific register bits
 
-    :param u32 mask:
+    :param mask:
         mask for register field
+    :type mask: u32
 
-    :param u32 value:
+    :param value:
         value shifted to mask location and written
+    :type value: u32
 
-    :param void __iomem \*reg:
+    :param reg:
         register address
+    :type reg: void __iomem \*
 
 .. _`ti_abb_rmw.return`:
 
@@ -216,8 +219,9 @@ ti_abb_check_txdone
 
     handy wrapper to check ABB tranxdone status
 
-    :param const struct ti_abb \*abb:
+    :param abb:
         pointer to the abb instance
+    :type abb: const struct ti_abb \*
 
 .. _`ti_abb_check_txdone.return`:
 
@@ -235,8 +239,9 @@ ti_abb_clear_txdone
 
     handy wrapper to clear ABB tranxdone status
 
-    :param const struct ti_abb \*abb:
+    :param abb:
         pointer to the abb instance
+    :type abb: const struct ti_abb \*
 
 .. _`ti_abb_wait_txdone`:
 
@@ -247,11 +252,13 @@ ti_abb_wait_txdone
 
     waits for ABB tranxdone event
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct ti_abb \*abb:
+    :param abb:
         pointer to the abb instance
+    :type abb: struct ti_abb \*
 
 .. _`ti_abb_wait_txdone.return`:
 
@@ -269,11 +276,13 @@ ti_abb_clear_all_txdone
 
     clears ABB tranxdone event
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param const struct ti_abb \*abb:
+    :param abb:
         pointer to the abb instance
+    :type abb: const struct ti_abb \*
 
 .. _`ti_abb_clear_all_txdone.return`:
 
@@ -291,14 +300,17 @@ ti_abb_program_ldovbb
 
     program LDOVBB register for override value
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param const struct ti_abb \*abb:
+    :param abb:
         pointer to the abb instance
+    :type abb: const struct ti_abb \*
 
-    :param struct ti_abb_info \*info:
+    :param info:
         ABB info to program
+    :type info: struct ti_abb_info \*
 
 .. _`ti_abb_set_opp`:
 
@@ -309,14 +321,17 @@ ti_abb_set_opp
 
     Setup ABB and LDO VBB for required bias
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator device
+    :type rdev: struct regulator_dev \*
 
-    :param struct ti_abb \*abb:
+    :param abb:
         pointer to the abb instance
+    :type abb: struct ti_abb \*
 
-    :param struct ti_abb_info \*info:
+    :param info:
         ABB info to program
+    :type info: struct ti_abb_info \*
 
 .. _`ti_abb_set_opp.return`:
 
@@ -334,12 +349,14 @@ ti_abb_set_voltage_sel
 
     regulator accessor function to set ABB LDO
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator device
+    :type rdev: struct regulator_dev \*
 
-    :param unsigned sel:
+    :param sel:
         selector to index into required ABB LDO settings (maps to
         regulator descriptor's volt_table)
+    :type sel: unsigned
 
 .. _`ti_abb_set_voltage_sel.return`:
 
@@ -357,8 +374,9 @@ ti_abb_get_voltage_sel
 
     Regulator accessor to get current ABB LDO setting
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator device
+    :type rdev: struct regulator_dev \*
 
 .. _`ti_abb_get_voltage_sel.return`:
 
@@ -376,11 +394,13 @@ ti_abb_init_timings
 
     setup ABB clock timing for the current platform
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct ti_abb \*abb:
+    :param abb:
         pointer to the abb instance
+    :type abb: struct ti_abb \*
 
 .. _`ti_abb_init_timings.return`:
 
@@ -398,14 +418,17 @@ ti_abb_init_table
 
     Initialize ABB table from device tree
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct ti_abb \*abb:
+    :param abb:
         pointer to the abb instance
+    :type abb: struct ti_abb \*
 
-    :param struct regulator_init_data \*rinit_data:
+    :param rinit_data:
         regulator initdata
+    :type rinit_data: struct regulator_init_data \*
 
 .. _`ti_abb_init_table.return`:
 
@@ -423,8 +446,9 @@ ti_abb_probe
 
     Initialize an ABB ldo instance
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         ABB platform device
+    :type pdev: struct platform_device \*
 
 .. _`ti_abb_probe.description`:
 

@@ -10,11 +10,13 @@ fcoe_interface_setup
 
     Setup a FCoE interface
 
-    :param struct fcoe_interface \*fcoe:
+    :param fcoe:
         The new FCoE interface
+    :type fcoe: struct fcoe_interface \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net device that the fcoe interface is on
+    :type netdev: struct net_device \*
 
 .. _`fcoe_interface_setup.description`:
 
@@ -39,11 +41,13 @@ fcoe_interface_create
 
     Create a FCoE interface on a net device
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net device to create the FCoE interface on
+    :type netdev: struct net_device \*
 
-    :param enum fip_state fip_mode:
+    :param fip_mode:
         The mode to use for FIP
+    :type fip_mode: enum fip_state
 
 .. _`fcoe_interface_create.return`:
 
@@ -61,8 +65,9 @@ fcoe_interface_remove
 
     remove FCoE interface from netdev
 
-    :param struct fcoe_interface \*fcoe:
+    :param fcoe:
         The FCoE interface to be cleaned up
+    :type fcoe: struct fcoe_interface \*
 
 .. _`fcoe_interface_remove.description`:
 
@@ -80,8 +85,9 @@ fcoe_interface_cleanup
 
     Clean up a FCoE interface
 
-    :param struct fcoe_interface \*fcoe:
+    :param fcoe:
         The FCoE interface to be cleaned up
+    :type fcoe: struct fcoe_interface \*
 
 .. _`fcoe_fip_recv`:
 
@@ -92,18 +98,22 @@ fcoe_fip_recv
 
     Handler for received FIP frames
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The receive skb
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The associated net device
+    :type netdev: struct net_device \*
 
-    :param struct packet_type \*ptype:
+    :param ptype:
         The packet_type structure which was used to register this handler
+    :type ptype: struct packet_type \*
 
-    :param struct net_device \*orig_dev:
+    :param orig_dev:
         The original net_device the skb was received on.
         (in case dev is a bond)
+    :type orig_dev: struct net_device \*
 
 .. _`fcoe_fip_recv.return`:
 
@@ -121,18 +131,22 @@ fcoe_fip_vlan_recv
 
     Handler for received FIP VLAN discovery frames
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The receive skb
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The associated net device
+    :type netdev: struct net_device \*
 
-    :param struct packet_type \*ptype:
+    :param ptype:
         The packet_type structure which was used to register this handler
+    :type ptype: struct packet_type \*
 
-    :param struct net_device \*orig_dev:
+    :param orig_dev:
         The original net_device the skb was received on.
         (in case dev is a bond)
+    :type orig_dev: struct net_device \*
 
 .. _`fcoe_fip_vlan_recv.return`:
 
@@ -150,11 +164,13 @@ fcoe_port_send
 
     Send an Ethernet-encapsulated FIP/FCoE frame
 
-    :param struct fcoe_port \*port:
+    :param port:
         The FCoE port
+    :type port: struct fcoe_port \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The FIP/FCoE packet to be sent
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_fip_send`:
 
@@ -165,11 +181,13 @@ fcoe_fip_send
 
     Send an Ethernet-encapsulated FIP frame
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The FIP packet to be sent
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_update_src_mac`:
 
@@ -180,11 +198,13 @@ fcoe_update_src_mac
 
     Update the Ethernet MAC filters
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to update the source MAC on
+    :type lport: struct fc_lport \*
 
-    :param u8 \*addr:
+    :param addr:
         Unicast MAC address to add
+    :type addr: u8 \*
 
 .. _`fcoe_update_src_mac.description`:
 
@@ -203,8 +223,9 @@ fcoe_get_src_mac
 
     return the Ethernet source address for an lport
 
-    :param struct fc_lport \*lport:
+    :param lport:
         libfc lport
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_lport_config`:
 
@@ -215,8 +236,9 @@ fcoe_lport_config
 
     Set up a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to be setup
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_lport_config.return`:
 
@@ -234,11 +256,13 @@ fcoe_netdev_features_change
 
     Updates the lport's offload flags based on the LLD netdev's FCoE feature flags
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
 .. _`fcoe_netdev_config`:
 
@@ -249,11 +273,13 @@ fcoe_netdev_config
 
     Set up net devive for SW FCoE
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that is associated with the net device
+    :type lport: struct fc_lport \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The associated net device
+    :type netdev: struct net_device \*
 
 .. _`fcoe_netdev_config.description`:
 
@@ -278,11 +304,13 @@ fcoe_shost_config
 
     Set up the SCSI host associated with a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port
+    :type lport: struct fc_lport \*
 
-    :param struct device \*dev:
+    :param dev:
         The device associated with the SCSI host
+    :type dev: struct device \*
 
 .. _`fcoe_shost_config.description`:
 
@@ -307,11 +335,13 @@ fcoe_fdmi_info
 
     Get FDMI related info from net devive for SW FCoE
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that is associated with the net device
+    :type lport: struct fc_lport \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The associated net device
+    :type netdev: struct net_device \*
 
 .. _`fcoe_fdmi_info.description`:
 
@@ -329,8 +359,9 @@ fcoe_oem_match
 
     The match routine for the offloaded exchange manager
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The I/O frame
+    :type fp: struct fc_frame \*
 
 .. _`fcoe_oem_match.description`:
 
@@ -365,8 +396,9 @@ fcoe_em_config
 
     Allocate and configure an exchange manager
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that the new EM will be associated with
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_em_config.return`:
 
@@ -384,8 +416,9 @@ fcoe_if_destroy
 
     Tear down a SW FCoE instance
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to be destroyed
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_if_destroy.locking`:
 
@@ -403,17 +436,21 @@ fcoe_ddp_setup
 
     Call a LLD's ddp_setup through the net device
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to setup DDP for
+    :type lport: struct fc_lport \*
 
-    :param u16 xid:
+    :param xid:
         The exchange ID for this DDP transfer
+    :type xid: u16
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         The scatterlist describing this transfer
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int sgc:
+    :param sgc:
         The number of sg items
+    :type sgc: unsigned int
 
 .. _`fcoe_ddp_setup.return`:
 
@@ -431,17 +468,21 @@ fcoe_ddp_target
 
     Call a LLD's ddp_target through the net device
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to setup DDP for
+    :type lport: struct fc_lport \*
 
-    :param u16 xid:
+    :param xid:
         The exchange ID for this DDP transfer
+    :type xid: u16
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         The scatterlist describing this transfer
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int sgc:
+    :param sgc:
         The number of sg items
+    :type sgc: unsigned int
 
 .. _`fcoe_ddp_target.return`:
 
@@ -459,11 +500,13 @@ fcoe_ddp_done
 
     Call a LLD's ddp_done through the net device
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to complete DDP on
+    :type lport: struct fc_lport \*
 
-    :param u16 xid:
+    :param xid:
         The exchange ID for this DDP transfer
+    :type xid: u16
 
 .. _`fcoe_ddp_done.return`:
 
@@ -481,14 +524,17 @@ fcoe_if_create
 
     Create a FCoE instance on an interface
 
-    :param struct fcoe_interface \*fcoe:
+    :param fcoe:
         The FCoE interface to create a local port on
+    :type fcoe: struct fcoe_interface \*
 
-    :param struct device \*parent:
+    :param parent:
         The device pointer to be the parent in sysfs for the SCSI host
+    :type parent: struct device \*
 
-    :param int npiv:
+    :param npiv:
         Indicates if the port is a vport or not
+    :type npiv: int
 
 .. _`fcoe_if_create.description`:
 
@@ -513,8 +559,9 @@ fcoe_if_init
 
     Initialization routine for fcoe.ko
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fcoe_if_init.description`:
 
@@ -539,8 +586,9 @@ fcoe_if_exit
 
     Tear down fcoe.ko
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fcoe_if_exit.description`:
 
@@ -565,8 +613,9 @@ fcoe_select_cpu
 
     Selects CPU to handle post-processing of incoming command.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fcoe_select_cpu.description`:
 
@@ -592,17 +641,21 @@ fcoe_rcv
 
     Receive packets from a net device
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The received packet
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net device that the packet was received on
+    :type netdev: struct net_device \*
 
-    :param struct packet_type \*ptype:
+    :param ptype:
         The packet type context
+    :type ptype: struct packet_type \*
 
-    :param struct net_device \*olddev:
+    :param olddev:
         The last device net device
+    :type olddev: struct net_device \*
 
 .. _`fcoe_rcv.description`:
 
@@ -628,11 +681,13 @@ fcoe_alloc_paged_crc_eof
 
     Allocate a page to be used for the trailer CRC
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The packet to be transmitted
+    :type skb: struct sk_buff \*
 
-    :param int tlen:
+    :param tlen:
         The total length of the trailer
+    :type tlen: int
 
 .. _`fcoe_alloc_paged_crc_eof.return`:
 
@@ -650,11 +705,13 @@ fcoe_xmit
 
     Transmit a FCoE frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that the frame is to be transmitted for
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame to be transmitted
+    :type fp: struct fc_frame \*
 
 .. _`fcoe_xmit.return`:
 
@@ -672,11 +729,13 @@ fcoe_filter_frames
 
     filter out bad fcoe frames, i.e. bad CRC
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port the frame was received on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The received frame
+    :type fp: struct fc_frame \*
 
 .. _`fcoe_filter_frames.return`:
 
@@ -694,8 +753,9 @@ fcoe_recv_frame
 
     process a single received frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         frame to process
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_receive_work`:
 
@@ -706,8 +766,9 @@ fcoe_receive_work
 
     The per-CPU worker
 
-    :param struct work_struct \*work:
+    :param work:
         The work struct
+    :type work: struct work_struct \*
 
 .. _`fcoe_dev_setup`:
 
@@ -718,8 +779,9 @@ fcoe_dev_setup
 
     Setup the link change notification interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fcoe_dev_cleanup`:
 
@@ -730,8 +792,9 @@ fcoe_dev_cleanup
 
     Cleanup the link change notification interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fcoe_device_notification`:
 
@@ -742,14 +805,17 @@ fcoe_device_notification
 
     Handler for net device events
 
-    :param struct notifier_block \*notifier:
+    :param notifier:
         The context of the notification
+    :type notifier: struct notifier_block \*
 
-    :param ulong event:
+    :param event:
         The type of event
+    :type event: ulong
 
-    :param void \*ptr:
+    :param ptr:
         The net device that the event was on
+    :type ptr: void \*
 
 .. _`fcoe_device_notification.description`:
 
@@ -774,8 +840,9 @@ fcoe_disable
 
     Disables a FCoE interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net_device object the Ethernet interface to create on
+    :type netdev: struct net_device \*
 
 .. _`fcoe_disable.description`:
 
@@ -807,8 +874,9 @@ fcoe_enable
 
     Enables a FCoE interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net_device object the Ethernet interface to create on
+    :type netdev: struct net_device \*
 
 .. _`fcoe_enable.description`:
 
@@ -833,8 +901,9 @@ fcoe_ctlr_enabled
 
     Enable or disable an FCoE Controller
 
-    :param struct fcoe_ctlr_device \*cdev:
+    :param cdev:
         The FCoE Controller that is being enabled or disabled
+    :type cdev: struct fcoe_ctlr_device \*
 
 .. _`fcoe_ctlr_enabled.description`:
 
@@ -856,8 +925,9 @@ fcoe_ctlr_mode
 
     Switch FIP mode
 
-    :param struct fcoe_ctlr_device \*ctlr_dev:
+    :param ctlr_dev:
         *undescribed*
+    :type ctlr_dev: struct fcoe_ctlr_device \*
 
 .. _`fcoe_ctlr_mode.description`:
 
@@ -877,8 +947,9 @@ fcoe_destroy
 
     Destroy a FCoE interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net_device object the Ethernet interface to create on
+    :type netdev: struct net_device \*
 
 .. _`fcoe_destroy.description`:
 
@@ -903,8 +974,9 @@ fcoe_destroy_work
 
     Destroy a FCoE port in a deferred work context
 
-    :param struct work_struct \*work:
+    :param work:
         Handle to the FCoE port to be destroyed
+    :type work: struct work_struct \*
 
 .. _`fcoe_match`:
 
@@ -915,8 +987,9 @@ fcoe_match
 
     Check if the FCoE is supported on the given netdevice
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net_device object the Ethernet interface to create on
+    :type netdev: struct net_device \*
 
 .. _`fcoe_match.description`:
 
@@ -942,8 +1015,9 @@ fcoe_dcb_create
 
     Initialize DCB attributes and hooks
 
-    :param struct fcoe_interface \*fcoe:
+    :param fcoe:
         *undescribed*
+    :type fcoe: struct fcoe_interface \*
 
 .. _`_fcoe_create`:
 
@@ -954,14 +1028,17 @@ fcoe_dcb_create
 
     (internal) Create a fcoe interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net_device object the Ethernet interface to create on
+    :type netdev: struct net_device \*
 
-    :param enum fip_mode fip_mode:
+    :param fip_mode:
         The FIP mode for this creation
+    :type fip_mode: enum fip_mode
 
-    :param enum fcoe_create_link_state link_state:
+    :param link_state:
         The ctlr link state on creation
+    :type link_state: enum fcoe_create_link_state
 
 .. _`_fcoe_create.description`:
 
@@ -984,11 +1061,13 @@ fcoe_create
 
     Create a fcoe interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net_device object the Ethernet interface to create on
+    :type netdev: struct net_device \*
 
-    :param enum fip_mode fip_mode:
+    :param fip_mode:
         The FIP mode for this creation
+    :type fip_mode: enum fip_mode
 
 .. _`fcoe_create.description`:
 
@@ -1013,8 +1092,9 @@ fcoe_ctlr_alloc
 
     Allocate a fcoe interface from fcoe_sysfs
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net_device to be used by the allocated FCoE Controller
+    :type netdev: struct net_device \*
 
 .. _`fcoe_ctlr_alloc.description`:
 
@@ -1037,8 +1117,9 @@ fcoe_link_ok
 
     Check if the link is OK for a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to check link on
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_link_ok.return`:
 
@@ -1056,8 +1137,9 @@ fcoe_percpu_clean
 
     Clear all pending skbs for an local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose skbs are to be cleared
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_percpu_clean.description`:
 
@@ -1079,8 +1161,9 @@ fcoe_reset
 
     Reset a local port
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         The SCSI host associated with the local port to be reset
+    :type shost: struct Scsi_Host \*
 
 .. _`fcoe_reset.return`:
 
@@ -1098,8 +1181,9 @@ fcoe_hostlist_lookup_port
 
     Find the FCoE interface associated with a net device
 
-    :param const struct net_device \*netdev:
+    :param netdev:
         The net device used as a key
+    :type netdev: const struct net_device \*
 
 .. _`fcoe_hostlist_lookup_port.locking`:
 
@@ -1124,8 +1208,9 @@ fcoe_hostlist_lookup
 
     Find the local port associated with a given net device
 
-    :param const struct net_device \*netdev:
+    :param netdev:
         The netdevice used as a key
+    :type netdev: const struct net_device \*
 
 .. _`fcoe_hostlist_lookup.locking`:
 
@@ -1150,8 +1235,9 @@ fcoe_hostlist_add
 
     Add the FCoE interface identified by a local port to the hostlist
 
-    :param const struct fc_lport \*lport:
+    :param lport:
         The local port that identifies the FCoE interface to be added
+    :type lport: const struct fc_lport \*
 
 .. _`fcoe_hostlist_add.locking`:
 
@@ -1176,8 +1262,9 @@ fcoe_hostlist_del
 
     Remove the FCoE interface identified by a local port to the hostlist
 
-    :param const struct fc_lport \*lport:
+    :param lport:
         The local port that identifies the FCoE interface to be added
+    :type lport: const struct fc_lport \*
 
 .. _`fcoe_hostlist_del.locking`:
 
@@ -1195,8 +1282,9 @@ fcoe_init
 
     Initialize fcoe.ko
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fcoe_init.return`:
 
@@ -1214,8 +1302,9 @@ fcoe_exit
 
     Clean up fcoe.ko
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fcoe_exit.return`:
 
@@ -1233,14 +1322,17 @@ fcoe_flogi_resp
 
     FCoE specific FLOGI and FDISC response handler
 
-    :param struct fc_seq \*seq:
+    :param seq:
         active sequence in the FLOGI or FDISC exchange
+    :type seq: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         response frame, or error encoded in a pointer (timeout)
+    :type fp: struct fc_frame \*
 
-    :param void \*arg:
+    :param arg:
         pointer to the fcoe_ctlr structure
+    :type arg: void \*
 
 .. _`fcoe_flogi_resp.description`:
 
@@ -1259,14 +1351,17 @@ fcoe_logo_resp
 
     FCoE specific LOGO response handler
 
-    :param struct fc_seq \*seq:
+    :param seq:
         active sequence in the LOGO exchange
+    :type seq: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         response frame, or error encoded in a pointer (timeout)
+    :type fp: struct fc_frame \*
 
-    :param void \*arg:
+    :param arg:
         pointer to the fcoe_ctlr structure
+    :type arg: void \*
 
 .. _`fcoe_logo_resp.description`:
 
@@ -1285,26 +1380,32 @@ fcoe_elsct_send
 
     FCoE specific ELS handler
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param u32 did:
+    :param did:
         *undescribed*
+    :type did: u32
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
-    :param unsigned int op:
+    :param op:
         *undescribed*
+    :type op: unsigned int
 
     :param void (\*resp)(struct fc_seq \*, struct fc_frame \*, void \*):
         *undescribed*
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
-    :param u32 timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: u32
 
 .. _`fcoe_elsct_send.description`:
 
@@ -1326,11 +1427,13 @@ fcoe_vport_create
 
     create an fc_host/scsi_host for a vport
 
-    :param struct fc_vport \*vport:
+    :param vport:
         fc_vport object to create a new fc_host for
+    :type vport: struct fc_vport \*
 
-    :param bool disabled:
+    :param disabled:
         start the new fc_host in a disabled state by default?
+    :type disabled: bool
 
 .. _`fcoe_vport_create.return`:
 
@@ -1348,8 +1451,9 @@ fcoe_vport_destroy
 
     destroy the fc_host/scsi_host for a vport
 
-    :param struct fc_vport \*vport:
+    :param vport:
         fc_vport object that is being destroyed
+    :type vport: struct fc_vport \*
 
 .. _`fcoe_vport_destroy.return`:
 
@@ -1367,8 +1471,9 @@ fcoe_vport_remove
 
     remove attached vports
 
-    :param struct fc_lport \*lport:
+    :param lport:
         lport for which the vports should be removed
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_vport_disable`:
 
@@ -1379,11 +1484,13 @@ fcoe_vport_disable
 
     change vport state
 
-    :param struct fc_vport \*vport:
+    :param vport:
         vport to bring online/offline
+    :type vport: struct fc_vport \*
 
-    :param bool disable:
+    :param disable:
         should the vport be disabled?
+    :type disable: bool
 
 .. _`fcoe_set_vport_symbolic_name`:
 
@@ -1394,8 +1501,9 @@ fcoe_set_vport_symbolic_name
 
     append vport string to symbolic name
 
-    :param struct fc_vport \*vport:
+    :param vport:
         fc_vport with a new symbolic name string
+    :type vport: struct fc_vport \*
 
 .. _`fcoe_set_vport_symbolic_name.description`:
 
@@ -1415,14 +1523,17 @@ fcoe_set_port_id
 
     Callback from libfc when Port_ID is set.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         the local port
+    :type lport: struct fc_lport \*
 
-    :param u32 port_id:
+    :param port_id:
         the port ID
+    :type port_id: u32
 
-    :param struct fc_frame \*fp:
+    :param fp:
         the received frame, if any, that caused the port_id to be set.
+    :type fp: struct fc_frame \*
 
 .. _`fcoe_set_port_id.description`:
 

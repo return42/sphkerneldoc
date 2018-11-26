@@ -286,6 +286,55 @@ flags
 is_backlink
     Indicate if the link is a backlink.
 
+.. _`media_pad_signal_type`:
+
+enum media_pad_signal_type
+==========================
+
+.. c:type:: enum media_pad_signal_type
+
+    type of the signal inside a media pad
+
+.. _`media_pad_signal_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum media_pad_signal_type {
+        PAD_SIGNAL_DEFAULT,
+        PAD_SIGNAL_ANALOG,
+        PAD_SIGNAL_DV,
+        PAD_SIGNAL_AUDIO
+    };
+
+.. _`media_pad_signal_type.constants`:
+
+Constants
+---------
+
+PAD_SIGNAL_DEFAULT
+    Default signal. Use this when all inputs or all outputs are
+    uniquely identified by the pad number.
+
+PAD_SIGNAL_ANALOG
+    The pad contains an analog signal. It can be Radio Frequency,
+    Intermediate Frequency, a baseband signal or sub-cariers.
+    Tuner inputs, IF-PLL demodulators, composite and s-video signals
+    should use it.
+
+PAD_SIGNAL_DV
+    Contains a digital video signal, with can be a bitstream of samples
+    taken from an analog TV video source. On such case, it usually
+    contains the VBI data on it.
+
+PAD_SIGNAL_AUDIO
+    Contains an Intermediate Frequency analog signal from an audio
+    sub-carrier or an audio bitstream. IF signals are provided by tuners
+    and consumed by audio AM/FM decoders. Bitstream audio is provided by
+    an audio decoder.
+
 .. _`media_pad`:
 
 struct media_pad
@@ -306,6 +355,7 @@ Definition
         struct media_gobj graph_obj;
         struct media_entity *entity;
         u16 index;
+        enum media_pad_signal_type sig_type;
         unsigned long flags;
     }
 
@@ -322,6 +372,9 @@ entity
 
 index
     Pad index in the entity pads array, numbered from 0 to n
+
+sig_type
+    Type of the signal inside a media pad
 
 flags
     Pad flags, as defined in
@@ -650,8 +703,9 @@ media_entity_id
 
     return the media entity graph object id
 
-    :param struct media_entity \*entity:
+    :param entity:
         pointer to \ :c:type:`struct media_entity <media_entity>`\ 
+    :type entity: struct media_entity \*
 
 .. _`media_type`:
 
@@ -662,8 +716,9 @@ media_type
 
     return the media object type
 
-    :param struct media_gobj \*gobj:
+    :param gobj:
         Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+    :type gobj: struct media_gobj \*
 
 .. _`media_id`:
 
@@ -674,8 +729,9 @@ media_id
 
     return the media object ID
 
-    :param struct media_gobj \*gobj:
+    :param gobj:
         Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+    :type gobj: struct media_gobj \*
 
 .. _`media_gobj_gen_id`:
 
@@ -686,11 +742,13 @@ media_gobj_gen_id
 
     encapsulates type and ID on at the object ID
 
-    :param enum media_gobj_type type:
+    :param type:
         object type as define at enum \ :c:type:`struct media_gobj_type <media_gobj_type>`\ .
+    :type type: enum media_gobj_type
 
-    :param u64 local_id:
+    :param local_id:
         next ID, from struct \ :c:type:`media_device.id <media_device>`\ .
+    :type local_id: u64
 
 .. _`is_media_entity_v4l2_video_device`:
 
@@ -701,8 +759,9 @@ is_media_entity_v4l2_video_device
 
     Check if the entity is a video_device
 
-    :param struct media_entity \*entity:
+    :param entity:
         pointer to entity
+    :type entity: struct media_entity \*
 
 .. _`is_media_entity_v4l2_video_device.return`:
 
@@ -722,8 +781,9 @@ is_media_entity_v4l2_subdev
 
     Check if the entity is a v4l2_subdev
 
-    :param struct media_entity \*entity:
+    :param entity:
         pointer to entity
+    :type entity: struct media_entity \*
 
 .. _`is_media_entity_v4l2_subdev.return`:
 
@@ -743,11 +803,13 @@ __media_entity_enum_init
 
     Initialise an entity enumeration
 
-    :param struct media_entity_enum \*ent_enum:
+    :param ent_enum:
         Entity enumeration to be initialised
+    :type ent_enum: struct media_entity_enum \*
 
-    :param int idx_max:
+    :param idx_max:
         Maximum number of entities in the enumeration
+    :type idx_max: int
 
 .. _`__media_entity_enum_init.return`:
 
@@ -765,8 +827,9 @@ media_entity_enum_cleanup
 
     Release resources of an entity enumeration
 
-    :param struct media_entity_enum \*ent_enum:
+    :param ent_enum:
         Entity enumeration to be released
+    :type ent_enum: struct media_entity_enum \*
 
 .. _`media_entity_enum_zero`:
 
@@ -777,8 +840,9 @@ media_entity_enum_zero
 
     Clear the entire enum
 
-    :param struct media_entity_enum \*ent_enum:
+    :param ent_enum:
         Entity enumeration to be cleared
+    :type ent_enum: struct media_entity_enum \*
 
 .. _`media_entity_enum_set`:
 
@@ -789,11 +853,13 @@ media_entity_enum_set
 
     Mark a single entity in the enum
 
-    :param struct media_entity_enum \*ent_enum:
+    :param ent_enum:
         Entity enumeration
+    :type ent_enum: struct media_entity_enum \*
 
-    :param struct media_entity \*entity:
+    :param entity:
         Entity to be marked
+    :type entity: struct media_entity \*
 
 .. _`media_entity_enum_clear`:
 
@@ -804,11 +870,13 @@ media_entity_enum_clear
 
     Unmark a single entity in the enum
 
-    :param struct media_entity_enum \*ent_enum:
+    :param ent_enum:
         Entity enumeration
+    :type ent_enum: struct media_entity_enum \*
 
-    :param struct media_entity \*entity:
+    :param entity:
         Entity to be unmarked
+    :type entity: struct media_entity \*
 
 .. _`media_entity_enum_test`:
 
@@ -819,11 +887,13 @@ media_entity_enum_test
 
     Test whether the entity is marked
 
-    :param struct media_entity_enum \*ent_enum:
+    :param ent_enum:
         Entity enumeration
+    :type ent_enum: struct media_entity_enum \*
 
-    :param struct media_entity \*entity:
+    :param entity:
         Entity to be tested
+    :type entity: struct media_entity \*
 
 .. _`media_entity_enum_test.description`:
 
@@ -841,11 +911,13 @@ media_entity_enum_test_and_set
 
     Test whether the entity is marked, and mark it
 
-    :param struct media_entity_enum \*ent_enum:
+    :param ent_enum:
         Entity enumeration
+    :type ent_enum: struct media_entity_enum \*
 
-    :param struct media_entity \*entity:
+    :param entity:
         Entity to be tested
+    :type entity: struct media_entity \*
 
 .. _`media_entity_enum_test_and_set.description`:
 
@@ -863,8 +935,9 @@ media_entity_enum_empty
 
     Test whether the entire enum is empty
 
-    :param struct media_entity_enum \*ent_enum:
+    :param ent_enum:
         Entity enumeration
+    :type ent_enum: struct media_entity_enum \*
 
 .. _`media_entity_enum_empty.return`:
 
@@ -882,11 +955,13 @@ media_entity_enum_intersects
 
     Test whether two enums intersect
 
-    :param struct media_entity_enum \*ent_enum1:
+    :param ent_enum1:
         First entity enumeration
+    :type ent_enum1: struct media_entity_enum \*
 
-    :param struct media_entity_enum \*ent_enum2:
+    :param ent_enum2:
         Second entity enumeration
+    :type ent_enum2: struct media_entity_enum \*
 
 .. _`media_entity_enum_intersects.return`:
 
@@ -905,8 +980,9 @@ gobj_to_entity
 
     returns the struct \ :c:type:`struct media_entity <media_entity>`\  pointer from the \ ``gobj``\  contained on it.
 
-    :param  gobj:
+    :param gobj:
         Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+    :type gobj: 
 
 .. _`gobj_to_pad`:
 
@@ -917,8 +993,9 @@ gobj_to_pad
 
     returns the struct \ :c:type:`struct media_pad <media_pad>`\  pointer from the \ ``gobj``\  contained on it.
 
-    :param  gobj:
+    :param gobj:
         Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+    :type gobj: 
 
 .. _`gobj_to_link`:
 
@@ -929,8 +1006,9 @@ gobj_to_link
 
     returns the struct \ :c:type:`struct media_link <media_link>`\  pointer from the \ ``gobj``\  contained on it.
 
-    :param  gobj:
+    :param gobj:
         Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+    :type gobj: 
 
 .. _`gobj_to_intf`:
 
@@ -941,8 +1019,9 @@ gobj_to_intf
 
     returns the struct \ :c:type:`struct media_interface <media_interface>`\  pointer from the \ ``gobj``\  contained on it.
 
-    :param  gobj:
+    :param gobj:
         Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+    :type gobj: 
 
 .. _`intf_to_devnode`:
 
@@ -953,8 +1032,9 @@ intf_to_devnode
 
     returns the struct media_intf_devnode pointer from the \ ``intf``\  contained on it.
 
-    :param  intf:
+    :param intf:
         Pointer to struct \ :c:type:`struct media_intf_devnode <media_intf_devnode>`\ 
+    :type intf: 
 
 .. _`media_gobj_create`:
 
@@ -965,14 +1045,17 @@ media_gobj_create
 
     Initialize a graph object
 
-    :param struct media_device \*mdev:
+    :param mdev:
         Pointer to the \ :c:type:`struct media_device <media_device>`\  that contains the object
+    :type mdev: struct media_device \*
 
-    :param enum media_gobj_type type:
+    :param type:
         Type of the object
+    :type type: enum media_gobj_type
 
-    :param struct media_gobj \*gobj:
+    :param gobj:
         Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+    :type gobj: struct media_gobj \*
 
 .. _`media_gobj_create.description`:
 
@@ -994,8 +1077,9 @@ media_gobj_destroy
 
     Stop using a graph object on a media device
 
-    :param struct media_gobj \*gobj:
+    :param gobj:
         Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+    :type gobj: struct media_gobj \*
 
 .. _`media_gobj_destroy.description`:
 
@@ -1014,14 +1098,17 @@ media_entity_pads_init
 
     Initialize the entity pads
 
-    :param struct media_entity \*entity:
+    :param entity:
         entity where the pads belong
+    :type entity: struct media_entity \*
 
-    :param u16 num_pads:
+    :param num_pads:
         total number of sink and source pads
+    :type num_pads: u16
 
-    :param struct media_pad \*pads:
+    :param pads:
         Array of \ ``num_pads``\  pads.
+    :type pads: struct media_pad \*
 
 .. _`media_entity_pads_init.description`:
 
@@ -1052,8 +1139,9 @@ media_entity_cleanup
 
     free resources associated with an entity
 
-    :param struct media_entity \*entity:
+    :param entity:
         entity where the pads belong
+    :type entity: struct media_entity \*
 
 .. _`media_entity_cleanup.description`:
 
@@ -1062,6 +1150,44 @@ Description
 
 This function must be called during the cleanup phase after unregistering
 the entity (currently, it does nothing).
+
+.. _`media_get_pad_index`:
+
+media_get_pad_index
+===================
+
+.. c:function:: int media_get_pad_index(struct media_entity *entity, bool is_sink, enum media_pad_signal_type sig_type)
+
+    retrieves a pad index from an entity
+
+    :param entity:
+        entity where the pads belong
+    :type entity: struct media_entity \*
+
+    :param is_sink:
+        true if the pad is a sink, false if it is a source
+    :type is_sink: bool
+
+    :param sig_type:
+        type of signal of the pad to be search
+    :type sig_type: enum media_pad_signal_type
+
+.. _`media_get_pad_index.description`:
+
+Description
+-----------
+
+This helper function finds the first pad index inside an entity that
+satisfies both \ ``is_sink``\  and \ ``sig_type``\  conditions.
+
+.. _`media_get_pad_index.return`:
+
+Return
+------
+
+
+On success, return the pad number. If the pad was not found or the media
+entity is a NULL pointer, return -EINVAL.
 
 .. _`media_create_pad_link`:
 
@@ -1072,22 +1198,27 @@ media_create_pad_link
 
     creates a link between two entities.
 
-    :param struct media_entity \*source:
+    :param source:
         pointer to \ :c:type:`struct media_entity <media_entity>`\  of the source pad.
+    :type source: struct media_entity \*
 
-    :param u16 source_pad:
+    :param source_pad:
         number of the source pad in the pads array
+    :type source_pad: u16
 
-    :param struct media_entity \*sink:
+    :param sink:
         pointer to \ :c:type:`struct media_entity <media_entity>`\  of the sink pad.
+    :type sink: struct media_entity \*
 
-    :param u16 sink_pad:
+    :param sink_pad:
         number of the sink pad in the pads array.
+    :type sink_pad: u16
 
-    :param u32 flags:
+    :param flags:
         Link flags, as defined in
         :ref:`include/uapi/linux/media.h <media_header>`
         ( seek for ``MEDIA_LNK_FL_*``)
+    :type flags: u32
 
 .. _`media_create_pad_link.valid-values-for-flags`:
 
@@ -1119,39 +1250,48 @@ media_create_pad_links
 
     creates a link between two entities.
 
-    :param const struct media_device \*mdev:
+    :param mdev:
         Pointer to the media_device that contains the object
+    :type mdev: const struct media_device \*
 
-    :param const u32 source_function:
+    :param source_function:
         Function of the source entities. Used only if \ ``source``\  is
         NULL.
+    :type source_function: const u32
 
-    :param struct media_entity \*source:
+    :param source:
         pointer to \ :c:type:`struct media_entity <media_entity>`\  of the source pad. If NULL, it will use
         all entities that matches the \ ``sink_function``\ .
+    :type source: struct media_entity \*
 
-    :param const u16 source_pad:
+    :param source_pad:
         number of the source pad in the pads array
+    :type source_pad: const u16
 
-    :param const u32 sink_function:
+    :param sink_function:
         Function of the sink entities. Used only if \ ``sink``\  is NULL.
+    :type sink_function: const u32
 
-    :param struct media_entity \*sink:
+    :param sink:
         pointer to \ :c:type:`struct media_entity <media_entity>`\  of the sink pad. If NULL, it will use
         all entities that matches the \ ``sink_function``\ .
+    :type sink: struct media_entity \*
 
-    :param const u16 sink_pad:
+    :param sink_pad:
         number of the sink pad in the pads array.
+    :type sink_pad: const u16
 
-    :param u32 flags:
+    :param flags:
         Link flags, as defined in include/uapi/linux/media.h.
+    :type flags: u32
 
-    :param const bool allow_both_undefined:
+    :param allow_both_undefined:
         if \ ``true``\ , then both \ ``source``\  and \ ``sink``\  can be NULL.
         In such case, it will create a crossbar between all entities that
         matches \ ``source_function``\  to all entities that matches \ ``sink_function``\ .
         If \ ``false``\ , it will return 0 and won't create any link if both \ ``source``\ 
         and \ ``sink``\  are NULL.
+    :type allow_both_undefined: const bool
 
 .. _`media_create_pad_links.valid-values-for-flags`:
 
@@ -1189,8 +1329,9 @@ media_entity_remove_links
 
     remove all links associated with an entity
 
-    :param struct media_entity \*entity:
+    :param entity:
         pointer to \ :c:type:`struct media_entity <media_entity>`\ 
+    :type entity: struct media_entity \*
 
 .. _`media_entity_remove_links.description`:
 
@@ -1211,11 +1352,13 @@ __media_entity_setup_link
 
     Configure a media link without locking
 
-    :param struct media_link \*link:
+    :param link:
         The link being configured
+    :type link: struct media_link \*
 
-    :param u32 flags:
+    :param flags:
         Link configuration flags
+    :type flags: u32
 
 .. _`__media_entity_setup_link.description`:
 
@@ -1240,11 +1383,13 @@ media_entity_setup_link
 
     changes the link flags properties in runtime
 
-    :param struct media_link \*link:
+    :param link:
         pointer to \ :c:type:`struct media_link <media_link>`\ 
+    :type link: struct media_link \*
 
-    :param u32 flags:
+    :param flags:
         the requested new link flags
+    :type flags: u32
 
 .. _`media_entity_setup_link.description`:
 
@@ -1290,11 +1435,13 @@ media_entity_find_link
 
     Find a link between two pads
 
-    :param struct media_pad \*source:
+    :param source:
         Source pad
+    :type source: struct media_pad \*
 
-    :param struct media_pad \*sink:
+    :param sink:
         Sink pad
+    :type sink: struct media_pad \*
 
 .. _`media_entity_find_link.return`:
 
@@ -1313,8 +1460,9 @@ media_entity_remote_pad
 
     Find the pad at the remote end of a link
 
-    :param const struct media_pad \*pad:
+    :param pad:
         Pad at the local end of the link
+    :type pad: const struct media_pad \*
 
 .. _`media_entity_remote_pad.description`:
 
@@ -1341,8 +1489,9 @@ media_entity_get
 
     Get a reference to the parent module
 
-    :param struct media_entity \*entity:
+    :param entity:
         The entity
+    :type entity: struct media_entity \*
 
 .. _`media_entity_get.description`:
 
@@ -1369,16 +1518,19 @@ media_entity_get_fwnode_pad
 
     Get pad number from fwnode
 
-    :param struct media_entity \*entity:
+    :param entity:
         The entity
+    :type entity: struct media_entity \*
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Pointer to the fwnode_handle which should be used to find the pad
+    :type fwnode: struct fwnode_handle \*
 
-    :param unsigned long direction_flags:
+    :param direction_flags:
         Expected direction of the pad, as defined in
         :ref:`include/uapi/linux/media.h <media_header>`
         (seek for ``MEDIA_PAD_FL_*``)
+    :type direction_flags: unsigned long
 
 .. _`media_entity_get_fwnode_pad.description`:
 
@@ -1409,11 +1561,13 @@ media_graph_walk_init
 
     Allocate resources used by graph walk.
 
-    :param struct media_graph \*graph:
+    :param graph:
         Media graph structure that will be used to walk the graph
+    :type graph: struct media_graph \*
 
-    :param struct media_device \*mdev:
+    :param mdev:
         Pointer to the \ :c:type:`struct media_device <media_device>`\  that contains the object
+    :type mdev: struct media_device \*
 
 .. _`media_graph_walk_cleanup`:
 
@@ -1424,8 +1578,9 @@ media_graph_walk_cleanup
 
     Release resources used by graph walk.
 
-    :param struct media_graph \*graph:
+    :param graph:
         Media graph structure that will be used to walk the graph
+    :type graph: struct media_graph \*
 
 .. _`media_entity_put`:
 
@@ -1436,8 +1591,9 @@ media_entity_put
 
     Release the reference to the parent module
 
-    :param struct media_entity \*entity:
+    :param entity:
         The entity
+    :type entity: struct media_entity \*
 
 .. _`media_entity_put.description`:
 
@@ -1457,11 +1613,13 @@ media_graph_walk_start
 
     Start walking the media graph at a given entity
 
-    :param struct media_graph \*graph:
+    :param graph:
         Media graph structure that will be used to walk the graph
+    :type graph: struct media_graph \*
 
-    :param struct media_entity \*entity:
+    :param entity:
         Starting entity
+    :type entity: struct media_entity \*
 
 .. _`media_graph_walk_start.description`:
 
@@ -1485,8 +1643,9 @@ media_graph_walk_next
 
     Get the next entity in the graph
 
-    :param struct media_graph \*graph:
+    :param graph:
         Media graph structure
+    :type graph: struct media_graph \*
 
 .. _`media_graph_walk_next.description`:
 
@@ -1515,11 +1674,13 @@ media_pipeline_start
 
     Mark a pipeline as streaming
 
-    :param struct media_entity \*entity:
+    :param entity:
         Starting entity
+    :type entity: struct media_entity \*
 
-    :param struct media_pipeline \*pipe:
+    :param pipe:
         Media pipeline to be assigned to all entities in the pipeline.
+    :type pipe: struct media_pipeline \*
 
 .. _`media_pipeline_start.description`:
 
@@ -1544,11 +1705,13 @@ __media_pipeline_start
 
     Mark a pipeline as streaming
 
-    :param struct media_entity \*entity:
+    :param entity:
         Starting entity
+    :type entity: struct media_entity \*
 
-    :param struct media_pipeline \*pipe:
+    :param pipe:
         Media pipeline to be assigned to all entities in the pipeline.
+    :type pipe: struct media_pipeline \*
 
 .. _`__media_pipeline_start.description`:
 
@@ -1566,8 +1729,9 @@ media_pipeline_stop
 
     Mark a pipeline as not streaming
 
-    :param struct media_entity \*entity:
+    :param entity:
         Starting entity
+    :type entity: struct media_entity \*
 
 .. _`media_pipeline_stop.description`:
 
@@ -1591,8 +1755,9 @@ __media_pipeline_stop
 
     Mark a pipeline as not streaming
 
-    :param struct media_entity \*entity:
+    :param entity:
         Starting entity
+    :type entity: struct media_entity \*
 
 .. _`__media_pipeline_stop.description`:
 
@@ -1610,24 +1775,29 @@ media_devnode_create
 
     creates and initializes a device node interface
 
-    :param struct media_device \*mdev:
+    :param mdev:
         pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: struct media_device \*
 
-    :param u32 type:
+    :param type:
         type of the interface, as given by
         :ref:`include/uapi/linux/media.h <media_header>`
         ( seek for ``MEDIA_INTF_T_*``) macros.
+    :type type: u32
 
-    :param u32 flags:
+    :param flags:
         Interface flags, as defined in
         :ref:`include/uapi/linux/media.h <media_header>`
         ( seek for ``MEDIA_INTF_FL_*``)
+    :type flags: u32
 
-    :param u32 major:
+    :param major:
         Device node major number.
+    :type major: u32
 
-    :param u32 minor:
+    :param minor:
         Device node minor number.
+    :type minor: u32
 
 .. _`media_devnode_create.return`:
 
@@ -1650,8 +1820,9 @@ media_devnode_remove
 
     removes a device node interface
 
-    :param struct media_intf_devnode \*devnode:
+    :param devnode:
         pointer to \ :c:type:`struct media_intf_devnode <media_intf_devnode>`\  to be freed.
+    :type devnode: struct media_intf_devnode \*
 
 .. _`media_devnode_remove.description`:
 
@@ -1670,16 +1841,19 @@ media_create_intf_link
 
     creates a link between an entity and an interface
 
-    :param struct media_entity \*entity:
+    :param entity:
         pointer to \ ``media_entity``\ 
+    :type entity: struct media_entity \*
 
-    :param struct media_interface \*intf:
+    :param intf:
         pointer to \ ``media_interface``\ 
+    :type intf: struct media_interface \*
 
-    :param u32 flags:
+    :param flags:
         Link flags, as defined in
         :ref:`include/uapi/linux/media.h <media_header>`
         ( seek for ``MEDIA_LNK_FL_*``)
+    :type flags: u32
 
 .. _`media_create_intf_link.valid-values-for-flags`:
 
@@ -1714,8 +1888,9 @@ __media_remove_intf_link
 
     remove a single interface link
 
-    :param struct media_link \*link:
+    :param link:
         pointer to \ :c:type:`struct media_link <media_link>`\ .
+    :type link: struct media_link \*
 
 .. _`__media_remove_intf_link.description`:
 
@@ -1733,8 +1908,9 @@ media_remove_intf_link
 
     remove a single interface link
 
-    :param struct media_link \*link:
+    :param link:
         pointer to \ :c:type:`struct media_link <media_link>`\ .
+    :type link: struct media_link \*
 
 .. _`media_remove_intf_link.description`:
 
@@ -1752,8 +1928,9 @@ __media_remove_intf_links
 
     remove all links associated with an interface
 
-    :param struct media_interface \*intf:
+    :param intf:
         pointer to \ :c:type:`struct media_interface <media_interface>`\ 
+    :type intf: struct media_interface \*
 
 .. _`__media_remove_intf_links.description`:
 
@@ -1771,8 +1948,9 @@ media_remove_intf_links
 
     remove all links associated with an interface
 
-    :param struct media_interface \*intf:
+    :param intf:
         pointer to \ :c:type:`struct media_interface <media_interface>`\ 
+    :type intf: struct media_interface \*
 
 .. _`media_remove_intf_links.description`:
 
@@ -1795,12 +1973,14 @@ media_entity_call
 
     Calls a struct media_entity_operations operation on an entity
 
-    :param  entity:
+    :param entity:
         entity where the \ ``operation``\  will be called
+    :type entity: 
 
-    :param  operation:
+    :param operation:
         type of the operation. Should be the name of a member of
         struct \ :c:type:`struct media_entity_operations <media_entity_operations>`\ .
+    :type operation: 
 
 .. _`media_entity_call.description`:
 

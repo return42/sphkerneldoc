@@ -6,27 +6,33 @@
 gen_new_estimator
 =================
 
-.. c:function:: int gen_new_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct net_rate_estimator __rcu **rate_est, spinlock_t *stats_lock, seqcount_t *running, struct nlattr *opt)
+.. c:function:: int gen_new_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct net_rate_estimator __rcu **rate_est, spinlock_t *lock, seqcount_t *running, struct nlattr *opt)
 
     create a new rate estimator
 
-    :param struct gnet_stats_basic_packed \*bstats:
+    :param bstats:
         basic statistics
+    :type bstats: struct gnet_stats_basic_packed \*
 
-    :param struct gnet_stats_basic_cpu __percpu \*cpu_bstats:
+    :param cpu_bstats:
         bstats per cpu
+    :type cpu_bstats: struct gnet_stats_basic_cpu __percpu \*
 
-    :param struct net_rate_estimator __rcu \*\*rate_est:
+    :param rate_est:
         rate estimator statistics
+    :type rate_est: struct net_rate_estimator __rcu \*\*
 
-    :param spinlock_t \*stats_lock:
-        statistics lock
+    :param lock:
+        lock for statistics and control path
+    :type lock: spinlock_t \*
 
-    :param seqcount_t \*running:
+    :param running:
         qdisc running seqcount
+    :type running: seqcount_t \*
 
-    :param struct nlattr \*opt:
+    :param opt:
         rate estimator configuration TLV
+    :type opt: struct nlattr \*
 
 .. _`gen_new_estimator.description`:
 
@@ -50,8 +56,9 @@ gen_kill_estimator
 
     remove a rate estimator
 
-    :param struct net_rate_estimator __rcu \*\*rate_est:
+    :param rate_est:
         rate estimator
+    :type rate_est: struct net_rate_estimator __rcu \*\*
 
 .. _`gen_kill_estimator.description`:
 
@@ -65,27 +72,33 @@ Removes the rate estimator.
 gen_replace_estimator
 =====================
 
-.. c:function:: int gen_replace_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct net_rate_estimator __rcu **rate_est, spinlock_t *stats_lock, seqcount_t *running, struct nlattr *opt)
+.. c:function:: int gen_replace_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct net_rate_estimator __rcu **rate_est, spinlock_t *lock, seqcount_t *running, struct nlattr *opt)
 
     replace rate estimator configuration
 
-    :param struct gnet_stats_basic_packed \*bstats:
+    :param bstats:
         basic statistics
+    :type bstats: struct gnet_stats_basic_packed \*
 
-    :param struct gnet_stats_basic_cpu __percpu \*cpu_bstats:
+    :param cpu_bstats:
         bstats per cpu
+    :type cpu_bstats: struct gnet_stats_basic_cpu __percpu \*
 
-    :param struct net_rate_estimator __rcu \*\*rate_est:
+    :param rate_est:
         rate estimator statistics
+    :type rate_est: struct net_rate_estimator __rcu \*\*
 
-    :param spinlock_t \*stats_lock:
-        statistics lock
+    :param lock:
+        lock for statistics and control path
+    :type lock: spinlock_t \*
 
-    :param seqcount_t \*running:
+    :param running:
         qdisc running seqcount (might be NULL)
+    :type running: seqcount_t \*
 
-    :param struct nlattr \*opt:
+    :param opt:
         rate estimator configuration TLV
+    :type opt: struct nlattr \*
 
 .. _`gen_replace_estimator.description`:
 
@@ -106,8 +119,9 @@ gen_estimator_active
 
     test if estimator is currently in use
 
-    :param struct net_rate_estimator __rcu \*\*rate_est:
+    :param rate_est:
         rate estimator
+    :type rate_est: struct net_rate_estimator __rcu \*\*
 
 .. _`gen_estimator_active.description`:
 

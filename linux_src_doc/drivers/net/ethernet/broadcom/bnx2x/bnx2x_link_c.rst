@@ -10,14 +10,17 @@ bnx2x_get_emac_base
 
     retrive emac base address
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 mdc_mdio_access:
+    :param mdc_mdio_access:
         access type
+    :type mdc_mdio_access: u32
 
-    :param u8 port:
+    :param port:
         port id
+    :type port: u8
 
 .. _`bnx2x_get_emac_base.description`:
 

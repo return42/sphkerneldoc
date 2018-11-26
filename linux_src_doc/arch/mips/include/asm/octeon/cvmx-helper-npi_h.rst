@@ -10,8 +10,9 @@
 
     connected to it. The NPI interface should still be down after this call.
 
-    :param int interface:
+    :param interface:
         Interface to probe
+    :type interface: int
 
 .. _`__cvmx_helper_npi_probe.description`:
 
@@ -29,8 +30,9 @@ Returns Number of ports on the interface. Zero to disable.
 
     I/O should be fully functional. This is called with IPD enabled but PKO disabled.
 
-    :param int interface:
+    :param interface:
         Interface to bring up
+    :type interface: int
 
 .. _`__cvmx_helper_npi_enable.description`:
 

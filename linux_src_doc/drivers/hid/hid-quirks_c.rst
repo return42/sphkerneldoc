@@ -10,8 +10,9 @@ hid_exists_dquirk
 
     find any dynamic quirks for a HID device
 
-    :param const struct hid_device \*hdev:
+    :param hdev:
         the HID device to match
+    :type hdev: const struct hid_device \*
 
 .. _`hid_exists_dquirk.description`:
 
@@ -38,11 +39,13 @@ hid_modify_dquirk
 
     add/replace a HID quirk
 
-    :param const struct hid_device_id \*id:
+    :param id:
         the HID device to match
+    :type id: const struct hid_device_id \*
 
-    :param const unsigned long quirks:
+    :param quirks:
         the unsigned long quirks value to add/replace
+    :type quirks: const unsigned long
 
 .. _`hid_modify_dquirk.description`:
 
@@ -69,8 +72,9 @@ hid_remove_all_dquirks
 
     remove all runtime HID quirks from memory
 
-    :param __u16 bus:
+    :param bus:
         bus to match against. Use HID_BUS_ANY if all need to be removed.
+    :type bus: __u16
 
 .. _`hid_remove_all_dquirks.description`:
 
@@ -89,14 +93,17 @@ hid_quirks_init
 
     apply HID quirks specified at module load time
 
-    :param char \*\*quirks_param:
+    :param quirks_param:
         *undescribed*
+    :type quirks_param: char \*\*
 
-    :param __u16 bus:
+    :param bus:
         *undescribed*
+    :type bus: __u16
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
 .. _`hid_quirks_exit`:
 
@@ -107,8 +114,9 @@ hid_quirks_exit
 
     release memory associated with dynamic_quirks
 
-    :param __u16 bus:
+    :param bus:
         a bus to match against
+    :type bus: __u16
 
 .. _`hid_quirks_exit.description`:
 
@@ -135,8 +143,9 @@ hid_gets_squirk
 
     return any static quirks for a HID device
 
-    :param const struct hid_device \*hdev:
+    :param hdev:
         the HID device to match
+    :type hdev: const struct hid_device \*
 
 .. _`hid_gets_squirk.description`:
 
@@ -162,8 +171,9 @@ hid_lookup_quirk
 
     return any quirks associated with a HID device
 
-    :param const struct hid_device \*hdev:
+    :param hdev:
         the HID device to look for
+    :type hdev: const struct hid_device \*
 
 .. _`hid_lookup_quirk.description`:
 

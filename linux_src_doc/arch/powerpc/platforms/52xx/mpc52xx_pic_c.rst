@@ -10,11 +10,13 @@ mpc52xx_is_extirq
 
     Returns true if hwirq number is for an external IRQ
 
-    :param int l1:
+    :param l1:
         *undescribed*
+    :type l1: int
 
-    :param int l2:
+    :param l2:
         *undescribed*
+    :type l2: int
 
 .. _`mpc52xx_irqhost_xlate`:
 
@@ -25,23 +27,29 @@ mpc52xx_irqhost_xlate
 
     translate virq# from device tree interrupts property
 
-    :param struct irq_domain \*h:
+    :param h:
         *undescribed*
+    :type h: struct irq_domain \*
 
-    :param struct device_node \*ct:
+    :param ct:
         *undescribed*
+    :type ct: struct device_node \*
 
-    :param const u32 \*intspec:
+    :param intspec:
         *undescribed*
+    :type intspec: const u32 \*
 
-    :param unsigned int intsize:
+    :param intsize:
         *undescribed*
+    :type intsize: unsigned int
 
-    :param irq_hw_number_t \*out_hwirq:
+    :param out_hwirq:
         *undescribed*
+    :type out_hwirq: irq_hw_number_t \*
 
-    :param unsigned int \*out_flags:
+    :param out_flags:
         *undescribed*
+    :type out_flags: unsigned int \*
 
 .. _`mpc52xx_irqhost_map`:
 
@@ -52,14 +60,17 @@ mpc52xx_irqhost_map
 
     Hook to map from virq to an irq_chip structure
 
-    :param struct irq_domain \*h:
+    :param h:
         *undescribed*
+    :type h: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         *undescribed*
+    :type virq: unsigned int
 
-    :param irq_hw_number_t irq:
+    :param irq:
         *undescribed*
+    :type irq: irq_hw_number_t
 
 .. _`mpc52xx_init_irq`:
 
@@ -70,8 +81,9 @@ mpc52xx_init_irq
 
     Initialize and register with the virq subsystem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mpc52xx_init_irq.description`:
 
@@ -93,8 +105,9 @@ mpc52xx_get_irq
 
     Get pending interrupt number hook function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mpc52xx_get_irq.description`:
 

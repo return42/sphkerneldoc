@@ -10,8 +10,9 @@ usb_register_notify
 
     register a notifier callback whenever a usb change happens
 
-    :param struct notifier_block \*nb:
+    :param nb:
         pointer to the notifier block for the callback events.
+    :type nb: struct notifier_block \*
 
 .. _`usb_register_notify.description`:
 
@@ -29,8 +30,9 @@ usb_unregister_notify
 
     unregister a notifier callback
 
-    :param struct notifier_block \*nb:
+    :param nb:
         pointer to the notifier block for the callback events.
+    :type nb: struct notifier_block \*
 
 .. _`usb_unregister_notify.description`:
 

@@ -10,8 +10,9 @@ i40e_set_mac_type
 
     Sets MAC type
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_set_mac_type.description`:
 
@@ -30,11 +31,13 @@ i40e_aq_str
 
     convert AQ err code to a string
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param enum i40e_admin_queue_err aq_err:
+    :param aq_err:
         the AQ error code to convert
+    :type aq_err: enum i40e_admin_queue_err
 
 .. _`i40e_stat_str`:
 
@@ -45,11 +48,13 @@ i40e_stat_str
 
     convert status err code to a string
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param i40e_status stat_err:
+    :param stat_err:
         the status error code to convert
+    :type stat_err: i40e_status
 
 .. _`i40e_debug_aq`:
 
@@ -58,20 +63,25 @@ i40e_debug_aq
 
 .. c:function:: void i40e_debug_aq(struct i40e_hw *hw, enum i40e_debug_mask mask, void *desc, void *buffer, u16 buf_len)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         debug mask related to admin queue
+    :type hw: struct i40e_hw \*
 
-    :param enum i40e_debug_mask mask:
+    :param mask:
         debug mask
+    :type mask: enum i40e_debug_mask
 
-    :param void \*desc:
+    :param desc:
         pointer to admin queue descriptor
+    :type desc: void \*
 
-    :param void \*buffer:
+    :param buffer:
         pointer to command buffer
+    :type buffer: void \*
 
-    :param u16 buf_len:
+    :param buf_len:
         max length of buffer
+    :type buf_len: u16
 
 .. _`i40e_debug_aq.description`:
 
@@ -87,8 +97,9 @@ i40e_check_asq_alive
 
 .. c:function:: bool i40e_check_asq_alive(struct i40e_hw *hw)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_check_asq_alive.description`:
 
@@ -104,11 +115,13 @@ i40e_aq_queue_shutdown
 
 .. c:function:: i40e_status i40e_aq_queue_shutdown(struct i40e_hw *hw, bool unloading)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param bool unloading:
+    :param unloading:
         is the driver unloading itself
+    :type unloading: bool
 
 .. _`i40e_aq_queue_shutdown.description`:
 
@@ -125,23 +138,29 @@ i40e_aq_get_set_rss_lut
 
 .. c:function:: i40e_status i40e_aq_get_set_rss_lut(struct i40e_hw *hw, u16 vsi_id, bool pf_lut, u8 *lut, u16 lut_size, bool set)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 vsi_id:
+    :param vsi_id:
         vsi fw index
+    :type vsi_id: u16
 
-    :param bool pf_lut:
+    :param pf_lut:
         for PF table set true, for VSI table set false
+    :type pf_lut: bool
 
-    :param u8 \*lut:
+    :param lut:
         pointer to the lut buffer provided by the caller
+    :type lut: u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         size of the lut buffer
+    :type lut_size: u16
 
-    :param bool set:
+    :param set:
         set true to set the table, false to get the table
+    :type set: bool
 
 .. _`i40e_aq_get_set_rss_lut.description`:
 
@@ -157,20 +176,25 @@ i40e_aq_get_rss_lut
 
 .. c:function:: i40e_status i40e_aq_get_rss_lut(struct i40e_hw *hw, u16 vsi_id, bool pf_lut, u8 *lut, u16 lut_size)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 vsi_id:
+    :param vsi_id:
         vsi fw index
+    :type vsi_id: u16
 
-    :param bool pf_lut:
+    :param pf_lut:
         for PF table set true, for VSI table set false
+    :type pf_lut: bool
 
-    :param u8 \*lut:
+    :param lut:
         pointer to the lut buffer provided by the caller
+    :type lut: u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         size of the lut buffer
+    :type lut_size: u16
 
 .. _`i40e_aq_get_rss_lut.description`:
 
@@ -186,20 +210,25 @@ i40e_aq_set_rss_lut
 
 .. c:function:: i40e_status i40e_aq_set_rss_lut(struct i40e_hw *hw, u16 vsi_id, bool pf_lut, u8 *lut, u16 lut_size)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 vsi_id:
+    :param vsi_id:
         vsi fw index
+    :type vsi_id: u16
 
-    :param bool pf_lut:
+    :param pf_lut:
         for PF table set true, for VSI table set false
+    :type pf_lut: bool
 
-    :param u8 \*lut:
+    :param lut:
         pointer to the lut buffer provided by the caller
+    :type lut: u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         size of the lut buffer
+    :type lut_size: u16
 
 .. _`i40e_aq_set_rss_lut.description`:
 
@@ -215,17 +244,21 @@ i40e_aq_get_set_rss_key
 
 .. c:function:: i40e_status i40e_aq_get_set_rss_key(struct i40e_hw *hw, u16 vsi_id, struct i40e_aqc_get_set_rss_key_data *key, bool set)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 vsi_id:
+    :param vsi_id:
         vsi fw index
+    :type vsi_id: u16
 
-    :param struct i40e_aqc_get_set_rss_key_data \*key:
+    :param key:
         pointer to key info struct
+    :type key: struct i40e_aqc_get_set_rss_key_data \*
 
-    :param bool set:
+    :param set:
         set true to set the key, false to get the key
+    :type set: bool
 
 .. _`i40e_aq_get_set_rss_key.description`:
 
@@ -241,14 +274,17 @@ i40e_aq_get_rss_key
 
 .. c:function:: i40e_status i40e_aq_get_rss_key(struct i40e_hw *hw, u16 vsi_id, struct i40e_aqc_get_set_rss_key_data *key)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 vsi_id:
+    :param vsi_id:
         vsi fw index
+    :type vsi_id: u16
 
-    :param struct i40e_aqc_get_set_rss_key_data \*key:
+    :param key:
         pointer to key info struct
+    :type key: struct i40e_aqc_get_set_rss_key_data \*
 
 .. _`i40e_aq_set_rss_key`:
 
@@ -257,14 +293,17 @@ i40e_aq_set_rss_key
 
 .. c:function:: i40e_status i40e_aq_set_rss_key(struct i40e_hw *hw, u16 vsi_id, struct i40e_aqc_get_set_rss_key_data *key)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 vsi_id:
+    :param vsi_id:
         vsi fw index
+    :type vsi_id: u16
 
-    :param struct i40e_aqc_get_set_rss_key_data \*key:
+    :param key:
         pointer to key info struct
+    :type key: struct i40e_aqc_get_set_rss_key_data \*
 
 .. _`i40e_aq_set_rss_key.description`:
 
@@ -282,8 +321,9 @@ i40e_init_shared_code
 
     Initialize the shared code
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_init_shared_code.description`:
 
@@ -312,17 +352,21 @@ i40e_aq_mac_address_read
 
     Retrieve the MAC addresses
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 \*flags:
+    :param flags:
         a return indicator of what addresses were added to the addr store
+    :type flags: u16 \*
 
-    :param struct i40e_aqc_mac_address_read_data \*addrs:
+    :param addrs:
         the requestor's mac addr store
+    :type addrs: struct i40e_aqc_mac_address_read_data \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_mac_address_write`:
 
@@ -333,17 +377,21 @@ i40e_aq_mac_address_write
 
     Change the MAC addresses
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 flags:
+    :param flags:
         indicates which MAC to be written
+    :type flags: u16
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         address to write
+    :type mac_addr: u8 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_get_mac_addr`:
 
@@ -354,11 +402,13 @@ i40e_get_mac_addr
 
     get MAC address
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         pointer to MAC address
+    :type mac_addr: u8 \*
 
 .. _`i40e_get_mac_addr.description`:
 
@@ -376,11 +426,13 @@ i40e_get_port_mac_addr
 
     get Port MAC address
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         pointer to Port MAC address
+    :type mac_addr: u8 \*
 
 .. _`i40e_get_port_mac_addr.description`:
 
@@ -398,14 +450,17 @@ i40e_pre_tx_queue_cfg
 
     pre tx queue configure
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u32 queue:
+    :param queue:
         target PF queue index
+    :type queue: u32
 
-    :param bool enable:
+    :param enable:
         state change request
+    :type enable: bool
 
 .. _`i40e_pre_tx_queue_cfg.description`:
 
@@ -424,14 +479,17 @@ i40e_read_pba_string
 
     Reads part number string from EEPROM
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u8 \*pba_num:
+    :param pba_num:
         stores the part number string from the EEPROM
+    :type pba_num: u8 \*
 
-    :param u32 pba_num_size:
+    :param pba_num_size:
         part number string buffer length
+    :type pba_num_size: u32
 
 .. _`i40e_read_pba_string.description`:
 
@@ -449,8 +507,9 @@ i40e_get_media_type
 
     Gets media type
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_poll_globr`:
 
@@ -461,11 +520,13 @@ i40e_poll_globr
 
     Poll for Global Reset completion
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u32 retry_limit:
+    :param retry_limit:
         how many times to retry before failure
+    :type retry_limit: u32
 
 .. _`i40e_pf_reset`:
 
@@ -476,8 +537,9 @@ i40e_pf_reset
 
     Reset the PF
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_pf_reset.description`:
 
@@ -496,8 +558,9 @@ i40e_clear_hw
 
     clear out any left over hw state
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_clear_hw.description`:
 
@@ -517,8 +580,9 @@ i40e_clear_pxe_mode
 
     clear pxe operations mode
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_clear_pxe_mode.description`:
 
@@ -537,11 +601,13 @@ i40e_led_is_mine
 
     helper to find matching led
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param int idx:
+    :param idx:
         index into GPIO registers
+    :type idx: int
 
 .. _`i40e_led_is_mine.return`:
 
@@ -559,8 +625,9 @@ i40e_led_get
 
     return current on/off mode
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_led_get.description`:
 
@@ -587,14 +654,17 @@ i40e_led_set
 
     set new on/off mode
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u32 mode:
+    :param mode:
         0=off, 0xf=on (else see manual for mode details)
+    :type mode: u32
 
-    :param bool blink:
+    :param blink:
         true if the LED should blink when on, false if steady
+    :type blink: bool
 
 .. _`i40e_led_set.description`:
 
@@ -611,20 +681,25 @@ i40e_aq_get_phy_capabilities
 
 .. c:function:: i40e_status i40e_aq_get_phy_capabilities(struct i40e_hw *hw, bool qualified_modules, bool report_init, struct i40e_aq_get_phy_abilities_resp *abilities, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param bool qualified_modules:
+    :param qualified_modules:
         report Qualified Modules
+    :type qualified_modules: bool
 
-    :param bool report_init:
+    :param report_init:
         report init capabilities (active are default)
+    :type report_init: bool
 
-    :param struct i40e_aq_get_phy_abilities_resp \*abilities:
+    :param abilities:
         structure for PHY capabilities to be filled
+    :type abilities: struct i40e_aq_get_phy_abilities_resp \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_phy_capabilities.description`:
 
@@ -640,14 +715,17 @@ i40e_aq_set_phy_config
 
 .. c:function:: enum i40e_status_code i40e_aq_set_phy_config(struct i40e_hw *hw, struct i40e_aq_set_phy_config *config, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_aq_set_phy_config \*config:
+    :param config:
         structure with PHY configuration to be set
+    :type config: struct i40e_aq_set_phy_config \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_phy_config.description`:
 
@@ -667,14 +745,17 @@ i40e_set_fc
 
 .. c:function:: enum i40e_status_code i40e_set_fc(struct i40e_hw *hw, u8 *aq_failures, bool atomic_restart)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 \*aq_failures:
+    :param aq_failures:
         buffer to return AdminQ failure information
+    :type aq_failures: u8 \*
 
-    :param bool atomic_restart:
+    :param atomic_restart:
         whether to enable atomic link restart
+    :type atomic_restart: bool
 
 .. _`i40e_set_fc.description`:
 
@@ -690,11 +771,13 @@ i40e_aq_clear_pxe_mode
 
 .. c:function:: i40e_status i40e_aq_clear_pxe_mode(struct i40e_hw *hw, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_clear_pxe_mode.description`:
 
@@ -710,14 +793,17 @@ i40e_aq_set_link_restart_an
 
 .. c:function:: i40e_status i40e_aq_set_link_restart_an(struct i40e_hw *hw, bool enable_link, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param bool enable_link:
+    :param enable_link:
         if true: enable link, if false: disable link
+    :type enable_link: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_link_restart_an.description`:
 
@@ -733,17 +819,21 @@ i40e_aq_get_link_info
 
 .. c:function:: i40e_status i40e_aq_get_link_info(struct i40e_hw *hw, bool enable_lse, struct i40e_link_status *link, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param bool enable_lse:
+    :param enable_lse:
         enable/disable LinkStatusEvent reporting
+    :type enable_lse: bool
 
-    :param struct i40e_link_status \*link:
+    :param link:
         pointer to link status structure - optional
+    :type link: struct i40e_link_status \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_link_info.description`:
 
@@ -759,14 +849,17 @@ i40e_aq_set_phy_int_mask
 
 .. c:function:: i40e_status i40e_aq_set_phy_int_mask(struct i40e_hw *hw, u16 mask, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 mask:
+    :param mask:
         interrupt mask to be set
+    :type mask: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_phy_int_mask.description`:
 
@@ -782,14 +875,17 @@ i40e_aq_set_phy_debug
 
 .. c:function:: i40e_status i40e_aq_set_phy_debug(struct i40e_hw *hw, u8 cmd_flags, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 cmd_flags:
+    :param cmd_flags:
         debug command flags
+    :type cmd_flags: u8
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_phy_debug.description`:
 
@@ -805,14 +901,17 @@ i40e_aq_add_vsi
 
 .. c:function:: i40e_status i40e_aq_add_vsi(struct i40e_hw *hw, struct i40e_vsi_context *vsi_ctx, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_vsi_context \*vsi_ctx:
+    :param vsi_ctx:
         pointer to a vsi context struct
+    :type vsi_ctx: struct i40e_vsi_context \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_add_vsi.description`:
 
@@ -828,14 +927,17 @@ i40e_aq_set_default_vsi
 
 .. c:function:: i40e_status i40e_aq_set_default_vsi(struct i40e_hw *hw, u16 seid, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         vsi number
+    :type seid: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_clear_default_vsi`:
 
@@ -844,14 +946,17 @@ i40e_aq_clear_default_vsi
 
 .. c:function:: i40e_status i40e_aq_clear_default_vsi(struct i40e_hw *hw, u16 seid, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         vsi number
+    :type seid: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_vsi_unicast_promiscuous`:
 
@@ -860,20 +965,25 @@ i40e_aq_set_vsi_unicast_promiscuous
 
 .. c:function:: i40e_status i40e_aq_set_vsi_unicast_promiscuous(struct i40e_hw *hw, u16 seid, bool set, struct i40e_asq_cmd_details *cmd_details, bool rx_only_promisc)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         vsi number
+    :type seid: u16
 
-    :param bool set:
+    :param set:
         set unicast promiscuous enable/disable
+    :type set: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
-    :param bool rx_only_promisc:
+    :param rx_only_promisc:
         flag to decide if egress traffic gets mirrored in promisc
+    :type rx_only_promisc: bool
 
 .. _`i40e_aq_set_vsi_multicast_promiscuous`:
 
@@ -882,17 +992,21 @@ i40e_aq_set_vsi_multicast_promiscuous
 
 .. c:function:: i40e_status i40e_aq_set_vsi_multicast_promiscuous(struct i40e_hw *hw, u16 seid, bool set, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         vsi number
+    :type seid: u16
 
-    :param bool set:
+    :param set:
         set multicast promiscuous enable/disable
+    :type set: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_vsi_mc_promisc_on_vlan`:
 
@@ -901,20 +1015,25 @@ i40e_aq_set_vsi_mc_promisc_on_vlan
 
 .. c:function:: enum i40e_status_code i40e_aq_set_vsi_mc_promisc_on_vlan(struct i40e_hw *hw, u16 seid, bool enable, u16 vid, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         vsi number
+    :type seid: u16
 
-    :param bool enable:
+    :param enable:
         set MAC L2 layer unicast promiscuous enable/disable for a given VLAN
+    :type enable: bool
 
-    :param u16 vid:
+    :param vid:
         The VLAN tag filter - capture any multicast packet with this VLAN tag
+    :type vid: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_vsi_uc_promisc_on_vlan`:
 
@@ -923,20 +1042,25 @@ i40e_aq_set_vsi_uc_promisc_on_vlan
 
 .. c:function:: enum i40e_status_code i40e_aq_set_vsi_uc_promisc_on_vlan(struct i40e_hw *hw, u16 seid, bool enable, u16 vid, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         vsi number
+    :type seid: u16
 
-    :param bool enable:
+    :param enable:
         set MAC L2 layer unicast promiscuous enable/disable for a given VLAN
+    :type enable: bool
 
-    :param u16 vid:
+    :param vid:
         The VLAN tag filter - capture any unicast packet with this VLAN tag
+    :type vid: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_vsi_bc_promisc_on_vlan`:
 
@@ -945,20 +1069,25 @@ i40e_aq_set_vsi_bc_promisc_on_vlan
 
 .. c:function:: i40e_status i40e_aq_set_vsi_bc_promisc_on_vlan(struct i40e_hw *hw, u16 seid, bool enable, u16 vid, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         vsi number
+    :type seid: u16
 
-    :param bool enable:
+    :param enable:
         set broadcast promiscuous enable/disable for a given VLAN
+    :type enable: bool
 
-    :param u16 vid:
+    :param vid:
         The VLAN tag filter - capture any broadcast packet with this VLAN tag
+    :type vid: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_vsi_broadcast`:
 
@@ -967,17 +1096,21 @@ i40e_aq_set_vsi_broadcast
 
 .. c:function:: i40e_status i40e_aq_set_vsi_broadcast(struct i40e_hw *hw, u16 seid, bool set_filter, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         vsi number
+    :type seid: u16
 
-    :param bool set_filter:
+    :param set_filter:
         true to set filter, false to clear filter
+    :type set_filter: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_vsi_broadcast.description`:
 
@@ -995,17 +1128,21 @@ i40e_aq_set_vsi_vlan_promisc
 
     control the VLAN promiscuous setting
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         vsi number
+    :type seid: u16
 
-    :param bool enable:
+    :param enable:
         set MAC L2 layer unicast promiscuous enable/disable for a given VLAN
+    :type enable: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_vsi_params`:
 
@@ -1016,14 +1153,17 @@ i40e_aq_get_vsi_params
 
     get VSI configuration info
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_vsi_context \*vsi_ctx:
+    :param vsi_ctx:
         pointer to a vsi context struct
+    :type vsi_ctx: struct i40e_vsi_context \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_update_vsi_params`:
 
@@ -1032,14 +1172,17 @@ i40e_aq_update_vsi_params
 
 .. c:function:: i40e_status i40e_aq_update_vsi_params(struct i40e_hw *hw, struct i40e_vsi_context *vsi_ctx, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_vsi_context \*vsi_ctx:
+    :param vsi_ctx:
         pointer to a vsi context struct
+    :type vsi_ctx: struct i40e_vsi_context \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_update_vsi_params.description`:
 
@@ -1055,20 +1198,25 @@ i40e_aq_get_switch_config
 
 .. c:function:: i40e_status i40e_aq_get_switch_config(struct i40e_hw *hw, struct i40e_aqc_get_switch_config_resp *buf, u16 buf_size, u16 *start_seid, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_aqc_get_switch_config_resp \*buf:
+    :param buf:
         pointer to the result buffer
+    :type buf: struct i40e_aqc_get_switch_config_resp \*
 
-    :param u16 buf_size:
+    :param buf_size:
         length of input buffer
+    :type buf_size: u16
 
-    :param u16 \*start_seid:
+    :param start_seid:
         seid to start for the report, 0 == beginning
+    :type start_seid: u16 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_switch_config.description`:
 
@@ -1084,20 +1232,25 @@ i40e_aq_set_switch_config
 
 .. c:function:: enum i40e_status_code i40e_aq_set_switch_config(struct i40e_hw *hw, u16 flags, u16 valid_flags, u8 mode, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 flags:
+    :param flags:
         bit flag values to set
+    :type flags: u16
 
-    :param u16 valid_flags:
+    :param valid_flags:
         which bit flags to set
+    :type valid_flags: u16
 
-    :param u8 mode:
+    :param mode:
         cloud filter mode
+    :type mode: u8
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_switch_config.description`:
 
@@ -1113,26 +1266,33 @@ i40e_aq_get_firmware_version
 
 .. c:function:: i40e_status i40e_aq_get_firmware_version(struct i40e_hw *hw, u16 *fw_major_version, u16 *fw_minor_version, u32 *fw_build, u16 *api_major_version, u16 *api_minor_version, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 \*fw_major_version:
+    :param fw_major_version:
         firmware major version
+    :type fw_major_version: u16 \*
 
-    :param u16 \*fw_minor_version:
+    :param fw_minor_version:
         firmware minor version
+    :type fw_minor_version: u16 \*
 
-    :param u32 \*fw_build:
+    :param fw_build:
         firmware build number
+    :type fw_build: u32 \*
 
-    :param u16 \*api_major_version:
+    :param api_major_version:
         major queue version
+    :type api_major_version: u16 \*
 
-    :param u16 \*api_minor_version:
+    :param api_minor_version:
         minor queue version
+    :type api_minor_version: u16 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_firmware_version.description`:
 
@@ -1148,14 +1308,17 @@ i40e_aq_send_driver_version
 
 .. c:function:: i40e_status i40e_aq_send_driver_version(struct i40e_hw *hw, struct i40e_driver_version *dv, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_driver_version \*dv:
+    :param dv:
         driver's major, minor version
+    :type dv: struct i40e_driver_version \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_send_driver_version.description`:
 
@@ -1173,11 +1336,13 @@ i40e_get_link_status
 
     get status of the HW network link
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param bool \*link_up:
+    :param link_up:
         pointer to bool (true/false = linkup/linkdown)
+    :type link_up: bool \*
 
 .. _`i40e_get_link_status.description`:
 
@@ -1203,8 +1368,9 @@ i40e_update_link_info
 
     update status of the HW network link
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_aq_add_veb`:
 
@@ -1215,29 +1381,37 @@ i40e_aq_add_veb
 
     Insert a VEB between the VSI and the MAC
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 uplink_seid:
+    :param uplink_seid:
         the MAC or other gizmo SEID
+    :type uplink_seid: u16
 
-    :param u16 downlink_seid:
+    :param downlink_seid:
         the VSI SEID
+    :type downlink_seid: u16
 
-    :param u8 enabled_tc:
+    :param enabled_tc:
         bitmap of TCs to be enabled
+    :type enabled_tc: u8
 
-    :param bool default_port:
+    :param default_port:
         true for default port VSI, false for control port
+    :type default_port: bool
 
-    :param u16 \*veb_seid:
+    :param veb_seid:
         pointer to where to put the resulting VEB SEID
+    :type veb_seid: u16 \*
 
-    :param bool enable_stats:
+    :param enable_stats:
         true to turn on VEB stats
+    :type enable_stats: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_add_veb.description`:
 
@@ -1256,29 +1430,37 @@ i40e_aq_get_veb_parameters
 
     Retrieve VEB parameters
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 veb_seid:
+    :param veb_seid:
         the SEID of the VEB to query
+    :type veb_seid: u16
 
-    :param u16 \*switch_id:
+    :param switch_id:
         the uplink switch id
+    :type switch_id: u16 \*
 
-    :param bool \*floating:
+    :param floating:
         set to true if the VEB is floating
+    :type floating: bool \*
 
-    :param u16 \*statistic_index:
+    :param statistic_index:
         index of the stats counter block for this VEB
+    :type statistic_index: u16 \*
 
-    :param u16 \*vebs_used:
+    :param vebs_used:
         number of VEB's used by function
+    :type vebs_used: u16 \*
 
-    :param u16 \*vebs_free:
+    :param vebs_free:
         total VEB's not reserved by any function
+    :type vebs_free: u16 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_veb_parameters.description`:
 
@@ -1295,20 +1477,25 @@ i40e_aq_add_macvlan
 
 .. c:function:: i40e_status i40e_aq_add_macvlan(struct i40e_hw *hw, u16 seid, struct i40e_aqc_add_macvlan_element_data *mv_list, u16 count, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         VSI for the mac address
+    :type seid: u16
 
-    :param struct i40e_aqc_add_macvlan_element_data \*mv_list:
+    :param mv_list:
         list of macvlans to be added
+    :type mv_list: struct i40e_aqc_add_macvlan_element_data \*
 
-    :param u16 count:
+    :param count:
         length of the list
+    :type count: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_add_macvlan.description`:
 
@@ -1324,20 +1511,25 @@ i40e_aq_remove_macvlan
 
 .. c:function:: i40e_status i40e_aq_remove_macvlan(struct i40e_hw *hw, u16 seid, struct i40e_aqc_remove_macvlan_element_data *mv_list, u16 count, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         VSI for the mac address
+    :type seid: u16
 
-    :param struct i40e_aqc_remove_macvlan_element_data \*mv_list:
+    :param mv_list:
         list of macvlans to be removed
+    :type mv_list: struct i40e_aqc_remove_macvlan_element_data \*
 
-    :param u16 count:
+    :param count:
         length of the list
+    :type count: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_remove_macvlan.description`:
 
@@ -1355,38 +1547,49 @@ i40e_mirrorrule_op
 
     Internal helper function to add/delete mirror rule
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 opcode:
+    :param opcode:
         AQ opcode for add or delete mirror rule
+    :type opcode: u16
 
-    :param u16 sw_seid:
+    :param sw_seid:
         Switch SEID (to which rule refers)
+    :type sw_seid: u16
 
-    :param u16 rule_type:
+    :param rule_type:
         Rule Type (ingress/egress/VLAN)
+    :type rule_type: u16
 
-    :param u16 id:
+    :param id:
         Destination VSI SEID or Rule ID
+    :type id: u16
 
-    :param u16 count:
+    :param count:
         length of the list
+    :type count: u16
 
-    :param __le16 \*mr_list:
+    :param mr_list:
         list of mirrored VSI SEIDs or VLAN IDs
+    :type mr_list: __le16 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
-    :param u16 \*rule_id:
+    :param rule_id:
         Rule ID returned from FW
+    :type rule_id: u16 \*
 
-    :param u16 \*rules_used:
+    :param rules_used:
         Number of rules used in internal switch
+    :type rules_used: u16 \*
 
-    :param u16 \*rules_free:
+    :param rules_free:
         Number of rules free in internal switch
+    :type rules_free: u16 \*
 
 .. _`i40e_mirrorrule_op.description`:
 
@@ -1405,35 +1608,45 @@ i40e_aq_add_mirrorrule
 
     add a mirror rule
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 sw_seid:
+    :param sw_seid:
         Switch SEID (to which rule refers)
+    :type sw_seid: u16
 
-    :param u16 rule_type:
+    :param rule_type:
         Rule Type (ingress/egress/VLAN)
+    :type rule_type: u16
 
-    :param u16 dest_vsi:
+    :param dest_vsi:
         SEID of VSI to which packets will be mirrored
+    :type dest_vsi: u16
 
-    :param u16 count:
+    :param count:
         length of the list
+    :type count: u16
 
-    :param __le16 \*mr_list:
+    :param mr_list:
         list of mirrored VSI SEIDs or VLAN IDs
+    :type mr_list: __le16 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
-    :param u16 \*rule_id:
+    :param rule_id:
         Rule ID returned from FW
+    :type rule_id: u16 \*
 
-    :param u16 \*rules_used:
+    :param rules_used:
         Number of rules used in internal switch
+    :type rules_used: u16 \*
 
-    :param u16 \*rules_free:
+    :param rules_free:
         Number of rules free in internal switch
+    :type rules_free: u16 \*
 
 .. _`i40e_aq_add_mirrorrule.description`:
 
@@ -1451,33 +1664,42 @@ i40e_aq_delete_mirrorrule
 
     delete a mirror rule
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 sw_seid:
+    :param sw_seid:
         Switch SEID (to which rule refers)
+    :type sw_seid: u16
 
-    :param u16 rule_type:
+    :param rule_type:
         Rule Type (ingress/egress/VLAN)
+    :type rule_type: u16
 
-    :param u16 rule_id:
+    :param rule_id:
         Rule ID that is returned in the receive desc as part of
         add_mirrorrule.
+    :type rule_id: u16
 
-    :param u16 count:
+    :param count:
         length of the list
+    :type count: u16
 
-    :param __le16 \*mr_list:
+    :param mr_list:
         list of mirrored VLAN IDs to be removed
+    :type mr_list: __le16 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
-    :param u16 \*rules_used:
+    :param rules_used:
         Number of rules used in internal switch
+    :type rules_used: u16 \*
 
-    :param u16 \*rules_free:
+    :param rules_free:
         Number of rules free in internal switch
+    :type rules_free: u16 \*
 
 .. _`i40e_aq_delete_mirrorrule.description`:
 
@@ -1493,26 +1715,33 @@ i40e_aq_send_msg_to_vf
 
 .. c:function:: i40e_status i40e_aq_send_msg_to_vf(struct i40e_hw *hw, u16 vfid, u32 v_opcode, u32 v_retval, u8 *msg, u16 msglen, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 vfid:
+    :param vfid:
         VF id to send msg
+    :type vfid: u16
 
-    :param u32 v_opcode:
+    :param v_opcode:
         opcodes for VF-PF communication
+    :type v_opcode: u32
 
-    :param u32 v_retval:
+    :param v_retval:
         return error code
+    :type v_retval: u32
 
-    :param u8 \*msg:
+    :param msg:
         pointer to the msg buffer
+    :type msg: u8 \*
 
-    :param u16 msglen:
+    :param msglen:
         msg length
+    :type msglen: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_send_msg_to_vf.description`:
 
@@ -1528,17 +1757,21 @@ i40e_aq_debug_read_register
 
 .. c:function:: i40e_status i40e_aq_debug_read_register(struct i40e_hw *hw, u32 reg_addr, u64 *reg_val, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         register address
+    :type reg_addr: u32
 
-    :param u64 \*reg_val:
+    :param reg_val:
         register value
+    :type reg_val: u64 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_debug_read_register.description`:
 
@@ -1554,17 +1787,21 @@ i40e_aq_debug_write_register
 
 .. c:function:: i40e_status i40e_aq_debug_write_register(struct i40e_hw *hw, u32 reg_addr, u64 reg_val, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         register address
+    :type reg_addr: u32
 
-    :param u64 reg_val:
+    :param reg_val:
         register value
+    :type reg_val: u64
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_debug_write_register.description`:
 
@@ -1580,23 +1817,29 @@ i40e_aq_request_resource
 
 .. c:function:: i40e_status i40e_aq_request_resource(struct i40e_hw *hw, enum i40e_aq_resources_ids resource, enum i40e_aq_resource_access_type access, u8 sdp_number, u64 *timeout, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param enum i40e_aq_resources_ids resource:
+    :param resource:
         resource id
+    :type resource: enum i40e_aq_resources_ids
 
-    :param enum i40e_aq_resource_access_type access:
+    :param access:
         access type
+    :type access: enum i40e_aq_resource_access_type
 
-    :param u8 sdp_number:
+    :param sdp_number:
         resource number
+    :type sdp_number: u8
 
-    :param u64 \*timeout:
+    :param timeout:
         the maximum time in ms that the driver may hold the resource
+    :type timeout: u64 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_request_resource.description`:
 
@@ -1612,17 +1855,21 @@ i40e_aq_release_resource
 
 .. c:function:: i40e_status i40e_aq_release_resource(struct i40e_hw *hw, enum i40e_aq_resources_ids resource, u8 sdp_number, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param enum i40e_aq_resources_ids resource:
+    :param resource:
         resource id
+    :type resource: enum i40e_aq_resources_ids
 
-    :param u8 sdp_number:
+    :param sdp_number:
         resource number
+    :type sdp_number: u8
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_release_resource.description`:
 
@@ -1638,26 +1885,33 @@ i40e_aq_read_nvm
 
 .. c:function:: i40e_status i40e_aq_read_nvm(struct i40e_hw *hw, u8 module_pointer, u32 offset, u16 length, void *data, bool last_command, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 module_pointer:
+    :param module_pointer:
         module pointer location in words from the NVM beginning
+    :type module_pointer: u8
 
-    :param u32 offset:
+    :param offset:
         byte offset from the module beginning
+    :type offset: u32
 
-    :param u16 length:
+    :param length:
         length of the section to be read (in bytes from the offset)
+    :type length: u16
 
-    :param void \*data:
+    :param data:
         command buffer (size [bytes] = length)
+    :type data: void \*
 
-    :param bool last_command:
+    :param last_command:
         tells if this is the last command in a series
+    :type last_command: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_read_nvm.description`:
 
@@ -1673,23 +1927,29 @@ i40e_aq_erase_nvm
 
 .. c:function:: i40e_status i40e_aq_erase_nvm(struct i40e_hw *hw, u8 module_pointer, u32 offset, u16 length, bool last_command, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 module_pointer:
+    :param module_pointer:
         module pointer location in words from the NVM beginning
+    :type module_pointer: u8
 
-    :param u32 offset:
+    :param offset:
         offset in the module (expressed in 4 KB from module's beginning)
+    :type offset: u32
 
-    :param u16 length:
+    :param length:
         length of the section to be erased (expressed in 4 KB)
+    :type length: u16
 
-    :param bool last_command:
+    :param last_command:
         tells if this is the last command in a series
+    :type last_command: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_erase_nvm.description`:
 
@@ -1705,17 +1965,21 @@ i40e_parse_discover_capabilities
 
 .. c:function:: void i40e_parse_discover_capabilities(struct i40e_hw *hw, void *buff, u32 cap_count, enum i40e_admin_queue_opc list_type_opc)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param void \*buff:
+    :param buff:
         pointer to a buffer containing device/function capability records
+    :type buff: void \*
 
-    :param u32 cap_count:
+    :param cap_count:
         number of capability records in the list
+    :type cap_count: u32
 
-    :param enum i40e_admin_queue_opc list_type_opc:
+    :param list_type_opc:
         type of capabilities list to parse
+    :type list_type_opc: enum i40e_admin_queue_opc
 
 .. _`i40e_parse_discover_capabilities.description`:
 
@@ -1731,23 +1995,29 @@ i40e_aq_discover_capabilities
 
 .. c:function:: i40e_status i40e_aq_discover_capabilities(struct i40e_hw *hw, void *buff, u16 buff_size, u16 *data_size, enum i40e_admin_queue_opc list_type_opc, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param void \*buff:
+    :param buff:
         a virtual buffer to hold the capabilities
+    :type buff: void \*
 
-    :param u16 buff_size:
+    :param buff_size:
         Size of the virtual buffer
+    :type buff_size: u16
 
-    :param u16 \*data_size:
+    :param data_size:
         Size of the returned data, or buff size needed if AQ err==ENOMEM
+    :type data_size: u16 \*
 
-    :param enum i40e_admin_queue_opc list_type_opc:
+    :param list_type_opc:
         capabilities type to discover - pass in the command opcode
+    :type list_type_opc: enum i40e_admin_queue_opc
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_discover_capabilities.description`:
 
@@ -1763,29 +2033,37 @@ i40e_aq_update_nvm
 
 .. c:function:: i40e_status i40e_aq_update_nvm(struct i40e_hw *hw, u8 module_pointer, u32 offset, u16 length, void *data, bool last_command, u8 preservation_flags, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 module_pointer:
+    :param module_pointer:
         module pointer location in words from the NVM beginning
+    :type module_pointer: u8
 
-    :param u32 offset:
+    :param offset:
         byte offset from the module beginning
+    :type offset: u32
 
-    :param u16 length:
+    :param length:
         length of the section to be written (in bytes from the offset)
+    :type length: u16
 
-    :param void \*data:
+    :param data:
         command buffer (size [bytes] = length)
+    :type data: void \*
 
-    :param bool last_command:
+    :param last_command:
         tells if this is the last command in a series
+    :type last_command: bool
 
-    :param u8 preservation_flags:
+    :param preservation_flags:
         Preservation mode flags
+    :type preservation_flags: u8
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_update_nvm.description`:
 
@@ -1794,6 +2072,32 @@ Description
 
 Update the NVM using the admin queue commands
 
+.. _`i40e_aq_rearrange_nvm`:
+
+i40e_aq_rearrange_nvm
+=====================
+
+.. c:function:: i40e_status i40e_aq_rearrange_nvm(struct i40e_hw *hw, u8 rearrange_nvm, struct i40e_asq_cmd_details *cmd_details)
+
+    :param hw:
+        pointer to the hw struct
+    :type hw: struct i40e_hw \*
+
+    :param rearrange_nvm:
+        defines direction of rearrangement
+    :type rearrange_nvm: u8
+
+    :param cmd_details:
+        pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
+
+.. _`i40e_aq_rearrange_nvm.description`:
+
+Description
+-----------
+
+Rearrange NVM structure, available only for transition FW
+
 .. _`i40e_aq_get_lldp_mib`:
 
 i40e_aq_get_lldp_mib
@@ -1801,29 +2105,37 @@ i40e_aq_get_lldp_mib
 
 .. c:function:: i40e_status i40e_aq_get_lldp_mib(struct i40e_hw *hw, u8 bridge_type, u8 mib_type, void *buff, u16 buff_size, u16 *local_len, u16 *remote_len, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 bridge_type:
+    :param bridge_type:
         type of bridge requested
+    :type bridge_type: u8
 
-    :param u8 mib_type:
+    :param mib_type:
         Local, Remote or both Local and Remote MIBs
+    :type mib_type: u8
 
-    :param void \*buff:
+    :param buff:
         pointer to a user supplied buffer to store the MIB block
+    :type buff: void \*
 
-    :param u16 buff_size:
+    :param buff_size:
         size of the buffer (in bytes)
+    :type buff_size: u16
 
-    :param u16 \*local_len:
+    :param local_len:
         length of the returned Local LLDP MIB
+    :type local_len: u16 \*
 
-    :param u16 \*remote_len:
+    :param remote_len:
         length of the returned Remote LLDP MIB
+    :type remote_len: u16 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_lldp_mib.description`:
 
@@ -1839,14 +2151,17 @@ i40e_aq_cfg_lldp_mib_change_event
 
 .. c:function:: i40e_status i40e_aq_cfg_lldp_mib_change_event(struct i40e_hw *hw, bool enable_update, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param bool enable_update:
+    :param enable_update:
         Enable or Disable event posting
+    :type enable_update: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_cfg_lldp_mib_change_event.description`:
 
@@ -1863,14 +2178,17 @@ i40e_aq_stop_lldp
 
 .. c:function:: i40e_status i40e_aq_stop_lldp(struct i40e_hw *hw, bool shutdown_agent, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param bool shutdown_agent:
+    :param shutdown_agent:
         True if LLDP Agent needs to be Shutdown
+    :type shutdown_agent: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_stop_lldp.description`:
 
@@ -1886,11 +2204,13 @@ i40e_aq_start_lldp
 
 .. c:function:: i40e_status i40e_aq_start_lldp(struct i40e_hw *hw, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_start_lldp.description`:
 
@@ -1906,14 +2226,17 @@ i40e_aq_set_dcb_parameters
 
 .. c:function:: enum i40e_status_code i40e_aq_set_dcb_parameters(struct i40e_hw *hw, bool dcb_enable, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param bool dcb_enable:
+    :param dcb_enable:
         True if DCB configuration needs to be applied
+    :type dcb_enable: bool
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_cee_dcb_config`:
 
@@ -1922,17 +2245,21 @@ i40e_aq_get_cee_dcb_config
 
 .. c:function:: i40e_status i40e_aq_get_cee_dcb_config(struct i40e_hw *hw, void *buff, u16 buff_size, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param void \*buff:
+    :param buff:
         response buffer that stores CEE operational configuration
+    :type buff: void \*
 
-    :param u16 buff_size:
+    :param buff_size:
         size of the buffer passed
+    :type buff_size: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_cee_dcb_config.description`:
 
@@ -1948,20 +2275,25 @@ i40e_aq_add_udp_tunnel
 
 .. c:function:: i40e_status i40e_aq_add_udp_tunnel(struct i40e_hw *hw, u16 udp_port, u8 protocol_index, u8 *filter_index, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 udp_port:
+    :param udp_port:
         the UDP port to add in Host byte order
+    :type udp_port: u16
 
-    :param u8 protocol_index:
+    :param protocol_index:
         protocol index type
+    :type protocol_index: u8
 
-    :param u8 \*filter_index:
+    :param filter_index:
         pointer to filter index
+    :type filter_index: u8 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_add_udp_tunnel.note`:
 
@@ -1979,14 +2311,17 @@ i40e_aq_del_udp_tunnel
 
 .. c:function:: i40e_status i40e_aq_del_udp_tunnel(struct i40e_hw *hw, u8 index, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 index:
+    :param index:
         filter index
+    :type index: u8
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_delete_element`:
 
@@ -1997,14 +2332,17 @@ i40e_aq_delete_element
 
     Delete switch element
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         the SEID to delete from the switch
+    :type seid: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_delete_element.description`:
 
@@ -2022,11 +2360,13 @@ i40e_aq_dcb_updated
 
     DCB Updated Command
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_dcb_updated.description`:
 
@@ -2046,23 +2386,29 @@ i40e_aq_tx_sched_cmd
 
     generic Tx scheduler AQ command handler
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         seid for the physical port/switching component/vsi
+    :type seid: u16
 
-    :param void \*buff:
+    :param buff:
         Indirect buffer to hold data parameters and response
+    :type buff: void \*
 
-    :param u16 buff_size:
+    :param buff_size:
         Indirect buffer size
+    :type buff_size: u16
 
-    :param enum i40e_admin_queue_opc opcode:
+    :param opcode:
         Tx scheduler AQ command opcode
+    :type opcode: enum i40e_admin_queue_opc
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_tx_sched_cmd.description`:
 
@@ -2080,20 +2426,25 @@ i40e_aq_config_vsi_bw_limit
 
     Configure VSI BW Limit
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         VSI seid
+    :type seid: u16
 
-    :param u16 credit:
+    :param credit:
         BW limit credits (0 = disabled)
+    :type credit: u16
 
-    :param u8 max_credit:
+    :param max_credit:
         Max BW limit credits
+    :type max_credit: u8
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_config_vsi_tc_bw`:
 
@@ -2104,17 +2455,21 @@ i40e_aq_config_vsi_tc_bw
 
     Config VSI BW Allocation per TC
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         VSI seid
+    :type seid: u16
 
-    :param struct i40e_aqc_configure_vsi_tc_bw_data \*bw_data:
+    :param bw_data:
         Buffer holding enabled TCs, relative TC BW limit/credits
+    :type bw_data: struct i40e_aqc_configure_vsi_tc_bw_data \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_config_switch_comp_ets`:
 
@@ -2125,20 +2480,25 @@ i40e_aq_config_switch_comp_ets
 
     Enable/Disable/Modify ETS on the port
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         seid of the switching component connected to Physical Port
+    :type seid: u16
 
-    :param struct i40e_aqc_configure_switching_comp_ets_data \*ets_data:
+    :param ets_data:
         Buffer holding ETS parameters
+    :type ets_data: struct i40e_aqc_configure_switching_comp_ets_data \*
 
-    :param enum i40e_admin_queue_opc opcode:
+    :param opcode:
         Tx scheduler AQ command opcode
+    :type opcode: enum i40e_admin_queue_opc
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_config_switch_comp_bw_config`:
 
@@ -2149,17 +2509,21 @@ i40e_aq_config_switch_comp_bw_config
 
     Config Switch comp BW Alloc per TC
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         seid of the switching component
+    :type seid: u16
 
-    :param struct i40e_aqc_configure_switching_comp_bw_config_data \*bw_data:
+    :param bw_data:
         Buffer holding enabled TCs, relative/absolute TC BW limit/credits
+    :type bw_data: struct i40e_aqc_configure_switching_comp_bw_config_data \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_query_vsi_bw_config`:
 
@@ -2170,17 +2534,21 @@ i40e_aq_query_vsi_bw_config
 
     Query VSI BW configuration
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         seid of the VSI
+    :type seid: u16
 
-    :param struct i40e_aqc_query_vsi_bw_config_resp \*bw_data:
+    :param bw_data:
         Buffer to hold VSI BW configuration
+    :type bw_data: struct i40e_aqc_query_vsi_bw_config_resp \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_query_vsi_ets_sla_config`:
 
@@ -2191,17 +2559,21 @@ i40e_aq_query_vsi_ets_sla_config
 
     Query VSI BW configuration per TC
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         seid of the VSI
+    :type seid: u16
 
-    :param struct i40e_aqc_query_vsi_ets_sla_config_resp \*bw_data:
+    :param bw_data:
         Buffer to hold VSI BW configuration per TC
+    :type bw_data: struct i40e_aqc_query_vsi_ets_sla_config_resp \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_query_switch_comp_ets_config`:
 
@@ -2212,17 +2584,21 @@ i40e_aq_query_switch_comp_ets_config
 
     Query Switch comp BW config per TC
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         seid of the switching component
+    :type seid: u16
 
-    :param struct i40e_aqc_query_switching_comp_ets_config_resp \*bw_data:
+    :param bw_data:
         Buffer to hold switching component's per TC BW config
+    :type bw_data: struct i40e_aqc_query_switching_comp_ets_config_resp \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_query_port_ets_config`:
 
@@ -2233,17 +2609,21 @@ i40e_aq_query_port_ets_config
 
     Query Physical Port ETS configuration
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         seid of the VSI or switching component connected to Physical Port
+    :type seid: u16
 
-    :param struct i40e_aqc_query_port_ets_config_resp \*bw_data:
+    :param bw_data:
         Buffer to hold current ETS configuration for the Physical Port
+    :type bw_data: struct i40e_aqc_query_port_ets_config_resp \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_query_switch_comp_bw_config`:
 
@@ -2254,17 +2634,21 @@ i40e_aq_query_switch_comp_bw_config
 
     Query Switch comp BW configuration
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         seid of the switching component
+    :type seid: u16
 
-    :param struct i40e_aqc_query_switching_comp_bw_config_resp \*bw_data:
+    :param bw_data:
         Buffer to hold switching component's BW configuration
+    :type bw_data: struct i40e_aqc_query_switching_comp_bw_config_resp \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_validate_filter_settings`:
 
@@ -2273,11 +2657,13 @@ i40e_validate_filter_settings
 
 .. c:function:: i40e_status i40e_validate_filter_settings(struct i40e_hw *hw, struct i40e_filter_control_settings *settings)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_filter_control_settings \*settings:
+    :param settings:
         Filter control settings
+    :type settings: struct i40e_filter_control_settings \*
 
 .. _`i40e_validate_filter_settings.description`:
 
@@ -2298,11 +2684,13 @@ i40e_set_filter_control
 
 .. c:function:: i40e_status i40e_set_filter_control(struct i40e_hw *hw, struct i40e_filter_control_settings *settings)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_filter_control_settings \*settings:
+    :param settings:
         Filter control settings
+    :type settings: struct i40e_filter_control_settings \*
 
 .. _`i40e_set_filter_control.description`:
 
@@ -2322,32 +2710,41 @@ i40e_aq_add_rem_control_packet_filter
 
     Add or Remove Control Packet Filter
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         MAC address to use in the filter
+    :type mac_addr: u8 \*
 
-    :param u16 ethtype:
+    :param ethtype:
         Ethertype to use in the filter
+    :type ethtype: u16
 
-    :param u16 flags:
+    :param flags:
         Flags that needs to be applied to the filter
+    :type flags: u16
 
-    :param u16 vsi_seid:
+    :param vsi_seid:
         seid of the control VSI
+    :type vsi_seid: u16
 
-    :param u16 queue:
+    :param queue:
         VSI queue number to send the packet to
+    :type queue: u16
 
-    :param bool is_add:
+    :param is_add:
         Add control packet filter if True else remove
+    :type is_add: bool
 
-    :param struct i40e_control_filter_stats \*stats:
+    :param stats:
         Structure to hold information on control filter counts
+    :type stats: struct i40e_control_filter_stats \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_add_rem_control_packet_filter.description`:
 
@@ -2367,11 +2764,13 @@ i40e_add_filter_to_drop_tx_flow_control_frames
 
     filter to drop flow control
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         VSI seid to add ethertype filter from
+    :type seid: u16
 
 .. _`i40e_aq_alternate_read`:
 
@@ -2380,20 +2779,25 @@ i40e_aq_alternate_read
 
 .. c:function:: i40e_status i40e_aq_alternate_read(struct i40e_hw *hw, u32 reg_addr0, u32 *reg_val0, u32 reg_addr1, u32 *reg_val1)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u32 reg_addr0:
+    :param reg_addr0:
         address of first dword to be read
+    :type reg_addr0: u32
 
-    :param u32 \*reg_val0:
+    :param reg_val0:
         pointer for data read from 'reg_addr0'
+    :type reg_val0: u32 \*
 
-    :param u32 reg_addr1:
+    :param reg_addr1:
         address of second dword to be read
+    :type reg_addr1: u32
 
-    :param u32 \*reg_val1:
+    :param reg_val1:
         pointer for data read from 'reg_addr1'
+    :type reg_val1: u32 \*
 
 .. _`i40e_aq_alternate_read.description`:
 
@@ -2411,11 +2815,13 @@ i40e_aq_resume_port_tx
 
 .. c:function:: i40e_status i40e_aq_resume_port_tx(struct i40e_hw *hw, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_resume_port_tx.description`:
 
@@ -2433,11 +2839,13 @@ i40e_set_pci_config_data
 
     store PCI bus info
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 link_status:
+    :param link_status:
         the link status word from PCI config space
+    :type link_status: u16
 
 .. _`i40e_set_pci_config_data.description`:
 
@@ -2453,35 +2861,45 @@ i40e_aq_debug_dump
 
 .. c:function:: i40e_status i40e_aq_debug_dump(struct i40e_hw *hw, u8 cluster_id, u8 table_id, u32 start_index, u16 buff_size, void *buff, u16 *ret_buff_size, u8 *ret_next_table, u32 *ret_next_index, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u8 cluster_id:
+    :param cluster_id:
         specific cluster to dump
+    :type cluster_id: u8
 
-    :param u8 table_id:
+    :param table_id:
         table id within cluster
+    :type table_id: u8
 
-    :param u32 start_index:
+    :param start_index:
         index of line in the block to read
+    :type start_index: u32
 
-    :param u16 buff_size:
+    :param buff_size:
         dump buffer size
+    :type buff_size: u16
 
-    :param void \*buff:
+    :param buff:
         dump buffer
+    :type buff: void \*
 
-    :param u16 \*ret_buff_size:
+    :param ret_buff_size:
         actual buffer size returned
+    :type ret_buff_size: u16 \*
 
-    :param u8 \*ret_next_table:
+    :param ret_next_table:
         next block to read
+    :type ret_next_table: u8 \*
 
-    :param u32 \*ret_next_index:
+    :param ret_next_index:
         next index to read
+    :type ret_next_index: u32 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_debug_dump.description`:
 
@@ -2497,20 +2915,25 @@ i40e_read_bw_from_alt_ram
 
 .. c:function:: i40e_status i40e_read_bw_from_alt_ram(struct i40e_hw *hw, u32 *max_bw, u32 *min_bw, bool *min_valid, bool *max_valid)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u32 \*max_bw:
+    :param max_bw:
         pointer for max_bw read
+    :type max_bw: u32 \*
 
-    :param u32 \*min_bw:
+    :param min_bw:
         pointer for min_bw read
+    :type min_bw: u32 \*
 
-    :param bool \*min_valid:
+    :param min_valid:
         pointer for bool that is true if min_bw is a valid value
+    :type min_valid: bool \*
 
-    :param bool \*max_valid:
+    :param max_valid:
         pointer for bool that is true if max_bw is a valid value
+    :type max_valid: bool \*
 
 .. _`i40e_read_bw_from_alt_ram.description`:
 
@@ -2526,14 +2949,17 @@ i40e_aq_configure_partition_bw
 
 .. c:function:: i40e_status i40e_aq_configure_partition_bw(struct i40e_hw *hw, struct i40e_aqc_configure_partition_bw_data *bw_data, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_aqc_configure_partition_bw_data \*bw_data:
+    :param bw_data:
         Buffer holding valid pfs and bw limits
+    :type bw_data: struct i40e_aqc_configure_partition_bw_data \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_configure_partition_bw.description`:
 
@@ -2549,17 +2975,21 @@ i40e_read_phy_register_clause22
 
 .. c:function:: i40e_status i40e_read_phy_register_clause22(struct i40e_hw *hw, u16 reg, u8 phy_addr, u16 *value)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 reg:
+    :param reg:
         register address in the page
+    :type reg: u16
 
-    :param u8 phy_addr:
+    :param phy_addr:
         PHY address on MDIO interface
+    :type phy_addr: u8
 
-    :param u16 \*value:
+    :param value:
         PHY register value
+    :type value: u16 \*
 
 .. _`i40e_read_phy_register_clause22.description`:
 
@@ -2575,17 +3005,21 @@ i40e_write_phy_register_clause22
 
 .. c:function:: i40e_status i40e_write_phy_register_clause22(struct i40e_hw *hw, u16 reg, u8 phy_addr, u16 value)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 reg:
+    :param reg:
         register address in the page
+    :type reg: u16
 
-    :param u8 phy_addr:
+    :param phy_addr:
         PHY address on MDIO interface
+    :type phy_addr: u8
 
-    :param u16 value:
+    :param value:
         PHY register value
+    :type value: u16
 
 .. _`i40e_write_phy_register_clause22.description`:
 
@@ -2601,20 +3035,25 @@ i40e_read_phy_register_clause45
 
 .. c:function:: i40e_status i40e_read_phy_register_clause45(struct i40e_hw *hw, u8 page, u16 reg, u8 phy_addr, u16 *value)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u8 page:
+    :param page:
         registers page number
+    :type page: u8
 
-    :param u16 reg:
+    :param reg:
         register address in the page
+    :type reg: u16
 
-    :param u8 phy_addr:
+    :param phy_addr:
         PHY address on MDIO interface
+    :type phy_addr: u8
 
-    :param u16 \*value:
+    :param value:
         PHY register value
+    :type value: u16 \*
 
 .. _`i40e_read_phy_register_clause45.description`:
 
@@ -2630,20 +3069,25 @@ i40e_write_phy_register_clause45
 
 .. c:function:: i40e_status i40e_write_phy_register_clause45(struct i40e_hw *hw, u8 page, u16 reg, u8 phy_addr, u16 value)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u8 page:
+    :param page:
         registers page number
+    :type page: u8
 
-    :param u16 reg:
+    :param reg:
         register address in the page
+    :type reg: u16
 
-    :param u8 phy_addr:
+    :param phy_addr:
         PHY address on MDIO interface
+    :type phy_addr: u8
 
-    :param u16 value:
+    :param value:
         PHY register value
+    :type value: u16
 
 .. _`i40e_write_phy_register_clause45.description`:
 
@@ -2659,20 +3103,25 @@ i40e_write_phy_register
 
 .. c:function:: i40e_status i40e_write_phy_register(struct i40e_hw *hw, u8 page, u16 reg, u8 phy_addr, u16 value)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u8 page:
+    :param page:
         registers page number
+    :type page: u8
 
-    :param u16 reg:
+    :param reg:
         register address in the page
+    :type reg: u16
 
-    :param u8 phy_addr:
+    :param phy_addr:
         PHY address on MDIO interface
+    :type phy_addr: u8
 
-    :param u16 value:
+    :param value:
         PHY register value
+    :type value: u16
 
 .. _`i40e_write_phy_register.description`:
 
@@ -2688,20 +3137,25 @@ i40e_read_phy_register
 
 .. c:function:: i40e_status i40e_read_phy_register(struct i40e_hw *hw, u8 page, u16 reg, u8 phy_addr, u16 *value)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u8 page:
+    :param page:
         registers page number
+    :type page: u8
 
-    :param u16 reg:
+    :param reg:
         register address in the page
+    :type reg: u16
 
-    :param u8 phy_addr:
+    :param phy_addr:
         PHY address on MDIO interface
+    :type phy_addr: u8
 
-    :param u16 \*value:
+    :param value:
         PHY register value
+    :type value: u16 \*
 
 .. _`i40e_read_phy_register.description`:
 
@@ -2717,11 +3171,13 @@ i40e_get_phy_address
 
 .. c:function:: u8 i40e_get_phy_address(struct i40e_hw *hw, u8 dev_num)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u8 dev_num:
+    :param dev_num:
         PHY port num that address we want
+    :type dev_num: u8
 
 .. _`i40e_get_phy_address.description`:
 
@@ -2737,14 +3193,17 @@ i40e_blink_phy_link_led
 
 .. c:function:: i40e_status i40e_blink_phy_link_led(struct i40e_hw *hw, u32 time, u32 interval)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u32 time:
+    :param time:
         time how long led will blinks in secs
+    :type time: u32
 
-    :param u32 interval:
+    :param interval:
         gap between LED on and off in msecs
+    :type interval: u32
 
 .. _`i40e_blink_phy_link_led.description`:
 
@@ -2762,14 +3221,17 @@ i40e_led_get_reg
 
     read LED register
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 led_addr:
+    :param led_addr:
         LED register address
+    :type led_addr: u16
 
-    :param u32 \*reg_val:
+    :param reg_val:
         read register value
+    :type reg_val: u32 \*
 
 .. _`i40e_led_set_reg`:
 
@@ -2780,14 +3242,17 @@ i40e_led_set_reg
 
     write LED register
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 led_addr:
+    :param led_addr:
         LED register address
+    :type led_addr: u16
 
-    :param u32 reg_val:
+    :param reg_val:
         register value to write
+    :type reg_val: u32
 
 .. _`i40e_led_get_phy`:
 
@@ -2798,14 +3263,17 @@ i40e_led_get_phy
 
     return current on/off mode
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 \*led_addr:
+    :param led_addr:
         address of led register to use
+    :type led_addr: u16 \*
 
-    :param u16 \*val:
+    :param val:
         original value of register to use
+    :type val: u16 \*
 
 .. _`i40e_led_set_phy`:
 
@@ -2814,17 +3282,21 @@ i40e_led_set_phy
 
 .. c:function:: i40e_status i40e_led_set_phy(struct i40e_hw *hw, bool on, u16 led_addr, u32 mode)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param bool on:
+    :param on:
         true or false
+    :type on: bool
 
-    :param u16 led_addr:
+    :param led_addr:
         address of led register to use
+    :type led_addr: u16
 
-    :param u32 mode:
+    :param mode:
         original val plus bit for set or ignore
+    :type mode: u32
 
 .. _`i40e_led_set_phy.description`:
 
@@ -2842,17 +3314,21 @@ i40e_aq_rx_ctl_read_register
 
     use FW to read from an Rx control register
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         register address
+    :type reg_addr: u32
 
-    :param u32 \*reg_val:
+    :param reg_val:
         ptr to register value
+    :type reg_val: u32 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_rx_ctl_read_register.description`:
 
@@ -2871,11 +3347,13 @@ i40e_read_rx_ctl
 
     read from an Rx control register
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         register address
+    :type reg_addr: u32
 
 .. _`i40e_aq_rx_ctl_write_register`:
 
@@ -2884,17 +3362,21 @@ i40e_aq_rx_ctl_write_register
 
 .. c:function:: i40e_status i40e_aq_rx_ctl_write_register(struct i40e_hw *hw, u32 reg_addr, u32 reg_val, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         register address
+    :type reg_addr: u32
 
-    :param u32 reg_val:
+    :param reg_val:
         register value
+    :type reg_val: u32
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_rx_ctl_write_register.description`:
 
@@ -2913,14 +3395,17 @@ i40e_write_rx_ctl
 
     write to an Rx control register
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         register address
+    :type reg_addr: u32
 
-    :param u32 reg_val:
+    :param reg_val:
         register value
+    :type reg_val: u32
 
 .. _`i40e_aq_set_phy_register`:
 
@@ -2929,23 +3414,29 @@ i40e_aq_set_phy_register
 
 .. c:function:: i40e_status i40e_aq_set_phy_register(struct i40e_hw *hw, u8 phy_select, u8 dev_addr, u32 reg_addr, u32 reg_val, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 phy_select:
+    :param phy_select:
         select which phy should be accessed
+    :type phy_select: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         PHY device address
+    :type dev_addr: u8
 
-    :param u32 reg_addr:
+    :param reg_addr:
         PHY register address
+    :type reg_addr: u32
 
-    :param u32 reg_val:
+    :param reg_val:
         new register value
+    :type reg_val: u32
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_set_phy_register.description`:
 
@@ -2961,23 +3452,29 @@ i40e_aq_get_phy_register
 
 .. c:function:: i40e_status i40e_aq_get_phy_register(struct i40e_hw *hw, u8 phy_select, u8 dev_addr, u32 reg_addr, u32 *reg_val, struct i40e_asq_cmd_details *cmd_details)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 phy_select:
+    :param phy_select:
         select which phy should be accessed
+    :type phy_select: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         PHY device address
+    :type dev_addr: u8
 
-    :param u32 reg_addr:
+    :param reg_addr:
         PHY register address
+    :type reg_addr: u32
 
-    :param u32 \*reg_val:
+    :param reg_val:
         read register value
+    :type reg_val: u32 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_phy_register.description`:
 
@@ -2995,26 +3492,33 @@ i40e_aq_write_ddp
 
     Write dynamic device personalization (ddp)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param void \*buff:
+    :param buff:
         command buffer (size in bytes = buff_size)
+    :type buff: void \*
 
-    :param u16 buff_size:
+    :param buff_size:
         buffer size in bytes
+    :type buff_size: u16
 
-    :param u32 track_id:
+    :param track_id:
         package tracking id
+    :type track_id: u32
 
-    :param u32 \*error_offset:
+    :param error_offset:
         returns error offset
+    :type error_offset: u32 \*
 
-    :param u32 \*error_info:
+    :param error_info:
         returns error information
+    :type error_info: u32 \*
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_aq_get_ddp_list`:
 
@@ -3025,20 +3529,25 @@ i40e_aq_get_ddp_list
 
     Read dynamic device personalization (ddp)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param void \*buff:
+    :param buff:
         command buffer (size in bytes = buff_size)
+    :type buff: void \*
 
-    :param u16 buff_size:
+    :param buff_size:
         buffer size in bytes
+    :type buff_size: u16
 
-    :param u8 flags:
+    :param flags:
         AdminQ command flags
+    :type flags: u8
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure or NULL
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_find_segment_in_package`:
 
@@ -3047,11 +3556,13 @@ i40e_find_segment_in_package
 
 .. c:function:: struct i40e_generic_seg_header *i40e_find_segment_in_package(u32 segment_type, struct i40e_package_header *pkg_hdr)
 
-    :param u32 segment_type:
+    :param segment_type:
         the segment type to search for (i.e., SEGMENT_TYPE_I40E)
+    :type segment_type: u32
 
-    :param struct i40e_package_header \*pkg_hdr:
+    :param pkg_hdr:
         pointer to the package header to be searched
+    :type pkg_hdr: struct i40e_package_header \*
 
 .. _`i40e_find_segment_in_package.description`:
 
@@ -3069,14 +3580,17 @@ i40e_write_profile
 
 .. c:function:: enum i40e_status_code i40e_write_profile(struct i40e_hw *hw, struct i40e_profile_segment *profile, u32 track_id)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_profile_segment \*profile:
+    :param profile:
         pointer to the profile segment of the package to be downloaded
+    :type profile: struct i40e_profile_segment \*
 
-    :param u32 track_id:
+    :param track_id:
         package tracking id
+    :type track_id: u32
 
 .. _`i40e_write_profile.description`:
 
@@ -3092,17 +3606,21 @@ i40e_add_pinfo_to_list
 
 .. c:function:: enum i40e_status_code i40e_add_pinfo_to_list(struct i40e_hw *hw, struct i40e_profile_segment *profile, u8 *profile_info_sec, u32 track_id)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_profile_segment \*profile:
+    :param profile:
         pointer to the profile segment of the package
+    :type profile: struct i40e_profile_segment \*
 
-    :param u8 \*profile_info_sec:
+    :param profile_info_sec:
         buffer for information section
+    :type profile_info_sec: u8 \*
 
-    :param u32 track_id:
+    :param track_id:
         package tracking id
+    :type track_id: u32
 
 .. _`i40e_add_pinfo_to_list.description`:
 
@@ -3118,17 +3636,21 @@ i40e_aq_add_cloud_filters
 
 .. c:function:: enum i40e_status_code i40e_aq_add_cloud_filters(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_data *filters, u8 filter_count)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         VSI seid to add cloud filters from
+    :type seid: u16
 
-    :param struct i40e_aqc_cloud_filters_element_data \*filters:
+    :param filters:
         Buffer which contains the filters to be added
+    :type filters: struct i40e_aqc_cloud_filters_element_data \*
 
-    :param u8 filter_count:
+    :param filter_count:
         number of filters contained in the buffer
+    :type filter_count: u8
 
 .. _`i40e_aq_add_cloud_filters.description`:
 
@@ -3146,17 +3668,21 @@ i40e_aq_add_cloud_filters_bb
 
 .. c:function:: enum i40e_status_code i40e_aq_add_cloud_filters_bb(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_bb *filters, u8 filter_count)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         VSI seid to add cloud filters from
+    :type seid: u16
 
-    :param struct i40e_aqc_cloud_filters_element_bb \*filters:
+    :param filters:
         Buffer which contains the filters in big buffer to be added
+    :type filters: struct i40e_aqc_cloud_filters_element_bb \*
 
-    :param u8 filter_count:
+    :param filter_count:
         number of filters contained in the buffer
+    :type filter_count: u8
 
 .. _`i40e_aq_add_cloud_filters_bb.description`:
 
@@ -3174,17 +3700,21 @@ i40e_aq_rem_cloud_filters
 
 .. c:function:: enum i40e_status_code i40e_aq_rem_cloud_filters(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_data *filters, u8 filter_count)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         VSI seid to remove cloud filters from
+    :type seid: u16
 
-    :param struct i40e_aqc_cloud_filters_element_data \*filters:
+    :param filters:
         Buffer which contains the filters to be removed
+    :type filters: struct i40e_aqc_cloud_filters_element_data \*
 
-    :param u8 filter_count:
+    :param filter_count:
         number of filters contained in the buffer
+    :type filter_count: u8
 
 .. _`i40e_aq_rem_cloud_filters.description`:
 
@@ -3202,17 +3732,21 @@ i40e_aq_rem_cloud_filters_bb
 
 .. c:function:: enum i40e_status_code i40e_aq_rem_cloud_filters_bb(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_bb *filters, u8 filter_count)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 seid:
+    :param seid:
         VSI seid to remove cloud filters from
+    :type seid: u16
 
-    :param struct i40e_aqc_cloud_filters_element_bb \*filters:
+    :param filters:
         Buffer which contains the filters in big buffer to be removed
+    :type filters: struct i40e_aqc_cloud_filters_element_bb \*
 
-    :param u8 filter_count:
+    :param filter_count:
         number of filters contained in the buffer
+    :type filter_count: u8
 
 .. _`i40e_aq_rem_cloud_filters_bb.description`:
 

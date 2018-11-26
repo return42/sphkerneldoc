@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct chv_alternate_function {
-        unsigned pin;
+        unsigned int pin;
         u8 mode;
         bool invert_oe;
     }
@@ -55,7 +55,7 @@ Definition
 
     struct chv_pingroup {
         const char *name;
-        const unsigned *pins;
+        const unsigned int *pins;
         size_t npins;
         struct chv_alternate_function altfunc;
         const struct chv_alternate_function *overrides;
@@ -86,42 +86,6 @@ noverrides
     Number of per pin alternate function overrides if
     \ ``overrides``\  != NULL.
 
-.. _`chv_function`:
-
-struct chv_function
-===================
-
-.. c:type:: struct chv_function
-
-    A CHV pinmux function
-
-.. _`chv_function.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct chv_function {
-        const char *name;
-        const char * const *groups;
-        size_t ngroups;
-    }
-
-.. _`chv_function.members`:
-
-Members
--------
-
-name
-    Name of the function
-
-groups
-    An array of groups for this function
-
-ngroups
-    Number of groups in \ ``groups``\ 
-
 .. _`chv_gpio_pinrange`:
 
 struct chv_gpio_pinrange
@@ -139,8 +103,8 @@ Definition
 .. code-block:: c
 
     struct chv_gpio_pinrange {
-        unsigned base;
-        unsigned npins;
+        unsigned int base;
+        unsigned int npins;
     }
 
 .. _`chv_gpio_pinrange.members`:
@@ -176,7 +140,7 @@ Definition
         size_t npins;
         const struct chv_pingroup *groups;
         size_t ngroups;
-        const struct chv_function *functions;
+        const struct intel_function *functions;
         size_t nfunctions;
         const struct chv_gpio_pinrange *gpio_ranges;
         size_t ngpio_ranges;
@@ -220,7 +184,7 @@ nirqs
     Total number of IRQs this community can generate
 
 acpi_space_id
-    *undescribed*
+    An address space ID for ACPI OpRegion handler
 
 .. _`chv_pinctrl`:
 
@@ -278,10 +242,10 @@ community
     Community this pinctrl instance represents
 
 saved_intmask
-    *undescribed*
+    Interrupt mask saved for system sleep
 
 saved_pin_context
-    *undescribed*
+    Pointer to a context of the pins saved for system sleep
 
 .. _`chv_pinctrl.description`:
 

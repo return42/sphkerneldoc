@@ -10,11 +10,13 @@ zfcp_get_port_by_wwpn
 
     find port in port list of adapter by wwpn
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         pointer to adapter to search for port
+    :type adapter: struct zfcp_adapter \*
 
-    :param u64 wwpn:
+    :param wwpn:
         wwpn to search for
+    :type wwpn: u64
 
 .. _`zfcp_get_port_by_wwpn.return`:
 
@@ -32,8 +34,9 @@ zfcp_status_read_refill
 
     refill the long running status_read_requests
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         ptr to struct zfcp_adapter for which the buffers should be refilled
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_status_read_refill.return`:
 
@@ -54,8 +57,9 @@ zfcp_adapter_enqueue
 
     enqueue a new adapter to the list
 
-    :param struct ccw_device \*ccw_device:
+    :param ccw_device:
         pointer to the struct cc_device
+    :type ccw_device: struct ccw_device \*
 
 .. _`zfcp_adapter_enqueue.return`:
 
@@ -76,8 +80,9 @@ zfcp_adapter_release
 
     remove the adapter from the resource list
 
-    :param struct kref \*ref:
+    :param ref:
         pointer to struct kref
+    :type ref: struct kref \*
 
 .. _`zfcp_adapter_release.locks`:
 
@@ -95,17 +100,21 @@ zfcp_port_enqueue
 
     enqueue port to port list of adapter
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         adapter where remote port is added
+    :type adapter: struct zfcp_adapter \*
 
-    :param u64 wwpn:
+    :param wwpn:
         WWPN of the remote port to be enqueued
+    :type wwpn: u64
 
-    :param u32 status:
+    :param status:
         initial status for the port
+    :type status: u32
 
-    :param u32 d_id:
+    :param d_id:
         destination id of the remote port to be enqueued
+    :type d_id: u32
 
 .. _`zfcp_port_enqueue.return`:
 
@@ -127,12 +136,14 @@ zfcp_sg_free_table
 
     free memory used by scatterlists
 
-    :param struct scatterlist \*sg:
+    :param sg:
         pointer to scatterlist
+    :type sg: struct scatterlist \*
 
-    :param int count:
+    :param count:
         number of scatterlist which are to be free'ed
         the scatterlist are expected to reference pages always
+    :type count: int
 
 .. _`zfcp_sg_setup_table`:
 
@@ -143,12 +154,14 @@ zfcp_sg_setup_table
 
     init scatterlist and allocate, assign buffers
 
-    :param struct scatterlist \*sg:
+    :param sg:
         pointer to struct scatterlist
+    :type sg: struct scatterlist \*
 
-    :param int count:
+    :param count:
         number of scatterlists which should be assigned with buffers
         of size page
+    :type count: int
 
 .. _`zfcp_sg_setup_table.return`:
 

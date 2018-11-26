@@ -10,8 +10,9 @@ hibernation_set_ops
 
     Set the global hibernate operations.
 
-    :param const struct platform_hibernation_ops \*ops:
+    :param ops:
         Hibernation operations to use in subsequent hibernation transitions.
+    :type ops: const struct platform_hibernation_ops \*
 
 .. _`platform_begin`:
 
@@ -22,8 +23,9 @@ platform_begin
 
     Call platform to start hibernation.
 
-    :param int platform_mode:
+    :param platform_mode:
         Whether or not to use the platform driver.
+    :type platform_mode: int
 
 .. _`platform_end`:
 
@@ -34,8 +36,9 @@ platform_end
 
     Call platform to finish transition to the working state.
 
-    :param int platform_mode:
+    :param platform_mode:
         Whether or not to use the platform driver.
+    :type platform_mode: int
 
 .. _`platform_pre_snapshot`:
 
@@ -46,8 +49,9 @@ platform_pre_snapshot
 
     Call platform to prepare the machine for hibernation.
 
-    :param int platform_mode:
+    :param platform_mode:
         Whether or not to use the platform driver.
+    :type platform_mode: int
 
 .. _`platform_pre_snapshot.description`:
 
@@ -66,8 +70,9 @@ platform_leave
 
     Call platform to prepare a transition to the working state.
 
-    :param int platform_mode:
+    :param platform_mode:
         Whether or not to use the platform driver.
+    :type platform_mode: int
 
 .. _`platform_leave.description`:
 
@@ -88,8 +93,9 @@ platform_finish
 
     Call platform to switch the system to the working state.
 
-    :param int platform_mode:
+    :param platform_mode:
         Whether or not to use the platform driver.
+    :type platform_mode: int
 
 .. _`platform_finish.description`:
 
@@ -110,8 +116,9 @@ platform_pre_restore
 
     Prepare for hibernate image restoration.
 
-    :param int platform_mode:
+    :param platform_mode:
         Whether or not to use the platform driver.
+    :type platform_mode: int
 
 .. _`platform_pre_restore.description`:
 
@@ -133,8 +140,9 @@ platform_restore_cleanup
 
     Switch to the working state after failing restore.
 
-    :param int platform_mode:
+    :param platform_mode:
         Whether or not to use the platform driver.
+    :type platform_mode: int
 
 .. _`platform_restore_cleanup.description`:
 
@@ -157,8 +165,9 @@ platform_recover
 
     Recover from a failure to suspend devices.
 
-    :param int platform_mode:
+    :param platform_mode:
         Whether or not to use the platform driver.
+    :type platform_mode: int
 
 .. _`swsusp_show_speed`:
 
@@ -169,17 +178,21 @@ swsusp_show_speed
 
     Print time elapsed between two events during hibernation.
 
-    :param ktime_t start:
+    :param start:
         Starting event.
+    :type start: ktime_t
 
-    :param ktime_t stop:
+    :param stop:
         Final event.
+    :type stop: ktime_t
 
-    :param unsigned nr_pages:
+    :param nr_pages:
         Number of memory pages processed between \ ``start``\  and \ ``stop``\ .
+    :type nr_pages: unsigned
 
-    :param char \*msg:
+    :param msg:
         Additional diagnostic message to print.
+    :type msg: char \*
 
 .. _`create_image`:
 
@@ -190,8 +203,9 @@ create_image
 
     Create a hibernation image.
 
-    :param int platform_mode:
+    :param platform_mode:
         Whether or not to use the platform driver.
+    :type platform_mode: int
 
 .. _`create_image.description`:
 
@@ -212,15 +226,16 @@ hibernation_snapshot
 
     Quiesce devices and create a hibernation image.
 
-    :param int platform_mode:
+    :param platform_mode:
         If set, use platform driver to prepare for the transition.
+    :type platform_mode: int
 
 .. _`hibernation_snapshot.description`:
 
 Description
 -----------
 
-This routine must be called with pm_mutex held.
+This routine must be called with system_transition_mutex held.
 
 .. _`resume_target_kernel`:
 
@@ -231,8 +246,9 @@ resume_target_kernel
 
     Restore system state from a hibernation image.
 
-    :param bool platform_mode:
+    :param platform_mode:
         Whether or not to use the platform driver.
+    :type platform_mode: bool
 
 .. _`resume_target_kernel.description`:
 
@@ -253,16 +269,18 @@ hibernation_restore
 
     Quiesce devices and restore from a hibernation image.
 
-    :param int platform_mode:
+    :param platform_mode:
         If set, use platform driver to prepare for the transition.
+    :type platform_mode: int
 
 .. _`hibernation_restore.description`:
 
 Description
 -----------
 
-This routine must be called with pm_mutex held.  If it is successful, control
-reappears in the restored target kernel in \ :c:func:`hibernation_snapshot`\ .
+This routine must be called with system_transition_mutex held.  If it is
+successful, control reappears in the restored target kernel in
+\ :c:func:`hibernation_snapshot`\ .
 
 .. _`hibernation_platform_enter`:
 
@@ -273,8 +291,9 @@ hibernation_platform_enter
 
     Power off the system using the platform driver.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`power_down`:
 
@@ -285,8 +304,9 @@ power_down
 
     Shut the machine down for hibernation.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`power_down.description`:
 
@@ -306,8 +326,9 @@ hibernate
 
     Carry out system hibernation, including saving the image.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`software_resume`:
 
@@ -318,8 +339,9 @@ software_resume
 
     Resume from a saved hibernation image.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`software_resume.description`:
 

@@ -10,14 +10,17 @@ bios_parser_get_gpio_pin_info
 
     Get GpioPin information of input gpio id
 
-    :param struct dc_bios \*dcb:
+    :param dcb:
         *undescribed*
+    :type dcb: struct dc_bios \*
 
-    :param uint32_t gpio_id:
+    :param gpio_id:
         *undescribed*
+    :type gpio_id: uint32_t
 
-    :param struct gpio_pin_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct gpio_pin_info \*
 
 .. _`bios_parser_get_gpio_pin_info.description`:
 
@@ -42,17 +45,21 @@ bios_parser_get_spread_spectrum_info
 
     Get spread spectrum information from the ASIC_InternalSS_Info(ver 2.1 or ver 3.1) or SS_Info table from the VBIOS. Currently ASIC_InternalSS_Info ver 2.1 can co-exist with SS_Info table. Expect ASIC_InternalSS_Info ver 3.1, there is only one entry for each signal /ss id.  However, there is no planning of supporting multiple spread Sprectum entry for EverGreen \ ``param``\  [in] this \ ``param``\  [in] signal, ASSignalType to be converted to info index \ ``param``\  [in] index, number of entries that match the converted info index \ ``param``\  [out] ss_info, sprectrum information structure, \ ``return``\  Bios parser result code
 
-    :param struct dc_bios \*dcb:
+    :param dcb:
         *undescribed*
+    :type dcb: struct dc_bios \*
 
-    :param enum as_signal_type signal:
+    :param signal:
         *undescribed*
+    :type signal: enum as_signal_type
 
-    :param uint32_t index:
+    :param index:
         *undescribed*
+    :type index: uint32_t
 
-    :param struct spread_spectrum_info \*ss_info:
+    :param ss_info:
         *undescribed*
+    :type ss_info: struct spread_spectrum_info \*
 
 .. _`bios_parser_set_scratch_critical_state`:
 
@@ -61,11 +68,13 @@ bios_parser_set_scratch_critical_state
 
 .. c:function:: void bios_parser_set_scratch_critical_state(struct dc_bios *dcb, bool state)
 
-    :param struct dc_bios \*dcb:
+    :param dcb:
         *undescribed*
+    :type dcb: struct dc_bios \*
 
-    :param bool state:
+    :param state:
         *undescribed*
+    :type state: bool
 
 .. _`bios_parser_set_scratch_critical_state.description`:
 

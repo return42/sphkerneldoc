@@ -10,37 +10,38 @@ fw_iso_resource_manage
 
     Allocate or deallocate a channel and/or bandwidth
 
-    :param struct fw_card \*card:
-        *undescribed*
+    :param card:
+        card interface for this action
+    :type card: struct fw_card \*
 
-    :param int generation:
-        *undescribed*
+    :param generation:
+        bus generation
+    :type generation: int
 
-    :param u64 channels_mask:
-        *undescribed*
+    :param channels_mask:
+        bitmask for channel allocation
+    :type channels_mask: u64
 
-    :param int \*channel:
-        *undescribed*
+    :param channel:
+        pointer for returning channel allocation result
+    :type channel: int \*
 
-    :param int \*bandwidth:
-        *undescribed*
+    :param bandwidth:
+        pointer for returning bandwidth allocation result
+    :type bandwidth: int \*
 
-    :param bool allocate:
-        *undescribed*
+    :param allocate:
+        whether to allocate (true) or deallocate (false)
+    :type allocate: bool
 
-.. _`fw_iso_resource_manage.in-parameters`:
+.. _`fw_iso_resource_manage.description`:
 
-In parameters
--------------
+Description
+-----------
 
-card, generation, channels_mask, bandwidth, allocate
+In parameters: card, generation, channels_mask, bandwidth, allocate
+Out parameters: channel, bandwidth
 
-.. _`fw_iso_resource_manage.out-parameters`:
-
-Out parameters
---------------
-
-channel, bandwidth
 This function blocks (sleeps) during communication with the IRM.
 
 Allocates or deallocates at most one channel out of channels_mask.

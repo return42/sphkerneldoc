@@ -10,17 +10,21 @@ i40e_allocate_dma_mem_d
 
     OS specific memory alloc for shared code
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_dma_mem \*mem:
+    :param mem:
         ptr to mem struct to fill out
+    :type mem: struct i40e_dma_mem \*
 
-    :param u64 size:
+    :param size:
         size of memory requested
+    :type size: u64
 
-    :param u32 alignment:
+    :param alignment:
         what to align the allocation to
+    :type alignment: u32
 
 .. _`i40e_free_dma_mem_d`:
 
@@ -31,11 +35,13 @@ i40e_free_dma_mem_d
 
     OS specific memory free for shared code
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_dma_mem \*mem:
+    :param mem:
         ptr to mem struct to free
+    :type mem: struct i40e_dma_mem \*
 
 .. _`i40e_allocate_virt_mem_d`:
 
@@ -46,14 +52,17 @@ i40e_allocate_virt_mem_d
 
     OS specific memory alloc for shared code
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_virt_mem \*mem:
+    :param mem:
         ptr to mem struct to fill out
+    :type mem: struct i40e_virt_mem \*
 
-    :param u32 size:
+    :param size:
         size of memory requested
+    :type size: u32
 
 .. _`i40e_free_virt_mem_d`:
 
@@ -64,11 +73,13 @@ i40e_free_virt_mem_d
 
     OS specific memory free for shared code
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_virt_mem \*mem:
+    :param mem:
         ptr to mem struct to free
+    :type mem: struct i40e_virt_mem \*
 
 .. _`i40e_get_lump`:
 
@@ -79,17 +90,21 @@ i40e_get_lump
 
     find a lump of free generic resource
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_lump_tracking \*pile:
+    :param pile:
         the pile of resource to search
+    :type pile: struct i40e_lump_tracking \*
 
-    :param u16 needed:
+    :param needed:
         the number of items needed
+    :type needed: u16
 
-    :param u16 id:
+    :param id:
         an owner id to stick on the items assigned
+    :type id: u16
 
 .. _`i40e_get_lump.description`:
 
@@ -111,14 +126,17 @@ i40e_put_lump
 
     return a lump of generic resource
 
-    :param struct i40e_lump_tracking \*pile:
+    :param pile:
         the pile of resource to search
+    :type pile: struct i40e_lump_tracking \*
 
-    :param u16 index:
+    :param index:
         the base item index
+    :type index: u16
 
-    :param u16 id:
+    :param id:
         the owner id of the items assigned
+    :type id: u16
 
 .. _`i40e_put_lump.description`:
 
@@ -136,11 +154,13 @@ i40e_find_vsi_from_id
 
     searches for the vsi with the given id
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the pf structure to search for the vsi
+    :type pf: struct i40e_pf \*
 
-    :param u16 id:
+    :param id:
         id of the vsi it is searching for
+    :type id: u16
 
 .. _`i40e_service_event_schedule`:
 
@@ -151,8 +171,9 @@ i40e_service_event_schedule
 
     Schedule the service task to wake up
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_service_event_schedule.description`:
 
@@ -170,8 +191,9 @@ i40e_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`i40e_tx_timeout.description`:
 
@@ -191,8 +213,9 @@ i40e_get_vsi_stats_struct
 
     Get System Network Statistics
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI we care about
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_get_vsi_stats_struct.description`:
 
@@ -211,11 +234,13 @@ i40e_get_netdev_stats_struct_tx
 
     populate stats from a Tx ring
 
-    :param struct i40e_ring \*ring:
+    :param ring:
         Tx ring to get statistics from
+    :type ring: struct i40e_ring \*
 
-    :param struct rtnl_link_stats64 \*stats:
+    :param stats:
         statistics entry to be updated
+    :type stats: struct rtnl_link_stats64 \*
 
 .. _`i40e_get_netdev_stats_struct`:
 
@@ -226,11 +251,13 @@ i40e_get_netdev_stats_struct
 
     Get statistics for netdev interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct rtnl_link_stats64 \*stats:
+    :param stats:
         data structure to store statistics
+    :type stats: struct rtnl_link_stats64 \*
 
 .. _`i40e_get_netdev_stats_struct.description`:
 
@@ -249,8 +276,9 @@ i40e_vsi_reset_stats
 
     Resets all stats of the given vsi
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to have its stats reset
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_pf_reset_stats`:
 
@@ -261,8 +289,9 @@ i40e_pf_reset_stats
 
     Reset all of the stats for the given PF
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF to be reset
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_stat_update48`:
 
@@ -273,23 +302,29 @@ i40e_stat_update48
 
     read and update a 48 bit stat from the chip
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         ptr to the hardware info
+    :type hw: struct i40e_hw \*
 
-    :param u32 hireg:
+    :param hireg:
         the high 32 bit reg to read
+    :type hireg: u32
 
-    :param u32 loreg:
+    :param loreg:
         the low 32 bit reg to read
+    :type loreg: u32
 
-    :param bool offset_loaded:
+    :param offset_loaded:
         has the initial offset been loaded yet
+    :type offset_loaded: bool
 
-    :param u64 \*offset:
+    :param offset:
         ptr to current offset value
+    :type offset: u64 \*
 
-    :param u64 \*stat:
+    :param stat:
         ptr to the stat
+    :type stat: u64 \*
 
 .. _`i40e_stat_update48.description`:
 
@@ -311,20 +346,25 @@ i40e_stat_update32
 
     read and update a 32 bit stat from the chip
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         ptr to the hardware info
+    :type hw: struct i40e_hw \*
 
-    :param u32 reg:
+    :param reg:
         the hw reg to read
+    :type reg: u32
 
-    :param bool offset_loaded:
+    :param offset_loaded:
         has the initial offset been loaded yet
+    :type offset_loaded: bool
 
-    :param u64 \*offset:
+    :param offset:
         ptr to current offset value
+    :type offset: u64 \*
 
-    :param u64 \*stat:
+    :param stat:
         ptr to the stat
+    :type stat: u64 \*
 
 .. _`i40e_stat_update_and_clear32`:
 
@@ -335,14 +375,17 @@ i40e_stat_update_and_clear32
 
     read and clear hw reg, update a 32 bit stat
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         ptr to the hardware info
+    :type hw: struct i40e_hw \*
 
-    :param u32 reg:
+    :param reg:
         the hw reg to read and clear
+    :type reg: u32
 
-    :param u64 \*stat:
+    :param stat:
         ptr to the stat
+    :type stat: u64 \*
 
 .. _`i40e_update_eth_stats`:
 
@@ -353,8 +396,9 @@ i40e_update_eth_stats
 
     Update VSI-specific ethernet statistics counters.
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to be updated
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_update_veb_stats`:
 
@@ -365,8 +409,9 @@ i40e_update_veb_stats
 
     Update Switch component statistics
 
-    :param struct i40e_veb \*veb:
+    :param veb:
         the VEB being updated
+    :type veb: struct i40e_veb \*
 
 .. _`i40e_update_vsi_stats`:
 
@@ -377,8 +422,9 @@ i40e_update_vsi_stats
 
     Update the vsi statistics counters.
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to be updated
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_update_vsi_stats.description`:
 
@@ -400,8 +446,9 @@ i40e_update_pf_stats
 
     Update the PF statistics counters.
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF to be updated
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_update_stats`:
 
@@ -412,8 +459,9 @@ i40e_update_stats
 
     Update the various statistics counters.
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to be updated
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_update_stats.description`:
 
@@ -431,14 +479,17 @@ i40e_find_filter
 
     Search VSI filter list for specific mac/vlan filter
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to be searched
+    :type vsi: struct i40e_vsi \*
 
-    :param const u8 \*macaddr:
+    :param macaddr:
         the MAC address
+    :type macaddr: const u8 \*
 
-    :param s16 vlan:
+    :param vlan:
         the vlan
+    :type vlan: s16
 
 .. _`i40e_find_filter.description`:
 
@@ -456,11 +507,13 @@ i40e_find_mac
 
     Find a mac addr in the macvlan filters list
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to be searched
+    :type vsi: struct i40e_vsi \*
 
-    :param const u8 \*macaddr:
+    :param macaddr:
         the MAC address we are searching for
+    :type macaddr: const u8 \*
 
 .. _`i40e_find_mac.description`:
 
@@ -479,8 +532,9 @@ i40e_is_vsi_in_vlan
 
     Check if VSI is in vlan mode
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to be searched
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_is_vsi_in_vlan.description`:
 
@@ -498,17 +552,21 @@ i40e_correct_mac_vlan_filters
 
     Correct non-VLAN filters if necessary
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to configure
+    :type vsi: struct i40e_vsi \*
 
-    :param struct hlist_head \*tmp_add_list:
+    :param tmp_add_list:
         list of filters ready to be added
+    :type tmp_add_list: struct hlist_head \*
 
-    :param struct hlist_head \*tmp_del_list:
+    :param tmp_del_list:
         list of filters ready to be deleted
+    :type tmp_del_list: struct hlist_head \*
 
-    :param int vlan_filters:
+    :param vlan_filters:
         the number of active VLAN filters
+    :type vlan_filters: int
 
 .. _`i40e_correct_mac_vlan_filters.description`:
 
@@ -551,11 +609,13 @@ i40e_rm_default_mac_filter
 
     Remove the default MAC filter set by NVM
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the PF Main VSI - inappropriate for any other VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param u8 \*macaddr:
+    :param macaddr:
         the MAC address
+    :type macaddr: u8 \*
 
 .. _`i40e_rm_default_mac_filter.description`:
 
@@ -574,14 +634,17 @@ i40e_add_filter
 
     Add a mac/vlan filter to the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to be searched
+    :type vsi: struct i40e_vsi \*
 
-    :param const u8 \*macaddr:
+    :param macaddr:
         the MAC address
+    :type macaddr: const u8 \*
 
-    :param s16 vlan:
+    :param vlan:
         the vlan
+    :type vlan: s16
 
 .. _`i40e_add_filter.description`:
 
@@ -607,11 +670,13 @@ being held.
 
     Remove a specific filter from the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI to remove from
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_mac_filter \*f:
+    :param f:
         the filter to remove from the list
+    :type f: struct i40e_mac_filter \*
 
 .. _`__i40e_del_filter.description`:
 
@@ -648,14 +713,17 @@ i40e_del_filter
 
     Remove a MAC/VLAN filter from the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to be searched
+    :type vsi: struct i40e_vsi \*
 
-    :param const u8 \*macaddr:
+    :param macaddr:
         the MAC address
+    :type macaddr: const u8 \*
 
-    :param s16 vlan:
+    :param vlan:
         the VLAN
+    :type vlan: s16
 
 .. _`i40e_del_filter.note`:
 
@@ -683,11 +751,13 @@ i40e_add_mac_filter
 
     Add a MAC filter for all active VLANs
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to be searched
+    :type vsi: struct i40e_vsi \*
 
-    :param const u8 \*macaddr:
+    :param macaddr:
         the mac address to be filtered
+    :type macaddr: const u8 \*
 
 .. _`i40e_add_mac_filter.description`:
 
@@ -710,11 +780,13 @@ i40e_del_mac_filter
 
     Remove a MAC filter from all VLANs
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to be searched
+    :type vsi: struct i40e_vsi \*
 
-    :param const u8 \*macaddr:
+    :param macaddr:
         the mac address to be removed
+    :type macaddr: const u8 \*
 
 .. _`i40e_del_mac_filter.description`:
 
@@ -735,11 +807,13 @@ i40e_set_mac
 
     NDO callback to set mac address
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         pointer to an address structure
+    :type p: void \*
 
 .. _`i40e_set_mac.description`:
 
@@ -757,17 +831,21 @@ i40e_config_rss_aq
 
     Prepare for RSS using AQ commands
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         vsi structure
+    :type vsi: struct i40e_vsi \*
 
-    :param const u8 \*seed:
+    :param seed:
         RSS hash seed
+    :type seed: const u8 \*
 
-    :param u8 \*lut:
+    :param lut:
         *undescribed*
+    :type lut: u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         *undescribed*
+    :type lut_size: u16
 
 .. _`i40e_vsi_config_rss`:
 
@@ -778,8 +856,9 @@ i40e_vsi_config_rss
 
     Prepare for VSI(VMDq) RSS if used
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI structure
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_setup_queue_map_mqprio`:
 
@@ -790,14 +869,17 @@ i40e_vsi_setup_queue_map_mqprio
 
     Prepares mqprio based tc_config
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured,
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_vsi_context \*ctxt:
+    :param ctxt:
         VSI context structure
+    :type ctxt: struct i40e_vsi_context \*
 
-    :param u8 enabled_tc:
+    :param enabled_tc:
         number of traffic classes to enable
+    :type enabled_tc: u8
 
 .. _`i40e_vsi_setup_queue_map_mqprio.description`:
 
@@ -815,17 +897,21 @@ i40e_vsi_setup_queue_map
 
     Setup a VSI queue map based on enabled_tc
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being setup
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_vsi_context \*ctxt:
+    :param ctxt:
         VSI context structure
+    :type ctxt: struct i40e_vsi_context \*
 
-    :param u8 enabled_tc:
+    :param enabled_tc:
         Enabled TCs bitmap
+    :type enabled_tc: u8
 
-    :param bool is_add:
+    :param is_add:
         True if called before Add VSI
+    :type is_add: bool
 
 .. _`i40e_vsi_setup_queue_map.description`:
 
@@ -843,11 +929,13 @@ i40e_addr_sync
 
     Callback for dev_(mc\|uc)_sync to add address
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdevice
+    :type netdev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         address to add
+    :type addr: const u8 \*
 
 .. _`i40e_addr_sync.description`:
 
@@ -866,11 +954,13 @@ i40e_addr_unsync
 
     Callback for dev_(mc\|uc)_sync to remove address
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdevice
+    :type netdev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         address to add
+    :type addr: const u8 \*
 
 .. _`i40e_addr_unsync.description`:
 
@@ -889,8 +979,9 @@ i40e_set_rx_mode
 
     NDO callback to set the netdev filters
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`i40e_undo_del_filter_entries`:
 
@@ -901,12 +992,14 @@ i40e_undo_del_filter_entries
 
     Undo the changes made to MAC filter entries
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to VSI struct
+    :type vsi: struct i40e_vsi \*
 
-    :param struct hlist_head \*from:
+    :param from:
         Pointer to list which contains MAC filter entries - changes to
         those entries needs to be undone.
+    :type from: struct hlist_head \*
 
 .. _`i40e_undo_del_filter_entries.description`:
 
@@ -924,12 +1017,14 @@ i40e_undo_add_filter_entries
 
     Undo the changes made to MAC filter entries
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to vsi struct
+    :type vsi: struct i40e_vsi \*
 
-    :param struct hlist_head \*from:
+    :param from:
         Pointer to list which contains MAC filter entries - changes to
         those entries needs to be undone.
+    :type from: struct hlist_head \*
 
 .. _`i40e_undo_add_filter_entries.description`:
 
@@ -947,8 +1042,9 @@ i40e_next_filter
 
     Get the next non-broadcast filter from a list
 
-    :param struct i40e_new_mac_filter \*next:
+    :param next:
         pointer to filter in list
+    :type next: struct i40e_new_mac_filter \*
 
 .. _`i40e_next_filter.description`:
 
@@ -968,14 +1064,17 @@ i40e_update_filter_state
 
     Update filter state based on return data from firmware
 
-    :param int count:
+    :param count:
         Number of filters added
+    :type count: int
 
-    :param struct i40e_aqc_add_macvlan_element_data \*add_list:
+    :param add_list:
         return data from fw
+    :type add_list: struct i40e_aqc_add_macvlan_element_data \*
 
-    :param struct i40e_new_mac_filter \*add_head:
+    :param add_head:
         pointer to first filter in current batch
+    :type add_head: struct i40e_new_mac_filter \*
 
 .. _`i40e_update_filter_state.description`:
 
@@ -994,20 +1093,25 @@ i40e_aqc_del_filters
 
     Request firmware to delete a set of filters
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param const char \*vsi_name:
+    :param vsi_name:
         name to display in messages
+    :type vsi_name: const char \*
 
-    :param struct i40e_aqc_remove_macvlan_element_data \*list:
+    :param list:
         the list of filters to send to firmware
+    :type list: struct i40e_aqc_remove_macvlan_element_data \*
 
-    :param int num_del:
+    :param num_del:
         the number of filters to delete
+    :type num_del: int
 
-    :param int \*retval:
+    :param retval:
         Set to -EIO on failure to delete
+    :type retval: int \*
 
 .. _`i40e_aqc_del_filters.description`:
 
@@ -1028,20 +1132,25 @@ i40e_aqc_add_filters
 
     Request firmware to add a set of filters
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param const char \*vsi_name:
+    :param vsi_name:
         name to display in messages
+    :type vsi_name: const char \*
 
-    :param struct i40e_aqc_add_macvlan_element_data \*list:
+    :param list:
         the list of filters to send to firmware
+    :type list: struct i40e_aqc_add_macvlan_element_data \*
 
-    :param struct i40e_new_mac_filter \*add_head:
+    :param add_head:
         Position in the add hlist
+    :type add_head: struct i40e_new_mac_filter \*
 
-    :param int num_add:
+    :param num_add:
         the number of filters to add
+    :type num_add: int
 
 .. _`i40e_aqc_add_filters.description`:
 
@@ -1061,14 +1170,17 @@ i40e_aqc_broadcast_filter
 
     Set promiscuous broadcast flags
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to the VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param const char \*vsi_name:
+    :param vsi_name:
         the VSI name
+    :type vsi_name: const char \*
 
-    :param struct i40e_mac_filter \*f:
+    :param f:
         filter data
+    :type f: struct i40e_mac_filter \*
 
 .. _`i40e_aqc_broadcast_filter.description`:
 
@@ -1090,11 +1202,13 @@ i40e_set_promiscuous
 
     set promiscuous mode
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param bool promisc:
+    :param promisc:
         promisc on or off
+    :type promisc: bool
 
 .. _`i40e_set_promiscuous.description`:
 
@@ -1114,8 +1228,9 @@ i40e_sync_vsi_filters
 
     Update the VSI filter list to the HW
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_sync_vsi_filters.description`:
 
@@ -1135,8 +1250,9 @@ i40e_sync_filters_subtask
 
     Sync the VSI filter list with HW
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_max_xdp_frame_size`:
 
@@ -1147,8 +1263,9 @@ i40e_max_xdp_frame_size
 
     returns the maximum allowed frame size for XDP
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the vsi
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_change_mtu`:
 
@@ -1159,11 +1276,13 @@ i40e_change_mtu
 
     NDO callback to change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`i40e_change_mtu.description`:
 
@@ -1181,14 +1300,17 @@ i40e_ioctl
 
     Access the hwtstamp interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         interface request data
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         ioctl command
+    :type cmd: int
 
 .. _`i40e_vlan_stripping_enable`:
 
@@ -1199,8 +1321,9 @@ i40e_vlan_stripping_enable
 
     Turn on vlan stripping for the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the vsi being adjusted
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vlan_stripping_disable`:
 
@@ -1211,8 +1334,9 @@ i40e_vlan_stripping_disable
 
     Turn off vlan stripping for the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the vsi being adjusted
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_add_vlan_all_mac`:
 
@@ -1223,11 +1347,13 @@ i40e_add_vlan_all_mac
 
     Add a MAC/VLAN filter for each existing MAC address
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the vsi being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param s16 vid:
+    :param vid:
         vlan id to be added (0 = untagged only , -1 = any)
+    :type vid: s16
 
 .. _`i40e_add_vlan_all_mac.description`:
 
@@ -1256,11 +1382,13 @@ i40e_vsi_add_vlan
 
     Add VSI membership for given VLAN
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param u16 vid:
+    :param vid:
         VLAN id to be added
+    :type vid: u16
 
 .. _`i40e_rm_vlan_all_mac`:
 
@@ -1271,11 +1399,13 @@ i40e_rm_vlan_all_mac
 
     Remove MAC/VLAN pair for all MAC with the given VLAN
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the vsi being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param s16 vid:
+    :param vid:
         vlan id to be removed (0 = untagged only , -1 = any)
+    :type vid: s16
 
 .. _`i40e_rm_vlan_all_mac.description`:
 
@@ -1304,11 +1434,13 @@ i40e_vsi_kill_vlan
 
     Remove VSI membership for given VLAN
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param u16 vid:
+    :param vid:
         VLAN id to be removed
+    :type vid: u16
 
 .. _`i40e_vlan_rx_add_vid`:
 
@@ -1319,14 +1451,17 @@ i40e_vlan_rx_add_vid
 
     Add a vlan id filter to HW offload
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface to be adjusted
+    :type netdev: struct net_device \*
 
-    :param __always_unused __be16 proto:
+    :param proto:
         unused protocol value
+    :type proto: __always_unused __be16
 
-    :param u16 vid:
+    :param vid:
         vlan id to be added
+    :type vid: u16
 
 .. _`i40e_vlan_rx_add_vid.description`:
 
@@ -1344,14 +1479,17 @@ i40e_vlan_rx_add_vid_up
 
     Add a vlan id filter to HW offload in UP path
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface to be adjusted
+    :type netdev: struct net_device \*
 
-    :param __always_unused __be16 proto:
+    :param proto:
         unused protocol value
+    :type proto: __always_unused __be16
 
-    :param u16 vid:
+    :param vid:
         vlan id to be added
+    :type vid: u16
 
 .. _`i40e_vlan_rx_kill_vid`:
 
@@ -1362,14 +1500,17 @@ i40e_vlan_rx_kill_vid
 
     Remove a vlan id filter from HW offload
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface to be adjusted
+    :type netdev: struct net_device \*
 
-    :param __always_unused __be16 proto:
+    :param proto:
         unused protocol value
+    :type proto: __always_unused __be16
 
-    :param u16 vid:
+    :param vid:
         vlan id to be removed
+    :type vid: u16
 
 .. _`i40e_vlan_rx_kill_vid.description`:
 
@@ -1387,8 +1528,9 @@ i40e_restore_vlan
 
     Reinstate vlans when vsi/netdev comes back up
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the vsi being brought back up
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_add_pvid`:
 
@@ -1399,11 +1541,13 @@ i40e_vsi_add_pvid
 
     Add pvid for the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the vsi being adjusted
+    :type vsi: struct i40e_vsi \*
 
-    :param u16 vid:
+    :param vid:
         the vlan id to set as a PVID
+    :type vid: u16
 
 .. _`i40e_vsi_remove_pvid`:
 
@@ -1414,8 +1558,9 @@ i40e_vsi_remove_pvid
 
     Remove the pvid from the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the vsi being adjusted
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_remove_pvid.description`:
 
@@ -1433,8 +1578,9 @@ i40e_vsi_setup_tx_resources
 
     Allocate VSI Tx queue resources
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_setup_tx_resources.description`:
 
@@ -1456,8 +1602,9 @@ i40e_vsi_free_tx_resources
 
     Free Tx resources for VSI queues
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_free_tx_resources.description`:
 
@@ -1475,8 +1622,9 @@ i40e_vsi_setup_rx_resources
 
     Allocate VSI queues Rx resources
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_setup_rx_resources.description`:
 
@@ -1498,8 +1646,9 @@ i40e_vsi_free_rx_resources
 
     Free Rx Resources for VSI queues
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_free_rx_resources.description`:
 
@@ -1517,8 +1666,9 @@ i40e_config_xps_tx_ring
 
     Configure XPS for a Tx ring
 
-    :param struct i40e_ring \*ring:
+    :param ring:
         The Tx ring to configure
+    :type ring: struct i40e_ring \*
 
 .. _`i40e_config_xps_tx_ring.description`:
 
@@ -1537,8 +1687,9 @@ i40e_configure_tx_ring
 
     Configure a transmit ring context and rest
 
-    :param struct i40e_ring \*ring:
+    :param ring:
         The Tx ring to configure
+    :type ring: struct i40e_ring \*
 
 .. _`i40e_configure_tx_ring.description`:
 
@@ -1556,8 +1707,9 @@ i40e_configure_rx_ring
 
     Configure a receive ring context
 
-    :param struct i40e_ring \*ring:
+    :param ring:
         The Rx ring to configure
+    :type ring: struct i40e_ring \*
 
 .. _`i40e_configure_rx_ring.description`:
 
@@ -1575,8 +1727,9 @@ i40e_vsi_configure_tx
 
     Configure the VSI for Tx
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI structure describing this set of rings and resources
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_configure_tx.description`:
 
@@ -1594,8 +1747,9 @@ i40e_vsi_configure_rx
 
     Configure the VSI for Rx
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_configure_rx.description`:
 
@@ -1613,8 +1767,9 @@ i40e_vsi_config_dcb_rings
 
     Update rings to reflect DCB TC
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_set_vsi_rx_mode`:
 
@@ -1625,8 +1780,9 @@ i40e_set_vsi_rx_mode
 
     Call set_rx_mode on a VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_fdir_filter_restore`:
 
@@ -1637,8 +1793,9 @@ i40e_fdir_filter_restore
 
     Restore the Sideband Flow Director filters
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_fdir_filter_restore.description`:
 
@@ -1657,8 +1814,9 @@ i40e_vsi_configure
 
     Set up the VSI for action
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_configure_msix`:
 
@@ -1669,8 +1827,9 @@ i40e_vsi_configure_msix
 
     MSIX mode Interrupt Config in the HW
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_enable_misc_int_causes`:
 
@@ -1681,8 +1840,9 @@ i40e_enable_misc_int_causes
 
     enable the non-queue interrupts
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to private device data structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_configure_msi_and_legacy`:
 
@@ -1693,8 +1853,9 @@ i40e_configure_msi_and_legacy
 
     Legacy mode interrupt config in the HW
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_irq_dynamic_disable_icr0`:
 
@@ -1705,8 +1866,9 @@ i40e_irq_dynamic_disable_icr0
 
     Disable default interrupt generation for icr0
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_irq_dynamic_enable_icr0`:
 
@@ -1717,8 +1879,9 @@ i40e_irq_dynamic_enable_icr0
 
     Enable default interrupt generation for icr0
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_msix_clean_rings`:
 
@@ -1729,11 +1892,13 @@ i40e_msix_clean_rings
 
     MSIX mode Interrupt Handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a q_vector
+    :type data: void \*
 
 .. _`i40e_irq_affinity_notify`:
 
@@ -1744,11 +1909,13 @@ i40e_irq_affinity_notify
 
     Callback for affinity changes
 
-    :param struct irq_affinity_notify \*notify:
+    :param notify:
         context as to what irq was changed
+    :type notify: struct irq_affinity_notify \*
 
-    :param const cpumask_t \*mask:
+    :param mask:
         the new affinity mask
+    :type mask: const cpumask_t \*
 
 .. _`i40e_irq_affinity_notify.description`:
 
@@ -1767,8 +1934,9 @@ i40e_irq_affinity_release
 
     Callback for affinity notifier release
 
-    :param struct kref \*ref:
+    :param ref:
         internal core kernel usage
+    :type ref: struct kref \*
 
 .. _`i40e_irq_affinity_release.description`:
 
@@ -1788,11 +1956,13 @@ i40e_vsi_request_irq_msix
 
     Initialize MSI-X interrupts
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param char \*basename:
+    :param basename:
         name for the vector
+    :type basename: char \*
 
 .. _`i40e_vsi_request_irq_msix.description`:
 
@@ -1810,8 +1980,9 @@ i40e_vsi_disable_irq
 
     Mask off queue interrupt generation on the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being un-configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_enable_irq`:
 
@@ -1822,8 +1993,9 @@ i40e_vsi_enable_irq
 
     Enable IRQ for the given VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_free_misc_vector`:
 
@@ -1834,8 +2006,9 @@ i40e_free_misc_vector
 
     Free the vector that handles non-queue events
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_intr`:
 
@@ -1846,11 +2019,13 @@ i40e_intr
 
     MSI/Legacy and non-queue interrupt handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a q_vector
+    :type data: void \*
 
 .. _`i40e_intr.description`:
 
@@ -1870,11 +2045,13 @@ i40e_clean_fdir_tx_irq
 
     Reclaim resources after transmit completes
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         tx ring to clean
+    :type tx_ring: struct i40e_ring \*
 
-    :param int budget:
+    :param budget:
         how many cleans we're allowed
+    :type budget: int
 
 .. _`i40e_clean_fdir_tx_irq.description`:
 
@@ -1892,11 +2069,13 @@ i40e_fdir_clean_ring
 
     Interrupt Handler for FDIR SB ring
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a q_vector
+    :type data: void \*
 
 .. _`i40e_map_vector_to_qp`:
 
@@ -1907,14 +2086,17 @@ i40e_map_vector_to_qp
 
     Assigns the queue pair to the vector
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param int v_idx:
+    :param v_idx:
         vector index
+    :type v_idx: int
 
-    :param int qp_idx:
+    :param qp_idx:
         queue pair index
+    :type qp_idx: int
 
 .. _`i40e_vsi_map_rings_to_vectors`:
 
@@ -1925,8 +2107,9 @@ i40e_vsi_map_rings_to_vectors
 
     Maps descriptor rings to vectors
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_map_rings_to_vectors.description`:
 
@@ -1947,11 +2130,13 @@ i40e_vsi_request_irq
 
     Request IRQ from the OS
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param char \*basename:
+    :param basename:
         name for the vector
+    :type basename: char \*
 
 .. _`i40e_netpoll`:
 
@@ -1962,8 +2147,9 @@ i40e_netpoll
 
     A Polling 'interrupt' handler
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`i40e_netpoll.description`:
 
@@ -1982,14 +2168,17 @@ i40e_pf_txq_wait
 
     Wait for a PF's Tx queue to be enabled or disabled
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF being configured
+    :type pf: struct i40e_pf \*
 
-    :param int pf_q:
+    :param pf_q:
         the PF queue
+    :type pf_q: int
 
-    :param bool enable:
+    :param enable:
         enable or disable state of the queue
+    :type enable: bool
 
 .. _`i40e_pf_txq_wait.description`:
 
@@ -2010,14 +2199,17 @@ i40e_control_tx_q
 
     Start or stop a particular Tx queue
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF structure
+    :type pf: struct i40e_pf \*
 
-    :param int pf_q:
+    :param pf_q:
         the PF queue to configure
+    :type pf_q: int
 
-    :param bool enable:
+    :param enable:
         start or stop the queue
+    :type enable: bool
 
 .. _`i40e_control_tx_q.description`:
 
@@ -2037,20 +2229,25 @@ i40e_control_wait_tx_q
 
     Start/stop Tx queue and wait for completion
 
-    :param int seid:
+    :param seid:
         VSI SEID
+    :type seid: int
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF structure
+    :type pf: struct i40e_pf \*
 
-    :param int pf_q:
+    :param pf_q:
         the PF queue to configure
+    :type pf_q: int
 
-    :param bool is_xdp:
+    :param is_xdp:
         true if the queue is used for XDP
+    :type is_xdp: bool
 
-    :param bool enable:
+    :param enable:
         start or stop the queue
+    :type enable: bool
 
 .. _`i40e_vsi_control_tx`:
 
@@ -2061,11 +2258,13 @@ i40e_vsi_control_tx
 
     Start or stop a VSI's rings
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param bool enable:
+    :param enable:
         start or stop the rings
+    :type enable: bool
 
 .. _`i40e_pf_rxq_wait`:
 
@@ -2076,14 +2275,17 @@ i40e_pf_rxq_wait
 
     Wait for a PF's Rx queue to be enabled or disabled
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF being configured
+    :type pf: struct i40e_pf \*
 
-    :param int pf_q:
+    :param pf_q:
         the PF queue
+    :type pf_q: int
 
-    :param bool enable:
+    :param enable:
         enable or disable state of the queue
+    :type enable: bool
 
 .. _`i40e_pf_rxq_wait.description`:
 
@@ -2104,14 +2306,17 @@ i40e_control_rx_q
 
     Start or stop a particular Rx queue
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF structure
+    :type pf: struct i40e_pf \*
 
-    :param int pf_q:
+    :param pf_q:
         the PF queue to configure
+    :type pf_q: int
 
-    :param bool enable:
+    :param enable:
         start or stop the queue
+    :type enable: bool
 
 .. _`i40e_control_rx_q.description`:
 
@@ -2129,14 +2334,17 @@ i40e_control_wait_rx_q
 
 .. c:function:: int i40e_control_wait_rx_q(struct i40e_pf *pf, int pf_q, bool enable)
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF structure
+    :type pf: struct i40e_pf \*
 
-    :param int pf_q:
+    :param pf_q:
         queue being configured
+    :type pf_q: int
 
-    :param bool enable:
+    :param enable:
         start or stop the rings
+    :type enable: bool
 
 .. _`i40e_control_wait_rx_q.description`:
 
@@ -2156,11 +2364,13 @@ i40e_vsi_control_rx
 
     Start or stop a VSI's rings
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param bool enable:
+    :param enable:
         start or stop the rings
+    :type enable: bool
 
 .. _`i40e_vsi_start_rings`:
 
@@ -2171,8 +2381,9 @@ i40e_vsi_start_rings
 
     Start a VSI's rings
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_stop_rings`:
 
@@ -2183,8 +2394,9 @@ i40e_vsi_stop_rings
 
     Stop a VSI's rings
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_stop_rings_no_wait`:
 
@@ -2195,8 +2407,9 @@ i40e_vsi_stop_rings_no_wait
 
     Stop a VSI's rings and do not delay
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being shutdown
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_stop_rings_no_wait.description`:
 
@@ -2219,8 +2432,9 @@ i40e_vsi_free_irq
 
     Free the irq association with the OS
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_free_q_vector`:
 
@@ -2231,11 +2445,13 @@ i40e_free_q_vector
 
     Free memory allocated for specific interrupt vector
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param int v_idx:
+    :param v_idx:
         Index of vector to be freed
+    :type v_idx: int
 
 .. _`i40e_free_q_vector.description`:
 
@@ -2255,8 +2471,9 @@ i40e_vsi_free_q_vectors
 
     Free memory allocated for interrupt vectors
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being un-configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_free_q_vectors.description`:
 
@@ -2275,8 +2492,9 @@ i40e_reset_interrupt_capability
 
     Disable interrupt setup in OS
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_clear_interrupt_scheme`:
 
@@ -2287,8 +2505,9 @@ i40e_clear_interrupt_scheme
 
     Clear the current interrupt scheme settings
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_clear_interrupt_scheme.description`:
 
@@ -2307,8 +2526,9 @@ i40e_napi_enable_all
 
     Enable NAPI for all q_vectors in the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_napi_disable_all`:
 
@@ -2319,8 +2539,9 @@ i40e_napi_disable_all
 
     Disable NAPI for all q_vectors in the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_close`:
 
@@ -2331,8 +2552,9 @@ i40e_vsi_close
 
     Shut down a VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the vsi to be quelled
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_quiesce_vsi`:
 
@@ -2343,8 +2565,9 @@ i40e_quiesce_vsi
 
     Pause a given VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being paused
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_unquiesce_vsi`:
 
@@ -2355,8 +2578,9 @@ i40e_unquiesce_vsi
 
     Resume a given VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being resumed
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_pf_quiesce_all_vsi`:
 
@@ -2367,8 +2591,9 @@ i40e_pf_quiesce_all_vsi
 
     Pause all VSIs on a PF
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_pf_unquiesce_all_vsi`:
 
@@ -2379,8 +2604,9 @@ i40e_pf_unquiesce_all_vsi
 
     Resume all VSIs on a PF
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_vsi_wait_queues_disabled`:
 
@@ -2391,8 +2617,9 @@ i40e_vsi_wait_queues_disabled
 
     Wait for VSI's queues to be disabled
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_wait_queues_disabled.description`:
 
@@ -2410,8 +2637,9 @@ i40e_pf_wait_queues_disabled
 
     Wait for all queues of PF VSIs to be disabled
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_pf_wait_queues_disabled.description`:
 
@@ -2430,8 +2658,9 @@ i40e_get_iscsi_tc_map
 
     Return TC map for iSCSI APP
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to PF
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_get_iscsi_tc_map.description`:
 
@@ -2450,8 +2679,9 @@ i40e_dcb_get_num_tc
 
     Get the number of TCs from DCBx config
 
-    :param struct i40e_dcbx_config \*dcbcfg:
+    :param dcbcfg:
         the corresponding DCBx configuration structure
+    :type dcbcfg: struct i40e_dcbx_config \*
 
 .. _`i40e_dcb_get_num_tc.description`:
 
@@ -2469,8 +2699,9 @@ i40e_dcb_get_enabled_tc
 
     Get enabled traffic classes
 
-    :param struct i40e_dcbx_config \*dcbcfg:
+    :param dcbcfg:
         the corresponding DCBx configuration structure
+    :type dcbcfg: struct i40e_dcbx_config \*
 
 .. _`i40e_dcb_get_enabled_tc.description`:
 
@@ -2489,8 +2720,9 @@ i40e_mqprio_get_enabled_tc
 
     Get enabled traffic classes
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF being queried
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_mqprio_get_enabled_tc.description`:
 
@@ -2509,8 +2741,9 @@ i40e_pf_get_num_tc
 
     Get enabled traffic classes for PF
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF being queried
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_pf_get_num_tc.description`:
 
@@ -2528,8 +2761,9 @@ i40e_pf_get_tc_map
 
     Get bitmap for enabled traffic classes
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF being queried
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_pf_get_tc_map.description`:
 
@@ -2547,8 +2781,9 @@ i40e_vsi_get_bw_info
 
     Query VSI BW Information
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being queried
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_get_bw_info.description`:
 
@@ -2566,14 +2801,17 @@ i40e_vsi_configure_bw_alloc
 
     Configure VSI BW allocation per TC
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param u8 enabled_tc:
+    :param enabled_tc:
         TC bitmap
+    :type enabled_tc: u8
 
-    :param u8 \*bw_share:
+    :param bw_share:
         BW shared credits per TC
+    :type bw_share: u8 \*
 
 .. _`i40e_vsi_configure_bw_alloc.description`:
 
@@ -2591,11 +2829,13 @@ i40e_vsi_config_netdev_tc
 
     Setup the netdev TC configuration
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param u8 enabled_tc:
+    :param enabled_tc:
         TC map to be enabled
+    :type enabled_tc: u8
 
 .. _`i40e_vsi_update_queue_map`:
 
@@ -2606,11 +2846,13 @@ i40e_vsi_update_queue_map
 
     Update our copy of VSi info with new queue map
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_vsi_context \*ctxt:
+    :param ctxt:
         the ctxt buffer returned from AQ VSI update param command
+    :type ctxt: struct i40e_vsi_context \*
 
 .. _`i40e_vsi_config_tc`:
 
@@ -2621,11 +2863,13 @@ i40e_vsi_config_tc
 
     Configure VSI Tx Scheduler for given TC map
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI to be configured
+    :type vsi: struct i40e_vsi \*
 
-    :param u8 enabled_tc:
+    :param enabled_tc:
         TC bitmap
+    :type enabled_tc: u8
 
 .. _`i40e_vsi_config_tc.description`:
 
@@ -2653,8 +2897,9 @@ i40e_get_link_speed
 
     Returns link speed for the interface
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI to be configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_set_bw_limit`:
 
@@ -2665,14 +2910,17 @@ i40e_set_bw_limit
 
     setup BW limit for Tx traffic based on max_tx_rate
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI to be configured
+    :type vsi: struct i40e_vsi \*
 
-    :param u16 seid:
+    :param seid:
         seid of the channel/VSI
+    :type seid: u16
 
-    :param u64 max_tx_rate:
+    :param max_tx_rate:
         max TX rate to be configured as BW limit
+    :type max_tx_rate: u64
 
 .. _`i40e_set_bw_limit.description`:
 
@@ -2690,8 +2938,9 @@ i40e_remove_queue_channels
 
     Remove queue channels for the TCs
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI to be configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_remove_queue_channels.description`:
 
@@ -2709,8 +2958,9 @@ i40e_is_any_channel
 
     channel exist or not
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to VSI to which channels are associated with
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_is_any_channel.description`:
 
@@ -2726,8 +2976,9 @@ i40e_get_max_queues_for_channel
 
 .. c:function:: int i40e_get_max_queues_for_channel(struct i40e_vsi *vsi)
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to VSI to which channels are associated with
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_get_max_queues_for_channel.description`:
 
@@ -2746,17 +2997,21 @@ i40e_validate_num_queues
 
     validate num_queues w.r.t channel
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         ptr to PF device
+    :type pf: struct i40e_pf \*
 
-    :param int num_queues:
+    :param num_queues:
         number of queues
+    :type num_queues: int
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the parent VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param bool \*reconfig_rss:
+    :param reconfig_rss:
         indicates should the RSS be reconfigured or not
+    :type reconfig_rss: bool \*
 
 .. _`i40e_validate_num_queues.description`:
 
@@ -2776,11 +3031,13 @@ i40e_vsi_reconfig_rss
 
     reconfig RSS based on specified rss_size
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being setup
+    :type vsi: struct i40e_vsi \*
 
-    :param u16 rss_size:
+    :param rss_size:
         size of RSS, accordingly LUT gets reprogrammed
+    :type rss_size: u16
 
 .. _`i40e_vsi_reconfig_rss.description`:
 
@@ -2798,14 +3055,17 @@ i40e_channel_setup_queue_map
 
     Setup a channel queue map
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         ptr to PF device
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_vsi_context \*ctxt:
+    :param ctxt:
         VSI context structure
+    :type ctxt: struct i40e_vsi_context \*
 
-    :param struct i40e_channel \*ch:
+    :param ch:
         ptr to channel structure
+    :type ch: struct i40e_channel \*
 
 .. _`i40e_channel_setup_queue_map.description`:
 
@@ -2823,14 +3083,17 @@ i40e_add_channel
 
     add a channel by adding VSI
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         ptr to PF device
+    :type pf: struct i40e_pf \*
 
-    :param u16 uplink_seid:
+    :param uplink_seid:
         underlying HW switching element (VEB) ID
+    :type uplink_seid: u16
 
-    :param struct i40e_channel \*ch:
+    :param ch:
         ptr to channel structure
+    :type ch: struct i40e_channel \*
 
 .. _`i40e_add_channel.description`:
 
@@ -2848,14 +3111,17 @@ i40e_channel_config_tx_ring
 
     config TX ring associated with new channel
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         ptr to PF device
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being setup
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_channel \*ch:
+    :param ch:
         ptr to channel structure
+    :type ch: struct i40e_channel \*
 
 .. _`i40e_channel_config_tx_ring.description`:
 
@@ -2874,20 +3140,25 @@ i40e_setup_hw_channel
 
     setup new channel
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         ptr to PF device
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being setup
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_channel \*ch:
+    :param ch:
         ptr to channel structure
+    :type ch: struct i40e_channel \*
 
-    :param u16 uplink_seid:
+    :param uplink_seid:
         underlying HW switching element (VEB) ID
+    :type uplink_seid: u16
 
-    :param u8 type:
+    :param type:
         type of channel to be created (VMDq2/VF)
+    :type type: u8
 
 .. _`i40e_setup_hw_channel.description`:
 
@@ -2906,14 +3177,17 @@ i40e_setup_channel
 
     setup new channel using uplink element
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         ptr to PF device
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         *undescribed*
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_channel \*ch:
+    :param ch:
         ptr to channel structure
+    :type ch: struct i40e_channel \*
 
 .. _`i40e_setup_channel.description`:
 
@@ -2932,8 +3206,9 @@ i40e_validate_and_set_switch_mode
 
     sets up switch mode correctly
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to VSI which has PF backing
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_validate_and_set_switch_mode.description`:
 
@@ -2952,11 +3227,13 @@ i40e_create_queue_channel
 
     function to create channel
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI to be configured
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_channel \*ch:
+    :param ch:
         ptr to channel (it contains channel specific params)
+    :type ch: struct i40e_channel \*
 
 .. _`i40e_create_queue_channel.description`:
 
@@ -2975,8 +3252,9 @@ i40e_configure_queue_channels
 
     Add queue channel for the given TCs
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI to be configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_configure_queue_channels.description`:
 
@@ -2994,11 +3272,13 @@ i40e_veb_config_tc
 
     Configure TCs for given VEB
 
-    :param struct i40e_veb \*veb:
+    :param veb:
         given VEB
+    :type veb: struct i40e_veb \*
 
-    :param u8 enabled_tc:
+    :param enabled_tc:
         TC bitmap
+    :type enabled_tc: u8
 
 .. _`i40e_veb_config_tc.description`:
 
@@ -3016,8 +3296,9 @@ i40e_dcb_reconfigure
 
     Reconfigure all VEBs and VSIs
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_dcb_reconfigure.description`:
 
@@ -3037,8 +3318,9 @@ i40e_resume_port_tx
 
     Resume port Tx
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_resume_port_tx.description`:
 
@@ -3057,8 +3339,9 @@ i40e_init_pf_dcb
 
     Initialize DCB configuration
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF being configured
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_init_pf_dcb.description`:
 
@@ -3077,11 +3360,13 @@ i40e_print_link_message
 
     print link up or down
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI for which link needs a message
+    :type vsi: struct i40e_vsi \*
 
-    :param bool isup:
+    :param isup:
         true of link is up, false otherwise
+    :type isup: bool
 
 .. _`i40e_up_complete`:
 
@@ -3092,8 +3377,9 @@ i40e_up_complete
 
     Finish the last steps of bringing up a connection
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_reinit_locked`:
 
@@ -3104,8 +3390,9 @@ i40e_vsi_reinit_locked
 
     Reset the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_reinit_locked.description`:
 
@@ -3124,8 +3411,9 @@ i40e_up
 
     Bring the connection back up after being down
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_force_link_state`:
 
@@ -3136,11 +3424,13 @@ i40e_force_link_state
 
     Force the link status
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param bool is_up:
+    :param is_up:
         whether the link state should be forced up or down
+    :type is_up: bool
 
 .. _`i40e_down`:
 
@@ -3151,8 +3441,9 @@ i40e_down
 
     Shutdown the connection processing
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being stopped
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_validate_mqprio_qopt`:
 
@@ -3163,11 +3454,13 @@ i40e_validate_mqprio_qopt
 
     validate queue mapping info
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param struct tc_mqprio_qopt_offload \*mqprio_qopt:
+    :param mqprio_qopt:
         queue parametrs
+    :type mqprio_qopt: struct tc_mqprio_qopt_offload \*
 
 .. _`i40e_vsi_set_default_tc_config`:
 
@@ -3178,8 +3471,9 @@ i40e_vsi_set_default_tc_config
 
     set default values for tc configuration
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_setup_tc`:
 
@@ -3190,11 +3484,13 @@ i40e_setup_tc
 
     configure multiple traffic classes
 
-    :param struct net_device \*netdev:
+    :param netdev:
         net device to configure
+    :type netdev: struct net_device \*
 
-    :param void \*type_data:
+    :param type_data:
         tc offload data
+    :type type_data: void \*
 
 .. _`i40e_set_cld_element`:
 
@@ -3205,11 +3501,13 @@ i40e_set_cld_element
 
     sets cloud filter element data
 
-    :param struct i40e_cloud_filter \*filter:
+    :param filter:
         cloud filter rule
+    :type filter: struct i40e_cloud_filter \*
 
-    :param struct i40e_aqc_cloud_filters_element_data \*cld:
+    :param cld:
         ptr to cloud filter element data
+    :type cld: struct i40e_aqc_cloud_filters_element_data \*
 
 .. _`i40e_set_cld_element.description`:
 
@@ -3227,14 +3525,17 @@ i40e_add_del_cloud_filter
 
     Add/del cloud filter
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_cloud_filter \*filter:
+    :param filter:
         cloud filter rule
+    :type filter: struct i40e_cloud_filter \*
 
-    :param bool add:
+    :param add:
         if true, add, if false, delete
+    :type add: bool
 
 .. _`i40e_add_del_cloud_filter.description`:
 
@@ -3253,14 +3554,17 @@ i40e_add_del_cloud_filter_big_buf
 
     Add/del cloud filter using big_buf
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_cloud_filter \*filter:
+    :param filter:
         cloud filter rule
+    :type filter: struct i40e_cloud_filter \*
 
-    :param bool add:
+    :param add:
         if true, add, if false, delete
+    :type add: bool
 
 .. _`i40e_add_del_cloud_filter_big_buf.description`:
 
@@ -3279,14 +3583,17 @@ i40e_parse_cls_flower
 
     Parse tc flower filters provided by kernel
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct tc_cls_flower_offload \*f:
+    :param f:
         *undescribed*
+    :type f: struct tc_cls_flower_offload \*
 
-    :param struct i40e_cloud_filter \*filter:
+    :param filter:
         Pointer to cloud filter structure
+    :type filter: struct i40e_cloud_filter \*
 
 .. _`i40e_handle_tclass`:
 
@@ -3297,14 +3604,17 @@ i40e_handle_tclass
 
     Forward to a traffic class on the device
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param u32 tc:
+    :param tc:
         traffic class index on the device
+    :type tc: u32
 
-    :param struct i40e_cloud_filter \*filter:
+    :param filter:
         Pointer to cloud filter structure
+    :type filter: struct i40e_cloud_filter \*
 
 .. _`i40e_configure_clsflower`:
 
@@ -3315,11 +3625,13 @@ i40e_configure_clsflower
 
     Configure tc flower filters
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct tc_cls_flower_offload \*cls_flower:
+    :param cls_flower:
         Pointer to struct tc_cls_flower_offload
+    :type cls_flower: struct tc_cls_flower_offload \*
 
 .. _`i40e_find_cloud_filter`:
 
@@ -3330,11 +3642,13 @@ i40e_find_cloud_filter
 
     Find the could filter in the list
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param unsigned long \*cookie:
+    :param cookie:
         filter specific cookie
+    :type cookie: unsigned long \*
 
 .. _`i40e_delete_clsflower`:
 
@@ -3345,11 +3659,13 @@ i40e_delete_clsflower
 
     Remove tc flower filters
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct tc_cls_flower_offload \*cls_flower:
+    :param cls_flower:
         Pointer to struct tc_cls_flower_offload
+    :type cls_flower: struct tc_cls_flower_offload \*
 
 .. _`i40e_setup_tc_cls_flower`:
 
@@ -3360,11 +3676,13 @@ i40e_setup_tc_cls_flower
 
     flower classifier offloads
 
-    :param struct i40e_netdev_priv \*np:
+    :param np:
         *undescribed*
+    :type np: struct i40e_netdev_priv \*
 
-    :param struct tc_cls_flower_offload \*cls_flower:
+    :param cls_flower:
         *undescribed*
+    :type cls_flower: struct tc_cls_flower_offload \*
 
 .. _`i40e_open`:
 
@@ -3375,8 +3693,9 @@ i40e_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`i40e_open.description`:
 
@@ -3398,8 +3717,9 @@ i40e_vsi_open
 
 .. c:function:: int i40e_vsi_open(struct i40e_vsi *vsi)
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to open
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_open.description`:
 
@@ -3426,8 +3746,9 @@ i40e_fdir_filter_exit
 
     Cleans up the Flow Director accounting
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Pointer to PF
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_fdir_filter_exit.description`:
 
@@ -3446,8 +3767,9 @@ i40e_cloud_filter_exit
 
     Cleans up the cloud filters
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Pointer to PF
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_cloud_filter_exit.description`:
 
@@ -3466,8 +3788,9 @@ i40e_close
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`i40e_close.description`:
 
@@ -3489,15 +3812,18 @@ i40e_do_reset
 
     Start a PF or Core Reset sequence
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param u32 reset_flags:
+    :param reset_flags:
         which reset is requested
+    :type reset_flags: u32
 
-    :param bool lock_acquired:
+    :param lock_acquired:
         indicates whether or not the lock has been acquired
         before this function was called.
+    :type lock_acquired: bool
 
 .. _`i40e_do_reset.description`:
 
@@ -3517,14 +3843,17 @@ i40e_dcb_need_reconfig
 
     Check if DCB needs reconfig
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_dcbx_config \*old_cfg:
+    :param old_cfg:
         current DCB config
+    :type old_cfg: struct i40e_dcbx_config \*
 
-    :param struct i40e_dcbx_config \*new_cfg:
+    :param new_cfg:
         new DCB config
+    :type new_cfg: struct i40e_dcbx_config \*
 
 .. _`i40e_handle_lldp_event`:
 
@@ -3535,11 +3864,13 @@ i40e_handle_lldp_event
 
     Handle LLDP Change MIB event
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_arq_event_info \*e:
+    :param e:
         event info posted on ARQ
+    :type e: struct i40e_arq_event_info \*
 
 .. _`i40e_do_reset_safe`:
 
@@ -3550,11 +3881,13 @@ i40e_do_reset_safe
 
     Protected reset path for userland calls.
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param u32 reset_flags:
+    :param reset_flags:
         which reset is requested
+    :type reset_flags: u32
 
 .. _`i40e_handle_lan_overflow_event`:
 
@@ -3565,11 +3898,13 @@ i40e_handle_lan_overflow_event
 
     Handler for LAN queue overflow event
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_arq_event_info \*e:
+    :param e:
         event info posted on ARQ
+    :type e: struct i40e_arq_event_info \*
 
 .. _`i40e_handle_lan_overflow_event.description`:
 
@@ -3588,8 +3923,9 @@ i40e_get_cur_guaranteed_fd_count
 
     Get the consumed guaranteed FD filters
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_get_current_fd_count`:
 
@@ -3600,8 +3936,9 @@ i40e_get_current_fd_count
 
     Get total FD filters programmed for this PF
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_get_global_fd_count`:
 
@@ -3612,8 +3949,9 @@ i40e_get_global_fd_count
 
     Get total FD filters programmed on device
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_reenable_fdir_sb`:
 
@@ -3624,8 +3962,9 @@ i40e_reenable_fdir_sb
 
     Restore FDir SB capability
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_reenable_fdir_atr`:
 
@@ -3636,8 +3975,9 @@ i40e_reenable_fdir_atr
 
     Restore FDir ATR capability
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_delete_invalid_filter`:
 
@@ -3648,11 +3988,13 @@ i40e_delete_invalid_filter
 
     Delete an invalid FDIR filter
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_fdir_filter \*filter:
+    :param filter:
         FDir filter to remove
+    :type filter: struct i40e_fdir_filter \*
 
 .. _`i40e_fdir_check_and_reenable`:
 
@@ -3663,8 +4005,9 @@ i40e_fdir_check_and_reenable
 
     Function to reenabe FD ATR or SB if disabled
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_fdir_flush_and_replay`:
 
@@ -3675,8 +4018,9 @@ i40e_fdir_flush_and_replay
 
     Function to flush all FD filters and replay SB
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_get_current_atr_cnt`:
 
@@ -3687,8 +4031,9 @@ i40e_get_current_atr_cnt
 
     Get the count of total FD ATR filters programmed
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_fdir_reinit_subtask`:
 
@@ -3699,8 +4044,9 @@ i40e_fdir_reinit_subtask
 
     Worker thread to reinit FDIR filter table
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_vsi_link_event`:
 
@@ -3711,11 +4057,13 @@ i40e_vsi_link_event
 
     notify VSI of a link event
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         vsi to be notified
+    :type vsi: struct i40e_vsi \*
 
-    :param bool link_up:
+    :param link_up:
         link up or down
+    :type link_up: bool
 
 .. _`i40e_veb_link_event`:
 
@@ -3726,11 +4074,13 @@ i40e_veb_link_event
 
     notify elements on the veb of a link event
 
-    :param struct i40e_veb \*veb:
+    :param veb:
         veb to be notified
+    :type veb: struct i40e_veb \*
 
-    :param bool link_up:
+    :param link_up:
         link up or down
+    :type link_up: bool
 
 .. _`i40e_link_event`:
 
@@ -3741,8 +4091,9 @@ i40e_link_event
 
     Update netif_carrier status
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_watchdog_subtask`:
 
@@ -3753,8 +4104,9 @@ i40e_watchdog_subtask
 
     periodic checks not using event driven response
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_reset_subtask`:
 
@@ -3765,8 +4117,9 @@ i40e_reset_subtask
 
     Set up for resetting the device and driver
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_handle_link_event`:
 
@@ -3777,11 +4130,13 @@ i40e_handle_link_event
 
     Handle link event
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_arq_event_info \*e:
+    :param e:
         event info posted on ARQ
+    :type e: struct i40e_arq_event_info \*
 
 .. _`i40e_clean_adminq_subtask`:
 
@@ -3792,8 +4147,9 @@ i40e_clean_adminq_subtask
 
     Clean the AdminQ rings
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_verify_eeprom`:
 
@@ -3804,8 +4160,9 @@ i40e_verify_eeprom
 
     make sure eeprom is good to use
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_enable_pf_switch_lb`:
 
@@ -3814,8 +4171,9 @@ i40e_enable_pf_switch_lb
 
 .. c:function:: void i40e_enable_pf_switch_lb(struct i40e_pf *pf)
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the PF structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_enable_pf_switch_lb.description`:
 
@@ -3831,8 +4189,9 @@ i40e_disable_pf_switch_lb
 
 .. c:function:: void i40e_disable_pf_switch_lb(struct i40e_pf *pf)
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the PF structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_disable_pf_switch_lb.description`:
 
@@ -3850,8 +4209,9 @@ i40e_config_bridge_mode
 
     Configure the HW bridge mode
 
-    :param struct i40e_veb \*veb:
+    :param veb:
         pointer to the bridge instance
+    :type veb: struct i40e_veb \*
 
 .. _`i40e_config_bridge_mode.description`:
 
@@ -3871,8 +4231,9 @@ i40e_reconstitute_veb
 
     rebuild the VEB and anything connected to it
 
-    :param struct i40e_veb \*veb:
+    :param veb:
         pointer to the VEB instance
+    :type veb: struct i40e_veb \*
 
 .. _`i40e_reconstitute_veb.description`:
 
@@ -3893,11 +4254,13 @@ i40e_get_capabilities
 
     get info about the HW
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF struct
+    :type pf: struct i40e_pf \*
 
-    :param enum i40e_admin_queue_opc list_type:
+    :param list_type:
         *undescribed*
+    :type list_type: enum i40e_admin_queue_opc
 
 .. _`i40e_fdir_sb_setup`:
 
@@ -3908,8 +4271,9 @@ i40e_fdir_sb_setup
 
     initialize the Flow Director resources for Sideband
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_fdir_teardown`:
 
@@ -3920,8 +4284,9 @@ i40e_fdir_teardown
 
     release the Flow Director resources
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_rebuild_cloud_filters`:
 
@@ -3932,11 +4297,13 @@ i40e_rebuild_cloud_filters
 
     Rebuilds cloud filters for VSIs
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         PF main vsi
+    :type vsi: struct i40e_vsi \*
 
-    :param u16 seid:
+    :param seid:
         seid of main or channel VSIs
+    :type seid: u16
 
 .. _`i40e_rebuild_cloud_filters.description`:
 
@@ -3955,8 +4322,9 @@ i40e_rebuild_channels
 
     Rebuilds channel VSIs if they existed before reset
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         PF main vsi
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_rebuild_channels.description`:
 
@@ -3974,12 +4342,14 @@ i40e_prep_for_reset
 
     prep for the core to reset
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param bool lock_acquired:
+    :param lock_acquired:
         indicates whether or not the lock has been acquired
         before this function was called.
+    :type lock_acquired: bool
 
 .. _`i40e_prep_for_reset.description`:
 
@@ -3997,8 +4367,9 @@ i40e_send_version
 
     update firmware with driver version
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_get_oem_version`:
 
@@ -4009,8 +4380,9 @@ i40e_get_oem_version
 
     get OEM specific version information
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_reset`:
 
@@ -4021,8 +4393,9 @@ i40e_reset
 
     wait for core reset to finish reset, reset pf if corer not seen
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_rebuild`:
 
@@ -4033,15 +4406,18 @@ i40e_rebuild
 
     rebuild using a saved config
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param bool reinit:
+    :param reinit:
         if the Main VSI needs to re-initialized.
+    :type reinit: bool
 
-    :param bool lock_acquired:
+    :param lock_acquired:
         indicates whether or not the lock has been acquired
         before this function was called.
+    :type lock_acquired: bool
 
 .. _`i40e_reset_and_rebuild`:
 
@@ -4052,15 +4428,18 @@ i40e_reset_and_rebuild
 
     reset and rebuild using a saved config
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param bool reinit:
+    :param reinit:
         if the Main VSI needs to re-initialized.
+    :type reinit: bool
 
-    :param bool lock_acquired:
+    :param lock_acquired:
         indicates whether or not the lock has been acquired
         before this function was called.
+    :type lock_acquired: bool
 
 .. _`i40e_handle_reset_warning`:
 
@@ -4071,12 +4450,14 @@ i40e_handle_reset_warning
 
     prep for the PF to reset, reset and rebuild
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param bool lock_acquired:
+    :param lock_acquired:
         indicates whether or not the lock has been acquired
         before this function was called.
+    :type lock_acquired: bool
 
 .. _`i40e_handle_reset_warning.description`:
 
@@ -4093,8 +4474,9 @@ i40e_handle_mdd_event
 
 .. c:function:: void i40e_handle_mdd_event(struct i40e_pf *pf)
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the PF structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_handle_mdd_event.description`:
 
@@ -4112,8 +4494,9 @@ i40e_sync_udp_filters
 
     Trigger a sync event for existing UDP filters
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_sync_udp_filters_subtask`:
 
@@ -4124,8 +4507,9 @@ i40e_sync_udp_filters_subtask
 
     Sync the VSI filter list with HW
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_service_task`:
 
@@ -4136,8 +4520,9 @@ i40e_service_task
 
     Run the driver's async subtasks
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work_struct containing our data
+    :type work: struct work_struct \*
 
 .. _`i40e_service_timer`:
 
@@ -4148,8 +4533,9 @@ i40e_service_timer
 
     timer callback
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`i40e_set_num_rings_in_vsi`:
 
@@ -4160,8 +4546,9 @@ i40e_set_num_rings_in_vsi
 
     Determine number of rings in the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_alloc_arrays`:
 
@@ -4172,11 +4559,13 @@ i40e_vsi_alloc_arrays
 
     Allocate queue and vector pointer arrays for the vsi
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI pointer
+    :type vsi: struct i40e_vsi \*
 
-    :param bool alloc_qvectors:
+    :param alloc_qvectors:
         a bool to specify if q_vectors need to be allocated.
+    :type alloc_qvectors: bool
 
 .. _`i40e_vsi_alloc_arrays.on-error`:
 
@@ -4201,11 +4590,13 @@ i40e_vsi_mem_alloc
 
     Allocates the next available struct vsi in the PF
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param enum i40e_vsi_type type:
+    :param type:
         type of VSI
+    :type type: enum i40e_vsi_type
 
 .. _`i40e_vsi_mem_alloc.on-error`:
 
@@ -4230,11 +4621,13 @@ i40e_vsi_free_arrays
 
     Free queue and vector pointer arrays for the VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI pointer
+    :type vsi: struct i40e_vsi \*
 
-    :param bool free_qvectors:
+    :param free_qvectors:
         a bool to specify if q_vectors need to be freed.
+    :type free_qvectors: bool
 
 .. _`i40e_vsi_free_arrays.on-error`:
 
@@ -4259,8 +4652,9 @@ i40e_clear_rss_config_user
 
     clear the user configured RSS hash keys and lookup table
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to VSI structure
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_clear`:
 
@@ -4271,8 +4665,9 @@ i40e_vsi_clear
 
     Deallocate the VSI provided
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being un-configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_clear_rings`:
 
@@ -4283,8 +4678,9 @@ i40e_vsi_clear_rings
 
     Deallocates the Rx and Tx rings for the provided VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being cleaned
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_alloc_rings`:
 
@@ -4295,8 +4691,9 @@ i40e_alloc_rings
 
     Allocates the Rx and Tx rings for the provided VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_reserve_msix_vectors`:
 
@@ -4307,11 +4704,13 @@ i40e_reserve_msix_vectors
 
     Reserve MSI-X vectors in the kernel
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param int vectors:
+    :param vectors:
         the number of MSI-X vectors to request
+    :type vectors: int
 
 .. _`i40e_reserve_msix_vectors.description`:
 
@@ -4329,8 +4728,9 @@ i40e_init_msix
 
     Setup the MSIX capability
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_init_msix.description`:
 
@@ -4350,14 +4750,17 @@ i40e_vsi_alloc_q_vector
 
     Allocate memory for a single interrupt vector
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param int v_idx:
+    :param v_idx:
         index of the vector in the vsi struct
+    :type v_idx: int
 
-    :param int cpu:
+    :param cpu:
         cpu to be used on affinity_mask
+    :type cpu: int
 
 .. _`i40e_vsi_alloc_q_vector.description`:
 
@@ -4375,8 +4778,9 @@ i40e_vsi_alloc_q_vectors
 
     Allocate memory for interrupt vectors
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_alloc_q_vectors.description`:
 
@@ -4395,8 +4799,9 @@ i40e_init_interrupt_scheme
 
     Determine proper interrupt scheme
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure to initialize
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_restore_interrupt_scheme`:
 
@@ -4407,8 +4812,9 @@ i40e_restore_interrupt_scheme
 
     Restore the interrupt scheme
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         private board data structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_restore_interrupt_scheme.description`:
 
@@ -4428,8 +4834,9 @@ i40e_setup_misc_vector
 
     Setup the misc vector to handle non queue events
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_setup_misc_vector.description`:
 
@@ -4449,17 +4856,21 @@ i40e_get_rss_aq
 
     Get RSS keys and lut by using AQ commands
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to vsi structure
+    :type vsi: struct i40e_vsi \*
 
-    :param const u8 \*seed:
+    :param seed:
         Buffter to store the hash keys
+    :type seed: const u8 \*
 
-    :param u8 \*lut:
+    :param lut:
         Buffer to store the lookup table entries
+    :type lut: u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         Size of buffer to store the lookup table entries
+    :type lut_size: u16
 
 .. _`i40e_get_rss_aq.description`:
 
@@ -4477,17 +4888,21 @@ i40e_config_rss_reg
 
     Configure RSS keys and lut by writing registers
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to vsi structure
+    :type vsi: struct i40e_vsi \*
 
-    :param const u8 \*seed:
+    :param seed:
         RSS hash seed
+    :type seed: const u8 \*
 
-    :param const u8 \*lut:
+    :param lut:
         Lookup table
+    :type lut: const u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         Lookup table size
+    :type lut_size: u16
 
 .. _`i40e_config_rss_reg.description`:
 
@@ -4505,17 +4920,21 @@ i40e_get_rss_reg
 
     Get the RSS keys and lut by reading registers
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to VSI structure
+    :type vsi: struct i40e_vsi \*
 
-    :param u8 \*seed:
+    :param seed:
         Buffer to store the keys
+    :type seed: u8 \*
 
-    :param u8 \*lut:
+    :param lut:
         Buffer to store the lookup table entries
+    :type lut: u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         Size of buffer to store the lookup table entries
+    :type lut_size: u16
 
 .. _`i40e_get_rss_reg.description`:
 
@@ -4533,17 +4952,21 @@ i40e_config_rss
 
     Configure RSS keys and lut
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to VSI structure
+    :type vsi: struct i40e_vsi \*
 
-    :param u8 \*seed:
+    :param seed:
         RSS hash seed
+    :type seed: u8 \*
 
-    :param u8 \*lut:
+    :param lut:
         Lookup table
+    :type lut: u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         Lookup table size
+    :type lut_size: u16
 
 .. _`i40e_config_rss.description`:
 
@@ -4561,17 +4984,21 @@ i40e_get_rss
 
     Get RSS keys and lut
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to VSI structure
+    :type vsi: struct i40e_vsi \*
 
-    :param u8 \*seed:
+    :param seed:
         Buffer to store the keys
+    :type seed: u8 \*
 
-    :param u8 \*lut:
+    :param lut:
         Buffer to store the lookup table entries
+    :type lut: u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         Size of buffer to store the lookup table entries
+    :type lut_size: u16
 
 .. _`i40e_get_rss.description`:
 
@@ -4589,17 +5016,21 @@ i40e_fill_rss_lut
 
     Fill the RSS lookup table with default values
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Pointer to board private structure
+    :type pf: struct i40e_pf \*
 
-    :param u8 \*lut:
+    :param lut:
         Lookup table
+    :type lut: u8 \*
 
-    :param u16 rss_table_size:
+    :param rss_table_size:
         Lookup table size
+    :type rss_table_size: u16
 
-    :param u16 rss_size:
+    :param rss_size:
         Range of queue number for hashing
+    :type rss_size: u16
 
 .. _`i40e_pf_config_rss`:
 
@@ -4610,8 +5041,9 @@ i40e_pf_config_rss
 
     Prepare for RSS if used
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_reconfig_rss_queues`:
 
@@ -4622,11 +5054,13 @@ i40e_reconfig_rss_queues
 
     change number of queues for rss and rebuild
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param int queue_count:
+    :param queue_count:
         the requested queue count for rss.
+    :type queue_count: int
 
 .. _`i40e_reconfig_rss_queues.description`:
 
@@ -4652,8 +5086,9 @@ i40e_get_partition_bw_setting
 
     Retrieve BW settings for this PF partition
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_set_partition_bw_setting`:
 
@@ -4664,8 +5099,9 @@ i40e_set_partition_bw_setting
 
     Set BW settings for this PF partition
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_commit_partition_bw_setting`:
 
@@ -4676,8 +5112,9 @@ i40e_commit_partition_bw_setting
 
     Commit BW settings for this PF partition
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_sw_init`:
 
@@ -4688,8 +5125,9 @@ i40e_sw_init
 
     Initialize general software structures (struct i40e_pf)
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure to initialize
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_sw_init.description`:
 
@@ -4709,11 +5147,13 @@ i40e_set_ntuple
 
     set the ntuple feature flag and take action
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure to initialize
+    :type pf: struct i40e_pf \*
 
-    :param netdev_features_t features:
+    :param features:
         the feature set that the stack is suggesting
+    :type features: netdev_features_t
 
 .. _`i40e_set_ntuple.description`:
 
@@ -4731,8 +5171,9 @@ i40e_clear_rss_lut
 
     clear the rx hash lookup table
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_set_features`:
 
@@ -4743,11 +5184,13 @@ i40e_set_features
 
     set the netdev feature flags
 
-    :param struct net_device \*netdev:
+    :param netdev:
         ptr to the netdev being adjusted
+    :type netdev: struct net_device \*
 
-    :param netdev_features_t features:
+    :param features:
         the feature set that the stack is suggesting
+    :type features: netdev_features_t
 
 .. _`i40e_set_features.note`:
 
@@ -4765,11 +5208,13 @@ i40e_get_udp_port_idx
 
     Lookup a possibly offloaded for Rx UDP port
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param u16 port:
+    :param port:
         The UDP port to look up
+    :type port: u16
 
 .. _`i40e_get_udp_port_idx.description`:
 
@@ -4787,11 +5232,13 @@ i40e_udp_tunnel_add
 
     Get notifications about UDP tunnel ports that come up
 
-    :param struct net_device \*netdev:
+    :param netdev:
         This physical port's netdev
+    :type netdev: struct net_device \*
 
-    :param struct udp_tunnel_info \*ti:
+    :param ti:
         Tunnel endpoint information
+    :type ti: struct udp_tunnel_info \*
 
 .. _`i40e_udp_tunnel_del`:
 
@@ -4802,11 +5249,13 @@ i40e_udp_tunnel_del
 
     Get notifications about UDP tunnel ports that go away
 
-    :param struct net_device \*netdev:
+    :param netdev:
         This physical port's netdev
+    :type netdev: struct net_device \*
 
-    :param struct udp_tunnel_info \*ti:
+    :param ti:
         Tunnel endpoint information
+    :type ti: struct udp_tunnel_info \*
 
 .. _`i40e_ndo_fdb_add`:
 
@@ -4817,23 +5266,29 @@ i40e_ndo_fdb_add
 
     add an entry to the hardware database
 
-    :param struct ndmsg \*ndm:
+    :param ndm:
         the input from the stack
+    :type ndm: struct ndmsg \*
 
-    :param struct nlattr  \*tb:
+    :param tb:
         pointer to array of nladdr (unused)
+    :type tb: struct nlattr  \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the net device pointer
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         the MAC address entry being added
+    :type addr: const unsigned char \*
 
-    :param u16 vid:
+    :param vid:
         VLAN ID
+    :type vid: u16
 
-    :param u16 flags:
+    :param flags:
         instructions from stack about fdb operation
+    :type flags: u16
 
 .. _`i40e_ndo_bridge_setlink`:
 
@@ -4844,14 +5299,17 @@ i40e_ndo_bridge_setlink
 
     Set the hardware bridge mode
 
-    :param struct net_device \*dev:
+    :param dev:
         the netdev being configured
+    :type dev: struct net_device \*
 
-    :param struct nlmsghdr \*nlh:
+    :param nlh:
         RTNL message
+    :type nlh: struct nlmsghdr \*
 
-    :param u16 flags:
+    :param flags:
         bridge flags
+    :type flags: u16
 
 .. _`i40e_ndo_bridge_setlink.description`:
 
@@ -4881,23 +5339,29 @@ i40e_ndo_bridge_getlink
 
     Get the hardware bridge mode
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb buff
+    :type skb: struct sk_buff \*
 
-    :param u32 pid:
+    :param pid:
         process id
+    :type pid: u32
 
-    :param u32 seq:
+    :param seq:
         RTNL message seq #
+    :type seq: u32
 
-    :param struct net_device \*dev:
+    :param dev:
         the netdev being configured
+    :type dev: struct net_device \*
 
-    :param u32 __always_unused filter_mask:
+    :param filter_mask:
         unused
+    :type filter_mask: u32 __always_unused
 
-    :param int nlflags:
+    :param nlflags:
         netlink flags passed in
+    :type nlflags: int
 
 .. _`i40e_ndo_bridge_getlink.description`:
 
@@ -4916,14 +5380,17 @@ i40e_features_check
 
     Validate encapsulated packet conforms to limits
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb buff
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         This physical port's netdev
+    :type dev: struct net_device \*
 
-    :param netdev_features_t features:
+    :param features:
         Offload features that the stack believes apply
+    :type features: netdev_features_t
 
 .. _`i40e_xdp_setup`:
 
@@ -4934,11 +5401,211 @@ i40e_xdp_setup
 
     add/remove an XDP program
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         VSI to changed
+    :type vsi: struct i40e_vsi \*
 
-    :param struct bpf_prog \*prog:
+    :param prog:
         XDP program
+    :type prog: struct bpf_prog \*
+
+.. _`i40e_enter_busy_conf`:
+
+i40e_enter_busy_conf
+====================
+
+.. c:function:: int i40e_enter_busy_conf(struct i40e_vsi *vsi)
+
+    Enters busy config state
+
+    :param vsi:
+        vsi
+    :type vsi: struct i40e_vsi \*
+
+.. _`i40e_enter_busy_conf.description`:
+
+Description
+-----------
+
+Returns 0 on success, <0 for failure.
+
+.. _`i40e_exit_busy_conf`:
+
+i40e_exit_busy_conf
+===================
+
+.. c:function:: void i40e_exit_busy_conf(struct i40e_vsi *vsi)
+
+    Exits busy config state
+
+    :param vsi:
+        vsi
+    :type vsi: struct i40e_vsi \*
+
+.. _`i40e_queue_pair_reset_stats`:
+
+i40e_queue_pair_reset_stats
+===========================
+
+.. c:function:: void i40e_queue_pair_reset_stats(struct i40e_vsi *vsi, int queue_pair)
+
+    Resets all statistics for a queue pair
+
+    :param vsi:
+        vsi
+    :type vsi: struct i40e_vsi \*
+
+    :param queue_pair:
+        queue pair
+    :type queue_pair: int
+
+.. _`i40e_queue_pair_clean_rings`:
+
+i40e_queue_pair_clean_rings
+===========================
+
+.. c:function:: void i40e_queue_pair_clean_rings(struct i40e_vsi *vsi, int queue_pair)
+
+    Cleans all the rings of a queue pair
+
+    :param vsi:
+        vsi
+    :type vsi: struct i40e_vsi \*
+
+    :param queue_pair:
+        queue pair
+    :type queue_pair: int
+
+.. _`i40e_queue_pair_toggle_napi`:
+
+i40e_queue_pair_toggle_napi
+===========================
+
+.. c:function:: void i40e_queue_pair_toggle_napi(struct i40e_vsi *vsi, int queue_pair, bool enable)
+
+    Enables/disables NAPI for a queue pair
+
+    :param vsi:
+        vsi
+    :type vsi: struct i40e_vsi \*
+
+    :param queue_pair:
+        queue pair
+    :type queue_pair: int
+
+    :param enable:
+        true for enable, false for disable
+    :type enable: bool
+
+.. _`i40e_queue_pair_toggle_rings`:
+
+i40e_queue_pair_toggle_rings
+============================
+
+.. c:function:: int i40e_queue_pair_toggle_rings(struct i40e_vsi *vsi, int queue_pair, bool enable)
+
+    Enables/disables all rings for a queue pair
+
+    :param vsi:
+        vsi
+    :type vsi: struct i40e_vsi \*
+
+    :param queue_pair:
+        queue pair
+    :type queue_pair: int
+
+    :param enable:
+        true for enable, false for disable
+    :type enable: bool
+
+.. _`i40e_queue_pair_toggle_rings.description`:
+
+Description
+-----------
+
+Returns 0 on success, <0 on failure.
+
+.. _`i40e_queue_pair_enable_irq`:
+
+i40e_queue_pair_enable_irq
+==========================
+
+.. c:function:: void i40e_queue_pair_enable_irq(struct i40e_vsi *vsi, int queue_pair)
+
+    Enables interrupts for a queue pair
+
+    :param vsi:
+        vsi
+    :type vsi: struct i40e_vsi \*
+
+    :param queue_pair:
+        queue_pair
+    :type queue_pair: int
+
+.. _`i40e_queue_pair_disable_irq`:
+
+i40e_queue_pair_disable_irq
+===========================
+
+.. c:function:: void i40e_queue_pair_disable_irq(struct i40e_vsi *vsi, int queue_pair)
+
+    Disables interrupts for a queue pair
+
+    :param vsi:
+        vsi
+    :type vsi: struct i40e_vsi \*
+
+    :param queue_pair:
+        queue_pair
+    :type queue_pair: int
+
+.. _`i40e_queue_pair_disable`:
+
+i40e_queue_pair_disable
+=======================
+
+.. c:function:: int i40e_queue_pair_disable(struct i40e_vsi *vsi, int queue_pair)
+
+    Disables a queue pair
+
+    :param vsi:
+        vsi
+    :type vsi: struct i40e_vsi \*
+
+    :param queue_pair:
+        queue pair
+    :type queue_pair: int
+
+.. _`i40e_queue_pair_disable.description`:
+
+Description
+-----------
+
+Returns 0 on success, <0 on failure.
+
+.. _`i40e_queue_pair_enable`:
+
+i40e_queue_pair_enable
+======================
+
+.. c:function:: int i40e_queue_pair_enable(struct i40e_vsi *vsi, int queue_pair)
+
+    Enables a queue pair
+
+    :param vsi:
+        vsi
+    :type vsi: struct i40e_vsi \*
+
+    :param queue_pair:
+        queue pair
+    :type queue_pair: int
+
+.. _`i40e_queue_pair_enable.description`:
+
+Description
+-----------
+
+Returns 0 on success, <0 on failure.
 
 .. _`i40e_xdp`:
 
@@ -4949,11 +5616,13 @@ i40e_xdp
 
     implements ndo_bpf for i40e
 
-    :param struct net_device \*dev:
+    :param dev:
         netdevice
+    :type dev: struct net_device \*
 
-    :param struct netdev_bpf \*xdp:
+    :param xdp:
         XDP command
+    :type xdp: struct netdev_bpf \*
 
 .. _`i40e_config_netdev`:
 
@@ -4964,8 +5633,9 @@ i40e_config_netdev
 
     Setup the netdev flags
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_config_netdev.description`:
 
@@ -4983,8 +5653,9 @@ i40e_vsi_delete
 
     Delete a VSI from the switch
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being removed
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_delete.description`:
 
@@ -5002,8 +5673,9 @@ i40e_is_vsi_uplink_mode_veb
 
     Check if the VSI's uplink bridge mode is VEB
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being queried
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_is_vsi_uplink_mode_veb.description`:
 
@@ -5021,8 +5693,9 @@ i40e_add_vsi
 
     Add a VSI to the switch
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_add_vsi.description`:
 
@@ -5041,8 +5714,9 @@ i40e_vsi_release
 
     Delete a VSI and free its resources
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI being removed
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_release.description`:
 
@@ -5060,8 +5734,9 @@ i40e_vsi_setup_vectors
 
     Set up the q_vectors for the given VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_setup_vectors.description`:
 
@@ -5083,8 +5758,9 @@ i40e_vsi_reinit_setup
 
     return and reallocate resources for a VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to the vsi.
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_vsi_reinit_setup.description`:
 
@@ -5105,17 +5781,21 @@ i40e_vsi_setup
 
     Set up a VSI by a given type
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param u8 type:
+    :param type:
         VSI type
+    :type type: u8
 
-    :param u16 uplink_seid:
+    :param uplink_seid:
         the switch element to link to
+    :type uplink_seid: u16
 
-    :param u32 param1:
+    :param param1:
         usage depends upon VSI type. For VF types, indicates VF id
+    :type param1: u32
 
 .. _`i40e_vsi_setup.description`:
 
@@ -5137,8 +5817,9 @@ i40e_veb_get_bw_info
 
     Query VEB BW information
 
-    :param struct i40e_veb \*veb:
+    :param veb:
         the veb to query
+    :type veb: struct i40e_veb \*
 
 .. _`i40e_veb_get_bw_info.description`:
 
@@ -5156,8 +5837,9 @@ i40e_veb_mem_alloc
 
     Allocates the next available struct veb in the PF
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_veb_mem_alloc.on-error`:
 
@@ -5182,8 +5864,9 @@ i40e_switch_branch_release
 
     Delete a branch of the switch tree
 
-    :param struct i40e_veb \*branch:
+    :param branch:
         where to start deleting
+    :type branch: struct i40e_veb \*
 
 .. _`i40e_switch_branch_release.description`:
 
@@ -5202,8 +5885,9 @@ i40e_veb_clear
 
     remove veb struct
 
-    :param struct i40e_veb \*veb:
+    :param veb:
         the veb to remove
+    :type veb: struct i40e_veb \*
 
 .. _`i40e_veb_release`:
 
@@ -5214,8 +5898,9 @@ i40e_veb_release
 
     Delete a VEB and free its resources
 
-    :param struct i40e_veb \*veb:
+    :param veb:
         the VEB being removed
+    :type veb: struct i40e_veb \*
 
 .. _`i40e_add_veb`:
 
@@ -5226,11 +5911,13 @@ i40e_add_veb
 
     create the VEB in the switch
 
-    :param struct i40e_veb \*veb:
+    :param veb:
         the VEB to be instantiated
+    :type veb: struct i40e_veb \*
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the controlling VSI
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_veb_setup`:
 
@@ -5241,20 +5928,25 @@ i40e_veb_setup
 
     Set up a VEB
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param u16 flags:
+    :param flags:
         VEB setup flags
+    :type flags: u16
 
-    :param u16 uplink_seid:
+    :param uplink_seid:
         the switch element to link to
+    :type uplink_seid: u16
 
-    :param u16 vsi_seid:
+    :param vsi_seid:
         the initial VSI seid
+    :type vsi_seid: u16
 
-    :param u8 enabled_tc:
+    :param enabled_tc:
         Enabled TC bit-map
+    :type enabled_tc: u8
 
 .. _`i40e_veb_setup.description`:
 
@@ -5278,17 +5970,21 @@ i40e_setup_pf_switch_element
 
     set PF vars based on switch type
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_aqc_switch_config_element_resp \*ele:
+    :param ele:
         element we are building info from
+    :type ele: struct i40e_aqc_switch_config_element_resp \*
 
-    :param u16 num_reported:
+    :param num_reported:
         total number of elements
+    :type num_reported: u16
 
-    :param bool printconfig:
+    :param printconfig:
         should we print the contents
+    :type printconfig: bool
 
 .. _`i40e_setup_pf_switch_element.description`:
 
@@ -5306,11 +6002,13 @@ i40e_fetch_switch_configuration
 
     Get switch config from firmware
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param bool printconfig:
+    :param printconfig:
         should we print the contents
+    :type printconfig: bool
 
 .. _`i40e_fetch_switch_configuration.description`:
 
@@ -5329,11 +6027,13 @@ i40e_setup_pf_switch
 
     Setup the HW switch on startup or after reset
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
-    :param bool reinit:
+    :param reinit:
         if the Main VSI needs to re-initialized.
+    :type reinit: bool
 
 .. _`i40e_setup_pf_switch.description`:
 
@@ -5351,8 +6051,9 @@ i40e_determine_queue_usage
 
     Work out queue distribution
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_setup_pf_filter_control`:
 
@@ -5363,8 +6064,9 @@ i40e_setup_pf_filter_control
 
     Setup PF static filter control
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF to be setup
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_setup_pf_filter_control.description`:
 
@@ -5387,11 +6089,13 @@ i40e_get_platform_mac_addr
 
     get platform-specific MAC address
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_get_platform_mac_addr.description`:
 
@@ -5412,11 +6116,13 @@ i40e_probe
 
     Device initialization routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in i40e_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`i40e_probe.description`:
 
@@ -5438,8 +6144,9 @@ i40e_remove
 
     Device removal routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`i40e_remove.description`:
 
@@ -5460,11 +6167,13 @@ i40e_pci_error_detected
 
     warning that something funky happened in PCI land
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param enum pci_channel_state error:
+    :param error:
         the type of PCI error
+    :type error: enum pci_channel_state
 
 .. _`i40e_pci_error_detected.description`:
 
@@ -5484,8 +6193,9 @@ i40e_pci_error_slot_reset
 
     a PCI slot reset just happened
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`i40e_pci_error_slot_reset.description`:
 
@@ -5506,8 +6216,9 @@ i40e_pci_error_reset_prepare
 
     prepare device driver for pci reset
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`i40e_pci_error_reset_done`:
 
@@ -5518,8 +6229,9 @@ i40e_pci_error_reset_done
 
     pci reset done, device driver reset can begin
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`i40e_pci_error_resume`:
 
@@ -5530,8 +6242,9 @@ i40e_pci_error_resume
 
     restart operations after PCI error recovery
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`i40e_pci_error_resume.description`:
 
@@ -5550,8 +6263,9 @@ i40e_enable_mc_magic_wake
 
     enable multicast magic packet wake up using the mac_address_write admin q function
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to i40e_pf struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_shutdown`:
 
@@ -5562,8 +6276,9 @@ i40e_shutdown
 
     PCI callback for shutting down
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`i40e_suspend`:
 
@@ -5574,8 +6289,9 @@ i40e_suspend
 
     PM callback for moving to D3
 
-    :param struct device \*dev:
+    :param dev:
         generic device information structure
+    :type dev: struct device \*
 
 .. _`i40e_resume`:
 
@@ -5586,8 +6302,9 @@ i40e_resume
 
     PM callback for waking up from D3
 
-    :param struct device \*dev:
+    :param dev:
         generic device information structure
+    :type dev: struct device \*
 
 .. _`i40e_init_module`:
 
@@ -5598,8 +6315,9 @@ i40e_init_module
 
     Driver registration routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i40e_init_module.description`:
 
@@ -5618,8 +6336,9 @@ i40e_exit_module
 
     Driver exit cleanup routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i40e_exit_module.description`:
 

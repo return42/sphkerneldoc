@@ -10,11 +10,13 @@ bnx2x_config_rx_mode
 
     Send and RX_MODE ramrod according to the provided parameters.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_rx_mode_ramrod_params \*p:
+    :param p:
         Command parameters
+    :type p: struct bnx2x_rx_mode_ramrod_params \*
 
 .. _`bnx2x_config_rx_mode.return`:
 
@@ -34,14 +36,17 @@ bnx2x_config_mcast
 
     Configure multicast MACs list.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_mcast_ramrod_params \*p:
+    :param p:
         *undescribed*
+    :type p: struct bnx2x_mcast_ramrod_params \*
 
-    :param enum bnx2x_mcast_cmd cmd:
+    :param cmd:
         command to execute: BNX2X_MCAST_CMD_X
+    :type cmd: enum bnx2x_mcast_cmd
 
 .. _`bnx2x_config_mcast.description`:
 
@@ -77,11 +82,13 @@ bnx2x_config_rss
 
     Updates RSS configuration according to provided parameters
 
-    :param struct bnx2x \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_config_rss_params \*p:
+    :param p:
         *undescribed*
+    :type p: struct bnx2x_config_rss_params \*
 
 .. _`bnx2x_config_rss.return`:
 
@@ -99,13 +106,15 @@ bnx2x_get_rss_ind_table
 
     Return the current ind_table configuration.
 
-    :param struct bnx2x_rss_config_obj \*rss_obj:
+    :param rss_obj:
         *undescribed*
+    :type rss_obj: struct bnx2x_rss_config_obj \*
 
-    :param u8 \*ind_table:
+    :param ind_table:
         buffer to fill with the current indirection
         table content. Should be at least
         T_ETH_INDIRECTION_TABLE_SIZE bytes long.
+    :type ind_table: u8 \*
 
 .. This file was automatic generated / don't edit.
 

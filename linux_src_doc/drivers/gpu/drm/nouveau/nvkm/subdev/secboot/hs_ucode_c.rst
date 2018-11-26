@@ -10,14 +10,17 @@ hs_ucode_patch_signature
 
     patch HS blob with correct signature for specified falcon.
 
-    :param const struct nvkm_falcon \*falcon:
+    :param falcon:
         *undescribed*
+    :type falcon: const struct nvkm_falcon \*
 
-    :param void \*acr_image:
+    :param acr_image:
         *undescribed*
+    :type acr_image: void \*
 
-    :param bool new_format:
+    :param new_format:
         *undescribed*
+    :type new_format: bool
 
 .. This file was automatic generated / don't edit.
 

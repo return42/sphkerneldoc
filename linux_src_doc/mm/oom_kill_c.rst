@@ -10,11 +10,13 @@ has_intersects_mems_allowed
 
     check task eligiblity for kill
 
-    :param struct task_struct \*start:
+    :param start:
         task struct of which task to consider
+    :type start: struct task_struct \*
 
-    :param const nodemask_t \*mask:
+    :param mask:
         nodemask passed to page allocator for mempolicy ooms
+    :type mask: const nodemask_t \*
 
 .. _`has_intersects_mems_allowed.description`:
 
@@ -34,17 +36,21 @@ oom_badness
 
     heuristic function to determine which candidate task to kill
 
-    :param struct task_struct \*p:
+    :param p:
         task struct of which task we should calculate
+    :type p: struct task_struct \*
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         task's memory controller, if constrained
+    :type memcg: struct mem_cgroup \*
 
-    :param const nodemask_t \*nodemask:
+    :param nodemask:
         nodemask passed to page allocator for mempolicy ooms
+    :type nodemask: const nodemask_t \*
 
-    :param unsigned long totalpages:
+    :param totalpages:
         total present RAM allowed for page allocation
+    :type totalpages: unsigned long
 
 .. _`oom_badness.description`:
 
@@ -64,11 +70,13 @@ dump_tasks
 
     dump current memory state of all system tasks
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         current's memory controller, if constrained
+    :type memcg: struct mem_cgroup \*
 
-    :param const nodemask_t \*nodemask:
+    :param nodemask:
         nodemask passed to page allocator for mempolicy ooms
+    :type nodemask: const nodemask_t \*
 
 .. _`dump_tasks.description`:
 
@@ -90,8 +98,9 @@ mark_oom_victim
 
     mark the given task as OOM victim
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         task to mark
+    :type tsk: struct task_struct \*
 
 .. _`mark_oom_victim.description`:
 
@@ -113,8 +122,9 @@ exit_oom_victim
 
     note the exit of an OOM victim
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`oom_killer_enable`:
 
@@ -125,8 +135,9 @@ oom_killer_enable
 
     enable OOM killer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`oom_killer_disable`:
 
@@ -137,8 +148,9 @@ oom_killer_disable
 
     disable OOM killer
 
-    :param signed long timeout:
+    :param timeout:
         maximum timeout to wait for oom victims in jiffies
+    :type timeout: signed long
 
 .. _`oom_killer_disable.description`:
 
@@ -165,8 +177,9 @@ out_of_memory
 
     kill the "best" process when we run out of memory
 
-    :param struct oom_control \*oc:
+    :param oc:
         pointer to struct oom_control
+    :type oc: struct oom_control \*
 
 .. _`out_of_memory.description`:
 

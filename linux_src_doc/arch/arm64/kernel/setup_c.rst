@@ -10,8 +10,9 @@ smp_build_mpidr_hash
 
     Pre-compute shifts required at each affinity level in order to build a linear index from an MPIDR value. Resulting algorithm is a collision free hash carried out through shifting and ORing
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

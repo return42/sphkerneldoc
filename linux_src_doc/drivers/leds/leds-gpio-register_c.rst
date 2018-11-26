@@ -10,11 +10,13 @@ gpio_led_register_device
 
     register a gpio-led device
 
-    :param int id:
+    :param id:
         *undescribed*
+    :type id: int
 
-    :param const struct gpio_led_platform_data \*pdata:
+    :param pdata:
         the platform data used for the new device
+    :type pdata: const struct gpio_led_platform_data \*
 
 .. _`gpio_led_register_device.description`:
 

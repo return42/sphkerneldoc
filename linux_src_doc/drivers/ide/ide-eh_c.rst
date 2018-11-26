@@ -10,14 +10,17 @@ ide_error
 
     handle an error on the IDE
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive the error occurred on
+    :type drive: ide_drive_t \*
 
-    :param const char \*msg:
+    :param msg:
         message to report
+    :type msg: const char \*
 
-    :param u8 stat:
+    :param stat:
         status bits
+    :type stat: u8
 
 .. _`ide_error.description`:
 

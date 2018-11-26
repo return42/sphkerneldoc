@@ -10,17 +10,21 @@ dpmcp_open
 
     Open a control session for the specified object.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param int dpmcp_id:
+    :param dpmcp_id:
         DPMCP unique ID
+    :type dpmcp_id: int
 
-    :param u16 \*token:
+    :param token:
         Returned token; use in subsequent API calls
+    :type token: u16 \*
 
 .. _`dpmcp_open.description`:
 
@@ -51,14 +55,17 @@ dpmcp_close
 
     Close the control session of the object
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPMCP object
+    :type token: u16
 
 .. _`dpmcp_close.description`:
 
@@ -84,14 +91,17 @@ dpmcp_reset
 
     Reset the DPMCP, returns the object to initial state.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPMCP object
+    :type token: u16
 
 .. _`dpmcp_reset.return`:
 

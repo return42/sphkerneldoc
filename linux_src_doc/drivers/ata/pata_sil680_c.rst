@@ -10,11 +10,13 @@ sil680_selreg
 
     return register base
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param int r:
+    :param r:
         config offset
+    :type r: int
 
 .. _`sil680_selreg.description`:
 
@@ -36,14 +38,17 @@ sil680_seldev
 
     return register base
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct ata_device \*
 
-    :param int r:
+    :param r:
         config offset
+    :type r: int
 
 .. _`sil680_seldev.description`:
 
@@ -63,8 +68,9 @@ sil680_cable_detect
 
     cable detection
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
 .. _`sil680_cable_detect.description`:
 
@@ -83,11 +89,13 @@ sil680_set_piomode
 
     set PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`sil680_set_piomode.description`:
 
@@ -107,11 +115,13 @@ sil680_set_dmamode
 
     set DMA mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`sil680_set_dmamode.description`:
 
@@ -132,11 +142,13 @@ sil680_sff_exec_command
 
     issue ATA command to host controller
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to which command is being issued
+    :type ap: struct ata_port \*
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         ATA taskfile register set
+    :type tf: const struct ata_taskfile \*
 
 .. _`sil680_sff_exec_command.description`:
 
@@ -163,11 +175,13 @@ sil680_init_chip
 
     chip setup
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param int \*try_mmio:
+    :param try_mmio:
         *undescribed*
+    :type try_mmio: int \*
 
 .. _`sil680_init_chip.description`:
 

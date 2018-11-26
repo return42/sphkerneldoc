@@ -10,8 +10,9 @@ mlx4_en_remove_timestamp
 
     disable PTP device
 
-    :param struct mlx4_en_dev \*mdev:
+    :param mdev:
         board private structure
+    :type mdev: struct mlx4_en_dev \*
 
 .. _`mlx4_en_remove_timestamp.description`:
 
@@ -29,11 +30,13 @@ mlx4_en_phc_adjfreq
 
     adjust the frequency of the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s32 delta:
+    :param delta:
         Desired frequency change in parts per billion
+    :type delta: s32
 
 .. _`mlx4_en_phc_adjfreq.description`:
 
@@ -52,11 +55,13 @@ mlx4_en_phc_adjtime
 
     Shift the time of the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s64 delta:
+    :param delta:
         Desired change in nanoseconds
+    :type delta: s64
 
 .. _`mlx4_en_phc_adjtime.description`:
 
@@ -74,11 +79,13 @@ mlx4_en_phc_gettime
 
     Reads the current time from the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct timespec64 \*ts:
+    :param ts:
         timespec structure to hold the current time value
+    :type ts: struct timespec64 \*
 
 .. _`mlx4_en_phc_gettime.description`:
 
@@ -97,11 +104,13 @@ mlx4_en_phc_settime
 
     Set the current time on the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         timespec containing the new time for the cycle counter
+    :type ts: const struct timespec64 \*
 
 .. _`mlx4_en_phc_settime.description`:
 
@@ -120,14 +129,17 @@ mlx4_en_phc_enable
 
     enable or disable an ancillary feature
 
-    :param struct ptp_clock_info __always_unused \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info __always_unused \*
 
-    :param struct ptp_clock_request __always_unused \*request:
+    :param request:
         Desired resource to enable or disable
+    :type request: struct ptp_clock_request __always_unused \*
 
-    :param int __always_unused on:
+    :param on:
         Caller passes one to enable or zero to disable
+    :type on: int __always_unused
 
 .. _`mlx4_en_phc_enable.description`:
 

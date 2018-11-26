@@ -146,8 +146,9 @@ sca3000_reg_lock_on
 
     test if the ctrl register lock is on
 
-    :param struct sca3000_state \*st:
+    :param st:
         Driver specific device instance data.
+    :type st: struct sca3000_state \*
 
 .. _`sca3000_reg_lock_on.description`:
 
@@ -165,8 +166,9 @@ Lock must be held.
 
     unlock the control registers
 
-    :param struct sca3000_state \*st:
+    :param st:
         Driver specific device instance data.
+    :type st: struct sca3000_state \*
 
 .. _`__sca3000_unlock_reg_lock.description`:
 
@@ -184,14 +186,17 @@ sca3000_write_ctrl_reg
 
 .. c:function:: int sca3000_write_ctrl_reg(struct sca3000_state *st, u8 sel, uint8_t val)
 
-    :param struct sca3000_state \*st:
+    :param st:
         Driver specific device instance data.
+    :type st: struct sca3000_state \*
 
-    :param u8 sel:
+    :param sel:
         selects which registers we wish to write to
+    :type sel: u8
 
-    :param uint8_t val:
+    :param val:
         the value to be written
+    :type val: uint8_t
 
 .. _`sca3000_write_ctrl_reg.description`:
 
@@ -210,11 +215,13 @@ sca3000_read_ctrl_reg
 
 .. c:function:: int sca3000_read_ctrl_reg(struct sca3000_state *st, u8 ctrl_reg)
 
-    :param struct sca3000_state \*st:
+    :param st:
         Driver specific device instance data.
+    :type st: struct sca3000_state \*
 
-    :param u8 ctrl_reg:
+    :param ctrl_reg:
         Which ctrl register do we want to read.
+    :type ctrl_reg: u8
 
 .. _`sca3000_read_ctrl_reg.description`:
 
@@ -232,10 +239,11 @@ sca3000_print_rev
 
     sysfs interface to read the chip revision number
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         Device instance specific generic IIO data.
         Driver specific device instance data can be obtained via
         via iio_priv(indio_dev)
+    :type indio_dev: struct iio_dev \*
 
 .. _`__sca3000_get_base_freq`:
 
@@ -246,14 +254,17 @@ sca3000_print_rev
 
     obtain mode specific base frequency
 
-    :param struct sca3000_state \*st:
+    :param st:
         Private driver specific device instance specific state.
+    :type st: struct sca3000_state \*
 
-    :param const struct sca3000_chip_info \*info:
+    :param info:
         chip type specific information.
+    :type info: const struct sca3000_chip_info \*
 
-    :param int \*base_freq:
+    :param base_freq:
         Base frequency for the current measurement mode.
+    :type base_freq: int \*
 
 .. _`__sca3000_get_base_freq.description`:
 
@@ -271,11 +282,13 @@ sca3000_read_raw_samp_freq
 
     read_raw handler for IIO_CHAN_INFO_SAMP_FREQ
 
-    :param struct sca3000_state \*st:
+    :param st:
         Private driver specific device instance specific state.
+    :type st: struct sca3000_state \*
 
-    :param int \*val:
+    :param val:
         The frequency read back.
+    :type val: int \*
 
 .. _`sca3000_read_raw_samp_freq.description`:
 
@@ -293,11 +306,13 @@ sca3000_write_raw_samp_freq
 
     write_raw handler for IIO_CHAN_INFO_SAMP_FREQ
 
-    :param struct sca3000_state \*st:
+    :param st:
         Private driver specific device instance specific state.
+    :type st: struct sca3000_state \*
 
-    :param int val:
+    :param val:
         The frequency desired.
+    :type val: int
 
 .. _`sca3000_write_raw_samp_freq.description`:
 
@@ -315,14 +330,17 @@ sca3000_read_av_freq
 
     sysfs function to get available frequencies
 
-    :param struct device \*dev:
+    :param dev:
         Device structure for this device.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Description of the attribute.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Incoming string
+    :type buf: char \*
 
 .. _`sca3000_read_av_freq.description`:
 
@@ -343,26 +361,33 @@ sca3000_read_event_value
 
     query of a threshold or period
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         *undescribed*
+    :type indio_dev: struct iio_dev \*
 
-    :param const struct iio_chan_spec \*chan:
+    :param chan:
         *undescribed*
+    :type chan: const struct iio_chan_spec \*
 
-    :param enum iio_event_type type:
+    :param type:
         *undescribed*
+    :type type: enum iio_event_type
 
-    :param enum iio_event_direction dir:
+    :param dir:
         *undescribed*
+    :type dir: enum iio_event_direction
 
-    :param enum iio_event_info info:
+    :param info:
         *undescribed*
+    :type info: enum iio_event_info
 
-    :param int \*val:
+    :param val:
         *undescribed*
+    :type val: int \*
 
-    :param int \*val2:
+    :param val2:
         *undescribed*
+    :type val2: int \*
 
 .. _`sca3000_write_event_value`:
 
@@ -373,29 +398,36 @@ sca3000_write_event_value
 
     control of threshold and period
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         Device instance specific IIO information.
+    :type indio_dev: struct iio_dev \*
 
-    :param const struct iio_chan_spec \*chan:
+    :param chan:
         Description of the channel for which the event is being
         configured.
+    :type chan: const struct iio_chan_spec \*
 
-    :param enum iio_event_type type:
+    :param type:
         The type of event being configured, here magnitude rising
         as everything else is read only.
+    :type type: enum iio_event_type
 
-    :param enum iio_event_direction dir:
+    :param dir:
         Direction of the event (here rising)
+    :type dir: enum iio_event_direction
 
-    :param enum iio_event_info info:
+    :param info:
         What information about the event are we configuring.
         Here the threshold only.
+    :type info: enum iio_event_info
 
-    :param int val:
+    :param val:
         Integer part of the value being written..
+    :type val: int
 
-    :param int val2:
+    :param val2:
         Non integer part of the value being written. Here always 0.
+    :type val2: int
 
 .. _`sca3000_ring_int_process`:
 
@@ -406,11 +438,13 @@ sca3000_ring_int_process
 
     ring specific interrupt handling.
 
-    :param u8 val:
+    :param val:
         Value of the interrupt status register.
+    :type val: u8
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         Device instance specific IIO device structure.
+    :type indio_dev: struct iio_dev \*
 
 .. _`sca3000_event_handler`:
 
@@ -421,11 +455,13 @@ sca3000_event_handler
 
     handling ring and non ring events
 
-    :param int irq:
+    :param irq:
         The irq being handled.
+    :type irq: int
 
-    :param void \*private:
+    :param private:
         struct iio_device pointer for the device.
+    :type private: void \*
 
 .. _`sca3000_event_handler.description`:
 
@@ -446,17 +482,21 @@ sca3000_read_event_config
 
 .. c:function:: int sca3000_read_event_config(struct iio_dev *indio_dev, const struct iio_chan_spec *chan, enum iio_event_type type, enum iio_event_direction dir)
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         *undescribed*
+    :type indio_dev: struct iio_dev \*
 
-    :param const struct iio_chan_spec \*chan:
+    :param chan:
         *undescribed*
+    :type chan: const struct iio_chan_spec \*
 
-    :param enum iio_event_type type:
+    :param type:
         *undescribed*
+    :type type: enum iio_event_type
 
-    :param enum iio_event_direction dir:
+    :param dir:
         *undescribed*
+    :type dir: enum iio_event_direction
 
 .. _`sca3000_write_event_config`:
 
@@ -467,21 +507,26 @@ sca3000_write_event_config
 
     simple on off control for motion detector
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device instance specific structure. Data specific to this
         particular driver may be accessed via iio_priv(indio_dev).
+    :type indio_dev: struct iio_dev \*
 
-    :param const struct iio_chan_spec \*chan:
+    :param chan:
         Description of the channel whose event we are configuring.
+    :type chan: const struct iio_chan_spec \*
 
-    :param enum iio_event_type type:
+    :param type:
         The type of event.
+    :type type: enum iio_event_type
 
-    :param enum iio_event_direction dir:
+    :param dir:
         The direction of the event.
+    :type dir: enum iio_event_direction
 
-    :param int state:
+    :param state:
         Desired state of event being configured.
+    :type state: int
 
 .. _`sca3000_write_event_config.description`:
 
@@ -503,9 +548,10 @@ sca3000_hw_ring_preenable
 
     hw ring buffer preenable function
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         structure representing the IIO device. Device instance
         specific state can be accessed via iio_priv(indio_dev).
+    :type indio_dev: struct iio_dev \*
 
 .. _`sca3000_hw_ring_preenable.description`:
 
@@ -525,8 +571,9 @@ sca3000_clean_setup
 
     get the device into a predictable state
 
-    :param struct sca3000_state \*st:
+    :param st:
         Device instance specific private data structure
+    :type st: struct sca3000_state \*
 
 .. _`sca3000_clean_setup.description`:
 

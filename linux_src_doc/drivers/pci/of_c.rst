@@ -10,8 +10,9 @@ of_pci_get_devfn
 
     Get device and function numbers for a device node
 
-    :param struct device_node \*np:
+    :param np:
         device node
+    :type np: struct device_node \*
 
 .. _`of_pci_get_devfn.description`:
 
@@ -32,11 +33,13 @@ of_pci_parse_bus_range
 
     parse the bus-range property of a PCI device
 
-    :param struct device_node \*node:
+    :param node:
         device node
+    :type node: struct device_node \*
 
-    :param struct resource \*res:
+    :param res:
         address to a struct resource to return the bus-range
+    :type res: struct resource \*
 
 .. _`of_pci_parse_bus_range.description`:
 
@@ -54,8 +57,9 @@ of_get_pci_domain_nr
 
     finding a property called "linux,pci-domain" of the given device node.
 
-    :param struct device_node \*node:
+    :param node:
         device tree node with the domain information
+    :type node: struct device_node \*
 
 .. _`of_get_pci_domain_nr.description`:
 
@@ -74,8 +78,9 @@ of_pci_get_max_link_speed
 
     a property called "max-link-speed" of the given device node.
 
-    :param struct device_node \*node:
+    :param node:
         device tree node with the max link speed information
+    :type node: struct device_node \*
 
 .. _`of_pci_get_max_link_speed.description`:
 
@@ -94,8 +99,9 @@ of_pci_check_probe_only
 
     Setup probe only mode if linux,pci-probe-only is present and valid
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`devm_of_pci_get_host_bridge_resources`:
 
@@ -106,22 +112,27 @@ devm_of_pci_get_host_bridge_resources
 
     Resource-managed parsing of PCI host bridge resources from DT
 
-    :param struct device \*dev:
+    :param dev:
         host bridge device
+    :type dev: struct device \*
 
-    :param unsigned char busno:
+    :param busno:
         bus number associated with the bridge root bus
+    :type busno: unsigned char
 
-    :param unsigned char bus_max:
+    :param bus_max:
         maximum number of buses for this bridge
+    :type bus_max: unsigned char
 
-    :param struct list_head \*resources:
+    :param resources:
         list where the range of resources will be added after DT parsing
+    :type resources: struct list_head \*
 
-    :param resource_size_t \*io_base:
+    :param io_base:
         pointer to a variable that will contain on return the physical
         address for the start of the I/O range. Can be NULL if the caller doesn't
         expect I/O ranges to be present in the device tree.
+    :type io_base: resource_size_t \*
 
 .. _`devm_of_pci_get_host_bridge_resources.description`:
 
@@ -135,53 +146,6 @@ that the property conforms with the Power ePAPR document.
 It returns zero if the range parsing has been successful or a standard error
 value if it failed.
 
-.. _`of_pci_map_rid`:
-
-of_pci_map_rid
-==============
-
-.. c:function:: int of_pci_map_rid(struct device_node *np, u32 rid, const char *map_name, const char *map_mask_name, struct device_node **target, u32 *id_out)
-
-    Translate a requester ID through a downstream mapping.
-
-    :param struct device_node \*np:
-        root complex device node.
-
-    :param u32 rid:
-        PCI requester ID to map.
-
-    :param const char \*map_name:
-        property name of the map to use.
-
-    :param const char \*map_mask_name:
-        optional property name of the mask to use.
-
-    :param struct device_node \*\*target:
-        optional pointer to a target device node.
-
-    :param u32 \*id_out:
-        optional pointer to receive the translated ID.
-
-.. _`of_pci_map_rid.description`:
-
-Description
------------
-
-Given a PCI requester ID, look up the appropriate implementation-defined
-platform ID and/or the target device which receives transactions on that
-ID, as per the "iommu-map" and "msi-map" bindings. Either of \ ``target``\  or
-\ ``id_out``\  may be NULL if only the other is required. If \ ``target``\  points to
-a non-NULL device node pointer, only entries targeting that node will be
-matched; if it points to a NULL value, it will receive the device node of
-the first matching target phandle, with a reference held.
-
-.. _`of_pci_map_rid.return`:
-
-Return
-------
-
-0 on success or a standard error code on failure.
-
 .. _`of_irq_parse_pci`:
 
 of_irq_parse_pci
@@ -191,11 +155,13 @@ of_irq_parse_pci
 
     Resolve the interrupt for a PCI device
 
-    :param const struct pci_dev \*pdev:
+    :param pdev:
         the device whose interrupt is to be resolved
+    :type pdev: const struct pci_dev \*
 
-    :param struct of_phandle_args \*out_irq:
+    :param out_irq:
         structure of_irq filled by this function
+    :type out_irq: struct of_phandle_args \*
 
 .. _`of_irq_parse_pci.description`:
 
@@ -217,14 +183,17 @@ of_irq_parse_and_map_pci
 
     Decode a PCI IRQ from the device tree and map to a VIRQ
 
-    :param const struct pci_dev \*dev:
+    :param dev:
         The PCI device needing an IRQ
+    :type dev: const struct pci_dev \*
 
-    :param u8 slot:
+    :param slot:
         PCI slot number; passed when used as map_irq callback. Unused
+    :type slot: u8
 
-    :param u8 pin:
+    :param pin:
         PCI IRQ pin number; passed when used as map_irq callback. Unused
+    :type pin: u8
 
 .. _`of_irq_parse_and_map_pci.description`:
 

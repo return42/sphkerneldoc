@@ -10,11 +10,13 @@ for_each_prime_number
 
     iterate over each prime upto a value
 
-    :param  prime:
+    :param prime:
         the current prime number in this iteration
+    :type prime: 
 
-    :param  max:
+    :param max:
         the upper limit
+    :type max: 
 
 .. _`for_each_prime_number.description`:
 
@@ -36,14 +38,17 @@ for_each_prime_number_from
 
     iterate over each prime upto a value
 
-    :param  prime:
+    :param prime:
         the current prime number in this iteration
+    :type prime: 
 
-    :param  from:
+    :param from:
         the initial value
+    :type from: 
 
-    :param  max:
+    :param max:
         the upper limit
+    :type max: 
 
 .. _`for_each_prime_number_from.description`:
 

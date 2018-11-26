@@ -10,11 +10,13 @@ telemetry_update_events
 
     Update telemetry Configuration
 
-    :param struct telemetry_evtconfig pss_evtconfig:
+    :param pss_evtconfig:
         IOSS related config. No change if num_evts = 0.
+    :type pss_evtconfig: struct telemetry_evtconfig
 
-    :param struct telemetry_evtconfig ioss_evtconfig:
+    :param ioss_evtconfig:
         *undescribed*
+    :type ioss_evtconfig: struct telemetry_evtconfig
 
 .. _`telemetry_update_events.description`:
 
@@ -47,13 +49,15 @@ telemetry_set_sampling_period
 
     Sets the IOSS & PSS sampling period
 
-    :param u8 pss_period:
+    :param pss_period:
         placeholder for PSS Period to be set.
         Set to 0 if not required to be updated
+    :type pss_period: u8
 
-    :param u8 ioss_period:
+    :param ioss_period:
         placeholder for IOSS Period to be set
         Set to 0 if not required to be updated
+    :type ioss_period: u8
 
 .. _`telemetry_set_sampling_period.all-values-should-be-in-the-form-of`:
 
@@ -78,17 +82,21 @@ telemetry_get_sampling_period
 
     Get IOSS & PSS min & max sampling period
 
-    :param u8 \*pss_min_period:
+    :param pss_min_period:
         placeholder for PSS Min Period supported
+    :type pss_min_period: u8 \*
 
-    :param u8 \*pss_max_period:
+    :param pss_max_period:
         placeholder for PSS Max Period supported
+    :type pss_max_period: u8 \*
 
-    :param u8 \*ioss_min_period:
+    :param ioss_min_period:
         placeholder for IOSS Min Period supported
+    :type ioss_min_period: u8 \*
 
-    :param u8 \*ioss_max_period:
+    :param ioss_max_period:
         placeholder for IOSS Max Period supported
+    :type ioss_max_period: u8 \*
 
 .. _`telemetry_get_sampling_period.all-values-should-be-in-the-form-of`:
 
@@ -113,8 +121,9 @@ telemetry_reset_events
 
     Restore the IOSS & PSS configuration to default
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`telemetry_reset_events.return`:
 
@@ -132,17 +141,21 @@ telemetry_get_eventconfig
 
     Returns the pss and ioss events enabled
 
-    :param struct telemetry_evtconfig \*pss_evtconfig:
+    :param pss_evtconfig:
         Pointer to IOSS related configuration.
+    :type pss_evtconfig: struct telemetry_evtconfig \*
 
-    :param struct telemetry_evtconfig \*ioss_evtconfig:
+    :param ioss_evtconfig:
         *undescribed*
+    :type ioss_evtconfig: struct telemetry_evtconfig \*
 
-    :param int pss_len:
+    :param pss_len:
         Number of u32 elements allocated for pss_evtconfig array
+    :type pss_len: int
 
-    :param int ioss_len:
+    :param ioss_len:
         Number of u32 elements allocated for ioss_evtconfig array
+    :type ioss_len: int
 
 .. _`telemetry_get_eventconfig.return`:
 
@@ -160,17 +173,21 @@ telemetry_add_events
 
     Add IOSS & PSS configuration to existing settings.
 
-    :param u8 num_pss_evts:
+    :param num_pss_evts:
         Number of PSS Events (<29) in pss_evtmap. Can be 0.
+    :type num_pss_evts: u8
 
-    :param u8 num_ioss_evts:
+    :param num_ioss_evts:
         Number of IOSS Events (<29) in ioss_evtmap. Can be 0.
+    :type num_ioss_evts: u8
 
-    :param u32 \*pss_evtmap:
+    :param pss_evtmap:
         Array of PSS Event-IDs to Enable
+    :type pss_evtmap: u32 \*
 
-    :param u32 \*ioss_evtmap:
+    :param ioss_evtmap:
         Array of PSS Event-IDs to Enable
+    :type ioss_evtmap: u32 \*
 
 .. _`telemetry_add_events.description`:
 
@@ -196,15 +213,18 @@ telemetry_read_events
 
     Fetches samples as specified by evtlog.telem_evt_id
 
-    :param enum telemetry_unit telem_unit:
+    :param telem_unit:
         Specify whether IOSS or PSS Read
+    :type telem_unit: enum telemetry_unit
 
-    :param struct telemetry_evtlog \*evtlog:
+    :param evtlog:
         Array of telemetry_evtlog structs to fill data
         evtlog.telem_evt_id specifies the ids to read
+    :type evtlog: struct telemetry_evtlog \*
 
-    :param int len:
+    :param len:
         Length of array of evtlog
+    :type len: int
 
 .. _`telemetry_read_events.return`:
 
@@ -222,15 +242,18 @@ telemetry_raw_read_events
 
     Fetch samples specified by evtlog.telem_evt_id
 
-    :param enum telemetry_unit telem_unit:
+    :param telem_unit:
         Specify whether IOSS or PSS Read
+    :type telem_unit: enum telemetry_unit
 
-    :param struct telemetry_evtlog \*evtlog:
+    :param evtlog:
         Array of telemetry_evtlog structs to fill data
         evtlog.telem_evt_id specifies the ids to read
+    :type evtlog: struct telemetry_evtlog \*
 
-    :param int len:
+    :param len:
         Length of array of evtlog
+    :type len: int
 
 .. _`telemetry_raw_read_events.description`:
 
@@ -255,14 +278,17 @@ telemetry_read_eventlog
 
     Fetch the Telemetry log from PSS or IOSS
 
-    :param enum telemetry_unit telem_unit:
+    :param telem_unit:
         Specify whether IOSS or PSS Read
+    :type telem_unit: enum telemetry_unit
 
-    :param struct telemetry_evtlog \*evtlog:
+    :param evtlog:
         Array of telemetry_evtlog structs to fill data
+    :type evtlog: struct telemetry_evtlog \*
 
-    :param int len:
+    :param len:
         Length of array of evtlog
+    :type len: int
 
 .. _`telemetry_read_eventlog.return`:
 
@@ -280,14 +306,17 @@ telemetry_raw_read_eventlog
 
     Fetch the Telemetry log from PSS or IOSS
 
-    :param enum telemetry_unit telem_unit:
+    :param telem_unit:
         Specify whether IOSS or PSS Read
+    :type telem_unit: enum telemetry_unit
 
-    :param struct telemetry_evtlog \*evtlog:
+    :param evtlog:
         Array of telemetry_evtlog structs to fill data
+    :type evtlog: struct telemetry_evtlog \*
 
-    :param int len:
+    :param len:
         Length of array of evtlog
+    :type len: int
 
 .. _`telemetry_raw_read_eventlog.description`:
 
@@ -312,11 +341,13 @@ telemetry_get_trace_verbosity
 
     Get the IOSS & PSS Trace verbosity
 
-    :param enum telemetry_unit telem_unit:
+    :param telem_unit:
         Specify whether IOSS or PSS Read
+    :type telem_unit: enum telemetry_unit
 
-    :param u32 \*verbosity:
+    :param verbosity:
         Pointer to return Verbosity
+    :type verbosity: u32 \*
 
 .. _`telemetry_get_trace_verbosity.return`:
 
@@ -334,11 +365,13 @@ telemetry_set_trace_verbosity
 
     Update the IOSS & PSS Trace verbosity
 
-    :param enum telemetry_unit telem_unit:
+    :param telem_unit:
         Specify whether IOSS or PSS Read
+    :type telem_unit: enum telemetry_unit
 
-    :param u32 verbosity:
+    :param verbosity:
         Verbosity to set
+    :type verbosity: u32
 
 .. _`telemetry_set_trace_verbosity.return`:
 
@@ -356,11 +389,13 @@ telemetry_set_pltdata
 
     Set the platform specific Data
 
-    :param const struct telemetry_core_ops \*ops:
+    :param ops:
         Pointer to ops structure
+    :type ops: const struct telemetry_core_ops \*
 
-    :param struct telemetry_plt_config \*pltconfig:
+    :param pltconfig:
         Platform config data
+    :type pltconfig: struct telemetry_plt_config \*
 
 .. _`telemetry_set_pltdata.description`:
 
@@ -385,8 +420,9 @@ telemetry_clear_pltdata
 
     Clear the platform specific Data
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`telemetry_clear_pltdata.description`:
 
@@ -411,8 +447,9 @@ telemetry_pltconfig_valid
 
     Checkif platform config is valid
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`telemetry_pltconfig_valid.description`:
 
@@ -437,14 +474,17 @@ telemetry_get_evtname
 
     Checkif platform config is valid
 
-    :param enum telemetry_unit telem_unit:
+    :param telem_unit:
         Telemetry Unit to check
+    :type telem_unit: enum telemetry_unit
 
-    :param const char \*\*name:
+    :param name:
         Array of character pointers to contain name
+    :type name: const char \*\*
 
-    :param int len:
+    :param len:
         length of array name provided by user
+    :type len: int
 
 .. _`telemetry_get_evtname.description`:
 

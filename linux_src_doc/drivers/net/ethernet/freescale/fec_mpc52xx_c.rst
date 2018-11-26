@@ -8,8 +8,9 @@ mpc52xx_fec_hw_init
 
 .. c:function:: void mpc52xx_fec_hw_init(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`mpc52xx_fec_hw_init.description`:
 
@@ -25,8 +26,9 @@ mpc52xx_fec_start
 
 .. c:function:: void mpc52xx_fec_start(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`mpc52xx_fec_start.description`:
 
@@ -44,8 +46,9 @@ mpc52xx_fec_stop
 
 .. c:function:: void mpc52xx_fec_stop(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`mpc52xx_fec_stop.description`:
 

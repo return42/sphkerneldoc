@@ -10,11 +10,13 @@ optee_do_call_with_arg
 
     Do an SMC to OP-TEE in secure world
 
-    :param struct tee_context \*ctx:
+    :param ctx:
         calling context
+    :type ctx: struct tee_context \*
 
-    :param phys_addr_t parg:
+    :param parg:
         physical address of message to pass to secure world
+    :type parg: phys_addr_t
 
 .. _`optee_do_call_with_arg.description`:
 
@@ -35,8 +37,9 @@ optee_enable_shm_cache
 
     Enables caching of some shared memory allocation in OP-TEE
 
-    :param struct optee \*optee:
+    :param optee:
         main service struct
+    :type optee: struct optee \*
 
 .. _`optee_disable_shm_cache`:
 
@@ -47,8 +50,9 @@ optee_disable_shm_cache
 
     Disables caching of some shared memory allocation in OP-TEE
 
-    :param struct optee \*optee:
+    :param optee:
         main service struct
+    :type optee: struct optee \*
 
 .. _`optee_fill_pages_list`:
 
@@ -59,17 +63,21 @@ optee_fill_pages_list
 
     write list of user pages to given shared buffer.
 
-    :param u64 \*dst:
+    :param dst:
         page-aligned buffer where list of pages will be stored
+    :type dst: u64 \*
 
-    :param struct page \*\*pages:
+    :param pages:
         array of pages that represents shared buffer
+    :type pages: struct page \*\*
 
-    :param int num_pages:
+    :param num_pages:
         number of entries in \ ``pages``\ 
+    :type num_pages: int
 
-    :param size_t page_offset:
+    :param page_offset:
         offset of user buffer from page start
+    :type page_offset: size_t
 
 .. _`optee_fill_pages_list.description`:
 

@@ -160,8 +160,9 @@ pid_alive
 
     check that a task structure is not stale
 
-    :param const struct task_struct \*p:
+    :param p:
         Task structure to be checked.
+    :type p: const struct task_struct \*
 
 .. _`pid_alive.description`:
 
@@ -188,8 +189,9 @@ is_global_init
 
     check if a task structure is init. Since init is free to have sub-threads we need to check tgid.
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         Task structure to be checked.
+    :type tsk: struct task_struct \*
 
 .. _`is_global_init.description`:
 
@@ -214,8 +216,9 @@ task_nice
 
     return the nice value of a given task.
 
-    :param const struct task_struct \*p:
+    :param p:
         the task in question.
+    :type p: const struct task_struct \*
 
 .. _`task_nice.return`:
 
@@ -233,8 +236,9 @@ is_idle_task
 
     is the specified task an idle task?
 
-    :param const struct task_struct \*p:
+    :param p:
         the task in question.
+    :type p: const struct task_struct \*
 
 .. _`is_idle_task.return`:
 

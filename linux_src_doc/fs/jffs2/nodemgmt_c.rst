@@ -10,17 +10,21 @@ jffs2_do_reserve_space
 
     request physical space to write nodes to flash
 
-    :param struct jffs2_sb_info \*c:
+    :param c:
         superblock info
+    :type c: struct jffs2_sb_info \*
 
-    :param uint32_t minsize:
+    :param minsize:
         Minimum acceptable size of allocation
+    :type minsize: uint32_t
 
-    :param uint32_t \*len:
+    :param len:
         Returned value of allocation length
+    :type len: uint32_t \*
 
-    :param uint32_t sumsize:
+    :param sumsize:
         *undescribed*
+    :type sumsize: uint32_t
 
 .. _`jffs2_do_reserve_space.description`:
 
@@ -47,17 +51,21 @@ jffs2_add_physical_node_ref
 
     add a physical node reference to the list
 
-    :param struct jffs2_sb_info \*c:
+    :param c:
         superblock info
+    :type c: struct jffs2_sb_info \*
 
-    :param uint32_t ofs:
+    :param ofs:
         *undescribed*
+    :type ofs: uint32_t
 
-    :param uint32_t len:
+    :param len:
         length of this physical node
+    :type len: uint32_t
 
-    :param struct jffs2_inode_cache \*ic:
+    :param ic:
         *undescribed*
+    :type ic: struct jffs2_inode_cache \*
 
 .. _`jffs2_add_physical_node_ref.description`:
 

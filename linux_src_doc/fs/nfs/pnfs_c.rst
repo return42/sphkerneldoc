@@ -10,17 +10,21 @@ pnfs_mark_matching_lsegs_invalid
 
     tear down lsegs or mark them for later
 
-    :param struct pnfs_layout_hdr \*lo:
+    :param lo:
         layout header containing the lsegs
+    :type lo: struct pnfs_layout_hdr \*
 
-    :param struct list_head \*tmp_list:
+    :param tmp_list:
         list head where doomed lsegs should go
+    :type tmp_list: struct list_head \*
 
-    :param const struct pnfs_layout_range \*recall_range:
+    :param recall_range:
         optional recall range argument to match (may be NULL)
+    :type recall_range: const struct pnfs_layout_range \*
 
-    :param u32 seq:
+    :param seq:
         only invalidate lsegs obtained prior to this sequence (may be 0)
+    :type seq: u32
 
 .. _`pnfs_mark_matching_lsegs_invalid.description`:
 
@@ -44,17 +48,21 @@ pnfs_mark_matching_lsegs_return
 
     Free or return matching layout segments
 
-    :param struct pnfs_layout_hdr \*lo:
+    :param lo:
         pointer to layout header
+    :type lo: struct pnfs_layout_hdr \*
 
-    :param struct list_head \*tmp_list:
+    :param tmp_list:
         list header to be used with \ :c:func:`pnfs_free_lseg_list`\ 
+    :type tmp_list: struct list_head \*
 
-    :param const struct pnfs_layout_range \*return_range:
+    :param return_range:
         describe layout segment ranges to be returned
+    :type return_range: const struct pnfs_layout_range \*
 
-    :param u32 seq:
-        *undescribed*
+    :param seq:
+        stateid seqid to match
+    :type seq: u32
 
 .. _`pnfs_mark_matching_lsegs_return.description`:
 
@@ -64,6 +72,11 @@ Description
 This function is mainly intended for use by layoutrecall. It attempts
 to free the layout segment immediately, or else to mark it for return
 as soon as its reference count drops to zero.
+
+Returns
+- 0: a layoutreturn needs to be scheduled.
+- EBUSY: there are layout segment that are still in use.
+- ENOENT: there are no layout segments that need to be returned.
 
 .. This file was automatic generated / don't edit.
 

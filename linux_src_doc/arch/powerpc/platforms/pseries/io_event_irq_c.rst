@@ -8,8 +8,9 @@ ioei_find_event
 
 .. c:function:: struct pseries_io_event *ioei_find_event(struct rtas_error_log *elog)
 
-    :param struct rtas_error_log \*elog:
+    :param elog:
         RTAS error/event log.
+    :type elog: struct rtas_error_log \*
 
 .. _`ioei_find_event.return`:
 

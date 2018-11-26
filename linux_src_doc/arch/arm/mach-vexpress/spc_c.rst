@@ -8,8 +8,9 @@ ve_spc_global_wakeup_irq
 
 .. c:function:: void ve_spc_global_wakeup_irq(bool set)
 
-    :param bool set:
+    :param set:
         if true, global wake-up IRQs are set, if false they are cleared
+    :type set: bool
 
 .. _`ve_spc_global_wakeup_irq.description`:
 
@@ -27,14 +28,17 @@ ve_spc_cpu_wakeup_irq
 
 .. c:function:: void ve_spc_cpu_wakeup_irq(u32 cluster, u32 cpu, bool set)
 
-    :param u32 cluster:
+    :param cluster:
         mpidr[15:8] bitfield describing cluster affinity level
+    :type cluster: u32
 
-    :param u32 cpu:
+    :param cpu:
         mpidr[7:0] bitfield describing cpu affinity level
+    :type cpu: u32
 
-    :param bool set:
+    :param set:
         if true, wake-up IRQs are set, if false they are cleared
+    :type set: bool
 
 .. _`ve_spc_cpu_wakeup_irq.description`:
 
@@ -54,14 +58,17 @@ ve_spc_set_resume_addr
 
     set the jump address used for warm boot
 
-    :param u32 cluster:
+    :param cluster:
         mpidr[15:8] bitfield describing cluster affinity level
+    :type cluster: u32
 
-    :param u32 cpu:
+    :param cpu:
         mpidr[7:0] bitfield describing cpu affinity level
+    :type cpu: u32
 
-    :param u32 addr:
+    :param addr:
         physical resume address
+    :type addr: u32
 
 .. _`ve_spc_powerdown`:
 
@@ -70,11 +77,13 @@ ve_spc_powerdown
 
 .. c:function:: void ve_spc_powerdown(u32 cluster, bool enable)
 
-    :param u32 cluster:
+    :param cluster:
         mpidr[15:8] bitfield describing cluster affinity level
+    :type cluster: u32
 
-    :param bool enable:
+    :param enable:
         if true enables powerdown, if false disables it
+    :type enable: bool
 
 .. _`ve_spc_powerdown.description`:
 
@@ -92,11 +101,13 @@ ve_spc_cpu_in_wfi
 
 .. c:function:: int ve_spc_cpu_in_wfi(u32 cpu, u32 cluster)
 
-    :param u32 cpu:
+    :param cpu:
         mpidr[7:0] bitfield describing CPU affinity level within cluster
+    :type cpu: u32
 
-    :param u32 cluster:
+    :param cluster:
         mpidr[15:8] bitfield describing cluster affinity level
+    :type cluster: u32
 
 .. _`ve_spc_cpu_in_wfi.take-care-when-interpreting-the-result-of-this-function`:
 

@@ -6,24 +6,26 @@
 void
 ====
 
-.. c:function::  void(*cvmx_override_pko_queue_priority)
+.. c:function::  void(* cvmx_override_pko_queue_priority)
 
     priorities[16]) is a function pointer. It is meant to allow customization of the PKO queue priorities based on the port number. Users should set this pointer to a function before calling any cvmx-helper operations.
 
-    :param \*cvmx_override_pko_queue_priority:
+    :param cvmx_override_pko_queue_priority:
         *undescribed*
+    :type cvmx_override_pko_queue_priority: \*
 
 .. _`void`:
 
 void
 ====
 
-.. c:function::  void(*cvmx_override_ipd_port_setup)
+.. c:function::  void(* cvmx_override_ipd_port_setup)
 
     pointer. It is meant to allow customization of the IPD port setup before packet input/output comes online. It is called after cvmx-helper does the default IPD configuration, but before IPD is enabled. Users should set this pointer to a function before calling any cvmx-helper operations.
 
-    :param \*cvmx_override_ipd_port_setup:
+    :param cvmx_override_ipd_port_setup:
         *undescribed*
+    :type cvmx_override_ipd_port_setup: \*
 
 .. _`cvmx_helper_get_number_of_interfaces`:
 
@@ -34,8 +36,9 @@ cvmx_helper_get_number_of_interfaces
 
     may have multiple ports. Most chips support two interfaces, but the CNX0XX and CNX1XX are exceptions. These only support one interface.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_helper_get_number_of_interfaces.description`:
 
@@ -53,8 +56,9 @@ cvmx_helper_ports_on_interface
 
     chip and configuration, this can be 1-16. A value of 0 specifies that the interface doesn't exist or isn't usable.
 
-    :param int interface:
+    :param interface:
         Interface to get the port count for
+    :type interface: int
 
 .. _`cvmx_helper_ports_on_interface.description`:
 
@@ -72,8 +76,9 @@ cvmx_helper_interface_get_mode
 
     chip and configuration, this function returns an enumeration of the type of packet I/O supported by an interface.
 
-    :param int interface:
+    :param interface:
         Interface to probe
+    :type interface: int
 
 .. _`cvmx_helper_interface_get_mode.description`:
 
@@ -92,9 +97,10 @@ DISABLED.
 
     port. This function determines the POW work queue entry contents for a port. The setup performed here is controlled by the defines in executive-config.h.
 
-    :param int ipd_port:
+    :param ipd_port:
         Port to configure. This follows the IPD numbering, not the
         per interface numbering
+    :type ipd_port: int
 
 .. _`__cvmx_helper_port_setup_ipd.description`:
 
@@ -112,8 +118,9 @@ cvmx_helper_interface_enumerate
 
     without modifying any hardware configuration.  Hardware setup of the ports will be performed later.
 
-    :param int interface:
+    :param interface:
         Interface to probe
+    :type interface: int
 
 .. _`cvmx_helper_interface_enumerate.description`:
 
@@ -131,8 +138,9 @@ cvmx_helper_interface_probe
 
     number of hardware ports connected to it. It doesn't setup the ports or enable them. The main goal here is to set the global interface_port_count[interface] correctly. Hardware setup of the ports will be performed later.
 
-    :param int interface:
+    :param interface:
         Interface to probe
+    :type interface: int
 
 .. _`cvmx_helper_interface_probe.description`:
 
@@ -150,8 +158,9 @@ Returns Zero on success, negative on failure
 
     classification and tagging are set for every port on the interface. The number of ports on the interface must already have been probed.
 
-    :param int interface:
+    :param interface:
         Interface to setup IPD/PIP for
+    :type interface: int
 
 .. _`__cvmx_helper_interface_setup_ipd.description`:
 
@@ -169,8 +178,9 @@ Returns Zero on success, negative on failure
 
     interface or port. This must be called before IPD is enabled.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__cvmx_helper_global_setup_ipd.description`:
 
@@ -188,8 +198,9 @@ Returns Zero on success, negative on failure.
 
     queues per port and the priority of each PKO output queue is set here. PKO must be disabled when this function is called.
 
-    :param int interface:
+    :param interface:
         Interface to setup PKO for
+    :type interface: int
 
 .. _`__cvmx_helper_interface_setup_pko.description`:
 
@@ -207,8 +218,9 @@ Returns Zero on success, negative on failure
 
     interface or port. This must be called before PKO is enabled.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__cvmx_helper_global_setup_pko.description`:
 
@@ -224,8 +236,9 @@ Returns Zero on success, negative on failure.
 
 .. c:function:: int __cvmx_helper_global_setup_backpressure( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__cvmx_helper_global_setup_backpressure.description`:
 
@@ -243,8 +256,9 @@ Returns Zero on success, negative on failure
 
     called after all internal setup is complete and IPD is enabled. After this function completes, packets will be accepted from the hardware ports. PKO should still be disabled to make sure packets aren't sent out partially setup hardware.
 
-    :param int interface:
+    :param interface:
         Interface to enable
+    :type interface: int
 
 .. _`__cvmx_helper_packet_hardware_enable.description`:
 
@@ -260,8 +274,9 @@ Returns Zero on success, negative on failure
 
 .. c:function:: int __cvmx_helper_errata_fix_ipd_ptr_alignment( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__cvmx_helper_errata_fix_ipd_ptr_alignment.description`:
 
@@ -280,8 +295,9 @@ cvmx_helper_ipd_and_packet_input_enable
 
     function enables IPD/PIP and begins packet input and output.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_helper_ipd_and_packet_input_enable.description`:
 
@@ -299,8 +315,9 @@ cvmx_helper_initialize_packet_io_global
 
     simple priority based queues for the ethernet ports. Each port is configured with a number of priority queues based on CVMX_PKO_QUEUES_PER_PORT\_\* where each queue is lower priority than the previous.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_helper_initialize_packet_io_global.description`:
 
@@ -316,8 +333,9 @@ cvmx_helper_initialize_packet_io_local
 
 .. c:function:: int cvmx_helper_initialize_packet_io_local( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_helper_initialize_packet_io_local.description`:
 
@@ -335,8 +353,9 @@ cvmx_helper_link_get
 
     auto negotiation. The result of this function may not match Octeon's link config if auto negotiation has changed since the last call to \ :c:func:`cvmx_helper_link_set`\ .
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port to query
+    :type ipd_port: int
 
 .. _`cvmx_helper_link_get.description`:
 
@@ -354,11 +373,13 @@ cvmx_helper_link_set
 
     function does not influence auto negotiation at the PHY level. The passed link state must always match the link state returned by \ :c:func:`cvmx_helper_link_get`\ .
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port to configure
+    :type ipd_port: int
 
-    :param cvmx_helper_link_info_t link_info:
+    :param link_info:
         The new link state
+    :type link_info: cvmx_helper_link_info_t
 
 .. _`cvmx_helper_link_set.description`:
 
@@ -376,14 +397,17 @@ cvmx_helper_configure_loopback
 
     causes packets sent by the port to be received by Octeon. External loopback causes packets received from the wire to sent out again.
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port to loopback.
+    :type ipd_port: int
 
-    :param int enable_internal:
+    :param enable_internal:
         Non zero if you want internal loopback
+    :type enable_internal: int
 
-    :param int enable_external:
+    :param enable_external:
         Non zero if you want external loopback
+    :type enable_external: int
 
 .. _`cvmx_helper_configure_loopback.description`:
 

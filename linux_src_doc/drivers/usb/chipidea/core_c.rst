@@ -10,8 +10,9 @@ hw_read_intr_enable
 
     returns interrupt enable register
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_read_intr_enable.description`:
 
@@ -29,8 +30,9 @@ hw_read_intr_status
 
     returns interrupt status register
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_read_intr_status.description`:
 
@@ -48,11 +50,13 @@ hw_port_test_set
 
     writes port test mode (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param u8 mode:
+    :param mode:
         new value
+    :type mode: u8
 
 .. _`hw_port_test_set.description`:
 
@@ -70,8 +74,9 @@ hw_port_test_get
 
     reads port test mode value
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_port_test_get.description`:
 
@@ -89,8 +94,9 @@ This function returns port test mode value
 
     initialize phy taking in account both phy and usb_phy interfaces
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`_ci_usb_phy_init.description`:
 
@@ -108,8 +114,9 @@ ci_usb_phy_exit
 
     deinitialize phy taking in account both phy and usb_phy interfaces
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`ci_usb_phy_init`:
 
@@ -120,8 +127,9 @@ ci_usb_phy_init
 
     initialize phy according to different phy type
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`ci_usb_phy_init.description`:
 
@@ -139,8 +147,9 @@ ci_platform_configure
 
     do controller configure
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_controller_reset`:
 
@@ -151,8 +160,9 @@ hw_controller_reset
 
     do controller reset
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_controller_reset.description`:
 
@@ -170,8 +180,9 @@ hw_device_reset
 
     resets chip (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_device_reset.description`:
 

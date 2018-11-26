@@ -10,8 +10,9 @@ irq_poll_sched
 
     Schedule a run of the iopoll handler
 
-    :param struct irq_poll \*iop:
+    :param iop:
         The parent iopoll structure
+    :type iop: struct irq_poll \*
 
 .. _`irq_poll_sched.description`:
 
@@ -30,8 +31,9 @@ raise of the blk iopoll softirq.
 
     Mark this \ ``iop``\  as un-polled again
 
-    :param struct irq_poll \*iop:
+    :param iop:
         The parent iopoll structure
+    :type iop: struct irq_poll \*
 
 .. _`__irq_poll_complete.description`:
 
@@ -50,8 +52,9 @@ irq_poll_complete
 
     Mark this \ ``iop``\  as un-polled again
 
-    :param struct irq_poll \*iop:
+    :param iop:
         The parent iopoll structure
+    :type iop: struct irq_poll \*
 
 .. _`irq_poll_complete.description`:
 
@@ -72,8 +75,9 @@ irq_poll_disable
 
     Disable iopoll on this \ ``iop``\ 
 
-    :param struct irq_poll \*iop:
+    :param iop:
         The parent iopoll structure
+    :type iop: struct irq_poll \*
 
 .. _`irq_poll_disable.description`:
 
@@ -91,8 +95,9 @@ irq_poll_enable
 
     Enable iopoll on this \ ``iop``\ 
 
-    :param struct irq_poll \*iop:
+    :param iop:
         The parent iopoll structure
+    :type iop: struct irq_poll \*
 
 .. _`irq_poll_enable.description`:
 
@@ -111,14 +116,17 @@ irq_poll_init
 
     Initialize this \ ``iop``\ 
 
-    :param struct irq_poll \*iop:
+    :param iop:
         The parent iopoll structure
+    :type iop: struct irq_poll \*
 
-    :param int weight:
+    :param weight:
         The default weight (or command completion budget)
+    :type weight: int
 
-    :param irq_poll_fn \*poll_fn:
+    :param poll_fn:
         The handler to invoke
+    :type poll_fn: irq_poll_fn \*
 
 .. _`irq_poll_init.description`:
 

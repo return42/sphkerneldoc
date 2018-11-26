@@ -10,11 +10,13 @@ opp1_set_truncation
 
     1) set truncation depth: 0 for 18 bpp or 1 for 24 bpp 2) enable truncation 3) HW remove 12bit FMT support for DCE11 power saving reason.
 
-    :param struct dcn10_opp \*oppn10:
+    :param oppn10:
         *undescribed*
+    :type oppn10: struct dcn10_opp \*
 
-    :param const struct bit_depth_reduction_params \*params:
+    :param params:
         *undescribed*
+    :type params: const struct bit_depth_reduction_params \*
 
 .. _`opp1_set_pixel_encoding`:
 
@@ -23,11 +25,13 @@ opp1_set_pixel_encoding
 
 .. c:function:: void opp1_set_pixel_encoding(struct dcn10_opp *oppn10, const struct clamping_and_pixel_encoding_params *params)
 
-    :param struct dcn10_opp \*oppn10:
+    :param oppn10:
         *undescribed*
+    :type oppn10: struct dcn10_opp \*
 
-    :param const struct clamping_and_pixel_encoding_params \*params:
+    :param params:
         *undescribed*
+    :type params: const struct clamping_and_pixel_encoding_params \*
 
 .. _`opp1_set_pixel_encoding.description`:
 
@@ -47,11 +51,13 @@ opp1_set_clamping
 
     1) Set clamping format based on bpc - 0 for 6bpc (No clamping) 1 for 8 bpc 2 for 10 bpc 3 for 12 bpc 7 for programable 2) Enable clamp if Limited range requested
 
-    :param struct dcn10_opp \*oppn10:
+    :param oppn10:
         *undescribed*
+    :type oppn10: struct dcn10_opp \*
 
-    :param const struct clamping_and_pixel_encoding_params \*params:
+    :param params:
         *undescribed*
+    :type params: const struct clamping_and_pixel_encoding_params \*
 
 .. This file was automatic generated / don't edit.
 

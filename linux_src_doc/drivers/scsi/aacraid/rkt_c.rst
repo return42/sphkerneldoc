@@ -10,11 +10,13 @@ aac_rkt_select_comm
 
     Select communications method
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
-    :param int comm:
+    :param comm:
         communications method
+    :type comm: int
 
 .. _`aac_rkt_ioremap`:
 
@@ -23,11 +25,13 @@ aac_rkt_ioremap
 
 .. c:function:: int aac_rkt_ioremap(struct aac_dev *dev, u32 size)
 
-    :param struct aac_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct aac_dev \*
 
-    :param u32 size:
+    :param size:
         mapping resize request
+    :type size: u32
 
 .. _`aac_rkt_init`:
 
@@ -38,8 +42,9 @@ aac_rkt_init
 
     initialize an i960 based AAC card
 
-    :param struct aac_dev \*dev:
+    :param dev:
         device to configure
+    :type dev: struct aac_dev \*
 
 .. _`aac_rkt_init.description`:
 

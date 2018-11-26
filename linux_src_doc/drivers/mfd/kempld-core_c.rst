@@ -10,11 +10,13 @@ kempld_read8
 
     read 8 bit register
 
-    :param struct kempld_device_data \*pld:
+    :param pld:
         kempld_device_data structure describing the PLD
+    :type pld: struct kempld_device_data \*
 
-    :param u8 index:
+    :param index:
         register index on the chip
+    :type index: u8
 
 .. _`kempld_read8.description`:
 
@@ -32,14 +34,17 @@ kempld_write8
 
     write 8 bit register
 
-    :param struct kempld_device_data \*pld:
+    :param pld:
         kempld_device_data structure describing the PLD
+    :type pld: struct kempld_device_data \*
 
-    :param u8 index:
+    :param index:
         register index on the chip
+    :type index: u8
 
-    :param u8 data:
+    :param data:
         new register value
+    :type data: u8
 
 .. _`kempld_write8.description`:
 
@@ -57,11 +62,13 @@ kempld_read16
 
     read 16 bit register
 
-    :param struct kempld_device_data \*pld:
+    :param pld:
         kempld_device_data structure describing the PLD
+    :type pld: struct kempld_device_data \*
 
-    :param u8 index:
+    :param index:
         register index on the chip
+    :type index: u8
 
 .. _`kempld_read16.description`:
 
@@ -79,14 +86,17 @@ kempld_write16
 
     write 16 bit register
 
-    :param struct kempld_device_data \*pld:
+    :param pld:
         kempld_device_data structure describing the PLD
+    :type pld: struct kempld_device_data \*
 
-    :param u8 index:
+    :param index:
         register index on the chip
+    :type index: u8
 
-    :param u16 data:
+    :param data:
         new register value
+    :type data: u16
 
 .. _`kempld_write16.description`:
 
@@ -104,11 +114,13 @@ kempld_read32
 
     read 32 bit register
 
-    :param struct kempld_device_data \*pld:
+    :param pld:
         kempld_device_data structure describing the PLD
+    :type pld: struct kempld_device_data \*
 
-    :param u8 index:
+    :param index:
         register index on the chip
+    :type index: u8
 
 .. _`kempld_read32.description`:
 
@@ -126,14 +138,17 @@ kempld_write32
 
     write 32 bit register
 
-    :param struct kempld_device_data \*pld:
+    :param pld:
         kempld_device_data structure describing the PLD
+    :type pld: struct kempld_device_data \*
 
-    :param u8 index:
+    :param index:
         register index on the chip
+    :type index: u8
 
-    :param u32 data:
+    :param data:
         new register value
+    :type data: u32
 
 .. _`kempld_write32.description`:
 
@@ -151,8 +166,9 @@ kempld_get_mutex
 
     acquire PLD mutex
 
-    :param struct kempld_device_data \*pld:
+    :param pld:
         kempld_device_data structure describing the PLD
+    :type pld: struct kempld_device_data \*
 
 .. _`kempld_release_mutex`:
 
@@ -163,8 +179,9 @@ kempld_release_mutex
 
     release PLD mutex
 
-    :param struct kempld_device_data \*pld:
+    :param pld:
         kempld_device_data structure describing the PLD
+    :type pld: struct kempld_device_data \*
 
 .. _`kempld_get_info`:
 
@@ -175,8 +192,9 @@ kempld_get_info
 
     update device specific information
 
-    :param struct kempld_device_data \*pld:
+    :param pld:
         kempld_device_data structure describing the PLD
+    :type pld: struct kempld_device_data \*
 
 .. _`kempld_get_info.description`:
 

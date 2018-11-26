@@ -8,6 +8,7 @@ pm8001
     :maxdepth: 1
 
     pm8001_ctl_c
+    pm8001_defs_h
     pm8001_hwi_c
     pm8001_init_c
     pm8001_sas_c

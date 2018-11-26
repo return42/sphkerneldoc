@@ -192,11 +192,13 @@ ptp_clock_register
 
     register a PTP hardware clock driver
 
-    :param struct ptp_clock_info \*info:
+    :param info:
         Structure describing the new clock.
+    :type info: struct ptp_clock_info \*
 
-    :param struct device \*parent:
+    :param parent:
         Pointer to the parent device of the new clock.
+    :type parent: struct device \*
 
 .. _`ptp_clock_register.description`:
 
@@ -217,8 +219,9 @@ ptp_clock_unregister
 
     unregister a PTP hardware clock driver
 
-    :param struct ptp_clock \*ptp:
+    :param ptp:
         The clock to remove from service.
+    :type ptp: struct ptp_clock \*
 
 .. _`ptp_clock_event`:
 
@@ -229,11 +232,13 @@ ptp_clock_event
 
     notify the PTP layer about an event
 
-    :param struct ptp_clock \*ptp:
+    :param ptp:
         The clock obtained from \ :c:func:`ptp_clock_register`\ .
+    :type ptp: struct ptp_clock \*
 
-    :param struct ptp_clock_event \*event:
+    :param event:
         Message structure describing the event.
+    :type event: struct ptp_clock_event \*
 
 .. _`ptp_clock_index`:
 
@@ -244,8 +249,9 @@ ptp_clock_index
 
     obtain the device index of a PTP clock
 
-    :param struct ptp_clock \*ptp:
+    :param ptp:
         The clock obtained from \ :c:func:`ptp_clock_register`\ .
+    :type ptp: struct ptp_clock \*
 
 .. _`ptp_find_pin`:
 
@@ -256,14 +262,17 @@ ptp_find_pin
 
     obtain the pin index of a given auxiliary function
 
-    :param struct ptp_clock \*ptp:
+    :param ptp:
         The clock obtained from \ :c:func:`ptp_clock_register`\ .
+    :type ptp: struct ptp_clock \*
 
-    :param enum ptp_pin_function func:
+    :param func:
         One of the ptp_pin_function enumerated values.
+    :type func: enum ptp_pin_function
 
-    :param unsigned int chan:
+    :param chan:
         The particular functional channel to find.
+    :type chan: unsigned int
 
 .. _`ptp_find_pin.return`:
 
@@ -282,12 +291,14 @@ ptp_schedule_worker
 
     schedule ptp auxiliary work
 
-    :param struct ptp_clock \*ptp:
+    :param ptp:
         The clock obtained from \ :c:func:`ptp_clock_register`\ .
+    :type ptp: struct ptp_clock \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait before queuing
         See \ :c:func:`kthread_queue_delayed_work`\  for more info.
+    :type delay: unsigned long
 
 .. This file was automatic generated / don't edit.
 

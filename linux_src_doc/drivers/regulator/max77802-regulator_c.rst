@@ -10,8 +10,9 @@ max77802_set_suspend_disable
 
     Disable the regulator during system suspend
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator to mark as disabled
+    :type rdev: struct regulator_dev \*
 
 .. _`max77802_set_suspend_disable.description`:
 
@@ -30,11 +31,13 @@ max77802_set_suspend_mode
 
     set regulator opmode when the system is suspended
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator to change mode
+    :type rdev: struct regulator_dev \*
 
-    :param unsigned int mode:
+    :param mode:
         operating mode to be set
+    :type mode: unsigned int
 
 .. _`max77802_set_suspend_mode.description`:
 

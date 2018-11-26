@@ -10,8 +10,9 @@ yama_relation_cleanup
 
     remove invalid entries from the relation list
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`yama_ptracer_add`:
 
@@ -22,11 +23,13 @@ yama_ptracer_add
 
     add/replace an exception for this tracer/tracee pair
 
-    :param struct task_struct \*tracer:
+    :param tracer:
         the task_struct of the process doing the ptrace
+    :type tracer: struct task_struct \*
 
-    :param struct task_struct \*tracee:
+    :param tracee:
         the task_struct of the process to be ptraced
+    :type tracee: struct task_struct \*
 
 .. _`yama_ptracer_add.description`:
 
@@ -47,11 +50,13 @@ yama_ptracer_del
 
     remove exceptions related to the given tasks
 
-    :param struct task_struct \*tracer:
+    :param tracer:
         remove any relation where tracer task matches
+    :type tracer: struct task_struct \*
 
-    :param struct task_struct \*tracee:
+    :param tracee:
         remove any relation where tracee task matches
+    :type tracee: struct task_struct \*
 
 .. _`yama_task_free`:
 
@@ -62,8 +67,9 @@ yama_task_free
 
     check for task_pid to remove from exception list
 
-    :param struct task_struct \*task:
+    :param task:
         task being removed
+    :type task: struct task_struct \*
 
 .. _`yama_task_prctl`:
 
@@ -74,20 +80,25 @@ yama_task_prctl
 
     check for Yama-specific prctl operations
 
-    :param int option:
+    :param option:
         operation
+    :type option: int
 
-    :param unsigned long arg2:
+    :param arg2:
         argument
+    :type arg2: unsigned long
 
-    :param unsigned long arg3:
+    :param arg3:
         argument
+    :type arg3: unsigned long
 
-    :param unsigned long arg4:
+    :param arg4:
         argument
+    :type arg4: unsigned long
 
-    :param unsigned long arg5:
+    :param arg5:
         argument
+    :type arg5: unsigned long
 
 .. _`yama_task_prctl.description`:
 
@@ -106,11 +117,13 @@ task_is_descendant
 
     walk up a process family tree looking for a match
 
-    :param struct task_struct \*parent:
+    :param parent:
         the process to compare against while walking up from child
+    :type parent: struct task_struct \*
 
-    :param struct task_struct \*child:
+    :param child:
         the process to start from while looking upwards for parent
+    :type child: struct task_struct \*
 
 .. _`task_is_descendant.description`:
 
@@ -128,11 +141,13 @@ ptracer_exception_found
 
     tracer registered as exception for this tracee
 
-    :param struct task_struct \*tracer:
+    :param tracer:
         the task_struct of the process attempting ptrace
+    :type tracer: struct task_struct \*
 
-    :param struct task_struct \*tracee:
+    :param tracee:
         the task_struct of the process to be ptraced
+    :type tracee: struct task_struct \*
 
 .. _`ptracer_exception_found.description`:
 
@@ -150,11 +165,13 @@ yama_ptrace_access_check
 
     validate PTRACE_ATTACH calls
 
-    :param struct task_struct \*child:
+    :param child:
         task that current task is attempting to ptrace
+    :type child: struct task_struct \*
 
-    :param unsigned int mode:
+    :param mode:
         ptrace attach mode
+    :type mode: unsigned int
 
 .. _`yama_ptrace_access_check.description`:
 
@@ -172,8 +189,9 @@ yama_ptrace_traceme
 
     validate PTRACE_TRACEME calls
 
-    :param struct task_struct \*parent:
+    :param parent:
         task that will become the ptracer of the current task
+    :type parent: struct task_struct \*
 
 .. _`yama_ptrace_traceme.description`:
 

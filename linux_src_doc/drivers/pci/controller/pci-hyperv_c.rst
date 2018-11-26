@@ -157,14 +157,17 @@ hv_pci_generic_compl
 
     Invoked for a completion packet
 
-    :param void \*context:
+    :param context:
         Set up by the sender of the packet.
+    :type context: void \*
 
-    :param struct pci_response \*resp:
+    :param resp:
         The response packet
+    :type resp: struct pci_response \*
 
-    :param int resp_packet_size:
+    :param resp_packet_size:
         Size in bytes of the packet
+    :type resp_packet_size: int
 
 .. _`hv_pci_generic_compl.description`:
 
@@ -184,8 +187,9 @@ devfn_to_wslot
 
     Convert from Linux PCI slot to Windows
 
-    :param int devfn:
+    :param devfn:
         The Linux representation of PCI slot
+    :type devfn: int
 
 .. _`devfn_to_wslot.description`:
 
@@ -210,8 +214,9 @@ wslot_to_devfn
 
     Convert from Windows PCI slot to Linux
 
-    :param u32 wslot:
+    :param wslot:
         The Windows representation of PCI slot
+    :type wslot: u32
 
 .. _`wslot_to_devfn.description`:
 
@@ -236,17 +241,21 @@ The Linux representation
 
     Internal PCI config read
 
-    :param struct hv_pci_dev \*hpdev:
+    :param hpdev:
         The PCI driver's representation of the device
+    :type hpdev: struct hv_pci_dev \*
 
-    :param int where:
+    :param where:
         Offset within config space
+    :type where: int
 
-    :param int size:
+    :param size:
         Size of the transfer
+    :type size: int
 
-    :param u32 \*val:
+    :param val:
         Pointer to the buffer receiving the data
+    :type val: u32 \*
 
 .. _`_hv_pcifront_write_config`:
 
@@ -257,17 +266,21 @@ The Linux representation
 
     Internal PCI config write
 
-    :param struct hv_pci_dev \*hpdev:
+    :param hpdev:
         The PCI driver's representation of the device
+    :type hpdev: struct hv_pci_dev \*
 
-    :param int where:
+    :param where:
         Offset within config space
+    :type where: int
 
-    :param int size:
+    :param size:
         Size of the transfer
+    :type size: int
 
-    :param u32 val:
+    :param val:
         The data being transferred
+    :type val: u32
 
 .. _`hv_pcifront_read_config`:
 
@@ -278,20 +291,25 @@ hv_pcifront_read_config
 
     Read configuration space
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI Bus structure
+    :type bus: struct pci_bus \*
 
-    :param unsigned int devfn:
+    :param devfn:
         Device/function
+    :type devfn: unsigned int
 
-    :param int where:
+    :param where:
         Offset from base
+    :type where: int
 
-    :param int size:
+    :param size:
         Byte/word/dword
+    :type size: int
 
-    :param u32 \*val:
+    :param val:
         Value to be read
+    :type val: u32 \*
 
 .. _`hv_pcifront_read_config.return`:
 
@@ -310,20 +328,25 @@ hv_pcifront_write_config
 
     Write configuration space
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI Bus structure
+    :type bus: struct pci_bus \*
 
-    :param unsigned int devfn:
+    :param devfn:
         Device/function
+    :type devfn: unsigned int
 
-    :param int where:
+    :param where:
         Offset from base
+    :type where: int
 
-    :param int size:
+    :param size:
         Byte/word/dword
+    :type size: int
 
-    :param u32 val:
+    :param val:
         Value to be written to device
+    :type val: u32
 
 .. _`hv_pcifront_write_config.return`:
 
@@ -342,14 +365,17 @@ hv_msi_free
 
     Free the MSI.
 
-    :param struct irq_domain \*domain:
+    :param domain:
         The interrupt domain pointer
+    :type domain: struct irq_domain \*
 
-    :param struct msi_domain_info \*info:
+    :param info:
         Extra MSI-related context
+    :type info: struct msi_domain_info \*
 
-    :param unsigned int irq:
+    :param irq:
         Identifies the IRQ.
+    :type irq: unsigned int
 
 .. _`hv_msi_free.description`:
 
@@ -370,8 +396,9 @@ hv_irq_unmask
 
     "Unmask" the IRQ by setting its current affinity.
 
-    :param struct irq_data \*data:
+    :param data:
         Describes the IRQ
+    :type data: struct irq_data \*
 
 .. _`hv_irq_unmask.description`:
 
@@ -392,11 +419,13 @@ hv_compose_msi_msg
 
     Supplies a valid MSI address/data
 
-    :param struct irq_data \*data:
+    :param data:
         Everything about this MSI
+    :type data: struct irq_data \*
 
-    :param struct msi_msg \*msg:
+    :param msg:
         Buffer that is filled in by this function
+    :type msg: struct msi_msg \*
 
 .. _`hv_compose_msi_msg.description`:
 
@@ -418,8 +447,9 @@ hv_pcie_init_irq_domain
 
     Initialize IRQ domain
 
-    :param struct hv_pcibus_device \*hbus:
+    :param hbus:
         The root PCI bus
+    :type hbus: struct hv_pcibus_device \*
 
 .. _`hv_pcie_init_irq_domain.description`:
 
@@ -449,9 +479,10 @@ get_bar_size
 
     Get the address space consumed by a BAR
 
-    :param u64 bar_val:
+    :param bar_val:
         Value that a BAR returned after -1 was written
         to it.
+    :type bar_val: u64
 
 .. _`get_bar_size.description`:
 
@@ -481,8 +512,9 @@ survey_child_resources
 
     Total all MMIO requirements
 
-    :param struct hv_pcibus_device \*hbus:
+    :param hbus:
         Root PCI bus, as understood by this driver
+    :type hbus: struct hv_pcibus_device \*
 
 .. _`prepopulate_bars`:
 
@@ -493,8 +525,9 @@ prepopulate_bars
 
     Fill in BARs with defaults
 
-    :param struct hv_pcibus_device \*hbus:
+    :param hbus:
         Root PCI bus, as understood by this driver
+    :type hbus: struct hv_pcibus_device \*
 
 .. _`prepopulate_bars.description`:
 
@@ -518,8 +551,9 @@ create_root_hv_pci_bus
 
     Expose a new root PCI bus
 
-    :param struct hv_pcibus_device \*hbus:
+    :param hbus:
         Root PCI bus, as understood by this driver
+    :type hbus: struct hv_pcibus_device \*
 
 .. _`create_root_hv_pci_bus.return`:
 
@@ -537,14 +571,17 @@ q_resource_requirements
 
     Query Resource Requirements
 
-    :param void \*context:
+    :param context:
         The completion context.
+    :type context: void \*
 
-    :param struct pci_response \*resp:
+    :param resp:
         The response that came from the host.
+    :type resp: struct pci_response \*
 
-    :param int resp_packet_size:
+    :param resp_packet_size:
         The size in bytes of resp.
+    :type resp_packet_size: int
 
 .. _`q_resource_requirements.description`:
 
@@ -563,12 +600,14 @@ new_pcichild_device
 
     Create a new child device
 
-    :param struct hv_pcibus_device \*hbus:
+    :param hbus:
         The internal struct tracking this root PCI bus.
+    :type hbus: struct hv_pcibus_device \*
 
-    :param struct pci_function_description \*desc:
+    :param desc:
         The information supplied so far from the host
         about the device.
+    :type desc: struct pci_function_description \*
 
 .. _`new_pcichild_device.description`:
 
@@ -594,11 +633,13 @@ get_pcichild_wslot
 
     Find device from slot
 
-    :param struct hv_pcibus_device \*hbus:
+    :param hbus:
         Root PCI bus, as understood by this driver
+    :type hbus: struct hv_pcibus_device \*
 
-    :param u32 wslot:
+    :param wslot:
         Location on the bus
+    :type wslot: u32
 
 .. _`get_pcichild_wslot.description`:
 
@@ -627,8 +668,9 @@ pci_devices_present_work
 
     Handle new list of child devices
 
-    :param struct work_struct \*work:
+    :param work:
         Work struct embedded in struct hv_dr_work
+    :type work: struct work_struct \*
 
 .. _`pci_devices_present_work.description`:
 
@@ -663,11 +705,13 @@ hv_pci_devices_present
 
     Handles list of new children
 
-    :param struct hv_pcibus_device \*hbus:
+    :param hbus:
         Root PCI bus, as understood by this driver
+    :type hbus: struct hv_pcibus_device \*
 
-    :param struct pci_bus_relations \*relations:
+    :param relations:
         Packet from host listing children
+    :type relations: struct pci_bus_relations \*
 
 .. _`hv_pci_devices_present.description`:
 
@@ -686,8 +730,9 @@ hv_eject_device_work
 
     Asynchronously handles ejection
 
-    :param struct work_struct \*work:
+    :param work:
         Work struct embedded in internal device struct
+    :type work: struct work_struct \*
 
 .. _`hv_eject_device_work.description`:
 
@@ -708,8 +753,9 @@ hv_pci_eject_device
 
     Handles device ejection
 
-    :param struct hv_pci_dev \*hpdev:
+    :param hpdev:
         Internal device tracking struct
+    :type hpdev: struct hv_pci_dev \*
 
 .. _`hv_pci_eject_device.description`:
 
@@ -729,8 +775,9 @@ hv_pci_onchannelcallback
 
     Handles incoming packets
 
-    :param void \*context:
+    :param context:
         Internal bus tracking struct
+    :type context: void \*
 
 .. _`hv_pci_onchannelcallback.description`:
 
@@ -749,8 +796,9 @@ hv_pci_protocol_negotiation
 
     Set up protocol
 
-    :param struct hv_device \*hdev:
+    :param hdev:
         VMBus's tracking struct for this root PCI bus
+    :type hdev: struct hv_device \*
 
 .. _`hv_pci_protocol_negotiation.description`:
 
@@ -778,8 +826,9 @@ hv_pci_free_bridge_windows
 
     Release memory regions for the bus
 
-    :param struct hv_pcibus_device \*hbus:
+    :param hbus:
         Root PCI bus, as understood by this driver
+    :type hbus: struct hv_pcibus_device \*
 
 .. _`hv_pci_allocate_bridge_windows`:
 
@@ -790,8 +839,9 @@ hv_pci_allocate_bridge_windows
 
     Allocate memory regions for the bus
 
-    :param struct hv_pcibus_device \*hbus:
+    :param hbus:
         Root PCI bus, as understood by this driver
+    :type hbus: struct hv_pcibus_device \*
 
 .. _`hv_pci_allocate_bridge_windows.description`:
 
@@ -832,8 +882,9 @@ hv_allocate_config_window
 
     Find MMIO space for PCI Config
 
-    :param struct hv_pcibus_device \*hbus:
+    :param hbus:
         Root PCI bus, as understood by this driver
+    :type hbus: struct hv_pcibus_device \*
 
 .. _`hv_allocate_config_window.description`:
 
@@ -859,8 +910,9 @@ hv_pci_enter_d0
 
     Bring the "bus" into the D0 power state
 
-    :param struct hv_device \*hdev:
+    :param hdev:
         VMBus's tracking struct for this root PCI bus
+    :type hdev: struct hv_device \*
 
 .. _`hv_pci_enter_d0.return`:
 
@@ -878,8 +930,9 @@ hv_pci_query_relations
 
     Ask host to send list of child devices
 
-    :param struct hv_device \*hdev:
+    :param hdev:
         VMBus's tracking struct for this root PCI bus
+    :type hdev: struct hv_device \*
 
 .. _`hv_pci_query_relations.return`:
 
@@ -897,8 +950,9 @@ hv_send_resources_allocated
 
     Report local resource choices
 
-    :param struct hv_device \*hdev:
+    :param hdev:
         VMBus's tracking struct for this root PCI bus
+    :type hdev: struct hv_device \*
 
 .. _`hv_send_resources_allocated.description`:
 
@@ -932,8 +986,9 @@ hv_send_resources_released
 
     Report local resources released
 
-    :param struct hv_device \*hdev:
+    :param hdev:
         VMBus's tracking struct for this root PCI bus
+    :type hdev: struct hv_device \*
 
 .. _`hv_send_resources_released.return`:
 
@@ -951,11 +1006,13 @@ hv_pci_probe
 
     New VMBus channel probe, for a root PCI bus
 
-    :param struct hv_device \*hdev:
+    :param hdev:
         VMBus's tracking struct for this root PCI bus
+    :type hdev: struct hv_device \*
 
-    :param const struct hv_vmbus_device_id \*dev_id:
+    :param dev_id:
         Identifies the device itself
+    :type dev_id: const struct hv_vmbus_device_id \*
 
 .. _`hv_pci_probe.return`:
 
@@ -973,8 +1030,9 @@ hv_pci_remove
 
     Remove routine for this VMBus channel
 
-    :param struct hv_device \*hdev:
+    :param hdev:
         VMBus's tracking struct for this root PCI bus
+    :type hdev: struct hv_device \*
 
 .. _`hv_pci_remove.return`:
 

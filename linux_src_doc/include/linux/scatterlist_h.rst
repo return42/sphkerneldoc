@@ -10,11 +10,13 @@ sg_assign_page
 
     Assign a given page to an SG entry
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entry
+    :type sg: struct scatterlist \*
 
-    :param struct page \*page:
+    :param page:
         The page
+    :type page: struct page \*
 
 .. _`sg_assign_page.description`:
 
@@ -33,17 +35,21 @@ sg_set_page
 
     Set sg entry to point at given page
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entry
+    :type sg: struct scatterlist \*
 
-    :param struct page \*page:
+    :param page:
         The page
+    :type page: struct page \*
 
-    :param unsigned int len:
+    :param len:
         Length of data
+    :type len: unsigned int
 
-    :param unsigned int offset:
+    :param offset:
         Offset into page
+    :type offset: unsigned int
 
 .. _`sg_set_page.description`:
 
@@ -64,14 +70,17 @@ sg_set_buf
 
     Set sg entry to point at given data
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entry
+    :type sg: struct scatterlist \*
 
-    :param const void \*buf:
+    :param buf:
         Data
+    :type buf: const void \*
 
-    :param unsigned int buflen:
+    :param buflen:
         Data length
+    :type buflen: unsigned int
 
 .. _`sg_chain`:
 
@@ -82,14 +91,17 @@ sg_chain
 
     Chain two sglists together
 
-    :param struct scatterlist \*prv:
+    :param prv:
         First scatterlist
+    :type prv: struct scatterlist \*
 
-    :param unsigned int prv_nents:
+    :param prv_nents:
         Number of entries in prv
+    :type prv_nents: unsigned int
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         Second scatterlist
+    :type sgl: struct scatterlist \*
 
 .. _`sg_chain.description`:
 
@@ -107,8 +119,9 @@ sg_mark_end
 
     Mark the end of the scatterlist
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entryScatterlist
+    :type sg: struct scatterlist \*
 
 .. _`sg_mark_end.description`:
 
@@ -127,8 +140,9 @@ sg_unmark_end
 
     Undo setting the end of the scatterlist
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entryScatterlist
+    :type sg: struct scatterlist \*
 
 .. _`sg_unmark_end.description`:
 
@@ -146,8 +160,9 @@ sg_phys
 
     Return physical address of an sg entry
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entry
+    :type sg: struct scatterlist \*
 
 .. _`sg_phys.description`:
 
@@ -167,8 +182,9 @@ sg_virt
 
     Return virtual address of an sg entry
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entry
+    :type sg: struct scatterlist \*
 
 .. _`sg_virt.description`:
 
@@ -188,11 +204,13 @@ sg_init_marker
 
     Initialize markers in sg table
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         The SG table
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of entries in table
+    :type nents: unsigned int
 
 .. _`sg_page_iter_page`:
 
@@ -203,8 +221,9 @@ sg_page_iter_page
 
     get the current page held by the page iterator
 
-    :param struct sg_page_iter \*piter:
+    :param piter:
         page iterator holding the page
+    :type piter: struct sg_page_iter \*
 
 .. _`sg_page_iter_dma_address`:
 
@@ -215,8 +234,9 @@ sg_page_iter_dma_address
 
     get the dma address of the current page held by the page iterator.
 
-    :param struct sg_page_iter \*piter:
+    :param piter:
         page iterator holding the page
+    :type piter: struct sg_page_iter \*
 
 .. _`for_each_sg_page`:
 
@@ -227,17 +247,21 @@ for_each_sg_page
 
     iterate over the pages of the given sg list
 
-    :param  sglist:
+    :param sglist:
         sglist to iterate over
+    :type sglist: 
 
-    :param  piter:
+    :param piter:
         page iterator to hold current page, sg, sg_pgoffset
+    :type piter: 
 
-    :param  nents:
+    :param nents:
         maximum number of sg entries to iterate over
+    :type nents: 
 
-    :param  pgoffset:
+    :param pgoffset:
         starting page offset
+    :type pgoffset: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ mangle_name
 
     mangle a profile name to std profile layout form
 
-    :param const char \*name:
+    :param name:
         profile name to mangle  (NOT NULL)
+    :type name: const char \*
 
-    :param char \*target:
+    :param target:
         buffer to store mangled name, same length as \ ``name``\  (MAYBE NULL)
+    :type target: char \*
 
 .. _`mangle_name.return`:
 
@@ -32,26 +34,33 @@ length of mangled name
 
     basic inode setup for apparmorfs
 
-    :param struct inode \*dir:
+    :param dir:
         parent directory for the dentry
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry we are seting the inode up for
+    :type dentry: struct dentry \*
 
-    :param umode_t mode:
+    :param mode:
         permissions the file should have
+    :type mode: umode_t
 
-    :param void \*data:
+    :param data:
         data to store on inode.i_private, available in \ :c:func:`open`\ 
+    :type data: void \*
 
-    :param char \*link:
+    :param link:
         if symlink, symlink target string
+    :type link: char \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         struct file_operations that should be used
+    :type fops: const struct file_operations \*
 
-    :param const struct inode_operations \*iops:
+    :param iops:
         struct of inode_operations that should be used
+    :type iops: const struct inode_operations \*
 
 .. _`aafs_create`:
 
@@ -62,26 +71,33 @@ aafs_create
 
     create a dentry in the apparmorfs filesystem
 
-    :param const char \*name:
+    :param name:
         name of dentry to create
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         permissions the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         parent directory for this dentry
+    :type parent: struct dentry \*
 
-    :param void \*data:
+    :param data:
         data to store on inode.i_private, available in \ :c:func:`open`\ 
+    :type data: void \*
 
-    :param void \*link:
+    :param link:
         if symlink, symlink target string
+    :type link: void \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         struct file_operations that should be used for
+    :type fops: const struct file_operations \*
 
-    :param const struct inode_operations \*iops:
+    :param iops:
         struct of inode_operations that should be used
+    :type iops: const struct inode_operations \*
 
 .. _`aafs_create.description`:
 
@@ -102,20 +118,25 @@ aafs_create_file
 
     create a file in the apparmorfs filesystem
 
-    :param const char \*name:
+    :param name:
         name of dentry to create
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         permissions the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         parent directory for this dentry
+    :type parent: struct dentry \*
 
-    :param void \*data:
+    :param data:
         data to store on inode.i_private, available in \ :c:func:`open`\ 
+    :type data: void \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         struct file_operations that should be used for
+    :type fops: const struct file_operations \*
 
 .. _`aafs_create_file.description`:
 
@@ -133,11 +154,13 @@ aafs_create_dir
 
     create a directory in the apparmorfs filesystem
 
-    :param const char \*name:
+    :param name:
         name of dentry to create
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         parent directory for this dentry
+    :type parent: struct dentry \*
 
 .. _`aafs_create_dir.description`:
 
@@ -155,20 +178,25 @@ aafs_create_symlink
 
     create a symlink in the apparmorfs filesystem
 
-    :param const char \*name:
+    :param name:
         name of dentry to create
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         parent directory for this dentry
+    :type parent: struct dentry \*
 
-    :param const char \*target:
+    :param target:
         if symlink, symlink target string
+    :type target: const char \*
 
-    :param void \*private:
+    :param private:
         private data
+    :type private: void \*
 
-    :param const struct inode_operations \*iops:
+    :param iops:
         struct of inode_operations that should be used
+    :type iops: const struct inode_operations \*
 
 .. _`aafs_create_symlink.description`:
 
@@ -187,8 +215,9 @@ aafs_remove
 
     removes a file or directory from the apparmorfs filesystem
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry of the file/directory/symlink to removed.
+    :type dentry: struct dentry \*
 
 .. _`aa_simple_write_to_buffer`:
 
@@ -199,17 +228,21 @@ aa_simple_write_to_buffer
 
     common routine for getting policy from user
 
-    :param const char __user \*userbuf:
+    :param userbuf:
         user buffer to copy data from  (NOT NULL)
+    :type userbuf: const char __user \*
 
-    :param size_t alloc_size:
+    :param alloc_size:
         size of user buffer (REQUIRES: \ ``alloc_size``\  >= \ ``copy_size``\ )
+    :type alloc_size: size_t
 
-    :param size_t copy_size:
+    :param copy_size:
         size of data to copy from user buffer
+    :type copy_size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         position write is at in the file (NOT NULL)
+    :type pos: loff_t \*
 
 .. _`aa_simple_write_to_buffer.return`:
 
@@ -228,17 +261,21 @@ query_data
 
     queries a policy and writes its data to buf
 
-    :param char \*buf:
+    :param buf:
         the resulting data is stored here (NOT NULL)
+    :type buf: char \*
 
-    :param size_t buf_len:
+    :param buf_len:
         size of buf
+    :type buf_len: size_t
 
-    :param char \*query:
+    :param query:
         query string used to retrieve data
+    :type query: char \*
 
-    :param size_t query_len:
+    :param query_len:
         size of query including second NUL byte
+    :type query_len: size_t
 
 .. _`query_data.description`:
 
@@ -270,20 +307,25 @@ query_label
 
     queries a label and writes permissions to buf
 
-    :param char \*buf:
+    :param buf:
         the resulting permissions string is stored here (NOT NULL)
+    :type buf: char \*
 
-    :param size_t buf_len:
+    :param buf_len:
         size of buf
+    :type buf_len: size_t
 
-    :param char \*query:
+    :param query:
         binary query string to match against the dfa
+    :type query: char \*
 
-    :param size_t query_len:
+    :param query_len:
         size of query
+    :type query_len: size_t
 
-    :param bool view_only:
+    :param view_only:
         only compute for querier's view
+    :type view_only: bool
 
 .. _`query_label.description`:
 
@@ -316,17 +358,21 @@ aa_write_access
 
     generic permissions and data query
 
-    :param struct file \*file:
+    :param file:
         pointer to open apparmorfs/access file
+    :type file: struct file \*
 
-    :param const char __user \*ubuf:
+    :param ubuf:
         user buffer containing the complete query string (NOT NULL)
+    :type ubuf: const char __user \*
 
-    :param size_t count:
+    :param count:
         size of ubuf
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         position in the file (MUST BE ZERO)
+    :type ppos: loff_t \*
 
 .. _`aa_write_access.description`:
 
@@ -361,11 +407,13 @@ number of bytes written or -errno on failure
 
     find the next namespace to list
 
-    :param struct aa_ns \*root:
+    :param root:
         root namespace to stop search at (NOT NULL)
+    :type root: struct aa_ns \*
 
-    :param struct aa_ns \*ns:
+    :param ns:
         current ns position (NOT NULL)
+    :type ns: struct aa_ns \*
 
 .. _`__next_ns.description`:
 
@@ -405,11 +453,13 @@ will not unlock root->lock
 
     find the first profile in a namespace
 
-    :param struct aa_ns \*root:
+    :param root:
         namespace that is root of profiles being displayed (NOT NULL)
+    :type root: struct aa_ns \*
 
-    :param struct aa_ns \*ns:
+    :param ns:
         namespace to start in   (NOT NULL)
+    :type ns: struct aa_ns \*
 
 .. _`__first_profile.return`:
 
@@ -434,8 +484,9 @@ profile->ns.lock to be held
 
     step to the next profile in a profile tree
 
-    :param struct aa_profile \*p:
+    :param p:
         *undescribed*
+    :type p: struct aa_profile \*
 
 .. _`__next_profile.description`:
 
@@ -467,11 +518,13 @@ next_profile
 
     step to the next profile in where ever it may be
 
-    :param struct aa_ns \*root:
+    :param root:
         root namespace  (NOT NULL)
+    :type root: struct aa_ns \*
 
-    :param struct aa_profile \*profile:
+    :param profile:
         current profile  (NOT NULL)
+    :type profile: struct aa_profile \*
 
 .. _`next_profile.return`:
 
@@ -489,11 +542,13 @@ p_start
 
     start a depth first traversal of profile tree
 
-    :param struct seq_file \*f:
+    :param f:
         seq_file to fill
+    :type f: struct seq_file \*
 
-    :param loff_t \*pos:
+    :param pos:
         current position
+    :type pos: loff_t \*
 
 .. _`p_start.return`:
 
@@ -513,14 +568,17 @@ p_next
 
     read the next profile entry
 
-    :param struct seq_file \*f:
+    :param f:
         seq_file to fill
+    :type f: struct seq_file \*
 
-    :param void \*p:
+    :param p:
         profile previously returned
+    :type p: void \*
 
-    :param loff_t \*pos:
+    :param pos:
         current position
+    :type pos: loff_t \*
 
 .. _`p_next.return`:
 
@@ -540,11 +598,13 @@ p_stop
 
     stop depth first traversal
 
-    :param struct seq_file \*f:
+    :param f:
         seq_file we are filling
+    :type f: struct seq_file \*
 
-    :param void \*p:
+    :param p:
         the last profile writen
+    :type p: void \*
 
 .. _`p_stop.description`:
 
@@ -562,11 +622,13 @@ seq_show_profile
 
     show a profile entry
 
-    :param struct seq_file \*f:
+    :param f:
         seq_file to file
+    :type f: struct seq_file \*
 
-    :param void \*p:
+    :param p:
         current position (profile)    (NOT NULL)
+    :type p: void \*
 
 .. _`seq_show_profile.return`:
 
@@ -584,11 +646,13 @@ entry_create_file
 
     create a file entry in the apparmor securityfs
 
-    :param struct aa_sfs_entry \*fs_file:
+    :param fs_file:
         aa_sfs_entry to build an entry for (NOT NULL)
+    :type fs_file: struct aa_sfs_entry \*
 
-    :param struct dentry \*parent:
+    :param parent:
         the parent dentry in the securityfs
+    :type parent: struct dentry \*
 
 .. _`entry_create_file.description`:
 
@@ -606,11 +670,13 @@ entry_create_dir
 
     recursively create a directory entry in the securityfs
 
-    :param struct aa_sfs_entry \*fs_dir:
+    :param fs_dir:
         aa_sfs_entry (and all child entries) to build (NOT NULL)
+    :type fs_dir: struct aa_sfs_entry \*
 
-    :param struct dentry \*parent:
+    :param parent:
         the parent dentry in the securityfs
+    :type parent: struct dentry \*
 
 .. _`entry_create_dir.description`:
 
@@ -628,8 +694,9 @@ entry_remove_file
 
     drop a single file entry in the apparmor securityfs
 
-    :param struct aa_sfs_entry \*fs_file:
+    :param fs_file:
         aa_sfs_entry to detach from the securityfs (NOT NULL)
+    :type fs_file: struct aa_sfs_entry \*
 
 .. _`entry_remove_dir`:
 
@@ -640,8 +707,9 @@ entry_remove_dir
 
     recursively drop a directory entry from the securityfs
 
-    :param struct aa_sfs_entry \*fs_dir:
+    :param fs_dir:
         aa_sfs_entry (and all child entries) to detach (NOT NULL)
+    :type fs_dir: struct aa_sfs_entry \*
 
 .. _`aa_destroy_aafs`:
 
@@ -652,8 +720,9 @@ aa_destroy_aafs
 
     cleanup and free aafs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`aa_destroy_aafs.description`:
 
@@ -671,8 +740,9 @@ aa_create_aafs
 
     create the apparmor security filesystem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`aa_create_aafs.description`:
 

@@ -10,11 +10,13 @@ iw_valid_channel
 
     validate channel in regulatory domain \ ``reg_comain``\  - regulatory domain \ ``channel``\  - channel to validate
 
-    :param int reg_domain:
+    :param reg_domain:
         *undescribed*
+    :type reg_domain: int
 
-    :param int channel:
+    :param channel:
         *undescribed*
+    :type channel: int
 
 .. _`iw_valid_channel.description`:
 
@@ -32,8 +34,9 @@ iw_default_channel
 
     get default channel for a regulatory domain \ ``reg_comain``\  - regulatory domain
 
-    :param int reg_domain:
+    :param reg_domain:
         *undescribed*
+    :type reg_domain: int
 
 .. _`iw_default_channel.description`:
 
@@ -51,17 +54,21 @@ wl3501_set_to_wla
 
     Move 'size' bytes from PC to card
 
-    :param struct wl3501_card \*this:
+    :param this:
         *undescribed*
+    :type this: struct wl3501_card \*
 
-    :param u16 dest:
+    :param dest:
         Card addressing space
+    :type dest: u16
 
-    :param void \*src:
+    :param src:
         PC addressing space
+    :type src: void \*
 
-    :param int size:
+    :param size:
         Bytes to move
+    :type size: int
 
 .. _`wl3501_set_to_wla.description`:
 
@@ -79,17 +86,21 @@ wl3501_get_from_wla
 
     Move 'size' bytes from card to PC
 
-    :param struct wl3501_card \*this:
+    :param this:
         *undescribed*
+    :type this: struct wl3501_card \*
 
-    :param u16 src:
+    :param src:
         Card addressing space
+    :type src: u16
 
-    :param void \*dest:
+    :param dest:
         PC addressing space
+    :type dest: void \*
 
-    :param int size:
+    :param size:
         Bytes to move
+    :type size: int
 
 .. _`wl3501_get_from_wla.description`:
 
@@ -107,14 +118,17 @@ wl3501_send_pkt
 
     Send a packet. \ ``this``\  - card
 
-    :param struct wl3501_card \*this:
+    :param this:
         *undescribed*
+    :type this: struct wl3501_card \*
 
-    :param u8 \*data:
+    :param data:
         *undescribed*
+    :type data: u8 \*
 
-    :param u16 len:
+    :param len:
         *undescribed*
+    :type len: u16
 
 .. _`wl3501_send_pkt.description`:
 
@@ -142,8 +156,9 @@ wl3501_block_interrupt
 
     Mask interrupt from SUTRO \ ``this``\  - card
 
-    :param struct wl3501_card \*this:
+    :param this:
         *undescribed*
+    :type this: struct wl3501_card \*
 
 .. _`wl3501_block_interrupt.description`:
 
@@ -168,8 +183,9 @@ wl3501_unblock_interrupt
 
     Enable interrupt from SUTRO \ ``this``\  - card
 
-    :param struct wl3501_card \*this:
+    :param this:
         *undescribed*
+    :type this: struct wl3501_card \*
 
 .. _`wl3501_unblock_interrupt.description`:
 
@@ -194,14 +210,17 @@ wl3501_receive
 
     Receive data from Receive Queue.
 
-    :param struct wl3501_card \*this:
+    :param this:
         card
+    :type this: struct wl3501_card \*
 
-    :param u8 \*bf:
+    :param bf:
         address of host
+    :type bf: u8 \*
 
-    :param u16 size:
+    :param size:
         size of buffer.
+    :type size: u16
 
 .. _`wl3501_receive.description`:
 
@@ -219,11 +238,13 @@ wl3501_interrupt
 
     Hardware interrupt from card. \ ``irq``\  - Interrupt number \ ``dev_id``\  - net_device
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: void \*
 
 .. _`wl3501_interrupt.description`:
 
@@ -246,8 +267,9 @@ wl3501_reset
 
     Reset the SUTRO. \ ``dev``\  - network device
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`wl3501_reset.description`:
 
@@ -267,8 +289,9 @@ wl3501_detach
 
     deletes a driver "instance" \ ``link``\  - FILL_IN
 
-    :param struct pcmcia_device \*link:
+    :param link:
         *undescribed*
+    :type link: struct pcmcia_device \*
 
 .. _`wl3501_detach.description`:
 

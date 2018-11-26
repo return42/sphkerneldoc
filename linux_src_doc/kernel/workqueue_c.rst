@@ -10,11 +10,13 @@ for_each_pool
 
     iterate through all worker_pools in the system
 
-    :param  pool:
+    :param pool:
         iteration cursor
+    :type pool: 
 
-    :param  pi:
+    :param pi:
         integer used for iteration
+    :type pi: 
 
 .. _`for_each_pool.description`:
 
@@ -37,11 +39,13 @@ for_each_pool_worker
 
     iterate through all workers of a worker_pool
 
-    :param  worker:
+    :param worker:
         iteration cursor
+    :type worker: 
 
-    :param  pool:
+    :param pool:
         worker_pool to iterate workers of
+    :type pool: 
 
 .. _`for_each_pool_worker.description`:
 
@@ -62,11 +66,13 @@ for_each_pwq
 
     iterate through all pool_workqueues of the specified workqueue
 
-    :param  pwq:
+    :param pwq:
         iteration cursor
+    :type pwq: 
 
-    :param  wq:
+    :param wq:
         the target workqueue
+    :type wq: 
 
 .. _`for_each_pwq.description`:
 
@@ -89,8 +95,9 @@ worker_pool_assign_id
 
     allocate ID and assing it to \ ``pool``\ 
 
-    :param struct worker_pool \*pool:
+    :param pool:
         the pool pointer of interest
+    :type pool: struct worker_pool \*
 
 .. _`worker_pool_assign_id.description`:
 
@@ -109,11 +116,13 @@ unbound_pwq_by_node
 
     return the unbound pool_workqueue for the given node
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         the target workqueue
+    :type wq: struct workqueue_struct \*
 
-    :param int node:
+    :param node:
         the node ID
+    :type node: int
 
 .. _`unbound_pwq_by_node.description`:
 
@@ -141,8 +150,9 @@ get_work_pool
 
     return the worker_pool a given work was associated with
 
-    :param struct work_struct \*work:
+    :param work:
         the work item of interest
+    :type work: struct work_struct \*
 
 .. _`get_work_pool.description`:
 
@@ -174,8 +184,9 @@ get_work_pool_id
 
     return the worker pool ID a given work is associated with
 
-    :param struct work_struct \*work:
+    :param work:
         the work item of interest
+    :type work: struct work_struct \*
 
 .. _`get_work_pool_id.return`:
 
@@ -194,8 +205,9 @@ wake_up_worker
 
     wake up an idle worker
 
-    :param struct worker_pool \*pool:
+    :param pool:
         worker pool to wake worker from
+    :type pool: struct worker_pool \*
 
 .. _`wake_up_worker.description`:
 
@@ -220,11 +232,13 @@ wq_worker_waking_up
 
     a worker is waking up
 
-    :param struct task_struct \*task:
+    :param task:
         task waking up
+    :type task: struct task_struct \*
 
-    :param int cpu:
+    :param cpu:
         CPU \ ``task``\  is waking up to
+    :type cpu: int
 
 .. _`wq_worker_waking_up.description`:
 
@@ -250,8 +264,9 @@ wq_worker_sleeping
 
     a worker is going to sleep
 
-    :param struct task_struct \*task:
+    :param task:
         task going to sleep
+    :type task: struct task_struct \*
 
 .. _`wq_worker_sleeping.description`:
 
@@ -285,18 +300,20 @@ worker_set_flags
 
     set worker flags and adjust nr_running accordingly
 
-    :param struct worker \*worker:
+    :param worker:
         self
+    :type worker: struct worker \*
 
-    :param unsigned int flags:
+    :param flags:
         flags to set
+    :type flags: unsigned int
 
 .. _`worker_set_flags.description`:
 
 Description
 -----------
 
-Set \ ``flags``\  in \ ``worker``\ ->flags and adjust nr_running accordingly.
+Set \ ``flags``\  in \ ``worker->flags``\  and adjust nr_running accordingly.
 
 .. _`worker_set_flags.context`:
 
@@ -314,18 +331,20 @@ worker_clr_flags
 
     clear worker flags and adjust nr_running accordingly
 
-    :param struct worker \*worker:
+    :param worker:
         self
+    :type worker: struct worker \*
 
-    :param unsigned int flags:
+    :param flags:
         flags to clear
+    :type flags: unsigned int
 
 .. _`worker_clr_flags.description`:
 
 Description
 -----------
 
-Clear \ ``flags``\  in \ ``worker``\ ->flags and adjust nr_running accordingly.
+Clear \ ``flags``\  in \ ``worker->flags``\  and adjust nr_running accordingly.
 
 .. _`worker_clr_flags.context`:
 
@@ -343,11 +362,13 @@ find_worker_executing_work
 
     find worker which is executing a work
 
-    :param struct worker_pool \*pool:
+    :param pool:
         pool of interest
+    :type pool: struct worker_pool \*
 
-    :param struct work_struct \*work:
+    :param work:
         work to find worker for
+    :type work: struct work_struct \*
 
 .. _`find_worker_executing_work.description`:
 
@@ -355,7 +376,7 @@ Description
 -----------
 
 Find a worker which is executing \ ``work``\  on \ ``pool``\  by searching
-\ ``pool``\ ->busy_hash which is keyed by the address of \ ``work``\ .  For a worker
+\ ``pool->busy_hash``\  which is keyed by the address of \ ``work``\ .  For a worker
 to match, its current execution should match the address of \ ``work``\  and
 its work function.  This is to avoid unwanted dependency between
 unrelated work executions through a work item being recycled while still
@@ -399,14 +420,17 @@ move_linked_works
 
     move linked works to a list
 
-    :param struct work_struct \*work:
+    :param work:
         start of series of works to be scheduled
+    :type work: struct work_struct \*
 
-    :param struct list_head \*head:
+    :param head:
         target list to append \ ``work``\  to
+    :type head: struct list_head \*
 
-    :param struct work_struct \*\*nextp:
+    :param nextp:
         out parameter for nested worklist walking
+    :type nextp: struct work_struct \*\*
 
 .. _`move_linked_works.description`:
 
@@ -437,8 +461,9 @@ get_pwq
 
     get an extra reference on the specified pool_workqueue
 
-    :param struct pool_workqueue \*pwq:
+    :param pwq:
         pool_workqueue to get
+    :type pwq: struct pool_workqueue \*
 
 .. _`get_pwq.description`:
 
@@ -457,8 +482,9 @@ put_pwq
 
     put a pool_workqueue reference
 
-    :param struct pool_workqueue \*pwq:
+    :param pwq:
         pool_workqueue to put
+    :type pwq: struct pool_workqueue \*
 
 .. _`put_pwq.description`:
 
@@ -477,8 +503,9 @@ put_pwq_unlocked
 
     \ :c:func:`put_pwq`\  with surrounding pool lock/unlock
 
-    :param struct pool_workqueue \*pwq:
+    :param pwq:
         pool_workqueue to put (can be \ ``NULL``\ )
+    :type pwq: struct pool_workqueue \*
 
 .. _`put_pwq_unlocked.description`:
 
@@ -496,11 +523,13 @@ pwq_dec_nr_in_flight
 
     decrement pwq's nr_in_flight
 
-    :param struct pool_workqueue \*pwq:
+    :param pwq:
         pwq of interest
+    :type pwq: struct pool_workqueue \*
 
-    :param int color:
+    :param color:
         color of work which left the queue
+    :type color: int
 
 .. _`pwq_dec_nr_in_flight.description`:
 
@@ -526,14 +555,17 @@ try_to_grab_pending
 
     steal work item from worklist and disable irq
 
-    :param struct work_struct \*work:
+    :param work:
         work item to steal
+    :type work: struct work_struct \*
 
-    :param bool is_dwork:
+    :param is_dwork:
         \ ``work``\  is a delayed_work
+    :type is_dwork: bool
 
-    :param unsigned long \*flags:
+    :param flags:
         place to store irq state
+    :type flags: unsigned long \*
 
 .. _`try_to_grab_pending.description`:
 
@@ -578,17 +610,21 @@ insert_work
 
     insert a work into a pool
 
-    :param struct pool_workqueue \*pwq:
+    :param pwq:
         pwq \ ``work``\  belongs to
+    :type pwq: struct pool_workqueue \*
 
-    :param struct work_struct \*work:
+    :param work:
         work to insert
+    :type work: struct work_struct \*
 
-    :param struct list_head \*head:
+    :param head:
         insertion point
+    :type head: struct list_head \*
 
-    :param unsigned int extra_flags:
+    :param extra_flags:
         extra WORK_STRUCT_* flags to set
+    :type extra_flags: unsigned int
 
 .. _`insert_work.description`:
 
@@ -614,14 +650,17 @@ queue_work_on
 
     queue work on specific cpu
 
-    :param int cpu:
+    :param cpu:
         CPU number to execute work on
+    :type cpu: int
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to use
+    :type wq: struct workqueue_struct \*
 
-    :param struct work_struct \*work:
+    :param work:
         work to queue
+    :type work: struct work_struct \*
 
 .. _`queue_work_on.description`:
 
@@ -647,17 +686,21 @@ queue_delayed_work_on
 
     queue work on specific CPU after delay
 
-    :param int cpu:
+    :param cpu:
         CPU number to execute work on
+    :type cpu: int
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to use
+    :type wq: struct workqueue_struct \*
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         work to queue
+    :type dwork: struct delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait before queueing
+    :type delay: unsigned long
 
 .. _`queue_delayed_work_on.return`:
 
@@ -677,17 +720,21 @@ mod_delayed_work_on
 
     modify delay of or queue a delayed work on specific CPU
 
-    :param int cpu:
+    :param cpu:
         CPU number to execute work on
+    :type cpu: int
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to use
+    :type wq: struct workqueue_struct \*
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         work to queue
+    :type dwork: struct delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait before queueing
+    :type delay: unsigned long
 
 .. _`mod_delayed_work_on.description`:
 
@@ -719,11 +766,13 @@ queue_rcu_work
 
     queue work after a RCU grace period
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to use
+    :type wq: struct workqueue_struct \*
 
-    :param struct rcu_work \*rwork:
+    :param rwork:
         work to queue
+    :type rwork: struct rcu_work \*
 
 .. _`queue_rcu_work.return`:
 
@@ -744,8 +793,9 @@ worker_enter_idle
 
     enter idle state
 
-    :param struct worker \*worker:
+    :param worker:
         worker which is entering idle state
+    :type worker: struct worker \*
 
 .. _`worker_enter_idle.description`:
 
@@ -771,8 +821,9 @@ worker_leave_idle
 
     leave idle state
 
-    :param struct worker \*worker:
+    :param worker:
         worker which is leaving idle state
+    :type worker: struct worker \*
 
 .. _`worker_leave_idle.description`:
 
@@ -797,11 +848,13 @@ worker_attach_to_pool
 
     attach a worker to a pool
 
-    :param struct worker \*worker:
+    :param worker:
         worker to be attached
+    :type worker: struct worker \*
 
-    :param struct worker_pool \*pool:
+    :param pool:
         the target pool
+    :type pool: struct worker_pool \*
 
 .. _`worker_attach_to_pool.description`:
 
@@ -821,8 +874,9 @@ worker_detach_from_pool
 
     detach a worker from its pool
 
-    :param struct worker \*worker:
+    :param worker:
         worker which is attached to its pool
+    :type worker: struct worker \*
 
 .. _`worker_detach_from_pool.description`:
 
@@ -842,8 +896,9 @@ create_worker
 
     create a new workqueue worker
 
-    :param struct worker_pool \*pool:
+    :param pool:
         pool the new worker will belong to
+    :type pool: struct worker_pool \*
 
 .. _`create_worker.description`:
 
@@ -875,8 +930,9 @@ destroy_worker
 
     destroy a workqueue worker
 
-    :param struct worker \*worker:
+    :param worker:
         worker to be destroyed
+    :type worker: struct worker \*
 
 .. _`destroy_worker.description`:
 
@@ -902,8 +958,9 @@ maybe_create_worker
 
     create a new worker if necessary
 
-    :param struct worker_pool \*pool:
+    :param pool:
         pool to create a new worker for
+    :type pool: struct worker_pool \*
 
 .. _`maybe_create_worker.description`:
 
@@ -937,8 +994,9 @@ manage_workers
 
     manage worker pool
 
-    :param struct worker \*worker:
+    :param worker:
         self
+    :type worker: struct worker \*
 
 .. _`manage_workers.description`:
 
@@ -980,11 +1038,13 @@ process_one_work
 
     process single work
 
-    :param struct worker \*worker:
+    :param worker:
         self
+    :type worker: struct worker \*
 
-    :param struct work_struct \*work:
+    :param work:
         work to process
+    :type work: struct work_struct \*
 
 .. _`process_one_work.description`:
 
@@ -1013,8 +1073,9 @@ process_scheduled_works
 
     process scheduled works
 
-    :param struct worker \*worker:
+    :param worker:
         self
+    :type worker: struct worker \*
 
 .. _`process_scheduled_works.description`:
 
@@ -1042,8 +1103,9 @@ worker_thread
 
     the worker thread function
 
-    :param void \*__worker:
+    :param __worker:
         self
+    :type __worker: void \*
 
 .. _`worker_thread.description`:
 
@@ -1072,8 +1134,9 @@ rescuer_thread
 
     the rescuer thread function
 
-    :param void \*__rescuer:
+    :param __rescuer:
         self
+    :type __rescuer: void \*
 
 .. _`rescuer_thread.description`:
 
@@ -1111,11 +1174,13 @@ check_flush_dependency
 
     check for flush dependency sanity
 
-    :param struct workqueue_struct \*target_wq:
+    :param target_wq:
         workqueue being flushed
+    :type target_wq: struct workqueue_struct \*
 
-    :param struct work_struct \*target_work:
+    :param target_work:
         work item being flushed (NULL for workqueue flushes)
+    :type target_work: struct work_struct \*
 
 .. _`check_flush_dependency.description`:
 
@@ -1137,17 +1202,21 @@ insert_wq_barrier
 
     insert a barrier work
 
-    :param struct pool_workqueue \*pwq:
+    :param pwq:
         pwq to insert barrier into
+    :type pwq: struct pool_workqueue \*
 
-    :param struct wq_barrier \*barr:
+    :param barr:
         wq_barrier to insert
+    :type barr: struct wq_barrier \*
 
-    :param struct work_struct \*target:
+    :param target:
         target work to attach \ ``barr``\  to
+    :type target: struct work_struct \*
 
-    :param struct worker \*worker:
+    :param worker:
         worker currently executing \ ``target``\ , NULL if \ ``target``\  is not executing
+    :type worker: struct worker \*
 
 .. _`insert_wq_barrier.description`:
 
@@ -1184,14 +1253,17 @@ flush_workqueue_prep_pwqs
 
     prepare pwqs for workqueue flushing
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue being flushed
+    :type wq: struct workqueue_struct \*
 
-    :param int flush_color:
+    :param flush_color:
         new flush color, < 0 for no-op
+    :type flush_color: int
 
-    :param int work_color:
+    :param work_color:
         new work color, < 0 for no-op
+    :type work_color: int
 
 .. _`flush_workqueue_prep_pwqs.description`:
 
@@ -1204,10 +1276,10 @@ If \ ``flush_color``\  is non-negative, flush_color on all pwqs should be
 -1.  If no pwq has in-flight commands at the specified color, all
 pwq->flush_color's stay at -1 and \ ``false``\  is returned.  If any pwq
 has in flight commands, its pwq->flush_color is set to
-\ ``flush_color``\ , \ ``wq``\ ->nr_pwqs_to_flush is updated accordingly, pwq
+\ ``flush_color``\ , \ ``wq->nr_pwqs_to_flush``\  is updated accordingly, pwq
 wakeup logic is armed and \ ``true``\  is returned.
 
-The caller should have initialized \ ``wq``\ ->first_flusher prior to
+The caller should have initialized \ ``wq->first_flusher``\  prior to
 calling this function with non-negative \ ``flush_color``\ .  If
 \ ``flush_color``\  is negative, no flush color update is done and \ ``false``\ 
 is returned.
@@ -1240,8 +1312,9 @@ flush_workqueue
 
     ensure that any scheduled work has run to completion.
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to flush
+    :type wq: struct workqueue_struct \*
 
 .. _`flush_workqueue.description`:
 
@@ -1260,8 +1333,9 @@ drain_workqueue
 
     drain a workqueue
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to drain
+    :type wq: struct workqueue_struct \*
 
 .. _`drain_workqueue.description`:
 
@@ -1284,8 +1358,9 @@ flush_work
 
     wait for a work to finish executing the last queueing instance
 
-    :param struct work_struct \*work:
+    :param work:
         the work to flush
+    :type work: struct work_struct \*
 
 .. _`flush_work.description`:
 
@@ -1312,8 +1387,9 @@ cancel_work_sync
 
     cancel a work and wait for it to finish
 
-    :param struct work_struct \*work:
+    :param work:
         the work to cancel
+    :type work: struct work_struct \*
 
 .. _`cancel_work_sync.description`:
 
@@ -1347,8 +1423,9 @@ flush_delayed_work
 
     wait for a dwork to finish executing the last queueing
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         the delayed work to flush
+    :type dwork: struct delayed_work \*
 
 .. _`flush_delayed_work.description`:
 
@@ -1376,8 +1453,9 @@ flush_rcu_work
 
     wait for a rwork to finish executing the last queueing
 
-    :param struct rcu_work \*rwork:
+    :param rwork:
         the rcu work to flush
+    :type rwork: struct rcu_work \*
 
 .. _`flush_rcu_work.return`:
 
@@ -1396,8 +1474,9 @@ cancel_delayed_work
 
     cancel a delayed work
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         delayed_work to cancel
+    :type dwork: struct delayed_work \*
 
 .. _`cancel_delayed_work.description`:
 
@@ -1434,8 +1513,9 @@ cancel_delayed_work_sync
 
     cancel a delayed work and wait for it to finish
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         the delayed work cancel
+    :type dwork: struct delayed_work \*
 
 .. _`cancel_delayed_work_sync.description`:
 
@@ -1460,8 +1540,9 @@ schedule_on_each_cpu
 
     execute a function synchronously on each online CPU
 
-    :param work_func_t func:
+    :param func:
         the function to call
+    :type func: work_func_t
 
 .. _`schedule_on_each_cpu.description`:
 
@@ -1488,12 +1569,14 @@ execute_in_process_context
 
     reliably execute the routine with user context
 
-    :param work_func_t fn:
+    :param fn:
         the function to execute
+    :type fn: work_func_t
 
-    :param struct execute_work \*ew:
+    :param ew:
         guaranteed storage for the execute work structure (must
         be available when the work executes)
+    :type ew: struct execute_work \*
 
 .. _`execute_in_process_context.description`:
 
@@ -1520,8 +1603,9 @@ free_workqueue_attrs
 
     free a workqueue_attrs
 
-    :param struct workqueue_attrs \*attrs:
+    :param attrs:
         workqueue_attrs to free
+    :type attrs: struct workqueue_attrs \*
 
 .. _`free_workqueue_attrs.description`:
 
@@ -1539,8 +1623,9 @@ alloc_workqueue_attrs
 
     allocate a workqueue_attrs
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation mask to use
+    :type gfp_mask: gfp_t
 
 .. _`alloc_workqueue_attrs.description`:
 
@@ -1566,15 +1651,16 @@ init_worker_pool
 
     initialize a newly zalloc'd worker_pool
 
-    :param struct worker_pool \*pool:
+    :param pool:
         worker_pool to initialize
+    :type pool: struct worker_pool \*
 
 .. _`init_worker_pool.description`:
 
 Description
 -----------
 
-Initialize a newly zalloc'd \ ``pool``\ .  It also allocates \ ``pool``\ ->attrs.
+Initialize a newly zalloc'd \ ``pool``\ .  It also allocates \ ``pool->attrs``\ .
 
 .. _`init_worker_pool.return`:
 
@@ -1594,8 +1680,9 @@ put_unbound_pool
 
     put a worker_pool
 
-    :param struct worker_pool \*pool:
+    :param pool:
         worker_pool to put
+    :type pool: struct worker_pool \*
 
 .. _`put_unbound_pool.description`:
 
@@ -1618,8 +1705,9 @@ get_unbound_pool
 
     get a worker_pool with the specified attributes
 
-    :param const struct workqueue_attrs \*attrs:
+    :param attrs:
         the attributes of the worker_pool to get
+    :type attrs: const struct workqueue_attrs \*
 
 .. _`get_unbound_pool.description`:
 
@@ -1650,17 +1738,18 @@ pwq_adjust_max_active
 
     update a pwq's max_active to the current setting
 
-    :param struct pool_workqueue \*pwq:
+    :param pwq:
         target pool_workqueue
+    :type pwq: struct pool_workqueue \*
 
 .. _`pwq_adjust_max_active.description`:
 
 Description
 -----------
 
-If \ ``pwq``\  isn't freezing, set \ ``pwq``\ ->max_active to the associated
+If \ ``pwq``\  isn't freezing, set \ ``pwq->max_active``\  to the associated
 workqueue's saved_max_active and activate delayed work items
-accordingly.  If \ ``pwq``\  is freezing, clear \ ``pwq``\ ->max_active to zero.
+accordingly.  If \ ``pwq``\  is freezing, clear \ ``pwq->max_active``\  to zero.
 
 .. _`wq_calc_node_cpumask`:
 
@@ -1671,17 +1760,21 @@ wq_calc_node_cpumask
 
     calculate a wq_attrs' cpumask for the specified node
 
-    :param const struct workqueue_attrs \*attrs:
+    :param attrs:
         the wq_attrs of the default pwq of the target workqueue
+    :type attrs: const struct workqueue_attrs \*
 
-    :param int node:
+    :param node:
         the target NUMA node
+    :type node: int
 
-    :param int cpu_going_down:
+    :param cpu_going_down:
         if >= 0, the CPU to consider as offline
+    :type cpu_going_down: int
 
-    :param cpumask_t \*cpumask:
+    :param cpumask:
         outarg, the resulting cpumask
+    :type cpumask: cpumask_t \*
 
 .. _`wq_calc_node_cpumask.description`:
 
@@ -1692,10 +1785,10 @@ Calculate the cpumask a workqueue with \ ``attrs``\  should use on \ ``node``\ .
 \ ``cpu_going_down``\  is >= 0, that cpu is considered offline during
 calculation.  The result is stored in \ ``cpumask``\ .
 
-If NUMA affinity is not enabled, \ ``attrs``\ ->cpumask is always used.  If
+If NUMA affinity is not enabled, \ ``attrs->cpumask``\  is always used.  If
 enabled and \ ``node``\  has online CPUs requested by \ ``attrs``\ , the returned
 cpumask is the intersection of the possible CPUs of \ ``node``\  and
-\ ``attrs``\ ->cpumask.
+\ ``attrs->cpumask``\ .
 
 The caller is responsible for ensuring that the cpumask of \ ``node``\  stays
 stable.
@@ -1705,7 +1798,7 @@ stable.
 Return
 ------
 
-\ ``true``\  if the resulting \ ``cpumask``\  is different from \ ``attrs``\ ->cpumask,
+\ ``true``\  if the resulting \ ``cpumask``\  is different from \ ``attrs->cpumask``\ ,
 \ ``false``\  if equal.
 
 .. _`apply_workqueue_attrs`:
@@ -1717,11 +1810,13 @@ apply_workqueue_attrs
 
     apply new workqueue_attrs to an unbound workqueue
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         the target workqueue
+    :type wq: struct workqueue_struct \*
 
-    :param const struct workqueue_attrs \*attrs:
+    :param attrs:
         the workqueue_attrs to apply, allocated with \ :c:func:`alloc_workqueue_attrs`\ 
+    :type attrs: const struct workqueue_attrs \*
 
 .. _`apply_workqueue_attrs.description`:
 
@@ -1730,7 +1825,7 @@ Description
 
 Apply \ ``attrs``\  to an unbound workqueue \ ``wq``\ .  Unless disabled, on NUMA
 machines, this function maps a separate pwq to each NUMA node with
-possibles CPUs in \ ``attrs``\ ->cpumask so that work items are affine to the
+possibles CPUs in \ ``attrs->cpumask``\  so that work items are affine to the
 NUMA node it was issued on.  Older pwqs are released as in-flight work
 items finish.  Note that a work item which repeatedly requeues itself
 back-to-back will stay on its current pwq.
@@ -1753,14 +1848,17 @@ wq_update_unbound_numa
 
     update NUMA affinity of a wq for CPU hot[un]plug
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         the target workqueue
+    :type wq: struct workqueue_struct \*
 
-    :param int cpu:
+    :param cpu:
         the CPU coming up or going down
+    :type cpu: int
 
-    :param bool online:
+    :param online:
         whether \ ``cpu``\  is coming up or going down
+    :type online: bool
 
 .. _`wq_update_unbound_numa.description`:
 
@@ -1772,7 +1870,7 @@ This function is to be called from \ ``CPU_DOWN_PREPARE``\ , \ ``CPU_ONLINE``\  
 \ ``wq``\  accordingly.
 
 If NUMA affinity can't be adjusted due to memory allocation failure, it
-falls back to \ ``wq``\ ->dfl_pwq which may not be optimal but is always
+falls back to \ ``wq->dfl_pwq``\  which may not be optimal but is always
 correct.
 
 Note that when the last allowed CPU of a NUMA node goes offline for a
@@ -1792,8 +1890,9 @@ destroy_workqueue
 
     safely terminate a workqueue
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         target workqueue
+    :type wq: struct workqueue_struct \*
 
 .. _`destroy_workqueue.description`:
 
@@ -1811,11 +1910,13 @@ workqueue_set_max_active
 
     adjust max_active of a workqueue
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         target workqueue
+    :type wq: struct workqueue_struct \*
 
-    :param int max_active:
+    :param max_active:
         new max_active value.
+    :type max_active: int
 
 .. _`workqueue_set_max_active.description`:
 
@@ -1840,8 +1941,9 @@ current_work
 
     retrieve \ ``current``\  task's work struct
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`current_work.description`:
 
@@ -1867,8 +1969,9 @@ current_is_workqueue_rescuer
 
     is \ ``current``\  workqueue rescuer?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`current_is_workqueue_rescuer.description`:
 
@@ -1894,11 +1997,13 @@ workqueue_congested
 
     test whether a workqueue is congested
 
-    :param int cpu:
+    :param cpu:
         CPU in question
+    :type cpu: int
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         target workqueue
+    :type wq: struct workqueue_struct \*
 
 .. _`workqueue_congested.description`:
 
@@ -1931,8 +2036,9 @@ work_busy
 
     test whether a work is currently pending or running
 
-    :param struct work_struct \*work:
+    :param work:
         the work to be tested
+    :type work: struct work_struct \*
 
 .. _`work_busy.description`:
 
@@ -1959,8 +2065,9 @@ set_worker_desc
 
     set description for the current work item
 
-    :param const char \*fmt:
+    :param fmt:
         printf-style format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         arguments for the format string
@@ -1984,11 +2091,13 @@ print_worker_info
 
     print out worker information and description
 
-    :param const char \*log_lvl:
+    :param log_lvl:
         the log level to use when printing
+    :type log_lvl: const char \*
 
-    :param struct task_struct \*task:
+    :param task:
         target task
+    :type task: struct task_struct \*
 
 .. _`print_worker_info.description`:
 
@@ -2012,8 +2121,9 @@ show_workqueue_state
 
     dump workqueue state
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`show_workqueue_state.description`:
 
@@ -2032,15 +2142,16 @@ rebind_workers
 
     rebind all workers of a pool to the associated CPU
 
-    :param struct worker_pool \*pool:
+    :param pool:
         pool of interest
+    :type pool: struct worker_pool \*
 
 .. _`rebind_workers.description`:
 
 Description
 -----------
 
-\ ``pool``\ ->cpu is coming online.  Rebind all workers to the CPU.
+\ ``pool->cpu``\  is coming online.  Rebind all workers to the CPU.
 
 .. _`restore_unbound_workers_cpumask`:
 
@@ -2051,11 +2162,13 @@ restore_unbound_workers_cpumask
 
     restore cpumask of unbound workers
 
-    :param struct worker_pool \*pool:
+    :param pool:
         unbound pool of interest
+    :type pool: struct worker_pool \*
 
-    :param int cpu:
+    :param cpu:
         the CPU which is coming up
+    :type cpu: int
 
 .. _`restore_unbound_workers_cpumask.description`:
 
@@ -2076,14 +2189,16 @@ work_on_cpu
 
     run a function in thread context on a particular cpu
 
-    :param int cpu:
+    :param cpu:
         the cpu to run on
+    :type cpu: int
 
     :param long (\*fn)(void \*):
         the function to run
 
-    :param void \*arg:
+    :param arg:
         the function arg
+    :type arg: void \*
 
 .. _`work_on_cpu.description`:
 
@@ -2109,14 +2224,16 @@ work_on_cpu_safe
 
     run a function in thread context on a particular cpu
 
-    :param int cpu:
+    :param cpu:
         the cpu to run on
+    :type cpu: int
 
     :param long (\*fn)(void \*):
         the function to run
 
-    :param void \*arg:
+    :param arg:
         the function argument
+    :type arg: void \*
 
 .. _`work_on_cpu_safe.description`:
 
@@ -2142,8 +2259,9 @@ freeze_workqueues_begin
 
     begin freezing workqueues
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`freeze_workqueues_begin.description`:
 
@@ -2170,8 +2288,9 @@ freeze_workqueues_busy
 
     are freezable workqueues still busy?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`freeze_workqueues_busy.description`:
 
@@ -2205,8 +2324,9 @@ thaw_workqueues
 
     thaw workqueues
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`thaw_workqueues.description`:
 
@@ -2232,8 +2352,9 @@ workqueue_set_unbound_cpumask
 
     Set the low-level unbound cpumask
 
-    :param cpumask_var_t cpumask:
+    :param cpumask:
         the cpumask to set
+    :type cpumask: cpumask_var_t
 
 .. _`workqueue_set_unbound_cpumask.description`:
 
@@ -2257,8 +2378,9 @@ workqueue_sysfs_register
 
     make a workqueue visible in sysfs
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         the workqueue to register
+    :type wq: struct workqueue_struct \*
 
 .. _`workqueue_sysfs_register.description`:
 
@@ -2290,8 +2412,9 @@ workqueue_sysfs_unregister
 
     undo \ :c:func:`workqueue_sysfs_register`\ 
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         the workqueue to unregister
+    :type wq: struct workqueue_struct \*
 
 .. _`workqueue_sysfs_unregister.description`:
 
@@ -2309,8 +2432,9 @@ workqueue_init_early
 
     early init for workqueue subsystem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`workqueue_init_early.description`:
 
@@ -2333,8 +2457,9 @@ workqueue_init
 
     bring workqueue subsystem fully online
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`workqueue_init.description`:
 

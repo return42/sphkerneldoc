@@ -10,11 +10,13 @@ snd_vx_load_boot_image
 
     boot up the xilinx interface
 
-    :param struct vx_core \*chip:
+    :param chip:
         VX core instance
+    :type chip: struct vx_core \*
 
-    :param const struct firmware \*boot:
+    :param boot:
         the boot record to load
+    :type boot: const struct firmware \*
 
 .. _`snd_vx_irq_handler`:
 
@@ -25,11 +27,13 @@ snd_vx_irq_handler
 
     interrupt handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*dev:
+    :param dev:
         VX core instance
+    :type dev: void \*
 
 .. _`snd_vx_dsp_boot`:
 
@@ -40,11 +44,13 @@ snd_vx_dsp_boot
 
     load the DSP boot
 
-    :param struct vx_core \*chip:
+    :param chip:
         VX core instance
+    :type chip: struct vx_core \*
 
-    :param const struct firmware \*boot:
+    :param boot:
         firmware data
+    :type boot: const struct firmware \*
 
 .. _`snd_vx_dsp_load`:
 
@@ -55,11 +61,13 @@ snd_vx_dsp_load
 
     load the DSP image
 
-    :param struct vx_core \*chip:
+    :param chip:
         VX core instance
+    :type chip: struct vx_core \*
 
-    :param const struct firmware \*dsp:
+    :param dsp:
         firmware data
+    :type dsp: const struct firmware \*
 
 .. _`snd_vx_create`:
 
@@ -70,17 +78,21 @@ snd_vx_create
 
     constructor for struct vx_core
 
-    :param struct snd_card \*card:
+    :param card:
         card instance
+    :type card: struct snd_card \*
 
-    :param struct snd_vx_hardware \*hw:
+    :param hw:
         hardware specific record
+    :type hw: struct snd_vx_hardware \*
 
-    :param struct snd_vx_ops \*ops:
+    :param ops:
         VX ops pointer
+    :type ops: struct snd_vx_ops \*
 
-    :param int extra_size:
+    :param extra_size:
         extra byte size to allocate appending to chip
+    :type extra_size: int
 
 .. _`snd_vx_create.description`:
 

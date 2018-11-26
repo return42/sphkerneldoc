@@ -10,8 +10,9 @@ cvmx_sysinfo_get
 
     by the bootloader.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_sysinfo_get.description`:
 

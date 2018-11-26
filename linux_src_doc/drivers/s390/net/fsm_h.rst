@@ -33,14 +33,17 @@ fsm_function_t
 
 .. c:function:: void fsm_function_t(void *,  int, void *)
 
-    :param void \*:
+    :param :
         *undescribed*
+    :type : void \*
 
-    :param  int:
+    :param int:
         *undescribed*
+    :type int: 
 
-    :param void \*:
+    :param :
         *undescribed*
+    :type : void \*
 
 .. _`fsm`:
 
@@ -90,29 +93,37 @@ init_fsm
 
 .. c:function:: fsm_instance *init_fsm(char *name, const char **state_names, const char **event_names, int nr_states, int nr_events, const fsm_node *tmpl, int tmpl_len, gfp_t order)
 
-    :param char \*name:
+    :param name:
         *undescribed*
+    :type name: char \*
 
-    :param const char \*\*state_names:
+    :param state_names:
         *undescribed*
+    :type state_names: const char \*\*
 
-    :param const char \*\*event_names:
+    :param event_names:
         *undescribed*
+    :type event_names: const char \*\*
 
-    :param int nr_states:
+    :param nr_states:
         *undescribed*
+    :type nr_states: int
 
-    :param int nr_events:
+    :param nr_events:
         *undescribed*
+    :type nr_events: int
 
-    :param const fsm_node \*tmpl:
+    :param tmpl:
         *undescribed*
+    :type tmpl: const fsm_node \*
 
-    :param int tmpl_len:
+    :param tmpl_len:
         *undescribed*
+    :type tmpl_len: int
 
-    :param gfp_t order:
+    :param order:
         *undescribed*
+    :type order: gfp_t
 
 .. _`init_fsm.description`:
 
@@ -135,8 +146,9 @@ kfree_fsm
 
 .. c:function:: void kfree_fsm(fsm_instance *fi)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
 .. _`kfree_fsm.description`:
 
@@ -154,14 +166,17 @@ fsm_event
 
     If an action function is defined for the current state/event combination, this function is called.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`fsm_event.description`:
 
@@ -185,11 +200,13 @@ fsm_newstate
 
     This does <em>not</em> trigger an event or calls an action function.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int newstate:
+    :param newstate:
         *undescribed*
+    :type newstate: int
 
 .. _`fsm_newstate.description`:
 
@@ -206,8 +223,9 @@ fsm_getstate
 
 .. c:function:: int fsm_getstate(fsm_instance *fi)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
 .. _`fsm_getstate.description`:
 
@@ -225,8 +243,9 @@ fsm_getstate_str
 
 .. c:function:: const char *fsm_getstate_str(fsm_instance *fi)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
 .. _`fsm_getstate_str.description`:
 
@@ -246,11 +265,13 @@ fsm_settimer
 
     This prepares an fsm_timer for usage with fsm_addtimer.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param fsm_timer \*:
+    :param :
         *undescribed*
+    :type : fsm_timer \*
 
 .. _`fsm_settimer.description`:
 
@@ -267,8 +288,9 @@ fsm_deltimer
 
 .. c:function:: void fsm_deltimer(fsm_timer *timer)
 
-    :param fsm_timer \*timer:
+    :param timer:
         *undescribed*
+    :type timer: fsm_timer \*
 
 .. _`fsm_deltimer.description`:
 
@@ -284,17 +306,21 @@ fsm_addtimer
 
 .. c:function:: int fsm_addtimer(fsm_timer *timer, int millisec, int event, void *arg)
 
-    :param fsm_timer \*timer:
+    :param timer:
         *undescribed*
+    :type timer: fsm_timer \*
 
-    :param int millisec:
+    :param millisec:
         *undescribed*
+    :type millisec: int
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`fsm_addtimer.description`:
 
@@ -316,17 +342,21 @@ fsm_modtimer
 
 .. c:function:: void fsm_modtimer(fsm_timer *timer, int millisec, int event, void *arg)
 
-    :param fsm_timer \*timer:
+    :param timer:
         *undescribed*
+    :type timer: fsm_timer \*
 
-    :param int millisec:
+    :param millisec:
         *undescribed*
+    :type millisec: int
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`fsm_modtimer.description`:
 

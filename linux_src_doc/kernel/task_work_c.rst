@@ -8,16 +8,19 @@ task_work_add
 
 .. c:function:: int task_work_add(struct task_struct *task, struct callback_head *work, bool notify)
 
-    ask the \ ``task``\  to execute \ ``work``\ ->func()
+    ask the \ ``task``\  to execute \ ``work->func``\ ()
 
-    :param struct task_struct \*task:
+    :param task:
         the task which should run the callback
+    :type task: struct task_struct \*
 
-    :param struct callback_head \*work:
+    :param work:
         the callback to run
+    :type work: struct callback_head \*
 
-    :param bool notify:
+    :param notify:
         send the notification if true
+    :type notify: bool
 
 .. _`task_work_add.description`:
 
@@ -26,7 +29,7 @@ Description
 
 Queue \ ``work``\  for \ :c:func:`task_work_run`\  below and notify the \ ``task``\  if \ ``notify``\ .
 Fails if the \ ``task``\  is exiting/exited and thus it can't process this \ ``work``\ .
-Otherwise \ ``work``\ ->func() will be called when the \ ``task``\  returns from kernel
+Otherwise \ ``work->func``\ () will be called when the \ ``task``\  returns from kernel
 mode or exits.
 
 This is like the signal handler which runs in kernel mode, but it doesn't
@@ -55,11 +58,13 @@ task_work_cancel
 
     cancel a pending work added by \ :c:func:`task_work_add`\ 
 
-    :param struct task_struct \*task:
+    :param task:
         the task which should execute the work
+    :type task: struct task_struct \*
 
-    :param task_work_func_t func:
+    :param func:
         identifies the work to remove
+    :type func: task_work_func_t
 
 .. _`task_work_cancel.description`:
 
@@ -85,8 +90,9 @@ task_work_run
 
     execute the works added by \ :c:func:`task_work_add`\ 
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`task_work_run.description`:
 

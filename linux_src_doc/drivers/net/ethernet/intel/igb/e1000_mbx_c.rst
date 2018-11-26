@@ -10,20 +10,25 @@ igb_read_mbx
 
     Reads a message from the mailbox
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to read
+    :type mbx_id: u16
 
-    :param bool unlock:
+    :param unlock:
         *undescribed*
+    :type unlock: bool
 
 .. _`igb_read_mbx.description`:
 
@@ -41,17 +46,21 @@ igb_write_mbx
 
     Write a message to the mailbox
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to write
+    :type mbx_id: u16
 
 .. _`igb_write_mbx.description`:
 
@@ -69,11 +78,13 @@ igb_check_for_msg
 
     checks to see if someone sent us mail
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to check
+    :type mbx_id: u16
 
 .. _`igb_check_for_msg.description`:
 
@@ -91,11 +102,13 @@ igb_check_for_ack
 
     checks to see if someone sent us ACK
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to check
+    :type mbx_id: u16
 
 .. _`igb_check_for_ack.description`:
 
@@ -113,11 +126,13 @@ igb_check_for_rst
 
     checks to see if other side has reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to check
+    :type mbx_id: u16
 
 .. _`igb_check_for_rst.description`:
 
@@ -135,11 +150,13 @@ igb_unlock_mbx
 
     unlock the mailbox
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to check
+    :type mbx_id: u16
 
 .. _`igb_unlock_mbx.description`:
 
@@ -157,11 +174,13 @@ igb_poll_for_msg
 
     Wait for message notification
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to write
+    :type mbx_id: u16
 
 .. _`igb_poll_for_msg.description`:
 
@@ -179,11 +198,13 @@ igb_poll_for_ack
 
     Wait for message acknowledgement
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to write
+    :type mbx_id: u16
 
 .. _`igb_poll_for_ack.description`:
 
@@ -201,17 +222,21 @@ igb_read_posted_mbx
 
     Wait for message notification and receive message
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to write
+    :type mbx_id: u16
 
 .. _`igb_read_posted_mbx.description`:
 
@@ -230,17 +255,21 @@ igb_write_posted_mbx
 
     Write a message to the mailbox, wait for ack
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to write
+    :type mbx_id: u16
 
 .. _`igb_write_posted_mbx.description`:
 
@@ -259,11 +288,13 @@ igb_check_for_msg_pf
 
     checks to see if the VF has sent mail
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`igb_check_for_msg_pf.description`:
 
@@ -281,11 +312,13 @@ igb_check_for_ack_pf
 
     checks to see if the VF has ACKed
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`igb_check_for_ack_pf.description`:
 
@@ -303,11 +336,13 @@ igb_check_for_rst_pf
 
     checks to see if the VF has reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`igb_check_for_rst_pf.description`:
 
@@ -325,11 +360,13 @@ igb_obtain_mbx_lock_pf
 
     obtain mailbox lock
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`igb_obtain_mbx_lock_pf.description`:
 
@@ -347,11 +384,13 @@ igb_release_mbx_lock_pf
 
     release mailbox lock
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`igb_release_mbx_lock_pf.description`:
 
@@ -369,17 +408,21 @@ igb_write_mbx_pf
 
     Places a message in the mailbox
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`igb_write_mbx_pf.description`:
 
@@ -397,20 +440,25 @@ igb_read_mbx_pf
 
     Read a message from the mailbox
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
-    :param bool unlock:
+    :param unlock:
         unlock the mailbox when done?
+    :type unlock: bool
 
 .. _`igb_read_mbx_pf.description`:
 
@@ -430,8 +478,9 @@ igb_init_mbx_params_pf
 
     set initial values for pf mailbox
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_init_mbx_params_pf.description`:
 

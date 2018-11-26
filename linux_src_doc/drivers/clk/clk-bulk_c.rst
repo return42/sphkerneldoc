@@ -10,11 +10,13 @@ clk_bulk_unprepare
 
     undo preparation of a set of clock sources
 
-    :param int num_clks:
+    :param num_clks:
         the number of clk_bulk_data
+    :type num_clks: int
 
-    :param const struct clk_bulk_data \*clks:
+    :param clks:
         the clk_bulk_data table being unprepared
+    :type clks: const struct clk_bulk_data \*
 
 .. _`clk_bulk_unprepare.description`:
 
@@ -33,11 +35,13 @@ clk_bulk_prepare
 
     prepare a set of clocks
 
-    :param int num_clks:
+    :param num_clks:
         the number of clk_bulk_data
+    :type num_clks: int
 
-    :param const struct clk_bulk_data \*clks:
+    :param clks:
         the clk_bulk_data table being prepared
+    :type clks: const struct clk_bulk_data \*
 
 .. _`clk_bulk_prepare.description`:
 
@@ -56,11 +60,13 @@ clk_bulk_disable
 
     gate a set of clocks
 
-    :param int num_clks:
+    :param num_clks:
         the number of clk_bulk_data
+    :type num_clks: int
 
-    :param const struct clk_bulk_data \*clks:
+    :param clks:
         the clk_bulk_data table being gated
+    :type clks: const struct clk_bulk_data \*
 
 .. _`clk_bulk_disable.description`:
 
@@ -80,11 +86,13 @@ clk_bulk_enable
 
     ungate a set of clocks
 
-    :param int num_clks:
+    :param num_clks:
         the number of clk_bulk_data
+    :type num_clks: int
 
-    :param const struct clk_bulk_data \*clks:
+    :param clks:
         the clk_bulk_data table being ungated
+    :type clks: const struct clk_bulk_data \*
 
 .. _`clk_bulk_enable.description`:
 

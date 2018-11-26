@@ -10,8 +10,9 @@ fscrypt_release_ctx
 
     Releases an encryption context
 
-    :param struct fscrypt_ctx \*ctx:
+    :param ctx:
         The encryption context to release.
+    :type ctx: struct fscrypt_ctx \*
 
 .. _`fscrypt_release_ctx.description`:
 
@@ -32,11 +33,13 @@ fscrypt_get_ctx
 
     Gets an encryption context
 
-    :param const struct inode \*inode:
+    :param inode:
         The inode for which we are doing the crypto
+    :type inode: const struct inode \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         The gfp flag for memory allocation
+    :type gfp_flags: gfp_t
 
 .. _`fscrypt_get_ctx.description`:
 
@@ -62,28 +65,34 @@ fscrypt_encrypt_page
 
     Encrypts a page
 
-    :param const struct inode \*inode:
+    :param inode:
         The inode for which the encryption should take place
+    :type inode: const struct inode \*
 
-    :param struct page \*page:
+    :param page:
         The page to encrypt. Must be locked for bounce-page
         encryption.
+    :type page: struct page \*
 
-    :param unsigned int len:
+    :param len:
         Length of data to encrypt in \ ``page``\  and encrypted
         data in returned page.
+    :type len: unsigned int
 
-    :param unsigned int offs:
+    :param offs:
         Offset of data within \ ``page``\  and returned
         page holding encrypted data.
+    :type offs: unsigned int
 
-    :param u64 lblk_num:
+    :param lblk_num:
         Logical block number. This must be unique for multiple
         calls with same inode, except when overwriting
         previously written data.
+    :type lblk_num: u64
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         The gfp flag for memory allocation
+    :type gfp_flags: gfp_t
 
 .. _`fscrypt_encrypt_page.description`:
 
@@ -121,21 +130,26 @@ fscrypt_decrypt_page
 
     Decrypts a page in-place
 
-    :param const struct inode \*inode:
+    :param inode:
         The corresponding inode for the page to decrypt.
+    :type inode: const struct inode \*
 
-    :param struct page \*page:
+    :param page:
         The page to decrypt. Must be locked in case
         it is a writeback page (FS_CFLG_OWN_PAGES unset).
+    :type page: struct page \*
 
-    :param unsigned int len:
+    :param len:
         Number of bytes in \ ``page``\  to be decrypted.
+    :type len: unsigned int
 
-    :param unsigned int offs:
+    :param offs:
         Start of data in \ ``page``\ .
+    :type offs: unsigned int
 
-    :param u64 lblk_num:
+    :param lblk_num:
         Logical block number.
+    :type lblk_num: u64
 
 .. _`fscrypt_decrypt_page.description`:
 
@@ -162,8 +176,9 @@ fscrypt_initialize
 
     allocate major buffers for fs encryption.
 
-    :param unsigned int cop_flags:
+    :param cop_flags:
         fscrypt operations flags
+    :type cop_flags: unsigned int
 
 .. _`fscrypt_initialize.description`:
 
@@ -189,8 +204,9 @@ fscrypt_init
 
     Set up for fs encryption.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fscrypt_exit`:
 
@@ -201,8 +217,9 @@ fscrypt_exit
 
     Shutdown the fs encryption system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

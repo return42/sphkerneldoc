@@ -10,11 +10,13 @@ ulpi_read
 
     USB ULPI PHY bus
 
-    :param struct ulpi \*ulpi:
+    :param ulpi:
         *undescribed*
+    :type ulpi: struct ulpi \*
 
-    :param u8 addr:
+    :param addr:
         *undescribed*
+    :type addr: u8
 
 .. _`ulpi_read.description`:
 
@@ -39,11 +41,13 @@ Heikki Krogerus <heikki.krogerus@linux.intel.com>
 
     register a driver with the ULPI bus
 
-    :param struct ulpi_driver \*drv:
+    :param drv:
         driver being registered
+    :type drv: struct ulpi_driver \*
 
-    :param struct module \*module:
+    :param module:
         *undescribed*
+    :type module: struct module \*
 
 .. _`__ulpi_register_driver.description`:
 
@@ -61,8 +65,9 @@ ulpi_unregister_driver
 
     unregister a driver with the ULPI bus
 
-    :param struct ulpi_driver \*drv:
+    :param drv:
         driver to unregister
+    :type drv: struct ulpi_driver \*
 
 .. _`ulpi_unregister_driver.description`:
 
@@ -80,11 +85,13 @@ ulpi_register_interface
 
     instantiate new ULPI device
 
-    :param struct device \*dev:
+    :param dev:
         USB controller's device interface
+    :type dev: struct device \*
 
-    :param const struct ulpi_ops \*ops:
+    :param ops:
         ULPI register access
+    :type ops: const struct ulpi_ops \*
 
 .. _`ulpi_register_interface.description`:
 
@@ -103,8 +110,9 @@ ulpi_unregister_interface
 
     unregister ULPI interface
 
-    :param struct ulpi \*ulpi:
+    :param ulpi:
         *undescribed*
+    :type ulpi: struct ulpi \*
 
 .. _`ulpi_unregister_interface.description`:
 

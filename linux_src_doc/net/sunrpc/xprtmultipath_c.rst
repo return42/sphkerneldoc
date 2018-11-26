@@ -10,11 +10,13 @@ rpc_xprt_switch_add_xprt
 
     Add a new rpc_xprt to an rpc_xprt_switch
 
-    :param struct rpc_xprt_switch \*xps:
+    :param xps:
         pointer to struct rpc_xprt_switch
+    :type xps: struct rpc_xprt_switch \*
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         pointer to struct rpc_xprt
+    :type xprt: struct rpc_xprt \*
 
 .. _`rpc_xprt_switch_add_xprt.description`:
 
@@ -32,11 +34,13 @@ rpc_xprt_switch_remove_xprt
 
     Removes an rpc_xprt from a rpc_xprt_switch
 
-    :param struct rpc_xprt_switch \*xps:
+    :param xps:
         pointer to struct rpc_xprt_switch
+    :type xps: struct rpc_xprt_switch \*
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         pointer to struct rpc_xprt
+    :type xprt: struct rpc_xprt \*
 
 .. _`rpc_xprt_switch_remove_xprt.description`:
 
@@ -54,11 +58,13 @@ xprt_switch_alloc
 
     Allocate a new struct rpc_xprt_switch
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         pointer to struct rpc_xprt
+    :type xprt: struct rpc_xprt \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         allocation flags
+    :type gfp_flags: gfp_t
 
 .. _`xprt_switch_alloc.description`:
 
@@ -77,8 +83,9 @@ xprt_switch_get
 
     Return a reference to a rpc_xprt_switch
 
-    :param struct rpc_xprt_switch \*xps:
+    :param xps:
         pointer to struct rpc_xprt_switch
+    :type xps: struct rpc_xprt_switch \*
 
 .. _`xprt_switch_get.description`:
 
@@ -96,8 +103,9 @@ xprt_switch_put
 
     Release a reference to a rpc_xprt_switch
 
-    :param struct rpc_xprt_switch \*xps:
+    :param xps:
         pointer to struct rpc_xprt_switch
+    :type xps: struct rpc_xprt_switch \*
 
 .. _`xprt_switch_put.description`:
 
@@ -115,8 +123,9 @@ rpc_xprt_switch_set_roundrobin
 
     Set a round-robin policy on rpc_xprt_switch
 
-    :param struct rpc_xprt_switch \*xps:
+    :param xps:
         pointer to struct rpc_xprt_switch
+    :type xps: struct rpc_xprt_switch \*
 
 .. _`rpc_xprt_switch_set_roundrobin.description`:
 
@@ -134,11 +143,13 @@ xprt_iter_init
 
     Initialise an xprt iterator
 
-    :param struct rpc_xprt_iter \*xpi:
+    :param xpi:
         pointer to rpc_xprt_iter
+    :type xpi: struct rpc_xprt_iter \*
 
-    :param struct rpc_xprt_switch \*xps:
+    :param xps:
         pointer to rpc_xprt_switch
+    :type xps: struct rpc_xprt_switch \*
 
 .. _`xprt_iter_init.description`:
 
@@ -158,11 +169,13 @@ xprt_iter_init_listall
 
     Initialise an xprt iterator
 
-    :param struct rpc_xprt_iter \*xpi:
+    :param xpi:
         pointer to rpc_xprt_iter
+    :type xpi: struct rpc_xprt_iter \*
 
-    :param struct rpc_xprt_switch \*xps:
+    :param xps:
         pointer to rpc_xprt_switch
+    :type xps: struct rpc_xprt_switch \*
 
 .. _`xprt_iter_init_listall.description`:
 
@@ -181,11 +194,13 @@ xprt_iter_xchg_switch
 
     Atomically swap out the rpc_xprt_switch
 
-    :param struct rpc_xprt_iter \*xpi:
+    :param xpi:
         pointer to rpc_xprt_iter
+    :type xpi: struct rpc_xprt_iter \*
 
-    :param struct rpc_xprt_switch \*newswitch:
+    :param newswitch:
         *undescribed*
+    :type newswitch: struct rpc_xprt_switch \*
 
 .. _`xprt_iter_xchg_switch.description`:
 
@@ -203,8 +218,9 @@ xprt_iter_destroy
 
     Destroys the xprt iterator \ ``xpi``\  pointer to rpc_xprt_iter
 
-    :param struct rpc_xprt_iter \*xpi:
+    :param xpi:
         *undescribed*
+    :type xpi: struct rpc_xprt_iter \*
 
 .. _`xprt_iter_xprt`:
 
@@ -215,8 +231,9 @@ xprt_iter_xprt
 
     Returns the rpc_xprt pointed to by the cursor
 
-    :param struct rpc_xprt_iter \*xpi:
+    :param xpi:
         pointer to rpc_xprt_iter
+    :type xpi: struct rpc_xprt_iter \*
 
 .. _`xprt_iter_xprt.description`:
 
@@ -236,8 +253,9 @@ xprt_iter_get_xprt
 
     Returns the rpc_xprt pointed to by the cursor
 
-    :param struct rpc_xprt_iter \*xpi:
+    :param xpi:
         pointer to rpc_xprt_iter
+    :type xpi: struct rpc_xprt_iter \*
 
 .. _`xprt_iter_get_xprt.description`:
 
@@ -256,8 +274,9 @@ xprt_iter_get_next
 
     Returns the next rpc_xprt following the cursor
 
-    :param struct rpc_xprt_iter \*xpi:
+    :param xpi:
         pointer to rpc_xprt_iter
+    :type xpi: struct rpc_xprt_iter \*
 
 .. _`xprt_iter_get_next.description`:
 

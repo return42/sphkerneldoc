@@ -10,17 +10,21 @@ change_mac
 
     change(add or delete) mac address
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param const u8 \*addr:
+    :param addr:
         mac address
+    :type addr: const u8 \*
 
-    :param u16 vlan_id:
+    :param vlan_id:
         vlan number to set with the mac
+    :type vlan_id: u16
 
-    :param enum mac_op op:
+    :param op:
         add or delete the mac
+    :type op: enum mac_op
 
 .. _`change_mac.description`:
 
@@ -38,14 +42,17 @@ hinic_port_add_mac
 
     add mac address
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param const u8 \*addr:
+    :param addr:
         mac address
+    :type addr: const u8 \*
 
-    :param u16 vlan_id:
+    :param vlan_id:
         vlan number to set with the mac
+    :type vlan_id: u16
 
 .. _`hinic_port_add_mac.description`:
 
@@ -63,14 +70,17 @@ hinic_port_del_mac
 
     remove mac address
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param const u8 \*addr:
+    :param addr:
         mac address
+    :type addr: const u8 \*
 
-    :param u16 vlan_id:
+    :param vlan_id:
         vlan number that is connected to the mac
+    :type vlan_id: u16
 
 .. _`hinic_port_del_mac.description`:
 
@@ -88,11 +98,13 @@ hinic_port_get_mac
 
     get the mac address of the nic device
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param u8 \*addr:
+    :param addr:
         returned mac address
+    :type addr: u8 \*
 
 .. _`hinic_port_get_mac.description`:
 
@@ -110,11 +122,13 @@ hinic_port_set_mtu
 
     set mtu
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new mtu
+    :type new_mtu: int
 
 .. _`hinic_port_set_mtu.description`:
 
@@ -132,11 +146,13 @@ hinic_port_add_vlan
 
     add vlan to the nic device
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param u16 vlan_id:
+    :param vlan_id:
         the vlan number to add
+    :type vlan_id: u16
 
 .. _`hinic_port_add_vlan.description`:
 
@@ -154,11 +170,13 @@ hinic_port_del_vlan
 
     delete vlan from the nic device
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param u16 vlan_id:
+    :param vlan_id:
         the vlan number to delete
+    :type vlan_id: u16
 
 .. _`hinic_port_del_vlan.description`:
 
@@ -176,11 +194,13 @@ hinic_port_set_rx_mode
 
     set rx mode in the nic device
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param u32 rx_mode:
+    :param rx_mode:
         the rx mode to set
+    :type rx_mode: u32
 
 .. _`hinic_port_set_rx_mode.description`:
 
@@ -198,11 +218,13 @@ hinic_port_link_state
 
     get the link state
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param enum hinic_port_link_state \*link_state:
+    :param link_state:
         the returned link state
+    :type link_state: enum hinic_port_link_state \*
 
 .. _`hinic_port_link_state.description`:
 
@@ -220,11 +242,13 @@ hinic_port_set_state
 
     set port state
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param enum hinic_port_state state:
+    :param state:
         the state to set
+    :type state: enum hinic_port_state
 
 .. _`hinic_port_set_state.description`:
 
@@ -242,11 +266,13 @@ hinic_port_set_func_state
 
     set func device state
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param enum hinic_func_port_state state:
+    :param state:
         the state to set
+    :type state: enum hinic_func_port_state
 
 .. _`hinic_port_set_func_state.description`:
 
@@ -264,13 +290,39 @@ hinic_port_get_cap
 
     get port capabilities
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param struct hinic_port_cap \*port_cap:
+    :param port_cap:
         returned port capabilities
+    :type port_cap: struct hinic_port_cap \*
 
 .. _`hinic_port_get_cap.description`:
+
+Description
+-----------
+
+Return 0 - Success, negative - Failure
+
+.. _`hinic_port_set_tso`:
+
+hinic_port_set_tso
+==================
+
+.. c:function:: int hinic_port_set_tso(struct hinic_dev *nic_dev, enum hinic_tso_state state)
+
+    set port tso configuration
+
+    :param nic_dev:
+        nic device
+    :type nic_dev: struct hinic_dev \*
+
+    :param state:
+        the tso state to set
+    :type state: enum hinic_tso_state
+
+.. _`hinic_port_set_tso.description`:
 
 Description
 -----------

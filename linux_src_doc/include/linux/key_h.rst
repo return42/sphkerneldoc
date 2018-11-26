@@ -10,8 +10,9 @@ key_is_positive
 
     Determine if a key has been positively instantiated
 
-    :param const struct key \*key:
+    :param key:
         The key to check.
+    :type key: const struct key \*
 
 .. _`key_is_positive.description`:
 

@@ -10,8 +10,9 @@ omap2_wd_timer_reset
 
     reset and disable the WDTIMER IP block
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap2_wd_timer_reset.description`:
 

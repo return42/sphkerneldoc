@@ -102,17 +102,20 @@ cxd2820r_attach
 
 .. c:function:: struct dvb_frontend *cxd2820r_attach(const struct cxd2820r_config *config, struct i2c_adapter *i2c, int *gpio_chip_base)
 
-    :param const struct cxd2820r_config \*config:
+    :param config:
         pointer to \ :c:type:`struct cxd2820r_config <cxd2820r_config>`\  with demod configuration.
+    :type config: const struct cxd2820r_config \*
 
-    :param struct i2c_adapter \*i2c:
+    :param i2c:
         i2c adapter to use.
+    :type i2c: struct i2c_adapter \*
 
-    :param int \*gpio_chip_base:
+    :param gpio_chip_base:
         if zero, disables GPIO setting. Otherwise, if
         CONFIG_GPIOLIB is set dynamically allocate
         gpio base; if is not set, use its value to
         setup the GPIO pins.
+    :type gpio_chip_base: int \*
 
 .. _`cxd2820r_attach.return`:
 

@@ -10,11 +10,13 @@ relay_mmap_buf
 
     - mmap channel buffer to process address space
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         relay channel buffer
+    :type buf: struct rchan_buf \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vm_area_struct describing memory to be mapped
+    :type vma: struct vm_area_struct \*
 
 .. _`relay_mmap_buf.description`:
 
@@ -34,11 +36,13 @@ relay_alloc_buf
 
     allocate a channel buffer
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         the buffer struct
+    :type buf: struct rchan_buf \*
 
-    :param size_t \*size:
+    :param size:
         total size of the buffer
+    :type size: size_t \*
 
 .. _`relay_alloc_buf.description`:
 
@@ -57,8 +61,9 @@ relay_create_buf
 
     allocate and initialize a channel buffer
 
-    :param struct rchan \*chan:
+    :param chan:
         the relay channel
+    :type chan: struct rchan \*
 
 .. _`relay_create_buf.description`:
 
@@ -76,8 +81,9 @@ relay_destroy_channel
 
     free the channel struct
 
-    :param struct kref \*kref:
+    :param kref:
         target kernel reference that contains the relay channel
+    :type kref: struct kref \*
 
 .. _`relay_destroy_channel.description`:
 
@@ -95,8 +101,9 @@ relay_destroy_buf
 
     destroy an rchan_buf struct and associated buffer
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         the buffer struct
+    :type buf: struct rchan_buf \*
 
 .. _`relay_remove_buf`:
 
@@ -107,8 +114,9 @@ relay_remove_buf
 
     remove a channel buffer
 
-    :param struct kref \*kref:
+    :param kref:
         target kernel reference that contains the relay buffer
+    :type kref: struct kref \*
 
 .. _`relay_remove_buf.description`:
 
@@ -128,8 +136,9 @@ relay_buf_empty
 
     boolean, is the channel buffer empty?
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         channel buffer
+    :type buf: struct rchan_buf \*
 
 .. _`relay_buf_empty.description`:
 
@@ -147,8 +156,9 @@ relay_buf_full
 
     boolean, is the channel buffer full?
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         channel buffer
+    :type buf: struct rchan_buf \*
 
 .. _`relay_buf_full.description`:
 
@@ -166,8 +176,9 @@ wakeup_readers
 
     wake up readers waiting on a channel
 
-    :param struct irq_work \*work:
+    :param work:
         contains the channel buffer
+    :type work: struct irq_work \*
 
 .. _`wakeup_readers.description`:
 
@@ -185,11 +196,13 @@ __relay_reset
 
     reset a channel buffer
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         the channel buffer
+    :type buf: struct rchan_buf \*
 
-    :param unsigned int init:
+    :param init:
         1 if this is a first-time initialization
+    :type init: unsigned int
 
 .. _`__relay_reset.description`:
 
@@ -207,8 +220,9 @@ relay_reset
 
     reset the channel
 
-    :param struct rchan \*chan:
+    :param chan:
         the channel
+    :type chan: struct rchan \*
 
 .. _`relay_reset.description`:
 
@@ -231,8 +245,9 @@ relay_close_buf
 
     close a channel buffer
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         channel buffer
+    :type buf: struct rchan_buf \*
 
 .. _`relay_close_buf.description`:
 
@@ -252,23 +267,29 @@ relay_open
 
     create a new relay channel
 
-    :param const char \*base_filename:
+    :param base_filename:
         base name of files to create, \ ``NULL``\  for buffering only
+    :type base_filename: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         dentry of parent directory, \ ``NULL``\  for root directory or buffer
+    :type parent: struct dentry \*
 
-    :param size_t subbuf_size:
+    :param subbuf_size:
         size of sub-buffers
+    :type subbuf_size: size_t
 
-    :param size_t n_subbufs:
+    :param n_subbufs:
         number of sub-buffers
+    :type n_subbufs: size_t
 
-    :param struct rchan_callbacks \*cb:
+    :param cb:
         client callback functions
+    :type cb: struct rchan_callbacks \*
 
-    :param void \*private_data:
+    :param private_data:
         user-defined data
+    :type private_data: void \*
 
 .. _`relay_open.description`:
 
@@ -295,14 +316,17 @@ relay_late_setup_files
 
     triggers file creation
 
-    :param struct rchan \*chan:
+    :param chan:
         channel to operate on
+    :type chan: struct rchan \*
 
-    :param const char \*base_filename:
+    :param base_filename:
         base name of files to create
+    :type base_filename: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         dentry of parent directory, \ ``NULL``\  for root directory
+    :type parent: struct dentry \*
 
 .. _`relay_late_setup_files.description`:
 
@@ -327,11 +351,13 @@ relay_switch_subbuf
 
     switch to a new sub-buffer
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         channel buffer
+    :type buf: struct rchan_buf \*
 
-    :param size_t length:
+    :param length:
         size of current event
+    :type length: size_t
 
 .. _`relay_switch_subbuf.description`:
 
@@ -352,14 +378,17 @@ relay_subbufs_consumed
 
     update the buffer's sub-buffers-consumed count
 
-    :param struct rchan \*chan:
+    :param chan:
         the channel
+    :type chan: struct rchan \*
 
-    :param unsigned int cpu:
+    :param cpu:
         the cpu associated with the channel buffer to update
+    :type cpu: unsigned int
 
-    :param size_t subbufs_consumed:
+    :param subbufs_consumed:
         number of sub-buffers to add to current buf's count
+    :type subbufs_consumed: size_t
 
 .. _`relay_subbufs_consumed.description`:
 
@@ -382,8 +411,9 @@ relay_close
 
     close the channel
 
-    :param struct rchan \*chan:
+    :param chan:
         the channel
+    :type chan: struct rchan \*
 
 .. _`relay_close.description`:
 
@@ -401,8 +431,9 @@ relay_flush
 
     close the channel
 
-    :param struct rchan \*chan:
+    :param chan:
         the channel
+    :type chan: struct rchan \*
 
 .. _`relay_flush.description`:
 
@@ -420,11 +451,13 @@ relay_file_open
 
     open file op for relay files
 
-    :param struct inode \*inode:
+    :param inode:
         the inode
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         the file
+    :type filp: struct file \*
 
 .. _`relay_file_open.description`:
 
@@ -442,11 +475,13 @@ relay_file_mmap
 
     mmap file op for relay files
 
-    :param struct file \*filp:
+    :param filp:
         the file
+    :type filp: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the vma describing what to map
+    :type vma: struct vm_area_struct \*
 
 .. _`relay_file_mmap.description`:
 
@@ -464,11 +499,13 @@ relay_file_poll
 
     poll file op for relay files
 
-    :param struct file \*filp:
+    :param filp:
         the file
+    :type filp: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         poll table
+    :type wait: poll_table \*
 
 .. _`relay_file_poll.description`:
 
@@ -486,11 +523,13 @@ relay_file_release
 
     release file op for relay files
 
-    :param struct inode \*inode:
+    :param inode:
         the inode
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         the file
+    :type filp: struct file \*
 
 .. _`relay_file_release.description`:
 
@@ -509,11 +548,13 @@ relay_file_read_subbuf_avail
 
     return bytes available in sub-buffer
 
-    :param size_t read_pos:
+    :param read_pos:
         file read position
+    :type read_pos: size_t
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         relay channel buffer
+    :type buf: struct rchan_buf \*
 
 .. _`relay_file_read_start_pos`:
 
@@ -524,11 +565,13 @@ relay_file_read_start_pos
 
     find the first available byte to read
 
-    :param size_t read_pos:
+    :param read_pos:
         file read position
+    :type read_pos: size_t
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         relay channel buffer
+    :type buf: struct rchan_buf \*
 
 .. _`relay_file_read_start_pos.description`:
 
@@ -548,14 +591,17 @@ relay_file_read_end_pos
 
     return the new read position
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         relay channel buffer
+    :type buf: struct rchan_buf \*
 
-    :param size_t read_pos:
+    :param read_pos:
         file read position
+    :type read_pos: size_t
 
-    :param size_t count:
+    :param count:
         number of bytes to be read
+    :type count: size_t
 
 .. This file was automatic generated / don't edit.
 

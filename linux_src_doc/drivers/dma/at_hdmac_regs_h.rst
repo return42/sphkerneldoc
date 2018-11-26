@@ -229,8 +229,9 @@ atc_chan_is_enabled
 
     test if given channel is enabled
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         channel we want to test status
+    :type atchan: struct at_dma_chan \*
 
 .. _`atc_chan_is_paused`:
 
@@ -241,8 +242,9 @@ atc_chan_is_paused
 
     test channel pause/resume status
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         channel we want to test status
+    :type atchan: struct at_dma_chan \*
 
 .. _`atc_chan_is_cyclic`:
 
@@ -253,8 +255,9 @@ atc_chan_is_cyclic
 
     test if given channel has cyclic property set
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         channel we want to test status
+    :type atchan: struct at_dma_chan \*
 
 .. _`set_desc_eol`:
 
@@ -265,8 +268,9 @@ set_desc_eol
 
     set end-of-link to descriptor so it will end transfer
 
-    :param struct at_desc \*desc:
+    :param desc:
         descriptor, signle or at the end of a chain, to end chain on
+    :type desc: struct at_desc \*
 
 .. This file was automatic generated / don't edit.
 

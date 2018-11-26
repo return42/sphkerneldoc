@@ -71,6 +71,41 @@ ip_proto
 padding
     *undescribed*
 
+.. _`flow_dissector_key_enc_opts`:
+
+struct flow_dissector_key_enc_opts
+==================================
+
+.. c:type:: struct flow_dissector_key_enc_opts
+
+
+.. _`flow_dissector_key_enc_opts.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct flow_dissector_key_enc_opts {
+        u8 data[FLOW_DIS_TUN_OPTS_MAX];
+        u8 len;
+        __be16 dst_opt_type;
+    }
+
+.. _`flow_dissector_key_enc_opts.members`:
+
+Members
+-------
+
+data
+    tunnel option data
+
+len
+    length of tunnel option data
+
+dst_opt_type
+    tunnel option type
+
 .. _`flow_dissector_key_ipv4_addrs`:
 
 struct flow_dissector_key_ipv4_addrs

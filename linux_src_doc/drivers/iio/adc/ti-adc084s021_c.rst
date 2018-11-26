@@ -33,11 +33,13 @@ adc084s021_adc_conversion
 
 .. c:function:: int adc084s021_adc_conversion(struct adc084s021 *adc, void *data)
 
-    :param struct adc084s021 \*adc:
+    :param adc:
         The ADC SPI data.
+    :type adc: struct adc084s021 \*
 
-    :param void \*data:
+    :param data:
         Buffer for converted data.
+    :type data: void \*
 
 .. _`adc084s021_buffer_trigger_handler`:
 
@@ -46,11 +48,13 @@ adc084s021_buffer_trigger_handler
 
 .. c:function:: irqreturn_t adc084s021_buffer_trigger_handler(int irq, void *pollfunc)
 
-    :param int irq:
+    :param irq:
         The interrupt number (not used).
+    :type irq: int
 
-    :param void \*pollfunc:
+    :param pollfunc:
         Pointer to the poll func.
+    :type pollfunc: void \*
 
 .. This file was automatic generated / don't edit.
 

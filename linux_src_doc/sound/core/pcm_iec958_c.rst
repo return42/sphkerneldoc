@@ -10,14 +10,17 @@ snd_pcm_create_iec958_consumer
 
     create consumer format IEC958 channel status
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         pcm runtime structure with ->rate filled in
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param u8 \*cs:
+    :param cs:
         channel status buffer, at least four bytes
+    :type cs: u8 \*
 
-    :param size_t len:
+    :param len:
         length of channel status buffer
+    :type len: size_t
 
 .. _`snd_pcm_create_iec958_consumer.description`:
 
@@ -45,14 +48,17 @@ snd_pcm_create_iec958_consumer_hw_params
 
     create IEC958 channel status
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         *undescribed*
+    :type params: struct snd_pcm_hw_params \*
 
-    :param u8 \*cs:
+    :param cs:
         channel status buffer, at least four bytes
+    :type cs: u8 \*
 
-    :param size_t len:
+    :param len:
         length of channel status buffer
+    :type len: size_t
 
 .. _`snd_pcm_create_iec958_consumer_hw_params.description`:
 

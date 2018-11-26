@@ -10,14 +10,17 @@ ide_dump_status
 
     translate ATA/ATAPI error
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive that status applies to
+    :type drive: ide_drive_t \*
 
-    :param const char \*msg:
+    :param msg:
         text message to print
+    :type msg: const char \*
 
-    :param u8 stat:
+    :param stat:
         status byte to decode
+    :type stat: u8
 
 .. _`ide_dump_status.description`:
 

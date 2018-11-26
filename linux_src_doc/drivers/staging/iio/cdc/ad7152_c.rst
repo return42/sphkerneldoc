@@ -8,11 +8,13 @@ ad7152_read_raw_samp_freq
 
 .. c:function:: int ad7152_read_raw_samp_freq(struct device *dev, int *val)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param int \*val:
+    :param val:
         *undescribed*
+    :type val: int \*
 
 .. _`ad7152_read_raw_samp_freq.description`:
 
@@ -28,11 +30,13 @@ ad7152_write_raw_samp_freq
 
 .. c:function:: int ad7152_write_raw_samp_freq(struct device *dev, int val)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param int val:
+    :param val:
         *undescribed*
+    :type val: int
 
 .. _`ad7152_write_raw_samp_freq.description`:
 

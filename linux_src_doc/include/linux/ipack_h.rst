@@ -262,17 +262,21 @@ ipack_bus_register
 
     - register a new ipack bus
 
-    :param struct device \*parent:
+    :param parent:
         pointer to the parent device, if any.
+    :type parent: struct device \*
 
-    :param int slots:
+    :param slots:
         number of slots available in the bus device.
+    :type slots: int
 
-    :param const struct ipack_bus_ops \*ops:
+    :param ops:
         bus operations for the mezzanine drivers.
+    :type ops: const struct ipack_bus_ops \*
 
-    :param struct module \*owner:
+    :param owner:
         *undescribed*
+    :type owner: struct module \*
 
 .. _`ipack_bus_register.description`:
 
@@ -291,8 +295,9 @@ ipack_bus_unregister
 
     - unregister an ipack bus
 
-    :param struct ipack_bus_device \*bus:
+    :param bus:
         *undescribed*
+    :type bus: struct ipack_bus_device \*
 
 .. _`ipack_driver_register`:
 
@@ -303,14 +308,17 @@ ipack_driver_register
 
     - Register a new ipack device driver
 
-    :param struct ipack_driver \*edrv:
+    :param edrv:
         *undescribed*
+    :type edrv: struct ipack_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         *undescribed*
+    :type owner: struct module \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
 .. _`ipack_driver_register.description`:
 
@@ -329,8 +337,9 @@ ipack_device_init
 
     - initialize an IPack device
 
-    :param struct ipack_device \*dev:
+    :param dev:
         the new device to initialize.
+    :type dev: struct ipack_device \*
 
 .. _`ipack_device_init.description`:
 
@@ -363,8 +372,9 @@ ipack_device_add
 
     - Add an IPack device
 
-    :param struct ipack_device \*dev:
+    :param dev:
         the new device to add.
+    :type dev: struct ipack_device \*
 
 .. _`ipack_device_add.description`:
 
@@ -394,8 +404,9 @@ DEFINE_IPACK_DEVICE_TABLE
 
     macro used to describe a IndustryPack table
 
-    :param  _table:
+    :param _table:
         device table name
+    :type _table: 
 
 .. _`define_ipack_device_table.description`:
 
@@ -414,14 +425,17 @@ IPACK_DEVICE
 
     macro used to describe a specific IndustryPack device
 
-    :param  _format:
+    :param _format:
         the format version (currently either 1 or 2, 8 bit value)
+    :type _format: 
 
-    :param  vend:
+    :param vend:
         the 8 or 24 bit IndustryPack Vendor ID
+    :type vend: 
 
-    :param  dev:
+    :param dev:
         the 8 or 16  bit IndustryPack Device ID
+    :type dev: 
 
 .. _`ipack_device.description`:
 
@@ -440,8 +454,9 @@ ipack_get_carrier
 
     it increase the carrier ref. counter of the carrier module
 
-    :param struct ipack_device \*dev:
+    :param dev:
         mezzanine device which wants to get the carrier
+    :type dev: struct ipack_device \*
 
 .. _`ipack_put_carrier`:
 
@@ -452,8 +467,9 @@ ipack_put_carrier
 
     it decrease the carrier ref. counter of the carrier module
 
-    :param struct ipack_device \*dev:
+    :param dev:
         mezzanine device which wants to get the carrier
+    :type dev: struct ipack_device \*
 
 .. This file was automatic generated / don't edit.
 

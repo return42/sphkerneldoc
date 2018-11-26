@@ -10,14 +10,17 @@ i40e_fdir
 
     Generate a Flow Director descriptor based on fdata
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         Tx ring to send buffer on
+    :type tx_ring: struct i40e_ring \*
 
-    :param struct i40e_fdir_filter \*fdata:
+    :param fdata:
         Flow director filter data
+    :type fdata: struct i40e_fdir_filter \*
 
-    :param bool add:
+    :param add:
         Indicate if we are adding a rule or deleting one
+    :type add: bool
 
 .. _`i40e_program_fdir_filter`:
 
@@ -28,17 +31,21 @@ i40e_program_fdir_filter
 
     Program a Flow Director filter
 
-    :param struct i40e_fdir_filter \*fdir_data:
+    :param fdir_data:
         Packet data that will be filter parameters
+    :type fdir_data: struct i40e_fdir_filter \*
 
-    :param u8 \*raw_packet:
+    :param raw_packet:
         the pre-allocated packet buffer for FDir
+    :type raw_packet: u8 \*
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         The PF pointer
+    :type pf: struct i40e_pf \*
 
-    :param bool add:
+    :param add:
         True for add/update, False for remove
+    :type add: bool
 
 .. _`i40e_add_del_fdir_udpv4`:
 
@@ -49,14 +56,17 @@ i40e_add_del_fdir_udpv4
 
     Add/Remove UDPv4 filters
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_fdir_filter \*fd_data:
+    :param fd_data:
         the flow director data required for the FDir descriptor
+    :type fd_data: struct i40e_fdir_filter \*
 
-    :param bool add:
+    :param add:
         true adds a filter, false removes it
+    :type add: bool
 
 .. _`i40e_add_del_fdir_udpv4.description`:
 
@@ -74,14 +84,17 @@ i40e_add_del_fdir_tcpv4
 
     Add/Remove TCPv4 filters
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_fdir_filter \*fd_data:
+    :param fd_data:
         the flow director data required for the FDir descriptor
+    :type fd_data: struct i40e_fdir_filter \*
 
-    :param bool add:
+    :param add:
         true adds a filter, false removes it
+    :type add: bool
 
 .. _`i40e_add_del_fdir_tcpv4.description`:
 
@@ -99,14 +112,17 @@ i40e_add_del_fdir_sctpv4
 
     Add/Remove SCTPv4 Flow Director filters for a specific flow spec
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_fdir_filter \*fd_data:
+    :param fd_data:
         the flow director data required for the FDir descriptor
+    :type fd_data: struct i40e_fdir_filter \*
 
-    :param bool add:
+    :param add:
         true adds a filter, false removes it
+    :type add: bool
 
 .. _`i40e_add_del_fdir_sctpv4.description`:
 
@@ -124,14 +140,17 @@ i40e_add_del_fdir_ipv4
 
     Add/Remove IPv4 Flow Director filters for a specific flow spec
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_fdir_filter \*fd_data:
+    :param fd_data:
         the flow director data required for the FDir descriptor
+    :type fd_data: struct i40e_fdir_filter \*
 
-    :param bool add:
+    :param add:
         true adds a filter, false removes it
+    :type add: bool
 
 .. _`i40e_add_del_fdir_ipv4.description`:
 
@@ -149,14 +168,17 @@ i40e_add_del_fdir
 
     Build raw packets to add/del fdir filter
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_fdir_filter \*input:
+    :param input:
         filter to add or delete
+    :type input: struct i40e_fdir_filter \*
 
-    :param bool add:
+    :param add:
         true adds a filter, false removes it
+    :type add: bool
 
 .. _`i40e_fd_handle_status`:
 
@@ -167,14 +189,17 @@ i40e_fd_handle_status
 
     check the Programming Status for FD
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         the Rx ring for this descriptor
+    :type rx_ring: struct i40e_ring \*
 
-    :param union i40e_rx_desc \*rx_desc:
+    :param rx_desc:
         the Rx descriptor for programming Status, not a packet descriptor.
+    :type rx_desc: union i40e_rx_desc \*
 
-    :param u8 prog_id:
+    :param prog_id:
         the id originally used for programming
+    :type prog_id: u8
 
 .. _`i40e_fd_handle_status.description`:
 
@@ -193,11 +218,13 @@ i40e_unmap_and_free_tx_resource
 
     Release a Tx buffer
 
-    :param struct i40e_ring \*ring:
+    :param ring:
         the ring that owns the buffer
+    :type ring: struct i40e_ring \*
 
-    :param struct i40e_tx_buffer \*tx_buffer:
+    :param tx_buffer:
         the buffer to free
+    :type tx_buffer: struct i40e_tx_buffer \*
 
 .. _`i40e_clean_tx_ring`:
 
@@ -208,8 +235,9 @@ i40e_clean_tx_ring
 
     Free any empty Tx buffers
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         ring to be cleaned
+    :type tx_ring: struct i40e_ring \*
 
 .. _`i40e_free_tx_resources`:
 
@@ -220,8 +248,9 @@ i40e_free_tx_resources
 
     Free Tx resources per queue
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring for a specific queue
+    :type tx_ring: struct i40e_ring \*
 
 .. _`i40e_free_tx_resources.description`:
 
@@ -239,11 +268,13 @@ i40e_get_tx_pending
 
     how many tx descriptors not processed
 
-    :param struct i40e_ring \*ring:
+    :param ring:
         the ring of descriptors
+    :type ring: struct i40e_ring \*
 
-    :param bool in_sw:
+    :param in_sw:
         use SW variables
+    :type in_sw: bool
 
 .. _`i40e_get_tx_pending.description`:
 
@@ -262,8 +293,9 @@ i40e_detect_recover_hung
 
     Function to detect and recover hung_queues
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to vsi struct with tx queues
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_detect_recover_hung.description`:
 
@@ -282,14 +314,17 @@ i40e_clean_tx_irq
 
     Reclaim resources after transmit completes
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI we care about
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         Tx ring to clean
+    :type tx_ring: struct i40e_ring \*
 
-    :param int napi_budget:
+    :param napi_budget:
         Used to determine if we are in netpoll
+    :type napi_budget: int
 
 .. _`i40e_clean_tx_irq.description`:
 
@@ -307,11 +342,13 @@ i40e_enable_wb_on_itr
 
     Arm hardware to do a wb, interrupts are not enabled
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI we care about
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_q_vector \*q_vector:
+    :param q_vector:
         the vector on which to enable writeback
+    :type q_vector: struct i40e_q_vector \*
 
 .. _`i40e_force_wb`:
 
@@ -322,11 +359,13 @@ i40e_force_wb
 
     Issue SW Interrupt so HW does a wb
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI we care about
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_q_vector \*q_vector:
+    :param q_vector:
         the vector  on which to force writeback
+    :type q_vector: struct i40e_q_vector \*
 
 .. _`i40e_update_itr`:
 
@@ -337,11 +376,13 @@ i40e_update_itr
 
     update the dynamic ITR value based on statistics
 
-    :param struct i40e_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct i40e_q_vector \*
 
-    :param struct i40e_ring_container \*rc:
+    :param rc:
         structure containing ring performance data
+    :type rc: struct i40e_ring_container \*
 
 .. _`i40e_update_itr.description`:
 
@@ -365,11 +406,13 @@ i40e_reuse_rx_page
 
     page flip buffer and store it back on the ring
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to store buffers on
+    :type rx_ring: struct i40e_ring \*
 
-    :param struct i40e_rx_buffer \*old_buff:
+    :param old_buff:
         donor buffer to have page reused
+    :type old_buff: struct i40e_rx_buffer \*
 
 .. _`i40e_reuse_rx_page.description`:
 
@@ -387,8 +430,9 @@ i40e_rx_is_programming_status
 
     check for programming status descriptor
 
-    :param u64 qw:
+    :param qw:
         qword representing status_error_len in CPU ordering
+    :type qw: u64
 
 .. _`i40e_rx_is_programming_status.description`:
 
@@ -405,18 +449,21 @@ it is a packet descriptor.
 i40e_clean_programming_status
 =============================
 
-.. c:function:: void i40e_clean_programming_status(struct i40e_ring *rx_ring, union i40e_rx_desc *rx_desc, u64 qw)
+.. c:function:: struct i40e_rx_buffer *i40e_clean_programming_status(struct i40e_ring *rx_ring, union i40e_rx_desc *rx_desc, u64 qw)
 
-    clean the programming status descriptor
+    try clean the programming status descriptor
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         the rx ring that has this descriptor
+    :type rx_ring: struct i40e_ring \*
 
-    :param union i40e_rx_desc \*rx_desc:
+    :param rx_desc:
         the rx descriptor written back by HW
+    :type rx_desc: union i40e_rx_desc \*
 
-    :param u64 qw:
+    :param qw:
         qword representing status_error_len in CPU ordering
+    :type qw: u64
 
 .. _`i40e_clean_programming_status.description`:
 
@@ -427,6 +474,8 @@ Flow director should handle FD_FILTER_STATUS to check its filter programming
 status being successful or not and take actions accordingly. FCoE should
 handle its context/filter programming/invalidation status and take actions.
 
+Returns an i40e_rx_buffer to reuse if the cleanup occurred, otherwise NULL.
+
 .. _`i40e_setup_tx_descriptors`:
 
 i40e_setup_tx_descriptors
@@ -436,8 +485,9 @@ i40e_setup_tx_descriptors
 
     Allocate the Tx descriptors
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         the tx ring to set up
+    :type tx_ring: struct i40e_ring \*
 
 .. _`i40e_setup_tx_descriptors.description`:
 
@@ -455,8 +505,9 @@ i40e_clean_rx_ring
 
     Free Rx buffers
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         ring to be cleaned
+    :type rx_ring: struct i40e_ring \*
 
 .. _`i40e_free_rx_resources`:
 
@@ -467,8 +518,9 @@ i40e_free_rx_resources
 
     Free Rx resources
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         ring to clean the resources from
+    :type rx_ring: struct i40e_ring \*
 
 .. _`i40e_free_rx_resources.description`:
 
@@ -486,8 +538,9 @@ i40e_setup_rx_descriptors
 
     Allocate Rx descriptors
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         Rx descriptor ring (for a specific queue) to setup
+    :type rx_ring: struct i40e_ring \*
 
 .. _`i40e_setup_rx_descriptors.description`:
 
@@ -505,11 +558,13 @@ i40e_release_rx_desc
 
     Store the new tail and head values
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         ring to bump
+    :type rx_ring: struct i40e_ring \*
 
-    :param u32 val:
+    :param val:
         new head index
+    :type val: u32
 
 .. _`i40e_rx_offset`:
 
@@ -520,8 +575,9 @@ i40e_rx_offset
 
     Return expected offset into page to access data
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         Ring we are requesting offset of
+    :type rx_ring: struct i40e_ring \*
 
 .. _`i40e_rx_offset.description`:
 
@@ -539,11 +595,13 @@ i40e_alloc_mapped_page
 
     recycle or make a new page
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         ring to use
+    :type rx_ring: struct i40e_ring \*
 
-    :param struct i40e_rx_buffer \*bi:
+    :param bi:
         rx_buffer struct to modify
+    :type bi: struct i40e_rx_buffer \*
 
 .. _`i40e_alloc_mapped_page.description`:
 
@@ -562,14 +620,17 @@ i40e_receive_skb
 
     Send a completed packet up the stack
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         rx ring in play
+    :type rx_ring: struct i40e_ring \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send up
+    :type skb: struct sk_buff \*
 
-    :param u16 vlan_tag:
+    :param vlan_tag:
         vlan tag for packet
+    :type vlan_tag: u16
 
 .. _`i40e_alloc_rx_buffers`:
 
@@ -580,11 +641,13 @@ i40e_alloc_rx_buffers
 
     Replace used receive buffers
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         ring to place buffers on
+    :type rx_ring: struct i40e_ring \*
 
-    :param u16 cleaned_count:
+    :param cleaned_count:
         number of buffers to replace
+    :type cleaned_count: u16
 
 .. _`i40e_alloc_rx_buffers.description`:
 
@@ -602,14 +665,17 @@ i40e_rx_checksum
 
     Indicate in skb if hw indicated a good cksum
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI we care about
+    :type vsi: struct i40e_vsi \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb currently being received and modified
+    :type skb: struct sk_buff \*
 
-    :param union i40e_rx_desc \*rx_desc:
+    :param rx_desc:
         the receive descriptor
+    :type rx_desc: union i40e_rx_desc \*
 
 .. _`i40e_ptype_to_htype`:
 
@@ -620,8 +686,9 @@ i40e_ptype_to_htype
 
     get a hash type
 
-    :param u8 ptype:
+    :param ptype:
         the ptype value from the descriptor
+    :type ptype: u8
 
 .. _`i40e_ptype_to_htype.description`:
 
@@ -639,17 +706,21 @@ i40e_rx_hash
 
     set the hash value in the skb
 
-    :param struct i40e_ring \*ring:
+    :param ring:
         descriptor ring
+    :type ring: struct i40e_ring \*
 
-    :param union i40e_rx_desc \*rx_desc:
+    :param rx_desc:
         specific descriptor
+    :type rx_desc: union i40e_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb currently being received and modified
+    :type skb: struct sk_buff \*
 
-    :param u8 rx_ptype:
+    :param rx_ptype:
         Rx packet type
+    :type rx_ptype: u8
 
 .. _`i40e_process_skb_fields`:
 
@@ -660,17 +731,21 @@ i40e_process_skb_fields
 
     Populate skb header fields from Rx descriptor
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct i40e_ring \*
 
-    :param union i40e_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union i40e_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being populated
+    :type skb: struct sk_buff \*
 
-    :param u8 rx_ptype:
+    :param rx_ptype:
         the packet type decoded by hardware
+    :type rx_ptype: u8
 
 .. _`i40e_process_skb_fields.description`:
 
@@ -690,14 +765,17 @@ i40e_cleanup_headers
 
     Correct empty headers
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct i40e_ring \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being fixed
+    :type skb: struct sk_buff \*
 
-    :param union i40e_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union i40e_rx_desc \*
 
 .. _`i40e_cleanup_headers.description`:
 
@@ -721,8 +799,9 @@ i40e_page_is_reusable
 
     check if any reuse is possible
 
-    :param struct page \*page:
+    :param page:
         page struct to check
+    :type page: struct page \*
 
 .. _`i40e_page_is_reusable.description`:
 
@@ -741,8 +820,9 @@ i40e_can_reuse_rx_page
 
     Determine if this page can be reused by the adapter for another receive
 
-    :param struct i40e_rx_buffer \*rx_buffer:
+    :param rx_buffer:
         buffer containing the page
+    :type rx_buffer: struct i40e_rx_buffer \*
 
 .. _`i40e_can_reuse_rx_page.description`:
 
@@ -779,17 +859,21 @@ i40e_add_rx_frag
 
     Add contents of Rx buffer to sk_buff
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct i40e_ring \*
 
-    :param struct i40e_rx_buffer \*rx_buffer:
+    :param rx_buffer:
         buffer containing page to add
+    :type rx_buffer: struct i40e_rx_buffer \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff to place the data into
+    :type skb: struct sk_buff \*
 
-    :param unsigned int size:
+    :param size:
         packet length from rx_desc
+    :type size: unsigned int
 
 .. _`i40e_add_rx_frag.description`:
 
@@ -810,11 +894,13 @@ i40e_get_rx_buffer
 
     Fetch Rx buffer and synchronize data for use
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct i40e_ring \*
 
-    :param const unsigned int size:
+    :param size:
         size of buffer to add to skb
+    :type size: const unsigned int
 
 .. _`i40e_get_rx_buffer.description`:
 
@@ -833,14 +919,17 @@ i40e_construct_skb
 
     Allocate skb and populate it
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct i40e_ring \*
 
-    :param struct i40e_rx_buffer \*rx_buffer:
+    :param rx_buffer:
         rx buffer to pull data from
+    :type rx_buffer: struct i40e_rx_buffer \*
 
-    :param struct xdp_buff \*xdp:
+    :param xdp:
         xdp_buff pointing to the data
+    :type xdp: struct xdp_buff \*
 
 .. _`i40e_construct_skb.description`:
 
@@ -860,14 +949,17 @@ i40e_build_skb
 
     Build skb around an existing buffer
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         Rx descriptor ring to transact packets on
+    :type rx_ring: struct i40e_ring \*
 
-    :param struct i40e_rx_buffer \*rx_buffer:
+    :param rx_buffer:
         Rx buffer to pull data from
+    :type rx_buffer: struct i40e_rx_buffer \*
 
-    :param struct xdp_buff \*xdp:
+    :param xdp:
         xdp_buff pointing to the data
+    :type xdp: struct xdp_buff \*
 
 .. _`i40e_build_skb.description`:
 
@@ -886,11 +978,13 @@ i40e_put_rx_buffer
 
     Clean up used buffer and either recycle or free
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct i40e_ring \*
 
-    :param struct i40e_rx_buffer \*rx_buffer:
+    :param rx_buffer:
         rx buffer to pull data from
+    :type rx_buffer: struct i40e_rx_buffer \*
 
 .. _`i40e_put_rx_buffer.description`:
 
@@ -909,14 +1003,17 @@ i40e_is_non_eop
 
     process handling of non-EOP buffers
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         Rx ring being processed
+    :type rx_ring: struct i40e_ring \*
 
-    :param union i40e_rx_desc \*rx_desc:
+    :param rx_desc:
         Rx descriptor for current buffer
+    :type rx_desc: union i40e_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Current socket buffer containing buffer in progress
+    :type skb: struct sk_buff \*
 
 .. _`i40e_is_non_eop.description`:
 
@@ -937,11 +1034,13 @@ i40e_run_xdp
 
     run an XDP program
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         Rx ring being processed
+    :type rx_ring: struct i40e_ring \*
 
-    :param struct xdp_buff \*xdp:
+    :param xdp:
         XDP buffer containing the frame
+    :type xdp: struct xdp_buff \*
 
 .. _`i40e_rx_buffer_flip`:
 
@@ -952,14 +1051,91 @@ i40e_rx_buffer_flip
 
     adjusted rx_buffer to point to an unused region
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         Rx ring
+    :type rx_ring: struct i40e_ring \*
 
-    :param struct i40e_rx_buffer \*rx_buffer:
+    :param rx_buffer:
         Rx buffer to adjust
+    :type rx_buffer: struct i40e_rx_buffer \*
 
-    :param unsigned int size:
+    :param size:
         Size of adjustment
+    :type size: unsigned int
+
+.. _`i40e_xdp_ring_update_tail`:
+
+i40e_xdp_ring_update_tail
+=========================
+
+.. c:function:: void i40e_xdp_ring_update_tail(struct i40e_ring *xdp_ring)
+
+    Updates the XDP Tx ring tail register
+
+    :param xdp_ring:
+        XDP Tx ring
+    :type xdp_ring: struct i40e_ring \*
+
+.. _`i40e_xdp_ring_update_tail.description`:
+
+Description
+-----------
+
+This function updates the XDP Tx ring tail register.
+
+.. _`i40e_update_rx_stats`:
+
+i40e_update_rx_stats
+====================
+
+.. c:function:: void i40e_update_rx_stats(struct i40e_ring *rx_ring, unsigned int total_rx_bytes, unsigned int total_rx_packets)
+
+    Update Rx ring statistics
+
+    :param rx_ring:
+        rx descriptor ring
+    :type rx_ring: struct i40e_ring \*
+
+    :param total_rx_bytes:
+        number of bytes received
+    :type total_rx_bytes: unsigned int
+
+    :param total_rx_packets:
+        number of packets received
+    :type total_rx_packets: unsigned int
+
+.. _`i40e_update_rx_stats.description`:
+
+Description
+-----------
+
+This function updates the Rx ring statistics.
+
+.. _`i40e_finalize_xdp_rx`:
+
+i40e_finalize_xdp_rx
+====================
+
+.. c:function:: void i40e_finalize_xdp_rx(struct i40e_ring *rx_ring, unsigned int xdp_res)
+
+    Bump XDP Tx tail and/or flush redirect map
+
+    :param rx_ring:
+        Rx ring
+    :type rx_ring: struct i40e_ring \*
+
+    :param xdp_res:
+        Result of the receive batch
+    :type xdp_res: unsigned int
+
+.. _`i40e_finalize_xdp_rx.description`:
+
+Description
+-----------
+
+This function bumps XDP Tx tail and/or flush redirect map, and
+should be called when a batch of packets has been processed in the
+napi loop.
 
 .. _`i40e_clean_rx_irq`:
 
@@ -970,11 +1146,13 @@ i40e_clean_rx_irq
 
     Clean completed descriptors from Rx ring - bounce buf
 
-    :param struct i40e_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct i40e_ring \*
 
-    :param int budget:
+    :param budget:
         Total limit on number of packets to process
+    :type budget: int
 
 .. _`i40e_clean_rx_irq.description`:
 
@@ -997,11 +1175,13 @@ i40e_update_enable_itr
 
     Update itr and re-enable MSIX interrupt
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI we care about
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_q_vector \*q_vector:
+    :param q_vector:
         q_vector for which itr is being updated and interrupt enabled
+    :type q_vector: struct i40e_q_vector \*
 
 .. _`i40e_napi_poll`:
 
@@ -1012,11 +1192,13 @@ i40e_napi_poll
 
     NAPI polling Rx/Tx cleanup routine
 
-    :param struct napi_struct \*napi:
+    :param napi:
         napi struct with our devices info in it
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         amount of work driver is allowed to do this pass, in packets
+    :type budget: int
 
 .. _`i40e_napi_poll.description`:
 
@@ -1036,14 +1218,17 @@ i40e_atr
 
     Add a Flow Director ATR filter
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         ring to add programming descriptor to
+    :type tx_ring: struct i40e_ring \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
-    :param u32 tx_flags:
+    :param tx_flags:
         send tx flags
+    :type tx_flags: u32
 
 .. _`i40e_tx_prepare_vlan_flags`:
 
@@ -1054,14 +1239,17 @@ i40e_tx_prepare_vlan_flags
 
     prepare generic TX VLAN tagging flags for HW
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         ring to send buffer on
+    :type tx_ring: struct i40e_ring \*
 
-    :param u32 \*flags:
+    :param flags:
         the tx flags to be set
+    :type flags: u32 \*
 
 .. _`i40e_tx_prepare_vlan_flags.description`:
 
@@ -1083,14 +1271,17 @@ i40e_tso
 
     set up the tso context descriptor
 
-    :param struct i40e_tx_buffer \*first:
+    :param first:
         pointer to first Tx buffer for xmit
+    :type first: struct i40e_tx_buffer \*
 
-    :param u8 \*hdr_len:
+    :param hdr_len:
         ptr to the size of the packet header
+    :type hdr_len: u8 \*
 
-    :param u64 \*cd_type_cmd_tso_mss:
+    :param cd_type_cmd_tso_mss:
         Quad Word 1
+    :type cd_type_cmd_tso_mss: u64 \*
 
 .. _`i40e_tso.description`:
 
@@ -1108,17 +1299,21 @@ i40e_tsyn
 
     set up the tsyn context descriptor
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         ptr to the ring to send
+    :type tx_ring: struct i40e_ring \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         ptr to the skb we're sending
+    :type skb: struct sk_buff \*
 
-    :param u32 tx_flags:
+    :param tx_flags:
         the collected send information
+    :type tx_flags: u32
 
-    :param u64 \*cd_type_cmd_tso_mss:
+    :param cd_type_cmd_tso_mss:
         Quad Word 1
+    :type cd_type_cmd_tso_mss: u64 \*
 
 .. _`i40e_tsyn.description`:
 
@@ -1136,23 +1331,29 @@ i40e_tx_enable_csum
 
     Enable Tx checksum offloads
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
-    :param u32 \*tx_flags:
+    :param tx_flags:
         pointer to Tx flags currently set
+    :type tx_flags: u32 \*
 
-    :param u32 \*td_cmd:
+    :param td_cmd:
         Tx descriptor command bits to set
+    :type td_cmd: u32 \*
 
-    :param u32 \*td_offset:
+    :param td_offset:
         Tx descriptor header offsets to set
+    :type td_offset: u32 \*
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring
+    :type tx_ring: struct i40e_ring \*
 
-    :param u32 \*cd_tunneling:
+    :param cd_tunneling:
         ptr to context desc bits
+    :type cd_tunneling: u32 \*
 
 .. _`i40e_create_tx_ctx`:
 
@@ -1161,17 +1362,21 @@ i40e_create_tx_ctx
 
 .. c:function:: void i40e_create_tx_ctx(struct i40e_ring *tx_ring, const u64 cd_type_cmd_tso_mss, const u32 cd_tunneling, const u32 cd_l2tag2)
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         ring to create the descriptor on
+    :type tx_ring: struct i40e_ring \*
 
-    :param const u64 cd_type_cmd_tso_mss:
+    :param cd_type_cmd_tso_mss:
         Quad Word 1
+    :type cd_type_cmd_tso_mss: const u64
 
-    :param const u32 cd_tunneling:
+    :param cd_tunneling:
         Quad Word 0 - bits 0-31
+    :type cd_tunneling: const u32
 
-    :param const u32 cd_l2tag2:
+    :param cd_l2tag2:
         Quad Word 0 - bits 32-63
+    :type cd_l2tag2: const u32
 
 .. _`__i40e_maybe_stop_tx`:
 
@@ -1182,11 +1387,13 @@ i40e_create_tx_ctx
 
     2nd level check for tx stop conditions
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         the ring to be checked
+    :type tx_ring: struct i40e_ring \*
 
-    :param int size:
+    :param size:
         the size buffer we want to assure is available
+    :type size: int
 
 .. _`__i40e_maybe_stop_tx.description`:
 
@@ -1204,8 +1411,9 @@ Returns -EBUSY if a stop is needed, else 0
 
     Check if there are more than 8 buffers per packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
 .. _`__i40e_chk_linearize.note`:
 
@@ -1230,26 +1438,33 @@ i40e_tx_map
 
     Build the Tx descriptor
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         ring to send buffer on
+    :type tx_ring: struct i40e_ring \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
-    :param struct i40e_tx_buffer \*first:
+    :param first:
         first buffer info buffer to use
+    :type first: struct i40e_tx_buffer \*
 
-    :param u32 tx_flags:
+    :param tx_flags:
         collected send information
+    :type tx_flags: u32
 
-    :param const u8 hdr_len:
+    :param hdr_len:
         size of the packet header
+    :type hdr_len: const u8
 
-    :param u32 td_cmd:
+    :param td_cmd:
         the command field in the descriptor
+    :type td_cmd: u32
 
-    :param u32 td_offset:
+    :param td_offset:
         offset for checksum or crc
+    :type td_offset: u32
 
 .. _`i40e_tx_map.description`:
 
@@ -1267,11 +1482,13 @@ i40e_xmit_xdp_ring
 
     transmits an XDP buffer to an XDP Tx ring
 
-    :param struct xdp_frame \*xdpf:
+    :param xdpf:
         *undescribed*
+    :type xdpf: struct xdp_frame \*
 
-    :param struct i40e_ring \*xdp_ring:
+    :param xdp_ring:
         XDP Tx ring
+    :type xdp_ring: struct i40e_ring \*
 
 .. _`i40e_xmit_frame_ring`:
 
@@ -1282,11 +1499,13 @@ i40e_xmit_frame_ring
 
     Sends buffer on Tx ring
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         ring to send buffer on
+    :type tx_ring: struct i40e_ring \*
 
 .. _`i40e_xmit_frame_ring.description`:
 
@@ -1304,11 +1523,13 @@ i40e_lan_xmit_frame
 
     Selects the correct VSI and Tx queue to send buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`i40e_lan_xmit_frame.description`:
 
@@ -1326,17 +1547,21 @@ i40e_xdp_xmit
 
     Implements ndo_xdp_xmit
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev
+    :type dev: struct net_device \*
 
-    :param int n:
+    :param n:
         *undescribed*
+    :type n: int
 
-    :param struct xdp_frame \*\*frames:
+    :param frames:
         *undescribed*
+    :type frames: struct xdp_frame \*\*
 
-    :param u32 flags:
+    :param flags:
         *undescribed*
+    :type flags: u32
 
 .. _`i40e_xdp_xmit.description`:
 

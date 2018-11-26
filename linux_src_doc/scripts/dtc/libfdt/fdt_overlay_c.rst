@@ -10,11 +10,13 @@ overlay_get_target_phandle
 
     retrieves the target phandle of a fragment
 
-    :param const void \*fdto:
+    :param fdto:
         pointer to the device tree overlay blob
+    :type fdto: const void \*
 
-    :param int fragment:
+    :param fragment:
         node offset of the fragment in the overlay
+    :type fragment: int
 
 .. _`overlay_get_target_phandle.description`:
 
@@ -43,17 +45,21 @@ overlay_get_target
 
     retrieves the offset of a fragment's target
 
-    :param const void \*fdt:
+    :param fdt:
         Base device tree blob
+    :type fdt: const void \*
 
-    :param const void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: const void \*
 
-    :param int fragment:
+    :param fragment:
         node offset of the fragment in the overlay
+    :type fragment: int
 
-    :param char const \*\*pathp:
+    :param pathp:
         pointer which receives the path of the target (or NULL)
+    :type pathp: char const \*\*
 
 .. _`overlay_get_target.description`:
 
@@ -81,17 +87,21 @@ overlay_phandle_add_offset
 
     Increases a phandle by an offset
 
-    :param void \*fdt:
+    :param fdt:
         Base device tree blob
+    :type fdt: void \*
 
-    :param int node:
+    :param node:
         Device tree overlay blob
+    :type node: int
 
-    :param const char \*name:
+    :param name:
         Name of the property to modify (phandle or linux,phandle)
+    :type name: const char \*
 
-    :param uint32_t delta:
+    :param delta:
         offset to apply
+    :type delta: uint32_t
 
 .. _`overlay_phandle_add_offset.description`:
 
@@ -118,14 +128,17 @@ overlay_adjust_node_phandles
 
     Offsets the phandles of a node
 
-    :param void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: void \*
 
-    :param int node:
+    :param node:
         Offset of the node we want to adjust
+    :type node: int
 
-    :param uint32_t delta:
+    :param delta:
         Offset to shift the phandles of
+    :type delta: uint32_t
 
 .. _`overlay_adjust_node_phandles.description`:
 
@@ -154,11 +167,13 @@ overlay_adjust_local_phandles
 
     Adjust the phandles of a whole overlay
 
-    :param void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: void \*
 
-    :param uint32_t delta:
+    :param delta:
         Offset to shift the phandles of
+    :type delta: uint32_t
 
 .. _`overlay_adjust_local_phandles.description`:
 
@@ -187,17 +202,21 @@ overlay_update_local_node_references
 
     Adjust the overlay references
 
-    :param void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: void \*
 
-    :param int tree_node:
+    :param tree_node:
         Node offset of the node to operate on
+    :type tree_node: int
 
-    :param int fixup_node:
+    :param fixup_node:
         Node offset of the matching local fixups node
+    :type fixup_node: int
 
-    :param uint32_t delta:
+    :param delta:
         Offset to shift the phandles of
+    :type delta: uint32_t
 
 .. _`overlay_update_local_node_references.description`:
 
@@ -229,11 +248,13 @@ overlay_update_local_references
 
     Adjust the overlay references
 
-    :param void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: void \*
 
-    :param uint32_t delta:
+    :param delta:
         Offset to shift the phandles of
+    :type delta: uint32_t
 
 .. _`overlay_update_local_references.description`:
 
@@ -265,32 +286,41 @@ overlay_fixup_one_phandle
 
     Set an overlay phandle to the base one
 
-    :param void \*fdt:
+    :param fdt:
         Base Device Tree blob
+    :type fdt: void \*
 
-    :param void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: void \*
 
-    :param int symbols_off:
+    :param symbols_off:
         Node offset of the symbols node in the base device tree
+    :type symbols_off: int
 
-    :param const char \*path:
+    :param path:
         Path to a node holding a phandle in the overlay
+    :type path: const char \*
 
-    :param uint32_t path_len:
+    :param path_len:
         number of path characters to consider
+    :type path_len: uint32_t
 
-    :param const char \*name:
+    :param name:
         Name of the property holding the phandle reference in the overlay
+    :type name: const char \*
 
-    :param uint32_t name_len:
+    :param name_len:
         number of name characters to consider
+    :type name_len: uint32_t
 
-    :param int poffset:
+    :param poffset:
         Offset within the overlay property where the phandle is stored
+    :type poffset: int
 
-    :param const char \*label:
+    :param label:
         Label of the node referenced by the phandle
+    :type label: const char \*
 
 .. _`overlay_fixup_one_phandle.description`:
 
@@ -321,17 +351,21 @@ overlay_fixup_phandle
 
     Set an overlay phandle to the base one
 
-    :param void \*fdt:
+    :param fdt:
         Base Device Tree blob
+    :type fdt: void \*
 
-    :param void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: void \*
 
-    :param int symbols_off:
+    :param symbols_off:
         Node offset of the symbols node in the base device tree
+    :type symbols_off: int
 
-    :param int property:
+    :param property:
         Property offset in the overlay holding the list of fixups
+    :type property: int
 
 .. _`overlay_fixup_phandle.description`:
 
@@ -363,11 +397,13 @@ overlay_fixup_phandles
 
     Resolve the overlay phandles to the base device tree
 
-    :param void \*fdt:
+    :param fdt:
         Base Device Tree blob
+    :type fdt: void \*
 
-    :param void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: void \*
 
 .. _`overlay_fixup_phandles.description`:
 
@@ -398,17 +434,21 @@ overlay_apply_node
 
     Merges a node into the base device tree
 
-    :param void \*fdt:
+    :param fdt:
         Base Device Tree blob
+    :type fdt: void \*
 
-    :param int target:
+    :param target:
         Node offset in the base device tree to apply the fragment to
+    :type target: int
 
-    :param void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: void \*
 
-    :param int node:
+    :param node:
         Node offset in the overlay holding the changes to merge
+    :type node: int
 
 .. _`overlay_apply_node.description`:
 
@@ -440,11 +480,13 @@ overlay_merge
 
     Merge an overlay into its base device tree
 
-    :param void \*fdt:
+    :param fdt:
         Base Device Tree blob
+    :type fdt: void \*
 
-    :param void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: void \*
 
 .. _`overlay_merge.description`:
 
@@ -474,11 +516,13 @@ overlay_symbol_update
 
     Update the symbols of base tree after a merge
 
-    :param void \*fdt:
+    :param fdt:
         Base Device Tree blob
+    :type fdt: void \*
 
-    :param void \*fdto:
+    :param fdto:
         Device tree overlay blob
+    :type fdto: void \*
 
 .. _`overlay_symbol_update.description`:
 

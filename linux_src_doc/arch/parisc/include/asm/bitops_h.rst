@@ -10,8 +10,9 @@
 
     find first bit in word. returns 0 to "BITS_PER_LONG-1".
 
-    :param unsigned long x:
+    :param x:
         *undescribed*
+    :type x: unsigned long
 
 .. _`__ffs.description`:
 

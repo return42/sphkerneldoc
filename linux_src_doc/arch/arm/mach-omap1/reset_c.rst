@@ -10,8 +10,9 @@ omap1_get_reset_sources
 
     return the source of the SoC's last reset
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap1_get_reset_sources.description`:
 

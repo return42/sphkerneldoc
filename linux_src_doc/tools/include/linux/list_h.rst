@@ -10,11 +10,13 @@ list_add
 
     add a new entry
 
-    :param struct list_head \*new:
+    :param new:
         new entry to be added
+    :type new: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         list head to add it after
+    :type head: struct list_head \*
 
 .. _`list_add.description`:
 
@@ -33,11 +35,13 @@ list_add_tail
 
     add a new entry
 
-    :param struct list_head \*new:
+    :param new:
         new entry to be added
+    :type new: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         list head to add it before
+    :type head: struct list_head \*
 
 .. _`list_add_tail.description`:
 
@@ -56,8 +60,9 @@ This is useful for implementing queues.
 
     deletes entry from list.
 
-    :param struct list_head \*entry:
+    :param entry:
         the element to delete from the list.
+    :type entry: struct list_head \*
 
 .. _`__list_del_entry.note`:
 
@@ -76,11 +81,13 @@ list_replace
 
     replace old entry by new one
 
-    :param struct list_head \*old:
+    :param old:
         the element to be replaced
+    :type old: struct list_head \*
 
-    :param struct list_head \*new:
+    :param new:
         the new element to insert
+    :type new: struct list_head \*
 
 .. _`list_replace.description`:
 
@@ -98,8 +105,9 @@ list_del_init
 
     deletes entry from list and reinitialize it.
 
-    :param struct list_head \*entry:
+    :param entry:
         the element to delete from the list.
+    :type entry: struct list_head \*
 
 .. _`list_move`:
 
@@ -110,11 +118,13 @@ list_move
 
     delete from one list and add as another's head
 
-    :param struct list_head \*list:
+    :param list:
         the entry to move
+    :type list: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         the head that will precede our entry
+    :type head: struct list_head \*
 
 .. _`list_move_tail`:
 
@@ -125,11 +135,13 @@ list_move_tail
 
     delete from one list and add as another's tail
 
-    :param struct list_head \*list:
+    :param list:
         the entry to move
+    :type list: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         the head that will follow our entry
+    :type head: struct list_head \*
 
 .. _`list_is_last`:
 
@@ -140,11 +152,13 @@ list_is_last
 
     tests whether \ ``list``\  is the last entry in list \ ``head``\ 
 
-    :param const struct list_head \*list:
+    :param list:
         the entry to test
+    :type list: const struct list_head \*
 
-    :param const struct list_head \*head:
+    :param head:
         the head of the list
+    :type head: const struct list_head \*
 
 .. _`list_empty`:
 
@@ -155,8 +169,9 @@ list_empty
 
     tests whether a list is empty
 
-    :param const struct list_head \*head:
+    :param head:
         the list to test.
+    :type head: const struct list_head \*
 
 .. _`list_empty_careful`:
 
@@ -167,8 +182,9 @@ list_empty_careful
 
     tests whether a list is empty and not being modified
 
-    :param const struct list_head \*head:
+    :param head:
         the list to test
+    :type head: const struct list_head \*
 
 .. _`list_empty_careful.description`:
 
@@ -197,8 +213,9 @@ list_rotate_left
 
     rotate the list to the left
 
-    :param struct list_head \*head:
+    :param head:
         the head of the list
+    :type head: struct list_head \*
 
 .. _`list_is_singular`:
 
@@ -209,8 +226,9 @@ list_is_singular
 
     tests whether a list has just one entry.
 
-    :param const struct list_head \*head:
+    :param head:
         the list to test.
+    :type head: const struct list_head \*
 
 .. _`list_cut_position`:
 
@@ -221,15 +239,18 @@ list_cut_position
 
     cut a list into two
 
-    :param struct list_head \*list:
+    :param list:
         a new list to add all removed entries
+    :type list: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         a list with entries
+    :type head: struct list_head \*
 
-    :param struct list_head \*entry:
+    :param entry:
         an entry within head, could be the head itself
         and if so we won't cut the list
+    :type entry: struct list_head \*
 
 .. _`list_cut_position.description`:
 
@@ -251,11 +272,13 @@ list_splice
 
     join two lists, this is designed for stacks
 
-    :param const struct list_head \*list:
+    :param list:
         the new list to add.
+    :type list: const struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         the place to add it in the first list.
+    :type head: struct list_head \*
 
 .. _`list_splice_tail`:
 
@@ -266,11 +289,13 @@ list_splice_tail
 
     join two lists, each list being a queue
 
-    :param struct list_head \*list:
+    :param list:
         the new list to add.
+    :type list: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         the place to add it in the first list.
+    :type head: struct list_head \*
 
 .. _`list_splice_init`:
 
@@ -281,11 +306,13 @@ list_splice_init
 
     join two lists and reinitialise the emptied list.
 
-    :param struct list_head \*list:
+    :param list:
         the new list to add.
+    :type list: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         the place to add it in the first list.
+    :type head: struct list_head \*
 
 .. _`list_splice_init.description`:
 
@@ -303,11 +330,13 @@ list_splice_tail_init
 
     join two lists and reinitialise the emptied list
 
-    :param struct list_head \*list:
+    :param list:
         the new list to add.
+    :type list: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         the place to add it in the first list.
+    :type head: struct list_head \*
 
 .. _`list_splice_tail_init.description`:
 
@@ -326,14 +355,17 @@ list_entry
 
     get the struct for this entry
 
-    :param  ptr:
+    :param ptr:
         the \ :c:type:`struct list_head <list_head>`\  pointer.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_first_entry`:
 
@@ -344,14 +376,17 @@ list_first_entry
 
     get the first element from a list
 
-    :param  ptr:
+    :param ptr:
         the list head to take the element from.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_first_entry.description`:
 
@@ -369,14 +404,17 @@ list_last_entry
 
     get the last element from a list
 
-    :param  ptr:
+    :param ptr:
         the list head to take the element from.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_last_entry.description`:
 
@@ -394,14 +432,17 @@ list_first_entry_or_null
 
     get the first element from a list
 
-    :param  ptr:
+    :param ptr:
         the list head to take the element from.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_first_entry_or_null.description`:
 
@@ -419,11 +460,13 @@ list_next_entry
 
     get the next element in list
 
-    :param  pos:
+    :param pos:
         the type \* to cursor
+    :type pos: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_prev_entry`:
 
@@ -434,11 +477,13 @@ list_prev_entry
 
     get the prev element in list
 
-    :param  pos:
+    :param pos:
         the type \* to cursor
+    :type pos: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each`:
 
@@ -449,11 +494,13 @@ list_for_each
 
     iterate over a list
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct list_head <list_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
 .. _`list_for_each_prev`:
 
@@ -464,11 +511,13 @@ list_for_each_prev
 
     iterate over a list backwards
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct list_head <list_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
 .. _`list_for_each_safe`:
 
@@ -479,14 +528,17 @@ list_for_each_safe
 
     iterate over a list safe against removal of list entry
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct list_head <list_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another \ :c:type:`struct list_head <list_head>`\  to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
 .. _`list_for_each_prev_safe`:
 
@@ -497,14 +549,17 @@ list_for_each_prev_safe
 
     iterate over a list backwards safe against removal of list entry
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct list_head <list_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another \ :c:type:`struct list_head <list_head>`\  to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
 .. _`list_for_each_entry`:
 
@@ -515,14 +570,17 @@ list_for_each_entry
 
     iterate over list of given type
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_reverse`:
 
@@ -533,14 +591,17 @@ list_for_each_entry_reverse
 
     iterate backwards over list of given type.
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_prepare_entry`:
 
@@ -551,14 +612,17 @@ list_prepare_entry
 
     prepare a pos entry for use in \ :c:func:`list_for_each_entry_continue`\ 
 
-    :param  pos:
+    :param pos:
         the type \* to use as a start point
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head of the list
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_prepare_entry.description`:
 
@@ -576,14 +640,17 @@ list_for_each_entry_continue
 
     continue iteration over list of given type
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_continue.description`:
 
@@ -602,14 +669,17 @@ list_for_each_entry_continue_reverse
 
     iterate backwards from the given point
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_continue_reverse.description`:
 
@@ -628,14 +698,17 @@ list_for_each_entry_from
 
     iterate over list of given type from the current point
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_from.description`:
 
@@ -653,17 +726,21 @@ list_for_each_entry_safe
 
     iterate over list of given type safe against removal of list entry
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another type \* to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_safe_continue`:
 
@@ -674,17 +751,21 @@ list_for_each_entry_safe_continue
 
     continue list iteration safe against removal
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another type \* to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_safe_continue.description`:
 
@@ -703,17 +784,21 @@ list_for_each_entry_safe_from
 
     iterate over list from current point safe against removal
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another type \* to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_safe_from.description`:
 
@@ -732,17 +817,21 @@ list_for_each_entry_safe_reverse
 
     iterate backwards over list safe against removal
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another type \* to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_safe_reverse.description`:
 
@@ -761,14 +850,17 @@ list_safe_reset_next
 
     reset a stale list_for_each_entry_safe loop
 
-    :param  pos:
+    :param pos:
         the loop cursor used in the list_for_each_entry_safe loop
+    :type pos: 
 
-    :param  n:
+    :param n:
         temporary storage used in list_for_each_entry_safe
+    :type n: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_safe_reset_next.description`:
 
@@ -790,14 +882,17 @@ hlist_for_each_entry
 
     iterate over list of given type
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. _`hlist_for_each_entry_continue`:
 
@@ -808,11 +903,13 @@ hlist_for_each_entry_continue
 
     iterate over a hlist continuing after current point
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. _`hlist_for_each_entry_from`:
 
@@ -823,11 +920,13 @@ hlist_for_each_entry_from
 
     iterate over a hlist continuing from current point
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. _`hlist_for_each_entry_safe`:
 
@@ -838,17 +937,21 @@ hlist_for_each_entry_safe
 
     iterate over list of given type safe against removal of list entry
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another \ :c:type:`struct hlist_node <hlist_node>`\  to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. _`list_del_range`:
 
@@ -859,11 +962,13 @@ list_del_range
 
     deletes range of entries from list.
 
-    :param struct list_head \*begin:
+    :param begin:
         first element in the range to delete from the list.
+    :type begin: struct list_head \*
 
-    :param struct list_head \*end:
+    :param end:
         last element in the range to delete from the list.
+    :type end: struct list_head \*
 
 .. _`list_del_range.note`:
 
@@ -882,11 +987,13 @@ list_for_each_from
 
     iterate over a list from one of its nodes
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct list_head <list_head>`\  to use as a loop cursor, from where to start
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
 .. This file was automatic generated / don't edit.
 

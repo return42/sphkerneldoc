@@ -56,6 +56,66 @@ The driver's \ :c:type:`struct file_operations <file_operations>`\  must be stor
 For driver-private IOCTL handling see the more detailed discussion in
 :ref:`IOCTL support in the userland interfaces chapter<drm_driver_ioctl>`.
 
+.. _`drm_file_alloc`:
+
+drm_file_alloc
+==============
+
+.. c:function:: struct drm_file *drm_file_alloc(struct drm_minor *minor)
+
+    allocate file context
+
+    :param minor:
+        minor to allocate on
+    :type minor: struct drm_minor \*
+
+.. _`drm_file_alloc.description`:
+
+Description
+-----------
+
+This allocates a new DRM file context. It is not linked into any context and
+can be used by the caller freely. Note that the context keeps a pointer to
+\ ``minor``\ , so it must be freed before \ ``minor``\  is.
+
+.. _`drm_file_alloc.return`:
+
+Return
+------
+
+Pointer to newly allocated context, ERR_PTR on failure.
+
+.. _`drm_file_free`:
+
+drm_file_free
+=============
+
+.. c:function:: void drm_file_free(struct drm_file *file)
+
+    free file context
+
+    :param file:
+        context to free, or NULL
+    :type file: struct drm_file \*
+
+.. _`drm_file_free.description`:
+
+Description
+-----------
+
+This destroys and deallocates a DRM file context previously allocated via
+\ :c:func:`drm_file_alloc`\ . The caller must make sure to unlink it from any contexts
+before calling this.
+
+If NULL is passed, this is a no-op.
+
+.. _`drm_file_free.return`:
+
+Return
+------
+
+0 on success, or error code on failure.
+
 .. _`drm_open`:
 
 drm_open
@@ -65,11 +125,13 @@ drm_open
 
     open method for DRM file
 
-    :param struct inode \*inode:
+    :param inode:
         device inode
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file pointer.
+    :type filp: struct file \*
 
 .. _`drm_open.description`:
 
@@ -97,11 +159,13 @@ drm_release
 
     release method for DRM file
 
-    :param struct inode \*inode:
+    :param inode:
         device inode
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file pointer.
+    :type filp: struct file \*
 
 .. _`drm_release.description`:
 
@@ -130,17 +194,21 @@ drm_read
 
     read method for DRM file
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param char __user \*buffer:
+    :param buffer:
         userspace destination pointer for the read
+    :type buffer: char __user \*
 
-    :param size_t count:
+    :param count:
         count in bytes to read
+    :type count: size_t
 
-    :param loff_t \*offset:
+    :param offset:
         offset to read
+    :type offset: loff_t \*
 
 .. _`drm_read.description`:
 
@@ -179,11 +247,13 @@ drm_poll
 
     poll method for DRM file
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param struct poll_table_struct \*wait:
+    :param wait:
         poll waiter table
+    :type wait: struct poll_table_struct \*
 
 .. _`drm_poll.description`:
 
@@ -214,17 +284,21 @@ drm_event_reserve_init_locked
 
     init a DRM event and reserve space for it
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file private data
+    :type file_priv: struct drm_file \*
 
-    :param struct drm_pending_event \*p:
+    :param p:
         tracking structure for the pending event
+    :type p: struct drm_pending_event \*
 
-    :param struct drm_event \*e:
+    :param e:
         actual event data to deliver to userspace
+    :type e: struct drm_event \*
 
 .. _`drm_event_reserve_init_locked.description`:
 
@@ -261,17 +335,21 @@ drm_event_reserve_init
 
     init a DRM event and reserve space for it
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file private data
+    :type file_priv: struct drm_file \*
 
-    :param struct drm_pending_event \*p:
+    :param p:
         tracking structure for the pending event
+    :type p: struct drm_pending_event \*
 
-    :param struct drm_event \*e:
+    :param e:
         actual event data to deliver to userspace
+    :type e: struct drm_event \*
 
 .. _`drm_event_reserve_init.description`:
 
@@ -308,11 +386,13 @@ drm_event_cancel_free
 
     free a DRM event and release it's space
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_pending_event \*p:
+    :param p:
         tracking structure for the pending event
+    :type p: struct drm_pending_event \*
 
 .. _`drm_event_cancel_free.description`:
 
@@ -332,11 +412,13 @@ drm_send_event_locked
 
     send DRM event to file descriptor
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_pending_event \*e:
+    :param e:
         DRM event to deliver
+    :type e: struct drm_pending_event \*
 
 .. _`drm_send_event_locked.description`:
 
@@ -361,11 +443,13 @@ drm_send_event
 
     send DRM event to file descriptor
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_pending_event \*e:
+    :param e:
         DRM event to deliver
+    :type e: struct drm_pending_event \*
 
 .. _`drm_send_event.description`:
 

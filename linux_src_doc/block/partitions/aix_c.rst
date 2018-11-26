@@ -10,8 +10,9 @@ last_lba
 
     return number of last logical block of device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         block device
+    :type bdev: struct block_device \*
 
 .. _`last_lba.description`:
 
@@ -32,24 +33,28 @@ read_lba
 
     Read bytes from disk, starting at given LBA \ ``state``\  \ ``lba``\  \ ``buffer``\  \ ``count``\ 
 
-    :param struct parsed_partitions \*state:
+    :param state:
         *undescribed*
+    :type state: struct parsed_partitions \*
 
-    :param u64 lba:
+    :param lba:
         *undescribed*
+    :type lba: u64
 
-    :param u8 \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: u8 \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`read_lba.description`:
 
 Description
 -----------
 
-Reads \ ``count``\  bytes from \ ``state``\ ->bdev into \ ``buffer``\ .
+Reads \ ``count``\  bytes from \ ``state->bdev``\  into \ ``buffer``\ .
 Returns number of bytes read on success, 0 on error.
 
 .. _`alloc_pvd`:
@@ -61,11 +66,13 @@ alloc_pvd
 
     reads physical volume descriptor \ ``state``\  \ ``lba``\ 
 
-    :param struct parsed_partitions \*state:
+    :param state:
         *undescribed*
+    :type state: struct parsed_partitions \*
 
-    :param u32 lba:
+    :param lba:
         *undescribed*
+    :type lba: u32
 
 .. _`alloc_pvd.description`:
 
@@ -91,11 +98,13 @@ alloc_lvn
 
     reads logical volume names \ ``state``\  \ ``lba``\ 
 
-    :param struct parsed_partitions \*state:
+    :param state:
         *undescribed*
+    :type state: struct parsed_partitions \*
 
-    :param u32 lba:
+    :param lba:
         *undescribed*
+    :type lba: u32
 
 .. _`alloc_lvn.description`:
 

@@ -446,8 +446,9 @@ mtd_to_nanddev
 
     Get the NAND device attached to the MTD instance
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD instance
+    :type mtd: struct mtd_info \*
 
 .. _`mtd_to_nanddev.return`:
 
@@ -465,8 +466,9 @@ nanddev_to_mtd
 
     Get the MTD device attached to a NAND device
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
 .. _`nanddev_to_mtd.return`:
 
@@ -484,8 +486,9 @@ nanddev_page_size
 
     Get NAND page size
 
-    :param const struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: const struct nand_device \*
 
 .. _`nanddev_page_size.return`:
 
@@ -503,8 +506,9 @@ nanddev_per_page_oobsize
 
     Get NAND OOB size
 
-    :param const struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: const struct nand_device \*
 
 .. _`nanddev_per_page_oobsize.return`:
 
@@ -522,8 +526,9 @@ nanddev_pages_per_eraseblock
 
     Get the number of pages per eraseblock
 
-    :param const struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: const struct nand_device \*
 
 .. _`nanddev_pages_per_eraseblock.return`:
 
@@ -541,8 +546,9 @@ nanddev_eraseblock_size
 
     Get NAND erase block size
 
-    :param const struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: const struct nand_device \*
 
 .. _`nanddev_eraseblock_size.return`:
 
@@ -560,8 +566,9 @@ nanddev_eraseblocks_per_lun
 
     Get the number of eraseblocks per LUN
 
-    :param const struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: const struct nand_device \*
 
 .. _`nanddev_eraseblocks_per_lun.return`:
 
@@ -579,8 +586,9 @@ nanddev_target_size
 
     Get the total size provided by a single target/die
 
-    :param const struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: const struct nand_device \*
 
 .. _`nanddev_target_size.return`:
 
@@ -598,8 +606,9 @@ nanddev_ntargets
 
     Get the total of targets
 
-    :param const struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: const struct nand_device \*
 
 .. _`nanddev_ntargets.return`:
 
@@ -617,8 +626,9 @@ nanddev_neraseblocks
 
     Get the total number of erasablocks
 
-    :param const struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: const struct nand_device \*
 
 .. _`nanddev_neraseblocks.return`:
 
@@ -636,8 +646,9 @@ nanddev_size
 
     Get NAND size
 
-    :param const struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: const struct nand_device \*
 
 .. _`nanddev_size.return`:
 
@@ -655,8 +666,9 @@ nanddev_get_memorg
 
     Extract memory organization info from a NAND device
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
 .. _`nanddev_get_memorg.description`:
 
@@ -682,8 +694,9 @@ nanddev_register
 
     Register a NAND device
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
 .. _`nanddev_register.description`:
 
@@ -710,8 +723,9 @@ nanddev_unregister
 
     Unregister a NAND device
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
 .. _`nanddev_unregister.description`:
 
@@ -738,11 +752,13 @@ nanddev_set_of_node
 
     Attach a DT node to a NAND device
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param struct device_node \*np:
+    :param np:
         DT node
+    :type np: struct device_node \*
 
 .. _`nanddev_set_of_node.description`:
 
@@ -760,8 +776,9 @@ nanddev_get_of_node
 
     Retrieve the DT node attached to a NAND device
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
 .. _`nanddev_get_of_node.return`:
 
@@ -779,14 +796,17 @@ nanddev_offs_to_pos
 
     Convert an absolute NAND offset into a NAND position
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param loff_t offs:
+    :param offs:
         absolute NAND offset (usually passed by the MTD layer)
+    :type offs: loff_t
 
-    :param struct nand_pos \*pos:
+    :param pos:
         a NAND position object to fill in
+    :type pos: struct nand_pos \*
 
 .. _`nanddev_offs_to_pos.description`:
 
@@ -811,11 +831,13 @@ nanddev_pos_cmp
 
     Compare two NAND positions
 
-    :param const struct nand_pos \*a:
+    :param a:
         First NAND position
+    :type a: const struct nand_pos \*
 
-    :param const struct nand_pos \*b:
+    :param b:
         Second NAND position
+    :type b: const struct nand_pos \*
 
 .. _`nanddev_pos_cmp.description`:
 
@@ -840,11 +862,13 @@ nanddev_pos_to_offs
 
     Convert a NAND position into an absolute offset
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param const struct nand_pos \*pos:
+    :param pos:
         the NAND position to convert
+    :type pos: const struct nand_pos \*
 
 .. _`nanddev_pos_to_offs.description`:
 
@@ -871,11 +895,13 @@ nanddev_pos_to_row
 
     Extract a row address from a NAND position
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param const struct nand_pos \*pos:
+    :param pos:
         the position to convert
+    :type pos: const struct nand_pos \*
 
 .. _`nanddev_pos_to_row.description`:
 
@@ -901,11 +927,13 @@ nanddev_pos_next_target
 
     Move a position to the next target/die
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param struct nand_pos \*pos:
+    :param pos:
         the position to update
+    :type pos: struct nand_pos \*
 
 .. _`nanddev_pos_next_target.description`:
 
@@ -924,11 +952,13 @@ nanddev_pos_next_lun
 
     Move a position to the next LUN
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param struct nand_pos \*pos:
+    :param pos:
         the position to update
+    :type pos: struct nand_pos \*
 
 .. _`nanddev_pos_next_lun.description`:
 
@@ -947,11 +977,13 @@ nanddev_pos_next_eraseblock
 
     Move a position to the next eraseblock
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param struct nand_pos \*pos:
+    :param pos:
         the position to update
+    :type pos: struct nand_pos \*
 
 .. _`nanddev_pos_next_eraseblock.description`:
 
@@ -970,11 +1002,13 @@ nanddev_pos_next_page
 
     Move a position to the next page
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param struct nand_pos \*pos:
+    :param pos:
         the position to update
+    :type pos: struct nand_pos \*
 
 .. _`nanddev_pos_next_page.description`:
 
@@ -993,17 +1027,21 @@ nanddev_io_iter_init
 
     Initialize a NAND I/O iterator
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param loff_t offs:
+    :param offs:
         absolute offset
+    :type offs: loff_t
 
-    :param struct mtd_oob_ops \*req:
+    :param req:
         MTD request
+    :type req: struct mtd_oob_ops \*
 
-    :param struct nand_io_iter \*iter:
+    :param iter:
         NAND I/O iterator
+    :type iter: struct nand_io_iter \*
 
 .. _`nanddev_io_iter_init.description`:
 
@@ -1022,11 +1060,13 @@ nanddev_io_iter_next_page
 
     Move to the next page
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param struct nand_io_iter \*iter:
+    :param iter:
         NAND I/O iterator
+    :type iter: struct nand_io_iter \*
 
 .. _`nanddev_io_iter_next_page.description`:
 
@@ -1044,11 +1084,13 @@ nanddev_io_iter_end
 
     Should end iteration or not
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param const struct nand_io_iter \*iter:
+    :param iter:
         NAND I/O iterator
+    :type iter: const struct nand_io_iter \*
 
 .. _`nanddev_io_iter_end.description`:
 
@@ -1075,17 +1117,21 @@ nanddev_io_for_each_page
 
     Iterate over all NAND pages contained in an MTD I/O request
 
-    :param  nand:
+    :param nand:
         NAND device
+    :type nand: 
 
-    :param  start:
+    :param start:
         start address to read/write from
+    :type start: 
 
-    :param  req:
+    :param req:
         MTD I/O request
+    :type req: 
 
-    :param  iter:
+    :param iter:
         NAND I/O iterator
+    :type iter: 
 
 .. _`nanddev_io_for_each_page.description`:
 
@@ -1103,11 +1149,13 @@ nanddev_bbt_pos_to_entry
 
     Convert a NAND position into a BBT entry
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param const struct nand_pos \*pos:
+    :param pos:
         the NAND position we want to get BBT entry for
+    :type pos: const struct nand_pos \*
 
 .. _`nanddev_bbt_pos_to_entry.description`:
 
@@ -1133,8 +1181,9 @@ nanddev_bbt_is_initialized
 
     Check if the BBT has been initialized
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
 .. _`nanddev_bbt_is_initialized.return`:
 

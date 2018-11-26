@@ -10,8 +10,9 @@ vxfs_transmod
 
     mode for a VxFS inode
 
-    :param struct vxfs_inode_info \*vip:
+    :param vip:
         VxFS inode
+    :type vip: struct vxfs_inode_info \*
 
 .. _`vxfs_transmod.description`:
 
@@ -30,14 +31,17 @@ vxfs_blkiget
 
     find inode based on extent #
 
-    :param struct super_block \*sbp:
+    :param sbp:
         superblock of the filesystem we search in
+    :type sbp: struct super_block \*
 
-    :param u_long extent:
+    :param extent:
         number of the extent to search
+    :type extent: u_long
 
-    :param ino_t ino:
+    :param ino:
         inode number to search
+    :type ino: ino_t
 
 .. _`vxfs_blkiget.description`:
 
@@ -66,14 +70,17 @@ buffercache.  This function should not be used outside the
 
     generic find inode facility
 
-    :param struct inode \*ilistp:
+    :param ilistp:
         inode list
+    :type ilistp: struct inode \*
 
-    :param struct vxfs_inode_info \*vip:
+    :param vip:
         VxFS inode to fill in
+    :type vip: struct vxfs_inode_info \*
 
-    :param ino_t ino:
+    :param ino:
         inode number
+    :type ino: ino_t
 
 .. _`__vxfs_iget.description`:
 
@@ -93,11 +100,13 @@ vxfs_stiget
 
     find inode using the structural inode list
 
-    :param struct super_block \*sbp:
+    :param sbp:
         VFS superblock
+    :type sbp: struct super_block \*
 
-    :param ino_t ino:
+    :param ino:
         inode #
+    :type ino: ino_t
 
 .. _`vxfs_stiget.description`:
 
@@ -117,11 +126,13 @@ vxfs_iget
 
     get an inode
 
-    :param struct super_block \*sbp:
+    :param sbp:
         the superblock to get the inode for
+    :type sbp: struct super_block \*
 
-    :param ino_t ino:
+    :param ino:
         the number of the inode to get
+    :type ino: ino_t
 
 .. _`vxfs_iget.description`:
 
@@ -140,8 +151,9 @@ vxfs_evict_inode
 
     remove inode from main memory
 
-    :param struct inode \*ip:
+    :param ip:
         inode to discard.
+    :type ip: struct inode \*
 
 .. _`vxfs_evict_inode.description`:
 

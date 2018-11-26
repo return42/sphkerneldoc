@@ -10,8 +10,9 @@
 
     return the cpuidle driver tied to a CPU.
 
-    :param int cpu:
+    :param cpu:
         the CPU handled by the driver
+    :type cpu: int
 
 .. _`__cpuidle_get_cpu_driver.description`:
 
@@ -30,8 +31,9 @@ registered for \ ``cpu``\ .
 
     unset per CPU driver variables.
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         a valid pointer to a struct cpuidle_driver
+    :type drv: struct cpuidle_driver \*
 
 .. _`__cpuidle_unset_driver.description`:
 
@@ -51,8 +53,9 @@ variable is not cleared.
 
     set per CPU driver variables for the given driver.
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         a valid pointer to a struct cpuidle_driver
+    :type drv: struct cpuidle_driver \*
 
 .. _`__cpuidle_set_driver.description`:
 
@@ -73,8 +76,9 @@ Returns 0 on success, -EBUSY if the CPUs have driver(s) already.
 
     return the global cpuidle driver pointer.
 
-    :param int cpu:
+    :param cpu:
         ignored without the multiple driver support
+    :type cpu: int
 
 .. _`__cpuidle_get_cpu_driver.description`:
 
@@ -93,8 +97,9 @@ previously registered.
 
     assign the global cpuidle driver variable.
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         pointer to a struct cpuidle_driver object
+    :type drv: struct cpuidle_driver \*
 
 .. _`__cpuidle_set_driver.description`:
 
@@ -112,8 +117,9 @@ Returns 0 on success, -EBUSY if the driver is already registered.
 
     unset the global cpuidle driver variable.
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         a pointer to a struct cpuidle_driver
+    :type drv: struct cpuidle_driver \*
 
 .. _`__cpuidle_unset_driver.description`:
 
@@ -132,8 +138,9 @@ cpuidle_setup_broadcast_timer
 
     enable/disable the broadcast timer on a cpu
 
-    :param void \*arg:
+    :param arg:
         a void pointer used to match the SMP cross call API
+    :type arg: void \*
 
 .. _`cpuidle_setup_broadcast_timer.description`:
 
@@ -154,8 +161,9 @@ supposed to be called directly.
 
     initialize the driver's internal data
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         a valid pointer to a struct cpuidle_driver
+    :type drv: struct cpuidle_driver \*
 
 .. _`__cpuidle_register_driver`:
 
@@ -166,8 +174,9 @@ supposed to be called directly.
 
     register the driver
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         a valid pointer to a struct cpuidle_driver
+    :type drv: struct cpuidle_driver \*
 
 .. _`__cpuidle_register_driver.description`:
 
@@ -192,8 +201,9 @@ Returns 0 on success, a negative error code otherwise:
 
     unregister the driver
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         a valid pointer to a struct cpuidle_driver
+    :type drv: struct cpuidle_driver \*
 
 .. _`__cpuidle_unregister_driver.description`:
 
@@ -213,8 +223,9 @@ cpuidle_register_driver
 
     registers a driver
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         a pointer to a valid struct cpuidle_driver
+    :type drv: struct cpuidle_driver \*
 
 .. _`cpuidle_register_driver.description`:
 
@@ -236,8 +247,9 @@ cpuidle_unregister_driver
 
     unregisters a driver
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         a pointer to a valid struct cpuidle_driver
+    :type drv: struct cpuidle_driver \*
 
 .. _`cpuidle_unregister_driver.description`:
 
@@ -257,8 +269,9 @@ cpuidle_get_driver
 
     return the driver tied to the current CPU.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuidle_get_driver.description`:
 
@@ -276,8 +289,9 @@ cpuidle_get_cpu_driver
 
     return the driver registered for a CPU.
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         a valid pointer to a struct cpuidle_device
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_get_cpu_driver.description`:
 
@@ -296,8 +310,9 @@ cpuidle_driver_ref
 
     get a reference to the driver.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuidle_driver_ref.description`:
 
@@ -318,8 +333,9 @@ cpuidle_driver_unref
 
     puts down the refcount for the driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuidle_driver_unref.description`:
 

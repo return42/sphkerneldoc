@@ -10,11 +10,13 @@ snd_soc_new_compress
 
     create a new compress.
 
-    :param struct snd_soc_pcm_runtime \*rtd:
+    :param rtd:
         The runtime for which we will create compress
+    :type rtd: struct snd_soc_pcm_runtime \*
 
-    :param int num:
+    :param num:
         the device index number (zero based - shared with normal PCMs)
+    :type num: int
 
 .. _`snd_soc_new_compress.return`:
 

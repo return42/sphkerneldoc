@@ -10,8 +10,9 @@ mic_ops_init
 
     Initialize HW specific operation tables.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_ops_init.description`:
 
@@ -29,8 +30,9 @@ mic_get_family
 
     Determine hardware family to which this MIC belongs.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The pci device structure
+    :type pdev: struct pci_dev \*
 
 .. _`mic_get_family.description`:
 
@@ -48,11 +50,13 @@ mic_device_init
 
     Allocates and initializes the MIC device structure
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The pci device structure
+    :type pdev: struct pci_dev \*
 
 .. _`mic_device_init.description`:
 
@@ -70,11 +74,13 @@ mic_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in mic_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`mic_probe.description`:
 
@@ -92,8 +98,9 @@ mic_remove
 
     Device Removal Routine mic_remove is called by the PCI subsystem to alert the driver that it should release a PCI device.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. This file was automatic generated / don't edit.
 

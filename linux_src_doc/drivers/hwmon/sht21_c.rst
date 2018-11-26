@@ -62,8 +62,9 @@ sht21_temp_ticks_to_millicelsius
 
     convert raw temperature ticks to milli celsius
 
-    :param int ticks:
+    :param ticks:
         temperature ticks value received from sensor
+    :type ticks: int
 
 .. _`sht21_rh_ticks_to_per_cent_mille`:
 
@@ -74,8 +75,9 @@ sht21_rh_ticks_to_per_cent_mille
 
     convert raw humidity ticks to one-thousandths of a percent relative humidity
 
-    :param int ticks:
+    :param ticks:
         humidity ticks value received from sensor
+    :type ticks: int
 
 .. _`sht21_update_measurements`:
 
@@ -86,8 +88,9 @@ sht21_update_measurements
 
     get updated measurements from device
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
 .. _`sht21_update_measurements.description`:
 
@@ -105,14 +108,17 @@ sht21_show_temperature
 
     show temperature measurement value in sysfs
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         sysfs buffer (PAGE_SIZE) where measurement values are written to
+    :type buf: char \*
 
 .. _`sht21_show_temperature.description`:
 
@@ -131,14 +137,17 @@ sht21_show_humidity
 
     show humidity measurement value in sysfs
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         sysfs buffer (PAGE_SIZE) where measurement values are written to
+    :type buf: char \*
 
 .. _`sht21_show_humidity.description`:
 
@@ -157,14 +166,17 @@ eic_show
 
     show Electronic Identification Code in sysfs
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         sysfs buffer (PAGE_SIZE) where EIC is written
+    :type buf: char \*
 
 .. _`eic_show.description`:
 

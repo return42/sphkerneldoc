@@ -142,8 +142,9 @@ ethoc_probe
 
     initialize OpenCores ethernet MAC
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`ethoc_probe.pdev`:
 
@@ -161,8 +162,9 @@ ethoc_remove
 
     shutdown OpenCores ethernet MAC
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ kvm_get_badinstr
 
     Get bad instruction encoding.
 
-    :param u32 \*opc:
+    :param opc:
         Guest pointer to faulting instruction.
+    :type opc: u32 \*
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         KVM VCPU information.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u32 \*out:
+    :param out:
         *undescribed*
+    :type out: u32 \*
 
 .. _`kvm_get_badinstr.description`:
 
@@ -44,14 +47,17 @@ kvm_get_badinstrp
 
     Get bad prior instruction encoding.
 
-    :param u32 \*opc:
+    :param opc:
         Guest pointer to prior faulting instruction.
+    :type opc: u32 \*
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         KVM VCPU information.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u32 \*out:
+    :param out:
         *undescribed*
+    :type out: u32 \*
 
 .. _`kvm_get_badinstrp.description`:
 
@@ -78,8 +84,9 @@ kvm_mips_count_disabled
 
     Find whether the CP0_Count timer is disabled.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_count_disabled.return`:
 
@@ -99,11 +106,13 @@ kvm_mips_ktime_to_count
 
     Scale ktime_t to a 32-bit count.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
-    :param ktime_t now:
+    :param now:
         *undescribed*
+    :type now: ktime_t
 
 .. _`kvm_mips_ktime_to_count.description`:
 
@@ -123,8 +132,9 @@ kvm_mips_count_time
 
     Get effective current time.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_count_time.description`:
 
@@ -151,11 +161,13 @@ kvm_mips_read_count_running
 
     Read the current count value as if running.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param ktime_t now:
+    :param now:
         Kernel time to read CP0_Count at.
+    :type now: ktime_t
 
 .. _`kvm_mips_read_count_running.description`:
 
@@ -181,8 +193,9 @@ kvm_mips_read_count
 
     Read the current count value.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_read_count.description`:
 
@@ -208,11 +221,13 @@ kvm_mips_freeze_hrtimer
 
     Safely stop the hrtimer.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u32 \*count:
+    :param count:
         Output pointer for CP0_Count value at point of freeze.
+    :type count: u32 \*
 
 .. _`kvm_mips_freeze_hrtimer.description`:
 
@@ -244,14 +259,17 @@ kvm_mips_resume_hrtimer
 
     Resume hrtimer, updating expiry.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param ktime_t now:
+    :param now:
         ktime at point of resume.
+    :type now: ktime_t
 
-    :param u32 count:
+    :param count:
         CP0_Count at point of resume.
+    :type count: u32
 
 .. _`kvm_mips_resume_hrtimer.description`:
 
@@ -277,18 +295,22 @@ kvm_mips_restore_hrtimer
 
     Restore hrtimer after a gap, updating expiry.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param ktime_t before:
+    :param before:
         Time before Count was saved, lower bound of drift calculation.
+    :type before: ktime_t
 
-    :param u32 count:
+    :param count:
         CP0_Count at point of restore.
+    :type count: u32
 
-    :param int min_drift:
+    :param min_drift:
         Minimum amount of drift permitted before correction.
         Must be <= 0.
+    :type min_drift: int
 
 .. _`kvm_mips_restore_hrtimer.description`:
 
@@ -323,11 +345,13 @@ kvm_mips_write_count
 
     Modify the count and update timer.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u32 count:
+    :param count:
         Guest CP0_Count value to set.
+    :type count: u32
 
 .. _`kvm_mips_write_count.description`:
 
@@ -345,11 +369,13 @@ kvm_mips_init_count
 
     Initialise timer.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long count_hz:
+    :param count_hz:
         Frequency of timer.
+    :type count_hz: unsigned long
 
 .. _`kvm_mips_init_count.description`:
 
@@ -368,11 +394,13 @@ kvm_mips_set_count_hz
 
     Update the frequency of the timer.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param s64 count_hz:
+    :param count_hz:
         Frequency of CP0_Count timer in Hz.
+    :type count_hz: s64
 
 .. _`kvm_mips_set_count_hz.description`:
 
@@ -399,14 +427,17 @@ kvm_mips_write_compare
 
     Modify compare and update timer.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u32 compare:
+    :param compare:
         New CP0_Compare value.
+    :type compare: u32
 
-    :param bool ack:
+    :param ack:
         Whether to acknowledge timer interrupt.
+    :type ack: bool
 
 .. _`kvm_mips_write_compare.description`:
 
@@ -426,8 +457,9 @@ kvm_mips_count_disable
 
     Disable count.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_count_disable.description`:
 
@@ -456,8 +488,9 @@ kvm_mips_count_disable_cause
 
     Disable count using CP0_Cause.DC.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_count_disable_cause.description`:
 
@@ -479,8 +512,9 @@ kvm_mips_count_enable_cause
 
     Enable count using CP0_Cause.DC.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_count_enable_cause.description`:
 
@@ -503,11 +537,13 @@ kvm_mips_set_count_ctl
 
     Update the count control KVM register.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param s64 count_ctl:
+    :param count_ctl:
         Count control register new value.
+    :type count_ctl: s64
 
 .. _`kvm_mips_set_count_ctl.description`:
 
@@ -533,11 +569,13 @@ kvm_mips_set_count_resume
 
     Update the count resume KVM register.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param s64 count_resume:
+    :param count_resume:
         Count resume register new value.
+    :type count_resume: s64
 
 .. _`kvm_mips_set_count_resume.description`:
 
@@ -563,8 +601,9 @@ kvm_mips_count_timeout
 
     Push timer forward on timeout.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_count_timeout.description`:
 
@@ -589,11 +628,13 @@ kvm_mips_invalidate_guest_tlb
 
     Indicates a change in guest MMU map.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         VCPU with changed mappings.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_mips_tlb \*tlb:
+    :param tlb:
         TLB entry being removed.
+    :type tlb: struct kvm_mips_tlb \*
 
 .. _`kvm_mips_invalidate_guest_tlb.description`:
 
@@ -612,8 +653,9 @@ kvm_mips_config1_wrmask
 
     Find mask of writable bits in guest Config1
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_config1_wrmask.description`:
 
@@ -632,8 +674,9 @@ kvm_mips_config3_wrmask
 
     Find mask of writable bits in guest Config3
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_config3_wrmask.description`:
 
@@ -652,8 +695,9 @@ kvm_mips_config4_wrmask
 
     Find mask of writable bits in guest Config4
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_config4_wrmask.description`:
 
@@ -672,8 +716,9 @@ kvm_mips_config5_wrmask
 
     Find mask of writable bits in guest Config5
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_config5_wrmask.description`:
 
@@ -692,8 +737,9 @@ kvm_mips_guest_exception_base
 
     Find guest exception vector base address.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_guest_exception_base.return`:
 

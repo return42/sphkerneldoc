@@ -22,6 +22,7 @@ Definition
         void __iomem *mem_addr;
         enum mei_pg_state pg_state;
         bool d0i3_supported;
+        u8 hbuf_depth;
     }
 
 .. _`mei_me_hw.members`:
@@ -40,6 +41,9 @@ pg_state
 
 d0i3_supported
     di03 support
+
+hbuf_depth
+    depth of hardware host/write buffer in slots
 
 .. _`mei_cfg_idx`:
 
@@ -65,6 +69,7 @@ Definition
         MEI_ME_PCH_CPT_PBG_CFG,
         MEI_ME_PCH8_CFG,
         MEI_ME_PCH8_SPS_CFG,
+        MEI_ME_PCH12_CFG,
         MEI_ME_NUM_CFG
     };
 
@@ -97,6 +102,9 @@ MEI_ME_PCH8_SPS_CFG
     Platform Controller Hub Gen8 and newer
     servers platforms with quirk for
     SPS firmware exclusion.
+
+MEI_ME_PCH12_CFG
+    Platform Controller Hub Gen12 and newer
 
 MEI_ME_NUM_CFG
     Upper Sentinel.

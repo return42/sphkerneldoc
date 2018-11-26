@@ -10,11 +10,13 @@ set_required_buffer_size
 
     Sets the buffer size needed for performing IOCTL
 
-    :param struct wmi_device \*wdev:
+    :param wdev:
         A wmi bus device from a driver
+    :type wdev: struct wmi_device \*
 
-    :param u64 length:
+    :param length:
         *undescribed*
+    :type length: u64
 
 .. _`set_required_buffer_size.description`:
 
@@ -32,22 +34,27 @@ wmi_evaluate_method
 
     Evaluate a WMI method
 
-    :param const char \*guid_string:
+    :param guid_string:
         36 char string of the form fa50ff2b-f2e8-45de-83fa-65417f2f49ba
+    :type guid_string: const char \*
 
-    :param u8 instance:
+    :param instance:
         Instance index
+    :type instance: u8
 
-    :param u32 method_id:
+    :param method_id:
         Method ID to call
         \ :c:type:`struct in <in>`\ : Buffer containing input for the method call
         \ :c:type:`struct out <out>`\ : Empty buffer to return the method results
+    :type method_id: u32
 
-    :param const struct acpi_buffer \*in:
+    :param in:
         *undescribed*
+    :type in: const struct acpi_buffer \*
 
-    :param struct acpi_buffer \*out:
+    :param out:
         *undescribed*
+    :type out: struct acpi_buffer \*
 
 .. _`wmi_evaluate_method.description`:
 
@@ -65,22 +72,27 @@ wmidev_evaluate_method
 
     Evaluate a WMI method
 
-    :param struct wmi_device \*wdev:
+    :param wdev:
         A wmi bus device from a driver
+    :type wdev: struct wmi_device \*
 
-    :param u8 instance:
+    :param instance:
         Instance index
+    :type instance: u8
 
-    :param u32 method_id:
+    :param method_id:
         Method ID to call
         \ :c:type:`struct in <in>`\ : Buffer containing input for the method call
         \ :c:type:`struct out <out>`\ : Empty buffer to return the method results
+    :type method_id: u32
 
-    :param const struct acpi_buffer \*in:
+    :param in:
         *undescribed*
+    :type in: const struct acpi_buffer \*
 
-    :param struct acpi_buffer \*out:
+    :param out:
         *undescribed*
+    :type out: struct acpi_buffer \*
 
 .. _`wmidev_evaluate_method.description`:
 
@@ -98,15 +110,18 @@ wmi_query_block
 
     Return contents of a WMI block (deprecated)
 
-    :param const char \*guid_string:
+    :param guid_string:
         36 char string of the form fa50ff2b-f2e8-45de-83fa-65417f2f49ba
+    :type guid_string: const char \*
 
-    :param u8 instance:
+    :param instance:
         Instance index
         \ :c:type:`struct out <out>`\ : Empty buffer to return the contents of the data block to
+    :type instance: u8
 
-    :param struct acpi_buffer \*out:
+    :param out:
         *undescribed*
+    :type out: struct acpi_buffer \*
 
 .. _`wmi_query_block.description`:
 
@@ -124,15 +139,18 @@ wmi_set_block
 
     Write to a WMI block
 
-    :param const char \*guid_string:
+    :param guid_string:
         36 char string of the form fa50ff2b-f2e8-45de-83fa-65417f2f49ba
+    :type guid_string: const char \*
 
-    :param u8 instance:
+    :param instance:
         Instance index
         \ :c:type:`struct in <in>`\ : Buffer containing new values for the data block
+    :type instance: u8
 
-    :param const struct acpi_buffer \*in:
+    :param in:
         *undescribed*
+    :type in: const struct acpi_buffer \*
 
 .. _`wmi_set_block.description`:
 
@@ -150,14 +168,17 @@ wmi_install_notify_handler
 
     Register handler for WMI events
 
-    :param const char \*guid:
+    :param guid:
         *undescribed*
+    :type guid: const char \*
 
-    :param wmi_notify_handler handler:
+    :param handler:
         Function to handle notifications
+    :type handler: wmi_notify_handler
 
-    :param void \*data:
+    :param data:
         Data to be returned to handler when event is fired
+    :type data: void \*
 
 .. _`wmi_install_notify_handler.description`:
 
@@ -175,8 +196,9 @@ wmi_remove_notify_handler
 
     Unregister handler for WMI events
 
-    :param const char \*guid:
+    :param guid:
         *undescribed*
+    :type guid: const char \*
 
 .. _`wmi_remove_notify_handler.description`:
 
@@ -194,11 +216,13 @@ wmi_get_event_data
 
     Get WMI data associated with an event
 
-    :param u32 event:
+    :param event:
         Event to find
+    :type event: u32
 
-    :param struct acpi_buffer \*out:
+    :param out:
         Buffer to hold event data. out->pointer should be freed with \ :c:func:`kfree`\ 
+    :type out: struct acpi_buffer \*
 
 .. _`wmi_get_event_data.description`:
 
@@ -216,8 +240,9 @@ wmi_has_guid
 
     Check if a GUID is available
 
-    :param const char \*guid_string:
+    :param guid_string:
         36 char string of the form fa50ff2b-f2e8-45de-83fa-65417f2f49ba
+    :type guid_string: const char \*
 
 .. _`wmi_has_guid.description`:
 

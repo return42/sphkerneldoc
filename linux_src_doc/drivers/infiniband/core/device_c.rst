@@ -10,8 +10,9 @@ ib_alloc_device
 
     allocate an IB device struct
 
-    :param size_t size:
+    :param size:
         size of structure to allocate
+    :type size: size_t
 
 .. _`ib_alloc_device.description`:
 
@@ -33,8 +34,9 @@ ib_dealloc_device
 
     free an IB device struct
 
-    :param struct ib_device \*device:
+    :param device:
         structure to free
+    :type device: struct ib_device \*
 
 .. _`ib_dealloc_device.description`:
 
@@ -52,8 +54,9 @@ Free a structure allocated with \ :c:func:`ib_alloc_device`\ .
 
     allocate an device index
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__dev_new_index.description`:
 
@@ -69,12 +72,17 @@ will be present in the system.
 ib_register_device
 ==================
 
-.. c:function:: int ib_register_device(struct ib_device *device, int (*port_callback)(struct ib_device *, u8, struct kobject *))
+.. c:function:: int ib_register_device(struct ib_device *device, const char *name, int (*port_callback)(struct ib_device *, u8, struct kobject *))
 
     Register an IB device with IB core
 
-    :param struct ib_device \*device:
+    :param device:
         Device to register
+    :type device: struct ib_device \*
+
+    :param name:
+        *undescribed*
+    :type name: const char \*
 
     :param int (\*port_callback)(struct ib_device \*, u8, struct kobject \*):
         *undescribed*
@@ -98,8 +106,9 @@ ib_unregister_device
 
     Unregister an IB device
 
-    :param struct ib_device \*device:
+    :param device:
         Device to unregister
+    :type device: struct ib_device \*
 
 .. _`ib_unregister_device.description`:
 
@@ -117,8 +126,9 @@ ib_register_client
 
     Register an IB client
 
-    :param struct ib_client \*client:
+    :param client:
         Client to register
+    :type client: struct ib_client \*
 
 .. _`ib_register_client.description`:
 
@@ -143,8 +153,9 @@ ib_unregister_client
 
     Unregister an IB client
 
-    :param struct ib_client \*client:
+    :param client:
         Client to unregister
+    :type client: struct ib_client \*
 
 .. _`ib_unregister_client.description`:
 
@@ -164,11 +175,13 @@ ib_get_client_data
 
     Get IB client context
 
-    :param struct ib_device \*device:
+    :param device:
         Device to get context for
+    :type device: struct ib_device \*
 
-    :param struct ib_client \*client:
+    :param client:
         Client to get context for
+    :type client: struct ib_client \*
 
 .. _`ib_get_client_data.description`:
 
@@ -187,14 +200,17 @@ ib_set_client_data
 
     Set IB client context
 
-    :param struct ib_device \*device:
+    :param device:
         Device to set context for
+    :type device: struct ib_device \*
 
-    :param struct ib_client \*client:
+    :param client:
         Client to set context for
+    :type client: struct ib_client \*
 
-    :param void \*data:
+    :param data:
         Context to set
+    :type data: void \*
 
 .. _`ib_set_client_data.description`:
 
@@ -213,8 +229,9 @@ ib_register_event_handler
 
     Register an IB event handler
 
-    :param struct ib_event_handler \*event_handler:
+    :param event_handler:
         Handler to register
+    :type event_handler: struct ib_event_handler \*
 
 .. _`ib_register_event_handler.description`:
 
@@ -235,8 +252,9 @@ ib_unregister_event_handler
 
     Unregister an event handler
 
-    :param struct ib_event_handler \*event_handler:
+    :param event_handler:
         Handler to unregister
+    :type event_handler: struct ib_event_handler \*
 
 .. _`ib_unregister_event_handler.description`:
 
@@ -255,8 +273,9 @@ ib_dispatch_event
 
     Dispatch an asynchronous event
 
-    :param struct ib_event \*event:
+    :param event:
         Event to dispatch
+    :type event: struct ib_event \*
 
 .. _`ib_dispatch_event.description`:
 
@@ -276,14 +295,17 @@ ib_query_port
 
     Query IB port attributes
 
-    :param struct ib_device \*device:
+    :param device:
         Device to query
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         Port number to query
+    :type port_num: u8
 
-    :param struct ib_port_attr \*port_attr:
+    :param port_attr:
         Port attributes
+    :type port_attr: struct ib_port_attr \*
 
 .. _`ib_query_port.description`:
 
@@ -292,38 +314,6 @@ Description
 
 \ :c:func:`ib_query_port`\  returns the attributes of a port through the
 \ ``port_attr``\  pointer.
-
-.. _`ib_query_gid`:
-
-ib_query_gid
-============
-
-.. c:function:: int ib_query_gid(struct ib_device *device, u8 port_num, int index, union ib_gid *gid, struct ib_gid_attr *attr)
-
-    Get GID table entry
-
-    :param struct ib_device \*device:
-        Device to query
-
-    :param u8 port_num:
-        Port number to query
-
-    :param int index:
-        GID table index to query
-
-    :param union ib_gid \*gid:
-        Returned GID
-
-    :param struct ib_gid_attr \*attr:
-        Returned GID attributes related to this GID index (only in RoCE).
-        NULL means ignore.
-
-.. _`ib_query_gid.description`:
-
-Description
------------
-
-\ :c:func:`ib_query_gid`\  fetches the specified GID table entry from the cache.
 
 .. _`ib_enum_roce_netdev`:
 
@@ -334,20 +324,25 @@ ib_enum_roce_netdev
 
     enumerate all RoCE ports
 
-    :param struct ib_device \*ib_dev:
+    :param ib_dev:
         IB device we want to query
+    :type ib_dev: struct ib_device \*
 
-    :param roce_netdev_filter filter:
+    :param filter:
         Should we call the callback?
+    :type filter: roce_netdev_filter
 
-    :param void \*filter_cookie:
+    :param filter_cookie:
         Cookie passed to filter
+    :type filter_cookie: void \*
 
-    :param roce_netdev_callback cb:
+    :param cb:
         Callback to call for each found RoCE ports
+    :type cb: roce_netdev_callback
 
-    :param void \*cookie:
+    :param cookie:
         Cookie passed back to the callback
+    :type cookie: void \*
 
 .. _`ib_enum_roce_netdev.description`:
 
@@ -367,17 +362,21 @@ ib_enum_all_roce_netdevs
 
     enumerate all RoCE devices
 
-    :param roce_netdev_filter filter:
+    :param filter:
         Should we call the callback?
+    :type filter: roce_netdev_filter
 
-    :param void \*filter_cookie:
+    :param filter_cookie:
         Cookie passed to filter
+    :type filter_cookie: void \*
 
-    :param roce_netdev_callback cb:
+    :param cb:
         Callback to call for each found RoCE ports
+    :type cb: roce_netdev_callback
 
-    :param void \*cookie:
+    :param cookie:
         Cookie passed back to the callback
+    :type cookie: void \*
 
 .. _`ib_enum_all_roce_netdevs.description`:
 
@@ -397,14 +396,17 @@ ib_enum_all_devs
 
     enumerate all ib_devices
 
-    :param nldev_callback nldev_cb:
+    :param nldev_cb:
         *undescribed*
+    :type nldev_cb: nldev_callback
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Callback to call for each found ib_device
+    :type cb: struct netlink_callback \*
 
 .. _`ib_enum_all_devs.description`:
 
@@ -422,17 +424,21 @@ ib_query_pkey
 
     Get P_Key table entry
 
-    :param struct ib_device \*device:
+    :param device:
         Device to query
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         Port number to query
+    :type port_num: u8
 
-    :param u16 index:
+    :param index:
         P_Key table index to query
+    :type index: u16
 
-    :param u16 \*pkey:
+    :param pkey:
         Returned P_Key
+    :type pkey: u16 \*
 
 .. _`ib_query_pkey.description`:
 
@@ -450,14 +456,17 @@ ib_modify_device
 
     Change IB device attributes
 
-    :param struct ib_device \*device:
+    :param device:
         Device to modify
+    :type device: struct ib_device \*
 
-    :param int device_modify_mask:
+    :param device_modify_mask:
         Mask of attributes to change
+    :type device_modify_mask: int
 
-    :param struct ib_device_modify \*device_modify:
+    :param device_modify:
         New attribute values
+    :type device_modify: struct ib_device_modify \*
 
 .. _`ib_modify_device.description`:
 
@@ -476,18 +485,22 @@ ib_modify_port
 
     Modifies the attributes for the specified port.
 
-    :param struct ib_device \*device:
+    :param device:
         The device to modify.
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         The number of the port to modify.
+    :type port_num: u8
 
-    :param int port_modify_mask:
+    :param port_modify_mask:
         Mask used to specify which attributes of the port
         to change.
+    :type port_modify_mask: int
 
-    :param struct ib_port_modify \*port_modify:
+    :param port_modify:
         New attribute values for the port.
+    :type port_modify: struct ib_port_modify \*
 
 .. _`ib_modify_port.description`:
 
@@ -506,18 +519,22 @@ ib_find_gid
 
     Returns the port number and GID table index where a specified GID value occurs. Its searches only for IB link layer.
 
-    :param struct ib_device \*device:
+    :param device:
         The device to query.
+    :type device: struct ib_device \*
 
-    :param union ib_gid \*gid:
+    :param gid:
         The GID value to search for.
+    :type gid: union ib_gid \*
 
-    :param u8 \*port_num:
+    :param port_num:
         The port number of the device where the GID value was found.
+    :type port_num: u8 \*
 
-    :param u16 \*index:
+    :param index:
         The index into the GID table where the GID was found.  This
         parameter may be NULL.
+    :type index: u16 \*
 
 .. _`ib_find_pkey`:
 
@@ -528,17 +545,21 @@ ib_find_pkey
 
     Returns the PKey table index where a specified PKey value occurs.
 
-    :param struct ib_device \*device:
+    :param device:
         The device to query.
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         The port number of the device to search for the PKey.
+    :type port_num: u8
 
-    :param u16 pkey:
+    :param pkey:
         The PKey value to search for.
+    :type pkey: u16
 
-    :param u16 \*index:
+    :param index:
         The index into the PKey table where the PKey was found.
+    :type index: u16 \*
 
 .. _`ib_get_net_dev_by_params`:
 
@@ -549,21 +570,26 @@ ib_get_net_dev_by_params
 
     Return the appropriate net_dev for a received CM request
 
-    :param struct ib_device \*dev:
+    :param dev:
         An RDMA device on which the request has been received.
+    :type dev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         Port number on the RDMA device.
+    :type port: u8
 
-    :param u16 pkey:
+    :param pkey:
         The Pkey the request came on.
+    :type pkey: u16
 
-    :param const union ib_gid \*gid:
+    :param gid:
         A GID that the net_dev uses to communicate.
+    :type gid: const union ib_gid \*
 
-    :param const struct sockaddr \*addr:
+    :param addr:
         Contains the IP address that the request specified as its
         destination.
+    :type addr: const struct sockaddr \*
 
 .. This file was automatic generated / don't edit.
 

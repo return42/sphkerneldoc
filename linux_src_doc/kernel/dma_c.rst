@@ -10,11 +10,13 @@ request_dma
 
     request and reserve a system DMA channel
 
-    :param unsigned int dmanr:
+    :param dmanr:
         DMA channel number
+    :type dmanr: unsigned int
 
-    :param const char \*device_id:
+    :param device_id:
         reserving device ID string, used in /proc/dma
+    :type device_id: const char \*
 
 .. _`free_dma`:
 
@@ -25,8 +27,9 @@ free_dma
 
     free a reserved system DMA channel
 
-    :param unsigned int dmanr:
+    :param dmanr:
         DMA channel number
+    :type dmanr: unsigned int
 
 .. This file was automatic generated / don't edit.
 

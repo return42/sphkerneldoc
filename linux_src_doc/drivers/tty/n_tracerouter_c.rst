@@ -10,8 +10,9 @@ n_tracerouter_open
 
     Called when a tty is opened by a SW entity.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device to the ldisc.
+    :type tty: struct tty_struct \*
 
 .. _`n_tracerouter_open.return`:
 
@@ -36,8 +37,9 @@ n_tracerouter_close
 
     close connection
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device to the ldisc.
+    :type tty: struct tty_struct \*
 
 .. _`n_tracerouter_close.description`:
 
@@ -55,17 +57,21 @@ n_tracerouter_read
 
     read request from user space
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device passed into the ldisc.
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         pointer to open file object.
+    :type file: struct file \*
 
-    :param unsigned char __user \*buf:
+    :param buf:
         pointer to the data buffer that gets eventually returned.
+    :type buf: unsigned char __user \*
 
-    :param size_t nr:
+    :param nr:
         number of bytes of the data buffer that is returned.
+    :type nr: size_t
 
 .. _`n_tracerouter_read.description`:
 
@@ -95,17 +101,21 @@ n_tracerouter_write
 
     Function that allows \ :c:func:`write`\  in userspace.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device passed into the ldisc.
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         pointer to open file object.
+    :type file: struct file \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         pointer to the data buffer that gets eventually returned.
+    :type buf: const unsigned char \*
 
-    :param size_t nr:
+    :param nr:
         number of bytes of the data buffer that is returned.
+    :type nr: size_t
 
 .. _`n_tracerouter_write.description`:
 
@@ -137,19 +147,23 @@ n_tracerouter_receivebuf
 
     Routing function for driver.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device passed into the ldisc.  It's assumed
         tty will never be NULL.
+    :type tty: struct tty_struct \*
 
-    :param const unsigned char \*cp:
+    :param cp:
         buffer, block of characters to be eventually read by
         someone, somewhere (user \ :c:func:`read`\  call or some kernel function).
+    :type cp: const unsigned char \*
 
-    :param char \*fp:
+    :param fp:
         flag buffer.
+    :type fp: char \*
 
-    :param int count:
+    :param count:
         number of characters (aka, bytes) in cp.
+    :type count: int
 
 .. _`n_tracerouter_receivebuf.description`:
 
@@ -168,8 +182,9 @@ n_tracerouter_init
 
     module initialisation
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`n_tracerouter_init.description`:
 
@@ -194,8 +209,9 @@ n_tracerouter_exit
 
     module unload
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`n_tracerouter_exit.description`:
 

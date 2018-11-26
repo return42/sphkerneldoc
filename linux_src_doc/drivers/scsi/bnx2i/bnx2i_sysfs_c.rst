@@ -10,8 +10,9 @@ bnx2i_dev_to_hba
 
     maps dev pointer to adapter struct
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
 .. _`bnx2i_dev_to_hba.description`:
 
@@ -29,14 +30,17 @@ bnx2i_show_sq_info
 
     return(s currently configured send queue (SQ) size
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer to return current SQ size parameter
+    :type buf: char \*
 
 .. _`bnx2i_show_sq_info.description`:
 
@@ -55,17 +59,21 @@ bnx2i_set_sq_info
 
     update send queue (SQ) size parameter
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer to return current SQ size parameter
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         parameter buffer size
+    :type count: size_t
 
 .. _`bnx2i_set_sq_info.description`:
 
@@ -85,14 +93,17 @@ bnx2i_show_ccell_info
 
     returns command cell (HQ) size
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer to return current SQ size parameter
+    :type buf: char \*
 
 .. _`bnx2i_show_ccell_info.description`:
 
@@ -110,17 +121,21 @@ bnx2i_set_ccell_info
 
     set command cell (HQ) size
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer to return current SQ size parameter
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         parameter buffer size
+    :type count: size_t
 
 .. _`bnx2i_set_ccell_info.description`:
 

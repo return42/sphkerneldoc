@@ -8,8 +8,9 @@ vmw_res_to_shader
 
 .. c:function:: struct vmw_shader *vmw_res_to_shader(struct vmw_resource *res)
 
-    :param struct vmw_resource \*res:
+    :param res:
         *undescribed*
+    :type res: struct vmw_resource \*
 
 .. _`vmw_res_to_dx_shader`:
 
@@ -20,8 +21,9 @@ vmw_res_to_dx_shader
 
     typecast a struct vmw_resource to a struct vmw_dx_shader
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the struct vmw_resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_dx_shader_commit_notify`:
 
@@ -32,11 +34,13 @@ vmw_dx_shader_commit_notify
 
     Notify that a shader operation has been committed to hardware from a user-supplied command stream.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the shader resource.
+    :type res: struct vmw_resource \*
 
-    :param enum vmw_cmdbuf_res_state state:
+    :param state:
         Indicating whether a creation or removal has been committed.
+    :type state: enum vmw_cmdbuf_res_state
 
 .. _`vmw_dx_shader_unscrub`:
 
@@ -47,8 +51,9 @@ vmw_dx_shader_unscrub
 
     Have the device reattach a MOB to a DX shader.
 
-    :param struct vmw_resource \*res:
+    :param res:
         The shader resource
+    :type res: struct vmw_resource \*
 
 .. _`vmw_dx_shader_unscrub.description`:
 
@@ -66,8 +71,9 @@ vmw_dx_shader_create
 
     The DX shader create callback
 
-    :param struct vmw_resource \*res:
+    :param res:
         The DX shader resource
+    :type res: struct vmw_resource \*
 
 .. _`vmw_dx_shader_create.description`:
 
@@ -86,11 +92,13 @@ vmw_dx_shader_bind
 
     The DX shader bind callback
 
-    :param struct vmw_resource \*res:
+    :param res:
         The DX shader resource
+    :type res: struct vmw_resource \*
 
-    :param struct ttm_validate_buffer \*val_buf:
+    :param val_buf:
         Pointer to the validate buffer.
+    :type val_buf: struct ttm_validate_buffer \*
 
 .. _`vmw_dx_shader_scrub`:
 
@@ -101,8 +109,9 @@ vmw_dx_shader_scrub
 
     Have the device unbind a MOB from a DX shader.
 
-    :param struct vmw_resource \*res:
+    :param res:
         The shader resource
+    :type res: struct vmw_resource \*
 
 .. _`vmw_dx_shader_scrub.description`:
 
@@ -123,14 +132,17 @@ vmw_dx_shader_unbind
 
     The dx shader unbind callback.
 
-    :param struct vmw_resource \*res:
+    :param res:
         The shader resource
+    :type res: struct vmw_resource \*
 
-    :param bool readback:
+    :param readback:
         Whether this is a readback unbind. Currently unused.
+    :type readback: bool
 
-    :param struct ttm_validate_buffer \*val_buf:
+    :param val_buf:
         MOB buffer information.
+    :type val_buf: struct ttm_validate_buffer \*
 
 .. _`vmw_dx_shader_cotable_list_scrub`:
 
@@ -141,14 +153,17 @@ vmw_dx_shader_cotable_list_scrub
 
     The cotable unbind_func callback for DX shaders.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct list_head \*list:
+    :param list:
         The list of cotable resources.
+    :type list: struct list_head \*
 
-    :param bool readback:
+    :param readback:
         Whether the call was part of a readback unbind.
+    :type readback: bool
 
 .. _`vmw_dx_shader_cotable_list_scrub.description`:
 
@@ -167,8 +182,9 @@ vmw_dx_shader_res_free
 
     The DX shader free callback
 
-    :param struct vmw_resource \*res:
+    :param res:
         The shader resource
+    :type res: struct vmw_resource \*
 
 .. _`vmw_dx_shader_res_free.description`:
 
@@ -186,20 +202,25 @@ vmw_dx_shader_add
 
     Add a shader resource as a command buffer managed resource.
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         The command buffer resource manager.
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param struct vmw_resource \*ctx:
+    :param ctx:
         Pointer to the context resource.
+    :type ctx: struct vmw_resource \*
 
-    :param u32 user_key:
+    :param user_key:
         The id used for this shader.
+    :type user_key: u32
 
-    :param SVGA3dShaderType shader_type:
+    :param shader_type:
         The shader type.
+    :type shader_type: SVGA3dShaderType
 
-    :param struct list_head \*list:
+    :param list:
         The list of staged command buffer managed resources.
+    :type list: struct list_head \*
 
 .. _`vmw_user_shader_base_to_res`:
 
@@ -210,8 +231,9 @@ vmw_user_shader_base_to_res
 
     space shader management:
 
-    :param struct ttm_base_object \*base:
+    :param base:
         *undescribed*
+    :type base: struct ttm_base_object \*
 
 .. _`vmw_user_shader_base_release`:
 
@@ -222,8 +244,9 @@ vmw_user_shader_base_release
 
     base object. It releases the base-object's reference on the resource object.
 
-    :param struct ttm_base_object \*\*p_base:
+    :param p_base:
         *undescribed*
+    :type p_base: struct ttm_base_object \*\*
 
 .. _`vmw_shader_id_ok`:
 
@@ -234,11 +257,13 @@ vmw_shader_id_ok
 
     Check whether a compat shader user key and shader type are within valid bounds.
 
-    :param u32 user_key:
+    :param user_key:
         User space id of the shader.
+    :type user_key: u32
 
-    :param SVGA3dShaderType shader_type:
+    :param shader_type:
         Shader type.
+    :type shader_type: SVGA3dShaderType
 
 .. _`vmw_shader_id_ok.description`:
 
@@ -256,11 +281,13 @@ vmw_shader_key
 
     Compute a hash key suitable for a compat shader.
 
-    :param u32 user_key:
+    :param user_key:
         User space id of the shader.
+    :type user_key: u32
 
-    :param SVGA3dShaderType shader_type:
+    :param shader_type:
         Shader type.
+    :type shader_type: SVGA3dShaderType
 
 .. _`vmw_shader_key.description`:
 
@@ -279,18 +306,22 @@ vmw_shader_remove
 
     Stage a compat shader for removal.
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         Pointer to the compat shader manager identifying the shader namespace.
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param u32 user_key:
+    :param user_key:
         The key that is used to identify the shader. The key is
         unique to the shader type.
+    :type user_key: u32
 
-    :param SVGA3dShaderType shader_type:
+    :param shader_type:
         Shader type.
+    :type shader_type: SVGA3dShaderType
 
-    :param struct list_head \*list:
+    :param list:
         Caller's list of staged command buffer resource actions.
+    :type list: struct list_head \*
 
 .. _`vmw_compat_shader_add`:
 
@@ -301,27 +332,34 @@ vmw_compat_shader_add
 
     Create a compat shader and stage it for addition as a command buffer managed resource.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         Pointer to the compat shader manager identifying the shader namespace.
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param u32 user_key:
+    :param user_key:
         The key that is used to identify the shader. The key is
         unique to the shader type.
+    :type user_key: u32
 
-    :param const void \*bytecode:
+    :param bytecode:
         Pointer to the bytecode of the shader.
+    :type bytecode: const void \*
 
-    :param SVGA3dShaderType shader_type:
+    :param shader_type:
         Shader type.
+    :type shader_type: SVGA3dShaderType
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param struct list_head \*list:
+    :param list:
         Caller's list of staged command buffer resource actions.
+    :type list: struct list_head \*
 
 .. _`vmw_shader_lookup`:
 
@@ -332,15 +370,18 @@ vmw_shader_lookup
 
     Look up a compat shader
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         Pointer to the command buffer managed resource manager identifying
         the shader namespace.
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param u32 user_key:
+    :param user_key:
         The user space id of the shader.
+    :type user_key: u32
 
-    :param SVGA3dShaderType shader_type:
+    :param shader_type:
         The shader type.
+    :type shader_type: SVGA3dShaderType
 
 .. _`vmw_shader_lookup.description`:
 

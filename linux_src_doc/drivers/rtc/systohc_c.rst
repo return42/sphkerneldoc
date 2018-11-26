@@ -10,11 +10,13 @@ rtc_set_ntp_time
 
     Save NTP synchronized time to the RTC
 
-    :param struct timespec64 now:
+    :param now:
         Current time of day
+    :type now: struct timespec64
 
-    :param unsigned long \*target_nsec:
+    :param target_nsec:
         pointer for desired now->tv_nsec value
+    :type target_nsec: unsigned long \*
 
 .. _`rtc_set_ntp_time.description`:
 

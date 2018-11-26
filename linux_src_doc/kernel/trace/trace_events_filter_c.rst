@@ -10,14 +10,17 @@ update_preds
 
     assign a program entry a label target
 
-    :param struct prog_entry \*prog:
+    :param prog:
         The program array
+    :type prog: struct prog_entry \*
 
-    :param int N:
+    :param N:
         The index of the current entry in \ ``prog``\ 
+    :type N: int
 
-    :param int invert:
+    :param invert:
         *undescribed*
+    :type invert: int
 
 .. _`update_preds.description`:
 
@@ -39,17 +42,21 @@ filter_parse_regex
 
     parse a basic regex
 
-    :param char \*buff:
+    :param buff:
         the raw regex
+    :type buff: char \*
 
-    :param int len:
+    :param len:
         length of the regex
+    :type len: int
 
-    :param char \*\*search:
+    :param search:
         will point to the beginning of the string to compare
+    :type search: char \*\*
 
-    :param int \*not:
+    :param not:
         tell whether the match will have to be inverted
+    :type not: int \*
 
 .. _`filter_parse_regex.description`:
 
@@ -75,18 +82,22 @@ create_filter
 
     create a filter for a trace_event_call
 
-    :param struct trace_event_call \*call:
+    :param call:
         trace_event_call to create a filter for
+    :type call: struct trace_event_call \*
 
-    :param char \*filter_string:
+    :param filter_string:
         *undescribed*
+    :type filter_string: char \*
 
-    :param bool set_str:
+    :param set_str:
         remember \ ``filter_str``\  and enable detailed error in filter
+    :type set_str: bool
 
-    :param struct event_filter \*\*filterp:
+    :param filterp:
         out param for created filter (always updated on return)
         Must be a pointer that references a NULL pointer.
+    :type filterp: struct event_filter \*\*
 
 .. _`create_filter.description`:
 
@@ -111,17 +122,21 @@ create_system_filter
 
     create a filter for an event_subsystem
 
-    :param struct trace_subsystem_dir \*dir:
+    :param dir:
         *undescribed*
+    :type dir: struct trace_subsystem_dir \*
 
-    :param struct trace_array \*tr:
+    :param tr:
         *undescribed*
+    :type tr: struct trace_array \*
 
-    :param char \*filter_str:
+    :param filter_str:
         filter string
+    :type filter_str: char \*
 
-    :param struct event_filter \*\*filterp:
+    :param filterp:
         out param for created filter (always updated on return)
+    :type filterp: struct event_filter \*\*
 
 .. _`create_system_filter.description`:
 

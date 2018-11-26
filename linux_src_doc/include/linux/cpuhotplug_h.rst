@@ -10,11 +10,13 @@ cpuhp_setup_state
 
     Setup hotplug state callbacks with calling the callbacks
 
-    :param enum cpuhp_state state:
+    :param state:
         The state for which the calls are installed
+    :type state: enum cpuhp_state
 
-    :param const char \*name:
+    :param name:
         Name of the callback (will be used in debug output)
+    :type name: const char \*
 
     :param int (\*startup)(unsigned int cpu):
         startup callback function
@@ -39,11 +41,13 @@ cpuhp_setup_state_nocalls
 
     Setup hotplug state callbacks without calling the callbacks
 
-    :param enum cpuhp_state state:
+    :param state:
         The state for which the calls are installed
+    :type state: enum cpuhp_state
 
-    :param const char \*name:
+    :param name:
         Name of the callback.
+    :type name: const char \*
 
     :param int (\*startup)(unsigned int cpu):
         startup callback function
@@ -68,11 +72,13 @@ cpuhp_setup_state_multi
 
     Add callbacks for multi state
 
-    :param enum cpuhp_state state:
+    :param state:
         The state for which the calls are installed
+    :type state: enum cpuhp_state
 
-    :param const char \*name:
+    :param name:
         Name of the callback.
+    :type name: const char \*
 
     :param int (\*startup)(unsigned int cpu, struct hlist_node \*node):
         startup callback function
@@ -99,11 +105,13 @@ cpuhp_state_add_instance
 
     Add an instance for a state and invoke startup callback.
 
-    :param enum cpuhp_state state:
+    :param state:
         The state for which the instance is installed
+    :type state: enum cpuhp_state
 
-    :param struct hlist_node \*node:
+    :param node:
         The node for this individual state.
+    :type node: struct hlist_node \*
 
 .. _`cpuhp_state_add_instance.description`:
 
@@ -123,11 +131,13 @@ cpuhp_state_add_instance_nocalls
 
     Add an instance for a state without invoking the startup callback.
 
-    :param enum cpuhp_state state:
+    :param state:
         The state for which the instance is installed
+    :type state: enum cpuhp_state
 
-    :param struct hlist_node \*node:
+    :param node:
         The node for this individual state.
+    :type node: struct hlist_node \*
 
 .. _`cpuhp_state_add_instance_nocalls.description`:
 
@@ -146,8 +156,9 @@ cpuhp_remove_state
 
     Remove hotplug state callbacks and invoke the teardown
 
-    :param enum cpuhp_state state:
+    :param state:
         The state for which the calls are removed
+    :type state: enum cpuhp_state
 
 .. _`cpuhp_remove_state.description`:
 
@@ -166,8 +177,9 @@ cpuhp_remove_state_nocalls
 
     Remove hotplug state callbacks without invoking teardown
 
-    :param enum cpuhp_state state:
+    :param state:
         The state for which the calls are removed
+    :type state: enum cpuhp_state
 
 .. _`cpuhp_remove_multi_state`:
 
@@ -178,8 +190,9 @@ cpuhp_remove_multi_state
 
     Remove hotplug multi state callback
 
-    :param enum cpuhp_state state:
+    :param state:
         The state for which the calls are removed
+    :type state: enum cpuhp_state
 
 .. _`cpuhp_remove_multi_state.description`:
 
@@ -199,11 +212,13 @@ cpuhp_state_remove_instance
 
     Remove hotplug instance from state and invoke the teardown callback
 
-    :param enum cpuhp_state state:
+    :param state:
         The state from which the instance is removed
+    :type state: enum cpuhp_state
 
-    :param struct hlist_node \*node:
+    :param node:
         The node for this individual state.
+    :type node: struct hlist_node \*
 
 .. _`cpuhp_state_remove_instance.description`:
 
@@ -222,11 +237,13 @@ cpuhp_state_remove_instance_nocalls
 
     Remove hotplug instance from state without invoking the reatdown callback
 
-    :param enum cpuhp_state state:
+    :param state:
         The state from which the instance is removed
+    :type state: enum cpuhp_state
 
-    :param struct hlist_node \*node:
+    :param node:
         The node for this individual state.
+    :type node: struct hlist_node \*
 
 .. _`cpuhp_state_remove_instance_nocalls.description`:
 

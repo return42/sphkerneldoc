@@ -10,11 +10,13 @@ clear_user
 
     - Zero a block of memory in user space.
 
-    :param void __user \*to:
+    :param to:
         Destination address, in user space.
+    :type to: void __user \*
 
-    :param unsigned long n:
+    :param n:
         Number of bytes to zero.
+    :type n: unsigned long
 
 .. _`clear_user.description`:
 
@@ -35,11 +37,13 @@ __clear_user
 
     - Zero a block of memory in user space, with less checking.
 
-    :param void __user \*to:
+    :param to:
         Destination address, in user space.
+    :type to: void __user \*
 
-    :param unsigned long n:
+    :param n:
         Number of bytes to zero.
+    :type n: unsigned long
 
 .. _`__clear_user.description`:
 

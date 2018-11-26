@@ -10,11 +10,13 @@ pvrdma_get_dma_mr
 
     get a DMA memory region
 
-    :param struct ib_pd \*pd:
+    :param pd:
         protection domain
+    :type pd: struct ib_pd \*
 
-    :param int acc:
+    :param acc:
         access flags
+    :type acc: int
 
 .. _`pvrdma_reg_user_mr`:
 
@@ -25,23 +27,29 @@ pvrdma_reg_user_mr
 
     register a userspace memory region
 
-    :param struct ib_pd \*pd:
+    :param pd:
         protection domain
+    :type pd: struct ib_pd \*
 
-    :param u64 start:
+    :param start:
         starting address
+    :type start: u64
 
-    :param u64 length:
+    :param length:
         length of region
+    :type length: u64
 
-    :param u64 virt_addr:
+    :param virt_addr:
         I/O virtual address
+    :type virt_addr: u64
 
-    :param int access_flags:
+    :param access_flags:
         access flags for memory region
+    :type access_flags: int
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`pvrdma_alloc_mr`:
 
@@ -52,14 +60,17 @@ pvrdma_alloc_mr
 
     allocate a memory region
 
-    :param struct ib_pd \*pd:
+    :param pd:
         protection domain
+    :type pd: struct ib_pd \*
 
-    :param enum ib_mr_type mr_type:
+    :param mr_type:
         type of memory region
+    :type mr_type: enum ib_mr_type
 
-    :param u32 max_num_sg:
+    :param max_num_sg:
         maximum number of pages
+    :type max_num_sg: u32
 
 .. _`pvrdma_dereg_mr`:
 
@@ -70,8 +81,9 @@ pvrdma_dereg_mr
 
     deregister a memory region
 
-    :param struct ib_mr \*ibmr:
+    :param ibmr:
         memory region
+    :type ibmr: struct ib_mr \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ devm_memremap_pages
 
     remap and provide memmap backing for the given resource
 
-    :param struct device \*dev:
+    :param dev:
         hosting device for \ ``res``\ 
+    :type dev: struct device \*
 
-    :param struct dev_pagemap \*pgmap:
+    :param pgmap:
         pointer to a struct dev_pgmap
+    :type pgmap: struct dev_pagemap \*
 
 .. _`devm_memremap_pages.notes`:
 
@@ -46,11 +48,13 @@ get_dev_pagemap
 
     take a new live reference on the dev_pagemap for \ ``pfn``\ 
 
-    :param unsigned long pfn:
+    :param pfn:
         page frame number to lookup page_map
+    :type pfn: unsigned long
 
-    :param struct dev_pagemap \*pgmap:
+    :param pgmap:
         optional known pgmap that already has a reference
+    :type pgmap: struct dev_pagemap \*
 
 .. _`get_dev_pagemap.description`:
 

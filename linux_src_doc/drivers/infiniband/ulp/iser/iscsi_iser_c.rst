@@ -10,11 +10,13 @@ iscsi_iser_pdu_alloc
 
     allocate an iscsi-iser PDU
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task
+    :type task: struct iscsi_task \*
 
-    :param uint8_t opcode:
+    :param opcode:
         iscsi command opcode
+    :type opcode: uint8_t
 
 .. _`iscsi_iser_pdu_alloc.netes`:
 
@@ -33,11 +35,13 @@ iser_initialize_task_headers
 
     Initialize task headers
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task
+    :type task: struct iscsi_task \*
 
-    :param struct iser_tx_desc \*tx_desc:
+    :param tx_desc:
         iser tx descriptor
+    :type tx_desc: struct iser_tx_desc \*
 
 .. _`iser_initialize_task_headers.notes`:
 
@@ -58,8 +62,9 @@ iscsi_iser_task_init
 
     Initialize iscsi-iser task
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_iser_task_init.description`:
 
@@ -85,11 +90,13 @@ iscsi_iser_mtask_xmit
 
     xmit management (immediate) task
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         task management task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_iser_mtask_xmit.notes`:
 
@@ -109,8 +116,9 @@ iscsi_iser_task_xmit
 
     xmit iscsi-iser task
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_iser_task_xmit.return`:
 
@@ -128,8 +136,9 @@ iscsi_iser_cleanup_task
 
     cleanup an iscsi-iser task
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_iser_cleanup_task.notes`:
 
@@ -149,11 +158,13 @@ iscsi_iser_check_protection
 
     check protection information status of task.
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task
+    :type task: struct iscsi_task \*
 
-    :param sector_t \*sector:
+    :param sector:
         error sector if exsists (output)
+    :type sector: sector_t \*
 
 .. _`iscsi_iser_check_protection.return`:
 
@@ -176,11 +187,13 @@ iscsi_iser_conn_create
 
     create a new iscsi-iser connection
 
-    :param struct iscsi_cls_session \*cls_session:
+    :param cls_session:
         iscsi class connection
+    :type cls_session: struct iscsi_cls_session \*
 
-    :param uint32_t conn_idx:
+    :param conn_idx:
         connection index within the session (for MCS)
+    :type conn_idx: uint32_t
 
 .. _`iscsi_iser_conn_create.return`:
 
@@ -199,17 +212,21 @@ iscsi_iser_conn_bind
 
     bind iscsi and iser connection structures
 
-    :param struct iscsi_cls_session \*cls_session:
+    :param cls_session:
         iscsi class session
+    :type cls_session: struct iscsi_cls_session \*
 
-    :param struct iscsi_cls_conn \*cls_conn:
+    :param cls_conn:
         iscsi class connection
+    :type cls_conn: struct iscsi_cls_conn \*
 
-    :param uint64_t transport_eph:
+    :param transport_eph:
         transport end-point handle
+    :type transport_eph: uint64_t
 
-    :param int is_leading:
+    :param is_leading:
         indicate if this is the session leading connection (MCS)
+    :type is_leading: int
 
 .. _`iscsi_iser_conn_bind.return`:
 
@@ -229,8 +246,9 @@ iscsi_iser_conn_start
 
     start iscsi-iser connection
 
-    :param struct iscsi_cls_conn \*cls_conn:
+    :param cls_conn:
         iscsi class connection
+    :type cls_conn: struct iscsi_cls_conn \*
 
 .. _`iscsi_iser_conn_start.notes`:
 
@@ -250,11 +268,13 @@ iscsi_iser_conn_stop
 
     stop iscsi-iser connection
 
-    :param struct iscsi_cls_conn \*cls_conn:
+    :param cls_conn:
         iscsi class connection
+    :type cls_conn: struct iscsi_cls_conn \*
 
-    :param int flag:
+    :param flag:
         indicate if recover or terminate (passed as is)
+    :type flag: int
 
 .. _`iscsi_iser_conn_stop.notes`:
 
@@ -275,8 +295,9 @@ iscsi_iser_session_destroy
 
     destroy iscsi-iser session
 
-    :param struct iscsi_cls_session \*cls_session:
+    :param cls_session:
         iscsi class session
+    :type cls_session: struct iscsi_cls_session \*
 
 .. _`iscsi_iser_session_destroy.description`:
 
@@ -294,17 +315,21 @@ iscsi_iser_session_create
 
     create an iscsi-iser session
 
-    :param struct iscsi_endpoint \*ep:
+    :param ep:
         iscsi end-point handle
+    :type ep: struct iscsi_endpoint \*
 
-    :param uint16_t cmds_max:
+    :param cmds_max:
         maximum commands in this session
+    :type cmds_max: uint16_t
 
-    :param uint16_t qdepth:
+    :param qdepth:
         session command queue depth
+    :type qdepth: uint16_t
 
-    :param uint32_t initial_cmdsn:
+    :param initial_cmdsn:
         initiator command sequnce number
+    :type initial_cmdsn: uint32_t
 
 .. _`iscsi_iser_session_create.description`:
 
@@ -323,11 +348,13 @@ iscsi_iser_conn_get_stats
 
     set class connection parameter
 
-    :param struct iscsi_cls_conn \*cls_conn:
+    :param cls_conn:
         iscsi class connection
+    :type cls_conn: struct iscsi_cls_conn \*
 
-    :param struct iscsi_stats \*stats:
+    :param stats:
         iscsi stats to output
+    :type stats: struct iscsi_stats \*
 
 .. _`iscsi_iser_conn_get_stats.description`:
 
@@ -345,14 +372,17 @@ iscsi_iser_ep_connect
 
     Initiate iSER connection establishment
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi_host
+    :type shost: struct Scsi_Host \*
 
-    :param struct sockaddr \*dst_addr:
+    :param dst_addr:
         destination address
+    :type dst_addr: struct sockaddr \*
 
-    :param int non_blocking:
+    :param non_blocking:
         *undescribed*
+    :type non_blocking: int
 
 .. _`iscsi_iser_ep_connect.description`:
 
@@ -382,11 +412,13 @@ iscsi_iser_ep_poll
 
     poll for iser connection establishment to complete
 
-    :param struct iscsi_endpoint \*ep:
+    :param ep:
         iscsi endpoint (created at ep_connect)
+    :type ep: struct iscsi_endpoint \*
 
-    :param int timeout_ms:
+    :param timeout_ms:
         polling timeout allowed in ms.
+    :type timeout_ms: int
 
 .. _`iscsi_iser_ep_poll.description`:
 
@@ -415,8 +447,9 @@ iscsi_iser_ep_disconnect
 
     Initiate connection teardown process
 
-    :param struct iscsi_endpoint \*ep:
+    :param ep:
         iscsi endpoint handle
+    :type ep: struct iscsi_endpoint \*
 
 .. _`iscsi_iser_ep_disconnect.description`:
 

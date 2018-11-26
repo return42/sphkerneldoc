@@ -10,8 +10,9 @@ irq_migrate_all_off_this_cpu
 
     Migrate irqs away from offline cpu
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`irq_migrate_all_off_this_cpu.description`:
 
@@ -39,8 +40,9 @@ irq_affinity_online_cpu
 
     Restore affinity for managed interrupts
 
-    :param unsigned int cpu:
+    :param cpu:
         Upcoming CPU for which interrupts should be restored
+    :type cpu: unsigned int
 
 .. This file was automatic generated / don't edit.
 

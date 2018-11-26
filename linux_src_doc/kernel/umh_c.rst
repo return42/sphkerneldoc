@@ -10,8 +10,9 @@
 
     Modify usermodehelper_disabled.
 
-    :param enum umh_disable_depth depth:
+    :param depth:
         New value to assign to usermodehelper_disabled.
+    :type depth: enum umh_disable_depth
 
 .. _`__usermodehelper_set_disable_depth.description`:
 
@@ -30,8 +31,9 @@ writing) and wakeup tasks waiting for it to change.
 
     Prevent new helpers from being started.
 
-    :param enum umh_disable_depth depth:
+    :param depth:
         New value to assign to usermodehelper_disabled.
+    :type depth: enum umh_disable_depth
 
 .. _`__usermodehelper_disable.description`:
 
@@ -49,17 +51,21 @@ call_usermodehelper_setup
 
     prepare to call a usermode helper
 
-    :param const char \*path:
+    :param path:
         path to usermode executable
+    :type path: const char \*
 
-    :param char \*\*argv:
+    :param argv:
         arg vector for process
+    :type argv: char \*\*
 
-    :param char \*\*envp:
+    :param envp:
         environment for process
+    :type envp: char \*\*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         gfp mask for memory allocation
+    :type gfp_mask: gfp_t
 
     :param int (\*init)(struct subprocess_info \*info, struct cred \*new):
         an init function
@@ -67,8 +73,9 @@ call_usermodehelper_setup
     :param void (\*cleanup)(struct subprocess_info \*info):
         a cleanup function
 
-    :param void \*data:
+    :param data:
         arbitrary context sensitive data
+    :type data: void \*
 
 .. _`call_usermodehelper_setup.description`:
 
@@ -97,19 +104,25 @@ fork_usermode_blob
 
     fork a blob of bytes as a usermode process
 
-    :param void \*data:
+    :param data:
         a blob of bytes that can be do_execv-ed as a file
+    :type data: void \*
 
-    :param size_t len:
+    :param len:
         length of the blob
+    :type len: size_t
 
-    :param struct umh_info \*info:
+    :param info:
         information about usermode process (shouldn't be NULL)
+    :type info: struct umh_info \*
 
 .. _`fork_usermode_blob.description`:
 
 Description
 -----------
+
+If info->cmdline is set it will be used as command line for the
+user process, else "usermodehelper" is used.
 
 Returns either negative error or zero which indicates success
 in executing a blob of bytes as a usermode process. In such
@@ -127,14 +140,16 @@ call_usermodehelper_exec
 
     start a usermode application
 
-    :param struct subprocess_info \*sub_info:
+    :param sub_info:
         information about the subprocessa
+    :type sub_info: struct subprocess_info \*
 
-    :param int wait:
+    :param wait:
         wait for the application to finish and return status.
         when UMH_NO_WAIT don't wait at all, but you get no useful error back
         when the program couldn't be exec'ed. This makes it safe to call
         from interrupt context.
+    :type wait: int
 
 .. _`call_usermodehelper_exec.description`:
 
@@ -154,20 +169,24 @@ call_usermodehelper
 
     prepare and start a usermode application
 
-    :param const char \*path:
+    :param path:
         path to usermode executable
+    :type path: const char \*
 
-    :param char \*\*argv:
+    :param argv:
         arg vector for process
+    :type argv: char \*\*
 
-    :param char \*\*envp:
+    :param envp:
         environment for process
+    :type envp: char \*\*
 
-    :param int wait:
+    :param wait:
         wait for the application to finish and return status.
         when UMH_NO_WAIT don't wait at all, but you get no useful error back
         when the program couldn't be exec'ed. This makes it safe to call
         from interrupt context.
+    :type wait: int
 
 .. _`call_usermodehelper.description`:
 

@@ -10,14 +10,17 @@ convert_float_matrix
 
     This converts a double into HW register spec defined format S2D13.
 
-    :param uint16_t \*matrix:
+    :param matrix:
         *undescribed*
+    :type matrix: uint16_t \*
 
-    :param struct fixed31_32 \*flt:
+    :param flt:
         *undescribed*
+    :type flt: struct fixed31_32 \*
 
-    :param uint32_t buffer_size:
+    :param buffer_size:
         *undescribed*
+    :type buffer_size: uint32_t
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ powernv_flash_set_driver_info
 
     Fill the mtd_info structure and docg3 structure \ ``pdev``\ : The platform device
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         The structure to fill
+    :type mtd: struct mtd_info \*
 
 .. _`powernv_flash_probe`:
 
@@ -23,8 +25,9 @@ powernv_flash_probe
 
 .. c:function:: int powernv_flash_probe(struct platform_device *pdev)
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
 .. _`powernv_flash_probe.description`:
 
@@ -42,8 +45,9 @@ powernv_flash_release
 
     Release the driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         the platform device
+    :type pdev: struct platform_device \*
 
 .. _`powernv_flash_release.description`:
 

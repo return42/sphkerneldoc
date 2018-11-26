@@ -10,23 +10,29 @@ convert_extent_bit
 
     convert all bits in a given range from one bit to another
 
-    :param struct extent_io_tree \*tree:
+    :param tree:
         the io tree to search
+    :type tree: struct extent_io_tree \*
 
-    :param u64 start:
+    :param start:
         the start offset in bytes
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         the end offset in bytes (inclusive)
+    :type end: u64
 
-    :param unsigned bits:
+    :param bits:
         the bits to set in this range
+    :type bits: unsigned
 
-    :param unsigned clear_bits:
+    :param clear_bits:
         the bits to clear in this range
+    :type clear_bits: unsigned
 
-    :param struct extent_state \*\*cached_state:
+    :param cached_state:
         state that we're going to cache
+    :type cached_state: struct extent_state \*\*
 
 .. _`convert_extent_bit.description`:
 
@@ -50,14 +56,17 @@ extent_write_cache_pages
 
     walk the list of dirty pages of the given address space and write all of them.
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space structure to write
+    :type mapping: struct address_space \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         subtract the number of written pages from \*@wbc->nr_to_write
+    :type wbc: struct writeback_control \*
 
-    :param struct extent_page_data \*epd:
+    :param epd:
         *undescribed*
+    :type epd: struct extent_page_data \*
 
 .. _`extent_write_cache_pages.description`:
 
@@ -81,14 +90,17 @@ extent_buffer_test_bit
 
     determine whether a bit in a bitmap item is set
 
-    :param struct extent_buffer \*eb:
+    :param eb:
         the extent buffer
+    :type eb: struct extent_buffer \*
 
-    :param unsigned long start:
+    :param start:
         offset of the bitmap item in the extent buffer
+    :type start: unsigned long
 
-    :param unsigned long nr:
+    :param nr:
         bit number to test
+    :type nr: unsigned long
 
 .. _`extent_buffer_bitmap_set`:
 
@@ -99,17 +111,21 @@ extent_buffer_bitmap_set
 
     set an area of a bitmap
 
-    :param struct extent_buffer \*eb:
+    :param eb:
         the extent buffer
+    :type eb: struct extent_buffer \*
 
-    :param unsigned long start:
+    :param start:
         offset of the bitmap item in the extent buffer
+    :type start: unsigned long
 
-    :param unsigned long pos:
+    :param pos:
         bit number of the first bit
+    :type pos: unsigned long
 
-    :param unsigned long len:
+    :param len:
         number of bits to set
+    :type len: unsigned long
 
 .. _`extent_buffer_bitmap_clear`:
 
@@ -120,17 +136,21 @@ extent_buffer_bitmap_clear
 
     clear an area of a bitmap
 
-    :param struct extent_buffer \*eb:
+    :param eb:
         the extent buffer
+    :type eb: struct extent_buffer \*
 
-    :param unsigned long start:
+    :param start:
         offset of the bitmap item in the extent buffer
+    :type start: unsigned long
 
-    :param unsigned long pos:
+    :param pos:
         bit number of the first bit
+    :type pos: unsigned long
 
-    :param unsigned long len:
+    :param len:
         number of bits to clear
+    :type len: unsigned long
 
 .. This file was automatic generated / don't edit.
 

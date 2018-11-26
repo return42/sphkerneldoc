@@ -10,12 +10,14 @@ xprt_destroy_backchannel
 
     Destroys the backchannel preallocated structures.
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         the transport holding the preallocated strucures
         \ ``max_reqs``\     the maximum number of preallocated structures to destroy
+    :type xprt: struct rpc_xprt \*
 
-    :param unsigned int max_reqs:
+    :param max_reqs:
         *undescribed*
+    :type max_reqs: unsigned int
 
 .. _`xprt_destroy_backchannel.description`:
 

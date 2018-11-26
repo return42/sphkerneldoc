@@ -10,11 +10,13 @@ it821x_program
 
     program the PIO/MWDMA registers
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to tune
+    :type drive: ide_drive_t \*
 
-    :param u16 timing:
+    :param timing:
         timing info
+    :type timing: u16
 
 .. _`it821x_program.description`:
 
@@ -33,11 +35,13 @@ it821x_program_udma
 
     program the UDMA registers
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to tune
+    :type drive: ide_drive_t \*
 
-    :param u16 timing:
+    :param timing:
         timing info
+    :type timing: u16
 
 .. _`it821x_program_udma.description`:
 
@@ -54,8 +58,9 @@ it821x_clock_strategy
 
 .. c:function:: void it821x_clock_strategy(ide_drive_t *drive)
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to set up
+    :type drive: ide_drive_t \*
 
 .. _`it821x_clock_strategy.description`:
 
@@ -74,11 +79,13 @@ it821x_set_pio_mode
 
     set host controller for PIO mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`it821x_set_pio_mode.description`:
 
@@ -97,11 +104,13 @@ it821x_tune_mwdma
 
     tune a channel for MWDMA
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to set up
+    :type drive: ide_drive_t \*
 
-    :param u8 mode_wanted:
+    :param mode_wanted:
         the target operating mode
+    :type mode_wanted: u8
 
 .. _`it821x_tune_mwdma.description`:
 
@@ -122,11 +131,13 @@ it821x_tune_udma
 
     tune a channel for UDMA
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to set up
+    :type drive: ide_drive_t \*
 
-    :param u8 mode_wanted:
+    :param mode_wanted:
         the target operating mode
+    :type mode_wanted: u8
 
 .. _`it821x_tune_udma.description`:
 
@@ -145,8 +156,9 @@ it821x_dma_start
 
     DMA hook
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive for DMA
+    :type drive: ide_drive_t \*
 
 .. _`it821x_dma_start.description`:
 
@@ -175,8 +187,9 @@ it821x_dma_end
 
     DMA hook
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive for DMA stop
+    :type drive: ide_drive_t \*
 
 .. _`it821x_dma_end.description`:
 
@@ -196,11 +209,13 @@ it821x_set_dma_mode
 
     set host controller for DMA mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`it821x_set_dma_mode.description`:
 
@@ -218,8 +233,9 @@ it821x_cable_detect
 
     cable detection
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         interface to check
+    :type hwif: ide_hwif_t \*
 
 .. _`it821x_cable_detect.description`:
 
@@ -239,8 +255,9 @@ it821x_quirkproc
 
     post init callback
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`it821x_quirkproc.description`:
 
@@ -260,8 +277,9 @@ init_hwif_it821x
 
     set up hwif structs
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         interface to set up
+    :type hwif: ide_hwif_t \*
 
 .. _`init_hwif_it821x.description`:
 
@@ -281,11 +299,13 @@ it821x_init_one
 
     pci layer discovery entry
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         ident table entry
+    :type id: const struct pci_device_id \*
 
 .. _`it821x_init_one.description`:
 

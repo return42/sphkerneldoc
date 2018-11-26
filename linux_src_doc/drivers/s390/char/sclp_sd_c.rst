@@ -130,8 +130,9 @@ sclp_sd_listener_add
 
     Add listener for Store Data responses
 
-    :param struct sclp_sd_listener \*listener:
+    :param listener:
         Listener to add
+    :type listener: struct sclp_sd_listener \*
 
 .. _`sclp_sd_listener_remove`:
 
@@ -142,8 +143,9 @@ sclp_sd_listener_remove
 
     Remove listener for Store Data responses
 
-    :param struct sclp_sd_listener \*listener:
+    :param listener:
         Listener to remove
+    :type listener: struct sclp_sd_listener \*
 
 .. _`sclp_sd_listener_init`:
 
@@ -154,11 +156,13 @@ sclp_sd_listener_init
 
     Initialize a Store Data response listener
 
-    :param struct sclp_sd_listener \*listener:
+    :param listener:
         *undescribed*
+    :type listener: struct sclp_sd_listener \*
 
-    :param u32 id:
+    :param id:
         Event ID to listen for
+    :type id: u32
 
 .. _`sclp_sd_listener_init.description`:
 
@@ -178,8 +182,9 @@ sclp_sd_receiver
 
     Receiver for Store Data events
 
-    :param struct evbuf_header \*evbuf_hdr:
+    :param evbuf_hdr:
         Header of received events
+    :type evbuf_hdr: struct evbuf_header \*
 
 .. _`sclp_sd_receiver.description`:
 
@@ -197,26 +202,33 @@ sclp_sd_sync
 
     Perform Store Data request synchronously
 
-    :param unsigned long page:
+    :param page:
         Address of work page - must be below 2GB
+    :type page: unsigned long
 
-    :param u8 eq:
+    :param eq:
         Input EQ value
+    :type eq: u8
 
-    :param u8 di:
+    :param di:
         Input DI value
+    :type di: u8
 
-    :param u64 sat:
+    :param sat:
         Input SAT value
+    :type sat: u64
 
-    :param u64 sa:
+    :param sa:
         Input SA value used to specify the address of the target buffer
+    :type sa: u64
 
-    :param u32 \*dsize_ptr:
+    :param dsize_ptr:
         Optional pointer to input and output DSIZE value
+    :type dsize_ptr: u32 \*
 
-    :param u32 \*esize_ptr:
+    :param esize_ptr:
         Optional pointer to output ESIZE value
+    :type esize_ptr: u32 \*
 
 .. _`sclp_sd_sync.description`:
 
@@ -237,11 +249,13 @@ sclp_sd_store_data
 
     Obtain data for specified Store Data entity
 
-    :param struct sclp_sd_data \*result:
+    :param result:
         Resulting data
+    :type result: struct sclp_sd_data \*
 
-    :param u8 di:
+    :param di:
         DI value associated with this entity
+    :type di: u8
 
 .. _`sclp_sd_store_data.description`:
 
@@ -256,7 +270,7 @@ the specified Store Data entity.
 Return
 ------
 
-\ ``0``\ :       Success - result is stored in \ ``result``\ . \ ``result``\ ->data must be
+\ ``0``\ :       Success - result is stored in \ ``result``\ . \ ``result->data``\  must be
 released using \ :c:func:`vfree`\  after use.
 \ ``-ENOENT``\ : No data available for this entity
 %<0:      Other error
@@ -270,8 +284,9 @@ sclp_sd_data_reset
 
     Reset Store Data result buffer
 
-    :param struct sclp_sd_data \*data:
+    :param data:
         Data buffer to reset
+    :type data: struct sclp_sd_data \*
 
 .. _`sclp_sd_data_reset.description`:
 
@@ -289,8 +304,9 @@ sclp_sd_file_release
 
     Release function for sclp_sd_file object
 
-    :param struct kobject \*kobj:
+    :param kobj:
         Kobject embedded in sclp_sd_file object
+    :type kobj: struct kobject \*
 
 .. _`sclp_sd_file_update`:
 
@@ -301,8 +317,9 @@ sclp_sd_file_update
 
     Update contents of sclp_sd_file object
 
-    :param struct sclp_sd_file \*sd_file:
+    :param sd_file:
         Object to update
+    :type sd_file: struct sclp_sd_file \*
 
 .. _`sclp_sd_file_update.description`:
 
@@ -324,11 +341,13 @@ sclp_sd_file_update_async
 
     Wrapper for asynchronous update call
 
-    :param void \*data:
+    :param data:
         Object to update
+    :type data: void \*
 
-    :param async_cookie_t cookie:
+    :param cookie:
         *undescribed*
+    :type cookie: async_cookie_t
 
 .. _`reload_store`:
 
@@ -339,17 +358,21 @@ reload_store
 
     Store function for "reload" sysfs attribute
 
-    :param struct kobject \*kobj:
+    :param kobj:
         Kobject of sclp_sd_file object
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`reload_store.description`:
 
@@ -367,23 +390,29 @@ data_read
 
     Read function for "read" sysfs attribute
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         Kobject of sclp_sd_file object
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct bin_attribute \*
 
-    :param char \*buffer:
+    :param buffer:
         Target buffer
+    :type buffer: char \*
 
-    :param loff_t off:
+    :param off:
         Requested file offset
+    :type off: loff_t
 
-    :param size_t size:
+    :param size:
         Requested number of bytes
+    :type size: size_t
 
 .. _`data_read.description`:
 
@@ -403,11 +432,13 @@ sclp_sd_file_create
 
     Add a sysfs file representing a Store Data entity
 
-    :param const char \*name:
+    :param name:
         Name of file
+    :type name: const char \*
 
-    :param u8 di:
+    :param di:
         DI value associated with this entity
+    :type di: u8
 
 .. _`sclp_sd_file_create.description`:
 
@@ -434,8 +465,9 @@ sclp_sd_init
 
     Initialize sclp_sd support and register sysfs files
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

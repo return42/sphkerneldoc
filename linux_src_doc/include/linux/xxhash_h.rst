@@ -10,14 +10,17 @@ xxh32
 
     calculate the 32-bit hash of the input with a given seed.
 
-    :param const void \*input:
+    :param input:
         The data to hash.
+    :type input: const void \*
 
-    :param size_t length:
+    :param length:
         The length of the data to hash.
+    :type length: size_t
 
-    :param uint32_t seed:
+    :param seed:
         The seed can be used to alter the result predictably.
+    :type seed: uint32_t
 
 .. _`xxh32.description`:
 
@@ -42,14 +45,17 @@ xxh64
 
     calculate the 64-bit hash of the input with a given seed.
 
-    :param const void \*input:
+    :param input:
         The data to hash.
+    :type input: const void \*
 
-    :param size_t length:
+    :param length:
         The length of the data to hash.
+    :type length: size_t
 
-    :param uint64_t seed:
+    :param seed:
         The seed can be used to alter the result predictably.
+    :type seed: uint64_t
 
 .. _`xxh64.description`:
 
@@ -182,11 +188,13 @@ xxh32_reset
 
     reset the xxh32 state to start a new hashing operation
 
-    :param struct xxh32_state \*state:
+    :param state:
         The xxh32 state to reset.
+    :type state: struct xxh32_state \*
 
-    :param uint32_t seed:
+    :param seed:
         Initialize the hash state with this seed.
+    :type seed: uint32_t
 
 .. _`xxh32_reset.description`:
 
@@ -204,14 +212,17 @@ xxh32_update
 
     hash the data given and update the xxh32 state
 
-    :param struct xxh32_state \*state:
+    :param state:
         The xxh32 state to update.
+    :type state: struct xxh32_state \*
 
-    :param const void \*input:
+    :param input:
         The data to hash.
+    :type input: const void \*
 
-    :param size_t length:
+    :param length:
         The length of the data to hash.
+    :type length: size_t
 
 .. _`xxh32_update.description`:
 
@@ -236,8 +247,9 @@ xxh32_digest
 
     produce the current xxh32 hash
 
-    :param const struct xxh32_state \*state:
+    :param state:
         Produce the current xxh32 hash of this state.
+    :type state: const struct xxh32_state \*
 
 .. _`xxh32_digest.description`:
 
@@ -264,11 +276,13 @@ xxh64_reset
 
     reset the xxh64 state to start a new hashing operation
 
-    :param struct xxh64_state \*state:
+    :param state:
         The xxh64 state to reset.
+    :type state: struct xxh64_state \*
 
-    :param uint64_t seed:
+    :param seed:
         Initialize the hash state with this seed.
+    :type seed: uint64_t
 
 .. _`xxh64_update`:
 
@@ -279,14 +293,17 @@ xxh64_update
 
     hash the data given and update the xxh64 state
 
-    :param struct xxh64_state \*state:
+    :param state:
         The xxh64 state to update.
+    :type state: struct xxh64_state \*
 
-    :param const void \*input:
+    :param input:
         The data to hash.
+    :type input: const void \*
 
-    :param size_t length:
+    :param length:
         The length of the data to hash.
+    :type length: size_t
 
 .. _`xxh64_update.description`:
 
@@ -311,8 +328,9 @@ xxh64_digest
 
     produce the current xxh64 hash
 
-    :param const struct xxh64_state \*state:
+    :param state:
         Produce the current xxh64 hash of this state.
+    :type state: const struct xxh64_state \*
 
 .. _`xxh64_digest.description`:
 
@@ -339,11 +357,13 @@ xxh32_copy_state
 
     copy the source state into the destination state
 
-    :param struct xxh32_state \*dst:
+    :param dst:
         The destination xxh32 state.
+    :type dst: struct xxh32_state \*
 
-    :param const struct xxh32_state \*src:
+    :param src:
         The source xxh32 state.
+    :type src: const struct xxh32_state \*
 
 .. _`xxh64_copy_state`:
 
@@ -354,11 +374,13 @@ xxh64_copy_state
 
     copy the source state into the destination state
 
-    :param struct xxh64_state \*dst:
+    :param dst:
         The destination xxh64 state.
+    :type dst: struct xxh64_state \*
 
-    :param const struct xxh64_state \*src:
+    :param src:
         The source xxh64 state.
+    :type src: const struct xxh64_state \*
 
 .. This file was automatic generated / don't edit.
 

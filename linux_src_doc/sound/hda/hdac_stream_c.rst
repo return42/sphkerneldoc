@@ -10,20 +10,25 @@ snd_hdac_stream_init
 
     initialize each stream (aka device)
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream object to initialize
+    :type azx_dev: struct hdac_stream \*
 
-    :param int idx:
+    :param idx:
         stream index number
+    :type idx: int
 
-    :param int direction:
+    :param direction:
         stream direction (SNDRV_PCM_STREAM_PLAYBACK or SNDRV_PCM_STREAM_CAPTURE)
+    :type direction: int
 
-    :param int tag:
+    :param tag:
         the tag id to assign
+    :type tag: int
 
 .. _`snd_hdac_stream_init.description`:
 
@@ -41,11 +46,13 @@ snd_hdac_stream_start
 
     start a stream
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream to start
+    :type azx_dev: struct hdac_stream \*
 
-    :param bool fresh_start:
+    :param fresh_start:
         false = wallclock timestamp relative to period wallclock
+    :type fresh_start: bool
 
 .. _`snd_hdac_stream_start.description`:
 
@@ -63,8 +70,9 @@ snd_hdac_stream_clear
 
     stop a stream DMA
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream to stop
+    :type azx_dev: struct hdac_stream \*
 
 .. _`snd_hdac_stream_stop`:
 
@@ -75,8 +83,9 @@ snd_hdac_stream_stop
 
     stop a stream
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream to stop
+    :type azx_dev: struct hdac_stream \*
 
 .. _`snd_hdac_stream_stop.description`:
 
@@ -94,8 +103,9 @@ snd_hdac_stream_reset
 
     reset a stream
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream to reset
+    :type azx_dev: struct hdac_stream \*
 
 .. _`snd_hdac_stream_setup`:
 
@@ -106,8 +116,9 @@ snd_hdac_stream_setup
 
     set up the SD for streaming
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream to set up
+    :type azx_dev: struct hdac_stream \*
 
 .. _`snd_hdac_stream_cleanup`:
 
@@ -118,8 +129,9 @@ snd_hdac_stream_cleanup
 
     cleanup a stream
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream to clean up
+    :type azx_dev: struct hdac_stream \*
 
 .. _`snd_hdac_stream_assign`:
 
@@ -130,11 +142,13 @@ snd_hdac_stream_assign
 
     assign a stream for the PCM
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream to assign
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_hdac_stream_assign.description`:
 
@@ -156,8 +170,9 @@ snd_hdac_stream_release
 
     release the assigned stream
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream to release
+    :type azx_dev: struct hdac_stream \*
 
 .. _`snd_hdac_stream_release.description`:
 
@@ -175,14 +190,17 @@ snd_hdac_get_stream
 
     return hdac_stream based on stream_tag and direction
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
-    :param int dir:
+    :param dir:
         direction for the stream to be found
+    :type dir: int
 
-    :param int stream_tag:
+    :param stream_tag:
         stream tag for stream to be found
+    :type stream_tag: int
 
 .. _`snd_hdac_stream_setup_periods`:
 
@@ -193,8 +211,9 @@ snd_hdac_stream_setup_periods
 
     set up BDL entries
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream to set up
+    :type azx_dev: struct hdac_stream \*
 
 .. _`snd_hdac_stream_setup_periods.description`:
 
@@ -213,11 +232,13 @@ snd_hdac_stream_set_params
 
     set stream parameters
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream for which parameters are to be set
+    :type azx_dev: struct hdac_stream \*
 
-    :param unsigned int format_val:
+    :param format_val:
         format value parameter
+    :type format_val: unsigned int
 
 .. _`snd_hdac_stream_set_params.description`:
 
@@ -236,11 +257,13 @@ snd_hdac_stream_timecounter_init
 
     initialize time counter
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream (master stream)
+    :type azx_dev: struct hdac_stream \*
 
-    :param unsigned int streams:
+    :param streams:
         bit flags of streams to set up
+    :type streams: unsigned int
 
 .. _`snd_hdac_stream_timecounter_init.description`:
 
@@ -261,17 +284,21 @@ snd_hdac_stream_sync_trigger
 
     turn on/off stream sync register
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream (master stream)
+    :type azx_dev: struct hdac_stream \*
 
-    :param bool set:
+    :param set:
         *undescribed*
+    :type set: bool
 
-    :param unsigned int streams:
+    :param streams:
         bit flags of streams to sync
+    :type streams: unsigned int
 
-    :param unsigned int reg:
+    :param reg:
         *undescribed*
+    :type reg: unsigned int
 
 .. _`snd_hdac_stream_sync`:
 
@@ -282,14 +309,17 @@ snd_hdac_stream_sync
 
     sync with start/strop trigger operation
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream (master stream)
+    :type azx_dev: struct hdac_stream \*
 
-    :param bool start:
+    :param start:
         true = start, false = stop
+    :type start: bool
 
-    :param unsigned int streams:
+    :param streams:
         bit flags of streams to sync
+    :type streams: unsigned int
 
 .. _`snd_hdac_stream_sync.description`:
 
@@ -308,17 +338,21 @@ snd_hdac_dsp_prepare
 
     prepare for DSP loading
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream used for DSP loading
+    :type azx_dev: struct hdac_stream \*
 
-    :param unsigned int format:
+    :param format:
         HD-audio stream format
+    :type format: unsigned int
 
-    :param unsigned int byte_size:
+    :param byte_size:
         data chunk byte size
+    :type byte_size: unsigned int
 
-    :param struct snd_dma_buffer \*bufp:
+    :param bufp:
         allocated buffer
+    :type bufp: struct snd_dma_buffer \*
 
 .. _`snd_hdac_dsp_prepare.description`:
 
@@ -337,11 +371,13 @@ snd_hdac_dsp_trigger
 
     start / stop DSP loading
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream used for DSP loading
+    :type azx_dev: struct hdac_stream \*
 
-    :param bool start:
+    :param start:
         trigger start or stop
+    :type start: bool
 
 .. _`snd_hdac_dsp_cleanup`:
 
@@ -352,11 +388,13 @@ snd_hdac_dsp_cleanup
 
     clean up the stream from DSP loading to normal
 
-    :param struct hdac_stream \*azx_dev:
+    :param azx_dev:
         HD-audio core stream used for DSP loading
+    :type azx_dev: struct hdac_stream \*
 
-    :param struct snd_dma_buffer \*dmab:
+    :param dmab:
         buffer used by DSP loading
+    :type dmab: struct snd_dma_buffer \*
 
 .. This file was automatic generated / don't edit.
 

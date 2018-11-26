@@ -46,11 +46,13 @@ hmcdrv_ftp_cmd_getid
 
     determine FTP command ID from a command string
 
-    :param const char \*cmd:
+    :param cmd:
         FTP command string (NOT zero-terminated)
+    :type cmd: const char \*
 
-    :param int len:
+    :param len:
         length of FTP command string in \ ``cmd``\ 
+    :type len: int
 
 .. _`hmcdrv_ftp_parse`:
 
@@ -61,11 +63,13 @@ hmcdrv_ftp_parse
 
     HMC drive FTP command parser
 
-    :param char \*cmd:
+    :param cmd:
         FTP command string "<cmd> <filename>"
+    :type cmd: char \*
 
-    :param struct hmcdrv_ftp_cmdspec \*ftp:
+    :param ftp:
         Pointer to FTP command specification buffer (output)
+    :type ftp: struct hmcdrv_ftp_cmdspec \*
 
 .. _`hmcdrv_ftp_parse.return`:
 
@@ -83,8 +87,9 @@ hmcdrv_ftp_do
 
     perform a HMC drive FTP, with data from kernel-space
 
-    :param const struct hmcdrv_ftp_cmdspec \*ftp:
+    :param ftp:
         pointer to FTP command specification
+    :type ftp: const struct hmcdrv_ftp_cmdspec \*
 
 .. _`hmcdrv_ftp_do.return`:
 
@@ -102,8 +107,9 @@ hmcdrv_ftp_probe
 
     probe for the HMC drive FTP service
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hmcdrv_ftp_probe.return`:
 
@@ -121,17 +127,21 @@ hmcdrv_ftp_cmd
 
     Perform a HMC drive FTP, with data from user-space
 
-    :param char __kernel \*cmd:
+    :param cmd:
         FTP command string "<cmd> <filename>"
+    :type cmd: char __kernel \*
 
-    :param loff_t offset:
+    :param offset:
         file position to read/write
+    :type offset: loff_t
 
-    :param char __user \*buf:
+    :param buf:
         user-space buffer for read/written directory/file
+    :type buf: char __user \*
 
-    :param size_t len:
+    :param len:
         size of \ ``buf``\  (read/dir) or number of bytes to write
+    :type len: size_t
 
 .. _`hmcdrv_ftp_cmd.description`:
 
@@ -156,8 +166,9 @@ hmcdrv_ftp_startup
 
     startup of HMC drive FTP functionality for a dedicated (owner) instance
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hmcdrv_ftp_startup.return`:
 
@@ -175,8 +186,9 @@ hmcdrv_ftp_shutdown
 
     shutdown of HMC drive FTP functionality for a dedicated (owner) instance
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

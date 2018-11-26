@@ -10,14 +10,17 @@
 
     probe for a single SA1111 chip.
 
-    :param struct device \*me:
+    :param me:
         *undescribed*
+    :type me: struct device \*
 
-    :param struct resource \*mem:
+    :param mem:
         *undescribed*
+    :type mem: struct resource \*
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
 .. _`__sa1111_probe.description`:
 
@@ -46,8 +49,9 @@ sa1111_pll_clock
 
     return the current PLL clock frequency.
 
-    :param struct sa1111_dev \*sadev:
+    :param sadev:
         SA1111 function block
+    :type sadev: struct sa1111_dev \*
 
 .. _`sa1111_pll_clock.bug`:
 
@@ -68,11 +72,13 @@ sa1111_select_audio_mode
 
     select I2S or AC link mode
 
-    :param struct sa1111_dev \*sadev:
+    :param sadev:
         SA1111 function block
+    :type sadev: struct sa1111_dev \*
 
-    :param int mode:
+    :param mode:
         One of \ ``SA1111_AUDIO_ACLINK``\  or \ ``SA1111_AUDIO_I2S``\ 
+    :type mode: int
 
 .. _`sa1111_select_audio_mode.description`:
 
@@ -91,11 +97,13 @@ sa1111_set_audio_rate
 
     set the audio sample rate
 
-    :param struct sa1111_dev \*sadev:
+    :param sadev:
         SA1111 SAC function block
+    :type sadev: struct sa1111_dev \*
 
-    :param int rate:
+    :param rate:
         sample rate to select
+    :type rate: int
 
 .. _`sa1111_get_audio_rate`:
 
@@ -106,8 +114,9 @@ sa1111_get_audio_rate
 
     get the audio sample rate
 
-    :param struct sa1111_dev \*sadev:
+    :param sadev:
         SA1111 SAC function block device
+    :type sadev: struct sa1111_dev \*
 
 .. _`sa1111_enable_device`:
 
@@ -118,8 +127,9 @@ sa1111_enable_device
 
     enable an on-chip SA1111 function block
 
-    :param struct sa1111_dev \*sadev:
+    :param sadev:
         SA1111 function block device to enable
+    :type sadev: struct sa1111_dev \*
 
 .. _`sa1111_disable_device`:
 
@@ -130,8 +140,9 @@ sa1111_disable_device
 
     disable an on-chip SA1111 function block
 
-    :param struct sa1111_dev \*sadev:
+    :param sadev:
         SA1111 function block device to disable
+    :type sadev: struct sa1111_dev \*
 
 .. This file was automatic generated / don't edit.
 

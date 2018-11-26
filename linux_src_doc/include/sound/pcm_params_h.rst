@@ -10,8 +10,9 @@ params_access
 
     get the access type from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`params_format`:
 
@@ -22,8 +23,9 @@ params_format
 
     get the sample format from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`params_subformat`:
 
@@ -34,8 +36,9 @@ params_subformat
 
     get the sample subformat from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`params_period_bytes`:
 
@@ -46,8 +49,9 @@ params_period_bytes
 
     get the period size (in bytes) from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`params_width`:
 
@@ -58,8 +62,9 @@ params_width
 
     get the number of bits of the sample format from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`params_width.description`:
 

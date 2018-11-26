@@ -8,8 +8,9 @@
 
 .. c:function:: int __cvmx_helper_rgmii_probe(int interface)
 
-    :param int interface:
+    :param interface:
         Interface to probe
+    :type interface: int
 
 .. _`__cvmx_helper_rgmii_probe.description`:
 
@@ -27,8 +28,9 @@ cvmx_helper_rgmii_internal_loopback
 
     out will be received back again on the same port. Externally received packets will echo back out.
 
-    :param int port:
+    :param port:
         IPD port number to loop.
+    :type port: int
 
 .. _`__cvmx_helper_rgmii_enable`:
 
@@ -39,8 +41,9 @@ cvmx_helper_rgmii_internal_loopback
 
     to get RGMII to function on the supplied interface.
 
-    :param int interface:
+    :param interface:
         PKO Interface to configure (0 or 1)
+    :type interface: int
 
 .. _`__cvmx_helper_rgmii_enable.description`:
 
@@ -58,8 +61,9 @@ Returns Zero on success
 
     auto negotiation. The result of this function may not match Octeon's link config if auto negotiation has changed since the last call to \ :c:func:`cvmx_helper_link_set`\ .
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port to query
+    :type ipd_port: int
 
 .. _`__cvmx_helper_rgmii_link_get.description`:
 
@@ -77,11 +81,13 @@ Returns Link state
 
     function does not influence auto negotiation at the PHY level. The passed link state must always match the link state returned by \ :c:func:`cvmx_helper_link_get`\ .
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port to configure
+    :type ipd_port: int
 
-    :param cvmx_helper_link_info_t link_info:
+    :param link_info:
         The new link state
+    :type link_info: cvmx_helper_link_info_t
 
 .. _`__cvmx_helper_rgmii_link_set.description`:
 
@@ -99,14 +105,17 @@ Returns Zero on success, negative on failure
 
     causes packets sent by the port to be received by Octeon. External loopback causes packets received from the wire to sent out again.
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port to loopback.
+    :type ipd_port: int
 
-    :param int enable_internal:
+    :param enable_internal:
         Non zero if you want internal loopback
+    :type enable_internal: int
 
-    :param int enable_external:
+    :param enable_external:
         Non zero if you want external loopback
+    :type enable_external: int
 
 .. _`__cvmx_helper_rgmii_configure_loopback.description`:
 

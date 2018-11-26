@@ -10,17 +10,21 @@ audit_rule_change
 
     apply all rules to the specified message type
 
-    :param int type:
+    :param type:
         audit message type
+    :type type: int
 
-    :param int seq:
+    :param seq:
         netlink audit message sequence (serial) number
+    :type seq: int
 
-    :param void \*data:
+    :param data:
         payload data
+    :type data: void \*
 
-    :param size_t datasz:
+    :param datasz:
         size of payload data
+    :type datasz: size_t
 
 .. _`audit_list_rules_send`:
 
@@ -31,11 +35,13 @@ audit_list_rules_send
 
     list the audit rules
 
-    :param struct sk_buff \*request_skb:
+    :param request_skb:
         skb of request we are replying to (used to target the reply)
+    :type request_skb: struct sk_buff \*
 
-    :param int seq:
+    :param seq:
         netlink audit message sequence (serial) number
+    :type seq: int
 
 .. _`parent_len`:
 
@@ -46,8 +52,9 @@ parent_len
 
     find the length of the parent portion of a pathname
 
-    :param const char \*path:
+    :param path:
         pathname of which to determine length
+    :type path: const char \*
 
 .. _`audit_compare_dname_path`:
 
@@ -58,15 +65,18 @@ audit_compare_dname_path
 
     compare given dentry name with last component in given path. Return of 0 indicates a match.
 
-    :param const char \*dname:
+    :param dname:
         dentry name that we're comparing
+    :type dname: const char \*
 
-    :param const char \*path:
+    :param path:
         full pathname that we're comparing
+    :type path: const char \*
 
-    :param int parentlen:
+    :param parentlen:
         length of the parent if known. Passing in AUDIT_NAME_FULL
         here indicates that we must compute this value.
+    :type parentlen: int
 
 .. This file was automatic generated / don't edit.
 

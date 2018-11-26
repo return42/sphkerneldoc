@@ -10,8 +10,9 @@ key_mask_hash
 
     mask a valid hash value.
 
-    :param uint32_t hash:
+    :param hash:
         *undescribed*
+    :type hash: uint32_t
 
 .. _`key_mask_hash.description`:
 
@@ -31,11 +32,13 @@ key_r5_hash
 
     R5 hash function (borrowed from reiserfs).
 
-    :param const char \*s:
+    :param s:
         direntry name
+    :type s: const char \*
 
-    :param int len:
+    :param len:
         name length
+    :type len: int
 
 .. _`key_test_hash`:
 
@@ -46,11 +49,13 @@ key_test_hash
 
     testing hash function.
 
-    :param const char \*str:
+    :param str:
         direntry name
+    :type str: const char \*
 
-    :param int len:
+    :param len:
         name length
+    :type len: int
 
 .. _`ino_key_init`:
 
@@ -61,14 +66,17 @@ ino_key_init
 
     initialize inode key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to initialize
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         inode number
+    :type inum: ino_t
 
 .. _`ino_key_init_flash`:
 
@@ -79,14 +87,17 @@ ino_key_init_flash
 
     initialize on-flash inode key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*k:
+    :param k:
         key to initialize
+    :type k: void \*
 
-    :param ino_t inum:
+    :param inum:
         inode number
+    :type inum: ino_t
 
 .. _`lowest_ino_key`:
 
@@ -97,14 +108,17 @@ lowest_ino_key
 
     get the lowest possible inode key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to initialize
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         inode number
+    :type inum: ino_t
 
 .. _`highest_ino_key`:
 
@@ -115,14 +129,17 @@ highest_ino_key
 
     get the highest possible inode key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to initialize
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         inode number
+    :type inum: ino_t
 
 .. _`dent_key_init`:
 
@@ -133,17 +150,21 @@ dent_key_init
 
     initialize directory entry key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to initialize
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         parent inode number
+    :type inum: ino_t
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         direntry name and length. Not a string when encrypted!
+    :type nm: const struct fscrypt_name \*
 
 .. _`dent_key_init_hash`:
 
@@ -154,17 +175,21 @@ dent_key_init_hash
 
     initialize directory entry key without re-calculating hash function.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to initialize
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         parent inode number
+    :type inum: ino_t
 
-    :param uint32_t hash:
+    :param hash:
         direntry name hash
+    :type hash: uint32_t
 
 .. _`dent_key_init_flash`:
 
@@ -175,17 +200,21 @@ dent_key_init_flash
 
     initialize on-flash directory entry key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*k:
+    :param k:
         key to initialize
+    :type k: void \*
 
-    :param ino_t inum:
+    :param inum:
         parent inode number
+    :type inum: ino_t
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         direntry name and length
+    :type nm: const struct fscrypt_name \*
 
 .. _`lowest_dent_key`:
 
@@ -196,14 +225,17 @@ lowest_dent_key
 
     get the lowest possible directory entry key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         where to store the lowest key
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         parent inode number
+    :type inum: ino_t
 
 .. _`xent_key_init`:
 
@@ -214,17 +246,21 @@ xent_key_init
 
     initialize extended attribute entry key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to initialize
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         host inode number
+    :type inum: ino_t
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         extended attribute entry name and length
+    :type nm: const struct fscrypt_name \*
 
 .. _`xent_key_init_flash`:
 
@@ -235,17 +271,21 @@ xent_key_init_flash
 
     initialize on-flash extended attribute entry key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*k:
+    :param k:
         key to initialize
+    :type k: void \*
 
-    :param ino_t inum:
+    :param inum:
         host inode number
+    :type inum: ino_t
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         extended attribute entry name and length
+    :type nm: const struct fscrypt_name \*
 
 .. _`lowest_xent_key`:
 
@@ -256,14 +296,17 @@ lowest_xent_key
 
     get the lowest possible extended attribute entry key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         where to store the lowest key
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         host inode number
+    :type inum: ino_t
 
 .. _`data_key_init`:
 
@@ -274,17 +317,21 @@ data_key_init
 
     initialize data key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to initialize
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         inode number
+    :type inum: ino_t
 
-    :param unsigned int block:
+    :param block:
         block number
+    :type block: unsigned int
 
 .. _`highest_data_key`:
 
@@ -295,14 +342,17 @@ highest_data_key
 
     get the highest possible data key for an inode.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to initialize
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         inode number
+    :type inum: ino_t
 
 .. _`trun_key_init`:
 
@@ -313,14 +363,17 @@ trun_key_init
 
     initialize truncation node key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to initialize
+    :type key: union ubifs_key \*
 
-    :param ino_t inum:
+    :param inum:
         inode number
+    :type inum: ino_t
 
 .. _`trun_key_init.description`:
 
@@ -339,11 +392,13 @@ invalid_key_init
 
     initialize invalid node key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to initialize
+    :type key: union ubifs_key \*
 
 .. _`invalid_key_init.description`:
 
@@ -361,11 +416,13 @@ key_type
 
     get key type.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key to get type of
+    :type key: const union ubifs_key \*
 
 .. _`key_type_flash`:
 
@@ -376,11 +433,13 @@ key_type_flash
 
     get type of a on-flash formatted key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const void \*k:
+    :param k:
         key to get type of
+    :type k: const void \*
 
 .. _`key_inum`:
 
@@ -391,11 +450,13 @@ key_inum
 
     fetch inode number from key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const void \*k:
+    :param k:
         key to fetch inode number from
+    :type k: const void \*
 
 .. _`key_inum_flash`:
 
@@ -406,11 +467,13 @@ key_inum_flash
 
     fetch inode number from an on-flash formatted key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const void \*k:
+    :param k:
         key to fetch inode number from
+    :type k: const void \*
 
 .. _`key_hash`:
 
@@ -421,11 +484,13 @@ key_hash
 
     get directory entry hash.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         the key to get hash from
+    :type key: const union ubifs_key \*
 
 .. _`key_hash_flash`:
 
@@ -436,11 +501,13 @@ key_hash_flash
 
     get directory entry hash from an on-flash formatted key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const void \*k:
+    :param k:
         the key to get hash from
+    :type k: const void \*
 
 .. _`key_block`:
 
@@ -451,11 +518,13 @@ key_block
 
     get data block number.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         the key to get the block number from
+    :type key: const union ubifs_key \*
 
 .. _`key_block_flash`:
 
@@ -466,11 +535,13 @@ key_block_flash
 
     get data block number from an on-flash formatted key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const void \*k:
+    :param k:
         the key to get the block number from
+    :type k: const void \*
 
 .. _`key_read`:
 
@@ -481,14 +552,17 @@ key_read
 
     transform a key to in-memory format.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const void \*from:
+    :param from:
         the key to transform
+    :type from: const void \*
 
-    :param union ubifs_key \*to:
+    :param to:
         the key to store the result
+    :type to: union ubifs_key \*
 
 .. _`key_write`:
 
@@ -499,14 +573,17 @@ key_write
 
     transform a key from in-memory format.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const union ubifs_key \*from:
+    :param from:
         the key to transform
+    :type from: const union ubifs_key \*
 
-    :param void \*to:
+    :param to:
         the key to store the result
+    :type to: void \*
 
 .. _`key_write_idx`:
 
@@ -517,14 +594,17 @@ key_write_idx
 
     transform a key from in-memory format for the index.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const union ubifs_key \*from:
+    :param from:
         the key to transform
+    :type from: const union ubifs_key \*
 
-    :param void \*to:
+    :param to:
         the key to store the result
+    :type to: void \*
 
 .. _`key_copy`:
 
@@ -535,14 +615,17 @@ key_copy
 
     copy a key.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const union ubifs_key \*from:
+    :param from:
         the key to copy from
+    :type from: const union ubifs_key \*
 
-    :param union ubifs_key \*to:
+    :param to:
         the key to copy to
+    :type to: union ubifs_key \*
 
 .. _`keys_cmp`:
 
@@ -553,14 +636,17 @@ keys_cmp
 
     compare keys.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const union ubifs_key \*key1:
+    :param key1:
         the first key to compare
+    :type key1: const union ubifs_key \*
 
-    :param const union ubifs_key \*key2:
+    :param key2:
         the second key to compare
+    :type key2: const union ubifs_key \*
 
 .. _`keys_cmp.description`:
 
@@ -579,14 +665,17 @@ keys_eq
 
     determine if keys are equivalent.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const union ubifs_key \*key1:
+    :param key1:
         the first key to compare
+    :type key1: const union ubifs_key \*
 
-    :param const union ubifs_key \*key2:
+    :param key2:
         the second key to compare
+    :type key2: const union ubifs_key \*
 
 .. _`keys_eq.description`:
 
@@ -605,11 +694,13 @@ is_hash_key
 
     is a key vulnerable to hash collisions.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key
+    :type key: const union ubifs_key \*
 
 .. _`is_hash_key.description`:
 
@@ -627,8 +718,9 @@ key_max_inode_size
 
     get maximum file size allowed by current key format.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
 .. This file was automatic generated / don't edit.
 

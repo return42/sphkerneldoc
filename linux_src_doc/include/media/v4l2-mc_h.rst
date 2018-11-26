@@ -1,180 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/media/v4l2-mc.h
 
-.. _`tuner_pad_index`:
-
-enum tuner_pad_index
-====================
-
-.. c:type:: enum tuner_pad_index
-
-    tuner pad index for MEDIA_ENT_F_TUNER
-
-.. _`tuner_pad_index.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum tuner_pad_index {
-        TUNER_PAD_RF_INPUT,
-        TUNER_PAD_OUTPUT,
-        TUNER_PAD_AUD_OUT,
-        TUNER_NUM_PADS
-    };
-
-.. _`tuner_pad_index.constants`:
-
-Constants
----------
-
-TUNER_PAD_RF_INPUT
-    Radiofrequency (RF) sink pad, usually linked to a
-    RF connector entity.
-
-TUNER_PAD_OUTPUT
-    Tuner video output source pad. Contains the video
-    chrominance and luminance or the hole bandwidth
-    of the signal converted to an Intermediate Frequency
-    (IF) or to baseband (on zero-IF tuners).
-
-TUNER_PAD_AUD_OUT
-    Tuner audio output source pad. Tuners used to decode
-    analog TV signals have an extra pad for audio output.
-    Old tuners use an analog stage with a saw filter for
-    the audio IF frequency. The output of the pad is, in
-    this case, the audio IF, with should be decoded either
-    by the bridge chipset (that's the case of cx2388x
-    chipsets) or may require an external IF sound
-    processor, like msp34xx. On modern silicon tuners,
-    the audio IF decoder is usually incorporated at the
-    tuner. On such case, the output of this pad is an
-    audio sampled data.
-
-TUNER_NUM_PADS
-    Number of pads of the tuner.
-
-.. _`if_vid_dec_pad_index`:
-
-enum if_vid_dec_pad_index
-=========================
-
-.. c:type:: enum if_vid_dec_pad_index
-
-    video IF-PLL pad index for MEDIA_ENT_F_IF_VID_DECODER
-
-.. _`if_vid_dec_pad_index.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum if_vid_dec_pad_index {
-        IF_VID_DEC_PAD_IF_INPUT,
-        IF_VID_DEC_PAD_OUT,
-        IF_VID_DEC_PAD_NUM_PADS
-    };
-
-.. _`if_vid_dec_pad_index.constants`:
-
-Constants
----------
-
-IF_VID_DEC_PAD_IF_INPUT
-    video Intermediate Frequency (IF) sink pad
-
-IF_VID_DEC_PAD_OUT
-    IF-PLL video output source pad. Contains the
-    video chrominance and luminance IF signals.
-
-IF_VID_DEC_PAD_NUM_PADS
-    Number of pads of the video IF-PLL.
-
-.. _`if_aud_dec_pad_index`:
-
-enum if_aud_dec_pad_index
-=========================
-
-.. c:type:: enum if_aud_dec_pad_index
-
-    audio/sound IF-PLL pad index for MEDIA_ENT_F_IF_AUD_DECODER
-
-.. _`if_aud_dec_pad_index.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum if_aud_dec_pad_index {
-        IF_AUD_DEC_PAD_IF_INPUT,
-        IF_AUD_DEC_PAD_OUT,
-        IF_AUD_DEC_PAD_NUM_PADS
-    };
-
-.. _`if_aud_dec_pad_index.constants`:
-
-Constants
----------
-
-IF_AUD_DEC_PAD_IF_INPUT
-    audio Intermediate Frequency (IF) sink pad
-
-IF_AUD_DEC_PAD_OUT
-    IF-PLL audio output source pad. Contains the
-    audio sampled stream data, usually connected
-    to the bridge bus via an Inter-IC Sound (I2S)
-    bus.
-
-IF_AUD_DEC_PAD_NUM_PADS
-    Number of pads of the audio IF-PLL.
-
-.. _`demod_pad_index`:
-
-enum demod_pad_index
-====================
-
-.. c:type:: enum demod_pad_index
-
-    analog TV pad index for MEDIA_ENT_F_ATV_DECODER
-
-.. _`demod_pad_index.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum demod_pad_index {
-        DEMOD_PAD_IF_INPUT,
-        DEMOD_PAD_VID_OUT,
-        DEMOD_PAD_VBI_OUT,
-        DEMOD_PAD_AUDIO_OUT,
-        DEMOD_NUM_PADS
-    };
-
-.. _`demod_pad_index.constants`:
-
-Constants
----------
-
-DEMOD_PAD_IF_INPUT
-    IF input sink pad.
-
-DEMOD_PAD_VID_OUT
-    Video output source pad.
-
-DEMOD_PAD_VBI_OUT
-    Vertical Blank Interface (VBI) output source pad.
-
-DEMOD_PAD_AUDIO_OUT
-    Audio output source pad.
-
-DEMOD_NUM_PADS
-    Maximum number of output pads.
-
 .. _`v4l2_mc_create_media_graph`:
 
 v4l2_mc_create_media_graph
@@ -184,8 +10,9 @@ v4l2_mc_create_media_graph
 
     create Media Controller links at the graph.
 
-    :param struct media_device \*mdev:
+    :param mdev:
         pointer to the \ :c:type:`struct media_device <media_device>`\  struct.
+    :type mdev: struct media_device \*
 
 .. _`v4l2_mc_create_media_graph.description`:
 
@@ -213,8 +40,9 @@ v4l_enable_media_source
 
     Hold media source for exclusive use if free
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to struct video_device
+    :type vdev: struct video_device \*
 
 .. _`v4l_enable_media_source.description`:
 
@@ -245,8 +73,9 @@ v4l_disable_media_source
 
     Release media source
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to struct video_device
+    :type vdev: struct video_device \*
 
 .. _`v4l_disable_media_source.description`:
 
@@ -274,11 +103,13 @@ v4l2_pipeline_pm_use
 
     Update the use count of an entity
 
-    :param struct media_entity \*entity:
+    :param entity:
         The entity
+    :type entity: struct media_entity \*
 
-    :param int use:
+    :param use:
         Use (1) or stop using (0) the entity
+    :type use: int
 
 .. _`v4l2_pipeline_pm_use.description`:
 
@@ -306,14 +137,17 @@ v4l2_pipeline_link_notify
 
     Link management notification callback
 
-    :param struct media_link \*link:
+    :param link:
         The link
+    :type link: struct media_link \*
 
-    :param u32 flags:
+    :param flags:
         New link flags that will be applied
+    :type flags: u32
 
-    :param unsigned int notification:
+    :param notification:
         The link's state change notification type (MEDIA_DEV_NOTIFY_*)
+    :type notification: unsigned int
 
 .. _`v4l2_pipeline_link_notify.description`:
 

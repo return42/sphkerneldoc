@@ -10,8 +10,9 @@ acp_hw_init
 
     start and test ACP block
 
-    :param void \*handle:
+    :param handle:
         *undescribed*
+    :type handle: void \*
 
 .. _`acp_hw_fini`:
 
@@ -22,8 +23,9 @@ acp_hw_fini
 
     stop the hardware block
 
-    :param void \*handle:
+    :param handle:
         *undescribed*
+    :type handle: void \*
 
 .. This file was automatic generated / don't edit.
 

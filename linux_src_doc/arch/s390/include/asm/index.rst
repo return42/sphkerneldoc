@@ -18,5 +18,6 @@ asm
     facility_h
     fcx_h
     gmap_h
+    mem_detect_h
     scsw_h
     timex_h

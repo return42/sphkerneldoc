@@ -10,11 +10,13 @@ omap_get_timer_dt
 
     get a timer using device-tree \ ``match``\        - device-tree match structure for matching a device type \ ``property``\     - optional timer property to match
 
-    :param const struct of_device_id \*match:
+    :param match:
         *undescribed*
+    :type match: const struct of_device_id \*
 
-    :param const char \*property:
+    :param property:
         *undescribed*
+    :type property: const char \*
 
 .. _`omap_get_timer_dt.description`:
 
@@ -36,8 +38,9 @@ omap_dmtimer_init
 
     initialisation function when device tree is used
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_dmtimer_init.description`:
 
@@ -58,8 +61,9 @@ omap_dm_timer_get_errata
 
     get errata flags for a timer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_dm_timer_get_errata.description`:
 
@@ -77,8 +81,9 @@ omap2_override_clocksource
 
     clocksource override with user configuration
 
-    :param char \*str:
+    :param str:
         *undescribed*
+    :type str: char \*
 
 .. _`omap2_override_clocksource.description`:
 

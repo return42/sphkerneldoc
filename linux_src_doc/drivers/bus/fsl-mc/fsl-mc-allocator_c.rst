@@ -10,14 +10,17 @@ fsl_mc_resource_pool_add_device
 
     add allocatable object to a resource pool of a given fsl-mc bus
 
-    :param struct fsl_mc_bus \*mc_bus:
+    :param mc_bus:
         pointer to the fsl-mc bus
+    :type mc_bus: struct fsl_mc_bus \*
 
-    :param enum fsl_mc_pool_type pool_type:
+    :param pool_type:
         pool type
+    :type pool_type: enum fsl_mc_pool_type
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         pointer to allocatable fsl-mc device
+    :type mc_dev: struct fsl_mc_device \*
 
 .. _`fsl_mc_resource_pool_remove_device`:
 
@@ -28,8 +31,9 @@ fsl_mc_resource_pool_remove_device
 
     remove an allocatable device from a resource pool
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         pointer to allocatable fsl-mc device
+    :type mc_dev: struct fsl_mc_device \*
 
 .. _`fsl_mc_resource_pool_remove_device.description`:
 
@@ -48,15 +52,18 @@ fsl_mc_object_allocate
 
     Allocates an fsl-mc object of the given pool type from a given fsl-mc bus instance
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         fsl-mc device which is used in conjunction with the
         allocated object
+    :type mc_dev: struct fsl_mc_device \*
 
-    :param enum fsl_mc_pool_type pool_type:
+    :param pool_type:
         pool type
+    :type pool_type: enum fsl_mc_pool_type
 
-    :param struct fsl_mc_device \*\*new_mc_adev:
+    :param new_mc_adev:
         *undescribed*
+    :type new_mc_adev: struct fsl_mc_device \*\*
 
 .. _`fsl_mc_object_allocate.description`:
 
@@ -85,8 +92,9 @@ fsl_mc_object_free
 
     Returns an fsl-mc object to the resource pool where it came from.
 
-    :param struct fsl_mc_device \*mc_adev:
+    :param mc_adev:
         Pointer to the fsl-mc device
+    :type mc_adev: struct fsl_mc_device \*
 
 .. _`fsl_mc_cleanup_irq_pool`:
 
@@ -97,8 +105,9 @@ fsl_mc_cleanup_irq_pool
 
     mc bus. It frees the IRQs that were allocated to the pool, back to the GIC-ITS.
 
-    :param struct fsl_mc_bus \*mc_bus:
+    :param mc_bus:
         *undescribed*
+    :type mc_bus: struct fsl_mc_bus \*
 
 .. _`fsl_mc_allocate_irqs`:
 
@@ -109,8 +118,9 @@ fsl_mc_allocate_irqs
 
     mc device.
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         *undescribed*
+    :type mc_dev: struct fsl_mc_device \*
 
 .. _`fsl_mc_allocator_probe`:
 
@@ -121,8 +131,9 @@ fsl_mc_allocator_probe
 
     callback invoked when an allocatable device is being added to the system
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         *undescribed*
+    :type mc_dev: struct fsl_mc_device \*
 
 .. _`fsl_mc_allocator_remove`:
 
@@ -133,8 +144,9 @@ fsl_mc_allocator_remove
 
     callback invoked when an allocatable device is being removed from the system
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         *undescribed*
+    :type mc_dev: struct fsl_mc_device \*
 
 .. This file was automatic generated / don't edit.
 

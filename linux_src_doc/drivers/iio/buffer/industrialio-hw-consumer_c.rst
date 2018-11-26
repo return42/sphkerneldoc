@@ -42,8 +42,9 @@ iio_hw_consumer_alloc
 
     Allocate IIO hardware consumer
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to consumer device.
+    :type dev: struct device \*
 
 .. _`iio_hw_consumer_alloc.description`:
 
@@ -61,8 +62,9 @@ iio_hw_consumer_free
 
     Free IIO hardware consumer
 
-    :param struct iio_hw_consumer \*hwc:
+    :param hwc:
         hw consumer to free.
+    :type hwc: struct iio_hw_consumer \*
 
 .. _`devm_iio_hw_consumer_alloc`:
 
@@ -73,8 +75,9 @@ devm_iio_hw_consumer_alloc
 
     Resource-managed \ :c:func:`iio_hw_consumer_alloc`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to consumer device.
+    :type dev: struct device \*
 
 .. _`devm_iio_hw_consumer_alloc.description`:
 
@@ -98,11 +101,13 @@ devm_iio_hw_consumer_free
 
     Resource-managed \ :c:func:`iio_hw_consumer_free`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to consumer device.
+    :type dev: struct device \*
 
-    :param struct iio_hw_consumer \*hwc:
+    :param hwc:
         iio_hw_consumer to free.
+    :type hwc: struct iio_hw_consumer \*
 
 .. _`devm_iio_hw_consumer_free.description`:
 
@@ -120,8 +125,9 @@ iio_hw_consumer_enable
 
     Enable IIO hardware consumer
 
-    :param struct iio_hw_consumer \*hwc:
+    :param hwc:
         iio_hw_consumer to enable.
+    :type hwc: struct iio_hw_consumer \*
 
 .. _`iio_hw_consumer_enable.description`:
 
@@ -139,8 +145,9 @@ iio_hw_consumer_disable
 
     Disable IIO hardware consumer
 
-    :param struct iio_hw_consumer \*hwc:
+    :param hwc:
         iio_hw_consumer to disable.
+    :type hwc: struct iio_hw_consumer \*
 
 .. This file was automatic generated / don't edit.
 

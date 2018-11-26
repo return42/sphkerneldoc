@@ -10,11 +10,13 @@
 
     sdhci_msm clock control.
 
-    :param struct sdhci_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct sdhci_host \*
 
-    :param unsigned int clock:
+    :param clock:
         *undescribed*
+    :type clock: unsigned int
 
 .. _`__sdhci_msm_set_clock.description`:
 

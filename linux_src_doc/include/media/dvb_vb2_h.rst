@@ -207,14 +207,17 @@ dvb_vb2_init
 
     initializes VB2 handler
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
-    :param const char \*name:
+    :param name:
         name for the VB2 handler
+    :type name: const char \*
 
-    :param int non_blocking:
+    :param non_blocking:
         if not zero, it means that the device is at non-blocking mode
+    :type non_blocking: int
 
 .. _`dvb_vb2_release`:
 
@@ -225,8 +228,9 @@ dvb_vb2_release
 
     Releases the VB2 handler allocated resources and put \ ``ctx``\  at DVB_VB2_STATE_NONE state.
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
 .. _`dvb_vb2_is_streaming`:
 
@@ -237,8 +241,9 @@ dvb_vb2_is_streaming
 
     checks if the VB2 handler is streaming
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
 .. _`dvb_vb2_is_streaming.return`:
 
@@ -256,18 +261,22 @@ dvb_vb2_fill_buffer
 
     fills a VB2 buffer
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
-    :param const unsigned char \*src:
+    :param src:
         place where the data is stored
+    :type src: const unsigned char \*
 
-    :param int len:
+    :param len:
         number of bytes to be copied from \ ``src``\ 
+    :type len: int
 
-    :param enum dmx_buffer_flags \*buffer_flags:
+    :param buffer_flags:
         pointer to buffer flags as defined by \ :c:type:`enum dmx_buffer_flags <dmx_buffer_flags>`\ .
         can be NULL.
+    :type buffer_flags: enum dmx_buffer_flags \*
 
 .. _`dvb_vb2_poll`:
 
@@ -278,16 +287,19 @@ dvb_vb2_poll
 
     Wrapper to \ :c:func:`vb2_core_streamon`\  for Digital TV buffer handling.
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
-    :param struct file \*file:
+    :param file:
         \ :c:type:`struct file <file>`\  argument passed to the poll
         file operation handler.
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         \ :c:type:`struct poll_table <poll_table>`\  wait argument passed to the poll
         file operation handler.
+    :type wait: poll_table \*
 
 .. _`dvb_vb2_poll.description`:
 
@@ -305,8 +317,9 @@ dvb_vb2_stream_on
 
     Wrapper to \ :c:func:`vb2_core_streamon`\  for Digital TV buffer handling.
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
 .. _`dvb_vb2_stream_on.description`:
 
@@ -324,8 +337,9 @@ dvb_vb2_stream_off
 
     Wrapper to \ :c:func:`vb2_core_streamoff`\  for Digital TV buffer handling.
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
 .. _`dvb_vb2_stream_off.description`:
 
@@ -343,12 +357,14 @@ dvb_vb2_reqbufs
 
     Wrapper to \ :c:func:`vb2_core_reqbufs`\  for Digital TV buffer handling.
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
-    :param struct dmx_requestbuffers \*req:
+    :param req:
         \ :c:type:`struct dmx_requestbuffers <dmx_requestbuffers>`\  passed from userspace in
         order to handle \ :c:type:`struct DMX_REQBUFS <DMX_REQBUFS>`\ .
+    :type req: struct dmx_requestbuffers \*
 
 .. _`dvb_vb2_reqbufs.description`:
 
@@ -367,12 +383,14 @@ dvb_vb2_querybuf
 
     Wrapper to \ :c:func:`vb2_core_querybuf`\  for Digital TV buffer handling.
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
-    :param struct dmx_buffer \*b:
+    :param b:
         \ :c:type:`struct dmx_buffer <dmx_buffer>`\  passed from userspace in
         order to handle \ :c:type:`struct DMX_QUERYBUF <DMX_QUERYBUF>`\ .
+    :type b: struct dmx_buffer \*
 
 .. _`dvb_vb2_querybuf.description`:
 
@@ -390,12 +408,14 @@ dvb_vb2_expbuf
 
     Wrapper to \ :c:func:`vb2_core_expbuf`\  for Digital TV buffer handling.
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
-    :param struct dmx_exportbuffer \*exp:
+    :param exp:
         \ :c:type:`struct dmx_exportbuffer <dmx_exportbuffer>`\  passed from userspace in
         order to handle \ :c:type:`struct DMX_EXPBUF <DMX_EXPBUF>`\ .
+    :type exp: struct dmx_exportbuffer \*
 
 .. _`dvb_vb2_expbuf.description`:
 
@@ -413,12 +433,14 @@ dvb_vb2_qbuf
 
     Wrapper to \ :c:func:`vb2_core_qbuf`\  for Digital TV buffer handling.
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
-    :param struct dmx_buffer \*b:
+    :param b:
         \ :c:type:`struct dmx_buffer <dmx_buffer>`\  passed from userspace in
         order to handle \ :c:type:`struct DMX_QBUF <DMX_QBUF>`\ .
+    :type b: struct dmx_buffer \*
 
 .. _`dvb_vb2_qbuf.description`:
 
@@ -436,12 +458,14 @@ dvb_vb2_dqbuf
 
     Wrapper to \ :c:func:`vb2_core_dqbuf`\  for Digital TV buffer handling.
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
-    :param struct dmx_buffer \*b:
+    :param b:
         \ :c:type:`struct dmx_buffer <dmx_buffer>`\  passed from userspace in
         order to handle \ :c:type:`struct DMX_DQBUF <DMX_DQBUF>`\ .
+    :type b: struct dmx_buffer \*
 
 .. _`dvb_vb2_dqbuf.description`:
 
@@ -459,12 +483,14 @@ dvb_vb2_mmap
 
     Wrapper to \ :c:func:`vb2_mmap`\  for Digital TV buffer handling.
 
-    :param struct dvb_vb2_ctx \*ctx:
+    :param ctx:
         control struct for VB2 handler
+    :type ctx: struct dvb_vb2_ctx \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         pointer to \ :c:type:`struct vm_area_struct <vm_area_struct>`\  with the vma passed
         to the mmap file operation handler in the driver.
+    :type vma: struct vm_area_struct \*
 
 .. _`dvb_vb2_mmap.description`:
 

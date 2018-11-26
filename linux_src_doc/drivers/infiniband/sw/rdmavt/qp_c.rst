@@ -1,6 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/sw/rdmavt/qp.c
 
+.. _`rvt_wss_init`:
+
+rvt_wss_init
+============
+
+.. c:function:: int rvt_wss_init(struct rvt_dev_info *rdi)
+
+    Init wss data structures
+
+    :param rdi:
+        *undescribed*
+    :type rdi: struct rvt_dev_info \*
+
+.. _`rvt_wss_init.return`:
+
+Return
+------
+
+0 on success
+
 .. _`init_qpn_table`:
 
 init_qpn_table
@@ -10,11 +30,13 @@ init_qpn_table
 
     initialize the QP number table for a device
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         *undescribed*
+    :type rdi: struct rvt_dev_info \*
 
-    :param struct rvt_qpn_table \*qpt:
+    :param qpt:
         the QPN table
+    :type qpt: struct rvt_qpn_table \*
 
 .. _`free_qpn_table`:
 
@@ -25,8 +47,9 @@ free_qpn_table
 
     free the QP number table for a device
 
-    :param struct rvt_qpn_table \*qpt:
+    :param qpt:
         the QPN table
+    :type qpt: struct rvt_qpn_table \*
 
 .. _`rvt_driver_qp_init`:
 
@@ -37,8 +60,9 @@ rvt_driver_qp_init
 
     Init driver qp resources
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev strucutre
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_driver_qp_init.return`:
 
@@ -56,8 +80,9 @@ rvt_free_all_qps
 
     check for QPs still in use
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt device info structure
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_free_all_qps.description`:
 
@@ -76,8 +101,9 @@ rvt_qp_exit
 
     clean up qps on device exit
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev structure
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_qp_exit.description`:
 
@@ -95,17 +121,21 @@ alloc_qpn
 
     Allocate the next available qpn or zero/one for QP type IB_QPT_SMI/IB_QPT_GSI
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt device info structure
+    :type rdi: struct rvt_dev_info \*
 
-    :param struct rvt_qpn_table \*qpt:
+    :param qpt:
         queue pair number table pointer
+    :type qpt: struct rvt_qpn_table \*
 
-    :param enum ib_qp_type type:
+    :param type:
         *undescribed*
+    :type type: enum ib_qp_type
 
-    :param u8 port_num:
+    :param port_num:
         IB port number, 1 based, comes from core
+    :type port_num: u8
 
 .. _`alloc_qpn.return`:
 
@@ -123,11 +153,13 @@ rvt_clear_mr_refs
 
     Drop help mr refs
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         rvt qp data structure
+    :type qp: struct rvt_qp \*
 
-    :param int clr_sends:
+    :param clr_sends:
         If shoudl clear send side or not
+    :type clr_sends: int
 
 .. _`rvt_swqe_has_lkey`:
 
@@ -138,11 +170,13 @@ rvt_swqe_has_lkey
 
     return true if lkey is used by swqe \ ``wqe``\  - the send wqe \ ``lkey``\  - the lkey
 
-    :param struct rvt_swqe \*wqe:
+    :param wqe:
         *undescribed*
+    :type wqe: struct rvt_swqe \*
 
-    :param u32 lkey:
+    :param lkey:
         *undescribed*
+    :type lkey: u32
 
 .. _`rvt_swqe_has_lkey.description`:
 
@@ -160,11 +194,13 @@ rvt_qp_sends_has_lkey
 
     return true is qp sends use lkey \ ``qp``\  - the rvt_qp \ ``lkey``\  - the lkey
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param u32 lkey:
+    :param lkey:
         *undescribed*
+    :type lkey: u32
 
 .. _`rvt_qp_acks_has_lkey`:
 
@@ -175,11 +211,13 @@ rvt_qp_acks_has_lkey
 
     return true if acks have lkey \ ``qp``\  - the qp \ ``lkey``\  - the lkey
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param u32 lkey:
+    :param lkey:
         *undescribed*
+    :type lkey: u32
 
 .. _`rvt_remove_qp`:
 
@@ -190,11 +228,13 @@ rvt_remove_qp
 
     remove qp form table
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev struct
+    :type rdi: struct rvt_dev_info \*
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         qp to remove
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_remove_qp.description`:
 
@@ -213,14 +253,17 @@ rvt_init_qp
 
     initialize the QP state to the reset state
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         *undescribed*
+    :type rdi: struct rvt_dev_info \*
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP to init or reinit
+    :type qp: struct rvt_qp \*
 
-    :param enum ib_qp_type type:
+    :param type:
         the QP type
+    :type type: enum ib_qp_type
 
 .. _`rvt_init_qp.description`:
 
@@ -241,14 +284,17 @@ rvt_reset_qp
 
     initialize the QP state to the reset state
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         *undescribed*
+    :type rdi: struct rvt_dev_info \*
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP to reset
+    :type qp: struct rvt_qp \*
 
-    :param enum ib_qp_type type:
+    :param type:
         the QP type
+    :type type: enum ib_qp_type
 
 .. _`rvt_reset_qp.description`:
 
@@ -266,14 +312,17 @@ rvt_create_qp
 
     create a queue pair for a device
 
-    :param struct ib_pd \*ibpd:
+    :param ibpd:
         the protection domain who's device we create the queue pair for
+    :type ibpd: struct ib_pd \*
 
-    :param struct ib_qp_init_attr \*init_attr:
+    :param init_attr:
         the attributes of the queue pair
+    :type init_attr: struct ib_qp_init_attr \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data for libibverbs.so
+    :type udata: struct ib_udata \*
 
 .. _`rvt_create_qp.description`:
 
@@ -302,11 +351,13 @@ rvt_error_qp
 
     put a QP into the error state
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP to put into the error state
+    :type qp: struct rvt_qp \*
 
-    :param enum ib_wc_status err:
+    :param err:
         the receive completion error to signal if a RWQE is active
+    :type err: enum ib_wc_status
 
 .. _`rvt_error_qp.description`:
 
@@ -333,17 +384,21 @@ rvt_modify_qp
 
     modify the attributes of a queue pair
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         the queue pair who's attributes we're modifying
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_qp_attr \*attr:
+    :param attr:
         the new attributes
+    :type attr: struct ib_qp_attr \*
 
-    :param int attr_mask:
+    :param attr_mask:
         the mask of attributes to modify
+    :type attr_mask: int
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data for libibverbs.so
+    :type udata: struct ib_udata \*
 
 .. _`rvt_modify_qp.return`:
 
@@ -361,8 +416,9 @@ rvt_destroy_qp
 
     destroy a queue pair
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         the queue pair to destroy
+    :type ibqp: struct ib_qp \*
 
 .. _`rvt_destroy_qp.description`:
 
@@ -388,17 +444,21 @@ rvt_query_qp
 
     query an ipbq
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         IB qp to query
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_qp_attr \*attr:
+    :param attr:
         attr struct to fill in
+    :type attr: struct ib_qp_attr \*
 
-    :param int attr_mask:
+    :param attr_mask:
         attr mask ignored
+    :type attr_mask: int
 
-    :param struct ib_qp_init_attr \*init_attr:
+    :param init_attr:
         struct to fill in
+    :type init_attr: struct ib_qp_init_attr \*
 
 .. _`rvt_query_qp.return`:
 
@@ -412,18 +472,21 @@ always 0
 rvt_post_recv
 =============
 
-.. c:function:: int rvt_post_recv(struct ib_qp *ibqp, struct ib_recv_wr *wr, struct ib_recv_wr **bad_wr)
+.. c:function:: int rvt_post_recv(struct ib_qp *ibqp, const struct ib_recv_wr *wr, const struct ib_recv_wr **bad_wr)
 
     post a receive on a QP
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         the QP to post the receive on
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_recv_wr \*wr:
+    :param wr:
         the WR to post
+    :type wr: const struct ib_recv_wr \*
 
-    :param struct ib_recv_wr \*\*bad_wr:
+    :param bad_wr:
         the first bad WR is put here
+    :type bad_wr: const struct ib_recv_wr \*\*
 
 .. _`rvt_post_recv.description`:
 
@@ -444,18 +507,21 @@ Return
 rvt_qp_valid_operation
 ======================
 
-.. c:function:: int rvt_qp_valid_operation(struct rvt_qp *qp, const struct rvt_operation_params *post_parms, struct ib_send_wr *wr)
+.. c:function:: int rvt_qp_valid_operation(struct rvt_qp *qp, const struct rvt_operation_params *post_parms, const struct ib_send_wr *wr)
 
     validate post send wr request \ ``qp``\  - the qp \ ``post``\ -parms - the post send table for the driver \ ``wr``\  - the work request
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param const struct rvt_operation_params \*post_parms:
+    :param post_parms:
         *undescribed*
+    :type post_parms: const struct rvt_operation_params \*
 
-    :param struct ib_send_wr \*wr:
+    :param wr:
         *undescribed*
+    :type wr: const struct ib_send_wr \*
 
 .. _`rvt_qp_valid_operation.description`:
 
@@ -483,14 +549,17 @@ rvt_qp_is_avail
 
     determine queue capacity
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the qp
+    :type qp: struct rvt_qp \*
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         the rdmavt device
+    :type rdi: struct rvt_dev_info \*
 
-    :param bool reserved_op:
+    :param reserved_op:
         is reserved operation
+    :type reserved_op: bool
 
 .. _`rvt_qp_is_avail.description`:
 
@@ -510,36 +579,42 @@ The return value is zero or a -ENOMEM.
 rvt_post_one_wr
 ===============
 
-.. c:function:: int rvt_post_one_wr(struct rvt_qp *qp, struct ib_send_wr *wr, int *call_send)
+.. c:function:: int rvt_post_one_wr(struct rvt_qp *qp, const struct ib_send_wr *wr, bool *call_send)
 
     post one RC, UC, or UD send work request
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP to post on
+    :type qp: struct rvt_qp \*
 
-    :param struct ib_send_wr \*wr:
+    :param wr:
         the work request to send
+    :type wr: const struct ib_send_wr \*
 
-    :param int \*call_send:
+    :param call_send:
         *undescribed*
+    :type call_send: bool \*
 
 .. _`rvt_post_send`:
 
 rvt_post_send
 =============
 
-.. c:function:: int rvt_post_send(struct ib_qp *ibqp, struct ib_send_wr *wr, struct ib_send_wr **bad_wr)
+.. c:function:: int rvt_post_send(struct ib_qp *ibqp, const struct ib_send_wr *wr, const struct ib_send_wr **bad_wr)
 
     post a send on a QP
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         the QP to post the send on
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_send_wr \*wr:
+    :param wr:
         the list of work requests to post
+    :type wr: const struct ib_send_wr \*
 
-    :param struct ib_send_wr \*\*bad_wr:
+    :param bad_wr:
         the first bad WR is put here
+    :type bad_wr: const struct ib_send_wr \*\*
 
 .. _`rvt_post_send.description`:
 
@@ -560,18 +635,21 @@ Return
 rvt_post_srq_recv
 =================
 
-.. c:function:: int rvt_post_srq_recv(struct ib_srq *ibsrq, struct ib_recv_wr *wr, struct ib_recv_wr **bad_wr)
+.. c:function:: int rvt_post_srq_recv(struct ib_srq *ibsrq, const struct ib_recv_wr *wr, const struct ib_recv_wr **bad_wr)
 
     post a receive on a shared receive queue
 
-    :param struct ib_srq \*ibsrq:
+    :param ibsrq:
         the SRQ to post the receive on
+    :type ibsrq: struct ib_srq \*
 
-    :param struct ib_recv_wr \*wr:
+    :param wr:
         the list of work requests to post
+    :type wr: const struct ib_recv_wr \*
 
-    :param struct ib_recv_wr \*\*bad_wr:
+    :param bad_wr:
         A pointer to the first WR to cause a problem is put here
+    :type bad_wr: const struct ib_recv_wr \*\*
 
 .. _`rvt_post_srq_recv.description`:
 
@@ -596,11 +674,13 @@ rvt_get_rwqe
 
     copy the next RWQE into the QP's RWQE
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP
+    :type qp: struct rvt_qp \*
 
-    :param bool wr_id_only:
+    :param wr_id_only:
         update qp->r_wr_id only, not qp->r_sge
+    :type wr_id_only: bool
 
 .. _`rvt_get_rwqe.description`:
 
@@ -621,8 +701,9 @@ rvt_comm_est
 
     handle trap with QP established
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_add_rnr_timer`:
 
@@ -633,11 +714,13 @@ rvt_add_rnr_timer
 
     add/start an rnr timer \ ``qp``\  - the QP \ ``aeth``\  - aeth of RNR timeout, simulated aeth for loopback add an rnr timer on the QP
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param u32 aeth:
+    :param aeth:
         *undescribed*
+    :type aeth: u32
 
 .. _`rvt_stop_rc_timers`:
 
@@ -648,8 +731,9 @@ rvt_stop_rc_timers
 
     stop all timers \ ``qp``\  - the QP stop any pending timers
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_stop_rnr_timer`:
 
@@ -660,8 +744,9 @@ rvt_stop_rnr_timer
 
     stop an rnr timer \ ``qp``\  - the QP
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_stop_rnr_timer.description`:
 
@@ -680,8 +765,9 @@ rvt_del_timers_sync
 
     wait for any timeout routines to exit \ ``qp``\  - the QP
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_rc_timeout`:
 
@@ -690,8 +776,9 @@ rvt_rc_timeout
 
 .. c:function:: void rvt_rc_timeout(struct timer_list *t)
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`rvt_qp_iter_init`:
 
@@ -702,11 +789,13 @@ rvt_qp_iter_init
 
     initial for QP iteration
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt devinfo
+    :type rdi: struct rvt_dev_info \*
 
-    :param u64 v:
+    :param v:
         u64 value
+    :type v: u64
 
     :param void (\*cb)(struct rvt_qp \*qp, u64 v):
         *undescribed*
@@ -743,8 +832,9 @@ rvt_qp_iter_next
 
     return the next QP in iter \ ``iter``\  - the iterator
 
-    :param struct rvt_qp_iter \*iter:
+    :param iter:
         *undescribed*
+    :type iter: struct rvt_qp_iter \*
 
 .. _`rvt_qp_iter_next.description`:
 
@@ -773,11 +863,13 @@ rvt_qp_iter
 
     iterate all QPs \ ``rdi``\  - rvt devinfo \ ``v``\  - a 64 bit value \ ``cb``\  - a callback
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         *undescribed*
+    :type rdi: struct rvt_dev_info \*
 
-    :param u64 v:
+    :param v:
         *undescribed*
+    :type v: u64
 
     :param void (\*cb)(struct rvt_qp \*qp, u64 v):
         *undescribed*
@@ -796,6 +888,63 @@ based on criteria not part of the rvt_qp.
 
 The code has an internal iterator to simplify
 non seq_file use cases.
+
+.. _`rvt_copy_sge`:
+
+rvt_copy_sge
+============
+
+.. c:function:: void rvt_copy_sge(struct rvt_qp *qp, struct rvt_sge_state *ss, void *data, u32 length, bool release, bool copy_last)
+
+    copy data to SGE memory
+
+    :param qp:
+        associated QP
+    :type qp: struct rvt_qp \*
+
+    :param ss:
+        the SGE state
+    :type ss: struct rvt_sge_state \*
+
+    :param data:
+        the data to copy
+    :type data: void \*
+
+    :param length:
+        the length of the data
+    :type length: u32
+
+    :param release:
+        boolean to release MR
+    :type release: bool
+
+    :param copy_last:
+        do a separate copy of the last 8 bytes
+    :type copy_last: bool
+
+.. _`rvt_ruc_loopback`:
+
+rvt_ruc_loopback
+================
+
+.. c:function:: void rvt_ruc_loopback(struct rvt_qp *sqp)
+
+    handle UC and RC loopback requests
+
+    :param sqp:
+        the sending QP
+    :type sqp: struct rvt_qp \*
+
+.. _`rvt_ruc_loopback.description`:
+
+Description
+-----------
+
+This is called from \ :c:func:`rvt_do_send`\  to forward a WQE addressed to the same HFI
+Note that although we are single threaded due to the send engine, we still
+have to protect against \ :c:func:`post_send`\ .  We don't have to worry about
+receive interrupts since this is a connected protocol and all packets
+will pass through here.
 
 .. This file was automatic generated / don't edit.
 

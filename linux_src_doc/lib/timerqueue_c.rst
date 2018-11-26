@@ -10,11 +10,13 @@ timerqueue_add
 
     Adds timer to timerqueue.
 
-    :param struct timerqueue_head \*head:
+    :param head:
         head of timerqueue
+    :type head: struct timerqueue_head \*
 
-    :param struct timerqueue_node \*node:
+    :param node:
         timer node to be added
+    :type node: struct timerqueue_node \*
 
 .. _`timerqueue_add.description`:
 
@@ -34,11 +36,13 @@ timerqueue_del
 
     Removes a timer from the timerqueue.
 
-    :param struct timerqueue_head \*head:
+    :param head:
         head of timerqueue
+    :type head: struct timerqueue_head \*
 
-    :param struct timerqueue_node \*node:
+    :param node:
         timer node to be removed
+    :type node: struct timerqueue_node \*
 
 .. _`timerqueue_del.description`:
 
@@ -57,8 +61,9 @@ timerqueue_iterate_next
 
     Returns the timer after the provided timer
 
-    :param struct timerqueue_node \*node:
+    :param node:
         Pointer to a timer.
+    :type node: struct timerqueue_node \*
 
 .. _`timerqueue_iterate_next.description`:
 

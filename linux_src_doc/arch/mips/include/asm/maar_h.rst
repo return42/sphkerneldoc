@@ -10,8 +10,9 @@ platform_maar_init
 
     perform platform-level MAAR configuration
 
-    :param unsigned num_pairs:
+    :param num_pairs:
         The number of MAAR pairs present in the system.
+    :type num_pairs: unsigned
 
 .. _`platform_maar_init.description`:
 
@@ -40,20 +41,24 @@ write_maar_pair
 
     write to a pair of MAARs
 
-    :param unsigned idx:
+    :param idx:
         The index of the pair (ie. use MAARs idx\*2 & (idx\*2)+1).
+    :type idx: unsigned
 
-    :param phys_addr_t lower:
+    :param lower:
         The lowest address that the MAAR pair will affect. Must be
         aligned to a 2^16 byte boundary.
+    :type lower: phys_addr_t
 
-    :param phys_addr_t upper:
+    :param upper:
         The highest address that the MAAR pair will affect. Must be
         aligned to one byte before a 2^16 byte boundary.
+    :type upper: phys_addr_t
 
-    :param unsigned attrs:
+    :param attrs:
         The accessibility attributes to program, eg. MIPS_MAAR_S. The
         MIPS_MAAR_VL attribute will automatically be set.
+    :type attrs: unsigned
 
 .. _`write_maar_pair.description`:
 
@@ -72,8 +77,9 @@ maar_init
 
     initialise MAARs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`maar_init.description`:
 
@@ -141,14 +147,17 @@ maar_config
 
     configure MAARs according to provided data
 
-    :param const struct maar_config \*cfg:
+    :param cfg:
         Pointer to an array of struct maar_config.
+    :type cfg: const struct maar_config \*
 
-    :param unsigned num_cfg:
+    :param num_cfg:
         The number of structs in the cfg array.
+    :type num_cfg: unsigned
 
-    :param unsigned num_pairs:
+    :param num_pairs:
         The number of MAAR pairs present in the system.
+    :type num_pairs: unsigned
 
 .. _`maar_config.description`:
 

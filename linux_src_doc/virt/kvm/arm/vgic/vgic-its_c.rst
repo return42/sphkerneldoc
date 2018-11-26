@@ -60,17 +60,21 @@ entry_fn_t
 
     Callback called on a table entry restore path
 
-    :param struct vgic_its \*its:
+    :param its:
         its handle
+    :type its: struct vgic_its \*
 
-    :param u32 id:
+    :param id:
         id of the entry
+    :type id: u32
 
-    :param void \*entry:
+    :param entry:
         pointer to the entry
+    :type entry: void \*
 
-    :param void \*opaque:
+    :param opaque:
         pointer to an opaque data
+    :type opaque: void \*
 
 .. _`entry_fn_t.return`:
 
@@ -85,31 +89,38 @@ element otherwise
 scan_its_table
 ==============
 
-.. c:function:: int scan_its_table(struct vgic_its *its, gpa_t base, int size, int esz, int start_id, entry_fn_t fn, void *opaque)
+.. c:function:: int scan_its_table(struct vgic_its *its, gpa_t base, int size, u32 esz, int start_id, entry_fn_t fn, void *opaque)
 
     Scan a contiguous table in guest RAM and applies a function to each entry
 
-    :param struct vgic_its \*its:
+    :param its:
         its handle
+    :type its: struct vgic_its \*
 
-    :param gpa_t base:
+    :param base:
         base gpa of the table
+    :type base: gpa_t
 
-    :param int size:
+    :param size:
         size of the table in bytes
+    :type size: int
 
-    :param int esz:
+    :param esz:
         entry size in bytes
+    :type esz: u32
 
-    :param int start_id:
+    :param start_id:
         the ID of the first entry in the table
         (non zero for 2d level tables)
+    :type start_id: int
 
-    :param entry_fn_t fn:
+    :param fn:
         function to apply on each entry
+    :type fn: entry_fn_t
 
-    :param void \*opaque:
+    :param opaque:
         *undescribed*
+    :type opaque: void \*
 
 .. _`scan_its_table.return`:
 
@@ -128,20 +139,25 @@ vgic_its_save_ite
 
     Save an interrupt translation entry at \ ``gpa``\ 
 
-    :param struct vgic_its \*its:
+    :param its:
         *undescribed*
+    :type its: struct vgic_its \*
 
-    :param struct its_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct its_device \*
 
-    :param struct its_ite \*ite:
+    :param ite:
         *undescribed*
+    :type ite: struct its_ite \*
 
-    :param gpa_t gpa:
+    :param gpa:
         *undescribed*
+    :type gpa: gpa_t
 
-    :param int ite_esz:
+    :param ite_esz:
         *undescribed*
+    :type ite_esz: int
 
 .. _`vgic_its_restore_ite`:
 
@@ -152,17 +168,21 @@ vgic_its_restore_ite
 
     restore an interrupt translation entry
 
-    :param struct vgic_its \*its:
+    :param its:
         *undescribed*
+    :type its: struct vgic_its \*
 
-    :param u32 event_id:
+    :param event_id:
         id used for indexing
+    :type event_id: u32
 
-    :param void \*ptr:
+    :param ptr:
         pointer to the ITE entry
+    :type ptr: void \*
 
-    :param void \*opaque:
+    :param opaque:
         pointer to the its_device
+    :type opaque: void \*
 
 .. _`vgic_its_restore_itt`:
 
@@ -173,11 +193,13 @@ vgic_its_restore_itt
 
     restore the ITT of a device
 
-    :param struct vgic_its \*its:
+    :param its:
         its handle
+    :type its: struct vgic_its \*
 
-    :param struct its_device \*dev:
+    :param dev:
         device handle
+    :type dev: struct its_device \*
 
 .. _`vgic_its_restore_itt.description`:
 
@@ -195,17 +217,21 @@ vgic_its_save_dte
 
     Save a device table entry at a given GPA
 
-    :param struct vgic_its \*its:
+    :param its:
         ITS handle
+    :type its: struct vgic_its \*
 
-    :param struct its_device \*dev:
+    :param dev:
         ITS device
+    :type dev: struct its_device \*
 
-    :param gpa_t ptr:
+    :param ptr:
         GPA
+    :type ptr: gpa_t
 
-    :param int dte_esz:
+    :param dte_esz:
         *undescribed*
+    :type dte_esz: int
 
 .. _`vgic_its_restore_dte`:
 
@@ -216,17 +242,21 @@ vgic_its_restore_dte
 
     restore a device table entry
 
-    :param struct vgic_its \*its:
+    :param its:
         its handle
+    :type its: struct vgic_its \*
 
-    :param u32 id:
+    :param id:
         device id the DTE corresponds to
+    :type id: u32
 
-    :param void \*ptr:
+    :param ptr:
         kernel VA where the 8 byte DTE is located
+    :type ptr: void \*
 
-    :param void \*opaque:
+    :param opaque:
         unused
+    :type opaque: void \*
 
 .. _`vgic_its_restore_dte.return`:
 
@@ -245,8 +275,9 @@ vgic_its_save_device_tables
 
     Save the device table and all ITT into guest RAM
 
-    :param struct vgic_its \*its:
+    :param its:
         *undescribed*
+    :type its: struct vgic_its \*
 
 .. _`vgic_its_save_device_tables.description`:
 
@@ -265,17 +296,21 @@ handle_l1_dte
 
     callback used for L1 device table entries (2 stage case)
 
-    :param struct vgic_its \*its:
+    :param its:
         its handle
+    :type its: struct vgic_its \*
 
-    :param u32 id:
+    :param id:
         index of the entry in the L1 table
+    :type id: u32
 
-    :param void \*addr:
+    :param addr:
         kernel VA
+    :type addr: void \*
 
-    :param void \*opaque:
+    :param opaque:
         unused
+    :type opaque: void \*
 
 .. _`handle_l1_dte.description`:
 
@@ -295,8 +330,9 @@ vgic_its_restore_device_tables
 
     Restore the device table and all ITT from guest RAM to internal data structs
 
-    :param struct vgic_its \*its:
+    :param its:
         *undescribed*
+    :type its: struct vgic_its \*
 
 .. _`vgic_its_save_collection_table`:
 
@@ -307,8 +343,9 @@ vgic_its_save_collection_table
 
     Save the collection table into guest RAM
 
-    :param struct vgic_its \*its:
+    :param its:
         *undescribed*
+    :type its: struct vgic_its \*
 
 .. _`vgic_its_restore_collection_table`:
 
@@ -319,8 +356,9 @@ vgic_its_restore_collection_table
 
     reads the collection table in guest memory and restores the ITS internal state. Requires the BASER registers to be restored before.
 
-    :param struct vgic_its \*its:
+    :param its:
         *undescribed*
+    :type its: struct vgic_its \*
 
 .. _`vgic_its_save_tables_v0`:
 
@@ -331,8 +369,9 @@ vgic_its_save_tables_v0
 
     Save the ITS tables into guest ARM according to v0 ABI
 
-    :param struct vgic_its \*its:
+    :param its:
         *undescribed*
+    :type its: struct vgic_its \*
 
 .. _`vgic_its_restore_tables_v0`:
 
@@ -343,8 +382,9 @@ vgic_its_restore_tables_v0
 
     Restore the ITS tables from guest RAM to internal data structs according to V0 ABI
 
-    :param struct vgic_its \*its:
+    :param its:
         *undescribed*
+    :type its: struct vgic_its \*
 
 .. This file was automatic generated / don't edit.
 

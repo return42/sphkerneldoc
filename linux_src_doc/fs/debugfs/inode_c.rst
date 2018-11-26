@@ -10,11 +10,13 @@ debugfs_lookup
 
     look up an existing debugfs file
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to look up.
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry of the file.
+    :type parent: struct dentry \*
 
 .. _`debugfs_lookup.description`:
 
@@ -37,25 +39,30 @@ debugfs_create_file
 
     create a file in the debugfs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have.
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is NULL, then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param void \*data:
+    :param data:
         a pointer to something that the caller will want to get to later
         on.  The inode.i_private pointer will point to this value on
         the \ :c:func:`open`\  call.
+    :type data: void \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         a pointer to a struct file_operations that should be used for
         this file.
+    :type fops: const struct file_operations \*
 
 .. _`debugfs_create_file.description`:
 
@@ -84,25 +91,30 @@ debugfs_create_file_unsafe
 
     create a file in the debugfs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have.
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is NULL, then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param void \*data:
+    :param data:
         a pointer to something that the caller will want to get to later
         on.  The inode.i_private pointer will point to this value on
         the \ :c:func:`open`\  call.
+    :type data: void \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         a pointer to a struct file_operations that should be used for
         this file.
+    :type fops: const struct file_operations \*
 
 .. _`debugfs_create_file_unsafe.description`:
 
@@ -132,28 +144,34 @@ debugfs_create_file_size
 
     create a file in the debugfs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have.
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is NULL, then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param void \*data:
+    :param data:
         a pointer to something that the caller will want to get to later
         on.  The inode.i_private pointer will point to this value on
         the \ :c:func:`open`\  call.
+    :type data: void \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         a pointer to a struct file_operations that should be used for
         this file.
+    :type fops: const struct file_operations \*
 
-    :param loff_t file_size:
+    :param file_size:
         initial file size
+    :type file_size: loff_t
 
 .. _`debugfs_create_file_size.description`:
 
@@ -182,14 +200,16 @@ debugfs_create_dir
 
     create a directory in the debugfs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the directory to
         create.
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is NULL, then the
         directory will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
 .. _`debugfs_create_dir.description`:
 
@@ -215,19 +235,23 @@ debugfs_create_automount
 
     create automount point in the debugfs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is NULL, then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param debugfs_automount_t f:
+    :param f:
         function to be called when pathname resolution steps on that one.
+    :type f: debugfs_automount_t
 
-    :param void \*data:
+    :param data:
         opaque argument to pass to \ :c:func:`f`\ .
+    :type data: void \*
 
 .. _`debugfs_create_automount.description`:
 
@@ -245,19 +269,22 @@ debugfs_create_symlink
 
     create a symbolic link in the debugfs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the symbolic link to
         create.
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this symbolic link.  This
         should be a directory dentry if set.  If this parameter is NULL,
         then the symbolic link will be created in the root of the debugfs
         filesystem.
+    :type parent: struct dentry \*
 
-    :param const char \*target:
+    :param target:
         a pointer to a string containing the path to the target of the
         symbolic link.
+    :type target: const char \*
 
 .. _`debugfs_create_symlink.description`:
 
@@ -285,10 +312,11 @@ debugfs_remove
 
     removes a file or directory from the debugfs filesystem
 
-    :param struct dentry \*dentry:
+    :param dentry:
         a pointer to a the dentry of the file or directory to be
         removed.  If this parameter is NULL or an error value, nothing
         will be done.
+    :type dentry: struct dentry \*
 
 .. _`debugfs_remove.description`:
 
@@ -312,9 +340,10 @@ debugfs_remove_recursive
 
     recursively removes a directory
 
-    :param struct dentry \*dentry:
+    :param dentry:
         a pointer to a the dentry of the directory to be removed.  If this
         parameter is NULL or an error value, nothing will be done.
+    :type dentry: struct dentry \*
 
 .. _`debugfs_remove_recursive.description`:
 
@@ -338,19 +367,23 @@ debugfs_rename
 
     rename a file/directory in the debugfs filesystem
 
-    :param struct dentry \*old_dir:
+    :param old_dir:
         a pointer to the parent dentry for the renamed object. This
         should be a directory dentry.
+    :type old_dir: struct dentry \*
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         dentry of an object to be renamed.
+    :type old_dentry: struct dentry \*
 
-    :param struct dentry \*new_dir:
+    :param new_dir:
         a pointer to the parent dentry where the object should be
         moved. This should be a directory dentry.
+    :type new_dir: struct dentry \*
 
-    :param const char \*new_name:
+    :param new_name:
         a pointer to a string containing the target name.
+    :type new_name: const char \*
 
 .. _`debugfs_rename.description`:
 
@@ -376,8 +409,9 @@ debugfs_initialized
 
     Tells whether debugfs has been registered
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

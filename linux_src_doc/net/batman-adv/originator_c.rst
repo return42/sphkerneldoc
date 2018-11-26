@@ -10,11 +10,13 @@ batadv_orig_hash_find
 
     Find and return originator from orig_hash
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const void \*data:
+    :param data:
         mac address of the originator
+    :type data: const void \*
 
 .. _`batadv_orig_hash_find.return`:
 
@@ -32,11 +34,13 @@ batadv_compare_orig
 
     comparing function used in the originator hash table
 
-    :param const struct hlist_node \*node:
+    :param node:
         node in the local table
+    :type node: const struct hlist_node \*
 
-    :param const void \*data2:
+    :param data2:
         second object to compare the node to
+    :type data2: const void \*
 
 .. _`batadv_compare_orig.return`:
 
@@ -54,11 +58,13 @@ batadv_orig_node_vlan_get
 
     get an orig_node_vlan object
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator serving the VLAN
+    :type orig_node: struct batadv_orig_node \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_orig_node_vlan_get.return`:
 
@@ -77,11 +83,13 @@ batadv_orig_node_vlan_new
 
     search and possibly create an orig_node_vlan object
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator serving the VLAN
+    :type orig_node: struct batadv_orig_node \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_orig_node_vlan_new.return`:
 
@@ -103,8 +111,9 @@ batadv_orig_node_vlan_release
 
     release originator-vlan object from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the originator-vlan object
+    :type ref: struct kref \*
 
 .. _`batadv_orig_node_vlan_put`:
 
@@ -115,8 +124,9 @@ batadv_orig_node_vlan_put
 
     decrement the refcounter and possibly release the originator-vlan object
 
-    :param struct batadv_orig_node_vlan \*orig_vlan:
+    :param orig_vlan:
         the originator-vlan object to release
+    :type orig_vlan: struct batadv_orig_node_vlan \*
 
 .. _`batadv_originator_init`:
 
@@ -127,8 +137,9 @@ batadv_originator_init
 
     Initialize all originator structures
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_originator_init.return`:
 
@@ -146,8 +157,9 @@ batadv_neigh_ifinfo_release
 
     release neigh_ifinfo from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the neigh_ifinfo
+    :type ref: struct kref \*
 
 .. _`batadv_neigh_ifinfo_put`:
 
@@ -158,8 +170,9 @@ batadv_neigh_ifinfo_put
 
     decrement the refcounter and possibly release the neigh_ifinfo
 
-    :param struct batadv_neigh_ifinfo \*neigh_ifinfo:
+    :param neigh_ifinfo:
         the neigh_ifinfo object to release
+    :type neigh_ifinfo: struct batadv_neigh_ifinfo \*
 
 .. _`batadv_hardif_neigh_release`:
 
@@ -170,8 +183,9 @@ batadv_hardif_neigh_release
 
     release hardif neigh node from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the neigh_node
+    :type ref: struct kref \*
 
 .. _`batadv_hardif_neigh_put`:
 
@@ -182,8 +196,9 @@ batadv_hardif_neigh_put
 
     decrement the hardif neighbors refcounter and possibly release it
 
-    :param struct batadv_hardif_neigh_node \*hardif_neigh:
+    :param hardif_neigh:
         hardif neigh neighbor to free
+    :type hardif_neigh: struct batadv_hardif_neigh_node \*
 
 .. _`batadv_neigh_node_release`:
 
@@ -194,8 +209,9 @@ batadv_neigh_node_release
 
     release neigh_node from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the neigh_node
+    :type ref: struct kref \*
 
 .. _`batadv_neigh_node_put`:
 
@@ -206,8 +222,9 @@ batadv_neigh_node_put
 
     decrement the neighbors refcounter and possibly release it
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         neigh neighbor to free
+    :type neigh_node: struct batadv_neigh_node \*
 
 .. _`batadv_orig_router_get`:
 
@@ -218,12 +235,14 @@ batadv_orig_router_get
 
     router to the originator depending on iface
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig node for the router
+    :type orig_node: struct batadv_orig_node \*
 
-    :param const struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface where the payload packet has been received or
         the OGM should be sent to
+    :type if_outgoing: const struct batadv_hard_iface \*
 
 .. _`batadv_orig_router_get.return`:
 
@@ -243,11 +262,13 @@ batadv_orig_ifinfo_get
 
     find the ifinfo from an orig_node
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig node to be queried
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface for which the ifinfo should be acquired
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_orig_ifinfo_get.return`:
 
@@ -267,11 +288,13 @@ batadv_orig_ifinfo_new
 
     search and possibly create an orig_ifinfo object
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig node to be queried
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface for which the ifinfo should be acquired
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_orig_ifinfo_new.return`:
 
@@ -293,11 +316,13 @@ batadv_neigh_ifinfo_get
 
     find the ifinfo from an neigh_node
 
-    :param struct batadv_neigh_node \*neigh:
+    :param neigh:
         the neigh node to be queried
+    :type neigh: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface for which the ifinfo should be acquired
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_neigh_ifinfo_get.description`:
 
@@ -322,11 +347,13 @@ batadv_neigh_ifinfo_new
 
     search and possibly create an neigh_ifinfo object
 
-    :param struct batadv_neigh_node \*neigh:
+    :param neigh:
         the neigh node to be queried
+    :type neigh: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface for which the ifinfo should be acquired
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_neigh_ifinfo_new.return`:
 
@@ -348,14 +375,17 @@ batadv_neigh_node_get
 
     retrieve a neighbour from the list
 
-    :param const struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator which the neighbour belongs to
+    :type orig_node: const struct batadv_orig_node \*
 
-    :param const struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface where this neighbour is connected to
+    :type hard_iface: const struct batadv_hard_iface \*
 
-    :param const u8 \*addr:
+    :param addr:
         the address of the neighbour
+    :type addr: const u8 \*
 
 .. _`batadv_neigh_node_get.description`:
 
@@ -381,14 +411,17 @@ batadv_hardif_neigh_create
 
     create a hardif neighbour node
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface this neighbour is connected to
+    :type hard_iface: struct batadv_hard_iface \*
 
-    :param const u8 \*neigh_addr:
+    :param neigh_addr:
         the interface address of the neighbour to retrieve
+    :type neigh_addr: const u8 \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator object representing the neighbour
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_hardif_neigh_create.return`:
 
@@ -406,14 +439,17 @@ batadv_hardif_neigh_get_or_create
 
     retrieve or create a hardif neighbour node
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface this neighbour is connected to
+    :type hard_iface: struct batadv_hard_iface \*
 
-    :param const u8 \*neigh_addr:
+    :param neigh_addr:
         the interface address of the neighbour to retrieve
+    :type neigh_addr: const u8 \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator object representing the neighbour
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_hardif_neigh_get_or_create.return`:
 
@@ -431,11 +467,13 @@ batadv_hardif_neigh_get
 
     retrieve a hardif neighbour from the list
 
-    :param const struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface where this neighbour is connected to
+    :type hard_iface: const struct batadv_hard_iface \*
 
-    :param const u8 \*neigh_addr:
+    :param neigh_addr:
         the address of the neighbour
+    :type neigh_addr: const u8 \*
 
 .. _`batadv_hardif_neigh_get.description`:
 
@@ -460,14 +498,17 @@ batadv_neigh_node_create
 
     create a neigh node object
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator object representing the neighbour
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface where the neighbour is connected to
+    :type hard_iface: struct batadv_hard_iface \*
 
-    :param const u8 \*neigh_addr:
+    :param neigh_addr:
         the mac address of the neighbour interface
+    :type neigh_addr: const u8 \*
 
 .. _`batadv_neigh_node_create.description`:
 
@@ -492,14 +533,17 @@ batadv_neigh_node_get_or_create
 
     retrieve or create a neigh node object
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator object representing the neighbour
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface where the neighbour is connected to
+    :type hard_iface: struct batadv_hard_iface \*
 
-    :param const u8 \*neigh_addr:
+    :param neigh_addr:
         the mac address of the neighbour interface
+    :type neigh_addr: const u8 \*
 
 .. _`batadv_neigh_node_get_or_create.return`:
 
@@ -517,11 +561,13 @@ batadv_hardif_neigh_seq_print_text
 
     print the single hop neighbour list
 
-    :param struct seq_file \*seq:
+    :param seq:
         neighbour table seq_file struct
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_hardif_neigh_seq_print_text.return`:
 
@@ -539,11 +585,13 @@ batadv_hardif_neigh_dump
 
     Dump to netlink the neighbor infos for a specific outgoing interface
 
-    :param struct sk_buff \*msg:
+    :param msg:
         message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         parameters for the dump
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_hardif_neigh_dump.return`:
 
@@ -561,8 +609,9 @@ batadv_orig_ifinfo_release
 
     release orig_ifinfo from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the orig_ifinfo
+    :type ref: struct kref \*
 
 .. _`batadv_orig_ifinfo_put`:
 
@@ -573,8 +622,9 @@ batadv_orig_ifinfo_put
 
     decrement the refcounter and possibly release the orig_ifinfo
 
-    :param struct batadv_orig_ifinfo \*orig_ifinfo:
+    :param orig_ifinfo:
         the orig_ifinfo object to release
+    :type orig_ifinfo: struct batadv_orig_ifinfo \*
 
 .. _`batadv_orig_node_free_rcu`:
 
@@ -585,8 +635,9 @@ batadv_orig_node_free_rcu
 
     free the orig_node
 
-    :param struct rcu_head \*rcu:
+    :param rcu:
         rcu pointer of the orig_node
+    :type rcu: struct rcu_head \*
 
 .. _`batadv_orig_node_release`:
 
@@ -597,8 +648,9 @@ batadv_orig_node_release
 
     release orig_node from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the orig_node
+    :type ref: struct kref \*
 
 .. _`batadv_orig_node_put`:
 
@@ -609,8 +661,9 @@ batadv_orig_node_put
 
     decrement the orig node refcounter and possibly release it
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig node to free
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_originator_free`:
 
@@ -621,8 +674,9 @@ batadv_originator_free
 
     Free all originator structures
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_orig_node_new`:
 
@@ -633,11 +687,13 @@ batadv_orig_node_new
 
     creates a new orig_node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         the mac address of the originator
+    :type addr: const u8 \*
 
 .. _`batadv_orig_node_new.description`:
 
@@ -663,11 +719,13 @@ batadv_purge_neigh_ifinfo
 
     purge obsolete ifinfo entries from neighbor
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_neigh_node \*neigh:
+    :param neigh:
         orig node which is to be checked
+    :type neigh: struct batadv_neigh_node \*
 
 .. _`batadv_purge_orig_ifinfo`:
 
@@ -678,11 +736,13 @@ batadv_purge_orig_ifinfo
 
     purge obsolete ifinfo entries from originator
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node which is to be checked
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_purge_orig_ifinfo.return`:
 
@@ -700,11 +760,13 @@ batadv_purge_orig_neighbors
 
     purges neighbors from originator
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node which is to be checked
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_purge_orig_neighbors.return`:
 
@@ -722,14 +784,17 @@ batadv_find_best_neighbor
 
     finds the best neighbor after purging
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node which is to be checked
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface for which the metric should be compared
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_find_best_neighbor.return`:
 
@@ -747,11 +812,13 @@ batadv_purge_orig_node
 
     purges obsolete information from an orig_node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node which is to be checked
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_purge_orig_node.description`:
 
@@ -777,8 +844,9 @@ batadv_purge_orig_ref
 
     Purge all outdated originators
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_orig_seq_print_text`:
 
@@ -789,11 +857,13 @@ batadv_orig_seq_print_text
 
     Print the originator table in a seq file
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq file to print on
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_orig_seq_print_text.return`:
 
@@ -811,11 +881,13 @@ batadv_orig_hardif_seq_print_text
 
     writes originator infos for a specific outgoing interface
 
-    :param struct seq_file \*seq:
+    :param seq:
         debugfs table seq_file struct
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_orig_hardif_seq_print_text.return`:
 
@@ -833,11 +905,13 @@ batadv_orig_dump
 
     Dump to netlink the originator infos for a specific outgoing interface
 
-    :param struct sk_buff \*msg:
+    :param msg:
         message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         parameters for the dump
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_orig_dump.return`:
 
@@ -845,50 +919,6 @@ Return
 ------
 
 0 or error value
-
-.. _`batadv_orig_hash_add_if`:
-
-batadv_orig_hash_add_if
-=======================
-
-.. c:function:: int batadv_orig_hash_add_if(struct batadv_hard_iface *hard_iface, unsigned int max_if_num)
-
-    Add interface to originators in orig_hash
-
-    :param struct batadv_hard_iface \*hard_iface:
-        hard interface to add (already slave of the soft interface)
-
-    :param unsigned int max_if_num:
-        new number of interfaces
-
-.. _`batadv_orig_hash_add_if.return`:
-
-Return
-------
-
-0 on success or negative error number in case of failure
-
-.. _`batadv_orig_hash_del_if`:
-
-batadv_orig_hash_del_if
-=======================
-
-.. c:function:: int batadv_orig_hash_del_if(struct batadv_hard_iface *hard_iface, unsigned int max_if_num)
-
-    Remove interface from originators in orig_hash
-
-    :param struct batadv_hard_iface \*hard_iface:
-        hard interface to remove (still slave of the soft interface)
-
-    :param unsigned int max_if_num:
-        new number of interfaces
-
-.. _`batadv_orig_hash_del_if.return`:
-
-Return
-------
-
-0 on success or negative error number in case of failure
 
 .. This file was automatic generated / don't edit.
 

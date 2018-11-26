@@ -10,14 +10,17 @@ do_spu_run
 
     run code loaded into an SPU
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param __u32 __user \*unpc:
+    :param unpc:
         next program counter for the SPU
+    :type unpc: __u32 __user \*
 
-    :param __u32 __user \*ustatus:
+    :param ustatus:
         status of the SPU
+    :type ustatus: __u32 __user \*
 
 .. _`do_spu_run.description`:
 

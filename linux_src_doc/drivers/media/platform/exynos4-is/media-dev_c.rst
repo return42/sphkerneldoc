@@ -10,11 +10,13 @@ fimc_pipeline_prepare
 
     update pipeline information with subdevice pointers
 
-    :param struct fimc_pipeline \*p:
+    :param p:
         fimc pipeline
+    :type p: struct fimc_pipeline \*
 
-    :param struct media_entity \*me:
+    :param me:
         media entity terminating the pipeline
+    :type me: struct media_entity \*
 
 .. _`fimc_pipeline_prepare.description`:
 
@@ -32,11 +34,13 @@ Caller holds the graph mutex.
 
     change power state of a single subdev
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         subdevice to change power state for
+    :type sd: struct v4l2_subdev \*
 
-    :param int on:
+    :param on:
         1 to enable power or 0 to disable
+    :type on: int
 
 .. _`__subdev_set_power.description`:
 
@@ -55,11 +59,13 @@ fimc_pipeline_s_power
 
     change power state of all pipeline subdevs
 
-    :param struct fimc_pipeline \*p:
+    :param p:
         fimc device terminating the pipeline
+    :type p: struct fimc_pipeline \*
 
-    :param bool on:
+    :param on:
         true to power on, false to power off
+    :type on: bool
 
 .. _`fimc_pipeline_s_power.description`:
 
@@ -77,11 +83,13 @@ Needs to be called with the graph mutex held.
 
     enable power of all pipeline subdevs and the sensor clock
 
-    :param struct exynos_media_pipeline \*ep:
+    :param ep:
         video pipeline structure
+    :type ep: struct exynos_media_pipeline \*
 
-    :param struct fimc_md \*fmd:
+    :param fmd:
         fimc media device
+    :type fmd: struct fimc_md \*
 
 .. _`__fimc_pipeline_enable.description`:
 
@@ -99,14 +107,17 @@ Called with the graph mutex held.
 
     update the pipeline information, enable power of all pipeline subdevs and the sensor clock
 
-    :param struct exynos_media_pipeline \*ep:
+    :param ep:
         fimc device terminating the pipeline
+    :type ep: struct exynos_media_pipeline \*
 
-    :param struct media_entity \*me:
+    :param me:
         media entity to start graph walk with
+    :type me: struct media_entity \*
 
-    :param bool prepare:
+    :param prepare:
         true to walk the current pipeline and acquire all subdevs
+    :type prepare: bool
 
 .. _`__fimc_pipeline_open.description`:
 
@@ -124,8 +135,9 @@ Called with the graph mutex held.
 
     disable the sensor clock and pipeline power
 
-    :param struct exynos_media_pipeline \*ep:
+    :param ep:
         fimc device terminating the pipeline
+    :type ep: struct exynos_media_pipeline \*
 
 .. _`__fimc_pipeline_close.description`:
 
@@ -143,11 +155,13 @@ Disable power of all subdevs and turn the external sensor clock off.
 
     call \ :c:func:`s_stream`\  on pipeline subdevs
 
-    :param struct exynos_media_pipeline \*ep:
+    :param ep:
         video pipeline structure
+    :type ep: struct exynos_media_pipeline \*
 
-    :param bool on:
+    :param on:
         passed as the \ :c:func:`s_stream`\  callback argument
+    :type on: bool
 
 .. _`__fimc_md_create_fimc_sink_links`:
 
@@ -158,20 +172,25 @@ Disable power of all subdevs and turn the external sensor clock off.
 
     create links to all FIMC entities
 
-    :param struct fimc_md \*fmd:
+    :param fmd:
         fimc media device
+    :type fmd: struct fimc_md \*
 
-    :param struct media_entity \*source:
+    :param source:
         the source entity to create links to all fimc entities from
+    :type source: struct media_entity \*
 
-    :param struct v4l2_subdev \*sensor:
+    :param sensor:
         sensor subdev linked to FIMC[fimc_id] entity, may be null
+    :type sensor: struct v4l2_subdev \*
 
-    :param int pad:
+    :param pad:
         the source entity pad index
+    :type pad: int
 
-    :param int link_mask:
+    :param link_mask:
         bitmask of the fimc devices for which link should be enabled
+    :type link_mask: int
 
 .. _`fimc_md_create_links`:
 
@@ -182,8 +201,9 @@ fimc_md_create_links
 
     create default links between registered entities
 
-    :param struct fimc_md \*fmd:
+    :param fmd:
         fimc media device
+    :type fmd: struct fimc_md \*
 
 .. _`fimc_md_create_links.description`:
 

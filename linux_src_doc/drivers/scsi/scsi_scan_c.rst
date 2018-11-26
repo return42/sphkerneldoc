@@ -10,8 +10,9 @@ scsi_complete_async_scans
 
     Wait for asynchronous scans to complete
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`scsi_complete_async_scans.description`:
 
@@ -32,11 +33,13 @@ scsi_unlock_floptical
 
     unlock device via a special MODE SENSE command
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device to send command to
+    :type sdev: struct scsi_device \*
 
-    :param unsigned char \*result:
+    :param result:
         area to store the result of the MODE SENSE
+    :type result: unsigned char \*
 
 .. _`scsi_unlock_floptical.description`:
 
@@ -55,14 +58,17 @@ scsi_alloc_sdev
 
     allocate and setup a scsi_Device
 
-    :param struct scsi_target \*starget:
+    :param starget:
         which target to allocate a \ :c:type:`struct scsi_device <scsi_device>`\  for
+    :type starget: struct scsi_target \*
 
-    :param u64 lun:
+    :param lun:
         which lun
+    :type lun: u64
 
-    :param void \*hostdata:
+    :param hostdata:
         usually NULL and set by ->slave_alloc instead
+    :type hostdata: void \*
 
 .. _`scsi_alloc_sdev.description`:
 
@@ -89,8 +95,9 @@ scsi_target_reap_ref_release
 
     remove target from visibility
 
-    :param struct kref \*kref:
+    :param kref:
         the reap_ref in the target being released
+    :type kref: struct kref \*
 
 .. _`scsi_target_reap_ref_release.description`:
 
@@ -111,14 +118,17 @@ scsi_alloc_target
 
     allocate a new or find an existing target
 
-    :param struct device \*parent:
+    :param parent:
         parent of the target (need not be a scsi host)
+    :type parent: struct device \*
 
-    :param int channel:
+    :param channel:
         target channel number (zero if no channels)
+    :type channel: int
 
-    :param uint id:
+    :param id:
         target id number
+    :type id: uint
 
 .. _`scsi_alloc_target.description`:
 
@@ -140,8 +150,9 @@ scsi_target_reap
 
     check to see if target is in use and destroy if not
 
-    :param struct scsi_target \*starget:
+    :param starget:
         target to be checked
+    :type starget: struct scsi_target \*
 
 .. _`scsi_target_reap.description`:
 
@@ -161,11 +172,13 @@ scsi_sanitize_inquiry_string
 
     remove non-graphical chars from an INQUIRY result string
 
-    :param unsigned char \*s:
+    :param s:
         INQUIRY result string to sanitize
+    :type s: unsigned char \*
 
-    :param int len:
+    :param len:
         length of the string
+    :type len: int
 
 .. _`scsi_sanitize_inquiry_string.description`:
 
@@ -189,17 +202,21 @@ scsi_probe_lun
 
     probe a single LUN using a SCSI INQUIRY
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi_device to probe
+    :type sdev: struct scsi_device \*
 
-    :param unsigned char \*inq_result:
+    :param inq_result:
         area to store the INQUIRY result
+    :type inq_result: unsigned char \*
 
-    :param int result_len:
+    :param result_len:
         len of inq_result
+    :type result_len: int
 
-    :param blist_flags_t \*bflags:
+    :param bflags:
         store any bflags found here
+    :type bflags: blist_flags_t \*
 
 .. _`scsi_probe_lun.description`:
 
@@ -221,17 +238,21 @@ scsi_add_lun
 
     allocate and fully initialze a scsi_device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         holds information to be stored in the new scsi_device
+    :type sdev: struct scsi_device \*
 
-    :param unsigned char \*inq_result:
+    :param inq_result:
         holds the result of a previous INQUIRY to the LUN
+    :type inq_result: unsigned char \*
 
-    :param blist_flags_t \*bflags:
+    :param bflags:
         black/white list flag
+    :type bflags: blist_flags_t \*
 
-    :param int async:
+    :param async:
         1 if this device is being scanned asynchronously
+    :type async: int
 
 .. _`scsi_add_lun.description`:
 
@@ -258,17 +279,21 @@ scsi_inq_str
 
     print INQUIRY data from min to max index, strip trailing whitespace
 
-    :param unsigned char \*buf:
+    :param buf:
         Output buffer with at least end-first+1 bytes of space
+    :type buf: unsigned char \*
 
-    :param unsigned char \*inq:
+    :param inq:
         Inquiry buffer (input)
+    :type inq: unsigned char \*
 
-    :param unsigned first:
+    :param first:
         Offset of string into inq
+    :type first: unsigned
 
-    :param unsigned end:
+    :param end:
         Index after last character in inq
+    :type end: unsigned
 
 .. _`scsi_probe_and_add_lun`:
 
@@ -279,24 +304,30 @@ scsi_probe_and_add_lun
 
     probe a LUN, if a LUN is found add it
 
-    :param struct scsi_target \*starget:
+    :param starget:
         pointer to target device structure
+    :type starget: struct scsi_target \*
 
-    :param u64 lun:
+    :param lun:
         LUN of target device
+    :type lun: u64
 
-    :param blist_flags_t \*bflagsp:
+    :param bflagsp:
         store bflags here if not NULL
+    :type bflagsp: blist_flags_t \*
 
-    :param struct scsi_device \*\*sdevp:
+    :param sdevp:
         probe the LUN corresponding to this scsi_device
+    :type sdevp: struct scsi_device \*\*
 
-    :param enum scsi_scan_mode rescan:
+    :param rescan:
         if not equal to SCSI_SCAN_INITIAL skip some code only
         needed on first scan
+    :type rescan: enum scsi_scan_mode
 
-    :param void \*hostdata:
+    :param hostdata:
         passed to \ :c:func:`scsi_alloc_sdev`\ 
+    :type hostdata: void \*
 
 .. _`scsi_probe_and_add_lun.description`:
 
@@ -326,17 +357,21 @@ scsi_sequential_lun_scan
 
     sequentially scan a SCSI target
 
-    :param struct scsi_target \*starget:
+    :param starget:
         pointer to target structure to scan
+    :type starget: struct scsi_target \*
 
-    :param blist_flags_t bflags:
+    :param bflags:
         black/white list flag for LUN 0
+    :type bflags: blist_flags_t
 
-    :param int scsi_level:
+    :param scsi_level:
         Which version of the standard does this device adhere to
+    :type scsi_level: int
 
-    :param enum scsi_scan_mode rescan:
+    :param rescan:
         passed to \ :c:func:`scsi_probe_add_lun`\ 
+    :type rescan: enum scsi_scan_mode
 
 .. _`scsi_sequential_lun_scan.description`:
 
@@ -358,14 +393,17 @@ scsi_report_lun_scan
 
     Scan using SCSI REPORT LUN results
 
-    :param struct scsi_target \*starget:
+    :param starget:
         which target
+    :type starget: struct scsi_target \*
 
-    :param blist_flags_t bflags:
+    :param bflags:
         Zero or a mix of BLIST_NOLUN, BLIST_REPORTLUN2, or BLIST_NOREPORTLUN
+    :type bflags: blist_flags_t
 
-    :param enum scsi_scan_mode rescan:
+    :param rescan:
         nonzero if we can skip code only needed on first scan
+    :type rescan: enum scsi_scan_mode
 
 .. _`scsi_report_lun_scan.description`:
 
@@ -398,23 +436,28 @@ scsi_scan_target
 
     scan a target id, possibly including all LUNs on the target.
 
-    :param struct device \*parent:
+    :param parent:
         host to scan
+    :type parent: struct device \*
 
-    :param unsigned int channel:
+    :param channel:
         channel to scan
+    :type channel: unsigned int
 
-    :param unsigned int id:
+    :param id:
         target id to scan
+    :type id: unsigned int
 
-    :param u64 lun:
+    :param lun:
         Specific LUN to scan or SCAN_WILD_CARD
+    :type lun: u64
 
-    :param enum scsi_scan_mode rescan:
+    :param rescan:
         passed to LUN scanning routines; SCSI_SCAN_INITIAL for
         no rescan, SCSI_SCAN_RESCAN to rescan existing LUNs,
         and SCSI_SCAN_MANUAL to force scanning even if
         'scan=manual' is set.
+    :type rescan: enum scsi_scan_mode
 
 .. _`scsi_scan_target.description`:
 
@@ -436,8 +479,9 @@ scsi_prep_async_scan
 
     prepare for an async scan
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         the host which will be scanned
+    :type shost: struct Scsi_Host \*
 
 .. _`scsi_prep_async_scan.return`:
 
@@ -460,8 +504,9 @@ scsi_finish_async_scan
 
     asynchronous scan has finished
 
-    :param struct async_scan_data \*data:
+    :param data:
         cookie returned from earlier call to \ :c:func:`scsi_prep_async_scan`\ 
+    :type data: struct async_scan_data \*
 
 .. _`scsi_finish_async_scan.description`:
 
@@ -481,8 +526,9 @@ scsi_scan_host
 
     scan the given adapter
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         adapter to scan
+    :type shost: struct Scsi_Host \*
 
 .. _`scsi_get_host_dev`:
 
@@ -493,8 +539,9 @@ scsi_get_host_dev
 
     Create a scsi_device that points to the host adapter itself
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Host that needs a scsi_device
+    :type shost: struct Scsi_Host \*
 
 .. _`scsi_get_host_dev.description`:
 
@@ -532,8 +579,9 @@ scsi_free_host_dev
 
     Free a scsi_device that points to the host adapter itself
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Host device to be freed
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_free_host_dev.description`:
 

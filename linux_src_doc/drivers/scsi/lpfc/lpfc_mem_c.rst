@@ -10,11 +10,13 @@ lpfc_mem_alloc
 
     create and allocate all PCI and memory pools
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA to allocate pools for
+    :type phba: struct lpfc_hba \*
 
-    :param int align:
+    :param align:
         *undescribed*
+    :type align: int
 
 .. _`lpfc_mem_alloc.description`:
 
@@ -50,8 +52,9 @@ lpfc_mem_free
 
     Frees memory allocated by lpfc_mem_alloc
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA to free memory for
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_mem_free.description`:
 
@@ -77,8 +80,9 @@ lpfc_mem_free_all
 
     Frees all PCI and driver memory
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA to free memory for
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_mem_free_all.description`:
 
@@ -106,14 +110,17 @@ lpfc_mbuf_alloc
 
     Allocate an mbuf from the lpfc_mbuf_pool PCI pool
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA which owns the pool to allocate from
+    :type phba: struct lpfc_hba \*
 
-    :param int mem_flags:
+    :param mem_flags:
         indicates if this is a priority (MEM_PRI) allocation
+    :type mem_flags: int
 
-    :param dma_addr_t \*handle:
+    :param handle:
         used to return the DMA-mapped address of the mbuf
+    :type handle: dma_addr_t \*
 
 .. _`lpfc_mbuf_alloc.description`:
 
@@ -150,14 +157,17 @@ NULL on failure
 
     Free an mbuf from the lpfc_mbuf_pool PCI pool (locked)
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA which owns the pool to return to
+    :type phba: struct lpfc_hba \*
 
-    :param void \*virt:
+    :param virt:
         mbuf to free
+    :type virt: void \*
 
-    :param dma_addr_t dma:
+    :param dma:
         the DMA-mapped address of the lpfc_mbuf_pool to be freed
+    :type dma: dma_addr_t
 
 .. _`__lpfc_mbuf_free.description`:
 
@@ -191,14 +201,17 @@ lpfc_mbuf_free
 
     Free an mbuf from the lpfc_mbuf_pool PCI pool (unlocked)
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA which owns the pool to return to
+    :type phba: struct lpfc_hba \*
 
-    :param void \*virt:
+    :param virt:
         mbuf to free
+    :type virt: void \*
 
-    :param dma_addr_t dma:
+    :param dma:
         the DMA-mapped address of the lpfc_mbuf_pool to be freed
+    :type dma: dma_addr_t
 
 .. _`lpfc_mbuf_free.description`:
 
@@ -231,14 +244,17 @@ lpfc_nvmet_buf_alloc
 
     Allocate an nvmet_buf from the lpfc_sg_dma_buf_pool PCI pool
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA which owns the pool to allocate from
+    :type phba: struct lpfc_hba \*
 
-    :param int mem_flags:
+    :param mem_flags:
         indicates if this is a priority (MEM_PRI) allocation
+    :type mem_flags: int
 
-    :param dma_addr_t \*handle:
+    :param handle:
         used to return the DMA-mapped address of the nvmet_buf
+    :type handle: dma_addr_t \*
 
 .. _`lpfc_nvmet_buf_alloc.description`:
 
@@ -265,14 +281,17 @@ lpfc_nvmet_buf_free
 
     Free an nvmet_buf from the lpfc_sg_dma_buf_pool PCI pool
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA which owns the pool to return to
+    :type phba: struct lpfc_hba \*
 
-    :param void \*virt:
+    :param virt:
         nvmet_buf to free
+    :type virt: void \*
 
-    :param dma_addr_t dma:
+    :param dma:
         the DMA-mapped address of the lpfc_sg_dma_buf_pool to be freed
+    :type dma: dma_addr_t
 
 .. _`lpfc_nvmet_buf_free.return`:
 
@@ -290,8 +309,9 @@ lpfc_els_hbq_alloc
 
     Allocate an HBQ buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA to allocate HBQ buffer for
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_els_hbq_alloc.description`:
 
@@ -325,11 +345,13 @@ lpfc_els_hbq_free
 
     Frees an HBQ buffer allocated with lpfc_els_hbq_alloc
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA buffer was allocated for
+    :type phba: struct lpfc_hba \*
 
-    :param struct hbq_dmabuf \*hbqbp:
+    :param hbqbp:
         HBQ container returned by lpfc_els_hbq_alloc
+    :type hbqbp: struct hbq_dmabuf \*
 
 .. _`lpfc_els_hbq_free.description`:
 
@@ -362,8 +384,9 @@ lpfc_sli4_rb_alloc
 
     Allocate an SLI4 Receive buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA to allocate a receive buffer for
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_rb_alloc.description`:
 
@@ -397,11 +420,13 @@ lpfc_sli4_rb_free
 
     Frees a receive buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA buffer was allocated for
+    :type phba: struct lpfc_hba \*
 
-    :param struct hbq_dmabuf \*dmab:
+    :param dmab:
         DMA Buffer container returned by lpfc_sli4_hbq_alloc
+    :type dmab: struct hbq_dmabuf \*
 
 .. _`lpfc_sli4_rb_free.description`:
 
@@ -434,8 +459,9 @@ lpfc_sli4_nvmet_alloc
 
     Allocate an SLI4 Receive buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA to allocate a receive buffer for
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_nvmet_alloc.description`:
 
@@ -469,11 +495,13 @@ lpfc_sli4_nvmet_free
 
     Frees a receive buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA buffer was allocated for
+    :type phba: struct lpfc_hba \*
 
-    :param struct rqb_dmabuf \*dmab:
+    :param dmab:
         DMA Buffer container returned by lpfc_sli4_rbq_alloc
+    :type dmab: struct rqb_dmabuf \*
 
 .. _`lpfc_sli4_nvmet_free.description`:
 
@@ -506,11 +534,13 @@ lpfc_in_buf_free
 
     Free a DMA buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA buffer is associated with
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_dmabuf \*mp:
+    :param mp:
         Buffer to free
+    :type mp: struct lpfc_dmabuf \*
 
 .. _`lpfc_in_buf_free.description`:
 
@@ -543,11 +573,13 @@ lpfc_rq_buf_free
 
     Free a RQ DMA buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         HBA buffer is associated with
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_dmabuf \*mp:
+    :param mp:
         Buffer to free
+    :type mp: struct lpfc_dmabuf \*
 
 .. _`lpfc_rq_buf_free.description`:
 

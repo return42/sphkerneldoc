@@ -10,8 +10,9 @@ ahci_platform_enable_phys
 
     Enable PHYs
 
-    :param struct ahci_host_priv \*hpriv:
+    :param hpriv:
         host private area to store config values
+    :type hpriv: struct ahci_host_priv \*
 
 .. _`ahci_platform_enable_phys.description`:
 
@@ -38,8 +39,9 @@ ahci_platform_disable_phys
 
     Disable PHYs
 
-    :param struct ahci_host_priv \*hpriv:
+    :param hpriv:
         host private area to store config values
+    :type hpriv: struct ahci_host_priv \*
 
 .. _`ahci_platform_disable_phys.description`:
 
@@ -57,8 +59,9 @@ ahci_platform_enable_clks
 
     Enable platform clocks
 
-    :param struct ahci_host_priv \*hpriv:
+    :param hpriv:
         host private area to store config values
+    :type hpriv: struct ahci_host_priv \*
 
 .. _`ahci_platform_enable_clks.description`:
 
@@ -85,8 +88,9 @@ ahci_platform_disable_clks
 
     Disable platform clocks
 
-    :param struct ahci_host_priv \*hpriv:
+    :param hpriv:
         host private area to store config values
+    :type hpriv: struct ahci_host_priv \*
 
 .. _`ahci_platform_disable_clks.description`:
 
@@ -105,15 +109,16 @@ ahci_platform_enable_regulators
 
     Enable regulators
 
-    :param struct ahci_host_priv \*hpriv:
+    :param hpriv:
         host private area to store config values
+    :type hpriv: struct ahci_host_priv \*
 
 .. _`ahci_platform_enable_regulators.description`:
 
 Description
 -----------
 
-This function enables all the regulators found in
+This function enables all the regulators found in controller and
 hpriv->target_pwrs, if any.  If a regulator fails to be enabled, it
 disables all the regulators already enabled in reverse order and
 returns an error.
@@ -134,15 +139,17 @@ ahci_platform_disable_regulators
 
     Disable regulators
 
-    :param struct ahci_host_priv \*hpriv:
+    :param hpriv:
         host private area to store config values
+    :type hpriv: struct ahci_host_priv \*
 
 .. _`ahci_platform_disable_regulators.description`:
 
 Description
 -----------
 
-This function disables all regulators found in hpriv->target_pwrs.
+This function disables all regulators found in hpriv->target_pwrs and
+AHCI controller.
 
 .. _`ahci_platform_enable_resources`:
 
@@ -153,8 +160,9 @@ ahci_platform_enable_resources
 
     Enable platform resources
 
-    :param struct ahci_host_priv \*hpriv:
+    :param hpriv:
         host private area to store config values
+    :type hpriv: struct ahci_host_priv \*
 
 .. _`ahci_platform_enable_resources.description`:
 
@@ -170,7 +178,8 @@ following order
 
 1) Regulator
 2) Clocks (through ahci_platform_enable_clks)
-3) Phys
+3) Resets
+4) Phys
 
 If resource enabling fails at any point the previous enabled resources
 are disabled in reverse order.
@@ -191,8 +200,9 @@ ahci_platform_disable_resources
 
     Disable platform resources
 
-    :param struct ahci_host_priv \*hpriv:
+    :param hpriv:
         host private area to store config values
+    :type hpriv: struct ahci_host_priv \*
 
 .. _`ahci_platform_disable_resources.description`:
 
@@ -207,20 +217,26 @@ following order
 ---------------
 
 1) Phys
-2) Clocks (through ahci_platform_disable_clks)
-3) Regulator
+2) Resets
+3) Clocks (through ahci_platform_disable_clks)
+4) Regulator
 
 .. _`ahci_platform_get_resources`:
 
 ahci_platform_get_resources
 ===========================
 
-.. c:function:: struct ahci_host_priv *ahci_platform_get_resources(struct platform_device *pdev)
+.. c:function:: struct ahci_host_priv *ahci_platform_get_resources(struct platform_device *pdev, unsigned int flags)
 
     Get platform resources
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device to get resources for
+    :type pdev: struct platform_device \*
+
+    :param flags:
+        bitmap representing the resource to get
+    :type flags: unsigned int
 
 .. _`ahci_platform_get_resources.description`:
 
@@ -232,9 +248,11 @@ resources, storing a reference to them inside the returned struct:
 
 1) mmio registers (IORESOURCE_MEM 0, mandatory)
 2) regulator for controlling the targets power (optional)
+regulator for controlling the AHCI controller (optional)
 3) 0 - AHCI_MAX_CLKS clocks, as specified in the devs devicetree node,
 or for non devicetree enabled platforms a single clock
-4) phys (optional)
+4) resets, if flags has AHCI_PLATFORM_GET_RESETS (optional)
+5) phys (optional)
 
 .. _`ahci_platform_get_resources.return`:
 
@@ -252,17 +270,21 @@ ahci_platform_init_host
 
     Bring up an ahci-platform host
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer for the host
+    :type pdev: struct platform_device \*
 
-    :param struct ahci_host_priv \*hpriv:
+    :param hpriv:
         ahci-host private data for the host
+    :type hpriv: struct ahci_host_priv \*
 
-    :param const struct ata_port_info \*pi_template:
+    :param pi_template:
         template for the ata_port_info to use
+    :type pi_template: const struct ata_port_info \*
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         scsi_host_template to use when registering
+    :type sht: struct scsi_host_template \*
 
 .. _`ahci_platform_init_host.description`:
 
@@ -289,8 +311,9 @@ ahci_platform_shutdown
 
     Disable interrupts and stop DMA for host ports
 
-    :param struct platform_device \*pdev:
-        *undescribed*
+    :param pdev:
+        platform device pointer for the host
+    :type pdev: struct platform_device \*
 
 .. _`ahci_platform_shutdown.description`:
 
@@ -310,8 +333,9 @@ ahci_platform_suspend_host
 
     Suspend an ahci-platform host
 
-    :param struct device \*dev:
+    :param dev:
         device pointer for the host
+    :type dev: struct device \*
 
 .. _`ahci_platform_suspend_host.description`:
 
@@ -338,8 +362,9 @@ ahci_platform_resume_host
 
     Resume an ahci-platform host
 
-    :param struct device \*dev:
+    :param dev:
         device pointer for the host
+    :type dev: struct device \*
 
 .. _`ahci_platform_resume_host.description`:
 
@@ -366,8 +391,9 @@ ahci_platform_suspend
 
     Suspend an ahci-platform device
 
-    :param struct device \*dev:
+    :param dev:
         the platform device to suspend
+    :type dev: struct device \*
 
 .. _`ahci_platform_suspend.description`:
 
@@ -393,8 +419,9 @@ ahci_platform_resume
 
     Resume an ahci-platform device
 
-    :param struct device \*dev:
+    :param dev:
         the platform device to resume
+    :type dev: struct device \*
 
 .. _`ahci_platform_resume.description`:
 

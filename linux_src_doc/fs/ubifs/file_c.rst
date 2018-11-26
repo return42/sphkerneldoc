@@ -10,8 +10,9 @@ release_new_page_budget
 
     release budget of a new page.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`release_new_page_budget.description`:
 
@@ -30,8 +31,9 @@ release_existing_page_budget
 
     release budget of an existing page.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`release_existing_page_budget.description`:
 
@@ -50,17 +52,21 @@ allocate_budget
 
     allocate budget for 'ubifs_write_begin()'.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct page \*page:
+    :param page:
         page to allocate budget for
+    :type page: struct page \*
 
-    :param struct ubifs_inode \*ui:
+    :param ui:
         UBIFS inode object the page belongs to
+    :type ui: struct ubifs_inode \*
 
-    :param int appending:
+    :param appending:
         non-zero if the page is appended
+    :type appending: int
 
 .. _`allocate_budget.description`:
 
@@ -70,7 +76,7 @@ Description
 This is a helper function for 'ubifs_write_begin()' which allocates budget
 for the operation. The budget is allocated differently depending on whether
 this is appending, whether the page is dirty or not, and so on. This
-function leaves the \ ``ui``\ ->ui_mutex locked in case of appending. Returns zero
+function leaves the \ ``ui->ui_mutex``\  locked in case of appending. Returns zero
 in case of success and \ ``-ENOSPC``\  in case of failure.
 
 .. _`cancel_budget`:
@@ -82,17 +88,21 @@ cancel_budget
 
     cancel budget.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct page \*page:
+    :param page:
         page to cancel budget for
+    :type page: struct page \*
 
-    :param struct ubifs_inode \*ui:
+    :param ui:
         UBIFS inode object the page belongs to
+    :type ui: struct ubifs_inode \*
 
-    :param int appending:
+    :param appending:
         non-zero if the page is appended
+    :type appending: int
 
 .. _`cancel_budget.description`:
 
@@ -100,7 +110,7 @@ Description
 -----------
 
 This is a helper function for a page write operation. It unlocks the
-\ ``ui``\ ->ui_mutex in case of appending.
+\ ``ui->ui_mutex``\  in case of appending.
 
 .. _`populate_page`:
 
@@ -111,17 +121,21 @@ populate_page
 
     copy data nodes into a page for bulk-read.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct page \*page:
+    :param page:
         page
+    :type page: struct page \*
 
-    :param struct bu_info \*bu:
+    :param bu:
         bulk-read information
+    :type bu: struct bu_info \*
 
-    :param int \*n:
+    :param n:
         next zbranch slot
+    :type n: int \*
 
 .. _`populate_page.description`:
 
@@ -139,14 +153,17 @@ ubifs_do_bulk_read
 
     do bulk-read.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct bu_info \*bu:
+    :param bu:
         bulk-read information
+    :type bu: struct bu_info \*
 
-    :param struct page \*page1:
+    :param page1:
         first page to read
+    :type page1: struct page \*
 
 .. _`ubifs_do_bulk_read.description`:
 
@@ -164,8 +181,9 @@ ubifs_bulk_read
 
     determine whether to bulk-read and, if so, do it.
 
-    :param struct page \*page:
+    :param page:
         page from which to start bulk-read.
+    :type page: struct page \*
 
 .. _`ubifs_bulk_read.description`:
 
@@ -186,11 +204,13 @@ do_attr_changes
 
     change inode attributes.
 
-    :param struct inode \*inode:
+    :param inode:
         inode to change attributes for
+    :type inode: struct inode \*
 
-    :param const struct iattr \*attr:
+    :param attr:
         describes attributes to change
+    :type attr: const struct iattr \*
 
 .. _`do_truncation`:
 
@@ -201,14 +221,17 @@ do_truncation
 
     truncate an inode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode to truncate
+    :type inode: struct inode \*
 
-    :param const struct iattr \*attr:
+    :param attr:
         inode attribute changes description
+    :type attr: const struct iattr \*
 
 .. _`do_truncation.description`:
 
@@ -228,14 +251,17 @@ do_setattr
 
     change inode attributes.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode to change attributes for
+    :type inode: struct inode \*
 
-    :param const struct iattr \*attr:
+    :param attr:
         inode attribute changes description
+    :type attr: const struct iattr \*
 
 .. _`do_setattr.description`:
 
@@ -251,15 +277,17 @@ error code in case of failure.
 mctime_update_needed
 ====================
 
-.. c:function:: int mctime_update_needed(const struct inode *inode, const struct timespec *now)
+.. c:function:: int mctime_update_needed(const struct inode *inode, const struct timespec64 *now)
 
     check if mtime or ctime update is needed.
 
-    :param const struct inode \*inode:
+    :param inode:
         the inode to do the check for
+    :type inode: const struct inode \*
 
-    :param const struct timespec \*now:
+    :param now:
         current time
+    :type now: const struct timespec64 \*
 
 .. _`mctime_update_needed.description`:
 
@@ -279,14 +307,17 @@ ubifs_update_time
 
     update time of inode.
 
-    :param struct inode \*inode:
+    :param inode:
         inode to update
+    :type inode: struct inode \*
 
-    :param struct timespec64 \*time:
+    :param time:
         *undescribed*
+    :type time: struct timespec64 \*
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`ubifs_update_time.description`:
 
@@ -304,8 +335,9 @@ update_mctime
 
     update mtime and ctime of an inode.
 
-    :param struct inode \*inode:
+    :param inode:
         inode to update
+    :type inode: struct inode \*
 
 .. _`update_mctime.description`:
 

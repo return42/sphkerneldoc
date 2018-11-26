@@ -156,8 +156,9 @@ rdma_restrack_init
 
     initialize resource tracking
 
-    :param struct rdma_restrack_root \*res:
+    :param res:
         resource tracking root
+    :type res: struct rdma_restrack_root \*
 
 .. _`rdma_restrack_clean`:
 
@@ -168,8 +169,9 @@ rdma_restrack_clean
 
     clean resource tracking
 
-    :param struct rdma_restrack_root \*res:
+    :param res:
         resource tracking root
+    :type res: struct rdma_restrack_root \*
 
 .. _`rdma_restrack_count`:
 
@@ -180,14 +182,17 @@ rdma_restrack_count
 
     the current usage of specific object
 
-    :param struct rdma_restrack_root \*res:
+    :param res:
         resource entry
+    :type res: struct rdma_restrack_root \*
 
-    :param enum rdma_restrack_type type:
+    :param type:
         actual type of object to operate
+    :type type: enum rdma_restrack_type
 
-    :param struct pid_namespace \*ns:
+    :param ns:
         PID namespace
+    :type ns: struct pid_namespace \*
 
 .. _`rdma_restrack_add`:
 
@@ -198,8 +203,9 @@ rdma_restrack_add
 
     add object to the reource tracking database
 
-    :param struct rdma_restrack_entry \*res:
+    :param res:
         resource entry
+    :type res: struct rdma_restrack_entry \*
 
 .. _`rdma_restrack_del`:
 
@@ -210,8 +216,9 @@ rdma_restrack_del
 
     delete object from the reource tracking database
 
-    :param struct rdma_restrack_entry \*res:
+    :param res:
         resource entry
+    :type res: struct rdma_restrack_entry \*
 
 .. _`rdma_is_kernel_res`:
 
@@ -222,8 +229,9 @@ rdma_is_kernel_res
 
     check the owner of resource
 
-    :param struct rdma_restrack_entry \*res:
+    :param res:
         resource entry
+    :type res: struct rdma_restrack_entry \*
 
 .. _`rdma_restrack_get`:
 
@@ -234,8 +242,9 @@ rdma_restrack_get
 
     grab to protect resource from release
 
-    :param struct rdma_restrack_entry \*res:
+    :param res:
         resource entry
+    :type res: struct rdma_restrack_entry \*
 
 .. _`rdma_restrack_put`:
 
@@ -246,23 +255,26 @@ rdma_restrack_put
 
     release resource
 
-    :param struct rdma_restrack_entry \*res:
+    :param res:
         resource entry
+    :type res: struct rdma_restrack_entry \*
 
 .. _`rdma_restrack_set_task`:
 
 rdma_restrack_set_task
 ======================
 
-.. c:function:: void rdma_restrack_set_task(struct rdma_restrack_entry *res, struct task_struct *task)
+.. c:function:: void rdma_restrack_set_task(struct rdma_restrack_entry *res, const char *caller)
 
     set the task for this resource
 
-    :param struct rdma_restrack_entry \*res:
+    :param res:
         resource entry
+    :type res: struct rdma_restrack_entry \*
 
-    :param struct task_struct \*task:
-        task struct
+    :param caller:
+        kernel name, the current task will be used if the caller is NULL.
+    :type caller: const char \*
 
 .. This file was automatic generated / don't edit.
 

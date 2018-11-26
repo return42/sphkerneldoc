@@ -10,13 +10,15 @@ fb_get_options
 
     get kernel boot parameters
 
-    :param const char \*name:
+    :param name:
         framebuffer name as it would appear in
         the boot parameter line
         (video=<name>:<options>)
+    :type name: const char \*
 
-    :param char \*\*option:
+    :param option:
         the option will be stored here
+    :type option: char \*\*
 
 .. _`fb_get_options.note`:
 
@@ -34,8 +36,9 @@ video_setup
 
     process command line options
 
-    :param char \*options:
+    :param options:
         string of options
+    :type options: char \*
 
 .. _`video_setup.description`:
 

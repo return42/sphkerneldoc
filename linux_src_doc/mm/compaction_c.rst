@@ -10,14 +10,17 @@ isolate_freepages_range
 
     isolate free pages.
 
-    :param struct compact_control \*cc:
+    :param cc:
         Compaction control structure.
+    :type cc: struct compact_control \*
 
-    :param unsigned long start_pfn:
+    :param start_pfn:
         The first PFN to start isolating.
+    :type start_pfn: unsigned long
 
-    :param unsigned long end_pfn:
+    :param end_pfn:
         The one-past-last PFN.
+    :type end_pfn: unsigned long
 
 .. _`isolate_freepages_range.description`:
 
@@ -41,17 +44,21 @@ isolate_migratepages_block
 
     isolate all migrate-able pages within a single pageblock
 
-    :param struct compact_control \*cc:
+    :param cc:
         Compaction control structure.
+    :type cc: struct compact_control \*
 
-    :param unsigned long low_pfn:
+    :param low_pfn:
         The first PFN to isolate
+    :type low_pfn: unsigned long
 
-    :param unsigned long end_pfn:
+    :param end_pfn:
         The one-past-the-last PFN to isolate, within same pageblock
+    :type end_pfn: unsigned long
 
-    :param isolate_mode_t isolate_mode:
+    :param isolate_mode:
         Isolation mode to be used.
+    :type isolate_mode: isolate_mode_t
 
 .. _`isolate_migratepages_block.description`:
 
@@ -77,14 +84,17 @@ isolate_migratepages_range
 
     isolate migrate-able pages in a PFN range
 
-    :param struct compact_control \*cc:
+    :param cc:
         Compaction control structure.
+    :type cc: struct compact_control \*
 
-    :param unsigned long start_pfn:
+    :param start_pfn:
         The first PFN to start isolating.
+    :type start_pfn: unsigned long
 
-    :param unsigned long end_pfn:
+    :param end_pfn:
         The one-past-last PFN.
+    :type end_pfn: unsigned long
 
 .. _`isolate_migratepages_range.description`:
 
@@ -104,20 +114,25 @@ try_to_compact_pages
 
     Direct compact to satisfy a high-order allocation
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         The GFP mask of the current allocation
+    :type gfp_mask: gfp_t
 
-    :param unsigned int order:
+    :param order:
         The order of the current allocation
+    :type order: unsigned int
 
-    :param unsigned int alloc_flags:
+    :param alloc_flags:
         The allocation flags of the current allocation
+    :type alloc_flags: unsigned int
 
-    :param const struct alloc_context \*ac:
+    :param ac:
         The context of current allocation
+    :type ac: const struct alloc_context \*
 
-    :param enum compact_priority prio:
+    :param prio:
         Determines how hard direct compaction should try to succeed
+    :type prio: enum compact_priority
 
 .. _`try_to_compact_pages.description`:
 

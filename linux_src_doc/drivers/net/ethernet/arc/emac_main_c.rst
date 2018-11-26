@@ -10,8 +10,9 @@ arc_emac_tx_avail
 
     Return the number of available slots in the tx ring.
 
-    :param struct arc_emac_priv \*priv:
+    :param priv:
         Pointer to ARC EMAC private data structure.
+    :type priv: struct arc_emac_priv \*
 
 .. _`arc_emac_tx_avail.return`:
 
@@ -29,8 +30,9 @@ arc_emac_adjust_link
 
     Adjust the PHY link duplex.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure.
+    :type ndev: struct net_device \*
 
 .. _`arc_emac_adjust_link.description`:
 
@@ -49,11 +51,13 @@ arc_emac_get_drvinfo
 
     Get EMAC driver information.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure.
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_drvinfo \*info:
+    :param info:
         Pointer to ethtool_drvinfo structure.
+    :type info: struct ethtool_drvinfo \*
 
 .. _`arc_emac_get_drvinfo.description`:
 
@@ -72,8 +76,9 @@ arc_emac_tx_clean
 
     clears processed by EMAC Tx BDs.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
 .. _`arc_emac_rx`:
 
@@ -84,11 +89,13 @@ arc_emac_rx
 
     processing of Rx packets.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
-    :param int budget:
+    :param budget:
         How many BDs to process on 1 call.
+    :type budget: int
 
 .. _`arc_emac_rx.return`:
 
@@ -108,8 +115,9 @@ arc_emac_rx_miss_handle
 
     handle R_MISS register
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure.
+    :type ndev: struct net_device \*
 
 .. _`arc_emac_rx_stall_check`:
 
@@ -120,14 +128,17 @@ arc_emac_rx_stall_check
 
     check RX stall
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure.
+    :type ndev: struct net_device \*
 
-    :param int budget:
+    :param budget:
         How many BDs requested to process on 1 call.
+    :type budget: int
 
-    :param unsigned int work_done:
+    :param work_done:
         How many BDs processed
+    :type work_done: unsigned int
 
 .. _`arc_emac_rx_stall_check.description`:
 
@@ -148,11 +159,13 @@ arc_emac_poll
 
     NAPI poll handler.
 
-    :param struct napi_struct \*napi:
+    :param napi:
         Pointer to napi_struct structure.
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         How many BDs to process on 1 call.
+    :type budget: int
 
 .. _`arc_emac_poll.return`:
 
@@ -170,11 +183,13 @@ arc_emac_intr
 
     Global interrupt handler for EMAC.
 
-    :param int irq:
+    :param irq:
         irq number.
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         device instance.
+    :type dev_instance: void \*
 
 .. _`arc_emac_intr.return`:
 
@@ -195,8 +210,9 @@ arc_emac_open
 
     Open the network device.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
 .. _`arc_emac_open.return`:
 
@@ -218,8 +234,9 @@ arc_emac_set_rx_mode
 
     Change the receive filtering mode.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
 .. _`arc_emac_set_rx_mode.description`:
 
@@ -238,8 +255,9 @@ arc_free_tx_queue
 
     free skb from tx queue
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
 .. _`arc_free_tx_queue.description`:
 
@@ -257,8 +275,9 @@ arc_free_rx_queue
 
     free skb from rx queue
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
 .. _`arc_free_rx_queue.description`:
 
@@ -276,8 +295,9 @@ arc_emac_stop
 
     Close the network device.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the network device.
+    :type ndev: struct net_device \*
 
 .. _`arc_emac_stop.description`:
 
@@ -297,8 +317,9 @@ arc_emac_stats
 
     Get system network statistics.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure.
+    :type ndev: struct net_device \*
 
 .. _`arc_emac_stats.description`:
 
@@ -317,11 +338,13 @@ arc_emac_tx
 
     Starts the data transmission.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff pointer that contains data to be Transmitted.
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure.
+    :type ndev: struct net_device \*
 
 .. _`arc_emac_tx.return`:
 
@@ -342,11 +365,13 @@ arc_emac_set_address
 
     Set the MAC address for this device.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure.
+    :type ndev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         6 byte Address to be written as MAC address.
+    :type p: void \*
 
 .. _`arc_emac_set_address.description`:
 
@@ -373,8 +398,9 @@ arc_emac_restart
 
     Restart EMAC
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure.
+    :type ndev: struct net_device \*
 
 .. _`arc_emac_restart.description`:
 

@@ -10,8 +10,9 @@ batadv_mcast_start_timer
 
     schedule the multicast periodic worker
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_mcast_get_bridge`:
 
@@ -22,8 +23,9 @@ batadv_mcast_get_bridge
 
     get the bridge on top of the softif if it exists
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         netdev struct of the mesh interface
+    :type soft_iface: struct net_device \*
 
 .. _`batadv_mcast_get_bridge.description`:
 
@@ -50,8 +52,9 @@ batadv_mcast_addr_is_ipv4
 
     check if multicast MAC is IPv4
 
-    :param const u8 \*addr:
+    :param addr:
         the MAC address to check
+    :type addr: const u8 \*
 
 .. _`batadv_mcast_addr_is_ipv4.return`:
 
@@ -70,8 +73,9 @@ batadv_mcast_addr_is_ipv6
 
     check if multicast MAC is IPv6
 
-    :param const u8 \*addr:
+    :param addr:
         the MAC address to check
+    :type addr: const u8 \*
 
 .. _`batadv_mcast_addr_is_ipv6.return`:
 
@@ -90,14 +94,17 @@ batadv_mcast_mla_softif_get
 
     get softif multicast listeners
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the device to collect multicast addresses from
+    :type dev: struct net_device \*
 
-    :param struct hlist_head \*mcast_list:
+    :param mcast_list:
         a list to put found addresses into
+    :type mcast_list: struct hlist_head \*
 
 .. _`batadv_mcast_mla_softif_get.description`:
 
@@ -131,11 +138,13 @@ batadv_mcast_mla_is_duplicate
 
     check whether an address is in a list
 
-    :param u8 \*mcast_addr:
+    :param mcast_addr:
         the multicast address to check
+    :type mcast_addr: u8 \*
 
-    :param struct hlist_head \*mcast_list:
+    :param mcast_list:
         the list with multicast addresses to search in
+    :type mcast_list: struct hlist_head \*
 
 .. _`batadv_mcast_mla_is_duplicate.return`:
 
@@ -154,11 +163,13 @@ batadv_mcast_mla_br_addr_cpy
 
     copy a bridge multicast address
 
-    :param char \*dst:
+    :param dst:
         destination to write to - a multicast MAC address
+    :type dst: char \*
 
-    :param const struct br_ip \*src:
+    :param src:
         source to read from - a multicast IP address
+    :type src: const struct br_ip \*
 
 .. _`batadv_mcast_mla_br_addr_cpy.description`:
 
@@ -181,14 +192,17 @@ batadv_mcast_mla_bridge_get
 
     get bridged-in multicast listeners
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct net_device \*dev:
+    :param dev:
         a bridge slave whose bridge to collect multicast addresses from
+    :type dev: struct net_device \*
 
-    :param struct hlist_head \*mcast_list:
+    :param mcast_list:
         a list to put found addresses into
+    :type mcast_list: struct hlist_head \*
 
 .. _`batadv_mcast_mla_bridge_get.description`:
 
@@ -217,8 +231,9 @@ batadv_mcast_mla_list_free
 
     free a list of multicast addresses
 
-    :param struct hlist_head \*mcast_list:
+    :param mcast_list:
         the list to free
+    :type mcast_list: struct hlist_head \*
 
 .. _`batadv_mcast_mla_list_free.description`:
 
@@ -236,11 +251,13 @@ batadv_mcast_mla_tt_retract
 
     clean up multicast listener announcements
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct hlist_head \*mcast_list:
+    :param mcast_list:
         a list of addresses which should \_not\_ be removed
+    :type mcast_list: struct hlist_head \*
 
 .. _`batadv_mcast_mla_tt_retract.description`:
 
@@ -263,11 +280,13 @@ batadv_mcast_mla_tt_add
 
     add multicast listener announcements
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct hlist_head \*mcast_list:
+    :param mcast_list:
         a list of addresses which are going to get added
+    :type mcast_list: struct hlist_head \*
 
 .. _`batadv_mcast_mla_tt_add.description`:
 
@@ -288,8 +307,9 @@ batadv_mcast_has_bridge
 
     check whether the soft-iface is bridged
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_mcast_has_bridge.description`:
 
@@ -314,17 +334,21 @@ batadv_mcast_querier_log
 
     debug output regarding the querier status on link
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param char \*str_proto:
+    :param str_proto:
         a string for the querier protocol (e.g. "IGMP" or "MLD")
+    :type str_proto: char \*
 
-    :param struct batadv_mcast_querier_state \*old_state:
+    :param old_state:
         the previous querier state on our link
+    :type old_state: struct batadv_mcast_querier_state \*
 
-    :param struct batadv_mcast_querier_state \*new_state:
+    :param new_state:
         the new querier state on our link
+    :type new_state: struct batadv_mcast_querier_state \*
 
 .. _`batadv_mcast_querier_log.description`:
 
@@ -360,17 +384,21 @@ batadv_mcast_bridge_log
 
     debug output for topology changes in bridged setups
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param bool bridged:
+    :param bridged:
         a flag about whether the soft interface is currently bridged or not
+    :type bridged: bool
 
-    :param struct batadv_mcast_querier_state \*querier_ipv4:
+    :param querier_ipv4:
         (maybe) new status of a potential, selected IGMP querier
+    :type querier_ipv4: struct batadv_mcast_querier_state \*
 
-    :param struct batadv_mcast_querier_state \*querier_ipv6:
+    :param querier_ipv6:
         (maybe) new status of a potential, selected MLD querier
+    :type querier_ipv6: struct batadv_mcast_querier_state \*
 
 .. _`batadv_mcast_bridge_log.description`:
 
@@ -396,11 +424,13 @@ batadv_mcast_flags_log
 
     output debug information about mcast flag changes
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 flags:
+    :param flags:
         flags indicating the new multicast state
+    :type flags: u8
 
 .. _`batadv_mcast_flags_log.description`:
 
@@ -419,8 +449,9 @@ batadv_mcast_mla_tvlv_update
 
     update multicast tvlv
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_mcast_mla_tvlv_update.description`:
 
@@ -447,8 +478,9 @@ otherwise.
 
     update the own MLAs
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`__batadv_mcast_mla_update.description`:
 
@@ -472,8 +504,9 @@ batadv_mcast_mla_update
 
     update the own MLAs
 
-    :param struct work_struct \*work:
+    :param work:
         kernel work struct
+    :type work: struct work_struct \*
 
 .. _`batadv_mcast_mla_update.description`:
 
@@ -494,8 +527,9 @@ batadv_mcast_is_report_ipv4
 
     check for IGMP reports
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the ethernet frame destined for the mesh
+    :type skb: struct sk_buff \*
 
 .. _`batadv_mcast_is_report_ipv4.description`:
 
@@ -522,14 +556,17 @@ batadv_mcast_forw_mode_check_ipv4
 
     check for optimized forwarding potential
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the IPv4 packet to check
+    :type skb: struct sk_buff \*
 
-    :param bool \*is_unsnoopable:
+    :param is_unsnoopable:
         stores whether the destination is snoopable
+    :type is_unsnoopable: bool \*
 
 .. _`batadv_mcast_forw_mode_check_ipv4.description`:
 
@@ -556,8 +593,9 @@ batadv_mcast_is_report_ipv6
 
     check for MLD reports
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the ethernet frame destined for the mesh
+    :type skb: struct sk_buff \*
 
 .. _`batadv_mcast_is_report_ipv6.description`:
 
@@ -584,14 +622,17 @@ batadv_mcast_forw_mode_check_ipv6
 
     check for optimized forwarding potential
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the IPv6 packet to check
+    :type skb: struct sk_buff \*
 
-    :param bool \*is_unsnoopable:
+    :param is_unsnoopable:
         stores whether the destination is snoopable
+    :type is_unsnoopable: bool \*
 
 .. _`batadv_mcast_forw_mode_check_ipv6.description`:
 
@@ -617,14 +658,17 @@ batadv_mcast_forw_mode_check
 
     check for optimized forwarding potential
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the multicast frame to check
+    :type skb: struct sk_buff \*
 
-    :param bool \*is_unsnoopable:
+    :param is_unsnoopable:
         stores whether the destination is snoopable
+    :type is_unsnoopable: bool \*
 
 .. _`batadv_mcast_forw_mode_check.description`:
 
@@ -650,11 +694,13 @@ batadv_mcast_forw_want_all_ip_count
 
     count nodes with unspecific mcast interest
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct ethhdr \*ethhdr:
+    :param ethhdr:
         ethernet header of a packet
+    :type ethhdr: struct ethhdr \*
 
 .. _`batadv_mcast_forw_want_all_ip_count.return`:
 
@@ -674,11 +720,13 @@ batadv_mcast_forw_tt_node_get
 
     get a multicast tt node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct ethhdr \*ethhdr:
+    :param ethhdr:
         the ether header containing the multicast destination
+    :type ethhdr: struct ethhdr \*
 
 .. _`batadv_mcast_forw_tt_node_get.return`:
 
@@ -697,8 +745,9 @@ batadv_mcast_forw_ipv4_node_get
 
     get a node with an ipv4 flag
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_mcast_forw_ipv4_node_get.return`:
 
@@ -717,8 +766,9 @@ batadv_mcast_forw_ipv6_node_get
 
     get a node with an ipv6 flag
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_mcast_forw_ipv6_node_get.return`:
 
@@ -737,11 +787,13 @@ batadv_mcast_forw_ip_node_get
 
     get a node with an ipv4/ipv6 flag
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct ethhdr \*ethhdr:
+    :param ethhdr:
         an ethernet header to determine the protocol family from
+    :type ethhdr: struct ethhdr \*
 
 .. _`batadv_mcast_forw_ip_node_get.return`:
 
@@ -761,8 +813,9 @@ batadv_mcast_forw_unsnoop_node_get
 
     get a node with an unsnoopable flag
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_mcast_forw_unsnoop_node_get.return`:
 
@@ -781,14 +834,17 @@ batadv_mcast_forw_mode
 
     check on how to forward a multicast packet
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The multicast packet to check
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_orig_node \*\*orig:
+    :param orig:
         an originator to be set to forward the skb to
+    :type orig: struct batadv_orig_node \*\*
 
 .. _`batadv_mcast_forw_mode.return`:
 
@@ -808,14 +864,17 @@ batadv_mcast_want_unsnoop_update
 
     update unsnoop counter and list
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig:
+    :param orig:
         the orig_node which multicast state might have changed of
+    :type orig: struct batadv_orig_node \*
 
-    :param u8 mcast_flags:
+    :param mcast_flags:
         flags indicating the new multicast state
+    :type mcast_flags: u8
 
 .. _`batadv_mcast_want_unsnoop_update.description`:
 
@@ -836,14 +895,17 @@ batadv_mcast_want_ipv4_update
 
     update want-all-ipv4 counter and list
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig:
+    :param orig:
         the orig_node which multicast state might have changed of
+    :type orig: struct batadv_orig_node \*
 
-    :param u8 mcast_flags:
+    :param mcast_flags:
         flags indicating the new multicast state
+    :type mcast_flags: u8
 
 .. _`batadv_mcast_want_ipv4_update.description`:
 
@@ -864,14 +926,17 @@ batadv_mcast_want_ipv6_update
 
     update want-all-ipv6 counter and list
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig:
+    :param orig:
         the orig_node which multicast state might have changed of
+    :type orig: struct batadv_orig_node \*
 
-    :param u8 mcast_flags:
+    :param mcast_flags:
         flags indicating the new multicast state
+    :type mcast_flags: u8
 
 .. _`batadv_mcast_want_ipv6_update.description`:
 
@@ -892,20 +957,25 @@ batadv_mcast_tvlv_ogm_handler
 
     process incoming multicast tvlv container
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig:
+    :param orig:
         the orig_node of the ogm
+    :type orig: struct batadv_orig_node \*
 
-    :param u8 flags:
+    :param flags:
         flags indicating the tvlv state (see batadv_tvlv_handler_flags)
+    :type flags: u8
 
-    :param void \*tvlv_value:
+    :param tvlv_value:
         tvlv buffer containing the multicast data
+    :type tvlv_value: void \*
 
-    :param u16 tvlv_value_len:
+    :param tvlv_value_len:
         tvlv buffer length
+    :type tvlv_value_len: u16
 
 .. _`batadv_mcast_init`:
 
@@ -916,8 +986,9 @@ batadv_mcast_init
 
     initialize the multicast optimizations structures
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_mcast_flags_print_header`:
 
@@ -928,11 +999,13 @@ batadv_mcast_flags_print_header
 
     print own mcast flags to debugfs table
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         debugfs table seq_file struct
+    :type seq: struct seq_file \*
 
 .. _`batadv_mcast_flags_print_header.description`:
 
@@ -952,11 +1025,13 @@ batadv_mcast_flags_seq_print_text
 
     print the mcast flags of other nodes
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq file to print on
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_mcast_flags_seq_print_text.description`:
 
@@ -982,11 +1057,13 @@ batadv_mcast_mesh_info_put
 
     put multicast info into a netlink message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_mcast_mesh_info_put.return`:
 
@@ -1004,17 +1081,21 @@ batadv_mcast_flags_dump_entry
 
     dump one entry of the multicast flags table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink port
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator to dump the multicast flags of
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_mcast_flags_dump_entry.return`:
 
@@ -1032,20 +1113,25 @@ batadv_mcast_flags_dump_bucket
 
     dump one bucket of the multicast flags table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink port
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct hlist_head \*head:
+    :param head:
         bucket to dump
+    :type head: struct hlist_head \*
 
-    :param long \*idx_skip:
+    :param idx_skip:
         How many entries to skip
+    :type idx_skip: long \*
 
 .. _`batadv_mcast_flags_dump_bucket.return`:
 
@@ -1063,23 +1149,29 @@ Return
 
     dump multicast flags table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink port
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param long \*bucket:
+    :param bucket:
         current bucket to dump
+    :type bucket: long \*
 
-    :param long \*idx:
+    :param idx:
         index in current bucket to the next entry to dump
+    :type idx: long \*
 
 .. _`__batadv_mcast_flags_dump.return`:
 
@@ -1097,11 +1189,13 @@ batadv_mcast_netlink_get_primary
 
     get primary interface from netlink callback
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         netlink callback structure
+    :type cb: struct netlink_callback \*
 
-    :param struct batadv_hard_iface \*\*primary_if:
+    :param primary_if:
         the primary interface pointer to return the result in
+    :type primary_if: struct batadv_hard_iface \*\*
 
 .. _`batadv_mcast_netlink_get_primary.return`:
 
@@ -1119,11 +1213,13 @@ batadv_mcast_flags_dump
 
     dump multicast flags table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         callback structure containing arguments
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_mcast_flags_dump.return`:
 
@@ -1141,8 +1237,9 @@ batadv_mcast_free
 
     free the multicast optimizations structures
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_mcast_purge_orig`:
 
@@ -1153,8 +1250,9 @@ batadv_mcast_purge_orig
 
     reset originator global mcast state modifications
 
-    :param struct batadv_orig_node \*orig:
+    :param orig:
         the originator which is going to get purged
+    :type orig: struct batadv_orig_node \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@
 
     remove route from x25_route_list
 
-    :param struct x25_route \*rt:
+    :param rt:
         route to remove
+    :type rt: struct x25_route \*
 
 .. _`__x25_remove_route.description`:
 
@@ -30,8 +31,9 @@ x25_get_route
 
     Find a route given an X.25 address. \ ``addr``\  - address to find a route for
 
-    :param struct x25_address \*addr:
+    :param addr:
         *undescribed*
+    :type addr: struct x25_address \*
 
 .. _`x25_get_route.description`:
 

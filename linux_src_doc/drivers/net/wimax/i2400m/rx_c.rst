@@ -10,11 +10,13 @@ i2400m_rx
 
     Receive a buffer of data from the device
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff where the data has been received
+    :type skb: struct sk_buff \*
 
 .. _`i2400m_rx.description`:
 

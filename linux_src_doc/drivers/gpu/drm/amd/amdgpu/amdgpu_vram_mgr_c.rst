@@ -10,11 +10,13 @@ amdgpu_vram_mgr_init
 
     init VRAM manager and DRM MM
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
-    :param unsigned long p_size:
+    :param p_size:
         maximum size of VRAM
+    :type p_size: unsigned long
 
 .. _`amdgpu_vram_mgr_init.description`:
 
@@ -32,8 +34,9 @@ amdgpu_vram_mgr_fini
 
     free and destroy VRAM manager
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
 .. _`amdgpu_vram_mgr_fini.description`:
 
@@ -52,11 +55,13 @@ amdgpu_vram_mgr_vis_size
 
     Calculate visible node size
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device structure
+    :type adev: struct amdgpu_device \*
 
-    :param struct drm_mm_node \*node:
+    :param node:
         MM node structure
+    :type node: struct drm_mm_node \*
 
 .. _`amdgpu_vram_mgr_vis_size.description`:
 
@@ -65,24 +70,50 @@ Description
 
 Calculate how many bytes of the MM node are inside visible VRAM
 
-.. _`amdgpu_vram_mgr_bo_invisible_size`:
+.. _`amdgpu_vram_mgr_bo_visible_size`:
 
-amdgpu_vram_mgr_bo_invisible_size
-=================================
+amdgpu_vram_mgr_bo_visible_size
+===============================
 
-.. c:function:: u64 amdgpu_vram_mgr_bo_invisible_size(struct amdgpu_bo *bo)
+.. c:function:: u64 amdgpu_vram_mgr_bo_visible_size(struct amdgpu_bo *bo)
 
-    CPU invisible BO size
+    CPU visible BO size
 
-    :param struct amdgpu_bo \*bo:
+    :param bo:
         \ :c:type:`struct amdgpu_bo <amdgpu_bo>`\  buffer object (must be in VRAM)
+    :type bo: struct amdgpu_bo \*
 
-.. _`amdgpu_vram_mgr_bo_invisible_size.return`:
+.. _`amdgpu_vram_mgr_bo_visible_size.return`:
 
 Return
 ------
 
-How much of the given \ :c:type:`struct amdgpu_bo <amdgpu_bo>`\  buffer object lies in CPU invisible VRAM.
+How much of the given \ :c:type:`struct amdgpu_bo <amdgpu_bo>`\  buffer object lies in CPU visible VRAM.
+
+.. _`amdgpu_vram_mgr_virt_start`:
+
+amdgpu_vram_mgr_virt_start
+==========================
+
+.. c:function:: void amdgpu_vram_mgr_virt_start(struct ttm_mem_reg *mem, struct drm_mm_node *node)
+
+    update virtual start address
+
+    :param mem:
+        ttm_mem_reg to update
+    :type mem: struct ttm_mem_reg \*
+
+    :param node:
+        just allocated node
+    :type node: struct drm_mm_node \*
+
+.. _`amdgpu_vram_mgr_virt_start.description`:
+
+Description
+-----------
+
+Calculate a virtual BO start address to easily check if everything is CPU
+accessible.
 
 .. _`amdgpu_vram_mgr_new`:
 
@@ -93,17 +124,21 @@ amdgpu_vram_mgr_new
 
     allocate new ranges
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
-    :param struct ttm_buffer_object \*tbo:
+    :param tbo:
         TTM BO we need this range for
+    :type tbo: struct ttm_buffer_object \*
 
-    :param const struct ttm_place \*place:
+    :param place:
         placement flags and restrictions
+    :type place: const struct ttm_place \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         the resulting mem object
+    :type mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_vram_mgr_new.description`:
 
@@ -121,11 +156,13 @@ amdgpu_vram_mgr_del
 
     free ranges
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         TTM memory object
+    :type mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_vram_mgr_del.description`:
 
@@ -143,8 +180,9 @@ amdgpu_vram_mgr_usage
 
     how many bytes are used in this domain
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
 .. _`amdgpu_vram_mgr_usage.description`:
 
@@ -162,8 +200,9 @@ amdgpu_vram_mgr_vis_usage
 
     how many bytes are used in the visible part
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
 .. _`amdgpu_vram_mgr_vis_usage.description`:
 
@@ -181,11 +220,13 @@ amdgpu_vram_mgr_debug
 
     dump VRAM table
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
-    :param struct drm_printer \*printer:
+    :param printer:
         DRM printer to use
+    :type printer: struct drm_printer \*
 
 .. _`amdgpu_vram_mgr_debug.description`:
 

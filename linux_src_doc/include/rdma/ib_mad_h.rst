@@ -10,8 +10,9 @@ ib_get_cpi_resp_time
 
     Returns the resp_time value from cap_mask2_resp_time in ib_class_port_info.
 
-    :param struct ib_class_port_info \*cpi:
+    :param cpi:
         A struct ib_class_port_info mad.
+    :type cpi: struct ib_class_port_info \*
 
 .. _`ib_set_cpi_resp_time`:
 
@@ -22,11 +23,13 @@ ib_set_cpi_resp_time
 
     Sets the response time in an ib_class_port_info mad.
 
-    :param struct ib_class_port_info \*cpi:
+    :param cpi:
         A struct ib_class_port_info.
+    :type cpi: struct ib_class_port_info \*
 
-    :param u8 rtime:
+    :param rtime:
         The response time to set.
+    :type rtime: u8
 
 .. _`ib_get_cpi_capmask2`:
 
@@ -37,8 +40,9 @@ ib_get_cpi_capmask2
 
     Returns the capmask2 value from cap_mask2_resp_time in ib_class_port_info.
 
-    :param struct ib_class_port_info \*cpi:
+    :param cpi:
         A struct ib_class_port_info mad.
+    :type cpi: struct ib_class_port_info \*
 
 .. _`ib_set_cpi_capmask2`:
 
@@ -49,11 +53,13 @@ ib_set_cpi_capmask2
 
     Sets the capmask2 in an ib_class_port_info mad.
 
-    :param struct ib_class_port_info \*cpi:
+    :param cpi:
         A struct ib_class_port_info.
+    :type cpi: struct ib_class_port_info \*
 
-    :param u32 capmask2:
+    :param capmask2:
         The capmask2 to set.
+    :type capmask2: u32
 
 .. _`opa_get_cpi_capmask2`:
 
@@ -64,8 +70,9 @@ opa_get_cpi_capmask2
 
     Returns the capmask2 value from cap_mask2_resp_time in ib_class_port_info.
 
-    :param struct opa_class_port_info \*cpi:
+    :param cpi:
         A struct opa_class_port_info mad.
+    :type cpi: struct opa_class_port_info \*
 
 .. _`ib_response_mad`:
 
@@ -76,8 +83,9 @@ ib_response_mad
 
     Returns if the specified MAD has been generated in response to a sent request or trap.
 
-    :param const struct ib_mad_hdr \*hdr:
+    :param hdr:
         *undescribed*
+    :type hdr: const struct ib_mad_hdr \*
 
 .. _`ib_get_rmpp_resptime`:
 
@@ -88,8 +96,9 @@ ib_get_rmpp_resptime
 
     Returns the RMPP response time.
 
-    :param struct ib_rmpp_hdr \*rmpp_hdr:
+    :param rmpp_hdr:
         An RMPP header.
+    :type rmpp_hdr: struct ib_rmpp_hdr \*
 
 .. _`ib_get_rmpp_flags`:
 
@@ -100,8 +109,9 @@ ib_get_rmpp_flags
 
     Returns the RMPP flags.
 
-    :param struct ib_rmpp_hdr \*rmpp_hdr:
+    :param rmpp_hdr:
         An RMPP header.
+    :type rmpp_hdr: struct ib_rmpp_hdr \*
 
 .. _`ib_set_rmpp_resptime`:
 
@@ -112,11 +122,13 @@ ib_set_rmpp_resptime
 
     Sets the response time in an RMPP header.
 
-    :param struct ib_rmpp_hdr \*rmpp_hdr:
+    :param rmpp_hdr:
         An RMPP header.
+    :type rmpp_hdr: struct ib_rmpp_hdr \*
 
-    :param u8 rtime:
+    :param rtime:
         The response time to set.
+    :type rtime: u8
 
 .. _`ib_set_rmpp_flags`:
 
@@ -127,11 +139,13 @@ ib_set_rmpp_flags
 
     Sets the flags in an RMPP header.
 
-    :param struct ib_rmpp_hdr \*rmpp_hdr:
+    :param rmpp_hdr:
         An RMPP header.
+    :type rmpp_hdr: struct ib_rmpp_hdr \*
 
-    :param u8 flags:
+    :param flags:
         The flags to set.
+    :type flags: u8
 
 .. _`ib_mad_send_handler`:
 
@@ -142,11 +156,13 @@ ib_mad_send_handler
 
     callback handler for a sent MAD.
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         MAD agent that sent the MAD.
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param struct ib_mad_send_wc \*mad_send_wc:
+    :param mad_send_wc:
         Send work completion information on the sent MAD.
+    :type mad_send_wc: struct ib_mad_send_wc \*
 
 .. _`ib_mad_snoop_handler`:
 
@@ -157,15 +173,18 @@ ib_mad_snoop_handler
 
     Callback handler for snooping sent MADs.
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         MAD agent that snooped the MAD.
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param struct ib_mad_send_buf \*send_buf:
+    :param send_buf:
         send MAD data buffer.
+    :type send_buf: struct ib_mad_send_buf \*
 
-    :param struct ib_mad_send_wc \*mad_send_wc:
+    :param mad_send_wc:
         Work completion information on the sent MAD.  Valid
         only for snooping that occurs on a send completion.
+    :type mad_send_wc: struct ib_mad_send_wc \*
 
 .. _`ib_mad_snoop_handler.description`:
 
@@ -184,14 +203,17 @@ ib_mad_recv_handler
 
     callback handler for a received MAD.
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         MAD agent requesting the received MAD.
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param struct ib_mad_send_buf \*send_buf:
+    :param send_buf:
         Send buffer if found, else NULL
+    :type send_buf: struct ib_mad_send_buf \*
 
-    :param struct ib_mad_recv_wc \*mad_recv_wc:
+    :param mad_recv_wc:
         Received work completion information on the received MAD.
+    :type mad_recv_wc: struct ib_mad_recv_wc \*
 
 .. _`ib_mad_recv_handler.description`:
 
@@ -213,39 +235,48 @@ ib_register_mad_agent
 
     Register to send/receive MADs.
 
-    :param struct ib_device \*device:
+    :param device:
         The device to register with.
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         The port on the specified device to use.
+    :type port_num: u8
 
-    :param enum ib_qp_type qp_type:
+    :param qp_type:
         Specifies which QP to access.  Must be either
         IB_QPT_SMI or IB_QPT_GSI.
+    :type qp_type: enum ib_qp_type
 
-    :param struct ib_mad_reg_req \*mad_reg_req:
+    :param mad_reg_req:
         Specifies which unsolicited MADs should be received
         by the caller.  This parameter may be NULL if the caller only
         wishes to receive solicited responses.
+    :type mad_reg_req: struct ib_mad_reg_req \*
 
-    :param u8 rmpp_version:
+    :param rmpp_version:
         If set, indicates that the client will send
         and receive MADs that contain the RMPP header for the given version.
         If set to 0, indicates that RMPP is not used by this client.
+    :type rmpp_version: u8
 
-    :param ib_mad_send_handler send_handler:
+    :param send_handler:
         The completion callback routine invoked after a send
         request has completed.
+    :type send_handler: ib_mad_send_handler
 
-    :param ib_mad_recv_handler recv_handler:
+    :param recv_handler:
         The completion callback routine invoked for a received
         MAD.
+    :type recv_handler: ib_mad_recv_handler
 
-    :param void \*context:
+    :param context:
         User specified context associated with the registration.
+    :type context: void \*
 
-    :param u32 registration_flags:
+    :param registration_flags:
         Registration flags to set for this agent
+    :type registration_flags: u32
 
 .. _`ib_register_mad_snoop`:
 
@@ -256,27 +287,34 @@ ib_register_mad_snoop
 
     Register to snoop sent and received MADs.
 
-    :param struct ib_device \*device:
+    :param device:
         The device to register with.
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         The port on the specified device to use.
+    :type port_num: u8
 
-    :param enum ib_qp_type qp_type:
+    :param qp_type:
         Specifies which QP traffic to snoop.  Must be either
         IB_QPT_SMI or IB_QPT_GSI.
+    :type qp_type: enum ib_qp_type
 
-    :param int mad_snoop_flags:
+    :param mad_snoop_flags:
         Specifies information where snooping occurs.
+    :type mad_snoop_flags: int
 
-    :param ib_mad_snoop_handler snoop_handler:
+    :param snoop_handler:
         *undescribed*
+    :type snoop_handler: ib_mad_snoop_handler
 
-    :param ib_mad_recv_handler recv_handler:
+    :param recv_handler:
         The callback routine invoked for a snooped receive.
+    :type recv_handler: ib_mad_recv_handler
 
-    :param void \*context:
+    :param context:
         User specified context associated with the registration.
+    :type context: void \*
 
 .. _`ib_unregister_mad_agent`:
 
@@ -287,8 +325,9 @@ ib_unregister_mad_agent
 
     Unregisters a client from using MAD services.
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         Corresponding MAD registration request to deregister.
+    :type mad_agent: struct ib_mad_agent \*
 
 .. _`ib_unregister_mad_agent.description`:
 
@@ -307,12 +346,14 @@ ib_post_send_mad
 
     Posts MAD(s) to the send queue of the QP associated with the registered client.
 
-    :param struct ib_mad_send_buf \*send_buf:
+    :param send_buf:
         Specifies the information needed to send the MAD(s).
+    :type send_buf: struct ib_mad_send_buf \*
 
-    :param struct ib_mad_send_buf \*\*bad_send_buf:
+    :param bad_send_buf:
         Specifies the MAD on which an error was encountered.  This
         parameter is optional if only a single MAD is posted.
+    :type bad_send_buf: struct ib_mad_send_buf \*\*
 
 .. _`ib_post_send_mad.description`:
 
@@ -340,8 +381,9 @@ ib_free_recv_mad
 
     Returns data buffers used to receive a MAD.
 
-    :param struct ib_mad_recv_wc \*mad_recv_wc:
+    :param mad_recv_wc:
         Work completion information for a received MAD.
+    :type mad_recv_wc: struct ib_mad_recv_wc \*
 
 .. _`ib_free_recv_mad.description`:
 
@@ -360,11 +402,13 @@ ib_cancel_mad
 
     Cancels an outstanding send MAD operation.
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         Specifies the registration associated with sent MAD.
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param struct ib_mad_send_buf \*send_buf:
+    :param send_buf:
         Indicates the MAD to cancel.
+    :type send_buf: struct ib_mad_send_buf \*
 
 .. _`ib_cancel_mad.description`:
 
@@ -383,14 +427,17 @@ ib_modify_mad
 
     Modifies an outstanding send MAD operation.
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         Specifies the registration associated with sent MAD.
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param struct ib_mad_send_buf \*send_buf:
+    :param send_buf:
         Indicates the MAD to modify.
+    :type send_buf: struct ib_mad_send_buf \*
 
-    :param u32 timeout_ms:
+    :param timeout_ms:
         New timeout value for sent MAD.
+    :type timeout_ms: u32
 
 .. _`ib_modify_mad.description`:
 
@@ -409,24 +456,29 @@ ib_redirect_mad_qp
 
     Registers a QP for MAD services.
 
-    :param struct ib_qp \*qp:
+    :param qp:
         Reference to a QP that requires MAD services.
+    :type qp: struct ib_qp \*
 
-    :param u8 rmpp_version:
+    :param rmpp_version:
         If set, indicates that the client will send
         and receive MADs that contain the RMPP header for the given version.
         If set to 0, indicates that RMPP is not used by this client.
+    :type rmpp_version: u8
 
-    :param ib_mad_send_handler send_handler:
+    :param send_handler:
         The completion callback routine invoked after a send
         request has completed.
+    :type send_handler: ib_mad_send_handler
 
-    :param ib_mad_recv_handler recv_handler:
+    :param recv_handler:
         The completion callback routine invoked for a received
         MAD.
+    :type recv_handler: ib_mad_recv_handler
 
-    :param void \*context:
+    :param context:
         User specified context associated with the registration.
+    :type context: void \*
 
 .. _`ib_redirect_mad_qp.description`:
 
@@ -446,12 +498,14 @@ ib_process_mad_wc
 
     Processes a work completion associated with a MAD sent or received on a redirected QP.
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         Specifies the registered MAD service using the redirected QP.
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         References a work completion associated with a sent or received
         MAD segment.
+    :type wc: struct ib_wc \*
 
 .. _`ib_process_mad_wc.description`:
 
@@ -475,34 +529,42 @@ ib_create_send_mad
 
     Allocate and initialize a data buffer and work request for sending a MAD.
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         Specifies the registered MAD service to associate with the MAD.
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param u32 remote_qpn:
+    :param remote_qpn:
         Specifies the QPN of the receiving node.
+    :type remote_qpn: u32
 
-    :param u16 pkey_index:
+    :param pkey_index:
         Specifies which PKey the MAD will be sent using.  This field
         is valid only if the remote_qpn is QP 1.
+    :type pkey_index: u16
 
-    :param int rmpp_active:
+    :param rmpp_active:
         Indicates if the send will enable RMPP.
+    :type rmpp_active: int
 
-    :param int hdr_len:
+    :param hdr_len:
         Indicates the size of the data header of the MAD.  This length
         should include the common MAD header, RMPP header, plus any class
         specific header.
+    :type hdr_len: int
 
-    :param int data_len:
+    :param data_len:
         Indicates the size of any user-transferred data.  The call will
         automatically adjust the allocated buffer size to account for any
         additional padding that may be necessary.
+    :type data_len: int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         GFP mask used for the memory allocation.
+    :type gfp_mask: gfp_t
 
-    :param u8 base_version:
+    :param base_version:
         Base Version of this MAD
+    :type base_version: u8
 
 .. _`ib_create_send_mad.description`:
 
@@ -528,8 +590,9 @@ ib_is_mad_class_rmpp
 
     returns whether given management class supports RMPP.
 
-    :param u8 mgmt_class:
+    :param mgmt_class:
         management class
+    :type mgmt_class: u8
 
 .. _`ib_is_mad_class_rmpp.description`:
 
@@ -547,8 +610,9 @@ ib_get_mad_data_offset
 
     returns the data offset for a given management class.
 
-    :param u8 mgmt_class:
+    :param mgmt_class:
         management class
+    :type mgmt_class: u8
 
 .. _`ib_get_mad_data_offset.description`:
 
@@ -567,11 +631,13 @@ ib_get_rmpp_segment
 
     returns the data buffer for a given RMPP segment.
 
-    :param struct ib_mad_send_buf \*send_buf:
+    :param send_buf:
         Previously allocated send data buffer.
+    :type send_buf: struct ib_mad_send_buf \*
 
-    :param int seg_num:
+    :param seg_num:
         number of segment to return
+    :type seg_num: int
 
 .. _`ib_get_rmpp_segment.description`:
 
@@ -590,8 +656,9 @@ ib_free_send_mad
 
     Returns data buffers used to send a MAD.
 
-    :param struct ib_mad_send_buf \*send_buf:
+    :param send_buf:
         Previously allocated send data buffer.
+    :type send_buf: struct ib_mad_send_buf \*
 
 .. _`ib_mad_kernel_rmpp_agent`:
 
@@ -602,8 +669,9 @@ ib_mad_kernel_rmpp_agent
 
     Returns if the agent is performing RMPP.
 
-    :param const struct ib_mad_agent \*agent:
+    :param agent:
         the agent in question
+    :type agent: const struct ib_mad_agent \*
 
 .. This file was automatic generated / don't edit.
 

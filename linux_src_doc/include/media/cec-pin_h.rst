@@ -26,6 +26,7 @@ Definition
         void (*free)(struct cec_adapter *adap);
         void (*status)(struct cec_adapter *adap, struct seq_file *file);
         int (*read_hpd)(struct cec_adapter *adap);
+        int (*read_5v)(struct cec_adapter *adap);
     }
 
 .. _`cec_pin_ops.members`:
@@ -61,6 +62,11 @@ read_hpd
     an error if negative. If NULL or -ENOTTY is returned,
     then this is not supported.
 
+read_5v
+    read the 5V pin. Return true if high, false if low or
+    an error if negative. If NULL or -ENOTTY is returned,
+    then this is not supported.
+
 .. _`cec_pin_ops.description`:
 
 Description
@@ -78,11 +84,13 @@ cec_pin_changed
 
     update pin state from interrupt
 
-    :param struct cec_adapter \*adap:
+    :param adap:
         pointer to the cec adapter
+    :type adap: struct cec_adapter \*
 
-    :param bool value:
+    :param value:
         when true the pin is high, otherwise it is low
+    :type value: bool
 
 .. _`cec_pin_changed.description`:
 
@@ -101,19 +109,23 @@ cec_pin_allocate_adapter
 
     allocate a pin-based cec adapter
 
-    :param const struct cec_pin_ops \*pin_ops:
+    :param pin_ops:
         low-level pin operations
+    :type pin_ops: const struct cec_pin_ops \*
 
-    :param void \*priv:
+    :param priv:
         will be stored in adap->priv and can be used by the adapter ops.
         Use cec_get_drvdata(adap) to get the priv pointer.
+    :type priv: void \*
 
-    :param const char \*name:
+    :param name:
         the name of the CEC adapter. Note: this name will be copied.
+    :type name: const char \*
 
-    :param u32 caps:
+    :param caps:
         capabilities of the CEC adapter. This will be ORed with
         CEC_CAP_MONITOR_ALL and CEC_CAP_MONITOR_PIN.
+    :type caps: u32
 
 .. _`cec_pin_allocate_adapter.description`:
 

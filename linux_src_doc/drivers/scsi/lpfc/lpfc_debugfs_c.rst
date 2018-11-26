@@ -10,14 +10,17 @@ lpfc_debugfs_disc_trc_data
 
     Dump discovery logging to a buffer
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The vport to gather the log info from.
+    :type vport: struct lpfc_vport \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to dump log into.
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         The maximum amount of data to process.
+    :type size: int
 
 .. _`lpfc_debugfs_disc_trc_data.description`:
 
@@ -53,14 +56,17 @@ lpfc_debugfs_slow_ring_trc_data
 
     Dump slow ring logging to a buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The HBA to gather the log info from.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to dump log into.
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         The maximum amount of data to process.
+    :type size: int
 
 .. _`lpfc_debugfs_slow_ring_trc_data.description`:
 
@@ -96,14 +102,17 @@ lpfc_debugfs_hbqinfo_data
 
     Dump host buffer queue info to a buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The HBA to gather host buffer info from.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to dump log into.
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         The maximum amount of data to process.
+    :type size: int
 
 .. _`lpfc_debugfs_hbqinfo_data.description`:
 
@@ -139,14 +148,17 @@ lpfc_debugfs_dumpHBASlim_data
 
     Dump HBA SLIM info to a buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The HBA to gather SLIM info from.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to dump log into.
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         The maximum amount of data to process.
+    :type size: int
 
 .. _`lpfc_debugfs_dumphbaslim_data.description`:
 
@@ -181,14 +193,17 @@ lpfc_debugfs_dumpHostSlim_data
 
     Dump host SLIM info to a buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The HBA to gather Host SLIM info from.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to dump log into.
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         The maximum amount of data to process.
+    :type size: int
 
 .. _`lpfc_debugfs_dumphostslim_data.description`:
 
@@ -216,14 +231,17 @@ lpfc_debugfs_nodelist_data
 
     Dump target node list to a buffer
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The vport to gather target node info from.
+    :type vport: struct lpfc_vport \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to dump log into.
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         The maximum amount of data to process.
+    :type size: int
 
 .. _`lpfc_debugfs_nodelist_data.description`:
 
@@ -251,14 +269,17 @@ lpfc_debugfs_nvmestat_data
 
     Dump target node list to a buffer
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The vport to gather target node info from.
+    :type vport: struct lpfc_vport \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to dump log into.
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         The maximum amount of data to process.
+    :type size: int
 
 .. _`lpfc_debugfs_nvmestat_data.description`:
 
@@ -284,14 +305,17 @@ lpfc_debugfs_nvmektime_data
 
     Dump target node list to a buffer
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The vport to gather target node info from.
+    :type vport: struct lpfc_vport \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to dump log into.
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         The maximum amount of data to process.
+    :type size: int
 
 .. _`lpfc_debugfs_nvmektime_data.description`:
 
@@ -317,14 +341,17 @@ lpfc_debugfs_nvmeio_trc_data
 
     Dump NVME IO trace list to a buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The phba to gather target node info from.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to dump log into.
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         The maximum amount of data to process.
+    :type size: int
 
 .. _`lpfc_debugfs_nvmeio_trc_data.description`:
 
@@ -350,14 +377,17 @@ lpfc_debugfs_cpucheck_data
 
     Dump target node list to a buffer
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The vport to gather target node info from.
+    :type vport: struct lpfc_vport \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to dump log into.
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         The maximum amount of data to process.
+    :type size: int
 
 .. _`lpfc_debugfs_cpucheck_data.description`:
 
@@ -383,23 +413,29 @@ lpfc_debugfs_disc_trc
 
     Store discovery trace log
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The vport to associate this trace string with for retrieval.
+    :type vport: struct lpfc_vport \*
 
-    :param int mask:
+    :param mask:
         Log entry classification.
+    :type mask: int
 
-    :param char \*fmt:
+    :param fmt:
         Format string to be displayed when dumping the log.
+    :type fmt: char \*
 
-    :param uint32_t data1:
+    :param data1:
         1st data parameter to be applied to \ ``fmt``\ .
+    :type data1: uint32_t
 
-    :param uint32_t data2:
+    :param data2:
         2nd data parameter to be applied to \ ``fmt``\ .
+    :type data2: uint32_t
 
-    :param uint32_t data3:
+    :param data3:
         3rd data parameter to be applied to \ ``fmt``\ .
+    :type data3: uint32_t
 
 .. _`lpfc_debugfs_disc_trc.description`:
 
@@ -421,20 +457,25 @@ lpfc_debugfs_slow_ring_trc
 
     Store slow ring trace log
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The phba to associate this trace string with for retrieval.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*fmt:
+    :param fmt:
         Format string to be displayed when dumping the log.
+    :type fmt: char \*
 
-    :param uint32_t data1:
+    :param data1:
         1st data parameter to be applied to \ ``fmt``\ .
+    :type data1: uint32_t
 
-    :param uint32_t data2:
+    :param data2:
         2nd data parameter to be applied to \ ``fmt``\ .
+    :type data2: uint32_t
 
-    :param uint32_t data3:
+    :param data3:
         3rd data parameter to be applied to \ ``fmt``\ .
+    :type data3: uint32_t
 
 .. _`lpfc_debugfs_slow_ring_trc.description`:
 
@@ -454,20 +495,25 @@ lpfc_debugfs_nvme_trc
 
     Store NVME/NVMET trace log
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The phba to associate this trace string with for retrieval.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*fmt:
+    :param fmt:
         Format string to be displayed when dumping the log.
+    :type fmt: char \*
 
-    :param uint16_t data1:
+    :param data1:
         1st data parameter to be applied to \ ``fmt``\ .
+    :type data1: uint16_t
 
-    :param uint16_t data2:
+    :param data2:
         2nd data parameter to be applied to \ ``fmt``\ .
+    :type data2: uint16_t
 
-    :param uint32_t data3:
+    :param data3:
         3rd data parameter to be applied to \ ``fmt``\ .
+    :type data3: uint32_t
 
 .. _`lpfc_debugfs_nvme_trc.description`:
 
@@ -487,11 +533,13 @@ lpfc_debugfs_disc_trc_open
 
     Open the discovery trace log
 
-    :param struct inode \*inode:
+    :param inode:
         The inode pointer that contains a vport pointer.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file pointer to attach the log output.
+    :type file: struct file \*
 
 .. _`lpfc_debugfs_disc_trc_open.description`:
 
@@ -520,11 +568,13 @@ lpfc_debugfs_slow_ring_trc_open
 
     Open the Slow Ring trace log
 
-    :param struct inode \*inode:
+    :param inode:
         The inode pointer that contains a vport pointer.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file pointer to attach the log output.
+    :type file: struct file \*
 
 .. _`lpfc_debugfs_slow_ring_trc_open.description`:
 
@@ -553,11 +603,13 @@ lpfc_debugfs_hbqinfo_open
 
     Open the hbqinfo debugfs buffer
 
-    :param struct inode \*inode:
+    :param inode:
         The inode pointer that contains a vport pointer.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file pointer to attach the log output.
+    :type file: struct file \*
 
 .. _`lpfc_debugfs_hbqinfo_open.description`:
 
@@ -586,11 +638,13 @@ lpfc_debugfs_dumpHBASlim_open
 
     Open the Dump HBA SLIM debugfs buffer
 
-    :param struct inode \*inode:
+    :param inode:
         The inode pointer that contains a vport pointer.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file pointer to attach the log output.
+    :type file: struct file \*
 
 .. _`lpfc_debugfs_dumphbaslim_open.description`:
 
@@ -619,11 +673,13 @@ lpfc_debugfs_dumpHostSlim_open
 
     Open the Dump Host SLIM debugfs buffer
 
-    :param struct inode \*inode:
+    :param inode:
         The inode pointer that contains a vport pointer.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file pointer to attach the log output.
+    :type file: struct file \*
 
 .. _`lpfc_debugfs_dumphostslim_open.description`:
 
@@ -652,11 +708,13 @@ lpfc_debugfs_nodelist_open
 
     Open the nodelist debugfs file
 
-    :param struct inode \*inode:
+    :param inode:
         The inode pointer that contains a vport pointer.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file pointer to attach the log output.
+    :type file: struct file \*
 
 .. _`lpfc_debugfs_nodelist_open.description`:
 
@@ -685,14 +743,17 @@ lpfc_debugfs_lseek
 
     Seek through a debugfs file
 
-    :param struct file \*file:
+    :param file:
         The file pointer to seek through.
+    :type file: struct file \*
 
-    :param loff_t off:
+    :param off:
         The offset to seek to or the amount to seek by.
+    :type off: loff_t
 
-    :param int whence:
+    :param whence:
         Indicates how to seek.
+    :type whence: int
 
 .. _`lpfc_debugfs_lseek.description`:
 
@@ -722,17 +783,21 @@ lpfc_debugfs_read
 
     Read a debugfs file
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         The buffer to copy the data to.
+    :type buf: char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to read.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_debugfs_read.description`:
 
@@ -760,11 +825,13 @@ lpfc_debugfs_release
 
     Release the buffer used to store debugfs file data
 
-    :param struct inode \*inode:
+    :param inode:
         The inode pointer that contains a vport pointer. (unused)
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file pointer that contains the buffer to release.
+    :type file: struct file \*
 
 .. _`lpfc_debugfs_release.description`:
 
@@ -790,14 +857,17 @@ lpfc_idiag_cmd_get
 
     Get and parse idiag debugfs comands from user space
 
-    :param const char __user \*buf:
+    :param buf:
         The pointer to the user space buffer.
+    :type buf: const char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes in the user space buffer.
+    :type nbytes: size_t
 
-    :param struct lpfc_idiag_cmd \*idiag_cmd:
+    :param idiag_cmd:
         pointer to the idiag command struct.
+    :type idiag_cmd: struct lpfc_idiag_cmd \*
 
 .. _`lpfc_idiag_cmd_get.description`:
 
@@ -820,11 +890,13 @@ lpfc_idiag_open
 
     idiag open debugfs
 
-    :param struct inode \*inode:
+    :param inode:
         The inode pointer that contains a pointer to phba.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file pointer to attach the file operation.
+    :type file: struct file \*
 
 .. _`lpfc_idiag_open.description`:
 
@@ -855,11 +927,13 @@ lpfc_idiag_release
 
     Release idiag access file operation
 
-    :param struct inode \*inode:
+    :param inode:
         The inode pointer that contains a vport pointer. (unused)
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file pointer that contains the buffer to release.
+    :type file: struct file \*
 
 .. _`lpfc_idiag_release.description`:
 
@@ -886,11 +960,13 @@ lpfc_idiag_cmd_release
 
     Release idiag cmd access file operation
 
-    :param struct inode \*inode:
+    :param inode:
         The inode pointer that contains a vport pointer. (unused)
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file pointer that contains the buffer to release.
+    :type file: struct file \*
 
 .. _`lpfc_idiag_cmd_release.description`:
 
@@ -917,17 +993,21 @@ lpfc_idiag_pcicfg_read
 
     idiag debugfs read pcicfg
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         The buffer to copy the data to.
+    :type buf: char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to read.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_pcicfg_read.description`:
 
@@ -957,17 +1037,21 @@ lpfc_idiag_pcicfg_write
 
     Syntax check and set up idiag pcicfg commands
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         The buffer to copy the user data from.
+    :type buf: const char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to get.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_pcicfg_write.description`:
 
@@ -994,17 +1078,21 @@ lpfc_idiag_baracc_read
 
     idiag debugfs pci bar access read
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         The buffer to copy the data to.
+    :type buf: char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to read.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_baracc_read.description`:
 
@@ -1031,17 +1119,21 @@ lpfc_idiag_baracc_write
 
     Syntax check and set up idiag bar access commands
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         The buffer to copy the user data from.
+    :type buf: const char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to get.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_baracc_write.description`:
 
@@ -1069,17 +1161,21 @@ lpfc_idiag_queinfo_read
 
     idiag debugfs read queue information
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         The buffer to copy the data to.
+    :type buf: char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to read.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_queinfo_read.description`:
 
@@ -1109,14 +1205,17 @@ lpfc_idiag_que_param_check
 
     queue access command parameter sanity check
 
-    :param struct lpfc_queue \*q:
+    :param q:
         The pointer to queue structure.
+    :type q: struct lpfc_queue \*
 
-    :param int index:
+    :param index:
         The index into a queue entry.
+    :type index: int
 
-    :param int count:
+    :param count:
         The number of queue entries to access.
+    :type count: int
 
 .. _`lpfc_idiag_que_param_check.description`:
 
@@ -1142,17 +1241,21 @@ lpfc_idiag_queacc_read_qe
 
     read a single entry from the given queue index
 
-    :param char \*pbuffer:
+    :param pbuffer:
         The pointer to buffer to copy the read data into.
+    :type pbuffer: char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param struct lpfc_queue \*pque:
+    :param pque:
         The pointer to the queue to be read.
+    :type pque: struct lpfc_queue \*
 
-    :param uint32_t index:
+    :param index:
         The index into the queue entry.
+    :type index: uint32_t
 
 .. _`lpfc_idiag_queacc_read_qe.description`:
 
@@ -1179,17 +1282,21 @@ lpfc_idiag_queacc_read
 
     idiag debugfs read port queue
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         The buffer to copy the data to.
+    :type buf: char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to read.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_queacc_read.description`:
 
@@ -1218,17 +1325,21 @@ lpfc_idiag_queacc_write
 
     Syntax check and set up idiag queacc commands
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         The buffer to copy the user data from.
+    :type buf: const char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to get.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_queacc_write.description`:
 
@@ -1255,17 +1366,21 @@ lpfc_idiag_drbacc_read_reg
 
     idiag debugfs read a doorbell register
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The pointer to hba structure.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*pbuffer:
+    :param pbuffer:
         The pointer to the buffer to copy the data to.
+    :type pbuffer: char \*
 
-    :param int len:
+    :param len:
         The lenght of bytes to copied.
+    :type len: int
 
-    :param uint32_t drbregid:
+    :param drbregid:
         The id to doorbell registers.
+    :type drbregid: uint32_t
 
 .. _`lpfc_idiag_drbacc_read_reg.description`:
 
@@ -1291,17 +1406,21 @@ lpfc_idiag_drbacc_read
 
     idiag debugfs read port doorbell
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         The buffer to copy the data to.
+    :type buf: char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to read.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_drbacc_read.description`:
 
@@ -1330,17 +1449,21 @@ lpfc_idiag_drbacc_write
 
     Syntax check and set up idiag drbacc commands
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         The buffer to copy the user data from.
+    :type buf: const char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to get.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_drbacc_write.description`:
 
@@ -1367,17 +1490,21 @@ lpfc_idiag_ctlacc_read_reg
 
     idiag debugfs read a control registers
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The pointer to hba structure.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*pbuffer:
+    :param pbuffer:
         The pointer to the buffer to copy the data to.
+    :type pbuffer: char \*
 
-    :param int len:
+    :param len:
         The lenght of bytes to copied.
+    :type len: int
 
-    :param uint32_t ctlregid:
+    :param ctlregid:
         *undescribed*
+    :type ctlregid: uint32_t
 
 .. _`lpfc_idiag_ctlacc_read_reg.description`:
 
@@ -1403,17 +1530,21 @@ lpfc_idiag_ctlacc_read
 
     idiag debugfs read port and device control register
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         The buffer to copy the data to.
+    :type buf: char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to read.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_ctlacc_read.description`:
 
@@ -1440,17 +1571,21 @@ lpfc_idiag_ctlacc_write
 
     Syntax check and set up idiag ctlacc commands
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         The buffer to copy the user data from.
+    :type buf: const char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to get.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_ctlacc_write.description`:
 
@@ -1474,11 +1609,13 @@ lpfc_idiag_mbxacc_get_setup
 
     idiag debugfs get mailbox access setup
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*pbuffer:
+    :param pbuffer:
         Pointer to data buffer.
+    :type pbuffer: char \*
 
 .. _`lpfc_idiag_mbxacc_get_setup.description`:
 
@@ -1504,17 +1641,21 @@ lpfc_idiag_mbxacc_read
 
     idiag debugfs read on mailbox access
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         The buffer to copy the data to.
+    :type buf: char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to read.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_mbxacc_read.description`:
 
@@ -1541,17 +1682,21 @@ lpfc_idiag_mbxacc_write
 
     Syntax check and set up idiag mbxacc commands
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         The buffer to copy the user data from.
+    :type buf: const char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to get.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_mbxacc_write.description`:
 
@@ -1575,14 +1720,17 @@ lpfc_idiag_extacc_avail_get
 
     get the available extents information
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*pbuffer:
+    :param pbuffer:
         pointer to internal buffer.
+    :type pbuffer: char \*
 
-    :param int len:
+    :param len:
         length into the internal buffer data has been copied.
+    :type len: int
 
 .. _`lpfc_idiag_extacc_avail_get.description`:
 
@@ -1607,14 +1755,17 @@ lpfc_idiag_extacc_alloc_get
 
     get the allocated extents information
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*pbuffer:
+    :param pbuffer:
         pointer to internal buffer.
+    :type pbuffer: char \*
 
-    :param int len:
+    :param len:
         length into the internal buffer data has been copied.
+    :type len: int
 
 .. _`lpfc_idiag_extacc_alloc_get.description`:
 
@@ -1639,14 +1790,17 @@ lpfc_idiag_extacc_drivr_get
 
     get driver extent information
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param char \*pbuffer:
+    :param pbuffer:
         pointer to internal buffer.
+    :type pbuffer: char \*
 
-    :param int len:
+    :param len:
         length into the internal buffer data has been copied.
+    :type len: int
 
 .. _`lpfc_idiag_extacc_drivr_get.description`:
 
@@ -1671,17 +1825,21 @@ lpfc_idiag_extacc_write
 
     Syntax check and set up idiag extacc commands
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         The buffer to copy the user data from.
+    :type buf: const char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to get.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_extacc_write.description`:
 
@@ -1705,17 +1863,21 @@ lpfc_idiag_extacc_read
 
     idiag debugfs read access to extent information
 
-    :param struct file \*file:
+    :param file:
         The file pointer to read from.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         The buffer to copy the data to.
+    :type buf: char __user \*
 
-    :param size_t nbytes:
+    :param nbytes:
         The number of bytes to read.
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The position in the file to start reading from.
+    :type ppos: loff_t \*
 
 .. _`lpfc_idiag_extacc_read.description`:
 
@@ -1742,8 +1904,9 @@ lpfc_debugfs_initialize
 
     Initialize debugfs for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The vport pointer to initialize.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_debugfs_initialize.description`:
 
@@ -1764,8 +1927,9 @@ lpfc_debugfs_terminate
 
     Tear down debugfs infrastructure for this vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The vport pointer to remove from debugfs.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_debugfs_terminate.description`:
 
@@ -1787,8 +1951,9 @@ lpfc_debug_dump_all_queues
 
     dump all the queues with a hba
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_debug_dump_all_queues.description`:
 

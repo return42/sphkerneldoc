@@ -10,11 +10,13 @@ qcom_scm_set_cold_boot_addr
 
     Set the cold boot address for cpus
 
-    :param void \*entry:
+    :param entry:
         Entry point function for the cpus
+    :type entry: void \*
 
-    :param const cpumask_t \*cpus:
+    :param cpus:
         The cpumask of cpus that will use the entry point
+    :type cpus: const cpumask_t \*
 
 .. _`qcom_scm_set_cold_boot_addr.description`:
 
@@ -33,11 +35,13 @@ qcom_scm_set_warm_boot_addr
 
     Set the warm boot address for cpus
 
-    :param void \*entry:
+    :param entry:
         Entry point function for the cpus
+    :type entry: void \*
 
-    :param const cpumask_t \*cpus:
+    :param cpus:
         The cpumask of cpus that will use the entry point
+    :type cpus: const cpumask_t \*
 
 .. _`qcom_scm_set_warm_boot_addr.description`:
 
@@ -56,8 +60,9 @@ qcom_scm_cpu_power_down
 
     Power down the cpu \ ``flags``\  - Flags to flush cache
 
-    :param u32 flags:
+    :param flags:
         *undescribed*
+    :type flags: u32
 
 .. _`qcom_scm_cpu_power_down.description`:
 
@@ -77,8 +82,9 @@ qcom_scm_hdcp_available
 
     Check if secure environment supports HDCP.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`qcom_scm_hdcp_available.description`:
 
@@ -96,14 +102,17 @@ qcom_scm_hdcp_req
 
     Send HDCP request.
 
-    :param struct qcom_scm_hdcp_req \*req:
+    :param req:
         HDCP request array
+    :type req: struct qcom_scm_hdcp_req \*
 
-    :param u32 req_cnt:
+    :param req_cnt:
         HDCP request array count
+    :type req_cnt: u32
 
-    :param u32 \*resp:
+    :param resp:
         response buffer passed to SCM
+    :type resp: u32 \*
 
 .. _`qcom_scm_hdcp_req.description`:
 
@@ -121,8 +130,9 @@ qcom_scm_pas_supported
 
     Check if the peripheral authentication service is available for the given peripherial
 
-    :param u32 peripheral:
+    :param peripheral:
         peripheral id
+    :type peripheral: u32
 
 .. _`qcom_scm_pas_supported.description`:
 
@@ -140,16 +150,19 @@ qcom_scm_pas_init_image
 
     Initialize peripheral authentication service state machine for a given peripheral, using the metadata
 
-    :param u32 peripheral:
+    :param peripheral:
         peripheral id
+    :type peripheral: u32
 
-    :param const void \*metadata:
+    :param metadata:
         pointer to memory containing ELF header, program header table
         and optional blob of data used for authenticating the metadata
         and the rest of the firmware
+    :type metadata: const void \*
 
-    :param size_t size:
+    :param size:
         size of the metadata
+    :type size: size_t
 
 .. _`qcom_scm_pas_init_image.description`:
 
@@ -167,14 +180,17 @@ qcom_scm_pas_mem_setup
 
     Prepare the memory related to a given peripheral for firmware loading
 
-    :param u32 peripheral:
+    :param peripheral:
         peripheral id
+    :type peripheral: u32
 
-    :param phys_addr_t addr:
+    :param addr:
         start address of memory area to prepare
+    :type addr: phys_addr_t
 
-    :param phys_addr_t size:
+    :param size:
         size of the memory area to prepare
+    :type size: phys_addr_t
 
 .. _`qcom_scm_pas_mem_setup.description`:
 
@@ -192,8 +208,9 @@ qcom_scm_pas_auth_and_reset
 
     Authenticate the given peripheral firmware and reset the remote processor
 
-    :param u32 peripheral:
+    :param peripheral:
         peripheral id
+    :type peripheral: u32
 
 .. _`qcom_scm_pas_auth_and_reset.description`:
 
@@ -211,8 +228,9 @@ qcom_scm_pas_shutdown
 
     Shut down the remote processor
 
-    :param u32 peripheral:
+    :param peripheral:
         peripheral id
+    :type peripheral: u32
 
 .. _`qcom_scm_pas_shutdown.description`:
 
@@ -230,8 +248,9 @@ qcom_scm_is_available
 
     Checks if SCM is available
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`qcom_scm_assign_mem`:
 
@@ -242,22 +261,27 @@ qcom_scm_assign_mem
 
     Make a secure call to reassign memory ownership
 
-    :param phys_addr_t mem_addr:
+    :param mem_addr:
         mem region whose ownership need to be reassigned
+    :type mem_addr: phys_addr_t
 
-    :param size_t mem_sz:
+    :param mem_sz:
         size of the region.
+    :type mem_sz: size_t
 
-    :param unsigned int \*srcvm:
+    :param srcvm:
         vmid for current set of owners, each set bit in
         flag indicate a unique owner
+    :type srcvm: unsigned int \*
 
-    :param struct qcom_scm_vmperm \*newvm:
+    :param newvm:
         array having new owners and corrsponding permission
         flags
+    :type newvm: struct qcom_scm_vmperm \*
 
-    :param int dest_cnt:
+    :param dest_cnt:
         number of owners in next set.
+    :type dest_cnt: int
 
 .. _`qcom_scm_assign_mem.description`:
 

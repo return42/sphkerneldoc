@@ -10,11 +10,13 @@ fcoe_ctlr_set_state
 
     Set and do debug printing for the new FIP state.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param enum fip_state state:
+    :param state:
         The new state
+    :type state: enum fip_state
 
 .. _`fcoe_ctlr_mtu_valid`:
 
@@ -25,8 +27,9 @@ fcoe_ctlr_mtu_valid
 
     Check if a FCF's MTU is valid
 
-    :param const struct fcoe_fcf \*fcf:
+    :param fcf:
         The FCF to check
+    :type fcf: const struct fcoe_fcf \*
 
 .. _`fcoe_ctlr_mtu_valid.description`:
 
@@ -44,8 +47,9 @@ fcoe_ctlr_fcf_usable
 
     Check if a FCF is usable
 
-    :param struct fcoe_fcf \*fcf:
+    :param fcf:
         The FCF to check
+    :type fcf: struct fcoe_fcf \*
 
 .. _`fcoe_ctlr_fcf_usable.description`:
 
@@ -63,8 +67,9 @@ fcoe_ctlr_map_dest
 
     Set flag and OUI for mapping destination addresses
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_init`:
 
@@ -75,11 +80,13 @@ fcoe_ctlr_init
 
     Initialize the FCoE Controller instance
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller to initialize
+    :type fip: struct fcoe_ctlr \*
 
-    :param enum fip_state mode:
+    :param mode:
         *undescribed*
+    :type mode: enum fip_state
 
 .. _`fcoe_sysfs_fcf_add`:
 
@@ -90,8 +97,9 @@ fcoe_sysfs_fcf_add
 
     Add a fcoe_fcf{,_device} to a fcoe_ctlr{,_device}
 
-    :param struct fcoe_fcf \*new:
+    :param new:
         The newly discovered FCF
+    :type new: struct fcoe_fcf \*
 
 .. _`fcoe_sysfs_fcf_add.description`:
 
@@ -109,8 +117,9 @@ fcoe_sysfs_fcf_del
 
     Remove a fcoe_fcf{,_device} to a fcoe_ctlr{,_device}
 
-    :param struct fcoe_fcf \*new:
+    :param new:
         The FCF to be removed
+    :type new: struct fcoe_fcf \*
 
 .. _`fcoe_sysfs_fcf_del.description`:
 
@@ -128,8 +137,9 @@ fcoe_ctlr_reset_fcfs
 
     Reset and free all FCFs for a controller
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller whose FCFs are to be reset
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_reset_fcfs.description`:
 
@@ -147,8 +157,9 @@ fcoe_ctlr_destroy
 
     Disable and tear down a FCoE controller
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller to tear down
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_destroy.description`:
 
@@ -172,8 +183,9 @@ fcoe_ctlr_announce
 
     announce new FCF selection
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_announce.description`:
 
@@ -193,8 +205,9 @@ fcoe_ctlr_fcoe_size
 
     Return the maximum FCoE size required for VN_Port
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller to get the maximum FCoE size from
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_fcoe_size.description`:
 
@@ -213,11 +226,13 @@ fcoe_ctlr_solicit
 
     Send a FIP solicitation
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller to send the solicitation on
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fcoe_fcf \*fcf:
+    :param fcf:
         The destination FCF (if NULL, a multicast solicitation is sent)
+    :type fcf: struct fcoe_fcf \*
 
 .. _`fcoe_ctlr_link_up`:
 
@@ -228,8 +243,9 @@ fcoe_ctlr_link_up
 
     Start FCoE controller
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller to start
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_link_up.description`:
 
@@ -247,8 +263,9 @@ fcoe_ctlr_reset
 
     Reset a FCoE controller
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller to reset
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_link_down`:
 
@@ -259,8 +276,9 @@ fcoe_ctlr_link_down
 
     Stop a FCoE controller
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller to be stopped
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_link_down.description`:
 
@@ -281,17 +299,21 @@ fcoe_ctlr_send_keep_alive
 
     Send a keep-alive to the selected FCF
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller to send the FKA on
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_lport \*lport:
+    :param lport:
         libfc fc_lport to send from
+    :type lport: struct fc_lport \*
 
-    :param int ports:
+    :param ports:
         0 for controller keep-alive, 1 for port keep-alive
+    :type ports: int
 
-    :param u8 \*sa:
+    :param sa:
         The source MAC address
+    :type sa: u8 \*
 
 .. _`fcoe_ctlr_send_keep_alive.description`:
 
@@ -314,20 +336,25 @@ fcoe_ctlr_encaps
 
     Encapsulate an ELS frame for FIP, without sending it
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller for the ELS frame
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param u8 dtype:
+    :param dtype:
         The FIP descriptor type for the frame
+    :type dtype: u8
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The FCoE ELS frame including FC header but no FCoE headers
+    :type skb: struct sk_buff \*
 
-    :param u32 d_id:
+    :param d_id:
         The destination port ID.
+    :type d_id: u32
 
 .. _`fcoe_ctlr_encaps.description`:
 
@@ -351,14 +378,17 @@ fcoe_ctlr_els_send
 
     Send an ELS frame encapsulated by FIP if appropriate.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         FCoE controller.
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_lport \*lport:
+    :param lport:
         libfc fc_lport to send from
+    :type lport: struct fc_lport \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         FCoE ELS frame including FC header but no FCoE headers.
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_ctlr_els_send.description`:
 
@@ -384,8 +414,9 @@ fcoe_ctlr_age_fcfs
 
     Reset and free all old FCFs for a controller
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller to free FCFs on
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_age_fcfs.description`:
 
@@ -414,14 +445,17 @@ fcoe_ctlr_parse_adv
 
     Decode a FIP advertisement into a new FCF entry
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller receiving the advertisement
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The received FIP advertisement frame
+    :type skb: struct sk_buff \*
 
-    :param struct fcoe_fcf \*fcf:
+    :param fcf:
         The resulting FCF entry
+    :type fcf: struct fcoe_fcf \*
 
 .. _`fcoe_ctlr_parse_adv.description`:
 
@@ -440,11 +474,13 @@ fcoe_ctlr_recv_adv
 
     Handle an incoming advertisement
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller receiving the advertisement
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The received FIP packet
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_ctlr_recv_els`:
 
@@ -455,11 +491,13 @@ fcoe_ctlr_recv_els
 
     Handle an incoming FIP encapsulated ELS frame
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller which received the packet
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The received FIP packet
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_ctlr_recv_clr_vlink`:
 
@@ -470,11 +508,13 @@ fcoe_ctlr_recv_clr_vlink
 
     Handle an incoming link reset frame
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller that received the frame
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_ctlr_recv_clr_vlink.description`:
 
@@ -493,11 +533,13 @@ fcoe_ctlr_recv
 
     Receive a FIP packet
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller that received the packet
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The received FIP packet
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_ctlr_recv.description`:
 
@@ -515,11 +557,13 @@ fcoe_ctlr_recv_handler
 
     Receive a FIP frame
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller that received the frame
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The received FIP frame
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_ctlr_recv_handler.description`:
 
@@ -537,8 +581,9 @@ fcoe_ctlr_select
 
     Select the best FCF (if possible)
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_select.description`:
 
@@ -563,8 +608,9 @@ fcoe_ctlr_flogi_send_locked
 
     send FIP-encapsulated FLOGI to current FCF
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_flogi_send_locked.description`:
 
@@ -585,8 +631,9 @@ fcoe_ctlr_flogi_retry
 
     resend FLOGI request to a new FCF if possible
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_flogi_retry.description`:
 
@@ -605,8 +652,9 @@ fcoe_ctlr_flogi_send
 
     Handle sending of FIP FLOGI.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller that timed out
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_flogi_send.description`:
 
@@ -626,8 +674,9 @@ fcoe_ctlr_timeout
 
     FIP timeout handler
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`fcoe_ctlr_timer_work`:
 
@@ -638,8 +687,9 @@ fcoe_ctlr_timer_work
 
     Worker thread function for timer work
 
-    :param struct work_struct \*work:
+    :param work:
         Handle to a FCoE controller
+    :type work: struct work_struct \*
 
 .. _`fcoe_ctlr_timer_work.description`:
 
@@ -658,8 +708,9 @@ fcoe_ctlr_recv_work
 
     Worker thread function for receiving FIP frames
 
-    :param struct work_struct \*recv_work:
+    :param recv_work:
         Handle to a FCoE controller
+    :type recv_work: struct work_struct \*
 
 .. _`fcoe_ctlr_recv_flogi`:
 
@@ -670,14 +721,17 @@ fcoe_ctlr_recv_flogi
 
     Snoop pre-FIP receipt of FLOGI response
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The FC frame to snoop
+    :type fp: struct fc_frame \*
 
 .. _`fcoe_ctlr_recv_flogi.description`:
 
@@ -703,14 +757,17 @@ fcoe_wwn_from_mac
 
     Converts a 48-bit IEEE MAC address to a 64-bit FC WWN
 
-    :param unsigned char mac:
+    :param mac:
         The MAC address to convert
+    :type mac: unsigned char
 
-    :param unsigned int scheme:
+    :param scheme:
         The scheme to use when converting
+    :type scheme: unsigned int
 
-    :param unsigned int port:
+    :param port:
         The port indicator for converting
+    :type port: unsigned int
 
 .. _`fcoe_wwn_from_mac.return`:
 
@@ -728,8 +785,9 @@ fcoe_ctlr_rport
 
     return the fcoe_rport for a given fc_rport_priv
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         libfc remote port
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fcoe_ctlr_vn_send`:
 
@@ -740,17 +798,21 @@ fcoe_ctlr_vn_send
 
     Send a FIP VN2VN Probe Request or Reply.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param enum fip_vn2vn_subcode sub:
+    :param sub:
         sub-opcode for probe request, reply, or advertisement.
+    :type sub: enum fip_vn2vn_subcode
 
-    :param const u8 \*dest:
+    :param dest:
         The destination Ethernet MAC address
+    :type dest: const u8 \*
 
-    :param size_t min_len:
+    :param min_len:
         minimum size of the Ethernet payload to be sent
+    :type min_len: size_t
 
 .. _`fcoe_ctlr_vn_rport_callback`:
 
@@ -761,14 +823,17 @@ fcoe_ctlr_vn_rport_callback
 
     Event handler for rport events.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The lport which is receiving the event
+    :type lport: struct fc_lport \*
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         remote port private data
+    :type rdata: struct fc_rport_priv \*
 
-    :param enum fc_rport_event event:
+    :param event:
         The event that occurred
+    :type event: enum fc_rport_event
 
 .. _`fcoe_ctlr_vn_rport_callback.locking-note`:
 
@@ -786,8 +851,9 @@ fcoe_ctlr_disc_stop_locked
 
     stop discovery in VN2VN mode
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_ctlr_disc_stop_locked.description`:
 
@@ -805,8 +871,9 @@ fcoe_ctlr_disc_stop
 
     stop discovery in VN2VN mode
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_ctlr_disc_stop.description`:
 
@@ -825,8 +892,9 @@ fcoe_ctlr_disc_stop_final
 
     stop discovery for shutdown in VN2VN mode
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_ctlr_disc_stop_final.description`:
 
@@ -845,8 +913,9 @@ fcoe_ctlr_vn_restart
 
     VN2VN probe restart with new port_id
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_vn_restart.description`:
 
@@ -864,8 +933,9 @@ fcoe_ctlr_vn_start
 
     Start in VN2VN mode
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_vn_start.description`:
 
@@ -883,14 +953,17 @@ fcoe_ctlr_vn_parse
 
     parse probe request or response
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         incoming packet
+    :type skb: struct sk_buff \*
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         buffer for resulting parsed VN entry plus fcoe_rport
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fcoe_ctlr_vn_parse.description`:
 
@@ -909,8 +982,9 @@ fcoe_ctlr_vn_send_claim
 
     send multicast FIP VN2VN Claim Notification.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_vn_send_claim.description`:
 
@@ -928,11 +1002,13 @@ fcoe_ctlr_vn_probe_req
 
     handle incoming VN2VN probe request.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         parsed remote port with frport from the probe request
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fcoe_ctlr_vn_probe_req.description`:
 
@@ -950,11 +1026,13 @@ fcoe_ctlr_vn_probe_reply
 
     handle incoming VN2VN probe reply.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         parsed remote port with frport from the probe request
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fcoe_ctlr_vn_probe_reply.description`:
 
@@ -972,11 +1050,13 @@ fcoe_ctlr_vn_add
 
     Add a VN2VN entry to the list, based on a claim reply.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_rport_priv \*new:
+    :param new:
         newly-parsed remote port with frport as a template for new rdata
+    :type new: struct fc_rport_priv \*
 
 .. _`fcoe_ctlr_vn_add.description`:
 
@@ -994,14 +1074,17 @@ fcoe_ctlr_vn_lookup
 
     Find VN remote port's MAC address
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param u32 port_id:
+    :param port_id:
         The port_id of the remote VN_node
+    :type port_id: u32
 
-    :param u8 \*mac:
+    :param mac:
         buffer which will hold the VN_NODE destination MAC address, if found.
+    :type mac: u8 \*
 
 .. _`fcoe_ctlr_vn_lookup.description`:
 
@@ -1019,11 +1102,13 @@ fcoe_ctlr_vn_claim_notify
 
     handle received FIP VN2VN Claim Notification
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_rport_priv \*new:
+    :param new:
         newly-parsed remote port with frport as a template for new rdata
+    :type new: struct fc_rport_priv \*
 
 .. _`fcoe_ctlr_vn_claim_notify.description`:
 
@@ -1041,11 +1126,13 @@ fcoe_ctlr_vn_claim_resp
 
     handle received Claim Response
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller that received the frame
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_rport_priv \*new:
+    :param new:
         newly-parsed remote port with frport from the Claim Response
+    :type new: struct fc_rport_priv \*
 
 .. _`fcoe_ctlr_vn_claim_resp.description`:
 
@@ -1063,11 +1150,13 @@ fcoe_ctlr_vn_beacon
 
     handle received beacon.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller that received the frame
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_rport_priv \*new:
+    :param new:
         newly-parsed remote port with frport from the Beacon
+    :type new: struct fc_rport_priv \*
 
 .. _`fcoe_ctlr_vn_beacon.description`:
 
@@ -1085,8 +1174,9 @@ fcoe_ctlr_vn_age
 
     Check for VN_ports without recent beacons
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_vn_age.description`:
 
@@ -1106,11 +1196,13 @@ fcoe_ctlr_vn_recv
 
     Receive a FIP frame
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller that received the frame
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The received FIP frame
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_ctlr_vn_recv.description`:
 
@@ -1129,14 +1221,17 @@ fcoe_ctlr_vlan_parse
 
     parse vlan discovery request or response
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         incoming packet
+    :type skb: struct sk_buff \*
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         buffer for resulting parsed VLAN entry plus fcoe_rport
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fcoe_ctlr_vlan_parse.description`:
 
@@ -1155,14 +1250,17 @@ fcoe_ctlr_vlan_send
 
     Send a FIP VLAN Notification
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param enum fip_vlan_subcode sub:
+    :param sub:
         sub-opcode for vlan notification or vn2vn vlan notification
+    :type sub: enum fip_vlan_subcode
 
-    :param const u8 \*dest:
+    :param dest:
         The destination Ethernet MAC address
+    :type dest: const u8 \*
 
 .. _`fcoe_ctlr_vlan_disc_reply`:
 
@@ -1173,11 +1271,13 @@ fcoe_ctlr_vlan_disc_reply
 
     send FIP VLAN Discovery Notification.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         *undescribed*
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fcoe_ctlr_vlan_disc_reply.description`:
 
@@ -1195,11 +1295,13 @@ fcoe_ctlr_vlan_recv
 
     vlan request receive handler for VN2VN mode.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         *undescribed*
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_ctlr_disc_recv`:
 
@@ -1210,11 +1312,13 @@ fcoe_ctlr_disc_recv
 
     discovery receive handler for VN2VN mode.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The received frame
+    :type fp: struct fc_frame \*
 
 .. _`fcoe_ctlr_disc_recv.description`:
 
@@ -1236,8 +1340,9 @@ fcoe_ctlr_disc_start
     :param void (\*callback)(struct fc_lport \*, enum fc_disc_event):
         *undescribed*
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_ctlr_disc_start.description`:
 
@@ -1261,8 +1366,9 @@ fcoe_ctlr_vn_disc
 
     report FIP VN_port discovery results after claim state.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_vn_disc.description`:
 
@@ -1282,8 +1388,9 @@ fcoe_ctlr_vn_timeout
 
     timer work function for VN2VN mode.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_ctlr_mode_set`:
 
@@ -1294,14 +1401,17 @@ fcoe_ctlr_mode_set
 
     Set or reset the ctlr's mode
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to be (re)configured
+    :type lport: struct fc_lport \*
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller whose mode is changing
+    :type fip: struct fcoe_ctlr \*
 
-    :param enum fip_mode fip_mode:
+    :param fip_mode:
         The new fip mode
+    :type fip_mode: enum fip_mode
 
 .. _`fcoe_ctlr_mode_set.description`:
 
@@ -1323,17 +1433,21 @@ fcoe_libfc_config
 
     Sets up libfc related properties for local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to configure libfc for
+    :type lport: struct fc_lport \*
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller in use by the local port
+    :type fip: struct fcoe_ctlr \*
 
-    :param const struct libfc_function_template \*tt:
+    :param tt:
         The libfc function template
+    :type tt: const struct libfc_function_template \*
 
-    :param int init_fcp:
+    :param init_fcp:
         If non-zero, the FCP portion of libfc should be initialized
+    :type init_fcp: int
 
 .. _`fcoe_libfc_config.description`:
 

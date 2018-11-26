@@ -10,20 +10,25 @@ cc_set_sram_desc
 
     Create const descriptors sequence to set values in given array into SRAM.
 
-    :param const u32 \*src:
+    :param src:
         A pointer to array of words to set as consts.
+    :type src: const u32 \*
 
-    :param cc_sram_addr_t dst:
+    :param dst:
         The target SRAM buffer to set into
+    :type dst: cc_sram_addr_t
 
-    :param unsigned int nelement:
+    :param nelement:
         *undescribed*
+    :type nelement: unsigned int
 
-    :param struct cc_hw_desc \*seq:
+    :param seq:
         A pointer to the given IN/OUT descriptor sequence
+    :type seq: struct cc_hw_desc \*
 
-    :param unsigned int \*seq_len:
+    :param seq_len:
         A pointer to the given IN/OUT sequence length
+    :type seq_len: unsigned int \*
 
 .. _`cc_set_sram_desc.note`:
 

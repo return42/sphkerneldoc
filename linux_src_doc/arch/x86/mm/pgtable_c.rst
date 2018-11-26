@@ -10,8 +10,9 @@ reserve_top_address
 
     reserves a hole in the top of kernel address space \ ``reserve``\  - size of hole to reserve
 
-    :param unsigned long reserve:
+    :param reserve:
         *undescribed*
+    :type reserve: unsigned long
 
 .. _`reserve_top_address.description`:
 
@@ -30,14 +31,17 @@ p4d_set_huge
 
     setup kernel P4D mapping
 
-    :param p4d_t \*p4d:
+    :param p4d:
         *undescribed*
+    :type p4d: p4d_t \*
 
-    :param phys_addr_t addr:
+    :param addr:
         *undescribed*
+    :type addr: phys_addr_t
 
-    :param pgprot_t prot:
+    :param prot:
         *undescribed*
+    :type prot: pgprot_t
 
 .. _`p4d_set_huge.description`:
 
@@ -55,8 +59,9 @@ p4d_clear_huge
 
     clear kernel P4D mapping when it is set
 
-    :param p4d_t \*p4d:
+    :param p4d:
         *undescribed*
+    :type p4d: p4d_t \*
 
 .. _`p4d_clear_huge.description`:
 
@@ -74,14 +79,17 @@ pud_set_huge
 
     setup kernel PUD mapping
 
-    :param pud_t \*pud:
+    :param pud:
         *undescribed*
+    :type pud: pud_t \*
 
-    :param phys_addr_t addr:
+    :param addr:
         *undescribed*
+    :type addr: phys_addr_t
 
-    :param pgprot_t prot:
+    :param prot:
         *undescribed*
+    :type prot: pgprot_t
 
 .. _`pud_set_huge.description`:
 
@@ -117,14 +125,17 @@ pmd_set_huge
 
     setup kernel PMD mapping
 
-    :param pmd_t \*pmd:
+    :param pmd:
         *undescribed*
+    :type pmd: pmd_t \*
 
-    :param phys_addr_t addr:
+    :param addr:
         *undescribed*
+    :type addr: phys_addr_t
 
-    :param pgprot_t prot:
+    :param prot:
         *undescribed*
+    :type prot: pgprot_t
 
 .. _`pmd_set_huge.description`:
 
@@ -144,8 +155,9 @@ pud_clear_huge
 
     clear kernel PUD mapping when it is set
 
-    :param pud_t \*pud:
+    :param pud:
         *undescribed*
+    :type pud: pud_t \*
 
 .. _`pud_clear_huge.description`:
 
@@ -163,8 +175,9 @@ pmd_clear_huge
 
     clear kernel PMD mapping when it is set
 
-    :param pmd_t \*pmd:
+    :param pmd:
         *undescribed*
+    :type pmd: pmd_t \*
 
 .. _`pmd_clear_huge.description`:
 
@@ -178,19 +191,24 @@ Returns 1 on success and 0 on failure (no PMD map is found).
 pud_free_pmd_page
 =================
 
-.. c:function:: int pud_free_pmd_page(pud_t *pud)
+.. c:function:: int pud_free_pmd_page(pud_t *pud, unsigned long addr)
 
     Clear pud entry and free pmd page.
 
-    :param pud_t \*pud:
+    :param pud:
         Pointer to a PUD.
+    :type pud: pud_t \*
+
+    :param addr:
+        Virtual address associated with pud.
+    :type addr: unsigned long
 
 .. _`pud_free_pmd_page.context`:
 
 Context
 -------
 
-The pud range has been unmaped and TLB purged.
+The pud range has been unmapped and TLB purged.
 
 .. _`pud_free_pmd_page.return`:
 
@@ -199,24 +217,36 @@ Return
 
 1 if clearing the entry succeeded. 0 otherwise.
 
+.. _`pud_free_pmd_page.note`:
+
+NOTE
+----
+
+Callers must allow a single page allocation.
+
 .. _`pmd_free_pte_page`:
 
 pmd_free_pte_page
 =================
 
-.. c:function:: int pmd_free_pte_page(pmd_t *pmd)
+.. c:function:: int pmd_free_pte_page(pmd_t *pmd, unsigned long addr)
 
     Clear pmd entry and free pte page.
 
-    :param pmd_t \*pmd:
+    :param pmd:
         Pointer to a PMD.
+    :type pmd: pmd_t \*
+
+    :param addr:
+        Virtual address associated with pmd.
+    :type addr: unsigned long
 
 .. _`pmd_free_pte_page.context`:
 
 Context
 -------
 
-The pmd range has been unmaped and TLB purged.
+The pmd range has been unmapped and TLB purged.
 
 .. _`pmd_free_pte_page.return`:
 

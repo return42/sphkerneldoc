@@ -10,11 +10,13 @@ vb2_dma_contig_set_max_seg_size
 
     configure DMA max segment size
 
-    :param struct device \*dev:
+    :param dev:
         device for configuring DMA parameters
+    :type dev: struct device \*
 
-    :param unsigned int size:
+    :param size:
         size of DMA max segment size to set
+    :type size: unsigned int
 
 .. _`vb2_dma_contig_set_max_seg_size.description`:
 

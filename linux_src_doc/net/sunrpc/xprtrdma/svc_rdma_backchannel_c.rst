@@ -10,14 +10,17 @@ svc_rdma_handle_bc_reply
 
     Process incoming backchannel reply
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         controlling backchannel transport
+    :type xprt: struct rpc_xprt \*
 
-    :param __be32 \*rdma_resp:
+    :param rdma_resp:
         pointer to incoming transport header
+    :type rdma_resp: __be32 \*
 
-    :param struct xdr_buf \*rcvbuf:
+    :param rcvbuf:
         XDR buffer into which to decode the reply
+    :type rcvbuf: struct xdr_buf \*
 
 .. _`svc_rdma_handle_bc_reply.return`:
 

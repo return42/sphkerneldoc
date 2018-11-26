@@ -10,11 +10,13 @@ zip_cmd_queue_consumed
 
     Calculates the space consumed in the command queue.
 
-    :param struct zip_device \*zip_dev:
+    :param zip_dev:
         Pointer to zip device structure
+    :type zip_dev: struct zip_device \*
 
-    :param int queue:
+    :param queue:
         Queue number
+    :type queue: int
 
 .. _`zip_cmd_queue_consumed.return`:
 
@@ -32,12 +34,14 @@ zip_load_instr
 
     Submits the instruction into the ZIP command queue
 
-    :param union zip_inst_s \*instr:
+    :param instr:
         Pointer to the instruction to be submitted
+    :type instr: union zip_inst_s \*
 
-    :param struct zip_device \*zip_dev:
+    :param zip_dev:
         Pointer to ZIP device structure to which the instruction is to
         be submitted
+    :type zip_dev: struct zip_device \*
 
 .. _`zip_load_instr.description`:
 
@@ -66,11 +70,13 @@ zip_update_cmd_bufs
 
     Updates the queue statistics after posting the instruction
 
-    :param struct zip_device \*zip_dev:
+    :param zip_dev:
         Pointer to zip device structure
+    :type zip_dev: struct zip_device \*
 
-    :param u32 queue:
+    :param queue:
         Queue number
+    :type queue: u32
 
 .. This file was automatic generated / don't edit.
 

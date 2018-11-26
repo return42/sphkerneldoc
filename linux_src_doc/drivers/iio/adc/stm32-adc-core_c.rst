@@ -62,12 +62,14 @@ stm32f4_adc_clk_sel
 
     Select stm32f4 ADC common clock prescaler
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
-    :param struct stm32_adc_priv \*priv:
+    :param priv:
         stm32 ADC core private data
         Select clock prescaler used for analog conversions, before using ADC.
+    :type priv: struct stm32_adc_priv \*
 
 .. _`stm32h7_adc_ck_spec`:
 

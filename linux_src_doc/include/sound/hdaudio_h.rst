@@ -10,14 +10,17 @@ snd_hdac_read_parm
 
     read a codec parameter
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to read a parameter
+    :type nid: hda_nid_t
 
-    :param int parm:
+    :param parm:
         parameter to read
+    :type parm: int
 
 .. _`snd_hdac_read_parm.description`:
 

@@ -10,8 +10,9 @@ nfsd4_spo_must_allow
 
     Determine if the compound op contains an operation that is allowed to be sent with machine credentials
 
-    :param struct svc_rqst \*rqstp:
+    :param rqstp:
         a pointer to the struct svc_rqst
+    :type rqstp: struct svc_rqst \*
 
 .. _`nfsd4_spo_must_allow.description`:
 

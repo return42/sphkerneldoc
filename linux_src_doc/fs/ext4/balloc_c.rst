@@ -10,15 +10,18 @@ ext4_get_group_desc
 
     - load group descriptor from disk
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
-    :param ext4_group_t block_group:
+    :param block_group:
         given block group
+    :type block_group: ext4_group_t
 
-    :param struct buffer_head \*\*bh:
+    :param bh:
         pointer to the buffer head to store the block
         group descriptor
+    :type bh: struct buffer_head \*\*
 
 .. _`ext4_read_block_bitmap_nowait`:
 
@@ -27,11 +30,13 @@ ext4_read_block_bitmap_nowait
 
 .. c:function:: struct buffer_head *ext4_read_block_bitmap_nowait(struct super_block *sb, ext4_group_t block_group)
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
-    :param ext4_group_t block_group:
+    :param block_group:
         given block group
+    :type block_group: ext4_group_t
 
 .. _`ext4_read_block_bitmap_nowait.description`:
 
@@ -50,14 +55,17 @@ ext4_has_free_clusters
 
 .. c:function:: int ext4_has_free_clusters(struct ext4_sb_info *sbi, s64 nclusters, unsigned int flags)
 
-    :param struct ext4_sb_info \*sbi:
+    :param sbi:
         in-core super block structure.
+    :type sbi: struct ext4_sb_info \*
 
-    :param s64 nclusters:
+    :param nclusters:
         number of needed blocks
+    :type nclusters: s64
 
-    :param unsigned int flags:
+    :param flags:
         flags from \ :c:func:`ext4_mb_new_blocks`\ 
+    :type flags: unsigned int
 
 .. _`ext4_has_free_clusters.description`:
 
@@ -74,12 +82,14 @@ ext4_should_retry_alloc
 
 .. c:function:: int ext4_should_retry_alloc(struct super_block *sb, int *retries)
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
         \ ``retries``\              number of attemps has been made
+    :type sb: struct super_block \*
 
-    :param int \*retries:
+    :param retries:
         *undescribed*
+    :type retries: int \*
 
 .. _`ext4_should_retry_alloc.description`:
 
@@ -100,8 +110,9 @@ ext4_count_free_clusters
 
     - count filesystem free clusters
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
 .. _`ext4_count_free_clusters.description`:
 
@@ -119,11 +130,13 @@ ext4_bg_has_super
 
     number of blocks used by the superblock in group
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock for filesystem
+    :type sb: struct super_block \*
 
-    :param ext4_group_t group:
+    :param group:
         group number to check
+    :type group: ext4_group_t
 
 .. _`ext4_bg_has_super.description`:
 
@@ -142,11 +155,13 @@ ext4_bg_num_gdb
 
     number of blocks used by the group table in group
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock for filesystem
+    :type sb: struct super_block \*
 
-    :param ext4_group_t group:
+    :param group:
         group number to check
+    :type group: ext4_group_t
 
 .. _`ext4_bg_num_gdb.description`:
 
@@ -166,8 +181,9 @@ ext4_inode_to_goal_block
 
     return a hint for block allocation
 
-    :param struct inode \*inode:
+    :param inode:
         inode for block allocation
+    :type inode: struct inode \*
 
 .. _`ext4_inode_to_goal_block.description`:
 

@@ -10,9 +10,10 @@ alloc_ltalkdev
 
     Allocates and sets up an localtalk device
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         Size of additional driver-private structure to be allocated
         for this localtalk device
+    :type sizeof_priv: int
 
 .. _`alloc_ltalkdev.description`:
 

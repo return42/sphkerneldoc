@@ -10,8 +10,9 @@ mei_dbgfs_deregister
 
     Remove the debugfs files and directories
 
-    :param struct mei_device \*dev:
+    :param dev:
         the mei device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_dbgfs_register`:
 
@@ -22,11 +23,13 @@ mei_dbgfs_register
 
     Add the debugfs files
 
-    :param struct mei_device \*dev:
+    :param dev:
         the mei device structure
+    :type dev: struct mei_device \*
 
-    :param const char \*name:
+    :param name:
         the mei device name
+    :type name: const char \*
 
 .. _`mei_dbgfs_register.return`:
 

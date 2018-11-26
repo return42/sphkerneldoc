@@ -10,11 +10,13 @@ qla4xxx_free_ddb
 
     deallocate ddb
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct ddb_entry \*ddb_entry:
+    :param ddb_entry:
         pointer to device database entry
+    :type ddb_entry: struct ddb_entry \*
 
 .. _`qla4xxx_free_ddb.description`:
 
@@ -32,8 +34,9 @@ qla4xxx_init_response_q_entries
 
     Initializes response queue entries.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         HA context
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_init_response_q_entries.description`:
 
@@ -52,8 +55,9 @@ qla4xxx_init_rings
 
     initialize hw queues
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_init_rings.description`:
 
@@ -73,8 +77,9 @@ qla4xxx_get_sys_info
 
     validate adapter MAC address(es)
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_init_local_data`:
 
@@ -85,8 +90,9 @@ qla4xxx_init_local_data
 
     initialize adapter specific local data
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_alloc_fw_dump`:
 
@@ -97,8 +103,9 @@ qla4xxx_alloc_fw_dump
 
     Allocate memory for minidump data.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_init_firmware`:
 
@@ -109,8 +116,9 @@ qla4xxx_init_firmware
 
     initializes the firmware.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_8xxx_pci_config`:
 
@@ -121,8 +129,9 @@ qla4_8xxx_pci_config
 
     Setup ISP82xx PCI configuration registers.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         HA context
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_start_firmware`:
 
@@ -133,8 +142,9 @@ qla4xxx_start_firmware
 
     starts qla4xxx firmware
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_start_firmware.description`:
 
@@ -153,8 +163,9 @@ qla4xxx_free_ddb_index
 
     Free DDBs reserved by firmware
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_free_ddb_index.description`:
 
@@ -174,11 +185,13 @@ qla4xxx_initialize_adapter
 
     initiailizes hba
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param int is_reset:
+    :param is_reset:
         *undescribed*
+    :type is_reset: int
 
 .. _`qla4xxx_initialize_adapter.description`:
 
@@ -196,17 +209,21 @@ qla4xxx_process_ddb_changed
 
     process ddb state change \ ``ha``\  - Pointer to host adapter structure. \ ``fw_ddb_index``\  - Firmware's device database index \ ``state``\  - Device state
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         *undescribed*
+    :type ha: struct scsi_qla_host \*
 
-    :param uint32_t fw_ddb_index:
+    :param fw_ddb_index:
         *undescribed*
+    :type fw_ddb_index: uint32_t
 
-    :param uint32_t state:
+    :param state:
         *undescribed*
+    :type state: uint32_t
 
-    :param uint32_t conn_err:
+    :param conn_err:
         *undescribed*
+    :type conn_err: uint32_t
 
 .. _`qla4xxx_process_ddb_changed.description`:
 
@@ -224,8 +241,9 @@ qla4xxx_login_flash_ddb
 
     Login to target (DDB)
 
-    :param struct iscsi_cls_session \*cls_session:
+    :param cls_session:
         Pointer to the session to login
+    :type cls_session: struct iscsi_cls_session \*
 
 .. _`qla4xxx_login_flash_ddb.description`:
 

@@ -10,14 +10,17 @@ devm_sigmadsp_init_i2c
 
     Initialize SigmaDSP instance
 
-    :param struct i2c_client \*client:
+    :param client:
         The parent I2C device
+    :type client: struct i2c_client \*
 
-    :param const struct sigmadsp_ops \*ops:
+    :param ops:
         The sigmadsp_ops to use for this instance
+    :type ops: const struct sigmadsp_ops \*
 
-    :param const char \*firmware_name:
+    :param firmware_name:
         Name of the firmware file to load
+    :type firmware_name: const char \*
 
 .. _`devm_sigmadsp_init_i2c.description`:
 

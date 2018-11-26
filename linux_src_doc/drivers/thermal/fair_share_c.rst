@@ -10,8 +10,9 @@ get_trip_level
 
     - obtains the current trip level for a zone
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         thermal zone device
+    :type tz: struct thermal_zone_device \*
 
 .. _`fair_share_throttle`:
 
@@ -22,11 +23,13 @@ fair_share_throttle
 
     throttles devices associated with the given zone \ ``tz``\  - thermal_zone_device \ ``trip``\  - trip point index
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         *undescribed*
+    :type tz: struct thermal_zone_device \*
 
-    :param int trip:
+    :param trip:
         *undescribed*
+    :type trip: int
 
 .. _`fair_share_throttle.throttling-logic`:
 

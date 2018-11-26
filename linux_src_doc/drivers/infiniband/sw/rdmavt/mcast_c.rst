@@ -10,8 +10,9 @@ rvt_driver_mcast_init
 
     init resources for multicast
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev struct
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_driver_mcast_init.description`:
 
@@ -29,8 +30,9 @@ rvt_mcast_qp_alloc
 
     alloc a struct to link a QP to mcast GID struct
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP to link
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_mcast_alloc`:
 
@@ -41,11 +43,13 @@ rvt_mcast_alloc
 
     allocate the multicast GID structure
 
-    :param union ib_gid \*mgid:
+    :param mgid:
         the multicast GID
+    :type mgid: union ib_gid \*
 
-    :param u16 lid:
+    :param lid:
         the muilticast LID (host order)
+    :type lid: u16
 
 .. _`rvt_mcast_alloc.description`:
 
@@ -63,14 +67,17 @@ rvt_mcast_find
 
     search the global table for the given multicast GID/LID
 
-    :param struct rvt_ibport \*ibp:
+    :param ibp:
         the IB port structure
+    :type ibp: struct rvt_ibport \*
 
-    :param union ib_gid \*mgid:
+    :param mgid:
         the multicast GID to search for
+    :type mgid: union ib_gid \*
 
-    :param u16 lid:
+    :param lid:
         the multicast LID portion of the multicast address (host order)
+    :type lid: u16
 
 .. _`rvt_mcast_find.note`:
 
@@ -103,17 +110,21 @@ rvt_mcast_add
 
     insert mcast GID into table and attach QP struct
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         *undescribed*
+    :type rdi: struct rvt_dev_info \*
 
-    :param struct rvt_ibport \*ibp:
+    :param ibp:
         *undescribed*
+    :type ibp: struct rvt_ibport \*
 
-    :param struct rvt_mcast \*mcast:
+    :param mcast:
         the mcast GID table
+    :type mcast: struct rvt_mcast \*
 
-    :param struct rvt_mcast_qp \*mqp:
+    :param mqp:
         the QP to attach
+    :type mqp: struct rvt_mcast_qp \*
 
 .. _`rvt_mcast_add.return`:
 
@@ -134,14 +145,17 @@ rvt_attach_mcast
 
     attach a qp to a multicast group
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         Infiniband qp
+    :type ibqp: struct ib_qp \*
 
-    :param union ib_gid \*gid:
+    :param gid:
         multicast guid
+    :type gid: union ib_gid \*
 
-    :param u16 lid:
+    :param lid:
         multicast lid
+    :type lid: u16
 
 .. _`rvt_attach_mcast.return`:
 
@@ -159,14 +173,17 @@ rvt_detach_mcast
 
     remove a qp from a multicast group
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         Infiniband qp
+    :type ibqp: struct ib_qp \*
 
-    :param union ib_gid \*gid:
+    :param gid:
         multicast guid
+    :type gid: union ib_gid \*
 
-    :param u16 lid:
+    :param lid:
         multicast lid
+    :type lid: u16
 
 .. _`rvt_detach_mcast.return`:
 
@@ -184,8 +201,9 @@ rvt_mcast_tree_empty
 
     determine if any qps are attached to any mcast group \ ``rdi``\ : rvt dev struct
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         *undescribed*
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_mcast_tree_empty.return`:
 

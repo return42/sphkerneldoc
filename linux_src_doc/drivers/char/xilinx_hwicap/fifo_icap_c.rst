@@ -34,11 +34,13 @@ fifo_icap_fifo_write
 
     Write data to the write FIFO.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
-    :param u32 data:
+    :param data:
         the 32-bit value to be written to the FIFO.
+    :type data: u32
 
 .. _`fifo_icap_fifo_write.description`:
 
@@ -56,8 +58,9 @@ fifo_icap_fifo_read
 
     Read data from the Read FIFO.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`fifo_icap_fifo_read.description`:
 
@@ -75,11 +78,13 @@ fifo_icap_set_read_size
 
     Set the the size register.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
-    :param u32 data:
+    :param data:
         the size of the following read transaction, in words.
+    :type data: u32
 
 .. _`fifo_icap_start_config`:
 
@@ -90,8 +95,9 @@ fifo_icap_start_config
 
     Initiate a configuration (write) to the device.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`fifo_icap_start_readback`:
 
@@ -102,8 +108,9 @@ fifo_icap_start_readback
 
     Initiate a readback from the device.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`fifo_icap_get_status`:
 
@@ -114,8 +121,9 @@ fifo_icap_get_status
 
     Get the contents of the status register.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`fifo_icap_get_status.description`:
 
@@ -143,8 +151,9 @@ fifo_icap_busy
 
     Return true if the ICAP is still processing a transaction.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`fifo_icap_write_fifo_vacancy`:
 
@@ -155,8 +164,9 @@ fifo_icap_write_fifo_vacancy
 
     Query the write fifo available space.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`fifo_icap_write_fifo_vacancy.description`:
 
@@ -174,8 +184,9 @@ fifo_icap_read_fifo_occupancy
 
     Query the read fifo available data.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`fifo_icap_read_fifo_occupancy.description`:
 
@@ -193,19 +204,22 @@ fifo_icap_set_configuration
 
     Send configuration data to the ICAP.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
-    :param u32 \*frame_buffer:
+    :param frame_buffer:
         a pointer to the data to be written to the
         ICAP device.
+    :type frame_buffer: u32 \*
 
-    :param u32 num_words:
+    :param num_words:
         the number of words (32 bit) to write to the ICAP
         device.
         This function writes the given user data to the Write FIFO in
         polled mode and starts the transfer of the data to
         the ICAP device.
+    :type num_words: u32
 
 .. _`fifo_icap_get_configuration`:
 
@@ -216,14 +230,17 @@ fifo_icap_get_configuration
 
     Read configuration data from the device.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
-    :param u32 \*frame_buffer:
+    :param frame_buffer:
         *undescribed*
+    :type frame_buffer: u32 \*
 
-    :param u32 num_words:
+    :param num_words:
         *undescribed*
+    :type num_words: u32
 
 .. _`fifo_icap_get_configuration.description`:
 
@@ -242,8 +259,9 @@ fifo_icap_reset
 
     Reset the logic of the icap device.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`fifo_icap_reset.description`:
 
@@ -263,8 +281,9 @@ fifo_icap_flush_fifo
 
     This function flushes the FIFOs in the device.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. This file was automatic generated / don't edit.
 

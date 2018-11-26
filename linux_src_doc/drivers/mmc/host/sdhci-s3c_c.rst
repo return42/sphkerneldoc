@@ -125,8 +125,9 @@ sdhci_s3c_get_max_clk
 
     callback to get maximum clock frequency.
 
-    :param struct sdhci_host \*host:
+    :param host:
         The SDHCI host instance.
+    :type host: struct sdhci_host \*
 
 .. _`sdhci_s3c_get_max_clk.description`:
 
@@ -144,14 +145,17 @@ sdhci_s3c_consider_clock
 
     consider one the bus clocks for current setting
 
-    :param struct sdhci_s3c \*ourhost:
+    :param ourhost:
         Our SDHCI instance.
+    :type ourhost: struct sdhci_s3c \*
 
-    :param unsigned int src:
+    :param src:
         The source clock index.
+    :type src: unsigned int
 
-    :param unsigned int wanted:
+    :param wanted:
         The clock frequency wanted.
+    :type wanted: unsigned int
 
 .. _`sdhci_s3c_set_clock`:
 
@@ -162,11 +166,13 @@ sdhci_s3c_set_clock
 
     callback on clock change
 
-    :param struct sdhci_host \*host:
+    :param host:
         The SDHCI host being changed
+    :type host: struct sdhci_host \*
 
-    :param unsigned int clock:
+    :param clock:
         The clock rate being requested.
+    :type clock: unsigned int
 
 .. _`sdhci_s3c_set_clock.description`:
 
@@ -185,8 +191,9 @@ sdhci_s3c_get_min_clock
 
     callback to get minimal supported clock value
 
-    :param struct sdhci_host \*host:
+    :param host:
         The SDHCI host being queried
+    :type host: struct sdhci_host \*
 
 .. _`sdhci_s3c_get_min_clock.description`:
 

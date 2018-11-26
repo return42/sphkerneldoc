@@ -14,6 +14,7 @@ crypto
     ccp/index
     ccree/index
     chelsio/index
+    hisilicon/index
     marvell/index
     mediatek/index
     nx/index

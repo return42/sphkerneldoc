@@ -10,11 +10,13 @@ gigaset_isoc_send_skb
 
     queue an skb for sending
 
-    :param struct bc_state \*bcs:
+    :param bcs:
         B channel descriptor structure.
+    :type bcs: struct bc_state \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data to send.
+    :type skb: struct sk_buff \*
 
 .. _`gigaset_isoc_send_skb.description`:
 

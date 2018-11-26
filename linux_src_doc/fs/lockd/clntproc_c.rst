@@ -10,17 +10,21 @@ nlmclnt_proc
 
     Perform a single client-side lock request
 
-    :param struct nlm_host \*host:
+    :param host:
         address of a valid nlm_host context representing the NLM server
+    :type host: struct nlm_host \*
 
-    :param int cmd:
+    :param cmd:
         fcntl-style file lock operation to perform
+    :type cmd: int
 
-    :param struct file_lock \*fl:
+    :param fl:
         address of arguments for the lock operation
+    :type fl: struct file_lock \*
 
-    :param void \*data:
+    :param data:
         address of data to be sent to callback operations
+    :type data: void \*
 
 .. This file was automatic generated / don't edit.
 

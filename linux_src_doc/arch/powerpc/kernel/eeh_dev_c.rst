@@ -10,8 +10,9 @@ eeh_dev_init
 
     Create EEH device according to OF node
 
-    :param struct pci_dn \*pdn:
+    :param pdn:
         PCI device node
+    :type pdn: struct pci_dn \*
 
 .. _`eeh_dev_init.description`:
 
@@ -30,8 +31,9 @@ eeh_dev_phb_init_dynamic
 
     Create EEH devices for devices included in PHB
 
-    :param struct pci_controller \*phb:
+    :param phb:
         PHB
+    :type phb: struct pci_controller \*
 
 .. _`eeh_dev_phb_init_dynamic.description`:
 

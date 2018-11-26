@@ -90,8 +90,9 @@ spmi_controller_put
 
     decrement controller refcount \ ``ctrl``\         SPMI controller.
 
-    :param struct spmi_controller \*ctrl:
+    :param ctrl:
         *undescribed*
+    :type ctrl: struct spmi_controller \*
 
 .. _`spmi_driver`:
 
@@ -151,8 +152,9 @@ spmi_driver_unregister
 
     unregister an SPMI client driver
 
-    :param struct spmi_driver \*sdrv:
+    :param sdrv:
         the driver to unregister
+    :type sdrv: struct spmi_driver \*
 
 .. This file was automatic generated / don't edit.
 

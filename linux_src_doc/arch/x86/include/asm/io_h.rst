@@ -10,8 +10,9 @@ virt_to_phys
 
     map virtual addresses to physical
 
-    :param volatile void \*address:
+    :param address:
         address to remap
+    :type address: volatile void \*
 
 .. _`virt_to_phys.description`:
 
@@ -35,8 +36,9 @@ phys_to_virt
 
     map physical address to virtual
 
-    :param phys_addr_t address:
+    :param address:
         address to remap
+    :type address: phys_addr_t
 
 .. _`phys_to_virt.description`:
 
@@ -60,11 +62,13 @@ ioremap
 
     map bus memory into CPU space
 
-    :param resource_size_t offset:
+    :param offset:
         bus address of the memory
+    :type offset: resource_size_t
 
-    :param unsigned long size:
+    :param size:
         size of the resource to map
+    :type size: unsigned long
 
 .. _`ioremap.description`:
 

@@ -10,17 +10,21 @@ ixgbe_ieee_credits
 
     This calculates the ieee traffic class credits from the configured bandwidth percentages. Credits are the smallest unit programmable into the underlying hardware. The IEEE 802.1Qaz specification do not use bandwidth groups so this is much simplified from the CEE case.
 
-    :param __u8 \*bw:
+    :param bw:
         bandwidth index by traffic class
+    :type bw: __u8 \*
 
-    :param __u16 \*refill:
+    :param refill:
         refill credits index by traffic class
+    :type refill: __u16 \*
 
-    :param __u16 \*max:
+    :param max:
         max credits by traffic class
+    :type max: __u16 \*
 
-    :param int max_frame:
+    :param max_frame:
         maximum frame size
+    :type max_frame: int
 
 .. _`ixgbe_dcb_calculate_tc_credits`:
 
@@ -31,17 +35,21 @@ ixgbe_dcb_calculate_tc_credits
 
     Calculates traffic class credits
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param struct ixgbe_dcb_config \*dcb_config:
+    :param dcb_config:
         Struct containing DCB settings
+    :type dcb_config: struct ixgbe_dcb_config \*
 
-    :param int max_frame:
+    :param max_frame:
         Maximum frame size
+    :type max_frame: int
 
-    :param u8 direction:
+    :param direction:
         Configuring either Tx or Rx
+    :type direction: u8
 
 .. _`ixgbe_dcb_calculate_tc_credits.description`:
 
@@ -61,11 +69,13 @@ ixgbe_dcb_hw_config
 
     Config and enable DCB
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param struct ixgbe_dcb_config \*dcb_config:
+    :param dcb_config:
         pointer to ixgbe_dcb_config structure
+    :type dcb_config: struct ixgbe_dcb_config \*
 
 .. _`ixgbe_dcb_hw_config.description`:
 

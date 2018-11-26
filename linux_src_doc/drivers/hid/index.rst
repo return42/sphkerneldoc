@@ -12,6 +12,7 @@ hid
     usbhid/index
     hid-alps_c
     hid-core_c
+    hid-cougar_c
     hid-input_c
     hid-kye_c
     hid-logitech-hidpp_c

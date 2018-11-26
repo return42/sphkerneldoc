@@ -10,11 +10,13 @@ tb_port_find_cap
 
     Find port capability
 
-    :param struct tb_port \*port:
+    :param port:
         Port to find the capability for
+    :type port: struct tb_port \*
 
-    :param enum tb_port_cap cap:
+    :param cap:
         Capability to look
+    :type cap: enum tb_port_cap
 
 .. _`tb_port_find_cap.description`:
 
@@ -34,11 +36,13 @@ tb_switch_find_vse_cap
 
     Find switch vendor specific capability
 
-    :param struct tb_switch \*sw:
+    :param sw:
         Switch to find the capability for
+    :type sw: struct tb_switch \*
 
-    :param enum tb_switch_vse_cap vsec:
+    :param vsec:
         Vendor specific capability to look
+    :type vsec: enum tb_switch_vse_cap
 
 .. _`tb_switch_find_vse_cap.description`:
 

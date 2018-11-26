@@ -10,8 +10,9 @@ gdbstub_exit
 
     Send an exit message to GDB
 
-    :param int status:
+    :param status:
         The exit code to report.
+    :type status: int
 
 .. This file was automatic generated / don't edit.
 

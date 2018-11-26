@@ -10,11 +10,13 @@ hpt36x_find_mode
 
     find the hpt36x timing
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param int speed:
+    :param speed:
         transfer mode
+    :type speed: int
 
 .. _`hpt36x_find_mode.description`:
 
@@ -33,11 +35,13 @@ hpt366_filter
 
     mode selection filter
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         *undescribed*
+    :type mask: unsigned long
 
 .. _`hpt366_filter.description`:
 
@@ -55,11 +59,13 @@ hpt366_set_piomode
 
     PIO setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device on the interface
+    :type adev: struct ata_device \*
 
 .. _`hpt366_set_piomode.description`:
 
@@ -77,11 +83,13 @@ hpt366_set_dmamode
 
     DMA timing setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device being configured
+    :type adev: struct ata_device \*
 
 .. _`hpt366_set_dmamode.description`:
 
@@ -100,8 +108,9 @@ hpt36x_init_chipset
 
     common chip setup
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`hpt36x_init_chipset.description`:
 
@@ -120,11 +129,13 @@ hpt36x_init_one
 
     Initialise an HPT366/368
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         Entry in match table
+    :type id: const struct pci_device_id \*
 
 .. _`hpt36x_init_one.description`:
 

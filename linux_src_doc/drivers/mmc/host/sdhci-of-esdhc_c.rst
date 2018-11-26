@@ -10,14 +10,17 @@ esdhc_readl_fixup
 
     Fixup the value read from incompatible eSDHC register to make it compatible with SD spec.
 
-    :param struct sdhci_host \*host:
+    :param host:
         pointer to sdhci_host
+    :type host: struct sdhci_host \*
 
-    :param int spec_reg:
+    :param spec_reg:
         SD spec register address
+    :type spec_reg: int
 
-    :param u32 value:
+    :param value:
         32bit eSDHC register value on spec_reg address
+    :type value: u32
 
 .. _`esdhc_readl_fixup.description`:
 
@@ -40,17 +43,21 @@ esdhc_writel_fixup
 
     Fixup the SD spec register value so that it could be written into eSDHC register.
 
-    :param struct sdhci_host \*host:
+    :param host:
         pointer to sdhci_host
+    :type host: struct sdhci_host \*
 
-    :param int spec_reg:
+    :param spec_reg:
         SD spec register address
+    :type spec_reg: int
 
-    :param u32 value:
+    :param value:
         8/16/32bit SD spec register value that would be written
+    :type value: u32
 
-    :param u32 old_value:
+    :param old_value:
         32bit eSDHC register value on spec_reg address
+    :type old_value: u32
 
 .. _`esdhc_writel_fixup.description`:
 

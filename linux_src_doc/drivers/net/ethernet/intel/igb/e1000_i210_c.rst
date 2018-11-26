@@ -10,8 +10,9 @@ igb_get_hw_semaphore_i210
 
     Acquire hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_hw_semaphore_i210.description`:
 
@@ -29,8 +30,9 @@ igb_acquire_nvm_i210
 
     Request for access to EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_acquire_nvm_i210.description`:
 
@@ -51,8 +53,9 @@ igb_release_nvm_i210
 
     Release exclusive access to EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_release_nvm_i210.description`:
 
@@ -71,11 +74,13 @@ igb_acquire_swfw_sync_i210
 
     Acquire SW/FW semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mask:
+    :param mask:
         specifies which semaphore to acquire
+    :type mask: u16
 
 .. _`igb_acquire_swfw_sync_i210.description`:
 
@@ -94,11 +99,13 @@ igb_release_swfw_sync_i210
 
     Release SW/FW semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mask:
+    :param mask:
         specifies which semaphore to acquire
+    :type mask: u16
 
 .. _`igb_release_swfw_sync_i210.description`:
 
@@ -117,17 +124,21 @@ igb_read_nvm_srrd_i210
 
     Reads Shadow Ram using EERD register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of word in the Shadow Ram to read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to read
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the Shadow Ram
+    :type data: u16 \*
 
 .. _`igb_read_nvm_srrd_i210.description`:
 
@@ -146,17 +157,21 @@ igb_write_nvm_srwr
 
     Write to Shadow Ram using EEWR
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the Shadow Ram to be written to
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         16 bit word(s) to be written to the Shadow Ram
+    :type data: u16 \*
 
 .. _`igb_write_nvm_srwr.description`:
 
@@ -177,17 +192,21 @@ igb_write_nvm_srwr_i210
 
     Write to Shadow RAM using EEWR
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the Shadow RAM to be written to
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         16 bit word(s) to be written to the Shadow RAM
+    :type data: u16 \*
 
 .. _`igb_write_nvm_srwr_i210.description`:
 
@@ -212,14 +231,17 @@ igb_read_invm_word_i210
 
     Reads OTP
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 address:
+    :param address:
         the word address (aka eeprom offset) to read
+    :type address: u8
 
-    :param u16 \*data:
+    :param data:
         pointer to the data read
+    :type data: u16 \*
 
 .. _`igb_read_invm_word_i210.description`:
 
@@ -238,17 +260,21 @@ igb_read_invm_i210
 
     Read invm wrapper function for I210/I211
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         *undescribed*
+    :type offset: u16
 
-    :param u16 words __always_unused:
+    :param __always_unused:
         *undescribed*
+    :type __always_unused: u16 words
 
-    :param u16 \*data:
+    :param data:
         pointer to the data read
+    :type data: u16 \*
 
 .. _`igb_read_invm_i210.description`:
 
@@ -266,11 +292,13 @@ igb_read_invm_version
 
     Reads iNVM version and image type
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param struct e1000_fw_version \*invm_ver:
+    :param invm_ver:
         version structure for the version read
+    :type invm_ver: struct e1000_fw_version \*
 
 .. _`igb_read_invm_version.description`:
 
@@ -288,8 +316,9 @@ igb_validate_nvm_checksum_i210
 
     Validate EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_validate_nvm_checksum_i210.description`:
 
@@ -308,8 +337,9 @@ igb_update_nvm_checksum_i210
 
     Update EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_update_nvm_checksum_i210.description`:
 
@@ -329,8 +359,9 @@ igb_pool_flash_update_done_i210
 
     Pool FLUDONE status.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_flash_presence_i210`:
 
@@ -341,8 +372,9 @@ igb_get_flash_presence_i210
 
     Check if flash device is detected.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_update_flash_i210`:
 
@@ -353,8 +385,9 @@ igb_update_flash_i210
 
     Commit EEPROM to the flash
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_valid_led_default_i210`:
 
@@ -365,11 +398,13 @@ igb_valid_led_default_i210
 
     Verify a valid default LED config
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*data:
+    :param data:
         pointer to the NVM (EEPROM)
+    :type data: u16 \*
 
 .. _`igb_valid_led_default_i210.description`:
 
@@ -388,20 +423,25 @@ LED configuration is not valid, set to a valid LED configuration.
 
     Read/write XMDIO register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 address:
+    :param address:
         XMDIO address to program
+    :type address: u16
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address to program
+    :type dev_addr: u8
 
-    :param u16 \*data:
+    :param data:
         pointer to value to read/write from/to the XMDIO address
+    :type data: u16 \*
 
-    :param bool read:
+    :param read:
         boolean flag to indicate read or write
+    :type read: bool
 
 .. _`igb_read_xmdio_reg`:
 
@@ -412,17 +452,21 @@ igb_read_xmdio_reg
 
     Read XMDIO register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 addr:
+    :param addr:
         XMDIO address to program
+    :type addr: u16
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address to program
+    :type dev_addr: u8
 
-    :param u16 \*data:
+    :param data:
         value to be read from the EMI address
+    :type data: u16 \*
 
 .. _`igb_write_xmdio_reg`:
 
@@ -433,17 +477,21 @@ igb_write_xmdio_reg
 
     Write XMDIO register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 addr:
+    :param addr:
         XMDIO address to program
+    :type addr: u16
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address to program
+    :type dev_addr: u8
 
-    :param u16 data:
+    :param data:
         value to be written to the XMDIO address
+    :type data: u16
 
 .. _`igb_init_nvm_params_i210`:
 
@@ -454,8 +502,9 @@ igb_init_nvm_params_i210
 
     Init NVM func ptrs.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_pll_workaround_i210`:
 
@@ -464,8 +513,9 @@ igb_pll_workaround_i210
 
 .. c:function:: s32 igb_pll_workaround_i210(struct e1000_hw *hw)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_pll_workaround_i210.description`:
 
@@ -484,8 +534,9 @@ igb_get_cfg_done_i210
 
     Read config done bit
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_cfg_done_i210.description`:
 

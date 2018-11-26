@@ -68,8 +68,9 @@ usb_endpoint_num
 
     get the endpoint's number
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_num.description`:
 
@@ -87,8 +88,9 @@ usb_endpoint_type
 
     get the endpoint's transfer type
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_type.description`:
 
@@ -107,8 +109,9 @@ usb_endpoint_dir_in
 
     check if the endpoint has IN direction
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_dir_in.description`:
 
@@ -126,8 +129,9 @@ usb_endpoint_dir_out
 
     check if the endpoint has OUT direction
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_dir_out.description`:
 
@@ -145,8 +149,9 @@ usb_endpoint_xfer_bulk
 
     check if the endpoint has bulk transfer type
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_xfer_bulk.description`:
 
@@ -164,8 +169,9 @@ usb_endpoint_xfer_control
 
     check if the endpoint has control transfer type
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_xfer_control.description`:
 
@@ -183,8 +189,9 @@ usb_endpoint_xfer_int
 
     check if the endpoint has interrupt transfer type
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_xfer_int.description`:
 
@@ -203,8 +210,9 @@ usb_endpoint_xfer_isoc
 
     check if the endpoint has isochronous transfer type
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_xfer_isoc.description`:
 
@@ -223,8 +231,9 @@ usb_endpoint_is_bulk_in
 
     check if the endpoint is bulk IN
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_is_bulk_in.description`:
 
@@ -243,8 +252,9 @@ usb_endpoint_is_bulk_out
 
     check if the endpoint is bulk OUT
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_is_bulk_out.description`:
 
@@ -263,8 +273,9 @@ usb_endpoint_is_int_in
 
     check if the endpoint is interrupt IN
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_is_int_in.description`:
 
@@ -283,8 +294,9 @@ usb_endpoint_is_int_out
 
     check if the endpoint is interrupt OUT
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_is_int_out.description`:
 
@@ -303,8 +315,9 @@ usb_endpoint_is_isoc_in
 
     check if the endpoint is isochronous IN
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_is_isoc_in.description`:
 
@@ -323,8 +336,9 @@ usb_endpoint_is_isoc_out
 
     check if the endpoint is isochronous OUT
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_is_isoc_out.description`:
 
@@ -343,8 +357,9 @@ usb_endpoint_maxp
 
     get endpoint's max packet size
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_maxp.description`:
 
@@ -362,8 +377,9 @@ usb_endpoint_maxp_mult
 
     get endpoint's transactional opportunities
 
-    :param const struct usb_endpoint_descriptor \*epd:
+    :param epd:
         endpoint to be checked
+    :type epd: const struct usb_endpoint_descriptor \*
 
 .. _`usb_endpoint_maxp_mult.description`:
 

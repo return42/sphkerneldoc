@@ -10,8 +10,9 @@ kgdb_register_io_module
 
     register KGDB IO module
 
-    :param struct kgdb_io \*new_dbg_io_ops:
+    :param new_dbg_io_ops:
         the io ops vector
+    :type new_dbg_io_ops: struct kgdb_io \*
 
 .. _`kgdb_register_io_module.description`:
 
@@ -29,8 +30,9 @@ kgdb_unregister_io_module
 
     unregister KGDB IO module
 
-    :param struct kgdb_io \*old_dbg_io_ops:
+    :param old_dbg_io_ops:
         the io ops vector
+    :type old_dbg_io_ops: struct kgdb_io \*
 
 .. _`kgdb_unregister_io_module.description`:
 
@@ -48,8 +50,9 @@ kgdb_breakpoint
 
     generate breakpoint exception
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_breakpoint.description`:
 

@@ -40,14 +40,17 @@ mipi_dbi_command_read
 
     MIPI DCS read command
 
-    :param struct mipi_dbi \*mipi:
+    :param mipi:
         MIPI structure
+    :type mipi: struct mipi_dbi \*
 
-    :param u8 cmd:
+    :param cmd:
         Command
+    :type cmd: u8
 
-    :param u8 \*val:
+    :param val:
         Value read
+    :type val: u8 \*
 
 .. _`mipi_dbi_command_read.description`:
 
@@ -72,17 +75,21 @@ mipi_dbi_command_buf
 
     MIPI DCS command with parameter(s) in an array
 
-    :param struct mipi_dbi \*mipi:
+    :param mipi:
         MIPI structure
+    :type mipi: struct mipi_dbi \*
 
-    :param u8 cmd:
+    :param cmd:
         Command
+    :type cmd: u8
 
-    :param u8 \*data:
+    :param data:
         Parameter buffer
+    :type data: u8 \*
 
-    :param size_t len:
+    :param len:
         Buffer length
+    :type len: size_t
 
 .. _`mipi_dbi_command_buf.return`:
 
@@ -100,17 +107,21 @@ mipi_dbi_buf_copy
 
     Copy a framebuffer, transforming it if necessary
 
-    :param void \*dst:
+    :param dst:
         The destination buffer
+    :type dst: void \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         The source framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_clip_rect \*clip:
+    :param clip:
         Clipping rectangle of the area to be copied
+    :type clip: struct drm_clip_rect \*
 
-    :param bool swap:
+    :param swap:
         When true, swap MSB/LSB of 16-bit values
+    :type swap: bool
 
 .. _`mipi_dbi_buf_copy.return`:
 
@@ -128,14 +139,17 @@ mipi_dbi_enable_flush
 
     MIPI DBI enable helper
 
-    :param struct mipi_dbi \*mipi:
+    :param mipi:
         MIPI DBI structure
+    :type mipi: struct mipi_dbi \*
 
-    :param struct drm_crtc_state \*crtc_state:
-        *undescribed*
+    :param crtc_state:
+        CRTC state
+    :type crtc_state: struct drm_crtc_state \*
 
-    :param struct drm_plane_state \*plane_state:
-        *undescribed*
+    :param plane_state:
+        Plane state
+    :type plane_state: struct drm_plane_state \*
 
 .. _`mipi_dbi_enable_flush.description`:
 
@@ -155,8 +169,9 @@ mipi_dbi_pipe_disable
 
     MIPI DBI pipe disable helper
 
-    :param struct drm_simple_display_pipe \*pipe:
+    :param pipe:
         Display pipe
+    :type pipe: struct drm_simple_display_pipe \*
 
 .. _`mipi_dbi_pipe_disable.description`:
 
@@ -176,23 +191,29 @@ mipi_dbi_init
 
     MIPI DBI initialization
 
-    :param struct device \*dev:
+    :param dev:
         Parent device
+    :type dev: struct device \*
 
-    :param struct mipi_dbi \*mipi:
+    :param mipi:
         \ :c:type:`struct mipi_dbi <mipi_dbi>`\  structure to initialize
+    :type mipi: struct mipi_dbi \*
 
-    :param const struct drm_simple_display_pipe_funcs \*pipe_funcs:
+    :param pipe_funcs:
         Display pipe functions
+    :type pipe_funcs: const struct drm_simple_display_pipe_funcs \*
 
-    :param struct drm_driver \*driver:
+    :param driver:
         DRM driver
+    :type driver: struct drm_driver \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         Display mode
+    :type mode: const struct drm_display_mode \*
 
-    :param unsigned int rotation:
+    :param rotation:
         Initial rotation in degrees Counter Clock Wise
+    :type rotation: unsigned int
 
 .. _`mipi_dbi_init.description`:
 
@@ -223,8 +244,9 @@ mipi_dbi_hw_reset
 
     Hardware reset of controller
 
-    :param struct mipi_dbi \*mipi:
+    :param mipi:
         MIPI DBI structure
+    :type mipi: struct mipi_dbi \*
 
 .. _`mipi_dbi_hw_reset.description`:
 
@@ -242,8 +264,9 @@ mipi_dbi_display_is_on
 
     Check if display is on
 
-    :param struct mipi_dbi \*mipi:
+    :param mipi:
         MIPI DBI structure
+    :type mipi: struct mipi_dbi \*
 
 .. _`mipi_dbi_display_is_on.description`:
 
@@ -271,8 +294,9 @@ mipi_dbi_poweron_reset
 
     MIPI DBI poweron and reset
 
-    :param struct mipi_dbi \*mipi:
+    :param mipi:
         MIPI DBI structure
+    :type mipi: struct mipi_dbi \*
 
 .. _`mipi_dbi_poweron_reset.description`:
 
@@ -298,8 +322,9 @@ mipi_dbi_poweron_conditional_reset
 
     MIPI DBI poweron and conditional reset
 
-    :param struct mipi_dbi \*mipi:
+    :param mipi:
         MIPI DBI structure
+    :type mipi: struct mipi_dbi \*
 
 .. _`mipi_dbi_poweron_conditional_reset.description`:
 
@@ -327,11 +352,13 @@ mipi_dbi_spi_cmd_max_speed
 
     get the maximum SPI bus speed
 
-    :param struct spi_device \*spi:
+    :param spi:
         SPI device
+    :type spi: struct spi_device \*
 
-    :param size_t len:
+    :param len:
         The transfer buffer length.
+    :type len: size_t
 
 .. _`mipi_dbi_spi_cmd_max_speed.description`:
 
@@ -351,14 +378,17 @@ mipi_dbi_spi_init
 
     Initialize MIPI DBI SPI interfaced controller
 
-    :param struct spi_device \*spi:
+    :param spi:
         SPI device
+    :type spi: struct spi_device \*
 
-    :param struct mipi_dbi \*mipi:
+    :param mipi:
         \ :c:type:`struct mipi_dbi <mipi_dbi>`\  structure to initialize
+    :type mipi: struct mipi_dbi \*
 
-    :param struct gpio_desc \*dc:
+    :param dc:
         D/C gpio (optional)
+    :type dc: struct gpio_desc \*
 
 .. _`mipi_dbi_spi_init.description`:
 
@@ -399,8 +429,9 @@ mipi_dbi_debugfs_init
 
     Create debugfs entries
 
-    :param struct drm_minor \*minor:
+    :param minor:
         DRM minor
+    :type minor: struct drm_minor \*
 
 .. _`mipi_dbi_debugfs_init.description`:
 

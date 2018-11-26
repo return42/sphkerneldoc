@@ -143,6 +143,8 @@ Definition
 .. code-block:: c
 
     struct drm_fb_helper {
+        struct drm_client_dev client;
+        struct drm_client_buffer *buffer;
         struct drm_framebuffer *fb;
         struct drm_device *dev;
         int crtc_count;
@@ -169,6 +171,14 @@ Definition
 
 Members
 -------
+
+client
+
+    DRM client used by the generic fbdev emulation.
+
+buffer
+
+    Framebuffer used by the generic fbdev emulation.
 
 fb
     Scanout framebuffer object
@@ -282,6 +292,68 @@ Description
 
 Helper define to register default implementations of drm_fb_helper
 functions. To be used in struct fb_ops of drm drivers.
+
+.. _`drm_fb_helper_remove_conflicting_framebuffers`:
+
+drm_fb_helper_remove_conflicting_framebuffers
+=============================================
+
+.. c:function:: int drm_fb_helper_remove_conflicting_framebuffers(struct apertures_struct *a, const char *name, bool primary)
+
+    remove firmware-configured framebuffers
+
+    :param a:
+        memory range, users of which are to be removed
+    :type a: struct apertures_struct \*
+
+    :param name:
+        requesting driver name
+    :type name: const char \*
+
+    :param primary:
+        also kick vga16fb if present
+    :type primary: bool
+
+.. _`drm_fb_helper_remove_conflicting_framebuffers.description`:
+
+Description
+-----------
+
+This function removes framebuffer devices (initialized by firmware/bootloader)
+which use memory range described by \ ``a``\ . If \ ``a``\  is NULL all such devices are
+removed.
+
+.. _`drm_fb_helper_remove_conflicting_pci_framebuffers`:
+
+drm_fb_helper_remove_conflicting_pci_framebuffers
+=================================================
+
+.. c:function:: int drm_fb_helper_remove_conflicting_pci_framebuffers(struct pci_dev *pdev, int resource_id, const char *name)
+
+    remove firmware-configured framebuffers for PCI devices
+
+    :param pdev:
+        PCI device
+    :type pdev: struct pci_dev \*
+
+    :param resource_id:
+        index of PCI BAR configuring framebuffer memory
+    :type resource_id: int
+
+    :param name:
+        requesting driver name
+    :type name: const char \*
+
+.. _`drm_fb_helper_remove_conflicting_pci_framebuffers.description`:
+
+Description
+-----------
+
+This function removes framebuffer devices (eg. initialized by firmware)
+using memory range configured for \ ``pdev``\ 's BAR \ ``resource_id``\ .
+
+The function assumes that PCI device with shadowed ROM drives a primary
+display and so kicks out vga16fb.
 
 .. This file was automatic generated / don't edit.
 

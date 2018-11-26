@@ -10,8 +10,9 @@ dev_add_pack
 
     add packet handler
 
-    :param struct packet_type \*pt:
+    :param pt:
         packet type declaration
+    :type pt: struct packet_type \*
 
 .. _`dev_add_pack.description`:
 
@@ -35,8 +36,9 @@ __dev_remove_pack
 
     remove packet handler
 
-    :param struct packet_type \*pt:
+    :param pt:
         packet type declaration
+    :type pt: struct packet_type \*
 
 .. _`__dev_remove_pack.description`:
 
@@ -61,8 +63,9 @@ dev_remove_pack
 
     remove packet handler
 
-    :param struct packet_type \*pt:
+    :param pt:
         packet type declaration
+    :type pt: struct packet_type \*
 
 .. _`dev_remove_pack.description`:
 
@@ -86,8 +89,9 @@ dev_add_offload
 
     register offload handlers
 
-    :param struct packet_offload \*po:
+    :param po:
         protocol offload declaration
+    :type po: struct packet_offload \*
 
 .. _`dev_add_offload.description`:
 
@@ -111,8 +115,9 @@ __dev_remove_offload
 
     remove offload handler
 
-    :param struct packet_offload \*po:
+    :param po:
         packet offload declaration
+    :type po: struct packet_offload \*
 
 .. _`__dev_remove_offload.description`:
 
@@ -137,8 +142,9 @@ dev_remove_offload
 
     remove packet offload handler
 
-    :param struct packet_offload \*po:
+    :param po:
         packet offload declaration
+    :type po: struct packet_offload \*
 
 .. _`dev_remove_offload.description`:
 
@@ -162,11 +168,13 @@ netdev_boot_setup_add
 
     add new setup entry
 
-    :param char \*name:
+    :param name:
         name of the device
+    :type name: char \*
 
-    :param struct ifmap \*map:
+    :param map:
         configured settings for the device
+    :type map: struct ifmap \*
 
 .. _`netdev_boot_setup_add.description`:
 
@@ -186,8 +194,9 @@ netdev_boot_setup_check
 
     check boot time settings
 
-    :param struct net_device \*dev:
+    :param dev:
         the netdevice
+    :type dev: struct net_device \*
 
 .. _`netdev_boot_setup_check.description`:
 
@@ -208,11 +217,13 @@ netdev_boot_base
 
     get address from boot time settings
 
-    :param const char \*prefix:
+    :param prefix:
         prefix for network device
+    :type prefix: const char \*
 
-    :param int unit:
+    :param unit:
         id for network device
+    :type unit: int
 
 .. _`netdev_boot_base.description`:
 
@@ -233,8 +244,9 @@ dev_get_iflink
 
     get 'iflink' value of a interface
 
-    :param const struct net_device \*dev:
+    :param dev:
         targeted interface
+    :type dev: const struct net_device \*
 
 .. _`dev_get_iflink.description`:
 
@@ -253,11 +265,13 @@ dev_fill_metadata_dst
 
     Retrieve tunnel egress information.
 
-    :param struct net_device \*dev:
+    :param dev:
         targeted interface
+    :type dev: struct net_device \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The packet.
+    :type skb: struct sk_buff \*
 
 .. _`dev_fill_metadata_dst.description`:
 
@@ -277,11 +291,13 @@ __dev_get_by_name
 
     find a device by its name
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param const char \*name:
+    :param name:
         name to find
+    :type name: const char \*
 
 .. _`__dev_get_by_name.description`:
 
@@ -303,11 +319,13 @@ dev_get_by_name_rcu
 
     find a device by its name
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param const char \*name:
+    :param name:
         name to find
+    :type name: const char \*
 
 .. _`dev_get_by_name_rcu.description`:
 
@@ -329,11 +347,13 @@ dev_get_by_name
 
     find a device by its name
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param const char \*name:
+    :param name:
         name to find
+    :type name: const char \*
 
 .. _`dev_get_by_name.description`:
 
@@ -355,11 +375,13 @@ __dev_get_by_index
 
     find a device by its ifindex
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param int ifindex:
+    :param ifindex:
         index of device
+    :type ifindex: int
 
 .. _`__dev_get_by_index.description`:
 
@@ -381,11 +403,13 @@ dev_get_by_index_rcu
 
     find a device by its ifindex
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param int ifindex:
+    :param ifindex:
         index of device
+    :type ifindex: int
 
 .. _`dev_get_by_index_rcu.description`:
 
@@ -406,11 +430,13 @@ dev_get_by_index
 
     find a device by its ifindex
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param int ifindex:
+    :param ifindex:
         index of device
+    :type ifindex: int
 
 .. _`dev_get_by_index.description`:
 
@@ -431,8 +457,9 @@ dev_get_by_napi_id
 
     find a device by napi_id
 
-    :param unsigned int napi_id:
+    :param napi_id:
         ID of the NAPI struct
+    :type napi_id: unsigned int
 
 .. _`dev_get_by_napi_id.description`:
 
@@ -453,14 +480,17 @@ netdev_get_name
 
     get a netdevice name, knowing its ifindex.
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param char \*name:
+    :param name:
         a pointer to the buffer where the name will be stored.
+    :type name: char \*
 
-    :param int ifindex:
+    :param ifindex:
         the ifindex of the interface to get the name from.
+    :type ifindex: int
 
 .. _`netdev_get_name.description`:
 
@@ -480,14 +510,17 @@ dev_getbyhwaddr_rcu
 
     find a device by its hardware address
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param unsigned short type:
+    :param type:
         media type of device
+    :type type: unsigned short
 
-    :param const char \*ha:
+    :param ha:
         hardware address
+    :type ha: const char \*
 
 .. _`dev_getbyhwaddr_rcu.description`:
 
@@ -509,14 +542,17 @@ __dev_get_by_flags
 
     find any device with given flags
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param unsigned short if_flags:
+    :param if_flags:
         IFF_* values
+    :type if_flags: unsigned short
 
-    :param unsigned short mask:
+    :param mask:
         bitmask of bits in if_flags to check
+    :type mask: unsigned short
 
 .. _`__dev_get_by_flags.description`:
 
@@ -536,8 +572,9 @@ dev_valid_name
 
     check if name is okay for network device
 
-    :param const char \*name:
+    :param name:
         name string
+    :type name: const char \*
 
 .. _`dev_valid_name.description`:
 
@@ -557,14 +594,17 @@ __dev_alloc_name
 
     allocate a name for a device
 
-    :param struct net \*net:
+    :param net:
         network namespace to allocate the device name in
+    :type net: struct net \*
 
-    :param const char \*name:
+    :param name:
         name format string
+    :type name: const char \*
 
-    :param char \*buf:
+    :param buf:
         scratch buffer and result name string
+    :type buf: char \*
 
 .. _`__dev_alloc_name.description`:
 
@@ -588,11 +628,13 @@ dev_alloc_name
 
     allocate a name for a device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const char \*name:
+    :param name:
         name format string
+    :type name: const char \*
 
 .. _`dev_alloc_name.description`:
 
@@ -616,11 +658,13 @@ dev_change_name
 
     change name of a device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const char \*newname:
+    :param newname:
         name (or format string) must be at least IFNAMSIZ
+    :type newname: const char \*
 
 .. _`dev_change_name.description`:
 
@@ -639,14 +683,17 @@ dev_set_alias
 
     change ifalias of a device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param const char \*alias:
+    :param alias:
         name up to IFALIASZ
+    :type alias: const char \*
 
-    :param size_t len:
+    :param len:
         limit of bytes to copy from info
+    :type len: size_t
 
 .. _`dev_set_alias.description`:
 
@@ -664,14 +711,17 @@ dev_get_alias
 
     get ifalias of a device
 
-    :param const struct net_device \*dev:
+    :param dev:
         device
+    :type dev: const struct net_device \*
 
-    :param char \*name:
+    :param name:
         buffer to store name of ifalias
+    :type name: char \*
 
-    :param size_t len:
+    :param len:
         size of buffer
+    :type len: size_t
 
 .. _`dev_get_alias.description`:
 
@@ -690,8 +740,9 @@ netdev_features_change
 
     device changes features
 
-    :param struct net_device \*dev:
+    :param dev:
         device to cause notification
+    :type dev: struct net_device \*
 
 .. _`netdev_features_change.description`:
 
@@ -709,8 +760,9 @@ netdev_state_change
 
     device changes state
 
-    :param struct net_device \*dev:
+    :param dev:
         device to cause notification
+    :type dev: struct net_device \*
 
 .. _`netdev_state_change.description`:
 
@@ -730,8 +782,9 @@ netdev_notify_peers
 
     notify network peers about existence of \ ``dev``\ 
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netdev_notify_peers.description`:
 
@@ -753,8 +806,9 @@ dev_open
 
     prepare an interface for use.
 
-    :param struct net_device \*dev:
+    :param dev:
         device to open
+    :type dev: struct net_device \*
 
 .. _`dev_open.description`:
 
@@ -778,8 +832,9 @@ dev_close
 
     shutdown an interface.
 
-    :param struct net_device \*dev:
+    :param dev:
         device to shutdown
+    :type dev: struct net_device \*
 
 .. _`dev_close.description`:
 
@@ -800,8 +855,9 @@ dev_disable_lro
 
     disable Large Receive Offload on a device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`dev_disable_lro.description`:
 
@@ -821,8 +877,9 @@ dev_disable_gro_hw
 
     disable HW Generic Receive Offload on a device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`dev_disable_gro_hw.description`:
 
@@ -842,8 +899,9 @@ register_netdevice_notifier
 
     register a network notifier block
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier
+    :type nb: struct notifier_block \*
 
 .. _`register_netdevice_notifier.description`:
 
@@ -868,8 +926,9 @@ unregister_netdevice_notifier
 
     unregister a network notifier block
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier
+    :type nb: struct notifier_block \*
 
 .. _`unregister_netdevice_notifier.description`:
 
@@ -894,11 +953,13 @@ call_netdevice_notifiers_info
 
     call all network notifier blocks
 
-    :param unsigned long val:
+    :param val:
         value passed unmodified to notifier function
+    :type val: unsigned long
 
-    :param struct netdev_notifier_info \*info:
+    :param info:
         notifier information data
+    :type info: struct netdev_notifier_info \*
 
 .. _`call_netdevice_notifiers_info.description`:
 
@@ -917,13 +978,44 @@ call_netdevice_notifiers
 
     call all network notifier blocks
 
-    :param unsigned long val:
+    :param val:
         value passed unmodified to notifier function
+    :type val: unsigned long
 
-    :param struct net_device \*dev:
+    :param dev:
         net_device pointer passed unmodified to notifier function
+    :type dev: struct net_device \*
 
 .. _`call_netdevice_notifiers.description`:
+
+Description
+-----------
+
+     Call all network notifier blocks.  Parameters and return value
+     are as for \ :c:func:`raw_notifier_call_chain`\ .
+
+.. _`call_netdevice_notifiers_mtu`:
+
+call_netdevice_notifiers_mtu
+============================
+
+.. c:function:: int call_netdevice_notifiers_mtu(unsigned long val, struct net_device *dev, u32 arg)
+
+    call all network notifier blocks
+
+    :param val:
+        value passed unmodified to notifier function
+    :type val: unsigned long
+
+    :param dev:
+        net_device pointer passed unmodified to notifier function
+    :type dev: struct net_device \*
+
+    :param arg:
+        additional u32 argument passed to the notifier function
+    :type arg: u32
+
+.. _`call_netdevice_notifiers_mtu.description`:
 
 Description
 -----------
@@ -940,11 +1032,13 @@ dev_forward_skb
 
     loopback an skb to another netif
 
-    :param struct net_device \*dev:
+    :param dev:
         destination network device
+    :type dev: struct net_device \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to forward
+    :type skb: struct sk_buff \*
 
 .. _`dev_forward_skb.return-values`:
 
@@ -962,6 +1056,19 @@ The receiving device may be in another namespace, so
 we have to clear all information in the skb that could
 impact namespace isolation.
 
+.. _`dev_nit_active`:
+
+dev_nit_active
+==============
+
+.. c:function:: bool dev_nit_active(struct net_device *dev)
+
+    return true if any network interface taps are in use
+
+    :param dev:
+        network device to check for the presence of taps
+    :type dev: struct net_device \*
+
 .. _`netif_setup_tc`:
 
 netif_setup_tc
@@ -971,11 +1078,13 @@ netif_setup_tc
 
     Handle tc mappings on real_num_tx_queues change
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device
+    :type dev: struct net_device \*
 
-    :param unsigned int txq:
+    :param txq:
         number of queues available
+    :type txq: unsigned int
 
 .. _`netif_setup_tc.description`:
 
@@ -999,11 +1108,13 @@ netif_set_real_num_rx_queues
 
     set actual number of RX queues used
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device
+    :type dev: struct net_device \*
 
-    :param unsigned int rxq:
+    :param rxq:
         Actual number of RX queues
+    :type rxq: unsigned int
 
 .. _`netif_set_real_num_rx_queues.description`:
 
@@ -1024,8 +1135,9 @@ netif_get_num_default_rss_queues
 
     default number of RSS queues
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`netif_get_num_default_rss_queues.description`:
 
@@ -1044,8 +1156,9 @@ netif_device_detach
 
     mark device as removed
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_device_detach.description`:
 
@@ -1063,8 +1176,9 @@ netif_device_attach
 
     mark device as attached
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_device_attach.description`:
 
@@ -1082,11 +1196,13 @@ skb_mac_gso_segment
 
     mac layer segmentation handler.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to segment
+    :type skb: struct sk_buff \*
 
-    :param netdev_features_t features:
+    :param features:
         features for the output path (see dev->features)
+    :type features: netdev_features_t
 
 .. _`__skb_gso_segment`:
 
@@ -1097,14 +1213,17 @@ __skb_gso_segment
 
     Perform segmentation on skb.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to segment
+    :type skb: struct sk_buff \*
 
-    :param netdev_features_t features:
+    :param features:
         features for the output path (see dev->features)
+    :type features: netdev_features_t
 
-    :param bool tx_path:
+    :param tx_path:
         whether it is called in TX path
+    :type tx_path: bool
 
 .. _`__skb_gso_segment.description`:
 
@@ -1127,29 +1246,34 @@ dev_loopback_xmit
 
     loop back \ ``skb``\ 
 
-    :param struct net \*net:
+    :param net:
         network namespace this loopback is happening in
+    :type net: struct net \*
 
-    :param struct sock \*sk:
+    :param sk:
         sk needed to be a netfilter okfn
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to transmit
+    :type skb: struct sk_buff \*
 
 .. _`__dev_queue_xmit`:
 
 __dev_queue_xmit
 ================
 
-.. c:function:: int __dev_queue_xmit(struct sk_buff *skb, void *accel_priv)
+.. c:function:: int __dev_queue_xmit(struct sk_buff *skb, struct net_device *sb_dev)
 
     transmit a buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to transmit
+    :type skb: struct sk_buff \*
 
-    :param void \*accel_priv:
-        private data used for L2 forwarding offload
+    :param sb_dev:
+        suboordinate device used for L2 forwarding offload
+    :type sb_dev: struct net_device \*
 
 .. _`__dev_queue_xmit.description`:
 
@@ -1186,17 +1310,21 @@ rps_may_expire_flow
 
     check whether an RFS hardware filter may be removed
 
-    :param struct net_device \*dev:
+    :param dev:
         Device on which the filter was set
+    :type dev: struct net_device \*
 
-    :param u16 rxq_index:
+    :param rxq_index:
         RX queue index
+    :type rxq_index: u16
 
-    :param u32 flow_id:
+    :param flow_id:
         Flow ID passed to \ :c:func:`ndo_rx_flow_steer`\ 
+    :type flow_id: u32
 
-    :param u16 filter_id:
+    :param filter_id:
         Filter ID returned by \ :c:func:`ndo_rx_flow_steer`\ 
+    :type filter_id: u16
 
 .. _`rps_may_expire_flow.description`:
 
@@ -1216,8 +1344,9 @@ netif_rx
 
     post buffer to the network code
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to post
+    :type skb: struct sk_buff \*
 
 .. _`netif_rx.description`:
 
@@ -1246,8 +1375,9 @@ netdev_is_rx_handler_busy
 
     check if receive handler is registered
 
-    :param struct net_device \*dev:
+    :param dev:
         device to check
+    :type dev: struct net_device \*
 
 .. _`netdev_is_rx_handler_busy.description`:
 
@@ -1268,14 +1398,17 @@ netdev_rx_handler_register
 
     register receive handler
 
-    :param struct net_device \*dev:
+    :param dev:
         device to register a handler for
+    :type dev: struct net_device \*
 
-    :param rx_handler_func_t \*rx_handler:
+    :param rx_handler:
         receive handler to register
+    :type rx_handler: rx_handler_func_t \*
 
-    :param void \*rx_handler_data:
+    :param rx_handler_data:
         data pointer that is used by rx handler
+    :type rx_handler_data: void \*
 
 .. _`netdev_rx_handler_register.description`:
 
@@ -1299,8 +1432,9 @@ netdev_rx_handler_unregister
 
     unregister receive handler
 
-    :param struct net_device \*dev:
+    :param dev:
         device to unregister a handler from
+    :type dev: struct net_device \*
 
 .. _`netdev_rx_handler_unregister.description`:
 
@@ -1320,8 +1454,9 @@ netif_receive_skb_core
 
     special purpose version of netif_receive_skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to process
+    :type skb: struct sk_buff \*
 
 .. _`netif_receive_skb_core.description`:
 
@@ -1348,8 +1483,9 @@ netif_receive_skb
 
     process receive buffer from network
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to process
+    :type skb: struct sk_buff \*
 
 .. _`netif_receive_skb.description`:
 
@@ -1367,6 +1503,30 @@ Description
      NET_RX_SUCCESS: no congestion
      NET_RX_DROP: packet was dropped
 
+.. _`netif_receive_skb_list`:
+
+netif_receive_skb_list
+======================
+
+.. c:function:: void netif_receive_skb_list(struct list_head *head)
+
+    process many receive buffers from network
+
+    :param head:
+        list of skbs to process.
+    :type head: struct list_head \*
+
+.. _`netif_receive_skb_list.description`:
+
+Description
+-----------
+
+     Since return value of \ :c:func:`netif_receive_skb`\  is normally ignored, and
+     wouldn't be meaningful for a list, this function returns void.
+
+     This function may only be called from softirq context and interrupts
+     should be enabled.
+
 .. _`__napi_schedule`:
 
 __napi_schedule
@@ -1376,8 +1536,9 @@ __napi_schedule
 
     schedule for receive
 
-    :param struct napi_struct \*n:
+    :param n:
         entry to schedule
+    :type n: struct napi_struct \*
 
 .. _`__napi_schedule.description`:
 
@@ -1396,8 +1557,9 @@ napi_schedule_prep
 
     check if napi can be scheduled
 
-    :param struct napi_struct \*n:
+    :param n:
         napi context
+    :type n: struct napi_struct \*
 
 .. _`napi_schedule_prep.description`:
 
@@ -1418,8 +1580,9 @@ __napi_schedule_irqoff
 
     schedule for receive
 
-    :param struct napi_struct \*n:
+    :param n:
         entry to schedule
+    :type n: struct napi_struct \*
 
 .. _`__napi_schedule_irqoff.description`:
 
@@ -1437,11 +1600,13 @@ netdev_has_upper_dev
 
     Check if device is linked to an upper device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct net_device \*upper_dev:
+    :param upper_dev:
         upper device to check
+    :type upper_dev: struct net_device \*
 
 .. _`netdev_has_upper_dev.description`:
 
@@ -1461,11 +1626,13 @@ netdev_has_upper_dev_all_rcu
 
     Check if device is linked to an upper device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct net_device \*upper_dev:
+    :param upper_dev:
         upper device to check
+    :type upper_dev: struct net_device \*
 
 .. _`netdev_has_upper_dev_all_rcu.description`:
 
@@ -1485,8 +1652,9 @@ netdev_has_any_upper_dev
 
     Check if device is linked to some device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`netdev_has_any_upper_dev.description`:
 
@@ -1505,8 +1673,9 @@ netdev_master_upper_dev_get
 
     Get master upper device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`netdev_master_upper_dev_get.description`:
 
@@ -1525,8 +1694,9 @@ netdev_has_any_lower_dev
 
     Check if device is linked to some device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`netdev_has_any_lower_dev.description`:
 
@@ -1545,11 +1715,13 @@ netdev_upper_get_next_dev_rcu
 
     Get the next dev from upper list
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct list_head \*\*iter:
+    :param iter:
         list_head ** of the current position
+    :type iter: struct list_head \*\*
 
 .. _`netdev_upper_get_next_dev_rcu.description`:
 
@@ -1568,11 +1740,13 @@ netdev_lower_get_next_private
 
     Get the next ->private from the lower neighbour list
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct list_head \*\*iter:
+    :param iter:
         list_head ** of the current position
+    :type iter: struct list_head \*\*
 
 .. _`netdev_lower_get_next_private.description`:
 
@@ -1593,11 +1767,13 @@ netdev_lower_get_next_private_rcu
 
     Get the next ->private from the lower neighbour list, RCU variant
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct list_head \*\*iter:
+    :param iter:
         list_head ** of the current position
+    :type iter: struct list_head \*\*
 
 .. _`netdev_lower_get_next_private_rcu.description`:
 
@@ -1616,11 +1792,13 @@ netdev_lower_get_next
 
     Get the next device from the lower neighbour list
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct list_head \*\*iter:
+    :param iter:
         list_head ** of the current position
+    :type iter: struct list_head \*\*
 
 .. _`netdev_lower_get_next.description`:
 
@@ -1641,8 +1819,9 @@ netdev_lower_get_first_private_rcu
 
     Get the first ->private from the lower neighbour list, RCU variant
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`netdev_lower_get_first_private_rcu.description`:
 
@@ -1661,8 +1840,9 @@ netdev_master_upper_dev_get_rcu
 
     Get master upper device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`netdev_master_upper_dev_get_rcu.description`:
 
@@ -1681,14 +1861,17 @@ netdev_upper_dev_link
 
     Add a link to the upper device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct net_device \*upper_dev:
+    :param upper_dev:
         new upper device
+    :type upper_dev: struct net_device \*
 
-    :param struct netlink_ext_ack \*extack:
+    :param extack:
         netlink extended ack
+    :type extack: struct netlink_ext_ack \*
 
 .. _`netdev_upper_dev_link.description`:
 
@@ -1709,20 +1892,25 @@ netdev_master_upper_dev_link
 
     Add a master link to the upper device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct net_device \*upper_dev:
+    :param upper_dev:
         new upper device
+    :type upper_dev: struct net_device \*
 
-    :param void \*upper_priv:
+    :param upper_priv:
         upper device private
+    :type upper_priv: void \*
 
-    :param void \*upper_info:
+    :param upper_info:
         upper info to be passed down via notifier
+    :type upper_info: void \*
 
-    :param struct netlink_ext_ack \*extack:
+    :param extack:
         netlink extended ack
+    :type extack: struct netlink_ext_ack \*
 
 .. _`netdev_master_upper_dev_link.description`:
 
@@ -1744,11 +1932,13 @@ netdev_upper_dev_unlink
 
     Removes a link to upper device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct net_device \*upper_dev:
+    :param upper_dev:
         new upper device
+    :type upper_dev: struct net_device \*
 
 .. _`netdev_upper_dev_unlink.description`:
 
@@ -1767,11 +1957,13 @@ netdev_bonding_info_change
 
     Dispatch event about slave change
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct netdev_bonding_info \*bonding_info:
+    :param bonding_info:
         info to dispatch
+    :type bonding_info: struct netdev_bonding_info \*
 
 .. _`netdev_bonding_info_change.description`:
 
@@ -1790,11 +1982,13 @@ netdev_lower_state_changed
 
     Dispatch event about lower device state change
 
-    :param struct net_device \*lower_dev:
+    :param lower_dev:
         device
+    :type lower_dev: struct net_device \*
 
-    :param void \*lower_state_info:
+    :param lower_state_info:
         state to dispatch
+    :type lower_state_info: void \*
 
 .. _`netdev_lower_state_changed.description`:
 
@@ -1813,11 +2007,13 @@ dev_set_promiscuity
 
     update promiscuity count on a device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param int inc:
+    :param inc:
         modifier
+    :type inc: int
 
 .. _`dev_set_promiscuity.description`:
 
@@ -1839,11 +2035,13 @@ dev_set_allmulti
 
     update allmulti count on a device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param int inc:
+    :param inc:
         modifier
+    :type inc: int
 
 .. _`dev_set_allmulti.description`:
 
@@ -1866,8 +2064,9 @@ dev_get_flags
 
     get flags reported to userspace
 
-    :param const struct net_device \*dev:
+    :param dev:
         device
+    :type dev: const struct net_device \*
 
 .. _`dev_get_flags.description`:
 
@@ -1885,11 +2084,13 @@ dev_change_flags
 
     change device settings
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param unsigned int flags:
+    :param flags:
         device state flags
+    :type flags: unsigned int
 
 .. _`dev_change_flags.description`:
 
@@ -1899,22 +2100,28 @@ Description
      Change settings on device based state flags. The flags are
      in the userspace exported format.
 
-.. _`dev_set_mtu`:
+.. _`dev_set_mtu_ext`:
 
-dev_set_mtu
-===========
+dev_set_mtu_ext
+===============
 
-.. c:function:: int dev_set_mtu(struct net_device *dev, int new_mtu)
+.. c:function:: int dev_set_mtu_ext(struct net_device *dev, int new_mtu, struct netlink_ext_ack *extack)
 
     Change maximum transfer unit
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new transfer unit
+    :type new_mtu: int
 
-.. _`dev_set_mtu.description`:
+    :param extack:
+        netlink extended ack
+    :type extack: struct netlink_ext_ack \*
+
+.. _`dev_set_mtu_ext.description`:
 
 Description
 -----------
@@ -1930,11 +2137,13 @@ dev_change_tx_queue_len
 
     Change TX queue length of a netdevice
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param unsigned long new_len:
+    :param new_len:
         new tx queue length
+    :type new_len: unsigned long
 
 .. _`dev_set_group`:
 
@@ -1945,11 +2154,13 @@ dev_set_group
 
     Change group this device belongs to
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param int new_group:
+    :param new_group:
         group this device should belong to
+    :type new_group: int
 
 .. _`dev_set_mac_address`:
 
@@ -1960,11 +2171,13 @@ dev_set_mac_address
 
     Change Media Access Control Address
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct sockaddr \*sa:
+    :param sa:
         new address
+    :type sa: struct sockaddr \*
 
 .. _`dev_set_mac_address.description`:
 
@@ -1982,11 +2195,13 @@ dev_change_carrier
 
     Change device carrier
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param bool new_carrier:
+    :param new_carrier:
         new value
+    :type new_carrier: bool
 
 .. _`dev_change_carrier.description`:
 
@@ -2004,11 +2219,13 @@ dev_get_phys_port_id
 
     Get device physical port ID
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct netdev_phys_item_id \*ppid:
+    :param ppid:
         port ID
+    :type ppid: struct netdev_phys_item_id \*
 
 .. _`dev_get_phys_port_id.description`:
 
@@ -2026,14 +2243,17 @@ dev_get_phys_port_name
 
     Get device physical port name
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param char \*name:
+    :param name:
         port name
+    :type name: char \*
 
-    :param size_t len:
+    :param len:
         limit of bytes to copy to name
+    :type len: size_t
 
 .. _`dev_get_phys_port_name.description`:
 
@@ -2051,11 +2271,13 @@ dev_change_proto_down
 
     update protocol port state information
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param bool proto_down:
+    :param proto_down:
         new value
+    :type proto_down: bool
 
 .. _`dev_change_proto_down.description`:
 
@@ -2074,17 +2296,21 @@ dev_change_xdp_fd
 
     set or clear a bpf program for a device rx path
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct netlink_ext_ack \*extack:
+    :param extack:
         netlink extended ack
+    :type extack: struct netlink_ext_ack \*
 
-    :param int fd:
+    :param fd:
         new program fd or negative value to clear
+    :type fd: int
 
-    :param u32 flags:
+    :param flags:
         xdp-related flags
+    :type flags: u32
 
 .. _`dev_change_xdp_fd.description`:
 
@@ -2102,8 +2328,9 @@ dev_new_index
 
     allocate an ifindex
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
 .. _`dev_new_index.description`:
 
@@ -2123,8 +2350,9 @@ netdev_update_features
 
     recalculate device features
 
-    :param struct net_device \*dev:
+    :param dev:
         the device to check
+    :type dev: struct net_device \*
 
 .. _`netdev_update_features.description`:
 
@@ -2144,8 +2372,9 @@ netdev_change_features
 
     recalculate device features
 
-    :param struct net_device \*dev:
+    :param dev:
         the device to check
+    :type dev: struct net_device \*
 
 .. _`netdev_change_features.description`:
 
@@ -2167,11 +2396,13 @@ netif_stacked_transfer_operstate
 
     transfer operstate
 
-    :param const struct net_device \*rootdev:
+    :param rootdev:
         the root or lower level device to transfer state from
+    :type rootdev: const struct net_device \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the device to transfer operstate to
+    :type dev: struct net_device \*
 
 .. _`netif_stacked_transfer_operstate.description`:
 
@@ -2191,8 +2422,9 @@ register_netdevice
 
     register a network device
 
-    :param struct net_device \*dev:
+    :param dev:
         device to register
+    :type dev: struct net_device \*
 
 .. _`register_netdevice.description`:
 
@@ -2224,8 +2456,9 @@ init_dummy_netdev
 
     init a dummy network device for NAPI
 
-    :param struct net_device \*dev:
+    :param dev:
         device to init
+    :type dev: struct net_device \*
 
 .. _`init_dummy_netdev.description`:
 
@@ -2247,8 +2480,9 @@ register_netdev
 
     register a network device
 
-    :param struct net_device \*dev:
+    :param dev:
         device to register
+    :type dev: struct net_device \*
 
 .. _`register_netdev.description`:
 
@@ -2273,8 +2507,9 @@ netdev_wait_allrefs
 
     wait until all references are gone.
 
-    :param struct net_device \*dev:
+    :param dev:
         target net_device
+    :type dev: struct net_device \*
 
 .. _`netdev_wait_allrefs.description`:
 
@@ -2298,11 +2533,13 @@ dev_get_stats
 
     get network device statistics
 
-    :param struct net_device \*dev:
+    :param dev:
         device to get statistics from
+    :type dev: struct net_device \*
 
-    :param struct rtnl_link_stats64 \*storage:
+    :param storage:
         place to store stats
+    :type storage: struct rtnl_link_stats64 \*
 
 .. _`dev_get_stats.description`:
 
@@ -2323,23 +2560,28 @@ alloc_netdev_mqs
 
     allocate network device
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         size of private data to allocate space for
+    :type sizeof_priv: int
 
-    :param const char \*name:
+    :param name:
         device name format string
+    :type name: const char \*
 
-    :param unsigned char name_assign_type:
+    :param name_assign_type:
         origin of device name
+    :type name_assign_type: unsigned char
 
     :param void (\*setup)(struct net_device \*):
         callback to initialize device
 
-    :param unsigned int txqs:
+    :param txqs:
         the number of TX subqueues to allocate
+    :type txqs: unsigned int
 
-    :param unsigned int rxqs:
+    :param rxqs:
         the number of RX subqueues to allocate
+    :type rxqs: unsigned int
 
 .. _`alloc_netdev_mqs.description`:
 
@@ -2359,8 +2601,9 @@ free_netdev
 
     free network device
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`free_netdev.description`:
 
@@ -2381,8 +2624,9 @@ synchronize_net
 
     Synchronize with packet receive processing
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`synchronize_net.description`:
 
@@ -2401,11 +2645,13 @@ unregister_netdevice_queue
 
     remove device from the kernel
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct list_head \*head:
+    :param head:
         list
+    :type head: struct list_head \*
 
 .. _`unregister_netdevice_queue.description`:
 
@@ -2428,8 +2674,9 @@ unregister_netdevice_many
 
     unregister many devices
 
-    :param struct list_head \*head:
+    :param head:
         list of devices
+    :type head: struct list_head \*
 
 .. _`unregister_netdevice_many.note`:
 
@@ -2448,8 +2695,9 @@ unregister_netdev
 
     remove device from the kernel
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
 .. _`unregister_netdev.description`:
 
@@ -2472,15 +2720,18 @@ dev_change_net_namespace
 
     move device to different nethost namespace
 
-    :param struct net_device \*dev:
+    :param dev:
         device
+    :type dev: struct net_device \*
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param const char \*pat:
+    :param pat:
         If not NULL name pattern to try if the current device name
         is already taken in the destination network namespace.
+    :type pat: const char \*
 
 .. _`dev_change_net_namespace.description`:
 
@@ -2502,14 +2753,17 @@ netdev_increment_features
 
     increment feature set by one
 
-    :param netdev_features_t all:
+    :param all:
         current feature set
+    :type all: netdev_features_t
 
-    :param netdev_features_t one:
+    :param one:
         new feature set
+    :type one: netdev_features_t
 
-    :param netdev_features_t mask:
+    :param mask:
         mask feature set
+    :type mask: netdev_features_t
 
 .. _`netdev_increment_features.description`:
 
@@ -2529,8 +2783,9 @@ netdev_drivername
 
     network driver for the device
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`netdev_drivername.description`:
 

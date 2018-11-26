@@ -10,14 +10,17 @@ gm200_secboot_run_blob
 
     run the given high-secure blob
 
-    :param struct nvkm_secboot \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct nvkm_secboot \*
 
-    :param struct nvkm_gpuobj \*blob:
+    :param blob:
         *undescribed*
+    :type blob: struct nvkm_gpuobj \*
 
-    :param struct nvkm_falcon \*falcon:
+    :param falcon:
         *undescribed*
+    :type falcon: struct nvkm_falcon \*
 
 .. This file was automatic generated / don't edit.
 

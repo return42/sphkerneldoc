@@ -10,8 +10,9 @@ hinic_txq_clean_stats
 
     Clean the statistics of specific queue
 
-    :param struct hinic_txq \*txq:
+    :param txq:
         Logical Tx Queue
+    :type txq: struct hinic_txq \*
 
 .. _`hinic_txq_get_stats`:
 
@@ -22,11 +23,13 @@ hinic_txq_get_stats
 
     get statistics of Tx Queue
 
-    :param struct hinic_txq \*txq:
+    :param txq:
         Logical Tx Queue
+    :type txq: struct hinic_txq \*
 
-    :param struct hinic_txq_stats \*stats:
+    :param stats:
         return updated stats here
+    :type stats: struct hinic_txq_stats \*
 
 .. _`txq_stats_init`:
 
@@ -37,8 +40,9 @@ txq_stats_init
 
     Initialize the statistics of specific queue
 
-    :param struct hinic_txq \*txq:
+    :param txq:
         Logical Tx Queue
+    :type txq: struct hinic_txq \*
 
 .. _`tx_map_skb`:
 
@@ -49,14 +53,17 @@ tx_map_skb
 
     dma mapping for skb and return sges
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb
+    :type skb: struct sk_buff \*
 
-    :param struct hinic_sge \*sges:
+    :param sges:
         returned sges
+    :type sges: struct hinic_sge \*
 
 .. _`tx_map_skb.description`:
 
@@ -74,14 +81,17 @@ tx_unmap_skb
 
     unmap the dma address of the skb
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb
+    :type skb: struct sk_buff \*
 
-    :param struct hinic_sge \*sges:
+    :param sges:
         the sges that are connected to the skb
+    :type sges: struct hinic_sge \*
 
 .. _`tx_free_skb`:
 
@@ -92,14 +102,17 @@ tx_free_skb
 
     unmap and free skb
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         nic device
+    :type nic_dev: struct hinic_dev \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb
+    :type skb: struct sk_buff \*
 
-    :param struct hinic_sge \*sges:
+    :param sges:
         the sges that are connected to the skb
+    :type sges: struct hinic_sge \*
 
 .. _`free_all_tx_skbs`:
 
@@ -110,8 +123,9 @@ free_all_tx_skbs
 
     free all skbs in tx queue
 
-    :param struct hinic_txq \*txq:
+    :param txq:
         tx queue
+    :type txq: struct hinic_txq \*
 
 .. _`free_tx_poll`:
 
@@ -122,11 +136,13 @@ free_tx_poll
 
     free finished tx skbs in tx queue that connected to napi
 
-    :param struct napi_struct \*napi:
+    :param napi:
         napi
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         number of tx
+    :type budget: int
 
 .. _`free_tx_poll.description`:
 
@@ -144,14 +160,17 @@ hinic_init_txq
 
     Initialize the Tx Queue
 
-    :param struct hinic_txq \*txq:
+    :param txq:
         Logical Tx Queue
+    :type txq: struct hinic_txq \*
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         Hardware Tx Queue to connect the Logical queue with
+    :type sq: struct hinic_sq \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network device to connect the Logical queue with
+    :type netdev: struct net_device \*
 
 .. _`hinic_init_txq.description`:
 
@@ -169,8 +188,9 @@ hinic_clean_txq
 
     Clean the Tx Queue
 
-    :param struct hinic_txq \*txq:
+    :param txq:
         Logical Tx Queue
+    :type txq: struct hinic_txq \*
 
 .. This file was automatic generated / don't edit.
 

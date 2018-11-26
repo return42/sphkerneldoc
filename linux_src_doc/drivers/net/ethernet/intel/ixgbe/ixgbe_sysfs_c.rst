@@ -10,14 +10,17 @@ ixgbe_add_hwmon_attr
 
     Create hwmon attr table for a hwmon sysfs file.
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to the adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
-    :param unsigned int offset:
+    :param offset:
         offset in the eeprom sensor data table
+    :type offset: unsigned int
 
-    :param int type:
+    :param type:
         type of sensor data to display
+    :type type: int
 
 .. _`ixgbe_add_hwmon_attr.description`:
 

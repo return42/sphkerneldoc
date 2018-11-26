@@ -109,8 +109,9 @@ mips_cdmm_phys_base
 
     Choose a physical base address for CDMM region.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cdmm_phys_base.description`:
 

@@ -8,17 +8,21 @@ ldisc_receive_buf
 
 .. c:function:: void ldisc_receive_buf(struct tty_struct *tty, const __u8 *data, char *flags, int count)
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param const __u8 \*data:
+    :param data:
         *undescribed*
+    :type data: const __u8 \*
 
-    :param char \*flags:
+    :param flags:
         *undescribed*
+    :type flags: char \*
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
 .. _`ldisc_receive_buf.description`:
 
@@ -39,14 +43,17 @@ hdlcdev_attach
 
     set encoding and frame check sequence (FCS) options
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param unsigned short encoding:
+    :param encoding:
         *undescribed*
+    :type encoding: unsigned short
 
-    :param unsigned short parity:
+    :param parity:
         *undescribed*
+    :type parity: unsigned short
 
 .. _`hdlcdev_attach.description`:
 
@@ -66,11 +73,13 @@ hdlcdev_xmit
 
 .. c:function:: netdev_tx_t hdlcdev_xmit(struct sk_buff *skb, struct net_device *dev)
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`hdlcdev_xmit.description`:
 
@@ -89,8 +98,9 @@ hdlcdev_open
 
     claim resources and initialize hardware
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`hdlcdev_open.description`:
 
@@ -110,8 +120,9 @@ hdlcdev_close
 
     shutdown hardware and release resources
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`hdlcdev_close.description`:
 
@@ -129,14 +140,17 @@ hdlcdev_ioctl
 
 .. c:function:: int hdlcdev_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd)
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         *undescribed*
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
 .. _`hdlcdev_ioctl.description`:
 
@@ -156,8 +170,9 @@ hdlcdev_tx_timeout
 
 .. c:function:: void hdlcdev_tx_timeout(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`hdlcdev_tx_timeout.description`:
 
@@ -175,8 +190,9 @@ hdlcdev_tx_done
 
     reenable network layer transmit if stopped
 
-    :param SLMP_INFO \*info:
+    :param info:
         *undescribed*
+    :type info: SLMP_INFO \*
 
 .. _`hdlcdev_tx_done.description`:
 
@@ -194,14 +210,17 @@ hdlcdev_rx
 
     pass frame to network layer
 
-    :param SLMP_INFO \*info:
+    :param info:
         *undescribed*
+    :type info: SLMP_INFO \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         *undescribed*
+    :type size: int
 
 .. _`hdlcdev_rx.description`:
 
@@ -221,8 +240,9 @@ hdlcdev_init
 
     do generic HDLC initialization
 
-    :param SLMP_INFO \*info:
+    :param info:
         *undescribed*
+    :type info: SLMP_INFO \*
 
 .. _`hdlcdev_init.description`:
 
@@ -242,8 +262,9 @@ hdlcdev_exit
 
     do generic HDLC cleanup
 
-    :param SLMP_INFO \*info:
+    :param info:
         *undescribed*
+    :type info: SLMP_INFO \*
 
 .. _`hdlcdev_exit.description`:
 

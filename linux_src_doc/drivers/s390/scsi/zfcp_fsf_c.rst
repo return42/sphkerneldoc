@@ -10,8 +10,9 @@ zfcp_fsf_req_free
 
     free memory used by fsf request
 
-    :param struct zfcp_fsf_req \*req:
+    :param req:
         *undescribed*
+    :type req: struct zfcp_fsf_req \*
 
 .. _`zfcp_fsf_req_complete`:
 
@@ -22,8 +23,9 @@ zfcp_fsf_req_complete
 
     process completion of a FSF request
 
-    :param struct zfcp_fsf_req \*req:
+    :param req:
         *undescribed*
+    :type req: struct zfcp_fsf_req \*
 
 .. _`zfcp_fsf_req_complete.description`:
 
@@ -44,8 +46,9 @@ zfcp_fsf_req_dismiss_all
 
     dismiss all fsf requests
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         pointer to struct zfcp_adapter
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_fsf_req_dismiss_all.description`:
 
@@ -66,8 +69,9 @@ zfcp_fsf_status_read
 
     send status read request
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         *undescribed*
+    :type qdio: struct zfcp_qdio \*
 
 .. _`zfcp_fsf_status_read.return`:
 
@@ -85,8 +89,9 @@ zfcp_fsf_abort_fcp_cmnd
 
     abort running SCSI command
 
-    :param struct scsi_cmnd \*scmnd:
+    :param scmnd:
         The SCSI command to abort
+    :type scmnd: struct scsi_cmnd \*
 
 .. _`zfcp_fsf_abort_fcp_cmnd.return`:
 
@@ -104,17 +109,21 @@ zfcp_fsf_send_ct
 
     initiate a Generic Service request (FC-GS)
 
-    :param struct zfcp_fc_wka_port \*wka_port:
+    :param wka_port:
         *undescribed*
+    :type wka_port: struct zfcp_fc_wka_port \*
 
-    :param struct zfcp_fsf_ct_els \*ct:
+    :param ct:
         pointer to struct zfcp_send_ct with data for request
+    :type ct: struct zfcp_fsf_ct_els \*
 
-    :param mempool_t \*pool:
+    :param pool:
         if non-null this mempool is used to allocate struct zfcp_fsf_req
+    :type pool: mempool_t \*
 
-    :param unsigned int timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: unsigned int
 
 .. _`zfcp_fsf_send_els`:
 
@@ -125,17 +134,21 @@ zfcp_fsf_send_els
 
     initiate an ELS command (FC-FS)
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct zfcp_adapter \*
 
-    :param u32 d_id:
+    :param d_id:
         *undescribed*
+    :type d_id: u32
 
-    :param struct zfcp_fsf_ct_els \*els:
+    :param els:
         pointer to struct zfcp_send_els with data for the command
+    :type els: struct zfcp_fsf_ct_els \*
 
-    :param unsigned int timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: unsigned int
 
 .. _`zfcp_fsf_exchange_port_data`:
 
@@ -146,8 +159,9 @@ zfcp_fsf_exchange_port_data
 
     request information about local port
 
-    :param struct zfcp_erp_action \*erp_action:
+    :param erp_action:
         ERP action for the adapter for which port data is requested
+    :type erp_action: struct zfcp_erp_action \*
 
 .. _`zfcp_fsf_exchange_port_data.return`:
 
@@ -165,11 +179,13 @@ zfcp_fsf_exchange_port_data_sync
 
     request information about local port
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct fsf_qtcb_bottom_port \*data:
+    :param data:
         pointer to struct fsf_qtcb_bottom_port
+    :type data: struct fsf_qtcb_bottom_port \*
 
 .. _`zfcp_fsf_exchange_port_data_sync.return`:
 
@@ -187,8 +203,9 @@ zfcp_fsf_open_port
 
     create and send open port request
 
-    :param struct zfcp_erp_action \*erp_action:
+    :param erp_action:
         pointer to struct zfcp_erp_action
+    :type erp_action: struct zfcp_erp_action \*
 
 .. _`zfcp_fsf_open_port.return`:
 
@@ -206,8 +223,9 @@ zfcp_fsf_close_port
 
     create and send close port request
 
-    :param struct zfcp_erp_action \*erp_action:
+    :param erp_action:
         pointer to struct zfcp_erp_action
+    :type erp_action: struct zfcp_erp_action \*
 
 .. _`zfcp_fsf_close_port.return`:
 
@@ -225,8 +243,9 @@ zfcp_fsf_open_wka_port
 
     create and send open wka-port request
 
-    :param struct zfcp_fc_wka_port \*wka_port:
+    :param wka_port:
         pointer to struct zfcp_fc_wka_port
+    :type wka_port: struct zfcp_fc_wka_port \*
 
 .. _`zfcp_fsf_open_wka_port.return`:
 
@@ -244,8 +263,9 @@ zfcp_fsf_close_wka_port
 
     create and send close wka port request
 
-    :param struct zfcp_fc_wka_port \*wka_port:
+    :param wka_port:
         WKA port to open
+    :type wka_port: struct zfcp_fc_wka_port \*
 
 .. _`zfcp_fsf_close_wka_port.return`:
 
@@ -263,8 +283,9 @@ zfcp_fsf_close_physical_port
 
     close physical port
 
-    :param struct zfcp_erp_action \*erp_action:
+    :param erp_action:
         pointer to struct zfcp_erp_action
+    :type erp_action: struct zfcp_erp_action \*
 
 .. _`zfcp_fsf_close_physical_port.return`:
 
@@ -282,8 +303,9 @@ zfcp_fsf_open_lun
 
     open LUN
 
-    :param struct zfcp_erp_action \*erp_action:
+    :param erp_action:
         pointer to struct zfcp_erp_action
+    :type erp_action: struct zfcp_erp_action \*
 
 .. _`zfcp_fsf_open_lun.return`:
 
@@ -301,8 +323,9 @@ zfcp_fsf_close_lun
 
     close LUN
 
-    :param struct zfcp_erp_action \*erp_action:
+    :param erp_action:
         pointer to erp_action triggering the "close LUN"
+    :type erp_action: struct zfcp_erp_action \*
 
 .. _`zfcp_fsf_close_lun.return`:
 
@@ -320,11 +343,13 @@ zfcp_fsf_fcp_handler_common
 
     FCP response handler common to I/O and TMF.
 
-    :param struct zfcp_fsf_req \*req:
+    :param req:
         Pointer to FSF request.
+    :type req: struct zfcp_fsf_req \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Pointer to SCSI device as request context.
+    :type sdev: struct scsi_device \*
 
 .. _`zfcp_fsf_fcp_cmnd`:
 
@@ -335,8 +360,9 @@ zfcp_fsf_fcp_cmnd
 
     initiate an FCP command (for a SCSI command)
 
-    :param struct scsi_cmnd \*scsi_cmnd:
+    :param scsi_cmnd:
         scsi command to be sent
+    :type scsi_cmnd: struct scsi_cmnd \*
 
 .. _`zfcp_fsf_fcp_task_mgmt`:
 
@@ -347,11 +373,13 @@ zfcp_fsf_fcp_task_mgmt
 
     Send SCSI task management command (TMF).
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Pointer to SCSI device to send the task management command to.
+    :type sdev: struct scsi_device \*
 
-    :param u8 tm_flags:
+    :param tm_flags:
         Unsigned byte for task management flags.
+    :type tm_flags: u8
 
 .. _`zfcp_fsf_fcp_task_mgmt.return`:
 
@@ -369,11 +397,13 @@ zfcp_fsf_reqid_check
 
     validate req_id contained in SBAL returned by QDIO
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         *undescribed*
+    :type qdio: struct zfcp_qdio \*
 
-    :param int sbal_idx:
+    :param sbal_idx:
         response queue index of SBAL to be processed
+    :type sbal_idx: int
 
 .. This file was automatic generated / don't edit.
 

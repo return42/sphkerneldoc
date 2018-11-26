@@ -10,11 +10,13 @@ sys_membarrier
 
     issue memory barriers on a set of threads
 
-    :param int cmd:
+    :param cmd:
         Takes command values defined in enum membarrier_cmd.
+    :type cmd: int
 
-    :param int flags:
+    :param flags:
         Currently needs to be 0. For future extensions.
+    :type flags: int
 
 .. _`sys_membarrier.description`:
 

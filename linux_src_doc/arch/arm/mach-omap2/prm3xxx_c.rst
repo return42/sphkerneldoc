@@ -10,8 +10,9 @@ omap3xxx_prm_dpll3_reset
 
     use DPLL3 reset to reboot the OMAP SoC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3xxx_prm_dpll3_reset.description`:
 
@@ -31,8 +32,9 @@ omap3xxx_prm_read_pending_irqs
 
     read pending PRM MPU IRQs into \ ``events``\ 
 
-    :param unsigned long \*events:
+    :param events:
         ptr to a u32, preallocated by caller
+    :type events: unsigned long \*
 
 .. _`omap3xxx_prm_read_pending_irqs.description`:
 
@@ -52,8 +54,9 @@ omap3xxx_prm_ocp_barrier
 
     force buffered MPU writes to the PRM to complete
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3xxx_prm_ocp_barrier.description`:
 
@@ -74,8 +77,9 @@ omap3xxx_prm_save_and_clear_irqen
 
     save/clear PRM_IRQENABLE_MPU reg
 
-    :param u32 \*saved_mask:
+    :param saved_mask:
         ptr to a u32 array to save IRQENABLE bits
+    :type saved_mask: u32 \*
 
 .. _`omap3xxx_prm_save_and_clear_irqen.description`:
 
@@ -98,8 +102,9 @@ omap3xxx_prm_restore_irqen
 
     set PRM_IRQENABLE_MPU register from args
 
-    :param u32 \*saved_mask:
+    :param saved_mask:
         ptr to a u32 array of IRQENABLE bits saved previously
+    :type saved_mask: u32 \*
 
 .. _`omap3xxx_prm_restore_irqen.description`:
 
@@ -121,14 +126,17 @@ omap3xxx_prm_clear_mod_irqs
 
     clear wake-up events from PRCM interrupt
 
-    :param s16 module:
+    :param module:
         PRM module to clear wakeups from
+    :type module: s16
 
-    :param u8 regs:
+    :param regs:
         register set to clear, 1 or 3
+    :type regs: u8
 
-    :param u32 wkst_mask:
+    :param wkst_mask:
         wkst bits to clear
+    :type wkst_mask: u32
 
 .. _`omap3xxx_prm_clear_mod_irqs.description`:
 
@@ -151,8 +159,9 @@ omap3_prm_reset_modem
 
     toggle reset signal for modem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3_prm_reset_modem.description`:
 
@@ -171,11 +180,13 @@ omap3_prm_init_pm
 
     initialize PM related registers for PRM
 
-    :param bool has_uart4:
+    :param has_uart4:
         SoC has UART4
+    :type has_uart4: bool
 
-    :param bool has_iva:
+    :param has_iva:
         SoC has IVA
+    :type has_iva: bool
 
 .. _`omap3_prm_init_pm.description`:
 
@@ -193,8 +204,9 @@ omap3430_pre_es3_1_reconfigure_io_chain
 
     restart wake-up daisy chain
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3430_pre_es3_1_reconfigure_io_chain.description`:
 
@@ -213,8 +225,9 @@ omap3_prm_reconfigure_io_chain
 
     clear latches and reconfigure I/O chain
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3_prm_reconfigure_io_chain.description`:
 
@@ -236,8 +249,9 @@ omap3xxx_prm_enable_io_wakeup
 
     enable wakeup events from I/O wakeup latches
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3xxx_prm_enable_io_wakeup.description`:
 
@@ -259,8 +273,9 @@ omap3xxx_prm_read_reset_sources
 
     return the last SoC reset source
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3xxx_prm_read_reset_sources.description`:
 
@@ -279,8 +294,9 @@ omap3xxx_prm_iva_idle
 
     ensure IVA is in idle so it can be put into retention
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3xxx_prm_iva_idle.description`:
 
@@ -301,8 +317,9 @@ omap3xxx_prm_clear_global_cold_reset
 
     checks the global cold reset status and clears it if asserted
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3xxx_prm_clear_global_cold_reset.description`:
 

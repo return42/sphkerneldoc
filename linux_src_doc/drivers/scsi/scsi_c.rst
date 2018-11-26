@@ -10,8 +10,9 @@ scsi_put_command
 
     Free a scsi command block
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         command block to free
+    :type cmd: struct scsi_cmnd \*
 
 .. _`scsi_put_command.return`:
 
@@ -36,11 +37,13 @@ scsi_cmd_get_serial
 
     Assign a serial number to a command
 
-    :param struct Scsi_Host \*host:
+    :param host:
         the scsi host
+    :type host: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         command to assign serial number to
+    :type cmd: struct scsi_cmnd \*
 
 .. _`scsi_cmd_get_serial.description`:
 
@@ -59,8 +62,9 @@ scsi_finish_command
 
     cleanup and pass command back to upper layer
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         the command
+    :type cmd: struct scsi_cmnd \*
 
 .. _`scsi_finish_command.description`:
 
@@ -80,11 +84,13 @@ scsi_change_queue_depth
 
     change a device's queue depth
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI Device in question
+    :type sdev: struct scsi_device \*
 
-    :param int depth:
+    :param depth:
         number of commands allowed to be queued to the driver
+    :type depth: int
 
 .. _`scsi_change_queue_depth.description`:
 
@@ -102,12 +108,14 @@ scsi_track_queue_full
 
     track QUEUE_FULL events to adjust queue depth
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI Device in question
+    :type sdev: struct scsi_device \*
 
-    :param int depth:
+    :param depth:
         Current number of outstanding SCSI commands on this device,
         not counting the one returned as QUEUE_FULL.
+    :type depth: int
 
 .. _`scsi_track_queue_full.description`:
 
@@ -146,17 +154,21 @@ scsi_vpd_inquiry
 
     Request a device provide us with a VPD page
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         The device to ask
+    :type sdev: struct scsi_device \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         Where to put the result
+    :type buffer: unsigned char \*
 
-    :param u8 page:
+    :param page:
         Which Vital Product Data to return
+    :type page: u8
 
-    :param unsigned len:
+    :param len:
         The length of the buffer
+    :type len: unsigned
 
 .. _`scsi_vpd_inquiry.description`:
 
@@ -177,17 +189,21 @@ scsi_get_vpd_page
 
     Get Vital Product Data from a SCSI device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         The device to ask
+    :type sdev: struct scsi_device \*
 
-    :param u8 page:
+    :param page:
         Which Vital Product Data to return
+    :type page: u8
 
-    :param unsigned char \*buf:
+    :param buf:
         where to store the VPD
+    :type buf: unsigned char \*
 
-    :param int buf_len:
+    :param buf_len:
         number of bytes in the VPD buffer area
+    :type buf_len: int
 
 .. _`scsi_get_vpd_page.description`:
 
@@ -210,11 +226,13 @@ scsi_get_vpd_buf
 
     Get Vital Product Data from a SCSI device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         The device to ask
+    :type sdev: struct scsi_device \*
 
-    :param u8 page:
+    :param page:
         Which Vital Product Data to return
+    :type page: u8
 
 .. _`scsi_get_vpd_buf.description`:
 
@@ -232,8 +250,9 @@ scsi_attach_vpd
 
     Attach Vital Product Data to a SCSI device structure
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         The device to ask
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_attach_vpd.description`:
 
@@ -254,17 +273,21 @@ scsi_report_opcode
 
     Find out if a given command opcode is supported
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device to query
+    :type sdev: struct scsi_device \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         scratch buffer (must be at least 20 bytes long)
+    :type buffer: unsigned char \*
 
-    :param unsigned int len:
+    :param len:
         length of buffer
+    :type len: unsigned int
 
-    :param unsigned char opcode:
+    :param opcode:
         opcode for command to look up
+    :type opcode: unsigned char
 
 .. _`scsi_report_opcode.description`:
 
@@ -284,8 +307,9 @@ scsi_device_get
 
     get an additional reference to a scsi_device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         device to get a reference to
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_device_get.description`:
 
@@ -308,8 +332,9 @@ scsi_device_put
 
     release a reference to a scsi_device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         device to release a reference on.
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_device_put.description`:
 
@@ -329,11 +354,13 @@ starget_for_each_device
 
     helper to walk all devices of a target
 
-    :param struct scsi_target \*starget:
+    :param starget:
         target whose devices we want to iterate over.
+    :type starget: struct scsi_target \*
 
-    :param void \*data:
+    :param data:
         Opaque passed to each function call.
+    :type data: void \*
 
     :param void (\*fn)(struct scsi_device \*, void \*):
         Function to call on each device
@@ -356,11 +383,13 @@ __starget_for_each_device
 
     helper to walk all devices of a target (UNLOCKED)
 
-    :param struct scsi_target \*starget:
+    :param starget:
         target whose devices we want to iterate over.
+    :type starget: struct scsi_target \*
 
-    :param void \*data:
+    :param data:
         parameter for callback \ ``fn``\ ()
+    :type data: void \*
 
     :param void (\*fn)(struct scsi_device \*, void \*):
         callback function that is invoked for each device
@@ -392,11 +421,13 @@ __scsi_device_lookup_by_target
 
     find a device given the target (UNLOCKED)
 
-    :param struct scsi_target \*starget:
+    :param starget:
         SCSI target pointer
+    :type starget: struct scsi_target \*
 
-    :param u64 lun:
+    :param lun:
         SCSI Logical Unit Number
+    :type lun: u64
 
 .. _`__scsi_device_lookup_by_target.description`:
 
@@ -427,11 +458,13 @@ scsi_device_lookup_by_target
 
     find a device given the target
 
-    :param struct scsi_target \*starget:
+    :param starget:
         SCSI target pointer
+    :type starget: struct scsi_target \*
 
-    :param u64 lun:
+    :param lun:
         SCSI Logical Unit Number
+    :type lun: u64
 
 .. _`scsi_device_lookup_by_target.description`:
 
@@ -451,17 +484,21 @@ __scsi_device_lookup
 
     find a device given the host (UNLOCKED)
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         SCSI host pointer
+    :type shost: struct Scsi_Host \*
 
-    :param uint channel:
+    :param channel:
         SCSI channel (zero if only one channel)
+    :type channel: uint
 
-    :param uint id:
+    :param id:
         SCSI target number (physical unit number)
+    :type id: uint
 
-    :param u64 lun:
+    :param lun:
         SCSI Logical Unit Number
+    :type lun: u64
 
 .. _`__scsi_device_lookup.description`:
 
@@ -491,17 +528,21 @@ scsi_device_lookup
 
     find a device given the host
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         SCSI host pointer
+    :type shost: struct Scsi_Host \*
 
-    :param uint channel:
+    :param channel:
         SCSI channel (zero if only one channel)
+    :type channel: uint
 
-    :param uint id:
+    :param id:
         SCSI target number (physical unit number)
+    :type id: uint
 
-    :param u64 lun:
+    :param lun:
         SCSI Logical Unit Number
+    :type lun: u64
 
 .. _`scsi_device_lookup.description`:
 

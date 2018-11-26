@@ -10,27 +10,34 @@ devm_request_threaded_irq
 
     allocate an interrupt line for a managed device
 
-    :param struct device \*dev:
+    :param dev:
         device to request interrupt for
+    :type dev: struct device \*
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to allocate
+    :type irq: unsigned int
 
-    :param irq_handler_t handler:
+    :param handler:
         Function to be called when the IRQ occurs
+    :type handler: irq_handler_t
 
-    :param irq_handler_t thread_fn:
+    :param thread_fn:
         function to be called in a threaded interrupt context. NULL
         for devices which handle everything in \ ``handler``\ 
+    :type thread_fn: irq_handler_t
 
-    :param unsigned long irqflags:
+    :param irqflags:
         Interrupt type flags
+    :type irqflags: unsigned long
 
-    :param const char \*devname:
+    :param devname:
         An ascii name for the claiming device, dev_name(dev) if NULL
+    :type devname: const char \*
 
-    :param void \*dev_id:
+    :param dev_id:
         A cookie passed back to the handler function
+    :type dev_id: void \*
 
 .. _`devm_request_threaded_irq.description`:
 
@@ -54,23 +61,29 @@ devm_request_any_context_irq
 
     allocate an interrupt line for a managed device
 
-    :param struct device \*dev:
+    :param dev:
         device to request interrupt for
+    :type dev: struct device \*
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to allocate
+    :type irq: unsigned int
 
-    :param irq_handler_t handler:
+    :param handler:
         Function to be called when the IRQ occurs
+    :type handler: irq_handler_t
 
-    :param unsigned long irqflags:
+    :param irqflags:
         Interrupt type flags
+    :type irqflags: unsigned long
 
-    :param const char \*devname:
+    :param devname:
         An ascii name for the claiming device, dev_name(dev) if NULL
+    :type devname: const char \*
 
-    :param void \*dev_id:
+    :param dev_id:
         A cookie passed back to the handler function
+    :type dev_id: void \*
 
 .. _`devm_request_any_context_irq.description`:
 
@@ -94,14 +107,17 @@ devm_free_irq
 
     free an interrupt
 
-    :param struct device \*dev:
+    :param dev:
         device to free interrupt for
+    :type dev: struct device \*
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line to free
+    :type irq: unsigned int
 
-    :param void \*dev_id:
+    :param dev_id:
         Device identity to free
+    :type dev_id: void \*
 
 .. _`devm_free_irq.description`:
 
@@ -122,28 +138,35 @@ free IRQs allocated with \ :c:func:`devm_request_irq`\ .
 
     Allocate and initialize a range of irq descriptors for a managed device
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate the descriptors for
+    :type dev: struct device \*
 
-    :param int irq:
+    :param irq:
         Allocate for specific irq number if irq >= 0
+    :type irq: int
 
-    :param unsigned int from:
+    :param from:
         Start the search from this irq number
+    :type from: unsigned int
 
-    :param unsigned int cnt:
+    :param cnt:
         Number of consecutive irqs to allocate
+    :type cnt: unsigned int
 
-    :param int node:
+    :param node:
         Preferred node on which the irq descriptor should be allocated
+    :type node: int
 
-    :param struct module \*owner:
+    :param owner:
         Owning module (can be NULL)
+    :type owner: struct module \*
 
-    :param const struct cpumask \*affinity:
+    :param affinity:
         Optional pointer to an affinity mask array of size \ ``cnt``\ 
         which hints where the irq descriptors should be allocated
         and which default affinities to use
+    :type affinity: const struct cpumask \*
 
 .. _`__devm_irq_alloc_descs.description`:
 
@@ -168,23 +191,29 @@ devm_irq_alloc_generic_chip
 
     Allocate and initialize a generic chip for a managed device
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate the generic chip for
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         Name of the irq chip
+    :type name: const char \*
 
-    :param int num_ct:
+    :param num_ct:
         Number of irq_chip_type instances associated with this
+    :type num_ct: int
 
-    :param unsigned int irq_base:
+    :param irq_base:
         Interrupt base nr for this chip
+    :type irq_base: unsigned int
 
-    :param void __iomem \*reg_base:
+    :param reg_base:
         Register base address (virtual)
+    :type reg_base: void __iomem \*
 
-    :param irq_flow_handler_t handler:
+    :param handler:
         Default flow handler associated with this chip
+    :type handler: irq_flow_handler_t
 
 .. _`devm_irq_alloc_generic_chip.description`:
 
@@ -203,23 +232,29 @@ devm_irq_setup_generic_chip
 
     Setup a range of interrupts with a generic chip for a managed device
 
-    :param struct device \*dev:
+    :param dev:
         Device to setup the generic chip for
+    :type dev: struct device \*
 
-    :param struct irq_chip_generic \*gc:
+    :param gc:
         Generic irq chip holding all data
+    :type gc: struct irq_chip_generic \*
 
-    :param u32 msk:
+    :param msk:
         Bitmask holding the irqs to initialize relative to gc->irq_base
+    :type msk: u32
 
-    :param enum irq_gc_flags flags:
+    :param flags:
         Flags for initialization
+    :type flags: enum irq_gc_flags
 
-    :param unsigned int clr:
+    :param clr:
         IRQ\_\* bits to clear
+    :type clr: unsigned int
 
-    :param unsigned int set:
+    :param set:
         IRQ\_\* bits to set
+    :type set: unsigned int
 
 .. _`devm_irq_setup_generic_chip.description`:
 

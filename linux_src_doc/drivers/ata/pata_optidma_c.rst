@@ -10,11 +10,13 @@ optidma_pre_reset
 
     probe begin
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`optidma_pre_reset.description`:
 
@@ -32,8 +34,9 @@ optidma_unlock
 
     unlock control registers
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
 .. _`optidma_unlock.description`:
 
@@ -52,8 +55,9 @@ optidma_lock
 
     issue temporary relock
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
 .. _`optidma_lock.description`:
 
@@ -71,14 +75,17 @@ optidma_mode_setup
 
     set mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param u8 mode:
+    :param mode:
         Mode to set
+    :type mode: u8
 
 .. _`optidma_mode_setup.description`:
 
@@ -106,14 +113,17 @@ optiplus_mode_setup
 
     DMA setup for Firestar Plus
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device
+    :type adev: struct ata_device \*
 
-    :param u8 mode:
+    :param mode:
         desired mode
+    :type mode: u8
 
 .. _`optiplus_mode_setup.description`:
 
@@ -134,11 +144,13 @@ optidma_set_pio_mode
 
     PIO setup callback
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device
+    :type adev: struct ata_device \*
 
 .. _`optidma_set_pio_mode.description`:
 
@@ -158,11 +170,13 @@ optidma_set_dma_mode
 
     DMA setup callback
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device
+    :type adev: struct ata_device \*
 
 .. _`optidma_set_dma_mode.description`:
 
@@ -182,11 +196,13 @@ optiplus_set_pio_mode
 
     PIO setup callback
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device
+    :type adev: struct ata_device \*
 
 .. _`optiplus_set_pio_mode.description`:
 
@@ -206,11 +222,13 @@ optiplus_set_dma_mode
 
     DMA setup callback
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device
+    :type adev: struct ata_device \*
 
 .. _`optiplus_set_dma_mode.description`:
 
@@ -230,8 +248,9 @@ optidma_make_bits43
 
     PCI setup helper
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`optidma_make_bits43.description`:
 
@@ -250,11 +269,13 @@ optidma_set_mode
 
     mode setup
 
-    :param struct ata_link \*link:
+    :param link:
         link to set up
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*r_failed:
+    :param r_failed:
         *undescribed*
+    :type r_failed: struct ata_device \*\*
 
 .. _`optidma_set_mode.description`:
 
@@ -274,8 +295,9 @@ optiplus_with_udma
 
     Look for UDMA capable setup \ ``pdev``\ ; ATA controller
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. This file was automatic generated / don't edit.
 

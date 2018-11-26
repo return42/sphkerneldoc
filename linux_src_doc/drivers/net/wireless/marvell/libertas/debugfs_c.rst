@@ -10,17 +10,21 @@ lbs_debugfs_read
 
     proc read function
 
-    :param struct file \*file:
+    :param file:
         file to read
+    :type file: struct file \*
 
-    :param char __user \*userbuf:
+    :param userbuf:
         pointer to buffer
+    :type userbuf: char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to read
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         read data starting position
+    :type ppos: loff_t \*
 
 .. _`lbs_debugfs_read.return`:
 
@@ -38,17 +42,21 @@ lbs_debugfs_write
 
     proc write function
 
-    :param struct file \*f:
+    :param f:
         file pointer
+    :type f: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         pointer to data buffer
+    :type buf: const char __user \*
 
-    :param size_t cnt:
+    :param cnt:
         data number to write
+    :type cnt: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
 .. _`lbs_debugfs_write.return`:
 
@@ -66,8 +74,9 @@ lbs_debug_init
 
     create debug proc file
 
-    :param struct lbs_private \*priv:
+    :param priv:
         pointer to \ :c:type:`struct lbs_private <lbs_private>`\ 
+    :type priv: struct lbs_private \*
 
 .. _`lbs_debug_init.return`:
 

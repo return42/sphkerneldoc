@@ -88,17 +88,21 @@ ep93xx_spi_calc_divisors
 
     calculates SPI clock divisors
 
-    :param struct spi_master \*master:
+    :param master:
         SPI master
+    :type master: struct spi_master \*
 
-    :param u32 rate:
+    :param rate:
         desired SPI output clock rate
+    :type rate: u32
 
-    :param u8 \*div_cpsr:
+    :param div_cpsr:
         pointer to return the cpsr (pre-scaler) divider
+    :type div_cpsr: u8 \*
 
-    :param u8 \*div_scr:
+    :param div_scr:
         pointer to return the scr divider
+    :type div_scr: u8 \*
 
 .. _`ep93xx_spi_read_write`:
 
@@ -109,8 +113,9 @@ ep93xx_spi_read_write
 
     perform next RX/TX transfer
 
-    :param struct spi_master \*master:
+    :param master:
         *undescribed*
+    :type master: struct spi_master \*
 
 .. _`ep93xx_spi_read_write.description`:
 
@@ -129,15 +134,17 @@ full.
 ep93xx_spi_dma_prepare
 ======================
 
-.. c:function:: struct dma_async_tx_descriptor *ep93xx_spi_dma_prepare(struct spi_master *master, enum dma_transfer_direction dir)
+.. c:function:: struct dma_async_tx_descriptor *ep93xx_spi_dma_prepare(struct spi_master *master, enum dma_data_direction dir)
 
     prepares a DMA transfer
 
-    :param struct spi_master \*master:
+    :param master:
         SPI master
+    :type master: struct spi_master \*
 
-    :param enum dma_transfer_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_data_direction
 
 .. _`ep93xx_spi_dma_prepare.description`:
 
@@ -153,15 +160,17 @@ in case of failure.
 ep93xx_spi_dma_finish
 =====================
 
-.. c:function:: void ep93xx_spi_dma_finish(struct spi_master *master, enum dma_transfer_direction dir)
+.. c:function:: void ep93xx_spi_dma_finish(struct spi_master *master, enum dma_data_direction dir)
 
     finishes with a DMA transfer
 
-    :param struct spi_master \*master:
+    :param master:
         SPI master
+    :type master: struct spi_master \*
 
-    :param enum dma_transfer_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_data_direction
 
 .. _`ep93xx_spi_dma_finish.description`:
 

@@ -10,11 +10,13 @@ i40iw_insert_wqe_hdr
 
     write wqe header
 
-    :param u64 \*wqe:
+    :param wqe:
         cqp wqe for header
+    :type wqe: u64 \*
 
-    :param u64 header:
+    :param header:
         header for the cqp wqe
+    :type header: u64
 
 .. _`i40iw_get_cqp_reg_info`:
 
@@ -25,17 +27,21 @@ i40iw_get_cqp_reg_info
 
     get head and tail for cqp using registers
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u32 \*val:
+    :param val:
         cqp tail register value
+    :type val: u32 \*
 
-    :param u32 \*tail:
+    :param tail:
         wqtail register value
+    :type tail: u32 \*
 
-    :param u32 \*error:
+    :param error:
         cqp processing err
+    :type error: u32 \*
 
 .. _`i40iw_cqp_poll_registers`:
 
@@ -46,14 +52,17 @@ i40iw_cqp_poll_registers
 
     poll cqp registers
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u32 tail:
+    :param tail:
         wqtail register value
+    :type tail: u32
 
-    :param u32 count:
+    :param count:
         how many times to try for completion
+    :type count: u32
 
 .. _`i40iw_sc_parse_fpm_commit_buf`:
 
@@ -64,14 +73,17 @@ i40iw_sc_parse_fpm_commit_buf
 
     parse fpm commit buffer
 
-    :param u64 \*buf:
+    :param buf:
         ptr to fpm commit buffer
+    :type buf: u64 \*
 
-    :param struct i40iw_hmc_obj_info \*info:
+    :param info:
         ptr to i40iw_hmc_obj_info struct
+    :type info: struct i40iw_hmc_obj_info \*
 
-    :param u32 \*sd:
+    :param sd:
         number of SDs for HMC objects
+    :type sd: u32 \*
 
 .. _`i40iw_sc_parse_fpm_commit_buf.description`:
 
@@ -90,17 +102,21 @@ i40iw_sc_decode_fpm_query
 
     Decode a 64 bit value into max count and size
 
-    :param u64 \*buf:
+    :param buf:
         ptr to fpm query buffer
+    :type buf: u64 \*
 
-    :param u32 buf_idx:
+    :param buf_idx:
         index into buf
+    :type buf_idx: u32
 
-    :param struct i40iw_hmc_obj_info \*obj_info:
+    :param obj_info:
         *undescribed*
+    :type obj_info: struct i40iw_hmc_obj_info \*
 
-    :param u32 rsrc_idx:
+    :param rsrc_idx:
         resource index into info
+    :type rsrc_idx: u32
 
 .. _`i40iw_sc_decode_fpm_query.description`:
 
@@ -118,14 +134,17 @@ i40iw_sc_parse_fpm_query_buf
 
     parses fpm query buffer
 
-    :param u64 \*buf:
+    :param buf:
         ptr to fpm query buffer
+    :type buf: u64 \*
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         *undescribed*
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param struct i40iw_hmc_fpm_misc \*hmc_fpm_misc:
+    :param hmc_fpm_misc:
         ptr to fpm data
+    :type hmc_fpm_misc: struct i40iw_hmc_fpm_misc \*
 
 .. _`i40iw_sc_parse_fpm_query_buf.description`:
 
@@ -144,8 +163,9 @@ i40iw_fill_qos_list
 
     Change all unknown qs handles to available ones
 
-    :param u16 \*qs_list:
+    :param qs_list:
         list of qs_handles to be fixed with valid qs_handles
+    :type qs_list: u16 \*
 
 .. _`i40iw_qp_from_entry`:
 
@@ -156,8 +176,9 @@ i40iw_qp_from_entry
 
     Given entry, get to the qp structure
 
-    :param struct list_head \*entry:
+    :param entry:
         Points to list of qp structure
+    :type entry: struct list_head \*
 
 .. _`i40iw_get_qp`:
 
@@ -168,11 +189,13 @@ i40iw_get_qp
 
     get the next qp from the list given current qp
 
-    :param struct list_head \*head:
+    :param head:
         Listhead of qp's
+    :type head: struct list_head \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         current qp
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_change_l2params`:
 
@@ -183,11 +206,13 @@ i40iw_change_l2params
 
     given the new l2 parameters, change all qp
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         pointer to the vsi structure
+    :type vsi: struct i40iw_sc_vsi \*
 
-    :param struct i40iw_l2params \*l2params:
+    :param l2params:
         New paramaters from l2
+    :type l2params: struct i40iw_l2params \*
 
 .. _`i40iw_qp_rem_qos`:
 
@@ -198,8 +223,9 @@ i40iw_qp_rem_qos
 
     remove qp from qos lists during destroy qp
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         qp to be removed from qos
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_qp_add_qos`:
 
@@ -210,8 +236,9 @@ i40iw_qp_add_qos
 
     called during setctx fot qp to be added to qos
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         qp to be added to qos
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_sc_pd_init`:
 
@@ -222,17 +249,21 @@ i40iw_sc_pd_init
 
     initialize sc pd struct
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_pd \*pd:
+    :param pd:
         sc pd ptr
+    :type pd: struct i40iw_sc_pd \*
 
-    :param u16 pd_id:
+    :param pd_id:
         pd_id for allocated pd
+    :type pd_id: u16
 
-    :param int abi_ver:
+    :param abi_ver:
         ABI version from user context, -1 if not valid
+    :type abi_ver: int
 
 .. _`i40iw_get_encoded_wqe_size`:
 
@@ -243,11 +274,13 @@ i40iw_get_encoded_wqe_size
 
     given wq size, returns hardware encoded size
 
-    :param u32 wqsize:
+    :param wqsize:
         size of the wq (sq, rq, srq) to encoded_size
+    :type wqsize: u32
 
-    :param bool cqpsq:
+    :param cqpsq:
         encoded size for sq for cqp as its encoded size is 1+ other wq's
+    :type cqpsq: bool
 
 .. _`i40iw_sc_cqp_init`:
 
@@ -258,11 +291,13 @@ i40iw_sc_cqp_init
 
     Initialize buffers for a control Queue Pair
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         IWARP control queue pair pointer
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param struct i40iw_cqp_init_info \*info:
+    :param info:
         IWARP control queue pair init info pointer
+    :type info: struct i40iw_cqp_init_info \*
 
 .. _`i40iw_sc_cqp_init.description`:
 
@@ -280,14 +315,17 @@ i40iw_sc_cqp_create
 
     create cqp during bringup
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u16 \*maj_err:
+    :param maj_err:
         If error, major err number
+    :type maj_err: u16 \*
 
-    :param u16 \*min_err:
+    :param min_err:
         If error, minor err number
+    :type min_err: u16 \*
 
 .. _`i40iw_sc_cqp_post_sq`:
 
@@ -298,8 +336,9 @@ i40iw_sc_cqp_post_sq
 
     post of cqp's sq
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
 .. _`i40iw_sc_cqp_get_next_send_wqe_idx`:
 
@@ -310,14 +349,17 @@ i40iw_sc_cqp_get_next_send_wqe_idx
 
     get next WQE on CQP SQ and pass back the index
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         pointer to CQP structure
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         private data for CQP WQE
+    :type scratch: u64
 
-    :param u32 \*wqe_idx:
+    :param wqe_idx:
         WQE index for next WQE on CQP SQ
+    :type wqe_idx: u32 \*
 
 .. _`i40iw_sc_cqp_get_next_send_wqe`:
 
@@ -328,11 +370,13 @@ i40iw_sc_cqp_get_next_send_wqe
 
     get next wqe on cqp sq
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         private data for CQP WQE
+    :type scratch: u64
 
 .. _`i40iw_sc_cqp_destroy`:
 
@@ -343,8 +387,9 @@ i40iw_sc_cqp_destroy
 
     destroy cqp during close
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
 .. _`i40iw_sc_ccq_arm`:
 
@@ -355,8 +400,9 @@ i40iw_sc_ccq_arm
 
     enable intr for control cq
 
-    :param struct i40iw_sc_cq \*ccq:
+    :param ccq:
         ccq sc struct
+    :type ccq: struct i40iw_sc_cq \*
 
 .. _`i40iw_sc_ccq_get_cqe_info`:
 
@@ -367,11 +413,13 @@ i40iw_sc_ccq_get_cqe_info
 
     get ccq's cq entry
 
-    :param struct i40iw_sc_cq \*ccq:
+    :param ccq:
         ccq sc struct
+    :type ccq: struct i40iw_sc_cq \*
 
-    :param struct i40iw_ccq_cqe_info \*info:
+    :param info:
         completion q entry to return
+    :type info: struct i40iw_ccq_cqe_info \*
 
 .. _`i40iw_sc_poll_for_cqp_op_done`:
 
@@ -382,14 +430,17 @@ i40iw_sc_poll_for_cqp_op_done
 
     Waits for last write to complete in CQP SQ
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u8 op_code:
+    :param op_code:
         cqp opcode for completion
+    :type op_code: u8
 
-    :param struct i40iw_ccq_cqe_info \*compl_info:
+    :param compl_info:
         *undescribed*
+    :type compl_info: struct i40iw_ccq_cqe_info \*
 
 .. _`i40iw_sc_manage_push_page`:
 
@@ -400,17 +451,21 @@ i40iw_sc_manage_push_page
 
     Handle push page
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param struct i40iw_cqp_manage_push_page_info \*info:
+    :param info:
         push page info
+    :type info: struct i40iw_cqp_manage_push_page_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_manage_hmc_pm_func_table`:
 
@@ -421,20 +476,25 @@ i40iw_sc_manage_hmc_pm_func_table
 
     manage of function table
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param u8 vf_index:
+    :param vf_index:
         vf index for cqp
+    :type vf_index: u8
 
-    :param bool free_pm_fcn:
+    :param free_pm_fcn:
         function number
+    :type free_pm_fcn: bool
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_set_hmc_resource_profile`:
 
@@ -445,23 +505,29 @@ i40iw_sc_set_hmc_resource_profile
 
     cqp wqe for hmc profile
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param u8 hmc_profile_type:
+    :param hmc_profile_type:
         type of profile to set
+    :type hmc_profile_type: u8
 
-    :param u8 vf_num:
+    :param vf_num:
         vf number for profile
+    :type vf_num: u8
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
-    :param bool poll_registers:
+    :param poll_registers:
         flag to poll register for cqp completion
+    :type poll_registers: bool
 
 .. _`i40iw_sc_manage_hmc_pm_func_table_done`:
 
@@ -472,8 +538,9 @@ i40iw_sc_manage_hmc_pm_func_table_done
 
     wait for cqp wqe completion for function table
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
 .. _`i40iw_sc_commit_fpm_values_done`:
 
@@ -484,8 +551,9 @@ i40iw_sc_commit_fpm_values_done
 
     wait for cqp eqe completion for fpm commit
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
 .. _`i40iw_sc_commit_fpm_values`:
 
@@ -496,24 +564,30 @@ i40iw_sc_commit_fpm_values
 
     cqp wqe for commit fpm values
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param u8 hmc_fn_id:
+    :param hmc_fn_id:
         hmc function id
         \ ``commit_fpm_mem``\ ; Memory for fpm values
+    :type hmc_fn_id: u8
 
-    :param struct i40iw_dma_mem \*commit_fpm_mem:
+    :param commit_fpm_mem:
         *undescribed*
+    :type commit_fpm_mem: struct i40iw_dma_mem \*
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
-    :param u8 wait_type:
+    :param wait_type:
         poll ccq or cqp registers for cqp completion
+    :type wait_type: u8
 
 .. _`i40iw_sc_query_fpm_values_done`:
 
@@ -524,8 +598,9 @@ i40iw_sc_query_fpm_values_done
 
     poll for cqp wqe completion for query fpm
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
 .. _`i40iw_sc_query_fpm_values`:
 
@@ -536,23 +611,29 @@ i40iw_sc_query_fpm_values
 
     cqp wqe query fpm values
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param u8 hmc_fn_id:
+    :param hmc_fn_id:
         hmc function id
+    :type hmc_fn_id: u8
 
-    :param struct i40iw_dma_mem \*query_fpm_mem:
+    :param query_fpm_mem:
         memory for return fpm values
+    :type query_fpm_mem: struct i40iw_dma_mem \*
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
-    :param u8 wait_type:
+    :param wait_type:
         poll ccq or cqp registers for cqp completion
+    :type wait_type: u8
 
 .. _`i40iw_sc_add_arp_cache_entry`:
 
@@ -563,17 +644,21 @@ i40iw_sc_add_arp_cache_entry
 
     cqp wqe add arp cache entry
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param struct i40iw_add_arp_cache_entry_info \*info:
+    :param info:
         arp entry information
+    :type info: struct i40iw_add_arp_cache_entry_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_del_arp_cache_entry`:
 
@@ -584,17 +669,21 @@ i40iw_sc_del_arp_cache_entry
 
     dele arp cache entry
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param u16 arp_index:
+    :param arp_index:
         arp index to delete arp entry
+    :type arp_index: u16
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_query_arp_cache_entry`:
 
@@ -605,17 +694,21 @@ i40iw_sc_query_arp_cache_entry
 
     cqp wqe to query arp and arp index
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param u16 arp_index:
+    :param arp_index:
         arp index to delete arp entry
+    :type arp_index: u16
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_manage_apbvt_entry`:
 
@@ -626,17 +719,21 @@ i40iw_sc_manage_apbvt_entry
 
     for adding and deleting apbvt entries
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param struct i40iw_apbvt_info \*info:
+    :param info:
         info for apbvt entry to add or delete
+    :type info: struct i40iw_apbvt_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_manage_qhash_table_entry`:
 
@@ -647,17 +744,21 @@ i40iw_sc_manage_qhash_table_entry
 
     manage quad hash entries
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param struct i40iw_qhash_table_info \*info:
+    :param info:
         info for quad hash to manage
+    :type info: struct i40iw_qhash_table_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_manage_qhash_table_entry.description`:
 
@@ -682,14 +783,17 @@ i40iw_sc_alloc_local_mac_ipaddr_entry
 
     cqp wqe for loc mac entry
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_add_local_mac_ipaddr_entry`:
 
@@ -700,17 +804,21 @@ i40iw_sc_add_local_mac_ipaddr_entry
 
     add mac enry
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param struct i40iw_local_mac_ipaddr_entry_info \*info:
+    :param info:
         mac addr info
+    :type info: struct i40iw_local_mac_ipaddr_entry_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_del_local_mac_ipaddr_entry`:
 
@@ -721,21 +829,26 @@ i40iw_sc_del_local_mac_ipaddr_entry
 
     cqp wqe to dele local mac
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param u8 entry_idx:
+    :param entry_idx:
         index of mac entry
         \ ````\  ignore_ref_count: to force mac adde delete
+    :type entry_idx: u8
 
-    :param u8 ignore_ref_count:
+    :param ignore_ref_count:
         *undescribed*
+    :type ignore_ref_count: u8
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_cqp_nop`:
 
@@ -746,14 +859,17 @@ i40iw_sc_cqp_nop
 
     send a nop wqe
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_ceq_init`:
 
@@ -764,11 +880,13 @@ i40iw_sc_ceq_init
 
     initialize ceq
 
-    :param struct i40iw_sc_ceq \*ceq:
+    :param ceq:
         ceq sc structure
+    :type ceq: struct i40iw_sc_ceq \*
 
-    :param struct i40iw_ceq_init_info \*info:
+    :param info:
         ceq initialization info
+    :type info: struct i40iw_ceq_init_info \*
 
 .. _`i40iw_sc_ceq_create`:
 
@@ -779,14 +897,17 @@ i40iw_sc_ceq_create
 
     create ceq wqe
 
-    :param struct i40iw_sc_ceq \*ceq:
+    :param ceq:
         ceq sc structure
+    :type ceq: struct i40iw_sc_ceq \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_cceq_create_done`:
 
@@ -797,8 +918,9 @@ i40iw_sc_cceq_create_done
 
     poll for control ceq wqe to complete
 
-    :param struct i40iw_sc_ceq \*ceq:
+    :param ceq:
         ceq sc structure
+    :type ceq: struct i40iw_sc_ceq \*
 
 .. _`i40iw_sc_cceq_destroy_done`:
 
@@ -809,8 +931,9 @@ i40iw_sc_cceq_destroy_done
 
     poll for destroy cceq to complete
 
-    :param struct i40iw_sc_ceq \*ceq:
+    :param ceq:
         ceq sc structure
+    :type ceq: struct i40iw_sc_ceq \*
 
 .. _`i40iw_sc_cceq_create`:
 
@@ -821,11 +944,13 @@ i40iw_sc_cceq_create
 
     create cceq
 
-    :param struct i40iw_sc_ceq \*ceq:
+    :param ceq:
         ceq sc structure
+    :type ceq: struct i40iw_sc_ceq \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
 .. _`i40iw_sc_ceq_destroy`:
 
@@ -836,14 +961,17 @@ i40iw_sc_ceq_destroy
 
     destroy ceq
 
-    :param struct i40iw_sc_ceq \*ceq:
+    :param ceq:
         ceq sc structure
+    :type ceq: struct i40iw_sc_ceq \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_process_ceq`:
 
@@ -854,11 +982,13 @@ i40iw_sc_process_ceq
 
     process ceq
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_ceq \*ceq:
+    :param ceq:
         ceq sc structure
+    :type ceq: struct i40iw_sc_ceq \*
 
 .. _`i40iw_sc_aeq_init`:
 
@@ -869,11 +999,13 @@ i40iw_sc_aeq_init
 
     initialize aeq
 
-    :param struct i40iw_sc_aeq \*aeq:
+    :param aeq:
         aeq structure ptr
+    :type aeq: struct i40iw_sc_aeq \*
 
-    :param struct i40iw_aeq_init_info \*info:
+    :param info:
         aeq initialization info
+    :type info: struct i40iw_aeq_init_info \*
 
 .. _`i40iw_sc_aeq_create`:
 
@@ -884,14 +1016,17 @@ i40iw_sc_aeq_create
 
     create aeq
 
-    :param struct i40iw_sc_aeq \*aeq:
+    :param aeq:
         aeq structure ptr
+    :type aeq: struct i40iw_sc_aeq \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_aeq_destroy`:
 
@@ -902,14 +1037,17 @@ i40iw_sc_aeq_destroy
 
     destroy aeq during close
 
-    :param struct i40iw_sc_aeq \*aeq:
+    :param aeq:
         aeq structure ptr
+    :type aeq: struct i40iw_sc_aeq \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_get_next_aeqe`:
 
@@ -920,11 +1058,13 @@ i40iw_sc_get_next_aeqe
 
     get next aeq entry
 
-    :param struct i40iw_sc_aeq \*aeq:
+    :param aeq:
         aeq structure ptr
+    :type aeq: struct i40iw_sc_aeq \*
 
-    :param struct i40iw_aeqe_info \*info:
+    :param info:
         aeqe info to be returned
+    :type info: struct i40iw_aeqe_info \*
 
 .. _`i40iw_sc_repost_aeq_entries`:
 
@@ -935,11 +1075,13 @@ i40iw_sc_repost_aeq_entries
 
     repost completed aeq entries
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 count:
+    :param count:
         allocate count
+    :type count: u32
 
 .. _`i40iw_sc_aeq_create_done`:
 
@@ -950,8 +1092,9 @@ i40iw_sc_aeq_create_done
 
     create aeq
 
-    :param struct i40iw_sc_aeq \*aeq:
+    :param aeq:
         aeq structure ptr
+    :type aeq: struct i40iw_sc_aeq \*
 
 .. _`i40iw_sc_aeq_destroy_done`:
 
@@ -962,8 +1105,9 @@ i40iw_sc_aeq_destroy_done
 
     destroy of aeq during close
 
-    :param struct i40iw_sc_aeq \*aeq:
+    :param aeq:
         aeq structure ptr
+    :type aeq: struct i40iw_sc_aeq \*
 
 .. _`i40iw_sc_ccq_init`:
 
@@ -974,11 +1118,13 @@ i40iw_sc_ccq_init
 
     initialize control cq
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         sc's cq ctruct
+    :type cq: struct i40iw_sc_cq \*
 
-    :param struct i40iw_ccq_init_info \*info:
+    :param info:
         info for control cq initialization
+    :type info: struct i40iw_ccq_init_info \*
 
 .. _`i40iw_sc_ccq_create_done`:
 
@@ -989,8 +1135,9 @@ i40iw_sc_ccq_create_done
 
     poll cqp for ccq create
 
-    :param struct i40iw_sc_cq \*ccq:
+    :param ccq:
         ccq sc struct
+    :type ccq: struct i40iw_sc_cq \*
 
 .. _`i40iw_sc_ccq_create`:
 
@@ -1001,17 +1148,21 @@ i40iw_sc_ccq_create
 
     create control cq
 
-    :param struct i40iw_sc_cq \*ccq:
+    :param ccq:
         ccq sc struct
+    :type ccq: struct i40iw_sc_cq \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool check_overflow:
+    :param check_overflow:
         overlow flag for ccq
+    :type check_overflow: bool
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_ccq_destroy`:
 
@@ -1022,14 +1173,17 @@ i40iw_sc_ccq_destroy
 
     destroy ccq during close
 
-    :param struct i40iw_sc_cq \*ccq:
+    :param ccq:
         ccq sc struct
+    :type ccq: struct i40iw_sc_cq \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_cq_init`:
 
@@ -1040,11 +1194,13 @@ i40iw_sc_cq_init
 
     initialize completion q
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         cq struct
+    :type cq: struct i40iw_sc_cq \*
 
-    :param struct i40iw_cq_init_info \*info:
+    :param info:
         cq initialization info
+    :type info: struct i40iw_cq_init_info \*
 
 .. _`i40iw_sc_cq_create`:
 
@@ -1055,17 +1211,21 @@ i40iw_sc_cq_create
 
     create completion q
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         cq struct
+    :type cq: struct i40iw_sc_cq \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool check_overflow:
+    :param check_overflow:
         flag for overflow check
+    :type check_overflow: bool
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_cq_destroy`:
 
@@ -1076,14 +1236,17 @@ i40iw_sc_cq_destroy
 
     destroy completion q
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         cq struct
+    :type cq: struct i40iw_sc_cq \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_cq_modify`:
 
@@ -1094,17 +1257,21 @@ i40iw_sc_cq_modify
 
     modify a Completion Queue
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         cq struct
+    :type cq: struct i40iw_sc_cq \*
 
-    :param struct i40iw_modify_cq_info \*info:
+    :param info:
         modification info struct
+    :type info: struct i40iw_modify_cq_info \*
 
-    :param u64 scratch:
+    :param scratch:
         *undescribed*
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag to post to sq
+    :type post_sq: bool
 
 .. _`i40iw_sc_qp_init`:
 
@@ -1115,11 +1282,13 @@ i40iw_sc_qp_init
 
     initialize qp
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_qp_init_info \*info:
+    :param info:
         initialization qp info
+    :type info: struct i40iw_qp_init_info \*
 
 .. _`i40iw_sc_qp_create`:
 
@@ -1130,17 +1299,21 @@ i40iw_sc_qp_create
 
     create qp
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_create_qp_info \*info:
+    :param info:
         qp create info
+    :type info: struct i40iw_create_qp_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_qp_modify`:
 
@@ -1151,17 +1324,21 @@ i40iw_sc_qp_modify
 
     modify qp cqp wqe
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_modify_qp_info \*info:
+    :param info:
         modify qp info
+    :type info: struct i40iw_modify_qp_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_qp_destroy`:
 
@@ -1172,20 +1349,25 @@ i40iw_sc_qp_destroy
 
     cqp destroy qp
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool remove_hash_idx:
+    :param remove_hash_idx:
         flag if to remove hash idx
+    :type remove_hash_idx: bool
 
-    :param bool ignore_mw_bnd:
+    :param ignore_mw_bnd:
         memory window bind flag
+    :type ignore_mw_bnd: bool
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_qp_flush_wqes`:
 
@@ -1196,17 +1378,21 @@ i40iw_sc_qp_flush_wqes
 
     flush qp's wqe
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_qp_flush_info \*info:
+    :param info:
         dlush information
+    :type info: struct i40iw_qp_flush_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_gen_ae`:
 
@@ -1217,17 +1403,21 @@ i40iw_sc_gen_ae
 
     generate AE, currently uses flush WQE CQP OP
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_gen_ae_info \*info:
+    :param info:
         gen ae information
+    :type info: struct i40iw_gen_ae_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_qp_upload_context`:
 
@@ -1238,17 +1428,21 @@ i40iw_sc_qp_upload_context
 
     upload qp's context
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_upload_context_info \*info:
+    :param info:
         upload context info ptr for return
+    :type info: struct i40iw_upload_context_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_qp_setctx`:
 
@@ -1259,14 +1453,17 @@ i40iw_sc_qp_setctx
 
     set qp's context
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param u64 \*qp_ctx:
+    :param qp_ctx:
         context ptr
+    :type qp_ctx: u64 \*
 
-    :param struct i40iw_qp_host_ctx_info \*info:
+    :param info:
         ctx info
+    :type info: struct i40iw_qp_host_ctx_info \*
 
 .. _`i40iw_sc_alloc_stag`:
 
@@ -1277,17 +1474,21 @@ i40iw_sc_alloc_stag
 
     mr stag alloc
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_allocate_stag_info \*info:
+    :param info:
         stag info
+    :type info: struct i40iw_allocate_stag_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_mr_reg_non_shared`:
 
@@ -1298,17 +1499,21 @@ i40iw_sc_mr_reg_non_shared
 
     non-shared mr registration
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_reg_ns_stag_info \*info:
+    :param info:
         mr info
+    :type info: struct i40iw_reg_ns_stag_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_mr_reg_shared`:
 
@@ -1319,17 +1524,21 @@ i40iw_sc_mr_reg_shared
 
     registered shared memory region
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_register_shared_stag \*info:
+    :param info:
         info for shared memory registeration
+    :type info: struct i40iw_register_shared_stag \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_dealloc_stag`:
 
@@ -1340,17 +1549,21 @@ i40iw_sc_dealloc_stag
 
     deallocate stag
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_dealloc_stag_info \*info:
+    :param info:
         dealloc stag info
+    :type info: struct i40iw_dealloc_stag_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_query_stag`:
 
@@ -1361,17 +1574,21 @@ i40iw_sc_query_stag
 
     query hardware for stag
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param u32 stag_index:
+    :param stag_index:
         stag index for query
+    :type stag_index: u32
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_mw_alloc`:
 
@@ -1382,20 +1599,25 @@ i40iw_sc_mw_alloc
 
     mw allocate
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param u32 mw_stag_index:
+    :param mw_stag_index:
         stag index
+    :type mw_stag_index: u32
 
-    :param u16 pd_id:
+    :param pd_id:
         pd is for this mw
+    :type pd_id: u16
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_mr_fast_register`:
 
@@ -1406,14 +1628,17 @@ i40iw_sc_mr_fast_register
 
     Posts RDMA fast register mr WR to iwarp qp
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp struct
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_fast_reg_stag_info \*info:
+    :param info:
         fast mr info
+    :type info: struct i40iw_fast_reg_stag_info \*
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
 .. _`i40iw_sc_send_lsmm`:
 
@@ -1424,17 +1649,21 @@ i40iw_sc_send_lsmm
 
     send last streaming mode message
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp struct
+    :type qp: struct i40iw_sc_qp \*
 
-    :param void \*lsmm_buf:
+    :param lsmm_buf:
         buffer with lsmm message
+    :type lsmm_buf: void \*
 
-    :param u32 size:
+    :param size:
         size of lsmm buffer
+    :type size: u32
 
-    :param i40iw_stag stag:
+    :param stag:
         stag of lsmm buffer
+    :type stag: i40iw_stag
 
 .. _`i40iw_sc_send_lsmm_nostag`:
 
@@ -1445,14 +1674,17 @@ i40iw_sc_send_lsmm_nostag
 
     for privilege qp
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp struct
+    :type qp: struct i40iw_sc_qp \*
 
-    :param void \*lsmm_buf:
+    :param lsmm_buf:
         buffer with lsmm message
+    :type lsmm_buf: void \*
 
-    :param u32 size:
+    :param size:
         size of lsmm buffer
+    :type size: u32
 
 .. _`i40iw_sc_send_rtt`:
 
@@ -1463,11 +1695,13 @@ i40iw_sc_send_rtt
 
     send last read0 or write0
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp struct
+    :type qp: struct i40iw_sc_qp \*
 
-    :param bool read:
+    :param read:
         Do read0 or write0
+    :type read: bool
 
 .. _`i40iw_sc_post_wqe0`:
 
@@ -1478,11 +1712,13 @@ i40iw_sc_post_wqe0
 
     send wqe with opcode
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp struct
+    :type qp: struct i40iw_sc_qp \*
 
-    :param u8 opcode:
+    :param opcode:
         opcode to use for wqe0
+    :type opcode: u8
 
 .. _`i40iw_sc_init_iw_hmc`:
 
@@ -1493,11 +1729,13 @@ i40iw_sc_init_iw_hmc
 
     queries fpm values using cqp and populates hmc_info
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         ptr to i40iw_dev struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u8 hmc_fn_id:
+    :param hmc_fn_id:
         hmc function id
+    :type hmc_fn_id: u8
 
 .. _`i40iw_sc_configure_iw_fpm`:
 
@@ -1508,11 +1746,13 @@ i40iw_sc_configure_iw_fpm
 
     commits hmc obj cnt values using cqp command and populates fpm base address in hmc_info
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         ptr to i40iw_dev struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u8 hmc_fn_id:
+    :param hmc_fn_id:
         hmc function id
+    :type hmc_fn_id: u8
 
 .. _`cqp_sds_wqe_fill`:
 
@@ -1523,15 +1763,18 @@ cqp_sds_wqe_fill
 
     fill cqp wqe doe sd
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
         \ ``info``\ ; sd info for wqe
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param struct i40iw_update_sds_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct i40iw_update_sds_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
 .. _`i40iw_update_pe_sds`:
 
@@ -1542,14 +1785,17 @@ i40iw_update_pe_sds
 
     cqp wqe for sd
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         ptr to i40iw_dev struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_update_sds_info \*info:
+    :param info:
         sd info for sd's
+    :type info: struct i40iw_update_sds_info \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
 .. _`i40iw_update_sds_noccq`:
 
@@ -1560,11 +1806,13 @@ i40iw_update_sds_noccq
 
     update sd before ccq created
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_update_sds_info \*info:
+    :param info:
         sd info for sd's
+    :type info: struct i40iw_update_sds_info \*
 
 .. _`i40iw_sc_suspend_qp`:
 
@@ -1575,14 +1823,17 @@ i40iw_sc_suspend_qp
 
     suspend qp for param change
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp struct
+    :type qp: struct i40iw_sc_qp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
 .. _`i40iw_sc_resume_qp`:
 
@@ -1593,14 +1844,17 @@ i40iw_sc_resume_qp
 
     resume qp after suspend
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp struct
+    :type qp: struct i40iw_sc_qp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
 .. _`i40iw_sc_static_hmc_pages_allocated`:
 
@@ -1611,20 +1865,25 @@ i40iw_sc_static_hmc_pages_allocated
 
     cqp wqe to allocate hmc pages
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param u64 scratch:
+    :param scratch:
         u64 saved to be used during cqp completion
+    :type scratch: u64
 
-    :param u8 hmc_fn_id:
+    :param hmc_fn_id:
         hmc function id
+    :type hmc_fn_id: u8
 
-    :param bool post_sq:
+    :param post_sq:
         flag for cqp db to ring
+    :type post_sq: bool
 
-    :param bool poll_registers:
+    :param poll_registers:
         flag to poll register for cqp completion
+    :type poll_registers: bool
 
 .. _`i40iw_ring_full`:
 
@@ -1635,8 +1894,9 @@ i40iw_ring_full
 
     check if cqp ring is full
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         struct for cqp hw
+    :type cqp: struct i40iw_sc_cqp \*
 
 .. _`i40iw_est_sd`:
 
@@ -1647,11 +1907,13 @@ i40iw_est_sd
 
     returns approximate number of SDs for HMC
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         hmc structure, size and count for HMC objects
+    :type hmc_info: struct i40iw_hmc_info \*
 
 .. _`i40iw_config_fpm_values`:
 
@@ -1662,11 +1924,13 @@ i40iw_config_fpm_values
 
     configure HMC objects
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 qp_count:
+    :param qp_count:
         desired qp count
+    :type qp_count: u32
 
 .. _`i40iw_exec_cqp_cmd`:
 
@@ -1677,11 +1941,13 @@ i40iw_exec_cqp_cmd
 
     execute cqp cmd when wqe are available
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         rdma device
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct cqp_commands_info \*pcmdinfo:
+    :param pcmdinfo:
         cqp command info
+    :type pcmdinfo: struct cqp_commands_info \*
 
 .. _`i40iw_process_cqp_cmd`:
 
@@ -1692,11 +1958,13 @@ i40iw_process_cqp_cmd
 
     process all cqp commands
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct cqp_commands_info \*pcmdinfo:
+    :param pcmdinfo:
         cqp command info
+    :type pcmdinfo: struct cqp_commands_info \*
 
 .. _`i40iw_process_bh`:
 
@@ -1707,8 +1975,9 @@ i40iw_process_bh
 
     called from tasklet for cqp list
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         sc device struct
+    :type dev: struct i40iw_sc_dev \*
 
 .. _`i40iw_iwarp_opcode`:
 
@@ -1719,11 +1988,13 @@ i40iw_iwarp_opcode
 
     determine if incoming is rdma layer
 
-    :param struct i40iw_aeqe_info \*info:
+    :param info:
         aeq info for the packet
+    :type info: struct i40iw_aeqe_info \*
 
-    :param u8 \*pkt:
+    :param pkt:
         packet for error
+    :type pkt: u8 \*
 
 .. _`i40iw_locate_mpa`:
 
@@ -1734,8 +2005,9 @@ i40iw_locate_mpa
 
     return pointer to mpa in the pkt
 
-    :param u8 \*pkt:
+    :param pkt:
         packet with data
+    :type pkt: u8 \*
 
 .. _`i40iw_setup_termhdr`:
 
@@ -1746,20 +2018,25 @@ i40iw_setup_termhdr
 
     termhdr for terminate pkt
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         sc qp ptr for pkt
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_terminate_hdr \*hdr:
+    :param hdr:
         term hdr
+    :type hdr: struct i40iw_terminate_hdr \*
 
-    :param enum i40iw_flush_opcode opcode:
+    :param opcode:
         flush opcode for termhdr
+    :type opcode: enum i40iw_flush_opcode
 
-    :param u8 layer_etype:
+    :param layer_etype:
         error layer + error type
+    :type layer_etype: u8
 
-    :param u8 err:
+    :param err:
         error cod ein the header
+    :type err: u8
 
 .. _`i40iw_bld_terminate_hdr`:
 
@@ -1770,11 +2047,13 @@ i40iw_bld_terminate_hdr
 
     build terminate message header
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         qp associated with received terminate AE
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_aeqe_info \*info:
+    :param info:
         the struct contiaing AE information
+    :type info: struct i40iw_aeqe_info \*
 
 .. _`i40iw_terminate_send_fin`:
 
@@ -1785,8 +2064,9 @@ i40iw_terminate_send_fin
 
     Send fin for terminate message
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         qp associated with received terminate AE
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_terminate_connection`:
 
@@ -1797,11 +2077,13 @@ i40iw_terminate_connection
 
     Bad AE and send terminate to remote QP
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         qp associated with received terminate AE
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_aeqe_info \*info:
+    :param info:
         the struct contiaing AE information
+    :type info: struct i40iw_aeqe_info \*
 
 .. _`i40iw_terminate_received`:
 
@@ -1812,11 +2094,13 @@ i40iw_terminate_received
 
     handle terminate received AE
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         qp associated with received terminate AE
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_aeqe_info \*info:
+    :param info:
         the struct contiaing AE information
+    :type info: struct i40iw_aeqe_info \*
 
 .. _`i40iw_sc_vsi_init`:
 
@@ -1827,11 +2111,13 @@ i40iw_sc_vsi_init
 
     Initialize virtual device
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         pointer to the vsi structure
+    :type vsi: struct i40iw_sc_vsi \*
 
-    :param struct i40iw_vsi_init_info \*info:
+    :param info:
         parameters to initialize vsi
+    :type info: struct i40iw_vsi_init_info \*
 
 .. _`i40iw_hw_stats_init`:
 
@@ -1842,14 +2128,17 @@ i40iw_hw_stats_init
 
     Initiliaze HW stats table
 
-    :param struct i40iw_vsi_pestat \*stats:
+    :param stats:
         pestat struct
+    :type stats: struct i40iw_vsi_pestat \*
 
-    :param u8 fcn_idx:
+    :param fcn_idx:
         PCI fn id
+    :type fcn_idx: u8
 
-    :param bool is_pf:
+    :param is_pf:
         Is it a PF?
+    :type is_pf: bool
 
 .. _`i40iw_hw_stats_init.description`:
 
@@ -1868,14 +2157,17 @@ i40iw_hw_stats_read_32
 
     Read 32-bit HW stats counters and accommodates for roll-overs.
 
-    :param struct i40iw_vsi_pestat \*stats:
+    :param stats:
         *undescribed*
+    :type stats: struct i40iw_vsi_pestat \*
 
-    :param enum i40iw_hw_stats_index_32b index:
+    :param index:
         index in HW stats table which contains offset reg-addr
+    :type index: enum i40iw_hw_stats_index_32b
 
-    :param u64 \*value:
+    :param value:
         hw stats value
+    :type value: u64 \*
 
 .. _`i40iw_hw_stats_read_64`:
 
@@ -1886,14 +2178,17 @@ i40iw_hw_stats_read_64
 
     Read HW stats counters (greater than 32-bit) and accommodates for roll-overs.
 
-    :param struct i40iw_vsi_pestat \*stats:
+    :param stats:
         pestat struct
+    :type stats: struct i40iw_vsi_pestat \*
 
-    :param enum i40iw_hw_stats_index_64b index:
+    :param index:
         index in HW stats table which contains offset reg-addr
+    :type index: enum i40iw_hw_stats_index_64b
 
-    :param u64 \*value:
+    :param value:
         hw stats value
+    :type value: u64 \*
 
 .. _`i40iw_hw_stats_read_all`:
 
@@ -1904,11 +2199,13 @@ i40iw_hw_stats_read_all
 
     read all HW stat counters
 
-    :param struct i40iw_vsi_pestat \*stats:
+    :param stats:
         pestat struct
+    :type stats: struct i40iw_vsi_pestat \*
 
-    :param struct i40iw_dev_hw_stats \*stats_values:
+    :param stats_values:
         hw stats structure
+    :type stats_values: struct i40iw_dev_hw_stats \*
 
 .. _`i40iw_hw_stats_read_all.description`:
 
@@ -1927,8 +2224,9 @@ i40iw_hw_stats_refresh_all
 
     Update all HW stats structs
 
-    :param struct i40iw_vsi_pestat \*stats:
+    :param stats:
         pestat struct
+    :type stats: struct i40iw_vsi_pestat \*
 
 .. _`i40iw_hw_stats_refresh_all.description`:
 
@@ -1947,8 +2245,9 @@ i40iw_get_fcn_id
 
     Return the function id
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         pointer to the device
+    :type dev: struct i40iw_sc_dev \*
 
 .. _`i40iw_vsi_stats_init`:
 
@@ -1959,11 +2258,13 @@ i40iw_vsi_stats_init
 
     Initialize the vsi statistics
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         pointer to the vsi structure
+    :type vsi: struct i40iw_sc_vsi \*
 
-    :param struct i40iw_vsi_stats_info \*info:
+    :param info:
         The info structure used for initialization
+    :type info: struct i40iw_vsi_stats_info \*
 
 .. _`i40iw_vsi_stats_free`:
 
@@ -1974,8 +2275,9 @@ i40iw_vsi_stats_free
 
     Free the vsi stats
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         pointer to the vsi structure
+    :type vsi: struct i40iw_sc_vsi \*
 
 .. _`i40iw_device_init`:
 
@@ -1986,11 +2288,13 @@ i40iw_device_init
 
     Initialize IWARP device
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         IWARP device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_device_init_info \*info:
+    :param info:
         IWARP init info
+    :type info: struct i40iw_device_init_info \*
 
 .. This file was automatic generated / don't edit.
 

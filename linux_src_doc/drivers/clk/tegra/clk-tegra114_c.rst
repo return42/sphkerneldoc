@@ -10,8 +10,9 @@ tegra114_car_barrier
 
     wait for pending writes to the CAR to complete
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra114_car_barrier.description`:
 
@@ -30,8 +31,9 @@ tegra114_clock_tune_cpu_trimmers_high
 
     use high-voltage propagation delays
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra114_clock_tune_cpu_trimmers_high.description`:
 
@@ -51,8 +53,9 @@ tegra114_clock_tune_cpu_trimmers_low
 
     use low-voltage propagation delays
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra114_clock_tune_cpu_trimmers_low.description`:
 
@@ -74,8 +77,9 @@ tegra114_clock_tune_cpu_trimmers_init
 
     set up and enable clk prop delays
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra114_clock_tune_cpu_trimmers_init.description`:
 
@@ -95,8 +99,9 @@ tegra114_clock_assert_dfll_dvco_reset
 
     assert the DFLL's DVCO reset
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra114_clock_assert_dfll_dvco_reset.description`:
 
@@ -114,8 +119,9 @@ tegra114_clock_deassert_dfll_dvco_reset
 
     deassert the DFLL's DVCO reset
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra114_clock_deassert_dfll_dvco_reset.description`:
 

@@ -10,8 +10,9 @@ uwb_rc_neh_put
 
     release reference to a neh
 
-    :param struct uwb_rc_neh \*neh:
+    :param neh:
         the neh
+    :type neh: struct uwb_rc_neh \*
 
 .. _`__uwb_rc_ctx_get`:
 
@@ -20,13 +21,15 @@ uwb_rc_neh_put
 
 .. c:function:: int __uwb_rc_ctx_get(struct uwb_rc *rc, struct uwb_rc_neh *neh)
 
-    :param struct uwb_rc \*rc:
-        UWB Radio Controller descriptor; \ ``rc``\ ->neh_lock taken
+    :param rc:
+        UWB Radio Controller descriptor; \ ``rc->neh_lock``\  taken
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rc_neh \*neh:
+    :param neh:
         Notification/Event Handle
         \ ``returns``\  0 if context id was assigned ok; < 0 errno on error (if
         all the context IDs are taken).
+    :type neh: struct uwb_rc_neh \*
 
 .. _`__uwb_rc_ctx_get.description`:
 
@@ -47,7 +50,7 @@ fills up those two in the bitmap so they are not allocated.
 We spread the allocation around to reduce the possibility of two
 consecutive opened \ ``neh``\ 's getting the same context ID assigned (to
 avoid surprises with late events that timed out long time ago). So
-first we search from where \ ``rc``\ ->ctx_roll is, if not found, we
+first we search from where \ ``rc->ctx_roll``\  is, if not found, we
 search from zero.
 
 .. _`uwb_rc_neh_add`:
@@ -59,23 +62,29 @@ uwb_rc_neh_add
 
     add a neh for a radio controller command
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rccb \*cmd:
+    :param cmd:
         the radio controller command
+    :type cmd: struct uwb_rccb \*
 
-    :param u8 expected_type:
+    :param expected_type:
         the type of the expected response event
+    :type expected_type: u8
 
-    :param u16 expected_event:
+    :param expected_event:
         the expected event ID
+    :type expected_event: u16
 
-    :param uwb_rc_cmd_cb_f cb:
+    :param cb:
         callback for when the event is received
+    :type cb: uwb_rc_cmd_cb_f
 
-    :param void \*arg:
+    :param arg:
         argument for the callback
+    :type arg: void \*
 
 .. _`uwb_rc_neh_add.description`:
 
@@ -94,11 +103,13 @@ uwb_rc_neh_rm
 
     remove a neh.
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rc_neh \*neh:
+    :param neh:
         the neh to remove
+    :type neh: struct uwb_rc_neh \*
 
 .. _`uwb_rc_neh_rm.description`:
 
@@ -117,11 +128,13 @@ uwb_rc_neh_arm
 
     arm an event handler timeout timer
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Radio Controller
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rc_neh \*neh:
+    :param neh:
         Notification/event handler for \ ``rc``\ 
+    :type neh: struct uwb_rc_neh \*
 
 .. _`uwb_rc_neh_arm.description`:
 
@@ -137,11 +150,13 @@ uwb_rc_neh_lookup
 
 .. c:function:: struct uwb_rc_neh *uwb_rc_neh_lookup(struct uwb_rc *rc, const struct uwb_rceb *rceb)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Radio Controller
+    :type rc: struct uwb_rc \*
 
-    :param const struct uwb_rceb \*rceb:
+    :param rceb:
         Pointer to the RCEB buffer
+    :type rceb: const struct uwb_rceb \*
 
 .. _`uwb_rc_neh_lookup.description`:
 
@@ -149,7 +164,7 @@ Description
 -----------
 
 If the listener has no buffer (NULL buffer), one is allocated for
-the right size (the amount of data received). \ ``neh``\ ->ptr will point
+the right size (the amount of data received). \ ``neh->ptr``\  will point
 to the event payload, which always starts with a 'struct
 uwb_rceb'. \ :c:func:`kfree`\  it when done.
 
@@ -162,14 +177,17 @@ uwb_rc_neh_grok
 
     them up and dispatch them.
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Radio Controller
+    :type rc: struct uwb_rc \*
 
-    :param void \*buf:
+    :param buf:
         Buffer with the stream of notifications/events
+    :type buf: void \*
 
-    :param size_t buf_size:
+    :param buf_size:
         Amount of data in the buffer
+    :type buf_size: size_t
 
 .. _`uwb_rc_neh_grok.description`:
 
@@ -198,7 +216,7 @@ Assumptions
 -----------
 
 
-\ ``rc``\ ->neh_lock is NOT taken
+\ ``rc->neh_lock``\  is NOT taken
 
 .. _`uwb_rc_neh_grok.size`:
 
@@ -237,11 +255,13 @@ uwb_rc_neh_error
 
     detected an error.
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Radio Controller
+    :type rc: struct uwb_rc \*
 
-    :param int error:
+    :param error:
         Errno error code
+    :type error: int
 
 .. This file was automatic generated / don't edit.
 

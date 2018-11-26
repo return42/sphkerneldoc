@@ -10,8 +10,9 @@ iio_triggered_event_setup
 
     Setup pollfunc_event for triggered event
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure
+    :type indio_dev: struct iio_dev \*
 
     :param irqreturn_t (\*h)(int irq, void \*p):
         Function which will be used as pollfunc_event top half
@@ -44,8 +45,9 @@ iio_triggered_event_cleanup
 
     Free resources allocated by \ :c:func:`iio_triggered_event_setup`\ 
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure
+    :type indio_dev: struct iio_dev \*
 
 .. This file was automatic generated / don't edit.
 

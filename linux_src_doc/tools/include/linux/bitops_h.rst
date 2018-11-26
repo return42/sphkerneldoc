@@ -10,11 +10,13 @@ rol32
 
     rotate a 32-bit value left
 
-    :param __u32 word:
+    :param word:
         value to rotate
+    :type word: __u32
 
-    :param unsigned int shift:
+    :param shift:
         bits to roll
+    :type shift: unsigned int
 
 .. This file was automatic generated / don't edit.
 

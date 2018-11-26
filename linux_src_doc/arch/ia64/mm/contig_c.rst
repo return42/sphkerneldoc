@@ -1,32 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/ia64/mm/contig.c
 
-.. _`find_bootmap_location`:
-
-find_bootmap_location
-=====================
-
-.. c:function:: int find_bootmap_location(u64 start, u64 end, void *arg)
-
-    callback to find a memory area for the bootmap
-
-    :param u64 start:
-        start of region
-
-    :param u64 end:
-        end of region
-
-    :param void \*arg:
-        unused callback data
-
-.. _`find_bootmap_location.description`:
-
-Description
------------
-
-Find a place to put the bootmap and return its starting address in
-bootmap_start.  This address must be page-aligned.
-
 .. _`per_cpu_init`:
 
 per_cpu_init
@@ -36,8 +10,9 @@ per_cpu_init
 
     setup per-cpu variables
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`per_cpu_init.description`:
 
@@ -55,8 +30,9 @@ setup_per_cpu_areas
 
     setup percpu areas
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`setup_per_cpu_areas.description`:
 
@@ -77,8 +53,9 @@ find_memory
 
     setup memory map
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`find_memory.description`:
 

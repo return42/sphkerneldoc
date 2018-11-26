@@ -10,8 +10,9 @@ ibmvfc_trc_start
 
     Log a start trace entry
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_trc_end`:
 
@@ -22,8 +23,9 @@ ibmvfc_trc_end
 
     Log an end trace entry
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_get_err_index`:
 
@@ -34,11 +36,13 @@ ibmvfc_get_err_index
 
     Find the index into cmd_status for the fcp response
 
-    :param u16 status:
+    :param status:
         status / error class
+    :type status: u16
 
-    :param u16 error:
+    :param error:
         error
+    :type error: u16
 
 .. _`ibmvfc_get_err_index.return-value`:
 
@@ -56,11 +60,13 @@ ibmvfc_get_cmd_error
 
     Find the error description for the fcp response
 
-    :param u16 status:
+    :param status:
         status / error class
+    :type status: u16
 
-    :param u16 error:
+    :param error:
         error
+    :type error: u16
 
 .. _`ibmvfc_get_cmd_error.return-value`:
 
@@ -78,8 +84,9 @@ ibmvfc_get_err_result
 
     Find the scsi status to return for the fcp response
 
-    :param struct ibmvfc_cmd \*vfc_cmd:
+    :param vfc_cmd:
         ibmvfc command struct
+    :type vfc_cmd: struct ibmvfc_cmd \*
 
 .. _`ibmvfc_get_err_result.return-value`:
 
@@ -97,11 +104,13 @@ ibmvfc_retry_cmd
 
     Determine if error status is retryable
 
-    :param u16 status:
+    :param status:
         status / error class
+    :type status: u16
 
-    :param u16 error:
+    :param error:
         error
+    :type error: u16
 
 .. _`ibmvfc_retry_cmd.return-value`:
 
@@ -119,8 +128,9 @@ ibmvfc_get_ls_explain
 
     Return the FC Explain description text
 
-    :param u16 status:
+    :param status:
         FC Explain status
+    :type status: u16
 
 .. _`ibmvfc_get_ls_explain.return`:
 
@@ -138,8 +148,9 @@ ibmvfc_get_gs_explain
 
     Return the FC Explain description text
 
-    :param u16 status:
+    :param status:
         FC Explain status
+    :type status: u16
 
 .. _`ibmvfc_get_gs_explain.return`:
 
@@ -157,8 +168,9 @@ ibmvfc_get_fc_type
 
     Return the FC Type description text
 
-    :param u16 status:
+    :param status:
         FC Type error status
+    :type status: u16
 
 .. _`ibmvfc_get_fc_type.return`:
 
@@ -176,11 +188,13 @@ ibmvfc_set_tgt_action
 
     Set the next init action for the target
 
-    :param struct ibmvfc_target \*tgt:
+    :param tgt:
         ibmvfc target struct
+    :type tgt: struct ibmvfc_target \*
 
-    :param enum ibmvfc_target_action action:
+    :param action:
         action to perform
+    :type action: enum ibmvfc_target_action
 
 .. _`ibmvfc_set_host_state`:
 
@@ -191,11 +205,13 @@ ibmvfc_set_host_state
 
     Set the state for the host
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
-    :param enum ibmvfc_host_state state:
+    :param state:
         state to set host to
+    :type state: enum ibmvfc_host_state
 
 .. _`ibmvfc_set_host_state.return`:
 
@@ -213,11 +229,13 @@ ibmvfc_set_host_action
 
     Set the next init action for the host
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
-    :param enum ibmvfc_host_action action:
+    :param action:
         action to perform
+    :type action: enum ibmvfc_host_action
 
 .. _`ibmvfc_reinit_host`:
 
@@ -228,8 +246,9 @@ ibmvfc_reinit_host
 
     Re-start host initialization (no NPIV Login)
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_reinit_host.return-value`:
 
@@ -247,11 +266,13 @@ ibmvfc_link_down
 
     Handle a link down event from the adapter
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
-    :param enum ibmvfc_host_state state:
+    :param state:
         ibmvfc host state to enter
+    :type state: enum ibmvfc_host_state
 
 .. _`ibmvfc_init_host`:
 
@@ -262,8 +283,9 @@ ibmvfc_init_host
 
     Start host initialization
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_init_host.return-value`:
 
@@ -281,14 +303,17 @@ ibmvfc_send_crq
 
     Send a CRQ
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
-    :param u64 word1:
+    :param word1:
         the first 64 bits of the data
+    :type word1: u64
 
-    :param u64 word2:
+    :param word2:
         the second 64 bits of the data
+    :type word2: u64
 
 .. _`ibmvfc_send_crq.return-value`:
 
@@ -306,8 +331,9 @@ ibmvfc_send_crq_init
 
     Send a CRQ init message
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_send_crq_init.return-value`:
 
@@ -325,8 +351,9 @@ ibmvfc_send_crq_init_complete
 
     Send a CRQ init complete message
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_send_crq_init_complete.return-value`:
 
@@ -344,8 +371,9 @@ ibmvfc_release_crq_queue
 
     Deallocates data and unregisters CRQ
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_release_crq_queue.description`:
 
@@ -364,8 +392,9 @@ ibmvfc_reenable_crq_queue
 
     reenables the CRQ
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_reenable_crq_queue.return-value`:
 
@@ -383,8 +412,9 @@ ibmvfc_reset_crq
 
     resets a crq after a failure
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_reset_crq.return-value`:
 
@@ -402,11 +432,13 @@ ibmvfc_valid_event
 
     Determines if event is valid.
 
-    :param struct ibmvfc_event_pool \*pool:
+    :param pool:
         event_pool that contains the event
+    :type pool: struct ibmvfc_event_pool \*
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event to be checked for validity
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_valid_event.return-value`:
 
@@ -424,8 +456,9 @@ ibmvfc_free_event
 
     Free the specified event
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc_event to be freed
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_scsi_eh_done`:
 
@@ -436,8 +469,9 @@ ibmvfc_scsi_eh_done
 
     EH done function for queuecommand commands
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_scsi_eh_done.description`:
 
@@ -456,11 +490,13 @@ ibmvfc_fail_request
 
     Fail request with specified error code
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
-    :param int error_code:
+    :param error_code:
         error code to fail request with
+    :type error_code: int
 
 .. _`ibmvfc_fail_request.return-value`:
 
@@ -478,11 +514,13 @@ ibmvfc_purge_requests
 
     Our virtual adapter just shut down. Purge any sent requests
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
-    :param int error_code:
+    :param error_code:
         error code to fail requests with
+    :type error_code: int
 
 .. _`ibmvfc_purge_requests.return-value`:
 
@@ -500,8 +538,9 @@ ibmvfc_hard_reset_host
 
     Reset the connection to the server by breaking the CRQ
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         struct ibmvfc host to reset
+    :type vhost: struct ibmvfc_host \*
 
 .. _`__ibmvfc_reset_host`:
 
@@ -512,8 +551,9 @@ ibmvfc_hard_reset_host
 
     Reset the connection to the server (no locking)
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         struct ibmvfc host to reset
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_reset_host`:
 
@@ -524,8 +564,9 @@ ibmvfc_reset_host
 
     Reset the connection to the server
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_retry_host_init`:
 
@@ -536,8 +577,9 @@ ibmvfc_retry_host_init
 
     Retry host initialization if allowed
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_retry_host_init.return`:
 
@@ -555,8 +597,9 @@ Return
 
     Find the specified scsi_target (no locking)
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
+    :type starget: struct scsi_target \*
 
 .. _`__ibmvfc_get_target.return-value`:
 
@@ -574,8 +617,9 @@ ibmvfc_get_target
 
     Find the specified scsi_target
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
+    :type starget: struct scsi_target \*
 
 .. _`ibmvfc_get_target.return-value`:
 
@@ -593,8 +637,9 @@ ibmvfc_get_host_speed
 
     Get host port speed
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host struct
+    :type shost: struct Scsi_Host \*
 
 .. _`ibmvfc_get_host_speed.return-value`:
 
@@ -612,8 +657,9 @@ ibmvfc_get_host_port_state
 
     Get host port state
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host struct
+    :type shost: struct Scsi_Host \*
 
 .. _`ibmvfc_get_host_port_state.return-value`:
 
@@ -631,11 +677,13 @@ ibmvfc_set_rport_dev_loss_tmo
 
     Set rport's device loss timeout
 
-    :param struct fc_rport \*rport:
+    :param rport:
         rport struct
+    :type rport: struct fc_rport \*
 
-    :param u32 timeout:
+    :param timeout:
         timeout value
+    :type timeout: u32
 
 .. _`ibmvfc_set_rport_dev_loss_tmo.return-value`:
 
@@ -653,8 +701,9 @@ ibmvfc_release_tgt
 
     Free memory allocated for a target
 
-    :param struct kref \*kref:
+    :param kref:
         kref struct
+    :type kref: struct kref \*
 
 .. _`ibmvfc_get_starget_node_name`:
 
@@ -665,8 +714,9 @@ ibmvfc_get_starget_node_name
 
     Get SCSI target's node name
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
+    :type starget: struct scsi_target \*
 
 .. _`ibmvfc_get_starget_node_name.return-value`:
 
@@ -684,8 +734,9 @@ ibmvfc_get_starget_port_name
 
     Get SCSI target's port name
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
+    :type starget: struct scsi_target \*
 
 .. _`ibmvfc_get_starget_port_name.return-value`:
 
@@ -703,8 +754,9 @@ ibmvfc_get_starget_port_id
 
     Get SCSI target's port ID
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
+    :type starget: struct scsi_target \*
 
 .. _`ibmvfc_get_starget_port_id.return-value`:
 
@@ -722,8 +774,9 @@ ibmvfc_wait_while_resetting
 
     Wait while the host resets
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_wait_while_resetting.return-value`:
 
@@ -741,8 +794,9 @@ ibmvfc_issue_fc_host_lip
 
     Re-initiate link initialization
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host struct
+    :type shost: struct Scsi_Host \*
 
 .. _`ibmvfc_issue_fc_host_lip.return-value`:
 
@@ -760,8 +814,9 @@ ibmvfc_gather_partition_info
 
     Gather info about the LPAR
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         *undescribed*
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_gather_partition_info.return-value`:
 
@@ -779,8 +834,9 @@ ibmvfc_set_login_info
 
     Setup info for NPIV login
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_set_login_info.return-value`:
 
@@ -798,8 +854,9 @@ ibmvfc_init_event_pool
 
     Allocates and initializes the event pool for a host
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host who owns the event pool
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_init_event_pool.description`:
 
@@ -817,8 +874,9 @@ ibmvfc_free_event_pool
 
     Frees memory of the event pool of a host
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host who owns the event pool
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_get_event`:
 
@@ -829,8 +887,9 @@ ibmvfc_get_event
 
     Gets the next free event in pool
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_get_event.description`:
 
@@ -848,14 +907,16 @@ ibmvfc_init_event
 
     Initialize fields in an event struct that are always required.
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         The event
+    :type evt: struct ibmvfc_event \*
 
     :param void (\*done)(struct ibmvfc_event \*):
         Routine to call when the event is responded to
 
-    :param u8 format:
+    :param format:
         SRP or MAD format
+    :type format: u8
 
 .. _`ibmvfc_map_sg_list`:
 
@@ -866,14 +927,17 @@ ibmvfc_map_sg_list
 
     Initialize scatterlist
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         scsi command struct
+    :type scmd: struct scsi_cmnd \*
 
-    :param int nseg:
+    :param nseg:
         number of scatterlist segments
+    :type nseg: int
 
-    :param struct srp_direct_buf \*md:
+    :param md:
         memory descriptor list to initialize
+    :type md: struct srp_direct_buf \*
 
 .. _`ibmvfc_map_sg_data`:
 
@@ -884,17 +948,21 @@ ibmvfc_map_sg_data
 
     Maps dma for a scatterlist and initializes decriptor fields
 
-    :param struct scsi_cmnd \*scmd:
-        Scsi_Cmnd with the scatterlist
+    :param scmd:
+        struct scsi_cmnd with the scatterlist
+    :type scmd: struct scsi_cmnd \*
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
-    :param struct ibmvfc_cmd \*vfc_cmd:
+    :param vfc_cmd:
         vfc_cmd that contains the memory descriptor
+    :type vfc_cmd: struct ibmvfc_cmd \*
 
-    :param struct device \*dev:
+    :param dev:
         device for which to map dma memory
+    :type dev: struct device \*
 
 .. _`ibmvfc_map_sg_data.return`:
 
@@ -912,8 +980,9 @@ ibmvfc_timeout
 
     Internal command timeout handler
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`ibmvfc_timeout.description`:
 
@@ -931,14 +1000,17 @@ ibmvfc_send_event
 
     Transforms event to u64 array and calls \ :c:func:`send_crq`\ 
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         event to be sent
+    :type evt: struct ibmvfc_event \*
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout in seconds - 0 means do not time command
+    :type timeout: unsigned long
 
 .. _`ibmvfc_send_event.description`:
 
@@ -956,8 +1028,9 @@ ibmvfc_log_error
 
     Log an error for the failed command if appropriate
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event to log
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_relogin`:
 
@@ -968,8 +1041,9 @@ ibmvfc_relogin
 
     Log back into the specified device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`ibmvfc_scsi_done`:
 
@@ -980,8 +1054,9 @@ ibmvfc_scsi_done
 
     Handle responses from commands
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event to be handled
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_scsi_done.description`:
 
@@ -999,8 +1074,9 @@ ibmvfc_host_chkready
 
     Check if the host can accept commands
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         struct ibmvfc host
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_host_chkready.return`:
 
@@ -1018,8 +1094,9 @@ ibmvfc_queuecommand_lck
 
     The queuecommand function of the scsi template
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         struct scsi_cmnd to be executed
+    :type cmnd: struct scsi_cmnd \*
 
     :param void (\*done)(struct scsi_cmnd \*):
         Callback function to be called when cmnd is completed
@@ -1040,8 +1117,9 @@ ibmvfc_sync_completion
 
     Signal that a synchronous command has completed
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_bsg_timeout_done`:
 
@@ -1052,8 +1130,9 @@ ibmvfc_bsg_timeout_done
 
     Completion handler for cancelling BSG commands
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         struct ibmvfc_event
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_bsg_timeout`:
 
@@ -1064,8 +1143,9 @@ ibmvfc_bsg_timeout
 
     Handle a BSG timeout
 
-    :param struct bsg_job \*job:
+    :param job:
         struct bsg_job that timed out
+    :type job: struct bsg_job \*
 
 .. _`ibmvfc_bsg_timeout.return`:
 
@@ -1083,11 +1163,13 @@ ibmvfc_bsg_plogi
 
     PLOGI into a target to handle a BSG command
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         struct ibmvfc_host to send command
+    :type vhost: struct ibmvfc_host \*
 
-    :param unsigned int port_id:
+    :param port_id:
         port ID to send command
+    :type port_id: unsigned int
 
 .. _`ibmvfc_bsg_plogi.return`:
 
@@ -1105,8 +1187,9 @@ ibmvfc_bsg_request
 
     Handle a BSG request
 
-    :param struct bsg_job \*job:
+    :param job:
         struct bsg_job to be executed
+    :type job: struct bsg_job \*
 
 .. _`ibmvfc_bsg_request.return`:
 
@@ -1124,14 +1207,17 @@ ibmvfc_reset_device
 
     Reset the device with the specified reset type
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device to reset
+    :type sdev: struct scsi_device \*
 
-    :param int type:
+    :param type:
         reset type
+    :type type: int
 
-    :param char \*desc:
+    :param desc:
         reset type description for log messages
+    :type desc: char \*
 
 .. _`ibmvfc_reset_device.return`:
 
@@ -1149,11 +1235,13 @@ ibmvfc_match_rport
 
     Match function for specified remote port
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
-    :param void \*rport:
+    :param rport:
         *undescribed*
+    :type rport: void \*
 
 .. _`ibmvfc_match_rport.return`:
 
@@ -1171,11 +1259,13 @@ ibmvfc_match_target
 
     Match function for specified target
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
-    :param void \*device:
+    :param device:
         device to match (starget)
+    :type device: void \*
 
 .. _`ibmvfc_match_target.return`:
 
@@ -1193,11 +1283,13 @@ ibmvfc_match_lun
 
     Match function for specified LUN
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
-    :param void \*device:
+    :param device:
         device to match (sdev)
+    :type device: void \*
 
 .. _`ibmvfc_match_lun.return`:
 
@@ -1215,11 +1307,13 @@ ibmvfc_wait_for_ops
 
     Wait for ops to complete
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
-    :param void \*device:
+    :param device:
         device to match (starget or sdev)
+    :type device: void \*
 
     :param int (\*match)(struct ibmvfc_event \*, void \*):
         match function
@@ -1240,11 +1334,13 @@ ibmvfc_cancel_all
 
     Cancel all outstanding commands to the device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device to cancel commands
+    :type sdev: struct scsi_device \*
 
-    :param int type:
+    :param type:
         type of error recovery being performed
+    :type type: int
 
 .. _`ibmvfc_cancel_all.description`:
 
@@ -1270,11 +1366,13 @@ ibmvfc_match_key
 
     Match function for specified cancel key
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
-    :param void \*key:
+    :param key:
         cancel key to match
+    :type key: void \*
 
 .. _`ibmvfc_match_key.return`:
 
@@ -1292,11 +1390,13 @@ ibmvfc_match_evt
 
     Match function for specified event
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
-    :param void \*match:
+    :param match:
         event to match
+    :type match: void \*
 
 .. _`ibmvfc_match_evt.return`:
 
@@ -1314,8 +1414,9 @@ ibmvfc_abort_task_set
 
     Abort outstanding commands to the device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device to abort commands
+    :type sdev: struct scsi_device \*
 
 .. _`ibmvfc_abort_task_set.description`:
 
@@ -1341,8 +1442,9 @@ ibmvfc_eh_abort_handler
 
     Abort a command
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         scsi command to abort
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ibmvfc_eh_abort_handler.return`:
 
@@ -1360,8 +1462,9 @@ ibmvfc_eh_device_reset_handler
 
     Reset a single LUN
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         scsi command struct
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ibmvfc_eh_device_reset_handler.return`:
 
@@ -1379,11 +1482,13 @@ ibmvfc_dev_cancel_all_noreset
 
     Device iterated cancel all function
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param void \*data:
+    :param data:
         return code
+    :type data: void \*
 
 .. _`ibmvfc_dev_cancel_all_reset`:
 
@@ -1394,11 +1499,13 @@ ibmvfc_dev_cancel_all_reset
 
     Device iterated cancel all function
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param void \*data:
+    :param data:
         return code
+    :type data: void \*
 
 .. _`ibmvfc_eh_target_reset_handler`:
 
@@ -1409,8 +1516,9 @@ ibmvfc_eh_target_reset_handler
 
     Reset the target
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         scsi command struct
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ibmvfc_eh_target_reset_handler.return`:
 
@@ -1428,8 +1536,9 @@ ibmvfc_eh_host_reset_handler
 
     Reset the connection to the server
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         struct scsi_cmnd having problems
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ibmvfc_terminate_rport_io`:
 
@@ -1440,8 +1549,9 @@ ibmvfc_terminate_rport_io
 
     Terminate all pending I/O to the rport.
 
-    :param struct fc_rport \*rport:
+    :param rport:
         rport struct
+    :type rport: struct fc_rport \*
 
 .. _`ibmvfc_terminate_rport_io.return-value`:
 
@@ -1459,8 +1569,9 @@ ibmvfc_get_ae_desc
 
     Get text description for async event
 
-    :param u64 ae:
+    :param ae:
         async event
+    :type ae: u64
 
 .. _`ibmvfc_get_link_state`:
 
@@ -1471,8 +1582,9 @@ ibmvfc_get_link_state
 
     Get text description for link state
 
-    :param enum ibmvfc_ae_link_state state:
+    :param state:
         link state
+    :type state: enum ibmvfc_ae_link_state
 
 .. _`ibmvfc_handle_async`:
 
@@ -1483,11 +1595,13 @@ ibmvfc_handle_async
 
     Handle an async event from the adapter
 
-    :param struct ibmvfc_async_crq \*crq:
+    :param crq:
         crq to process
+    :type crq: struct ibmvfc_async_crq \*
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_handle_crq`:
 
@@ -1498,11 +1612,13 @@ ibmvfc_handle_crq
 
     Handles and frees received events in the CRQ
 
-    :param struct ibmvfc_crq \*crq:
+    :param crq:
         Command/Response queue
+    :type crq: struct ibmvfc_crq \*
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_scan_finished`:
 
@@ -1513,11 +1629,13 @@ ibmvfc_scan_finished
 
     Check if the device scan is done.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host struct
+    :type shost: struct Scsi_Host \*
 
-    :param unsigned long time:
+    :param time:
         current elapsed time
+    :type time: unsigned long
 
 .. _`ibmvfc_scan_finished.return`:
 
@@ -1535,8 +1653,9 @@ ibmvfc_slave_alloc
 
     Setup the device's task set value
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         struct scsi_device device to configure
+    :type sdev: struct scsi_device \*
 
 .. _`ibmvfc_slave_alloc.description`:
 
@@ -1562,8 +1681,9 @@ ibmvfc_target_alloc
 
     Setup the target's task set value
 
-    :param struct scsi_target \*starget:
+    :param starget:
         struct scsi_target
+    :type starget: struct scsi_target \*
 
 .. _`ibmvfc_target_alloc.description`:
 
@@ -1589,8 +1709,9 @@ ibmvfc_slave_configure
 
     Configure the device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         struct scsi_device device to configure
+    :type sdev: struct scsi_device \*
 
 .. _`ibmvfc_slave_configure.description`:
 
@@ -1616,11 +1737,13 @@ ibmvfc_change_queue_depth
 
     Change the device's queue depth
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param int qdepth:
+    :param qdepth:
         depth to set
+    :type qdepth: int
 
 .. _`ibmvfc_change_queue_depth.return-value`:
 
@@ -1638,14 +1761,17 @@ ibmvfc_show_log_level
 
     Show the adapter's error logging level
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`ibmvfc_show_log_level.return-value`:
 
@@ -1663,17 +1789,21 @@ ibmvfc_store_log_level
 
     Change the adapter's error logging level
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`ibmvfc_store_log_level.return-value`:
 
@@ -1691,23 +1821,29 @@ ibmvfc_read_trace
 
     Dump the adapter trace
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject struct
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         bin_attribute struct
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         offset
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`ibmvfc_read_trace.return-value`:
 
@@ -1725,8 +1861,9 @@ ibmvfc_next_async_crq
 
     Returns the next entry in async queue
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_next_async_crq.return`:
 
@@ -1744,8 +1881,9 @@ ibmvfc_next_crq
 
     Returns the next entry in message queue
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_next_crq.return`:
 
@@ -1763,11 +1901,13 @@ ibmvfc_interrupt
 
     Interrupt handler
 
-    :param int irq:
+    :param irq:
         number of irq to handle, not used
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         ibmvfc_host that received interrupt
+    :type dev_instance: void \*
 
 .. _`ibmvfc_interrupt.return`:
 
@@ -1785,8 +1925,9 @@ ibmvfc_tasklet
 
     Interrupt handler tasklet
 
-    :param void \*data:
+    :param data:
         ibmvfc host struct
+    :type data: void \*
 
 .. _`ibmvfc_tasklet.return`:
 
@@ -1804,8 +1945,9 @@ ibmvfc_init_tgt
 
     Set the next init job step for the target
 
-    :param struct ibmvfc_target \*tgt:
+    :param tgt:
         ibmvfc target struct
+    :type tgt: struct ibmvfc_target \*
 
     :param void (\*job_step)(struct ibmvfc_target \*):
         job step to perform
@@ -1819,8 +1961,9 @@ ibmvfc_retry_tgt_init
 
     Attempt to retry a step in target initialization
 
-    :param struct ibmvfc_target \*tgt:
+    :param tgt:
         ibmvfc target struct
+    :type tgt: struct ibmvfc_target \*
 
     :param void (\*job_step)(struct ibmvfc_target \*):
         initialization job step
@@ -1841,8 +1984,9 @@ ibmvfc_get_prli_rsp
 
     Find PRLI response index
 
-    :param u16 flags:
+    :param flags:
         PRLI response flags
+    :type flags: u16
 
 .. _`ibmvfc_tgt_prli_done`:
 
@@ -1853,8 +1997,9 @@ ibmvfc_tgt_prli_done
 
     Completion handler for Process Login
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_tgt_send_prli`:
 
@@ -1865,8 +2010,9 @@ ibmvfc_tgt_send_prli
 
     Send a process login
 
-    :param struct ibmvfc_target \*tgt:
+    :param tgt:
         ibmvfc target struct
+    :type tgt: struct ibmvfc_target \*
 
 .. _`ibmvfc_tgt_plogi_done`:
 
@@ -1877,8 +2023,9 @@ ibmvfc_tgt_plogi_done
 
     Completion handler for Port Login
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_tgt_send_plogi`:
 
@@ -1889,8 +2036,9 @@ ibmvfc_tgt_send_plogi
 
     Send PLOGI to the specified target
 
-    :param struct ibmvfc_target \*tgt:
+    :param tgt:
         ibmvfc target struct
+    :type tgt: struct ibmvfc_target \*
 
 .. _`ibmvfc_tgt_implicit_logout_done`:
 
@@ -1901,8 +2049,9 @@ ibmvfc_tgt_implicit_logout_done
 
     Completion handler for Implicit Logout MAD
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_tgt_implicit_logout`:
 
@@ -1913,8 +2062,9 @@ ibmvfc_tgt_implicit_logout
 
     Initiate an Implicit Logout for specified target
 
-    :param struct ibmvfc_target \*tgt:
+    :param tgt:
         ibmvfc target struct
+    :type tgt: struct ibmvfc_target \*
 
 .. _`ibmvfc_adisc_needs_plogi`:
 
@@ -1925,11 +2075,13 @@ ibmvfc_adisc_needs_plogi
 
     Does device need PLOGI?
 
-    :param struct ibmvfc_passthru_mad \*mad:
+    :param mad:
         ibmvfc passthru mad struct
+    :type mad: struct ibmvfc_passthru_mad \*
 
-    :param struct ibmvfc_target \*tgt:
+    :param tgt:
         ibmvfc target struct
+    :type tgt: struct ibmvfc_target \*
 
 .. _`ibmvfc_adisc_needs_plogi.return`:
 
@@ -1947,8 +2099,9 @@ ibmvfc_tgt_adisc_done
 
     Completion handler for ADISC
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_init_passthru`:
 
@@ -1959,8 +2112,9 @@ ibmvfc_init_passthru
 
     Initialize an event struct for FC passthru
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_tgt_adisc_cancel_done`:
 
@@ -1971,8 +2125,9 @@ ibmvfc_tgt_adisc_cancel_done
 
     Completion handler when cancelling an ADISC
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_tgt_adisc_cancel_done.description`:
 
@@ -1993,8 +2148,9 @@ ibmvfc_adisc_timeout
 
     Handle an ADISC timeout
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`ibmvfc_adisc_timeout.description`:
 
@@ -2014,8 +2170,9 @@ ibmvfc_tgt_adisc
 
     Initiate an ADISC for specified target
 
-    :param struct ibmvfc_target \*tgt:
+    :param tgt:
         ibmvfc target struct
+    :type tgt: struct ibmvfc_target \*
 
 .. _`ibmvfc_tgt_adisc.description`:
 
@@ -2038,8 +2195,9 @@ ibmvfc_tgt_query_target_done
 
     Completion handler for Query Target MAD
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_tgt_query_target`:
 
@@ -2050,8 +2208,9 @@ ibmvfc_tgt_query_target
 
     Initiate a Query Target for specified target
 
-    :param struct ibmvfc_target \*tgt:
+    :param tgt:
         ibmvfc target struct
+    :type tgt: struct ibmvfc_target \*
 
 .. _`ibmvfc_alloc_target`:
 
@@ -2062,11 +2221,13 @@ ibmvfc_alloc_target
 
     Allocate and initialize an ibmvfc target
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
-    :param u64 scsi_id:
+    :param scsi_id:
         SCSI ID to allocate target for
+    :type scsi_id: u64
 
 .. _`ibmvfc_alloc_target.return`:
 
@@ -2084,8 +2245,9 @@ ibmvfc_alloc_targets
 
     Allocate and initialize ibmvfc targets
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_alloc_targets.return`:
 
@@ -2103,8 +2265,9 @@ ibmvfc_discover_targets_done
 
     Completion handler for discover targets MAD
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_discover_targets`:
 
@@ -2115,8 +2278,9 @@ ibmvfc_discover_targets
 
     Send Discover Targets MAD
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_npiv_login_done`:
 
@@ -2127,8 +2291,9 @@ ibmvfc_npiv_login_done
 
     Completion handler for NPIV Login
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         ibmvfc event struct
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_npiv_login`:
 
@@ -2139,8 +2304,9 @@ ibmvfc_npiv_login
 
     Sends NPIV login
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_npiv_logout_done`:
 
@@ -2151,8 +2317,9 @@ ibmvfc_npiv_logout_done
 
     Completion handler for NPIV Logout
 
-    :param struct ibmvfc_event \*evt:
+    :param evt:
         *undescribed*
+    :type evt: struct ibmvfc_event \*
 
 .. _`ibmvfc_npiv_logout`:
 
@@ -2163,8 +2330,9 @@ ibmvfc_npiv_logout
 
     Issue an NPIV Logout
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_dev_init_to_do`:
 
@@ -2175,8 +2343,9 @@ ibmvfc_dev_init_to_do
 
     Is there target initialization work to do?
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_dev_init_to_do.return`:
 
@@ -2194,8 +2363,9 @@ Return
 
     Is there task level work to do? (no locking)
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`__ibmvfc_work_to_do.return`:
 
@@ -2213,8 +2383,9 @@ ibmvfc_work_to_do
 
     Is there task level work to do?
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_work_to_do.return`:
 
@@ -2232,11 +2403,13 @@ ibmvfc_log_ae
 
     Log async events if necessary
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
-    :param int events:
+    :param events:
         events to log
+    :type events: int
 
 .. _`ibmvfc_tgt_add_rport`:
 
@@ -2247,8 +2420,9 @@ ibmvfc_tgt_add_rport
 
     Tell the FC transport about a new remote port
 
-    :param struct ibmvfc_target \*tgt:
+    :param tgt:
         ibmvfc target struct
+    :type tgt: struct ibmvfc_target \*
 
 .. _`ibmvfc_do_work`:
 
@@ -2259,8 +2433,9 @@ ibmvfc_do_work
 
     Do task level work
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_work`:
 
@@ -2271,8 +2446,9 @@ ibmvfc_work
 
     Do task level work
 
-    :param void \*data:
+    :param data:
         ibmvfc host struct
+    :type data: void \*
 
 .. _`ibmvfc_work.return`:
 
@@ -2290,8 +2466,9 @@ ibmvfc_init_crq
 
     Initializes and registers CRQ with hypervisor
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_init_crq.description`:
 
@@ -2317,8 +2494,9 @@ ibmvfc_free_mem
 
     Free memory for vhost
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_free_mem.return-value`:
 
@@ -2336,8 +2514,9 @@ ibmvfc_alloc_mem
 
     Allocate memory for vhost
 
-    :param struct ibmvfc_host \*vhost:
+    :param vhost:
         ibmvfc host struct
+    :type vhost: struct ibmvfc_host \*
 
 .. _`ibmvfc_alloc_mem.return-value`:
 
@@ -2355,8 +2534,9 @@ ibmvfc_rport_add_thread
 
     Worker thread for rport adds
 
-    :param struct work_struct \*work:
+    :param work:
         work struct
+    :type work: struct work_struct \*
 
 .. _`ibmvfc_probe`:
 
@@ -2367,11 +2547,13 @@ ibmvfc_probe
 
     Adapter hot plug add entry point
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         vio device struct
+    :type vdev: struct vio_dev \*
 
-    :param const struct vio_device_id \*id:
+    :param id:
         vio device id struct
+    :type id: const struct vio_device_id \*
 
 .. _`ibmvfc_probe.return-value`:
 
@@ -2389,8 +2571,9 @@ ibmvfc_remove
 
     Adapter hot plug remove entry point
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         vio device struct
+    :type vdev: struct vio_dev \*
 
 .. _`ibmvfc_remove.return-value`:
 
@@ -2408,8 +2591,9 @@ ibmvfc_resume
 
     Resume from suspend
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
 .. _`ibmvfc_resume.description`:
 
@@ -2428,8 +2612,9 @@ ibmvfc_get_desired_dma
 
     Calculate DMA resources needed by the driver
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         vio device struct
+    :type vdev: struct vio_dev \*
 
 .. _`ibmvfc_get_desired_dma.return-value`:
 
@@ -2448,8 +2633,9 @@ ibmvfc_module_init
 
     Initialize the ibmvfc module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ibmvfc_module_init.return-value`:
 
@@ -2467,8 +2653,9 @@ ibmvfc_module_exit
 
     Teardown the ibmvfc module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ibmvfc_module_exit.return-value`:
 

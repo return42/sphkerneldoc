@@ -176,15 +176,18 @@ crypto_alloc_acomp
 
     - allocate ACOMPRESS tfm handle
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         compression algorithm e.g. "deflate"
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the algorithm
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the algorithm
+    :type mask: u32
 
 .. _`crypto_alloc_acomp.description`:
 
@@ -212,8 +215,9 @@ crypto_free_acomp
 
     - free ACOMPRESS tfm handle
 
-    :param struct crypto_acomp \*tfm:
+    :param tfm:
         ACOMPRESS tfm handle allocated with \ :c:func:`crypto_alloc_acomp`\ 
+    :type tfm: struct crypto_acomp \*
 
 .. _`acomp_request_alloc`:
 
@@ -224,8 +228,9 @@ acomp_request_alloc
 
     - allocates asynchronous (de)compression request
 
-    :param struct crypto_acomp \*tfm:
+    :param tfm:
         ACOMPRESS tfm handle allocated with \ :c:func:`crypto_alloc_acomp`\ 
+    :type tfm: struct crypto_acomp \*
 
 .. _`acomp_request_alloc.return`:
 
@@ -243,8 +248,9 @@ acomp_request_free
 
     - zeroize and free asynchronous (de)compression request as well as the output buffer if allocated inside the algorithm
 
-    :param struct acomp_req \*req:
+    :param req:
         request to free
+    :type req: struct acomp_req \*
 
 .. _`acomp_request_set_callback`:
 
@@ -255,17 +261,21 @@ acomp_request_set_callback
 
     - Sets an asynchronous callback
 
-    :param struct acomp_req \*req:
+    :param req:
         request that the callback will be set for
+    :type req: struct acomp_req \*
 
-    :param u32 flgs:
+    :param flgs:
         specify for instance if the operation may backlog
+    :type flgs: u32
 
-    :param crypto_completion_t cmpl:
+    :param cmpl:
         *undescribed*
+    :type cmpl: crypto_completion_t
 
-    :param void \*data:
+    :param data:
         private data used by the caller
+    :type data: void \*
 
 .. _`acomp_request_set_callback.description`:
 
@@ -284,22 +294,27 @@ acomp_request_set_params
 
     - Sets request parameters
 
-    :param struct acomp_req \*req:
+    :param req:
         asynchronous compress request
+    :type req: struct acomp_req \*
 
-    :param struct scatterlist \*src:
+    :param src:
         pointer to input buffer scatterlist
+    :type src: struct scatterlist \*
 
-    :param struct scatterlist \*dst:
+    :param dst:
         pointer to output buffer scatterlist. If this is NULL, the
         acomp layer will allocate the output memory
+    :type dst: struct scatterlist \*
 
-    :param unsigned int slen:
+    :param slen:
         size of the input buffer
+    :type slen: unsigned int
 
-    :param unsigned int dlen:
+    :param dlen:
         size of the output buffer. If dst is NULL, this can be used by
         the user to specify the maximum amount of memory to allocate
+    :type dlen: unsigned int
 
 .. _`acomp_request_set_params.description`:
 
@@ -317,8 +332,9 @@ crypto_acomp_compress
 
     - Invoke asynchronous compress operation
 
-    :param struct acomp_req \*req:
+    :param req:
         asynchronous compress request
+    :type req: struct acomp_req \*
 
 .. _`crypto_acomp_compress.description`:
 
@@ -343,8 +359,9 @@ crypto_acomp_decompress
 
     - Invoke asynchronous decompress operation
 
-    :param struct acomp_req \*req:
+    :param req:
         asynchronous compress request
+    :type req: struct acomp_req \*
 
 .. _`crypto_acomp_decompress.description`:
 

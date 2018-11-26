@@ -10,8 +10,9 @@ aess_enable_autogating
 
     enable AESS internal autogating
 
-    :param void __iomem \*base:
+    :param base:
         *undescribed*
+    :type base: void __iomem \*
 
 .. _`aess_enable_autogating.description`:
 

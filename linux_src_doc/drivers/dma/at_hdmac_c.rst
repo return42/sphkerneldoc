@@ -10,11 +10,13 @@ atc_alloc_descriptor
 
     allocate and return an initialized descriptor
 
-    :param struct dma_chan \*chan:
+    :param chan:
         the channel to allocate descriptors for
+    :type chan: struct dma_chan \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         GFP allocation flags
+    :type gfp_flags: gfp_t
 
 .. _`atc_alloc_descriptor.note`:
 
@@ -35,8 +37,9 @@ atc_desc_get
 
     get an unused descriptor from free_list
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         channel we want a new descriptor for
+    :type atchan: struct at_dma_chan \*
 
 .. _`atc_desc_put`:
 
@@ -47,11 +50,13 @@ atc_desc_put
 
     move a descriptor, including any children, to the free list
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         channel we work on
+    :type atchan: struct at_dma_chan \*
 
-    :param struct at_desc \*desc:
+    :param desc:
         descriptor, at the head of a chain, to move to free list
+    :type desc: struct at_desc \*
 
 .. _`atc_desc_chain`:
 
@@ -62,14 +67,17 @@ atc_desc_chain
 
     build chain adding a descriptor
 
-    :param struct at_desc \*\*first:
+    :param first:
         address of first descriptor of the chain
+    :type first: struct at_desc \*\*
 
-    :param struct at_desc \*\*prev:
+    :param prev:
         address of previous descriptor of the chain
+    :type prev: struct at_desc \*\*
 
-    :param struct at_desc \*desc:
+    :param desc:
         descriptor to queue
+    :type desc: struct at_desc \*
 
 .. _`atc_desc_chain.description`:
 
@@ -87,11 +95,13 @@ atc_dostart
 
     starts the DMA engine for real
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         the channel we want to start
+    :type atchan: struct at_dma_chan \*
 
-    :param struct at_desc \*first:
+    :param first:
         first descriptor in the list we want to begin with
+    :type first: struct at_desc \*
 
 .. _`atc_dostart.description`:
 
@@ -109,11 +119,13 @@ atc_calc_bytes_left
 
     calculates the number of bytes left according to the value read from CTRLA.
 
-    :param int current_len:
+    :param current_len:
         the number of bytes left before reading CTRLA
+    :type current_len: int
 
-    :param u32 ctrla:
+    :param ctrla:
         the value of CTRLA
+    :type ctrla: u32
 
 .. _`atc_get_bytes_left`:
 
@@ -124,11 +136,13 @@ atc_get_bytes_left
 
     get the number of bytes residue for a cookie
 
-    :param struct dma_chan \*chan:
+    :param chan:
         DMA channel
+    :type chan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         transaction identifier to check status of
+    :type cookie: dma_cookie_t
 
 .. _`atc_chain_complete`:
 
@@ -139,11 +153,13 @@ atc_chain_complete
 
     finish work for one transaction chain
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         channel we work on
+    :type atchan: struct at_dma_chan \*
 
-    :param struct at_desc \*desc:
+    :param desc:
         descriptor at the head of the chain we want do complete
+    :type desc: struct at_desc \*
 
 .. _`atc_complete_all`:
 
@@ -154,8 +170,9 @@ atc_complete_all
 
     finish work for all transactions
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         channel to complete transactions for
+    :type atchan: struct at_dma_chan \*
 
 .. _`atc_complete_all.description`:
 
@@ -176,8 +193,9 @@ atc_advance_work
 
     at the end of a transaction, move forward
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         channel where the transaction ended
+    :type atchan: struct at_dma_chan \*
 
 .. _`atc_advance_work.description`:
 
@@ -195,8 +213,9 @@ atc_handle_error
 
     handle errors reported by DMA controller
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         channel where error occurs
+    :type atchan: struct at_dma_chan \*
 
 .. _`atc_handle_error.description`:
 
@@ -214,8 +233,9 @@ atc_handle_cyclic
 
     at the end of a period, run callback function
 
-    :param struct at_dma_chan \*atchan:
+    :param atchan:
         channel used for cyclic operations
+    :type atchan: struct at_dma_chan \*
 
 .. _`atc_handle_cyclic.description`:
 
@@ -233,8 +253,9 @@ atc_tx_submit
 
     set the prepared descriptor(s) to be executed by the engine
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         *undescribed*
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`atc_tx_submit.description`:
 
@@ -254,14 +275,17 @@ atc_prep_dma_interleaved
 
     prepare memory to memory interleaved operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         the channel to prepare operation on
+    :type chan: struct dma_chan \*
 
-    :param struct dma_interleaved_template \*xt:
+    :param xt:
         Interleaved transfer template
+    :type xt: struct dma_interleaved_template \*
 
-    :param unsigned long flags:
+    :param flags:
         tx descriptor status flags
+    :type flags: unsigned long
 
 .. _`atc_prep_dma_memcpy`:
 
@@ -272,20 +296,25 @@ atc_prep_dma_memcpy
 
     prepare a memcpy operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         the channel to prepare operation on
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t dest:
+    :param dest:
         operation virtual destination address
+    :type dest: dma_addr_t
 
-    :param dma_addr_t src:
+    :param src:
         operation virtual source address
+    :type src: dma_addr_t
 
-    :param size_t len:
+    :param len:
         operation length
+    :type len: size_t
 
-    :param unsigned long flags:
+    :param flags:
         tx descriptor status flags
+    :type flags: unsigned long
 
 .. _`atc_prep_dma_memset`:
 
@@ -296,20 +325,25 @@ atc_prep_dma_memset
 
     prepare a memcpy operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         the channel to prepare operation on
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t dest:
+    :param dest:
         operation virtual destination address
+    :type dest: dma_addr_t
 
-    :param int value:
+    :param value:
         value to set memory buffer to
+    :type value: int
 
-    :param size_t len:
+    :param len:
         operation length
+    :type len: size_t
 
-    :param unsigned long flags:
+    :param flags:
         tx descriptor status flags
+    :type flags: unsigned long
 
 .. _`atc_prep_slave_sg`:
 
@@ -320,23 +354,29 @@ atc_prep_slave_sg
 
     prepare descriptors for a DMA_SLAVE transaction
 
-    :param struct dma_chan \*chan:
+    :param chan:
         DMA channel
+    :type chan: struct dma_chan \*
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         scatterlist to transfer to/from
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int sg_len:
+    :param sg_len:
         number of entries in \ ``scatterlist``\ 
+    :type sg_len: unsigned int
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         DMA direction
+    :type direction: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         tx descriptor status flags
+    :type flags: unsigned long
 
-    :param void \*context:
+    :param context:
         transaction context (ignored)
+    :type context: void \*
 
 .. _`atc_dma_cyclic_check_values`:
 
@@ -347,14 +387,17 @@ atc_dma_cyclic_check_values
 
     Check for too big/unaligned periods and unaligned DMA buffer
 
-    :param unsigned int reg_width:
+    :param reg_width:
         *undescribed*
+    :type reg_width: unsigned int
 
-    :param dma_addr_t buf_addr:
+    :param buf_addr:
         *undescribed*
+    :type buf_addr: dma_addr_t
 
-    :param size_t period_len:
+    :param period_len:
         *undescribed*
+    :type period_len: size_t
 
 .. _`atc_dma_cyclic_fill_desc`:
 
@@ -365,26 +408,33 @@ atc_dma_cyclic_fill_desc
 
     Fill one period descriptor
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param struct at_desc \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct at_desc \*
 
-    :param unsigned int period_index:
+    :param period_index:
         *undescribed*
+    :type period_index: unsigned int
 
-    :param dma_addr_t buf_addr:
+    :param buf_addr:
         *undescribed*
+    :type buf_addr: dma_addr_t
 
-    :param unsigned int reg_width:
+    :param reg_width:
         *undescribed*
+    :type reg_width: unsigned int
 
-    :param size_t period_len:
+    :param period_len:
         *undescribed*
+    :type period_len: size_t
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         *undescribed*
+    :type direction: enum dma_transfer_direction
 
 .. _`atc_prep_dma_cyclic`:
 
@@ -395,23 +445,29 @@ atc_prep_dma_cyclic
 
     prepare the cyclic DMA transfer
 
-    :param struct dma_chan \*chan:
+    :param chan:
         the DMA channel to prepare
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t buf_addr:
+    :param buf_addr:
         physical DMA address where the buffer starts
+    :type buf_addr: dma_addr_t
 
-    :param size_t buf_len:
+    :param buf_len:
         total number of bytes for the entire buffer
+    :type buf_len: size_t
 
-    :param size_t period_len:
+    :param period_len:
         number of bytes for each period
+    :type period_len: size_t
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         transfer direction, to or from device
+    :type direction: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         tx descriptor status flags
+    :type flags: unsigned long
 
 .. _`atc_tx_status`:
 
@@ -422,14 +478,17 @@ atc_tx_status
 
     poll for transaction completion
 
-    :param struct dma_chan \*chan:
+    :param chan:
         DMA channel
+    :type chan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         transaction identifier to check status of
+    :type cookie: dma_cookie_t
 
-    :param struct dma_tx_state \*txstate:
+    :param txstate:
         if not \ ``NULL``\  updated with transaction state
+    :type txstate: struct dma_tx_state \*
 
 .. _`atc_tx_status.description`:
 
@@ -449,8 +508,9 @@ atc_issue_pending
 
     try to finish work
 
-    :param struct dma_chan \*chan:
+    :param chan:
         target DMA channel
+    :type chan: struct dma_chan \*
 
 .. _`atc_alloc_chan_resources`:
 
@@ -461,8 +521,9 @@ atc_alloc_chan_resources
 
     allocate resources for DMA channel
 
-    :param struct dma_chan \*chan:
+    :param chan:
         allocate descriptor resources for this channel
+    :type chan: struct dma_chan \*
 
 .. _`atc_alloc_chan_resources.description`:
 
@@ -480,8 +541,9 @@ atc_free_chan_resources
 
     free all channel resources
 
-    :param struct dma_chan \*chan:
+    :param chan:
         DMA channel
+    :type chan: struct dma_chan \*
 
 .. _`at_dma_off`:
 
@@ -492,8 +554,9 @@ at_dma_off
 
     disable DMA controller
 
-    :param struct at_dma \*atdma:
+    :param atdma:
         the Atmel HDAMC device
+    :type atdma: struct at_dma \*
 
 .. This file was automatic generated / don't edit.
 

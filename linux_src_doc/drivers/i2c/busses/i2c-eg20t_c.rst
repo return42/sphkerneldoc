@@ -102,8 +102,9 @@ pch_i2c_init
 
     hardware initialization of I2C module
 
-    :param struct i2c_algo_pch_data \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_algo_pch_data \*
 
 .. _`pch_i2c_wait_for_bus_idle`:
 
@@ -114,11 +115,13 @@ pch_i2c_wait_for_bus_idle
 
     check the status of bus.
 
-    :param struct i2c_algo_pch_data \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_algo_pch_data \*
 
-    :param s32 timeout:
+    :param timeout:
         waiting time counter (ms).
+    :type timeout: s32
 
 .. _`pch_i2c_start`:
 
@@ -129,8 +132,9 @@ pch_i2c_start
 
     Generate I2C start condition in normal mode.
 
-    :param struct i2c_algo_pch_data \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_algo_pch_data \*
 
 .. _`pch_i2c_start.description`:
 
@@ -148,8 +152,9 @@ pch_i2c_stop
 
     generate stop condition in normal mode.
 
-    :param struct i2c_algo_pch_data \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_algo_pch_data \*
 
 .. _`pch_i2c_repstart`:
 
@@ -160,8 +165,9 @@ pch_i2c_repstart
 
     generate repeated start condition in normal mode
 
-    :param struct i2c_algo_pch_data \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_algo_pch_data \*
 
 .. _`pch_i2c_writebytes`:
 
@@ -172,20 +178,24 @@ pch_i2c_writebytes
 
     write data to I2C bus in normal mode
 
-    :param struct i2c_adapter \*i2c_adap:
+    :param i2c_adap:
         Pointer to the struct i2c_adapter.
+    :type i2c_adap: struct i2c_adapter \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         *undescribed*
+    :type msgs: struct i2c_msg \*
 
-    :param u32 last:
+    :param last:
         specifies whether last message or not.
         In the case of compound mode it will be 1 for last message,
         otherwise 0.
+    :type last: u32
 
-    :param u32 first:
+    :param first:
         specifies whether first message or not.
         1 for first message otherwise 0.
+    :type first: u32
 
 .. _`pch_i2c_sendack`:
 
@@ -196,8 +206,9 @@ pch_i2c_sendack
 
     send ACK
 
-    :param struct i2c_algo_pch_data \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_algo_pch_data \*
 
 .. _`pch_i2c_sendnack`:
 
@@ -208,8 +219,9 @@ pch_i2c_sendnack
 
     send NACK
 
-    :param struct i2c_algo_pch_data \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_algo_pch_data \*
 
 .. _`pch_i2c_restart`:
 
@@ -220,8 +232,9 @@ pch_i2c_restart
 
     Generate I2C restart condition in normal mode.
 
-    :param struct i2c_algo_pch_data \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_algo_pch_data \*
 
 .. _`pch_i2c_restart.description`:
 
@@ -239,17 +252,21 @@ pch_i2c_readbytes
 
     read data  from I2C bus in normal mode.
 
-    :param struct i2c_adapter \*i2c_adap:
+    :param i2c_adap:
         Pointer to the struct i2c_adapter.
+    :type i2c_adap: struct i2c_adapter \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         Pointer to i2c_msg structure.
+    :type msgs: struct i2c_msg \*
 
-    :param u32 last:
+    :param last:
         specifies whether last message or not.
+    :type last: u32
 
-    :param u32 first:
+    :param first:
         specifies whether first message or not.
+    :type first: u32
 
 .. _`pch_i2c_cb`:
 
@@ -260,8 +277,9 @@ pch_i2c_cb
 
     Interrupt handler Call back function
 
-    :param struct i2c_algo_pch_data \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_algo_pch_data \*
 
 .. _`pch_i2c_handler`:
 
@@ -272,11 +290,13 @@ pch_i2c_handler
 
     interrupt handler for the PCH I2C controller
 
-    :param int irq:
+    :param irq:
         irq number.
+    :type irq: int
 
-    :param void \*pData:
+    :param pData:
         cookie passed back to the handler function.
+    :type pData: void \*
 
 .. _`pch_i2c_xfer`:
 
@@ -287,14 +307,17 @@ pch_i2c_xfer
 
     Reading adnd writing data through I2C bus
 
-    :param struct i2c_adapter \*i2c_adap:
+    :param i2c_adap:
         Pointer to the struct i2c_adapter.
+    :type i2c_adap: struct i2c_adapter \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         Pointer to i2c_msg structure.
+    :type msgs: struct i2c_msg \*
 
-    :param s32 num:
+    :param num:
         number of messages.
+    :type num: s32
 
 .. _`pch_i2c_func`:
 
@@ -305,8 +328,9 @@ pch_i2c_func
 
     return the functionality of the I2C driver
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_adapter \*
 
 .. _`pch_i2c_disbl_int`:
 
@@ -317,8 +341,9 @@ pch_i2c_disbl_int
 
     Disable PCH I2C interrupts
 
-    :param struct i2c_algo_pch_data \*adap:
+    :param adap:
         Pointer to struct i2c_algo_pch_data.
+    :type adap: struct i2c_algo_pch_data \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ ohci_hcd_omap_probe
 
     initialize OMAP-based HCDs
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`ohci_hcd_omap_probe.context`:
 
@@ -38,8 +39,9 @@ ohci_hcd_omap_remove
 
     shutdown processing for OMAP-based HCDs
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`ohci_hcd_omap_remove.context`:
 

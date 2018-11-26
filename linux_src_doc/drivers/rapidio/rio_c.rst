@@ -10,8 +10,9 @@ rio_local_get_device_id
 
     Get the base/extended device id for a port
 
-    :param struct rio_mport \*port:
+    :param port:
         RIO master port from which to get the deviceid
+    :type port: struct rio_mport \*
 
 .. _`rio_local_get_device_id.description`:
 
@@ -31,11 +32,13 @@ rio_query_mport
 
     Query mport device attributes
 
-    :param struct rio_mport \*port:
+    :param port:
         mport device to query
+    :type port: struct rio_mport \*
 
-    :param struct rio_mport_attr \*mport_attr:
+    :param mport_attr:
         mport attributes data structure
+    :type mport_attr: struct rio_mport_attr \*
 
 .. _`rio_query_mport.description`:
 
@@ -54,8 +57,9 @@ rio_alloc_net
 
     Allocate and initialize a new RIO network data structure
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port associated with the RIO network
+    :type mport: struct rio_mport \*
 
 .. _`rio_alloc_net.description`:
 
@@ -76,11 +80,13 @@ rio_local_set_device_id
 
     Set the base/extended device id for a port
 
-    :param struct rio_mport \*port:
+    :param port:
         RIO master port
+    :type port: struct rio_mport \*
 
-    :param u16 did:
+    :param did:
         Device ID value to be written
+    :type did: u16
 
 .. _`rio_local_set_device_id.description`:
 
@@ -98,8 +104,9 @@ rio_add_device
 
     Adds a RIO device to the device model
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
 .. _`rio_add_device.description`:
 
@@ -119,17 +126,21 @@ rio_request_inb_mbox
 
     request inbound mailbox service
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port from which to allocate the mailbox resource
+    :type mport: struct rio_mport \*
 
-    :param void \*dev_id:
+    :param dev_id:
         Device specific pointer to pass on event
+    :type dev_id: void \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox number to claim
+    :type mbox: int
 
-    :param int entries:
+    :param entries:
         Number of entries in inbound mailbox queue
+    :type entries: int
 
     :param void (\*minb)(struct rio_mport \* mport, void \*dev_id, int mbox, int slot):
         Callback to execute when inbound message is received
@@ -151,11 +162,13 @@ rio_release_inb_mbox
 
     release inbound mailbox message service
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port from which to release the mailbox resource
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox number to release
+    :type mbox: int
 
 .. _`rio_release_inb_mbox.description`:
 
@@ -174,17 +187,21 @@ rio_request_outb_mbox
 
     request outbound mailbox service
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port from which to allocate the mailbox resource
+    :type mport: struct rio_mport \*
 
-    :param void \*dev_id:
+    :param dev_id:
         Device specific pointer to pass on event
+    :type dev_id: void \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox number to claim
+    :type mbox: int
 
-    :param int entries:
+    :param entries:
         Number of entries in outbound mailbox queue
+    :type entries: int
 
     :param void (\*moutb)(struct rio_mport \* mport, void \*dev_id, int mbox, int slot):
         Callback to execute when outbound message is sent
@@ -206,11 +223,13 @@ rio_release_outb_mbox
 
     release outbound mailbox message service
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port from which to release the mailbox resource
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox number to release
+    :type mbox: int
 
 .. _`rio_release_outb_mbox.description`:
 
@@ -229,14 +248,17 @@ rio_setup_inb_dbell
 
     bind inbound doorbell callback
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port to bind the doorbell callback
+    :type mport: struct rio_mport \*
 
-    :param void \*dev_id:
+    :param dev_id:
         Device specific pointer to pass on event
+    :type dev_id: void \*
 
-    :param struct resource \*res:
+    :param res:
         Doorbell message resource
+    :type res: struct resource \*
 
     :param void (\*dinb)(struct rio_mport \* mport, void \*dev_id, u16 src, u16 dst, u16 info):
         Callback to execute when doorbell is received
@@ -259,17 +281,21 @@ rio_request_inb_dbell
 
     request inbound doorbell message service
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port from which to allocate the doorbell resource
+    :type mport: struct rio_mport \*
 
-    :param void \*dev_id:
+    :param dev_id:
         Device specific pointer to pass on event
+    :type dev_id: void \*
 
-    :param u16 start:
+    :param start:
         Doorbell info range start
+    :type start: u16
 
-    :param u16 end:
+    :param end:
         Doorbell info range end
+    :type end: u16
 
     :param void (\*dinb)(struct rio_mport \* mport, void \*dev_id, u16 src, u16 dst, u16 info):
         Callback to execute when doorbell is received
@@ -292,14 +318,17 @@ rio_release_inb_dbell
 
     release inbound doorbell message service
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port from which to release the doorbell resource
+    :type mport: struct rio_mport \*
 
-    :param u16 start:
+    :param start:
         Doorbell info range start
+    :type start: u16
 
-    :param u16 end:
+    :param end:
         Doorbell info range end
+    :type end: u16
 
 .. _`rio_release_inb_dbell.description`:
 
@@ -319,14 +348,17 @@ rio_request_outb_dbell
 
     request outbound doorbell message range
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device from which to allocate the doorbell resource
+    :type rdev: struct rio_dev \*
 
-    :param u16 start:
+    :param start:
         Doorbell message range start
+    :type start: u16
 
-    :param u16 end:
+    :param end:
         Doorbell message range end
+    :type end: u16
 
 .. _`rio_request_outb_dbell.description`:
 
@@ -345,11 +377,13 @@ rio_release_outb_dbell
 
     release outbound doorbell message range
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device from which to release the doorbell resource
+    :type rdev: struct rio_dev \*
 
-    :param struct resource \*res:
+    :param res:
         Doorbell resource to be freed
+    :type res: struct resource \*
 
 .. _`rio_release_outb_dbell.description`:
 
@@ -368,11 +402,13 @@ rio_add_mport_pw_handler
 
     add port-write message handler into the list of mport specific pw handlers
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port to bind the portwrite callback
+    :type mport: struct rio_mport \*
 
-    :param void \*context:
+    :param context:
         Handler specific context to pass on event
+    :type context: void \*
 
     :param int (\*pwcback)(struct rio_mport \*mport, void \*context, union rio_pw_msg \*msg, int step):
         Callback to execute when portwrite is received
@@ -393,11 +429,13 @@ rio_del_mport_pw_handler
 
     remove port-write message handler from the list of mport specific pw handlers
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port to bind the portwrite callback
+    :type mport: struct rio_mport \*
 
-    :param void \*context:
+    :param context:
         Registered handler specific context to pass on event
+    :type context: void \*
 
     :param int (\*pwcback)(struct rio_mport \*mport, void \*context, union rio_pw_msg \*msg, int step):
         Registered callback function
@@ -418,8 +456,9 @@ rio_request_inb_pwrite
 
     request inbound port-write message service for specific RapidIO device
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device to which register inbound port-write callback routine
+    :type rdev: struct rio_dev \*
 
     :param int (\*pwcback)(struct rio_dev \*rdev, union rio_pw_msg \*msg, int step):
         Callback routine to execute when port-write is received
@@ -441,8 +480,9 @@ rio_release_inb_pwrite
 
     release inbound port-write message service associated with specific RapidIO device
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device which registered for inbound port-write callback
+    :type rdev: struct rio_dev \*
 
 .. _`rio_release_inb_pwrite.description`:
 
@@ -461,11 +501,13 @@ rio_pw_enable
 
     Enables/disables port-write handling by a master port
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port associated with port-write handling
+    :type mport: struct rio_mport \*
 
-    :param int enable:
+    :param enable:
         1=enable,  0=disable
+    :type enable: int
 
 .. _`rio_map_inb_region`:
 
@@ -476,20 +518,25 @@ rio_map_inb_region
 
     - Map inbound memory region.
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port.
+    :type mport: struct rio_mport \*
 
-    :param dma_addr_t local:
+    :param local:
         physical address of memory region to be mapped
+    :type local: dma_addr_t
 
-    :param u64 rbase:
+    :param rbase:
         RIO base address assigned to this window
+    :type rbase: u64
 
-    :param u32 size:
+    :param size:
         Size of the memory region
+    :type size: u32
 
-    :param u32 rflags:
+    :param rflags:
         Flags for mapping.
+    :type rflags: u32
 
 .. _`rio_map_inb_region.return`:
 
@@ -509,11 +556,13 @@ rio_unmap_inb_region
 
     - Unmap the inbound memory region
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port
+    :type mport: struct rio_mport \*
 
-    :param dma_addr_t lstart:
+    :param lstart:
         physical address of memory region to be unmapped
+    :type lstart: dma_addr_t
 
 .. _`rio_map_outb_region`:
 
@@ -524,23 +573,29 @@ rio_map_outb_region
 
     - Map outbound memory region.
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port.
+    :type mport: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         destination id window points to
+    :type destid: u16
 
-    :param u64 rbase:
+    :param rbase:
         RIO base address window translates to
+    :type rbase: u64
 
-    :param u32 size:
+    :param size:
         Size of the memory region
+    :type size: u32
 
-    :param u32 rflags:
+    :param rflags:
         Flags for mapping.
+    :type rflags: u32
 
-    :param dma_addr_t \*local:
+    :param local:
         physical address of memory region mapped
+    :type local: dma_addr_t \*
 
 .. _`rio_map_outb_region.return`:
 
@@ -560,14 +615,17 @@ rio_unmap_outb_region
 
     - Unmap the inbound memory region
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port
+    :type mport: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         destination id mapping points to
+    :type destid: u16
 
-    :param u64 rstart:
+    :param rstart:
         RIO base address window translates to
+    :type rstart: u64
 
 .. _`rio_mport_get_physefb`:
 
@@ -578,20 +636,25 @@ rio_mport_get_physefb
 
     Helper function that returns register offset for Physical Layer Extended Features Block.
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to issue transaction
+    :type port: struct rio_mport \*
 
-    :param int local:
+    :param local:
         Indicate a local master port or remote device access
+    :type local: int
 
-    :param u16 destid:
+    :param destid:
         Destination ID of the device
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of switch hops to the device
+    :type hopcount: u8
 
-    :param u32 \*rmap:
+    :param rmap:
         pointer to location to store register map type info
+    :type rmap: u32 \*
 
 .. _`rio_get_comptag`:
 
@@ -602,11 +665,13 @@ rio_get_comptag
 
     Begin or continue searching for a RIO device by component tag
 
-    :param u32 comp_tag:
+    :param comp_tag:
         RIO component tag to match
+    :type comp_tag: u32
 
-    :param struct rio_dev \*from:
+    :param from:
         Previous RIO device found in search, or \ ``NULL``\  for new search
+    :type from: struct rio_dev \*
 
 .. _`rio_get_comptag.description`:
 
@@ -629,14 +694,17 @@ rio_set_port_lockout
 
     Sets/clears LOCKOUT bit (RIO EM 1.3) for a switch port.
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         Pointer to RIO device control structure
+    :type rdev: struct rio_dev \*
 
-    :param u32 pnum:
+    :param pnum:
         Switch port number to set LOCKOUT bit
+    :type pnum: u32
 
-    :param int lock:
+    :param lock:
         Operation : set (=1) or clear (=0)
+    :type lock: int
 
 .. _`rio_enable_rx_tx_port`:
 
@@ -647,20 +715,25 @@ rio_enable_rx_tx_port
 
     enable input receiver and output transmitter of given port
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port associated with the RIO network
+    :type port: struct rio_mport \*
 
-    :param int local:
+    :param local:
         local=1 select local port otherwise a far device is reached
+    :type local: int
 
-    :param u16 destid:
+    :param destid:
         Destination ID of the device to check host bit
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of hops to reach the target
+    :type hopcount: u8
 
-    :param u8 port_num:
+    :param port_num:
         Port (-number on switch) to enable on a far end device
+    :type port_num: u8
 
 .. _`rio_enable_rx_tx_port.description`:
 
@@ -679,14 +752,17 @@ rio_chk_dev_route
 
     Validate route to the specified device.
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device failed to respond
+    :type rdev: struct rio_dev \*
 
-    :param struct rio_dev \*\*nrdev:
+    :param nrdev:
         Last active device on the route to rdev
+    :type nrdev: struct rio_dev \*\*
 
-    :param int \*npnum:
+    :param npnum:
         nrdev's port number on the route to rdev
+    :type npnum: int \*
 
 .. _`rio_chk_dev_route.description`:
 
@@ -705,14 +781,17 @@ rio_mport_chk_dev_access
 
     Validate access to the specified device.
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port to send transactions
+    :type mport: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         Device destination ID in network
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of hops into the network
+    :type hopcount: u8
 
 .. _`rio_chk_dev_access`:
 
@@ -723,8 +802,9 @@ rio_chk_dev_access
 
     Validate access to the specified device.
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         Pointer to RIO device control structure
+    :type rdev: struct rio_dev \*
 
 .. _`rio_get_input_status`:
 
@@ -735,14 +815,17 @@ rio_get_input_status
 
     Sends a Link-Request/Input-Status control symbol and returns link-response (if requested).
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO devive to issue Input-status command
+    :type rdev: struct rio_dev \*
 
-    :param int pnum:
+    :param pnum:
         Device port number to issue the command
+    :type pnum: int
 
-    :param u32 \*lnkresp:
+    :param lnkresp:
         Response from a link partner
+    :type lnkresp: u32 \*
 
 .. _`rio_clr_err_stopped`:
 
@@ -753,14 +836,17 @@ rio_clr_err_stopped
 
     Clears port Error-stopped states.
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         Pointer to RIO device control structure
+    :type rdev: struct rio_dev \*
 
-    :param u32 pnum:
+    :param pnum:
         Switch port number to clear errors
+    :type pnum: u32
 
-    :param u32 err_status:
+    :param err_status:
         port error status (if 0 reads register from device)
+    :type err_status: u32
 
 .. _`rio_clr_err_stopped.description`:
 
@@ -783,11 +869,13 @@ rio_inb_pwrite_handler
 
     inbound port-write message handler
 
-    :param struct rio_mport \*mport:
+    :param mport:
         mport device associated with port-write
+    :type mport: struct rio_mport \*
 
-    :param union rio_pw_msg \*pw_msg:
+    :param pw_msg:
         pointer to inbound port-write message
+    :type pw_msg: union rio_pw_msg \*
 
 .. _`rio_inb_pwrite_handler.description`:
 
@@ -806,21 +894,26 @@ rio_mport_get_efb
 
     get pointer to next extended features block
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to issue transaction
+    :type port: struct rio_mport \*
 
-    :param int local:
+    :param local:
         Indicate a local master port or remote device access
+    :type local: int
 
-    :param u16 destid:
+    :param destid:
         Destination ID of the device
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of switch hops to the device
+    :type hopcount: u8
 
-    :param u32 from:
+    :param from:
         Offset of  current Extended Feature block header (if 0 starts
         from ExtFeaturePtr)
+    :type from: u32
 
 .. _`rio_mport_get_feature`:
 
@@ -831,20 +924,25 @@ rio_mport_get_feature
 
     query for devices' extended features
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to issue transaction
+    :type port: struct rio_mport \*
 
-    :param int local:
+    :param local:
         Indicate a local master port or remote device access
+    :type local: int
 
-    :param u16 destid:
+    :param destid:
         Destination ID of the device
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of switch hops to the device
+    :type hopcount: u8
 
-    :param int ftr:
+    :param ftr:
         Extended feature code
+    :type ftr: int
 
 .. _`rio_mport_get_feature.description`:
 
@@ -865,20 +963,25 @@ rio_get_asm
 
     Begin or continue searching for a RIO device by vid/did/asm_vid/asm_did
 
-    :param u16 vid:
+    :param vid:
         RIO vid to match or \ ``RIO_ANY_ID``\  to match all vids
+    :type vid: u16
 
-    :param u16 did:
+    :param did:
         RIO did to match or \ ``RIO_ANY_ID``\  to match all dids
+    :type did: u16
 
-    :param u16 asm_vid:
+    :param asm_vid:
         RIO asm_vid to match or \ ``RIO_ANY_ID``\  to match all asm_vids
+    :type asm_vid: u16
 
-    :param u16 asm_did:
+    :param asm_did:
         RIO asm_did to match or \ ``RIO_ANY_ID``\  to match all asm_dids
+    :type asm_did: u16
 
-    :param struct rio_dev \*from:
+    :param from:
         Previous RIO device found in search, or \ ``NULL``\  for new search
+    :type from: struct rio_dev \*
 
 .. _`rio_get_asm.description`:
 
@@ -903,14 +1006,17 @@ rio_get_device
 
     Begin or continue searching for a RIO device by vid/did
 
-    :param u16 vid:
+    :param vid:
         RIO vid to match or \ ``RIO_ANY_ID``\  to match all vids
+    :type vid: u16
 
-    :param u16 did:
+    :param did:
         RIO did to match or \ ``RIO_ANY_ID``\  to match all dids
+    :type did: u16
 
-    :param struct rio_dev \*from:
+    :param from:
         Previous RIO device found in search, or \ ``NULL``\  for new search
+    :type from: struct rio_dev \*
 
 .. _`rio_get_device.description`:
 
@@ -934,23 +1040,29 @@ rio_std_route_add_entry
 
     Add switch route table entry using standard registers defined in RIO specification rev.1.3
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port to issue transaction
+    :type mport: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         Destination ID of the device
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of switch hops to the device
+    :type hopcount: u8
 
-    :param u16 table:
+    :param table:
         routing table ID (global or port-specific)
+    :type table: u16
 
-    :param u16 route_destid:
+    :param route_destid:
         destID entry in the RT
+    :type route_destid: u16
 
-    :param u8 route_port:
+    :param route_port:
         destination port for specified destID
+    :type route_port: u8
 
 .. _`rio_std_route_get_entry`:
 
@@ -961,23 +1073,29 @@ rio_std_route_get_entry
 
     Read switch route table entry (port number) associated with specified destID using standard registers defined in RIO specification rev.1.3
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port to issue transaction
+    :type mport: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         Destination ID of the device
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of switch hops to the device
+    :type hopcount: u8
 
-    :param u16 table:
+    :param table:
         routing table ID (global or port-specific)
+    :type table: u16
 
-    :param u16 route_destid:
+    :param route_destid:
         destID entry in the RT
+    :type route_destid: u16
 
-    :param u8 \*route_port:
+    :param route_port:
         returned destination port for specified destID
+    :type route_port: u8 \*
 
 .. _`rio_std_route_clr_table`:
 
@@ -988,17 +1106,21 @@ rio_std_route_clr_table
 
     Clear swotch route table using standard registers defined in RIO specification rev.1.3.
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port to issue transaction
+    :type mport: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         Destination ID of the device
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of switch hops to the device
+    :type hopcount: u8
 
-    :param u16 table:
+    :param table:
         routing table ID (global or port-specific)
+    :type table: u16
 
 .. _`rio_lock_device`:
 
@@ -1009,17 +1131,21 @@ rio_lock_device
 
     Acquires host device lock for specified device
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to send transaction
+    :type port: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         Destination ID for device/switch
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Hopcount to reach switch
+    :type hopcount: u8
 
-    :param int wait_ms:
+    :param wait_ms:
         Max wait time in msec (0 = no timeout)
+    :type wait_ms: int
 
 .. _`rio_lock_device.description`:
 
@@ -1038,14 +1164,17 @@ rio_unlock_device
 
     Releases host device lock for specified device
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port to send transaction
+    :type port: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         Destination ID for device/switch
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Hopcount to reach switch
+    :type hopcount: u8
 
 .. _`rio_unlock_device.description`:
 
@@ -1063,20 +1192,25 @@ rio_route_add_entry
 
     Add a route entry to a switch routing table
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param u16 table:
+    :param table:
         Routing table ID
+    :type table: u16
 
-    :param u16 route_destid:
+    :param route_destid:
         Destination ID to be routed
+    :type route_destid: u16
 
-    :param u8 route_port:
+    :param route_port:
         Port number to be routed
+    :type route_port: u8
 
-    :param int lock:
+    :param lock:
         apply a hardware lock on switch device flag (1=lock, 0=no_lock)
+    :type lock: int
 
 .. _`rio_route_add_entry.description`:
 
@@ -1101,20 +1235,25 @@ rio_route_get_entry
 
     Read an entry from a switch routing table
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param u16 table:
+    :param table:
         Routing table ID
+    :type table: u16
 
-    :param u16 route_destid:
+    :param route_destid:
         Destination ID to be routed
+    :type route_destid: u16
 
-    :param u8 \*route_port:
+    :param route_port:
         Pointer to read port number into
+    :type route_port: u8 \*
 
-    :param int lock:
+    :param lock:
         apply a hardware lock on switch device flag (1=lock, 0=no_lock)
+    :type lock: int
 
 .. _`rio_route_get_entry.description`:
 
@@ -1139,14 +1278,17 @@ rio_route_clr_table
 
     Clear a switch routing table
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param u16 table:
+    :param table:
         Routing table ID
+    :type table: u16
 
-    :param int lock:
+    :param lock:
         apply a hardware lock on switch device flag (1=lock, 0=no_lock)
+    :type lock: int
 
 .. _`rio_route_clr_table.description`:
 
@@ -1170,8 +1312,9 @@ rio_request_mport_dma
 
     request RapidIO capable DMA channel associated with specified local RapidIO mport device.
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO mport to perform DMA data transfers
+    :type mport: struct rio_mport \*
 
 .. _`rio_request_mport_dma.description`:
 
@@ -1189,8 +1332,9 @@ rio_request_dma
 
     request RapidIO capable DMA channel that supports specified target RapidIO device.
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device associated with DMA transfer
+    :type rdev: struct rio_dev \*
 
 .. _`rio_request_dma.description`:
 
@@ -1208,8 +1352,9 @@ rio_release_dma
 
     release specified DMA channel
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel to release
+    :type dchan: struct dma_chan \*
 
 .. _`rio_dma_prep_xfer`:
 
@@ -1220,20 +1365,25 @@ rio_dma_prep_xfer
 
     RapidIO specific wrapper for device_prep_slave_sg callback defined by DMAENGINE.
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel to configure
+    :type dchan: struct dma_chan \*
 
-    :param u16 destid:
+    :param destid:
         target RapidIO device destination ID
+    :type destid: u16
 
-    :param struct rio_dma_data \*data:
+    :param data:
         RIO specific data descriptor
+    :type data: struct rio_dma_data \*
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         DMA data transfer direction (TO or FROM the device)
+    :type direction: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         dmaengine defined flags
+    :type flags: unsigned long
 
 .. _`rio_dma_prep_xfer.description`:
 
@@ -1261,20 +1411,25 @@ rio_dma_prep_slave_sg
 
     RapidIO specific wrapper for device_prep_slave_sg callback defined by DMAENGINE.
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device control structure
+    :type rdev: struct rio_dev \*
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel to configure
+    :type dchan: struct dma_chan \*
 
-    :param struct rio_dma_data \*data:
+    :param data:
         RIO specific data descriptor
+    :type data: struct rio_dma_data \*
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         DMA data transfer direction (TO or FROM the device)
+    :type direction: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         dmaengine defined flags
+    :type flags: unsigned long
 
 .. _`rio_dma_prep_slave_sg.description`:
 
@@ -1302,8 +1457,9 @@ rio_find_mport
 
     find RIO mport by its ID
 
-    :param int mport_id:
+    :param mport_id:
         number (ID) of mport device
+    :type mport_id: int
 
 .. _`rio_find_mport.description`:
 
@@ -1323,12 +1479,14 @@ rio_register_scan
 
     enumeration/discovery method registration interface
 
-    :param int mport_id:
+    :param mport_id:
         mport device ID for which fabric scan routine has to be set
         (RIO_MPORT_ANY = set for all available mports)
+    :type mport_id: int
 
-    :param struct rio_scan \*scan_ops:
+    :param scan_ops:
         enumeration/discovery operations structure
+    :type scan_ops: struct rio_scan \*
 
 .. _`rio_register_scan.description`:
 
@@ -1351,13 +1509,15 @@ rio_unregister_scan
 
     removes enumeration/discovery method from mport
 
-    :param int mport_id:
+    :param mport_id:
         mport device ID for which fabric scan routine has to be
         unregistered (RIO_MPORT_ANY = apply to all mports that use
         the specified scan_ops)
+    :type mport_id: int
 
-    :param struct rio_scan \*scan_ops:
+    :param scan_ops:
         enumeration/discovery operations structure
+    :type scan_ops: struct rio_scan \*
 
 .. _`rio_unregister_scan.description`:
 
@@ -1377,8 +1537,9 @@ rio_mport_scan
 
     execute enumeration/discovery on the specified mport
 
-    :param int mport_id:
+    :param mport_id:
         number (ID) of mport device
+    :type mport_id: int
 
 .. This file was automatic generated / don't edit.
 

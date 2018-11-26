@@ -10,8 +10,9 @@ kernfs_enable_ns
 
     enable namespace under a directory
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         directory of interest, should be empty
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_enable_ns.description`:
 
@@ -31,8 +32,9 @@ kernfs_ns_enabled
 
     test whether namespace is enabled
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         the node to test
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_ns_enabled.description`:
 
@@ -50,24 +52,28 @@ kernfs_path
 
     build full path of a given node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node of interest
+    :type kn: struct kernfs_node \*
 
-    :param char \*buf:
+    :param buf:
         buffer to copy \ ``kn``\ 's name into
+    :type buf: char \*
 
-    :param size_t buflen:
+    :param buflen:
         size of \ ``buf``\ 
+    :type buflen: size_t
 
 .. _`kernfs_path.description`:
 
 Description
 -----------
 
-Builds and returns the full path of \ ``kn``\  in \ ``buf``\  of \ ``buflen``\  bytes.  The
-path is built from the end of \ ``buf``\  so the returned pointer usually
-doesn't match \ ``buf``\ .  If \ ``buf``\  isn't long enough, \ ``buf``\  is nul terminated
-and \ ``NULL``\  is returned.
+If \ ``kn``\  is NULL result will be "(null)".
+
+Returns the length of the full path.  If the full length is equal to or
+greater than \ ``buflen``\ , \ ``buf``\  contains the truncated path with the trailing
+'\0'.  On error, -errno is returned.
 
 .. This file was automatic generated / don't edit.
 

@@ -10,20 +10,25 @@ ufs_qcom_cfg_timers
 
     zero in case of a failure
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         *undescribed*
+    :type hba: struct ufs_hba \*
 
-    :param u32 gear:
+    :param gear:
         *undescribed*
+    :type gear: u32
 
-    :param u32 hs:
+    :param hs:
         *undescribed*
+    :type hs: u32
 
-    :param u32 rate:
+    :param rate:
         *undescribed*
+    :type rate: u32
 
-    :param bool update_link_startup_timer:
+    :param update_link_startup_timer:
         *undescribed*
+    :type update_link_startup_timer: bool
 
 .. _`ufs_qcom_advertise_quirks`:
 
@@ -34,8 +39,9 @@ ufs_qcom_advertise_quirks
 
     advertise the known QCOM UFS controller quirks
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         host controller instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufs_qcom_advertise_quirks.description`:
 
@@ -56,14 +62,17 @@ ufs_qcom_setup_clocks
 
     enables/disable clocks
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         host controller instance
+    :type hba: struct ufs_hba \*
 
-    :param bool on:
+    :param on:
         If true, enable clocks else disable them.
+    :type on: bool
 
-    :param enum ufs_notify_change_status status:
+    :param status:
         PRE_CHANGE or POST_CHANGE notify
+    :type status: enum ufs_notify_change_status
 
 .. _`ufs_qcom_setup_clocks.description`:
 
@@ -81,8 +90,9 @@ ufs_qcom_init
 
     bind phy with controller
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         host controller instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufs_qcom_init.description`:
 
@@ -104,8 +114,9 @@ ufs_qcom_probe
 
     probe routine of the driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to Platform device handle
+    :type pdev: struct platform_device \*
 
 .. _`ufs_qcom_probe.description`:
 
@@ -123,8 +134,9 @@ ufs_qcom_remove
 
     set driver_data of the device to NULL
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to platform device handle
+    :type pdev: struct platform_device \*
 
 .. _`ufs_qcom_remove.description`:
 

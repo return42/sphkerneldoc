@@ -10,14 +10,17 @@ bnx2fc_rport_event_handler
 
     initiated target login. bnx2fc can proceed with initiating the session establishment.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         *undescribed*
+    :type rdata: struct fc_rport_priv \*
 
-    :param enum fc_rport_event event:
+    :param event:
         *undescribed*
+    :type event: enum fc_rport_event
 
 .. _`bnx2fc_tgt_lookup`:
 
@@ -28,11 +31,13 @@ bnx2fc_tgt_lookup
 
     Lookup a bnx2fc_rport by port_id
 
-    :param struct fcoe_port \*port:
+    :param port:
         fcoe_port struct to lookup the target port on
+    :type port: struct fcoe_port \*
 
-    :param u32 port_id:
+    :param port_id:
         The remote port ID to look up
+    :type port_id: u32
 
 .. _`bnx2fc_alloc_conn_id`:
 
@@ -43,11 +48,13 @@ bnx2fc_alloc_conn_id
 
     allocates FCOE Connection id
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         pointer to adapter structure
+    :type hba: struct bnx2fc_hba \*
 
-    :param struct bnx2fc_rport \*tgt:
+    :param tgt:
         pointer to bnx2fc_rport structure
+    :type tgt: struct bnx2fc_rport \*
 
 .. _`bnx2fc_alloc_session_resc`:
 
@@ -58,11 +65,13 @@ bnx2fc_alloc_session_resc
 
     Allocate qp resources for the session
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         *undescribed*
+    :type hba: struct bnx2fc_hba \*
 
-    :param struct bnx2fc_rport \*tgt:
+    :param tgt:
         *undescribed*
+    :type tgt: struct bnx2fc_rport \*
 
 .. _`bnx2fc_free_session_resc`:
 
@@ -73,11 +82,13 @@ bnx2fc_free_session_resc
 
     free qp resources for the session
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2fc_hba \*
 
-    :param struct bnx2fc_rport \*tgt:
+    :param tgt:
         bnx2fc_rport structure pointer
+    :type tgt: struct bnx2fc_rport \*
 
 .. _`bnx2fc_free_session_resc.description`:
 

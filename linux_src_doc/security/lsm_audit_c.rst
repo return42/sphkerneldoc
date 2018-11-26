@@ -10,14 +10,17 @@ ipv4_skb_to_auditdata
 
     fill auditdata from skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb
+    :type skb: struct sk_buff \*
 
-    :param struct common_audit_data \*ad:
+    :param ad:
         the audit data to fill
+    :type ad: struct common_audit_data \*
 
-    :param u8 \*proto:
+    :param proto:
         the layer 4 protocol
+    :type proto: u8 \*
 
 .. _`ipv4_skb_to_auditdata.description`:
 
@@ -35,14 +38,17 @@ ipv6_skb_to_auditdata
 
     fill auditdata from skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb
+    :type skb: struct sk_buff \*
 
-    :param struct common_audit_data \*ad:
+    :param ad:
         the audit data to fill
+    :type ad: struct common_audit_data \*
 
-    :param u8 \*proto:
+    :param proto:
         the layer 4 protocol
+    :type proto: u8 \*
 
 .. _`ipv6_skb_to_auditdata.description`:
 
@@ -60,11 +66,13 @@ dump_common_audit_data
 
     helper to dump common audit data
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         *undescribed*
+    :type ab: struct audit_buffer \*
 
-    :param struct common_audit_data \*a:
+    :param a:
         common audit data
+    :type a: struct common_audit_data \*
 
 .. _`common_lsm_audit`:
 
@@ -75,8 +83,9 @@ common_lsm_audit
 
     generic LSM auditing function
 
-    :param struct common_audit_data \*a:
+    :param a:
         auxiliary audit data
+    :type a: struct common_audit_data \*
 
     :param void (\*pre_audit)(struct audit_buffer \*, void \*):
         lsm-specific pre-audit callback

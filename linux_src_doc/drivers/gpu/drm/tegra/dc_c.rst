@@ -10,20 +10,25 @@ tegra_dc_state_setup_clock
 
     check clock settings and store them in atomic state
 
-    :param struct tegra_dc \*dc:
+    :param dc:
         display controller
+    :type dc: struct tegra_dc \*
 
-    :param struct drm_crtc_state \*crtc_state:
+    :param crtc_state:
         CRTC atomic state
+    :type crtc_state: struct drm_crtc_state \*
 
-    :param struct clk \*clk:
+    :param clk:
         parent clock for display controller
+    :type clk: struct clk \*
 
-    :param unsigned long pclk:
+    :param pclk:
         pixel clock
+    :type pclk: unsigned long
 
-    :param unsigned int div:
+    :param div:
         shift clock divider
+    :type div: unsigned int
 
 .. _`tegra_dc_state_setup_clock.return`:
 

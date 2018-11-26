@@ -10,20 +10,25 @@ mlx4_get_module_info
 
     Read cable module eeprom data
 
-    :param struct mlx4_dev \*dev:
+    :param dev:
         mlx4_dev.
+    :type dev: struct mlx4_dev \*
 
-    :param u8 port:
+    :param port:
         port number.
+    :type port: u8
 
-    :param u16 offset:
+    :param offset:
         byte offset in eeprom to start reading data from.
+    :type offset: u16
 
-    :param u16 size:
+    :param size:
         num of bytes to read.
+    :type size: u16
 
-    :param u8 \*data:
+    :param data:
         output buffer to put the requested data into.
+    :type data: u8 \*
 
 .. _`mlx4_get_module_info.description`:
 

@@ -10,11 +10,13 @@ snd_hda_enable_beep_device
 
     Turn on/off beep sound
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param int enable:
+    :param enable:
         flag to turn on/off
+    :type enable: int
 
 .. _`snd_hda_attach_beep_device`:
 
@@ -25,11 +27,13 @@ snd_hda_attach_beep_device
 
     Attach a beep input device
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param int nid:
+    :param nid:
         beep NID
+    :type nid: int
 
 .. _`snd_hda_attach_beep_device.description`:
 
@@ -54,8 +58,9 @@ snd_hda_detach_beep_device
 
     Detach the beep device
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_register_beep_device`:
 
@@ -66,8 +71,9 @@ snd_hda_register_beep_device
 
     Register the beep device
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_mixer_amp_switch_get_beep`:
 
@@ -78,11 +84,13 @@ snd_hda_mixer_amp_switch_get_beep
 
     Get callback for beep controls
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         ctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         pointer to get/store the data
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_hda_mixer_amp_switch_put_beep`:
 
@@ -93,11 +101,13 @@ snd_hda_mixer_amp_switch_put_beep
 
     Put callback for beep controls
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         ctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         pointer to get/store the data
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. This file was automatic generated / don't edit.
 

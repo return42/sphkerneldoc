@@ -10,23 +10,28 @@ tfrc_rx_handle_loss
 
     Loss detection and further processing
 
-    :param struct tfrc_rx_hist \*h:
+    :param h:
         The non-empty RX history object
+    :type h: struct tfrc_rx_hist \*
 
-    :param struct tfrc_loss_hist \*lh:
+    :param lh:
         Loss Intervals database to update
+    :type lh: struct tfrc_loss_hist \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Currently received packet
+    :type skb: struct sk_buff \*
 
-    :param const u64 ndp:
+    :param ndp:
         The NDP count belonging to \ ``skb``\ 
+    :type ndp: const u64
 
     :param u32 (\*calc_first_li)(struct sock \*):
         Caller-dependent computation of first loss interval in \ ``lh``\ 
 
-    :param struct sock \*sk:
+    :param sk:
         Used by \ ``calc_first_li``\  (see tfrc_lh_interval_add)
+    :type sk: struct sock \*
 
 .. _`tfrc_rx_handle_loss.description`:
 
@@ -49,8 +54,9 @@ tfrc_rx_hist_rtt_last_s
 
     reference entry to compute RTT samples against
 
-    :param const struct tfrc_rx_hist \*h:
+    :param h:
         *undescribed*
+    :type h: const struct tfrc_rx_hist \*
 
 .. _`tfrc_rx_hist_rtt_prev_s`:
 
@@ -61,8 +67,9 @@ tfrc_rx_hist_rtt_prev_s
 
     previously suitable (wrt rtt_last_s) RTT-sampling entry
 
-    :param const struct tfrc_rx_hist \*h:
+    :param h:
         *undescribed*
+    :type h: const struct tfrc_rx_hist \*
 
 .. _`tfrc_rx_hist_sample_rtt`:
 
@@ -73,11 +80,13 @@ tfrc_rx_hist_sample_rtt
 
     Sample RTT from timestamp / CCVal Based on ideas presented in RFC 4342, 8.1. Returns 0 if it was not able to compute a sample with given data - calling function should check this.
 
-    :param struct tfrc_rx_hist \*h:
+    :param h:
         *undescribed*
+    :type h: struct tfrc_rx_hist \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: const struct sk_buff \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,3 +8,4 @@ fsi
     :maxdepth: 1
 
     fsi-master_h
+    fsi-sbefifo_c

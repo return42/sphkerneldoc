@@ -10,8 +10,9 @@ icmp_global_allow
 
     Are we allowed to send one more ICMP message ?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`icmp_global_allow.description`:
 

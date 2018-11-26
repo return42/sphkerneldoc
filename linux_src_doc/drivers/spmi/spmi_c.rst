@@ -10,8 +10,9 @@ spmi_device_add
 
     add a device previously constructed via \ :c:func:`spmi_device_alloc`\ 
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         spmi_device to be added
+    :type sdev: struct spmi_device \*
 
 .. _`spmi_device_remove`:
 
@@ -22,8 +23,9 @@ spmi_device_remove
 
     remove an SPMI device
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         spmi_device to be removed
+    :type sdev: struct spmi_device \*
 
 .. _`spmi_register_read`:
 
@@ -34,14 +36,17 @@ spmi_register_read
 
     register read
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device.
+    :type sdev: struct spmi_device \*
 
-    :param u8 addr:
+    :param addr:
         slave register address (5-bit address).
+    :type addr: u8
 
-    :param u8 \*buf:
+    :param buf:
         buffer to be populated with data from the Slave.
+    :type buf: u8 \*
 
 .. _`spmi_register_read.description`:
 
@@ -59,17 +64,21 @@ spmi_ext_register_read
 
     extended register read
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device.
+    :type sdev: struct spmi_device \*
 
-    :param u8 addr:
+    :param addr:
         slave register address (8-bit address).
+    :type addr: u8
 
-    :param u8 \*buf:
+    :param buf:
         buffer to be populated with data from the Slave.
+    :type buf: u8 \*
 
-    :param size_t len:
+    :param len:
         the request number of bytes to read (up to 16 bytes).
+    :type len: size_t
 
 .. _`spmi_ext_register_read.description`:
 
@@ -88,17 +97,21 @@ spmi_ext_register_readl
 
     extended register read long
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device.
+    :type sdev: struct spmi_device \*
 
-    :param u16 addr:
+    :param addr:
         slave register address (16-bit address).
+    :type addr: u16
 
-    :param u8 \*buf:
+    :param buf:
         buffer to be populated with data from the Slave.
+    :type buf: u8 \*
 
-    :param size_t len:
+    :param len:
         the request number of bytes to read (up to 8 bytes).
+    :type len: size_t
 
 .. _`spmi_ext_register_readl.description`:
 
@@ -117,14 +130,17 @@ spmi_register_write
 
     register write
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device
+    :type sdev: struct spmi_device \*
 
-    :param u8 addr:
+    :param addr:
         slave register address (5-bit address).
+    :type addr: u8
 
-    :param u8 data:
+    :param data:
         buffer containing the data to be transferred to the Slave.
+    :type data: u8
 
 .. _`spmi_register_write.description`:
 
@@ -142,11 +158,13 @@ spmi_register_zero_write
 
     register zero write
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device.
+    :type sdev: struct spmi_device \*
 
-    :param u8 data:
+    :param data:
         the data to be written to register 0 (7-bits).
+    :type data: u8
 
 .. _`spmi_register_zero_write.description`:
 
@@ -164,17 +182,21 @@ spmi_ext_register_write
 
     extended register write
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device.
+    :type sdev: struct spmi_device \*
 
-    :param u8 addr:
+    :param addr:
         slave register address (8-bit address).
+    :type addr: u8
 
-    :param const u8 \*buf:
+    :param buf:
         buffer containing the data to be transferred to the Slave.
+    :type buf: const u8 \*
 
-    :param size_t len:
+    :param len:
         the request number of bytes to read (up to 16 bytes).
+    :type len: size_t
 
 .. _`spmi_ext_register_write.description`:
 
@@ -193,17 +215,21 @@ spmi_ext_register_writel
 
     extended register write long
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device.
+    :type sdev: struct spmi_device \*
 
-    :param u16 addr:
+    :param addr:
         slave register address (16-bit address).
+    :type addr: u16
 
-    :param const u8 \*buf:
+    :param buf:
         buffer containing the data to be transferred to the Slave.
+    :type buf: const u8 \*
 
-    :param size_t len:
+    :param len:
         the request number of bytes to read (up to 8 bytes).
+    :type len: size_t
 
 .. _`spmi_ext_register_writel.description`:
 
@@ -222,8 +248,9 @@ spmi_command_reset
 
     sends RESET command to the specified slave
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device.
+    :type sdev: struct spmi_device \*
 
 .. _`spmi_command_reset.description`:
 
@@ -243,8 +270,9 @@ spmi_command_sleep
 
     sends SLEEP command to the specified SPMI device
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device.
+    :type sdev: struct spmi_device \*
 
 .. _`spmi_command_sleep.description`:
 
@@ -262,8 +290,9 @@ spmi_command_wakeup
 
     sends WAKEUP command to the specified SPMI device
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device.
+    :type sdev: struct spmi_device \*
 
 .. _`spmi_command_wakeup.description`:
 
@@ -282,8 +311,9 @@ spmi_command_shutdown
 
     sends SHUTDOWN command to the specified SPMI device
 
-    :param struct spmi_device \*sdev:
+    :param sdev:
         SPMI device.
+    :type sdev: struct spmi_device \*
 
 .. _`spmi_command_shutdown.description`:
 
@@ -301,8 +331,9 @@ spmi_device_alloc
 
     Allocate a new SPMI device
 
-    :param struct spmi_controller \*ctrl:
+    :param ctrl:
         associated controller
+    :type ctrl: struct spmi_controller \*
 
 .. _`spmi_device_alloc.description`:
 
@@ -321,11 +352,13 @@ spmi_controller_alloc
 
     Allocate a new SPMI controller
 
-    :param struct device \*parent:
+    :param parent:
         parent device
+    :type parent: struct device \*
 
-    :param size_t size:
+    :param size:
         size of private data
+    :type size: size_t
 
 .. _`spmi_controller_alloc.description`:
 
@@ -346,8 +379,9 @@ spmi_controller_add
 
     Add an SPMI controller
 
-    :param struct spmi_controller \*ctrl:
+    :param ctrl:
         controller to be registered.
+    :type ctrl: struct spmi_controller \*
 
 .. _`spmi_controller_add.description`:
 
@@ -366,8 +400,9 @@ spmi_controller_remove
 
     remove an SPMI controller
 
-    :param struct spmi_controller \*ctrl:
+    :param ctrl:
         controller to remove
+    :type ctrl: struct spmi_controller \*
 
 .. _`spmi_controller_remove.description`:
 
@@ -386,11 +421,13 @@ Remove a SPMI controller.  Caller is responsible for calling
 
     Register client driver with SPMI core
 
-    :param struct spmi_driver \*sdrv:
+    :param sdrv:
         client driver to be associated with client-device.
+    :type sdrv: struct spmi_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         *undescribed*
+    :type owner: struct module \*
 
 .. _`__spmi_driver_register.description`:
 

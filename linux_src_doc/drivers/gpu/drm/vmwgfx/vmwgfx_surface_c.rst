@@ -194,8 +194,9 @@ vmw_surface_dma_size
 
     Compute fifo size for a dma command.
 
-    :param const struct vmw_surface \*srf:
+    :param srf:
         Pointer to a struct vmw_surface
+    :type srf: const struct vmw_surface \*
 
 .. _`vmw_surface_dma_size.description`:
 
@@ -214,8 +215,9 @@ vmw_surface_define_size
 
     Compute fifo size for a surface define command.
 
-    :param const struct vmw_surface \*srf:
+    :param srf:
         Pointer to a struct vmw_surface
+    :type srf: const struct vmw_surface \*
 
 .. _`vmw_surface_define_size.description`:
 
@@ -234,8 +236,9 @@ vmw_surface_destroy_size
 
     Compute fifo size for a surface destroy command.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vmw_surface_destroy_size.description`:
 
@@ -254,11 +257,13 @@ vmw_surface_destroy_encode
 
     Encode a surface_destroy command.
 
-    :param uint32_t id:
+    :param id:
         The surface id
+    :type id: uint32_t
 
-    :param void \*cmd_space:
+    :param cmd_space:
         Pointer to memory area in which the commands should be encoded.
+    :type cmd_space: void \*
 
 .. _`vmw_surface_define_encode`:
 
@@ -269,11 +274,13 @@ vmw_surface_define_encode
 
     Encode a surface_define command.
 
-    :param const struct vmw_surface \*srf:
+    :param srf:
         Pointer to a struct vmw_surface object.
+    :type srf: const struct vmw_surface \*
 
-    :param void \*cmd_space:
+    :param cmd_space:
         Pointer to memory area in which the commands should be encoded.
+    :type cmd_space: void \*
 
 .. _`vmw_surface_dma_encode`:
 
@@ -284,18 +291,22 @@ vmw_surface_dma_encode
 
     Encode a surface_dma command.
 
-    :param struct vmw_surface \*srf:
+    :param srf:
         Pointer to a struct vmw_surface object.
+    :type srf: struct vmw_surface \*
 
-    :param void \*cmd_space:
+    :param cmd_space:
         Pointer to memory area in which the commands should be encoded.
+    :type cmd_space: void \*
 
-    :param const SVGAGuestPtr \*ptr:
+    :param ptr:
         Pointer to an SVGAGuestPtr indicating where the surface contents
         should be placed or read from.
+    :type ptr: const SVGAGuestPtr \*
 
-    :param bool to_surface:
+    :param to_surface:
         Boolean whether to DMA to the surface or from the surface.
+    :type to_surface: bool
 
 .. _`vmw_hw_surface_destroy`:
 
@@ -306,9 +317,10 @@ vmw_hw_surface_destroy
 
     destroy a Device surface
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a struct vmw_resource embedded in a struct
         vmw_surface.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_hw_surface_destroy.description`:
 
@@ -327,8 +339,9 @@ vmw_legacy_srf_create
 
     Create a device surface as part of the resource validation process.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a struct vmw_surface.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_legacy_srf_create.description`:
 
@@ -351,16 +364,19 @@ vmw_legacy_srf_dma
 
     Copy backup data to or from a legacy surface.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a struct vmw_res embedded in a struct
         vmw_surface.
+    :type res: struct vmw_resource \*
 
-    :param struct ttm_validate_buffer \*val_buf:
+    :param val_buf:
         Pointer to a struct ttm_validate_buffer containing
         information about the backup buffer.
+    :type val_buf: struct ttm_validate_buffer \*
 
-    :param bool bind:
+    :param bind:
         Boolean wether to DMA to the surface.
+    :type bind: bool
 
 .. _`vmw_legacy_srf_dma.description`:
 
@@ -383,13 +399,15 @@ vmw_legacy_srf_bind
 
     Perform a legacy surface bind as part of the surface validation process.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a struct vmw_res embedded in a struct
         vmw_surface.
+    :type res: struct vmw_resource \*
 
-    :param struct ttm_validate_buffer \*val_buf:
+    :param val_buf:
         Pointer to a struct ttm_validate_buffer containing
         information about the backup buffer.
+    :type val_buf: struct ttm_validate_buffer \*
 
 .. _`vmw_legacy_srf_bind.description`:
 
@@ -408,16 +426,19 @@ vmw_legacy_srf_unbind
 
     Perform a legacy surface unbind as part of the surface eviction process.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a struct vmw_res embedded in a struct
         vmw_surface.
+    :type res: struct vmw_resource \*
 
-    :param bool readback:
+    :param readback:
         *undescribed*
+    :type readback: bool
 
-    :param struct ttm_validate_buffer \*val_buf:
+    :param val_buf:
         Pointer to a struct ttm_validate_buffer containing
         information about the backup buffer.
+    :type val_buf: struct ttm_validate_buffer \*
 
 .. _`vmw_legacy_srf_unbind.description`:
 
@@ -435,9 +456,10 @@ vmw_legacy_srf_destroy
 
     Destroy a device surface as part of a resource eviction process.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a struct vmw_res embedded in a struct
         vmw_surface.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_surface_init`:
 
@@ -448,11 +470,13 @@ vmw_surface_init
 
     initialize a struct vmw_surface
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_surface \*srf:
+    :param srf:
         Pointer to the struct vmw_surface to initialize.
+    :type srf: struct vmw_surface \*
 
     :param void (\*res_free)(struct vmw_resource \*res):
         Pointer to a resource destructor used to free
@@ -467,8 +491,9 @@ vmw_user_surface_base_to_res
 
     TTM base object to resource converter for user visible surfaces
 
-    :param struct ttm_base_object \*base:
+    :param base:
         Pointer to a TTM base object
+    :type base: struct ttm_base_object \*
 
 .. _`vmw_user_surface_base_to_res.description`:
 
@@ -487,8 +512,9 @@ vmw_user_surface_free
 
     User visible surface resource destructor
 
-    :param struct vmw_resource \*res:
+    :param res:
         A struct vmw_resource embedded in a struct vmw_surface.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_user_surface_base_release`:
 
@@ -499,9 +525,10 @@ vmw_user_surface_base_release
 
     User visible surface TTM base object destructor
 
-    :param struct ttm_base_object \*\*p_base:
+    :param p_base:
         Pointer to a pointer to a TTM base object
         embedded in a struct vmw_user_surface.
+    :type p_base: struct ttm_base_object \*\*
 
 .. _`vmw_user_surface_base_release.description`:
 
@@ -520,14 +547,17 @@ vmw_surface_destroy_ioctl
 
     Ioctl function implementing the user surface destroy functionality.
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to a struct drm_device.
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         Pointer to data copied from / to user-space.
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to a drm file private structure.
+    :type file_priv: struct drm_file \*
 
 .. _`vmw_surface_define_ioctl`:
 
@@ -538,14 +568,17 @@ vmw_surface_define_ioctl
 
     Ioctl function implementing the user surface define functionality.
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to a struct drm_device.
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         Pointer to data copied from / to user-space.
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to a drm file private structure.
+    :type file_priv: struct drm_file \*
 
 .. _`vmw_surface_reference_ioctl`:
 
@@ -556,14 +589,17 @@ vmw_surface_reference_ioctl
 
     Ioctl function implementing the user surface reference functionality.
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to a struct drm_device.
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         Pointer to data copied from / to user-space.
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to a drm file private structure.
+    :type file_priv: struct drm_file \*
 
 .. _`vmw_gb_surface_create`:
 
@@ -574,8 +610,9 @@ vmw_gb_surface_create
 
     Encode a surface_define command.
 
-    :param struct vmw_resource \*res:
+    :param res:
         *undescribed*
+    :type res: struct vmw_resource \*
 
 .. _`vmw_gb_surface_define_ioctl`:
 
@@ -586,14 +623,17 @@ vmw_gb_surface_define_ioctl
 
     Ioctl function implementing the user surface define functionality.
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to a struct drm_device.
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         Pointer to data copied from / to user-space.
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to a drm file private structure.
+    :type file_priv: struct drm_file \*
 
 .. _`vmw_gb_surface_reference_ioctl`:
 
@@ -604,54 +644,75 @@ vmw_gb_surface_reference_ioctl
 
     Ioctl function implementing the user surface reference functionality.
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to a struct drm_device.
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         Pointer to data copied from / to user-space.
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to a drm file private structure.
+    :type file_priv: struct drm_file \*
 
 .. _`vmw_surface_gb_priv_define`:
 
 vmw_surface_gb_priv_define
 ==========================
 
-.. c:function:: int vmw_surface_gb_priv_define(struct drm_device *dev, uint32_t user_accounting_size, uint32_t svga3d_flags, SVGA3dSurfaceFormat format, bool for_scanout, uint32_t num_mip_levels, uint32_t multisample_count, uint32_t array_size, struct drm_vmw_size size, struct vmw_surface **srf_out)
+.. c:function:: int vmw_surface_gb_priv_define(struct drm_device *dev, uint32_t user_accounting_size, SVGA3dSurfaceAllFlags svga3d_flags, SVGA3dSurfaceFormat format, bool for_scanout, uint32_t num_mip_levels, uint32_t multisample_count, uint32_t array_size, struct drm_vmw_size size, SVGA3dMSPattern multisample_pattern, SVGA3dMSQualityLevel quality_level, struct vmw_surface **srf_out)
 
     Define a private GB surface
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to a struct drm_device
+    :type dev: struct drm_device \*
 
-    :param uint32_t user_accounting_size:
+    :param user_accounting_size:
         Used to track user-space memory usage, set
         to 0 for kernel mode only memory
+    :type user_accounting_size: uint32_t
 
-    :param uint32_t svga3d_flags:
+    :param svga3d_flags:
         SVGA3d surface flags for the device
+    :type svga3d_flags: SVGA3dSurfaceAllFlags
 
-    :param SVGA3dSurfaceFormat format:
+    :param format:
         requested surface format
+    :type format: SVGA3dSurfaceFormat
 
-    :param bool for_scanout:
+    :param for_scanout:
         true if inteded to be used for scanout buffer
+    :type for_scanout: bool
 
-    :param uint32_t num_mip_levels:
+    :param num_mip_levels:
         number of MIP levels
+    :type num_mip_levels: uint32_t
 
-    :param uint32_t multisample_count:
+    :param multisample_count:
         *undescribed*
+    :type multisample_count: uint32_t
 
-    :param uint32_t array_size:
+    :param array_size:
         Surface array size.
+    :type array_size: uint32_t
 
-    :param struct drm_vmw_size size:
+    :param size:
         width, heigh, depth of the surface requested
+    :type size: struct drm_vmw_size
 
-    :param struct vmw_surface \*\*srf_out:
+    :param multisample_pattern:
+        Multisampling pattern when msaa is supported
+    :type multisample_pattern: SVGA3dMSPattern
+
+    :param quality_level:
+        Precision settings
+    :type quality_level: SVGA3dMSQualityLevel
+
+    :param srf_out:
         *undescribed*
+    :type srf_out: struct vmw_surface \*\*
 
 .. _`vmw_surface_gb_priv_define.description`:
 
@@ -662,6 +723,98 @@ GB surfaces allocated by this function will not have a user mode handle, and
 thus will only be visible to vmwgfx.  For optimization reasons the
 surface may later be given a user mode handle by another function to make
 it available to user mode drivers.
+
+.. _`vmw_gb_surface_define_ext_ioctl`:
+
+vmw_gb_surface_define_ext_ioctl
+===============================
+
+.. c:function:: int vmw_gb_surface_define_ext_ioctl(struct drm_device *dev, void *data, struct drm_file *file_priv)
+
+    Ioctl function implementing the user surface define functionality.
+
+    :param dev:
+        Pointer to a struct drm_device.
+    :type dev: struct drm_device \*
+
+    :param data:
+        Pointer to data copied from / to user-space.
+    :type data: void \*
+
+    :param file_priv:
+        Pointer to a drm file private structure.
+    :type file_priv: struct drm_file \*
+
+.. _`vmw_gb_surface_reference_ext_ioctl`:
+
+vmw_gb_surface_reference_ext_ioctl
+==================================
+
+.. c:function:: int vmw_gb_surface_reference_ext_ioctl(struct drm_device *dev, void *data, struct drm_file *file_priv)
+
+    Ioctl function implementing the user surface reference functionality.
+
+    :param dev:
+        Pointer to a struct drm_device.
+    :type dev: struct drm_device \*
+
+    :param data:
+        Pointer to data copied from / to user-space.
+    :type data: void \*
+
+    :param file_priv:
+        Pointer to a drm file private structure.
+    :type file_priv: struct drm_file \*
+
+.. _`vmw_gb_surface_define_internal`:
+
+vmw_gb_surface_define_internal
+==============================
+
+.. c:function:: int vmw_gb_surface_define_internal(struct drm_device *dev, struct drm_vmw_gb_surface_create_ext_req *req, struct drm_vmw_gb_surface_create_rep *rep, struct drm_file *file_priv)
+
+    Ioctl function implementing the user surface define functionality.
+
+    :param dev:
+        Pointer to a struct drm_device.
+    :type dev: struct drm_device \*
+
+    :param req:
+        Request argument from user-space.
+    :type req: struct drm_vmw_gb_surface_create_ext_req \*
+
+    :param rep:
+        Response argument to user-space.
+    :type rep: struct drm_vmw_gb_surface_create_rep \*
+
+    :param file_priv:
+        Pointer to a drm file private structure.
+    :type file_priv: struct drm_file \*
+
+.. _`vmw_gb_surface_reference_internal`:
+
+vmw_gb_surface_reference_internal
+=================================
+
+.. c:function:: int vmw_gb_surface_reference_internal(struct drm_device *dev, struct drm_vmw_surface_arg *req, struct drm_vmw_gb_surface_ref_ext_rep *rep, struct drm_file *file_priv)
+
+    Ioctl function implementing the user surface reference functionality.
+
+    :param dev:
+        Pointer to a struct drm_device.
+    :type dev: struct drm_device \*
+
+    :param req:
+        Pointer to user-space request surface arg.
+    :type req: struct drm_vmw_surface_arg \*
+
+    :param rep:
+        Pointer to response to user-space.
+    :type rep: struct drm_vmw_gb_surface_ref_ext_rep \*
+
+    :param file_priv:
+        Pointer to a drm file private structure.
+    :type file_priv: struct drm_file \*
 
 .. This file was automatic generated / don't edit.
 

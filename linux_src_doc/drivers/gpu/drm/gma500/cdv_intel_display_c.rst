@@ -10,8 +10,9 @@ cdv_intel_panel_fitter_pipe
 
     or -1 if the panel fitter is not present or not in use
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. This file was automatic generated / don't edit.
 

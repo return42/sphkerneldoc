@@ -8,11 +8,13 @@ radeon_ddc_probe
 
 .. c:function:: bool radeon_ddc_probe(struct radeon_connector *radeon_connector, bool use_aux)
 
-    :param struct radeon_connector \*radeon_connector:
+    :param radeon_connector:
         *undescribed*
+    :type radeon_connector: struct radeon_connector \*
 
-    :param bool use_aux:
+    :param use_aux:
         *undescribed*
+    :type use_aux: bool
 
 .. This file was automatic generated / don't edit.
 

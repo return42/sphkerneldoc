@@ -8,11 +8,13 @@ dmm_txn_init
 
 .. c:function:: struct dmm_txn *dmm_txn_init(struct dmm *dmm, struct tcm *tcm)
 
-    :param struct dmm \*dmm:
+    :param dmm:
         *undescribed*
+    :type dmm: struct dmm \*
 
-    :param struct tcm \*tcm:
+    :param tcm:
         *undescribed*
+    :type tcm: struct tcm \*
 
 .. _`dmm_txn_append`:
 
@@ -23,20 +25,25 @@ dmm_txn_append
 
     corresponding slot is cleared (ie. dummy_pa is programmed)
 
-    :param struct dmm_txn \*txn:
+    :param txn:
         *undescribed*
+    :type txn: struct dmm_txn \*
 
-    :param struct pat_area \*area:
+    :param area:
         *undescribed*
+    :type area: struct pat_area \*
 
-    :param struct page \*\*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct page \*\*
 
-    :param u32 npages:
+    :param npages:
         *undescribed*
+    :type npages: u32
 
-    :param u32 roll:
+    :param roll:
         *undescribed*
+    :type roll: u32
 
 .. _`dmm_txn_commit`:
 
@@ -45,11 +52,13 @@ dmm_txn_commit
 
 .. c:function:: int dmm_txn_commit(struct dmm_txn *txn, bool wait)
 
-    :param struct dmm_txn \*txn:
+    :param txn:
         *undescribed*
+    :type txn: struct dmm_txn \*
 
-    :param bool wait:
+    :param wait:
         *undescribed*
+    :type wait: bool
 
 .. This file was automatic generated / don't edit.
 

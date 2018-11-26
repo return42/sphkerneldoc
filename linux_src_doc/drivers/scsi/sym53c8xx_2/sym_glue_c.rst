@@ -10,11 +10,13 @@ sym2_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param enum pci_channel_state state:
+    :param state:
         current state of the PCI slot
+    :type state: enum pci_channel_state
 
 .. _`sym2_io_slot_dump`:
 
@@ -25,8 +27,9 @@ sym2_io_slot_dump
 
     Enable MMIO and dump debug registers
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`sym2_reset_workarounds`:
 
@@ -37,8 +40,9 @@ sym2_reset_workarounds
 
     hardware-specific work-arounds
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`sym2_reset_workarounds.description`:
 
@@ -59,8 +63,9 @@ sym2_io_slot_reset
 
     called when the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`sym2_io_slot_reset.description`:
 
@@ -78,8 +83,9 @@ sym2_io_resume
 
     resume normal ops after PCI reset
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`sym2_io_resume.description`:
 

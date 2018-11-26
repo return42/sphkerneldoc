@@ -10,17 +10,21 @@ testmode_write
 
     change usb test mode state.
 
-    :param struct file \*file:
+    :param file:
         The  file to write to.
+    :type file: struct file \*
 
-    :param const char __user \*ubuf:
+    :param ubuf:
         The buffer where user wrote.
+    :type ubuf: const char __user \*
 
-    :param size_t count:
+    :param count:
         The ubuf size.
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Unused parameter.
+    :type ppos: loff_t \*
 
 .. _`testmode_show`:
 
@@ -31,11 +35,13 @@ testmode_show
 
     debugfs: show usb test mode state
 
-    :param struct seq_file \*s:
+    :param s:
         The seq file to write to.
+    :type s: struct seq_file \*
 
-    :param void \*unused:
+    :param unused:
         Unused parameter.
+    :type unused: void \*
 
 .. _`testmode_show.description`:
 
@@ -53,11 +59,13 @@ state_show
 
     debugfs: show overall driver and device state.
 
-    :param struct seq_file \*seq:
+    :param seq:
         The seq file to write to.
+    :type seq: struct seq_file \*
 
-    :param void \*v:
+    :param v:
         Unused parameter.
+    :type v: void \*
 
 .. _`state_show.description`:
 
@@ -77,11 +85,13 @@ fifo_show
 
     debugfs: show the fifo information
 
-    :param struct seq_file \*seq:
+    :param seq:
         The seq_file to write data to.
+    :type seq: struct seq_file \*
 
-    :param void \*v:
+    :param v:
         Unused parameter.
+    :type v: void \*
 
 .. _`fifo_show.description`:
 
@@ -100,11 +110,13 @@ ep_show
 
     debugfs: show the state of an endpoint.
 
-    :param struct seq_file \*seq:
+    :param seq:
         The seq_file to write data to.
+    :type seq: struct seq_file \*
 
-    :param void \*v:
+    :param v:
         Unused parameter.
+    :type v: void \*
 
 .. _`ep_show.description`:
 
@@ -123,8 +135,9 @@ dwc2_hsotg_create_debug
 
     create debugfs directory and files
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_create_debug.description`:
 

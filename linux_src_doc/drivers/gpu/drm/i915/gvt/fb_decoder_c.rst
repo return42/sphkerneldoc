@@ -10,12 +10,14 @@ intel_vgpu_decode_primary_plane
 
     Decode primary plane
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         input vgpu
+    :type vgpu: struct intel_vgpu \*
 
-    :param struct intel_vgpu_primary_plane_format \*plane:
+    :param plane:
         primary plane to save decoded info
         This function is called for decoding plane
+    :type plane: struct intel_vgpu_primary_plane_format \*
 
 .. _`intel_vgpu_decode_primary_plane.return`:
 
@@ -33,12 +35,14 @@ intel_vgpu_decode_cursor_plane
 
     Decode sprite plane
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         input vgpu
+    :type vgpu: struct intel_vgpu \*
 
-    :param struct intel_vgpu_cursor_plane_format \*plane:
+    :param plane:
         cursor plane to save decoded info
         This function is called for decoding plane
+    :type plane: struct intel_vgpu_cursor_plane_format \*
 
 .. _`intel_vgpu_decode_cursor_plane.return`:
 
@@ -56,12 +60,14 @@ intel_vgpu_decode_sprite_plane
 
     Decode sprite plane
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         input vgpu
+    :type vgpu: struct intel_vgpu \*
 
-    :param struct intel_vgpu_sprite_plane_format \*plane:
+    :param plane:
         sprite plane to save decoded info
         This function is called for decoding plane
+    :type plane: struct intel_vgpu_sprite_plane_format \*
 
 .. _`intel_vgpu_decode_sprite_plane.return`:
 

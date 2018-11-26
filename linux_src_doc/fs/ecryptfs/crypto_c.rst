@@ -43,15 +43,18 @@ ecryptfs_from_hex
 
 .. c:function:: void ecryptfs_from_hex(char *dst, char *src, int dst_size)
 
-    :param char \*dst:
+    :param dst:
         Buffer to take the bytes from src hex; must be at least of
         size (src_size / 2)
+    :type dst: char \*
 
-    :param char \*src:
+    :param src:
         Buffer to be converted from a hex string representation to raw value
+    :type src: char \*
 
-    :param int dst_size:
+    :param dst_size:
         size of dst buffer, or number of hex characters pairs to convert
+    :type dst_size: int
 
 .. _`ecryptfs_calculate_md5`:
 
@@ -62,17 +65,21 @@ ecryptfs_calculate_md5
 
     calculates the md5 of \ ``src``\ 
 
-    :param char \*dst:
+    :param dst:
         Pointer to 16 bytes of allocated memory
+    :type dst: char \*
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         Pointer to crypt_stat struct for the current inode
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param char \*src:
+    :param src:
         Data to be md5'd
+    :type src: char \*
 
-    :param int len:
+    :param len:
         Length of \ ``src``\ 
+    :type len: int
 
 .. _`ecryptfs_calculate_md5.description`:
 
@@ -89,14 +96,17 @@ ecryptfs_derive_iv
 
 .. c:function:: int ecryptfs_derive_iv(char *iv, struct ecryptfs_crypt_stat *crypt_stat, loff_t offset)
 
-    :param char \*iv:
+    :param iv:
         destination for the derived iv vale
+    :type iv: char \*
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         Pointer to crypt_stat struct for the current inode
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param loff_t offset:
+    :param offset:
         Offset of the extent whose IV we are to derive
+    :type offset: loff_t
 
 .. _`ecryptfs_derive_iv.description`:
 
@@ -115,8 +125,9 @@ ecryptfs_init_crypt_stat
 
 .. c:function:: int ecryptfs_init_crypt_stat(struct ecryptfs_crypt_stat *crypt_stat)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         Pointer to the crypt_stat struct to initialize.
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
 .. _`ecryptfs_init_crypt_stat.description`:
 
@@ -132,8 +143,9 @@ ecryptfs_destroy_crypt_stat
 
 .. c:function:: void ecryptfs_destroy_crypt_stat(struct ecryptfs_crypt_stat *crypt_stat)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         Pointer to the crypt_stat struct to initialize.
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
 .. _`ecryptfs_destroy_crypt_stat.description`:
 
@@ -149,18 +161,22 @@ virt_to_scatterlist
 
 .. c:function:: int virt_to_scatterlist(const void *addr, int size, struct scatterlist *sg, int sg_size)
 
-    :param const void \*addr:
+    :param addr:
         Virtual address
+    :type addr: const void \*
 
-    :param int size:
+    :param size:
         Size of data; should be an even multiple of the block size
+    :type size: int
 
-    :param struct scatterlist \*sg:
+    :param sg:
         Pointer to scatterlist array; set to NULL to obtain only
         the number of scatterlist structs required in array
+    :type sg: struct scatterlist \*
 
-    :param int sg_size:
+    :param sg_size:
         Max array size
+    :type sg_size: int
 
 .. _`virt_to_scatterlist.description`:
 
@@ -179,23 +195,29 @@ crypt_scatterlist
 
 .. c:function:: int crypt_scatterlist(struct ecryptfs_crypt_stat *crypt_stat, struct scatterlist *dst_sg, struct scatterlist *src_sg, int size, unsigned char *iv, int op)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         Pointer to the crypt_stat struct to initialize.
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param struct scatterlist \*dst_sg:
+    :param dst_sg:
         Destination of the data after performing the crypto operation
+    :type dst_sg: struct scatterlist \*
 
-    :param struct scatterlist \*src_sg:
+    :param src_sg:
         Data to be encrypted or decrypted
+    :type src_sg: struct scatterlist \*
 
-    :param int size:
+    :param size:
         Length of data
+    :type size: int
 
-    :param unsigned char \*iv:
+    :param iv:
         IV to use
+    :type iv: unsigned char \*
 
-    :param int op:
+    :param op:
         ENCRYPT or DECRYPT to indicate the desired operation
+    :type op: int
 
 .. _`crypt_scatterlist.description`:
 
@@ -211,11 +233,13 @@ lower_offset_for_page
 
 .. c:function:: loff_t lower_offset_for_page(struct ecryptfs_crypt_stat *crypt_stat, struct page *page)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         *undescribed*
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
 .. _`lower_offset_for_page.description`:
 
@@ -231,21 +255,26 @@ crypt_extent
 
 .. c:function:: int crypt_extent(struct ecryptfs_crypt_stat *crypt_stat, struct page *dst_page, struct page *src_page, unsigned long extent_offset, int op)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         crypt_stat containing cryptographic context for the
         encryption operation
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param struct page \*dst_page:
+    :param dst_page:
         The page to write the result into
+    :type dst_page: struct page \*
 
-    :param struct page \*src_page:
+    :param src_page:
         The page to read from
+    :type src_page: struct page \*
 
-    :param unsigned long extent_offset:
+    :param extent_offset:
         Page extent offset for use in generating IV
+    :type extent_offset: unsigned long
 
-    :param int op:
+    :param op:
         ENCRYPT or DECRYPT to indicate the desired operation
+    :type op: int
 
 .. _`crypt_extent.description`:
 
@@ -263,10 +292,11 @@ ecryptfs_encrypt_page
 
 .. c:function:: int ecryptfs_encrypt_page(struct page *page)
 
-    :param struct page \*page:
+    :param page:
         Page mapped from the eCryptfs inode for the file; contains
         decrypted content that needs to be encrypted (to a temporary
         page; not in place) and written out to the lower file
+    :type page: struct page \*
 
 .. _`ecryptfs_encrypt_page.description`:
 
@@ -290,10 +320,11 @@ ecryptfs_decrypt_page
 
 .. c:function:: int ecryptfs_decrypt_page(struct page *page)
 
-    :param struct page \*page:
+    :param page:
         Page mapped from the eCryptfs inode for the file; data read
         and decrypted from the lower file will be written into this
         page
+    :type page: struct page \*
 
 .. _`ecryptfs_decrypt_page.description`:
 
@@ -317,8 +348,9 @@ ecryptfs_init_crypt_ctx
 
 .. c:function:: int ecryptfs_init_crypt_ctx(struct ecryptfs_crypt_stat *crypt_stat)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         Uninitialized crypt stats structure
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
 .. _`ecryptfs_init_crypt_ctx.description`:
 
@@ -344,8 +376,9 @@ ecryptfs_compute_root_iv
 
     \ ``crypt_stats``\ 
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         *undescribed*
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
 .. _`ecryptfs_compute_root_iv.description`:
 
@@ -361,11 +394,13 @@ ecryptfs_copy_mount_wide_flags_to_inode_flags
 
 .. c:function:: void ecryptfs_copy_mount_wide_flags_to_inode_flags(struct ecryptfs_crypt_stat *crypt_stat, struct ecryptfs_mount_crypt_stat *mount_crypt_stat)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The inode's cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param struct ecryptfs_mount_crypt_stat \*mount_crypt_stat:
+    :param mount_crypt_stat:
         The mount point's cryptographic context
+    :type mount_crypt_stat: struct ecryptfs_mount_crypt_stat \*
 
 .. _`ecryptfs_copy_mount_wide_flags_to_inode_flags.description`:
 
@@ -382,11 +417,13 @@ ecryptfs_set_default_crypt_stat_vals
 
 .. c:function:: void ecryptfs_set_default_crypt_stat_vals(struct ecryptfs_crypt_stat *crypt_stat, struct ecryptfs_mount_crypt_stat *mount_crypt_stat)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The inode's cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param struct ecryptfs_mount_crypt_stat \*mount_crypt_stat:
+    :param mount_crypt_stat:
         The mount point's cryptographic context
+    :type mount_crypt_stat: struct ecryptfs_mount_crypt_stat \*
 
 .. _`ecryptfs_set_default_crypt_stat_vals.description`:
 
@@ -402,8 +439,9 @@ ecryptfs_new_file_context
 
 .. c:function:: int ecryptfs_new_file_context(struct inode *ecryptfs_inode)
 
-    :param struct inode \*ecryptfs_inode:
+    :param ecryptfs_inode:
         The eCryptfs inode
+    :type ecryptfs_inode: struct inode \*
 
 .. _`ecryptfs_new_file_context.description`:
 
@@ -439,8 +477,9 @@ ecryptfs_validate_marker
 
     check for the ecryptfs marker
 
-    :param char \*data:
+    :param data:
         The data block in which to check
+    :type data: char \*
 
 .. _`ecryptfs_validate_marker.description`:
 
@@ -456,14 +495,17 @@ ecryptfs_process_flags
 
 .. c:function:: int ecryptfs_process_flags(struct ecryptfs_crypt_stat *crypt_stat, char *page_virt, int *bytes_read)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param char \*page_virt:
+    :param page_virt:
         Source data to be parsed
+    :type page_virt: char \*
 
-    :param int \*bytes_read:
+    :param bytes_read:
         Updated with the number of bytes read
+    :type bytes_read: int \*
 
 .. _`ecryptfs_process_flags.description`:
 
@@ -479,11 +521,13 @@ write_ecryptfs_marker
 
 .. c:function:: void write_ecryptfs_marker(char *page_virt, size_t *written)
 
-    :param char \*page_virt:
+    :param page_virt:
         The pointer to in a page to begin writing the marker
+    :type page_virt: char \*
 
-    :param size_t \*written:
+    :param written:
         Number of bytes written
+    :type written: size_t \*
 
 .. _`write_ecryptfs_marker.description`:
 
@@ -499,11 +543,13 @@ ecryptfs_code_for_cipher_string
 
 .. c:function:: u8 ecryptfs_code_for_cipher_string(char *cipher_name, size_t key_bytes)
 
-    :param char \*cipher_name:
+    :param cipher_name:
         The string alias for the cipher
+    :type cipher_name: char \*
 
-    :param size_t key_bytes:
+    :param key_bytes:
         Length of key in bytes; used for AES code selection
+    :type key_bytes: size_t
 
 .. _`ecryptfs_code_for_cipher_string.description`:
 
@@ -519,11 +565,13 @@ ecryptfs_cipher_code_to_string
 
 .. c:function:: int ecryptfs_cipher_code_to_string(char *str, u8 cipher_code)
 
-    :param char \*str:
+    :param str:
         Destination to write out the cipher name
+    :type str: char \*
 
-    :param u8 cipher_code:
+    :param cipher_code:
         The code to convert to cipher name string
+    :type cipher_code: u8
 
 .. _`ecryptfs_cipher_code_to_string.description`:
 
@@ -539,20 +587,25 @@ ecryptfs_write_headers_virt
 
 .. c:function:: int ecryptfs_write_headers_virt(char *page_virt, size_t max, size_t *size, struct ecryptfs_crypt_stat *crypt_stat, struct dentry *ecryptfs_dentry)
 
-    :param char \*page_virt:
+    :param page_virt:
         The virtual address to write the headers to
+    :type page_virt: char \*
 
-    :param size_t max:
+    :param max:
         The size of memory allocated at page_virt
+    :type max: size_t
 
-    :param size_t \*size:
+    :param size:
         Set to the number of bytes written by this function
+    :type size: size_t \*
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param struct dentry \*ecryptfs_dentry:
+    :param ecryptfs_dentry:
         The eCryptfs dentry
+    :type ecryptfs_dentry: struct dentry \*
 
 .. _`ecryptfs_write_headers_virt.format-version`:
 
@@ -621,11 +674,13 @@ ecryptfs_write_metadata
 
 .. c:function:: int ecryptfs_write_metadata(struct dentry *ecryptfs_dentry, struct inode *ecryptfs_inode)
 
-    :param struct dentry \*ecryptfs_dentry:
+    :param ecryptfs_dentry:
         The eCryptfs dentry, which should be negative
+    :type ecryptfs_dentry: struct dentry \*
 
-    :param struct inode \*ecryptfs_inode:
+    :param ecryptfs_inode:
         The newly created eCryptfs inode
+    :type ecryptfs_inode: struct inode \*
 
 .. _`ecryptfs_write_metadata.description`:
 
@@ -647,8 +702,9 @@ set_default_header_data
 
 .. c:function:: void set_default_header_data(struct ecryptfs_crypt_stat *crypt_stat)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
 .. _`set_default_header_data.description`:
 
@@ -666,17 +722,21 @@ ecryptfs_read_headers_virt
 
 .. c:function:: int ecryptfs_read_headers_virt(char *page_virt, struct ecryptfs_crypt_stat *crypt_stat, struct dentry *ecryptfs_dentry, int validate_header_size)
 
-    :param char \*page_virt:
+    :param page_virt:
         The virtual address into which to read the headers
+    :type page_virt: char \*
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param struct dentry \*ecryptfs_dentry:
+    :param ecryptfs_dentry:
         The eCryptfs dentry
+    :type ecryptfs_dentry: struct dentry \*
 
-    :param int validate_header_size:
+    :param validate_header_size:
         Whether to validate the header size while reading
+    :type validate_header_size: int
 
 .. _`ecryptfs_read_headers_virt.description`:
 
@@ -695,11 +755,13 @@ ecryptfs_read_xattr_region
 
 .. c:function:: int ecryptfs_read_xattr_region(char *page_virt, struct inode *ecryptfs_inode)
 
-    :param char \*page_virt:
+    :param page_virt:
         The vitual address into which to read the xattr data
+    :type page_virt: char \*
 
-    :param struct inode \*ecryptfs_inode:
+    :param ecryptfs_inode:
         The eCryptfs inode
+    :type ecryptfs_inode: struct inode \*
 
 .. _`ecryptfs_read_xattr_region.description`:
 
@@ -718,8 +780,9 @@ ecryptfs_read_metadata
 
 .. c:function:: int ecryptfs_read_metadata(struct dentry *ecryptfs_dentry)
 
-    :param struct dentry \*ecryptfs_dentry:
+    :param ecryptfs_dentry:
         *undescribed*
+    :type ecryptfs_dentry: struct dentry \*
 
 .. _`ecryptfs_read_metadata.description`:
 
@@ -744,11 +807,13 @@ ecryptfs_encrypt_filename
 
     encrypt filename
 
-    :param struct ecryptfs_filename \*filename:
+    :param filename:
         *undescribed*
+    :type filename: struct ecryptfs_filename \*
 
-    :param struct ecryptfs_mount_crypt_stat \*mount_crypt_stat:
+    :param mount_crypt_stat:
         *undescribed*
+    :type mount_crypt_stat: struct ecryptfs_mount_crypt_stat \*
 
 .. _`ecryptfs_encrypt_filename.description`:
 
@@ -770,14 +835,17 @@ ecryptfs_process_key_cipher
 
     Perform key cipher initialization.
 
-    :param struct crypto_skcipher \*\*key_tfm:
+    :param key_tfm:
         Crypto context for key material, set by this function
+    :type key_tfm: struct crypto_skcipher \*\*
 
-    :param char \*cipher_name:
+    :param cipher_name:
         Name of the cipher
+    :type cipher_name: char \*
 
-    :param size_t \*key_size:
+    :param key_size:
         Size of the key in bytes
+    :type key_size: size_t \*
 
 .. _`ecryptfs_process_key_cipher.description`:
 
@@ -797,8 +865,9 @@ ecryptfs_destroy_crypto
 
     free all cached key_tfms on key_tfm_list
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ecryptfs_destroy_crypto.description`:
 
@@ -816,11 +885,13 @@ ecryptfs_tfm_exists
 
     Search for existing tfm for cipher_name.
 
-    :param char \*cipher_name:
+    :param cipher_name:
         the name of the cipher to search for
+    :type cipher_name: char \*
 
-    :param struct ecryptfs_key_tfm \*\*key_tfm:
+    :param key_tfm:
         set to corresponding tfm if found
+    :type key_tfm: struct ecryptfs_key_tfm \*\*
 
 .. _`ecryptfs_tfm_exists.description`:
 
@@ -839,14 +910,17 @@ ecryptfs_get_tfm_and_mutex_for_cipher_name
 
 .. c:function:: int ecryptfs_get_tfm_and_mutex_for_cipher_name(struct crypto_skcipher **tfm, struct mutex **tfm_mutex, char *cipher_name)
 
-    :param struct crypto_skcipher \*\*tfm:
+    :param tfm:
         set to cached tfm found, or new tfm created
+    :type tfm: struct crypto_skcipher \*\*
 
-    :param struct mutex \*\*tfm_mutex:
+    :param tfm_mutex:
         set to mutex for cached tfm found, or new tfm created
+    :type tfm_mutex: struct mutex \*\*
 
-    :param char \*cipher_name:
+    :param cipher_name:
         the name of the cipher to search for and/or add
+    :type cipher_name: char \*
 
 .. _`ecryptfs_get_tfm_and_mutex_for_cipher_name.description`:
 
@@ -864,17 +938,21 @@ ecryptfs_encode_for_filename
 
 .. c:function:: void ecryptfs_encode_for_filename(unsigned char *dst, size_t *dst_size, unsigned char *src, size_t src_size)
 
-    :param unsigned char \*dst:
+    :param dst:
         Destination location for encoded filename
+    :type dst: unsigned char \*
 
-    :param size_t \*dst_size:
+    :param dst_size:
         Size of the encoded filename in bytes
+    :type dst_size: size_t \*
 
-    :param unsigned char \*src:
+    :param src:
         Source location for the filename to encode
+    :type src: unsigned char \*
 
-    :param size_t src_size:
+    :param src_size:
         Size of the source in bytes
+    :type src_size: size_t
 
 .. _`ecryptfs_decode_from_filename`:
 
@@ -883,19 +961,23 @@ ecryptfs_decode_from_filename
 
 .. c:function:: void ecryptfs_decode_from_filename(unsigned char *dst, size_t *dst_size, const unsigned char *src, size_t src_size)
 
-    :param unsigned char \*dst:
+    :param dst:
         If NULL, this function only sets \ ``dst_size``\  and returns. If
         non-NULL, this function decodes the encoded octets in \ ``src``\ 
         into the memory that \ ``dst``\  points to.
+    :type dst: unsigned char \*
 
-    :param size_t \*dst_size:
+    :param dst_size:
         Set to the size of the decoded string.
+    :type dst_size: size_t \*
 
-    :param const unsigned char \*src:
+    :param src:
         The encoded set of octets to decode.
+    :type src: const unsigned char \*
 
-    :param size_t src_size:
+    :param src_size:
         The size of the encoded set of octets to decode.
+    :type src_size: size_t
 
 .. _`ecryptfs_encrypt_and_encode_filename`:
 
@@ -906,20 +988,25 @@ ecryptfs_encrypt_and_encode_filename
 
     converts a plaintext file name to cipher text
 
-    :param char \*\*encoded_name:
+    :param encoded_name:
         The encypted name
+    :type encoded_name: char \*\*
 
-    :param size_t \*encoded_name_size:
+    :param encoded_name_size:
         *undescribed*
+    :type encoded_name_size: size_t \*
 
-    :param struct ecryptfs_mount_crypt_stat \*mount_crypt_stat:
+    :param mount_crypt_stat:
         *undescribed*
+    :type mount_crypt_stat: struct ecryptfs_mount_crypt_stat \*
 
-    :param const char \*name:
+    :param name:
         The plaintext name
+    :type name: const char \*
 
-    :param size_t name_size:
+    :param name_size:
         *undescribed*
+    :type name_size: size_t
 
 .. _`ecryptfs_encrypt_and_encode_filename.description`:
 
@@ -943,20 +1030,25 @@ ecryptfs_decode_and_decrypt_filename
 
     converts the encoded cipher text name to decoded plaintext
 
-    :param char \*\*plaintext_name:
+    :param plaintext_name:
         The plaintext name
+    :type plaintext_name: char \*\*
 
-    :param size_t \*plaintext_name_size:
+    :param plaintext_name_size:
         The plaintext name size
+    :type plaintext_name_size: size_t \*
 
-    :param struct super_block \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct super_block \*
 
-    :param const char \*name:
+    :param name:
         The filename in cipher text
+    :type name: const char \*
 
-    :param size_t name_size:
+    :param name_size:
         The cipher text name size
+    :type name_size: size_t
 
 .. _`ecryptfs_decode_and_decrypt_filename.description`:
 

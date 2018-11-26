@@ -10,11 +10,13 @@ blk_queue_prep_rq
 
     set a prepare_request function for queue
 
-    :param struct request_queue \*q:
+    :param q:
         queue
+    :type q: struct request_queue \*
 
-    :param prep_rq_fn \*pfn:
+    :param pfn:
         prepare_request function
+    :type pfn: prep_rq_fn \*
 
 .. _`blk_queue_prep_rq.description`:
 
@@ -35,11 +37,13 @@ blk_queue_unprep_rq
 
     set an unprepare_request function for queue
 
-    :param struct request_queue \*q:
+    :param q:
         queue
+    :type q: struct request_queue \*
 
-    :param unprep_rq_fn \*ufn:
+    :param ufn:
         unprepare_request function
+    :type ufn: unprep_rq_fn \*
 
 .. _`blk_queue_unprep_rq.description`:
 
@@ -60,8 +64,9 @@ blk_set_default_limits
 
     reset limits to default values
 
-    :param struct queue_limits \*lim:
+    :param lim:
         the queue_limits structure to reset
+    :type lim: struct queue_limits \*
 
 .. _`blk_set_default_limits.description`:
 
@@ -79,8 +84,9 @@ blk_set_stacking_limits
 
     set default limits for stacking devices
 
-    :param struct queue_limits \*lim:
+    :param lim:
         the queue_limits structure to reset
+    :type lim: struct queue_limits \*
 
 .. _`blk_set_stacking_limits.description`:
 
@@ -99,11 +105,13 @@ blk_queue_make_request
 
     define an alternate make_request function for a device
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device to be affected
+    :type q: struct request_queue \*
 
-    :param make_request_fn \*mfn:
+    :param mfn:
         the alternate make_request function
+    :type mfn: make_request_fn \*
 
 .. _`blk_queue_make_request.description`:
 
@@ -139,11 +147,13 @@ blk_queue_bounce_limit
 
     set bounce buffer limit for queue
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param u64 max_addr:
+    :param max_addr:
         the maximum address the device can handle
+    :type max_addr: u64
 
 .. _`blk_queue_bounce_limit.description`:
 
@@ -164,11 +174,13 @@ blk_queue_max_hw_sectors
 
     set max sectors for a request for this queue
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int max_hw_sectors:
+    :param max_hw_sectors:
         max hardware sectors in the usual 512b unit
+    :type max_hw_sectors: unsigned int
 
 .. _`blk_queue_max_hw_sectors.description`:
 
@@ -197,11 +209,13 @@ blk_queue_chunk_sectors
 
     set size of the chunk for this queue
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int chunk_sectors:
+    :param chunk_sectors:
         chunk sectors in the usual 512b unit
+    :type chunk_sectors: unsigned int
 
 .. _`blk_queue_chunk_sectors.description`:
 
@@ -224,11 +238,13 @@ blk_queue_max_discard_sectors
 
     set max sectors for a single discard
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int max_discard_sectors:
+    :param max_discard_sectors:
         maximum number of sectors to discard
+    :type max_discard_sectors: unsigned int
 
 .. _`blk_queue_max_write_same_sectors`:
 
@@ -239,11 +255,13 @@ blk_queue_max_write_same_sectors
 
     set max sectors for a single write same
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int max_write_same_sectors:
+    :param max_write_same_sectors:
         maximum number of sectors to write per command
+    :type max_write_same_sectors: unsigned int
 
 .. _`blk_queue_max_write_zeroes_sectors`:
 
@@ -254,11 +272,13 @@ blk_queue_max_write_zeroes_sectors
 
     set max sectors for a single write zeroes
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int max_write_zeroes_sectors:
+    :param max_write_zeroes_sectors:
         maximum number of sectors to write per command
+    :type max_write_zeroes_sectors: unsigned int
 
 .. _`blk_queue_max_segments`:
 
@@ -269,11 +289,13 @@ blk_queue_max_segments
 
     set max hw segments for a request for this queue
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned short max_segments:
+    :param max_segments:
         max number of segments
+    :type max_segments: unsigned short
 
 .. _`blk_queue_max_segments.description`:
 
@@ -292,11 +314,13 @@ blk_queue_max_discard_segments
 
     set max segments for discard requests
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned short max_segments:
+    :param max_segments:
         max number of segments
+    :type max_segments: unsigned short
 
 .. _`blk_queue_max_discard_segments.description`:
 
@@ -315,11 +339,13 @@ blk_queue_max_segment_size
 
     set max segment size for blk_rq_map_sg
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int max_size:
+    :param max_size:
         max size of segment in bytes
+    :type max_size: unsigned int
 
 .. _`blk_queue_max_segment_size.description`:
 
@@ -338,11 +364,13 @@ blk_queue_logical_block_size
 
     set logical block size for the queue
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned short size:
+    :param size:
         the logical block size, in bytes
+    :type size: unsigned short
 
 .. _`blk_queue_logical_block_size.description`:
 
@@ -362,11 +390,13 @@ blk_queue_physical_block_size
 
     set physical block size for the queue
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int size:
+    :param size:
         the physical block size, in bytes
+    :type size: unsigned int
 
 .. _`blk_queue_physical_block_size.description`:
 
@@ -386,11 +416,13 @@ blk_queue_alignment_offset
 
     set physical block alignment offset
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int offset:
+    :param offset:
         alignment offset in bytes
+    :type offset: unsigned int
 
 .. _`blk_queue_alignment_offset.description`:
 
@@ -411,11 +443,13 @@ blk_limits_io_min
 
     set minimum request size for a device
 
-    :param struct queue_limits \*limits:
+    :param limits:
         the queue limits
+    :type limits: struct queue_limits \*
 
-    :param unsigned int min:
+    :param min:
         smallest I/O size in bytes
+    :type min: unsigned int
 
 .. _`blk_limits_io_min.description`:
 
@@ -436,11 +470,13 @@ blk_queue_io_min
 
     set minimum request size for the queue
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int min:
+    :param min:
         smallest I/O size in bytes
+    :type min: unsigned int
 
 .. _`blk_queue_io_min.description`:
 
@@ -464,11 +500,13 @@ blk_limits_io_opt
 
     set optimal request size for a device
 
-    :param struct queue_limits \*limits:
+    :param limits:
         the queue limits
+    :type limits: struct queue_limits \*
 
-    :param unsigned int opt:
+    :param opt:
         smallest I/O size in bytes
+    :type opt: unsigned int
 
 .. _`blk_limits_io_opt.description`:
 
@@ -491,11 +529,13 @@ blk_queue_io_opt
 
     set optimal request size for the queue
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int opt:
+    :param opt:
         optimal request size in bytes
+    :type opt: unsigned int
 
 .. _`blk_queue_io_opt.description`:
 
@@ -518,11 +558,13 @@ blk_queue_stack_limits
 
     inherit underlying queue limits for stacked drivers
 
-    :param struct request_queue \*t:
+    :param t:
         the stacking driver (top)
+    :type t: struct request_queue \*
 
-    :param struct request_queue \*b:
+    :param b:
         the underlying device (bottom)
+    :type b: struct request_queue \*
 
 .. _`blk_stack_limits`:
 
@@ -533,14 +575,17 @@ blk_stack_limits
 
     adjust queue_limits for stacked devices
 
-    :param struct queue_limits \*t:
+    :param t:
         the stacking driver limits (top device)
+    :type t: struct queue_limits \*
 
-    :param struct queue_limits \*b:
+    :param b:
         the underlying queue limits (bottom, component device)
+    :type b: struct queue_limits \*
 
-    :param sector_t start:
+    :param start:
         first data sector within component device
+    :type start: sector_t
 
 .. _`blk_stack_limits.description`:
 
@@ -570,14 +615,17 @@ bdev_stack_limits
 
     adjust queue limits for stacked drivers
 
-    :param struct queue_limits \*t:
+    :param t:
         the stacking driver limits (top device)
+    :type t: struct queue_limits \*
 
-    :param struct block_device \*bdev:
+    :param bdev:
         the component block_device (bottom)
+    :type bdev: struct block_device \*
 
-    :param sector_t start:
+    :param start:
         first data sector within component device
+    :type start: sector_t
 
 .. _`bdev_stack_limits.description`:
 
@@ -597,14 +645,17 @@ disk_stack_limits
 
     adjust queue limits for stacked drivers
 
-    :param struct gendisk \*disk:
+    :param disk:
         MD/DM gendisk (top)
+    :type disk: struct gendisk \*
 
-    :param struct block_device \*bdev:
+    :param bdev:
         the underlying block device (bottom)
+    :type bdev: struct block_device \*
 
-    :param sector_t offset:
+    :param offset:
         offset to beginning of data within component device
+    :type offset: sector_t
 
 .. _`disk_stack_limits.description`:
 
@@ -623,11 +674,13 @@ blk_queue_dma_pad
 
     set pad mask
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int mask:
+    :param mask:
         pad mask
+    :type mask: unsigned int
 
 .. _`blk_queue_dma_pad.description`:
 
@@ -648,11 +701,13 @@ blk_queue_update_dma_pad
 
     update pad mask
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int mask:
+    :param mask:
         pad mask
+    :type mask: unsigned int
 
 .. _`blk_queue_update_dma_pad.description`:
 
@@ -673,17 +728,21 @@ blk_queue_dma_drain
 
     Set up a drain buffer for excess dma.
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param dma_drain_needed_fn \*dma_drain_needed:
+    :param dma_drain_needed:
         fn which returns non-zero if drain is necessary
+    :type dma_drain_needed: dma_drain_needed_fn \*
 
-    :param void \*buf:
+    :param buf:
         physically contiguous buffer
+    :type buf: void \*
 
-    :param unsigned int size:
+    :param size:
         size of the buffer in bytes
+    :type size: unsigned int
 
 .. _`blk_queue_dma_drain.description`:
 
@@ -718,11 +777,13 @@ blk_queue_segment_boundary
 
     set boundary rules for segment merging
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned long mask:
+    :param mask:
         the memory boundary mask
+    :type mask: unsigned long
 
 .. _`blk_queue_virt_boundary`:
 
@@ -733,11 +794,13 @@ blk_queue_virt_boundary
 
     set boundary rules for bio merging
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned long mask:
+    :param mask:
         the memory boundary mask
+    :type mask: unsigned long
 
 .. _`blk_queue_dma_alignment`:
 
@@ -748,11 +811,13 @@ blk_queue_dma_alignment
 
     set dma length and memory alignment
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param int mask:
+    :param mask:
         alignment mask
+    :type mask: int
 
 .. _`blk_queue_dma_alignment.description`:
 
@@ -771,11 +836,13 @@ blk_queue_update_dma_alignment
 
     update dma length and memory alignment
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param int mask:
+    :param mask:
         alignment mask
+    :type mask: int
 
 .. _`blk_queue_update_dma_alignment.description`:
 
@@ -798,11 +865,13 @@ blk_set_queue_depth
 
     tell the block layer about the device queue depth
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param unsigned int depth:
+    :param depth:
         queue depth
+    :type depth: unsigned int
 
 .. _`blk_queue_write_cache`:
 
@@ -813,14 +882,17 @@ blk_queue_write_cache
 
     configure queue's write cache
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param bool wc:
+    :param wc:
         write back cache on or off
+    :type wc: bool
 
-    :param bool fua:
+    :param fua:
         device supports FUA writes, if true
+    :type fua: bool
 
 .. _`blk_queue_write_cache.description`:
 

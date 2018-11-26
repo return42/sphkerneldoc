@@ -10,8 +10,9 @@ iwl_bg_statistics_periodic
 
     Timer callback to queue statistics
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`iwl_bg_statistics_periodic.description`:
 
@@ -34,8 +35,9 @@ iwl_bg_ucode_trace
 
     Timer callback to log ucode event
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`iwl_bg_ucode_trace.description`:
 
@@ -56,8 +58,9 @@ iwl_alive_start
 
     called after REPLY_ALIVE notification received from protocol/runtime uCode (initialization uCode's Alive gets handled by \ :c:func:`iwl_init_alive_start`\ ).
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
 .. _`iwl_clear_driver_stations`:
 
@@ -68,8 +71,9 @@ iwl_clear_driver_stations
 
     clear knowledge of all stations from driver
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         iwl priv struct
+    :type priv: struct iwl_priv \*
 
 .. _`iwl_clear_driver_stations.description`:
 
@@ -90,26 +94,33 @@ iwl_print_event_log
 
     Dump error event log to syslog
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param u32 start_idx:
+    :param start_idx:
         *undescribed*
+    :type start_idx: u32
 
-    :param u32 num_events:
+    :param num_events:
         *undescribed*
+    :type num_events: u32
 
-    :param u32 mode:
+    :param mode:
         *undescribed*
+    :type mode: u32
 
-    :param int pos:
+    :param pos:
         *undescribed*
+    :type pos: int
 
-    :param char \*\*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*\*
 
-    :param size_t bufsz:
+    :param bufsz:
         *undescribed*
+    :type bufsz: size_t
 
 .. _`iwl_print_last_event_logs`:
 
@@ -120,32 +131,41 @@ iwl_print_last_event_logs
 
     Dump the newest # of event log to syslog
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param u32 capacity:
+    :param capacity:
         *undescribed*
+    :type capacity: u32
 
-    :param u32 num_wraps:
+    :param num_wraps:
         *undescribed*
+    :type num_wraps: u32
 
-    :param u32 next_entry:
+    :param next_entry:
         *undescribed*
+    :type next_entry: u32
 
-    :param u32 size:
+    :param size:
         *undescribed*
+    :type size: u32
 
-    :param u32 mode:
+    :param mode:
         *undescribed*
+    :type mode: u32
 
-    :param int pos:
+    :param pos:
         *undescribed*
+    :type pos: int
 
-    :param char \*\*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*\*
 
-    :param size_t bufsz:
+    :param bufsz:
         *undescribed*
+    :type bufsz: size_t
 
 .. This file was automatic generated / don't edit.
 

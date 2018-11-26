@@ -10,11 +10,13 @@
 
     Atomically set a bit in memory.  This is called by \ :c:func:`set_bit`\  if it cannot find a faster solution.
 
-    :param unsigned long nr:
+    :param nr:
         the bit to set
+    :type nr: unsigned long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`__mips_clear_bit`:
 
@@ -25,11 +27,13 @@
 
     Clears a bit in memory.  This is called by \ :c:func:`clear_bit`\  if it cannot find a faster solution.
 
-    :param unsigned long nr:
+    :param nr:
         Bit to clear
+    :type nr: unsigned long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`__mips_change_bit`:
 
@@ -40,11 +44,13 @@
 
     Toggle a bit in memory.  This is called by \ :c:func:`change_bit`\  if it cannot find a faster solution.
 
-    :param unsigned long nr:
+    :param nr:
         Bit to change
+    :type nr: unsigned long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`__mips_test_and_set_bit`:
 
@@ -55,11 +61,13 @@
 
     Set a bit and return its old value.  This is called by \ :c:func:`test_and_set_bit`\  if it cannot find a faster solution.
 
-    :param unsigned long nr:
+    :param nr:
         Bit to set
+    :type nr: unsigned long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`__mips_test_and_set_bit_lock`:
 
@@ -70,11 +78,13 @@
 
     Set a bit and return its old value.  This is called by \ :c:func:`test_and_set_bit_lock`\  if it cannot find a faster solution.
 
-    :param unsigned long nr:
+    :param nr:
         Bit to set
+    :type nr: unsigned long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`__mips_test_and_clear_bit`:
 
@@ -85,11 +95,13 @@
 
     Clear a bit and return its old value.  This is called by \ :c:func:`test_and_clear_bit`\  if it cannot find a faster solution.
 
-    :param unsigned long nr:
+    :param nr:
         Bit to clear
+    :type nr: unsigned long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`__mips_test_and_change_bit`:
 
@@ -100,11 +112,13 @@
 
     Change a bit and return its old value.  This is called by \ :c:func:`test_and_change_bit`\  if it cannot find a faster solution.
 
-    :param unsigned long nr:
+    :param nr:
         Bit to change
+    :type nr: unsigned long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,28 +8,30 @@ build_node_maps
 
 .. c:function:: int build_node_maps(unsigned long start, unsigned long len, int node)
 
-    callback to setup bootmem structs for each node
+    callback to setup mem_data structs for each node
 
-    :param unsigned long start:
+    :param start:
         physical start of range
+    :type start: unsigned long
 
-    :param unsigned long len:
+    :param len:
         length of range
+    :type len: unsigned long
 
-    :param int node:
+    :param node:
         node where this range resides
+    :type node: int
 
 .. _`build_node_maps.description`:
 
 Description
 -----------
 
-We allocate a struct bootmem_data for each piece of memory that we wish to
+Detect extents of each piece of memory that we wish to
 treat as a virtually contiguous block (i.e. each node). Each such block
 must start on an \ ``IA64_GRANULE_SIZE``\  boundary, so we round the address down
 if necessary.  Any non-existent pages will simply be part of the virtual
-memmap.  We also update min_low_pfn and max_low_pfn here as we receive
-memory ranges from the caller.
+memmap.
 
 .. _`early_nr_cpus_node`:
 
@@ -40,8 +42,9 @@ early_nr_cpus_node
 
     return number of cpus on a given node
 
-    :param int node:
+    :param node:
         node to check
+    :type node: int
 
 .. _`early_nr_cpus_node.description`:
 
@@ -61,8 +64,9 @@ compute_pernodesize
 
     compute size of pernode data
 
-    :param int node:
+    :param node:
         the node id.
+    :type node: int
 
 .. _`per_cpu_node_setup`:
 
@@ -73,11 +77,13 @@ per_cpu_node_setup
 
     setup per-cpu areas on each node
 
-    :param void \*cpu_data:
+    :param cpu_data:
         per-cpu area on this node
+    :type cpu_data: void \*
 
-    :param int node:
+    :param node:
         node to setup
+    :type node: int
 
 .. _`per_cpu_node_setup.description`:
 
@@ -97,8 +103,9 @@ setup_per_cpu_areas
 
     setup percpu areas
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`setup_per_cpu_areas.description`:
 
@@ -119,14 +126,17 @@ fill_pernode
 
     initialize pernode data.
 
-    :param int node:
+    :param node:
         the node id.
+    :type node: int
 
-    :param unsigned long pernode:
+    :param pernode:
         physical address of pernode data
+    :type pernode: unsigned long
 
-    :param unsigned long pernodesize:
+    :param pernodesize:
         size of the pernode data
+    :type pernodesize: unsigned long
 
 .. _`find_pernode_space`:
 
@@ -137,14 +147,17 @@ find_pernode_space
 
     allocate memory for memory map and per-node structures
 
-    :param unsigned long start:
+    :param start:
         physical start of range
+    :type start: unsigned long
 
-    :param unsigned long len:
+    :param len:
         length of range
+    :type len: unsigned long
 
-    :param int node:
+    :param node:
         node where this range resides
+    :type node: int
 
 .. _`find_pernode_space.description`:
 
@@ -173,34 +186,6 @@ could probably move the allocation of the per-cpu and ia64_node_data space
 outside of this function and use \ :c:func:`alloc_bootmem_node`\ , but doing it here
 is straightforward and we get the alignments we want so...
 
-.. _`free_node_bootmem`:
-
-free_node_bootmem
-=================
-
-.. c:function:: int free_node_bootmem(unsigned long start, unsigned long len, int node)
-
-    free bootmem allocator memory for use
-
-    :param unsigned long start:
-        physical start of range
-
-    :param unsigned long len:
-        length of range
-
-    :param int node:
-        node where this range resides
-
-.. _`free_node_bootmem.description`:
-
-Description
------------
-
-Simply calls the bootmem allocator to free the specified ranged from
-the given pg_data_t's bdata struct.  After this function has been called
-for all the entries in the EFI memory map, the bootmem allocator will
-be ready to service allocation requests.
-
 .. _`reserve_pernode_space`:
 
 reserve_pernode_space
@@ -210,8 +195,9 @@ reserve_pernode_space
 
     reserve memory for per-node space
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`reserve_pernode_space.description`:
 
@@ -231,8 +217,9 @@ initialize_pernode_data
 
     fixup per-cpu & per-node pointers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`initialize_pernode_data.description`:
 
@@ -253,11 +240,13 @@ memory_less_node_alloc
 
     \* attempt to allocate memory on the best NUMA slit node but fall back to any other node when \__alloc_bootmem_node fails for best.
 
-    :param int nid:
+    :param nid:
         node id
+    :type nid: int
 
-    :param unsigned long pernodesize:
+    :param pernodesize:
         size of this node's pernode data
+    :type pernodesize: unsigned long
 
 .. _`memory_less_nodes`:
 
@@ -268,8 +257,9 @@ memory_less_nodes
 
     allocate and initialize CPU only nodes pernode information.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`find_memory`:
 
@@ -280,8 +270,9 @@ find_memory
 
     walk the EFI memory map and setup the bootmem allocator
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`find_memory.description`:
 
@@ -300,8 +291,9 @@ per_cpu_init
 
     setup per-cpu variables
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`per_cpu_init.description`:
 
@@ -320,14 +312,17 @@ call_pernode_memory
 
     use SRAT to call callback functions with node info
 
-    :param unsigned long start:
+    :param start:
         physical start of range
+    :type start: unsigned long
 
-    :param unsigned long len:
+    :param len:
         length of range
+    :type len: unsigned long
 
-    :param void \*arg:
+    :param arg:
         function to call for each range
+    :type arg: void \*
 
 .. _`call_pernode_memory.description`:
 
@@ -341,34 +336,6 @@ identify, and split blocks that run across multiple nodes.
 Take this opportunity to round the start address up and the end address
 down to page boundaries.
 
-.. _`count_node_pages`:
-
-count_node_pages
-================
-
-.. c:function:: int count_node_pages(unsigned long start, unsigned long len, int node)
-
-    callback to build per-node memory info structures
-
-    :param unsigned long start:
-        physical start of range
-
-    :param unsigned long len:
-        length of range
-
-    :param int node:
-        node where this range resides
-
-.. _`count_node_pages.description`:
-
-Description
------------
-
-Each node has it's own number of physical pages, DMAable pages, start, and
-end page frame number.  This routine will be called by \ :c:func:`call_pernode_memory`\ 
-for each piece of usable memory and will setup these values for each node.
-Very similar to \ :c:func:`build_maps`\ .
-
 .. _`paging_init`:
 
 paging_init
@@ -378,8 +345,9 @@ paging_init
 
     setup page tables
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`paging_init.description`:
 

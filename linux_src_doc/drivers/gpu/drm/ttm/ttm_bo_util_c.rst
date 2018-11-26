@@ -10,11 +10,13 @@ ttm_kmap_atomic_prot
 
     Efficient kernel map of a single page with specified page protection.
 
-    :param struct page \*page:
+    :param page:
         The page to map.
+    :type page: struct page \*
 
-    :param pgprot_t prot:
+    :param prot:
         The page protection.
+    :type prot: pgprot_t
 
 .. _`ttm_kmap_atomic_prot.description`:
 
@@ -37,11 +39,13 @@ ttm_kunmap_atomic_prot
 
     Unmap a page that was mapped using ttm_kmap_atomic_prot.
 
-    :param void \*addr:
+    :param addr:
         The virtual address from the map.
+    :type addr: void \*
 
-    :param pgprot_t prot:
+    :param prot:
         The page protection.
+    :type prot: pgprot_t
 
 .. _`ttm_buffer_object_transfer`:
 
@@ -50,12 +54,14 @@ ttm_buffer_object_transfer
 
 .. c:function:: int ttm_buffer_object_transfer(struct ttm_buffer_object *bo, struct ttm_buffer_object **new_obj)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct ttm_buffer_object \*\*new_obj:
+    :param new_obj:
         A pointer to a pointer to a newly created ttm_buffer_object,
         holding the data of \ ``bo``\  with the old placement.
+    :type new_obj: struct ttm_buffer_object \*\*
 
 .. _`ttm_buffer_object_transfer.description`:
 

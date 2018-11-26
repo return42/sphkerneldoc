@@ -268,6 +268,12 @@ Single word, ME frequency in MHz as used in calculation for
 Variable, mailbox area.  Overwrites the default location which is
 \ ``NFP_NET_CFG_MBOX_BASE``\  and length \ ``NFP_NET_CFG_MBOX_VAL_MAX_SZ``\ .
 
+\ ``NFP_NET_CFG_TLV_TYPE_EXPERIMENTAL0``\ :
+\ ``NFP_NET_CFG_TLV_TYPE_EXPERIMENTAL1``\ :
+Variable, experimental IDs.  IDs designated for internal development and
+experiments before a stable TLV ID has been allocated to a feature.  Should
+never be present in production firmware.
+
 .. _`nfp_net_tlv_caps`:
 
 struct nfp_net_tlv_caps

@@ -28,8 +28,8 @@ Definition
         struct list_head cong_links;
         struct list_head publications;
         u32 pub_count;
-        uint conn_timeout;
         atomic_t dupl_rcvcnt;
+        u16 conn_timeout;
         bool probe_unacked;
         u16 cong_link_cnt;
         u16 snt_unacked;
@@ -81,11 +81,11 @@ publications
 pub_count
     total # of publications port has made during its lifetime
 
-conn_timeout
-    the time we can wait for an unresponded setup request
-
 dupl_rcvcnt
     number of bytes counted twice, in both backlog and rcv queue
+
+conn_timeout
+    the time we can wait for an unresponded setup request
 
 probe_unacked
     *undescribed*
@@ -135,8 +135,9 @@ tsk_advance_rx_queue
 
     discard first buffer in socket receive queue
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`tsk_advance_rx_queue.description`:
 
@@ -154,8 +155,9 @@ tsk_rej_rx_queue
 
     reject all buffers in socket receive queue
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`tsk_rej_rx_queue.description`:
 
@@ -173,17 +175,21 @@ tipc_sk_create
 
     create a TIPC socket
 
-    :param struct net \*net:
+    :param net:
         network namespace (must be default network)
+    :type net: struct net \*
 
-    :param struct socket \*sock:
+    :param sock:
         pre-allocated socket structure
+    :type sock: struct socket \*
 
-    :param int protocol:
+    :param protocol:
         protocol indicator (must be 0)
+    :type protocol: int
 
-    :param int kern:
+    :param kern:
         caused by kernel or by userspace?
+    :type kern: int
 
 .. _`tipc_sk_create.description`:
 
@@ -204,8 +210,9 @@ tipc_release
 
     destroy a TIPC socket
 
-    :param struct socket \*sock:
+    :param sock:
         socket to destroy
+    :type sock: struct socket \*
 
 .. _`tipc_release.description`:
 
@@ -238,14 +245,17 @@ tipc_bind
 
     associate or disassocate TIPC name(s) with a socket
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*uaddr:
+    :param uaddr:
         socket address describing name(s) and desired operation
+    :type uaddr: struct sockaddr \*
 
-    :param int uaddr_len:
+    :param uaddr_len:
         size of socket address data structure
+    :type uaddr_len: int
 
 .. _`tipc_bind.description`:
 
@@ -275,14 +285,17 @@ tipc_getname
 
     get port ID of socket or peer socket
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*uaddr:
+    :param uaddr:
         area for returned socket address
+    :type uaddr: struct sockaddr \*
 
-    :param int peer:
+    :param peer:
         0 = own ID, 1 = current peer ID, 2 = current/former peer ID
+    :type peer: int
 
 .. _`tipc_getname.description`:
 
@@ -309,14 +322,17 @@ tipc_poll
 
     read and possibly block on pollmask
 
-    :param struct file \*file:
+    :param file:
         file structure associated with the socket
+    :type file: struct file \*
 
-    :param struct socket \*sock:
+    :param sock:
         socket for which to calculate the poll bits
+    :type sock: struct socket \*
 
-    :param poll_table \*wait:
+    :param wait:
         ???
+    :type wait: poll_table \*
 
 .. _`tipc_poll.description`:
 
@@ -353,20 +369,25 @@ tipc_sendmcast
 
     send multicast message
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param struct tipc_name_seq \*seq:
+    :param seq:
         destination address
+    :type seq: struct tipc_name_seq \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         message to send
+    :type msg: struct msghdr \*
 
-    :param size_t dlen:
+    :param dlen:
         length of data to send
+    :type dlen: size_t
 
-    :param long timeout:
+    :param timeout:
         timeout to wait for wakeup
+    :type timeout: long
 
 .. _`tipc_sendmcast.description`:
 
@@ -385,26 +406,33 @@ tipc_send_group_msg
 
     send a message to a member in the group
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param struct tipc_sock \*tsk:
+    :param tsk:
         *undescribed*
+    :type tsk: struct tipc_sock \*
 
-    :param struct msghdr \*m:
+    :param m:
         message to send
+    :type m: struct msghdr \*
 
-    :param struct tipc_member \*mb:
+    :param mb:
         group member
+    :type mb: struct tipc_member \*
 
-    :param u32 dnode:
+    :param dnode:
         destination node
+    :type dnode: u32
 
-    :param u32 dport:
+    :param dport:
         destination port
+    :type dport: u32
 
-    :param int dlen:
+    :param dlen:
         total length of message data
+    :type dlen: int
 
 .. _`tipc_send_group_unicast`:
 
@@ -415,17 +443,21 @@ tipc_send_group_unicast
 
     send message to a member in the group
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param struct msghdr \*m:
+    :param m:
         message to send
+    :type m: struct msghdr \*
 
-    :param int dlen:
+    :param dlen:
         total length of message data
+    :type dlen: int
 
-    :param long timeout:
+    :param timeout:
         timeout to wait for wakeup
+    :type timeout: long
 
 .. _`tipc_send_group_unicast.description`:
 
@@ -444,17 +476,21 @@ tipc_send_group_anycast
 
     send message to any member with given identity
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param struct msghdr \*m:
+    :param m:
         message to send
+    :type m: struct msghdr \*
 
-    :param int dlen:
+    :param dlen:
         total length of message data
+    :type dlen: int
 
-    :param long timeout:
+    :param timeout:
         timeout to wait for wakeup
+    :type timeout: long
 
 .. _`tipc_send_group_anycast.description`:
 
@@ -473,17 +509,21 @@ tipc_send_group_bcast
 
     send message to all members in communication group
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param struct msghdr \*m:
+    :param m:
         message to send
+    :type m: struct msghdr \*
 
-    :param int dlen:
+    :param dlen:
         total length of message data
+    :type dlen: int
 
-    :param long timeout:
+    :param timeout:
         timeout to wait for wakeup
+    :type timeout: long
 
 .. _`tipc_send_group_bcast.description`:
 
@@ -502,17 +542,21 @@ tipc_send_group_mcast
 
     send message to all members with given identity
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param struct msghdr \*m:
+    :param m:
         message to send
+    :type m: struct msghdr \*
 
-    :param int dlen:
+    :param dlen:
         total length of message data
+    :type dlen: int
 
-    :param long timeout:
+    :param timeout:
         timeout to wait for wakeup
+    :type timeout: long
 
 .. _`tipc_send_group_mcast.description`:
 
@@ -531,14 +575,17 @@ tipc_sk_mcast_rcv
 
     Deliver multicast messages to all destination sockets
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sk_buff_head \*arrvq:
+    :param arrvq:
         queue with arriving messages, to be cloned after destination lookup
+    :type arrvq: struct sk_buff_head \*
 
-    :param struct sk_buff_head \*inputq:
+    :param inputq:
         queue with cloned messages, delivered to socket after dest lookup
+    :type inputq: struct sk_buff_head \*
 
 .. _`tipc_sk_mcast_rcv.description`:
 
@@ -552,18 +599,25 @@ Multi-threaded: parallel calls with reference to same queues may occur
 tipc_sk_conn_proto_rcv
 ======================
 
-.. c:function:: void tipc_sk_conn_proto_rcv(struct tipc_sock *tsk, struct sk_buff *skb, struct sk_buff_head *xmitq)
+.. c:function:: void tipc_sk_conn_proto_rcv(struct tipc_sock *tsk, struct sk_buff *skb, struct sk_buff_head *inputq, struct sk_buff_head *xmitq)
 
     receive a connection mng protocol message
 
-    :param struct tipc_sock \*tsk:
+    :param tsk:
         receiving socket
+    :type tsk: struct tipc_sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to message buffer.
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff_head \*xmitq:
+    :param inputq:
         *undescribed*
+    :type inputq: struct sk_buff_head \*
+
+    :param xmitq:
+        *undescribed*
+    :type xmitq: struct sk_buff_head \*
 
 .. _`tipc_sendmsg`:
 
@@ -574,14 +628,17 @@ tipc_sendmsg
 
     send message in connectionless manner
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param struct msghdr \*m:
+    :param m:
         message to send
+    :type m: struct msghdr \*
 
-    :param size_t dsz:
+    :param dsz:
         amount of user data to be sent
+    :type dsz: size_t
 
 .. _`tipc_sendmsg.description`:
 
@@ -604,14 +661,17 @@ tipc_sendstream
 
     send stream-oriented data
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param struct msghdr \*m:
+    :param m:
         data to send
+    :type m: struct msghdr \*
 
-    :param size_t dsz:
+    :param dsz:
         total length of data to be transmitted
+    :type dsz: size_t
 
 .. _`tipc_sendstream.description`:
 
@@ -632,14 +692,17 @@ tipc_send_packet
 
     send a connection-oriented message
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param struct msghdr \*m:
+    :param m:
         message to send
+    :type m: struct msghdr \*
 
-    :param size_t dsz:
+    :param dsz:
         length of data to be transmitted
+    :type dsz: size_t
 
 .. _`tipc_send_packet.description`:
 
@@ -659,11 +722,13 @@ tipc_sk_set_orig_addr
 
     capture sender's address for received message
 
-    :param struct msghdr \*m:
+    :param m:
         descriptor for message info
+    :type m: struct msghdr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`tipc_sk_set_orig_addr.note`:
 
@@ -677,18 +742,21 @@ Address is not captured if not requested by receiver.
 tipc_sk_anc_data_recv
 =====================
 
-.. c:function:: int tipc_sk_anc_data_recv(struct msghdr *m, struct tipc_msg *msg, struct tipc_sock *tsk)
+.. c:function:: int tipc_sk_anc_data_recv(struct msghdr *m, struct sk_buff *skb, struct tipc_sock *tsk)
 
     optionally capture ancillary data for received message
 
-    :param struct msghdr \*m:
+    :param m:
         descriptor for message info
+    :type m: struct msghdr \*
 
-    :param struct tipc_msg \*msg:
-        received message header
+    :param skb:
+        received message buffer
+    :type skb: struct sk_buff \*
 
-    :param struct tipc_sock \*tsk:
+    :param tsk:
         TIPC port associated with message
+    :type tsk: struct tipc_sock \*
 
 .. _`tipc_sk_anc_data_recv.note`:
 
@@ -708,17 +776,21 @@ tipc_recvmsg
 
     receive packet-oriented message
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param struct msghdr \*m:
+    :param m:
         descriptor for message info
+    :type m: struct msghdr \*
 
-    :param size_t buflen:
+    :param buflen:
         length of user buffer area
+    :type buflen: size_t
 
-    :param int flags:
+    :param flags:
         receive flags
+    :type flags: int
 
 .. _`tipc_recvmsg.description`:
 
@@ -739,17 +811,21 @@ tipc_recvstream
 
     receive stream-oriented data
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param struct msghdr \*m:
+    :param m:
         descriptor for message info
+    :type m: struct msghdr \*
 
-    :param size_t buflen:
+    :param buflen:
         total size of user buffer area
+    :type buflen: size_t
 
-    :param int flags:
+    :param flags:
         receive flags
+    :type flags: int
 
 .. _`tipc_recvstream.description`:
 
@@ -770,8 +846,9 @@ tipc_write_space
 
     wake up thread if port congestion is released
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`tipc_data_ready`:
 
@@ -782,8 +859,9 @@ tipc_data_ready
 
     wake up threads to indicate messages have been received
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`tipc_sk_filter_connect`:
 
@@ -792,20 +870,16 @@ tipc_sk_filter_connect
 
 .. c:function:: bool tipc_sk_filter_connect(struct tipc_sock *tsk, struct sk_buff *skb)
 
-    Handle incoming message for a connection-based socket
+    check incoming message for a connection-based socket
 
-    :param struct tipc_sock \*tsk:
+    :param tsk:
         TIPC socket
+    :type tsk: struct tipc_sock \*
 
-    :param struct sk_buff \*skb:
-        pointer to message buffer. Set to NULL if buffer is consumed
-
-.. _`tipc_sk_filter_connect.description`:
-
-Description
------------
-
-Returns true if everything ok, false otherwise
+    :param skb:
+        pointer to message buffer.
+        Returns true if message should be added to receive queue, false otherwise
+    :type skb: struct sk_buff \*
 
 .. _`rcvbuf_limit`:
 
@@ -816,11 +890,13 @@ rcvbuf_limit
 
     get proper overload limit of socket receive queue
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         message
+    :type skb: struct sk_buff \*
 
 .. _`rcvbuf_limit.description`:
 
@@ -854,14 +930,17 @@ tipc_sk_filter_rcv
 
     validate incoming message
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to message.
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff_head \*xmitq:
+    :param xmitq:
         *undescribed*
+    :type xmitq: struct sk_buff_head \*
 
 .. _`tipc_sk_filter_rcv.description`:
 
@@ -882,11 +961,13 @@ tipc_sk_backlog_rcv
 
     handle incoming message from backlog queue
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         message
+    :type skb: struct sk_buff \*
 
 .. _`tipc_sk_backlog_rcv.description`:
 
@@ -904,17 +985,21 @@ tipc_sk_enqueue
 
     extract all buffers with destination 'dport' from inputq and try adding them to socket or backlog queue
 
-    :param struct sk_buff_head \*inputq:
+    :param inputq:
         list of incoming buffers with potentially different destinations
+    :type inputq: struct sk_buff_head \*
 
-    :param struct sock \*sk:
+    :param sk:
         socket where the buffers should be enqueued
+    :type sk: struct sock \*
 
-    :param u32 dport:
+    :param dport:
         port number for the socket
+    :type dport: u32
 
-    :param struct sk_buff_head \*xmitq:
+    :param xmitq:
         *undescribed*
+    :type xmitq: struct sk_buff_head \*
 
 .. _`tipc_sk_enqueue.description`:
 
@@ -932,12 +1017,14 @@ tipc_sk_rcv
 
     handle a chain of incoming buffers
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sk_buff_head \*inputq:
+    :param inputq:
         buffer list containing the buffers
         Consumes all buffers in list until inputq is empty
+    :type inputq: struct sk_buff_head \*
 
 .. _`tipc_sk_rcv.note`:
 
@@ -955,17 +1042,21 @@ tipc_connect
 
     establish a connection to another TIPC port
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*dest:
+    :param dest:
         socket address for destination port
+    :type dest: struct sockaddr \*
 
-    :param int destlen:
+    :param destlen:
         size of socket address data structure
+    :type destlen: int
 
-    :param int flags:
+    :param flags:
         file-related flags associated with socket
+    :type flags: int
 
 .. _`tipc_connect.description`:
 
@@ -983,11 +1074,13 @@ tipc_listen
 
     allow socket to listen for incoming connections
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param int len:
+    :param len:
         (unused)
+    :type len: int
 
 .. _`tipc_listen.description`:
 
@@ -1005,17 +1098,21 @@ tipc_accept
 
     wait for connection request
 
-    :param struct socket \*sock:
+    :param sock:
         listening socket
+    :type sock: struct socket \*
 
-    :param struct socket \*new_sock:
+    :param new_sock:
         *undescribed*
+    :type new_sock: struct socket \*
 
-    :param int flags:
+    :param flags:
         file-related flags associated with socket
+    :type flags: int
 
-    :param bool kern:
+    :param kern:
         *undescribed*
+    :type kern: bool
 
 .. _`tipc_accept.description`:
 
@@ -1033,11 +1130,13 @@ tipc_shutdown
 
     shutdown socket connection
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param int how:
+    :param how:
         direction to close (must be SHUT_RDWR)
+    :type how: int
 
 .. _`tipc_shutdown.description`:
 
@@ -1057,20 +1156,25 @@ tipc_setsockopt
 
     set socket option
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param int lvl:
+    :param lvl:
         option level
+    :type lvl: int
 
-    :param int opt:
+    :param opt:
         option identifier
+    :type opt: int
 
-    :param char __user \*ov:
+    :param ov:
         pointer to new option value
+    :type ov: char __user \*
 
-    :param unsigned int ol:
+    :param ol:
         length of option value
+    :type ol: unsigned int
 
 .. _`tipc_setsockopt.description`:
 
@@ -1091,20 +1195,25 @@ tipc_getsockopt
 
     get socket option
 
-    :param struct socket \*sock:
+    :param sock:
         socket structure
+    :type sock: struct socket \*
 
-    :param int lvl:
+    :param lvl:
         option level
+    :type lvl: int
 
-    :param int opt:
+    :param opt:
         option identifier
+    :type opt: int
 
-    :param char __user \*ov:
+    :param ov:
         receptacle for option value
+    :type ov: char __user \*
 
-    :param int __user \*ol:
+    :param ol:
         receptacle for length of option value
+    :type ol: int __user \*
 
 .. _`tipc_getsockopt.description`:
 
@@ -1125,8 +1234,9 @@ tipc_socket_init
 
     initialize TIPC socket interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tipc_socket_init.description`:
 
@@ -1144,8 +1254,9 @@ tipc_socket_stop
 
     stop TIPC socket interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

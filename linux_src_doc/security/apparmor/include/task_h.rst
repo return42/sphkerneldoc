@@ -10,8 +10,9 @@ aa_alloc_task_ctx
 
     allocate a new task_ctx
 
-    :param gfp_t flags:
+    :param flags:
         gfp flags for allocation
+    :type flags: gfp_t
 
 .. _`aa_alloc_task_ctx.return`:
 
@@ -29,8 +30,9 @@ aa_free_task_ctx
 
     free a task_ctx
 
-    :param struct aa_task_ctx \*ctx:
+    :param ctx:
         task_ctx to free (MAYBE NULL)
+    :type ctx: struct aa_task_ctx \*
 
 .. _`aa_dup_task_ctx`:
 
@@ -41,11 +43,13 @@ aa_dup_task_ctx
 
     duplicate a task context, incrementing reference counts
 
-    :param struct aa_task_ctx \*new:
+    :param new:
         a blank task context      (NOT NULL)
+    :type new: struct aa_task_ctx \*
 
-    :param const struct aa_task_ctx \*old:
+    :param old:
         the task context to copy  (NOT NULL)
+    :type old: const struct aa_task_ctx \*
 
 .. _`aa_clear_task_ctx_trans`:
 
@@ -56,8 +60,9 @@ aa_clear_task_ctx_trans
 
     clear transition tracking info from the ctx
 
-    :param struct aa_task_ctx \*ctx:
+    :param ctx:
         task context to clear (NOT NULL)
+    :type ctx: struct aa_task_ctx \*
 
 .. This file was automatic generated / don't edit.
 

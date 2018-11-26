@@ -10,14 +10,17 @@ mic_map
 
     Maps a DMA address to a MIC physical address.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance.
+    :type mdev: struct mic_device \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         DMA address.
+    :type dma_addr: dma_addr_t
 
-    :param size_t size:
+    :param size:
         Size of the region to be mapped.
+    :type size: size_t
 
 .. _`mic_map.description`:
 
@@ -38,14 +41,17 @@ mic_unmap
 
     Unmaps a MIC physical address.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance.
+    :type mdev: struct mic_device \*
 
-    :param dma_addr_t mic_addr:
+    :param mic_addr:
         MIC physical address.
+    :type mic_addr: dma_addr_t
 
-    :param size_t size:
+    :param size:
         Size of the region to be unmapped.
+    :type size: size_t
 
 .. _`mic_unmap.description`:
 
@@ -65,14 +71,17 @@ mic_map_single
 
     Maps a virtual address to a MIC physical address.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance.
+    :type mdev: struct mic_device \*
 
-    :param void \*va:
+    :param va:
         Kernel direct mapped virtual address.
+    :type va: void \*
 
-    :param size_t size:
+    :param size:
         Size of the region to be mapped.
+    :type size: size_t
 
 .. _`mic_map_single.description`:
 
@@ -94,14 +103,17 @@ mic_unmap_single
 
     Unmaps a MIC physical address.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance.
+    :type mdev: struct mic_device \*
 
-    :param dma_addr_t mic_addr:
+    :param mic_addr:
         MIC physical address.
+    :type mic_addr: dma_addr_t
 
-    :param size_t size:
+    :param size:
         Size of the region to be unmapped.
+    :type size: size_t
 
 .. _`mic_unmap_single.description`:
 
@@ -121,8 +133,9 @@ mic_smpt_init
 
     Initialize MIC System Memory Page Tables.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance.
+    :type mdev: struct mic_device \*
 
 .. _`mic_smpt_init.description`:
 
@@ -140,8 +153,9 @@ mic_smpt_uninit
 
     UnInitialize MIC System Memory Page Tables.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance.
+    :type mdev: struct mic_device \*
 
 .. _`mic_smpt_uninit.description`:
 
@@ -159,8 +173,9 @@ mic_smpt_restore
 
     Restore MIC System Memory Page Tables.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance.
+    :type mdev: struct mic_device \*
 
 .. _`mic_smpt_restore.description`:
 

@@ -12,6 +12,7 @@ iwlwifi
     mvm/index
     pcie/index
     iwl-config_h
+    iwl-context-info-gen3_h
     iwl-context-info_h
     iwl-drv_c
     iwl-drv_h

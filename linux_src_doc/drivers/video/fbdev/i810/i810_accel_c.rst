@@ -10,11 +10,13 @@ wait_for_space
 
     check ring buffer free space
 
-    :param struct fb_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct fb_info \*
 
-    :param u32 space:
+    :param space:
         amount of ringbuffer space needed in bytes
+    :type space: u32
 
 .. _`wait_for_space.description`:
 
@@ -33,8 +35,9 @@ wait_for_engine_idle
 
     waits for all hardware engines to finish
 
-    :param struct fb_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct fb_info \*
 
 .. _`wait_for_engine_idle.description`:
 
@@ -53,8 +56,9 @@ end_iring
 
     advances the buffer
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. _`end_iring.description`:
 
@@ -73,33 +77,42 @@ source_copy_blit
 
     BLIT transfer operation
 
-    :param int dwidth:
+    :param dwidth:
         width of rectangular graphics data
+    :type dwidth: int
 
-    :param int dheight:
+    :param dheight:
         height of rectangular graphics data
+    :type dheight: int
 
-    :param int dpitch:
+    :param dpitch:
         bytes per line of destination buffer
+    :type dpitch: int
 
-    :param int xdir:
+    :param xdir:
         direction of copy (left to right or right to left)
+    :type xdir: int
 
-    :param int src:
+    :param src:
         address of first pixel to read from
+    :type src: int
 
-    :param int dest:
+    :param dest:
         address of first pixel to write to
+    :type dest: int
 
-    :param int rop:
+    :param rop:
         raster operation
+    :type rop: int
 
-    :param int blit_bpp:
+    :param blit_bpp:
         pixel format which can be different from the
         framebuffer's pixelformat
+    :type blit_bpp: int
 
-    :param struct fb_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct fb_info \*
 
 .. _`source_copy_blit.description`:
 
@@ -118,30 +131,38 @@ color_blit
 
     solid color BLIT operation
 
-    :param int width:
+    :param width:
         width of destination
+    :type width: int
 
-    :param int height:
+    :param height:
         height of destination
+    :type height: int
 
-    :param int pitch:
+    :param pitch:
         pixels per line of the buffer
+    :type pitch: int
 
-    :param int dest:
+    :param dest:
         address of first pixel to write to
+    :type dest: int
 
-    :param int rop:
+    :param rop:
         raster operation
+    :type rop: int
 
-    :param int what:
+    :param what:
         color to transfer
+    :type what: int
 
-    :param int blit_bpp:
+    :param blit_bpp:
         pixel format which can be different from the
         framebuffer's pixelformat
+    :type blit_bpp: int
 
-    :param struct fb_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct fb_info \*
 
 .. _`color_blit.description`:
 
@@ -159,39 +180,50 @@ mono_src_copy_imm_blit
 
     color expand from system memory to framebuffer
 
-    :param int dwidth:
+    :param dwidth:
         width of destination
+    :type dwidth: int
 
-    :param int dheight:
+    :param dheight:
         height of destination
+    :type dheight: int
 
-    :param int dpitch:
+    :param dpitch:
         pixels per line of the buffer
+    :type dpitch: int
 
-    :param int dsize:
+    :param dsize:
         size of bitmap in double words
+    :type dsize: int
 
-    :param int blit_bpp:
+    :param blit_bpp:
         pixelformat to use which can be different from the
         framebuffer's pixelformat
+    :type blit_bpp: int
 
-    :param int rop:
+    :param rop:
         raster operation
+    :type rop: int
 
-    :param int dest:
+    :param dest:
         address of first byte of pixel;
+    :type dest: int
 
-    :param const u32 \*src:
+    :param src:
         address of image data
+    :type src: const u32 \*
 
-    :param int bg:
+    :param bg:
         backgound color
+    :type bg: int
 
-    :param int fg:
+    :param fg:
         forground color
+    :type fg: int
 
-    :param struct fb_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct fb_info \*
 
 .. _`mono_src_copy_imm_blit.description`:
 
@@ -217,11 +249,13 @@ i810fb_iring_enable
 
     enables/disables the ringbuffer
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
-    :param u32 mode:
+    :param mode:
         enable or disable
+    :type mode: u32
 
 .. _`i810fb_iring_enable.description`:
 
@@ -240,8 +274,9 @@ i810fb_init_ringbuffer
 
     initialize the ringbuffer
 
-    :param struct fb_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct fb_info \*
 
 .. _`i810fb_init_ringbuffer.description`:
 

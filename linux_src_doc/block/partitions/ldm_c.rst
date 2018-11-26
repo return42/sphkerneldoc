@@ -48,11 +48,13 @@ ldm_parse_privhead
 
     Read the LDM Database PRIVHEAD structure
 
-    :param const u8 \*data:
+    :param data:
         Raw database PRIVHEAD structure loaded from the device
+    :type data: const u8 \*
 
-    :param struct privhead \*ph:
+    :param ph:
         In-memory privhead structure in which to return parsed information
+    :type ph: struct privhead \*
 
 .. _`ldm_parse_privhead.description`:
 
@@ -79,11 +81,13 @@ ldm_parse_tocblock
 
     Read the LDM Database TOCBLOCK structure
 
-    :param const u8 \*data:
+    :param data:
         Raw database TOCBLOCK structure loaded from the device
+    :type data: const u8 \*
 
-    :param struct tocblock \*toc:
+    :param toc:
         In-memory toc structure in which to return parsed information
+    :type toc: struct tocblock \*
 
 .. _`ldm_parse_tocblock.description`:
 
@@ -113,11 +117,13 @@ ldm_parse_vmdb
 
     Read the LDM Database VMDB structure
 
-    :param const u8 \*data:
+    :param data:
         Raw database VMDB structure loaded from the device
+    :type data: const u8 \*
 
-    :param struct vmdb \*vm:
+    :param vm:
         In-memory vmdb structure in which to return parsed information
+    :type vm: struct vmdb \*
 
 .. _`ldm_parse_vmdb.description`:
 
@@ -146,11 +152,13 @@ ldm_compare_privheads
 
     Compare two privhead objects
 
-    :param const struct privhead \*ph1:
+    :param ph1:
         First privhead
+    :type ph1: const struct privhead \*
 
-    :param const struct privhead \*ph2:
+    :param ph2:
         Second privhead
+    :type ph2: const struct privhead \*
 
 .. _`ldm_compare_privheads.description`:
 
@@ -176,11 +184,13 @@ ldm_compare_tocblocks
 
     Compare two tocblock objects
 
-    :param const struct tocblock \*toc1:
+    :param toc1:
         First toc
+    :type toc1: const struct tocblock \*
 
-    :param const struct tocblock \*toc2:
+    :param toc2:
         Second toc
+    :type toc2: const struct tocblock \*
 
 .. _`ldm_compare_tocblocks.description`:
 
@@ -206,11 +216,13 @@ ldm_validate_privheads
 
     Compare the primary privhead with its backups
 
-    :param struct parsed_partitions \*state:
+    :param state:
         Partition check state including device holding the LDM Database
+    :type state: struct parsed_partitions \*
 
-    :param struct privhead \*ph1:
+    :param ph1:
         Memory struct to fill with ph contents
+    :type ph1: struct privhead \*
 
 .. _`ldm_validate_privheads.description`:
 
@@ -240,14 +252,17 @@ ldm_validate_tocblocks
 
     Validate the table of contents and its backups
 
-    :param struct parsed_partitions \*state:
+    :param state:
         Partition check state including device holding the LDM Database
+    :type state: struct parsed_partitions \*
 
-    :param unsigned long base:
-        Offset, into \ ``state``\ ->bdev, of the database
+    :param base:
+        Offset, into \ ``state->bdev``\ , of the database
+    :type base: unsigned long
 
-    :param struct ldmdb \*ldb:
+    :param ldb:
         Cache of the database structures
+    :type ldb: struct ldmdb \*
 
 .. _`ldm_validate_tocblocks.description`:
 
@@ -255,7 +270,7 @@ Description
 -----------
 
 Find and compare the four tables of contents of the LDM Database stored on
-\ ``state``\ ->bdev and return the parsed information into \ ``toc1``\ .
+\ ``state->bdev``\  and return the parsed information into \ ``toc1``\ .
 
 The offsets and sizes of the configs are range-checked against a privhead.
 
@@ -276,14 +291,17 @@ ldm_validate_vmdb
 
     Read the VMDB and validate it
 
-    :param struct parsed_partitions \*state:
+    :param state:
         Partition check state including device holding the LDM Database
+    :type state: struct parsed_partitions \*
 
-    :param unsigned long base:
+    :param base:
         Offset, into \ ``bdev``\ , of the database
+    :type base: unsigned long
 
-    :param struct ldmdb \*ldb:
+    :param ldb:
         Cache of the database structures
+    :type ldb: struct ldmdb \*
 
 .. _`ldm_validate_vmdb.description`:
 
@@ -310,8 +328,9 @@ ldm_validate_partition_table
 
     Determine whether bdev might be a dynamic disk
 
-    :param struct parsed_partitions \*state:
+    :param state:
         Partition check state including device holding the LDM Database
+    :type state: struct parsed_partitions \*
 
 .. _`ldm_validate_partition_table.description`:
 
@@ -332,8 +351,8 @@ the case we should return zero to let someone else try.
 Return
 ------
 
-'true'   \ ``state``\ ->bdev is a dynamic disk
-'false'  \ ``state``\ ->bdev is not a dynamic disk, or an error occurred
+'true'   \ ``state->bdev``\  is a dynamic disk
+'false'  \ ``state->bdev``\  is not a dynamic disk, or an error occurred
 
 .. _`ldm_get_disk_objid`:
 
@@ -344,8 +363,9 @@ ldm_get_disk_objid
 
     Search a linked list of vblk's for a given Disk Id
 
-    :param const struct ldmdb \*ldb:
+    :param ldb:
         Cache of the database structures
+    :type ldb: const struct ldmdb \*
 
 .. _`ldm_get_disk_objid.description`:
 
@@ -374,11 +394,13 @@ ldm_create_data_partitions
 
     Create data partitions for this device
 
-    :param struct parsed_partitions \*pp:
+    :param pp:
         List of the partitions parsed so far
+    :type pp: struct parsed_partitions \*
 
-    :param const struct ldmdb \*ldb:
+    :param ldb:
         Cache of the database structures
+    :type ldb: const struct ldmdb \*
 
 .. _`ldm_create_data_partitions.description`:
 
@@ -411,17 +433,21 @@ ldm_relative
 
     Calculate the next relative offset
 
-    :param const u8 \*buffer:
+    :param buffer:
         Block of data being worked on
+    :type buffer: const u8 \*
 
-    :param int buflen:
+    :param buflen:
         Size of the block of data
+    :type buflen: int
 
-    :param int base:
+    :param base:
         Size of the previous fixed width fields
+    :type base: int
 
-    :param int offset:
+    :param offset:
         Cumulative size of the previous variable-width fields
+    :type offset: int
 
 .. _`ldm_relative.description`:
 
@@ -449,8 +475,9 @@ ldm_get_vnum
 
     Convert a variable-width, big endian number, into cpu order
 
-    :param const u8 \*block:
+    :param block:
         Pointer to the variable-width number to convert
+    :type block: const u8 \*
 
 .. _`ldm_get_vnum.description`:
 
@@ -482,14 +509,17 @@ ldm_get_vstr
 
     Read a length-prefixed string into a buffer
 
-    :param const u8 \*block:
+    :param block:
         Pointer to the length marker
+    :type block: const u8 \*
 
-    :param u8 \*buffer:
+    :param buffer:
         Location to copy string to
+    :type buffer: u8 \*
 
-    :param int buflen:
+    :param buflen:
         Size of the output buffer
+    :type buflen: int
 
 .. _`ldm_get_vstr.description`:
 
@@ -521,14 +551,17 @@ ldm_parse_cmp3
 
     Read a raw VBLK Component object into a vblk structure
 
-    :param const u8 \*buffer:
+    :param buffer:
         Block of data being worked on
+    :type buffer: const u8 \*
 
-    :param int buflen:
+    :param buflen:
         Size of the block of data
+    :type buflen: int
 
-    :param struct vblk \*vb:
+    :param vb:
         In-memory vblk in which to return information
+    :type vb: struct vblk \*
 
 .. _`ldm_parse_cmp3.description`:
 
@@ -554,14 +587,17 @@ ldm_parse_dgr3
 
     Read a raw VBLK Disk Group object into a vblk structure
 
-    :param const u8 \*buffer:
+    :param buffer:
         Block of data being worked on
+    :type buffer: const u8 \*
 
-    :param int buflen:
+    :param buflen:
         Size of the block of data
+    :type buflen: int
 
-    :param struct vblk \*vb:
+    :param vb:
         In-memory vblk in which to return information
+    :type vb: struct vblk \*
 
 .. _`ldm_parse_dgr3.description`:
 
@@ -587,14 +623,17 @@ ldm_parse_dgr4
 
     Read a raw VBLK Disk Group object into a vblk structure
 
-    :param const u8 \*buffer:
+    :param buffer:
         Block of data being worked on
+    :type buffer: const u8 \*
 
-    :param int buflen:
+    :param buflen:
         Size of the block of data
+    :type buflen: int
 
-    :param struct vblk \*vb:
+    :param vb:
         In-memory vblk in which to return information
+    :type vb: struct vblk \*
 
 .. _`ldm_parse_dgr4.description`:
 
@@ -620,14 +659,17 @@ ldm_parse_dsk3
 
     Read a raw VBLK Disk object into a vblk structure
 
-    :param const u8 \*buffer:
+    :param buffer:
         Block of data being worked on
+    :type buffer: const u8 \*
 
-    :param int buflen:
+    :param buflen:
         Size of the block of data
+    :type buflen: int
 
-    :param struct vblk \*vb:
+    :param vb:
         In-memory vblk in which to return information
+    :type vb: struct vblk \*
 
 .. _`ldm_parse_dsk3.description`:
 
@@ -653,14 +695,17 @@ ldm_parse_dsk4
 
     Read a raw VBLK Disk object into a vblk structure
 
-    :param const u8 \*buffer:
+    :param buffer:
         Block of data being worked on
+    :type buffer: const u8 \*
 
-    :param int buflen:
+    :param buflen:
         Size of the block of data
+    :type buflen: int
 
-    :param struct vblk \*vb:
+    :param vb:
         In-memory vblk in which to return information
+    :type vb: struct vblk \*
 
 .. _`ldm_parse_dsk4.description`:
 
@@ -686,14 +731,17 @@ ldm_parse_prt3
 
     Read a raw VBLK Partition object into a vblk structure
 
-    :param const u8 \*buffer:
+    :param buffer:
         Block of data being worked on
+    :type buffer: const u8 \*
 
-    :param int buflen:
+    :param buflen:
         Size of the block of data
+    :type buflen: int
 
-    :param struct vblk \*vb:
+    :param vb:
         In-memory vblk in which to return information
+    :type vb: struct vblk \*
 
 .. _`ldm_parse_prt3.description`:
 
@@ -719,14 +767,17 @@ ldm_parse_vol5
 
     Read a raw VBLK Volume object into a vblk structure
 
-    :param const u8 \*buffer:
+    :param buffer:
         Block of data being worked on
+    :type buffer: const u8 \*
 
-    :param int buflen:
+    :param buflen:
         Size of the block of data
+    :type buflen: int
 
-    :param struct vblk \*vb:
+    :param vb:
         In-memory vblk in which to return information
+    :type vb: struct vblk \*
 
 .. _`ldm_parse_vol5.description`:
 
@@ -752,14 +803,17 @@ ldm_parse_vblk
 
     Read a raw VBLK object into a vblk structure
 
-    :param const u8 \*buf:
+    :param buf:
         Block of data being worked on
+    :type buf: const u8 \*
 
-    :param int len:
+    :param len:
         Size of the block of data
+    :type len: int
 
-    :param struct vblk \*vb:
+    :param vb:
         In-memory vblk in which to return information
+    :type vb: struct vblk \*
 
 .. _`ldm_parse_vblk.description`:
 
@@ -793,14 +847,17 @@ ldm_ldmdb_add
 
     Adds a raw VBLK entry to the ldmdb database
 
-    :param u8 \*data:
+    :param data:
         Raw VBLK to add to the database
+    :type data: u8 \*
 
-    :param int len:
+    :param len:
         Size of the raw VBLK
+    :type len: int
 
-    :param struct ldmdb \*ldb:
+    :param ldb:
         Cache of the database structures
+    :type ldb: struct ldmdb \*
 
 .. _`ldm_ldmdb_add.description`:
 
@@ -828,14 +885,17 @@ ldm_frag_add
 
     Add a VBLK fragment to a list
 
-    :param const u8 \*data:
+    :param data:
         Raw fragment to be added to the list
+    :type data: const u8 \*
 
-    :param int size:
+    :param size:
         Size of the raw fragment
+    :type size: int
 
-    :param struct list_head \*frags:
+    :param frags:
         Linked list of VBLK fragments
+    :type frags: struct list_head \*
 
 .. _`ldm_frag_add.description`:
 
@@ -862,8 +922,9 @@ ldm_frag_free
 
     Free a linked list of VBLK fragments
 
-    :param struct list_head \*list:
+    :param list:
         Linked list of fragments
+    :type list: struct list_head \*
 
 .. _`ldm_frag_free.description`:
 
@@ -888,11 +949,13 @@ ldm_frag_commit
 
     Validate fragmented VBLKs and add them to the database
 
-    :param struct list_head \*frags:
+    :param frags:
         Linked list of VBLK fragments
+    :type frags: struct list_head \*
 
-    :param struct ldmdb \*ldb:
+    :param ldb:
         Cache of the database structures
+    :type ldb: struct ldmdb \*
 
 .. _`ldm_frag_commit.description`:
 
@@ -919,14 +982,17 @@ ldm_get_vblks
 
     Read the on-disk database of VBLKs into memory
 
-    :param struct parsed_partitions \*state:
+    :param state:
         Partition check state including device holding the LDM Database
+    :type state: struct parsed_partitions \*
 
-    :param unsigned long base:
-        Offset, into \ ``state``\ ->bdev, of the database
+    :param base:
+        Offset, into \ ``state->bdev``\ , of the database
+    :type base: unsigned long
 
-    :param struct ldmdb \*ldb:
+    :param ldb:
         Cache of the database structures
+    :type ldb: struct ldmdb \*
 
 .. _`ldm_get_vblks.description`:
 
@@ -953,8 +1019,9 @@ ldm_free_vblks
 
     Free a linked list of vblk's
 
-    :param struct list_head \*lh:
+    :param lh:
         Head of a linked list of struct vblk
+    :type lh: struct list_head \*
 
 .. _`ldm_free_vblks.description`:
 
@@ -979,8 +1046,9 @@ ldm_partition
 
     Find out whether a device is a dynamic disk and handle it
 
-    :param struct parsed_partitions \*state:
+    :param state:
         Partition check state including device holding the LDM Database
+    :type state: struct parsed_partitions \*
 
 .. _`ldm_partition.description`:
 
@@ -1006,10 +1074,10 @@ the actual data containing partitions.
 Return
 ------
 
-1 Success, \ ``state``\ ->bdev is a dynamic disk and we handled it
-0 Success, \ ``state``\ ->bdev is not a dynamic disk
+1 Success, \ ``state->bdev``\  is a dynamic disk and we handled it
+0 Success, \ ``state->bdev``\  is not a dynamic disk
 -1 An error occurred before enough information had been read
-Or \ ``state``\ ->bdev is a dynamic disk, but it may be corrupted
+Or \ ``state->bdev``\  is a dynamic disk, but it may be corrupted
 
 .. This file was automatic generated / don't edit.
 

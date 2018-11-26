@@ -10,25 +10,31 @@ readx_poll_timeout
 
     Periodically poll an address until a condition is met or a timeout occurs
 
-    :param  op:
+    :param op:
         accessor function (takes \ ``addr``\  as its only argument)
+    :type op: 
 
-    :param  addr:
+    :param addr:
         Address to poll
+    :type addr: 
 
-    :param  val:
+    :param val:
         Variable to read the value into
+    :type val: 
 
-    :param  cond:
+    :param cond:
         Break condition (usually involving \ ``val``\ )
+    :type cond: 
 
-    :param  sleep_us:
+    :param sleep_us:
         Maximum time to sleep between reads in us (0
         tight-loops).  Should be less than ~20ms since usleep_range
         is used (see Documentation/timers/timers-howto.txt).
+    :type sleep_us: 
 
-    :param  timeout_us:
+    :param timeout_us:
         Timeout in us, 0 means never timeout
+    :type timeout_us: 
 
 .. _`readx_poll_timeout.description`:
 
@@ -51,25 +57,31 @@ readx_poll_timeout_atomic
 
     Periodically poll an address until a condition is met or a timeout occurs
 
-    :param  op:
+    :param op:
         accessor function (takes \ ``addr``\  as its only argument)
+    :type op: 
 
-    :param  addr:
+    :param addr:
         Address to poll
+    :type addr: 
 
-    :param  val:
+    :param val:
         Variable to read the value into
+    :type val: 
 
-    :param  cond:
+    :param cond:
         Break condition (usually involving \ ``val``\ )
+    :type cond: 
 
-    :param  delay_us:
+    :param delay_us:
         Time to udelay between reads in us (0 tight-loops).  Should
         be less than ~10us since udelay is used (see
         Documentation/timers/timers-howto.txt).
+    :type delay_us: 
 
-    :param  timeout_us:
+    :param timeout_us:
         Timeout in us, 0 means never timeout
+    :type timeout_us: 
 
 .. _`readx_poll_timeout_atomic.description`:
 

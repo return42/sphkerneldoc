@@ -10,11 +10,13 @@ of_clk_get_by_name
 
     Parse and lookup a clock referenced by a device node
 
-    :param struct device_node \*np:
+    :param np:
         pointer to clock consumer node
+    :type np: struct device_node \*
 
-    :param const char \*name:
+    :param name:
         name of consumer's clock input, or NULL for the first clock reference
+    :type name: const char \*
 
 .. _`of_clk_get_by_name.description`:
 
@@ -34,14 +36,17 @@ clkdev_create
 
     allocate and add a clkdev lookup structure
 
-    :param struct clk \*clk:
+    :param clk:
         struct clk to associate with all clk_lookups
+    :type clk: struct clk \*
 
-    :param const char \*con_id:
+    :param con_id:
         connection ID string on device
+    :type con_id: const char \*
 
-    :param const char \*dev_fmt:
+    :param dev_fmt:
         format string describing device name
+    :type dev_fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -63,14 +68,17 @@ clkdev_hw_create
 
     allocate and add a clkdev lookup structure
 
-    :param struct clk_hw \*hw:
+    :param hw:
         struct clk_hw to associate with all clk_lookups
+    :type hw: struct clk_hw \*
 
-    :param const char \*con_id:
+    :param con_id:
         connection ID string on device
+    :type con_id: const char \*
 
-    :param const char \*dev_fmt:
+    :param dev_fmt:
         format string describing device name
+    :type dev_fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -92,14 +100,17 @@ clk_register_clkdev
 
     register one clock lookup for a struct clk
 
-    :param struct clk \*clk:
+    :param clk:
         struct clk to associate with all clk_lookups
+    :type clk: struct clk \*
 
-    :param const char \*con_id:
+    :param con_id:
         connection ID string on device
+    :type con_id: const char \*
 
-    :param const char \*dev_id:
+    :param dev_id:
         string describing device name
+    :type dev_id: const char \*
 
 .. _`clk_register_clkdev.description`:
 
@@ -123,14 +134,17 @@ clk_hw_register_clkdev
 
     register one clock lookup for a struct clk_hw
 
-    :param struct clk_hw \*hw:
+    :param hw:
         struct clk_hw to associate with all clk_lookups
+    :type hw: struct clk_hw \*
 
-    :param const char \*con_id:
+    :param con_id:
         connection ID string on device
+    :type con_id: const char \*
 
-    :param const char \*dev_id:
+    :param dev_id:
         format string describing device name
+    :type dev_id: const char \*
 
 .. _`clk_hw_register_clkdev.description`:
 

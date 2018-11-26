@@ -10,20 +10,25 @@ da7210_set_dai_pll
 
     Configure the codec PLL
 
-    :param struct snd_soc_dai \*codec_dai:
+    :param codec_dai:
         *undescribed*
+    :type codec_dai: struct snd_soc_dai \*
 
-    :param int pll_id:
+    :param pll_id:
         *undescribed*
+    :type pll_id: int
 
-    :param int source:
+    :param source:
         *undescribed*
+    :type source: int
 
-    :param unsigned int fref:
+    :param fref:
         *undescribed*
+    :type fref: unsigned int
 
-    :param unsigned int fout:
+    :param fout:
         *undescribed*
+    :type fout: unsigned int
 
 .. _`da7210_set_dai_pll.note`:
 

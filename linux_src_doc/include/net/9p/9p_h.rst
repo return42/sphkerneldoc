@@ -857,6 +857,7 @@ Definition
         u16 tag;
         size_t offset;
         size_t capacity;
+        struct kmem_cache *cache;
         u8 *sdata;
     }
 
@@ -879,6 +880,9 @@ offset
 
 capacity
     used by marshalling routines to track total malloc'd capacity
+
+cache
+    *undescribed*
 
 sdata
     payload

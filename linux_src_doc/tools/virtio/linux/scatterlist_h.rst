@@ -10,11 +10,13 @@ sg_assign_page
 
     Assign a given page to an SG entry
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entry
+    :type sg: struct scatterlist \*
 
-    :param struct page \*page:
+    :param page:
         The page
+    :type page: struct page \*
 
 .. _`sg_assign_page.description`:
 
@@ -33,17 +35,21 @@ sg_set_page
 
     Set sg entry to point at given page
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entry
+    :type sg: struct scatterlist \*
 
-    :param struct page \*page:
+    :param page:
         The page
+    :type page: struct page \*
 
-    :param unsigned int len:
+    :param len:
         Length of data
+    :type len: unsigned int
 
-    :param unsigned int offset:
+    :param offset:
         Offset into page
+    :type offset: unsigned int
 
 .. _`sg_set_page.description`:
 
@@ -64,14 +70,17 @@ sg_chain
 
     Chain two sglists together
 
-    :param struct scatterlist \*prv:
+    :param prv:
         First scatterlist
+    :type prv: struct scatterlist \*
 
-    :param unsigned int prv_nents:
+    :param prv_nents:
         Number of entries in prv
+    :type prv_nents: unsigned int
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         Second scatterlist
+    :type sgl: struct scatterlist \*
 
 .. _`sg_chain.description`:
 
@@ -89,8 +98,9 @@ sg_mark_end
 
     Mark the end of the scatterlist
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entryScatterlist
+    :type sg: struct scatterlist \*
 
 .. _`sg_mark_end.description`:
 
@@ -109,8 +119,9 @@ sg_unmark_end
 
     Undo setting the end of the scatterlist
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entryScatterlist
+    :type sg: struct scatterlist \*
 
 .. _`sg_unmark_end.description`:
 

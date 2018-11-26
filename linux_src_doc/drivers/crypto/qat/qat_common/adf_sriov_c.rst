@@ -10,8 +10,9 @@ adf_disable_sriov
 
     Disable SRIOV for the device
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to accel device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_disable_sriov.description`:
 
@@ -36,11 +37,13 @@ adf_sriov_configure
 
     Enable SRIOV for the device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to pci device.
+    :type pdev: struct pci_dev \*
 
-    :param int numvfs:
+    :param numvfs:
         *undescribed*
+    :type numvfs: int
 
 .. _`adf_sriov_configure.description`:
 

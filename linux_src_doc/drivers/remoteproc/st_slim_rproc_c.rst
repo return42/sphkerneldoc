@@ -10,11 +10,13 @@ st_slim_rproc_alloc
 
     allocate and initialise slim rproc
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device struct
+    :type pdev: struct platform_device \*
 
-    :param char \*fw_name:
+    :param fw_name:
         Name of firmware for rproc to use
+    :type fw_name: char \*
 
 .. _`st_slim_rproc_alloc.description`:
 
@@ -37,8 +39,9 @@ st_slim_rproc_put
 
     put slim rproc resources
 
-    :param struct st_slim_rproc \*slim_rproc:
+    :param slim_rproc:
         Pointer to the st_slim_rproc struct
+    :type slim_rproc: struct st_slim_rproc \*
 
 .. _`st_slim_rproc_put.description`:
 

@@ -8,3 +8,4 @@ mellanox
     :maxdepth: 1
 
     mlxreg-hotplug_c
+    mlxreg-io_c

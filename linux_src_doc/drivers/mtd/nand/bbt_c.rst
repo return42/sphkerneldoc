@@ -10,8 +10,9 @@ nanddev_bbt_init
 
     Initialize the BBT (Bad Block Table)
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
 .. _`nanddev_bbt_init.description`:
 
@@ -36,8 +37,9 @@ nanddev_bbt_cleanup
 
     Cleanup the BBT (Bad Block Table)
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
 .. _`nanddev_bbt_cleanup.description`:
 
@@ -55,8 +57,9 @@ nanddev_bbt_update
 
     Update a BBT
 
-    :param struct nand_device \*nand:
+    :param nand:
         nand device
+    :type nand: struct nand_device \*
 
 .. _`nanddev_bbt_update.description`:
 
@@ -82,11 +85,13 @@ nanddev_bbt_get_block_status
 
     Return the status of an eraseblock
 
-    :param const struct nand_device \*nand:
+    :param nand:
         nand device
+    :type nand: const struct nand_device \*
 
-    :param unsigned int entry:
+    :param entry:
         the BBT entry
+    :type entry: unsigned int
 
 .. _`nanddev_bbt_get_block_status.return`:
 
@@ -105,14 +110,17 @@ nanddev_bbt_set_block_status
 
     Update the status of an eraseblock in the in-memory BBT
 
-    :param struct nand_device \*nand:
+    :param nand:
         nand device
+    :type nand: struct nand_device \*
 
-    :param unsigned int entry:
+    :param entry:
         the BBT entry to update
+    :type entry: unsigned int
 
-    :param enum nand_bbt_block_status status:
+    :param status:
         the new status
+    :type status: enum nand_bbt_block_status
 
 .. _`nanddev_bbt_set_block_status.description`:
 

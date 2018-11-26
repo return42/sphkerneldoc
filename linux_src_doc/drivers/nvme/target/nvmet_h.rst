@@ -25,8 +25,12 @@ Definition
         struct list_head subsystems;
         struct config_group referrals_group;
         struct list_head referrals;
+        struct config_group ana_groups_group;
+        struct nvmet_ana_group ana_default_group;
+        enum nvme_ana_state *ana_state;
         void *priv;
         bool enabled;
+        int inline_data_size;
     }
 
 .. _`nvmet_port.members`:
@@ -56,10 +60,22 @@ referrals_group
 referrals
     *undescribed*
 
+ana_groups_group
+    *undescribed*
+
+ana_default_group
+    *undescribed*
+
+ana_state
+    *undescribed*
+
 priv
     Private data for the transport.
 
 enabled
+    *undescribed*
+
+inline_data_size
     *undescribed*
 
 .. This file was automatic generated / don't edit.

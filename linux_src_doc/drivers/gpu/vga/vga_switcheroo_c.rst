@@ -71,6 +71,7 @@ Definition
         bool active;
         bool driver_power_control;
         struct list_head list;
+        struct pci_dev *vga_dev;
     }
 
 .. _`vga_switcheroo_client.members`:
@@ -107,13 +108,17 @@ driver_power_control
 list
     client list
 
+vga_dev
+    pci device, indicate which GPU is bound to current audio client
+
 .. _`vga_switcheroo_client.description`:
 
 Description
 -----------
 
 Registered client. A client can be either a GPU or an audio device on a GPU.
-For audio clients, the \ ``fb_info``\  and \ ``active``\  members are bogus.
+For audio clients, the \ ``fb_info``\  and \ ``active``\  members are bogus. For GPU
+clients, the \ ``vga_dev``\  is bogus.
 
 .. _`vgasr_priv`:
 
@@ -203,11 +208,13 @@ vga_switcheroo_register_handler
 
     register handler
 
-    :param const struct vga_switcheroo_handler \*handler:
+    :param handler:
         handler callbacks
+    :type handler: const struct vga_switcheroo_handler \*
 
-    :param enum vga_switcheroo_handler_flags_t handler_flags:
+    :param handler_flags:
         handler flags
+    :type handler_flags: enum vga_switcheroo_handler_flags_t
 
 .. _`vga_switcheroo_register_handler.description`:
 
@@ -233,8 +240,9 @@ vga_switcheroo_unregister_handler
 
     unregister handler
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vga_switcheroo_unregister_handler.description`:
 
@@ -252,8 +260,9 @@ vga_switcheroo_handler_flags
 
     obtain handler flags
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vga_switcheroo_handler_flags.description`:
 
@@ -279,15 +288,18 @@ vga_switcheroo_register_client
 
     register vga client
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         client pci device
+    :type pdev: struct pci_dev \*
 
-    :param const struct vga_switcheroo_client_ops \*ops:
+    :param ops:
         client callbacks
+    :type ops: const struct vga_switcheroo_client_ops \*
 
-    :param bool driver_power_control:
+    :param driver_power_control:
         whether power state is controlled by the driver's
         runtime pm
+    :type driver_power_control: bool
 
 .. _`vga_switcheroo_register_client.description`:
 
@@ -311,18 +323,21 @@ Return
 vga_switcheroo_register_audio_client
 ====================================
 
-.. c:function:: int vga_switcheroo_register_audio_client(struct pci_dev *pdev, const struct vga_switcheroo_client_ops *ops, enum vga_switcheroo_client_id id)
+.. c:function:: int vga_switcheroo_register_audio_client(struct pci_dev *pdev, const struct vga_switcheroo_client_ops *ops, struct pci_dev *vga_dev)
 
     register audio client
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         client pci device
+    :type pdev: struct pci_dev \*
 
-    :param const struct vga_switcheroo_client_ops \*ops:
+    :param ops:
         client callbacks
+    :type ops: const struct vga_switcheroo_client_ops \*
 
-    :param enum vga_switcheroo_client_id id:
-        client identifier
+    :param vga_dev:
+        pci device which is bound to current audio client
+    :type vga_dev: struct pci_dev \*
 
 .. _`vga_switcheroo_register_audio_client.description`:
 
@@ -338,7 +353,8 @@ shall be called to ensure that all prerequisites are met.
 Return
 ------
 
-0 on success, -ENOMEM on memory allocation error.
+0 on success, -ENOMEM on memory allocation error, -EINVAL on getting
+client id error.
 
 .. _`vga_switcheroo_client_probe_defer`:
 
@@ -349,8 +365,9 @@ vga_switcheroo_client_probe_defer
 
     whether to defer probing a given client
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         client pci device
+    :type pdev: struct pci_dev \*
 
 .. _`vga_switcheroo_client_probe_defer.description`:
 
@@ -378,8 +395,9 @@ vga_switcheroo_get_client_state
 
     obtain power state of a given client
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         client pci device
+    :type pdev: struct pci_dev \*
 
 .. _`vga_switcheroo_get_client_state.description`:
 
@@ -405,8 +423,9 @@ vga_switcheroo_unregister_client
 
     unregister client
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         client pci device
+    :type pdev: struct pci_dev \*
 
 .. _`vga_switcheroo_unregister_client.description`:
 
@@ -424,11 +443,13 @@ vga_switcheroo_client_fb_set
 
     set framebuffer of a given client
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         client pci device
+    :type pdev: struct pci_dev \*
 
-    :param struct fb_info \*info:
+    :param info:
         framebuffer
+    :type info: struct fb_info \*
 
 .. _`vga_switcheroo_client_fb_set.description`:
 
@@ -447,8 +468,9 @@ vga_switcheroo_lock_ddc
 
     temporarily switch DDC lines to a given client
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         client pci device
+    :type pdev: struct pci_dev \*
 
 .. _`vga_switcheroo_lock_ddc.description`:
 
@@ -484,8 +506,9 @@ vga_switcheroo_unlock_ddc
 
     switch DDC lines back to previous owner
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         client pci device
+    :type pdev: struct pci_dev \*
 
 .. _`vga_switcheroo_unlock_ddc.description`:
 
@@ -555,8 +578,9 @@ vga_switcheroo_process_delayed_switch
 
     helper for delayed switching
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vga_switcheroo_process_delayed_switch.description`:
 
@@ -614,11 +638,13 @@ vga_switcheroo_init_domain_pm_ops
 
     helper for driver power control
 
-    :param struct device \*dev:
+    :param dev:
         vga client device
+    :type dev: struct device \*
 
-    :param struct dev_pm_domain \*domain:
+    :param domain:
         power domain
+    :type domain: struct dev_pm_domain \*
 
 .. _`vga_switcheroo_init_domain_pm_ops.description`:
 

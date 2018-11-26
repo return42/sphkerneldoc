@@ -68,11 +68,13 @@ seccomp_check_filter
 
     verify seccomp filter code
 
-    :param struct sock_filter \*filter:
+    :param filter:
         filter to verify
+    :type filter: struct sock_filter \*
 
-    :param unsigned int flen:
+    :param flen:
         length of filter
+    :type flen: unsigned int
 
 .. _`seccomp_check_filter.description`:
 
@@ -95,8 +97,9 @@ ACTION_ONLY
 
     evaluates all seccomp filters against \ ``sd``\ 
 
-    :param  ret:
+    :param ret:
         *undescribed*
+    :type ret: 
 
 .. _`action_only.description`:
 
@@ -114,8 +117,9 @@ seccomp_can_sync_threads
 
     checks if all threads can be synchronized
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`seccomp_can_sync_threads.description`:
 
@@ -137,8 +141,9 @@ seccomp_sync_threads
 
     sets all threads to use current's filter
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`seccomp_sync_threads.description`:
 
@@ -158,8 +163,9 @@ seccomp_prepare_filter
 
     Prepares a seccomp filter for use.
 
-    :param struct sock_fprog \*fprog:
+    :param fprog:
         BPF program to install
+    :type fprog: struct sock_fprog \*
 
 .. _`seccomp_prepare_filter.description`:
 
@@ -177,8 +183,9 @@ seccomp_prepare_user_filter
 
     prepares a user-supplied sock_fprog
 
-    :param const char __user \*user_filter:
+    :param user_filter:
         pointer to the user data containing a sock_fprog.
+    :type user_filter: const char __user \*
 
 .. _`seccomp_prepare_user_filter.description`:
 
@@ -196,11 +203,13 @@ seccomp_attach_filter
 
     validate and attach filter
 
-    :param unsigned int flags:
+    :param flags:
         flags to change filter behavior
+    :type flags: unsigned int
 
-    :param struct seccomp_filter \*filter:
+    :param filter:
         seccomp filter to add to the current process
+    :type filter: struct seccomp_filter \*
 
 .. _`seccomp_attach_filter.description`:
 
@@ -220,11 +229,13 @@ seccomp_send_sigsys
 
     signals the task to allow in-process syscall emulation
 
-    :param int syscall:
+    :param syscall:
         syscall number to send to userland
+    :type syscall: int
 
-    :param int reason:
+    :param reason:
         filter-supplied reason code to send to userland (via si_errno)
+    :type reason: int
 
 .. _`seccomp_send_sigsys.description`:
 
@@ -242,8 +253,9 @@ seccomp_set_mode_strict
 
     internal function for setting strict seccomp
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`seccomp_set_mode_strict.description`:
 
@@ -263,11 +275,13 @@ seccomp_set_mode_filter
 
     internal function for setting seccomp filter
 
-    :param unsigned int flags:
+    :param flags:
         flags to change filter behavior
+    :type flags: unsigned int
 
-    :param const char __user \*filter:
+    :param filter:
         struct sock_fprog containing filter
+    :type filter: const char __user \*
 
 .. _`seccomp_set_mode_filter.description`:
 
@@ -291,11 +305,13 @@ prctl_set_seccomp
 
     configures current->seccomp.mode
 
-    :param unsigned long seccomp_mode:
+    :param seccomp_mode:
         requested mode to use
+    :type seccomp_mode: unsigned long
 
-    :param char __user \*filter:
+    :param filter:
         optional struct sock_fprog for use with SECCOMP_MODE_FILTER
+    :type filter: char __user \*
 
 .. _`prctl_set_seccomp.description`:
 

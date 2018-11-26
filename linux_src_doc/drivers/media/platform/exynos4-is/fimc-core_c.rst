@@ -10,17 +10,21 @@ fimc_adjust_mplane_format
 
     adjust bytesperline/sizeimage for each plane
 
-    :param struct fimc_fmt \*fmt:
+    :param fmt:
         fimc pixel format description (input)
+    :type fmt: struct fimc_fmt \*
 
-    :param u32 width:
+    :param width:
         requested pixel width
+    :type width: u32
 
-    :param u32 height:
+    :param height:
         requested pixel height
+    :type height: u32
 
-    :param struct v4l2_pix_format_mplane \*pix:
+    :param pix:
         multi-plane format to adjust
+    :type pix: struct v4l2_pix_format_mplane \*
 
 .. _`fimc_find_format`:
 
@@ -31,17 +35,21 @@ fimc_find_format
 
     lookup fimc color format by fourcc or media bus format
 
-    :param const u32 \*pixelformat:
+    :param pixelformat:
         fourcc to match, ignored if null
+    :type pixelformat: const u32 \*
 
-    :param const u32 \*mbus_code:
+    :param mbus_code:
         media bus code to match, ignored if null
+    :type mbus_code: const u32 \*
 
-    :param unsigned int mask:
+    :param mask:
         the color flags to match
+    :type mask: unsigned int
 
-    :param int index:
+    :param index:
         offset in the fimc_formats array, ignored if negative
+    :type index: int
 
 .. This file was automatic generated / don't edit.
 

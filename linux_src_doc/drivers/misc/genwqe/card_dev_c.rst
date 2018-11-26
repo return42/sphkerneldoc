@@ -8,8 +8,9 @@ genwqe_open_files
 
 .. c:function:: int genwqe_open_files(struct genwqe_dev *cd)
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_open_files.description`:
 
@@ -49,17 +50,21 @@ genwqe_search_pin
 
     Search for the mapping for a userspace address
 
-    :param struct genwqe_file \*cfile:
+    :param cfile:
         Descriptor of opened file
+    :type cfile: struct genwqe_file \*
 
-    :param unsigned long u_addr:
+    :param u_addr:
         User virtual address
+    :type u_addr: unsigned long
 
-    :param unsigned int size:
+    :param size:
         Size of buffer
+    :type size: unsigned int
 
-    :param void \*\*virt_addr:
+    :param virt_addr:
         *undescribed*
+    :type virt_addr: void \*\*
 
 .. _`genwqe_search_pin.return`:
 
@@ -77,20 +82,25 @@ Pointer to the corresponding mapping NULL if not found
 
     Search for the mapping for a userspace address
 
-    :param struct genwqe_file \*cfile:
+    :param cfile:
         descriptor of opened file
+    :type cfile: struct genwqe_file \*
 
-    :param unsigned long u_addr:
+    :param u_addr:
         user virtual address
+    :type u_addr: unsigned long
 
-    :param unsigned int size:
+    :param size:
         size of buffer
+    :type size: unsigned int
 
-    :param dma_addr_t \*dma_addr:
+    :param dma_addr:
         DMA address to be updated
+    :type dma_addr: dma_addr_t \*
 
-    :param void \*\*virt_addr:
+    :param virt_addr:
         *undescribed*
+    :type virt_addr: void \*\*
 
 .. _`__genwqe_search_mapping.return`:
 
@@ -108,11 +118,13 @@ genwqe_kill_fasync
 
     Send signal to all processes with open GenWQE files
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param int sig:
+    :param sig:
         *undescribed*
+    :type sig: int
 
 .. _`genwqe_kill_fasync.description`:
 
@@ -130,11 +142,13 @@ genwqe_open
 
     file open
 
-    :param struct inode \*inode:
+    :param inode:
         file system information
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file handle
+    :type filp: struct file \*
 
 .. _`genwqe_open.description`:
 
@@ -160,14 +174,17 @@ genwqe_fasync
 
     Setup process to receive SIGIO.
 
-    :param int fd:
+    :param fd:
         file descriptor
+    :type fd: int
 
-    :param struct file \*filp:
+    :param filp:
         file handle
+    :type filp: struct file \*
 
-    :param int mode:
+    :param mode:
         file mode
+    :type mode: int
 
 .. _`genwqe_fasync.sending-a-signal-is-working-as-following`:
 
@@ -191,11 +208,13 @@ genwqe_release
 
     file close
 
-    :param struct inode \*inode:
+    :param inode:
         file system information
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file handle
+    :type filp: struct file \*
 
 .. _`genwqe_release.description`:
 
@@ -220,8 +239,9 @@ genwqe_vma_close
 
     Called each time when vma is unmapped
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         *undescribed*
+    :type vma: struct vm_area_struct \*
 
 .. _`genwqe_vma_close.description`:
 
@@ -239,11 +259,13 @@ genwqe_mmap
 
     Provide contignous buffers to userspace
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         *undescribed*
+    :type vma: struct vm_area_struct \*
 
 .. _`genwqe_mmap.description`:
 
@@ -284,11 +306,13 @@ ddcb_cmd_cleanup
 
     Remove dynamically created fixup entries
 
-    :param struct genwqe_file \*cfile:
+    :param cfile:
         *undescribed*
+    :type cfile: struct genwqe_file \*
 
-    :param struct ddcb_requ \*req:
+    :param req:
         *undescribed*
+    :type req: struct ddcb_requ \*
 
 .. _`ddcb_cmd_cleanup.description`:
 
@@ -306,11 +330,13 @@ ddcb_cmd_fixups
 
     Establish DMA fixups/sglists for user memory references
 
-    :param struct genwqe_file \*cfile:
+    :param cfile:
         *undescribed*
+    :type cfile: struct genwqe_file \*
 
-    :param struct ddcb_requ \*req:
+    :param req:
         *undescribed*
+    :type req: struct ddcb_requ \*
 
 .. _`ddcb_cmd_fixups.description`:
 
@@ -331,11 +357,13 @@ genwqe_execute_ddcb
 
     Execute DDCB using userspace address fixups
 
-    :param struct genwqe_file \*cfile:
+    :param cfile:
         *undescribed*
+    :type cfile: struct genwqe_file \*
 
-    :param struct genwqe_ddcb_cmd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct genwqe_ddcb_cmd \*
 
 .. _`genwqe_execute_ddcb.description`:
 
@@ -355,14 +383,17 @@ genwqe_ioctl
 
     IO control
 
-    :param struct file \*filp:
+    :param filp:
         file handle
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         command identifier (passed from user)
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         argument (passed from user)
+    :type arg: unsigned long
 
 .. _`genwqe_ioctl.return`:
 
@@ -380,14 +411,17 @@ genwqe_compat_ioctl
 
     Compatibility ioctl
 
-    :param struct file \*filp:
+    :param filp:
         file pointer.
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         command.
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         user argument.
+    :type arg: unsigned long
 
 .. _`genwqe_compat_ioctl.description`:
 
@@ -413,8 +447,9 @@ genwqe_device_create
 
     Create and configure genwqe char device
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_device_create.description`:
 
@@ -434,8 +469,9 @@ genwqe_device_remove
 
     Remove genwqe's char device
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_device_remove.description`:
 

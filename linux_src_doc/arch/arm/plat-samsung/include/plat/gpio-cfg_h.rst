@@ -69,11 +69,13 @@ s3c_gpio_cfgpin
 
     Change the GPIO function of a pin. \ ``pin``\  pin The pin number to configure. \ ``to``\  to The configuration for the pin's function.
 
-    :param unsigned int pin:
+    :param pin:
         *undescribed*
+    :type pin: unsigned int
 
-    :param unsigned int to:
+    :param to:
         *undescribed*
+    :type to: unsigned int
 
 .. _`s3c_gpio_cfgpin.description`:
 
@@ -112,8 +114,9 @@ s3c_gpio_getcfg
 
     Read the current function for a GPIO pin
 
-    :param unsigned int pin:
+    :param pin:
         The pin to read the configuration value for.
+    :type pin: unsigned int
 
 .. _`s3c_gpio_getcfg.description`:
 
@@ -134,14 +137,17 @@ s3c_gpio_cfgpin_range
 
     Change the GPIO function for configuring pin range
 
-    :param unsigned int start:
+    :param start:
         The pin number to start at
+    :type start: unsigned int
 
-    :param unsigned int nr:
+    :param nr:
         The number of pins to configure from \ ``start``\ .
+    :type nr: unsigned int
 
-    :param unsigned int cfg:
+    :param cfg:
         The configuration for the pin's function
+    :type cfg: unsigned int
 
 .. _`s3c_gpio_cfgpin_range.description`:
 
@@ -161,11 +167,13 @@ s3c_gpio_setpull
 
     set the state of a gpio pin pull resistor
 
-    :param unsigned int pin:
+    :param pin:
         The pin number to configure the pull resistor.
+    :type pin: unsigned int
 
-    :param samsung_gpio_pull_t pull:
+    :param pull:
         The configuration for the pull resistor.
+    :type pull: samsung_gpio_pull_t
 
 .. _`s3c_gpio_setpull.description`:
 
@@ -187,8 +195,9 @@ s3c_gpio_getpull
 
     get the pull resistor state of a gpio pin
 
-    :param unsigned int pin:
+    :param pin:
         The pin number to get the settings for
+    :type pin: unsigned int
 
 .. _`s3c_gpio_getpull.description`:
 
@@ -206,17 +215,21 @@ s3c_gpio_cfgall_range
 
     configure range of gpio functtion and pull.
 
-    :param unsigned int start:
+    :param start:
         The gpio number to start at.
+    :type start: unsigned int
 
-    :param unsigned int nr:
+    :param nr:
         The number of gpio to configure from \ ``start``\ .
+    :type nr: unsigned int
 
-    :param unsigned int cfg:
+    :param cfg:
         The configuration to use
+    :type cfg: unsigned int
 
-    :param samsung_gpio_pull_t pull:
+    :param pull:
         The pull setting to use.
+    :type pull: samsung_gpio_pull_t
 
 .. _`s3c_gpio_cfgall_range.description`:
 

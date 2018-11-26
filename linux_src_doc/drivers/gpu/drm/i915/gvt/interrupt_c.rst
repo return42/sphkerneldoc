@@ -10,17 +10,21 @@ intel_vgpu_reg_imr_handler
 
     Generic IMR register emulation write handler
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int reg:
+    :param reg:
         register offset written by guest
+    :type reg: unsigned int
 
-    :param void \*p_data:
+    :param p_data:
         register data written by guest
+    :type p_data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         register data length
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_reg_imr_handler.description`:
 
@@ -46,17 +50,21 @@ intel_vgpu_reg_master_irq_handler
 
     master IRQ write emulation handler
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int reg:
+    :param reg:
         register offset written by guest
+    :type reg: unsigned int
 
-    :param void \*p_data:
+    :param p_data:
         register data written by guest
+    :type p_data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         register data length
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_reg_master_irq_handler.description`:
 
@@ -81,17 +89,21 @@ intel_vgpu_reg_ier_handler
 
     Generic IER write emulation handler
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int reg:
+    :param reg:
         register offset written by guest
+    :type reg: unsigned int
 
-    :param void \*p_data:
+    :param p_data:
         register data written by guest
+    :type p_data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         register data length
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_reg_ier_handler.description`:
 
@@ -116,17 +128,21 @@ intel_vgpu_reg_iir_handler
 
     Generic IIR write emulation handler
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int reg:
+    :param reg:
         register offset written by guest
+    :type reg: unsigned int
 
-    :param void \*p_data:
+    :param p_data:
         register data written by guest
+    :type p_data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         register data length
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_reg_iir_handler.description`:
 
@@ -151,11 +167,13 @@ intel_vgpu_trigger_virtual_event
 
     Trigger a virtual event for a vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param enum intel_gvt_event_type event:
+    :param event:
         interrupt event
+    :type event: enum intel_gvt_event_type
 
 .. _`intel_vgpu_trigger_virtual_event.description`:
 
@@ -175,8 +193,9 @@ intel_gvt_clean_irq
 
     clean up GVT-g IRQ emulation subsystem
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_clean_irq.description`:
 
@@ -195,8 +214,9 @@ intel_gvt_init_irq
 
     initialize GVT-g IRQ emulation subsystem
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_init_irq.description`:
 

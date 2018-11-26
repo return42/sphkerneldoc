@@ -10,7 +10,7 @@ scif_vma_open
 
     VMA open driver callback
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMM memory area.
         The open method is called by the kernel to allow the subsystem implementing
         the VMA to initialize the area. This method is invoked any time a new
@@ -20,6 +20,7 @@ scif_vma_open
         This function is also invoked when an existing VMA is split by the kernel
         due to a call to munmap on a subset of the VMA resulting in two VMAs.
         The kernel invokes this function only on one of the two VMAs.
+    :type vma: struct vm_area_struct \*
 
 .. _`scif_munmap`:
 
@@ -30,11 +31,12 @@ scif_munmap
 
     VMA close driver callback.
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMM memory area.
         When an area is destroyed, the kernel calls its close operation.
         Note that there's no usage count associated with VMA's; the area
         is opened and closed exactly once by each process that uses it.
+    :type vma: struct vm_area_struct \*
 
 .. _`scif_mmap`:
 
@@ -45,11 +47,13 @@ scif_mmap
 
     Map pages in virtual address space to a remote window.
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMM memory area.
+    :type vma: struct vm_area_struct \*
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
 .. _`scif_mmap.return`:
 

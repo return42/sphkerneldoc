@@ -10,26 +10,33 @@ bdx_fifo_init
 
     create TX/RX descriptor fifo for host-NIC communication.
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
-    :param struct fifo \*f:
+    :param f:
         fifo to initialize
+    :type f: struct fifo \*
 
-    :param int fsz_type:
+    :param fsz_type:
         fifo size type: 0-4KB, 1-8KB, 2-16KB, 3-32KB
+    :type fsz_type: int
 
-    :param u16 reg_CFG0:
+    :param reg_CFG0:
         *undescribed*
+    :type reg_CFG0: u16
 
-    :param u16 reg_CFG1:
+    :param reg_CFG1:
         *undescribed*
+    :type reg_CFG1: u16
 
-    :param u16 reg_RPTR:
+    :param reg_RPTR:
         *undescribed*
+    :type reg_RPTR: u16
 
-    :param u16 reg_WPTR:
+    :param reg_WPTR:
         *undescribed*
+    :type reg_WPTR: u16
 
 .. _`bdx_fifo_init.description`:
 
@@ -50,11 +57,13 @@ bdx_fifo_free
 
     free all resources used by fifo
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
-    :param struct fifo \*f:
+    :param f:
         fifo to release
+    :type f: struct fifo \*
 
 .. _`bdx_link_changed`:
 
@@ -65,8 +74,9 @@ bdx_link_changed
 
     notifies OS about hw link state.
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         hw adapter structure
+    :type priv: struct bdx_priv \*
 
 .. _`bdx_isr_napi`:
 
@@ -77,11 +87,13 @@ bdx_isr_napi
 
     Interrupt Service Routine for Bordeaux NIC
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*dev:
+    :param dev:
         network device
+    :type dev: void \*
 
 .. _`bdx_isr_napi.description`:
 
@@ -110,8 +122,9 @@ bdx_fw_load
 
     loads firmware to NIC
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
 .. _`bdx_fw_load.description`:
 
@@ -132,8 +145,9 @@ bdx_hw_start
 
     inits registers and starts HW's Rx and Tx engines
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
 .. _`bdx_close`:
 
@@ -144,8 +158,9 @@ bdx_close
 
     Disables a network interface
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
 .. _`bdx_close.description`:
 
@@ -168,8 +183,9 @@ bdx_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
 .. _`bdx_open.description`:
 
@@ -193,14 +209,17 @@ and the stack is notified that the interface is ready.
 
     private helper for adding/killing VLAN vid
 
-    :param struct net_device \*ndev:
+    :param ndev:
         network device
+    :type ndev: struct net_device \*
 
-    :param uint16_t vid:
+    :param vid:
         VLAN vid
+    :type vid: uint16_t
 
-    :param int enable:
+    :param enable:
         *undescribed*
+    :type enable: int
 
 .. _`__bdx_vlan_rx_vid.description`:
 
@@ -218,14 +237,17 @@ bdx_vlan_rx_add_vid
 
     kernel hook for adding VLAN vid to hw filtering table
 
-    :param struct net_device \*ndev:
+    :param ndev:
         network device
+    :type ndev: struct net_device \*
 
-    :param __be16 proto:
+    :param proto:
         *undescribed*
+    :type proto: __be16
 
-    :param u16 vid:
+    :param vid:
         VLAN vid to add
+    :type vid: u16
 
 .. _`bdx_vlan_rx_kill_vid`:
 
@@ -236,14 +258,17 @@ bdx_vlan_rx_kill_vid
 
     kernel hook for killing VLAN vid in hw filtering table
 
-    :param struct net_device \*ndev:
+    :param ndev:
         network device
+    :type ndev: struct net_device \*
 
-    :param __be16 proto:
+    :param proto:
         *undescribed*
+    :type proto: __be16
 
-    :param u16 vid:
+    :param vid:
         VLAN vid to kill
+    :type vid: u16
 
 .. _`bdx_change_mtu`:
 
@@ -254,11 +279,13 @@ bdx_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`bdx_change_mtu.description`:
 
@@ -276,8 +303,9 @@ bdx_rx_init
 
     initialize RX all related HW and SW resources
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
 .. _`bdx_rx_init.description`:
 
@@ -304,11 +332,13 @@ bdx_rx_free_skbs
 
     frees and unmaps all skbs allocated for the fifo
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
-    :param struct rxf_fifo \*f:
+    :param f:
         RXF fifo
+    :type f: struct rxf_fifo \*
 
 .. _`bdx_rx_free`:
 
@@ -319,8 +349,9 @@ bdx_rx_free
 
     release all Rx resources
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
 .. _`bdx_rx_free.description`:
 
@@ -338,11 +369,13 @@ bdx_rx_alloc_skbs
 
     fill rxf fifo with new skbs
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         nic's private structure
+    :type priv: struct bdx_priv \*
 
-    :param struct rxf_fifo \*f:
+    :param f:
         RXF fifo that needs skbs
+    :type f: struct rxf_fifo \*
 
 .. _`bdx_rx_alloc_skbs.description`:
 
@@ -363,14 +396,17 @@ bdx_rx_receive
 
     receives full packets from RXD fifo and pass them to OS
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         nic's private structure
+    :type priv: struct bdx_priv \*
 
-    :param struct rxd_fifo \*f:
+    :param f:
         RXF fifo that needs skbs
+    :type f: struct rxd_fifo \*
 
-    :param int budget:
+    :param budget:
         maximum number of packets to receive
+    :type budget: int
 
 .. _`bdx_rx_receive.note`:
 
@@ -391,11 +427,13 @@ normal. fifo has an extra space to allow such operations
 
     helper function, increment read/write pointer + wrap
 
-    :param struct txdb \*db:
+    :param db:
         tx data base
+    :type db: struct txdb \*
 
-    :param struct tx_map \*\*pptr:
+    :param pptr:
         read or write pointer
+    :type pptr: struct tx_map \*\*
 
 .. _`bdx_tx_db_inc_rptr`:
 
@@ -406,8 +444,9 @@ bdx_tx_db_inc_rptr
 
     increment read pointer
 
-    :param struct txdb \*db:
+    :param db:
         tx data base
+    :type db: struct txdb \*
 
 .. _`bdx_tx_db_inc_wptr`:
 
@@ -418,8 +457,9 @@ bdx_tx_db_inc_wptr
 
     increment write pointer
 
-    :param struct txdb \*db:
+    :param db:
         tx data base
+    :type db: struct txdb \*
 
 .. _`bdx_tx_db_init`:
 
@@ -430,11 +470,13 @@ bdx_tx_db_init
 
     creates and initializes tx db
 
-    :param struct txdb \*d:
+    :param d:
         tx data base
+    :type d: struct txdb \*
 
-    :param int sz_type:
+    :param sz_type:
         size of tx fifo
+    :type sz_type: int
 
 .. _`bdx_tx_db_init.description`:
 
@@ -452,8 +494,9 @@ bdx_tx_db_close
 
     closes tx db and frees all memory
 
-    :param struct txdb \*d:
+    :param d:
         tx data base
+    :type d: struct txdb \*
 
 .. _`bdx_tx_map_skb`:
 
@@ -464,14 +507,17 @@ bdx_tx_map_skb
 
     creates and stores dma mappings for skb's data blocks
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to map
+    :type skb: struct sk_buff \*
 
-    :param struct txd_desc \*txdd:
+    :param txdd:
         TX descriptor to use
+    :type txdd: struct txd_desc \*
 
 .. _`bdx_tx_map_skb.description`:
 
@@ -493,8 +539,9 @@ bdx_tx_space
 
     calculates available space in TX fifo
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
 .. _`bdx_tx_space.description`:
 
@@ -512,11 +559,13 @@ bdx_tx_transmit
 
     send packet to NIC
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         network device assigned to NIC
+    :type ndev: struct net_device \*
 
 .. _`bdx_tx_transmit.return-codes`:
 
@@ -537,8 +586,9 @@ bdx_tx_cleanup
 
     clean TXF fifo, run in the context of IRQ.
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         bdx adapter
+    :type priv: struct bdx_priv \*
 
 .. _`bdx_tx_cleanup.description`:
 
@@ -557,8 +607,9 @@ bdx_tx_free_skbs
 
     frees all skbs from TXD fifo. It gets called when OS stops this dev, eg upon "ifconfig down" or rmmod
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct bdx_priv \*
 
 .. _`bdx_tx_push_desc`:
 
@@ -569,14 +620,17 @@ bdx_tx_push_desc
 
     push descriptor to TxD fifo
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
-    :param void \*data:
+    :param data:
         desc's data
+    :type data: void \*
 
-    :param int size:
+    :param size:
         desc's size
+    :type size: int
 
 .. _`bdx_tx_push_desc.description`:
 
@@ -603,14 +657,17 @@ bdx_tx_push_desc_safe
 
     push descriptor to TxD fifo in a safe way
 
-    :param struct bdx_priv \*priv:
+    :param priv:
         NIC private structure
+    :type priv: struct bdx_priv \*
 
-    :param void \*data:
+    :param data:
         desc's data
+    :type data: void \*
 
-    :param int size:
+    :param size:
         desc's size
+    :type size: int
 
 .. _`bdx_tx_push_desc_safe.note`:
 
@@ -629,11 +686,13 @@ bdx_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in bdx_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`bdx_probe.description`:
 
@@ -658,8 +717,9 @@ bdx_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`bdx_remove.description`:
 

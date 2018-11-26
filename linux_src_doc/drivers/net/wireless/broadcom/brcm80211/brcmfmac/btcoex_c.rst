@@ -150,14 +150,17 @@ brcmf_btcoex_params_write
 
     write btc_params firmware variable
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interface
+    :type ifp: struct brcmf_if \*
 
-    :param u32 addr:
+    :param addr:
         btc_params register number
+    :type addr: u32
 
-    :param u32 data:
+    :param data:
         data to write
+    :type data: u32
 
 .. _`brcmf_btcoex_params_read`:
 
@@ -168,14 +171,17 @@ brcmf_btcoex_params_read
 
     read btc_params firmware variable
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interface
+    :type ifp: struct brcmf_if \*
 
-    :param u32 addr:
+    :param addr:
         btc_params register number
+    :type addr: u32
 
-    :param u32 \*data:
+    :param data:
         read data
+    :type data: u32 \*
 
 .. _`brcmf_btcoex_boost_wifi`:
 
@@ -186,13 +192,15 @@ brcmf_btcoex_boost_wifi
 
     control BT SCO/eSCO parameters
 
-    :param struct brcmf_btcoex_info \*btci:
+    :param btci:
         BT coex info
+    :type btci: struct brcmf_btcoex_info \*
 
-    :param bool trump_sco:
+    :param trump_sco:
         true - set SCO/eSCO parameters for compatibility
         during DHCP window
         false - restore saved parameter values
+    :type trump_sco: bool
 
 .. _`brcmf_btcoex_boost_wifi.description`:
 
@@ -210,8 +218,9 @@ brcmf_btcoex_is_sco_active
 
     check if SCO/eSCO is active
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interface
+    :type ifp: struct brcmf_if \*
 
 .. _`brcmf_btcoex_is_sco_active.return`:
 
@@ -229,8 +238,9 @@ btcmf_btcoex_save_part1
 
     save first step parameters.
 
-    :param struct brcmf_btcoex_info \*btci:
+    :param btci:
         *undescribed*
+    :type btci: struct brcmf_btcoex_info \*
 
 .. _`brcmf_btcoex_restore_part1`:
 
@@ -241,8 +251,9 @@ brcmf_btcoex_restore_part1
 
     restore first step parameters.
 
-    :param struct brcmf_btcoex_info \*btci:
+    :param btci:
         *undescribed*
+    :type btci: struct brcmf_btcoex_info \*
 
 .. _`brcmf_btcoex_timerfunc`:
 
@@ -253,8 +264,9 @@ brcmf_btcoex_timerfunc
 
     BT coex timer callback
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`brcmf_btcoex_handler`:
 
@@ -265,8 +277,9 @@ brcmf_btcoex_handler
 
     BT coex state machine work handler
 
-    :param struct work_struct \*work:
+    :param work:
         work
+    :type work: struct work_struct \*
 
 .. _`brcmf_btcoex_attach`:
 
@@ -277,8 +290,9 @@ brcmf_btcoex_attach
 
     initialize BT coex data
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         driver private cfg80211 data
+    :type cfg: struct brcmf_cfg80211_info \*
 
 .. _`brcmf_btcoex_attach.return`:
 
@@ -296,8 +310,9 @@ brcmf_btcoex_detach
 
     clean BT coex data
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         driver private cfg80211 data
+    :type cfg: struct brcmf_cfg80211_info \*
 
 .. _`brcmf_btcoex_set_mode`:
 
@@ -308,14 +323,17 @@ brcmf_btcoex_set_mode
 
     set BT coex mode
 
-    :param struct brcmf_cfg80211_vif \*vif:
+    :param vif:
         *undescribed*
+    :type vif: struct brcmf_cfg80211_vif \*
 
-    :param enum brcmf_btcoex_mode mode:
+    :param mode:
         Wifi-Bluetooth coexistence mode
+    :type mode: enum brcmf_btcoex_mode
 
-    :param u16 duration:
+    :param duration:
         *undescribed*
+    :type duration: u16
 
 .. _`brcmf_btcoex_set_mode.return`:
 

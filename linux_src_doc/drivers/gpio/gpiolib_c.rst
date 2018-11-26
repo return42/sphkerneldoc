@@ -10,8 +10,9 @@ gpio_to_desc
 
     Convert a GPIO number to its descriptor
 
-    :param unsigned gpio:
+    :param gpio:
         global GPIO number
+    :type gpio: unsigned
 
 .. _`gpio_to_desc.return`:
 
@@ -30,11 +31,13 @@ gpiochip_get_desc
 
     get the GPIO descriptor corresponding to the given hardware number for this chip
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         GPIO chip
+    :type chip: struct gpio_chip \*
 
-    :param u16 hwnum:
+    :param hwnum:
         hardware number of the GPIO for this chip
+    :type hwnum: u16
 
 .. _`gpiochip_get_desc.return`:
 
@@ -53,8 +56,9 @@ desc_to_gpio
 
     convert a GPIO descriptor to the integer namespace
 
-    :param const struct gpio_desc \*desc:
+    :param desc:
         GPIO descriptor
+    :type desc: const struct gpio_desc \*
 
 .. _`desc_to_gpio.description`:
 
@@ -80,8 +84,9 @@ gpiod_to_chip
 
     Return the GPIO chip to which a GPIO descriptor belongs
 
-    :param const struct gpio_desc \*desc:
+    :param desc:
         descriptor to return the chip of
+    :type desc: const struct gpio_desc \*
 
 .. _`gpiod_get_direction`:
 
@@ -92,8 +97,9 @@ gpiod_get_direction
 
     return the current direction of a GPIO
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         GPIO to get the direction of
+    :type desc: struct gpio_desc \*
 
 .. _`gpiod_get_direction.description`:
 
@@ -216,12 +222,14 @@ gpio_chrdev_open
 
     open the chardev for ioctl operations
 
-    :param struct inode \*inode:
+    :param inode:
         inode for this chardev
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file struct for storing private data
         Returns 0 on success
+    :type filp: struct file \*
 
 .. _`gpio_chrdev_release`:
 
@@ -232,12 +240,14 @@ gpio_chrdev_release
 
     close chardev after ioctl operations
 
-    :param struct inode \*inode:
+    :param inode:
         inode for this chardev
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file struct for storing private data
         Returns 0 on success
+    :type filp: struct file \*
 
 .. _`gpiochip_get_data`:
 
@@ -248,8 +258,9 @@ gpiochip_get_data
 
     get per-subdriver data for the chip
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         GPIO chip
+    :type chip: struct gpio_chip \*
 
 .. _`gpiochip_get_data.return`:
 
@@ -267,8 +278,9 @@ gpiochip_remove
 
     unregister a gpio_chip
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the chip to unregister
+    :type chip: struct gpio_chip \*
 
 .. _`gpiochip_remove.description`:
 
@@ -286,14 +298,17 @@ devm_gpiochip_add_data
 
     Resource manager \ :c:func:`gpiochip_add_data`\ 
 
-    :param struct device \*dev:
-        the device pointer on which irq_chip belongs to.
+    :param dev:
+        pointer to the device that gpio_chip belongs to.
+    :type dev: struct device \*
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the chip to register, with chip->base initialized
+    :type chip: struct gpio_chip \*
 
-    :param void \*data:
+    :param data:
         driver-private data associated with this chip
+    :type data: void \*
 
 .. _`devm_gpiochip_add_data.context`:
 
@@ -327,11 +342,13 @@ devm_gpiochip_remove
 
     Resource manager of \ :c:func:`gpiochip_remove`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device for which which resource was allocated
+    :type dev: struct device \*
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the chip to remove
+    :type chip: struct gpio_chip \*
 
 .. _`devm_gpiochip_remove.description`:
 
@@ -349,8 +366,9 @@ gpiochip_find
 
     iterator for locating a specific gpio_chip
 
-    :param void \*data:
+    :param data:
         data to pass to match function
+    :type data: void \*
 
     :param int (\*match)(struct gpio_chip \*chip, void \*data):
         Callback function to check gpio_chip
@@ -371,24 +389,24 @@ more gpio_chips.
 gpiochip_set_cascaded_irqchip
 =============================
 
-.. c:function:: void gpiochip_set_cascaded_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int parent_irq, irq_flow_handler_t parent_handler)
+.. c:function:: void gpiochip_set_cascaded_irqchip(struct gpio_chip *gpiochip, unsigned int parent_irq, irq_flow_handler_t parent_handler)
 
     connects a cascaded irqchip to a gpiochip
 
-    :param struct gpio_chip \*gpiochip:
+    :param gpiochip:
         the gpiochip to set the irqchip chain to
+    :type gpiochip: struct gpio_chip \*
 
-    :param struct irq_chip \*irqchip:
-        the irqchip to chain to the gpiochip
-
-    :param unsigned int parent_irq:
+    :param parent_irq:
         the irq number corresponding to the parent IRQ for this
         chained irqchip
+    :type parent_irq: unsigned int
 
-    :param irq_flow_handler_t parent_handler:
+    :param parent_handler:
         the parent interrupt handler for the accumulated IRQ
         coming out of the gpiochip. If the interrupt is nested rather than
         cascaded, pass NULL in this handler argument
+    :type parent_handler: irq_flow_handler_t
 
 .. _`gpiochip_set_chained_irqchip`:
 
@@ -399,20 +417,23 @@ gpiochip_set_chained_irqchip
 
     connects a chained irqchip to a gpiochip
 
-    :param struct gpio_chip \*gpiochip:
+    :param gpiochip:
         the gpiochip to set the irqchip chain to
+    :type gpiochip: struct gpio_chip \*
 
-    :param struct irq_chip \*irqchip:
+    :param irqchip:
         the irqchip to chain to the gpiochip
+    :type irqchip: struct irq_chip \*
 
-    :param unsigned int parent_irq:
+    :param parent_irq:
         the irq number corresponding to the parent IRQ for this
         chained irqchip
+    :type parent_irq: unsigned int
 
-    :param irq_flow_handler_t parent_handler:
+    :param parent_handler:
         the parent interrupt handler for the accumulated IRQ
-        coming out of the gpiochip. If the interrupt is nested rather than
-        cascaded, pass NULL in this handler argument
+        coming out of the gpiochip.
+    :type parent_handler: irq_flow_handler_t
 
 .. _`gpiochip_set_nested_irqchip`:
 
@@ -423,15 +444,18 @@ gpiochip_set_nested_irqchip
 
     connects a nested irqchip to a gpiochip
 
-    :param struct gpio_chip \*gpiochip:
+    :param gpiochip:
         the gpiochip to set the irqchip nested handler to
+    :type gpiochip: struct gpio_chip \*
 
-    :param struct irq_chip \*irqchip:
+    :param irqchip:
         the irqchip to nest to the gpiochip
+    :type irqchip: struct irq_chip \*
 
-    :param unsigned int parent_irq:
+    :param parent_irq:
         the irq number corresponding to the parent IRQ for this
         nested irqchip
+    :type parent_irq: unsigned int
 
 .. _`gpiochip_irq_map`:
 
@@ -442,14 +466,17 @@ gpiochip_irq_map
 
     maps an IRQ into a GPIO irqchip
 
-    :param struct irq_domain \*d:
+    :param d:
         the irqdomain used by this irqchip
+    :type d: struct irq_domain \*
 
-    :param unsigned int irq:
+    :param irq:
         the global irq number used by this GPIO irqchip irq
+    :type irq: unsigned int
 
-    :param irq_hw_number_t hwirq:
+    :param hwirq:
         the local IRQ/GPIO line offset on this gpiochip
+    :type hwirq: irq_hw_number_t
 
 .. _`gpiochip_irq_map.description`:
 
@@ -469,14 +496,17 @@ gpiochip_add_irqchip
 
     adds an IRQ chip to a GPIO chip
 
-    :param struct gpio_chip \*gpiochip:
+    :param gpiochip:
         the GPIO chip to add the IRQ chip to
+    :type gpiochip: struct gpio_chip \*
 
-    :param struct lock_class_key \*lock_key:
+    :param lock_key:
         lockdep class for IRQ lock
+    :type lock_key: struct lock_class_key \*
 
-    :param struct lock_class_key \*request_key:
+    :param request_key:
         lockdep class for IRQ request
+    :type request_key: struct lock_class_key \*
 
 .. _`gpiochip_irqchip_remove`:
 
@@ -487,8 +517,9 @@ gpiochip_irqchip_remove
 
     removes an irqchip added to a gpiochip
 
-    :param struct gpio_chip \*gpiochip:
+    :param gpiochip:
         the gpiochip to remove the irqchip from
+    :type gpiochip: struct gpio_chip \*
 
 .. _`gpiochip_irqchip_remove.description`:
 
@@ -506,31 +537,39 @@ gpiochip_irqchip_add_key
 
     adds an irqchip to a gpiochip
 
-    :param struct gpio_chip \*gpiochip:
+    :param gpiochip:
         the gpiochip to add the irqchip to
+    :type gpiochip: struct gpio_chip \*
 
-    :param struct irq_chip \*irqchip:
+    :param irqchip:
         the irqchip to add to the gpiochip
+    :type irqchip: struct irq_chip \*
 
-    :param unsigned int first_irq:
+    :param first_irq:
         if not dynamically assigned, the base (first) IRQ to
         allocate gpiochip irqs from
+    :type first_irq: unsigned int
 
-    :param irq_flow_handler_t handler:
+    :param handler:
         the irq handler to use (often a predefined irq core function)
+    :type handler: irq_flow_handler_t
 
-    :param unsigned int type:
+    :param type:
         the default type for IRQs on this irqchip, pass IRQ_TYPE_NONE
         to have the core avoid setting up any default type in the hardware.
+    :type type: unsigned int
 
-    :param bool threaded:
+    :param threaded:
         whether this irqchip uses a nested thread handler
+    :type threaded: bool
 
-    :param struct lock_class_key \*lock_key:
+    :param lock_key:
         lockdep class for IRQ lock
+    :type lock_key: struct lock_class_key \*
 
-    :param struct lock_class_key \*request_key:
+    :param request_key:
         lockdep class for IRQ request
+    :type request_key: struct lock_class_key \*
 
 .. _`gpiochip_irqchip_add_key.description`:
 
@@ -560,11 +599,13 @@ gpiochip_generic_request
 
     request the gpio function for a pin
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the gpiochip owning the GPIO
+    :type chip: struct gpio_chip \*
 
-    :param unsigned offset:
+    :param offset:
         the offset of the GPIO to request for GPIO function
+    :type offset: unsigned
 
 .. _`gpiochip_generic_free`:
 
@@ -575,11 +616,13 @@ gpiochip_generic_free
 
     free the gpio function from a pin
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the gpiochip to request the gpio function for
+    :type chip: struct gpio_chip \*
 
-    :param unsigned offset:
+    :param offset:
         the offset of the GPIO to free from GPIO function
+    :type offset: unsigned
 
 .. _`gpiochip_generic_config`:
 
@@ -590,14 +633,17 @@ gpiochip_generic_config
 
     apply configuration for a pin
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the gpiochip owning the GPIO
+    :type chip: struct gpio_chip \*
 
-    :param unsigned offset:
+    :param offset:
         the offset of the GPIO to apply the configuration
+    :type offset: unsigned
 
-    :param unsigned long config:
+    :param config:
         the configuration to be applied
+    :type config: unsigned long
 
 .. _`gpiochip_add_pingroup_range`:
 
@@ -608,17 +654,21 @@ gpiochip_add_pingroup_range
 
     add a range for GPIO <-> pin mapping
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the gpiochip to add the range for
+    :type chip: struct gpio_chip \*
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         the pin controller to map to
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int gpio_offset:
+    :param gpio_offset:
         the start offset in the current gpio_chip number space
+    :type gpio_offset: unsigned int
 
-    :param const char \*pin_group:
+    :param pin_group:
         name of the pin group inside the pin controller
+    :type pin_group: const char \*
 
 .. _`gpiochip_add_pingroup_range.description`:
 
@@ -639,21 +689,26 @@ gpiochip_add_pin_range
 
     add a range for GPIO <-> pin mapping
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the gpiochip to add the range for
+    :type chip: struct gpio_chip \*
 
-    :param const char \*pinctl_name:
+    :param pinctl_name:
         the \ :c:func:`dev_name`\  of the pin controller to map to
+    :type pinctl_name: const char \*
 
-    :param unsigned int gpio_offset:
+    :param gpio_offset:
         the start offset in the current gpio_chip number space
+    :type gpio_offset: unsigned int
 
-    :param unsigned int pin_offset:
+    :param pin_offset:
         the start offset in the pin controller number space
+    :type pin_offset: unsigned int
 
-    :param unsigned int npins:
+    :param npins:
         the number of pins from the offset of each pin space (GPIO and
         pin controller) to accumulate in this range
+    :type npins: unsigned int
 
 .. _`gpiochip_add_pin_range.return`:
 
@@ -676,8 +731,9 @@ gpiochip_remove_pin_ranges
 
     remove all the GPIO <-> pin mappings
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the chip to remove all the mappings for
+    :type chip: struct gpio_chip \*
 
 .. _`gpiochip_is_requested`:
 
@@ -688,11 +744,13 @@ gpiochip_is_requested
 
     return string iff signal was requested
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         controller managing the signal
+    :type chip: struct gpio_chip \*
 
-    :param unsigned offset:
+    :param offset:
         of signal within controller's 0..(ngpio - 1) range
+    :type offset: unsigned
 
 .. _`gpiochip_is_requested.description`:
 
@@ -716,14 +774,17 @@ gpiochip_request_own_desc
 
     Allow GPIO chip to request its own descriptor
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         GPIO chip
+    :type chip: struct gpio_chip \*
 
-    :param u16 hwnum:
+    :param hwnum:
         hardware number of the GPIO for which to request the descriptor
+    :type hwnum: u16
 
-    :param const char \*label:
+    :param label:
         label for the GPIO
+    :type label: const char \*
 
 .. _`gpiochip_request_own_desc.description`:
 
@@ -753,8 +814,9 @@ gpiochip_free_own_desc
 
     Free GPIO requested by the chip driver
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         GPIO descriptor to free
+    :type desc: struct gpio_desc \*
 
 .. _`gpiochip_free_own_desc.description`:
 
@@ -773,8 +835,9 @@ gpiod_direction_input
 
     set the GPIO direction to input
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         GPIO to set to input
+    :type desc: struct gpio_desc \*
 
 .. _`gpiod_direction_input.description`:
 
@@ -795,11 +858,13 @@ gpiod_direction_output_raw
 
     set the GPIO direction to output
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         GPIO to set to output
+    :type desc: struct gpio_desc \*
 
-    :param int value:
+    :param value:
         initial output value of the GPIO
+    :type value: int
 
 .. _`gpiod_direction_output_raw.description`:
 
@@ -821,11 +886,13 @@ gpiod_direction_output
 
     set the GPIO direction to output
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         GPIO to set to output
+    :type desc: struct gpio_desc \*
 
-    :param int value:
+    :param value:
         initial output value of the GPIO
+    :type value: int
 
 .. _`gpiod_direction_output.description`:
 
@@ -848,11 +915,13 @@ gpiod_set_debounce
 
     sets \ ``debounce``\  time for a GPIO
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         descriptor of the GPIO for which to set debounce time
+    :type desc: struct gpio_desc \*
 
-    :param unsigned debounce:
+    :param debounce:
         debounce time in microseconds
+    :type debounce: unsigned
 
 .. _`gpiod_set_debounce.return`:
 
@@ -871,11 +940,13 @@ gpiod_set_transitory
 
     Lose or retain GPIO state on suspend or reset
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         descriptor of the GPIO for which to configure persistence
+    :type desc: struct gpio_desc \*
 
-    :param bool transitory:
+    :param transitory:
         True to lose state on suspend or reset, false for persistence
+    :type transitory: bool
 
 .. _`gpiod_set_transitory.return`:
 
@@ -893,8 +964,9 @@ gpiod_is_active_low
 
     test whether a GPIO is active-low or not
 
-    :param const struct gpio_desc \*desc:
+    :param desc:
         the gpio descriptor to test
+    :type desc: const struct gpio_desc \*
 
 .. _`gpiod_is_active_low.description`:
 
@@ -912,8 +984,9 @@ gpiod_get_raw_value
 
     return a gpio's raw value
 
-    :param const struct gpio_desc \*desc:
+    :param desc:
         gpio whose value will be returned
+    :type desc: const struct gpio_desc \*
 
 .. _`gpiod_get_raw_value.description`:
 
@@ -935,8 +1008,9 @@ gpiod_get_value
 
     return a gpio's value
 
-    :param const struct gpio_desc \*desc:
+    :param desc:
         gpio whose value will be returned
+    :type desc: const struct gpio_desc \*
 
 .. _`gpiod_get_value.description`:
 
@@ -954,18 +1028,25 @@ complain if the GPIO chip functions potentially sleep.
 gpiod_get_raw_array_value
 =========================
 
-.. c:function:: int gpiod_get_raw_array_value(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+.. c:function:: int gpiod_get_raw_array_value(unsigned int array_size, struct gpio_desc **desc_array, struct gpio_array *array_info, unsigned long *value_bitmap)
 
     read raw values from an array of GPIOs
 
-    :param unsigned int array_size:
-        number of elements in the descriptor / value arrays
+    :param array_size:
+        number of elements in the descriptor array / value bitmap
+    :type array_size: unsigned int
 
-    :param struct gpio_desc \*\*desc_array:
+    :param desc_array:
         array of GPIO descriptors whose values will be read
+    :type desc_array: struct gpio_desc \*\*
 
-    :param int \*value_array:
-        array to store the read values
+    :param array_info:
+        information on applicability of fast bitmap processing path
+    :type array_info: struct gpio_array \*
+
+    :param value_bitmap:
+        bitmap to store the read values
+    :type value_bitmap: unsigned long \*
 
 .. _`gpiod_get_raw_array_value.description`:
 
@@ -984,18 +1065,25 @@ and it will complain if the GPIO chip functions potentially sleep.
 gpiod_get_array_value
 =====================
 
-.. c:function:: int gpiod_get_array_value(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+.. c:function:: int gpiod_get_array_value(unsigned int array_size, struct gpio_desc **desc_array, struct gpio_array *array_info, unsigned long *value_bitmap)
 
     read values from an array of GPIOs
 
-    :param unsigned int array_size:
-        number of elements in the descriptor / value arrays
+    :param array_size:
+        number of elements in the descriptor array / value bitmap
+    :type array_size: unsigned int
 
-    :param struct gpio_desc \*\*desc_array:
+    :param desc_array:
         array of GPIO descriptors whose values will be read
+    :type desc_array: struct gpio_desc \*\*
 
-    :param int \*value_array:
-        array to store the read values
+    :param array_info:
+        information on applicability of fast bitmap processing path
+    :type array_info: struct gpio_array \*
+
+    :param value_bitmap:
+        bitmap to store the read values
+    :type value_bitmap: unsigned long \*
 
 .. _`gpiod_get_array_value.description`:
 
@@ -1017,11 +1105,13 @@ gpiod_set_raw_value
 
     assign a gpio's raw value
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         gpio whose value will be assigned
+    :type desc: struct gpio_desc \*
 
-    :param int value:
+    :param value:
         value to assign
+    :type value: int
 
 .. _`gpiod_set_raw_value.description`:
 
@@ -1043,11 +1133,13 @@ gpiod_set_value_nocheck
 
     set a GPIO line value without checking
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         the descriptor to set the value on
+    :type desc: struct gpio_desc \*
 
-    :param int value:
+    :param value:
         value to set
+    :type value: int
 
 .. _`gpiod_set_value_nocheck.description`:
 
@@ -1067,11 +1159,13 @@ gpiod_set_value
 
     assign a gpio's value
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         gpio whose value will be assigned
+    :type desc: struct gpio_desc \*
 
-    :param int value:
+    :param value:
         value to assign
+    :type value: int
 
 .. _`gpiod_set_value.description`:
 
@@ -1089,18 +1183,25 @@ complain if the GPIO chip functions potentially sleep.
 gpiod_set_raw_array_value
 =========================
 
-.. c:function:: int gpiod_set_raw_array_value(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+.. c:function:: int gpiod_set_raw_array_value(unsigned int array_size, struct gpio_desc **desc_array, struct gpio_array *array_info, unsigned long *value_bitmap)
 
     assign values to an array of GPIOs
 
-    :param unsigned int array_size:
-        number of elements in the descriptor / value arrays
+    :param array_size:
+        number of elements in the descriptor array / value bitmap
+    :type array_size: unsigned int
 
-    :param struct gpio_desc \*\*desc_array:
+    :param desc_array:
         array of GPIO descriptors whose values will be assigned
+    :type desc_array: struct gpio_desc \*\*
 
-    :param int \*value_array:
-        array of values to assign
+    :param array_info:
+        information on applicability of fast bitmap processing path
+    :type array_info: struct gpio_array \*
+
+    :param value_bitmap:
+        bitmap of values to assign
+    :type value_bitmap: unsigned long \*
 
 .. _`gpiod_set_raw_array_value.description`:
 
@@ -1118,18 +1219,25 @@ complain if the GPIO chip functions potentially sleep.
 gpiod_set_array_value
 =====================
 
-.. c:function:: void gpiod_set_array_value(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+.. c:function:: int gpiod_set_array_value(unsigned int array_size, struct gpio_desc **desc_array, struct gpio_array *array_info, unsigned long *value_bitmap)
 
     assign values to an array of GPIOs
 
-    :param unsigned int array_size:
-        number of elements in the descriptor / value arrays
+    :param array_size:
+        number of elements in the descriptor array / value bitmap
+    :type array_size: unsigned int
 
-    :param struct gpio_desc \*\*desc_array:
+    :param desc_array:
         array of GPIO descriptors whose values will be assigned
+    :type desc_array: struct gpio_desc \*\*
 
-    :param int \*value_array:
-        array of values to assign
+    :param array_info:
+        information on applicability of fast bitmap processing path
+    :type array_info: struct gpio_array \*
+
+    :param value_bitmap:
+        bitmap of values to assign
+    :type value_bitmap: unsigned long \*
 
 .. _`gpiod_set_array_value.description`:
 
@@ -1151,8 +1259,26 @@ gpiod_cansleep
 
     report whether gpio value access may sleep
 
-    :param const struct gpio_desc \*desc:
+    :param desc:
         gpio to check
+    :type desc: const struct gpio_desc \*
+
+.. _`gpiod_set_consumer_name`:
+
+gpiod_set_consumer_name
+=======================
+
+.. c:function:: void gpiod_set_consumer_name(struct gpio_desc *desc, const char *name)
+
+    set the consumer name for the descriptor
+
+    :param desc:
+        gpio to set the consumer name on
+    :type desc: struct gpio_desc \*
+
+    :param name:
+        the new consumer name
+    :type name: const char \*
 
 .. _`gpiod_to_irq`:
 
@@ -1163,8 +1289,9 @@ gpiod_to_irq
 
     return the IRQ corresponding to a GPIO
 
-    :param const struct gpio_desc \*desc:
+    :param desc:
         gpio whose IRQ will be returned (already requested)
+    :type desc: const struct gpio_desc \*
 
 .. _`gpiod_to_irq.description`:
 
@@ -1183,11 +1310,13 @@ gpiochip_lock_as_irq
 
     lock a GPIO to be used as IRQ
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the chip the GPIO to lock belongs to
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int offset:
+    :param offset:
         the offset of the GPIO to lock as IRQ
+    :type offset: unsigned int
 
 .. _`gpiochip_lock_as_irq.description`:
 
@@ -1206,11 +1335,13 @@ gpiochip_unlock_as_irq
 
     unlock a GPIO used as IRQ
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the chip the GPIO to lock belongs to
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int offset:
+    :param offset:
         the offset of the GPIO to lock as IRQ
+    :type offset: unsigned int
 
 .. _`gpiochip_unlock_as_irq.description`:
 
@@ -1229,8 +1360,9 @@ gpiod_get_raw_value_cansleep
 
     return a gpio's raw value
 
-    :param const struct gpio_desc \*desc:
+    :param desc:
         gpio whose value will be returned
+    :type desc: const struct gpio_desc \*
 
 .. _`gpiod_get_raw_value_cansleep.description`:
 
@@ -1251,8 +1383,9 @@ gpiod_get_value_cansleep
 
     return a gpio's value
 
-    :param const struct gpio_desc \*desc:
+    :param desc:
         gpio whose value will be returned
+    :type desc: const struct gpio_desc \*
 
 .. _`gpiod_get_value_cansleep.description`:
 
@@ -1269,18 +1402,25 @@ This function is to be called from contexts that can sleep.
 gpiod_get_raw_array_value_cansleep
 ==================================
 
-.. c:function:: int gpiod_get_raw_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+.. c:function:: int gpiod_get_raw_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, struct gpio_array *array_info, unsigned long *value_bitmap)
 
     read raw values from an array of GPIOs
 
-    :param unsigned int array_size:
-        number of elements in the descriptor / value arrays
+    :param array_size:
+        number of elements in the descriptor array / value bitmap
+    :type array_size: unsigned int
 
-    :param struct gpio_desc \*\*desc_array:
+    :param desc_array:
         array of GPIO descriptors whose values will be read
+    :type desc_array: struct gpio_desc \*\*
 
-    :param int \*value_array:
-        array to store the read values
+    :param array_info:
+        information on applicability of fast bitmap processing path
+    :type array_info: struct gpio_array \*
+
+    :param value_bitmap:
+        bitmap to store the read values
+    :type value_bitmap: unsigned long \*
 
 .. _`gpiod_get_raw_array_value_cansleep.description`:
 
@@ -1298,18 +1438,25 @@ This function is to be called from contexts that can sleep.
 gpiod_get_array_value_cansleep
 ==============================
 
-.. c:function:: int gpiod_get_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+.. c:function:: int gpiod_get_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, struct gpio_array *array_info, unsigned long *value_bitmap)
 
     read values from an array of GPIOs
 
-    :param unsigned int array_size:
-        number of elements in the descriptor / value arrays
+    :param array_size:
+        number of elements in the descriptor array / value bitmap
+    :type array_size: unsigned int
 
-    :param struct gpio_desc \*\*desc_array:
+    :param desc_array:
         array of GPIO descriptors whose values will be read
+    :type desc_array: struct gpio_desc \*\*
 
-    :param int \*value_array:
-        array to store the read values
+    :param array_info:
+        information on applicability of fast bitmap processing path
+    :type array_info: struct gpio_array \*
+
+    :param value_bitmap:
+        bitmap to store the read values
+    :type value_bitmap: unsigned long \*
 
 .. _`gpiod_get_array_value_cansleep.description`:
 
@@ -1330,11 +1477,13 @@ gpiod_set_raw_value_cansleep
 
     assign a gpio's raw value
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         gpio whose value will be assigned
+    :type desc: struct gpio_desc \*
 
-    :param int value:
+    :param value:
         value to assign
+    :type value: int
 
 .. _`gpiod_set_raw_value_cansleep.description`:
 
@@ -1355,11 +1504,13 @@ gpiod_set_value_cansleep
 
     assign a gpio's value
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         gpio whose value will be assigned
+    :type desc: struct gpio_desc \*
 
-    :param int value:
+    :param value:
         value to assign
+    :type value: int
 
 .. _`gpiod_set_value_cansleep.description`:
 
@@ -1376,18 +1527,25 @@ This function is to be called from contexts that can sleep.
 gpiod_set_raw_array_value_cansleep
 ==================================
 
-.. c:function:: int gpiod_set_raw_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+.. c:function:: int gpiod_set_raw_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, struct gpio_array *array_info, unsigned long *value_bitmap)
 
     assign values to an array of GPIOs
 
-    :param unsigned int array_size:
-        number of elements in the descriptor / value arrays
+    :param array_size:
+        number of elements in the descriptor array / value bitmap
+    :type array_size: unsigned int
 
-    :param struct gpio_desc \*\*desc_array:
+    :param desc_array:
         array of GPIO descriptors whose values will be assigned
+    :type desc_array: struct gpio_desc \*\*
 
-    :param int \*value_array:
-        array of values to assign
+    :param array_info:
+        information on applicability of fast bitmap processing path
+    :type array_info: struct gpio_array \*
+
+    :param value_bitmap:
+        bitmap of values to assign
+    :type value_bitmap: unsigned long \*
 
 .. _`gpiod_set_raw_array_value_cansleep.description`:
 
@@ -1408,29 +1566,38 @@ gpiod_add_lookup_tables
 
     register GPIO device consumers
 
-    :param struct gpiod_lookup_table \*\*tables:
+    :param tables:
         list of tables of consumers to register
+    :type tables: struct gpiod_lookup_table \*\*
 
-    :param size_t n:
+    :param n:
         number of tables in the list
+    :type n: size_t
 
 .. _`gpiod_set_array_value_cansleep`:
 
 gpiod_set_array_value_cansleep
 ==============================
 
-.. c:function:: void gpiod_set_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+.. c:function:: int gpiod_set_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, struct gpio_array *array_info, unsigned long *value_bitmap)
 
     assign values to an array of GPIOs
 
-    :param unsigned int array_size:
-        number of elements in the descriptor / value arrays
+    :param array_size:
+        number of elements in the descriptor array / value bitmap
+    :type array_size: unsigned int
 
-    :param struct gpio_desc \*\*desc_array:
+    :param desc_array:
         array of GPIO descriptors whose values will be assigned
+    :type desc_array: struct gpio_desc \*\*
 
-    :param int \*value_array:
-        array of values to assign
+    :param array_info:
+        information on applicability of fast bitmap processing path
+    :type array_info: struct gpio_array \*
+
+    :param value_bitmap:
+        bitmap of values to assign
+    :type value_bitmap: unsigned long \*
 
 .. _`gpiod_set_array_value_cansleep.description`:
 
@@ -1451,8 +1618,9 @@ gpiod_add_lookup_table
 
     register GPIO device consumers
 
-    :param struct gpiod_lookup_table \*table:
+    :param table:
         table of consumers to register
+    :type table: struct gpiod_lookup_table \*
 
 .. _`gpiod_remove_lookup_table`:
 
@@ -1463,8 +1631,9 @@ gpiod_remove_lookup_table
 
     unregister GPIO device consumers
 
-    :param struct gpiod_lookup_table \*table:
+    :param table:
         table of consumers to unregister
+    :type table: struct gpiod_lookup_table \*
 
 .. _`gpiod_add_hogs`:
 
@@ -1475,8 +1644,9 @@ gpiod_add_hogs
 
     register a set of GPIO hogs from machine code
 
-    :param struct gpiod_hog \*hogs:
+    :param hogs:
         table of gpio hog entries with a zeroed sentinel at the end
+    :type hogs: struct gpiod_hog \*
 
 .. _`gpiod_count`:
 
@@ -1487,11 +1657,13 @@ gpiod_count
 
     return the number of GPIOs associated with a device / function or -ENOENT if no GPIO has been assigned to the requested function
 
-    :param struct device \*dev:
+    :param dev:
         GPIO consumer, can be NULL for system-global GPIOs
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
 .. _`gpiod_get`:
 
@@ -1502,14 +1674,17 @@ gpiod_get
 
     obtain a GPIO for a given GPIO function
 
-    :param struct device \*dev:
+    :param dev:
         GPIO consumer, can be NULL for system-global GPIOs
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
-    :param enum gpiod_flags flags:
+    :param flags:
         optional GPIO initialization flags
+    :type flags: enum gpiod_flags
 
 .. _`gpiod_get.description`:
 
@@ -1529,14 +1704,17 @@ gpiod_get_optional
 
     obtain an optional GPIO for a given GPIO function
 
-    :param struct device \*dev:
+    :param dev:
         GPIO consumer, can be NULL for system-global GPIOs
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
-    :param enum gpiod_flags flags:
+    :param flags:
         optional GPIO initialization flags
+    :type flags: enum gpiod_flags
 
 .. _`gpiod_get_optional.description`:
 
@@ -1556,18 +1734,22 @@ gpiod_configure_flags
 
     helper function to configure a given GPIO
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         gpio whose value will be assigned
+    :type desc: struct gpio_desc \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
-    :param unsigned long lflags:
+    :param lflags:
         gpio_lookup_flags - returned from \ :c:func:`of_find_gpio`\  or
         \ :c:func:`of_get_gpio_hog`\ 
+    :type lflags: unsigned long
 
-    :param enum gpiod_flags dflags:
+    :param dflags:
         gpiod_flags - optional GPIO initialization flags
+    :type dflags: enum gpiod_flags
 
 .. _`gpiod_configure_flags.description`:
 
@@ -1587,17 +1769,21 @@ gpiod_get_index
 
     obtain a GPIO from a multi-index GPIO function
 
-    :param struct device \*dev:
+    :param dev:
         GPIO consumer, can be NULL for system-global GPIOs
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
-    :param unsigned int idx:
+    :param idx:
         index of the GPIO to obtain in the consumer
+    :type idx: unsigned int
 
-    :param enum gpiod_flags flags:
+    :param flags:
         optional GPIO initialization flags
+    :type flags: enum gpiod_flags
 
 .. _`gpiod_get_index.description`:
 
@@ -1620,20 +1806,25 @@ gpiod_get_from_of_node
 
     obtain a GPIO from an OF node
 
-    :param struct device_node \*node:
+    :param node:
         handle of the OF node
+    :type node: struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the DT property representing the GPIO
+    :type propname: const char \*
 
-    :param int index:
+    :param index:
         index of the GPIO to obtain for the consumer
+    :type index: int
 
-    :param enum gpiod_flags dflags:
+    :param dflags:
         GPIO initialization flags
+    :type dflags: enum gpiod_flags
 
-    :param const char \*label:
+    :param label:
         label to attach to the requested GPIO
+    :type label: const char \*
 
 .. _`gpiod_get_from_of_node.return`:
 
@@ -1655,20 +1846,25 @@ fwnode_get_named_gpiod
 
     obtain a GPIO from firmware node
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         handle of the firmware node
+    :type fwnode: struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         name of the firmware property representing the GPIO
+    :type propname: const char \*
 
-    :param int index:
+    :param index:
         index of the GPIO to obtain for the consumer
+    :type index: int
 
-    :param enum gpiod_flags dflags:
+    :param dflags:
         GPIO initialization flags
+    :type dflags: enum gpiod_flags
 
-    :param const char \*label:
+    :param label:
         label to attach to the requested GPIO
+    :type label: const char \*
 
 .. _`fwnode_get_named_gpiod.description`:
 
@@ -1701,17 +1897,21 @@ gpiod_get_index_optional
 
     obtain an optional GPIO from a multi-index GPIO function
 
-    :param struct device \*dev:
+    :param dev:
         GPIO consumer, can be NULL for system-global GPIOs
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
-    :param unsigned int index:
+    :param index:
         index of the GPIO to obtain in the consumer
+    :type index: unsigned int
 
-    :param enum gpiod_flags flags:
+    :param flags:
         optional GPIO initialization flags
+    :type flags: enum gpiod_flags
 
 .. _`gpiod_get_index_optional.description`:
 
@@ -1731,18 +1931,22 @@ gpiod_hog
 
     Hog the specified GPIO desc given the provided flags
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         gpio whose value will be assigned
+    :type desc: struct gpio_desc \*
 
-    :param const char \*name:
+    :param name:
         gpio line name
+    :type name: const char \*
 
-    :param unsigned long lflags:
+    :param lflags:
         gpio_lookup_flags - returned from \ :c:func:`of_find_gpio`\  or
         \ :c:func:`of_get_gpio_hog`\ 
+    :type lflags: unsigned long
 
-    :param enum gpiod_flags dflags:
+    :param dflags:
         gpiod_flags - optional GPIO initialization flags
+    :type dflags: enum gpiod_flags
 
 .. _`gpiochip_free_hogs`:
 
@@ -1753,8 +1957,9 @@ gpiochip_free_hogs
 
     Scan gpio-controller chip and release GPIO hog
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         gpio chip to act on
+    :type chip: struct gpio_chip \*
 
 .. _`gpiochip_free_hogs.description`:
 
@@ -1772,14 +1977,17 @@ gpiod_get_array
 
     obtain multiple GPIOs from a multi-index GPIO function
 
-    :param struct device \*dev:
+    :param dev:
         GPIO consumer, can be NULL for system-global GPIOs
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
-    :param enum gpiod_flags flags:
+    :param flags:
         optional GPIO initialization flags
+    :type flags: enum gpiod_flags
 
 .. _`gpiod_get_array.description`:
 
@@ -1801,14 +2009,17 @@ gpiod_get_array_optional
 
     obtain multiple GPIOs from a multi-index GPIO function
 
-    :param struct device \*dev:
+    :param dev:
         GPIO consumer, can be NULL for system-global GPIOs
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
-    :param enum gpiod_flags flags:
+    :param flags:
         optional GPIO initialization flags
+    :type flags: enum gpiod_flags
 
 .. _`gpiod_get_array_optional.description`:
 
@@ -1827,8 +2038,9 @@ gpiod_put
 
     dispose of a GPIO descriptor
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         GPIO descriptor to dispose of
+    :type desc: struct gpio_desc \*
 
 .. _`gpiod_put.description`:
 
@@ -1846,8 +2058,9 @@ gpiod_put_array
 
     dispose of multiple GPIO descriptors
 
-    :param struct gpio_descs \*descs:
+    :param descs:
         struct gpio_descs containing an array of descriptors
+    :type descs: struct gpio_descs \*
 
 .. This file was automatic generated / don't edit.
 

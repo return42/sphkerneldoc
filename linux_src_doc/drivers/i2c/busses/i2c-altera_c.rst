@@ -10,11 +10,13 @@ altr_i2c_transfer
 
     On the last byte to be transmitted, send a Stop bit on the last byte.
 
-    :param struct altr_i2c_dev \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct altr_i2c_dev \*
 
-    :param u32 data:
+    :param data:
         *undescribed*
+    :type data: u32
 
 .. _`altr_i2c_empty_rx_fifo`:
 
@@ -25,8 +27,9 @@ altr_i2c_empty_rx_fifo
 
     Fetch data from RX FIFO until end of transfer. Send a Stop bit on the last byte.
 
-    :param struct altr_i2c_dev \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct altr_i2c_dev \*
 
 .. _`altr_i2c_fill_tx_fifo`:
 
@@ -37,8 +40,9 @@ altr_i2c_fill_tx_fifo
 
     Fill TX FIFO from current message buffer.
 
-    :param struct altr_i2c_dev \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct altr_i2c_dev \*
 
 .. This file was automatic generated / don't edit.
 

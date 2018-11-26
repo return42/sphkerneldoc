@@ -10,12 +10,14 @@ amdgpu_virt_request_full_gpu
 
     request full gpu access
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
-    :param bool init:
+    :param init:
         is driver init time.
         When start to init/fini driver, first need to request full gpu access.
+    :type init: bool
 
 .. _`amdgpu_virt_request_full_gpu.return`:
 
@@ -33,12 +35,14 @@ amdgpu_virt_release_full_gpu
 
     release full gpu access
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
-    :param bool init:
+    :param init:
         is driver init time.
         When finishing driver init/fini, need to release full gpu access.
+    :type init: bool
 
 .. _`amdgpu_virt_release_full_gpu.return`:
 
@@ -56,8 +60,9 @@ amdgpu_virt_reset_gpu
 
     reset gpu
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_virt_reset_gpu.return`:
 
@@ -75,8 +80,9 @@ amdgpu_virt_wait_reset
 
     wait for reset gpu completed
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_virt_wait_reset.return`:
 
@@ -94,8 +100,9 @@ amdgpu_virt_alloc_mm_table
 
     alloc memory for mm table
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_virt_alloc_mm_table.return`:
 
@@ -113,8 +120,9 @@ amdgpu_virt_free_mm_table
 
     free mm table memory
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. This file was automatic generated / don't edit.
 

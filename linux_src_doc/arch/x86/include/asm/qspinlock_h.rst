@@ -10,8 +10,9 @@ native_queued_spin_unlock
 
     release a queued spinlock
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. _`native_queued_spin_unlock.description`:
 

@@ -10,11 +10,13 @@ netlbl_netlink_auditinfo
 
     Fetch the audit information from a NETLINK msg
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. This file was automatic generated / don't edit.
 

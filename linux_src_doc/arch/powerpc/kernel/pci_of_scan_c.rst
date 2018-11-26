@@ -10,14 +10,17 @@ get_int_prop
 
     Decode a u32 from a device tree property
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param u32 def:
+    :param def:
         *undescribed*
+    :type def: u32
 
 .. _`pci_parse_of_flags`:
 
@@ -28,11 +31,13 @@ pci_parse_of_flags
 
     Parse the flags cell of a device tree PCI address
 
-    :param u32 addr0:
+    :param addr0:
         value of 1st cell of a device tree PCI address.
+    :type addr0: u32
 
-    :param int bridge:
+    :param bridge:
         Set this flag if the address is from a bridge 'ranges' property
+    :type bridge: int
 
 .. _`of_pci_parse_addrs`:
 
@@ -43,11 +48,13 @@ of_pci_parse_addrs
 
     Parse PCI addresses assigned in the device tree node
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for the PCI device
+    :type node: struct device_node \*
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci_dev structure for the device
+    :type dev: struct pci_dev \*
 
 .. _`of_pci_parse_addrs.description`:
 
@@ -66,14 +73,17 @@ of_create_pci_dev
 
     Given a device tree node on a pci bus, create a pci_dev
 
-    :param struct device_node \*node:
+    :param node:
         device tree node pointer
+    :type node: struct device_node \*
 
-    :param struct pci_bus \*bus:
+    :param bus:
         bus the device is sitting on
+    :type bus: struct pci_bus \*
 
-    :param int devfn:
+    :param devfn:
         PCI function number, extracted from device tree by caller.
+    :type devfn: int
 
 .. _`of_scan_pci_bridge`:
 
@@ -84,8 +94,9 @@ of_scan_pci_bridge
 
     Set up a PCI bridge and scan for child nodes
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci_dev structure for the bridge
+    :type dev: struct pci_dev \*
 
 .. _`of_scan_pci_bridge.description`:
 
@@ -105,14 +116,17 @@ devices.
 
     given a PCI bus node, setup bus and scan for child devices
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for the PCI bus
+    :type node: struct device_node \*
 
-    :param struct pci_bus \*bus:
+    :param bus:
         pci_bus structure for the PCI bus
+    :type bus: struct pci_bus \*
 
-    :param int rescan_existing:
+    :param rescan_existing:
         Flag indicating bus has already been set up
+    :type rescan_existing: int
 
 .. _`of_scan_bus`:
 
@@ -123,11 +137,13 @@ of_scan_bus
 
     given a PCI bus node, setup bus and scan for child devices
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for the PCI bus
+    :type node: struct device_node \*
 
-    :param struct pci_bus \*bus:
+    :param bus:
         pci_bus structure for the PCI bus
+    :type bus: struct pci_bus \*
 
 .. _`of_rescan_bus`:
 
@@ -138,11 +154,13 @@ of_rescan_bus
 
     given a PCI bus node, scan for child devices
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for the PCI bus
+    :type node: struct device_node \*
 
-    :param struct pci_bus \*bus:
+    :param bus:
         pci_bus structure for the PCI bus
+    :type bus: struct pci_bus \*
 
 .. _`of_rescan_bus.description`:
 

@@ -1,6 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/gvt/gtt.c
 
+.. _`is_2mb_gtt_possible`:
+
+is_2MB_gtt_possible
+===================
+
+.. c:function:: int is_2MB_gtt_possible(struct intel_vgpu *vgpu, struct intel_gvt_gtt_entry *entry)
+
+    :param vgpu:
+        target vgpu
+    :type vgpu: struct intel_vgpu \*
+
+    :param entry:
+        target pfn's gtt entry
+    :type entry: struct intel_gvt_gtt_entry \*
+
+.. _`is_2mb_gtt_possible.description`:
+
+Description
+-----------
+
+Return 1 if 2MB huge gtt shadowing is possilbe, 0 if miscondition,
+negtive if found err.
+
 .. _`intel_vgpu_sync_oos_pages`:
 
 intel_vgpu_sync_oos_pages
@@ -10,8 +33,9 @@ intel_vgpu_sync_oos_pages
 
     sync all the out-of-synced shadow for vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_sync_oos_pages.description`:
 
@@ -37,8 +61,9 @@ intel_vgpu_flush_post_shadow
 
     flush the post shadow transactions
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_flush_post_shadow.description`:
 
@@ -64,14 +89,17 @@ intel_vgpu_create_ppgtt_mm
 
     create a ppgtt mm object for a vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param intel_gvt_gtt_type_t root_entry_type:
+    :param root_entry_type:
         ppgtt root entry type
+    :type root_entry_type: intel_gvt_gtt_type_t
 
-    :param u64 pdps:
+    :param pdps:
         guest pdps.
+    :type pdps: u64
 
 .. _`intel_vgpu_create_ppgtt_mm.description`:
 
@@ -96,8 +124,9 @@ Zero on success, negative error code in pointer if failed.
 
     destroy a mm object
 
-    :param struct kref \*mm_ref:
+    :param mm_ref:
         a kref object
+    :type mm_ref: struct kref \*
 
 .. _`_intel_vgpu_mm_release.description`:
 
@@ -115,8 +144,9 @@ intel_vgpu_unpin_mm
 
     decrease the pin count of a vGPU mm object
 
-    :param struct intel_vgpu_mm \*mm:
+    :param mm:
         a vGPU mm object
+    :type mm: struct intel_vgpu_mm \*
 
 .. _`intel_vgpu_unpin_mm.description`:
 
@@ -134,8 +164,9 @@ intel_vgpu_pin_mm
 
     increase the pin count of a vGPU mm object
 
-    :param struct intel_vgpu_mm \*mm:
-        *undescribed*
+    :param mm:
+        target vgpu mm
+    :type mm: struct intel_vgpu_mm \*
 
 .. _`intel_vgpu_pin_mm.description`:
 
@@ -162,11 +193,13 @@ intel_vgpu_gma_to_gpa
 
     translate a gma to GPA
 
-    :param struct intel_vgpu_mm \*mm:
+    :param mm:
         mm object. could be a PPGTT or GGTT mm object
+    :type mm: struct intel_vgpu_mm \*
 
-    :param unsigned long gma:
+    :param gma:
         graphics memory address in this mm object
+    :type gma: unsigned long
 
 .. _`intel_vgpu_gma_to_gpa.description`:
 
@@ -192,17 +225,21 @@ intel_vgpu_emulate_ggtt_mmio_read
 
     emulate GTT MMIO register read
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int off:
+    :param off:
         register offset
+    :type off: unsigned int
 
-    :param void \*p_data:
+    :param p_data:
         data will be returned to guest
+    :type p_data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         data length
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_emulate_ggtt_mmio_read.description`:
 
@@ -227,8 +264,9 @@ intel_vgpu_init_gtt
 
     initialize per-vGPU graphics memory virulization
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_init_gtt.description`:
 
@@ -254,8 +292,9 @@ intel_vgpu_clean_gtt
 
     clean up per-vGPU graphics memory virulization
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_clean_gtt.description`:
 
@@ -281,11 +320,13 @@ intel_vgpu_find_ppgtt_mm
 
     find a PPGTT mm object
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param u64 pdps:
-        *undescribed*
+    :param pdps:
+        pdp root array
+    :type pdps: u64
 
 .. _`intel_vgpu_find_ppgtt_mm.description`:
 
@@ -310,14 +351,17 @@ intel_vgpu_get_ppgtt_mm
 
     get or create a PPGTT mm object.
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param intel_gvt_gtt_type_t root_entry_type:
+    :param root_entry_type:
         ppgtt root entry type
+    :type root_entry_type: intel_gvt_gtt_type_t
 
-    :param u64 pdps:
+    :param pdps:
         guest pdps
+    :type pdps: u64
 
 .. _`intel_vgpu_get_ppgtt_mm.description`:
 
@@ -342,11 +386,13 @@ intel_vgpu_put_ppgtt_mm
 
     find and put a PPGTT mm object.
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param u64 pdps:
+    :param pdps:
         guest pdps
+    :type pdps: u64
 
 .. _`intel_vgpu_put_ppgtt_mm.description`:
 
@@ -371,8 +417,9 @@ intel_gvt_init_gtt
 
     initialize mm components of a GVT device
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_init_gtt.description`:
 
@@ -398,8 +445,9 @@ intel_gvt_clean_gtt
 
     clean up mm components of a GVT device
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_clean_gtt.description`:
 
@@ -418,8 +466,9 @@ intel_vgpu_invalidate_ppgtt
 
     invalidate PPGTT instances
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_invalidate_ppgtt.description`:
 
@@ -437,11 +486,13 @@ intel_vgpu_reset_ggtt
 
     reset the GGTT entry
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param bool invalidate_old:
+    :param invalidate_old:
         invalidate old entries
+    :type invalidate_old: bool
 
 .. _`intel_vgpu_reset_ggtt.description`:
 
@@ -460,8 +511,9 @@ intel_vgpu_reset_gtt
 
     reset the all GTT related status
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_reset_gtt.description`:
 

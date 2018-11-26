@@ -10,8 +10,9 @@ module_gbphy_driver
 
     Helper macro for registering a gbphy driver
 
-    :param  __gbphy_driver:
+    :param __gbphy_driver:
         gbphy_driver structure
+    :type __gbphy_driver: 
 
 .. _`module_gbphy_driver.description`:
 

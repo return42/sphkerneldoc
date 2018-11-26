@@ -10,14 +10,17 @@ rhine_set_cam
 
     set CAM multicast filters
 
-    :param void __iomem \*ioaddr:
+    :param ioaddr:
         register block of this Rhine
+    :type ioaddr: void __iomem \*
 
-    :param int idx:
+    :param idx:
         multicast CAM index [0..MCAM_SIZE-1]
+    :type idx: int
 
-    :param u8 \*addr:
+    :param addr:
         multicast address (6 bytes)
+    :type addr: u8 \*
 
 .. _`rhine_set_cam.description`:
 
@@ -35,14 +38,17 @@ rhine_set_vlan_cam
 
     set CAM VLAN filters
 
-    :param void __iomem \*ioaddr:
+    :param ioaddr:
         register block of this Rhine
+    :type ioaddr: void __iomem \*
 
-    :param int idx:
+    :param idx:
         VLAN CAM index [0..VCAM_SIZE-1]
+    :type idx: int
 
-    :param u8 \*addr:
+    :param addr:
         VLAN ID (2 bytes)
+    :type addr: u8 \*
 
 .. _`rhine_set_vlan_cam.description`:
 
@@ -60,11 +66,13 @@ rhine_set_cam_mask
 
     set multicast CAM mask
 
-    :param void __iomem \*ioaddr:
+    :param ioaddr:
         register block of this Rhine
+    :type ioaddr: void __iomem \*
 
-    :param u32 mask:
+    :param mask:
         multicast CAM mask
+    :type mask: u32
 
 .. _`rhine_set_cam_mask.description`:
 
@@ -82,11 +90,13 @@ rhine_set_vlan_cam_mask
 
     set VLAN CAM mask
 
-    :param void __iomem \*ioaddr:
+    :param ioaddr:
         register block of this Rhine
+    :type ioaddr: void __iomem \*
 
-    :param u32 mask:
+    :param mask:
         VLAN CAM mask
+    :type mask: u32
 
 .. _`rhine_set_vlan_cam_mask.description`:
 
@@ -104,8 +114,9 @@ rhine_init_cam_filter
 
     initialize CAM filters
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`rhine_init_cam_filter.description`:
 
@@ -124,8 +135,9 @@ rhine_update_vcam
 
     update VLAN CAM filters
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`rhine_update_vcam.description`:
 
@@ -143,11 +155,13 @@ rhine_get_vlan_tci
 
     extract TCI from Rx data buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to sk_buff
+    :type skb: struct sk_buff \*
 
-    :param int data_size:
+    :param data_size:
         used data area of the buffer including CRC
+    :type data_size: int
 
 .. _`rhine_get_vlan_tci.description`:
 

@@ -10,8 +10,9 @@ vega12_fan_ctrl_reset_fan_speed_to_default
 
     \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``exception``\  Always succeeds.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega12_thermal_get_temperature`:
 
@@ -20,8 +21,9 @@ vega12_thermal_get_temperature
 
 .. c:function:: int vega12_thermal_get_temperature(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega12_thermal_get_temperature.description`:
 
@@ -37,11 +39,13 @@ vega12_thermal_set_temperature_range
 
 .. c:function:: int vega12_thermal_set_temperature_range(struct pp_hwmgr *hwmgr, struct PP_TemperatureRange *range)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param struct PP_TemperatureRange \*range:
+    :param range:
         *undescribed*
+    :type range: struct PP_TemperatureRange \*
 
 .. _`vega12_thermal_set_temperature_range.description`:
 
@@ -60,8 +64,9 @@ vega12_thermal_enable_alert
 
 .. c:function:: int vega12_thermal_enable_alert(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega12_thermal_enable_alert.description`:
 
@@ -79,8 +84,9 @@ vega12_thermal_disable_alert
 
     \ ``param``\     hwmgr The address of the hardware manager.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega12_thermal_stop_thermal_controller`:
 
@@ -91,8 +97,9 @@ vega12_thermal_stop_thermal_controller
 
     Currently just disables alerts. \ ``param``\     hwmgr The address of the hardware manager.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega12_thermal_setup_fan_table`:
 
@@ -103,8 +110,9 @@ vega12_thermal_setup_fan_table
 
     \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega12_thermal_start_smc_fan_control`:
 
@@ -115,8 +123,9 @@ vega12_thermal_start_smc_fan_control
 
     \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. This file was automatic generated / don't edit.
 

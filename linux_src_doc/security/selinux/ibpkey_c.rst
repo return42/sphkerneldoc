@@ -10,8 +10,9 @@ sel_ib_pkey_hashfn
 
     Hashing function for the pkey table
 
-    :param u16 pkey:
+    :param pkey:
         pkey number
+    :type pkey: u16
 
 .. _`sel_ib_pkey_hashfn.description`:
 
@@ -30,11 +31,13 @@ sel_ib_pkey_find
 
     Search for a pkey record
 
-    :param u64 subnet_prefix:
+    :param subnet_prefix:
         subnet_prefix
+    :type subnet_prefix: u64
 
-    :param u16 pkey_num:
+    :param pkey_num:
         pkey_num
+    :type pkey_num: u16
 
 .. _`sel_ib_pkey_find.description`:
 
@@ -53,8 +56,9 @@ sel_ib_pkey_insert
 
     Insert a new pkey into the table
 
-    :param struct sel_ib_pkey \*pkey:
+    :param pkey:
         the new pkey record
+    :type pkey: struct sel_ib_pkey \*
 
 .. _`sel_ib_pkey_insert.description`:
 
@@ -72,14 +76,17 @@ sel_ib_pkey_sid_slow
 
     Lookup the SID of a pkey using the policy
 
-    :param u64 subnet_prefix:
+    :param subnet_prefix:
         subnet prefix
+    :type subnet_prefix: u64
 
-    :param u16 pkey_num:
+    :param pkey_num:
         pkey number
+    :type pkey_num: u16
 
-    :param u32 \*sid:
+    :param sid:
         pkey SID
+    :type sid: u32 \*
 
 .. _`sel_ib_pkey_sid_slow.description`:
 
@@ -99,14 +106,17 @@ sel_ib_pkey_sid
 
     Lookup the SID of a PKEY
 
-    :param u64 subnet_prefix:
+    :param subnet_prefix:
         subnet_prefix
+    :type subnet_prefix: u64
 
-    :param u16 pkey_num:
+    :param pkey_num:
         pkey number
+    :type pkey_num: u16
 
-    :param u32 \*sid:
+    :param sid:
         pkey SID
+    :type sid: u32 \*
 
 .. _`sel_ib_pkey_sid.description`:
 
@@ -127,8 +137,9 @@ sel_ib_pkey_flush
 
     Flush the entire pkey table
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sel_ib_pkey_flush.description`:
 

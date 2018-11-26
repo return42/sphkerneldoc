@@ -19,6 +19,7 @@ dvb-frontends
     ix2505v_h
     lgdt330x_h
     lnbh25_c
+    lnbh29_c
     m88ds3103_h
     mb86a20s_h
     mn88472_h

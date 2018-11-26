@@ -10,8 +10,9 @@ ata_ncq_enabled
 
     Test whether NCQ is enabled
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device to test for
+    :type dev: struct ata_device \*
 
 .. _`ata_ncq_enabled.locking`:
 
@@ -36,14 +37,17 @@ ata_sff_busy_wait
 
     Wait for a port status register
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to wait for.
+    :type ap: struct ata_port \*
 
-    :param unsigned int bits:
+    :param bits:
         bits that must be clear
+    :type bits: unsigned int
 
-    :param unsigned int max:
+    :param max:
         number of 10uS waits to perform
+    :type max: unsigned int
 
 .. _`ata_sff_busy_wait.description`:
 
@@ -70,8 +74,9 @@ ata_wait_idle
 
     Wait for a port to be idle.
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to wait for.
+    :type ap: struct ata_port \*
 
 .. _`ata_wait_idle.description`:
 

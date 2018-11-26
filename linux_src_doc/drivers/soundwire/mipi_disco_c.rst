@@ -10,8 +10,9 @@ sdw_master_read_prop
 
     Read Master properties
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         SDW bus instance
+    :type bus: struct sdw_bus \*
 
 .. _`sdw_slave_read_prop`:
 
@@ -22,8 +23,9 @@ sdw_slave_read_prop
 
     Read Slave properties
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         SDW Slave
+    :type slave: struct sdw_slave \*
 
 .. This file was automatic generated / don't edit.
 

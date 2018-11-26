@@ -10,14 +10,17 @@ crc4
 
     calculate the 4-bit crc of a value.
 
-    :param uint8_t c:
+    :param c:
         starting crc4
+    :type c: uint8_t
 
-    :param uint64_t x:
+    :param x:
         value to checksum
+    :type x: uint64_t
 
-    :param int bits:
+    :param bits:
         number of bits in \ ``x``\  to checksum
+    :type bits: int
 
 .. _`crc4.description`:
 

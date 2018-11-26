@@ -35,25 +35,31 @@ iwl_mvm_protect_session
 
     start / extend the session protection.
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         the mvm component
+    :type mvm: struct iwl_mvm \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         the virtual interface for which the session is issued
+    :type vif: struct ieee80211_vif \*
 
-    :param u32 duration:
+    :param duration:
         the duration of the session in TU.
+    :type duration: u32
 
-    :param u32 min_duration:
+    :param min_duration:
         will start a new session if the current session will end
         in less than min_duration.
+    :type min_duration: u32
 
-    :param u32 max_delay:
+    :param max_delay:
         maximum delay before starting the time event (in TU)
+    :type max_delay: u32
 
-    :param bool wait_for_notif:
+    :param wait_for_notif:
         true if it is required that a time event notification be
         waited for (that the time event has been scheduled before returning)
+    :type wait_for_notif: bool
 
 .. _`iwl_mvm_protect_session.description`:
 
@@ -76,11 +82,13 @@ iwl_mvm_stop_session_protection
 
     cancel the session protection.
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         the mvm component
+    :type mvm: struct iwl_mvm \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         the virtual interface for which the session is issued
+    :type vif: struct ieee80211_vif \*
 
 .. _`iwl_mvm_stop_session_protection.description`:
 
@@ -101,19 +109,23 @@ iwl_mvm_start_p2p_roc
 
     start remain on channel for p2p device functionality
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         the mvm component
+    :type mvm: struct iwl_mvm \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         the virtual interface for which the roc is requested. It is assumed
         that the vif type is NL80211_IFTYPE_P2P_DEVICE
+    :type vif: struct ieee80211_vif \*
 
-    :param int duration:
+    :param duration:
         the requested duration in millisecond for the fw to be on the
         channel that is bound to the vif.
+    :type duration: int
 
-    :param enum ieee80211_roc_type type:
+    :param type:
         the remain on channel request type
+    :type type: enum ieee80211_roc_type
 
 .. _`iwl_mvm_start_p2p_roc.description`:
 
@@ -137,8 +149,9 @@ iwl_mvm_stop_roc
 
     stop remain on channel functionality
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         the mvm component
+    :type mvm: struct iwl_mvm \*
 
 .. _`iwl_mvm_stop_roc.description`:
 
@@ -158,14 +171,17 @@ iwl_mvm_remove_time_event
 
     general function to clean up of time event
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         the mvm component
+    :type mvm: struct iwl_mvm \*
 
-    :param struct iwl_mvm_vif \*mvmvif:
+    :param mvmvif:
         *undescribed*
+    :type mvmvif: struct iwl_mvm_vif \*
 
-    :param struct iwl_mvm_time_event_data \*te_data:
+    :param te_data:
         the time event data that corresponds to that time event
+    :type te_data: struct iwl_mvm_time_event_data \*
 
 .. _`iwl_mvm_remove_time_event.description`:
 
@@ -185,11 +201,13 @@ iwl_mvm_te_clear_data
 
     remove time event from list
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         the mvm component
+    :type mvm: struct iwl_mvm \*
 
-    :param struct iwl_mvm_time_event_data \*te_data:
+    :param te_data:
         the time event data to remove
+    :type te_data: struct iwl_mvm_time_event_data \*
 
 .. _`iwl_mvm_te_clear_data.description`:
 
@@ -208,17 +226,21 @@ iwl_mvm_schedule_csa_period
 
     request channel switch absence period
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         the mvm component
+    :type mvm: struct iwl_mvm \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         the virtual interface for which the channel switch is issued
+    :type vif: struct ieee80211_vif \*
 
-    :param u32 duration:
+    :param duration:
         the duration of the NoA in TU.
+    :type duration: u32
 
-    :param u32 apply_time:
+    :param apply_time:
         NoA start time in GP2.
+    :type apply_time: u32
 
 .. _`iwl_mvm_schedule_csa_period.description`:
 
@@ -237,8 +259,9 @@ iwl_mvm_te_scheduled
 
     check if the fw received the TE cmd
 
-    :param struct iwl_mvm_time_event_data \*te_data:
+    :param te_data:
         the time event data that corresponds to that time event
+    :type te_data: struct iwl_mvm_time_event_data \*
 
 .. _`iwl_mvm_te_scheduled.description`:
 

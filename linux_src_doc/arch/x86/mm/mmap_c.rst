@@ -10,11 +10,13 @@ mmap_address_hint_valid
 
     Validate the address hint of mmap
 
-    :param unsigned long addr:
+    :param addr:
         Address hint
+    :type addr: unsigned long
 
-    :param unsigned long len:
+    :param len:
         Mapping length
+    :type len: unsigned long
 
 .. _`mmap_address_hint_valid.description`:
 

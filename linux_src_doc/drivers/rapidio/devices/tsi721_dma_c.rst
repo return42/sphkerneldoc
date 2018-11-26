@@ -10,11 +10,13 @@ tsi721_bdma_msix
 
     MSI-X interrupt handler for BDMA channels
 
-    :param int irq:
+    :param irq:
         Linux interrupt number
+    :type irq: int
 
-    :param void \*ptr:
+    :param ptr:
         Pointer to interrupt-specific data (BDMA channel structure)
+    :type ptr: void \*
 
 .. _`tsi721_bdma_msix.description`:
 

@@ -10,8 +10,9 @@ eeh_event_handler
 
     Dispatch EEH events. \ ``dummy``\  - unused
 
-    :param void \*dummy:
+    :param dummy:
         *undescribed*
+    :type dummy: void \*
 
 .. _`eeh_event_handler.description`:
 
@@ -33,8 +34,9 @@ eeh_event_init
 
     Start kernel thread to handle EEH events
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`eeh_event_init.description`:
 
@@ -53,8 +55,9 @@ eeh_send_failure_event
 
     Generate a PCI error event
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
 .. _`eeh_send_failure_event.description`:
 
@@ -74,11 +77,13 @@ eeh_remove_event
 
     Remove EEH event from the queue
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         Event binding to the PE
+    :type pe: struct eeh_pe \*
 
-    :param bool force:
+    :param force:
         Event will be removed unconditionally
+    :type force: bool
 
 .. _`eeh_remove_event.description`:
 

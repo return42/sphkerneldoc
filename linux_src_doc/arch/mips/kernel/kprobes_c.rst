@@ -8,14 +8,17 @@ evaluate_branch_instruction
 
 .. c:function:: int evaluate_branch_instruction(struct kprobe *p, struct pt_regs *regs, struct kprobe_ctlblk *kcb)
 
-    :param struct kprobe \*p:
+    :param p:
         *undescribed*
+    :type p: struct kprobe \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         *undescribed*
+    :type regs: struct pt_regs \*
 
-    :param struct kprobe_ctlblk \*kcb:
+    :param kcb:
         *undescribed*
+    :type kcb: struct kprobe_ctlblk \*
 
 .. _`evaluate_branch_instruction.description`:
 

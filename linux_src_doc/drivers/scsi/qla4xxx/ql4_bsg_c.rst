@@ -10,8 +10,9 @@ qla4xxx_process_vendor_specific
 
     handle vendor specific bsg request
 
-    :param struct bsg_job \*bsg_job:
+    :param bsg_job:
         *undescribed*
+    :type bsg_job: struct bsg_job \*
 
 .. _`qla4xxx_bsg_request`:
 
@@ -22,8 +23,9 @@ qla4xxx_bsg_request
 
     handle bsg request from ISCSI transport
 
-    :param struct bsg_job \*bsg_job:
+    :param bsg_job:
         *undescribed*
+    :type bsg_job: struct bsg_job \*
 
 .. This file was automatic generated / don't edit.
 

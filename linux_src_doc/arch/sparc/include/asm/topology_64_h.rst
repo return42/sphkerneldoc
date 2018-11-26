@@ -8,8 +8,9 @@ cpu_coregroup_mask
 
 .. c:function:: const struct cpumask *cpu_coregroup_mask(int cpu)
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. This file was automatic generated / don't edit.
 

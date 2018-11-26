@@ -42,14 +42,17 @@ pde_get_multiple
 
     get number of multiples considering a given tolerance \ ``return``\  factor if abs(val - factor\*fraction) <= tolerance, 0 otherwise
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
-    :param u32 fraction:
+    :param fraction:
         *undescribed*
+    :type fraction: u32
 
-    :param u32 tolerance:
+    :param tolerance:
         *undescribed*
+    :type tolerance: u32
 
 .. _`singleton-pulse-and-sequence-pools`:
 

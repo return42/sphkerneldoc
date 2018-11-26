@@ -10,15 +10,18 @@ cppi_next_rx_segment
 
     dma read for the next chunk of a buffer
 
-    :param struct musb \*musb:
+    :param musb:
         the controller
+    :type musb: struct musb \*
 
-    :param struct cppi_channel \*rx:
+    :param rx:
         dma channel
+    :type rx: struct cppi_channel \*
 
-    :param int onepacket:
+    :param onepacket:
         true unless caller treats short reads as errors, and
         performs fault recovery above usbcore.
+    :type onepacket: int
 
 .. _`cppi_next_rx_segment.context`:
 
@@ -48,22 +51,27 @@ cppi_channel_program
 
     program channel for data transfer
 
-    :param struct dma_channel \*ch:
+    :param ch:
         the channel
+    :type ch: struct dma_channel \*
 
-    :param u16 maxpacket:
+    :param maxpacket:
         max packet size
+    :type maxpacket: u16
 
-    :param u8 mode:
+    :param mode:
         For RX, 1 unless the usb protocol driver promised to treat
         all short reads as errors and kick in high level fault recovery.
         For TX, ignored because of RNDIS mode races/glitches.
+    :type mode: u8
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         dma address of buffer
+    :type dma_addr: dma_addr_t
 
-    :param u32 len:
+    :param len:
         length of buffer
+    :type len: u32
 
 .. _`cppi_channel_program.context`:
 

@@ -34,6 +34,7 @@ Definition
         int (*process_termination)(struct device_queue_manager *dqm, struct qcm_process_device *qpd);
         int (*evict_process_queues)(struct device_queue_manager *dqm, struct qcm_process_device *qpd);
         int (*restore_process_queues)(struct device_queue_manager *dqm, struct qcm_process_device *qpd);
+        int (*get_wave_state)(struct device_queue_manager *dqm,struct queue *q,void __user *ctl_stack,u32 *ctl_stack_used_size, u32 *save_area_used_size);
     }
 
 .. _`device_queue_manager_ops.members`:
@@ -97,6 +98,10 @@ evict_process_queues
 restore_process_queues
     Restore all evicted queues queues of a process
 
+get_wave_state
+    Retrieves context save state and optionally copies the
+    control stack, if kept in the MQD, to the given userspace address.
+
 .. _`device_queue_manager`:
 
 struct device_queue_manager
@@ -115,11 +120,12 @@ Definition
     struct device_queue_manager {
         struct device_queue_manager_ops ops;
         struct device_queue_manager_asic_ops asic_ops;
-        struct mqd_manager *mqds[KFD_MQD_TYPE_MAX];
+        struct mqd_manager *mqd_mgrs[KFD_MQD_TYPE_MAX];
         struct packet_manager packets;
         struct kfd_dev *dev;
-        struct mutex lock;
+        struct mutex lock_hidden;
         struct list_head queues;
+        unsigned int saved_flags;
         unsigned int processes_count;
         unsigned int queue_count;
         unsigned int sdma_queue_count;
@@ -135,6 +141,8 @@ Definition
         struct kfd_mem_obj *fence_mem;
         bool active_runlist;
         int sched_policy;
+        bool is_hws_hang;
+        struct work_struct hw_exception_work;
     }
 
 .. _`device_queue_manager.members`:
@@ -148,7 +156,7 @@ ops
 asic_ops
     *undescribed*
 
-mqds
+mqd_mgrs
     *undescribed*
 
 packets
@@ -157,10 +165,13 @@ packets
 dev
     *undescribed*
 
-lock
+lock_hidden
     *undescribed*
 
 queues
+    *undescribed*
+
+saved_flags
     *undescribed*
 
 processes_count
@@ -206,6 +217,12 @@ active_runlist
     *undescribed*
 
 sched_policy
+    *undescribed*
+
+is_hws_hang
+    *undescribed*
+
+hw_exception_work
     *undescribed*
 
 .. _`device_queue_manager.description`:

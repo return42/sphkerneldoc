@@ -69,14 +69,17 @@ send_ext_msg_udp
 
     send extended log message to target
 
-    :param struct netconsole_target \*nt:
+    :param nt:
         target to send message to
+    :type nt: struct netconsole_target \*
 
-    :param const char \*msg:
+    :param msg:
         extended log message to send
+    :type msg: const char \*
 
-    :param int msg_len:
+    :param msg_len:
         length of message
+    :type msg_len: int
 
 .. _`send_ext_msg_udp.description`:
 

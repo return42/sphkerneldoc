@@ -74,8 +74,9 @@ tb_cfg_request_alloc
 
     Allocates a new config request
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tb_cfg_request_alloc.description`:
 
@@ -94,8 +95,9 @@ tb_cfg_request_get
 
     Increase refcount of a request
 
-    :param struct tb_cfg_request \*req:
+    :param req:
         Request whose refcount is increased
+    :type req: struct tb_cfg_request \*
 
 .. _`tb_cfg_request_put`:
 
@@ -106,8 +108,9 @@ tb_cfg_request_put
 
     Decrease refcount and possibly release the request
 
-    :param struct tb_cfg_request \*req:
+    :param req:
         Request whose refcount is decreased
+    :type req: struct tb_cfg_request \*
 
 .. _`tb_cfg_request_put.description`:
 
@@ -126,17 +129,21 @@ tb_ctl_tx
 
     transmit a packet on the control channel
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_ctl \*
 
-    :param const void \*data:
+    :param data:
         *undescribed*
+    :type data: const void \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param enum tb_cfg_pkg_type type:
+    :param type:
         *undescribed*
+    :type type: enum tb_cfg_pkg_type
 
 .. _`tb_ctl_tx.description`:
 
@@ -161,17 +168,21 @@ tb_ctl_handle_event
 
     acknowledge a plug event, invoke ctl->callback
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_ctl \*
 
-    :param enum tb_cfg_pkg_type type:
+    :param type:
         *undescribed*
+    :type type: enum tb_cfg_pkg_type
 
-    :param struct ctl_pkg \*pkg:
+    :param pkg:
         *undescribed*
+    :type pkg: struct ctl_pkg \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`tb_cfg_request`:
 
@@ -182,17 +193,20 @@ tb_cfg_request
 
     Start control request not waiting for it to complete
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         Control channel to use
+    :type ctl: struct tb_ctl \*
 
-    :param struct tb_cfg_request \*req:
+    :param req:
         Request to start
+    :type req: struct tb_cfg_request \*
 
     :param void (\*callback)(void \*):
         Callback called when the request is completed
 
-    :param void \*callback_data:
+    :param callback_data:
         Data to be passed to \ ``callback``\ 
+    :type callback_data: void \*
 
 .. _`tb_cfg_request.description`:
 
@@ -211,11 +225,13 @@ tb_cfg_request_cancel
 
     Cancel a control request
 
-    :param struct tb_cfg_request \*req:
+    :param req:
         Request to cancel
+    :type req: struct tb_cfg_request \*
 
-    :param int err:
+    :param err:
         Error to assign to the request
+    :type err: int
 
 .. _`tb_cfg_request_cancel.description`:
 
@@ -234,14 +250,17 @@ tb_cfg_request_sync
 
     Start control request and wait until it completes
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         Control channel to use
+    :type ctl: struct tb_ctl \*
 
-    :param struct tb_cfg_request \*req:
+    :param req:
         Request to start
+    :type req: struct tb_cfg_request \*
 
-    :param int timeout_msec:
+    :param timeout_msec:
         Timeout how long to wait \ ``req``\  to complete
+    :type timeout_msec: int
 
 .. _`tb_cfg_request_sync.description`:
 
@@ -262,14 +281,17 @@ tb_ctl_alloc
 
     allocate a control channel
 
-    :param struct tb_nhi \*nhi:
+    :param nhi:
         *undescribed*
+    :type nhi: struct tb_nhi \*
 
-    :param event_cb cb:
+    :param cb:
         *undescribed*
+    :type cb: event_cb
 
-    :param void \*cb_data:
+    :param cb_data:
         *undescribed*
+    :type cb_data: void \*
 
 .. _`tb_ctl_alloc.description`:
 
@@ -294,8 +316,9 @@ tb_ctl_free
 
     free a control channel
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_ctl \*
 
 .. _`tb_ctl_free.description`:
 
@@ -315,8 +338,9 @@ tb_ctl_start
 
     start/resume the control channel
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_ctl \*
 
 .. _`tb_ctl_stop`:
 
@@ -327,8 +351,9 @@ tb_ctl_stop
 
     pause the control channel
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_ctl \*
 
 .. _`tb_ctl_stop.description`:
 
@@ -349,17 +374,21 @@ tb_cfg_error
 
     send error packet
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_ctl \*
 
-    :param u64 route:
+    :param route:
         *undescribed*
+    :type route: u64
 
-    :param u32 port:
+    :param port:
         *undescribed*
+    :type port: u32
 
-    :param enum tb_cfg_error error:
+    :param error:
         *undescribed*
+    :type error: enum tb_cfg_error
 
 .. _`tb_cfg_error.return`:
 
@@ -377,14 +406,17 @@ tb_cfg_reset
 
     send a reset packet and wait for a response
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_ctl \*
 
-    :param u64 route:
+    :param route:
         *undescribed*
+    :type route: u64
 
-    :param int timeout_msec:
+    :param timeout_msec:
         *undescribed*
+    :type timeout_msec: int
 
 .. _`tb_cfg_reset.description`:
 
@@ -404,29 +436,37 @@ tb_cfg_read_raw
 
     read from config space into buffer
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_ctl \*
 
-    :param void \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: void \*
 
-    :param u64 route:
+    :param route:
         *undescribed*
+    :type route: u64
 
-    :param u32 port:
+    :param port:
         *undescribed*
+    :type port: u32
 
-    :param enum tb_cfg_space space:
+    :param space:
         *undescribed*
+    :type space: enum tb_cfg_space
 
-    :param u32 offset:
+    :param offset:
         *undescribed*
+    :type offset: u32
 
-    :param u32 length:
+    :param length:
         *undescribed*
+    :type length: u32
 
-    :param int timeout_msec:
+    :param timeout_msec:
         *undescribed*
+    :type timeout_msec: int
 
 .. _`tb_cfg_read_raw.description`:
 
@@ -444,29 +484,37 @@ tb_cfg_write_raw
 
     write from buffer into config space
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_ctl \*
 
-    :param const void \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: const void \*
 
-    :param u64 route:
+    :param route:
         *undescribed*
+    :type route: u64
 
-    :param u32 port:
+    :param port:
         *undescribed*
+    :type port: u32
 
-    :param enum tb_cfg_space space:
+    :param space:
         *undescribed*
+    :type space: enum tb_cfg_space
 
-    :param u32 offset:
+    :param offset:
         *undescribed*
+    :type offset: u32
 
-    :param u32 length:
+    :param length:
         *undescribed*
+    :type length: u32
 
-    :param int timeout_msec:
+    :param timeout_msec:
         *undescribed*
+    :type timeout_msec: int
 
 .. _`tb_cfg_write_raw.description`:
 
@@ -484,11 +532,13 @@ tb_cfg_get_upstream_port
 
     get upstream port number of switch at route
 
-    :param struct tb_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_ctl \*
 
-    :param u64 route:
+    :param route:
         *undescribed*
+    :type route: u64
 
 .. _`tb_cfg_get_upstream_port.description`:
 

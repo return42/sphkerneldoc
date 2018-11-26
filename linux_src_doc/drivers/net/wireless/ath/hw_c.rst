@@ -10,8 +10,9 @@ ath_hw_setbssidmask
 
     filter out bssids we listen
 
-    :param struct ath_common \*common:
+    :param common:
         the ath_common struct for the device.
+    :type common: struct ath_common \*
 
 .. _`ath_hw_setbssidmask.description`:
 
@@ -146,8 +147,9 @@ ath_hw_cycle_counters_update
 
     common function to update cycle counters
 
-    :param struct ath_common \*common:
+    :param common:
         the ath_common struct for the device.
+    :type common: struct ath_common \*
 
 .. _`ath_hw_cycle_counters_update.description`:
 

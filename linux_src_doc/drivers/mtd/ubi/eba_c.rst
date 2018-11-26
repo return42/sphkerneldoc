@@ -84,8 +84,9 @@ ubi_next_sqnum
 
     get next sequence number.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_next_sqnum.description`:
 
@@ -105,11 +106,13 @@ ubi_get_compat
 
     get compatibility flags of a volume.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
 .. _`ubi_get_compat.description`:
 
@@ -128,14 +131,17 @@ ubi_eba_get_ldesc
 
     get information about a LEB
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param struct ubi_eba_leb_desc \*ldesc:
+    :param ldesc:
         the LEB descriptor to fill
+    :type ldesc: struct ubi_eba_leb_desc \*
 
 .. _`ubi_eba_get_ldesc.description`:
 
@@ -155,11 +161,13 @@ ubi_eba_create_table
 
     allocate a new EBA table and initialize it with all LEBs unmapped
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume containing the EBA table to copy
+    :type vol: struct ubi_volume \*
 
-    :param int nentries:
+    :param nentries:
         number of entries in the table
+    :type nentries: int
 
 .. _`ubi_eba_create_table.description`:
 
@@ -178,8 +186,9 @@ ubi_eba_destroy_table
 
     destroy an EBA table
 
-    :param struct ubi_eba_table \*tbl:
+    :param tbl:
         the table to destroy
+    :type tbl: struct ubi_eba_table \*
 
 .. _`ubi_eba_destroy_table.description`:
 
@@ -197,14 +206,17 @@ ubi_eba_copy_table
 
     copy the EBA table attached to vol into another table
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume containing the EBA table to copy
+    :type vol: struct ubi_volume \*
 
-    :param struct ubi_eba_table \*dst:
+    :param dst:
         destination
+    :type dst: struct ubi_eba_table \*
 
-    :param int nentries:
+    :param nentries:
         number of entries to copy
+    :type nentries: int
 
 .. _`ubi_eba_copy_table.description`:
 
@@ -222,11 +234,13 @@ ubi_eba_replace_table
 
     assign a new EBA table to a volume
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume containing the EBA table to copy
+    :type vol: struct ubi_volume \*
 
-    :param struct ubi_eba_table \*tbl:
+    :param tbl:
         new EBA table
+    :type tbl: struct ubi_eba_table \*
 
 .. _`ubi_eba_replace_table.description`:
 
@@ -244,14 +258,17 @@ ltree_lookup
 
     look up the lock tree.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`ltree_lookup.description`:
 
@@ -260,7 +277,7 @@ Description
 
 This function returns a pointer to the corresponding \ :c:type:`struct ubi_ltree_entry <ubi_ltree_entry>`\ 
 object if the logical eraseblock is locked and \ ``NULL``\  if it is not.
-\ ``ubi``\ ->ltree_lock has to be locked.
+\ ``ubi->ltree_lock``\  has to be locked.
 
 .. _`ltree_add_entry`:
 
@@ -271,14 +288,17 @@ ltree_add_entry
 
     add new entry to the lock tree.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`ltree_add_entry.description`:
 
@@ -299,14 +319,17 @@ leb_read_lock
 
     lock logical eraseblock for reading.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`leb_read_lock.description`:
 
@@ -325,14 +348,17 @@ leb_read_unlock
 
     unlock logical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`leb_write_lock`:
 
@@ -343,14 +369,17 @@ leb_write_lock
 
     lock logical eraseblock for writing.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`leb_write_lock.description`:
 
@@ -369,14 +398,17 @@ leb_write_trylock
 
     try to lock logical eraseblock for writing.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`leb_write_trylock.description`:
 
@@ -397,14 +429,17 @@ leb_write_unlock
 
     unlock logical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`ubi_eba_is_mapped`:
 
@@ -415,11 +450,13 @@ ubi_eba_is_mapped
 
     check if a LEB is mapped.
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`ubi_eba_is_mapped.description`:
 
@@ -437,14 +474,17 @@ ubi_eba_unmap_leb
 
     un-map logical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
 .. _`ubi_eba_unmap_leb.description`:
 
@@ -464,17 +504,21 @@ check_mapping
 
     check and fixup a mapping
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param int \*pnum:
+    :param pnum:
         physical eraseblock number
+    :type pnum: int \*
 
 .. _`check_mapping.description`:
 
@@ -500,26 +544,33 @@ ubi_eba_read_leb
 
     read data.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param void \*buf:
+    :param buf:
         buffer to store the read data
+    :type buf: void \*
 
-    :param int offset:
+    :param offset:
         offset from where to read
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes to read
+    :type len: int
 
-    :param int check:
+    :param check:
         data CRC check flag
+    :type check: int
 
 .. _`ubi_eba_read_leb.description`:
 
@@ -544,26 +595,33 @@ ubi_eba_read_leb_sg
 
     read data into a scatter gather list.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param struct ubi_sgl \*sgl:
+    :param sgl:
         UBI scatter gather list to store the read data
+    :type sgl: struct ubi_sgl \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param int offset:
+    :param offset:
         offset from where to read
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes to read
+    :type len: int
 
-    :param int check:
+    :param check:
         data CRC check flag
+    :type check: int
 
 .. _`ubi_eba_read_leb_sg.description`:
 
@@ -583,29 +641,37 @@ try_recover_peb
 
     try to recover from write failure.
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock to recover
+    :type pnum: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param const void \*buf:
+    :param buf:
         data which was not written because of the write failure
+    :type buf: const void \*
 
-    :param int offset:
+    :param offset:
         offset of the failed write
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes should have been written
+    :type len: int
 
-    :param struct ubi_vid_io_buf \*vidb:
+    :param vidb:
         VID buffer
+    :type vidb: struct ubi_vid_io_buf \*
 
-    :param bool \*retry:
+    :param retry:
         whether the caller should retry in case of failure
+    :type retry: bool \*
 
 .. _`try_recover_peb.description`:
 
@@ -628,26 +694,33 @@ recover_peb
 
     recover from write failure.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock to recover
+    :type pnum: int
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param const void \*buf:
+    :param buf:
         data which was not written because of the write failure
+    :type buf: const void \*
 
-    :param int offset:
+    :param offset:
         offset of the failed write
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes should have been written
+    :type len: int
 
 .. _`recover_peb.description`:
 
@@ -669,23 +742,29 @@ try_write_vid_and_data
 
     try to write VID header and data to a new PEB.
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param struct ubi_vid_io_buf \*vidb:
+    :param vidb:
         the VID buffer to write
+    :type vidb: struct ubi_vid_io_buf \*
 
-    :param const void \*buf:
+    :param buf:
         buffer containing the data
+    :type buf: const void \*
 
-    :param int offset:
+    :param offset:
         where to start writing data
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes should be written
+    :type len: int
 
 .. _`try_write_vid_and_data.description`:
 
@@ -707,23 +786,29 @@ ubi_eba_write_leb
 
     write data to dynamic volume.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param const void \*buf:
+    :param buf:
         the data to write
+    :type buf: const void \*
 
-    :param int offset:
+    :param offset:
         offset within the logical eraseblock where to write
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes to write
+    :type len: int
 
 .. _`ubi_eba_write_leb.description`:
 
@@ -745,23 +830,29 @@ ubi_eba_write_leb_st
 
     write data to static volume.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param const void \*buf:
+    :param buf:
         data to write
+    :type buf: const void \*
 
-    :param int len:
+    :param len:
         how many bytes to write
+    :type len: int
 
-    :param int used_ebs:
+    :param used_ebs:
         how many logical eraseblocks will this volume contain
+    :type used_ebs: int
 
 .. _`ubi_eba_write_leb_st.description`:
 
@@ -790,8 +881,9 @@ is_error_sane
 
     check whether a read error is sane.
 
-    :param int err:
+    :param err:
         code of the error happened during reading
+    :type err: int
 
 .. _`is_error_sane.description`:
 
@@ -822,17 +914,21 @@ ubi_eba_copy_leb
 
     copy logical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int from:
+    :param from:
         physical eraseblock number from where to copy
+    :type from: int
 
-    :param int to:
+    :param to:
         physical eraseblock number where to copy
+    :type to: int
 
-    :param struct ubi_vid_io_buf \*vidb:
+    :param vidb:
         *undescribed*
+    :type vidb: struct ubi_vid_io_buf \*
 
 .. _`ubi_eba_copy_leb.description`:
 
@@ -855,11 +951,13 @@ print_rsvd_warning
 
     warn about not having enough reserved PEBs.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         *undescribed*
+    :type ai: struct ubi_attach_info \*
 
 .. _`print_rsvd_warning.description`:
 
@@ -894,14 +992,17 @@ self_check_eba
 
     run a self check on the EBA table constructed by fastmap.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai_fastmap:
+    :param ai_fastmap:
         UBI attach info object created by fastmap
+    :type ai_fastmap: struct ubi_attach_info \*
 
-    :param struct ubi_attach_info \*ai_scan:
+    :param ai_scan:
         UBI attach info object created by scanning
+    :type ai_scan: struct ubi_attach_info \*
 
 .. _`self_check_eba.description`:
 
@@ -921,11 +1022,13 @@ ubi_eba_init
 
     initialize the EBA sub-system using attaching information.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
 .. _`ubi_eba_init.description`:
 

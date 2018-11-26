@@ -10,11 +10,13 @@ llc_conn_ac_send_ack_if_needed
 
     check if ack is needed
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ac_send_ack_if_needed.description`:
 
@@ -35,11 +37,13 @@ llc_conn_ac_rst_sendack_flag
 
     resets ack_must_be_send flag
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ac_rst_sendack_flag.description`:
 
@@ -59,11 +63,13 @@ llc_conn_ac_send_i_rsp_f_set_ackpf
 
     acknowledge received PDUs
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ac_send_i_rsp_f_set_ackpf.description`:
 
@@ -84,11 +90,13 @@ llc_conn_ac_send_i_as_ack
 
     sends an I-format PDU to acknowledge rx PDUs
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ac_send_i_as_ack.description`:
 
@@ -109,11 +117,13 @@ llc_conn_ac_send_rr_rsp_f_set_ackpf
 
     ack all rx PDUs not yet acked
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ac_send_rr_rsp_f_set_ackpf.description`:
 
@@ -134,11 +144,13 @@ llc_conn_ac_inc_npta_value
 
     tries to make value of npta greater
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ac_inc_npta_value.description`:
 
@@ -159,11 +171,13 @@ llc_conn_ac_adjust_npta_by_rr
 
     decreases "npta" by one
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ac_adjust_npta_by_rr.description`:
 
@@ -182,11 +196,13 @@ llc_conn_ac_adjust_npta_by_rnr
 
     decreases "npta" by one
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ac_adjust_npta_by_rnr.description`:
 
@@ -205,11 +221,13 @@ llc_conn_ac_dec_tx_win_size
 
     decreases tx window size
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ac_dec_tx_win_size.description`:
 
@@ -229,11 +247,13 @@ llc_conn_ac_inc_tx_win_size
 
     tx window size is inc by 1
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_ac_inc_tx_win_size.description`:
 
@@ -252,11 +272,13 @@ llc_conn_disc
 
     removes connection from SAP list and frees it
 
-    :param struct sock \*sk:
+    :param sk:
         closed connection
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         occurred event
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_reset`:
 
@@ -267,11 +289,13 @@ llc_conn_reset
 
     resets connection
 
-    :param struct sock \*sk:
+    :param sk:
         reseting connection.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         occurred event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_reset.description`:
 
@@ -289,14 +313,17 @@ llc_circular_between
 
     designates that b is between a and c or not
 
-    :param u8 a:
+    :param a:
         lower bound
+    :type a: u8
 
-    :param u8 b:
+    :param b:
         element to see if is between a and b
+    :type b: u8
 
-    :param u8 c:
+    :param c:
         upper bound
+    :type c: u8
 
 .. _`llc_circular_between.description`:
 
@@ -316,11 +343,13 @@ llc_process_tmr_ev
 
     timer backend
 
-    :param struct sock \*sk:
+    :param sk:
         active connection
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         occurred event
+    :type skb: struct sk_buff \*
 
 .. _`llc_process_tmr_ev.description`:
 

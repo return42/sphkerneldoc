@@ -10,8 +10,9 @@ visorchannel_get_guid
 
     queries the GUID of the designated channel
 
-    :param struct visorchannel \*channel:
+    :param channel:
         the channel to query
+    :type channel: struct visorchannel \*
 
 .. _`visorchannel_get_guid.return`:
 
@@ -29,14 +30,17 @@ visorchannel_signalremove
 
     removes a message from the designated channel/queue
 
-    :param struct visorchannel \*channel:
+    :param channel:
         the channel the message will be removed from
+    :type channel: struct visorchannel \*
 
-    :param u32 queue:
+    :param queue:
         the queue the message will be removed from
+    :type queue: u32
 
-    :param void \*msg:
+    :param msg:
         the message to remove
+    :type msg: void \*
 
 .. _`visorchannel_signalremove.return`:
 
@@ -54,11 +58,13 @@ visorchannel_signalempty
 
     checks if the designated channel/queue contains any messages
 
-    :param struct visorchannel \*channel:
+    :param channel:
         the channel to query
+    :type channel: struct visorchannel \*
 
-    :param u32 queue:
+    :param queue:
         the queue in the channel to query
+    :type queue: u32
 
 .. _`visorchannel_signalempty.return`:
 
@@ -77,14 +83,17 @@ visorchannel_signalinsert
 
     inserts a message into the designated channel/queue
 
-    :param struct visorchannel \*channel:
+    :param channel:
         the channel the message will be added to
+    :type channel: struct visorchannel \*
 
-    :param u32 queue:
+    :param queue:
         the queue the message will be added to
+    :type queue: u32
 
-    :param void \*msg:
+    :param msg:
         the message to insert
+    :type msg: void \*
 
 .. _`visorchannel_signalinsert.return`:
 

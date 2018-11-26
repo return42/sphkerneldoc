@@ -10,11 +10,13 @@
 
     override errata flags for a timer
 
-    :param struct omap_dm_timer \*timer:
+    :param timer:
         pointer to timer handle
+    :type timer: struct omap_dm_timer \*
 
-    :param u32 errata:
+    :param errata:
         errata flags to be ignored
+    :type errata: u32
 
 .. _`__omap_dm_timer_override_errata.description`:
 

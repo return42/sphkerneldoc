@@ -10,11 +10,13 @@ aec62xx_init_one
 
     called when a AEC is found
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the aec62xx device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         the matching pci id
+    :type id: const struct pci_device_id \*
 
 .. _`aec62xx_init_one.description`:
 

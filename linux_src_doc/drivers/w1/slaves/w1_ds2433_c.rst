@@ -10,14 +10,17 @@ w1_f23_fix_count
 
     This would not be needed if the file size didn't reset to 0 after a write.
 
-    :param loff_t off:
+    :param off:
         *undescribed*
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`w1_f23_write`:
 
@@ -28,17 +31,21 @@ w1_f23_write
 
     Then copies the scratchpad to EEPROM. The data must be on one page. The master must be locked.
 
-    :param struct w1_slave \*sl:
+    :param sl:
         *undescribed*
+    :type sl: struct w1_slave \*
 
-    :param int addr:
+    :param addr:
         *undescribed*
+    :type addr: int
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param const u8 \*data:
+    :param data:
         *undescribed*
+    :type data: const u8 \*
 
 .. _`w1_f23_write.description`:
 

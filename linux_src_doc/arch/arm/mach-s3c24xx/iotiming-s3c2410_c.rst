@@ -10,11 +10,13 @@ s3c2410_print_timing
 
     print bank timing data for debug purposes
 
-    :param const char \*pfx:
+    :param pfx:
         The prefix to put on the output
+    :type pfx: const char \*
 
-    :param struct s3c_iotimings \*timings:
+    :param timings:
         The timing inforamtion to print.
+    :type timings: struct s3c_iotimings \*
 
 .. _`bank_reg`:
 
@@ -25,8 +27,9 @@ bank_reg
 
     convert bank number to pointer to the control register.
 
-    :param unsigned int bank:
+    :param bank:
         The IO bank number.
+    :type bank: unsigned int
 
 .. _`bank_is_io`:
 
@@ -37,8 +40,9 @@ bank_is_io
 
     test whether bank is used for IO
 
-    :param unsigned long bankcon:
+    :param bankcon:
         The bank control register.
+    :type bankcon: unsigned long
 
 .. _`bank_is_io.description`:
 
@@ -59,11 +63,13 @@ to_div
 
     convert cycle time to divisor
 
-    :param unsigned int cyc:
+    :param cyc:
         The cycle time, in 10ths of nanoseconds.
+    :type cyc: unsigned int
 
-    :param unsigned int hclk_tns:
+    :param hclk_tns:
         The cycle time for HCLK, in 10ths of nanoseconds.
+    :type hclk_tns: unsigned int
 
 .. _`to_div.description`:
 
@@ -82,17 +88,21 @@ calc_0124
 
     calculate divisor control for divisors that do /0, /1. /2 and /4
 
-    :param unsigned int cyc:
+    :param cyc:
         The cycle time, in 10ths of nanoseconds.
+    :type cyc: unsigned int
 
-    :param unsigned long hclk_tns:
+    :param hclk_tns:
         The cycle time for HCLK, in 10ths of nanoseconds.
+    :type hclk_tns: unsigned long
 
-    :param unsigned long \*v:
+    :param v:
         Pointer to register to alter.
+    :type v: unsigned long \*
 
-    :param int shift:
+    :param shift:
         The shift to get to the control bits.
+    :type shift: int
 
 .. _`calc_0124.description`:
 
@@ -111,17 +121,21 @@ calc_tacc
 
     calculate divisor control for tacc.
 
-    :param unsigned int cyc:
+    :param cyc:
         The cycle time, in 10ths of nanoseconds.
+    :type cyc: unsigned int
 
-    :param int nwait_en:
+    :param nwait_en:
         IS nWAIT enabled for this bank.
+    :type nwait_en: int
 
-    :param unsigned long hclk_tns:
+    :param hclk_tns:
         The cycle time for HCLK, in 10ths of nanoseconds.
+    :type hclk_tns: unsigned long
 
-    :param unsigned long \*v:
+    :param v:
         Pointer to register to alter.
+    :type v: unsigned long \*
 
 .. _`calc_tacc.description`:
 
@@ -141,11 +155,13 @@ s3c2410_calc_bank
 
     calculate bank timing information
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The configuration we need to calculate for.
+    :type cfg: struct s3c_cpufreq_config \*
 
-    :param struct s3c2410_iobank_timing \*bt:
+    :param bt:
         The bank timing information.
+    :type bt: struct s3c2410_iobank_timing \*
 
 .. _`s3c2410_calc_bank.description`:
 
@@ -165,11 +181,13 @@ get_tacc
 
     turn tACC value into cycle time
 
-    :param unsigned long hclk_tns:
+    :param hclk_tns:
         The cycle time for HCLK, in 10ths of nanoseconds.
+    :type hclk_tns: unsigned long
 
-    :param unsigned long val:
+    :param val:
         The bank timing register value, shifed down.
+    :type val: unsigned long
 
 .. _`get_0124`:
 
@@ -180,11 +198,13 @@ get_0124
 
     turn 0/1/2/4 divider into cycle time
 
-    :param unsigned long hclk_tns:
+    :param hclk_tns:
         The cycle time for HCLK, in 10ths of nanoseconds.
+    :type hclk_tns: unsigned long
 
-    :param unsigned long val:
+    :param val:
         The bank timing register value, shifed down.
+    :type val: unsigned long
 
 .. _`s3c2410_iotiming_getbank`:
 
@@ -195,11 +215,13 @@ s3c2410_iotiming_getbank
 
     turn BANKCON into cycle time information
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The frequency configuration
+    :type cfg: struct s3c_cpufreq_config \*
 
-    :param struct s3c2410_iobank_timing \*bt:
+    :param bt:
         The bank timing to fill in (uses cached BANKCON)
+    :type bt: struct s3c2410_iobank_timing \*
 
 .. _`s3c2410_iotiming_getbank.description`:
 
@@ -218,14 +240,17 @@ s3c2410_iotiming_debugfs
 
     debugfs show io bank timing information
 
-    :param struct seq_file \*seq:
+    :param seq:
         The seq_file to write output to using \ :c:func:`seq_printf`\ .
+    :type seq: struct seq_file \*
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The current configuration.
+    :type cfg: struct s3c_cpufreq_config \*
 
-    :param union s3c_iobank \*iob:
+    :param iob:
         The IO bank information to decode.
+    :type iob: union s3c_iobank \*
 
 .. _`s3c2410_iotiming_calc`:
 
@@ -236,11 +261,13 @@ s3c2410_iotiming_calc
 
     Calculate bank timing for frequency change.
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The frequency configuration
+    :type cfg: struct s3c_cpufreq_config \*
 
-    :param struct s3c_iotimings \*iot:
+    :param iot:
         The IO timing information to fill out.
+    :type iot: struct s3c_iotimings \*
 
 .. _`s3c2410_iotiming_calc.description`:
 
@@ -260,11 +287,13 @@ s3c2410_iotiming_set
 
     set the IO timings from the given setup.
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The frequency configuration
+    :type cfg: struct s3c_cpufreq_config \*
 
-    :param struct s3c_iotimings \*iot:
+    :param iot:
         The IO timing information to use.
+    :type iot: struct s3c_iotimings \*
 
 .. _`s3c2410_iotiming_set.description`:
 
@@ -284,11 +313,13 @@ s3c2410_iotiming_get
 
     Get the timing information from current registers.
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The frequency configuration
+    :type cfg: struct s3c_cpufreq_config \*
 
-    :param struct s3c_iotimings \*timings:
+    :param timings:
         The IO timing information to fill out.
+    :type timings: struct s3c_iotimings \*
 
 .. _`s3c2410_iotiming_get.description`:
 

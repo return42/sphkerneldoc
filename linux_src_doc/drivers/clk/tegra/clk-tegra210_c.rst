@@ -10,8 +10,9 @@ tegra210_clock_apply_init_table
 
     initialize clocks on Tegra210 SoCs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra210_clock_apply_init_table.description`:
 
@@ -32,8 +33,9 @@ tegra210_car_barrier
 
     wait for pending writes to the CAR to complete
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra210_car_barrier.description`:
 
@@ -52,8 +54,9 @@ tegra210_clock_assert_dfll_dvco_reset
 
     assert the DFLL's DVCO reset
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra210_clock_assert_dfll_dvco_reset.description`:
 
@@ -71,8 +74,9 @@ tegra210_clock_deassert_dfll_dvco_reset
 
     deassert the DFLL's DVCO reset
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra210_clock_deassert_dfll_dvco_reset.description`:
 
@@ -91,8 +95,9 @@ tegra210_clock_init
 
     Tegra210-specific clock initialization
 
-    :param struct device_node \*np:
+    :param np:
         struct device_node \* of the DT node for the SoC CAR IP block
+    :type np: struct device_node \*
 
 .. _`tegra210_clock_init.description`:
 

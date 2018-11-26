@@ -10,21 +10,26 @@ mic_request_card_irq
 
     request an irq.
 
-    :param irq_handler_t handler:
+    :param handler:
         interrupt handler passed to request_threaded_irq.
+    :type handler: irq_handler_t
 
-    :param irq_handler_t thread_fn:
+    :param thread_fn:
         thread fn. passed to request_threaded_irq.
+    :type thread_fn: irq_handler_t
 
-    :param const char \*name:
+    :param name:
         The ASCII name of the callee requesting the irq.
+    :type name: const char \*
 
-    :param void \*data:
+    :param data:
         private data that is returned back when calling the
         function handler.
+    :type data: void \*
 
-    :param int index:
+    :param index:
         The doorbell index of the requester.
+    :type index: int
 
 .. _`mic_request_card_irq.return`:
 
@@ -46,12 +51,14 @@ mic_free_card_irq
 
     free irq.
 
-    :param struct mic_irq \*cookie:
+    :param cookie:
         cookie obtained during a successful call to mic_request_threaded_irq
+    :type cookie: struct mic_irq \*
 
-    :param void \*data:
+    :param data:
         private data specified by the calling function during the
         mic_request_threaded_irq
+    :type data: void \*
 
 .. _`mic_free_card_irq.return`:
 
@@ -69,8 +76,9 @@ mic_next_card_db
 
     Get the doorbell with minimum usage count.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mic_next_card_db.description`:
 
@@ -88,8 +96,9 @@ mic_init_irq
 
     Initialize irq information.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mic_init_irq.description`:
 
@@ -107,8 +116,9 @@ mic_uninit_irq
 
     Uninitialize irq information.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mic_uninit_irq.description`:
 

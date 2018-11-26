@@ -8,23 +8,29 @@ activity_write
 
 .. c:function:: ssize_t activity_write(struct file *filp, struct kobject *kobj, struct bin_attribute *bin_attr, char *buf, loff_t off, size_t count)
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         *undescribed*
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         *undescribed*
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. This file was automatic generated / don't edit.
 

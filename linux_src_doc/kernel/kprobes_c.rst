@@ -10,8 +10,9 @@
 
     Find a slot on an executable page for an instruction. We allocate an executable page if there's no room on existing ones.
 
-    :param struct kprobe_insn_cache \*c:
+    :param c:
         *undescribed*
+    :type c: struct kprobe_insn_cache \*
 
 .. This file was automatic generated / don't edit.
 

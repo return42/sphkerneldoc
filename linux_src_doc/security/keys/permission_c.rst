@@ -10,14 +10,17 @@ key_task_permission
 
     Check a key can be used
 
-    :param const key_ref_t key_ref:
+    :param key_ref:
         The key to check.
+    :type key_ref: const key_ref_t
 
-    :param const struct cred \*cred:
+    :param cred:
         The credentials to use.
+    :type cred: const struct cred \*
 
-    :param unsigned perm:
+    :param perm:
         The permissions to check for.
+    :type perm: unsigned
 
 .. _`key_task_permission.description`:
 
@@ -41,8 +44,9 @@ key_validate
 
     Validate a key.
 
-    :param const struct key \*key:
+    :param key:
         The key to be validated.
+    :type key: const struct key \*
 
 .. _`key_validate.description`:
 

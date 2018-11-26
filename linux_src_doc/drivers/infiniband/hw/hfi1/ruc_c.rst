@@ -1,30 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/hfi1/ruc.c
 
-.. _`ruc_loopback`:
-
-ruc_loopback
-============
-
-.. c:function:: void ruc_loopback(struct rvt_qp *sqp)
-
-    handle UC and RC loopback requests
-
-    :param struct rvt_qp \*sqp:
-        the sending QP
-
-.. _`ruc_loopback.description`:
-
-Description
------------
-
-This is called from \ :c:func:`hfi1_do_send`\  to
-forward a WQE addressed to the same HFI.
-Note that although we are single threaded due to the send engine, we still
-have to protect against \ :c:func:`post_send`\ .  We don't have to worry about
-receive interrupts since this is a connected protocol and all packets
-will pass through here.
-
 .. _`hfi1_make_grh`:
 
 hfi1_make_grh
@@ -34,20 +10,25 @@ hfi1_make_grh
 
     construct a GRH header
 
-    :param struct hfi1_ibport \*ibp:
+    :param ibp:
         a pointer to the IB port
+    :type ibp: struct hfi1_ibport \*
 
-    :param struct ib_grh \*hdr:
+    :param hdr:
         a pointer to the GRH header being constructed
+    :type hdr: struct ib_grh \*
 
-    :param const struct ib_global_route \*grh:
+    :param grh:
         the global route address to send to
+    :type grh: const struct ib_global_route \*
 
-    :param u32 hwords:
+    :param hwords:
         size of header after grh being sent in dwords
+    :type hwords: u32
 
-    :param u32 nwords:
+    :param nwords:
         the number of 32 bit words of data being sent
+    :type nwords: u32
 
 .. _`hfi1_make_grh.description`:
 
@@ -65,11 +46,13 @@ build_ahg
 
     create ahg in s_ahg
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         a pointer to QP
+    :type qp: struct rvt_qp \*
 
-    :param u32 npsn:
+    :param npsn:
         the next PSN for the request/response
+    :type npsn: u32
 
 .. _`build_ahg.description`:
 
@@ -91,23 +74,29 @@ hfi1_make_ruc_header_16B
 
     build a 16B header
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the queue pair
+    :type qp: struct rvt_qp \*
 
-    :param struct ib_other_headers \*ohdr:
+    :param ohdr:
         a pointer to the destination header memory
+    :type ohdr: struct ib_other_headers \*
 
-    :param u32 bth0:
+    :param bth0:
         bth0 passed in from the RC/UC builder
+    :type bth0: u32
 
-    :param u32 bth2:
+    :param bth2:
         bth2 passed in from the RC/UC builder
+    :type bth2: u32
 
-    :param int middle:
+    :param middle:
         non zero implies indicates ahg "could" be used
+    :type middle: int
 
-    :param struct hfi1_pkt_state \*ps:
+    :param ps:
         the current packet state
+    :type ps: struct hfi1_pkt_state \*
 
 .. _`hfi1_make_ruc_header_16b.this-routine-may-disarm-ahg-under-these-situations`:
 
@@ -127,23 +116,29 @@ hfi1_make_ruc_header_9B
 
     build a 9B header
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the queue pair
+    :type qp: struct rvt_qp \*
 
-    :param struct ib_other_headers \*ohdr:
+    :param ohdr:
         a pointer to the destination header memory
+    :type ohdr: struct ib_other_headers \*
 
-    :param u32 bth0:
+    :param bth0:
         bth0 passed in from the RC/UC builder
+    :type bth0: u32
 
-    :param u32 bth2:
+    :param bth2:
         bth2 passed in from the RC/UC builder
+    :type bth2: u32
 
-    :param int middle:
+    :param middle:
         non zero implies indicates ahg "could" be used
+    :type middle: int
 
-    :param struct hfi1_pkt_state \*ps:
+    :param ps:
         the current packet state
+    :type ps: struct hfi1_pkt_state \*
 
 .. _`hfi1_make_ruc_header_9b.this-routine-may-disarm-ahg-under-these-situations`:
 
@@ -163,12 +158,14 @@ schedule_send_yield
 
     test for a yield required for QP send engine
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         a pointer to QP
+    :type qp: struct rvt_qp \*
 
-    :param struct hfi1_pkt_state \*ps:
+    :param ps:
         a pointer to a structure with commonly lookup values for
         the the send engine progress
+    :type ps: struct hfi1_pkt_state \*
 
 .. _`schedule_send_yield.description`:
 
@@ -190,11 +187,13 @@ hfi1_do_send
 
     perform a send on a QP
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param bool in_thread:
+    :param in_thread:
         true if in a workqueue thread
+    :type in_thread: bool
 
 .. _`hfi1_do_send.description`:
 

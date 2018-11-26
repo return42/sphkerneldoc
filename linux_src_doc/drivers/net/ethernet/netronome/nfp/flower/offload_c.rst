@@ -10,17 +10,21 @@ nfp_flower_add_offload
 
     Adds a new flow to hardware.
 
-    :param struct nfp_app \*app:
+    :param app:
         Pointer to the APP handle
+    :type app: struct nfp_app \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         netdev structure.
+    :type netdev: struct net_device \*
 
-    :param struct tc_cls_flower_offload \*flow:
+    :param flow:
         TC flower classifier offload structure.
+    :type flow: struct tc_cls_flower_offload \*
 
-    :param bool egress:
+    :param egress:
         NFP netdev is the egress.
+    :type egress: bool
 
 .. _`nfp_flower_add_offload.description`:
 
@@ -45,17 +49,21 @@ nfp_flower_del_offload
 
     Removes a flow from hardware.
 
-    :param struct nfp_app \*app:
+    :param app:
         Pointer to the APP handle
+    :type app: struct nfp_app \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         netdev structure.
+    :type netdev: struct net_device \*
 
-    :param struct tc_cls_flower_offload \*flow:
+    :param flow:
         TC flower classifier offload structure
+    :type flow: struct tc_cls_flower_offload \*
 
-    :param bool egress:
+    :param egress:
         Netdev is the egress dev.
+    :type egress: bool
 
 .. _`nfp_flower_del_offload.description`:
 
@@ -81,17 +89,21 @@ nfp_flower_get_stats
 
     Populates flow stats obtained from hardware.
 
-    :param struct nfp_app \*app:
+    :param app:
         Pointer to the APP handle
+    :type app: struct nfp_app \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Netdev structure.
+    :type netdev: struct net_device \*
 
-    :param struct tc_cls_flower_offload \*flow:
+    :param flow:
         TC flower classifier offload structure
+    :type flow: struct tc_cls_flower_offload \*
 
-    :param bool egress:
+    :param egress:
         Netdev is the egress dev.
+    :type egress: bool
 
 .. _`nfp_flower_get_stats.description`:
 

@@ -303,8 +303,9 @@ pcie_device_get
 
     Increment the pcie device reference count
 
-    :param struct _pcie_device \*p:
+    :param p:
         pcie_device object
+    :type p: struct _pcie_device \*
 
 .. _`pcie_device_get.description`:
 
@@ -323,8 +324,9 @@ pcie_device_free
 
     Release the pcie device object \ ``r``\  - kref object
 
-    :param struct kref \*r:
+    :param r:
         *undescribed*
+    :type r: struct kref \*
 
 .. _`pcie_device_free.description`:
 
@@ -343,8 +345,9 @@ pcie_device_put
 
     Decrement the pcie device reference count
 
-    :param struct _pcie_device \*p:
+    :param p:
         pcie_device object
+    :type p: struct _pcie_device \*
 
 .. _`pcie_device_put.description`:
 
@@ -978,7 +981,6 @@ Definition
         struct mutex reset_in_progress_mutex;
         spinlock_t ioc_reset_in_progress_lock;
         u8 ioc_link_reset_in_progress;
-        u8 ioc_reset_in_progress_status;
         u8 ignore_loginfos;
         u8 remove_host;
         u8 pci_error_recovery;
@@ -1259,9 +1261,6 @@ ioc_reset_in_progress_lock
 
 ioc_link_reset_in_progress
     phy/hard reset in progress
-
-ioc_reset_in_progress_status
-    *undescribed*
 
 ignore_loginfos
     ignore loginfos during task management

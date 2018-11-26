@@ -10,15 +10,18 @@ arch_uprobe_analyze_insn
 
     instruction analysis including validity and fixups.
 
-    :param struct arch_uprobe \*auprobe:
+    :param auprobe:
         *undescribed*
+    :type auprobe: struct arch_uprobe \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         the probed address space.
+    :type mm: struct mm_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         virtual address at which to install the probepoint
         Return 0 on success or a -ve number on error.
+    :type addr: unsigned long
 
 .. This file was automatic generated / don't edit.
 

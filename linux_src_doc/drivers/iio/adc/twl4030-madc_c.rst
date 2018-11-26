@@ -118,11 +118,13 @@ twl4030_madc_channel_raw_read
 
     Function to read a particular channel value
 
-    :param struct twl4030_madc_data \*madc:
+    :param madc:
         pointer to struct twl4030_madc_data
+    :type madc: struct twl4030_madc_data \*
 
-    :param u8 reg:
+    :param reg:
         lsb of ADC Channel
+    :type reg: u8
 
 .. _`twl4030_madc_channel_raw_read.return`:
 
@@ -140,16 +142,19 @@ twl4030_madc_set_current_generator
 
     setup bias current
 
-    :param struct twl4030_madc_data \*madc:
+    :param madc:
         pointer to twl4030_madc_data struct
+    :type madc: struct twl4030_madc_data \*
 
-    :param int chan:
+    :param chan:
         can be one of the two values:
         0 - Enables bias current for main battery type reading
         1 - Enables bias current for main battery temperature sensing
+    :type chan: int
 
-    :param int on:
+    :param on:
         enable or disable chan.
+    :type on: int
 
 .. _`twl4030_madc_set_current_generator.description`:
 

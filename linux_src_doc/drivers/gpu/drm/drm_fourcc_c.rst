@@ -10,11 +10,13 @@ drm_mode_legacy_fb_format
 
     compute drm fourcc code from legacy description
 
-    :param uint32_t bpp:
+    :param bpp:
         bits per pixels
+    :type bpp: uint32_t
 
-    :param uint32_t depth:
+    :param depth:
         bit depth per pixel
+    :type depth: uint32_t
 
 .. _`drm_mode_legacy_fb_format.description`:
 
@@ -23,6 +25,37 @@ Description
 
 Computes a drm fourcc pixel format code for the given \ ``bpp``\ /@depth values.
 Useful in fbdev emulation code, since that deals in those values.
+
+.. _`drm_driver_legacy_fb_format`:
+
+drm_driver_legacy_fb_format
+===========================
+
+.. c:function:: uint32_t drm_driver_legacy_fb_format(struct drm_device *dev, uint32_t bpp, uint32_t depth)
+
+    compute drm fourcc code from legacy description
+
+    :param dev:
+        DRM device
+    :type dev: struct drm_device \*
+
+    :param bpp:
+        bits per pixels
+    :type bpp: uint32_t
+
+    :param depth:
+        bit depth per pixel
+    :type depth: uint32_t
+
+.. _`drm_driver_legacy_fb_format.description`:
+
+Description
+-----------
+
+Computes a drm fourcc pixel format code for the given \ ``bpp``\ /@depth values.
+Unlike \ :c:func:`drm_mode_legacy_fb_format`\  this looks at the drivers mode_config,
+and depending on the quirk_addfb_prefer_host_byte_order flag it returns
+little endian byte order or host byte order framebuffer formats.
 
 .. _`drm_get_format_name`:
 
@@ -33,11 +66,13 @@ drm_get_format_name
 
     fill a string with a drm fourcc format's name
 
-    :param uint32_t format:
+    :param format:
         format to compute name of
+    :type format: uint32_t
 
-    :param struct drm_format_name_buf \*buf:
+    :param buf:
         caller-supplied buffer
+    :type buf: struct drm_format_name_buf \*
 
 .. _`drm_format_info`:
 
@@ -48,8 +83,9 @@ drm_format_info
 
     query information for a given format
 
-    :param u32 format:
+    :param format:
         pixel format (DRM_FORMAT_*)
+    :type format: u32
 
 .. _`drm_format_info.description`:
 
@@ -76,11 +112,13 @@ drm_get_format_info
 
     query information for a given framebuffer configuration
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
+    :param mode_cmd:
         metadata from the userspace fb creation request
+    :type mode_cmd: const struct drm_mode_fb_cmd2 \*
 
 .. _`drm_get_format_info.return`:
 
@@ -99,8 +137,9 @@ drm_format_num_planes
 
     get the number of planes for format
 
-    :param uint32_t format:
+    :param format:
         pixel format (DRM_FORMAT_*)
+    :type format: uint32_t
 
 .. _`drm_format_num_planes.return`:
 
@@ -118,11 +157,13 @@ drm_format_plane_cpp
 
     determine the bytes per pixel value
 
-    :param uint32_t format:
+    :param format:
         pixel format (DRM_FORMAT_*)
+    :type format: uint32_t
 
-    :param int plane:
+    :param plane:
         plane index
+    :type plane: int
 
 .. _`drm_format_plane_cpp.return`:
 
@@ -140,8 +181,9 @@ drm_format_horz_chroma_subsampling
 
     get the horizontal chroma subsampling factor
 
-    :param uint32_t format:
+    :param format:
         pixel format (DRM_FORMAT_*)
+    :type format: uint32_t
 
 .. _`drm_format_horz_chroma_subsampling.return`:
 
@@ -160,8 +202,9 @@ drm_format_vert_chroma_subsampling
 
     get the vertical chroma subsampling factor
 
-    :param uint32_t format:
+    :param format:
         pixel format (DRM_FORMAT_*)
+    :type format: uint32_t
 
 .. _`drm_format_vert_chroma_subsampling.return`:
 
@@ -180,14 +223,17 @@ drm_format_plane_width
 
     width of the plane given the first plane
 
-    :param int width:
+    :param width:
         width of the first plane
+    :type width: int
 
-    :param uint32_t format:
+    :param format:
         pixel format
+    :type format: uint32_t
 
-    :param int plane:
+    :param plane:
         plane index
+    :type plane: int
 
 .. _`drm_format_plane_width.return`:
 
@@ -205,14 +251,17 @@ drm_format_plane_height
 
     height of the plane given the first plane
 
-    :param int height:
+    :param height:
         height of the first plane
+    :type height: int
 
-    :param uint32_t format:
+    :param format:
         pixel format
+    :type format: uint32_t
 
-    :param int plane:
+    :param plane:
         plane index
+    :type plane: int
 
 .. _`drm_format_plane_height.return`:
 

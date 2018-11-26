@@ -10,14 +10,17 @@ snd_hda_set_pin_ctl
 
     Set a pin-control value safely
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the codec instance
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t pin:
+    :param pin:
         the pin NID to set the control
+    :type pin: hda_nid_t
 
-    :param unsigned int val:
+    :param val:
         the pin-control value (AC_PINCTL\_\* bits)
+    :type val: unsigned int
 
 .. _`snd_hda_set_pin_ctl.description`:
 
@@ -42,14 +45,17 @@ snd_hda_set_pin_ctl_cache
 
     Set a pin-control value safely
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the codec instance
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t pin:
+    :param pin:
         the pin NID to set the control
+    :type pin: hda_nid_t
 
-    :param unsigned int val:
+    :param val:
         the pin-control value (AC_PINCTL\_\* bits)
+    :type val: unsigned int
 
 .. _`snd_hda_set_pin_ctl_cache.description`:
 
@@ -67,11 +73,13 @@ snd_hda_query_pin_caps
 
     Query PIN capabilities
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HD-auio codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         the NID to query
+    :type nid: hda_nid_t
 
 .. _`snd_hda_query_pin_caps.description`:
 
@@ -93,14 +101,17 @@ snd_hda_override_pin_caps
 
     Override the pin capabilities
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the CODEC
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         the NID to override
+    :type nid: hda_nid_t
 
-    :param unsigned int caps:
+    :param caps:
         the capability bits to set
+    :type caps: unsigned int
 
 .. _`snd_hda_override_pin_caps.description`:
 

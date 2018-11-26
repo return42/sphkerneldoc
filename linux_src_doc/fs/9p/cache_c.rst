@@ -10,8 +10,9 @@ v9fs_random_cachetag
 
     Generate a random tag to be associated with a new cache session.
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         *undescribed*
+    :type v9ses: struct v9fs_session_info \*
 
 .. _`v9fs_random_cachetag.description`:
 
@@ -29,11 +30,13 @@ The value of jiffies is used for a fairly randomly cache tag.
 
     read a page from cache
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
 .. _`__v9fs_readpage_from_fscache.description`:
 
@@ -52,17 +55,21 @@ Returns 0 if the pages are in cache and a BIO is submitted,
 
     read multiple pages from cache
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         *undescribed*
+    :type mapping: struct address_space \*
 
-    :param struct list_head \*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct list_head \*
 
-    :param unsigned \*nr_pages:
+    :param nr_pages:
         *undescribed*
+    :type nr_pages: unsigned \*
 
 .. _`__v9fs_readpages_from_fscache.description`:
 
@@ -81,11 +88,13 @@ Returns 0 if the pages are in cache and a BIO is submitted,
 
     write a page to the cache
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
 .. This file was automatic generated / don't edit.
 

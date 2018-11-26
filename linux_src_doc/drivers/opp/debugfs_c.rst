@@ -10,11 +10,13 @@ opp_debug_register
 
     add a device opp node to the debugfs 'opp' directory
 
-    :param struct opp_device \*opp_dev:
+    :param opp_dev:
         opp-dev pointer for device
+    :type opp_dev: struct opp_device \*
 
-    :param struct opp_table \*opp_table:
+    :param opp_table:
         the device-opp being added
+    :type opp_table: struct opp_table \*
 
 .. _`opp_debug_register.description`:
 
@@ -41,11 +43,13 @@ opp_debug_unregister
 
     remove a device opp node from debugfs opp directory
 
-    :param struct opp_device \*opp_dev:
+    :param opp_dev:
         opp-dev pointer for device
+    :type opp_dev: struct opp_device \*
 
-    :param struct opp_table \*opp_table:
+    :param opp_table:
         the device-opp being removed
+    :type opp_table: struct opp_table \*
 
 .. _`opp_debug_unregister.description`:
 

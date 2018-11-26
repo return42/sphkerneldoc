@@ -10,8 +10,9 @@ napi_schedule
 
     schedule NAPI poll
 
-    :param struct napi_struct \*n:
+    :param n:
         NAPI context
+    :type n: struct napi_struct \*
 
 .. _`napi_schedule.description`:
 
@@ -30,8 +31,9 @@ napi_schedule_irqoff
 
     schedule NAPI poll
 
-    :param struct napi_struct \*n:
+    :param n:
         NAPI context
+    :type n: struct napi_struct \*
 
 .. _`napi_schedule_irqoff.description`:
 
@@ -49,8 +51,9 @@ napi_complete
 
     NAPI processing complete
 
-    :param struct napi_struct \*n:
+    :param n:
         NAPI context
+    :type n: struct napi_struct \*
 
 .. _`napi_complete.description`:
 
@@ -70,8 +73,9 @@ napi_hash_del
 
     remove a NAPI from global table
 
-    :param struct napi_struct \*napi:
+    :param napi:
         NAPI context
+    :type napi: struct napi_struct \*
 
 .. _`napi_hash_del.description`:
 
@@ -101,8 +105,9 @@ napi_disable
 
     prevent NAPI from scheduling
 
-    :param struct napi_struct \*n:
+    :param n:
         NAPI context
+    :type n: struct napi_struct \*
 
 .. _`napi_disable.description`:
 
@@ -121,8 +126,9 @@ napi_enable
 
     enable NAPI scheduling
 
-    :param struct napi_struct \*n:
+    :param n:
         NAPI context
+    :type n: struct napi_struct \*
 
 .. _`napi_enable.description`:
 
@@ -141,8 +147,9 @@ napi_synchronize
 
     wait until NAPI is not running
 
-    :param const struct napi_struct \*n:
+    :param n:
         NAPI context
+    :type n: const struct napi_struct \*
 
 .. _`napi_synchronize.description`:
 
@@ -152,6 +159,27 @@ Description
 Wait until NAPI is done being scheduled on this context.
 Waits till any outstanding processing completes but
 does not disable future activations.
+
+.. _`napi_if_scheduled_mark_missed`:
+
+napi_if_scheduled_mark_missed
+=============================
+
+.. c:function:: bool napi_if_scheduled_mark_missed(struct napi_struct *n)
+
+    if napi is running, set the NAPIF_STATE_MISSED
+
+    :param n:
+        NAPI context
+    :type n: struct napi_struct \*
+
+.. _`napi_if_scheduled_mark_missed.description`:
+
+Description
+-----------
+
+If napi is running, set the NAPIF_STATE_MISSED, and return true if
+NAPI is scheduled.
 
 .. _`netdev_priv_flags`:
 
@@ -470,7 +498,8 @@ Definition
         spinlock_t tx_global_lock;
         int watchdog_timeo;
     #ifdef CONFIG_XPS
-        struct xps_dev_maps __rcu *xps_maps;
+        struct xps_dev_maps __rcu *xps_cpus_map;
+        struct xps_dev_maps __rcu *xps_rxqs_map;
     #endif
     #ifdef CONFIG_NET_CLS_ACT
         struct mini_Qdisc __rcu *miniq_egress;
@@ -503,7 +532,6 @@ Definition
             struct pcpu_lstats __percpu *lstats;
             struct pcpu_sw_netstats __percpu *tstats;
             struct pcpu_dstats __percpu *dstats;
-            struct pcpu_vstats __percpu *vstats;
         } ;
     #if IS_ENABLED(CONFIG_GARP)
         struct garp_port __rcu *garp_port;
@@ -522,7 +550,7 @@ Definition
     #ifdef CONFIG_DCB
         const struct dcbnl_rtnl_ops *dcbnl_ops;
     #endif
-        u8 num_tc;
+        s16 num_tc;
         struct netdev_tc_txq tc_to_txq[TC_MAX_QUEUE];
         u8 prio_tc_map[TC_BITMASK + 1];
     #if IS_ENABLED(CONFIG_FCOE)
@@ -536,6 +564,7 @@ Definition
         struct lock_class_key *qdisc_tx_busylock;
         struct lock_class_key *qdisc_running_key;
         bool proto_down;
+        unsigned wol_enabled:1;
     }
 
 .. _`net_device.members`:
@@ -888,8 +917,11 @@ watchdog_timeo
     Represents the timeout that is used by
     the watchdog (see \ :c:func:`dev_watchdog`\ )
 
-xps_maps
-    XXX: need comments on this one
+xps_cpus_map
+    *undescribed*
+
+xps_rxqs_map
+    *undescribed*
 
 miniq_egress
     clsact qdisc specific data for
@@ -943,9 +975,6 @@ tstats
 
 dstats
     Dummy statistics
-
-vstats
-    Virtual ethernet statistics
 
 garp_port
     GARP
@@ -1009,6 +1038,9 @@ proto_down
     switch driver and used to set the phys state of the
     switch port.
 
+wol_enabled
+    Wake-on-LAN is enabled
+
 .. _`net_device.description`:
 
 Description
@@ -1030,8 +1062,9 @@ netdev_priv
 
     access network device private data
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`netdev_priv.description`:
 
@@ -1049,17 +1082,20 @@ netif_napi_add
 
     initialize a NAPI context
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param struct napi_struct \*napi:
+    :param napi:
         NAPI context
+    :type napi: struct napi_struct \*
 
     :param int (\*poll)(struct napi_struct \*, int):
         polling function
 
-    :param int weight:
+    :param weight:
         default weight
+    :type weight: int
 
 .. _`netif_napi_add.description`:
 
@@ -1078,17 +1114,20 @@ netif_tx_napi_add
 
     initialize a NAPI context
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param struct napi_struct \*napi:
+    :param napi:
         NAPI context
+    :type napi: struct napi_struct \*
 
     :param int (\*poll)(struct napi_struct \*, int):
         polling function
 
-    :param int weight:
+    :param weight:
         default weight
+    :type weight: int
 
 .. _`netif_tx_napi_add.description`:
 
@@ -1108,8 +1147,9 @@ netif_napi_del
 
     remove a NAPI context
 
-    :param struct napi_struct \*napi:
+    :param napi:
         NAPI context
+    :type napi: struct napi_struct \*
 
 .. _`netif_napi_del.description`:
 
@@ -1127,8 +1167,9 @@ netif_start_queue
 
     allow transmit
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_start_queue.description`:
 
@@ -1146,8 +1187,9 @@ netif_wake_queue
 
     restart transmit
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_wake_queue.description`:
 
@@ -1166,8 +1208,9 @@ netif_stop_queue
 
     stop transmitted packets
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_stop_queue.description`:
 
@@ -1186,8 +1229,9 @@ netif_queue_stopped
 
     test if transmit queue is flowblocked
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`netif_queue_stopped.description`:
 
@@ -1205,8 +1249,9 @@ netdev_txq_bql_enqueue_prefetchw
 
     prefetch bql data for write
 
-    :param struct netdev_queue \*dev_queue:
+    :param dev_queue:
         pointer to transmit queue
+    :type dev_queue: struct netdev_queue \*
 
 .. _`netdev_txq_bql_enqueue_prefetchw.description`:
 
@@ -1225,8 +1270,9 @@ netdev_txq_bql_complete_prefetchw
 
     prefetch bql data for write
 
-    :param struct netdev_queue \*dev_queue:
+    :param dev_queue:
         pointer to transmit queue
+    :type dev_queue: struct netdev_queue \*
 
 .. _`netdev_txq_bql_complete_prefetchw.description`:
 
@@ -1245,11 +1291,13 @@ netdev_sent_queue
 
     report the number of bytes queued to hardware
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param unsigned int bytes:
+    :param bytes:
         number of bytes queued to the hardware device queue
+    :type bytes: unsigned int
 
 .. _`netdev_sent_queue.description`:
 
@@ -1269,14 +1317,17 @@ netdev_completed_queue
 
     report bytes and packets completed by device
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param unsigned int pkts:
+    :param pkts:
         actual number of packets sent over the medium
+    :type pkts: unsigned int
 
-    :param unsigned int bytes:
+    :param bytes:
         actual number of bytes sent over the medium
+    :type bytes: unsigned int
 
 .. _`netdev_completed_queue.description`:
 
@@ -1296,8 +1347,9 @@ netdev_reset_queue
 
     reset the packets and bytes count of a network device
 
-    :param struct net_device \*dev_queue:
+    :param dev_queue:
         network device
+    :type dev_queue: struct net_device \*
 
 .. _`netdev_reset_queue.description`:
 
@@ -1316,11 +1368,13 @@ netdev_cap_txqueue
 
     check if selected tx queue exceeds device queues
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param u16 queue_index:
+    :param queue_index:
         given tx queue index
+    :type queue_index: u16
 
 .. _`netdev_cap_txqueue.description`:
 
@@ -1339,8 +1393,9 @@ netif_running
 
     test if up
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`netif_running.description`:
 
@@ -1358,11 +1413,13 @@ netif_start_subqueue
 
     allow sending packets on subqueue
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param u16 queue_index:
+    :param queue_index:
         sub queue index
+    :type queue_index: u16
 
 .. _`netif_start_subqueue.description`:
 
@@ -1380,11 +1437,13 @@ netif_stop_subqueue
 
     stop sending packets on subqueue
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param u16 queue_index:
+    :param queue_index:
         sub queue index
+    :type queue_index: u16
 
 .. _`netif_stop_subqueue.description`:
 
@@ -1402,11 +1461,13 @@ __netif_subqueue_stopped
 
     test status of subqueue
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
-    :param u16 queue_index:
+    :param queue_index:
         sub queue index
+    :type queue_index: u16
 
 .. _`__netif_subqueue_stopped.description`:
 
@@ -1424,11 +1485,13 @@ netif_wake_subqueue
 
     allow sending packets on subqueue
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param u16 queue_index:
+    :param queue_index:
         sub queue index
+    :type queue_index: u16
 
 .. _`netif_wake_subqueue.description`:
 
@@ -1436,6 +1499,122 @@ Description
 -----------
 
 Resume individual transmit queue of a device with multiple transmit queues.
+
+.. _`netif_attr_test_mask`:
+
+netif_attr_test_mask
+====================
+
+.. c:function:: bool netif_attr_test_mask(unsigned long j, const unsigned long *mask, unsigned int nr_bits)
+
+    Test a CPU or Rx queue set in a mask
+
+    :param j:
+        CPU/Rx queue index
+    :type j: unsigned long
+
+    :param mask:
+        bitmask of all cpus/rx queues
+    :type mask: const unsigned long \*
+
+    :param nr_bits:
+        number of bits in the bitmask
+    :type nr_bits: unsigned int
+
+.. _`netif_attr_test_mask.description`:
+
+Description
+-----------
+
+Test if a CPU or Rx queue index is set in a mask of all CPU/Rx queues.
+
+.. _`netif_attr_test_online`:
+
+netif_attr_test_online
+======================
+
+.. c:function:: bool netif_attr_test_online(unsigned long j, const unsigned long *online_mask, unsigned int nr_bits)
+
+    Test for online CPU/Rx queue
+
+    :param j:
+        CPU/Rx queue index
+    :type j: unsigned long
+
+    :param online_mask:
+        bitmask for CPUs/Rx queues that are online
+    :type online_mask: const unsigned long \*
+
+    :param nr_bits:
+        number of bits in the bitmask
+    :type nr_bits: unsigned int
+
+.. _`netif_attr_test_online.description`:
+
+Description
+-----------
+
+Returns true if a CPU/Rx queue is online.
+
+.. _`netif_attrmask_next`:
+
+netif_attrmask_next
+===================
+
+.. c:function:: unsigned int netif_attrmask_next(int n, const unsigned long *srcp, unsigned int nr_bits)
+
+    get the next CPU/Rx queue in a cpu/Rx queues mask
+
+    :param n:
+        CPU/Rx queue index
+    :type n: int
+
+    :param srcp:
+        the cpumask/Rx queue mask pointer
+    :type srcp: const unsigned long \*
+
+    :param nr_bits:
+        number of bits in the bitmask
+    :type nr_bits: unsigned int
+
+.. _`netif_attrmask_next.description`:
+
+Description
+-----------
+
+Returns >= nr_bits if no further CPUs/Rx queues set.
+
+.. _`netif_attrmask_next_and`:
+
+netif_attrmask_next_and
+=======================
+
+.. c:function:: int netif_attrmask_next_and(int n, const unsigned long *src1p, const unsigned long *src2p, unsigned int nr_bits)
+
+    get the next CPU/Rx queue in *src1p & *src2p
+
+    :param n:
+        CPU/Rx queue index
+    :type n: int
+
+    :param src1p:
+        the first CPUs/Rx queues mask pointer
+    :type src1p: const unsigned long \*
+
+    :param src2p:
+        the second CPUs/Rx queues mask pointer
+    :type src2p: const unsigned long \*
+
+    :param nr_bits:
+        number of bits in the bitmask
+    :type nr_bits: unsigned int
+
+.. _`netif_attrmask_next_and.description`:
+
+Description
+-----------
+
+Returns >= nr_bits if no further CPUs/Rx queues set in both.
 
 .. _`netif_is_multiqueue`:
 
@@ -1446,8 +1625,9 @@ netif_is_multiqueue
 
     test if device has multiple transmit queues
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`netif_is_multiqueue.description`:
 
@@ -1465,8 +1645,9 @@ dev_put
 
     release reference to device
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`dev_put.description`:
 
@@ -1484,8 +1665,9 @@ dev_hold
 
     get reference to device
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`dev_hold.description`:
 
@@ -1503,8 +1685,9 @@ netif_carrier_ok
 
     test if carrier present
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`netif_carrier_ok.description`:
 
@@ -1522,8 +1705,9 @@ netif_dormant_on
 
     mark device as dormant.
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_dormant_on.description`:
 
@@ -1547,8 +1731,9 @@ netif_dormant_off
 
     set device as not dormant.
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_dormant_off.description`:
 
@@ -1566,8 +1751,9 @@ netif_dormant
 
     test if device is dormant
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`netif_dormant.description`:
 
@@ -1585,8 +1771,9 @@ netif_oper_up
 
     test if device is operational
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`netif_oper_up.description`:
 
@@ -1604,8 +1791,9 @@ netif_device_present
 
     is device available or removed
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_device_present.description`:
 
@@ -1623,8 +1811,9 @@ netif_tx_lock
 
     grab network device transmit lock
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_tx_lock.description`:
 
@@ -1642,8 +1831,9 @@ __dev_uc_sync
 
     Synchonize device's unicast list
 
-    :param struct net_device \*dev:
+    :param dev:
         device to sync
+    :type dev: struct net_device \*
 
     :param int (\*sync)(struct net_device \*, const unsigned char \*):
         function to call if address should be added
@@ -1668,8 +1858,9 @@ __dev_uc_unsync
 
     Remove synchronized addresses from device
 
-    :param struct net_device \*dev:
+    :param dev:
         device to sync
+    :type dev: struct net_device \*
 
     :param int (\*unsync)(struct net_device \*, const unsigned char \*):
         function to call if address should be removed
@@ -1690,8 +1881,9 @@ __dev_mc_sync
 
     Synchonize device's multicast list
 
-    :param struct net_device \*dev:
+    :param dev:
         device to sync
+    :type dev: struct net_device \*
 
     :param int (\*sync)(struct net_device \*, const unsigned char \*):
         function to call if address should be added
@@ -1716,8 +1908,9 @@ __dev_mc_unsync
 
     Remove synchronized addresses from device
 
-    :param struct net_device \*dev:
+    :param dev:
         device to sync
+    :type dev: struct net_device \*
 
     :param int (\*unsync)(struct net_device \*, const unsigned char \*):
         function to call if address should be removed

@@ -10,20 +10,25 @@ tomoyo_argv
 
     Check argv[] in "struct linux_binbrm".
 
-    :param const unsigned int index:
+    :param index:
         Index number of \ ``arg_ptr``\ .
+    :type index: const unsigned int
 
-    :param const char \*arg_ptr:
+    :param arg_ptr:
         Contents of argv[@index].
+    :type arg_ptr: const char \*
 
-    :param const int argc:
+    :param argc:
         Length of \ ``argv``\ .
+    :type argc: const int
 
-    :param const struct tomoyo_argv \*argv:
+    :param argv:
         Pointer to "struct tomoyo_argv".
+    :type argv: const struct tomoyo_argv \*
 
-    :param u8 \*checked:
+    :param checked:
         Set to true if \ ``argv``\ [@index] was found.
+    :type checked: u8 \*
 
 .. _`tomoyo_argv.description`:
 
@@ -41,20 +46,25 @@ tomoyo_envp
 
     Check envp[] in "struct linux_binbrm".
 
-    :param const char \*env_name:
+    :param env_name:
         The name of environment variable.
+    :type env_name: const char \*
 
-    :param const char \*env_value:
+    :param env_value:
         The value of environment variable.
+    :type env_value: const char \*
 
-    :param const int envc:
+    :param envc:
         Length of \ ``envp``\ .
+    :type envc: const int
 
-    :param const struct tomoyo_envp \*envp:
+    :param envp:
         Pointer to "struct tomoyo_envp".
+    :type envp: const struct tomoyo_envp \*
 
-    :param u8 \*checked:
+    :param checked:
         Set to true if \ ``envp``\ [@env_name] was found.
+    :type checked: u8 \*
 
 .. _`tomoyo_envp.description`:
 
@@ -72,20 +82,25 @@ tomoyo_scan_bprm
 
     Scan "struct linux_binprm".
 
-    :param struct tomoyo_execve \*ee:
+    :param ee:
         Pointer to "struct tomoyo_execve".
+    :type ee: struct tomoyo_execve \*
 
-    :param const u16 argc:
+    :param argc:
         Length of \ ``argc``\ .
+    :type argc: const u16
 
-    :param const struct tomoyo_argv \*argv:
+    :param argv:
         Pointer to "struct tomoyo_argv".
+    :type argv: const struct tomoyo_argv \*
 
-    :param const u16 envc:
+    :param envc:
         Length of \ ``envp``\ .
+    :type envc: const u16
 
-    :param const struct tomoyo_envp \*envp:
+    :param envp:
         Poiner to "struct tomoyo_envp".
+    :type envp: const struct tomoyo_envp \*
 
 .. _`tomoyo_scan_bprm.description`:
 
@@ -103,14 +118,17 @@ tomoyo_scan_exec_realpath
 
     Check "exec.realpath" parameter of "struct tomoyo_condition".
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
-    :param const struct tomoyo_name_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_name_union".
+    :type ptr: const struct tomoyo_name_union \*
 
-    :param const bool match:
+    :param match:
         True if "exec.realpath=", false if "exec.realpath!=".
+    :type match: const bool
 
 .. _`tomoyo_scan_exec_realpath.description`:
 
@@ -128,8 +146,9 @@ tomoyo_get_dqword
 
     \ :c:func:`tomoyo_get_name`\  for a quoted string.
 
-    :param char \*start:
+    :param start:
         String to save.
+    :type start: char \*
 
 .. _`tomoyo_get_dqword.description`:
 
@@ -147,11 +166,13 @@ tomoyo_parse_name_union_quoted
 
     Parse a quoted word.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
-    :param struct tomoyo_name_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_name_union".
+    :type ptr: struct tomoyo_name_union \*
 
 .. _`tomoyo_parse_name_union_quoted.description`:
 
@@ -169,14 +190,17 @@ tomoyo_parse_argv
 
     Parse an argv[] condition part.
 
-    :param char \*left:
+    :param left:
         Lefthand value.
+    :type left: char \*
 
-    :param char \*right:
+    :param right:
         Righthand value.
+    :type right: char \*
 
-    :param struct tomoyo_argv \*argv:
+    :param argv:
         Pointer to "struct tomoyo_argv".
+    :type argv: struct tomoyo_argv \*
 
 .. _`tomoyo_parse_argv.description`:
 
@@ -194,14 +218,17 @@ tomoyo_parse_envp
 
     Parse an envp[] condition part.
 
-    :param char \*left:
+    :param left:
         Lefthand value.
+    :type left: char \*
 
-    :param char \*right:
+    :param right:
         Righthand value.
+    :type right: char \*
 
-    :param struct tomoyo_envp \*envp:
+    :param envp:
         Pointer to "struct tomoyo_envp".
+    :type envp: struct tomoyo_envp \*
 
 .. _`tomoyo_parse_envp.description`:
 
@@ -219,11 +246,13 @@ tomoyo_same_condition
 
     Check for duplicated "struct tomoyo_condition" entry.
 
-    :param const struct tomoyo_condition \*a:
+    :param a:
         Pointer to "struct tomoyo_condition".
+    :type a: const struct tomoyo_condition \*
 
-    :param const struct tomoyo_condition \*b:
+    :param b:
         Pointer to "struct tomoyo_condition".
+    :type b: const struct tomoyo_condition \*
 
 .. _`tomoyo_same_condition.description`:
 
@@ -241,8 +270,9 @@ tomoyo_condition_type
 
     Get condition type.
 
-    :param const char \*word:
+    :param word:
         Keyword string.
+    :type word: const char \*
 
 .. _`tomoyo_condition_type.description`:
 
@@ -261,8 +291,9 @@ tomoyo_commit_condition
 
     Commit "struct tomoyo_condition".
 
-    :param struct tomoyo_condition \*entry:
+    :param entry:
         Pointer to "struct tomoyo_condition".
+    :type entry: struct tomoyo_condition \*
 
 .. _`tomoyo_commit_condition.description`:
 
@@ -283,11 +314,13 @@ tomoyo_get_transit_preference
 
     Parse domain transition preference for \ :c:func:`execve`\ .
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
-    :param struct tomoyo_condition \*e:
+    :param e:
         Pointer to "struct tomoyo_condition".
+    :type e: struct tomoyo_condition \*
 
 .. _`tomoyo_get_transit_preference.description`:
 
@@ -305,8 +338,9 @@ tomoyo_get_condition
 
     Parse condition part.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_get_condition.description`:
 
@@ -324,8 +358,9 @@ tomoyo_get_attributes
 
     Revalidate "struct inode".
 
-    :param struct tomoyo_obj_info \*obj:
+    :param obj:
         Pointer to "struct tomoyo_obj_info".
+    :type obj: struct tomoyo_obj_info \*
 
 .. _`tomoyo_get_attributes.description`:
 
@@ -343,11 +378,13 @@ tomoyo_condition
 
     Check condition part.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_condition \*cond:
+    :param cond:
         Pointer to "struct tomoyo_condition". Maybe NULL.
+    :type cond: const struct tomoyo_condition \*
 
 .. _`tomoyo_condition.description`:
 

@@ -10,8 +10,9 @@ get_n_events_by_type
 
     returns maximum number of events per \ ``type``\ 
 
-    :param int type:
+    :param type:
         type of button (%EV_KEY, \ ``EV_SW``\ )
+    :type type: int
 
 .. _`get_n_events_by_type.description`:
 
@@ -30,11 +31,13 @@ get_bm_events_by_type
 
     returns bitmap of supported events per \ ``type``\ 
 
-    :param struct input_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct input_dev \*
 
-    :param int type:
+    :param type:
         type of button (%EV_KEY, \ ``EV_SW``\ )
+    :type type: int
 
 .. _`get_bm_events_by_type.description`:
 
@@ -53,8 +56,9 @@ gpio_keys_disable_button
 
     disables given GPIO button
 
-    :param struct gpio_button_data \*bdata:
+    :param bdata:
         button data for button to be disabled
+    :type bdata: struct gpio_button_data \*
 
 .. _`gpio_keys_disable_button.description`:
 
@@ -66,7 +70,7 @@ IRQ line. After this function is called, button won't generate
 input events anymore. Note that one can only disable buttons
 that don't share IRQs.
 
-Make sure that \ ``bdata``\ ->disable_lock is locked when entering
+Make sure that \ ``bdata->disable_lock``\  is locked when entering
 this function to avoid races when concurrent threads are
 disabling buttons at the same time.
 
@@ -79,8 +83,9 @@ gpio_keys_enable_button
 
     enables given GPIO button
 
-    :param struct gpio_button_data \*bdata:
+    :param bdata:
         button data for button to be disabled
+    :type bdata: struct gpio_button_data \*
 
 .. _`gpio_keys_enable_button.description`:
 
@@ -89,7 +94,7 @@ Description
 
 Enables given button pointed by \ ``bdata``\ .
 
-Make sure that \ ``bdata``\ ->disable_lock is locked when entering
+Make sure that \ ``bdata->disable_lock``\  is locked when entering
 this function to avoid races with concurrent threads trying
 to enable the same button at the same time.
 
@@ -102,19 +107,23 @@ gpio_keys_attr_show_helper
 
     fill in stringified bitmap of buttons
 
-    :param struct gpio_keys_drvdata \*ddata:
+    :param ddata:
         pointer to drvdata
+    :type ddata: struct gpio_keys_drvdata \*
 
-    :param char \*buf:
+    :param buf:
         buffer where stringified bitmap is written
+    :type buf: char \*
 
-    :param unsigned int type:
+    :param type:
         button type (%EV_KEY, \ ``EV_SW``\ )
+    :type type: unsigned int
 
-    :param bool only_disabled:
+    :param only_disabled:
         does caller want only those buttons that are
         currently disabled or all buttons that can be
         disabled
+    :type only_disabled: bool
 
 .. _`gpio_keys_attr_show_helper.description`:
 
@@ -135,14 +144,17 @@ gpio_keys_attr_store_helper
 
     enable/disable buttons based on given bitmap
 
-    :param struct gpio_keys_drvdata \*ddata:
+    :param ddata:
         pointer to drvdata
+    :type ddata: struct gpio_keys_drvdata \*
 
-    :param const char \*buf:
+    :param buf:
         buffer from userspace that contains stringified bitmap
+    :type buf: const char \*
 
-    :param unsigned int type:
+    :param type:
         button type (%EV_KEY, \ ``EV_SW``\ )
+    :type type: unsigned int
 
 .. _`gpio_keys_attr_store_helper.description`:
 

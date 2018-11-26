@@ -10,14 +10,17 @@ ntfs_map_runlist_nolock
 
     NTFS attribute operations.  Part of the Linux-NTFS project.
 
-    :param ntfs_inode \*ni:
+    :param ni:
         *undescribed*
+    :type ni: ntfs_inode \*
 
-    :param VCN vcn:
+    :param vcn:
         *undescribed*
+    :type vcn: VCN
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: ntfs_attr_search_ctx \*
 
 .. _`ntfs_map_runlist_nolock.description`:
 
@@ -51,11 +54,13 @@ ntfs_map_runlist
 
     map (a part of) a runlist of an ntfs inode
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode for which to map (part of) a runlist
+    :type ni: ntfs_inode \*
 
-    :param VCN vcn:
+    :param vcn:
         map runlist part containing this vcn
+    :type vcn: VCN
 
 .. _`ntfs_map_runlist.description`:
 
@@ -86,14 +91,17 @@ ntfs_attr_vcn_to_lcn_nolock
 
     convert a vcn into a lcn given an ntfs inode
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode of the attribute whose runlist to search
+    :type ni: ntfs_inode \*
 
-    :param const VCN vcn:
+    :param vcn:
         vcn to convert
+    :type vcn: const VCN
 
-    :param const bool write_locked:
+    :param write_locked:
         true if the runlist is locked for writing
+    :type write_locked: const bool
 
 .. _`ntfs_attr_vcn_to_lcn_nolock.description`:
 
@@ -138,14 +146,17 @@ ntfs_attr_find_vcn_nolock
 
     find a vcn in the runlist of an ntfs inode
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode describing the runlist to search
+    :type ni: ntfs_inode \*
 
-    :param const VCN vcn:
+    :param vcn:
         vcn to find
+    :type vcn: const VCN
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         active attribute search context if present or NULL if not
+    :type ctx: ntfs_attr_search_ctx \*
 
 .. _`ntfs_attr_find_vcn_nolock.description`:
 
@@ -226,26 +237,33 @@ ntfs_attr_find
 
     find (next) attribute in mft record
 
-    :param const ATTR_TYPE type:
+    :param type:
         attribute type to find
+    :type type: const ATTR_TYPE
 
-    :param const ntfschar \*name:
+    :param name:
         attribute name to find (optional, i.e. NULL means don't care)
+    :type name: const ntfschar \*
 
-    :param const u32 name_len:
+    :param name_len:
         attribute name length (only needed if \ ``name``\  present)
+    :type name_len: const u32
 
-    :param const IGNORE_CASE_BOOL ic:
+    :param ic:
         IGNORE_CASE or CASE_SENSITIVE (ignored if \ ``name``\  not present)
+    :type ic: const IGNORE_CASE_BOOL
 
-    :param const u8 \*val:
+    :param val:
         attribute value to find (optional, resident attributes only)
+    :type val: const u8 \*
 
-    :param const u32 val_len:
+    :param val_len:
         attribute value length
+    :type val_len: const u32
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         search context with mft record and attribute to search from
+    :type ctx: ntfs_attr_search_ctx \*
 
 .. _`ntfs_attr_find.description`:
 
@@ -256,25 +274,25 @@ You should not need to call this function directly.  Use \ :c:func:`ntfs_attr_lo
 instead.
 
 \ :c:func:`ntfs_attr_find`\  takes a search context \ ``ctx``\  as parameter and searches the
-mft record specified by \ ``ctx``\ ->mrec, beginning at \ ``ctx``\ ->attr, for an
+mft record specified by \ ``ctx->mrec``\ , beginning at \ ``ctx->attr``\ , for an
 attribute of \ ``type``\ , optionally \ ``name``\  and \ ``val``\ .
 
-If the attribute is found, \ :c:func:`ntfs_attr_find`\  returns 0 and \ ``ctx``\ ->attr will
+If the attribute is found, \ :c:func:`ntfs_attr_find`\  returns 0 and \ ``ctx->attr``\  will
 point to the found attribute.
 
 If the attribute is not found, \ :c:func:`ntfs_attr_find`\  returns -ENOENT and
-\ ``ctx``\ ->attr will point to the attribute before which the attribute being
+\ ``ctx->attr``\  will point to the attribute before which the attribute being
 searched for would need to be inserted if such an action were to be desired.
 
-On actual error, \ :c:func:`ntfs_attr_find`\  returns -EIO.  In this case \ ``ctx``\ ->attr is
+On actual error, \ :c:func:`ntfs_attr_find`\  returns -EIO.  In this case \ ``ctx->attr``\  is
 undefined and in particular do not rely on it not changing.
 
-If \ ``ctx``\ ->is_first is 'true', the search begins with \ ``ctx``\ ->attr itself.  If it
-is 'false', the search begins after \ ``ctx``\ ->attr.
+If \ ``ctx->is_first``\  is 'true', the search begins with \ ``ctx->attr``\  itself.  If it
+is 'false', the search begins after \ ``ctx->attr``\ .
 
 If \ ``ic``\  is IGNORE_CASE, the \ ``name``\  comparisson is not case sensitive and
-\ ``ctx``\ ->ntfs_ino must be set to the ntfs inode to which the mft record
-\ ``ctx``\ ->mrec belongs.  This is so we can get at the ntfs volume and hence at
+\ ``ctx->ntfs_ino``\  must be set to the ntfs inode to which the mft record
+\ ``ctx->mrec``\  belongs.  This is so we can get at the ntfs volume and hence at
 the upcase table.  If \ ``ic``\  is CASE_SENSITIVE, the comparison is case
 sensitive.  When \ ``name``\  is present, \ ``name_len``\  is the \ ``name``\  length in Unicode
 characters.
@@ -313,20 +331,25 @@ load_attribute_list
 
     load an attribute list into memory
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume from which to read
+    :type vol: ntfs_volume \*
 
-    :param runlist \*runlist:
+    :param runlist:
         runlist of the attribute list
+    :type runlist: runlist \*
 
-    :param u8 \*al_start:
+    :param al_start:
         destination buffer
+    :type al_start: u8 \*
 
-    :param const s64 size:
+    :param size:
         size of the destination buffer in bytes
+    :type size: const s64
 
-    :param const s64 initialized_size:
+    :param initialized_size:
         initialized size of the attribute list
+    :type initialized_size: const s64
 
 .. _`load_attribute_list.description`:
 
@@ -350,29 +373,37 @@ ntfs_external_attr_find
 
     find an attribute in the attribute list of an inode
 
-    :param const ATTR_TYPE type:
+    :param type:
         attribute type to find
+    :type type: const ATTR_TYPE
 
-    :param const ntfschar \*name:
+    :param name:
         attribute name to find (optional, i.e. NULL means don't care)
+    :type name: const ntfschar \*
 
-    :param const u32 name_len:
+    :param name_len:
         attribute name length (only needed if \ ``name``\  present)
+    :type name_len: const u32
 
-    :param const IGNORE_CASE_BOOL ic:
+    :param ic:
         IGNORE_CASE or CASE_SENSITIVE (ignored if \ ``name``\  not present)
+    :type ic: const IGNORE_CASE_BOOL
 
-    :param const VCN lowest_vcn:
+    :param lowest_vcn:
         lowest vcn to find (optional, non-resident attributes only)
+    :type lowest_vcn: const VCN
 
-    :param const u8 \*val:
+    :param val:
         attribute value to find (optional, resident attributes only)
+    :type val: const u8 \*
 
-    :param const u32 val_len:
+    :param val_len:
         attribute value length
+    :type val_len: const u32
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         search context with mft record and attribute to search from
+    :type ctx: ntfs_attr_search_ctx \*
 
 .. _`ntfs_external_attr_find.description`:
 
@@ -387,9 +418,9 @@ attribute list entry.  Having found the entry, map the mft record if the
 attribute is in a different mft record/inode, \ :c:func:`ntfs_attr_find`\  the attribute
 in there and return it.
 
-On first search \ ``ctx``\ ->ntfs_ino must be the base mft record and \ ``ctx``\  must
+On first search \ ``ctx->ntfs_ino``\  must be the base mft record and \ ``ctx``\  must
 have been obtained from a call to \ :c:func:`ntfs_attr_get_search_ctx`\ .  On subsequent
-calls \ ``ctx``\ ->ntfs_ino can be any extent inode, too (@ctx->base_ntfs_ino is
+calls \ ``ctx->ntfs_ino``\  can be any extent inode, too (@ctx->base_ntfs_ino is
 then the base inode).
 
 After finishing with the attribute/mft record you need to call
@@ -397,26 +428,26 @@ After finishing with the attribute/mft record you need to call
 mapped inodes, etc).
 
 If the attribute is found, \ :c:func:`ntfs_external_attr_find`\  returns 0 and
-\ ``ctx``\ ->attr will point to the found attribute.  \ ``ctx``\ ->mrec will point to the
-mft record in which \ ``ctx``\ ->attr is located and \ ``ctx``\ ->al_entry will point to
+\ ``ctx->attr``\  will point to the found attribute.  \ ``ctx->mrec``\  will point to the
+mft record in which \ ``ctx->attr``\  is located and \ ``ctx->al_entry``\  will point to
 the attribute list entry for the attribute.
 
 If the attribute is not found, \ :c:func:`ntfs_external_attr_find`\  returns -ENOENT and
-\ ``ctx``\ ->attr will point to the attribute in the base mft record before which
+\ ``ctx->attr``\  will point to the attribute in the base mft record before which
 the attribute being searched for would need to be inserted if such an action
-were to be desired.  \ ``ctx``\ ->mrec will point to the mft record in which
-\ ``ctx``\ ->attr is located and \ ``ctx``\ ->al_entry will point to the attribute list
+were to be desired.  \ ``ctx->mrec``\  will point to the mft record in which
+\ ``ctx->attr``\  is located and \ ``ctx->al_entry``\  will point to the attribute list
 entry of the attribute before which the attribute being searched for would
 need to be inserted if such an action were to be desired.
 
 Thus to insert the not found attribute, one wants to add the attribute to
-\ ``ctx``\ ->mrec (the base mft record) and if there is not enough space, the
+\ ``ctx->mrec``\  (the base mft record) and if there is not enough space, the
 attribute should be placed in a newly allocated extent mft record.  The
 attribute list entry for the inserted attribute should be inserted in the
-attribute list attribute at \ ``ctx``\ ->al_entry.
+attribute list attribute at \ ``ctx->al_entry``\ .
 
 On actual error, \ :c:func:`ntfs_external_attr_find`\  returns -EIO.  In this case
-\ ``ctx``\ ->attr is undefined and in particular do not rely on it not changing.
+\ ``ctx->attr``\  is undefined and in particular do not rely on it not changing.
 
 .. _`ntfs_attr_lookup`:
 
@@ -427,36 +458,44 @@ ntfs_attr_lookup
 
     find an attribute in an ntfs inode
 
-    :param const ATTR_TYPE type:
+    :param type:
         attribute type to find
+    :type type: const ATTR_TYPE
 
-    :param const ntfschar \*name:
+    :param name:
         attribute name to find (optional, i.e. NULL means don't care)
+    :type name: const ntfschar \*
 
-    :param const u32 name_len:
+    :param name_len:
         attribute name length (only needed if \ ``name``\  present)
+    :type name_len: const u32
 
-    :param const IGNORE_CASE_BOOL ic:
+    :param ic:
         IGNORE_CASE or CASE_SENSITIVE (ignored if \ ``name``\  not present)
+    :type ic: const IGNORE_CASE_BOOL
 
-    :param const VCN lowest_vcn:
+    :param lowest_vcn:
         lowest vcn to find (optional, non-resident attributes only)
+    :type lowest_vcn: const VCN
 
-    :param const u8 \*val:
+    :param val:
         attribute value to find (optional, resident attributes only)
+    :type val: const u8 \*
 
-    :param const u32 val_len:
+    :param val_len:
         attribute value length
+    :type val_len: const u32
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         search context with mft record and attribute to search from
+    :type ctx: ntfs_attr_search_ctx \*
 
 .. _`ntfs_attr_lookup.description`:
 
 Description
 -----------
 
-Find an attribute in an ntfs inode.  On first search \ ``ctx``\ ->ntfs_ino must
+Find an attribute in an ntfs inode.  On first search \ ``ctx->ntfs_ino``\  must
 be the base mft record and \ ``ctx``\  must have been obtained from a call to
 \ :c:func:`ntfs_attr_get_search_ctx`\ .
 
@@ -469,19 +508,19 @@ mapped inodes, etc).
 
 Return 0 if the search was successful and -errno if not.
 
-When 0, \ ``ctx``\ ->attr is the found attribute and it is in mft record
-\ ``ctx``\ ->mrec.  If an attribute list attribute is present, \ ``ctx``\ ->al_entry is
+When 0, \ ``ctx->attr``\  is the found attribute and it is in mft record
+\ ``ctx->mrec``\ .  If an attribute list attribute is present, \ ``ctx->al_entry``\  is
 the attribute list entry of the found attribute.
 
-When -ENOENT, \ ``ctx``\ ->attr is the attribute which collates just after the
+When -ENOENT, \ ``ctx->attr``\  is the attribute which collates just after the
 attribute being searched for, i.e. if one wants to add the attribute to the
 mft record this is the correct place to insert it into.  If an attribute
-list attribute is present, \ ``ctx``\ ->al_entry is the attribute list entry which
+list attribute is present, \ ``ctx->al_entry``\  is the attribute list entry which
 collates just after the attribute list entry of the attribute being searched
 for, i.e. if one wants to add the attribute to the mft record this is the
 correct place to insert its attribute list entry into.
 
-When -errno != -ENOENT, an error occurred during the lookup.  \ ``ctx``\ ->attr is
+When -errno != -ENOENT, an error occurred during the lookup.  \ ``ctx->attr``\  is
 then undefined and in particular you should not rely on it not changing.
 
 .. _`ntfs_attr_init_search_ctx`:
@@ -493,14 +532,17 @@ ntfs_attr_init_search_ctx
 
     initialize an attribute search context
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         attribute search context to initialize
+    :type ctx: ntfs_attr_search_ctx \*
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode with which to initialize the search context
+    :type ni: ntfs_inode \*
 
-    :param MFT_RECORD \*mrec:
+    :param mrec:
         mft record with which to initialize the search context
+    :type mrec: MFT_RECORD \*
 
 .. _`ntfs_attr_init_search_ctx.description`:
 
@@ -518,8 +560,9 @@ ntfs_attr_reinit_search_ctx
 
     reinitialize an attribute search context
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         attribute search context to reinitialize
+    :type ctx: ntfs_attr_search_ctx \*
 
 .. _`ntfs_attr_reinit_search_ctx.description`:
 
@@ -541,11 +584,13 @@ ntfs_attr_get_search_ctx
 
     allocate/initialize a new attribute search context
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode with which to initialize the search context
+    :type ni: ntfs_inode \*
 
-    :param MFT_RECORD \*mrec:
+    :param mrec:
         mft record with which to initialize the search context
+    :type mrec: MFT_RECORD \*
 
 .. _`ntfs_attr_get_search_ctx.description`:
 
@@ -564,8 +609,9 @@ ntfs_attr_put_search_ctx
 
     release an attribute search context
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         attribute search context to free
+    :type ctx: ntfs_attr_search_ctx \*
 
 .. _`ntfs_attr_put_search_ctx.description`:
 
@@ -584,11 +630,13 @@ ntfs_attr_find_in_attrdef
 
     find an attribute in the \ ``$AttrDef``\  system file
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume to which the attribute belongs
+    :type vol: const ntfs_volume \*
 
-    :param const ATTR_TYPE type:
+    :param type:
         attribute type which to find
+    :type type: const ATTR_TYPE
 
 .. _`ntfs_attr_find_in_attrdef.description`:
 
@@ -609,14 +657,17 @@ ntfs_attr_size_bounds_check
 
     check a size of an attribute type for validity
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume to which the attribute belongs
+    :type vol: const ntfs_volume \*
 
-    :param const ATTR_TYPE type:
+    :param type:
         attribute type which to check
+    :type type: const ATTR_TYPE
 
-    :param const s64 size:
+    :param size:
         size which to check
+    :type size: const s64
 
 .. _`ntfs_attr_size_bounds_check.description`:
 
@@ -638,11 +689,13 @@ ntfs_attr_can_be_non_resident
 
     check if an attribute can be non-resident
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume to which the attribute belongs
+    :type vol: const ntfs_volume \*
 
-    :param const ATTR_TYPE type:
+    :param type:
         attribute type which to check
+    :type type: const ATTR_TYPE
 
 .. _`ntfs_attr_can_be_non_resident.description`:
 
@@ -664,11 +717,13 @@ ntfs_attr_can_be_resident
 
     check if an attribute can be resident
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume to which the attribute belongs
+    :type vol: const ntfs_volume \*
 
-    :param const ATTR_TYPE type:
+    :param type:
         attribute type which to check
+    :type type: const ATTR_TYPE
 
 .. _`ntfs_attr_can_be_resident.description`:
 
@@ -702,14 +757,17 @@ ntfs_attr_record_resize
 
     resize an attribute record
 
-    :param MFT_RECORD \*m:
+    :param m:
         mft record containing attribute record
+    :type m: MFT_RECORD \*
 
-    :param ATTR_RECORD \*a:
+    :param a:
         attribute record to resize
+    :type a: ATTR_RECORD \*
 
-    :param u32 new_size:
+    :param new_size:
         new size in bytes to which to resize the attribute record \ ``a``\ 
+    :type new_size: u32
 
 .. _`ntfs_attr_record_resize.description`:
 
@@ -752,14 +810,17 @@ ntfs_resident_attr_value_resize
 
     resize the value of a resident attribute
 
-    :param MFT_RECORD \*m:
+    :param m:
         mft record containing attribute record
+    :type m: MFT_RECORD \*
 
-    :param ATTR_RECORD \*a:
+    :param a:
         attribute record whose value to resize
+    :type a: ATTR_RECORD \*
 
-    :param const u32 new_size:
+    :param new_size:
         new size in bytes to which to resize the attribute value of \ ``a``\ 
+    :type new_size: const u32
 
 .. _`ntfs_resident_attr_value_resize.description`:
 
@@ -802,11 +863,13 @@ ntfs_attr_make_non_resident
 
     convert a resident to a non-resident attribute
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode describing the attribute to convert
+    :type ni: ntfs_inode \*
 
-    :param const u32 data_size:
+    :param data_size:
         size of the resident data to copy to the non-resident attribute
+    :type data_size: const u32
 
 .. _`ntfs_attr_make_non_resident.description`:
 
@@ -866,17 +929,21 @@ ntfs_attr_extend_allocation
 
     extend the allocated space of an attribute
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode of the attribute whose allocation to extend
+    :type ni: ntfs_inode \*
 
-    :param s64 new_alloc_size:
+    :param new_alloc_size:
         new size in bytes to which to extend the allocation to
+    :type new_alloc_size: s64
 
-    :param const s64 new_data_size:
+    :param new_data_size:
         new size in bytes to which to extend the data to
+    :type new_data_size: const s64
 
-    :param const s64 data_start:
+    :param data_start:
         beginning of region which is required to be non-sparse
+    :type data_start: const s64
 
 .. _`ntfs_attr_extend_allocation.description`:
 
@@ -960,17 +1027,21 @@ ntfs_attr_set
 
     fill (a part of) an attribute with a byte
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode describing the attribute to fill
+    :type ni: ntfs_inode \*
 
-    :param const s64 ofs:
+    :param ofs:
         offset inside the attribute at which to start to fill
+    :type ofs: const s64
 
-    :param const s64 cnt:
+    :param cnt:
         number of bytes to fill
+    :type cnt: const s64
 
-    :param const u8 val:
+    :param val:
         the unsigned 8-bit value with which to fill the attribute
+    :type val: const u8
 
 .. _`ntfs_attr_set.description`:
 

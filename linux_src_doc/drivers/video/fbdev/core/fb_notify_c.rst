@@ -10,8 +10,9 @@ fb_register_client
 
     register a client notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block to callback on events
+    :type nb: struct notifier_block \*
 
 .. _`fb_unregister_client`:
 
@@ -22,8 +23,9 @@ fb_unregister_client
 
     unregister a client notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block to callback on events
+    :type nb: struct notifier_block \*
 
 .. _`fb_notifier_call_chain`:
 
@@ -34,11 +36,13 @@ fb_notifier_call_chain
 
     notify clients of fb_events
 
-    :param unsigned long val:
+    :param val:
         *undescribed*
+    :type val: unsigned long
 
-    :param void \*v:
+    :param v:
         *undescribed*
+    :type v: void \*
 
 .. This file was automatic generated / don't edit.
 

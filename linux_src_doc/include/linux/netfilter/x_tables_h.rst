@@ -234,11 +234,13 @@ DECLARE_PER_CPU
 
     recursive seqcount for netfilter use
 
-    :param  seqcount_t:
+    :param seqcount_t:
         *undescribed*
+    :type seqcount_t: 
 
-    :param  xt_recseq:
+    :param xt_recseq:
         *undescribed*
+    :type xt_recseq: 
 
 .. _`declare_per_cpu.description`:
 
@@ -259,8 +261,9 @@ xt_write_recseq_begin
 
     start of a write section
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`xt_write_recseq_begin.description`:
 
@@ -283,8 +286,9 @@ xt_write_recseq_end
 
     end of a write section
 
-    :param unsigned int addend:
+    :param addend:
         return value from previous \ :c:func:`xt_write_recseq_begin`\ 
+    :type addend: unsigned int
 
 .. _`xt_write_recseq_end.description`:
 

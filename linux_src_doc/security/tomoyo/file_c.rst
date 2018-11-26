@@ -10,8 +10,9 @@ tomoyo_put_name_union
 
     Drop reference on "struct tomoyo_name_union".
 
-    :param struct tomoyo_name_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_name_union".
+    :type ptr: struct tomoyo_name_union \*
 
 .. _`tomoyo_put_name_union.description`:
 
@@ -29,11 +30,13 @@ tomoyo_compare_name_union
 
     Check whether a name matches "struct tomoyo_name_union" or not.
 
-    :param const struct tomoyo_path_info \*name:
+    :param name:
         Pointer to "struct tomoyo_path_info".
+    :type name: const struct tomoyo_path_info \*
 
-    :param const struct tomoyo_name_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_name_union".
+    :type ptr: const struct tomoyo_name_union \*
 
 .. _`tomoyo_compare_name_union.description`:
 
@@ -51,8 +54,9 @@ tomoyo_put_number_union
 
     Drop reference on "struct tomoyo_number_union".
 
-    :param struct tomoyo_number_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_number_union".
+    :type ptr: struct tomoyo_number_union \*
 
 .. _`tomoyo_put_number_union.description`:
 
@@ -70,11 +74,13 @@ tomoyo_compare_number_union
 
     Check whether a value matches "struct tomoyo_number_union" or not.
 
-    :param const unsigned long value:
+    :param value:
         Number to check.
+    :type value: const unsigned long
 
-    :param const struct tomoyo_number_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_number_union".
+    :type ptr: const struct tomoyo_number_union \*
 
 .. _`tomoyo_compare_number_union.description`:
 
@@ -92,8 +98,9 @@ tomoyo_add_slash
 
     Add trailing '/' if needed.
 
-    :param struct tomoyo_path_info \*buf:
+    :param buf:
         Pointer to "struct tomoyo_path_info".
+    :type buf: struct tomoyo_path_info \*
 
 .. _`tomoyo_add_slash.description`:
 
@@ -114,11 +121,13 @@ tomoyo_get_realpath
 
     Get realpath.
 
-    :param struct tomoyo_path_info \*buf:
+    :param buf:
         Pointer to "struct tomoyo_path_info".
+    :type buf: struct tomoyo_path_info \*
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
 .. _`tomoyo_get_realpath.description`:
 
@@ -136,8 +145,9 @@ tomoyo_audit_path_log
 
     Audit path request log.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
 .. _`tomoyo_audit_path_log.description`:
 
@@ -155,8 +165,9 @@ tomoyo_audit_path2_log
 
     Audit path/path request log.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
 .. _`tomoyo_audit_path2_log.description`:
 
@@ -174,8 +185,9 @@ tomoyo_audit_mkdev_log
 
     Audit path/number/number/number request log.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
 .. _`tomoyo_audit_mkdev_log.description`:
 
@@ -193,8 +205,9 @@ tomoyo_audit_path_number_log
 
     Audit path/number request log.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
 .. _`tomoyo_audit_path_number_log.description`:
 
@@ -212,11 +225,13 @@ tomoyo_check_path_acl
 
     Check permission for path operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_acl_info \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_acl_info".
+    :type ptr: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_check_path_acl.description`:
 
@@ -238,11 +253,13 @@ tomoyo_check_path_number_acl
 
     Check permission for path number operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_acl_info \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_acl_info".
+    :type ptr: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_check_path_number_acl.description`:
 
@@ -260,11 +277,13 @@ tomoyo_check_path2_acl
 
     Check permission for path path operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_acl_info \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_acl_info".
+    :type ptr: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_check_path2_acl.description`:
 
@@ -282,11 +301,13 @@ tomoyo_check_mkdev_acl
 
     Check permission for path number number number operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_acl_info \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_acl_info".
+    :type ptr: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_check_mkdev_acl.description`:
 
@@ -304,11 +325,13 @@ tomoyo_same_path_acl
 
     Check for duplicated "struct tomoyo_path_acl" entry.
 
-    :param const struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: const struct tomoyo_acl_info \*
 
-    :param const struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_same_path_acl.description`:
 
@@ -326,14 +349,17 @@ tomoyo_merge_path_acl
 
     Merge duplicated "struct tomoyo_path_acl" entry.
 
-    :param struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: struct tomoyo_acl_info \*
 
-    :param struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: struct tomoyo_acl_info \*
 
-    :param const bool is_delete:
+    :param is_delete:
         True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
+    :type is_delete: const bool
 
 .. _`tomoyo_merge_path_acl.description`:
 
@@ -351,11 +377,13 @@ tomoyo_update_path_acl
 
     Update "struct tomoyo_path_acl" list.
 
-    :param const u16 perm:
+    :param perm:
         Permission.
+    :type perm: const u16
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_update_path_acl.description`:
 
@@ -375,11 +403,13 @@ tomoyo_same_mkdev_acl
 
     Check for duplicated "struct tomoyo_mkdev_acl" entry.
 
-    :param const struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: const struct tomoyo_acl_info \*
 
-    :param const struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_same_mkdev_acl.description`:
 
@@ -397,14 +427,17 @@ tomoyo_merge_mkdev_acl
 
     Merge duplicated "struct tomoyo_mkdev_acl" entry.
 
-    :param struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: struct tomoyo_acl_info \*
 
-    :param struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: struct tomoyo_acl_info \*
 
-    :param const bool is_delete:
+    :param is_delete:
         True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
+    :type is_delete: const bool
 
 .. _`tomoyo_merge_mkdev_acl.description`:
 
@@ -422,11 +455,13 @@ tomoyo_update_mkdev_acl
 
     Update "struct tomoyo_mkdev_acl" list.
 
-    :param const u8 perm:
+    :param perm:
         Permission.
+    :type perm: const u8
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_update_mkdev_acl.description`:
 
@@ -446,11 +481,13 @@ tomoyo_same_path2_acl
 
     Check for duplicated "struct tomoyo_path2_acl" entry.
 
-    :param const struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: const struct tomoyo_acl_info \*
 
-    :param const struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_same_path2_acl.description`:
 
@@ -468,14 +505,17 @@ tomoyo_merge_path2_acl
 
     Merge duplicated "struct tomoyo_path2_acl" entry.
 
-    :param struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: struct tomoyo_acl_info \*
 
-    :param struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: struct tomoyo_acl_info \*
 
-    :param const bool is_delete:
+    :param is_delete:
         True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
+    :type is_delete: const bool
 
 .. _`tomoyo_merge_path2_acl.description`:
 
@@ -493,11 +533,13 @@ tomoyo_update_path2_acl
 
     Update "struct tomoyo_path2_acl" list.
 
-    :param const u8 perm:
+    :param perm:
         Permission.
+    :type perm: const u8
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_update_path2_acl.description`:
 
@@ -517,14 +559,17 @@ tomoyo_path_permission
 
     Check permission for single path operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param u8 operation:
+    :param operation:
         Type of operation.
+    :type operation: u8
 
-    :param const struct tomoyo_path_info \*filename:
+    :param filename:
         Filename to check.
+    :type filename: const struct tomoyo_path_info \*
 
 .. _`tomoyo_path_permission.description`:
 
@@ -544,11 +589,13 @@ tomoyo_execute_permission
 
     Check permission for execute operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_path_info \*filename:
+    :param filename:
         Filename to check.
+    :type filename: const struct tomoyo_path_info \*
 
 .. _`tomoyo_execute_permission.description`:
 
@@ -568,11 +615,13 @@ tomoyo_same_path_number_acl
 
     Check for duplicated "struct tomoyo_path_number_acl" entry.
 
-    :param const struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: const struct tomoyo_acl_info \*
 
-    :param const struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_same_path_number_acl.description`:
 
@@ -590,14 +639,17 @@ tomoyo_merge_path_number_acl
 
     Merge duplicated "struct tomoyo_path_number_acl" entry.
 
-    :param struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: struct tomoyo_acl_info \*
 
-    :param struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: struct tomoyo_acl_info \*
 
-    :param const bool is_delete:
+    :param is_delete:
         True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
+    :type is_delete: const bool
 
 .. _`tomoyo_merge_path_number_acl.description`:
 
@@ -615,11 +667,13 @@ tomoyo_update_path_number_acl
 
     Update ioctl/chmod/chown/chgrp ACL.
 
-    :param const u8 perm:
+    :param perm:
         Permission.
+    :type perm: const u8
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_update_path_number_acl.description`:
 
@@ -637,14 +691,17 @@ tomoyo_path_number_perm
 
     Check permission for "create", "mkdir", "mkfifo", "mksock", "ioctl", "chmod", "chown", "chgrp".
 
-    :param const u8 type:
+    :param type:
         Type of operation.
+    :type type: const u8
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
-    :param unsigned long number:
+    :param number:
         Number.
+    :type number: unsigned long
 
 .. _`tomoyo_path_number_perm.description`:
 
@@ -662,14 +719,17 @@ tomoyo_check_open_permission
 
     Check permission for "read" and "write".
 
-    :param struct tomoyo_domain_info \*domain:
+    :param domain:
         Pointer to "struct tomoyo_domain_info".
+    :type domain: struct tomoyo_domain_info \*
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
-    :param const int flag:
+    :param flag:
         Flags for \ :c:func:`open`\ .
+    :type flag: const int
 
 .. _`tomoyo_check_open_permission.description`:
 
@@ -687,15 +747,18 @@ tomoyo_path_perm
 
     Check permission for "unlink", "rmdir", "truncate", "symlink", "append", "chroot" and "unmount".
 
-    :param const u8 operation:
+    :param operation:
         Type of operation.
+    :type operation: const u8
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
-    :param const char \*target:
+    :param target:
         Symlink's target if \ ``operation``\  is TOMOYO_TYPE_SYMLINK,
         NULL otherwise.
+    :type target: const char \*
 
 .. _`tomoyo_path_perm.description`:
 
@@ -713,17 +776,21 @@ tomoyo_mkdev_perm
 
     Check permission for "mkblock" and "mkchar".
 
-    :param const u8 operation:
+    :param operation:
         Type of operation. (TOMOYO_TYPE_MKCHAR or TOMOYO_TYPE_MKBLOCK)
+    :type operation: const u8
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
-    :param const unsigned int mode:
+    :param mode:
         Create mode.
+    :type mode: const unsigned int
 
-    :param unsigned int dev:
+    :param dev:
         Device number.
+    :type dev: unsigned int
 
 .. _`tomoyo_mkdev_perm.description`:
 
@@ -741,14 +808,17 @@ tomoyo_path2_perm
 
     Check permission for "rename", "link" and "pivot_root".
 
-    :param const u8 operation:
+    :param operation:
         Type of operation.
+    :type operation: const u8
 
-    :param const struct path \*path1:
+    :param path1:
         Pointer to "struct path".
+    :type path1: const struct path \*
 
-    :param const struct path \*path2:
+    :param path2:
         Pointer to "struct path".
+    :type path2: const struct path \*
 
 .. _`tomoyo_path2_perm.description`:
 
@@ -766,11 +836,13 @@ tomoyo_same_mount_acl
 
     Check for duplicated "struct tomoyo_mount_acl" entry.
 
-    :param const struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: const struct tomoyo_acl_info \*
 
-    :param const struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_same_mount_acl.description`:
 
@@ -788,8 +860,9 @@ tomoyo_update_mount_acl
 
     Write "struct tomoyo_mount_acl" list.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_update_mount_acl.description`:
 
@@ -809,8 +882,9 @@ tomoyo_write_file
 
     Update file related list.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_write_file.description`:
 

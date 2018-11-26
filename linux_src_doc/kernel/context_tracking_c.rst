@@ -10,8 +10,9 @@
 
     Inform the context tracking that the CPU is going enter user or guest space mode.
 
-    :param enum ctx_state state:
+    :param state:
         *undescribed*
+    :type state: enum ctx_state
 
 .. _`__context_tracking_enter.description`:
 
@@ -32,8 +33,9 @@ because this function sets RCU in extended quiescent state.
 
     Inform the context tracking that the CPU is exiting user or guest mode and entering the kernel.
 
-    :param enum ctx_state state:
+    :param state:
         *undescribed*
+    :type state: enum ctx_state
 
 .. _`__context_tracking_exit.description`:
 

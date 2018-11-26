@@ -10,8 +10,9 @@ register_filesystem
 
     register a new filesystem
 
-    :param struct file_system_type \*fs:
+    :param fs:
         the file system structure
+    :type fs: struct file_system_type \*
 
 .. _`register_filesystem.description`:
 
@@ -35,8 +36,9 @@ unregister_filesystem
 
     unregister a file system
 
-    :param struct file_system_type \*fs:
+    :param fs:
         filesystem to unregister
+    :type fs: struct file_system_type \*
 
 .. _`unregister_filesystem.description`:
 

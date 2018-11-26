@@ -174,11 +174,13 @@ mlx5_fpga_sbu_conn_create
 
     Initialize a new FPGA SBU connection
 
-    :param struct mlx5_fpga_device \*fdev:
+    :param fdev:
         The FPGA device
+    :type fdev: struct mlx5_fpga_device \*
 
-    :param struct mlx5_fpga_conn_attr \*attr:
+    :param attr:
         Attributes of the new connection
+    :type attr: struct mlx5_fpga_conn_attr \*
 
 .. _`mlx5_fpga_sbu_conn_create.description`:
 
@@ -208,8 +210,9 @@ mlx5_fpga_sbu_conn_destroy
 
     Destroy an FPGA SBU connection
 
-    :param struct mlx5_fpga_conn \*conn:
+    :param conn:
         The FPGA SBU connection to destroy
+    :type conn: struct mlx5_fpga_conn \*
 
 .. _`mlx5_fpga_sbu_conn_destroy.description`:
 
@@ -228,11 +231,13 @@ mlx5_fpga_sbu_conn_sendmsg
 
     Queue the transmission of a packet
 
-    :param struct mlx5_fpga_conn \*conn:
+    :param conn:
         *undescribed*
+    :type conn: struct mlx5_fpga_conn \*
 
-    :param struct mlx5_fpga_dma_buf \*buf:
+    :param buf:
         The packet buffer
+    :type buf: struct mlx5_fpga_dma_buf \*
 
 .. _`mlx5_fpga_sbu_conn_sendmsg.description`:
 
@@ -260,20 +265,25 @@ mlx5_fpga_mem_read
 
     Read from FPGA memory address space
 
-    :param struct mlx5_fpga_device \*fdev:
+    :param fdev:
         The FPGA device
+    :type fdev: struct mlx5_fpga_device \*
 
-    :param size_t size:
+    :param size:
         Size of chunk to read, in bytes
+    :type size: size_t
 
-    :param u64 addr:
+    :param addr:
         Starting address to read from, in FPGA address space
+    :type addr: u64
 
-    :param void \*buf:
+    :param buf:
         Buffer to read into
+    :type buf: void \*
 
-    :param enum mlx5_fpga_access_type access_type:
+    :param access_type:
         Method for reading
+    :type access_type: enum mlx5_fpga_access_type
 
 .. _`mlx5_fpga_mem_read.description`:
 
@@ -301,20 +311,25 @@ mlx5_fpga_mem_write
 
     Write to FPGA memory address space
 
-    :param struct mlx5_fpga_device \*fdev:
+    :param fdev:
         The FPGA device
+    :type fdev: struct mlx5_fpga_device \*
 
-    :param size_t size:
+    :param size:
         Size of chunk to write, in bytes
+    :type size: size_t
 
-    :param u64 addr:
+    :param addr:
         Starting address to write to, in FPGA address space
+    :type addr: u64
 
-    :param void \*buf:
+    :param buf:
         Buffer which contains data to write
+    :type buf: void \*
 
-    :param enum mlx5_fpga_access_type access_type:
+    :param access_type:
         Method for writing
+    :type access_type: enum mlx5_fpga_access_type
 
 .. _`mlx5_fpga_mem_write.description`:
 
@@ -342,14 +357,17 @@ mlx5_fpga_get_sbu_caps
 
     Read the SBU capabilities
 
-    :param struct mlx5_fpga_device \*fdev:
+    :param fdev:
         The FPGA device
+    :type fdev: struct mlx5_fpga_device \*
 
-    :param int size:
+    :param size:
         Size of the buffer to read into
+    :type size: int
 
-    :param void \*buf:
+    :param buf:
         Buffer to read the capabilities into
+    :type buf: void \*
 
 .. _`mlx5_fpga_get_sbu_caps.description`:
 

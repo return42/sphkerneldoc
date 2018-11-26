@@ -10,11 +10,13 @@ do_div
 
     returns 2 values: calculate remainder and update new dividend
 
-    :param  n:
+    :param n:
         pointer to uint64_t dividend (will be updated)
+    :type n: 
 
-    :param  base:
+    :param base:
         uint32_t divisor
+    :type base: 
 
 .. _`do_div.summary`:
 

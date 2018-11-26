@@ -255,6 +255,8 @@ Definition
         u8 ucode_api_min;
         u32 min_umac_error_event_table;
         u32 extra_phy_cfg_flags;
+        u32 d3_debug_data_base_addr;
+        u32 d3_debug_data_length;
     }
 
 .. _`iwl_cfg.members`:
@@ -432,6 +434,12 @@ min_umac_error_event_table
 
 extra_phy_cfg_flags
     *undescribed*
+
+d3_debug_data_base_addr
+    base address where D3 debug data is stored
+
+d3_debug_data_length
+    length of the D3 debug data
 
 .. _`iwl_cfg.description`:
 

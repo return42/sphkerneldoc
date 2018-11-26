@@ -10,8 +10,9 @@ pretimeout_noop
 
     No operation on watchdog pretimeout event \ ``wdd``\  - watchdog_device
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         *undescribed*
+    :type wdd: struct watchdog_device \*
 
 .. _`pretimeout_noop.description`:
 

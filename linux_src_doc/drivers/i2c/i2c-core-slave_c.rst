@@ -10,8 +10,9 @@ i2c_detect_slave_mode
 
     detect operation mode
 
-    :param struct device \*dev:
+    :param dev:
         The device owning the bus
+    :type dev: struct device \*
 
 .. _`i2c_detect_slave_mode.description`:
 

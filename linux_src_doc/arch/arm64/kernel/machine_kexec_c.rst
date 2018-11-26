@@ -10,8 +10,9 @@ kexec_image_info
 
     For debugging output.
 
-    :param  _i:
+    :param _i:
         *undescribed*
+    :type _i: 
 
 .. _`machine_kexec_prepare`:
 
@@ -22,8 +23,9 @@ machine_kexec_prepare
 
     Prepare for a kexec reboot.
 
-    :param struct kimage \*kimage:
+    :param kimage:
         *undescribed*
+    :type kimage: struct kimage \*
 
 .. _`machine_kexec_prepare.description`:
 
@@ -43,8 +45,9 @@ kexec_list_flush
 
     Helper to flush the kimage list and source pages to PoC.
 
-    :param struct kimage \*kimage:
+    :param kimage:
         *undescribed*
+    :type kimage: struct kimage \*
 
 .. _`kexec_segment_flush`:
 
@@ -55,8 +58,9 @@ kexec_segment_flush
 
     Helper to flush the kimage segments to PoC.
 
-    :param const struct kimage \*kimage:
+    :param kimage:
         *undescribed*
+    :type kimage: const struct kimage \*
 
 .. _`machine_kexec`:
 
@@ -67,8 +71,9 @@ machine_kexec
 
     Do the kexec reboot.
 
-    :param struct kimage \*kimage:
+    :param kimage:
         *undescribed*
+    :type kimage: struct kimage \*
 
 .. _`machine_kexec.description`:
 
@@ -86,8 +91,9 @@ machine_crash_shutdown
 
     shutdown non-crashing cpus and save registers
 
-    :param struct pt_regs \*regs:
+    :param regs:
         *undescribed*
+    :type regs: struct pt_regs \*
 
 .. This file was automatic generated / don't edit.
 

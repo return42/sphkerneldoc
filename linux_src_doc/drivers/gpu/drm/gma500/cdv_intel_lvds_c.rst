@@ -15,11 +15,13 @@ cdv_intel_lvds_set_backlight
 
 .. c:function:: void cdv_intel_lvds_set_backlight(struct drm_device *dev, int level)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param int level:
+    :param level:
         *undescribed*
+    :type level: int
 
 .. _`cdv_intel_lvds_set_backlight.description`:
 
@@ -35,14 +37,17 @@ cdv_intel_lvds_set_power
 
 .. c:function:: void cdv_intel_lvds_set_power(struct drm_device *dev, struct drm_encoder *encoder, bool on)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         *undescribed*
+    :type encoder: struct drm_encoder \*
 
-    :param bool on:
+    :param on:
         *undescribed*
+    :type on: bool
 
 .. _`cdv_intel_lvds_get_modes`:
 
@@ -51,8 +56,9 @@ cdv_intel_lvds_get_modes
 
 .. c:function:: int cdv_intel_lvds_get_modes(struct drm_connector *connector)
 
-    :param struct drm_connector \*connector:
+    :param connector:
         *undescribed*
+    :type connector: struct drm_connector \*
 
 .. _`cdv_intel_lvds_destroy`:
 
@@ -63,8 +69,9 @@ cdv_intel_lvds_destroy
 
     unregister and free LVDS structures
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to free
+    :type connector: struct drm_connector \*
 
 .. _`cdv_intel_lvds_destroy.description`:
 
@@ -83,11 +90,13 @@ cdv_intel_lvds_init
 
     setup LVDS connectors on this device
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct psb_intel_mode_device \*mode_dev:
+    :param mode_dev:
         *undescribed*
+    :type mode_dev: struct psb_intel_mode_device \*
 
 .. _`cdv_intel_lvds_init.description`:
 

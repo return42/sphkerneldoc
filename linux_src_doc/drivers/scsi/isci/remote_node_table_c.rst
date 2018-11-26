@@ -10,11 +10,13 @@ sci_remote_node_table_get_group_index
 
     public, protected, and private methods.
 
-    :param struct sci_remote_node_table \*remote_node_table:
+    :param remote_node_table:
         *undescribed*
+    :type remote_node_table: struct sci_remote_node_table \*
 
-    :param u32 group_table_index:
+    :param group_table_index:
         *undescribed*
+    :type group_table_index: u32
 
 .. _`sci_remote_node_table_get_group_index.description`:
 

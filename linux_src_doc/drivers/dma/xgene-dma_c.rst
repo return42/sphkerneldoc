@@ -168,8 +168,9 @@ xgene_dma_clean_completed_descriptor
 
     free all descriptors which has been completed and acked
 
-    :param struct xgene_dma_chan \*chan:
+    :param chan:
         X-Gene DMA channel
+    :type chan: struct xgene_dma_chan \*
 
 .. _`xgene_dma_clean_completed_descriptor.description`:
 
@@ -187,11 +188,13 @@ xgene_dma_run_tx_complete_actions
 
     cleanup a single link descriptor
 
-    :param struct xgene_dma_chan \*chan:
+    :param chan:
         X-Gene DMA channel
+    :type chan: struct xgene_dma_chan \*
 
-    :param struct xgene_dma_desc_sw \*desc:
+    :param desc:
         descriptor to cleanup and free
+    :type desc: struct xgene_dma_desc_sw \*
 
 .. _`xgene_dma_run_tx_complete_actions.description`:
 
@@ -210,11 +213,13 @@ xgene_dma_clean_running_descriptor
 
     move the completed descriptor from ld_running to ld_completed
 
-    :param struct xgene_dma_chan \*chan:
+    :param chan:
         X-Gene DMA channel
+    :type chan: struct xgene_dma_chan \*
 
-    :param struct xgene_dma_desc_sw \*desc:
+    :param desc:
         the descriptor which is completed
+    :type desc: struct xgene_dma_desc_sw \*
 
 .. _`xgene_dma_clean_running_descriptor.description`:
 
@@ -233,8 +238,9 @@ xgene_chan_xfer_ld_pending
 
     push any pending transactions to hw
 
-    :param struct xgene_dma_chan \*chan:
+    :param chan:
         X-Gene DMA channel
+    :type chan: struct xgene_dma_chan \*
 
 .. _`xgene_chan_xfer_ld_pending.locking`:
 
@@ -252,8 +258,9 @@ xgene_dma_cleanup_descriptors
 
     cleanup link descriptors which are completed and move them to ld_completed to free until flag 'ack' is set
 
-    :param struct xgene_dma_chan \*chan:
+    :param chan:
         X-Gene DMA channel
+    :type chan: struct xgene_dma_chan \*
 
 .. _`xgene_dma_cleanup_descriptors.description`:
 
@@ -273,11 +280,13 @@ xgene_dma_free_desc_list
 
     Free all descriptors in a queue
 
-    :param struct xgene_dma_chan \*chan:
+    :param chan:
         X-Gene DMA channel
+    :type chan: struct xgene_dma_chan \*
 
-    :param struct list_head \*list:
+    :param list:
         the list to free
+    :type list: struct list_head \*
 
 .. _`xgene_dma_free_desc_list.locking`:
 

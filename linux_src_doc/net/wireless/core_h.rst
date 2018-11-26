@@ -10,11 +10,13 @@ cfg80211_chandef_dfs_usable
 
     checks if chandef is DFS usable
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy to validate against
+    :type wiphy: struct wiphy \*
 
-    :param const struct cfg80211_chan_def \*chandef:
+    :param chandef:
         the channel definition to check
+    :type chandef: const struct cfg80211_chan_def \*
 
 .. _`cfg80211_chandef_dfs_usable.description`:
 

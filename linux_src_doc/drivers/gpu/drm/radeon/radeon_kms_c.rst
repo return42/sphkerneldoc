@@ -10,8 +10,9 @@ radeon_driver_unload_kms
 
     Main unload function for KMS.
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
 .. _`radeon_driver_unload_kms.description`:
 
@@ -33,11 +34,13 @@ radeon_driver_load_kms
 
     Main load function for KMS.
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param unsigned long flags:
+    :param flags:
         device flags
+    :type flags: unsigned long
 
 .. _`radeon_driver_load_kms.description`:
 
@@ -60,17 +63,21 @@ radeon_set_filp_rights
 
     Set filp right.
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*\*owner:
+    :param owner:
         drm file
+    :type owner: struct drm_file \*\*
 
-    :param struct drm_file \*applier:
+    :param applier:
         drm file
+    :type applier: struct drm_file \*
 
-    :param uint32_t \*value:
+    :param value:
         value
+    :type value: uint32_t \*
 
 .. _`radeon_set_filp_rights.description`:
 
@@ -88,14 +95,17 @@ radeon_info_ioctl
 
     answer a device specific request.
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         request object
+    :type data: void \*
 
-    :param struct drm_file \*filp:
+    :param filp:
         drm filp
+    :type filp: struct drm_file \*
 
 .. _`radeon_info_ioctl.description`:
 
@@ -116,8 +126,9 @@ radeon_driver_lastclose_kms
 
     drm callback for last close
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
 .. _`radeon_driver_lastclose_kms.description`:
 
@@ -135,11 +146,13 @@ radeon_driver_open_kms
 
     drm callback for open
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file
+    :type file_priv: struct drm_file \*
 
 .. _`radeon_driver_open_kms.description`:
 
@@ -158,11 +171,13 @@ radeon_driver_postclose_kms
 
     drm callback for post close
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file
+    :type file_priv: struct drm_file \*
 
 .. _`radeon_driver_postclose_kms.description`:
 
@@ -181,11 +196,13 @@ radeon_get_vblank_counter_kms
 
     get frame count
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         crtc to get the frame count from
+    :type pipe: unsigned int
 
 .. _`radeon_get_vblank_counter_kms.description`:
 
@@ -204,11 +221,13 @@ radeon_enable_vblank_kms
 
     enable vblank interrupt
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param int crtc:
+    :param crtc:
         crtc to enable vblank interrupt for
+    :type crtc: int
 
 .. _`radeon_enable_vblank_kms.description`:
 
@@ -227,11 +246,13 @@ radeon_disable_vblank_kms
 
     disable vblank interrupt
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param int crtc:
+    :param crtc:
         crtc to disable vblank interrupt for
+    :type crtc: int
 
 .. _`radeon_disable_vblank_kms.description`:
 

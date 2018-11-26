@@ -23,6 +23,8 @@ Definition
         struct clk *clks[VIDC_CLKS_NUM_MAX];
         struct clk *core0_clk;
         struct clk *core1_clk;
+        struct clk *core0_bus_clk;
+        struct clk *core1_bus_clk;
         struct video_device *vdev_dec;
         struct video_device *vdev_enc;
         struct v4l2_device v4l2_dev;
@@ -38,8 +40,8 @@ Definition
         unsigned int error;
         bool sys_error;
         const struct hfi_core_ops *core_ops;
-        u32 enc_codecs;
-        u32 dec_codecs;
+        unsigned long enc_codecs;
+        unsigned long dec_codecs;
         unsigned int max_sessions_supported;
     #define ENC_ROTATION_CAPABILITY 0x1
     #define ENC_SCALING_CAPABILITY 0x2
@@ -49,6 +51,8 @@ Definition
         void *priv;
         const struct hfi_ops *ops;
         struct delayed_work work;
+        struct venus_caps caps[MAX_CODEC_NUM];
+        unsigned int codecs_count;
     }
 
 .. _`venus_core.members`:
@@ -70,6 +74,12 @@ core0_clk
 
 core1_clk
     a struct clk pointer for core1
+
+core0_bus_clk
+    a struct clk pointer for core0 bus clock
+
+core1_bus_clk
+    a struct clk pointer for core1 bus clock
 
 vdev_dec
     a reference to video device structure for decoder instances
@@ -137,6 +147,12 @@ ops
 work
     a delayed work for handling system fatal error
 
+caps
+    *undescribed*
+
+codecs_count
+    *undescribed*
+
 .. _`venus_inst`:
 
 struct venus_inst
@@ -157,6 +173,7 @@ Definition
         struct list_head list;
         struct mutex lock;
         struct venus_core *core;
+        struct list_head dpbbufs;
         struct list_head internalbufs;
         struct list_head registeredbufs;
         struct list_head delayed_process;
@@ -184,9 +201,15 @@ Definition
         unsigned int num_output_bufs;
         unsigned int input_buf_size;
         unsigned int output_buf_size;
+        unsigned int output2_buf_size;
+        u32 dpb_buftype;
+        u32 dpb_fmt;
+        u32 opb_buftype;
+        u32 opb_fmt;
         bool reconfig;
         u32 reconfig_width;
         u32 reconfig_height;
+        u32 hfi_codec;
         u32 sequence_cap;
         u32 sequence_out;
         struct v4l2_m2m_dev *m2m_dev;
@@ -198,22 +221,6 @@ Definition
         const struct hfi_inst_ops *ops;
         u32 session_type;
         union hfi_get_property hprop;
-        struct hfi_capability cap_width;
-        struct hfi_capability cap_height;
-        struct hfi_capability cap_mbs_per_frame;
-        struct hfi_capability cap_mbs_per_sec;
-        struct hfi_capability cap_framerate;
-        struct hfi_capability cap_scale_x;
-        struct hfi_capability cap_scale_y;
-        struct hfi_capability cap_bitrate;
-        struct hfi_capability cap_hier_p;
-        struct hfi_capability cap_ltr_count;
-        struct hfi_capability cap_secure_output2_threshold;
-        bool cap_bufs_mode_static;
-        bool cap_bufs_mode_dynamic;
-        unsigned int pl_count;
-        struct hfi_profile_level pl[HFI_MAX_PROFILE_COUNT];
-        struct hfi_buffer_requirements bufreq[HFI_BUFFER_TYPE_MAX];
     }
 
 .. _`venus_inst.members`:
@@ -229,6 +236,9 @@ lock
 
 core
     a reference to the core struct
+
+dpbbufs
+    a list of decoded picture buffers
 
 internalbufs
     a list of internal bufferes
@@ -307,6 +317,21 @@ input_buf_size
 output_buf_size
     holds output buffer size
 
+output2_buf_size
+    holds secondary decoder output buffer size
+
+dpb_buftype
+    decoded picture buffer type
+
+dpb_fmt
+    decoded picture buffer raw format
+
+opb_buftype
+    output picture buffer type
+
+opb_fmt
+    output picture buffer raw format
+
 reconfig
     a flag raised by decoder when the stream resolution changed
 
@@ -315,6 +340,9 @@ reconfig_width
 
 reconfig_height
     holds the new height
+
+hfi_codec
+    current codec for this instance in HFI space
 
 sequence_cap
     a sequence counter for capture queue
@@ -348,54 +376,6 @@ session_type
 
 hprop
     a union used as a holder by get property
-
-cap_width
-    width capability
-
-cap_height
-    height capability
-
-cap_mbs_per_frame
-    macroblocks per frame capability
-
-cap_mbs_per_sec
-    macroblocks per second capability
-
-cap_framerate
-    framerate capability
-
-cap_scale_x
-    horizontal scaling capability
-
-cap_scale_y
-    vertical scaling capability
-
-cap_bitrate
-    bitrate capability
-
-cap_hier_p
-    hier capability
-
-cap_ltr_count
-    LTR count capability
-
-cap_secure_output2_threshold
-    secure OUTPUT2 threshold capability
-
-cap_bufs_mode_static
-    buffers allocation mode capability
-
-cap_bufs_mode_dynamic
-    buffers allocation mode capability
-
-pl_count
-    count of supported profiles/levels
-
-pl
-    supported profiles/levels
-
-bufreq
-    holds buffer requirements
 
 .. This file was automatic generated / don't edit.
 

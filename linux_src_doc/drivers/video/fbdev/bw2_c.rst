@@ -10,11 +10,13 @@ bw2_blank
 
     Optional function.  Blanks the display.
 
-    :param int blank:
+    :param blank:
         *undescribed*
+    :type blank: int
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. This file was automatic generated / don't edit.
 

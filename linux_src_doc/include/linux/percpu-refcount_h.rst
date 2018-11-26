@@ -10,8 +10,9 @@ percpu_ref_kill
 
     drop the initial ref
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to kill
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_kill.description`:
 
@@ -35,11 +36,13 @@ percpu_ref_get_many
 
     increment a percpu refcount
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to get
+    :type ref: struct percpu_ref \*
 
-    :param unsigned long nr:
+    :param nr:
         number of references to get
+    :type nr: unsigned long
 
 .. _`percpu_ref_get_many.description`:
 
@@ -59,8 +62,9 @@ percpu_ref_get
 
     increment a percpu refcount
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to get
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_get.description`:
 
@@ -80,8 +84,9 @@ percpu_ref_tryget
 
     try to increment a percpu refcount
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to try-get
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_tryget.description`:
 
@@ -102,8 +107,9 @@ percpu_ref_tryget_live
 
     try to increment a live percpu refcount
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to try-get
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_tryget_live.description`:
 
@@ -130,11 +136,13 @@ percpu_ref_put_many
 
     decrement a percpu refcount
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to put
+    :type ref: struct percpu_ref \*
 
-    :param unsigned long nr:
+    :param nr:
         number of references to put
+    :type nr: unsigned long
 
 .. _`percpu_ref_put_many.description`:
 
@@ -155,8 +163,9 @@ percpu_ref_put
 
     decrement a percpu refcount
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to put
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_put.description`:
 
@@ -177,8 +186,9 @@ percpu_ref_is_dying
 
     test whether a percpu refcount is dying or dead
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to test
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_is_dying.description`:
 
@@ -199,8 +209,9 @@ percpu_ref_is_zero
 
     test whether a percpu refcount reached zero
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to test
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_is_zero.description`:
 

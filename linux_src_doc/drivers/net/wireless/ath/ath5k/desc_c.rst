@@ -27,47 +27,61 @@ ath5k_hw_setup_2word_tx_desc
 
     Initialize a 2-word tx control descriptor
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_desc \*desc:
+    :param desc:
         The \ :c:type:`struct ath5k_desc <ath5k_desc>`\ 
+    :type desc: struct ath5k_desc \*
 
-    :param unsigned int pkt_len:
+    :param pkt_len:
         Frame length in bytes
+    :type pkt_len: unsigned int
 
-    :param unsigned int hdr_len:
+    :param hdr_len:
         Header length in bytes (only used on AR5210)
+    :type hdr_len: unsigned int
 
-    :param int padsize:
+    :param padsize:
         Any padding we've added to the frame length
+    :type padsize: int
 
-    :param enum ath5k_pkt_type type:
+    :param type:
         One of enum ath5k_pkt_type
+    :type type: enum ath5k_pkt_type
 
-    :param unsigned int tx_power:
+    :param tx_power:
         Tx power in 0.5dB steps
+    :type tx_power: unsigned int
 
-    :param unsigned int tx_rate0:
+    :param tx_rate0:
         HW idx for transmission rate
+    :type tx_rate0: unsigned int
 
-    :param unsigned int tx_tries0:
+    :param tx_tries0:
         Max number of retransmissions
+    :type tx_tries0: unsigned int
 
-    :param unsigned int key_index:
+    :param key_index:
         Index on key table to use for encryption
+    :type key_index: unsigned int
 
-    :param unsigned int antenna_mode:
+    :param antenna_mode:
         Which antenna to use (0 for auto)
+    :type antenna_mode: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         One of AR5K_TXDESC\_\* flags (desc.h)
+    :type flags: unsigned int
 
-    :param unsigned int rtscts_rate:
+    :param rtscts_rate:
         HW idx for RTS/CTS transmission rate
+    :type rtscts_rate: unsigned int
 
-    :param unsigned int rtscts_duration:
+    :param rtscts_duration:
         What to put on duration field on the header of RTS/CTS
+    :type rtscts_duration: unsigned int
 
 .. _`ath5k_hw_setup_2word_tx_desc.description`:
 
@@ -88,47 +102,61 @@ ath5k_hw_setup_4word_tx_desc
 
     Initialize a 4-word tx control descriptor
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_desc \*desc:
+    :param desc:
         The \ :c:type:`struct ath5k_desc <ath5k_desc>`\ 
+    :type desc: struct ath5k_desc \*
 
-    :param unsigned int pkt_len:
+    :param pkt_len:
         Frame length in bytes
+    :type pkt_len: unsigned int
 
-    :param unsigned int hdr_len:
+    :param hdr_len:
         Header length in bytes (only used on AR5210)
+    :type hdr_len: unsigned int
 
-    :param int padsize:
+    :param padsize:
         Any padding we've added to the frame length
+    :type padsize: int
 
-    :param enum ath5k_pkt_type type:
+    :param type:
         One of enum ath5k_pkt_type
+    :type type: enum ath5k_pkt_type
 
-    :param unsigned int tx_power:
+    :param tx_power:
         Tx power in 0.5dB steps
+    :type tx_power: unsigned int
 
-    :param unsigned int tx_rate0:
+    :param tx_rate0:
         HW idx for transmission rate
+    :type tx_rate0: unsigned int
 
-    :param unsigned int tx_tries0:
+    :param tx_tries0:
         Max number of retransmissions
+    :type tx_tries0: unsigned int
 
-    :param unsigned int key_index:
+    :param key_index:
         Index on key table to use for encryption
+    :type key_index: unsigned int
 
-    :param unsigned int antenna_mode:
+    :param antenna_mode:
         Which antenna to use (0 for auto)
+    :type antenna_mode: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         One of AR5K_TXDESC\_\* flags (desc.h)
+    :type flags: unsigned int
 
-    :param unsigned int rtscts_rate:
+    :param rtscts_rate:
         HW idx for RTS/CTS transmission rate
+    :type rtscts_rate: unsigned int
 
-    :param unsigned int rtscts_duration:
+    :param rtscts_duration:
         What to put on duration field on the header of RTS/CTS
+    :type rtscts_duration: unsigned int
 
 .. _`ath5k_hw_setup_4word_tx_desc.description`:
 
@@ -149,29 +177,37 @@ ath5k_hw_setup_mrr_tx_desc
 
     Initialize an MRR tx control descriptor
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_desc \*desc:
+    :param desc:
         The \ :c:type:`struct ath5k_desc <ath5k_desc>`\ 
+    :type desc: struct ath5k_desc \*
 
-    :param u_int tx_rate1:
+    :param tx_rate1:
         HW idx for rate used on transmission series 1
+    :type tx_rate1: u_int
 
-    :param u_int tx_tries1:
+    :param tx_tries1:
         Max number of retransmissions for transmission series 1
+    :type tx_tries1: u_int
 
-    :param u_int tx_rate2:
+    :param tx_rate2:
         HW idx for rate used on transmission series 2
+    :type tx_rate2: u_int
 
-    :param u_int tx_tries2:
+    :param tx_tries2:
         Max number of retransmissions for transmission series 2
+    :type tx_tries2: u_int
 
-    :param u_int tx_rate3:
+    :param tx_rate3:
         HW idx for rate used on transmission series 3
+    :type tx_rate3: u_int
 
-    :param u_int tx_tries3:
+    :param tx_tries3:
         Max number of retransmissions for transmission series 3
+    :type tx_tries3: u_int
 
 .. _`ath5k_hw_setup_mrr_tx_desc.description`:
 
@@ -193,14 +229,17 @@ ath5k_hw_proc_2word_tx_status
 
     Process a tx status descriptor on 5210/1
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_desc \*desc:
+    :param desc:
         The \ :c:type:`struct ath5k_desc <ath5k_desc>`\ 
+    :type desc: struct ath5k_desc \*
 
-    :param struct ath5k_tx_status \*ts:
+    :param ts:
         The \ :c:type:`struct ath5k_tx_status <ath5k_tx_status>`\ 
+    :type ts: struct ath5k_tx_status \*
 
 .. _`ath5k_hw_proc_4word_tx_status`:
 
@@ -211,14 +250,17 @@ ath5k_hw_proc_4word_tx_status
 
     Process a tx status descriptor on 5212
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_desc \*desc:
+    :param desc:
         The \ :c:type:`struct ath5k_desc <ath5k_desc>`\ 
+    :type desc: struct ath5k_desc \*
 
-    :param struct ath5k_tx_status \*ts:
+    :param ts:
         The \ :c:type:`struct ath5k_tx_status <ath5k_tx_status>`\ 
+    :type ts: struct ath5k_tx_status \*
 
 .. _`ath5k_hw_setup_rx_desc`:
 
@@ -229,17 +271,21 @@ ath5k_hw_setup_rx_desc
 
     Initialize an rx control descriptor
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_desc \*desc:
+    :param desc:
         The \ :c:type:`struct ath5k_desc <ath5k_desc>`\ 
+    :type desc: struct ath5k_desc \*
 
-    :param u32 size:
+    :param size:
         RX buffer length in bytes
+    :type size: u32
 
-    :param unsigned int flags:
+    :param flags:
         One of AR5K_RXDESC\_\* flags
+    :type flags: unsigned int
 
 .. _`ath5k_hw_proc_5210_rx_status`:
 
@@ -250,14 +296,17 @@ ath5k_hw_proc_5210_rx_status
 
     Process the rx status descriptor on 5210/1
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_desc \*desc:
+    :param desc:
         The \ :c:type:`struct ath5k_desc <ath5k_desc>`\ 
+    :type desc: struct ath5k_desc \*
 
-    :param struct ath5k_rx_status \*rs:
+    :param rs:
         The \ :c:type:`struct ath5k_rx_status <ath5k_rx_status>`\ 
+    :type rs: struct ath5k_rx_status \*
 
 .. _`ath5k_hw_proc_5210_rx_status.description`:
 
@@ -279,14 +328,17 @@ ath5k_hw_proc_5212_rx_status
 
     Process the rx status descriptor on 5212
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_desc \*desc:
+    :param desc:
         The \ :c:type:`struct ath5k_desc <ath5k_desc>`\ 
+    :type desc: struct ath5k_desc \*
 
-    :param struct ath5k_rx_status \*rs:
+    :param rs:
         The \ :c:type:`struct ath5k_rx_status <ath5k_rx_status>`\ 
+    :type rs: struct ath5k_rx_status \*
 
 .. _`ath5k_hw_proc_5212_rx_status.description`:
 
@@ -308,8 +360,9 @@ ath5k_hw_init_desc_functions
 
     Init function pointers inside ah
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_init_desc_functions.description`:
 

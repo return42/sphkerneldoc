@@ -10,23 +10,29 @@ of_get_dma_window
 
     Parse \*dma-window property and returns 0 if found.
 
-    :param struct device_node \*dn:
+    :param dn:
         device node
+    :type dn: struct device_node \*
 
-    :param const char \*prefix:
+    :param prefix:
         prefix for property name if any
+    :type prefix: const char \*
 
-    :param int index:
+    :param index:
         index to start to parse
+    :type index: int
 
-    :param unsigned long \*busno:
+    :param busno:
         Returns busno if supported. Otherwise pass NULL
+    :type busno: unsigned long \*
 
-    :param dma_addr_t \*addr:
+    :param addr:
         Returns address that DMA starts
+    :type addr: dma_addr_t \*
 
-    :param size_t \*size:
+    :param size:
         Returns the range that DMA can handle
+    :type size: size_t \*
 
 .. _`of_get_dma_window.description`:
 

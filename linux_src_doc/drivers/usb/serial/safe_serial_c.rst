@@ -10,14 +10,17 @@ fcs_compute10
 
     memcpy and calculate 10 bit CRC across buffer
 
-    :param unsigned char \*sp:
+    :param sp:
         pointer to buffer
+    :type sp: unsigned char \*
 
-    :param int len:
+    :param len:
         number of bytes
+    :type len: int
 
-    :param __u16 fcs:
+    :param fcs:
         starting FCS
+    :type fcs: __u16
 
 .. _`fcs_compute10.description`:
 

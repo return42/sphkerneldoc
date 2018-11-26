@@ -10,26 +10,33 @@ t4_wait_op_done_val
 
     wait until an operation is completed
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter performing the operation
+    :type adapter: struct adapter \*
 
-    :param int reg:
+    :param reg:
         the register to check for completion
+    :type reg: int
 
-    :param u32 mask:
+    :param mask:
         a single-bit field within \ ``reg``\  that indicates completion
+    :type mask: u32
 
-    :param int polarity:
+    :param polarity:
         the value of the field when the operation is completed
+    :type polarity: int
 
-    :param int attempts:
+    :param attempts:
         number of check iterations
+    :type attempts: int
 
-    :param int delay:
+    :param delay:
         delay in usecs between iterations
+    :type delay: int
 
-    :param u32 \*valp:
+    :param valp:
         where to store the value of the register at completion time
+    :type valp: u32 \*
 
 .. _`t4_wait_op_done_val.description`:
 
@@ -50,17 +57,21 @@ t4_set_reg_field
 
     set a register field to a value
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter to program
+    :type adapter: struct adapter \*
 
-    :param unsigned int addr:
+    :param addr:
         the register address
+    :type addr: unsigned int
 
-    :param u32 mask:
+    :param mask:
         specifies the portion of the register to modify
+    :type mask: u32
 
-    :param u32 val:
+    :param val:
         the new value for the register field
+    :type val: u32
 
 .. _`t4_set_reg_field.description`:
 
@@ -79,23 +90,29 @@ t4_read_indirect
 
     read indirectly addressed registers
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int addr_reg:
+    :param addr_reg:
         register holding the indirect address
+    :type addr_reg: unsigned int
 
-    :param unsigned int data_reg:
+    :param data_reg:
         register holding the value of the indirect register
+    :type data_reg: unsigned int
 
-    :param u32 \*vals:
+    :param vals:
         where the read register values are stored
+    :type vals: u32 \*
 
-    :param unsigned int nregs:
+    :param nregs:
         how many indirect registers to read
+    :type nregs: unsigned int
 
-    :param unsigned int start_idx:
+    :param start_idx:
         index of first indirect register to read
+    :type start_idx: unsigned int
 
 .. _`t4_read_indirect.description`:
 
@@ -114,23 +131,29 @@ t4_write_indirect
 
     write indirectly addressed registers
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int addr_reg:
+    :param addr_reg:
         register holding the indirect addresses
+    :type addr_reg: unsigned int
 
-    :param unsigned int data_reg:
+    :param data_reg:
         register holding the value for the indirect registers
+    :type data_reg: unsigned int
 
-    :param const u32 \*vals:
+    :param vals:
         values to write
+    :type vals: const u32 \*
 
-    :param unsigned int nregs:
+    :param nregs:
         how many indirect registers to write
+    :type nregs: unsigned int
 
-    :param unsigned int start_idx:
+    :param start_idx:
         address of first indirect register to write
+    :type start_idx: unsigned int
 
 .. _`t4_write_indirect.description`:
 
@@ -149,20 +172,25 @@ t4_record_mbox
 
     record a Firmware Mailbox Command/Reply in the log
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param const __be64 \*cmd:
+    :param cmd:
         the Firmware Mailbox Command or Reply
+    :type cmd: const __be64 \*
 
-    :param unsigned int size:
+    :param size:
         command length in bytes
+    :type size: unsigned int
 
-    :param int access:
+    :param access:
         the time (ms) needed to access the Firmware Mailbox
+    :type access: int
 
-    :param int execute:
+    :param execute:
         the time (ms) the command spent being executed
+    :type execute: int
 
 .. _`t4_wr_mbox_meat_timeout`:
 
@@ -173,26 +201,33 @@ t4_wr_mbox_meat_timeout
 
     send a command to FW through the given mailbox
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int mbox:
+    :param mbox:
         index of the mailbox to use
+    :type mbox: int
 
-    :param const void \*cmd:
+    :param cmd:
         the command to write
+    :type cmd: const void \*
 
-    :param int size:
+    :param size:
         command length in bytes
+    :type size: int
 
-    :param void \*rpl:
+    :param rpl:
         where to optionally store the reply
+    :type rpl: void \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
-    :param int timeout:
+    :param timeout:
         time to wait for command to finish before timing out
+    :type timeout: int
 
 .. _`t4_wr_mbox_meat_timeout.description`:
 
@@ -221,23 +256,29 @@ t4_memory_rw_init
 
     Get memory window relative offset, base, and size.
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int win:
+    :param win:
         PCI-E Memory Window to use
+    :type win: int
 
-    :param int mtype:
+    :param mtype:
         memory type: MEM_EDC0, MEM_EDC1, MEM_HMA or MEM_MC
+    :type mtype: int
 
-    :param u32 \*mem_off:
+    :param mem_off:
         memory relative offset with respect to \ ``mtype``\ .
+    :type mem_off: u32 \*
 
-    :param u32 \*mem_base:
+    :param mem_base:
         configured memory base address.
+    :type mem_base: u32 \*
 
-    :param u32 \*mem_aperture:
+    :param mem_aperture:
         configured memory window aperture.
+    :type mem_aperture: u32 \*
 
 .. _`t4_memory_rw_init.description`:
 
@@ -255,14 +296,17 @@ t4_memory_update_win
 
     Move memory window to specified address.
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int win:
+    :param win:
         PCI-E Memory Window to use
+    :type win: int
 
-    :param u32 addr:
+    :param addr:
         location to move.
+    :type addr: u32
 
 .. _`t4_memory_update_win.description`:
 
@@ -280,20 +324,25 @@ t4_memory_rw_residual
 
     Read/Write residual data.
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u32 off:
+    :param off:
         relative offset within residual to start read/write.
+    :type off: u32
 
-    :param u32 addr:
+    :param addr:
         address within indicated memory type.
+    :type addr: u32
 
-    :param u8 \*buf:
+    :param buf:
         host memory buffer
+    :type buf: u8 \*
 
-    :param int dir:
+    :param dir:
         direction of transfer T4_MEMORY_READ (1) or T4_MEMORY_WRITE (0)
+    :type dir: int
 
 .. _`t4_memory_rw_residual.description`:
 
@@ -311,26 +360,33 @@ t4_memory_rw
 
     read/write EDC 0, EDC 1 or MC via PCIE memory window
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int win:
+    :param win:
         PCI-E Memory Window to use
+    :type win: int
 
-    :param int mtype:
+    :param mtype:
         memory type: MEM_EDC0, MEM_EDC1 or MEM_MC
+    :type mtype: int
 
-    :param u32 addr:
+    :param addr:
         address within indicated memory type
+    :type addr: u32
 
-    :param u32 len:
+    :param len:
         amount of memory to transfer
+    :type len: u32
 
-    :param void \*hbuf:
+    :param hbuf:
         host memory buffer
+    :type hbuf: void \*
 
-    :param int dir:
+    :param dir:
         direction of transfer T4_MEMORY_READ (1) or T4_MEMORY_WRITE (0)
+    :type dir: int
 
 .. _`t4_memory_rw.description`:
 
@@ -353,8 +409,9 @@ t4_get_regs_len
 
     return the size of the chips register set
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4_get_regs_len.description`:
 
@@ -372,14 +429,17 @@ t4_get_regs
 
     read chip registers into provided buffer
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param void \*buf:
+    :param buf:
         register buffer
+    :type buf: void \*
 
-    :param size_t buf_size:
+    :param buf_size:
         size (in bytes) of register buffer
+    :type buf_size: size_t
 
 .. _`t4_get_regs.description`:
 
@@ -399,14 +459,17 @@ t4_eeprom_ptov
 
     translate a physical EEPROM address to virtual
 
-    :param unsigned int phys_addr:
+    :param phys_addr:
         the physical EEPROM address
+    :type phys_addr: unsigned int
 
-    :param unsigned int fn:
+    :param fn:
         the PCI function number
+    :type fn: unsigned int
 
-    :param unsigned int sz:
+    :param sz:
         size of function-specific area
+    :type sz: unsigned int
 
 .. _`t4_eeprom_ptov.description`:
 
@@ -437,11 +500,13 @@ t4_seeprom_wp
 
     enable/disable EEPROM write protection
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param bool enable:
+    :param enable:
         whether to enable or disable write protection
+    :type enable: bool
 
 .. _`t4_seeprom_wp.description`:
 
@@ -459,11 +524,13 @@ t4_get_raw_vpd_params
 
     read VPD parameters from VPD EEPROM
 
-    :param struct adapter \*adapter:
+    :param adapter:
         adapter to read
+    :type adapter: struct adapter \*
 
-    :param struct vpd_params \*p:
+    :param p:
         where to store the parameters
+    :type p: struct vpd_params \*
 
 .. _`t4_get_raw_vpd_params.description`:
 
@@ -481,11 +548,13 @@ t4_get_vpd_params
 
     read VPD parameters & retrieve Core Clock
 
-    :param struct adapter \*adapter:
+    :param adapter:
         adapter to read
+    :type adapter: struct adapter \*
 
-    :param struct vpd_params \*p:
+    :param p:
         where to store the parameters
+    :type p: struct vpd_params \*
 
 .. _`t4_get_vpd_params.description`:
 
@@ -496,6 +565,27 @@ Reads card parameters stored in VPD EEPROM and retrieves the Core
 Clock.  This can only be called after a connection to the firmware
 is established.
 
+.. _`t4_get_pfres`:
+
+t4_get_pfres
+============
+
+.. c:function:: int t4_get_pfres(struct adapter *adapter)
+
+    retrieve VF resource limits
+
+    :param adapter:
+        the adapter
+    :type adapter: struct adapter \*
+
+.. _`t4_get_pfres.description`:
+
+Description
+-----------
+
+Retrieves configured resource limits and capabilities for a physical
+function.  The results are stored in \ ``adapter->pfres``\ .
+
 .. _`sf1_read`:
 
 sf1_read
@@ -505,20 +595,25 @@ sf1_read
 
     read data from the serial flash
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int byte_cnt:
+    :param byte_cnt:
         number of bytes to read
+    :type byte_cnt: unsigned int
 
-    :param int cont:
+    :param cont:
         whether another operation will be chained
+    :type cont: int
 
-    :param int lock:
+    :param lock:
         whether to lock SF for PL access only
+    :type lock: int
 
-    :param u32 \*valp:
+    :param valp:
         where to store the read data
+    :type valp: u32 \*
 
 .. _`sf1_read.description`:
 
@@ -538,20 +633,25 @@ sf1_write
 
     write data to the serial flash
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int byte_cnt:
+    :param byte_cnt:
         number of bytes to write
+    :type byte_cnt: unsigned int
 
-    :param int cont:
+    :param cont:
         whether another operation will be chained
+    :type cont: int
 
-    :param int lock:
+    :param lock:
         whether to lock SF for PL access only
+    :type lock: int
 
-    :param u32 val:
+    :param val:
         value to write
+    :type val: u32
 
 .. _`sf1_write.description`:
 
@@ -571,14 +671,17 @@ flash_wait_op
 
     wait for a flash operation to complete
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int attempts:
+    :param attempts:
         max number of polls of the status register
+    :type attempts: int
 
-    :param int delay:
+    :param delay:
         delay between polls in ms
+    :type delay: int
 
 .. _`flash_wait_op.description`:
 
@@ -596,20 +699,25 @@ t4_read_flash
 
     read words from serial flash
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int addr:
+    :param addr:
         the start address for the read
+    :type addr: unsigned int
 
-    :param unsigned int nwords:
+    :param nwords:
         how many 32-bit words to read
+    :type nwords: unsigned int
 
-    :param u32 \*data:
+    :param data:
         where to store the read data
+    :type data: u32 \*
 
-    :param int byte_oriented:
+    :param byte_oriented:
         whether to store data as bytes or as words
+    :type byte_oriented: int
 
 .. _`t4_read_flash.description`:
 
@@ -630,17 +738,21 @@ t4_write_flash
 
     write up to a page of data to the serial flash
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int addr:
+    :param addr:
         the start address to write
+    :type addr: unsigned int
 
-    :param unsigned int n:
+    :param n:
         length of data to write in bytes
+    :type n: unsigned int
 
-    :param const u8 \*data:
+    :param data:
         the data to write
+    :type data: const u8 \*
 
 .. _`t4_write_flash.description`:
 
@@ -659,11 +771,13 @@ t4_get_fw_version
 
     read the firmware version
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 \*vers:
+    :param vers:
         where to place the version
+    :type vers: u32 \*
 
 .. _`t4_get_fw_version.description`:
 
@@ -681,11 +795,13 @@ t4_get_bs_version
 
     read the firmware bootstrap version
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 \*vers:
+    :param vers:
         where to place the version
+    :type vers: u32 \*
 
 .. _`t4_get_bs_version.description`:
 
@@ -703,11 +819,13 @@ t4_get_tp_version
 
     read the TP microcode version
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 \*vers:
+    :param vers:
         where to place the version
+    :type vers: u32 \*
 
 .. _`t4_get_tp_version.description`:
 
@@ -725,11 +843,13 @@ t4_get_exprom_version
 
     return the Expansion ROM version (if any)
 
-    :param struct adapter \*adap:
+    :param adap:
         *undescribed*
+    :type adap: struct adapter \*
 
-    :param u32 \*vers:
+    :param vers:
         where to place the version
+    :type vers: u32 \*
 
 .. _`t4_get_exprom_version.description`:
 
@@ -750,11 +870,13 @@ t4_get_vpd_version
 
     return the VPD version
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 \*vers:
+    :param vers:
         where to place the version
+    :type vers: u32 \*
 
 .. _`t4_get_vpd_version.description`:
 
@@ -786,11 +908,13 @@ t4_get_scfg_version
 
     return the Serial Configuration version
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 \*vers:
+    :param vers:
         where to place the version
+    :type vers: u32 \*
 
 .. _`t4_get_scfg_version.description`:
 
@@ -824,8 +948,9 @@ t4_get_version_info
 
     extract various chip/firmware version information
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4_get_version_info.description`:
 
@@ -846,8 +971,9 @@ t4_dump_version_info
 
     dump all of the adapter configuration IDs
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4_dump_version_info.description`:
 
@@ -867,8 +993,9 @@ t4_check_fw_version
 
     check if the FW is supported with this driver
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`t4_check_fw_version.description`:
 
@@ -888,14 +1015,17 @@ t4_flash_erase_sectors
 
     erase a range of flash sectors
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int start:
+    :param start:
         the first sector to erase
+    :type start: int
 
-    :param int end:
+    :param end:
         the last sector to erase
+    :type end: int
 
 .. _`t4_flash_erase_sectors.description`:
 
@@ -913,8 +1043,9 @@ t4_flash_cfg_addr
 
     return the address of the flash configuration file
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4_flash_cfg_addr.description`:
 
@@ -933,14 +1064,17 @@ t4_load_fw
 
     download firmware
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param const u8 \*fw_data:
+    :param fw_data:
         the firmware image to write
+    :type fw_data: const u8 \*
 
-    :param unsigned int size:
+    :param size:
         image size
+    :type size: unsigned int
 
 .. _`t4_load_fw.description`:
 
@@ -958,11 +1092,13 @@ t4_phy_fw_ver
 
     return current PHY firmware version
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int \*phy_fw_ver:
+    :param phy_fw_ver:
         return value buffer for PHY firmware version
+    :type phy_fw_ver: int \*
 
 .. _`t4_phy_fw_ver.description`:
 
@@ -981,23 +1117,28 @@ t4_load_phy_fw
 
     download port PHY firmware
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int win:
+    :param win:
         the PCI-E Memory Window index to use for \ :c:func:`t4_memory_rw`\ 
+    :type win: int
 
-    :param spinlock_t \*win_lock:
+    :param win_lock:
         the lock to use to guard the memory copy
+    :type win_lock: spinlock_t \*
 
     :param int (\*phy_fw_version)(const u8 \*, size_t):
         function to check PHY firmware versions
 
-    :param const u8 \*phy_fw_data:
+    :param phy_fw_data:
         the PHY firmware image to write
+    :type phy_fw_data: const u8 \*
 
-    :param size_t phy_fw_size:
+    :param phy_fw_size:
         image size
+    :type phy_fw_size: size_t
 
 .. _`t4_load_phy_fw.description`:
 
@@ -1036,11 +1177,13 @@ t4_fwcache
 
     firmware cache operation
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param enum fw_params_param_dev_fwcache op:
+    :param op:
         the operation (flush or flush and invalidate)
+    :type op: enum fw_params_param_dev_fwcache
 
 .. _`fwcaps16_to_caps32`:
 
@@ -1051,8 +1194,9 @@ fwcaps16_to_caps32
 
     convert 16-bit Port Capabilities to 32-bits
 
-    :param fw_port_cap16_t caps16:
+    :param caps16:
         a 16-bit Port Capabilities value
+    :type caps16: fw_port_cap16_t
 
 .. _`fwcaps16_to_caps32.description`:
 
@@ -1070,8 +1214,9 @@ fwcaps32_to_caps16
 
     convert 32-bit Port Capabilities to 16-bits
 
-    :param fw_port_cap32_t caps32:
+    :param caps32:
         a 32-bit Port Capabilities value
+    :type caps32: fw_port_cap32_t
 
 .. _`fwcaps32_to_caps16.description`:
 
@@ -1091,23 +1236,29 @@ t4_link_l1cfg_core
 
     apply link configuration to MAC/PHY
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         the Firmware Mailbox to use
+    :type mbox: unsigned int
 
-    :param unsigned int port:
+    :param port:
         the Port ID
+    :type port: unsigned int
 
-    :param struct link_config \*lc:
+    :param lc:
         the Port's Link Configuration
+    :type lc: struct link_config \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         *undescribed*
+    :type sleep_ok: bool
 
-    :param int timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: int
 
 .. _`t4_link_l1cfg_core.description`:
 
@@ -1130,14 +1281,17 @@ t4_restart_aneg
 
     restart autonegotiation
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int port:
+    :param port:
         the port id
+    :type port: unsigned int
 
 .. _`t4_restart_aneg.description`:
 
@@ -1155,14 +1309,17 @@ t4_handle_intr_status
 
     table driven interrupt handler
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter that generated the interrupt
+    :type adapter: struct adapter \*
 
-    :param unsigned int reg:
+    :param reg:
         the interrupt status register to process
+    :type reg: unsigned int
 
-    :param const struct intr_info \*acts:
+    :param acts:
         table of interrupt actions
+    :type acts: const struct intr_info \*
 
 .. _`t4_handle_intr_status.description`:
 
@@ -1185,8 +1342,9 @@ t4_slow_intr_handler
 
     control path interrupt handler
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4_slow_intr_handler.description`:
 
@@ -1206,8 +1364,9 @@ t4_intr_enable
 
     enable interrupts
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter whose interrupts should be enabled
+    :type adapter: struct adapter \*
 
 .. _`t4_intr_enable.description`:
 
@@ -1237,8 +1396,9 @@ t4_intr_disable
 
     disable interrupts
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter whose interrupts should be disabled
+    :type adapter: struct adapter \*
 
 .. _`t4_intr_disable.description`:
 
@@ -1258,26 +1418,33 @@ t4_config_rss_range
 
     configure a portion of the RSS mapping table
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int mbox:
+    :param mbox:
         mbox to use for the FW command
+    :type mbox: int
 
-    :param unsigned int viid:
+    :param viid:
         virtual interface whose RSS subtable is to be written
+    :type viid: unsigned int
 
-    :param int start:
+    :param start:
         start entry in the table to write
+    :type start: int
 
-    :param int n:
+    :param n:
         how many table entries to write
+    :type n: int
 
-    :param const u16 \*rspq:
+    :param rspq:
         values for the response queue lookup table
+    :type rspq: const u16 \*
 
-    :param unsigned int nrspq:
+    :param nrspq:
         number of values in \ ``rspq``\ 
+    :type nrspq: unsigned int
 
 .. _`t4_config_rss_range.description`:
 
@@ -1300,17 +1467,21 @@ t4_config_glbl_rss
 
     configure the global RSS mode
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int mbox:
+    :param mbox:
         mbox to use for the FW command
+    :type mbox: int
 
-    :param unsigned int mode:
+    :param mode:
         global RSS mode
+    :type mode: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         mode-specific flags
+    :type flags: unsigned int
 
 .. _`t4_config_glbl_rss.description`:
 
@@ -1328,20 +1499,25 @@ t4_config_vi_rss
 
     configure per VI RSS settings
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int mbox:
+    :param mbox:
         mbox to use for the FW command
+    :type mbox: int
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         RSS flags
+    :type flags: unsigned int
 
-    :param unsigned int defq:
+    :param defq:
         id of the default RSS queue for the VI.
+    :type defq: unsigned int
 
 .. _`t4_config_vi_rss.description`:
 
@@ -1359,11 +1535,13 @@ t4_read_rss
 
     read the contents of the RSS mapping table
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u16 \*map:
+    :param map:
         holds the contents of the RSS mapping table
+    :type map: u16 \*
 
 .. _`t4_read_rss.description`:
 
@@ -1381,26 +1559,33 @@ t4_tp_fw_ldst_rw
 
     Access TP indirect register through LDST
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int cmd:
+    :param cmd:
         TP fw ldst address space type
+    :type cmd: int
 
-    :param u32 \*vals:
+    :param vals:
         where the indirect register values are stored/written
+    :type vals: u32 \*
 
-    :param unsigned int nregs:
+    :param nregs:
         how many indirect registers to read/write
+    :type nregs: unsigned int
 
-    :param unsigned int start_index:
+    :param start_index:
         *undescribed*
+    :type start_index: unsigned int
 
-    :param unsigned int rw:
+    :param rw:
         Read (1) or Write (0)
+    :type rw: unsigned int
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_tp_fw_ldst_rw.description`:
 
@@ -1418,29 +1603,37 @@ t4_tp_indirect_rw
 
     Read/Write TP indirect register through LDST or backdoor
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         Address Register
+    :type reg_addr: u32
 
-    :param u32 reg_data:
+    :param reg_data:
         Data register
+    :type reg_data: u32
 
-    :param u32 \*buff:
+    :param buff:
         where the indirect register values are stored/written
+    :type buff: u32 \*
 
-    :param u32 nregs:
+    :param nregs:
         how many indirect registers to read/write
+    :type nregs: u32
 
-    :param u32 start_index:
+    :param start_index:
         index of first indirect register to read/write
+    :type start_index: u32
 
-    :param int rw:
+    :param rw:
         READ(1) or WRITE(0)
+    :type rw: int
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_tp_indirect_rw.description`:
 
@@ -1459,20 +1652,25 @@ t4_tp_pio_read
 
     Read TP PIO registers
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u32 \*buff:
+    :param buff:
         where the indirect register values are written
+    :type buff: u32 \*
 
-    :param u32 nregs:
+    :param nregs:
         how many indirect registers to read
+    :type nregs: u32
 
-    :param u32 start_index:
+    :param start_index:
         index of first indirect register to read
+    :type start_index: u32
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_tp_pio_read.description`:
 
@@ -1490,20 +1688,25 @@ t4_tp_pio_write
 
     Write TP PIO registers
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u32 \*buff:
+    :param buff:
         where the indirect register values are stored
+    :type buff: u32 \*
 
-    :param u32 nregs:
+    :param nregs:
         how many indirect registers to write
+    :type nregs: u32
 
-    :param u32 start_index:
+    :param start_index:
         index of first indirect register to write
+    :type start_index: u32
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_tp_pio_write.description`:
 
@@ -1521,20 +1724,25 @@ t4_tp_tm_pio_read
 
     Read TP TM PIO registers
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u32 \*buff:
+    :param buff:
         where the indirect register values are written
+    :type buff: u32 \*
 
-    :param u32 nregs:
+    :param nregs:
         how many indirect registers to read
+    :type nregs: u32
 
-    :param u32 start_index:
+    :param start_index:
         index of first indirect register to read
+    :type start_index: u32
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_tp_tm_pio_read.description`:
 
@@ -1552,20 +1760,25 @@ t4_tp_mib_read
 
     Read TP MIB registers
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u32 \*buff:
+    :param buff:
         where the indirect register values are written
+    :type buff: u32 \*
 
-    :param u32 nregs:
+    :param nregs:
         how many indirect registers to read
+    :type nregs: u32
 
-    :param u32 start_index:
+    :param start_index:
         index of first indirect register to read
+    :type start_index: u32
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_tp_mib_read.description`:
 
@@ -1583,14 +1796,17 @@ t4_read_rss_key
 
     read the global RSS key
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u32 \*key:
+    :param key:
         10-entry array holding the 320-bit RSS key
+    :type key: u32 \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_read_rss_key.description`:
 
@@ -1608,17 +1824,21 @@ t4_write_rss_key
 
     program one of the RSS keys
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param const u32 \*key:
+    :param key:
         10-entry array holding the 320-bit RSS key
+    :type key: const u32 \*
 
-    :param int idx:
+    :param idx:
         which RSS key to write
+    :type idx: int
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_write_rss_key.description`:
 
@@ -1638,17 +1858,21 @@ t4_read_rss_pf_config
 
     read PF RSS Configuration Table
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int index:
+    :param index:
         the entry in the PF RSS table to read
+    :type index: unsigned int
 
-    :param u32 \*valp:
+    :param valp:
         where to store the returned value
+    :type valp: u32 \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_read_rss_pf_config.description`:
 
@@ -1667,20 +1891,25 @@ t4_read_rss_vf_config
 
     read VF RSS Configuration Table
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int index:
+    :param index:
         the entry in the VF RSS table to read
+    :type index: unsigned int
 
-    :param u32 \*vfl:
+    :param vfl:
         where to store the returned VFL
+    :type vfl: u32 \*
 
-    :param u32 \*vfh:
+    :param vfh:
         where to store the returned VFH
+    :type vfh: u32 \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_read_rss_vf_config.description`:
 
@@ -1699,11 +1928,13 @@ t4_read_rss_pf_map
 
     read PF RSS Map
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_read_rss_pf_map.description`:
 
@@ -1721,11 +1952,13 @@ t4_read_rss_pf_mask
 
     read PF RSS Mask
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_read_rss_pf_mask.description`:
 
@@ -1743,17 +1976,21 @@ t4_tp_get_tcp_stats
 
     read TP's TCP MIB counters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct tp_tcp_stats \*v4:
+    :param v4:
         holds the TCP/IP counter values
+    :type v4: struct tp_tcp_stats \*
 
-    :param struct tp_tcp_stats \*v6:
+    :param v6:
         holds the TCP/IPv6 counter values
+    :type v6: struct tp_tcp_stats \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_tp_get_tcp_stats.description`:
 
@@ -1772,14 +2009,17 @@ t4_tp_get_err_stats
 
     read TP's error MIB counters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct tp_err_stats \*st:
+    :param st:
         holds the counter values
+    :type st: struct tp_err_stats \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_tp_get_err_stats.description`:
 
@@ -1797,14 +2037,17 @@ t4_tp_get_cpl_stats
 
     read TP's CPL MIB counters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct tp_cpl_stats \*st:
+    :param st:
         holds the counter values
+    :type st: struct tp_cpl_stats \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_tp_get_cpl_stats.description`:
 
@@ -1822,14 +2065,17 @@ t4_tp_get_rdma_stats
 
     read TP's RDMA MIB counters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct tp_rdma_stats \*st:
+    :param st:
         holds the counter values
+    :type st: struct tp_rdma_stats \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_tp_get_rdma_stats.description`:
 
@@ -1847,17 +2093,21 @@ t4_get_fcoe_stats
 
     read TP's FCoE MIB counters for a port
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int idx:
+    :param idx:
         the port index
+    :type idx: unsigned int
 
-    :param struct tp_fcoe_stats \*st:
+    :param st:
         holds the counter values
+    :type st: struct tp_fcoe_stats \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_get_fcoe_stats.description`:
 
@@ -1875,14 +2125,17 @@ t4_get_usm_stats
 
     read TP's non-TCP DDP MIB counters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct tp_usm_stats \*st:
+    :param st:
         holds the counter values
+    :type st: struct tp_usm_stats \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_get_usm_stats.description`:
 
@@ -1900,14 +2153,17 @@ t4_read_mtu_tbl
 
     returns the values in the HW path MTU table
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u16 \*mtus:
+    :param mtus:
         where to store the MTU values
+    :type mtus: u16 \*
 
-    :param u8 \*mtu_log:
+    :param mtu_log:
         where to store the MTU base-2 log (may be \ ``NULL``\ )
+    :type mtu_log: u8 \*
 
 .. _`t4_read_mtu_tbl.description`:
 
@@ -1925,11 +2181,13 @@ t4_read_cong_tbl
 
     reads the congestion control table
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u16 incr:
+    :param incr:
         where to store the alpha values
+    :type incr: u16
 
 .. _`t4_read_cong_tbl.description`:
 
@@ -1948,17 +2206,21 @@ t4_tp_wr_bits_indirect
 
     set/clear bits in an indirect TP register
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int addr:
+    :param addr:
         the indirect TP register address
+    :type addr: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         specifies the field within the register to modify
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         new value for the field
+    :type val: unsigned int
 
 .. _`t4_tp_wr_bits_indirect.description`:
 
@@ -1976,11 +2238,13 @@ init_cong_ctrl
 
     initialize congestion control parameters
 
-    :param unsigned short \*a:
+    :param a:
         the alpha values for congestion control
+    :type a: unsigned short \*
 
-    :param unsigned short \*b:
+    :param b:
         the beta values for congestion control
+    :type b: unsigned short \*
 
 .. _`init_cong_ctrl.description`:
 
@@ -1998,17 +2262,21 @@ t4_load_mtus
 
     write the MTU and congestion control HW tables
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param const unsigned short \*mtus:
+    :param mtus:
         the values for the MTU table
+    :type mtus: const unsigned short \*
 
-    :param const unsigned short \*alpha:
+    :param alpha:
         the values for the congestion control alpha parameter
+    :type alpha: const unsigned short \*
 
-    :param const unsigned short \*beta:
+    :param beta:
         the values for the congestion control beta parameter
+    :type beta: const unsigned short \*
 
 .. _`t4_load_mtus.description`:
 
@@ -2029,14 +2297,17 @@ t4_get_chan_txrate
 
     get the current per channel Tx rates
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u64 \*nic_rate:
+    :param nic_rate:
         rates for NIC traffic
+    :type nic_rate: u64 \*
 
-    :param u64 \*ofld_rate:
+    :param ofld_rate:
         rates for offloaded traffic
+    :type ofld_rate: u64 \*
 
 .. _`t4_get_chan_txrate.description`:
 
@@ -2055,17 +2326,21 @@ t4_set_trace_filter
 
     configure one of the tracing filters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param const struct trace_params \*tp:
+    :param tp:
         the desired trace filter parameters
+    :type tp: const struct trace_params \*
 
-    :param int idx:
+    :param idx:
         which filter to configure
+    :type idx: int
 
-    :param int enable:
+    :param enable:
         whether to enable or disable the filter
+    :type enable: int
 
 .. _`t4_set_trace_filter.description`:
 
@@ -2085,17 +2360,21 @@ t4_get_trace_filter
 
     query one of the tracing filters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct trace_params \*tp:
+    :param tp:
         the current trace filter parameters
+    :type tp: struct trace_params \*
 
-    :param int idx:
+    :param idx:
         which trace filter to query
+    :type idx: int
 
-    :param int \*enabled:
+    :param enabled:
         non-zero if the filter is enabled
+    :type enabled: int \*
 
 .. _`t4_get_trace_filter.description`:
 
@@ -2113,14 +2392,17 @@ t4_pmtx_get_stats
 
     returns the HW stats from PMTX
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u32 cnt:
+    :param cnt:
         where to store the count statistics
+    :type cnt: u32
 
-    :param u64 cycles:
+    :param cycles:
         where to store the cycle statistics
+    :type cycles: u64
 
 .. _`t4_pmtx_get_stats.description`:
 
@@ -2138,14 +2420,17 @@ t4_pmrx_get_stats
 
     returns the HW stats from PMRX
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u32 cnt:
+    :param cnt:
         where to store the count statistics
+    :type cnt: u32
 
-    :param u64 cycles:
+    :param cycles:
         where to store the cycle statistics
+    :type cycles: u64
 
 .. _`t4_pmrx_get_stats.description`:
 
@@ -2163,11 +2448,13 @@ compute_mps_bg_map
 
     compute the MPS Buffer Group Map for a Port
 
-    :param struct adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct adapter \*
 
-    :param int pidx:
+    :param pidx:
         the port index
+    :type pidx: int
 
 .. _`compute_mps_bg_map.description`:
 
@@ -2187,11 +2474,13 @@ t4_get_mps_bg_map
 
     return the buffer groups associated with a port
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int pidx:
+    :param pidx:
         the port index
+    :type pidx: int
 
 .. _`t4_get_mps_bg_map.description`:
 
@@ -2211,11 +2500,13 @@ t4_get_tp_ch_map
 
     return TP ingress channels associated with a port
 
-    :param struct adapter \*adap:
+    :param adap:
         *undescribed*
+    :type adap: struct adapter \*
 
-    :param int pidx:
+    :param pidx:
         the port index
+    :type pidx: int
 
 .. _`t4_get_tp_ch_map.description`:
 
@@ -2235,8 +2526,9 @@ t4_get_port_type_description
 
     return Port Type string description
 
-    :param enum fw_port_type port_type:
+    :param port_type:
         firmware Port Type enumeration
+    :type port_type: enum fw_port_type
 
 .. _`t4_get_port_stats_offset`:
 
@@ -2247,17 +2539,21 @@ t4_get_port_stats_offset
 
     collect port stats relative to a previous snapshot
 
-    :param struct adapter \*adap:
+    :param adap:
         The adapter
+    :type adap: struct adapter \*
 
-    :param int idx:
+    :param idx:
         The port
+    :type idx: int
 
-    :param struct port_stats \*stats:
+    :param stats:
         Current stats to fill
+    :type stats: struct port_stats \*
 
-    :param struct port_stats \*offset:
+    :param offset:
         Previous stats snapshot
+    :type offset: struct port_stats \*
 
 .. _`t4_get_port_stats`:
 
@@ -2268,14 +2564,17 @@ t4_get_port_stats
 
     collect port statistics
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int idx:
+    :param idx:
         the port index
+    :type idx: int
 
-    :param struct port_stats \*p:
+    :param p:
         the stats structure to fill
+    :type p: struct port_stats \*
 
 .. _`t4_get_port_stats.description`:
 
@@ -2293,14 +2592,17 @@ t4_get_lb_stats
 
     collect loopback port statistics
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int idx:
+    :param idx:
         the loopback port index
+    :type idx: int
 
-    :param struct lb_port_stats \*p:
+    :param p:
         the stats structure to fill
+    :type p: struct lb_port_stats \*
 
 .. _`t4_get_lb_stats.description`:
 
@@ -2318,23 +2620,29 @@ t4_mdio_rd
 
     read a PHY register through MDIO
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int phy_addr:
+    :param phy_addr:
         the PHY address
+    :type phy_addr: unsigned int
 
-    :param unsigned int mmd:
+    :param mmd:
         the PHY MMD to access (0 for clause 22 PHYs)
+    :type mmd: unsigned int
 
-    :param unsigned int reg:
+    :param reg:
         the register to read
+    :type reg: unsigned int
 
-    :param u16 \*valp:
+    :param valp:
         where to store the value
+    :type valp: u16 \*
 
 .. _`t4_mdio_rd.description`:
 
@@ -2352,23 +2660,29 @@ t4_mdio_wr
 
     write a PHY register through MDIO
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int phy_addr:
+    :param phy_addr:
         the PHY address
+    :type phy_addr: unsigned int
 
-    :param unsigned int mmd:
+    :param mmd:
         the PHY MMD to access (0 for clause 22 PHYs)
+    :type mmd: unsigned int
 
-    :param unsigned int reg:
+    :param reg:
         the register to write
+    :type reg: unsigned int
 
-    :param u16 val:
+    :param val:
         *undescribed*
+    :type val: u16
 
 .. _`t4_mdio_wr.description`:
 
@@ -2386,11 +2700,13 @@ t4_sge_decode_idma_state
 
     decode the idma state
 
-    :param struct adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct adapter \*
 
-    :param int state:
+    :param state:
         the state idma is stuck in
+    :type state: int
 
 .. _`t4_sge_ctxt_flush`:
 
@@ -2401,14 +2717,17 @@ t4_sge_ctxt_flush
 
     flush the SGE context cache
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param int ctxt_type:
+    :param ctxt_type:
         *undescribed*
+    :type ctxt_type: int
 
 .. _`t4_sge_ctxt_flush.description`:
 
@@ -2427,20 +2746,25 @@ t4_fw_hello
 
     establish communication with FW
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int evt_mbox:
+    :param evt_mbox:
         mailbox to receive async FW events
+    :type evt_mbox: unsigned int
 
-    :param enum dev_master master:
+    :param master:
         specifies the caller's willingness to be the device master
+    :type master: enum dev_master
 
-    :param enum dev_state \*state:
+    :param state:
         returns the current device state (if non-NULL)
+    :type state: enum dev_state \*
 
 .. _`t4_fw_hello.description`:
 
@@ -2459,11 +2783,13 @@ t4_fw_bye
 
     end communication with FW
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
 .. _`t4_fw_bye.description`:
 
@@ -2481,11 +2807,13 @@ t4_early_init
 
     ask FW to initialize the device
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
 .. _`t4_early_init.description`:
 
@@ -2504,14 +2832,17 @@ t4_fw_reset
 
     issue a reset to FW
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param int reset:
+    :param reset:
         specifies the type of reset to perform
+    :type reset: int
 
 .. _`t4_fw_reset.description`:
 
@@ -2529,14 +2860,17 @@ t4_fw_halt
 
     issue a reset/halt to FW and put uP into RESET
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW RESET command (if desired)
+    :type mbox: unsigned int
 
-    :param int force:
+    :param force:
         force uP into RESET even if FW RESET command fails
+    :type force: int
 
 .. _`t4_fw_halt.description`:
 
@@ -2562,14 +2896,17 @@ t4_fw_restart
 
     restart the firmware by taking the uP out of RESET
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         *undescribed*
+    :type mbox: unsigned int
 
-    :param int reset:
+    :param reset:
         if we want to do a RESET to restart things
+    :type reset: int
 
 .. _`t4_fw_restart.description`:
 
@@ -2605,20 +2942,25 @@ t4_fw_upgrade
 
     perform all of the steps necessary to upgrade FW
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW RESET command (if desired)
+    :type mbox: unsigned int
 
-    :param const u8 \*fw_data:
+    :param fw_data:
         the firmware image to write
+    :type fw_data: const u8 \*
 
-    :param unsigned int size:
+    :param size:
         image size
+    :type size: unsigned int
 
-    :param int force:
+    :param force:
         force upgrade even if firmware doesn't cooperate
+    :type force: int
 
 .. _`t4_fw_upgrade.description`:
 
@@ -2647,8 +2989,9 @@ t4_fl_pkt_align
 
     return the fl packet alignment
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`t4_fl_pkt_align.description`:
 
@@ -2668,14 +3011,17 @@ t4_fixup_host_params
 
     fix up host-dependent parameters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int page_size:
+    :param page_size:
         the host's Base Page Size
+    :type page_size: unsigned int
 
-    :param unsigned int cache_line_size:
+    :param cache_line_size:
         the host's Cache Line Size
+    :type cache_line_size: unsigned int
 
 .. _`t4_fixup_host_params.description`:
 
@@ -2695,11 +3041,13 @@ t4_fw_initialize
 
     ask FW to initialize the device
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
 .. _`t4_fw_initialize.description`:
 
@@ -2718,32 +3066,41 @@ t4_query_params_rw
 
     query FW or device parameters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF
+    :type vf: unsigned int
 
-    :param unsigned int nparams:
+    :param nparams:
         the number of parameters
+    :type nparams: unsigned int
 
-    :param const u32 \*params:
+    :param params:
         the parameter names
+    :type params: const u32 \*
 
-    :param u32 \*val:
+    :param val:
         the parameter values
+    :type val: u32 \*
 
-    :param int rw:
+    :param rw:
         Write and read flag
+    :type rw: int
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true, we may sleep awaiting mbox cmd completion
+    :type sleep_ok: bool
 
 .. _`t4_query_params_rw.description`:
 
@@ -2762,29 +3119,37 @@ t4_set_params_timeout
 
     sets FW or device parameters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF
+    :type vf: unsigned int
 
-    :param unsigned int nparams:
+    :param nparams:
         the number of parameters
+    :type nparams: unsigned int
 
-    :param const u32 \*params:
+    :param params:
         the parameter names
+    :type params: const u32 \*
 
-    :param const u32 \*val:
+    :param val:
         the parameter values
+    :type val: const u32 \*
 
-    :param int timeout:
+    :param timeout:
         the timeout time
+    :type timeout: int
 
 .. _`t4_set_params_timeout.description`:
 
@@ -2803,26 +3168,33 @@ t4_set_params
 
     sets FW or device parameters
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF
+    :type vf: unsigned int
 
-    :param unsigned int nparams:
+    :param nparams:
         the number of parameters
+    :type nparams: unsigned int
 
-    :param const u32 \*params:
+    :param params:
         the parameter names
+    :type params: const u32 \*
 
-    :param const u32 \*val:
+    :param val:
         the parameter values
+    :type val: const u32 \*
 
 .. _`t4_set_params.description`:
 
@@ -2841,50 +3213,65 @@ t4_cfg_pfvf
 
     configure PF/VF resource limits
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF being configured
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF being configured
+    :type vf: unsigned int
 
-    :param unsigned int txq:
+    :param txq:
         the max number of egress queues
+    :type txq: unsigned int
 
-    :param unsigned int txq_eth_ctrl:
+    :param txq_eth_ctrl:
         the max number of egress Ethernet or control queues
+    :type txq_eth_ctrl: unsigned int
 
-    :param unsigned int rxqi:
+    :param rxqi:
         the max number of interrupt-capable ingress queues
+    :type rxqi: unsigned int
 
-    :param unsigned int rxq:
+    :param rxq:
         the max number of interruptless ingress queues
+    :type rxq: unsigned int
 
-    :param unsigned int tc:
+    :param tc:
         the PCI traffic class
+    :type tc: unsigned int
 
-    :param unsigned int vi:
+    :param vi:
         the max number of virtual interfaces
+    :type vi: unsigned int
 
-    :param unsigned int cmask:
+    :param cmask:
         the channel access rights mask for the PF/VF
+    :type cmask: unsigned int
 
-    :param unsigned int pmask:
+    :param pmask:
         the port access rights mask for the PF/VF
+    :type pmask: unsigned int
 
-    :param unsigned int nexact:
+    :param nexact:
         the maximum number of exact MPS filters
+    :type nexact: unsigned int
 
-    :param unsigned int rcaps:
+    :param rcaps:
         read capabilities
+    :type rcaps: unsigned int
 
-    :param unsigned int wxcaps:
+    :param wxcaps:
         write/execute capabilities
+    :type wxcaps: unsigned int
 
 .. _`t4_cfg_pfvf.description`:
 
@@ -2903,29 +3290,37 @@ t4_alloc_vi
 
     allocate a virtual interface
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int port:
+    :param port:
         physical port associated with the VI
+    :type port: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF owning the VI
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF owning the VI
+    :type vf: unsigned int
 
-    :param unsigned int nmac:
+    :param nmac:
         number of MAC addresses needed (1 to 5)
+    :type nmac: unsigned int
 
-    :param u8 \*mac:
+    :param mac:
         the MAC addresses of the VI
+    :type mac: u8 \*
 
-    :param unsigned int \*rss_size:
+    :param rss_size:
         size of RSS table slice associated with this VI
+    :type rss_size: unsigned int \*
 
 .. _`t4_alloc_vi.description`:
 
@@ -2947,20 +3342,25 @@ t4_free_vi
 
     free a virtual interface
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF owning the VI
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF owning the VI
+    :type vf: unsigned int
 
-    :param unsigned int viid:
+    :param viid:
         virtual interface identifiler
+    :type viid: unsigned int
 
 .. _`t4_free_vi.description`:
 
@@ -2978,32 +3378,41 @@ t4_set_rxmode
 
     set Rx properties of a virtual interface
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param int mtu:
+    :param mtu:
         the new MTU or -1
+    :type mtu: int
 
-    :param int promisc:
+    :param promisc:
         1 to enable promiscuous mode, 0 to disable it, -1 no change
+    :type promisc: int
 
-    :param int all_multi:
+    :param all_multi:
         1 to enable all-multi mode, 0 to disable it, -1 no change
+    :type all_multi: int
 
-    :param int bcast:
+    :param bcast:
         1 to enable broadcast Rx, 0 to disable it, -1 no change
+    :type bcast: int
 
-    :param int vlanex:
+    :param vlanex:
         1 to enable HW VLAN extraction, 0 to disable it, -1 no change
+    :type vlanex: int
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_set_rxmode.description`:
 
@@ -3021,17 +3430,21 @@ t4_free_encap_mac_filt
 
     frees MPS entry at given index
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param int idx:
+    :param idx:
         index of MPS entry to be freed
+    :type idx: int
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         call is allowed to sleep
+    :type sleep_ok: bool
 
 .. _`t4_free_encap_mac_filt.description`:
 
@@ -3051,29 +3464,37 @@ t4_free_raw_mac_filt
 
     Frees a raw mac entry in mps tcam
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param const u8 \*addr:
+    :param addr:
         the MAC address
+    :type addr: const u8 \*
 
-    :param const u8 \*mask:
+    :param mask:
         the mask
+    :type mask: const u8 \*
 
-    :param unsigned int idx:
+    :param idx:
         index of the entry in mps tcam
+    :type idx: unsigned int
 
-    :param u8 lookup_type:
+    :param lookup_type:
         MAC address for inner (1) or outer (0) header
+    :type lookup_type: u8
 
-    :param u8 port_id:
+    :param port_id:
         the port index
+    :type port_id: u8
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         call is allowed to sleep
+    :type sleep_ok: bool
 
 .. _`t4_free_raw_mac_filt.description`:
 
@@ -3093,32 +3514,41 @@ t4_alloc_encap_mac_filt
 
     Adds a mac entry in mps tcam with VNI support
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param const u8 \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const u8 \*
 
-    :param const u8 \*mask:
+    :param mask:
         the mask
+    :type mask: const u8 \*
 
-    :param unsigned int vni:
+    :param vni:
         the VNI id for the tunnel protocol
+    :type vni: unsigned int
 
-    :param unsigned int vni_mask:
+    :param vni_mask:
         mask for the VNI id
+    :type vni_mask: unsigned int
 
-    :param u8 dip_hit:
+    :param dip_hit:
         to enable DIP match for the MPS entry
+    :type dip_hit: u8
 
-    :param u8 lookup_type:
+    :param lookup_type:
         MAC address for inner (1) or outer (0) header
+    :type lookup_type: u8
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         call is allowed to sleep
+    :type sleep_ok: bool
 
 .. _`t4_alloc_encap_mac_filt.description`:
 
@@ -3138,29 +3568,37 @@ t4_alloc_raw_mac_filt
 
     Adds a mac entry in mps tcam
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param const u8 \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const u8 \*
 
-    :param const u8 \*mask:
+    :param mask:
         the mask
+    :type mask: const u8 \*
 
-    :param unsigned int idx:
+    :param idx:
         index at which to add this entry
+    :type idx: unsigned int
 
-    :param u8 lookup_type:
+    :param lookup_type:
         MAC address for inner (1) or outer (0) header
+    :type lookup_type: u8
 
-    :param u8 port_id:
+    :param port_id:
         the port index
+    :type port_id: u8
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         call is allowed to sleep
+    :type sleep_ok: bool
 
 .. _`t4_alloc_raw_mac_filt.description`:
 
@@ -3180,32 +3618,41 @@ t4_alloc_mac_filt
 
     allocates exact-match filters for MAC addresses
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param bool free:
+    :param free:
         if true any existing filters for this VI id are first removed
+    :type free: bool
 
-    :param unsigned int naddr:
+    :param naddr:
         the number of MAC addresses to allocate filters for (up to 7)
+    :type naddr: unsigned int
 
-    :param const u8 \*\*addr:
+    :param addr:
         the MAC address(es)
+    :type addr: const u8 \*\*
 
-    :param u16 \*idx:
+    :param idx:
         where to store the index of each allocated filter
+    :type idx: u16 \*
 
-    :param u64 \*hash:
+    :param hash:
         pointer to hash address filter bitmap
+    :type hash: u64 \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         call is allowed to sleep
+    :type sleep_ok: bool
 
 .. _`t4_alloc_mac_filt.description`:
 
@@ -3231,23 +3678,29 @@ t4_free_mac_filt
 
     frees exact-match filters of given MAC addresses
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param unsigned int naddr:
+    :param naddr:
         the number of MAC addresses to allocate filters for (up to 7)
+    :type naddr: unsigned int
 
-    :param const u8 \*\*addr:
+    :param addr:
         the MAC address(es)
+    :type addr: const u8 \*\*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         call is allowed to sleep
+    :type sleep_ok: bool
 
 .. _`t4_free_mac_filt.description`:
 
@@ -3267,26 +3720,33 @@ t4_change_mac
 
     modifies the exact-match filter for a MAC address
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param int idx:
+    :param idx:
         index of existing filter for old value of MAC address, or -1
+    :type idx: int
 
-    :param const u8 \*addr:
+    :param addr:
         the new MAC address value
+    :type addr: const u8 \*
 
-    :param bool persist:
+    :param persist:
         whether a new MAC allocation should be persistent
+    :type persist: bool
 
-    :param bool add_smt:
+    :param add_smt:
         if true also add the address to the HW SMT
+    :type add_smt: bool
 
 .. _`t4_change_mac.description`:
 
@@ -3311,23 +3771,29 @@ t4_set_addr_hash
 
     program the MAC inexact-match hash filter
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param bool ucast:
+    :param ucast:
         whether the hash filter should also match unicast addresses
+    :type ucast: bool
 
-    :param u64 vec:
+    :param vec:
         the value to be written to the hash filter
+    :type vec: u64
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         call is allowed to sleep
+    :type sleep_ok: bool
 
 .. _`t4_set_addr_hash.description`:
 
@@ -3345,23 +3811,29 @@ t4_enable_vi_params
 
     enable/disable a virtual interface
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param bool rx_en:
+    :param rx_en:
         1=enable Rx, 0=disable Rx
+    :type rx_en: bool
 
-    :param bool tx_en:
+    :param tx_en:
         1=enable Tx, 0=disable Tx
+    :type tx_en: bool
 
-    :param bool dcb_en:
+    :param dcb_en:
         1=enable delivery of Data Center Bridging messages.
+    :type dcb_en: bool
 
 .. _`t4_enable_vi_params.description`:
 
@@ -3380,20 +3852,25 @@ t4_enable_vi
 
     enable/disable a virtual interface
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param bool rx_en:
+    :param rx_en:
         1=enable Rx, 0=disable Rx
+    :type rx_en: bool
 
-    :param bool tx_en:
+    :param tx_en:
         1=enable Tx, 0=disable Tx
+    :type tx_en: bool
 
 .. _`t4_enable_vi.description`:
 
@@ -3411,23 +3888,29 @@ t4_enable_pi_params
 
     enable/disable a Port's Virtual Interface
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param struct port_info \*pi:
+    :param pi:
         the Port Information structure
+    :type pi: struct port_info \*
 
-    :param bool rx_en:
+    :param rx_en:
         1=enable Rx, 0=disable Rx
+    :type rx_en: bool
 
-    :param bool tx_en:
+    :param tx_en:
         1=enable Tx, 0=disable Tx
+    :type tx_en: bool
 
-    :param bool dcb_en:
+    :param dcb_en:
         1=enable delivery of Data Center Bridging messages.
+    :type dcb_en: bool
 
 .. _`t4_enable_pi_params.description`:
 
@@ -3449,17 +3932,21 @@ t4_identify_port
 
     identify a VI's port by blinking its LED
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param unsigned int nblinks:
+    :param nblinks:
         how many times to blink LED at 2.5 Hz
+    :type nblinks: unsigned int
 
 .. _`t4_identify_port.description`:
 
@@ -3477,29 +3964,37 @@ t4_iq_stop
 
     stop an ingress queue and its FLs
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF owning the queues
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF owning the queues
+    :type vf: unsigned int
 
-    :param unsigned int iqtype:
+    :param iqtype:
         the ingress queue type (FW_IQ_TYPE_FL_INT_CAP, etc.)
+    :type iqtype: unsigned int
 
-    :param unsigned int iqid:
+    :param iqid:
         ingress queue id
+    :type iqid: unsigned int
 
-    :param unsigned int fl0id:
+    :param fl0id:
         FL0 queue id or 0xffff if no attached FL0
+    :type fl0id: unsigned int
 
-    :param unsigned int fl1id:
+    :param fl1id:
         FL1 queue id or 0xffff if no attached FL1
+    :type fl1id: unsigned int
 
 .. _`t4_iq_stop.description`:
 
@@ -3519,29 +4014,37 @@ t4_iq_free
 
     free an ingress queue and its FLs
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF owning the queues
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF owning the queues
+    :type vf: unsigned int
 
-    :param unsigned int iqtype:
+    :param iqtype:
         the ingress queue type
+    :type iqtype: unsigned int
 
-    :param unsigned int iqid:
+    :param iqid:
         ingress queue id
+    :type iqid: unsigned int
 
-    :param unsigned int fl0id:
+    :param fl0id:
         FL0 queue id or 0xffff if no attached FL0
+    :type fl0id: unsigned int
 
-    :param unsigned int fl1id:
+    :param fl1id:
         FL1 queue id or 0xffff if no attached FL1
+    :type fl1id: unsigned int
 
 .. _`t4_iq_free.description`:
 
@@ -3559,20 +4062,25 @@ t4_eth_eq_free
 
     free an Ethernet egress queue
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF owning the queue
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF owning the queue
+    :type vf: unsigned int
 
-    :param unsigned int eqid:
+    :param eqid:
         egress queue id
+    :type eqid: unsigned int
 
 .. _`t4_eth_eq_free.description`:
 
@@ -3590,20 +4098,25 @@ t4_ctrl_eq_free
 
     free a control egress queue
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF owning the queue
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF owning the queue
+    :type vf: unsigned int
 
-    :param unsigned int eqid:
+    :param eqid:
         egress queue id
+    :type eqid: unsigned int
 
 .. _`t4_ctrl_eq_free.description`:
 
@@ -3621,20 +4134,25 @@ t4_ofld_eq_free
 
     free an offload egress queue
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int pf:
+    :param pf:
         the PF owning the queue
+    :type pf: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         the VF owning the queue
+    :type vf: unsigned int
 
-    :param unsigned int eqid:
+    :param eqid:
         egress queue id
+    :type eqid: unsigned int
 
 .. _`t4_ofld_eq_free.description`:
 
@@ -3652,8 +4170,9 @@ t4_link_down_rc_str
 
     return a string for a Link Down Reason Code
 
-    :param unsigned char link_down_rc:
+    :param link_down_rc:
         Link Down Reason Code
+    :type link_down_rc: unsigned char
 
 .. _`t4_link_down_rc_str.description`:
 
@@ -3669,8 +4188,9 @@ fwcap_to_speed
 
 .. c:function:: unsigned int fwcap_to_speed(fw_port_cap32_t caps)
 
-    :param fw_port_cap32_t caps:
+    :param caps:
         *undescribed*
+    :type caps: fw_port_cap32_t
 
 .. _`fwcap_to_fwspeed`:
 
@@ -3681,8 +4201,9 @@ fwcap_to_fwspeed
 
     return highest speed in Port Capabilities
 
-    :param fw_port_cap32_t acaps:
+    :param acaps:
         advertised Port Capabilities
+    :type acaps: fw_port_cap32_t
 
 .. _`fwcap_to_fwspeed.description`:
 
@@ -3702,8 +4223,9 @@ lstatus_to_fwcap
 
     translate old lstatus to 32-bit Port Capabilities
 
-    :param u32 lstatus:
+    :param lstatus:
         old FW_PORT_ACTION_GET_PORT_INFO lstatus value
+    :type lstatus: u32
 
 .. _`lstatus_to_fwcap.description`:
 
@@ -3722,11 +4244,13 @@ t4_handle_get_port_info
 
     process a FW reply message
 
-    :param struct port_info \*pi:
+    :param pi:
         the port info
+    :type pi: struct port_info \*
 
-    :param const __be64 \*rpl:
+    :param rpl:
         start of the FW message
+    :type rpl: const __be64 \*
 
 .. _`t4_handle_get_port_info.description`:
 
@@ -3744,8 +4268,9 @@ t4_update_port_info
 
     retrieve and update port information if changed
 
-    :param struct port_info \*pi:
+    :param pi:
         the port_info
+    :type pi: struct port_info \*
 
 .. _`t4_update_port_info.description`:
 
@@ -3765,17 +4290,21 @@ t4_get_link_params
 
     retrieve basic link parameters for given port
 
-    :param struct port_info \*pi:
+    :param pi:
         the port
+    :type pi: struct port_info \*
 
-    :param unsigned int \*link_okp:
+    :param link_okp:
         value return pointer for link up/down
+    :type link_okp: unsigned int \*
 
-    :param unsigned int \*speedp:
+    :param speedp:
         value return pointer for speed (Mb/s)
+    :type speedp: unsigned int \*
 
-    :param unsigned int \*mtup:
+    :param mtup:
         value return pointer for mtu
+    :type mtup: unsigned int \*
 
 .. _`t4_get_link_params.retrieves-basic-link-parameters-for-a-port`:
 
@@ -3795,11 +4324,13 @@ t4_handle_fw_rpl
 
     process a FW reply message
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param const __be64 \*rpl:
+    :param rpl:
         start of the FW message
+    :type rpl: const __be64 \*
 
 .. _`t4_handle_fw_rpl.description`:
 
@@ -3817,14 +4348,17 @@ init_link_config
 
     initialize a link's SW state
 
-    :param struct link_config \*lc:
+    :param lc:
         pointer to structure holding the link state
+    :type lc: struct link_config \*
 
-    :param fw_port_cap32_t pcaps:
+    :param pcaps:
         link Port Capabilities
+    :type pcaps: fw_port_cap32_t
 
-    :param fw_port_cap32_t acaps:
+    :param acaps:
         link current Advertised Port Capabilities
+    :type acaps: fw_port_cap32_t
 
 .. _`init_link_config.description`:
 
@@ -3843,8 +4377,9 @@ t4_prep_adapter
 
     prepare SW and HW for operation
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4_prep_adapter.description`:
 
@@ -3864,8 +4399,9 @@ t4_shutdown_adapter
 
     shut down adapter, host & wire
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4_shutdown_adapter.description`:
 
@@ -3889,23 +4425,29 @@ t4_bar2_sge_qregs
 
     return BAR2 SGE Queue register information
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int qid:
+    :param qid:
         the Queue ID
+    :type qid: unsigned int
 
-    :param enum t4_bar2_qtype qtype:
+    :param qtype:
         the Ingress or Egress type for \ ``qid``\ 
+    :type qtype: enum t4_bar2_qtype
 
-    :param int user:
+    :param user:
         true if this request is for a user mode queue
+    :type user: int
 
-    :param u64 \*pbar2_qoffset:
+    :param pbar2_qoffset:
         BAR2 Queue Offset
+    :type pbar2_qoffset: u64 \*
 
-    :param unsigned int \*pbar2_qid:
+    :param pbar2_qid:
         BAR2 Queue ID or 0 for Queue ID inferred SGE Queues
+    :type pbar2_qid: unsigned int \*
 
 .. _`t4_bar2_sge_qregs.description`:
 
@@ -3943,8 +4485,9 @@ t4_init_devlog_params
 
     initialize adapter->params.devlog
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`t4_init_devlog_params.description`:
 
@@ -3963,8 +4506,9 @@ t4_init_sge_params
 
     initialize adap->params.sge
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4_init_sge_params.description`:
 
@@ -3982,11 +4526,13 @@ t4_init_tp_params
 
     initialize adap->params.tp
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_init_tp_params.description`:
 
@@ -4004,11 +4550,13 @@ t4_filter_field_shift
 
     calculate filter field shift
 
-    :param const struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: const struct adapter \*
 
-    :param int filter_sel:
+    :param filter_sel:
         the desired field (from TP_VLAN_PRI_MAP bits)
+    :type filter_sel: int
 
 .. _`t4_filter_field_shift.description`:
 
@@ -4028,23 +4576,29 @@ t4_init_portinfo
 
     allocate a virtual interface and initialize port_info
 
-    :param struct port_info \*pi:
+    :param pi:
         the port_info
+    :type pi: struct port_info \*
 
-    :param int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: int
 
-    :param int port:
+    :param port:
         physical port associated with the VI
+    :type port: int
 
-    :param int pf:
+    :param pf:
         the PF owning the VI
+    :type pf: int
 
-    :param int vf:
+    :param vf:
         the VF owning the VI
+    :type vf: int
 
-    :param u8 mac:
+    :param mac:
         the MAC address of the VI
+    :type mac: u8
 
 .. _`t4_init_portinfo.description`:
 
@@ -4065,17 +4619,21 @@ t4_read_cimq_cfg
 
     read CIM queue configuration
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u16 \*base:
+    :param base:
         holds the queue base addresses in bytes
+    :type base: u16 \*
 
-    :param u16 \*size:
+    :param size:
         holds the queue sizes in bytes
+    :type size: u16 \*
 
-    :param u16 \*thres:
+    :param thres:
         holds the queue full thresholds in bytes
+    :type thres: u16 \*
 
 .. _`t4_read_cimq_cfg.description`:
 
@@ -4094,17 +4652,21 @@ t4_read_cim_ibq
 
     read the contents of a CIM inbound queue
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int qid:
+    :param qid:
         the queue index
+    :type qid: unsigned int
 
-    :param u32 \*data:
+    :param data:
         where to store the queue contents
+    :type data: u32 \*
 
-    :param size_t n:
+    :param n:
         capacity of \ ``data``\  in 32-bit words
+    :type n: size_t
 
 .. _`t4_read_cim_ibq.description`:
 
@@ -4124,17 +4686,21 @@ t4_read_cim_obq
 
     read the contents of a CIM outbound queue
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int qid:
+    :param qid:
         the queue index
+    :type qid: unsigned int
 
-    :param u32 \*data:
+    :param data:
         where to store the queue contents
+    :type data: u32 \*
 
-    :param size_t n:
+    :param n:
         capacity of \ ``data``\  in 32-bit words
+    :type n: size_t
 
 .. _`t4_read_cim_obq.description`:
 
@@ -4154,17 +4720,21 @@ t4_cim_read
 
     read a block from CIM internal address space
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int addr:
+    :param addr:
         the start address within the CIM address space
+    :type addr: unsigned int
 
-    :param unsigned int n:
+    :param n:
         number of words to read
+    :type n: unsigned int
 
-    :param unsigned int \*valp:
+    :param valp:
         where to store the result
+    :type valp: unsigned int \*
 
 .. _`t4_cim_read.description`:
 
@@ -4182,17 +4752,21 @@ t4_cim_write
 
     write a block into CIM internal address space
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int addr:
+    :param addr:
         the start address within the CIM address space
+    :type addr: unsigned int
 
-    :param unsigned int n:
+    :param n:
         number of words to write
+    :type n: unsigned int
 
-    :param const unsigned int \*valp:
+    :param valp:
         set of values to write
+    :type valp: const unsigned int \*
 
 .. _`t4_cim_write.description`:
 
@@ -4210,14 +4784,17 @@ t4_cim_read_la
 
     read CIM LA capture buffer
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u32 \*la_buf:
+    :param la_buf:
         where to store the LA data
+    :type la_buf: u32 \*
 
-    :param unsigned int \*wrptr:
+    :param wrptr:
         the HW write pointer within the capture buffer
+    :type wrptr: unsigned int \*
 
 .. _`t4_cim_read_la.description`:
 
@@ -4237,14 +4814,17 @@ t4_tp_read_la
 
     read TP LA capture buffer
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param u64 \*la_buf:
+    :param la_buf:
         where to store the LA data
+    :type la_buf: u64 \*
 
-    :param unsigned int \*wrptr:
+    :param wrptr:
         the HW write pointer within the capture buffer
+    :type wrptr: unsigned int \*
 
 .. _`t4_tp_read_la.description`:
 
@@ -4264,11 +4844,13 @@ t4_idma_monitor_init
 
     initialize SGE Ingress DMA Monitor
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_idma_monitor_state \*idma:
+    :param idma:
         the adapter IDMA Monitor state
+    :type idma: struct sge_idma_monitor_state \*
 
 .. _`t4_idma_monitor_init.description`:
 
@@ -4286,17 +4868,21 @@ t4_idma_monitor
 
     monitor SGE Ingress DMA state
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_idma_monitor_state \*idma:
+    :param idma:
         the adapter IDMA Monitor state
+    :type idma: struct sge_idma_monitor_state \*
 
-    :param int hz:
+    :param hz:
         number of ticks/second
+    :type hz: int
 
-    :param int ticks:
+    :param ticks:
         number of ticks since the last IDMA Monitor call
+    :type ticks: int
 
 .. _`t4_load_cfg`:
 
@@ -4307,14 +4893,17 @@ t4_load_cfg
 
     download config file
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param const u8 \*cfg_data:
+    :param cfg_data:
         the cfg text file to write
+    :type cfg_data: const u8 \*
 
-    :param unsigned int size:
+    :param size:
         text file size
+    :type size: unsigned int
 
 .. _`t4_load_cfg.description`:
 
@@ -4332,17 +4921,21 @@ t4_set_vf_mac_acl
 
     Set MAC address for the specified VF
 
-    :param struct adapter \*adapter:
+    :param adapter:
         The adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int vf:
+    :param vf:
         one of the VFs instantiated by the specified PF
+    :type vf: unsigned int
 
-    :param unsigned int naddr:
+    :param naddr:
         the number of MAC addresses
+    :type naddr: unsigned int
 
-    :param u8 \*addr:
+    :param addr:
         the MAC address(es) to be set to the specified VF
+    :type addr: u8 \*
 
 .. _`t4_read_pace_tbl`:
 
@@ -4353,11 +4946,13 @@ t4_read_pace_tbl
 
     read the pace table
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int pace_vals:
+    :param pace_vals:
         holds the returned values
+    :type pace_vals: unsigned int
 
 .. _`t4_read_pace_tbl.description`:
 
@@ -4375,20 +4970,25 @@ t4_get_tx_sched
 
     get the configuration of a Tx HW traffic scheduler
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int sched:
+    :param sched:
         the scheduler index
+    :type sched: unsigned int
 
-    :param unsigned int \*kbps:
+    :param kbps:
         the byte rate in Kbps
+    :type kbps: unsigned int \*
 
-    :param unsigned int \*ipg:
+    :param ipg:
         the interpacket delay in tenths of nanoseconds
+    :type ipg: unsigned int \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4_get_tx_sched.description`:
 
@@ -4406,17 +5006,21 @@ t4_sge_ctxt_rd_bd
 
     read an SGE context bypassing FW
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int cid:
+    :param cid:
         the context id
+    :type cid: unsigned int
 
-    :param enum ctxt_type ctype:
+    :param ctype:
         the context type
+    :type ctype: enum ctxt_type
 
-    :param u32 \*data:
+    :param data:
         where to store the context data
+    :type data: u32 \*
 
 .. _`t4_sge_ctxt_rd_bd.description`:
 
@@ -4435,26 +5039,33 @@ t4_i2c_rd
 
     read I2C data from adapter
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         *undescribed*
+    :type mbox: unsigned int
 
-    :param int port:
+    :param port:
         Port number if per-port device; <0 if not
+    :type port: int
 
-    :param unsigned int devid:
+    :param devid:
         per-port device ID or absolute device ID
+    :type devid: unsigned int
 
-    :param unsigned int offset:
+    :param offset:
         byte offset into device I2C space
+    :type offset: unsigned int
 
-    :param unsigned int len:
+    :param len:
         byte length of I2C space data
+    :type len: unsigned int
 
-    :param u8 \*buf:
+    :param buf:
         buffer in which to return I2C data
+    :type buf: u8 \*
 
 .. _`t4_i2c_rd.description`:
 
@@ -4472,17 +5083,21 @@ t4_set_vlan_acl
 
     Set a VLAN id for the specified VF
 
-    :param struct adapter \*adap:
+    :param adap:
         *undescribed*
+    :type adap: struct adapter \*
 
-    :param unsigned int mbox:
+    :param mbox:
         mailbox to use for the FW command
+    :type mbox: unsigned int
 
-    :param unsigned int vf:
+    :param vf:
         one of the VFs instantiated by the specified PF
+    :type vf: unsigned int
 
-    :param u16 vlan:
+    :param vlan:
         The vlanid to be set
+    :type vlan: u16
 
 .. This file was automatic generated / don't edit.
 

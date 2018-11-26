@@ -10,8 +10,9 @@ qla2x00_config_dma_addressing
 
     Configure OS DMA addressing method.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
 .. _`qla2x00_config_dma_addressing.description`:
 
@@ -30,8 +31,9 @@ qla2x00_module_init
 
     Module initialization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`qla2x00_module_exit`:
 
@@ -42,8 +44,9 @@ qla2x00_module_exit
 
     Module cleanup.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

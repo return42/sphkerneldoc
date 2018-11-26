@@ -25,7 +25,6 @@ Definition
         struct video_device vfd_decoder;
         struct v4l2_m2m_dev *m2m_dev;
         struct jpu_ctx *curr;
-        wait_queue_head_t irq_queue;
         void __iomem *regs;
         unsigned int irq;
         struct clk *clk;
@@ -58,9 +57,6 @@ m2m_dev
 
 curr
     pointer to current context
-
-irq_queue
-    interrupt handler waitqueue
 
 regs
     JPEG IP registers mapping

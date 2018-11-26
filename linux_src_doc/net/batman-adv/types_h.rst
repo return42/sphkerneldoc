@@ -3,17 +3,19 @@
 
 .. _`batadv_dat_addr_t`:
 
-batadv_dat_addr_t
-=================
+typedef batadv_dat_addr_t
+=========================
 
-.. c:function::  batadv_dat_addr_t()
+.. c:type:: typedef batadv_dat_addr_t
 
-    it is the type used for all DHT addresses. If it is changed, BATADV_DAT_ADDR_MAX is changed as well.
+    type used for all DHT addresses
 
 .. _`batadv_dat_addr_t.description`:
 
 Description
 -----------
+
+If it is changed, BATADV_DAT_ADDR_MAX is changed as well.
 
 \*Please be careful: batadv_dat_addr_t must be UNSIGNED\*
 
@@ -246,7 +248,6 @@ Definition
 
     struct batadv_hard_iface {
         struct list_head list;
-        unsigned int if_num;
         char if_status;
         u8 num_bcasts;
         u32 wifi_flags;
@@ -274,9 +275,6 @@ Members
 
 list
     list node for batadv_hardif_list
-
-if_num
-    identificator of the interface
 
 if_status
     status of the interface for batman-adv
@@ -320,6 +318,38 @@ neigh_list
 neigh_list_lock
     lock protecting neigh_list
 
+.. _`batadv_orig_ifinfo_bat_iv`:
+
+struct batadv_orig_ifinfo_bat_iv
+================================
+
+.. c:type:: struct batadv_orig_ifinfo_bat_iv
+
+    B.A.T.M.A.N. IV private orig_ifinfo members
+
+.. _`batadv_orig_ifinfo_bat_iv.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct batadv_orig_ifinfo_bat_iv {
+        DECLARE_BITMAP(bcast_own, BATADV_TQ_LOCAL_WINDOW_SIZE);
+        u8 bcast_own_sum;
+    }
+
+.. _`batadv_orig_ifinfo_bat_iv.members`:
+
+Members
+-------
+
+bcast_own
+    bitfield which counts the number of our OGMs thisorig_node rebroadcasted "back" to us  (relative to last_real_seqno)
+
+bcast_own_sum
+    sum of bcast_own
+
 .. _`batadv_orig_ifinfo`:
 
 struct batadv_orig_ifinfo
@@ -344,6 +374,7 @@ Definition
         u8 last_ttl;
         u32 last_seqno_forwarded;
         unsigned long batman_seqno_reset;
+        struct batadv_orig_ifinfo_bat_iv bat_iv;
         struct kref refcount;
         struct rcu_head rcu;
     }
@@ -373,6 +404,9 @@ last_seqno_forwarded
 
 batman_seqno_reset
     time when the batman seqno window was reset
+
+bat_iv
+    B.A.T.M.A.N. IV private structure
 
 refcount
     number of contexts the object is used
@@ -557,8 +591,6 @@ Definition
 .. code-block:: c
 
     struct batadv_orig_bat_iv {
-        unsigned long *bcast_own;
-        u8 *bcast_own_sum;
         spinlock_t ogm_cnt_lock;
     }
 
@@ -567,16 +599,10 @@ Definition
 Members
 -------
 
-bcast_own
-    set of bitfields (one per hard-interface) where each onecounts the number of our OGMs this orig_node rebroadcasted "back" to
-    us  (relative to last_real_seqno). Every bitfield is
-    BATADV_TQ_LOCAL_WINDOW_SIZE bits long.
-
-bcast_own_sum
-    sum of bcast_own
-
 ogm_cnt_lock
-    lock protecting bcast_own, bcast_own_sum,neigh_node->bat_iv.real_bits & neigh_node->bat_iv.real_packet_count
+    lock protecting \ :c:type:`batadv_orig_ifinfo_bat_iv.bcast_own <batadv_orig_ifinfo_bat_iv>`\ ,&batadv_orig_ifinfo_bat_iv.bcast_own_sum,
+    \ :c:type:`batadv_neigh_ifinfo_bat_iv.bat_iv <batadv_neigh_ifinfo_bat_iv>`\ .real_bits and
+    \ :c:type:`batadv_neigh_ifinfo_bat_iv.real_packet_count <batadv_neigh_ifinfo_bat_iv>`\ 
 
 .. _`batadv_orig_node`:
 
@@ -2237,7 +2263,6 @@ Definition
         atomic_t bcast_seqno;
         atomic_t bcast_queue_left;
         atomic_t batman_queue_left;
-        unsigned int num_ifaces;
         struct kobject *mesh_obj;
     #ifdef CONFIG_BATMAN_ADV_DEBUGFS
         struct dentry *debug_dir;
@@ -2341,9 +2366,6 @@ bcast_queue_left
 
 batman_queue_left
     number of remaining OGM packet slots
-
-num_ifaces
-    number of interfaces assigned to this mesh interface
 
 mesh_obj
     kobject for sysfs mesh subdirectory
@@ -3290,9 +3312,6 @@ Definition
 .. code-block:: c
 
     struct batadv_algo_orig_ops {
-        void (*free)(struct batadv_orig_node *orig_node);
-        int (*add_if)(struct batadv_orig_node *orig_node, unsigned int max_if_num);
-        int (*del_if)(struct batadv_orig_node *orig_node, unsigned int max_if_num, unsigned int del_if_num);
     #ifdef CONFIG_BATMAN_ADV_DEBUGFS
         void (*print)(struct batadv_priv *priv, struct seq_file *seq, struct batadv_hard_iface *hard_iface);
     #endif
@@ -3303,17 +3322,6 @@ Definition
 
 Members
 -------
-
-free
-    free the resources allocated by the routing algorithm for an orig_node object (optional)
-
-add_if
-    ask the routing algorithm to apply the needed changes to the orig_node due to a new hard-interface being added into the mesh
-    (optional)
-
-del_if
-    ask the routing algorithm to apply the needed changes to the orig_node due to an hard-interface being removed from the mesh
-    (optional)
 
 print
     print the originator table (optional)

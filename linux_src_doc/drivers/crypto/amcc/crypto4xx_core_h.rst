@@ -10,14 +10,17 @@ crypto4xx_memcpy_swab32
 
     Only use this function to copy items that is word aligned.
 
-    :param u32 \*dst:
+    :param dst:
         *undescribed*
+    :type dst: u32 \*
 
-    :param const void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. This file was automatic generated / don't edit.
 

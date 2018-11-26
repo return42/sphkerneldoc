@@ -10,8 +10,9 @@ oaktrail_save_display_registers
 
     save registers lost on suspend
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
 .. _`oaktrail_save_display_registers.description`:
 
@@ -30,8 +31,9 @@ oaktrail_restore_display_registers
 
     restore lost register state
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
 .. _`oaktrail_restore_display_registers.description`:
 
@@ -49,8 +51,9 @@ oaktrail_power_down
 
     power down the display island
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
 .. _`oaktrail_power_down.description`:
 

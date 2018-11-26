@@ -10,8 +10,9 @@ debugfs_file_get
 
     mark the beginning of file data access
 
-    :param struct dentry \*dentry:
+    :param dentry:
         the dentry object whose data is being accessed.
+    :type dentry: struct dentry \*
 
 .. _`debugfs_file_get.description`:
 
@@ -38,9 +39,10 @@ debugfs_file_put
 
     mark the end of file data access
 
-    :param struct dentry \*dentry:
+    :param dentry:
         the dentry object formerly passed to
         \ :c:func:`debugfs_file_get`\ .
+    :type dentry: struct dentry \*
 
 .. _`debugfs_file_put.description`:
 
@@ -60,20 +62,24 @@ debugfs_create_u8
 
     create a debugfs file that is used to read and write an unsigned 8-bit value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param u8 \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: u8 \*
 
 .. _`debugfs_create_u8.description`:
 
@@ -103,20 +109,24 @@ debugfs_create_u16
 
     create a debugfs file that is used to read and write an unsigned 16-bit value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param u16 \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: u16 \*
 
 .. _`debugfs_create_u16.description`:
 
@@ -146,20 +156,24 @@ debugfs_create_u32
 
     create a debugfs file that is used to read and write an unsigned 32-bit value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param u32 \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: u32 \*
 
 .. _`debugfs_create_u32.description`:
 
@@ -189,20 +203,24 @@ debugfs_create_u64
 
     create a debugfs file that is used to read and write an unsigned 64-bit value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param u64 \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: u64 \*
 
 .. _`debugfs_create_u64.description`:
 
@@ -232,20 +250,24 @@ debugfs_create_ulong
 
     create a debugfs file that is used to read and write an unsigned long value.
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param unsigned long \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: unsigned long \*
 
 .. _`debugfs_create_ulong.description`:
 
@@ -275,20 +297,24 @@ debugfs_create_x8
 
     create a debugfs file that is used to read and write an unsigned 8-bit value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param u8 \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: u8 \*
 
 .. _`debugfs_create_x16`:
 
@@ -299,20 +325,24 @@ debugfs_create_x16
 
     create a debugfs file that is used to read and write an unsigned 16-bit value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param u16 \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: u16 \*
 
 .. _`debugfs_create_x32`:
 
@@ -323,20 +353,24 @@ debugfs_create_x32
 
     create a debugfs file that is used to read and write an unsigned 32-bit value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param u32 \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: u32 \*
 
 .. _`debugfs_create_x64`:
 
@@ -347,20 +381,24 @@ debugfs_create_x64
 
     create a debugfs file that is used to read and write an unsigned 64-bit value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param u64 \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: u64 \*
 
 .. _`debugfs_create_size_t`:
 
@@ -371,20 +409,24 @@ debugfs_create_size_t
 
     create a debugfs file that is used to read and write an size_t value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param size_t \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: size_t \*
 
 .. _`debugfs_create_atomic_t`:
 
@@ -395,20 +437,24 @@ debugfs_create_atomic_t
 
     create a debugfs file that is used to read and write an atomic_t value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param atomic_t \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: atomic_t \*
 
 .. _`debugfs_create_bool`:
 
@@ -419,20 +465,24 @@ debugfs_create_bool
 
     create a debugfs file that is used to read and write a boolean value
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param bool \*value:
+    :param value:
         a pointer to the variable that the file should read to and write
         from.
+    :type value: bool \*
 
 .. _`debugfs_create_bool.description`:
 
@@ -462,20 +512,24 @@ debugfs_create_blob
 
     create a debugfs file that is used to read a binary blob
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param struct debugfs_blob_wrapper \*blob:
+    :param blob:
         a pointer to a struct debugfs_blob_wrapper which contains a pointer
         to the blob data and the size of the data.
+    :type blob: struct debugfs_blob_wrapper \*
 
 .. _`debugfs_create_blob.description`:
 
@@ -483,7 +537,7 @@ Description
 -----------
 
 This function creates a file in debugfs with the given name that exports
-\ ``blob``\ ->data as a binary blob. If the \ ``mode``\  variable is so set it can be
+\ ``blob->data``\  as a binary blob. If the \ ``mode``\  variable is so set it can be
 read from. Writing is not supported.
 
 This function will return a pointer to a dentry if it succeeds.  This
@@ -505,22 +559,27 @@ debugfs_create_u32_array
 
     create a debugfs file that is used to read u32 array.
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have.
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param u32 \*array:
+    :param array:
         u32 array that provides data.
+    :type array: u32 \*
 
-    :param u32 elements:
+    :param elements:
         total number of elements in the array.
+    :type elements: u32
 
 .. _`debugfs_create_u32_array.description`:
 
@@ -544,20 +603,25 @@ debugfs_print_regs32
 
     use seq_print to describe a set of registers
 
-    :param struct seq_file \*s:
+    :param s:
         the seq_file structure being used to generate output
+    :type s: struct seq_file \*
 
-    :param const struct debugfs_reg32 \*regs:
+    :param regs:
         an array if struct debugfs_reg32 structures
+    :type regs: const struct debugfs_reg32 \*
 
-    :param int nregs:
+    :param nregs:
         the length of the above array
+    :type nregs: int
 
-    :param void __iomem \*base:
+    :param base:
         the base address to be used in reading the registers
+    :type base: void __iomem \*
 
-    :param char \*prefix:
+    :param prefix:
         a string to be prefixed to every output line
+    :type prefix: char \*
 
 .. _`debugfs_print_regs32.description`:
 
@@ -580,21 +644,25 @@ debugfs_create_regset32
 
     create a debugfs file that returns register values
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
-    :param struct debugfs_regset32 \*regset:
+    :param regset:
         a pointer to a struct debugfs_regset32, which contains a pointer
         to an array of register definitions, the array size and the base
         address where the register bank is to be found.
+    :type regset: struct debugfs_regset32 \*
 
 .. _`debugfs_create_regset32.description`:
 
@@ -624,16 +692,19 @@ debugfs_create_devm_seqfile
 
     create a debugfs file that is bound to device.
 
-    :param struct device \*dev:
+    :param dev:
         device related to this debugfs file.
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of the debugfs file.
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
+    :type parent: struct dentry \*
 
     :param int (\*read_fn)(struct seq_file \*s, void \*data):
         function pointer called to print the seq_file content.

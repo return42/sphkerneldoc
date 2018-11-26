@@ -10,11 +10,13 @@ w1_touch_bit
 
     Generates a write-0 or write-1 cycle and samples the level.
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
-    :param int bit:
+    :param bit:
         0 - write a 0, 1 - write a 0 read the level
+    :type bit: int
 
 .. _`w1_write_bit`:
 
@@ -25,11 +27,13 @@ w1_write_bit
 
     Generates a write-0 or write-1 cycle.
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
-    :param int bit:
+    :param bit:
         bit to write
+    :type bit: int
 
 .. _`w1_write_bit.description`:
 
@@ -47,8 +51,9 @@ w1_pre_write
 
     pre-write operations
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
 .. _`w1_pre_write.description`:
 
@@ -68,8 +73,9 @@ w1_post_write
 
     post-write options
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
 .. _`w1_post_write.description`:
 
@@ -89,11 +95,13 @@ w1_write_8
 
     Writes 8 bits.
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
-    :param u8 byte:
+    :param byte:
         the byte to write
+    :type byte: u8
 
 .. _`w1_read_bit`:
 
@@ -104,8 +112,9 @@ w1_read_bit
 
     Generates a write-1 cycle and samples the level.
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
 .. _`w1_read_bit.description`:
 
@@ -123,11 +132,13 @@ w1_triplet
 
     * Does a triplet - used for searching ROM addresses.
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
-    :param int bdir:
+    :param bdir:
         the bit to write if both id_bit and comp_bit are 0
+    :type bdir: int
 
 .. _`w1_triplet.return-bits`:
 
@@ -156,8 +167,9 @@ w1_read_8
 
     Reads 8 bits.
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
 .. _`w1_read_8.return`:
 
@@ -175,14 +187,17 @@ w1_write_block
 
     Writes a series of bytes.
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
-    :param const u8 \*buf:
+    :param buf:
         pointer to the data to write
+    :type buf: const u8 \*
 
-    :param int len:
+    :param len:
         the number of bytes to write
+    :type len: int
 
 .. _`w1_touch_block`:
 
@@ -193,14 +208,17 @@ w1_touch_block
 
     Touches a series of bytes.
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
-    :param u8 \*buf:
+    :param buf:
         pointer to the data to write
+    :type buf: u8 \*
 
-    :param int len:
+    :param len:
         the number of bytes to write
+    :type len: int
 
 .. _`w1_read_block`:
 
@@ -211,14 +229,17 @@ w1_read_block
 
     Reads a series of bytes.
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
-    :param u8 \*buf:
+    :param buf:
         pointer to the buffer to fill
+    :type buf: u8 \*
 
-    :param int len:
+    :param len:
         the number of bytes to read
+    :type len: int
 
 .. _`w1_read_block.return`:
 
@@ -236,8 +257,9 @@ w1_reset_bus
 
     Issues a reset bus sequence.
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
 .. _`w1_reset_bus.return`:
 
@@ -255,8 +277,9 @@ w1_reset_select_slave
 
     reset and select a slave
 
-    :param struct w1_slave \*sl:
+    :param sl:
         the slave to select
+    :type sl: struct w1_slave \*
 
 .. _`w1_reset_select_slave.description`:
 
@@ -284,8 +307,9 @@ w1_reset_resume_command
 
     resume instead of another match ROM
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
 .. _`w1_reset_resume_command.description`:
 
@@ -313,11 +337,13 @@ w1_next_pullup
 
     register for a strong pullup
 
-    :param struct w1_master \*dev:
+    :param dev:
         the master device
+    :type dev: struct w1_master \*
 
-    :param int delay:
+    :param delay:
         time in milliseconds
+    :type delay: int
 
 .. _`w1_next_pullup.description`:
 

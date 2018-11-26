@@ -10,8 +10,9 @@ perf_evlist__set_id_pos
 
     set the positions of event ids.
 
-    :param struct perf_evlist \*evlist:
+    :param evlist:
         selected event list
+    :type evlist: struct perf_evlist \*
 
 .. _`perf_evlist__set_id_pos.description`:
 
@@ -30,17 +31,21 @@ perf_evlist__mmap_ex
 
     Create mmaps to receive events.
 
-    :param struct perf_evlist \*evlist:
+    :param evlist:
         list of events
+    :type evlist: struct perf_evlist \*
 
-    :param unsigned int pages:
+    :param pages:
         map length in pages
+    :type pages: unsigned int
 
-    :param unsigned int auxtrace_pages:
+    :param auxtrace_pages:
         *undescribed*
+    :type auxtrace_pages: unsigned int
 
-    :param bool auxtrace_overwrite:
+    :param auxtrace_overwrite:
         *undescribed*
+    :type auxtrace_overwrite: bool
 
 .. _`perf_evlist__mmap_ex.description`:
 

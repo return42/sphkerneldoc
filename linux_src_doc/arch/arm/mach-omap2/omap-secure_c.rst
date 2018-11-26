@@ -10,26 +10,33 @@ omap_secure_dispatcher
 
     Routine to dispatch low power secure service routines
 
-    :param u32 idx:
+    :param idx:
         The HAL API index
+    :type idx: u32
 
-    :param u32 flag:
+    :param flag:
         The flag indicating criticality of operation
+    :type flag: u32
 
-    :param u32 nargs:
+    :param nargs:
         Number of valid arguments out of four.
+    :type nargs: u32
 
-    :param u32 arg1:
+    :param arg1:
         Parameters passed to secure API
+    :type arg1: u32
 
-    :param u32 arg2:
+    :param arg2:
         *undescribed*
+    :type arg2: u32
 
-    :param u32 arg3:
+    :param arg3:
         *undescribed*
+    :type arg3: u32
 
-    :param u32 arg4:
+    :param arg4:
         *undescribed*
+    :type arg4: u32
 
 .. _`omap_secure_dispatcher.description`:
 
@@ -47,29 +54,37 @@ rx51_secure_dispatcher
 
     Routine to dispatch secure PPA API calls
 
-    :param u32 idx:
+    :param idx:
         The PPA API index
+    :type idx: u32
 
-    :param u32 process:
+    :param process:
         Process ID
+    :type process: u32
 
-    :param u32 flag:
+    :param flag:
         The flag indicating criticality of operation
+    :type flag: u32
 
-    :param u32 nargs:
+    :param nargs:
         Number of valid arguments out of four.
+    :type nargs: u32
 
-    :param u32 arg1:
+    :param arg1:
         Parameters passed to secure API
+    :type arg1: u32
 
-    :param u32 arg2:
+    :param arg2:
         *undescribed*
+    :type arg2: u32
 
-    :param u32 arg3:
+    :param arg3:
         *undescribed*
+    :type arg3: u32
 
-    :param u32 arg4:
+    :param arg4:
         *undescribed*
+    :type arg4: u32
 
 .. _`rx51_secure_dispatcher.description`:
 
@@ -95,11 +110,13 @@ rx51_secure_update_aux_cr
 
     Routine to modify the contents of Auxiliary Control Register
 
-    :param u32 set_bits:
+    :param set_bits:
         bits to set in ACR
+    :type set_bits: u32
 
-    :param u32 clear_bits:
+    :param clear_bits:
         *undescribed*
+    :type clear_bits: u32
 
 .. _`rx51_secure_update_aux_cr.description`:
 
@@ -117,14 +134,17 @@ rx51_secure_rng_call
 
     Routine for HW random generator
 
-    :param u32 ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: u32
 
-    :param u32 count:
+    :param count:
         *undescribed*
+    :type count: u32
 
-    :param u32 flag:
+    :param flag:
         *undescribed*
+    :type flag: u32
 
 .. This file was automatic generated / don't edit.
 

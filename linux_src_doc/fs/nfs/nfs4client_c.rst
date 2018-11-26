@@ -8,11 +8,13 @@ nfs4_find_ds_client
 
 .. c:function:: struct nfs4_ds_server *nfs4_find_ds_client(struct nfs_client *ds_clp, rpc_authflavor_t flavor)
 
-    :param struct nfs_client \*ds_clp:
+    :param ds_clp:
         *undescribed*
+    :type ds_clp: struct nfs_client \*
 
-    :param rpc_authflavor_t flavor:
+    :param flavor:
         *undescribed*
+    :type flavor: rpc_authflavor_t
 
 .. _`nfs4_find_or_create_ds_client`:
 
@@ -23,11 +25,13 @@ nfs4_find_or_create_ds_client
 
     in the nfs_client cl_ds_clients list.
 
-    :param struct nfs_client \*ds_clp:
+    :param ds_clp:
         *undescribed*
+    :type ds_clp: struct nfs_client \*
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`nfs40_init_client`:
 
@@ -38,8 +42,9 @@ nfs40_init_client
 
     nfs_client initialization tasks for NFSv4.0 \ ``clp``\  - nfs_client to initialize
 
-    :param struct nfs_client \*clp:
+    :param clp:
         *undescribed*
+    :type clp: struct nfs_client \*
 
 .. _`nfs40_init_client.description`:
 
@@ -57,8 +62,9 @@ nfs41_init_client
 
     nfs_client initialization tasks for NFSv4.1+ \ ``clp``\  - nfs_client to initialize
 
-    :param struct nfs_client \*clp:
+    :param clp:
         *undescribed*
+    :type clp: struct nfs_client \*
 
 .. _`nfs41_init_client.description`:
 
@@ -76,11 +82,13 @@ nfs4_init_client
 
     Initialise an NFS4 client record
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client to initialise
+    :type clp: struct nfs_client \*
 
-    :param const struct nfs_client_initdata \*cl_init:
+    :param cl_init:
         *undescribed*
+    :type cl_init: const struct nfs_client_initdata \*
 
 .. _`nfs4_init_client.description`:
 
@@ -98,14 +106,17 @@ nfs40_walk_client_list
 
     Find server that recognizes a client ID
 
-    :param struct nfs_client \*new:
+    :param new:
         nfs_client with client ID to test
+    :type new: struct nfs_client \*
 
-    :param struct nfs_client \*\*result:
+    :param result:
         OUT: found nfs_client, or new
+    :type result: struct nfs_client \*\*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         credential to use for trunking test
+    :type cred: struct rpc_cred \*
 
 .. _`nfs40_walk_client_list.description`:
 
@@ -127,15 +138,18 @@ nfs4_detect_session_trunking
 
     Checks for session trunking.
 
-    :param struct nfs_client \*clp:
+    :param clp:
         original mount nfs_client
+    :type clp: struct nfs_client \*
 
-    :param struct nfs41_exchange_id_res \*res:
+    :param res:
         result structure from an exchange_id using the original mount
         nfs_client with a new multi_addr transport
+    :type res: struct nfs41_exchange_id_res \*
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         *undescribed*
+    :type xprt: struct rpc_xprt \*
 
 .. _`nfs4_detect_session_trunking.description`:
 
@@ -165,14 +179,17 @@ nfs41_walk_client_list
 
     Find nfs_client that matches a client/server owner
 
-    :param struct nfs_client \*new:
+    :param new:
         nfs_client with client ID to test
+    :type new: struct nfs_client \*
 
-    :param struct nfs_client \*\*result:
+    :param result:
         OUT: found nfs_client, or new
+    :type result: struct nfs_client \*\*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         credential to use for trunking test
+    :type cred: struct rpc_cred \*
 
 .. _`nfs41_walk_client_list.description`:
 
@@ -194,20 +211,25 @@ nfs4_update_server
 
     Move an nfs_server to a different nfs_client
 
-    :param struct nfs_server \*server:
+    :param server:
         represents FSID to be moved
+    :type server: struct nfs_server \*
 
-    :param const char \*hostname:
+    :param hostname:
         new end-point's hostname
+    :type hostname: const char \*
 
-    :param struct sockaddr \*sap:
+    :param sap:
         new end-point's socket address
+    :type sap: struct sockaddr \*
 
-    :param size_t salen:
+    :param salen:
         size of "sap"
+    :type salen: size_t
 
-    :param struct net \*net:
+    :param net:
         net namespace
+    :type net: struct net \*
 
 .. _`nfs4_update_server.description`:
 

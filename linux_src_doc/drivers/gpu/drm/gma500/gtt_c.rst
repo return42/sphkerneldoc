@@ -10,11 +10,13 @@ psb_gtt_mask_pte
 
     generate GTT pte entry
 
-    :param uint32_t pfn:
+    :param pfn:
         page number to encode
+    :type pfn: uint32_t
 
-    :param int type:
+    :param type:
         type of memory in the GTT
+    :type type: int
 
 .. _`psb_gtt_mask_pte.description`:
 
@@ -32,11 +34,13 @@ psb_gtt_entry
 
     find the GTT entries for a gtt_range
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
-    :param struct gtt_range \*r:
+    :param r:
         our GTT range
+    :type r: struct gtt_range \*
 
 .. _`psb_gtt_entry.description`:
 
@@ -55,14 +59,17 @@ psb_gtt_insert
 
     put an object into the GTT
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
-    :param struct gtt_range \*r:
+    :param r:
         our GTT range
+    :type r: struct gtt_range \*
 
-    :param int resume:
+    :param resume:
         on resume
+    :type resume: int
 
 .. _`psb_gtt_insert.description`:
 
@@ -82,11 +89,13 @@ psb_gtt_remove
 
     remove an object from the GTT
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
-    :param struct gtt_range \*r:
+    :param r:
         our GTT range
+    :type r: struct gtt_range \*
 
 .. _`psb_gtt_remove.description`:
 
@@ -106,14 +115,17 @@ psb_gtt_roll
 
     set scrolling position
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
-    :param struct gtt_range \*r:
+    :param r:
         the gtt mapping we are using
+    :type r: struct gtt_range \*
 
-    :param int roll:
+    :param roll:
         roll offset
+    :type roll: int
 
 .. _`psb_gtt_roll.description`:
 
@@ -133,8 +145,9 @@ psb_gtt_attach_pages
 
     attach and pin GEM pages
 
-    :param struct gtt_range \*gt:
+    :param gt:
         the gtt range
+    :type gt: struct gtt_range \*
 
 .. _`psb_gtt_attach_pages.description`:
 
@@ -154,8 +167,9 @@ psb_gtt_detach_pages
 
     attach and pin GEM pages
 
-    :param struct gtt_range \*gt:
+    :param gt:
         the gtt range
+    :type gt: struct gtt_range \*
 
 .. _`psb_gtt_detach_pages.description`:
 
@@ -176,8 +190,9 @@ psb_gtt_pin
 
     pin pages into the GTT
 
-    :param struct gtt_range \*gt:
+    :param gt:
         range to pin
+    :type gt: struct gtt_range \*
 
 .. _`psb_gtt_pin.description`:
 
@@ -199,8 +214,9 @@ psb_gtt_unpin
 
     Drop a GTT pin requirement
 
-    :param struct gtt_range \*gt:
+    :param gt:
         range to pin
+    :type gt: struct gtt_range \*
 
 .. _`psb_gtt_unpin.description`:
 
@@ -223,20 +239,25 @@ psb_gtt_alloc_range
 
     allocate GTT address space
 
-    :param struct drm_device \*dev:
+    :param dev:
         Our DRM device
+    :type dev: struct drm_device \*
 
-    :param int len:
+    :param len:
         length (bytes) of address space required
+    :type len: int
 
-    :param const char \*name:
+    :param name:
         resource name
+    :type name: const char \*
 
-    :param int backed:
+    :param backed:
         resource should be backed by stolen pages
+    :type backed: int
 
-    :param u32 align:
+    :param align:
         requested alignment
+    :type align: u32
 
 .. _`psb_gtt_alloc_range.description`:
 
@@ -259,11 +280,13 @@ psb_gtt_free_range
 
     release GTT address space
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
-    :param struct gtt_range \*gt:
+    :param gt:
         a mapping created with psb_gtt_alloc_range
+    :type gt: struct gtt_range \*
 
 .. _`psb_gtt_free_range.description`:
 

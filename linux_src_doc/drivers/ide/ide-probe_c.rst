@@ -10,8 +10,9 @@ generic_id
 
     add a generic drive id
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to make an ID block for
+    :type drive: ide_drive_t \*
 
 .. _`generic_id.description`:
 
@@ -31,14 +32,17 @@ do_identify
 
     identify a drive
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to identify
+    :type drive: ide_drive_t \*
 
-    :param u8 cmd:
+    :param cmd:
         command used
+    :type cmd: u8
 
-    :param u16 \*id:
+    :param id:
         buffer for IDENTIFY data
+    :type id: u16 \*
 
 .. _`do_identify.description`:
 
@@ -58,17 +62,21 @@ ide_dev_read_id
 
     send ATA/ATAPI IDENTIFY command
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to identify
+    :type drive: ide_drive_t \*
 
-    :param u8 cmd:
+    :param cmd:
         command to use
+    :type cmd: u8
 
-    :param u16 \*id:
+    :param id:
         buffer for IDENTIFY data
+    :type id: u16 \*
 
-    :param int irq_ctx:
+    :param irq_ctx:
         flag set when called from the IRQ context
+    :type irq_ctx: int
 
 .. _`ide_dev_read_id.description`:
 
@@ -95,11 +103,13 @@ do_probe
 
     probe an IDE device
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to probe
+    :type drive: ide_drive_t \*
 
-    :param u8 cmd:
+    :param cmd:
         command to use
+    :type cmd: u8
 
 .. _`do_probe.description`:
 
@@ -135,8 +145,9 @@ probe_for_drive
 
     upper level drive probe
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to probe for
+    :type drive: ide_drive_t \*
 
 .. _`probe_for_drive.description`:
 
@@ -164,8 +175,9 @@ ide_port_wait_ready
 
     wait for port to become ready
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         IDE port
+    :type hwif: ide_hwif_t \*
 
 .. _`ide_port_wait_ready.description`:
 
@@ -202,8 +214,9 @@ ide_undecoded_slave
 
     look for bad CF adapters
 
-    :param ide_drive_t \*dev1:
+    :param dev1:
         slave device
+    :type dev1: ide_drive_t \*
 
 .. _`ide_undecoded_slave.description`:
 
@@ -223,8 +236,9 @@ ide_find_port_slot
 
     find free port slot
 
-    :param const struct ide_port_info \*d:
+    :param d:
         IDE port info
+    :type d: const struct ide_port_info \*
 
 .. _`ide_find_port_slot.description`:
 
@@ -242,8 +256,9 @@ ide_unregister
 
     free an IDE interface
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         IDE interface
+    :type hwif: ide_hwif_t \*
 
 .. _`ide_unregister.description`:
 

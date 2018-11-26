@@ -8,14 +8,17 @@ ctrlchar_handle
 
 .. c:function:: unsigned int ctrlchar_handle(const unsigned char *buf, int len, struct tty_struct *tty)
 
-    :param const unsigned char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const unsigned char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`ctrlchar_handle.description`:
 

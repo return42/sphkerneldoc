@@ -327,6 +327,196 @@ RX_MPDU_RES_STATUS_FILTERING_MSK
 RX_MPDU_RES_STATUS2_FILTERING_MSK
     filter status 2
 
+.. _`iwl_rx_mpdu_desc_v1`:
+
+struct iwl_rx_mpdu_desc_v1
+==========================
+
+.. c:type:: struct iwl_rx_mpdu_desc_v1
+
+    RX MPDU descriptor
+
+.. _`iwl_rx_mpdu_desc_v1.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_rx_mpdu_desc_v1 {
+        union {
+            __le32 rss_hash;
+            __le32 sigb_common0;
+        } ;
+        union {
+            __le32 filter_match;
+            __le32 sigb_common1;
+        } ;
+        __le32 rate_n_flags;
+        u8 energy_a;
+        u8 energy_b;
+        u8 channel;
+        u8 mac_context;
+        __le32 gp2_on_air_rise;
+        union {
+            __le64 tsf_on_air_rise;
+            __le64 he_phy_data;
+        } ;
+    }
+
+.. _`iwl_rx_mpdu_desc_v1.members`:
+
+Members
+-------
+
+{unnamed_union}
+    anonymous
+
+rss_hash
+    RSS hash value
+
+sigb_common0
+    for HE sniffer, HE-SIG-B common part 0
+
+{unnamed_union}
+    anonymous
+
+filter_match
+    filter match value
+
+sigb_common1
+    for HE sniffer, HE-SIG-B common part 1
+
+rate_n_flags
+    RX rate/flags encoding
+
+energy_a
+    energy chain A
+
+energy_b
+    energy chain B
+
+channel
+    channel number
+
+mac_context
+    MAC context mask
+
+gp2_on_air_rise
+    GP2 timer value on air rise (INA)
+
+{unnamed_union}
+    anonymous
+
+tsf_on_air_rise
+    TSF value on air rise (INA), only valid if
+    \ ``IWL_RX_MPDU_PHY_TSF_OVERLOAD``\  isn't set
+
+he_phy_data
+    HE PHY data, see \ :c:type:`enum iwl_rx_he_phy <iwl_rx_he_phy>`\ , valid
+    only if \ ``IWL_RX_MPDU_PHY_TSF_OVERLOAD``\  is set
+
+.. _`iwl_rx_mpdu_desc_v3`:
+
+struct iwl_rx_mpdu_desc_v3
+==========================
+
+.. c:type:: struct iwl_rx_mpdu_desc_v3
+
+    RX MPDU descriptor
+
+.. _`iwl_rx_mpdu_desc_v3.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_rx_mpdu_desc_v3 {
+        union {
+            __le32 filter_match;
+            __le32 sigb_common0;
+        } ;
+        union {
+            __le32 rss_hash;
+            __le32 sigb_common1;
+        } ;
+        __le32 partial_hash;
+        __le32 raw_xsum;
+        __le32 rate_n_flags;
+        u8 energy_a;
+        u8 energy_b;
+        u8 channel;
+        u8 mac_context;
+        __le32 gp2_on_air_rise;
+        union {
+            __le64 tsf_on_air_rise;
+            __le64 he_phy_data;
+        } ;
+        __le32 reserved[2];
+    }
+
+.. _`iwl_rx_mpdu_desc_v3.members`:
+
+Members
+-------
+
+{unnamed_union}
+    anonymous
+
+filter_match
+    filter match value
+
+sigb_common0
+    for HE sniffer, HE-SIG-B common part 0
+
+{unnamed_union}
+    anonymous
+
+rss_hash
+    RSS hash value
+
+sigb_common1
+    for HE sniffer, HE-SIG-B common part 1
+
+partial_hash
+    31:0 ip/tcp header hash     w/o some fields (such as IP SRC addr)
+
+raw_xsum
+    raw xsum value
+
+rate_n_flags
+    RX rate/flags encoding
+
+energy_a
+    energy chain A
+
+energy_b
+    energy chain B
+
+channel
+    channel number
+
+mac_context
+    MAC context mask
+
+gp2_on_air_rise
+    GP2 timer value on air rise (INA)
+
+{unnamed_union}
+    anonymous
+
+tsf_on_air_rise
+    TSF value on air rise (INA), only valid if
+    \ ``IWL_RX_MPDU_PHY_TSF_OVERLOAD``\  isn't set
+
+he_phy_data
+    HE PHY data, see \ :c:type:`enum iwl_rx_he_phy <iwl_rx_he_phy>`\ , valid
+    only if \ ``IWL_RX_MPDU_PHY_TSF_OVERLOAD``\  is set
+
+reserved
+    reserved
+
 .. _`iwl_rx_mpdu_desc`:
 
 struct iwl_rx_mpdu_desc
@@ -351,20 +541,18 @@ Definition
         __le16 phy_info;
         u8 mac_phy_idx;
         __le16 raw_csum;
-        __le16 l3l4_flags;
+        union {
+            __le16 l3l4_flags;
+            __le16 sigb_common2;
+        } ;
         __le16 status;
         u8 hash_filter;
         u8 sta_id_flags;
         __le32 reorder_data;
-        __le32 rss_hash;
-        __le32 filter_match;
-        __le32 rate_n_flags;
-        u8 energy_a;
-        u8 energy_b;
-        u8 channel;
-        u8 mac_context;
-        __le32 gp2_on_air_rise;
-        __le64 tsf_on_air_rise;
+        union {
+            struct iwl_rx_mpdu_desc_v1 v1;
+            struct iwl_rx_mpdu_desc_v3 v3;
+        } ;
     }
 
 .. _`iwl_rx_mpdu_desc.members`:
@@ -393,8 +581,14 @@ mac_phy_idx
 raw_csum
     raw checksum (alledgedly unreliable)
 
+{unnamed_union}
+    anonymous
+
 l3l4_flags
     \ :c:type:`enum iwl_rx_l3l4_flags <iwl_rx_l3l4_flags>`\ 
+
+sigb_common2
+    for HE sniffer, HE-SIG-B common part 2
 
 status
     \ :c:type:`enum iwl_rx_mpdu_status <iwl_rx_mpdu_status>`\ 
@@ -408,33 +602,148 @@ sta_id_flags
 reorder_data
     \ :c:type:`enum iwl_rx_mpdu_reorder_data <iwl_rx_mpdu_reorder_data>`\ 
 
-rss_hash
-    RSS hash value
+{unnamed_union}
+    anonymous
 
-filter_match
-    filter match value
+v1
+    *undescribed*
 
-rate_n_flags
-    RX rate/flags encoding
+v3
+    *undescribed*
 
-energy_a
-    energy chain A
+.. _`iwl_completion_desc_transfer_status`:
 
-energy_b
-    energy chain B
+enum iwl_completion_desc_transfer_status
+========================================
 
-channel
-    channel number
+.. c:type:: enum iwl_completion_desc_transfer_status
 
-mac_context
-    MAC context mask
+    transfer status (bits 1-3)
 
-gp2_on_air_rise
-    GP2 timer value on air rise (INA)
+.. _`iwl_completion_desc_transfer_status.definition`:
 
-tsf_on_air_rise
-    TSF value on air rise (INA), only valid if
-    \ ``IWL_RX_MPDU_PHY_TSF_OVERLOAD``\  isn't set
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_completion_desc_transfer_status {
+        IWL_CD_STTS_UNUSED,
+        IWL_CD_STTS_UNUSED_2,
+        IWL_CD_STTS_END_TRANSFER,
+        IWL_CD_STTS_OVERFLOW,
+        IWL_CD_STTS_ABORTED,
+        IWL_CD_STTS_ERROR
+    };
+
+.. _`iwl_completion_desc_transfer_status.constants`:
+
+Constants
+---------
+
+IWL_CD_STTS_UNUSED
+    unused
+
+IWL_CD_STTS_UNUSED_2
+    unused
+
+IWL_CD_STTS_END_TRANSFER
+    successful transfer complete.
+    In sniffer mode, when split is used, set in last CD completion. (RX)
+
+IWL_CD_STTS_OVERFLOW
+    In sniffer mode, when using split - used for
+    all CD completion. (RX)
+
+IWL_CD_STTS_ABORTED
+    CR abort / close flow. (RX)
+
+IWL_CD_STTS_ERROR
+    general error (RX)
+
+.. _`iwl_completion_desc_wifi_status`:
+
+enum iwl_completion_desc_wifi_status
+====================================
+
+.. c:type:: enum iwl_completion_desc_wifi_status
+
+    wifi status (bits 4-7)
+
+.. _`iwl_completion_desc_wifi_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_completion_desc_wifi_status {
+        IWL_CD_STTS_VALID,
+        IWL_CD_STTS_FCS_ERR,
+        IWL_CD_STTS_SEC_KEY_ERR,
+        IWL_CD_STTS_DECRYPTION_ERR,
+        IWL_CD_STTS_DUP,
+        IWL_CD_STTS_ICV_MIC_ERR,
+        IWL_CD_STTS_INTERNAL_SNAP_ERR,
+        IWL_CD_STTS_SEC_PORT_FAIL,
+        IWL_CD_STTS_BA_OLD_SN,
+        IWL_CD_STTS_QOS_NULL,
+        IWL_CD_STTS_MAC_HDR_ERR,
+        IWL_CD_STTS_MAX_RETRANS,
+        IWL_CD_STTS_EX_LIFETIME,
+        IWL_CD_STTS_NOT_USED,
+        IWL_CD_STTS_REPLAY_ERR
+    };
+
+.. _`iwl_completion_desc_wifi_status.constants`:
+
+Constants
+---------
+
+IWL_CD_STTS_VALID
+    the packet is valid (RX)
+
+IWL_CD_STTS_FCS_ERR
+    frame check sequence error (RX)
+
+IWL_CD_STTS_SEC_KEY_ERR
+    error handling the security key of rx (RX)
+
+IWL_CD_STTS_DECRYPTION_ERR
+    error decrypting the frame (RX)
+
+IWL_CD_STTS_DUP
+    duplicate packet (RX)
+
+IWL_CD_STTS_ICV_MIC_ERR
+    MIC error (RX)
+
+IWL_CD_STTS_INTERNAL_SNAP_ERR
+    problems removing the snap (RX)
+
+IWL_CD_STTS_SEC_PORT_FAIL
+    security port fail (RX)
+
+IWL_CD_STTS_BA_OLD_SN
+    block ack received old SN (RX)
+
+IWL_CD_STTS_QOS_NULL
+    QoS null packet (RX)
+
+IWL_CD_STTS_MAC_HDR_ERR
+    MAC header conversion error (RX)
+
+IWL_CD_STTS_MAX_RETRANS
+    reached max number of retransmissions (TX)
+
+IWL_CD_STTS_EX_LIFETIME
+    exceeded lifetime (TX)
+
+IWL_CD_STTS_NOT_USED
+    completed but not used (RX)
+
+IWL_CD_STTS_REPLAY_ERR
+    pn check failed, replay error (RX)
 
 .. _`iwl_rss_config_cmd`:
 
@@ -735,6 +1044,94 @@ start_seq_num
 
 mpdu_rx_count
     the number of received MPDUs since entering D0i3
+
+.. _`iwl_rfh_queue_data`:
+
+struct iwl_rfh_queue_data
+=========================
+
+.. c:type:: struct iwl_rfh_queue_data
+
+    RX queue configuration
+
+.. _`iwl_rfh_queue_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_rfh_queue_data {
+        u8 q_num;
+        u8 enable;
+        __le16 reserved;
+        __le64 urbd_stts_wrptr;
+        __le64 fr_bd_cb;
+        __le64 ur_bd_cb;
+        __le32 fr_bd_wid;
+    }
+
+.. _`iwl_rfh_queue_data.members`:
+
+Members
+-------
+
+q_num
+    Q num
+
+enable
+    enable queue
+
+reserved
+    alignment
+
+urbd_stts_wrptr
+    DMA address of urbd_stts_wrptr
+
+fr_bd_cb
+    DMA address of freeRB table
+
+ur_bd_cb
+    DMA address of used RB table
+
+fr_bd_wid
+    Initial index of the free table
+
+.. _`iwl_rfh_queue_config`:
+
+struct iwl_rfh_queue_config
+===========================
+
+.. c:type:: struct iwl_rfh_queue_config
+
+    RX queue configuration
+
+.. _`iwl_rfh_queue_config.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_rfh_queue_config {
+        u8 num_queues;
+        u8 reserved[3];
+        struct iwl_rfh_queue_data data[];
+    }
+
+.. _`iwl_rfh_queue_config.members`:
+
+Members
+-------
+
+num_queues
+    number of queues configured
+
+reserved
+    alignment
+
+data
+    DMA addresses per-queue
 
 .. This file was automatic generated / don't edit.
 

@@ -10,20 +10,25 @@ blkdev_issue_discard
 
     queue a discard
 
-    :param struct block_device \*bdev:
+    :param bdev:
         blockdev to issue discard for
+    :type bdev: struct block_device \*
 
-    :param sector_t sector:
+    :param sector:
         start sector
+    :type sector: sector_t
 
-    :param sector_t nr_sects:
+    :param nr_sects:
         number of sectors to discard
+    :type nr_sects: sector_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags (for bio_alloc)
+    :type gfp_mask: gfp_t
 
-    :param unsigned long flags:
+    :param flags:
         BLKDEV_DISCARD_* flags to control behaviour
+    :type flags: unsigned long
 
 .. _`blkdev_issue_discard.description`:
 
@@ -41,23 +46,29 @@ __blkdev_issue_write_same
 
     generate number of bios with same page
 
-    :param struct block_device \*bdev:
+    :param bdev:
         target blockdev
+    :type bdev: struct block_device \*
 
-    :param sector_t sector:
+    :param sector:
         start sector
+    :type sector: sector_t
 
-    :param sector_t nr_sects:
+    :param nr_sects:
         number of sectors to write
+    :type nr_sects: sector_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags (for bio_alloc)
+    :type gfp_mask: gfp_t
 
-    :param struct page \*page:
+    :param page:
         page containing data to write
+    :type page: struct page \*
 
-    :param struct bio \*\*biop:
+    :param biop:
         pointer to anchor bio
+    :type biop: struct bio \*\*
 
 .. _`__blkdev_issue_write_same.description`:
 
@@ -75,20 +86,25 @@ blkdev_issue_write_same
 
     queue a write same operation
 
-    :param struct block_device \*bdev:
+    :param bdev:
         target blockdev
+    :type bdev: struct block_device \*
 
-    :param sector_t sector:
+    :param sector:
         start sector
+    :type sector: sector_t
 
-    :param sector_t nr_sects:
+    :param nr_sects:
         number of sectors to write
+    :type nr_sects: sector_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags (for bio_alloc)
+    :type gfp_mask: gfp_t
 
-    :param struct page \*page:
+    :param page:
         page containing data
+    :type page: struct page \*
 
 .. _`blkdev_issue_write_same.description`:
 
@@ -106,23 +122,29 @@ __blkdev_issue_zeroout
 
     generate number of zero filed write bios
 
-    :param struct block_device \*bdev:
+    :param bdev:
         blockdev to issue
+    :type bdev: struct block_device \*
 
-    :param sector_t sector:
+    :param sector:
         start sector
+    :type sector: sector_t
 
-    :param sector_t nr_sects:
+    :param nr_sects:
         number of sectors to write
+    :type nr_sects: sector_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags (for bio_alloc)
+    :type gfp_mask: gfp_t
 
-    :param struct bio \*\*biop:
+    :param biop:
         pointer to anchor bio
+    :type biop: struct bio \*\*
 
-    :param unsigned flags:
+    :param flags:
         controls detailed behavior
+    :type flags: unsigned
 
 .. _`__blkdev_issue_zeroout.description`:
 
@@ -147,20 +169,25 @@ blkdev_issue_zeroout
 
     zero-fill a block range
 
-    :param struct block_device \*bdev:
+    :param bdev:
         blockdev to write
+    :type bdev: struct block_device \*
 
-    :param sector_t sector:
+    :param sector:
         start sector
+    :type sector: sector_t
 
-    :param sector_t nr_sects:
+    :param nr_sects:
         number of sectors to write
+    :type nr_sects: sector_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags (for bio_alloc)
+    :type gfp_mask: gfp_t
 
-    :param unsigned flags:
+    :param flags:
         controls detailed behavior
+    :type flags: unsigned
 
 .. _`blkdev_issue_zeroout.description`:
 

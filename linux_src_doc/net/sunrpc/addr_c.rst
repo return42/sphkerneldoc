@@ -10,14 +10,17 @@ rpc_ntop
 
     construct a presentation address in \ ``buf``\ 
 
-    :param const struct sockaddr \*sap:
+    :param sap:
         socket address
+    :type sap: const struct sockaddr \*
 
-    :param char \*buf:
+    :param buf:
         construction area
+    :type buf: char \*
 
-    :param const size_t buflen:
+    :param buflen:
         size of \ ``buf``\ , in bytes
+    :type buflen: const size_t
 
 .. _`rpc_ntop.description`:
 
@@ -36,20 +39,25 @@ rpc_pton
 
     Construct a sockaddr in \ ``sap``\ 
 
-    :param struct net \*net:
+    :param net:
         applicable network namespace
+    :type net: struct net \*
 
-    :param const char \*buf:
+    :param buf:
         C string containing presentation format IP address
+    :type buf: const char \*
 
-    :param const size_t buflen:
+    :param buflen:
         length of presentation address in bytes
+    :type buflen: const size_t
 
-    :param struct sockaddr \*sap:
+    :param sap:
         buffer into which to plant socket address
+    :type sap: struct sockaddr \*
 
-    :param const size_t salen:
+    :param salen:
         size of buffer in bytes
+    :type salen: const size_t
 
 .. _`rpc_pton.description`:
 
@@ -72,11 +80,13 @@ rpc_sockaddr2uaddr
 
     Construct a universal address string from \ ``sap``\ .
 
-    :param const struct sockaddr \*sap:
+    :param sap:
         socket address
+    :type sap: const struct sockaddr \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         allocation mode
+    :type gfp_flags: gfp_t
 
 .. _`rpc_sockaddr2uaddr.description`:
 
@@ -96,20 +106,25 @@ rpc_uaddr2sockaddr
 
     convert a universal address to a socket address.
 
-    :param struct net \*net:
+    :param net:
         applicable network namespace
+    :type net: struct net \*
 
-    :param const char \*uaddr:
+    :param uaddr:
         C string containing universal address to convert
+    :type uaddr: const char \*
 
-    :param const size_t uaddr_len:
+    :param uaddr_len:
         length of universal address string
+    :type uaddr_len: const size_t
 
-    :param struct sockaddr \*sap:
+    :param sap:
         buffer into which to plant socket address
+    :type sap: struct sockaddr \*
 
-    :param const size_t salen:
+    :param salen:
         size of buffer
+    :type salen: const size_t
 
 .. _`rpc_uaddr2sockaddr.description`:
 

@@ -10,11 +10,13 @@ bch_hprint
 
     formats \ ``v``\  to human readable string for sysfs.
 
-    :param char \*buf:
+    :param buf:
         the (at least 8 byte) buffer to format the result into.
+    :type buf: char \*
 
-    :param int64_t v:
+    :param v:
         signed 64 bit integer
+    :type v: int64_t
 
 .. _`bch_hprint.description`:
 
@@ -32,11 +34,13 @@ bch_next_delay
 
     update ratelimiting statistics and calculate next delay
 
-    :param struct bch_ratelimit \*d:
+    :param d:
         the struct bch_ratelimit to update
+    :type d: struct bch_ratelimit \*
 
-    :param uint64_t done:
+    :param done:
         the amount of work done, in arbitrary units
+    :type done: uint64_t
 
 .. _`bch_next_delay.description`:
 
@@ -55,18 +59,20 @@ bch_bio_alloc_pages
 
     allocates a single page for each bvec in a bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio to allocate pages for
+    :type bio: struct bio \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         flags for allocation
+    :type gfp_mask: gfp_t
 
 .. _`bch_bio_alloc_pages.description`:
 
 Description
 -----------
 
-Allocates pages up to \ ``bio``\ ->bi_vcnt.
+Allocates pages up to \ ``bio->bi_vcnt``\ .
 
 Returns 0 on success, -ENOMEM on failure. On failure, any allocated pages are
 freed.

@@ -10,8 +10,9 @@ PLIST_HEAD_INIT
 
     static struct plist_head initializer
 
-    :param  head:
+    :param head:
         struct plist_head variable name
+    :type head: 
 
 .. _`plist_head`:
 
@@ -22,8 +23,9 @@ PLIST_HEAD
 
     declare and init plist_head
 
-    :param  head:
+    :param head:
         name for struct plist_head variable
+    :type head: 
 
 .. _`plist_node_init`:
 
@@ -34,11 +36,13 @@ PLIST_NODE_INIT
 
     static struct plist_node initializer
 
-    :param  node:
+    :param node:
         struct plist_node variable name
+    :type node: 
 
-    :param  __prio:
+    :param __prio:
         initial node priority
+    :type __prio: 
 
 .. _`plist_head_init`:
 
@@ -49,8 +53,9 @@ plist_head_init
 
     dynamic struct plist_head initializer
 
-    :param struct plist_head \*head:
+    :param head:
         \ :c:type:`struct plist_head <plist_head>`\  pointer
+    :type head: struct plist_head \*
 
 .. _`plist_node_init`:
 
@@ -61,11 +66,13 @@ plist_node_init
 
     Dynamic struct plist_node initializer
 
-    :param struct plist_node \*node:
+    :param node:
         \ :c:type:`struct plist_node <plist_node>`\  pointer
+    :type node: struct plist_node \*
 
-    :param int prio:
+    :param prio:
         initial node priority
+    :type prio: int
 
 .. _`plist_for_each`:
 
@@ -76,11 +83,13 @@ plist_for_each
 
     iterate over the plist
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop counter
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list
+    :type head: 
 
 .. _`plist_for_each_continue`:
 
@@ -91,11 +100,13 @@ plist_for_each_continue
 
     continue iteration over the plist
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list
+    :type head: 
 
 .. _`plist_for_each_continue.description`:
 
@@ -113,14 +124,17 @@ plist_for_each_safe
 
     iterate safely over a plist of given type
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop counter
+    :type pos: 
 
-    :param  n:
+    :param n:
         another type \* to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list
+    :type head: 
 
 .. _`plist_for_each_safe.description`:
 
@@ -138,14 +152,17 @@ plist_for_each_entry
 
     iterate over list of given type
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop counter
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list
+    :type head: 
 
-    :param  mem:
+    :param mem:
         the name of the list_head within the struct
+    :type mem: 
 
 .. _`plist_for_each_entry_continue`:
 
@@ -156,14 +173,17 @@ plist_for_each_entry_continue
 
     continue iteration over list of given type
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list
+    :type head: 
 
-    :param  m:
+    :param m:
         the name of the list_head within the struct
+    :type m: 
 
 .. _`plist_for_each_entry_continue.description`:
 
@@ -182,17 +202,21 @@ plist_for_each_entry_safe
 
     iterate safely over list of given type
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop counter
+    :type pos: 
 
-    :param  n:
+    :param n:
         another type \* to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list
+    :type head: 
 
-    :param  m:
+    :param m:
         the name of the list_head within the struct
+    :type m: 
 
 .. _`plist_for_each_entry_safe.description`:
 
@@ -210,8 +234,9 @@ plist_head_empty
 
     return !0 if a plist_head is empty
 
-    :param const struct plist_head \*head:
+    :param head:
         \ :c:type:`struct plist_head <plist_head>`\  pointer
+    :type head: const struct plist_head \*
 
 .. _`plist_node_empty`:
 
@@ -222,8 +247,9 @@ plist_node_empty
 
     return !0 if plist_node is not on a list
 
-    :param const struct plist_node \*node:
+    :param node:
         \ :c:type:`struct plist_node <plist_node>`\  pointer
+    :type node: const struct plist_node \*
 
 .. _`plist_first_entry`:
 
@@ -234,14 +260,17 @@ plist_first_entry
 
     get the struct for the first entry
 
-    :param  head:
+    :param head:
         the \ :c:type:`struct plist_head <plist_head>`\  pointer
+    :type head: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct
+    :type member: 
 
 .. _`plist_last_entry`:
 
@@ -252,14 +281,17 @@ plist_last_entry
 
     get the struct for the last entry
 
-    :param  head:
+    :param head:
         the \ :c:type:`struct plist_head <plist_head>`\  pointer
+    :type head: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct
+    :type member: 
 
 .. _`plist_next`:
 
@@ -270,8 +302,9 @@ plist_next
 
     get the next entry in list
 
-    :param  pos:
+    :param pos:
         the type \* to cursor
+    :type pos: 
 
 .. _`plist_prev`:
 
@@ -282,8 +315,9 @@ plist_prev
 
     get the prev entry in list
 
-    :param  pos:
+    :param pos:
         the type \* to cursor
+    :type pos: 
 
 .. _`plist_first`:
 
@@ -294,8 +328,9 @@ plist_first
 
     return the first node (and thus, highest priority)
 
-    :param const struct plist_head \*head:
+    :param head:
         the \ :c:type:`struct plist_head <plist_head>`\  pointer
+    :type head: const struct plist_head \*
 
 .. _`plist_first.description`:
 
@@ -313,8 +348,9 @@ plist_last
 
     return the last node (and thus, lowest priority)
 
-    :param const struct plist_head \*head:
+    :param head:
         the \ :c:type:`struct plist_head <plist_head>`\  pointer
+    :type head: const struct plist_head \*
 
 .. _`plist_last.description`:
 

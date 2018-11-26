@@ -10,8 +10,9 @@ sn_sal_rev
 
     get the SGI SAL revision number
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sn_sal_rev.description`:
 
@@ -33,8 +34,9 @@ ia64_sn_pod_mode
 
     call the SN_SAL_POD_MODE function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ia64_sn_pod_mode.description`:
 
@@ -54,14 +56,17 @@ ia64_sn_probe_mem
 
     read from memory safely
 
-    :param long addr:
+    :param addr:
         address to probe
+    :type addr: long
 
-    :param long size:
+    :param size:
         number bytes to read (1,2,4,8)
+    :type size: long
 
-    :param void \*data_ptr:
+    :param data_ptr:
         address to store value read by probe (-1 returned if probe fails)
+    :type data_ptr: void \*
 
 .. _`ia64_sn_probe_mem.description`:
 
@@ -93,8 +98,9 @@ ia64_sn_fru_capture
 
     tell the system controller to capture hw state
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ia64_sn_fru_capture.description`:
 
@@ -113,20 +119,25 @@ ia64_sn_get_fit_compt
 
     read a FIT entry from the PROM header
 
-    :param u64 nasid:
+    :param nasid:
         NASID of node to read
+    :type nasid: u64
 
-    :param u64 index:
+    :param index:
         FIT entry index to be retrieved (0..n)
+    :type index: u64
 
-    :param void \*fitentry:
+    :param fitentry:
         16 byte buffer where FIT entry will be stored.
+    :type fitentry: void \*
 
-    :param void \*banbuf:
+    :param banbuf:
         optional buffer for retrieving banner
+    :type banbuf: void \*
 
-    :param u64 banlen:
+    :param banlen:
         length of banner buffer
+    :type banlen: u64
 
 .. _`ia64_sn_get_fit_compt.description`:
 

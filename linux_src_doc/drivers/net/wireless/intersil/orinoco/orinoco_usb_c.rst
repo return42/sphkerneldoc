@@ -8,8 +8,9 @@ ezusb_req_queue_run
 
 .. c:function:: void ezusb_req_queue_run(struct ezusb_priv *upriv)
 
-    :param struct ezusb_priv \*upriv:
+    :param upriv:
         *undescribed*
+    :type upriv: struct ezusb_priv \*
 
 .. _`ezusb_req_queue_run.note`:
 
@@ -27,23 +28,29 @@ ezusb_fill_req
 
 .. c:function:: int ezusb_fill_req(struct ezusb_packet *req, u16 length, u16 rid, const void *data, u16 frame_type, u8 reply_count)
 
-    :param struct ezusb_packet \*req:
+    :param req:
         *undescribed*
+    :type req: struct ezusb_packet \*
 
-    :param u16 length:
+    :param length:
         *undescribed*
+    :type length: u16
 
-    :param u16 rid:
+    :param rid:
         *undescribed*
+    :type rid: u16
 
-    :param const void \*data:
+    :param data:
         *undescribed*
+    :type data: const void \*
 
-    :param u16 frame_type:
+    :param frame_type:
         *undescribed*
+    :type frame_type: u16
 
-    :param u8 reply_count:
+    :param reply_count:
         *undescribed*
+    :type reply_count: u8
 
 .. _`ezusb_fill_req.description`:
 

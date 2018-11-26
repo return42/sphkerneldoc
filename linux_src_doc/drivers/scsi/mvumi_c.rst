@@ -10,18 +10,22 @@ mvumi_make_sgl
 
     Prepares  SGL
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command from the mid-layer
+    :type scmd: struct scsi_cmnd \*
 
-    :param void \*sgl_p:
+    :param sgl_p:
         SGL to be filled in
         \ ``sg_count``\             return the number of SG elements
+    :type sgl_p: void \*
 
-    :param unsigned char \*sg_count:
+    :param sg_count:
         *undescribed*
+    :type sg_count: unsigned char \*
 
 .. _`mvumi_make_sgl.description`:
 
@@ -39,8 +43,9 @@ mvumi_get_cmd
 
     Get a command from the free pool
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
 .. _`mvumi_get_cmd.description`:
 
@@ -58,11 +63,13 @@ mvumi_return_cmd
 
     Return a cmd to free command pool
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
-    :param struct mvumi_cmd \*cmd:
+    :param cmd:
         Command packet to be returned to free command pool
+    :type cmd: struct mvumi_cmd \*
 
 .. _`mvumi_free_cmds`:
 
@@ -73,8 +80,9 @@ mvumi_free_cmds
 
     Free all the cmds in the free cmd pool
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
 .. _`mvumi_alloc_cmds`:
 
@@ -85,8 +93,9 @@ mvumi_alloc_cmds
 
     Allocates the command packets
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
 .. _`mvumi_init_data`:
 
@@ -97,8 +106,9 @@ mvumi_init_data
 
     Initialize requested date for FW
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
 .. _`mvumi_handshake`:
 
@@ -109,8 +119,9 @@ mvumi_handshake
 
     Move the FW to READY state
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
 .. _`mvumi_handshake.description`:
 
@@ -131,14 +142,17 @@ mvumi_complete_cmd
 
     Completes a command
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
-    :param struct mvumi_cmd \*cmd:
+    :param cmd:
         Command to be completed
+    :type cmd: struct mvumi_cmd \*
 
-    :param struct mvumi_rsp_frame \*ob_frame:
+    :param ob_frame:
         *undescribed*
+    :type ob_frame: struct mvumi_rsp_frame \*
 
 .. _`mvumi_enable_intr`:
 
@@ -149,8 +163,9 @@ mvumi_enable_intr
 
     Enables interrupts
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
 .. _`mvumi_disable_intr`:
 
@@ -161,8 +176,9 @@ mvumi_disable_intr
 
     Disables interrupt
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
 .. _`mvumi_read_fw_status_reg`:
 
@@ -173,8 +189,9 @@ mvumi_read_fw_status_reg
 
     returns the current FW status value
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
 .. _`mvumi_build_frame`:
 
@@ -185,14 +202,17 @@ mvumi_build_frame
 
     Prepares a direct cdb (DCDB) command
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command
+    :type scmd: struct scsi_cmnd \*
 
-    :param struct mvumi_cmd \*cmd:
+    :param cmd:
         Command to be prepared in
+    :type cmd: struct mvumi_cmd \*
 
 .. _`mvumi_build_frame.description`:
 
@@ -211,11 +231,13 @@ mvumi_queue_command
 
     Queue entry point
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         *undescribed*
+    :type shost: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command to be queued
+    :type scmd: struct scsi_cmnd \*
 
 .. _`mvumi_init_fw`:
 
@@ -226,8 +248,9 @@ mvumi_init_fw
 
     Initializes the FW
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
 .. _`mvumi_init_fw.description`:
 
@@ -245,8 +268,9 @@ mvumi_io_attach
 
     Attaches this driver to SCSI mid-layer
 
-    :param struct mvumi_hba \*mhba:
+    :param mhba:
         Adapter soft state
+    :type mhba: struct mvumi_hba \*
 
 .. _`mvumi_probe_one`:
 
@@ -257,11 +281,13 @@ mvumi_probe_one
 
     PCI hotplug entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         PCI ids of supported hotplugged adapter
+    :type id: const struct pci_device_id \*
 
 .. _`mvumi_shutdown`:
 
@@ -272,8 +298,9 @@ mvumi_shutdown
 
     Shutdown entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ il3945_disable_events
 
     Disable selected events in uCode event log
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_disable_events.description`:
 
@@ -33,14 +34,17 @@ il3945_tx_queue_reclaim
 
     Reclaim Tx queue entries already Tx'd
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param int txq_id:
+    :param txq_id:
         *undescribed*
+    :type txq_id: int
 
-    :param int idx:
+    :param idx:
         *undescribed*
+    :type idx: int
 
 .. _`il3945_tx_queue_reclaim.description`:
 
@@ -60,11 +64,13 @@ il3945_hdl_tx
 
     Handle Tx response
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_rx_buf \*rxb:
+    :param rxb:
         *undescribed*
+    :type rxb: struct il_rx_buf \*
 
 .. _`il3945_hw_txq_free_tfd`:
 
@@ -75,11 +81,13 @@ il3945_hw_txq_free_tfd
 
     Free one TFD, those at idx [txq->q.read_ptr]
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_tx_queue \*txq:
+    :param txq:
         *undescribed*
+    :type txq: struct il_tx_queue \*
 
 .. _`il3945_hw_txq_free_tfd.description`:
 
@@ -97,20 +105,25 @@ il3945_hw_build_tx_cmd_rate
 
     Add rate portion to TX_CMD:
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_device_cmd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct il_device_cmd \*
 
-    :param struct ieee80211_tx_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct ieee80211_tx_info \*
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         *undescribed*
+    :type hdr: struct ieee80211_hdr \*
 
-    :param int sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: int
 
 .. _`il3945_txq_ctx_reset`:
 
@@ -121,8 +134,9 @@ il3945_txq_ctx_reset
 
     Reset TX queue context
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_txq_ctx_reset.description`:
 
@@ -140,8 +154,9 @@ il3945_hw_txq_ctx_free
 
     Free TXQ Context
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_hw_txq_ctx_free.description`:
 
@@ -159,11 +174,13 @@ il3945_hw_reg_adjust_power_by_temp
 
     return idx delta into power gain settings table
 
-    :param int new_reading:
+    :param new_reading:
         *undescribed*
+    :type new_reading: int
 
-    :param int old_reading:
+    :param old_reading:
         *undescribed*
+    :type old_reading: int
 
 .. _`il3945_hw_reg_temp_out_of_range`:
 
@@ -174,8 +191,9 @@ il3945_hw_reg_temp_out_of_range
 
     Keep temperature in sane range
 
-    :param int temperature:
+    :param temperature:
         *undescribed*
+    :type temperature: int
 
 .. _`il3945_hw_reg_txpower_get_temperature`:
 
@@ -186,8 +204,9 @@ il3945_hw_reg_txpower_get_temperature
 
     get the current temperature by reading from NIC
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_is_temp_calib_needed`:
 
@@ -198,8 +217,9 @@ il3945_is_temp_calib_needed
 
     determines if new calibration is needed
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_is_temp_calib_needed.description`:
 
@@ -218,23 +238,29 @@ il3945_hw_reg_set_scan_power
 
     Set Tx power for scan probe requests
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u32 scan_tbl_idx:
+    :param scan_tbl_idx:
         *undescribed*
+    :type scan_tbl_idx: u32
 
-    :param s32 rate_idx:
+    :param rate_idx:
         *undescribed*
+    :type rate_idx: s32
 
-    :param const s8 \*clip_pwrs:
+    :param clip_pwrs:
         *undescribed*
+    :type clip_pwrs: const s8 \*
 
-    :param struct il_channel_info \*ch_info:
+    :param ch_info:
         *undescribed*
+    :type ch_info: struct il_channel_info \*
 
-    :param int band_idx:
+    :param band_idx:
         *undescribed*
+    :type band_idx: int
 
 .. _`il3945_hw_reg_set_scan_power.description`:
 
@@ -253,8 +279,9 @@ il3945_send_tx_power
 
     fill in Tx Power command with gain settings
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_send_tx_power.description`:
 
@@ -273,11 +300,13 @@ il3945_hw_reg_set_new_power
 
     Configures power tables at new levels
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_channel_info \*ch_info:
+    :param ch_info:
         Channel to update.  Uses power_info.requested_power.
+    :type ch_info: struct il_channel_info \*
 
 .. _`il3945_hw_reg_set_new_power.description`:
 
@@ -310,8 +339,9 @@ il3945_hw_reg_get_ch_txpower_limit
 
     returns new power limit for channel
 
-    :param struct il_channel_info \*ch_info:
+    :param ch_info:
         *undescribed*
+    :type ch_info: struct il_channel_info \*
 
 .. _`il3945_hw_reg_get_ch_txpower_limit.note`:
 
@@ -331,8 +361,9 @@ il3945_hw_reg_comp_txpower_temp
 
     Compensate for temperature
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_hw_reg_comp_txpower_temp.description`:
 
@@ -355,8 +386,9 @@ il3945_commit_rxon
 
     commit staging_rxon to hardware
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_commit_rxon.description`:
 
@@ -377,8 +409,9 @@ il3945_reg_txpower_periodic
 
     called when time to check our temperature.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_reg_txpower_periodic.description`:
 
@@ -407,11 +440,13 @@ il3945_hw_reg_get_ch_grp_idx
 
     find the channel-group idx (0-4) for channel.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param const struct il_channel_info \*ch_info:
+    :param ch_info:
         *undescribed*
+    :type ch_info: const struct il_channel_info \*
 
 .. _`il3945_hw_reg_get_ch_grp_idx.description`:
 
@@ -439,17 +474,21 @@ il3945_hw_reg_get_matched_power_idx
 
     Interpolate to get nominal idx
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param s8 requested_power:
+    :param requested_power:
         *undescribed*
+    :type requested_power: s8
 
-    :param s32 setting_idx:
+    :param setting_idx:
         *undescribed*
+    :type setting_idx: s32
 
-    :param s32 \*new_idx:
+    :param new_idx:
         *undescribed*
+    :type new_idx: s32 \*
 
 .. _`il3945_hw_reg_get_matched_power_idx.description`:
 
@@ -468,8 +507,9 @@ il3945_txpower_set_from_eeprom
 
     Set channel power info based on EEPROM
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_txpower_set_from_eeprom.description`:
 
@@ -497,8 +537,9 @@ il3945_init_hw_rate_table
 
     Initialize the hardware rate fallback table
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. This file was automatic generated / don't edit.
 

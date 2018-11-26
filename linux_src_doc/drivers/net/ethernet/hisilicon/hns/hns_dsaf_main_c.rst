@@ -10,8 +10,9 @@ hns_dsaf_sbm_link_sram_init_en
 
     config dsaf_sbm_init_en
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_reg_cnt_clr_ce`:
 
@@ -22,11 +23,13 @@ hns_dsaf_reg_cnt_clr_ce
 
     config hns_dsaf_reg_cnt_clr_ce
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u32 reg_cnt_clr_ce:
+    :param reg_cnt_clr_ce:
         *undescribed*
+    :type reg_cnt_clr_ce: u32
 
 .. _`hns_dsaf_ppe_qid_cfg`:
 
@@ -37,11 +40,13 @@ hns_dsaf_ppe_qid_cfg
 
     config ppe qid
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u32 qid_cfg:
+    :param qid_cfg:
         *undescribed*
+    :type qid_cfg: u32
 
 .. _`hns_dsaf_sw_port_type_cfg`:
 
@@ -52,11 +57,13 @@ hns_dsaf_sw_port_type_cfg
 
     cfg sw type
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param enum dsaf_sw_port_type port_type:
+    :param port_type:
         *undescribed*
+    :type port_type: enum dsaf_sw_port_type
 
 .. _`hns_dsaf_stp_port_type_cfg`:
 
@@ -67,11 +74,13 @@ hns_dsaf_stp_port_type_cfg
 
     cfg stp type
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param enum dsaf_stp_port_type port_type:
+    :param port_type:
         *undescribed*
+    :type port_type: enum dsaf_stp_port_type
 
 .. _`hns_dsaf_sbm_cfg`:
 
@@ -82,8 +91,9 @@ hns_dsaf_sbm_cfg
 
     config sbm
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_sbm_cfg_mib_en`:
 
@@ -94,8 +104,9 @@ hns_dsaf_sbm_cfg_mib_en
 
     config sbm
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_sbm_bp_wl_cfg`:
 
@@ -106,8 +117,9 @@ hns_dsaf_sbm_bp_wl_cfg
 
     config sbm
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_voq_bp_all_thrd_cfg`:
 
@@ -118,8 +130,9 @@ hns_dsaf_voq_bp_all_thrd_cfg
 
     voq
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_tbl_tcam_data_cfg`:
 
@@ -130,11 +143,13 @@ hns_dsaf_tbl_tcam_data_cfg
 
     tbl
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param struct dsaf_tbl_tcam_data \*ptbl_tcam_data:
+    :param ptbl_tcam_data:
         addr
+    :type ptbl_tcam_data: struct dsaf_tbl_tcam_data \*
 
 .. _`hns_dsaf_tbl_tcam_mcast_cfg`:
 
@@ -145,11 +160,13 @@ hns_dsaf_tbl_tcam_mcast_cfg
 
     tbl
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param struct dsaf_tbl_tcam_mcast_cfg \*mcast:
+    :param mcast:
         *undescribed*
+    :type mcast: struct dsaf_tbl_tcam_mcast_cfg \*
 
 .. _`hns_dsaf_tbl_tcam_ucast_cfg`:
 
@@ -160,11 +177,13 @@ hns_dsaf_tbl_tcam_ucast_cfg
 
     tbl
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param struct dsaf_tbl_tcam_ucast_cfg \*tbl_tcam_ucast:
+    :param tbl_tcam_ucast:
         *undescribed*
+    :type tbl_tcam_ucast: struct dsaf_tbl_tcam_ucast_cfg \*
 
 .. _`hns_dsaf_tbl_line_cfg`:
 
@@ -175,11 +194,13 @@ hns_dsaf_tbl_line_cfg
 
     tbl
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param struct dsaf_tbl_line_cfg \*tbl_lin:
+    :param tbl_lin:
         *undescribed*
+    :type tbl_lin: struct dsaf_tbl_line_cfg \*
 
 .. _`hns_dsaf_tbl_tcam_mcast_pul`:
 
@@ -190,8 +211,9 @@ hns_dsaf_tbl_tcam_mcast_pul
 
     tbl
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_tbl_line_pul`:
 
@@ -202,8 +224,9 @@ hns_dsaf_tbl_line_pul
 
     tbl
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_tbl_tcam_data_mcast_pul`:
 
@@ -214,8 +237,9 @@ hns_dsaf_tbl_tcam_data_mcast_pul
 
     tbl
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_tbl_tcam_data_ucast_pul`:
 
@@ -226,8 +250,9 @@ hns_dsaf_tbl_tcam_data_ucast_pul
 
     tbl
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_tbl_stat_en`:
 
@@ -238,8 +263,9 @@ hns_dsaf_tbl_stat_en
 
     tbl
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_rocee_bp_en`:
 
@@ -250,8 +276,9 @@ hns_dsaf_rocee_bp_en
 
     rocee back press enable
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_single_line_tbl_cfg`:
 
@@ -262,14 +289,17 @@ hns_dsaf_single_line_tbl_cfg
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u32 address:
+    :param address:
         *undescribed*
+    :type address: u32
 
-    :param struct dsaf_tbl_line_cfg \*ptbl_line:
+    :param ptbl_line:
         *undescribed*
+    :type ptbl_line: struct dsaf_tbl_line_cfg \*
 
 .. _`hns_dsaf_tcam_uc_cfg`:
 
@@ -280,17 +310,21 @@ hns_dsaf_tcam_uc_cfg
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u32 address:
+    :param address:
         *undescribed*
+    :type address: u32
 
-    :param struct dsaf_tbl_tcam_data \*ptbl_tcam_data:
+    :param ptbl_tcam_data:
         *undescribed*
+    :type ptbl_tcam_data: struct dsaf_tbl_tcam_data \*
 
-    :param struct dsaf_tbl_tcam_ucast_cfg \*ptbl_tcam_ucast:
+    :param ptbl_tcam_ucast:
         *undescribed*
+    :type ptbl_tcam_ucast: struct dsaf_tbl_tcam_ucast_cfg \*
 
 .. _`hns_dsaf_tcam_mc_cfg`:
 
@@ -301,20 +335,25 @@ hns_dsaf_tcam_mc_cfg
 
     cfg the tcam for mc
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u32 address:
+    :param address:
         tcam index
+    :type address: u32
 
-    :param struct dsaf_tbl_tcam_data \*ptbl_tcam_data:
+    :param ptbl_tcam_data:
         tcam data struct pointer
+    :type ptbl_tcam_data: struct dsaf_tbl_tcam_data \*
 
-    :param struct dsaf_tbl_tcam_data \*ptbl_tcam_mask:
+    :param ptbl_tcam_mask:
         *undescribed*
+    :type ptbl_tcam_mask: struct dsaf_tbl_tcam_data \*
 
-    :param struct dsaf_tbl_tcam_mcast_cfg \*ptbl_tcam_mcast:
+    :param ptbl_tcam_mcast:
         tcam mask struct pointer, it must be null for HNSv1
+    :type ptbl_tcam_mcast: struct dsaf_tbl_tcam_mcast_cfg \*
 
 .. _`hns_dsaf_tcam_mc_invld`:
 
@@ -325,11 +364,13 @@ hns_dsaf_tcam_mc_invld
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u32 address:
+    :param address:
         *undescribed*
+    :type address: u32
 
 .. _`hns_dsaf_tcam_uc_get`:
 
@@ -340,17 +381,21 @@ hns_dsaf_tcam_uc_get
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u32 address:
+    :param address:
         *undescribed*
+    :type address: u32
 
-    :param struct dsaf_tbl_tcam_data \*ptbl_tcam_data:
+    :param ptbl_tcam_data:
         *undescribed*
+    :type ptbl_tcam_data: struct dsaf_tbl_tcam_data \*
 
-    :param struct dsaf_tbl_tcam_ucast_cfg \*ptbl_tcam_ucast:
+    :param ptbl_tcam_ucast:
         *undescribed*
+    :type ptbl_tcam_ucast: struct dsaf_tbl_tcam_ucast_cfg \*
 
 .. _`hns_dsaf_tcam_mc_get`:
 
@@ -361,17 +406,21 @@ hns_dsaf_tcam_mc_get
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u32 address:
+    :param address:
         *undescribed*
+    :type address: u32
 
-    :param struct dsaf_tbl_tcam_data \*ptbl_tcam_data:
+    :param ptbl_tcam_data:
         *undescribed*
+    :type ptbl_tcam_data: struct dsaf_tbl_tcam_data \*
 
-    :param struct dsaf_tbl_tcam_mcast_cfg \*ptbl_tcam_mcast:
+    :param ptbl_tcam_mcast:
         *undescribed*
+    :type ptbl_tcam_mcast: struct dsaf_tbl_tcam_mcast_cfg \*
 
 .. _`hns_dsaf_tbl_line_init`:
 
@@ -382,8 +431,9 @@ hns_dsaf_tbl_line_init
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_tbl_tcam_init`:
 
@@ -394,8 +444,9 @@ hns_dsaf_tbl_tcam_init
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_pfc_en_cfg`:
 
@@ -406,14 +457,17 @@ hns_dsaf_pfc_en_cfg
 
     dsaf pfc pause cfg
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param int mac_id:
+    :param mac_id:
         *undescribed*
+    :type mac_id: int
 
-    :param int tc_en:
+    :param tc_en:
         *undescribed*
+    :type tc_en: int
 
 .. _`hns_dsaf_comm_init`:
 
@@ -424,8 +478,9 @@ hns_dsaf_comm_init
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_inode_init`:
 
@@ -436,8 +491,9 @@ hns_dsaf_inode_init
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_sbm_init`:
 
@@ -448,8 +504,9 @@ hns_dsaf_sbm_init
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_tbl_init`:
 
@@ -460,8 +517,9 @@ hns_dsaf_tbl_init
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_voq_init`:
 
@@ -472,8 +530,9 @@ hns_dsaf_voq_init
 
     INT
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_init_hw`:
 
@@ -484,8 +543,9 @@ hns_dsaf_init_hw
 
     init dsa fabric hardware
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_remove_hw`:
 
@@ -496,8 +556,9 @@ hns_dsaf_remove_hw
 
     uninit dsa fabric hardware
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_init`:
 
@@ -508,9 +569,10 @@ hns_dsaf_init
 
     init dsa fabric
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
         retuen 0 - success , negative --fail
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_free`:
 
@@ -521,8 +583,9 @@ hns_dsaf_free
 
     free dsa fabric
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_find_soft_mac_entry`:
 
@@ -533,11 +596,13 @@ hns_dsaf_find_soft_mac_entry
 
     find dsa fabric soft entry
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param struct dsaf_drv_tbl_tcam_key \*mac_key:
+    :param mac_key:
         mac entry struct pointer
+    :type mac_key: struct dsaf_drv_tbl_tcam_key \*
 
 .. _`hns_dsaf_find_empty_mac_entry`:
 
@@ -548,8 +613,9 @@ hns_dsaf_find_empty_mac_entry
 
     search dsa fabric soft empty-entry
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_set_mac_key`:
 
@@ -560,20 +626,25 @@ hns_dsaf_set_mac_key
 
     set mac key
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param struct dsaf_drv_tbl_tcam_key \*mac_key:
+    :param mac_key:
         tcam key pointer
+    :type mac_key: struct dsaf_drv_tbl_tcam_key \*
 
-    :param u16 vlan_id:
+    :param vlan_id:
         vlan id
+    :type vlan_id: u16
 
-    :param u8 in_port_num:
+    :param in_port_num:
         input port num
+    :type in_port_num: u8
 
-    :param u8 \*addr:
+    :param addr:
         mac addr
+    :type addr: u8 \*
 
 .. _`hns_dsaf_set_mac_uc_entry`:
 
@@ -584,11 +655,13 @@ hns_dsaf_set_mac_uc_entry
 
     set mac uc-entry
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param struct dsaf_drv_mac_single_dest_entry \*mac_entry:
+    :param mac_entry:
         uc-mac entry
+    :type mac_entry: struct dsaf_drv_mac_single_dest_entry \*
 
 .. _`hns_dsaf_add_mac_mc_port`:
 
@@ -599,11 +672,13 @@ hns_dsaf_add_mac_mc_port
 
     add mac mc-port
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param struct dsaf_drv_mac_single_dest_entry \*mac_entry:
+    :param mac_entry:
         mc-mac entry
+    :type mac_entry: struct dsaf_drv_mac_single_dest_entry \*
 
 .. _`hns_dsaf_del_mac_entry`:
 
@@ -614,17 +689,21 @@ hns_dsaf_del_mac_entry
 
     del mac mc-port
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u16 vlan_id:
+    :param vlan_id:
         vlian id
+    :type vlan_id: u16
 
-    :param u8 in_port_num:
+    :param in_port_num:
         input port num
+    :type in_port_num: u8
 
-    :param u8 \*addr:
+    :param addr:
         mac addr
+    :type addr: u8 \*
 
 .. _`hns_dsaf_del_mac_mc_port`:
 
@@ -635,11 +714,13 @@ hns_dsaf_del_mac_mc_port
 
     del mac mc- port
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param struct dsaf_drv_mac_single_dest_entry \*mac_entry:
+    :param mac_entry:
         mac entry
+    :type mac_entry: struct dsaf_drv_mac_single_dest_entry \*
 
 .. _`hns_dsaf_free_dev`:
 
@@ -650,8 +731,9 @@ hns_dsaf_free_dev
 
     free dev mem
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_pfc_unit_cnt`:
 
@@ -662,14 +744,17 @@ hns_dsaf_pfc_unit_cnt
 
     set pfc unit count
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param int mac_id:
+    :param mac_id:
         *undescribed*
+    :type mac_id: int
 
-    :param enum dsaf_port_rate_mode rate:
+    :param rate:
         *undescribed*
+    :type rate: enum dsaf_port_rate_mode
 
 .. _`hns_dsaf_port_work_rate_cfg`:
 
@@ -680,14 +765,17 @@ hns_dsaf_port_work_rate_cfg
 
     fifo
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param int mac_id:
+    :param mac_id:
         *undescribed*
+    :type mac_id: int
 
-    :param enum dsaf_port_rate_mode rate_mode:
+    :param rate_mode:
         *undescribed*
+    :type rate_mode: enum dsaf_port_rate_mode
 
 .. _`hns_dsaf_fix_mac_mode`:
 
@@ -698,8 +786,9 @@ hns_dsaf_fix_mac_mode
 
     dsaf modify mac mode
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         mac contrl block
+    :type mac_cb: struct hns_mac_cb \*
 
 .. _`hns_dsaf_get_regs`:
 
@@ -710,14 +799,17 @@ hns_dsaf_get_regs
 
     dump dsaf regs \ ``dsaf_dev``\ : dsaf device \ ``data``\ :data for value of regs
 
-    :param struct dsaf_device \*ddev:
+    :param ddev:
         *undescribed*
+    :type ddev: struct dsaf_device \*
 
-    :param u32 port:
+    :param port:
         *undescribed*
+    :type port: u32
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`hns_dsaf_get_stats`:
 
@@ -728,14 +820,17 @@ hns_dsaf_get_stats
 
     get dsaf statistic \ ``ddev``\ : dsaf device \ ``data``\ :statistic value \ ``port``\ : port num
 
-    :param struct dsaf_device \*ddev:
+    :param ddev:
         *undescribed*
+    :type ddev: struct dsaf_device \*
 
-    :param u64 \*data:
+    :param data:
         *undescribed*
+    :type data: u64 \*
 
-    :param int port:
+    :param port:
         *undescribed*
+    :type port: int
 
 .. _`hns_dsaf_get_sset_count`:
 
@@ -746,11 +841,13 @@ hns_dsaf_get_sset_count
 
     get dsaf string set count \ ``stringset``\ : type of values in data return dsaf string name count
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param int stringset:
+    :param stringset:
         *undescribed*
+    :type stringset: int
 
 .. _`hns_dsaf_get_strings`:
 
@@ -761,17 +858,21 @@ hns_dsaf_get_strings
 
     get dsaf string set \ ``stringset``\ :srting set index \ ``data``\ :strings name value \ ``port``\ :port index
 
-    :param int stringset:
+    :param stringset:
         *undescribed*
+    :type stringset: int
 
-    :param u8 \*data:
+    :param data:
         *undescribed*
+    :type data: u8 \*
 
-    :param int port:
+    :param port:
         *undescribed*
+    :type port: int
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         *undescribed*
+    :type dsaf_dev: struct dsaf_device \*
 
 .. _`hns_dsaf_get_regs_count`:
 
@@ -782,8 +883,9 @@ hns_dsaf_get_regs_count
 
     get dsaf regs count return dsaf regs count
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hns_dsaf_probe`:
 
@@ -794,9 +896,10 @@ hns_dsaf_probe
 
     probo dsaf dev
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         dasf platform device
         retuen 0 - success , negative --fail
+    :type pdev: struct platform_device \*
 
 .. _`hns_dsaf_remove`:
 
@@ -807,8 +910,9 @@ hns_dsaf_remove
 
     remove dsaf dev
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         dasf platform device
+    :type pdev: struct platform_device \*
 
 .. _`hns_dsaf_roce_reset`:
 
@@ -819,11 +923,13 @@ hns_dsaf_roce_reset
 
     reset dsaf and roce
 
-    :param struct fwnode_handle \*dsaf_fwnode:
+    :param dsaf_fwnode:
         Pointer to framework node for the dasf
+    :type dsaf_fwnode: struct fwnode_handle \*
 
-    :param bool dereset:
+    :param dereset:
         *undescribed*
+    :type dereset: bool
 
 .. This file was automatic generated / don't edit.
 

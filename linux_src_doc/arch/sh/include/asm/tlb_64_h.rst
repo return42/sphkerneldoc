@@ -10,8 +10,9 @@ for_each_dtlb_entry
 
     Iterate over free (non-wired) DTLB entries
 
-    :param  tlb:
+    :param tlb:
         TLB entry
+    :type tlb: 
 
 .. _`for_each_itlb_entry`:
 
@@ -22,8 +23,9 @@ for_each_itlb_entry
 
     Iterate over free (non-wired) ITLB entries
 
-    :param  tlb:
+    :param tlb:
         TLB entry
+    :type tlb: 
 
 .. _`__flush_tlb_slot`:
 
@@ -34,8 +36,9 @@ __flush_tlb_slot
 
     Flushes TLB slot \ ``slot``\ .
 
-    :param unsigned long long slot:
+    :param slot:
         Address of TLB slot.
+    :type slot: unsigned long long
 
 .. This file was automatic generated / don't edit.
 

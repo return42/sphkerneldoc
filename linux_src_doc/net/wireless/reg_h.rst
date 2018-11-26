@@ -10,12 +10,14 @@ regulatory_hint_indoor
 
     hint operation in indoor env. or not
 
-    :param bool is_indoor:
+    :param is_indoor:
         if true indicates that user space thinks that the
         device is operating in an indoor environment.
+    :type is_indoor: bool
 
-    :param u32 portid:
+    :param portid:
         the netlink port ID on which the hint was given.
+    :type portid: u32
 
 .. _`regulatory_netlink_notify`:
 
@@ -26,8 +28,9 @@ regulatory_netlink_notify
 
     notify on released netlink socket
 
-    :param u32 portid:
+    :param portid:
         the netlink socket port ID
+    :type portid: u32
 
 .. _`regulatory_hint_found_beacon`:
 
@@ -38,14 +41,17 @@ regulatory_hint_found_beacon
 
     hints a beacon was found on a channel
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wireless device where the beacon was found on
+    :type wiphy: struct wiphy \*
 
-    :param struct ieee80211_channel \*beacon_chan:
+    :param beacon_chan:
         the channel on which the beacon was found on
+    :type beacon_chan: struct ieee80211_channel \*
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`regulatory_hint_found_beacon.description`:
 
@@ -73,19 +79,23 @@ regulatory_hint_country_ie
 
     hints a country IE as a regulatory domain
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wireless device giving the hint (used only for reporting
         conflicts)
+    :type wiphy: struct wiphy \*
 
-    :param enum nl80211_band band:
+    :param band:
         the band on which the country IE was received on. This determines
         the band we'll process the country IE channel triplets for.
+    :type band: enum nl80211_band
 
-    :param const u8 \*country_ie:
+    :param country_ie:
         pointer to the country IE
+    :type country_ie: const u8 \*
 
-    :param u8 country_ie_len:
+    :param country_ie_len:
         length of the country IE
+    :type country_ie_len: u8
 
 .. _`regulatory_hint_country_ie.description`:
 
@@ -113,8 +123,9 @@ regulatory_hint_disconnect
 
     informs all devices have been disconneted
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`regulatory_hint_disconnect.description`:
 
@@ -143,10 +154,11 @@ cfg80211_get_unii
 
     get the U-NII band for the frequency
 
-    :param int freq:
+    :param freq:
         the frequency for which we want to get the UNII band.
         Get a value specifying the U-NII band frequency belongs to.
         U-NII bands are defined by the FCC in C.F.R 47 part 15.
+    :type freq: int
 
 .. _`cfg80211_get_unii.description`:
 
@@ -165,8 +177,9 @@ regulatory_indoor_allowed
 
     is indoor operation allowed
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`regulatory_pre_cac_allowed`:
 
@@ -177,9 +190,10 @@ regulatory_pre_cac_allowed
 
     if pre-CAC allowed in the current dfs domain
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         wiphy for which pre-CAC capability is checked.
         Pre-CAC is allowed only in ETSI domain.
+    :type wiphy: struct wiphy \*
 
 .. _`regulatory_propagate_dfs_state`:
 
@@ -190,17 +204,21 @@ regulatory_propagate_dfs_state
 
     Propagate DFS channel state to other wiphys \ ``wiphy``\  - wiphy on which radar is detected and the event will be propagated to other available wiphys having the same DFS domain \ ``chandef``\  - Channel definition of radar detected channel \ ``dfs_state``\  - DFS channel state to be set \ ``event``\  - Type of radar event which triggered this DFS state change
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         *undescribed*
+    :type wiphy: struct wiphy \*
 
-    :param struct cfg80211_chan_def \*chandef:
+    :param chandef:
         *undescribed*
+    :type chandef: struct cfg80211_chan_def \*
 
-    :param enum nl80211_dfs_state dfs_state:
+    :param dfs_state:
         *undescribed*
+    :type dfs_state: enum nl80211_dfs_state
 
-    :param enum nl80211_radar_event event:
+    :param event:
         *undescribed*
+    :type event: enum nl80211_radar_event
 
 .. _`regulatory_propagate_dfs_state.description`:
 
@@ -218,11 +236,13 @@ reg_dfs_domain_same
 
     Checks if both wiphy have same DFS domain configured \ ``wiphy1``\  - wiphy it's dfs_region to be checked against that of wiphy2 \ ``wiphy2``\  - wiphy it's dfs_region to be checked against that of wiphy1
 
-    :param struct wiphy \*wiphy1:
+    :param wiphy1:
         *undescribed*
+    :type wiphy1: struct wiphy \*
 
-    :param struct wiphy \*wiphy2:
+    :param wiphy2:
         *undescribed*
+    :type wiphy2: struct wiphy \*
 
 .. _`reg_reload_regdb`:
 
@@ -233,8 +253,9 @@ reg_reload_regdb
 
     reload the regulatory.db firmware file
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

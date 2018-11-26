@@ -10,8 +10,9 @@ radeon_sync_create
 
     zero init sync object
 
-    :param struct radeon_sync \*sync:
+    :param sync:
         sync object to initialize
+    :type sync: struct radeon_sync \*
 
 .. _`radeon_sync_create.description`:
 
@@ -29,11 +30,13 @@ radeon_sync_fence
 
     use the semaphore to sync to a fence
 
-    :param struct radeon_sync \*sync:
+    :param sync:
         sync object to add fence to
+    :type sync: struct radeon_sync \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         fence to sync to
+    :type fence: struct radeon_fence \*
 
 .. _`radeon_sync_fence.description`:
 
@@ -51,17 +54,21 @@ radeon_sync_resv
 
     use the semaphores to sync to a reservation object
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_sync \*sync:
+    :param sync:
         sync object to add fences from reservation object to
+    :type sync: struct radeon_sync \*
 
-    :param struct reservation_object \*resv:
+    :param resv:
         reservation object with embedded fence
+    :type resv: struct reservation_object \*
 
-    :param bool shared:
+    :param shared:
         true if we should only sync to the exclusive fence
+    :type shared: bool
 
 .. _`radeon_sync_resv.description`:
 
@@ -79,14 +86,17 @@ radeon_sync_rings
 
     sync ring to all registered fences
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_sync \*sync:
+    :param sync:
         sync object to use
+    :type sync: struct radeon_sync \*
 
-    :param int ring:
+    :param ring:
         ring that needs sync
+    :type ring: int
 
 .. _`radeon_sync_rings.description`:
 
@@ -105,14 +115,17 @@ radeon_sync_free
 
     free the sync object
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_sync \*sync:
+    :param sync:
         sync object to use
+    :type sync: struct radeon_sync \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         fence to use for the free
+    :type fence: struct radeon_fence \*
 
 .. _`radeon_sync_free.description`:
 

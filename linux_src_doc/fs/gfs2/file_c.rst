@@ -10,14 +10,17 @@ gfs2_llseek
 
     seek to a location in a file
 
-    :param struct file \*file:
+    :param file:
         the file
+    :type file: struct file \*
 
-    :param loff_t offset:
+    :param offset:
         the offset
+    :type offset: loff_t
 
-    :param int whence:
+    :param whence:
         Where to seek from (SEEK_SET, SEEK_CUR, or SEEK_END)
+    :type whence: int
 
 .. _`gfs2_llseek.description`:
 
@@ -43,11 +46,13 @@ gfs2_readdir
 
     Iterator for a directory
 
-    :param struct file \*file:
+    :param file:
         The directory to read from
+    :type file: struct file \*
 
-    :param struct dir_context \*ctx:
+    :param ctx:
         What to feed directory entries to
+    :type ctx: struct dir_context \*
 
 .. _`gfs2_readdir.return`:
 
@@ -65,14 +70,17 @@ do_gfs2_set_flags
 
     set flags on an inode
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param u32 reqflags:
+    :param reqflags:
         The flags to set
+    :type reqflags: u32
 
-    :param u32 mask:
+    :param mask:
         Indicates which flags are valid
+    :type mask: u32
 
 .. _`gfs2_size_hint`:
 
@@ -83,14 +91,17 @@ gfs2_size_hint
 
     Give a hint to the size of a write request
 
-    :param struct file \*filep:
+    :param filep:
         The struct file
+    :type filep: struct file \*
 
-    :param loff_t offset:
+    :param offset:
         The file offset of the write
+    :type offset: loff_t
 
-    :param size_t size:
+    :param size:
         The length of the write
+    :type size: size_t
 
 .. _`gfs2_size_hint.description`:
 
@@ -110,8 +121,9 @@ gfs2_allocate_page_backing
 
     Use bmap to allocate blocks
 
-    :param struct page \*page:
+    :param page:
         The (locked) page to allocate backing for
+    :type page: struct page \*
 
 .. _`gfs2_allocate_page_backing.description`:
 
@@ -128,12 +140,13 @@ If some of the blocks are already allocated, thats ok too.
 gfs2_page_mkwrite
 =================
 
-.. c:function:: int gfs2_page_mkwrite(struct vm_fault *vmf)
+.. c:function:: vm_fault_t gfs2_page_mkwrite(struct vm_fault *vmf)
 
     Make a shared, \ :c:func:`mmap`\ ed, page writable
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         The virtual memory fault containing the page to become writable
+    :type vmf: struct vm_fault \*
 
 .. _`gfs2_page_mkwrite.description`:
 
@@ -150,11 +163,13 @@ gfs2_mmap
 
 .. c:function:: int gfs2_mmap(struct file *file, struct vm_area_struct *vma)
 
-    :param struct file \*file:
+    :param file:
         The file to map
+    :type file: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         The VMA which described the mapping
+    :type vma: struct vm_area_struct \*
 
 .. _`gfs2_mmap.description`:
 
@@ -181,11 +196,13 @@ gfs2_open_common
 
     This is common to open and atomic_open
 
-    :param struct inode \*inode:
+    :param inode:
         The inode being opened
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file being opened
+    :type file: struct file \*
 
 .. _`gfs2_open_common.description`:
 
@@ -213,11 +230,13 @@ gfs2_open
 
     open a file
 
-    :param struct inode \*inode:
+    :param inode:
         the inode to open
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         the struct file for this opening
+    :type file: struct file \*
 
 .. _`gfs2_open.description`:
 
@@ -246,11 +265,13 @@ gfs2_release
 
     called to close a struct file
 
-    :param struct inode \*inode:
+    :param inode:
         the inode the struct file belongs to
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         the struct file being closed
+    :type file: struct file \*
 
 .. _`gfs2_release.return`:
 
@@ -268,17 +289,21 @@ gfs2_fsync
 
     sync the dirty data for a file (across the cluster)
 
-    :param struct file \*file:
+    :param file:
         the file that points to the dentry
+    :type file: struct file \*
 
-    :param loff_t start:
+    :param start:
         the start position in the file to sync
+    :type start: loff_t
 
-    :param loff_t end:
+    :param end:
         the end position in the file to sync
+    :type end: loff_t
 
-    :param int datasync:
+    :param datasync:
         set if we can ignore timestamp changes
+    :type datasync: int
 
 .. _`gfs2_fsync.description`:
 
@@ -312,11 +337,13 @@ gfs2_file_write_iter
 
     Perform a write to a file
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         The io context
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*from:
-        *undescribed*
+    :param from:
+        The data to write
+    :type from: struct iov_iter \*
 
 .. _`gfs2_file_write_iter.description`:
 
@@ -337,20 +364,25 @@ calc_max_reserv
 
     Reverse of write_calc_reserv. Given a number of blocks, determine how many bytes can be written.
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The inode in question.
+    :type ip: struct gfs2_inode \*
 
-    :param loff_t \*len:
+    :param len:
         Max cap of bytes. What we return in \*len must be <= this.
+    :type len: loff_t \*
 
-    :param unsigned int \*data_blocks:
+    :param data_blocks:
         Compute and return the number of data blocks needed
+    :type data_blocks: unsigned int \*
 
-    :param unsigned int \*ind_blocks:
+    :param ind_blocks:
         Compute and return the number of indirect blocks needed
+    :type ind_blocks: unsigned int \*
 
-    :param unsigned int max_blocks:
+    :param max_blocks:
         The total blocks available to work with.
+    :type max_blocks: unsigned int
 
 .. _`calc_max_reserv.return`:
 
@@ -368,14 +400,17 @@ gfs2_lock
 
     acquire/release a posix lock on a file
 
-    :param struct file \*file:
+    :param file:
         the file pointer
+    :type file: struct file \*
 
-    :param int cmd:
+    :param cmd:
         either modify or retrieve lock state, possibly wait
+    :type cmd: int
 
-    :param struct file_lock \*fl:
+    :param fl:
         type and range of lock
+    :type fl: struct file_lock \*
 
 .. _`gfs2_lock.return`:
 
@@ -393,14 +428,17 @@ gfs2_flock
 
     acquire/release a flock lock on a file
 
-    :param struct file \*file:
+    :param file:
         the file pointer
+    :type file: struct file \*
 
-    :param int cmd:
+    :param cmd:
         either modify or retrieve lock state, possibly wait
+    :type cmd: int
 
-    :param struct file_lock \*fl:
+    :param fl:
         type and range of lock
+    :type fl: struct file_lock \*
 
 .. _`gfs2_flock.return`:
 

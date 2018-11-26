@@ -10,14 +10,16 @@ assoc_array_iterate
 
     Pass all objects in the array to a callback
 
-    :param const struct assoc_array \*array:
+    :param array:
         The array to iterate over.
+    :type array: const struct assoc_array \*
 
     :param int (\*iterator)(const void \*object, void \*iterator_data):
         The callback function.
 
-    :param void \*iterator_data:
+    :param iterator_data:
         Private data for the callback function.
+    :type iterator_data: void \*
 
 .. _`assoc_array_iterate.description`:
 
@@ -50,14 +52,17 @@ assoc_array_find
 
     Find an object by index key
 
-    :param const struct assoc_array \*array:
+    :param array:
         The associative array to search.
+    :type array: const struct assoc_array \*
 
-    :param const struct assoc_array_ops \*ops:
+    :param ops:
         The operations to use.
+    :type ops: const struct assoc_array_ops \*
 
-    :param const void \*index_key:
+    :param index_key:
         The key to the object.
+    :type index_key: const void \*
 
 .. _`assoc_array_find.description`:
 
@@ -79,11 +84,13 @@ assoc_array_destroy
 
     Destroy an associative array
 
-    :param struct assoc_array \*array:
+    :param array:
         The array to destroy.
+    :type array: struct assoc_array \*
 
-    :param const struct assoc_array_ops \*ops:
+    :param ops:
         The operations to use.
+    :type ops: const struct assoc_array_ops \*
 
 .. _`assoc_array_destroy.description`:
 
@@ -107,17 +114,21 @@ assoc_array_insert
 
     Script insertion of an object into an associative array
 
-    :param struct assoc_array \*array:
+    :param array:
         The array to insert into.
+    :type array: struct assoc_array \*
 
-    :param const struct assoc_array_ops \*ops:
+    :param ops:
         The operations to use.
+    :type ops: const struct assoc_array_ops \*
 
-    :param const void \*index_key:
+    :param index_key:
         The key to insert at.
+    :type index_key: const void \*
 
-    :param void \*object:
+    :param object:
         The object to insert.
+    :type object: void \*
 
 .. _`assoc_array_insert.description`:
 
@@ -145,11 +156,13 @@ assoc_array_insert_set_object
 
     Set the new object pointer in an edit script
 
-    :param struct assoc_array_edit \*edit:
+    :param edit:
         The edit script to modify.
+    :type edit: struct assoc_array_edit \*
 
-    :param void \*object:
+    :param object:
         The object pointer to set.
+    :type object: void \*
 
 .. _`assoc_array_insert_set_object.description`:
 
@@ -169,14 +182,17 @@ assoc_array_delete
 
     Script deletion of an object from an associative array
 
-    :param struct assoc_array \*array:
+    :param array:
         The array to search.
+    :type array: struct assoc_array \*
 
-    :param const struct assoc_array_ops \*ops:
+    :param ops:
         The operations to use.
+    :type ops: const struct assoc_array_ops \*
 
-    :param const void \*index_key:
+    :param index_key:
         The key to the object.
+    :type index_key: const void \*
 
 .. _`assoc_array_delete.description`:
 
@@ -205,11 +221,13 @@ assoc_array_clear
 
     Script deletion of all objects from an associative array
 
-    :param struct assoc_array \*array:
+    :param array:
         The array to clear.
+    :type array: struct assoc_array \*
 
-    :param const struct assoc_array_ops \*ops:
+    :param ops:
         The operations to use.
+    :type ops: const struct assoc_array_ops \*
 
 .. _`assoc_array_clear.description`:
 
@@ -238,8 +256,9 @@ assoc_array_apply_edit
 
     Apply an edit script to an associative array
 
-    :param struct assoc_array_edit \*edit:
+    :param edit:
         The script to apply.
+    :type edit: struct assoc_array_edit \*
 
 .. _`assoc_array_apply_edit.description`:
 
@@ -264,8 +283,9 @@ assoc_array_cancel_edit
 
     Discard an edit script.
 
-    :param struct assoc_array_edit \*edit:
+    :param edit:
         The script to discard.
+    :type edit: struct assoc_array_edit \*
 
 .. _`assoc_array_cancel_edit.description`:
 
@@ -287,17 +307,20 @@ assoc_array_gc
 
     Garbage collect an associative array.
 
-    :param struct assoc_array \*array:
+    :param array:
         The array to clean.
+    :type array: struct assoc_array \*
 
-    :param const struct assoc_array_ops \*ops:
+    :param ops:
         The operations to use.
+    :type ops: const struct assoc_array_ops \*
 
     :param bool (\*iterator)(void \*object, void \*iterator_data):
         A callback function to pass judgement on each object.
 
-    :param void \*iterator_data:
+    :param iterator_data:
         Private data for the callback function.
+    :type iterator_data: void \*
 
 .. _`assoc_array_gc.description`:
 

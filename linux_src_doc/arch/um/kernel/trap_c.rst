@@ -10,14 +10,17 @@ segv_handler
 
     the SIGSEGV handler
 
-    :param int sig:
+    :param sig:
         the signal number
+    :type sig: int
 
-    :param struct siginfo \*unused_si:
+    :param unused_si:
         the signal info struct; unused in this handler
+    :type unused_si: struct siginfo \*
 
-    :param struct uml_pt_regs \*regs:
+    :param regs:
         the ptrace register information
+    :type regs: struct uml_pt_regs \*
 
 .. _`segv_handler.description`:
 

@@ -250,11 +250,13 @@ ps3_system_bus_set_drvdata
 
 .. c:function:: void ps3_system_bus_set_drvdata(struct ps3_system_bus_device *dev, void *data)
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         device structure
+    :type dev: struct ps3_system_bus_device \*
 
-    :param void \*data:
+    :param data:
         Data to set
+    :type data: void \*
 
 .. _`ps3_lpm_rights`:
 

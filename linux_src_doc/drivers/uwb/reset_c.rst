@@ -8,35 +8,44 @@
 
 .. c:function:: ssize_t __uwb_rc_cmd(struct uwb_rc *rc, const char *cmd_name, struct uwb_rccb *cmd, size_t cmd_size, struct uwb_rceb *reply, size_t reply_size, u8 expected_type, u16 expected_event, struct uwb_rceb **preply)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Radio Control descriptor
+    :type rc: struct uwb_rc \*
 
-    :param const char \*cmd_name:
+    :param cmd_name:
         Name of the command being issued (for error messages)
+    :type cmd_name: const char \*
 
-    :param struct uwb_rccb \*cmd:
+    :param cmd:
         Pointer to rccb structure containing the command;
         normally you embed this structure as the first member of
         the full command structure.
+    :type cmd: struct uwb_rccb \*
 
-    :param size_t cmd_size:
+    :param cmd_size:
         Size of the whole command buffer pointed to by \ ``cmd``\ .
+    :type cmd_size: size_t
 
-    :param struct uwb_rceb \*reply:
+    :param reply:
         Pointer to where to store the reply
+    :type reply: struct uwb_rceb \*
 
-    :param size_t reply_size:
+    :param reply_size:
         \ ``reply``\ 's size
+    :type reply_size: size_t
 
-    :param u8 expected_type:
+    :param expected_type:
         Expected type in the return event
+    :type expected_type: u8
 
-    :param u16 expected_event:
+    :param expected_event:
         Expected event code in the return event
+    :type expected_event: u16
 
-    :param struct uwb_rceb \*\*preply:
+    :param preply:
         Here a pointer to where the event data is received will
         be stored. Once done with the data, free with \ :c:func:`kfree`\ .
+    :type preply: struct uwb_rceb \*\*
 
 .. _`__uwb_rc_cmd.description`:
 
@@ -59,29 +68,35 @@ uwb_rc_cmd
 
 .. c:function:: ssize_t uwb_rc_cmd(struct uwb_rc *rc, const char *cmd_name, struct uwb_rccb *cmd, size_t cmd_size, struct uwb_rceb *reply, size_t reply_size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Radio Control descriptor
+    :type rc: struct uwb_rc \*
 
-    :param const char \*cmd_name:
+    :param cmd_name:
         Name of the command being issued (for error messages)
+    :type cmd_name: const char \*
 
-    :param struct uwb_rccb \*cmd:
+    :param cmd:
         Pointer to rccb structure containing the command;
         normally you embed this structure as the first member of
         the full command structure.
+    :type cmd: struct uwb_rccb \*
 
-    :param size_t cmd_size:
+    :param cmd_size:
         Size of the whole command buffer pointed to by \ ``cmd``\ .
+    :type cmd_size: size_t
 
-    :param struct uwb_rceb \*reply:
+    :param reply:
         Pointer to the beginning of the confirmation event
         buffer. Normally bigger than an 'struct hwarc_rceb'.
         You need to fill out reply->bEventType and reply->wEvent (in
         cpu order) as the function will use them to verify the
         confirmation event.
+    :type reply: struct uwb_rceb \*
 
-    :param size_t reply_size:
+    :param reply_size:
         Size of the reply buffer
+    :type reply_size: size_t
 
 .. _`uwb_rc_cmd.description`:
 
@@ -103,29 +118,36 @@ uwb_rc_vcmd
 
     Interface that return an unknown amount of data
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Radio Control descriptor
+    :type rc: struct uwb_rc \*
 
-    :param const char \*cmd_name:
+    :param cmd_name:
         Name of the command being issued (for error messages)
+    :type cmd_name: const char \*
 
-    :param struct uwb_rccb \*cmd:
+    :param cmd:
         Pointer to rccb structure containing the command;
         normally you embed this structure as the first member of
         the full command structure.
+    :type cmd: struct uwb_rccb \*
 
-    :param size_t cmd_size:
+    :param cmd_size:
         Size of the whole command buffer pointed to by \ ``cmd``\ .
+    :type cmd_size: size_t
 
-    :param u8 expected_type:
+    :param expected_type:
         Expected type in the return event
+    :type expected_type: u8
 
-    :param u16 expected_event:
+    :param expected_event:
         Expected event code in the return event
+    :type expected_event: u16
 
-    :param struct uwb_rceb \*\*preply:
+    :param preply:
         Here a pointer to where the event data is received will
         be stored. Once done with the data, free with \ :c:func:`kfree`\ .
+    :type preply: struct uwb_rceb \*\*
 
 .. _`uwb_rc_vcmd.description`:
 
@@ -145,8 +167,9 @@ uwb_rc_reset
 
 .. c:function:: int uwb_rc_reset(struct uwb_rc *rc)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         Host Controller descriptor
+    :type rc: struct uwb_rc \*
 
 .. _`uwb_rc_reset.description`:
 
@@ -166,8 +189,9 @@ uwb_rc_reset_all
 
     request a reset of the radio controller and PALs
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller of the hardware device to be reset.
+    :type rc: struct uwb_rc \*
 
 .. _`uwb_rc_reset_all.description`:
 

@@ -8,6 +8,7 @@ vsp1
     :maxdepth: 1
 
     vsp1_dl_c
+    vsp1_dl_h
     vsp1_drm_c
     vsp1_entity_c
     vsp1_entity_h

@@ -8,6 +8,7 @@ ethernet
     :maxdepth: 1
 
     8390/index
+    amazon/index
     arc/index
     atheros/index
     broadcom/index
@@ -25,6 +26,7 @@ ethernet
     huawei/index
     ibm/index
     intel/index
+    marvell/index
     mellanox/index
     micrel/index
     microchip/index

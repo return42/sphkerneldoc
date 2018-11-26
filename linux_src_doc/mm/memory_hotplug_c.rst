@@ -10,17 +10,21 @@
 
     remove sections of pages from a zone
 
-    :param struct zone \*zone:
+    :param zone:
         zone from which pages need to be removed
+    :type zone: struct zone \*
 
-    :param unsigned long phys_start_pfn:
+    :param phys_start_pfn:
         starting pageframe (must be aligned to start of a section)
+    :type phys_start_pfn: unsigned long
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         number of pages to remove (must be multiple of section size)
+    :type nr_pages: unsigned long
 
-    :param struct vmem_altmap \*altmap:
+    :param altmap:
         alternative device page map or \ ``NULL``\  if default memmap is used
+    :type altmap: struct vmem_altmap \*
 
 .. _`__remove_pages.description`:
 
@@ -32,24 +36,36 @@ for the section of the memory we are removing. Caller needs to make
 sure that pages are marked reserved and zones are adjust properly by
 calling \ :c:func:`offline_pages`\ .
 
-.. _`try_online_node`:
+.. _`__try_online_node`:
 
-try_online_node
-===============
+\__try_online_node
+==================
 
-.. c:function:: int try_online_node(int nid)
+.. c:function:: int __try_online_node(int nid, u64 start, bool set_node_online)
 
     online a node if offlined
 
-    :param int nid:
+    :param nid:
         the node ID
+    :type nid: int
 
-.. _`try_online_node.description`:
+    :param start:
+        start addr of the node
+    :type start: u64
 
-Description
------------
+    :param set_node_online:
+        Whether we want to online the node
+        called by \ :c:func:`cpu_up`\  to online a node without onlined memory.
+    :type set_node_online: bool
 
-called by \ :c:func:`cpu_up`\  to online a node without onlined memory.
+.. _`__try_online_node.return`:
+
+Return
+------
+
+1 -> a new node has been allocated
+0 -> the node is already online
+-ENOMEM -> the node could not be allocated
 
 .. _`walk_memory_range`:
 
@@ -60,14 +76,17 @@ walk_memory_range
 
     walks through all mem sections in [start_pfn, end_pfn)
 
-    :param unsigned long start_pfn:
+    :param start_pfn:
         start pfn of the memory range
+    :type start_pfn: unsigned long
 
-    :param unsigned long end_pfn:
+    :param end_pfn:
         end pfn of the memory range
+    :type end_pfn: unsigned long
 
-    :param void \*arg:
+    :param arg:
         argument passed to func
+    :type arg: void \*
 
     :param int (\*func)(struct memory_block \*, void \*):
         callback for each memory section walked
@@ -89,8 +108,9 @@ try_offline_node
 
 .. c:function:: void try_offline_node(int nid)
 
-    :param int nid:
+    :param nid:
         the node ID
+    :type nid: int
 
 .. _`try_offline_node.description`:
 
@@ -107,23 +127,26 @@ NOTE
 The caller must call \ :c:func:`lock_device_hotplug`\  to serialize hotplug
 and online/offline operations before this call.
 
-.. _`remove_memory`:
+.. _`__remove_memory`:
 
-remove_memory
-=============
+\__remove_memory
+================
 
-.. c:function:: void __ref remove_memory(int nid, u64 start, u64 size)
+.. c:function:: void __ref __remove_memory(int nid, u64 start, u64 size)
 
-    :param int nid:
+    :param nid:
         the node ID
+    :type nid: int
 
-    :param u64 start:
+    :param start:
         physical address of the region to remove
+    :type start: u64
 
-    :param u64 size:
+    :param size:
         size of the region to remove
+    :type size: u64
 
-.. _`remove_memory.note`:
+.. _`__remove_memory.note`:
 
 NOTE
 ----

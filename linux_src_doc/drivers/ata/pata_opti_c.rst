@@ -10,11 +10,13 @@ opti_pre_reset
 
     probe begin
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`opti_pre_reset.description`:
 
@@ -32,14 +34,17 @@ opti_write_reg
 
     control register setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param u8 val:
+    :param val:
         *undescribed*
+    :type val: u8
 
-    :param int reg:
+    :param reg:
         control register number
+    :type reg: int
 
 .. _`opti_write_reg.description`:
 
@@ -60,11 +65,13 @@ opti_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`opti_set_piomode.description`:
 

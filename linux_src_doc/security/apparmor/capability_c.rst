@@ -10,11 +10,13 @@ audit_cb
 
     call back for capability components of audit struct \ ``ab``\  - audit buffer   (NOT NULL) \ ``va``\  - audit struct to audit data from  (NOT NULL)
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         *undescribed*
+    :type ab: struct audit_buffer \*
 
-    :param void \*va:
+    :param va:
         *undescribed*
+    :type va: void \*
 
 .. _`audit_caps`:
 
@@ -25,17 +27,21 @@ audit_caps
 
     audit a capability
 
-    :param struct common_audit_data \*sa:
+    :param sa:
         audit data
+    :type sa: struct common_audit_data \*
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile being tested for confinement (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param int cap:
+    :param cap:
         capability tested
+    :type cap: int
 
-    :param int error:
+    :param error:
         error code returned by test
+    :type error: int
 
 .. _`audit_caps.description`:
 
@@ -61,17 +67,21 @@ profile_capable
 
     test if profile allows use of capability \ ``cap``\ 
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile being enforced    (NOT NULL, NOT unconfined)
+    :type profile: struct aa_profile \*
 
-    :param int cap:
+    :param cap:
         capability to test if allowed
+    :type cap: int
 
-    :param int audit:
+    :param audit:
         whether an audit record should be generated
+    :type audit: int
 
-    :param struct common_audit_data \*sa:
+    :param sa:
         audit data (MAY BE NULL indicating no auditing)
+    :type sa: struct common_audit_data \*
 
 .. _`profile_capable.return`:
 
@@ -89,14 +99,17 @@ aa_capable
 
     test permission to use capability
 
-    :param struct aa_label \*label:
+    :param label:
         label being tested for capability (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param int cap:
+    :param cap:
         capability to be tested
+    :type cap: int
 
-    :param int audit:
+    :param audit:
         whether an audit record should be generated
+    :type audit: int
 
 .. _`aa_capable.description`:
 

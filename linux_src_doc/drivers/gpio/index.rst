@@ -7,12 +7,12 @@ gpio
 .. toctree::
     :maxdepth: 1
 
-    devres_c
     gpio-104-dio-48e_c
     gpio-104-idi-48_c
     gpio-104-idio-16_c
     gpio-altera-a10sr_c
     gpio-altera_c
+    gpio-aspeed_c
     gpio-crystalcove_c
     gpio-davinci_c
     gpio-ftgpio010_c
@@ -22,6 +22,8 @@ gpio
     gpio-max730x_c
     gpio-ml-ioh_c
     gpio-mm-lantiq_c
+    gpio-mmio_c
+    gpio-mt7621_c
     gpio-omap_c
     gpio-pch_c
     gpio-pci-idio-16_c
@@ -41,6 +43,7 @@ gpio
     gpio-zynq_c
     gpiolib-acpi_c
     gpiolib-devprop_c
+    gpiolib-devres_c
     gpiolib-legacy_c
     gpiolib-of_c
     gpiolib-sysfs_c

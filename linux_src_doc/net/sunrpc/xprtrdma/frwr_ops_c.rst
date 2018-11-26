@@ -10,11 +10,13 @@ frwr_wc_fastreg
 
     Invoked by RDMA provider for a flushed FastReg WC
 
-    :param struct ib_cq \*cq:
+    :param cq:
         completion queue (ignored)
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         completed WR
+    :type wc: struct ib_wc \*
 
 .. _`frwr_wc_localinv`:
 
@@ -25,11 +27,13 @@ frwr_wc_localinv
 
     Invoked by RDMA provider for a flushed LocalInv WC
 
-    :param struct ib_cq \*cq:
+    :param cq:
         completion queue (ignored)
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         completed WR
+    :type wc: struct ib_wc \*
 
 .. _`frwr_wc_localinv_wake`:
 
@@ -40,11 +44,13 @@ frwr_wc_localinv_wake
 
     Invoked by RDMA provider for a signaled LocalInv WC
 
-    :param struct ib_cq \*cq:
+    :param cq:
         completion queue (ignored)
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         completed WR
+    :type wc: struct ib_wc \*
 
 .. _`frwr_wc_localinv_wake.description`:
 

@@ -10,14 +10,17 @@ xenbus_watch_path
 
     register a watch
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         xenbus device
+    :type dev: struct xenbus_device \*
 
-    :param const char \*path:
+    :param path:
         path to watch
+    :type path: const char \*
 
-    :param struct xenbus_watch \*watch:
+    :param watch:
         watch to register
+    :type watch: struct xenbus_watch \*
 
     :param void (\*callback)(struct xenbus_watch \*, const char \*, const char \*):
         callback to register
@@ -30,7 +33,7 @@ Description
 Register a \ ``watch``\  on the given path, using the given xenbus_watch structure
 for storage, and the given \ ``callback``\  function as the callback.  Return 0 on
 success, or -errno on error.  On success, the given \ ``path``\  will be saved as
-\ ``watch``\ ->node, and remains the caller's to free.  On error, \ ``watch``\ ->node will
+\ ``watch->node``\ , and remains the caller's to free.  On error, \ ``watch->node``\  will
 be NULL, the device will switch to \ ``XenbusStateClosing``\ , and the error will
 be saved in the store.
 
@@ -43,17 +46,20 @@ xenbus_watch_pathfmt
 
     register a watch on a sprintf-formatted path
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         xenbus device
+    :type dev: struct xenbus_device \*
 
-    :param struct xenbus_watch \*watch:
+    :param watch:
         watch to register
+    :type watch: struct xenbus_watch \*
 
     :param void (\*callback)(struct xenbus_watch \*, const char \*, const char \*):
         callback to register
 
-    :param const char \*pathfmt:
+    :param pathfmt:
         format of path to watch
+    :type pathfmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -66,7 +72,7 @@ Description
 Register a watch on the given \ ``path``\ , using the given xenbus_watch
 structure for storage, and the given \ ``callback``\  function as the callback.
 Return 0 on success, or -errno on error.  On success, the watched path
-(@path/@path2) will be saved as \ ``watch``\ ->node, and becomes the caller's to
+(@path/@path2) will be saved as \ ``watch->node``\ , and becomes the caller's to
 \ :c:func:`kfree`\ .  On error, watch->node will be NULL, so the caller has nothing to
 free, the device will switch to \ ``XenbusStateClosing``\ , and the error will be
 saved in the store.
@@ -78,11 +84,13 @@ xenbus_switch_state
 
 .. c:function:: int xenbus_switch_state(struct xenbus_device *dev, enum xenbus_state state)
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         xenbus device
+    :type dev: struct xenbus_device \*
 
-    :param enum xenbus_state state:
+    :param state:
         new state
+    :type state: enum xenbus_state
 
 .. _`xenbus_switch_state.description`:
 
@@ -100,14 +108,17 @@ xenbus_dev_error
 
 .. c:function:: void xenbus_dev_error(struct xenbus_device *dev, int err, const char *fmt,  ...)
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         xenbus device
+    :type dev: struct xenbus_device \*
 
-    :param int err:
+    :param err:
         error to report
+    :type err: int
 
-    :param const char \*fmt:
+    :param fmt:
         error message format
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -127,14 +138,17 @@ xenbus_dev_fatal
 
 .. c:function:: void xenbus_dev_fatal(struct xenbus_device *dev, int err, const char *fmt,  ...)
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         xenbus device
+    :type dev: struct xenbus_device \*
 
-    :param int err:
+    :param err:
         error to report
+    :type err: int
 
-    :param const char \*fmt:
+    :param fmt:
         error message format
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -157,17 +171,21 @@ xenbus_switch_fatal
 
     avoiding recursion within xenbus_switch_state.
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct xenbus_device \*
 
-    :param int depth:
+    :param depth:
         *undescribed*
+    :type depth: int
 
-    :param int err:
+    :param err:
         *undescribed*
+    :type err: int
 
-    :param const char \*fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -179,17 +197,21 @@ xenbus_grant_ring
 
 .. c:function:: int xenbus_grant_ring(struct xenbus_device *dev, void *vaddr, unsigned int nr_pages, grant_ref_t *grefs)
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         xenbus device
+    :type dev: struct xenbus_device \*
 
-    :param void \*vaddr:
+    :param vaddr:
         starting virtual address of the ring
+    :type vaddr: void \*
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         number of pages to be granted
+    :type nr_pages: unsigned int
 
-    :param grant_ref_t \*grefs:
+    :param grefs:
         grant reference array to be filled in
+    :type grefs: grant_ref_t \*
 
 .. _`xenbus_grant_ring.description`:
 
@@ -210,11 +232,13 @@ xenbus_alloc_evtchn
 
     created local port to \*port.  Return 0 on success, or -errno on error.  On error, the device will switch to XenbusStateClosing, and the error will be saved in the store.
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct xenbus_device \*
 
-    :param int \*port:
+    :param port:
         *undescribed*
+    :type port: int \*
 
 .. _`xenbus_free_evtchn`:
 
@@ -225,11 +249,13 @@ xenbus_free_evtchn
 
     errno on error.
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct xenbus_device \*
 
-    :param int port:
+    :param port:
         *undescribed*
+    :type port: int
 
 .. _`xenbus_map_ring_valloc`:
 
@@ -238,17 +264,21 @@ xenbus_map_ring_valloc
 
 .. c:function:: int xenbus_map_ring_valloc(struct xenbus_device *dev, grant_ref_t *gnt_refs, unsigned int nr_grefs, void **vaddr)
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         xenbus device
+    :type dev: struct xenbus_device \*
 
-    :param grant_ref_t \*gnt_refs:
+    :param gnt_refs:
         grant reference array
+    :type gnt_refs: grant_ref_t \*
 
-    :param unsigned int nr_grefs:
+    :param nr_grefs:
         number of grant references
+    :type nr_grefs: unsigned int
 
-    :param void \*\*vaddr:
+    :param vaddr:
         pointer to address to be filled out by mapping
+    :type vaddr: void \*\*
 
 .. _`xenbus_map_ring_valloc.description`:
 
@@ -270,23 +300,29 @@ xenbus_map_ring
 
 .. c:function:: int xenbus_map_ring(struct xenbus_device *dev, grant_ref_t *gnt_refs, unsigned int nr_grefs, grant_handle_t *handles, unsigned long *vaddrs, bool *leaked)
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         xenbus device
+    :type dev: struct xenbus_device \*
 
-    :param grant_ref_t \*gnt_refs:
+    :param gnt_refs:
         grant reference array
+    :type gnt_refs: grant_ref_t \*
 
-    :param unsigned int nr_grefs:
+    :param nr_grefs:
         number of grant reference
+    :type nr_grefs: unsigned int
 
-    :param grant_handle_t \*handles:
+    :param handles:
         pointer to grant handle to be filled
+    :type handles: grant_handle_t \*
 
-    :param unsigned long \*vaddrs:
+    :param vaddrs:
         addresses to be mapped to
+    :type vaddrs: unsigned long \*
 
-    :param bool \*leaked:
+    :param leaked:
         fail to clean up a failed map, caller should not free vaddr
+    :type leaked: bool \*
 
 .. _`xenbus_map_ring.description`:
 
@@ -310,11 +346,13 @@ xenbus_unmap_ring_vfree
 
 .. c:function:: int xenbus_unmap_ring_vfree(struct xenbus_device *dev, void *vaddr)
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         xenbus device
+    :type dev: struct xenbus_device \*
 
-    :param void \*vaddr:
+    :param vaddr:
         addr to unmap
+    :type vaddr: void \*
 
 .. _`xenbus_unmap_ring_vfree.description`:
 
@@ -335,17 +373,21 @@ xenbus_unmap_ring
 
 .. c:function:: int xenbus_unmap_ring(struct xenbus_device *dev, grant_handle_t *handles, unsigned int nr_handles, unsigned long *vaddrs)
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         xenbus device
+    :type dev: struct xenbus_device \*
 
-    :param grant_handle_t \*handles:
+    :param handles:
         grant handle array
+    :type handles: grant_handle_t \*
 
-    :param unsigned int nr_handles:
+    :param nr_handles:
         number of handles in the array
+    :type nr_handles: unsigned int
 
-    :param unsigned long \*vaddrs:
+    :param vaddrs:
         addresses to unmap
+    :type vaddrs: unsigned long \*
 
 .. _`xenbus_unmap_ring.description`:
 
@@ -363,8 +405,9 @@ xenbus_read_driver_state
 
 .. c:function:: enum xenbus_state xenbus_read_driver_state(const char *path)
 
-    :param const char \*path:
+    :param path:
         path for driver
+    :type path: const char \*
 
 .. _`xenbus_read_driver_state.description`:
 

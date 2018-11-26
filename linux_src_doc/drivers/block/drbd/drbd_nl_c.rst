@@ -10,14 +10,17 @@ drbd_determine_dev_size
 
     Sets the right device size obeying all constraints
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param enum dds_flags flags:
+    :param flags:
         *undescribed*
+    :type flags: enum dds_flags
 
-    :param struct resize_parms \*rs:
+    :param rs:
         *undescribed*
+    :type rs: struct resize_parms \*
 
 .. _`drbd_determine_dev_size.description`:
 
@@ -36,11 +39,13 @@ drbd_check_al_size
 
     Ensures that the AL is of the right size
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param struct disk_conf \*dc:
+    :param dc:
         *undescribed*
+    :type dc: struct disk_conf \*
 
 .. _`drbd_check_al_size.description`:
 

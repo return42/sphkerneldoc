@@ -10,17 +10,21 @@ nilfs_bmap_lookup_at_level
 
     find a data block or node block
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
-    :param __u64 key:
+    :param key:
         key
+    :type key: __u64
 
-    :param int level:
+    :param level:
         level
+    :type level: int
 
-    :param __u64 \*ptrp:
+    :param ptrp:
         place to store the value associated to \ ``key``\ 
+    :type ptrp: __u64 \*
 
 .. _`nilfs_bmap_lookup_at_level.description`:
 
@@ -54,14 +58,17 @@ nilfs_bmap_insert
 
     insert a new key-record pair into a bmap
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
-    :param __u64 key:
+    :param key:
         key
+    :type key: __u64
 
-    :param unsigned long rec:
+    :param rec:
         record
+    :type rec: unsigned long
 
 .. _`nilfs_bmap_insert.description`:
 
@@ -94,14 +101,17 @@ nilfs_bmap_seek_key
 
     seek a valid entry and return its key
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap struct
+    :type bmap: struct nilfs_bmap \*
 
-    :param __u64 start:
+    :param start:
         start key number
+    :type start: __u64
 
-    :param __u64 \*keyp:
+    :param keyp:
         place to store valid key
+    :type keyp: __u64 \*
 
 .. _`nilfs_bmap_seek_key.description`:
 
@@ -134,11 +144,13 @@ nilfs_bmap_delete
 
     delete a key-record pair from a bmap
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
-    :param __u64 key:
+    :param key:
         key
+    :type key: __u64
 
 .. _`nilfs_bmap_delete.description`:
 
@@ -171,11 +183,13 @@ nilfs_bmap_truncate
 
     truncate a bmap to a specified key
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
-    :param __u64 key:
+    :param key:
         key
+    :type key: __u64
 
 .. _`nilfs_bmap_truncate.description`:
 
@@ -206,8 +220,9 @@ nilfs_bmap_clear
 
     free resources a bmap holds
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
 .. _`nilfs_bmap_clear.description`:
 
@@ -225,11 +240,13 @@ nilfs_bmap_propagate
 
     propagate dirty state
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer head
+    :type bh: struct buffer_head \*
 
 .. _`nilfs_bmap_propagate.description`:
 
@@ -258,11 +275,13 @@ nilfs_bmap_lookup_dirty_buffers
 
 .. c:function:: void nilfs_bmap_lookup_dirty_buffers(struct nilfs_bmap *bmap, struct list_head *listp)
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
-    :param struct list_head \*listp:
+    :param listp:
         pointer to buffer head list
+    :type listp: struct list_head \*
 
 .. _`nilfs_bmap_assign`:
 
@@ -273,17 +292,21 @@ nilfs_bmap_assign
 
     assign a new block number to a block
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
-    :param struct buffer_head \*\*bh:
+    :param bh:
         *undescribed*
+    :type bh: struct buffer_head \*\*
 
-    :param unsigned long blocknr:
+    :param blocknr:
         block number
+    :type blocknr: unsigned long
 
-    :param union nilfs_binfo \*binfo:
+    :param binfo:
         block information
+    :type binfo: union nilfs_binfo \*
 
 .. _`nilfs_bmap_assign.description`:
 
@@ -316,14 +339,17 @@ nilfs_bmap_mark
 
     mark block dirty
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
-    :param __u64 key:
+    :param key:
         key
+    :type key: __u64
 
-    :param int level:
+    :param level:
         level
+    :type level: int
 
 .. _`nilfs_bmap_mark.description`:
 
@@ -354,8 +380,9 @@ nilfs_bmap_test_and_clear_dirty
 
     test and clear a bmap dirty state
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
 .. _`nilfs_bmap_test_and_clear_dirty.description`:
 
@@ -381,11 +408,13 @@ nilfs_bmap_read
 
     read a bmap from an inode
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
-    :param struct nilfs_inode \*raw_inode:
+    :param raw_inode:
         on-disk inode
+    :type raw_inode: struct nilfs_inode \*
 
 .. _`nilfs_bmap_read.description`:
 
@@ -413,11 +442,13 @@ nilfs_bmap_write
 
     write back a bmap to an inode
 
-    :param struct nilfs_bmap \*bmap:
+    :param bmap:
         bmap
+    :type bmap: struct nilfs_bmap \*
 
-    :param struct nilfs_inode \*raw_inode:
+    :param raw_inode:
         on-disk inode
+    :type raw_inode: struct nilfs_inode \*
 
 .. _`nilfs_bmap_write.description`:
 

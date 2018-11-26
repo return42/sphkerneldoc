@@ -10,15 +10,18 @@ memremap
 
     remap an iomem_resource as cacheable memory
 
-    :param resource_size_t offset:
+    :param offset:
         iomem resource start address
+    :type offset: resource_size_t
 
-    :param size_t size:
+    :param size:
         size of remap
+    :type size: size_t
 
-    :param unsigned long flags:
+    :param flags:
         any of MEMREMAP_WB, MEMREMAP_WT, MEMREMAP_WC,
         MEMREMAP_ENC, MEMREMAP_DEC
+    :type flags: unsigned long
 
 .. _`memremap.description`:
 

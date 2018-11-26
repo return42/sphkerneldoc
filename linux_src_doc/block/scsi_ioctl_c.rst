@@ -10,18 +10,22 @@ sg_scsi_ioctl
 
     -  handle deprecated SCSI_IOCTL_SEND_COMMAND ioctl
 
-    :param struct request_queue \*q:
+    :param q:
         request queue to send scsi commands down
+    :type q: struct request_queue \*
 
-    :param struct gendisk \*disk:
+    :param disk:
         gendisk to operate on (option)
+    :type disk: struct gendisk \*
 
-    :param fmode_t mode:
+    :param mode:
         mode used to open the file through which the ioctl has been
         submitted
+    :type mode: fmode_t
 
-    :param struct scsi_ioctl_command __user \*sic:
+    :param sic:
         userspace structure describing the command to perform
+    :type sic: struct scsi_ioctl_command __user \*
 
 .. _`sg_scsi_ioctl.description`:
 
@@ -67,10 +71,11 @@ scsi_req_init
 
     initialize certain fields of a scsi_request structure
 
-    :param struct scsi_request \*req:
+    :param req:
         Pointer to a scsi_request structure.
         Initializes .__cmd[], .cmd, .cmd_len and .sense_len but no other members
         of struct scsi_request.
+    :type req: struct scsi_request \*
 
 .. This file was automatic generated / don't edit.
 

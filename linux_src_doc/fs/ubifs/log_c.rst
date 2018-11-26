@@ -10,11 +10,13 @@ ubifs_search_bud
 
     search bud LEB.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number to search
+    :type lnum: int
 
 .. _`ubifs_search_bud.description`:
 
@@ -33,11 +35,13 @@ ubifs_get_wbuf
 
     get the wbuf associated with a LEB, if there is one.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number to search
+    :type lnum: int
 
 .. _`ubifs_get_wbuf.description`:
 
@@ -55,8 +59,9 @@ empty_log_bytes
 
     calculate amount of empty space in the log.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
 .. _`ubifs_add_bud`:
 
@@ -67,11 +72,13 @@ ubifs_add_bud
 
     add bud LEB to the tree of buds and its journal head list.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_bud \*bud:
+    :param bud:
         the bud to add
+    :type bud: struct ubifs_bud \*
 
 .. _`ubifs_add_bud_to_log`:
 
@@ -82,17 +89,21 @@ ubifs_add_bud_to_log
 
     add a new bud to the log.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int jhead:
+    :param jhead:
         journal head the bud belongs to
+    :type jhead: int
 
-    :param int lnum:
+    :param lnum:
         LEB number of the bud
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         starting offset of the bud
+    :type offs: int
 
 .. _`ubifs_add_bud_to_log.description`:
 
@@ -114,8 +125,9 @@ remove_buds
 
     remove used buds.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`remove_buds.description`:
 
@@ -134,11 +146,13 @@ ubifs_log_start_commit
 
     start commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int \*ltail_lnum:
+    :param ltail_lnum:
         return new log tail LEB number
+    :type ltail_lnum: int \*
 
 .. _`ubifs_log_start_commit.description`:
 
@@ -162,11 +176,13 @@ ubifs_log_end_commit
 
     end commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int ltail_lnum:
+    :param ltail_lnum:
         new log tail LEB number
+    :type ltail_lnum: int
 
 .. _`ubifs_log_end_commit.description`:
 
@@ -187,11 +203,13 @@ ubifs_log_post_commit
 
     things to do after commit is completed.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int old_ltail_lnum:
+    :param old_ltail_lnum:
         old log tail LEB number
+    :type old_ltail_lnum: int
 
 .. _`ubifs_log_post_commit.description`:
 
@@ -247,11 +265,13 @@ done_already
 
     determine if a reference has been done already.
 
-    :param struct rb_root \*done_tree:
+    :param done_tree:
         rb-tree to store references that have been done
+    :type done_tree: struct rb_root \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of reference
+    :type lnum: int
 
 .. _`done_already.description`:
 
@@ -270,8 +290,9 @@ destroy_done_tree
 
     destroy the done tree.
 
-    :param struct rb_root \*done_tree:
+    :param done_tree:
         done tree to destroy
+    :type done_tree: struct rb_root \*
 
 .. _`add_node`:
 
@@ -282,20 +303,25 @@ add_node
 
     add a node to the consolidated log.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer to which to add
+    :type buf: void \*
 
-    :param int \*lnum:
+    :param lnum:
         LEB number to which to write is passed and returned here
+    :type lnum: int \*
 
-    :param int \*offs:
+    :param offs:
         offset to where to write is passed and returned here
+    :type offs: int \*
 
-    :param void \*node:
+    :param node:
         node to add
+    :type node: void \*
 
 .. _`add_node.description`:
 
@@ -313,8 +339,9 @@ ubifs_consolidate_log
 
     consolidate the log.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_consolidate_log.description`:
 
@@ -336,8 +363,9 @@ dbg_check_bud_bytes
 
     make sure bud bytes calculation are all right.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_check_bud_bytes.description`:
 

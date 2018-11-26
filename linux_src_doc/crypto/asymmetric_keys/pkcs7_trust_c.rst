@@ -8,14 +8,17 @@ pkcs7_validate_trust_one
 
 .. c:function:: int pkcs7_validate_trust_one(struct pkcs7_message *pkcs7, struct pkcs7_signed_info *sinfo, struct key *trust_keyring)
 
-    :param struct pkcs7_message \*pkcs7:
+    :param pkcs7:
         *undescribed*
+    :type pkcs7: struct pkcs7_message \*
 
-    :param struct pkcs7_signed_info \*sinfo:
+    :param sinfo:
         *undescribed*
+    :type sinfo: struct pkcs7_signed_info \*
 
-    :param struct key \*trust_keyring:
+    :param trust_keyring:
         *undescribed*
+    :type trust_keyring: struct key \*
 
 .. _`pkcs7_validate_trust`:
 
@@ -26,11 +29,13 @@ pkcs7_validate_trust
 
     Validate PKCS#7 trust chain
 
-    :param struct pkcs7_message \*pkcs7:
+    :param pkcs7:
         The PKCS#7 certificate to validate
+    :type pkcs7: struct pkcs7_message \*
 
-    :param struct key \*trust_keyring:
+    :param trust_keyring:
         Signing certificates to use as starting points
+    :type trust_keyring: struct key \*
 
 .. _`pkcs7_validate_trust.description`:
 

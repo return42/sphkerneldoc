@@ -10,20 +10,25 @@ mpu3050_read_mem
 
     read MPU-3050 internal memory
 
-    :param struct mpu3050 \*mpu3050:
+    :param mpu3050:
         device to read from
+    :type mpu3050: struct mpu3050 \*
 
-    :param u8 bank:
+    :param bank:
         target bank
+    :type bank: u8
 
-    :param u8 addr:
+    :param addr:
         target address
+    :type addr: u8
 
-    :param u8 len:
+    :param len:
         number of bytes
+    :type len: u8
 
-    :param u8 \*buf:
+    :param buf:
         the buffer to store the read bytes in
+    :type buf: u8 \*
 
 .. _`mpu3050_drdy_trigger_set_state`:
 
@@ -34,11 +39,13 @@ mpu3050_drdy_trigger_set_state
 
     set data ready interrupt state
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         trigger instance
+    :type trig: struct iio_trigger \*
 
-    :param bool enable:
+    :param enable:
         true if trigger should be enabled, false to disable
+    :type enable: bool
 
 .. This file was automatic generated / don't edit.
 

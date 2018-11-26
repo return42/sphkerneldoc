@@ -1,6 +1,30 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/kobject.h
 
+.. _`kobject_has_children`:
+
+kobject_has_children
+====================
+
+.. c:function:: bool kobject_has_children(struct kobject *kobj)
+
+    Returns whether a kobject has children.
+
+    :param kobj:
+        the object to test
+    :type kobj: struct kobject \*
+
+.. _`kobject_has_children.description`:
+
+Description
+-----------
+
+This will return whether a kobject has other kobjects as children.
+
+It does NOT account for the presence of attribute files, only sub
+directories. It also assumes there is no concurrent addition or
+removal of such children, and thus relies on external locking.
+
 .. _`kset`:
 
 struct kset

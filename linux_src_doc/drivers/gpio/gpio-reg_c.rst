@@ -10,38 +10,48 @@ gpio_reg_init
 
     add a fixed in/out register as gpio
 
-    :param struct device \*dev:
+    :param dev:
         optional struct device associated with this register
+    :type dev: struct device \*
 
-    :param void __iomem \*reg:
+    :param reg:
         *undescribed*
+    :type reg: void __iomem \*
 
-    :param int base:
+    :param base:
         start gpio number, or -1 to allocate
+    :type base: int
 
-    :param int num:
+    :param num:
         number of GPIOs, maximum 32
+    :type num: int
 
-    :param const char \*label:
+    :param label:
         GPIO chip label
+    :type label: const char \*
 
-    :param u32 direction:
+    :param direction:
         bitmask of fixed direction, one per GPIO signal, 1 = in
+    :type direction: u32
 
-    :param u32 def_out:
+    :param def_out:
         initial GPIO output value
+    :type def_out: u32
 
-    :param const char \*const \*names:
+    :param names:
         array of \ ``num``\  strings describing each GPIO signal or \ ``NULL``\ 
+    :type names: const char \*const \*
 
-    :param struct irq_domain \*irqdom:
+    :param irqdom:
         irq domain or \ ``NULL``\ 
+    :type irqdom: struct irq_domain \*
 
-    :param const int \*irqs:
+    :param irqs:
         array of \ ``num``\  ints describing the interrupt mapping for each
         GPIO signal, or \ ``NULL``\ .  If \ ``irqdom``\  is \ ``NULL``\ , then this
         describes the Linux interrupt number, otherwise it describes
         the hardware interrupt number in the specified irq domain.
+    :type irqs: const int \*
 
 .. _`gpio_reg_init.description`:
 

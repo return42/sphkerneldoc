@@ -10,11 +10,13 @@ omap_control_pcie_pcs
 
     set the PCS delay count
 
-    :param struct device \*dev:
+    :param dev:
         the control module device
+    :type dev: struct device \*
 
-    :param u8 delay:
+    :param delay:
         8 bit delay value
+    :type delay: u8
 
 .. _`omap_control_phy_power`:
 
@@ -25,11 +27,13 @@ omap_control_phy_power
 
     power on/off the phy using control module reg
 
-    :param struct device \*dev:
+    :param dev:
         the control module device
+    :type dev: struct device \*
 
-    :param int on:
+    :param on:
         0 or 1, based on powering on or off the PHY
+    :type on: int
 
 .. _`omap_control_usb_host_mode`:
 
@@ -40,8 +44,9 @@ omap_control_usb_host_mode
 
     set AVALID, VBUSVALID and ID pin in grounded
 
-    :param struct omap_control_phy \*ctrl_phy:
+    :param ctrl_phy:
         struct omap_control_phy \*
+    :type ctrl_phy: struct omap_control_phy \*
 
 .. _`omap_control_usb_host_mode.description`:
 
@@ -60,8 +65,9 @@ omap_control_usb_device_mode
 
     set AVALID, VBUSVALID and ID pin in high impedance
 
-    :param struct omap_control_phy \*ctrl_phy:
+    :param ctrl_phy:
         struct omap_control_phy \*
+    :type ctrl_phy: struct omap_control_phy \*
 
 .. _`omap_control_usb_device_mode.description`:
 
@@ -80,8 +86,9 @@ omap_control_usb_set_sessionend
 
     Enable SESSIONEND and IDIG to high impedance
 
-    :param struct omap_control_phy \*ctrl_phy:
+    :param ctrl_phy:
         struct omap_control_phy \*
+    :type ctrl_phy: struct omap_control_phy \*
 
 .. _`omap_control_usb_set_sessionend.description`:
 
@@ -100,11 +107,13 @@ omap_control_usb_set_mode
 
     Calls to functions to set USB in one of host mode or device mode or to denote disconnected state
 
-    :param struct device \*dev:
+    :param dev:
         the control module device
+    :type dev: struct device \*
 
-    :param enum omap_control_usb_mode mode:
+    :param mode:
         The mode to which usb should be configured
+    :type mode: enum omap_control_usb_mode
 
 .. _`omap_control_usb_set_mode.description`:
 

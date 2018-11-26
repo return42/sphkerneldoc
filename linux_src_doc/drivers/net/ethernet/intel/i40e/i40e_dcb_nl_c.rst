@@ -10,11 +10,13 @@ i40e_get_pfc_delay
 
     retrieve PFC Link Delay
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 \*delay:
+    :param delay:
         holds the PFC Link delay value
+    :type delay: u16 \*
 
 .. _`i40e_get_pfc_delay.description`:
 
@@ -32,11 +34,13 @@ i40e_dcbnl_ieee_getets
 
     retrieve local IEEE ETS configuration
 
-    :param struct net_device \*dev:
+    :param dev:
         the corresponding netdev
+    :type dev: struct net_device \*
 
-    :param struct ieee_ets \*ets:
+    :param ets:
         structure to hold the ETS information
+    :type ets: struct ieee_ets \*
 
 .. _`i40e_dcbnl_ieee_getets.description`:
 
@@ -54,11 +58,13 @@ i40e_dcbnl_ieee_getpfc
 
     retrieve local IEEE PFC configuration
 
-    :param struct net_device \*dev:
+    :param dev:
         the corresponding netdev
+    :type dev: struct net_device \*
 
-    :param struct ieee_pfc \*pfc:
+    :param pfc:
         structure to hold the PFC information
+    :type pfc: struct ieee_pfc \*
 
 .. _`i40e_dcbnl_ieee_getpfc.description`:
 
@@ -76,8 +82,9 @@ i40e_dcbnl_getdcbx
 
     retrieve current DCBx capability
 
-    :param struct net_device \*dev:
+    :param dev:
         the corresponding netdev
+    :type dev: struct net_device \*
 
 .. _`i40e_dcbnl_getdcbx.description`:
 
@@ -95,11 +102,13 @@ i40e_dcbnl_get_perm_hw_addr
 
     MAC address used by DCBx
 
-    :param struct net_device \*dev:
+    :param dev:
         the corresponding netdev
+    :type dev: struct net_device \*
 
-    :param u8 \*perm_addr:
+    :param perm_addr:
         buffer to store the MAC address
+    :type perm_addr: u8 \*
 
 .. _`i40e_dcbnl_get_perm_hw_addr.description`:
 
@@ -117,8 +126,9 @@ i40e_dcbnl_set_all
 
     set all the apps and ieee data from DCBx config
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the corresponding vsi
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_dcbnl_set_all.description`:
 
@@ -137,11 +147,13 @@ i40e_dcbnl_vsi_del_app
 
     Delete APP for given VSI
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the corresponding vsi
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_dcb_app_priority_table \*app:
+    :param app:
         APP to delete
+    :type app: struct i40e_dcb_app_priority_table \*
 
 .. _`i40e_dcbnl_vsi_del_app.description`:
 
@@ -160,11 +172,13 @@ i40e_dcbnl_del_app
 
     Delete APP on all VSIs
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the corresponding PF
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_dcb_app_priority_table \*app:
+    :param app:
         APP to delete
+    :type app: struct i40e_dcb_app_priority_table \*
 
 .. _`i40e_dcbnl_del_app.description`:
 
@@ -182,11 +196,13 @@ i40e_dcbnl_find_app
 
     Search APP in given DCB config
 
-    :param struct i40e_dcbx_config \*cfg:
+    :param cfg:
         DCBX configuration data
+    :type cfg: struct i40e_dcbx_config \*
 
-    :param struct i40e_dcb_app_priority_table \*app:
+    :param app:
         APP to search for
+    :type app: struct i40e_dcb_app_priority_table \*
 
 .. _`i40e_dcbnl_find_app.description`:
 
@@ -204,14 +220,17 @@ i40e_dcbnl_flush_apps
 
     Delete all removed APPs
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the corresponding PF
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_dcbx_config \*old_cfg:
+    :param old_cfg:
         old DCBX configuration data
+    :type old_cfg: struct i40e_dcbx_config \*
 
-    :param struct i40e_dcbx_config \*new_cfg:
+    :param new_cfg:
         new DCBX configuration data
+    :type new_cfg: struct i40e_dcbx_config \*
 
 .. _`i40e_dcbnl_flush_apps.description`:
 
@@ -230,8 +249,9 @@ i40e_dcbnl_setup
 
     DCBNL setup
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the corresponding vsi
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_dcbnl_setup.description`:
 

@@ -46,8 +46,9 @@ ddcb_requ_alloc
 
     Allocate a new DDCB execution request
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ddcb_requ_alloc.description`:
 
@@ -73,8 +74,9 @@ ddcb_requ_free
 
     Free DDCB execution request.
 
-    :param struct genwqe_ddcb_cmd \*req:
+    :param req:
         ptr to genwqe_ddcb_cmd data structure.
+    :type req: struct genwqe_ddcb_cmd \*
 
 .. This file was automatic generated / don't edit.
 

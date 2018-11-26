@@ -63,14 +63,17 @@ dvb_ringbuffer_init
 
     initialize ring buffer, lock and queue
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
-    :param void \*data:
+    :param data:
         pointer to the buffer where the data will be stored
+    :type data: void \*
 
-    :param size_t len:
+    :param len:
         bytes from ring buffer into \ ``buf``\ 
+    :type len: size_t
 
 .. _`dvb_ringbuffer_empty`:
 
@@ -81,8 +84,9 @@ dvb_ringbuffer_empty
 
     test whether buffer is empty
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
 .. _`dvb_ringbuffer_free`:
 
@@ -93,8 +97,9 @@ dvb_ringbuffer_free
 
     returns the number of free bytes in the buffer
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
 .. _`dvb_ringbuffer_free.return`:
 
@@ -112,8 +117,9 @@ dvb_ringbuffer_avail
 
     returns the number of bytes waiting in the buffer
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
 .. _`dvb_ringbuffer_avail.return`:
 
@@ -131,8 +137,9 @@ dvb_ringbuffer_reset
 
     resets the ringbuffer to initial state
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
 .. _`dvb_ringbuffer_reset.description`:
 
@@ -152,8 +159,9 @@ dvb_ringbuffer_flush
 
     flush buffer
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
 .. _`dvb_ringbuffer_flush_spinlock_wakeup`:
 
@@ -164,8 +172,9 @@ dvb_ringbuffer_flush_spinlock_wakeup
 
     flush buffer protected by spinlock and wake-up waiting task(s)
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
 .. _`dvb_ringbuffer_peek`:
 
@@ -176,11 +185,13 @@ DVB_RINGBUFFER_PEEK
 
     peek at byte \ ``offs``\  in the buffer
 
-    :param  rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: 
 
-    :param  offs:
+    :param offs:
         offset inside the ringbuffer
+    :type offs: 
 
 .. _`dvb_ringbuffer_skip`:
 
@@ -191,11 +202,13 @@ DVB_RINGBUFFER_SKIP
 
     advance read ptr by \ ``num``\  bytes
 
-    :param  rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: 
 
-    :param  num:
+    :param num:
         number of bytes to advance
+    :type num: 
 
 .. _`dvb_ringbuffer_read_user`:
 
@@ -206,14 +219,17 @@ dvb_ringbuffer_read_user
 
     Reads a buffer into a user pointer
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
-    :param u8 __user \*buf:
+    :param buf:
         pointer to the buffer where the data will be stored
+    :type buf: u8 __user \*
 
-    :param size_t len:
+    :param len:
         bytes from ring buffer into \ ``buf``\ 
+    :type len: size_t
 
 .. _`dvb_ringbuffer_read_user.description`:
 
@@ -239,14 +255,17 @@ dvb_ringbuffer_read
 
     Reads a buffer into a pointer
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
-    :param u8 \*buf:
+    :param buf:
         pointer to the buffer where the data will be stored
+    :type buf: u8 \*
 
-    :param size_t len:
+    :param len:
         bytes from ring buffer into \ ``buf``\ 
+    :type len: size_t
 
 .. _`dvb_ringbuffer_read.description`:
 
@@ -271,11 +290,13 @@ DVB_RINGBUFFER_WRITE_BYTE
 
     write single byte to ring buffer
 
-    :param  rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: 
 
-    :param  byte:
+    :param byte:
         byte to write
+    :type byte: 
 
 .. _`dvb_ringbuffer_write`:
 
@@ -286,14 +307,17 @@ dvb_ringbuffer_write
 
     Writes a buffer into the ringbuffer
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
-    :param const u8 \*buf:
+    :param buf:
         pointer to the buffer where the data will be read
+    :type buf: const u8 \*
 
-    :param size_t len:
+    :param len:
         bytes from ring buffer into \ ``buf``\ 
+    :type len: size_t
 
 .. _`dvb_ringbuffer_write.description`:
 
@@ -318,14 +342,17 @@ dvb_ringbuffer_write_user
 
     Writes a buffer received via a user pointer
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         pointer to struct dvb_ringbuffer
+    :type rbuf: struct dvb_ringbuffer \*
 
-    :param const u8 __user \*buf:
+    :param buf:
         pointer to the buffer where the data will be read
+    :type buf: const u8 __user \*
 
-    :param size_t len:
+    :param len:
         bytes from ring buffer into \ ``buf``\ 
+    :type len: size_t
 
 .. _`dvb_ringbuffer_write_user.description`:
 
@@ -351,14 +378,17 @@ dvb_ringbuffer_pkt_write
 
     Write a packet into the ringbuffer.
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         Ringbuffer to write to.
+    :type rbuf: struct dvb_ringbuffer \*
 
-    :param u8 \*buf:
+    :param buf:
         Buffer to write.
+    :type buf: u8 \*
 
-    :param size_t len:
+    :param len:
         Length of buffer (currently limited to 65535 bytes max).
+    :type len: size_t
 
 .. _`dvb_ringbuffer_pkt_write.return`:
 
@@ -376,20 +406,25 @@ dvb_ringbuffer_pkt_read_user
 
     Read from a packet in the ringbuffer.
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         Ringbuffer concerned.
+    :type rbuf: struct dvb_ringbuffer \*
 
-    :param size_t idx:
+    :param idx:
         Packet index as returned by \ :c:func:`dvb_ringbuffer_pkt_next`\ .
+    :type idx: size_t
 
-    :param int offset:
+    :param offset:
         Offset into packet to read from.
+    :type offset: int
 
-    :param u8 __user \*buf:
+    :param buf:
         Destination buffer for data.
+    :type buf: u8 __user \*
 
-    :param size_t len:
+    :param len:
         Size of destination buffer.
+    :type len: size_t
 
 .. _`dvb_ringbuffer_pkt_read_user.return`:
 
@@ -413,20 +448,25 @@ dvb_ringbuffer_pkt_read
 
     Read from a packet in the ringbuffer.
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         Ringbuffer concerned.
+    :type rbuf: struct dvb_ringbuffer \*
 
-    :param size_t idx:
+    :param idx:
         Packet index as returned by \ :c:func:`dvb_ringbuffer_pkt_next`\ .
+    :type idx: size_t
 
-    :param int offset:
+    :param offset:
         Offset into packet to read from.
+    :type offset: int
 
-    :param u8 \*buf:
+    :param buf:
         Destination buffer for data.
+    :type buf: u8 \*
 
-    :param size_t len:
+    :param len:
         Size of destination buffer.
+    :type len: size_t
 
 .. _`dvb_ringbuffer_pkt_read.note`:
 
@@ -452,11 +492,13 @@ dvb_ringbuffer_pkt_dispose
 
     Dispose of a packet in the ring buffer.
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         Ring buffer concerned.
+    :type rbuf: struct dvb_ringbuffer \*
 
-    :param size_t idx:
+    :param idx:
         Packet index as returned by \ :c:func:`dvb_ringbuffer_pkt_next`\ .
+    :type idx: size_t
 
 .. _`dvb_ringbuffer_pkt_next`:
 
@@ -467,16 +509,19 @@ dvb_ringbuffer_pkt_next
 
     Get the index of the next packet in a ringbuffer.
 
-    :param struct dvb_ringbuffer \*rbuf:
+    :param rbuf:
         Ringbuffer concerned.
+    :type rbuf: struct dvb_ringbuffer \*
 
-    :param size_t idx:
+    :param idx:
         Previous packet index, or -1 to return the first packet index.
+    :type idx: size_t
 
-    :param size_t \*pktlen:
+    :param pktlen:
         On success, will be updated to contain the length of the packet
         in bytes.
         returns Packet index (if >=0), or -1 if no packets available.
+    :type pktlen: size_t \*
 
 .. This file was automatic generated / don't edit.
 

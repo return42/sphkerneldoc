@@ -10,17 +10,21 @@ tee_device_alloc
 
     Allocate a new struct tee_device instance
 
-    :param const struct tee_desc \*teedesc:
+    :param teedesc:
         Descriptor for this driver
+    :type teedesc: const struct tee_desc \*
 
-    :param struct device \*dev:
+    :param dev:
         Parent device for this device
+    :type dev: struct device \*
 
-    :param struct tee_shm_pool \*pool:
+    :param pool:
         Shared memory pool, NULL if not used
+    :type pool: struct tee_shm_pool \*
 
-    :param void \*driver_data:
+    :param driver_data:
         Private driver data for this device
+    :type driver_data: void \*
 
 .. _`tee_device_alloc.description`:
 
@@ -41,8 +45,9 @@ tee_device_register
 
     Registers a TEE device
 
-    :param struct tee_device \*teedev:
+    :param teedev:
         Device to register
+    :type teedev: struct tee_device \*
 
 .. _`tee_device_register.description`:
 
@@ -63,8 +68,9 @@ tee_device_unregister
 
     Removes a TEE device
 
-    :param struct tee_device \*teedev:
+    :param teedev:
         Device to unregister
+    :type teedev: struct tee_device \*
 
 .. _`tee_device_unregister.description`:
 
@@ -84,9 +90,10 @@ tee_get_drvdata
 
     Return driver_data pointer
 
-    :param struct tee_device \*teedev:
+    :param teedev:
         Device containing the driver_data pointer
         \ ``returns``\  the driver_data pointer supplied to \ :c:func:`tee_register`\ .
+    :type teedev: struct tee_device \*
 
 .. This file was automatic generated / don't edit.
 

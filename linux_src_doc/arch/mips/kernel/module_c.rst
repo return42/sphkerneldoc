@@ -10,20 +10,25 @@ reloc_handler
 
     Apply a particular relocation to a module
 
-    :param struct module \*me:
+    :param me:
         the module to apply the reloc to
+    :type me: struct module \*
 
-    :param u32 \*location:
+    :param location:
         the address at which the reloc is to be applied
+    :type location: u32 \*
 
-    :param u32 base:
+    :param base:
         the existing value at location for REL-style; 0 for RELA-style
+    :type base: u32
 
-    :param Elf_Addr v:
+    :param v:
         the value of the reloc, with addend for RELA-style
+    :type v: Elf_Addr
 
-    :param bool rela:
+    :param rela:
         *undescribed*
+    :type rela: bool
 
 .. _`reloc_handler.description`:
 

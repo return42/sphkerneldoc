@@ -10,8 +10,9 @@ swait_active
 
     - locklessly test for waiters on the queue
 
-    :param struct swait_queue_head \*wq:
+    :param wq:
         the waitqueue to test for waiters
+    :type wq: struct swait_queue_head \*
 
 .. _`swait_active.description`:
 
@@ -41,7 +42,7 @@ with an extra \ :c:func:`smp_mb`\  like:
 CPU0 - waker                    CPU1 - waiter
 
 for (;;) {
-\ ``cond``\  = true;                     prepare_to_swait(&wq_head, \ :c:type:`struct wait <wait>`\ , state);
+\ ``cond``\  = true;                     prepare_to_swait_exclusive(&wq_head, \ :c:type:`struct wait <wait>`\ , state);
 \ :c:func:`smp_mb`\ ;                         // \ :c:func:`smp_mb`\  from \ :c:func:`set_current_state`\ 
 if (swait_active(wq_head))        if (@cond)
 wake_up(wq_head);                      break;
@@ -66,8 +67,9 @@ swq_has_sleeper
 
     check if there are any waiting processes
 
-    :param struct swait_queue_head \*wq:
+    :param wq:
         the waitqueue to test for waiters
+    :type wq: struct swait_queue_head \*
 
 .. _`swq_has_sleeper.description`:
 
@@ -78,22 +80,24 @@ Returns true if \ ``wq``\  has waiting processes
 
 Please refer to the comment for swait_active.
 
-.. _`swait_event_idle`:
+.. _`swait_event_idle_exclusive`:
 
-swait_event_idle
-================
+swait_event_idle_exclusive
+==========================
 
-.. c:function::  swait_event_idle( wq,  condition)
+.. c:function::  swait_event_idle_exclusive( wq,  condition)
 
     wait without system load contribution
 
-    :param  wq:
+    :param wq:
         the waitqueue to wait on
+    :type wq: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-.. _`swait_event_idle.description`:
+.. _`swait_event_idle_exclusive.description`:
 
 Description
 -----------
@@ -105,25 +109,28 @@ This function is mostly used when a kthread or workqueue waits for some
 condition and doesn't want to contribute to system load. Signals are
 ignored.
 
-.. _`swait_event_idle_timeout`:
+.. _`swait_event_idle_timeout_exclusive`:
 
-swait_event_idle_timeout
-========================
+swait_event_idle_timeout_exclusive
+==================================
 
-.. c:function::  swait_event_idle_timeout( wq,  condition,  timeout)
+.. c:function::  swait_event_idle_timeout_exclusive( wq,  condition,  timeout)
 
     wait up to timeout without load contribution
 
-    :param  wq:
+    :param wq:
         the waitqueue to wait on
+    :type wq: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  timeout:
+    :param timeout:
         timeout at which we'll give up in jiffies
+    :type timeout: 
 
-.. _`swait_event_idle_timeout.description`:
+.. _`swait_event_idle_timeout_exclusive.description`:
 
 Description
 -----------
@@ -135,7 +142,7 @@ This function is mostly used when a kthread or workqueue waits for some
 condition and doesn't want to contribute to system load. Signals are
 ignored.
 
-.. _`swait_event_idle_timeout.return`:
+.. _`swait_event_idle_timeout_exclusive.return`:
 
 Return
 ------

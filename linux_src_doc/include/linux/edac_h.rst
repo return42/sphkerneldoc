@@ -481,21 +481,26 @@ EDAC_DIMM_OFF
 
     Macro responsible to get a pointer offset inside a pointer array for the element given by [layer0,layer1,layer2] position
 
-    :param  layers:
+    :param layers:
         a struct edac_mc_layer array, describing how many elements
         were allocated for each layer
+    :type layers: 
 
-    :param  nlayers:
+    :param nlayers:
         Number of layers at the \ ``layers``\  array
+    :type nlayers: 
 
-    :param  layer0:
+    :param layer0:
         layer0 position
+    :type layer0: 
 
-    :param  layer1:
+    :param layer1:
         layer1 position. Unused if n_layers < 2
+    :type layer1: 
 
-    :param  layer2:
+    :param layer2:
         layer2 position. Unused if n_layers < 3
+    :type layer2: 
 
 .. _`edac_dimm_off.description`:
 
@@ -526,25 +531,31 @@ EDAC_DIMM_PTR
 
     Macro responsible to get a pointer inside a pointer array for the element given by [layer0,layer1,layer2] position
 
-    :param  layers:
+    :param layers:
         a struct edac_mc_layer array, describing how many elements
         were allocated for each layer
+    :type layers: 
 
-    :param  var:
+    :param var:
         name of the var where we want to get the pointer
         (like mci->dimms)
+    :type var: 
 
-    :param  nlayers:
+    :param nlayers:
         Number of layers at the \ ``layers``\  array
+    :type nlayers: 
 
-    :param  layer0:
+    :param layer0:
         layer0 position
+    :type layer0: 
 
-    :param  layer1:
+    :param layer1:
         layer1 position. Unused if n_layers < 2
+    :type layer1: 
 
-    :param  layer2:
+    :param layer2:
         layer2 position. Unused if n_layers < 3
+    :type layer2: 
 
 .. _`edac_dimm_ptr.description`:
 

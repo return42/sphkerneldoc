@@ -65,11 +65,13 @@ plx9080_abort_dma
 
     Abort a PLX PCI 9080 DMA transfer
 
-    :param void __iomem \*iobase:
+    :param iobase:
         Remapped base address of configuration registers.
+    :type iobase: void __iomem \*
 
-    :param unsigned int channel:
+    :param channel:
         DMA channel number (0 or 1).
+    :type channel: unsigned int
 
 .. _`plx9080_abort_dma.description`:
 

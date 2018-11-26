@@ -33,8 +33,9 @@ drm_is_current_master
 
     checks whether \ ``priv``\  is the current master
 
-    :param struct drm_file \*fpriv:
+    :param fpriv:
         DRM file private
+    :type fpriv: struct drm_file \*
 
 .. _`drm_is_current_master.description`:
 
@@ -56,8 +57,9 @@ drm_master_get
 
     reference a master pointer
 
-    :param struct drm_master \*master:
+    :param master:
         \ :c:type:`struct drm_master <drm_master>`\ 
+    :type master: struct drm_master \*
 
 .. _`drm_master_get.description`:
 
@@ -75,8 +77,9 @@ drm_master_put
 
     unreference and clear a master pointer
 
-    :param struct drm_master \*\*master:
+    :param master:
         pointer to a pointer of \ :c:type:`struct drm_master <drm_master>`\ 
+    :type master: struct drm_master \*\*
 
 .. _`drm_master_put.description`:
 

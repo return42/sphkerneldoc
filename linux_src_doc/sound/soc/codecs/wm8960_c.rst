@@ -10,20 +10,25 @@ wm8960_configure_sysclk
 
     checks if there is a sysclk frequency available
 
-    :param struct wm8960_priv \*wm8960:
+    :param wm8960:
         *undescribed*
+    :type wm8960: struct wm8960_priv \*
 
-    :param int mclk:
+    :param mclk:
         MCLK used to derive sysclk
+    :type mclk: int
 
-    :param int \*sysclk_idx:
+    :param sysclk_idx:
         sysclk_divs index for found sysclk
+    :type sysclk_idx: int \*
 
-    :param int \*dac_idx:
+    :param dac_idx:
         dac_divs index for found lrclk
+    :type dac_idx: int \*
 
-    :param int \*bclk_idx:
+    :param bclk_idx:
         bclk_divs index for found bclk
+    :type bclk_idx: int \*
 
 .. _`wm8960_configure_sysclk.the-sysclk-must-be-chosen-such-that`:
 
@@ -56,20 +61,25 @@ wm8960_configure_pll
 
     checks if there is a PLL out frequency available
 
-    :param struct snd_soc_component \*component:
+    :param component:
         component structure
+    :type component: struct snd_soc_component \*
 
-    :param int freq_in:
+    :param freq_in:
         input frequency used to derive freq out via PLL
+    :type freq_in: int
 
-    :param int \*sysclk_idx:
+    :param sysclk_idx:
         sysclk_divs index for found sysclk
+    :type sysclk_idx: int \*
 
-    :param int \*dac_idx:
+    :param dac_idx:
         dac_divs index for found lrclk
+    :type dac_idx: int \*
 
-    :param int \*bclk_idx:
+    :param bclk_idx:
         bclk_divs index for found bclk
+    :type bclk_idx: int \*
 
 .. _`wm8960_configure_pll.the-pll-out-frequency-must-be-chosen-such-that`:
 

@@ -110,8 +110,9 @@ qcom_scm_command_to_response
 
     Get a pointer to a qcom_scm_response
 
-    :param const struct qcom_scm_command \*cmd:
+    :param cmd:
         command
+    :type cmd: const struct qcom_scm_command \*
 
 .. _`qcom_scm_command_to_response.description`:
 
@@ -129,8 +130,9 @@ qcom_scm_get_command_buffer
 
     Get a pointer to a command buffer
 
-    :param const struct qcom_scm_command \*cmd:
+    :param cmd:
         command
+    :type cmd: const struct qcom_scm_command \*
 
 .. _`qcom_scm_get_command_buffer.description`:
 
@@ -148,8 +150,9 @@ qcom_scm_get_response_buffer
 
     Get a pointer to a response buffer
 
-    :param const struct qcom_scm_response \*rsp:
+    :param rsp:
         response
+    :type rsp: const struct qcom_scm_response \*
 
 .. _`qcom_scm_get_response_buffer.description`:
 
@@ -167,26 +170,33 @@ qcom_scm_call
 
     Send an SCM command
 
-    :param struct device \*dev:
+    :param dev:
         struct device
+    :type dev: struct device \*
 
-    :param u32 svc_id:
+    :param svc_id:
         service identifier
+    :type svc_id: u32
 
-    :param u32 cmd_id:
+    :param cmd_id:
         command identifier
+    :type cmd_id: u32
 
-    :param const void \*cmd_buf:
+    :param cmd_buf:
         command buffer
+    :type cmd_buf: const void \*
 
-    :param size_t cmd_len:
+    :param cmd_len:
         length of the command buffer
+    :type cmd_len: size_t
 
-    :param void \*resp_buf:
+    :param resp_buf:
         response buffer
+    :type resp_buf: void \*
 
-    :param size_t resp_len:
+    :param resp_len:
         length of the response buffer
+    :type resp_len: size_t
 
 .. _`qcom_scm_call.description`:
 
@@ -215,14 +225,17 @@ qcom_scm_call_atomic1
 
     Send an atomic SCM command with one argument
 
-    :param u32 svc:
+    :param svc:
         *undescribed*
+    :type svc: u32
 
-    :param u32 cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: u32
 
-    :param u32 arg1:
+    :param arg1:
         first argument
+    :type arg1: u32
 
 .. _`qcom_scm_call_atomic1.description`:
 
@@ -241,17 +254,21 @@ qcom_scm_call_atomic2
 
     Send an atomic SCM command with two arguments
 
-    :param u32 svc:
+    :param svc:
         *undescribed*
+    :type svc: u32
 
-    :param u32 cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: u32
 
-    :param u32 arg1:
+    :param arg1:
         first argument
+    :type arg1: u32
 
-    :param u32 arg2:
+    :param arg2:
         second argument
+    :type arg2: u32
 
 .. _`qcom_scm_call_atomic2.description`:
 
@@ -270,11 +287,13 @@ uninterruptable, atomic and SMP safe.
 
     Set the cold boot address for cpus
 
-    :param void \*entry:
+    :param entry:
         Entry point function for the cpus
+    :type entry: void \*
 
-    :param const cpumask_t \*cpus:
+    :param cpus:
         The cpumask of cpus that will use the entry point
+    :type cpus: const cpumask_t \*
 
 .. _`__qcom_scm_set_cold_boot_addr.description`:
 
@@ -293,14 +312,17 @@ range would be removed from the cpu present mask.
 
     Set the warm boot address for cpus
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param void \*entry:
+    :param entry:
         Entry point function for the cpus
+    :type entry: void \*
 
-    :param const cpumask_t \*cpus:
+    :param cpus:
         The cpumask of cpus that will use the entry point
+    :type cpus: const cpumask_t \*
 
 .. _`__qcom_scm_set_warm_boot_addr.description`:
 
@@ -319,8 +341,9 @@ out of a power down. CPU power down may be executed on cpuidle or hotplug.
 
     Power down the cpu \ ``flags``\  - Flags to flush cache
 
-    :param u32 flags:
+    :param flags:
         *undescribed*
+    :type flags: u32
 
 .. _`__qcom_scm_cpu_power_down.description`:
 

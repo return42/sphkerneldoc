@@ -10,14 +10,17 @@ uncharge_cg_locked
 
     uncharge resource for rdma cgroup
 
-    :param struct rdma_cgroup \*cg:
+    :param cg:
         pointer to cg to uncharge and all parents in hierarchy
+    :type cg: struct rdma_cgroup \*
 
-    :param struct rdmacg_device \*device:
+    :param device:
         pointer to rdmacg device
+    :type device: struct rdmacg_device \*
 
-    :param enum rdmacg_resource_type index:
+    :param index:
         index of the resource to uncharge in cg (resource pool)
+    :type index: enum rdmacg_resource_type
 
 .. _`uncharge_cg_locked.description`:
 
@@ -37,18 +40,22 @@ rdmacg_uncharge_hierarchy
 
     hierarchically uncharge rdma resource count
 
-    :param struct rdma_cgroup \*cg:
+    :param cg:
         *undescribed*
+    :type cg: struct rdma_cgroup \*
 
-    :param struct rdmacg_device \*device:
+    :param device:
         pointer to rdmacg device
+    :type device: struct rdmacg_device \*
 
-    :param struct rdma_cgroup \*stop_cg:
+    :param stop_cg:
         while traversing hirerchy, when meet with stop_cg cgroup
         stop uncharging
+    :type stop_cg: struct rdma_cgroup \*
 
-    :param enum rdmacg_resource_type index:
+    :param index:
         index of the resource to uncharge in cg in given resource pool
+    :type index: enum rdmacg_resource_type
 
 .. _`rdmacg_uncharge`:
 
@@ -59,14 +66,17 @@ rdmacg_uncharge
 
     hierarchically uncharge rdma resource count
 
-    :param struct rdma_cgroup \*cg:
+    :param cg:
         *undescribed*
+    :type cg: struct rdma_cgroup \*
 
-    :param struct rdmacg_device \*device:
+    :param device:
         pointer to rdmacg device
+    :type device: struct rdmacg_device \*
 
-    :param enum rdmacg_resource_type index:
+    :param index:
         index of the resource to uncharge in cgroup in given resource pool
+    :type index: enum rdmacg_resource_type
 
 .. _`rdmacg_try_charge`:
 
@@ -77,14 +87,17 @@ rdmacg_try_charge
 
     hierarchically try to charge the rdma resource
 
-    :param struct rdma_cgroup \*\*rdmacg:
+    :param rdmacg:
         pointer to rdma cgroup which will own this resource
+    :type rdmacg: struct rdma_cgroup \*\*
 
-    :param struct rdmacg_device \*device:
+    :param device:
         pointer to rdmacg device
+    :type device: struct rdmacg_device \*
 
-    :param enum rdmacg_resource_type index:
+    :param index:
         index of the resource to charge in cgroup (resource pool)
+    :type index: enum rdmacg_resource_type
 
 .. _`rdmacg_try_charge.description`:
 
@@ -115,8 +128,9 @@ rdmacg_register_device
 
     register rdmacg device to rdma controller.
 
-    :param struct rdmacg_device \*device:
+    :param device:
         pointer to rdmacg device whose resources need to be accounted.
+    :type device: struct rdmacg_device \*
 
 .. _`rdmacg_register_device.description`:
 
@@ -138,9 +152,10 @@ rdmacg_unregister_device
 
     unregister rdmacg device from rdma controller.
 
-    :param struct rdmacg_device \*device:
+    :param device:
         pointer to rdmacg device which was previously registered with rdma
         controller using \ :c:func:`rdmacg_register_device`\ .
+    :type device: struct rdmacg_device \*
 
 .. _`rdmacg_unregister_device.description`:
 
@@ -160,8 +175,9 @@ rdmacg_css_offline
 
     cgroup css_offline callback
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         css of interest
+    :type css: struct cgroup_subsys_state \*
 
 .. _`rdmacg_css_offline.description`:
 

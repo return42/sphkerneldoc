@@ -10,8 +10,9 @@ cvmx_helper_qlm_jtag_init
 
     of the JTAG chain by the cvmx_helper_qlm_jtag\_\*() functions. These functions should only be used at the direction of Cavium Networks. Programming incorrect values into the JTAG chain can cause chip damage.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_helper_qlm_jtag_shift`:
 
@@ -22,15 +23,18 @@ cvmx_helper_qlm_jtag_shift
 
     into the MSB and out the LSB, so you should shift in the low order bits followed by the high order bits. The JTAG chain is 4 \* 268 bits long, or 1072.
 
-    :param int qlm:
+    :param qlm:
         QLM to shift value into
+    :type qlm: int
 
-    :param int bits:
+    :param bits:
         Number of bits to shift in (1-32).
+    :type bits: int
 
-    :param uint32_t data:
+    :param data:
         Data to shift in. Bit 0 enters the chain first, followed by
         bit 1, etc.
+    :type data: uint32_t
 
 .. _`cvmx_helper_qlm_jtag_shift.description`:
 
@@ -49,11 +53,13 @@ cvmx_helper_qlm_jtag_shift_zeros
 
     common to need to shift more than 32 bits of zeros into the chain. This function is a convience wrapper around \ :c:func:`cvmx_helper_qlm_jtag_shift`\  to shift more than 32 bits of zeros at a time.
 
-    :param int qlm:
+    :param qlm:
         QLM to shift zeros into
+    :type qlm: int
 
-    :param int bits:
+    :param bits:
         *undescribed*
+    :type bits: int
 
 .. _`cvmx_helper_qlm_jtag_update`:
 
@@ -64,8 +70,9 @@ cvmx_helper_qlm_jtag_update
 
     have already shifted in 268\*4, or 1072 bits into the JTAG chain. Updating invalid values can possibly cause chip damage.
 
-    :param int qlm:
+    :param qlm:
         QLM to program
+    :type qlm: int
 
 .. This file was automatic generated / don't edit.
 

@@ -12,3 +12,4 @@ kvm
     intercept_c
     kvm-s390_c
     kvm-s390_h
+    vsie_c

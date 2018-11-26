@@ -10,8 +10,9 @@ sdio_register_driver
 
     register a function driver
 
-    :param struct sdio_driver \*drv:
+    :param drv:
         SDIO function driver
+    :type drv: struct sdio_driver \*
 
 .. _`sdio_unregister_driver`:
 
@@ -22,8 +23,9 @@ sdio_unregister_driver
 
     unregister a function driver
 
-    :param struct sdio_driver \*drv:
+    :param drv:
         SDIO function driver
+    :type drv: struct sdio_driver \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,19 +10,22 @@ usb_ep_autoconfig_ss
 
     choose an endpoint matching the ep descriptor and ep companion descriptor
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The device to which the endpoint must belong.
+    :type gadget: struct usb_gadget \*
 
-    :param struct usb_endpoint_descriptor \*desc:
+    :param desc:
         Endpoint descriptor, with endpoint direction and transfer mode
         initialized.  For periodic transfers, the maximum packet
         size must also be initialized.  This is modified on
         success.
+    :type desc: struct usb_endpoint_descriptor \*
 
-    :param struct usb_ss_ep_comp_descriptor \*ep_comp:
+    :param ep_comp:
         Endpoint companion descriptor, with the required
         number of streams. Will be modified when the chosen EP
         supports a different number of streams.
+    :type ep_comp: struct usb_ss_ep_comp_descriptor \*
 
 .. _`usb_ep_autoconfig_ss.description`:
 
@@ -70,13 +73,15 @@ usb_ep_autoconfig
 
     choose an endpoint matching the descriptor
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The device to which the endpoint must belong.
+    :type gadget: struct usb_gadget \*
 
-    :param struct usb_endpoint_descriptor \*desc:
+    :param desc:
         Endpoint descriptor, with endpoint direction and transfer mode
         initialized.  For periodic transfers, the maximum packet
         size must also be initialized.  This is modified on success.
+    :type desc: struct usb_endpoint_descriptor \*
 
 .. _`usb_ep_autoconfig.description`:
 
@@ -115,8 +120,9 @@ usb_ep_autoconfig_release
 
     releases endpoint and set it to initial state
 
-    :param struct usb_ep \*ep:
+    :param ep:
         endpoint which should be released
+    :type ep: struct usb_ep \*
 
 .. _`usb_ep_autoconfig_release.description`:
 
@@ -138,8 +144,9 @@ usb_ep_autoconfig_reset
 
     reset endpoint autoconfig state
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         device for which autoconfig state will be reset
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_ep_autoconfig_reset.description`:
 

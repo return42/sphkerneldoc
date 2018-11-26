@@ -10,8 +10,9 @@ rv770_get_xclk
 
     get the xclk
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`rv770_get_xclk.description`:
 

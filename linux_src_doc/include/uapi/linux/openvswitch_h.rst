@@ -866,6 +866,7 @@ Definition
         OVS_ACTION_ATTR_PUSH_NSH,
         OVS_ACTION_ATTR_POP_NSH,
         OVS_ACTION_ATTR_METER,
+        OVS_ACTION_ATTR_CLONE,
         __OVS_ACTION_ATTR_MAX,
         OVS_ACTION_ATTR_SET_TO_MASKED
     };
@@ -956,6 +957,10 @@ OVS_ACTION_ATTR_POP_NSH
 OVS_ACTION_ATTR_METER
     Run packet through a meter, which may drop the
     packet, or modify the packet (e.g., change the DSCP field).
+
+OVS_ACTION_ATTR_CLONE
+    make a copy of the packet and execute a list of
+    actions without affecting the original packet and key.
 
 \__OVS_ACTION_ATTR_MAX
     *undescribed*

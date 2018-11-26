@@ -10,11 +10,13 @@ nanddev_isbad
 
     Check if a block is bad
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param const struct nand_pos \*pos:
+    :param pos:
         position pointing to the block we want to check
+    :type pos: const struct nand_pos \*
 
 .. _`nanddev_isbad.return`:
 
@@ -32,11 +34,13 @@ nanddev_markbad
 
     Mark a block as bad
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param const struct nand_pos \*pos:
+    :param pos:
         position of the block to mark bad
+    :type pos: const struct nand_pos \*
 
 .. _`nanddev_markbad.description`:
 
@@ -62,11 +66,13 @@ nanddev_isreserved
 
     Check whether an eraseblock is reserved or not
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param const struct nand_pos \*pos:
+    :param pos:
         NAND position to test
+    :type pos: const struct nand_pos \*
 
 .. _`nanddev_isreserved.description`:
 
@@ -91,11 +97,13 @@ nanddev_erase
 
     Erase a NAND portion
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param const struct nand_pos \*pos:
+    :param pos:
         position of the block to erase
+    :type pos: const struct nand_pos \*
 
 .. _`nanddev_erase.description`:
 
@@ -120,11 +128,13 @@ nanddev_mtd_erase
 
     Generic mtd->_erase() implementation for NAND devices
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device
+    :type mtd: struct mtd_info \*
 
-    :param struct erase_info \*einfo:
+    :param einfo:
         erase request
+    :type einfo: struct erase_info \*
 
 .. _`nanddev_mtd_erase.description`:
 
@@ -155,14 +165,17 @@ nanddev_init
 
     Initialize a NAND device
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
-    :param const struct nand_ops \*ops:
+    :param ops:
         NAND device operations
+    :type ops: const struct nand_ops \*
 
-    :param struct module \*owner:
+    :param owner:
         NAND device owner
+    :type owner: struct module \*
 
 .. _`nanddev_init.description`:
 
@@ -170,7 +183,7 @@ Description
 -----------
 
 Initializes a NAND device object. Consistency checks are done on \ ``ops``\  and
-\ ``nand``\ ->memorg. Also takes care of initializing the BBT.
+\ ``nand->memorg``\ . Also takes care of initializing the BBT.
 
 .. _`nanddev_init.return`:
 
@@ -188,8 +201,9 @@ nanddev_cleanup
 
     Release resources allocated in \ :c:func:`nanddev_init`\ 
 
-    :param struct nand_device \*nand:
+    :param nand:
         NAND device
+    :type nand: struct nand_device \*
 
 .. _`nanddev_cleanup.description`:
 

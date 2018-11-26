@@ -10,8 +10,9 @@ slim_unregister_controller
 
     Controller tear-down.
 
-    :param struct slim_controller \*ctrl:
+    :param ctrl:
         Controller to tear-down.
+    :type ctrl: struct slim_controller \*
 
 .. _`slim_report_absent`:
 
@@ -22,8 +23,9 @@ slim_report_absent
 
     Controller calls this function when a device reports absent, OR when the device cannot be communicated with
 
-    :param struct slim_device \*sbdev:
+    :param sbdev:
         Device that cannot be reached, or sent report absent
+    :type sbdev: struct slim_device \*
 
 .. _`slim_get_device`:
 
@@ -34,13 +36,40 @@ slim_get_device
 
     get handle to a device.
 
-    :param struct slim_controller \*ctrl:
+    :param ctrl:
         Controller on which this device will be added/queried
+    :type ctrl: struct slim_controller \*
 
-    :param struct slim_eaddr \*e_addr:
+    :param e_addr:
         Enumeration address of the device to be queried
+    :type e_addr: struct slim_eaddr \*
 
 .. _`slim_get_device.return`:
+
+Return
+------
+
+pointer to a device if it has already reported. Creates a new
+device and returns pointer to it if the device has not yet enumerated.
+
+.. _`of_slim_get_device`:
+
+of_slim_get_device
+==================
+
+.. c:function:: struct slim_device *of_slim_get_device(struct slim_controller *ctrl, struct device_node *np)
+
+    get handle to a device using dt node.
+
+    :param ctrl:
+        Controller on which this device will be added/queried
+    :type ctrl: struct slim_controller \*
+
+    :param np:
+        node pointer to device
+    :type np: struct device_node \*
+
+.. _`of_slim_get_device.return`:
 
 Return
 ------
@@ -57,14 +86,17 @@ slim_device_report_present
 
     Report enumerated device.
 
-    :param struct slim_controller \*ctrl:
+    :param ctrl:
         Controller with which device is enumerated.
+    :type ctrl: struct slim_controller \*
 
-    :param struct slim_eaddr \*e_addr:
+    :param e_addr:
         Enumeration address of the device.
+    :type e_addr: struct slim_eaddr \*
 
-    :param u8 \*laddr:
+    :param laddr:
         Return logical address (if valid flag is false)
+    :type laddr: u8 \*
 
 .. _`slim_device_report_present.description`:
 
@@ -85,8 +117,9 @@ slim_get_logical_addr
 
     get/allocate logical address of a SLIMbus device.
 
-    :param struct slim_device \*sbdev:
+    :param sbdev:
         client handle requesting the address.
+    :type sbdev: struct slim_device \*
 
 .. _`slim_get_logical_addr.return`:
 

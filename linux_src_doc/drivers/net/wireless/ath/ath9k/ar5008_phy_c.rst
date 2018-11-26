@@ -10,20 +10,25 @@ ar5008_hw_phy_modify_rx_buffer
 
     perform analog swizzling of parameters
 
-    :param u32 \*rfBuf:
+    :param rfBuf:
         *undescribed*
+    :type rfBuf: u32 \*
 
-    :param u32 reg32:
+    :param reg32:
         *undescribed*
+    :type reg32: u32
 
-    :param u32 numBits:
+    :param numBits:
         *undescribed*
+    :type numBits: u32
 
-    :param u32 firstBit:
+    :param firstBit:
         *undescribed*
+    :type firstBit: u32
 
-    :param u32 column:
+    :param column:
         *undescribed*
+    :type column: u32
 
 .. _`ar5008_hw_phy_modify_rx_buffer.description`:
 
@@ -42,11 +47,13 @@ ar5008_hw_set_channel
 
     tune to a channel on the external AR2133/AR5133 radios
 
-    :param struct ath_hw \*ah:
+    :param ah:
         atheros hardware structure
+    :type ah: struct ath_hw \*
 
-    :param struct ath9k_channel \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ath9k_channel \*
 
 .. _`ar5008_hw_set_channel.description`:
 
@@ -66,11 +73,13 @@ ar5008_hw_spur_mitigate
 
     convert baseband spur frequency for external radios
 
-    :param struct ath_hw \*ah:
+    :param ah:
         atheros hardware structure
+    :type ah: struct ath_hw \*
 
-    :param struct ath9k_channel \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ath9k_channel \*
 
 .. _`ar5008_hw_spur_mitigate.description`:
 
@@ -89,8 +98,9 @@ ar5008_hw_rf_alloc_ext_banks
 
     allocates banks for external radio programming
 
-    :param struct ath_hw \*ah:
+    :param ah:
         atheros hardware structure
+    :type ah: struct ath_hw \*
 
 .. _`ar5008_hw_rf_alloc_ext_banks.description`:
 

@@ -36,11 +36,13 @@ ar9002_hw_set_channel
 
     set channel on single-chip device
 
-    :param struct ath_hw \*ah:
+    :param ah:
         atheros hardware structure
+    :type ah: struct ath_hw \*
 
-    :param struct ath9k_channel \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ath9k_channel \*
 
 .. _`ar9002_hw_set_channel.description`:
 
@@ -72,11 +74,13 @@ ar9002_hw_spur_mitigate
 
     convert baseband spur frequency
 
-    :param struct ath_hw \*ah:
+    :param ah:
         atheros hardware structure
+    :type ah: struct ath_hw \*
 
-    :param struct ath9k_channel \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ath9k_channel \*
 
 .. _`ar9002_hw_spur_mitigate.description`:
 

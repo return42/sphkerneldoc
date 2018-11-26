@@ -10,8 +10,9 @@ hfi1_reset_device
 
     reset the chip if possible
 
-    :param int unit:
+    :param unit:
         the device to reset
+    :type unit: int
 
 .. _`hfi1_reset_device.description`:
 

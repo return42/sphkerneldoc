@@ -10,17 +10,21 @@ ixgbevf_set_ivar
 
     set IVAR registers - maps interrupt causes to vectors
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         pointer to adapter struct
+    :type adapter: struct ixgbevf_adapter \*
 
-    :param s8 direction:
+    :param direction:
         0 for Rx, 1 for Tx, -1 for other causes
+    :type direction: s8
 
-    :param u8 queue:
+    :param queue:
         queue to map the corresponding interrupt to
+    :type queue: u8
 
-    :param u8 msix_vector:
+    :param msix_vector:
         the vector to map to the corresponding queue
+    :type msix_vector: u8
 
 .. _`ixgbevf_tx_timeout`:
 
@@ -31,8 +35,9 @@ ixgbevf_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbevf_clean_tx_irq`:
 
@@ -43,14 +48,17 @@ ixgbevf_clean_tx_irq
 
     Reclaim resources after transmit completes
 
-    :param struct ixgbevf_q_vector \*q_vector:
+    :param q_vector:
         board private structure
+    :type q_vector: struct ixgbevf_q_vector \*
 
-    :param struct ixgbevf_ring \*tx_ring:
+    :param tx_ring:
         tx ring to clean
+    :type tx_ring: struct ixgbevf_ring \*
 
-    :param int napi_budget:
+    :param napi_budget:
         Used to determine if we are in netpoll
+    :type napi_budget: int
 
 .. _`ixgbevf_rx_skb`:
 
@@ -61,11 +69,13 @@ ixgbevf_rx_skb
 
     Helper function to determine proper Rx method
 
-    :param struct ixgbevf_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct ixgbevf_q_vector \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send up
+    :type skb: struct sk_buff \*
 
 .. _`ixgbevf_rx_checksum`:
 
@@ -76,14 +86,17 @@ ixgbevf_rx_checksum
 
     indicate in skb if hw indicated a good cksum
 
-    :param struct ixgbevf_ring \*ring:
+    :param ring:
         structure containig ring specific data
+    :type ring: struct ixgbevf_ring \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         current Rx descriptor being processed
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb currently being received and modified
+    :type skb: struct sk_buff \*
 
 .. _`ixgbevf_process_skb_fields`:
 
@@ -94,14 +107,17 @@ ixgbevf_process_skb_fields
 
     Populate skb header fields from Rx descriptor
 
-    :param struct ixgbevf_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct ixgbevf_ring \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being populated
+    :type skb: struct sk_buff \*
 
 .. _`ixgbevf_process_skb_fields.description`:
 
@@ -121,11 +137,13 @@ ixgbevf_is_non_eop
 
     process handling of non-EOP buffers
 
-    :param struct ixgbevf_ring \*rx_ring:
+    :param rx_ring:
         Rx ring being processed
+    :type rx_ring: struct ixgbevf_ring \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         Rx descriptor for current buffer
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
 .. _`ixgbevf_is_non_eop.description`:
 
@@ -146,11 +164,13 @@ ixgbevf_alloc_rx_buffers
 
     Replace used receive buffers; packet split
 
-    :param struct ixgbevf_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring (for a specific queue) to setup buffers on
+    :type rx_ring: struct ixgbevf_ring \*
 
-    :param u16 cleaned_count:
+    :param cleaned_count:
         number of buffers to replace
+    :type cleaned_count: u16
 
 .. _`ixgbevf_cleanup_headers`:
 
@@ -161,14 +181,17 @@ ixgbevf_cleanup_headers
 
     Correct corrupted or empty headers
 
-    :param struct ixgbevf_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct ixgbevf_ring \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being fixed
+    :type skb: struct sk_buff \*
 
 .. _`ixgbevf_cleanup_headers.description`:
 
@@ -196,11 +219,13 @@ ixgbevf_reuse_rx_page
 
     page flip buffer and store it back on the ring
 
-    :param struct ixgbevf_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to store buffers on
+    :type rx_ring: struct ixgbevf_ring \*
 
-    :param struct ixgbevf_rx_buffer \*old_buff:
+    :param old_buff:
         donor buffer to have page reused
+    :type old_buff: struct ixgbevf_rx_buffer \*
 
 .. _`ixgbevf_reuse_rx_page.description`:
 
@@ -218,17 +243,21 @@ ixgbevf_add_rx_frag
 
     Add contents of Rx buffer to sk_buff
 
-    :param struct ixgbevf_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct ixgbevf_ring \*
 
-    :param struct ixgbevf_rx_buffer \*rx_buffer:
+    :param rx_buffer:
         buffer containing page to add
+    :type rx_buffer: struct ixgbevf_rx_buffer \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff to place the data into
+    :type skb: struct sk_buff \*
 
-    :param unsigned int size:
+    :param size:
         size of buffer to be added
+    :type size: unsigned int
 
 .. _`ixgbevf_add_rx_frag.description`:
 
@@ -246,11 +275,13 @@ ixgbevf_poll
 
     NAPI polling calback
 
-    :param struct napi_struct \*napi:
+    :param napi:
         napi struct with our devices info in it
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         amount of work driver is allowed to do this pass, in packets
+    :type budget: int
 
 .. _`ixgbevf_poll.description`:
 
@@ -269,8 +300,9 @@ ixgbevf_write_eitr
 
     write VTEITR register in hardware specific way
 
-    :param struct ixgbevf_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct ixgbevf_q_vector \*
 
 .. _`ixgbevf_configure_msix`:
 
@@ -281,8 +313,9 @@ ixgbevf_configure_msix
 
     Configure MSI-X hardware
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_configure_msix.description`:
 
@@ -301,11 +334,13 @@ ixgbevf_update_itr
 
     update the dynamic ITR value based on statistics
 
-    :param struct ixgbevf_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct ixgbevf_q_vector \*
 
-    :param struct ixgbevf_ring_container \*ring_container:
+    :param ring_container:
         structure containing ring performance data
+    :type ring_container: struct ixgbevf_ring_container \*
 
 .. _`ixgbevf_update_itr.description`:
 
@@ -329,11 +364,13 @@ ixgbevf_msix_clean_rings
 
     single unshared vector rx clean (all queues)
 
-    :param int irq:
+    :param irq:
         unused
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to our q_vector struct for this interrupt vector
+    :type data: void \*
 
 .. _`ixgbevf_request_msix_irqs`:
 
@@ -344,8 +381,9 @@ ixgbevf_request_msix_irqs
 
     Initialize MSI-X interrupts
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_request_msix_irqs.description`:
 
@@ -364,8 +402,9 @@ ixgbevf_request_irq
 
     initialize interrupts
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_request_irq.description`:
 
@@ -384,8 +423,9 @@ ixgbevf_irq_disable
 
     Mask off interrupt generation on the NIC
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_irq_enable`:
 
@@ -396,8 +436,9 @@ ixgbevf_irq_enable
 
     Enable default interrupt generation settings
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_configure_tx_ring`:
 
@@ -408,11 +449,13 @@ ixgbevf_configure_tx_ring
 
     Configure 82599 VF Tx ring after Reset
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
-    :param struct ixgbevf_ring \*ring:
+    :param ring:
         structure containing ring specific data
+    :type ring: struct ixgbevf_ring \*
 
 .. _`ixgbevf_configure_tx_ring.description`:
 
@@ -430,8 +473,9 @@ ixgbevf_configure_tx
 
     Configure 82599 VF Transmit Unit after Reset
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_configure_tx.description`:
 
@@ -449,8 +493,9 @@ ixgbevf_init_rss_key
 
     Initialize adapter RSS key
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         device handle
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_init_rss_key.description`:
 
@@ -468,8 +513,9 @@ ixgbevf_configure_rx
 
     Configure 82599 VF Receive Unit after Reset
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_configure_rx.description`:
 
@@ -487,8 +533,9 @@ ixgbevf_set_rx_mode
 
     Multicast and unicast set
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbevf_set_rx_mode.description`:
 
@@ -509,8 +556,9 @@ ixgbevf_clean_rx_ring
 
     Free Rx Buffers per Queue
 
-    :param struct ixgbevf_ring \*rx_ring:
+    :param rx_ring:
         ring to free buffers from
+    :type rx_ring: struct ixgbevf_ring \*
 
 .. _`ixgbevf_clean_tx_ring`:
 
@@ -521,8 +569,9 @@ ixgbevf_clean_tx_ring
 
     Free Tx Buffers
 
-    :param struct ixgbevf_ring \*tx_ring:
+    :param tx_ring:
         ring to be cleaned
+    :type tx_ring: struct ixgbevf_ring \*
 
 .. _`ixgbevf_clean_all_rx_rings`:
 
@@ -533,8 +582,9 @@ ixgbevf_clean_all_rx_rings
 
     Free Rx Buffers for all queues
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_clean_all_tx_rings`:
 
@@ -545,8 +595,9 @@ ixgbevf_clean_all_tx_rings
 
     Free Tx Buffers for all queues
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_set_num_queues`:
 
@@ -557,8 +608,9 @@ ixgbevf_set_num_queues
 
     Allocate queues for device, feature dependent
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_set_num_queues.description`:
 
@@ -580,8 +632,9 @@ ixgbevf_set_interrupt_capability
 
     set MSI-X or FAIL if not supported
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_set_interrupt_capability.description`:
 
@@ -600,29 +653,37 @@ ixgbevf_alloc_q_vector
 
     Allocate memory for a single interrupt vector
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbevf_adapter \*
 
-    :param int v_idx:
+    :param v_idx:
         index of vector in adapter struct
+    :type v_idx: int
 
-    :param int txr_count:
+    :param txr_count:
         number of Tx rings for q vector
+    :type txr_count: int
 
-    :param int txr_idx:
+    :param txr_idx:
         index of first Tx ring to assign
+    :type txr_idx: int
 
-    :param int xdp_count:
+    :param xdp_count:
         total number of XDP rings to allocate
+    :type xdp_count: int
 
-    :param int xdp_idx:
+    :param xdp_idx:
         index of first XDP ring to allocate
+    :type xdp_idx: int
 
-    :param int rxr_count:
+    :param rxr_count:
         number of Rx rings for q vector
+    :type rxr_count: int
 
-    :param int rxr_idx:
+    :param rxr_idx:
         index of first Rx ring to assign
+    :type rxr_idx: int
 
 .. _`ixgbevf_alloc_q_vector.description`:
 
@@ -640,11 +701,13 @@ ixgbevf_free_q_vector
 
     Free memory allocated for specific interrupt vector
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbevf_adapter \*
 
-    :param int v_idx:
+    :param v_idx:
         index of vector in adapter struct
+    :type v_idx: int
 
 .. _`ixgbevf_free_q_vector.description`:
 
@@ -664,8 +727,9 @@ ixgbevf_alloc_q_vectors
 
     Allocate memory for interrupt vectors
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_alloc_q_vectors.description`:
 
@@ -684,8 +748,9 @@ ixgbevf_free_q_vectors
 
     Free memory allocated for interrupt vectors
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_free_q_vectors.description`:
 
@@ -705,8 +770,9 @@ ixgbevf_reset_interrupt_capability
 
     Reset MSIX setup
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_init_interrupt_scheme`:
 
@@ -717,8 +783,9 @@ ixgbevf_init_interrupt_scheme
 
     Determine if MSIX is supported and init
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_clear_interrupt_scheme`:
 
@@ -729,8 +796,9 @@ ixgbevf_clear_interrupt_scheme
 
     Clear the current interrupt scheme settings
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure to clear interrupt scheme on
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_clear_interrupt_scheme.description`:
 
@@ -749,8 +817,9 @@ ixgbevf_sw_init
 
     Initialize general software structures
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_sw_init.description`:
 
@@ -770,8 +839,9 @@ ixgbevf_update_stats
 
     Update the board statistics counters.
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_service_timer`:
 
@@ -782,8 +852,9 @@ ixgbevf_service_timer
 
     Timer Call-back
 
-    :param struct timer_list \*t:
+    :param t:
         pointer to timer_list struct
+    :type t: struct timer_list \*
 
 .. _`ixgbevf_check_hang_subtask`:
 
@@ -794,8 +865,9 @@ ixgbevf_check_hang_subtask
 
     check for hung queues and dropped interrupts
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         pointer to the device adapter structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_check_hang_subtask.description`:
 
@@ -816,8 +888,9 @@ ixgbevf_watchdog_update_link
 
     update the link status
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         pointer to the device adapter structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_watchdog_link_is_up`:
 
@@ -828,8 +901,9 @@ ixgbevf_watchdog_link_is_up
 
     update netif_carrier status and print link up message
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         pointer to the device adapter structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_watchdog_link_is_down`:
 
@@ -840,8 +914,9 @@ ixgbevf_watchdog_link_is_down
 
     update netif_carrier status and print link down message
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         pointer to the adapter structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_watchdog_subtask`:
 
@@ -852,8 +927,9 @@ ixgbevf_watchdog_subtask
 
     worker thread to bring link up
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_service_task`:
 
@@ -864,8 +940,9 @@ ixgbevf_service_task
 
     manages and runs subtasks
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work_struct containing our data
+    :type work: struct work_struct \*
 
 .. _`ixgbevf_free_tx_resources`:
 
@@ -876,8 +953,9 @@ ixgbevf_free_tx_resources
 
     Free Tx Resources per Queue
 
-    :param struct ixgbevf_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring for a specific queue
+    :type tx_ring: struct ixgbevf_ring \*
 
 .. _`ixgbevf_free_tx_resources.description`:
 
@@ -895,8 +973,9 @@ ixgbevf_free_all_tx_resources
 
     Free Tx Resources for All Queues
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_free_all_tx_resources.description`:
 
@@ -914,8 +993,9 @@ ixgbevf_setup_tx_resources
 
     allocate Tx resources (Descriptors)
 
-    :param struct ixgbevf_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring (for a specific queue) to setup
+    :type tx_ring: struct ixgbevf_ring \*
 
 .. _`ixgbevf_setup_tx_resources.description`:
 
@@ -933,8 +1013,9 @@ ixgbevf_setup_all_tx_resources
 
     allocate all queues Tx resources
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_setup_all_tx_resources.description`:
 
@@ -956,11 +1037,13 @@ ixgbevf_setup_rx_resources
 
     allocate Rx resources (Descriptors)
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
-    :param struct ixgbevf_ring \*rx_ring:
+    :param rx_ring:
         Rx descriptor ring (for a specific queue) to setup
+    :type rx_ring: struct ixgbevf_ring \*
 
 .. _`ixgbevf_setup_rx_resources.description`:
 
@@ -978,8 +1061,9 @@ ixgbevf_setup_all_rx_resources
 
     allocate all queues Rx resources
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_setup_all_rx_resources.description`:
 
@@ -1001,8 +1085,9 @@ ixgbevf_free_rx_resources
 
     Free Rx Resources
 
-    :param struct ixgbevf_ring \*rx_ring:
+    :param rx_ring:
         ring to clean the resources from
+    :type rx_ring: struct ixgbevf_ring \*
 
 .. _`ixgbevf_free_rx_resources.description`:
 
@@ -1020,8 +1105,9 @@ ixgbevf_free_all_rx_resources
 
     Free Rx Resources for All Queues
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_free_all_rx_resources.description`:
 
@@ -1039,8 +1125,9 @@ ixgbevf_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbevf_open.description`:
 
@@ -1064,8 +1151,9 @@ ixgbevf_close_suspend
 
     actions necessary to both suspend and close flows
 
-    :param struct ixgbevf_adapter \*adapter:
+    :param adapter:
         the private adapter struct
+    :type adapter: struct ixgbevf_adapter \*
 
 .. _`ixgbevf_close_suspend.description`:
 
@@ -1084,8 +1172,9 @@ ixgbevf_close
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbevf_close.description`:
 
@@ -1108,11 +1197,13 @@ ixgbevf_set_mac
 
     Change the Ethernet Address of the NIC
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         pointer to an address structure
+    :type p: void \*
 
 .. _`ixgbevf_set_mac.description`:
 
@@ -1130,11 +1221,13 @@ ixgbevf_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`ixgbevf_change_mtu.description`:
 
@@ -1152,11 +1245,13 @@ ixgbevf_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in ixgbevf_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`ixgbevf_probe.description`:
 
@@ -1178,8 +1273,9 @@ ixgbevf_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`ixgbevf_remove.description`:
 
@@ -1200,11 +1296,13 @@ ixgbevf_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`ixgbevf_io_error_detected.description`:
 
@@ -1223,8 +1321,9 @@ ixgbevf_io_slot_reset
 
     called after the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`ixgbevf_io_slot_reset.description`:
 
@@ -1243,8 +1342,9 @@ ixgbevf_io_resume
 
     called when traffic can start flowing again.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`ixgbevf_io_resume.description`:
 
@@ -1264,8 +1364,9 @@ ixgbevf_init_module
 
     Driver Registration Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ixgbevf_init_module.description`:
 
@@ -1284,8 +1385,9 @@ ixgbevf_exit_module
 
     Driver Exit Cleanup Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ixgbevf_exit_module.description`:
 
@@ -1304,8 +1406,9 @@ ixgbevf_get_hw_dev_name
 
     return device name string used by hardware layer to print debugging information
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to private hardware struct
+    :type hw: struct ixgbe_hw \*
 
 .. This file was automatic generated / don't edit.
 

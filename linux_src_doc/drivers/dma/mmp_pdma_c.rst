@@ -10,8 +10,9 @@ start_pending_queue
 
     transfer any pending transactions pending list ==> running list
 
-    :param struct mmp_pdma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct mmp_pdma_chan \*
 
 .. _`mmp_pdma_alloc_chan_resources`:
 
@@ -22,8 +23,9 @@ mmp_pdma_alloc_chan_resources
 
     Allocate resources for DMA channel.
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         *undescribed*
+    :type dchan: struct dma_chan \*
 
 .. _`mmp_pdma_alloc_chan_resources.description`:
 
@@ -43,8 +45,9 @@ mmp_pdma_issue_pending
 
     Issue the DMA start command pending list ==> running list
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         *undescribed*
+    :type dchan: struct dma_chan \*
 
 .. This file was automatic generated / don't edit.
 

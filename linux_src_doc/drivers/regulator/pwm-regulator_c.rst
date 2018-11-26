@@ -10,8 +10,9 @@ pwm_regulator_init_state
 
     backs
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: struct regulator_dev \*
 
 .. This file was automatic generated / don't edit.
 

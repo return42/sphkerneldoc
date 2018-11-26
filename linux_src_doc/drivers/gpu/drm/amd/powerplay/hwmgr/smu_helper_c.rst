@@ -10,17 +10,21 @@ phm_wait_on_register
 
     reached the given value.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param uint32_t index:
+    :param index:
         *undescribed*
+    :type index: uint32_t
 
-    :param uint32_t value:
+    :param value:
         *undescribed*
+    :type value: uint32_t
 
-    :param uint32_t mask:
+    :param mask:
         *undescribed*
+    :type mask: uint32_t
 
 .. _`phm_wait_on_indirect_register`:
 
@@ -31,20 +35,25 @@ phm_wait_on_indirect_register
 
     reached the given value.The indirect space is described by giving the memory-mapped index of the indirect index register.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param uint32_t indirect_port:
+    :param indirect_port:
         *undescribed*
+    :type indirect_port: uint32_t
 
-    :param uint32_t index:
+    :param index:
         *undescribed*
+    :type index: uint32_t
 
-    :param uint32_t value:
+    :param value:
         *undescribed*
+    :type value: uint32_t
 
-    :param uint32_t mask:
+    :param mask:
         *undescribed*
+    :type mask: uint32_t
 
 .. _`phm_initializa_dynamic_state_adjustment_rule_settings`:
 
@@ -53,8 +62,9 @@ phm_initializa_dynamic_state_adjustment_rule_settings
 
 .. c:function:: int phm_initializa_dynamic_state_adjustment_rule_settings(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`phm_initializa_dynamic_state_adjustment_rule_settings.description`:
 

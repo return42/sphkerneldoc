@@ -10,8 +10,9 @@ tomoyo_read_lock
 
     Take lock for protecting policy.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_read_lock.description`:
 
@@ -29,8 +30,9 @@ tomoyo_read_unlock
 
     Release lock for protecting policy.
 
-    :param int idx:
+    :param idx:
         Index number returned by \ :c:func:`tomoyo_read_lock`\ .
+    :type idx: int
 
 .. _`tomoyo_read_unlock.description`:
 
@@ -48,8 +50,9 @@ tomoyo_sys_getppid
 
     Copy of \ :c:func:`getppid`\ .
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_sys_getppid.description`:
 
@@ -70,8 +73,9 @@ tomoyo_sys_getpid
 
     Copy of \ :c:func:`getpid`\ .
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_sys_getpid.description`:
 
@@ -92,11 +96,13 @@ tomoyo_pathcmp
 
     \ :c:func:`strcmp`\  for "struct tomoyo_path_info" structure.
 
-    :param const struct tomoyo_path_info \*a:
+    :param a:
         Pointer to "struct tomoyo_path_info".
+    :type a: const struct tomoyo_path_info \*
 
-    :param const struct tomoyo_path_info \*b:
+    :param b:
         Pointer to "struct tomoyo_path_info".
+    :type b: const struct tomoyo_path_info \*
 
 .. _`tomoyo_pathcmp.description`:
 
@@ -114,8 +120,9 @@ tomoyo_put_name
 
     Drop reference on "struct tomoyo_name".
 
-    :param const struct tomoyo_path_info \*name:
+    :param name:
         Pointer to "struct tomoyo_path_info". Maybe NULL.
+    :type name: const struct tomoyo_path_info \*
 
 .. _`tomoyo_put_name.description`:
 
@@ -133,8 +140,9 @@ tomoyo_put_condition
 
     Drop reference on "struct tomoyo_condition".
 
-    :param struct tomoyo_condition \*cond:
+    :param cond:
         Pointer to "struct tomoyo_condition". Maybe NULL.
+    :type cond: struct tomoyo_condition \*
 
 .. _`tomoyo_put_condition.description`:
 
@@ -152,8 +160,9 @@ tomoyo_put_group
 
     Drop reference on "struct tomoyo_group".
 
-    :param struct tomoyo_group \*group:
+    :param group:
         Pointer to "struct tomoyo_group". Maybe NULL.
+    :type group: struct tomoyo_group \*
 
 .. _`tomoyo_put_group.description`:
 
@@ -171,8 +180,9 @@ tomoyo_domain
 
     Get "struct tomoyo_domain_info" for current thread.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_domain.description`:
 
@@ -190,8 +200,9 @@ tomoyo_real_domain
 
     Get "struct tomoyo_domain_info" for specified thread.
 
-    :param struct task_struct \*task:
+    :param task:
         Pointer to "struct task_struct".
+    :type task: struct task_struct \*
 
 .. _`tomoyo_real_domain.description`:
 
@@ -209,11 +220,13 @@ tomoyo_same_name_union
 
     Check for duplicated "struct tomoyo_name_union" entry.
 
-    :param const struct tomoyo_name_union \*a:
+    :param a:
         Pointer to "struct tomoyo_name_union".
+    :type a: const struct tomoyo_name_union \*
 
-    :param const struct tomoyo_name_union \*b:
+    :param b:
         Pointer to "struct tomoyo_name_union".
+    :type b: const struct tomoyo_name_union \*
 
 .. _`tomoyo_same_name_union.description`:
 
@@ -231,11 +244,13 @@ tomoyo_same_number_union
 
     Check for duplicated "struct tomoyo_number_union" entry.
 
-    :param const struct tomoyo_number_union \*a:
+    :param a:
         Pointer to "struct tomoyo_number_union".
+    :type a: const struct tomoyo_number_union \*
 
-    :param const struct tomoyo_number_union \*b:
+    :param b:
         Pointer to "struct tomoyo_number_union".
+    :type b: const struct tomoyo_number_union \*
 
 .. _`tomoyo_same_number_union.description`:
 
@@ -253,11 +268,13 @@ tomoyo_same_ipaddr_union
 
     Check for duplicated "struct tomoyo_ipaddr_union" entry.
 
-    :param const struct tomoyo_ipaddr_union \*a:
+    :param a:
         Pointer to "struct tomoyo_ipaddr_union".
+    :type a: const struct tomoyo_ipaddr_union \*
 
-    :param const struct tomoyo_ipaddr_union \*b:
+    :param b:
         Pointer to "struct tomoyo_ipaddr_union".
+    :type b: const struct tomoyo_ipaddr_union \*
 
 .. _`tomoyo_same_ipaddr_union.description`:
 
@@ -275,8 +292,9 @@ tomoyo_current_namespace
 
     Get "struct tomoyo_policy_namespace" for current thread.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_current_namespace.description`:
 
@@ -294,8 +312,9 @@ tomoyo_round2
 
     Round up to power of 2 for calculating memory usage.
 
-    :param size_t size:
+    :param size:
         Size to be rounded up.
+    :type size: size_t
 
 .. _`tomoyo_round2.description`:
 
@@ -315,8 +334,9 @@ tomoyo_round2
 
     Round up to power of 2 for calculating memory usage.
 
-    :param size_t size:
+    :param size:
         Size to be rounded up.
+    :type size: size_t
 
 .. _`tomoyo_round2.description`:
 
@@ -337,11 +357,13 @@ list_for_each_cookie
 
     iterate over a list with cookie.
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct list_head <list_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
 .. This file was automatic generated / don't edit.
 

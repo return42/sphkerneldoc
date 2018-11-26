@@ -10,8 +10,9 @@ ixgbe_cache_ring_dcb_sriov
 
     Descriptor ring to register mapping for SR-IOV
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_cache_ring_dcb_sriov.description`:
 
@@ -31,8 +32,9 @@ ixgbe_cache_ring_dcb
 
     Descriptor ring to register mapping for DCB
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_cache_ring_dcb.description`:
 
@@ -50,8 +52,9 @@ ixgbe_cache_ring_sriov
 
     Descriptor ring to register mapping for sriov
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_cache_ring_sriov.description`:
 
@@ -70,8 +73,9 @@ ixgbe_cache_ring_rss
 
     Descriptor ring to register mapping for RSS
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_cache_ring_rss.description`:
 
@@ -89,8 +93,9 @@ ixgbe_cache_ring_register
 
     Descriptor ring to register mapping
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_cache_ring_register.description`:
 
@@ -113,8 +118,9 @@ ixgbe_set_dcb_sriov_queues
 
     Allocate queues for SR-IOV devices w/ DCB
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_set_dcb_sriov_queues.description`:
 
@@ -134,8 +140,9 @@ ixgbe_set_sriov_queues
 
     Allocate queues for SR-IOV devices
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_set_sriov_queues.description`:
 
@@ -155,8 +162,9 @@ ixgbe_set_rss_queues
 
     Allocate queues for RSS
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_set_rss_queues.description`:
 
@@ -175,8 +183,9 @@ ixgbe_set_num_queues
 
     Allocate queues for device, feature dependent
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_set_num_queues.description`:
 
@@ -198,8 +207,9 @@ ixgbe_acquire_msix_vectors
 
     acquire MSI-X vectors
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_acquire_msix_vectors.description`:
 
@@ -219,32 +229,41 @@ ixgbe_alloc_q_vector
 
     Allocate memory for a single interrupt vector
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
-    :param int v_count:
+    :param v_count:
         q_vectors allocated on adapter, used for ring interleaving
+    :type v_count: int
 
-    :param int v_idx:
+    :param v_idx:
         index of vector in adapter struct
+    :type v_idx: int
 
-    :param int txr_count:
+    :param txr_count:
         total number of Tx rings to allocate
+    :type txr_count: int
 
-    :param int txr_idx:
+    :param txr_idx:
         index of first Tx ring to allocate
+    :type txr_idx: int
 
-    :param int xdp_count:
+    :param xdp_count:
         total number of XDP rings to allocate
+    :type xdp_count: int
 
-    :param int xdp_idx:
+    :param xdp_idx:
         index of first XDP ring to allocate
+    :type xdp_idx: int
 
-    :param int rxr_count:
+    :param rxr_count:
         total number of Rx rings to allocate
+    :type rxr_count: int
 
-    :param int rxr_idx:
+    :param rxr_idx:
         index of first Rx ring to allocate
+    :type rxr_idx: int
 
 .. _`ixgbe_alloc_q_vector.description`:
 
@@ -262,11 +281,13 @@ ixgbe_free_q_vector
 
     Free memory allocated for specific interrupt vector
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
-    :param int v_idx:
+    :param v_idx:
         Index of vector to be freed
+    :type v_idx: int
 
 .. _`ixgbe_free_q_vector.description`:
 
@@ -286,8 +307,9 @@ ixgbe_alloc_q_vectors
 
     Allocate memory for interrupt vectors
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_alloc_q_vectors.description`:
 
@@ -306,8 +328,9 @@ ixgbe_free_q_vectors
 
     Free memory allocated for interrupt vectors
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_free_q_vectors.description`:
 
@@ -327,8 +350,9 @@ ixgbe_set_interrupt_capability
 
     set MSI-X or MSI if supported
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_set_interrupt_capability.description`:
 
@@ -347,8 +371,9 @@ ixgbe_init_interrupt_scheme
 
     Determine proper interrupt scheme
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_init_interrupt_scheme.description`:
 
@@ -370,8 +395,9 @@ ixgbe_clear_interrupt_scheme
 
     Clear the current interrupt scheme settings
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to clear interrupt scheme on
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_clear_interrupt_scheme.description`:
 

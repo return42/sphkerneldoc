@@ -10,11 +10,13 @@ qib_cache_msi_info
 
     chip reset (the kernel PCI infrastructure doesn't yet handle that correctly.
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         *undescribed*
+    :type dd: struct qib_devdata \*
 
-    :param int pos:
+    :param pos:
         *undescribed*
+    :type pos: int
 
 .. _`qib_free_irq`:
 
@@ -25,8 +27,9 @@ qib_free_irq
 
     Cleanup INTx and MSI interrupts
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         valid pointer to qib dev data
+    :type dd: struct qib_devdata \*
 
 .. _`qib_free_irq.description`:
 

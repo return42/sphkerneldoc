@@ -10,21 +10,25 @@ nvmet_fc_register_targetport
 
     transport entry point called by an LLDD to register the existence of a local NVME subystem FC port.
 
-    :param struct nvmet_fc_port_info \*pinfo:
+    :param pinfo:
         pointer to information about the port to be registered
+    :type pinfo: struct nvmet_fc_port_info \*
 
-    :param struct nvmet_fc_target_template \*template:
+    :param template:
         LLDD entrypoints and operational parameters for the port
+    :type template: struct nvmet_fc_target_template \*
 
-    :param struct device \*dev:
+    :param dev:
         physical hardware device node port corresponds to. Will be
         used for DMA mappings
+    :type dev: struct device \*
 
-    :param struct nvmet_fc_target_port \*\*portptr:
+    :param portptr:
         pointer to a local port pointer. Upon success, the routine
         will allocate a nvme_fc_local_port structure and place its
         address in the local port pointer. Upon failure, local port
         pointer will be set to NULL.
+    :type portptr: struct nvmet_fc_target_port \*\*
 
 .. _`nvmet_fc_register_targetport.return`:
 
@@ -43,8 +47,10 @@ nvmet_fc_unregister_targetport
 
     transport entry point called by an LLDD to deregister/remove a previously registered a local NVME subsystem FC port.
 
-    :param struct nvmet_fc_target_port \*target_port:
-        *undescribed*
+    :param target_port:
+        pointer to the (registered) target port that is to be
+        deregistered.
+    :type target_port: struct nvmet_fc_target_port \*
 
 .. _`nvmet_fc_unregister_targetport.return`:
 
@@ -63,18 +69,23 @@ nvmet_fc_rcv_ls_req
 
     transport entry point called by an LLDD upon the reception of a NVME LS request.
 
-    :param struct nvmet_fc_target_port \*target_port:
-        *undescribed*
+    :param target_port:
+        pointer to the (registered) target port the LS was
+        received on.
+    :type target_port: struct nvmet_fc_target_port \*
 
-    :param struct nvmefc_tgt_ls_req \*lsreq:
+    :param lsreq:
         pointer to a lsreq request structure to be used to reference
         the exchange corresponding to the LS.
+    :type lsreq: struct nvmefc_tgt_ls_req \*
 
-    :param void \*lsreqbuf:
+    :param lsreqbuf:
         pointer to the buffer containing the LS Request
+    :type lsreqbuf: void \*
 
-    :param u32 lsreqbuf_len:
+    :param lsreqbuf_len:
         length, in bytes, of the received LS request
+    :type lsreqbuf_len: u32
 
 .. _`nvmet_fc_rcv_ls_req.description`:
 
@@ -96,19 +107,23 @@ nvmet_fc_rcv_fcp_req
 
     transport entry point called by an LLDD upon the reception of a NVME FCP CMD IU.
 
-    :param struct nvmet_fc_target_port \*target_port:
+    :param target_port:
         pointer to the (registered) target port the FCP CMD IU
         was received on.
+    :type target_port: struct nvmet_fc_target_port \*
 
-    :param struct nvmefc_tgt_fcp_req \*fcpreq:
+    :param fcpreq:
         pointer to a fcpreq request structure to be used to reference
         the exchange corresponding to the FCP Exchange.
+    :type fcpreq: struct nvmefc_tgt_fcp_req \*
 
-    :param void \*cmdiubuf:
+    :param cmdiubuf:
         pointer to the buffer containing the FCP CMD IU
+    :type cmdiubuf: void \*
 
-    :param u32 cmdiubuf_len:
+    :param cmdiubuf_len:
         length, in bytes, of the received FCP CMD IU
+    :type cmdiubuf_len: u32
 
 .. _`nvmet_fc_rcv_fcp_req.description`:
 
@@ -160,13 +175,15 @@ nvmet_fc_rcv_fcp_abort
 
     transport entry point called by an LLDD upon the reception of an ABTS for a FCP command
 
-    :param struct nvmet_fc_target_port \*target_port:
+    :param target_port:
         pointer to the (registered) target port the FCP CMD IU
         was received on.
+    :type target_port: struct nvmet_fc_target_port \*
 
-    :param struct nvmefc_tgt_fcp_req \*fcpreq:
+    :param fcpreq:
         pointer to the fcpreq request structure that corresponds
         to the exchange that received the ABTS.
+    :type fcpreq: struct nvmefc_tgt_fcp_req \*
 
 .. _`nvmet_fc_rcv_fcp_abort.description`:
 

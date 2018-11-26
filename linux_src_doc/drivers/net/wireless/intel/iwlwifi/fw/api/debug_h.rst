@@ -567,5 +567,76 @@ len
 data
     contains the read DWs
 
+.. _`iwl_fragment_data`:
+
+struct iwl_fragment_data
+========================
+
+.. c:type:: struct iwl_fragment_data
+
+
+.. _`iwl_fragment_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_fragment_data {
+        __le64 address;
+        __le32 size;
+    }
+
+.. _`iwl_fragment_data.members`:
+
+Members
+-------
+
+address
+    64bit start address
+
+size
+    size in bytes
+
+.. _`iwl_buffer_allocation_cmd`:
+
+struct iwl_buffer_allocation_cmd
+================================
+
+.. c:type:: struct iwl_buffer_allocation_cmd
+
+    buffer allocation command structure
+
+.. _`iwl_buffer_allocation_cmd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_buffer_allocation_cmd {
+        __le32 allocation_id;
+        __le32 buffer_location;
+        __le32 num_frags;
+        struct iwl_fragment_data fragments[IWL_BUFFER_LOCATION_MAX_FRAGS];
+    }
+
+.. _`iwl_buffer_allocation_cmd.members`:
+
+Members
+-------
+
+allocation_id
+    id of the allocation
+
+buffer_location
+    location of the buffer
+
+num_frags
+    number of fragments
+
+fragments
+    memory fragments
+
 .. This file was automatic generated / don't edit.
 

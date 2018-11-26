@@ -10,14 +10,17 @@
 
     probe for a single LoCoMo chip.
 
-    :param struct device \*me:
+    :param me:
         *undescribed*
+    :type me: struct device \*
 
-    :param struct resource \*mem:
+    :param mem:
         *undescribed*
+    :type mem: struct resource \*
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
 .. _`__locomo_probe.description`:
 

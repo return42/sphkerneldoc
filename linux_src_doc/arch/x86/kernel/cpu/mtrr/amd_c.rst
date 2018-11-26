@@ -10,17 +10,21 @@ amd_set_mtrr
 
     Set variable MTRR register on the local CPU.
 
-    :param unsigned int reg:
+    :param reg:
         *undescribed*
+    :type reg: unsigned int
 
-    :param unsigned long base:
+    :param base:
         *undescribed*
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         *undescribed*
+    :type size: unsigned long
 
-    :param mtrr_type type:
+    :param type:
         *undescribed*
+    :type type: mtrr_type
 
 .. _`amd_set_mtrr.description`:
 

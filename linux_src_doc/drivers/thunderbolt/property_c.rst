@@ -10,11 +10,13 @@ tb_property_parse_dir
 
     Parses properties from given property block
 
-    :param const u32 \*block:
+    :param block:
         Property block to parse
+    :type block: const u32 \*
 
-    :param size_t block_len:
+    :param block_len:
         Number of dword elements in the property block
+    :type block_len: size_t
 
 .. _`tb_property_parse_dir.description`:
 
@@ -38,8 +40,9 @@ tb_property_create_dir
 
     Creates new property directory
 
-    :param const uuid_t \*uuid:
+    :param uuid:
         UUID used to identify the particular directory
+    :type uuid: const uuid_t \*
 
 .. _`tb_property_create_dir.description`:
 
@@ -58,8 +61,9 @@ tb_property_free_dir
 
     Release memory allocated for property directory
 
-    :param struct tb_property_dir \*dir:
+    :param dir:
         Directory to release
+    :type dir: struct tb_property_dir \*
 
 .. _`tb_property_free_dir.description`:
 
@@ -79,14 +83,17 @@ tb_property_format_dir
 
     Formats directory to the packed XDomain format
 
-    :param const struct tb_property_dir \*dir:
+    :param dir:
         Directory to format
+    :type dir: const struct tb_property_dir \*
 
-    :param u32 \*block:
+    :param block:
         Property block where the packed data is placed
+    :type block: u32 \*
 
-    :param size_t block_len:
+    :param block_len:
         Length of the property block
+    :type block_len: size_t
 
 .. _`tb_property_format_dir.description`:
 
@@ -107,14 +114,17 @@ tb_property_add_immediate
 
     Add immediate property to directory
 
-    :param struct tb_property_dir \*parent:
+    :param parent:
         Directory to add the property
+    :type parent: struct tb_property_dir \*
 
-    :param const char \*key:
+    :param key:
         Key for the property
+    :type key: const char \*
 
-    :param u32 value:
+    :param value:
         Immediate value to store with the property
+    :type value: u32
 
 .. _`tb_property_add_data`:
 
@@ -125,17 +135,21 @@ tb_property_add_data
 
     Adds arbitrary data property to directory
 
-    :param struct tb_property_dir \*parent:
+    :param parent:
         Directory to add the property
+    :type parent: struct tb_property_dir \*
 
-    :param const char \*key:
+    :param key:
         Key for the property
+    :type key: const char \*
 
-    :param const void \*buf:
+    :param buf:
         Data buffer to add
+    :type buf: const void \*
 
-    :param size_t buflen:
+    :param buflen:
         Number of bytes in the data buffer
+    :type buflen: size_t
 
 .. _`tb_property_add_data.description`:
 
@@ -153,14 +167,17 @@ tb_property_add_text
 
     Adds string property to directory
 
-    :param struct tb_property_dir \*parent:
+    :param parent:
         Directory to add the property
+    :type parent: struct tb_property_dir \*
 
-    :param const char \*key:
+    :param key:
         Key for the property
+    :type key: const char \*
 
-    :param const char \*text:
+    :param text:
         String to add
+    :type text: const char \*
 
 .. _`tb_property_add_text.description`:
 
@@ -178,14 +195,17 @@ tb_property_add_dir
 
     Adds a directory to the parent directory
 
-    :param struct tb_property_dir \*parent:
+    :param parent:
         Directory to add the property
+    :type parent: struct tb_property_dir \*
 
-    :param const char \*key:
+    :param key:
         Key for the property
+    :type key: const char \*
 
-    :param struct tb_property_dir \*dir:
+    :param dir:
         Directory to add
+    :type dir: struct tb_property_dir \*
 
 .. _`tb_property_remove`:
 
@@ -196,8 +216,9 @@ tb_property_remove
 
     Removes property from a parent directory
 
-    :param struct tb_property \*property:
+    :param property:
         Property to remove
+    :type property: struct tb_property \*
 
 .. _`tb_property_remove.description`:
 
@@ -216,14 +237,17 @@ tb_property_find
 
     Find a property from a directory
 
-    :param struct tb_property_dir \*dir:
+    :param dir:
         Directory where the property is searched
+    :type dir: struct tb_property_dir \*
 
-    :param const char \*key:
+    :param key:
         Key to look for
+    :type key: const char \*
 
-    :param enum tb_property_type type:
+    :param type:
         Type of the property
+    :type type: enum tb_property_type
 
 .. _`tb_property_find.description`:
 
@@ -242,11 +266,13 @@ tb_property_get_next
 
     Get next property from directory
 
-    :param struct tb_property_dir \*dir:
+    :param dir:
         Directory holding properties
+    :type dir: struct tb_property_dir \*
 
-    :param struct tb_property \*prev:
+    :param prev:
         Previous property in the directory (%NULL returns the first)
+    :type prev: struct tb_property \*
 
 .. This file was automatic generated / don't edit.
 

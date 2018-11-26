@@ -8,14 +8,17 @@ oaktrail_lvds_set_power
 
 .. c:function:: void oaktrail_lvds_set_power(struct drm_device *dev, struct gma_encoder *gma_encoder, bool on)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct gma_encoder \*gma_encoder:
+    :param gma_encoder:
         *undescribed*
+    :type gma_encoder: struct gma_encoder \*
 
-    :param bool on:
+    :param on:
         *undescribed*
+    :type on: bool
 
 .. _`oaktrail_lvds_init`:
 
@@ -26,11 +29,13 @@ oaktrail_lvds_init
 
     setup LVDS connectors on this device
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct psb_intel_mode_device \*mode_dev:
+    :param mode_dev:
         *undescribed*
+    :type mode_dev: struct psb_intel_mode_device \*
 
 .. _`oaktrail_lvds_init.description`:
 

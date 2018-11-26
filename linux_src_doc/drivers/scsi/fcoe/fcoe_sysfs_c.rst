@@ -10,8 +10,9 @@ fcoe_ctlr_device_release
 
     Release the FIP ctlr memory
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to the FIP ctlr's embedded device
+    :type dev: struct device \*
 
 .. _`fcoe_ctlr_device_release.description`:
 
@@ -29,8 +30,9 @@ fcoe_fcf_device_release
 
     Release the FIP fcf memory
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to the fcf's embedded device
+    :type dev: struct device \*
 
 .. _`fcoe_fcf_device_release.description`:
 
@@ -48,8 +50,9 @@ fcoe_ctlr_device_flush_work
 
     Flush a FIP ctlr's workqueue
 
-    :param struct fcoe_ctlr_device \*ctlr:
+    :param ctlr:
         Pointer to the FIP ctlr whose workqueue is to be flushed
+    :type ctlr: struct fcoe_ctlr_device \*
 
 .. _`fcoe_ctlr_device_queue_work`:
 
@@ -60,11 +63,13 @@ fcoe_ctlr_device_queue_work
 
     Schedule work for a FIP ctlr's workqueue
 
-    :param struct fcoe_ctlr_device \*ctlr:
+    :param ctlr:
         Pointer to the FIP ctlr who owns the devloss workqueue
+    :type ctlr: struct fcoe_ctlr_device \*
 
-    :param struct work_struct \*work:
+    :param work:
         Work to queue for execution
+    :type work: struct work_struct \*
 
 .. _`fcoe_ctlr_device_queue_work.return-value`:
 
@@ -82,8 +87,9 @@ fcoe_ctlr_device_flush_devloss
 
     Flush a FIP ctlr's devloss workqueue
 
-    :param struct fcoe_ctlr_device \*ctlr:
+    :param ctlr:
         Pointer to FIP ctlr whose workqueue is to be flushed
+    :type ctlr: struct fcoe_ctlr_device \*
 
 .. _`fcoe_ctlr_device_queue_devloss_work`:
 
@@ -94,14 +100,17 @@ fcoe_ctlr_device_queue_devloss_work
 
     Schedule work for a FIP ctlr's devloss workqueue
 
-    :param struct fcoe_ctlr_device \*ctlr:
+    :param ctlr:
         Pointer to the FIP ctlr who owns the devloss workqueue
+    :type ctlr: struct fcoe_ctlr_device \*
 
-    :param struct delayed_work \*work:
+    :param work:
         Work to queue for execution
+    :type work: struct delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         jiffies to delay the work queuing
+    :type delay: unsigned long
 
 .. _`fcoe_ctlr_device_queue_devloss_work.return-value`:
 
@@ -119,15 +128,18 @@ fcoe_ctlr_device_add
 
     Add a FIP ctlr to sysfs
 
-    :param struct device \*parent:
+    :param parent:
         The parent device to which the fcoe_ctlr instance
         should be attached
+    :type parent: struct device \*
 
-    :param struct fcoe_sysfs_function_template \*f:
+    :param f:
         The LLD's FCoE sysfs function template pointer
+    :type f: struct fcoe_sysfs_function_template \*
 
-    :param int priv_size:
+    :param priv_size:
         Size to be allocated with the fcoe_ctlr_device for the LLD
+    :type priv_size: int
 
 .. _`fcoe_ctlr_device_add.description`:
 
@@ -147,8 +159,9 @@ fcoe_ctlr_device_delete
 
     Delete a FIP ctlr and its subtree from sysfs
 
-    :param struct fcoe_ctlr_device \*ctlr:
+    :param ctlr:
         A pointer to the ctlr to be deleted
+    :type ctlr: struct fcoe_ctlr_device \*
 
 .. _`fcoe_ctlr_device_delete.description`:
 
@@ -185,8 +198,9 @@ fcoe_fcf_device_final_delete
 
     Final delete routine
 
-    :param struct work_struct \*work:
+    :param work:
         The FIP fcf's embedded work struct
+    :type work: struct work_struct \*
 
 .. _`fcoe_fcf_device_final_delete.description`:
 
@@ -205,8 +219,9 @@ fip_timeout_deleted_fcf
 
     Delete a fcf when the devloss timer fires
 
-    :param struct work_struct \*work:
+    :param work:
         The FIP fcf's embedded work struct
+    :type work: struct work_struct \*
 
 .. _`fip_timeout_deleted_fcf.description`:
 
@@ -225,8 +240,9 @@ fcoe_fcf_device_delete
 
     Delete a FIP fcf
 
-    :param struct fcoe_fcf_device \*fcf:
+    :param fcf:
         Pointer to the fcf which is to be deleted
+    :type fcf: struct fcoe_fcf_device \*
 
 .. _`fcoe_fcf_device_delete.description`:
 
@@ -247,11 +263,13 @@ fcoe_fcf_device_add
 
     Add a FCoE sysfs fcoe_fcf_device to the system
 
-    :param struct fcoe_ctlr_device \*ctlr:
+    :param ctlr:
         The fcoe_ctlr_device that will be the fcoe_fcf_device parent
+    :type ctlr: struct fcoe_ctlr_device \*
 
-    :param struct fcoe_fcf_device \*new_fcf:
+    :param new_fcf:
         A temporary FCF used for lookups on the current list of fcfs
+    :type new_fcf: struct fcoe_fcf_device \*
 
 .. _`fcoe_fcf_device_add.description`:
 

@@ -10,8 +10,9 @@ e1000e_get_bus_info_pcie
 
     Get PCIe bus information
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_get_bus_info_pcie.description`:
 
@@ -31,8 +32,9 @@ e1000_set_lan_id_multi_port_pcie
 
     Set LAN id for PCIe multiple port devices
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_set_lan_id_multi_port_pcie.description`:
 
@@ -51,8 +53,9 @@ e1000_set_lan_id_single_port
 
     Set LAN id for a single port device
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_set_lan_id_single_port.description`:
 
@@ -70,8 +73,9 @@ e1000_clear_vfta_generic
 
     Clear VLAN filter table
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_clear_vfta_generic.description`:
 
@@ -90,14 +94,17 @@ e1000_write_vfta_generic
 
     Write value to VLAN filter table
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset in VLAN filter table
+    :type offset: u32
 
-    :param u32 value:
+    :param value:
         register value written to VLAN filter table
+    :type value: u32
 
 .. _`e1000_write_vfta_generic.description`:
 
@@ -116,11 +123,13 @@ e1000e_init_rx_addrs
 
     Initialize receive address's
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 rar_count:
+    :param rar_count:
         receive address registers
+    :type rar_count: u16
 
 .. _`e1000e_init_rx_addrs.description`:
 
@@ -140,8 +149,9 @@ e1000_check_alt_mac_addr_generic
 
     Check for alternate MAC addr
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_alt_mac_addr_generic.description`:
 
@@ -165,14 +175,17 @@ e1000e_rar_set_generic
 
     Set receive address register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*addr:
+    :param addr:
         pointer to the receive address
+    :type addr: u8 \*
 
-    :param u32 index:
+    :param index:
         receive address array register
+    :type index: u32
 
 .. _`e1000e_rar_set_generic.description`:
 
@@ -191,11 +204,13 @@ e1000_hash_mc_addr
 
     Generate a multicast hash value
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*mc_addr:
+    :param mc_addr:
         pointer to a multicast address
+    :type mc_addr: u8 \*
 
 .. _`e1000_hash_mc_addr.description`:
 
@@ -214,14 +229,17 @@ e1000e_update_mc_addr_list_generic
 
     Update Multicast addresses
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*mc_addr_list:
+    :param mc_addr_list:
         array of multicast addresses to program
+    :type mc_addr_list: u8 \*
 
-    :param u32 mc_addr_count:
+    :param mc_addr_count:
         number of multicast addresses to program
+    :type mc_addr_count: u32
 
 .. _`e1000e_update_mc_addr_list_generic.description`:
 
@@ -240,8 +258,9 @@ e1000e_clear_hw_cntrs_base
 
     Clear base hardware counters
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_clear_hw_cntrs_base.description`:
 
@@ -259,8 +278,9 @@ e1000e_check_for_copper_link
 
     Check for link (Copper)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_check_for_copper_link.description`:
 
@@ -280,8 +300,9 @@ e1000e_check_for_fiber_link
 
     Check for link (Fiber)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_check_for_fiber_link.description`:
 
@@ -300,8 +321,9 @@ e1000e_check_for_serdes_link
 
     Check for link (Serdes)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_check_for_serdes_link.description`:
 
@@ -320,8 +342,9 @@ e1000_set_default_fc_generic
 
     Set flow control default values
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_set_default_fc_generic.description`:
 
@@ -340,8 +363,9 @@ e1000e_setup_link_generic
 
     Setup flow control and link settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_setup_link_generic.description`:
 
@@ -363,8 +387,9 @@ e1000_commit_fc_settings_generic
 
     Configure flow control
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_commit_fc_settings_generic.description`:
 
@@ -383,8 +408,9 @@ e1000_poll_fiber_serdes_link_generic
 
     Poll for link up
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_poll_fiber_serdes_link_generic.description`:
 
@@ -403,8 +429,9 @@ e1000e_setup_fiber_serdes_link
 
     Setup link for fiber/serdes
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_setup_fiber_serdes_link.description`:
 
@@ -423,8 +450,9 @@ e1000e_config_collision_dist_generic
 
     Configure collision distance
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_config_collision_dist_generic.description`:
 
@@ -443,8 +471,9 @@ e1000e_set_fc_watermarks
 
     Set flow control high/low watermarks
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_set_fc_watermarks.description`:
 
@@ -464,8 +493,9 @@ e1000e_force_mac_fc
 
     Force the MAC's flow control settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_force_mac_fc.description`:
 
@@ -487,8 +517,9 @@ e1000e_config_fc_after_link_up
 
     Configures flow control after link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_config_fc_after_link_up.description`:
 
@@ -510,14 +541,17 @@ e1000e_get_speed_and_duplex_copper
 
     Retrieve current speed/duplex
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*speed:
+    :param speed:
         stores the current speed
+    :type speed: u16 \*
 
-    :param u16 \*duplex:
+    :param duplex:
         stores the current duplex
+    :type duplex: u16 \*
 
 .. _`e1000e_get_speed_and_duplex_copper.description`:
 
@@ -536,14 +570,17 @@ e1000e_get_speed_and_duplex_fiber_serdes
 
     Retrieve current speed/duplex
 
-    :param struct e1000_hw __always_unused \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw __always_unused \*
 
-    :param u16 \*speed:
+    :param speed:
         stores the current speed
+    :type speed: u16 \*
 
-    :param u16 \*duplex:
+    :param duplex:
         stores the current duplex
+    :type duplex: u16 \*
 
 .. _`e1000e_get_speed_and_duplex_fiber_serdes.description`:
 
@@ -562,8 +599,9 @@ e1000e_get_hw_semaphore
 
     Acquire hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_get_hw_semaphore.description`:
 
@@ -581,8 +619,9 @@ e1000e_put_hw_semaphore
 
     Release hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_put_hw_semaphore.description`:
 
@@ -600,8 +639,9 @@ e1000e_get_auto_rd_done
 
     Check for auto read completion
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_get_auto_rd_done.description`:
 
@@ -619,11 +659,13 @@ e1000e_valid_led_default
 
     Verify a valid default LED config
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*data:
+    :param data:
         pointer to the NVM (EEPROM)
+    :type data: u16 \*
 
 .. _`e1000e_valid_led_default.description`:
 
@@ -640,8 +682,9 @@ e1000e_id_led_init_generic
 
 .. c:function:: s32 e1000e_id_led_init_generic(struct e1000_hw *hw)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_setup_led_generic`:
 
@@ -652,8 +695,9 @@ e1000e_setup_led_generic
 
     Configures SW controllable LED
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_setup_led_generic.description`:
 
@@ -672,8 +716,9 @@ e1000e_cleanup_led_generic
 
     Set LED config to default operation
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_cleanup_led_generic.description`:
 
@@ -692,8 +737,9 @@ e1000e_blink_led_generic
 
     Blink LED
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_blink_led_generic.description`:
 
@@ -711,8 +757,9 @@ e1000e_led_on_generic
 
     Turn LED on
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_led_on_generic.description`:
 
@@ -730,8 +777,9 @@ e1000e_led_off_generic
 
     Turn LED off
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_led_off_generic.description`:
 
@@ -749,11 +797,13 @@ e1000e_set_pcie_no_snoop
 
     Set PCI-express capabilities
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 no_snoop:
+    :param no_snoop:
         bitmap of snoop events
+    :type no_snoop: u32
 
 .. _`e1000e_set_pcie_no_snoop.description`:
 
@@ -771,8 +821,9 @@ e1000e_disable_pcie_master
 
     Disables PCI-express master access
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_disable_pcie_master.description`:
 
@@ -795,8 +846,9 @@ e1000e_reset_adaptive
 
     Reset Adaptive Interframe Spacing
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_reset_adaptive.description`:
 
@@ -814,8 +866,9 @@ e1000e_update_adaptive
 
     Update Adaptive Interframe Spacing
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_update_adaptive.description`:
 

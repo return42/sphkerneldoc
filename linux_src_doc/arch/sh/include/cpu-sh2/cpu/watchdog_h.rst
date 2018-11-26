@@ -10,8 +10,9 @@ sh_wdt_read_rstcsr
 
     Read from Reset Control/Status Register
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sh_wdt_read_rstcsr.description`:
 
@@ -29,8 +30,9 @@ sh_wdt_write_rstcsr
 
     Write to Reset Control/Status Register
 
-    :param __u8 val:
+    :param val:
         Value to write
+    :type val: __u8
 
 .. _`sh_wdt_write_rstcsr.description`:
 

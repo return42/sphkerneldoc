@@ -10,18 +10,20 @@ fw_iso_resources_init
 
     initializes a \ :c:type:`struct fw_iso_resources <fw_iso_resources>`\ 
 
-    :param struct fw_iso_resources \*r:
+    :param r:
         the resource manager to initialize
+    :type r: struct fw_iso_resources \*
 
-    :param struct fw_unit \*unit:
+    :param unit:
         the device unit for which the resources will be needed
+    :type unit: struct fw_unit \*
 
 .. _`fw_iso_resources_init.description`:
 
 Description
 -----------
 
-If the device does not support all channel numbers, change \ ``r``\ ->channels_mask
+If the device does not support all channel numbers, change \ ``r->channels_mask``\ 
 after calling this function.
 
 .. _`fw_iso_resources_destroy`:
@@ -33,8 +35,9 @@ fw_iso_resources_destroy
 
     destroy a resource manager
 
-    :param struct fw_iso_resources \*r:
+    :param r:
         the resource manager that is no longer needed
+    :type r: struct fw_iso_resources \*
 
 .. _`fw_iso_resources_allocate`:
 
@@ -45,14 +48,17 @@ fw_iso_resources_allocate
 
     allocate isochronous channel and bandwidth
 
-    :param struct fw_iso_resources \*r:
+    :param r:
         the resource manager
+    :type r: struct fw_iso_resources \*
 
-    :param unsigned int max_payload_bytes:
+    :param max_payload_bytes:
         the amount of data (including CIP headers) per packet
+    :type max_payload_bytes: unsigned int
 
-    :param int speed:
+    :param speed:
         the speed (e.g., SCODE_400) at which the packets will be sent
+    :type speed: int
 
 .. _`fw_iso_resources_allocate.description`:
 
@@ -77,8 +83,9 @@ fw_iso_resources_update
 
     update resource allocations after a bus reset
 
-    :param struct fw_iso_resources \*r:
+    :param r:
         the resource manager
+    :type r: struct fw_iso_resources \*
 
 .. _`fw_iso_resources_update.description`:
 
@@ -101,8 +108,9 @@ fw_iso_resources_free
 
     frees allocated resources
 
-    :param struct fw_iso_resources \*r:
+    :param r:
         the resource manager
+    :type r: struct fw_iso_resources \*
 
 .. _`fw_iso_resources_free.description`:
 

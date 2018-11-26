@@ -10,14 +10,17 @@ fscache_init_cache
 
     Initialise a cache record
 
-    :param struct fscache_cache \*cache:
+    :param cache:
         The cache record to be initialised
+    :type cache: struct fscache_cache \*
 
-    :param const struct fscache_cache_ops \*ops:
+    :param ops:
         The cache operations to be installed in that record
+    :type ops: const struct fscache_cache_ops \*
 
-    :param const char \*idfmt:
+    :param idfmt:
         Format string to define identifier
+    :type idfmt: const char \*
 
     :param ellipsis ellipsis:
         sprintf-style arguments
@@ -41,14 +44,17 @@ fscache_add_cache
 
     Declare a cache as being open for business
 
-    :param struct fscache_cache \*cache:
+    :param cache:
         The record describing the cache
+    :type cache: struct fscache_cache \*
 
-    :param struct fscache_object \*ifsdef:
+    :param ifsdef:
         The record of the cache object describing the top-level index
+    :type ifsdef: struct fscache_object \*
 
-    :param const char \*tagname:
+    :param tagname:
         The tag describing this cache
+    :type tagname: const char \*
 
 .. _`fscache_add_cache.description`:
 
@@ -69,8 +75,9 @@ fscache_io_error
 
     Note a cache I/O error
 
-    :param struct fscache_cache \*cache:
+    :param cache:
         The record describing the cache
+    :type cache: struct fscache_cache \*
 
 .. _`fscache_io_error.description`:
 
@@ -92,8 +99,9 @@ fscache_withdraw_cache
 
     Withdraw a cache from the active service
 
-    :param struct fscache_cache \*cache:
+    :param cache:
         The record describing the cache
+    :type cache: struct fscache_cache \*
 
 .. _`fscache_withdraw_cache.description`:
 

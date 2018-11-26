@@ -42,14 +42,17 @@ samsung_sync_wakemask
 
     sync wakeup mask information for pm
 
-    :param void __iomem \*reg:
+    :param reg:
         The register that is used.
+    :type reg: void __iomem \*
 
-    :param const struct samsung_wakeup_mask \*masks:
+    :param masks:
         The list of masks to use.
+    :type masks: const struct samsung_wakeup_mask \*
 
-    :param int nr_masks:
+    :param nr_masks:
         The number of entries pointed to buy \ ``masks``\ .
+    :type nr_masks: int
 
 .. _`samsung_sync_wakemask.description`:
 

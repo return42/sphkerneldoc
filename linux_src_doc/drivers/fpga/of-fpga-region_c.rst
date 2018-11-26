@@ -10,8 +10,9 @@ of_fpga_region_find
 
     find FPGA region
 
-    :param struct device_node \*np:
+    :param np:
         device node of FPGA Region
+    :type np: struct device_node \*
 
 .. _`of_fpga_region_find.description`:
 
@@ -31,8 +32,9 @@ of_fpga_region_get_mgr
 
     get reference for FPGA manager
 
-    :param struct device_node \*np:
+    :param np:
         device node of FPGA region
+    :type np: struct device_node \*
 
 .. _`of_fpga_region_get_mgr.description`:
 
@@ -59,8 +61,9 @@ of_fpga_region_get_bridges
 
     create a list of bridges
 
-    :param struct fpga_region \*region:
+    :param region:
         FPGA region
+    :type region: struct fpga_region \*
 
 .. _`of_fpga_region_get_bridges.description`:
 
@@ -85,8 +88,9 @@ child_regions_with_firmware
 
 .. c:function:: int child_regions_with_firmware(struct device_node *overlay)
 
-    :param struct device_node \*overlay:
+    :param overlay:
         device node of the overlay
+    :type overlay: struct device_node \*
 
 .. _`child_regions_with_firmware.description`:
 
@@ -107,11 +111,13 @@ of_fpga_region_parse_ov
 
     parse and check overlay applied to region
 
-    :param struct fpga_region \*region:
+    :param region:
         FPGA region
+    :type region: struct fpga_region \*
 
-    :param struct device_node \*overlay:
+    :param overlay:
         overlay applied to the FPGA region
+    :type overlay: struct device_node \*
 
 .. _`of_fpga_region_parse_ov.description`:
 
@@ -139,11 +145,13 @@ of_fpga_region_notify_pre_apply
 
     pre-apply overlay notification
 
-    :param struct fpga_region \*region:
+    :param region:
         FPGA region that the overlay was applied to
+    :type region: struct fpga_region \*
 
-    :param struct of_overlay_notify_data \*nd:
+    :param nd:
         overlay notification data
+    :type nd: struct of_overlay_notify_data \*
 
 .. _`of_fpga_region_notify_pre_apply.description`:
 
@@ -167,11 +175,13 @@ of_fpga_region_notify_post_remove
 
     post-remove overlay notification
 
-    :param struct fpga_region \*region:
+    :param region:
         FPGA region that was targeted by the overlay that was removed
+    :type region: struct fpga_region \*
 
-    :param struct of_overlay_notify_data \*nd:
+    :param nd:
         overlay notification data
+    :type nd: struct of_overlay_notify_data \*
 
 .. _`of_fpga_region_notify_post_remove.description`:
 
@@ -190,14 +200,17 @@ of_fpga_region_notify
 
     reconfig notifier for dynamic DT changes
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
-    :param unsigned long action:
+    :param action:
         notifier action
+    :type action: unsigned long
 
-    :param void \*arg:
+    :param arg:
         reconfig data
+    :type arg: void \*
 
 .. _`of_fpga_region_notify.description`:
 
@@ -218,8 +231,9 @@ of_fpga_region_init
 
     init function for fpga_region class Creates the fpga_region class and registers a reconfig notifier.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

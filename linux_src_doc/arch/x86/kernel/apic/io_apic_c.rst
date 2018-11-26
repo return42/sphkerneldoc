@@ -10,8 +10,9 @@ disable_ioapic_support
 
     disables ioapic support at runtime
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mp_register_ioapic`:
 
@@ -22,17 +23,21 @@ mp_register_ioapic
 
     Register an IOAPIC device
 
-    :param int id:
+    :param id:
         hardware IOAPIC ID
+    :type id: int
 
-    :param u32 address:
+    :param address:
         physical address of IOAPIC register area
+    :type address: u32
 
-    :param u32 gsi_base:
+    :param gsi_base:
         base of GSI associated with the IOAPIC
+    :type gsi_base: u32
 
-    :param struct ioapic_domain_cfg \*cfg:
+    :param cfg:
         configuration information for the IOAPIC
+    :type cfg: struct ioapic_domain_cfg \*
 
 .. This file was automatic generated / don't edit.
 

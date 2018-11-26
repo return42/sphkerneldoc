@@ -56,7 +56,7 @@ Definition
     struct drm_crtc_crc {
         spinlock_t lock;
         const char *source;
-        bool opened;
+        bool opened, overflow;
         struct drm_crtc_crc_entry *entries;
         int head, tail;
         size_t values_cnt;
@@ -76,6 +76,9 @@ source
 
 opened
     whether userspace has opened the data file for reading
+
+overflow
+    whether an overflow occured.
 
 entries
     array of entries, with size of \ ``DRM_CRC_ENTRIES_NR``\ 

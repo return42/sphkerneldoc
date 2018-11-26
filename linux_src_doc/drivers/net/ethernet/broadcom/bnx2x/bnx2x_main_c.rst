@@ -10,8 +10,9 @@ bnx2x_get_leader_lock_resource
 
     get the recovery leader resource id
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_get_leader_lock_resource.description`:
 
@@ -30,8 +31,9 @@ bnx2x_trylock_leader_lock
 
     try to acquire a leader lock.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_trylock_leader_lock.description`:
 
@@ -49,14 +51,17 @@ bnx2x_get_common_flags
 
     Return common flags
 
-    :param struct bnx2x \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_fastpath \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct bnx2x_fastpath \*
 
-    :param bool zero_stats:
+    :param zero_stats:
         *undescribed*
+    :type zero_stats: bool
 
 .. _`bnx2x_get_common_flags.description`:
 
@@ -78,11 +83,13 @@ bnx2x_is_contextless_ramrod
 
     check if the current command ends on EQ
 
-    :param int cmd:
+    :param cmd:
         command to check
+    :type cmd: int
 
-    :param int cmd_type:
+    :param cmd_type:
         command type
+    :type cmd_type: int
 
 .. _`bnx2x_sp_post`:
 
@@ -93,23 +100,29 @@ bnx2x_sp_post
 
     place a single command on an SP ring
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int command:
+    :param command:
         command to place (e.g. SETUP, FILTER_RULES, etc.)
+    :type command: int
 
-    :param int cid:
+    :param cid:
         SW CID the command is related to
+    :type cid: int
 
-    :param u32 data_hi:
+    :param data_hi:
         command private data address (high 32 bits)
+    :type data_hi: u32
 
-    :param u32 data_lo:
+    :param data_lo:
         command private data address (low 32 bits)
+    :type data_lo: u32
 
-    :param int cmd_type:
+    :param cmd_type:
         command type (e.g. NONE, ETH)
+    :type cmd_type: int
 
 .. _`bnx2x_sp_post.description`:
 
@@ -129,8 +142,9 @@ bnx2x_clear_pf_load
 
     clear pf load mark
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_clear_pf_load.description`:
 
@@ -150,14 +164,17 @@ bnx2x_chk_parity_attn
 
     checks for parity attentions.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param bool \*global:
+    :param global:
         true if there was a global attention
+    :type global: bool \*
 
-    :param bool print:
+    :param print:
         show parity attention in syslog
+    :type print: bool
 
 .. _`bnx2x_init_hw_common`:
 
@@ -168,8 +185,9 @@ bnx2x_init_hw_common
 
     initialize the HW at the COMMON phase.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_init_hw_common_chip`:
 
@@ -180,8 +198,9 @@ bnx2x_init_hw_common_chip
 
     init HW at the COMMON_CHIP phase.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_set_int_mode`:
 
@@ -192,8 +211,9 @@ bnx2x_set_int_mode
 
     configure interrupt mode
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_set_int_mode.description`:
 
@@ -211,14 +231,17 @@ bnx2x_pf_q_prep_init
 
     prepare INIT transition parameters
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_fastpath \*fp:
+    :param fp:
         pointer to fastpath
+    :type fp: struct bnx2x_fastpath \*
 
-    :param struct bnx2x_queue_init_params \*init_params:
+    :param init_params:
         pointer to parameters structure
+    :type init_params: struct bnx2x_queue_init_params \*
 
 .. _`bnx2x_pf_q_prep_init.parameters-configured`:
 
@@ -237,14 +260,17 @@ bnx2x_setup_queue
 
     setup queue
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_fastpath \*fp:
+    :param fp:
         pointer to fastpath
+    :type fp: struct bnx2x_fastpath \*
 
-    :param bool leading:
+    :param leading:
         is leading
+    :type leading: bool
 
 .. _`bnx2x_setup_queue.description`:
 
@@ -269,11 +295,13 @@ bnx2x_send_unload_req
 
     request unload mode from the MCP.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int unload_mode:
+    :param unload_mode:
         requested function's unload mode
+    :type unload_mode: int
 
 .. _`bnx2x_send_unload_req.return-unload-mode-returned-by-the-mcp`:
 
@@ -291,11 +319,13 @@ bnx2x_send_unload_done
 
     send UNLOAD_DONE command to the MCP.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param bool keep_link:
+    :param keep_link:
         true iff link should be kept up
+    :type keep_link: bool
 
 .. _`bnx2x_clp_reset_done`:
 
@@ -306,11 +336,13 @@ bnx2x_clp_reset_done
 
     restore the value of the \`magic' bit.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 magic_val:
+    :param magic_val:
         old value of the \`magic' bit.
+    :type magic_val: u32
 
 .. _`bnx2x_reset_mcp_prep`:
 
@@ -321,11 +353,13 @@ bnx2x_reset_mcp_prep
 
     prepare for MCP reset.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 \*magic_val:
+    :param magic_val:
         old value of 'magic' bit.
+    :type magic_val: u32 \*
 
 .. _`bnx2x_reset_mcp_prep.description`:
 
@@ -343,8 +377,9 @@ bnx2x_mcp_wait_one
 
     wait for MCP_ONE_TIMEOUT
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_er_poll_igu_vq`:
 
@@ -355,8 +390,9 @@ bnx2x_er_poll_igu_vq
 
     poll for pending writes bit. It should get cleared in no more than 1s.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_er_poll_igu_vq.description`:
 
@@ -375,8 +411,9 @@ bnx2x_set_uc_list
 
     configure a new unicast MACs list.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_set_uc_list.description`:
 
@@ -394,11 +431,13 @@ bnx2x_get_num_non_def_sbs
 
     return the number of none default SBs
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param int cnic_cnt:
+    :param cnic_cnt:
         *undescribed*
+    :type cnic_cnt: int
 
 .. _`bnx2x_io_error_detected`:
 
@@ -409,11 +448,13 @@ bnx2x_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`bnx2x_io_error_detected.description`:
 
@@ -432,8 +473,9 @@ bnx2x_io_slot_reset
 
     called after the PCI bus has been reset
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`bnx2x_io_slot_reset.description`:
 
@@ -451,8 +493,9 @@ bnx2x_io_resume
 
     called when traffic can start flowing again
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`bnx2x_io_resume.description`:
 
@@ -471,8 +514,9 @@ bnx2x_set_iscsi_eth_mac_addr
 
     set iSCSI MAC(s).
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_set_iscsi_eth_mac_addr.description`:
 

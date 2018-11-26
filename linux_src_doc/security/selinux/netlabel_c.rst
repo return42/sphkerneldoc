@@ -10,17 +10,21 @@ selinux_netlbl_sidlookup_cached
 
     Cache a SID lookup
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         *undescribed*
+    :type family: u16
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the NetLabel security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
-    :param u32 \*sid:
+    :param sid:
         the SID
+    :type sid: u32 \*
 
 .. _`selinux_netlbl_sidlookup_cached.description`:
 
@@ -40,8 +44,9 @@ selinux_netlbl_sock_genattr
 
     Generate the NetLabel socket secattr
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
 .. _`selinux_netlbl_sock_genattr.description`:
 
@@ -61,11 +66,13 @@ selinux_netlbl_sock_getattr
 
     Get the cached NetLabel secattr
 
-    :param const struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: const struct sock \*
 
-    :param u32 sid:
+    :param sid:
         the SID
+    :type sid: u32
 
 .. _`selinux_netlbl_sock_getattr.description`:
 
@@ -84,8 +91,9 @@ selinux_netlbl_cache_invalidate
 
     Invalidate the NetLabel cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`selinux_netlbl_cache_invalidate.description`:
 
@@ -103,17 +111,21 @@ selinux_netlbl_err
 
     Handle a NetLabel packet error
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         *undescribed*
+    :type family: u16
 
-    :param int error:
+    :param error:
         the error code
+    :type error: int
 
-    :param int gateway:
+    :param gateway:
         true if host is acting as a gateway, false otherwise
+    :type gateway: int
 
 .. _`selinux_netlbl_err.description`:
 
@@ -134,8 +146,9 @@ selinux_netlbl_sk_security_free
 
     Free the NetLabel fields
 
-    :param struct sk_security_struct \*sksec:
+    :param sksec:
         the sk_security_struct
+    :type sksec: struct sk_security_struct \*
 
 .. _`selinux_netlbl_sk_security_free.description`:
 
@@ -153,8 +166,9 @@ selinux_netlbl_sk_security_reset
 
     Reset the NetLabel fields
 
-    :param struct sk_security_struct \*sksec:
+    :param sksec:
         the sk_security_struct
+    :type sksec: struct sk_security_struct \*
 
 .. _`selinux_netlbl_sk_security_reset.description`:
 
@@ -173,17 +187,21 @@ selinux_netlbl_skbuff_getsid
 
     Get the sid of a packet using NetLabel
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         protocol family
+    :type family: u16
 
-    :param u32 \*type:
+    :param type:
         NetLabel labeling protocol type
+    :type type: u32 \*
 
-    :param u32 \*sid:
+    :param sid:
         the SID
+    :type sid: u32 \*
 
 .. _`selinux_netlbl_skbuff_getsid.description`:
 
@@ -203,14 +221,17 @@ selinux_netlbl_skbuff_setsid
 
     Set the NetLabel on a packet given a sid
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         protocol family
+    :type family: u16
 
-    :param u32 sid:
+    :param sid:
         the SID
+    :type sid: u32
 
 .. _`selinux_netlbl_skbuff_setsid.description`:
 
@@ -230,11 +251,13 @@ selinux_netlbl_sctp_assoc_request
 
     Label an incoming sctp association.
 
-    :param struct sctp_endpoint \*ep:
+    :param ep:
         incoming association endpoint.
+    :type ep: struct sctp_endpoint \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet.
+    :type skb: struct sk_buff \*
 
 .. _`selinux_netlbl_sctp_assoc_request.description`:
 
@@ -253,11 +276,13 @@ selinux_netlbl_inet_conn_request
 
     Label an incoming stream connection
 
-    :param struct request_sock \*req:
+    :param req:
         incoming connection request socket
+    :type req: struct request_sock \*
 
-    :param u16 family:
+    :param family:
         *undescribed*
+    :type family: u16
 
 .. _`selinux_netlbl_inet_conn_request.description`:
 
@@ -278,11 +303,13 @@ selinux_netlbl_inet_csk_clone
 
     Initialize the newly created sock
 
-    :param struct sock \*sk:
+    :param sk:
         the new sock
+    :type sk: struct sock \*
 
-    :param u16 family:
+    :param family:
         *undescribed*
+    :type family: u16
 
 .. _`selinux_netlbl_inet_csk_clone.description`:
 
@@ -302,11 +329,13 @@ selinux_netlbl_sctp_sk_clone
 
     Copy state to the newly created sock
 
-    :param struct sock \*sk:
+    :param sk:
         current sock
+    :type sk: struct sock \*
 
-    :param struct sock \*newsk:
+    :param newsk:
         the new sock
+    :type newsk: struct sock \*
 
 .. _`selinux_netlbl_sctp_sk_clone.description`:
 
@@ -324,11 +353,13 @@ selinux_netlbl_socket_post_create
 
     Label a socket using NetLabel
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param u16 family:
+    :param family:
         protocol family
+    :type family: u16
 
 .. _`selinux_netlbl_socket_post_create.description`:
 
@@ -347,17 +378,21 @@ selinux_netlbl_sock_rcv_skb
 
     Do an inbound access check using NetLabel
 
-    :param struct sk_security_struct \*sksec:
+    :param sksec:
         the sock's sk_security_struct
+    :type sksec: struct sk_security_struct \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         protocol family
+    :type family: u16
 
-    :param struct common_audit_data \*ad:
+    :param ad:
         the audit data
+    :type ad: struct common_audit_data \*
 
 .. _`selinux_netlbl_sock_rcv_skb.description`:
 
@@ -377,11 +412,13 @@ selinux_netlbl_option
 
     Is this a NetLabel option
 
-    :param int level:
+    :param level:
         the socket level or protocol
+    :type level: int
 
-    :param int optname:
+    :param optname:
         the socket option name
+    :type optname: int
 
 .. _`selinux_netlbl_option.description`:
 
@@ -400,14 +437,17 @@ selinux_netlbl_socket_setsockopt
 
     Do not allow users to remove a NetLabel
 
-    :param struct socket \*sock:
+    :param sock:
         the socket
+    :type sock: struct socket \*
 
-    :param int level:
+    :param level:
         the socket level or protocol
+    :type level: int
 
-    :param int optname:
+    :param optname:
         the socket option name
+    :type optname: int
 
 .. _`selinux_netlbl_socket_setsockopt.description`:
 
@@ -428,11 +468,13 @@ selinux_netlbl_socket_connect_helper
 
     Help label a client-side socket on connect
 
-    :param struct sock \*sk:
+    :param sk:
         the socket to label
+    :type sk: struct sock \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         the destination address
+    :type addr: struct sockaddr \*
 
 .. _`selinux_netlbl_socket_connect_helper.description`:
 
@@ -451,11 +493,13 @@ selinux_netlbl_socket_connect_locked
 
     Label a client-side socket on connect
 
-    :param struct sock \*sk:
+    :param sk:
         the socket to label
+    :type sk: struct sock \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         the destination address
+    :type addr: struct sockaddr \*
 
 .. _`selinux_netlbl_socket_connect_locked.description`:
 
@@ -475,11 +519,13 @@ selinux_netlbl_socket_connect
 
     Label a client-side socket on connect
 
-    :param struct sock \*sk:
+    :param sk:
         the socket to label
+    :type sk: struct sock \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         the destination address
+    :type addr: struct sockaddr \*
 
 .. _`selinux_netlbl_socket_connect.description`:
 

@@ -10,17 +10,21 @@ nfs_do_submount
 
     set up mountpoint when crossing a filesystem boundary \ ``dentry``\  - parent directory \ ``fh``\  - filehandle for new root dentry \ ``fattr``\  - attributes for new root inode \ ``authflavor``\  - security flavor to use when performing the mount
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
-    :param struct nfs_fh \*fh:
+    :param fh:
         *undescribed*
+    :type fh: struct nfs_fh \*
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         *undescribed*
+    :type fattr: struct nfs_fattr \*
 
-    :param rpc_authflavor_t authflavor:
+    :param authflavor:
         *undescribed*
+    :type authflavor: rpc_authflavor_t
 
 .. This file was automatic generated / don't edit.
 

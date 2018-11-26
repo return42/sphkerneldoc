@@ -10,8 +10,9 @@ omap2_clk_setup_ll_ops
 
     setup clock driver low-level ops
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2_clk_setup_ll_ops.description`:
 
@@ -32,8 +33,9 @@ ti_clk_init_features
 
     init clock features struct for the SoC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ti_clk_init_features.description`:
 

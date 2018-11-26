@@ -11,10 +11,11 @@ intel
     e1000e/index
     fm10k/index
     i40e/index
-    i40evf/index
+    iavf/index
     ice/index
     igb/index
     igbvf/index
+    igc/index
     ixgb/index
     ixgbe/index
     ixgbevf/index

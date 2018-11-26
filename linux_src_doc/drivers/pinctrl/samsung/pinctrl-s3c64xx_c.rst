@@ -110,8 +110,9 @@ s3c64xx_eint_gpio_init
 
     setup handling of external gpio interrupts.
 
-    :param struct samsung_pinctrl_drv_data \*d:
+    :param d:
         driver data of samsung pinctrl driver.
+    :type d: struct samsung_pinctrl_drv_data \*
 
 .. _`s3c64xx_eint_eint0_init`:
 
@@ -122,8 +123,9 @@ s3c64xx_eint_eint0_init
 
     setup handling of external wakeup interrupts.
 
-    :param struct samsung_pinctrl_drv_data \*d:
+    :param d:
         driver data of samsung pinctrl driver.
+    :type d: struct samsung_pinctrl_drv_data \*
 
 .. This file was automatic generated / don't edit.
 

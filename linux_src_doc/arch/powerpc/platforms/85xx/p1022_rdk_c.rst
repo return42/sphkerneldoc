@@ -10,8 +10,9 @@ p1022rdk_set_pixel_clock
 
     program the DIU's clock
 
-    :param unsigned int pixclock:
+    :param pixclock:
         the wavelength, in picoseconds, of the clock
+    :type pixclock: unsigned int
 
 .. _`p1022rdk_valid_monitor_port`:
 
@@ -22,8 +23,9 @@ p1022rdk_valid_monitor_port
 
     set the monitor port for sysfs
 
-    :param enum fsl_diu_monitor_port port:
+    :param port:
         *undescribed*
+    :type port: enum fsl_diu_monitor_port
 
 .. This file was automatic generated / don't edit.
 

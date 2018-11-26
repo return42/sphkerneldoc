@@ -10,11 +10,13 @@ usb_hcd_at91_probe
 
     initialize AT91-based HCDs
 
-    :param const struct hc_driver \*driver:
+    :param driver:
         *undescribed*
+    :type driver: const struct hc_driver \*
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`usb_hcd_at91_probe.context`:
 
@@ -41,11 +43,13 @@ usb_hcd_at91_remove
 
     shutdown processing for AT91-based HCDs
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         *undescribed*
+    :type hcd: struct usb_hcd \*
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`usb_hcd_at91_remove.context`:
 

@@ -10,11 +10,13 @@ of_get_fixed_voltage_config
 
     extract fixed_voltage_config structure info
 
-    :param struct device \*dev:
+    :param dev:
         device requesting for fixed_voltage_config
+    :type dev: struct device \*
 
-    :param const struct regulator_desc \*desc:
+    :param desc:
         regulator description
+    :type desc: const struct regulator_desc \*
 
 .. _`of_get_fixed_voltage_config.description`:
 

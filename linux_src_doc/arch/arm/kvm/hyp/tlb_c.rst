@@ -10,8 +10,9 @@
 
     VMID TLBs
 
-    :param struct kvm \*kvm:
+    :param kvm:
         *undescribed*
+    :type kvm: struct kvm \*
 
 .. _`__kvm_tlb_flush_vmid.description`:
 

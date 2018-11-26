@@ -10,8 +10,9 @@ pch_gbe_mac_read_mac_addr
 
     Read MAC address
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_mac_read_mac_addr.return`:
 
@@ -29,11 +30,13 @@ pch_gbe_wait_clr_bit
 
     Wait to clear a bit
 
-    :param void \*reg:
+    :param reg:
         Pointer of register
+    :type reg: void \*
 
-    :param u32 bit:
+    :param bit:
         *undescribed*
+    :type bit: u32
 
 .. _`pch_gbe_mac_mar_set`:
 
@@ -44,14 +47,17 @@ pch_gbe_mac_mar_set
 
     Set MAC address register
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
-    :param u8 \*addr:
+    :param addr:
         Pointer to the MAC address
+    :type addr: u8 \*
 
-    :param u32 index:
+    :param index:
         MAC address array register
+    :type index: u32
 
 .. _`pch_gbe_mac_reset_hw`:
 
@@ -62,8 +68,9 @@ pch_gbe_mac_reset_hw
 
     Reset hardware
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_mac_init_rx_addrs`:
 
@@ -74,35 +81,13 @@ pch_gbe_mac_init_rx_addrs
 
     Initialize receive address's
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
-    :param u16 mar_count:
+    :param mar_count:
         Receive address registers
-
-.. _`pch_gbe_mac_mc_addr_list_update`:
-
-pch_gbe_mac_mc_addr_list_update
-===============================
-
-.. c:function:: void pch_gbe_mac_mc_addr_list_update(struct pch_gbe_hw *hw, u8 *mc_addr_list, u32 mc_addr_count, u32 mar_used_count, u32 mar_total_num)
-
-    Update Multicast addresses
-
-    :param struct pch_gbe_hw \*hw:
-        Pointer to the HW structure
-
-    :param u8 \*mc_addr_list:
-        Array of multicast addresses to program
-
-    :param u32 mc_addr_count:
-        Number of multicast addresses to program
-
-    :param u32 mar_used_count:
-        The first MAC Address register free to program
-
-    :param u32 mar_total_num:
-        Total number of supported MAC Address Registers
+    :type mar_count: u16
 
 .. _`pch_gbe_mac_force_mac_fc`:
 
@@ -113,8 +98,9 @@ pch_gbe_mac_force_mac_fc
 
     Force the MAC's flow control settings
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_mac_force_mac_fc.return`:
 
@@ -139,11 +125,13 @@ pch_gbe_mac_set_wol_event
 
     Set wake-on-lan event
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
-    :param u32 wu_evt:
+    :param wu_evt:
         Wake up event
+    :type wu_evt: u32
 
 .. _`pch_gbe_mac_ctrl_miim`:
 
@@ -154,20 +142,25 @@ pch_gbe_mac_ctrl_miim
 
     Control MIIM interface
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
-    :param u32 addr:
+    :param addr:
         Address of PHY
+    :type addr: u32
 
-    :param u32 dir:
+    :param dir:
         Operetion. (Write or Read)
+    :type dir: u32
 
-    :param u32 reg:
+    :param reg:
         Access register of PHY
+    :type reg: u32
 
-    :param u16 data:
+    :param data:
         Write data.
+    :type data: u16
 
 .. _`pch_gbe_mac_ctrl_miim.return`:
 
@@ -185,8 +178,9 @@ pch_gbe_mac_set_pause_packet
 
     Set pause packet
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_alloc_queues`:
 
@@ -197,8 +191,9 @@ pch_gbe_alloc_queues
 
     Allocate memory for all rings
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure to initialize
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_alloc_queues.return`:
 
@@ -223,8 +218,9 @@ pch_gbe_init_stats
 
     Initialize status
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure to initialize
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_init_phy`:
 
@@ -235,8 +231,9 @@ pch_gbe_init_phy
 
     Initialize PHY
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure to initialize
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_init_phy.return`:
 
@@ -261,14 +258,17 @@ pch_gbe_mdio_read
 
     The read function for mii
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int addr:
+    :param addr:
         Phy ID
+    :type addr: int
 
-    :param int reg:
+    :param reg:
         Access location
+    :type reg: int
 
 .. _`pch_gbe_mdio_read.return`:
 
@@ -293,17 +293,21 @@ pch_gbe_mdio_write
 
     The write function for mii
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int addr:
+    :param addr:
         Phy ID (not used)
+    :type addr: int
 
-    :param int reg:
+    :param reg:
         Access location
+    :type reg: int
 
-    :param int data:
+    :param data:
         Write data
+    :type data: int
 
 .. _`pch_gbe_reset_task`:
 
@@ -314,8 +318,9 @@ pch_gbe_reset_task
 
     Reset processing at the time of transmission timeout
 
-    :param struct work_struct \*work:
+    :param work:
         Pointer of board private structure
+    :type work: struct work_struct \*
 
 .. _`pch_gbe_reinit_locked`:
 
@@ -326,8 +331,9 @@ pch_gbe_reinit_locked
 
     Re-initialization
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_reset`:
 
@@ -338,8 +344,9 @@ pch_gbe_reset
 
     Reset GbE
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_free_irq`:
 
@@ -350,8 +357,9 @@ pch_gbe_free_irq
 
     Free an interrupt
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_irq_disable`:
 
@@ -362,8 +370,9 @@ pch_gbe_irq_disable
 
     Mask off interrupt generation on the NIC
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_irq_enable`:
 
@@ -374,8 +383,9 @@ pch_gbe_irq_enable
 
     Enable default interrupt generation settings
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_setup_tctl`:
 
@@ -386,8 +396,9 @@ pch_gbe_setup_tctl
 
     configure the Transmit control registers
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_configure_tx`:
 
@@ -398,8 +409,9 @@ pch_gbe_configure_tx
 
     Configure Transmit Unit after Reset
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_setup_rctl`:
 
@@ -410,8 +422,9 @@ pch_gbe_setup_rctl
 
     Configure the receive control registers
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_configure_rx`:
 
@@ -422,8 +435,9 @@ pch_gbe_configure_rx
 
     Configure Receive Unit after Reset
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_unmap_and_free_tx_resource`:
 
@@ -434,11 +448,13 @@ pch_gbe_unmap_and_free_tx_resource
 
     Unmap and free tx socket buffer
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_buffer \*buffer_info:
+    :param buffer_info:
         Buffer information structure
+    :type buffer_info: struct pch_gbe_buffer \*
 
 .. _`pch_gbe_unmap_and_free_rx_resource`:
 
@@ -449,11 +465,13 @@ pch_gbe_unmap_and_free_rx_resource
 
     Unmap and free rx socket buffer
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_buffer \*buffer_info:
+    :param buffer_info:
         Buffer information structure
+    :type buffer_info: struct pch_gbe_buffer \*
 
 .. _`pch_gbe_clean_tx_ring`:
 
@@ -464,11 +482,13 @@ pch_gbe_clean_tx_ring
 
     Free Tx Buffers
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_tx_ring \*tx_ring:
+    :param tx_ring:
         Ring to be cleaned
+    :type tx_ring: struct pch_gbe_tx_ring \*
 
 .. _`pch_gbe_clean_rx_ring`:
 
@@ -479,11 +499,13 @@ pch_gbe_clean_rx_ring
 
     Free Rx Buffers
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_rx_ring \*rx_ring:
+    :param rx_ring:
         Ring to free buffers from
+    :type rx_ring: struct pch_gbe_rx_ring \*
 
 .. _`pch_gbe_watchdog`:
 
@@ -494,8 +516,9 @@ pch_gbe_watchdog
 
     Watchdog process
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`pch_gbe_tx_queue`:
 
@@ -506,14 +529,17 @@ pch_gbe_tx_queue
 
     Carry out queuing of the transmission data
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_tx_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring structure
+    :type tx_ring: struct pch_gbe_tx_ring \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Sockt buffer structure
+    :type skb: struct sk_buff \*
 
 .. _`pch_gbe_update_stats`:
 
@@ -524,8 +550,9 @@ pch_gbe_update_stats
 
     Update the board statistics counters
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_intr`:
 
@@ -536,11 +563,13 @@ pch_gbe_intr
 
     Interrupt Handler
 
-    :param int irq:
+    :param irq:
         Interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Pointer to a network interface device structure
+    :type data: void \*
 
 .. _`pch_gbe_intr.return`:
 
@@ -559,14 +588,17 @@ pch_gbe_alloc_rx_buffers
 
     Replace used receive buffers; legacy & extended
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_rx_ring \*rx_ring:
+    :param rx_ring:
         Rx descriptor ring
+    :type rx_ring: struct pch_gbe_rx_ring \*
 
-    :param int cleaned_count:
+    :param cleaned_count:
         Cleaned count
+    :type cleaned_count: int
 
 .. _`pch_gbe_alloc_tx_buffers`:
 
@@ -577,11 +609,13 @@ pch_gbe_alloc_tx_buffers
 
     Allocate transmit buffers
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_tx_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring
+    :type tx_ring: struct pch_gbe_tx_ring \*
 
 .. _`pch_gbe_clean_tx`:
 
@@ -592,11 +626,13 @@ pch_gbe_clean_tx
 
     Reclaim resources after transmit completes
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_tx_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring
+    :type tx_ring: struct pch_gbe_tx_ring \*
 
 .. _`pch_gbe_clean_tx.true`:
 
@@ -621,17 +657,21 @@ pch_gbe_clean_rx
 
     Send received data up the network stack; legacy
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_rx_ring \*rx_ring:
+    :param rx_ring:
         Rx descriptor ring
+    :type rx_ring: struct pch_gbe_rx_ring \*
 
-    :param int \*work_done:
+    :param work_done:
         Completed count
+    :type work_done: int \*
 
-    :param int work_to_do:
+    :param work_to_do:
         Request count
+    :type work_to_do: int
 
 .. _`pch_gbe_clean_rx.true`:
 
@@ -656,11 +696,13 @@ pch_gbe_setup_tx_resources
 
     Allocate Tx resources (Descriptors)
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_tx_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring (for a specific queue) to setup
+    :type tx_ring: struct pch_gbe_tx_ring \*
 
 .. _`pch_gbe_setup_tx_resources.return`:
 
@@ -685,11 +727,13 @@ pch_gbe_setup_rx_resources
 
     Allocate Rx resources (Descriptors)
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_rx_ring \*rx_ring:
+    :param rx_ring:
         Rx descriptor ring (for a specific queue) to setup
+    :type rx_ring: struct pch_gbe_rx_ring \*
 
 .. _`pch_gbe_setup_rx_resources.return`:
 
@@ -714,11 +758,13 @@ pch_gbe_free_tx_resources
 
     Free Tx Resources
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_tx_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring for a specific queue
+    :type tx_ring: struct pch_gbe_tx_ring \*
 
 .. _`pch_gbe_free_rx_resources`:
 
@@ -729,11 +775,13 @@ pch_gbe_free_rx_resources
 
     Free Rx Resources
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
-    :param struct pch_gbe_rx_ring \*rx_ring:
+    :param rx_ring:
         Ring to clean the resources from
+    :type rx_ring: struct pch_gbe_rx_ring \*
 
 .. _`pch_gbe_request_irq`:
 
@@ -744,8 +792,9 @@ pch_gbe_request_irq
 
     Allocate an interrupt line
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_request_irq.return`:
 
@@ -770,8 +819,9 @@ pch_gbe_up
 
     Up GbE network device
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_up.return`:
 
@@ -796,8 +846,9 @@ pch_gbe_down
 
     Down GbE network device
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_sw_init`:
 
@@ -808,8 +859,9 @@ pch_gbe_sw_init
 
     Initialize general software structures (struct pch_gbe_adapter)
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure to initialize
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_sw_init.return`:
 
@@ -834,8 +886,9 @@ pch_gbe_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`pch_gbe_open.return`:
 
@@ -860,8 +913,9 @@ pch_gbe_stop
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`pch_gbe_stop.return`:
 
@@ -879,11 +933,13 @@ pch_gbe_xmit_frame
 
     Packet transmitting start
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Socket buffer structure
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`pch_gbe_xmit_frame.return`:
 
@@ -902,8 +958,9 @@ pch_gbe_set_multi
 
     Multicast and Promiscuous mode set
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`pch_gbe_set_mac`:
 
@@ -914,11 +971,13 @@ pch_gbe_set_mac
 
     Change the Ethernet Address of the NIC
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*addr:
+    :param addr:
         Pointer to an address structure
+    :type addr: void \*
 
 .. _`pch_gbe_set_mac.return`:
 
@@ -937,11 +996,13 @@ pch_gbe_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         New value for maximum frame size
+    :type new_mtu: int
 
 .. _`pch_gbe_change_mtu.return`:
 
@@ -960,11 +1021,13 @@ pch_gbe_set_features
 
     Reset device after features changed
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param netdev_features_t features:
+    :param features:
         New features
+    :type features: netdev_features_t
 
 .. _`pch_gbe_set_features.return`:
 
@@ -982,14 +1045,17 @@ pch_gbe_ioctl
 
     Controls register through a MII interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         Pointer to ifr structure
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         Control command
+    :type cmd: int
 
 .. _`pch_gbe_ioctl.return`:
 
@@ -1014,8 +1080,9 @@ pch_gbe_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`pch_gbe_napi_poll`:
 
@@ -1026,11 +1093,13 @@ pch_gbe_napi_poll
 
     NAPI receive and transfer polling callback
 
-    :param struct napi_struct \*napi:
+    :param napi:
         Pointer of polling device struct
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         The maximum number of a packet
+    :type budget: int
 
 .. _`pch_gbe_napi_poll.false`:
 
@@ -1055,8 +1124,9 @@ pch_gbe_netpoll
 
     Used by things like netconsole to send skbs
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
 .. This file was automatic generated / don't edit.
 

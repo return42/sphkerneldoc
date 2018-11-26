@@ -10,11 +10,13 @@
 
     check for POSIX terminal changes
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to check
+    :type tty: struct tty_struct \*
 
-    :param int sig:
+    :param sig:
         *undescribed*
+    :type sig: int
 
 .. _`__tty_check_change.description`:
 
@@ -41,8 +43,9 @@ ctrl_lock
 
     set the controlling terminal
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`__proc_set_tty.description`:
 
@@ -70,11 +73,13 @@ tty_signal_session_leader
 
     sends SIGHUP to session leader \ ``tty``\             controlling tty \ ``exit_session``\    if non-zero, signal all foreground group processes
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param int exit_session:
+    :param exit_session:
         *undescribed*
+    :type exit_session: int
 
 .. _`tty_signal_session_leader.description`:
 
@@ -97,8 +102,9 @@ disassociate_ctty
 
     disconnect controlling tty
 
-    :param int on_exit:
+    :param on_exit:
         true if exiting so need to "hang up" the session
+    :type on_exit: int
 
 .. _`disassociate_ctty.description`:
 
@@ -142,14 +148,17 @@ tiocsctty
 
     set controlling tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty structure
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param int arg:
+    :param arg:
         user argument
+    :type arg: int
 
 .. _`tiocsctty.description`:
 
@@ -177,8 +186,9 @@ tty_get_pgrp
 
     return a ref counted pgrp pid
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to read
+    :type tty: struct tty_struct \*
 
 .. _`tty_get_pgrp.description`:
 
@@ -197,14 +207,17 @@ tiocgpgrp
 
     get process group
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty passed by user
+    :type tty: struct tty_struct \*
 
-    :param struct tty_struct \*real_tty:
+    :param real_tty:
         tty side of the tty passed by the user if a pty else the tty
+    :type real_tty: struct tty_struct \*
 
-    :param pid_t __user \*p:
+    :param p:
         returned pid
+    :type p: pid_t __user \*
 
 .. _`tiocgpgrp.description`:
 
@@ -230,14 +243,17 @@ tiocspgrp
 
     attempt to set process group
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty passed by user
+    :type tty: struct tty_struct \*
 
-    :param struct tty_struct \*real_tty:
+    :param real_tty:
         tty side device matching tty passed by user
+    :type real_tty: struct tty_struct \*
 
-    :param pid_t __user \*p:
+    :param p:
         pid pointer
+    :type p: pid_t __user \*
 
 .. _`tiocspgrp.description`:
 
@@ -263,14 +279,17 @@ tiocgsid
 
     get session id
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty passed by user
+    :type tty: struct tty_struct \*
 
-    :param struct tty_struct \*real_tty:
+    :param real_tty:
         tty side of the tty passed by the user if a pty else the tty
+    :type real_tty: struct tty_struct \*
 
-    :param pid_t __user \*p:
+    :param p:
         pointer to returned session id
+    :type p: pid_t __user \*
 
 .. _`tiocgsid.description`:
 

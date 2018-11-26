@@ -10,8 +10,9 @@ tiqdio_thinint_handler
 
     thin interrupt handler for qdio
 
-    :param struct airq_struct \*airq:
+    :param airq:
         pointer to adapter interrupt descriptor
+    :type airq: struct airq_struct \*
 
 .. This file was automatic generated / don't edit.
 

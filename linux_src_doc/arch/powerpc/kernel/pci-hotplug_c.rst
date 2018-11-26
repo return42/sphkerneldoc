@@ -10,8 +10,9 @@ pcibios_release_device
 
     release PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pcibios_release_device.description`:
 
@@ -29,8 +30,9 @@ pci_hp_remove_devices
 
     remove all devices under this bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         the indicated PCI bus
+    :type bus: struct pci_bus \*
 
 .. _`pci_hp_remove_devices.description`:
 
@@ -49,8 +51,9 @@ pci_hp_add_devices
 
     adds new pci devices to bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         the indicated PCI bus
+    :type bus: struct pci_bus \*
 
 .. _`pci_hp_add_devices.description`:
 

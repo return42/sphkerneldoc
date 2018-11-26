@@ -10,8 +10,9 @@ timespec64_to_ns
 
     Convert timespec64 to nanoseconds
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         pointer to the timespec64 variable to be converted
+    :type ts: const struct timespec64 \*
 
 .. _`timespec64_to_ns.description`:
 
@@ -30,8 +31,9 @@ ns_to_timespec64
 
     Convert nanoseconds to timespec64
 
-    :param const s64 nsec:
+    :param nsec:
         the nanoseconds value to be converted
+    :type nsec: const s64
 
 .. _`ns_to_timespec64.description`:
 
@@ -49,11 +51,13 @@ timespec64_add_ns
 
     Adds nanoseconds to a timespec64
 
-    :param struct timespec64 \*a:
+    :param a:
         pointer to timespec64 to be incremented
+    :type a: struct timespec64 \*
 
-    :param u64 ns:
+    :param ns:
         unsigned nanoseconds value to be added
+    :type ns: u64
 
 .. _`timespec64_add_ns.description`:
 

@@ -66,14 +66,17 @@ crossbar_domain_free
 
     unmap/free a crossbar<->irq connection
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain of irq to unmap
+    :type domain: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         virq number
+    :type virq: unsigned int
 
-    :param unsigned int nr_irqs:
+    :param nr_irqs:
         number of irqs to free
+    :type nr_irqs: unsigned int
 
 .. _`crossbar_domain_free.description`:
 

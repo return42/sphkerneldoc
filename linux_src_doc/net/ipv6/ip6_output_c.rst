@@ -10,17 +10,21 @@ ip6_dst_lookup
 
     perform route lookup on flow
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sock \*sk:
+    :param sk:
         socket which provides route info
+    :type sk: struct sock \*
 
-    :param struct dst_entry \*\*dst:
+    :param dst:
         pointer to dst_entry \* for result
+    :type dst: struct dst_entry \*\*
 
-    :param struct flowi6 \*fl6:
+    :param fl6:
         flow to lookup
+    :type fl6: struct flowi6 \*
 
 .. _`ip6_dst_lookup.description`:
 
@@ -40,14 +44,17 @@ ip6_dst_lookup_flow
 
     perform route lookup on flow with ipsec
 
-    :param const struct sock \*sk:
+    :param sk:
         socket which provides route info
+    :type sk: const struct sock \*
 
-    :param struct flowi6 \*fl6:
+    :param fl6:
         flow to lookup
+    :type fl6: struct flowi6 \*
 
-    :param const struct in6_addr \*final_dst:
+    :param final_dst:
         final destination address for ipsec lookup
+    :type final_dst: const struct in6_addr \*
 
 .. _`ip6_dst_lookup_flow.description`:
 
@@ -68,17 +75,21 @@ ip6_sk_dst_lookup_flow
 
     perform socket cached route lookup on flow
 
-    :param struct sock \*sk:
+    :param sk:
         socket which provides the dst cache and route info
+    :type sk: struct sock \*
 
-    :param struct flowi6 \*fl6:
+    :param fl6:
         flow to lookup
+    :type fl6: struct flowi6 \*
 
-    :param const struct in6_addr \*final_dst:
+    :param final_dst:
         final destination address for ipsec lookup
+    :type final_dst: const struct in6_addr \*
 
-    :param bool connected:
+    :param connected:
         whether \ ``sk``\  is connected or not
+    :type connected: bool
 
 .. _`ip6_sk_dst_lookup_flow.description`:
 

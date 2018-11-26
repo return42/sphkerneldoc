@@ -10,8 +10,9 @@ brcmf_skb_is_iapp
 
     checks if skb is an IAPP packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to check
+    :type skb: struct sk_buff \*
 
 .. This file was automatic generated / don't edit.
 

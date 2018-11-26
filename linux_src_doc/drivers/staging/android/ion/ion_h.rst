@@ -307,7 +307,6 @@ Definition
         spinlock_t free_lock;
         wait_queue_head_t waitqueue;
         struct task_struct *task;
-        int (*debug_show)(struct ion_heap *heap, struct seq_file *s, void *unused);
     }
 
 .. _`ion_heap.members`:
@@ -357,10 +356,6 @@ waitqueue
 task
     task struct of deferred free thread
 
-debug_show
-    called when heap debug file is read to add any
-    heap specific debug info to output
-
 .. _`ion_heap.description`:
 
 Description
@@ -380,8 +375,9 @@ ion_device_add_heap
 
     adds a heap to the ion device
 
-    :param struct ion_heap \*heap:
+    :param heap:
         the heap to add
+    :type heap: struct ion_heap \*
 
 .. _`ion_heap_map_kernel`:
 
@@ -392,11 +388,13 @@ ion_heap_map_kernel
 
     and vaddr fields
 
-    :param struct ion_heap \*heap:
+    :param heap:
         *undescribed*
+    :type heap: struct ion_heap \*
 
-    :param struct ion_buffer \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: struct ion_buffer \*
 
 .. _`ion_heap_init_shrinker`:
 
@@ -405,8 +403,9 @@ ion_heap_init_shrinker
 
 .. c:function:: int ion_heap_init_shrinker(struct ion_heap *heap)
 
-    :param struct ion_heap \*heap:
+    :param heap:
         the heap
+    :type heap: struct ion_heap \*
 
 .. _`ion_heap_init_shrinker.description`:
 
@@ -426,8 +425,9 @@ ion_heap_init_deferred_free
 
     - initialize deferred free functionality
 
-    :param struct ion_heap \*heap:
+    :param heap:
         the heap
+    :type heap: struct ion_heap \*
 
 .. _`ion_heap_init_deferred_free.description`:
 
@@ -447,11 +447,13 @@ ion_heap_freelist_add
 
     add a buffer to the deferred free list
 
-    :param struct ion_heap \*heap:
+    :param heap:
         the heap
+    :type heap: struct ion_heap \*
 
-    :param struct ion_buffer \*buffer:
+    :param buffer:
         the buffer
+    :type buffer: struct ion_buffer \*
 
 .. _`ion_heap_freelist_add.description`:
 
@@ -469,11 +471,13 @@ ion_heap_freelist_drain
 
     drain the deferred free list
 
-    :param struct ion_heap \*heap:
+    :param heap:
         the heap
+    :type heap: struct ion_heap \*
 
-    :param size_t size:
+    :param size:
         amount of memory to drain in bytes
+    :type size: size_t
 
 .. _`ion_heap_freelist_drain.description`:
 
@@ -494,11 +498,13 @@ ion_heap_freelist_shrink
 
     drain the deferred free list, skipping any heap-specific pooling or caching mechanisms
 
-    :param struct ion_heap \*heap:
+    :param heap:
         the heap
+    :type heap: struct ion_heap \*
 
-    :param size_t size:
+    :param size:
         amount of memory to drain in bytes
+    :type size: size_t
 
 .. _`ion_heap_freelist_shrink.description`:
 
@@ -526,8 +532,9 @@ ion_heap_freelist_size
 
     returns the size of the freelist in bytes
 
-    :param struct ion_heap \*heap:
+    :param heap:
         the heap
+    :type heap: struct ion_heap \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,9 +10,10 @@ x86_match_cpu
 
     match current CPU again an array of x86_cpu_ids
 
-    :param const struct x86_cpu_id \*match:
+    :param match:
         Pointer to array of x86_cpu_ids. Last entry terminated with
         {}.
+    :type match: const struct x86_cpu_id \*
 
 .. _`x86_match_cpu.description`:
 

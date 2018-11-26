@@ -40,7 +40,7 @@ inputq
     data input queue; will only carry SOCK_WAKEUP messages
 
 dests
-    *undescribed*
+    array keeping number of reachable destinations per bearer
 
 primary_bearer
     a bearer having links to all broadcast destinations, if any
@@ -55,7 +55,7 @@ rc_ratio
     dest count as percentage of cluster size where send method changes
 
 bc_threshold
-    calculated drom rc_ratio; if dests > threshold use broadcast
+    calculated from rc_ratio; if dests > threshold use broadcast
 
 .. This file was automatic generated / don't edit.
 

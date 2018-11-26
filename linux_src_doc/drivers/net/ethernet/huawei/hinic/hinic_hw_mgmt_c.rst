@@ -10,14 +10,17 @@ hinic_register_mgmt_msg_cb
 
     register msg handler for a msg from a module
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param enum hinic_mod_type mod:
+    :param mod:
         module in the chip that this handler will handle its messages
+    :type mod: enum hinic_mod_type
 
-    :param void \*handle:
+    :param handle:
         private data for the callback
+    :type handle: void \*
 
     :param void (\*callback)(void \*handle, u8 cmd, void \*buf_in, u16 in_size, void \*buf_out, u16 \*out_size):
         the handler that will handle messages
@@ -31,11 +34,13 @@ hinic_unregister_mgmt_msg_cb
 
     unregister msg handler for a msg from a module
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param enum hinic_mod_type mod:
+    :param mod:
         module in the chip that this handler handles its messages
+    :type mod: enum hinic_mod_type
 
 .. _`prepare_header`:
 
@@ -46,26 +51,33 @@ prepare_header
 
     prepare the header of the message
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param u16 msg_len:
+    :param msg_len:
         the length of the message
+    :type msg_len: u16
 
-    :param enum hinic_mod_type mod:
+    :param mod:
         module in the chip that will get the message
+    :type mod: enum hinic_mod_type
 
-    :param enum msg_ack_type ack_type:
+    :param ack_type:
         ask for response
+    :type ack_type: enum msg_ack_type
 
-    :param enum mgmt_direction_type direction:
+    :param direction:
         the direction of the message
+    :type direction: enum mgmt_direction_type
 
-    :param u16 cmd:
+    :param cmd:
         command of the message
+    :type cmd: u16
 
-    :param u16 msg_id:
+    :param msg_id:
         message id
+    :type msg_id: u16
 
 .. _`prepare_header.description`:
 
@@ -83,17 +95,21 @@ prepare_mgmt_cmd
 
     prepare the mgmt command
 
-    :param u8 \*mgmt_cmd:
+    :param mgmt_cmd:
         pointer to the command to prepare
+    :type mgmt_cmd: u8 \*
 
-    :param u64 \*header:
+    :param header:
         pointer of the header for the message
+    :type header: u64 \*
 
-    :param u8 \*msg:
+    :param msg:
         the data of the message
+    :type msg: u8 \*
 
-    :param u16 msg_len:
+    :param msg_len:
         the length of the message
+    :type msg_len: u16
 
 .. _`mgmt_msg_len`:
 
@@ -104,8 +120,9 @@ mgmt_msg_len
 
     calculate the total message length
 
-    :param u16 msg_data_len:
+    :param msg_data_len:
         the length of the message data
+    :type msg_data_len: u16
 
 .. _`mgmt_msg_len.description`:
 
@@ -123,29 +140,37 @@ send_msg_to_mgmt
 
     send message to mgmt by API CMD
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param enum hinic_mod_type mod:
+    :param mod:
         module in the chip that will get the message
+    :type mod: enum hinic_mod_type
 
-    :param u8 cmd:
+    :param cmd:
         command of the message
+    :type cmd: u8
 
-    :param u8 \*data:
+    :param data:
         the msg data
+    :type data: u8 \*
 
-    :param u16 data_len:
+    :param data_len:
         the msg data length
+    :type data_len: u16
 
-    :param enum msg_ack_type ack_type:
+    :param ack_type:
         ask for response
+    :type ack_type: enum msg_ack_type
 
-    :param enum mgmt_direction_type direction:
+    :param direction:
         the direction of the original message
+    :type direction: enum mgmt_direction_type
 
-    :param u16 resp_msg_id:
+    :param resp_msg_id:
         msg id to response for
+    :type resp_msg_id: u16
 
 .. _`send_msg_to_mgmt.description`:
 
@@ -163,32 +188,41 @@ msg_to_mgmt_sync
 
     send sync message to mgmt
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param enum hinic_mod_type mod:
+    :param mod:
         module in the chip that will get the message
+    :type mod: enum hinic_mod_type
 
-    :param u8 cmd:
+    :param cmd:
         command of the message
+    :type cmd: u8
 
-    :param u8 \*buf_in:
+    :param buf_in:
         the msg data
+    :type buf_in: u8 \*
 
-    :param u16 in_size:
+    :param in_size:
         the msg data length
+    :type in_size: u16
 
-    :param u8 \*buf_out:
+    :param buf_out:
         response
+    :type buf_out: u8 \*
 
-    :param u16 \*out_size:
+    :param out_size:
         response length
+    :type out_size: u16 \*
 
-    :param enum mgmt_direction_type direction:
+    :param direction:
         the direction of the original message
+    :type direction: enum mgmt_direction_type
 
-    :param u16 resp_msg_id:
+    :param resp_msg_id:
         msg id to response for
+    :type resp_msg_id: u16
 
 .. _`msg_to_mgmt_sync.description`:
 
@@ -206,26 +240,33 @@ msg_to_mgmt_async
 
     send message to mgmt without response
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param enum hinic_mod_type mod:
+    :param mod:
         module in the chip that will get the message
+    :type mod: enum hinic_mod_type
 
-    :param u8 cmd:
+    :param cmd:
         command of the message
+    :type cmd: u8
 
-    :param u8 \*buf_in:
+    :param buf_in:
         the msg data
+    :type buf_in: u8 \*
 
-    :param u16 in_size:
+    :param in_size:
         the msg data length
+    :type in_size: u16
 
-    :param enum mgmt_direction_type direction:
+    :param direction:
         the direction of the original message
+    :type direction: enum mgmt_direction_type
 
-    :param u16 resp_msg_id:
+    :param resp_msg_id:
         msg id to response for
+    :type resp_msg_id: u16
 
 .. _`msg_to_mgmt_async.description`:
 
@@ -243,29 +284,37 @@ hinic_msg_to_mgmt
 
     send message to mgmt
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param enum hinic_mod_type mod:
+    :param mod:
         module in the chip that will get the message
+    :type mod: enum hinic_mod_type
 
-    :param u8 cmd:
+    :param cmd:
         command of the message
+    :type cmd: u8
 
-    :param void \*buf_in:
+    :param buf_in:
         the msg data
+    :type buf_in: void \*
 
-    :param u16 in_size:
+    :param in_size:
         the msg data length
+    :type in_size: u16
 
-    :param void \*buf_out:
+    :param buf_out:
         response
+    :type buf_out: void \*
 
-    :param u16 \*out_size:
+    :param out_size:
         returned response length
+    :type out_size: u16 \*
 
-    :param enum hinic_mgmt_msg_type sync:
+    :param sync:
         sync msg or async msg
+    :type sync: enum hinic_mgmt_msg_type
 
 .. _`hinic_msg_to_mgmt.description`:
 
@@ -283,11 +332,13 @@ mgmt_recv_msg_handler
 
     handler for message from mgmt cpu
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param struct hinic_recv_msg \*recv_msg:
+    :param recv_msg:
         received message details
+    :type recv_msg: struct hinic_recv_msg \*
 
 .. _`mgmt_resp_msg_handler`:
 
@@ -298,11 +349,13 @@ mgmt_resp_msg_handler
 
     handler for a response message from mgmt cpu
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param struct hinic_recv_msg \*recv_msg:
+    :param recv_msg:
         received message details
+    :type recv_msg: struct hinic_recv_msg \*
 
 .. _`recv_mgmt_msg_handler`:
 
@@ -313,14 +366,17 @@ recv_mgmt_msg_handler
 
     handler for a message from mgmt cpu
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param u64 \*header:
+    :param header:
         the header of the message
+    :type header: u64 \*
 
-    :param struct hinic_recv_msg \*recv_msg:
+    :param recv_msg:
         received message details
+    :type recv_msg: struct hinic_recv_msg \*
 
 .. _`mgmt_msg_aeqe_handler`:
 
@@ -331,14 +387,17 @@ mgmt_msg_aeqe_handler
 
     handler for a mgmt message event
 
-    :param void \*handle:
+    :param handle:
         PF to MGMT channel
+    :type handle: void \*
 
-    :param void \*data:
+    :param data:
         the header of the message
+    :type data: void \*
 
-    :param u8 size:
+    :param size:
         unused
+    :type size: u8
 
 .. _`alloc_recv_msg`:
 
@@ -349,11 +408,13 @@ alloc_recv_msg
 
     allocate receive message memory
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param struct hinic_recv_msg \*recv_msg:
+    :param recv_msg:
         pointer that will hold the allocated data
+    :type recv_msg: struct hinic_recv_msg \*
 
 .. _`alloc_recv_msg.description`:
 
@@ -371,8 +432,9 @@ alloc_msg_buf
 
     allocate all the message buffers of PF to MGMT channel
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
 .. _`alloc_msg_buf.description`:
 
@@ -390,11 +452,13 @@ hinic_pf_to_mgmt_init
 
     initialize PF to MGMT channel
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         HW interface the PF to MGMT will use for accessing HW
+    :type hwif: struct hinic_hwif \*
 
 .. _`hinic_pf_to_mgmt_init.description`:
 
@@ -412,8 +476,9 @@ hinic_pf_to_mgmt_free
 
     free PF to MGMT channel
 
-    :param struct hinic_pf_to_mgmt \*pf_to_mgmt:
+    :param pf_to_mgmt:
         PF to MGMT channel
+    :type pf_to_mgmt: struct hinic_pf_to_mgmt \*
 
 .. This file was automatic generated / don't edit.
 

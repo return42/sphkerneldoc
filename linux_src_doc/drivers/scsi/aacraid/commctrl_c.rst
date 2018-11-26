@@ -27,11 +27,13 @@ open_getadapter_fib
 
     Get the next fib
 
-    :param struct aac_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct aac_dev \*
 
-    :param void __user \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void __user \*
 
 .. _`open_getadapter_fib.description`:
 
@@ -50,11 +52,13 @@ next_getadapter_fib
 
     get the next fib
 
-    :param struct aac_dev \*dev:
+    :param dev:
         adapter to use
+    :type dev: struct aac_dev \*
 
-    :param void __user \*arg:
+    :param arg:
         ioctl argument
+    :type arg: void __user \*
 
 .. _`next_getadapter_fib.description`:
 
@@ -73,11 +77,13 @@ close_getadapter_fib
 
     close down user fib context
 
-    :param struct aac_dev \*dev:
+    :param dev:
         adapter
+    :type dev: struct aac_dev \*
 
-    :param void __user \*arg:
+    :param arg:
         ioctl arguments
+    :type arg: void __user \*
 
 .. _`close_getadapter_fib.description`:
 
@@ -95,11 +101,13 @@ check_revision
 
     close down user fib context
 
-    :param struct aac_dev \*dev:
+    :param dev:
         adapter
+    :type dev: struct aac_dev \*
 
-    :param void __user \*arg:
+    :param arg:
         ioctl arguments
+    :type arg: void __user \*
 
 .. _`check_revision.description`:
 

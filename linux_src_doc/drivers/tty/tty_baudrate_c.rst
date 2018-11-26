@@ -8,8 +8,9 @@ tty_termios_baud_rate
 
 .. c:function:: speed_t tty_termios_baud_rate(struct ktermios *termios)
 
-    :param struct ktermios \*termios:
+    :param termios:
         termios structure
+    :type termios: struct ktermios \*
 
 .. _`tty_termios_baud_rate.description`:
 
@@ -35,8 +36,9 @@ tty_termios_input_baud_rate
 
 .. c:function:: speed_t tty_termios_input_baud_rate(struct ktermios *termios)
 
-    :param struct ktermios \*termios:
+    :param termios:
         termios structure
+    :type termios: struct ktermios \*
 
 .. _`tty_termios_input_baud_rate.description`:
 
@@ -62,14 +64,17 @@ tty_termios_encode_baud_rate
 
 .. c:function:: void tty_termios_encode_baud_rate(struct ktermios *termios, speed_t ibaud, speed_t obaud)
 
-    :param struct ktermios \*termios:
+    :param termios:
         ktermios structure holding user requested state
+    :type termios: struct ktermios \*
 
-    :param speed_t ibaud:
+    :param ibaud:
         *undescribed*
+    :type ibaud: speed_t
 
-    :param speed_t obaud:
+    :param obaud:
         *undescribed*
+    :type obaud: speed_t
 
 .. _`tty_termios_encode_baud_rate.description`:
 
@@ -105,14 +110,17 @@ tty_encode_baud_rate
 
     set baud rate of the tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param speed_t ibaud:
+    :param ibaud:
         input baud rate
+    :type ibaud: speed_t
 
-    :param speed_t obaud:
+    :param obaud:
         *undescribed*
+    :type obaud: speed_t
 
 .. _`tty_encode_baud_rate.description`:
 

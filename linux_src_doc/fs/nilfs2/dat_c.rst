@@ -44,11 +44,13 @@ nilfs_dat_mark_dirty
 
 .. c:function:: int nilfs_dat_mark_dirty(struct inode *dat, __u64 vblocknr)
 
-    :param struct inode \*dat:
+    :param dat:
         DAT file inode
+    :type dat: struct inode \*
 
-    :param __u64 vblocknr:
+    :param vblocknr:
         virtual block number
+    :type vblocknr: __u64
 
 .. _`nilfs_dat_mark_dirty.return-value`:
 
@@ -71,14 +73,17 @@ nilfs_dat_freev
 
     free virtual block numbers
 
-    :param struct inode \*dat:
+    :param dat:
         DAT file inode
+    :type dat: struct inode \*
 
-    :param __u64 \*vblocknrs:
+    :param vblocknrs:
         array of virtual block numbers
+    :type vblocknrs: __u64 \*
 
-    :param size_t nitems:
+    :param nitems:
         number of virtual block numbers
+    :type nitems: size_t
 
 .. _`nilfs_dat_freev.description`:
 
@@ -111,14 +116,17 @@ nilfs_dat_move
 
     change a block number
 
-    :param struct inode \*dat:
+    :param dat:
         DAT file inode
+    :type dat: struct inode \*
 
-    :param __u64 vblocknr:
+    :param vblocknr:
         virtual block number
+    :type vblocknr: __u64
 
-    :param sector_t blocknr:
+    :param blocknr:
         block number
+    :type blocknr: sector_t
 
 .. _`nilfs_dat_move.description`:
 
@@ -149,14 +157,17 @@ nilfs_dat_translate
 
     translate a virtual block number to a block number
 
-    :param struct inode \*dat:
+    :param dat:
         DAT file inode
+    :type dat: struct inode \*
 
-    :param __u64 vblocknr:
+    :param vblocknr:
         virtual block number
+    :type vblocknr: __u64
 
-    :param sector_t \*blocknrp:
+    :param blocknrp:
         pointer to a block number
+    :type blocknrp: sector_t \*
 
 .. _`nilfs_dat_translate.description`:
 
@@ -190,17 +201,21 @@ nilfs_dat_read
 
     read or get dat inode
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
-    :param size_t entry_size:
+    :param entry_size:
         size of a dat entry
+    :type entry_size: size_t
 
-    :param struct nilfs_inode \*raw_inode:
+    :param raw_inode:
         on-disk dat inode
+    :type raw_inode: struct nilfs_inode \*
 
-    :param struct inode \*\*inodep:
+    :param inodep:
         buffer to store the inode
+    :type inodep: struct inode \*\*
 
 .. This file was automatic generated / don't edit.
 

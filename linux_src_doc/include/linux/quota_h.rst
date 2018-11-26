@@ -10,14 +10,17 @@ make_kqid
 
     Map a user-namespace, type, qid tuple into a kqid.
 
-    :param struct user_namespace \*from:
+    :param from:
         User namespace that the qid is in
+    :type from: struct user_namespace \*
 
-    :param enum quota_type type:
+    :param type:
         The type of quota
+    :type type: enum quota_type
 
-    :param qid_t qid:
+    :param qid:
         Quota identifier
+    :type qid: qid_t
 
 .. _`make_kqid.description`:
 
@@ -41,8 +44,9 @@ make_kqid_invalid
 
     Explicitly make an invalid kqid
 
-    :param enum quota_type type:
+    :param type:
         The type of quota identifier
+    :type type: enum quota_type
 
 .. _`make_kqid_invalid.description`:
 
@@ -60,8 +64,9 @@ make_kqid_uid
 
     Make a kqid from a kuid
 
-    :param kuid_t uid:
+    :param uid:
         The kuid to make the quota identifier from
+    :type uid: kuid_t
 
 .. _`make_kqid_gid`:
 
@@ -72,8 +77,9 @@ make_kqid_gid
 
     Make a kqid from a kgid
 
-    :param kgid_t gid:
+    :param gid:
         The kgid to make the quota identifier from
+    :type gid: kgid_t
 
 .. _`make_kqid_projid`:
 
@@ -84,8 +90,9 @@ make_kqid_projid
 
     Make a kqid from a projid
 
-    :param kprojid_t projid:
+    :param projid:
         The kprojid to make the quota identifier from
+    :type projid: kprojid_t
 
 .. _`qid_has_mapping`:
 
@@ -96,11 +103,13 @@ qid_has_mapping
 
     Report if a qid maps into a user namespace.
 
-    :param struct user_namespace \*ns:
+    :param ns:
         The user namespace to see if a value maps into.
+    :type ns: struct user_namespace \*
 
-    :param struct kqid qid:
+    :param qid:
         The kernel internal quota identifier to test.
+    :type qid: struct kqid
 
 .. This file was automatic generated / don't edit.
 

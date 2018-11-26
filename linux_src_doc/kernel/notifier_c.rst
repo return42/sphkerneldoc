@@ -10,22 +10,27 @@ notifier_call_chain
 
     Informs the registered notifiers about an event.
 
-    :param struct notifier_block \*\*nl:
+    :param nl:
         Pointer to head of the blocking notifier chain
+    :type nl: struct notifier_block \*\*
 
-    :param unsigned long val:
+    :param val:
         Value passed unmodified to notifier function
+    :type val: unsigned long
 
-    :param void \*v:
+    :param v:
         Pointer passed unmodified to notifier function
+    :type v: void \*
 
-    :param int nr_to_call:
+    :param nr_to_call:
         Number of notifier functions to be called. Don't care
         value of this parameter is -1.
+    :type nr_to_call: int
 
-    :param int \*nr_calls:
+    :param nr_calls:
         Records the number of notifications sent. Don't care
         value of this field is NULL.
+    :type nr_calls: int \*
 
 .. _`atomic_notifier_chain_register`:
 
@@ -36,11 +41,13 @@ atomic_notifier_chain_register
 
     Add notifier to an atomic notifier chain
 
-    :param struct atomic_notifier_head \*nh:
+    :param nh:
         Pointer to head of the atomic notifier chain
+    :type nh: struct atomic_notifier_head \*
 
-    :param struct notifier_block \*n:
+    :param n:
         New entry in notifier chain
+    :type n: struct notifier_block \*
 
 .. _`atomic_notifier_chain_register.description`:
 
@@ -60,11 +67,13 @@ atomic_notifier_chain_unregister
 
     Remove notifier from an atomic notifier chain
 
-    :param struct atomic_notifier_head \*nh:
+    :param nh:
         Pointer to head of the atomic notifier chain
+    :type nh: struct atomic_notifier_head \*
 
-    :param struct notifier_block \*n:
+    :param n:
         Entry to remove from notifier chain
+    :type n: struct notifier_block \*
 
 .. _`atomic_notifier_chain_unregister.description`:
 
@@ -84,20 +93,25 @@ Returns zero on success or \ ``-ENOENT``\  on failure.
 
     Call functions in an atomic notifier chain
 
-    :param struct atomic_notifier_head \*nh:
+    :param nh:
         Pointer to head of the atomic notifier chain
+    :type nh: struct atomic_notifier_head \*
 
-    :param unsigned long val:
+    :param val:
         Value passed unmodified to notifier function
+    :type val: unsigned long
 
-    :param void \*v:
+    :param v:
         Pointer passed unmodified to notifier function
+    :type v: void \*
 
-    :param int nr_to_call:
+    :param nr_to_call:
         See the comment for notifier_call_chain.
+    :type nr_to_call: int
 
-    :param int \*nr_calls:
+    :param nr_calls:
         See the comment for notifier_call_chain.
+    :type nr_calls: int \*
 
 .. _`__atomic_notifier_call_chain.description`:
 
@@ -124,11 +138,13 @@ blocking_notifier_chain_register
 
     Add notifier to a blocking notifier chain
 
-    :param struct blocking_notifier_head \*nh:
+    :param nh:
         Pointer to head of the blocking notifier chain
+    :type nh: struct blocking_notifier_head \*
 
-    :param struct notifier_block \*n:
+    :param n:
         New entry in notifier chain
+    :type n: struct notifier_block \*
 
 .. _`blocking_notifier_chain_register.description`:
 
@@ -149,11 +165,13 @@ blocking_notifier_chain_cond_register
 
     Cond add notifier to a blocking notifier chain
 
-    :param struct blocking_notifier_head \*nh:
+    :param nh:
         Pointer to head of the blocking notifier chain
+    :type nh: struct blocking_notifier_head \*
 
-    :param struct notifier_block \*n:
+    :param n:
         New entry in notifier chain
+    :type n: struct notifier_block \*
 
 .. _`blocking_notifier_chain_cond_register.description`:
 
@@ -175,11 +193,13 @@ blocking_notifier_chain_unregister
 
     Remove notifier from a blocking notifier chain
 
-    :param struct blocking_notifier_head \*nh:
+    :param nh:
         Pointer to head of the blocking notifier chain
+    :type nh: struct blocking_notifier_head \*
 
-    :param struct notifier_block \*n:
+    :param n:
         Entry to remove from notifier chain
+    :type n: struct notifier_block \*
 
 .. _`blocking_notifier_chain_unregister.description`:
 
@@ -200,20 +220,25 @@ Returns zero on success or \ ``-ENOENT``\  on failure.
 
     Call functions in a blocking notifier chain
 
-    :param struct blocking_notifier_head \*nh:
+    :param nh:
         Pointer to head of the blocking notifier chain
+    :type nh: struct blocking_notifier_head \*
 
-    :param unsigned long val:
+    :param val:
         Value passed unmodified to notifier function
+    :type val: unsigned long
 
-    :param void \*v:
+    :param v:
         Pointer passed unmodified to notifier function
+    :type v: void \*
 
-    :param int nr_to_call:
+    :param nr_to_call:
         See comment for notifier_call_chain.
+    :type nr_to_call: int
 
-    :param int \*nr_calls:
+    :param nr_calls:
         See comment for notifier_call_chain.
+    :type nr_calls: int \*
 
 .. _`__blocking_notifier_call_chain.description`:
 
@@ -239,11 +264,13 @@ raw_notifier_chain_register
 
     Add notifier to a raw notifier chain
 
-    :param struct raw_notifier_head \*nh:
+    :param nh:
         Pointer to head of the raw notifier chain
+    :type nh: struct raw_notifier_head \*
 
-    :param struct notifier_block \*n:
+    :param n:
         New entry in notifier chain
+    :type n: struct notifier_block \*
 
 .. _`raw_notifier_chain_register.description`:
 
@@ -264,11 +291,13 @@ raw_notifier_chain_unregister
 
     Remove notifier from a raw notifier chain
 
-    :param struct raw_notifier_head \*nh:
+    :param nh:
         Pointer to head of the raw notifier chain
+    :type nh: struct raw_notifier_head \*
 
-    :param struct notifier_block \*n:
+    :param n:
         Entry to remove from notifier chain
+    :type n: struct notifier_block \*
 
 .. _`raw_notifier_chain_unregister.description`:
 
@@ -289,20 +318,25 @@ Returns zero on success or \ ``-ENOENT``\  on failure.
 
     Call functions in a raw notifier chain
 
-    :param struct raw_notifier_head \*nh:
+    :param nh:
         Pointer to head of the raw notifier chain
+    :type nh: struct raw_notifier_head \*
 
-    :param unsigned long val:
+    :param val:
         Value passed unmodified to notifier function
+    :type val: unsigned long
 
-    :param void \*v:
+    :param v:
         Pointer passed unmodified to notifier function
+    :type v: void \*
 
-    :param int nr_to_call:
+    :param nr_to_call:
         See comment for notifier_call_chain.
+    :type nr_to_call: int
 
-    :param int \*nr_calls:
+    :param nr_calls:
         See comment for notifier_call_chain
+    :type nr_calls: int \*
 
 .. _`__raw_notifier_call_chain.description`:
 
@@ -329,11 +363,13 @@ srcu_notifier_chain_register
 
     Add notifier to an SRCU notifier chain
 
-    :param struct srcu_notifier_head \*nh:
+    :param nh:
         Pointer to head of the SRCU notifier chain
+    :type nh: struct srcu_notifier_head \*
 
-    :param struct notifier_block \*n:
+    :param n:
         New entry in notifier chain
+    :type n: struct notifier_block \*
 
 .. _`srcu_notifier_chain_register.description`:
 
@@ -354,11 +390,13 @@ srcu_notifier_chain_unregister
 
     Remove notifier from an SRCU notifier chain
 
-    :param struct srcu_notifier_head \*nh:
+    :param nh:
         Pointer to head of the SRCU notifier chain
+    :type nh: struct srcu_notifier_head \*
 
-    :param struct notifier_block \*n:
+    :param n:
         Entry to remove from notifier chain
+    :type n: struct notifier_block \*
 
 .. _`srcu_notifier_chain_unregister.description`:
 
@@ -379,20 +417,25 @@ Returns zero on success or \ ``-ENOENT``\  on failure.
 
     Call functions in an SRCU notifier chain
 
-    :param struct srcu_notifier_head \*nh:
+    :param nh:
         Pointer to head of the SRCU notifier chain
+    :type nh: struct srcu_notifier_head \*
 
-    :param unsigned long val:
+    :param val:
         Value passed unmodified to notifier function
+    :type val: unsigned long
 
-    :param void \*v:
+    :param v:
         Pointer passed unmodified to notifier function
+    :type v: void \*
 
-    :param int nr_to_call:
+    :param nr_to_call:
         See comment for notifier_call_chain.
+    :type nr_to_call: int
 
-    :param int \*nr_calls:
+    :param nr_calls:
         See comment for notifier_call_chain
+    :type nr_calls: int \*
 
 .. _`__srcu_notifier_call_chain.description`:
 
@@ -418,8 +461,9 @@ srcu_init_notifier_head
 
     Initialize an SRCU notifier head
 
-    :param struct srcu_notifier_head \*nh:
+    :param nh:
         Pointer to head of the srcu notifier chain
+    :type nh: struct srcu_notifier_head \*
 
 .. _`srcu_init_notifier_head.description`:
 

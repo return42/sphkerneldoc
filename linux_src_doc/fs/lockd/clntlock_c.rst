@@ -10,8 +10,9 @@ nlmclnt_init
 
     Set up per-NFS mount point lockd data structures
 
-    :param const struct nlmclnt_initdata \*nlm_init:
+    :param nlm_init:
         pointer to arguments structure
+    :type nlm_init: const struct nlmclnt_initdata \*
 
 .. _`nlmclnt_init.description`:
 
@@ -30,8 +31,9 @@ nlmclnt_done
 
     Release resources allocated by \ :c:func:`nlmclnt_init`\ 
 
-    :param struct nlm_host \*host:
+    :param host:
         nlm_host structure reserved by \ :c:func:`nlmclnt_init`\ 
+    :type host: struct nlm_host \*
 
 .. This file was automatic generated / don't edit.
 

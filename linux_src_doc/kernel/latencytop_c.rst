@@ -10,14 +10,17 @@
 
     record an occurred latency \ ``tsk``\  - the task struct of the task hitting the latency \ ``usecs``\  - the duration of the latency in microseconds \ ``inter``\  - 1 if the sleep was interruptible, 0 if uninterruptible
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         *undescribed*
+    :type tsk: struct task_struct \*
 
-    :param int usecs:
+    :param usecs:
         *undescribed*
+    :type usecs: int
 
-    :param int inter:
+    :param inter:
         *undescribed*
+    :type inter: int
 
 .. _`__account_scheduler_latency.description`:
 

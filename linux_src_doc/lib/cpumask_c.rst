@@ -10,11 +10,13 @@ cpumask_next
 
     get the next cpu in a cpumask
 
-    :param int n:
+    :param n:
         the cpu prior to the place to search (ie. return will be > \ ``n``\ )
+    :type n: int
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         the cpumask pointer
+    :type srcp: const struct cpumask \*
 
 .. _`cpumask_next.description`:
 
@@ -32,14 +34,17 @@ cpumask_next_and
 
     get the next cpu in \*src1p & \*src2p
 
-    :param int n:
+    :param n:
         the cpu prior to the place to search (ie. return will be > \ ``n``\ )
+    :type n: int
 
-    :param const struct cpumask \*src1p:
+    :param src1p:
         the first cpumask pointer
+    :type src1p: const struct cpumask \*
 
-    :param const struct cpumask \*src2p:
+    :param src2p:
         the second cpumask pointer
+    :type src2p: const struct cpumask \*
 
 .. _`cpumask_next_and.description`:
 
@@ -57,11 +62,13 @@ cpumask_any_but
 
     return a "random" in a cpumask, but not this one.
 
-    :param const struct cpumask \*mask:
+    :param mask:
         the cpumask to search
+    :type mask: const struct cpumask \*
 
-    :param unsigned int cpu:
+    :param cpu:
         the cpu to ignore.
+    :type cpu: unsigned int
 
 .. _`cpumask_any_but.description`:
 
@@ -80,17 +87,21 @@ cpumask_next_wrap
 
     helper to implement for_each_cpu_wrap
 
-    :param int n:
+    :param n:
         the cpu prior to the place to search
+    :type n: int
 
-    :param const struct cpumask \*mask:
+    :param mask:
         the cpumask pointer
+    :type mask: const struct cpumask \*
 
-    :param int start:
+    :param start:
         the start point of the iteration
+    :type start: int
 
-    :param bool wrap:
+    :param wrap:
         assume \ ``n``\  crossing \ ``start``\  terminates the iteration
+    :type wrap: bool
 
 .. _`cpumask_next_wrap.description`:
 
@@ -116,14 +127,17 @@ alloc_cpumask_var_node
 
     allocate a struct cpumask on a given node
 
-    :param cpumask_var_t \*mask:
+    :param mask:
         pointer to cpumask_var_t where the cpumask is returned
+    :type mask: cpumask_var_t \*
 
-    :param gfp_t flags:
+    :param flags:
         GFP\_ flags
+    :type flags: gfp_t
 
-    :param int node:
+    :param node:
         *undescribed*
+    :type node: int
 
 .. _`alloc_cpumask_var_node.description`:
 
@@ -148,11 +162,13 @@ alloc_cpumask_var
 
     allocate a struct cpumask
 
-    :param cpumask_var_t \*mask:
+    :param mask:
         pointer to cpumask_var_t where the cpumask is returned
+    :type mask: cpumask_var_t \*
 
-    :param gfp_t flags:
+    :param flags:
         GFP\_ flags
+    :type flags: gfp_t
 
 .. _`alloc_cpumask_var.description`:
 
@@ -173,8 +189,9 @@ alloc_bootmem_cpumask_var
 
     allocate a struct cpumask from the bootmem arena.
 
-    :param cpumask_var_t \*mask:
+    :param mask:
         pointer to cpumask_var_t where the cpumask is returned
+    :type mask: cpumask_var_t \*
 
 .. _`alloc_bootmem_cpumask_var.description`:
 
@@ -195,8 +212,9 @@ free_cpumask_var
 
     frees memory allocated for a struct cpumask.
 
-    :param cpumask_var_t mask:
+    :param mask:
         cpumask to free
+    :type mask: cpumask_var_t
 
 .. _`free_cpumask_var.description`:
 
@@ -214,8 +232,9 @@ free_bootmem_cpumask_var
 
     frees result of alloc_bootmem_cpumask_var
 
-    :param cpumask_var_t mask:
+    :param mask:
         cpumask to free
+    :type mask: cpumask_var_t
 
 .. _`cpumask_local_spread`:
 
@@ -226,11 +245,13 @@ cpumask_local_spread
 
     select the i'th cpu with local numa cpu's first
 
-    :param unsigned int i:
+    :param i:
         index number
+    :type i: unsigned int
 
-    :param int node:
+    :param node:
         local numa_node
+    :type node: int
 
 .. _`cpumask_local_spread.description`:
 

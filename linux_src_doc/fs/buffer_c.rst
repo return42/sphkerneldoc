@@ -10,8 +10,9 @@ sync_mapping_buffers
 
     write out & wait upon a mapping's "associated" buffers
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the mapping which wants those buffers written
+    :type mapping: struct address_space \*
 
 .. _`sync_mapping_buffers.description`:
 
@@ -34,17 +35,18 @@ mark_buffer_dirty
 
     mark a buffer_head as needing writeout
 
-    :param struct buffer_head \*bh:
+    :param bh:
         the buffer_head to mark dirty
+    :type bh: struct buffer_head \*
 
 .. _`mark_buffer_dirty.description`:
 
 Description
 -----------
 
-\ :c:func:`mark_buffer_dirty`\  will set the dirty bit against the buffer, then set its
-backing page dirty, then tag the page as dirty in its address_space's radix
-tree and then attach the address_space's inode to its superblock's dirty
+\ :c:func:`mark_buffer_dirty`\  will set the dirty bit against the buffer, then set
+its backing page dirty, then tag the page as dirty in the page cache
+and then attach the address_space's inode to its superblock's dirty
 inode list.
 
 \ :c:func:`mark_buffer_dirty`\  is atomic.  It takes bh->b_page->mapping->private_lock,
@@ -59,17 +61,21 @@ __bread_gfp
 
     reads a specified block and returns the bh
 
-    :param struct block_device \*bdev:
+    :param bdev:
         the block_device to read from
+    :type bdev: struct block_device \*
 
-    :param sector_t block:
+    :param block:
         number of block
+    :type block: sector_t
 
-    :param unsigned size:
+    :param size:
         size (in bytes) to read
+    :type size: unsigned
 
-    :param gfp_t gfp:
+    :param gfp:
         page allocation flag
+    :type gfp: gfp_t
 
 .. _`__bread_gfp.description`:
 
@@ -90,14 +96,17 @@ block_invalidatepage
 
     invalidate part or all of a buffer-backed page
 
-    :param struct page \*page:
+    :param page:
         the page which is affected
+    :type page: struct page \*
 
-    :param unsigned int offset:
+    :param offset:
         start of the range to invalidate
+    :type offset: unsigned int
 
-    :param unsigned int length:
+    :param length:
         length of the range to invalidate
+    :type length: unsigned int
 
 .. _`block_invalidatepage.description`:
 
@@ -122,14 +131,17 @@ clean_bdev_aliases
 
     clean a range of buffers in block device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         Block device to clean buffers in
+    :type bdev: struct block_device \*
 
-    :param sector_t block:
+    :param block:
         Start of a range of blocks to clean
+    :type block: sector_t
 
-    :param sector_t len:
+    :param len:
         Number of blocks to clean
+    :type len: sector_t
 
 .. _`clean_bdev_aliases.description`:
 
@@ -159,17 +171,21 @@ ll_rw_block
 
     low-level access to block devices (DEPRECATED)
 
-    :param int op:
+    :param op:
         whether to \ ``READ``\  or \ ``WRITE``\ 
+    :type op: int
 
-    :param int op_flags:
+    :param op_flags:
         req_flag_bits
+    :type op_flags: int
 
-    :param int nr:
+    :param nr:
         number of \ :c:type:`struct buffer_heads <buffer_heads>`\  in the array
+    :type nr: int
 
-    :param struct buffer_head  \*bhs:
+    :param bhs:
         array of pointers to \ :c:type:`struct buffer_head <buffer_head>`\ 
+    :type bhs: struct buffer_head  \*
 
 .. _`ll_rw_block.description`:
 
@@ -204,8 +220,9 @@ bh_uptodate_or_lock
 
     Test whether the buffer is uptodate
 
-    :param struct buffer_head \*bh:
+    :param bh:
         struct buffer_head
+    :type bh: struct buffer_head \*
 
 .. _`bh_uptodate_or_lock.description`:
 
@@ -224,8 +241,9 @@ bh_submit_read
 
     Submit a locked buffer for reading
 
-    :param struct buffer_head \*bh:
+    :param bh:
         struct buffer_head
+    :type bh: struct buffer_head \*
 
 .. _`bh_submit_read.description`:
 

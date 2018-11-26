@@ -10,8 +10,9 @@ main
 
     entry point for SPU-side context restore.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`main.description`:
 

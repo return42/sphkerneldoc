@@ -3,44 +3,49 @@
 
 .. _`__vfs_setxattr_noperm`:
 
-\__vfs_setxattr_noperm
-======================
+__vfs_setxattr_noperm
+=====================
 
 .. c:function:: int __vfs_setxattr_noperm(struct dentry *dentry, const char *name, const void *value, size_t size, int flags)
 
     perform setxattr operation without performing permission checks.
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param const void \*value:
+    :param value:
         *undescribed*
+    :type value: const void \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`__vfs_setxattr_noperm.description`:
 
 Description
 -----------
 
-\ ``dentry``\  - object to perform setxattr on
-\ ``name``\  - xattr name to set
-\ ``value``\  - value to set \ ``name``\  to
-\ ``size``\  - size of \ ``value``\ 
-\ ``flags``\  - flags to pass into filesystem operations
+ \ ``dentry``\  - object to perform setxattr on
+ \ ``name``\  - xattr name to set
+ \ ``value``\  - value to set \ ``name``\  to
+ \ ``size``\  - size of \ ``value``\ 
+ \ ``flags``\  - flags to pass into filesystem operations
 
-returns the result of the internal setxattr or setsecurity operations.
+ returns the result of the internal setxattr or setsecurity operations.
 
-This function requires the caller to lock the inode's i_mutex before it
-is executed. It also assumes that the caller will make the appropriate
-permission checks.
+ This function requires the caller to lock the inode's i_mutex before it
+ is executed. It also assumes that the caller will make the appropriate
+ permission checks.
 
 .. _`xattr_full_name`:
 
@@ -51,11 +56,13 @@ xattr_full_name
 
     Compute full attribute name from suffix
 
-    :param const struct xattr_handler \*handler:
+    :param handler:
         handler of the xattr_handler operation
+    :type handler: const struct xattr_handler \*
 
-    :param const char \*name:
+    :param name:
         name passed to the xattr_handler operation
+    :type name: const char \*
 
 .. _`xattr_full_name.description`:
 
@@ -85,20 +92,25 @@ simple_xattr_set
 
     xattr SET operation for in-memory/pseudo filesystems
 
-    :param struct simple_xattrs \*xattrs:
+    :param xattrs:
         target simple_xattr list
+    :type xattrs: struct simple_xattrs \*
 
-    :param const char \*name:
+    :param name:
         name of the extended attribute
+    :type name: const char \*
 
-    :param const void \*value:
+    :param value:
         value of the xattr. If \ ``NULL``\ , will remove the attribute.
+    :type value: const void \*
 
-    :param size_t size:
+    :param size:
         size of the new xattr
+    :type size: size_t
 
-    :param int flags:
-        \ ``XATTR_``\ {CREATE\|REPLACE}
+    :param flags:
+        \ ``XATTR_``\ {CREATE|REPLACE}
+    :type flags: int
 
 .. _`simple_xattr_set.description`:
 

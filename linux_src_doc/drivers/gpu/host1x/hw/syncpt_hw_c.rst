@@ -10,11 +10,13 @@ syncpt_assign_to_channel
 
     Assign syncpoint to channel
 
-    :param struct host1x_syncpt \*sp:
+    :param sp:
         syncpoint
+    :type sp: struct host1x_syncpt \*
 
-    :param struct host1x_channel \*ch:
+    :param ch:
         channel
+    :type ch: struct host1x_channel \*
 
 .. _`syncpt_assign_to_channel.description`:
 
@@ -36,8 +38,9 @@ syncpt_enable_protection
 
     Enable syncpoint protection
 
-    :param struct host1x \*host:
+    :param host:
         host1x instance
+    :type host: struct host1x \*
 
 .. _`syncpt_enable_protection.description`:
 

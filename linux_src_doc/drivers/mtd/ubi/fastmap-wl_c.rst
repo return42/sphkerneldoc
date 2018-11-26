@@ -10,8 +10,9 @@ update_fastmap_work_fn
 
     calls ubi_update_fastmap from a work queue
 
-    :param struct work_struct \*wrk:
+    :param wrk:
         the work description object
+    :type wrk: struct work_struct \*
 
 .. _`find_anchor_wl_entry`:
 
@@ -22,8 +23,9 @@ find_anchor_wl_entry
 
     find wear-leveling entry to used as anchor PEB.
 
-    :param struct rb_root \*root:
+    :param root:
         the RB-tree where to look for
+    :type root: struct rb_root \*
 
 .. _`return_unused_pool_pebs`:
 
@@ -34,11 +36,13 @@ return_unused_pool_pebs
 
     returns unused PEB to the free tree.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_fm_pool \*pool:
+    :param pool:
         fastmap pool description object
+    :type pool: struct ubi_fm_pool \*
 
 .. _`ubi_wl_get_fm_peb`:
 
@@ -49,11 +53,13 @@ ubi_wl_get_fm_peb
 
     find a physical erase block with a given maximal number.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int anchor:
+    :param anchor:
         This PEB will be used as anchor PEB by fastmap
+    :type anchor: int
 
 .. _`ubi_wl_get_fm_peb.description`:
 
@@ -73,8 +79,9 @@ ubi_refill_pools
 
     refills all fastmap PEB pools.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`produce_free_peb`:
 
@@ -85,8 +92,9 @@ produce_free_peb
 
     produce a free physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`produce_free_peb.description`:
 
@@ -107,8 +115,9 @@ ubi_wl_get_peb
 
     get a physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_wl_get_peb.description`:
 
@@ -128,8 +137,9 @@ ubi_ensure_anchor_pebs
 
     schedule wear-leveling to produce an anchor PEB.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_wl_put_fm_peb`:
 
@@ -140,17 +150,21 @@ ubi_wl_put_fm_peb
 
     returns a PEB used in a fastmap to the wear-leveling sub-system.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_wl_entry \*fm_e:
+    :param fm_e:
         physical eraseblock to return
+    :type fm_e: struct ubi_wl_entry \*
 
-    :param int lnum:
+    :param lnum:
         the last used logical eraseblock number for the PEB
+    :type lnum: int
 
-    :param int torture:
+    :param torture:
         if this physical eraseblock has to be tortured
+    :type torture: int
 
 .. _`ubi_wl_put_fm_peb.see`:
 
@@ -168,8 +182,9 @@ ubi_is_erase_work
 
     checks whether a work is erase work.
 
-    :param struct ubi_work \*wrk:
+    :param wrk:
         The work object to be checked
+    :type wrk: struct ubi_work \*
 
 .. _`may_reserve_for_fm`:
 
@@ -180,14 +195,17 @@ may_reserve_for_fm
 
     tests whether a PEB shall be reserved for fastmap. See \ :c:func:`find_mean_wl_entry`\ 
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_wl_entry \*e:
+    :param e:
         physical eraseblock to return
+    :type e: struct ubi_wl_entry \*
 
-    :param struct rb_root \*root:
+    :param root:
         RB tree to test against.
+    :type root: struct rb_root \*
 
 .. This file was automatic generated / don't edit.
 

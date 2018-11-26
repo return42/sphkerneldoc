@@ -10,17 +10,21 @@ percpu_ref_init
 
     initialize a percpu refcount
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to initialize
+    :type ref: struct percpu_ref \*
 
-    :param percpu_ref_func_t \*release:
+    :param release:
         function which will be called when refcount hits 0
+    :type release: percpu_ref_func_t \*
 
-    :param unsigned int flags:
+    :param flags:
         PERCPU_REF_INIT\_\* flags
+    :type flags: unsigned int
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation mask to use
+    :type gfp: gfp_t
 
 .. _`percpu_ref_init.description`:
 
@@ -43,8 +47,9 @@ percpu_ref_exit
 
     undo \ :c:func:`percpu_ref_init`\ 
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to exit
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_exit.description`:
 
@@ -53,7 +58,7 @@ Description
 
 This function exits \ ``ref``\ .  The caller is responsible for ensuring that
 \ ``ref``\  is no longer in active use.  The usual places to invoke this
-function from are the \ ``ref``\ ->release() callback or in init failure path
+function from are the \ ``ref->release``\ () callback or in init failure path
 where \ :c:func:`percpu_ref_init`\  succeeded but other parts of the initialization
 of the embedding object failed.
 
@@ -66,11 +71,13 @@ percpu_ref_switch_to_atomic
 
     switch a percpu_ref to atomic mode
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to switch to atomic mode
+    :type ref: struct percpu_ref \*
 
-    :param percpu_ref_func_t \*confirm_switch:
+    :param confirm_switch:
         optional confirmation callback
+    :type confirm_switch: percpu_ref_func_t \*
 
 .. _`percpu_ref_switch_to_atomic.description`:
 
@@ -101,8 +108,9 @@ percpu_ref_switch_to_atomic_sync
 
     switch a percpu_ref to atomic mode
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to switch to atomic mode
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_switch_to_atomic_sync.description`:
 
@@ -122,8 +130,9 @@ percpu_ref_switch_to_percpu
 
     switch a percpu_ref to percpu mode
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to switch to percpu mode
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_switch_to_percpu.description`:
 
@@ -153,11 +162,13 @@ percpu_ref_kill_and_confirm
 
     drop the initial ref and schedule confirmation
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         percpu_ref to kill
+    :type ref: struct percpu_ref \*
 
-    :param percpu_ref_func_t \*confirm_kill:
+    :param confirm_kill:
         optional confirmation callback
+    :type confirm_kill: percpu_ref_func_t \*
 
 .. _`percpu_ref_kill_and_confirm.description`:
 
@@ -185,8 +196,9 @@ percpu_ref_reinit
 
     re-initialize a percpu refcount
 
-    :param struct percpu_ref \*ref:
+    :param ref:
         perpcu_ref to re-initialize
+    :type ref: struct percpu_ref \*
 
 .. _`percpu_ref_reinit.description`:
 
@@ -196,6 +208,34 @@ Description
 Re-initialize \ ``ref``\  so that it's in the same state as when it finished
 \ :c:func:`percpu_ref_init`\  ignoring \ ``PERCPU_REF_INIT_DEAD``\ .  \ ``ref``\  must have been
 initialized successfully and reached 0 but not exited.
+
+Note that percpu_ref_tryget[_live]() are safe to perform on \ ``ref``\  while
+this function is in progress.
+
+.. _`percpu_ref_resurrect`:
+
+percpu_ref_resurrect
+====================
+
+.. c:function:: void percpu_ref_resurrect(struct percpu_ref *ref)
+
+    modify a percpu refcount from dead to live
+
+    :param ref:
+        perpcu_ref to resurrect
+    :type ref: struct percpu_ref \*
+
+.. _`percpu_ref_resurrect.description`:
+
+Description
+-----------
+
+Modify \ ``ref``\  so that it's in the same state as before \ :c:func:`percpu_ref_kill`\  was
+called. \ ``ref``\  must be dead but must not yet have exited.
+
+If \ ``ref->release``\ () frees \ ``ref``\  then the caller is responsible for
+guaranteeing that \ ``ref->release``\ () does not get called while this
+function is in progress.
 
 Note that percpu_ref_tryget[_live]() are safe to perform on \ ``ref``\  while
 this function is in progress.

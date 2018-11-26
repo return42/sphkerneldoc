@@ -10,8 +10,9 @@ tick_broadcast_control
 
     Enable/disable or force broadcast mode
 
-    :param enum tick_broadcast_mode mode:
+    :param mode:
         The selected broadcast mode
+    :type mode: enum tick_broadcast_mode
 
 .. _`tick_broadcast_control.description`:
 
@@ -30,8 +31,9 @@ tick_broadcast_setup_oneshot
 
     setup the broadcast device
 
-    :param struct clock_event_device \*bc:
+    :param bc:
         *undescribed*
+    :type bc: struct clock_event_device \*
 
 .. This file was automatic generated / don't edit.
 

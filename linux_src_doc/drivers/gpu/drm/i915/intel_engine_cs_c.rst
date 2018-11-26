@@ -10,11 +10,13 @@
 
     return the size of the context for an engine
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param u8 class:
+    :param class:
         engine class
+    :type class: u8
 
 .. _`__intel_engine_context_size.description`:
 
@@ -49,8 +51,9 @@ intel_engines_init_mmio
 
     allocate and prepare the Engine Command Streamers
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_engines_init_mmio.return`:
 
@@ -68,8 +71,9 @@ intel_engines_init
 
     init the Engine Command Streamers
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_engines_init.return`:
 
@@ -87,8 +91,9 @@ intel_engine_setup_common
 
     setup engine state not requiring hw access
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         Engine to setup.
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_engine_setup_common.description`:
 
@@ -109,8 +114,9 @@ intel_engine_init_common
 
     initialize cengine state which might require hw access
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         Engine to initialize.
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_engine_init_common.description`:
 
@@ -133,8 +139,9 @@ intel_engine_cleanup_common
 
     cleans up the engine state created by the common initiailizers.
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         Engine to cleanup.
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_engine_cleanup_common.description`:
 
@@ -152,8 +159,9 @@ intel_engine_is_idle
 
     Report if the engine has finished process all work
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         the intel_engine_cs
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_engine_is_idle.description`:
 
@@ -170,8 +178,9 @@ intel_engine_has_kernel_context
 
 .. c:function:: bool intel_engine_has_kernel_context(const struct intel_engine_cs *engine)
 
-    :param const struct intel_engine_cs \*engine:
+    :param engine:
         the engine
+    :type engine: const struct intel_engine_cs \*
 
 .. _`intel_engine_has_kernel_context.description`:
 
@@ -182,6 +191,29 @@ Returns true if the last context to be executed on this engine, or has been
 executed if the engine is already idle, is the kernel context
 (#i915.kernel_context).
 
+.. _`intel_engines_sanitize`:
+
+intel_engines_sanitize
+======================
+
+.. c:function:: void intel_engines_sanitize(struct drm_i915_private *i915)
+
+    called after the GPU has lost power
+
+    :param i915:
+        the i915 device
+    :type i915: struct drm_i915_private \*
+
+.. _`intel_engines_sanitize.description`:
+
+Description
+-----------
+
+Anytime we reset the GPU, either with an explicit GPU reset or through a
+PCI power cycle, the GPU loses state and we must reset our state tracking
+to match. Note that calling \ :c:func:`intel_engines_sanitize`\  if the GPU has not
+been reset results in much confusion!
+
 .. _`intel_engines_park`:
 
 intel_engines_park
@@ -191,8 +223,9 @@ intel_engines_park
 
     called when the GT is transitioning from busy->idle
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         the i915 device
+    :type i915: struct drm_i915_private \*
 
 .. _`intel_engines_park.description`:
 
@@ -212,8 +245,9 @@ intel_engines_unpark
 
     called when the GT is transitioning from idle->busy
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         the i915 device
+    :type i915: struct drm_i915_private \*
 
 .. _`intel_engines_unpark.description`:
 
@@ -221,6 +255,29 @@ Description
 -----------
 
 The GT was idle and now about to fire up with some new user requests.
+
+.. _`intel_engine_lost_context`:
+
+intel_engine_lost_context
+=========================
+
+.. c:function:: void intel_engine_lost_context(struct intel_engine_cs *engine)
+
+    called when the GPU is reset into unknown state
+
+    :param engine:
+        the engine
+    :type engine: struct intel_engine_cs \*
+
+.. _`intel_engine_lost_context.description`:
+
+Description
+-----------
+
+We have either reset the GPU or otherwise about to lose state tracking of
+the current GPU logical state (e.g. suspend). On next use, it is therefore
+imperative that we make no presumptions about the current state and load
+from scratch.
 
 .. _`intel_enable_engine_stats`:
 
@@ -231,8 +288,9 @@ intel_enable_engine_stats
 
     Enable engine busy tracking on engine
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         engine to enable stats collection
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_enable_engine_stats.description`:
 
@@ -252,8 +310,9 @@ intel_engine_get_busy_time
 
     Return current accumulated engine busyness
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         engine to report on
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_engine_get_busy_time.description`:
 
@@ -271,8 +330,9 @@ intel_disable_engine_stats
 
     Disable engine busy tracking on engine
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         engine to disable stats collection
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_disable_engine_stats.description`:
 

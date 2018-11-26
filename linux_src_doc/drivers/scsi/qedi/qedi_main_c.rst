@@ -10,8 +10,9 @@ qedi_get_nvram_block
 
     - Scan through the iSCSI NVRAM block (while accounting for gaps) for the matching absolute-pf-id of the QEDI device.
 
-    :param struct qedi_ctx \*qedi:
+    :param qedi:
         *undescribed*
+    :type qedi: struct qedi_ctx \*
 
 .. This file was automatic generated / don't edit.
 

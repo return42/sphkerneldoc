@@ -10,14 +10,17 @@ jent_loop_shuffle
 
     an entropy collection.
 
-    :param struct rand_data \*ec:
+    :param ec:
         *undescribed*
+    :type ec: struct rand_data \*
 
-    :param unsigned int bits:
+    :param bits:
         *undescribed*
+    :type bits: unsigned int
 
-    :param unsigned int min:
+    :param min:
         *undescribed*
+    :type min: unsigned int
 
 .. _`jent_loop_shuffle.input`:
 
@@ -40,17 +43,21 @@ jent_fold_time
 
     - this is the noise source based on the CPU execution time jitter
 
-    :param struct rand_data \*ec:
+    :param ec:
         *undescribed*
+    :type ec: struct rand_data \*
 
-    :param __u64 time:
+    :param time:
         *undescribed*
+    :type time: __u64
 
-    :param __u64 \*folded:
+    :param folded:
         *undescribed*
+    :type folded: __u64 \*
 
-    :param __u64 loop_cnt:
+    :param loop_cnt:
         *undescribed*
+    :type loop_cnt: __u64
 
 .. _`jent_fold_time.description`:
 
@@ -110,11 +117,13 @@ jent_memaccess
 
     - this is a noise source based on variations in memory access times
 
-    :param struct rand_data \*ec:
+    :param ec:
         *undescribed*
+    :type ec: struct rand_data \*
 
-    :param __u64 loop_cnt:
+    :param loop_cnt:
         *undescribed*
+    :type loop_cnt: __u64
 
 .. _`jent_memaccess.description`:
 
@@ -157,11 +166,13 @@ jent_stuck
 
     1st derivation of the jitter measurement (time delta) 2nd derivation of the jitter measurement (delta of time deltas) 3rd derivation of the jitter measurement (delta of delta of time deltas)
 
-    :param struct rand_data \*ec:
+    :param ec:
         *undescribed*
+    :type ec: struct rand_data \*
 
-    :param __u64 current_delta:
+    :param current_delta:
         *undescribed*
+    :type current_delta: __u64
 
 .. _`jent_stuck.description`:
 
@@ -191,8 +202,9 @@ jent_measure_jitter
 
     calculate time deltas and use the CPU jitter in the time deltas. The jitter is folded into one bit. You can call this function the "random bit generator" as it produces one random bit per invocation.
 
-    :param struct rand_data \*ec:
+    :param ec:
         *undescribed*
+    :type ec: struct rand_data \*
 
 .. _`jent_measure_jitter.warning`:
 
@@ -221,8 +233,9 @@ jent_unbiased_bit
 
     documentation of that RNG, the bits from jent_measure_jitter are considered independent which implies that the Von Neuman unbias operation is applicable. A proof of the Von-Neumann unbias operation to remove skews is given in the document "A proposal for: Functionality classes for random number generators", version 2.0 by Werner Schindler, section 5.4.1.
 
-    :param struct rand_data \*entropy_collector:
+    :param entropy_collector:
         *undescribed*
+    :type entropy_collector: struct rand_data \*
 
 .. _`jent_unbiased_bit.input`:
 
@@ -242,8 +255,9 @@ jent_stir_pool
 
     into the pool.
 
-    :param struct rand_data \*entropy_collector:
+    :param entropy_collector:
         *undescribed*
+    :type entropy_collector: struct rand_data \*
 
 .. _`jent_stir_pool.description`:
 
@@ -276,8 +290,9 @@ jent_gen_entropy
 
     Function fills rand_data->data
 
-    :param struct rand_data \*ec:
+    :param ec:
         *undescribed*
+    :type ec: struct rand_data \*
 
 .. _`jent_gen_entropy.input`:
 
@@ -295,8 +310,9 @@ jent_fips_test
 
     2 -- the function automatically primes the test if needed.
 
-    :param struct rand_data \*ec:
+    :param ec:
         *undescribed*
+    :type ec: struct rand_data \*
 
 .. _`jent_fips_test.return`:
 
@@ -315,14 +331,17 @@ jent_read_entropy
 
     Obtain entropy for the caller.
 
-    :param struct rand_data \*ec:
+    :param ec:
         *undescribed*
+    :type ec: struct rand_data \*
 
-    :param unsigned char \*data:
+    :param data:
         *undescribed*
+    :type data: unsigned char \*
 
-    :param unsigned int len:
+    :param len:
         *undescribed*
+    :type len: unsigned int
 
 .. _`jent_read_entropy.description`:
 

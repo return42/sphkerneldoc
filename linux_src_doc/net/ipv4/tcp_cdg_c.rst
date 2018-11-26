@@ -10,8 +10,9 @@ nexp_u32
 
     negative base-e exponential
 
-    :param u32 ux:
+    :param ux:
         x in units of micro
+    :type ux: u32
 
 .. _`nexp_u32.description`:
 

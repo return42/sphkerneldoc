@@ -10,11 +10,13 @@ set_bit
 
     Atomically set a bit in memory
 
-    :param long nr:
+    :param nr:
         the bit to set
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`set_bit.description`:
 
@@ -45,11 +47,13 @@ __set_bit
 
     Set a bit in memory
 
-    :param long nr:
+    :param nr:
         the bit to set
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`__set_bit.description`:
 
@@ -69,11 +73,13 @@ clear_bit
 
     Clears a bit in memory
 
-    :param long nr:
+    :param nr:
         Bit to clear
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`clear_bit.description`:
 
@@ -94,11 +100,13 @@ __change_bit
 
     Toggle a bit in memory
 
-    :param long nr:
+    :param nr:
         the bit to change
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`__change_bit.description`:
 
@@ -118,11 +126,13 @@ change_bit
 
     Toggle a bit in memory
 
-    :param long nr:
+    :param nr:
         Bit to change
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`change_bit.description`:
 
@@ -142,11 +152,13 @@ test_and_set_bit
 
     Set a bit and return its old value
 
-    :param long nr:
+    :param nr:
         Bit to set
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`test_and_set_bit.description`:
 
@@ -165,11 +177,13 @@ test_and_set_bit_lock
 
     Set a bit and return its old value for lock
 
-    :param long nr:
+    :param nr:
         Bit to set
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`test_and_set_bit_lock.description`:
 
@@ -187,11 +201,13 @@ __test_and_set_bit
 
     Set a bit and return its old value
 
-    :param long nr:
+    :param nr:
         Bit to set
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`__test_and_set_bit.description`:
 
@@ -211,11 +227,13 @@ test_and_clear_bit
 
     Clear a bit and return its old value
 
-    :param long nr:
+    :param nr:
         Bit to clear
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`test_and_clear_bit.description`:
 
@@ -234,11 +252,13 @@ __test_and_clear_bit
 
     Clear a bit and return its old value
 
-    :param long nr:
+    :param nr:
         Bit to clear
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`__test_and_clear_bit.description`:
 
@@ -270,11 +290,13 @@ test_and_change_bit
 
     Change a bit and return its old value
 
-    :param long nr:
+    :param nr:
         Bit to change
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`test_and_change_bit.description`:
 
@@ -293,11 +315,13 @@ test_bit
 
     Determine whether a bit is set
 
-    :param int nr:
+    :param nr:
         bit number to test
+    :type nr: int
 
-    :param const volatile unsigned long \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: const volatile unsigned long \*
 
 .. _`__ffs`:
 
@@ -308,8 +332,9 @@ __ffs
 
     find first set bit in word
 
-    :param unsigned long word:
+    :param word:
         The word to search
+    :type word: unsigned long
 
 .. _`__ffs.description`:
 
@@ -327,8 +352,9 @@ ffz
 
     find first zero bit in word
 
-    :param unsigned long word:
+    :param word:
         The word to search
+    :type word: unsigned long
 
 .. _`ffz.description`:
 
@@ -346,8 +372,9 @@ ffs
 
     find first set bit in word
 
-    :param int x:
+    :param x:
         the word to search
+    :type x: int
 
 .. _`ffs.description`:
 
@@ -370,8 +397,9 @@ fls
 
     find last set bit in word
 
-    :param int x:
+    :param x:
         the word to search
+    :type x: int
 
 .. _`fls.description`:
 
@@ -394,8 +422,9 @@ fls64
 
     find last set bit in a 64-bit word
 
-    :param __u64 x:
+    :param x:
         the word to search
+    :type x: __u64
 
 .. _`fls64.description`:
 

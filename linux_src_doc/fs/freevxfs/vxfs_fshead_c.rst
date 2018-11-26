@@ -10,11 +10,13 @@ vxfs_getfsh
 
     read fileset header into memory
 
-    :param struct inode \*ip:
+    :param ip:
         the (fake) fileset header inode
+    :type ip: struct inode \*
 
-    :param int which:
+    :param which:
         0 for the structural, 1 for the primary fsh.
+    :type which: int
 
 .. _`vxfs_getfsh.description`:
 
@@ -40,8 +42,9 @@ vxfs_read_fshead
 
     read the fileset headers
 
-    :param struct super_block \*sbp:
+    :param sbp:
         superblock to which the fileset belongs
+    :type sbp: struct super_block \*
 
 .. _`vxfs_read_fshead.description`:
 

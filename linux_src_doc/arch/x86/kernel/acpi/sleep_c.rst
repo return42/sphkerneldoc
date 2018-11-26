@@ -10,8 +10,9 @@ x86_acpi_enter_sleep_state
 
     enter sleep state
 
-    :param u8 state:
+    :param state:
         Sleep state to enter.
+    :type state: u8
 
 .. _`x86_acpi_enter_sleep_state.description`:
 
@@ -29,8 +30,9 @@ x86_acpi_suspend_lowlevel
 
     save kernel state
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`x86_acpi_suspend_lowlevel.description`:
 

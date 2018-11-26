@@ -10,17 +10,21 @@ wil6210_debugfs_init_offset
 
     create set of debugfs files \ ``wil``\  - driver's context, used for printing \ ``dbg``\  - directory on the debugfs, where files will be created \ ``base``\  - base address used in address calculation \ ``tbl``\  - table with file descriptions. Should be terminated with empty element.
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param struct dentry \*dbg:
+    :param dbg:
         *undescribed*
+    :type dbg: struct dentry \*
 
-    :param void \*base:
+    :param base:
         *undescribed*
+    :type base: void \*
 
-    :param const struct dbg_off \* const tbl:
+    :param tbl:
         *undescribed*
+    :type tbl: const struct dbg_off \* const
 
 .. _`wil6210_debugfs_init_offset.description`:
 

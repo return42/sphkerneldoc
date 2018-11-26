@@ -10,8 +10,9 @@ zfcp_unit_scsi_scan
 
     Register LUN with SCSI midlayer
 
-    :param struct zfcp_unit \*unit:
+    :param unit:
         The zfcp LUN/unit to register
+    :type unit: struct zfcp_unit \*
 
 .. _`zfcp_unit_scsi_scan.description`:
 
@@ -31,8 +32,9 @@ zfcp_unit_queue_scsi_scan
 
     Register configured units on port
 
-    :param struct zfcp_port \*port:
+    :param port:
         The zfcp_port where to register units
+    :type port: struct zfcp_port \*
 
 .. _`zfcp_unit_queue_scsi_scan.description`:
 
@@ -54,11 +56,13 @@ zfcp_unit_find
 
     Find and return zfcp_unit with specified FCP LUN
 
-    :param struct zfcp_port \*port:
+    :param port:
         zfcp_port where to look for the unit
+    :type port: struct zfcp_port \*
 
-    :param u64 fcp_lun:
+    :param fcp_lun:
         64 Bit FCP LUN used to identify the zfcp_unit
+    :type fcp_lun: u64
 
 .. _`zfcp_unit_find.description`:
 
@@ -85,8 +89,9 @@ zfcp_unit_release
 
     Drop reference to zfcp_port and free memory of zfcp_unit.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device in zfcp_unit
+    :type dev: struct device \*
 
 .. _`zfcp_unit_add`:
 
@@ -97,11 +102,13 @@ zfcp_unit_add
 
     enqueue unit to unit list of a port.
 
-    :param struct zfcp_port \*port:
+    :param port:
         pointer to port where unit is added
+    :type port: struct zfcp_port \*
 
-    :param u64 fcp_lun:
+    :param fcp_lun:
         FCP LUN of unit to be enqueued
+    :type fcp_lun: u64
 
 .. _`zfcp_unit_add.return`:
 
@@ -121,8 +128,9 @@ zfcp_unit_sdev
 
     Return SCSI device for zfcp_unit
 
-    :param struct zfcp_unit \*unit:
+    :param unit:
         The zfcp_unit where to get the SCSI device for
+    :type unit: struct zfcp_unit \*
 
 .. _`zfcp_unit_sdev.return`:
 
@@ -144,8 +152,9 @@ zfcp_unit_sdev_status
 
     Return zfcp LUN status for SCSI device
 
-    :param struct zfcp_unit \*unit:
+    :param unit:
         The unit to lookup the SCSI device for
+    :type unit: struct zfcp_unit \*
 
 .. _`zfcp_unit_sdev_status.description`:
 
@@ -164,11 +173,13 @@ zfcp_unit_remove
 
     Remove entry from list of configured units
 
-    :param struct zfcp_port \*port:
+    :param port:
         The port where to remove the unit from the configuration
+    :type port: struct zfcp_port \*
 
-    :param u64 fcp_lun:
+    :param fcp_lun:
         The 64 bit LUN of the unit to remove
+    :type fcp_lun: u64
 
 .. _`zfcp_unit_remove.return`:
 

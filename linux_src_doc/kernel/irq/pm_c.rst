@@ -10,8 +10,9 @@ suspend_device_irqs
 
     disable all currently enabled interrupt lines
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`suspend_device_irqs.description`:
 
@@ -40,8 +41,9 @@ irq_pm_syscore_resume
 
     enable interrupt lines early
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`irq_pm_syscore_resume.description`:
 
@@ -59,8 +61,9 @@ resume_device_irqs
 
     enable interrupt lines disabled by \ :c:func:`suspend_device_irqs`\ 
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`resume_device_irqs.description`:
 

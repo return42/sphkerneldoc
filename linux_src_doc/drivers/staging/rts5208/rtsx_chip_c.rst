@@ -10,11 +10,13 @@ rtsx_stop_cmd
 
     stop command transfer and DMA transfer
 
-    :param struct rtsx_chip \*chip:
+    :param chip:
         Realtek's card reader chip
+    :type chip: struct rtsx_chip \*
 
-    :param int card:
+    :param card:
         flash card type
+    :type card: int
 
 .. _`rtsx_stop_cmd.description`:
 

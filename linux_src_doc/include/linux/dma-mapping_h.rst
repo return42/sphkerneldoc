@@ -27,23 +27,29 @@ dma_mmap_attrs
 
     map a coherent DMA allocation into user space
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer, or NULL for ISA and EISA-like devices
+    :type dev: struct device \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vm_area_struct describing requested user mapping
+    :type vma: struct vm_area_struct \*
 
-    :param void \*cpu_addr:
+    :param cpu_addr:
         kernel CPU-view address returned from dma_alloc_attrs
+    :type cpu_addr: void \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         *undescribed*
+    :type dma_addr: dma_addr_t
 
-    :param size_t size:
+    :param size:
         size of memory originally requested in dma_alloc_attrs
+    :type size: size_t
 
-    :param unsigned long attrs:
+    :param attrs:
         attributes of mapping properties requested in dma_alloc_attrs
+    :type attrs: unsigned long
 
 .. _`dma_mmap_attrs.description`:
 

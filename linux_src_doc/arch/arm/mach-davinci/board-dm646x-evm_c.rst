@@ -8,11 +8,13 @@ setup_vpif_input_path
 
 .. c:function:: int setup_vpif_input_path(int channel, const char *sub_dev_name)
 
-    :param int channel:
+    :param channel:
         channel id (0 - CH0, 1 - CH1)
+    :type channel: int
 
-    :param const char \*sub_dev_name:
+    :param sub_dev_name:
         ptr sub device name
+    :type sub_dev_name: const char \*
 
 .. _`setup_vpif_input_path.description`:
 
@@ -29,8 +31,9 @@ setup_vpif_input_channel_mode
 
 .. c:function:: int setup_vpif_input_channel_mode(int mux_mode)
 
-    :param int mux_mode:
+    :param mux_mode:
         mux mode. 0 - 1 channel or (1) - 2 channel
+    :type mux_mode: int
 
 .. _`setup_vpif_input_channel_mode.description`:
 

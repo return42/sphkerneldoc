@@ -10,11 +10,13 @@ netback_probe
 
     structures and switch to InitWait.
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct xenbus_device \*
 
-    :param const struct xenbus_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct xenbus_device_id \*
 
 .. _`frontend_changed`:
 
@@ -23,11 +25,13 @@ frontend_changed
 
 .. c:function:: void frontend_changed(struct xenbus_device *dev, enum xenbus_state frontend_state)
 
-    :param struct xenbus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct xenbus_device \*
 
-    :param enum xenbus_state frontend_state:
+    :param frontend_state:
         *undescribed*
+    :type frontend_state: enum xenbus_state
 
 .. This file was automatic generated / don't edit.
 

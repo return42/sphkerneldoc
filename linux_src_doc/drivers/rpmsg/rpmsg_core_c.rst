@@ -10,17 +10,21 @@ rpmsg_create_ept
 
     create a new rpmsg_endpoint
 
-    :param struct rpmsg_device \*rpdev:
+    :param rpdev:
         rpmsg channel device
+    :type rpdev: struct rpmsg_device \*
 
-    :param rpmsg_rx_cb_t cb:
+    :param cb:
         rx callback handler
+    :type cb: rpmsg_rx_cb_t
 
-    :param void \*priv:
+    :param priv:
         private data for the driver's use
+    :type priv: void \*
 
-    :param struct rpmsg_channel_info chinfo:
+    :param chinfo:
         channel_info with the local rpmsg address to bind with \ ``cb``\ 
+    :type chinfo: struct rpmsg_channel_info
 
 .. _`rpmsg_create_ept.description`:
 
@@ -74,8 +78,9 @@ rpmsg_destroy_ept
 
     destroy an existing rpmsg endpoint
 
-    :param struct rpmsg_endpoint \*ept:
+    :param ept:
         endpoing to destroy
+    :type ept: struct rpmsg_endpoint \*
 
 .. _`rpmsg_destroy_ept.description`:
 
@@ -95,14 +100,17 @@ rpmsg_send
 
     send a message across to the remote processor
 
-    :param struct rpmsg_endpoint \*ept:
+    :param ept:
         the rpmsg endpoint
+    :type ept: struct rpmsg_endpoint \*
 
-    :param void \*data:
+    :param data:
         payload of message
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length of payload
+    :type len: int
 
 .. _`rpmsg_send.description`:
 
@@ -130,17 +138,21 @@ rpmsg_sendto
 
     send a message across to the remote processor, specify dst
 
-    :param struct rpmsg_endpoint \*ept:
+    :param ept:
         the rpmsg endpoint
+    :type ept: struct rpmsg_endpoint \*
 
-    :param void \*data:
+    :param data:
         payload of message
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length of payload
+    :type len: int
 
-    :param u32 dst:
+    :param dst:
         destination address
+    :type dst: u32
 
 .. _`rpmsg_sendto.description`:
 
@@ -167,20 +179,25 @@ rpmsg_send_offchannel
 
     send a message using explicit src/dst addresses
 
-    :param struct rpmsg_endpoint \*ept:
+    :param ept:
         the rpmsg endpoint
+    :type ept: struct rpmsg_endpoint \*
 
-    :param u32 src:
+    :param src:
         source address
+    :type src: u32
 
-    :param u32 dst:
+    :param dst:
         destination address
+    :type dst: u32
 
-    :param void \*data:
+    :param data:
         payload of message
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length of payload
+    :type len: int
 
 .. _`rpmsg_send_offchannel.description`:
 
@@ -208,14 +225,17 @@ rpmsg_trysend
 
     send a message across to the remote processor
 
-    :param struct rpmsg_endpoint \*ept:
+    :param ept:
         the rpmsg endpoint
+    :type ept: struct rpmsg_endpoint \*
 
-    :param void \*data:
+    :param data:
         payload of message
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length of payload
+    :type len: int
 
 .. _`rpmsg_trysend.description`:
 
@@ -242,17 +262,21 @@ rpmsg_trysendto
 
     send a message across to the remote processor, specify dst
 
-    :param struct rpmsg_endpoint \*ept:
+    :param ept:
         the rpmsg endpoint
+    :type ept: struct rpmsg_endpoint \*
 
-    :param void \*data:
+    :param data:
         payload of message
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length of payload
+    :type len: int
 
-    :param u32 dst:
+    :param dst:
         destination address
+    :type dst: u32
 
 .. _`rpmsg_trysendto.description`:
 
@@ -278,14 +302,17 @@ rpmsg_poll
 
     poll the endpoint's send buffers
 
-    :param struct rpmsg_endpoint \*ept:
+    :param ept:
         the rpmsg endpoint
+    :type ept: struct rpmsg_endpoint \*
 
-    :param struct file \*filp:
+    :param filp:
         file for \ :c:func:`poll_wait`\ 
+    :type filp: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         poll_table for \ :c:func:`poll_wait`\ 
+    :type wait: poll_table \*
 
 .. _`rpmsg_poll.description`:
 
@@ -303,20 +330,25 @@ rpmsg_trysend_offchannel
 
     send a message using explicit src/dst addresses
 
-    :param struct rpmsg_endpoint \*ept:
+    :param ept:
         the rpmsg endpoint
+    :type ept: struct rpmsg_endpoint \*
 
-    :param u32 src:
+    :param src:
         source address
+    :type src: u32
 
-    :param u32 dst:
+    :param dst:
         destination address
+    :type dst: u32
 
-    :param void \*data:
+    :param data:
         payload of message
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length of payload
+    :type len: int
 
 .. _`rpmsg_trysend_offchannel.description`:
 
@@ -343,11 +375,13 @@ Returns 0 on success and an appropriate error value on failure.
 
     register an rpmsg driver with the rpmsg bus
 
-    :param struct rpmsg_driver \*rpdrv:
+    :param rpdrv:
         pointer to a struct rpmsg_driver
+    :type rpdrv: struct rpmsg_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         owning module/driver
+    :type owner: struct module \*
 
 .. _`__register_rpmsg_driver.description`:
 
@@ -365,8 +399,9 @@ unregister_rpmsg_driver
 
     unregister an rpmsg driver from the rpmsg bus
 
-    :param struct rpmsg_driver \*rpdrv:
+    :param rpdrv:
         pointer to a struct rpmsg_driver
+    :type rpdrv: struct rpmsg_driver \*
 
 .. _`unregister_rpmsg_driver.description`:
 

@@ -22,7 +22,8 @@ Definition
         bool enabled;
         bool pending_needs_vblank;
         struct drm_pending_vblank_event *event;
-        struct drm_plane planes[OVL_LAYER_NR];
+        struct drm_plane *planes;
+        unsigned int layer_nr;
         bool pending_planes;
         void __iomem *config_regs;
         struct mtk_disp_mutex *mutex;
@@ -49,6 +50,9 @@ event
 
 planes
     array of 4 drm_plane structures, one for each overlay plane
+
+layer_nr
+    *undescribed*
 
 pending_planes
     whether any plane has pending changes to be applied

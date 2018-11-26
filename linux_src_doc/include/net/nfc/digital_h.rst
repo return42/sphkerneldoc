@@ -10,14 +10,17 @@ nfc_digital_cmd_complete_t
 
     Definition of command result callback
 
-    :param struct nfc_digital_dev \*ddev:
+    :param ddev:
         nfc_digital_device ref
+    :type ddev: struct nfc_digital_dev \*
 
-    :param void \*arg:
+    :param arg:
         user data
+    :type arg: void \*
 
-    :param struct sk_buff \*resp:
+    :param resp:
         response data
+    :type resp: struct sk_buff \*
 
 .. _`nfc_digital_cmd_complete_t.description`:
 

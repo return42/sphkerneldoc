@@ -9,4 +9,5 @@ dma
 
     dw_h
     hsu_h
+    pxa-dma_h
     xilinx_dma_h

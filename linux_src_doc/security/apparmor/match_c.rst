@@ -10,11 +10,13 @@ unpack_table
 
     unpack a dfa table (one of accept, default, base, next check)
 
-    :param char \*blob:
+    :param blob:
         data to unpack (NOT NULL)
+    :type blob: char \*
 
-    :param size_t bsize:
+    :param bsize:
         size of blob
+    :type bsize: size_t
 
 .. _`unpack_table.return`:
 
@@ -39,11 +41,13 @@ verify_table_headers
 
     verify that the tables headers are as expected \ ``tables``\  - array of dfa tables to check (NOT NULL)
 
-    :param struct table_header \*\*tables:
+    :param tables:
         *undescribed*
+    :type tables: struct table_header \*\*
 
-    :param int flags:
+    :param flags:
         flags controlling what type of accept table are acceptable
+    :type flags: int
 
 .. _`verify_table_headers.description`:
 
@@ -75,8 +79,9 @@ verify_dfa
 
     verify that transitions and states in the tables are in bounds.
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         dfa to test  (NOT NULL)
+    :type dfa: struct aa_dfa \*
 
 .. _`verify_dfa.description`:
 
@@ -108,8 +113,9 @@ dfa_free
 
     free a dfa allocated by aa_dfa_unpack
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         the dfa to free  (MAYBE NULL)
+    :type dfa: struct aa_dfa \*
 
 .. _`dfa_free.requires`:
 
@@ -127,8 +133,9 @@ aa_dfa_free_kref
 
     free aa_dfa by kref (called by aa_put_dfa)
 
-    :param struct kref \*kref:
+    :param kref:
         *undescribed*
+    :type kref: struct kref \*
 
 .. _`aa_dfa_unpack`:
 
@@ -139,14 +146,17 @@ aa_dfa_unpack
 
     unpack the binary tables of a serialized dfa
 
-    :param void \*blob:
+    :param blob:
         aligned serialized stream of data to unpack  (NOT NULL)
+    :type blob: void \*
 
-    :param size_t size:
+    :param size:
         size of data to unpack
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         flags controlling what type of accept tables are acceptable
+    :type flags: int
 
 .. _`aa_dfa_unpack.description`:
 
@@ -173,17 +183,21 @@ aa_dfa_match_len
 
     traverse \ ``dfa``\  to find state \ ``str``\  stops at
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         the dfa to match \ ``str``\  against  (NOT NULL)
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int start:
+    :param start:
         the state of the dfa to start matching in
+    :type start: unsigned int
 
-    :param const char \*str:
+    :param str:
         the string of bytes to match against the dfa  (NOT NULL)
+    :type str: const char \*
 
-    :param int len:
+    :param len:
         length of the string of bytes to match
+    :type len: int
 
 .. _`aa_dfa_match_len.description`:
 
@@ -213,14 +227,17 @@ aa_dfa_match
 
     traverse \ ``dfa``\  to find state \ ``str``\  stops at
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         the dfa to match \ ``str``\  against  (NOT NULL)
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int start:
+    :param start:
         the state of the dfa to start matching in
+    :type start: unsigned int
 
-    :param const char \*str:
+    :param str:
         the null terminated string of bytes to match against the dfa (NOT NULL)
+    :type str: const char \*
 
 .. _`aa_dfa_match.description`:
 
@@ -247,14 +264,17 @@ aa_dfa_next
 
     step one character to the next state in the dfa
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         the dfa to traverse (NOT NULL)
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int state:
+    :param state:
         the state to start in
+    :type state: unsigned int
 
-    :param const char c:
+    :param c:
         the input character to transition on
+    :type c: const char
 
 .. _`aa_dfa_next.description`:
 
@@ -279,17 +299,21 @@ aa_dfa_match_until
 
     traverse \ ``dfa``\  until accept state or end of input
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         the dfa to match \ ``str``\  against  (NOT NULL)
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int start:
+    :param start:
         the state of the dfa to start matching in
+    :type start: unsigned int
 
-    :param const char \*str:
+    :param str:
         the null terminated string of bytes to match against the dfa (NOT NULL)
+    :type str: const char \*
 
-    :param const char \*\*retpos:
+    :param retpos:
         first character in str after match OR end of string
+    :type retpos: const char \*\*
 
 .. _`aa_dfa_match_until.description`:
 
@@ -316,20 +340,25 @@ aa_dfa_matchn_until
 
     traverse \ ``dfa``\  until accept or \ ``n``\  bytes consumed
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         the dfa to match \ ``str``\  against  (NOT NULL)
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int start:
+    :param start:
         the state of the dfa to start matching in
+    :type start: unsigned int
 
-    :param const char \*str:
+    :param str:
         the string of bytes to match against the dfa  (NOT NULL)
+    :type str: const char \*
 
-    :param int n:
+    :param n:
         length of the string of bytes to match
+    :type n: int
 
-    :param const char \*\*retpos:
+    :param retpos:
         first character in str after match OR str + n
+    :type retpos: const char \*\*
 
 .. _`aa_dfa_matchn_until.description`:
 
@@ -359,17 +388,21 @@ aa_dfa_leftmatch
 
     traverse \ ``dfa``\  to find state \ ``str``\  stops at
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         the dfa to match \ ``str``\  against  (NOT NULL)
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int start:
+    :param start:
         the state of the dfa to start matching in
+    :type start: unsigned int
 
-    :param const char \*str:
+    :param str:
         the null terminated string of bytes to match against the dfa (NOT NULL)
+    :type str: const char \*
 
-    :param unsigned int \*count:
+    :param count:
         current count of longest left.
+    :type count: unsigned int \*
 
 .. _`aa_dfa_leftmatch.description`:
 

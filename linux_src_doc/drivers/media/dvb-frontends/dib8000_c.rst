@@ -10,8 +10,9 @@ is_manual_mode
 
     Check if TMCC should be used for parameters settings
 
-    :param struct dtv_frontend_properties \*c:
+    :param c:
         struct dvb_frontend_properties
+    :type c: struct dtv_frontend_properties \*
 
 .. _`is_manual_mode.description`:
 

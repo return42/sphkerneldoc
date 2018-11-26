@@ -8,14 +8,17 @@ nx_hcall_sync
 
 .. c:function:: int nx_hcall_sync(struct nx_crypto_ctx *nx_ctx, struct vio_pfo_op *op, u32 may_sleep)
 
-    :param struct nx_crypto_ctx \*nx_ctx:
+    :param nx_ctx:
         *undescribed*
+    :type nx_ctx: struct nx_crypto_ctx \*
 
-    :param struct vio_pfo_op \*op:
+    :param op:
         *undescribed*
+    :type op: struct vio_pfo_op \*
 
-    :param u32 may_sleep:
+    :param may_sleep:
         *undescribed*
+    :type may_sleep: u32
 
 .. _`nx_hcall_sync.description`:
 
@@ -53,17 +56,21 @@ nx_build_sg_list
 
     build an NX scatter list describing a single  buffer
 
-    :param struct nx_sg \*sg_head:
+    :param sg_head:
         pointer to the first scatter list element to build
+    :type sg_head: struct nx_sg \*
 
-    :param u8 \*start_addr:
+    :param start_addr:
         pointer to the linear buffer
+    :type start_addr: u8 \*
 
-    :param unsigned int \*len:
+    :param len:
         length of the data at \ ``start_addr``\ 
+    :type len: unsigned int \*
 
-    :param u32 sgmax:
+    :param sgmax:
         the largest number of scatter list elements we're allowed to create
+    :type sgmax: u32
 
 .. _`nx_build_sg_list.description`:
 
@@ -85,20 +92,25 @@ nx_walk_and_build
 
     walk a linux scatterlist and build an nx scatterlist
 
-    :param struct nx_sg \*nx_dst:
+    :param nx_dst:
         pointer to the first nx_sg element to write
+    :type nx_dst: struct nx_sg \*
 
-    :param unsigned int sglen:
+    :param sglen:
         max number of nx_sg entries we're allowed to write
+    :type sglen: unsigned int
 
-    :param struct scatterlist \*sg_src:
+    :param sg_src:
         pointer to the source linux scatterlist to walk
+    :type sg_src: struct scatterlist \*
 
-    :param unsigned int start:
+    :param start:
         number of bytes to fast-forward past at the beginning of \ ``sg_src``\ 
+    :type start: unsigned int
 
-    :param unsigned int \*src_len:
+    :param src_len:
         number of bytes to walk in \ ``sg_src``\ 
+    :type src_len: unsigned int \*
 
 .. _`trim_sg_list`:
 
@@ -109,17 +121,21 @@ trim_sg_list
 
     ensures the bound in sg list.
 
-    :param struct nx_sg \*sg:
+    :param sg:
         sg list head
+    :type sg: struct nx_sg \*
 
-    :param struct nx_sg \*end:
+    :param end:
         sg lisg end
+    :type end: struct nx_sg \*
 
-    :param unsigned int delta:
+    :param delta:
         is the amount we need to crop in order to bound the list.
+    :type delta: unsigned int
 
-    :param unsigned int \*nbytes:
+    :param nbytes:
         *undescribed*
+    :type nbytes: unsigned int \*
 
 .. _`nx_build_sg_lists`:
 
@@ -130,27 +146,34 @@ nx_build_sg_lists
 
     walk the input scatterlists and build arrays of NX scatterlists based on them.
 
-    :param struct nx_crypto_ctx \*nx_ctx:
+    :param nx_ctx:
         NX crypto context for the lists we're building
+    :type nx_ctx: struct nx_crypto_ctx \*
 
-    :param struct blkcipher_desc \*desc:
+    :param desc:
         the block cipher descriptor for the operation
+    :type desc: struct blkcipher_desc \*
 
-    :param struct scatterlist \*dst:
+    :param dst:
         destination scatterlist
+    :type dst: struct scatterlist \*
 
-    :param struct scatterlist \*src:
+    :param src:
         source scatterlist
+    :type src: struct scatterlist \*
 
-    :param unsigned int \*nbytes:
+    :param nbytes:
         length of data described in the scatterlists
+    :type nbytes: unsigned int \*
 
-    :param unsigned int offset:
+    :param offset:
         number of bytes to fast-forward past at the beginning of
         scatterlists.
+    :type offset: unsigned int
 
-    :param u8 \*iv:
+    :param iv:
         destination for the iv data, if the algorithm requires it
+    :type iv: u8 \*
 
 .. _`nx_build_sg_lists.description`:
 
@@ -170,11 +193,13 @@ nx_ctx_init
 
     initialize an nx_ctx's vio_pfo_op struct
 
-    :param struct nx_crypto_ctx \*nx_ctx:
+    :param nx_ctx:
         the nx context to initialize
+    :type nx_ctx: struct nx_crypto_ctx \*
 
-    :param unsigned int function:
+    :param function:
         the function code for the op
+    :type function: unsigned int
 
 .. _`nx_of_init`:
 
@@ -185,11 +210,13 @@ nx_of_init
 
     read openFirmware values from the device tree
 
-    :param struct device \*dev:
+    :param dev:
         device handle
+    :type dev: struct device \*
 
-    :param struct nx_of \*props:
+    :param props:
         pointer to struct to hold the properties values
+    :type props: struct nx_of \*
 
 .. _`nx_of_init.description`:
 
@@ -210,8 +237,9 @@ nx_register_algs
 
     register algorithms with the crypto API
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nx_register_algs.description`:
 
@@ -233,14 +261,17 @@ nx_crypto_ctx_init
 
     create and initialize a crypto api context
 
-    :param struct nx_crypto_ctx \*nx_ctx:
+    :param nx_ctx:
         the crypto api context
+    :type nx_ctx: struct nx_crypto_ctx \*
 
-    :param u32 fc:
+    :param fc:
         function code for the context
+    :type fc: u32
 
-    :param u32 mode:
+    :param mode:
         the function code specific mode for this context
+    :type mode: u32
 
 .. _`nx_crypto_ctx_exit`:
 
@@ -251,8 +282,9 @@ nx_crypto_ctx_exit
 
     destroy a crypto api context
 
-    :param struct crypto_tfm \*tfm:
+    :param tfm:
         the crypto transform pointer for the context
+    :type tfm: struct crypto_tfm \*
 
 .. _`nx_crypto_ctx_exit.description`:
 

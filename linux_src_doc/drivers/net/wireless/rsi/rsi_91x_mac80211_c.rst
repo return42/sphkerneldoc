@@ -10,8 +10,9 @@ rsi_is_cipher_wep
 
     This function determines if the cipher is WEP or not.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_is_cipher_wep.return`:
 
@@ -29,11 +30,13 @@ rsi_register_rates_channels
 
     This function registers channels and rates.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param int band:
+    :param band:
         Operating band to be set.
+    :type band: int
 
 .. _`rsi_register_rates_channels.return`:
 
@@ -51,8 +54,9 @@ rsi_mac80211_detach
 
     This function is used to de-initialize the Mac80211 stack.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
 .. _`rsi_mac80211_detach.return`:
 
@@ -70,14 +74,17 @@ rsi_indicate_tx_status
 
     This function indicates the transmit status.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Pointer to the socket buffer structure.
+    :type skb: struct sk_buff \*
 
-    :param int status:
+    :param status:
         Status
+    :type status: int
 
 .. _`rsi_indicate_tx_status.return`:
 
@@ -95,14 +102,17 @@ rsi_mac80211_tx
 
     This is the handler that 802.11 module calls for each transmitted frame.SKB contains the buffer starting from the IEEE 802.11 header.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_tx_control \*control:
+    :param control:
         Pointer to the ieee80211_tx_control structure
+    :type control: struct ieee80211_tx_control \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Pointer to the socket buffer structure.
+    :type skb: struct sk_buff \*
 
 .. _`rsi_mac80211_tx.return`:
 
@@ -120,8 +130,9 @@ rsi_mac80211_start
 
     This is first handler that 802.11 module calls, since the driver init is complete by then, just returns success.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
 .. _`rsi_mac80211_start.return`:
 
@@ -139,8 +150,9 @@ rsi_mac80211_stop
 
     This is the last handler that 802.11 module calls.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
 .. _`rsi_mac80211_stop.return`:
 
@@ -158,11 +170,13 @@ rsi_mac80211_add_interface
 
     This function is called when a netdevice attached to the hardware is enabled.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Pointer to the ieee80211_vif structure.
+    :type vif: struct ieee80211_vif \*
 
 .. _`rsi_mac80211_add_interface.return`:
 
@@ -180,11 +194,13 @@ rsi_mac80211_remove_interface
 
     This function notifies driver that an interface is going down.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Pointer to the ieee80211_vif structure.
+    :type vif: struct ieee80211_vif \*
 
 .. _`rsi_mac80211_remove_interface.return`:
 
@@ -202,8 +218,9 @@ rsi_channel_change
 
     This function is a performs the checks required for changing a channel and sets the channel accordingly.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
 .. _`rsi_channel_change.return`:
 
@@ -221,8 +238,9 @@ rsi_config_power
 
     This function configures tx power to device
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
 .. _`rsi_config_power.return`:
 
@@ -240,11 +258,13 @@ rsi_mac80211_config
 
     This function is a handler for configuration requests. The stack calls this function to change hardware configuration, e.g., channel.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 changed:
+    :param changed:
         Changed flags set.
+    :type changed: u32
 
 .. _`rsi_mac80211_config.return`:
 
@@ -262,8 +282,9 @@ rsi_get_connected_channel
 
     This function is used to get the current connected channel number.
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         *undescribed*
+    :type vif: struct ieee80211_vif \*
 
 .. _`rsi_get_connected_channel.return`:
 
@@ -281,17 +302,21 @@ rsi_mac80211_bss_info_changed
 
     This function is a handler for config requests related to BSS parameters that may vary during BSS's lifespan.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Pointer to the ieee80211_vif structure.
+    :type vif: struct ieee80211_vif \*
 
-    :param struct ieee80211_bss_conf \*bss_conf:
+    :param bss_conf:
         Pointer to the ieee80211_bss_conf structure.
+    :type bss_conf: struct ieee80211_bss_conf \*
 
-    :param u32 changed:
+    :param changed:
         Changed flags set.
+    :type changed: u32
 
 .. _`rsi_mac80211_bss_info_changed.return`:
 
@@ -309,17 +334,21 @@ rsi_mac80211_conf_filter
 
     This function configure the device's RX filter.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 changed_flags:
+    :param changed_flags:
         *undescribed*
+    :type changed_flags: u32
 
-    :param u32 \*total_flags:
+    :param total_flags:
         Total initial flags set.
+    :type total_flags: u32 \*
 
-    :param u64 multicast:
+    :param multicast:
         Multicast.
+    :type multicast: u64
 
 .. _`rsi_mac80211_conf_filter.return`:
 
@@ -337,17 +366,21 @@ rsi_mac80211_conf_tx
 
     This function configures TX queue parameters (EDCF (aifs, cw_min, cw_max), bursting) for a hardware TX queue.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Pointer to the ieee80211_vif structure.
+    :type vif: struct ieee80211_vif \*
 
-    :param u16 queue:
+    :param queue:
         Queue number.
+    :type queue: u16
 
-    :param const struct ieee80211_tx_queue_params \*params:
+    :param params:
         Pointer to ieee80211_tx_queue_params structure.
+    :type params: const struct ieee80211_tx_queue_params \*
 
 .. _`rsi_mac80211_conf_tx.return`:
 
@@ -365,17 +398,21 @@ rsi_hal_key_config
 
     This function loads the keys into the firmware.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Pointer to the ieee80211_vif structure.
+    :type vif: struct ieee80211_vif \*
 
-    :param struct ieee80211_key_conf \*key:
+    :param key:
         Pointer to the ieee80211_key_conf structure.
+    :type key: struct ieee80211_key_conf \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
 .. _`rsi_hal_key_config.return`:
 
@@ -393,20 +430,25 @@ rsi_mac80211_set_key
 
     This function sets type of key to be loaded.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param enum set_key_cmd cmd:
+    :param cmd:
         enum set_key_cmd.
+    :type cmd: enum set_key_cmd
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Pointer to the ieee80211_vif structure.
+    :type vif: struct ieee80211_vif \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         Pointer to the ieee80211_sta structure.
+    :type sta: struct ieee80211_sta \*
 
-    :param struct ieee80211_key_conf \*key:
+    :param key:
         Pointer to the ieee80211_key_conf structure.
+    :type key: struct ieee80211_key_conf \*
 
 .. _`rsi_mac80211_set_key.return`:
 
@@ -424,14 +466,17 @@ rsi_mac80211_ampdu_action
 
     This function selects the AMPDU action for the corresponding mlme_action flag and informs the f/w regarding this.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Pointer to the ieee80211_vif structure.
+    :type vif: struct ieee80211_vif \*
 
-    :param struct ieee80211_ampdu_params \*params:
+    :param params:
         Pointer to A-MPDU action parameters
+    :type params: struct ieee80211_ampdu_params \*
 
 .. _`rsi_mac80211_ampdu_action.return`:
 
@@ -449,11 +494,13 @@ rsi_mac80211_set_rts_threshold
 
     This function sets rts threshold value.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 value:
+    :param value:
         Rts threshold value.
+    :type value: u32
 
 .. _`rsi_mac80211_set_rts_threshold.return`:
 
@@ -471,14 +518,17 @@ rsi_mac80211_set_rate_mask
 
     This function sets bitrate_mask to be used.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Pointer to the ieee80211_vif structure.
+    :type vif: struct ieee80211_vif \*
 
-    :param const struct cfg80211_bitrate_mask \*mask:
+    :param mask:
         Pointer to the cfg80211_bitrate_mask structure.
+    :type mask: const struct cfg80211_bitrate_mask \*
 
 .. _`rsi_mac80211_set_rate_mask.return`:
 
@@ -496,17 +546,21 @@ rsi_perform_cqm
 
     This function performs cqm.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u8 \*bssid:
+    :param bssid:
         pointer to the bssid.
+    :type bssid: u8 \*
 
-    :param s8 rssi:
+    :param rssi:
         RSSI value.
+    :type rssi: s8
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         *undescribed*
+    :type vif: struct ieee80211_vif \*
 
 .. _`rsi_fill_rx_status`:
 
@@ -517,17 +571,21 @@ rsi_fill_rx_status
 
     This function fills rx status in ieee80211_rx_status structure.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Pointer to the socket buffer structure.
+    :type skb: struct sk_buff \*
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param struct ieee80211_rx_status \*rxs:
+    :param rxs:
         Pointer to the ieee80211_rx_status structure.
+    :type rxs: struct ieee80211_rx_status \*
 
 .. _`rsi_fill_rx_status.return`:
 
@@ -545,11 +603,13 @@ rsi_indicate_pkt_to_os
 
     This function sends recieved packet to mac80211.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Pointer to the socket buffer structure.
+    :type skb: struct sk_buff \*
 
 .. _`rsi_indicate_pkt_to_os.return`:
 
@@ -567,14 +627,17 @@ rsi_mac80211_sta_add
 
     This function notifies driver about a peer getting connected.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Pointer to the ieee80211_vif structure.
+    :type vif: struct ieee80211_vif \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         Pointer to the ieee80211_sta structure.
+    :type sta: struct ieee80211_sta \*
 
 .. _`rsi_mac80211_sta_add.return`:
 
@@ -592,14 +655,17 @@ rsi_mac80211_sta_remove
 
     This function notifies driver about a peer getting disconnected.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         Pointer to the ieee80211_vif structure.
+    :type vif: struct ieee80211_vif \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         Pointer to the ieee80211_sta structure.
+    :type sta: struct ieee80211_sta \*
 
 .. _`rsi_mac80211_sta_remove.return`:
 
@@ -617,14 +683,17 @@ rsi_mac80211_set_antenna
 
     This function is used to configure tx and rx antennas.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 tx_ant:
+    :param tx_ant:
         Bitmap for tx antenna
+    :type tx_ant: u32
 
-    :param u32 rx_ant:
+    :param rx_ant:
         Bitmap for rx antenna
+    :type rx_ant: u32
 
 .. _`rsi_mac80211_set_antenna.return`:
 
@@ -642,14 +711,17 @@ rsi_mac80211_get_antenna
 
     This function is used to configure tx and rx antennas.
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         Pointer to the ieee80211_hw structure.
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 \*tx_ant:
+    :param tx_ant:
         Bitmap for tx antenna
+    :type tx_ant: u32 \*
 
-    :param u32 \*rx_ant:
+    :param rx_ant:
         Bitmap for rx antenna
+    :type rx_ant: u32 \*
 
 .. _`rsi_mac80211_get_antenna.return`:
 
@@ -667,8 +739,9 @@ rsi_mac80211_attach
 
     This function is used to initialize Mac80211 stack.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_mac80211_attach.return`:
 

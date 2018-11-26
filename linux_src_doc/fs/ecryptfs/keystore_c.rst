@@ -10,8 +10,9 @@ process_request_key_err
 
     Linux filesystem encryption layer In-kernel key management code.  Includes functions to parse and write authentication token-related packets with the underlying file.
 
-    :param long err_code:
+    :param err_code:
         *undescribed*
+    :type err_code: long
 
 .. _`process_request_key_err.description`:
 
@@ -45,15 +46,18 @@ ecryptfs_parse_packet_length
 
 .. c:function:: int ecryptfs_parse_packet_length(unsigned char *data, size_t *size, size_t *length_size)
 
-    :param unsigned char \*data:
+    :param data:
         Pointer to memory containing length at offset
+    :type data: unsigned char \*
 
-    :param size_t \*size:
+    :param size:
         This function writes the decoded size to this memory
         address; zero on error
+    :type size: size_t \*
 
-    :param size_t \*length_size:
+    :param length_size:
         The number of bytes occupied by the encoded length
+    :type length_size: size_t \*
 
 .. _`ecryptfs_parse_packet_length.description`:
 
@@ -69,16 +73,19 @@ ecryptfs_write_packet_length
 
 .. c:function:: int ecryptfs_write_packet_length(char *dest, size_t size, size_t *packet_size_length)
 
-    :param char \*dest:
+    :param dest:
         The byte array target into which to write the length. Must
         have at least ECRYPTFS_MAX_PKT_LEN_SIZE bytes allocated.
+    :type dest: char \*
 
-    :param size_t size:
+    :param size:
         The length to write.
+    :type size: size_t
 
-    :param size_t \*packet_size_length:
+    :param packet_size_length:
         The number of bytes used to encode the packet
         length is written to this address.
+    :type packet_size_length: size_t \*
 
 .. _`ecryptfs_write_packet_length.description`:
 
@@ -94,8 +101,9 @@ ecryptfs_verify_version
 
 .. c:function:: int ecryptfs_verify_version(u16 version)
 
-    :param u16 version:
+    :param version:
         The version number to confirm
+    :type version: u16
 
 .. _`ecryptfs_verify_version.description`:
 
@@ -111,11 +119,13 @@ ecryptfs_verify_auth_tok_from_key
 
 .. c:function:: int ecryptfs_verify_auth_tok_from_key(struct key *auth_tok_key, struct ecryptfs_auth_tok **auth_tok)
 
-    :param struct key \*auth_tok_key:
+    :param auth_tok_key:
         key containing the authentication token
+    :type auth_tok_key: struct key \*
 
-    :param struct ecryptfs_auth_tok \*\*auth_tok:
+    :param auth_tok:
         authentication token
+    :type auth_tok: struct ecryptfs_auth_tok \*\*
 
 .. _`ecryptfs_verify_auth_tok_from_key.description`:
 
@@ -132,17 +142,21 @@ ecryptfs_find_auth_tok_for_sig
 
 .. c:function:: int ecryptfs_find_auth_tok_for_sig(struct key **auth_tok_key, struct ecryptfs_auth_tok **auth_tok, struct ecryptfs_mount_crypt_stat *mount_crypt_stat, char *sig)
 
-    :param struct key \*\*auth_tok_key:
+    :param auth_tok_key:
         *undescribed*
+    :type auth_tok_key: struct key \*\*
 
-    :param struct ecryptfs_auth_tok \*\*auth_tok:
+    :param auth_tok:
         Set to the matching auth_tok; NULL if not found
+    :type auth_tok: struct ecryptfs_auth_tok \*\*
 
-    :param struct ecryptfs_mount_crypt_stat \*mount_crypt_stat:
+    :param mount_crypt_stat:
         *undescribed*
+    :type mount_crypt_stat: struct ecryptfs_mount_crypt_stat \*
 
-    :param char \*sig:
+    :param sig:
         Sig of auth_tok to find
+    :type sig: char \*
 
 .. _`ecryptfs_find_auth_tok_for_sig.description`:
 
@@ -167,23 +181,29 @@ ecryptfs_write_tag_70_packet
 
     Write encrypted filename (EFN) packet against FNEK
 
-    :param char \*dest:
+    :param dest:
         *undescribed*
+    :type dest: char \*
 
-    :param size_t \*remaining_bytes:
+    :param remaining_bytes:
         *undescribed*
+    :type remaining_bytes: size_t \*
 
-    :param size_t \*packet_size:
+    :param packet_size:
         *undescribed*
+    :type packet_size: size_t \*
 
-    :param struct ecryptfs_mount_crypt_stat \*mount_crypt_stat:
+    :param mount_crypt_stat:
         *undescribed*
+    :type mount_crypt_stat: struct ecryptfs_mount_crypt_stat \*
 
-    :param char \*filename:
+    :param filename:
         NULL-terminated filename string
+    :type filename: char \*
 
-    :param size_t filename_size:
+    :param filename_size:
         *undescribed*
+    :type filename_size: size_t
 
 .. _`ecryptfs_write_tag_70_packet.description`:
 
@@ -205,27 +225,33 @@ ecryptfs_parse_tag_70_packet
 
     Parse and process FNEK-encrypted passphrase packet
 
-    :param char \*\*filename:
+    :param filename:
         This function kmalloc's the memory for the filename
+    :type filename: char \*\*
 
-    :param size_t \*filename_size:
+    :param filename_size:
         This function sets this to the amount of memory
         kmalloc'd for the filename
+    :type filename_size: size_t \*
 
-    :param size_t \*packet_size:
+    :param packet_size:
         This function sets this to the the number of octets
         in the packet parsed
+    :type packet_size: size_t \*
 
-    :param struct ecryptfs_mount_crypt_stat \*mount_crypt_stat:
+    :param mount_crypt_stat:
         The mount-wide cryptographic context
+    :type mount_crypt_stat: struct ecryptfs_mount_crypt_stat \*
 
-    :param char \*data:
+    :param data:
         The memory location containing the start of the tag 70
         packet
+    :type data: char \*
 
-    :param size_t max_packet_size:
+    :param max_packet_size:
         The maximum legal size of the packet to be parsed
         from \ ``data``\ 
+    :type max_packet_size: size_t
 
 .. _`ecryptfs_parse_tag_70_packet.description`:
 
@@ -243,11 +269,13 @@ decrypt_pki_encrypted_session_key
 
     Decrypt the session key with the given auth_tok.
 
-    :param struct ecryptfs_auth_tok \*auth_tok:
+    :param auth_tok:
         The key authentication token used to decrypt the session key
+    :type auth_tok: struct ecryptfs_auth_tok \*
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
 .. _`decrypt_pki_encrypted_session_key.description`:
 
@@ -263,29 +291,35 @@ parse_tag_1_packet
 
 .. c:function:: int parse_tag_1_packet(struct ecryptfs_crypt_stat *crypt_stat, unsigned char *data, struct list_head *auth_tok_list, struct ecryptfs_auth_tok **new_auth_tok, size_t *packet_size, size_t max_packet_size)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context to modify based on packet contents
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param unsigned char \*data:
+    :param data:
         The raw bytes of the packet.
+    :type data: unsigned char \*
 
-    :param struct list_head \*auth_tok_list:
+    :param auth_tok_list:
         eCryptfs parses packets into authentication tokens;
         a new authentication token will be placed at the
         end of this list for this packet.
+    :type auth_tok_list: struct list_head \*
 
-    :param struct ecryptfs_auth_tok \*\*new_auth_tok:
+    :param new_auth_tok:
         Pointer to a pointer to memory that this function
         allocates; sets the memory address of the pointer to
         NULL on error. This object is added to the
         auth_tok_list.
+    :type new_auth_tok: struct ecryptfs_auth_tok \*\*
 
-    :param size_t \*packet_size:
+    :param packet_size:
         This function writes the size of the parsed packet
         into this memory location; zero on error.
+    :type packet_size: size_t \*
 
-    :param size_t max_packet_size:
+    :param max_packet_size:
         The maximum allowable packet size
+    :type max_packet_size: size_t
 
 .. _`parse_tag_1_packet.description`:
 
@@ -301,30 +335,36 @@ parse_tag_3_packet
 
 .. c:function:: int parse_tag_3_packet(struct ecryptfs_crypt_stat *crypt_stat, unsigned char *data, struct list_head *auth_tok_list, struct ecryptfs_auth_tok **new_auth_tok, size_t *packet_size, size_t max_packet_size)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context to modify based on packet
         contents.
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param unsigned char \*data:
+    :param data:
         The raw bytes of the packet.
+    :type data: unsigned char \*
 
-    :param struct list_head \*auth_tok_list:
+    :param auth_tok_list:
         eCryptfs parses packets into authentication tokens;
         a new authentication token will be placed at the end
         of this list for this packet.
+    :type auth_tok_list: struct list_head \*
 
-    :param struct ecryptfs_auth_tok \*\*new_auth_tok:
+    :param new_auth_tok:
         Pointer to a pointer to memory that this function
         allocates; sets the memory address of the pointer to
         NULL on error. This object is added to the
         auth_tok_list.
+    :type new_auth_tok: struct ecryptfs_auth_tok \*\*
 
-    :param size_t \*packet_size:
+    :param packet_size:
         This function writes the size of the parsed packet
         into this memory location; zero on error.
+    :type packet_size: size_t \*
 
-    :param size_t max_packet_size:
+    :param max_packet_size:
         maximum number of bytes to parse
+    :type max_packet_size: size_t
 
 .. _`parse_tag_3_packet.description`:
 
@@ -340,28 +380,34 @@ parse_tag_11_packet
 
 .. c:function:: int parse_tag_11_packet(unsigned char *data, unsigned char *contents, size_t max_contents_bytes, size_t *tag_11_contents_size, size_t *packet_size, size_t max_packet_size)
 
-    :param unsigned char \*data:
+    :param data:
         The raw bytes of the packet
+    :type data: unsigned char \*
 
-    :param unsigned char \*contents:
+    :param contents:
         This function writes the data contents of the literal
         packet into this memory location
+    :type contents: unsigned char \*
 
-    :param size_t max_contents_bytes:
+    :param max_contents_bytes:
         The maximum number of bytes that this function
         is allowed to write into contents
+    :type max_contents_bytes: size_t
 
-    :param size_t \*tag_11_contents_size:
+    :param tag_11_contents_size:
         This function writes the size of the parsed
         contents into this memory location; zero on
         error
+    :type tag_11_contents_size: size_t \*
 
-    :param size_t \*packet_size:
+    :param packet_size:
         This function writes the size of the parsed packet
         into this memory location; zero on error
+    :type packet_size: size_t \*
 
-    :param size_t max_packet_size:
+    :param max_packet_size:
         maximum number of bytes to parse
+    :type max_packet_size: size_t
 
 .. _`parse_tag_11_packet.description`:
 
@@ -379,11 +425,13 @@ decrypt_passphrase_encrypted_session_key
 
     Decrypt the session key with the given auth_tok.
 
-    :param struct ecryptfs_auth_tok \*auth_tok:
+    :param auth_tok:
         The passphrase authentication token to use to encrypt the FEK
+    :type auth_tok: struct ecryptfs_auth_tok \*
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
 .. _`decrypt_passphrase_encrypted_session_key.description`:
 
@@ -399,14 +447,17 @@ ecryptfs_parse_packet_set
 
 .. c:function:: int ecryptfs_parse_packet_set(struct ecryptfs_crypt_stat *crypt_stat, unsigned char *src, struct dentry *ecryptfs_dentry)
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param unsigned char \*src:
+    :param src:
         Virtual address of region of memory containing the packets
+    :type src: unsigned char \*
 
-    :param struct dentry \*ecryptfs_dentry:
+    :param ecryptfs_dentry:
         The eCryptfs dentry associated with the packet set
+    :type ecryptfs_dentry: struct dentry \*
 
 .. _`ecryptfs_parse_packet_set.description`:
 
@@ -429,28 +480,35 @@ write_tag_1_packet
 
     Write an RFC2440-compatible tag 1 (public key) packet
 
-    :param char \*dest:
+    :param dest:
         Buffer into which to write the packet
+    :type dest: char \*
 
-    :param size_t \*remaining_bytes:
+    :param remaining_bytes:
         Maximum number of bytes that can be writtn
+    :type remaining_bytes: size_t \*
 
-    :param struct key \*auth_tok_key:
+    :param auth_tok_key:
         The authentication token key to unlock and put when done with
         \ ``auth_tok``\ 
+    :type auth_tok_key: struct key \*
 
-    :param struct ecryptfs_auth_tok \*auth_tok:
+    :param auth_tok:
         The authentication token used for generating the tag 1 packet
+    :type auth_tok: struct ecryptfs_auth_tok \*
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param struct ecryptfs_key_record \*key_rec:
+    :param key_rec:
         The key record struct for the tag 1 packet
+    :type key_rec: struct ecryptfs_key_record \*
 
-    :param size_t \*packet_size:
+    :param packet_size:
         This function will write the number of bytes that end
         up constituting the packet; set to zero on error
+    :type packet_size: size_t \*
 
 .. _`write_tag_1_packet.description`:
 
@@ -466,20 +524,25 @@ write_tag_11_packet
 
 .. c:function:: int write_tag_11_packet(char *dest, size_t *remaining_bytes, char *contents, size_t contents_length, size_t *packet_length)
 
-    :param char \*dest:
+    :param dest:
         Target into which Tag 11 packet is to be written
+    :type dest: char \*
 
-    :param size_t \*remaining_bytes:
+    :param remaining_bytes:
         Maximum packet length
+    :type remaining_bytes: size_t \*
 
-    :param char \*contents:
+    :param contents:
         Byte array of contents to copy in
+    :type contents: char \*
 
-    :param size_t contents_length:
+    :param contents_length:
         Number of bytes in contents
+    :type contents_length: size_t
 
-    :param size_t \*packet_length:
+    :param packet_length:
         Length of the Tag 11 packet written; zero on error
+    :type packet_length: size_t \*
 
 .. _`write_tag_11_packet.description`:
 
@@ -495,24 +558,30 @@ write_tag_3_packet
 
 .. c:function:: int write_tag_3_packet(char *dest, size_t *remaining_bytes, struct ecryptfs_auth_tok *auth_tok, struct ecryptfs_crypt_stat *crypt_stat, struct ecryptfs_key_record *key_rec, size_t *packet_size)
 
-    :param char \*dest:
+    :param dest:
         Buffer into which to write the packet
+    :type dest: char \*
 
-    :param size_t \*remaining_bytes:
+    :param remaining_bytes:
         Maximum number of bytes that can be written
+    :type remaining_bytes: size_t \*
 
-    :param struct ecryptfs_auth_tok \*auth_tok:
+    :param auth_tok:
         Authentication token
+    :type auth_tok: struct ecryptfs_auth_tok \*
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param struct ecryptfs_key_record \*key_rec:
+    :param key_rec:
         encrypted key
+    :type key_rec: struct ecryptfs_key_record \*
 
-    :param size_t \*packet_size:
+    :param packet_size:
         This function will write the number of bytes that end
         up constituting the packet; set to zero on error
+    :type packet_size: size_t \*
 
 .. _`write_tag_3_packet.description`:
 
@@ -528,22 +597,27 @@ ecryptfs_generate_key_packet_set
 
 .. c:function:: int ecryptfs_generate_key_packet_set(char *dest_base, struct ecryptfs_crypt_stat *crypt_stat, struct dentry *ecryptfs_dentry, size_t *len, size_t max)
 
-    :param char \*dest_base:
+    :param dest_base:
         Virtual address from which to write the key record set
+    :type dest_base: char \*
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         The cryptographic context from which the
         authentication tokens will be retrieved
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
-    :param struct dentry \*ecryptfs_dentry:
+    :param ecryptfs_dentry:
         The dentry, used to retrieve the mount crypt stat
         for the global parameters
+    :type ecryptfs_dentry: struct dentry \*
 
-    :param size_t \*len:
+    :param len:
         The amount written
+    :type len: size_t \*
 
-    :param size_t max:
+    :param max:
         The maximum amount of data allowed to be written
+    :type max: size_t
 
 .. _`ecryptfs_generate_key_packet_set.description`:
 

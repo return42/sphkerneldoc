@@ -10,8 +10,9 @@ v9fs_register_trans
 
     register a new transport with 9p
 
-    :param struct p9_trans_module \*m:
+    :param m:
         structure describing the transport module and entry points
+    :type m: struct p9_trans_module \*
 
 .. _`v9fs_unregister_trans`:
 
@@ -22,8 +23,9 @@ v9fs_unregister_trans
 
     unregister a 9p transport
 
-    :param struct p9_trans_module \*m:
+    :param m:
         the transport to remove
+    :type m: struct p9_trans_module \*
 
 .. _`v9fs_get_trans_by_name`:
 
@@ -34,8 +36,9 @@ v9fs_get_trans_by_name
 
     get transport with the matching name
 
-    :param char \*s:
+    :param s:
         string identifying transport
+    :type s: char \*
 
 .. _`v9fs_get_default_trans`:
 
@@ -46,8 +49,9 @@ v9fs_get_default_trans
 
     get the default transport
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`v9fs_put_trans`:
 
@@ -58,8 +62,9 @@ v9fs_put_trans
 
     put trans
 
-    :param struct p9_trans_module \*m:
+    :param m:
         transport to put
+    :type m: struct p9_trans_module \*
 
 .. _`init_p9`:
 
@@ -70,8 +75,9 @@ init_p9
 
     Initialize module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`exit_p9`:
 
@@ -82,8 +88,9 @@ exit_p9
 
     shutdown module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

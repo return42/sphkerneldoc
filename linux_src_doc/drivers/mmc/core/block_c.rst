@@ -58,14 +58,17 @@ mmc_rpmb_ioctl
 
     ioctl handler for the RPMB chardev
 
-    :param struct file \*filp:
+    :param filp:
         the character device file
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         the \ :c:func:`ioctl`\  command
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         the argument from userspace
+    :type arg: unsigned long
 
 .. _`mmc_rpmb_ioctl.description`:
 

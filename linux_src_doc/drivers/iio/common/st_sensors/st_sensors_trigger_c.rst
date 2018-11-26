@@ -10,11 +10,13 @@ st_sensors_new_samples_available
 
     check if more samples came in
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         *undescribed*
+    :type indio_dev: struct iio_dev \*
 
-    :param struct st_sensor_data \*sdata:
+    :param sdata:
         *undescribed*
+    :type sdata: struct st_sensor_data \*
 
 .. _`st_sensors_new_samples_available.return`:
 
@@ -34,11 +36,13 @@ st_sensors_irq_handler
 
     top half of the IRQ-based triggers
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*p:
+    :param p:
         private handler data
+    :type p: void \*
 
 .. _`st_sensors_irq_thread`:
 
@@ -49,11 +53,13 @@ st_sensors_irq_thread
 
     bottom half of the IRQ-based triggers
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*p:
+    :param p:
         private handler data
+    :type p: void \*
 
 .. This file was automatic generated / don't edit.
 

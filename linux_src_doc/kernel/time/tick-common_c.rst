@@ -10,8 +10,9 @@ tick_is_oneshot_available
 
     check for a oneshot capable event device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_broadcast_oneshot_control`:
 
@@ -22,8 +23,9 @@ tick_broadcast_oneshot_control
 
     Enter/exit broadcast oneshot mode
 
-    :param enum tick_broadcast_state state:
+    :param state:
         The target state (enter/exit)
+    :type state: enum tick_broadcast_state
 
 .. _`tick_broadcast_oneshot_control.description`:
 
@@ -46,8 +48,9 @@ tick_suspend_local
 
     Suspend the local tick device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_suspend_local.description`:
 
@@ -67,8 +70,9 @@ tick_resume_local
 
     Resume the local tick device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_resume_local.description`:
 
@@ -88,8 +92,9 @@ tick_suspend
 
     Suspend the tick and the broadcast device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_suspend.description`:
 
@@ -111,8 +116,9 @@ tick_resume
 
     Resume the tick and the broadcast device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_resume.description`:
 
@@ -133,8 +139,9 @@ tick_freeze
 
     Suspend the local tick and (possibly) timekeeping.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_freeze.description`:
 
@@ -156,8 +163,9 @@ tick_unfreeze
 
     Resume the local tick and (possibly) timekeeping.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_unfreeze.description`:
 
@@ -179,8 +187,9 @@ tick_init
 
     initialize the tick control
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

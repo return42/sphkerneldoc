@@ -10,8 +10,9 @@ batadv_gw_node_release
 
     release gw_node from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the gw_node
+    :type ref: struct kref \*
 
 .. _`batadv_gw_node_put`:
 
@@ -22,8 +23,9 @@ batadv_gw_node_put
 
     decrement the gw_node refcounter and possibly release it
 
-    :param struct batadv_gw_node \*gw_node:
+    :param gw_node:
         gateway node to free
+    :type gw_node: struct batadv_gw_node \*
 
 .. _`batadv_gw_get_selected_gw_node`:
 
@@ -34,8 +36,9 @@ batadv_gw_get_selected_gw_node
 
     Get currently selected gateway
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_gw_get_selected_gw_node.return`:
 
@@ -53,8 +56,9 @@ batadv_gw_get_selected_orig
 
     Get originator of currently selected gateway
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_gw_get_selected_orig.return`:
 
@@ -72,8 +76,9 @@ batadv_gw_reselect
 
     force a gateway reselection
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_gw_reselect.description`:
 
@@ -96,8 +101,9 @@ batadv_gw_check_client_stop
 
     check if client mode has been switched off
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_gw_check_client_stop.description`:
 
@@ -117,8 +123,9 @@ batadv_gw_election
 
     Elect the best gateway
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_gw_check_election`:
 
@@ -129,11 +136,13 @@ batadv_gw_check_election
 
     Elect orig node as best gateway when eligible
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node which is to be checked
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_gw_node_add`:
 
@@ -144,14 +153,25 @@ batadv_gw_node_add
 
     add gateway node to list of available gateways
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator announcing gateway capabilities
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_tvlv_gateway_data \*gateway:
+    :param gateway:
         announced bandwidth information
+    :type gateway: struct batadv_tvlv_gateway_data \*
+
+.. _`batadv_gw_node_add.description`:
+
+Description
+-----------
+
+Has to be called with the appropriate locks being acquired
+(gw.list_lock).
 
 .. _`batadv_gw_node_get`:
 
@@ -162,11 +182,13 @@ batadv_gw_node_get
 
     retrieve gateway node from list of available gateways
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator announcing gateway capabilities
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_gw_node_get.return`:
 
@@ -184,14 +206,17 @@ batadv_gw_node_update
 
     update list of available gateways with changed bandwidth information
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator announcing gateway capabilities
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_tvlv_gateway_data \*gateway:
+    :param gateway:
         announced bandwidth information
+    :type gateway: struct batadv_tvlv_gateway_data \*
 
 .. _`batadv_gw_node_delete`:
 
@@ -202,11 +227,13 @@ batadv_gw_node_delete
 
     Remove orig_node from gateway list
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node which is currently in process of being removed
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_gw_node_free`:
 
@@ -217,8 +244,9 @@ batadv_gw_node_free
 
     Free gateway information from soft interface
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_gw_client_seq_print_text`:
 
@@ -229,11 +257,13 @@ batadv_gw_client_seq_print_text
 
     Print the gateway table in a seq file
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq file to print on
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_gw_client_seq_print_text.return`:
 
@@ -251,11 +281,13 @@ batadv_gw_dump
 
     Dump gateways into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Control block containing additional options
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_gw_dump.return`:
 
@@ -273,15 +305,18 @@ batadv_gw_dhcp_recipient_get
 
     check if a packet is a DHCP message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet to check
+    :type skb: struct sk_buff \*
 
-    :param unsigned int \*header_len:
+    :param header_len:
         a pointer to the batman-adv header size
+    :type header_len: unsigned int \*
 
-    :param u8 \*chaddr:
+    :param chaddr:
         buffer where the client address will be stored. Valid
         only if the function returns BATADV_DHCP_TO_CLIENT
+    :type chaddr: u8 \*
 
 .. _`batadv_gw_dhcp_recipient_get.description`:
 
@@ -309,11 +344,13 @@ batadv_gw_out_of_range
 
     check if the dhcp request destination is the best gateway
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the outgoing packet
+    :type skb: struct sk_buff \*
 
 .. _`batadv_gw_out_of_range.description`:
 

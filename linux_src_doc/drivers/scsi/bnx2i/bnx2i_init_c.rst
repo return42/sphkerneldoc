@@ -10,11 +10,13 @@ bnx2i_identify_device
 
     identifies NetXtreme II device type
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         Adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct cnic_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct cnic_dev \*
 
 .. _`bnx2i_identify_device.description`:
 
@@ -34,8 +36,9 @@ get_adapter_list_head
 
     returns head of adapter list
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bnx2i_find_hba_for_cnic`:
 
@@ -46,8 +49,9 @@ bnx2i_find_hba_for_cnic
 
     maps cnic device instance to bnx2i adapter instance
 
-    :param struct cnic_dev \*cnic:
+    :param cnic:
         pointer to cnic device instance
+    :type cnic: struct cnic_dev \*
 
 .. _`bnx2i_start`:
 
@@ -58,8 +62,9 @@ bnx2i_start
 
     cnic callback to initialize & start adapter instance
 
-    :param void \*handle:
+    :param handle:
         transparent handle pointing to adapter structure
+    :type handle: void \*
 
 .. _`bnx2i_start.description`:
 
@@ -83,8 +88,9 @@ bnx2i_chip_cleanup
 
     local routine to handle chip cleanup
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         Adapter instance to register
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_chip_cleanup.description`:
 
@@ -103,8 +109,9 @@ bnx2i_stop
 
     cnic callback to shutdown adapter instance
 
-    :param void \*handle:
+    :param handle:
         transparent handle pointing to adapter structure
+    :type handle: void \*
 
 .. _`bnx2i_stop.description`:
 
@@ -123,11 +130,13 @@ bnx2i_init_one
 
     initialize an adapter instance and allocate memory resources
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         bnx2i adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct cnic_dev \*cnic:
+    :param cnic:
         cnic device handle
+    :type cnic: struct cnic_dev \*
 
 .. _`bnx2i_init_one.description`:
 
@@ -147,8 +156,9 @@ bnx2i_ulp_init
 
     initialize an adapter instance
 
-    :param struct cnic_dev \*dev:
+    :param dev:
         cnic device handle
+    :type dev: struct cnic_dev \*
 
 .. _`bnx2i_ulp_init.description`:
 
@@ -168,8 +178,9 @@ bnx2i_ulp_exit
 
     shuts down adapter instance and frees all resources
 
-    :param struct cnic_dev \*dev:
+    :param dev:
         cnic device handle
+    :type dev: struct cnic_dev \*
 
 .. _`bnx2i_get_stats`:
 
@@ -180,8 +191,9 @@ bnx2i_get_stats
 
     Retrieve various statistic from iSCSI offload
 
-    :param void \*handle:
+    :param handle:
         bnx2i_hba
+    :type handle: void \*
 
 .. _`bnx2i_get_stats.description`:
 
@@ -200,8 +212,9 @@ bnx2i_cpu_online
 
     Create a receive thread for an online CPU
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu index for the online cpu
+    :type cpu: unsigned int
 
 .. _`bnx2i_mod_init`:
 
@@ -212,8 +225,9 @@ bnx2i_mod_init
 
     module init entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bnx2i_mod_init.description`:
 
@@ -233,8 +247,9 @@ bnx2i_mod_exit
 
     module cleanup/exit entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bnx2i_mod_exit.description`:
 

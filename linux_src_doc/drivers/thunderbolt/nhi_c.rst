@@ -10,11 +10,13 @@ ring_interrupt_active
 
     activate/deactivate interrupts for a single ring
 
-    :param struct tb_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct tb_ring \*
 
-    :param bool active:
+    :param active:
         *undescribed*
+    :type active: bool
 
 .. _`ring_interrupt_active.description`:
 
@@ -32,8 +34,9 @@ nhi_disable_interrupts
 
     disable interrupts for all rings
 
-    :param struct tb_nhi \*nhi:
+    :param nhi:
         *undescribed*
+    :type nhi: struct tb_nhi \*
 
 .. _`nhi_disable_interrupts.description`:
 
@@ -51,8 +54,9 @@ ring_write_descriptors
 
     post frames from ring->queue to the controller
 
-    :param struct tb_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct tb_ring \*
 
 .. _`ring_write_descriptors.description`:
 
@@ -70,8 +74,9 @@ ring_work
 
     progress completed frames
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`ring_work.description`:
 
@@ -93,8 +98,9 @@ tb_ring_poll
 
     Poll one completed frame from the ring
 
-    :param struct tb_ring \*ring:
+    :param ring:
         Ring to poll
+    :type ring: struct tb_ring \*
 
 .. _`tb_ring_poll.description`:
 
@@ -115,8 +121,9 @@ tb_ring_poll_complete
 
     Re-start interrupt for the ring
 
-    :param struct tb_ring \*ring:
+    :param ring:
         Ring to re-start the interrupt
+    :type ring: struct tb_ring \*
 
 .. _`tb_ring_poll_complete.description`:
 
@@ -135,17 +142,21 @@ tb_ring_alloc_tx
 
     Allocate DMA ring for transmit
 
-    :param struct tb_nhi \*nhi:
+    :param nhi:
         Pointer to the NHI the ring is to be allocated
+    :type nhi: struct tb_nhi \*
 
-    :param int hop:
+    :param hop:
         HopID (ring) to allocate
+    :type hop: int
 
-    :param int size:
+    :param size:
         Number of entries in the ring
+    :type size: int
 
-    :param unsigned int flags:
+    :param flags:
         Flags for the ring
+    :type flags: unsigned int
 
 .. _`tb_ring_alloc_rx`:
 
@@ -156,31 +167,38 @@ tb_ring_alloc_rx
 
     Allocate DMA ring for receive
 
-    :param struct tb_nhi \*nhi:
+    :param nhi:
         Pointer to the NHI the ring is to be allocated
+    :type nhi: struct tb_nhi \*
 
-    :param int hop:
+    :param hop:
         HopID (ring) to allocate. Pass \ ``-1``\  for automatic allocation.
+    :type hop: int
 
-    :param int size:
+    :param size:
         Number of entries in the ring
+    :type size: int
 
-    :param unsigned int flags:
+    :param flags:
         Flags for the ring
+    :type flags: unsigned int
 
-    :param u16 sof_mask:
+    :param sof_mask:
         Mask of PDF values that start a frame
+    :type sof_mask: u16
 
-    :param u16 eof_mask:
+    :param eof_mask:
         Mask of PDF values that end a frame
+    :type eof_mask: u16
 
     :param void (\*start_poll)(void \*):
         If not \ ``NULL``\  the ring will call this function when an
         interrupt is triggered and masked, instead of callback
         in each Rx frame.
 
-    :param void \*poll_data:
+    :param poll_data:
         Optional data passed to \ ``start_poll``\ 
+    :type poll_data: void \*
 
 .. _`tb_ring_start`:
 
@@ -191,8 +209,9 @@ tb_ring_start
 
     enable a ring
 
-    :param struct tb_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct tb_ring \*
 
 .. _`tb_ring_start.description`:
 
@@ -210,8 +229,9 @@ tb_ring_stop
 
     shutdown a ring
 
-    :param struct tb_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct tb_ring \*
 
 .. _`tb_ring_stop.description`:
 
@@ -237,14 +257,17 @@ nhi_mailbox_cmd
 
     Send a command through NHI mailbox
 
-    :param struct tb_nhi \*nhi:
+    :param nhi:
         Pointer to the NHI structure
+    :type nhi: struct tb_nhi \*
 
-    :param enum nhi_mailbox_cmd cmd:
+    :param cmd:
         Command to send
+    :type cmd: enum nhi_mailbox_cmd
 
-    :param u32 data:
+    :param data:
         Data to be send with the command
+    :type data: u32
 
 .. _`nhi_mailbox_cmd.description`:
 
@@ -263,8 +286,9 @@ nhi_mailbox_mode
 
     Return current firmware operation mode
 
-    :param struct tb_nhi \*nhi:
+    :param nhi:
         Pointer to the NHI structure
+    :type nhi: struct tb_nhi \*
 
 .. _`nhi_mailbox_mode.description`:
 

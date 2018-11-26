@@ -10,17 +10,21 @@ pinconf_generic_dump_pins
 
     Print information about pin or group of pins
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         Pincontrol device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param struct seq_file \*s:
+    :param s:
         File to print to
+    :type s: struct seq_file \*
 
-    :param const char \*gname:
+    :param gname:
         Group name specifying pins
+    :type gname: const char \*
 
-    :param unsigned pin:
+    :param pin:
         Pin number specyfying pin
+    :type pin: unsigned
 
 .. _`pinconf_generic_dump_pins.description`:
 
@@ -40,20 +44,25 @@ parse_dt_cfg
 
     Parse DT pinconf parameters
 
-    :param struct device_node \*np:
+    :param np:
         DT node
+    :type np: struct device_node \*
 
-    :param const struct pinconf_generic_params \*params:
+    :param params:
         Array of describing generic parameters
+    :type params: const struct pinconf_generic_params \*
 
-    :param unsigned int count:
+    :param count:
         Number of entries in \ ``params``\ 
+    :type count: unsigned int
 
-    :param unsigned long \*cfg:
+    :param cfg:
         Array of parsed config options
+    :type cfg: unsigned long \*
 
-    :param unsigned int \*ncfg:
+    :param ncfg:
         Number of entries in \ ``cfg``\ 
+    :type ncfg: unsigned int \*
 
 .. _`parse_dt_cfg.description`:
 
@@ -74,18 +83,22 @@ pinconf_generic_parse_dt_config
 
     parse the config properties into generic pinconfig values.
 
-    :param struct device_node \*np:
+    :param np:
         node containing the pinconfig properties
+    :type np: struct device_node \*
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         *undescribed*
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned long \*\*configs:
+    :param configs:
         array with nconfigs entries containing the generic pinconf values
         must be freed when no longer necessary.
+    :type configs: unsigned long \*\*
 
-    :param unsigned int \*nconfigs:
+    :param nconfigs:
         umber of configurations
+    :type nconfigs: unsigned int \*
 
 .. This file was automatic generated / don't edit.
 

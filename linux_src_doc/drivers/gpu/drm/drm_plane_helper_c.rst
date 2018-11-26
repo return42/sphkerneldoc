@@ -41,42 +41,53 @@ drm_plane_helper_check_update
 
     Check plane update for validity
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane object to update
+    :type plane: struct drm_plane \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         owning CRTC of owning plane
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         framebuffer to flip onto plane
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_rect \*src:
+    :param src:
         source coordinates in 16.16 fixed point
+    :type src: struct drm_rect \*
 
-    :param struct drm_rect \*dst:
+    :param dst:
         integer destination coordinates
+    :type dst: struct drm_rect \*
 
-    :param unsigned int rotation:
+    :param rotation:
         plane rotation
+    :type rotation: unsigned int
 
-    :param int min_scale:
+    :param min_scale:
         minimum \ ``src``\ :@dest scaling factor in 16.16 fixed point
+    :type min_scale: int
 
-    :param int max_scale:
+    :param max_scale:
         maximum \ ``src``\ :@dest scaling factor in 16.16 fixed point
+    :type max_scale: int
 
-    :param bool can_position:
+    :param can_position:
         is it legal to position the plane such that it
         doesn't cover the entire crtc?  This will generally
         only be false for primary planes.
+    :type can_position: bool
 
-    :param bool can_update_disabled:
+    :param can_update_disabled:
         can the plane be updated while the crtc
         is disabled?
+    :type can_update_disabled: bool
 
-    :param bool \*visible:
+    :param visible:
         output parameter indicating whether plane is still visible after
         clipping
+    :type visible: bool \*
 
 .. _`drm_plane_helper_check_update.description`:
 
@@ -104,41 +115,53 @@ drm_primary_helper_update
 
     Helper for primary plane update
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane object to update
+    :type plane: struct drm_plane \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         owning CRTC of owning plane
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         framebuffer to flip onto plane
+    :type fb: struct drm_framebuffer \*
 
-    :param int crtc_x:
+    :param crtc_x:
         x offset of primary plane on crtc
+    :type crtc_x: int
 
-    :param int crtc_y:
+    :param crtc_y:
         y offset of primary plane on crtc
+    :type crtc_y: int
 
-    :param unsigned int crtc_w:
+    :param crtc_w:
         width of primary plane rectangle on crtc
+    :type crtc_w: unsigned int
 
-    :param unsigned int crtc_h:
+    :param crtc_h:
         height of primary plane rectangle on crtc
+    :type crtc_h: unsigned int
 
-    :param uint32_t src_x:
+    :param src_x:
         x offset of \ ``fb``\  for panning
+    :type src_x: uint32_t
 
-    :param uint32_t src_y:
+    :param src_y:
         y offset of \ ``fb``\  for panning
+    :type src_y: uint32_t
 
-    :param uint32_t src_w:
+    :param src_w:
         width of source rectangle in \ ``fb``\ 
+    :type src_w: uint32_t
 
-    :param uint32_t src_h:
+    :param src_h:
         height of source rectangle in \ ``fb``\ 
+    :type src_h: uint32_t
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquire context, not used here
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_primary_helper_update.description`:
 
@@ -180,11 +203,13 @@ drm_primary_helper_disable
 
     Helper for primary plane disable
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to disable
+    :type plane: struct drm_plane \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquire context, not used here
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_primary_helper_disable.description`:
 
@@ -220,8 +245,9 @@ drm_primary_helper_destroy
 
     Helper for primary plane destruction
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to destroy
+    :type plane: struct drm_plane \*
 
 .. _`drm_primary_helper_destroy.description`:
 
@@ -237,42 +263,57 @@ it from the DRM plane list, and deallocate the plane structure.
 drm_plane_helper_update
 =======================
 
-.. c:function:: int drm_plane_helper_update(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h)
+.. c:function:: int drm_plane_helper_update(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h, struct drm_modeset_acquire_ctx *ctx)
 
     Transitional helper for plane update
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane object to update
+    :type plane: struct drm_plane \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         owning CRTC of owning plane
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         framebuffer to flip onto plane
+    :type fb: struct drm_framebuffer \*
 
-    :param int crtc_x:
+    :param crtc_x:
         x offset of primary plane on crtc
+    :type crtc_x: int
 
-    :param int crtc_y:
+    :param crtc_y:
         y offset of primary plane on crtc
+    :type crtc_y: int
 
-    :param unsigned int crtc_w:
+    :param crtc_w:
         width of primary plane rectangle on crtc
+    :type crtc_w: unsigned int
 
-    :param unsigned int crtc_h:
+    :param crtc_h:
         height of primary plane rectangle on crtc
+    :type crtc_h: unsigned int
 
-    :param uint32_t src_x:
+    :param src_x:
         x offset of \ ``fb``\  for panning
+    :type src_x: uint32_t
 
-    :param uint32_t src_y:
+    :param src_y:
         y offset of \ ``fb``\  for panning
+    :type src_y: uint32_t
 
-    :param uint32_t src_w:
+    :param src_w:
         width of source rectangle in \ ``fb``\ 
+    :type src_w: uint32_t
 
-    :param uint32_t src_h:
+    :param src_h:
         height of source rectangle in \ ``fb``\ 
+    :type src_h: uint32_t
+
+    :param ctx:
+        lock acquire context, not used here
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_plane_helper_update.description`:
 
@@ -297,12 +338,17 @@ Zero on success, error code on failure
 drm_plane_helper_disable
 ========================
 
-.. c:function:: int drm_plane_helper_disable(struct drm_plane *plane)
+.. c:function:: int drm_plane_helper_disable(struct drm_plane *plane, struct drm_modeset_acquire_ctx *ctx)
 
     Transitional helper for plane disable
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to disable
+    :type plane: struct drm_plane \*
+
+    :param ctx:
+        lock acquire context, not used here
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_plane_helper_disable.description`:
 

@@ -8,26 +8,33 @@ dm_consult_userspace
 
 .. c:function:: int dm_consult_userspace(const char *uuid, uint64_t luid, int request_type, char *data, size_t data_size, char *rdata, size_t *rdata_size)
 
-    :param const char \*uuid:
+    :param uuid:
         log's universal unique identifier (must be DM_UUID_LEN in size)
+    :type uuid: const char \*
 
-    :param uint64_t luid:
+    :param luid:
         log's local unique identifier
+    :type luid: uint64_t
 
-    :param int request_type:
+    :param request_type:
         found in include/linux/dm-log-userspace.h
+    :type request_type: int
 
-    :param char \*data:
+    :param data:
         data to tx to the server
+    :type data: char \*
 
-    :param size_t data_size:
+    :param data_size:
         size of data in bytes
+    :type data_size: size_t
 
-    :param char \*rdata:
+    :param rdata:
         place to put return data from server
+    :type rdata: char \*
 
-    :param size_t \*rdata_size:
+    :param rdata_size:
         value-result (amount of space given/amount of space used)
+    :type rdata_size: size_t \*
 
 .. _`dm_consult_userspace.description`:
 

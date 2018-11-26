@@ -63,7 +63,8 @@ Definition
         int err;
         struct list_head req_list;
         struct list_head unsent_req_list;
-        struct p9_req_t *req;
+        struct p9_req_t *rreq;
+        struct p9_req_t *wreq;
         char tmp_buf[7];
         struct p9_fcall rc;
         int wpos;
@@ -97,8 +98,11 @@ req_list
 unsent_req_list
     accounting for requests that haven't been sent
 
-req
-    current request being processed (if any)
+rreq
+    *undescribed*
+
+wreq
+    *undescribed*
 
 tmp_buf
     temporary buffer to read in header
@@ -178,11 +182,13 @@ p9_conn_cancel
 
     cancel all pending requests with error
 
-    :param struct p9_conn \*m:
+    :param m:
         mux data
+    :type m: struct p9_conn \*
 
-    :param int err:
+    :param err:
         error code
+    :type err: int
 
 .. _`p9_fd_read`:
 
@@ -193,14 +199,17 @@ p9_fd_read
 
     read from a fd
 
-    :param struct p9_client \*client:
+    :param client:
         client instance
+    :type client: struct p9_client \*
 
-    :param void \*v:
+    :param v:
         buffer to receive data into
+    :type v: void \*
 
-    :param int len:
+    :param len:
         size of receive buffer
+    :type len: int
 
 .. _`p9_read_work`:
 
@@ -211,8 +220,9 @@ p9_read_work
 
     called when there is some data to be read from a transport
 
-    :param struct work_struct \*work:
+    :param work:
         container of work to be done
+    :type work: struct work_struct \*
 
 .. _`p9_fd_write`:
 
@@ -223,14 +233,17 @@ p9_fd_write
 
     write to a socket
 
-    :param struct p9_client \*client:
+    :param client:
         client instance
+    :type client: struct p9_client \*
 
-    :param void \*v:
+    :param v:
         buffer to send data from
+    :type v: void \*
 
-    :param int len:
+    :param len:
         size of send buffer
+    :type len: int
 
 .. _`p9_write_work`:
 
@@ -241,8 +254,9 @@ p9_write_work
 
     called when a transport can send some data
 
-    :param struct work_struct \*work:
+    :param work:
         container for work to be done
+    :type work: struct work_struct \*
 
 .. _`p9_pollwait`:
 
@@ -253,14 +267,17 @@ p9_pollwait
 
     add poll task to the wait queue
 
-    :param struct file \*filp:
+    :param filp:
         file pointer being polled
+    :type filp: struct file \*
 
-    :param wait_queue_head_t \*wait_address:
+    :param wait_address:
         wait_q to block on
+    :type wait_address: wait_queue_head_t \*
 
-    :param poll_table \*p:
+    :param p:
         poll state
+    :type p: poll_table \*
 
 .. _`p9_pollwait.description`:
 
@@ -278,8 +295,9 @@ p9_conn_create
 
     initialize the per-session mux data
 
-    :param struct p9_client \*client:
+    :param client:
         client instance
+    :type client: struct p9_client \*
 
 .. _`p9_conn_create.note`:
 
@@ -297,8 +315,9 @@ p9_poll_mux
 
     polls a mux and schedules read or write works if necessary
 
-    :param struct p9_conn \*m:
+    :param m:
         connection to poll
+    :type m: struct p9_conn \*
 
 .. _`p9_fd_request`:
 
@@ -309,11 +328,13 @@ p9_fd_request
 
     send 9P request The function can sleep until the request is scheduled for sending. The function can be interrupted. Return from the function is not a guarantee that the request is sent successfully.
 
-    :param struct p9_client \*client:
+    :param client:
         client instance
+    :type client: struct p9_client \*
 
-    :param struct p9_req_t \*req:
+    :param req:
         request to be sent
+    :type req: struct p9_req_t \*
 
 .. _`parse_opts`:
 
@@ -324,11 +345,13 @@ parse_opts
 
     parse mount options into p9_fd_opts structure
 
-    :param char \*params:
+    :param params:
         options string passed from mount
+    :type params: char \*
 
-    :param struct p9_fd_opts \*opts:
+    :param opts:
         fd transport-specific structure to parse options into
+    :type opts: struct p9_fd_opts \*
 
 .. _`parse_opts.description`:
 
@@ -346,8 +369,9 @@ p9_conn_destroy
 
     cancels all pending requests of mux
 
-    :param struct p9_conn \*m:
+    :param m:
         mux to destroy
+    :type m: struct p9_conn \*
 
 .. _`p9_fd_close`:
 
@@ -358,8 +382,9 @@ p9_fd_close
 
     shutdown file descriptor transport
 
-    :param struct p9_client \*client:
+    :param client:
         client instance
+    :type client: struct p9_client \*
 
 .. _`p9_poll_workfn`:
 
@@ -370,8 +395,9 @@ p9_poll_workfn
 
     poll worker thread
 
-    :param struct work_struct \*work:
+    :param work:
         work queue
+    :type work: struct work_struct \*
 
 .. _`p9_poll_workfn.description`:
 

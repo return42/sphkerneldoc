@@ -10,8 +10,9 @@ dn_return_short
 
     Return a short packet to its sender
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The packet to return
+    :type skb: struct sk_buff \*
 
 .. _`dn_return_long`:
 
@@ -22,8 +23,9 @@ dn_return_long
 
     Return a long packet to its sender
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The long format packet to return
+    :type skb: struct sk_buff \*
 
 .. _`dn_route_rx_packet`:
 
@@ -34,14 +36,17 @@ dn_route_rx_packet
 
     Try and find a route for an incoming packet
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The packet to find a route for
+    :type skb: struct sk_buff \*
 
 .. _`dn_route_rx_packet.return`:
 

@@ -10,8 +10,9 @@ pinctrl_bind_pins
 
     called by the device core before probe
 
-    :param struct device \*dev:
+    :param dev:
         the device that is just about to probe
+    :type dev: struct device \*
 
 .. This file was automatic generated / don't edit.
 

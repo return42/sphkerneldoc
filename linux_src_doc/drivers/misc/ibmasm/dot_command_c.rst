@@ -10,14 +10,17 @@ ibmasm_receive_message
 
     Called from interrupt context.
 
-    :param struct service_processor \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct service_processor \*
 
-    :param void \*message:
+    :param message:
         *undescribed*
+    :type message: void \*
 
-    :param int message_size:
+    :param message_size:
         *undescribed*
+    :type message_size: int
 
 .. _`ibmasm_send_driver_vpd`:
 
@@ -26,8 +29,9 @@ ibmasm_send_driver_vpd
 
 .. c:function:: int ibmasm_send_driver_vpd(struct service_processor *sp)
 
-    :param struct service_processor \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct service_processor \*
 
 .. _`ibmasm_send_os_state`:
 
@@ -38,11 +42,13 @@ ibmasm_send_os_state
 
     During driver init this function is called with os state "up". This causes the service processor to start sending heartbeats the driver. During driver exit the function is called with os state "down", causing the service processor to stop the heartbeats.
 
-    :param struct service_processor \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct service_processor \*
 
-    :param int os_state:
+    :param os_state:
         *undescribed*
+    :type os_state: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@
 
     replace page in vma by new page. based on replace_page in mm/ksm.c
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vma that holds the pte pointing to page
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         address the old \ ``page``\  is mapped at
+    :type addr: unsigned long
 
-    :param struct page \*old_page:
+    :param old_page:
         *undescribed*
+    :type old_page: struct page \*
 
-    :param struct page \*new_page:
+    :param new_page:
         *undescribed*
+    :type new_page: struct page \*
 
 .. _`__replace_page.description`:
 
@@ -38,10 +42,11 @@ is_swbp_insn
 
     check if instruction is breakpoint instruction.
 
-    :param uprobe_opcode_t \*insn:
+    :param insn:
         instruction to be checked.
         Default implementation of is_swbp_insn
         Returns true if \ ``insn``\  is a breakpoint instruction.
+    :type insn: uprobe_opcode_t \*
 
 .. _`is_trap_insn`:
 
@@ -52,10 +57,11 @@ is_trap_insn
 
     check if instruction is breakpoint instruction.
 
-    :param uprobe_opcode_t \*insn:
+    :param insn:
         instruction to be checked.
         Default implementation of is_trap_insn
         Returns true if \ ``insn``\  is a breakpoint instruction.
+    :type insn: uprobe_opcode_t \*
 
 .. _`is_trap_insn.description`:
 
@@ -74,14 +80,17 @@ set_swbp
 
     store breakpoint at a given address.
 
-    :param struct arch_uprobe \*auprobe:
+    :param auprobe:
         arch specific probepoint information.
+    :type auprobe: struct arch_uprobe \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         the probed process address space.
+    :type mm: struct mm_struct \*
 
-    :param unsigned long vaddr:
+    :param vaddr:
         the virtual address to insert the opcode.
+    :type vaddr: unsigned long
 
 .. _`set_swbp.description`:
 
@@ -100,14 +109,17 @@ set_orig_insn
 
     Restore the original instruction.
 
-    :param struct arch_uprobe \*auprobe:
+    :param auprobe:
         arch specific probepoint information.
+    :type auprobe: struct arch_uprobe \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         the probed process address space.
+    :type mm: struct mm_struct \*
 
-    :param unsigned long vaddr:
+    :param vaddr:
         the virtual address to insert the opcode.
+    :type vaddr: unsigned long
 
 .. _`set_orig_insn.description`:
 
@@ -126,10 +138,11 @@ uprobe_get_swbp_addr
 
     compute address of swbp given post-swbp regs
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Reflects the saved state of the task after it has hit a breakpoint
         instruction.
         Return the address of the breakpoint instruction.
+    :type regs: struct pt_regs \*
 
 .. This file was automatic generated / don't edit.
 

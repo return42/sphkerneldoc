@@ -6,12 +6,13 @@
 au_read_byte
 ============
 
-.. c:function:: u_char au_read_byte(struct mtd_info *mtd)
+.. c:function:: u_char au_read_byte(struct nand_chip *this)
 
     read one byte from the chip
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
 .. _`au_read_byte.description`:
 
@@ -25,15 +26,17 @@ read function for 8bit buswidth
 au_write_byte
 =============
 
-.. c:function:: void au_write_byte(struct mtd_info *mtd, u_char byte)
+.. c:function:: void au_write_byte(struct nand_chip *this, u_char byte)
 
     write one byte to the chip
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param u_char byte:
+    :param byte:
         pointer to data byte to write
+    :type byte: u_char
 
 .. _`au_write_byte.description`:
 
@@ -47,12 +50,13 @@ write function for 8it buswidth
 au_read_byte16
 ==============
 
-.. c:function:: u_char au_read_byte16(struct mtd_info *mtd)
+.. c:function:: u_char au_read_byte16(struct nand_chip *this)
 
     read one byte endianness aware from the chip
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
 .. _`au_read_byte16.description`:
 
@@ -66,15 +70,17 @@ read function for 16bit buswidth with endianness conversion
 au_write_byte16
 ===============
 
-.. c:function:: void au_write_byte16(struct mtd_info *mtd, u_char byte)
+.. c:function:: void au_write_byte16(struct nand_chip *this, u_char byte)
 
     write one byte endianness aware to the chip
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param u_char byte:
+    :param byte:
         pointer to data byte to write
+    :type byte: u_char
 
 .. _`au_write_byte16.description`:
 
@@ -83,42 +89,26 @@ Description
 
 write function for 16bit buswidth with endianness conversion
 
-.. _`au_read_word`:
-
-au_read_word
-============
-
-.. c:function:: u16 au_read_word(struct mtd_info *mtd)
-
-    read one word from the chip
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-.. _`au_read_word.description`:
-
-Description
------------
-
-read function for 16bit buswidth without endianness conversion
-
 .. _`au_write_buf`:
 
 au_write_buf
 ============
 
-.. c:function:: void au_write_buf(struct mtd_info *mtd, const u_char *buf, int len)
+.. c:function:: void au_write_buf(struct nand_chip *this, const u_char *buf, int len)
 
     write buffer to chip
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param const u_char \*buf:
+    :param buf:
         data buffer
+    :type buf: const u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to write
+    :type len: int
 
 .. _`au_write_buf.description`:
 
@@ -132,18 +122,21 @@ write function for 8bit buswidth
 au_read_buf
 ===========
 
-.. c:function:: void au_read_buf(struct mtd_info *mtd, u_char *buf, int len)
+.. c:function:: void au_read_buf(struct nand_chip *this, u_char *buf, int len)
 
     read chip data into buffer
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param u_char \*buf:
+    :param buf:
         buffer to store date
+    :type buf: u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to read
+    :type len: int
 
 .. _`au_read_buf.description`:
 
@@ -157,18 +150,21 @@ read function for 8bit buswidth
 au_write_buf16
 ==============
 
-.. c:function:: void au_write_buf16(struct mtd_info *mtd, const u_char *buf, int len)
+.. c:function:: void au_write_buf16(struct nand_chip *this, const u_char *buf, int len)
 
     write buffer to chip
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param const u_char \*buf:
+    :param buf:
         data buffer
+    :type buf: const u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to write
+    :type len: int
 
 .. _`au_write_buf16.description`:
 
@@ -186,14 +182,17 @@ au_read_buf16
 
     read chip data into buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param u_char \*buf:
+    :param buf:
         buffer to store date
+    :type buf: u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to read
+    :type len: int
 
 .. _`au_read_buf16.description`:
 
@@ -207,36 +206,42 @@ read function for 16bit buswidth
 au1550_select_chip
 ==================
 
-.. c:function:: void au1550_select_chip(struct mtd_info *mtd, int chip)
+.. c:function:: void au1550_select_chip(struct nand_chip *this, int chip)
 
     control -CE line Forbid driving -CE manually permitting the NAND controller to do this. Keeping -CE asserted during the whole sector reads interferes with the NOR flash and PCMCIA drivers as it causes contention on the static bus. We only have to hold -CE low for the NAND read commands since the flash chip needs it to be asserted during chip not ready time but the NAND controller keeps it released.
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param int chip:
+    :param chip:
         chipnumber to select, -1 for deselect
+    :type chip: int
 
 .. _`au1550_command`:
 
 au1550_command
 ==============
 
-.. c:function:: void au1550_command(struct mtd_info *mtd, unsigned command, int column, int page_addr)
+.. c:function:: void au1550_command(struct nand_chip *this, unsigned command, int column, int page_addr)
 
     Send command to NAND device
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param unsigned command:
+    :param command:
         the command to be sent
+    :type command: unsigned
 
-    :param int column:
+    :param column:
         the column address for this command, -1 if none
+    :type column: int
 
-    :param int page_addr:
+    :param page_addr:
         the page address for this command, -1 if none
+    :type page_addr: int
 
 .. This file was automatic generated / don't edit.
 

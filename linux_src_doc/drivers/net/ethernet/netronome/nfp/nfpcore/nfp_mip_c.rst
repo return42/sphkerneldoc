@@ -10,8 +10,9 @@ nfp_mip_open
 
     Get device MIP structure
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP Handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_mip_open.description`:
 
@@ -38,14 +39,17 @@ nfp_mip_symtab
 
     Get the address and size of the MIP symbol table
 
-    :param const struct nfp_mip \*mip:
+    :param mip:
         MIP handle
+    :type mip: const struct nfp_mip \*
 
-    :param u32 \*addr:
+    :param addr:
         Location for NFP DDR address of MIP symbol table
+    :type addr: u32 \*
 
-    :param u32 \*size:
+    :param size:
         Location for size of MIP symbol table
+    :type size: u32 \*
 
 .. _`nfp_mip_strtab`:
 
@@ -56,14 +60,17 @@ nfp_mip_strtab
 
     Get the address and size of the MIP symbol name table
 
-    :param const struct nfp_mip \*mip:
+    :param mip:
         MIP handle
+    :type mip: const struct nfp_mip \*
 
-    :param u32 \*addr:
+    :param addr:
         Location for NFP DDR address of MIP symbol name table
+    :type addr: u32 \*
 
-    :param u32 \*size:
+    :param size:
         Location for size of MIP symbol name table
+    :type size: u32 \*
 
 .. This file was automatic generated / don't edit.
 

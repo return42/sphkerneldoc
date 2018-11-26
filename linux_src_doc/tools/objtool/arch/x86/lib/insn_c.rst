@@ -10,17 +10,21 @@ insn_init
 
     initialize struct insn
 
-    :param struct insn \*insn:
+    :param insn:
         \ :c:type:`struct insn <insn>`\  to be initialized
+    :type insn: struct insn \*
 
-    :param const void \*kaddr:
+    :param kaddr:
         address (in kernel memory) of instruction (or copy thereof)
+    :type kaddr: const void \*
 
-    :param int buf_len:
+    :param buf_len:
         *undescribed*
+    :type buf_len: int
 
-    :param int x86_64:
+    :param x86_64:
         !0 for 64-bit kernel or 64-bit app
+    :type x86_64: int
 
 .. _`insn_get_prefixes`:
 
@@ -31,16 +35,17 @@ insn_get_prefixes
 
     scan x86 instruction prefix bytes
 
-    :param struct insn \*insn:
+    :param insn:
         \ :c:type:`struct insn <insn>`\  containing instruction
+    :type insn: struct insn \*
 
 .. _`insn_get_prefixes.description`:
 
 Description
 -----------
 
-Populates the \ ``insn``\ ->prefixes bitmap, and updates \ ``insn``\ ->next_byte
-to point to the (first) opcode.  No effect if \ ``insn``\ ->prefixes.got
+Populates the \ ``insn->prefixes``\  bitmap, and updates \ ``insn->next_byte``\ 
+to point to the (first) opcode.  No effect if \ ``insn->prefixes.got``\ 
 is already set.
 
 .. _`insn_get_opcode`:
@@ -52,18 +57,19 @@ insn_get_opcode
 
     collect opcode(s)
 
-    :param struct insn \*insn:
+    :param insn:
         \ :c:type:`struct insn <insn>`\  containing instruction
+    :type insn: struct insn \*
 
 .. _`insn_get_opcode.description`:
 
 Description
 -----------
 
-Populates \ ``insn``\ ->opcode, updates \ ``insn``\ ->next_byte to point past the
-opcode byte(s), and set \ ``insn``\ ->attr (except for groups).
+Populates \ ``insn->opcode``\ , updates \ ``insn->next_byte``\  to point past the
+opcode byte(s), and set \ ``insn->attr``\  (except for groups).
 If necessary, first collects any preceding (prefix) bytes.
-Sets \ ``insn``\ ->opcode.value = opcode1.  No effect if \ ``insn``\ ->opcode.got
+Sets \ ``insn->opcode.value``\  = opcode1.  No effect if \ ``insn->opcode.got``\ 
 is already 1.
 
 .. _`insn_get_modrm`:
@@ -75,17 +81,18 @@ insn_get_modrm
 
     collect ModRM byte, if any
 
-    :param struct insn \*insn:
+    :param insn:
         \ :c:type:`struct insn <insn>`\  containing instruction
+    :type insn: struct insn \*
 
 .. _`insn_get_modrm.description`:
 
 Description
 -----------
 
-Populates \ ``insn``\ ->modrm and updates \ ``insn``\ ->next_byte to point past the
+Populates \ ``insn->modrm``\  and updates \ ``insn->next_byte``\  to point past the
 ModRM byte, if any.  If necessary, first collects the preceding bytes
-(prefixes and opcode(s)).  No effect if \ ``insn``\ ->modrm.got is already 1.
+(prefixes and opcode(s)).  No effect if \ ``insn->modrm.got``\  is already 1.
 
 .. _`insn_rip_relative`:
 
@@ -96,8 +103,9 @@ insn_rip_relative
 
     Does instruction use RIP-relative addressing mode?
 
-    :param struct insn \*insn:
+    :param insn:
         \ :c:type:`struct insn <insn>`\  containing instruction
+    :type insn: struct insn \*
 
 .. _`insn_rip_relative.description`:
 
@@ -105,7 +113,7 @@ Description
 -----------
 
 If necessary, first collects the instruction up to and including the
-ModRM byte.  No effect if \ ``insn``\ ->x86_64 is 0.
+ModRM byte.  No effect if \ ``insn->x86_64``\  is 0.
 
 .. _`insn_get_sib`:
 
@@ -116,8 +124,9 @@ insn_get_sib
 
     Get the SIB byte of instruction
 
-    :param struct insn \*insn:
+    :param insn:
         \ :c:type:`struct insn <insn>`\  containing instruction
+    :type insn: struct insn \*
 
 .. _`insn_get_sib.description`:
 
@@ -136,8 +145,9 @@ insn_get_displacement
 
     Get the displacement of instruction
 
-    :param struct insn \*insn:
+    :param insn:
         \ :c:type:`struct insn <insn>`\  containing instruction
+    :type insn: struct insn \*
 
 .. _`insn_get_displacement.description`:
 
@@ -157,8 +167,9 @@ insn_get_immediate
 
     Get the immediates of instruction
 
-    :param struct insn \*insn:
+    :param insn:
         \ :c:type:`struct insn <insn>`\  containing instruction
+    :type insn: struct insn \*
 
 .. _`insn_get_immediate.description`:
 
@@ -179,8 +190,9 @@ insn_get_length
 
     Get the length of instruction
 
-    :param struct insn \*insn:
+    :param insn:
         \ :c:type:`struct insn <insn>`\  containing instruction
+    :type insn: struct insn \*
 
 .. _`insn_get_length.description`:
 

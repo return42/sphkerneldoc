@@ -10,8 +10,9 @@ atmel_tc_alloc
 
     allocate a specified TC block
 
-    :param unsigned block:
+    :param block:
         which block to allocate
+    :type block: unsigned
 
 .. _`atmel_tc_alloc.description`:
 
@@ -31,8 +32,9 @@ atmel_tc_free
 
     release a specified TC block
 
-    :param struct atmel_tc \*tc:
+    :param tc:
         Timer/counter block that was returned by \ :c:func:`atmel_tc_alloc`\ 
+    :type tc: struct atmel_tc \*
 
 .. _`atmel_tc_free.description`:
 

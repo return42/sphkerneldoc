@@ -10,8 +10,9 @@ add_to_swap
 
     allocate swap space for a page
 
-    :param struct page \*page:
+    :param page:
         page we want to move to swap
+    :type page: struct page \*
 
 .. _`add_to_swap.description`:
 
@@ -30,14 +31,17 @@ swap_cluster_readahead
 
     swap in pages in hope we need them soon
 
-    :param swp_entry_t entry:
+    :param entry:
         swap entry of this memory
+    :type entry: swp_entry_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags
+    :type gfp_mask: gfp_t
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         fault information
+    :type vmf: struct vm_fault \*
 
 .. _`swap_cluster_readahead.description`:
 
@@ -65,14 +69,17 @@ swapin_readahead
 
     swap in pages in hope we need them soon
 
-    :param swp_entry_t entry:
+    :param entry:
         swap entry of this memory
+    :type entry: swp_entry_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags
+    :type gfp_mask: gfp_t
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         fault information
+    :type vmf: struct vm_fault \*
 
 .. _`swapin_readahead.description`:
 

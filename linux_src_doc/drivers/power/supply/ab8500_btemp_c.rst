@@ -128,8 +128,9 @@ ab8500_btemp_get
 
     returns a reference to the primary AB8500 BTEMP (i.e. the first BTEMP in the instance list)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ab8500_btemp_batctrl_volt_to_res`:
 
@@ -140,14 +141,17 @@ ab8500_btemp_batctrl_volt_to_res
 
     convert batctrl voltage to resistance
 
-    :param struct ab8500_btemp \*di:
+    :param di:
         pointer to the ab8500_btemp structure
+    :type di: struct ab8500_btemp \*
 
-    :param int v_batctrl:
+    :param v_batctrl:
         measured batctrl voltage
+    :type v_batctrl: int
 
-    :param int inst_curr:
+    :param inst_curr:
         measured instant current
+    :type inst_curr: int
 
 .. _`ab8500_btemp_batctrl_volt_to_res.description`:
 
@@ -167,8 +171,9 @@ ab8500_btemp_read_batctrl_voltage
 
     measure batctrl voltage
 
-    :param struct ab8500_btemp \*di:
+    :param di:
         pointer to the ab8500_btemp structure
+    :type di: struct ab8500_btemp \*
 
 .. _`ab8500_btemp_read_batctrl_voltage.description`:
 
@@ -186,11 +191,13 @@ ab8500_btemp_curr_source_enable
 
     enable/disable batctrl current source
 
-    :param struct ab8500_btemp \*di:
+    :param di:
         pointer to the ab8500_btemp structure
+    :type di: struct ab8500_btemp \*
 
-    :param bool enable:
+    :param enable:
         enable or disable the current source
+    :type enable: bool
 
 .. _`ab8500_btemp_curr_source_enable.description`:
 
@@ -208,8 +215,9 @@ ab8500_btemp_get_batctrl_res
 
     get battery resistance
 
-    :param struct ab8500_btemp \*di:
+    :param di:
         pointer to the ab8500_btemp structure
+    :type di: struct ab8500_btemp \*
 
 .. _`ab8500_btemp_get_batctrl_res.description`:
 
@@ -228,17 +236,21 @@ ab8500_btemp_res_to_temp
 
     resistance to temperature
 
-    :param struct ab8500_btemp \*di:
+    :param di:
         pointer to the ab8500_btemp structure
+    :type di: struct ab8500_btemp \*
 
-    :param const struct abx500_res_to_temp \*tbl:
+    :param tbl:
         pointer to the resiatance to temperature table
+    :type tbl: const struct abx500_res_to_temp \*
 
-    :param int tbl_size:
+    :param tbl_size:
         size of the resistance to temperature table
+    :type tbl_size: int
 
-    :param int res:
+    :param res:
         resistance to calculate the temperature from
+    :type res: int
 
 .. _`ab8500_btemp_res_to_temp.description`:
 
@@ -257,8 +269,9 @@ ab8500_btemp_measure_temp
 
     measure battery temperature
 
-    :param struct ab8500_btemp \*di:
+    :param di:
         pointer to the ab8500_btemp structure
+    :type di: struct ab8500_btemp \*
 
 .. _`ab8500_btemp_measure_temp.description`:
 
@@ -276,8 +289,9 @@ ab8500_btemp_id
 
     Identify the connected battery
 
-    :param struct ab8500_btemp \*di:
+    :param di:
         pointer to the ab8500_btemp structure
+    :type di: struct ab8500_btemp \*
 
 .. _`ab8500_btemp_id.description`:
 
@@ -297,8 +311,9 @@ ab8500_btemp_periodic_work
 
     Measuring the temperature periodically
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_btemp_periodic_work.description`:
 
@@ -316,11 +331,13 @@ ab8500_btemp_batctrlindb_handler
 
     battery removal detected
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         void pointer that has to address of ab8500_btemp
+    :type _di: void \*
 
 .. _`ab8500_btemp_batctrlindb_handler.description`:
 
@@ -338,11 +355,13 @@ ab8500_btemp_templow_handler
 
     battery temp lower than 10 degrees
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         void pointer that has to address of ab8500_btemp
+    :type _di: void \*
 
 .. _`ab8500_btemp_templow_handler.description`:
 
@@ -360,11 +379,13 @@ ab8500_btemp_temphigh_handler
 
     battery temp higher than max temp
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         void pointer that has to address of ab8500_btemp
+    :type _di: void \*
 
 .. _`ab8500_btemp_temphigh_handler.description`:
 
@@ -382,11 +403,13 @@ ab8500_btemp_lowmed_handler
 
     battery temp between low and medium
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         void pointer that has to address of ab8500_btemp
+    :type _di: void \*
 
 .. _`ab8500_btemp_lowmed_handler.description`:
 
@@ -404,11 +427,13 @@ ab8500_btemp_medhigh_handler
 
     battery temp between medium and high
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         void pointer that has to address of ab8500_btemp
+    :type _di: void \*
 
 .. _`ab8500_btemp_medhigh_handler.description`:
 
@@ -426,11 +451,13 @@ ab8500_btemp_periodic
 
     Periodic temperature measurements
 
-    :param struct ab8500_btemp \*di:
+    :param di:
         pointer to the ab8500_btemp structure
+    :type di: struct ab8500_btemp \*
 
-    :param bool enable:
+    :param enable:
         enable or disable periodic temperature measurements
+    :type enable: bool
 
 .. _`ab8500_btemp_periodic.description`:
 
@@ -449,8 +476,9 @@ ab8500_btemp_get_temp
 
     get battery temperature
 
-    :param struct ab8500_btemp \*di:
+    :param di:
         pointer to the ab8500_btemp structure
+    :type di: struct ab8500_btemp \*
 
 .. _`ab8500_btemp_get_temp.description`:
 
@@ -468,8 +496,9 @@ ab8500_btemp_get_batctrl_temp
 
     get the temperature
 
-    :param struct ab8500_btemp \*btemp:
+    :param btemp:
         pointer to the btemp structure
+    :type btemp: struct ab8500_btemp \*
 
 .. _`ab8500_btemp_get_batctrl_temp.description`:
 
@@ -487,14 +516,17 @@ ab8500_btemp_get_property
 
     get the btemp properties
 
-    :param struct power_supply \*psy:
+    :param psy:
         pointer to the power_supply structure
+    :type psy: struct power_supply \*
 
-    :param enum power_supply_property psp:
+    :param psp:
         pointer to the power_supply_property structure
+    :type psp: enum power_supply_property
 
-    :param union power_supply_propval \*val:
+    :param val:
         pointer to the power_supply_propval union
+    :type val: union power_supply_propval \*
 
 .. _`ab8500_btemp_get_property.description`:
 
@@ -542,8 +574,9 @@ ab8500_btemp_external_power_changed
 
     callback for power supply changes
 
-    :param struct power_supply \*psy:
+    :param psy:
         pointer to the structure power_supply
+    :type psy: struct power_supply \*
 
 .. _`ab8500_btemp_external_power_changed.description`:
 

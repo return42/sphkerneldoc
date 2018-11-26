@@ -10,11 +10,13 @@ reset_control_get_exclusive
 
     Lookup and obtain an exclusive reference to a reset controller.
 
-    :param struct device \*dev:
+    :param dev:
         device to be reset by the controller
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         reset line name
+    :type id: const char \*
 
 .. _`reset_control_get_exclusive.description`:
 
@@ -22,7 +24,7 @@ Description
 -----------
 
 Returns a struct reset_control or \ :c:func:`IS_ERR`\  condition containing errno.
-If this function is called more then once for the same reset_control it will
+If this function is called more than once for the same reset_control it will
 return -EBUSY.
 
 See reset_control_get_shared for details on shared references to
@@ -39,11 +41,13 @@ reset_control_get_shared
 
     Lookup and obtain a shared reference to a reset controller.
 
-    :param struct device \*dev:
+    :param dev:
         device to be reset by the controller
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         reset line name
+    :type id: const char \*
 
 .. _`reset_control_get_shared.description`:
 
@@ -75,11 +79,13 @@ of_reset_control_get_exclusive
 
     Lookup and obtain an exclusive reference to a reset controller.
 
-    :param struct device_node \*node:
+    :param node:
         device to be reset by the controller
+    :type node: struct device_node \*
 
-    :param const char \*id:
+    :param id:
         reset line name
+    :type id: const char \*
 
 .. _`of_reset_control_get_exclusive.description`:
 
@@ -99,11 +105,13 @@ of_reset_control_get_shared
 
     Lookup and obtain an shared reference to a reset controller.
 
-    :param struct device_node \*node:
+    :param node:
         device to be reset by the controller
+    :type node: struct device_node \*
 
-    :param const char \*id:
+    :param id:
         reset line name
+    :type id: const char \*
 
 .. _`of_reset_control_get_shared.description`:
 
@@ -132,11 +140,13 @@ of_reset_control_get_exclusive_by_index
 
     Lookup and obtain an exclusive reference to a reset controller by index.
 
-    :param struct device_node \*node:
+    :param node:
         device to be reset by the controller
+    :type node: struct device_node \*
 
-    :param int index:
+    :param index:
         index of the reset controller
+    :type index: int
 
 .. _`of_reset_control_get_exclusive_by_index.description`:
 
@@ -156,11 +166,13 @@ of_reset_control_get_shared_by_index
 
     Lookup and obtain an shared reference to a reset controller by index.
 
-    :param struct device_node \*node:
+    :param node:
         device to be reset by the controller
+    :type node: struct device_node \*
 
-    :param int index:
+    :param index:
         index of the reset controller
+    :type index: int
 
 .. _`of_reset_control_get_shared_by_index.description`:
 
@@ -191,11 +203,13 @@ devm_reset_control_get_exclusive
 
     resource managed \ :c:func:`reset_control_get_exclusive`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device to be reset by the controller
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         reset line name
+    :type id: const char \*
 
 .. _`devm_reset_control_get_exclusive.description`:
 
@@ -217,11 +231,13 @@ devm_reset_control_get_shared
 
     resource managed \ :c:func:`reset_control_get_shared`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device to be reset by the controller
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         reset line name
+    :type id: const char \*
 
 .. _`devm_reset_control_get_shared.description`:
 
@@ -241,11 +257,13 @@ devm_reset_control_get_exclusive_by_index
 
     resource managed \ :c:func:`reset_control_get_exclusive`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device to be reset by the controller
+    :type dev: struct device \*
 
-    :param int index:
+    :param index:
         index of the reset controller
+    :type index: int
 
 .. _`devm_reset_control_get_exclusive_by_index.description`:
 
@@ -267,11 +285,13 @@ devm_reset_control_get_shared_by_index
 
     resource managed reset_control_get_shared
 
-    :param struct device \*dev:
+    :param dev:
         device to be reset by the controller
+    :type dev: struct device \*
 
-    :param int index:
+    :param index:
         index of the reset controller
+    :type index: int
 
 .. _`devm_reset_control_get_shared_by_index.description`:
 

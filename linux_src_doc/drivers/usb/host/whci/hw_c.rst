@@ -10,20 +10,25 @@ whc_do_gencmd
 
     start a generic command via the WUSBGENCMDSTS register
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI HC
+    :type whc: struct whc \*
 
-    :param u32 cmd:
+    :param cmd:
         command to start.
+    :type cmd: u32
 
-    :param u32 params:
+    :param params:
         parameters for the command (the WUSBGENCMDPARAMS register value).
+    :type params: u32
 
-    :param void \*addr:
+    :param addr:
         pointer to any data for the command (may be NULL).
+    :type addr: void \*
 
-    :param size_t len:
+    :param len:
         length of the data (if any).
+    :type len: size_t
 
 .. _`whc_hw_error`:
 
@@ -34,11 +39,13 @@ whc_hw_error
 
     recover from a hardware error
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI HC that broke.
+    :type whc: struct whc \*
 
-    :param const char \*reason:
+    :param reason:
         a description of the failure.
+    :type reason: const char \*
 
 .. _`whc_hw_error.description`:
 

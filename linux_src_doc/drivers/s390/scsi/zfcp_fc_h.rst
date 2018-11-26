@@ -479,11 +479,13 @@ zfcp_fc_scsi_to_fcp
 
     setup FCP command with data from scsi_cmnd
 
-    :param struct fcp_cmnd \*fcp:
+    :param fcp:
         fcp_cmnd to setup
+    :type fcp: struct fcp_cmnd \*
 
-    :param struct scsi_cmnd \*scsi:
+    :param scsi:
         scsi_cmnd where to get LUN, task attributes/flags and CDB
+    :type scsi: struct scsi_cmnd \*
 
 .. _`zfcp_fc_fcp_tm`:
 
@@ -494,14 +496,17 @@ zfcp_fc_fcp_tm
 
     Setup FCP command as task management command.
 
-    :param struct fcp_cmnd \*fcp:
+    :param fcp:
         Pointer to FCP_CMND IU to set up.
+    :type fcp: struct fcp_cmnd \*
 
-    :param struct scsi_device \*dev:
+    :param dev:
         Pointer to SCSI_device where to send the task management command.
+    :type dev: struct scsi_device \*
 
-    :param u8 tm_flags:
+    :param tm_flags:
         Task management flags to setup tm command.
+    :type tm_flags: u8
 
 .. _`zfcp_fc_eval_fcp_rsp`:
 
@@ -512,11 +517,13 @@ zfcp_fc_eval_fcp_rsp
 
     evaluate FCP RSP IU and update scsi_cmnd accordingly
 
-    :param struct fcp_resp_with_ext \*fcp_rsp:
+    :param fcp_rsp:
         FCP RSP IU to evaluate
+    :type fcp_rsp: struct fcp_resp_with_ext \*
 
-    :param struct scsi_cmnd \*scsi:
+    :param scsi:
         SCSI command where to update status and sense buffer
+    :type scsi: struct scsi_cmnd \*
 
 .. This file was automatic generated / don't edit.
 

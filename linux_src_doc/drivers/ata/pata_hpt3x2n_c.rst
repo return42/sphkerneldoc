@@ -10,11 +10,13 @@ hpt3x2n_find_mode
 
     reset the hpt3x2n bus
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param int speed:
+    :param speed:
         transfer mode
+    :type speed: int
 
 .. _`hpt3x2n_find_mode.description`:
 
@@ -35,11 +37,13 @@ hpt372n_filter
 
     mode selection filter
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         mode mask
+    :type mask: unsigned long
 
 .. _`hpt372n_filter.description`:
 
@@ -58,8 +62,9 @@ hpt3x2n_cable_detect
 
     Detect the cable type
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to detect on
+    :type ap: struct ata_port \*
 
 .. _`hpt3x2n_cable_detect.description`:
 
@@ -77,11 +82,13 @@ hpt3x2n_pre_reset
 
     reset the hpt3x2n bus
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to reset
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`hpt3x2n_pre_reset.description`:
 
@@ -100,11 +107,13 @@ hpt3x2n_set_piomode
 
     PIO setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device on the interface
+    :type adev: struct ata_device \*
 
 .. _`hpt3x2n_set_piomode.description`:
 
@@ -122,11 +131,13 @@ hpt3x2n_set_dmamode
 
     DMA timing setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device being configured
+    :type adev: struct ata_device \*
 
 .. _`hpt3x2n_set_dmamode.description`:
 
@@ -144,8 +155,9 @@ hpt3x2n_bmdma_stop
 
     DMA engine stop
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`hpt3x2n_bmdma_stop.description`:
 
@@ -163,11 +175,13 @@ hpt3x2n_set_clock
 
     clock control
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param int source:
+    :param source:
         0x21 or 0x23 for PLL or PCI sourced clock
+    :type source: int
 
 .. _`hpt3x2n_set_clock.description`:
 
@@ -193,8 +207,9 @@ hpt3xn_calibrate_dpll
 
     Calibrate the DPLL loop
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`hpt3xn_calibrate_dpll.description`:
 
@@ -213,11 +228,13 @@ hpt3x2n_init_one
 
     Initialise an HPT37X/302
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         Entry in match table
+    :type id: const struct pci_device_id \*
 
 .. _`hpt3x2n_init_one.description`:
 

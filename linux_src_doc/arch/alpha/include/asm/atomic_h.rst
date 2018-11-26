@@ -1,25 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/alpha/include/asm/atomic.h
 
-.. _`__atomic_add_unless`:
+.. _`atomic_fetch_add_unless`:
 
-\__atomic_add_unless
-====================
+atomic_fetch_add_unless
+=======================
 
-.. c:function:: int __atomic_add_unless(atomic_t *v, int a, int u)
+.. c:function:: int atomic_fetch_add_unless(atomic_t *v, int a, int u)
 
     add unless the number is a given value
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
-    :param int a:
+    :param a:
         the amount to add to v...
+    :type a: int
 
-    :param int u:
+    :param u:
         ...unless v is equal to u.
+    :type u: int
 
-.. _`__atomic_add_unless.description`:
+.. _`atomic_fetch_add_unless.description`:
 
 Description
 -----------
@@ -27,31 +30,34 @@ Description
 Atomically adds \ ``a``\  to \ ``v``\ , so long as it was not \ ``u``\ .
 Returns the old value of \ ``v``\ .
 
-.. _`atomic64_add_unless`:
+.. _`atomic64_fetch_add_unless`:
 
-atomic64_add_unless
-===================
+atomic64_fetch_add_unless
+=========================
 
-.. c:function:: int atomic64_add_unless(atomic64_t *v, long a, long u)
+.. c:function:: long atomic64_fetch_add_unless(atomic64_t *v, long a, long u)
 
     add unless the number is a given value
 
-    :param atomic64_t \*v:
+    :param v:
         pointer of type atomic64_t
+    :type v: atomic64_t \*
 
-    :param long a:
+    :param a:
         the amount to add to v...
+    :type a: long
 
-    :param long u:
+    :param u:
         ...unless v is equal to u.
+    :type u: long
 
-.. _`atomic64_add_unless.description`:
+.. _`atomic64_fetch_add_unless.description`:
 
 Description
 -----------
 
 Atomically adds \ ``a``\  to \ ``v``\ , so long as it was not \ ``u``\ .
-Returns true iff \ ``v``\  was not \ ``u``\ .
+Returns the old value of \ ``v``\ .
 
 .. This file was automatic generated / don't edit.
 

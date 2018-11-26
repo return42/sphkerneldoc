@@ -10,17 +10,21 @@ sunxi_rsb_device_create
 
     allocate and add an RSB device
 
-    :param struct sunxi_rsb \*rsb:
+    :param rsb:
         RSB controller
+    :type rsb: struct sunxi_rsb \*
 
-    :param struct device_node \*node:
+    :param node:
         RSB slave device node
+    :type node: struct device_node \*
 
-    :param u16 hwaddr:
+    :param hwaddr:
         RSB slave hardware address
+    :type hwaddr: u16
 
-    :param u8 rtaddr:
+    :param rtaddr:
         RSB slave runtime address
+    :type rtaddr: u8
 
 .. _`sunxi_rsb_device_unregister`:
 
@@ -31,8 +35,9 @@ sunxi_rsb_device_unregister
 
     unregister an RSB device
 
-    :param struct sunxi_rsb_device \*rdev:
+    :param rdev:
         rsb_device to be removed
+    :type rdev: struct sunxi_rsb_device \*
 
 .. _`sunxi_rsb_driver_register`:
 
@@ -43,8 +48,9 @@ sunxi_rsb_driver_register
 
     Register device driver with RSB core
 
-    :param struct sunxi_rsb_driver \*rdrv:
+    :param rdrv:
         device driver to be associated with slave-device.
+    :type rdrv: struct sunxi_rsb_driver \*
 
 .. _`sunxi_rsb_driver_register.description`:
 

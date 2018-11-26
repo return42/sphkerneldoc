@@ -10,11 +10,13 @@ t4_read_reg
 
     read a HW register
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         the register address
+    :type reg_addr: u32
 
 .. _`t4_read_reg.description`:
 
@@ -32,14 +34,17 @@ t4_write_reg
 
     write a HW register
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         the register address
+    :type reg_addr: u32
 
-    :param u32 val:
+    :param val:
         the value to write
+    :type val: u32
 
 .. _`t4_write_reg.description`:
 
@@ -57,11 +62,13 @@ t4_read_reg64
 
     read a 64-bit HW register
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         the register address
+    :type reg_addr: u32
 
 .. _`t4_read_reg64.description`:
 
@@ -79,14 +86,17 @@ t4_write_reg64
 
     write a 64-bit HW register
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         the register address
+    :type reg_addr: u32
 
-    :param u64 val:
+    :param val:
         the value to write
+    :type val: u64
 
 .. _`t4_write_reg64.description`:
 
@@ -104,11 +114,13 @@ port_name
 
     return the string name of a port
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int pidx:
+    :param pidx:
         the port index
+    :type pidx: int
 
 .. _`port_name.description`:
 
@@ -126,14 +138,17 @@ t4_os_set_hw_addr
 
     store a port's MAC address in SW
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int pidx:
+    :param pidx:
         the port index
+    :type pidx: int
 
-    :param u8 hw_addr:
+    :param hw_addr:
         the Ethernet address
+    :type hw_addr: u8
 
 .. _`t4_os_set_hw_addr.description`:
 
@@ -152,8 +167,9 @@ netdev2pinfo
 
     return the port_info structure associated with a net_device
 
-    :param const struct net_device \*dev:
+    :param dev:
         the netdev
+    :type dev: const struct net_device \*
 
 .. _`netdev2pinfo.description`:
 
@@ -171,11 +187,13 @@ adap2pinfo
 
     return the port_info of a port
 
-    :param struct adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct adapter \*
 
-    :param int pidx:
+    :param pidx:
         the port index
+    :type pidx: int
 
 .. _`adap2pinfo.description`:
 
@@ -193,8 +211,9 @@ netdev2adap
 
     return the adapter structure associated with a net_device
 
-    :param const struct net_device \*dev:
+    :param dev:
         the netdev
+    :type dev: const struct net_device \*
 
 .. _`netdev2adap.description`:
 

@@ -71,12 +71,17 @@ Definition
         u32 num_budget_microframes;
         u32 bw_cost_per_microframe;
         struct list_head endpoint;
+        struct list_head tt_endpoint;
+        struct mu3h_sch_tt *sch_tt;
+        u32 ep_type;
+        u32 maxpkt;
         void *ep;
         u32 offset;
         u32 repeat;
         u32 pkts;
         u32 cs_count;
         u32 burst_mode;
+        u32 bw_budget_table[0];
     }
 
 .. _`mu3h_sch_ep_info.members`:
@@ -96,6 +101,18 @@ bw_cost_per_microframe
 
 endpoint
     linked into bandwidth domain which it belongs to
+
+tt_endpoint
+    linked into mu3h_sch_tt's list which it belongs to
+
+sch_tt
+    mu3h_sch_tt linked into
+
+ep_type
+    endpoint type
+
+maxpkt
+    max packet size of endpoint
 
 ep
     address of usb_host_endpoint struct
@@ -124,6 +141,9 @@ burst_mode
     times; 1: distribute the (bMaxBurst+1)\*(Mult+1) packets
     according to \ ``pkts``\  and \ ``repeat``\ . normal mode is used by
     default
+
+bw_budget_table
+    table to record bandwidth budget per microframe
 
 .. _`mu3c_ippc_regs`:
 

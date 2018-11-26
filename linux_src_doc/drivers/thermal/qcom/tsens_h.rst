@@ -76,6 +76,7 @@ Definition
     struct tsens_data {
         const u32 num_sensors;
         const struct tsens_ops *ops;
+        const u16 reg_offsets[REG_ARRAY_SIZE];
         unsigned int *hw_ids;
     }
 
@@ -89,6 +90,9 @@ num_sensors
 
 ops
     operations the tsens instance supports
+
+reg_offsets
+    Register offsets for commonly used registers
 
 hw_ids
     Subset of sensors ids supported by platform, if not the first n

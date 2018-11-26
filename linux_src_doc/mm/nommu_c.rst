@@ -10,14 +10,17 @@ follow_pfn
 
     look up PFN at a user virtual address
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         memory mapping
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long address:
+    :param address:
         user virtual address
+    :type address: unsigned long
 
-    :param unsigned long \*pfn:
+    :param pfn:
         location to store found PFN
+    :type pfn: unsigned long \*
 
 .. _`follow_pfn.description`:
 
@@ -37,11 +40,13 @@ vmalloc_node
 
     allocate memory on a specific node
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
-    :param int node:
+    :param node:
         numa node
+    :type node: int
 
 .. _`vmalloc_node.description`:
 
@@ -63,11 +68,13 @@ vzalloc_node
 
     allocate memory on a specific node with zero fill
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
-    :param int node:
+    :param node:
         numa node
+    :type node: int
 
 .. _`vzalloc_node.description`:
 
@@ -90,8 +97,9 @@ vmalloc_exec
 
     allocate virtually contiguous, executable memory
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
 .. _`vmalloc_exec.description`:
 
@@ -114,8 +122,9 @@ vmalloc_32
 
     allocate virtually contiguous memory (32bit addressable)
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
 .. _`vmalloc_32.description`:
 
@@ -134,8 +143,9 @@ vmalloc_32_user
 
     allocate zeroed virtually contiguous 32bit memory
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
 .. _`vmalloc_32_user.description`:
 
@@ -157,20 +167,25 @@ access_remote_vm
 
     access another process' address space
 
-    :param struct mm_struct \*mm:
+    :param mm:
         the mm_struct of the target address space
+    :type mm: struct mm_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         start address to access
+    :type addr: unsigned long
 
-    :param void \*buf:
+    :param buf:
         source or destination buffer
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         number of bytes to transfer
+    :type len: int
 
-    :param unsigned int gup_flags:
+    :param gup_flags:
         flags modifying lookup behaviour
+    :type gup_flags: unsigned int
 
 .. _`access_remote_vm.description`:
 
@@ -188,14 +203,17 @@ nommu_shrink_inode_mappings
 
     Shrink the shared mappings on an inode
 
-    :param struct inode \*inode:
+    :param inode:
         The inode to check
+    :type inode: struct inode \*
 
-    :param size_t size:
+    :param size:
         The current filesize of the inode
+    :type size: size_t
 
-    :param size_t newsize:
+    :param newsize:
         The proposed filesize of the inode
+    :type newsize: size_t
 
 .. _`nommu_shrink_inode_mappings.description`:
 

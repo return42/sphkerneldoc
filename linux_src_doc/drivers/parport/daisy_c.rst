@@ -10,11 +10,13 @@ parport_open
 
     find a device by canonical device number
 
-    :param int devnum:
+    :param devnum:
         canonical device number
+    :type devnum: int
 
-    :param const char \*name:
+    :param name:
         name to associate with the device
+    :type name: const char \*
 
 .. _`parport_open.description`:
 
@@ -38,8 +40,9 @@ parport_close
 
     close a device opened with \ :c:func:`parport_open`\ 
 
-    :param struct pardevice \*dev:
+    :param dev:
         device to close
+    :type dev: struct pardevice \*
 
 .. _`parport_close.description`:
 

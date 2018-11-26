@@ -10,12 +10,14 @@ lbs_mac_event_disconnected
 
     handles disconnect event. It reports disconnect to upper layer, clean tx/rx packets, reset link state etc.
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to struct lbs_private structure
+    :type priv: struct lbs_private \*
 
-    :param bool locally_generated:
+    :param locally_generated:
         indicates disconnect was requested locally
         (usually by userspace)
+    :type locally_generated: bool
 
 .. _`lbs_mac_event_disconnected.return`:
 

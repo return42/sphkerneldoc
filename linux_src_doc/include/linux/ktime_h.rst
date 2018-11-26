@@ -10,11 +10,13 @@ ktime_set
 
     Set a ktime_t variable from a seconds/nanoseconds value
 
-    :param const s64 secs:
+    :param secs:
         seconds to set
+    :type secs: const s64
 
-    :param const unsigned long nsecs:
+    :param nsecs:
         nanoseconds to set
+    :type nsecs: const unsigned long
 
 .. _`ktime_set.return`:
 
@@ -32,11 +34,13 @@ ktime_compare
 
     Compares two ktime_t variables for less, greater or equal
 
-    :param const ktime_t cmp1:
+    :param cmp1:
         comparable1
+    :type cmp1: const ktime_t
 
-    :param const ktime_t cmp2:
+    :param cmp2:
         comparable2
+    :type cmp2: const ktime_t
 
 .. _`ktime_compare.return`:
 
@@ -57,11 +61,13 @@ ktime_after
 
     Compare if a ktime_t value is bigger than another one.
 
-    :param const ktime_t cmp1:
+    :param cmp1:
         comparable1
+    :type cmp1: const ktime_t
 
-    :param const ktime_t cmp2:
+    :param cmp2:
         comparable2
+    :type cmp2: const ktime_t
 
 .. _`ktime_after.return`:
 
@@ -79,11 +85,13 @@ ktime_before
 
     Compare if a ktime_t value is smaller than another one.
 
-    :param const ktime_t cmp1:
+    :param cmp1:
         comparable1
+    :type cmp1: const ktime_t
 
-    :param const ktime_t cmp2:
+    :param cmp2:
         comparable2
+    :type cmp2: const ktime_t
 
 .. _`ktime_before.return`:
 
@@ -101,11 +109,13 @@ ktime_to_timespec_cond
 
     convert a ktime_t variable to timespec format only if the variable contains data
 
-    :param const ktime_t kt:
+    :param kt:
         the ktime_t variable to convert
+    :type kt: const ktime_t
 
-    :param struct timespec \*ts:
+    :param ts:
         the timespec variable to store the result in
+    :type ts: struct timespec \*
 
 .. _`ktime_to_timespec_cond.return`:
 
@@ -123,11 +133,13 @@ ktime_to_timespec64_cond
 
     convert a ktime_t variable to timespec64 format only if the variable contains data
 
-    :param const ktime_t kt:
+    :param kt:
         the ktime_t variable to convert
+    :type kt: const ktime_t
 
-    :param struct timespec64 \*ts:
+    :param ts:
         the timespec variable to store the result in
+    :type ts: struct timespec64 \*
 
 .. _`ktime_to_timespec64_cond.return`:
 

@@ -86,71 +86,6 @@ offset
 rel_type
     Type of relocation.
 
-.. _`vmw_resource_val_node`:
-
-struct vmw_resource_val_node
-============================
-
-.. c:type:: struct vmw_resource_val_node
-
-    Validation info for resources
-
-.. _`vmw_resource_val_node.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct vmw_resource_val_node {
-        struct list_head head;
-        struct drm_hash_item hash;
-        struct vmw_resource *res;
-        struct vmw_dma_buffer *new_backup;
-        struct vmw_ctx_binding_state *staged_bindings;
-        unsigned long new_backup_offset;
-        u32 first_usage : 1;
-        u32 switching_backup : 1;
-        u32 no_buffer_needed : 1;
-    }
-
-.. _`vmw_resource_val_node.members`:
-
-Members
--------
-
-head
-    List head for the software context's resource list.
-
-hash
-    Hash entry for quick resouce to val_node lookup.
-
-res
-    Ref-counted pointer to the resource.
-
-new_backup
-    Refcounted pointer to the new backup buffer.
-
-staged_bindings
-    If \ ``res``\  is a context, tracks bindings set up during
-    the command batch. Otherwise NULL.
-
-new_backup_offset
-    New backup buffer offset if \ ``new_backup``\  is non-NUll.
-
-first_usage
-    Set to true the first time the resource is referenced in
-    the command stream.
-
-switching_backup
-    The command stream provides a new backup buffer for a
-    resource.
-
-no_buffer_needed
-    This means \ ``switching_backup``\  is true on first buffer
-    reference. So resource reservation does not need to allocate a backup
-    buffer for the resource.
-
 .. _`vmw_cmd_entry`:
 
 struct vmw_cmd_entry
@@ -204,11 +139,13 @@ vmw_ptr_diff
 
     Compute the offset from a to b in bytes
 
-    :param void \*a:
+    :param a:
         A starting pointer.
+    :type a: void \*
 
-    :param void \*b:
+    :param b:
         A pointer offset in the same address space.
+    :type b: void \*
 
 .. _`vmw_ptr_diff.return`:
 
@@ -217,58 +154,166 @@ Return
 
 The offset in bytes between the two pointers.
 
-.. _`vmw_resources_unreserve`:
+.. _`vmw_execbuf_bindings_commit`:
 
-vmw_resources_unreserve
-=======================
+vmw_execbuf_bindings_commit
+===========================
 
-.. c:function:: void vmw_resources_unreserve(struct vmw_sw_context *sw_context, bool backoff)
+.. c:function:: void vmw_execbuf_bindings_commit(struct vmw_sw_context *sw_context, bool backoff)
 
-    unreserve resources previously reserved for command submission.
+    Commit modified binding state
 
-    :param struct vmw_sw_context \*sw_context:
-        pointer to the software context
+    :param sw_context:
+        The command submission context
+    :type sw_context: struct vmw_sw_context \*
 
-    :param bool backoff:
-        Whether command submission failed.
+    :param backoff:
+        Whether this is part of the error path and binding state
+        changes should be ignored
+    :type backoff: bool
+
+.. _`vmw_bind_dx_query_mob`:
+
+vmw_bind_dx_query_mob
+=====================
+
+.. c:function:: void vmw_bind_dx_query_mob(struct vmw_sw_context *sw_context)
+
+    Bind the DX query MOB if referenced
+
+    :param sw_context:
+        The command submission context
+    :type sw_context: struct vmw_sw_context \*
 
 .. _`vmw_cmd_ctx_first_setup`:
 
 vmw_cmd_ctx_first_setup
 =======================
 
-.. c:function:: int vmw_cmd_ctx_first_setup(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, struct vmw_resource_val_node *node)
+.. c:function:: int vmw_cmd_ctx_first_setup(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, struct vmw_resource *res, struct vmw_ctx_validation_info *node)
 
     Perform the setup needed when a context is added to the validate list.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to the device private:
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
-        The validation context:
+    :param sw_context:
+        The command submission context
+    :type sw_context: struct vmw_sw_context \*
 
-    :param struct vmw_resource_val_node \*node:
-        The validation node holding this context.
+    :param res:
+        *undescribed*
+    :type res: struct vmw_resource \*
 
-.. _`vmw_resource_val_add`:
+    :param node:
+        The validation node holding the context resource metadata
+    :type node: struct vmw_ctx_validation_info \*
 
-vmw_resource_val_add
+.. _`vmw_execbuf_res_size`:
+
+vmw_execbuf_res_size
 ====================
 
-.. c:function:: int vmw_resource_val_add(struct vmw_sw_context *sw_context, struct vmw_resource *res, struct vmw_resource_val_node **p_node)
+.. c:function:: unsigned int vmw_execbuf_res_size(struct vmw_private *dev_priv, enum vmw_res_type res_type)
 
-    Add a resource to the software context's resource list if it's not already on it.
+    calculate extra size fore the resource validation node
 
-    :param struct vmw_sw_context \*sw_context:
-        Pointer to the software context.
+    :param dev_priv:
+        Pointer to the device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_resource \*res:
+    :param res_type:
+        The resource type.
+    :type res_type: enum vmw_res_type
+
+.. _`vmw_execbuf_res_size.description`:
+
+Description
+-----------
+
+Guest-backed contexts and DX contexts require extra size to store
+execbuf private information in the validation node. Typically the
+binding manager associated data structures.
+
+.. _`vmw_execbuf_res_size.return`:
+
+Return
+------
+
+The extra size requirement based on resource type.
+
+.. _`vmw_execbuf_rcache_update`:
+
+vmw_execbuf_rcache_update
+=========================
+
+.. c:function:: void vmw_execbuf_rcache_update(struct vmw_res_cache_entry *rcache, struct vmw_resource *res, void *private)
+
+    Update a resource-node cache entry
+
+    :param rcache:
+        Pointer to the entry to update.
+    :type rcache: struct vmw_res_cache_entry \*
+
+    :param res:
         Pointer to the resource.
-        \ ``p_node``\  On successful return points to a valid pointer to a
-        struct vmw_resource_val_node, if non-NULL on entry.
+    :type res: struct vmw_resource \*
 
-    :param struct vmw_resource_val_node \*\*p_node:
-        *undescribed*
+    :param private:
+        Pointer to the execbuf-private space in the resource
+        validation node.
+    :type private: void \*
+
+.. _`vmw_execbuf_res_noref_val_add`:
+
+vmw_execbuf_res_noref_val_add
+=============================
+
+.. c:function:: int vmw_execbuf_res_noref_val_add(struct vmw_sw_context *sw_context, struct vmw_resource *res)
+
+    Add a resource described by an unreferenced rcu-protected pointer to the validation list.
+
+    :param sw_context:
+        Pointer to the software context.
+    :type sw_context: struct vmw_sw_context \*
+
+    :param res:
+        Unreferenced rcu-protected pointer to the resource.
+    :type res: struct vmw_resource \*
+
+.. _`vmw_execbuf_res_noref_val_add.return`:
+
+Return
+------
+
+0 on success. Negative error code on failure. Typical error
+codes are \ ``-EINVAL``\  on inconsistency and \ ``-ESRCH``\  if the resource was
+doomed.
+
+.. _`vmw_execbuf_res_noctx_val_add`:
+
+vmw_execbuf_res_noctx_val_add
+=============================
+
+.. c:function:: int vmw_execbuf_res_noctx_val_add(struct vmw_sw_context *sw_context, struct vmw_resource *res)
+
+    Add a non-context resource to the resource validation list if it's not already on it
+
+    :param sw_context:
+        Pointer to the software context.
+    :type sw_context: struct vmw_sw_context \*
+
+    :param res:
+        Pointer to the resource.
+    :type res: struct vmw_resource \*
+
+.. _`vmw_execbuf_res_noctx_val_add.return`:
+
+Return
+------
+
+Zero on success. Negative error code on failure.
 
 .. _`vmw_view_res_val_add`:
 
@@ -279,11 +324,13 @@ vmw_view_res_val_add
 
     Add a view and the surface it's pointing to to the validation list
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context holding the validation list.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param struct vmw_resource \*view:
+    :param view:
         Pointer to the view resource.
+    :type view: struct vmw_resource \*
 
 .. _`vmw_view_res_val_add.description`:
 
@@ -297,18 +344,21 @@ Returns 0 if success, negative error code otherwise.
 vmw_view_id_val_add
 ===================
 
-.. c:function:: int vmw_view_id_val_add(struct vmw_sw_context *sw_context, enum vmw_view_type view_type, u32 id)
+.. c:function:: struct vmw_resource *vmw_view_id_val_add(struct vmw_sw_context *sw_context, enum vmw_view_type view_type, u32 id)
 
     Look up a view and add it and the surface it's pointing to to the validation list.
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context holding the validation list.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param enum vmw_view_type view_type:
+    :param view_type:
         The view type to look up.
+    :type view_type: enum vmw_view_type
 
-    :param u32 id:
+    :param id:
         view id of the view.
+    :type id: u32
 
 .. _`vmw_view_id_val_add.description`:
 
@@ -317,7 +367,15 @@ Description
 
 The view is represented by a view id and the DX context it's created on,
 or scheduled for creation on. If there is no DX context set, the function
-will return -EINVAL. Otherwise returns 0 on success and -EINVAL on failure.
+will return an -EINVAL error pointer.
+
+.. _`vmw_view_id_val_add.return`:
+
+Return
+------
+
+Unreferenced pointer to the resource on success, negative error
+pointer on failure.
 
 .. _`vmw_resource_context_res_add`:
 
@@ -328,14 +386,17 @@ vmw_resource_context_res_add
 
     Put resources previously bound to a context on the validation list
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private structure
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         Pointer to a software context used for this command submission
+    :type sw_context: struct vmw_sw_context \*
 
-    :param struct vmw_resource \*ctx:
+    :param ctx:
         Pointer to the context resource
+    :type ctx: struct vmw_resource \*
 
 .. _`vmw_resource_context_res_add.description`:
 
@@ -350,22 +411,26 @@ the resource validation list. This is part of the context state reemission
 vmw_resource_relocation_add
 ===========================
 
-.. c:function:: int vmw_resource_relocation_add(struct list_head *list, const struct vmw_resource *res, unsigned long offset, enum vmw_resource_relocation_type rel_type)
+.. c:function:: int vmw_resource_relocation_add(struct vmw_sw_context *sw_context, const struct vmw_resource *res, unsigned long offset, enum vmw_resource_relocation_type rel_type)
 
     Add a relocation to the relocation list
 
-    :param struct list_head \*list:
-        Pointer to head of relocation list.
+    :param sw_context:
+        *undescribed*
+    :type sw_context: struct vmw_sw_context \*
 
-    :param const struct vmw_resource \*res:
+    :param res:
         The resource.
+    :type res: const struct vmw_resource \*
 
-    :param unsigned long offset:
+    :param offset:
         Offset into the command buffer currently being parsed where the
         id that needs fixup is located. Granularity is one byte.
+    :type offset: unsigned long
 
-    :param enum vmw_resource_relocation_type rel_type:
+    :param rel_type:
         Relocation type.
+    :type rel_type: enum vmw_resource_relocation_type
 
 .. _`vmw_resource_relocations_free`:
 
@@ -376,8 +441,9 @@ vmw_resource_relocations_free
 
     Free all relocations on a list
 
-    :param struct list_head \*list:
-        Pointer to the head of the relocation list.
+    :param list:
+        Pointer to the head of the relocation list
+    :type list: struct list_head \*
 
 .. _`vmw_resource_relocations_apply`:
 
@@ -388,44 +454,16 @@ vmw_resource_relocations_apply
 
     Apply all relocations on a list
 
-    :param uint32_t \*cb:
+    :param cb:
         Pointer to the start of the command buffer bein patch. This need
         not be the same buffer as the one being parsed when the relocation
         list was built, but the contents must be the same modulo the
         resource ids.
+    :type cb: uint32_t \*
 
-    :param struct list_head \*list:
+    :param list:
         Pointer to the head of the relocation list.
-
-.. _`vmw_bo_to_validate_list`:
-
-vmw_bo_to_validate_list
-=======================
-
-.. c:function:: int vmw_bo_to_validate_list(struct vmw_sw_context *sw_context, struct vmw_dma_buffer *vbo, bool validate_as_mob, uint32_t *p_val_node)
-
-    add a bo to a validate list
-
-    :param struct vmw_sw_context \*sw_context:
-        The software context used for this command submission batch.
-
-    :param struct vmw_dma_buffer \*vbo:
-        *undescribed*
-
-    :param bool validate_as_mob:
-        Validate this buffer as a MOB.
-
-    :param uint32_t \*p_val_node:
-        If non-NULL Will be updated with the validate node number
-        on return.
-
-.. _`vmw_bo_to_validate_list.description`:
-
-Description
------------
-
-Returns -EINVAL if the limit of number of buffer objects per command
-submission is reached.
+    :type list: struct list_head \*
 
 .. _`vmw_resources_reserve`:
 
@@ -436,8 +474,9 @@ vmw_resources_reserve
 
     Reserve all resources on the sw_context's resource list.
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         Pointer to the software context.
+    :type sw_context: struct vmw_sw_context \*
 
 .. _`vmw_resources_reserve.description`:
 
@@ -448,79 +487,39 @@ Note that since vmware's command submission currently is protected by
 the cmdbuf mutex, no fancy deadlock avoidance is required for resources,
 since only a single thread at once will attempt this.
 
-.. _`vmw_resources_validate`:
-
-vmw_resources_validate
-======================
-
-.. c:function:: int vmw_resources_validate(struct vmw_sw_context *sw_context)
-
-    Validate all resources on the sw_context's resource list.
-
-    :param struct vmw_sw_context \*sw_context:
-        Pointer to the software context.
-
-.. _`vmw_resources_validate.description`:
-
-Description
------------
-
-Before this function is called, all resource backup buffers must have
-been validated.
-
-.. _`vmw_cmd_res_reloc_add`:
-
-vmw_cmd_res_reloc_add
-=====================
-
-.. c:function:: int vmw_cmd_res_reloc_add(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, uint32_t *id_loc, struct vmw_resource *res, struct vmw_resource_val_node **p_val)
-
-    Add a resource to a software context's relocation- and validation lists.
-
-    :param struct vmw_private \*dev_priv:
-        Pointer to a struct vmw_private identifying the device.
-
-    :param struct vmw_sw_context \*sw_context:
-        Pointer to the software context.
-
-    :param uint32_t \*id_loc:
-        Pointer to where the id that needs translation is located.
-
-    :param struct vmw_resource \*res:
-        Valid pointer to a struct vmw_resource.
-
-    :param struct vmw_resource_val_node \*\*p_val:
-        If non null, a pointer to the struct vmw_resource_validate_node
-        used for this resource is returned here.
-
 .. _`vmw_cmd_res_check`:
 
 vmw_cmd_res_check
 =================
 
-.. c:function:: int vmw_cmd_res_check(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, enum vmw_res_type res_type, const struct vmw_user_resource_conv *converter, uint32_t *id_loc, struct vmw_resource_val_node **p_val)
+.. c:function:: int vmw_cmd_res_check(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, enum vmw_res_type res_type, const struct vmw_user_resource_conv *converter, uint32_t *id_loc, struct vmw_resource **p_res)
 
     Check that a resource is present and if so, put it on the resource validate list unless it's already there.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         Pointer to the software context.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param enum vmw_res_type res_type:
+    :param res_type:
         Resource type.
+    :type res_type: enum vmw_res_type
 
-    :param const struct vmw_user_resource_conv \*converter:
+    :param converter:
         User-space visisble type specific information.
+    :type converter: const struct vmw_user_resource_conv \*
 
-    :param uint32_t \*id_loc:
+    :param id_loc:
         Pointer to the location in the command buffer currently being
         parsed from where the user-space resource id handle is located.
+    :type id_loc: uint32_t \*
 
-    :param struct vmw_resource_val_node \*\*p_val:
-        Pointer to pointer to resource validalidation node. Populated
-        on exit.
+    :param p_res:
+        *undescribed*
+    :type p_res: struct vmw_resource \*\*
 
 .. _`vmw_rebind_all_dx_query`:
 
@@ -531,8 +530,9 @@ vmw_rebind_all_dx_query
 
     Rebind DX query associated with the context
 
-    :param struct vmw_resource \*ctx_res:
+    :param ctx_res:
         context the query belongs to
+    :type ctx_res: struct vmw_resource \*
 
 .. _`vmw_rebind_all_dx_query.description`:
 
@@ -550,8 +550,9 @@ vmw_rebind_contexts
 
     Rebind all resources previously bound to referenced contexts.
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         Pointer to the software context.
+    :type sw_context: struct vmw_sw_context \*
 
 .. _`vmw_rebind_contexts.description`:
 
@@ -569,26 +570,33 @@ vmw_view_bindings_add
 
     Add an array of view bindings to a context binding state tracker.
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The execbuf state used for this command.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param enum vmw_view_type view_type:
+    :param view_type:
         View type for the bindings.
+    :type view_type: enum vmw_view_type
 
-    :param enum vmw_ctx_binding_type binding_type:
+    :param binding_type:
         Binding type for the bindings.
+    :type binding_type: enum vmw_ctx_binding_type
 
-    :param uint32 shader_slot:
+    :param shader_slot:
         The shader slot to user for the bindings.
+    :type shader_slot: uint32
 
-    :param uint32 view_ids:
+    :param view_ids:
         Array of view ids to be bound.
+    :type view_ids: uint32
 
-    :param u32 num_views:
+    :param num_views:
         Number of view ids in \ ``view_ids``\ .
+    :type num_views: u32
 
-    :param u32 first_slot:
+    :param first_slot:
         The binding slot to be used for the first view id in \ ``view_ids``\ .
+    :type first_slot: u32
 
 .. _`vmw_cmd_cid_check`:
 
@@ -599,14 +607,17 @@ vmw_cmd_cid_check
 
     Check a command header for valid context information.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         Pointer to the software context.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         A command header with an embedded user-space context handle.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_cid_check.convenience-function`:
 
@@ -616,23 +627,60 @@ Convenience function
 Call vmw_cmd_res_check with the user-space context
 handle embedded in \ ``header``\ .
 
+.. _`vmw_execbuf_info_from_res`:
+
+vmw_execbuf_info_from_res
+=========================
+
+.. c:function:: struct vmw_ctx_validation_info *vmw_execbuf_info_from_res(struct vmw_sw_context *sw_context, struct vmw_resource *res)
+
+    Get the private validation metadata for a recently validated resource
+
+    :param sw_context:
+        Pointer to the command submission context
+    :type sw_context: struct vmw_sw_context \*
+
+    :param res:
+        The resource
+    :type res: struct vmw_resource \*
+
+.. _`vmw_execbuf_info_from_res.description`:
+
+Description
+-----------
+
+The resource pointed to by \ ``res``\  needs to be present in the command submission
+context's resource cache and hence the last resource of that type to be
+processed by the validation code.
+
+.. _`vmw_execbuf_info_from_res.return`:
+
+Return
+------
+
+a pointer to the private metadata of the resource, or NULL
+if it wasn't found
+
 .. _`vmw_query_bo_switch_prepare`:
 
 vmw_query_bo_switch_prepare
 ===========================
 
-.. c:function:: int vmw_query_bo_switch_prepare(struct vmw_private *dev_priv, struct vmw_dma_buffer *new_query_bo, struct vmw_sw_context *sw_context)
+.. c:function:: int vmw_query_bo_switch_prepare(struct vmw_private *dev_priv, struct vmw_buffer_object *new_query_bo, struct vmw_sw_context *sw_context)
 
     Prepare to switch pinned buffer for queries.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         The device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_dma_buffer \*new_query_bo:
+    :param new_query_bo:
         The new buffer holding query results.
+    :type new_query_bo: struct vmw_buffer_object \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command submission.
+    :type sw_context: struct vmw_sw_context \*
 
 .. _`vmw_query_bo_switch_prepare.description`:
 
@@ -654,11 +702,13 @@ vmw_query_bo_switch_commit
 
     Finalize switching pinned query buffer
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         The device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command submission batch.
+    :type sw_context: struct vmw_sw_context \*
 
 .. _`vmw_query_bo_switch_commit.description`:
 
@@ -681,23 +731,27 @@ using a sequence emitted \*after\* calling this function.
 vmw_translate_mob_ptr
 =====================
 
-.. c:function:: int vmw_translate_mob_ptr(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, SVGAMobId *id, struct vmw_dma_buffer **vmw_bo_p)
+.. c:function:: int vmw_translate_mob_ptr(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, SVGAMobId *id, struct vmw_buffer_object **vmw_bo_p)
 
     Prepare to translate a user-space buffer handle to a MOB id.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command batch validation.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGAMobId \*id:
+    :param id:
         Pointer to the user-space handle to be translated.
+    :type id: SVGAMobId \*
 
-    :param struct vmw_dma_buffer \*\*vmw_bo_p:
+    :param vmw_bo_p:
         Points to a location that, on successful return will carry
-        a reference-counted pointer to the DMA buffer identified by the
+        a non-reference-counted pointer to the buffer object identified by the
         user-space handle in \ ``id``\ .
+    :type vmw_bo_p: struct vmw_buffer_object \*\*
 
 .. _`vmw_translate_mob_ptr.description`:
 
@@ -716,23 +770,27 @@ needs to be freed using vmw_clear_validations.
 vmw_translate_guest_ptr
 =======================
 
-.. c:function:: int vmw_translate_guest_ptr(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, SVGAGuestPtr *ptr, struct vmw_dma_buffer **vmw_bo_p)
+.. c:function:: int vmw_translate_guest_ptr(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, SVGAGuestPtr *ptr, struct vmw_buffer_object **vmw_bo_p)
 
     Prepare to translate a user-space buffer handle to a valid SVGAGuestPtr
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command batch validation.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGAGuestPtr \*ptr:
+    :param ptr:
         Pointer to the user-space handle to be translated.
+    :type ptr: SVGAGuestPtr \*
 
-    :param struct vmw_dma_buffer \*\*vmw_bo_p:
+    :param vmw_bo_p:
         Points to a location that, on successful return will carry
-        a reference-counted pointer to the DMA buffer identified by the
+        a non-reference-counted pointer to the DMA buffer identified by the
         user-space handle in \ ``id``\ .
+    :type vmw_bo_p: struct vmw_buffer_object \*\*
 
 .. _`vmw_translate_guest_ptr.description`:
 
@@ -756,14 +814,17 @@ vmw_cmd_dx_define_query
 
     validate a SVGA_3D_CMD_DX_DEFINE_QUERY command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command submission.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_define_query.description`:
 
@@ -781,14 +842,17 @@ vmw_cmd_dx_bind_query
 
     validate a SVGA_3D_CMD_DX_BIND_QUERY command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command submission.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_bind_query.description`:
 
@@ -809,14 +873,17 @@ vmw_cmd_begin_gb_query
 
     validate a  SVGA_3D_CMD_BEGIN_GB_QUERY command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command submission.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_begin_query`:
 
@@ -827,14 +894,17 @@ vmw_cmd_begin_query
 
     validate a  SVGA_3D_CMD_BEGIN_QUERY command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command submission.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_end_gb_query`:
 
@@ -845,14 +915,17 @@ vmw_cmd_end_gb_query
 
     validate a  SVGA_3D_CMD_END_GB_QUERY command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command submission.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_end_query`:
 
@@ -863,14 +936,17 @@ vmw_cmd_end_query
 
     validate a  SVGA_3D_CMD_END_QUERY command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command submission.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_wait_gb_query`:
 
@@ -881,14 +957,17 @@ vmw_cmd_wait_gb_query
 
     validate a  SVGA_3D_CMD_WAIT_GB_QUERY command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command submission.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_wait_query`:
 
@@ -899,39 +978,47 @@ vmw_cmd_wait_query
 
     validate a  SVGA_3D_CMD_WAIT_QUERY command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context used for this command submission.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_res_switch_backup`:
 
 vmw_cmd_res_switch_backup
 =========================
 
-.. c:function:: int vmw_cmd_res_switch_backup(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, struct vmw_resource_val_node *val_node, uint32_t *buf_id, unsigned long backup_offset)
+.. c:function:: int vmw_cmd_res_switch_backup(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, struct vmw_resource *res, uint32_t *buf_id, unsigned long backup_offset)
 
     Utility function to handle backup buffer switching
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param struct vmw_resource_val_node \*val_node:
-        The validation node representing the resource.
+    :param res:
+        *undescribed*
+    :type res: struct vmw_resource \*
 
-    :param uint32_t \*buf_id:
+    :param buf_id:
         Pointer to the user-space backup buffer handle in the command
         stream.
+    :type buf_id: uint32_t \*
 
-    :param unsigned long backup_offset:
+    :param backup_offset:
         Offset of backup into MOB.
+    :type backup_offset: unsigned long
 
 .. _`vmw_cmd_res_switch_backup.description`:
 
@@ -951,27 +1038,34 @@ vmw_cmd_switch_backup
 
     Utility function to handle backup buffer switching
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param enum vmw_res_type res_type:
+    :param res_type:
         The resource type.
+    :type res_type: enum vmw_res_type
 
-    :param const struct vmw_user_resource_conv \*converter:
+    :param converter:
         Information about user-space binding for this resource type.
+    :type converter: const struct vmw_user_resource_conv \*
 
-    :param uint32_t \*res_id:
+    :param res_id:
         Pointer to the user-space resource handle in the command stream.
+    :type res_id: uint32_t \*
 
-    :param uint32_t \*buf_id:
+    :param buf_id:
         Pointer to the user-space backup buffer handle in the command
         stream.
+    :type buf_id: uint32_t \*
 
-    :param unsigned long backup_offset:
+    :param backup_offset:
         Offset of backup into MOB.
+    :type backup_offset: unsigned long
 
 .. _`vmw_cmd_switch_backup.description`:
 
@@ -991,14 +1085,17 @@ vmw_cmd_bind_gb_surface
 
     Validate an SVGA_3D_CMD_BIND_GB_SURFACE command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_update_gb_image`:
 
@@ -1009,14 +1106,17 @@ vmw_cmd_update_gb_image
 
     Validate an SVGA_3D_CMD_UPDATE_GB_IMAGE command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_update_gb_surface`:
 
@@ -1027,14 +1127,17 @@ vmw_cmd_update_gb_surface
 
     Validate an SVGA_3D_CMD_UPDATE_GB_SURFACE command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_readback_gb_image`:
 
@@ -1045,14 +1148,17 @@ vmw_cmd_readback_gb_image
 
     Validate an SVGA_3D_CMD_READBACK_GB_IMAGE command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_readback_gb_surface`:
 
@@ -1063,14 +1169,17 @@ vmw_cmd_readback_gb_surface
 
     Validate an SVGA_3D_CMD_READBACK_GB_SURFACE command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_invalidate_gb_image`:
 
@@ -1081,14 +1190,17 @@ vmw_cmd_invalidate_gb_image
 
     Validate an SVGA_3D_CMD_INVALIDATE_GB_IMAGE command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_invalidate_gb_surface`:
 
@@ -1099,14 +1211,17 @@ vmw_cmd_invalidate_gb_surface
 
     Validate an SVGA_3D_CMD_INVALIDATE_GB_SURFACE command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_shader_define`:
 
@@ -1117,14 +1232,17 @@ vmw_cmd_shader_define
 
     Validate an SVGA_3D_CMD_SHADER_DEFINE command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_shader_destroy`:
 
@@ -1135,14 +1253,17 @@ vmw_cmd_shader_destroy
 
     Validate an SVGA_3D_CMD_SHADER_DESTROY command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_set_shader`:
 
@@ -1153,14 +1274,17 @@ vmw_cmd_set_shader
 
     Validate an SVGA_3D_CMD_SET_SHADER command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_set_shader_const`:
 
@@ -1171,14 +1295,17 @@ vmw_cmd_set_shader_const
 
     Validate an SVGA_3D_CMD_SET_SHADER_CONST command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_bind_gb_shader`:
 
@@ -1189,14 +1316,17 @@ vmw_cmd_bind_gb_shader
 
     Validate an SVGA_3D_CMD_BIND_GB_SHADER command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_set_single_constant_buffer`:
 
@@ -1207,14 +1337,17 @@ vmw_cmd_dx_set_single_constant_buffer
 
     Validate an SVGA_3D_CMD_DX_SET_SINGLE_CONSTANT_BUFFER command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_set_shader_res`:
 
@@ -1225,14 +1358,17 @@ vmw_cmd_dx_set_shader_res
 
     Validate an SVGA_3D_CMD_DX_SET_SHADER_RESOURCES command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_set_shader`:
 
@@ -1243,14 +1379,17 @@ vmw_cmd_dx_set_shader
 
     Validate an SVGA_3D_CMD_DX_SET_SHADER command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_set_vertex_buffers`:
 
@@ -1261,14 +1400,17 @@ vmw_cmd_dx_set_vertex_buffers
 
     Validates an SVGA_3D_CMD_DX_SET_VERTEX_BUFFERS command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_set_index_buffer`:
 
@@ -1279,14 +1421,17 @@ vmw_cmd_dx_set_index_buffer
 
     Validate an SVGA_3D_CMD_DX_IA_SET_INDEX_BUFFER command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_set_rendertargets`:
 
@@ -1297,14 +1442,17 @@ vmw_cmd_dx_set_rendertargets
 
     Validate an SVGA_3D_CMD_DX_SET_RENDERTARGETS command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_clear_rendertarget_view`:
 
@@ -1315,14 +1463,17 @@ vmw_cmd_dx_clear_rendertarget_view
 
     Validate an SVGA_3D_CMD_DX_CLEAR_RENDERTARGET_VIEW command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_clear_depthstencil_view`:
 
@@ -1333,14 +1484,17 @@ vmw_cmd_dx_clear_depthstencil_view
 
     Validate an SVGA_3D_CMD_DX_CLEAR_DEPTHSTENCIL_VIEW command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_set_so_targets`:
 
@@ -1351,14 +1505,17 @@ vmw_cmd_dx_set_so_targets
 
     Validate an SVGA_3D_CMD_DX_SET_SOTARGETS command.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_check_subresource`:
 
@@ -1369,14 +1526,17 @@ vmw_cmd_dx_check_subresource
 
     Validate an SVGA_3D_CMD_DX_[X]_SUBRESOURCE command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_view_remove`:
 
@@ -1387,14 +1547,17 @@ vmw_cmd_dx_view_remove
 
     validate a view remove command and schedule the view resource for removal.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_view_remove.description`:
 
@@ -1413,14 +1576,17 @@ vmw_cmd_dx_define_shader
 
     Validate an SVGA_3D_CMD_DX_DEFINE_SHADER command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_destroy_shader`:
 
@@ -1431,14 +1597,17 @@ vmw_cmd_dx_destroy_shader
 
     Validate an SVGA_3D_CMD_DX_DESTROY_SHADER command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_bind_shader`:
 
@@ -1449,14 +1618,17 @@ vmw_cmd_dx_bind_shader
 
     Validate an SVGA_3D_CMD_DX_BIND_SHADER command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_genmips`:
 
@@ -1467,14 +1639,17 @@ vmw_cmd_dx_genmips
 
     Validate an SVGA_3D_CMD_DX_GENMIPS command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_cmd_dx_transfer_from_buffer`:
 
@@ -1485,29 +1660,38 @@ vmw_cmd_dx_transfer_from_buffer
 
     Validate an SVGA_3D_CMD_DX_TRANSFER_FROM_BUFFER command
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
 
-    :param SVGA3dCmdHeader \*header:
+    :param header:
         Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
-.. _`vmw_resource_list_unreference`:
+.. _`vmw_cmd_intra_surface_copy`:
 
-vmw_resource_list_unreference
-=============================
+vmw_cmd_intra_surface_copy
+==========================
 
-.. c:function:: void vmw_resource_list_unreference(struct vmw_sw_context *sw_context, struct list_head *list)
+.. c:function:: int vmw_cmd_intra_surface_copy(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, SVGA3dCmdHeader *header)
 
-    Free up a resource list and unreference all resources referenced by it.
+    Validate an SVGA_3D_CMD_INTRA_SURFACE_COPY command
 
-    :param struct vmw_sw_context \*sw_context:
-        *undescribed*
+    :param dev_priv:
+        Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct list_head \*list:
-        The resource list.
+    :param sw_context:
+        The software context being used for this batch.
+    :type sw_context: struct vmw_sw_context \*
+
+    :param header:
+        Pointer to the command header in the command stream.
+    :type header: SVGA3dCmdHeader \*
 
 .. _`vmw_execbuf_fence_commands`:
 
@@ -1518,17 +1702,21 @@ vmw_execbuf_fence_commands
 
     create and submit a command stream fence
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_fence_obj \*\*p_fence:
+    :param p_fence:
         *undescribed*
+    :type p_fence: struct vmw_fence_obj \*\*
 
-    :param uint32_t \*p_handle:
+    :param p_handle:
         *undescribed*
+    :type p_handle: uint32_t \*
 
 .. _`vmw_execbuf_fence_commands.description`:
 
@@ -1551,30 +1739,38 @@ vmw_execbuf_copy_fence_user
 
     copy fence object information to user-space.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a vmw_private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_fpriv \*vmw_fp:
+    :param vmw_fp:
         Pointer to the struct vmw_fpriv representing the calling file.
+    :type vmw_fp: struct vmw_fpriv \*
 
-    :param int ret:
+    :param ret:
         Return value from fence object creation.
+    :type ret: int
 
-    :param struct drm_vmw_fence_rep __user \*user_fence_rep:
+    :param user_fence_rep:
         User space address of a struct drm_vmw_fence_rep to
         which the information should be copied.
+    :type user_fence_rep: struct drm_vmw_fence_rep __user \*
 
-    :param struct vmw_fence_obj \*fence:
+    :param fence:
         Pointer to the fenc object.
+    :type fence: struct vmw_fence_obj \*
 
-    :param uint32_t fence_handle:
+    :param fence_handle:
         User-space fence handle.
+    :type fence_handle: uint32_t
 
-    :param int32_t out_fence_fd:
+    :param out_fence_fd:
         exported file descriptor for the fence.  -1 if not used
+    :type out_fence_fd: int32_t
 
-    :param struct sync_file \*sync_file:
+    :param sync_file:
         Only used to clean up in case of an error in this function.
+    :type sync_file: struct sync_file \*
 
 .. _`vmw_execbuf_copy_fence_user.description`:
 
@@ -1598,17 +1794,21 @@ vmw_execbuf_submit_fifo
 
     Patch a command batch and submit it using the fifo.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param void \*kernel_commands:
+    :param kernel_commands:
         Pointer to the unpatched command batch.
+    :type kernel_commands: void \*
 
-    :param u32 command_size:
+    :param command_size:
         Size of the unpatched command batch.
+    :type command_size: u32
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         Structure holding the relocation lists.
+    :type sw_context: struct vmw_sw_context \*
 
 .. _`vmw_execbuf_submit_fifo.side-effects`:
 
@@ -1627,17 +1827,21 @@ vmw_execbuf_submit_cmdbuf
 
     Patch a command batch and submit it using the command buffer manager.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_cmdbuf_header \*header:
+    :param header:
         Opaque handle to the command buffer allocation.
+    :type header: struct vmw_cmdbuf_header \*
 
-    :param u32 command_size:
+    :param command_size:
         Size of the unpatched command batch.
+    :type command_size: u32
 
-    :param struct vmw_sw_context \*sw_context:
+    :param sw_context:
         Structure holding the relocation lists.
+    :type sw_context: struct vmw_sw_context \*
 
 .. _`vmw_execbuf_submit_cmdbuf.side-effects`:
 
@@ -1656,20 +1860,25 @@ vmw_execbuf_cmdbuf
 
     Prepare, if possible, a user-space command batch for submission using a command buffer.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param void __user \*user_commands:
+    :param user_commands:
         User-space pointer to the commands to be submitted.
+    :type user_commands: void __user \*
 
-    :param void \*kernel_commands:
+    :param kernel_commands:
         *undescribed*
+    :type kernel_commands: void \*
 
-    :param u32 command_size:
+    :param command_size:
         Size of the unpatched command batch.
+    :type command_size: u32
 
-    :param struct vmw_cmdbuf_header \*\*header:
+    :param header:
         Out parameter returning the opaque pointer to the command buffer.
+    :type header: struct vmw_cmdbuf_header \*\*
 
 .. _`vmw_execbuf_cmdbuf.description`:
 
@@ -1698,8 +1907,9 @@ vmw_execbuf_unpin_panic
 
     Idle the fifo and unpin the query buffer.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         The device private structure.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_execbuf_unpin_panic.description`:
 
@@ -1719,13 +1929,15 @@ extremely rare.
 
     Flush queries and unpin the pinned query bo.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         The device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_fence_obj \*fence:
+    :param fence:
         If non-NULL should point to a struct vmw_fence_obj issued
         \_after\_ a query barrier that flushes all queries touching the current
-        buffer pointed to by \ ``dev_priv``\ ->pinned_bo
+        buffer pointed to by \ ``dev_priv->pinned_bo``\ 
+    :type fence: struct vmw_fence_obj \*
 
 .. _`__vmw_execbuf_release_pinned_bo.description`:
 
@@ -1744,7 +1956,7 @@ to do safe unpinning in case of errors.
 The function will synchronize on the previous query barrier, and will
 thus not finish until that barrier has executed.
 
-the \ ``dev_priv``\ ->cmdbuf_mutex needs to be held by the current thread
+the \ ``dev_priv->cmdbuf_mutex``\  needs to be held by the current thread
 before calling this function.
 
 .. _`vmw_execbuf_release_pinned_bo`:
@@ -1756,8 +1968,9 @@ vmw_execbuf_release_pinned_bo
 
     Flush queries and unpin the pinned query bo.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         The device private structure.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_execbuf_release_pinned_bo.description`:
 

@@ -10,11 +10,13 @@ tomoyo_check_task_acl
 
     Check permission for task operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_acl_info \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_acl_info".
+    :type ptr: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_check_task_acl.description`:
 
@@ -32,17 +34,21 @@ tomoyo_write_self
 
     \ :c:func:`write`\  for /sys/kernel/security/tomoyo/self_domain interface.
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         Domainname to transit to.
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         Size of \ ``buf``\ .
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Unused.
+    :type ppos: loff_t \*
 
 .. _`tomoyo_write_self.description`:
 
@@ -63,17 +69,21 @@ tomoyo_read_self
 
     \ :c:func:`read`\  for /sys/kernel/security/tomoyo/self_domain interface.
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         Domainname which current thread belongs to.
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         Size of \ ``buf``\ .
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Bytes read by now.
+    :type ppos: loff_t \*
 
 .. _`tomoyo_read_self.description`:
 
@@ -91,11 +101,13 @@ tomoyo_open
 
     \ :c:func:`open`\  for /sys/kernel/security/tomoyo/ interface.
 
-    :param struct inode \*inode:
+    :param inode:
         Pointer to "struct inode".
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
 .. _`tomoyo_open.description`:
 
@@ -113,11 +125,13 @@ tomoyo_release
 
     \ :c:func:`close`\  for /sys/kernel/security/tomoyo/ interface.
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
 .. _`tomoyo_poll`:
 
@@ -128,11 +142,13 @@ tomoyo_poll
 
     \ :c:func:`poll`\  for /sys/kernel/security/tomoyo/ interface.
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         Pointer to "poll_table". Maybe NULL.
+    :type wait: poll_table \*
 
 .. _`tomoyo_poll.description`:
 
@@ -151,17 +167,21 @@ tomoyo_read
 
     \ :c:func:`read`\  for /sys/kernel/security/tomoyo/ interface.
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         Pointer to buffer.
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         Size of \ ``buf``\ .
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Unused.
+    :type ppos: loff_t \*
 
 .. _`tomoyo_read.description`:
 
@@ -179,17 +199,21 @@ tomoyo_write
 
     \ :c:func:`write`\  for /sys/kernel/security/tomoyo/ interface.
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         Pointer to buffer.
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         Size of \ ``buf``\ .
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Unused.
+    :type ppos: loff_t \*
 
 .. _`tomoyo_write.description`:
 
@@ -207,17 +231,21 @@ tomoyo_create_entry
 
     Create interface files under /sys/kernel/security/tomoyo/ directory.
 
-    :param const char \*name:
+    :param name:
         The name of the interface file.
+    :type name: const char \*
 
-    :param const umode_t mode:
+    :param mode:
         The permission of the interface file.
+    :type mode: const umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         The parent directory.
+    :type parent: struct dentry \*
 
-    :param const u8 key:
+    :param key:
         Type of interface.
+    :type key: const u8
 
 .. _`tomoyo_create_entry.description`:
 
@@ -235,8 +263,9 @@ tomoyo_initerface_init
 
     Initialize /sys/kernel/security/tomoyo/ interface.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_initerface_init.description`:
 

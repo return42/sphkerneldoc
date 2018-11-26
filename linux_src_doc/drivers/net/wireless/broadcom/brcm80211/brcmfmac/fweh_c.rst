@@ -94,8 +94,9 @@ brcmf_fweh_event_name
 
     returns name for given event code.
 
-    :param enum brcmf_fweh_event_code code:
+    :param code:
         code to lookup.
+    :type code: enum brcmf_fweh_event_code
 
 .. _`brcmf_fweh_queue_event`:
 
@@ -106,11 +107,13 @@ brcmf_fweh_queue_event
 
     create and queue event.
 
-    :param struct brcmf_fweh_info \*fweh:
+    :param fweh:
         firmware event handling info.
+    :type fweh: struct brcmf_fweh_info \*
 
-    :param struct brcmf_fweh_queue_item \*event:
+    :param event:
         event queue entry.
+    :type event: struct brcmf_fweh_queue_item \*
 
 .. _`brcmf_fweh_handle_if_event`:
 
@@ -121,14 +124,17 @@ brcmf_fweh_handle_if_event
 
     handle IF event.
 
-    :param struct brcmf_pub \*drvr:
+    :param drvr:
         driver information object.
+    :type drvr: struct brcmf_pub \*
 
-    :param struct brcmf_event_msg \*emsg:
+    :param emsg:
         *undescribed*
+    :type emsg: struct brcmf_event_msg \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`brcmf_fweh_dequeue_event`:
 
@@ -139,8 +145,9 @@ brcmf_fweh_dequeue_event
 
     get event from the queue.
 
-    :param struct brcmf_fweh_info \*fweh:
+    :param fweh:
         firmware event handling info.
+    :type fweh: struct brcmf_fweh_info \*
 
 .. _`brcmf_fweh_event_worker`:
 
@@ -151,8 +158,9 @@ brcmf_fweh_event_worker
 
     firmware event worker.
 
-    :param struct work_struct \*work:
+    :param work:
         worker object.
+    :type work: struct work_struct \*
 
 .. _`brcmf_fweh_p2pdev_setup`:
 
@@ -163,11 +171,13 @@ brcmf_fweh_p2pdev_setup
 
     P2P device setup ongoing (or not).
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         ifp on which setup is taking place or finished.
+    :type ifp: struct brcmf_if \*
 
-    :param bool ongoing:
+    :param ongoing:
         p2p device setup in progress (or not).
+    :type ongoing: bool
 
 .. _`brcmf_fweh_attach`:
 
@@ -178,8 +188,9 @@ brcmf_fweh_attach
 
     initialize firmware event handling.
 
-    :param struct brcmf_pub \*drvr:
+    :param drvr:
         driver information object.
+    :type drvr: struct brcmf_pub \*
 
 .. _`brcmf_fweh_detach`:
 
@@ -190,8 +201,9 @@ brcmf_fweh_detach
 
     cleanup firmware event handling.
 
-    :param struct brcmf_pub \*drvr:
+    :param drvr:
         driver information object.
+    :type drvr: struct brcmf_pub \*
 
 .. _`brcmf_fweh_register`:
 
@@ -202,14 +214,17 @@ brcmf_fweh_register
 
     register handler for given event code.
 
-    :param struct brcmf_pub \*drvr:
+    :param drvr:
         driver information object.
+    :type drvr: struct brcmf_pub \*
 
-    :param enum brcmf_fweh_event_code code:
+    :param code:
         event code.
+    :type code: enum brcmf_fweh_event_code
 
-    :param brcmf_fweh_handler_t handler:
+    :param handler:
         handler for the given event code.
+    :type handler: brcmf_fweh_handler_t
 
 .. _`brcmf_fweh_unregister`:
 
@@ -220,11 +235,13 @@ brcmf_fweh_unregister
 
     remove handler for given code.
 
-    :param struct brcmf_pub \*drvr:
+    :param drvr:
         driver information object.
+    :type drvr: struct brcmf_pub \*
 
-    :param enum brcmf_fweh_event_code code:
+    :param code:
         event code.
+    :type code: enum brcmf_fweh_event_code
 
 .. _`brcmf_fweh_activate_events`:
 
@@ -235,8 +252,9 @@ brcmf_fweh_activate_events
 
     enables firmware events registered.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         primary interface object.
+    :type ifp: struct brcmf_if \*
 
 .. _`brcmf_fweh_process_event`:
 
@@ -247,14 +265,17 @@ brcmf_fweh_process_event
 
     process skb as firmware event.
 
-    :param struct brcmf_pub \*drvr:
+    :param drvr:
         driver information object.
+    :type drvr: struct brcmf_pub \*
 
-    :param struct brcmf_event \*event_packet:
+    :param event_packet:
         event packet to process.
+    :type event_packet: struct brcmf_event \*
 
-    :param u32 packet_len:
+    :param packet_len:
         *undescribed*
+    :type packet_len: u32
 
 .. _`brcmf_fweh_process_event.description`:
 

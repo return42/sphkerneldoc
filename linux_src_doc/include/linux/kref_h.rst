@@ -10,8 +10,9 @@ kref_init
 
     initialize object.
 
-    :param struct kref \*kref:
+    :param kref:
         object in question.
+    :type kref: struct kref \*
 
 .. _`kref_get`:
 
@@ -22,8 +23,9 @@ kref_get
 
     increment refcount for object.
 
-    :param struct kref \*kref:
+    :param kref:
         object.
+    :type kref: struct kref \*
 
 .. _`kref_put`:
 
@@ -34,8 +36,9 @@ kref_put
 
     decrement refcount for object.
 
-    :param struct kref \*kref:
+    :param kref:
         object.
+    :type kref: struct kref \*
 
     :param void (\*release)(struct kref \*kref):
         pointer to the function that will clean up the object when the
@@ -66,8 +69,9 @@ kref_get_unless_zero
 
     Increment refcount for object unless it is zero.
 
-    :param struct kref \*kref:
+    :param kref:
         object.
+    :type kref: struct kref \*
 
 .. _`kref_get_unless_zero.description`:
 

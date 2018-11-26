@@ -10,8 +10,9 @@ omap4430_phy_power_down
 
     disable MUSB PHY during early init
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap4430_phy_power_down.description`:
 

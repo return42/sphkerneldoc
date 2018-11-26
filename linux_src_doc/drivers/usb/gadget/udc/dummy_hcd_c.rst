@@ -10,8 +10,9 @@ set_link_state_by_speed
 
     Sets the current state of the link according to the hcd speed
 
-    :param struct dummy_hcd \*dum_hcd:
+    :param dum_hcd:
         pointer to the dummy_hcd structure to update the link state for
+    :type dum_hcd: struct dummy_hcd \*
 
 .. _`set_link_state_by_speed.description`:
 
@@ -30,18 +31,22 @@ handle_control_request
 
     handles all control transfers
 
-    :param struct dummy_hcd \*dum_hcd:
+    :param dum_hcd:
         *undescribed*
+    :type dum_hcd: struct dummy_hcd \*
 
-    :param struct urb \*urb:
+    :param urb:
         the urb request to handle
+    :type urb: struct urb \*
 
-    :param struct usb_ctrlrequest \*setup:
+    :param setup:
         pointer to the setup data for a USB device control
         request
+    :type setup: struct usb_ctrlrequest \*
 
-    :param int \*status:
+    :param status:
         pointer to request handling status
+    :type status: int \*
 
 .. _`handle_control_request.description`:
 

@@ -10,17 +10,21 @@ q6routing_stream_open
 
     Register a new stream for route setup
 
-    :param int fedai_id:
+    :param fedai_id:
         Frontend dai id.
+    :type fedai_id: int
 
-    :param int perf_mode:
+    :param perf_mode:
         Performance mode.
+    :type perf_mode: int
 
-    :param int stream_id:
+    :param stream_id:
         ASM stream id to map.
+    :type stream_id: int
 
-    :param int stream_type:
+    :param stream_type:
         Direction of stream
+    :type stream_type: int
 
 .. _`q6routing_stream_open.return`:
 
@@ -38,11 +42,13 @@ q6routing_stream_close
 
     Deregister a stream
 
-    :param int fedai_id:
+    :param fedai_id:
         Frontend dai id.
+    :type fedai_id: int
 
-    :param int stream_type:
+    :param stream_type:
         Direction of stream
+    :type stream_type: int
 
 .. _`q6routing_stream_close.return`:
 

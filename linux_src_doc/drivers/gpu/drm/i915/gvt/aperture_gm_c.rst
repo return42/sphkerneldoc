@@ -10,14 +10,17 @@ intel_vgpu_write_fence
 
     write fence registers owned by a vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         vGPU instance
+    :type vgpu: struct intel_vgpu \*
 
-    :param u32 fence:
+    :param fence:
         vGPU fence register number
+    :type fence: u32
 
-    :param u64 value:
+    :param value:
         Fence register value to be written
+    :type value: u64
 
 .. _`intel_vgpu_write_fence.description`:
 
@@ -36,8 +39,9 @@ intel_vgpu_free_resource
 
     free HW resource owned by a vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_free_resource.description`:
 
@@ -55,8 +59,9 @@ intel_vgpu_reset_resource
 
     reset resource state owned by a vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_reset_resource.description`:
 
@@ -74,11 +79,13 @@ intel_vgpu_alloc_resource
 
     allocate HW resource for a vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param struct intel_vgpu_creation_params \*param:
+    :param param:
         vGPU creation params
+    :type param: struct intel_vgpu_creation_params \*
 
 .. _`intel_vgpu_alloc_resource.description`:
 

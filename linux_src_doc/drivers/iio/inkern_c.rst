@@ -10,11 +10,13 @@
 
     translate iiospec to the IIO channel index
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         pointer to the iio_dev structure
+    :type indio_dev: struct iio_dev \*
 
-    :param const struct of_phandle_args \*iiospec:
+    :param iiospec:
         IIO specifier as found in the device tree
+    :type iiospec: const struct of_phandle_args \*
 
 .. _`__of_iio_simple_xlate.description`:
 

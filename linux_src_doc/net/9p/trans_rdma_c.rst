@@ -107,11 +107,13 @@ parse_opts
 
     parse mount options into rdma options structure
 
-    :param char \*params:
+    :param params:
         options string passed from mount
+    :type params: char \*
 
-    :param struct p9_rdma_opts \*opts:
+    :param opts:
         rdma transport-specific structure to parse options into
+    :type opts: struct p9_rdma_opts \*
 
 .. _`parse_opts.description`:
 
@@ -129,8 +131,9 @@ alloc_rdma
 
     Allocate and initialize the rdma transport structure
 
-    :param struct p9_rdma_opts \*opts:
+    :param opts:
         Mount options structure
+    :type opts: struct p9_rdma_opts \*
 
 .. _`rdma_create_trans`:
 
@@ -141,14 +144,17 @@ rdma_create_trans
 
     Transport method for creating a transport instance
 
-    :param struct p9_client \*client:
+    :param client:
         client instance
+    :type client: struct p9_client \*
 
-    :param const char \*addr:
+    :param addr:
         IP address string
+    :type addr: const char \*
 
-    :param char \*args:
+    :param args:
         Mount options string
+    :type args: char \*
 
 .. _`p9_trans_rdma_init`:
 
@@ -159,8 +165,9 @@ p9_trans_rdma_init
 
     Register the 9P RDMA transport driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

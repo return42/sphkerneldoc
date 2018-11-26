@@ -7,6 +7,7 @@ freescale
 .. toctree::
     :maxdepth: 1
 
+    dpaa2/index
     fman/index
     fec_main_c
     fec_mpc52xx_c

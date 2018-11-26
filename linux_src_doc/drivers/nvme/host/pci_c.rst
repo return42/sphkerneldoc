@@ -10,38 +10,13 @@ nvme_submit_cmd
 
     Copy a command into a queue and ring the doorbell
 
-    :param struct nvme_queue \*nvmeq:
+    :param nvmeq:
         The queue to use
+    :type nvmeq: struct nvme_queue \*
 
-    :param struct nvme_command \*cmd:
+    :param cmd:
         The command to send
-
-.. _`nvme_dif_remap`:
-
-nvme_dif_remap
-==============
-
-.. c:function:: void nvme_dif_remap(struct request *req, void (*dif_swap)(u32 p, u32 v, struct t10_pi_tuple *pi))
-
-    remaps ref tags to bip seed and physical lba
-
-    :param struct request \*req:
-        *undescribed*
-
-    :param void (\*dif_swap)(u32 p, u32 v, struct t10_pi_tuple \*pi):
-        *undescribed*
-
-.. _`nvme_dif_remap.description`:
-
-Description
------------
-
-The virtual start sector is the one that was originally submitted by the
-block layer. Due to partitioning, MD/DM cloning, etc. the actual physical
-start sector may be different. Remap protection information to match the
-physical LBA on writes, and back to the original seed on reads.
-
-Type 0 and 3 do not have a ref tag, so no remapping required.
+    :type cmd: struct nvme_command \*
 
 .. _`nvme_suspend_queue`:
 
@@ -50,10 +25,11 @@ nvme_suspend_queue
 
 .. c:function:: int nvme_suspend_queue(struct nvme_queue *nvmeq)
 
-    put queue into suspended state \ ``nvmeq``\  - queue to suspend
+    put queue into suspended state
 
-    :param struct nvme_queue \*nvmeq:
-        *undescribed*
+    :param nvmeq:
+        queue to suspend
+    :type nvmeq: struct nvme_queue \*
 
 .. This file was automatic generated / don't edit.
 

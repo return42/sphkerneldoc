@@ -29,8 +29,9 @@ dwc3_get_dr_mode
 
     Validates and sets dr_mode
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         pointer to our context structure
+    :type dwc: struct dwc3 \*
 
 .. _`dwc3_core_soft_reset`:
 
@@ -41,8 +42,9 @@ dwc3_core_soft_reset
 
     Issues core soft reset and PHY reset
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         pointer to our context structure
+    :type dwc: struct dwc3 \*
 
 .. _`dwc3_free_one_event_buffer`:
 
@@ -53,11 +55,13 @@ dwc3_free_one_event_buffer
 
     Frees one event buffer
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         Pointer to our controller context structure
+    :type dwc: struct dwc3 \*
 
-    :param struct dwc3_event_buffer \*evt:
+    :param evt:
         Pointer to event buffer to be freed
+    :type evt: struct dwc3_event_buffer \*
 
 .. _`dwc3_alloc_one_event_buffer`:
 
@@ -68,11 +72,13 @@ dwc3_alloc_one_event_buffer
 
     Allocates one event buffer structure
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         Pointer to our controller context structure
+    :type dwc: struct dwc3 \*
 
-    :param unsigned length:
+    :param length:
         size of the event buffer
+    :type length: unsigned
 
 .. _`dwc3_alloc_one_event_buffer.description`:
 
@@ -91,8 +97,9 @@ dwc3_free_event_buffers
 
     frees all allocated event buffers
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         Pointer to our controller context structure
+    :type dwc: struct dwc3 \*
 
 .. _`dwc3_alloc_event_buffers`:
 
@@ -103,11 +110,13 @@ dwc3_alloc_event_buffers
 
     Allocates \ ``num``\  event buffers of size \ ``length``\ 
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         pointer to our controller context structure
+    :type dwc: struct dwc3 \*
 
-    :param unsigned length:
+    :param length:
         size of event buffer
+    :type length: unsigned
 
 .. _`dwc3_alloc_event_buffers.description`:
 
@@ -126,8 +135,9 @@ dwc3_event_buffers_setup
 
     setup our allocated event buffers
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         pointer to our controller context structure
+    :type dwc: struct dwc3 \*
 
 .. _`dwc3_event_buffers_setup.description`:
 
@@ -145,8 +155,9 @@ dwc3_phy_setup
 
     Configure USB PHY Interface of DWC3 Core
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         Pointer to our controller context structure
+    :type dwc: struct dwc3 \*
 
 .. _`dwc3_phy_setup.description`:
 
@@ -166,8 +177,9 @@ dwc3_core_init
 
     Low-level initialization of DWC3 Core
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         Pointer to our controller context structure
+    :type dwc: struct dwc3 \*
 
 .. _`dwc3_core_init.description`:
 

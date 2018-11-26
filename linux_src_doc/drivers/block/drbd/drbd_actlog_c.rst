@@ -10,8 +10,9 @@ drbd_al_shrink
 
     Removes all active extents form the activity log
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_al_shrink.description`:
 
@@ -32,11 +33,13 @@ drbd_rs_begin_io
 
     Gets an extent in the resync LRU cache and sets it to BME_LOCKED
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param sector_t sector:
+    :param sector:
         The sector number.
+    :type sector: sector_t
 
 .. _`drbd_rs_begin_io.description`:
 
@@ -54,11 +57,13 @@ drbd_try_rs_begin_io
 
     Gets an extent in the resync LRU cache, does not sleep
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param sector_t sector:
+    :param sector:
         The sector number.
+    :type sector: sector_t
 
 .. _`drbd_try_rs_begin_io.description`:
 
@@ -78,8 +83,9 @@ drbd_rs_cancel_all
 
     Removes all extents from the resync LRU (even BME_LOCKED)
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_rs_del_all`:
 
@@ -90,8 +96,9 @@ drbd_rs_del_all
 
     Gracefully remove all extents from the resync LRU
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_rs_del_all.description`:
 

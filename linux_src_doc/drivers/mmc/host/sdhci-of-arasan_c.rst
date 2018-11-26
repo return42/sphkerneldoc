@@ -109,6 +109,7 @@ Definition
         const struct sdhci_arasan_soc_ctl_map *soc_ctl_map;
         unsigned int quirks;
     #define SDHCI_ARASAN_QUIRK_FORCE_CDTEST BIT(0)
+    #define SDHCI_ARASAN_QUIRK_CLOCK_UNSTABLE BIT(1)
     }
 
 .. _`sdhci_arasan_data.members`:
@@ -155,14 +156,17 @@ sdhci_arasan_syscon_write
 
     Write to a field in soc_ctl registers
 
-    :param struct sdhci_host \*host:
+    :param host:
         The sdhci_host
+    :type host: struct sdhci_host \*
 
-    :param const struct sdhci_arasan_soc_ctl_field \*fld:
+    :param fld:
         The field to write to
+    :type fld: const struct sdhci_arasan_soc_ctl_field \*
 
-    :param u32 val:
+    :param val:
         The value to write
+    :type val: u32
 
 .. _`sdhci_arasan_syscon_write.description`:
 
@@ -183,9 +187,10 @@ sdhci_arasan_suspend
 
     Suspend method for the driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the device structure
         Returns 0 on success and error value on error
+    :type dev: struct device \*
 
 .. _`sdhci_arasan_suspend.description`:
 
@@ -203,9 +208,10 @@ sdhci_arasan_resume
 
     Resume method for the driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the device structure
         Returns 0 on success and error value on error
+    :type dev: struct device \*
 
 .. _`sdhci_arasan_resume.description`:
 
@@ -223,13 +229,15 @@ sdhci_arasan_sdcardclk_recalc_rate
 
     Return the card clock rate
 
-    :param struct clk_hw \*hw:
+    :param hw:
         Pointer to the hardware clock structure.
         \ ``parent_rate``\          The parent rate (should be rate of clk_xin).
         Returns the card clock rate.
+    :type hw: struct clk_hw \*
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         *undescribed*
+    :type parent_rate: unsigned long
 
 .. _`sdhci_arasan_sdcardclk_recalc_rate.description`:
 
@@ -248,11 +256,13 @@ sdhci_arasan_update_clockmultiplier
 
     Set corecfg_clockmultiplier
 
-    :param struct sdhci_host \*host:
+    :param host:
         The sdhci_host
+    :type host: struct sdhci_host \*
 
-    :param u32 value:
+    :param value:
         *undescribed*
+    :type value: u32
 
 .. _`sdhci_arasan_update_clockmultiplier.description`:
 
@@ -284,8 +294,9 @@ sdhci_arasan_update_baseclkfreq
 
     Set corecfg_baseclkfreq
 
-    :param struct sdhci_host \*host:
+    :param host:
         The sdhci_host
+    :type host: struct sdhci_host \*
 
 .. _`sdhci_arasan_update_baseclkfreq.description`:
 
@@ -317,15 +328,18 @@ sdhci_arasan_register_sdclk
 
     Register the sdclk for a PHY to use
 
-    :param struct sdhci_arasan_data \*sdhci_arasan:
+    :param sdhci_arasan:
         Our private data structure.
+    :type sdhci_arasan: struct sdhci_arasan_data \*
 
-    :param struct clk \*clk_xin:
+    :param clk_xin:
         Pointer to the functional clock
+    :type clk_xin: struct clk \*
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to our struct device.
         Returns 0 on success and error value on error
+    :type dev: struct device \*
 
 .. _`sdhci_arasan_register_sdclk.description`:
 
@@ -358,8 +372,9 @@ sdhci_arasan_unregister_sdclk
 
     Undoes \ :c:func:`sdhci_arasan_register_sdclk`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to our struct device.
+    :type dev: struct device \*
 
 .. _`sdhci_arasan_unregister_sdclk.description`:
 

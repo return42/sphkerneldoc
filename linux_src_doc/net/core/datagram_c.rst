@@ -10,28 +10,34 @@ __skb_try_recv_datagram
 
     Receive a datagram skbuff
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param unsigned int flags:
+    :param flags:
         MSG\_ flags
+    :type flags: unsigned int
 
     :param void (\*destructor)(struct sock \*sk, struct sk_buff \*skb):
         invoked under the receive lock on successful dequeue
 
-    :param int \*peeked:
+    :param peeked:
         returns non-zero if this packet has been seen before
+    :type peeked: int \*
 
-    :param int \*off:
+    :param off:
         an offset in bytes to peek skb from. Returns an offset
         within an skb where data actually starts
+    :type off: int \*
 
-    :param int \*err:
+    :param err:
         error code returned
+    :type err: int \*
 
-    :param struct sk_buff \*\*last:
+    :param last:
         set to last peeked message to inform the wait function
         what to look for when peeking
+    :type last: struct sk_buff \*\*
 
 .. _`__skb_try_recv_datagram.description`:
 
@@ -71,14 +77,17 @@ skb_kill_datagram
 
     Free a datagram skbuff forcibly
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         datagram skbuff
+    :type skb: struct sk_buff \*
 
-    :param unsigned int flags:
+    :param flags:
         MSG\_ flags
+    :type flags: unsigned int
 
 .. _`skb_kill_datagram.description`:
 
@@ -108,17 +117,21 @@ skb_copy_datagram_iter
 
     Copy a datagram to an iovec iterator.
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to copy
+    :type skb: const struct sk_buff \*
 
-    :param int offset:
+    :param offset:
         offset in the buffer to start copying from
+    :type offset: int
 
-    :param struct iov_iter \*to:
+    :param to:
         iovec iterator to copy to
+    :type to: struct iov_iter \*
 
-    :param int len:
+    :param len:
         amount of data to copy from buffer to iovec
+    :type len: int
 
 .. _`skb_copy_datagram_from_iter`:
 
@@ -129,17 +142,21 @@ skb_copy_datagram_from_iter
 
     Copy a datagram from an iov_iter.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to copy
+    :type skb: struct sk_buff \*
 
-    :param int offset:
+    :param offset:
         offset in the buffer to start copying to
+    :type offset: int
 
-    :param struct iov_iter \*from:
+    :param from:
         the copy source
+    :type from: struct iov_iter \*
 
-    :param int len:
+    :param len:
         amount of data to copy to buffer from iovec
+    :type len: int
 
 .. _`skb_copy_datagram_from_iter.description`:
 
@@ -157,11 +174,13 @@ zerocopy_sg_from_iter
 
     Build a zerocopy datagram from an iov_iter
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to copy
+    :type skb: struct sk_buff \*
 
-    :param struct iov_iter \*from:
+    :param from:
         the source to copy from
+    :type from: struct iov_iter \*
 
 .. _`zerocopy_sg_from_iter.description`:
 
@@ -182,14 +201,17 @@ skb_copy_and_csum_datagram_msg
 
     Copy and checksum skb to user iovec.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff
+    :type skb: struct sk_buff \*
 
-    :param int hlen:
+    :param hlen:
         hardware length
+    :type hlen: int
 
-    :param struct msghdr \*msg:
+    :param msg:
         destination
+    :type msg: struct msghdr \*
 
 .. _`skb_copy_and_csum_datagram_msg.description`:
 
@@ -216,14 +238,17 @@ datagram_poll
 
     generic datagram poll
 
-    :param struct file \*file:
+    :param file:
         file struct
+    :type file: struct file \*
 
-    :param struct socket \*sock:
+    :param sock:
         socket
+    :type sock: struct socket \*
 
-    :param poll_table \*wait:
+    :param wait:
         poll table
+    :type wait: poll_table \*
 
 .. _`datagram_poll.description`:
 

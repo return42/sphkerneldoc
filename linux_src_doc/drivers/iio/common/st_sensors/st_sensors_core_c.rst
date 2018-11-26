@@ -10,19 +10,23 @@ st_sensors_of_name_probe
 
     device tree probe for ST sensor name
 
-    :param struct device \*dev:
+    :param dev:
         driver model representation of the device.
+    :type dev: struct device \*
 
-    :param const struct of_device_id \*match:
+    :param match:
         the OF match table for the device, containing compatible strings
         but also a .data field with the corresponding internal kernel name
         used by this sensor.
+    :type match: const struct of_device_id \*
 
-    :param char \*name:
+    :param name:
         device name buffer reference.
+    :type name: char \*
 
-    :param int len:
+    :param len:
         device name buffer length.
+    :type len: int
 
 .. _`st_sensors_of_name_probe.description`:
 

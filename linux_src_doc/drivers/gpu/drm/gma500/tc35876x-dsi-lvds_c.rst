@@ -10,14 +10,17 @@ tc35876x_regw
 
     Write DSI-LVDS bridge register using I2C
 
-    :param struct i2c_client \*client:
+    :param client:
         struct i2c_client to use
+    :type client: struct i2c_client \*
 
-    :param u16 reg:
+    :param reg:
         register address
+    :type reg: u16
 
-    :param u32 value:
+    :param value:
         value to write
+    :type value: u32
 
 .. _`tc35876x_regw.description`:
 
@@ -35,14 +38,17 @@ tc35876x_regr
 
     Read DSI-LVDS bridge register using I2C
 
-    :param struct i2c_client \*client:
+    :param client:
         struct i2c_client to use
+    :type client: struct i2c_client \*
 
-    :param u16 reg:
+    :param reg:
         register address
+    :type reg: u16
 
-    :param u32 \*value:
+    :param value:
         pointer for storing the value
+    :type value: u32 \*
 
 .. _`tc35876x_regr.description`:
 

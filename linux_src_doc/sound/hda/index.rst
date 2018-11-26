@@ -11,6 +11,7 @@ hda
     array_c
     hda_bus_type_c
     hdac_bus_c
+    hdac_component_c
     hdac_controller_c
     hdac_device_c
     hdac_i915_c

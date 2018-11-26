@@ -10,11 +10,13 @@ sleeping_thread_to_gdb_regs
 
     Convert ptrace regs to GDB regs
 
-    :param unsigned long \*gdb_regs:
+    :param gdb_regs:
         A pointer to hold the registers in the order GDB wants.
+    :type gdb_regs: unsigned long \*
 
-    :param struct task_struct \*p:
+    :param p:
         The \ :c:type:`struct task_struct <task_struct>`\  of the desired process.
+    :type p: struct task_struct \*
 
 .. _`sleeping_thread_to_gdb_regs.description`:
 
@@ -37,8 +39,9 @@ kgdb_disable_hw_debug
 
     Disable hardware debugging while we in kgdb.
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Current \ :c:type:`struct pt_regs <pt_regs>`\ .
+    :type regs: struct pt_regs \*
 
 .. _`kgdb_disable_hw_debug.description`:
 
@@ -58,8 +61,9 @@ kgdb_roundup_cpus
 
     Get other CPUs into a holding pattern
 
-    :param unsigned long flags:
+    :param flags:
         Current IRQ state
+    :type flags: unsigned long
 
 .. _`kgdb_roundup_cpus.description`:
 
@@ -87,23 +91,29 @@ kgdb_arch_handle_exception
 
     Handle architecture specific GDB packets.
 
-    :param int e_vector:
+    :param e_vector:
         The error vector of the exception that happened.
+    :type e_vector: int
 
-    :param int signo:
+    :param signo:
         The signal number of the exception that happened.
+    :type signo: int
 
-    :param int err_code:
+    :param err_code:
         The error code of the exception that happened.
+    :type err_code: int
 
-    :param char \*remcomInBuffer:
+    :param remcomInBuffer:
         The buffer of the packet we have read.
+    :type remcomInBuffer: char \*
 
-    :param char \*remcomOutBuffer:
+    :param remcomOutBuffer:
         The buffer of \ ``BUFMAX``\  bytes to write a packet into.
+    :type remcomOutBuffer: char \*
 
-    :param struct pt_regs \*linux_regs:
+    :param linux_regs:
         The \ :c:type:`struct pt_regs <pt_regs>`\  of the current process.
+    :type linux_regs: struct pt_regs \*
 
 .. _`kgdb_arch_handle_exception.description`:
 
@@ -126,8 +136,9 @@ kgdb_arch_init
 
     Perform any architecture specific initialization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_arch_init.description`:
 
@@ -146,8 +157,9 @@ kgdb_arch_exit
 
     Perform any architecture specific uninitalization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_arch_exit.description`:
 

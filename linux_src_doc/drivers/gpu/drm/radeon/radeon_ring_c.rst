@@ -10,11 +10,13 @@ radeon_ring_supports_scratch_reg
 
     check if the ring supports writing to scratch registers
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`radeon_ring_supports_scratch_reg.description`:
 
@@ -33,11 +35,13 @@ radeon_ring_free_size
 
     update the free size
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`radeon_ring_free_size.description`:
 
@@ -55,14 +59,17 @@ radeon_ring_alloc
 
     allocate space on the ring buffer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
-    :param unsigned ndw:
+    :param ndw:
         number of dwords to allocate in the ring buffer
+    :type ndw: unsigned
 
 .. _`radeon_ring_alloc.description`:
 
@@ -81,14 +88,17 @@ radeon_ring_lock
 
     lock the ring and allocate space on it
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
-    :param unsigned ndw:
+    :param ndw:
         number of dwords to allocate in the ring buffer
+    :type ndw: unsigned
 
 .. _`radeon_ring_lock.description`:
 
@@ -108,14 +118,17 @@ radeon_ring_commit
 
     tell the GPU to execute the new commands on the ring buffer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
-    :param bool hdp_flush:
+    :param hdp_flush:
         Whether or not to perform an HDP cache flush
+    :type hdp_flush: bool
 
 .. _`radeon_ring_commit.description`:
 
@@ -134,14 +147,17 @@ radeon_ring_unlock_commit
 
     tell the GPU to execute the new commands on the ring buffer and unlock it
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
-    :param bool hdp_flush:
+    :param hdp_flush:
         Whether or not to perform an HDP cache flush
+    :type hdp_flush: bool
 
 .. _`radeon_ring_unlock_commit.description`:
 
@@ -159,8 +175,9 @@ radeon_ring_undo
 
     reset the wptr
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`radeon_ring_undo.description`:
 
@@ -178,11 +195,13 @@ radeon_ring_unlock_undo
 
     reset the wptr and unlock the ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`radeon_ring_unlock_undo.description`:
 
@@ -200,11 +219,13 @@ radeon_ring_lockup_update
 
     update lockup variables
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`radeon_ring_lockup_update.description`:
 
@@ -222,11 +243,13 @@ radeon_ring_test_lockup
 
     check if ring is lockedup by recording information
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device structure
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`radeon_ring_backup`:
 
@@ -237,14 +260,17 @@ radeon_ring_backup
 
     Back up the content of a ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         the ring we want to back up
+    :type ring: struct radeon_ring \*
 
-    :param uint32_t \*\*data:
+    :param data:
         *undescribed*
+    :type data: uint32_t \*\*
 
 .. _`radeon_ring_backup.description`:
 
@@ -262,17 +288,21 @@ radeon_ring_restore
 
     append saved commands to the ring again
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         ring to append commands to
+    :type ring: struct radeon_ring \*
 
-    :param unsigned size:
+    :param size:
         number of dwords we want to write
+    :type size: unsigned
 
-    :param uint32_t \*data:
+    :param data:
         saved commands
+    :type data: uint32_t \*
 
 .. _`radeon_ring_restore.description`:
 
@@ -290,20 +320,25 @@ radeon_ring_init
 
     init driver ring struct.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
-    :param unsigned ring_size:
+    :param ring_size:
         size of the ring
+    :type ring_size: unsigned
 
-    :param unsigned rptr_offs:
+    :param rptr_offs:
         offset of the rptr writeback location in the WB buffer
+    :type rptr_offs: unsigned
 
-    :param u32 nop:
+    :param nop:
         nop packet for this ring
+    :type nop: u32
 
 .. _`radeon_ring_init.description`:
 
@@ -322,11 +357,13 @@ radeon_ring_fini
 
     tear down the driver ring struct.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`radeon_ring_fini.description`:
 

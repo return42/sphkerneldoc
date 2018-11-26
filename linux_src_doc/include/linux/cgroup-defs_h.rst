@@ -10,8 +10,9 @@ cgroup_threadgroup_change_begin
 
     threadgroup exclusion for cgroups
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         target task
+    :type tsk: struct task_struct \*
 
 .. _`cgroup_threadgroup_change_begin.description`:
 
@@ -30,8 +31,9 @@ cgroup_threadgroup_change_end
 
     threadgroup exclusion for cgroups
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         target task
+    :type tsk: struct task_struct \*
 
 .. _`cgroup_threadgroup_change_end.description`:
 

@@ -10,11 +10,13 @@ ecryptfs_read_update_atime
 
     Linux filesystem encryption layer
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         *undescribed*
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*to:
+    :param to:
         *undescribed*
+    :type to: struct iov_iter \*
 
 .. _`ecryptfs_read_update_atime.description`:
 
@@ -49,11 +51,13 @@ ecryptfs_readdir
 
 .. c:function:: int ecryptfs_readdir(struct file *file, struct dir_context *ctx)
 
-    :param struct file \*file:
+    :param file:
         The eCryptfs directory file
+    :type file: struct file \*
 
-    :param struct dir_context \*ctx:
+    :param ctx:
         The actor to feed the entries to
+    :type ctx: struct dir_context \*
 
 .. _`ecryptfs_open`:
 
@@ -62,11 +66,13 @@ ecryptfs_open
 
 .. c:function:: int ecryptfs_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode specifying file to open
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         Structure to return filled in
+    :type file: struct file \*
 
 .. _`ecryptfs_open.description`:
 
@@ -84,11 +90,13 @@ ecryptfs_dir_open
 
 .. c:function:: int ecryptfs_dir_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode specifying file to open
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         Structure to return filled in
+    :type file: struct file \*
 
 .. _`ecryptfs_dir_open.description`:
 

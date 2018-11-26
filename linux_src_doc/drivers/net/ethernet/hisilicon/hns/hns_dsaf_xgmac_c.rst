@@ -10,11 +10,13 @@ hns_xgmac_tx_enable
 
     xgmac port tx enable \ ``drv``\ : mac driver \ ``value``\ : value of enable
 
-    :param struct mac_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct mac_driver \*
 
-    :param u32 value:
+    :param value:
         *undescribed*
+    :type value: u32
 
 .. _`hns_xgmac_rx_enable`:
 
@@ -25,11 +27,13 @@ hns_xgmac_rx_enable
 
     xgmac port rx enable \ ``drv``\ : mac driver \ ``value``\ : value of enable
 
-    :param struct mac_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct mac_driver \*
 
-    :param u32 value:
+    :param value:
         *undescribed*
+    :type value: u32
 
 .. _`hns_xgmac_lf_rf_insert`:
 
@@ -40,11 +44,13 @@ hns_xgmac_lf_rf_insert
 
     insert lf rf control about xgmac
 
-    :param struct mac_driver \*mac_drv:
+    :param mac_drv:
         mac driver
+    :type mac_drv: struct mac_driver \*
 
-    :param u32 mode:
+    :param mode:
         inserf rf or lf
+    :type mode: u32
 
 .. _`hns_xgmac_lf_rf_control_init`:
 
@@ -55,8 +61,9 @@ hns_xgmac_lf_rf_control_init
 
     initial the lf rf control register
 
-    :param struct mac_driver \*mac_drv:
+    :param mac_drv:
         mac driver
+    :type mac_drv: struct mac_driver \*
 
 .. _`hns_xgmac_enable`:
 
@@ -67,11 +74,13 @@ hns_xgmac_enable
 
     enable xgmac port \ ``drv``\ : mac driver \ ``mode``\ : mode of mac port
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param enum mac_commom_mode mode:
+    :param mode:
         *undescribed*
+    :type mode: enum mac_commom_mode
 
 .. _`hns_xgmac_disable`:
 
@@ -82,11 +91,13 @@ hns_xgmac_disable
 
     disable xgmac port \ ``mac_drv``\ : mac driver \ ``mode``\ : mode of mac port
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param enum mac_commom_mode mode:
+    :param mode:
         *undescribed*
+    :type mode: enum mac_commom_mode
 
 .. _`hns_xgmac_pma_fec_enable`:
 
@@ -97,14 +108,17 @@ hns_xgmac_pma_fec_enable
 
     xgmac PMA FEC enable \ ``drv``\ : mac driver \ ``tx_value``\ : tx value \ ``rx_value``\ : rx value return status
 
-    :param struct mac_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct mac_driver \*
 
-    :param u32 tx_value:
+    :param tx_value:
         *undescribed*
+    :type tx_value: u32
 
-    :param u32 rx_value:
+    :param rx_value:
         *undescribed*
+    :type rx_value: u32
 
 .. _`hns_xgmac_init`:
 
@@ -115,8 +129,9 @@ hns_xgmac_init
 
     initialize XGE \ ``mac_drv``\ : mac driver
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
 .. _`hns_xgmac_config_pad_and_crc`:
 
@@ -127,11 +142,13 @@ hns_xgmac_config_pad_and_crc
 
     set xgmac pad and crc enable the same time \ ``mac_drv``\ : mac driver \ ``newval``\ :enable of pad and crc
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param u8 newval:
+    :param newval:
         *undescribed*
+    :type newval: u8
 
 .. _`hns_xgmac_pausefrm_cfg`:
 
@@ -142,14 +159,17 @@ hns_xgmac_pausefrm_cfg
 
     set pause param about xgmac \ ``mac_drv``\ : mac driver \ ``newval``\ :enable of pad and crc
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param u32 rx_en:
+    :param rx_en:
         *undescribed*
+    :type rx_en: u32
 
-    :param u32 tx_en:
+    :param tx_en:
         *undescribed*
+    :type tx_en: u32
 
 .. _`hns_xgmac_set_rx_ignore_pause_frames`:
 
@@ -160,11 +180,13 @@ hns_xgmac_set_rx_ignore_pause_frames
 
     set rx pause param about xgmac \ ``mac_drv``\ : mac driver \ ``enable``\ :enable rx pause param
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param u32 enable:
+    :param enable:
         *undescribed*
+    :type enable: u32
 
 .. _`hns_xgmac_set_tx_auto_pause_frames`:
 
@@ -175,11 +197,13 @@ hns_xgmac_set_tx_auto_pause_frames
 
     set tx pause param about xgmac \ ``mac_drv``\ : mac driver \ ``enable``\ :enable tx pause param
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param u16 enable:
+    :param enable:
         *undescribed*
+    :type enable: u16
 
 .. _`hns_xgmac_config_max_frame_length`:
 
@@ -190,11 +214,13 @@ hns_xgmac_config_max_frame_length
 
     set xgmac max frame length \ ``mac_drv``\ : mac driver \ ``newval``\ :xgmac max frame length
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param u16 newval:
+    :param newval:
         *undescribed*
+    :type newval: u16
 
 .. _`hns_xgmac_free`:
 
@@ -205,8 +231,9 @@ hns_xgmac_free
 
     free xgmac driver \ ``mac_drv``\ : mac driver
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
 .. _`hns_xgmac_get_info`:
 
@@ -217,11 +244,13 @@ hns_xgmac_get_info
 
     get xgmac information \ ``mac_drv``\ : mac driver \ ``mac_info``\ :mac information
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param struct mac_info \*mac_info:
+    :param mac_info:
         *undescribed*
+    :type mac_info: struct mac_info \*
 
 .. _`hns_xgmac_get_pausefrm_cfg`:
 
@@ -232,14 +261,17 @@ hns_xgmac_get_pausefrm_cfg
 
     get xgmac pause param \ ``mac_drv``\ : mac driver \ ``rx_en``\ :xgmac rx pause enable \ ``tx_en``\ :xgmac tx pause enable
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param u32 \*rx_en:
+    :param rx_en:
         *undescribed*
+    :type rx_en: u32 \*
 
-    :param u32 \*tx_en:
+    :param tx_en:
         *undescribed*
+    :type tx_en: u32 \*
 
 .. _`hns_xgmac_get_link_status`:
 
@@ -250,11 +282,13 @@ hns_xgmac_get_link_status
 
     get xgmac link status \ ``mac_drv``\ : mac driver \ ``link_stat``\ : xgmac link stat
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param u32 \*link_stat:
+    :param link_stat:
         *undescribed*
+    :type link_stat: u32 \*
 
 .. _`hns_xgmac_get_regs`:
 
@@ -265,11 +299,13 @@ hns_xgmac_get_regs
 
     dump xgmac regs \ ``mac_drv``\ : mac driver \ ``cmd``\ :ethtool cmd \ ``data``\ :data for value of regs
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`hns_xgmac_get_stats`:
 
@@ -280,11 +316,13 @@ hns_xgmac_get_stats
 
     get xgmac statistic \ ``mac_drv``\ : mac driver \ ``data``\ :data for value of stats regs
 
-    :param void \*mac_drv:
+    :param mac_drv:
         *undescribed*
+    :type mac_drv: void \*
 
-    :param u64 \*data:
+    :param data:
         *undescribed*
+    :type data: u64 \*
 
 .. _`hns_xgmac_get_strings`:
 
@@ -295,11 +333,13 @@ hns_xgmac_get_strings
 
     get xgmac strings name \ ``stringset``\ : type of values in data \ ``data``\ :data for value of string name
 
-    :param u32 stringset:
+    :param stringset:
         *undescribed*
+    :type stringset: u32
 
-    :param u8 \*data:
+    :param data:
         *undescribed*
+    :type data: u8 \*
 
 .. _`hns_xgmac_get_sset_count`:
 
@@ -310,8 +350,9 @@ hns_xgmac_get_sset_count
 
     get xgmac string set count \ ``stringset``\ : type of values in data return xgmac string set count
 
-    :param int stringset:
+    :param stringset:
         *undescribed*
+    :type stringset: int
 
 .. _`hns_xgmac_get_regs_count`:
 
@@ -322,8 +363,9 @@ hns_xgmac_get_regs_count
 
     get xgmac regs count return xgmac regs count
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

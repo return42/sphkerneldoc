@@ -10,8 +10,9 @@ vga_default_device
 
     return the default VGA device, for vgacon
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vga_default_device.description`:
 
@@ -42,14 +43,17 @@ vga_get
 
     acquire & locks VGA resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device of the VGA card or NULL for the system default
+    :type pdev: struct pci_dev \*
 
-    :param unsigned int rsrc:
+    :param rsrc:
         bit mask of resources to acquire and lock
+    :type rsrc: unsigned int
 
-    :param int interruptible:
+    :param interruptible:
         blocking should be interruptible by signals ?
+    :type interruptible: int
 
 .. _`vga_get.description`:
 
@@ -97,11 +101,13 @@ vga_tryget
 
     try to acquire & lock legacy VGA resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci devivce of VGA card or NULL for system default
+    :type pdev: struct pci_dev \*
 
-    :param unsigned int rsrc:
+    :param rsrc:
         bit mask of resources to acquire and lock
+    :type rsrc: unsigned int
 
 .. _`vga_tryget.description`:
 
@@ -131,11 +137,13 @@ vga_put
 
     release lock on legacy VGA resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device of VGA card or NULL for system default
+    :type pdev: struct pci_dev \*
 
-    :param unsigned int rsrc:
+    :param rsrc:
         but mask of resource to release
+    :type rsrc: unsigned int
 
 .. _`vga_put.description`:
 
@@ -156,11 +164,13 @@ vga_client_register
 
     register or unregister a VGA arbitration client
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device of the VGA client
+    :type pdev: struct pci_dev \*
 
-    :param void \*cookie:
+    :param cookie:
         client cookie to be used in callbacks
+    :type cookie: void \*
 
     :param void (\*irq_set_state)(void \*cookie, bool state):
         If a client can't disable its GPUs VGA

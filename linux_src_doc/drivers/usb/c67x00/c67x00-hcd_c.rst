@@ -8,14 +8,17 @@ c67x00_hcd_irq
 
 .. c:function:: void c67x00_hcd_irq(struct c67x00_sie *sie, u16 int_status, u16 msg)
 
-    :param struct c67x00_sie \*sie:
+    :param sie:
         *undescribed*
+    :type sie: struct c67x00_sie \*
 
-    :param u16 int_status:
+    :param int_status:
         *undescribed*
+    :type int_status: u16
 
-    :param u16 msg:
+    :param msg:
         *undescribed*
+    :type msg: u16
 
 .. _`c67x00_hcd_irq.description`:
 
@@ -33,8 +36,9 @@ c67x00_hcd_start
 
     Host controller start hook
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         *undescribed*
+    :type hcd: struct usb_hcd \*
 
 .. _`c67x00_hcd_stop`:
 
@@ -45,8 +49,9 @@ c67x00_hcd_stop
 
     Host controller stop hook
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         *undescribed*
+    :type hcd: struct usb_hcd \*
 
 .. This file was automatic generated / don't edit.
 

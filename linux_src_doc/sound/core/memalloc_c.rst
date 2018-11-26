@@ -10,11 +10,13 @@ snd_malloc_pages
 
     allocate pages with the given size
 
-    :param size_t size:
+    :param size:
         the size to allocate in bytes
+    :type size: size_t
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         the allocation conditions, GFP_XXX
+    :type gfp_flags: gfp_t
 
 .. _`snd_malloc_pages.description`:
 
@@ -39,11 +41,13 @@ snd_free_pages
 
     release the pages
 
-    :param void \*ptr:
+    :param ptr:
         the buffer pointer to release
+    :type ptr: void \*
 
-    :param size_t size:
+    :param size:
         the allocated buffer size
+    :type size: size_t
 
 .. _`snd_free_pages.description`:
 
@@ -61,11 +65,13 @@ snd_malloc_dev_iram
 
     allocate memory from on-chip internal ram
 
-    :param struct snd_dma_buffer \*dmab:
+    :param dmab:
         buffer allocation record to store the allocated data
+    :type dmab: struct snd_dma_buffer \*
 
-    :param size_t size:
+    :param size:
         number of bytes to allocate from the iram
+    :type size: size_t
 
 .. _`snd_malloc_dev_iram.description`:
 
@@ -83,8 +89,9 @@ snd_free_dev_iram
 
     free allocated specific memory from on-chip internal ram
 
-    :param struct snd_dma_buffer \*dmab:
+    :param dmab:
         buffer allocation record to store the allocated data
+    :type dmab: struct snd_dma_buffer \*
 
 .. _`snd_dma_alloc_pages`:
 
@@ -95,17 +102,21 @@ snd_dma_alloc_pages
 
     allocate the buffer area according to the given type
 
-    :param int type:
+    :param type:
         the DMA buffer type
+    :type type: int
 
-    :param struct device \*device:
+    :param device:
         the device pointer
+    :type device: struct device \*
 
-    :param size_t size:
+    :param size:
         the buffer size to allocate
+    :type size: size_t
 
-    :param struct snd_dma_buffer \*dmab:
+    :param dmab:
         buffer allocation record to store the allocated data
+    :type dmab: struct snd_dma_buffer \*
 
 .. _`snd_dma_alloc_pages.description`:
 
@@ -132,17 +143,21 @@ snd_dma_alloc_pages_fallback
 
     allocate the buffer area according to the given type with fallback
 
-    :param int type:
+    :param type:
         the DMA buffer type
+    :type type: int
 
-    :param struct device \*device:
+    :param device:
         the device pointer
+    :type device: struct device \*
 
-    :param size_t size:
+    :param size:
         the buffer size to allocate
+    :type size: size_t
 
-    :param struct snd_dma_buffer \*dmab:
+    :param dmab:
         buffer allocation record to store the allocated data
+    :type dmab: struct snd_dma_buffer \*
 
 .. _`snd_dma_alloc_pages_fallback.description`:
 
@@ -171,8 +186,9 @@ snd_dma_free_pages
 
     release the allocated buffer
 
-    :param struct snd_dma_buffer \*dmab:
+    :param dmab:
         the buffer allocation record to release
+    :type dmab: struct snd_dma_buffer \*
 
 .. _`snd_dma_free_pages.description`:
 

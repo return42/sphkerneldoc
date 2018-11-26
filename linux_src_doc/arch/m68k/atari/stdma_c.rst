@@ -10,11 +10,13 @@ stdma_try_lock
 
     attempt to acquire ST DMA interrupt "lock"
 
-    :param irq_handler_t handler:
+    :param handler:
         interrupt handler to use after acquisition
+    :type handler: irq_handler_t
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`stdma_try_lock.description`:
 
@@ -32,8 +34,9 @@ stdma_is_locked_by
 
     allow lock holder to check whether it needs to release.
 
-    :param irq_handler_t handler:
+    :param handler:
         interrupt handler previously used to acquire lock.
+    :type handler: irq_handler_t
 
 .. _`stdma_is_locked_by.description`:
 

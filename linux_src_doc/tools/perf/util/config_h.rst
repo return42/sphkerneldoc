@@ -10,11 +10,13 @@ perf_config_sections__for_each_entry
 
     iterate thru all the sections
 
-    :param  list:
+    :param list:
         list_head instance to iterate
+    :type list: 
 
-    :param  section:
+    :param section:
         struct perf_config_section iterator
+    :type section: 
 
 .. _`perf_config_items__for_each_entry`:
 
@@ -25,11 +27,13 @@ perf_config_items__for_each_entry
 
     iterate thru all the items
 
-    :param  list:
+    :param list:
         list_head instance to iterate
+    :type list: 
 
-    :param  item:
+    :param item:
         struct perf_config_item iterator
+    :type item: 
 
 .. _`perf_config_set__for_each_entry`:
 
@@ -40,14 +44,17 @@ perf_config_set__for_each_entry
 
     iterate thru all the config section-item pairs
 
-    :param  set:
+    :param set:
         evlist instance to iterate
+    :type set: 
 
-    :param  section:
+    :param section:
         struct perf_config_section iterator
+    :type section: 
 
-    :param  item:
+    :param item:
         struct perf_config_item iterator
+    :type item: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ nx_crypto_ctx_sha256_init
 
     256 routines supporting the Power 7+ Nest Accelerators driver
 
-    :param struct crypto_tfm \*tfm:
+    :param tfm:
         *undescribed*
+    :type tfm: struct crypto_tfm \*
 
 .. _`nx_crypto_ctx_sha256_init.description`:
 

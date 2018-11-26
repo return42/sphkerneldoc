@@ -10,14 +10,17 @@ amdgpu_atif_call
 
     call an ATIF method
 
-    :param struct amdgpu_atif \*atif:
+    :param atif:
         *undescribed*
+    :type atif: struct amdgpu_atif \*
 
-    :param int function:
+    :param function:
         the ATIF function to execute
+    :type function: int
 
-    :param struct acpi_buffer \*params:
+    :param params:
         ATIF function params
+    :type params: struct acpi_buffer \*
 
 .. _`amdgpu_atif_call.description`:
 
@@ -36,11 +39,13 @@ amdgpu_atif_parse_notification
 
     parse supported notifications
 
-    :param struct amdgpu_atif_notifications \*n:
+    :param n:
         supported notifications struct
+    :type n: struct amdgpu_atif_notifications \*
 
-    :param u32 mask:
+    :param mask:
         supported notifications mask from ATIF
+    :type mask: u32
 
 .. _`amdgpu_atif_parse_notification.description`:
 
@@ -60,11 +65,13 @@ amdgpu_atif_parse_functions
 
     parse supported functions
 
-    :param struct amdgpu_atif_functions \*f:
+    :param f:
         supported functions struct
+    :type f: struct amdgpu_atif_functions \*
 
-    :param u32 mask:
+    :param mask:
         supported functions mask from ATIF
+    :type mask: u32
 
 .. _`amdgpu_atif_parse_functions.description`:
 
@@ -84,8 +91,9 @@ amdgpu_atif_verify_interface
 
     verify ATIF
 
-    :param struct amdgpu_atif \*atif:
+    :param atif:
         amdgpu atif struct
+    :type atif: struct amdgpu_atif \*
 
 .. _`amdgpu_atif_verify_interface.description`:
 
@@ -106,8 +114,9 @@ amdgpu_atif_get_notification_params
 
     determine notify configuration
 
-    :param struct amdgpu_atif \*atif:
+    :param atif:
         *undescribed*
+    :type atif: struct amdgpu_atif \*
 
 .. _`amdgpu_atif_get_notification_params.description`:
 
@@ -129,11 +138,13 @@ amdgpu_atif_get_sbios_requests
 
     get requested sbios event
 
-    :param struct amdgpu_atif \*atif:
+    :param atif:
         *undescribed*
+    :type atif: struct amdgpu_atif \*
 
-    :param struct atif_sbios_requests \*req:
+    :param req:
         atif sbios request struct
+    :type req: struct atif_sbios_requests \*
 
 .. _`amdgpu_atif_get_sbios_requests.description`:
 
@@ -154,11 +165,13 @@ amdgpu_atif_handler
 
     handle ATIF notify requests
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param struct acpi_bus_event \*event:
+    :param event:
         atif sbios request struct
+    :type event: struct acpi_bus_event \*
 
 .. _`amdgpu_atif_handler.description`:
 
@@ -167,7 +180,13 @@ Description
 
 Checks the acpi event and if it matches an atif event,
 handles it.
-Returns NOTIFY code
+
+.. _`amdgpu_atif_handler.return`:
+
+Return
+------
+
+NOTIFY_BAD or NOTIFY_DONE, depending on the event.
 
 .. _`amdgpu_atcs_call`:
 
@@ -178,14 +197,17 @@ amdgpu_atcs_call
 
     call an ATCS method
 
-    :param acpi_handle handle:
+    :param handle:
         acpi handle
+    :type handle: acpi_handle
 
-    :param int function:
+    :param function:
         the ATCS function to execute
+    :type function: int
 
-    :param struct acpi_buffer \*params:
+    :param params:
         ATCS function params
+    :type params: struct acpi_buffer \*
 
 .. _`amdgpu_atcs_call.description`:
 
@@ -204,11 +226,13 @@ amdgpu_atcs_parse_functions
 
     parse supported functions
 
-    :param struct amdgpu_atcs_functions \*f:
+    :param f:
         supported functions struct
+    :type f: struct amdgpu_atcs_functions \*
 
-    :param u32 mask:
+    :param mask:
         supported functions mask from ATCS
+    :type mask: u32
 
 .. _`amdgpu_atcs_parse_functions.description`:
 
@@ -228,11 +252,13 @@ amdgpu_atcs_verify_interface
 
     verify ATCS
 
-    :param acpi_handle handle:
+    :param handle:
         acpi handle
+    :type handle: acpi_handle
 
-    :param struct amdgpu_atcs \*atcs:
+    :param atcs:
         amdgpu atcs struct
+    :type atcs: struct amdgpu_atcs \*
 
 .. _`amdgpu_atcs_verify_interface.description`:
 
@@ -251,8 +277,9 @@ amdgpu_acpi_is_pcie_performance_request_supported
 
 .. c:function:: bool amdgpu_acpi_is_pcie_performance_request_supported(struct amdgpu_device *adev)
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_acpi_is_pcie_performance_request_supported.description`:
 
@@ -270,8 +297,9 @@ amdgpu_acpi_pcie_notify_device_ready
 
 .. c:function:: int amdgpu_acpi_pcie_notify_device_ready(struct amdgpu_device *adev)
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_acpi_pcie_notify_device_ready.description`:
 
@@ -289,14 +317,17 @@ amdgpu_acpi_pcie_performance_request
 
 .. c:function:: int amdgpu_acpi_pcie_performance_request(struct amdgpu_device *adev, u8 perf_req, bool advertise)
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u8 perf_req:
+    :param perf_req:
         requested perf level (pcie gen speed)
+    :type perf_req: u8
 
-    :param bool advertise:
+    :param advertise:
         set advertise caps flag if set
+    :type advertise: bool
 
 .. _`amdgpu_acpi_pcie_performance_request.description`:
 
@@ -316,14 +347,17 @@ amdgpu_acpi_event
 
     handle notify events
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
-    :param unsigned long val:
+    :param val:
         val
+    :type val: unsigned long
 
-    :param void \*data:
+    :param data:
         acpi event
+    :type data: void \*
 
 .. _`amdgpu_acpi_event.description`:
 
@@ -343,8 +377,9 @@ amdgpu_acpi_init
 
     init driver acpi support
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_acpi_init.description`:
 
@@ -364,8 +399,9 @@ amdgpu_acpi_fini
 
     tear down driver acpi support
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_acpi_fini.description`:
 

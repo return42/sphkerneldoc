@@ -10,32 +10,41 @@ ib_ud_header_init
 
     Initialize UD header structure
 
-    :param int payload_bytes:
+    :param payload_bytes:
         Length of packet payload
+    :type payload_bytes: int
 
-    :param int lrh_present:
+    :param lrh_present:
         specify if LRH is present
+    :type lrh_present: int
 
-    :param int eth_present:
+    :param eth_present:
         specify if Eth header is present
+    :type eth_present: int
 
-    :param int vlan_present:
+    :param vlan_present:
         packet is tagged vlan
+    :type vlan_present: int
 
-    :param int grh_present:
+    :param grh_present:
         GRH flag (if non-zero, GRH will be included)
+    :type grh_present: int
 
-    :param int ip_version:
+    :param ip_version:
         if non-zero, IP header, V4 or V6, will be included
+    :type ip_version: int
 
-    :param int udp_present:
+    :param udp_present:
         if non-zero, UDP header will be included
+    :type udp_present: int
 
-    :param int immediate_present:
+    :param immediate_present:
         specify if immediate data is present
+    :type immediate_present: int
 
-    :param struct ib_ud_header \*header:
+    :param header:
         Structure to initialize
+    :type header: struct ib_ud_header \*
 
 .. _`ib_ud_header_pack`:
 
@@ -46,11 +55,13 @@ ib_ud_header_pack
 
     Pack UD header struct into wire format
 
-    :param struct ib_ud_header \*header:
+    :param header:
         UD header struct
+    :type header: struct ib_ud_header \*
 
-    :param void \*buf:
+    :param buf:
         Buffer to pack into
+    :type buf: void \*
 
 .. _`ib_ud_header_pack.description`:
 
@@ -69,11 +80,13 @@ ib_ud_header_unpack
 
     Unpack UD header struct from wire format
 
-    :param void \*buf:
+    :param buf:
         Buffer to pack into
+    :type buf: void \*
 
-    :param struct ib_ud_header \*header:
+    :param header:
         UD header struct
+    :type header: struct ib_ud_header \*
 
 .. _`ib_ud_header_unpack.description`:
 

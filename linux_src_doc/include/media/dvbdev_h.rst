@@ -277,22 +277,27 @@ dvb_register_adapter
 
     Registers a new DVB adapter
 
-    :param struct dvb_adapter \*adap:
+    :param adap:
         pointer to struct dvb_adapter
+    :type adap: struct dvb_adapter \*
 
-    :param const char \*name:
+    :param name:
         Adapter's name
+    :type name: const char \*
 
-    :param struct module \*module:
+    :param module:
         initialized with THIS_MODULE at the caller
+    :type module: struct module \*
 
-    :param struct device \*device:
+    :param device:
         pointer to struct device that corresponds to the device driver
+    :type device: struct device \*
 
-    :param short \*adapter_nums:
+    :param adapter_nums:
         Array with a list of the numbers for \ ``dvb_register_adapter``\ ;
         to select among them. Typically, initialized with:
         DVB_DEFINE_MOD_OPT_ADAPTER_NR(adapter_nums)
+    :type adapter_nums: short \*
 
 .. _`dvb_unregister_adapter`:
 
@@ -303,8 +308,9 @@ dvb_unregister_adapter
 
     Unregisters a DVB adapter
 
-    :param struct dvb_adapter \*adap:
+    :param adap:
         pointer to struct dvb_adapter
+    :type adap: struct dvb_adapter \*
 
 .. _`dvb_register_device`:
 
@@ -315,25 +321,31 @@ dvb_register_device
 
     Registers a new DVB device
 
-    :param struct dvb_adapter \*adap:
+    :param adap:
         pointer to struct dvb_adapter
+    :type adap: struct dvb_adapter \*
 
-    :param struct dvb_device \*\*pdvbdev:
+    :param pdvbdev:
         pointer to the place where the new struct dvb_device will be
         stored
+    :type pdvbdev: struct dvb_device \*\*
 
-    :param const struct dvb_device \*template:
+    :param template:
         Template used to create \ :c:type:`struct pdvbdev <pdvbdev>`\ ;
+    :type template: const struct dvb_device \*
 
-    :param void \*priv:
+    :param priv:
         private data
+    :type priv: void \*
 
-    :param enum dvb_device_type type:
+    :param type:
         type of the device, as defined by \ :c:type:`enum dvb_device_type <dvb_device_type>`\ .
+    :type type: enum dvb_device_type
 
-    :param int demux_sink_pads:
+    :param demux_sink_pads:
         Number of demux outputs, to be used to create the TS
         outputs via the Media Controller.
+    :type demux_sink_pads: int
 
 .. _`dvb_remove_device`:
 
@@ -344,8 +356,9 @@ dvb_remove_device
 
     Remove a registered DVB device
 
-    :param struct dvb_device \*dvbdev:
+    :param dvbdev:
         pointer to struct dvb_device
+    :type dvbdev: struct dvb_device \*
 
 .. _`dvb_remove_device.description`:
 
@@ -363,8 +376,9 @@ dvb_free_device
 
     Free memory occupied by a DVB device.
 
-    :param struct dvb_device \*dvbdev:
+    :param dvbdev:
         pointer to struct dvb_device
+    :type dvbdev: struct dvb_device \*
 
 .. _`dvb_free_device.description`:
 
@@ -382,8 +396,9 @@ dvb_unregister_device
 
     Unregisters a DVB device
 
-    :param struct dvb_device \*dvbdev:
+    :param dvbdev:
         pointer to struct dvb_device
+    :type dvbdev: struct dvb_device \*
 
 .. _`dvb_unregister_device.description`:
 
@@ -404,11 +419,13 @@ dvb_create_media_graph
 
     Creates media graph for the Digital TV part of the device.
 
-    :param struct dvb_adapter \*adap:
+    :param adap:
         pointer to \ :c:type:`struct dvb_adapter <dvb_adapter>`\ 
+    :type adap: struct dvb_adapter \*
 
-    :param bool create_rf_connector:
+    :param create_rf_connector:
         if true, it creates the RF connector too
+    :type create_rf_connector: bool
 
 .. _`dvb_create_media_graph.description`:
 
@@ -431,11 +448,13 @@ dvb_register_media_controller
 
     registers a media controller at DVB adapter
 
-    :param struct dvb_adapter \*adap:
+    :param adap:
         pointer to \ :c:type:`struct dvb_adapter <dvb_adapter>`\ 
+    :type adap: struct dvb_adapter \*
 
-    :param struct media_device \*mdev:
+    :param mdev:
         pointer to \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: struct media_device \*
 
 .. _`dvb_get_media_controller`:
 
@@ -446,8 +465,9 @@ dvb_get_media_controller
 
     gets the associated media controller
 
-    :param struct dvb_adapter \*adap:
+    :param adap:
         pointer to \ :c:type:`struct dvb_adapter <dvb_adapter>`\ 
+    :type adap: struct dvb_adapter \*
 
 .. _`dvb_generic_open`:
 
@@ -458,11 +478,13 @@ dvb_generic_open
 
     Digital TV open function, used by DVB devices
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to \ :c:type:`struct inode <inode>`\ .
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         pointer to \ :c:type:`struct file <file>`\ .
+    :type file: struct file \*
 
 .. _`dvb_generic_open.description`:
 
@@ -481,11 +503,13 @@ dvb_generic_release
 
     Digital TV close function, used by DVB devices
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to \ :c:type:`struct inode <inode>`\ .
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         pointer to \ :c:type:`struct file <file>`\ .
+    :type file: struct file \*
 
 .. _`dvb_generic_release.description`:
 
@@ -504,14 +528,17 @@ dvb_generic_ioctl
 
     Digital TV close function, used by DVB devices
 
-    :param struct file \*file:
+    :param file:
         pointer to \ :c:type:`struct file <file>`\ .
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         Ioctl name.
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         Ioctl argument.
+    :type arg: unsigned long
 
 .. _`dvb_generic_ioctl.description`:
 
@@ -530,14 +557,17 @@ dvb_usercopy
 
     copies data from/to userspace memory when an ioctl is issued.
 
-    :param struct file \*file:
+    :param file:
         Pointer to struct \ :c:type:`struct file <file>`\ .
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         Ioctl name.
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         Ioctl argument.
+    :type arg: unsigned long
 
     :param int (\*func)(struct file \*file, unsigned int cmd, void \*arg):
         function that will actually handle the ioctl
@@ -560,22 +590,27 @@ dvb_module_probe
 
     helper routine to probe an I2C module
 
-    :param const char \*module_name:
+    :param module_name:
         Name of the I2C module to be probed
+    :type module_name: const char \*
 
-    :param const char \*name:
+    :param name:
         Optional name for the I2C module. Used for debug purposes.
         If \ ``NULL``\ , defaults to \ ``module_name``\ .
+    :type name: const char \*
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         pointer to \ :c:type:`struct i2c_adapter <i2c_adapter>`\  that describes the I2C adapter where
         the module will be bound.
+    :type adap: struct i2c_adapter \*
 
-    :param unsigned char addr:
+    :param addr:
         I2C address of the adapter, in 7-bit notation.
+    :type addr: unsigned char
 
-    :param void \*platform_data:
+    :param platform_data:
         Platform data to be passed to the I2C module probed.
+    :type platform_data: void \*
 
 .. _`dvb_module_probe.description`:
 
@@ -609,9 +644,10 @@ dvb_module_release
 
     releases an I2C device allocated with \ :c:func:`dvb_module_probe`\ .
 
-    :param struct i2c_client \*client:
+    :param client:
         pointer to \ :c:type:`struct i2c_client <i2c_client>`\  with the I2C client to be released.
         can be \ ``NULL``\ .
+    :type client: struct i2c_client \*
 
 .. _`dvb_module_release.description`:
 
@@ -630,8 +666,9 @@ dvb_attach
 
     attaches a DVB frontend into the DVB core.
 
-    :param  FUNCTION:
+    :param FUNCTION:
         function on a frontend module to be called.
+    :type FUNCTION: 
 
 .. _`dvb_attach.description`:
 
@@ -659,8 +696,9 @@ dvb_detach
 
     detaches a DVB frontend loaded via \ :c:func:`dvb_attach`\ 
 
-    :param  FUNC:
+    :param FUNC:
         attach function
+    :type FUNC: 
 
 .. _`dvb_detach.description`:
 

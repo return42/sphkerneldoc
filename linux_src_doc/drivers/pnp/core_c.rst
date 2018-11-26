@@ -10,8 +10,9 @@ pnp_register_protocol
 
     adds a pnp protocol to the pnp layer
 
-    :param struct pnp_protocol \*protocol:
+    :param protocol:
         pointer to the corresponding pnp_protocol structure
+    :type protocol: struct pnp_protocol \*
 
 .. _`pnp_register_protocol.description`:
 
@@ -29,8 +30,9 @@ pnp_unregister_protocol
 
     removes a pnp protocol from the pnp layer
 
-    :param struct pnp_protocol \*protocol:
+    :param protocol:
         pointer to the corresponding pnp_protocol structure
+    :type protocol: struct pnp_protocol \*
 
 .. This file was automatic generated / don't edit.
 

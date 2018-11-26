@@ -10,11 +10,13 @@ netlbl_mgmt_add_common
 
     Handle an ADD message
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_mgmt_add_common.description`:
 
@@ -34,11 +36,13 @@ netlbl_mgmt_listentry
 
     List a NetLabel/LSM domain map entry
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct netlbl_dom_map \*entry:
+    :param entry:
         the map entry
+    :type entry: struct netlbl_dom_map \*
 
 .. _`netlbl_mgmt_listentry.description`:
 
@@ -58,11 +62,13 @@ netlbl_mgmt_add
 
     Handle an ADD message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_mgmt_add.description`:
 
@@ -82,11 +88,13 @@ netlbl_mgmt_remove
 
     Handle a REMOVE message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_mgmt_remove.description`:
 
@@ -105,11 +113,13 @@ netlbl_mgmt_listall_cb
 
     \ :c:func:`netlbl_domhsh_walk`\  callback for LISTALL
 
-    :param struct netlbl_dom_map \*entry:
+    :param entry:
         the domain mapping hash table entry
+    :type entry: struct netlbl_dom_map \*
 
-    :param void \*arg:
+    :param arg:
         the netlbl_domhsh_walk_arg structure
+    :type arg: void \*
 
 .. _`netlbl_mgmt_listall_cb.description`:
 
@@ -130,11 +140,13 @@ netlbl_mgmt_listall
 
     Handle a LISTALL message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         the NETLINK callback
+    :type cb: struct netlink_callback \*
 
 .. _`netlbl_mgmt_listall.description`:
 
@@ -154,11 +166,13 @@ netlbl_mgmt_adddef
 
     Handle an ADDDEF message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_mgmt_adddef.description`:
 
@@ -177,11 +191,13 @@ netlbl_mgmt_removedef
 
     Handle a REMOVEDEF message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_mgmt_removedef.description`:
 
@@ -200,11 +216,13 @@ netlbl_mgmt_listdef
 
     Handle a LISTDEF message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_mgmt_listdef.description`:
 
@@ -224,14 +242,17 @@ netlbl_mgmt_protocols_cb
 
     Write an individual PROTOCOL message response
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb to write to
+    :type skb: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         the NETLINK callback
+    :type cb: struct netlink_callback \*
 
-    :param u32 protocol:
+    :param protocol:
         the NetLabel protocol to use in the message
+    :type protocol: u32
 
 .. _`netlbl_mgmt_protocols_cb.description`:
 
@@ -251,11 +272,13 @@ netlbl_mgmt_protocols
 
     Handle a PROTOCOLS message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         the NETLINK callback
+    :type cb: struct netlink_callback \*
 
 .. _`netlbl_mgmt_protocols.description`:
 
@@ -273,11 +296,13 @@ netlbl_mgmt_version
 
     Handle a VERSION message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_mgmt_version.description`:
 
@@ -296,8 +321,9 @@ netlbl_mgmt_genl_init
 
     Register the NetLabel management component
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`netlbl_mgmt_genl_init.description`:
 

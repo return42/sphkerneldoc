@@ -8,8 +8,9 @@ NORMALIZE_PUT_POINTER
 
 .. c:function::  NORMALIZE_PUT_POINTER( x)
 
-    :param  x:
+    :param x:
         *undescribed*
+    :type x: 
 
 .. _`normalize_put_pointer.description`:
 
@@ -26,8 +27,9 @@ NORMALIZE_EVENT_POINTER
 
 .. c:function::  NORMALIZE_EVENT_POINTER( x)
 
-    :param  x:
+    :param x:
         *undescribed*
+    :type x: 
 
 .. _`normalize_event_pointer.description`:
 
@@ -44,8 +46,9 @@ NORMALIZE_GET_POINTER
 
 .. c:function::  NORMALIZE_GET_POINTER( x)
 
-    :param  x:
+    :param x:
         *undescribed*
+    :type x: 
 
 .. _`normalize_get_pointer.description`:
 
@@ -62,8 +65,9 @@ NORMALIZE_GET_POINTER_CYCLE_BIT
 
 .. c:function::  NORMALIZE_GET_POINTER_CYCLE_BIT( x)
 
-    :param  x:
+    :param x:
         *undescribed*
+    :type x: 
 
 .. _`normalize_get_pointer_cycle_bit.description`:
 
@@ -80,8 +84,9 @@ COMPLETION_QUEUE_CYCLE_BIT
 
 .. c:function::  COMPLETION_QUEUE_CYCLE_BIT( x)
 
-    :param  x:
+    :param x:
         *undescribed*
+    :type x: 
 
 .. _`completion_queue_cycle_bit.description`:
 
@@ -99,12 +104,14 @@ isci_host_start_complete
 
     This function is called by the core library, through the ISCI Module, to indicate controller start status.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
-    :param enum sci_status completion_status:
+    :param completion_status:
         This parameter specifies the completion status from the
         core library.
+    :type completion_status: enum sci_status
 
 .. _`sci_controller_get_suggested_start_timeout`:
 
@@ -115,8 +122,9 @@ sci_controller_get_suggested_start_timeout
 
     This method returns the suggested \ :c:func:`sci_controller_start`\  timeout amount.  The user is free to use any timeout value, but this method provides the suggested minimum start timeout value.  The returned value is based upon empirical information determined as a result of interoperability testing.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
 .. _`sci_controller_get_suggested_start_timeout.description`:
 
@@ -135,8 +143,9 @@ sci_controller_start_next_phy
 
     start phy
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
 .. _`sci_controller_start_next_phy.description`:
 
@@ -156,8 +165,9 @@ isci_host_completion_routine
 
     This function is the delayed service routine that calls the sci core library's completion handler. It's scheduled as a tasklet from the interrupt service routine when interrupts in use, or set as the timeout function in polled mode.
 
-    :param unsigned long data:
+    :param data:
         This parameter specifies the ISCI host object
+    :type data: unsigned long
 
 .. _`sci_controller_stop`:
 
@@ -168,12 +178,14 @@ sci_controller_stop
 
     This method will stop an individual controller object.This method will invoke the associated user callback upon completion.  The completion callback is called when the following
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
-    :param u32 timeout:
+    :param timeout:
         This parameter specifies the number of milliseconds in which the
         stop operation should complete.
+    :type timeout: u32
 
 .. _`sci_controller_stop.conditions-are-met`:
 
@@ -205,8 +217,9 @@ sci_controller_reset
 
     This method will reset the supplied core controller regardless of the state of said controller.  This operation is considered destructive.  In other words, all current operations are wiped out.  No IO completions for outstanding devices occur.  Outstanding IO requests are not aborted or completed at the actual remote device.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
 .. _`sci_controller_reset.description`:
 
@@ -226,8 +239,9 @@ isci_host_deinit
 
     shutdown frame reception and dma
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         host to take down
+    :type ihost: struct isci_host \*
 
 .. _`isci_host_deinit.description`:
 
@@ -250,19 +264,22 @@ sci_controller_set_interrupt_coalescence
 
     This method allows the user to configure the interrupt coalescence.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
-    :param u32 coalesce_number:
+    :param coalesce_number:
         Used to control the number of entries in the Completion
         Queue before an interrupt is generated. If the number of entries exceed
         this number, an interrupt will be generated. The valid range of the input
         is [0, 256]. A setting of 0 results in coalescing being disabled.
+    :type coalesce_number: u32
 
-    :param u32 coalesce_timeout:
+    :param coalesce_timeout:
         Timeout value in microseconds. The valid range of the
         input is [0, 2700000] . A setting of 0 is allowed and results in no
         interrupt coalescing timeout.
+    :type coalesce_timeout: u32
 
 .. _`sci_controller_set_interrupt_coalescence.description`:
 
@@ -282,8 +299,9 @@ isci_host_init
 
     (re-)initialize hardware and internal (private) state
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         host to init
+    :type ihost: struct isci_host \*
 
 .. _`isci_host_init.description`:
 
@@ -303,15 +321,18 @@ sci_controller_allocate_remote_node_context
 
     context space for use. This method can fail if there are no more remote node index available.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
-    :param u16 \*node_id:
+    :param node_id:
         This is the remote node id that is assinged to the device if one
         is available
+    :type node_id: u16 \*
 
 .. _`sci_controller_allocate_remote_node_context.description`:
 
@@ -330,34 +351,40 @@ sci_controller_complete_io
 
     This method will perform core specific completion operations for an IO request.  After this method is invoked, the user should consider the IO request as invalid until it is properly reused (i.e. re-constructed).
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         The handle to the controller object for which to complete the
         IO request.
+    :type ihost: struct isci_host \*
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         The handle to the remote device object for which to complete
         the IO request.
+    :type idev: struct isci_remote_device \*
 
-    :param struct isci_request \*ireq:
+    :param ireq:
         the handle to the io request object to complete.
+    :type ireq: struct isci_request \*
 
 .. _`sci_controller_start_task`:
 
 sci_controller_start_task
 =========================
 
-.. c:function:: enum sci_task_status sci_controller_start_task(struct isci_host *ihost, struct isci_remote_device *idev, struct isci_request *ireq)
+.. c:function:: enum sci_status sci_controller_start_task(struct isci_host *ihost, struct isci_remote_device *idev, struct isci_request *ireq)
 
     This method is called by the SCIC user to send/start a framework task management request.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
-    :param struct isci_request \*ireq:
+    :param ireq:
         *undescribed*
+    :type ireq: struct isci_request \*
 
 .. This file was automatic generated / don't edit.
 

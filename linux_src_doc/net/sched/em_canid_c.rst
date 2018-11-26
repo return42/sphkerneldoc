@@ -10,8 +10,9 @@ em_canid_get_id
 
     Extracts Can ID out of the sk_buff structure.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. This file was automatic generated / don't edit.
 

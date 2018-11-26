@@ -72,8 +72,9 @@ rt2x00queue_map_txskb
 
     Map a skb into DMA for TX purposes.
 
-    :param struct queue_entry \*entry:
+    :param entry:
         Pointer to \ :c:type:`struct queue_entry <queue_entry>`\ 
+    :type entry: struct queue_entry \*
 
 .. _`rt2x00queue_map_txskb.description`:
 
@@ -91,8 +92,9 @@ rt2x00queue_unmap_skb
 
     Unmap a skb from DMA.
 
-    :param struct queue_entry \*entry:
+    :param entry:
         Pointer to \ :c:type:`struct queue_entry <queue_entry>`\ 
+    :type entry: struct queue_entry \*
 
 .. _`rt2x00queue_get_tx_queue`:
 
@@ -103,11 +105,13 @@ rt2x00queue_get_tx_queue
 
     Convert tx queue index to queue pointer
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const enum data_queue_qid queue:
+    :param queue:
         rt2x00 queue index (see \ :c:type:`enum data_queue_qid <data_queue_qid>`\ ).
+    :type queue: const enum data_queue_qid
 
 .. _`rt2x00queue_get_tx_queue.description`:
 
@@ -125,11 +129,13 @@ rt2x00queue_get_entry
 
     Get queue entry where the given index points to.
 
-    :param struct data_queue \*queue:
+    :param queue:
         Pointer to \ :c:type:`struct data_queue <data_queue>`\  from where we obtain the entry.
+    :type queue: struct data_queue \*
 
-    :param enum queue_index index:
+    :param index:
         Index identifier for obtaining the correct index.
+    :type index: enum queue_index
 
 .. _`rt2x00queue_pause_queue`:
 
@@ -140,8 +146,9 @@ rt2x00queue_pause_queue
 
     Pause a data queue
 
-    :param struct data_queue \*queue:
+    :param queue:
         Pointer to \ :c:type:`struct data_queue <data_queue>`\ .
+    :type queue: struct data_queue \*
 
 .. _`rt2x00queue_pause_queue.description`:
 
@@ -161,8 +168,9 @@ rt2x00queue_unpause_queue
 
     unpause a data queue
 
-    :param struct data_queue \*queue:
+    :param queue:
         Pointer to \ :c:type:`struct data_queue <data_queue>`\ .
+    :type queue: struct data_queue \*
 
 .. _`rt2x00queue_unpause_queue.description`:
 
@@ -181,8 +189,9 @@ rt2x00queue_start_queue
 
     Start a data queue
 
-    :param struct data_queue \*queue:
+    :param queue:
         Pointer to \ :c:type:`struct data_queue <data_queue>`\ .
+    :type queue: struct data_queue \*
 
 .. _`rt2x00queue_start_queue.description`:
 
@@ -200,8 +209,9 @@ rt2x00queue_stop_queue
 
     Halt a data queue
 
-    :param struct data_queue \*queue:
+    :param queue:
         Pointer to \ :c:type:`struct data_queue <data_queue>`\ .
+    :type queue: struct data_queue \*
 
 .. _`rt2x00queue_stop_queue.description`:
 
@@ -219,11 +229,13 @@ rt2x00queue_flush_queue
 
     Flush a data queue
 
-    :param struct data_queue \*queue:
+    :param queue:
         Pointer to \ :c:type:`struct data_queue <data_queue>`\ .
+    :type queue: struct data_queue \*
 
-    :param bool drop:
+    :param drop:
         True to drop all pending frames.
+    :type drop: bool
 
 .. _`rt2x00queue_flush_queue.description`:
 
@@ -242,8 +254,9 @@ rt2x00queue_start_queues
 
     Start all data queues
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
 .. _`rt2x00queue_start_queues.description`:
 
@@ -261,8 +274,9 @@ rt2x00queue_stop_queues
 
     Halt all data queues
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
 .. _`rt2x00queue_stop_queues.description`:
 
@@ -281,11 +295,13 @@ rt2x00queue_flush_queues
 
     Flush all data queues
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param bool drop:
+    :param drop:
         True to drop all pending frames.
+    :type drop: bool
 
 .. _`rt2x00queue_flush_queues.description`:
 
@@ -304,14 +320,17 @@ rt2x00debug_dump_frame
 
     Dump a frame to userspace through debugfs.
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param enum rt2x00_dump_type type:
+    :param type:
         The type of frame that is being dumped.
+    :type type: enum rt2x00_dump_type
 
-    :param struct queue_entry \*entry:
+    :param entry:
         The queue entry containing the frame to be dumped.
+    :type entry: struct queue_entry \*
 
 .. This file was automatic generated / don't edit.
 

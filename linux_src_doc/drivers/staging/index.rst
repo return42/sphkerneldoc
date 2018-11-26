@@ -10,17 +10,17 @@ staging
     android/index
     clocking-wizard/index
     comedi/index
-    dgnc/index
     fbtft/index
     fsl-dpaa2/index
-    fsl-mc/index
     fwserial/index
+    gasket/index
     greybus/index
     iio/index
     ks7010/index
     media/index
     most/index
     mt29f_spinand/index
+    mt7621-pci/index
     nvec/index
     octeon/index
     octeon-usb/index
@@ -31,7 +31,6 @@ staging
     rtl8723bs/index
     rtlwifi/index
     rts5208/index
-    skein/index
     vboxvideo/index
     vc04_services/index
     vt6655/index

@@ -10,11 +10,13 @@ devlink_alloc
 
     Allocate new devlink instance resources
 
-    :param const struct devlink_ops \*ops:
+    :param ops:
         ops
+    :type ops: const struct devlink_ops \*
 
-    :param size_t priv_size:
+    :param priv_size:
         size of user private data
+    :type priv_size: size_t
 
 .. _`devlink_alloc.description`:
 
@@ -33,11 +35,13 @@ devlink_register
 
     Register devlink instance
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`devlink_unregister`:
 
@@ -48,8 +52,9 @@ devlink_unregister
 
     Unregister devlink instance
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
 .. _`devlink_free`:
 
@@ -60,8 +65,9 @@ devlink_free
 
     Free devlink instance resources
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
 .. _`devlink_port_register`:
 
@@ -72,15 +78,18 @@ devlink_port_register
 
     Register devlink port
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param struct devlink_port \*devlink_port:
+    :param devlink_port:
         devlink port
         \ ``port_index``\ 
+    :type devlink_port: struct devlink_port \*
 
-    :param unsigned int port_index:
+    :param port_index:
         *undescribed*
+    :type port_index: unsigned int
 
 .. _`devlink_port_register.description`:
 
@@ -102,8 +111,9 @@ devlink_port_unregister
 
     Unregister devlink port
 
-    :param struct devlink_port \*devlink_port:
+    :param devlink_port:
         devlink port
+    :type devlink_port: struct devlink_port \*
 
 .. _`devlink_port_type_eth_set`:
 
@@ -114,11 +124,13 @@ devlink_port_type_eth_set
 
     Set port type to Ethernet
 
-    :param struct devlink_port \*devlink_port:
+    :param devlink_port:
         devlink port
+    :type devlink_port: struct devlink_port \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         related netdevice
+    :type netdev: struct net_device \*
 
 .. _`devlink_port_type_ib_set`:
 
@@ -129,11 +141,13 @@ devlink_port_type_ib_set
 
     Set port type to InfiniBand
 
-    :param struct devlink_port \*devlink_port:
+    :param devlink_port:
         devlink port
+    :type devlink_port: struct devlink_port \*
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         related IB device
+    :type ibdev: struct ib_device \*
 
 .. _`devlink_port_type_clear`:
 
@@ -144,8 +158,9 @@ devlink_port_type_clear
 
     Clear port type
 
-    :param struct devlink_port \*devlink_port:
+    :param devlink_port:
         devlink port
+    :type devlink_port: struct devlink_port \*
 
 .. _`devlink_port_attrs_set`:
 
@@ -156,22 +171,27 @@ devlink_port_attrs_set
 
     Set port attributes
 
-    :param struct devlink_port \*devlink_port:
+    :param devlink_port:
         devlink port
+    :type devlink_port: struct devlink_port \*
 
-    :param enum devlink_port_flavour flavour:
+    :param flavour:
         flavour of the port
+    :type flavour: enum devlink_port_flavour
 
-    :param u32 port_number:
+    :param port_number:
         number of the port that is facing user, for example
         the front panel port number
+    :type port_number: u32
 
-    :param bool split:
+    :param split:
         indicates if this is split port
+    :type split: bool
 
-    :param u32 split_subport_number:
+    :param split_subport_number:
         if the port is split, this is the number
         of subport.
+    :type split_subport_number: u32
 
 .. _`devlink_dpipe_headers_register`:
 
@@ -182,11 +202,13 @@ devlink_dpipe_headers_register
 
     register dpipe headers
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param struct devlink_dpipe_headers \*dpipe_headers:
+    :param dpipe_headers:
         dpipe header array
+    :type dpipe_headers: struct devlink_dpipe_headers \*
 
 .. _`devlink_dpipe_headers_register.description`:
 
@@ -204,8 +226,9 @@ devlink_dpipe_headers_unregister
 
     unregister dpipe headers
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
 .. _`devlink_dpipe_headers_unregister.description`:
 
@@ -223,11 +246,13 @@ devlink_dpipe_table_counter_enabled
 
     check if counter allocation required
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param const char \*table_name:
+    :param table_name:
         tables name
+    :type table_name: const char \*
 
 .. _`devlink_dpipe_table_counter_enabled.description`:
 
@@ -251,20 +276,25 @@ devlink_dpipe_table_register
 
     register dpipe table
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param const char \*table_name:
+    :param table_name:
         table name
+    :type table_name: const char \*
 
-    :param struct devlink_dpipe_table_ops \*table_ops:
+    :param table_ops:
         table ops
+    :type table_ops: struct devlink_dpipe_table_ops \*
 
-    :param void \*priv:
+    :param priv:
         priv
+    :type priv: void \*
 
-    :param bool counter_control_extern:
+    :param counter_control_extern:
         external control for counters
+    :type counter_control_extern: bool
 
 .. _`devlink_dpipe_table_unregister`:
 
@@ -275,11 +305,13 @@ devlink_dpipe_table_unregister
 
     unregister dpipe table
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param const char \*table_name:
+    :param table_name:
         table name
+    :type table_name: const char \*
 
 .. _`devlink_resource_register`:
 
@@ -290,23 +322,29 @@ devlink_resource_register
 
     devlink resource register
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param const char \*resource_name:
+    :param resource_name:
         resource's name
+    :type resource_name: const char \*
 
-    :param u64 resource_size:
+    :param resource_size:
         resource's size
+    :type resource_size: u64
 
-    :param u64 resource_id:
+    :param resource_id:
         resource's id
+    :type resource_id: u64
 
-    :param u64 parent_resource_id:
+    :param parent_resource_id:
         *undescribed*
+    :type parent_resource_id: u64
 
-    :param const struct devlink_resource_size_params \*size_params:
+    :param size_params:
         *undescribed*
+    :type size_params: const struct devlink_resource_size_params \*
 
 .. _`devlink_resources_unregister`:
 
@@ -317,11 +355,13 @@ devlink_resources_unregister
 
     free all resources
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param struct devlink_resource \*resource:
+    :param resource:
         resource
+    :type resource: struct devlink_resource \*
 
 .. _`devlink_resource_size_get`:
 
@@ -332,14 +372,17 @@ devlink_resource_size_get
 
     get and update size
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param u64 resource_id:
+    :param resource_id:
         the requested resource id
+    :type resource_id: u64
 
-    :param u64 \*p_resource_size:
+    :param p_resource_size:
         ptr to update
+    :type p_resource_size: u64 \*
 
 .. _`devlink_dpipe_table_resource_set`:
 
@@ -350,17 +393,21 @@ devlink_dpipe_table_resource_set
 
     set the resource id
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param const char \*table_name:
+    :param table_name:
         table name
+    :type table_name: const char \*
 
-    :param u64 resource_id:
+    :param resource_id:
         resource id
+    :type resource_id: u64
 
-    :param u64 resource_units:
+    :param resource_units:
         number of resource's units consumed per table's entry
+    :type resource_units: u64
 
 .. _`devlink_resource_occ_get_register`:
 
@@ -371,17 +418,21 @@ devlink_resource_occ_get_register
 
     register occupancy getter
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param u64 resource_id:
+    :param resource_id:
         resource id
+    :type resource_id: u64
 
-    :param devlink_resource_occ_get_t \*occ_get:
+    :param occ_get:
         occupancy getter callback
+    :type occ_get: devlink_resource_occ_get_t \*
 
-    :param void \*occ_get_priv:
+    :param occ_get_priv:
         occupancy getter callback priv
+    :type occ_get_priv: void \*
 
 .. _`devlink_resource_occ_get_unregister`:
 
@@ -392,11 +443,253 @@ devlink_resource_occ_get_unregister
 
     unregister occupancy getter
 
-    :param struct devlink \*devlink:
+    :param devlink:
         devlink
+    :type devlink: struct devlink \*
 
-    :param u64 resource_id:
+    :param resource_id:
         resource id
+    :type resource_id: u64
+
+.. _`devlink_params_register`:
+
+devlink_params_register
+=======================
+
+.. c:function:: int devlink_params_register(struct devlink *devlink, const struct devlink_param *params, size_t params_count)
+
+    register configuration parameters
+
+    :param devlink:
+        devlink
+    :type devlink: struct devlink \*
+
+    :param params:
+        configuration parameters array
+    :type params: const struct devlink_param \*
+
+    :param params_count:
+        number of parameters provided
+    :type params_count: size_t
+
+.. _`devlink_params_register.description`:
+
+Description
+-----------
+
+Register the configuration parameters supported by the driver.
+
+.. _`devlink_params_unregister`:
+
+devlink_params_unregister
+=========================
+
+.. c:function:: void devlink_params_unregister(struct devlink *devlink, const struct devlink_param *params, size_t params_count)
+
+    unregister configuration parameters
+
+    :param devlink:
+        devlink
+    :type devlink: struct devlink \*
+
+    :param params:
+        configuration parameters to unregister
+    :type params: const struct devlink_param \*
+
+    :param params_count:
+        number of parameters provided
+    :type params_count: size_t
+
+.. _`devlink_param_driverinit_value_get`:
+
+devlink_param_driverinit_value_get
+==================================
+
+.. c:function:: int devlink_param_driverinit_value_get(struct devlink *devlink, u32 param_id, union devlink_param_value *init_val)
+
+    get configuration parameter value for driver initializing
+
+    :param devlink:
+        devlink
+    :type devlink: struct devlink \*
+
+    :param param_id:
+        parameter ID
+    :type param_id: u32
+
+    :param init_val:
+        value of parameter in driverinit configuration mode
+    :type init_val: union devlink_param_value \*
+
+.. _`devlink_param_driverinit_value_get.description`:
+
+Description
+-----------
+
+This function should be used by the driver to get driverinit
+configuration for initialization after reload command.
+
+.. _`devlink_param_driverinit_value_set`:
+
+devlink_param_driverinit_value_set
+==================================
+
+.. c:function:: int devlink_param_driverinit_value_set(struct devlink *devlink, u32 param_id, union devlink_param_value init_val)
+
+    set value of configuration parameter for driverinit configuration mode
+
+    :param devlink:
+        devlink
+    :type devlink: struct devlink \*
+
+    :param param_id:
+        parameter ID
+    :type param_id: u32
+
+    :param init_val:
+        value of parameter to set for driverinit configuration mode
+    :type init_val: union devlink_param_value
+
+.. _`devlink_param_driverinit_value_set.description`:
+
+Description
+-----------
+
+This function should be used by the driver to set driverinit
+configuration mode default value.
+
+.. _`devlink_param_value_changed`:
+
+devlink_param_value_changed
+===========================
+
+.. c:function:: void devlink_param_value_changed(struct devlink *devlink, u32 param_id)
+
+    notify devlink on a parameter's value change. Should be called by the driver right after the change.
+
+    :param devlink:
+        devlink
+    :type devlink: struct devlink \*
+
+    :param param_id:
+        parameter ID
+    :type param_id: u32
+
+.. _`devlink_param_value_changed.description`:
+
+Description
+-----------
+
+This function should be used by the driver to notify devlink on value
+change, excluding driverinit configuration mode.
+For driverinit configuration mode driver should use the function
+\ :c:func:`devlink_param_driverinit_value_set`\  instead.
+
+.. _`devlink_param_value_str_fill`:
+
+devlink_param_value_str_fill
+============================
+
+.. c:function:: void devlink_param_value_str_fill(union devlink_param_value *dst_val, const char *src)
+
+    Safely fill-up the string preventing from overflow of the preallocated buffer
+
+    :param dst_val:
+        destination devlink_param_value
+    :type dst_val: union devlink_param_value \*
+
+    :param src:
+        source buffer
+    :type src: const char \*
+
+.. _`devlink_region_create`:
+
+devlink_region_create
+=====================
+
+.. c:function:: struct devlink_region *devlink_region_create(struct devlink *devlink, const char *region_name, u32 region_max_snapshots, u64 region_size)
+
+    create a new address region
+
+    :param devlink:
+        devlink
+    :type devlink: struct devlink \*
+
+    :param region_name:
+        region name
+    :type region_name: const char \*
+
+    :param region_max_snapshots:
+        Maximum supported number of snapshots for region
+    :type region_max_snapshots: u32
+
+    :param region_size:
+        size of region
+    :type region_size: u64
+
+.. _`devlink_region_destroy`:
+
+devlink_region_destroy
+======================
+
+.. c:function:: void devlink_region_destroy(struct devlink_region *region)
+
+    destroy address region
+
+    :param region:
+        devlink region to destroy
+    :type region: struct devlink_region \*
+
+.. _`devlink_region_shapshot_id_get`:
+
+devlink_region_shapshot_id_get
+==============================
+
+.. c:function:: u32 devlink_region_shapshot_id_get(struct devlink *devlink)
+
+    get snapshot ID
+
+    :param devlink:
+        devlink
+    :type devlink: struct devlink \*
+
+.. _`devlink_region_shapshot_id_get.description`:
+
+Description
+-----------
+
+This callback should be called when adding a new snapshot,
+Driver should use the same id for multiple snapshots taken
+on multiple regions at the same time/by the same trigger.
+
+.. _`devlink_region_snapshot_create`:
+
+devlink_region_snapshot_create
+==============================
+
+.. c:function:: int devlink_region_snapshot_create(struct devlink_region *region, u64 data_len, u8 *data, u32 snapshot_id, devlink_snapshot_data_dest_t *data_destructor)
+
+    create a new snapshot This will add a new snapshot of a region. The snapshot will be stored on the region struct and can be accessed from devlink. This is useful for future analyses of snapshots. Multiple snapshots can be created on a region. The \ ``snapshot_id``\  should be obtained using the getter function.
+
+    :param region:
+        *undescribed*
+    :type region: struct devlink_region \*
+
+    :param data_len:
+        size of snapshot data
+    :type data_len: u64
+
+    :param data:
+        snapshot data
+    :type data: u8 \*
+
+    :param snapshot_id:
+        snapshot id to be created
+    :type snapshot_id: u32
+
+    :param data_destructor:
+        pointer to destructor function to free data
+    :type data_destructor: devlink_snapshot_data_dest_t \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ n_tracesink_open
 
     Called when a tty is opened by a SW entity.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device to the ldisc.
+    :type tty: struct tty_struct \*
 
 .. _`n_tracesink_open.return`:
 
@@ -41,8 +42,9 @@ n_tracesink_close
 
     close connection
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device to the ldisc.
+    :type tty: struct tty_struct \*
 
 .. _`n_tracesink_close.description`:
 
@@ -60,17 +62,21 @@ n_tracesink_read
 
     read request from user space
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device passed into the ldisc.
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         pointer to open file object.
+    :type file: struct file \*
 
-    :param unsigned char __user \*buf:
+    :param buf:
         pointer to the data buffer that gets eventually returned.
+    :type buf: unsigned char __user \*
 
-    :param size_t nr:
+    :param nr:
         number of bytes of the data buffer that is returned.
+    :type nr: size_t
 
 .. _`n_tracesink_read.description`:
 
@@ -100,17 +106,21 @@ n_tracesink_write
 
     Function that allows \ :c:func:`write`\  in userspace.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device passed into the ldisc.
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         pointer to open file object.
+    :type file: struct file \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         pointer to the data buffer that gets eventually returned.
+    :type buf: const unsigned char \*
 
-    :param size_t nr:
+    :param nr:
         number of bytes of the data buffer that is returned.
+    :type nr: size_t
 
 .. _`n_tracesink_write.description`:
 
@@ -142,13 +152,15 @@ n_tracesink_datadrain
 
     Kernel API function used to route trace debugging data to user-defined port like USB.
 
-    :param u8 \*buf:
+    :param buf:
         Trace debuging data buffer to write to tty target
         port. Null value will return with no write occurring.
+    :type buf: u8 \*
 
-    :param int count:
+    :param count:
         Size of buf. Value of 0 or a negative number will
         return with no write occuring.
+    :type count: int
 
 .. _`n_tracesink_datadrain.caveat`:
 
@@ -169,8 +181,9 @@ n_tracesink_init
 
     module initialisation
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`n_tracesink_init.description`:
 
@@ -195,8 +208,9 @@ n_tracesink_exit
 
     module unload
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`n_tracesink_exit.description`:
 

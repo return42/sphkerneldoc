@@ -10,11 +10,13 @@ intel_fb_obj_invalidate
 
     invalidate frontbuffer object
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         GEM object to invalidate
+    :type obj: struct drm_i915_gem_object \*
 
-    :param enum fb_op_origin origin:
+    :param origin:
         which operation caused the invalidation
+    :type origin: enum fb_op_origin
 
 .. _`intel_fb_obj_invalidate.description`:
 
@@ -36,11 +38,13 @@ intel_fb_obj_flush
 
     flush frontbuffer object
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         GEM object to flush
+    :type obj: struct drm_i915_gem_object \*
 
-    :param enum fb_op_origin origin:
+    :param origin:
         which operation caused the flush
+    :type origin: enum fb_op_origin
 
 .. _`intel_fb_obj_flush.description`:
 

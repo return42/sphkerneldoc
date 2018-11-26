@@ -96,14 +96,17 @@ dvb_ca_en50221_camchange_irq
 
     A CAMCHANGE IRQ has occurred.
 
-    :param struct dvb_ca_en50221 \*pubca:
+    :param pubca:
         CA instance.
+    :type pubca: struct dvb_ca_en50221 \*
 
-    :param int slot:
+    :param slot:
         Slot concerned.
+    :type slot: int
 
-    :param int change_type:
+    :param change_type:
         One of the DVB_CA_CAMCHANGE_* values
+    :type change_type: int
 
 .. _`dvb_ca_en50221_camready_irq`:
 
@@ -114,11 +117,13 @@ dvb_ca_en50221_camready_irq
 
     A CAMREADY IRQ has occurred.
 
-    :param struct dvb_ca_en50221 \*pubca:
+    :param pubca:
         CA instance.
+    :type pubca: struct dvb_ca_en50221 \*
 
-    :param int slot:
+    :param slot:
         Slot concerned.
+    :type slot: int
 
 .. _`dvb_ca_en50221_frda_irq`:
 
@@ -129,11 +134,13 @@ dvb_ca_en50221_frda_irq
 
     An FR or a DA IRQ has occurred.
 
-    :param struct dvb_ca_en50221 \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_en50221 \*
 
-    :param int slot:
+    :param slot:
         Slot concerned.
+    :type slot: int
 
 .. _`dvb_ca_en50221_init`:
 
@@ -144,17 +151,21 @@ dvb_ca_en50221_init
 
     Initialise a new DVB CA device.
 
-    :param struct dvb_adapter \*dvb_adapter:
+    :param dvb_adapter:
         DVB adapter to attach the new CA device to.
+    :type dvb_adapter: struct dvb_adapter \*
 
-    :param struct dvb_ca_en50221 \*ca:
+    :param ca:
         The dvb_ca instance.
+    :type ca: struct dvb_ca_en50221 \*
 
-    :param int flags:
+    :param flags:
         Flags describing the CA device (DVB_CA_EN50221_FLAG_*).
+    :type flags: int
 
-    :param int slot_count:
+    :param slot_count:
         Number of slots supported.
+    :type slot_count: int
 
 .. _`dvb_ca_en50221_init.description`:
 
@@ -172,8 +183,9 @@ dvb_ca_en50221_release
 
     Release a DVB CA device.
 
-    :param struct dvb_ca_en50221 \*ca:
+    :param ca:
         The associated dvb_ca instance.
+    :type ca: struct dvb_ca_en50221 \*
 
 .. This file was automatic generated / don't edit.
 

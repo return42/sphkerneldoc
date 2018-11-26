@@ -236,8 +236,9 @@ b43_phy_allocate
 
     Allocate PHY structs Allocate the PHY data structures, based on the current dev->phy.type
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
 .. _`b43_phy_free`:
 
@@ -248,8 +249,9 @@ b43_phy_free
 
     Free PHY structs
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
 .. _`b43_phy_init`:
 
@@ -260,8 +262,9 @@ b43_phy_init
 
     Initialise the PHY
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
 .. _`b43_phy_exit`:
 
@@ -272,8 +275,9 @@ b43_phy_exit
 
     Cleanup PHY
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
 .. _`b43_has_hardware_pctl`:
 
@@ -284,8 +288,9 @@ b43_has_hardware_pctl
 
     Hardware Power Control supported? Returns a boolean, whether hardware power control is supported.
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
 .. _`b43_phy_read`:
 
@@ -296,11 +301,13 @@ b43_phy_read
 
     16bit PHY register read access
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 reg:
+    :param reg:
         *undescribed*
+    :type reg: u16
 
 .. _`b43_phy_write`:
 
@@ -311,14 +318,17 @@ b43_phy_write
 
     16bit PHY register write access
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 reg:
+    :param reg:
         *undescribed*
+    :type reg: u16
 
-    :param u16 value:
+    :param value:
         *undescribed*
+    :type value: u16
 
 .. _`b43_phy_copy`:
 
@@ -329,14 +339,17 @@ b43_phy_copy
 
     copy contents of 16bit PHY register to another
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 destreg:
+    :param destreg:
         *undescribed*
+    :type destreg: u16
 
-    :param u16 srcreg:
+    :param srcreg:
         *undescribed*
+    :type srcreg: u16
 
 .. _`b43_phy_mask`:
 
@@ -347,14 +360,17 @@ b43_phy_mask
 
     Mask a PHY register with a mask
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 offset:
+    :param offset:
         *undescribed*
+    :type offset: u16
 
-    :param u16 mask:
+    :param mask:
         *undescribed*
+    :type mask: u16
 
 .. _`b43_phy_set`:
 
@@ -365,14 +381,17 @@ b43_phy_set
 
     OR a PHY register with a bitmap
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 offset:
+    :param offset:
         *undescribed*
+    :type offset: u16
 
-    :param u16 set:
+    :param set:
         *undescribed*
+    :type set: u16
 
 .. _`b43_phy_maskset`:
 
@@ -383,17 +402,21 @@ b43_phy_maskset
 
     Mask and OR a PHY register with a mask and bitmap
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 offset:
+    :param offset:
         *undescribed*
+    :type offset: u16
 
-    :param u16 mask:
+    :param mask:
         *undescribed*
+    :type mask: u16
 
-    :param u16 set:
+    :param set:
         *undescribed*
+    :type set: u16
 
 .. _`b43_radio_read`:
 
@@ -404,11 +427,13 @@ b43_radio_read
 
     16bit Radio register read access
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 reg:
+    :param reg:
         *undescribed*
+    :type reg: u16
 
 .. _`b43_radio_write`:
 
@@ -419,14 +444,17 @@ b43_radio_write
 
     16bit Radio register write access
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 reg:
+    :param reg:
         *undescribed*
+    :type reg: u16
 
-    :param u16 value:
+    :param value:
         *undescribed*
+    :type value: u16
 
 .. _`b43_radio_mask`:
 
@@ -437,14 +465,17 @@ b43_radio_mask
 
     Mask a 16bit radio register with a mask
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 offset:
+    :param offset:
         *undescribed*
+    :type offset: u16
 
-    :param u16 mask:
+    :param mask:
         *undescribed*
+    :type mask: u16
 
 .. _`b43_radio_set`:
 
@@ -455,14 +486,17 @@ b43_radio_set
 
     OR a 16bit radio register with a bitmap
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 offset:
+    :param offset:
         *undescribed*
+    :type offset: u16
 
-    :param u16 set:
+    :param set:
         *undescribed*
+    :type set: u16
 
 .. _`b43_radio_maskset`:
 
@@ -473,17 +507,21 @@ b43_radio_maskset
 
     Mask and OR a radio register with a mask and bitmap
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 offset:
+    :param offset:
         *undescribed*
+    :type offset: u16
 
-    :param u16 mask:
+    :param mask:
         *undescribed*
+    :type mask: u16
 
-    :param u16 set:
+    :param set:
         *undescribed*
+    :type set: u16
 
 .. _`b43_radio_wait_value`:
 
@@ -494,23 +532,29 @@ b43_radio_wait_value
 
     Waits for a given value in masked register read
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 offset:
+    :param offset:
         *undescribed*
+    :type offset: u16
 
-    :param u16 mask:
+    :param mask:
         *undescribed*
+    :type mask: u16
 
-    :param u16 value:
+    :param value:
         *undescribed*
+    :type value: u16
 
-    :param int delay:
+    :param delay:
         *undescribed*
+    :type delay: int
 
-    :param int timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: int
 
 .. _`b43_radio_lock`:
 
@@ -521,8 +565,9 @@ b43_radio_lock
 
     Lock firmware radio register access
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
 .. _`b43_radio_unlock`:
 
@@ -533,8 +578,9 @@ b43_radio_unlock
 
     Unlock firmware radio register access
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
 .. _`b43_phy_lock`:
 
@@ -545,8 +591,9 @@ b43_phy_lock
 
     Lock firmware PHY register access
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
 .. _`b43_phy_unlock`:
 
@@ -557,8 +604,9 @@ b43_phy_unlock
 
     Unlock firmware PHY register access
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
 .. _`b43_switch_channel`:
 
@@ -569,11 +617,13 @@ b43_switch_channel
 
     Switch to another channel
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param unsigned int new_channel:
+    :param new_channel:
         *undescribed*
+    :type new_channel: unsigned int
 
 .. _`b43_software_rfkill`:
 
@@ -584,11 +634,13 @@ b43_software_rfkill
 
     Turn the radio ON or OFF in software.
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param bool blocked:
+    :param blocked:
         *undescribed*
+    :type blocked: bool
 
 .. _`b43_phy_txpower_check`:
 
@@ -599,12 +651,14 @@ b43_phy_txpower_check
 
     Check TX power output.
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param unsigned int flags:
+    :param flags:
         OR'ed enum b43_phy_txpower_check_flags flags.
         See the docs below.
+    :type flags: unsigned int
 
 .. _`b43_phy_txpower_check.description`:
 
@@ -657,11 +711,13 @@ b43_phy_shm_tssi_read
 
     Read the average of the last 4 TSSI from SHM.
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param u16 shm_offset:
+    :param shm_offset:
         The SHM address to read the values from.
+    :type shm_offset: u16
 
 .. _`b43_phy_shm_tssi_read.description`:
 
@@ -679,11 +735,13 @@ b43_phyop_switch_analog_generic
 
     Generic PHY operation for switching the Analog.
 
-    :param struct b43_wldev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct b43_wldev \*
 
-    :param bool on:
+    :param on:
         *undescribed*
+    :type on: bool
 
 .. _`b43_phyop_switch_analog_generic.description`:
 

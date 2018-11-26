@@ -10,8 +10,9 @@ ixgbe_fcoe_clear_ddp
 
     clear the given ddp context
 
-    :param struct ixgbe_fcoe_ddp \*ddp:
+    :param ddp:
         ptr to the ixgbe_fcoe_ddp
+    :type ddp: struct ixgbe_fcoe_ddp \*
 
 .. _`ixgbe_fcoe_clear_ddp.description`:
 
@@ -29,11 +30,13 @@ ixgbe_fcoe_ddp_put
 
     free the ddp context for a given xid
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the corresponding net_device
+    :type netdev: struct net_device \*
 
-    :param u16 xid:
+    :param xid:
         the xid that corresponding ddp will be freed
+    :type xid: u16
 
 .. _`ixgbe_fcoe_ddp_put.description`:
 
@@ -55,20 +58,25 @@ ixgbe_fcoe_ddp_setup
 
     called to set up ddp context
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the corresponding net_device
+    :type netdev: struct net_device \*
 
-    :param u16 xid:
+    :param xid:
         the exchange id requesting ddp
+    :type xid: u16
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         the scatter-gather list for this request
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int sgc:
+    :param sgc:
         the number of scatter-gather items
+    :type sgc: unsigned int
 
-    :param int target_mode:
+    :param target_mode:
         1 to setup target mode, 0 to setup initiator mode
+    :type target_mode: int
 
 .. _`ixgbe_fcoe_ddp_setup.description`:
 
@@ -86,17 +94,21 @@ ixgbe_fcoe_ddp_get
 
     called to set up ddp context in initiator mode
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the corresponding net_device
+    :type netdev: struct net_device \*
 
-    :param u16 xid:
+    :param xid:
         the exchange id requesting ddp
+    :type xid: u16
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         the scatter-gather list for this request
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int sgc:
+    :param sgc:
         the number of scatter-gather items
+    :type sgc: unsigned int
 
 .. _`ixgbe_fcoe_ddp_get.description`:
 
@@ -119,17 +131,21 @@ ixgbe_fcoe_ddp_target
 
     called to set up ddp context in target mode
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the corresponding net_device
+    :type netdev: struct net_device \*
 
-    :param u16 xid:
+    :param xid:
         the exchange id requesting ddp
+    :type xid: u16
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         the scatter-gather list for this request
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int sgc:
+    :param sgc:
         the number of scatter-gather items
+    :type sgc: unsigned int
 
 .. _`ixgbe_fcoe_ddp_target.description`:
 
@@ -153,14 +169,17 @@ ixgbe_fcoe_ddp
 
     check ddp status and mark it done
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         ixgbe adapter
+    :type adapter: struct ixgbe_adapter \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         advanced rx descriptor
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb holding the received data
+    :type skb: struct sk_buff \*
 
 .. _`ixgbe_fcoe_ddp.description`:
 
@@ -182,14 +201,17 @@ ixgbe_fso
 
     ixgbe FCoE Sequence Offload (FSO)
 
-    :param struct ixgbe_ring \*tx_ring:
+    :param tx_ring:
         tx desc ring
+    :type tx_ring: struct ixgbe_ring \*
 
-    :param struct ixgbe_tx_buffer \*first:
+    :param first:
         first tx_buffer structure containing skb, tx_flags, and protocol
+    :type first: struct ixgbe_tx_buffer \*
 
-    :param u8 \*hdr_len:
+    :param hdr_len:
         hdr_len to be returned
+    :type hdr_len: u8 \*
 
 .. _`ixgbe_fso.description`:
 
@@ -209,8 +231,9 @@ ixgbe_configure_fcoe
 
     configures registers for fcoe at start
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         ptr to ixgbe adapter
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_configure_fcoe.description`:
 
@@ -230,8 +253,9 @@ ixgbe_free_fcoe_ddp_resources
 
     release all fcoe ddp context resources
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         ixgbe adapter
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_free_fcoe_ddp_resources.description`:
 
@@ -251,8 +275,9 @@ ixgbe_setup_fcoe_ddp_resources
 
     setup all fcoe ddp context resources
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         ixgbe adapter
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_setup_fcoe_ddp_resources.description`:
 
@@ -272,8 +297,9 @@ ixgbe_fcoe_enable
 
     turn on FCoE offload feature
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the corresponding netdev
+    :type netdev: struct net_device \*
 
 .. _`ixgbe_fcoe_enable.description`:
 
@@ -293,8 +319,9 @@ ixgbe_fcoe_disable
 
     turn off FCoE offload feature
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the corresponding netdev
+    :type netdev: struct net_device \*
 
 .. _`ixgbe_fcoe_disable.description`:
 
@@ -314,14 +341,17 @@ ixgbe_fcoe_get_wwn
 
     get world wide name for the node or the port
 
-    :param struct net_device \*netdev:
+    :param netdev:
         ixgbe adapter
+    :type netdev: struct net_device \*
 
-    :param u64 \*wwn:
+    :param wwn:
         the world wide name
+    :type wwn: u64 \*
 
-    :param int type:
+    :param type:
         the type of world wide name
+    :type type: int
 
 .. _`ixgbe_fcoe_get_wwn.description`:
 
@@ -343,11 +373,13 @@ ixgbe_fcoe_get_hbainfo
 
     get FCoE HBA information
 
-    :param struct net_device \*netdev:
+    :param netdev:
         ixgbe adapter
+    :type netdev: struct net_device \*
 
-    :param struct netdev_fcoe_hbainfo \*info:
+    :param info:
         HBA information
+    :type info: struct netdev_fcoe_hbainfo \*
 
 .. _`ixgbe_fcoe_get_hbainfo.description`:
 
@@ -367,8 +399,9 @@ ixgbe_fcoe_get_tc
 
     get the current TC that fcoe is mapped to
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to the device adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_fcoe_get_tc.description`:
 

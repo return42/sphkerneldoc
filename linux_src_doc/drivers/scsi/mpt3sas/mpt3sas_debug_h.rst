@@ -10,11 +10,13 @@
 
     print message frame contents
 
-    :param void \*mpi_request:
+    :param mpi_request:
         pointer to message frame
+    :type mpi_request: void \*
 
-    :param int sz:
+    :param sz:
         number of dwords
+    :type sz: int
 
 .. _`_debug_dump_reply`:
 
@@ -25,11 +27,13 @@
 
     print message frame contents
 
-    :param void \*mpi_request:
+    :param mpi_request:
         pointer to message frame
+    :type mpi_request: void \*
 
-    :param int sz:
+    :param sz:
         number of dwords
+    :type sz: int
 
 .. _`_debug_dump_config`:
 
@@ -40,11 +44,13 @@
 
     print config page contents
 
-    :param void \*mpi_request:
+    :param mpi_request:
         pointer to message frame
+    :type mpi_request: void \*
 
-    :param int sz:
+    :param sz:
         number of dwords
+    :type sz: int
 
 .. This file was automatic generated / don't edit.
 

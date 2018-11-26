@@ -10,11 +10,13 @@ sn_flush_all_caches
 
     flush a range of address from all caches (incl. L4)
 
-    :param long flush_addr:
+    :param flush_addr:
         identity mapped region 7 address to start flushing
+    :type flush_addr: long
 
-    :param long bytes:
+    :param bytes:
         number of bytes to flush
+    :type bytes: long
 
 .. _`sn_flush_all_caches.description`:
 

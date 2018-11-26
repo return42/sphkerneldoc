@@ -10,8 +10,9 @@ xvip_get_format_by_code
 
     Retrieve format information for a media bus code
 
-    :param unsigned int code:
+    :param code:
         the format media bus code
+    :type code: unsigned int
 
 .. _`xvip_get_format_by_code.return`:
 
@@ -31,8 +32,9 @@ xvip_get_format_by_fourcc
 
     Retrieve format information for a 4CC
 
-    :param u32 fourcc:
+    :param fourcc:
         the format 4CC
+    :type fourcc: u32
 
 .. _`xvip_get_format_by_fourcc.return`:
 
@@ -52,8 +54,9 @@ xvip_of_get_format
 
     Parse a device tree node and return format information
 
-    :param struct device_node \*node:
+    :param node:
         the device tree node
+    :type node: struct device_node \*
 
 .. _`xvip_of_get_format.description`:
 
@@ -81,11 +84,13 @@ xvip_set_format_size
 
     Set the media bus frame format size
 
-    :param struct v4l2_mbus_framefmt \*format:
+    :param format:
         V4L2 frame format on media bus
+    :type format: struct v4l2_mbus_framefmt \*
 
-    :param const struct v4l2_subdev_format \*fmt:
+    :param fmt:
         media bus format
+    :type fmt: const struct v4l2_subdev_format \*
 
 .. _`xvip_set_format_size.description`:
 
@@ -105,17 +110,21 @@ xvip_clr_or_set
 
     Clear or set the register with a bitmask
 
-    :param struct xvip_device \*xvip:
+    :param xvip:
         Xilinx Video IP device
+    :type xvip: struct xvip_device \*
 
-    :param u32 addr:
+    :param addr:
         address of register
+    :type addr: u32
 
-    :param u32 mask:
+    :param mask:
         bitmask to be set or cleared
+    :type mask: u32
 
-    :param bool set:
+    :param set:
         boolean flag indicating whether to set or clear
+    :type set: bool
 
 .. _`xvip_clr_or_set.description`:
 
@@ -141,17 +150,21 @@ xvip_clr_and_set
 
     Clear and set the register with a bitmask
 
-    :param struct xvip_device \*xvip:
+    :param xvip:
         Xilinx Video IP device
+    :type xvip: struct xvip_device \*
 
-    :param u32 addr:
+    :param addr:
         address of register
+    :type addr: u32
 
-    :param u32 clr:
+    :param clr:
         bitmask to be cleared
+    :type clr: u32
 
-    :param u32 set:
+    :param set:
         bitmask to be set
+    :type set: u32
 
 .. _`xvip_clr_and_set.description`:
 
@@ -170,14 +183,17 @@ xvip_enum_mbus_code
 
     Enumerate the media format code
 
-    :param struct v4l2_subdev \*subdev:
+    :param subdev:
         V4L2 subdevice
+    :type subdev: struct v4l2_subdev \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         V4L2 subdev pad configuration
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param struct v4l2_subdev_mbus_code_enum \*code:
+    :param code:
         returning media bus code
+    :type code: struct v4l2_subdev_mbus_code_enum \*
 
 .. _`xvip_enum_mbus_code.description`:
 
@@ -206,14 +222,17 @@ xvip_enum_frame_size
 
     Enumerate the media bus frame size
 
-    :param struct v4l2_subdev \*subdev:
+    :param subdev:
         V4L2 subdevice
+    :type subdev: struct v4l2_subdev \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         V4L2 subdev pad configuration
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param struct v4l2_subdev_frame_size_enum \*fse:
+    :param fse:
         returning media bus frame size
+    :type fse: struct v4l2_subdev_frame_size_enum \*
 
 .. _`xvip_enum_frame_size.description`:
 

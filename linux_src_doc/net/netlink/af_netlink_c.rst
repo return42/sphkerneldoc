@@ -10,14 +10,17 @@
 
     General netlink message capability test
 
-    :param const struct netlink_skb_parms \*nsp:
+    :param nsp:
         NETLINK_CB of the socket buffer holding a netlink command from userspace.
+    :type nsp: const struct netlink_skb_parms \*
 
-    :param struct user_namespace \*user_ns:
+    :param user_ns:
         The user namespace of the capability to use
+    :type user_ns: struct user_namespace \*
 
-    :param int cap:
+    :param cap:
         The capability to use
+    :type cap: int
 
 .. _`__netlink_ns_capable.description`:
 
@@ -37,14 +40,17 @@ netlink_ns_capable
 
     General netlink message capability test
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         socket buffer holding a netlink command from userspace
+    :type skb: const struct sk_buff \*
 
-    :param struct user_namespace \*user_ns:
+    :param user_ns:
         The user namespace of the capability to use
+    :type user_ns: struct user_namespace \*
 
-    :param int cap:
+    :param cap:
         The capability to use
+    :type cap: int
 
 .. _`netlink_ns_capable.description`:
 
@@ -64,11 +70,13 @@ netlink_capable
 
     Netlink global message capability test
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         socket buffer holding a netlink command from userspace
+    :type skb: const struct sk_buff \*
 
-    :param int cap:
+    :param cap:
         The capability to use
+    :type cap: int
 
 .. _`netlink_capable.description`:
 
@@ -88,11 +96,13 @@ netlink_net_capable
 
     Netlink network namespace message capability test
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         socket buffer holding a netlink command from userspace
+    :type skb: const struct sk_buff \*
 
-    :param int cap:
+    :param cap:
         The capability to use
+    :type cap: int
 
 .. _`netlink_net_capable.description`:
 
@@ -113,17 +123,21 @@ netlink_set_err
 
     report error to broadcast listeners
 
-    :param struct sock \*ssk:
+    :param ssk:
         the kernel netlink socket, as returned by \ :c:func:`netlink_kernel_create`\ 
+    :type ssk: struct sock \*
 
-    :param u32 portid:
+    :param portid:
         the PORTID of a process that we want to skip (if any)
+    :type portid: u32
 
-    :param u32 group:
+    :param group:
         the broadcast group that will notice the error
+    :type group: u32
 
-    :param int code:
+    :param code:
         error code, must be negative (as usual in kernelspace)
+    :type code: int
 
 .. _`netlink_set_err.description`:
 
@@ -142,11 +156,13 @@ netlink_change_ngroups
 
     change number of multicast groups
 
-    :param struct sock \*sk:
+    :param sk:
         The kernel netlink socket, as returned by \ :c:func:`netlink_kernel_create`\ .
+    :type sk: struct sock \*
 
-    :param unsigned int groups:
+    :param groups:
         The new number of groups.
+    :type groups: unsigned int
 
 .. _`netlink_change_ngroups.description`:
 
@@ -168,23 +184,29 @@ nlmsg_notify
 
     send a notification netlink message
 
-    :param struct sock \*sk:
+    :param sk:
         netlink socket to use
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         notification message
+    :type skb: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         destination netlink portid for reports or 0
+    :type portid: u32
 
-    :param unsigned int group:
+    :param group:
         destination multicast group or 0
+    :type group: unsigned int
 
-    :param int report:
+    :param report:
         1 to report back, 0 to disable
+    :type report: int
 
-    :param gfp_t flags:
+    :param flags:
         allocation flags
+    :type flags: gfp_t
 
 .. This file was automatic generated / don't edit.
 

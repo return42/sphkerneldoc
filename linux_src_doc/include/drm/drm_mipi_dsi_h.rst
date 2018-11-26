@@ -288,8 +288,9 @@ mipi_dsi_pixel_format_to_bpp
 
     obtain the number of bits per pixel for any given pixel format defined by the MIPI DSI specification
 
-    :param enum mipi_dsi_pixel_format fmt:
+    :param fmt:
         MIPI DSI pixel format
+    :type fmt: enum mipi_dsi_pixel_format
 
 .. _`mipi_dsi_pixel_format_to_bpp.return`:
 

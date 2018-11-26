@@ -10,8 +10,9 @@ register_atm_ioctl
 
     register handler for ioctl operations
 
-    :param struct atm_ioctl \*:
+    :param :
         *undescribed*
+    :type : struct atm_ioctl \*
 
 .. _`register_atm_ioctl.description`:
 
@@ -31,8 +32,9 @@ deregister_atm_ioctl
 
     remove the ioctl handler
 
-    :param struct atm_ioctl \*:
+    :param :
         *undescribed*
+    :type : struct atm_ioctl \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,12 +10,14 @@ randomize_page
 
     Generate a random, page aligned address
 
-    :param unsigned long start:
+    :param start:
         The smallest acceptable address the caller will take.
+    :type start: unsigned long
 
-    :param unsigned long range:
+    :param range:
         The size of the area, starting at \ ``start``\ , within which the
         random address must fall.
+    :type range: unsigned long
 
 .. _`randomize_page.description`:
 

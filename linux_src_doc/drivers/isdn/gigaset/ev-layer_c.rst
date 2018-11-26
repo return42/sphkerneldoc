@@ -10,8 +10,9 @@ gigaset_handle_modem_response
 
     process received modem response
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
 .. _`gigaset_handle_modem_response.description`:
 

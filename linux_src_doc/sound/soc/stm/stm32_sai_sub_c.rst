@@ -28,6 +28,7 @@ Definition
         struct stm32_sai_data *pdata;
         struct device_node *np_sync_provider;
         struct clk *sai_ck;
+        struct clk *sai_mclk;
         dma_addr_t phys_addr;
         unsigned int mclk_rate;
         unsigned int id;
@@ -44,7 +45,8 @@ Definition
         int slot_mask;
         int data_size;
         unsigned int spdif_frm_cnt;
-        unsigned char spdif_status_bits[SAI_IEC60958_STATUS_BYTES];
+        struct snd_aes_iec958 iec958;
+        struct mutex ctrl_lock;
     }
 
 .. _`stm32_sai_sub_data.members`:
@@ -81,6 +83,9 @@ np_sync_provider
 
 sai_ck
     kernel clock feeding the SAI clock generator
+
+sai_mclk
+    master clock from SAI mclk provider
 
 phys_addr
     SAI registers physical base address
@@ -130,8 +135,11 @@ data_size
 spdif_frm_cnt
     S/PDIF playback frame counter
 
-spdif_status_bits
-    S/PDIF status bits
+iec958
+    *undescribed*
+
+ctrl_lock
+    control lock
 
 .. This file was automatic generated / don't edit.
 

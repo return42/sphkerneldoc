@@ -10,26 +10,32 @@ fc_elsct_send
 
     Send an ELS or CT frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to send the frame on
+    :type lport: struct fc_lport \*
 
-    :param u32 did:
+    :param did:
         The destination ID for the frame
+    :type did: u32
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame to be sent
+    :type fp: struct fc_frame \*
 
-    :param unsigned int op:
+    :param op:
         The operational code
+    :type op: unsigned int
 
     :param void (\*resp)(struct fc_seq \*, struct fc_frame \*, void \*):
         The callback routine when the response is received
 
-    :param void \*arg:
+    :param arg:
         The argument to pass to the response callback routine
+    :type arg: void \*
 
-    :param u32 timer_msec:
+    :param timer_msec:
         The timeout period for the frame (in msecs)
+    :type timer_msec: u32
 
 .. _`fc_elsct_init`:
 
@@ -40,8 +46,9 @@ fc_elsct_init
 
     Initialize the ELS/CT layer
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to initialize the ELS/CT layer for
+    :type lport: struct fc_lport \*
 
 .. _`fc_els_resp_type`:
 
@@ -52,8 +59,9 @@ fc_els_resp_type
 
     Return a string describing the ELS response
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame pointer or possible error code
+    :type fp: struct fc_frame \*
 
 .. This file was automatic generated / don't edit.
 

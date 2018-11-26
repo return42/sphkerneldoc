@@ -131,8 +131,9 @@ bcom_enable
 
     Enable a BestComm task
 
-    :param struct bcom_task \*tsk:
+    :param tsk:
         The BestComm task structure
+    :type tsk: struct bcom_task \*
 
 .. _`bcom_enable.description`:
 
@@ -151,8 +152,9 @@ bcom_disable
 
     Disable a BestComm task
 
-    :param struct bcom_task \*tsk:
+    :param tsk:
         The BestComm task structure
+    :type tsk: struct bcom_task \*
 
 .. _`bcom_disable.description`:
 
@@ -171,8 +173,9 @@ bcom_get_task_irq
 
     Returns the irq number of a BestComm task
 
-    :param struct bcom_task \*tsk:
+    :param tsk:
         The BestComm task structure
+    :type tsk: struct bcom_task \*
 
 .. _`bcom_queue_empty`:
 
@@ -183,8 +186,9 @@ bcom_queue_empty
 
     Checks if a BestComm task BD queue is empty
 
-    :param struct bcom_task \*tsk:
+    :param tsk:
         The BestComm task structure
+    :type tsk: struct bcom_task \*
 
 .. _`bcom_queue_full`:
 
@@ -195,8 +199,9 @@ bcom_queue_full
 
     Checks if a BestComm task BD queue is full
 
-    :param struct bcom_task \*tsk:
+    :param tsk:
         The BestComm task structure
+    :type tsk: struct bcom_task \*
 
 .. _`bcom_get_bd`:
 
@@ -207,11 +212,13 @@ bcom_get_bd
 
     Get a BD from the queue
 
-    :param struct bcom_task \*tsk:
+    :param tsk:
         The BestComm task structure
+    :type tsk: struct bcom_task \*
 
-    :param unsigned int index:
+    :param index:
         *undescribed*
+    :type index: unsigned int
 
 .. _`bcom_get_bd.index`:
 
@@ -229,8 +236,9 @@ bcom_buffer_done
 
     Checks if a BestComm
 
-    :param struct bcom_task \*tsk:
+    :param tsk:
         The BestComm task structure
+    :type tsk: struct bcom_task \*
 
 .. _`bcom_prepare_next_buffer`:
 
@@ -241,8 +249,9 @@ bcom_prepare_next_buffer
 
     clear status of next available buffer.
 
-    :param struct bcom_task \*tsk:
+    :param tsk:
         The BestComm task structure
+    :type tsk: struct bcom_task \*
 
 .. _`bcom_prepare_next_buffer.description`:
 

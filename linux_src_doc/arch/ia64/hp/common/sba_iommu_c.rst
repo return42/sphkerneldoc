@@ -10,8 +10,9 @@ sba_dump_tlb
 
     debugging only - print IOMMU operating parameters
 
-    :param char \*hpa:
+    :param hpa:
         base address of the IOMMU
+    :type hpa: char \*
 
 .. _`sba_dump_tlb.description`:
 
@@ -29,14 +30,17 @@ sba_dump_pdir_entry
 
     debugging only - print one IOMMU PDIR entry
 
-    :param struct ioc \*ioc:
+    :param ioc:
         IO MMU structure which owns the pdir we are interested in.
+    :type ioc: struct ioc \*
 
-    :param char \*msg:
+    :param msg:
         text to print ont the output line.
+    :type msg: char \*
 
-    :param uint pide:
+    :param pide:
         pdir index.
+    :type pide: uint
 
 .. _`sba_dump_pdir_entry.description`:
 
@@ -54,11 +58,13 @@ sba_check_pdir
 
     debugging only - consistency checker
 
-    :param struct ioc \*ioc:
+    :param ioc:
         IO MMU structure which owns the pdir we are interested in.
+    :type ioc: struct ioc \*
 
-    :param char \*msg:
+    :param msg:
         text to print ont the output line.
+    :type msg: char \*
 
 .. _`sba_check_pdir.description`:
 
@@ -76,14 +82,17 @@ sba_dump_sg
 
     debugging only - print Scatter-Gather list
 
-    :param struct ioc \*ioc:
+    :param ioc:
         IO MMU structure which owns the pdir we are interested in.
+    :type ioc: struct ioc \*
 
-    :param struct scatterlist \*startsg:
+    :param startsg:
         head of the SG list
+    :type startsg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of entries in SG list
+    :type nents: int
 
 .. _`sba_dump_sg.description`:
 
@@ -101,8 +110,9 @@ get_iovp_order
 
     to PAGE_SIZE being the minimum mapping alignment and TC flush granularity. It only incurs about 1 clock cycle to use this one with the static variable and makes the code more intuitive.
 
-    :param unsigned long size:
+    :param size:
         *undescribed*
+    :type size: unsigned long
 
 .. _`sba_search_bitmap`:
 
@@ -113,17 +123,21 @@ sba_search_bitmap
 
     find free space in IO PDIR resource bitmap
 
-    :param struct ioc \*ioc:
+    :param ioc:
         IO MMU structure which owns the pdir we are interested in.
+    :type ioc: struct ioc \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param unsigned long bits_wanted:
+    :param bits_wanted:
         number of entries we need.
+    :type bits_wanted: unsigned long
 
-    :param int use_hint:
+    :param use_hint:
         use res_hint to indicate where to start looking
+    :type use_hint: int
 
 .. _`sba_search_bitmap.description`:
 
@@ -149,14 +163,17 @@ sba_alloc_range
 
     find free bits and mark them in IO PDIR resource bitmap
 
-    :param struct ioc \*ioc:
+    :param ioc:
         IO MMU structure which owns the pdir we are interested in.
+    :type ioc: struct ioc \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         number of bytes to create a mapping for
+    :type size: size_t
 
 .. _`sba_alloc_range.description`:
 
@@ -175,14 +192,17 @@ sba_free_range
 
     unmark bits in IO PDIR resource bitmap
 
-    :param struct ioc \*ioc:
+    :param ioc:
         IO MMU structure which owns the pdir we are interested in.
+    :type ioc: struct ioc \*
 
-    :param dma_addr_t iova:
+    :param iova:
         IO virtual address which was previously allocated.
+    :type iova: dma_addr_t
 
-    :param size_t size:
+    :param size:
         number of bytes to create a mapping for
+    :type size: size_t
 
 .. _`sba_free_range.description`:
 
@@ -200,11 +220,13 @@ sba_io_pdir_entry
 
     fill in one IO PDIR entry
 
-    :param  pdir_ptr:
+    :param pdir_ptr:
         pointer to IO PDIR entry
+    :type pdir_ptr: 
 
-    :param  vba:
+    :param vba:
         Virtual CPU address of buffer to map
+    :type vba: 
 
 .. _`sba_io_pdir_entry.description`:
 
@@ -239,11 +261,13 @@ mark_clean
 
     cache coherent, any (complete) pages that were written via DMA can be marked as "clean" so that \ :c:func:`lazy_mmu_prot_update`\  doesn't have to flush them when they get mapped into an executable vm-area.
 
-    :param void \*addr:
+    :param addr:
         *undescribed*
+    :type addr: void \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`sba_mark_invalid`:
 
@@ -254,14 +278,17 @@ sba_mark_invalid
 
     invalidate one or more IO PDIR entries
 
-    :param struct ioc \*ioc:
+    :param ioc:
         IO MMU structure which owns the pdir we are interested in.
+    :type ioc: struct ioc \*
 
-    :param dma_addr_t iova:
+    :param iova:
         IO Virtual Address mapped earlier
+    :type iova: dma_addr_t
 
-    :param size_t byte_cnt:
+    :param byte_cnt:
         number of bytes this mapping covers.
+    :type byte_cnt: size_t
 
 .. _`sba_mark_invalid.description`:
 
@@ -287,23 +314,29 @@ sba_map_page
 
     map one buffer and return IOVA for DMA
 
-    :param struct device \*dev:
+    :param dev:
         instance of PCI owned by the driver that's asking.
+    :type dev: struct device \*
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
-    :param unsigned long poff:
+    :param poff:
         *undescribed*
+    :type poff: unsigned long
 
-    :param size_t size:
+    :param size:
         number of bytes to map in driver buffer.
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         R/W or both.
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         optional dma attributes
+    :type attrs: unsigned long
 
 .. _`sba_map_page.description`:
 
@@ -321,20 +354,25 @@ sba_unmap_page
 
     unmap one IOVA and free resources
 
-    :param struct device \*dev:
+    :param dev:
         instance of PCI owned by the driver that's asking.
+    :type dev: struct device \*
 
-    :param dma_addr_t iova:
+    :param iova:
         IOVA of driver buffer previously mapped.
+    :type iova: dma_addr_t
 
-    :param size_t size:
+    :param size:
         number of bytes mapped in driver buffer.
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         R/W or both.
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         optional dma attributes
+    :type attrs: unsigned long
 
 .. _`sba_unmap_page.description`:
 
@@ -352,20 +390,25 @@ sba_alloc_coherent
 
     allocate/map shared mem for DMA
 
-    :param struct device \*dev:
+    :param dev:
         instance of PCI owned by the driver that's asking.
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         number of bytes mapped in driver buffer.
+    :type size: size_t
 
-    :param dma_addr_t \*dma_handle:
+    :param dma_handle:
         IOVA of new buffer.
+    :type dma_handle: dma_addr_t \*
 
-    :param gfp_t flags:
+    :param flags:
         *undescribed*
+    :type flags: gfp_t
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`sba_alloc_coherent.description`:
 
@@ -383,20 +426,25 @@ sba_free_coherent
 
     free/unmap shared mem for DMA
 
-    :param struct device \*dev:
+    :param dev:
         instance of PCI owned by the driver that's asking.
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         number of bytes mapped in driver buffer.
+    :type size: size_t
 
-    :param void \*vaddr:
+    :param vaddr:
         virtual address IOVA of "consistent" buffer.
+    :type vaddr: void \*
 
-    :param dma_addr_t dma_handle:
+    :param dma_handle:
         *undescribed*
+    :type dma_handle: dma_addr_t
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`sba_free_coherent.description`:
 
@@ -414,14 +462,17 @@ sba_fill_pdir
 
     write allocated SG entries into IO PDIR
 
-    :param struct ioc \*ioc:
+    :param ioc:
         IO MMU structure which owns the pdir we are interested in.
+    :type ioc: struct ioc \*
 
-    :param struct scatterlist \*startsg:
+    :param startsg:
         list of IOVA/size pairs
+    :type startsg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of entries in startsg list
+    :type nents: int
 
 .. _`sba_fill_pdir.description`:
 
@@ -440,17 +491,21 @@ sba_coalesce_chunks
 
     preprocess the SG list
 
-    :param struct ioc \*ioc:
+    :param ioc:
         IO MMU structure which owns the pdir we are interested in.
+    :type ioc: struct ioc \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct scatterlist \*startsg:
+    :param startsg:
         list of IOVA/size pairs
+    :type startsg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of entries in startsg list
+    :type nents: int
 
 .. _`sba_coalesce_chunks.description`:
 
@@ -474,20 +529,25 @@ sba_map_sg_attrs
 
     map Scatter/Gather list
 
-    :param struct device \*dev:
+    :param dev:
         instance of PCI owned by the driver that's asking.
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sglist:
+    :param sglist:
         array of buffer/length pairs
+    :type sglist: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of entries in list
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         R/W or both.
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         optional dma attributes
+    :type attrs: unsigned long
 
 .. _`sba_map_sg_attrs.description`:
 
@@ -505,20 +565,25 @@ sba_unmap_sg_attrs
 
     unmap Scatter/Gather list
 
-    :param struct device \*dev:
+    :param dev:
         instance of PCI owned by the driver that's asking.
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sglist:
+    :param sglist:
         array of buffer/length pairs
+    :type sglist: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         number of entries in list
+    :type nents: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         R/W or both.
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         optional dma attributes
+    :type attrs: unsigned long
 
 .. _`sba_unmap_sg_attrs.description`:
 

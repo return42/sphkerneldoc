@@ -10,8 +10,9 @@ plat_get_fdt
 
     Return a pointer to the platform's device tree blob
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`plat_get_fdt.description`:
 
@@ -43,8 +44,9 @@ plat_fdt_relocated
 
     Update platform's information about relocated dtb
 
-    :param void \*new_location:
+    :param new_location:
         *undescribed*
+    :type new_location: void \*
 
 .. _`plat_fdt_relocated.description`:
 

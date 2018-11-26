@@ -10,8 +10,9 @@ ___d_drop
 
     drop a dentry
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to drop
+    :type dentry: struct dentry \*
 
 .. _`___d_drop.description`:
 
@@ -40,8 +41,9 @@ d_find_any_alias
 
     find any alias for a given inode
 
-    :param struct inode \*inode:
+    :param inode:
         inode to find an alias for
+    :type inode: struct inode \*
 
 .. _`d_find_any_alias.description`:
 
@@ -60,8 +62,9 @@ __d_find_alias
 
     grab a hashed alias of inode
 
-    :param struct inode \*inode:
+    :param inode:
         inode in question
+    :type inode: struct inode \*
 
 .. _`__d_find_alias.description`:
 
@@ -87,18 +90,20 @@ prune_dcache_sb
 
     shrink the dcache
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
-    :param struct shrink_control \*sc:
+    :param sc:
         shrink control, passed to \ :c:func:`list_lru_shrink_walk`\ 
+    :type sc: struct shrink_control \*
 
 .. _`prune_dcache_sb.description`:
 
 Description
 -----------
 
-Attempt to shrink the superblock dcache LRU by \ ``sc``\ ->nr_to_scan entries. This
+Attempt to shrink the superblock dcache LRU by \ ``sc->nr_to_scan``\  entries. This
 is done when we need more memory and called from the superblock shrinker
 function.
 
@@ -114,8 +119,9 @@ shrink_dcache_sb
 
     shrink dcache for a superblock
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
 .. _`shrink_dcache_sb.description`:
 
@@ -174,11 +180,13 @@ d_walk
 
     walk the dentry tree
 
-    :param struct dentry \*parent:
+    :param parent:
         start of walk
+    :type parent: struct dentry \*
 
-    :param void \*data:
+    :param data:
         data passed to \ ``enter``\ () and \ ``finish``\ ()
+    :type data: void \*
 
     :param enum d_walk_ret (\*enter)(void \*, struct dentry \*):
         callback when first entering the dentry
@@ -199,8 +207,9 @@ path_has_submounts
 
     check for mounts over a dentry in the current namespace.
 
-    :param const struct path \*parent:
+    :param parent:
         path to check.
+    :type parent: const struct path \*
 
 .. _`path_has_submounts.description`:
 
@@ -219,8 +228,9 @@ shrink_dcache_parent
 
     prune dcache
 
-    :param struct dentry \*parent:
+    :param parent:
         parent of entries to prune
+    :type parent: struct dentry \*
 
 .. _`shrink_dcache_parent.description`:
 
@@ -238,8 +248,9 @@ d_invalidate
 
     detach submounts, prune dcache, and drop
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to invalidate (aka detach, prune and drop)
+    :type dentry: struct dentry \*
 
 .. _`__d_alloc`:
 
@@ -250,11 +261,13 @@ __d_alloc
 
     allocate a dcache entry
 
-    :param struct super_block \*sb:
+    :param sb:
         filesystem it will belong to
+    :type sb: struct super_block \*
 
-    :param const struct qstr \*name:
+    :param name:
         qstr of the name
+    :type name: const struct qstr \*
 
 .. _`__d_alloc.description`:
 
@@ -274,11 +287,13 @@ d_alloc
 
     allocate a dcache entry
 
-    :param struct dentry \*parent:
+    :param parent:
         parent of entry to allocate
+    :type parent: struct dentry \*
 
-    :param const struct qstr \*name:
+    :param name:
         qstr of the name
+    :type name: const struct qstr \*
 
 .. _`d_alloc.description`:
 
@@ -298,11 +313,13 @@ d_alloc_pseudo
 
     allocate a dentry (for lookup-less filesystems)
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock
+    :type sb: struct super_block \*
 
-    :param const struct qstr \*name:
+    :param name:
         qstr of the name
+    :type name: const struct qstr \*
 
 .. _`d_alloc_pseudo.description`:
 
@@ -321,11 +338,13 @@ d_instantiate
 
     fill in inode information for a dentry
 
-    :param struct dentry \*entry:
+    :param entry:
         dentry to complete
+    :type entry: struct dentry \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode to attach to this dentry
+    :type inode: struct inode \*
 
 .. _`d_instantiate.description`:
 
@@ -341,30 +360,6 @@ NOTE! This assumes that the inode count has been incremented
 (or otherwise set) by the caller to indicate that it is now
 in use by the dcache.
 
-.. _`d_instantiate_no_diralias`:
-
-d_instantiate_no_diralias
-=========================
-
-.. c:function:: int d_instantiate_no_diralias(struct dentry *entry, struct inode *inode)
-
-    instantiate a non-aliased dentry
-
-    :param struct dentry \*entry:
-        dentry to complete
-
-    :param struct inode \*inode:
-        inode to attach to this dentry
-
-.. _`d_instantiate_no_diralias.description`:
-
-Description
------------
-
-Fill in inode information in the entry.  If a directory alias is found, then
-return an error (and drop inode).  Together with \ :c:func:`d_materialise_unique`\  this
-guarantees that a directory inode may never have more than one alias.
-
 .. _`d_obtain_alias`:
 
 d_obtain_alias
@@ -374,8 +369,9 @@ d_obtain_alias
 
     find or allocate a DISCONNECTED dentry for a given inode
 
-    :param struct inode \*inode:
+    :param inode:
         inode to allocate the dentry for
+    :type inode: struct inode \*
 
 .. _`d_obtain_alias.description`:
 
@@ -405,8 +401,9 @@ d_obtain_root
 
     find or allocate a dentry for a given inode
 
-    :param struct inode \*inode:
+    :param inode:
         inode to allocate the dentry for
+    :type inode: struct inode \*
 
 .. _`d_obtain_root.description`:
 
@@ -433,14 +430,17 @@ d_add_ci
 
     lookup or allocate new dentry with case-exact name
 
-    :param struct dentry \*dentry:
+    :param dentry:
         the negative dentry that was passed to the parent's lookup func
+    :type dentry: struct dentry \*
 
-    :param struct inode \*inode:
+    :param inode:
         the inode case-insensitive lookup has found
+    :type inode: struct inode \*
 
-    :param struct qstr \*name:
+    :param name:
         the case-exact name to be associated with the returned dentry
+    :type name: struct qstr \*
 
 .. _`d_add_ci.description`:
 
@@ -466,14 +466,17 @@ __d_lookup_rcu
 
     search for a dentry (racy, store-free)
 
-    :param const struct dentry \*parent:
+    :param parent:
         parent dentry
+    :type parent: const struct dentry \*
 
-    :param const struct qstr \*name:
+    :param name:
         qstr of name we wish to find
+    :type name: const struct qstr \*
 
-    :param unsigned \*seqp:
+    :param seqp:
         returns d_seq value at the point where the dentry was found
+    :type seqp: unsigned \*
 
 .. _`__d_lookup_rcu.return`:
 
@@ -513,11 +516,13 @@ d_lookup
 
     search for a dentry
 
-    :param const struct dentry \*parent:
+    :param parent:
         parent dentry
+    :type parent: const struct dentry \*
 
-    :param const struct qstr \*name:
+    :param name:
         qstr of name we wish to find
+    :type name: const struct qstr \*
 
 .. _`d_lookup.return`:
 
@@ -540,11 +545,13 @@ __d_lookup
 
     search for a dentry (racy)
 
-    :param const struct dentry \*parent:
+    :param parent:
         parent dentry
+    :type parent: const struct dentry \*
 
-    :param const struct qstr \*name:
+    :param name:
         qstr of name we wish to find
+    :type name: const struct qstr \*
 
 .. _`__d_lookup.return`:
 
@@ -571,11 +578,13 @@ d_hash_and_lookup
 
     hash the qstr then search for a dentry
 
-    :param struct dentry \*dir:
+    :param dir:
         Directory to search in
+    :type dir: struct dentry \*
 
-    :param struct qstr \*name:
+    :param name:
         qstr of name we wish to find
+    :type name: struct qstr \*
 
 .. _`d_hash_and_lookup.description`:
 
@@ -593,8 +602,9 @@ d_delete
 
     delete a dentry
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The dentry to delete
+    :type dentry: struct dentry \*
 
 .. _`d_delete.description`:
 
@@ -613,8 +623,9 @@ d_rehash
 
     add an entry back to the hash
 
-    :param struct dentry \*entry:
+    :param entry:
         dentry to add to the hash
+    :type entry: struct dentry \*
 
 .. _`d_rehash.description`:
 
@@ -632,11 +643,13 @@ d_add
 
     add dentry to hash queues
 
-    :param struct dentry \*entry:
+    :param entry:
         dentry to add
+    :type entry: struct dentry \*
 
-    :param struct inode \*inode:
+    :param inode:
         The inode to attach to this dentry
+    :type inode: struct inode \*
 
 .. _`d_add.description`:
 
@@ -655,11 +668,13 @@ d_exact_alias
 
     find and hash an exact unhashed alias
 
-    :param struct dentry \*entry:
+    :param entry:
         dentry to add
+    :type entry: struct dentry \*
 
-    :param struct inode \*inode:
+    :param inode:
         The inode to go with this dentry
+    :type inode: struct inode \*
 
 .. _`d_exact_alias.description`:
 
@@ -672,35 +687,6 @@ NULL.
 
 Parent directory should be locked.
 
-.. _`dentry_update_name_case`:
-
-dentry_update_name_case
-=======================
-
-.. c:function:: void dentry_update_name_case(struct dentry *dentry, const struct qstr *name)
-
-    update case insensitive dentry with a new name
-
-    :param struct dentry \*dentry:
-        dentry to be updated
-
-    :param const struct qstr \*name:
-        new name
-
-.. _`dentry_update_name_case.description`:
-
-Description
------------
-
-Update a case insensitive dentry with new case of name.
-
-dentry must have been returned by d_lookup with name \ ``name``\ . Old and new
-name lengths must match (ie. no d_compare which allows mismatched name
-lengths).
-
-Parent inode i_mutex must be held over d_lookup and into this call (to
-keep renames and concurrent inserts, and readdir(2) away).
-
 .. _`d_ancestor`:
 
 d_ancestor
@@ -710,11 +696,13 @@ d_ancestor
 
     search for an ancestor
 
-    :param struct dentry \*p1:
+    :param p1:
         ancestor dentry
+    :type p1: struct dentry \*
 
-    :param struct dentry \*p2:
+    :param p2:
         child dentry
+    :type p2: struct dentry \*
 
 .. _`d_ancestor.description`:
 
@@ -733,11 +721,13 @@ d_splice_alias
 
     splice a disconnected dentry into the tree if one exists
 
-    :param struct inode \*inode:
+    :param inode:
         the inode which may have a disconnected dentry
+    :type inode: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         a negative dentry which we want to point to the inode.
+    :type dentry: struct dentry \*
 
 .. _`d_splice_alias.description`:
 
@@ -771,11 +761,13 @@ is_subdir
 
     is new dentry a subdirectory of old_dentry
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         new dentry
+    :type new_dentry: struct dentry \*
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         old dentry
+    :type old_dentry: struct dentry \*
 
 .. _`is_subdir.description`:
 

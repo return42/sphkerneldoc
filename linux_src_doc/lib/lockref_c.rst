@@ -10,8 +10,9 @@ lockref_get
 
     Increments reference count unconditionally
 
-    :param struct lockref \*lockref:
+    :param lockref:
         pointer to lockref structure
+    :type lockref: struct lockref \*
 
 .. _`lockref_get.description`:
 
@@ -30,8 +31,9 @@ lockref_get_not_zero
 
     Increments count unless the count is 0 or dead
 
-    :param struct lockref \*lockref:
+    :param lockref:
         pointer to lockref structure
+    :type lockref: struct lockref \*
 
 .. _`lockref_get_not_zero.return`:
 
@@ -49,8 +51,9 @@ lockref_put_not_zero
 
     Decrements count unless count <= 1 before decrement
 
-    :param struct lockref \*lockref:
+    :param lockref:
         pointer to lockref structure
+    :type lockref: struct lockref \*
 
 .. _`lockref_put_not_zero.return`:
 
@@ -68,8 +71,9 @@ lockref_get_or_lock
 
     Increments count unless the count is 0 or dead
 
-    :param struct lockref \*lockref:
+    :param lockref:
         pointer to lockref structure
+    :type lockref: struct lockref \*
 
 .. _`lockref_get_or_lock.return`:
 
@@ -88,8 +92,9 @@ lockref_put_return
 
     Decrement reference count if possible
 
-    :param struct lockref \*lockref:
+    :param lockref:
         pointer to lockref structure
+    :type lockref: struct lockref \*
 
 .. _`lockref_put_return.description`:
 
@@ -108,8 +113,9 @@ lockref_put_or_lock
 
     decrements count unless count <= 1 before decrement
 
-    :param struct lockref \*lockref:
+    :param lockref:
         pointer to lockref structure
+    :type lockref: struct lockref \*
 
 .. _`lockref_put_or_lock.return`:
 
@@ -127,8 +133,9 @@ lockref_mark_dead
 
     mark lockref dead
 
-    :param struct lockref \*lockref:
+    :param lockref:
         pointer to lockref structure
+    :type lockref: struct lockref \*
 
 .. _`lockref_get_not_dead`:
 
@@ -139,8 +146,9 @@ lockref_get_not_dead
 
     Increments count unless the ref is dead
 
-    :param struct lockref \*lockref:
+    :param lockref:
         pointer to lockref structure
+    :type lockref: struct lockref \*
 
 .. _`lockref_get_not_dead.return`:
 

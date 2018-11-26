@@ -95,6 +95,7 @@ Definition
 
     struct tcpc_dev {
         const struct tcpc_config *config;
+        struct fwnode_handle *fwnode;
         int (*init)(struct tcpc_dev *dev);
         int (*get_vbus)(struct tcpc_dev *dev);
         int (*get_current_limit)(struct tcpc_dev *dev);
@@ -118,6 +119,9 @@ Members
 
 config
     Pointer to port configuration
+
+fwnode
+    Pointer to port fwnode
 
 init
     *undescribed*

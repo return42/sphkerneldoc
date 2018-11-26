@@ -10,8 +10,9 @@ w1_enable_external_pullup
 
     wire (W1 bus) support
 
-    :param int enable:
+    :param enable:
         *undescribed*
+    :type enable: int
 
 .. _`raumfeld_mci_init`:
 
@@ -20,14 +21,17 @@ raumfeld_mci_init
 
 .. c:function:: int raumfeld_mci_init(struct device *dev, irq_handler_t isr, void *data)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param irq_handler_t isr:
+    :param isr:
         *undescribed*
+    :type isr: irq_handler_t
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. This file was automatic generated / don't edit.
 

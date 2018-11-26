@@ -10,11 +10,13 @@ cs5530_set_piomode
 
     PIO setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device on the interface
+    :type adev: struct ata_device \*
 
 .. _`cs5530_set_piomode.description`:
 
@@ -33,11 +35,13 @@ cs5530_set_dmamode
 
     DMA timing setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device being configured
+    :type adev: struct ata_device \*
 
 .. _`cs5530_set_dmamode.description`:
 
@@ -57,8 +61,9 @@ cs5530_qc_issue
 
     command issue
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command pending
+    :type qc: struct ata_queued_cmd \*
 
 .. _`cs5530_qc_issue.description`:
 
@@ -79,8 +84,9 @@ cs5530_init_chip
 
     Chipset init
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cs5530_init_chip.description`:
 
@@ -99,11 +105,13 @@ cs5530_init_one
 
     Initialise a CS5530
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         Entry in match table
+    :type id: const struct pci_device_id \*
 
 .. _`cs5530_init_one.description`:
 

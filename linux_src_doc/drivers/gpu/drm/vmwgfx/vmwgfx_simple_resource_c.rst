@@ -46,14 +46,17 @@ vmw_simple_resource_init
 
     Initialize a simple resource object.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a struct device private.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_simple_resource \*simple:
+    :param simple:
         The struct vmw_simple_resource to initialize.
+    :type simple: struct vmw_simple_resource \*
 
-    :param void \*data:
+    :param data:
         Data passed to the information initialization function.
+    :type data: void \*
 
     :param void (\*res_free)(struct vmw_resource \*res):
         Function pointer to destroy the simple resource.
@@ -76,8 +79,9 @@ vmw_simple_resource_free
 
     Free a simple resource object.
 
-    :param struct vmw_resource \*res:
+    :param res:
         The struct vmw_resource member of the simple resource object.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_simple_resource_free.description`:
 
@@ -95,8 +99,9 @@ vmw_simple_resource_base_release
 
     TTM object release callback
 
-    :param struct ttm_base_object \*\*p_base:
+    :param p_base:
         The struct ttm_base_object member of the simple resource object.
+    :type p_base: struct ttm_base_object \*\*
 
 .. _`vmw_simple_resource_base_release.description`:
 
@@ -116,18 +121,22 @@ vmw_simple_resource_create_ioctl
 
     Helper to set up an ioctl function to create a struct vmw_simple_resource.
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to a struct drm device.
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         Ioctl argument.
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to a struct drm_file identifying the caller.
+    :type file_priv: struct drm_file \*
 
-    :param const struct vmw_simple_resource_func \*func:
+    :param func:
         Pointer to a struct vmw_simple_resource_func identifying the
         simple resource type.
+    :type func: const struct vmw_simple_resource_func \*
 
 .. _`vmw_simple_resource_create_ioctl.return`:
 
@@ -146,15 +155,18 @@ vmw_simple_resource_lookup
 
     Look up a simple resource from its user-space handle.
 
-    :param struct ttm_object_file \*tfile:
+    :param tfile:
         struct ttm_object_file identifying the caller.
+    :type tfile: struct ttm_object_file \*
 
-    :param uint32_t handle:
+    :param handle:
         The user-space handle.
+    :type handle: uint32_t
 
-    :param const struct vmw_simple_resource_func \*func:
+    :param func:
         The struct vmw_simple_resource_func identifying the simple resource
         type.
+    :type func: const struct vmw_simple_resource_func \*
 
 .. _`vmw_simple_resource_lookup.return`:
 

@@ -10,11 +10,13 @@ mdio45_probe
 
     probe for an MDIO (clause 45) device
 
-    :param struct mdio_if_info \*mdio:
+    :param mdio:
         MDIO interface
+    :type mdio: struct mdio_if_info \*
 
-    :param int prtad:
+    :param prtad:
         Expected PHY address
+    :type prtad: int
 
 .. _`mdio45_probe.description`:
 
@@ -33,23 +35,29 @@ mdio_set_flag
 
     set or clear flag in an MDIO register
 
-    :param const struct mdio_if_info \*mdio:
+    :param mdio:
         MDIO interface
+    :type mdio: const struct mdio_if_info \*
 
-    :param int prtad:
+    :param prtad:
         PHY address
+    :type prtad: int
 
-    :param int devad:
+    :param devad:
         MMD address
+    :type devad: int
 
-    :param u16 addr:
+    :param addr:
         Register address
+    :type addr: u16
 
-    :param int mask:
+    :param mask:
         Mask for flag (single bit set)
+    :type mask: int
 
-    :param bool sense:
+    :param sense:
         New value of flag
+    :type sense: bool
 
 .. _`mdio_set_flag.this-debounces-changes`:
 
@@ -68,11 +76,13 @@ mdio45_links_ok
 
     is link status up/OK
 
-    :param const struct mdio_if_info \*mdio:
+    :param mdio:
         MDIO interface
+    :type mdio: const struct mdio_if_info \*
 
-    :param u32 mmd_mask:
+    :param mmd_mask:
         Mask for MMDs to check
+    :type mmd_mask: u32
 
 .. _`mdio45_links_ok.description`:
 
@@ -80,7 +90,7 @@ Description
 -----------
 
 Returns 1 if the PHY reports link status up/OK, 0 otherwise.
-\ ``mmd_mask``\  is normally \ ``mdio``\ ->mmds, but if loopback is enabled
+\ ``mmd_mask``\  is normally \ ``mdio->mmds``\ , but if loopback is enabled
 the MMDs being bypassed should be excluded from the mask.
 
 .. _`mdio45_nway_restart`:
@@ -92,8 +102,9 @@ mdio45_nway_restart
 
     restart auto-negotiation for this interface
 
-    :param const struct mdio_if_info \*mdio:
+    :param mdio:
         MDIO interface
+    :type mdio: const struct mdio_if_info \*
 
 .. _`mdio45_nway_restart.description`:
 
@@ -111,17 +122,21 @@ mdio45_ethtool_gset_npage
 
     get settings for ETHTOOL_GSET
 
-    :param const struct mdio_if_info \*mdio:
+    :param mdio:
         MDIO interface
+    :type mdio: const struct mdio_if_info \*
 
-    :param struct ethtool_cmd \*ecmd:
+    :param ecmd:
         Ethtool request structure
+    :type ecmd: struct ethtool_cmd \*
 
-    :param u32 npage_adv:
+    :param npage_adv:
         Modes currently advertised on next pages
+    :type npage_adv: u32
 
-    :param u32 npage_lpa:
+    :param npage_lpa:
         Modes advertised by link partner on next pages
+    :type npage_lpa: u32
 
 .. _`mdio45_ethtool_gset_npage.description`:
 
@@ -144,17 +159,21 @@ mdio45_ethtool_ksettings_get_npage
 
     get settings for ETHTOOL_GLINKSETTINGS
 
-    :param const struct mdio_if_info \*mdio:
+    :param mdio:
         MDIO interface
+    :type mdio: const struct mdio_if_info \*
 
-    :param struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         Ethtool request structure
+    :type cmd: struct ethtool_link_ksettings \*
 
-    :param u32 npage_adv:
+    :param npage_adv:
         Modes currently advertised on next pages
+    :type npage_adv: u32
 
-    :param u32 npage_lpa:
+    :param npage_lpa:
         Modes advertised by link partner on next pages
+    :type npage_lpa: u32
 
 .. _`mdio45_ethtool_ksettings_get_npage.description`:
 
@@ -177,14 +196,17 @@ mdio_mii_ioctl
 
     MII ioctl interface for MDIO (clause 22 or 45) PHYs
 
-    :param const struct mdio_if_info \*mdio:
+    :param mdio:
         MDIO interface
+    :type mdio: const struct mdio_if_info \*
 
-    :param struct mii_ioctl_data \*mii_data:
+    :param mii_data:
         MII ioctl data structure
+    :type mii_data: struct mii_ioctl_data \*
 
-    :param int cmd:
+    :param cmd:
         MII ioctl command
+    :type cmd: int
 
 .. _`mdio_mii_ioctl.description`:
 

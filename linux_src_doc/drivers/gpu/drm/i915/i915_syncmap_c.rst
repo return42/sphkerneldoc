@@ -10,8 +10,9 @@ i915_syncmap_init
 
     - initialise the #i915_syncmap
 
-    :param struct i915_syncmap \*\*root:
+    :param root:
         pointer to the #i915_syncmap
+    :type root: struct i915_syncmap \*\*
 
 .. _`i915_syncmap_is_later`:
 
@@ -22,14 +23,17 @@ i915_syncmap_is_later
 
     - compare against the last know sync point
 
-    :param struct i915_syncmap \*\*root:
+    :param root:
         pointer to the #i915_syncmap
+    :type root: struct i915_syncmap \*\*
 
-    :param u64 id:
+    :param id:
         the context id (other timeline) we are synchronising to
+    :type id: u64
 
-    :param u32 seqno:
+    :param seqno:
         the sequence number along the other timeline
+    :type seqno: u32
 
 .. _`i915_syncmap_is_later.description`:
 
@@ -53,14 +57,17 @@ i915_syncmap_set
 
     - mark the most recent syncpoint between contexts
 
-    :param struct i915_syncmap \*\*root:
+    :param root:
         pointer to the #i915_syncmap
+    :type root: struct i915_syncmap \*\*
 
-    :param u64 id:
+    :param id:
         the context id (other timeline) we have synchronised to
+    :type id: u64
 
-    :param u32 seqno:
+    :param seqno:
         the sequence number along the other timeline
+    :type seqno: u32
 
 .. _`i915_syncmap_set.description`:
 
@@ -83,8 +90,9 @@ i915_syncmap_free
 
     - free all memory associated with the syncmap
 
-    :param struct i915_syncmap \*\*root:
+    :param root:
         pointer to the #i915_syncmap
+    :type root: struct i915_syncmap \*\*
 
 .. _`i915_syncmap_free.description`:
 

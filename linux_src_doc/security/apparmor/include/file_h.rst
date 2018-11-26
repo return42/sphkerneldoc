@@ -10,11 +10,13 @@ aa_alloc_file_ctx
 
     allocate file_ctx
 
-    :param struct aa_label \*label:
+    :param label:
         initial label of task creating the file
+    :type label: struct aa_label \*
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp flags for allocation
+    :type gfp: gfp_t
 
 .. _`aa_alloc_file_ctx.return`:
 
@@ -32,8 +34,9 @@ aa_free_file_ctx
 
     free a file_ctx
 
-    :param struct aa_file_ctx \*ctx:
+    :param ctx:
         file_ctx to free  (MAYBE_NULL)
+    :type ctx: struct aa_file_ctx \*
 
 .. _`aa_file_rules`:
 
@@ -90,8 +93,9 @@ aa_map_file_to_perms
 
     map file flags to AppArmor permissions
 
-    :param struct file \*file:
+    :param file:
         open file to map flags to AppArmor permissions
+    :type file: struct file \*
 
 .. _`aa_map_file_to_perms.return`:
 

@@ -85,17 +85,21 @@ clock_cooling_get_property
 
     fetch a property of interest for a give cpu.
 
-    :param struct clock_cooling_device \*ccdev:
+    :param ccdev:
         clock cooling device reference
+    :type ccdev: struct clock_cooling_device \*
 
-    :param unsigned long input:
+    :param input:
         query parameter
+    :type input: unsigned long
 
-    :param unsigned long \*output:
+    :param output:
         query return
+    :type output: unsigned long \*
 
-    :param enum clock_cooling_property property:
+    :param property:
         type of query (frequency, level, max level)
+    :type property: enum clock_cooling_property
 
 .. _`clock_cooling_get_property.description`:
 
@@ -133,11 +137,13 @@ clock_cooling_get_level
 
     return the cooling level of given clock cooling.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         reference of a thermal cooling device of used as clock cooling device
+    :type cdev: struct thermal_cooling_device \*
 
-    :param unsigned long freq:
+    :param freq:
         the frequency of interest
+    :type freq: unsigned long
 
 .. _`clock_cooling_get_level.description`:
 
@@ -164,11 +170,13 @@ clock_cooling_get_frequency
 
     get the absolute value of frequency from level.
 
-    :param struct clock_cooling_device \*ccdev:
+    :param ccdev:
         clock cooling device reference
+    :type ccdev: struct clock_cooling_device \*
 
-    :param unsigned long level:
+    :param level:
         cooling level
+    :type level: unsigned long
 
 .. _`clock_cooling_get_frequency.description`:
 
@@ -196,11 +204,13 @@ clock_cooling_apply
 
     function to apply frequency clipping.
 
-    :param struct clock_cooling_device \*ccdev:
+    :param ccdev:
         clock_cooling_device pointer containing frequency clipping data.
+    :type ccdev: struct clock_cooling_device \*
 
-    :param unsigned long cooling_state:
+    :param cooling_state:
         value of the cooling state.
+    :type cooling_state: unsigned long
 
 .. _`clock_cooling_apply.description`:
 
@@ -228,14 +238,17 @@ clock_cooling_clock_notifier
 
     notifier callback on clock rate changes.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         struct notifier_block \* with callback info.
+    :type nb: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         value showing clock event for which this function invoked.
+    :type event: unsigned long
 
-    :param void \*data:
+    :param data:
         callback-specific data
+    :type data: void \*
 
 .. _`clock_cooling_clock_notifier.description`:
 
@@ -262,11 +275,13 @@ clock_cooling_get_max_state
 
     callback function to get the max cooling state.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         thermal cooling device pointer.
+    :type cdev: struct thermal_cooling_device \*
 
-    :param unsigned long \*state:
+    :param state:
         fill this variable with the max cooling state.
+    :type state: unsigned long \*
 
 .. _`clock_cooling_get_max_state.description`:
 
@@ -292,11 +307,13 @@ clock_cooling_get_cur_state
 
     function to get the current cooling state.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         thermal cooling device pointer.
+    :type cdev: struct thermal_cooling_device \*
 
-    :param unsigned long \*state:
+    :param state:
         fill this variable with the current cooling state.
+    :type state: unsigned long \*
 
 .. _`clock_cooling_get_cur_state.description`:
 
@@ -322,11 +339,13 @@ clock_cooling_set_cur_state
 
     function to set the current cooling state.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         thermal cooling device pointer.
+    :type cdev: struct thermal_cooling_device \*
 
-    :param unsigned long state:
+    :param state:
         set this variable to the current cooling state.
+    :type state: unsigned long
 
 .. _`clock_cooling_set_cur_state.description`:
 
@@ -352,11 +371,13 @@ clock_cooling_register
 
     function to create clock cooling device.
 
-    :param struct device \*dev:
+    :param dev:
         struct device pointer to the device used as clock cooling device.
+    :type dev: struct device \*
 
-    :param const char \*clock_name:
+    :param clock_name:
         string containing the clock used as cooling mechanism.
+    :type clock_name: const char \*
 
 .. _`clock_cooling_register.description`:
 
@@ -388,8 +409,9 @@ clock_cooling_unregister
 
     function to remove clock cooling device.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         thermal cooling device pointer.
+    :type cdev: struct thermal_cooling_device \*
 
 .. _`clock_cooling_unregister.description`:
 

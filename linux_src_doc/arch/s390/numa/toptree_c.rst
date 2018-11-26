@@ -10,11 +10,13 @@ toptree_alloc
 
     Allocate and initialize a new tree node.
 
-    :param int level:
+    :param level:
         The node's vertical level; level 0 contains the leaves.
+    :type level: int
 
-    :param int id:
+    :param id:
         ID number, explicitly not unique beyond scope of node's siblings
+    :type id: int
 
 .. _`toptree_alloc.description`:
 
@@ -39,8 +41,9 @@ toptree_remove
 
     Remove a tree node from a tree
 
-    :param struct toptree \*cand:
+    :param cand:
         Pointer to the node to remove
+    :type cand: struct toptree \*
 
 .. _`toptree_remove.description`:
 
@@ -59,8 +62,9 @@ toptree_free
 
     discard a tree node
 
-    :param struct toptree \*cand:
+    :param cand:
         Pointer to the tree node to discard
+    :type cand: struct toptree \*
 
 .. _`toptree_free.description`:
 
@@ -80,8 +84,9 @@ toptree_update_mask
 
     Update node bitmasks
 
-    :param struct toptree \*cand:
+    :param cand:
         Pointer to a tree node
+    :type cand: struct toptree \*
 
 .. _`toptree_update_mask.description`:
 
@@ -109,11 +114,13 @@ toptree_insert
 
     Insert a tree node into tree
 
-    :param struct toptree \*cand:
+    :param cand:
         Pointer to the node to insert
+    :type cand: struct toptree \*
 
-    :param struct toptree \*target:
+    :param target:
         Pointer to the node to which \ ``cand``\  will added as a child
+    :type target: struct toptree \*
 
 .. _`toptree_insert.description`:
 
@@ -139,11 +146,13 @@ toptree_move_children
 
     Move all child nodes of a node to a new place
 
-    :param struct toptree \*cand:
+    :param cand:
         Pointer to the node whose children are to be moved
+    :type cand: struct toptree \*
 
-    :param struct toptree \*target:
+    :param target:
         Pointer to the node to which \ ``cand``\ 's children will be attached
+    :type target: struct toptree \*
 
 .. _`toptree_move_children.description`:
 
@@ -161,8 +170,9 @@ toptree_unify
 
     Merge children with same ID
 
-    :param struct toptree \*cand:
+    :param cand:
         Pointer to node whose direct children should be made unique
+    :type cand: struct toptree \*
 
 .. _`toptree_unify.description`:
 
@@ -182,11 +192,13 @@ toptree_move
 
     Move a node to another context
 
-    :param struct toptree \*cand:
+    :param cand:
         Pointer to the node to move
+    :type cand: struct toptree \*
 
-    :param struct toptree \*target:
+    :param target:
         Pointer to the node where \ ``cand``\  should go
+    :type target: struct toptree \*
 
 .. _`toptree_move.description`:
 
@@ -213,11 +225,13 @@ toptree_get_child
 
     Access a tree node's child by its ID
 
-    :param struct toptree \*cand:
+    :param cand:
         Pointer to tree node whose child is to access
+    :type cand: struct toptree \*
 
-    :param int id:
+    :param id:
         The desired child's ID
+    :type id: int
 
 .. _`toptree_get_child.description`:
 
@@ -237,11 +251,13 @@ toptree_first
 
     Find the first descendant on specified level
 
-    :param struct toptree \*context:
+    :param context:
         Pointer to tree node whose descendants are to be used
+    :type context: struct toptree \*
 
-    :param int level:
+    :param level:
         The level of interest
+    :type level: int
 
 .. _`toptree_first.return`:
 
@@ -260,8 +276,9 @@ toptree_next_sibling
 
     Return next sibling
 
-    :param struct toptree \*cur:
+    :param cur:
         Pointer to a tree node
+    :type cur: struct toptree \*
 
 .. _`toptree_next_sibling.return`:
 
@@ -280,15 +297,18 @@ toptree_next
 
     Tree traversal function
 
-    :param struct toptree \*cur:
+    :param cur:
         Pointer to current element
+    :type cur: struct toptree \*
 
-    :param struct toptree \*context:
+    :param context:
         Pointer to the root node of the tree or subtree to
         be traversed.
+    :type context: struct toptree \*
 
-    :param int level:
+    :param level:
         The level of interest.
+    :type level: int
 
 .. _`toptree_next.return`:
 
@@ -307,11 +327,13 @@ toptree_count
 
     Count descendants on specified level
 
-    :param struct toptree \*context:
+    :param context:
         Pointer to node whose descendants are to be considered
+    :type context: struct toptree \*
 
-    :param int level:
+    :param level:
         Only descendants on the specified level will be counted
+    :type level: int
 
 .. _`toptree_count.return`:
 

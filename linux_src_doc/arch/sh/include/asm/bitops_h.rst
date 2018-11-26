@@ -10,8 +10,9 @@
 
     find first bit in word.
 
-    :param unsigned long word:
+    :param word:
         The word to search
+    :type word: unsigned long
 
 .. _`__ffs.description`:
 

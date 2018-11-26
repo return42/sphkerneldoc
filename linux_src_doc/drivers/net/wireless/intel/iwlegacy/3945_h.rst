@@ -10,11 +10,13 @@ il3945_hw_find_station
 
     Find station id for a given BSSID
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param const u8 \*bssid:
+    :param bssid:
         MAC address of station ID to find
+    :type bssid: const u8 \*
 
 .. _`il3945_hw_find_station.note`:
 

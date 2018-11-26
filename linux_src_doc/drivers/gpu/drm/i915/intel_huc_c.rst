@@ -10,8 +10,9 @@ intel_huc_auth
 
     Authenticate HuC uCode
 
-    :param struct intel_huc \*huc:
+    :param huc:
         intel_huc structure
+    :type huc: struct intel_huc \*
 
 .. _`intel_huc_auth.description`:
 
@@ -34,8 +35,9 @@ intel_huc_check_status
 
     check HuC status
 
-    :param struct intel_huc \*huc:
+    :param huc:
         intel_huc structure
+    :type huc: struct intel_huc \*
 
 .. _`intel_huc_check_status.description`:
 

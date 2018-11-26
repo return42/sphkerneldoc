@@ -10,11 +10,13 @@ orc_exec_scb
 
     Queue an SCB with the HA
 
-    :param struct orc_host \*host:
+    :param host:
         host adapter the SCB belongs to
+    :type host: struct orc_host \*
 
-    :param struct orc_scb \*scb:
+    :param scb:
         SCB to queue for execution
+    :type scb: struct orc_scb \*
 
 .. _`se2_rd_all`:
 
@@ -25,8 +27,9 @@ se2_rd_all
 
     read SCSI parameters from EEPROM
 
-    :param struct orc_host \*host:
+    :param host:
         Host whose EEPROM is being loaded
+    :type host: struct orc_host \*
 
 .. _`se2_rd_all.description`:
 
@@ -44,8 +47,9 @@ se2_update_all
 
     update the EEPROM
 
-    :param struct orc_host \*host:
+    :param host:
         Host whose EEPROM is being updated
+    :type host: struct orc_host \*
 
 .. _`se2_update_all.description`:
 
@@ -63,8 +67,9 @@ read_eeprom
 
     load EEPROM
 
-    :param struct orc_host \*host:
+    :param host:
         Host EEPROM to read
+    :type host: struct orc_host \*
 
 .. _`read_eeprom.description`:
 
@@ -83,8 +88,9 @@ orc_load_firmware
 
     initialise firmware
 
-    :param struct orc_host \*host:
+    :param host:
         Host to set up
+    :type host: struct orc_host \*
 
 .. _`orc_load_firmware.description`:
 
@@ -105,8 +111,9 @@ init_alloc_map
 
     initialise allocation map
 
-    :param struct orc_host \*host:
+    :param host:
         host map to configure
+    :type host: struct orc_host \*
 
 .. _`init_alloc_map.description`:
 
@@ -125,8 +132,9 @@ init_orchid
 
     initialise the host adapter
 
-    :param struct orc_host \*host:
+    :param host:
         host adapter to initialise
+    :type host: struct orc_host \*
 
 .. _`init_orchid.description`:
 
@@ -146,8 +154,9 @@ orc_reset_scsi_bus
 
     perform bus reset
 
-    :param struct orc_host \*host:
+    :param host:
         host being reset
+    :type host: struct orc_host \*
 
 .. _`orc_reset_scsi_bus.description`:
 
@@ -165,15 +174,18 @@ orc_device_reset
 
     device reset handler
 
-    :param struct orc_host \*host:
+    :param host:
         host to reset
+    :type host: struct orc_host \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         command causing the reset
         \ ``target``\ ; target device
+    :type cmd: struct scsi_cmnd \*
 
-    :param unsigned int target:
+    :param target:
         *undescribed*
+    :type target: unsigned int
 
 .. _`orc_device_reset.description`:
 
@@ -192,8 +204,9 @@ commands for target w/o soft reset
 
     allocate an SCB
 
-    :param struct orc_host \*host:
+    :param host:
         host to allocate from
+    :type host: struct orc_host \*
 
 .. _`__orc_alloc_scb.description`:
 
@@ -213,8 +226,9 @@ orc_alloc_scb
 
     allocate an SCB
 
-    :param struct orc_host \*host:
+    :param host:
         host to allocate from
+    :type host: struct orc_host \*
 
 .. _`orc_alloc_scb.description`:
 
@@ -233,11 +247,13 @@ orc_release_scb
 
     release an SCB
 
-    :param struct orc_host \*host:
+    :param host:
         host owning the SCB
+    :type host: struct orc_host \*
 
-    :param struct orc_scb \*scb:
+    :param scb:
         SCB that is now free
+    :type scb: struct orc_scb \*
 
 .. _`orc_release_scb.description`:
 
@@ -256,11 +272,13 @@ orchid_abort_scb
 
     abort a command
 
-    :param struct orc_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct orc_host \*
 
-    :param struct orc_scb \*scb:
+    :param scb:
         *undescribed*
+    :type scb: struct orc_scb \*
 
 .. _`orchid_abort_scb.description`:
 
@@ -280,8 +298,9 @@ orc_interrupt
 
     IRQ processing
 
-    :param struct orc_host \*host:
+    :param host:
         Host causing the interrupt
+    :type host: struct orc_host \*
 
 .. _`orc_interrupt.description`:
 
@@ -305,14 +324,17 @@ inia100_build_scb
 
     build SCB
 
-    :param struct orc_host \*host:
+    :param host:
         host owing the control block
+    :type host: struct orc_host \*
 
-    :param struct orc_scb \*scb:
+    :param scb:
         control block to use
+    :type scb: struct orc_scb \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         Mid layer command
+    :type cmd: struct scsi_cmnd \*
 
 .. _`inia100_build_scb.description`:
 
@@ -330,8 +352,9 @@ inia100_queue_lck
 
     queue command with host
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         Command block
+    :type cmd: struct scsi_cmnd \*
 
     :param void (\*done)(struct scsi_cmnd \*):
         Completion function
@@ -354,11 +377,13 @@ inia100_scb_handler
 
     interrupt callback
 
-    :param struct orc_host \*host:
+    :param host:
         Host causing the interrupt
+    :type host: struct orc_host \*
 
-    :param struct orc_scb \*scb:
+    :param scb:
         SCB the controller returned as needing processing
+    :type scb: struct orc_scb \*
 
 .. _`inia100_scb_handler.description`:
 
@@ -378,11 +403,13 @@ inia100_intr
 
     interrupt handler
 
-    :param int irqno:
+    :param irqno:
         Interrupt value
+    :type irqno: int
 
-    :param void \*devid:
+    :param devid:
         Host adapter
+    :type devid: void \*
 
 .. _`inia100_intr.description`:
 

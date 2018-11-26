@@ -10,8 +10,9 @@ megaraid_init
 
     module load hook
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`megaraid_init.description`:
 
@@ -30,8 +31,9 @@ megaraid_exit
 
     driver unload entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`megaraid_exit.description`:
 
@@ -49,11 +51,13 @@ megaraid_probe_one
 
     PCI hotplug entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         handle to this controller's PCI configuration space
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         pci device id of the class of controllers
+    :type id: const struct pci_device_id \*
 
 .. _`megaraid_probe_one.description`:
 
@@ -72,8 +76,9 @@ megaraid_detach_one
 
     release framework resources and call LLD release routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         handle for our PCI configuration space
+    :type pdev: struct pci_dev \*
 
 .. _`megaraid_detach_one.description`:
 
@@ -95,8 +100,9 @@ megaraid_mbox_shutdown
 
     PCI shutdown for megaraid HBA
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         generic driver model device
+    :type pdev: struct pci_dev \*
 
 .. _`megaraid_mbox_shutdown.description`:
 
@@ -114,8 +120,9 @@ megaraid_io_attach
 
     attach a device with the IO subsystem
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_io_attach.description`:
 
@@ -133,8 +140,9 @@ megaraid_io_detach
 
     detach a device from the IO subsystem
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_io_detach.description`:
 
@@ -152,8 +160,9 @@ megaraid_init_mbox
 
     initialize controller
 
-    :param adapter_t \*adapter:
+    :param adapter:
         our soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_init_mbox.description`:
 
@@ -175,8 +184,9 @@ megaraid_fini_mbox
 
     undo controller initialization
 
-    :param adapter_t \*adapter:
+    :param adapter:
         our soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_alloc_cmd_packets`:
 
@@ -187,15 +197,16 @@ megaraid_alloc_cmd_packets
 
     allocate shared mailbox
 
-    :param adapter_t \*adapter:
+    :param adapter:
         soft state of the raid controller
+    :type adapter: adapter_t \*
 
 .. _`megaraid_alloc_cmd_packets.description`:
 
 Description
 -----------
 
-Allocate and align the shared mailbox. This maibox is used to issue
+Allocate and align the shared mailbox. This mailbox is used to issue
 all the commands. For IO based controllers, the mailbox is also registered
 with the FW. Allocate memory for all commands as well.
 This is our big allocator.
@@ -209,8 +220,9 @@ megaraid_free_cmd_packets
 
     free memory
 
-    :param adapter_t \*adapter:
+    :param adapter:
         soft state of the raid controller
+    :type adapter: adapter_t \*
 
 .. _`megaraid_free_cmd_packets.description`:
 
@@ -228,8 +240,9 @@ megaraid_mbox_setup_dma_pools
 
     setup dma pool for command packets
 
-    :param adapter_t \*adapter:
+    :param adapter:
         HBA soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_mbox_setup_dma_pools.description`:
 
@@ -248,8 +261,9 @@ megaraid_mbox_teardown_dma_pools
 
     teardown dma pools for command packets
 
-    :param adapter_t \*adapter:
+    :param adapter:
         HBA soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_mbox_teardown_dma_pools.description`:
 
@@ -268,11 +282,13 @@ megaraid_alloc_scb
 
     detach and return a scb from the free list
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         pointer to the scsi command to be executed
+    :type scp: struct scsi_cmnd \*
 
 .. _`megaraid_alloc_scb.description`:
 
@@ -291,11 +307,13 @@ megaraid_dealloc_scb
 
     return the scb to the free pool
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
-    :param scb_t \*scb:
+    :param scb:
         scb to be freed
+    :type scb: scb_t \*
 
 .. _`megaraid_dealloc_scb.description`:
 
@@ -322,11 +340,13 @@ megaraid_mbox_mksgl
 
     make the scatter-gather list
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
-    :param scb_t \*scb:
+    :param scb:
         scsi control block
+    :type scb: scb_t \*
 
 .. _`megaraid_mbox_mksgl.description`:
 
@@ -344,11 +364,13 @@ mbox_post_cmd
 
     issue a mailbox command
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
-    :param scb_t \*scb:
+    :param scb:
         command to be issued
+    :type scb: scb_t \*
 
 .. _`mbox_post_cmd.description`:
 
@@ -366,8 +388,9 @@ megaraid_queue_command_lck
 
     generic queue entry point for all LLDs
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         pointer to the scsi command to be executed
+    :type scp: struct scsi_cmnd \*
 
     :param void (\*done)(struct scsi_cmnd \*):
         callback routine to be called after the cmd has be completed
@@ -388,15 +411,18 @@ megaraid_mbox_build_cmd
 
     transform the mid-layer scsi commands
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         mid-layer scsi command pointer
+    :type scp: struct scsi_cmnd \*
 
-    :param int \*busy:
+    :param busy:
         set if request could not be completed because of lack of
         resources
+    :type busy: int \*
 
 .. _`megaraid_mbox_build_cmd.description`:
 
@@ -416,11 +442,13 @@ megaraid_mbox_runpendq
 
     execute commands queued in the pending queue
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
-    :param scb_t \*scb_q:
+    :param scb_q:
         SCB to be queued in the pending list
+    :type scb_q: scb_t \*
 
 .. _`megaraid_mbox_runpendq.description`:
 
@@ -449,14 +477,17 @@ megaraid_mbox_prepare_pthru
 
     prepare a command for physical devices
 
-    :param adapter_t \*adapter:
+    :param adapter:
         pointer to controller's soft state
+    :type adapter: adapter_t \*
 
-    :param scb_t \*scb:
+    :param scb:
         scsi control block
+    :type scb: scb_t \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         scsi command from the mid-layer
+    :type scp: struct scsi_cmnd \*
 
 .. _`megaraid_mbox_prepare_pthru.description`:
 
@@ -474,14 +505,17 @@ megaraid_mbox_prepare_epthru
 
     prepare a command for physical devices
 
-    :param adapter_t \*adapter:
+    :param adapter:
         pointer to controller's soft state
+    :type adapter: adapter_t \*
 
-    :param scb_t \*scb:
+    :param scb:
         scsi control block
+    :type scb: scb_t \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         scsi command from the mid-layer
+    :type scp: struct scsi_cmnd \*
 
 .. _`megaraid_mbox_prepare_epthru.description`:
 
@@ -500,8 +534,9 @@ megaraid_ack_sequence
 
     interrupt ack sequence for memory mapped HBAs
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_ack_sequence.description`:
 
@@ -527,11 +562,13 @@ megaraid_isr
 
     isr for memory based mailbox based controllers
 
-    :param int irq:
+    :param irq:
         irq
+    :type irq: int
 
-    :param void \*devp:
+    :param devp:
         pointer to our soft state
+    :type devp: void \*
 
 .. _`megaraid_isr.description`:
 
@@ -539,28 +576,6 @@ Description
 -----------
 
 Interrupt service routine for memory-mapped mailbox controllers.
-
-.. _`megaraid_mbox_sync_scb`:
-
-megaraid_mbox_sync_scb
-======================
-
-.. c:function:: void megaraid_mbox_sync_scb(adapter_t *adapter, scb_t *scb)
-
-    sync kernel buffers
-
-    :param adapter_t \*adapter:
-        controller's soft state
-
-    :param scb_t \*scb:
-        pointer to the resource packet
-
-.. _`megaraid_mbox_sync_scb.description`:
-
-Description
------------
-
-DMA sync if required.
 
 .. _`megaraid_mbox_dpc`:
 
@@ -571,8 +586,9 @@ megaraid_mbox_dpc
 
     the tasklet to complete the commands from completed list
 
-    :param unsigned long devp:
+    :param devp:
         pointer to HBA soft state
+    :type devp: unsigned long
 
 .. _`megaraid_mbox_dpc.description`:
 
@@ -592,8 +608,9 @@ megaraid_abort_handler
 
     abort the scsi command
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         command to be aborted
+    :type scp: struct scsi_cmnd \*
 
 .. _`megaraid_abort_handler.description`:
 
@@ -612,8 +629,9 @@ megaraid_reset_handler
 
     device reset handler for mailbox based driver
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         reference command
+    :type scp: struct scsi_cmnd \*
 
 .. _`megaraid_reset_handler.description`:
 
@@ -635,11 +653,13 @@ mbox_post_sync_cmd
 
     blocking command to the mailbox based controllers
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
-    :param uint8_t raw_mbox:
+    :param raw_mbox:
         the mailbox
+    :type raw_mbox: uint8_t
 
 .. _`mbox_post_sync_cmd.description`:
 
@@ -658,11 +678,13 @@ mbox_post_sync_cmd_fast
 
     blocking command to the mailbox based controllers
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
-    :param uint8_t raw_mbox:
+    :param raw_mbox:
         the mailbox
+    :type raw_mbox: uint8_t
 
 .. _`mbox_post_sync_cmd_fast.description`:
 
@@ -682,8 +704,9 @@ megaraid_busywait_mbox
 
     Wait until the controller's mailbox is available
 
-    :param mraid_device_t \*raid_dev:
+    :param raid_dev:
         RAID device (HBA) soft state
+    :type raid_dev: mraid_device_t \*
 
 .. _`megaraid_busywait_mbox.description`:
 
@@ -702,8 +725,9 @@ megaraid_mbox_product_info
 
     some static information about the controller
 
-    :param adapter_t \*adapter:
+    :param adapter:
         our soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_mbox_product_info.description`:
 
@@ -722,8 +746,9 @@ megaraid_mbox_extended_cdb
 
     check for support for extended CDBs
 
-    :param adapter_t \*adapter:
+    :param adapter:
         soft state for the controller
+    :type adapter: adapter_t \*
 
 .. _`megaraid_mbox_extended_cdb.description`:
 
@@ -742,11 +767,13 @@ megaraid_mbox_support_ha
 
     Do we support clustering
 
-    :param adapter_t \*adapter:
+    :param adapter:
         soft state for the controller
+    :type adapter: adapter_t \*
 
-    :param uint16_t \*init_id:
+    :param init_id:
         ID of the initiator
+    :type init_id: uint16_t \*
 
 .. _`megaraid_mbox_support_ha.description`:
 
@@ -764,8 +791,9 @@ megaraid_mbox_support_random_del
 
     Do we support random deletion
 
-    :param adapter_t \*adapter:
+    :param adapter:
         soft state for the controller
+    :type adapter: adapter_t \*
 
 .. _`megaraid_mbox_support_random_del.description`:
 
@@ -790,8 +818,9 @@ megaraid_mbox_get_max_sg
 
     maximum sg elements supported by the firmware
 
-    :param adapter_t \*adapter:
+    :param adapter:
         soft state for the controller
+    :type adapter: adapter_t \*
 
 .. _`megaraid_mbox_get_max_sg.description`:
 
@@ -810,8 +839,9 @@ megaraid_mbox_enum_raid_scsi
 
     enumerate the RAID and SCSI channels
 
-    :param adapter_t \*adapter:
+    :param adapter:
         soft state for the controller
+    :type adapter: adapter_t \*
 
 .. _`megaraid_mbox_enum_raid_scsi.description`:
 
@@ -830,8 +860,9 @@ megaraid_mbox_flush_cache
 
     flush adapter and disks cache
 
-    :param adapter_t \*adapter:
+    :param adapter:
         soft state for the controller
+    :type adapter: adapter_t \*
 
 .. _`megaraid_mbox_flush_cache.description`:
 
@@ -849,8 +880,9 @@ megaraid_mbox_fire_sync_cmd
 
     fire the sync cmd
 
-    :param adapter_t \*adapter:
+    :param adapter:
         soft state for the controller
+    :type adapter: adapter_t \*
 
 .. _`megaraid_mbox_fire_sync_cmd.description`:
 
@@ -868,11 +900,13 @@ megaraid_mbox_display_scb
 
     display SCB information, mostly debug purposes
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
-    :param scb_t \*scb:
+    :param scb:
         SCB to be displayed
+    :type scb: scb_t \*
 
 .. _`megaraid_mbox_display_scb.description`:
 
@@ -891,8 +925,9 @@ megaraid_mbox_setup_device_map
 
     manage device ids
 
-    :param adapter_t \*adapter:
+    :param adapter:
         Driver's soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_mbox_setup_device_map.description`:
 
@@ -913,8 +948,9 @@ megaraid_cmm_register
 
     register with the management module
 
-    :param adapter_t \*adapter:
+    :param adapter:
         HBA soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_cmm_register.description`:
 
@@ -934,8 +970,9 @@ megaraid_cmm_unregister
 
     un-register with the management module
 
-    :param adapter_t \*adapter:
+    :param adapter:
         HBA soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_cmm_unregister.description`:
 
@@ -961,14 +998,17 @@ megaraid_mbox_mm_handler
 
     interface for CMM to issue commands to LLD
 
-    :param unsigned long drvr_data:
+    :param drvr_data:
         LLD specific data
+    :type drvr_data: unsigned long
 
-    :param uioc_t \*kioc:
+    :param kioc:
         CMM interface packet
+    :type kioc: uioc_t \*
 
-    :param uint32_t action:
+    :param action:
         command action
+    :type action: uint32_t
 
 .. _`megaraid_mbox_mm_handler.description`:
 
@@ -988,11 +1028,13 @@ megaraid_mbox_mm_command
 
     issues commands routed through CMM
 
-    :param adapter_t \*adapter:
+    :param adapter:
         HBA soft state
+    :type adapter: adapter_t \*
 
-    :param uioc_t \*kioc:
+    :param kioc:
         management command packet
+    :type kioc: uioc_t \*
 
 .. _`megaraid_mbox_mm_command.description`:
 
@@ -1010,11 +1052,13 @@ megaraid_mbox_mm_done
 
     callback for CMM commands
 
-    :param adapter_t \*adapter:
+    :param adapter:
         HBA soft state
+    :type adapter: adapter_t \*
 
-    :param scb_t \*scb:
+    :param scb:
         completed command
+    :type scb: scb_t \*
 
 .. _`megaraid_mbox_mm_done.description`:
 
@@ -1033,11 +1077,13 @@ gather_hbainfo
 
     HBA characteristics for the applications
 
-    :param adapter_t \*adapter:
+    :param adapter:
         HBA soft state
+    :type adapter: adapter_t \*
 
-    :param mraid_hba_info_t \*hinfo:
+    :param hinfo:
         pointer to the caller's host info strucuture
+    :type hinfo: mraid_hba_info_t \*
 
 .. _`megaraid_sysfs_alloc_resources`:
 
@@ -1048,8 +1094,9 @@ megaraid_sysfs_alloc_resources
 
     allocate sysfs related resources
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_sysfs_alloc_resources.description`:
 
@@ -1073,8 +1120,9 @@ megaraid_sysfs_free_resources
 
     free sysfs related resources
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_sysfs_free_resources.description`:
 
@@ -1092,8 +1140,9 @@ megaraid_sysfs_get_ldmap_done
 
     callback for get ldmap
 
-    :param uioc_t \*uioc:
+    :param uioc:
         completed packet
+    :type uioc: uioc_t \*
 
 .. _`megaraid_sysfs_get_ldmap_done.description`:
 
@@ -1111,8 +1160,9 @@ megaraid_sysfs_get_ldmap_timeout
 
     timeout handling for get ldmap
 
-    :param struct timer_list \*t:
+    :param t:
         timed out timer
+    :type t: struct timer_list \*
 
 .. _`megaraid_sysfs_get_ldmap_timeout.description`:
 
@@ -1132,8 +1182,9 @@ megaraid_sysfs_get_ldmap
 
     get update logical drive map
 
-    :param adapter_t \*adapter:
+    :param adapter:
         controller's soft state
+    :type adapter: adapter_t \*
 
 .. _`megaraid_sysfs_get_ldmap.description`:
 
@@ -1167,14 +1218,17 @@ megaraid_sysfs_show_app_hndl
 
     display application handle for this adapter
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer to send data to
+    :type buf: char \*
 
 .. _`megaraid_sysfs_show_app_hndl.description`:
 
@@ -1194,14 +1248,17 @@ megaraid_sysfs_show_ldnum
 
     display the logical drive number for this device
 
-    :param struct device \*dev:
+    :param dev:
         device object representation for the scsi device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute to show
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer to send data to
+    :type buf: char \*
 
 .. _`megaraid_sysfs_show_ldnum.description`:
 

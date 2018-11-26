@@ -8,11 +8,13 @@ vbg_misc_device_close
 
 .. c:function:: int vbg_misc_device_close(struct inode *inode, struct file *filp)
 
-    :param struct inode \*inode:
+    :param inode:
         Pointer to inode info structure.
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         Associated file pointer.
+    :type filp: struct file \*
 
 .. _`vbg_misc_device_close.return`:
 
@@ -28,14 +30,17 @@ vbg_misc_device_ioctl
 
 .. c:function:: long vbg_misc_device_ioctl(struct file *filp, unsigned int req, unsigned long arg)
 
-    :param struct file \*filp:
+    :param filp:
         Associated file pointer.
+    :type filp: struct file \*
 
-    :param unsigned int req:
+    :param req:
         The request specified to \ :c:func:`ioctl`\ .
+    :type req: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         The argument specified to \ :c:func:`ioctl`\ .
+    :type arg: unsigned long
 
 .. _`vbg_misc_device_ioctl.return`:
 
@@ -51,8 +56,9 @@ vbg_input_open
 
 .. c:function:: int vbg_input_open(struct input_dev *input)
 
-    :param struct input_dev \*input:
+    :param input:
         *undescribed*
+    :type input: struct input_dev \*
 
 .. _`vbg_input_open.description`:
 
@@ -68,8 +74,9 @@ vbg_input_close
 
 .. c:function:: void vbg_input_close(struct input_dev *input)
 
-    :param struct input_dev \*input:
+    :param input:
         *undescribed*
+    :type input: struct input_dev \*
 
 .. _`vbg_input_close.description`:
 
@@ -85,8 +92,9 @@ vbg_create_input_device
 
 .. c:function:: int vbg_create_input_device(struct vbg_dev *gdev)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         *undescribed*
+    :type gdev: struct vbg_dev \*
 
 .. _`vbg_create_input_device.return`:
 
@@ -102,11 +110,13 @@ vbg_pci_probe
 
 .. c:function:: int vbg_pci_probe(struct pci_dev *pci, const struct pci_device_id *id)
 
-    :param struct pci_dev \*pci:
+    :param pci:
         *undescribed*
+    :type pci: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct pci_device_id \*
 
 .. _`vbg_pci_probe.return`:
 
@@ -122,8 +132,9 @@ vbg_linux_mouse_event
 
 .. c:function:: void vbg_linux_mouse_event(struct vbg_dev *gdev)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The device extension.
+    :type gdev: struct vbg_dev \*
 
 .. _`vbg_linux_mouse_event.description`:
 

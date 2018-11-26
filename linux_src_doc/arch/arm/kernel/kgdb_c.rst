@@ -10,8 +10,9 @@ kgdb_arch_init
 
     Perform any architecture specific initalization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_arch_init.description`:
 
@@ -30,8 +31,9 @@ kgdb_arch_exit
 
     Perform any architecture specific uninitalization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_arch_exit.description`:
 

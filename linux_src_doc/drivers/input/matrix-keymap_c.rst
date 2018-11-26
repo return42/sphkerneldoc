@@ -10,15 +10,18 @@ matrix_keypad_parse_properties
 
     Read properties of matrix keypad
 
-    :param struct device \*dev:
+    :param dev:
         Device containing properties
+    :type dev: struct device \*
 
-    :param unsigned int \*rows:
+    :param rows:
         Returns number of matrix rows
+    :type rows: unsigned int \*
 
-    :param unsigned int \*cols:
+    :param cols:
         Returns number of matrix columns
         \ ``return``\  0 if OK, <0 on error
+    :type cols: unsigned int \*
 
 .. _`matrix_keypad_build_keymap`:
 
@@ -29,25 +32,31 @@ matrix_keypad_build_keymap
 
     convert platform keymap into matrix keymap
 
-    :param const struct matrix_keymap_data \*keymap_data:
+    :param keymap_data:
         keymap supplied by the platform code
+    :type keymap_data: const struct matrix_keymap_data \*
 
-    :param const char \*keymap_name:
+    :param keymap_name:
         name of device tree property containing keymap (if device
         tree support is enabled).
+    :type keymap_name: const char \*
 
-    :param unsigned int rows:
+    :param rows:
         number of rows in target keymap array
+    :type rows: unsigned int
 
-    :param unsigned int cols:
+    :param cols:
         number of cols in target keymap array
+    :type cols: unsigned int
 
-    :param unsigned short \*keymap:
+    :param keymap:
         expanded version of keymap that is suitable for use by
         matrix keyboard driver
+    :type keymap: unsigned short \*
 
-    :param struct input_dev \*input_dev:
+    :param input_dev:
         input devices for which we are setting up the keymap
+    :type input_dev: struct input_dev \*
 
 .. _`matrix_keypad_build_keymap.description`:
 

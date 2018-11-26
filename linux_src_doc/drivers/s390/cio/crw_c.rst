@@ -10,11 +10,13 @@ crw_register_handler
 
     register a channel report word handler
 
-    :param int rsc:
+    :param rsc:
         reporting source code to handle
+    :type rsc: int
 
-    :param crw_handler_t handler:
+    :param handler:
         handler to be registered
+    :type handler: crw_handler_t
 
 .. _`crw_register_handler.description`:
 
@@ -32,8 +34,9 @@ crw_unregister_handler
 
     unregister a channel report word handler
 
-    :param int rsc:
+    :param rsc:
         reporting source code to handle
+    :type rsc: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ intel_guc_fw_init_early
 
     initializes GuC firmware struct
 
-    :param struct intel_guc \*guc:
+    :param guc:
         intel_guc struct
+    :type guc: struct intel_guc \*
 
 .. _`intel_guc_fw_init_early.description`:
 
@@ -29,8 +30,9 @@ intel_guc_fw_upload
 
     load GuC uCode to device
 
-    :param struct intel_guc \*guc:
+    :param guc:
         intel_guc structure
+    :type guc: struct intel_guc \*
 
 .. _`intel_guc_fw_upload.description`:
 

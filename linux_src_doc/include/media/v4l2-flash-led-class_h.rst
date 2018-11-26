@@ -176,8 +176,9 @@ v4l2_subdev_to_v4l2_flash
 
     Returns a \ :c:type:`struct v4l2_flash <v4l2_flash>`\  from the \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  embedded on it.
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
 .. _`v4l2_ctrl_to_v4l2_flash`:
 
@@ -188,8 +189,9 @@ v4l2_ctrl_to_v4l2_flash
 
     Returns a \ :c:type:`struct v4l2_flash <v4l2_flash>`\  from the \ :c:type:`struct v4l2_ctrl <v4l2_ctrl>`\  embedded on it.
 
-    :param struct v4l2_ctrl \*c:
+    :param c:
         pointer to \ :c:type:`struct v4l2_ctrl <v4l2_ctrl>`\ 
+    :type c: struct v4l2_ctrl \*
 
 .. _`v4l2_flash_init`:
 
@@ -200,20 +202,25 @@ v4l2_flash_init
 
     initialize V4L2 flash led sub-device
 
-    :param struct device \*dev:
+    :param dev:
         flash device, e.g. an I2C device
+    :type dev: struct device \*
 
-    :param struct fwnode_handle \*fwn:
+    :param fwn:
         fwnode_handle of the LED, may be NULL if the same as device's
+    :type fwn: struct fwnode_handle \*
 
-    :param struct led_classdev_flash \*fled_cdev:
+    :param fled_cdev:
         LED flash class device to wrap
+    :type fled_cdev: struct led_classdev_flash \*
 
-    :param const struct v4l2_flash_ops \*ops:
+    :param ops:
         V4L2 Flash device ops
+    :type ops: const struct v4l2_flash_ops \*
 
-    :param struct v4l2_flash_config \*config:
+    :param config:
         initialization data for V4L2 Flash sub-device
+    :type config: struct v4l2_flash_config \*
 
 .. _`v4l2_flash_init.description`:
 
@@ -243,17 +250,21 @@ v4l2_flash_indicator_init
 
     initialize V4L2 indicator sub-device
 
-    :param struct device \*dev:
+    :param dev:
         flash device, e.g. an I2C device
+    :type dev: struct device \*
 
-    :param struct fwnode_handle \*fwn:
+    :param fwn:
         fwnode_handle of the LED, may be NULL if the same as device's
+    :type fwn: struct fwnode_handle \*
 
-    :param struct led_classdev \*iled_cdev:
+    :param iled_cdev:
         LED flash class device representing the indicator LED
+    :type iled_cdev: struct led_classdev \*
 
-    :param struct v4l2_flash_config \*config:
+    :param config:
         initialization data for V4L2 Flash sub-device
+    :type config: struct v4l2_flash_config \*
 
 .. _`v4l2_flash_indicator_init.description`:
 
@@ -283,8 +294,9 @@ v4l2_flash_release
 
     release V4L2 Flash sub-device
 
-    :param struct v4l2_flash \*v4l2_flash:
+    :param v4l2_flash:
         the V4L2 Flash sub-device to release
+    :type v4l2_flash: struct v4l2_flash \*
 
 .. _`v4l2_flash_release.description`:
 

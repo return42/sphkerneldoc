@@ -10,8 +10,9 @@ writeback_in_progress
 
     determine whether there is writeback in progress
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         bdi_writeback of interest
+    :type wb: struct bdi_writeback \*
 
 .. _`writeback_in_progress.description`:
 
@@ -30,8 +31,9 @@ inode_cgwb_enabled
 
     test whether cgroup writeback is enabled on an inode
 
-    :param struct inode \*inode:
+    :param inode:
         inode of interest
+    :type inode: struct inode \*
 
 .. _`inode_cgwb_enabled.description`:
 
@@ -54,8 +56,9 @@ wb_find_current
 
     find wb for \ ``current``\  on a bdi
 
-    :param struct backing_dev_info \*bdi:
+    :param bdi:
         bdi of interest
+    :type bdi: struct backing_dev_info \*
 
 .. _`wb_find_current.description`:
 
@@ -75,11 +78,13 @@ wb_get_create_current
 
     get or create wb for \ ``current``\  on a bdi
 
-    :param struct backing_dev_info \*bdi:
+    :param bdi:
         bdi of interest
+    :type bdi: struct backing_dev_info \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation mask
+    :type gfp: gfp_t
 
 .. _`wb_get_create_current.description`:
 
@@ -99,8 +104,9 @@ inode_to_wb_is_valid
 
     test whether an inode has a wb associated
 
-    :param struct inode \*inode:
+    :param inode:
         inode of interest
+    :type inode: struct inode \*
 
 .. _`inode_to_wb_is_valid.description`:
 
@@ -119,8 +125,9 @@ inode_to_wb
 
     determine the wb of an inode
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of interest
+    :type inode: const struct inode \*
 
 .. _`inode_to_wb.description`:
 
@@ -128,7 +135,7 @@ Description
 -----------
 
 Returns the wb \ ``inode``\  is currently associated with.  The caller must be
-holding either \ ``inode``\ ->i_lock, the i_pages lock, or the
+holding either \ ``inode->i_lock``\ , the i_pages lock, or the
 associated wb's list_lock.
 
 .. _`unlocked_inode_to_wb_begin`:
@@ -140,11 +147,13 @@ unlocked_inode_to_wb_begin
 
     begin unlocked inode wb access transaction
 
-    :param struct inode \*inode:
+    :param inode:
         target inode
+    :type inode: struct inode \*
 
-    :param struct wb_lock_cookie \*cookie:
+    :param cookie:
         output param, to be passed to the end function
+    :type cookie: struct wb_lock_cookie \*
 
 .. _`unlocked_inode_to_wb_begin.description`:
 
@@ -170,11 +179,13 @@ unlocked_inode_to_wb_end
 
     end inode wb access transaction
 
-    :param struct inode \*inode:
+    :param inode:
         target inode
+    :type inode: struct inode \*
 
-    :param struct wb_lock_cookie \*cookie:
+    :param cookie:
         \ ``cookie``\  from \ :c:func:`unlocked_inode_to_wb_begin`\ 
+    :type cookie: struct wb_lock_cookie \*
 
 .. This file was automatic generated / don't edit.
 

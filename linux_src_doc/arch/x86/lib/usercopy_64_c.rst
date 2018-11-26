@@ -10,11 +10,13 @@ clean_cache_range
 
     write back a cache range with CLWB
 
-    :param void \*addr:
+    :param addr:
         *undescribed*
+    :type addr: void \*
 
-    :param size_t size:
+    :param size:
         number of bytes to write back
+    :type size: size_t
 
 .. _`clean_cache_range.description`:
 

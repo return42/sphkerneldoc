@@ -10,14 +10,17 @@ mic_x100_write_spad
 
     write to the scratchpad register
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param unsigned int idx:
+    :param idx:
         index to the scratchpad register, 0 based
+    :type idx: unsigned int
 
-    :param u32 val:
+    :param val:
         the data value to put into the register
+    :type val: u32
 
 .. _`mic_x100_write_spad.description`:
 
@@ -43,11 +46,13 @@ mic_x100_read_spad
 
     read from the scratchpad register
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param unsigned int idx:
+    :param idx:
         index to scratchpad register, 0 based
+    :type idx: unsigned int
 
 .. _`mic_x100_read_spad.description`:
 
@@ -72,8 +77,9 @@ mic_x100_enable_interrupts
 
     Enable interrupts.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_disable_interrupts`:
 
@@ -84,8 +90,9 @@ mic_x100_disable_interrupts
 
     Disable interrupts.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_send_sbox_intr`:
 
@@ -96,11 +103,13 @@ mic_x100_send_sbox_intr
 
     Send an MIC_X100_SBOX interrupt to MIC.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param int doorbell:
+    :param doorbell:
         *undescribed*
+    :type doorbell: int
 
 .. _`mic_x100_send_rdmasr_intr`:
 
@@ -111,11 +120,13 @@ mic_x100_send_rdmasr_intr
 
     Send an RDMASR interrupt to MIC.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param int doorbell:
+    :param doorbell:
         *undescribed*
+    :type doorbell: int
 
 .. _`mic_x100_send_intr`:
 
@@ -126,11 +137,13 @@ mic_x100_send_intr
 
     Send interrupt to MIC.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param int doorbell:
+    :param doorbell:
         doorbell number.
+    :type doorbell: int
 
 .. _`mic_x100_ack_interrupt`:
 
@@ -141,8 +154,9 @@ mic_x100_ack_interrupt
 
     Read the interrupt sources register and clear it. This function will be called in the MSI/INTx case.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         Pointer to mic_device instance.
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_ack_interrupt.return`:
 
@@ -160,8 +174,9 @@ mic_x100_intr_workarounds
 
     These hardware specific workarounds are to be invoked everytime an interrupt is handled.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         Pointer to mic_device instance.
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_intr_workarounds.return`:
 
@@ -179,8 +194,9 @@ mic_x100_hw_intr_init
 
     Initialize h/w specific interrupt information.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_read_msi_to_src_map`:
 
@@ -191,11 +207,13 @@ mic_x100_read_msi_to_src_map
 
     read from the MSI mapping registers
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param int idx:
+    :param idx:
         index to the mapping register, 0 based
+    :type idx: int
 
 .. _`mic_x100_read_msi_to_src_map.description`:
 
@@ -220,18 +238,22 @@ mic_x100_program_msi_to_src_map
 
     program the MSI mapping registers
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param int idx:
+    :param idx:
         index to the mapping register, 0 based
+    :type idx: int
 
-    :param int offset:
+    :param offset:
         The bit offset in the register that needs to be updated.
+    :type offset: int
 
-    :param bool set:
+    :param set:
         boolean specifying if the bit in the specified offset needs
         to be set or cleared.
+    :type set: bool
 
 .. _`mic_x100_program_msi_to_src_map.return`:
 
@@ -249,8 +271,9 @@ mic_x100_get_apic_id
 
     Get bootstrap APIC ID.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_send_firmware_intr`:
 
@@ -261,8 +284,9 @@ mic_x100_send_firmware_intr
 
     Send an interrupt to the firmware on MIC.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_hw_reset`:
 
@@ -273,8 +297,9 @@ mic_x100_hw_reset
 
     Reset the MIC device.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_load_command_line`:
 
@@ -285,11 +310,13 @@ mic_x100_load_command_line
 
     Load command line to MIC.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param const struct firmware \*fw:
+    :param fw:
         the firmware image
+    :type fw: const struct firmware \*
 
 .. _`mic_x100_load_command_line.return`:
 
@@ -307,8 +334,9 @@ mic_x100_load_ramdisk
 
     Load ramdisk to MIC.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_load_ramdisk.return`:
 
@@ -326,8 +354,9 @@ mic_x100_get_boot_addr
 
     Get MIC boot address.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_get_boot_addr.description`:
 
@@ -354,11 +383,13 @@ mic_x100_load_firmware
 
     Load firmware to MIC.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param const char \*buf:
+    :param buf:
         buffer containing boot string including firmware/ramdisk path.
+    :type buf: const char \*
 
 .. _`mic_x100_load_firmware.return`:
 
@@ -376,8 +407,9 @@ mic_x100_get_postcode
 
     Get postcode status from firmware.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_get_postcode.return`:
 
@@ -395,14 +427,17 @@ mic_x100_smpt_set
 
     Update an SMPT entry with a DMA address.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         *undescribed*
+    :type dma_addr: dma_addr_t
 
-    :param u8 index:
+    :param index:
         *undescribed*
+    :type index: u8
 
 .. _`mic_x100_smpt_set.return`:
 
@@ -420,8 +455,9 @@ mic_x100_smpt_hw_init
 
     Initialize SMPT X100 specific fields.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_x100_smpt_hw_init.return`:
 

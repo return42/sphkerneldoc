@@ -10,12 +10,14 @@ rxe_mmap
 
     create a new mmap region
 
-    :param struct ib_ucontext \*context:
+    :param context:
         the IB user context of the process making the \ :c:func:`mmap`\  call
+    :type context: struct ib_ucontext \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the VMA to be initialized
         Return zero if the mmap is OK. Otherwise, return an errno.
+    :type vma: struct vm_area_struct \*
 
 .. This file was automatic generated / don't edit.
 

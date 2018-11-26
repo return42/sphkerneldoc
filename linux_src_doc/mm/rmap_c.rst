@@ -10,8 +10,9 @@
 
     attach an anon_vma to a memory region
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the memory region in question
+    :type vma: struct vm_area_struct \*
 
 .. _`__anon_vma_prepare.description`:
 
@@ -51,17 +52,21 @@ page_referenced
 
     test if the page was referenced
 
-    :param struct page \*page:
+    :param page:
         the page to test
+    :type page: struct page \*
 
-    :param int is_locked:
+    :param is_locked:
         caller holds lock on the page
+    :type is_locked: int
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         target memory cgroup
+    :type memcg: struct mem_cgroup \*
 
-    :param unsigned long \*vm_flags:
+    :param vm_flags:
         collect encountered vma->vm_flags who actually referenced the page
+    :type vm_flags: unsigned long \*
 
 .. _`page_referenced.description`:
 
@@ -80,11 +85,13 @@ page_move_anon_rmap
 
     move a page to our anon_vma
 
-    :param struct page \*page:
+    :param page:
         the page to move to our anon_vma
+    :type page: struct page \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the vma the page belongs to
+    :type vma: struct vm_area_struct \*
 
 .. _`page_move_anon_rmap.description`:
 
@@ -105,17 +112,21 @@ processes.
 
     set up new anonymous rmap
 
-    :param struct page \*page:
+    :param page:
         Page to add to rmap
+    :type page: struct page \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VM area to add page to.
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long address:
+    :param address:
         User virtual address of the mapping
+    :type address: unsigned long
 
-    :param int exclusive:
+    :param exclusive:
         the page is exclusively owned by the current process
+    :type exclusive: int
 
 .. _`__page_check_anon_rmap`:
 
@@ -126,14 +137,17 @@ processes.
 
     sanity check anonymous rmap addition
 
-    :param struct page \*page:
+    :param page:
         the page to add the mapping to
+    :type page: struct page \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the vm area in which the mapping is added
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long address:
+    :param address:
         the user virtual address mapped
+    :type address: unsigned long
 
 .. _`page_add_anon_rmap`:
 
@@ -144,17 +158,21 @@ page_add_anon_rmap
 
     add pte mapping to an anonymous page
 
-    :param struct page \*page:
+    :param page:
         the page to add the mapping to
+    :type page: struct page \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the vm area in which the mapping is added
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long address:
+    :param address:
         the user virtual address mapped
+    :type address: unsigned long
 
-    :param bool compound:
+    :param compound:
         charge the page as compound or small page
+    :type compound: bool
 
 .. _`page_add_anon_rmap.description`:
 
@@ -181,17 +199,21 @@ page_add_new_anon_rmap
 
     add pte mapping to a new anonymous page
 
-    :param struct page \*page:
+    :param page:
         the page to add the mapping to
+    :type page: struct page \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the vm area in which the mapping is added
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long address:
+    :param address:
         the user virtual address mapped
+    :type address: unsigned long
 
-    :param bool compound:
+    :param compound:
         charge the page as compound or small page
+    :type compound: bool
 
 .. _`page_add_new_anon_rmap.description`:
 
@@ -211,11 +233,13 @@ page_add_file_rmap
 
     add pte mapping to a file page
 
-    :param struct page \*page:
+    :param page:
         the page to add the mapping to
+    :type page: struct page \*
 
-    :param bool compound:
+    :param compound:
         charge the page as compound or small page
+    :type compound: bool
 
 .. _`page_add_file_rmap.description`:
 
@@ -233,11 +257,13 @@ page_remove_rmap
 
     take down pte mapping from a page
 
-    :param struct page \*page:
+    :param page:
         page to remove mapping from
+    :type page: struct page \*
 
-    :param bool compound:
+    :param compound:
         uncharge the page as compound or small page
+    :type compound: bool
 
 .. _`page_remove_rmap.description`:
 
@@ -255,11 +281,13 @@ try_to_unmap
 
     try to remove all page table mappings to a page
 
-    :param struct page \*page:
+    :param page:
         the page to get unmapped
+    :type page: struct page \*
 
-    :param enum ttu_flags flags:
+    :param flags:
         action and flags
+    :type flags: enum ttu_flags
 
 .. _`try_to_unmap.description`:
 
@@ -280,8 +308,9 @@ try_to_munlock
 
     try to munlock a page
 
-    :param struct page \*page:
+    :param page:
         the page to be munlocked
+    :type page: struct page \*
 
 .. _`try_to_munlock.description`:
 

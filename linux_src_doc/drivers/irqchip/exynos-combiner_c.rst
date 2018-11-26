@@ -10,8 +10,9 @@ combiner_suspend
 
     save interrupt combiner state before suspend
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`combiner_suspend.description`:
 
@@ -30,8 +31,9 @@ combiner_resume
 
     restore interrupt combiner state after resume
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`combiner_resume.description`:
 

@@ -61,8 +61,9 @@ vmw_fence_obj_destroy
 
     Typically the vmw_fences_update function is called
 
-    :param struct dma_fence \*f:
+    :param f:
         *undescribed*
+    :type f: struct dma_fence \*
 
 .. _`vmw_fence_obj_destroy.description`:
 
@@ -95,8 +96,9 @@ vmw_fence_work_func
 
     This is done from a workqueue so we don't have to execute signal actions from atomic context.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`vmw_fence_goal_new_locked`:
 
@@ -107,11 +109,13 @@ vmw_fence_goal_new_locked
 
     Figure out a new device fence goal seqno if needed.
 
-    :param struct vmw_fence_manager \*fman:
+    :param fman:
         Pointer to a fence manager.
+    :type fman: struct vmw_fence_manager \*
 
-    :param u32 passed_seqno:
+    :param passed_seqno:
         The seqno the device currently signals as passed.
+    :type passed_seqno: u32
 
 .. _`vmw_fence_goal_new_locked.description`:
 
@@ -136,9 +140,10 @@ vmw_fence_goal_check_locked
 
     Replace the device fence goal seqno if needed.
 
-    :param struct vmw_fence_obj \*fence:
+    :param fence:
         Pointer to a struct vmw_fence_obj the seqno of which should be
         considered as a device fence goal.
+    :type fence: struct vmw_fence_obj \*
 
 .. _`vmw_fence_goal_check_locked.description`:
 
@@ -162,11 +167,13 @@ vmw_wait_dma_fence
 
     Wait for a dma fence
 
-    :param struct vmw_fence_manager \*fman:
+    :param fman:
         pointer to a fence manager
+    :type fman: struct vmw_fence_manager \*
 
-    :param struct dma_fence \*fence:
+    :param fence:
         DMA fence to wait on
+    :type fence: struct dma_fence \*
 
 .. _`vmw_wait_dma_fence.description`:
 
@@ -185,8 +192,9 @@ vmw_fence_fifo_down
 
     signal all unsignaled fence objects.
 
-    :param struct vmw_fence_manager \*fman:
+    :param fman:
         *undescribed*
+    :type fman: struct vmw_fence_manager \*
 
 .. _`vmw_fence_obj_lookup`:
 
@@ -197,11 +205,13 @@ vmw_fence_obj_lookup
 
     Look up a user-space fence object
 
-    :param struct ttm_object_file \*tfile:
+    :param tfile:
         A struct ttm_object_file identifying the caller.
+    :type tfile: struct ttm_object_file \*
 
-    :param u32 handle:
+    :param handle:
         A handle identifying the fence object.
+    :type handle: u32
 
 .. _`vmw_fence_obj_lookup.description`:
 
@@ -220,9 +230,10 @@ vmw_event_fence_action_seq_passed
 
 .. c:function:: void vmw_event_fence_action_seq_passed(struct vmw_fence_action *action)
 
-    :param struct vmw_fence_action \*action:
+    :param action:
         The struct vmw_fence_action embedded in a struct
         vmw_event_fence_action.
+    :type action: struct vmw_fence_action \*
 
 .. _`vmw_event_fence_action_seq_passed.description`:
 
@@ -240,9 +251,10 @@ vmw_event_fence_action_cleanup
 
 .. c:function:: void vmw_event_fence_action_cleanup(struct vmw_fence_action *action)
 
-    :param struct vmw_fence_action \*action:
+    :param action:
         The struct vmw_fence_action embedded in a struct
         vmw_event_fence_action.
+    :type action: struct vmw_fence_action \*
 
 .. _`vmw_event_fence_action_cleanup.description`:
 
@@ -261,11 +273,13 @@ vmw_fence_obj_add_action
 
     Add an action to a fence object.
 
-    :param struct vmw_fence_obj \*fence:
+    :param fence:
         *undescribed*
+    :type fence: struct vmw_fence_obj \*
 
-    :param struct vmw_fence_action \*action:
+    :param action:
         *undescribed*
+    :type action: struct vmw_fence_action \*
 
 .. _`vmw_fence_obj_add_action.description`:
 
@@ -287,24 +301,30 @@ vmw_event_fence_action_queue
 
     Post an event for sending when a fence object seqno has passed.
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         The file connection on which the event should be posted.
+    :type file_priv: struct drm_file \*
 
-    :param struct vmw_fence_obj \*fence:
+    :param fence:
         The fence object on which to post the event.
+    :type fence: struct vmw_fence_obj \*
 
-    :param struct drm_pending_event \*event:
+    :param event:
         Event to be posted. This event should've been alloced
         using k[mz]alloc, and should've been completely initialized.
+    :type event: struct drm_pending_event \*
 
-    :param uint32_t \*tv_sec:
+    :param tv_sec:
         *undescribed*
+    :type tv_sec: uint32_t \*
 
-    :param uint32_t \*tv_usec:
+    :param tv_usec:
         *undescribed*
+    :type tv_usec: uint32_t \*
 
-    :param bool interruptible:
+    :param interruptible:
         Interruptible waits if possible.
+    :type interruptible: bool
 
 .. _`vmw_event_fence_action_queue.description`:
 

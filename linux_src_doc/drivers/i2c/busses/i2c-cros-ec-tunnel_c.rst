@@ -58,11 +58,13 @@ ec_i2c_count_message
 
     Count bytes needed for ec_i2c_construct_message
 
-    :param const struct i2c_msg i2c_msgs:
+    :param i2c_msgs:
         The i2c messages to read
+    :type i2c_msgs: const struct i2c_msg
 
-    :param int num:
+    :param num:
         The number of i2c messages.
+    :type num: int
 
 .. _`ec_i2c_count_message.description`:
 
@@ -80,17 +82,21 @@ ec_i2c_construct_message
 
     construct a message to go to the EC
 
-    :param u8 \*buf:
+    :param buf:
         The buffer to fill.  We assume that the buffer is big enough.
+    :type buf: u8 \*
 
-    :param const struct i2c_msg i2c_msgs:
+    :param i2c_msgs:
         The i2c messages to read.
+    :type i2c_msgs: const struct i2c_msg
 
-    :param int num:
+    :param num:
         The number of i2c messages.
+    :type num: int
 
-    :param u16 bus_num:
+    :param bus_num:
         The remote bus number we want to talk to.
+    :type bus_num: u16
 
 .. _`ec_i2c_construct_message.description`:
 
@@ -111,11 +117,13 @@ ec_i2c_count_response
 
     Count bytes needed for ec_i2c_parse_response
 
-    :param struct i2c_msg i2c_msgs:
+    :param i2c_msgs:
         The i2c messages to to fill up.
+    :type i2c_msgs: struct i2c_msg
 
-    :param int num:
+    :param num:
         The number of i2c messages expected.
+    :type num: int
 
 .. _`ec_i2c_count_response.description`:
 
@@ -133,15 +141,18 @@ ec_i2c_parse_response
 
     Parse a response from the EC
 
-    :param const u8 \*buf:
+    :param buf:
         The buffer to parse.
+    :type buf: const u8 \*
 
-    :param struct i2c_msg i2c_msgs:
+    :param i2c_msgs:
         The i2c messages to to fill up.
+    :type i2c_msgs: struct i2c_msg
 
-    :param int \*num:
+    :param num:
         The number of i2c messages; will be modified to include the actual
         number received.
+    :type num: int \*
 
 .. _`ec_i2c_parse_response.description`:
 

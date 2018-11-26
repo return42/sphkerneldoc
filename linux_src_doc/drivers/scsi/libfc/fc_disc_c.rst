@@ -10,16 +10,9 @@ fc_disc_stop_rports
 
     Delete all the remote ports associated with the lport
 
-    :param struct fc_disc \*disc:
+    :param disc:
         The discovery job to stop remote ports on
-
-.. _`fc_disc_stop_rports.locking-note`:
-
-Locking Note
-------------
-
-This function expects that the lport mutex is locked before
-calling it.
+    :type disc: struct fc_disc \*
 
 .. _`fc_disc_recv_rscn_req`:
 
@@ -30,19 +23,13 @@ fc_disc_recv_rscn_req
 
     Handle Registered State Change Notification (RSCN)
 
-    :param struct fc_disc \*disc:
+    :param disc:
         The discovery object to which the RSCN applies
+    :type disc: struct fc_disc \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The RSCN frame
-
-.. _`fc_disc_recv_rscn_req.locking-note`:
-
-Locking Note
-------------
-
-This function expects that the disc_mutex is locked
-before it is called.
+    :type fp: struct fc_frame \*
 
 .. _`fc_disc_recv_req`:
 
@@ -53,11 +40,13 @@ fc_disc_recv_req
 
     Handle incoming requests
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port receiving the request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The request frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_disc_recv_req.locking-note`:
 
@@ -77,16 +66,9 @@ fc_disc_restart
 
     Restart discovery
 
-    :param struct fc_disc \*disc:
+    :param disc:
         The discovery object to be restarted
-
-.. _`fc_disc_restart.locking-note`:
-
-Locking Note
-------------
-
-This function expects that the disc mutex
-is already locked.
+    :type disc: struct fc_disc \*
 
 .. _`fc_disc_start`:
 
@@ -100,8 +82,9 @@ fc_disc_start
     :param void (\*disc_callback)(struct fc_lport \*, enum fc_disc_event):
         Callback function to be called when discovery is complete
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to have discovery started on
+    :type lport: struct fc_lport \*
 
 .. _`fc_disc_done`:
 
@@ -112,20 +95,13 @@ fc_disc_done
 
     Discovery has been completed
 
-    :param struct fc_disc \*disc:
+    :param disc:
         The discovery context
+    :type disc: struct fc_disc \*
 
-    :param enum fc_disc_event event:
+    :param event:
         The discovery completion status
-
-.. _`fc_disc_done.locking-note`:
-
-Locking Note
-------------
-
-This function expects that the disc mutex is locked before
-it is called. The discovery callback is then made with the lock released,
-and the lock is re-taken before returning from this function
+    :type event: enum fc_disc_event
 
 .. _`fc_disc_error`:
 
@@ -136,11 +112,13 @@ fc_disc_error
 
     Handle error on dNS request
 
-    :param struct fc_disc \*disc:
+    :param disc:
         The discovery context
+    :type disc: struct fc_disc \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The error code encoded as a frame pointer
+    :type fp: struct fc_frame \*
 
 .. _`fc_disc_gpn_ft_req`:
 
@@ -151,16 +129,9 @@ fc_disc_gpn_ft_req
 
     Send Get Port Names by FC-4 type (GPN_FT) request
 
-    :param struct fc_disc \*disc:
+    :param disc:
         *undescribed*
-
-.. _`fc_disc_gpn_ft_req.locking-note`:
-
-Locking Note
-------------
-
-This function expects that the disc_mutex is locked
-before it is called.
+    :type disc: struct fc_disc \*
 
 .. _`fc_disc_gpn_ft_parse`:
 
@@ -171,14 +142,17 @@ fc_disc_gpn_ft_parse
 
     Parse the body of the dNS GPN_FT response.
 
-    :param struct fc_disc \*disc:
+    :param disc:
         *undescribed*
+    :type disc: struct fc_disc \*
 
-    :param void \*buf:
+    :param buf:
         The GPN_FT response buffer
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         The size of response buffer
+    :type len: size_t
 
 .. _`fc_disc_gpn_ft_parse.description`:
 
@@ -196,8 +170,9 @@ fc_disc_timeout
 
     Handler for discovery timeouts
 
-    :param struct work_struct \*work:
+    :param work:
         Structure holding discovery context that needs to retry discovery
+    :type work: struct work_struct \*
 
 .. _`fc_disc_gpn_ft_resp`:
 
@@ -208,14 +183,17 @@ fc_disc_gpn_ft_resp
 
     Handle a response frame from Get Port Names (GPN_FT)
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence that the GPN_FT response was received on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The GPN_FT response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*disc_arg:
+    :param disc_arg:
         *undescribed*
+    :type disc_arg: void \*
 
 .. _`fc_disc_gpn_ft_resp.locking-note`:
 
@@ -234,14 +212,17 @@ fc_disc_gpn_id_resp
 
     Handle a response frame from Get Port Names (GPN_ID)
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence the GPN_ID is on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*rdata_arg:
+    :param rdata_arg:
         The remote port that sent the GPN_ID response
+    :type rdata_arg: void \*
 
 .. _`fc_disc_gpn_id_resp.locking-note`:
 
@@ -259,19 +240,19 @@ fc_disc_gpn_id_req
 
     Send Get Port Names by ID (GPN_ID) request
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to initiate discovery on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         remote port private data
+    :type rdata: struct fc_rport_priv \*
 
-.. _`fc_disc_gpn_id_req.locking-note`:
+.. _`fc_disc_gpn_id_req.description`:
 
-Locking Note
-------------
+Description
+-----------
 
-This function expects that the disc_mutex is locked
-before it is called.
 On failure, an error code is returned.
 
 .. _`fc_disc_single`:
@@ -283,19 +264,13 @@ fc_disc_single
 
     Discover the directory information for a single target
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port the remote port is associated with
+    :type lport: struct fc_lport \*
 
-    :param struct fc_disc_port \*dp:
+    :param dp:
         The port to rediscover
-
-.. _`fc_disc_single.locking-note`:
-
-Locking Note
-------------
-
-This function expects that the disc_mutex is locked
-before it is called.
+    :type dp: struct fc_disc_port \*
 
 .. _`fc_disc_stop`:
 
@@ -306,8 +281,9 @@ fc_disc_stop
 
     Stop discovery for a given lport
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that discovery should stop on
+    :type lport: struct fc_lport \*
 
 .. _`fc_disc_stop_final`:
 
@@ -318,8 +294,9 @@ fc_disc_stop_final
 
     Stop discovery for a given lport
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The lport that discovery should stop on
+    :type lport: struct fc_lport \*
 
 .. _`fc_disc_stop_final.description`:
 
@@ -338,11 +315,13 @@ fc_disc_config
 
     Configure the discovery layer for a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that needs the discovery layer to be configured
+    :type lport: struct fc_lport \*
 
-    :param void \*priv:
+    :param priv:
         Private data structre for users of the discovery layer
+    :type priv: void \*
 
 .. _`fc_disc_init`:
 
@@ -353,8 +332,9 @@ fc_disc_init
 
     Initialize the discovery layer for a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that needs the discovery layer to be initialized
+    :type lport: struct fc_lport \*
 
 .. This file was automatic generated / don't edit.
 

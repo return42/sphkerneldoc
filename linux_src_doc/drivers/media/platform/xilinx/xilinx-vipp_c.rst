@@ -18,10 +18,8 @@ Definition
 .. code-block:: c
 
     struct xvip_graph_entity {
-        struct list_head list;
-        struct device_node *node;
-        struct media_entity *entity;
         struct v4l2_async_subdev asd;
+        struct media_entity *entity;
         struct v4l2_subdev *subdev;
     }
 
@@ -30,17 +28,11 @@ Definition
 Members
 -------
 
-list
-    list entry in a graph entities list
-
-node
-    the entity's DT node
+asd
+    subdev asynchronous registration information
 
 entity
     media entity, from the corresponding V4L2 subdev
-
-asd
-    subdev asynchronous registration information
 
 subdev
     V4L2 subdev

@@ -10,11 +10,13 @@ ptrace_may_access
 
     check whether the caller is permitted to access a target task.
 
-    :param struct task_struct \*task:
+    :param task:
         target task
+    :type task: struct task_struct \*
 
-    :param unsigned int mode:
+    :param mode:
         selects type of access and caller credentials
+    :type mode: unsigned int
 
 .. _`ptrace_may_access.description`:
 
@@ -29,6 +31,34 @@ a filesystem syscall (should use effective capabilities and fsuid
 of the caller) or through an explicit syscall such as
 process_vm_writev or ptrace (and should use the real credentials).
 
+.. _`ptrace_may_access_sched`:
+
+ptrace_may_access_sched
+=======================
+
+.. c:function:: bool ptrace_may_access_sched(struct task_struct *task, unsigned int mode)
+
+    check whether the caller is permitted to access a target task.
+
+    :param task:
+        target task
+    :type task: struct task_struct \*
+
+    :param mode:
+        selects type of access and caller credentials
+    :type mode: unsigned int
+
+.. _`ptrace_may_access_sched.description`:
+
+Description
+-----------
+
+Returns true on success, false on denial.
+
+Similar to \ :c:func:`ptrace_may_access`\ . Only to be called from context switch
+code. Does not call into audit and the regular LSM hooks due to locking
+constraints.
+
 .. _`ptrace_parent`:
 
 ptrace_parent
@@ -38,8 +68,9 @@ ptrace_parent
 
     return the task that is tracing the given task
 
-    :param struct task_struct \*task:
+    :param task:
         task to consider
+    :type task: struct task_struct \*
 
 .. _`ptrace_parent.description`:
 
@@ -62,11 +93,13 @@ ptrace_event_enabled
 
     test whether a ptrace event is enabled
 
-    :param struct task_struct \*task:
+    :param task:
         ptracee of interest
+    :type task: struct task_struct \*
 
-    :param int event:
+    :param event:
         \ ``PTRACE_EVENT``\ \_\* to test
+    :type event: int
 
 .. _`ptrace_event_enabled.description`:
 
@@ -86,11 +119,13 @@ ptrace_event
 
     possibly stop for a ptrace event notification
 
-    :param int event:
+    :param event:
         \ ``PTRACE_EVENT``\ \_\* value to report
+    :type event: int
 
-    :param unsigned long message:
+    :param message:
         value for \ ``PTRACE_GETEVENTMSG``\  to return
+    :type message: unsigned long
 
 .. _`ptrace_event.description`:
 
@@ -111,11 +146,13 @@ ptrace_event_pid
 
     possibly stop for a ptrace event notification
 
-    :param int event:
+    :param event:
         \ ``PTRACE_EVENT``\ \_\* value to report
+    :type event: int
 
-    :param struct pid \*pid:
+    :param pid:
         process identifier for \ ``PTRACE_GETEVENTMSG``\  to return
+    :type pid: struct pid \*
 
 .. _`ptrace_event_pid.description`:
 
@@ -137,11 +174,13 @@ ptrace_init_task
 
     initialize ptrace state for a new child
 
-    :param struct task_struct \*child:
+    :param child:
         new child task
+    :type child: struct task_struct \*
 
-    :param bool ptrace:
+    :param ptrace:
         true if child should be ptrace'd by parent's tracer
+    :type ptrace: bool
 
 .. _`ptrace_init_task.description`:
 
@@ -162,8 +201,9 @@ ptrace_release_task
 
     final ptrace-related cleanup of a zombie being reaped
 
-    :param struct task_struct \*task:
+    :param task:
         task in \ ``EXIT_DEAD``\  state
+    :type task: struct task_struct \*
 
 .. _`ptrace_release_task.description`:
 
@@ -181,8 +221,9 @@ arch_has_single_step
 
     does this CPU support user-mode single-step?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`arch_has_single_step.description`:
 
@@ -204,8 +245,9 @@ user_enable_single_step
 
     single-step in user-mode task
 
-    :param struct task_struct \*task:
+    :param task:
         either current or a task stopped in \ ``TASK_TRACED``\ 
+    :type task: struct task_struct \*
 
 .. _`user_enable_single_step.description`:
 
@@ -226,8 +268,9 @@ user_disable_single_step
 
     cancel user-mode single-step
 
-    :param struct task_struct \*task:
+    :param task:
         either current or a task stopped in \ ``TASK_TRACED``\ 
+    :type task: struct task_struct \*
 
 .. _`user_disable_single_step.description`:
 
@@ -248,8 +291,9 @@ arch_has_block_step
 
     does this CPU support user-mode block-step?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`arch_has_block_step.description`:
 
@@ -271,8 +315,9 @@ user_enable_block_step
 
     step until branch in user-mode task
 
-    :param struct task_struct \*task:
+    :param task:
         either current or a task stopped in \ ``TASK_TRACED``\ 
+    :type task: struct task_struct \*
 
 .. _`user_enable_block_step.description`:
 
@@ -293,11 +338,13 @@ arch_ptrace_stop_needed
 
     Decide whether \ :c:func:`arch_ptrace_stop`\  should be called
 
-    :param  code:
+    :param code:
         current->exit_code value ptrace will stop with
+    :type code: 
 
-    :param  info:
+    :param info:
         siginfo_t pointer (or \ ``NULL``\ ) for signal ptrace will stop with
+    :type info: 
 
 .. _`arch_ptrace_stop_needed.description`:
 
@@ -325,11 +372,13 @@ arch_ptrace_stop
 
     Do machine-specific work before stopping for ptrace
 
-    :param  code:
+    :param code:
         current->exit_code value ptrace will stop with
+    :type code: 
 
-    :param  info:
+    :param info:
         siginfo_t pointer (or \ ``NULL``\ ) for signal ptrace will stop with
+    :type info: 
 
 .. _`arch_ptrace_stop.description`:
 

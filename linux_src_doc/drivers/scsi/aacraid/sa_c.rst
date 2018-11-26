@@ -10,8 +10,9 @@ aac_sa_disable_interrupt
 
     disable interrupt
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Which adapter to enable.
+    :type dev: struct aac_dev \*
 
 .. _`aac_sa_enable_interrupt`:
 
@@ -22,8 +23,9 @@ aac_sa_enable_interrupt
 
     enable interrupt
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Which adapter to enable.
+    :type dev: struct aac_dev \*
 
 .. _`aac_sa_notify_adapter`:
 
@@ -34,11 +36,13 @@ aac_sa_notify_adapter
 
     handle adapter notification
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter that notification is for
+    :type dev: struct aac_dev \*
 
-    :param u32 event:
+    :param event:
         Event to notidy
+    :type event: u32
 
 .. _`aac_sa_notify_adapter.description`:
 
@@ -56,44 +60,57 @@ sa_sync_cmd
 
     send a command and wait
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
-    :param u32 command:
+    :param command:
         Command to execute
+    :type command: u32
 
-    :param u32 p1:
+    :param p1:
         first parameter
+    :type p1: u32
 
-    :param u32 p2:
+    :param p2:
         *undescribed*
+    :type p2: u32
 
-    :param u32 p3:
+    :param p3:
         *undescribed*
+    :type p3: u32
 
-    :param u32 p4:
+    :param p4:
         *undescribed*
+    :type p4: u32
 
-    :param u32 p5:
+    :param p5:
         *undescribed*
+    :type p5: u32
 
-    :param u32 p6:
+    :param p6:
         *undescribed*
+    :type p6: u32
 
-    :param u32 \*ret:
+    :param ret:
         adapter status
+    :type ret: u32 \*
 
-    :param u32 \*r1:
+    :param r1:
         *undescribed*
+    :type r1: u32 \*
 
-    :param u32 \*r2:
+    :param r2:
         *undescribed*
+    :type r2: u32 \*
 
-    :param u32 \*r3:
+    :param r3:
         *undescribed*
+    :type r3: u32 \*
 
-    :param u32 \*r4:
+    :param r4:
         *undescribed*
+    :type r4: u32 \*
 
 .. _`sa_sync_cmd.description`:
 
@@ -112,8 +129,9 @@ aac_sa_interrupt_adapter
 
     interrupt an adapter
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Which adapter to enable.
+    :type dev: struct aac_dev \*
 
 .. _`aac_sa_interrupt_adapter.description`:
 
@@ -131,8 +149,9 @@ aac_sa_start_adapter
 
     activate adapter
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
 .. _`aac_sa_start_adapter.description`:
 
@@ -148,8 +167,9 @@ aac_sa_check_health
 
 .. c:function:: int aac_sa_check_health(struct aac_dev *dev)
 
-    :param struct aac_dev \*dev:
+    :param dev:
         device to check if healthy
+    :type dev: struct aac_dev \*
 
 .. _`aac_sa_check_health.description`:
 
@@ -166,11 +186,13 @@ aac_sa_ioremap
 
 .. c:function:: int aac_sa_ioremap(struct aac_dev *dev, u32 size)
 
-    :param struct aac_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct aac_dev \*
 
-    :param u32 size:
+    :param size:
         mapping resize request
+    :type size: u32
 
 .. _`aac_sa_init`:
 
@@ -181,8 +203,9 @@ aac_sa_init
 
     initialize an ARM based AAC card
 
-    :param struct aac_dev \*dev:
+    :param dev:
         device to configure
+    :type dev: struct aac_dev \*
 
 .. _`aac_sa_init.description`:
 

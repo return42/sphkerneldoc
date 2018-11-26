@@ -10,8 +10,9 @@ ecryptfs_alloc_inode
 
     allocate an ecryptfs inode
 
-    :param struct super_block \*sb:
+    :param sb:
         Pointer to the ecryptfs super block
+    :type sb: struct super_block \*
 
 .. _`ecryptfs_alloc_inode.description`:
 
@@ -33,8 +34,9 @@ ecryptfs_destroy_inode
 
 .. c:function:: void ecryptfs_destroy_inode(struct inode *inode)
 
-    :param struct inode \*inode:
+    :param inode:
         The ecryptfs inode
+    :type inode: struct inode \*
 
 .. _`ecryptfs_destroy_inode.description`:
 
@@ -53,11 +55,13 @@ ecryptfs_statfs
 
 .. c:function:: int ecryptfs_statfs(struct dentry *dentry, struct kstatfs *buf)
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
-    :param struct kstatfs \*buf:
+    :param buf:
         The struct kstatfs to fill in with stats
+    :type buf: struct kstatfs \*
 
 .. _`ecryptfs_statfs.description`:
 
@@ -76,8 +80,9 @@ ecryptfs_evict_inode
 
     \ ``inode``\  - The ecryptfs inode
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`ecryptfs_evict_inode.description`:
 
@@ -97,11 +102,13 @@ ecryptfs_show_options
 
 .. c:function:: int ecryptfs_show_options(struct seq_file *m, struct dentry *root)
 
-    :param struct seq_file \*m:
+    :param m:
         *undescribed*
+    :type m: struct seq_file \*
 
-    :param struct dentry \*root:
+    :param root:
         *undescribed*
+    :type root: struct dentry \*
 
 .. _`ecryptfs_show_options.description`:
 

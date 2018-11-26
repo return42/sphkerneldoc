@@ -10,11 +10,13 @@ ntfs_cluster_free_from_rl_nolock
 
     free clusters from runlist
 
-    :param ntfs_volume \*vol:
+    :param vol:
         mounted ntfs volume on which to free the clusters
+    :type vol: ntfs_volume \*
 
-    :param const runlist_element \*rl:
+    :param rl:
         runlist describing the clusters to free
+    :type rl: const runlist_element \*
 
 .. _`ntfs_cluster_free_from_rl_nolock.description`:
 
@@ -44,23 +46,29 @@ ntfs_cluster_alloc
 
     allocate clusters on an ntfs volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         mounted ntfs volume on which to allocate the clusters
+    :type vol: ntfs_volume \*
 
-    :param const VCN start_vcn:
+    :param start_vcn:
         vcn to use for the first allocated cluster
+    :type start_vcn: const VCN
 
-    :param const s64 count:
+    :param count:
         number of clusters to allocate
+    :type count: const s64
 
-    :param const LCN start_lcn:
+    :param start_lcn:
         starting lcn at which to allocate the clusters (or -1 if none)
+    :type start_lcn: const LCN
 
-    :param const NTFS_CLUSTER_ALLOCATION_ZONES zone:
+    :param zone:
         zone from which to allocate the clusters
+    :type zone: const NTFS_CLUSTER_ALLOCATION_ZONES
 
-    :param const bool is_extension:
+    :param is_extension:
         if 'true', this is an attribute extension
+    :type is_extension: const bool
 
 .. _`ntfs_cluster_alloc.description`:
 
@@ -156,20 +164,25 @@ modifies the bitmap contents.
 
     free clusters on an ntfs volume
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode whose runlist describes the clusters to free
+    :type ni: ntfs_inode \*
 
-    :param const VCN start_vcn:
+    :param start_vcn:
         vcn in the runlist of \ ``ni``\  at which to start freeing clusters
+    :type start_vcn: const VCN
 
-    :param s64 count:
+    :param count:
         number of clusters to free or -1 for all clusters
+    :type count: s64
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         active attribute search context if present or NULL if not
+    :type ctx: ntfs_attr_search_ctx \*
 
-    :param const bool is_rollback:
+    :param is_rollback:
         true if this is a rollback operation
+    :type is_rollback: const bool
 
 .. _`__ntfs_cluster_free.description`:
 

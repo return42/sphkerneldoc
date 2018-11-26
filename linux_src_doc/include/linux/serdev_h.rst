@@ -171,8 +171,9 @@ serdev_device_put
 
     decrement serdev device refcount \ ``serdev``\       serdev device.
 
-    :param struct serdev_device \*serdev:
+    :param serdev:
         *undescribed*
+    :type serdev: struct serdev_device \*
 
 .. _`serdev_controller_put`:
 
@@ -183,8 +184,9 @@ serdev_controller_put
 
     decrement controller refcount \ ``ctrl``\         serdev controller.
 
-    :param struct serdev_controller \*ctrl:
+    :param ctrl:
         *undescribed*
+    :type ctrl: struct serdev_controller \*
 
 .. _`serdev_device_driver_unregister`:
 
@@ -195,8 +197,9 @@ serdev_device_driver_unregister
 
     unregister an serdev client driver
 
-    :param struct serdev_device_driver \*sdrv:
+    :param sdrv:
         the driver to unregister
+    :type sdrv: struct serdev_device_driver \*
 
 .. This file was automatic generated / don't edit.
 

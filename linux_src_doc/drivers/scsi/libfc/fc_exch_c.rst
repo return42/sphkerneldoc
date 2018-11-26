@@ -189,14 +189,17 @@ fc_exch_name_lookup
 
     Lookup name by opcode
 
-    :param unsigned int op:
+    :param op:
         Opcode to be looked up
+    :type op: unsigned int
 
-    :param char \*\*table:
+    :param table:
         Opcode/name table
+    :type table: char \*\*
 
-    :param unsigned int max_index:
+    :param max_index:
         Index not to be exceeded
+    :type max_index: unsigned int
 
 .. _`fc_exch_name_lookup.description`:
 
@@ -215,8 +218,9 @@ fc_exch_rctl_name
 
     Wrapper routine for \ :c:func:`fc_exch_name_lookup`\ 
 
-    :param unsigned int op:
+    :param op:
         The opcode to be looked up
+    :type op: unsigned int
 
 .. _`fc_exch_hold`:
 
@@ -227,8 +231,9 @@ fc_exch_hold
 
     Increment an exchange's reference count
 
-    :param struct fc_exch \*ep:
+    :param ep:
         Echange to be held
+    :type ep: struct fc_exch \*
 
 .. _`fc_exch_setup_hdr`:
 
@@ -239,14 +244,17 @@ fc_exch_setup_hdr
 
     Initialize a FC header by initializing some fields and determine SOF and EOF.
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange to that will use the header
+    :type ep: struct fc_exch \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame whose header is to be modified
+    :type fp: struct fc_frame \*
 
-    :param u32 f_ctl:
+    :param f_ctl:
         F_CTL bits that will be used for the frame header
+    :type f_ctl: u32
 
 .. _`fc_exch_setup_hdr.the-fields-initialized-by-this-routine-are`:
 
@@ -265,8 +273,9 @@ fc_exch_release
 
     Decrement an exchange's reference count
 
-    :param struct fc_exch \*ep:
+    :param ep:
         Exchange to be released
+    :type ep: struct fc_exch \*
 
 .. _`fc_exch_release.description`:
 
@@ -285,8 +294,9 @@ fc_exch_timer_cancel
 
     cancel exch timer
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange whose timer to be canceled
+    :type ep: struct fc_exch \*
 
 .. _`fc_exch_timer_set_locked`:
 
@@ -297,11 +307,13 @@ fc_exch_timer_set_locked
 
     Start a timer for an exchange w/ the the exchange lock held
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange whose timer will start
+    :type ep: struct fc_exch \*
 
-    :param unsigned int timer_msec:
+    :param timer_msec:
         The timeout period
+    :type timer_msec: unsigned int
 
 .. _`fc_exch_timer_set_locked.description`:
 
@@ -320,11 +332,13 @@ fc_exch_timer_set
 
     Lock the exchange and set the timer
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange whose timer will start
+    :type ep: struct fc_exch \*
 
-    :param unsigned int timer_msec:
+    :param timer_msec:
         The timeout period
+    :type timer_msec: unsigned int
 
 .. _`fc_exch_done_locked`:
 
@@ -335,8 +349,9 @@ fc_exch_done_locked
 
     Complete an exchange with the exchange lock held
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange that is complete
+    :type ep: struct fc_exch \*
 
 .. _`fc_exch_done_locked.note`:
 
@@ -354,11 +369,13 @@ fc_exch_ptr_get
 
     Return an exchange from an exchange pool
 
-    :param struct fc_exch_pool \*pool:
+    :param pool:
         Exchange Pool to get an exchange from
+    :type pool: struct fc_exch_pool \*
 
-    :param u16 index:
+    :param index:
         Index of the exchange within the pool
+    :type index: u16
 
 .. _`fc_exch_ptr_get.description`:
 
@@ -378,14 +395,17 @@ fc_exch_ptr_set
 
     Assign an exchange to a slot in an exchange pool
 
-    :param struct fc_exch_pool \*pool:
+    :param pool:
         The pool to assign the exchange to
+    :type pool: struct fc_exch_pool \*
 
-    :param u16 index:
+    :param index:
         The index in the pool where the exchange will be assigned
+    :type index: u16
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange to assign to the pool
+    :type ep: struct fc_exch \*
 
 .. _`fc_exch_delete`:
 
@@ -396,8 +416,9 @@ fc_exch_delete
 
     Delete an exchange
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange to be deleted
+    :type ep: struct fc_exch \*
 
 .. _`fc_seq_send`:
 
@@ -408,14 +429,17 @@ fc_seq_send
 
     Send a frame using existing sequence/exchange pair
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that the exchange will be sent on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence to be sent
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame to be sent on the exchange
+    :type fp: struct fc_frame \*
 
 .. _`fc_seq_send.note`:
 
@@ -434,11 +458,13 @@ fc_seq_alloc
 
     Allocate a sequence for a given exchange
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange to allocate a new sequence for
+    :type ep: struct fc_exch \*
 
-    :param u8 seq_id:
+    :param seq_id:
         The sequence ID to be used
+    :type seq_id: u8
 
 .. _`fc_seq_alloc.description`:
 
@@ -458,8 +484,9 @@ fc_seq_start_next_locked
 
     Allocate a new sequence on the same exchange as the supplied sequence
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence/exchange to get a new sequence for
+    :type sp: struct fc_seq \*
 
 .. _`fc_seq_start_next`:
 
@@ -470,8 +497,9 @@ fc_seq_start_next
 
     Lock the exchange and get a new sequence for a given sequence/exchange pair
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence/exchange to get a new exchange for
+    :type sp: struct fc_seq \*
 
 .. _`fc_exch_abort_locked`:
 
@@ -482,11 +510,13 @@ fc_exch_abort_locked
 
     Abort an exchange
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange to be aborted
+    :type ep: struct fc_exch \*
 
-    :param unsigned int timer_msec:
+    :param timer_msec:
         The period of time to wait before aborting
+    :type timer_msec: unsigned int
 
 .. _`fc_exch_abort_locked.description`:
 
@@ -523,11 +553,13 @@ fc_seq_exch_abort
 
     Abort an exchange and sequence
 
-    :param const struct fc_seq \*req_sp:
+    :param req_sp:
         The sequence to be aborted
+    :type req_sp: const struct fc_seq \*
 
-    :param unsigned int timer_msec:
+    :param timer_msec:
         The period of time to wait before aborting
+    :type timer_msec: unsigned int
 
 .. _`fc_seq_exch_abort.description`:
 
@@ -552,14 +584,17 @@ fc_invoke_resp
 
     invoke ep->resp()
 
-    :param struct fc_exch \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct fc_exch \*
 
-    :param struct fc_seq \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
 .. _`fc_invoke_resp.notes`:
 
@@ -597,8 +632,9 @@ fc_exch_timeout
 
     Handle exchange timer expiration
 
-    :param struct work_struct \*work:
+    :param work:
         The work_struct identifying the exchange that timed out
+    :type work: struct work_struct \*
 
 .. _`fc_exch_em_alloc`:
 
@@ -609,11 +645,13 @@ fc_exch_em_alloc
 
     Allocate an exchange from a specified EM.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that the exchange is for
+    :type lport: struct fc_lport \*
 
-    :param struct fc_exch_mgr \*mp:
+    :param mp:
         The exchange manager that will allocate the exchange
+    :type mp: struct fc_exch_mgr \*
 
 .. _`fc_exch_em_alloc.description`:
 
@@ -631,11 +669,13 @@ fc_exch_alloc
 
     Allocate an exchange from an EM on a local port's list of EMs.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that will own the exchange
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The FC frame that the exchange will be for
+    :type fp: struct fc_frame \*
 
 .. _`fc_exch_alloc.description`:
 
@@ -656,11 +696,13 @@ fc_exch_find
 
     Lookup and hold an exchange
 
-    :param struct fc_exch_mgr \*mp:
+    :param mp:
         The exchange manager to lookup the exchange from
+    :type mp: struct fc_exch_mgr \*
 
-    :param u16 xid:
+    :param xid:
         The XID of the exchange to look up
+    :type xid: u16
 
 .. _`fc_exch_done`:
 
@@ -671,8 +713,9 @@ fc_exch_done
 
     Indicate that an exchange/sequence tuple is complete and the memory allocated for the related objects may be freed.
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence that has completed
+    :type sp: struct fc_seq \*
 
 .. _`fc_exch_done.note`:
 
@@ -690,14 +733,17 @@ fc_exch_resp
 
     Allocate a new exchange for a response frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that the exchange was for
+    :type lport: struct fc_lport \*
 
-    :param struct fc_exch_mgr \*mp:
+    :param mp:
         The exchange manager to allocate the exchange from
+    :type mp: struct fc_exch_mgr \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The response frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_exch_resp.description`:
 
@@ -715,14 +761,17 @@ fc_seq_lookup_recip
 
     Find a sequence where the other end originated the sequence
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that the frame was sent to
+    :type lport: struct fc_lport \*
 
-    :param struct fc_exch_mgr \*mp:
+    :param mp:
         The Exchange Manager to lookup the exchange from
+    :type mp: struct fc_exch_mgr \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame associated with the sequence we're looking for
+    :type fp: struct fc_frame \*
 
 .. _`fc_seq_lookup_recip.description`:
 
@@ -741,11 +790,13 @@ fc_seq_lookup_orig
 
     Find a sequence where this end originated the sequence
 
-    :param struct fc_exch_mgr \*mp:
+    :param mp:
         The Exchange Manager to lookup the exchange from
+    :type mp: struct fc_exch_mgr \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame associated with the sequence we're looking for
+    :type fp: struct fc_frame \*
 
 .. _`fc_seq_lookup_orig.description`:
 
@@ -763,14 +814,17 @@ fc_exch_set_addr
 
     Set the source and destination IDs for an exchange
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange to set the addresses for
+    :type ep: struct fc_exch \*
 
-    :param u32 orig_id:
+    :param orig_id:
         The originator's ID
+    :type orig_id: u32
 
-    :param u32 resp_id:
+    :param resp_id:
         The responder's ID
+    :type resp_id: u32
 
 .. _`fc_exch_set_addr.description`:
 
@@ -788,14 +842,17 @@ fc_seq_els_rsp_send
 
     Send an ELS response using information from the existing sequence/exchange.
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The received frame
+    :type fp: struct fc_frame \*
 
-    :param enum fc_els_cmd els_cmd:
+    :param els_cmd:
         The ELS command to be sent
+    :type els_cmd: enum fc_els_cmd
 
-    :param struct fc_seq_els_data \*els_data:
+    :param els_data:
         The ELS data to be sent
+    :type els_data: struct fc_seq_els_data \*
 
 .. _`fc_seq_els_rsp_send.description`:
 
@@ -813,17 +870,21 @@ fc_seq_send_last
 
     Send a sequence that is the last in the exchange
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence that is to be sent
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame that will be sent on the sequence
+    :type fp: struct fc_frame \*
 
-    :param enum fc_rctl rctl:
+    :param rctl:
         The R_CTL information to be sent
+    :type rctl: enum fc_rctl
 
-    :param enum fc_fh_type fh_type:
+    :param fh_type:
         The frame header type
+    :type fh_type: enum fc_fh_type
 
 .. _`fc_seq_send_ack`:
 
@@ -834,11 +895,13 @@ fc_seq_send_ack
 
     Send an acknowledgement that we've received a frame
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence to send the ACK on
+    :type sp: struct fc_seq \*
 
-    :param const struct fc_frame \*rx_fp:
+    :param rx_fp:
         The received frame that is being acknoledged
+    :type rx_fp: const struct fc_frame \*
 
 .. _`fc_seq_send_ack.description`:
 
@@ -856,14 +919,17 @@ fc_exch_send_ba_rjt
 
     Send BLS Reject
 
-    :param struct fc_frame \*rx_fp:
+    :param rx_fp:
         The frame being rejected
+    :type rx_fp: struct fc_frame \*
 
-    :param enum fc_ba_rjt_reason reason:
+    :param reason:
         The reason the frame is being rejected
+    :type reason: enum fc_ba_rjt_reason
 
-    :param enum fc_ba_rjt_explan explan:
+    :param explan:
         The explanation for the rejection
+    :type explan: enum fc_ba_rjt_explan
 
 .. _`fc_exch_send_ba_rjt.description`:
 
@@ -881,11 +947,13 @@ fc_exch_recv_abts
 
     Handle an incoming ABTS
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange the abort was on
+    :type ep: struct fc_exch \*
 
-    :param struct fc_frame \*rx_fp:
+    :param rx_fp:
         The ABTS frame
+    :type rx_fp: struct fc_frame \*
 
 .. _`fc_exch_recv_abts.description`:
 
@@ -905,11 +973,13 @@ fc_seq_assign
 
     Assign exchange and sequence for incoming request
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that received the request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The request frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_seq_assign.description`:
 
@@ -929,8 +999,9 @@ fc_seq_release
 
     Release the hold
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence.
+    :type sp: struct fc_seq \*
 
 .. _`fc_exch_recv_req`:
 
@@ -941,14 +1012,17 @@ fc_exch_recv_req
 
     Handler for an incoming request
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that received the request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_exch_mgr \*mp:
+    :param mp:
         The EM that the exchange is on
+    :type mp: struct fc_exch_mgr \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The request frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_exch_recv_req.description`:
 
@@ -967,11 +1041,13 @@ fc_exch_recv_seq_resp
 
     Handler for an incoming response where the other end is the originator of the sequence that is a response to our initial exchange
 
-    :param struct fc_exch_mgr \*mp:
+    :param mp:
         The EM that the exchange is on
+    :type mp: struct fc_exch_mgr \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The response frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_exch_recv_resp`:
 
@@ -982,11 +1058,13 @@ fc_exch_recv_resp
 
     Handler for a sequence where other end is responding to our sequence
 
-    :param struct fc_exch_mgr \*mp:
+    :param mp:
         The EM that the exchange is on
+    :type mp: struct fc_exch_mgr \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The response frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_exch_abts_resp`:
 
@@ -997,11 +1075,13 @@ fc_exch_abts_resp
 
     Handler for a response to an ABT
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange that the frame is on
+    :type ep: struct fc_exch \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The response frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_exch_abts_resp.description`:
 
@@ -1020,11 +1100,13 @@ fc_exch_recv_bls
 
     Handler for a BLS sequence
 
-    :param struct fc_exch_mgr \*mp:
+    :param mp:
         The EM that the exchange is on
+    :type mp: struct fc_exch_mgr \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The request frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_exch_recv_bls.description`:
 
@@ -1043,8 +1125,9 @@ fc_seq_ls_acc
 
     Accept sequence with LS_ACC
 
-    :param struct fc_frame \*rx_fp:
+    :param rx_fp:
         The received frame, not freed here.
+    :type rx_fp: struct fc_frame \*
 
 .. _`fc_seq_ls_acc.description`:
 
@@ -1063,14 +1146,17 @@ fc_seq_ls_rjt
 
     Reject a sequence with ELS LS_RJT
 
-    :param struct fc_frame \*rx_fp:
+    :param rx_fp:
         The received frame, not freed here.
+    :type rx_fp: struct fc_frame \*
 
-    :param enum fc_els_rjt_reason reason:
+    :param reason:
         The reason the sequence is being rejected
+    :type reason: enum fc_els_rjt_reason
 
-    :param enum fc_els_rjt_explan explan:
+    :param explan:
         The explanation for the rejection
+    :type explan: enum fc_els_rjt_explan
 
 .. _`fc_seq_ls_rjt.description`:
 
@@ -1089,8 +1175,9 @@ fc_exch_reset
 
     Reset an exchange
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange to be reset
+    :type ep: struct fc_exch \*
 
 .. _`fc_exch_reset.note`:
 
@@ -1108,17 +1195,21 @@ fc_exch_pool_reset
 
     Reset a per cpu exchange pool
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that the exchange pool is on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_exch_pool \*pool:
+    :param pool:
         The exchange pool to be reset
+    :type pool: struct fc_exch_pool \*
 
-    :param u32 sid:
+    :param sid:
         The source ID
+    :type sid: u32
 
-    :param u32 did:
+    :param did:
         The destination ID
+    :type did: u32
 
 .. _`fc_exch_pool_reset.description`:
 
@@ -1139,14 +1230,17 @@ fc_exch_mgr_reset
 
     Reset all EMs of a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose EMs are to be reset
+    :type lport: struct fc_lport \*
 
-    :param u32 sid:
+    :param sid:
         The source ID
+    :type sid: u32
 
-    :param u32 did:
+    :param did:
         The destination ID
+    :type did: u32
 
 .. _`fc_exch_mgr_reset.description`:
 
@@ -1167,11 +1261,13 @@ fc_exch_lookup
 
     find an exchange
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port
+    :type lport: struct fc_lport \*
 
-    :param u32 xid:
+    :param xid:
         The exchange ID
+    :type xid: u32
 
 .. _`fc_exch_lookup.description`:
 
@@ -1189,8 +1285,9 @@ fc_exch_els_rec
 
     Handler for ELS REC (Read Exchange Concise) requests
 
-    :param struct fc_frame \*rfp:
+    :param rfp:
         The REC frame, not freed here.
+    :type rfp: struct fc_frame \*
 
 .. _`fc_exch_els_rec.description`:
 
@@ -1208,14 +1305,17 @@ fc_exch_rrq_resp
 
     Handler for RRQ responses
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence that the RRQ is on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The RRQ frame
+    :type fp: struct fc_frame \*
 
-    :param void \*arg:
+    :param arg:
         The exchange that the RRQ is on
+    :type arg: void \*
 
 .. _`fc_exch_rrq_resp.todo`:
 
@@ -1233,11 +1333,13 @@ fc_exch_seq_send
 
     Send a frame using a new exchange and sequence
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to send the frame on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame to be sent
+    :type fp: struct fc_frame \*
 
     :param void (\*resp)(struct fc_seq \*, struct fc_frame \*fp, void \*arg):
         The response handler for this request
@@ -1245,11 +1347,13 @@ fc_exch_seq_send
     :param void (\*destructor)(struct fc_seq \*, void \*):
         The destructor for the exchange
 
-    :param void \*arg:
+    :param arg:
         The argument to be passed to the response handler
+    :type arg: void \*
 
-    :param u32 timer_msec:
+    :param timer_msec:
         The timeout period for the exchange
+    :type timer_msec: u32
 
 .. _`fc_exch_seq_send.description`:
 
@@ -1293,8 +1397,9 @@ fc_exch_rrq
 
     Send an ELS RRQ (Reinstate Recovery Qualifier) command
 
-    :param struct fc_exch \*ep:
+    :param ep:
         The exchange to send the RRQ on
+    :type ep: struct fc_exch \*
 
 .. _`fc_exch_rrq.description`:
 
@@ -1313,8 +1418,9 @@ fc_exch_els_rrq
 
     Handler for ELS RRQ (Reset Recovery Qualifier) requests
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The RRQ frame, not freed here.
+    :type fp: struct fc_frame \*
 
 .. _`fc_exch_update_stats`:
 
@@ -1325,8 +1431,9 @@ fc_exch_update_stats
 
     update exches stats to lport
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to update exchange manager stats
+    :type lport: struct fc_lport \*
 
 .. _`fc_exch_mgr_add`:
 
@@ -1337,11 +1444,13 @@ fc_exch_mgr_add
 
     Add an exchange manager to a local port's list of EMs
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to add the exchange manager to
+    :type lport: struct fc_lport \*
 
-    :param struct fc_exch_mgr \*mp:
+    :param mp:
         The exchange manager to be added to the local port
+    :type mp: struct fc_exch_mgr \*
 
     :param bool (\*match)(struct fc_frame \*):
         The match routine that indicates when this EM should be used
@@ -1355,8 +1464,9 @@ fc_exch_mgr_destroy
 
     Destroy an exchange manager
 
-    :param struct kref \*kref:
+    :param kref:
         The reference to the EM to be destroyed
+    :type kref: struct kref \*
 
 .. _`fc_exch_mgr_del`:
 
@@ -1367,8 +1477,9 @@ fc_exch_mgr_del
 
     Delete an EM from a local port's list
 
-    :param struct fc_exch_mgr_anchor \*ema:
+    :param ema:
         The exchange manager anchor identifying the EM to be deleted
+    :type ema: struct fc_exch_mgr_anchor \*
 
 .. _`fc_exch_mgr_list_clone`:
 
@@ -1379,11 +1490,13 @@ fc_exch_mgr_list_clone
 
     Share all exchange manager objects
 
-    :param struct fc_lport \*src:
+    :param src:
         Source lport to clone exchange managers from
+    :type src: struct fc_lport \*
 
-    :param struct fc_lport \*dst:
+    :param dst:
         New lport that takes references to all the exchange managers
+    :type dst: struct fc_lport \*
 
 .. _`fc_exch_mgr_alloc`:
 
@@ -1394,17 +1507,21 @@ fc_exch_mgr_alloc
 
     Allocate an exchange manager
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that the new EM will be associated with
+    :type lport: struct fc_lport \*
 
-    :param enum fc_class class:
+    :param class:
         The default FC class for new exchanges
+    :type class: enum fc_class
 
-    :param u16 min_xid:
+    :param min_xid:
         The minimum XID for exchanges from the new EM
+    :type min_xid: u16
 
-    :param u16 max_xid:
+    :param max_xid:
         The maximum XID for exchanges from the new EM
+    :type max_xid: u16
 
     :param bool (\*match)(struct fc_frame \*):
         The match routine for the new EM
@@ -1418,8 +1535,9 @@ fc_exch_mgr_free
 
     Free all exchange managers on a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose EMs are to be freed
+    :type lport: struct fc_lport \*
 
 .. _`fc_find_ema`:
 
@@ -1430,14 +1548,17 @@ fc_find_ema
 
     Lookup and return appropriate Exchange Manager Anchor depending upon 'xid'.
 
-    :param u32 f_ctl:
+    :param f_ctl:
         f_ctl
+    :type f_ctl: u32
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port the frame was received on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame_header \*fh:
+    :param fh:
         The received frame header
+    :type fh: struct fc_frame_header \*
 
 .. _`fc_exch_recv`:
 
@@ -1448,11 +1569,13 @@ fc_exch_recv
 
     Handler for received frames
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port the frame was received on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The received frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_exch_init`:
 
@@ -1463,8 +1586,9 @@ fc_exch_init
 
     Initialize the exchange layer for a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to initialize the exchange layer for
+    :type lport: struct fc_lport \*
 
 .. _`fc_setup_exch_mgr`:
 
@@ -1475,8 +1599,9 @@ fc_setup_exch_mgr
 
     Setup an exchange manager
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fc_destroy_exch_mgr`:
 
@@ -1487,8 +1612,9 @@ fc_destroy_exch_mgr
 
     Destroy an exchange manager
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

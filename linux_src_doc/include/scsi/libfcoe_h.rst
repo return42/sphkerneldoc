@@ -243,8 +243,9 @@ fcoe_ctlr_priv
 
     Return the private data from a fcoe_ctlr
 
-    :param const struct fcoe_ctlr \*ctlr:
+    :param ctlr:
         *undescribed*
+    :type ctlr: const struct fcoe_ctlr \*
 
 .. _`fcoe_fcf`:
 
@@ -403,8 +404,9 @@ is_fip_mode
 
     returns true if FIP mode selected.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         FCoE controller.
+    :type fip: struct fcoe_ctlr \*
 
 .. _`fcoe_percpu_s`:
 
@@ -534,8 +536,9 @@ fcoe_get_netdev
 
     Return the net device associated with a local port
 
-    :param const struct fc_lport \*lport:
+    :param lport:
         The local port to get the net device from
+    :type lport: const struct fc_lport \*
 
 .. _`fcoe_netdev_mapping`:
 

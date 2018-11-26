@@ -10,17 +10,21 @@ fimc_lite_find_format
 
     lookup fimc color format by fourcc or media bus code
 
-    :param const u32 \*pixelformat:
+    :param pixelformat:
         fourcc to match, ignored if null
+    :type pixelformat: const u32 \*
 
-    :param const u32 \*mbus_code:
+    :param mbus_code:
         media bus code to match, ignored if null
+    :type mbus_code: const u32 \*
 
-    :param unsigned int mask:
+    :param mask:
         the color format flags to match
+    :type mask: unsigned int
 
-    :param int index:
+    :param index:
         index to the fimc_lite_formats array, ignored if negative
+    :type index: int
 
 .. This file was automatic generated / don't edit.
 

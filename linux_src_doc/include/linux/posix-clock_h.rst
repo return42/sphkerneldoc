@@ -143,11 +143,13 @@ posix_clock_register
 
     register a new clock
 
-    :param struct posix_clock \*clk:
+    :param clk:
         Pointer to the clock. Caller must provide 'ops' and 'release'
+    :type clk: struct posix_clock \*
 
-    :param dev_t devid:
+    :param devid:
         Allocated device id
+    :type devid: dev_t
 
 .. _`posix_clock_register.description`:
 
@@ -170,8 +172,9 @@ posix_clock_unregister
 
     unregister a clock
 
-    :param struct posix_clock \*clk:
+    :param clk:
         Clock instance previously registered via \ :c:func:`posix_clock_register`\ 
+    :type clk: struct posix_clock \*
 
 .. _`posix_clock_unregister.description`:
 

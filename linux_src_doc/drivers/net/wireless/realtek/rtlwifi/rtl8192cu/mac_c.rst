@@ -10,14 +10,17 @@ rtl92c_llt_write
 
     LLT table write access
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 address:
+    :param address:
         LLT logical address.
+    :type address: u32
 
-    :param u32 data:
+    :param data:
         LLT data content
+    :type data: u32
 
 .. _`rtl92c_llt_write.description`:
 
@@ -35,11 +38,13 @@ rtl92c_init_llt_table
 
     Init LLT table
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 boundary:
+    :param boundary:
         *undescribed*
+    :type boundary: u32
 
 .. _`rtl92c_init_llt_table.description`:
 

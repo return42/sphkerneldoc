@@ -32,6 +32,7 @@ Definition
         u8 gamma[256 * 3] __aligned(32);
         __le16 cursor[MAX_CURS * MAX_CURS] __aligned(32);
         __le16 blank_cursor[MAX_CURS * MAX_CURS] __aligned(32);
+        __le16 next_cursor[MAX_CURS * MAX_CURS] __aligned(32);
         uint8_t edid_data[EDID_LENGTH];
         bool has_edid;
     }
@@ -81,13 +82,16 @@ cursor
     hardware cursor data
 
 blank_cursor
-    *undescribed*
+    blank cursor for hiding cursor
+
+next_cursor
+    scratch space to build load cursor
 
 edid_data
-    *undescribed*
+    EDID information buffer
 
 has_edid
-    *undescribed*
+    whether or not the EDID buffer is valid
 
 .. _`fsl_diu_data.dummy_ad`:
 
@@ -113,8 +117,9 @@ fsl_diu_name_to_port
 
     convert a port name to a monitor port enum
 
-    :param const char \*s:
+    :param s:
         *undescribed*
+    :type s: const char \*
 
 .. _`fsl_diu_name_to_port.description`:
 
@@ -141,8 +146,9 @@ fsl_diu_get_pixel_format
 
     return the pixel format for a given color depth
 
-    :param unsigned int bits_per_pixel:
+    :param bits_per_pixel:
         *undescribed*
+    :type bits_per_pixel: unsigned int
 
 .. _`fsl_diu_get_pixel_format.description`:
 

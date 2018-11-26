@@ -127,6 +127,33 @@ adv
     Advanced parameters; default is all zeros;
     use this structure to change default settings
 
+adv.options
+    Enable/Disable DPSW features (bitmap)
+
+adv.max_vlans
+    Maximum Number of VLAN's; 0 - indicates default 16
+
+adv.max_meters_per_if
+    Number of meters per interface
+
+adv.max_fdbs
+    Maximum Number of FDB's; 0 - indicates default 16
+
+adv.max_fdb_entries
+    Number of FDB entries for default FDB table;
+    0 - indicates default 1024 entries.
+
+adv.fdb_aging_time
+    Default FDB aging time for default FDB table;
+    0 - indicates default 300 seconds
+
+adv.max_fdb_mc_groups
+    Number of multicast groups in each FDB table;
+    0 - indicates default 32
+
+adv.component_type
+    Indicates the component type of this bridge
+
 .. _`dpsw_irq_index_if`:
 
 DPSW_IRQ_INDEX_IF

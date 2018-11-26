@@ -8,8 +8,9 @@ RK3036_PLLCON
 
 .. c:function::  RK3036_PLLCON( i)
 
-    :param  i:
+    :param i:
         *undescribed*
+    :type i: 
 
 .. _`rk3066_pll_reset_delay`:
 
@@ -18,8 +19,9 @@ RK3066_PLL_RESET_DELAY
 
 .. c:function::  RK3066_PLL_RESET_DELAY( nr)
 
-    :param  nr:
+    :param nr:
         *undescribed*
+    :type nr: 
 
 .. _`rk3399_pllcon`:
 
@@ -28,8 +30,9 @@ RK3399_PLLCON
 
 .. c:function::  RK3399_PLLCON( i)
 
-    :param  i:
+    :param i:
         *undescribed*
+    :type i: 
 
 .. This file was automatic generated / don't edit.
 

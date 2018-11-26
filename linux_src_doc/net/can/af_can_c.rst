@@ -10,11 +10,13 @@ can_send
 
     transmit a CAN frame (optional with local loopback)
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to socket buffer with CAN frame in data section
+    :type skb: struct sk_buff \*
 
-    :param int loop:
+    :param loop:
         loopback for listeners on local CAN sockets (recommended default!)
+    :type loop: int
 
 .. _`can_send.description`:
 
@@ -45,8 +47,9 @@ effhash
 
     hash function for 29 bit CAN identifier reduction
 
-    :param canid_t can_id:
+    :param can_id:
         29 bit CAN identifier
+    :type can_id: canid_t
 
 .. _`effhash.description`:
 
@@ -73,14 +76,17 @@ find_rcv_list
 
     determine optimal filterlist inside device filter struct
 
-    :param canid_t \*can_id:
+    :param can_id:
         pointer to CAN identifier of a given can_filter
+    :type can_id: canid_t \*
 
-    :param canid_t \*mask:
+    :param mask:
         pointer to CAN mask of a given can_filter
+    :type mask: canid_t \*
 
-    :param struct can_dev_rcv_lists \*d:
+    :param d:
         pointer to the device filter struct
+    :type d: struct can_dev_rcv_lists \*
 
 .. _`find_rcv_list.description`:
 
@@ -120,29 +126,36 @@ can_rx_register
 
     subscribe CAN frames from a specific interface
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to netdevice (NULL => subcribe from 'all' CAN devices list)
+    :type dev: struct net_device \*
 
-    :param canid_t can_id:
+    :param can_id:
         CAN identifier (see description)
+    :type can_id: canid_t
 
-    :param canid_t mask:
+    :param mask:
         CAN mask (see description)
+    :type mask: canid_t
 
     :param void (\*func)(struct sk_buff \*, void \*):
         callback function on filter match
 
-    :param void \*data:
+    :param data:
         returned parameter for callback function
+    :type data: void \*
 
-    :param char \*ident:
+    :param ident:
         string for calling module identification
+    :type ident: char \*
 
-    :param struct sock \*sk:
+    :param sk:
         socket pointer (might be NULL)
+    :type sk: struct sock \*
 
 .. _`can_rx_register.description`:
 
@@ -181,23 +194,28 @@ can_rx_unregister
 
     unsubscribe CAN frames from a specific interface
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to netdevice (NULL => unsubscribe from 'all' CAN devices list)
+    :type dev: struct net_device \*
 
-    :param canid_t can_id:
+    :param can_id:
         CAN identifier
+    :type can_id: canid_t
 
-    :param canid_t mask:
+    :param mask:
         CAN mask
+    :type mask: canid_t
 
     :param void (\*func)(struct sk_buff \*, void \*):
         callback function on filter match
 
-    :param void \*data:
+    :param data:
         returned parameter for callback function
+    :type data: void \*
 
 .. _`can_rx_unregister.description`:
 
@@ -215,8 +233,9 @@ can_proto_register
 
     register CAN transport protocol
 
-    :param const struct can_proto \*cp:
+    :param cp:
         pointer to CAN protocol structure
+    :type cp: const struct can_proto \*
 
 .. _`can_proto_register.return`:
 
@@ -237,8 +256,9 @@ can_proto_unregister
 
     unregister CAN transport protocol
 
-    :param const struct can_proto \*cp:
+    :param cp:
         pointer to CAN protocol structure
+    :type cp: const struct can_proto \*
 
 .. This file was automatic generated / don't edit.
 

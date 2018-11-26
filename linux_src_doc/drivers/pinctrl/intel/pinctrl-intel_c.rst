@@ -70,21 +70,25 @@ irq
 intel_gpio_to_pin
 =================
 
-.. c:function:: int intel_gpio_to_pin(struct intel_pinctrl *pctrl, unsigned offset, const struct intel_community **community, const struct intel_padgroup **padgrp)
+.. c:function:: int intel_gpio_to_pin(struct intel_pinctrl *pctrl, unsigned int offset, const struct intel_community **community, const struct intel_padgroup **padgrp)
 
     Translate from GPIO offset to pin number
 
-    :param struct intel_pinctrl \*pctrl:
+    :param pctrl:
         Pinctrl structure
+    :type pctrl: struct intel_pinctrl \*
 
-    :param unsigned offset:
+    :param offset:
         GPIO offset from gpiolib
+    :type offset: unsigned int
 
-    :param const struct intel_community \*\*community:
-        *undescribed*
+    :param community:
+        Community is filled here if not \ ``NULL``\ 
+    :type community: const struct intel_community \*\*
 
-    :param const struct intel_padgroup \*\*padgrp:
+    :param padgrp:
         Pad group is filled here if not \ ``NULL``\ 
+    :type padgrp: const struct intel_padgroup \*\*
 
 .. _`intel_gpio_to_pin.description`:
 

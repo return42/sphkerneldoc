@@ -10,23 +10,29 @@ async_xor
 
     attempt to xor a set of blocks with a dma engine.
 
-    :param struct page \*dest:
+    :param dest:
         destination page
+    :type dest: struct page \*
 
-    :param struct page \*\*src_list:
+    :param src_list:
         array of source pages
+    :type src_list: struct page \*\*
 
-    :param unsigned int offset:
+    :param offset:
         common src/dst offset to start transaction
+    :type offset: unsigned int
 
-    :param int src_cnt:
+    :param src_cnt:
         number of source pages
+    :type src_cnt: int
 
-    :param size_t len:
+    :param len:
         length in bytes
+    :type len: size_t
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         submission / completion modifiers
+    :type submit: struct async_submit_ctl \*
 
 .. _`async_xor.honored-flags`:
 
@@ -59,26 +65,33 @@ async_xor_val
 
     attempt a xor parity check with a dma engine.
 
-    :param struct page \*dest:
+    :param dest:
         destination page used if the xor is performed synchronously
+    :type dest: struct page \*
 
-    :param struct page \*\*src_list:
+    :param src_list:
         array of source pages
+    :type src_list: struct page \*\*
 
-    :param unsigned int offset:
+    :param offset:
         offset in pages to start transaction
+    :type offset: unsigned int
 
-    :param int src_cnt:
+    :param src_cnt:
         number of source pages
+    :type src_cnt: int
 
-    :param size_t len:
+    :param len:
         length in bytes
+    :type len: size_t
 
-    :param enum sum_check_flags \*result:
+    :param result:
         0 if sum == 0 else non-zero
+    :type result: enum sum_check_flags \*
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         submission / completion modifiers
+    :type submit: struct async_submit_ctl \*
 
 .. _`async_xor_val.honored-flags`:
 

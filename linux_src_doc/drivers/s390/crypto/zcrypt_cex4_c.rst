@@ -8,10 +8,11 @@ zcrypt_cex4_card_probe
 
 .. c:function:: int zcrypt_cex4_card_probe(struct ap_device *ap_dev)
 
-    since the bus_match already checked the hardware type.
+    accepts the AP device since the bus_match already checked the hardware type.
 
-    :param struct ap_device \*ap_dev:
+    :param ap_dev:
         pointer to the AP device.
+    :type ap_dev: struct ap_device \*
 
 .. _`zcrypt_cex4_card_remove`:
 
@@ -22,8 +23,9 @@ zcrypt_cex4_card_remove
 
     if an AP card device is removed.
 
-    :param struct ap_device \*ap_dev:
+    :param ap_dev:
         *undescribed*
+    :type ap_dev: struct ap_device \*
 
 .. _`zcrypt_cex4_queue_probe`:
 
@@ -32,10 +34,11 @@ zcrypt_cex4_queue_probe
 
 .. c:function:: int zcrypt_cex4_queue_probe(struct ap_device *ap_dev)
 
-    since the bus_match already checked the hardware type.
+    accepts the AP device since the bus_match already checked the hardware type.
 
-    :param struct ap_device \*ap_dev:
+    :param ap_dev:
         pointer to the AP device.
+    :type ap_dev: struct ap_device \*
 
 .. _`zcrypt_cex4_queue_remove`:
 
@@ -44,10 +47,11 @@ zcrypt_cex4_queue_remove
 
 .. c:function:: void zcrypt_cex4_queue_remove(struct ap_device *ap_dev)
 
-    if an AP queue device is removed.
+    information if an AP queue device is removed.
 
-    :param struct ap_device \*ap_dev:
+    :param ap_dev:
         *undescribed*
+    :type ap_dev: struct ap_device \*
 
 .. This file was automatic generated / don't edit.
 

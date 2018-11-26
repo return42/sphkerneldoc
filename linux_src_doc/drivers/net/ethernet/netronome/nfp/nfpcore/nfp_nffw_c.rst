@@ -19,15 +19,16 @@ nfp_nffw_info_open
 
     Acquire the lock on the NFFW table
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_nffw_info_open.return`:
 
 Return
 ------
 
-0, or -ERRNO
+pointer to nfp_nffw_info object or \ :c:func:`ERR_PTR`\ 
 
 .. _`nfp_nffw_info_close`:
 
@@ -36,17 +37,11 @@ nfp_nffw_info_close
 
 .. c:function:: void nfp_nffw_info_close(struct nfp_nffw_info *state)
 
-    Release the lock on the NFFW table
+    Release the lock on the NFFW table and free state
 
-    :param struct nfp_nffw_info \*state:
+    :param state:
         NFP FW info state
-
-.. _`nfp_nffw_info_close.return`:
-
-Return
-------
-
-0, or -ERRNO
+    :type state: struct nfp_nffw_info \*
 
 .. _`nfp_nffw_info_fwid_first`:
 
@@ -57,8 +52,9 @@ nfp_nffw_info_fwid_first
 
     Return the first firmware ID in the NFFW
 
-    :param struct nfp_nffw_info \*state:
+    :param state:
         NFP FW info state
+    :type state: struct nfp_nffw_info \*
 
 .. _`nfp_nffw_info_fwid_first.return`:
 
@@ -76,14 +72,17 @@ nfp_nffw_info_mip_first
 
     Retrieve the location of the first FW's MIP
 
-    :param struct nfp_nffw_info \*state:
+    :param state:
         NFP FW info state
+    :type state: struct nfp_nffw_info \*
 
-    :param u32 \*cpp_id:
+    :param cpp_id:
         Pointer to the CPP ID of the MIP
+    :type cpp_id: u32 \*
 
-    :param u64 \*off:
+    :param off:
         Pointer to the CPP Address of the MIP
+    :type off: u64 \*
 
 .. _`nfp_nffw_info_mip_first.return`:
 

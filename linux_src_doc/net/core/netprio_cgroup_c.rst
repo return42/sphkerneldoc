@@ -10,11 +10,13 @@ netprio_prio
 
     return the effective netprio of a cgroup-net_device pair
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         css part of the target pair
+    :type css: struct cgroup_subsys_state \*
 
-    :param struct net_device \*dev:
+    :param dev:
         net_device part of the target pair
+    :type dev: struct net_device \*
 
 .. _`netprio_prio.description`:
 
@@ -32,14 +34,17 @@ netprio_set_prio
 
     set netprio on a cgroup-net_device pair
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         css part of the target pair
+    :type css: struct cgroup_subsys_state \*
 
-    :param struct net_device \*dev:
+    :param dev:
         net_device part of the target pair
+    :type dev: struct net_device \*
 
-    :param u32 prio:
+    :param prio:
         prio to set
+    :type prio: u32
 
 .. _`netprio_set_prio.description`:
 

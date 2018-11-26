@@ -10,11 +10,13 @@ lcd_spi_write
 
     write command to the SPI port
 
-    :param struct spi_device \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct spi_device \*
 
-    :param u32 data:
+    :param data:
         can be 8/16/32-bit, MSB justified data to write.
+    :type data: u32
 
 .. _`lcd_spi_write.description`:
 

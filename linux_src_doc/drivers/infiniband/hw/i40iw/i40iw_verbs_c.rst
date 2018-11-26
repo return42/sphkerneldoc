@@ -10,14 +10,17 @@ i40iw_query_device
 
     get device attributes
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         device pointer from stack
+    :type ibdev: struct ib_device \*
 
-    :param struct ib_device_attr \*props:
+    :param props:
         returning device attributes
+    :type props: struct ib_device_attr \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`i40iw_query_port`:
 
@@ -28,14 +31,17 @@ i40iw_query_port
 
     get port attrubutes
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         device pointer from stack
+    :type ibdev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         port number for query
+    :type port: u8
 
-    :param struct ib_port_attr \*props:
+    :param props:
         returning device attributes
+    :type props: struct ib_port_attr \*
 
 .. _`i40iw_alloc_ucontext`:
 
@@ -46,11 +52,13 @@ i40iw_alloc_ucontext
 
     Allocate the user context data structure
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         device pointer from stack
+    :type ibdev: struct ib_device \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`i40iw_alloc_ucontext.description`:
 
@@ -69,8 +77,9 @@ i40iw_dealloc_ucontext
 
     deallocate the user context data structure
 
-    :param struct ib_ucontext \*context:
+    :param context:
         user context created during alloc
+    :type context: struct ib_ucontext \*
 
 .. _`i40iw_mmap`:
 
@@ -81,11 +90,13 @@ i40iw_mmap
 
     user memory map
 
-    :param struct ib_ucontext \*context:
+    :param context:
         context created during alloc
+    :type context: struct ib_ucontext \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         kernel info for user memory map
+    :type vma: struct vm_area_struct \*
 
 .. _`i40iw_alloc_push_page`:
 
@@ -96,11 +107,13 @@ i40iw_alloc_push_page
 
     allocate a push page for qp
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         hardware control qp
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_dealloc_push_page`:
 
@@ -111,11 +124,13 @@ i40iw_dealloc_push_page
 
     free a push page for qp
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         hardware control qp
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_alloc_pd`:
 
@@ -126,14 +141,17 @@ i40iw_alloc_pd
 
     allocate protection domain
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         device pointer from stack
+    :type ibdev: struct ib_device \*
 
-    :param struct ib_ucontext \*context:
+    :param context:
         user context created during alloc
+    :type context: struct ib_ucontext \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`i40iw_dealloc_pd`:
 
@@ -144,8 +162,9 @@ i40iw_dealloc_pd
 
     deallocate pd
 
-    :param struct ib_pd \*ibpd:
+    :param ibpd:
         ptr of pd to be deallocated
+    :type ibpd: struct ib_pd \*
 
 .. _`i40iw_get_pbl`:
 
@@ -156,11 +175,13 @@ i40iw_get_pbl
 
     Retrieve pbl from a list given a virtual address
 
-    :param unsigned long va:
+    :param va:
         user virtual address
+    :type va: unsigned long
 
-    :param struct list_head \*pbl_list:
+    :param pbl_list:
         pbl list to search in (QP's or CQ's)
+    :type pbl_list: struct list_head \*
 
 .. _`i40iw_free_qp_resources`:
 
@@ -171,14 +192,17 @@ i40iw_free_qp_resources
 
     free up memory resources for qp
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         qp ptr (user or kernel)
+    :type iwqp: struct i40iw_qp \*
 
-    :param u32 qp_num:
+    :param qp_num:
         qp number assigned
+    :type qp_num: u32
 
 .. _`i40iw_clean_cqes`:
 
@@ -189,11 +213,13 @@ i40iw_clean_cqes
 
     clean cq entries for qp
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         qp ptr (user or kernel)
+    :type iwqp: struct i40iw_qp \*
 
-    :param struct i40iw_cq \*iwcq:
+    :param iwcq:
         cq ptr
+    :type iwcq: struct i40iw_cq \*
 
 .. _`i40iw_destroy_qp`:
 
@@ -204,8 +230,9 @@ i40iw_destroy_qp
 
     destroy qp
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         qp's ib pointer also to get to device's qp address
+    :type ibqp: struct ib_qp \*
 
 .. _`i40iw_setup_virt_qp`:
 
@@ -216,14 +243,17 @@ i40iw_setup_virt_qp
 
     setup for allocation of virtual qp
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         *undescribed*
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         *undescribed*
+    :type iwqp: struct i40iw_qp \*
 
-    :param struct i40iw_qp_init_info \*init_info:
+    :param init_info:
         initialize info to return
+    :type init_info: struct i40iw_qp_init_info \*
 
 .. _`i40iw_setup_kmode_qp`:
 
@@ -234,14 +264,17 @@ i40iw_setup_kmode_qp
 
     setup initialization for kernel mode qp
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         qp ptr (user or kernel)
+    :type iwqp: struct i40iw_qp \*
 
-    :param struct i40iw_qp_init_info \*info:
+    :param info:
         initialize info to return
+    :type info: struct i40iw_qp_init_info \*
 
 .. _`i40iw_create_qp`:
 
@@ -252,14 +285,17 @@ i40iw_create_qp
 
     create qp
 
-    :param struct ib_pd \*ibpd:
+    :param ibpd:
         ptr of pd
+    :type ibpd: struct ib_pd \*
 
-    :param struct ib_qp_init_attr \*init_attr:
+    :param init_attr:
         attributes for qp
+    :type init_attr: struct ib_qp_init_attr \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data for create qp
+    :type udata: struct ib_udata \*
 
 .. _`i40iw_query_qp`:
 
@@ -270,17 +306,21 @@ i40iw_query_qp
 
     query qp attributes
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         qp pointer
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_qp_attr \*attr:
+    :param attr:
         attributes pointer
+    :type attr: struct ib_qp_attr \*
 
-    :param int attr_mask:
+    :param attr_mask:
         Not used
+    :type attr_mask: int
 
-    :param struct ib_qp_init_attr \*init_attr:
+    :param init_attr:
         qp attributes to return
+    :type init_attr: struct ib_qp_init_attr \*
 
 .. _`i40iw_hw_modify_qp`:
 
@@ -291,17 +331,21 @@ i40iw_hw_modify_qp
 
     setup cqp for modify qp
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         qp ptr (user or kernel)
+    :type iwqp: struct i40iw_qp \*
 
-    :param struct i40iw_modify_qp_info \*info:
+    :param info:
         info for modify qp
+    :type info: struct i40iw_modify_qp_info \*
 
-    :param bool wait:
+    :param wait:
         flag to wait or not for modify qp completion
+    :type wait: bool
 
 .. _`i40iw_modify_qp`:
 
@@ -312,17 +356,21 @@ i40iw_modify_qp
 
     modify qp request
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         qp's pointer for modify
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_qp_attr \*attr:
+    :param attr:
         access attributes
+    :type attr: struct ib_qp_attr \*
 
-    :param int attr_mask:
+    :param attr_mask:
         state mask
+    :type attr_mask: int
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`cq_free_resources`:
 
@@ -333,11 +381,13 @@ cq_free_resources
 
     free up recources for cq
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_cq \*iwcq:
+    :param iwcq:
         cq ptr
+    :type iwcq: struct i40iw_cq \*
 
 .. _`i40iw_cq_wq_destroy`:
 
@@ -348,11 +398,13 @@ i40iw_cq_wq_destroy
 
     send cq destroy cqp
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         hardware control cq
+    :type cq: struct i40iw_sc_cq \*
 
 .. _`i40iw_destroy_cq`:
 
@@ -363,8 +415,9 @@ i40iw_destroy_cq
 
     destroy cq
 
-    :param struct ib_cq \*ib_cq:
+    :param ib_cq:
         cq pointer
+    :type ib_cq: struct ib_cq \*
 
 .. _`i40iw_create_cq`:
 
@@ -375,17 +428,21 @@ i40iw_create_cq
 
     create cq
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         device pointer from stack
+    :type ibdev: struct ib_device \*
 
-    :param const struct ib_cq_init_attr \*attr:
+    :param attr:
         attributes for cq
+    :type attr: const struct ib_cq_init_attr \*
 
-    :param struct ib_ucontext \*context:
+    :param context:
         user context created during alloc
+    :type context: struct ib_ucontext \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`i40iw_get_user_access`:
 
@@ -396,8 +453,9 @@ i40iw_get_user_access
 
     get hw access from IB access
 
-    :param int acc:
+    :param acc:
         IB access to return hw access
+    :type acc: int
 
 .. _`i40iw_free_stag`:
 
@@ -408,11 +466,13 @@ i40iw_free_stag
 
     free stag resource
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param u32 stag:
+    :param stag:
         stag to free
+    :type stag: u32
 
 .. _`i40iw_create_stag`:
 
@@ -423,8 +483,9 @@ i40iw_create_stag
 
     create random stag
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_next_pbl_addr`:
 
@@ -435,14 +496,17 @@ i40iw_next_pbl_addr
 
     Get next pbl address
 
-    :param u64 \*pbl:
+    :param pbl:
         pointer to a pble
+    :type pbl: u64 \*
 
-    :param struct i40iw_pble_info \*\*pinfo:
+    :param pinfo:
         info pointer
+    :type pinfo: struct i40iw_pble_info \*\*
 
-    :param u32 \*idx:
+    :param idx:
         index
+    :type idx: u32 \*
 
 .. _`i40iw_copy_user_pgaddrs`:
 
@@ -453,14 +517,17 @@ i40iw_copy_user_pgaddrs
 
     copy user page address to pble's os locally
 
-    :param struct i40iw_mr \*iwmr:
+    :param iwmr:
         iwmr for IB's user page addresses
+    :type iwmr: struct i40iw_mr \*
 
-    :param u64 \*pbl:
+    :param pbl:
         ple pointer to save 1 level or 0 level pble
+    :type pbl: u64 \*
 
-    :param enum i40iw_pble_level level:
+    :param level:
         indicated level 0, 1 or 2
+    :type level: enum i40iw_pble_level
 
 .. _`i40iw_set_hugetlb_values`:
 
@@ -471,11 +538,13 @@ i40iw_set_hugetlb_values
 
     set MR pg size and mask to huge pg values.
 
-    :param u64 addr:
+    :param addr:
         virtual address
+    :type addr: u64
 
-    :param struct i40iw_mr \*iwmr:
+    :param iwmr:
         mr pointer for this memory registration
+    :type iwmr: struct i40iw_mr \*
 
 .. _`i40iw_check_mem_contiguous`:
 
@@ -486,14 +555,17 @@ i40iw_check_mem_contiguous
 
     check if pbls stored in arr are contiguous
 
-    :param u64 \*arr:
+    :param arr:
         lvl1 pbl array
+    :type arr: u64 \*
 
-    :param u32 npages:
+    :param npages:
         page count
+    :type npages: u32
 
-    :param u32 pg_size:
+    :param pg_size:
         *undescribed*
+    :type pg_size: u32
 
 .. _`i40iw_check_mem_contiguous.pg_size`:
 
@@ -511,11 +583,13 @@ i40iw_check_mr_contiguous
 
     check if MR is physically contiguous
 
-    :param struct i40iw_pble_alloc \*palloc:
+    :param palloc:
         pbl allocation struct
+    :type palloc: struct i40iw_pble_alloc \*
 
-    :param u32 pg_size:
+    :param pg_size:
         *undescribed*
+    :type pg_size: u32
 
 .. _`i40iw_check_mr_contiguous.pg_size`:
 
@@ -533,14 +607,17 @@ i40iw_setup_pbles
 
     copy user pg address to pble's
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_mr \*iwmr:
+    :param iwmr:
         mr pointer for this memory registration
+    :type iwmr: struct i40iw_mr \*
 
-    :param bool use_pbles:
+    :param use_pbles:
         flag if to use pble's
+    :type use_pbles: bool
 
 .. _`i40iw_handle_q_mem`:
 
@@ -551,17 +628,21 @@ i40iw_handle_q_mem
 
     handle memory for qp and cq
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_mem_reg_req \*req:
+    :param req:
         information for q memory management
+    :type req: struct i40iw_mem_reg_req \*
 
-    :param struct i40iw_pbl \*iwpbl:
+    :param iwpbl:
         pble struct
+    :type iwpbl: struct i40iw_pbl \*
 
-    :param bool use_pbles:
+    :param use_pbles:
         flag to use pble
+    :type use_pbles: bool
 
 .. _`i40iw_hw_alloc_stag`:
 
@@ -572,11 +653,13 @@ i40iw_hw_alloc_stag
 
     cqp command to allocate stag
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_mr \*iwmr:
+    :param iwmr:
         iwarp mr pointer
+    :type iwmr: struct i40iw_mr \*
 
 .. _`i40iw_alloc_mr`:
 
@@ -587,14 +670,17 @@ i40iw_alloc_mr
 
     register stag for fast memory registration
 
-    :param struct ib_pd \*pd:
+    :param pd:
         ibpd pointer
+    :type pd: struct ib_pd \*
 
-    :param enum ib_mr_type mr_type:
+    :param mr_type:
         memory for stag registrion
+    :type mr_type: enum ib_mr_type
 
-    :param u32 max_num_sg:
+    :param max_num_sg:
         man number of pages
+    :type max_num_sg: u32
 
 .. _`i40iw_set_page`:
 
@@ -605,11 +691,13 @@ i40iw_set_page
 
     populate pbl list for fmr
 
-    :param struct ib_mr \*ibmr:
+    :param ibmr:
         ib mem to access iwarp mr pointer
+    :type ibmr: struct ib_mr \*
 
-    :param u64 addr:
+    :param addr:
         page dma address fro pbl list
+    :type addr: u64
 
 .. _`i40iw_map_mr_sg`:
 
@@ -620,17 +708,21 @@ i40iw_map_mr_sg
 
     map of sg list for fmr
 
-    :param struct ib_mr \*ibmr:
+    :param ibmr:
         ib mem to access iwarp mr pointer
+    :type ibmr: struct ib_mr \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatter gather list for fmr
+    :type sg: struct scatterlist \*
 
-    :param int sg_nents:
+    :param sg_nents:
         number of sg pages
+    :type sg_nents: int
 
-    :param unsigned int \*sg_offset:
+    :param sg_offset:
         *undescribed*
+    :type sg_offset: unsigned int \*
 
 .. _`i40iw_drain_sq`:
 
@@ -641,8 +733,9 @@ i40iw_drain_sq
 
     drain the send queue
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         ib qp pointer
+    :type ibqp: struct ib_qp \*
 
 .. _`i40iw_drain_rq`:
 
@@ -653,8 +746,9 @@ i40iw_drain_rq
 
     drain the receive queue
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         ib qp pointer
+    :type ibqp: struct ib_qp \*
 
 .. _`i40iw_hwreg_mr`:
 
@@ -665,14 +759,17 @@ i40iw_hwreg_mr
 
     send cqp command for memory registration
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_mr \*iwmr:
+    :param iwmr:
         iwarp mr pointer
+    :type iwmr: struct i40iw_mr \*
 
-    :param u16 access:
+    :param access:
         access for MR
+    :type access: u16
 
 .. _`i40iw_reg_user_mr`:
 
@@ -683,23 +780,29 @@ i40iw_reg_user_mr
 
     Register a user memory region
 
-    :param struct ib_pd \*pd:
+    :param pd:
         ptr of pd
+    :type pd: struct ib_pd \*
 
-    :param u64 start:
+    :param start:
         virtual start address
+    :type start: u64
 
-    :param u64 length:
+    :param length:
         length of mr
+    :type length: u64
 
-    :param u64 virt:
+    :param virt:
         virtual address
+    :type virt: u64
 
-    :param int acc:
+    :param acc:
         access of mr
+    :type acc: int
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`i40iw_reg_phys_mr`:
 
@@ -710,20 +813,25 @@ i40iw_reg_phys_mr
 
     register kernel physical memory
 
-    :param struct ib_pd \*pd:
+    :param pd:
         ibpd pointer
+    :type pd: struct ib_pd \*
 
-    :param u64 addr:
+    :param addr:
         physical address of memory to register
+    :type addr: u64
 
-    :param u64 size:
+    :param size:
         size of memory to register
+    :type size: u64
 
-    :param int acc:
+    :param acc:
         Access rights
+    :type acc: int
 
-    :param u64 \*iova_start:
+    :param iova_start:
         start of virtual address for physical buffers
+    :type iova_start: u64 \*
 
 .. _`i40iw_get_dma_mr`:
 
@@ -734,11 +842,13 @@ i40iw_get_dma_mr
 
     register physical mem
 
-    :param struct ib_pd \*pd:
+    :param pd:
         ptr of pd
+    :type pd: struct ib_pd \*
 
-    :param int acc:
+    :param acc:
         access for memory
+    :type acc: int
 
 .. _`i40iw_del_memlist`:
 
@@ -749,11 +859,13 @@ i40iw_del_memlist
 
     Deleting pbl list entries for CQ/QP
 
-    :param struct i40iw_mr \*iwmr:
+    :param iwmr:
         iwmr for IB's user page addresses
+    :type iwmr: struct i40iw_mr \*
 
-    :param struct i40iw_ucontext \*ucontext:
+    :param ucontext:
         ptr to user context
+    :type ucontext: struct i40iw_ucontext \*
 
 .. _`i40iw_dereg_mr`:
 
@@ -764,56 +876,66 @@ i40iw_dereg_mr
 
     deregister mr
 
-    :param struct ib_mr \*ib_mr:
+    :param ib_mr:
         mr ptr for dereg
+    :type ib_mr: struct ib_mr \*
 
-.. _`i40iw_show_rev`:
+.. _`hw_rev_show`:
 
-i40iw_show_rev
-==============
+hw_rev_show
+===========
 
-.. c:function:: ssize_t i40iw_show_rev(struct device *dev, struct device_attribute *attr, char *buf)
+.. c:function:: ssize_t hw_rev_show(struct device *dev, struct device_attribute *attr, char *buf)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
-.. _`i40iw_show_hca`:
+.. _`hca_type_show`:
 
-i40iw_show_hca
-==============
+hca_type_show
+=============
 
-.. c:function:: ssize_t i40iw_show_hca(struct device *dev, struct device_attribute *attr, char *buf)
+.. c:function:: ssize_t hca_type_show(struct device *dev, struct device_attribute *attr, char *buf)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
-.. _`i40iw_show_board`:
+.. _`board_id_show`:
 
-i40iw_show_board
-================
+board_id_show
+=============
 
-.. c:function:: ssize_t i40iw_show_board(struct device *dev, struct device_attribute *attr, char *buf)
+.. c:function:: ssize_t board_id_show(struct device *dev, struct device_attribute *attr, char *buf)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`i40iw_copy_sg_list`:
 
@@ -824,50 +946,59 @@ i40iw_copy_sg_list
 
     copy sg list for qp
 
-    :param struct i40iw_sge \*sg_list:
+    :param sg_list:
         copied into sg_list
+    :type sg_list: struct i40iw_sge \*
 
-    :param struct ib_sge \*sgl:
+    :param sgl:
         copy from sgl
+    :type sgl: struct ib_sge \*
 
-    :param int num_sges:
+    :param num_sges:
         count of sg entries
+    :type num_sges: int
 
 .. _`i40iw_post_send`:
 
 i40iw_post_send
 ===============
 
-.. c:function:: int i40iw_post_send(struct ib_qp *ibqp, struct ib_send_wr *ib_wr, struct ib_send_wr **bad_wr)
+.. c:function:: int i40iw_post_send(struct ib_qp *ibqp, const struct ib_send_wr *ib_wr, const struct ib_send_wr **bad_wr)
 
     kernel application wr
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         qp ptr for wr
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_send_wr \*ib_wr:
+    :param ib_wr:
         work request ptr
+    :type ib_wr: const struct ib_send_wr \*
 
-    :param struct ib_send_wr \*\*bad_wr:
+    :param bad_wr:
         return of bad wr if err
+    :type bad_wr: const struct ib_send_wr \*\*
 
 .. _`i40iw_post_recv`:
 
 i40iw_post_recv
 ===============
 
-.. c:function:: int i40iw_post_recv(struct ib_qp *ibqp, struct ib_recv_wr *ib_wr, struct ib_recv_wr **bad_wr)
+.. c:function:: int i40iw_post_recv(struct ib_qp *ibqp, const struct ib_recv_wr *ib_wr, const struct ib_recv_wr **bad_wr)
 
     post receive wr for kernel application
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         ib qp pointer
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_recv_wr \*ib_wr:
+    :param ib_wr:
         work request for receive
+    :type ib_wr: const struct ib_recv_wr \*
 
-    :param struct ib_recv_wr \*\*bad_wr:
+    :param bad_wr:
         bad wr caused an error
+    :type bad_wr: const struct ib_recv_wr \*\*
 
 .. _`i40iw_poll_cq`:
 
@@ -878,14 +1009,17 @@ i40iw_poll_cq
 
     poll cq for completion (kernel apps)
 
-    :param struct ib_cq \*ibcq:
+    :param ibcq:
         cq to poll
+    :type ibcq: struct ib_cq \*
 
-    :param int num_entries:
+    :param num_entries:
         number of entries to poll
+    :type num_entries: int
 
-    :param struct ib_wc \*entry:
+    :param entry:
         wr of entry completed
+    :type entry: struct ib_wc \*
 
 .. _`i40iw_req_notify_cq`:
 
@@ -896,11 +1030,13 @@ i40iw_req_notify_cq
 
     arm cq kernel application
 
-    :param struct ib_cq \*ibcq:
+    :param ibcq:
         cq to arm
+    :type ibcq: struct ib_cq \*
 
-    :param enum ib_cq_notify_flags notify_flags:
+    :param notify_flags:
         notofication flags
+    :type notify_flags: enum ib_cq_notify_flags
 
 .. _`i40iw_port_immutable`:
 
@@ -911,14 +1047,17 @@ i40iw_port_immutable
 
     return port's immutable data
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         ib dev struct
+    :type ibdev: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         port number
+    :type port_num: u8
 
-    :param struct ib_port_immutable \*immutable:
+    :param immutable:
         immutable data for the port return
+    :type immutable: struct ib_port_immutable \*
 
 .. _`i40iw_alloc_hw_stats`:
 
@@ -929,11 +1068,13 @@ i40iw_alloc_hw_stats
 
     Allocate a hw stats structure
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         device pointer from stack
+    :type ibdev: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         port number
+    :type port_num: u8
 
 .. _`i40iw_get_hw_stats`:
 
@@ -944,17 +1085,21 @@ i40iw_get_hw_stats
 
     Populates the rdma_hw_stats structure
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         device pointer from stack
+    :type ibdev: struct ib_device \*
 
-    :param struct rdma_hw_stats \*stats:
+    :param stats:
         stats pointer from stack
+    :type stats: struct rdma_hw_stats \*
 
-    :param u8 port_num:
+    :param port_num:
         port number
+    :type port_num: u8
 
-    :param int index:
+    :param index:
         which hw counter the stack is requesting we update
+    :type index: int
 
 .. _`i40iw_query_gid`:
 
@@ -965,36 +1110,21 @@ i40iw_query_gid
 
     Query port GID
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         device pointer from stack
+    :type ibdev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         port number
+    :type port: u8
 
-    :param int index:
+    :param index:
         Entry index
+    :type index: int
 
-    :param union ib_gid \*gid:
+    :param gid:
         Global ID
-
-.. _`i40iw_modify_port`:
-
-i40iw_modify_port
-=================
-
-.. c:function:: int i40iw_modify_port(struct ib_device *ibdev, u8 port, int port_modify_mask, struct ib_port_modify *props)
-
-    :param struct ib_device \*ibdev:
-        device pointer from stack
-
-    :param u8 port:
-        port number
-
-    :param int port_modify_mask:
-        mask for port modifications
-
-    :param struct ib_port_modify \*props:
-        port properties
+    :type gid: union ib_gid \*
 
 .. _`i40iw_query_pkey`:
 
@@ -1005,47 +1135,21 @@ i40iw_query_pkey
 
     Query partition key
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         device pointer from stack
+    :type ibdev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         port number
+    :type port: u8
 
-    :param u16 index:
+    :param index:
         index of pkey
+    :type index: u16
 
-    :param u16 \*pkey:
+    :param pkey:
         pointer to store the pkey
-
-.. _`i40iw_create_ah`:
-
-i40iw_create_ah
-===============
-
-.. c:function:: struct ib_ah *i40iw_create_ah(struct ib_pd *ibpd, struct rdma_ah_attr *attr, struct ib_udata *udata)
-
-    create address handle
-
-    :param struct ib_pd \*ibpd:
-        ptr of pd
-
-    :param struct rdma_ah_attr \*attr:
-        *undescribed*
-
-    :param struct ib_udata \*udata:
-        *undescribed*
-
-.. _`i40iw_destroy_ah`:
-
-i40iw_destroy_ah
-================
-
-.. c:function:: int i40iw_destroy_ah(struct ib_ah *ah)
-
-    Destroy address handle
-
-    :param struct ib_ah \*ah:
-        pointer to address handle
+    :type pkey: u16 \*
 
 .. _`i40iw_get_vector_affinity`:
 
@@ -1056,11 +1160,13 @@ i40iw_get_vector_affinity
 
     report IRQ affinity mask
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         IB device
+    :type ibdev: struct ib_device \*
 
-    :param int comp_vector:
+    :param comp_vector:
         completion vector index
+    :type comp_vector: int
 
 .. _`i40iw_init_rdma_device`:
 
@@ -1071,8 +1177,9 @@ i40iw_init_rdma_device
 
     initialization of iwarp device
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_port_ibevent`:
 
@@ -1083,20 +1190,9 @@ i40iw_port_ibevent
 
     indicate port event
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
-
-.. _`i40iw_unregister_rdma_device`:
-
-i40iw_unregister_rdma_device
-============================
-
-.. c:function:: void i40iw_unregister_rdma_device(struct i40iw_ib_device *iwibdev)
-
-    unregister of iwarp from IB
-
-    :param struct i40iw_ib_device \*iwibdev:
-        rdma device ptr
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_destroy_rdma_device`:
 
@@ -1107,8 +1203,9 @@ i40iw_destroy_rdma_device
 
     destroy rdma device and free resources
 
-    :param struct i40iw_ib_device \*iwibdev:
+    :param iwibdev:
         IB device ptr
+    :type iwibdev: struct i40iw_ib_device \*
 
 .. _`i40iw_register_rdma_device`:
 
@@ -1119,8 +1216,9 @@ i40iw_register_rdma_device
 
     register iwarp device to IB
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. This file was automatic generated / don't edit.
 

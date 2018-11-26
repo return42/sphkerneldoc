@@ -10,11 +10,13 @@
 
     helper to set feature bits. For use by transports.
 
-    :param struct virtio_device \*vdev:
+    :param vdev:
         the device
+    :type vdev: struct virtio_device \*
 
-    :param unsigned int fbit:
+    :param fbit:
         the feature bit
+    :type fbit: unsigned int
 
 .. _`__virtio_clear_bit`:
 
@@ -25,11 +27,13 @@
 
     helper to clear feature bits. For use by transports.
 
-    :param struct virtio_device \*vdev:
+    :param vdev:
         the device
+    :type vdev: struct virtio_device \*
 
-    :param unsigned int fbit:
+    :param fbit:
         the feature bit
+    :type fbit: unsigned int
 
 .. _`virtio_has_iommu_quirk`:
 
@@ -40,8 +44,9 @@ virtio_has_iommu_quirk
 
     determine whether this device has the iommu quirk
 
-    :param const struct virtio_device \*vdev:
+    :param vdev:
         the device
+    :type vdev: const struct virtio_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ s3c2410_cpufreq_setrefresh
 
     set SDRAM refresh value
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The frequency configuration
+    :type cfg: struct s3c_cpufreq_config \*
 
 .. _`s3c2410_cpufreq_setrefresh.description`:
 
@@ -30,8 +31,9 @@ s3c2410_set_fvco
 
     set the PLL value
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The frequency configuration
+    :type cfg: struct s3c_cpufreq_config \*
 
 .. This file was automatic generated / don't edit.
 

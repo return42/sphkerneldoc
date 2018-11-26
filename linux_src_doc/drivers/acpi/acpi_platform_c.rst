@@ -10,11 +10,13 @@ acpi_create_platform_device
 
     Create platform device for ACPI device node
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device node to create a platform device for.
+    :type adev: struct acpi_device \*
 
-    :param struct property_entry \*properties:
+    :param properties:
         Optional collection of build-in properties.
+    :type properties: struct property_entry \*
 
 .. _`acpi_create_platform_device.description`:
 

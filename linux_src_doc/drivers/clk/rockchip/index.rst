@@ -8,6 +8,7 @@ rockchip
     :maxdepth: 1
 
     clk-cpu_c
+    clk-half-divider_c
     clk-pll_c
     clk_c
     clk_h

@@ -10,11 +10,13 @@ lis3lv02d_get_axis
 
     For the given axis, give the value converted
 
-    :param s8 axis:
+    :param axis:
         1,2,3 - can also be negative
+    :type axis: s8
 
-    :param int hw_values:
+    :param hw_values:
         raw values returned by the hardware
+    :type hw_values: int
 
 .. _`lis3lv02d_get_axis.description`:
 
@@ -32,17 +34,21 @@ lis3lv02d_get_xyz
 
     Get X, Y and Z axis values from the accelerometer
 
-    :param struct lis3lv02d \*lis3:
+    :param lis3:
         pointer to the device struct
+    :type lis3: struct lis3lv02d \*
 
-    :param int \*x:
+    :param x:
         where to store the X axis value
+    :type x: int \*
 
-    :param int \*y:
+    :param y:
         where to store the Y axis value
+    :type y: int \*
 
-    :param int \*z:
+    :param z:
         where to store the Z axis value
+    :type z: int \*
 
 .. _`lis3lv02d_get_xyz.description`:
 

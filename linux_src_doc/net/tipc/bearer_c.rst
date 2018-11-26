@@ -10,8 +10,9 @@ tipc_media_find
 
     locates specified media object by name
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
 .. _`media_find_id`:
 
@@ -22,8 +23,9 @@ media_find_id
 
     locates specified media object by type identifier
 
-    :param u8 type:
+    :param type:
         *undescribed*
+    :type type: u8
 
 .. _`tipc_media_addr_printf`:
 
@@ -34,14 +36,17 @@ tipc_media_addr_printf
 
     record media address in print buffer
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param struct tipc_media_addr \*a:
+    :param a:
         *undescribed*
+    :type a: struct tipc_media_addr \*
 
 .. _`bearer_name_validate`:
 
@@ -52,11 +57,13 @@ bearer_name_validate
 
     validate & (optionally) deconstruct bearer name
 
-    :param const char \*name:
+    :param name:
         ptr to bearer name string
+    :type name: const char \*
 
-    :param struct tipc_bearer_names \*name_parts:
+    :param name_parts:
         ptr to area for bearer name components (or NULL if not needed)
+    :type name_parts: struct tipc_bearer_names \*
 
 .. _`bearer_name_validate.description`:
 
@@ -74,11 +81,13 @@ tipc_bearer_find
 
     locates bearer object with matching bearer name
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
 .. _`tipc_enable_bearer`:
 
@@ -89,20 +98,25 @@ tipc_enable_bearer
 
     enable bearer with the given name
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param u32 disc_domain:
+    :param disc_domain:
         *undescribed*
+    :type disc_domain: u32
 
-    :param u32 prio:
+    :param prio:
         *undescribed*
+    :type prio: u32
 
-    :param struct nlattr  \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct nlattr  \*
 
 .. _`tipc_reset_bearer`:
 
@@ -113,11 +127,13 @@ tipc_reset_bearer
 
     Reset all links established over this bearer
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct tipc_bearer \*b:
+    :param b:
         *undescribed*
+    :type b: struct tipc_bearer \*
 
 .. _`bearer_disable`:
 
@@ -126,11 +142,13 @@ bearer_disable
 
 .. c:function:: void bearer_disable(struct net *net, struct tipc_bearer *b)
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct tipc_bearer \*b:
+    :param b:
         *undescribed*
+    :type b: struct tipc_bearer \*
 
 .. _`bearer_disable.note`:
 
@@ -148,17 +166,21 @@ tipc_l2_send_msg
 
     send a TIPC packet out over an L2 interface
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet to be sent
+    :type skb: struct sk_buff \*
 
-    :param struct tipc_bearer \*b:
+    :param b:
         the bearer through which the packet is to be sent
+    :type b: struct tipc_bearer \*
 
-    :param struct tipc_media_addr \*dest:
+    :param dest:
         peer destination address
+    :type dest: struct tipc_media_addr \*
 
 .. _`tipc_l2_rcv_msg`:
 
@@ -169,17 +191,21 @@ tipc_l2_rcv_msg
 
     handle incoming TIPC message from an interface
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the net device that the packet was received on
+    :type dev: struct net_device \*
 
-    :param struct packet_type \*pt:
+    :param pt:
         the packet_type structure which was used to register this handler
+    :type pt: struct packet_type \*
 
-    :param struct net_device \*orig_dev:
+    :param orig_dev:
         the original receive net device in case the device is a bond
+    :type orig_dev: struct net_device \*
 
 .. _`tipc_l2_rcv_msg.description`:
 
@@ -199,14 +225,17 @@ tipc_l2_device_event
 
     handle device events from network device
 
-    :param struct notifier_block \*nb:
+    :param nb:
         the context of the notification
+    :type nb: struct notifier_block \*
 
-    :param unsigned long evt:
+    :param evt:
         the type of event
+    :type evt: unsigned long
 
-    :param void \*ptr:
+    :param ptr:
         the net device that the event was on
+    :type ptr: void \*
 
 .. _`tipc_l2_device_event.description`:
 

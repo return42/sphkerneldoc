@@ -10,21 +10,26 @@ amdtp_am824_set_parameters
 
     set stream parameters
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream to configure
+    :type s: struct amdtp_stream \*
 
-    :param unsigned int rate:
+    :param rate:
         the sample rate
+    :type rate: unsigned int
 
-    :param unsigned int pcm_channels:
+    :param pcm_channels:
         the number of PCM samples in each data block, to be encoded
         as AM824 multi-bit linear audio
+    :type pcm_channels: unsigned int
 
-    :param unsigned int midi_ports:
+    :param midi_ports:
         the number of MIDI ports (i.e., MPX-MIDI Data Channels)
+    :type midi_ports: unsigned int
 
-    :param bool double_pcm_frames:
+    :param double_pcm_frames:
         one data block transfers two PCM frames
+    :type double_pcm_frames: bool
 
 .. _`amdtp_am824_set_parameters.description`:
 
@@ -43,14 +48,17 @@ amdtp_am824_set_pcm_position
 
     set an index of data channel for a channel of PCM frame
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
-    :param unsigned int index:
+    :param index:
         the index of data channel in an data block
+    :type index: unsigned int
 
-    :param unsigned int position:
+    :param position:
         the channel of PCM frame
+    :type position: unsigned int
 
 .. _`amdtp_am824_set_midi_position`:
 
@@ -61,11 +69,13 @@ amdtp_am824_set_midi_position
 
     set a index of data channel for MIDI conformant data channel
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
-    :param unsigned int position:
+    :param position:
         the index of data channel in an data block
+    :type position: unsigned int
 
 .. _`amdtp_am824_add_pcm_hw_constraints`:
 
@@ -76,11 +86,13 @@ amdtp_am824_add_pcm_hw_constraints
 
     add hw constraints for PCM substream
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream for AM824 data block, must be initialized.
+    :type s: struct amdtp_stream \*
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         the PCM substream runtime
+    :type runtime: struct snd_pcm_runtime \*
 
 .. _`amdtp_am824_midi_trigger`:
 
@@ -91,14 +103,17 @@ amdtp_am824_midi_trigger
 
     start/stop playback/capture with a MIDI device
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
-    :param unsigned int port:
+    :param port:
         index of MIDI port
+    :type port: unsigned int
 
-    :param struct snd_rawmidi_substream \*midi:
+    :param midi:
         the MIDI device to be started, or \ ``NULL``\  to stop the current device
+    :type midi: struct snd_rawmidi_substream \*
 
 .. _`amdtp_am824_midi_trigger.description`:
 
@@ -118,17 +133,21 @@ amdtp_am824_init
 
     initialize an AMDTP stream structure to handle AM824 data block
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream to initialize
+    :type s: struct amdtp_stream \*
 
-    :param struct fw_unit \*unit:
+    :param unit:
         the target of the stream
+    :type unit: struct fw_unit \*
 
-    :param enum amdtp_stream_direction dir:
+    :param dir:
         the direction of stream
+    :type dir: enum amdtp_stream_direction
 
-    :param enum cip_flags flags:
+    :param flags:
         the packet transmission method to use
+    :type flags: enum cip_flags
 
 .. This file was automatic generated / don't edit.
 

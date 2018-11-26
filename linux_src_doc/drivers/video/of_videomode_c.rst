@@ -10,14 +10,17 @@ of_get_videomode
 
     get the videomode #<index> from devicetree \ ``np``\  - devicenode with the display_timings \ ``vm``\  - set to return value \ ``index``\  - index into list of display_timings (Set this to OF_USE_NATIVE_MODE to use whatever mode is specified as native mode in the DT.)
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
-    :param struct videomode \*vm:
+    :param vm:
         *undescribed*
+    :type vm: struct videomode \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. _`of_get_videomode.description`:
 

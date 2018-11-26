@@ -10,8 +10,9 @@ tty_kref_get
 
     get a tty reference
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
 .. _`tty_kref_get.description`:
 
@@ -31,8 +32,9 @@ tty_get_baud_rate
 
     get tty bit rates
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to query
+    :type tty: struct tty_struct \*
 
 .. _`tty_get_baud_rate.description`:
 

@@ -10,8 +10,9 @@ of_get_phy_mode
 
     Get phy mode for given device_node
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to the given device_node
+    :type np: struct device_node \*
 
 .. _`of_get_phy_mode.description`:
 
@@ -31,8 +32,9 @@ of_get_mac_address
 
     address' is checked first, because that is supposed to contain to "most recent" MAC address. If that isn't set, then 'local-mac-address' is checked next, because that is the default address.  If that isn't set, then the obsolete 'address' is checked, just in case we're using an old device tree.
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
 .. _`of_get_mac_address.description`:
 
@@ -59,11 +61,13 @@ of_get_nvmem_mac_address
 
     address' through device tree. On success, copies the new address into memory pointed to by addr and returns 0. Returns a negative error code otherwise.
 
-    :param struct device_node \*np:
+    :param np:
         Device tree node containing the nvmem-cells phandle
+    :type np: struct device_node \*
 
-    :param void \*addr:
+    :param addr:
         Pointer to receive the MAC address using \ :c:func:`ether_addr_copy`\ 
+    :type addr: void \*
 
 .. This file was automatic generated / don't edit.
 

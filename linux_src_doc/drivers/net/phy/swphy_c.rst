@@ -10,8 +10,9 @@ swphy_validate_state
 
     validate the software phy status
 
-    :param const struct fixed_phy_status \*state:
+    :param state:
         software phy status
+    :type state: const struct fixed_phy_status \*
 
 .. _`swphy_validate_state.description`:
 
@@ -31,11 +32,13 @@ swphy_read_reg
 
     return a MII register from the fixed phy state
 
-    :param int reg:
+    :param reg:
         MII register
+    :type reg: int
 
-    :param const struct fixed_phy_status \*state:
+    :param state:
         fixed phy status
+    :type state: const struct fixed_phy_status \*
 
 .. _`swphy_read_reg.description`:
 

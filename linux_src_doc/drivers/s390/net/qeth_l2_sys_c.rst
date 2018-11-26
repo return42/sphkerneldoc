@@ -10,8 +10,9 @@ qeth_l2_setup_bridgeport_attrs
 
     set/restore attrs when turning online.
 
-    :param struct qeth_card \*card:
+    :param card:
         qeth_card structure pointer
+    :type card: struct qeth_card \*
 
 .. _`qeth_l2_setup_bridgeport_attrs.note`:
 

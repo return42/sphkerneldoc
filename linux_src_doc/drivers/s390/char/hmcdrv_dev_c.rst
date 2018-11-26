@@ -10,11 +10,13 @@ hmcdrv_dev_name
 
     provides a naming hint for a device node in /dev
 
-    :param struct device \*dev:
+    :param dev:
         device for which the naming/mode hint is
+    :type dev: struct device \*
 
-    :param umode_t \*mode:
+    :param mode:
         file mode for device node created in /dev
+    :type mode: umode_t \*
 
 .. _`hmcdrv_dev_name.see`:
 
@@ -39,8 +41,9 @@ hmcdrv_dev_init
 
     creates a HMC drive CD/DVD device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hmcdrv_dev_init.description`:
 
@@ -66,8 +69,9 @@ hmcdrv_dev_exit
 
     destroys a HMC drive CD/DVD device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

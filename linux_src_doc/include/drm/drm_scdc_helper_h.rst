@@ -10,14 +10,17 @@ drm_scdc_readb
 
     read a single byte from SCDC
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter
+    :type adapter: struct i2c_adapter \*
 
-    :param u8 offset:
+    :param offset:
         offset of register to read
+    :type offset: u8
 
-    :param u8 \*value:
+    :param value:
         return location for the register value
+    :type value: u8 \*
 
 .. _`drm_scdc_readb.description`:
 
@@ -43,14 +46,17 @@ drm_scdc_writeb
 
     write a single byte to SCDC
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter
+    :type adapter: struct i2c_adapter \*
 
-    :param u8 offset:
+    :param offset:
         offset of register to read
+    :type offset: u8
 
-    :param u8 value:
+    :param value:
         return location for the register value
+    :type value: u8
 
 .. _`drm_scdc_writeb.description`:
 

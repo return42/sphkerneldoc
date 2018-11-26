@@ -10,11 +10,13 @@ get_heap_comp_val
 
     get the LEB properties value for heap comparisons.
 
-    :param struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties
+    :type lprops: struct ubifs_lprops \*
 
-    :param int cat:
+    :param cat:
         LEB category
+    :type cat: int
 
 .. _`move_up_lpt_heap`:
 
@@ -25,17 +27,21 @@ move_up_lpt_heap
 
     move a new heap entry up as far as possible.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lpt_heap \*heap:
+    :param heap:
         LEB category heap
+    :type heap: struct ubifs_lpt_heap \*
 
-    :param struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to move
+    :type lprops: struct ubifs_lprops \*
 
-    :param int cat:
+    :param cat:
         LEB category
+    :type cat: int
 
 .. _`move_up_lpt_heap.description`:
 
@@ -56,20 +62,25 @@ adjust_lpt_heap
 
     move a changed heap entry up or down the heap.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lpt_heap \*heap:
+    :param heap:
         LEB category heap
+    :type heap: struct ubifs_lpt_heap \*
 
-    :param struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to move
+    :type lprops: struct ubifs_lprops \*
 
-    :param int hpos:
+    :param hpos:
         heap position of \ ``lprops``\ 
+    :type hpos: int
 
-    :param int cat:
+    :param cat:
         LEB category
+    :type cat: int
 
 .. _`adjust_lpt_heap.description`:
 
@@ -89,14 +100,17 @@ add_to_lpt_heap
 
     add LEB properties to a LEB category heap.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to add
+    :type lprops: struct ubifs_lprops \*
 
-    :param int cat:
+    :param cat:
         LEB category
+    :type cat: int
 
 .. _`add_to_lpt_heap.description`:
 
@@ -115,14 +129,17 @@ remove_from_lpt_heap
 
     remove LEB properties from a LEB category heap.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to remove
+    :type lprops: struct ubifs_lprops \*
 
-    :param int cat:
+    :param cat:
         LEB category
+    :type cat: int
 
 .. _`lpt_heap_replace`:
 
@@ -133,14 +150,17 @@ lpt_heap_replace
 
     replace lprops in a category heap.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*new_lprops:
+    :param new_lprops:
         LEB properties with which to replace
+    :type new_lprops: struct ubifs_lprops \*
 
-    :param int cat:
+    :param cat:
         LEB category
+    :type cat: int
 
 .. _`lpt_heap_replace.description`:
 
@@ -161,14 +181,17 @@ ubifs_add_to_cat
 
     add LEB properties to a category list or heap.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to add
+    :type lprops: struct ubifs_lprops \*
 
-    :param int cat:
+    :param cat:
         LEB category to which to add
+    :type cat: int
 
 .. _`ubifs_add_to_cat.description`:
 
@@ -186,14 +209,17 @@ ubifs_remove_from_cat
 
     remove LEB properties from a category list or heap.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to remove
+    :type lprops: struct ubifs_lprops \*
 
-    :param int cat:
+    :param cat:
         LEB category from which to remove
+    :type cat: int
 
 .. _`ubifs_remove_from_cat.description`:
 
@@ -211,14 +237,17 @@ ubifs_replace_cat
 
     replace lprops in a category list or heap.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*old_lprops:
+    :param old_lprops:
         LEB properties to replace
+    :type old_lprops: struct ubifs_lprops \*
 
-    :param struct ubifs_lprops \*new_lprops:
+    :param new_lprops:
         LEB properties with which to replace
+    :type new_lprops: struct ubifs_lprops \*
 
 .. _`ubifs_replace_cat.description`:
 
@@ -238,11 +267,13 @@ ubifs_ensure_cat
 
     ensure LEB properties are categorized.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties
+    :type lprops: struct ubifs_lprops \*
 
 .. _`ubifs_ensure_cat.description`:
 
@@ -262,11 +293,13 @@ ubifs_categorize_lprops
 
     categorize LEB properties.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to categorize
+    :type lprops: const struct ubifs_lprops \*
 
 .. _`ubifs_categorize_lprops.description`:
 
@@ -287,11 +320,13 @@ change_category
 
     change LEB properties category.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to re-categorize
+    :type lprops: struct ubifs_lprops \*
 
 .. _`change_category.description`:
 
@@ -310,11 +345,13 @@ ubifs_calc_dark
 
     calculate LEB dark space size.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param int spc:
+    :param spc:
         amount of free and dirty space in the LEB
+    :type spc: int
 
 .. _`ubifs_calc_dark.description`:
 
@@ -337,11 +374,13 @@ is_lprops_dirty
 
     determine if LEB properties are dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to test
+    :type lprops: struct ubifs_lprops \*
 
 .. _`ubifs_change_lp`:
 
@@ -352,23 +391,29 @@ ubifs_change_lp
 
     change LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct ubifs_lprops \*lp:
+    :param lp:
         LEB properties to change
+    :type lp: const struct ubifs_lprops \*
 
-    :param int free:
+    :param free:
         new free space amount
+    :type free: int
 
-    :param int dirty:
+    :param dirty:
         new dirty space amount
+    :type dirty: int
 
-    :param int flags:
+    :param flags:
         new flags
+    :type flags: int
 
-    :param int idx_gc_cnt:
+    :param idx_gc_cnt:
         change to the count of \ ``idx_gc``\  list
+    :type idx_gc_cnt: int
 
 .. _`ubifs_change_lp.description`:
 
@@ -392,11 +437,13 @@ ubifs_get_lp_stats
 
     get lprops statistics.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lp_stats \*lst:
+    :param lst:
         return statistics
+    :type lst: struct ubifs_lp_stats \*
 
 .. _`ubifs_change_one_lp`:
 
@@ -407,26 +454,33 @@ ubifs_change_one_lp
 
     change LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB to change properties for
+    :type lnum: int
 
-    :param int free:
+    :param free:
         amount of free space
+    :type free: int
 
-    :param int dirty:
+    :param dirty:
         amount of dirty space
+    :type dirty: int
 
-    :param int flags_set:
+    :param flags_set:
         flags to set
+    :type flags_set: int
 
-    :param int flags_clean:
+    :param flags_clean:
         flags to clean
+    :type flags_clean: int
 
-    :param int idx_gc_cnt:
+    :param idx_gc_cnt:
         change to the count of idx_gc list
+    :type idx_gc_cnt: int
 
 .. _`ubifs_change_one_lp.description`:
 
@@ -447,23 +501,29 @@ ubifs_update_one_lp
 
     update LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB to change properties for
+    :type lnum: int
 
-    :param int free:
+    :param free:
         amount of free space
+    :type free: int
 
-    :param int dirty:
+    :param dirty:
         amount of dirty space to add
+    :type dirty: int
 
-    :param int flags_set:
+    :param flags_set:
         flags to set
+    :type flags_set: int
 
-    :param int flags_clean:
+    :param flags_clean:
         flags to clean
+    :type flags_clean: int
 
 .. _`ubifs_update_one_lp.description`:
 
@@ -482,14 +542,17 @@ ubifs_read_one_lp
 
     read LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB to read properties for
+    :type lnum: int
 
-    :param struct ubifs_lprops \*lp:
+    :param lp:
         where to store read properties
+    :type lp: struct ubifs_lprops \*
 
 .. _`ubifs_read_one_lp.description`:
 
@@ -509,8 +572,9 @@ ubifs_fast_find_free
 
     try to find a LEB with free space quickly.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_fast_find_free.description`:
 
@@ -529,8 +593,9 @@ ubifs_fast_find_empty
 
     try to find an empty LEB quickly.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_fast_find_empty.description`:
 
@@ -549,8 +614,9 @@ ubifs_fast_find_freeable
 
     try to find a freeable LEB quickly.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_fast_find_freeable.description`:
 
@@ -569,8 +635,9 @@ ubifs_fast_find_frdi_idx
 
     try to find a freeable index LEB quickly.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_fast_find_frdi_idx.description`:
 
@@ -589,8 +656,9 @@ dbg_check_cats
 
     check category heaps and lists.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_check_cats.description`:
 
@@ -608,17 +676,21 @@ scan_check_cb
 
     scan callback.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct ubifs_lprops \*lp:
+    :param lp:
         LEB properties to scan
+    :type lp: const struct ubifs_lprops \*
 
-    :param int in_tree:
+    :param in_tree:
         whether the LEB properties are in main memory
+    :type in_tree: int
 
-    :param struct ubifs_lp_stats \*lst:
+    :param lst:
         lprops statistics to update
+    :type lst: struct ubifs_lp_stats \*
 
 .. _`scan_check_cb.description`:
 
@@ -639,8 +711,9 @@ dbg_check_lprops
 
     check all LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_check_lprops.description`:
 

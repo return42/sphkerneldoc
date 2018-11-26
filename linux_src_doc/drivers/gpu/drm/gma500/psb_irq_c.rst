@@ -8,11 +8,13 @@ mid_pipe_event_handler
 
 .. c:function:: void mid_pipe_event_handler(struct drm_device *dev, int pipe)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param int pipe:
+    :param pipe:
         *undescribed*
+    :type pipe: int
 
 .. This file was automatic generated / don't edit.
 

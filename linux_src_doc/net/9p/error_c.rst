@@ -50,8 +50,9 @@ p9_error_init
 
     preload mappings into hash list
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`p9_errstr2errno`:
 
@@ -62,11 +63,13 @@ p9_errstr2errno
 
     convert error string to error number
 
-    :param char \*errstr:
+    :param errstr:
         error string
+    :type errstr: char \*
 
-    :param int len:
+    :param len:
         length of error string
+    :type len: int
 
 .. This file was automatic generated / don't edit.
 

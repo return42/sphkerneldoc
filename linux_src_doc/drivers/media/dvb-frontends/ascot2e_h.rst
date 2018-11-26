@@ -49,14 +49,17 @@ ascot2e_attach
 
 .. c:function:: struct dvb_frontend *ascot2e_attach(struct dvb_frontend *fe, const struct ascot2e_config *config, struct i2c_adapter *i2c)
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         frontend to be attached
+    :type fe: struct dvb_frontend \*
 
-    :param const struct ascot2e_config \*config:
+    :param config:
         pointer to \ :c:type:`struct ascot2e_config <ascot2e_config>`\  with tuner configuration.
+    :type config: const struct ascot2e_config \*
 
-    :param struct i2c_adapter \*i2c:
+    :param i2c:
         i2c adapter to use.
+    :type i2c: struct i2c_adapter \*
 
 .. _`ascot2e_attach.return`:
 

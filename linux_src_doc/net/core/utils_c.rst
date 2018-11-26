@@ -10,20 +10,25 @@ in4_pton
 
     convert an IPv4 address from literal to binary representation
 
-    :param const char \*src:
+    :param src:
         the start of the IPv4 address string
+    :type src: const char \*
 
-    :param int srclen:
+    :param srclen:
         the length of the string, -1 means strlen(src)
+    :type srclen: int
 
-    :param u8 \*dst:
+    :param dst:
         the binary (u8[4] array) representation of the IPv4 address
+    :type dst: u8 \*
 
-    :param int delim:
+    :param delim:
         the delimiter of the IPv4 address in \ ``src``\ , -1 means no delimiter
+    :type delim: int
 
-    :param const char \*\*end:
+    :param end:
         A pointer to the end of the parsed string will be placed here
+    :type end: const char \*\*
 
 .. _`in4_pton.description`:
 
@@ -42,20 +47,25 @@ in6_pton
 
     convert an IPv6 address from literal to binary representation
 
-    :param const char \*src:
+    :param src:
         the start of the IPv6 address string
+    :type src: const char \*
 
-    :param int srclen:
+    :param srclen:
         the length of the string, -1 means strlen(src)
+    :type srclen: int
 
-    :param u8 \*dst:
+    :param dst:
         the binary (u8[16] array) representation of the IPv6 address
+    :type dst: u8 \*
 
-    :param int delim:
+    :param delim:
         the delimiter of the IPv6 address in \ ``src``\ , -1 means no delimiter
+    :type delim: int
 
-    :param const char \*\*end:
+    :param end:
         A pointer to the end of the parsed string will be placed here
+    :type end: const char \*\*
 
 .. _`in6_pton.description`:
 
@@ -74,20 +84,25 @@ inet_pton_with_scope
 
     convert an IPv4/IPv6 and port to socket address
 
-    :param struct net \*net:
+    :param net:
         net namespace (used for scope handling)
+    :type net: struct net \*
 
-    :param __kernel_sa_family_t af:
+    :param af:
         address family, AF_INET, AF_INET6 or AF_UNSPEC for either
+    :type af: __kernel_sa_family_t
 
-    :param const char \*src:
+    :param src:
         the start of the address string
+    :type src: const char \*
 
-    :param const char \*port:
+    :param port:
         the start of the port string (or NULL for none)
+    :type port: const char \*
 
-    :param struct sockaddr_storage \*addr:
+    :param addr:
         output socket address
+    :type addr: struct sockaddr_storage \*
 
 .. _`inet_pton_with_scope.description`:
 

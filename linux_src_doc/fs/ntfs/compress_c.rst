@@ -10,8 +10,9 @@ DEFINE_SPINLOCK
 
     spinlock which protects ntfs_compression_buffer
 
-    :param  ntfs_cb_lock:
+    :param ntfs_cb_lock:
         *undescribed*
+    :type ntfs_cb_lock: 
 
 .. _`allocate_compression_buffers`:
 
@@ -22,8 +23,9 @@ allocate_compression_buffers
 
     allocate the decompression buffers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`allocate_compression_buffers.description`:
 
@@ -43,8 +45,9 @@ free_compression_buffers
 
     free the decompression buffers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`free_compression_buffers.description`:
 
@@ -62,11 +65,13 @@ zero_partial_compressed_page
 
     zero out of bounds compressed page region
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
-    :param const s64 initialized_size:
+    :param initialized_size:
         *undescribed*
+    :type initialized_size: const s64
 
 .. _`handle_bounds_compressed_page`:
 
@@ -77,56 +82,74 @@ handle_bounds_compressed_page
 
     test for&handle out of bounds compressed page
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
-    :param const loff_t i_size:
+    :param i_size:
         *undescribed*
+    :type i_size: const loff_t
 
-    :param const s64 initialized_size:
+    :param initialized_size:
         *undescribed*
+    :type initialized_size: const s64
 
 .. _`ntfs_decompress`:
 
 ntfs_decompress
 ===============
 
-.. c:function:: int ntfs_decompress(struct page  *dest_pages, int *dest_index, int *dest_ofs, const int dest_max_index, const int dest_max_ofs, const int xpage, char *xpage_done, u8 *const cb_start, const u32 cb_size, const loff_t i_size, const s64 initialized_size)
+.. c:function:: int ntfs_decompress(struct page  *dest_pages, int completed_pages, int *dest_index, int *dest_ofs, const int dest_max_index, const int dest_max_ofs, const int xpage, char *xpage_done, u8 *const cb_start, const u32 cb_size, const loff_t i_size, const s64 initialized_size)
 
     decompress a compression block into an array of pages
 
-    :param struct page  \*dest_pages:
+    :param dest_pages:
         destination array of pages
+    :type dest_pages: struct page  \*
 
-    :param int \*dest_index:
+    :param completed_pages:
+        scratch space to track completed pages
+    :type completed_pages: int
+
+    :param dest_index:
         current index into \ ``dest_pages``\  (IN/OUT)
+    :type dest_index: int \*
 
-    :param int \*dest_ofs:
+    :param dest_ofs:
         current offset within \ ``dest_pages``\ [@dest_index] (IN/OUT)
+    :type dest_ofs: int \*
 
-    :param const int dest_max_index:
+    :param dest_max_index:
         maximum index into \ ``dest_pages``\  (IN)
+    :type dest_max_index: const int
 
-    :param const int dest_max_ofs:
+    :param dest_max_ofs:
         maximum offset within \ ``dest_pages``\ [@dest_max_index] (IN)
+    :type dest_max_ofs: const int
 
-    :param const int xpage:
+    :param xpage:
         the target page (-1 if none) (IN)
+    :type xpage: const int
 
-    :param char \*xpage_done:
+    :param xpage_done:
         set to 1 if xpage was completed successfully (IN/OUT)
+    :type xpage_done: char \*
 
-    :param u8 \*const cb_start:
+    :param cb_start:
         compression block to decompress (IN)
+    :type cb_start: u8 \*const
 
-    :param const u32 cb_size:
+    :param cb_size:
         size of compression block \ ``cb_start``\  in bytes (IN)
+    :type cb_size: const u32
 
-    :param const loff_t i_size:
+    :param i_size:
         file size when we started the read (IN)
+    :type i_size: const loff_t
 
-    :param const s64 initialized_size:
+    :param initialized_size:
         initialized file size when we started the read (IN)
+    :type initialized_size: const s64
 
 .. _`ntfs_decompress.description`:
 
@@ -175,8 +198,9 @@ ntfs_read_compressed_block
 
     read a compressed block into the page cache
 
-    :param struct page \*page:
+    :param page:
         locked page in the compression block(s) we need to read
+    :type page: struct page \*
 
 .. _`ntfs_read_compressed_block.description`:
 

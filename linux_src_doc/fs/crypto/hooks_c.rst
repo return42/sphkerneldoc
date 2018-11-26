@@ -10,11 +10,13 @@ fscrypt_file_open
 
     prepare to open a possibly-encrypted regular file
 
-    :param struct inode \*inode:
+    :param inode:
         the inode being opened
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         the struct file being set up
+    :type filp: struct file \*
 
 .. _`fscrypt_file_open.description`:
 
@@ -50,17 +52,21 @@ fscrypt_get_symlink
 
     get the target of an encrypted symlink
 
-    :param struct inode \*inode:
+    :param inode:
         the symlink inode
+    :type inode: struct inode \*
 
-    :param const void \*caddr:
+    :param caddr:
         the on-disk contents of the symlink
+    :type caddr: const void \*
 
-    :param unsigned int max_size:
+    :param max_size:
         size of \ ``caddr``\  buffer
+    :type max_size: unsigned int
 
-    :param struct delayed_call \*done:
+    :param done:
         if successful, will be set up to free the returned target
+    :type done: struct delayed_call \*
 
 .. _`fscrypt_get_symlink.description`:
 

@@ -10,8 +10,9 @@ mc_bp_resume
 
     Update boot CPU microcode during resume.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

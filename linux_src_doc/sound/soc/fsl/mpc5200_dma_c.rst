@@ -10,8 +10,9 @@ psc_dma_bcom_enqueue_next_buffer
 
     Enqueue another audio buffer
 
-    :param struct psc_dma_stream \*s:
+    :param s:
         pointer to stream private data structure
+    :type s: struct psc_dma_stream \*
 
 .. _`psc_dma_bcom_enqueue_next_buffer.description`:
 
@@ -38,11 +39,13 @@ psc_dma_trigger
 
     start and stop the DMA transfer.
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
 .. _`psc_dma_trigger.description`:
 

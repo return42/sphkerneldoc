@@ -10,8 +10,9 @@ tick_nohz_update_jiffies
 
     update jiffies when idle was interrupted
 
-    :param ktime_t now:
+    :param now:
         *undescribed*
+    :type now: ktime_t
 
 .. _`tick_nohz_update_jiffies.description`:
 
@@ -34,12 +35,14 @@ get_cpu_idle_time_us
 
     get the total idle time of a CPU
 
-    :param int cpu:
+    :param cpu:
         CPU number to query
+    :type cpu: int
 
-    :param u64 \*last_update_time:
+    :param last_update_time:
         variable to store update time in. Do not update
         counters if NULL.
+    :type last_update_time: u64 \*
 
 .. _`get_cpu_idle_time_us.description`:
 
@@ -63,12 +66,14 @@ get_cpu_iowait_time_us
 
     get the total iowait time of a CPU
 
-    :param int cpu:
+    :param cpu:
         CPU number to query
+    :type cpu: int
 
-    :param u64 \*last_update_time:
+    :param last_update_time:
         variable to store update time in. Do not update
         counters if NULL.
+    :type last_update_time: u64 \*
 
 .. _`get_cpu_iowait_time_us.description`:
 
@@ -92,8 +97,9 @@ tick_nohz_idle_stop_tick
 
     stop the idle tick from the idle task
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_nohz_idle_stop_tick.description`:
 
@@ -111,8 +117,9 @@ tick_nohz_idle_enter
 
     prepare for entering idle on the current CPU
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_nohz_idle_enter.description`:
 
@@ -130,8 +137,9 @@ tick_nohz_irq_exit
 
     update next tick event from interrupt exit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_nohz_irq_exit.description`:
 
@@ -152,8 +160,9 @@ tick_nohz_idle_got_tick
 
     Check whether or not the tick handler has run
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_nohz_get_sleep_length`:
 
@@ -164,8 +173,9 @@ tick_nohz_get_sleep_length
 
     return the expected length of the current sleep
 
-    :param ktime_t \*delta_next:
+    :param delta_next:
         duration until the next event if the tick cannot be stopped
+    :type delta_next: ktime_t \*
 
 .. _`tick_nohz_get_sleep_length.description`:
 
@@ -183,8 +193,9 @@ tick_nohz_get_idle_calls_cpu
 
     return the current idle calls counter value for a particular CPU.
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. _`tick_nohz_get_idle_calls_cpu.description`:
 
@@ -202,8 +213,9 @@ tick_nohz_get_idle_calls
 
     return the current idle calls counter value
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_nohz_get_idle_calls.description`:
 
@@ -221,8 +233,9 @@ tick_nohz_idle_exit
 
     restart the idle tick from the idle task
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_nohz_idle_exit.description`:
 
@@ -242,8 +255,9 @@ tick_nohz_switch_to_nohz
 
     switch to nohz mode
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_setup_sched_timer`:
 
@@ -254,8 +268,9 @@ tick_setup_sched_timer
 
     setup the tick emulation timer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_clock_notify`:
 
@@ -264,8 +279,9 @@ tick_clock_notify
 
 .. c:function:: void tick_clock_notify( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_check_oneshot_change`:
 
@@ -274,8 +290,9 @@ tick_check_oneshot_change
 
 .. c:function:: int tick_check_oneshot_change(int allow_nohz)
 
-    :param int allow_nohz:
+    :param allow_nohz:
         *undescribed*
+    :type allow_nohz: int
 
 .. _`tick_check_oneshot_change.description`:
 

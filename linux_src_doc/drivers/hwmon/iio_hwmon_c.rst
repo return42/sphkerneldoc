@@ -20,7 +20,6 @@ Definition
     struct iio_hwmon_state {
         struct iio_channel *channels;
         int num_channels;
-        struct device *hwmon_dev;
         struct attribute_group attr_group;
         const struct attribute_group *groups[2];
         struct attribute **attrs;
@@ -36,9 +35,6 @@ channels
 
 num_channels
     number of channels in channels (saves counting twice)
-
-hwmon_dev
-    associated hwmon device
 
 attr_group
     the group of attributes

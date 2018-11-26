@@ -10,8 +10,9 @@ omap3_ctrl_write_boot_mode
 
     set scratchpad boot mode for the next boot
 
-    :param u8 bootmode:
+    :param bootmode:
         8-bit value to pass to some boot code
+    :type bootmode: u8
 
 .. _`omap3_ctrl_write_boot_mode.description`:
 
@@ -32,8 +33,9 @@ omap_ctrl_write_dsp_boot_addr
 
     set boot address for a remote processor
 
-    :param u32 bootaddr:
+    :param bootaddr:
         physical address of the boot loader
+    :type bootaddr: u32
 
 .. _`omap_ctrl_write_dsp_boot_addr.description`:
 
@@ -52,8 +54,9 @@ omap_ctrl_write_dsp_boot_mode
 
     set boot mode for a remote processor
 
-    :param u8 bootmode:
+    :param bootmode:
         8-bit value to pass to some boot code
+    :type bootmode: u8
 
 .. _`omap_ctrl_write_dsp_boot_mode.description`:
 
@@ -72,8 +75,9 @@ omap3_ctrl_save_padconf
 
     save padconf registers to scratchpad RAM
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3_ctrl_save_padconf.description`:
 
@@ -96,8 +100,9 @@ omap3_ctrl_set_iva_bootmode_idle
 
     sets the IVA2 bootmode to idle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3_ctrl_set_iva_bootmode_idle.description`:
 
@@ -116,8 +121,9 @@ omap3_ctrl_setup_d2d_padconf
 
     setup stacked modem pads for idle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3_ctrl_setup_d2d_padconf.description`:
 
@@ -136,8 +142,9 @@ omap3_ctrl_init
 
     does static initializations for control module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3_ctrl_init.description`:
 
@@ -156,8 +163,9 @@ am43xx_control_save_context
 
     Save the wakeup domain registers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`am43xx_control_save_context.description`:
 
@@ -175,8 +183,9 @@ am43xx_control_restore_context
 
     Restore the wakeup domain registers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`am43xx_control_restore_context.description`:
 
@@ -194,8 +203,9 @@ omap2_control_base_init
 
     initialize iomappings for the control driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2_control_base_init.description`:
 
@@ -215,8 +225,9 @@ omap_control_init
 
     low level init for the control driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_control_init.description`:
 
@@ -235,8 +246,9 @@ omap3_control_legacy_iomap_init
 
     legacy iomap init for clock providers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3_control_legacy_iomap_init.description`:
 

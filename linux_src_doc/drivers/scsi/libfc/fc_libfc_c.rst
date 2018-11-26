@@ -10,8 +10,9 @@ libfc_init
 
     Initialize libfc.ko
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`libfc_exit`:
 
@@ -22,8 +23,9 @@ libfc_exit
 
     Tear down libfc.ko
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fc_copy_buffer_to_sglist`:
 
@@ -34,24 +36,30 @@ fc_copy_buffer_to_sglist
 
     This routine copies the data of a buffer into a scatter-gather list (SG list).
 
-    :param void \*buf:
+    :param buf:
         pointer to the data buffer.
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         the byte-length of the data buffer.
+    :type len: size_t
 
-    :param struct scatterlist \*sg:
+    :param sg:
         pointer to the pointer of the SG list.
+    :type sg: struct scatterlist \*
 
-    :param u32 \*nents:
+    :param nents:
         pointer to the remaining number of entries in the SG list.
+    :type nents: u32 \*
 
-    :param size_t \*offset:
+    :param offset:
         pointer to the current offset in the SG list.
+    :type offset: size_t \*
 
-    :param u32 \*crc:
+    :param crc:
         pointer to the 32-bit crc value.
         If crc is NULL, CRC is not calculated.
+    :type crc: u32 \*
 
 .. _`fc_fill_hdr`:
 
@@ -62,23 +70,29 @@ fc_fill_hdr
 
     fill FC header fields based on request
 
-    :param struct fc_frame \*fp:
+    :param fp:
         reply frame containing header to be filled in
+    :type fp: struct fc_frame \*
 
-    :param const struct fc_frame \*in_fp:
+    :param in_fp:
         request frame containing header to use in filling in reply
+    :type in_fp: const struct fc_frame \*
 
-    :param enum fc_rctl r_ctl:
+    :param r_ctl:
         R_CTL value for header
+    :type r_ctl: enum fc_rctl
 
-    :param u32 f_ctl:
+    :param f_ctl:
         F_CTL value for header, with 0 pad
+    :type f_ctl: u32
 
-    :param u16 seq_cnt:
+    :param seq_cnt:
         sequence count for the header, ignored if frame has a sequence
+    :type seq_cnt: u16
 
-    :param u32 parm_offset:
+    :param parm_offset:
         parameter / offset value
+    :type parm_offset: u32
 
 .. _`fc_fill_reply_hdr`:
 
@@ -89,17 +103,21 @@ fc_fill_reply_hdr
 
     fill FC reply header fields based on request
 
-    :param struct fc_frame \*fp:
+    :param fp:
         reply frame containing header to be filled in
+    :type fp: struct fc_frame \*
 
-    :param const struct fc_frame \*in_fp:
+    :param in_fp:
         request frame containing header to use in filling in reply
+    :type in_fp: const struct fc_frame \*
 
-    :param enum fc_rctl r_ctl:
+    :param r_ctl:
         R_CTL value for reply
+    :type r_ctl: enum fc_rctl
 
-    :param u32 parm_offset:
+    :param parm_offset:
         parameter / offset value
+    :type parm_offset: u32
 
 .. _`fc_fc4_conf_lport_params`:
 
@@ -110,11 +128,13 @@ fc_fc4_conf_lport_params
 
     Modify "service_params" of specified lport if there is service provider (target provider) registered with libfc for specified "fc_ft_type"
 
-    :param struct fc_lport \*lport:
+    :param lport:
         Local port which service_params needs to be modified
+    :type lport: struct fc_lport \*
 
-    :param enum fc_fh_type type:
+    :param type:
         FC-4 type, such as FC_TYPE_FCP
+    :type type: enum fc_fh_type
 
 .. _`fc_fc4_register_provider`:
 
@@ -125,11 +145,13 @@ fc_fc4_register_provider
 
     register FC-4 upper-level provider.
 
-    :param enum fc_fh_type type:
+    :param type:
         FC-4 type, such as FC_TYPE_FCP
+    :type type: enum fc_fh_type
 
-    :param struct fc4_prov \*prov:
+    :param prov:
         structure describing provider including ops vector.
+    :type prov: struct fc4_prov \*
 
 .. _`fc_fc4_register_provider.description`:
 
@@ -147,11 +169,13 @@ fc_fc4_deregister_provider
 
     deregister FC-4 upper-level provider.
 
-    :param enum fc_fh_type type:
+    :param type:
         FC-4 type, such as FC_TYPE_FCP
+    :type type: enum fc_fh_type
 
-    :param struct fc4_prov \*prov:
+    :param prov:
         structure describing provider including ops vector.
+    :type prov: struct fc4_prov \*
 
 .. _`fc_fc4_add_lport`:
 
@@ -162,8 +186,9 @@ fc_fc4_add_lport
 
     add new local port to list and run notifiers.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The new local port.
+    :type lport: struct fc_lport \*
 
 .. _`fc_fc4_del_lport`:
 
@@ -174,8 +199,9 @@ fc_fc4_del_lport
 
     remove local port from list and run notifiers.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The new local port.
+    :type lport: struct fc_lport \*
 
 .. This file was automatic generated / don't edit.
 

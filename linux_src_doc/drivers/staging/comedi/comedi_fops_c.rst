@@ -22,7 +22,7 @@ Definition
         struct comedi_subdevice *read_subdev;
         struct comedi_subdevice *write_subdev;
         unsigned int last_detach_count;
-        bool last_attached:1;
+        unsigned int last_attached:1;
     }
 
 .. _`comedi_file.members`:
@@ -54,8 +54,9 @@ comedi_dev_put
 
     Release a use of a COMEDI device
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
 .. _`comedi_dev_put.description`:
 
@@ -84,8 +85,9 @@ comedi_dev_get_from_minor
 
     Get COMEDI device by minor device number
 
-    :param unsigned int minor:
+    :param minor:
         Minor device number.
+    :type minor: unsigned int
 
 .. _`comedi_dev_get_from_minor.description`:
 
@@ -114,8 +116,9 @@ comedi_is_subdevice_running
 
     Check if async command running on subdevice
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`comedi_is_subdevice_running.return`:
 
@@ -134,8 +137,9 @@ comedi_set_spriv_auto_free
 
     Mark subdevice private data as freeable
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`comedi_set_spriv_auto_free.description`:
 
@@ -155,18 +159,20 @@ comedi_alloc_spriv
 
     Allocate memory for the subdevice private data
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param size_t size:
+    :param size:
         Size of the memory to allocate.
+    :type size: size_t
 
 .. _`comedi_alloc_spriv.description`:
 
 Description
 -----------
 
-Allocate memory for the subdevice private data and point \ ``s``\ ->private
+Allocate memory for the subdevice private data and point \ ``s->private``\ 
 to it.  The memory will be freed automatically when the COMEDI device
 is detached from the low-level driver.
 
@@ -175,8 +181,41 @@ is detached from the low-level driver.
 Return
 ------
 
-A pointer to the allocated memory \ ``s``\ ->private on success.
+A pointer to the allocated memory \ ``s->private``\  on success.
 Return NULL on failure.
+
+.. _`get_valid_routes`:
+
+get_valid_routes
+================
+
+.. c:function:: int get_valid_routes(struct comedi_device *dev, unsigned int *data)
+
+    Calls low-level driver get_valid_routes function to either return a count of valid routes to user, or copy of list of all valid device routes to buffer in userspace.
+
+    :param dev:
+        comedi device pointer
+    :type dev: struct comedi_device \*
+
+    :param data:
+        data from user insn call.  The length of the data must be >= 2.
+        data[0] must contain the INSN_DEVICE_CONFIG config_id.
+        data[1](input) contains the number of \_pairs\_ for which memory is
+        allotted from the user.  If the user specifies '0', then only
+        the number of pairs available is returned.
+        data[1](output) returns either the number of pairs available (if none
+        where requested) or the number of \_pairs\_ that are copied back
+        to the user.
+        data[2::2] returns each (source, destination) pair.
+    :type data: unsigned int \*
+
+.. _`get_valid_routes.return`:
+
+Return
+------
+
+-EINVAL if low-level driver does not allocate and return routes as
+expected.  Returns 0 otherwise.
 
 .. _`comedi_event`:
 
@@ -187,18 +226,20 @@ comedi_event
 
     Handle events for asynchronous COMEDI command
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`comedi_event.context`:
 
 Context
 -------
 
-\ :c:func:`in_interrupt`\  (usually), \ ``s``\ ->spin_lock spin-lock not held.
+\ :c:func:`in_interrupt`\  (usually), \ ``s->spin_lock``\  spin-lock not held.
 
 .. _`comedi_event.description`:
 

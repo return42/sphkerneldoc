@@ -10,11 +10,13 @@ vxge_hw_channel_msix_mask
 
     Mask MSIX Vector.
 
-    :param struct __vxge_hw_channel \*channel:
+    :param channel:
         *undescribed*
+    :type channel: struct __vxge_hw_channel \*
 
-    :param int msix_id:
+    :param msix_id:
         MSIX ID
+    :type msix_id: int
 
 .. _`vxge_hw_channel_msix_mask.description`:
 
@@ -39,11 +41,13 @@ vxge_hw_channel_msix_unmask
 
     Unmask the MSIX Vector.
 
-    :param struct __vxge_hw_channel \*channel:
+    :param channel:
         *undescribed*
+    :type channel: struct __vxge_hw_channel \*
 
-    :param int msix_id:
+    :param msix_id:
         MSI ID
+    :type msix_id: int
 
 .. _`vxge_hw_channel_msix_unmask.description`:
 
@@ -68,11 +72,13 @@ vxge_hw_channel_msix_clear
 
     Unmask the MSIX Vector.
 
-    :param struct __vxge_hw_channel \*channel:
+    :param channel:
         Channel for rx or tx handle
+    :type channel: struct __vxge_hw_channel \*
 
-    :param int msix_id:
+    :param msix_id:
         MSI ID
+    :type msix_id: int
 
 .. _`vxge_hw_channel_msix_clear.description`:
 
@@ -98,11 +104,13 @@ vxge_hw_device_set_intr_type
 
     Updates the configuration with new interrupt type.
 
-    :param struct __vxge_hw_device \*hldev:
+    :param hldev:
         HW device handle.
+    :type hldev: struct __vxge_hw_device \*
 
-    :param u32 intr_mode:
+    :param intr_mode:
         New interrupt type
+    :type intr_mode: u32
 
 .. _`vxge_hw_device_intr_enable`:
 
@@ -113,8 +121,9 @@ vxge_hw_device_intr_enable
 
     Enable interrupts.
 
-    :param struct __vxge_hw_device \*hldev:
+    :param hldev:
         HW device handle.
+    :type hldev: struct __vxge_hw_device \*
 
 .. _`vxge_hw_device_intr_enable.description`:
 
@@ -140,8 +149,9 @@ vxge_hw_device_intr_disable
 
     Disable Titan interrupts.
 
-    :param struct __vxge_hw_device \*hldev:
+    :param hldev:
         HW device handle.
+    :type hldev: struct __vxge_hw_device \*
 
 .. _`vxge_hw_device_intr_disable.description`:
 
@@ -166,8 +176,9 @@ vxge_hw_device_mask_all
 
     Mask all device interrupts.
 
-    :param struct __vxge_hw_device \*hldev:
+    :param hldev:
         HW device handle.
+    :type hldev: struct __vxge_hw_device \*
 
 .. _`vxge_hw_device_mask_all.description`:
 
@@ -192,8 +203,9 @@ vxge_hw_device_unmask_all
 
     Unmask all device interrupts.
 
-    :param struct __vxge_hw_device \*hldev:
+    :param hldev:
         HW device handle.
+    :type hldev: struct __vxge_hw_device \*
 
 .. _`vxge_hw_device_unmask_all.description`:
 
@@ -218,8 +230,9 @@ vxge_hw_device_flush_io
 
     Flush io writes.
 
-    :param struct __vxge_hw_device \*hldev:
+    :param hldev:
         HW device handle.
+    :type hldev: struct __vxge_hw_device \*
 
 .. _`vxge_hw_device_flush_io.description`:
 
@@ -244,14 +257,17 @@ void
 
     Handle error
 
-    :param struct __vxge_hw_device \*hldev:
+    :param hldev:
         HW device
+    :type hldev: struct __vxge_hw_device \*
 
-    :param u32 vp_id:
+    :param vp_id:
         Vpath Id
+    :type vp_id: u32
 
-    :param enum vxge_hw_event type:
+    :param type:
         Error type. Please see enum vxge_hw_event{}
+    :type type: enum vxge_hw_event
 
 .. _`__vxge_hw_device_handle_error.description`:
 
@@ -269,15 +285,18 @@ vxge_hw_device_begin_irq
 
     Begin IRQ processing.
 
-    :param struct __vxge_hw_device \*hldev:
+    :param hldev:
         HW device handle.
+    :type hldev: struct __vxge_hw_device \*
 
-    :param u32 skip_alarms:
+    :param skip_alarms:
         Do not clear the alarms
+    :type skip_alarms: u32
 
-    :param u64 \*reason:
+    :param reason:
         "Reason" for the interrupt, the value of Titan's
         general_int_status register.
+    :type reason: u64 \*
 
 .. _`vxge_hw_device_begin_irq.description`:
 
@@ -314,8 +333,9 @@ vxge_hw_device_clear_tx_rx
 
     Acknowledge (that is, clear) the condition that has caused the Tx and RX interrupt.
 
-    :param struct __vxge_hw_device \*hldev:
+    :param hldev:
         HW device.
+    :type hldev: struct __vxge_hw_device \*
 
 .. _`vxge_hw_device_clear_tx_rx.description`:
 
@@ -342,12 +362,14 @@ vxge_hw_ring_rxd_reserve
 
     Reserve ring descriptor.
 
-    :param struct __vxge_hw_ring \*ring:
+    :param ring:
         Handle to the ring object used for receive
+    :type ring: struct __vxge_hw_ring \*
 
-    :param void \*\*rxdh:
+    :param rxdh:
         Reserved descriptor. On success HW fills this "out" parameter
         with a valid handle.
+    :type rxdh: void \*\*
 
 .. _`vxge_hw_ring_rxd_reserve.description`:
 
@@ -375,11 +397,13 @@ vxge_hw_ring_rxd_free
 
     Free descriptor.
 
-    :param struct __vxge_hw_ring \*ring:
+    :param ring:
         Handle to the ring object used for receive
+    :type ring: struct __vxge_hw_ring \*
 
-    :param void \*rxdh:
+    :param rxdh:
         Descriptor handle.
+    :type rxdh: void \*
 
 .. _`vxge_hw_ring_rxd_free.description`:
 
@@ -413,11 +437,13 @@ vxge_hw_ring_rxd_pre_post
 
     Prepare rxd and post
 
-    :param struct __vxge_hw_ring \*ring:
+    :param ring:
         Handle to the ring object used for receive
+    :type ring: struct __vxge_hw_ring \*
 
-    :param void \*rxdh:
+    :param rxdh:
         Descriptor handle.
+    :type rxdh: void \*
 
 .. _`vxge_hw_ring_rxd_pre_post.description`:
 
@@ -435,11 +461,13 @@ vxge_hw_ring_rxd_post_post
 
     Process rxd after post.
 
-    :param struct __vxge_hw_ring \*ring:
+    :param ring:
         Handle to the ring object used for receive
+    :type ring: struct __vxge_hw_ring \*
 
-    :param void \*rxdh:
+    :param rxdh:
         Descriptor handle.
+    :type rxdh: void \*
 
 .. _`vxge_hw_ring_rxd_post_post.description`:
 
@@ -457,11 +485,13 @@ vxge_hw_ring_rxd_post
 
     Post descriptor on the ring.
 
-    :param struct __vxge_hw_ring \*ring:
+    :param ring:
         Handle to the ring object used for receive
+    :type ring: struct __vxge_hw_ring \*
 
-    :param void \*rxdh:
+    :param rxdh:
         Descriptor obtained via \ :c:func:`vxge_hw_ring_rxd_reserve`\ .
+    :type rxdh: void \*
 
 .. _`vxge_hw_ring_rxd_post.description`:
 
@@ -481,11 +511,13 @@ vxge_hw_ring_rxd_post_post_wmb
 
     Process rxd after post with memory barrier.
 
-    :param struct __vxge_hw_ring \*ring:
+    :param ring:
         Handle to the ring object used for receive
+    :type ring: struct __vxge_hw_ring \*
 
-    :param void \*rxdh:
+    :param rxdh:
         Descriptor handle.
+    :type rxdh: void \*
 
 .. _`vxge_hw_ring_rxd_post_post_wmb.description`:
 
@@ -503,15 +535,18 @@ vxge_hw_ring_rxd_next_completed
 
     Get the \_next\_ completed descriptor.
 
-    :param struct __vxge_hw_ring \*ring:
+    :param ring:
         Handle to the ring object used for receive
+    :type ring: struct __vxge_hw_ring \*
 
-    :param void \*\*rxdh:
+    :param rxdh:
         Descriptor handle. Returned by HW.
+    :type rxdh: void \*\*
 
-    :param u8 \*t_code:
+    :param t_code:
         Transfer code, as per Titan User Guide,
         Receive Descriptor Format. Returned by HW.
+    :type t_code: u8 \*
 
 .. _`vxge_hw_ring_rxd_next_completed.description`:
 
@@ -563,15 +598,18 @@ vxge_hw_ring_handle_tcode
 
     Handle transfer code.
 
-    :param struct __vxge_hw_ring \*ring:
+    :param ring:
         Handle to the ring object used for receive
+    :type ring: struct __vxge_hw_ring \*
 
-    :param void \*rxdh:
+    :param rxdh:
         Descriptor handle.
+    :type rxdh: void \*
 
-    :param u8 t_code:
+    :param t_code:
         One of the enumerated (and documented in the Titan user guide)
         "transfer codes".
+    :type t_code: u8
 
 .. _`vxge_hw_ring_handle_tcode.description`:
 
@@ -599,17 +637,21 @@ VXGE_HW_ERR_CRITICAL         - when encounters critical error.
 
     Post non offload doorbell
 
-    :param struct __vxge_hw_fifo \*fifo:
+    :param fifo:
         fifohandle
+    :type fifo: struct __vxge_hw_fifo \*
 
-    :param u64 txdl_ptr:
+    :param txdl_ptr:
         The starting location of the TxDL in host memory
+    :type txdl_ptr: u64
 
-    :param u32 num_txds:
+    :param num_txds:
         The highest TxD in this TxDL (0 to 255 means 1 to 256)
+    :type num_txds: u32
 
-    :param u32 no_snoop:
+    :param no_snoop:
         No snoop flags
+    :type no_snoop: u32
 
 .. _`__vxge_hw_non_offload_db_post.description`:
 
@@ -627,8 +669,9 @@ vxge_hw_fifo_free_txdl_count_get
 
     returns the number of txdls available in the fifo
 
-    :param struct __vxge_hw_fifo \*fifoh:
+    :param fifoh:
         Handle to the fifo object used for non offload send
+    :type fifoh: struct __vxge_hw_fifo \*
 
 .. _`vxge_hw_fifo_txdl_reserve`:
 
@@ -639,15 +682,18 @@ vxge_hw_fifo_txdl_reserve
 
     Reserve fifo descriptor.
 
-    :param struct __vxge_hw_fifo \*fifo:
+    :param fifo:
         *undescribed*
+    :type fifo: struct __vxge_hw_fifo \*
 
-    :param void \*\*txdlh:
+    :param txdlh:
         Reserved descriptor. On success HW fills this "out" parameter
         with a valid handle.
+    :type txdlh: void \*\*
 
-    :param void \*\*txdl_priv:
+    :param txdl_priv:
         Buffer to return the pointer to per txdl space
+    :type txdl_priv: void \*\*
 
 .. _`vxge_hw_fifo_txdl_reserve.description`:
 
@@ -685,21 +731,26 @@ vxge_hw_fifo_txdl_buffer_set
 
     Set transmit buffer pointer in the descriptor.
 
-    :param struct __vxge_hw_fifo \*fifo:
+    :param fifo:
         Handle to the fifo object used for non offload send
+    :type fifo: struct __vxge_hw_fifo \*
 
-    :param void \*txdlh:
+    :param txdlh:
         Descriptor handle.
+    :type txdlh: void \*
 
-    :param u32 frag_idx:
+    :param frag_idx:
         Index of the data buffer in the caller's scatter-gather list
         (of buffers).
+    :type frag_idx: u32
 
-    :param dma_addr_t dma_pointer:
+    :param dma_pointer:
         DMA address of the data buffer referenced by \ ``frag_idx``\ .
+    :type dma_pointer: dma_addr_t
 
-    :param u32 size:
+    :param size:
         Size of the data buffer (in bytes).
+    :type size: u32
 
 .. _`vxge_hw_fifo_txdl_buffer_set.description`:
 
@@ -721,11 +772,13 @@ vxge_hw_fifo_txdl_post
 
     Post descriptor on the fifo channel.
 
-    :param struct __vxge_hw_fifo \*fifo:
+    :param fifo:
         Handle to the fifo object used for non offload send
+    :type fifo: struct __vxge_hw_fifo \*
 
-    :param void \*txdlh:
+    :param txdlh:
         Descriptor obtained via \ :c:func:`vxge_hw_fifo_txdl_reserve`\ 
+    :type txdlh: void \*
 
 .. _`vxge_hw_fifo_txdl_post.description`:
 
@@ -745,16 +798,19 @@ vxge_hw_fifo_txdl_next_completed
 
     Retrieve next completed descriptor.
 
-    :param struct __vxge_hw_fifo \*fifo:
+    :param fifo:
         Handle to the fifo object used for non offload send
+    :type fifo: struct __vxge_hw_fifo \*
 
-    :param void \*\*txdlh:
+    :param txdlh:
         Descriptor handle. Returned by HW.
+    :type txdlh: void \*\*
 
-    :param enum vxge_hw_fifo_tcode \*t_code:
+    :param t_code:
         Transfer code, as per Titan User Guide,
         Transmit Descriptor Format.
         Returned by HW.
+    :type t_code: enum vxge_hw_fifo_tcode \*
 
 .. _`vxge_hw_fifo_txdl_next_completed.description`:
 
@@ -798,15 +854,18 @@ vxge_hw_fifo_handle_tcode
 
     Handle transfer code.
 
-    :param struct __vxge_hw_fifo \*fifo:
+    :param fifo:
         Handle to the fifo object used for non offload send
+    :type fifo: struct __vxge_hw_fifo \*
 
-    :param void \*txdlh:
+    :param txdlh:
         Descriptor handle.
+    :type txdlh: void \*
 
-    :param enum vxge_hw_fifo_tcode t_code:
+    :param t_code:
         One of the enumerated (and documented in the Titan user guide)
         "transfer codes".
+    :type t_code: enum vxge_hw_fifo_tcode
 
 .. _`vxge_hw_fifo_handle_tcode.description`:
 
@@ -834,11 +893,13 @@ vxge_hw_fifo_txdl_free
 
     Free descriptor.
 
-    :param struct __vxge_hw_fifo \*fifo:
+    :param fifo:
         Handle to the fifo object used for non offload send
+    :type fifo: struct __vxge_hw_fifo \*
 
-    :param void \*txdlh:
+    :param txdlh:
         Descriptor handle.
+    :type txdlh: void \*
 
 .. _`vxge_hw_fifo_txdl_free.description`:
 
@@ -872,18 +933,22 @@ vxge_hw_vpath_mac_addr_add
 
     Add the mac address entry for this vpath to MAC address table.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Vpath handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
-    :param u8 macaddr:
+    :param macaddr:
         MAC address to be added for this vpath into the list
+    :type macaddr: u8
 
-    :param u8 macaddr_mask:
+    :param macaddr_mask:
         MAC address mask for macaddr
+    :type macaddr_mask: u8
 
-    :param enum vxge_hw_vpath_mac_addr_add_mode duplicate_mode:
+    :param duplicate_mode:
         Duplicate MAC address add mode. Please see
         enum vxge_hw_vpath_mac_addr_add_mode{}
+    :type duplicate_mode: enum vxge_hw_vpath_mac_addr_add_mode
 
 .. _`vxge_hw_vpath_mac_addr_add.description`:
 
@@ -910,14 +975,17 @@ vxge_hw_vpath_mac_addr_get
 
     Get the first mac address entry for this vpath from MAC address table.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Vpath handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
-    :param u8 macaddr:
+    :param macaddr:
         First MAC address entry for this vpath in the list
+    :type macaddr: u8
 
-    :param u8 macaddr_mask:
+    :param macaddr_mask:
         MAC address mask for macaddr
+    :type macaddr_mask: u8
 
 .. _`vxge_hw_vpath_mac_addr_get.description`:
 
@@ -943,14 +1011,17 @@ vxge_hw_vpath_mac_addr_get_next
 
     Get the next mac address entry for this vpath from MAC address table.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Vpath handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
-    :param u8 macaddr:
+    :param macaddr:
         Next MAC address entry for this vpath in the list
+    :type macaddr: u8
 
-    :param u8 macaddr_mask:
+    :param macaddr_mask:
         MAC address mask for macaddr
+    :type macaddr_mask: u8
 
 .. _`vxge_hw_vpath_mac_addr_get_next.description`:
 
@@ -976,14 +1047,17 @@ vxge_hw_vpath_mac_addr_delete
 
     Delete the mac address entry for this vpath to MAC address table.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Vpath handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
-    :param u8 macaddr:
+    :param macaddr:
         MAC address to be added for this vpath into the list
+    :type macaddr: u8
 
-    :param u8 macaddr_mask:
+    :param macaddr_mask:
         MAC address mask for macaddr
+    :type macaddr_mask: u8
 
 .. _`vxge_hw_vpath_mac_addr_delete.description`:
 
@@ -1010,11 +1084,13 @@ vxge_hw_vpath_vid_add
 
     Add the vlan id entry for this vpath to vlan id table.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Vpath handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
-    :param u64 vid:
+    :param vid:
         vlan id to be added for this vpath into the list
+    :type vid: u64
 
 .. _`vxge_hw_vpath_vid_add.description`:
 
@@ -1039,11 +1115,13 @@ vxge_hw_vpath_vid_delete
 
     Delete the vlan id entry for this vpath to vlan id table.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Vpath handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
-    :param u64 vid:
+    :param vid:
         vlan id to be added for this vpath into the list
+    :type vid: u64
 
 .. _`vxge_hw_vpath_vid_delete.description`:
 
@@ -1068,8 +1146,9 @@ vxge_hw_vpath_promisc_enable
 
     Enable promiscuous mode.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Vpath handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
 .. _`vxge_hw_vpath_promisc_enable.description`:
 
@@ -1094,8 +1173,9 @@ vxge_hw_vpath_promisc_disable
 
     Disable promiscuous mode.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Vpath handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
 .. _`vxge_hw_vpath_promisc_disable.description`:
 
@@ -1120,8 +1200,9 @@ vxge_hw_vpath_mcast_enable
 
     Enable multicast addresses.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Vpath handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
 .. _`vxge_hw_vpath_mcast_enable.description`:
 
@@ -1146,8 +1227,9 @@ vxge_hw_vpath_mcast_disable
 
     Disable  multicast addresses.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Vpath handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
 .. _`vxge_hw_vpath_mcast_disable.description`:
 
@@ -1173,16 +1255,19 @@ vxge_hw_vpath_msix_set
 
     Associate MSIX vectors with TIM interrupts and alrms
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Virtual Path handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
-    :param int \*tim_msix_id:
+    :param tim_msix_id:
         MSIX vectors associated with VXGE_HW_MAX_INTR_PER_VP number of
         interrupts(Can be repeated). If fifo or ring are not enabled
         the MSIX vector for that should be set to 0
+    :type tim_msix_id: int \*
 
-    :param int alarm_msix_id:
+    :param alarm_msix_id:
         MSIX vector for alarm.
+    :type alarm_msix_id: int
 
 .. _`vxge_hw_vpath_msix_set.description`:
 
@@ -1201,11 +1286,13 @@ vxge_hw_vpath_msix_mask
 
     Mask MSIX Vector.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Virtual Path handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
-    :param int msix_id:
+    :param msix_id:
         MSIX ID
+    :type msix_id: int
 
 .. _`vxge_hw_vpath_msix_mask.description`:
 
@@ -1232,11 +1319,13 @@ vxge_hw_vpath_msix_clear
 
     Clear MSIX Vector.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Virtual Path handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
-    :param int msix_id:
+    :param msix_id:
         MSI ID
+    :type msix_id: int
 
 .. _`vxge_hw_vpath_msix_clear.description`:
 
@@ -1263,11 +1352,13 @@ vxge_hw_vpath_msix_unmask
 
     Unmask the MSIX Vector.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Virtual Path handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
-    :param int msix_id:
+    :param msix_id:
         MSI ID
+    :type msix_id: int
 
 .. _`vxge_hw_vpath_msix_unmask.description`:
 
@@ -1294,8 +1385,9 @@ vxge_hw_vpath_inta_mask_tx_rx
 
     Mask Tx and Rx interrupts.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Virtual Path handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
 .. _`vxge_hw_vpath_inta_mask_tx_rx.description`:
 
@@ -1320,8 +1412,9 @@ vxge_hw_vpath_inta_unmask_tx_rx
 
     Unmask Tx and Rx interrupts.
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Virtual Path handle.
+    :type vp: struct __vxge_hw_vpath_handle \*
 
 .. _`vxge_hw_vpath_inta_unmask_tx_rx.description`:
 
@@ -1346,8 +1439,9 @@ vxge_hw_vpath_poll_rx
 
     Poll Rx Virtual Path for completed descriptors and process the same.
 
-    :param struct __vxge_hw_ring \*ring:
+    :param ring:
         Handle to the ring object used for receive
+    :type ring: struct __vxge_hw_ring \*
 
 .. _`vxge_hw_vpath_poll_rx.description`:
 
@@ -1388,17 +1482,21 @@ vxge_hw_vpath_poll_tx
 
     Poll Tx for completed descriptors and process the same.
 
-    :param struct __vxge_hw_fifo \*fifo:
+    :param fifo:
         Handle to the fifo object used for non offload send
+    :type fifo: struct __vxge_hw_fifo \*
 
-    :param struct sk_buff \*\*\*skb_ptr:
+    :param skb_ptr:
         *undescribed*
+    :type skb_ptr: struct sk_buff \*\*\*
 
-    :param int nr_skb:
+    :param nr_skb:
         *undescribed*
+    :type nr_skb: int
 
-    :param int \*more:
+    :param more:
         *undescribed*
+    :type more: int \*
 
 .. _`vxge_hw_vpath_poll_tx.description`:
 

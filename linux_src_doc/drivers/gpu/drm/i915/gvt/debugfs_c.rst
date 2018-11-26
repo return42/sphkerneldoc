@@ -10,8 +10,9 @@ intel_gvt_debugfs_add_vgpu
 
     register debugfs entries for a vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_debugfs_add_vgpu.return`:
 
@@ -29,8 +30,9 @@ intel_gvt_debugfs_remove_vgpu
 
     remove debugfs entries of a vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_debugfs_init`:
 
@@ -41,8 +43,9 @@ intel_gvt_debugfs_init
 
     register gvt debugfs root entry
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_debugfs_init.return`:
 
@@ -60,8 +63,9 @@ intel_gvt_debugfs_clean
 
     remove debugfs entries
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         GVT device
+    :type gvt: struct intel_gvt \*
 
 .. This file was automatic generated / don't edit.
 

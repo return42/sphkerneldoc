@@ -274,8 +274,9 @@ usb_pipe_to_qh_type
 
     USB core pipe type to QH transfer type
 
-    :param unsigned pipe:
+    :param pipe:
         *undescribed*
+    :type pipe: unsigned
 
 .. _`usb_pipe_to_qh_type.description`:
 

@@ -10,11 +10,13 @@ qman_p_irqsource_add
 
     add processing sources to be interrupt-driven
 
-    :param struct qman_portal \*p:
+    :param p:
         *undescribed*
+    :type p: struct qman_portal \*
 
-    :param u32 bits:
+    :param bits:
         bitmask of QM_PIRQ\_\*\*I processing sources
+    :type bits: u32
 
 .. _`qman_p_irqsource_add.description`:
 
@@ -33,11 +35,13 @@ qman_p_irqsource_remove
 
     remove processing sources from being int-driven
 
-    :param struct qman_portal \*p:
+    :param p:
         *undescribed*
+    :type p: struct qman_portal \*
 
-    :param u32 bits:
+    :param bits:
         bitmask of QM_PIRQ\_\*\*I processing sources
+    :type bits: u32
 
 .. _`qman_p_irqsource_remove.description`:
 
@@ -56,8 +60,9 @@ qman_affine_cpus
 
     return a mask of cpus that have affine portals
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`qman_affine_channel`:
 
@@ -68,8 +73,9 @@ qman_affine_channel
 
     return the channel ID of an portal
 
-    :param int cpu:
+    :param cpu:
         the cpu whose affine portal is the subject of the query
+    :type cpu: int
 
 .. _`qman_affine_channel.description`:
 
@@ -89,8 +95,9 @@ qman_get_affine_portal
 
     return the portal pointer affine to cpu
 
-    :param int cpu:
+    :param cpu:
         the cpu whose affine portal is the subject of the query
+    :type cpu: int
 
 .. _`qman_p_poll_dqrr`:
 
@@ -101,11 +108,13 @@ qman_p_poll_dqrr
 
     process DQRR (fast-path) entries
 
-    :param struct qman_portal \*p:
+    :param p:
         *undescribed*
+    :type p: struct qman_portal \*
 
-    :param unsigned int limit:
+    :param limit:
         the maximum number of DQRR entries to process
+    :type limit: unsigned int
 
 .. _`qman_p_poll_dqrr.description`:
 
@@ -124,11 +133,13 @@ qman_p_static_dequeue_add
 
     Add pool channels to the portal SDQCR
 
-    :param struct qman_portal \*p:
+    :param p:
         *undescribed*
+    :type p: struct qman_portal \*
 
-    :param u32 pools:
+    :param pools:
         bit-mask of pool channels, using QM_SDQCR_CHANNELS_POOL(n)
+    :type pools: u32
 
 .. _`qman_p_static_dequeue_add.description`:
 
@@ -148,14 +159,17 @@ qman_create_fq
 
     Allocates a FQ
 
-    :param u32 fqid:
+    :param fqid:
         the index of the FQD to encapsulate, must be "Out of Service"
+    :type fqid: u32
 
-    :param u32 flags:
+    :param flags:
         bit-mask of QMAN_FQ_FLAG\_\*\*\* options
+    :type flags: u32
 
-    :param struct qman_fq \*fq:
+    :param fq:
         memory for storing the 'fq', with callbacks filled in
+    :type fq: struct qman_fq \*
 
 .. _`qman_create_fq.description`:
 
@@ -185,8 +199,9 @@ qman_destroy_fq
 
     Deallocates a FQ
 
-    :param struct qman_fq \*fq:
+    :param fq:
         the frame queue object to release
+    :type fq: struct qman_fq \*
 
 .. _`qman_destroy_fq.description`:
 
@@ -206,8 +221,9 @@ qman_fq_fqid
 
     Queries the frame queue ID of a FQ object
 
-    :param struct qman_fq \*fq:
+    :param fq:
         the frame queue object to query
+    :type fq: struct qman_fq \*
 
 .. _`qman_init_fq`:
 
@@ -218,14 +234,17 @@ qman_init_fq
 
     Initialises FQ fields, leaves the FQ "parked" or "scheduled"
 
-    :param struct qman_fq \*fq:
+    :param fq:
         the frame queue object to modify, must be 'parked' or new.
+    :type fq: struct qman_fq \*
 
-    :param u32 flags:
+    :param flags:
         bit-mask of QMAN_INITFQ_FLAG\_\*\*\* options
+    :type flags: u32
 
-    :param struct qm_mcc_initfq \*opts:
+    :param opts:
         the FQ-modification settings, as defined in the low-level API
+    :type opts: struct qm_mcc_initfq \*
 
 .. _`qman_init_fq.description`:
 
@@ -275,8 +294,9 @@ qman_schedule_fq
 
     Schedules a FQ
 
-    :param struct qman_fq \*fq:
+    :param fq:
         the frame queue object to schedule, must be 'parked'
+    :type fq: struct qman_fq \*
 
 .. _`qman_schedule_fq.description`:
 
@@ -295,11 +315,13 @@ qman_retire_fq
 
     Retires a FQ
 
-    :param struct qman_fq \*fq:
+    :param fq:
         the frame queue object to retire
+    :type fq: struct qman_fq \*
 
-    :param u32 \*flags:
+    :param flags:
         FQ flags (QMAN_FQ_STATE\*) if retirement completes immediately
+    :type flags: u32 \*
 
 .. _`qman_retire_fq.description`:
 
@@ -328,8 +350,9 @@ qman_oos_fq
 
     Puts a FQ "out of service"
 
-    :param struct qman_fq \*fq:
+    :param fq:
         the frame queue object to be put out-of-service, must be 'retired'
+    :type fq: struct qman_fq \*
 
 .. _`qman_oos_fq.description`:
 
@@ -348,11 +371,13 @@ qman_enqueue
 
     Enqueue a frame to a frame queue
 
-    :param struct qman_fq \*fq:
+    :param fq:
         the frame queue object to enqueue to
+    :type fq: struct qman_fq \*
 
-    :param const struct qm_fd \*fd:
+    :param fd:
         a descriptor of the frame to be enqueued
+    :type fd: const struct qm_fd \*
 
 .. _`qman_enqueue.description`:
 
@@ -372,11 +397,13 @@ qman_alloc_fqid_range
 
     Allocate a contiguous range of FQIDs
 
-    :param u32 \*result:
+    :param result:
         is set by the API to the base FQID of the allocated range
+    :type result: u32 \*
 
-    :param u32 count:
+    :param count:
         the number of FQIDs required
+    :type count: u32
 
 .. _`qman_alloc_fqid_range.description`:
 
@@ -394,8 +421,9 @@ qman_release_fqid
 
     Release the specified frame queue ID
 
-    :param u32 fqid:
+    :param fqid:
         the FQID to be released back to the resource pool
+    :type fqid: u32
 
 .. _`qman_release_fqid.description`:
 
@@ -415,11 +443,13 @@ qman_query_fq_np
 
     Queries non-programmable FQD fields
 
-    :param struct qman_fq \*fq:
+    :param fq:
         the frame queue object to be queried
+    :type fq: struct qman_fq \*
 
-    :param struct qm_mcr_queryfq_np \*np:
+    :param np:
         storage for the queried FQD fields
+    :type np: struct qm_mcr_queryfq_np \*
 
 .. _`qman_alloc_pool_range`:
 
@@ -430,11 +460,13 @@ qman_alloc_pool_range
 
     Allocate a contiguous range of pool-channel IDs
 
-    :param u32 \*result:
+    :param result:
         is set by the API to the base pool-channel ID of the allocated range
+    :type result: u32 \*
 
-    :param u32 count:
+    :param count:
         the number of pool-channel IDs required
+    :type count: u32
 
 .. _`qman_alloc_pool_range.description`:
 
@@ -452,8 +484,9 @@ qman_release_pool
 
     Release the specified pool-channel ID
 
-    :param u32 id:
+    :param id:
         the pool-chan ID to be released back to the resource pool
+    :type id: u32
 
 .. _`qman_release_pool.description`:
 
@@ -473,14 +506,17 @@ qman_create_cgr
 
     Register a congestion group object
 
-    :param struct qman_cgr \*cgr:
+    :param cgr:
         the 'cgr' object, with fields filled in
+    :type cgr: struct qman_cgr \*
 
-    :param u32 flags:
+    :param flags:
         QMAN_CGR_FLAG\_\* values
+    :type flags: u32
 
-    :param struct qm_mcc_initcgr \*opts:
+    :param opts:
         optional state of CGR settings
+    :type opts: struct qm_mcc_initcgr \*
 
 .. _`qman_create_cgr.description`:
 
@@ -503,8 +539,9 @@ qman_delete_cgr
 
     Deregisters a congestion group object
 
-    :param struct qman_cgr \*cgr:
+    :param cgr:
         the 'cgr' object to deregister
+    :type cgr: struct qman_cgr \*
 
 .. _`qman_delete_cgr.description`:
 
@@ -524,8 +561,9 @@ qman_delete_cgr_safe
 
     Deregisters a congestion group object from any CPU
 
-    :param struct qman_cgr \*cgr:
+    :param cgr:
         the 'cgr' object to deregister
+    :type cgr: struct qman_cgr \*
 
 .. _`qman_delete_cgr_safe.description`:
 
@@ -543,11 +581,13 @@ qman_query_cgr_congested
 
     Queries CGR's congestion status
 
-    :param struct qman_cgr \*cgr:
+    :param cgr:
         the 'cgr' object to query
+    :type cgr: struct qman_cgr \*
 
-    :param bool \*result:
+    :param result:
         returns 'cgr's congestion status, 1 (true) if congested
+    :type result: bool \*
 
 .. _`qman_alloc_cgrid_range`:
 
@@ -558,11 +598,13 @@ qman_alloc_cgrid_range
 
     Allocate a contiguous range of CGR IDs
 
-    :param u32 \*result:
+    :param result:
         is set by the API to the base CGR ID of the allocated range
+    :type result: u32 \*
 
-    :param u32 count:
+    :param count:
         the number of CGR IDs required
+    :type count: u32
 
 .. _`qman_alloc_cgrid_range.description`:
 
@@ -580,8 +622,9 @@ qman_release_cgrid
 
     Release the specified CGR ID
 
-    :param u32 id:
+    :param id:
         the CGR ID to be released back to the resource pool
+    :type id: u32
 
 .. _`qman_release_cgrid.description`:
 
@@ -591,6 +634,95 @@ Description
 This function can also be used to seed the allocator with
 CGR ID ranges that it can subsequently allocate from.
 Returns 0 on success, or a negative error code.
+
+.. _`qman_is_probed`:
+
+qman_is_probed
+==============
+
+.. c:function:: int qman_is_probed( void)
+
+    Check if qman is probed
+
+    :param void:
+        no arguments
+    :type void: 
+
+.. _`qman_is_probed.description`:
+
+Description
+-----------
+
+Returns 1 if the qman driver successfully probed, -1 if the qman driver
+failed to probe or 0 if the qman driver did not probed yet.
+
+.. _`qman_dqrr_get_ithresh`:
+
+qman_dqrr_get_ithresh
+=====================
+
+.. c:function:: void qman_dqrr_get_ithresh(struct qman_portal *portal, u8 *ithresh)
+
+    Get coalesce interrupt threshold
+
+    :param portal:
+        portal to get the value for
+    :type portal: struct qman_portal \*
+
+    :param ithresh:
+        threshold pointer
+    :type ithresh: u8 \*
+
+.. _`qman_dqrr_set_ithresh`:
+
+qman_dqrr_set_ithresh
+=====================
+
+.. c:function:: void qman_dqrr_set_ithresh(struct qman_portal *portal, u8 ithresh)
+
+    Set coalesce interrupt threshold
+
+    :param portal:
+        portal to set the new value on
+    :type portal: struct qman_portal \*
+
+    :param ithresh:
+        new threshold value
+    :type ithresh: u8
+
+.. _`qman_portal_get_iperiod`:
+
+qman_portal_get_iperiod
+=======================
+
+.. c:function:: void qman_portal_get_iperiod(struct qman_portal *portal, u32 *iperiod)
+
+    Get coalesce interrupt period
+
+    :param portal:
+        portal to get the value for
+    :type portal: struct qman_portal \*
+
+    :param iperiod:
+        period pointer
+    :type iperiod: u32 \*
+
+.. _`qman_portal_set_iperiod`:
+
+qman_portal_set_iperiod
+=======================
+
+.. c:function:: void qman_portal_set_iperiod(struct qman_portal *portal, u32 iperiod)
+
+    Set coalesce interrupt period
+
+    :param portal:
+        portal to set the new value on
+    :type portal: struct qman_portal \*
+
+    :param iperiod:
+        *undescribed*
+    :type iperiod: u32
 
 .. This file was automatic generated / don't edit.
 

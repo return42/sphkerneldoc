@@ -10,14 +10,17 @@ gb_gpio_irq_map
 
     maps an IRQ into a GB gpio irqchip
 
-    :param struct irq_domain \*domain:
+    :param domain:
         *undescribed*
+    :type domain: struct irq_domain \*
 
-    :param unsigned int irq:
+    :param irq:
         the global irq number used by this GB gpio irqchip irq
+    :type irq: unsigned int
 
-    :param irq_hw_number_t hwirq:
+    :param hwirq:
         the local IRQ/GPIO line offset on this GB gpio
+    :type hwirq: irq_hw_number_t
 
 .. _`gb_gpio_irq_map.description`:
 
@@ -37,8 +40,9 @@ gb_gpio_irqchip_remove
 
     removes an irqchip added to a gb_gpio_controller
 
-    :param struct gb_gpio_controller \*ggc:
+    :param ggc:
         the gb_gpio_controller to remove the irqchip from
+    :type ggc: struct gb_gpio_controller \*
 
 .. _`gb_gpio_irqchip_remove.description`:
 
@@ -56,22 +60,27 @@ gb_gpio_irqchip_add
 
     adds an irqchip to a gpio chip
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         the gpio chip to add the irqchip to
+    :type chip: struct gpio_chip \*
 
-    :param struct irq_chip \*irqchip:
+    :param irqchip:
         the irqchip to add to the adapter
+    :type irqchip: struct irq_chip \*
 
-    :param unsigned int first_irq:
+    :param first_irq:
         if not dynamically assigned, the base (first) IRQ to
         allocate gpio irqs from
+    :type first_irq: unsigned int
 
-    :param irq_flow_handler_t handler:
+    :param handler:
         the irq handler to use (often a predefined irq core function)
+    :type handler: irq_flow_handler_t
 
-    :param unsigned int type:
+    :param type:
         the default type for IRQs on this irqchip, pass IRQ_TYPE_NONE
         to have the core avoid setting up any default type in the hardware.
+    :type type: unsigned int
 
 .. _`gb_gpio_irqchip_add.description`:
 

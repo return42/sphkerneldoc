@@ -765,11 +765,13 @@ octeon_alloc_temp_buffer
 
     allocate a temporary buffer for USB transfer (if needed)
 
-    :param struct urb \*urb:
+    :param urb:
         URB.
+    :type urb: struct urb \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         Memory allocation flags.
+    :type mem_flags: gfp_t
 
 .. _`octeon_alloc_temp_buffer.description`:
 
@@ -788,8 +790,9 @@ octeon_free_temp_buffer
 
     free a temporary buffer used by USB transfers.
 
-    :param struct urb \*urb:
+    :param urb:
         URB.
+    :type urb: struct urb \*
 
 .. _`octeon_free_temp_buffer.description`:
 
@@ -807,14 +810,17 @@ octeon_map_urb_for_dma
 
     Octeon-specific \ :c:func:`map_urb_for_dma`\ .
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         USB HCD structure.
+    :type hcd: struct usb_hcd \*
 
-    :param struct urb \*urb:
+    :param urb:
         URB.
+    :type urb: struct urb \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         Memory allocation flags.
+    :type mem_flags: gfp_t
 
 .. _`octeon_unmap_urb_for_dma`:
 
@@ -825,11 +831,13 @@ octeon_unmap_urb_for_dma
 
     Octeon-specific \ :c:func:`unmap_urb_for_dma`\ 
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         USB HCD structure.
+    :type hcd: struct usb_hcd \*
 
-    :param struct urb \*urb:
+    :param urb:
         URB.
+    :type urb: struct urb \*
 
 .. _`cvmx_usb_read_csr32`:
 
@@ -840,11 +848,13 @@ cvmx_usb_read_csr32
 
     for 32bit CSRs and logs the value in a readable format if debugging is on.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB block this access is for
+    :type usb: struct octeon_hcd \*
 
-    :param u64 address:
+    :param address:
         64bit address to read
+    :type address: u64
 
 .. _`cvmx_usb_read_csr32.return`:
 
@@ -862,14 +872,17 @@ cvmx_usb_write_csr32
 
     swizzle for 32bit CSRs and logs the value in a readable format if debugging is on.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB block this access is for
+    :type usb: struct octeon_hcd \*
 
-    :param u64 address:
+    :param address:
         64bit address to write
+    :type address: u64
 
-    :param u32 value:
+    :param value:
         Value to write
+    :type value: u32
 
 .. _`cvmx_usb_pipe_needs_split`:
 
@@ -880,11 +893,13 @@ cvmx_usb_pipe_needs_split
 
     device through a high speed hub.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB block this access is for
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Pipe to check
+    :type pipe: struct cvmx_usb_pipe \*
 
 .. _`cvmx_usb_pipe_needs_split.return`:
 
@@ -900,8 +915,9 @@ cvmx_usb_get_data_pid
 
 .. c:function:: int cvmx_usb_get_data_pid(struct cvmx_usb_pipe *pipe)
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         pipe to check
+    :type pipe: struct cvmx_usb_pipe \*
 
 .. _`cvmx_usb_get_data_pid.return`:
 
@@ -919,8 +935,9 @@ cvmx_usb_shutdown
 
     The port should be disabled with all pipes closed when this function is called.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
 .. _`cvmx_usb_shutdown.return`:
 
@@ -938,11 +955,13 @@ cvmx_usb_initialize
 
     other access to the Octeon USB port is made. The port starts off in the disabled state.
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to struct device for logging purposes.
+    :type dev: struct device \*
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         Pointer to struct octeon_hcd.
+    :type usb: struct octeon_hcd \*
 
 .. _`cvmx_usb_initialize.return`:
 
@@ -960,8 +979,9 @@ cvmx_usb_reset_port
 
     online and servicing requests.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
 .. _`cvmx_usb_disable`:
 
@@ -972,8 +992,9 @@ cvmx_usb_disable
 
     generate data transfers and will not generate events. Transactions in process will fail and call their associated callbacks.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
 .. _`cvmx_usb_disable.return`:
 
@@ -991,8 +1012,9 @@ cvmx_usb_get_status
 
     determine if the usb port has anything connected, is enabled, or has some sort of error condition. The return value of this call has "changed" bits to signal of the value of some fields have changed between calls.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
 .. _`cvmx_usb_get_status.return`:
 
@@ -1010,64 +1032,75 @@ cvmx_usb_open_pipe
 
     must be opened before data can be transferred between a device and Octeon.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param int device_addr:
+    :param device_addr:
         USB device address to open the pipe to
         (0-127).
+    :type device_addr: int
 
-    :param int endpoint_num:
+    :param endpoint_num:
         USB endpoint number to open the pipe to
         (0-15).
+    :type endpoint_num: int
 
-    :param enum cvmx_usb_speed device_speed:
+    :param device_speed:
         The speed of the device the pipe is going
         to. This must match the device's speed,
         which may be different than the port speed.
+    :type device_speed: enum cvmx_usb_speed
 
-    :param int max_packet:
+    :param max_packet:
         The maximum packet length the device can
         transmit/receive (low speed=0-8, full
         speed=0-1023, high speed=0-1024). This value
         comes from the standard endpoint descriptor
         field wMaxPacketSize bits <10:0>.
+    :type max_packet: int
 
-    :param enum cvmx_usb_transfer transfer_type:
+    :param transfer_type:
         The type of transfer this pipe is for.
+    :type transfer_type: enum cvmx_usb_transfer
 
-    :param enum cvmx_usb_direction transfer_dir:
+    :param transfer_dir:
         The direction the pipe is in. This is not
         used for control pipes.
+    :type transfer_dir: enum cvmx_usb_direction
 
-    :param int interval:
+    :param interval:
         For ISOCHRONOUS and INTERRUPT transfers,
         this is how often the transfer is scheduled
         for. All other transfers should specify
         zero. The units are in frames (8000/sec at
         high speed, 1000/sec for full speed).
+    :type interval: int
 
-    :param int multi_count:
+    :param multi_count:
         For high speed devices, this is the maximum
         allowed number of packet per microframe.
         Specify zero for non high speed devices. This
         value comes from the standard endpoint descriptor
         field wMaxPacketSize bits <12:11>.
+    :type multi_count: int
 
-    :param int hub_device_addr:
+    :param hub_device_addr:
         Hub device address this device is connected
         to. Devices connected directly to Octeon
         use zero. This is only used when the device
         is full/low speed behind a high speed hub.
         The address will be of the high speed hub,
         not and full speed hubs after it.
+    :type hub_device_addr: int
 
-    :param int hub_port:
+    :param hub_port:
         Which port on the hub the device is
         connected. Use zero for devices connected
         directly to Octeon. Like hub_device_addr,
         this is only used for full/low speed
         devices behind a high speed hub.
+    :type hub_port: int
 
 .. _`cvmx_usb_open_pipe.return`:
 
@@ -1085,8 +1118,9 @@ cvmx_usb_poll_rx_fifo
 
     in non DMA mode. It is very important that this function be called quickly enough to prevent FIFO overflow.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
 .. _`cvmx_usb_fill_tx_hw`:
 
@@ -1097,14 +1131,17 @@ cvmx_usb_fill_tx_hw
 
     fifos
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_tx_fifo \*fifo:
+    :param fifo:
         Software fifo to use
+    :type fifo: struct cvmx_usb_tx_fifo \*
 
-    :param int available:
+    :param available:
         Amount of space in the hardware fifo
+    :type available: int
 
 .. _`cvmx_usb_fill_tx_hw.return`:
 
@@ -1121,8 +1158,9 @@ cvmx_usb_poll_tx_fifo
 
 .. c:function:: void cvmx_usb_poll_tx_fifo(struct octeon_hcd *usb)
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
 .. _`cvmx_usb_fill_tx_fifo`:
 
@@ -1131,11 +1169,13 @@ cvmx_usb_fill_tx_fifo
 
 .. c:function:: void cvmx_usb_fill_tx_fifo(struct octeon_hcd *usb, int channel)
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param int channel:
+    :param channel:
         Channel number to get packet from
+    :type channel: int
 
 .. _`cvmx_usb_start_channel_control`:
 
@@ -1146,14 +1186,17 @@ cvmx_usb_start_channel_control
 
     the generic stuff will already have been done in \ :c:func:`cvmx_usb_start_channel`\ .
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param int channel:
+    :param channel:
         Channel to setup
+    :type channel: int
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Pipe for control transaction
+    :type pipe: struct cvmx_usb_pipe \*
 
 .. _`cvmx_usb_start_channel`:
 
@@ -1162,14 +1205,17 @@ cvmx_usb_start_channel
 
 .. c:function:: void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel, struct cvmx_usb_pipe *pipe)
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param int channel:
+    :param channel:
         Channel to setup
+    :type channel: int
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Pipe to start
+    :type pipe: struct cvmx_usb_pipe \*
 
 .. _`cvmx_usb_find_ready_pipe`:
 
@@ -1178,11 +1224,13 @@ cvmx_usb_find_ready_pipe
 
 .. c:function:: struct cvmx_usb_pipe *cvmx_usb_find_ready_pipe(struct octeon_hcd *usb, enum cvmx_usb_transfer xfer_type)
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param enum cvmx_usb_transfer xfer_type:
+    :param xfer_type:
         Transfer type
+    :type xfer_type: enum cvmx_usb_transfer
 
 .. _`cvmx_usb_find_ready_pipe.return`:
 
@@ -1200,11 +1248,13 @@ cvmx_usb_schedule
 
     hardware.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param int is_sof:
+    :param is_sof:
         True if this schedule was called on a SOF interrupt.
+    :type is_sof: int
 
 .. _`cvmx_usb_complete`:
 
@@ -1215,17 +1265,21 @@ cvmx_usb_complete
 
     transaction will be removed from the pipe transaction list.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Pipe the transaction is on
+    :type pipe: struct cvmx_usb_pipe \*
 
-    :param struct cvmx_usb_transaction \*transaction:
+    :param transaction:
         Transaction that completed
+    :type transaction: struct cvmx_usb_transaction \*
 
-    :param enum cvmx_usb_status complete_code:
+    :param complete_code:
         Completion code
+    :type complete_code: enum cvmx_usb_status
 
 .. _`cvmx_usb_submit_transaction`:
 
@@ -1236,35 +1290,45 @@ cvmx_usb_submit_transaction
 
     of transactions.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         *undescribed*
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Which pipe to submit to.
+    :type pipe: struct cvmx_usb_pipe \*
 
-    :param enum cvmx_usb_transfer type:
+    :param type:
         Transaction type
+    :type type: enum cvmx_usb_transfer
 
-    :param u64 buffer:
+    :param buffer:
         User buffer for the transaction
+    :type buffer: u64
 
-    :param int buffer_length:
+    :param buffer_length:
         User buffer's length in bytes
+    :type buffer_length: int
 
-    :param u64 control_header:
+    :param control_header:
         For control transactions, the 8 byte standard header
+    :type control_header: u64
 
-    :param int iso_start_frame:
+    :param iso_start_frame:
         For ISO transactions, the start frame
+    :type iso_start_frame: int
 
-    :param int iso_number_packets:
+    :param iso_number_packets:
         For ISO, the number of packet in the transaction.
+    :type iso_number_packets: int
 
-    :param struct cvmx_usb_iso_packet \*iso_packets:
+    :param iso_packets:
         A description of each ISO packet
+    :type iso_packets: struct cvmx_usb_iso_packet \*
 
-    :param struct urb \*urb:
+    :param urb:
         URB for the callback
+    :type urb: struct urb \*
 
 .. _`cvmx_usb_submit_transaction.return`:
 
@@ -1280,14 +1344,17 @@ cvmx_usb_submit_bulk
 
 .. c:function:: struct cvmx_usb_transaction *cvmx_usb_submit_bulk(struct octeon_hcd *usb, struct cvmx_usb_pipe *pipe, struct urb *urb)
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Handle to the pipe for the transfer.
+    :type pipe: struct cvmx_usb_pipe \*
 
-    :param struct urb \*urb:
+    :param urb:
         URB.
+    :type urb: struct urb \*
 
 .. _`cvmx_usb_submit_bulk.return`:
 
@@ -1303,14 +1370,17 @@ cvmx_usb_submit_interrupt
 
 .. c:function:: struct cvmx_usb_transaction *cvmx_usb_submit_interrupt(struct octeon_hcd *usb, struct cvmx_usb_pipe *pipe, struct urb *urb)
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Handle to the pipe for the transfer.
+    :type pipe: struct cvmx_usb_pipe \*
 
-    :param struct urb \*urb:
+    :param urb:
         URB returned when the callback is called.
+    :type urb: struct urb \*
 
 .. _`cvmx_usb_submit_interrupt.return`:
 
@@ -1326,14 +1396,17 @@ cvmx_usb_submit_control
 
 .. c:function:: struct cvmx_usb_transaction *cvmx_usb_submit_control(struct octeon_hcd *usb, struct cvmx_usb_pipe *pipe, struct urb *urb)
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Handle to the pipe for the transfer.
+    :type pipe: struct cvmx_usb_pipe \*
 
-    :param struct urb \*urb:
+    :param urb:
         URB.
+    :type urb: struct urb \*
 
 .. _`cvmx_usb_submit_control.return`:
 
@@ -1349,14 +1422,17 @@ cvmx_usb_submit_isochronous
 
 .. c:function:: struct cvmx_usb_transaction *cvmx_usb_submit_isochronous(struct octeon_hcd *usb, struct cvmx_usb_pipe *pipe, struct urb *urb)
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Handle to the pipe for the transfer.
+    :type pipe: struct cvmx_usb_pipe \*
 
-    :param struct urb \*urb:
+    :param urb:
         URB returned when the callback is called.
+    :type urb: struct urb \*
 
 .. _`cvmx_usb_submit_isochronous.return`:
 
@@ -1374,14 +1450,17 @@ cvmx_usb_cancel
 
     can fail if the transaction has already completed before cancel is called. Even after a successful cancel call, it may take a frame or two for the \ :c:func:`cvmx_usb_poll`\  function to call the associated callback.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Pipe to cancel requests in.
+    :type pipe: struct cvmx_usb_pipe \*
 
-    :param struct cvmx_usb_transaction \*transaction:
+    :param transaction:
         Transaction to cancel, returned by the submit function.
+    :type transaction: struct cvmx_usb_transaction \*
 
 .. _`cvmx_usb_cancel.return`:
 
@@ -1399,11 +1478,13 @@ cvmx_usb_cancel_all
 
     does is call \ :c:func:`cvmx_usb_cancel`\  in a loop.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Pipe to cancel requests in.
+    :type pipe: struct cvmx_usb_pipe \*
 
 .. _`cvmx_usb_cancel_all.return`:
 
@@ -1419,11 +1500,13 @@ cvmx_usb_close_pipe
 
 .. c:function:: int cvmx_usb_close_pipe(struct octeon_hcd *usb, struct cvmx_usb_pipe *pipe)
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
-    :param struct cvmx_usb_pipe \*pipe:
+    :param pipe:
         Pipe to close.
+    :type pipe: struct cvmx_usb_pipe \*
 
 .. _`cvmx_usb_close_pipe.return`:
 
@@ -1442,8 +1525,9 @@ cvmx_usb_get_frame_number
 
     number is always in the range of 0-0x7ff.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
 .. _`cvmx_usb_get_frame_number.return`:
 
@@ -1459,11 +1543,13 @@ cvmx_usb_poll_channel
 
 .. c:function:: int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device
+    :type usb: struct octeon_hcd \*
 
-    :param int channel:
+    :param channel:
         Channel to poll
+    :type channel: int
 
 .. _`cvmx_usb_poll_channel.return`:
 
@@ -1481,8 +1567,9 @@ cvmx_usb_poll
 
     handlers. This function is meant to be called in the interrupt handler for the USB controller. It can also be called periodically in a loop for non-interrupt based operation.
 
-    :param struct octeon_hcd \*usb:
+    :param usb:
         USB device state populated by \ :c:func:`cvmx_usb_initialize`\ .
+    :type usb: struct octeon_hcd \*
 
 .. _`cvmx_usb_poll.return`:
 

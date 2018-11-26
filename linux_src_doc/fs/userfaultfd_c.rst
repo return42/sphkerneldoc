@@ -10,8 +10,9 @@ userfaultfd_ctx_get
 
     Acquires a reference to the internal userfaultfd context.
 
-    :param struct userfaultfd_ctx \*ctx:
+    :param ctx:
         [in] Pointer to the userfaultfd context.
+    :type ctx: struct userfaultfd_ctx \*
 
 .. _`userfaultfd_ctx_put`:
 
@@ -22,8 +23,9 @@ userfaultfd_ctx_put
 
     Releases a reference to the internal userfaultfd context.
 
-    :param struct userfaultfd_ctx \*ctx:
+    :param ctx:
         [in] Pointer to userfaultfd context.
+    :type ctx: struct userfaultfd_ctx \*
 
 .. _`userfaultfd_ctx_put.description`:
 

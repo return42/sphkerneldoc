@@ -10,11 +10,13 @@ ww_mutex_init
 
     initialize the w/w mutex
 
-    :param struct ww_mutex \*lock:
+    :param lock:
         the mutex to be initialized
+    :type lock: struct ww_mutex \*
 
-    :param struct ww_class \*ww_class:
+    :param ww_class:
         the w/w class the mutex should belong to
+    :type ww_class: struct ww_class \*
 
 .. _`ww_mutex_init.description`:
 
@@ -35,11 +37,13 @@ ww_acquire_init
 
     initialize a w/w acquire context
 
-    :param struct ww_acquire_ctx \*ctx:
+    :param ctx:
         w/w acquire context to initialize
+    :type ctx: struct ww_acquire_ctx \*
 
-    :param struct ww_class \*ww_class:
+    :param ww_class:
         w/w class of the context
+    :type ww_class: struct ww_class \*
 
 .. _`ww_acquire_init.description`:
 
@@ -50,7 +54,7 @@ Initializes an context to acquire multiple mutexes of the given w/w class.
 
 Context-based w/w mutex acquiring can be done in any order whatsoever within
 a given lock class. Deadlocks will be detected and handled with the
-wait/wound logic.
+wait/die logic.
 
 Mixing of context-based w/w mutex acquiring and single w/w mutex locking can
 result in undetected deadlocks and is so forbidden. Mixing different contexts
@@ -74,8 +78,9 @@ ww_acquire_done
 
     marks the end of the acquire phase
 
-    :param struct ww_acquire_ctx \*ctx:
+    :param ctx:
         the acquire context
+    :type ctx: struct ww_acquire_ctx \*
 
 .. _`ww_acquire_done.description`:
 
@@ -98,8 +103,9 @@ ww_acquire_fini
 
     releases a w/w acquire context
 
-    :param struct ww_acquire_ctx \*ctx:
+    :param ctx:
         the acquire context to free
+    :type ctx: struct ww_acquire_ctx \*
 
 .. _`ww_acquire_fini.description`:
 
@@ -118,11 +124,13 @@ ww_mutex_lock
 
     acquire the w/w mutex
 
-    :param struct ww_mutex \*lock:
+    :param lock:
         the mutex to be acquired
+    :type lock: struct ww_mutex \*
 
-    :param struct ww_acquire_ctx \*ctx:
+    :param ctx:
         w/w acquire context, or NULL to acquire only a single lock.
+    :type ctx: struct ww_acquire_ctx \*
 
 .. _`ww_mutex_lock.description`:
 
@@ -132,13 +140,13 @@ Description
 Lock the w/w mutex exclusively for this task.
 
 Deadlocks within a given w/w class of locks are detected and handled with the
-wait/wound algorithm. If the lock isn't immediately avaiable this function
+wait/die algorithm. If the lock isn't immediately available this function
 will either sleep until it is (wait case). Or it selects the current context
-for backing off by returning -EDEADLK (wound case). Trying to acquire the
+for backing off by returning -EDEADLK (die case). Trying to acquire the
 same lock with the same context twice is also detected and signalled by
 returning -EALREADY. Returns 0 if the mutex was successfully acquired.
 
-In the wound case the caller must release all currently held w/w mutexes for
+In the die case the caller must release all currently held w/w mutexes for
 the given context and then wait for this contending lock to be available by
 calling ww_mutex_lock_slow. Alternatively callers can opt to not acquire this
 lock and proceed with trying to acquire further w/w mutexes (e.g. when
@@ -162,11 +170,13 @@ ww_mutex_lock_interruptible
 
     acquire the w/w mutex, interruptible
 
-    :param struct ww_mutex \*lock:
+    :param lock:
         the mutex to be acquired
+    :type lock: struct ww_mutex \*
 
-    :param struct ww_acquire_ctx \*ctx:
+    :param ctx:
         w/w acquire context
+    :type ctx: struct ww_acquire_ctx \*
 
 .. _`ww_mutex_lock_interruptible.description`:
 
@@ -176,14 +186,14 @@ Description
 Lock the w/w mutex exclusively for this task.
 
 Deadlocks within a given w/w class of locks are detected and handled with the
-wait/wound algorithm. If the lock isn't immediately avaiable this function
+wait/die algorithm. If the lock isn't immediately available this function
 will either sleep until it is (wait case). Or it selects the current context
-for backing off by returning -EDEADLK (wound case). Trying to acquire the
+for backing off by returning -EDEADLK (die case). Trying to acquire the
 same lock with the same context twice is also detected and signalled by
 returning -EALREADY. Returns 0 if the mutex was successfully acquired. If a
 signal arrives while waiting for the lock then this function returns -EINTR.
 
-In the wound case the caller must release all currently held w/w mutexes for
+In the die case the caller must release all currently held w/w mutexes for
 the given context and then wait for this contending lock to be available by
 calling ww_mutex_lock_slow_interruptible. Alternatively callers can opt to
 not acquire this lock and proceed with trying to acquire further w/w mutexes
@@ -207,18 +217,20 @@ ww_mutex_lock_slow
 
     slowpath acquiring of the w/w mutex
 
-    :param struct ww_mutex \*lock:
+    :param lock:
         the mutex to be acquired
+    :type lock: struct ww_mutex \*
 
-    :param struct ww_acquire_ctx \*ctx:
+    :param ctx:
         w/w acquire context
+    :type ctx: struct ww_acquire_ctx \*
 
 .. _`ww_mutex_lock_slow.description`:
 
 Description
 -----------
 
-Acquires a w/w mutex with the given context after a wound case. This function
+Acquires a w/w mutex with the given context after a die case. This function
 will sleep until the lock becomes available.
 
 The caller must have released all w/w mutexes already acquired with the
@@ -245,18 +257,20 @@ ww_mutex_lock_slow_interruptible
 
     slowpath acquiring of the w/w mutex, interruptible
 
-    :param struct ww_mutex \*lock:
+    :param lock:
         the mutex to be acquired
+    :type lock: struct ww_mutex \*
 
-    :param struct ww_acquire_ctx \*ctx:
+    :param ctx:
         w/w acquire context
+    :type ctx: struct ww_acquire_ctx \*
 
 .. _`ww_mutex_lock_slow_interruptible.description`:
 
 Description
 -----------
 
-Acquires a w/w mutex with the given context after a wound case. This function
+Acquires a w/w mutex with the given context after a die case. This function
 will sleep until the lock becomes available and returns 0 when the lock has
 been acquired. If a signal arrives while waiting for the lock then this
 function returns -EINTR.
@@ -285,8 +299,9 @@ ww_mutex_trylock
 
     tries to acquire the w/w mutex without acquire context
 
-    :param struct ww_mutex \*lock:
+    :param lock:
         mutex to lock
+    :type lock: struct ww_mutex \*
 
 .. _`ww_mutex_trylock.description`:
 
@@ -305,8 +320,9 @@ ww_mutex_is_locked
 
     is the w/w mutex locked
 
-    :param struct ww_mutex \*lock:
+    :param lock:
         the mutex to be queried
+    :type lock: struct ww_mutex \*
 
 .. _`ww_mutex_is_locked.description`:
 

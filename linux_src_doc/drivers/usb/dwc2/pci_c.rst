@@ -10,8 +10,9 @@ dwc2_pci_remove
 
     Provides the cleanup entry points for the DWC_otg PCI driver
 
-    :param struct pci_dev \*pci:
+    :param pci:
         The programming view of DWC_otg PCI
+    :type pci: struct pci_dev \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ i40e_dbg_find_vsi
 
     searches for the vsi with the given seid
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF structure to search for the vsi
+    :type pf: struct i40e_pf \*
 
-    :param int seid:
+    :param seid:
         seid of the vsi it is searching for
+    :type seid: int
 
 .. _`i40e_dbg_find_veb`:
 
@@ -25,11 +27,13 @@ i40e_dbg_find_veb
 
     searches for the veb with the given seid
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF structure to search for the veb
+    :type pf: struct i40e_pf \*
 
-    :param int seid:
+    :param seid:
         seid of the veb it is searching for
+    :type seid: int
 
 .. _`i40e_dbg_command_read`:
 
@@ -40,17 +44,21 @@ i40e_dbg_command_read
 
     read for command datum
 
-    :param struct file \*filp:
+    :param filp:
         the opened file
+    :type filp: struct file \*
 
-    :param char __user \*buffer:
+    :param buffer:
         where to write the data for the user to read
+    :type buffer: char __user \*
 
-    :param size_t count:
+    :param count:
         the size of the user's buffer
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position offset
+    :type ppos: loff_t \*
 
 .. _`i40e_dbg_dump_vsi_seid`:
 
@@ -61,11 +69,13 @@ i40e_dbg_dump_vsi_seid
 
     handles dump vsi seid write into command datum
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the i40e_pf created in command write
+    :type pf: struct i40e_pf \*
 
-    :param int seid:
+    :param seid:
         the seid the user put in
+    :type seid: int
 
 .. _`i40e_dbg_dump_aq_desc`:
 
@@ -76,8 +86,9 @@ i40e_dbg_dump_aq_desc
 
     handles dump aq_desc write into command datum
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the i40e_pf created in command write
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_dbg_dump_desc`:
 
@@ -88,23 +99,29 @@ i40e_dbg_dump_desc
 
     handles dump desc write into command datum
 
-    :param int cnt:
+    :param cnt:
         number of arguments that the user supplied
+    :type cnt: int
 
-    :param int vsi_seid:
+    :param vsi_seid:
         vsi id entered by user
+    :type vsi_seid: int
 
-    :param int ring_id:
+    :param ring_id:
         ring id entered by user
+    :type ring_id: int
 
-    :param int desc_n:
+    :param desc_n:
         descriptor number entered by user
+    :type desc_n: int
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the i40e_pf created in command write
+    :type pf: struct i40e_pf \*
 
-    :param bool is_rx_ring:
+    :param is_rx_ring:
         true if rx, false if tx
+    :type is_rx_ring: bool
 
 .. _`i40e_dbg_dump_vsi_no_seid`:
 
@@ -115,8 +132,9 @@ i40e_dbg_dump_vsi_no_seid
 
     handles dump vsi write into command datum
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the i40e_pf created in command write
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_dbg_dump_eth_stats`:
 
@@ -127,11 +145,13 @@ i40e_dbg_dump_eth_stats
 
     handles dump stats write into command datum
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the i40e_pf created in command write
+    :type pf: struct i40e_pf \*
 
-    :param struct i40e_eth_stats \*estats:
+    :param estats:
         the eth stats structure to be dumped
+    :type estats: struct i40e_eth_stats \*
 
 .. _`i40e_dbg_dump_veb_seid`:
 
@@ -142,11 +162,13 @@ i40e_dbg_dump_veb_seid
 
     handles dump stats of a single given veb
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the i40e_pf created in command write
+    :type pf: struct i40e_pf \*
 
-    :param int seid:
+    :param seid:
         the seid the user put in
+    :type seid: int
 
 .. _`i40e_dbg_dump_veb_all`:
 
@@ -157,8 +179,9 @@ i40e_dbg_dump_veb_all
 
     dumps all known veb's stats
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the i40e_pf created in command write
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_dbg_dump_vf`:
 
@@ -169,11 +192,13 @@ i40e_dbg_dump_vf
 
     dump VF info
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the i40e_pf created in command write
+    :type pf: struct i40e_pf \*
 
-    :param int vf_id:
+    :param vf_id:
         the vf_id from the user
+    :type vf_id: int
 
 .. _`i40e_dbg_dump_vf_all`:
 
@@ -184,8 +209,9 @@ i40e_dbg_dump_vf_all
 
     dump VF info for all VFs
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the i40e_pf created in command write
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_dbg_command_write`:
 
@@ -196,17 +222,21 @@ i40e_dbg_command_write
 
     write into command datum
 
-    :param struct file \*filp:
+    :param filp:
         the opened file
+    :type filp: struct file \*
 
-    :param const char __user \*buffer:
+    :param buffer:
         where to find the user's data
+    :type buffer: const char __user \*
 
-    :param size_t count:
+    :param count:
         the length of the user's data
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position offset
+    :type ppos: loff_t \*
 
 .. _`i40e_dbg_netdev_ops_read`:
 
@@ -217,17 +247,21 @@ i40e_dbg_netdev_ops_read
 
     read for netdev_ops datum
 
-    :param struct file \*filp:
+    :param filp:
         the opened file
+    :type filp: struct file \*
 
-    :param char __user \*buffer:
+    :param buffer:
         where to write the data for the user to read
+    :type buffer: char __user \*
 
-    :param size_t count:
+    :param count:
         the size of the user's buffer
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position offset
+    :type ppos: loff_t \*
 
 .. _`i40e_dbg_netdev_ops_write`:
 
@@ -238,17 +272,21 @@ i40e_dbg_netdev_ops_write
 
     write into netdev_ops datum
 
-    :param struct file \*filp:
+    :param filp:
         the opened file
+    :type filp: struct file \*
 
-    :param const char __user \*buffer:
+    :param buffer:
         where to find the user's data
+    :type buffer: const char __user \*
 
-    :param size_t count:
+    :param count:
         the length of the user's data
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position offset
+    :type ppos: loff_t \*
 
 .. _`i40e_dbg_pf_init`:
 
@@ -259,8 +297,9 @@ i40e_dbg_pf_init
 
     setup the debugfs directory for the PF
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF that is starting up
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_dbg_pf_exit`:
 
@@ -271,8 +310,9 @@ i40e_dbg_pf_exit
 
     clear out the PF's debugfs entries
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF that is stopping
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_dbg_init`:
 
@@ -283,8 +323,9 @@ i40e_dbg_init
 
     start up debugfs for the driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i40e_dbg_exit`:
 
@@ -295,8 +336,9 @@ i40e_dbg_exit
 
     clean out the driver's debugfs entries
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

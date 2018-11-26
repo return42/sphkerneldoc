@@ -10,8 +10,9 @@ mv_save_cached_regs
 
     (re-)initialize cached port registers
 
-    :param struct ata_port \*ap:
+    :param ap:
         the port whose registers we are caching
+    :type ap: struct ata_port \*
 
 .. _`mv_save_cached_regs.description`:
 
@@ -33,14 +34,17 @@ mv_write_cached_reg
 
     write to a cached port register
 
-    :param void __iomem \*addr:
+    :param addr:
         hardware address of the register
+    :type addr: void __iomem \*
 
-    :param u32 \*old:
+    :param old:
         pointer to cached value of the register
+    :type old: u32 \*
 
-    :param u32 new:
+    :param new:
         new value for the register
+    :type new: u32
 
 .. _`mv_write_cached_reg.description`:
 
@@ -59,17 +63,21 @@ mv_start_edma
 
     Enable eDMA engine
 
-    :param struct ata_port \*ap:
+    :param ap:
         *undescribed*
+    :type ap: struct ata_port \*
 
-    :param void __iomem \*port_mmio:
+    :param port_mmio:
         *undescribed*
+    :type port_mmio: void __iomem \*
 
-    :param struct mv_port_priv \*pp:
+    :param pp:
         port private data
+    :type pp: struct mv_port_priv \*
 
-    :param u8 protocol:
+    :param protocol:
         *undescribed*
+    :type protocol: u8
 
 .. _`mv_start_edma.description`:
 
@@ -95,8 +103,9 @@ mv_stop_edma_engine
 
     Disable eDMA engine
 
-    :param void __iomem \*port_mmio:
+    :param port_mmio:
         io base address
+    :type port_mmio: void __iomem \*
 
 .. _`mv_stop_edma_engine.locking`:
 
@@ -114,11 +123,13 @@ mv_bmdma_enable_iie
 
     set a magic bit on GEN_IIE to allow bmdma
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port being initialized
+    :type ap: struct ata_port \*
 
-    :param int enable_bmdma:
+    :param enable_bmdma:
         *undescribed*
+    :type enable_bmdma: int
 
 .. _`mv_bmdma_enable_iie.there-are-two-dma-modes-on-these-chips`:
 
@@ -142,8 +153,9 @@ mv_port_start
 
     Port specific init/start routine.
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA channel to manipulate
+    :type ap: struct ata_port \*
 
 .. _`mv_port_start.description`:
 
@@ -169,8 +181,9 @@ mv_port_stop
 
     Port specific cleanup/stop routine.
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA channel to manipulate
+    :type ap: struct ata_port \*
 
 .. _`mv_port_stop.description`:
 
@@ -195,8 +208,9 @@ mv_fill_sg
 
     Fill out the Marvell ePRD (scatter gather) entries
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command whose SG list to source from
+    :type qc: struct ata_queued_cmd \*
 
 .. _`mv_fill_sg.description`:
 
@@ -221,8 +235,9 @@ mv_sff_irq_clear
 
     Clear hardware interrupt after DMA.
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port associated with this ATA transaction.
+    :type ap: struct ata_port \*
 
 .. _`mv_sff_irq_clear.description`:
 
@@ -242,8 +257,9 @@ mv_check_atapi_dma
 
     Filter ATAPI cmds which are unsuitable for DMA.
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command to check for chipset/DMA compatibility.
+    :type qc: struct ata_queued_cmd \*
 
 .. _`mv_check_atapi_dma.description`:
 
@@ -270,8 +286,9 @@ mv_bmdma_setup
 
     Set up BMDMA transaction
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command to prepare DMA for.
+    :type qc: struct ata_queued_cmd \*
 
 .. _`mv_bmdma_setup.locking`:
 
@@ -289,8 +306,9 @@ mv_bmdma_start
 
     Start a BMDMA transaction
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command to start DMA on.
+    :type qc: struct ata_queued_cmd \*
 
 .. _`mv_bmdma_start.locking`:
 
@@ -308,8 +326,9 @@ mv_bmdma_stop_ap
 
     Stop BMDMA transfer
 
-    :param struct ata_port \*ap:
+    :param ap:
         *undescribed*
+    :type ap: struct ata_port \*
 
 .. _`mv_bmdma_stop_ap.description`:
 
@@ -334,8 +353,9 @@ mv_bmdma_status
 
     Read BMDMA status
 
-    :param struct ata_port \*ap:
+    :param ap:
         port for which to retrieve DMA status.
+    :type ap: struct ata_port \*
 
 .. _`mv_bmdma_status.description`:
 
@@ -360,8 +380,9 @@ mv_qc_prep
 
     Host specific command preparation.
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command to prepare
+    :type qc: struct ata_queued_cmd \*
 
 .. _`mv_qc_prep.description`:
 
@@ -389,8 +410,9 @@ mv_qc_prep_iie
 
     Host specific command preparation.
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command to prepare
+    :type qc: struct ata_queued_cmd \*
 
 .. _`mv_qc_prep_iie.description`:
 
@@ -418,8 +440,9 @@ mv_sff_check_status
 
     fetch device status, if valid
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to fetch status from
+    :type ap: struct ata_port \*
 
 .. _`mv_sff_check_status.description`:
 
@@ -444,14 +467,17 @@ mv_send_fis
 
     Send a FIS, using the "Vendor-Unique FIS" register
 
-    :param struct ata_port \*ap:
+    :param ap:
         *undescribed*
+    :type ap: struct ata_port \*
 
-    :param u32 \*fis:
+    :param fis:
         fis to be sent
+    :type fis: u32 \*
 
-    :param int nwords:
+    :param nwords:
         number of 32-bit words in the fis
+    :type nwords: int
 
 .. _`mv_qc_issue_fis`:
 
@@ -462,8 +488,9 @@ mv_qc_issue_fis
 
     Issue a command directly as a FIS
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command to start
+    :type qc: struct ata_queued_cmd \*
 
 .. _`mv_qc_issue_fis.description`:
 
@@ -497,8 +524,9 @@ mv_qc_issue
 
     Initiate a command to the host
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command to start
+    :type qc: struct ata_queued_cmd \*
 
 .. _`mv_qc_issue.description`:
 
@@ -526,8 +554,9 @@ mv_err_intr
 
     Handle error interrupts on the port
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA channel to manipulate
+    :type ap: struct ata_port \*
 
 .. _`mv_err_intr.description`:
 
@@ -554,11 +583,13 @@ mv_host_intr
 
     Handle all interrupts on the given host controller
 
-    :param struct ata_host \*host:
+    :param host:
         host specific structure
+    :type host: struct ata_host \*
 
-    :param u32 main_irq_cause:
+    :param main_irq_cause:
         Main interrupt cause register for the chip.
+    :type main_irq_cause: u32
 
 .. _`mv_host_intr.locking`:
 
@@ -576,11 +607,13 @@ mv_interrupt
 
     Main interrupt event handler
 
-    :param int irq:
+    :param irq:
         unused
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         private data; in this case the host structure
+    :type dev_instance: void \*
 
 .. _`mv_interrupt.description`:
 
@@ -609,14 +642,17 @@ mv6_reset_hc
 
     Perform the 6xxx global soft reset
 
-    :param struct mv_host_priv \*hpriv:
+    :param hpriv:
         *undescribed*
+    :type hpriv: struct mv_host_priv \*
 
-    :param void __iomem \*mmio:
+    :param mmio:
         base address of the HBA
+    :type mmio: void __iomem \*
 
-    :param unsigned int n_hc:
+    :param n_hc:
         *undescribed*
+    :type n_hc: unsigned int
 
 .. _`mv6_reset_hc.description`:
 
@@ -641,8 +677,9 @@ soc_is_65n
 
     check if the soc is 65 nano device
 
-    :param struct mv_host_priv \*hpriv:
+    :param hpriv:
         *undescribed*
+    :type hpriv: struct mv_host_priv \*
 
 .. _`soc_is_65n.description`:
 
@@ -662,11 +699,13 @@ mv_port_init
 
     Perform some early initialization on a single port.
 
-    :param struct ata_ioports \*port:
+    :param port:
         libata data structure storing shadow register addresses
+    :type port: struct ata_ioports \*
 
-    :param void __iomem \*port_mmio:
+    :param port_mmio:
         base address of the port
+    :type port_mmio: void __iomem \*
 
 .. _`mv_port_init.description`:
 
@@ -693,8 +732,9 @@ mv_init_host
 
     Perform some early initialization of the host.
 
-    :param struct ata_host \*host:
+    :param host:
         ATA host to initialize
+    :type host: struct ata_host \*
 
 .. _`mv_init_host.description`:
 
@@ -720,8 +760,9 @@ mv_platform_probe
 
     handle a positive probe of an soc Marvell host
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device found
+    :type pdev: struct platform_device \*
 
 .. _`mv_platform_probe.locking`:
 
@@ -739,8 +780,9 @@ mv_print_info
 
     Dump key info to kernel log for perusal.
 
-    :param struct ata_host \*host:
+    :param host:
         ATA host to print info about
+    :type host: struct ata_host \*
 
 .. _`mv_print_info.fixme`:
 
@@ -765,11 +807,13 @@ mv_pci_init_one
 
     handle a positive probe of a PCI Marvell host
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device found
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         PCI device ID entry for the matched host
+    :type ent: const struct pci_device_id \*
 
 .. _`mv_pci_init_one.locking`:
 

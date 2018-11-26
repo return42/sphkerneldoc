@@ -10,14 +10,17 @@ brcmf_ap_add_vif
 
     create a new AP virtual interface for multiple BSS
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         wiphy device of new interface.
+    :type wiphy: struct wiphy \*
 
-    :param const char \*name:
+    :param name:
         name of the new interface.
+    :type name: const char \*
 
-    :param struct vif_params \*params:
+    :param params:
         contains mac address for AP device.
+    :type params: struct vif_params \*
 
 .. _`brcmf_setup_ifmodes`:
 
@@ -28,11 +31,13 @@ brcmf_setup_ifmodes
 
     determine interface modes and combinations.
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         wiphy object.
+    :type wiphy: struct wiphy \*
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interface object needed for feat module api.
+    :type ifp: struct brcmf_if \*
 
 .. _`brcmf_setup_ifmodes.description`:
 

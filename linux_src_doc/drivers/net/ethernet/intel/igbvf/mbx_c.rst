@@ -10,8 +10,9 @@ e1000_poll_for_msg
 
     Wait for message notification
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_poll_for_msg.description`:
 
@@ -29,8 +30,9 @@ e1000_poll_for_ack
 
     Wait for message acknowledgment
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_poll_for_ack.description`:
 
@@ -48,14 +50,17 @@ e1000_read_posted_mbx
 
     Wait for message notification and receive message
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
 .. _`e1000_read_posted_mbx.description`:
 
@@ -74,14 +79,17 @@ e1000_write_posted_mbx
 
     Write a message to the mailbox, wait for ack
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
 .. _`e1000_write_posted_mbx.description`:
 
@@ -100,8 +108,9 @@ e1000_read_v2p_mailbox
 
     read v2p mailbox
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_read_v2p_mailbox.description`:
 
@@ -120,11 +129,13 @@ e1000_check_for_bit_vf
 
     Determine if a status bit was set
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 mask:
+    :param mask:
         bitmask for bits to be tested and cleared
+    :type mask: u32
 
 .. _`e1000_check_for_bit_vf.description`:
 
@@ -143,8 +154,9 @@ e1000_check_for_msg_vf
 
     checks to see if the PF has sent mail
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_for_msg_vf.description`:
 
@@ -162,8 +174,9 @@ e1000_check_for_ack_vf
 
     checks to see if the PF has ACK'd
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_for_ack_vf.description`:
 
@@ -181,8 +194,9 @@ e1000_check_for_rst_vf
 
     checks to see if the PF has reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_for_rst_vf.description`:
 
@@ -200,8 +214,9 @@ e1000_obtain_mbx_lock_vf
 
     obtain mailbox lock
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_obtain_mbx_lock_vf.description`:
 
@@ -219,14 +234,17 @@ e1000_write_mbx_vf
 
     Write a message to the mailbox
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
 .. _`e1000_write_mbx_vf.description`:
 
@@ -244,14 +262,17 @@ e1000_read_mbx_vf
 
     Reads a message from the inbox intended for VF
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
 .. _`e1000_read_mbx_vf.description`:
 
@@ -269,8 +290,9 @@ e1000_init_mbx_params_vf
 
     set initial values for VF mailbox
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_mbx_params_vf.description`:
 

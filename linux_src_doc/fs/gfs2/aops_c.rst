@@ -10,17 +10,21 @@ gfs2_get_block_noalloc
 
     Fills in a buffer head with details about a block
 
-    :param struct inode \*inode:
+    :param inode:
         The inode
+    :type inode: struct inode \*
 
-    :param sector_t lblock:
+    :param lblock:
         The block number to look up
+    :type lblock: sector_t
 
-    :param struct buffer_head \*bh_result:
+    :param bh_result:
         The buffer head to return the result in
+    :type bh_result: struct buffer_head \*
 
-    :param int create:
+    :param create:
         Non-zero if we may add block to the file
+    :type create: int
 
 .. _`gfs2_get_block_noalloc.return`:
 
@@ -38,11 +42,13 @@ gfs2_writepage_common
 
     Common bits of writepage
 
-    :param struct page \*page:
+    :param page:
         The page to be written
+    :type page: struct page \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback control
+    :type wbc: struct writeback_control \*
 
 .. _`gfs2_writepage_common.return`:
 
@@ -60,11 +66,13 @@ gfs2_writepage
 
     Write page for writeback mappings
 
-    :param struct page \*page:
+    :param page:
         The page
+    :type page: struct page \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback control
+    :type wbc: struct writeback_control \*
 
 .. _`__gfs2_jdata_writepage`:
 
@@ -75,11 +83,13 @@ gfs2_writepage
 
     The core of jdata writepage
 
-    :param struct page \*page:
+    :param page:
         The page to write
+    :type page: struct page \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback control
+    :type wbc: struct writeback_control \*
 
 .. _`__gfs2_jdata_writepage.description`:
 
@@ -100,11 +110,13 @@ gfs2_jdata_writepage
 
     Write complete page
 
-    :param struct page \*page:
+    :param page:
         Page to write
+    :type page: struct page \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback control
+    :type wbc: struct writeback_control \*
 
 .. _`gfs2_jdata_writepage.return`:
 
@@ -122,11 +134,13 @@ gfs2_writepages
 
     Write a bunch of dirty pages back to disk
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The mapping to write
+    :type mapping: struct address_space \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         Write-back control
+    :type wbc: struct writeback_control \*
 
 .. _`gfs2_writepages.description`:
 
@@ -144,20 +158,25 @@ gfs2_write_jdata_pagevec
 
     Write back a pagevec's worth of pages
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The mapping
+    :type mapping: struct address_space \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback control
+    :type wbc: struct writeback_control \*
 
-    :param struct pagevec \*pvec:
+    :param pvec:
         The vector of pages
+    :type pvec: struct pagevec \*
 
-    :param int nr_pages:
+    :param nr_pages:
         The number of pages to write
+    :type nr_pages: int
 
-    :param pgoff_t \*done_index:
+    :param done_index:
         Page index
+    :type done_index: pgoff_t \*
 
 .. _`gfs2_write_jdata_pagevec.return`:
 
@@ -175,11 +194,13 @@ gfs2_write_cache_jdata
 
     Like write_cache_pages but different
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The mapping to write
+    :type mapping: struct address_space \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback control
+    :type wbc: struct writeback_control \*
 
 .. _`gfs2_write_cache_jdata.description`:
 
@@ -199,11 +220,13 @@ gfs2_jdata_writepages
 
     Write a bunch of dirty pages back to disk
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The mapping to write
+    :type mapping: struct address_space \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback control
+    :type wbc: struct writeback_control \*
 
 .. _`stuffed_readpage`:
 
@@ -214,11 +237,13 @@ stuffed_readpage
 
     Fill in a Linux page with stuffed file data
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode
+    :type ip: struct gfs2_inode \*
 
-    :param struct page \*page:
+    :param page:
         the page
+    :type page: struct page \*
 
 .. _`stuffed_readpage.return`:
 
@@ -236,11 +261,13 @@ errno
 
     readpage
 
-    :param void \*file:
+    :param file:
         The file to read a page for
+    :type file: void \*
 
-    :param struct page \*page:
+    :param page:
         The page to read
+    :type page: struct page \*
 
 .. _`__gfs2_readpage.description`:
 
@@ -260,11 +287,13 @@ gfs2_readpage
 
     read a page of a file
 
-    :param struct file \*file:
+    :param file:
         The file to read
+    :type file: struct file \*
 
-    :param struct page \*page:
+    :param page:
         The page of the file
+    :type page: struct page \*
 
 .. _`gfs2_readpage.description`:
 
@@ -284,17 +313,21 @@ gfs2_internal_read
 
     read an internal file
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The gfs2 inode
+    :type ip: struct gfs2_inode \*
 
-    :param char \*buf:
+    :param buf:
         The buffer to fill
+    :type buf: char \*
 
-    :param loff_t \*pos:
+    :param pos:
         The file position
+    :type pos: loff_t \*
 
-    :param unsigned size:
+    :param size:
         The amount to read
+    :type size: unsigned
 
 .. _`gfs2_readpages`:
 
@@ -305,17 +338,21 @@ gfs2_readpages
 
     Read a bunch of pages at once
 
-    :param struct file \*file:
+    :param file:
         The file to read from
+    :type file: struct file \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         Address space info
+    :type mapping: struct address_space \*
 
-    :param struct list_head \*pages:
+    :param pages:
         List of pages to read
+    :type pages: struct list_head \*
 
-    :param unsigned nr_pages:
+    :param nr_pages:
         Number of pages to read
+    :type nr_pages: unsigned
 
 .. _`gfs2_readpages.some-notes`:
 
@@ -331,43 +368,6 @@ Any I/O we ignore at this time will be done via readpage later.
 3. \ :c:func:`mpage_readpages`\  does most of the heavy lifting in the common case.
 4. \ :c:func:`gfs2_block_map`\  is relied upon to set BH_Boundary in the right places.
 
-.. _`gfs2_write_begin`:
-
-gfs2_write_begin
-================
-
-.. c:function:: int gfs2_write_begin(struct file *file, struct address_space *mapping, loff_t pos, unsigned len, unsigned flags, struct page **pagep, void **fsdata)
-
-    Begin to write to a file
-
-    :param struct file \*file:
-        The file to write to
-
-    :param struct address_space \*mapping:
-        The mapping in which to write
-
-    :param loff_t pos:
-        The file offset at which to start writing
-
-    :param unsigned len:
-        Length of the write
-
-    :param unsigned flags:
-        Various flags
-
-    :param struct page \*\*pagep:
-        Pointer to return the page
-
-    :param void \*\*fsdata:
-        Pointer to return fs data (unused by GFS2)
-
-.. _`gfs2_write_begin.return`:
-
-Return
-------
-
-errno
-
 .. _`adjust_fs_space`:
 
 adjust_fs_space
@@ -377,8 +377,9 @@ adjust_fs_space
 
     Adjusts the free space available due to gfs2_grow
 
-    :param struct inode \*inode:
+    :param inode:
         the rindex inode
+    :type inode: struct inode \*
 
 .. _`gfs2_stuffed_write_end`:
 
@@ -389,20 +390,25 @@ gfs2_stuffed_write_end
 
     Write end for stuffed files
 
-    :param struct inode \*inode:
+    :param inode:
         The inode
+    :type inode: struct inode \*
 
-    :param struct buffer_head \*dibh:
+    :param dibh:
         The buffer_head containing the on-disk inode
+    :type dibh: struct buffer_head \*
 
-    :param loff_t pos:
+    :param pos:
         The file position
+    :type pos: loff_t
 
-    :param unsigned copied:
+    :param copied:
         How much was actually copied by the VFS
+    :type copied: unsigned
 
-    :param struct page \*page:
+    :param page:
         The page
+    :type page: struct page \*
 
 .. _`gfs2_stuffed_write_end.description`:
 
@@ -417,50 +423,7 @@ the inode data structure itself.
 Return
 ------
 
-errno
-
-.. _`gfs2_write_end`:
-
-gfs2_write_end
-==============
-
-.. c:function:: int gfs2_write_end(struct file *file, struct address_space *mapping, loff_t pos, unsigned len, unsigned copied, struct page *page, void *fsdata)
-
-    :param struct file \*file:
-        The file to write to
-
-    :param struct address_space \*mapping:
-        The address space to write to
-
-    :param loff_t pos:
-        The file position
-
-    :param unsigned len:
-        The length of the data
-
-    :param unsigned copied:
-        How much was actually copied by the VFS
-
-    :param struct page \*page:
-        The page that has been written
-
-    :param void \*fsdata:
-        The fsdata (unused in GFS2)
-
-.. _`gfs2_write_end.description`:
-
-Description
------------
-
-The main write_end function for GFS2. We just put our locking around the VFS
-provided functions.
-
-.. _`gfs2_write_end.return`:
-
-Return
-------
-
-errno
+copied bytes or errno
 
 .. _`jdata_set_page_dirty`:
 
@@ -471,8 +434,9 @@ jdata_set_page_dirty
 
     Page dirtying function
 
-    :param struct page \*page:
+    :param page:
         The page to dirty
+    :type page: struct page \*
 
 .. _`jdata_set_page_dirty.return`:
 
@@ -490,11 +454,13 @@ gfs2_bmap
 
     Block map function
 
-    :param struct address_space \*mapping:
+    :param mapping:
         Address space info
+    :type mapping: struct address_space \*
 
-    :param sector_t lblock:
+    :param lblock:
         The block to map
+    :type lblock: sector_t
 
 .. _`gfs2_bmap.return`:
 
@@ -502,29 +468,6 @@ Return
 ------
 
 The disk address for the block or 0 on hole or error
-
-.. _`gfs2_ok_for_dio`:
-
-gfs2_ok_for_dio
-===============
-
-.. c:function:: int gfs2_ok_for_dio(struct gfs2_inode *ip, loff_t offset)
-
-    check that dio is valid on this file
-
-    :param struct gfs2_inode \*ip:
-        The inode
-
-    :param loff_t offset:
-        The offset at which we are reading or writing
-
-.. _`gfs2_ok_for_dio.return`:
-
-Return
-------
-
-0 (to ignore the i/o request and thus fall back to buffered i/o)
-1 (to accept the i/o request)
 
 .. _`gfs2_releasepage`:
 
@@ -535,11 +478,13 @@ gfs2_releasepage
 
     free the metadata associated with a page
 
-    :param struct page \*page:
+    :param page:
         the page that's being released
+    :type page: struct page \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         passed from Linux VFS, ignored by us
+    :type gfp_mask: gfp_t
 
 .. _`gfs2_releasepage.description`:
 

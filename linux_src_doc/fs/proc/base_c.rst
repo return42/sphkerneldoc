@@ -10,8 +10,9 @@ proc_flush_task
 
     Remove dcache entries for \ ``task``\  from the /proc dcache.
 
-    :param struct task_struct \*task:
+    :param task:
         task that should be flushed.
+    :type task: struct task_struct \*
 
 .. _`proc_flush_task.description`:
 

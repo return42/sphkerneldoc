@@ -26,11 +26,13 @@ drm_irq_install
 
     install IRQ handler
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param int irq:
+    :param irq:
         IRQ number to install the handler for
+    :type irq: int
 
 .. _`drm_irq_install.description`:
 
@@ -67,8 +69,9 @@ drm_irq_uninstall
 
     uninstall the IRQ handler
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_irq_uninstall.description`:
 

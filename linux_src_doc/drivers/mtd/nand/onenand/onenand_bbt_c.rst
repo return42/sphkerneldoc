@@ -10,17 +10,21 @@ check_short_pattern
 
     [GENERIC] check if a pattern is in the buffer \ ``param``\  buf           the buffer to search \ ``param``\  len           the length of buffer to search \ ``param``\  paglen        the pagelength \ ``param``\  td            search pattern descriptor
 
-    :param uint8_t \*buf:
+    :param buf:
         *undescribed*
+    :type buf: uint8_t \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param int paglen:
+    :param paglen:
         *undescribed*
+    :type paglen: int
 
-    :param struct nand_bbt_descr \*td:
+    :param td:
         *undescribed*
+    :type td: struct nand_bbt_descr \*
 
 .. _`check_short_pattern.description`:
 
@@ -41,17 +45,21 @@ create_bbt
 
     [GENERIC] Create a bad block table by scanning the device \ ``param``\  mtd           MTD device structure \ ``param``\  buf           temporary buffer \ ``param``\  bd            descriptor for the good/bad block search pattern \ ``param``\  chip          create the table for a specific chip, -1 read all chips. Applies only if NAND_BBT_PERCHIP option is set
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         *undescribed*
+    :type buf: uint8_t \*
 
-    :param struct nand_bbt_descr \*bd:
+    :param bd:
         *undescribed*
+    :type bd: struct nand_bbt_descr \*
 
-    :param int chip:
+    :param chip:
         *undescribed*
+    :type chip: int
 
 .. _`create_bbt.description`:
 
@@ -70,11 +78,13 @@ onenand_memory_bbt
 
     [GENERIC] create a memory based bad block table \ ``param``\  mtd           MTD device structure \ ``param``\  bd            descriptor for the good/bad block search pattern
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param struct nand_bbt_descr \*bd:
+    :param bd:
         *undescribed*
+    :type bd: struct nand_bbt_descr \*
 
 .. _`onenand_memory_bbt.description`:
 
@@ -93,14 +103,17 @@ onenand_isbad_bbt
 
     [OneNAND Interface] Check if a block is bad \ ``param``\  mtd           MTD device structure \ ``param``\  offs          offset in the device \ ``param``\  allowbbt      allow access to bad block table region
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t offs:
+    :param offs:
         *undescribed*
+    :type offs: loff_t
 
-    :param int allowbbt:
+    :param allowbbt:
         *undescribed*
+    :type allowbbt: int
 
 .. _`onenand_scan_bbt`:
 
@@ -111,11 +124,13 @@ onenand_scan_bbt
 
     [OneNAND Interface] scan, find, read and maybe create bad block table(s) \ ``param``\  mtd           MTD device structure \ ``param``\  bd            descriptor for the good/bad block search pattern
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param struct nand_bbt_descr \*bd:
+    :param bd:
         *undescribed*
+    :type bd: struct nand_bbt_descr \*
 
 .. _`onenand_scan_bbt.description`:
 
@@ -139,8 +154,9 @@ onenand_default_bbt
 
     [OneNAND Interface] Select a default bad block table for the device \ ``param``\  mtd           MTD device structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`onenand_default_bbt.description`:
 

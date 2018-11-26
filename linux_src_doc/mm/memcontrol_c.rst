@@ -10,8 +10,9 @@ mem_cgroup_css_from_page
 
     css of the memcg associated with a page
 
-    :param struct page \*page:
+    :param page:
         page of interest
+    :type page: struct page \*
 
 .. _`mem_cgroup_css_from_page.description`:
 
@@ -34,8 +35,9 @@ page_cgroup_ino
 
     return inode number of the memcg a page is charged to
 
-    :param struct page \*page:
+    :param page:
         the page
+    :type page: struct page \*
 
 .. _`page_cgroup_ino.description`:
 
@@ -51,6 +53,62 @@ the cgroup inode from getting torn down and potentially reallocated a moment
 after \ :c:func:`page_cgroup_ino`\  returns, so it only should be used by callers that
 do not care (such as procfs interfaces).
 
+.. _`get_mem_cgroup_from_mm`:
+
+get_mem_cgroup_from_mm
+======================
+
+.. c:function:: struct mem_cgroup *get_mem_cgroup_from_mm(struct mm_struct *mm)
+
+    Obtain a reference on given mm_struct's memcg.
+
+    :param mm:
+        mm from which memcg should be extracted. It can be NULL.
+    :type mm: struct mm_struct \*
+
+.. _`get_mem_cgroup_from_mm.description`:
+
+Description
+-----------
+
+Obtain a reference on mm->memcg and returns it if successful. Otherwise
+root_mem_cgroup is returned. However if mem_cgroup is disabled, NULL is
+returned.
+
+.. _`get_mem_cgroup_from_page`:
+
+get_mem_cgroup_from_page
+========================
+
+.. c:function:: struct mem_cgroup *get_mem_cgroup_from_page(struct page *page)
+
+    Obtain a reference on given page's memcg.
+
+    :param page:
+        page from which memcg should be extracted.
+    :type page: struct page \*
+
+.. _`get_mem_cgroup_from_page.description`:
+
+Description
+-----------
+
+Obtain a reference on page->memcg and returns it if successful. Otherwise
+root_mem_cgroup is returned.
+
+.. _`get_mem_cgroup_from_current`:
+
+get_mem_cgroup_from_current
+===========================
+
+.. c:function:: struct mem_cgroup *get_mem_cgroup_from_current( void)
+
+    >active_memcg is non-NULL, do not fallback to current->mm->memcg.
+
+    :param void:
+        no arguments
+    :type void: 
+
 .. _`mem_cgroup_iter`:
 
 mem_cgroup_iter
@@ -60,14 +118,17 @@ mem_cgroup_iter
 
     iterate over memory cgroup hierarchy
 
-    :param struct mem_cgroup \*root:
+    :param root:
         hierarchy root
+    :type root: struct mem_cgroup \*
 
-    :param struct mem_cgroup \*prev:
+    :param prev:
         previously returned memcg, NULL on first invocation
+    :type prev: struct mem_cgroup \*
 
-    :param struct mem_cgroup_reclaim_cookie \*reclaim:
+    :param reclaim:
         cookie for shared reclaim walks, NULL for full walks
+    :type reclaim: struct mem_cgroup_reclaim_cookie \*
 
 .. _`mem_cgroup_iter.description`:
 
@@ -94,11 +155,13 @@ mem_cgroup_iter_break
 
     abort a hierarchy walk prematurely
 
-    :param struct mem_cgroup \*root:
+    :param root:
         hierarchy root
+    :type root: struct mem_cgroup \*
 
-    :param struct mem_cgroup \*prev:
+    :param prev:
         last visited hierarchy member as returned by \ :c:func:`mem_cgroup_iter`\ 
+    :type prev: struct mem_cgroup \*
 
 .. _`mem_cgroup_scan_tasks`:
 
@@ -109,14 +172,16 @@ mem_cgroup_scan_tasks
 
     iterate over tasks of a memory cgroup hierarchy
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         hierarchy root
+    :type memcg: struct mem_cgroup \*
 
     :param int (\*fn)(struct task_struct \*, void \*):
         function to call for each task
 
-    :param void \*arg:
+    :param arg:
         argument passed to \ ``fn``\ 
+    :type arg: void \*
 
 .. _`mem_cgroup_scan_tasks.description`:
 
@@ -139,11 +204,13 @@ mem_cgroup_page_lruvec
 
     return lruvec for isolating/putting an LRU page
 
-    :param struct page \*page:
+    :param page:
         the page
+    :type page: struct page \*
 
-    :param struct pglist_data \*pgdat:
+    :param pgdat:
         pgdat of the page
+    :type pgdat: struct pglist_data \*
 
 .. _`mem_cgroup_page_lruvec.description`:
 
@@ -169,17 +236,21 @@ mem_cgroup_update_lru_size
 
     account for adding or removing an lru page
 
-    :param struct lruvec \*lruvec:
+    :param lruvec:
         mem_cgroup per zone lru vector
+    :type lruvec: struct lruvec \*
 
-    :param enum lru_list lru:
+    :param lru:
         index of lru list the page is sitting on
+    :type lru: enum lru_list
 
-    :param int zid:
+    :param zid:
         zone id of the accounted pages
+    :type zid: int
 
-    :param int nr_pages:
+    :param nr_pages:
         positive when adding or negative when removing
+    :type nr_pages: int
 
 .. _`mem_cgroup_update_lru_size.description`:
 
@@ -199,8 +270,9 @@ mem_cgroup_margin
 
     calculate chargeable space of a memory cgroup
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         the memory cgroup
+    :type memcg: struct mem_cgroup \*
 
 .. _`mem_cgroup_margin.description`:
 
@@ -219,11 +291,13 @@ mem_cgroup_print_oom_info
 
     Print OOM information relevant to memory controller.
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         The memory cgroup that went over limit
+    :type memcg: struct mem_cgroup \*
 
-    :param struct task_struct \*p:
+    :param p:
         Task that is going to be killed
+    :type p: struct task_struct \*
 
 .. _`mem_cgroup_print_oom_info.note`:
 
@@ -240,14 +314,17 @@ test_mem_cgroup_node_reclaimable
 
 .. c:function:: bool test_mem_cgroup_node_reclaimable(struct mem_cgroup *memcg, int nid, bool noswap)
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         the target memcg
+    :type memcg: struct mem_cgroup \*
 
-    :param int nid:
+    :param nid:
         the node ID to be checked.
+    :type nid: int
 
-    :param bool noswap:
+    :param noswap:
         specify true here if the user wants flle only information.
+    :type noswap: bool
 
 .. _`test_mem_cgroup_node_reclaimable.description`:
 
@@ -267,8 +344,9 @@ mem_cgroup_oom_synchronize
 
     complete memcg OOM handling
 
-    :param bool handle:
+    :param handle:
         actually kill/wait or just clean up the OOM state
+    :type handle: bool
 
 .. _`mem_cgroup_oom_synchronize.description`:
 
@@ -288,6 +366,33 @@ the end of the page fault to complete the OOM handling.
 Returns \ ``true``\  if an ongoing memcg OOM situation was detected and
 completed, \ ``false``\  otherwise.
 
+.. _`mem_cgroup_get_oom_group`:
+
+mem_cgroup_get_oom_group
+========================
+
+.. c:function:: struct mem_cgroup *mem_cgroup_get_oom_group(struct task_struct *victim, struct mem_cgroup *oom_domain)
+
+    get a memory cgroup to clean up after OOM
+
+    :param victim:
+        task to be killed by the OOM killer
+    :type victim: struct task_struct \*
+
+    :param oom_domain:
+        memcg in case of memcg OOM, NULL in case of system-wide OOM
+    :type oom_domain: struct mem_cgroup \*
+
+.. _`mem_cgroup_get_oom_group.description`:
+
+Description
+-----------
+
+Returns a pointer to a memory cgroup, which has to be cleaned up
+by killing all belonging OOM-killable tasks.
+
+Caller has to call \ :c:func:`mem_cgroup_put`\  on the returned non-NULL memcg.
+
 .. _`lock_page_memcg`:
 
 lock_page_memcg
@@ -297,8 +402,9 @@ lock_page_memcg
 
     lock a page->mem_cgroup binding
 
-    :param struct page \*page:
+    :param page:
         the page
+    :type page: struct page \*
 
 .. _`lock_page_memcg.description`:
 
@@ -321,8 +427,9 @@ when \ ``page``\  might get freed inside the locked section.
 
     unlock and unpin a memcg
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         the memcg
+    :type memcg: struct mem_cgroup \*
 
 .. _`__unlock_page_memcg.description`:
 
@@ -340,8 +447,9 @@ unlock_page_memcg
 
     unlock a page->mem_cgroup binding
 
-    :param struct page \*page:
+    :param page:
         the page
+    :type page: struct page \*
 
 .. _`consume_stock`:
 
@@ -352,11 +460,13 @@ consume_stock
 
     Try to consume stocked charge on this cpu.
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg to consume from.
+    :type memcg: struct mem_cgroup \*
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         how many pages to charge.
+    :type nr_pages: unsigned int
 
 .. _`consume_stock.description`:
 
@@ -378,8 +488,9 @@ memcg_kmem_get_cache
 
     select the correct per-memcg cache for allocation
 
-    :param struct kmem_cache \*cachep:
+    :param cachep:
         the original global kmem cache
+    :type cachep: struct kmem_cache \*
 
 .. _`memcg_kmem_get_cache.description`:
 
@@ -407,8 +518,9 @@ memcg_kmem_put_cache
 
     drop reference taken by memcg_kmem_get_cache
 
-    :param struct kmem_cache \*cachep:
+    :param cachep:
         the cache returned by memcg_kmem_get_cache
+    :type cachep: struct kmem_cache \*
 
 .. _`memcg_kmem_charge_memcg`:
 
@@ -419,17 +531,21 @@ memcg_kmem_charge_memcg
 
     charge a kmem page
 
-    :param struct page \*page:
+    :param page:
         page to charge
+    :type page: struct page \*
 
-    :param gfp_t gfp:
+    :param gfp:
         reclaim mode
+    :type gfp: gfp_t
 
-    :param int order:
+    :param order:
         allocation order
+    :type order: int
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memory cgroup to charge
+    :type memcg: struct mem_cgroup \*
 
 .. _`memcg_kmem_charge_memcg.description`:
 
@@ -447,14 +563,17 @@ memcg_kmem_charge
 
     charge a kmem page to the current memory cgroup
 
-    :param struct page \*page:
+    :param page:
         page to charge
+    :type page: struct page \*
 
-    :param gfp_t gfp:
+    :param gfp:
         reclaim mode
+    :type gfp: gfp_t
 
-    :param int order:
+    :param order:
         allocation order
+    :type order: int
 
 .. _`memcg_kmem_charge.description`:
 
@@ -472,11 +591,13 @@ memcg_kmem_uncharge
 
     uncharge a kmem page
 
-    :param struct page \*page:
+    :param page:
         page to uncharge
+    :type page: struct page \*
 
-    :param int order:
+    :param order:
         allocation order
+    :type order: int
 
 .. _`mem_cgroup_move_swap_account`:
 
@@ -487,14 +608,17 @@ mem_cgroup_move_swap_account
 
     move swap charge and swap_cgroup's record.
 
-    :param swp_entry_t entry:
+    :param entry:
         swap entry to be moved
+    :type entry: swp_entry_t
 
-    :param struct mem_cgroup \*from:
+    :param from:
         mem_cgroup which the entry is moved from
+    :type from: struct mem_cgroup \*
 
-    :param struct mem_cgroup \*to:
+    :param to:
         mem_cgroup which the entry is moved to
+    :type to: struct mem_cgroup \*
 
 .. _`mem_cgroup_move_swap_account.description`:
 
@@ -518,20 +642,25 @@ mem_cgroup_wb_stats
 
     retrieve writeback related stats from its memcg
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         bdi_writeback in question
+    :type wb: struct bdi_writeback \*
 
-    :param unsigned long \*pfilepages:
+    :param pfilepages:
         out parameter for number of file pages
+    :type pfilepages: unsigned long \*
 
-    :param unsigned long \*pheadroom:
+    :param pheadroom:
         out parameter for number of allocatable pages according to memcg
+    :type pheadroom: unsigned long \*
 
-    :param unsigned long \*pdirty:
+    :param pdirty:
         out parameter for number of dirty pages
+    :type pdirty: unsigned long \*
 
-    :param unsigned long \*pwriteback:
+    :param pwriteback:
         out parameter for number of pages under writeback
+    :type pwriteback: unsigned long \*
 
 .. _`mem_cgroup_wb_stats.description`:
 
@@ -557,8 +686,9 @@ mem_cgroup_from_id
 
     look up a memcg from a memcg id
 
-    :param unsigned short id:
+    :param id:
         the memcg id to look up
+    :type id: unsigned short
 
 .. _`mem_cgroup_from_id.description`:
 
@@ -576,8 +706,9 @@ mem_cgroup_css_reset
 
     reset the states of a mem_cgroup
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         the target css
+    :type css: struct cgroup_subsys_state \*
 
 .. _`mem_cgroup_css_reset.description`:
 
@@ -602,17 +733,21 @@ mem_cgroup_move_account
 
     move account of the page
 
-    :param struct page \*page:
+    :param page:
         the page
+    :type page: struct page \*
 
-    :param bool compound:
+    :param compound:
         charge the page as compound or small page
+    :type compound: bool
 
-    :param struct mem_cgroup \*from:
+    :param from:
         mem_cgroup which the page is moved from.
+    :type from: struct mem_cgroup \*
 
-    :param struct mem_cgroup \*to:
+    :param to:
         mem_cgroup which the page is moved to. \ ``from``\  != \ ``to``\ .
+    :type to: struct mem_cgroup \*
 
 .. _`mem_cgroup_move_account.description`:
 
@@ -633,17 +768,21 @@ get_mctgt_type
 
     get target type of moving charge
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the vma the pte to be checked belongs
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         the address corresponding to the pte to be checked
+    :type addr: unsigned long
 
-    :param pte_t ptent:
+    :param ptent:
         the pte to be checked
+    :type ptent: pte_t
 
-    :param union mc_target \*target:
+    :param target:
         the pointer the target page or swap ent will be stored(can be NULL)
+    :type target: union mc_target \*
 
 .. _`get_mctgt_type.description`:
 
@@ -677,11 +816,13 @@ mem_cgroup_protected
 
     check if memory consumption is in the normal range
 
-    :param struct mem_cgroup \*root:
+    :param root:
         the top ancestor of the sub-tree being checked
+    :type root: struct mem_cgroup \*
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         the memory cgroup to check
+    :type memcg: struct mem_cgroup \*
 
 .. _`mem_cgroup_protected.warning`:
 
@@ -783,20 +924,25 @@ mem_cgroup_try_charge
 
     try charging a page
 
-    :param struct page \*page:
+    :param page:
         page to charge
+    :type page: struct page \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         mm context of the victim
+    :type mm: struct mm_struct \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         reclaim mode
+    :type gfp_mask: gfp_t
 
-    :param struct mem_cgroup \*\*memcgp:
+    :param memcgp:
         charged memcg return
+    :type memcgp: struct mem_cgroup \*\*
 
-    :param bool compound:
+    :param compound:
         charge the page as compound or small page
+    :type compound: bool
 
 .. _`mem_cgroup_try_charge.description`:
 
@@ -822,17 +968,21 @@ mem_cgroup_commit_charge
 
     commit a page charge
 
-    :param struct page \*page:
+    :param page:
         page to charge
+    :type page: struct page \*
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg to charge the page to
+    :type memcg: struct mem_cgroup \*
 
-    :param bool lrucare:
+    :param lrucare:
         page might be on LRU already
+    :type lrucare: bool
 
-    :param bool compound:
+    :param compound:
         charge the page as compound or small page
+    :type compound: bool
 
 .. _`mem_cgroup_commit_charge.description`:
 
@@ -858,14 +1008,17 @@ mem_cgroup_cancel_charge
 
     cancel a page charge
 
-    :param struct page \*page:
+    :param page:
         page to charge
+    :type page: struct page \*
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg to charge the page to
+    :type memcg: struct mem_cgroup \*
 
-    :param bool compound:
+    :param compound:
         charge the page as compound or small page
+    :type compound: bool
 
 .. _`mem_cgroup_cancel_charge.description`:
 
@@ -883,8 +1036,9 @@ mem_cgroup_uncharge
 
     uncharge a page
 
-    :param struct page \*page:
+    :param page:
         page to uncharge
+    :type page: struct page \*
 
 .. _`mem_cgroup_uncharge.description`:
 
@@ -903,8 +1057,9 @@ mem_cgroup_uncharge_list
 
     uncharge a list of page
 
-    :param struct list_head \*page_list:
+    :param page_list:
         list of pages to uncharge
+    :type page_list: struct list_head \*
 
 .. _`mem_cgroup_uncharge_list.description`:
 
@@ -923,11 +1078,13 @@ mem_cgroup_migrate
 
     charge a page's replacement
 
-    :param struct page \*oldpage:
+    :param oldpage:
         currently circulating page
+    :type oldpage: struct page \*
 
-    :param struct page \*newpage:
+    :param newpage:
         replacement page
+    :type newpage: struct page \*
 
 .. _`mem_cgroup_migrate.description`:
 
@@ -937,7 +1094,7 @@ Description
 Charge \ ``newpage``\  as a replacement page for \ ``oldpage``\ . \ ``oldpage``\  will
 be uncharged upon free.
 
-Both pages must be locked, \ ``newpage``\ ->mapping must be set up.
+Both pages must be locked, \ ``newpage->mapping``\  must be set up.
 
 .. _`mem_cgroup_charge_skmem`:
 
@@ -948,11 +1105,13 @@ mem_cgroup_charge_skmem
 
     charge socket memory
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg to charge
+    :type memcg: struct mem_cgroup \*
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         number of pages to charge
+    :type nr_pages: unsigned int
 
 .. _`mem_cgroup_charge_skmem.description`:
 
@@ -971,11 +1130,13 @@ mem_cgroup_uncharge_skmem
 
     uncharge socket memory
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg to uncharge
+    :type memcg: struct mem_cgroup \*
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         number of pages to uncharge
+    :type nr_pages: unsigned int
 
 .. _`mem_cgroup_swapout`:
 
@@ -986,11 +1147,13 @@ mem_cgroup_swapout
 
     transfer a memsw charge to swap
 
-    :param struct page \*page:
+    :param page:
         page whose memsw charge to transfer
+    :type page: struct page \*
 
-    :param swp_entry_t entry:
+    :param entry:
         swap entry to move the charge to
+    :type entry: swp_entry_t
 
 .. _`mem_cgroup_swapout.description`:
 
@@ -1008,11 +1171,13 @@ mem_cgroup_try_charge_swap
 
     try charging swap space for a page
 
-    :param struct page \*page:
+    :param page:
         page being added to swap
+    :type page: struct page \*
 
-    :param swp_entry_t entry:
+    :param entry:
         swap entry to charge
+    :type entry: swp_entry_t
 
 .. _`mem_cgroup_try_charge_swap.description`:
 
@@ -1032,11 +1197,13 @@ mem_cgroup_uncharge_swap
 
     uncharge swap space
 
-    :param swp_entry_t entry:
+    :param entry:
         swap entry to uncharge
+    :type entry: swp_entry_t
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         the amount of swap space to uncharge
+    :type nr_pages: unsigned int
 
 .. This file was automatic generated / don't edit.
 

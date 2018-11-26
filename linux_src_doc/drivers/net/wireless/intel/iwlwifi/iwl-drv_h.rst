@@ -35,8 +35,9 @@ iwl_drv_start
 
     start the drv
 
-    :param struct iwl_trans \*trans:
+    :param trans:
         *undescribed*
+    :type trans: struct iwl_trans \*
 
 .. _`iwl_drv_start.starts-the-driver`:
 
@@ -57,8 +58,9 @@ iwl_drv_stop
 
     stop the drv
 
-    :param struct iwl_drv \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct iwl_drv \*
 
 .. _`iwl_drv_stop.description`:
 

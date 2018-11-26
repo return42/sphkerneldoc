@@ -10,14 +10,16 @@ tpm_tis_clkrun_enable
 
     Keep clkrun protocol disabled for entire duration of a single TPM command
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
-    :param bool value:
+    :param value:
         1 - Disable CLKRUN protocol, so that clocks are free running
         0 - Enable CLKRUN protocol
         Call this function directly in \ :c:func:`tpm_tis_remove`\  in error or driver removal
         path, since the chip->ops is set to NULL in \ :c:func:`tpm_chip_unregister`\ .
+    :type value: bool
 
 .. This file was automatic generated / don't edit.
 

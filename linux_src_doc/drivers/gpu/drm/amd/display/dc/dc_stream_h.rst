@@ -8,8 +8,9 @@ dc_create_stream_for_sink
 
 .. c:function:: struct dc_stream_state *dc_create_stream_for_sink(struct dc_sink *dc_sink)
 
-    :param struct dc_sink \*dc_sink:
+    :param dc_sink:
         *undescribed*
+    :type dc_sink: struct dc_sink \*
 
 .. This file was automatic generated / don't edit.
 

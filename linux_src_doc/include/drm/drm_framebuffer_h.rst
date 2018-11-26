@@ -203,8 +203,9 @@ drm_framebuffer_get
 
     acquire a framebuffer reference
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         DRM framebuffer
+    :type fb: struct drm_framebuffer \*
 
 .. _`drm_framebuffer_get.description`:
 
@@ -222,8 +223,9 @@ drm_framebuffer_put
 
     release a framebuffer reference
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         DRM framebuffer
+    :type fb: struct drm_framebuffer \*
 
 .. _`drm_framebuffer_put.description`:
 
@@ -242,8 +244,9 @@ drm_framebuffer_reference
 
     acquire a framebuffer reference
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         DRM framebuffer
+    :type fb: struct drm_framebuffer \*
 
 .. _`drm_framebuffer_reference.description`:
 
@@ -262,8 +265,9 @@ drm_framebuffer_unreference
 
     release a framebuffer reference
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         DRM framebuffer
+    :type fb: struct drm_framebuffer \*
 
 .. _`drm_framebuffer_unreference.description`:
 
@@ -282,8 +286,9 @@ drm_framebuffer_read_refcount
 
     read the framebuffer reference count.
 
-    :param const struct drm_framebuffer \*fb:
+    :param fb:
         framebuffer
+    :type fb: const struct drm_framebuffer \*
 
 .. _`drm_framebuffer_read_refcount.description`:
 
@@ -301,11 +306,13 @@ drm_framebuffer_assign
 
     store a reference to the fb
 
-    :param struct drm_framebuffer \*\*p:
+    :param p:
         location to store framebuffer
+    :type p: struct drm_framebuffer \*\*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         new framebuffer (maybe NULL)
+    :type fb: struct drm_framebuffer \*
 
 .. _`drm_framebuffer_assign.description`:
 

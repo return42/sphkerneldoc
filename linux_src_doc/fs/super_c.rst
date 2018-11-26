@@ -10,14 +10,17 @@ alloc_super
 
     create new superblock
 
-    :param struct file_system_type \*type:
+    :param type:
         filesystem type superblock should belong to
+    :type type: struct file_system_type \*
 
-    :param int flags:
+    :param flags:
         the mount flags
+    :type flags: int
 
-    :param struct user_namespace \*user_ns:
+    :param user_ns:
         User namespace for the super_block
+    :type user_ns: struct user_namespace \*
 
 .. _`alloc_super.description`:
 
@@ -36,8 +39,9 @@ put_super
 
     drop a temporary reference to superblock
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock in question
+    :type sb: struct super_block \*
 
 .. _`put_super.description`:
 
@@ -56,8 +60,9 @@ deactivate_locked_super
 
     drop an active reference to superblock
 
-    :param struct super_block \*s:
+    :param s:
         superblock to deactivate
+    :type s: struct super_block \*
 
 .. _`deactivate_locked_super.description`:
 
@@ -80,8 +85,9 @@ deactivate_super
 
     drop an active reference to superblock
 
-    :param struct super_block \*s:
+    :param s:
         superblock to deactivate
+    :type s: struct super_block \*
 
 .. _`deactivate_super.description`:
 
@@ -101,8 +107,9 @@ grab_super
 
     acquire an active reference
 
-    :param struct super_block \*s:
+    :param s:
         reference we are trying to make active
+    :type s: struct super_block \*
 
 .. _`grab_super.description`:
 
@@ -127,8 +134,9 @@ generic_shutdown_super
 
     common helper for ->kill_sb()
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock to kill
+    :type sb: struct super_block \*
 
 .. _`generic_shutdown_super.description`:
 
@@ -154,8 +162,9 @@ sget_userns
 
     find or create a superblock
 
-    :param struct file_system_type \*type:
+    :param type:
         filesystem type superblock should belong to
+    :type type: struct file_system_type \*
 
     :param int (\*test)(struct super_block \*,void \*):
         comparison callback
@@ -163,14 +172,17 @@ sget_userns
     :param int (\*set)(struct super_block \*,void \*):
         setup callback
 
-    :param int flags:
+    :param flags:
         mount flags
+    :type flags: int
 
-    :param struct user_namespace \*user_ns:
+    :param user_ns:
         User namespace for the super_block
+    :type user_ns: struct user_namespace \*
 
-    :param void \*data:
+    :param data:
         argument to each of them
+    :type data: void \*
 
 .. _`sget`:
 
@@ -181,8 +193,9 @@ sget
 
     find or create a superblock
 
-    :param struct file_system_type \*type:
+    :param type:
         filesystem type superblock should belong to
+    :type type: struct file_system_type \*
 
     :param int (\*test)(struct super_block \*,void \*):
         comparison callback
@@ -190,11 +203,13 @@ sget
     :param int (\*set)(struct super_block \*,void \*):
         setup callback
 
-    :param int flags:
+    :param flags:
         mount flags
+    :type flags: int
 
-    :param void \*data:
+    :param data:
         argument to each of them
+    :type data: void \*
 
 .. _`iterate_supers`:
 
@@ -208,8 +223,9 @@ iterate_supers
     :param void (\*f)(struct super_block \*, void \*):
         function to call
 
-    :param void \*arg:
+    :param arg:
         argument to pass to it
+    :type arg: void \*
 
 .. _`iterate_supers.description`:
 
@@ -228,14 +244,16 @@ iterate_supers_type
 
     call function for superblocks of given type
 
-    :param struct file_system_type \*type:
+    :param type:
         fs type
+    :type type: struct file_system_type \*
 
     :param void (\*f)(struct super_block \*, void \*):
         function to call
 
-    :param void \*arg:
+    :param arg:
         argument to pass to it
+    :type arg: void \*
 
 .. _`iterate_supers_type.description`:
 
@@ -254,8 +272,9 @@ get_super
 
     get the superblock of a device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         device to get the superblock for
+    :type bdev: struct block_device \*
 
 .. _`get_super.description`:
 
@@ -274,8 +293,9 @@ get_super_thawed
 
     get thawed superblock of a device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         device to get the superblock for
+    :type bdev: struct block_device \*
 
 .. _`get_super_thawed.description`:
 
@@ -296,8 +316,9 @@ get_super_exclusive_thawed
 
     get thawed superblock of a device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         device to get the superblock for
+    :type bdev: struct block_device \*
 
 .. _`get_super_exclusive_thawed.description`:
 
@@ -318,8 +339,9 @@ get_active_super
 
     get an active reference to the superblock of a device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         device to get the superblock for
+    :type bdev: struct block_device \*
 
 .. _`get_active_super.description`:
 
@@ -339,17 +361,21 @@ do_remount_sb
 
     asks filesystem to change mount options.
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock in question
+    :type sb: struct super_block \*
 
-    :param int sb_flags:
+    :param sb_flags:
         revised superblock flags
+    :type sb_flags: int
 
-    :param void \*data:
+    :param data:
         the rest of options
+    :type data: void \*
 
-    :param int force:
+    :param force:
         whether or not to force the change
+    :type force: int
 
 .. _`do_remount_sb.description`:
 
@@ -367,8 +393,9 @@ emergency_thaw_all
 
     - forcibly thaw every frozen filesystem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`emergency_thaw_all.description`:
 
@@ -376,6 +403,42 @@ Description
 -----------
 
 Used for emergency unfreeze of all filesystems via SysRq
+
+.. _`get_anon_bdev`:
+
+get_anon_bdev
+=============
+
+.. c:function:: int get_anon_bdev(dev_t *p)
+
+    Allocate a block device for filesystems which don't have one.
+
+    :param p:
+        Pointer to a dev_t.
+    :type p: dev_t \*
+
+.. _`get_anon_bdev.description`:
+
+Description
+-----------
+
+Filesystems which don't use real block devices can call this function
+to allocate a virtual block device.
+
+.. _`get_anon_bdev.context`:
+
+Context
+-------
+
+Any context.  Frequently called while holding sb_lock.
+
+.. _`get_anon_bdev.return`:
+
+Return
+------
+
+0 on success, -EMFILE if there are no anonymous bdevs left
+or -ENOMEM if memory allocation failed.
 
 .. _`sb_wait_write`:
 
@@ -386,11 +449,13 @@ sb_wait_write
 
     wait until all writers to given file system finish
 
-    :param struct super_block \*sb:
+    :param sb:
         the super for which we wait
+    :type sb: struct super_block \*
 
-    :param int level:
+    :param level:
         type of writers we wait for (normal vs page fault)
+    :type level: int
 
 .. _`sb_wait_write.description`:
 
@@ -409,8 +474,9 @@ freeze_super
 
     lock the filesystem and force it into a consistent state
 
-    :param struct super_block \*sb:
+    :param sb:
         the super to lock
+    :type sb: struct super_block \*
 
 .. _`freeze_super.description`:
 
@@ -455,8 +521,9 @@ thaw_super_locked
 
     - unlock filesystem
 
-    :param struct super_block \*sb:
+    :param sb:
         the super to thaw
+    :type sb: struct super_block \*
 
 .. _`thaw_super_locked.description`:
 

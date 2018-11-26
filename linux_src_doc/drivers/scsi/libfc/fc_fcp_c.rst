@@ -58,11 +58,13 @@ fc_fcp_pkt_alloc
 
     Allocate a fcp_pkt
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that the FCP packet is for
+    :type lport: struct fc_lport \*
 
-    :param gfp_t gfp:
+    :param gfp:
         GFP flags for allocation
+    :type gfp: gfp_t
 
 .. _`fc_fcp_pkt_alloc.return-value`:
 
@@ -87,8 +89,9 @@ fc_fcp_pkt_release
 
     Release hold on a fcp_pkt
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to be released
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_fcp_pkt_release.context`:
 
@@ -107,8 +110,9 @@ fc_fcp_pkt_hold
 
     Hold a fcp_pkt
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to be held
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_fcp_pkt_destroy`:
 
@@ -119,11 +123,13 @@ fc_fcp_pkt_destroy
 
     Release hold on a fcp_pkt
 
-    :param struct fc_seq \*seq:
+    :param seq:
         The sequence that the FCP packet is on (required by destructor API)
+    :type seq: struct fc_seq \*
 
-    :param void \*fsp:
+    :param fsp:
         The FCP packet to be released
+    :type fsp: void \*
 
 .. _`fc_fcp_pkt_destroy.description`:
 
@@ -150,8 +156,9 @@ fc_fcp_lock_pkt
 
     Lock a fcp_pkt and increase its reference count
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to be locked and incremented
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_fcp_lock_pkt.description`:
 
@@ -190,8 +197,9 @@ fc_fcp_unlock_pkt
 
     Release a fcp_pkt's lock and decrement its reference count
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to be unlocked and decremented
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_fcp_timer_set`:
 
@@ -202,11 +210,13 @@ fc_fcp_timer_set
 
     Start a timer for a fcp_pkt
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to start a timer for
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param unsigned long delay:
+    :param delay:
         The timeout period in jiffies
+    :type delay: unsigned long
 
 .. _`fc_fcp_send_abort`:
 
@@ -217,8 +227,9 @@ fc_fcp_send_abort
 
     Send an abort for exchanges associated with a fcp_pkt
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to abort exchanges on
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_fcp_retry_cmd`:
 
@@ -229,11 +240,13 @@ fc_fcp_retry_cmd
 
     Retry a fcp_pkt
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to be retried
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param int status_code:
+    :param status_code:
         *undescribed*
+    :type status_code: int
 
 .. _`fc_fcp_retry_cmd.description`:
 
@@ -254,11 +267,13 @@ fc_fcp_ddp_setup
 
     Calls a LLD's ddp_setup routine to set up DDP context
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet that will manage the DDP frames
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param u16 xid:
+    :param xid:
         The XID that will be used for the DDP exchange
+    :type xid: u16
 
 .. _`fc_fcp_ddp_done`:
 
@@ -269,8 +284,9 @@ fc_fcp_ddp_done
 
     Calls a LLD's ddp_done routine to release any DDP related resources for a fcp_pkt
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet that DDP had been used on
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_fcp_can_queue_ramp_up`:
 
@@ -281,8 +297,9 @@ fc_fcp_can_queue_ramp_up
 
     increases can_queue
 
-    :param struct fc_lport \*lport:
+    :param lport:
         lport to ramp up can_queue
+    :type lport: struct fc_lport \*
 
 .. _`fc_fcp_can_queue_ramp_down`:
 
@@ -293,8 +310,9 @@ fc_fcp_can_queue_ramp_down
 
     reduces can_queue
 
-    :param struct fc_lport \*lport:
+    :param lport:
         lport to reduce can_queue
+    :type lport: struct fc_lport \*
 
 .. _`fc_fcp_can_queue_ramp_down.description`:
 
@@ -316,8 +334,9 @@ get_fsp_rec_tov
 
     Helper function to get REC_TOV
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         the FCP packet
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`get_fsp_rec_tov.description`:
 
@@ -335,11 +354,13 @@ fc_fcp_recv_data
 
     Handler for receiving SCSI-FCP data from a target
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet the data is on
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The data frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_fcp_send_data`:
 
@@ -350,17 +371,21 @@ fc_fcp_send_data
 
     Send SCSI data to a target
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet the data is on
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param struct fc_seq \*seq:
+    :param seq:
         *undescribed*
+    :type seq: struct fc_seq \*
 
-    :param size_t offset:
+    :param offset:
         The starting offset for this data request
+    :type offset: size_t
 
-    :param size_t seq_blen:
+    :param seq_blen:
         The burst length for this data request
+    :type seq_blen: size_t
 
 .. _`fc_fcp_send_data.description`:
 
@@ -382,11 +407,13 @@ fc_fcp_abts_resp
 
     Receive an ABTS response
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet that is being aborted
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The response frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_fcp_recv`:
 
@@ -397,14 +424,17 @@ fc_fcp_recv
 
     Receive an FCP frame
 
-    :param struct fc_seq \*seq:
+    :param seq:
         The sequence the frame is on
+    :type seq: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The received frame
+    :type fp: struct fc_frame \*
 
-    :param void \*arg:
+    :param arg:
         The related FCP packet
+    :type arg: void \*
 
 .. _`fc_fcp_recv.context`:
 
@@ -423,11 +453,13 @@ fc_fcp_resp
 
     Handler for FCP responses
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet the response is for
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The response frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_fcp_complete_locked`:
 
@@ -438,8 +470,9 @@ fc_fcp_complete_locked
 
     Complete processing of a fcp_pkt with the fcp_pkt lock held
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to be completed
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_fcp_complete_locked.description`:
 
@@ -458,11 +491,13 @@ fc_fcp_cleanup_cmd
 
     Cancel the active exchange on a fcp_pkt
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet whose exchanges should be canceled
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param int error:
+    :param error:
         The reason for the cancellation
+    :type error: int
 
 .. _`fc_fcp_cleanup_each_cmd`:
 
@@ -473,17 +508,21 @@ fc_fcp_cleanup_each_cmd
 
     Cancel all exchanges on a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose exchanges should be canceled
+    :type lport: struct fc_lport \*
 
-    :param unsigned int id:
+    :param id:
         The target's ID
+    :type id: unsigned int
 
-    :param unsigned int lun:
+    :param lun:
         The LUN
+    :type lun: unsigned int
 
-    :param int error:
+    :param error:
         The reason for cancellation
+    :type error: int
 
 .. _`fc_fcp_cleanup_each_cmd.description`:
 
@@ -501,8 +540,9 @@ fc_fcp_abort_io
 
     Abort all FCP-SCSI exchanges on a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose exchanges are to be aborted
+    :type lport: struct fc_lport \*
 
 .. _`fc_fcp_pkt_send`:
 
@@ -513,11 +553,13 @@ fc_fcp_pkt_send
 
     Send a fcp_pkt
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to send the FCP packet on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to send
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_fcp_pkt_send.return`:
 
@@ -542,11 +584,13 @@ fc_fcp_cmd_send
 
     Send a FCP command
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to send the command on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet the command is on
+    :type fsp: struct fc_fcp_pkt \*
 
     :param void (\*resp)(struct fc_seq \*, struct fc_frame \*fp, void \*arg):
         The handler for the response
@@ -560,11 +604,13 @@ fc_fcp_error
 
     Handler for FCP layer errors
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet the error is on
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame that has errored
+    :type fp: struct fc_frame \*
 
 .. _`fc_fcp_pkt_abort`:
 
@@ -575,8 +621,9 @@ fc_fcp_pkt_abort
 
     Abort a fcp_pkt
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to abort on
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_fcp_pkt_abort.description`:
 
@@ -594,8 +641,9 @@ fc_lun_reset_send
 
     Send LUN reset command
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`fc_lun_reset`:
 
@@ -606,17 +654,21 @@ fc_lun_reset
 
     Send a LUN RESET command to a device and wait for the reply
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to sent the command on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet that identifies the LUN to be reset
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param unsigned int id:
+    :param id:
         The SCSI command ID
+    :type id: unsigned int
 
-    :param unsigned int lun:
+    :param lun:
         The LUN ID to be reset
+    :type lun: unsigned int
 
 .. _`fc_tm_done`:
 
@@ -627,14 +679,17 @@ fc_tm_done
 
     Task Management response handler
 
-    :param struct fc_seq \*seq:
+    :param seq:
         The sequence that the response is on
+    :type seq: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*arg:
+    :param arg:
         The FCP packet the response is for
+    :type arg: void \*
 
 .. _`fc_fcp_cleanup`:
 
@@ -645,8 +700,9 @@ fc_fcp_cleanup
 
     Cleanup all FCP exchanges on a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to be cleaned up
+    :type lport: struct fc_lport \*
 
 .. _`fc_fcp_timeout`:
 
@@ -657,8 +713,9 @@ fc_fcp_timeout
 
     Handler for fcp_pkt timeouts
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`fc_fcp_timeout.description`:
 
@@ -681,8 +738,9 @@ fc_fcp_rec
 
     Send a REC ELS request
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet to send the REC request on
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_fcp_rec_resp`:
 
@@ -693,14 +751,17 @@ fc_fcp_rec_resp
 
     Handler for REC ELS responses
 
-    :param struct fc_seq \*seq:
+    :param seq:
         The sequence the response is on
+    :type seq: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*arg:
+    :param arg:
         The FCP packet the response is on
+    :type arg: void \*
 
 .. _`fc_fcp_rec_resp.description`:
 
@@ -721,11 +782,13 @@ fc_fcp_rec_error
 
     Handler for REC errors
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet the error is on
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The REC frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_fcp_recovery`:
 
@@ -736,11 +799,13 @@ fc_fcp_recovery
 
     Handler for fcp_pkt recovery
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP pkt that needs to be aborted
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param u8 code:
+    :param code:
         *undescribed*
+    :type code: u8
 
 .. _`fc_fcp_srr`:
 
@@ -751,16 +816,19 @@ fc_fcp_srr
 
     Send a SRR request (Sequence Retransmission Request)
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet the SRR is to be sent on
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param enum fc_rctl r_ctl:
+    :param r_ctl:
         The R_CTL field for the SRR request
         This is called after receiving status but insufficient data, or
         when expecting status but the request has timed out.
+    :type r_ctl: enum fc_rctl
 
-    :param u32 offset:
+    :param offset:
         *undescribed*
+    :type offset: u32
 
 .. _`fc_fcp_srr_resp`:
 
@@ -771,14 +839,17 @@ fc_fcp_srr_resp
 
     Handler for SRR response
 
-    :param struct fc_seq \*seq:
+    :param seq:
         The sequence the SRR is on
+    :type seq: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The SRR frame
+    :type fp: struct fc_frame \*
 
-    :param void \*arg:
+    :param arg:
         The FCP packet the SRR is on
+    :type arg: void \*
 
 .. _`fc_fcp_srr_error`:
 
@@ -789,11 +860,13 @@ fc_fcp_srr_error
 
     Handler for SRR errors
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet that the SRR error is on
+    :type fsp: struct fc_fcp_pkt \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The SRR frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_fcp_lport_queue_ready`:
 
@@ -804,8 +877,9 @@ fc_fcp_lport_queue_ready
 
     Determine if the lport and it's queue is ready
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to be checked
+    :type lport: struct fc_lport \*
 
 .. _`fc_queuecommand`:
 
@@ -816,11 +890,13 @@ fc_queuecommand
 
     The queuecommand function of the SCSI template
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         The Scsi_Host that the command was issued to
+    :type shost: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*sc_cmd:
+    :param sc_cmd:
         *undescribed*
+    :type sc_cmd: struct scsi_cmnd \*
 
 .. _`fc_queuecommand.description`:
 
@@ -838,8 +914,9 @@ fc_io_compl
 
     Handle responses for completed commands
 
-    :param struct fc_fcp_pkt \*fsp:
+    :param fsp:
         The FCP packet that is complete
+    :type fsp: struct fc_fcp_pkt \*
 
 .. _`fc_io_compl.description`:
 
@@ -858,8 +935,9 @@ fc_eh_abort
 
     Abort a command
 
-    :param struct scsi_cmnd \*sc_cmd:
+    :param sc_cmd:
         The SCSI command to abort
+    :type sc_cmd: struct scsi_cmnd \*
 
 .. _`fc_eh_abort.description`:
 
@@ -878,9 +956,10 @@ fc_eh_device_reset
 
     Reset a single LUN
 
-    :param struct scsi_cmnd \*sc_cmd:
+    :param sc_cmd:
         The SCSI command which identifies the device whose
         LUN is to be reset
+    :type sc_cmd: struct scsi_cmnd \*
 
 .. _`fc_eh_device_reset.description`:
 
@@ -898,8 +977,9 @@ fc_eh_host_reset
 
     Reset a Scsi_Host.
 
-    :param struct scsi_cmnd \*sc_cmd:
+    :param sc_cmd:
         The SCSI command that identifies the SCSI host to be reset
+    :type sc_cmd: struct scsi_cmnd \*
 
 .. _`fc_slave_alloc`:
 
@@ -910,8 +990,9 @@ fc_slave_alloc
 
     Configure the queue depth of a Scsi_Host
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         The SCSI device that identifies the SCSI host
+    :type sdev: struct scsi_device \*
 
 .. _`fc_slave_alloc.description`:
 
@@ -930,8 +1011,9 @@ fc_fcp_destroy
 
     Tear down the FCP layer for a given local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that no longer needs the FCP layer
+    :type lport: struct fc_lport \*
 
 .. _`fc_fcp_init`:
 
@@ -942,8 +1024,9 @@ fc_fcp_init
 
     Initialize the FCP layer for a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to initialize the exchange layer for
+    :type lport: struct fc_lport \*
 
 .. This file was automatic generated / don't edit.
 

@@ -110,11 +110,13 @@ vco_get
 
     get ICST VCO settings from a certain ICST
 
-    :param struct clk_icst \*icst:
+    :param icst:
         the ICST clock to get
+    :type icst: struct clk_icst \*
 
-    :param struct icst_vco \*vco:
+    :param vco:
         the VCO struct to return the value in
+    :type vco: struct icst_vco \*
 
 .. _`vco_set`:
 
@@ -125,11 +127,13 @@ vco_set
 
     commit changes to an ICST VCO
 
-    :param struct clk_icst \*icst:
+    :param icst:
         the ICST clock to set
+    :type icst: struct clk_icst \*
 
-    :param struct icst_vco vco:
+    :param vco:
         the VCO struct to set the changes from
+    :type vco: struct icst_vco
 
 .. This file was automatic generated / don't edit.
 

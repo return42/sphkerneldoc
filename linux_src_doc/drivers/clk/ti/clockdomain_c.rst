@@ -10,8 +10,9 @@ omap2_clkops_enable_clkdm
 
     increment usecount on clkdm of \ ``hw``\ 
 
-    :param struct clk_hw \*hw:
+    :param hw:
         struct clk_hw \* of the clock being enabled
+    :type hw: struct clk_hw \*
 
 .. _`omap2_clkops_enable_clkdm.description`:
 
@@ -35,8 +36,9 @@ omap2_clkops_disable_clkdm
 
     decrement usecount on clkdm of \ ``hw``\ 
 
-    :param struct clk_hw \*hw:
+    :param hw:
         struct clk_hw \* of the clock being disabled
+    :type hw: struct clk_hw \*
 
 .. _`omap2_clkops_disable_clkdm.description`:
 
@@ -57,8 +59,9 @@ omap2_init_clk_clkdm
 
     look up a clockdomain name, store pointer in clk
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
 .. _`omap2_init_clk_clkdm.description`:
 
@@ -78,8 +81,9 @@ ti_dt_clockdomains_setup
 
     setup device tree clockdomains
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ti_dt_clockdomains_setup.description`:
 

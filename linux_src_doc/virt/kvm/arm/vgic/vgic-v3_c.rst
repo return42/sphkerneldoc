@@ -10,8 +10,9 @@ vgic_v3_save_pending_tables
 
     Save the pending tables into guest RAM kvm lock and all vcpu lock must be held
 
-    :param struct kvm \*kvm:
+    :param kvm:
         *undescribed*
+    :type kvm: struct kvm \*
 
 .. _`vgic_v3_rdist_overlap`:
 
@@ -22,14 +23,17 @@ vgic_v3_rdist_overlap
 
     check if a region overlaps with any existing redistributor region
 
-    :param struct kvm \*kvm:
+    :param kvm:
         kvm handle
+    :type kvm: struct kvm \*
 
-    :param gpa_t base:
+    :param base:
         base of the region
+    :type base: gpa_t
 
-    :param size_t size:
+    :param size:
         size of region
+    :type size: size_t
 
 .. _`vgic_v3_rdist_overlap.return`:
 
@@ -47,8 +51,9 @@ vgic_v3_rdist_free_slot
 
     Look up registered rdist regions and identify one which has free space to put a new rdist region.
 
-    :param struct list_head \*rd_regions:
+    :param rd_regions:
         redistributor region list head
+    :type rd_regions: struct list_head \*
 
 .. _`vgic_v3_rdist_free_slot.description`:
 
@@ -75,8 +80,9 @@ vgic_v3_probe
 
     probe for a GICv3 compatible interrupt controller in DT
 
-    :param const struct gic_kvm_info \*info:
+    :param info:
         *undescribed*
+    :type info: const struct gic_kvm_info \*
 
 .. _`vgic_v3_probe.description`:
 

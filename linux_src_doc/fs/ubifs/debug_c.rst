@@ -10,8 +10,9 @@ ubifs_dump_index
 
     dump the on-flash index.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_dump_index.description`:
 
@@ -30,8 +31,9 @@ dbg_save_space_info
 
     save information about flash space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_save_space_info.description`:
 
@@ -50,8 +52,9 @@ dbg_check_space_info
 
     check flash space information.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_check_space_info.description`:
 
@@ -72,11 +75,13 @@ dbg_check_synced_i_size
 
     check synchronized inode size.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode to check
+    :type inode: struct inode \*
 
 .. _`dbg_check_synced_i_size.description`:
 
@@ -97,14 +102,17 @@ dbg_check_key_order
 
     make sure that colliding keys are properly ordered.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zbr1:
+    :param zbr1:
         first zbranch
+    :type zbr1: struct ubifs_zbranch \*
 
-    :param struct ubifs_zbranch \*zbr2:
+    :param zbr2:
         following zbranch
+    :type zbr2: struct ubifs_zbranch \*
 
 .. _`dbg_check_key_order.description`:
 
@@ -127,11 +135,13 @@ dbg_check_znode
 
     check if znode is all right.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         zbranch which points to this znode
+    :type zbr: struct ubifs_zbranch \*
 
 .. _`dbg_check_znode.description`:
 
@@ -150,11 +160,13 @@ dbg_check_tnc
 
     check TNC tree.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int extra:
+    :param extra:
         do extra checks that are possible at start commit
+    :type extra: int
 
 .. _`dbg_check_tnc.description`:
 
@@ -173,17 +185,21 @@ dbg_walk_index
 
     walk the on-flash index.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param dbg_leaf_callback leaf_cb:
+    :param leaf_cb:
         called for each leaf node
+    :type leaf_cb: dbg_leaf_callback
 
-    :param dbg_znode_callback znode_cb:
+    :param znode_cb:
         called for each indexing node
+    :type znode_cb: dbg_znode_callback
 
-    :param void \*priv:
+    :param priv:
         private data which is passed to callbacks
+    :type priv: void \*
 
 .. _`dbg_walk_index.description`:
 
@@ -207,14 +223,17 @@ add_size
 
     add znode size to partially calculated index size.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to add size for
+    :type znode: struct ubifs_znode \*
 
-    :param void \*priv:
+    :param priv:
         partially calculated index size
+    :type priv: void \*
 
 .. _`add_size.description`:
 
@@ -234,11 +253,13 @@ dbg_check_idx_size
 
     check index size.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param long long idx_size:
+    :param idx_size:
         size to check
+    :type idx_size: long long
 
 .. _`dbg_check_idx_size.description`:
 
@@ -369,14 +390,17 @@ add_inode
 
     add inode information to RB-tree of inodes.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct fsck_data \*fsckd:
+    :param fsckd:
         FS checking information
+    :type fsckd: struct fsck_data \*
 
-    :param struct ubifs_ino_node \*ino:
+    :param ino:
         raw UBIFS inode to add
+    :type ino: struct ubifs_ino_node \*
 
 .. _`add_inode.description`:
 
@@ -396,11 +420,13 @@ search_inode
 
     search inode in the RB-tree of inodes.
 
-    :param struct fsck_data \*fsckd:
+    :param fsckd:
         FS checking information
+    :type fsckd: struct fsck_data \*
 
-    :param ino_t inum:
+    :param inum:
         inode number to search
+    :type inum: ino_t
 
 .. _`search_inode.description`:
 
@@ -420,14 +446,17 @@ read_add_inode
 
     read inode node and add it to RB-tree of inodes.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct fsck_data \*fsckd:
+    :param fsckd:
         FS checking information
+    :type fsckd: struct fsck_data \*
 
-    :param ino_t inum:
+    :param inum:
         inode number to read
+    :type inum: ino_t
 
 .. _`read_add_inode.description`:
 
@@ -448,14 +477,17 @@ check_leaf
 
     check leaf node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         zbranch of the leaf node to check
+    :type zbr: struct ubifs_zbranch \*
 
-    :param void \*priv:
+    :param priv:
         FS checking information
+    :type priv: void \*
 
 .. _`check_leaf.description`:
 
@@ -481,8 +513,9 @@ free_inodes
 
     free RB-tree of inodes.
 
-    :param struct fsck_data \*fsckd:
+    :param fsckd:
         FS checking information
+    :type fsckd: struct fsck_data \*
 
 .. _`check_inodes`:
 
@@ -493,11 +526,13 @@ check_inodes
 
     checks all inodes.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct fsck_data \*fsckd:
+    :param fsckd:
         FS checking information
+    :type fsckd: struct fsck_data \*
 
 .. _`check_inodes.description`:
 
@@ -518,8 +553,9 @@ dbg_check_filesystem
 
     check the file-system.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_check_filesystem.description`:
 
@@ -544,11 +580,13 @@ dbg_check_data_nodes_order
 
     check that list of data nodes is sorted.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct list_head \*head:
+    :param head:
         the list of nodes ('struct ubifs_scan_node' objects)
+    :type head: struct list_head \*
 
 .. _`dbg_check_data_nodes_order.description`:
 
@@ -567,11 +605,13 @@ dbg_check_nondata_nodes_order
 
     check that list of data nodes is sorted.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct list_head \*head:
+    :param head:
         the list of nodes ('struct ubifs_scan_node' objects)
+    :type head: struct list_head \*
 
 .. _`dbg_check_nondata_nodes_order.description`:
 
@@ -590,17 +630,21 @@ provide_user_output
 
     provide output to the user reading a debugfs file.
 
-    :param int val:
+    :param val:
         boolean value for the answer
+    :type val: int
 
-    :param char __user \*u:
+    :param u:
         the buffer to store the answer at
+    :type u: char __user \*
 
-    :param size_t count:
+    :param count:
         size of the buffer
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         position in the \ ``u``\  output buffer
+    :type ppos: loff_t \*
 
 .. _`provide_user_output.description`:
 
@@ -621,11 +665,13 @@ interpret_user_input
 
     interpret user debugfs file input.
 
-    :param const char __user \*u:
+    :param u:
         user-provided buffer with the input
+    :type u: const char __user \*
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`interpret_user_input.description`:
 
@@ -645,8 +691,9 @@ dbg_debugfs_init_fs
 
     initialize debugfs for UBIFS instance.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_debugfs_init_fs.description`:
 
@@ -670,8 +717,9 @@ dbg_debugfs_exit_fs
 
     remove all debugfs files.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_debugfs_init`:
 
@@ -682,8 +730,9 @@ dbg_debugfs_init
 
     initialize debugfs file-system.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dbg_debugfs_init.description`:
 
@@ -704,8 +753,9 @@ dbg_debugfs_exit
 
     remove the "ubifs" directory from debugfs file-system.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ubifs_debugging_init`:
 
@@ -716,8 +766,9 @@ ubifs_debugging_init
 
     initialize UBIFS debugging.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_debugging_init.description`:
 
@@ -737,8 +788,9 @@ ubifs_debugging_exit
 
     free debugging data.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. This file was automatic generated / don't edit.
 

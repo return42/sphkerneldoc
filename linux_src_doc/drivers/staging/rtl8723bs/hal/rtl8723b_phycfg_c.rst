@@ -10,8 +10,9 @@ phy_CalculateBitShift
 
     phy_CalculateBitShift
 
-    :param u32 BitMask:
+    :param BitMask:
         *undescribed*
+    :type BitMask: u32
 
 .. _`phy_calculatebitshift.overview`:
 
@@ -50,14 +51,17 @@ PHY_QueryBBReg_8723B
 
     PHY_QueryBBReg
 
-    :param struct adapter \*Adapter:
+    :param Adapter:
         *undescribed*
+    :type Adapter: struct adapter \*
 
-    :param u32 RegAddr:
+    :param RegAddr:
         *undescribed*
+    :type RegAddr: u32
 
-    :param u32 BitMask:
+    :param BitMask:
         *undescribed*
+    :type BitMask: u32
 
 .. _`phy_querybbreg_8723b.overview`:
 
@@ -106,17 +110,21 @@ PHY_SetBBReg_8723B
 
     PHY_SetBBReg
 
-    :param struct adapter \*Adapter:
+    :param Adapter:
         *undescribed*
+    :type Adapter: struct adapter \*
 
-    :param u32 RegAddr:
+    :param RegAddr:
         *undescribed*
+    :type RegAddr: u32
 
-    :param u32 BitMask:
+    :param BitMask:
         *undescribed*
+    :type BitMask: u32
 
-    :param u32 Data:
+    :param Data:
         *undescribed*
+    :type Data: u32
 
 .. _`phy_setbbreg_8723b.overview`:
 
@@ -167,17 +175,21 @@ phy_RFSerialWrite_8723B
 
     phy_RFSerialWrite_8723B
 
-    :param struct adapter \*Adapter:
+    :param Adapter:
         *undescribed*
+    :type Adapter: struct adapter \*
 
-    :param enum RF_PATH eRFPath:
+    :param eRFPath:
         *undescribed*
+    :type eRFPath: enum RF_PATH
 
-    :param u32 Offset:
+    :param Offset:
         *undescribed*
+    :type Offset: u32
 
-    :param u32 Data:
+    :param Data:
         *undescribed*
+    :type Data: u32
 
 .. _`phy_rfserialwrite_8723b.overview`:
 
@@ -251,17 +263,21 @@ PHY_QueryRFReg_8723B
 
     PHY_QueryRFReg
 
-    :param struct adapter \*Adapter:
+    :param Adapter:
         *undescribed*
+    :type Adapter: struct adapter \*
 
-    :param u8 eRFPath:
+    :param eRFPath:
         *undescribed*
+    :type eRFPath: u8
 
-    :param u32 RegAddr:
+    :param RegAddr:
         *undescribed*
+    :type RegAddr: u32
 
-    :param u32 BitMask:
+    :param BitMask:
         *undescribed*
+    :type BitMask: u32
 
 .. _`phy_queryrfreg_8723b.overview`:
 
@@ -311,20 +327,25 @@ PHY_SetRFReg_8723B
 
     PHY_SetRFReg
 
-    :param struct adapter \*Adapter:
+    :param Adapter:
         *undescribed*
+    :type Adapter: struct adapter \*
 
-    :param u8 eRFPath:
+    :param eRFPath:
         *undescribed*
+    :type eRFPath: u8
 
-    :param u32 RegAddr:
+    :param RegAddr:
         *undescribed*
+    :type RegAddr: u32
 
-    :param u32 BitMask:
+    :param BitMask:
         *undescribed*
+    :type BitMask: u32
 
-    :param u32 Data:
+    :param Data:
         *undescribed*
+    :type Data: u32
 
 .. _`phy_setrfreg_8723b.overview`:
 
@@ -376,8 +397,9 @@ phy_InitBBRFRegisterDefinition
 
     phy_InitBBRFRegisterDefinition
 
-    :param struct adapter \*Adapter:
+    :param Adapter:
         *undescribed*
+    :type Adapter: struct adapter \*
 
 .. _`phy_initbbrfregisterdefinition.overview`:
 

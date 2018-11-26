@@ -10,8 +10,9 @@ power_supply_get_by_name
 
     Search for a power supply and returns its ref
 
-    :param const char \*name:
+    :param name:
         Power supply name to fetch
+    :type name: const char \*
 
 .. _`power_supply_get_by_name.description`:
 
@@ -39,8 +40,9 @@ power_supply_put
 
     Drop reference obtained with power_supply_get_by_name
 
-    :param struct power_supply \*psy:
+    :param psy:
         Reference to put
+    :type psy: struct power_supply \*
 
 .. _`power_supply_put.description`:
 
@@ -59,11 +61,13 @@ power_supply_get_by_phandle
 
     Search for a power supply and returns its ref
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to device node holding phandle property
+    :type np: struct device_node \*
 
-    :param const char \*property:
+    :param property:
         Name of property holding a power supply name
+    :type property: const char \*
 
 .. _`power_supply_get_by_phandle.description`:
 
@@ -91,11 +95,13 @@ devm_power_supply_get_by_phandle
 
     Resource managed version of \ :c:func:`power_supply_get_by_phandle`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to device holding phandle property
+    :type dev: struct device \*
 
-    :param const char \*property:
+    :param property:
         Name of property holding a power supply phandle
+    :type property: const char \*
 
 .. _`devm_power_supply_get_by_phandle.return`:
 
@@ -114,17 +120,20 @@ power_supply_register
 
     Register new power supply
 
-    :param struct device \*parent:
+    :param parent:
         Device to be a parent of power supply's device, usually
         the device which probe function calls this
+    :type parent: struct device \*
 
-    :param const struct power_supply_desc \*desc:
+    :param desc:
         Description of power supply, must be valid through whole
         lifetime of this power supply
+    :type desc: const struct power_supply_desc \*
 
-    :param const struct power_supply_config \*cfg:
+    :param cfg:
         Run-time specific configuration accessed during registering,
         may be NULL
+    :type cfg: const struct power_supply_config \*
 
 .. _`power_supply_register.return`:
 
@@ -145,17 +154,20 @@ power_supply_register_no_ws
 
     Register new non-waking-source power supply
 
-    :param struct device \*parent:
+    :param parent:
         Device to be a parent of power supply's device, usually
         the device which probe function calls this
+    :type parent: struct device \*
 
-    :param const struct power_supply_desc \*desc:
+    :param desc:
         Description of power supply, must be valid through whole
         lifetime of this power supply
+    :type desc: const struct power_supply_desc \*
 
-    :param const struct power_supply_config \*cfg:
+    :param cfg:
         Run-time specific configuration accessed during registering,
         may be NULL
+    :type cfg: const struct power_supply_config \*
 
 .. _`power_supply_register_no_ws.return`:
 
@@ -176,17 +188,20 @@ devm_power_supply_register
 
     Register managed power supply
 
-    :param struct device \*parent:
+    :param parent:
         Device to be a parent of power supply's device, usually
         the device which probe function calls this
+    :type parent: struct device \*
 
-    :param const struct power_supply_desc \*desc:
+    :param desc:
         Description of power supply, must be valid through whole
         lifetime of this power supply
+    :type desc: const struct power_supply_desc \*
 
-    :param const struct power_supply_config \*cfg:
+    :param cfg:
         Run-time specific configuration accessed during registering,
         may be NULL
+    :type cfg: const struct power_supply_config \*
 
 .. _`devm_power_supply_register.return`:
 
@@ -207,17 +222,20 @@ devm_power_supply_register_no_ws
 
     Register managed non-waking-source power supply
 
-    :param struct device \*parent:
+    :param parent:
         Device to be a parent of power supply's device, usually
         the device which probe function calls this
+    :type parent: struct device \*
 
-    :param const struct power_supply_desc \*desc:
+    :param desc:
         Description of power supply, must be valid through whole
         lifetime of this power supply
+    :type desc: const struct power_supply_desc \*
 
-    :param const struct power_supply_config \*cfg:
+    :param cfg:
         Run-time specific configuration accessed during registering,
         may be NULL
+    :type cfg: const struct power_supply_config \*
 
 .. _`devm_power_supply_register_no_ws.return`:
 
@@ -238,8 +256,9 @@ power_supply_unregister
 
     Remove this power supply from system
 
-    :param struct power_supply \*psy:
+    :param psy:
         Pointer to power supply to unregister
+    :type psy: struct power_supply \*
 
 .. _`power_supply_unregister.description`:
 

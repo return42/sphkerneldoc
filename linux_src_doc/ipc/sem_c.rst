@@ -10,8 +10,9 @@ unmerge_queues
 
     unmerge queues, if possible.
 
-    :param struct sem_array \*sma:
+    :param sma:
         semaphore array
+    :type sma: struct sem_array \*
 
 .. _`unmerge_queues.description`:
 
@@ -30,8 +31,9 @@ merge_queues
 
     merge single semop queues into global queue
 
-    :param struct sem_array \*sma:
+    :param sma:
         semaphore array
+    :type sma: struct sem_array \*
 
 .. _`merge_queues.description`:
 
@@ -52,11 +54,13 @@ newary
 
     Create a new semaphore set
 
-    :param struct ipc_namespace \*ns:
+    :param ns:
         namespace
+    :type ns: struct ipc_namespace \*
 
-    :param struct ipc_params \*params:
+    :param params:
         ptr to the structure that contains key, semflg and nsems
+    :type params: struct ipc_params \*
 
 .. _`newary.description`:
 
@@ -74,11 +78,13 @@ perform_atomic_semop_slow
 
     Attempt to perform semaphore operations on a given array.
 
-    :param struct sem_array \*sma:
+    :param sma:
         semaphore array
+    :type sma: struct sem_array \*
 
-    :param struct sem_queue \*q:
+    :param q:
         struct sem_queue that describes the operation
+    :type q: struct sem_queue \*
 
 .. _`perform_atomic_semop_slow.description`:
 
@@ -105,14 +111,17 @@ wake_const_ops
 
     wake up non-alter tasks
 
-    :param struct sem_array \*sma:
+    :param sma:
         semaphore array.
+    :type sma: struct sem_array \*
 
-    :param int semnum:
+    :param semnum:
         semaphore that was modified.
+    :type semnum: int
 
-    :param struct wake_q_head \*wake_q:
+    :param wake_q:
         lockless wake-queue head.
+    :type wake_q: struct wake_q_head \*
 
 .. _`wake_const_ops.description`:
 
@@ -136,17 +145,21 @@ do_smart_wakeup_zero
 
     wakeup all wait for zero tasks
 
-    :param struct sem_array \*sma:
+    :param sma:
         semaphore array
+    :type sma: struct sem_array \*
 
-    :param struct sembuf \*sops:
+    :param sops:
         operations that were performed
+    :type sops: struct sembuf \*
 
-    :param int nsops:
+    :param nsops:
         number of operations
+    :type nsops: int
 
-    :param struct wake_q_head \*wake_q:
+    :param wake_q:
         lockless wake-queue head
+    :type wake_q: struct wake_q_head \*
 
 .. _`do_smart_wakeup_zero.description`:
 
@@ -166,14 +179,17 @@ update_queue
 
     look for tasks that can be completed.
 
-    :param struct sem_array \*sma:
+    :param sma:
         semaphore array.
+    :type sma: struct sem_array \*
 
-    :param int semnum:
+    :param semnum:
         semaphore that was modified.
+    :type semnum: int
 
-    :param struct wake_q_head \*wake_q:
+    :param wake_q:
         lockless wake-queue head.
+    :type wake_q: struct wake_q_head \*
 
 .. _`update_queue.description`:
 
@@ -199,11 +215,13 @@ set_semotime
 
     set sem_otime
 
-    :param struct sem_array \*sma:
+    :param sma:
         semaphore array
+    :type sma: struct sem_array \*
 
-    :param struct sembuf \*sops:
+    :param sops:
         operations that modified the array, may be NULL
+    :type sops: struct sembuf \*
 
 .. _`set_semotime.description`:
 
@@ -222,20 +240,25 @@ do_smart_update
 
     optimized update_queue
 
-    :param struct sem_array \*sma:
+    :param sma:
         semaphore array
+    :type sma: struct sem_array \*
 
-    :param struct sembuf \*sops:
+    :param sops:
         operations that were performed
+    :type sops: struct sembuf \*
 
-    :param int nsops:
+    :param nsops:
         number of operations
+    :type nsops: int
 
-    :param int otime:
+    :param otime:
         force setting otime
+    :type otime: int
 
-    :param struct wake_q_head \*wake_q:
+    :param wake_q:
         lockless wake-queue head
+    :type wake_q: struct wake_q_head \*
 
 .. _`do_smart_update.description`:
 
@@ -257,11 +280,13 @@ find_alloc_undo
 
     lookup (and if not present create) undo array
 
-    :param struct ipc_namespace \*ns:
+    :param ns:
         namespace
+    :type ns: struct ipc_namespace \*
 
-    :param int semid:
+    :param semid:
         semaphore array id
+    :type semid: int
 
 .. _`find_alloc_undo.description`:
 

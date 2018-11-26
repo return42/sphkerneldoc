@@ -105,7 +105,7 @@ Definition
         void (*file_set_fowner)(struct file *file);
         int (*file_send_sigiotask)(struct task_struct *tsk, struct fown_struct *fown, int sig);
         int (*file_receive)(struct file *file);
-        int (*file_open)(struct file *file, const struct cred *cred);
+        int (*file_open)(struct file *file);
         int (*task_alloc)(struct task_struct *task, unsigned long clone_flags);
         void (*task_free)(struct task_struct *task);
         int (*cred_alloc_blank)(struct cred *cred, gfp_t gfp);
@@ -116,6 +116,7 @@ Definition
         int (*kernel_act_as)(struct cred *new, u32 secid);
         int (*kernel_create_files_as)(struct cred *new, struct inode *inode);
         int (*kernel_module_request)(char *kmod_name);
+        int (*kernel_load_data)(enum kernel_load_data_id id);
         int (*kernel_read_file)(struct file *file, enum kernel_read_file_id id);
         int (*kernel_post_read_file)(struct file *file, char *buf, loff_t size, enum kernel_read_file_id id);
         int (*task_fix_setuid)(struct cred *new, const struct cred *old, int flags);
@@ -131,7 +132,7 @@ Definition
         int (*task_setscheduler)(struct task_struct *p);
         int (*task_getscheduler)(struct task_struct *p);
         int (*task_movememory)(struct task_struct *p);
-        int (*task_kill)(struct task_struct *p, struct siginfo *info, int sig, const struct cred *cred);
+        int (*task_kill)(struct task_struct *p, struct kernel_siginfo *info, int sig, const struct cred *cred);
         int (*task_prctl)(int option, unsigned long arg2, unsigned long arg3, unsigned long arg4, unsigned long arg5);
         void (*task_to_inode)(struct task_struct *p, struct inode *inode);
         int (*ipc_permission)(struct kern_ipc_perm *ipcp, short flag);
@@ -361,9 +362,9 @@ bprm_set_creds
     transitions between security domains).
     This hook may be called multiple times during a single execve, e.g. for
     interpreters.  The hook can tell whether it has already been called by
-    checking to see if \ ``bprm``\ ->security is non-NULL.  If so, then the hook
+    checking to see if \ ``bprm->security``\  is non-NULL.  If so, then the hook
     may decide either to retain the security information saved earlier or
-    to replace it.  The hook must set \ ``bprm``\ ->secureexec to 1 if a "secure
+    to replace it.  The hook must set \ ``bprm->secureexec``\  to 1 if a "secure
     exec" has happened as a result of this hook call.  The flag is used to
     indicate the need for a sanitized execution environment, and is also
     passed in the ELF auxiliary table on the initial stack to indicate
@@ -373,7 +374,7 @@ bprm_set_creds
 
 bprm_check_security
     This hook mediates the point when a search for a binary handler will
-    begin.  It allows a check the \ ``bprm``\ ->security value which is set in the
+    begin.  It allows a check the \ ``bprm->security``\  value which is set in the
     preceding set_creds call.  The primary difference from set_creds is
     that the argv list and envp list are reliably available in \ ``bprm``\ .  This
     hook may be called multiple times during a single execve; and in each
@@ -384,7 +385,7 @@ bprm_check_security
 bprm_committing_creds
     Prepare to install the new security attributes of a process being
     transformed by an execve operation, based on the old credentials
-    pointed to by \ ``current``\ ->cred and the information set in \ ``bprm``\ ->cred by
+    pointed to by \ ``current->cred``\  and the information set in \ ``bprm->cred``\  by
     the bprm_set_creds hook.  \ ``bprm``\  points to the linux_binprm structure.
     This hook is a good place to perform state changes on the process such
     as closing open file descriptors to which access will no longer be
@@ -394,7 +395,7 @@ bprm_committing_creds
 bprm_committed_creds
     Tidy up after the installation of the new security attributes of a
     process being transformed by an execve operation.  The new credentials
-    have, by this point, been set to \ ``current``\ ->cred.  \ ``bprm``\  points to the
+    have, by this point, been set to \ ``current->cred``\ .  \ ``bprm``\  points to the
     linux_binprm structure.  This hook is a good place to perform state
     changes on the process such as clearing out non-inheritable signal
     state.  This is called immediately after \ :c:func:`commit_creds`\ .
@@ -584,7 +585,7 @@ path_chroot
     Return 0 if permission is granted.
 
 inode_alloc_security
-    Allocate and attach a security structure to \ ``inode``\ ->i_security.  The
+    Allocate and attach a security structure to \ ``inode->i_security``\ .  The
     i_security field is initialized to NULL when the inode structure is
     allocated.
     \ ``inode``\  contains the inode structure.
@@ -592,7 +593,7 @@ inode_alloc_security
 
 inode_free_security
     \ ``inode``\  contains the inode structure.
-    Deallocate the inode security structure and set \ ``inode``\ ->i_security to
+    Deallocate the inode security structure and set \ ``inode->i_security``\  to
     NULL.
 
 inode_init_security
@@ -951,6 +952,11 @@ kernel_module_request
     \ ``kmod_name``\  name of the module requested by the kernel
     Return 0 if successful.
 
+kernel_load_data
+    Load data provided by userspace.
+    \ ``id``\  kernel load data identifier
+    Return 0 if permission is granted.
+
 kernel_read_file
     Read a file specified by userspace.
     \ ``file``\  contains the file structure pointing to the file being read
@@ -972,7 +978,7 @@ task_fix_setuid
     identity attributes of the current process.  The \ ``flags``\  parameter
     indicates which of the set\*uid system calls invoked this hook.  If
     \ ``new``\  is the set of credentials that will be installed.  Modifications
-    should be made to this rather than to \ ``current``\ ->cred.
+    should be made to this rather than to \ ``current->cred``\ .
     \ ``old``\  is the set of credentials that are being replaces
     \ ``flags``\  contains one of the LSM_SETID\_\* values.
     Return 0 on success.
@@ -1063,7 +1069,7 @@ task_movememory
 
 task_kill
     Check permission before sending signal \ ``sig``\  to \ ``p``\ .  \ ``info``\  can be NULL,
-    the constant 1, or a pointer to a siginfo structure.  If \ ``info``\  is 1 or
+    the constant 1, or a pointer to a kernel_siginfo structure.  If \ ``info``\  is 1 or
     SI_FROMKERNEL(info) is true, then the signal should be viewed as coming
     from the kernel and should typically be permitted.
     SIGIO signals are handled separately by the send_sigiotask hook in
@@ -1545,7 +1551,7 @@ tun_dev_open
     \ ``security``\  pointer to the TUN devices's security structure.
 
 sctp_assoc_request
-    Passes the \ ``ep``\  and \ ``chunk``\ ->skb of the association INIT packet to
+    Passes the \ ``ep``\  and \ ``chunk->skb``\  of the association INIT packet to
     the security module.
     \ ``ep``\  pointer to sctp endpoint structure.
     \ ``skb``\  pointer to skbuff of association packet.

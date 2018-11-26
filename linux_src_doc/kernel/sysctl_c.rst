@@ -61,13 +61,15 @@ proc_first_pos_non_zero_ignore
 
 .. c:function:: bool proc_first_pos_non_zero_ignore(loff_t *ppos, struct ctl_table *table)
 
-    check if firs position is allowed
+    check if first position is allowed
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
 .. _`proc_first_pos_non_zero_ignore.description`:
 
@@ -76,7 +78,7 @@ Description
 
 Returns true if the first position is non-zero and the sysctl_writes_strict
 mode indicates this is not allowed for numeric input types. String proc
-hadlers can ignore the return value.
+handlers can ignore the return value.
 
 .. _`proc_dostring`:
 
@@ -87,20 +89,25 @@ proc_dostring
 
     read a string sysctl
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
 .. _`proc_dostring.description`:
 
@@ -125,26 +132,33 @@ proc_get_long
 
     reads an ASCII formatted integer from a user buffer
 
-    :param char \*\*buf:
+    :param buf:
         a kernel buffer
+    :type buf: char \*\*
 
-    :param size_t \*size:
+    :param size:
         size of the kernel buffer
+    :type size: size_t \*
 
-    :param unsigned long \*val:
+    :param val:
         this is where the number will be stored
+    :type val: unsigned long \*
 
-    :param bool \*neg:
+    :param neg:
         set to \ ``TRUE``\  if number is negative
+    :type neg: bool \*
 
-    :param const char \*perm_tr:
+    :param perm_tr:
         a vector which contains the allowed trailers
+    :type perm_tr: const char \*
 
-    :param unsigned perm_tr_len:
+    :param perm_tr_len:
         size of the perm_tr vector
+    :type perm_tr_len: unsigned
 
-    :param char \*tr:
+    :param tr:
         pointer to store the trailer character
+    :type tr: char \*
 
 .. _`proc_get_long.description`:
 
@@ -165,17 +179,21 @@ proc_put_long
 
     converts an integer to a decimal ASCII formatted string
 
-    :param void __user \*\*buf:
+    :param buf:
         the user buffer
+    :type buf: void __user \*\*
 
-    :param size_t \*size:
+    :param size:
         the size of the user buffer
+    :type size: size_t \*
 
-    :param unsigned long val:
+    :param val:
         the integer to be converted
+    :type val: unsigned long
 
-    :param bool neg:
+    :param neg:
         sign of the number, \ ``TRUE``\  for negative
+    :type neg: bool
 
 .. _`proc_put_long.description`:
 
@@ -194,20 +212,25 @@ proc_dointvec
 
     read a vector of integers
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
 .. _`proc_dointvec.description`:
 
@@ -228,20 +251,25 @@ proc_douintvec
 
     read a vector of unsigned integers
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
 .. _`proc_douintvec.description`:
 
@@ -303,20 +331,25 @@ proc_dointvec_minmax
 
     read a vector of integers with min/max values
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
 .. _`proc_dointvec_minmax.description`:
 
@@ -381,20 +414,25 @@ proc_douintvec_minmax
 
     read a vector of unsigned ints with min/max values
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
 .. _`proc_douintvec_minmax.description`:
 
@@ -421,20 +459,25 @@ proc_doulongvec_minmax
 
     read a vector of long integers with min/max values
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
 .. _`proc_doulongvec_minmax.description`:
 
@@ -458,20 +501,25 @@ proc_doulongvec_ms_jiffies_minmax
 
     read a vector of millisecond values with min/max values
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
 .. _`proc_doulongvec_ms_jiffies_minmax.description`:
 
@@ -496,20 +544,25 @@ proc_dointvec_jiffies
 
     read a vector of integers as seconds
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
 .. _`proc_dointvec_jiffies.description`:
 
@@ -532,20 +585,25 @@ proc_dointvec_userhz_jiffies
 
     read a vector of integers as 1/USER_HZ seconds
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         pointer to the file position
+    :type ppos: loff_t \*
 
 .. _`proc_dointvec_userhz_jiffies.description`:
 
@@ -568,20 +626,25 @@ proc_dointvec_ms_jiffies
 
     read a vector of integers as 1 milliseconds
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         the current position in the file
+    :type ppos: loff_t \*
 
 .. _`proc_dointvec_ms_jiffies.description`:
 
@@ -604,20 +667,25 @@ proc_do_large_bitmap
 
     read/write from/to a large bitmap
 
-    :param struct ctl_table \*table:
+    :param table:
         the sysctl table
+    :type table: struct ctl_table \*
 
-    :param int write:
+    :param write:
         \ ``TRUE``\  if this is a write to the sysctl file
+    :type write: int
 
-    :param void __user \*buffer:
+    :param buffer:
         the user buffer
+    :type buffer: void __user \*
 
-    :param size_t \*lenp:
+    :param lenp:
         the size of the user buffer
+    :type lenp: size_t \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         file position
+    :type ppos: loff_t \*
 
 .. _`proc_do_large_bitmap.description`:
 

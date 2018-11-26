@@ -10,25 +10,29 @@ __wake_up
 
     wake up threads blocked on a waitqueue.
 
-    :param struct wait_queue_head \*wq_head:
+    :param wq_head:
         the waitqueue
+    :type wq_head: struct wait_queue_head \*
 
-    :param unsigned int mode:
+    :param mode:
         which threads
+    :type mode: unsigned int
 
-    :param int nr_exclusive:
+    :param nr_exclusive:
         how many wake-one or wake-many threads to wake up
+    :type nr_exclusive: int
 
-    :param void \*key:
+    :param key:
         is directly passed to the wakeup function
+    :type key: void \*
 
 .. _`__wake_up.description`:
 
 Description
 -----------
 
-It may be assumed that this function implies a write memory barrier before
-changing the task state if and only if any tasks are woken up.
+If this function wakes up a task, it executes a full memory barrier before
+accessing the task state.
 
 .. _`__wake_up_sync_key`:
 
@@ -39,17 +43,21 @@ __wake_up_sync_key
 
     wake up threads blocked on a waitqueue.
 
-    :param struct wait_queue_head \*wq_head:
+    :param wq_head:
         the waitqueue
+    :type wq_head: struct wait_queue_head \*
 
-    :param unsigned int mode:
+    :param mode:
         which threads
+    :type mode: unsigned int
 
-    :param int nr_exclusive:
+    :param nr_exclusive:
         how many wake-one or wake-many threads to wake up
+    :type nr_exclusive: int
 
-    :param void \*key:
+    :param key:
         opaque value to be passed to wakeup targets
+    :type key: void \*
 
 .. _`__wake_up_sync_key.description`:
 
@@ -63,8 +71,8 @@ with each other. This can prevent needless bouncing between CPUs.
 
 On UP it can prevent extra preemption.
 
-It may be assumed that this function implies a write memory barrier before
-changing the task state if and only if any tasks are woken up.
+If this function wakes up a task, it executes a full memory barrier before
+accessing the task state.
 
 .. _`finish_wait`:
 
@@ -75,11 +83,13 @@ finish_wait
 
     clean up after waiting in a queue
 
-    :param struct wait_queue_head \*wq_head:
+    :param wq_head:
         waitqueue waited on
+    :type wq_head: struct wait_queue_head \*
 
-    :param struct wait_queue_entry \*wq_entry:
+    :param wq_entry:
         wait descriptor
+    :type wq_entry: struct wait_queue_entry \*
 
 .. _`finish_wait.description`:
 

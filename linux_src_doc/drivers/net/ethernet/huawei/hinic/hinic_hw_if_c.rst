@@ -10,26 +10,33 @@ hinic_msix_attr_set
 
     set message attribute for msix entry
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
-    :param u16 msix_index:
+    :param msix_index:
         msix_index
+    :type msix_index: u16
 
-    :param u8 pending_limit:
+    :param pending_limit:
         the maximum pending interrupt events (unit 8)
+    :type pending_limit: u8
 
-    :param u8 coalesc_timer:
+    :param coalesc_timer:
         coalesc period for interrupt (unit 8 us)
+    :type coalesc_timer: u8
 
-    :param u8 lli_timer:
+    :param lli_timer:
         replenishing period for low latency credit (unit 8 us)
+    :type lli_timer: u8
 
-    :param u8 lli_credit_limit:
+    :param lli_credit_limit:
         maximum credits for low latency msix messages (unit 8)
+    :type lli_credit_limit: u8
 
-    :param u8 resend_timer:
+    :param resend_timer:
         maximum wait for resending msix (unit coalesc period)
+    :type resend_timer: u8
 
 .. _`hinic_msix_attr_set.description`:
 
@@ -47,26 +54,33 @@ hinic_msix_attr_get
 
     get message attribute of msix entry
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
-    :param u16 msix_index:
+    :param msix_index:
         msix_index
+    :type msix_index: u16
 
-    :param u8 \*pending_limit:
+    :param pending_limit:
         the maximum pending interrupt events (unit 8)
+    :type pending_limit: u8 \*
 
-    :param u8 \*coalesc_timer:
+    :param coalesc_timer:
         coalesc period for interrupt (unit 8 us)
+    :type coalesc_timer: u8 \*
 
-    :param u8 \*lli_timer:
+    :param lli_timer:
         replenishing period for low latency credit (unit 8 us)
+    :type lli_timer: u8 \*
 
-    :param u8 \*lli_credit_limit:
+    :param lli_credit_limit:
         maximum credits for low latency msix messages (unit 8)
+    :type lli_credit_limit: u8 \*
 
-    :param u8 \*resend_timer:
+    :param resend_timer:
         maximum wait for resending msix (unit coalesc period)
+    :type resend_timer: u8 \*
 
 .. _`hinic_msix_attr_get.description`:
 
@@ -84,11 +98,13 @@ hinic_msix_attr_cnt_clear
 
     clear message attribute counters for msix entry
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
-    :param u16 msix_index:
+    :param msix_index:
         msix_index
+    :type msix_index: u16
 
 .. _`hinic_msix_attr_cnt_clear.description`:
 
@@ -106,11 +122,13 @@ hinic_set_pf_action
 
     set action on pf channel
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
-    :param enum hinic_pf_action action:
+    :param action:
         action on pf channel
+    :type action: enum hinic_pf_action
 
 .. _`hinic_set_pf_action.description`:
 
@@ -128,8 +146,9 @@ hwif_ready
 
     test if the HW is ready for use
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
 .. _`hwif_ready.description`:
 
@@ -147,14 +166,17 @@ set_hwif_attr
 
     set the attributes in the relevant members in hwif
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
-    :param u32 attr0:
+    :param attr0:
         the first attribute that was read from the hw
+    :type attr0: u32
 
-    :param u32 attr1:
+    :param attr1:
         the second attribute that was read from the hw
+    :type attr1: u32
 
 .. _`read_hwif_attr`:
 
@@ -165,8 +187,9 @@ read_hwif_attr
 
     read the attributes and set members in hwif
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
 .. _`set_ppf`:
 
@@ -177,8 +200,9 @@ set_ppf
 
     try to set hwif as ppf and set the type of hwif in this case
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
 .. _`set_dma_attr`:
 
@@ -189,26 +213,33 @@ set_dma_attr
 
     set the dma attributes in the HW
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
-    :param u32 entry_idx:
+    :param entry_idx:
         the entry index in the dma table
+    :type entry_idx: u32
 
-    :param u8 st:
+    :param st:
         PCIE TLP steering tag
+    :type st: u8
 
-    :param u8 at:
+    :param at:
         PCIE TLP AT field
+    :type at: u8
 
-    :param u8 ph:
+    :param ph:
         PCIE TLP Processing Hint field
+    :type ph: u8
 
-    :param enum hinic_pcie_nosnoop no_snooping:
+    :param no_snooping:
         PCIE TLP No snooping
+    :type no_snooping: enum hinic_pcie_nosnoop
 
-    :param enum hinic_pcie_tph tph_en:
+    :param tph_en:
         PCIE TLP Processing Hint Enable
+    :type tph_en: enum hinic_pcie_tph
 
 .. _`dma_attr_init`:
 
@@ -219,8 +250,9 @@ dma_attr_init
 
     initialize the the default dma attributes
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
 .. _`hinic_init_hwif`:
 
@@ -231,11 +263,13 @@ hinic_init_hwif
 
     initialize the hw interface
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         the pci device for acessing PCI resources
+    :type pdev: struct pci_dev \*
 
 .. _`hinic_init_hwif.description`:
 
@@ -253,8 +287,9 @@ hinic_free_hwif
 
     free the HW interface
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
 .. This file was automatic generated / don't edit.
 

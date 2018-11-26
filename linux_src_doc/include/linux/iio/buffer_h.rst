@@ -10,14 +10,17 @@ iio_push_to_buffers_with_timestamp
 
     push data and timestamp to buffers
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         iio_dev structure for device.
+    :type indio_dev: struct iio_dev \*
 
-    :param void \*data:
+    :param data:
         sample data
+    :type data: void \*
 
-    :param int64_t timestamp:
+    :param timestamp:
         timestamp for the sample data
+    :type timestamp: int64_t
 
 .. _`iio_push_to_buffers_with_timestamp.description`:
 

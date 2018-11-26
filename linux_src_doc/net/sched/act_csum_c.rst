@@ -10,17 +10,21 @@ tcf_csum_skb_nextlayer
 
     Get next layer pointer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff to use
+    :type skb: struct sk_buff \*
 
-    :param unsigned int ihl:
+    :param ihl:
         previous summed headers length
+    :type ihl: unsigned int
 
-    :param unsigned int ipl:
+    :param ipl:
         complete packet length
+    :type ipl: unsigned int
 
-    :param unsigned int jhl:
+    :param jhl:
         next header length
+    :type jhl: unsigned int
 
 .. _`tcf_csum_skb_nextlayer.description`:
 

@@ -10,8 +10,9 @@ vmcore_alloc_buf
 
     allocate buffer in vmalloc memory
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`vmcore_alloc_buf.description`:
 
@@ -33,8 +34,9 @@ update_note_header_size_elf64
 
     update p_memsz member of each PT_NOTE entry
 
-    :param const Elf64_Ehdr \*ehdr_ptr:
+    :param ehdr_ptr:
         ELF header
+    :type ehdr_ptr: const Elf64_Ehdr \*
 
 .. _`update_note_header_size_elf64.description`:
 
@@ -54,14 +56,17 @@ get_note_number_and_size_elf64
 
     get the number of PT_NOTE program headers and sum of real size of their ELF note segment headers and data.
 
-    :param const Elf64_Ehdr \*ehdr_ptr:
+    :param ehdr_ptr:
         ELF header
+    :type ehdr_ptr: const Elf64_Ehdr \*
 
-    :param int \*nr_ptnote:
+    :param nr_ptnote:
         buffer for the number of PT_NOTE program headers
+    :type nr_ptnote: int \*
 
-    :param u64 \*sz_ptnote:
+    :param sz_ptnote:
         buffer for size of unique PT_NOTE program header
+    :type sz_ptnote: u64 \*
 
 .. _`get_note_number_and_size_elf64.description`:
 
@@ -86,11 +91,13 @@ copy_notes_elf64
 
     copy ELF note segments in a given buffer
 
-    :param const Elf64_Ehdr \*ehdr_ptr:
+    :param ehdr_ptr:
         ELF header
+    :type ehdr_ptr: const Elf64_Ehdr \*
 
-    :param char \*notes_buf:
+    :param notes_buf:
         buffer into which ELF note segments are copied
+    :type notes_buf: char \*
 
 .. _`copy_notes_elf64.description`:
 
@@ -116,8 +123,9 @@ update_note_header_size_elf32
 
     update p_memsz member of each PT_NOTE entry
 
-    :param const Elf32_Ehdr \*ehdr_ptr:
+    :param ehdr_ptr:
         ELF header
+    :type ehdr_ptr: const Elf32_Ehdr \*
 
 .. _`update_note_header_size_elf32.description`:
 
@@ -137,14 +145,17 @@ get_note_number_and_size_elf32
 
     get the number of PT_NOTE program headers and sum of real size of their ELF note segment headers and data.
 
-    :param const Elf32_Ehdr \*ehdr_ptr:
+    :param ehdr_ptr:
         ELF header
+    :type ehdr_ptr: const Elf32_Ehdr \*
 
-    :param int \*nr_ptnote:
+    :param nr_ptnote:
         buffer for the number of PT_NOTE program headers
+    :type nr_ptnote: int \*
 
-    :param u64 \*sz_ptnote:
+    :param sz_ptnote:
         buffer for size of unique PT_NOTE program header
+    :type sz_ptnote: u64 \*
 
 .. _`get_note_number_and_size_elf32.description`:
 
@@ -169,11 +180,13 @@ copy_notes_elf32
 
     copy ELF note segments in a given buffer
 
-    :param const Elf32_Ehdr \*ehdr_ptr:
+    :param ehdr_ptr:
         ELF header
+    :type ehdr_ptr: const Elf32_Ehdr \*
 
-    :param char \*notes_buf:
+    :param notes_buf:
         buffer into which ELF note segments are copied
+    :type notes_buf: char \*
 
 .. _`copy_notes_elf32.description`:
 
@@ -199,14 +212,17 @@ vmcoredd_write_header
 
     Write vmcore device dump header at the beginning of the dump's buffer.
 
-    :param void \*buf:
+    :param buf:
         Output buffer where the note is written
+    :type buf: void \*
 
-    :param struct vmcoredd_data \*data:
+    :param data:
         Dump info
+    :type data: struct vmcoredd_data \*
 
-    :param u32 size:
+    :param size:
         Size of the dump
+    :type size: u32
 
 .. _`vmcoredd_write_header.description`:
 
@@ -224,14 +240,17 @@ vmcoredd_update_program_headers
 
     Update all Elf program headers
 
-    :param char \*elfptr:
+    :param elfptr:
         Pointer to elf header
+    :type elfptr: char \*
 
-    :param size_t elfnotesz:
+    :param elfnotesz:
         Size of elf notes aligned to page size
+    :type elfnotesz: size_t
 
-    :param size_t vmcoreddsz:
+    :param vmcoreddsz:
         Size of device dumps to be added to elf note header
+    :type vmcoreddsz: size_t
 
 .. _`vmcoredd_update_program_headers.description`:
 
@@ -250,8 +269,9 @@ vmcoredd_update_size
 
     Update the total size of the device dumps and update Elf header
 
-    :param size_t dump_size:
+    :param dump_size:
         Size of the current device dump to be added to total size
+    :type dump_size: size_t
 
 .. _`vmcoredd_update_size.description`:
 
@@ -271,8 +291,9 @@ vmcore_add_device_dump
 
     Add a buffer containing device dump to vmcore
 
-    :param struct vmcoredd_data \*data:
+    :param data:
         dump info.
+    :type data: struct vmcoredd_data \*
 
 .. _`vmcore_add_device_dump.description`:
 

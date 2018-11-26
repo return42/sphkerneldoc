@@ -10,8 +10,9 @@ translate_esas2r_event_level_to_kernel
 
     defined logging event level to a kernel logging level.
 
-    :param const long level:
+    :param level:
         *undescribed*
+    :type level: const long
 
 .. _`translate_esas2r_event_level_to_kernel.description`:
 
@@ -31,17 +32,21 @@ esas2r_log_master
 
     outlined by the formatting string, the input device information and the substitution arguments and output the resulting string to the system log.
 
-    :param const long level:
+    :param level:
         *undescribed*
+    :type level: const long
 
-    :param const struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: const struct device \*
 
-    :param const char \*format:
+    :param format:
         *undescribed*
+    :type format: const char \*
 
-    :param va_list args:
+    :param args:
         *undescribed*
+    :type args: va_list
 
 .. _`esas2r_log_master.description`:
 
@@ -62,11 +67,13 @@ esas2r_log
 
 .. c:function:: int esas2r_log(const long level, const char *format,  ...)
 
-    :param const long level:
+    :param level:
         *undescribed*
+    :type level: const long
 
-    :param const char \*format:
+    :param format:
         *undescribed*
+    :type format: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -91,14 +98,17 @@ esas2r_log_dev
 
     device information.
 
-    :param const long level:
+    :param level:
         *undescribed*
+    :type level: const long
 
-    :param const struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: const struct device \*
 
-    :param const char \*format:
+    :param format:
         *undescribed*
+    :type format: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -124,14 +134,17 @@ esas2r_log_hexdump
 
     device information.
 
-    :param const long level:
+    :param level:
         *undescribed*
+    :type level: const long
 
-    :param const void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`esas2r_log_hexdump.description`:
 

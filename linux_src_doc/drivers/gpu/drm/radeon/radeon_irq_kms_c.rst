@@ -10,11 +10,13 @@ radeon_driver_irq_handler_kms
 
     irq handler for KMS
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`radeon_driver_irq_handler_kms.description`:
 
@@ -34,8 +36,9 @@ radeon_hotplug_work_func
 
     display hotplug work handler
 
-    :param struct work_struct \*work:
+    :param work:
         work struct
+    :type work: struct work_struct \*
 
 .. _`radeon_hotplug_work_func.description`:
 
@@ -57,8 +60,9 @@ radeon_driver_irq_preinstall_kms
 
     drm irq preinstall callback
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
 .. _`radeon_driver_irq_preinstall_kms.description`:
 
@@ -77,8 +81,9 @@ radeon_driver_irq_postinstall_kms
 
     drm irq preinstall callback
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
 .. _`radeon_driver_irq_postinstall_kms.description`:
 
@@ -97,8 +102,9 @@ radeon_driver_irq_uninstall_kms
 
     drm irq uninstall callback
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
 .. _`radeon_driver_irq_uninstall_kms.description`:
 
@@ -116,8 +122,9 @@ radeon_msi_ok
 
     asic specific msi checks
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_msi_ok.description`:
 
@@ -138,8 +145,9 @@ radeon_irq_kms_init
 
     init driver interrupt info
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_irq_kms_init.description`:
 
@@ -158,8 +166,9 @@ radeon_irq_kms_fini
 
     tear down driver interrupt info
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_irq_kms_fini.description`:
 
@@ -177,11 +186,13 @@ radeon_irq_kms_sw_irq_get
 
     enable software interrupt
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring whose interrupt you want to enable
+    :type ring: int
 
 .. _`radeon_irq_kms_sw_irq_get.description`:
 
@@ -201,11 +212,13 @@ radeon_irq_kms_sw_irq_get_delayed
 
     enable software interrupt
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring whose interrupt you want to enable
+    :type ring: int
 
 .. _`radeon_irq_kms_sw_irq_get_delayed.description`:
 
@@ -225,11 +238,13 @@ radeon_irq_kms_sw_irq_put
 
     disable software interrupt
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring whose interrupt you want to disable
+    :type ring: int
 
 .. _`radeon_irq_kms_sw_irq_put.description`:
 
@@ -249,11 +264,13 @@ radeon_irq_kms_pflip_irq_get
 
     enable pageflip interrupt
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int crtc:
+    :param crtc:
         crtc whose interrupt you want to enable
+    :type crtc: int
 
 .. _`radeon_irq_kms_pflip_irq_get.description`:
 
@@ -272,11 +289,13 @@ radeon_irq_kms_pflip_irq_put
 
     disable pageflip interrupt
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int crtc:
+    :param crtc:
         crtc whose interrupt you want to disable
+    :type crtc: int
 
 .. _`radeon_irq_kms_pflip_irq_put.description`:
 
@@ -295,11 +314,13 @@ radeon_irq_kms_enable_afmt
 
     enable audio format change interrupt
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int block:
+    :param block:
         afmt block whose interrupt you want to enable
+    :type block: int
 
 .. _`radeon_irq_kms_enable_afmt.description`:
 
@@ -317,11 +338,13 @@ radeon_irq_kms_disable_afmt
 
     disable audio format change interrupt
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int block:
+    :param block:
         afmt block whose interrupt you want to disable
+    :type block: int
 
 .. _`radeon_irq_kms_disable_afmt.description`:
 
@@ -339,11 +362,13 @@ radeon_irq_kms_enable_hpd
 
     enable hotplug detect interrupt
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param unsigned hpd_mask:
+    :param hpd_mask:
         mask of hpd pins you want to enable.
+    :type hpd_mask: unsigned
 
 .. _`radeon_irq_kms_enable_hpd.description`:
 
@@ -361,11 +386,13 @@ radeon_irq_kms_disable_hpd
 
     disable hotplug detect interrupt
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param unsigned hpd_mask:
+    :param hpd_mask:
         mask of hpd pins you want to disable.
+    :type hpd_mask: unsigned
 
 .. _`radeon_irq_kms_disable_hpd.description`:
 
@@ -383,23 +410,29 @@ radeon_irq_kms_set_irq_n_enabled
 
     helper for updating interrupt enable registers
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 reg:
+    :param reg:
         the register to write to enable/disable interrupts
+    :type reg: u32
 
-    :param u32 mask:
+    :param mask:
         the mask that enables the interrupts
+    :type mask: u32
 
-    :param bool enable:
+    :param enable:
         whether to enable or disable the interrupt register
+    :type enable: bool
 
-    :param const char \*name:
+    :param name:
         the name of the interrupt register to print to the kernel log
+    :type name: const char \*
 
-    :param unsigned n:
+    :param n:
         *undescribed*
+    :type n: unsigned
 
 .. _`radeon_irq_kms_set_irq_n_enabled.description`:
 

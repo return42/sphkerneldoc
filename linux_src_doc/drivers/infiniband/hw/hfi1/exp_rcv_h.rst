@@ -10,11 +10,13 @@ hfi1_tid_group_to_idx
 
     convert an index to a group \ ``rcd``\  - the receive context \ ``grp``\  - the group pointer
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct hfi1_ctxtdata \*
 
-    :param struct tid_group \*grp:
+    :param grp:
         *undescribed*
+    :type grp: struct tid_group \*
 
 .. _`hfi1_idx_to_tid_group`:
 
@@ -25,11 +27,13 @@ hfi1_idx_to_tid_group
 
     convert a group to an index \ ``rcd``\  - the receive context \ ``idx``\  - the index
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct hfi1_ctxtdata \*
 
-    :param u16 idx:
+    :param idx:
         *undescribed*
+    :type idx: u16
 
 .. This file was automatic generated / don't edit.
 

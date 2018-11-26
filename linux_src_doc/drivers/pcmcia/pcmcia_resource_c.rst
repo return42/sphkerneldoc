@@ -10,11 +10,13 @@ release_io_space
 
     release IO ports allocated with \ :c:func:`alloc_io_space`\ 
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         pcmcia socket
+    :type s: struct pcmcia_socket \*
 
-    :param struct resource \*res:
+    :param res:
         resource to release
+    :type res: struct resource \*
 
 .. _`alloc_io_space`:
 
@@ -25,14 +27,17 @@ alloc_io_space
 
     allocate IO ports for use by a PCMCIA device
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         pcmcia socket
+    :type s: struct pcmcia_socket \*
 
-    :param struct resource \*res:
+    :param res:
         resource to allocate (begin: begin, end: size)
+    :type res: struct resource \*
 
-    :param unsigned int lines:
+    :param lines:
         number of IO lines decoded by the PCMCIA card
+    :type lines: unsigned int
 
 .. _`alloc_io_space.description`:
 
@@ -50,14 +55,17 @@ pcmcia_access_config
 
     read or write card configuration registers
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         *undescribed*
+    :type p_dev: struct pcmcia_device \*
 
-    :param off_t where:
+    :param where:
         *undescribed*
+    :type where: off_t
 
-    :param u8 \*val:
+    :param val:
         *undescribed*
+    :type val: u8 \*
 
     :param int (\*accessf)(struct pcmcia_socket \*s, int attr, unsigned int addr, unsigned int len, void \*ptr):
         *undescribed*
@@ -81,14 +89,17 @@ pcmcia_read_config_byte
 
     read a byte from a card configuration register
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         *undescribed*
+    :type p_dev: struct pcmcia_device \*
 
-    :param off_t where:
+    :param where:
         *undescribed*
+    :type where: off_t
 
-    :param u8 \*val:
+    :param val:
         *undescribed*
+    :type val: u8 \*
 
 .. _`pcmcia_read_config_byte.description`:
 
@@ -107,14 +118,17 @@ pcmcia_write_config_byte
 
     write a byte to a card configuration register
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         *undescribed*
+    :type p_dev: struct pcmcia_device \*
 
-    :param off_t where:
+    :param where:
         *undescribed*
+    :type where: off_t
 
-    :param u8 val:
+    :param val:
         *undescribed*
+    :type val: u8
 
 .. _`pcmcia_write_config_byte.description`:
 
@@ -133,14 +147,17 @@ pcmcia_map_mem_page
 
     modify iomem window to point to a different offset
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         pcmcia device
+    :type p_dev: struct pcmcia_device \*
 
-    :param struct resource \*res:
+    :param res:
         iomem resource already enabled by \ :c:func:`pcmcia_request_window`\ 
+    :type res: struct resource \*
 
-    :param unsigned int offset:
+    :param offset:
         card_offset to map
+    :type offset: unsigned int
 
 .. _`pcmcia_map_mem_page.description`:
 
@@ -160,8 +177,9 @@ pcmcia_fixup_iowidth
 
     reduce io width to 8bit
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         pcmcia device
+    :type p_dev: struct pcmcia_device \*
 
 .. _`pcmcia_fixup_iowidth.description`:
 
@@ -181,11 +199,13 @@ pcmcia_fixup_vpp
 
     set Vpp to a new voltage level
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         pcmcia device
+    :type p_dev: struct pcmcia_device \*
 
-    :param unsigned char new_vpp:
+    :param new_vpp:
         new Vpp voltage
+    :type new_vpp: unsigned char
 
 .. _`pcmcia_fixup_vpp.description`:
 
@@ -205,8 +225,9 @@ pcmcia_release_configuration
 
     physically disable a PCMCIA device
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         pcmcia device
+    :type p_dev: struct pcmcia_device \*
 
 .. _`pcmcia_release_configuration.description`:
 
@@ -229,8 +250,9 @@ pcmcia_release_io
 
     release I/O allocated by a PCMCIA device
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         pcmcia device
+    :type p_dev: struct pcmcia_device \*
 
 .. _`pcmcia_release_io.description`:
 
@@ -252,11 +274,13 @@ pcmcia_release_window
 
     release reserved iomem for PCMCIA devices
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         pcmcia device
+    :type p_dev: struct pcmcia_device \*
 
-    :param struct resource \*res:
+    :param res:
         iomem resource to release
+    :type res: struct resource \*
 
 .. _`pcmcia_release_window.description`:
 
@@ -275,8 +299,9 @@ pcmcia_enable_device
 
     set up and activate a PCMCIA device
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         the associated PCMCIA device
+    :type p_dev: struct pcmcia_device \*
 
 .. _`pcmcia_enable_device.description`:
 
@@ -284,7 +309,7 @@ Description
 -----------
 
 \ :c:func:`pcmcia_enable_device`\  physically enables a PCMCIA device. It parses
-the flags passed to in \ ``flags``\  and stored in \ ``p_dev``\ ->flags and sets up
+the flags passed to in \ ``flags``\  and stored in \ ``p_dev->flags``\  and sets up
 the Vpp voltage, enables the speaker line, I/O ports and store proper
 values to configuration registers.
 
@@ -297,8 +322,9 @@ pcmcia_request_io
 
     attempt to reserve port ranges for PCMCIA devices
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         the associated PCMCIA device
+    :type p_dev: struct pcmcia_device \*
 
 .. _`pcmcia_request_io.description`:
 
@@ -306,10 +332,10 @@ Description
 -----------
 
 \ :c:func:`pcmcia_request_io`\  attempts to reserve the IO port ranges specified in
-\ :c:type:`struct pcmcia_device <pcmcia_device>`\  \ ``p_dev``\ ->resource[0] and \ ``p_dev``\ ->resource[1]. The
+\ :c:type:`struct pcmcia_device <pcmcia_device>`\  \ ``p_dev->resource``\ [0] and \ ``p_dev->resource``\ [1]. The
 "start" value is the requested start of the IO port resource; "end"
 reflects the number of ports requested. The number of IO lines requested
-is specified in \ :c:type:`struct pcmcia_device <pcmcia_device>`\  \ ``p_dev``\ ->io_lines.
+is specified in \ :c:type:`struct pcmcia_device <pcmcia_device>`\  \ ``p_dev->io_lines``\ .
 
 .. _`pcmcia_request_irq`:
 
@@ -320,11 +346,13 @@ pcmcia_request_irq
 
     attempt to request a IRQ for a PCMCIA device
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         the associated PCMCIA device
+    :type p_dev: struct pcmcia_device \*
 
-    :param irq_handler_t handler:
+    :param handler:
         IRQ handler to register
+    :type handler: irq_handler_t
 
 .. _`pcmcia_request_irq.description`:
 
@@ -337,32 +365,6 @@ Drivers are free to use \ :c:func:`request_irq`\  directly, but then they need t
 call \ :c:func:`free_irq`\  themselfves, too. Also, only \ ``IRQF_SHARED``\  capable IRQ
 handlers are allowed.
 
-.. _`__pcmcia_request_exclusive_irq`:
-
-\__pcmcia_request_exclusive_irq
-===============================
-
-.. c:function:: int __pcmcia_request_exclusive_irq(struct pcmcia_device *p_dev, irq_handler_t handler)
-
-    attempt to request an exclusive IRQ first
-
-    :param struct pcmcia_device \*p_dev:
-        the associated PCMCIA device
-
-    :param irq_handler_t handler:
-        IRQ handler to register
-
-.. _`__pcmcia_request_exclusive_irq.description`:
-
-Description
------------
-
-\ :c:func:`pcmcia_request_exclusive_irq`\  is a wrapper around \ :c:func:`request_irq`\  which
-attempts first to request an exclusive IRQ. If it fails, it also accepts
-a shared IRQ, but prints out a warning. PCMCIA drivers should allow for
-IRQ sharing and either use request_irq directly (then they need to call
-\ :c:func:`free_irq`\  themselves, too), or the \ :c:func:`pcmcia_request_irq`\  function.
-
 .. _`pcmcia_setup_isa_irq`:
 
 pcmcia_setup_isa_irq
@@ -372,11 +374,13 @@ pcmcia_setup_isa_irq
 
     determine whether an ISA IRQ can be used \ ``p_dev``\  - the associated PCMCIA device
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         *undescribed*
+    :type p_dev: struct pcmcia_device \*
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
 .. _`pcmcia_setup_isa_irq.locking-note`:
 
@@ -394,8 +398,9 @@ pcmcia_setup_irq
 
     determine IRQ to be used for device \ ``p_dev``\  - the associated PCMCIA device
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         *undescribed*
+    :type p_dev: struct pcmcia_device \*
 
 .. _`pcmcia_setup_irq.locking-note`:
 
@@ -413,14 +418,17 @@ pcmcia_request_window
 
     attempt to reserve iomem for PCMCIA devices
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         the associated PCMCIA device
+    :type p_dev: struct pcmcia_device \*
 
-    :param struct resource \*res:
+    :param res:
         \ :c:type:`struct resource <resource>`\  pointing to p_dev->resource[2..5]
+    :type res: struct resource \*
 
-    :param unsigned int speed:
+    :param speed:
         access speed
+    :type speed: unsigned int
 
 .. _`pcmcia_request_window.description`:
 
@@ -429,7 +437,7 @@ Description
 
 \ :c:func:`pcmcia_request_window`\  attepts to reserve an iomem ranges specified in
 \ :c:type:`struct resource <resource>`\  \ ``res``\  pointing to one of the entries in
-\ :c:type:`struct pcmcia_device <pcmcia_device>`\  \ ``p_dev``\ ->resource[2..5]. The "start" value is the
+\ :c:type:`struct pcmcia_device <pcmcia_device>`\  \ ``p_dev->resource``\ [2..5]. The "start" value is the
 requested start of the IO mem resource; "end" reflects the size
 requested.
 
@@ -442,8 +450,9 @@ pcmcia_disable_device
 
     disable and clean up a PCMCIA device
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         the associated PCMCIA device
+    :type p_dev: struct pcmcia_device \*
 
 .. _`pcmcia_disable_device.description`:
 

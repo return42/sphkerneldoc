@@ -10,20 +10,25 @@ netlbl_cfg_map_del
 
     Remove a NetLabel/LSM domain mapping
 
-    :param const char \*domain:
+    :param domain:
         the domain mapping to remove
+    :type domain: const char \*
 
-    :param u16 family:
+    :param family:
         address family
+    :type family: u16
 
-    :param const void \*addr:
+    :param addr:
         IP address
+    :type addr: const void \*
 
-    :param const void \*mask:
+    :param mask:
         IP address mask
+    :type mask: const void \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cfg_map_del.description`:
 
@@ -43,20 +48,25 @@ netlbl_cfg_unlbl_map_add
 
     Add a new unlabeled mapping
 
-    :param const char \*domain:
+    :param domain:
         the domain mapping to add
+    :type domain: const char \*
 
-    :param u16 family:
+    :param family:
         address family
+    :type family: u16
 
-    :param const void \*addr:
+    :param addr:
         IP address
+    :type addr: const void \*
 
-    :param const void \*mask:
+    :param mask:
         IP address mask
+    :type mask: const void \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cfg_unlbl_map_add.description`:
 
@@ -76,26 +86,33 @@ netlbl_cfg_unlbl_static_add
 
     Adds a new static label
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param const char \*dev_name:
+    :param dev_name:
         interface name
+    :type dev_name: const char \*
 
-    :param const void \*addr:
+    :param addr:
         IP address in network byte order (struct in[6]_addr)
+    :type addr: const void \*
 
-    :param const void \*mask:
+    :param mask:
         address mask in network byte order (struct in[6]_addr)
+    :type mask: const void \*
 
-    :param u16 family:
+    :param family:
         address family
+    :type family: u16
 
-    :param u32 secid:
+    :param secid:
         LSM secid value for the entry
+    :type secid: u32
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cfg_unlbl_static_add.description`:
 
@@ -115,23 +132,29 @@ netlbl_cfg_unlbl_static_del
 
     Removes an existing static label
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param const char \*dev_name:
+    :param dev_name:
         interface name
+    :type dev_name: const char \*
 
-    :param const void \*addr:
+    :param addr:
         IP address in network byte order (struct in[6]_addr)
+    :type addr: const void \*
 
-    :param const void \*mask:
+    :param mask:
         address mask in network byte order (struct in[6]_addr)
+    :type mask: const void \*
 
-    :param u16 family:
+    :param family:
         address family
+    :type family: u16
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cfg_unlbl_static_del.description`:
 
@@ -151,11 +174,13 @@ netlbl_cfg_cipsov4_add
 
     Add a new CIPSOv4 DOI definition
 
-    :param struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         CIPSO DOI definition
+    :type doi_def: struct cipso_v4_doi \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cfg_cipsov4_add.description`:
 
@@ -174,11 +199,13 @@ netlbl_cfg_cipsov4_del
 
     Remove an existing CIPSOv4 DOI definition
 
-    :param u32 doi:
+    :param doi:
         CIPSO DOI
+    :type doi: u32
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cfg_cipsov4_del.description`:
 
@@ -197,20 +224,25 @@ netlbl_cfg_cipsov4_map_add
 
     Add a new CIPSOv4 DOI mapping
 
-    :param u32 doi:
+    :param doi:
         the CIPSO DOI
+    :type doi: u32
 
-    :param const char \*domain:
+    :param domain:
         the domain mapping to add
+    :type domain: const char \*
 
-    :param const struct in_addr \*addr:
+    :param addr:
         IP address
+    :type addr: const struct in_addr \*
 
-    :param const struct in_addr \*mask:
+    :param mask:
         IP address mask
+    :type mask: const struct in_addr \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cfg_cipsov4_map_add.description`:
 
@@ -230,11 +262,13 @@ netlbl_cfg_calipso_add
 
     Add a new CALIPSO DOI definition
 
-    :param struct calipso_doi \*doi_def:
+    :param doi_def:
         CALIPSO DOI definition
+    :type doi_def: struct calipso_doi \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cfg_calipso_add.description`:
 
@@ -253,11 +287,13 @@ netlbl_cfg_calipso_del
 
     Remove an existing CALIPSO DOI definition
 
-    :param u32 doi:
+    :param doi:
         CALIPSO DOI
+    :type doi: u32
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cfg_calipso_del.description`:
 
@@ -276,20 +312,25 @@ netlbl_cfg_calipso_map_add
 
     Add a new CALIPSO DOI mapping
 
-    :param u32 doi:
+    :param doi:
         the CALIPSO DOI
+    :type doi: u32
 
-    :param const char \*domain:
+    :param domain:
         the domain mapping to add
+    :type domain: const char \*
 
-    :param const struct in6_addr \*addr:
+    :param addr:
         IP address
+    :type addr: const struct in6_addr \*
 
-    :param const struct in6_addr \*mask:
+    :param mask:
         IP address mask
+    :type mask: const struct in6_addr \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_cfg_calipso_map_add.description`:
 
@@ -309,17 +350,21 @@ mapping.  Returns zero on success, negative values on failure.
 
     Get a individual node from a catmap
 
-    :param struct netlbl_lsm_catmap \*\*catmap:
+    :param catmap:
         pointer to the category bitmap
+    :type catmap: struct netlbl_lsm_catmap \*\*
 
-    :param u32 offset:
+    :param offset:
         the requested offset
+    :type offset: u32
 
-    :param unsigned int cm_flags:
+    :param cm_flags:
         catmap flags, see \_CM_F\_\*
+    :type cm_flags: unsigned int
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         memory allocation flags
+    :type gfp_flags: gfp_t
 
 .. _`_netlbl_catmap_getnode.description`:
 
@@ -341,11 +386,13 @@ netlbl_catmap_walk
 
     Walk a LSM secattr catmap looking for a bit
 
-    :param struct netlbl_lsm_catmap \*catmap:
+    :param catmap:
         the category bitmap
+    :type catmap: struct netlbl_lsm_catmap \*
 
-    :param u32 offset:
+    :param offset:
         the offset to start searching at, in bits
+    :type offset: u32
 
 .. _`netlbl_catmap_walk.description`:
 
@@ -364,11 +411,13 @@ netlbl_catmap_walkrng
 
     Find the end of a string of set bits
 
-    :param struct netlbl_lsm_catmap \*catmap:
+    :param catmap:
         the category bitmap
+    :type catmap: struct netlbl_lsm_catmap \*
 
-    :param u32 offset:
+    :param offset:
         the offset to start searching at, in bits
+    :type offset: u32
 
 .. _`netlbl_catmap_walkrng.description`:
 
@@ -388,14 +437,17 @@ netlbl_catmap_getlong
 
     Export an unsigned long bitmap
 
-    :param struct netlbl_lsm_catmap \*catmap:
+    :param catmap:
         pointer to the category bitmap
+    :type catmap: struct netlbl_lsm_catmap \*
 
-    :param u32 \*offset:
+    :param offset:
         pointer to the requested offset
+    :type offset: u32 \*
 
-    :param unsigned long \*bitmap:
+    :param bitmap:
         the exported bitmap
+    :type bitmap: unsigned long \*
 
 .. _`netlbl_catmap_getlong.description`:
 
@@ -417,14 +469,17 @@ netlbl_catmap_setbit
 
     Set a bit in a LSM secattr catmap
 
-    :param struct netlbl_lsm_catmap \*\*catmap:
+    :param catmap:
         pointer to the category bitmap
+    :type catmap: struct netlbl_lsm_catmap \*\*
 
-    :param u32 bit:
+    :param bit:
         the bit to set
+    :type bit: u32
 
-    :param gfp_t flags:
+    :param flags:
         memory allocation flags
+    :type flags: gfp_t
 
 .. _`netlbl_catmap_setbit.description`:
 
@@ -443,17 +498,21 @@ netlbl_catmap_setrng
 
     Set a range of bits in a LSM secattr catmap
 
-    :param struct netlbl_lsm_catmap \*\*catmap:
+    :param catmap:
         pointer to the category bitmap
+    :type catmap: struct netlbl_lsm_catmap \*\*
 
-    :param u32 start:
+    :param start:
         the starting bit
+    :type start: u32
 
-    :param u32 end:
+    :param end:
         the last bit in the string
+    :type end: u32
 
-    :param gfp_t flags:
+    :param flags:
         memory allocation flags
+    :type flags: gfp_t
 
 .. _`netlbl_catmap_setrng.description`:
 
@@ -472,17 +531,21 @@ netlbl_catmap_setlong
 
     Import an unsigned long bitmap
 
-    :param struct netlbl_lsm_catmap \*\*catmap:
+    :param catmap:
         pointer to the category bitmap
+    :type catmap: struct netlbl_lsm_catmap \*\*
 
-    :param u32 offset:
+    :param offset:
         offset to the start of the imported bitmap
+    :type offset: u32
 
-    :param unsigned long bitmap:
+    :param bitmap:
         the bitmap to import
+    :type bitmap: unsigned long
 
-    :param gfp_t flags:
+    :param flags:
         memory allocation flags
+    :type flags: gfp_t
 
 .. _`netlbl_catmap_setlong.description`:
 
@@ -502,17 +565,21 @@ netlbl_bitmap_walk
 
     Walk a bitmap looking for a bit
 
-    :param const unsigned char \*bitmap:
+    :param bitmap:
         the bitmap
+    :type bitmap: const unsigned char \*
 
-    :param u32 bitmap_len:
+    :param bitmap_len:
         length in bits
+    :type bitmap_len: u32
 
-    :param u32 offset:
+    :param offset:
         starting offset
+    :type offset: u32
 
-    :param u8 state:
+    :param state:
         if non-zero, look for a set (1) bit else look for a cleared (0) bit
+    :type state: u8
 
 .. _`netlbl_bitmap_walk.description`:
 
@@ -532,14 +599,17 @@ netlbl_bitmap_setbit
 
     Sets a single bit in a bitmap
 
-    :param unsigned char \*bitmap:
+    :param bitmap:
         the bitmap
+    :type bitmap: unsigned char \*
 
-    :param u32 bit:
+    :param bit:
         the bit
+    :type bit: u32
 
-    :param u8 state:
+    :param state:
         if non-zero, set the bit (1) else clear the bit (0)
+    :type state: u8
 
 .. _`netlbl_bitmap_setbit.description`:
 
@@ -558,8 +628,9 @@ netlbl_enabled
 
     Determine if the NetLabel subsystem is enabled
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`netlbl_enabled.description`:
 
@@ -582,14 +653,17 @@ netlbl_sock_setattr
 
     Label a socket using the correct protocol
 
-    :param struct sock \*sk:
+    :param sk:
         the socket to label
+    :type sk: struct sock \*
 
-    :param u16 family:
+    :param family:
         protocol family
+    :type family: u16
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`netlbl_sock_setattr.description`:
 
@@ -612,8 +686,9 @@ netlbl_sock_delattr
 
     Delete all the NetLabel labels on a socket
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
 .. _`netlbl_sock_delattr.description`:
 
@@ -632,11 +707,13 @@ netlbl_sock_getattr
 
     Determine the security attributes of a sock
 
-    :param struct sock \*sk:
+    :param sk:
         the sock
+    :type sk: struct sock \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`netlbl_sock_getattr.description`:
 
@@ -657,14 +734,17 @@ netlbl_conn_setattr
 
     Label a connected socket using the correct protocol
 
-    :param struct sock \*sk:
+    :param sk:
         the socket to label
+    :type sk: struct sock \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         the destination address
+    :type addr: struct sockaddr \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`netlbl_conn_setattr.description`:
 
@@ -684,11 +764,13 @@ netlbl_req_setattr
 
     Label a request socket using the correct protocol
 
-    :param struct request_sock \*req:
+    :param req:
         the request socket to label
+    :type req: struct request_sock \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`netlbl_req_setattr.description`:
 
@@ -707,8 +789,9 @@ netlbl_req_delattr
 
     Delete all the NetLabel labels on a socket
 
-    :param struct request_sock \*req:
+    :param req:
         the socket
+    :type req: struct request_sock \*
 
 .. _`netlbl_req_delattr.description`:
 
@@ -726,14 +809,17 @@ netlbl_skbuff_setattr
 
     Label a packet using the correct protocol
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         protocol family
+    :type family: u16
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`netlbl_skbuff_setattr.description`:
 
@@ -752,14 +838,17 @@ netlbl_skbuff_getattr
 
     Determine the security attributes of a packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         protocol family
+    :type family: u16
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`netlbl_skbuff_getattr.description`:
 
@@ -780,17 +869,21 @@ netlbl_skbuff_err
 
     Handle a LSM error on a sk_buff
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         the family
+    :type family: u16
 
-    :param int error:
+    :param error:
         the error code
+    :type error: int
 
-    :param int gateway:
+    :param gateway:
         true if host is acting as a gateway, false otherwise
+    :type gateway: int
 
 .. _`netlbl_skbuff_err.description`:
 
@@ -810,8 +903,9 @@ netlbl_cache_invalidate
 
     Invalidate all of the NetLabel protocol caches
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`netlbl_cache_invalidate.description`:
 
@@ -831,14 +925,17 @@ netlbl_cache_add
 
     Add an entry to a NetLabel protocol cache
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         the family
+    :type family: u16
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the packet's security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`netlbl_cache_add.description`:
 
@@ -858,11 +955,13 @@ netlbl_audit_start
 
     Start an audit message
 
-    :param int type:
+    :param type:
         audit message type
+    :type type: int
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_audit_start.description`:
 
@@ -883,8 +982,9 @@ netlbl_init
 
     Initialize NetLabel
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`netlbl_init.description`:
 

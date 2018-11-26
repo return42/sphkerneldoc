@@ -10,14 +10,17 @@ mv_xor_status
 
     poll the status of an XOR transaction
 
-    :param struct dma_chan \*chan:
+    :param chan:
         XOR channel handle
+    :type chan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         XOR transaction identifier
+    :type cookie: dma_cookie_t
 
-    :param struct dma_tx_state \*txstate:
+    :param txstate:
         XOR transactions state holder (or NULL)
+    :type txstate: struct dma_tx_state \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ cmp_connection_init
 
     initializes a connection manager
 
-    :param struct cmp_connection \*c:
+    :param c:
         the connection manager to initialize
+    :type c: struct cmp_connection \*
 
-    :param struct fw_unit \*unit:
+    :param unit:
         a unit of the target device
+    :type unit: struct fw_unit \*
 
-    :param enum cmp_direction direction:
+    :param direction:
         input or output
+    :type direction: enum cmp_direction
 
-    :param unsigned int pcr_index:
+    :param pcr_index:
         the index of the iPCR/oPCR on the target device
+    :type pcr_index: unsigned int
 
 .. _`cmp_connection_check_used`:
 
@@ -31,11 +35,13 @@ cmp_connection_check_used
 
     check connection is already esablished or not
 
-    :param struct cmp_connection \*c:
+    :param c:
         the connection manager to be checked
+    :type c: struct cmp_connection \*
 
-    :param bool \*used:
+    :param used:
         the pointer to store the result of checking the connection
+    :type used: bool \*
 
 .. _`cmp_connection_destroy`:
 
@@ -46,8 +52,9 @@ cmp_connection_destroy
 
     free connection manager resources
 
-    :param struct cmp_connection \*c:
+    :param c:
         the connection manager
+    :type c: struct cmp_connection \*
 
 .. _`cmp_connection_establish`:
 
@@ -58,11 +65,13 @@ cmp_connection_establish
 
     establish a connection to the target
 
-    :param struct cmp_connection \*c:
+    :param c:
         the connection manager
+    :type c: struct cmp_connection \*
 
-    :param unsigned int max_payload_bytes:
+    :param max_payload_bytes:
         the amount of data (including CIP headers) per packet
+    :type max_payload_bytes: unsigned int
 
 .. _`cmp_connection_establish.description`:
 
@@ -84,8 +93,9 @@ cmp_connection_update
 
     update the connection after a bus reset
 
-    :param struct cmp_connection \*c:
+    :param c:
         the connection manager
+    :type c: struct cmp_connection \*
 
 .. _`cmp_connection_update.description`:
 
@@ -107,8 +117,9 @@ cmp_connection_break
 
     break the connection to the target
 
-    :param struct cmp_connection \*c:
+    :param c:
         the connection manager
+    :type c: struct cmp_connection \*
 
 .. _`cmp_connection_break.description`:
 

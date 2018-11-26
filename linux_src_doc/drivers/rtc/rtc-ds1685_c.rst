@@ -10,11 +10,13 @@ ds1685_read
 
     read a value from an rtc register.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
-    :param int reg:
+    :param reg:
         the register address to read.
+    :type reg: int
 
 .. _`ds1685_write`:
 
@@ -25,14 +27,17 @@ ds1685_write
 
     write a value to an rtc register.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
-    :param int reg:
+    :param reg:
         the register address to write.
+    :type reg: int
 
-    :param u8 value:
+    :param value:
         value to write to the register.
+    :type value: u8
 
 .. _`ds1685_rtc_bcd2bin`:
 
@@ -43,17 +48,21 @@ ds1685_rtc_bcd2bin
 
     bcd2bin wrapper in case platform doesn't support BCD.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
-    :param u8 val:
+    :param val:
         u8 time value to consider converting.
+    :type val: u8
 
-    :param u8 bcd_mask:
+    :param bcd_mask:
         u8 mask value if BCD mode is used.
+    :type bcd_mask: u8
 
-    :param u8 bin_mask:
+    :param bin_mask:
         u8 mask value if BIN mode is used.
+    :type bin_mask: u8
 
 .. _`ds1685_rtc_bcd2bin.description`:
 
@@ -71,17 +80,21 @@ ds1685_rtc_bin2bcd
 
     bin2bcd wrapper in case platform doesn't support BCD.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
-    :param u8 val:
+    :param val:
         u8 time value to consider converting.
+    :type val: u8
 
-    :param u8 bin_mask:
+    :param bin_mask:
         u8 mask value if BIN mode is used.
+    :type bin_mask: u8
 
-    :param u8 bcd_mask:
+    :param bcd_mask:
         u8 mask value if BCD mode is used.
+    :type bcd_mask: u8
 
 .. _`ds1685_rtc_bin2bcd.description`:
 
@@ -99,11 +112,13 @@ ds1685_rtc_check_mday
 
     check validity of the day of month.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
-    :param u8 mday:
+    :param mday:
         day of month.
+    :type mday: u8
 
 .. _`ds1685_rtc_check_mday.description`:
 
@@ -121,8 +136,9 @@ ds1685_rtc_switch_to_bank0
 
     switch the rtc to bank 0.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
 .. _`ds1685_rtc_switch_to_bank1`:
 
@@ -133,8 +149,9 @@ ds1685_rtc_switch_to_bank1
 
     switch the rtc to bank 1.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
 .. _`ds1685_rtc_begin_data_access`:
 
@@ -145,8 +162,9 @@ ds1685_rtc_begin_data_access
 
     prepare the rtc for data access.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
 .. _`ds1685_rtc_begin_data_access.description`:
 
@@ -176,8 +194,9 @@ ds1685_rtc_end_data_access
 
     end data access on the rtc.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
 .. _`ds1685_rtc_end_data_access.this-ends-what-was-started-by-ds1685_rtc_begin_data_access`:
 
@@ -196,11 +215,13 @@ ds1685_rtc_begin_ctrl_access
 
     prepare the rtc for ctrl access.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
-    :param unsigned long \*flags:
+    :param flags:
         irq flags variable for spin_lock_irqsave.
+    :type flags: unsigned long \*
 
 .. _`ds1685_rtc_begin_ctrl_access.description`:
 
@@ -229,11 +250,13 @@ ds1685_rtc_end_ctrl_access
 
     end ctrl access on the rtc.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
-    :param unsigned long flags:
+    :param flags:
         irq flags variable for spin_unlock_irqrestore.
+    :type flags: unsigned long
 
 .. _`ds1685_rtc_end_ctrl_access.this-ends-what-was-started-by-ds1685_rtc_begin_ctrl_access`:
 
@@ -252,11 +275,13 @@ ds1685_rtc_get_ssn
 
     retrieve the silicon serial number.
 
-    :param struct ds1685_priv \*rtc:
+    :param rtc:
         pointer to the ds1685 rtc structure.
+    :type rtc: struct ds1685_priv \*
 
-    :param u8 \*ssn:
+    :param ssn:
         u8 array to hold the bits of the silicon serial number.
+    :type ssn: u8 \*
 
 .. _`ds1685_rtc_get_ssn.description`:
 
@@ -281,11 +306,13 @@ ds1685_rtc_read_time
 
     reads the time registers.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure.
+    :type dev: struct device \*
 
-    :param struct rtc_time \*tm:
+    :param tm:
         pointer to rtc_time structure.
+    :type tm: struct rtc_time \*
 
 .. _`ds1685_rtc_set_time`:
 
@@ -296,11 +323,13 @@ ds1685_rtc_set_time
 
     sets the time registers.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure.
+    :type dev: struct device \*
 
-    :param struct rtc_time \*tm:
+    :param tm:
         pointer to rtc_time structure.
+    :type tm: struct rtc_time \*
 
 .. _`ds1685_rtc_read_alarm`:
 
@@ -311,11 +340,13 @@ ds1685_rtc_read_alarm
 
     reads the alarm registers.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure.
+    :type dev: struct device \*
 
-    :param struct rtc_wkalrm \*alrm:
+    :param alrm:
         pointer to rtc_wkalrm structure.
+    :type alrm: struct rtc_wkalrm \*
 
 .. _`ds1685_rtc_read_alarm.there-are-three-primary-alarm-registers`:
 
@@ -338,11 +369,13 @@ ds1685_rtc_set_alarm
 
     sets the alarm in registers.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure.
+    :type dev: struct device \*
 
-    :param struct rtc_wkalrm \*alrm:
+    :param alrm:
         pointer to rtc_wkalrm structure.
+    :type alrm: struct rtc_wkalrm \*
 
 .. _`ds1685_rtc_alarm_irq_enable`:
 
@@ -353,11 +386,13 @@ ds1685_rtc_alarm_irq_enable
 
     replaces \ :c:func:`ioctl`\  RTC_AIE on/off.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure.
+    :type dev: struct device \*
 
-    :param unsigned int enabled:
+    :param enabled:
         flag indicating whether to enable or disable.
+    :type enabled: unsigned int
 
 .. _`ds1685_rtc_irq_handler`:
 
@@ -368,11 +403,13 @@ ds1685_rtc_irq_handler
 
     IRQ handler.
 
-    :param int irq:
+    :param irq:
         IRQ number.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         platform device pointer.
+    :type dev_id: void \*
 
 .. _`ds1685_rtc_work_queue`:
 
@@ -383,31 +420,9 @@ ds1685_rtc_work_queue
 
     work queue handler.
 
-    :param struct work_struct \*work:
+    :param work:
         work_struct containing data to work on in task context.
-
-.. _`ds1685_rtc_print_regs`:
-
-ds1685_rtc_print_regs
-=====================
-
-.. c:function:: char*ds1685_rtc_print_regs(u8 hex, char *dest)
-
-    helper function to print register values.
-
-    :param u8 hex:
-        hex byte to convert into binary bits.
-
-    :param char \*dest:
-        destination char array.
-
-.. _`ds1685_rtc_print_regs.description`:
-
-Description
------------
-
-This is basically a hex->binary function, just with extra spacing between
-the digits.  It only works on 1-byte values (8 bits).
+    :type work: struct work_struct \*
 
 .. _`ds1685_rtc_proc`:
 
@@ -418,65 +433,13 @@ ds1685_rtc_proc
 
     procfs access function.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure.
+    :type dev: struct device \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         pointer to seq_file structure.
-
-.. _`ds1685_rtc_sysfs_nvram_read`:
-
-ds1685_rtc_sysfs_nvram_read
-===========================
-
-.. c:function:: ssize_t ds1685_rtc_sysfs_nvram_read(struct file *filp, struct kobject *kobj, struct bin_attribute *bin_attr, char *buf, loff_t pos, size_t size)
-
-    reads rtc nvram via sysfs.
-
-    :param struct file \*filp:
-        *undescribed*
-
-    :param struct kobject \*kobj:
-        pointer to kobject structure.
-
-    :param struct bin_attribute \*bin_attr:
-        pointer to bin_attribute structure.
-
-    :param char \*buf:
-        pointer to char array to hold the output.
-
-    :param loff_t pos:
-        current file position pointer.
-
-    :param size_t size:
-        size of the data to read.
-
-.. _`ds1685_rtc_sysfs_nvram_write`:
-
-ds1685_rtc_sysfs_nvram_write
-============================
-
-.. c:function:: ssize_t ds1685_rtc_sysfs_nvram_write(struct file *filp, struct kobject *kobj, struct bin_attribute *bin_attr, char *buf, loff_t pos, size_t size)
-
-    writes rtc nvram via sysfs.
-
-    :param struct file \*filp:
-        *undescribed*
-
-    :param struct kobject \*kobj:
-        pointer to kobject structure.
-
-    :param struct bin_attribute \*bin_attr:
-        pointer to bin_attribute structure.
-
-    :param char \*buf:
-        pointer to char array to hold the input.
-
-    :param loff_t pos:
-        current file position pointer.
-
-    :param size_t size:
-        size of the data to write.
+    :type seq: struct seq_file \*
 
 .. _`ds1685_rtc_sysfs_battery_show`:
 
@@ -487,14 +450,17 @@ ds1685_rtc_sysfs_battery_show
 
     sysfs file for main battery status.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         pointer to device_attribute structure.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         pointer to char array to hold the output.
+    :type buf: char \*
 
 .. _`ds1685_rtc_sysfs_auxbatt_show`:
 
@@ -505,14 +471,17 @@ ds1685_rtc_sysfs_auxbatt_show
 
     sysfs file for aux battery status.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         pointer to device_attribute structure.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         pointer to char array to hold the output.
+    :type buf: char \*
 
 .. _`ds1685_rtc_sysfs_serial_show`:
 
@@ -523,257 +492,17 @@ ds1685_rtc_sysfs_serial_show
 
     sysfs file for silicon serial number.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         pointer to device_attribute structure.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         pointer to char array to hold the output.
-
-.. _`ds1685_rtc_ctrl_regs`:
-
-struct ds1685_rtc_ctrl_regs
-===========================
-
-.. c:type:: struct ds1685_rtc_ctrl_regs
-
-
-.. _`ds1685_rtc_ctrl_regs.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct ds1685_rtc_ctrl_regs {
-        const char *name;
-        const u8 reg;
-        const u8 bit;
-    }
-
-.. _`ds1685_rtc_ctrl_regs.members`:
-
-Members
--------
-
-name
-    char pointer for the bit name.
-
-reg
-    control register the bit is in.
-
-bit
-    the bit's offset in the register.
-
-.. _`ds1685_rtc_sysfs_ctrl_regs_lookup`:
-
-ds1685_rtc_sysfs_ctrl_regs_lookup
-=================================
-
-.. c:function:: const struct ds1685_rtc_ctrl_regs*ds1685_rtc_sysfs_ctrl_regs_lookup(const char *name)
-
-    ctrl register bit lookup function.
-
-    :param const char \*name:
-        ctrl register bit to look up in ds1685_ctrl_regs_table.
-
-.. _`ds1685_rtc_sysfs_ctrl_regs_show`:
-
-ds1685_rtc_sysfs_ctrl_regs_show
-===============================
-
-.. c:function:: ssize_t ds1685_rtc_sysfs_ctrl_regs_show(struct device *dev, struct device_attribute *attr, char *buf)
-
-    reads a ctrl register bit via sysfs.
-
-    :param struct device \*dev:
-        pointer to device structure.
-
-    :param struct device_attribute \*attr:
-        pointer to device_attribute structure.
-
-    :param char \*buf:
-        pointer to char array to hold the output.
-
-.. _`ds1685_rtc_sysfs_ctrl_regs_store`:
-
-ds1685_rtc_sysfs_ctrl_regs_store
-================================
-
-.. c:function:: ssize_t ds1685_rtc_sysfs_ctrl_regs_store(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
-
-    writes a ctrl register bit via sysfs.
-
-    :param struct device \*dev:
-        pointer to device structure.
-
-    :param struct device_attribute \*attr:
-        pointer to device_attribute structure.
-
-    :param const char \*buf:
-        pointer to char array to hold the output.
-
-    :param size_t count:
-        number of bytes written.
-
-.. _`ds1685_rtc_sysfs_ctrl_reg_ro`:
-
-DS1685_RTC_SYSFS_CTRL_REG_RO
-============================
-
-.. c:function::  DS1685_RTC_SYSFS_CTRL_REG_RO( bit)
-
-    device_attribute for read-only register bit.
-
-    :param  bit:
-        bit to read.
-
-.. _`ds1685_rtc_sysfs_ctrl_reg_rw`:
-
-DS1685_RTC_SYSFS_CTRL_REG_RW
-============================
-
-.. c:function::  DS1685_RTC_SYSFS_CTRL_REG_RW( bit)
-
-    device_attribute for read-write register bit.
-
-    :param  bit:
-        bit to read or write.
-
-.. _`ds1685_rtc_time_regs`:
-
-struct ds1685_rtc_time_regs
-===========================
-
-.. c:type:: struct ds1685_rtc_time_regs
-
-
-.. _`ds1685_rtc_time_regs.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct ds1685_rtc_time_regs {
-        const char *name;
-        const u8 reg;
-        const u8 mask;
-        const u8 min;
-        const u8 max;
-    }
-
-.. _`ds1685_rtc_time_regs.members`:
-
-Members
--------
-
-name
-    char pointer for the bit name.
-
-reg
-    control register the bit is in.
-
-mask
-    *undescribed*
-
-min
-    *undescribed*
-
-max
-    *undescribed*
-
-.. _`ds1685_rtc_sysfs_time_regs_lookup`:
-
-ds1685_rtc_sysfs_time_regs_lookup
-=================================
-
-.. c:function:: const struct ds1685_rtc_time_regs*ds1685_rtc_sysfs_time_regs_lookup(const char *name, bool bcd_mode)
-
-    time/date reg bit lookup function.
-
-    :param const char \*name:
-        register bit to look up in ds1685_time_regs_bcd_table.
-
-    :param bool bcd_mode:
-        *undescribed*
-
-.. _`ds1685_rtc_sysfs_time_regs_show`:
-
-ds1685_rtc_sysfs_time_regs_show
-===============================
-
-.. c:function:: ssize_t ds1685_rtc_sysfs_time_regs_show(struct device *dev, struct device_attribute *attr, char *buf)
-
-    reads a time/date register via sysfs.
-
-    :param struct device \*dev:
-        pointer to device structure.
-
-    :param struct device_attribute \*attr:
-        pointer to device_attribute structure.
-
-    :param char \*buf:
-        pointer to char array to hold the output.
-
-.. _`ds1685_rtc_sysfs_time_regs_store`:
-
-ds1685_rtc_sysfs_time_regs_store
-================================
-
-.. c:function:: ssize_t ds1685_rtc_sysfs_time_regs_store(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
-
-    writes a time/date register via sysfs.
-
-    :param struct device \*dev:
-        pointer to device structure.
-
-    :param struct device_attribute \*attr:
-        pointer to device_attribute structure.
-
-    :param const char \*buf:
-        pointer to char array to hold the output.
-
-    :param size_t count:
-        number of bytes written.
-
-.. _`ds1685_rtc_sysfs_time_reg_rw`:
-
-DS1685_RTC_SYSFS_TIME_REG_RW
-============================
-
-.. c:function::  DS1685_RTC_SYSFS_TIME_REG_RW( reg)
-
-    device_attribute for a read-write time register.
-
-    :param  reg:
-        time/date register to read or write.
-
-.. _`ds1685_rtc_sysfs_register`:
-
-ds1685_rtc_sysfs_register
-=========================
-
-.. c:function:: int ds1685_rtc_sysfs_register(struct device *dev)
-
-    register sysfs files.
-
-    :param struct device \*dev:
-        pointer to device structure.
-
-.. _`ds1685_rtc_sysfs_unregister`:
-
-ds1685_rtc_sysfs_unregister
-===========================
-
-.. c:function:: int ds1685_rtc_sysfs_unregister(struct device *dev)
-
-    unregister sysfs files.
-
-    :param struct device \*dev:
-        pointer to device structure.
+    :type buf: char \*
 
 .. _`ds1685_rtc_probe`:
 
@@ -784,8 +513,9 @@ ds1685_rtc_probe
 
     initializes rtc driver.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to platform_device structure.
+    :type pdev: struct platform_device \*
 
 .. _`ds1685_rtc_remove`:
 
@@ -796,8 +526,9 @@ ds1685_rtc_remove
 
     removes rtc driver.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to platform_device structure.
+    :type pdev: struct platform_device \*
 
 .. _`ds1685_rtc_poweroff`:
 
@@ -808,8 +539,9 @@ ds1685_rtc_poweroff
 
     uses the RTC chip to power the system off.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to platform_device structure.
+    :type pdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ radeon_cursor_reset
 
     Re-set the current cursor, if any.
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`radeon_cursor_reset.description`:
 

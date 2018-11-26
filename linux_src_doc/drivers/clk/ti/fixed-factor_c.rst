@@ -10,8 +10,9 @@ of_ti_fixed_factor_clk_setup
 
     Setup function for TI fixed factor clock
 
-    :param struct device_node \*node:
+    :param node:
         device node for this clock
+    :type node: struct device_node \*
 
 .. _`of_ti_fixed_factor_clk_setup.description`:
 

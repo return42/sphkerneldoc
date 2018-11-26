@@ -10,8 +10,9 @@ mips_cpc_phys_base
 
     retrieve the physical base address of the CPC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cpc_phys_base.description`:
 

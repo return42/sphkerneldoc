@@ -10,11 +10,13 @@ of_mdiobus_register
 
     Register mii_bus and create PHYs from the device tree
 
-    :param struct mii_bus \*mdio:
+    :param mdio:
         pointer to mii_bus structure
+    :type mdio: struct mii_bus \*
 
-    :param struct device_node \*np:
+    :param np:
         pointer to device_node of MDIO bus.
+    :type np: struct device_node \*
 
 .. _`of_mdiobus_register.description`:
 
@@ -33,8 +35,9 @@ of_phy_find_device
 
     Give a PHY node, find the phy_device
 
-    :param struct device_node \*phy_np:
+    :param phy_np:
         Pointer to the phy's device tree node
+    :type phy_np: struct device_node \*
 
 .. _`of_phy_find_device.description`:
 
@@ -53,20 +56,24 @@ of_phy_connect
 
     Connect to the phy described in the device tree
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device claiming the phy
+    :type dev: struct net_device \*
 
-    :param struct device_node \*phy_np:
+    :param phy_np:
         Pointer to device tree node for the PHY
+    :type phy_np: struct device_node \*
 
     :param void (\*hndlr)(struct net_device \*):
         Link state callback for the network device
 
-    :param u32 flags:
+    :param flags:
         flags to pass to the PHY
+    :type flags: u32
 
-    :param phy_interface_t iface:
+    :param iface:
         PHY data interface type
+    :type iface: phy_interface_t
 
 .. _`of_phy_connect.description`:
 
@@ -86,11 +93,13 @@ of_phy_get_and_connect
 
     - Get phy node and connect to the phy described in the device tree
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device claiming the phy
+    :type dev: struct net_device \*
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to device tree node for the net_device claiming the phy
+    :type np: struct device_node \*
 
     :param void (\*hndlr)(struct net_device \*):
         Link state callback for the network device
@@ -113,17 +122,21 @@ of_phy_attach
 
     Attach to a PHY without starting the state machine
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device claiming the phy
+    :type dev: struct net_device \*
 
-    :param struct device_node \*phy_np:
+    :param phy_np:
         Node pointer for the PHY
+    :type phy_np: struct device_node \*
 
-    :param u32 flags:
+    :param flags:
         flags to pass to the PHY
+    :type flags: u32
 
-    :param phy_interface_t iface:
+    :param iface:
         PHY data interface type
+    :type iface: phy_interface_t
 
 .. _`of_phy_attach.description`:
 

@@ -10,17 +10,21 @@ snd_hdac_bus_init
 
     initialize a HD-audio bas bus
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         the pointer to bus object
+    :type bus: struct hdac_bus \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param const struct hdac_bus_ops \*ops:
+    :param ops:
         bus verb operators
+    :type ops: const struct hdac_bus_ops \*
 
-    :param const struct hdac_io_ops \*io_ops:
+    :param io_ops:
         lowlevel I/O operators
+    :type io_ops: const struct hdac_io_ops \*
 
 .. _`snd_hdac_bus_init.description`:
 
@@ -38,8 +42,9 @@ snd_hdac_bus_exit
 
     clean up a HD-audio bas bus
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         the pointer to bus object
+    :type bus: struct hdac_bus \*
 
 .. _`snd_hdac_bus_exec_verb`:
 
@@ -50,17 +55,21 @@ snd_hdac_bus_exec_verb
 
     execute a HD-audio verb on the given bus
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         bus object
+    :type bus: struct hdac_bus \*
 
-    :param unsigned int addr:
+    :param addr:
         *undescribed*
+    :type addr: unsigned int
 
-    :param unsigned int cmd:
+    :param cmd:
         HD-audio encoded verb
+    :type cmd: unsigned int
 
-    :param unsigned int \*res:
+    :param res:
         pointer to store the response, NULL if performing asynchronously
+    :type res: unsigned int \*
 
 .. _`snd_hdac_bus_exec_verb.description`:
 
@@ -78,17 +87,21 @@ snd_hdac_bus_exec_verb_unlocked
 
     unlocked version
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         bus object
+    :type bus: struct hdac_bus \*
 
-    :param unsigned int addr:
+    :param addr:
         *undescribed*
+    :type addr: unsigned int
 
-    :param unsigned int cmd:
+    :param cmd:
         HD-audio encoded verb
+    :type cmd: unsigned int
 
-    :param unsigned int \*res:
+    :param res:
         pointer to store the response, NULL if performing asynchronously
+    :type res: unsigned int \*
 
 .. _`snd_hdac_bus_exec_verb_unlocked.description`:
 
@@ -106,14 +119,17 @@ snd_hdac_bus_queue_event
 
     add an unsolicited event to queue
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         the BUS
+    :type bus: struct hdac_bus \*
 
-    :param u32 res:
+    :param res:
         unsolicited event (lower 32bit of RIRB entry)
+    :type res: u32
 
-    :param u32 res_ex:
+    :param res_ex:
         codec addr and flags (upper 32bit or RIRB entry)
+    :type res_ex: u32
 
 .. _`snd_hdac_bus_queue_event.description`:
 
@@ -133,11 +149,13 @@ snd_hdac_bus_add_device
 
     Add a codec to bus
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HDA core bus
+    :type bus: struct hdac_bus \*
 
-    :param struct hdac_device \*codec:
+    :param codec:
         HDA core device to add
+    :type codec: struct hdac_device \*
 
 .. _`snd_hdac_bus_add_device.description`:
 
@@ -157,11 +175,13 @@ snd_hdac_bus_remove_device
 
     Remove a codec from bus
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HDA core bus
+    :type bus: struct hdac_bus \*
 
-    :param struct hdac_device \*codec:
+    :param codec:
         HDA core device to remove
+    :type codec: struct hdac_device \*
 
 .. This file was automatic generated / don't edit.
 

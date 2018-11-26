@@ -10,11 +10,13 @@ pcpu_addr_in_chunk
 
     check if the address is served from this chunk
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param void \*addr:
+    :param addr:
         percpu address
+    :type addr: void \*
 
 .. _`pcpu_addr_in_chunk.return`:
 
@@ -32,14 +34,17 @@ pcpu_next_md_free_region
 
     finds the next hint free area
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int \*bit_off:
+    :param bit_off:
         chunk offset
+    :type bit_off: int \*
 
-    :param int \*bits:
+    :param bits:
         size of free area
+    :type bits: int \*
 
 .. _`pcpu_next_md_free_region.description`:
 
@@ -60,20 +65,25 @@ pcpu_next_fit_region
 
     finds fit areas for a given allocation request
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int alloc_bits:
+    :param alloc_bits:
         size of allocation
+    :type alloc_bits: int
 
-    :param int align:
+    :param align:
         alignment of area (max PAGE_SIZE)
+    :type align: int
 
-    :param int \*bit_off:
+    :param bit_off:
         chunk offset
+    :type bit_off: int \*
 
-    :param int \*bits:
+    :param bits:
         size of free area
+    :type bits: int \*
 
 .. _`pcpu_next_fit_region.description`:
 
@@ -95,11 +105,13 @@ pcpu_mem_zalloc
 
     allocate memory
 
-    :param size_t size:
+    :param size:
         bytes to allocate
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`pcpu_mem_zalloc.description`:
 
@@ -127,8 +139,9 @@ pcpu_mem_free
 
     free memory
 
-    :param void \*ptr:
+    :param ptr:
         memory to free
+    :type ptr: void \*
 
 .. _`pcpu_mem_free.description`:
 
@@ -146,11 +159,13 @@ pcpu_chunk_relocate
 
     put chunk in the appropriate chunk slot
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int oslot:
+    :param oslot:
         the previous slot it was on
+    :type oslot: int
 
 .. _`pcpu_chunk_relocate.description`:
 
@@ -178,14 +193,17 @@ pcpu_cnt_pop_pages
 
     counts populated backing pages in range
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int bit_off:
+    :param bit_off:
         start offset
+    :type bit_off: int
 
-    :param int bits:
+    :param bits:
         size of area to check
+    :type bits: int
 
 .. _`pcpu_cnt_pop_pages.description`:
 
@@ -212,14 +230,17 @@ pcpu_chunk_update
 
     updates the chunk metadata given a free area
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int bit_off:
+    :param bit_off:
         chunk offset
+    :type bit_off: int
 
-    :param int bits:
+    :param bits:
         size of free area
+    :type bits: int
 
 .. _`pcpu_chunk_update.description`:
 
@@ -238,8 +259,9 @@ pcpu_chunk_refresh_hint
 
     updates metadata about a chunk
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
 .. _`pcpu_chunk_refresh_hint.description`:
 
@@ -268,14 +290,17 @@ pcpu_block_update
 
     updates a block given a free area
 
-    :param struct pcpu_block_md \*block:
+    :param block:
         block of interest
+    :type block: struct pcpu_block_md \*
 
-    :param int start:
+    :param start:
         start offset in block
+    :type start: int
 
-    :param int end:
+    :param end:
         end offset in block
+    :type end: int
 
 .. _`pcpu_block_update.description`:
 
@@ -293,11 +318,13 @@ pcpu_block_refresh_hint
 
 .. c:function:: void pcpu_block_refresh_hint(struct pcpu_chunk *chunk, int index)
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int index:
+    :param index:
         index of the metadata block
+    :type index: int
 
 .. _`pcpu_block_refresh_hint.description`:
 
@@ -316,14 +343,17 @@ pcpu_block_update_hint_alloc
 
     update hint on allocation path
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int bit_off:
+    :param bit_off:
         chunk offset
+    :type bit_off: int
 
-    :param int bits:
+    :param bits:
         size of request
+    :type bits: int
 
 .. _`pcpu_block_update_hint_alloc.description`:
 
@@ -343,14 +373,17 @@ pcpu_block_update_hint_free
 
     updates the block hints on the free path
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int bit_off:
+    :param bit_off:
         chunk offset
+    :type bit_off: int
 
-    :param int bits:
+    :param bits:
         size of request
+    :type bits: int
 
 .. _`pcpu_block_update_hint_free.description`:
 
@@ -377,17 +410,21 @@ pcpu_is_populated
 
     determines if the region is populated
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int bit_off:
+    :param bit_off:
         chunk offset
+    :type bit_off: int
 
-    :param int bits:
+    :param bits:
         size of area
+    :type bits: int
 
-    :param int \*next_off:
+    :param next_off:
         return value for the next offset to start searching
+    :type next_off: int \*
 
 .. _`pcpu_is_populated.description`:
 
@@ -413,17 +450,21 @@ pcpu_find_block_fit
 
     finds the block index to start searching
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int alloc_bits:
+    :param alloc_bits:
         size of request in allocation units
+    :type alloc_bits: int
 
-    :param size_t align:
+    :param align:
         alignment of area (max PAGE_SIZE bytes)
+    :type align: size_t
 
-    :param bool pop_only:
+    :param pop_only:
         use populated regions only
+    :type pop_only: bool
 
 .. _`pcpu_find_block_fit.description`:
 
@@ -455,17 +496,21 @@ pcpu_alloc_area
 
     allocates an area from a pcpu_chunk
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int alloc_bits:
+    :param alloc_bits:
         size of request in allocation units
+    :type alloc_bits: int
 
-    :param size_t align:
+    :param align:
         alignment of area (max PAGE_SIZE)
+    :type align: size_t
 
-    :param int start:
+    :param start:
         bit_off to start searching
+    :type start: int
 
 .. _`pcpu_alloc_area.description`:
 
@@ -497,11 +542,13 @@ pcpu_free_area
 
     frees the corresponding offset
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int off:
+    :param off:
         addr offset into chunk
+    :type off: int
 
 .. _`pcpu_free_area.description`:
 
@@ -520,11 +567,13 @@ pcpu_alloc_first_chunk
 
     creates chunks that serve the first chunk
 
-    :param unsigned long tmp_addr:
+    :param tmp_addr:
         the start of the region served
+    :type tmp_addr: unsigned long
 
-    :param int map_size:
+    :param map_size:
         size of the region served
+    :type map_size: int
 
 .. _`pcpu_alloc_first_chunk.description`:
 
@@ -552,17 +601,21 @@ pcpu_chunk_populated
 
     post-population bookkeeping
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         pcpu_chunk which got populated
+    :type chunk: struct pcpu_chunk \*
 
-    :param int page_start:
+    :param page_start:
         the start page
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         the end page
+    :type page_end: int
 
-    :param bool for_alloc:
+    :param for_alloc:
         if this is to populate for allocation
+    :type for_alloc: bool
 
 .. _`pcpu_chunk_populated.description`:
 
@@ -585,14 +638,17 @@ pcpu_chunk_depopulated
 
     post-depopulation bookkeeping
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         pcpu_chunk which got depopulated
+    :type chunk: struct pcpu_chunk \*
 
-    :param int page_start:
+    :param page_start:
         the start page
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         the end page
+    :type page_end: int
 
 .. _`pcpu_chunk_depopulated.description`:
 
@@ -612,8 +668,9 @@ pcpu_chunk_addr_search
 
     determine chunk containing specified address
 
-    :param void \*addr:
+    :param addr:
         address for which the chunk needs to be determined.
+    :type addr: void \*
 
 .. _`pcpu_chunk_addr_search.description`:
 
@@ -639,17 +696,21 @@ pcpu_alloc
 
     the percpu allocator
 
-    :param size_t size:
+    :param size:
         size of area to allocate in bytes
+    :type size: size_t
 
-    :param size_t align:
+    :param align:
         alignment of area (max PAGE_SIZE)
+    :type align: size_t
 
-    :param bool reserved:
+    :param reserved:
         allocate from the reserved chunk if available
+    :type reserved: bool
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`pcpu_alloc.description`:
 
@@ -677,14 +738,17 @@ Percpu pointer to the allocated area on success, NULL on failure.
 
     allocate dynamic percpu area
 
-    :param size_t size:
+    :param size:
         size of area to allocate in bytes
+    :type size: size_t
 
-    :param size_t align:
+    :param align:
         alignment of area (max PAGE_SIZE)
+    :type align: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`__alloc_percpu_gfp.description`:
 
@@ -713,11 +777,13 @@ Percpu pointer to the allocated area on success, NULL on failure.
 
     allocate dynamic percpu area
 
-    :param size_t size:
+    :param size:
         size of area to allocate in bytes
+    :type size: size_t
 
-    :param size_t align:
+    :param align:
         alignment of area (max PAGE_SIZE)
+    :type align: size_t
 
 .. _`__alloc_percpu.description`:
 
@@ -735,11 +801,13 @@ Equivalent to \__alloc_percpu_gfp(size, align, \ ``GFP_KERNEL``\ ).
 
     allocate reserved percpu area
 
-    :param size_t size:
+    :param size:
         size of area to allocate in bytes
+    :type size: size_t
 
-    :param size_t align:
+    :param align:
         alignment of area (max PAGE_SIZE)
+    :type align: size_t
 
 .. _`__alloc_reserved_percpu.description`:
 
@@ -774,8 +842,9 @@ pcpu_balance_workfn
 
     manage the amount of free chunks and populated pages
 
-    :param struct work_struct \*work:
+    :param work:
         unused
+    :type work: struct work_struct \*
 
 .. _`pcpu_balance_workfn.description`:
 
@@ -798,8 +867,9 @@ free_percpu
 
     free percpu area
 
-    :param void __percpu \*ptr:
+    :param ptr:
         pointer to area to free
+    :type ptr: void __percpu \*
 
 .. _`free_percpu.description`:
 
@@ -824,8 +894,9 @@ is_kernel_percpu_address
 
     test whether address is from static percpu area
 
-    :param unsigned long addr:
+    :param addr:
         address to test
+    :type addr: unsigned long
 
 .. _`is_kernel_percpu_address.description`:
 
@@ -852,8 +923,9 @@ per_cpu_ptr_to_phys
 
     convert translated percpu address to physical address
 
-    :param void \*addr:
+    :param addr:
         the address to be converted to physical address
+    :type addr: void \*
 
 .. _`per_cpu_ptr_to_phys.description`:
 
@@ -892,11 +964,13 @@ pcpu_alloc_alloc_info
 
     allocate percpu allocation info
 
-    :param int nr_groups:
+    :param nr_groups:
         the number of groups
+    :type nr_groups: int
 
-    :param int nr_units:
+    :param nr_units:
         the number of units
+    :type nr_units: int
 
 .. _`pcpu_alloc_alloc_info.description`:
 
@@ -926,8 +1000,9 @@ pcpu_free_alloc_info
 
     free percpu allocation info
 
-    :param struct pcpu_alloc_info \*ai:
+    :param ai:
         pcpu_alloc_info to free
+    :type ai: struct pcpu_alloc_info \*
 
 .. _`pcpu_free_alloc_info.description`:
 
@@ -945,11 +1020,13 @@ pcpu_dump_alloc_info
 
     print out information about pcpu_alloc_info
 
-    :param const char \*lvl:
+    :param lvl:
         loglevel
+    :type lvl: const char \*
 
-    :param const struct pcpu_alloc_info \*ai:
+    :param ai:
         allocation info to dump
+    :type ai: const struct pcpu_alloc_info \*
 
 .. _`pcpu_dump_alloc_info.description`:
 
@@ -967,11 +1044,13 @@ pcpu_setup_first_chunk
 
     initialize the first percpu chunk
 
-    :param const struct pcpu_alloc_info \*ai:
+    :param ai:
         pcpu_alloc_info describing how to percpu area is shaped
+    :type ai: const struct pcpu_alloc_info \*
 
-    :param void \*base_addr:
+    :param base_addr:
         mapped address
+    :type base_addr: void \*
 
 .. _`pcpu_setup_first_chunk.description`:
 
@@ -985,9 +1064,9 @@ setup path.
 \ ``ai``\  contains all information necessary to initialize the first
 chunk and prime the dynamic percpu allocator.
 
-\ ``ai``\ ->static_size is the size of static percpu area.
+\ ``ai->static_size``\  is the size of static percpu area.
 
-\ ``ai``\ ->reserved_size, if non-zero, specifies the amount of bytes to
+\ ``ai->reserved_size``\ , if non-zero, specifies the amount of bytes to
 reserve after the static area in the first chunk.  This reserves
 the first chunk such that it's available only through reserved
 percpu allocation.  This is primarily used to serve module percpu
@@ -995,25 +1074,25 @@ static areas on architectures where the addressing model has
 limited offset range for symbol relocations to guarantee module
 percpu symbols fall inside the relocatable range.
 
-\ ``ai``\ ->dyn_size determines the number of bytes available for dynamic
-allocation in the first chunk.  The area between \ ``ai``\ ->static_size +
-\ ``ai``\ ->reserved_size + \ ``ai``\ ->dyn_size and \ ``ai``\ ->unit_size is unused.
+\ ``ai->dyn_size``\  determines the number of bytes available for dynamic
+allocation in the first chunk.  The area between \ ``ai->static_size``\  +
+\ ``ai->reserved_size``\  + \ ``ai->dyn_size``\  and \ ``ai->unit_size``\  is unused.
 
-\ ``ai``\ ->unit_size specifies unit size and must be aligned to PAGE_SIZE
-and equal to or larger than \ ``ai``\ ->static_size + \ ``ai``\ ->reserved_size +
-\ ``ai``\ ->dyn_size.
+\ ``ai->unit_size``\  specifies unit size and must be aligned to PAGE_SIZE
+and equal to or larger than \ ``ai->static_size``\  + \ ``ai->reserved_size``\  +
+\ ``ai->dyn_size``\ .
 
-\ ``ai``\ ->atom_size is the allocation atom size and used as alignment
+\ ``ai->atom_size``\  is the allocation atom size and used as alignment
 for vm areas.
 
-\ ``ai``\ ->alloc_size is the allocation size and always multiple of
-\ ``ai``\ ->atom_size.  This is larger than \ ``ai``\ ->atom_size if
-\ ``ai``\ ->unit_size is larger than \ ``ai``\ ->atom_size.
+\ ``ai->alloc_size``\  is the allocation size and always multiple of
+\ ``ai->atom_size``\ .  This is larger than \ ``ai->atom_size``\  if
+\ ``ai->unit_size``\  is larger than \ ``ai->atom_size``\ .
 
-\ ``ai``\ ->nr_groups and \ ``ai``\ ->groups describe virtual memory layout of
+\ ``ai->nr_groups``\  and \ ``ai->groups``\  describe virtual memory layout of
 percpu areas.  Units which should be colocated are put into the
 same group.  Dynamic VM areas will be allocated according to these
-groupings.  If \ ``ai``\ ->nr_groups is zero, a single group containing
+groupings.  If \ ``ai->nr_groups``\  is zero, a single group containing
 all units is assumed.
 
 The caller should have mapped the first chunk at \ ``base_addr``\  and
@@ -1043,17 +1122,21 @@ pcpu_build_alloc_info
 
     build alloc_info considering distances between CPUs
 
-    :param size_t reserved_size:
+    :param reserved_size:
         the size of reserved percpu area in bytes
+    :type reserved_size: size_t
 
-    :param size_t dyn_size:
+    :param dyn_size:
         minimum free size for dynamic allocation in bytes
+    :type dyn_size: size_t
 
-    :param size_t atom_size:
+    :param atom_size:
         allocation atom size
+    :type atom_size: size_t
 
-    :param pcpu_fc_cpu_distance_fn_t cpu_distance_fn:
+    :param cpu_distance_fn:
         callback to determine distance between cpus, optional
+    :type cpu_distance_fn: pcpu_fc_cpu_distance_fn_t
 
 .. _`pcpu_build_alloc_info.description`:
 
@@ -1087,23 +1170,29 @@ pcpu_embed_first_chunk
 
     embed the first percpu chunk into bootmem
 
-    :param size_t reserved_size:
+    :param reserved_size:
         the size of reserved percpu area in bytes
+    :type reserved_size: size_t
 
-    :param size_t dyn_size:
+    :param dyn_size:
         minimum free size for dynamic allocation in bytes
+    :type dyn_size: size_t
 
-    :param size_t atom_size:
+    :param atom_size:
         allocation atom size
+    :type atom_size: size_t
 
-    :param pcpu_fc_cpu_distance_fn_t cpu_distance_fn:
+    :param cpu_distance_fn:
         callback to determine distance between cpus, optional
+    :type cpu_distance_fn: pcpu_fc_cpu_distance_fn_t
 
-    :param pcpu_fc_alloc_fn_t alloc_fn:
+    :param alloc_fn:
         function to allocate percpu page
+    :type alloc_fn: pcpu_fc_alloc_fn_t
 
-    :param pcpu_fc_free_fn_t free_fn:
+    :param free_fn:
         function to free percpu page
+    :type free_fn: pcpu_fc_free_fn_t
 
 .. _`pcpu_embed_first_chunk.description`:
 
@@ -1146,17 +1235,21 @@ pcpu_page_first_chunk
 
     map the first chunk using PAGE_SIZE pages
 
-    :param size_t reserved_size:
+    :param reserved_size:
         the size of reserved percpu area in bytes
+    :type reserved_size: size_t
 
-    :param pcpu_fc_alloc_fn_t alloc_fn:
+    :param alloc_fn:
         function to allocate percpu page, always called with PAGE_SIZE
+    :type alloc_fn: pcpu_fc_alloc_fn_t
 
-    :param pcpu_fc_free_fn_t free_fn:
+    :param free_fn:
         function to free percpu page, always called with PAGE_SIZE
+    :type free_fn: pcpu_fc_free_fn_t
 
-    :param pcpu_fc_populate_pte_fn_t populate_pte_fn:
+    :param populate_pte_fn:
         function to populate pte
+    :type populate_pte_fn: pcpu_fc_populate_pte_fn_t
 
 .. _`pcpu_page_first_chunk.description`:
 

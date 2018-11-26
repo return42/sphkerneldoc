@@ -10,17 +10,21 @@ snd_ac97_reset
 
     Reset AC'97 device
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         The AC'97 device to reset
+    :type ac97: struct snd_ac97 \*
 
-    :param bool try_warm:
+    :param try_warm:
         Try a warm reset first
+    :type try_warm: bool
 
-    :param unsigned int id:
+    :param id:
         Expected device vendor ID
+    :type id: unsigned int
 
-    :param unsigned int id_mask:
+    :param id_mask:
         Mask that is applied to the device ID before comparing to \ ``id``\ 
+    :type id_mask: unsigned int
 
 .. _`snd_ac97_reset.description`:
 

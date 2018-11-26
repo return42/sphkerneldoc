@@ -10,14 +10,17 @@
 
     run eBPF program on a given context
 
-    :param u64 \*regs:
+    :param regs:
         *undescribed*
+    :type regs: u64 \*
 
-    :param const struct bpf_insn \*insn:
+    :param insn:
         is the array of eBPF instructions
+    :type insn: const struct bpf_insn \*
 
-    :param u64 \*stack:
+    :param stack:
         *undescribed*
+    :type stack: u64 \*
 
 .. _`___bpf_prog_run.description`:
 
@@ -35,11 +38,13 @@ bpf_prog_select_runtime
 
     select exec runtime for BPF program
 
-    :param struct bpf_prog \*fp:
+    :param fp:
         bpf_prog populated with internal BPF program
+    :type fp: struct bpf_prog \*
 
-    :param int \*err:
+    :param err:
         pointer to error variable
+    :type err: int \*
 
 .. _`bpf_prog_select_runtime.description`:
 

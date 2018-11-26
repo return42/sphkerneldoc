@@ -10,11 +10,13 @@ ufs_get_locked_page
 
     locate, pin and lock a pagecache page, if not exist read it from disk.
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t index:
+    :param index:
         the page index
+    :type index: pgoff_t
 
 .. _`ufs_get_locked_page.description`:
 

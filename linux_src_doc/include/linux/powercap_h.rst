@@ -413,11 +413,13 @@ powercap_set_zone_data
 
     Set private data for a zone
 
-    :param struct powercap_zone \*power_zone:
+    :param power_zone:
         A pointer to the valid zone instance.
+    :type power_zone: struct powercap_zone \*
 
-    :param void \*pdata:
+    :param pdata:
         A pointer to the user private data.
+    :type pdata: void \*
 
 .. _`powercap_set_zone_data.description`:
 
@@ -435,8 +437,9 @@ powercap_get_zone_data
 
     Get private data for a zone
 
-    :param struct powercap_zone \*power_zone:
+    :param power_zone:
         A pointer to the valid zone instance.
+    :type power_zone: struct powercap_zone \*
 
 .. _`powercap_get_zone_data.description`:
 
@@ -455,19 +458,22 @@ powercap_register_control_type
 
     Register a control_type with framework
 
-    :param struct powercap_control_type \*control_type:
+    :param control_type:
         Pointer to client allocated memory for the control type
         structure storage. If this is NULL, powercap framework
         will allocate memory and own it.
         Advantage of this parameter is that client can embed
         this data in its data structures and allocate in a
         single call, preventing multiple allocations.
+    :type control_type: struct powercap_control_type \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param const struct powercap_control_type_ops \*ops:
+    :param ops:
         Callbacks for control type. This parameter is optional.
+    :type ops: const struct powercap_control_type_ops \*
 
 .. _`powercap_register_control_type.description`:
 
@@ -490,8 +496,9 @@ powercap_unregister_control_type
 
     Unregister a control_type from framework
 
-    :param struct powercap_control_type \*instance:
+    :param instance:
         A pointer to the valid control_type instance.
+    :type instance: struct powercap_control_type \*
 
 .. _`powercap_unregister_control_type.description`:
 
@@ -511,30 +518,37 @@ powercap_register_zone
 
     Register a power zone
 
-    :param struct powercap_zone \*power_zone:
+    :param power_zone:
         Pointer to client allocated memory for the power zone structure
         storage. If this is NULL, powercap framework will allocate
         memory and own it. Advantage of this parameter is that client
         can embed this data in its data structures and allocate in a
         single call, preventing multiple allocations.
+    :type power_zone: struct powercap_zone \*
 
-    :param struct powercap_control_type \*control_type:
+    :param control_type:
         A control_type instance under which this zone operates.
+    :type control_type: struct powercap_control_type \*
 
-    :param const char \*name:
+    :param name:
         A name for this zone.
+    :type name: const char \*
 
-    :param struct powercap_zone \*parent:
+    :param parent:
         A pointer to the parent power zone instance if any or NULL
+    :type parent: struct powercap_zone \*
 
-    :param const struct powercap_zone_ops \*ops:
+    :param ops:
         Pointer to zone operation callback structure.
+    :type ops: const struct powercap_zone_ops \*
 
-    :param int nr_constraints:
+    :param nr_constraints:
         *undescribed*
+    :type nr_constraints: int
 
-    :param const struct powercap_zone_constraint_ops \*const_ops:
+    :param const_ops:
         Pointer to constraint callback structure
+    :type const_ops: const struct powercap_zone_constraint_ops \*
 
 .. _`powercap_register_zone.description`:
 
@@ -559,11 +573,13 @@ powercap_unregister_zone
 
     Unregister a zone device
 
-    :param struct powercap_control_type \*control_type:
+    :param control_type:
         A pointer to the valid instance of a control_type.
+    :type control_type: struct powercap_control_type \*
 
-    :param struct powercap_zone \*power_zone:
+    :param power_zone:
         A pointer to the valid zone instance for a control_type
+    :type power_zone: struct powercap_zone \*
 
 .. _`powercap_unregister_zone.description`:
 

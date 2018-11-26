@@ -22,7 +22,7 @@ userspace with a call to \ :c:func:`drm_connector_register`\ .
 
 Connectors must be attached to an encoder to be used. For devices that map
 connectors to encoders 1:1, the connector should be attached at
-initialization time with a call to \ :c:func:`drm_mode_connector_attach_encoder`\ . The
+initialization time with a call to \ :c:func:`drm_connector_attach_encoder`\ . The
 driver must also set the \ :c:type:`drm_connector.encoder <drm_connector>`\  field to point to the
 attached encoder.
 
@@ -41,8 +41,9 @@ drm_connector_get_cmdline_mode
 
     reads the user's cmdline mode
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to quwery
+    :type connector: struct drm_connector \*
 
 .. _`drm_connector_get_cmdline_mode.description`:
 
@@ -64,17 +65,21 @@ drm_connector_init
 
     Init a preallocated connector
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_connector \*connector:
+    :param connector:
         the connector to init
+    :type connector: struct drm_connector \*
 
-    :param const struct drm_connector_funcs \*funcs:
+    :param funcs:
         callbacks for this connector
+    :type funcs: const struct drm_connector_funcs \*
 
-    :param int connector_type:
+    :param connector_type:
         user visible type of the connector
+    :type connector_type: int
 
 .. _`drm_connector_init.description`:
 
@@ -91,22 +96,24 @@ Return
 
 Zero on success, error code on failure.
 
-.. _`drm_mode_connector_attach_encoder`:
+.. _`drm_connector_attach_encoder`:
 
-drm_mode_connector_attach_encoder
-=================================
+drm_connector_attach_encoder
+============================
 
-.. c:function:: int drm_mode_connector_attach_encoder(struct drm_connector *connector, struct drm_encoder *encoder)
+.. c:function:: int drm_connector_attach_encoder(struct drm_connector *connector, struct drm_encoder *encoder)
 
     attach a connector to an encoder
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to attach
+    :type connector: struct drm_connector \*
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         encoder to attach \ ``connector``\  to
+    :type encoder: struct drm_encoder \*
 
-.. _`drm_mode_connector_attach_encoder.description`:
+.. _`drm_connector_attach_encoder.description`:
 
 Description
 -----------
@@ -115,12 +122,36 @@ This function links up a connector to an encoder. Note that the routing
 restrictions between encoders and crtcs are exposed to userspace through the
 possible_clones and possible_crtcs bitmasks.
 
-.. _`drm_mode_connector_attach_encoder.return`:
+.. _`drm_connector_attach_encoder.return`:
 
 Return
 ------
 
 Zero on success, negative errno on failure.
+
+.. _`drm_connector_has_possible_encoder`:
+
+drm_connector_has_possible_encoder
+==================================
+
+.. c:function:: bool drm_connector_has_possible_encoder(struct drm_connector *connector, struct drm_encoder *encoder)
+
+    check if the connector and encoder are assosicated with each other
+
+    :param connector:
+        the connector
+    :type connector: struct drm_connector \*
+
+    :param encoder:
+        the encoder
+    :type encoder: struct drm_encoder \*
+
+.. _`drm_connector_has_possible_encoder.return`:
+
+Return
+------
+
+True if \ ``encoder``\  is one of the possible encoders for \ ``connector``\ .
 
 .. _`drm_connector_cleanup`:
 
@@ -131,8 +162,9 @@ drm_connector_cleanup
 
     cleans up an initialised connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to cleanup
+    :type connector: struct drm_connector \*
 
 .. _`drm_connector_cleanup.description`:
 
@@ -150,8 +182,9 @@ drm_connector_register
 
     register a connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         the connector to register
+    :type connector: struct drm_connector \*
 
 .. _`drm_connector_register.description`:
 
@@ -176,8 +209,9 @@ drm_connector_unregister
 
     unregister a connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         the connector to unregister
+    :type connector: struct drm_connector \*
 
 .. _`drm_connector_unregister.description`:
 
@@ -195,8 +229,9 @@ drm_get_connector_status_name
 
     return a string for connector status
 
-    :param enum drm_connector_status status:
+    :param status:
         connector status to compute name of
+    :type status: enum drm_connector_status
 
 .. _`drm_get_connector_status_name.description`:
 
@@ -215,8 +250,9 @@ drm_get_connector_force_name
 
     return a string for connector force
 
-    :param enum drm_connector_force force:
+    :param force:
         connector force to get name of
+    :type force: enum drm_connector_force
 
 .. _`drm_get_connector_force_name.return`:
 
@@ -234,11 +270,13 @@ drm_connector_list_iter_begin
 
     initialize a connector_list iterator
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_connector_list_iter \*iter:
+    :param iter:
         connector_list iterator
+    :type iter: struct drm_connector_list_iter \*
 
 .. _`drm_connector_list_iter_begin.description`:
 
@@ -259,8 +297,9 @@ drm_connector_list_iter_next
 
     return next connector
 
-    :param struct drm_connector_list_iter \*iter:
-        connectr_list iterator
+    :param iter:
+        connector_list iterator
+    :type iter: struct drm_connector_list_iter \*
 
 .. _`drm_connector_list_iter_next.description`:
 
@@ -279,8 +318,9 @@ drm_connector_list_iter_end
 
     tear down a connector_list iterator
 
-    :param struct drm_connector_list_iter \*iter:
+    :param iter:
         connector_list iterator
+    :type iter: struct drm_connector_list_iter \*
 
 .. _`drm_connector_list_iter_end.description`:
 
@@ -301,8 +341,9 @@ drm_get_subpixel_order_name
 
     return a string for a given subpixel enum
 
-    :param enum subpixel_order order:
+    :param order:
         enum of subpixel_order
+    :type order: enum subpixel_order
 
 .. _`drm_get_subpixel_order_name.description`:
 
@@ -321,14 +362,17 @@ drm_display_info_set_bus_formats
 
     set the supported bus formats
 
-    :param struct drm_display_info \*info:
+    :param info:
         display info to store bus formats in
+    :type info: struct drm_display_info \*
 
-    :param const u32 \*formats:
+    :param formats:
         array containing the supported bus formats
+    :type formats: const u32 \*
 
-    :param unsigned int num_formats:
+    :param num_formats:
         the number of entries in the fmts array
+    :type num_formats: unsigned int
 
 .. _`drm_display_info_set_bus_formats.description`:
 
@@ -350,7 +394,7 @@ EDID:
      Blob property which contains the current EDID read from the sink. This
      is useful to parse sink identification information like vendor, model
      and serial. Drivers should update this property by calling
-     \ :c:func:`drm_mode_connector_update_edid_property`\ , usually after having parsed
+     \ :c:func:`drm_connector_update_edid_property`\ , usually after having parsed
      the EDID using \ :c:func:`drm_add_edid_modes`\ . Userspace cannot change this
      property.
 DPMS:
@@ -388,7 +432,7 @@ DPMS:
 PATH:
      Connector path property to identify how this sink is physically
      connected. Used by DP MST. This should be set by calling
-     \ :c:func:`drm_mode_connector_set_path_property`\ , in the case of DP MST with the
+     \ :c:func:`drm_connector_set_path_property`\ , in the case of DP MST with the
      path property the MST manager created. Userspace cannot change this
      property.
 TILE:
@@ -399,14 +443,14 @@ TILE:
      are not gen-locked. Note that for tiled panels which are genlocked, like
      dual-link LVDS or dual-link DSI, the driver should try to not expose the
      tiling and virtualize both \ :c:type:`struct drm_crtc <drm_crtc>`\  and \ :c:type:`struct drm_plane <drm_plane>`\  if needed. Drivers
-     should update this value using \ :c:func:`drm_mode_connector_set_tile_property`\ .
+     should update this value using \ :c:func:`drm_connector_set_tile_property`\ .
      Userspace cannot change this property.
 link-status:
      Connector link-status property to indicate the status of link. The
      default value of link-status is "GOOD". If something fails during or
      after modeset, the kernel driver may set this to "BAD" and issue a
      hotplug uevent. Drivers should update this value using
-     \ :c:func:`drm_mode_connector_set_link_status_property`\ .
+     \ :c:func:`drm_connector_set_link_status_property`\ .
 non_desktop:
      Indicates the output should be ignored for purposes of displaying a
      standard desktop environment or console. This is most likely because
@@ -497,8 +541,9 @@ drm_mode_create_dvi_i_properties
 
     create DVI-I specific connector properties
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_mode_create_dvi_i_properties.description`:
 
@@ -506,6 +551,70 @@ Description
 -----------
 
 Called by a driver the first time a DVI-I connector is made.
+
+.. _`hdmi-connector-properties`:
+
+HDMI connector properties
+=========================
+
+content type (HDMI specific):
+     Indicates content type setting to be used in HDMI infoframes to indicate
+     content type for the external device, so that it adjusts it's display
+     settings accordingly.
+
+     The value of this property can be one of the following:
+
+     No Data:
+             Content type is unknown
+     Graphics:
+             Content type is graphics
+     Photo:
+             Content type is photo
+     Cinema:
+             Content type is cinema
+     Game:
+             Content type is game
+
+     Drivers can set up this property by calling
+     \ :c:func:`drm_connector_attach_content_type_property`\ . Decoding to
+     infoframe values is done through \ :c:func:`drm_hdmi_avi_infoframe_content_type`\ .
+
+.. _`drm_connector_attach_content_type_property`:
+
+drm_connector_attach_content_type_property
+==========================================
+
+.. c:function:: int drm_connector_attach_content_type_property(struct drm_connector *connector)
+
+    attach content-type property
+
+    :param connector:
+        connector to attach content type property on.
+    :type connector: struct drm_connector \*
+
+.. _`drm_connector_attach_content_type_property.description`:
+
+Description
+-----------
+
+Called by a driver the first time a HDMI connector is made.
+
+.. _`drm_hdmi_avi_infoframe_content_type`:
+
+drm_hdmi_avi_infoframe_content_type
+===================================
+
+.. c:function:: void drm_hdmi_avi_infoframe_content_type(struct hdmi_avi_infoframe *frame, const struct drm_connector_state *conn_state)
+
+    fill the HDMI AVI infoframe content type information, based on correspondent DRM property.
+
+    :param frame:
+        HDMI AVI infoframe
+    :type frame: struct hdmi_avi_infoframe \*
+
+    :param conn_state:
+        DRM display connector state
+    :type conn_state: const struct drm_connector_state \*
 
 .. _`drm_mode_create_tv_properties`:
 
@@ -516,14 +625,17 @@ drm_mode_create_tv_properties
 
     create TV specific connector properties
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param unsigned int num_modes:
+    :param num_modes:
         number of different TV formats (modes) supported
+    :type num_modes: unsigned int
 
-    :param const char \* const modes:
+    :param modes:
         array of pointers to strings containing name of each format
+    :type modes: const char \* const
 
 .. _`drm_mode_create_tv_properties.description`:
 
@@ -544,8 +656,9 @@ drm_mode_create_scaling_mode_property
 
     create scaling mode property
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_mode_create_scaling_mode_property.description`:
 
@@ -568,11 +681,13 @@ drm_connector_attach_scaling_mode_property
 
     attach atomic scaling mode property
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to attach scaling mode property on.
+    :type connector: struct drm_connector \*
 
-    :param u32 scaling_mode_mask:
+    :param scaling_mode_mask:
         or'ed mask of BIT(%DRM_MODE_SCALE_\*).
+    :type scaling_mode_mask: u32
 
 .. _`drm_connector_attach_scaling_mode_property.description`:
 
@@ -601,8 +716,9 @@ drm_connector_attach_content_protection_property
 
     attach content protection property
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to attach CP property on.
+    :type connector: struct drm_connector \*
 
 .. _`drm_connector_attach_content_protection_property.description`:
 
@@ -631,8 +747,9 @@ drm_mode_create_aspect_ratio_property
 
     create aspect ratio property
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_mode_create_aspect_ratio_property.description`:
 
@@ -649,6 +766,34 @@ Return
 
 Zero on success, negative errno on failure.
 
+.. _`drm_mode_create_content_type_property`:
+
+drm_mode_create_content_type_property
+=====================================
+
+.. c:function:: int drm_mode_create_content_type_property(struct drm_device *dev)
+
+    create content type property
+
+    :param dev:
+        DRM device
+    :type dev: struct drm_device \*
+
+.. _`drm_mode_create_content_type_property.description`:
+
+Description
+-----------
+
+Called by a driver the first time it's needed, must be attached to desired
+connectors.
+
+.. _`drm_mode_create_content_type_property.return`:
+
+Return
+------
+
+Zero on success, negative errno on failure.
+
 .. _`drm_mode_create_suggested_offset_properties`:
 
 drm_mode_create_suggested_offset_properties
@@ -658,8 +803,9 @@ drm_mode_create_suggested_offset_properties
 
     create suggests offset properties
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_mode_create_suggested_offset_properties.description`:
 
@@ -668,22 +814,24 @@ Description
 
 Create the the suggested x/y offset property for connectors.
 
-.. _`drm_mode_connector_set_path_property`:
+.. _`drm_connector_set_path_property`:
 
-drm_mode_connector_set_path_property
-====================================
+drm_connector_set_path_property
+===============================
 
-.. c:function:: int drm_mode_connector_set_path_property(struct drm_connector *connector, const char *path)
+.. c:function:: int drm_connector_set_path_property(struct drm_connector *connector, const char *path)
 
     set tile property on connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to set property on.
+    :type connector: struct drm_connector \*
 
-    :param const char \*path:
+    :param path:
         path to use for property; must not be NULL.
+    :type path: const char \*
 
-.. _`drm_mode_connector_set_path_property.description`:
+.. _`drm_connector_set_path_property.description`:
 
 Description
 -----------
@@ -693,26 +841,27 @@ connector path. This is mainly used for DisplayPort MST where
 connectors have a topology and we want to allow userspace to give
 them more meaningful names.
 
-.. _`drm_mode_connector_set_path_property.return`:
+.. _`drm_connector_set_path_property.return`:
 
 Return
 ------
 
 Zero on success, negative errno on failure.
 
-.. _`drm_mode_connector_set_tile_property`:
+.. _`drm_connector_set_tile_property`:
 
-drm_mode_connector_set_tile_property
-====================================
+drm_connector_set_tile_property
+===============================
 
-.. c:function:: int drm_mode_connector_set_tile_property(struct drm_connector *connector)
+.. c:function:: int drm_connector_set_tile_property(struct drm_connector *connector)
 
     set tile property on connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to set property on.
+    :type connector: struct drm_connector \*
 
-.. _`drm_mode_connector_set_tile_property.description`:
+.. _`drm_connector_set_tile_property.description`:
 
 Description
 -----------
@@ -721,29 +870,31 @@ This looks up the tile information for a connector, and creates a
 property for userspace to parse if it exists. The property is of
 the form of 8 integers using ':' as a separator.
 
-.. _`drm_mode_connector_set_tile_property.return`:
+.. _`drm_connector_set_tile_property.return`:
 
 Return
 ------
 
 Zero on success, errno on failure.
 
-.. _`drm_mode_connector_update_edid_property`:
+.. _`drm_connector_update_edid_property`:
 
-drm_mode_connector_update_edid_property
-=======================================
+drm_connector_update_edid_property
+==================================
 
-.. c:function:: int drm_mode_connector_update_edid_property(struct drm_connector *connector, const struct edid *edid)
+.. c:function:: int drm_connector_update_edid_property(struct drm_connector *connector, const struct edid *edid)
 
     update the edid property of a connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         drm connector
+    :type connector: struct drm_connector \*
 
-    :param const struct edid \*edid:
+    :param edid:
         new value of the edid property
+    :type edid: const struct edid \*
 
-.. _`drm_mode_connector_update_edid_property.description`:
+.. _`drm_connector_update_edid_property.description`:
 
 Description
 -----------
@@ -751,29 +902,31 @@ Description
 This function creates a new blob modeset object and assigns its id to the
 connector's edid property.
 
-.. _`drm_mode_connector_update_edid_property.return`:
+.. _`drm_connector_update_edid_property.return`:
 
 Return
 ------
 
 Zero on success, negative errno on failure.
 
-.. _`drm_mode_connector_set_link_status_property`:
+.. _`drm_connector_set_link_status_property`:
 
-drm_mode_connector_set_link_status_property
-===========================================
+drm_connector_set_link_status_property
+======================================
 
-.. c:function:: void drm_mode_connector_set_link_status_property(struct drm_connector *connector, uint64_t link_status)
+.. c:function:: void drm_connector_set_link_status_property(struct drm_connector *connector, uint64_t link_status)
 
     Set link status property of a connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         drm connector
+    :type connector: struct drm_connector \*
 
-    :param uint64_t link_status:
+    :param link_status:
         new value of link status property (0: Good, 1: Bad)
+    :type link_status: uint64_t
 
-.. _`drm_mode_connector_set_link_status_property.description`:
+.. _`drm_connector_set_link_status_property.description`:
 
 Description
 -----------
@@ -784,7 +937,7 @@ may set this link status property to "BAD". The caller then needs to send a
 hotplug uevent for userspace to re-check the valid modes through
 GET_CONNECTOR_IOCTL and retry modeset.
 
-.. _`drm_mode_connector_set_link_status_property.note`:
+.. _`drm_connector_set_link_status_property.note`:
 
 Note
 ----
@@ -806,14 +959,17 @@ drm_connector_init_panel_orientation_property
 
     initialize the connecters panel_orientation property
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector for which to init the panel-orientation property.
+    :type connector: struct drm_connector \*
 
-    :param int width:
+    :param width:
         width in pixels of the panel, used for panel quirk detection
+    :type width: int
 
-    :param int height:
+    :param height:
         height in pixels of the panel, used for panel quirk detection
+    :type height: int
 
 .. _`drm_connector_init_panel_orientation_property.description`:
 
@@ -857,11 +1013,13 @@ drm_mode_put_tile_group
 
     drop a reference to a tile group.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_tile_group \*tg:
+    :param tg:
         tile group to drop reference to.
+    :type tg: struct drm_tile_group \*
 
 .. _`drm_mode_put_tile_group.description`:
 
@@ -879,11 +1037,13 @@ drm_mode_get_tile_group
 
     get a reference to an existing tile group
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param char topology:
+    :param topology:
         8-bytes unique per monitor.
+    :type topology: char
 
 .. _`drm_mode_get_tile_group.description`:
 
@@ -908,11 +1068,13 @@ drm_mode_create_tile_group
 
     create a tile group from a displayid description
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param char topology:
+    :param topology:
         8-bytes unique per monitor.
+    :type topology: char
 
 .. _`drm_mode_create_tile_group.description`:
 

@@ -10,17 +10,21 @@ rbtree_postorder_for_each_entry_safe
 
     iterate in post-order over rb_root of given type allowing the backing memory of \ ``pos``\  to be invalidated
 
-    :param  pos:
+    :param pos:
         the 'type \*' to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another 'type \*' to use as temporary storage
+    :type n: 
 
-    :param  root:
+    :param root:
         'rb_root \*' of the rbtree.
+    :type root: 
 
-    :param  field:
+    :param field:
         the name of the rb_node field within 'type'.
+    :type field: 
 
 .. _`rbtree_postorder_for_each_entry_safe.description`:
 

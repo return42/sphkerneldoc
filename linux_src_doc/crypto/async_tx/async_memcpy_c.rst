@@ -10,23 +10,29 @@ async_memcpy
 
     attempt to copy memory with a dma engine.
 
-    :param struct page \*dest:
+    :param dest:
         destination page
+    :type dest: struct page \*
 
-    :param struct page \*src:
+    :param src:
         src page
+    :type src: struct page \*
 
-    :param unsigned int dest_offset:
+    :param dest_offset:
         offset into 'dest' to start transaction
+    :type dest_offset: unsigned int
 
-    :param unsigned int src_offset:
+    :param src_offset:
         offset into 'src' to start transaction
+    :type src_offset: unsigned int
 
-    :param size_t len:
+    :param len:
         length in bytes
+    :type len: size_t
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         submission / completion modifiers
+    :type submit: struct async_submit_ctl \*
 
 .. _`async_memcpy.honored-flags`:
 

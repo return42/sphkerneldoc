@@ -10,17 +10,21 @@ tcp_try_coalesce
 
     try to merge skb to prior one
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*to:
+    :param to:
         prior buffer
+    :type to: struct sk_buff \*
 
-    :param struct sk_buff \*from:
+    :param from:
         buffer to add in queue
+    :type from: struct sk_buff \*
 
-    :param bool \*fragstolen:
+    :param fragstolen:
         pointer to boolean
+    :type fragstolen: bool \*
 
 .. _`tcp_try_coalesce.description`:
 

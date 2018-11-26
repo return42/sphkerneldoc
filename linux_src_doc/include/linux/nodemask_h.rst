@@ -10,8 +10,9 @@ nodemask_pr_args
 
     printf args to output a nodemask
 
-    :param  maskp:
+    :param maskp:
         nodemask to be printed
+    :type maskp: 
 
 .. _`nodemask_pr_args.description`:
 

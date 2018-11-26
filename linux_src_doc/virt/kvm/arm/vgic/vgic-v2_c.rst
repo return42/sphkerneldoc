@@ -10,8 +10,9 @@ vgic_v2_probe
 
     probe for a GICv2 compatible interrupt controller in DT
 
-    :param const struct gic_kvm_info \*info:
+    :param info:
         *undescribed*
+    :type info: const struct gic_kvm_info \*
 
 .. _`vgic_v2_probe.description`:
 

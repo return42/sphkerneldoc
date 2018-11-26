@@ -10,11 +10,13 @@ ip6gre_tnl_addr_conflict
 
     compare packet addresses to tunnel's own
 
-    :param const struct ip6_tnl \*t:
+    :param t:
         the outgoing tunnel device
+    :type t: const struct ip6_tnl \*
 
-    :param const struct ipv6hdr \*hdr:
+    :param hdr:
         IPv6 header from the incoming packet
+    :type hdr: const struct ipv6hdr \*
 
 .. _`ip6gre_tnl_addr_conflict.description`:
 

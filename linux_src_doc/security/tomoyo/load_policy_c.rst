@@ -10,8 +10,9 @@ tomoyo_loader_setup
 
     Set policy loader.
 
-    :param char \*str:
+    :param str:
         Program to use as a policy loader (e.g. /sbin/tomoyo-init ).
+    :type str: char \*
 
 .. _`tomoyo_loader_setup.description`:
 
@@ -29,8 +30,9 @@ tomoyo_policy_loader_exists
 
     Check whether /sbin/tomoyo-init exists.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_policy_loader_exists.description`:
 
@@ -48,8 +50,9 @@ tomoyo_trigger_setup
 
     Set trigger for activation.
 
-    :param char \*str:
+    :param str:
         Program to use as an activation trigger (e.g. /sbin/init ).
+    :type str: char \*
 
 .. _`tomoyo_trigger_setup.description`:
 
@@ -67,8 +70,9 @@ tomoyo_load_policy
 
     Run external policy loader to load policy.
 
-    :param const char \*filename:
+    :param filename:
         The program about to start.
+    :type filename: const char \*
 
 .. _`tomoyo_load_policy.description`:
 

@@ -10,11 +10,13 @@ suspend_nvs_register
 
     register platform NVS memory region to save \ ``start``\  - physical address of the region \ ``size``\  - size of the region
 
-    :param unsigned long start:
+    :param start:
         *undescribed*
+    :type start: unsigned long
 
-    :param unsigned long size:
+    :param size:
         *undescribed*
+    :type size: unsigned long
 
 .. _`suspend_nvs_register.description`:
 
@@ -34,8 +36,9 @@ suspend_nvs_free
 
     free data pages allocated for saving NVS regions
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`suspend_nvs_alloc`:
 
@@ -46,8 +49,9 @@ suspend_nvs_alloc
 
     allocate memory necessary for saving NVS regions
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`suspend_nvs_save`:
 
@@ -58,8 +62,9 @@ suspend_nvs_save
 
     save NVS memory regions
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`suspend_nvs_restore`:
 
@@ -70,8 +75,9 @@ suspend_nvs_restore
 
     restore NVS memory regions
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`suspend_nvs_restore.description`:
 

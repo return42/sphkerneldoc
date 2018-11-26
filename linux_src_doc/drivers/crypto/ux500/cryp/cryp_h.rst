@@ -265,11 +265,13 @@ cryp_write_indata
 
     This routine writes 32 bit data into the data input register of the cryptography IP.
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
-    :param u32 write_data:
+    :param write_data:
         Data to write.
+    :type write_data: u32
 
 .. _`cryp_read_outdata`:
 
@@ -280,11 +282,13 @@ cryp_read_outdata
 
     This routine reads the data from the data output register of the CRYP logic
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
-    :param u32 \*read_data:
+    :param read_data:
         Read the data from the output FIFO.
+    :type read_data: u32 \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,23 +10,29 @@ t1_wait_op_done
 
     wait until an operation is completed
 
-    :param adapter_t \*adapter:
+    :param adapter:
         the adapter performing the operation
+    :type adapter: adapter_t \*
 
-    :param int reg:
+    :param reg:
         the register to check for completion
+    :type reg: int
 
-    :param u32 mask:
+    :param mask:
         a single-bit field within \ ``reg``\  that indicates completion
+    :type mask: u32
 
-    :param int polarity:
+    :param polarity:
         the value of the field when the operation is completed
+    :type polarity: int
 
-    :param int attempts:
+    :param attempts:
         number of check iterations
+    :type attempts: int
 
-    :param int delay:
+    :param delay:
         delay in usecs between iterations
+    :type delay: int
 
 .. _`t1_wait_op_done.description`:
 

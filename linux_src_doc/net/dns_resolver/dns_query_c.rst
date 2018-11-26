@@ -10,23 +10,29 @@ dns_query
 
     Query the DNS
 
-    :param const char \*type:
+    :param type:
         Query type (or NULL for straight host->IP lookup)
+    :type type: const char \*
 
-    :param const char \*name:
+    :param name:
         Name to look up
+    :type name: const char \*
 
-    :param size_t namelen:
+    :param namelen:
         Length of name
+    :type namelen: size_t
 
-    :param const char \*options:
+    :param options:
         Request options (or NULL if no options)
+    :type options: const char \*
 
-    :param char \*\*_result:
+    :param _result:
         Where to place the returned data (or NULL)
+    :type _result: char \*\*
 
-    :param time64_t \*_expiry:
+    :param _expiry:
         Where to store the result expiry time (or NULL)
+    :type _expiry: time64_t \*
 
 .. _`dns_query.description`:
 

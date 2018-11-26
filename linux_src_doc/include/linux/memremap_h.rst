@@ -71,6 +71,7 @@ Definition
         struct device *dev;
         void *data;
         enum memory_type type;
+        u64 pci_p2pdma_bus_offset;
     }
 
 .. _`dev_pagemap.members`:
@@ -104,6 +105,9 @@ data
 
 type
     memory type: see MEMORY\_\* in memory_hotplug.h
+
+pci_p2pdma_bus_offset
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

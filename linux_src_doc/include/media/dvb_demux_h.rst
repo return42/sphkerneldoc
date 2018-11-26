@@ -396,8 +396,9 @@ dvb_dmx_init
 
     initialize a digital TV demux struct.
 
-    :param struct dvb_demux \*demux:
+    :param demux:
         \ :c:type:`struct dvb_demux <dvb_demux>`\  to be initialized.
+    :type demux: struct dvb_demux \*
 
 .. _`dvb_dmx_init.description`:
 
@@ -431,8 +432,9 @@ dvb_dmx_release
 
     releases a digital TV demux internal buffers.
 
-    :param struct dvb_demux \*demux:
+    :param demux:
         \ :c:type:`struct dvb_demux <dvb_demux>`\  to be released.
+    :type demux: struct dvb_demux \*
 
 .. _`dvb_dmx_release.description`:
 
@@ -452,14 +454,17 @@ dvb_dmx_swfilter_packets
 
     use dvb software filter for a buffer with multiple MPEG-TS packets with 188 bytes each.
 
-    :param struct dvb_demux \*demux:
+    :param demux:
         pointer to \ :c:type:`struct dvb_demux <dvb_demux>`\ 
+    :type demux: struct dvb_demux \*
 
-    :param const u8 \*buf:
+    :param buf:
         buffer with data to be filtered
+    :type buf: const u8 \*
 
-    :param size_t count:
+    :param count:
         number of MPEG-TS packets with size of 188.
+    :type count: size_t
 
 .. _`dvb_dmx_swfilter_packets.description`:
 
@@ -487,14 +492,17 @@ dvb_dmx_swfilter
 
     use dvb software filter for a buffer with multiple MPEG-TS packets with 188 bytes each.
 
-    :param struct dvb_demux \*demux:
+    :param demux:
         pointer to \ :c:type:`struct dvb_demux <dvb_demux>`\ 
+    :type demux: struct dvb_demux \*
 
-    :param const u8 \*buf:
+    :param buf:
         buffer with data to be filtered
+    :type buf: const u8 \*
 
-    :param size_t count:
+    :param count:
         number of MPEG-TS packets with size of 188.
+    :type count: size_t
 
 .. _`dvb_dmx_swfilter.description`:
 
@@ -523,14 +531,17 @@ dvb_dmx_swfilter_204
 
     use dvb software filter for a buffer with multiple MPEG-TS packets with 204 bytes each.
 
-    :param struct dvb_demux \*demux:
+    :param demux:
         pointer to \ :c:type:`struct dvb_demux <dvb_demux>`\ 
+    :type demux: struct dvb_demux \*
 
-    :param const u8 \*buf:
+    :param buf:
         buffer with data to be filtered
+    :type buf: const u8 \*
 
-    :param size_t count:
+    :param count:
         number of MPEG-TS packets with size of 204.
+    :type count: size_t
 
 .. _`dvb_dmx_swfilter_204.description`:
 
@@ -559,15 +570,18 @@ dvb_dmx_swfilter_raw
 
     make the raw data available to userspace without filtering
 
-    :param struct dvb_demux \*demux:
+    :param demux:
         pointer to \ :c:type:`struct dvb_demux <dvb_demux>`\ 
+    :type demux: struct dvb_demux \*
 
-    :param const u8 \*buf:
+    :param buf:
         buffer with data
+    :type buf: const u8 \*
 
-    :param size_t count:
+    :param count:
         number of packets to be passed. The actual size of each packet
         depends on the \ :c:type:`dvb_demux->feed <dvb_demux>`\ ->cb.ts logic.
+    :type count: size_t
 
 .. _`dvb_dmx_swfilter_raw.description`:
 

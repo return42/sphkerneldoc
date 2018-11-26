@@ -10,8 +10,9 @@ i2c_wait_for_writes
 
     wait for a write
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`i2c_wait_for_writes.description`:
 
@@ -32,8 +33,9 @@ i2c_ackrcv
 
     see if ack following write is true
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`rd_byte`:
 
@@ -44,11 +46,13 @@ rd_byte
 
     read a byte, sending STOP on last, else ACK
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param int last:
+    :param last:
         *undescribed*
+    :type last: int
 
 .. _`rd_byte.description`:
 
@@ -66,11 +70,13 @@ wr_byte
 
     write a byte, one bit at a time
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param u8 data:
+    :param data:
         the byte to write
+    :type data: u8
 
 .. _`wr_byte.description`:
 
@@ -88,8 +94,9 @@ stop_seq
 
     transmit the stop sequence
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`stop_seq.description`:
 
@@ -107,8 +114,9 @@ stop_cmd
 
     transmit the stop condition
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`stop_cmd.description`:
 
@@ -126,8 +134,9 @@ qib_twsi_reset
 
     reset I2C communication
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. This file was automatic generated / don't edit.
 

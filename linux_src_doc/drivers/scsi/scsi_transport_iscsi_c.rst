@@ -10,17 +10,21 @@ iscsi_create_flashnode_sess
 
     Add flashnode session entry in sysfs
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         pointer to host data
+    :type shost: struct Scsi_Host \*
 
-    :param int index:
+    :param index:
         index of flashnode to add in sysfs
+    :type index: int
 
-    :param struct iscsi_transport \*transport:
+    :param transport:
         pointer to transport data
+    :type transport: struct iscsi_transport \*
 
-    :param int dd_size:
+    :param dd_size:
         total size to allocate
+    :type dd_size: int
 
 .. _`iscsi_create_flashnode_sess.description`:
 
@@ -46,17 +50,21 @@ iscsi_create_flashnode_conn
 
     Add flashnode conn entry in sysfs
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         pointer to host data
+    :type shost: struct Scsi_Host \*
 
-    :param struct iscsi_bus_flash_session \*fnode_sess:
+    :param fnode_sess:
         pointer to the parent flashnode session entry
+    :type fnode_sess: struct iscsi_bus_flash_session \*
 
-    :param struct iscsi_transport \*transport:
+    :param transport:
         pointer to transport data
+    :type transport: struct iscsi_transport \*
 
-    :param int dd_size:
+    :param dd_size:
         total size to allocate
+    :type dd_size: int
 
 .. _`iscsi_create_flashnode_conn.description`:
 
@@ -82,11 +90,13 @@ iscsi_is_flashnode_conn_dev
 
     verify passed device is to be flashnode conn
 
-    :param struct device \*dev:
+    :param dev:
         device to verify
+    :type dev: struct device \*
 
-    :param void \*data:
+    :param data:
         pointer to data containing value to use for verification
+    :type data: void \*
 
 .. _`iscsi_is_flashnode_conn_dev.description`:
 
@@ -112,11 +122,13 @@ iscsi_get_flashnode_by_index
 
     finds flashnode session entry by index
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         pointer to host data
+    :type shost: struct Scsi_Host \*
 
-    :param uint32_t idx:
+    :param idx:
         index to match
+    :type idx: uint32_t
 
 .. _`iscsi_get_flashnode_by_index.description`:
 
@@ -142,11 +154,13 @@ iscsi_find_flashnode_sess
 
     finds flashnode session entry
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         pointer to host data
+    :type shost: struct Scsi_Host \*
 
-    :param void \*data:
+    :param data:
         pointer to data containing value to use for comparison
+    :type data: void \*
 
     :param int (\*fn)(struct device \*dev, void \*data):
         function pointer that does actual comparison
@@ -176,8 +190,9 @@ iscsi_find_flashnode_conn
 
     finds flashnode connection entry
 
-    :param struct iscsi_bus_flash_session \*fnode_sess:
+    :param fnode_sess:
         pointer to parent flashnode session entry
+    :type fnode_sess: struct iscsi_bus_flash_session \*
 
 .. _`iscsi_find_flashnode_conn.description`:
 
@@ -204,8 +219,9 @@ iscsi_destroy_flashnode_sess
 
     destroy flashnode session entry
 
-    :param struct iscsi_bus_flash_session \*fnode_sess:
+    :param fnode_sess:
         pointer to flashnode session entry to be destroyed
+    :type fnode_sess: struct iscsi_bus_flash_session \*
 
 .. _`iscsi_destroy_flashnode_sess.description`:
 
@@ -224,8 +240,9 @@ iscsi_destroy_all_flashnode
 
     destroy all flashnode session entries
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         pointer to host data
+    :type shost: struct Scsi_Host \*
 
 .. _`iscsi_destroy_all_flashnode.description`:
 
@@ -244,8 +261,9 @@ iscsi_bsg_host_dispatch
 
     Dispatch command to LLD.
 
-    :param struct bsg_job \*job:
+    :param job:
         bsg job to be processed
+    :type job: struct bsg_job \*
 
 .. _`iscsi_bsg_host_add`:
 
@@ -256,11 +274,13 @@ iscsi_bsg_host_add
 
     Create and add the bsg hooks to receive requests
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         shost for iscsi_host
+    :type shost: struct Scsi_Host \*
 
-    :param struct iscsi_cls_host \*ihost:
+    :param ihost:
         iscsi_cls_host adding the structures to
+    :type ihost: struct iscsi_cls_host \*
 
 .. _`iscsi_scan_finished`:
 
@@ -271,11 +291,13 @@ iscsi_scan_finished
 
     helper to report when running scans are done
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host
+    :type shost: struct Scsi_Host \*
 
-    :param unsigned long time:
+    :param time:
         scan run time
+    :type time: unsigned long
 
 .. _`iscsi_scan_finished.description`:
 
@@ -294,8 +316,9 @@ iscsi_block_scsi_eh
 
     block scsi eh until session state has transistioned
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         scsi cmd passed to scsi eh handler
+    :type cmd: struct scsi_cmnd \*
 
 .. _`iscsi_block_scsi_eh.description`:
 
@@ -316,8 +339,9 @@ iscsi_unblock_session
 
     set a session as logged in and start IO.
 
-    :param struct iscsi_cls_session \*session:
+    :param session:
         iscsi session
+    :type session: struct iscsi_cls_session \*
 
 .. _`iscsi_unblock_session.description`:
 
@@ -335,17 +359,21 @@ iscsi_create_session
 
     create iscsi class session
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host
+    :type shost: struct Scsi_Host \*
 
-    :param struct iscsi_transport \*transport:
+    :param transport:
         iscsi transport
+    :type transport: struct iscsi_transport \*
 
-    :param int dd_size:
+    :param dd_size:
         private driver data size
+    :type dd_size: int
 
-    :param unsigned int target_id:
+    :param target_id:
         which target
+    :type target_id: unsigned int
 
 .. _`iscsi_create_session.description`:
 
@@ -363,14 +391,17 @@ iscsi_create_conn
 
     create iscsi class connection
 
-    :param struct iscsi_cls_session \*session:
+    :param session:
         iscsi cls session
+    :type session: struct iscsi_cls_session \*
 
-    :param int dd_size:
+    :param dd_size:
         private driver data size
+    :type dd_size: int
 
-    :param uint32_t cid:
+    :param cid:
         connection id
+    :type cid: uint32_t
 
 .. _`iscsi_create_conn.description`:
 
@@ -395,8 +426,9 @@ iscsi_destroy_conn
 
     destroy iscsi class connection
 
-    :param struct iscsi_cls_conn \*conn:
+    :param conn:
         iscsi cls session
+    :type conn: struct iscsi_cls_conn \*
 
 .. _`iscsi_destroy_conn.description`:
 
@@ -414,11 +446,13 @@ iscsi_session_event
 
     send session destr. completion event
 
-    :param struct iscsi_cls_session \*session:
+    :param session:
         iscsi class session
+    :type session: struct iscsi_cls_session \*
 
-    :param enum iscsi_uevent_e event:
+    :param event:
         type of event
+    :type event: enum iscsi_uevent_e
 
 .. This file was automatic generated / don't edit.
 

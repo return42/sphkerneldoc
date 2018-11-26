@@ -10,11 +10,13 @@ i915_params_dump
 
     dump i915 modparams
 
-    :param const struct i915_params \*params:
+    :param params:
         i915 modparams
+    :type params: const struct i915_params \*
 
-    :param struct drm_printer \*p:
+    :param p:
         the \ :c:type:`struct drm_printer <drm_printer>`\ 
+    :type p: struct drm_printer \*
 
 .. _`i915_params_dump.description`:
 

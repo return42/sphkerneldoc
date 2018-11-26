@@ -10,8 +10,9 @@ BLOCKING_NOTIFIER_HEAD
 
     the "policy" list is involved in the validation process for a new CPU frequency policy; the "transition" list for kernel code that needs to handle changes to devices when the CPU clock speed changes. The mutex locks both lists.
 
-    :param  cpufreq_policy_notifier_list:
+    :param cpufreq_policy_notifier_list:
         *undescribed*
+    :type cpufreq_policy_notifier_list: 
 
 .. _`cpufreq_cpu_get`:
 
@@ -22,8 +23,9 @@ cpufreq_cpu_get
 
     returns policy for a cpu and marks it busy.
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu to find policy for.
+    :type cpu: unsigned int
 
 .. _`cpufreq_cpu_get.description`:
 
@@ -52,8 +54,9 @@ cpufreq_cpu_put
 
     Decrements the usage count of a policy
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         policy earlier returned by \ :c:func:`cpufreq_cpu_get`\ .
+    :type policy: struct cpufreq_policy \*
 
 .. _`cpufreq_cpu_put.description`:
 
@@ -72,11 +75,13 @@ adjust_jiffies
 
     adjust the system "loops_per_jiffy"
 
-    :param unsigned long val:
+    :param val:
         *undescribed*
+    :type val: unsigned long
 
-    :param struct cpufreq_freqs \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct cpufreq_freqs \*
 
 .. _`adjust_jiffies.description`:
 
@@ -97,14 +102,17 @@ cpufreq_notify_transition
 
     Notify frequency transition and adjust_jiffies.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         cpufreq policy to enable fast frequency switching for.
+    :type policy: struct cpufreq_policy \*
 
-    :param struct cpufreq_freqs \*freqs:
+    :param freqs:
         contain details of the frequency update.
+    :type freqs: struct cpufreq_freqs \*
 
-    :param unsigned int state:
+    :param state:
         set to CPUFREQ_PRECHANGE or CPUFREQ_POSTCHANGE.
+    :type state: unsigned int
 
 .. _`cpufreq_notify_transition.description`:
 
@@ -124,8 +132,9 @@ cpufreq_enable_fast_switch
 
     Enable fast frequency switching for policy.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         cpufreq policy to enable fast frequency switching for.
+    :type policy: struct cpufreq_policy \*
 
 .. _`cpufreq_enable_fast_switch.description`:
 
@@ -148,8 +157,9 @@ cpufreq_disable_fast_switch
 
     Disable fast frequency switching for policy.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         cpufreq policy to disable fast frequency switching for.
+    :type policy: struct cpufreq_policy \*
 
 .. _`cpufreq_driver_resolve_freq`:
 
@@ -160,11 +170,13 @@ cpufreq_driver_resolve_freq
 
     Map a target frequency to a driver-supported one.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int target_freq:
+    :param target_freq:
         target frequency to resolve.
+    :type target_freq: unsigned int
 
 .. _`cpufreq_driver_resolve_freq.description`:
 
@@ -190,11 +202,13 @@ cpufreq_parse_governor
 
     parse a governor string
 
-    :param char \*str_governor:
+    :param str_governor:
         *undescribed*
+    :type str_governor: char \*
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
 .. _`show_one`:
 
@@ -205,11 +219,13 @@ show_one
 
     print out cpufreq information
 
-    :param  file_name:
+    :param file_name:
         *undescribed*
+    :type file_name: 
 
-    :param  object:
+    :param object:
         *undescribed*
+    :type object: 
 
 .. _`show_one.description`:
 
@@ -228,11 +244,13 @@ store_one
 
     sysfs write access
 
-    :param  file_name:
+    :param file_name:
         *undescribed*
+    :type file_name: 
 
-    :param  object:
+    :param object:
         *undescribed*
+    :type object: 
 
 .. _`show_cpuinfo_cur_freq`:
 
@@ -243,11 +261,13 @@ show_cpuinfo_cur_freq
 
     current CPU frequency as detected by hardware
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`show_scaling_governor`:
 
@@ -258,11 +278,13 @@ show_scaling_governor
 
     show the current policy for the specified CPU
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`store_scaling_governor`:
 
@@ -273,14 +295,17 @@ store_scaling_governor
 
     store policy for the specified CPU
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param const char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`show_scaling_driver`:
 
@@ -291,11 +316,13 @@ show_scaling_driver
 
     show the cpufreq driver currently loaded
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`show_scaling_available_governors`:
 
@@ -306,11 +333,13 @@ show_scaling_available_governors
 
     show the available CPUfreq governors
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`show_related_cpus`:
 
@@ -321,11 +350,13 @@ show_related_cpus
 
     show the CPUs affected by each transition even if hw coordination is in use
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`show_affected_cpus`:
 
@@ -336,11 +367,13 @@ show_affected_cpus
 
     show the CPUs affected by each transition
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`show_bios_limit`:
 
@@ -351,11 +384,13 @@ show_bios_limit
 
     show the current cpufreq HW/BIOS limitation
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`cpufreq_add_dev`:
 
@@ -366,11 +401,13 @@ cpufreq_add_dev
 
     the cpufreq interface for a CPU device.
 
-    :param struct device \*dev:
+    :param dev:
         CPU device.
+    :type dev: struct device \*
 
-    :param struct subsys_interface \*sif:
+    :param sif:
         Subsystem interface structure pointer (not used)
+    :type sif: struct subsys_interface \*
 
 .. _`cpufreq_remove_dev`:
 
@@ -381,11 +418,13 @@ cpufreq_remove_dev
 
     remove a CPU device
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct subsys_interface \*sif:
+    :param sif:
         *undescribed*
+    :type sif: struct subsys_interface \*
 
 .. _`cpufreq_remove_dev.description`:
 
@@ -403,11 +442,13 @@ cpufreq_out_of_sync
 
     If actual and saved CPU frequency differs, we're in deep trouble.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         policy managing CPUs
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int new_freq:
+    :param new_freq:
         CPU frequency the CPU actually runs at
+    :type new_freq: unsigned int
 
 .. _`cpufreq_out_of_sync.description`:
 
@@ -426,8 +467,9 @@ cpufreq_quick_get
 
     get the CPU frequency (in kHz) from policy->cur
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU number
+    :type cpu: unsigned int
 
 .. _`cpufreq_quick_get.description`:
 
@@ -446,8 +488,9 @@ cpufreq_quick_get_max
 
     get the max reported CPU frequency for this CPU
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU number
+    :type cpu: unsigned int
 
 .. _`cpufreq_quick_get_max.description`:
 
@@ -465,8 +508,9 @@ cpufreq_get
 
     get the current CPU frequency (in kHz)
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU number
+    :type cpu: unsigned int
 
 .. _`cpufreq_get.description`:
 
@@ -484,8 +528,9 @@ cpufreq_suspend
 
     Suspend CPUFreq governors
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpufreq_suspend.description`:
 
@@ -506,8 +551,9 @@ cpufreq_resume
 
     Resume CPUFreq governors
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpufreq_resume.description`:
 
@@ -526,8 +572,9 @@ cpufreq_get_current_driver
 
     return current driver's name
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpufreq_get_current_driver.description`:
 
@@ -546,8 +593,9 @@ cpufreq_get_driver_data
 
     return current driver data
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpufreq_get_driver_data.description`:
 
@@ -566,11 +614,13 @@ cpufreq_register_notifier
 
     register a driver with cpufreq
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier function to register
+    :type nb: struct notifier_block \*
 
-    :param unsigned int list:
+    :param list:
         CPUFREQ_TRANSITION_NOTIFIER or CPUFREQ_POLICY_NOTIFIER
+    :type list: unsigned int
 
 .. _`cpufreq_register_notifier.add-a-driver-to-one-of-two-lists`:
 
@@ -594,11 +644,13 @@ cpufreq_unregister_notifier
 
     unregister a driver with cpufreq
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block to be unregistered
+    :type nb: struct notifier_block \*
 
-    :param unsigned int list:
+    :param list:
         CPUFREQ_TRANSITION_NOTIFIER or CPUFREQ_POLICY_NOTIFIER
+    :type list: unsigned int
 
 .. _`cpufreq_unregister_notifier.description`:
 
@@ -619,11 +671,13 @@ cpufreq_driver_fast_switch
 
     Carry out a fast CPU frequency switch.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         cpufreq policy to switch the frequency for.
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int target_freq:
+    :param target_freq:
         New frequency to set (may be approximate).
+    :type target_freq: unsigned int
 
 .. _`cpufreq_driver_fast_switch.description`:
 
@@ -657,12 +711,14 @@ cpufreq_get_policy
 
     get the current cpufreq_policy
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         struct cpufreq_policy into which the current cpufreq_policy
         is written
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: unsigned int
 
 .. _`cpufreq_get_policy.description`:
 
@@ -680,8 +736,9 @@ cpufreq_update_policy
 
     re-evaluate an existing cpufreq policy
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU which shall be re-evaluated
+    :type cpu: unsigned int
 
 .. _`cpufreq_update_policy.description`:
 
@@ -700,9 +757,10 @@ cpufreq_register_driver
 
     register a CPU Frequency driver
 
-    :param struct cpufreq_driver \*driver_data:
+    :param driver_data:
         A struct cpufreq_driver containing the values#
         submitted by the CPU Frequency driver.
+    :type driver_data: struct cpufreq_driver \*
 
 .. _`cpufreq_register_driver.description`:
 
@@ -722,8 +780,9 @@ cpufreq_unregister_driver
 
     unregister the current CPUFreq driver
 
-    :param struct cpufreq_driver \*driver:
+    :param driver:
         *undescribed*
+    :type driver: struct cpufreq_driver \*
 
 .. _`cpufreq_unregister_driver.description`:
 

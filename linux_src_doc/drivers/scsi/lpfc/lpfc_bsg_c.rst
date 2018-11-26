@@ -10,14 +10,17 @@ lpfc_bsg_send_mgmt_cmd_cmp
 
     lpfc_bsg_send_mgmt_cmd's completion handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocbq:
+    :param cmdiocbq:
         Pointer to command iocb.
+    :type cmdiocbq: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocbq:
+    :param rspiocbq:
         Pointer to response iocb.
+    :type rspiocbq: struct lpfc_iocbq \*
 
 .. _`lpfc_bsg_send_mgmt_cmd_cmp.description`:
 
@@ -44,8 +47,9 @@ lpfc_bsg_send_mgmt_cmd
 
     send a CT command from a bsg request
 
-    :param struct bsg_job \*job:
+    :param job:
         fc_bsg_job to handle
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_rport_els_cmp`:
 
@@ -56,14 +60,17 @@ lpfc_bsg_rport_els_cmp
 
     lpfc_bsg_rport_els's completion handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocbq:
+    :param cmdiocbq:
         Pointer to command iocb.
+    :type cmdiocbq: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocbq:
+    :param rspiocbq:
         Pointer to response iocb.
+    :type rspiocbq: struct lpfc_iocbq \*
 
 .. _`lpfc_bsg_rport_els_cmp.description`:
 
@@ -90,8 +97,9 @@ lpfc_bsg_rport_els
 
     send an ELS command from a bsg request
 
-    :param struct bsg_job \*job:
+    :param job:
         fc_bsg_job to handle
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_event_free`:
 
@@ -102,8 +110,9 @@ lpfc_bsg_event_free
 
     frees an allocated event structure
 
-    :param struct kref \*kref:
+    :param kref:
         Pointer to a kref.
+    :type kref: struct kref \*
 
 .. _`lpfc_bsg_event_free.description`:
 
@@ -123,8 +132,9 @@ lpfc_bsg_event_ref
 
     increments the kref for an event
 
-    :param struct lpfc_bsg_event \*evt:
+    :param evt:
         Pointer to an event structure.
+    :type evt: struct lpfc_bsg_event \*
 
 .. _`lpfc_bsg_event_unref`:
 
@@ -135,8 +145,9 @@ lpfc_bsg_event_unref
 
     Uses kref_put to free an event structure
 
-    :param struct lpfc_bsg_event \*evt:
+    :param evt:
         Pointer to an event structure.
+    :type evt: struct lpfc_bsg_event \*
 
 .. _`lpfc_bsg_event_new`:
 
@@ -147,14 +158,17 @@ lpfc_bsg_event_new
 
     allocate and initialize a event structure
 
-    :param uint32_t ev_mask:
+    :param ev_mask:
         Mask of events.
+    :type ev_mask: uint32_t
 
-    :param int ev_reg_id:
+    :param ev_reg_id:
         Event reg id.
+    :type ev_reg_id: int
 
-    :param uint32_t ev_req_id:
+    :param ev_req_id:
         Event request id.
+    :type ev_req_id: uint32_t
 
 .. _`diag_cmd_data_free`:
 
@@ -165,11 +179,13 @@ diag_cmd_data_free
 
     Frees an lpfc dma buffer extension
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_dmabufext \*mlist:
+    :param mlist:
         Pointer to an lpfc dma buffer extension.
+    :type mlist: struct lpfc_dmabufext \*
 
 .. _`lpfc_bsg_ct_unsol_event`:
 
@@ -180,14 +196,17 @@ lpfc_bsg_ct_unsol_event
 
     process an unsolicited CT command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_sli_ring \*pring:
+    :param pring:
         *undescribed*
+    :type pring: struct lpfc_sli_ring \*
 
-    :param struct lpfc_iocbq \*piocbq:
+    :param piocbq:
         *undescribed*
+    :type piocbq: struct lpfc_iocbq \*
 
 .. _`lpfc_bsg_ct_unsol_event.description`:
 
@@ -206,11 +225,13 @@ lpfc_bsg_ct_unsol_abort
 
     handler ct abort to management plane
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct hbq_dmabuf \*dmabuf:
+    :param dmabuf:
         pointer to a dmabuf that describes the FC sequence
+    :type dmabuf: struct hbq_dmabuf \*
 
 .. _`lpfc_bsg_ct_unsol_abort.description`:
 
@@ -233,8 +254,9 @@ lpfc_bsg_hba_set_event
 
     process a SET_EVENT bsg vendor command
 
-    :param struct bsg_job \*job:
+    :param job:
         SET_EVENT fc_bsg_job
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_hba_get_event`:
 
@@ -245,8 +267,9 @@ lpfc_bsg_hba_get_event
 
     process a GET_EVENT bsg vendor command
 
-    :param struct bsg_job \*job:
+    :param job:
         GET_EVENT fc_bsg_job
+    :type job: struct bsg_job \*
 
 .. _`lpfc_issue_ct_rsp_cmp`:
 
@@ -257,14 +280,17 @@ lpfc_issue_ct_rsp_cmp
 
     lpfc_issue_ct_rsp's completion handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocbq:
+    :param cmdiocbq:
         Pointer to command iocb.
+    :type cmdiocbq: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocbq:
+    :param rspiocbq:
         Pointer to response iocb.
+    :type rspiocbq: struct lpfc_iocbq \*
 
 .. _`lpfc_issue_ct_rsp_cmp.description`:
 
@@ -291,23 +317,29 @@ lpfc_issue_ct_rsp
 
     issue a ct response
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         Pointer to the job object.
+    :type job: struct bsg_job \*
 
-    :param uint32_t tag:
+    :param tag:
         tag index value into the ports context exchange array.
+    :type tag: uint32_t
 
-    :param struct lpfc_dmabuf \*cmp:
+    :param cmp:
         *undescribed*
+    :type cmp: struct lpfc_dmabuf \*
 
-    :param struct lpfc_dmabuf \*bmp:
+    :param bmp:
         Pointer to a dma buffer descriptor.
+    :type bmp: struct lpfc_dmabuf \*
 
-    :param int num_entry:
+    :param num_entry:
         Number of enties in the bde.
+    :type num_entry: int
 
 .. _`lpfc_bsg_send_mgmt_rsp`:
 
@@ -318,8 +350,9 @@ lpfc_bsg_send_mgmt_rsp
 
     process a SEND_MGMT_RESP bsg vendor command
 
-    :param struct bsg_job \*job:
+    :param job:
         SEND_MGMT_RESP fc_bsg_job
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_diag_mode_enter`:
 
@@ -330,8 +363,9 @@ lpfc_bsg_diag_mode_enter
 
     process preparing into device diag loopback mode
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_bsg_diag_mode_enter.description`:
 
@@ -350,8 +384,9 @@ lpfc_bsg_diag_mode_exit
 
     exit process from device diag loopback mode
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_bsg_diag_mode_exit.description`:
 
@@ -370,11 +405,13 @@ lpfc_sli3_bsg_diag_loopback_mode
 
     process an sli3 bsg vendor command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         LPFC_BSG_VENDOR_DIAG_MODE
+    :type job: struct bsg_job \*
 
 .. _`lpfc_sli3_bsg_diag_loopback_mode.description`:
 
@@ -398,11 +435,13 @@ lpfc_sli4_bsg_set_link_diag_state
 
     set sli4 link diag state
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t diag:
+    :param diag:
         Flag for set link to diag or nomral operation state.
+    :type diag: uint32_t
 
 .. _`lpfc_sli4_bsg_set_link_diag_state.description`:
 
@@ -421,8 +460,9 @@ lpfc_sli4_bsg_set_internal_loopback
 
     set sli4 internal loopback diagnostic
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_bsg_set_internal_loopback.description`:
 
@@ -441,8 +481,9 @@ lpfc_sli4_diag_fcport_reg_setup
 
     setup port registrations for diagnostic
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_diag_fcport_reg_setup.description`:
 
@@ -461,11 +502,13 @@ lpfc_sli4_bsg_diag_loopback_mode
 
     process an sli4 bsg vendor command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         LPFC_BSG_VENDOR_DIAG_MODE
+    :type job: struct bsg_job \*
 
 .. _`lpfc_sli4_bsg_diag_loopback_mode.description`:
 
@@ -484,8 +527,9 @@ lpfc_bsg_diag_loopback_mode
 
     bsg vendor command for diag loopback mode
 
-    :param struct bsg_job \*job:
+    :param job:
         LPFC_BSG_VENDOR_DIAG_MODE
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_diag_loopback_mode.description`:
 
@@ -504,8 +548,9 @@ lpfc_sli4_bsg_diag_mode_end
 
     sli4 bsg vendor command for ending diag mode
 
-    :param struct bsg_job \*job:
+    :param job:
         LPFC_BSG_VENDOR_DIAG_MODE_END
+    :type job: struct bsg_job \*
 
 .. _`lpfc_sli4_bsg_diag_mode_end.description`:
 
@@ -524,8 +569,9 @@ lpfc_sli4_bsg_link_diag_test
 
     sli4 bsg vendor command for diag link test
 
-    :param struct bsg_job \*job:
+    :param job:
         LPFC_BSG_VENDOR_DIAG_LINK_TEST
+    :type job: struct bsg_job \*
 
 .. _`lpfc_sli4_bsg_link_diag_test.description`:
 
@@ -544,11 +590,13 @@ lpfcdiag_loop_self_reg
 
     obtains a remote port login id
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t \*rpi:
+    :param rpi:
         Pointer to a remote port login id
+    :type rpi: uint16_t \*
 
 .. _`lpfcdiag_loop_self_reg.description`:
 
@@ -567,11 +615,13 @@ lpfcdiag_loop_self_unreg
 
     unregs from the rpi
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t rpi:
+    :param rpi:
         Remote port login id
+    :type rpi: uint16_t
 
 .. _`lpfcdiag_loop_self_unreg.description`:
 
@@ -589,17 +639,21 @@ lpfcdiag_loop_get_xri
 
     obtains the transmit and receive ids
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t rpi:
+    :param rpi:
         Remote port login id
+    :type rpi: uint16_t
 
-    :param uint16_t \*txxri:
+    :param txxri:
         Pointer to transmit exchange id
+    :type txxri: uint16_t \*
 
-    :param uint16_t \*rxxri:
+    :param rxxri:
         Pointer to response exchabge id
+    :type rxxri: uint16_t \*
 
 .. _`lpfcdiag_loop_get_xri.description`:
 
@@ -620,8 +674,9 @@ lpfc_bsg_dma_page_alloc
 
     allocate a bsg mbox page sized dma buffers
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_bsg_dma_page_alloc.description`:
 
@@ -640,11 +695,13 @@ lpfc_bsg_dma_page_free
 
     free a bsg mbox page sized dma buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_dmabuf \*dmabuf:
+    :param dmabuf:
         Pointer to the bsg mbox page sized dma buffer descriptor.
+    :type dmabuf: struct lpfc_dmabuf \*
 
 .. _`lpfc_bsg_dma_page_free.description`:
 
@@ -663,11 +720,13 @@ lpfc_bsg_dma_page_list_free
 
     free a list of bsg mbox page sized dma buffers
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct list_head \*dmabuf_list:
+    :param dmabuf_list:
         Pointer to a list of bsg mbox page sized dma buffer descs.
+    :type dmabuf_list: struct list_head \*
 
 .. _`lpfc_bsg_dma_page_list_free.description`:
 
@@ -686,17 +745,21 @@ diag_cmd_data_alloc
 
     fills in a bde struct with dma buffers
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object
+    :type phba: struct lpfc_hba \*
 
-    :param struct ulp_bde64 \*bpl:
+    :param bpl:
         Pointer to 64 bit bde structure
+    :type bpl: struct ulp_bde64 \*
 
-    :param uint32_t size:
+    :param size:
         Number of bytes to process
+    :type size: uint32_t
 
-    :param int nocopydata:
+    :param nocopydata:
         Flag to copy user data into the allocated buffer
+    :type nocopydata: int
 
 .. _`diag_cmd_data_alloc.description`:
 
@@ -716,14 +779,17 @@ lpfcdiag_loop_post_rxbufs
 
     post the receive buffers for an unsol CT cmd
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t rxxri:
+    :param rxxri:
         Receive exchange id
+    :type rxxri: uint16_t
 
-    :param size_t len:
+    :param len:
         Number of data bytes
+    :type len: size_t
 
 .. _`lpfcdiag_loop_post_rxbufs.description`:
 
@@ -742,8 +808,9 @@ lpfc_bsg_diag_loopback_run
 
     run loopback on a port by issue ct cmd to itself
 
-    :param struct bsg_job \*job:
+    :param job:
         LPFC_BSG_VENDOR_DIAG_TEST fc_bsg_job
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_diag_loopback_run.description`:
 
@@ -774,8 +841,9 @@ lpfc_bsg_get_dfc_rev
 
     process a GET_DFC_REV bsg vendor command
 
-    :param struct bsg_job \*job:
+    :param job:
         GET_DFC_REV fc_bsg_job
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_issue_mbox_cmpl`:
 
@@ -786,11 +854,13 @@ lpfc_bsg_issue_mbox_cmpl
 
     lpfc_bsg_issue_mbox mbox completion handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmboxq:
+    :param pmboxq:
         Pointer to mailbox command.
+    :type pmboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_bsg_issue_mbox_cmpl.description`:
 
@@ -812,14 +882,17 @@ lpfc_bsg_check_cmd_access
 
     test for a supported mailbox command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param MAILBOX_t \*mb:
+    :param mb:
         Pointer to a mailbox object.
+    :type mb: MAILBOX_t \*
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Pointer to a vport object.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_bsg_check_cmd_access.description`:
 
@@ -838,8 +911,9 @@ lpfc_bsg_mbox_ext_session_reset
 
     clean up context of multi-buffer mbox session
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_bsg_mbox_ext_session_reset.description`:
 
@@ -858,11 +932,13 @@ lpfc_bsg_issue_mbox_ext_handle_job
 
     job handler for multi-buffer mbox cmpl
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmboxq:
+    :param pmboxq:
         Pointer to mailbox command.
+    :type pmboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_bsg_issue_mbox_ext_handle_job.description`:
 
@@ -881,11 +957,13 @@ lpfc_bsg_issue_read_mbox_ext_cmpl
 
     compl handler for multi-buffer read mbox
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmboxq:
+    :param pmboxq:
         Pointer to mailbox command.
+    :type pmboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_bsg_issue_read_mbox_ext_cmpl.description`:
 
@@ -904,11 +982,13 @@ lpfc_bsg_issue_write_mbox_ext_cmpl
 
     cmpl handler for multi-buffer write mbox
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmboxq:
+    :param pmboxq:
         Pointer to mailbox command.
+    :type pmboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_bsg_issue_write_mbox_ext_cmpl.description`:
 
@@ -927,17 +1007,21 @@ lpfc_bsg_sli_cfg_read_cmd_ext
 
     sli_config non-embedded mailbox cmd read
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         *undescribed*
+    :type job: struct bsg_job \*
 
-    :param enum nemb_type nemb_tp:
+    :param nemb_tp:
         Enumerate of non-embedded mailbox command type.
+    :type nemb_tp: enum nemb_type
 
-    :param struct lpfc_dmabuf \*dmabuf:
+    :param dmabuf:
         *undescribed*
+    :type dmabuf: struct lpfc_dmabuf \*
 
 .. _`lpfc_bsg_sli_cfg_read_cmd_ext.description`:
 
@@ -956,17 +1040,21 @@ lpfc_bsg_sli_cfg_write_cmd_ext
 
     sli_config non-embedded mailbox cmd write
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         *undescribed*
+    :type job: struct bsg_job \*
 
-    :param enum nemb_type nemb_tp:
+    :param nemb_tp:
         *undescribed*
+    :type nemb_tp: enum nemb_type
 
-    :param struct lpfc_dmabuf \*dmabuf:
+    :param dmabuf:
         *undescribed*
+    :type dmabuf: struct lpfc_dmabuf \*
 
 .. _`lpfc_bsg_sli_cfg_write_cmd_ext.description`:
 
@@ -985,14 +1073,17 @@ lpfc_bsg_handle_sli_cfg_mbox
 
     handle sli-cfg mailbox cmd with ext buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         *undescribed*
+    :type job: struct bsg_job \*
 
-    :param struct lpfc_dmabuf \*dmabuf:
+    :param dmabuf:
         *undescribed*
+    :type dmabuf: struct lpfc_dmabuf \*
 
 .. _`lpfc_bsg_handle_sli_cfg_mbox.description`:
 
@@ -1012,8 +1103,9 @@ lpfc_bsg_mbox_ext_abort
 
     request to abort mbox command with ext buffers
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_bsg_mbox_ext_abort.description`:
 
@@ -1032,11 +1124,13 @@ lpfc_bsg_read_ebuf_get
 
     get the next mailbox read external buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         *undescribed*
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_read_ebuf_get.description`:
 
@@ -1055,14 +1149,17 @@ lpfc_bsg_write_ebuf_set
 
     set the next mailbox write external buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         *undescribed*
+    :type job: struct bsg_job \*
 
-    :param struct lpfc_dmabuf \*dmabuf:
+    :param dmabuf:
         Pointer to a DMA buffer descriptor.
+    :type dmabuf: struct lpfc_dmabuf \*
 
 .. _`lpfc_bsg_write_ebuf_set.description`:
 
@@ -1081,14 +1178,17 @@ lpfc_bsg_handle_sli_cfg_ebuf
 
     handle ext buffer with sli-cfg mailbox cmd
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         *undescribed*
+    :type job: struct bsg_job \*
 
-    :param struct lpfc_dmabuf \*dmabuf:
+    :param dmabuf:
         *undescribed*
+    :type dmabuf: struct lpfc_dmabuf \*
 
 .. _`lpfc_bsg_handle_sli_cfg_ebuf.description`:
 
@@ -1107,14 +1207,17 @@ lpfc_bsg_handle_sli_cfg_ext
 
     handle sli-cfg mailbox with external buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         *undescribed*
+    :type job: struct bsg_job \*
 
-    :param struct lpfc_dmabuf \*dmabuf:
+    :param dmabuf:
         *undescribed*
+    :type dmabuf: struct lpfc_dmabuf \*
 
 .. _`lpfc_bsg_handle_sli_cfg_ext.description`:
 
@@ -1133,14 +1236,17 @@ lpfc_bsg_issue_mbox
 
     issues a mailbox command on behalf of an app
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct bsg_job \*job:
+    :param job:
         *undescribed*
+    :type job: struct bsg_job \*
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Pointer to a vport object.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_bsg_issue_mbox.description`:
 
@@ -1163,8 +1269,9 @@ lpfc_bsg_mbox_cmd
 
     process an fc bsg LPFC_BSG_VENDOR_MBOX command
 
-    :param struct bsg_job \*job:
+    :param job:
         MBOX fc_bsg_job for LPFC_BSG_VENDOR_MBOX.
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_menlo_cmd_cmp`:
 
@@ -1175,14 +1282,17 @@ lpfc_bsg_menlo_cmd_cmp
 
     lpfc_menlo_cmd completion handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocbq:
+    :param cmdiocbq:
         Pointer to command iocb.
+    :type cmdiocbq: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocbq:
+    :param rspiocbq:
         Pointer to response iocb.
+    :type rspiocbq: struct lpfc_iocbq \*
 
 .. _`lpfc_bsg_menlo_cmd_cmp.description`:
 
@@ -1209,8 +1319,9 @@ lpfc_menlo_cmd
 
     send an ioctl for menlo hardware
 
-    :param struct bsg_job \*job:
+    :param job:
         fc_bsg_job to handle
+    :type job: struct bsg_job \*
 
 .. _`lpfc_menlo_cmd.description`:
 
@@ -1222,6 +1333,128 @@ all the command completions will return the xri for the command.
 For menlo data requests a gen request 64 CX is used to continue the exchange
 supplied in the menlo request header xri field.
 
+.. _`lpfc_check_fwlog_support`:
+
+lpfc_check_fwlog_support
+========================
+
+.. c:function:: int lpfc_check_fwlog_support(struct lpfc_hba *phba)
+
+    Check FW log support on the adapter
+
+    :param phba:
+        Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
+
+.. _`lpfc_check_fwlog_support.description`:
+
+Description
+-----------
+
+Check if FW Logging support by the adapter
+
+.. _`lpfc_bsg_get_ras_config`:
+
+lpfc_bsg_get_ras_config
+=======================
+
+.. c:function:: int lpfc_bsg_get_ras_config(struct bsg_job *job)
+
+    Get RAS configuration settings
+
+    :param job:
+        fc_bsg_job to handle
+    :type job: struct bsg_job \*
+
+.. _`lpfc_bsg_get_ras_config.description`:
+
+Description
+-----------
+
+Get RAS configuration values set.
+
+.. _`lpfc_ras_stop_fwlog`:
+
+lpfc_ras_stop_fwlog
+===================
+
+.. c:function:: void lpfc_ras_stop_fwlog(struct lpfc_hba *phba)
+
+    Disable FW logging by the adapter
+
+    :param phba:
+        Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
+
+.. _`lpfc_ras_stop_fwlog.description`:
+
+Description
+-----------
+
+Disable FW logging into host memory on the adapter. To
+be done before reading logs from the host memory.
+
+.. _`lpfc_bsg_set_ras_config`:
+
+lpfc_bsg_set_ras_config
+=======================
+
+.. c:function:: int lpfc_bsg_set_ras_config(struct bsg_job *job)
+
+    Set FW logging parameters
+
+    :param job:
+        fc_bsg_job to handle
+    :type job: struct bsg_job \*
+
+.. _`lpfc_bsg_set_ras_config.description`:
+
+Description
+-----------
+
+Set log-level parameters for FW-logging in host memory
+
+.. _`lpfc_bsg_get_ras_lwpd`:
+
+lpfc_bsg_get_ras_lwpd
+=====================
+
+.. c:function:: int lpfc_bsg_get_ras_lwpd(struct bsg_job *job)
+
+    Get log write position data
+
+    :param job:
+        fc_bsg_job to handle
+    :type job: struct bsg_job \*
+
+.. _`lpfc_bsg_get_ras_lwpd.description`:
+
+Description
+-----------
+
+Get Offset/Wrap count of the log message written
+in host memory
+
+.. _`lpfc_bsg_get_ras_fwlog`:
+
+lpfc_bsg_get_ras_fwlog
+======================
+
+.. c:function:: int lpfc_bsg_get_ras_fwlog(struct bsg_job *job)
+
+    Read FW log
+
+    :param job:
+        fc_bsg_job to handle
+    :type job: struct bsg_job \*
+
+.. _`lpfc_bsg_get_ras_fwlog.description`:
+
+Description
+-----------
+
+Copy the FW log into the passed buffer.
+
 .. _`lpfc_bsg_hst_vendor`:
 
 lpfc_bsg_hst_vendor
@@ -1231,8 +1464,9 @@ lpfc_bsg_hst_vendor
 
     process a vendor-specific fc_bsg_job
 
-    :param struct bsg_job \*job:
+    :param job:
         fc_bsg_job to handle
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_request`:
 
@@ -1243,8 +1477,9 @@ lpfc_bsg_request
 
     handle a bsg request from the FC transport
 
-    :param struct bsg_job \*job:
-        fc_bsg_job to handle
+    :param job:
+        bsg_job to handle
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_timeout`:
 
@@ -1255,8 +1490,9 @@ lpfc_bsg_timeout
 
     handle timeout of a bsg request from the FC transport
 
-    :param struct bsg_job \*job:
-        fc_bsg_job that has timed out
+    :param job:
+        bsg_job that has timed out
+    :type job: struct bsg_job \*
 
 .. _`lpfc_bsg_timeout.description`:
 

@@ -10,14 +10,17 @@ alloc_symbol
 
     the list of unresolved symbols per module
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param unsigned int weak:
+    :param weak:
         *undescribed*
+    :type weak: unsigned int
 
-    :param struct symbol \*next:
+    :param next:
         *undescribed*
+    :type next: struct symbol \*
 
 .. _`sym_add_exported`:
 
@@ -28,14 +31,17 @@ sym_add_exported
 
     it may have already been added without a CRC, in this case just update the CRC
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param struct module \*mod:
+    :param mod:
         *undescribed*
+    :type mod: struct module \*
 
-    :param enum export export:
+    :param export:
         *undescribed*
+    :type export: enum export
 
 .. _`get_next_line`:
 
@@ -46,14 +52,17 @@ get_next_line
 
     spaces in the beginning of the line is trimmed away. Return a pointer to a static buffer.
 
-    :param unsigned long \*pos:
+    :param pos:
         *undescribed*
+    :type pos: unsigned long \*
 
-    :param void \*file:
+    :param file:
         *undescribed*
+    :type file: void \*
 
-    :param unsigned long size:
+    :param size:
         *undescribed*
+    :type size: unsigned long
 
 .. _`next_string`:
 
@@ -62,11 +71,13 @@ next_string
 
 .. c:function:: char *next_string(char *string, unsigned long *secsize)
 
-    :param char \*string:
+    :param string:
         *undescribed*
+    :type string: char \*
 
-    :param unsigned long \*secsize:
+    :param secsize:
         *undescribed*
+    :type secsize: unsigned long \*
 
 .. _`strrcmp`:
 
@@ -77,11 +88,13 @@ strrcmp
 
     return 0 if match
 
-    :param const char \*s:
+    :param s:
         *undescribed*
+    :type s: const char \*
 
-    :param const char \*sub:
+    :param sub:
         *undescribed*
+    :type sub: const char \*
 
 .. _`secref_whitelist`:
 
@@ -90,20 +103,25 @@ secref_whitelist
 
 .. c:function:: int secref_whitelist(const struct sectioncheck *mismatch, const char *fromsec, const char *fromsym, const char *tosec, const char *tosym)
 
-    :param const struct sectioncheck \*mismatch:
+    :param mismatch:
         *undescribed*
+    :type mismatch: const struct sectioncheck \*
 
-    :param const char \*fromsec:
+    :param fromsec:
         *undescribed*
+    :type fromsec: const char \*
 
-    :param const char \*fromsym:
+    :param fromsym:
         *undescribed*
+    :type fromsym: const char \*
 
-    :param const char \*tosec:
+    :param tosec:
         *undescribed*
+    :type tosec: const char \*
 
-    :param const char \*tosym:
+    :param tosym:
         *undescribed*
+    :type tosym: const char \*
 
 .. _`secref_whitelist.pattern-1`:
 
@@ -197,14 +215,17 @@ find_elf_symbol
 
     In some cases the symbol supplied is a valid symbol so return refsym. If st_name != 0 we assume this is a valid symbol. In other cases the symbol needs to be looked up in the symbol table based on section and address.
 
-    :param struct elf_info \*elf:
+    :param elf:
         *undescribed*
+    :type elf: struct elf_info \*
 
-    :param Elf64_Sword addr:
+    :param addr:
         *undescribed*
+    :type addr: Elf64_Sword
 
-    :param Elf_Sym \*relsym:
+    :param relsym:
         *undescribed*
+    :type relsym: Elf_Sym \*
 
 .. _`check_sec_ref`:
 
@@ -215,14 +236,17 @@ check_sec_ref
 
     either when loaded or when used as built-in. For loaded modules all functions marked \__init and all data marked \__initdata will be discarded when the module has been initialized. Likewise for modules used built-in the sections marked \__exit are discarded because \__exit marked function are supposed to be called only when a module is unloaded which never happens for built-in modules. The \ :c:func:`check_sec_ref`\  function traverses all relocation records to find all references to a section that reference a section that will be discarded and warns about it.
 
-    :param struct module \*mod:
+    :param mod:
         *undescribed*
+    :type mod: struct module \*
 
-    :param const char \*modname:
+    :param modname:
         *undescribed*
+    :type modname: const char \*
 
-    :param struct elf_info \*elf:
+    :param elf:
         *undescribed*
+    :type elf: struct elf_info \*
 
 .. _`add_header`:
 
@@ -231,11 +255,13 @@ add_header
 
 .. c:function:: void add_header(struct buffer *b, struct module *mod)
 
-    :param struct buffer \*b:
+    :param b:
         *undescribed*
+    :type b: struct buffer \*
 
-    :param struct module \*mod:
+    :param mod:
         *undescribed*
+    :type mod: struct module \*
 
 .. _`add_versions`:
 
@@ -244,11 +270,13 @@ add_versions
 
 .. c:function:: int add_versions(struct buffer *b, struct module *mod)
 
-    :param struct buffer \*b:
+    :param b:
         *undescribed*
+    :type b: struct buffer \*
 
-    :param struct module \*mod:
+    :param mod:
         *undescribed*
+    :type mod: struct module \*
 
 .. This file was automatic generated / don't edit.
 

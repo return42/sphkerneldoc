@@ -106,8 +106,9 @@ zynq_gpio_is_zynq
 
     test if HW is zynq or zynqmp
 
-    :param struct zynq_gpio \*gpio:
+    :param gpio:
         Pointer to driver data struct
+    :type gpio: struct zynq_gpio \*
 
 .. _`zynq_gpio_is_zynq.return`:
 
@@ -125,8 +126,9 @@ gpio_data_ro_bug
 
     test if HW bug exists or not
 
-    :param struct zynq_gpio \*gpio:
+    :param gpio:
         Pointer to driver data struct
+    :type gpio: struct zynq_gpio \*
 
 .. _`gpio_data_ro_bug.return`:
 
@@ -144,19 +146,23 @@ zynq_gpio_get_bank_pin
 
     Get the bank number and pin number within that bank for a given pin in the GPIO device
 
-    :param unsigned int pin_num:
+    :param pin_num:
         gpio pin number within the device
+    :type pin_num: unsigned int
 
-    :param unsigned int \*bank_num:
+    :param bank_num:
         an output parameter used to return the bank number of the gpio
         pin
+    :type bank_num: unsigned int \*
 
-    :param unsigned int \*bank_pin_num:
+    :param bank_pin_num:
         an output parameter used to return pin number within a bank
         for the given gpio pin
+    :type bank_pin_num: unsigned int \*
 
-    :param struct zynq_gpio \*gpio:
+    :param gpio:
         gpio device data structure
+    :type gpio: struct zynq_gpio \*
 
 .. _`zynq_gpio_get_bank_pin.description`:
 
@@ -174,11 +180,13 @@ zynq_gpio_get_value
 
     Get the state of the specified pin of GPIO device
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         gpio_chip instance to be worked on
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int pin:
+    :param pin:
         gpio pin number within the device
+    :type pin: unsigned int
 
 .. _`zynq_gpio_get_value.description`:
 
@@ -203,14 +211,17 @@ zynq_gpio_set_value
 
     Modify the state of the pin with specified value
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         gpio_chip instance to be worked on
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int pin:
+    :param pin:
         gpio pin number within the device
+    :type pin: unsigned int
 
-    :param int state:
+    :param state:
         value used to modify the state of the specified pin
+    :type state: int
 
 .. _`zynq_gpio_set_value.description`:
 
@@ -230,11 +241,13 @@ zynq_gpio_dir_in
 
     Set the direction of the specified GPIO pin as input
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         gpio_chip instance to be worked on
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int pin:
+    :param pin:
         gpio pin number within the device
+    :type pin: unsigned int
 
 .. _`zynq_gpio_dir_in.description`:
 
@@ -260,14 +273,17 @@ zynq_gpio_dir_out
 
     Set the direction of the specified GPIO pin as output
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         gpio_chip instance to be worked on
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int pin:
+    :param pin:
         gpio pin number within the device
+    :type pin: unsigned int
 
-    :param int state:
+    :param state:
         value to be written to specified pin
+    :type state: int
 
 .. _`zynq_gpio_dir_out.description`:
 
@@ -294,8 +310,9 @@ zynq_gpio_irq_mask
 
     Disable the interrupts for a gpio pin
 
-    :param struct irq_data \*irq_data:
+    :param irq_data:
         per irq and chip data passed down to chip functions
+    :type irq_data: struct irq_data \*
 
 .. _`zynq_gpio_irq_mask.description`:
 
@@ -315,9 +332,10 @@ zynq_gpio_irq_unmask
 
     Enable the interrupts for a gpio pin
 
-    :param struct irq_data \*irq_data:
+    :param irq_data:
         irq data containing irq number of gpio pin for the interrupt
         to enable
+    :type irq_data: struct irq_data \*
 
 .. _`zynq_gpio_irq_unmask.description`:
 
@@ -337,9 +355,10 @@ zynq_gpio_irq_ack
 
     Acknowledge the interrupt of a gpio pin
 
-    :param struct irq_data \*irq_data:
+    :param irq_data:
         irq data containing irq number of gpio pin for the interrupt
         to ack
+    :type irq_data: struct irq_data \*
 
 .. _`zynq_gpio_irq_ack.description`:
 
@@ -358,9 +377,10 @@ zynq_gpio_irq_enable
 
     Enable the interrupts for a gpio pin
 
-    :param struct irq_data \*irq_data:
+    :param irq_data:
         irq data containing irq number of gpio pin for the interrupt
         to enable
+    :type irq_data: struct irq_data \*
 
 .. _`zynq_gpio_irq_enable.description`:
 
@@ -378,11 +398,13 @@ zynq_gpio_set_irq_type
 
     Set the irq type for a gpio pin
 
-    :param struct irq_data \*irq_data:
+    :param irq_data:
         irq data containing irq number of gpio pin
+    :type irq_data: struct irq_data \*
 
-    :param unsigned int type:
+    :param type:
         interrupt type that is to be set for the gpio pin
+    :type type: unsigned int
 
 .. _`zynq_gpio_set_irq_type.description`:
 
@@ -413,8 +435,9 @@ zynq_gpio_irqhandler
 
     IRQ handler for the gpio banks of a gpio device
 
-    :param struct irq_desc \*desc:
+    :param desc:
         irq descriptor instance of the 'irq'
+    :type desc: struct irq_desc \*
 
 .. _`zynq_gpio_irqhandler.description`:
 
@@ -442,8 +465,9 @@ zynq_gpio_probe
 
     Initialization method for a zynq_gpio device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device instance
+    :type pdev: struct platform_device \*
 
 .. _`zynq_gpio_probe.description`:
 
@@ -477,8 +501,9 @@ zynq_gpio_remove
 
     Driver removal function
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device instance
+    :type pdev: struct platform_device \*
 
 .. _`zynq_gpio_remove.return`:
 
@@ -496,8 +521,9 @@ zynq_gpio_init
 
     Initial driver registration call
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zynq_gpio_init.return`:
 

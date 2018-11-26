@@ -331,8 +331,8 @@ Definition
 
     enum vb2_buffer_state {
         VB2_BUF_STATE_DEQUEUED,
+        VB2_BUF_STATE_IN_REQUEST,
         VB2_BUF_STATE_PREPARING,
-        VB2_BUF_STATE_PREPARED,
         VB2_BUF_STATE_QUEUED,
         VB2_BUF_STATE_REQUEUEING,
         VB2_BUF_STATE_ACTIVE,
@@ -348,11 +348,11 @@ Constants
 VB2_BUF_STATE_DEQUEUED
     buffer under userspace control.
 
+VB2_BUF_STATE_IN_REQUEST
+    buffer is queued in media request.
+
 VB2_BUF_STATE_PREPARING
     buffer is being prepared in videobuf.
-
-VB2_BUF_STATE_PREPARED
-    buffer prepared in videobuf and by the driver.
 
 VB2_BUF_STATE_QUEUED
     buffer queued in videobuf, but not in driver.
@@ -396,6 +396,7 @@ Definition
         unsigned int memory;
         unsigned int num_planes;
         u64 timestamp;
+        struct media_request_object req_obj;
     }
 
 .. _`vb2_buffer.members`:
@@ -422,6 +423,10 @@ num_planes
 
 timestamp
     frame timestamp in ns.
+
+req_obj
+    used to bind this buffer to a request. This
+    request object has a refcount.
 
 .. _`vb2_ops`:
 
@@ -450,6 +455,7 @@ Definition
         int (*start_streaming)(struct vb2_queue *q, unsigned int count);
         void (*stop_streaming)(struct vb2_queue *q);
         void (*buf_queue)(struct vb2_buffer *vb);
+        void (*buf_request_complete)(struct vb2_buffer *vb);
     }
 
 .. _`vb2_ops.members`:
@@ -558,6 +564,13 @@ buf_queue
     if user pre-queued buffers before calling
     \ :c:func:`VIDIOC_STREAMON`\ .
 
+buf_request_complete
+    a buffer that was never queued to the driver but is
+    associated with a queued request was canceled.
+    The driver will have to mark associated objects in the
+    request as completed; required if requests are
+    supported.
+
 .. _`vb2_ops.description`:
 
 Description
@@ -584,8 +597,9 @@ Definition
 
     struct vb2_buf_ops {
         int (*verify_planes_array)(struct vb2_buffer *vb, const void *pb);
+        void (*init_buffer)(struct vb2_buffer *vb);
         void (*fill_user_buffer)(struct vb2_buffer *vb, void *pb);
-        int (*fill_vb2_buffer)(struct vb2_buffer *vb, const void *pb, struct vb2_plane *planes);
+        int (*fill_vb2_buffer)(struct vb2_buffer *vb, struct vb2_plane *planes);
         void (*copy_timestamp)(struct vb2_buffer *vb, const void *pb);
     }
 
@@ -598,6 +612,11 @@ verify_planes_array
     Verify that a given user space structure contains
     enough planes for the buffer. This is called
     for each dequeued buffer.
+
+init_buffer
+    given a \ :c:type:`struct vb2_buffer <vb2_buffer>`\  initialize the extra data after
+    struct vb2_buffer.
+    For V4L2 this is a \ :c:type:`struct vb2_v4l2_buffer <vb2_v4l2_buffer>`\ .
 
 fill_user_buffer
     given a \ :c:type:`struct vb2_buffer <vb2_buffer>`\  fill in the userspace structure.
@@ -621,12 +640,14 @@ vb2_plane_vaddr
 
     Return a kernel virtual address of a given plane.
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         pointer to \ :c:type:`struct vb2_buffer <vb2_buffer>`\  to which the plane in
         question belongs to.
+    :type vb: struct vb2_buffer \*
 
-    :param unsigned int plane_no:
+    :param plane_no:
         plane number for which the address is to be returned.
+    :type plane_no: unsigned int
 
 .. _`vb2_plane_vaddr.description`:
 
@@ -645,12 +666,14 @@ vb2_plane_cookie
 
     Return allocator specific cookie for the given plane.
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         pointer to \ :c:type:`struct vb2_buffer <vb2_buffer>`\  to which the plane in
         question belongs to.
+    :type vb: struct vb2_buffer \*
 
-    :param unsigned int plane_no:
+    :param plane_no:
         plane number for which the cookie is to be returned.
+    :type plane_no: unsigned int
 
 .. _`vb2_plane_cookie.description`:
 
@@ -672,16 +695,18 @@ vb2_buffer_done
 
     inform videobuf that an operation on a buffer is finished.
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         pointer to \ :c:type:`struct vb2_buffer <vb2_buffer>`\  to be used.
+    :type vb: struct vb2_buffer \*
 
-    :param enum vb2_buffer_state state:
+    :param state:
         state of the buffer, as defined by \ :c:type:`enum vb2_buffer_state <vb2_buffer_state>`\ .
         Either \ ``VB2_BUF_STATE_DONE``\  if the operation finished
         successfully, \ ``VB2_BUF_STATE_ERROR``\  if the operation finished
         with an error or any of \ ``VB2_BUF_STATE_QUEUED``\  or
         \ ``VB2_BUF_STATE_REQUEUEING``\  if the driver wants to
         requeue buffers (see below).
+    :type state: enum vb2_buffer_state
 
 .. _`vb2_buffer_done.description`:
 
@@ -713,8 +738,9 @@ vb2_discard_done
 
     discard all buffers marked as DONE.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_discard_done.description`:
 
@@ -738,8 +764,9 @@ vb2_wait_for_all_buffers
 
     wait until all buffers are given back to vb2.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_wait_for_all_buffers.description`:
 
@@ -761,14 +788,17 @@ vb2_core_querybuf
 
     query video buffer information.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param unsigned int index:
+    :param index:
         id number of the buffer.
+    :type index: unsigned int
 
-    :param void \*pb:
+    :param pb:
         buffer struct passed from userspace.
+    :type pb: void \*
 
 .. _`vb2_core_querybuf.description`:
 
@@ -798,14 +828,17 @@ vb2_core_reqbufs
 
     Initiate streaming.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param enum vb2_memory memory:
+    :param memory:
         memory type, as defined by \ :c:type:`enum vb2_memory <vb2_memory>`\ .
+    :type memory: enum vb2_memory
 
-    :param unsigned int \*count:
+    :param count:
         requested buffer count.
+    :type count: unsigned int \*
 
 .. _`vb2_core_reqbufs.description`:
 
@@ -851,20 +884,25 @@ vb2_core_create_bufs
 
     Allocate buffers and any required auxiliary structs
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param enum vb2_memory memory:
+    :param memory:
         memory type, as defined by \ :c:type:`enum vb2_memory <vb2_memory>`\ .
+    :type memory: enum vb2_memory
 
-    :param unsigned int \*count:
+    :param count:
         requested buffer count.
+    :type count: unsigned int \*
 
-    :param unsigned int requested_planes:
+    :param requested_planes:
         number of planes requested.
+    :type requested_planes: unsigned int
 
-    :param const unsigned int requested_sizes:
+    :param requested_sizes:
         array with the size of the planes.
+    :type requested_sizes: const unsigned int
 
 .. _`vb2_core_create_bufs.description`:
 
@@ -901,15 +939,18 @@ vb2_core_prepare_buf
 
     Pass ownership of a buffer from userspace to the kernel.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param unsigned int index:
+    :param index:
         id number of the buffer.
+    :type index: unsigned int
 
-    :param void \*pb:
+    :param pb:
         buffer structure passed from userspace to
         \ :c:type:`v4l2_ioctl_ops->vidioc_prepare_buf <v4l2_ioctl_ops>`\  handler in driver.
+    :type pb: void \*
 
 .. _`vb2_core_prepare_buf.description`:
 
@@ -938,19 +979,26 @@ returns zero on success; an error code otherwise.
 vb2_core_qbuf
 =============
 
-.. c:function:: int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb)
+.. c:function:: int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb, struct media_request *req)
 
     Queue a buffer from userspace
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param unsigned int index:
+    :param index:
         id number of the buffer
+    :type index: unsigned int
 
-    :param void \*pb:
+    :param pb:
         buffer structure passed from userspace to
         v4l2_ioctl_ops->vidioc_qbuf handler in driver
+    :type pb: void \*
+
+    :param req:
+        pointer to \ :c:type:`struct media_request <media_request>`\ , may be NULL.
+    :type req: struct media_request \*
 
 .. _`vb2_core_qbuf.description`:
 
@@ -966,6 +1014,10 @@ This function
 -------------
 
 
+#) If \ ``req``\  is non-NULL, then the buffer will be bound to this
+   media request and it returns. The buffer will be prepared and
+   queued to the driver (i.e. the next two steps) when the request
+   itself is queued.
 #) if necessary, calls \ :c:type:`vb2_ops->buf_prepare <vb2_ops>`\  callback in the driver
    (if provided), in which driver-specific buffer initialization can
    be performed;
@@ -988,20 +1040,24 @@ vb2_core_dqbuf
 
     Dequeue a buffer to the userspace
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue
+    :type q: struct vb2_queue \*
 
-    :param unsigned int \*pindex:
+    :param pindex:
         pointer to the buffer index. May be NULL
+    :type pindex: unsigned int \*
 
-    :param void \*pb:
+    :param pb:
         buffer structure passed from userspace to
         v4l2_ioctl_ops->vidioc_dqbuf handler in driver.
+    :type pb: void \*
 
-    :param bool nonblocking:
+    :param nonblocking:
         if true, this call will not sleep waiting for a buffer if no
         buffers ready for dequeuing are present. Normally the driver
         would be passing (file->f_flags & O_NONBLOCK) here.
+    :type nonblocking: bool
 
 .. _`vb2_core_dqbuf.description`:
 
@@ -1039,12 +1095,14 @@ vb2_core_streamon
 
     Implements VB2 stream ON logic
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue
+    :type q: struct vb2_queue \*
 
-    :param unsigned int type:
+    :param type:
         type of the queue to be started.
         For V4L2, this is defined by \ :c:type:`enum v4l2_buf_type <v4l2_buf_type>`\  type.
+    :type type: unsigned int
 
 .. _`vb2_core_streamon.description`:
 
@@ -1070,12 +1128,14 @@ vb2_core_streamoff
 
     Implements VB2 stream OFF logic
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue
+    :type q: struct vb2_queue \*
 
-    :param unsigned int type:
+    :param type:
         type of the queue to be started.
         For V4L2, this is defined by \ :c:type:`enum v4l2_buf_type <v4l2_buf_type>`\  type.
+    :type type: unsigned int
 
 .. _`vb2_core_streamoff.description`:
 
@@ -1102,27 +1162,33 @@ vb2_core_expbuf
 
     Export a buffer as a file descriptor.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param int \*fd:
+    :param fd:
         pointer to the file descriptor associated with DMABUF
         (set by driver).
+    :type fd: int \*
 
-    :param unsigned int type:
+    :param type:
         buffer type.
+    :type type: unsigned int
 
-    :param unsigned int index:
+    :param index:
         id number of the buffer.
+    :type index: unsigned int
 
-    :param unsigned int plane:
+    :param plane:
         index of the plane to be exported, 0 for single plane queues
+    :type plane: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         file flags for newly created file, as defined at
         include/uapi/asm-generic/fcntl.h.
         Currently, the only used flag is \ ``O_CLOEXEC``\ .
         is supported, refer to manual of open syscall for more details.
+    :type flags: unsigned int
 
 .. _`vb2_core_expbuf.description`:
 
@@ -1149,9 +1215,10 @@ vb2_core_queue_init
 
     initialize a videobuf2 queue
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
         This structure should be allocated in driver
+    :type q: struct vb2_queue \*
 
 .. _`vb2_core_queue_init.description`:
 
@@ -1176,8 +1243,9 @@ vb2_core_queue_release
 
     stop streaming, release the queue and free memory
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_core_queue_release.description`:
 
@@ -1197,8 +1265,9 @@ vb2_queue_error
 
     signal a fatal error on the queue
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_queue_error.description`:
 
@@ -1223,12 +1292,14 @@ vb2_mmap
 
     map video buffers into application address space.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         pointer to \ :c:type:`struct vm_area_struct <vm_area_struct>`\  with the vma passed
         to the mmap file operation handler in the driver.
+    :type vma: struct vm_area_struct \*
 
 .. _`vb2_mmap.description`:
 
@@ -1260,20 +1331,25 @@ vb2_get_unmapped_area
 
     map video buffers into application address space.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param unsigned long addr:
+    :param addr:
         memory address.
+    :type addr: unsigned long
 
-    :param unsigned long len:
+    :param len:
         buffer size.
+    :type len: unsigned long
 
-    :param unsigned long pgoff:
+    :param pgoff:
         page offset.
+    :type pgoff: unsigned long
 
-    :param unsigned long flags:
+    :param flags:
         memory flags.
+    :type flags: unsigned long
 
 .. _`vb2_get_unmapped_area.description`:
 
@@ -1296,16 +1372,19 @@ vb2_core_poll
 
     implements poll \ :c:func:`syscall`\  logic.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param struct file \*file:
+    :param file:
         \ :c:type:`struct file <file>`\  argument passed to the poll
         file operation handler.
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         \ :c:type:`struct poll_table <poll_table>`\  wait argument passed to the poll
         file operation handler.
+    :type wait: poll_table \*
 
 .. _`vb2_core_poll.description`:
 
@@ -1331,20 +1410,25 @@ vb2_read
 
     implements \ :c:func:`read`\  syscall logic.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param char __user \*data:
+    :param data:
         pointed to target userspace buffer
+    :type data: char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to read
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         file handle position tracking pointer
+    :type ppos: loff_t \*
 
-    :param int nonblock:
+    :param nonblock:
         mode selector (1 means blocking calls, 0 means nonblocking)
+    :type nonblock: int
 
 .. _`vb2_write`:
 
@@ -1355,20 +1439,25 @@ vb2_write
 
     implements \ :c:func:`write`\  syscall logic.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param const char __user \*data:
+    :param data:
         pointed to target userspace buffer
+    :type data: const char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to write
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         file handle position tracking pointer
+    :type ppos: loff_t \*
 
-    :param int nonblock:
+    :param nonblock:
         mode selector (1 means blocking calls, 0 means nonblocking)
+    :type nonblock: int
 
 .. _`vb2_thread_fnc`:
 
@@ -1379,11 +1468,13 @@ vb2_thread_fnc
 
     callback function for use with vb2_thread.
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         pointer to struct \ :c:type:`struct vb2_buffer <vb2_buffer>`\ .
+    :type vb: struct vb2_buffer \*
 
-    :param void \*priv:
+    :param priv:
         pointer to a private data.
+    :type priv: void \*
 
 .. _`vb2_thread_fnc.description`:
 
@@ -1401,17 +1492,21 @@ vb2_thread_start
 
     start a thread for the given queue.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param vb2_thread_fnc fnc:
+    :param fnc:
         \ :c:type:`struct vb2_thread_fnc <vb2_thread_fnc>`\  callback function.
+    :type fnc: vb2_thread_fnc
 
-    :param void \*priv:
+    :param priv:
         priv pointer passed to the callback function.
+    :type priv: void \*
 
-    :param const char \*thread_name:
+    :param thread_name:
         the name of the thread. This will be prefixed with "vb2-".
+    :type thread_name: const char \*
 
 .. _`vb2_thread_start.description`:
 
@@ -1436,8 +1531,9 @@ vb2_thread_stop
 
     stop the thread for the given queue.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_is_streaming`:
 
@@ -1448,8 +1544,9 @@ vb2_is_streaming
 
     return streaming status of the queue.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_fileio_is_active`:
 
@@ -1460,8 +1557,9 @@ vb2_fileio_is_active
 
     return true if fileio is active.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_fileio_is_active.description`:
 
@@ -1486,8 +1584,9 @@ vb2_is_busy
 
     return busy status of the queue.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_is_busy.description`:
 
@@ -1505,8 +1604,9 @@ vb2_get_drv_priv
 
     return driver private data associated with the queue.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_set_plane_payload`:
 
@@ -1517,15 +1617,18 @@ vb2_set_plane_payload
 
     set bytesused for the plane \ ``plane_no``\ .
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         pointer to \ :c:type:`struct vb2_buffer <vb2_buffer>`\  to which the plane in
         question belongs to.
+    :type vb: struct vb2_buffer \*
 
-    :param unsigned int plane_no:
+    :param plane_no:
         plane number for which payload should be set.
+    :type plane_no: unsigned int
 
-    :param unsigned long size:
+    :param size:
         payload in bytes.
+    :type size: unsigned long
 
 .. _`vb2_get_plane_payload`:
 
@@ -1536,12 +1639,14 @@ vb2_get_plane_payload
 
     get bytesused for the plane plane_no
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         pointer to \ :c:type:`struct vb2_buffer <vb2_buffer>`\  to which the plane in
         question belongs to.
+    :type vb: struct vb2_buffer \*
 
-    :param unsigned int plane_no:
+    :param plane_no:
         plane number for which payload should be set.
+    :type plane_no: unsigned int
 
 .. _`vb2_plane_size`:
 
@@ -1552,12 +1657,14 @@ vb2_plane_size
 
     return plane size in bytes.
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         pointer to \ :c:type:`struct vb2_buffer <vb2_buffer>`\  to which the plane in
         question belongs to.
+    :type vb: struct vb2_buffer \*
 
-    :param unsigned int plane_no:
+    :param plane_no:
         plane number for which size should be returned.
+    :type plane_no: unsigned int
 
 .. _`vb2_start_streaming_called`:
 
@@ -1568,8 +1675,9 @@ vb2_start_streaming_called
 
     return streaming status of driver.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_clear_last_buffer_dequeued`:
 
@@ -1580,8 +1688,9 @@ vb2_clear_last_buffer_dequeued
 
     clear last buffer dequeued flag of queue.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_buffer_in_use`:
 
@@ -1592,11 +1701,13 @@ vb2_buffer_in_use
 
     return true if the buffer is in use and the queue cannot be freed (by the means of VIDIOC_REQBUFS(0)) call.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         buffer for which plane size should be returned.
+    :type vb: struct vb2_buffer \*
 
 .. _`vb2_verify_memory_type`:
 
@@ -1607,16 +1718,45 @@ vb2_verify_memory_type
 
     Check whether the memory type and buffer type passed to a buffer operation are compatible with the queue.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param enum vb2_memory memory:
+    :param memory:
         memory model, as defined by enum \ :c:type:`struct vb2_memory <vb2_memory>`\ .
+    :type memory: enum vb2_memory
 
-    :param unsigned int type:
+    :param type:
         private buffer type whose content is defined by the vb2-core
         caller. For example, for V4L2, it should match
         the types defined on enum \ :c:type:`struct v4l2_buf_type <v4l2_buf_type>`\ .
+    :type type: unsigned int
+
+.. _`vb2_request_object_is_buffer`:
+
+vb2_request_object_is_buffer
+============================
+
+.. c:function:: bool vb2_request_object_is_buffer(struct media_request_object *obj)
+
+    return true if the object is a buffer
+
+    :param obj:
+        the request object.
+    :type obj: struct media_request_object \*
+
+.. _`vb2_request_buffer_cnt`:
+
+vb2_request_buffer_cnt
+======================
+
+.. c:function:: unsigned int vb2_request_buffer_cnt(struct media_request *req)
+
+    return the number of buffers in the request
+
+    :param req:
+        the request.
+    :type req: struct media_request \*
 
 .. This file was automatic generated / don't edit.
 

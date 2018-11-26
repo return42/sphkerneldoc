@@ -46,8 +46,9 @@ ack_bit
 
     turn IRQ into IRQ acknowledgement bit
 
-    :param unsigned int irq:
+    :param irq:
         The interrupt number
+    :type irq: unsigned int
 
 .. _`ack_bit.description`:
 
@@ -65,8 +66,9 @@ s3c24xx_spi_tryfiq
 
     attempt to claim and setup FIQ for transfer
 
-    :param struct s3c24xx_spi \*hw:
+    :param hw:
         The hardware state.
+    :type hw: struct s3c24xx_spi \*
 
 .. _`s3c24xx_spi_tryfiq.description`:
 
@@ -89,11 +91,13 @@ s3c24xx_spi_fiqop
 
     FIQ core code callback
 
-    :param void \*pw:
+    :param pw:
         Data registered with the handler
+    :type pw: void \*
 
-    :param int release:
+    :param release:
         Whether this is a release or a return.
+    :type release: int
 
 .. _`s3c24xx_spi_fiqop.description`:
 
@@ -113,8 +117,9 @@ s3c24xx_spi_initfiq
 
     setup the information for the FIQ core
 
-    :param struct s3c24xx_spi \*hw:
+    :param hw:
         The hardware state.
+    :type hw: struct s3c24xx_spi \*
 
 .. _`s3c24xx_spi_initfiq.description`:
 
@@ -132,8 +137,9 @@ s3c24xx_spi_usefiq
 
     return if we should be using FIQ.
 
-    :param struct s3c24xx_spi \*hw:
+    :param hw:
         The hardware state.
+    :type hw: struct s3c24xx_spi \*
 
 .. _`s3c24xx_spi_usefiq.description`:
 
@@ -152,8 +158,9 @@ s3c24xx_spi_usingfiq
 
     return if channel is using FIQ
 
-    :param struct s3c24xx_spi \*spi:
+    :param spi:
         The hardware state.
+    :type spi: struct s3c24xx_spi \*
 
 .. _`s3c24xx_spi_usingfiq.description`:
 

@@ -1,29 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/time/time.c
 
-.. _`timespec_trunc`:
-
-timespec_trunc
-==============
-
-.. c:function:: struct timespec timespec_trunc(struct timespec t, unsigned gran)
-
-    Truncate timespec to a granularity
-
-    :param struct timespec t:
-        Timespec
-
-    :param unsigned gran:
-        Granularity in ns.
-
-.. _`timespec_trunc.description`:
-
-Description
------------
-
-Truncate a timespec to a granularity. Always rounds down. gran must
-not be 0 nor greater than a second (NSEC_PER_SEC, or 10^9 ns).
-
 .. _`set_normalized_timespec`:
 
 set_normalized_timespec
@@ -33,14 +10,17 @@ set_normalized_timespec
 
     set timespec sec and nsec parts and normalize
 
-    :param struct timespec \*ts:
+    :param ts:
         pointer to timespec variable to be set
+    :type ts: struct timespec \*
 
-    :param time_t sec:
+    :param sec:
         seconds to set
+    :type sec: time_t
 
-    :param s64 nsec:
+    :param nsec:
         nanoseconds to set
+    :type nsec: s64
 
 .. _`set_normalized_timespec.description`:
 
@@ -68,8 +48,9 @@ ns_to_timespec
 
     Convert nanoseconds to timespec
 
-    :param const s64 nsec:
+    :param nsec:
         the nanoseconds value to be converted
+    :type nsec: const s64
 
 .. _`ns_to_timespec.description`:
 
@@ -87,8 +68,9 @@ ns_to_timeval
 
     Convert nanoseconds to timeval
 
-    :param const s64 nsec:
+    :param nsec:
         the nanoseconds value to be converted
+    :type nsec: const s64
 
 .. _`ns_to_timeval.description`:
 
@@ -106,14 +88,17 @@ set_normalized_timespec64
 
     set timespec sec and nsec parts and normalize
 
-    :param struct timespec64 \*ts:
+    :param ts:
         pointer to timespec variable to be set
+    :type ts: struct timespec64 \*
 
-    :param time64_t sec:
+    :param sec:
         seconds to set
+    :type sec: time64_t
 
-    :param s64 nsec:
+    :param nsec:
         nanoseconds to set
+    :type nsec: s64
 
 .. _`set_normalized_timespec64.description`:
 
@@ -141,8 +126,9 @@ ns_to_timespec64
 
     Convert nanoseconds to timespec64
 
-    :param const s64 nsec:
+    :param nsec:
         the nanoseconds value to be converted
+    :type nsec: const s64
 
 .. _`ns_to_timespec64.description`:
 
@@ -160,8 +146,9 @@ Returns the timespec64 representation of the nsec parameter.
 
     - convert milliseconds to jiffies
 
-    :param const unsigned int m:
+    :param m:
         time in milliseconds
+    :type m: const unsigned int
 
 .. _`__msecs_to_jiffies.conversion-is-done-as-follows`:
 
@@ -196,8 +183,9 @@ nsecs_to_jiffies64
 
     Convert nsecs in u64 to jiffies64
 
-    :param u64 n:
+    :param n:
         nsecs in u64
+    :type n: u64
 
 .. _`nsecs_to_jiffies64.description`:
 
@@ -225,8 +213,9 @@ nsecs_to_jiffies
 
     Convert nsecs in u64 to jiffies
 
-    :param u64 n:
+    :param n:
         nsecs in u64
+    :type n: u64
 
 .. _`nsecs_to_jiffies.description`:
 

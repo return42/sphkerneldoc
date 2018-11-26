@@ -10,11 +10,13 @@ usb3_handle_standard_request
 
     handle some standard requests
 
-    :param struct renesas_usb3 \*usb3:
+    :param usb3:
         the renesas_usb3 pointer
+    :type usb3: struct renesas_usb3 \*
 
-    :param struct usb_ctrlrequest \*ctrl:
+    :param ctrl:
         a pointer of setup data
+    :type ctrl: struct usb_ctrlrequest \*
 
 .. _`usb3_handle_standard_request.description`:
 

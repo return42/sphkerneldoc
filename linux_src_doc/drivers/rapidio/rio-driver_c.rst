@@ -10,11 +10,13 @@ rio_match_device
 
     Tell if a RIO device has a matching RIO device id structure
 
-    :param const struct rio_device_id \*id:
+    :param id:
         the RIO device id structure to match against
+    :type id: const struct rio_device_id \*
 
-    :param const struct rio_dev \*rdev:
+    :param rdev:
         the RIO device structure to match against
+    :type rdev: const struct rio_dev \*
 
 .. _`rio_match_device.description`:
 
@@ -34,8 +36,9 @@ rio_dev_get
 
     Increments the reference count of the RIO device structure
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device being referenced
+    :type rdev: struct rio_dev \*
 
 .. _`rio_dev_get.description`:
 
@@ -57,8 +60,9 @@ rio_dev_put
 
     Release a use of the RIO device structure
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device being disconnected
+    :type rdev: struct rio_dev \*
 
 .. _`rio_dev_put.description`:
 
@@ -78,8 +82,9 @@ rio_device_probe
 
     Tell if a RIO device structure has a matching RIO device id structure
 
-    :param struct device \*dev:
+    :param dev:
         the RIO device structure to match against
+    :type dev: struct device \*
 
 .. _`rio_device_probe.description`:
 
@@ -97,8 +102,9 @@ rio_device_remove
 
     Remove a RIO device from the system
 
-    :param struct device \*dev:
+    :param dev:
         the RIO device structure to match against
+    :type dev: struct device \*
 
 .. _`rio_device_remove.description`:
 
@@ -118,8 +124,9 @@ rio_register_driver
 
     register a new RIO driver
 
-    :param struct rio_driver \*rdrv:
+    :param rdrv:
         the RIO driver structure to register
+    :type rdrv: struct rio_driver \*
 
 .. _`rio_register_driver.description`:
 
@@ -140,8 +147,9 @@ rio_unregister_driver
 
     unregister a RIO driver
 
-    :param struct rio_driver \*rdrv:
+    :param rdrv:
         the RIO driver structure to unregister
+    :type rdrv: struct rio_driver \*
 
 .. _`rio_unregister_driver.description`:
 
@@ -162,11 +170,13 @@ rio_match_bus
 
     Tell if a RIO device structure has a matching RIO driver device id structure
 
-    :param struct device \*dev:
+    :param dev:
         the standard device structure to match against
+    :type dev: struct device \*
 
-    :param struct device_driver \*drv:
+    :param drv:
         the standard driver structure containing the ids to match against
+    :type drv: struct device_driver \*
 
 .. _`rio_match_bus.description`:
 
@@ -187,8 +197,9 @@ rio_bus_init
 
     Register the RapidIO bus with the device model
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rio_bus_init.description`:
 

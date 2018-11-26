@@ -10,8 +10,9 @@ css_sch_device_unregister
 
     unregister a subchannel
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel to be unregistered
+    :type sch: struct subchannel \*
 
 .. _`css_sch_is_valid`:
 
@@ -22,8 +23,9 @@ css_sch_is_valid
 
     check if a subchannel is valid
 
-    :param struct schib \*schib:
+    :param schib:
         subchannel information block for the subchannel
+    :type schib: struct schib \*
 
 .. _`css_sched_sch_todo`:
 
@@ -34,11 +36,13 @@ css_sched_sch_todo
 
     schedule a subchannel operation
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel
+    :type sch: struct subchannel \*
 
-    :param enum sch_todo todo:
+    :param todo:
         todo
+    :type todo: enum sch_todo
 
 .. _`css_sched_sch_todo.description`:
 
@@ -58,8 +62,9 @@ css_driver_register
 
     register a css driver
 
-    :param struct css_driver \*cdrv:
+    :param cdrv:
         css driver to register
+    :type cdrv: struct css_driver \*
 
 .. _`css_driver_register.description`:
 
@@ -78,8 +83,9 @@ css_driver_unregister
 
     unregister a css driver
 
-    :param struct css_driver \*cdrv:
+    :param cdrv:
         css driver to unregister
+    :type cdrv: struct css_driver \*
 
 .. _`css_driver_unregister.description`:
 

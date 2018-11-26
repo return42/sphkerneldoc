@@ -10,17 +10,21 @@ verify_pefile_signature
 
     Verify the signature on a PE binary image
 
-    :param const void \*pebuf:
+    :param pebuf:
         Buffer containing the PE binary image
+    :type pebuf: const void \*
 
-    :param unsigned pelen:
+    :param pelen:
         Length of the binary image
+    :type pelen: unsigned
 
-    :param struct key \*trusted_keys:
+    :param trusted_keys:
         *undescribed*
+    :type trusted_keys: struct key \*
 
-    :param enum key_being_used_for usage:
+    :param usage:
         The use to which the key is being put.
+    :type usage: enum key_being_used_for
 
 .. _`verify_pefile_signature.description`:
 

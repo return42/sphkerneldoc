@@ -10,8 +10,9 @@ z8530_read_port
 
     Architecture specific interface function
 
-    :param unsigned long p:
+    :param p:
         port to read
+    :type p: unsigned long
 
 .. _`z8530_read_port.description`:
 
@@ -38,11 +39,13 @@ z8530_write_port
 
     Architecture specific interface function
 
-    :param unsigned long p:
+    :param p:
         port to write
+    :type p: unsigned long
 
-    :param u8 d:
+    :param d:
         value to write
+    :type d: u8
 
 .. _`z8530_write_port.description`:
 
@@ -67,12 +70,14 @@ read_zsreg
 
     Read a register from a Z85230
 
-    :param struct z8530_channel \*c:
+    :param c:
         Z8530 channel to read from (2 per chip)
+    :type c: struct z8530_channel \*
 
-    :param u8 reg:
+    :param reg:
         Register to read
         FIXME: Use a spinlock.
+    :type reg: u8
 
 .. _`read_zsreg.description`:
 
@@ -92,8 +97,9 @@ read_zsdata
 
     Read the data port of a Z8530 channel
 
-    :param struct z8530_channel \*c:
+    :param c:
         The Z8530 channel to read the data port from
+    :type c: struct z8530_channel \*
 
 .. _`read_zsdata.description`:
 
@@ -112,14 +118,17 @@ write_zsreg
 
     Write to a Z8530 channel register
 
-    :param struct z8530_channel \*c:
+    :param c:
         The Z8530 channel
+    :type c: struct z8530_channel \*
 
-    :param u8 reg:
+    :param reg:
         Register number
+    :type reg: u8
 
-    :param u8 val:
+    :param val:
         Value to write
+    :type val: u8
 
 .. _`write_zsreg.description`:
 
@@ -141,11 +150,13 @@ write_zsctrl
 
     Write to a Z8530 control register
 
-    :param struct z8530_channel \*c:
+    :param c:
         The Z8530 channel
+    :type c: struct z8530_channel \*
 
-    :param u8 val:
+    :param val:
         Value to write
+    :type val: u8
 
 .. _`write_zsctrl.description`:
 
@@ -163,11 +174,13 @@ write_zsdata
 
     Write to a Z8530 control register
 
-    :param struct z8530_channel \*c:
+    :param c:
         The Z8530 channel
+    :type c: struct z8530_channel \*
 
-    :param u8 val:
+    :param val:
         Value to write
+    :type val: u8
 
 .. _`write_zsdata.description`:
 
@@ -185,8 +198,9 @@ z8530_flush_fifo
 
     Flush on chip RX FIFO
 
-    :param struct z8530_channel \*c:
+    :param c:
         Channel to flush
+    :type c: struct z8530_channel \*
 
 .. _`z8530_flush_fifo.description`:
 
@@ -209,11 +223,13 @@ z8530_rtsdtr
 
     Control the outgoing DTS/RTS line
 
-    :param struct z8530_channel \*c:
+    :param c:
         The Z8530 channel to control;
+    :type c: struct z8530_channel \*
 
-    :param int set:
+    :param set:
         1 to set, 0 to clear
+    :type set: int
 
 .. _`z8530_rtsdtr.description`:
 
@@ -234,8 +250,9 @@ z8530_rx
 
     Handle a PIO receive event
 
-    :param struct z8530_channel \*c:
+    :param c:
         Z8530 channel to process
+    :type c: struct z8530_channel \*
 
 .. _`z8530_rx.description`:
 
@@ -275,8 +292,9 @@ z8530_tx
 
     Handle a PIO transmit event
 
-    :param struct z8530_channel \*c:
+    :param c:
         Z8530 channel to process
+    :type c: struct z8530_channel \*
 
 .. _`z8530_tx.description`:
 
@@ -297,8 +315,9 @@ z8530_status
 
     Handle a PIO status exception
 
-    :param struct z8530_channel \*chan:
+    :param chan:
         Z8530 channel to process
+    :type chan: struct z8530_channel \*
 
 .. _`z8530_status.description`:
 
@@ -319,8 +338,9 @@ z8530_dma_rx
 
     Handle a DMA RX event
 
-    :param struct z8530_channel \*chan:
+    :param chan:
         Channel to handle
+    :type chan: struct z8530_channel \*
 
 .. _`z8530_dma_rx.description`:
 
@@ -341,8 +361,9 @@ z8530_dma_tx
 
     Handle a DMA TX event
 
-    :param struct z8530_channel \*chan:
+    :param chan:
         The Z8530 channel to handle
+    :type chan: struct z8530_channel \*
 
 .. _`z8530_dma_tx.description`:
 
@@ -361,8 +382,9 @@ z8530_dma_status
 
     Handle a DMA status exception
 
-    :param struct z8530_channel \*chan:
+    :param chan:
         Z8530 channel to process
+    :type chan: struct z8530_channel \*
 
 .. _`z8530_dma_status.description`:
 
@@ -382,8 +404,9 @@ z8530_rx_clear
 
     Handle RX events from a stopped chip
 
-    :param struct z8530_channel \*c:
+    :param c:
         Z8530 channel to shut up
+    :type c: struct z8530_channel \*
 
 .. _`z8530_rx_clear.description`:
 
@@ -403,8 +426,9 @@ z8530_tx_clear
 
     Handle TX events from a stopped chip
 
-    :param struct z8530_channel \*c:
+    :param c:
         Z8530 channel to shut up
+    :type c: struct z8530_channel \*
 
 .. _`z8530_tx_clear.description`:
 
@@ -424,8 +448,9 @@ z8530_status_clear
 
     Handle status events from a stopped chip
 
-    :param struct z8530_channel \*chan:
+    :param chan:
         Z8530 channel to shut up
+    :type chan: struct z8530_channel \*
 
 .. _`z8530_status_clear.description`:
 
@@ -445,11 +470,13 @@ z8530_interrupt
 
     Handle an interrupt from a Z8530
 
-    :param int irq:
+    :param irq:
         Interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         The Z8530 device that is interrupting.
+    :type dev_id: void \*
 
 .. _`z8530_interrupt.description`:
 
@@ -475,11 +502,13 @@ z8530_sync_open
 
     Open a Z8530 channel for PIO
 
-    :param struct net_device \*dev:
+    :param dev:
         The network interface we are using
+    :type dev: struct net_device \*
 
-    :param struct z8530_channel \*c:
+    :param c:
         The Z8530 channel to open in synchronous PIO mode
+    :type c: struct z8530_channel \*
 
 .. _`z8530_sync_open.description`:
 
@@ -498,11 +527,13 @@ z8530_sync_close
 
     Close a PIO Z8530 channel
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device to close
+    :type dev: struct net_device \*
 
-    :param struct z8530_channel \*c:
+    :param c:
         Z8530 channel to disassociate and move to idle
+    :type c: struct z8530_channel \*
 
 .. _`z8530_sync_close.description`:
 
@@ -521,11 +552,13 @@ z8530_sync_dma_open
 
     Open a Z8530 for DMA I/O
 
-    :param struct net_device \*dev:
+    :param dev:
         The network device to attach
+    :type dev: struct net_device \*
 
-    :param struct z8530_channel \*c:
+    :param c:
         The Z8530 channel to configure in sync DMA mode.
+    :type c: struct z8530_channel \*
 
 .. _`z8530_sync_dma_open.description`:
 
@@ -545,11 +578,13 @@ z8530_sync_dma_close
 
     Close down DMA I/O
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device to detach
+    :type dev: struct net_device \*
 
-    :param struct z8530_channel \*c:
+    :param c:
         Z8530 channel to move into discard mode
+    :type c: struct z8530_channel \*
 
 .. _`z8530_sync_dma_close.description`:
 
@@ -568,11 +603,13 @@ z8530_sync_txdma_open
 
     Open a Z8530 for TX driven DMA
 
-    :param struct net_device \*dev:
+    :param dev:
         The network device to attach
+    :type dev: struct net_device \*
 
-    :param struct z8530_channel \*c:
+    :param c:
         The Z8530 channel to configure in sync DMA mode.
+    :type c: struct z8530_channel \*
 
 .. _`z8530_sync_txdma_open.description`:
 
@@ -592,11 +629,13 @@ z8530_sync_txdma_close
 
     Close down a TX driven DMA channel
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device to detach
+    :type dev: struct net_device \*
 
-    :param struct z8530_channel \*c:
+    :param c:
         Z8530 channel to move into discard mode
+    :type c: struct z8530_channel \*
 
 .. _`z8530_sync_txdma_close.description`:
 
@@ -615,14 +654,17 @@ z8530_describe
 
     Uniformly describe a Z8530 port
 
-    :param struct z8530_dev \*dev:
+    :param dev:
         Z8530 device to describe
+    :type dev: struct z8530_dev \*
 
-    :param char \*mapping:
+    :param mapping:
         string holding mapping type (eg "I/O" or "Mem")
+    :type mapping: char \*
 
-    :param unsigned long io:
+    :param io:
         the port value in question
+    :type io: unsigned long
 
 .. _`z8530_describe.description`:
 
@@ -642,8 +684,9 @@ z8530_init
 
     Initialise a Z8530 device
 
-    :param struct z8530_dev \*dev:
+    :param dev:
         Z8530 device to initialise.
+    :type dev: struct z8530_dev \*
 
 .. _`z8530_init.description`:
 
@@ -671,8 +714,9 @@ z8530_shutdown
 
     Shutdown a Z8530 device
 
-    :param struct z8530_dev \*dev:
+    :param dev:
         The Z8530 chip to shutdown
+    :type dev: struct z8530_dev \*
 
 .. _`z8530_shutdown.description`:
 
@@ -694,12 +738,14 @@ z8530_channel_load
 
     Load channel data
 
-    :param struct z8530_channel \*c:
+    :param c:
         Z8530 channel to configure
+    :type c: struct z8530_channel \*
 
-    :param u8 \*rtable:
+    :param rtable:
         table of register, value pairs
         FIXME: ioctl to allow user uploaded tables
+    :type rtable: u8 \*
 
 .. _`z8530_channel_load.description`:
 
@@ -719,8 +765,9 @@ z8530_tx_begin
 
     Begin packet transmission
 
-    :param struct z8530_channel \*c:
+    :param c:
         The Z8530 channel to kick
+    :type c: struct z8530_channel \*
 
 .. _`z8530_tx_begin.description`:
 
@@ -750,8 +797,9 @@ z8530_tx_done
 
     TX complete callback
 
-    :param struct z8530_channel \*c:
+    :param c:
         The channel that completed a transmit.
+    :type c: struct z8530_channel \*
 
 .. _`z8530_tx_done.description`:
 
@@ -773,11 +821,13 @@ z8530_null_rx
 
     Discard a packet
 
-    :param struct z8530_channel \*c:
+    :param c:
         The channel the packet arrived on
+    :type c: struct z8530_channel \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The buffer
+    :type skb: struct sk_buff \*
 
 .. _`z8530_null_rx.description`:
 
@@ -796,8 +846,9 @@ z8530_rx_done
 
     Receive completion callback
 
-    :param struct z8530_channel \*c:
+    :param c:
         The channel that completed a receive
+    :type c: struct z8530_channel \*
 
 .. _`z8530_rx_done.description`:
 
@@ -821,8 +872,9 @@ spans_boundary
 
     Check a packet can be ISA DMA'd
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The buffer to check
+    :type skb: struct sk_buff \*
 
 .. _`spans_boundary.description`:
 
@@ -841,11 +893,13 @@ z8530_queue_xmit
 
     Queue a packet
 
-    :param struct z8530_channel \*c:
+    :param c:
         The channel to use
+    :type c: struct z8530_channel \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The packet to kick down the channel
+    :type skb: struct sk_buff \*
 
 .. _`z8530_queue_xmit.description`:
 

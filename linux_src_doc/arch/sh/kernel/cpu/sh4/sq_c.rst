@@ -10,11 +10,13 @@ sq_flush_range
 
     Flush (prefetch) a specific SQ range
 
-    :param unsigned long start:
+    :param start:
         the store queue address to start flushing from
+    :type start: unsigned long
 
-    :param unsigned int len:
+    :param len:
         the length to flush
+    :type len: unsigned int
 
 .. _`sq_flush_range.description`:
 
@@ -33,17 +35,21 @@ sq_remap
 
     Map a physical address through the Store Queues
 
-    :param unsigned long phys:
+    :param phys:
         Physical address of mapping.
+    :type phys: unsigned long
 
-    :param unsigned int size:
+    :param size:
         Length of mapping.
+    :type size: unsigned int
 
-    :param const char \*name:
+    :param name:
         User invoking mapping.
+    :type name: const char \*
 
-    :param pgprot_t prot:
+    :param prot:
         Protection bits.
+    :type prot: pgprot_t
 
 .. _`sq_remap.description`:
 
@@ -63,8 +69,9 @@ sq_unmap
 
     Unmap a Store Queue allocation
 
-    :param unsigned long vaddr:
+    :param vaddr:
         Pre-allocated Store Queue mapping.
+    :type vaddr: unsigned long
 
 .. _`sq_unmap.description`:
 

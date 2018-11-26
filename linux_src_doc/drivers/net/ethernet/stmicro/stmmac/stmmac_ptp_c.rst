@@ -8,11 +8,13 @@ stmmac_adjust_freq
 
 .. c:function:: int stmmac_adjust_freq(struct ptp_clock_info *ptp, s32 ppb)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         pointer to ptp_clock_info structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s32 ppb:
+    :param ppb:
         desired period change in parts ber billion
+    :type ppb: s32
 
 .. _`stmmac_adjust_freq.description`:
 
@@ -28,11 +30,13 @@ stmmac_adjust_time
 
 .. c:function:: int stmmac_adjust_time(struct ptp_clock_info *ptp, s64 delta)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         pointer to ptp_clock_info structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s64 delta:
+    :param delta:
         desired change in nanoseconds
+    :type delta: s64
 
 .. _`stmmac_adjust_time.description`:
 
@@ -48,11 +52,13 @@ stmmac_get_time
 
 .. c:function:: int stmmac_get_time(struct ptp_clock_info *ptp, struct timespec64 *ts)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         pointer to ptp_clock_info structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct timespec64 \*ts:
+    :param ts:
         pointer to hold time/result
+    :type ts: struct timespec64 \*
 
 .. _`stmmac_get_time.description`:
 
@@ -69,11 +75,13 @@ stmmac_set_time
 
 .. c:function:: int stmmac_set_time(struct ptp_clock_info *ptp, const struct timespec64 *ts)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         pointer to ptp_clock_info structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         time value to set
+    :type ts: const struct timespec64 \*
 
 .. _`stmmac_set_time.description`:
 
@@ -90,8 +98,9 @@ stmmac_ptp_register
 
 .. c:function:: void stmmac_ptp_register(struct stmmac_priv *priv)
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_ptp_register.description`:
 
@@ -108,8 +117,9 @@ stmmac_ptp_unregister
 
 .. c:function:: void stmmac_ptp_unregister(struct stmmac_priv *priv)
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_ptp_unregister.description`:
 

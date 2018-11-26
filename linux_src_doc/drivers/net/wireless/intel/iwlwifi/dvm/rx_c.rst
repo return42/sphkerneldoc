@@ -10,17 +10,21 @@ iwlagn_good_plcp_health
 
     checks for plcp error.
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct statistics_rx_phy \*cur_ofdm:
+    :param cur_ofdm:
         *undescribed*
+    :type cur_ofdm: struct statistics_rx_phy \*
 
-    :param struct statistics_rx_ht_phy \*cur_ofdm_ht:
+    :param cur_ofdm_ht:
         *undescribed*
+    :type cur_ofdm_ht: struct statistics_rx_ht_phy \*
 
-    :param unsigned int msecs:
+    :param msecs:
         *undescribed*
+    :type msecs: unsigned int
 
 .. _`iwlagn_good_plcp_health.description`:
 
@@ -39,8 +43,9 @@ iwl_setup_rx_handlers
 
     Initialize Rx handler callbacks
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
 .. _`iwl_setup_rx_handlers.description`:
 

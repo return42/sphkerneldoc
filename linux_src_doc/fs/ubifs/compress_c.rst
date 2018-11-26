@@ -10,24 +10,30 @@ ubifs_compress
 
     compress data.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         *undescribed*
+    :type c: const struct ubifs_info \*
 
-    :param const void \*in_buf:
+    :param in_buf:
         data to compress
+    :type in_buf: const void \*
 
-    :param int in_len:
+    :param in_len:
         length of the data to compress
+    :type in_len: int
 
-    :param void \*out_buf:
+    :param out_buf:
         output buffer where compressed data should be stored
+    :type out_buf: void \*
 
-    :param int \*out_len:
+    :param out_len:
         output buffer length is returned here
+    :type out_len: int \*
 
-    :param int \*compr_type:
+    :param compr_type:
         type of compression to use on enter, actually used compression
         type on exit
+    :type compr_type: int \*
 
 .. _`ubifs_compress.description`:
 
@@ -52,23 +58,29 @@ ubifs_decompress
 
     decompress data.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         *undescribed*
+    :type c: const struct ubifs_info \*
 
-    :param const void \*in_buf:
+    :param in_buf:
         data to decompress
+    :type in_buf: const void \*
 
-    :param int in_len:
+    :param in_len:
         length of the data to decompress
+    :type in_len: int
 
-    :param void \*out_buf:
+    :param out_buf:
         output buffer where decompressed data should
+    :type out_buf: void \*
 
-    :param int \*out_len:
+    :param out_len:
         output length is returned here
+    :type out_len: int \*
 
-    :param int compr_type:
+    :param compr_type:
         type of compression
+    :type compr_type: int
 
 .. _`ubifs_decompress.description`:
 
@@ -88,8 +100,9 @@ compr_init
 
     initialize a compressor.
 
-    :param struct ubifs_compressor \*compr:
+    :param compr:
         compressor description object
+    :type compr: struct ubifs_compressor \*
 
 .. _`compr_init.description`:
 
@@ -108,8 +121,9 @@ compr_exit
 
     de-initialize a compressor.
 
-    :param struct ubifs_compressor \*compr:
+    :param compr:
         compressor description object
+    :type compr: struct ubifs_compressor \*
 
 .. _`ubifs_compressors_init`:
 
@@ -120,8 +134,9 @@ ubifs_compressors_init
 
     initialize UBIFS compressors.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ubifs_compressors_init.description`:
 
@@ -140,8 +155,9 @@ ubifs_compressors_exit
 
     de-initialize UBIFS compressors.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

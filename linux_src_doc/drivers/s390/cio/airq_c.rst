@@ -10,8 +10,9 @@ register_adapter_interrupt
 
     register adapter interrupt handler
 
-    :param struct airq_struct \*airq:
+    :param airq:
         pointer to adapter interrupt descriptor
+    :type airq: struct airq_struct \*
 
 .. _`register_adapter_interrupt.description`:
 
@@ -29,8 +30,9 @@ unregister_adapter_interrupt
 
     unregister adapter interrupt handler
 
-    :param struct airq_struct \*airq:
+    :param airq:
         pointer to adapter interrupt descriptor
+    :type airq: struct airq_struct \*
 
 .. _`airq_iv_create`:
 
@@ -41,11 +43,13 @@ airq_iv_create
 
     create an interrupt vector
 
-    :param unsigned long bits:
+    :param bits:
         number of bits in the interrupt vector
+    :type bits: unsigned long
 
-    :param unsigned long flags:
+    :param flags:
         allocation flags
+    :type flags: unsigned long
 
 .. _`airq_iv_create.description`:
 
@@ -63,8 +67,9 @@ airq_iv_release
 
     release an interrupt vector
 
-    :param struct airq_iv \*iv:
+    :param iv:
         pointer to interrupt vector structure
+    :type iv: struct airq_iv \*
 
 .. _`airq_iv_alloc`:
 
@@ -75,11 +80,13 @@ airq_iv_alloc
 
     allocate irq bits from an interrupt vector
 
-    :param struct airq_iv \*iv:
+    :param iv:
         pointer to an interrupt vector structure
+    :type iv: struct airq_iv \*
 
-    :param unsigned long num:
+    :param num:
         number of consecutive irq bits to allocate
+    :type num: unsigned long
 
 .. _`airq_iv_alloc.description`:
 
@@ -99,14 +106,17 @@ airq_iv_free
 
     free irq bits of an interrupt vector
 
-    :param struct airq_iv \*iv:
+    :param iv:
         pointer to interrupt vector structure
+    :type iv: struct airq_iv \*
 
-    :param unsigned long bit:
+    :param bit:
         number of the first irq bit to free
+    :type bit: unsigned long
 
-    :param unsigned long num:
+    :param num:
         number of consecutive irq bits to free
+    :type num: unsigned long
 
 .. _`airq_iv_scan`:
 
@@ -117,14 +127,17 @@ airq_iv_scan
 
     scan interrupt vector for non-zero bits
 
-    :param struct airq_iv \*iv:
+    :param iv:
         pointer to interrupt vector structure
+    :type iv: struct airq_iv \*
 
-    :param unsigned long start:
+    :param start:
         bit number to start the search
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         bit number to end the search
+    :type end: unsigned long
 
 .. _`airq_iv_scan.description`:
 

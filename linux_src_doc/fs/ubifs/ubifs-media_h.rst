@@ -472,7 +472,10 @@ Definition
         __le32 time_gran;
         __u8 uuid[16];
         __le32 ro_compat_version;
-        __u8 padding2[3968];
+        __u8 hmac[UBIFS_MAX_HMAC_LEN];
+        __u8 hmac_wkm[UBIFS_MAX_HMAC_LEN];
+        __le16 hash_algo;
+        __u8 padding2[3838];
     }
 
 .. _`ubifs_sb_node.members`:
@@ -555,6 +558,16 @@ uuid
 ro_compat_version
     UBIFS R/O compatibility version
 
+hmac
+    HMAC to authenticate the superblock node
+
+hmac_wkm
+    HMAC of a well known message (the string "UBIFS") as a convenience
+    to the user to check if the correct key is passed.
+
+hash_algo
+    The hash algo used for this filesystem (one of enum hash_algo)
+
 padding2
     reserved for future, zeroes
 
@@ -604,7 +617,10 @@ Definition
         __le32 empty_lebs;
         __le32 idx_lebs;
         __le32 leb_cnt;
-        __u8 padding[344];
+        __u8 hash_root_idx[UBIFS_MAX_HASH_LEN];
+        __u8 hash_lpt[UBIFS_MAX_HASH_LEN];
+        __u8 hmac[UBIFS_MAX_HMAC_LEN];
+        __u8 padding[152];
     }
 
 .. _`ubifs_mst_node.members`:
@@ -700,6 +716,15 @@ idx_lebs
 leb_cnt
     count of LEBs used by file-system
 
+hash_root_idx
+    the hash of the root index node
+
+hash_lpt
+    the hash of the LPT
+
+hmac
+    HMAC to authenticate the master node
+
 padding
     reserved for future, zeroes
 
@@ -747,6 +772,38 @@ jhead
 padding
     reserved for future, zeroes
 
+.. _`ubifs_auth_node`:
+
+struct ubifs_auth_node
+======================
+
+.. c:type:: struct ubifs_auth_node
+
+    node for authenticating other nodes
+
+.. _`ubifs_auth_node.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ubifs_auth_node {
+        struct ubifs_ch ch;
+        __u8 hmac[];
+    }
+
+.. _`ubifs_auth_node.members`:
+
+Members
+-------
+
+ch
+    common header
+
+hmac
+    The HMAC
+
 .. _`ubifs_branch`:
 
 struct ubifs_branch
@@ -786,6 +843,15 @@ len
 
 key
     key
+
+.. _`ubifs_branch.description`:
+
+Description
+-----------
+
+In an authenticated UBIFS we have the hash of the referenced node after \ ``key``\ .
+This can't be added to the struct type definition because \ ``key``\  is a
+dynamically sized element already.
 
 .. _`ubifs_idx_node`:
 

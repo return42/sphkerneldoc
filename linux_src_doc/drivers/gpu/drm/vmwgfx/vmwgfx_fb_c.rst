@@ -10,8 +10,9 @@ vmw_fb_dirty_flush
 
     flush dirty regions to the kms framebuffer
 
-    :param struct work_struct \*work:
+    :param work:
         The struct work_struct associated with this task.
+    :type work: struct work_struct \*
 
 .. _`vmw_fb_dirty_flush.description`:
 

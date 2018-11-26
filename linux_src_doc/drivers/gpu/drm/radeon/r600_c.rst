@@ -10,14 +10,17 @@ r600_get_allowed_info_register
 
     fetch the register for the info ioctl
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 reg:
+    :param reg:
         register offset in bytes
+    :type reg: u32
 
-    :param u32 \*val:
+    :param val:
         register value
+    :type val: u32 \*
 
 .. _`r600_get_allowed_info_register.description`:
 
@@ -35,8 +38,9 @@ r600_get_xclk
 
     get the xclk
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r600_get_xclk.description`:
 
@@ -55,11 +59,13 @@ r600_vram_gtt_location
 
     try to find VRAM & GTT location
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device structure holding all necessary informations
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_mc \*mc:
+    :param mc:
         memory controller structure holding memory informations
+    :type mc: struct radeon_mc \*
 
 .. _`r600_vram_gtt_location.description`:
 
@@ -96,11 +102,13 @@ r600_gfx_is_lockup
 
     Check if the GFX engine is locked up
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`r600_gfx_is_lockup.description`:
 
@@ -119,17 +127,21 @@ r600_semaphore_ring_emit
 
     emit a semaphore on the CP ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring buffer object
+    :type ring: struct radeon_ring \*
 
-    :param struct radeon_semaphore \*semaphore:
+    :param semaphore:
         radeon semaphore object
+    :type semaphore: struct radeon_semaphore \*
 
-    :param bool emit_wait:
+    :param emit_wait:
         Is this a sempahore wait?
+    :type emit_wait: bool
 
 .. _`r600_semaphore_ring_emit.description`:
 
@@ -148,20 +160,25 @@ r600_copy_cpdma
 
     copy pages using the CP DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint64_t src_offset:
+    :param src_offset:
         src GPU address
+    :type src_offset: uint64_t
 
-    :param uint64_t dst_offset:
+    :param dst_offset:
         dst GPU address
+    :type dst_offset: uint64_t
 
-    :param unsigned num_gpu_pages:
+    :param num_gpu_pages:
         number of GPU pages to xfer
+    :type num_gpu_pages: unsigned
 
-    :param struct reservation_object \*resv:
+    :param resv:
         *undescribed*
+    :type resv: struct reservation_object \*
 
 .. _`r600_copy_cpdma.description`:
 
@@ -181,8 +198,9 @@ r600_mmio_hdp_flush
 
     flush Host Data Path cache via MMIO
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: struct radeon_device \*
 
 .. _`r600_mmio_hdp_flush.rdev`:
 
@@ -205,8 +223,9 @@ r600_get_gpu_clock_counter
 
     return GPU clock counter snapshot
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r600_get_gpu_clock_counter.description`:
 

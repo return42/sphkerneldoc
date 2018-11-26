@@ -10,8 +10,9 @@ bcm63xx_nvram_init
 
     initializes nvram
 
-    :param void \*nvram:
+    :param nvram:
         address of the nvram data
+    :type nvram: void \*
 
 .. _`bcm63xx_nvram_init.description`:
 
@@ -30,8 +31,9 @@ bcm63xx_nvram_get_name
 
     returns the board name according to nvram
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bcm63xx_nvram_get_name.description`:
 
@@ -50,8 +52,9 @@ bcm63xx_nvram_get_mac_address
 
     register & return a new mac address
 
-    :param u8 \*mac:
+    :param mac:
         pointer to array for allocated mac
+    :type mac: u8 \*
 
 .. _`bcm63xx_nvram_get_mac_address.description`:
 

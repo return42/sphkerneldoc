@@ -10,8 +10,9 @@ vchiq_status_to_vchi
 
     2012 Broadcom. All rights reserved.
 
-    :param  status:
+    :param status:
         *undescribed*
+    :type status: 
 
 .. _`vchiq_status_to_vchi.description`:
 

@@ -10,11 +10,13 @@ mei_txe_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in mei_txe_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`mei_txe_probe.return`:
 
@@ -32,8 +34,9 @@ mei_txe_shutdown
 
     Device Shutdown Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`mei_txe_shutdown.description`:
 
@@ -53,8 +56,9 @@ mei_txe_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`mei_txe_remove.description`:
 
@@ -73,8 +77,9 @@ mei_txe_set_pm_domain
 
     fill and set pm domain structure for device
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei_device
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_unset_pm_domain`:
 
@@ -85,8 +90,9 @@ mei_txe_unset_pm_domain
 
     clean pm domain structure for device
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei_device
+    :type dev: struct mei_device \*
 
 .. This file was automatic generated / don't edit.
 

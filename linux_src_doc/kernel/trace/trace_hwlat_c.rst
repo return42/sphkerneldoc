@@ -10,8 +10,9 @@ get_sample
 
     sample the CPU TSC and look for likely hardware latencies
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`get_sample.description`:
 
@@ -31,8 +32,9 @@ start_kthread
 
     Kick off the hardware latency sampling/detector kthread
 
-    :param struct trace_array \*tr:
+    :param tr:
         *undescribed*
+    :type tr: struct trace_array \*
 
 .. _`start_kthread.description`:
 
@@ -51,8 +53,9 @@ stop_kthread
 
     Inform the hardware latency samping/detector kthread to stop
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`stop_kthread.description`:
 
@@ -71,17 +74,21 @@ hwlat_width_write
 
     Write function for "width" entry
 
-    :param struct file \*filp:
+    :param filp:
         The active open file structure
+    :type filp: struct file \*
 
-    :param const char __user \*ubuf:
+    :param ubuf:
         The user buffer that contains the value to write
+    :type ubuf: const char __user \*
 
-    :param size_t cnt:
+    :param cnt:
         The maximum number of bytes to write to "file"
+    :type cnt: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The current position in \ ``file``\ 
+    :type ppos: loff_t \*
 
 .. _`hwlat_width_write.description`:
 
@@ -105,17 +112,21 @@ hwlat_window_write
 
     Write function for "window" entry
 
-    :param struct file \*filp:
+    :param filp:
         The active open file structure
+    :type filp: struct file \*
 
-    :param const char __user \*ubuf:
+    :param ubuf:
         The user buffer that contains the value to write
+    :type ubuf: const char __user \*
 
-    :param size_t cnt:
+    :param cnt:
         The maximum number of bytes to write to "file"
+    :type cnt: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         The current position in \ ``file``\ 
+    :type ppos: loff_t \*
 
 .. _`hwlat_window_write.description`:
 
@@ -139,8 +150,9 @@ init_tracefs
 
     A function to initialize the tracefs interface files
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`init_tracefs.description`:
 

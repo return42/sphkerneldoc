@@ -10,8 +10,9 @@ serdev_device_add
 
     add a device previously constructed via \ :c:func:`serdev_device_alloc`\ 
 
-    :param struct serdev_device \*serdev:
+    :param serdev:
         serdev_device to be added
+    :type serdev: struct serdev_device \*
 
 .. _`serdev_device_remove`:
 
@@ -22,8 +23,9 @@ serdev_device_remove
 
     remove an serdev device
 
-    :param struct serdev_device \*serdev:
+    :param serdev:
         serdev_device to be removed
+    :type serdev: struct serdev_device \*
 
 .. _`serdev_device_alloc`:
 
@@ -34,8 +36,9 @@ serdev_device_alloc
 
     Allocate a new serdev device
 
-    :param struct serdev_controller \*ctrl:
+    :param ctrl:
         associated controller
+    :type ctrl: struct serdev_controller \*
 
 .. _`serdev_device_alloc.description`:
 
@@ -54,11 +57,13 @@ serdev_controller_alloc
 
     Allocate a new serdev controller
 
-    :param struct device \*parent:
+    :param parent:
         parent device
+    :type parent: struct device \*
 
-    :param size_t size:
+    :param size:
         size of private data
+    :type size: size_t
 
 .. _`serdev_controller_alloc.description`:
 
@@ -79,8 +84,9 @@ serdev_controller_add
 
     Add an serdev controller
 
-    :param struct serdev_controller \*ctrl:
+    :param ctrl:
         controller to be registered.
+    :type ctrl: struct serdev_controller \*
 
 .. _`serdev_controller_add.description`:
 
@@ -99,8 +105,9 @@ serdev_controller_remove
 
     remove an serdev controller
 
-    :param struct serdev_controller \*ctrl:
+    :param ctrl:
         controller to remove
+    :type ctrl: struct serdev_controller \*
 
 .. _`serdev_controller_remove.description`:
 
@@ -119,11 +126,13 @@ Remove a serdev controller.  Caller is responsible for calling
 
     Register client driver with serdev core
 
-    :param struct serdev_device_driver \*sdrv:
+    :param sdrv:
         client driver to be associated with client-device.
+    :type sdrv: struct serdev_device_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         *undescribed*
+    :type owner: struct module \*
 
 .. _`__serdev_device_driver_register.description`:
 

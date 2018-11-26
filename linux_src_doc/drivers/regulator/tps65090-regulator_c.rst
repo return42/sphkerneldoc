@@ -54,11 +54,13 @@ tps65090_reg_set_overcurrent_wait
 
     Setup overcurrent wait
 
-    :param struct tps65090_regulator \*ri:
+    :param ri:
         Overall regulator data
+    :type ri: struct tps65090_regulator \*
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Regulator device
+    :type rdev: struct regulator_dev \*
 
 .. _`tps65090_reg_set_overcurrent_wait.description`:
 
@@ -84,8 +86,9 @@ tps65090_try_enable_fet
 
     Try to enable a FET
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Regulator device
+    :type rdev: struct regulator_dev \*
 
 .. _`tps65090_try_enable_fet.return`:
 
@@ -104,8 +107,9 @@ tps65090_fet_enable
 
     Enable a FET, trying a few times if it fails
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Regulator device
+    :type rdev: struct regulator_dev \*
 
 .. _`tps65090_fet_enable.description`:
 

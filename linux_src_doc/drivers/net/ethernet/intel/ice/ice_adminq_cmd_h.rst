@@ -44,11 +44,15 @@ Definition
             struct ice_aqc_query_txsched_res query_sched_res;
             struct ice_aqc_add_move_delete_elem add_move_delete_elem;
             struct ice_aqc_nvm nvm;
+            struct ice_aqc_pf_vf_msg virt;
             struct ice_aqc_get_set_rss_lut get_set_rss_lut;
             struct ice_aqc_get_set_rss_key get_set_rss_key;
             struct ice_aqc_add_txqs add_txqs;
             struct ice_aqc_dis_txqs dis_txqs;
             struct ice_aqc_add_get_update_free_vsi vsi_cmd;
+            struct ice_aqc_add_update_free_vsi_resp add_update_free_vsi_res;
+            struct ice_aqc_fw_logging fw_logging;
+            struct ice_aqc_get_clear_fw_log get_clear_fw_log;
             struct ice_aqc_alloc_free_res_cmd sw_res_ctrl;
             struct ice_aqc_set_event_mask set_event_mask;
             struct ice_aqc_get_link_status get_link_status;

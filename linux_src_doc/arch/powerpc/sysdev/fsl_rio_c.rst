@@ -10,20 +10,25 @@ fsl_local_config_read
 
     Generate a MPC85xx local config space read
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port info
+    :type mport: struct rio_mport \*
 
-    :param int index:
+    :param index:
         ID of RapdiIO interface
+    :type index: int
 
-    :param u32 offset:
+    :param offset:
         Offset into configuration space
+    :type offset: u32
 
-    :param int len:
+    :param len:
         Length (in bytes) of the maintenance transaction
+    :type len: int
 
-    :param u32 \*data:
+    :param data:
         Value to be read into
+    :type data: u32 \*
 
 .. _`fsl_local_config_read.description`:
 
@@ -42,20 +47,25 @@ fsl_local_config_write
 
     Generate a MPC85xx local config space write
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port info
+    :type mport: struct rio_mport \*
 
-    :param int index:
+    :param index:
         ID of RapdiIO interface
+    :type index: int
 
-    :param u32 offset:
+    :param offset:
         Offset into configuration space
+    :type offset: u32
 
-    :param int len:
+    :param len:
         Length (in bytes) of the maintenance transaction
+    :type len: int
 
-    :param u32 data:
+    :param data:
         Value to be written
+    :type data: u32
 
 .. _`fsl_local_config_write.description`:
 
@@ -74,26 +84,33 @@ fsl_rio_config_read
 
     Generate a MPC85xx read maintenance transaction
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port info
+    :type mport: struct rio_mport \*
 
-    :param int index:
+    :param index:
         ID of RapdiIO interface
+    :type index: int
 
-    :param u16 destid:
+    :param destid:
         Destination ID of transaction
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of hops to target device
+    :type hopcount: u8
 
-    :param u32 offset:
+    :param offset:
         Offset into configuration space
+    :type offset: u32
 
-    :param int len:
+    :param len:
         Length (in bytes) of the maintenance transaction
+    :type len: int
 
-    :param u32 \*val:
+    :param val:
         Location to be read into
+    :type val: u32 \*
 
 .. _`fsl_rio_config_read.description`:
 
@@ -112,26 +129,33 @@ fsl_rio_config_write
 
     Generate a MPC85xx write maintenance transaction
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port info
+    :type mport: struct rio_mport \*
 
-    :param int index:
+    :param index:
         ID of RapdiIO interface
+    :type index: int
 
-    :param u16 destid:
+    :param destid:
         Destination ID of transaction
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of hops to target device
+    :type hopcount: u8
 
-    :param u32 offset:
+    :param offset:
         Offset into configuration space
+    :type offset: u32
 
-    :param int len:
+    :param len:
         Length (in bytes) of the maintenance transaction
+    :type len: int
 
-    :param u32 val:
+    :param val:
         Value to be written
+    :type val: u32
 
 .. _`fsl_rio_config_write.description`:
 
@@ -150,8 +174,9 @@ fsl_rio_setup
 
     Setup Freescale PowerPC RapidIO interface
 
-    :param struct platform_device \*dev:
+    :param dev:
         platform_device pointer
+    :type dev: struct platform_device \*
 
 .. _`fsl_rio_setup.description`:
 

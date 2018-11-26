@@ -10,8 +10,9 @@ pr_fmt
 
     Copyright (c) 2009 Micrel Inc.
 
-    :param  fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: 
 
 .. _`pr_fmt.description`:
 
@@ -81,11 +82,13 @@ ks_rdreg8
 
     read 8 bit register from device
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
-    :param int offset:
+    :param offset:
         The register address
+    :type offset: int
 
 .. _`ks_rdreg8.description`:
 
@@ -103,11 +106,13 @@ ks_rdreg16
 
     read 16 bit register from device
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
-    :param int offset:
+    :param offset:
         The register address
+    :type offset: int
 
 .. _`ks_rdreg16.description`:
 
@@ -125,14 +130,17 @@ ks_wrreg8
 
     write 8bit register value to chip
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
-    :param int offset:
+    :param offset:
         The register address
+    :type offset: int
 
-    :param u8 value:
+    :param value:
         The value to write
+    :type value: u8
 
 .. _`ks_wrreg16`:
 
@@ -143,14 +151,17 @@ ks_wrreg16
 
     write 16bit register value to chip
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
-    :param int offset:
+    :param offset:
         The register address
+    :type offset: int
 
-    :param u16 value:
+    :param value:
         The value to write
+    :type value: u16
 
 .. _`ks_inblk`:
 
@@ -161,14 +172,17 @@ ks_inblk
 
     read a block of data from QMU. This is called after sudo DMA mode enabled.
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip state
+    :type ks: struct ks_net \*
 
-    :param u16 \*wptr:
+    :param wptr:
         buffer address to save data
+    :type wptr: u16 \*
 
-    :param u32 len:
+    :param len:
         length in byte to read
+    :type len: u32
 
 .. _`ks_outblk`:
 
@@ -179,14 +193,17 @@ ks_outblk
 
     write data to QMU. This is called after sudo DMA mode enabled.
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
-    :param u16 \*wptr:
+    :param wptr:
         buffer address
+    :type wptr: u16 \*
 
-    :param u32 len:
+    :param len:
         length in byte to write
+    :type len: u32
 
 .. _`ks_tx_fifo_space`:
 
@@ -197,8 +214,9 @@ ks_tx_fifo_space
 
     return the available hardware buffer size.
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
 .. _`ks_save_cmd_reg`:
 
@@ -209,8 +227,9 @@ ks_save_cmd_reg
 
     save the command register from the cache.
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
 .. _`ks_restore_cmd_reg`:
 
@@ -221,8 +240,9 @@ ks_restore_cmd_reg
 
     restore the command register from the cache and write to hardware register.
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
 .. _`ks_set_powermode`:
 
@@ -233,11 +253,13 @@ ks_set_powermode
 
     set power mode of the device
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
-    :param unsigned pwrmode:
+    :param pwrmode:
         The power mode value to write to KS_PMECR.
+    :type pwrmode: unsigned
 
 .. _`ks_set_powermode.description`:
 
@@ -255,8 +277,9 @@ ks_read_config
 
     read chip configuration of bus width.
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
 .. _`ks_soft_reset`:
 
@@ -267,11 +290,13 @@ ks_soft_reset
 
     issue one of the soft reset to the device
 
-    :param struct ks_net \*ks:
+    :param ks:
         The device state.
+    :type ks: struct ks_net \*
 
-    :param unsigned op:
+    :param op:
         The bit(s) to set in the GRR
+    :type op: unsigned
 
 .. _`ks_soft_reset.description`:
 
@@ -295,14 +320,17 @@ ks_read_qmu
 
     read 1 pkt data from the QMU.
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
-    :param u16 \*buf:
+    :param buf:
         buffer address to save 1 pkt
+    :type buf: u16 \*
 
-    :param u32 len:
+    :param len:
         Pkt length
+    :type len: u32
 
 .. _`ks_read_qmu.here-is-the-sequence-to-read-1-pkt`:
 
@@ -323,11 +351,13 @@ ks_rcv
 
     read multiple pkts data from the QMU.
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The network device being opened.
+    :type netdev: struct net_device \*
 
 .. _`ks_rcv.description`:
 
@@ -347,11 +377,13 @@ ks_update_link_status
 
     link status update.
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The network device being opened.
+    :type netdev: struct net_device \*
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
 .. _`ks_irq`:
 
@@ -362,11 +394,13 @@ ks_irq
 
     device interrupt handler
 
-    :param int irq:
+    :param irq:
         Interrupt number passed from the IRQ handler.
+    :type irq: int
 
-    :param void \*pw:
+    :param pw:
         The private word passed to \ :c:func:`register_irq`\ , our struct ks_net.
+    :type pw: void \*
 
 .. _`ks_irq.description`:
 
@@ -387,8 +421,9 @@ ks_net_open
 
     open network device
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The network device being opened.
+    :type netdev: struct net_device \*
 
 .. _`ks_net_open.description`:
 
@@ -407,8 +442,9 @@ ks_net_stop
 
     close network device
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The device being closed.
+    :type netdev: struct net_device \*
 
 .. _`ks_net_stop.description`:
 
@@ -428,14 +464,17 @@ ks_write_qmu
 
     write 1 pkt data to the QMU.
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
-    :param u8 \*pdata:
+    :param pdata:
         buffer address to save 1 pkt
+    :type pdata: u8 \*
 
-    :param u16 len:
+    :param len:
         Pkt length in byte
+    :type len: u16
 
 .. _`ks_write_qmu.here-is-the-sequence-to-write-1-pkt`:
 
@@ -454,15 +493,17 @@ Here is the sequence to write 1 pkt
 ks_start_xmit
 =============
 
-.. c:function:: int ks_start_xmit(struct sk_buff *skb, struct net_device *netdev)
+.. c:function:: netdev_tx_t ks_start_xmit(struct sk_buff *skb, struct net_device *netdev)
 
     transmit packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The buffer to transmit
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The device used to transmit the packet.
+    :type netdev: struct net_device \*
 
 .. _`ks_start_xmit.description`:
 
@@ -482,8 +523,9 @@ ks_start_rx
 
     ready to serve pkts
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
 .. _`ks_stop_rx`:
 
@@ -494,8 +536,9 @@ ks_stop_rx
 
     stop to serve pkts
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
 .. _`ks_set_grpaddr`:
 
@@ -506,8 +549,9 @@ ks_set_grpaddr
 
     set multicast information
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks_net \*
 
 .. _`ks_clear_mcast`:
 
@@ -518,9 +562,10 @@ ks_clear_mcast
 
     clear multicast information
 
-    :param struct ks_net \*ks:
+    :param ks:
         The chip information
         This routine removes all mcast addresses set in the hardware.
+    :type ks: struct ks_net \*
 
 .. _`ks_phy_reg`:
 
@@ -531,8 +576,9 @@ ks_phy_reg
 
     convert MII register into a KS8851 register
 
-    :param int reg:
+    :param reg:
         MII register number.
+    :type reg: int
 
 .. _`ks_phy_reg.description`:
 
@@ -552,14 +598,17 @@ ks_phy_read
 
     MII interface PHY register read.
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The network device the PHY is on.
+    :type netdev: struct net_device \*
 
-    :param int phy_addr:
+    :param phy_addr:
         Address of PHY (ignored as we only have one)
+    :type phy_addr: int
 
-    :param int reg:
+    :param reg:
         The register to read.
+    :type reg: int
 
 .. _`ks_phy_read.description`:
 
@@ -584,8 +633,9 @@ ks_read_selftest
 
     read the selftest memory info.
 
-    :param struct ks_net \*ks:
+    :param ks:
         The device state
+    :type ks: struct ks_net \*
 
 .. _`ks_read_selftest.description`:
 

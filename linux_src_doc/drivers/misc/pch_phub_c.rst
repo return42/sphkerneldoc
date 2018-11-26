@@ -114,17 +114,21 @@ pch_phub_read_modify_write_reg
 
     Reading modifying and writing register
 
-    :param struct pch_phub_reg \*chip:
+    :param chip:
         *undescribed*
+    :type chip: struct pch_phub_reg \*
 
-    :param unsigned int reg_addr_offset:
+    :param reg_addr_offset:
         Register offset address value.
+    :type reg_addr_offset: unsigned int
 
-    :param unsigned int data:
+    :param data:
         Writing value.
+    :type data: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         Mask value.
+    :type mask: unsigned int
 
 .. _`pch_phub_read_serial_rom`:
 
@@ -135,14 +139,17 @@ pch_phub_read_serial_rom
 
     Reading Serial ROM
 
-    :param struct pch_phub_reg \*chip:
+    :param chip:
         *undescribed*
+    :type chip: struct pch_phub_reg \*
 
-    :param unsigned int offset_address:
+    :param offset_address:
         Serial ROM offset address to read.
+    :type offset_address: unsigned int
 
-    :param u8 \*data:
+    :param data:
         Read buffer for specified Serial ROM value.
+    :type data: u8 \*
 
 .. _`pch_phub_write_serial_rom`:
 
@@ -153,14 +160,17 @@ pch_phub_write_serial_rom
 
     Writing Serial ROM
 
-    :param struct pch_phub_reg \*chip:
+    :param chip:
         *undescribed*
+    :type chip: struct pch_phub_reg \*
 
-    :param unsigned int offset_address:
+    :param offset_address:
         Serial ROM offset address.
+    :type offset_address: unsigned int
 
-    :param u8 data:
+    :param data:
         Serial ROM value to write.
+    :type data: u8
 
 .. _`pch_phub_read_serial_rom_val`:
 
@@ -171,14 +181,17 @@ pch_phub_read_serial_rom_val
 
     Read Serial ROM value
 
-    :param struct pch_phub_reg \*chip:
+    :param chip:
         *undescribed*
+    :type chip: struct pch_phub_reg \*
 
-    :param unsigned int offset_address:
+    :param offset_address:
         Serial ROM address offset value.
+    :type offset_address: unsigned int
 
-    :param u8 \*data:
+    :param data:
         Serial ROM value to read.
+    :type data: u8 \*
 
 .. _`pch_phub_write_serial_rom_val`:
 
@@ -189,14 +202,17 @@ pch_phub_write_serial_rom_val
 
     writing Serial ROM value
 
-    :param struct pch_phub_reg \*chip:
+    :param chip:
         *undescribed*
+    :type chip: struct pch_phub_reg \*
 
-    :param unsigned int offset_address:
+    :param offset_address:
         Serial ROM address offset value.
+    :type offset_address: unsigned int
 
-    :param u8 data:
+    :param data:
         Serial ROM value.
+    :type data: u8
 
 .. _`pch_phub_read_gbe_mac_addr`:
 
@@ -207,11 +223,13 @@ pch_phub_read_gbe_mac_addr
 
     Read Gigabit Ethernet MAC address
 
-    :param struct pch_phub_reg \*chip:
+    :param chip:
         *undescribed*
+    :type chip: struct pch_phub_reg \*
 
-    :param u8 \*data:
+    :param data:
         Buffer of the Gigabit Ethernet MAC address value.
+    :type data: u8 \*
 
 .. _`pch_phub_write_gbe_mac_addr`:
 
@@ -222,11 +240,13 @@ pch_phub_write_gbe_mac_addr
 
     Write MAC address
 
-    :param struct pch_phub_reg \*chip:
+    :param chip:
         *undescribed*
+    :type chip: struct pch_phub_reg \*
 
-    :param u8 \*data:
+    :param data:
         Gigabit Ethernet MAC address value.
+    :type data: u8 \*
 
 .. This file was automatic generated / don't edit.
 

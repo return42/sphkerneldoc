@@ -86,8 +86,9 @@ binder_selftest_alloc
 
     Test alloc and free of buffer pages.
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         Pointer to alloc struct.
+    :type alloc: struct binder_alloc \*
 
 .. _`binder_selftest_alloc.description`:
 

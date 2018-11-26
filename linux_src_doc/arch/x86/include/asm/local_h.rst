@@ -10,11 +10,13 @@ local_sub_and_test
 
     subtract value from variable and test result
 
-    :param long i:
+    :param i:
         integer value to subtract
+    :type i: long
 
-    :param local_t \*l:
+    :param l:
         pointer to type local_t
+    :type l: local_t \*
 
 .. _`local_sub_and_test.description`:
 
@@ -34,8 +36,9 @@ local_dec_and_test
 
     decrement and test
 
-    :param local_t \*l:
+    :param l:
         pointer to type local_t
+    :type l: local_t \*
 
 .. _`local_dec_and_test.description`:
 
@@ -55,8 +58,9 @@ local_inc_and_test
 
     increment and test
 
-    :param local_t \*l:
+    :param l:
         pointer to type local_t
+    :type l: local_t \*
 
 .. _`local_inc_and_test.description`:
 
@@ -76,11 +80,13 @@ local_add_negative
 
     add and test if negative
 
-    :param long i:
+    :param i:
         integer value to add
+    :type i: long
 
-    :param local_t \*l:
+    :param l:
         pointer to type local_t
+    :type l: local_t \*
 
 .. _`local_add_negative.description`:
 
@@ -100,11 +106,13 @@ local_add_return
 
     add and return
 
-    :param long i:
+    :param i:
         integer value to add
+    :type i: long
 
-    :param local_t \*l:
+    :param l:
         pointer to type local_t
+    :type l: local_t \*
 
 .. _`local_add_return.description`:
 
@@ -122,14 +130,17 @@ local_add_unless
 
     add unless the number is a given value
 
-    :param  l:
+    :param l:
         pointer of type local_t
+    :type l: 
 
-    :param  a:
+    :param a:
         the amount to add to l...
+    :type a: 
 
-    :param  u:
+    :param u:
         ...unless l is equal to u.
+    :type u: 
 
 .. _`local_add_unless.description`:
 

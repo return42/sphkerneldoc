@@ -10,17 +10,21 @@ elf_symtab__for_each_symbol
 
     iterate thru all the symbols
 
-    :param  syms:
+    :param syms:
         struct elf_symtab instance to iterate
+    :type syms: 
 
-    :param  nr_syms:
+    :param nr_syms:
         *undescribed*
+    :type nr_syms: 
 
-    :param  idx:
+    :param idx:
         uint32_t idx
+    :type idx: 
 
-    :param  sym:
+    :param sym:
         GElf_Sym iterator
+    :type sym: 
 
 .. _`ref_reloc_sym_not_found`:
 
@@ -31,8 +35,9 @@ ref_reloc_sym_not_found
 
     has kernel relocation symbol been found.
 
-    :param struct kmap \*kmap:
+    :param kmap:
         kernel maps and relocation reference symbol
+    :type kmap: struct kmap \*
 
 .. _`ref_reloc_sym_not_found.description`:
 
@@ -52,8 +57,9 @@ ref_reloc
 
     kernel relocation offset.
 
-    :param struct kmap \*kmap:
+    :param kmap:
         kernel maps and relocation reference symbol
+    :type kmap: struct kmap \*
 
 .. _`ref_reloc.description`:
 
@@ -73,11 +79,13 @@ kcore_copy
 
     copy kallsyms, modules and kcore from one directory to another.
 
-    :param const char \*from_dir:
+    :param from_dir:
         from directory
+    :type from_dir: const char \*
 
-    :param const char \*to_dir:
+    :param to_dir:
         to directory
+    :type to_dir: const char \*
 
 .. _`kcore_copy.description`:
 
@@ -117,17 +125,21 @@ populate_sdt_note
 
     Parse raw data and identify SDT note
 
-    :param Elf \*\*elf:
+    :param elf:
         elf of the opened file
+    :type elf: Elf \*\*
 
-    :param const char \*data:
+    :param data:
         raw data of a section with description offset applied
+    :type data: const char \*
 
-    :param size_t len:
+    :param len:
         note description size
+    :type len: size_t
 
-    :param struct list_head \*sdt_notes:
+    :param sdt_notes:
         List to add the SDT note
+    :type sdt_notes: struct list_head \*
 
 .. _`populate_sdt_note.description`:
 
@@ -146,11 +158,13 @@ construct_sdt_notes_list
 
     constructs a list of SDT notes
 
-    :param Elf \*elf:
+    :param elf:
         elf to look into
+    :type elf: Elf \*
 
-    :param struct list_head \*sdt_notes:
+    :param sdt_notes:
         empty list_head
+    :type sdt_notes: struct list_head \*
 
 .. _`construct_sdt_notes_list.description`:
 
@@ -170,11 +184,13 @@ get_sdt_note_list
 
     Wrapper to construct a list of sdt notes
 
-    :param struct list_head \*head:
+    :param head:
         empty list_head
+    :type head: struct list_head \*
 
-    :param const char \*target:
+    :param target:
         file to find SDT notes from
+    :type target: const char \*
 
 .. _`get_sdt_note_list.description`:
 
@@ -193,8 +209,9 @@ cleanup_sdt_note_list
 
     free the sdt notes' list
 
-    :param struct list_head \*sdt_notes:
+    :param sdt_notes:
         sdt notes' list
+    :type sdt_notes: struct list_head \*
 
 .. _`cleanup_sdt_note_list.description`:
 
@@ -213,8 +230,9 @@ sdt_notes__get_count
 
     Counts the number of sdt events
 
-    :param struct list_head \*start:
+    :param start:
         list_head to sdt_notes list
+    :type start: struct list_head \*
 
 .. _`sdt_notes__get_count.description`:
 

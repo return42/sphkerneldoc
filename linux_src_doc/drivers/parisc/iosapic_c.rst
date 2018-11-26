@@ -10,12 +10,14 @@ iosapic_load_irt
 
     Fill in the interrupt routing table
 
-    :param unsigned long cell_num:
+    :param cell_num:
         The cell number of the CPU we're currently executing on
+    :type cell_num: unsigned long
 
-    :param struct irt_entry \*\*irt:
+    :param irt:
         The address to place the new IRT at
         \ ``return``\  The number of entries found
+    :type irt: struct irt_entry \*\*
 
 .. _`iosapic_load_irt.description`:
 

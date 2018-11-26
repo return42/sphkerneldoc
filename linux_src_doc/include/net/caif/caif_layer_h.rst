@@ -10,8 +10,9 @@ caif_assert
 
     Assert function for CAIF.
 
-    :param  assert:
+    :param assert:
         expression to evaluate.
+    :type assert: 
 
 .. _`caif_assert.description`:
 
@@ -280,11 +281,13 @@ layer_set_up
 
     Set the up pointer for a specified layer.
 
-    :param  layr:
+    :param layr:
         Layer where up pointer shall be set.
+    :type layr: 
 
-    :param  above:
+    :param above:
         Layer above.
+    :type above: 
 
 .. _`layer_set_dn`:
 
@@ -295,11 +298,13 @@ layer_set_dn
 
     Set the down pointer for a specified layer.
 
-    :param  layr:
+    :param layr:
         Layer where down pointer shall be set.
+    :type layr: 
 
-    :param  below:
+    :param below:
         Layer below.
+    :type below: 
 
 .. _`dev_info`:
 

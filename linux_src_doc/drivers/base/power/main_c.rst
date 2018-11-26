@@ -10,8 +10,9 @@ device_pm_sleep_init
 
     Initialize system suspend-related device fields.
 
-    :param struct device \*dev:
+    :param dev:
         Device object being initialized.
+    :type dev: struct device \*
 
 .. _`device_pm_lock`:
 
@@ -22,8 +23,9 @@ device_pm_lock
 
     Lock the list of active devices used by the PM core.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`device_pm_unlock`:
 
@@ -34,8 +36,9 @@ device_pm_unlock
 
     Unlock the list of active devices used by the PM core.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`device_pm_add`:
 
@@ -46,8 +49,9 @@ device_pm_add
 
     Add a device to the PM core's list of active devices.
 
-    :param struct device \*dev:
+    :param dev:
         Device to add to the list.
+    :type dev: struct device \*
 
 .. _`device_pm_remove`:
 
@@ -58,8 +62,9 @@ device_pm_remove
 
     Remove a device from the PM core's list of active devices.
 
-    :param struct device \*dev:
+    :param dev:
         Device to be removed from the list.
+    :type dev: struct device \*
 
 .. _`device_pm_move_before`:
 
@@ -70,11 +75,13 @@ device_pm_move_before
 
     Move device in the PM core's list of active devices.
 
-    :param struct device \*deva:
+    :param deva:
         Device to move in dpm_list.
+    :type deva: struct device \*
 
-    :param struct device \*devb:
+    :param devb:
         Device \ ``deva``\  should come before.
+    :type devb: struct device \*
 
 .. _`device_pm_move_after`:
 
@@ -85,11 +92,13 @@ device_pm_move_after
 
     Move device in the PM core's list of active devices.
 
-    :param struct device \*deva:
+    :param deva:
         Device to move in dpm_list.
+    :type deva: struct device \*
 
-    :param struct device \*devb:
+    :param devb:
         Device \ ``deva``\  should come after.
+    :type devb: struct device \*
 
 .. _`device_pm_move_last`:
 
@@ -100,8 +109,9 @@ device_pm_move_last
 
     Move device to end of the PM core's list of devices.
 
-    :param struct device \*dev:
+    :param dev:
         Device to move in dpm_list.
+    :type dev: struct device \*
 
 .. _`dpm_wait`:
 
@@ -112,11 +122,13 @@ dpm_wait
 
     Wait for a PM operation to complete.
 
-    :param struct device \*dev:
+    :param dev:
         Device to wait for.
+    :type dev: struct device \*
 
-    :param bool async:
+    :param async:
         If unset, wait only if the device's power.async_suspend flag is set.
+    :type async: bool
 
 .. _`pm_op`:
 
@@ -127,11 +139,13 @@ pm_op
 
     Return the PM operation appropriate for given PM event.
 
-    :param const struct dev_pm_ops \*ops:
+    :param ops:
         PM operations to choose from.
+    :type ops: const struct dev_pm_ops \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`pm_late_early_op`:
 
@@ -142,11 +156,13 @@ pm_late_early_op
 
     Return the PM operation appropriate for given PM event.
 
-    :param const struct dev_pm_ops \*ops:
+    :param ops:
         PM operations to choose from.
+    :type ops: const struct dev_pm_ops \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`pm_late_early_op.description`:
 
@@ -164,11 +180,13 @@ pm_noirq_op
 
     Return the PM operation appropriate for given PM event.
 
-    :param const struct dev_pm_ops \*ops:
+    :param ops:
         PM operations to choose from.
+    :type ops: const struct dev_pm_ops \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`pm_noirq_op.description`:
 
@@ -187,8 +205,9 @@ dpm_watchdog_handler
 
     Driver suspend / resume watchdog handler.
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`dpm_watchdog_handler.description`:
 
@@ -208,11 +227,13 @@ dpm_watchdog_set
 
     Enable pm watchdog for given device.
 
-    :param struct dpm_watchdog \*wd:
+    :param wd:
         Watchdog. Must be allocated on the stack.
+    :type wd: struct dpm_watchdog \*
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`dpm_watchdog_clear`:
 
@@ -223,8 +244,9 @@ dpm_watchdog_clear
 
     Disable suspend/resume watchdog.
 
-    :param struct dpm_watchdog \*wd:
+    :param wd:
         Watchdog to disable.
+    :type wd: struct dpm_watchdog \*
 
 .. _`dev_pm_skip_next_resume_phases`:
 
@@ -235,8 +257,9 @@ dev_pm_skip_next_resume_phases
 
     Skip next system resume phases for device.
 
-    :param struct device \*dev:
+    :param dev:
         Target device.
+    :type dev: struct device \*
 
 .. _`dev_pm_skip_next_resume_phases.description`:
 
@@ -257,8 +280,9 @@ suspend_event
 
     Return a "suspend" message for given "resume" one.
 
-    :param pm_message_t resume_msg:
+    :param resume_msg:
         PM message representing a system-wide resume transition.
+    :type resume_msg: pm_message_t
 
 .. _`dev_pm_may_skip_resume`:
 
@@ -269,8 +293,9 @@ dev_pm_may_skip_resume
 
     System-wide device resume optimization check.
 
-    :param struct device \*dev:
+    :param dev:
         Target device.
+    :type dev: struct device \*
 
 .. _`dev_pm_may_skip_resume.description`:
 
@@ -289,14 +314,17 @@ device_resume_noirq
 
     Execute a "noirq resume" callback for given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
-    :param bool async:
+    :param async:
         If true, the device is being resumed asynchronously.
+    :type async: bool
 
 .. _`device_resume_noirq.description`:
 
@@ -315,8 +343,9 @@ dpm_resume_noirq
 
     Execute "noirq resume" callbacks for all devices.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`dpm_resume_noirq.description`:
 
@@ -335,14 +364,17 @@ device_resume_early
 
     Execute an "early resume" callback for given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
-    :param bool async:
+    :param async:
         If true, the device is being resumed asynchronously.
+    :type async: bool
 
 .. _`device_resume_early.description`:
 
@@ -360,8 +392,9 @@ dpm_resume_early
 
     Execute "early resume" callbacks for all devices.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`dpm_resume_start`:
 
@@ -372,8 +405,9 @@ dpm_resume_start
 
     Execute "noirq" and "early" device callbacks.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`device_resume`:
 
@@ -384,14 +418,17 @@ device_resume
 
     Execute "resume" callbacks for given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
-    :param bool async:
+    :param async:
         If true, the device is being resumed asynchronously.
+    :type async: bool
 
 .. _`dpm_resume`:
 
@@ -402,8 +439,9 @@ dpm_resume
 
     Execute "resume" callbacks for non-sysdev devices.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`dpm_resume.description`:
 
@@ -422,11 +460,13 @@ device_complete
 
     Complete a PM transition for given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`dpm_complete`:
 
@@ -437,8 +477,9 @@ dpm_complete
 
     Complete a PM transition for all non-sysdev devices.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`dpm_complete.description`:
 
@@ -457,8 +498,9 @@ dpm_resume_end
 
     Execute "resume" callbacks and complete system transition.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`dpm_resume_end.description`:
 
@@ -477,8 +519,9 @@ resume_event
 
     Return a "resume" message for given "suspend" sleep state.
 
-    :param pm_message_t sleep_state:
+    :param sleep_state:
         PM message representing a sleep state.
+    :type sleep_state: pm_message_t
 
 .. _`resume_event.description`:
 
@@ -497,14 +540,17 @@ sleep state.
 
     Execute a "noirq suspend" callback for given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
-    :param bool async:
+    :param async:
         If true, the device is being suspended asynchronously.
+    :type async: bool
 
 .. _`__device_suspend_noirq.description`:
 
@@ -523,8 +569,9 @@ dpm_suspend_noirq
 
     Execute "noirq suspend" callbacks for all devices.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`dpm_suspend_noirq.description`:
 
@@ -543,14 +590,17 @@ Prevent device drivers' interrupt handlers from being called and invoke
 
     Execute a "late suspend" callback for given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
-    :param bool async:
+    :param async:
         If true, the device is being suspended asynchronously.
+    :type async: bool
 
 .. _`__device_suspend_late.description`:
 
@@ -568,8 +618,9 @@ dpm_suspend_late
 
     Execute "late suspend" callbacks for all devices.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`dpm_suspend_end`:
 
@@ -580,8 +631,9 @@ dpm_suspend_end
 
     Execute "late" and "noirq" device suspend callbacks.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`legacy_suspend`:
 
@@ -592,17 +644,20 @@ legacy_suspend
 
     Execute a legacy (bus or class) suspend callback for device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
     :param int (\*cb)(struct device \*dev, pm_message_t state):
         Suspend callback to execute.
 
-    :param const char \*info:
+    :param info:
         string description of caller.
+    :type info: const char \*
 
 .. _`__device_suspend`:
 
@@ -613,14 +668,17 @@ legacy_suspend
 
     Execute "suspend" callbacks for given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
-    :param bool async:
+    :param async:
         If true, the device is being suspended asynchronously.
+    :type async: bool
 
 .. _`dpm_suspend`:
 
@@ -631,8 +689,9 @@ dpm_suspend
 
     Execute "suspend" callbacks for all non-sysdev devices.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`device_prepare`:
 
@@ -643,11 +702,13 @@ device_prepare
 
     Prepare a device for system power transition.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`device_prepare.description`:
 
@@ -666,8 +727,9 @@ dpm_prepare
 
     Prepare all non-sysdev devices for a system PM transition.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`dpm_prepare.description`:
 
@@ -685,8 +747,9 @@ dpm_suspend_start
 
     Prepare devices for PM transition and suspend them.
 
-    :param pm_message_t state:
+    :param state:
         PM transition of the system being carried out.
+    :type state: pm_message_t
 
 .. _`dpm_suspend_start.description`:
 
@@ -705,11 +768,13 @@ device_pm_wait_for_dev
 
     Wait for suspend/resume of a device to complete.
 
-    :param struct device \*subordinate:
+    :param subordinate:
         Device that needs to wait for \ ``dev``\ .
+    :type subordinate: struct device \*
 
-    :param struct device \*dev:
+    :param dev:
         Device to wait for.
+    :type dev: struct device \*
 
 .. _`dpm_for_each_dev`:
 
@@ -720,8 +785,9 @@ dpm_for_each_dev
 
     device iterator.
 
-    :param void \*data:
+    :param data:
         data for the callback.
+    :type data: void \*
 
     :param void (\*fn)(struct device \*, void \*):
         function to be called for each device.

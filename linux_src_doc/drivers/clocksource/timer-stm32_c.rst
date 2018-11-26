@@ -10,11 +10,13 @@ stm32_timer_of_bits_set
 
     set accessor helper
 
-    :param struct timer_of \*to:
+    :param to:
         a timer_of structure pointer
+    :type to: struct timer_of \*
 
-    :param int bits:
+    :param bits:
         the number of bits (16 or 32)
+    :type bits: int
 
 .. _`stm32_timer_of_bits_set.description`:
 
@@ -33,8 +35,9 @@ stm32_timer_of_bits_get
 
     get accessor helper
 
-    :param struct timer_of \*to:
+    :param to:
         a timer_of structure pointer
+    :type to: struct timer_of \*
 
 .. _`stm32_timer_of_bits_get.description`:
 
@@ -55,8 +58,9 @@ stm32_timer_start
 
     Start the counter without event
 
-    :param struct timer_of \*to:
+    :param to:
         a timer_of structure pointer
+    :type to: struct timer_of \*
 
 .. _`stm32_timer_start.description`:
 
@@ -76,8 +80,9 @@ stm32_timer_set_width
 
     Sort out the timer width (32/16)
 
-    :param struct timer_of \*to:
+    :param to:
         a pointer to a timer-of structure
+    :type to: struct timer_of \*
 
 .. _`stm32_timer_set_width.description`:
 
@@ -97,8 +102,9 @@ stm32_timer_set_prescaler
 
     Compute and set the prescaler register
 
-    :param struct timer_of \*to:
+    :param to:
         a pointer to a timer-of structure
+    :type to: struct timer_of \*
 
 .. _`stm32_timer_set_prescaler.description`:
 

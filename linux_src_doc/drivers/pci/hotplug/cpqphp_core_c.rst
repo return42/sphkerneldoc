@@ -10,11 +10,13 @@ detect_SMBIOS_pointer
 
     find the System Management BIOS Table in mem region.
 
-    :param void __iomem \*begin:
+    :param begin:
         begin pointer for region to be scanned.
+    :type begin: void __iomem \*
 
-    :param void __iomem \*end:
+    :param end:
         end pointer for region to be scanned.
+    :type end: void __iomem \*
 
 .. _`detect_smbios_pointer.description`:
 
@@ -32,8 +34,9 @@ init_SERR
 
     Initializes the per slot SERR generation.
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         controller to use
+    :type ctrl: struct controller \*
 
 .. _`init_serr.description`:
 
@@ -51,14 +54,17 @@ get_subsequent_smbios_entry
 
     get the next entry from bios table.
 
-    :param void __iomem \*smbios_start:
+    :param smbios_start:
         where to start in the SMBIOS table
+    :type smbios_start: void __iomem \*
 
-    :param void __iomem \*smbios_table:
+    :param smbios_table:
         location of the SMBIOS table
+    :type smbios_table: void __iomem \*
 
-    :param void __iomem \*curr:
+    :param curr:
         \ ``NULL``\  or pointer to previously returned structure
+    :type curr: void __iomem \*
 
 .. _`get_subsequent_smbios_entry.description`:
 
@@ -80,17 +86,21 @@ get_SMBIOS_entry
 
     return the requested SMBIOS entry or \ ``NULL``\ 
 
-    :param void __iomem \*smbios_start:
+    :param smbios_start:
         where to start in the SMBIOS table
+    :type smbios_start: void __iomem \*
 
-    :param void __iomem \*smbios_table:
+    :param smbios_table:
         location of the SMBIOS table
+    :type smbios_table: void __iomem \*
 
-    :param u8 type:
+    :param type:
         SMBIOS structure type to be returned
+    :type type: u8
 
-    :param void __iomem \*previous:
+    :param previous:
         \ ``NULL``\  or pointer to previously returned structure
+    :type previous: void __iomem \*
 
 .. _`get_smbios_entry.description`:
 
@@ -113,17 +123,21 @@ get_slot_mapping
 
     determine logical slot mapping for PCI device
 
-    :param struct pci_bus \*bus:
+    :param bus:
         *undescribed*
+    :type bus: struct pci_bus \*
 
-    :param u8 bus_num:
+    :param bus_num:
         *undescribed*
+    :type bus_num: u8
 
-    :param u8 dev_num:
+    :param dev_num:
         *undescribed*
+    :type dev_num: u8
 
-    :param u8 \*slot:
+    :param slot:
         *undescribed*
+    :type slot: u8 \*
 
 .. _`get_slot_mapping.description`:
 
@@ -152,14 +166,17 @@ cpqhp_set_attention_status
 
     Turns the Amber LED for a slot on or off
 
-    :param struct controller \*ctrl:
+    :param ctrl:
         struct controller to use
+    :type ctrl: struct controller \*
 
-    :param struct pci_func \*func:
+    :param func:
         PCI device/function info
+    :type func: struct pci_func \*
 
-    :param u32 status:
+    :param status:
         LED control flag: 1 = LED on, 0 = LED off
+    :type status: u32
 
 .. _`set_attention_status`:
 
@@ -170,11 +187,13 @@ set_attention_status
 
     Turns the Amber LED for a slot on or off
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         slot to change LED on
+    :type hotplug_slot: struct hotplug_slot \*
 
-    :param u8 status:
+    :param status:
         LED control flag
+    :type status: u8
 
 .. This file was automatic generated / don't edit.
 

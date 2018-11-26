@@ -10,23 +10,29 @@ rivafb_load_cursor_image
 
     load cursor image to hardware
 
-    :param struct riva_par \*par:
+    :param par:
         pointer to private data
+    :type par: struct riva_par \*
 
-    :param u8 \*data8:
+    :param data8:
         *undescribed*
+    :type data8: u8 \*
 
-    :param u16 bg:
+    :param bg:
         background color (ARGB1555) - alpha bit determines opacity
+    :type bg: u16
 
-    :param u16 fg:
+    :param fg:
         foreground color (ARGB1555)
+    :type fg: u16
 
-    :param u32 w:
+    :param w:
         width of cursor image in pixels
+    :type w: u32
 
-    :param u32 h:
+    :param h:
         height of cursor image in scanlines
+    :type h: u32
 
 .. _`rivafb_load_cursor_image.description`:
 
@@ -54,20 +60,25 @@ riva_wclut
 
     set CLUT entry
 
-    :param RIVA_HW_INST \*chip:
+    :param chip:
         pointer to RIVA_HW_INST object
+    :type chip: RIVA_HW_INST \*
 
-    :param unsigned char regnum:
+    :param regnum:
         register number
+    :type regnum: unsigned char
 
-    :param unsigned char red:
+    :param red:
         red component
+    :type red: unsigned char
 
-    :param unsigned char green:
+    :param green:
         green component
+    :type green: unsigned char
 
-    :param unsigned char blue:
+    :param blue:
         blue component
+    :type blue: unsigned char
 
 .. _`riva_wclut.description`:
 
@@ -92,20 +103,25 @@ riva_rclut
 
     read fromCLUT register
 
-    :param RIVA_HW_INST \*chip:
+    :param chip:
         pointer to RIVA_HW_INST object
+    :type chip: RIVA_HW_INST \*
 
-    :param unsigned char regnum:
+    :param regnum:
         register number
+    :type regnum: unsigned char
 
-    :param unsigned char \*red:
+    :param red:
         red component
+    :type red: unsigned char \*
 
-    :param unsigned char \*green:
+    :param green:
         green component
+    :type green: unsigned char \*
 
-    :param unsigned char \*blue:
+    :param blue:
         blue component
+    :type blue: unsigned char \*
 
 .. _`riva_rclut.description`:
 
@@ -130,11 +146,13 @@ riva_save_state
 
     saves current chip state
 
-    :param struct riva_par \*par:
+    :param par:
         pointer to riva_par object containing info for current riva board
+    :type par: struct riva_par \*
 
-    :param struct riva_regs \*regs:
+    :param regs:
         pointer to riva_regs object
+    :type regs: struct riva_regs \*
 
 .. _`riva_save_state.description`:
 
@@ -159,11 +177,13 @@ riva_load_state
 
     loads current chip state
 
-    :param struct riva_par \*par:
+    :param par:
         pointer to riva_par object containing info for current riva board
+    :type par: struct riva_par \*
 
-    :param struct riva_regs \*regs:
+    :param regs:
         pointer to riva_regs object
+    :type regs: struct riva_regs \*
 
 .. _`riva_load_state.description`:
 
@@ -190,8 +210,9 @@ riva_load_video_mode
 
     calculate timings
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to fb_info object containing info for current riva board
+    :type info: struct fb_info \*
 
 .. _`riva_load_video_mode.description`:
 
@@ -214,17 +235,21 @@ rivafb_do_maximize
 
 .. c:function:: int rivafb_do_maximize(struct fb_info *info, struct fb_var_screeninfo *var, int nom, int den)
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to fb_info object containing info for current riva board
+    :type info: struct fb_info \*
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         *undescribed*
+    :type var: struct fb_var_screeninfo \*
 
-    :param int nom:
+    :param nom:
         *undescribed*
+    :type nom: int
 
-    :param int den:
+    :param den:
         *undescribed*
+    :type den: int
 
 .. _`rivafb_do_maximize.description`:
 
@@ -256,8 +281,9 @@ riva_get_cmap_len
 
     query current color map length
 
-    :param const struct fb_var_screeninfo \*var:
+    :param var:
         standard kernel fb changeable data
+    :type var: const struct fb_var_screeninfo \*
 
 .. _`riva_get_cmap_len.description`:
 
@@ -287,11 +313,13 @@ rivafb_pan_display
 
 .. c:function:: int rivafb_pan_display(struct fb_var_screeninfo *var, struct fb_info *info)
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         standard kernel fb changeable data
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to fb_info object containing info for current riva board
+    :type info: struct fb_info \*
 
 .. _`rivafb_pan_display.description`:
 
@@ -311,23 +339,29 @@ rivafb_setcolreg
 
 .. c:function:: int rivafb_setcolreg(unsigned regno, unsigned red, unsigned green, unsigned blue, unsigned transp, struct fb_info *info)
 
-    :param unsigned regno:
+    :param regno:
         register index
+    :type regno: unsigned
 
-    :param unsigned red:
+    :param red:
         red component
+    :type red: unsigned
 
-    :param unsigned green:
+    :param green:
         green component
+    :type green: unsigned
 
-    :param unsigned blue:
+    :param blue:
         blue component
+    :type blue: unsigned
 
-    :param unsigned transp:
+    :param transp:
         transparency
+    :type transp: unsigned
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to fb_info object containing info for current riva board
+    :type info: struct fb_info \*
 
 .. _`rivafb_setcolreg.description`:
 
@@ -360,11 +394,13 @@ rivafb_fillrect
 
     hardware accelerated color fill function
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to fb_info structure
+    :type info: struct fb_info \*
 
-    :param const struct fb_fillrect \*rect:
+    :param rect:
         pointer to fb_fillrect structure
+    :type rect: const struct fb_fillrect \*
 
 .. _`rivafb_fillrect.description`:
 
@@ -390,11 +426,13 @@ rivafb_copyarea
 
     hardware accelerated blit function
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to fb_info structure
+    :type info: struct fb_info \*
 
-    :param const struct fb_copyarea \*region:
+    :param region:
         pointer to fb_copyarea structure
+    :type region: const struct fb_copyarea \*
 
 .. _`rivafb_copyarea.description`:
 
@@ -419,11 +457,13 @@ rivafb_imageblit
 
     hardware accelerated color expand function
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to fb_info structure
+    :type info: struct fb_info \*
 
-    :param const struct fb_image \*image:
+    :param image:
         pointer to fb_image structure
+    :type image: const struct fb_image \*
 
 .. _`rivafb_imageblit.description`:
 
@@ -453,11 +493,13 @@ rivafb_cursor
 
     hardware cursor function
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to info structure
+    :type info: struct fb_info \*
 
-    :param struct fb_cursor \*cursor:
+    :param cursor:
         pointer to fbcursor structure
+    :type cursor: struct fb_cursor \*
 
 .. _`rivafb_cursor.description`:
 

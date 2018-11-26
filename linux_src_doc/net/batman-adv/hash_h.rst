@@ -46,20 +46,25 @@ batadv_hash_add
 
     adds data to the hashtable
 
-    :param struct batadv_hashtable \*hash:
+    :param hash:
         storage hash table
+    :type hash: struct batadv_hashtable \*
 
-    :param batadv_hashdata_compare_cb compare:
+    :param compare:
         callback to determine if 2 hash elements are identical
+    :type compare: batadv_hashdata_compare_cb
 
-    :param batadv_hashdata_choose_cb choose:
+    :param choose:
         callback calculating the hash index
+    :type choose: batadv_hashdata_choose_cb
 
-    :param const void \*data:
+    :param data:
         data passed to the aforementioned callbacks as argument
+    :type data: const void \*
 
-    :param struct hlist_node \*data_node:
+    :param data_node:
         to be added element
+    :type data_node: struct hlist_node \*
 
 .. _`batadv_hash_add.return`:
 
@@ -78,17 +83,21 @@ batadv_hash_remove
 
     Removes data from hash, if found
 
-    :param struct batadv_hashtable \*hash:
+    :param hash:
         hash table
+    :type hash: struct batadv_hashtable \*
 
-    :param batadv_hashdata_compare_cb compare:
+    :param compare:
         callback to determine if 2 hash elements are identical
+    :type compare: batadv_hashdata_compare_cb
 
-    :param batadv_hashdata_choose_cb choose:
+    :param choose:
         callback calculating the hash index
+    :type choose: batadv_hashdata_choose_cb
 
-    :param void \*data:
+    :param data:
         data passed to the aforementioned callbacks as argument
+    :type data: void \*
 
 .. _`batadv_hash_remove.description`:
 

@@ -10,11 +10,13 @@ acpi_os_unmap_iomem
 
     Drop a memory mapping reference.
 
-    :param void __iomem \*virt:
+    :param virt:
         Start of the address range to drop a reference to.
+    :type virt: void __iomem \*
 
-    :param acpi_size size:
+    :param size:
         Size of the address range to drop a reference to.
+    :type size: acpi_size
 
 .. _`acpi_os_unmap_iomem.description`:
 
@@ -39,14 +41,17 @@ acpi_release_memory
 
     Release any mappings done to a memory region
 
-    :param acpi_handle handle:
+    :param handle:
         Handle to namespace node
+    :type handle: acpi_handle
 
-    :param struct resource \*res:
+    :param res:
         Memory resource
+    :type res: struct resource \*
 
-    :param u32 level:
+    :param level:
         A level that terminates the search
+    :type level: u32
 
 .. _`acpi_release_memory.description`:
 

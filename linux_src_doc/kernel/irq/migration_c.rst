@@ -10,13 +10,15 @@ irq_fixup_move_pending
 
     Cleanup irq move pending from a dying CPU
 
-    :param struct irq_desc \*desc:
+    :param desc:
         Interrupt descpriptor to clean up
+    :type desc: struct irq_desc \*
 
-    :param bool force_clear:
+    :param force_clear:
         If set clear the move pending bit unconditionally.
         If not set, clear it only when the dying CPU is the
         last one in the pending mask.
+    :type force_clear: bool
 
 .. _`irq_fixup_move_pending.description`:
 

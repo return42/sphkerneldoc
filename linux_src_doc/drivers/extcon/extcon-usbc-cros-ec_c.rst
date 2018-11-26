@@ -10,26 +10,33 @@ cros_ec_pd_command
 
     Send a command to the EC.
 
-    :param struct cros_ec_extcon_info \*info:
+    :param info:
         pointer to struct cros_ec_extcon_info
+    :type info: struct cros_ec_extcon_info \*
 
-    :param unsigned int command:
+    :param command:
         EC command
+    :type command: unsigned int
 
-    :param unsigned int version:
+    :param version:
         EC command version
+    :type version: unsigned int
 
-    :param void \*outdata:
+    :param outdata:
         EC command output data
+    :type outdata: void \*
 
-    :param unsigned int outsize:
+    :param outsize:
         Size of outdata
+    :type outsize: unsigned int
 
-    :param void \*indata:
+    :param indata:
         EC command input data
+    :type indata: void \*
 
-    :param unsigned int insize:
+    :param insize:
         Size of indata
+    :type insize: unsigned int
 
 .. _`cros_ec_pd_command.return`:
 
@@ -47,8 +54,9 @@ cros_ec_usb_get_power_type
 
     Get power type info about PD device attached to given port.
 
-    :param struct cros_ec_extcon_info \*info:
+    :param info:
         pointer to struct cros_ec_extcon_info
+    :type info: struct cros_ec_extcon_info \*
 
 .. _`cros_ec_usb_get_power_type.return`:
 
@@ -66,8 +74,9 @@ cros_ec_usb_get_pd_mux_state
 
     Get PD mux state for given port.
 
-    :param struct cros_ec_extcon_info \*info:
+    :param info:
         pointer to struct cros_ec_extcon_info
+    :type info: struct cros_ec_extcon_info \*
 
 .. _`cros_ec_usb_get_pd_mux_state.return`:
 
@@ -85,11 +94,13 @@ cros_ec_usb_get_role
 
     Get role info about possible PD device attached to a given port.
 
-    :param struct cros_ec_extcon_info \*info:
+    :param info:
         pointer to struct cros_ec_extcon_info
+    :type info: struct cros_ec_extcon_info \*
 
-    :param bool \*polarity:
+    :param polarity:
         pointer to cable polarity (return value)
+    :type polarity: bool \*
 
 .. _`cros_ec_usb_get_role.return`:
 
@@ -108,8 +119,9 @@ cros_ec_pd_get_num_ports
 
     Get number of EC charge ports.
 
-    :param struct cros_ec_extcon_info \*info:
+    :param info:
         pointer to struct cros_ec_extcon_info
+    :type info: struct cros_ec_extcon_info \*
 
 .. _`cros_ec_pd_get_num_ports.return`:
 

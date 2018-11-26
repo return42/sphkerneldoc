@@ -10,11 +10,13 @@ initio_se2_instr
 
     bitbang an instruction
 
-    :param unsigned long base:
+    :param base:
         Base of InitIO controller
+    :type base: unsigned long
 
-    :param u8 instr:
+    :param instr:
         Instruction for serial E2PROM
+    :type instr: u8
 
 .. _`initio_se2_instr.description`:
 
@@ -32,8 +34,9 @@ initio_se2_ew_en
 
     Enable erase/write
 
-    :param unsigned long base:
+    :param base:
         Base address of InitIO controller
+    :type base: unsigned long
 
 .. _`initio_se2_ew_en.description`:
 
@@ -51,8 +54,9 @@ initio_se2_ew_ds
 
     Disable erase/write
 
-    :param unsigned long base:
+    :param base:
         Base address of InitIO controller
+    :type base: unsigned long
 
 .. _`initio_se2_ew_ds.description`:
 
@@ -70,11 +74,13 @@ initio_se2_rd
 
     read E2PROM word
 
-    :param unsigned long base:
+    :param base:
         Base of InitIO controller
+    :type base: unsigned long
 
-    :param u8 addr:
+    :param addr:
         Address of word in E2PROM
+    :type addr: u8
 
 .. _`initio_se2_rd.description`:
 
@@ -92,14 +98,17 @@ initio_se2_wr
 
     read E2PROM word
 
-    :param unsigned long base:
+    :param base:
         Base of InitIO controller
+    :type base: unsigned long
 
-    :param u8 addr:
+    :param addr:
         Address of word in E2PROM
+    :type addr: u8
 
-    :param u16 val:
+    :param val:
         Value to write
+    :type val: u16
 
 .. _`initio_se2_wr.description`:
 
@@ -118,8 +127,9 @@ initio_se2_rd_all
 
     read hostadapter NV configuration
 
-    :param unsigned long base:
+    :param base:
         Base address of InitIO controller
+    :type base: unsigned long
 
 .. _`initio_se2_rd_all.description`:
 
@@ -138,8 +148,9 @@ initio_se2_update_all
 
     Update E2PROM
 
-    :param unsigned long base:
+    :param base:
         Base of InitIO controller
+    :type base: unsigned long
 
 .. _`initio_se2_update_all.description`:
 
@@ -158,8 +169,9 @@ initio_read_eeprom
 
     Retrieve configuration
 
-    :param unsigned long base:
+    :param base:
         Base of InitIO Host Adapter
+    :type base: unsigned long
 
 .. _`initio_read_eeprom.description`:
 
@@ -183,8 +195,9 @@ initio_stop_bm
 
     stop bus master
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO we are stopping
+    :type host: struct initio_host \*
 
 .. _`initio_stop_bm.description`:
 
@@ -202,11 +215,13 @@ initio_reset_scsi
 
     Reset SCSI host controller
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host to reset
+    :type host: struct initio_host \*
 
-    :param int seconds:
+    :param seconds:
         Recovery time
+    :type seconds: int
 
 .. _`initio_reset_scsi.description`:
 
@@ -224,11 +239,13 @@ initio_init
 
     set up an InitIO host adapter
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host adapter
+    :type host: struct initio_host \*
 
-    :param u8 \*bios_addr:
+    :param bios_addr:
         BIOS address
+    :type bios_addr: u8 \*
 
 .. _`initio_init.description`:
 
@@ -255,8 +272,9 @@ initio_alloc_scb
 
     Allocate an SCB
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host we are allocating for
+    :type host: struct initio_host \*
 
 .. _`initio_alloc_scb.description`:
 
@@ -275,11 +293,13 @@ initio_release_scb
 
     Release an SCB
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host that owns the SCB
+    :type host: struct initio_host \*
 
-    :param struct scsi_ctrl_blk \*cmnd:
+    :param cmnd:
         SCB command block being returned
+    :type cmnd: struct scsi_ctrl_blk \*
 
 .. _`initio_release_scb.description`:
 
@@ -297,8 +317,9 @@ initio_next_state
 
     Next SCSI state
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host we are processing
+    :type host: struct initio_host \*
 
 .. _`initio_next_state.description`:
 
@@ -319,8 +340,9 @@ initio_state_1
 
     SCSI state machine
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host we are controlling
+    :type host: struct initio_host \*
 
 .. _`initio_state_1.description`:
 
@@ -338,8 +360,9 @@ initio_state_2
 
     SCSI state machine
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host we are controlling
+    :type host: struct initio_host \*
 
 .. _`initio_state_2.description`:
 
@@ -358,8 +381,9 @@ initio_state_3
 
     SCSI state machine
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host we are controlling
+    :type host: struct initio_host \*
 
 .. _`initio_state_3.description`:
 
@@ -377,8 +401,9 @@ initio_state_4
 
     SCSI state machine
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host we are controlling
+    :type host: struct initio_host \*
 
 .. _`initio_state_4.description`:
 
@@ -396,8 +421,9 @@ initio_state_5
 
     SCSI state machine
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host we are controlling
+    :type host: struct initio_host \*
 
 .. _`initio_state_5.description`:
 
@@ -415,8 +441,9 @@ initio_state_6
 
     SCSI state machine
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host we are controlling
+    :type host: struct initio_host \*
 
 .. _`initio_state_6.description`:
 
@@ -434,8 +461,9 @@ initio_state_7
 
     SCSI state machine
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host we are controlling
+    :type host: struct initio_host \*
 
 .. _`initio_xfer_data_in`:
 
@@ -446,8 +474,9 @@ initio_xfer_data_in
 
     Commence data input
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host in use
+    :type host: struct initio_host \*
 
 .. _`initio_xfer_data_in.description`:
 
@@ -467,8 +496,9 @@ initio_xfer_data_out
 
     Commence data output
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host in use
+    :type host: struct initio_host \*
 
 .. _`initio_xfer_data_out.description`:
 
@@ -488,8 +518,9 @@ int_initio_scsi_rst
 
     SCSI reset occurred
 
-    :param struct initio_host \*host:
+    :param host:
         Host seeing the reset
+    :type host: struct initio_host \*
 
 .. _`int_initio_scsi_rst.description`:
 
@@ -510,8 +541,9 @@ int_initio_resel
 
     Reselection occurred
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host adapter
+    :type host: struct initio_host \*
 
 .. _`int_initio_resel.description`:
 
@@ -531,8 +563,9 @@ int_initio_bad_seq
 
     out of phase
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host flagging event
+    :type host: struct initio_host \*
 
 .. _`int_initio_bad_seq.description`:
 
@@ -551,8 +584,9 @@ initio_msgout_abort_targ
 
     abort a tag
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host
+    :type host: struct initio_host \*
 
 .. _`initio_msgout_abort_targ.description`:
 
@@ -571,8 +605,9 @@ initio_msgout_abort_tag
 
     abort a tag
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host
+    :type host: struct initio_host \*
 
 .. _`initio_msgout_abort_tag.description`:
 
@@ -591,8 +626,9 @@ initio_msgin
 
     Message in
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO Host
+    :type host: struct initio_host \*
 
 .. _`initio_msgin.description`:
 
@@ -610,8 +646,9 @@ initio_bus_device_reset
 
     SCSI Bus Device Reset
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host to reset
+    :type host: struct initio_host \*
 
 .. _`initio_bus_device_reset.description`:
 
@@ -630,11 +667,13 @@ i91u_intr
 
     IRQ handler
 
-    :param int irqno:
+    :param irqno:
         IRQ number
+    :type irqno: int
 
-    :param void \*dev_id:
+    :param dev_id:
         IRQ identifier
+    :type dev_id: void \*
 
 .. _`i91u_intr.description`:
 
@@ -653,14 +692,17 @@ initio_build_scb
 
     Build the mappings and SCB
 
-    :param struct initio_host \*host:
+    :param host:
         InitIO host taking the command
+    :type host: struct initio_host \*
 
-    :param struct scsi_ctrl_blk \*cblk:
+    :param cblk:
         Firmware command block
+    :type cblk: struct scsi_ctrl_blk \*
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         SCSI midlayer command block
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`initio_build_scb.description`:
 
@@ -680,8 +722,9 @@ i91u_queuecommand_lck
 
     Queue a new command if possible
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command block from the mid layer
+    :type cmd: struct scsi_cmnd \*
 
     :param void (\*done)(struct scsi_cmnd \*):
         Completion handler
@@ -704,8 +747,9 @@ i91u_bus_reset
 
     reset the SCSI bus
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         Command block we want to trigger the reset for
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`i91u_bus_reset.description`:
 
@@ -723,18 +767,22 @@ i91u_biosparam
 
     return the "logical geometry
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device
         \ ``dev``\ ; Matching block device
+    :type sdev: struct scsi_device \*
 
-    :param struct block_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct block_device \*
 
-    :param sector_t capacity:
+    :param capacity:
         Sector size of drive
+    :type capacity: sector_t
 
-    :param int \*info_array:
+    :param info_array:
         Return space for BIOS geometry
+    :type info_array: int \*
 
 .. _`i91u_biosparam.description`:
 
@@ -760,11 +808,13 @@ i91u_unmap_scb
 
     Unmap a command
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         PCI device the command is for
+    :type pci_dev: struct pci_dev \*
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         The command itself
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`i91u_unmap_scb.description`:
 
@@ -783,11 +833,13 @@ i91uSCBPost
 
     SCSI callback
 
-    :param u8 \*host_mem:
+    :param host_mem:
         *undescribed*
+    :type host_mem: u8 \*
 
-    :param u8 \*cblk_mem:
+    :param cblk_mem:
         *undescribed*
+    :type cblk_mem: u8 \*
 
 .. _`i91uscbpost.description`:
 
@@ -806,8 +858,9 @@ initio_remove_one
 
     control shutdown
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device being released
+    :type pdev: struct pci_dev \*
 
 .. _`initio_remove_one.description`:
 

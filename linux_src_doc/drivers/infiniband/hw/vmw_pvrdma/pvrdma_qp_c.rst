@@ -10,14 +10,17 @@ pvrdma_create_qp
 
     create queue pair
 
-    :param struct ib_pd \*pd:
+    :param pd:
         protection domain
+    :type pd: struct ib_pd \*
 
-    :param struct ib_qp_init_attr \*init_attr:
+    :param init_attr:
         queue pair attributes
+    :type init_attr: struct ib_qp_init_attr \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`pvrdma_destroy_qp`:
 
@@ -28,8 +31,9 @@ pvrdma_destroy_qp
 
     destroy a queue pair
 
-    :param struct ib_qp \*qp:
+    :param qp:
         the queue pair to destroy
+    :type qp: struct ib_qp \*
 
 .. _`pvrdma_modify_qp`:
 
@@ -40,17 +44,21 @@ pvrdma_modify_qp
 
     modify queue pair attributes
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         the queue pair
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_qp_attr \*attr:
+    :param attr:
         the new queue pair's attributes
+    :type attr: struct ib_qp_attr \*
 
-    :param int attr_mask:
+    :param attr_mask:
         attributes mask
+    :type attr_mask: int
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`pvrdma_modify_qp.description`:
 
@@ -64,36 +72,42 @@ Description
 pvrdma_post_send
 ================
 
-.. c:function:: int pvrdma_post_send(struct ib_qp *ibqp, struct ib_send_wr *wr, struct ib_send_wr **bad_wr)
+.. c:function:: int pvrdma_post_send(struct ib_qp *ibqp, const struct ib_send_wr *wr, const struct ib_send_wr **bad_wr)
 
     post send work request entries on a QP
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         the QP
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_send_wr \*wr:
+    :param wr:
         work request list to post
+    :type wr: const struct ib_send_wr \*
 
-    :param struct ib_send_wr \*\*bad_wr:
+    :param bad_wr:
         the first bad WR returned
+    :type bad_wr: const struct ib_send_wr \*\*
 
 .. _`pvrdma_post_recv`:
 
 pvrdma_post_recv
 ================
 
-.. c:function:: int pvrdma_post_recv(struct ib_qp *ibqp, struct ib_recv_wr *wr, struct ib_recv_wr **bad_wr)
+.. c:function:: int pvrdma_post_recv(struct ib_qp *ibqp, const struct ib_recv_wr *wr, const struct ib_recv_wr **bad_wr)
 
     post receive work request entries on a QP
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         the QP
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_recv_wr \*wr:
+    :param wr:
         the work request list to post
+    :type wr: const struct ib_recv_wr \*
 
-    :param struct ib_recv_wr \*\*bad_wr:
+    :param bad_wr:
         the first bad WR returned
+    :type bad_wr: const struct ib_recv_wr \*\*
 
 .. _`pvrdma_query_qp`:
 
@@ -104,17 +118,21 @@ pvrdma_query_qp
 
     query a queue pair's attributes
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         the queue pair to query
+    :type ibqp: struct ib_qp \*
 
-    :param struct ib_qp_attr \*attr:
+    :param attr:
         the queue pair's attributes
+    :type attr: struct ib_qp_attr \*
 
-    :param int attr_mask:
+    :param attr_mask:
         attributes mask
+    :type attr_mask: int
 
-    :param struct ib_qp_init_attr \*init_attr:
+    :param init_attr:
         initial queue pair attributes
+    :type init_attr: struct ib_qp_init_attr \*
 
 .. _`pvrdma_query_qp.description`:
 

@@ -10,14 +10,17 @@ gpio_request_one
 
     request a single GPIO with initial configuration
 
-    :param unsigned gpio:
+    :param gpio:
         the GPIO number
+    :type gpio: unsigned
 
-    :param unsigned long flags:
+    :param flags:
         GPIO configuration as specified by GPIOF_*
+    :type flags: unsigned long
 
-    :param const char \*label:
+    :param label:
         a literal description string of this GPIO
+    :type label: const char \*
 
 .. _`gpio_request_array`:
 
@@ -28,11 +31,13 @@ gpio_request_array
 
     request multiple GPIOs in a single call
 
-    :param const struct gpio \*array:
+    :param array:
         array of the 'struct gpio'
+    :type array: const struct gpio \*
 
-    :param size_t num:
+    :param num:
         how many GPIOs in the array
+    :type num: size_t
 
 .. _`gpio_free_array`:
 
@@ -43,11 +48,13 @@ gpio_free_array
 
     release multiple GPIOs in a single call
 
-    :param const struct gpio \*array:
+    :param array:
         array of the 'struct gpio'
+    :type array: const struct gpio \*
 
-    :param size_t num:
+    :param num:
         how many GPIOs in the array
+    :type num: size_t
 
 .. This file was automatic generated / don't edit.
 

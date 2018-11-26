@@ -10,8 +10,9 @@ asd_init_sata_pm_port_ddb
 
     - SATA Port Multiplier Port
 
-    :param struct domain_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct domain_device \*
 
 .. _`asd_init_sata_pm_port_ddb.dev`:
 
@@ -33,8 +34,9 @@ asd_init_sata_pm_ddb
 
     - SATA Port Multiplier
 
-    :param struct domain_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct domain_device \*
 
 .. _`asd_init_sata_pm_ddb.dev`:
 

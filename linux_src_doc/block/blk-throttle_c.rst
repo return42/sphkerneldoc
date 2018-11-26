@@ -10,8 +10,9 @@ sq_to_tg
 
     return the throl_grp the specified service queue belongs to
 
-    :param struct throtl_service_queue \*sq:
+    :param sq:
         the throtl_service_queue of interest
+    :type sq: struct throtl_service_queue \*
 
 .. _`sq_to_tg.description`:
 
@@ -30,8 +31,9 @@ sq_to_td
 
     return throtl_data the specified service queue belongs to
 
-    :param struct throtl_service_queue \*sq:
+    :param sq:
         the throtl_service_queue of interest
+    :type sq: struct throtl_service_queue \*
 
 .. _`sq_to_td.description`:
 
@@ -50,11 +52,13 @@ throtl_log
 
     log debug message via blktrace
 
-    :param  sq:
+    :param sq:
         the service_queue being reported
+    :type sq: 
 
-    :param  fmt:
+    :param fmt:
         printf format string
+    :type fmt: 
 
 .. _`throtl_log.description`:
 
@@ -73,14 +77,17 @@ throtl_qnode_add_bio
 
     add a bio to a throtl_qnode and activate it
 
-    :param struct bio \*bio:
+    :param bio:
         bio being added
+    :type bio: struct bio \*
 
-    :param struct throtl_qnode \*qn:
+    :param qn:
         qnode to add bio to
+    :type qn: struct throtl_qnode \*
 
-    :param struct list_head \*queued:
+    :param queued:
         the service_queue->queued[] list \ ``qn``\  belongs to
+    :type queued: struct list_head \*
 
 .. _`throtl_qnode_add_bio.description`:
 
@@ -88,7 +95,7 @@ Description
 -----------
 
 Add \ ``bio``\  to \ ``qn``\  and put \ ``qn``\  on \ ``queued``\  if it's not already on.
-\ ``qn``\ ->tg's reference count is bumped when \ ``qn``\  is activated.  See the
+\ ``qn->tg``\ 's reference count is bumped when \ ``qn``\  is activated.  See the
 comment on top of throtl_qnode definition for details.
 
 .. _`throtl_peek_queued`:
@@ -100,8 +107,9 @@ throtl_peek_queued
 
     peek the first bio on a qnode list
 
-    :param struct list_head \*queued:
+    :param queued:
         the qnode list to peek
+    :type queued: struct list_head \*
 
 .. _`throtl_pop_queued`:
 
@@ -112,11 +120,13 @@ throtl_pop_queued
 
     pop the first bio form a qnode list
 
-    :param struct list_head \*queued:
+    :param queued:
         the qnode list to pop a bio from
+    :type queued: struct list_head \*
 
-    :param struct throtl_grp \*\*tg_to_put:
+    :param tg_to_put:
         optional out argument for throtl_grp to put
+    :type tg_to_put: struct throtl_grp \*\*
 
 .. _`throtl_pop_queued.description`:
 
@@ -141,18 +151,20 @@ throtl_schedule_next_dispatch
 
     schedule the next dispatch cycle
 
-    :param struct throtl_service_queue \*sq:
+    :param sq:
         the service_queue to schedule dispatch for
+    :type sq: struct throtl_service_queue \*
 
-    :param bool force:
+    :param force:
         force scheduling
+    :type force: bool
 
 .. _`throtl_schedule_next_dispatch.description`:
 
 Description
 -----------
 
-Arm \ ``sq``\ ->pending_timer so that the next dispatch cycle starts on the
+Arm \ ``sq->pending_timer``\  so that the next dispatch cycle starts on the
 dispatch time of the first pending child.  Returns \ ``true``\  if either timer
 is armed or there's no pending child left.  \ ``false``\  if the current
 dispatch window is still open and the caller should continue
@@ -162,7 +174,7 @@ If \ ``force``\  is \ ``true``\ , the dispatch timer is always scheduled and thi
 function is guaranteed to return \ ``true``\ .  This is to be used when the
 caller can't dispatch itself and needs to invoke pending_timer
 unconditionally.  Note that forced scheduling is likely to induce short
-delay before dispatch starts even if \ ``sq``\ ->first_pending_disptime is not
+delay before dispatch starts even if \ ``sq->first_pending_disptime``\  is not
 in the future and thus shouldn't be used in hot paths.
 
 .. _`throtl_add_bio_tg`:
@@ -174,14 +186,17 @@ throtl_add_bio_tg
 
     add a bio to the specified throtl_grp
 
-    :param struct bio \*bio:
+    :param bio:
         bio to add
+    :type bio: struct bio \*
 
-    :param struct throtl_qnode \*qn:
+    :param qn:
         qnode to use
+    :type qn: struct throtl_qnode \*
 
-    :param struct throtl_grp \*tg:
+    :param tg:
         the target throtl_grp
+    :type tg: struct throtl_grp \*
 
 .. _`throtl_add_bio_tg.description`:
 
@@ -200,8 +215,9 @@ throtl_pending_timer_fn
 
     timer function for service_queue->pending_timer
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`throtl_pending_timer_fn.description`:
 
@@ -228,8 +244,9 @@ blk_throtl_dispatch_work_fn
 
     work function for throtl_data->dispatch_work
 
-    :param struct work_struct \*work:
+    :param work:
         work item being executed
+    :type work: struct work_struct \*
 
 .. _`blk_throtl_dispatch_work_fn.description`:
 
@@ -249,8 +266,9 @@ blk_throtl_drain
 
     drain throttled bios
 
-    :param struct request_queue \*q:
+    :param q:
         request_queue to drain throttled bios for
+    :type q: struct request_queue \*
 
 .. _`blk_throtl_drain.description`:
 

@@ -10,8 +10,9 @@ samsung_pinctrl_suspend
 
     save pinctrl state for suspend
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`samsung_pinctrl_suspend.description`:
 
@@ -29,8 +30,9 @@ samsung_pinctrl_resume
 
     restore pinctrl state from suspend
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`samsung_pinctrl_resume.description`:
 

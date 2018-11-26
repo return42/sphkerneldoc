@@ -10,8 +10,9 @@ write_ciabr
 
     write the CIABR SPR
 
-    :param unsigned long ciabr:
+    :param ciabr:
         The value to write.
+    :type ciabr: unsigned long
 
 .. _`write_ciabr.description`:
 
@@ -32,8 +33,9 @@ set_ciabr
 
     set the CIABR
 
-    :param unsigned long addr:
+    :param addr:
         The value to set.
+    :type addr: unsigned long
 
 .. _`set_ciabr.description`:
 

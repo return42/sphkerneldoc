@@ -10,8 +10,9 @@ cvmx_boot_vector_get
 
     core table of reset vector pointers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

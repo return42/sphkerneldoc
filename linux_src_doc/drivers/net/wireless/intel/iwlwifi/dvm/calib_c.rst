@@ -6,18 +6,21 @@
 iwl_find_disconn_antenna
 ========================
 
-.. c:function:: void iwl_find_disconn_antenna(struct iwl_priv *priv, u32*average_sig, struct iwl_chain_noise_data *data)
+.. c:function:: void iwl_find_disconn_antenna(struct iwl_priv *priv, u32* average_sig, struct iwl_chain_noise_data *data)
 
     disconnected.
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param u32\*average_sig:
+    :param average_sig:
         *undescribed*
+    :type average_sig: u32\*
 
-    :param struct iwl_chain_noise_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct iwl_chain_noise_data \*
 
 .. This file was automatic generated / don't edit.
 

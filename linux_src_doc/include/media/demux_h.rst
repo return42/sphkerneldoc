@@ -244,26 +244,32 @@ dmx_ts_cb
 
     DVB demux TS filter callback function prototype
 
-    :param const u8 \*buffer1:
+    :param buffer1:
         Pointer to the start of the filtered TS packets.
+    :type buffer1: const u8 \*
 
-    :param size_t buffer1_length:
+    :param buffer1_length:
         Length of the TS data in buffer1.
+    :type buffer1_length: size_t
 
-    :param const u8 \*buffer2:
+    :param buffer2:
         Pointer to the tail of the filtered TS packets, or NULL.
+    :type buffer2: const u8 \*
 
-    :param size_t buffer2_length:
+    :param buffer2_length:
         Length of the TS data in buffer2.
+    :type buffer2_length: size_t
 
-    :param struct dmx_ts_feed \*source:
+    :param source:
         Indicates which TS feed is the source of the callback.
+    :type source: struct dmx_ts_feed \*
 
-    :param u32 \*buffer_flags:
+    :param buffer_flags:
         Address where buffer flags are stored. Those are
         used to report discontinuity users via DVB
         memory mapped API, as defined by
         \ :c:type:`enum dmx_buffer_flags <dmx_buffer_flags>`\ .
+    :type buffer_flags: u32 \*
 
 .. _`dmx_ts_cb.description`:
 
@@ -330,32 +336,38 @@ dmx_section_cb
 
     DVB demux TS filter callback function prototype
 
-    :param const u8 \*buffer1:
+    :param buffer1:
         Pointer to the start of the filtered section, e.g.
         within the circular buffer of the demux driver.
+    :type buffer1: const u8 \*
 
-    :param size_t buffer1_len:
+    :param buffer1_len:
         Length of the filtered section data in \ ``buffer1``\ ,
         including headers and CRC.
+    :type buffer1_len: size_t
 
-    :param const u8 \*buffer2:
+    :param buffer2:
         Pointer to the tail of the filtered section data,
         or NULL. Useful to handle the wrapping of a
         circular buffer.
+    :type buffer2: const u8 \*
 
-    :param size_t buffer2_len:
+    :param buffer2_len:
         Length of the filtered section data in \ ``buffer2``\ ,
         including headers and CRC.
+    :type buffer2_len: size_t
 
-    :param struct dmx_section_filter \*source:
+    :param source:
         Indicates which section feed is the source of the
         callback.
+    :type source: struct dmx_section_filter \*
 
-    :param u32 \*buffer_flags:
+    :param buffer_flags:
         Address where buffer flags are stored. Those are
         used to report discontinuity users via DVB
         memory mapped API, as defined by
         \ :c:type:`enum dmx_buffer_flags <dmx_buffer_flags>`\ .
+    :type buffer_flags: u32 \*
 
 .. _`dmx_section_cb.description`:
 
@@ -510,8 +522,9 @@ DMX_FE_ENTRY
 
     Casts elements in the list of registered front-ends from the generic type struct list_head to the type * struct dmx_frontend
 
-    :param  list:
+    :param list:
         list of struct dmx_frontend
+    :type list: 
 
 .. _`dmx_demux`:
 

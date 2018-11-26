@@ -8,11 +8,13 @@ is_fnic_fip_flogi_reject
 
 .. c:function:: int is_fnic_fip_flogi_reject(struct fcoe_ctlr *fip, struct sk_buff *skb)
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         The FCoE controller that received the frame
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The received FIP frame
+    :type skb: struct sk_buff \*
 
 .. _`is_fnic_fip_flogi_reject.description`:
 
@@ -31,11 +33,13 @@ fnic_import_rq_eth_pkt
 
     handle received FCoE or FIP frame.
 
-    :param struct fnic \*fnic:
+    :param fnic:
         fnic instance.
+    :type fnic: struct fnic \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Ethernet Frame.
+    :type skb: struct sk_buff \*
 
 .. _`fnic_update_mac_locked`:
 
@@ -46,11 +50,13 @@ fnic_update_mac_locked
 
     set data MAC address and filters.
 
-    :param struct fnic \*fnic:
+    :param fnic:
         fnic instance.
+    :type fnic: struct fnic \*
 
-    :param u8 \*new:
+    :param new:
         newly-assigned FCoE MAC address.
+    :type new: u8 \*
 
 .. _`fnic_update_mac_locked.description`:
 
@@ -68,11 +74,13 @@ fnic_update_mac
 
     set data MAC address and filters.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         local port.
+    :type lport: struct fc_lport \*
 
-    :param u8 \*new:
+    :param new:
         newly-assigned FCoE MAC address.
+    :type new: u8 \*
 
 .. _`fnic_set_port_id`:
 
@@ -83,14 +91,17 @@ fnic_set_port_id
 
     set the port_ID after successful FLOGI.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         local port.
+    :type lport: struct fc_lport \*
 
-    :param u32 port_id:
+    :param port_id:
         assigned FC_ID.
+    :type port_id: u32
 
-    :param struct fc_frame \*fp:
+    :param fp:
         received frame containing the FLOGI accept or NULL.
+    :type fp: struct fc_frame \*
 
 .. _`fnic_set_port_id.description`:
 
@@ -114,11 +125,13 @@ fnic_eth_send
 
     Send Ethernet frame.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         fcoe_ctlr instance.
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Ethernet Frame, FIP, without VLAN encapsulation.
+    :type skb: struct sk_buff \*
 
 .. _`fnic_flush_tx`:
 
@@ -129,8 +142,9 @@ fnic_flush_tx
 
     send queued frames.
 
-    :param struct fnic \*fnic:
+    :param fnic:
         fnic device
+    :type fnic: struct fnic \*
 
 .. _`fnic_flush_tx.description`:
 
@@ -152,8 +166,9 @@ fnic_set_eth_mode
 
     put fnic into ethernet mode.
 
-    :param struct fnic \*fnic:
+    :param fnic:
         fnic device
+    :type fnic: struct fnic \*
 
 .. _`fnic_set_eth_mode.description`:
 

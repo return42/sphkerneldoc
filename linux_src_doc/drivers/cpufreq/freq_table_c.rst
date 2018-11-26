@@ -10,14 +10,17 @@ show_available_freqs
 
     show available frequencies for the specified CPU
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
-    :param bool show_boost:
+    :param show_boost:
         *undescribed*
+    :type show_boost: bool
 
 .. _`scaling_available_frequencies_show`:
 
@@ -28,11 +31,13 @@ scaling_available_frequencies_show
 
     show available normal frequencies for the specified CPU
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`scaling_boost_frequencies_show`:
 
@@ -43,11 +48,13 @@ scaling_boost_frequencies_show
 
     show available boost frequencies for the specified CPU
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. This file was automatic generated / don't edit.
 

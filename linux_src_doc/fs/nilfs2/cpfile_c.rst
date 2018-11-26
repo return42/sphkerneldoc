@@ -10,20 +10,25 @@ nilfs_cpfile_find_checkpoint_block
 
     find and get a buffer on cpfile
 
-    :param struct inode \*cpfile:
+    :param cpfile:
         inode of cpfile
+    :type cpfile: struct inode \*
 
-    :param __u64 start_cno:
+    :param start_cno:
         start checkpoint number (inclusive)
+    :type start_cno: __u64
 
-    :param __u64 end_cno:
+    :param end_cno:
         end checkpoint number (inclusive)
+    :type end_cno: __u64
 
-    :param __u64 \*cnop:
+    :param cnop:
         place to store the next checkpoint number
+    :type cnop: __u64 \*
 
-    :param struct buffer_head \*\*bhp:
+    :param bhp:
         place to store a pointer to buffer_head struct
+    :type bhp: struct buffer_head \*\*
 
 .. _`nilfs_cpfile_find_checkpoint_block.return-value`:
 
@@ -48,20 +53,25 @@ nilfs_cpfile_get_checkpoint
 
     get a checkpoint
 
-    :param struct inode \*cpfile:
+    :param cpfile:
         inode of checkpoint file
+    :type cpfile: struct inode \*
 
-    :param __u64 cno:
+    :param cno:
         checkpoint number
+    :type cno: __u64
 
-    :param int create:
+    :param create:
         create flag
+    :type create: int
 
-    :param struct nilfs_checkpoint \*\*cpp:
+    :param cpp:
         pointer to a checkpoint
+    :type cpp: struct nilfs_checkpoint \*\*
 
-    :param struct buffer_head \*\*bhp:
+    :param bhp:
         pointer to a buffer head
+    :type bhp: struct buffer_head \*\*
 
 .. _`nilfs_cpfile_get_checkpoint.description`:
 
@@ -99,14 +109,17 @@ nilfs_cpfile_put_checkpoint
 
     put a checkpoint
 
-    :param struct inode \*cpfile:
+    :param cpfile:
         inode of checkpoint file
+    :type cpfile: struct inode \*
 
-    :param __u64 cno:
+    :param cno:
         checkpoint number
+    :type cno: __u64
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer head
+    :type bh: struct buffer_head \*
 
 .. _`nilfs_cpfile_put_checkpoint.description`:
 
@@ -126,14 +139,17 @@ nilfs_cpfile_delete_checkpoints
 
     delete checkpoints
 
-    :param struct inode \*cpfile:
+    :param cpfile:
         inode of checkpoint file
+    :type cpfile: struct inode \*
 
-    :param __u64 start:
+    :param start:
         start checkpoint number
+    :type start: __u64
 
-    :param __u64 end:
+    :param end:
         end checkpoint numer
+    :type end: __u64
 
 .. _`nilfs_cpfile_delete_checkpoints.description`:
 
@@ -165,23 +181,29 @@ nilfs_cpfile_get_cpinfo
 
 .. c:function:: ssize_t nilfs_cpfile_get_cpinfo(struct inode *cpfile, __u64 *cnop, int mode, void *buf, unsigned int cisz, size_t nci)
 
-    :param struct inode \*cpfile:
+    :param cpfile:
         *undescribed*
+    :type cpfile: struct inode \*
 
-    :param __u64 \*cnop:
+    :param cnop:
         *undescribed*
+    :type cnop: __u64 \*
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
-    :param void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: void \*
 
-    :param unsigned int cisz:
+    :param cisz:
         *undescribed*
+    :type cisz: unsigned int
 
-    :param size_t nci:
+    :param nci:
         *undescribed*
+    :type nci: size_t
 
 .. _`nilfs_cpfile_delete_checkpoint`:
 
@@ -190,11 +212,13 @@ nilfs_cpfile_delete_checkpoint
 
 .. c:function:: int nilfs_cpfile_delete_checkpoint(struct inode *cpfile, __u64 cno)
 
-    :param struct inode \*cpfile:
+    :param cpfile:
         *undescribed*
+    :type cpfile: struct inode \*
 
-    :param __u64 cno:
+    :param cno:
         *undescribed*
+    :type cno: __u64
 
 .. _`nilfs_cpfile_is_snapshot`:
 
@@ -203,11 +227,13 @@ nilfs_cpfile_is_snapshot
 
 .. c:function:: int nilfs_cpfile_is_snapshot(struct inode *cpfile, __u64 cno)
 
-    :param struct inode \*cpfile:
+    :param cpfile:
         inode of checkpoint file
+    :type cpfile: struct inode \*
 
-    :param __u64 cno:
+    :param cno:
         checkpoint number
+    :type cno: __u64
 
 .. _`nilfs_cpfile_is_snapshot.return-value`:
 
@@ -233,14 +259,17 @@ nilfs_cpfile_change_cpmode
 
     change checkpoint mode
 
-    :param struct inode \*cpfile:
+    :param cpfile:
         inode of checkpoint file
+    :type cpfile: struct inode \*
 
-    :param __u64 cno:
+    :param cno:
         checkpoint number
+    :type cno: __u64
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
 .. _`nilfs_cpfile_change_cpmode.description`:
 
@@ -273,11 +302,13 @@ nilfs_cpfile_get_stat
 
     get checkpoint statistics
 
-    :param struct inode \*cpfile:
+    :param cpfile:
         inode of checkpoint file
+    :type cpfile: struct inode \*
 
-    :param struct nilfs_cpstat \*cpstat:
+    :param cpstat:
         *undescribed*
+    :type cpstat: struct nilfs_cpstat \*
 
 .. _`nilfs_cpfile_get_stat.description`:
 
@@ -308,17 +339,21 @@ nilfs_cpfile_read
 
     read or get cpfile inode
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
-    :param size_t cpsize:
+    :param cpsize:
         size of a checkpoint entry
+    :type cpsize: size_t
 
-    :param struct nilfs_inode \*raw_inode:
+    :param raw_inode:
         on-disk cpfile inode
+    :type raw_inode: struct nilfs_inode \*
 
-    :param struct inode \*\*inodep:
+    :param inodep:
         buffer to store the inode
+    :type inodep: struct inode \*\*
 
 .. This file was automatic generated / don't edit.
 

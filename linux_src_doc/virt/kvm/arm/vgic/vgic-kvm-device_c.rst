@@ -10,18 +10,22 @@ kvm_vgic_addr
 
     set or get vgic VM base addresses
 
-    :param struct kvm \*kvm:
+    :param kvm:
         pointer to the vm struct
+    :type kvm: struct kvm \*
 
-    :param unsigned long type:
+    :param type:
         the VGIC addr type, one of KVM_VGIC_V[23]_ADDR_TYPE_XXX
+    :type type: unsigned long
 
-    :param u64 \*addr:
+    :param addr:
         pointer to address value
+    :type addr: u64 \*
 
-    :param bool write:
+    :param write:
         if true set the address in the VM address space, if false read the
         address
+    :type write: bool
 
 .. _`kvm_vgic_addr.description`:
 
@@ -45,17 +49,21 @@ vgic_v2_attr_regs_access
 
     allows user space to access VGIC v2 state
 
-    :param struct kvm_device \*dev:
+    :param dev:
         kvm device handle
+    :type dev: struct kvm_device \*
 
-    :param struct kvm_device_attr \*attr:
+    :param attr:
         kvm device attribute
+    :type attr: struct kvm_device_attr \*
 
-    :param u32 \*reg:
+    :param reg:
         address the value is read or written
+    :type reg: u32 \*
 
-    :param bool is_write:
+    :param is_write:
         true if userspace is writing a register
+    :type is_write: bool
 
 .. This file was automatic generated / don't edit.
 

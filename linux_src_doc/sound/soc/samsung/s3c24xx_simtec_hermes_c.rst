@@ -10,8 +10,9 @@ simtec_hermes_init
 
     initialise and add controls \ ``codec``\ ; The codec instance to attach to.
 
-    :param struct snd_soc_pcm_runtime \*rtd:
+    :param rtd:
         *undescribed*
+    :type rtd: struct snd_soc_pcm_runtime \*
 
 .. _`simtec_hermes_init.description`:
 

@@ -10,8 +10,9 @@ stack_tracer_disable
 
     temporarily disable the stack tracer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`stack_tracer_disable.description`:
 
@@ -35,8 +36,9 @@ stack_tracer_enable
 
     re-enable the stack tracer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`stack_tracer_enable.description`:
 
@@ -55,14 +57,17 @@ ftrace_make_nop
 
     convert code into nop
 
-    :param struct module \*mod:
+    :param mod:
         module structure if called by module load initialization
+    :type mod: struct module \*
 
-    :param struct dyn_ftrace \*rec:
+    :param rec:
         the mcount call site record
+    :type rec: struct dyn_ftrace \*
 
-    :param unsigned long addr:
+    :param addr:
         the address that the call site should be calling
+    :type addr: unsigned long
 
 .. _`ftrace_make_nop.description`:
 
@@ -75,7 +80,7 @@ read the location, check to see if what is read is indeed
 what we expect it to be, and then on success of the compare,
 it should write to the location.
 
-The code segment at \ ``rec``\ ->ip should be a caller to \ ``addr``\ 
+The code segment at \ ``rec->ip``\  should be a caller to \ ``addr``\ 
 
 .. _`ftrace_make_nop.return-must-be`:
 
@@ -97,11 +102,13 @@ ftrace_make_call
 
     convert a nop call site into a call to addr
 
-    :param struct dyn_ftrace \*rec:
+    :param rec:
         the mcount call site record
+    :type rec: struct dyn_ftrace \*
 
-    :param unsigned long addr:
+    :param addr:
         the address that the call site should call
+    :type addr: unsigned long
 
 .. _`ftrace_make_call.description`:
 
@@ -114,7 +121,7 @@ read the location, check to see if what is read is indeed
 what we expect it to be, and then on success of the compare,
 it should write to the location.
 
-The code segment at \ ``rec``\ ->ip should be a nop
+The code segment at \ ``rec->ip``\  should be a nop
 
 .. _`ftrace_make_call.return-must-be`:
 
@@ -136,14 +143,17 @@ ftrace_modify_call
 
     convert from one addr to another (no nop)
 
-    :param struct dyn_ftrace \*rec:
+    :param rec:
         the mcount call site record
+    :type rec: struct dyn_ftrace \*
 
-    :param unsigned long old_addr:
+    :param old_addr:
         the address expected to be currently called to
+    :type old_addr: unsigned long
 
-    :param unsigned long addr:
+    :param addr:
         the address to change to
+    :type addr: unsigned long
 
 .. _`ftrace_modify_call.description`:
 
@@ -156,7 +166,7 @@ read the location, check to see if what is read is indeed
 what we expect it to be, and then on success of the compare,
 it should write to the location.
 
-The code segment at \ ``rec``\ ->ip should be a caller to \ ``old_addr``\ 
+The code segment at \ ``rec->ip``\  should be a caller to \ ``old_addr``\ 
 
 .. _`ftrace_modify_call.return-must-be`:
 

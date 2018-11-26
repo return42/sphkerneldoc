@@ -10,11 +10,13 @@ octeon_send_ipi_single
 
     cpu.  When the function has finished, increment the finished field of call_data.
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
-    :param unsigned int action:
+    :param action:
         *undescribed*
+    :type action: unsigned int
 
 .. _`octeon_smp_hotplug_setup`:
 
@@ -23,8 +25,9 @@ octeon_smp_hotplug_setup
 
 .. c:function:: void octeon_smp_hotplug_setup( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_boot_secondary`:
 
@@ -33,11 +36,13 @@ octeon_boot_secondary
 
 .. c:function:: int octeon_boot_secondary(int cpu, struct task_struct *idle)
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
-    :param struct task_struct \*idle:
+    :param idle:
         *undescribed*
+    :type idle: struct task_struct \*
 
 .. _`octeon_init_secondary`:
 
@@ -48,8 +53,9 @@ octeon_init_secondary
 
     board code to clean up state, if needed
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_prepare_cpus`:
 
@@ -58,8 +64,9 @@ octeon_prepare_cpus
 
 .. c:function:: void octeon_prepare_cpus(unsigned int max_cpus)
 
-    :param unsigned int max_cpus:
+    :param max_cpus:
         *undescribed*
+    :type max_cpus: unsigned int
 
 .. _`octeon_smp_finish`:
 
@@ -70,8 +77,9 @@ octeon_smp_finish
 
     the CPU is "online".
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

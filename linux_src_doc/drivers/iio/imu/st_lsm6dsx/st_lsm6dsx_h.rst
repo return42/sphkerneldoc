@@ -18,6 +18,7 @@ Definition
 .. code-block:: c
 
     struct st_lsm6dsx_fifo_ops {
+        int (*read_fifo)(struct st_lsm6dsx_hw *hw);
         struct {
             u8 addr;
             u16 mask;
@@ -33,6 +34,9 @@ Definition
 
 Members
 -------
+
+read_fifo
+    Read FIFO callback.
 
 fifo_th
     FIFO threshold register info (addr + mask).
@@ -104,6 +108,7 @@ Definition
         u16 max_fifo_size;
         enum st_lsm6dsx_hw_id id[ST_LSM6DSX_MAX_ID];
         struct st_lsm6dsx_reg decimator[ST_LSM6DSX_MAX_ID];
+        struct st_lsm6dsx_reg batch[ST_LSM6DSX_MAX_ID];
         struct st_lsm6dsx_fifo_ops fifo_ops;
         struct st_lsm6dsx_hw_ts_settings ts_settings;
     }
@@ -124,6 +129,9 @@ id
 
 decimator
     List of decimator register info (addr + mask).
+
+batch
+    List of FIFO batching register info (addr + mask).
 
 fifo_ops
     Sensor hw FIFO parameters.

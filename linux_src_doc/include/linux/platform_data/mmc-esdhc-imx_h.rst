@@ -23,7 +23,6 @@ Definition
         enum wp_types wp_type;
         enum cd_types cd_type;
         int max_bus_width;
-        bool support_vsel;
         unsigned int delay_line;
         unsigned int tuning_step;
         unsigned int tuning_start_tap;
@@ -48,9 +47,6 @@ cd_type
 
 max_bus_width
     *undescribed*
-
-support_vsel
-    indicate it supports 1.8v switching
 
 delay_line
     *undescribed*

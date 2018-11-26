@@ -84,14 +84,17 @@ cros_ec_sensors_read_lpc
 
     retrieve data from EC shared memory
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         pointer to IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param unsigned long scan_mask:
+    :param scan_mask:
         bitmap of the sensor indices to scan
+    :type scan_mask: unsigned long
 
-    :param s16 \*data:
+    :param data:
         location to store data
+    :type data: s16 \*
 
 .. _`cros_ec_sensors_read_lpc.description`:
 
@@ -117,14 +120,17 @@ cros_ec_sensors_read_cmd
 
     retrieve data using the EC command protocol
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         pointer to IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param unsigned long scan_mask:
+    :param scan_mask:
         bitmap of the sensor indices to scan
+    :type scan_mask: unsigned long
 
-    :param s16 \*data:
+    :param data:
         location to store data
+    :type data: s16 \*
 
 .. _`cros_ec_sensors_read_cmd.return`:
 
@@ -142,14 +148,17 @@ cros_ec_sensors_core_init
 
     basic initialization of the core structure
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device created for the sensors
+    :type pdev: struct platform_device \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         iio device structure of the device
+    :type indio_dev: struct iio_dev \*
 
-    :param bool physical_device:
+    :param physical_device:
         true if the device refers to a physical device
+    :type physical_device: bool
 
 .. _`cros_ec_sensors_core_init.return`:
 
@@ -167,11 +176,13 @@ cros_ec_sensors_capture
 
     the trigger handler function
 
-    :param int irq:
+    :param irq:
         the interrupt number.
+    :type irq: int
 
-    :param void \*p:
+    :param p:
         a pointer to the poll function.
+    :type p: void \*
 
 .. _`cros_ec_sensors_capture.description`:
 
@@ -199,12 +210,14 @@ cros_ec_motion_send_host_cmd
 
     send motion sense host command
 
-    :param struct cros_ec_sensors_core_state \*st:
+    :param st:
         pointer to state information for device
+    :type st: struct cros_ec_sensors_core_state \*
 
-    :param u16 opt_length:
+    :param opt_length:
         optional length to reduce the response size, useful on the data
         path. Otherwise, the maximal allowed response size is used
+    :type opt_length: u16
 
 .. _`cros_ec_motion_send_host_cmd.description`:
 
@@ -229,20 +242,25 @@ cros_ec_sensors_core_read
 
     function to request a value from the sensor
 
-    :param struct cros_ec_sensors_core_state \*st:
+    :param st:
         pointer to state information for device
+    :type st: struct cros_ec_sensors_core_state \*
 
-    :param struct iio_chan_spec const \*chan:
+    :param chan:
         channel specification structure table
+    :type chan: struct iio_chan_spec const \*
 
-    :param int \*val:
+    :param val:
         will contain one element making up the returned value
+    :type val: int \*
 
-    :param int \*val2:
+    :param val2:
         will contain another element making up the returned value
+    :type val2: int \*
 
-    :param long mask:
+    :param mask:
         specifies which values to be requested
+    :type mask: long
 
 .. _`cros_ec_sensors_core_read.return`:
 
@@ -260,20 +278,25 @@ cros_ec_sensors_core_write
 
     function to write a value to the sensor
 
-    :param struct cros_ec_sensors_core_state \*st:
+    :param st:
         pointer to state information for device
+    :type st: struct cros_ec_sensors_core_state \*
 
-    :param struct iio_chan_spec const \*chan:
+    :param chan:
         channel specification structure table
+    :type chan: struct iio_chan_spec const \*
 
-    :param int val:
+    :param val:
         first part of value to write
+    :type val: int
 
-    :param int val2:
+    :param val2:
         second part of value to write
+    :type val2: int
 
-    :param long mask:
+    :param mask:
         specifies which values to write
+    :type mask: long
 
 .. _`cros_ec_sensors_core_write.return`:
 

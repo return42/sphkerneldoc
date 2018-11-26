@@ -8,8 +8,9 @@ complete_subctxt
 
 .. c:function:: int complete_subctxt(struct hfi1_filedata *fd)
 
-    :param struct hfi1_filedata \*fd:
+    :param fd:
         valid filedata pointer
+    :type fd: struct hfi1_filedata \*
 
 .. _`complete_subctxt.description`:
 
@@ -30,14 +31,17 @@ match_ctxt
 
 .. c:function:: int match_ctxt(struct hfi1_filedata *fd, const struct hfi1_user_info *uinfo, struct hfi1_ctxtdata *uctxt)
 
-    :param struct hfi1_filedata \*fd:
+    :param fd:
         valid filedata pointer
+    :type fd: struct hfi1_filedata \*
 
-    :param const struct hfi1_user_info \*uinfo:
+    :param uinfo:
         user info to compare base context with
+    :type uinfo: const struct hfi1_user_info \*
 
-    :param struct hfi1_ctxtdata \*uctxt:
+    :param uctxt:
         context to compare uinfo to.
+    :type uctxt: struct hfi1_ctxtdata \*
 
 .. _`match_ctxt.description`:
 
@@ -54,11 +58,13 @@ find_sub_ctxt
 
 .. c:function:: int find_sub_ctxt(struct hfi1_filedata *fd, const struct hfi1_user_info *uinfo)
 
-    :param struct hfi1_filedata \*fd:
+    :param fd:
         valid filedata pointer
+    :type fd: struct hfi1_filedata \*
 
-    :param const struct hfi1_user_info \*uinfo:
+    :param uinfo:
         matching info to use to find a possible context to share.
+    :type uinfo: const struct hfi1_user_info \*
 
 .. _`find_sub_ctxt.description`:
 
@@ -87,14 +93,17 @@ user_exp_rcv_setup
 
     Set up the given tid rcv list
 
-    :param struct hfi1_filedata \*fd:
+    :param fd:
         file data of the current driver instance
+    :type fd: struct hfi1_filedata \*
 
-    :param unsigned long arg:
+    :param arg:
         ioctl argumnent for user space information
+    :type arg: unsigned long
 
-    :param u32 len:
+    :param len:
         length of data structure associated with ioctl command
+    :type len: u32
 
 .. _`user_exp_rcv_setup.description`:
 
@@ -112,14 +121,17 @@ user_exp_rcv_clear
 
     Clear the given tid rcv list
 
-    :param struct hfi1_filedata \*fd:
+    :param fd:
         file data of the current driver instance
+    :type fd: struct hfi1_filedata \*
 
-    :param unsigned long arg:
+    :param arg:
         ioctl argumnent for user space information
+    :type arg: unsigned long
 
-    :param u32 len:
+    :param len:
         length of data structure associated with ioctl command
+    :type len: u32
 
 .. _`user_exp_rcv_clear.description`:
 
@@ -139,14 +151,17 @@ user_exp_rcv_invalid
 
     Invalidate the given tid rcv list
 
-    :param struct hfi1_filedata \*fd:
+    :param fd:
         file data of the current driver instance
+    :type fd: struct hfi1_filedata \*
 
-    :param unsigned long arg:
+    :param arg:
         ioctl argumnent for user space information
+    :type arg: unsigned long
 
-    :param u32 len:
+    :param len:
         length of data structure associated with ioctl command
+    :type len: u32
 
 .. _`user_exp_rcv_invalid.description`:
 
@@ -164,14 +179,17 @@ manage_rcvq
 
     manage a context's receive queue
 
-    :param struct hfi1_ctxtdata \*uctxt:
+    :param uctxt:
         the context
+    :type uctxt: struct hfi1_ctxtdata \*
 
-    :param u16 subctxt:
+    :param subctxt:
         the sub-context
+    :type subctxt: u16
 
-    :param unsigned long arg:
+    :param arg:
         *undescribed*
+    :type arg: unsigned long
 
 .. _`manage_rcvq.description`:
 
@@ -191,8 +209,9 @@ ctxt_reset
 
     Reset the user context
 
-    :param struct hfi1_ctxtdata \*uctxt:
+    :param uctxt:
         valid user context
+    :type uctxt: struct hfi1_ctxtdata \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ drm_edid_header_is_valid
 
     sanity check the header of the base EDID block
 
-    :param const u8 \*raw_edid:
+    :param raw_edid:
         pointer to raw base EDID block
+    :type raw_edid: const u8 \*
 
 .. _`drm_edid_header_is_valid.description`:
 
@@ -36,17 +37,21 @@ drm_edid_block_valid
 
     Sanity check the EDID block (base or extension)
 
-    :param u8 \*raw_edid:
+    :param raw_edid:
         pointer to raw EDID block
+    :type raw_edid: u8 \*
 
-    :param int block:
+    :param block:
         type of block to validate (0 for base, extension otherwise)
+    :type block: int
 
-    :param bool print_bad_edid:
+    :param print_bad_edid:
         if true, dump bad EDID blocks to the console
+    :type print_bad_edid: bool
 
-    :param bool \*edid_corrupt:
+    :param edid_corrupt:
         if true, the header or checksum is invalid
+    :type edid_corrupt: bool \*
 
 .. _`drm_edid_block_valid.description`:
 
@@ -72,8 +77,9 @@ drm_edid_is_valid
 
     sanity check EDID data
 
-    :param struct edid \*edid:
+    :param edid:
         EDID data
+    :type edid: struct edid \*
 
 .. _`drm_edid_is_valid.description`:
 
@@ -98,17 +104,21 @@ drm_do_probe_ddc_edid
 
     get EDID information via I2C
 
-    :param void \*data:
+    :param data:
         I2C device adapter
+    :type data: void \*
 
-    :param u8 \*buf:
+    :param buf:
         EDID data buffer to be filled
+    :type buf: u8 \*
 
-    :param unsigned int block:
+    :param block:
         128 byte EDID block to start fetching from
+    :type block: unsigned int
 
-    :param size_t len:
+    :param len:
         EDID data buffer length to fetch
+    :type len: size_t
 
 .. _`drm_do_probe_ddc_edid.description`:
 
@@ -133,14 +143,16 @@ drm_do_get_edid
 
     get EDID data using a custom EDID block read function
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector we're probing
+    :type connector: struct drm_connector \*
 
     :param int (\*get_edid_block)(void \*data, u8 \*buf, unsigned int block, size_t len):
         EDID block read function
 
-    :param void \*data:
+    :param data:
         private data passed to the block read function
+    :type data: void \*
 
 .. _`drm_do_get_edid.description`:
 
@@ -175,8 +187,9 @@ drm_probe_ddc
 
     probe DDC presence
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter to probe
+    :type adapter: struct i2c_adapter \*
 
 .. _`drm_probe_ddc.return`:
 
@@ -194,11 +207,13 @@ drm_get_edid
 
     get EDID data, if available
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector we're probing
+    :type connector: struct drm_connector \*
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter to use for DDC
+    :type adapter: struct i2c_adapter \*
 
 .. _`drm_get_edid.description`:
 
@@ -224,11 +239,13 @@ drm_get_edid_switcheroo
 
     get EDID data for a vga_switcheroo output
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector we're probing
+    :type connector: struct drm_connector \*
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter to use for DDC
+    :type adapter: struct i2c_adapter \*
 
 .. _`drm_get_edid_switcheroo.description`:
 
@@ -255,8 +272,9 @@ drm_edid_duplicate
 
     duplicate an EDID and the extensions
 
-    :param const struct edid \*edid:
+    :param edid:
         EDID to duplicate
+    :type edid: const struct edid \*
 
 .. _`drm_edid_duplicate.return`:
 
@@ -274,11 +292,13 @@ edid_vendor
 
     match a string against EDID's obfuscated vendor field
 
-    :param const struct edid \*edid:
+    :param edid:
         EDID to match
+    :type edid: const struct edid \*
 
-    :param const char \*vendor:
+    :param vendor:
         vendor string
+    :type vendor: const char \*
 
 .. _`edid_vendor.description`:
 
@@ -296,8 +316,9 @@ edid_get_quirks
 
     return quirk flags for a given EDID
 
-    :param const struct edid \*edid:
+    :param edid:
         EDID to process
+    :type edid: const struct edid \*
 
 .. _`edid_get_quirks.description`:
 
@@ -315,11 +336,13 @@ edid_fixup_preferred
 
     set preferred modes based on quirk list
 
-    :param struct drm_connector \*connector:
+    :param connector:
         has mode list to fix up
+    :type connector: struct drm_connector \*
 
-    :param u32 quirks:
+    :param quirks:
         quirks list
+    :type quirks: u32
 
 .. _`edid_fixup_preferred.description`:
 
@@ -338,8 +361,9 @@ standard_timing_level
 
     get std. timing level(CVT/GTF/DMT)
 
-    :param struct edid \*edid:
+    :param edid:
         EDID block to scan
+    :type edid: struct edid \*
 
 .. _`drm_mode_std`:
 
@@ -350,14 +374,17 @@ drm_mode_std
 
     convert standard mode info (width, height, refresh) into mode
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector of for the EDID block
+    :type connector: struct drm_connector \*
 
-    :param struct edid \*edid:
+    :param edid:
         EDID block to scan
+    :type edid: struct edid \*
 
-    :param struct std_timing \*t:
+    :param t:
         standard timing params
+    :type t: struct std_timing \*
 
 .. _`drm_mode_std.description`:
 
@@ -376,17 +403,21 @@ drm_mode_detailed
 
     create a new mode from an EDID detailed timing section
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device (needed to create new mode)
+    :type dev: struct drm_device \*
 
-    :param struct edid \*edid:
+    :param edid:
         EDID block
+    :type edid: struct edid \*
 
-    :param struct detailed_timing \*timing:
+    :param timing:
         EDID detailed timing info
+    :type timing: struct detailed_timing \*
 
-    :param u32 quirks:
+    :param quirks:
         quirks to apply
+    :type quirks: u32
 
 .. _`drm_mode_detailed.description`:
 
@@ -405,11 +436,13 @@ add_established_modes
 
     get est. modes from EDID and add them
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to add mode(s) to
+    :type connector: struct drm_connector \*
 
-    :param struct edid \*edid:
+    :param edid:
         EDID block to scan
+    :type edid: struct edid \*
 
 .. _`add_established_modes.description`:
 
@@ -428,11 +461,13 @@ add_standard_modes
 
     get std. modes from EDID and add them
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to add mode(s) to
+    :type connector: struct drm_connector \*
 
-    :param struct edid \*edid:
+    :param edid:
         EDID block to scan
+    :type edid: struct edid \*
 
 .. _`add_standard_modes.description`:
 
@@ -451,8 +486,9 @@ drm_match_cea_mode
 
     look for a CEA mode matching given mode
 
-    :param const struct drm_display_mode \*to_match:
+    :param to_match:
         display mode
+    :type to_match: const struct drm_display_mode \*
 
 .. _`drm_match_cea_mode.return`:
 
@@ -471,8 +507,9 @@ drm_get_cea_aspect_ratio
 
     get the picture aspect ratio corresponding to the input VIC from the CEA mode list
 
-    :param const u8 video_code:
+    :param video_code:
         ID given to each of the CEA modes
+    :type video_code: const u8
 
 .. _`drm_get_cea_aspect_ratio.description`:
 
@@ -490,14 +527,17 @@ drm_edid_get_monitor_name
 
     fetch the monitor name from the edid
 
-    :param struct edid \*edid:
+    :param edid:
         monitor EDID information
+    :type edid: struct edid \*
 
-    :param char \*name:
+    :param name:
         pointer to a character array to hold the name of the monitor
+    :type name: char \*
 
-    :param int bufsize:
+    :param bufsize:
         The size of the name buffer (should be at least 14 chars.)
+    :type bufsize: int
 
 .. _`drm_edid_to_sad`:
 
@@ -508,11 +548,13 @@ drm_edid_to_sad
 
     extracts SADs from EDID
 
-    :param struct edid \*edid:
+    :param edid:
         EDID to parse
+    :type edid: struct edid \*
 
-    :param struct cea_sad \*\*sads:
+    :param sads:
         pointer that will be set to the extracted SADs
+    :type sads: struct cea_sad \*\*
 
 .. _`drm_edid_to_sad.description`:
 
@@ -544,11 +586,13 @@ drm_edid_to_speaker_allocation
 
     extracts Speaker Allocation Data Blocks from EDID
 
-    :param struct edid \*edid:
+    :param edid:
         EDID to parse
+    :type edid: struct edid \*
 
-    :param u8 \*\*sadb:
+    :param sadb:
         pointer to the speaker block
+    :type sadb: u8 \*\*
 
 .. _`drm_edid_to_speaker_allocation.description`:
 
@@ -581,11 +625,13 @@ drm_av_sync_delay
 
     compute the HDMI/DP sink audio-video sync delay
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector associated with the HDMI/DP sink
+    :type connector: struct drm_connector \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         the display mode
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_av_sync_delay.return`:
 
@@ -604,8 +650,9 @@ drm_detect_hdmi_monitor
 
     detect whether monitor is HDMI
 
-    :param struct edid \*edid:
+    :param edid:
         monitor EDID information
+    :type edid: struct edid \*
 
 .. _`drm_detect_hdmi_monitor.description`:
 
@@ -630,8 +677,9 @@ drm_detect_monitor_audio
 
     check monitor audio capability
 
-    :param struct edid \*edid:
+    :param edid:
         EDID block to scan
+    :type edid: struct edid \*
 
 .. _`drm_detect_monitor_audio.description`:
 
@@ -660,8 +708,9 @@ drm_rgb_quant_range_selectable
 
     is RGB quantization range selectable?
 
-    :param struct edid \*edid:
+    :param edid:
         EDID block to scan
+    :type edid: struct edid \*
 
 .. _`drm_rgb_quant_range_selectable.description`:
 
@@ -688,8 +737,9 @@ drm_default_rgb_quant_range
 
     default RGB quantization range
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         display mode
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_default_rgb_quant_range.description`:
 
@@ -715,11 +765,13 @@ drm_add_edid_modes
 
     add modes from EDID data, if available
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector we're probing
+    :type connector: struct drm_connector \*
 
-    :param struct edid \*edid:
+    :param edid:
         EDID data
+    :type edid: struct edid \*
 
 .. _`drm_add_edid_modes.description`:
 
@@ -746,14 +798,17 @@ drm_add_modes_noedid
 
     add modes for the connectors without EDID
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector we're probing
+    :type connector: struct drm_connector \*
 
-    :param int hdisplay:
+    :param hdisplay:
         the horizontal display limit
+    :type hdisplay: int
 
-    :param int vdisplay:
+    :param vdisplay:
         the vertical display limit
+    :type vdisplay: int
 
 .. _`drm_add_modes_noedid.description`:
 
@@ -779,14 +834,17 @@ drm_set_preferred_mode
 
     Sets the preferred mode of a connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector whose mode list should be processed
+    :type connector: struct drm_connector \*
 
-    :param int hpref:
+    :param hpref:
         horizontal resolution of preferred mode
+    :type hpref: int
 
-    :param int vpref:
+    :param vpref:
         vertical resolution of preferred mode
+    :type vpref: int
 
 .. _`drm_set_preferred_mode.description`:
 
@@ -805,14 +863,17 @@ drm_hdmi_avi_infoframe_from_display_mode
 
     fill an HDMI AVI infoframe with data from a DRM display mode
 
-    :param struct hdmi_avi_infoframe \*frame:
+    :param frame:
         HDMI AVI infoframe
+    :type frame: struct hdmi_avi_infoframe \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         DRM display mode
+    :type mode: const struct drm_display_mode \*
 
-    :param bool is_hdmi2_sink:
+    :param is_hdmi2_sink:
         Sink is HDMI 2.0 compliant
+    :type is_hdmi2_sink: bool
 
 .. _`drm_hdmi_avi_infoframe_from_display_mode.return`:
 
@@ -830,20 +891,25 @@ drm_hdmi_avi_infoframe_quant_range
 
     fill the HDMI AVI infoframe quantization range information
 
-    :param struct hdmi_avi_infoframe \*frame:
+    :param frame:
         HDMI AVI infoframe
+    :type frame: struct hdmi_avi_infoframe \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         DRM display mode
+    :type mode: const struct drm_display_mode \*
 
-    :param enum hdmi_quantization_range rgb_quant_range:
+    :param rgb_quant_range:
         RGB quantization range (Q)
+    :type rgb_quant_range: enum hdmi_quantization_range
 
-    :param bool rgb_quant_range_selectable:
+    :param rgb_quant_range_selectable:
         Sink support selectable RGB quantization range (QS)
+    :type rgb_quant_range_selectable: bool
 
-    :param bool is_hdmi2_sink:
+    :param is_hdmi2_sink:
         HDMI 2.0 sink, which has different default recommendations
+    :type is_hdmi2_sink: bool
 
 .. _`drm_hdmi_avi_infoframe_quant_range.description`:
 
@@ -863,14 +929,17 @@ drm_hdmi_vendor_infoframe_from_display_mode
 
     fill an HDMI infoframe with data from a DRM display mode
 
-    :param struct hdmi_vendor_infoframe \*frame:
+    :param frame:
         HDMI vendor infoframe
+    :type frame: struct hdmi_vendor_infoframe \*
 
-    :param struct drm_connector \*connector:
+    :param connector:
         the connector
+    :type connector: struct drm_connector \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         DRM display mode
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_hdmi_vendor_infoframe_from_display_mode.description`:
 

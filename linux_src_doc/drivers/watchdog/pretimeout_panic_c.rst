@@ -10,8 +10,9 @@ pretimeout_panic
 
     Panic on watchdog pretimeout event \ ``wdd``\  - watchdog_device
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         *undescribed*
+    :type wdd: struct watchdog_device \*
 
 .. _`pretimeout_panic.description`:
 

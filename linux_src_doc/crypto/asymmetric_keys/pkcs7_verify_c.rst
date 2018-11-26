@@ -10,11 +10,13 @@ pkcs7_verify
 
     Verify a PKCS#7 message
 
-    :param struct pkcs7_message \*pkcs7:
+    :param pkcs7:
         The PKCS#7 message to be verified
+    :type pkcs7: struct pkcs7_message \*
 
-    :param enum key_being_used_for usage:
+    :param usage:
         The use to which the key is being put
+    :type usage: enum key_being_used_for
 
 .. _`pkcs7_verify.description`:
 
@@ -55,14 +57,17 @@ pkcs7_supply_detached_data
 
     Supply the data needed to verify a PKCS#7 message
 
-    :param struct pkcs7_message \*pkcs7:
+    :param pkcs7:
         The PKCS#7 message
+    :type pkcs7: struct pkcs7_message \*
 
-    :param const void \*data:
+    :param data:
         The data to be verified
+    :type data: const void \*
 
-    :param size_t datalen:
+    :param datalen:
         The amount of data
+    :type datalen: size_t
 
 .. _`pkcs7_supply_detached_data.description`:
 

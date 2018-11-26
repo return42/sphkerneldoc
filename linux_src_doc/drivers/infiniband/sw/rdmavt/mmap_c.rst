@@ -10,8 +10,9 @@ rvt_mmap_init
 
     init link list and lock for mem map
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev struct
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_release_mmap_info`:
 
@@ -22,8 +23,9 @@ rvt_release_mmap_info
 
     free mmap info structure
 
-    :param struct kref \*ref:
+    :param ref:
         a pointer to the kref within struct rvt_mmap_info
+    :type ref: struct kref \*
 
 .. _`rvt_mmap`:
 
@@ -34,11 +36,13 @@ rvt_mmap
 
     create a new mmap region
 
-    :param struct ib_ucontext \*context:
+    :param context:
         the IB user context of the process making the \ :c:func:`mmap`\  call
+    :type context: struct ib_ucontext \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the VMA to be initialized
+    :type vma: struct vm_area_struct \*
 
 .. _`rvt_mmap.return`:
 
@@ -56,17 +60,21 @@ rvt_create_mmap_info
 
     allocate information for hfi1_mmap
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev struct
+    :type rdi: struct rvt_dev_info \*
 
-    :param u32 size:
+    :param size:
         size in bytes to map
+    :type size: u32
 
-    :param struct ib_ucontext \*context:
+    :param context:
         user context
+    :type context: struct ib_ucontext \*
 
-    :param void \*obj:
+    :param obj:
         opaque pointer to a cq, wq etc
+    :type obj: void \*
 
 .. _`rvt_create_mmap_info.return`:
 
@@ -84,17 +92,21 @@ rvt_update_mmap_info
 
     update a mem map
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev struct
+    :type rdi: struct rvt_dev_info \*
 
-    :param struct rvt_mmap_info \*ip:
+    :param ip:
         mmap info pointer
+    :type ip: struct rvt_mmap_info \*
 
-    :param u32 size:
+    :param size:
         size to grow by
+    :type size: u32
 
-    :param void \*obj:
+    :param obj:
         opaque pointer to cq, wq, etc.
+    :type obj: void \*
 
 .. This file was automatic generated / don't edit.
 

@@ -50,11 +50,13 @@ intel_msic_reg_read
 
     read a single MSIC register
 
-    :param unsigned short reg:
+    :param reg:
         register to read
+    :type reg: unsigned short
 
-    :param u8 \*val:
+    :param val:
         register value is placed here
+    :type val: u8 \*
 
 .. _`intel_msic_reg_read.description`:
 
@@ -75,11 +77,13 @@ intel_msic_reg_write
 
     write a single MSIC register
 
-    :param unsigned short reg:
+    :param reg:
         register to write
+    :type reg: unsigned short
 
-    :param u8 val:
+    :param val:
         value to write to that register
+    :type val: u8
 
 .. _`intel_msic_reg_write.description`:
 
@@ -100,15 +104,18 @@ intel_msic_reg_update
 
     update a single MSIC register
 
-    :param unsigned short reg:
+    :param reg:
         register to update
+    :type reg: unsigned short
 
-    :param u8 val:
+    :param val:
         value to write to the register
+    :type val: u8
 
-    :param u8 mask:
+    :param mask:
         specifies which of the bits are updated (%0 = don't update,
         \ ``1``\  = update)
+    :type mask: u8
 
 .. _`intel_msic_reg_update.description`:
 
@@ -130,14 +137,17 @@ intel_msic_bulk_read
 
     read an array of registers
 
-    :param unsigned short \*reg:
+    :param reg:
         array of register addresses to read
+    :type reg: unsigned short \*
 
-    :param u8 \*buf:
+    :param buf:
         array where the read values are placed
+    :type buf: u8 \*
 
-    :param size_t count:
+    :param count:
         number of registers to read
+    :type count: size_t
 
 .. _`intel_msic_bulk_read.description`:
 
@@ -161,14 +171,17 @@ intel_msic_bulk_write
 
     write an array of values to the MSIC registers
 
-    :param unsigned short \*reg:
+    :param reg:
         array of registers to write
+    :type reg: unsigned short \*
 
-    :param u8 \*buf:
+    :param buf:
         values to write to each register
+    :type buf: u8 \*
 
-    :param size_t count:
+    :param count:
         number of registers to write
+    :type count: size_t
 
 .. _`intel_msic_bulk_write.description`:
 
@@ -190,15 +203,18 @@ intel_msic_irq_read
 
     read a register from an MSIC interrupt tree
 
-    :param struct intel_msic \*msic:
+    :param msic:
         MSIC instance
+    :type msic: struct intel_msic \*
 
-    :param unsigned short reg:
+    :param reg:
         interrupt register (between \ ``INTEL_MSIC_IRQLVL1``\  and
         \ ``INTEL_MSIC_RESETIRQ2``\ )
+    :type reg: unsigned short
 
-    :param u8 \*val:
+    :param val:
         value of the register is placed here
+    :type val: u8 \*
 
 .. _`intel_msic_irq_read.description`:
 

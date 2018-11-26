@@ -10,11 +10,13 @@ atalk_find_or_insert_socket
 
     Try to find a socket matching ADDR
 
-    :param struct sock \*sk:
+    :param sk:
         socket to insert in the list if it is not there already
+    :type sk: struct sock \*
 
-    :param struct sockaddr_at \*sat:
+    :param sat:
         address to search for
+    :type sat: struct sockaddr_at \*
 
 .. _`atalk_find_or_insert_socket.description`:
 
@@ -35,11 +37,13 @@ atalk_pick_and_bind_port
 
     Pick a source port when one is not given
 
-    :param struct sock \*sk:
+    :param sk:
         socket to insert into the tables
+    :type sk: struct sock \*
 
-    :param struct sockaddr_at \*sat:
+    :param sat:
         address to search for
+    :type sat: struct sockaddr_at \*
 
 .. _`atalk_pick_and_bind_port.description`:
 
@@ -60,17 +64,21 @@ atalk_rcv
 
     Receive a packet (in skb) from device dev \ ``skb``\  - packet received \ ``dev``\  - network device where the packet comes from \ ``pt``\  - packet type
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct packet_type \*pt:
+    :param pt:
         *undescribed*
+    :type pt: struct packet_type \*
 
-    :param struct net_device \*orig_dev:
+    :param orig_dev:
         *undescribed*
+    :type orig_dev: struct net_device \*
 
 .. _`atalk_rcv.description`:
 

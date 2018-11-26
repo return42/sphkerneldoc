@@ -10,11 +10,13 @@ uwb_ie_next
 
     get the next IE in a buffer
 
-    :param void \*\*ptr:
+    :param ptr:
         start of the buffer containing the IE data
+    :type ptr: void \*\*
 
-    :param size_t \*len:
+    :param len:
         length of the buffer
+    :type len: size_t \*
 
 .. _`uwb_ie_next.description`:
 
@@ -36,17 +38,21 @@ uwb_ie_dump_hex
 
     print IEs to a character buffer
 
-    :param const struct uwb_ie_hdr \*ies:
+    :param ies:
         the IEs to print.
+    :type ies: const struct uwb_ie_hdr \*
 
-    :param size_t len:
+    :param len:
         length of all the IEs.
+    :type len: size_t
 
-    :param char \*buf:
+    :param buf:
         the destination buffer.
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         size of \ ``buf``\ .
+    :type size: size_t
 
 .. _`uwb_ie_dump_hex.description`:
 
@@ -62,11 +68,13 @@ uwb_rc_get_ie
 
 .. c:function:: ssize_t uwb_rc_get_ie(struct uwb_rc *uwb_rc, struct uwb_rc_evt_get_ie **pget_ie)
 
-    :param struct uwb_rc \*uwb_rc:
+    :param uwb_rc:
         UWB Radio Controller
+    :type uwb_rc: struct uwb_rc \*
 
-    :param struct uwb_rc_evt_get_ie \*\*pget_ie:
+    :param pget_ie:
         *undescribed*
+    :type pget_ie: struct uwb_rc_evt_get_ie \*\*
 
 .. _`uwb_rc_get_ie.description`:
 
@@ -84,11 +92,13 @@ uwb_rc_set_ie
 
 .. c:function:: int uwb_rc_set_ie(struct uwb_rc *rc, struct uwb_rc_cmd_set_ie *cmd)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rc_cmd_set_ie \*cmd:
+    :param cmd:
         pointer to the SET-IE command with the IEs to set
+    :type cmd: struct uwb_rc_cmd_set_ie \*
 
 .. _`uwb_rc_ie_setup`:
 
@@ -99,8 +109,9 @@ uwb_rc_ie_setup
 
     setup a radio controller's IE manager
 
-    :param struct uwb_rc \*uwb_rc:
+    :param uwb_rc:
         the radio controller.
+    :type uwb_rc: struct uwb_rc \*
 
 .. _`uwb_rc_ie_setup.description`:
 
@@ -122,15 +133,18 @@ uwb_rc_ie_add
 
     add new IEs to the radio controller's beacon
 
-    :param struct uwb_rc \*uwb_rc:
+    :param uwb_rc:
         the radio controller.
+    :type uwb_rc: struct uwb_rc \*
 
-    :param const struct uwb_ie_hdr \*ies:
+    :param ies:
         the buffer containing the new IE or IEs to be added to
         the device's beacon.
+    :type ies: const struct uwb_ie_hdr \*
 
-    :param size_t size:
+    :param size:
         length of all the IEs.
+    :type size: size_t
 
 .. _`uwb_rc_ie_add.description`:
 
@@ -158,11 +172,13 @@ uwb_rc_ie_rm
 
     remove an IE from the radio controller's beacon
 
-    :param struct uwb_rc \*uwb_rc:
+    :param uwb_rc:
         the radio controller.
+    :type uwb_rc: struct uwb_rc \*
 
-    :param enum uwb_ie element_id:
+    :param element_id:
         the element ID of the IE to remove.
+    :type element_id: enum uwb_ie
 
 .. _`uwb_rc_ie_rm.description`:
 

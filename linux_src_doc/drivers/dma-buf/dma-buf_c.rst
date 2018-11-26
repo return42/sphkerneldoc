@@ -65,10 +65,11 @@ dma_buf_export
 
     Creates a new dma_buf, and associates an anon file with this buffer, so it can be exported. Also connect the allocator specific data and ops to the buffer. Additionally, provide a name string for exporter; useful in debugging.
 
-    :param const struct dma_buf_export_info \*exp_info:
+    :param exp_info:
         [in]    holds all the export related information provided
         by the exporter. see \ :c:type:`struct dma_buf_export_info <dma_buf_export_info>`\ 
         for further details.
+    :type exp_info: const struct dma_buf_export_info \*
 
 .. _`dma_buf_export.description`:
 
@@ -91,11 +92,13 @@ dma_buf_fd
 
     returns a file descriptor for the given dma_buf
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    pointer to dma_buf for which fd is required.
+    :type dmabuf: struct dma_buf \*
 
-    :param int flags:
+    :param flags:
         [in]    flags to give to fd
+    :type flags: int
 
 .. _`dma_buf_fd.description`:
 
@@ -113,8 +116,9 @@ dma_buf_get
 
     returns the dma_buf structure related to an fd
 
-    :param int fd:
+    :param fd:
         [in]    fd associated with the dma_buf to be returned
+    :type fd: int
 
 .. _`dma_buf_get.description`:
 
@@ -134,8 +138,9 @@ dma_buf_put
 
     decreases refcount of the buffer
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    buffer to reduce refcount of
+    :type dmabuf: struct dma_buf \*
 
 .. _`dma_buf_put.description`:
 
@@ -157,11 +162,13 @@ dma_buf_attach
 
     Add the device to dma_buf's attachments list; optionally, calls \ :c:func:`attach`\  of dma_buf_ops to allow device-specific attach functionality
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    buffer to attach device to.
+    :type dmabuf: struct dma_buf \*
 
-    :param struct device \*dev:
+    :param dev:
         [in]    device to be attached.
+    :type dev: struct device \*
 
 .. _`dma_buf_attach.description`:
 
@@ -193,11 +200,13 @@ dma_buf_detach
 
     Remove the given attachment from dmabuf's attachments list; optionally calls \ :c:func:`detach`\  of dma_buf_ops for device-specific detach
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    buffer to detach from.
+    :type dmabuf: struct dma_buf \*
 
-    :param struct dma_buf_attachment \*attach:
+    :param attach:
         [in]    attachment to be detached; is free'd after this call.
+    :type attach: struct dma_buf_attachment \*
 
 .. _`dma_buf_detach.description`:
 
@@ -215,11 +224,13 @@ dma_buf_map_attachment
 
     Returns the scatterlist table of the attachment; mapped into _device_ address space. Is a wrapper for \ :c:func:`map_dma_buf`\  of the dma_buf_ops.
 
-    :param struct dma_buf_attachment \*attach:
+    :param attach:
         [in]    attachment whose scatterlist is to be returned
+    :type attach: struct dma_buf_attachment \*
 
-    :param enum dma_data_direction direction:
+    :param direction:
         [in]    direction of DMA transfer
+    :type direction: enum dma_data_direction
 
 .. _`dma_buf_map_attachment.description`:
 
@@ -243,14 +254,17 @@ dma_buf_unmap_attachment
 
     unmaps and decreases usecount of the buffer;might deallocate the scatterlist associated. Is a wrapper for \ :c:func:`unmap_dma_buf`\  of dma_buf_ops.
 
-    :param struct dma_buf_attachment \*attach:
+    :param attach:
         [in]    attachment to unmap buffer from
+    :type attach: struct dma_buf_attachment \*
 
-    :param struct sg_table \*sg_table:
+    :param sg_table:
         [in]    scatterlist info of the buffer to unmap
+    :type sg_table: struct sg_table \*
 
-    :param enum dma_data_direction direction:
+    :param direction:
         [in]    direction of DMA transfer
+    :type direction: enum dma_data_direction
 
 .. _`dma_buf_unmap_attachment.description`:
 
@@ -284,25 +298,13 @@ There are mutliple reasons for supporting CPU access to a dma buffer object:
      void \*dma_buf_kmap(struct dma_buf \*, unsigned long);
      void dma_buf_kunmap(struct dma_buf \*, unsigned long, void \*);
 
-  There are also atomic variants of these interfaces. Like for kmap they
-  facilitate non-blocking fast-paths. Neither the importer nor the exporter
-  (in the callback) is allowed to block when using these.
-
-  Interfaces::
-     void \*dma_buf_kmap_atomic(struct dma_buf \*, unsigned long);
-     void dma_buf_kunmap_atomic(struct dma_buf \*, unsigned long, void \*);
-
-  For importers all the restrictions of using kmap apply, like the limited
-  supply of kmap_atomic slots. Hence an importer shall only hold onto at
-  max 2 atomic dma_buf kmaps at the same time (in any given process context).
+  Implementing the functions is optional for exporters and for importers all
+  the restrictions of using kmap apply.
 
   dma_buf kmap calls outside of the range specified in begin_cpu_access are
   undefined. If the range is not PAGE_SIZE aligned, kmap needs to succeed on
   the partial chunks at the beginning and end but may return stale or bogus
   data outside of the range (in these partial chunks).
-
-  Note that these calls need to always succeed. The exporter needs to
-  complete any preparations that might fail in begin_cpu_access.
 
   For some cases the overhead of kmap can be too high, a vmap interface
   is introduced. This interface should be used very carefully, as vmalloc
@@ -385,11 +387,13 @@ dma_buf_begin_cpu_access
 
     Must be called before accessing a dma_buf from the cpu in the kernel context. Calls begin_cpu_access to allow exporter-specific preparations. Coherency is only guaranteed in the specified range for the specified access direction.
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    buffer to prepare cpu access for.
+    :type dmabuf: struct dma_buf \*
 
-    :param enum dma_data_direction direction:
+    :param direction:
         [in]    length of range for cpu access.
+    :type direction: enum dma_data_direction
 
 .. _`dma_buf_begin_cpu_access.description`:
 
@@ -411,11 +415,13 @@ dma_buf_end_cpu_access
 
     Must be called after accessing a dma_buf from the cpu in the kernel context. Calls end_cpu_access to allow exporter-specific actions. Coherency is only guaranteed in the specified range for the specified access direction.
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    buffer to complete cpu access for.
+    :type dmabuf: struct dma_buf \*
 
-    :param enum dma_data_direction direction:
+    :param direction:
         [in]    length of range for cpu access.
+    :type direction: enum dma_data_direction
 
 .. _`dma_buf_end_cpu_access.description`:
 
@@ -426,54 +432,6 @@ This terminates CPU access started with \ :c:func:`dma_buf_begin_cpu_access`\ .
 
 Can return negative error values, returns 0 on success.
 
-.. _`dma_buf_kmap_atomic`:
-
-dma_buf_kmap_atomic
-===================
-
-.. c:function:: void *dma_buf_kmap_atomic(struct dma_buf *dmabuf, unsigned long page_num)
-
-    Map a page of the buffer object into kernel address space. The same restrictions as for kmap_atomic and friends apply.
-
-    :param struct dma_buf \*dmabuf:
-        [in]    buffer to map page from.
-
-    :param unsigned long page_num:
-        [in]    page in PAGE_SIZE units to map.
-
-.. _`dma_buf_kmap_atomic.description`:
-
-Description
------------
-
-This call must always succeed, any necessary preparations that might fail
-need to be done in begin_cpu_access.
-
-.. _`dma_buf_kunmap_atomic`:
-
-dma_buf_kunmap_atomic
-=====================
-
-.. c:function:: void dma_buf_kunmap_atomic(struct dma_buf *dmabuf, unsigned long page_num, void *vaddr)
-
-    Unmap a page obtained by dma_buf_kmap_atomic.
-
-    :param struct dma_buf \*dmabuf:
-        [in]    buffer to unmap page from.
-
-    :param unsigned long page_num:
-        [in]    page in PAGE_SIZE units to unmap.
-
-    :param void \*vaddr:
-        [in]    kernel space pointer obtained from dma_buf_kmap_atomic.
-
-.. _`dma_buf_kunmap_atomic.description`:
-
-Description
------------
-
-This call must always succeed.
-
 .. _`dma_buf_kmap`:
 
 dma_buf_kmap
@@ -483,11 +441,13 @@ dma_buf_kmap
 
     Map a page of the buffer object into kernel address space. The same restrictions as for kmap and friends apply.
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    buffer to map page from.
+    :type dmabuf: struct dma_buf \*
 
-    :param unsigned long page_num:
+    :param page_num:
         [in]    page in PAGE_SIZE units to map.
+    :type page_num: unsigned long
 
 .. _`dma_buf_kmap.description`:
 
@@ -506,14 +466,17 @@ dma_buf_kunmap
 
     Unmap a page obtained by dma_buf_kmap.
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    buffer to unmap page from.
+    :type dmabuf: struct dma_buf \*
 
-    :param unsigned long page_num:
+    :param page_num:
         [in]    page in PAGE_SIZE units to unmap.
+    :type page_num: unsigned long
 
-    :param void \*vaddr:
+    :param vaddr:
         [in]    kernel space pointer obtained from dma_buf_kmap.
+    :type vaddr: void \*
 
 .. _`dma_buf_kunmap.description`:
 
@@ -531,15 +494,18 @@ dma_buf_mmap
 
     Setup up a userspace mmap with the given vma
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    buffer that should back the vma
+    :type dmabuf: struct dma_buf \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         [in]    vma for the mmap
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long pgoff:
+    :param pgoff:
         [in]    offset in pages where this mmap should start within the
         dma-buf buffer.
+    :type pgoff: unsigned long
 
 .. _`dma_buf_mmap.description`:
 
@@ -562,8 +528,9 @@ dma_buf_vmap
 
     Create virtual mapping for the buffer object into kernel address space. Same restrictions as for vmap and friends apply.
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    buffer to vmap
+    :type dmabuf: struct dma_buf \*
 
 .. _`dma_buf_vmap.description`:
 
@@ -586,11 +553,13 @@ dma_buf_vunmap
 
     Unmap a vmap obtained by dma_buf_vmap.
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    buffer to vunmap
+    :type dmabuf: struct dma_buf \*
 
-    :param void \*vaddr:
+    :param vaddr:
         [in]    vmap to vunmap
+    :type vaddr: void \*
 
 .. This file was automatic generated / don't edit.
 

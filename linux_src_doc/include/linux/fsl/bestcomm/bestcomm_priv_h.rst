@@ -128,8 +128,9 @@ bcom_disable_prefetch
 
     Hook to disable bus prefetching
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bcom_disable_prefetch.description`:
 

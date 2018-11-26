@@ -10,8 +10,9 @@ ixgbe_get_vfs
 
     Find and take references to all vf devices
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         Pointer to adapter struct
+    :type adapter: struct ixgbe_adapter \*
 
 .. This file was automatic generated / don't edit.
 

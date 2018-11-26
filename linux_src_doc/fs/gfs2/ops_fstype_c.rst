@@ -10,8 +10,9 @@ gfs2_tune_init
 
     Fill a gfs2_tune structure with default values
 
-    :param struct gfs2_tune \*gt:
+    :param gt:
         tune
+    :type gt: struct gfs2_tune \*
 
 .. _`gfs2_check_sb`:
 
@@ -22,11 +23,13 @@ gfs2_check_sb
 
     Check superblock
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param int silent:
+    :param silent:
         Don't print a message if the check fails
+    :type silent: int
 
 .. _`gfs2_check_sb.description`:
 
@@ -46,14 +49,17 @@ gfs2_read_super
 
     Read the gfs2 super block from disk
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 super block
+    :type sdp: struct gfs2_sbd \*
 
-    :param sector_t sector:
+    :param sector:
         The location of the super block
+    :type sector: sector_t
 
-    :param int silent:
+    :param silent:
         *undescribed*
+    :type silent: int
 
 .. _`gfs2_read_super.description`:
 
@@ -86,11 +92,13 @@ gfs2_read_sb
 
     Read super block
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param int silent:
+    :param silent:
         Don't print message if mount fails
+    :type silent: int
 
 .. _`gfs2_jindex_hold`:
 
@@ -101,11 +109,13 @@ gfs2_jindex_hold
 
     Grab a lock on the jindex
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_holder \*ji_gh:
+    :param ji_gh:
         the holder for the jindex glock
+    :type ji_gh: struct gfs2_holder \*
 
 .. _`gfs2_jindex_hold.return`:
 
@@ -123,11 +133,13 @@ check_journal_clean
 
     Make sure a journal is clean for a spectator mount
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         The journal descriptor
+    :type jd: struct gfs2_jdesc \*
 
 .. _`check_journal_clean.return`:
 
@@ -145,11 +157,13 @@ gfs2_lm_mount
 
     mount a locking protocol
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param int silent:
+    :param silent:
         if 1, don't complain if the FS isn't a GFS2 fs
+    :type silent: int
 
 .. _`gfs2_lm_mount.return`:
 
@@ -167,14 +181,17 @@ fill_super
 
     Read in superblock
 
-    :param struct super_block \*sb:
+    :param sb:
         The VFS superblock
+    :type sb: struct super_block \*
 
-    :param struct gfs2_args \*args:
+    :param args:
         *undescribed*
+    :type args: struct gfs2_args \*
 
-    :param int silent:
+    :param silent:
         Don't complain if it's not a GFS2 filesystem
+    :type silent: int
 
 .. _`fill_super.return`:
 
@@ -192,17 +209,21 @@ gfs2_mount
 
     Get the GFS2 superblock
 
-    :param struct file_system_type \*fs_type:
+    :param fs_type:
         The GFS2 filesystem type
+    :type fs_type: struct file_system_type \*
 
-    :param int flags:
+    :param flags:
         Mount flags
+    :type flags: int
 
-    :param const char \*dev_name:
+    :param dev_name:
         The name of the device
+    :type dev_name: const char \*
 
-    :param void \*data:
+    :param data:
         The mount arguments
+    :type data: void \*
 
 .. _`gfs2_mount.description`:
 

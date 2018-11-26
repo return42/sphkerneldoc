@@ -6,19 +6,23 @@
 tda827x_attach
 ==============
 
-.. c:function:: struct dvb_frontend*tda827x_attach(struct dvb_frontend *fe, int addr, struct i2c_adapter *i2c, struct tda827x_config *cfg)
+.. c:function:: struct dvb_frontend* tda827x_attach(struct dvb_frontend *fe, int addr, struct i2c_adapter *i2c, struct tda827x_config *cfg)
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         *undescribed*
+    :type fe: struct dvb_frontend \*
 
-    :param int addr:
+    :param addr:
         *undescribed*
+    :type addr: int
 
-    :param struct i2c_adapter \*i2c:
+    :param i2c:
         *undescribed*
+    :type i2c: struct i2c_adapter \*
 
-    :param struct tda827x_config \*cfg:
+    :param cfg:
         *undescribed*
+    :type cfg: struct tda827x_config \*
 
 .. _`tda827x_attach.description`:
 

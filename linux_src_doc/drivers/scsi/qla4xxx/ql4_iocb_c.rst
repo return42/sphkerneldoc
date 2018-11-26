@@ -10,11 +10,13 @@ qla4xxx_get_req_pkt
 
     returns a valid entry in request queue.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct queue_entry \*\*queue_entry:
+    :param queue_entry:
         Pointer to pointer to queue entry structure
+    :type queue_entry: struct queue_entry \*\*
 
 .. _`qla4xxx_get_req_pkt.this-routine-performs-the-following-tasks`:
 
@@ -34,17 +36,21 @@ qla4xxx_send_marker_iocb
 
     issues marker iocb to HBA
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct ddb_entry \*ddb_entry:
+    :param ddb_entry:
         Pointer to device database entry
+    :type ddb_entry: struct ddb_entry \*
 
-    :param uint64_t lun:
+    :param lun:
         SCSI LUN
+    :type lun: uint64_t
 
-    :param uint16_t mrkr_mod:
+    :param mrkr_mod:
         *undescribed*
+    :type mrkr_mod: uint16_t
 
 .. _`qla4xxx_send_marker_iocb.description`:
 
@@ -62,8 +68,9 @@ qla4_82xx_queue_iocb
 
     Tell ISP it's got new request(s)
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_82xx_queue_iocb.description`:
 
@@ -82,8 +89,9 @@ qla4_82xx_complete_iocb
 
     Tell ISP we're done with response(s)
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_82xx_complete_iocb.description`:
 
@@ -103,8 +111,9 @@ qla4xxx_queue_iocb
 
     Tell ISP it's got new request(s)
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_queue_iocb.description`:
 
@@ -123,8 +132,9 @@ qla4xxx_complete_iocb
 
     Tell ISP we're done with response(s)
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_complete_iocb.description`:
 
@@ -144,11 +154,13 @@ qla4xxx_send_command_to_isp
 
     issues command to HBA
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct srb \*srb:
+    :param srb:
         pointer to SCSI Request Block to be sent to ISP
+    :type srb: struct srb \*
 
 .. _`qla4xxx_send_command_to_isp.description`:
 

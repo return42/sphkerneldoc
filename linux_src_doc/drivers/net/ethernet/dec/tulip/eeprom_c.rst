@@ -10,8 +10,9 @@ tulip_build_fake_mediatable
 
     Build a fake mediatable entry.
 
-    :param struct tulip_private \*tp:
+    :param tp:
         Ptr to the tulip private data.
+    :type tp: struct tulip_private \*
 
 .. _`tulip_build_fake_mediatable.description`:
 

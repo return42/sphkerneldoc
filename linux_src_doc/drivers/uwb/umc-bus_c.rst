@@ -10,8 +10,9 @@ umc_controller_reset
 
     reset the whole UMC controller
 
-    :param struct umc_dev \*umc:
+    :param umc:
         the UMC device for the radio controller.
+    :type umc: struct umc_dev \*
 
 .. _`umc_controller_reset.description`:
 
@@ -37,12 +38,14 @@ umc_match_pci_id
 
     match a UMC driver to a UMC device's parent PCI device.
 
-    :param struct umc_driver \*umc_drv:
+    :param umc_drv:
         umc driver with match_data pointing to a zero-terminated
         table of pci_device_id's.
+    :type umc_drv: struct umc_driver \*
 
-    :param struct umc_dev \*umc:
+    :param umc:
         umc device whose parent is to be matched.
+    :type umc: struct umc_dev \*
 
 .. This file was automatic generated / don't edit.
 

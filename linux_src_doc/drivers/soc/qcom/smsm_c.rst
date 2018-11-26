@@ -168,14 +168,17 @@ smsm_update_bits
 
     change bit in outgoing entry and inform subscribers
 
-    :param void \*data:
+    :param data:
         smsm context pointer
+    :type data: void \*
 
-    :param u32 mask:
+    :param mask:
         *undescribed*
+    :type mask: u32
 
-    :param u32 value:
+    :param value:
         new value
+    :type value: u32
 
 .. _`smsm_update_bits.description`:
 
@@ -194,11 +197,13 @@ smsm_intr
 
     cascading IRQ handler for SMSM
 
-    :param int irq:
+    :param irq:
         unused
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         entry related to this IRQ
+    :type data: void \*
 
 .. _`smsm_intr.description`:
 
@@ -217,8 +222,9 @@ smsm_mask_irq
 
     un-subscribe from cascades of IRQs of a certain staus bit
 
-    :param struct irq_data \*irqd:
+    :param irqd:
         IRQ handle to be masked
+    :type irqd: struct irq_data \*
 
 .. _`smsm_mask_irq.description`:
 
@@ -237,8 +243,9 @@ smsm_unmask_irq
 
     subscribe to cascades of IRQs of a certain status bit
 
-    :param struct irq_data \*irqd:
+    :param irqd:
         IRQ handle to be unmasked
+    :type irqd: struct irq_data \*
 
 .. _`smsm_unmask_irq.description`:
 
@@ -257,11 +264,13 @@ smsm_set_irq_type
 
     updates the requested IRQ type for the cascading
 
-    :param struct irq_data \*irqd:
+    :param irqd:
         consumer interrupt handle
+    :type irqd: struct irq_data \*
 
-    :param unsigned int type:
+    :param type:
         requested flags
+    :type type: unsigned int
 
 .. _`smsm_irq_map`:
 
@@ -272,14 +281,17 @@ smsm_irq_map
 
     sets up a mapping for a cascaded IRQ
 
-    :param struct irq_domain \*d:
+    :param d:
         IRQ domain representing an entry
+    :type d: struct irq_domain \*
 
-    :param unsigned int irq:
+    :param irq:
         IRQ to set up
+    :type irq: unsigned int
 
-    :param irq_hw_number_t hw:
+    :param hw:
         unused
+    :type hw: irq_hw_number_t
 
 .. _`smsm_parse_ipc`:
 
@@ -290,11 +302,13 @@ smsm_parse_ipc
 
     parses a qcom,ipc-%d device tree property
 
-    :param struct qcom_smsm \*smsm:
+    :param smsm:
         smsm driver context
+    :type smsm: struct qcom_smsm \*
 
-    :param unsigned host_id:
+    :param host_id:
         index of the remote host to be resolved
+    :type host_id: unsigned
 
 .. _`smsm_parse_ipc.description`:
 
@@ -313,14 +327,17 @@ smsm_inbound_entry
 
     parse DT and set up an entry representing a remote system
 
-    :param struct qcom_smsm \*smsm:
+    :param smsm:
         smsm driver context
+    :type smsm: struct qcom_smsm \*
 
-    :param struct smsm_entry \*entry:
+    :param entry:
         entry context to be set up
+    :type entry: struct smsm_entry \*
 
-    :param struct device_node \*node:
+    :param node:
         dt node containing the entry's properties
+    :type node: struct device_node \*
 
 .. _`smsm_get_size_info`:
 
@@ -331,8 +348,9 @@ smsm_get_size_info
 
     parse the optional memory segment for sizes
 
-    :param struct qcom_smsm \*smsm:
+    :param smsm:
         smsm driver context
+    :type smsm: struct qcom_smsm \*
 
 .. _`smsm_get_size_info.description`:
 

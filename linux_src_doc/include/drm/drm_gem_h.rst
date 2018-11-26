@@ -127,8 +127,9 @@ DEFINE_DRM_GEM_FOPS
 
     macro to generate file operations for GEM drivers
 
-    :param  name:
+    :param name:
         name for the generated structure
+    :type name: 
 
 .. _`define_drm_gem_fops.description`:
 
@@ -153,8 +154,9 @@ drm_gem_object_get
 
     acquire a GEM buffer object reference
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM buffer object
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_object_get.description`:
 
@@ -173,8 +175,9 @@ __drm_gem_object_put
 
     raw function to release a GEM buffer object reference
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM buffer object
+    :type obj: struct drm_gem_object \*
 
 .. _`__drm_gem_object_put.description`:
 
@@ -201,8 +204,9 @@ drm_gem_object_reference
 
     acquire a GEM buffer object reference
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM buffer object
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_object_reference.description`:
 
@@ -221,8 +225,9 @@ __drm_gem_object_unreference
 
     raw function to release a GEM buffer object reference
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM buffer object
+    :type obj: struct drm_gem_object \*
 
 .. _`__drm_gem_object_unreference.description`:
 
@@ -241,8 +246,9 @@ drm_gem_object_unreference_unlocked
 
     release a GEM buffer object reference
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM buffer object
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_object_unreference_unlocked.description`:
 
@@ -261,8 +267,9 @@ drm_gem_object_unreference
 
     release a GEM buffer object reference
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM buffer object
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_object_unreference.description`:
 

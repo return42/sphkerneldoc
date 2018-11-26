@@ -10,8 +10,9 @@ hash_mac_addr
 
     return the hash value of a MAC address
 
-    :param const u8 \*addr:
+    :param addr:
         the 48-bit Ethernet MAC address
+    :type addr: const u8 \*
 
 .. _`hash_mac_addr.description`:
 

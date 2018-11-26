@@ -10,8 +10,9 @@ fs_initcall
 
     but before PCI assign resources for uninitialized PCI devices
 
-    :param  pnp_system_init:
+    :param pnp_system_init:
         *undescribed*
+    :type pnp_system_init: 
 
 .. This file was automatic generated / don't edit.
 

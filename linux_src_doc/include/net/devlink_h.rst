@@ -572,5 +572,71 @@ occ_get
 occ_get_priv
     *undescribed*
 
+.. _`devlink_param`:
+
+struct devlink_param
+====================
+
+.. c:type:: struct devlink_param
+
+    devlink configuration parameter data
+
+.. _`devlink_param.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct devlink_param {
+        u32 id;
+        const char *name;
+        bool generic;
+        enum devlink_param_type type;
+        unsigned long supported_cmodes;
+        int (*get)(struct devlink *devlink, u32 id, struct devlink_param_gset_ctx *ctx);
+        int (*set)(struct devlink *devlink, u32 id, struct devlink_param_gset_ctx *ctx);
+        int (*validate)(struct devlink *devlink, u32 id,union devlink_param_value val, struct netlink_ext_ack *extack);
+    }
+
+.. _`devlink_param.members`:
+
+Members
+-------
+
+id
+    *undescribed*
+
+name
+    name of the parameter
+
+generic
+    indicates if the parameter is generic or driver specific
+
+type
+    parameter type
+
+supported_cmodes
+    bitmap of supported configuration modes
+
+get
+    get parameter value, used for runtime and permanent
+    configuration modes
+
+set
+    set parameter value, used for runtime and permanent
+    configuration modes
+
+validate
+    validate input value is applicable (within value range, etc.)
+
+.. _`devlink_param.description`:
+
+Description
+-----------
+
+This struct should be used by the driver to fill the data for
+a parameter it registers.
+
 .. This file was automatic generated / don't edit.
 

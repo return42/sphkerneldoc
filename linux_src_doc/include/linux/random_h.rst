@@ -10,8 +10,9 @@ prandom_u32_max
 
     returns a pseudo-random number in interval [0, ep_ro)
 
-    :param u32 ep_ro:
+    :param ep_ro:
         right open interval endpoint
+    :type ep_ro: u32
 
 .. _`prandom_u32_max.description`:
 
@@ -40,11 +41,13 @@ prandom_seed_state
 
     set seed for \ :c:func:`prandom_u32_state`\ .
 
-    :param struct rnd_state \*state:
+    :param state:
         pointer to state structure to receive the seed.
+    :type state: struct rnd_state \*
 
-    :param u64 seed:
+    :param seed:
         arbitrary 64-bit value to use as a seed.
+    :type seed: u64
 
 .. This file was automatic generated / don't edit.
 

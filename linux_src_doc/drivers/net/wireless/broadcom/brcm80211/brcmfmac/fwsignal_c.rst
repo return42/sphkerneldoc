@@ -431,11 +431,13 @@ brcmf_fws_get_tlv_len
 
     returns defined length for given tlv id.
 
-    :param struct brcmf_fws_info \*fws:
+    :param fws:
         firmware-signalling information.
+    :type fws: struct brcmf_fws_info \*
 
-    :param enum brcmf_fws_tlv_type id:
+    :param id:
         identifier of the TLV.
+    :type id: enum brcmf_fws_tlv_type
 
 .. _`brcmf_fws_get_tlv_len.return`:
 

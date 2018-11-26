@@ -10,20 +10,25 @@ tpm_transmit
 
     Internal kernel interface to transmit TPM commands.
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
-    :param struct tpm_space \*space:
+    :param space:
         tpm space
+    :type space: struct tpm_space \*
 
-    :param u8 \*buf:
+    :param buf:
         TPM command buffer
+    :type buf: u8 \*
 
-    :param size_t bufsiz:
+    :param bufsiz:
         length of the TPM command buffer
+    :type bufsiz: size_t
 
-    :param unsigned int flags:
+    :param flags:
         tpm transmit flags - bitmap
+    :type flags: unsigned int
 
 .. _`tpm_transmit.description`:
 
@@ -59,26 +64,33 @@ tpm_transmit_cmd
 
     send a tpm command to the device The function extracts tpm out header return code
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
-    :param struct tpm_space \*space:
+    :param space:
         tpm space
+    :type space: struct tpm_space \*
 
-    :param void \*buf:
+    :param buf:
         TPM command buffer
+    :type buf: void \*
 
-    :param size_t bufsiz:
+    :param bufsiz:
         length of the buffer
+    :type bufsiz: size_t
 
-    :param size_t min_rsp_body_length:
+    :param min_rsp_body_length:
         minimum expected length of response body
+    :type min_rsp_body_length: size_t
 
-    :param unsigned int flags:
+    :param flags:
         tpm transmit flags - bitmap
+    :type flags: unsigned int
 
-    :param const char \*desc:
+    :param desc:
         command description used in the error message
+    :type desc: const char \*
 
 .. _`tpm_transmit_cmd.return`:
 
@@ -98,8 +110,9 @@ tpm_startup
 
     turn on the TPM
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
 .. _`tpm_startup.description`:
 
@@ -126,8 +139,9 @@ tpm_continue_selftest
 
     - run TPM's selftest
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
 .. _`tpm_continue_selftest.description`:
 
@@ -146,8 +160,9 @@ tpm_is_tpm2
 
     do we a have a TPM2 chip?
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
+    :type chip: struct tpm_chip \*
 
 .. _`tpm_is_tpm2.return`:
 
@@ -167,14 +182,17 @@ tpm_pcr_read
 
     read a PCR value from SHA1 bank
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
+    :type chip: struct tpm_chip \*
 
-    :param int pcr_idx:
+    :param pcr_idx:
         the PCR to be retrieved
+    :type pcr_idx: int
 
-    :param u8 \*res_buf:
+    :param res_buf:
         the value of the PCR
+    :type res_buf: u8 \*
 
 .. _`tpm_pcr_read.return`:
 
@@ -192,14 +210,17 @@ tpm_pcr_extend
 
     extend a PCR value in SHA1 bank.
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
+    :type chip: struct tpm_chip \*
 
-    :param int pcr_idx:
+    :param pcr_idx:
         the PCR to be retrieved
+    :type pcr_idx: int
 
-    :param const u8 \*hash:
+    :param hash:
         the hash value used to extend the PCR value
+    :type hash: const u8 \*
 
 .. _`tpm_pcr_extend.note`:
 
@@ -226,8 +247,9 @@ tpm_do_selftest
 
     have the TPM continue its selftest and wait until it can receive further commands
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
 .. _`tpm_do_selftest.description`:
 
@@ -246,8 +268,9 @@ tpm1_auto_startup
 
     Perform the standard automatic TPM initialization sequence
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
 .. _`tpm1_auto_startup.description`:
 
@@ -265,14 +288,17 @@ tpm_send
 
     send a TPM command
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
+    :type chip: struct tpm_chip \*
 
-    :param void \*cmd:
+    :param cmd:
         a TPM command buffer
+    :type cmd: void \*
 
-    :param size_t buflen:
+    :param buflen:
         the length of the TPM command buffer
+    :type buflen: size_t
 
 .. _`tpm_send.return`:
 
@@ -290,14 +316,17 @@ tpm_get_random
 
     get random bytes from the TPM's RNG
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
+    :type chip: struct tpm_chip \*
 
-    :param u8 \*out:
+    :param out:
         destination buffer for the random bytes
+    :type out: u8 \*
 
-    :param size_t max:
+    :param max:
         the max number of bytes to write to \ ``out``\ 
+    :type max: size_t
 
 .. _`tpm_get_random.return`:
 
@@ -315,14 +344,17 @@ tpm_seal_trusted
 
     seal a trusted key payload
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
+    :type chip: struct tpm_chip \*
 
-    :param struct trusted_key_payload \*payload:
+    :param payload:
         the key data in clear and encrypted form
+    :type payload: struct trusted_key_payload \*
 
-    :param struct trusted_key_options \*options:
+    :param options:
         authentication values and other options
+    :type options: struct trusted_key_options \*
 
 .. _`tpm_seal_trusted.note`:
 
@@ -348,14 +380,17 @@ tpm_unseal_trusted
 
     unseal a trusted key
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
+    :type chip: struct tpm_chip \*
 
-    :param struct trusted_key_payload \*payload:
+    :param payload:
         the key data in clear and encrypted form
+    :type payload: struct trusted_key_payload \*
 
-    :param struct trusted_key_options \*options:
+    :param options:
         authentication values and other options
+    :type options: struct trusted_key_options \*
 
 .. _`tpm_unseal_trusted.note`:
 

@@ -91,7 +91,6 @@ Definition
             int num_clocks;
         } clk_provider;
         struct v4l2_async_notifier subdev_notifier;
-        struct v4l2_async_subdev *async_subdevs[FIMC_MAX_SENSORS];
         bool user_subdev_api;
         spinlock_t slock;
         struct list_head pipelines;
@@ -149,9 +148,6 @@ clk_provider
     *undescribed*
 
 subdev_notifier
-    *undescribed*
-
-async_subdevs
     *undescribed*
 
 user_subdev_api

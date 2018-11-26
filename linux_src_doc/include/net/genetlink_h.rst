@@ -259,8 +259,9 @@ genlmsg_nlhdr
 
     Obtain netlink header from user specified header
 
-    :param void \*user_hdr:
+    :param user_hdr:
         user header as returned from \ :c:func:`genlmsg_put`\ 
+    :type user_hdr: void \*
 
 .. _`genlmsg_nlhdr.description`:
 
@@ -278,23 +279,29 @@ genlmsg_parse
 
     parse attributes of a genetlink message
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: const struct nlmsghdr \*
 
-    :param const struct genl_family \*family:
+    :param family:
         genetlink message family
+    :type family: const struct genl_family \*
 
-    :param struct nlattr  \*tb:
+    :param tb:
         destination array with maxtype+1 elements
+    :type tb: struct nlattr  \*
 
-    :param int maxtype:
+    :param maxtype:
         maximum attribute type to be expected
+    :type maxtype: int
 
-    :param const struct nla_policy \*policy:
+    :param policy:
         validation policy
+    :type policy: const struct nla_policy \*
 
-    :param struct netlink_ext_ack \*extack:
+    :param extack:
         extended ACK report struct
+    :type extack: struct netlink_ext_ack \*
 
 .. _`genl_dump_check_consistent`:
 
@@ -305,11 +312,13 @@ genl_dump_check_consistent
 
     check if sequence is consistent and advertise if not
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         netlink callback structure that stores the sequence number
+    :type cb: struct netlink_callback \*
 
-    :param void \*user_hdr:
+    :param user_hdr:
         user header as returned from \ :c:func:`genlmsg_put`\ 
+    :type user_hdr: void \*
 
 .. _`genl_dump_check_consistent.description`:
 
@@ -328,20 +337,25 @@ genlmsg_put_reply
 
     Add generic netlink header to a reply message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer holding the message
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         receiver info
+    :type info: struct genl_info \*
 
-    :param const struct genl_family \*family:
+    :param family:
         generic netlink family
+    :type family: const struct genl_family \*
 
-    :param int flags:
+    :param flags:
         netlink message flags
+    :type flags: int
 
-    :param u8 cmd:
+    :param cmd:
         generic netlink command
+    :type cmd: u8
 
 .. _`genlmsg_put_reply.description`:
 
@@ -359,11 +373,13 @@ genlmsg_end
 
     Finalize a generic netlink message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer the message is stored in
+    :type skb: struct sk_buff \*
 
-    :param void \*hdr:
+    :param hdr:
         user specific header
+    :type hdr: void \*
 
 .. _`genlmsg_cancel`:
 
@@ -374,11 +390,13 @@ genlmsg_cancel
 
     Cancel construction of a generic netlink message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer the message is stored in
+    :type skb: struct sk_buff \*
 
-    :param void \*hdr:
+    :param hdr:
         generic netlink message header
+    :type hdr: void \*
 
 .. _`genlmsg_multicast_netns`:
 
@@ -389,23 +407,29 @@ genlmsg_multicast_netns
 
     multicast a netlink message to a specific netns
 
-    :param const struct genl_family \*family:
+    :param family:
         the generic netlink family
+    :type family: const struct genl_family \*
 
-    :param struct net \*net:
+    :param net:
         the net namespace
+    :type net: struct net \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         netlink message as socket buffer
+    :type skb: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         own netlink portid to avoid sending to yourself
+    :type portid: u32
 
-    :param unsigned int group:
+    :param group:
         offset of multicast group in groups array
+    :type group: unsigned int
 
-    :param gfp_t flags:
+    :param flags:
         allocation flags
+    :type flags: gfp_t
 
 .. _`genlmsg_multicast`:
 
@@ -416,20 +440,25 @@ genlmsg_multicast
 
     multicast a netlink message to the default netns
 
-    :param const struct genl_family \*family:
+    :param family:
         the generic netlink family
+    :type family: const struct genl_family \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         netlink message as socket buffer
+    :type skb: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         own netlink portid to avoid sending to yourself
+    :type portid: u32
 
-    :param unsigned int group:
+    :param group:
         offset of multicast group in groups array
+    :type group: unsigned int
 
-    :param gfp_t flags:
+    :param flags:
         allocation flags
+    :type flags: gfp_t
 
 .. _`genlmsg_multicast_allns`:
 
@@ -440,20 +469,25 @@ genlmsg_multicast_allns
 
     multicast a netlink message to all net namespaces
 
-    :param const struct genl_family \*family:
+    :param family:
         the generic netlink family
+    :type family: const struct genl_family \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         netlink message as socket buffer
+    :type skb: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         own netlink portid to avoid sending to yourself
+    :type portid: u32
 
-    :param unsigned int group:
+    :param group:
         offset of multicast group in groups array
+    :type group: unsigned int
 
-    :param gfp_t flags:
+    :param flags:
         allocation flags
+    :type flags: gfp_t
 
 .. _`genlmsg_multicast_allns.description`:
 
@@ -471,14 +505,17 @@ genlmsg_unicast
 
     unicast a netlink message
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         netlink message as socket buffer
+    :type skb: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink portid of the destination socket
+    :type portid: u32
 
 .. _`genlmsg_reply`:
 
@@ -489,11 +526,13 @@ genlmsg_reply
 
     reply to a request
 
-    :param struct sk_buff \*skb:
+    :param skb:
         netlink message to be sent back
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         receiver information
+    :type info: struct genl_info \*
 
 .. _`genlmsg_data`:
 
@@ -504,8 +543,9 @@ genlmsg_data
 
     head of message payload
 
-    :param const struct genlmsghdr \*gnlh:
+    :param gnlh:
         genetlink message header
+    :type gnlh: const struct genlmsghdr \*
 
 .. _`genlmsg_len`:
 
@@ -516,8 +556,9 @@ genlmsg_len
 
     length of message payload
 
-    :param const struct genlmsghdr \*gnlh:
+    :param gnlh:
         genetlink message header
+    :type gnlh: const struct genlmsghdr \*
 
 .. _`genlmsg_msg_size`:
 
@@ -528,8 +569,9 @@ genlmsg_msg_size
 
     length of genetlink message not including padding
 
-    :param int payload:
+    :param payload:
         length of message payload
+    :type payload: int
 
 .. _`genlmsg_total_size`:
 
@@ -540,8 +582,9 @@ genlmsg_total_size
 
     length of genetlink message including padding
 
-    :param int payload:
+    :param payload:
         length of message payload
+    :type payload: int
 
 .. _`genlmsg_new`:
 
@@ -552,11 +595,13 @@ genlmsg_new
 
     Allocate a new generic netlink message
 
-    :param size_t payload:
+    :param payload:
         size of the message payload
+    :type payload: size_t
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate.
+    :type flags: gfp_t
 
 .. _`genl_set_err`:
 
@@ -567,21 +612,26 @@ genl_set_err
 
     report error to genetlink broadcast listeners
 
-    :param const struct genl_family \*family:
+    :param family:
         the generic netlink family
+    :type family: const struct genl_family \*
 
-    :param struct net \*net:
+    :param net:
         the network namespace to report the error to
+    :type net: struct net \*
 
-    :param u32 portid:
+    :param portid:
         the PORTID of a process that we want to skip (if any)
+    :type portid: u32
 
-    :param u32 group:
+    :param group:
         the broadcast group that will notice the error
         (this is the offset of the multicast group in the groups array)
+    :type group: u32
 
-    :param int code:
+    :param code:
         error code, must be negative (as usual in kernelspace)
+    :type code: int
 
 .. _`genl_set_err.description`:
 

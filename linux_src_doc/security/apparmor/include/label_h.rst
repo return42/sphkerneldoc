@@ -10,8 +10,9 @@
 
     get a reference count to uncounted label reference
 
-    :param struct aa_label \*l:
+    :param l:
         reference to get a count on
+    :type l: struct aa_label \*
 
 .. _`__aa_get_label.return`:
 
@@ -37,8 +38,9 @@ aa_get_label_rcu
 
     increment refcount on a label that can be replaced
 
-    :param struct aa_label __rcu \*\*l:
+    :param l:
         pointer to label that can be replaced (NOT NULL)
+    :type l: struct aa_label __rcu \*\*
 
 .. _`aa_get_label_rcu.return`:
 
@@ -57,8 +59,9 @@ aa_get_newest_label
 
     find the newest version of \ ``l``\ 
 
-    :param struct aa_label \*l:
+    :param l:
         the label to check for newer versions of
+    :type l: struct aa_label \*
 
 .. _`aa_get_newest_label.return`:
 

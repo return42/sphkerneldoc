@@ -6,12 +6,13 @@
 board_added
 ===========
 
-.. c:function:: int board_added(struct slot *p_slot)
+.. c:function:: int board_added(struct controller *ctrl)
 
     Called after a board has been added to the system.
 
-    :param struct slot \*p_slot:
-        \ :c:type:`struct slot <slot>`\  where board is added
+    :param ctrl:
+        PCIe hotplug controller where board is added
+    :type ctrl: struct controller \*
 
 .. _`board_added.description`:
 
@@ -26,32 +27,17 @@ Configures board.
 remove_board
 ============
 
-.. c:function:: int remove_board(struct slot *p_slot)
+.. c:function:: void remove_board(struct controller *ctrl, bool safe_removal)
 
     Turns off slot and LEDs
 
-    :param struct slot \*p_slot:
-        slot where board is being removed
+    :param ctrl:
+        PCIe hotplug controller where board is being removed
+    :type ctrl: struct controller \*
 
-.. _`pciehp_power_thread`:
-
-pciehp_power_thread
-===================
-
-.. c:function:: void pciehp_power_thread(struct work_struct *work)
-
-    handle pushbutton events
-
-    :param struct work_struct \*work:
-        \ :c:type:`struct work_struct <work_struct>`\  describing work to be done
-
-.. _`pciehp_power_thread.description`:
-
-Description
------------
-
-Scheduled procedure to handle blocking stuff for the pushbuttons.
-Handles all pending events and exits.
+    :param safe_removal:
+        whether the board is safely removed (versus surprise removed)
+    :type safe_removal: bool
 
 .. This file was automatic generated / don't edit.
 

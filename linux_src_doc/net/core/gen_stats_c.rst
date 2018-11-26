@@ -10,26 +10,33 @@ gnet_stats_start_copy_compat
 
     start dumping procedure in compatibility mode
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to put statistics TLVs into
+    :type skb: struct sk_buff \*
 
-    :param int type:
+    :param type:
         TLV type for top level statistic TLV
+    :type type: int
 
-    :param int tc_stats_type:
+    :param tc_stats_type:
         TLV type for backward compatibility struct tc_stats TLV
+    :type tc_stats_type: int
 
-    :param int xstats_type:
+    :param xstats_type:
         TLV type for backward compatibility xstats TLV
+    :type xstats_type: int
 
-    :param spinlock_t \*lock:
+    :param lock:
         statistics lock
+    :type lock: spinlock_t \*
 
-    :param struct gnet_dump \*d:
+    :param d:
         dumping handle
+    :type d: struct gnet_dump \*
 
-    :param int padattr:
+    :param padattr:
         padding attribute
+    :type padattr: int
 
 .. _`gnet_stats_start_copy_compat.description`:
 
@@ -54,20 +61,25 @@ gnet_stats_start_copy
 
     start dumping procedure in compatibility mode
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to put statistics TLVs into
+    :type skb: struct sk_buff \*
 
-    :param int type:
+    :param type:
         TLV type for top level statistic TLV
+    :type type: int
 
-    :param spinlock_t \*lock:
+    :param lock:
         statistics lock
+    :type lock: spinlock_t \*
 
-    :param struct gnet_dump \*d:
+    :param d:
         dumping handle
+    :type d: struct gnet_dump \*
 
-    :param int padattr:
+    :param padattr:
         padding attribute
+    :type padattr: int
 
 .. _`gnet_stats_start_copy.description`:
 
@@ -89,19 +101,59 @@ gnet_stats_copy_basic
 
     copy basic statistics into statistic TLV
 
-    :param const seqcount_t \*running:
+    :param running:
         seqcount_t pointer
+    :type running: const seqcount_t \*
 
-    :param struct gnet_dump \*d:
+    :param d:
         dumping handle
+    :type d: struct gnet_dump \*
 
-    :param struct gnet_stats_basic_cpu __percpu \*cpu:
+    :param cpu:
         copy statistic per cpu
+    :type cpu: struct gnet_stats_basic_cpu __percpu \*
 
-    :param struct gnet_stats_basic_packed \*b:
+    :param b:
         basic statistics
+    :type b: struct gnet_stats_basic_packed \*
 
 .. _`gnet_stats_copy_basic.description`:
+
+Description
+-----------
+
+Appends the basic statistics to the top level TLV created by
+\ :c:func:`gnet_stats_start_copy`\ .
+
+Returns 0 on success or -1 with the statistic lock released
+if the room in the socket buffer was not sufficient.
+
+.. _`gnet_stats_copy_basic_hw`:
+
+gnet_stats_copy_basic_hw
+========================
+
+.. c:function:: int gnet_stats_copy_basic_hw(const seqcount_t *running, struct gnet_dump *d, struct gnet_stats_basic_cpu __percpu *cpu, struct gnet_stats_basic_packed *b)
+
+    copy basic hw statistics into statistic TLV
+
+    :param running:
+        seqcount_t pointer
+    :type running: const seqcount_t \*
+
+    :param d:
+        dumping handle
+    :type d: struct gnet_dump \*
+
+    :param cpu:
+        copy statistic per cpu
+    :type cpu: struct gnet_stats_basic_cpu __percpu \*
+
+    :param b:
+        basic statistics
+    :type b: struct gnet_stats_basic_packed \*
+
+.. _`gnet_stats_copy_basic_hw.description`:
 
 Description
 -----------
@@ -121,11 +173,13 @@ gnet_stats_copy_rate_est
 
     copy rate estimator statistics into statistics TLV
 
-    :param struct gnet_dump \*d:
+    :param d:
         dumping handle
+    :type d: struct gnet_dump \*
 
-    :param struct net_rate_estimator __rcu \*\*rate_est:
+    :param rate_est:
         rate estimator
+    :type rate_est: struct net_rate_estimator __rcu \*\*
 
 .. _`gnet_stats_copy_rate_est.description`:
 
@@ -147,17 +201,21 @@ gnet_stats_copy_queue
 
     copy queue statistics into statistics TLV
 
-    :param struct gnet_dump \*d:
+    :param d:
         dumping handle
+    :type d: struct gnet_dump \*
 
-    :param struct gnet_stats_queue __percpu \*cpu_q:
+    :param cpu_q:
         per cpu queue statistics
+    :type cpu_q: struct gnet_stats_queue __percpu \*
 
-    :param struct gnet_stats_queue \*q:
+    :param q:
         queue statistics
+    :type q: struct gnet_stats_queue \*
 
-    :param __u32 qlen:
+    :param qlen:
         queue length statistics
+    :type qlen: __u32
 
 .. _`gnet_stats_copy_queue.description`:
 
@@ -180,14 +238,17 @@ gnet_stats_copy_app
 
     copy application specific statistics into statistics TLV
 
-    :param struct gnet_dump \*d:
+    :param d:
         dumping handle
+    :type d: struct gnet_dump \*
 
-    :param void \*st:
+    :param st:
         application specific statistics data
+    :type st: void \*
 
-    :param int len:
+    :param len:
         length of data
+    :type len: int
 
 .. _`gnet_stats_copy_app.description`:
 
@@ -210,8 +271,9 @@ gnet_stats_finish_copy
 
     finish dumping procedure
 
-    :param struct gnet_dump \*d:
+    :param d:
         dumping handle
+    :type d: struct gnet_dump \*
 
 .. _`gnet_stats_finish_copy.description`:
 

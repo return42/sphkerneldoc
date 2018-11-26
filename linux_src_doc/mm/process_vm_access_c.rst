@@ -10,21 +10,26 @@ process_vm_rw_pages
 
     read/write pages from task specified
 
-    :param struct page \*\*pages:
+    :param pages:
         array of pointers to pages we want to copy
+    :type pages: struct page \*\*
 
-    :param unsigned offset:
+    :param offset:
         offset in page to start copying from/to
+    :type offset: unsigned
 
-    :param size_t len:
+    :param len:
         number of bytes to copy
+    :type len: size_t
 
-    :param struct iov_iter \*iter:
+    :param iter:
         where to copy to/from locally
+    :type iter: struct iov_iter \*
 
-    :param int vm_write:
+    :param vm_write:
         0 means copy from, 1 means copy to
         Returns 0 on success, error code otherwise
+    :type vm_write: int
 
 .. _`process_vm_rw_single_vec`:
 
@@ -35,28 +40,35 @@ process_vm_rw_single_vec
 
     read/write pages from task specified
 
-    :param unsigned long addr:
+    :param addr:
         start memory address of target process
+    :type addr: unsigned long
 
-    :param unsigned long len:
+    :param len:
         size of area to copy to/from
+    :type len: unsigned long
 
-    :param struct iov_iter \*iter:
+    :param iter:
         where to copy to/from locally
+    :type iter: struct iov_iter \*
 
-    :param struct page \*\*process_pages:
+    :param process_pages:
         struct pages area that can store at least
         nr_pages_to_copy struct page pointers
+    :type process_pages: struct page \*\*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         mm for task
+    :type mm: struct mm_struct \*
 
-    :param struct task_struct \*task:
+    :param task:
         task to read/write from
+    :type task: struct task_struct \*
 
-    :param int vm_write:
+    :param vm_write:
         0 means copy from, 1 means copy to
         Returns 0 on success or on failure error code
+    :type vm_write: int
 
 .. _`process_vm_rw_core`:
 
@@ -67,23 +79,29 @@ process_vm_rw_core
 
     core of reading/writing pages from task specified
 
-    :param pid_t pid:
+    :param pid:
         PID of process to read/write from/to
+    :type pid: pid_t
 
-    :param struct iov_iter \*iter:
+    :param iter:
         where to copy to/from locally
+    :type iter: struct iov_iter \*
 
-    :param const struct iovec \*rvec:
+    :param rvec:
         iovec array specifying where to copy to/from in the other process
+    :type rvec: const struct iovec \*
 
-    :param unsigned long riovcnt:
+    :param riovcnt:
         size of rvec array
+    :type riovcnt: unsigned long
 
-    :param unsigned long flags:
+    :param flags:
         currently unused
+    :type flags: unsigned long
 
-    :param int vm_write:
+    :param vm_write:
         0 if reading from other process, 1 if writing to other process
+    :type vm_write: int
 
 .. _`process_vm_rw_core.description`:
 
@@ -103,26 +121,33 @@ process_vm_rw
 
     check iovecs before calling core routine
 
-    :param pid_t pid:
+    :param pid:
         PID of process to read/write from/to
+    :type pid: pid_t
 
-    :param const struct iovec __user \*lvec:
+    :param lvec:
         iovec array specifying where to copy to/from locally
+    :type lvec: const struct iovec __user \*
 
-    :param unsigned long liovcnt:
+    :param liovcnt:
         size of lvec array
+    :type liovcnt: unsigned long
 
-    :param const struct iovec __user \*rvec:
+    :param rvec:
         iovec array specifying where to copy to/from in the other process
+    :type rvec: const struct iovec __user \*
 
-    :param unsigned long riovcnt:
+    :param riovcnt:
         size of rvec array
+    :type riovcnt: unsigned long
 
-    :param unsigned long flags:
+    :param flags:
         currently unused
+    :type flags: unsigned long
 
-    :param int vm_write:
+    :param vm_write:
         0 if reading from other process, 1 if writing to other process
+    :type vm_write: int
 
 .. _`process_vm_rw.description`:
 

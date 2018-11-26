@@ -10,11 +10,13 @@ process_cmd_err
 
     command error handler
 
-    :param struct afu_cmd \*cmd:
+    :param cmd:
         AFU command that experienced the error.
+    :type cmd: struct afu_cmd \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command associated with the AFU command in error.
+    :type scp: struct scsi_cmnd \*
 
 .. _`process_cmd_err.description`:
 
@@ -32,8 +34,9 @@ cmd_complete
 
     command completion handler
 
-    :param struct afu_cmd \*cmd:
+    :param cmd:
         AFU command that has completed.
+    :type cmd: struct afu_cmd \*
 
 .. _`cmd_complete.description`:
 
@@ -54,8 +57,9 @@ flush_pending_cmds
 
     flush all pending commands on this hardware queue
 
-    :param struct hwq \*hwq:
+    :param hwq:
         Hardware queue to flush.
+    :type hwq: struct hwq \*
 
 .. _`flush_pending_cmds.description`:
 
@@ -74,11 +78,13 @@ context_reset
 
     reset context via specified register
 
-    :param struct hwq \*hwq:
+    :param hwq:
         Hardware queue owning the context to be reset.
+    :type hwq: struct hwq \*
 
-    :param __be64 __iomem \*reset_reg:
+    :param reset_reg:
         MMIO register to perform reset.
+    :type reset_reg: __be64 __iomem \*
 
 .. _`context_reset.description`:
 
@@ -105,8 +111,9 @@ context_reset_ioarrin
 
     reset context via IOARRIN register
 
-    :param struct hwq \*hwq:
+    :param hwq:
         Hardware queue owning the context to be reset.
+    :type hwq: struct hwq \*
 
 .. _`context_reset_ioarrin.return`:
 
@@ -124,8 +131,9 @@ context_reset_sq
 
     reset context via SQ_CONTEXT_RESET register
 
-    :param struct hwq \*hwq:
+    :param hwq:
         Hardware queue owning the context to be reset.
+    :type hwq: struct hwq \*
 
 .. _`context_reset_sq.return`:
 
@@ -143,11 +151,13 @@ send_cmd_ioarrin
 
     sends an AFU command via IOARRIN register
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct afu \*
 
-    :param struct afu_cmd \*cmd:
+    :param cmd:
         AFU command to send.
+    :type cmd: struct afu_cmd \*
 
 .. _`send_cmd_ioarrin.return`:
 
@@ -165,11 +175,13 @@ send_cmd_sq
 
     sends an AFU command via SQ ring
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct afu \*
 
-    :param struct afu_cmd \*cmd:
+    :param cmd:
         AFU command to send.
+    :type cmd: struct afu_cmd \*
 
 .. _`send_cmd_sq.return`:
 
@@ -187,11 +199,13 @@ wait_resp
 
     polls for a response or timeout to a sent AFU command
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct afu \*
 
-    :param struct afu_cmd \*cmd:
+    :param cmd:
         AFU command that was sent.
+    :type cmd: struct afu_cmd \*
 
 .. _`wait_resp.return`:
 
@@ -209,14 +223,17 @@ cmd_to_target_hwq
 
     selects a target hardware queue for a SCSI command
 
-    :param struct Scsi_Host \*host:
+    :param host:
         SCSI host associated with device.
+    :type host: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command to send.
+    :type scp: struct scsi_cmnd \*
 
-    :param struct afu \*afu:
+    :param afu:
         SCSI command to send.
+    :type afu: struct afu \*
 
 .. _`cmd_to_target_hwq.description`:
 
@@ -241,14 +258,17 @@ send_tmf
 
     sends a Task Management Function (TMF)
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device destined for TMF.
+    :type sdev: struct scsi_device \*
 
-    :param u64 tmfcmd:
+    :param tmfcmd:
         TMF command to send.
+    :type tmfcmd: u64
 
 .. _`send_tmf.return`:
 
@@ -266,8 +286,9 @@ cxlflash_driver_info
 
     information handler for this host driver
 
-    :param struct Scsi_Host \*host:
+    :param host:
         SCSI host associated with device.
+    :type host: struct Scsi_Host \*
 
 .. _`cxlflash_driver_info.return`:
 
@@ -285,11 +306,13 @@ cxlflash_queuecommand
 
     sends a mid-layer request
 
-    :param struct Scsi_Host \*host:
+    :param host:
         SCSI host associated with device.
+    :type host: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command to send.
+    :type scp: struct scsi_cmnd \*
 
 .. _`cxlflash_queuecommand.return`:
 
@@ -307,8 +330,9 @@ cxlflash_wait_for_pci_err_recovery
 
     wait for error recovery during probe
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`free_mem`:
 
@@ -319,8 +343,9 @@ free_mem
 
     free memory associated with the AFU
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`cxlflash_reset_sync`:
 
@@ -331,8 +356,9 @@ cxlflash_reset_sync
 
     synchronizing point for asynchronous resets
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`stop_afu`:
 
@@ -343,8 +369,9 @@ stop_afu
 
     stops the AFU command timers and unmaps the MMIO space
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`stop_afu.description`:
 
@@ -365,14 +392,17 @@ term_intr
 
     disables all AFU interrupts
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param enum undo_level level:
+    :param level:
         Depth of allocation, where to begin waterfall tear down.
+    :type level: enum undo_level
 
-    :param u32 index:
+    :param index:
         Index of the hardware queue.
+    :type index: u32
 
 .. _`term_intr.description`:
 
@@ -390,11 +420,13 @@ term_mc
 
     terminates the master context
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param u32 index:
+    :param index:
         Index of the hardware queue.
+    :type index: u32
 
 .. _`term_mc.description`:
 
@@ -412,8 +444,9 @@ term_afu
 
     terminates the AFU
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`term_afu.description`:
 
@@ -431,11 +464,13 @@ notify_shutdown
 
     notifies device of pending shutdown
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param bool wait:
+    :param wait:
         Whether to wait for shutdown processing to complete.
+    :type wait: bool
 
 .. _`notify_shutdown.description`:
 
@@ -456,8 +491,9 @@ cxlflash_get_minor
 
     gets the first available minor number
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cxlflash_get_minor.return`:
 
@@ -475,8 +511,9 @@ cxlflash_put_minor
 
     releases the minor number
 
-    :param int minor:
+    :param minor:
         Minor number that is no longer needed.
+    :type minor: int
 
 .. _`cxlflash_release_chrdev`:
 
@@ -487,8 +524,9 @@ cxlflash_release_chrdev
 
     release the character device for the host
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`cxlflash_remove`:
 
@@ -499,8 +537,9 @@ cxlflash_remove
 
     PCI entry point to tear down host
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device associated with the host.
+    :type pdev: struct pci_dev \*
 
 .. _`cxlflash_remove.description`:
 
@@ -519,8 +558,9 @@ alloc_mem
 
     allocates the AFU and its command pool
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`alloc_mem.description`:
 
@@ -546,8 +586,9 @@ init_pci
 
     initializes the host as a PCI device
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`init_pci.return`:
 
@@ -565,8 +606,9 @@ init_scsi
 
     adds the host to the SCSI stack and kicks off host scan
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`init_scsi.return`:
 
@@ -584,8 +626,9 @@ set_port_online
 
     transitions the specified host FC port to online state
 
-    :param __be64 __iomem \*fc_regs:
+    :param fc_regs:
         Top of MMIO region defined for specified port.
+    :type fc_regs: __be64 __iomem \*
 
 .. _`set_port_online.description`:
 
@@ -605,8 +648,9 @@ set_port_offline
 
     transitions the specified host FC port to offline state
 
-    :param __be64 __iomem \*fc_regs:
+    :param fc_regs:
         Top of MMIO region defined for specified port.
+    :type fc_regs: __be64 __iomem \*
 
 .. _`set_port_offline.description`:
 
@@ -624,14 +668,17 @@ wait_port_online
 
     waits for the specified host FC port come online
 
-    :param __be64 __iomem \*fc_regs:
+    :param fc_regs:
         Top of MMIO region defined for specified port.
+    :type fc_regs: __be64 __iomem \*
 
-    :param u32 delay_us:
+    :param delay_us:
         Number of microseconds to delay between reading port status.
+    :type delay_us: u32
 
-    :param u32 nretry:
+    :param nretry:
         Number of cycles to retry reading port status.
+    :type nretry: u32
 
 .. _`wait_port_online.description`:
 
@@ -658,14 +705,17 @@ wait_port_offline
 
     waits for the specified host FC port go offline
 
-    :param __be64 __iomem \*fc_regs:
+    :param fc_regs:
         Top of MMIO region defined for specified port.
+    :type fc_regs: __be64 __iomem \*
 
-    :param u32 delay_us:
+    :param delay_us:
         Number of microseconds to delay between reading port status.
+    :type delay_us: u32
 
-    :param u32 nretry:
+    :param nretry:
         Number of cycles to retry reading port status.
+    :type nretry: u32
 
 .. _`wait_port_offline.description`:
 
@@ -691,17 +741,21 @@ afu_set_wwpn
 
     configures the WWPN for the specified host FC port
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host that owns the specified FC port.
+    :type afu: struct afu \*
 
-    :param int port:
+    :param port:
         Port number being configured.
+    :type port: int
 
-    :param __be64 __iomem \*fc_regs:
+    :param fc_regs:
         Top of MMIO region defined for specified port.
+    :type fc_regs: __be64 __iomem \*
 
-    :param u64 wwpn:
+    :param wwpn:
         The world-wide-port-number previously discovered for port.
+    :type wwpn: u64
 
 .. _`afu_set_wwpn.description`:
 
@@ -723,14 +777,17 @@ afu_link_reset
 
     resets the specified host FC port
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host that owns the specified FC port.
+    :type afu: struct afu \*
 
-    :param int port:
+    :param port:
         Port number being configured.
+    :type port: int
 
-    :param __be64 __iomem \*fc_regs:
+    :param fc_regs:
         Top of MMIO region defined for specified port.
+    :type fc_regs: __be64 __iomem \*
 
 .. _`afu_link_reset.description`:
 
@@ -753,8 +810,9 @@ afu_err_intr_init
 
     clears and initializes the AFU for error interrupts
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct afu \*
 
 .. _`cxlflash_sync_err_irq`:
 
@@ -765,11 +823,13 @@ cxlflash_sync_err_irq
 
     interrupt handler for synchronous errors
 
-    :param int irq:
+    :param irq:
         Interrupt number.
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Private data provided at interrupt registration, the AFU.
+    :type data: void \*
 
 .. _`cxlflash_sync_err_irq.return`:
 
@@ -787,14 +847,17 @@ process_hrrq
 
     process the read-response queue
 
-    :param struct hwq \*hwq:
+    :param hwq:
         *undescribed*
+    :type hwq: struct hwq \*
 
-    :param struct list_head \*doneq:
+    :param doneq:
         Queue of commands harvested from the RRQ.
+    :type doneq: struct list_head \*
 
-    :param int budget:
+    :param budget:
         Threshold of RRQ entries to process.
+    :type budget: int
 
 .. _`process_hrrq.description`:
 
@@ -819,8 +882,9 @@ process_cmd_doneq
 
     process a queue of harvested RRQ commands
 
-    :param struct list_head \*doneq:
+    :param doneq:
         Queue of completed commands.
+    :type doneq: struct list_head \*
 
 .. _`process_cmd_doneq.description`:
 
@@ -838,11 +902,13 @@ cxlflash_irqpoll
 
     process a queue of harvested RRQ commands
 
-    :param struct irq_poll \*irqpoll:
+    :param irqpoll:
         IRQ poll structure associated with queue to poll.
+    :type irqpoll: struct irq_poll \*
 
-    :param int budget:
+    :param budget:
         Threshold of RRQ entries to process per poll.
+    :type budget: int
 
 .. _`cxlflash_irqpoll.return`:
 
@@ -860,11 +926,13 @@ cxlflash_rrq_irq
 
     interrupt handler for read-response queue (normal path)
 
-    :param int irq:
+    :param irq:
         Interrupt number.
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Private data provided at interrupt registration, the AFU.
+    :type data: void \*
 
 .. _`cxlflash_rrq_irq.return`:
 
@@ -882,11 +950,13 @@ cxlflash_async_err_irq
 
     interrupt handler for asynchronous errors
 
-    :param int irq:
+    :param irq:
         Interrupt number.
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Private data provided at interrupt registration, the AFU.
+    :type data: void \*
 
 .. _`cxlflash_async_err_irq.return`:
 
@@ -904,11 +974,13 @@ read_vpd
 
     obtains the WWPNs from VPD
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param u64 wwpn:
+    :param wwpn:
         Array of size MAX_FC_PORTS to pass back WWPNs
+    :type wwpn: u64
 
 .. _`read_vpd.return`:
 
@@ -926,8 +998,9 @@ init_pcr
 
     initialize the provisioning and control registers
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`init_pcr.description`:
 
@@ -946,8 +1019,9 @@ init_global
 
     initialize AFU global registers
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`start_afu`:
 
@@ -958,8 +1032,9 @@ start_afu
 
     initializes and starts the AFU
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`init_intr`:
 
@@ -970,11 +1045,13 @@ init_intr
 
     setup interrupt handlers for the master context
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param struct hwq \*hwq:
+    :param hwq:
         Hardware queue to initialize.
+    :type hwq: struct hwq \*
 
 .. _`init_intr.return`:
 
@@ -992,11 +1069,13 @@ init_mc
 
     create and register as the master context
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param u32 index:
+    :param index:
         *undescribed*
+    :type index: u32
 
 .. _`init_mc.index`:
 
@@ -1021,8 +1100,9 @@ get_num_afu_ports
 
     determines and configures the number of AFU ports
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`get_num_afu_ports.description`:
 
@@ -1049,8 +1129,9 @@ init_afu
 
     setup as master context and start AFU
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`init_afu.description`:
 
@@ -1076,8 +1157,9 @@ afu_reset
 
     resets the AFU
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`afu_reset.return`:
 
@@ -1095,8 +1177,9 @@ drain_ioctls
 
     wait until all currently executing ioctls have completed
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`drain_ioctls.description`:
 
@@ -1115,11 +1198,13 @@ cxlflash_async_reset_host
 
     asynchronous host reset handler
 
-    :param void \*data:
+    :param data:
         Private data provided while scheduling reset.
+    :type data: void \*
 
-    :param async_cookie_t cookie:
+    :param cookie:
         Cookie that can be used for checkpointing.
+    :type cookie: async_cookie_t
 
 .. _`cxlflash_schedule_async_reset`:
 
@@ -1130,8 +1215,9 @@ cxlflash_schedule_async_reset
 
     schedule an asynchronous host reset
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`send_afu_cmd`:
 
@@ -1142,11 +1228,13 @@ send_afu_cmd
 
     builds and sends an internal AFU command
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct afu \*
 
-    :param struct sisl_ioarcb \*rcb:
+    :param rcb:
         Pre-populated IOARCB describing command to send.
+    :type rcb: struct sisl_ioarcb \*
 
 .. _`send_afu_cmd.description`:
 
@@ -1177,17 +1265,21 @@ cxlflash_afu_sync
 
     builds and sends an AFU sync command
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct afu \*
 
-    :param ctx_hndl_t ctx:
+    :param ctx:
         Identifies context requesting sync.
+    :type ctx: ctx_hndl_t
 
-    :param res_hndl_t res:
+    :param res:
         Identifies resource requesting sync.
+    :type res: res_hndl_t
 
-    :param u8 mode:
+    :param mode:
         Type of sync to issue (lightweight, heavyweight, global).
+    :type mode: u8
 
 .. _`cxlflash_afu_sync.description`:
 
@@ -1216,8 +1308,9 @@ cxlflash_eh_abort_handler
 
     abort a SCSI command
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command to abort.
+    :type scp: struct scsi_cmnd \*
 
 .. _`cxlflash_eh_abort_handler.description`:
 
@@ -1244,8 +1337,9 @@ cxlflash_eh_device_reset_handler
 
     reset a single LUN
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command to send.
+    :type scp: struct scsi_cmnd \*
 
 .. _`cxlflash_eh_device_reset_handler.return`:
 
@@ -1264,8 +1358,9 @@ cxlflash_eh_host_reset_handler
 
     reset the host adapter
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command from stack identifying host.
+    :type scp: struct scsi_cmnd \*
 
 .. _`cxlflash_eh_host_reset_handler.description`:
 
@@ -1294,11 +1389,13 @@ cxlflash_change_queue_depth
 
     change the queue depth for the device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device destined for queue depth change.
+    :type sdev: struct scsi_device \*
 
-    :param int qdepth:
+    :param qdepth:
         Requested queue depth value to set.
+    :type qdepth: int
 
 .. _`cxlflash_change_queue_depth.description`:
 
@@ -1323,14 +1420,17 @@ cxlflash_show_port_status
 
     queries and presents the current port status
 
-    :param u32 port:
+    :param port:
         Desired port for status reporting.
+    :type port: u32
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
+    :type buf: char \*
 
 .. _`cxlflash_show_port_status.return`:
 
@@ -1348,14 +1448,17 @@ port0_show
 
     queries and presents the current status of port 0
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host owning the port.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the port.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
+    :type buf: char \*
 
 .. _`port0_show.return`:
 
@@ -1373,14 +1476,17 @@ port1_show
 
     queries and presents the current status of port 1
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host owning the port.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the port.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
+    :type buf: char \*
 
 .. _`port1_show.return`:
 
@@ -1398,14 +1504,17 @@ port2_show
 
     queries and presents the current status of port 2
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host owning the port.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the port.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
+    :type buf: char \*
 
 .. _`port2_show.return`:
 
@@ -1423,14 +1532,17 @@ port3_show
 
     queries and presents the current status of port 3
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host owning the port.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the port.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
+    :type buf: char \*
 
 .. _`port3_show.return`:
 
@@ -1448,14 +1560,17 @@ lun_mode_show
 
     presents the current LUN mode of the host
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the LUN mode.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back the LUN mode in ASCII.
+    :type buf: char \*
 
 .. _`lun_mode_show.return`:
 
@@ -1473,17 +1588,21 @@ lun_mode_store
 
     sets the LUN mode of the host
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the LUN mode.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE containing the LUN mode in ASCII.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         Length of data resizing in \ ``buf``\ .
+    :type count: size_t
 
 .. _`lun_mode_store.description`:
 
@@ -1519,14 +1638,17 @@ ioctl_version_show
 
     presents the current ioctl version of the host
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the ioctl version.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back the ioctl version.
+    :type buf: char \*
 
 .. _`ioctl_version_show.return`:
 
@@ -1544,14 +1666,17 @@ cxlflash_show_port_lun_table
 
     queries and presents the port LUN table
 
-    :param u32 port:
+    :param port:
         Desired port for status reporting.
+    :type port: u32
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
+    :type buf: char \*
 
 .. _`cxlflash_show_port_lun_table.return`:
 
@@ -1569,14 +1694,17 @@ port0_lun_table_show
 
     presents the current LUN table of port 0
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host owning the port.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the port.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
+    :type buf: char \*
 
 .. _`port0_lun_table_show.return`:
 
@@ -1594,14 +1722,17 @@ port1_lun_table_show
 
     presents the current LUN table of port 1
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host owning the port.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the port.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
+    :type buf: char \*
 
 .. _`port1_lun_table_show.return`:
 
@@ -1619,14 +1750,17 @@ port2_lun_table_show
 
     presents the current LUN table of port 2
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host owning the port.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the port.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
+    :type buf: char \*
 
 .. _`port2_lun_table_show.return`:
 
@@ -1644,14 +1778,17 @@ port3_lun_table_show
 
     presents the current LUN table of port 3
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host owning the port.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the port.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
+    :type buf: char \*
 
 .. _`port3_lun_table_show.return`:
 
@@ -1669,15 +1806,18 @@ irqpoll_weight_show
 
     presents the current IRQ poll weight for the host
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the IRQ poll weight.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back the current IRQ poll
         weight in ASCII.
+    :type buf: char \*
 
 .. _`irqpoll_weight_show.description`:
 
@@ -1702,18 +1842,22 @@ irqpoll_weight_store
 
     sets the current IRQ poll weight for the host
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the IRQ poll weight.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE containing the desired IRQ poll
         weight in ASCII.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         Length of data resizing in \ ``buf``\ .
+    :type count: size_t
 
 .. _`irqpoll_weight_store.description`:
 
@@ -1738,15 +1882,18 @@ num_hwqs_show
 
     presents the number of hardware queues for the host
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the number of hardware queues.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back the number of hardware
         queues in ASCII.
+    :type buf: char \*
 
 .. _`num_hwqs_show.return`:
 
@@ -1764,18 +1911,22 @@ num_hwqs_store
 
     sets the number of hardware queues for the host
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the number of hardware queues.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE containing the number of hardware
         queues in ASCII.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         Length of data resizing in \ ``buf``\ .
+    :type count: size_t
 
 .. _`num_hwqs_store.description`:
 
@@ -1802,15 +1953,18 @@ hwq_mode_show
 
     presents the HWQ steering mode for the host
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the HWQ steering mode.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back the HWQ steering mode
         as a character string.
+    :type buf: char \*
 
 .. _`hwq_mode_show.return`:
 
@@ -1828,18 +1982,22 @@ hwq_mode_store
 
     sets the HWQ steering mode for the host
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the HWQ steering mode.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE containing the HWQ steering mode
         as a character string.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         Length of data resizing in \ ``buf``\ .
+    :type count: size_t
 
 .. _`hwq_mode_store.description`:
 
@@ -1866,14 +2024,17 @@ mode_show
 
     presents the current mode of the device
 
-    :param struct device \*dev:
+    :param dev:
         Generic device associated with the device.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute representing the device mode.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Buffer of length PAGE_SIZE to report back the dev mode in ASCII.
+    :type buf: char \*
 
 .. _`mode_show.return`:
 
@@ -1891,8 +2052,9 @@ cxlflash_worker_thread
 
     work thread handler for the AFU
 
-    :param struct work_struct \*work:
+    :param work:
         Work structure contained within cxlflash associated with host.
+    :type work: struct work_struct \*
 
 .. _`cxlflash_worker_thread.handles-the-following-events`:
 
@@ -1912,11 +2074,13 @@ cxlflash_chr_open
 
     character device open handler
 
-    :param struct inode \*inode:
+    :param inode:
         Device inode associated with this character device.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         File pointer for this device.
+    :type file: struct file \*
 
 .. _`cxlflash_chr_open.description`:
 
@@ -1941,8 +2105,9 @@ decode_hioctl
 
     translates encoded host ioctl to easily identifiable string
 
-    :param int cmd:
+    :param cmd:
         The host ioctl command to decode.
+    :type cmd: int
 
 .. _`decode_hioctl.return`:
 
@@ -1960,11 +2125,13 @@ cxlflash_lun_provision
 
     host LUN provisioning handler
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param struct ht_cxlflash_lun_provision \*lunprov:
+    :param lunprov:
         *undescribed*
+    :type lunprov: struct ht_cxlflash_lun_provision \*
 
 .. _`cxlflash_lun_provision.return`:
 
@@ -1982,11 +2149,13 @@ cxlflash_afu_debug
 
     host AFU debug handler
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param struct ht_cxlflash_afu_debug \*afu_dbg:
+    :param afu_dbg:
         *undescribed*
+    :type afu_dbg: struct ht_cxlflash_afu_debug \*
 
 .. _`cxlflash_afu_debug.description`:
 
@@ -2012,14 +2181,17 @@ cxlflash_chr_ioctl
 
     character device IOCTL handler
 
-    :param struct file \*file:
+    :param file:
         File pointer for this device.
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         IOCTL command.
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         Userspace ioctl data structure.
+    :type arg: unsigned long
 
 .. _`cxlflash_chr_ioctl.description`:
 
@@ -2050,8 +2222,9 @@ init_chrdev
 
     initialize the character device for the host
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`init_chrdev.return`:
 
@@ -2069,11 +2242,13 @@ cxlflash_probe
 
     PCI entry point to add host
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device associated with the host.
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*dev_id:
+    :param dev_id:
         PCI device id associated with device.
+    :type dev_id: const struct pci_device_id \*
 
 .. _`cxlflash_probe.description`:
 
@@ -2105,11 +2280,13 @@ cxlflash_pci_error_detected
 
     called when a PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct.
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         PCI channel state.
+    :type state: pci_channel_state_t
 
 .. _`cxlflash_pci_error_detected.description`:
 
@@ -2135,8 +2312,9 @@ cxlflash_pci_slot_reset
 
     called when PCI slot has been reset
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct.
+    :type pdev: struct pci_dev \*
 
 .. _`cxlflash_pci_slot_reset.description`:
 
@@ -2162,8 +2340,9 @@ cxlflash_pci_resume
 
     called when normal operation can resume
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
 .. _`cxlflash_devnode`:
 
@@ -2174,11 +2353,13 @@ cxlflash_devnode
 
     provides devtmpfs for devices in the cxlflash class
 
-    :param struct device \*dev:
+    :param dev:
         Character device.
+    :type dev: struct device \*
 
-    :param umode_t \*mode:
+    :param mode:
         Mode that can be used to verify access.
+    :type mode: umode_t \*
 
 .. _`cxlflash_devnode.return`:
 
@@ -2196,8 +2377,9 @@ cxlflash_class_init
 
     create character device class
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cxlflash_class_init.return`:
 
@@ -2215,8 +2397,9 @@ cxlflash_class_exit
 
     destroy character device class
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`init_cxlflash`:
 
@@ -2227,8 +2410,9 @@ init_cxlflash
 
     module entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`init_cxlflash.return`:
 
@@ -2246,8 +2430,9 @@ exit_cxlflash
 
     module exit point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

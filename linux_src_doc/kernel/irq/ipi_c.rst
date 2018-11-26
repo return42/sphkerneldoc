@@ -10,11 +10,13 @@ irq_reserve_ipi
 
     Setup an IPI to destination cpumask
 
-    :param struct irq_domain \*domain:
+    :param domain:
         IPI domain
+    :type domain: struct irq_domain \*
 
-    :param const struct cpumask \*dest:
+    :param dest:
         cpumask of cpus which can receive the IPI
+    :type dest: const struct cpumask \*
 
 .. _`irq_reserve_ipi.description`:
 
@@ -34,11 +36,13 @@ irq_destroy_ipi
 
     unreserve an IPI that was previously allocated
 
-    :param unsigned int irq:
+    :param irq:
         linux irq number to be destroyed
+    :type irq: unsigned int
 
-    :param const struct cpumask \*dest:
+    :param dest:
         cpumask of cpus which should have the IPI removed
+    :type dest: const struct cpumask \*
 
 .. _`irq_destroy_ipi.description`:
 
@@ -59,11 +63,13 @@ ipi_get_hwirq
 
     Get the hwirq associated with an IPI to a cpu
 
-    :param unsigned int irq:
+    :param irq:
         linux irq number
+    :type irq: unsigned int
 
-    :param unsigned int cpu:
+    :param cpu:
         the target cpu
+    :type cpu: unsigned int
 
 .. _`ipi_get_hwirq.description`:
 
@@ -84,12 +90,14 @@ Returns hwirq value on success and INVALID_HWIRQ on failure.
 
     send an IPI to a target Linux SMP CPU
 
-    :param struct irq_desc \*desc:
+    :param desc:
         pointer to irq_desc of the IRQ
+    :type desc: struct irq_desc \*
 
-    :param unsigned int cpu:
+    :param cpu:
         destination CPU, must in the destination mask passed to
         \ :c:func:`irq_reserve_ipi`\ 
+    :type cpu: unsigned int
 
 .. _`__ipi_send_single.description`:
 
@@ -110,12 +118,14 @@ Returns zero on success and negative error number on failure.
 
     send an IPI to target Linux SMP CPU(s)
 
-    :param struct irq_desc \*desc:
+    :param desc:
         pointer to irq_desc of the IRQ
+    :type desc: struct irq_desc \*
 
-    :param const struct cpumask \*dest:
+    :param dest:
         dest CPU(s), must be a subset of the mask passed to
         \ :c:func:`irq_reserve_ipi`\ 
+    :type dest: const struct cpumask \*
 
 .. _`__ipi_send_mask.description`:
 
@@ -136,12 +146,14 @@ ipi_send_single
 
     Send an IPI to a single CPU
 
-    :param unsigned int virq:
+    :param virq:
         linux irq number from \ :c:func:`irq_reserve_ipi`\ 
+    :type virq: unsigned int
 
-    :param unsigned int cpu:
+    :param cpu:
         destination CPU, must in the destination mask passed to
         \ :c:func:`irq_reserve_ipi`\ 
+    :type cpu: unsigned int
 
 .. _`ipi_send_single.description`:
 
@@ -159,12 +171,14 @@ ipi_send_mask
 
     Send an IPI to target CPU(s)
 
-    :param unsigned int virq:
+    :param virq:
         linux irq number from \ :c:func:`irq_reserve_ipi`\ 
+    :type virq: unsigned int
 
-    :param const struct cpumask \*dest:
+    :param dest:
         dest CPU(s), must be a subset of the mask passed to
         \ :c:func:`irq_reserve_ipi`\ 
+    :type dest: const struct cpumask \*
 
 .. _`ipi_send_mask.description`:
 

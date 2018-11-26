@@ -10,8 +10,9 @@ of_find_device_by_node
 
     Find the platform_device associated with a node
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to device tree node
+    :type np: struct device_node \*
 
 .. _`of_find_device_by_node.description`:
 
@@ -32,8 +33,9 @@ of_device_make_bus_id
 
     Use the device node data to assign a unique name
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure that is linked to a device tree node
+    :type dev: struct device \*
 
 .. _`of_device_make_bus_id.description`:
 
@@ -53,14 +55,17 @@ of_device_alloc
 
     Allocate and initialize an of_device
 
-    :param struct device_node \*np:
+    :param np:
         device node to assign to device
+    :type np: struct device_node \*
 
-    :param const char \*bus_id:
+    :param bus_id:
         Name to assign to the device.  May be null to use default name.
+    :type bus_id: const char \*
 
-    :param struct device \*parent:
+    :param parent:
         Parent device.
+    :type parent: struct device \*
 
 .. _`of_platform_device_create_pdata`:
 
@@ -71,17 +76,21 @@ of_platform_device_create_pdata
 
     Alloc, initialize and register an of_device
 
-    :param struct device_node \*np:
+    :param np:
         pointer to node to create device for
+    :type np: struct device_node \*
 
-    :param const char \*bus_id:
+    :param bus_id:
         name to assign device
+    :type bus_id: const char \*
 
-    :param void \*platform_data:
+    :param platform_data:
         pointer to populate platform_data pointer with
+    :type platform_data: void \*
 
-    :param struct device \*parent:
+    :param parent:
         Linux device model parent device.
+    :type parent: struct device \*
 
 .. _`of_platform_device_create_pdata.description`:
 
@@ -100,14 +109,17 @@ of_platform_device_create
 
     Alloc, initialize and register an of_device
 
-    :param struct device_node \*np:
+    :param np:
         pointer to node to create device for
+    :type np: struct device_node \*
 
-    :param const char \*bus_id:
+    :param bus_id:
         name to assign device
+    :type bus_id: const char \*
 
-    :param struct device \*parent:
+    :param parent:
         Linux device model parent device.
+    :type parent: struct device \*
 
 .. _`of_platform_device_create.description`:
 
@@ -126,11 +138,13 @@ of_dev_lookup
 
     Given a device node, lookup the preferred Linux name
 
-    :param const struct of_dev_auxdata \*lookup:
+    :param lookup:
         *undescribed*
+    :type lookup: const struct of_dev_auxdata \*
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
 .. _`of_platform_bus_create`:
 
@@ -141,20 +155,25 @@ of_platform_bus_create
 
     Create a device for a node and its children.
 
-    :param struct device_node \*bus:
+    :param bus:
         device node of the bus to instantiate
+    :type bus: struct device_node \*
 
-    :param const struct of_device_id \*matches:
+    :param matches:
         match table for bus nodes
+    :type matches: const struct of_device_id \*
 
-    :param const struct of_dev_auxdata \*lookup:
+    :param lookup:
         auxdata table for matching id and platform_data with device nodes
+    :type lookup: const struct of_dev_auxdata \*
 
-    :param struct device \*parent:
+    :param parent:
         parent for new device, or NULL for top level.
+    :type parent: struct device \*
 
-    :param bool strict:
+    :param strict:
         require compatible property
+    :type strict: bool
 
 .. _`of_platform_bus_create.description`:
 
@@ -173,14 +192,17 @@ of_platform_bus_probe
 
     Probe the device-tree for platform buses
 
-    :param struct device_node \*root:
+    :param root:
         parent of the first level to probe or NULL for the root of the tree
+    :type root: struct device_node \*
 
-    :param const struct of_device_id \*matches:
+    :param matches:
         match table for bus nodes
+    :type matches: const struct of_device_id \*
 
-    :param struct device \*parent:
+    :param parent:
         parent to hook devices from, NULL for toplevel
+    :type parent: struct device \*
 
 .. _`of_platform_bus_probe.description`:
 
@@ -199,17 +221,21 @@ of_platform_populate
 
     Populate platform_devices from device tree data
 
-    :param struct device_node \*root:
+    :param root:
         parent of the first level to probe or NULL for the root of the tree
+    :type root: struct device_node \*
 
-    :param const struct of_device_id \*matches:
+    :param matches:
         match table, NULL to use the default
+    :type matches: const struct of_device_id \*
 
-    :param const struct of_dev_auxdata \*lookup:
+    :param lookup:
         auxdata table for matching id and platform_data with device nodes
+    :type lookup: const struct of_dev_auxdata \*
 
-    :param struct device \*parent:
+    :param parent:
         parent to hook devices from, NULL for toplevel
+    :type parent: struct device \*
 
 .. _`of_platform_populate.description`:
 
@@ -237,8 +263,9 @@ of_platform_depopulate
 
     Remove devices populated from device tree
 
-    :param struct device \*parent:
+    :param parent:
         device which children will be removed
+    :type parent: struct device \*
 
 .. _`of_platform_depopulate.description`:
 
@@ -259,8 +286,9 @@ devm_of_platform_populate
 
     Populate platform_devices from device tree data
 
-    :param struct device \*dev:
+    :param dev:
         device that requested to populate from device tree data
+    :type dev: struct device \*
 
 .. _`devm_of_platform_populate.description`:
 
@@ -281,8 +309,9 @@ devm_of_platform_depopulate
 
     Remove devices populated from device tree
 
-    :param struct device \*dev:
+    :param dev:
         device that requested to depopulate from device tree data
+    :type dev: struct device \*
 
 .. _`devm_of_platform_depopulate.description`:
 

@@ -10,11 +10,13 @@ xt_check_proc_name
 
     check that name is suitable for /proc file creation
 
-    :param const char \*name:
+    :param name:
         file name candidate
+    :type name: const char \*
 
-    :param unsigned int size:
+    :param size:
         length of buffer
+    :type size: unsigned int
 
 .. _`xt_check_proc_name.description`:
 
@@ -37,17 +39,21 @@ xt_check_entry_offsets
 
     validate arp/ip/ip6t_entry
 
-    :param const void \*base:
+    :param base:
         pointer to arp/ip/ip6t_entry
+    :type base: const void \*
 
-    :param const char \*elems:
+    :param elems:
         pointer to first xt_entry_match, i.e. ip(6)t_entry->elems
+    :type elems: const char \*
 
-    :param unsigned int target_offset:
+    :param target_offset:
         the arp/ip/ip6_t->target_offset
+    :type target_offset: unsigned int
 
-    :param unsigned int next_offset:
+    :param next_offset:
         the arp/ip/ip6_t->next_offset
+    :type next_offset: unsigned int
 
 .. _`xt_check_entry_offsets.description`:
 
@@ -115,8 +121,9 @@ xt_alloc_entry_offsets
 
     allocate array to store rule head offsets
 
-    :param unsigned int size:
+    :param size:
         number of entries
+    :type size: unsigned int
 
 .. _`xt_alloc_entry_offsets.return`:
 
@@ -134,14 +141,17 @@ xt_find_jump_offset
 
     check if target is a valid jump offset
 
-    :param const unsigned int \*offsets:
+    :param offsets:
         array containing all valid rule start offsets of a rule blob
+    :type offsets: const unsigned int \*
 
-    :param unsigned int target:
+    :param target:
         the jump target to search for
+    :type target: unsigned int
 
-    :param unsigned int size:
+    :param size:
         entries in \ ``offset``\ 
+    :type size: unsigned int
 
 .. _`xt_copy_counters_from_user`:
 
@@ -152,17 +162,21 @@ xt_copy_counters_from_user
 
     copy counters and metadata from userspace
 
-    :param const void __user \*user:
+    :param user:
         src pointer to userspace memory
+    :type user: const void __user \*
 
-    :param unsigned int len:
+    :param len:
         alleged size of userspace memory
+    :type len: unsigned int
 
-    :param struct xt_counters_info \*info:
+    :param info:
         where to store the xt_counters_info metadata
+    :type info: struct xt_counters_info \*
 
-    :param bool compat:
+    :param compat:
         true if we setsockopt call is done by 32bit task on 64bit kernel
+    :type compat: bool
 
 .. _`xt_copy_counters_from_user.description`:
 
@@ -196,11 +210,13 @@ xt_hook_ops_alloc
 
     set up hooks for a new table
 
-    :param const struct xt_table \*table:
+    :param table:
         table with metadata needed to set up hooks
+    :type table: const struct xt_table \*
 
-    :param nf_hookfn \*fn:
+    :param fn:
         Hook function
+    :type fn: nf_hookfn \*
 
 .. _`xt_hook_ops_alloc.description`:
 
@@ -219,11 +235,13 @@ xt_percpu_counter_alloc
 
     allocate x_tables rule counter
 
-    :param struct xt_percpu_counter_alloc_state \*state:
+    :param state:
         pointer to xt_percpu allocation state
+    :type state: struct xt_percpu_counter_alloc_state \*
 
-    :param struct xt_counters \*counter:
+    :param counter:
         pointer to counter struct inside the ip(6)/arpt_entry struct
+    :type counter: struct xt_counters \*
 
 .. _`xt_percpu_counter_alloc.description`:
 

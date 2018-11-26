@@ -544,6 +544,43 @@ dev_52_high
 per_chain_restriction
     per chain restrictions
 
+.. _`iwl_dev_tx_power_cmd_v4`:
+
+struct iwl_dev_tx_power_cmd_v4
+==============================
+
+.. c:type:: struct iwl_dev_tx_power_cmd_v4
+
+    TX power reduction command
+
+.. _`iwl_dev_tx_power_cmd_v4.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_dev_tx_power_cmd_v4 {
+        struct iwl_dev_tx_power_cmd_v3 v3;
+        u8 enable_ack_reduction;
+        u8 reserved[3];
+    }
+
+.. _`iwl_dev_tx_power_cmd_v4.members`:
+
+Members
+-------
+
+v3
+    version 3 of the command, embedded here for easier software handling
+
+enable_ack_reduction
+    enable or disable close range ack TX power
+    reduction.
+
+reserved
+    reserved (padding)
+
 .. _`iwl_dev_tx_power_cmd`:
 
 struct iwl_dev_tx_power_cmd
@@ -563,7 +600,9 @@ Definition
     struct iwl_dev_tx_power_cmd {
         struct iwl_dev_tx_power_cmd_v3 v3;
         u8 enable_ack_reduction;
-        u8 reserved[3];
+        u8 per_chain_restriction_changed;
+        u8 reserved[2];
+        __le32 timer_period;
     }
 
 .. _`iwl_dev_tx_power_cmd.members`:
@@ -578,8 +617,24 @@ enable_ack_reduction
     enable or disable close range ack TX power
     reduction.
 
+per_chain_restriction_changed
+    is per_chain_restriction has changed
+    from last command. used if set_mode is
+    IWL_TX_POWER_MODE_SET_SAR_TIMER.
+
 reserved
     reserved (padding)
+
+timer_period
+    timer in milliseconds. if expires FW will change to default
+    BIOS values. relevant if setMode is IWL_TX_POWER_MODE_SET_SAR_TIMER
+
+.. _`iwl_dev_tx_power_cmd.note`:
+
+note
+----
+
+if not changed, the command is used for keep alive only.
 
 .. _`iwl_geo_per_chain_offset_operation`:
 

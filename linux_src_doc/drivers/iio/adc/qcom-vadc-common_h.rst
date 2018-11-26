@@ -131,7 +131,14 @@ Definition
         SCALE_THERM_100K_PULLUP,
         SCALE_PMIC_THERM,
         SCALE_XOTHERM,
-        SCALE_PMI_CHG_TEMP
+        SCALE_PMI_CHG_TEMP,
+        SCALE_HW_CALIB_DEFAULT,
+        SCALE_HW_CALIB_THERM_100K_PULLUP,
+        SCALE_HW_CALIB_XOTHERM,
+        SCALE_HW_CALIB_PMIC_THERM,
+        SCALE_HW_CALIB_PM5_CHG_TEMP,
+        SCALE_HW_CALIB_PM5_SMB_TEMP,
+        SCALE_HW_CALIB_INVALID
     };
 
 .. _`vadc_scale_fn_type.constants`:
@@ -152,6 +159,27 @@ SCALE_XOTHERM
     *undescribed*
 
 SCALE_PMI_CHG_TEMP
+    *undescribed*
+
+SCALE_HW_CALIB_DEFAULT
+    *undescribed*
+
+SCALE_HW_CALIB_THERM_100K_PULLUP
+    *undescribed*
+
+SCALE_HW_CALIB_XOTHERM
+    *undescribed*
+
+SCALE_HW_CALIB_PMIC_THERM
+    *undescribed*
+
+SCALE_HW_CALIB_PM5_CHG_TEMP
+    *undescribed*
+
+SCALE_HW_CALIB_PM5_SMB_TEMP
+    *undescribed*
+
+SCALE_HW_CALIB_INVALID
     *undescribed*
 
 .. _`vadc_scale_fn_type.scale_default`:
@@ -189,6 +217,54 @@ SCALE_PMI_CHG_TEMP
 ------------------
 
 Conversion for PMI CHG temp
+
+.. _`vadc_scale_fn_type.scale_hw_calib_default`:
+
+SCALE_HW_CALIB_DEFAULT
+----------------------
+
+Default scaling to convert raw adc code to
+voltage (uV) with hardware applied offset/slope values to adc code.
+
+.. _`vadc_scale_fn_type.scale_hw_calib_therm_100k_pullup`:
+
+SCALE_HW_CALIB_THERM_100K_PULLUP
+--------------------------------
+
+Returns temperature in millidegC using
+lookup table. The hardware applies offset/slope to adc code.
+
+.. _`vadc_scale_fn_type.scale_hw_calib_xotherm`:
+
+SCALE_HW_CALIB_XOTHERM
+----------------------
+
+Returns XO thermistor voltage in millidegC using
+100k pullup. The hardware applies offset/slope to adc code.
+
+.. _`vadc_scale_fn_type.scale_hw_calib_pmic_therm`:
+
+SCALE_HW_CALIB_PMIC_THERM
+-------------------------
+
+Returns result in milli degree's Centigrade.
+The hardware applies offset/slope to adc code.
+
+.. _`vadc_scale_fn_type.scale_hw_calib_pm5_chg_temp`:
+
+SCALE_HW_CALIB_PM5_CHG_TEMP
+---------------------------
+
+Returns result in millidegrees for PMIC5
+charger temperature.
+
+.. _`vadc_scale_fn_type.scale_hw_calib_pm5_smb_temp`:
+
+SCALE_HW_CALIB_PM5_SMB_TEMP
+---------------------------
+
+Returns result in millidegrees for PMIC5
+SMB1390 temperature.
 
 .. This file was automatic generated / don't edit.
 

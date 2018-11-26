@@ -10,8 +10,9 @@ snd_pcm_format_name
 
     Return a name string for the given PCM format
 
-    :param snd_pcm_format_t format:
+    :param format:
         PCM format
+    :type format: snd_pcm_format_t
 
 .. _`snd_pcm_new_stream`:
 
@@ -22,14 +23,17 @@ snd_pcm_new_stream
 
     create a new PCM stream
 
-    :param struct snd_pcm \*pcm:
+    :param pcm:
         the pcm instance
+    :type pcm: struct snd_pcm \*
 
-    :param int stream:
+    :param stream:
         the stream direction, SNDRV_PCM_STREAM_XXX
+    :type stream: int
 
-    :param int substream_count:
+    :param substream_count:
         the number of substreams
+    :type substream_count: int
 
 .. _`snd_pcm_new_stream.description`:
 
@@ -57,23 +61,29 @@ snd_pcm_new
 
     create a new PCM instance
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param const char \*id:
+    :param id:
         the id string
+    :type id: const char \*
 
-    :param int device:
+    :param device:
         the device index (zero based)
+    :type device: int
 
-    :param int playback_count:
+    :param playback_count:
         the number of substreams for playback
+    :type playback_count: int
 
-    :param int capture_count:
+    :param capture_count:
         the number of substreams for capture
+    :type capture_count: int
 
-    :param struct snd_pcm \*\*rpcm:
+    :param rpcm:
         the pointer to store the new pcm instance
+    :type rpcm: struct snd_pcm \*\*
 
 .. _`snd_pcm_new.description`:
 
@@ -101,23 +111,29 @@ snd_pcm_new_internal
 
     create a new internal PCM instance
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param const char \*id:
+    :param id:
         the id string
+    :type id: const char \*
 
-    :param int device:
+    :param device:
         the device index (zero based - shared with normal PCMs)
+    :type device: int
 
-    :param int playback_count:
+    :param playback_count:
         the number of substreams for playback
+    :type playback_count: int
 
-    :param int capture_count:
+    :param capture_count:
         the number of substreams for capture
+    :type capture_count: int
 
-    :param struct snd_pcm \*\*rpcm:
+    :param rpcm:
         the pointer to store the new pcm instance
+    :type rpcm: struct snd_pcm \*\*
 
 .. _`snd_pcm_new_internal.description`:
 
@@ -149,11 +165,13 @@ snd_pcm_notify
 
     Add/remove the notify list
 
-    :param struct snd_pcm_notify \*notify:
+    :param notify:
         PCM notify list
+    :type notify: struct snd_pcm_notify \*
 
-    :param int nfree:
+    :param nfree:
         0 = register, 1 = unregister
+    :type nfree: int
 
 .. _`snd_pcm_notify.description`:
 

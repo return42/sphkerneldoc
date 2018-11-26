@@ -10,8 +10,9 @@ sg_next
 
     return the next scatterlist entry in a list
 
-    :param struct scatterlist \*sg:
+    :param sg:
         The current sg entry
+    :type sg: struct scatterlist \*
 
 .. _`sg_next.description`:
 
@@ -31,8 +32,9 @@ sg_nents
 
     return total count of entries in scatterlist
 
-    :param struct scatterlist \*sg:
+    :param sg:
         The scatterlist
+    :type sg: struct scatterlist \*
 
 .. _`sg_nents.description`:
 
@@ -51,11 +53,13 @@ sg_nents_for_len
 
     return total count of entries in scatterlist needed to satisfy the supplied length
 
-    :param struct scatterlist \*sg:
+    :param sg:
         The scatterlist
+    :type sg: struct scatterlist \*
 
-    :param u64 len:
+    :param len:
         The total required length
+    :type len: u64
 
 .. _`sg_nents_for_len.description`:
 
@@ -81,11 +85,13 @@ sg_last
 
     return the last scatterlist entry in a list
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         First entry in the scatterlist
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of entries in the scatterlist
+    :type nents: unsigned int
 
 .. _`sg_last.description`:
 
@@ -108,11 +114,13 @@ sg_init_table
 
     Initialize SG table
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         The SG table
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of entries in table
+    :type nents: unsigned int
 
 .. _`sg_init_table.notes`:
 
@@ -131,14 +139,17 @@ sg_init_one
 
     Initialize a single entry sg list
 
-    :param struct scatterlist \*sg:
+    :param sg:
         SG entry
+    :type sg: struct scatterlist \*
 
-    :param const void \*buf:
+    :param buf:
         Virtual address for IO
+    :type buf: const void \*
 
-    :param unsigned int buflen:
+    :param buflen:
         IO length
+    :type buflen: unsigned int
 
 .. _`__sg_free_table`:
 
@@ -149,17 +160,21 @@ sg_init_one
 
     Free a previously mapped sg table
 
-    :param struct sg_table \*table:
+    :param table:
         The sg table header to use
+    :type table: struct sg_table \*
 
-    :param unsigned int max_ents:
+    :param max_ents:
         The maximum number of entries per single scatterlist
+    :type max_ents: unsigned int
 
-    :param bool skip_first_chunk:
+    :param skip_first_chunk:
         don't free the (preallocated) first scatterlist chunk
+    :type skip_first_chunk: bool
 
-    :param sg_free_fn \*free_fn:
+    :param free_fn:
         Free function
+    :type free_fn: sg_free_fn \*
 
 .. _`__sg_free_table.description`:
 
@@ -179,8 +194,9 @@ sg_free_table
 
     Free a previously allocated sg table
 
-    :param struct sg_table \*table:
+    :param table:
         The mapped sg table header
+    :type table: struct sg_table \*
 
 .. _`__sg_alloc_table`:
 
@@ -191,23 +207,29 @@ sg_free_table
 
     Allocate and initialize an sg table with given allocator
 
-    :param struct sg_table \*table:
+    :param table:
         The sg table header to use
+    :type table: struct sg_table \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of entries in sg list
+    :type nents: unsigned int
 
-    :param unsigned int max_ents:
+    :param max_ents:
         The maximum number of entries the allocator returns per call
+    :type max_ents: unsigned int
 
-    :param struct scatterlist \*first_chunk:
+    :param first_chunk:
         *undescribed*
+    :type first_chunk: struct scatterlist \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         GFP allocation mask
+    :type gfp_mask: gfp_t
 
-    :param sg_alloc_fn \*alloc_fn:
+    :param alloc_fn:
         Allocator to use
+    :type alloc_fn: sg_alloc_fn \*
 
 .. _`__sg_alloc_table.description`:
 
@@ -236,14 +258,17 @@ sg_alloc_table
 
     Allocate and initialize an sg table
 
-    :param struct sg_table \*table:
+    :param table:
         The sg table header to use
+    :type table: struct sg_table \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of entries in sg list
+    :type nents: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         GFP allocation mask
+    :type gfp_mask: gfp_t
 
 .. _`sg_alloc_table.description`:
 
@@ -262,26 +287,33 @@ SG_MAX_SINGLE_ALLOC a chained sg table will be setup.
 
     Allocate and initialize an sg table from an array of pages
 
-    :param struct sg_table \*sgt:
+    :param sgt:
         The sg table header to use
+    :type sgt: struct sg_table \*
 
-    :param struct page \*\*pages:
+    :param pages:
         Pointer to an array of page pointers
+    :type pages: struct page \*\*
 
-    :param unsigned int n_pages:
+    :param n_pages:
         Number of pages in the pages array
+    :type n_pages: unsigned int
 
-    :param unsigned int offset:
+    :param offset:
         Offset from start of the first page to the start of a buffer
+    :type offset: unsigned int
 
-    :param unsigned long size:
+    :param size:
         Number of valid bytes in the buffer (after offset)
+    :type size: unsigned long
 
-    :param unsigned int max_segment:
+    :param max_segment:
         Maximum size of a scatterlist node in bytes (page aligned)
+    :type max_segment: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         GFP allocation mask
+    :type gfp_mask: gfp_t
 
 .. _`__sg_alloc_table_from_pages.description`:
 
@@ -310,23 +342,29 @@ sg_alloc_table_from_pages
 
     Allocate and initialize an sg table from an array of pages
 
-    :param struct sg_table \*sgt:
+    :param sgt:
         The sg table header to use
+    :type sgt: struct sg_table \*
 
-    :param struct page \*\*pages:
+    :param pages:
         Pointer to an array of page pointers
+    :type pages: struct page \*\*
 
-    :param unsigned int n_pages:
+    :param n_pages:
         Number of pages in the pages array
+    :type n_pages: unsigned int
 
-    :param unsigned int offset:
+    :param offset:
         Offset from start of the first page to the start of a buffer
+    :type offset: unsigned int
 
-    :param unsigned long size:
+    :param size:
         Number of valid bytes in the buffer (after offset)
+    :type size: unsigned long
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         GFP allocation mask
+    :type gfp_mask: gfp_t
 
 .. _`sg_alloc_table_from_pages.description`:
 
@@ -355,21 +393,26 @@ sgl_alloc_order
 
     allocate a scatterlist and its pages
 
-    :param unsigned long long length:
+    :param length:
         Length in bytes of the scatterlist. Must be at least one
+    :type length: unsigned long long
 
-    :param unsigned int order:
+    :param order:
         Second argument for \ :c:func:`alloc_pages`\ 
+    :type order: unsigned int
 
-    :param bool chainable:
+    :param chainable:
         Whether or not to allocate an extra element in the scatterlist
         for scatterlist chaining purposes
+    :type chainable: bool
 
-    :param gfp_t gfp:
+    :param gfp:
         Memory allocation flags
+    :type gfp: gfp_t
 
-    :param unsigned int \*nent_p:
+    :param nent_p:
         [out] Number of entries in the scatterlist that have pages
+    :type nent_p: unsigned int \*
 
 .. _`sgl_alloc_order.return`:
 
@@ -387,14 +430,17 @@ sgl_alloc
 
     allocate a scatterlist and its pages
 
-    :param unsigned long long length:
+    :param length:
         Length in bytes of the scatterlist
+    :type length: unsigned long long
 
-    :param gfp_t gfp:
+    :param gfp:
         Memory allocation flags
+    :type gfp: gfp_t
 
-    :param unsigned int \*nent_p:
+    :param nent_p:
         [out] Number of entries in the scatterlist
+    :type nent_p: unsigned int \*
 
 .. _`sgl_alloc.return`:
 
@@ -412,14 +458,17 @@ sgl_free_n_order
 
     free a scatterlist and its pages
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         Scatterlist with one or more elements
+    :type sgl: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         Maximum number of elements to free
+    :type nents: int
 
-    :param int order:
+    :param order:
         Second argument for \__free_pages()
+    :type order: int
 
 .. _`sgl_free_n_order.notes`:
 
@@ -441,11 +490,13 @@ sgl_free_order
 
     free a scatterlist and its pages
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         Scatterlist with one or more elements
+    :type sgl: struct scatterlist \*
 
-    :param int order:
+    :param order:
         Second argument for \__free_pages()
+    :type order: int
 
 .. _`sgl_free`:
 
@@ -456,8 +507,9 @@ sgl_free
 
     free a scatterlist and its pages
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         Scatterlist with one or more elements
+    :type sgl: struct scatterlist \*
 
 .. _`sg_miter_start`:
 
@@ -468,17 +520,21 @@ sg_miter_start
 
     start mapping iteration over a sg list
 
-    :param struct sg_mapping_iter \*miter:
+    :param miter:
         sg mapping iter to be started
+    :type miter: struct sg_mapping_iter \*
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         sg list to iterate over
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         number of sg entries
+    :type nents: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`sg_miter_start.description`:
 
@@ -503,11 +559,13 @@ sg_miter_skip
 
     reposition mapping iterator
 
-    :param struct sg_mapping_iter \*miter:
+    :param miter:
         sg mapping iter to be skipped
+    :type miter: struct sg_mapping_iter \*
 
-    :param off_t offset:
+    :param offset:
         number of bytes to plus the current location
+    :type offset: off_t
 
 .. _`sg_miter_skip.description`:
 
@@ -543,8 +601,9 @@ sg_miter_next
 
     proceed mapping iterator to the next mapping
 
-    :param struct sg_mapping_iter \*miter:
+    :param miter:
         sg mapping iter to proceed
+    :type miter: struct sg_mapping_iter \*
 
 .. _`sg_miter_next.description`:
 
@@ -552,8 +611,8 @@ Description
 -----------
 
 Proceeds \ ``miter``\  to the next mapping.  \ ``miter``\  should have been started
-using \ :c:func:`sg_miter_start`\ .  On successful return, \ ``miter``\ ->page,
-\ ``miter``\ ->addr and \ ``miter``\ ->length point to the current mapping.
+using \ :c:func:`sg_miter_start`\ .  On successful return, \ ``miter->page``\ ,
+\ ``miter->addr``\  and \ ``miter->length``\  point to the current mapping.
 
 .. _`sg_miter_next.context`:
 
@@ -580,8 +639,9 @@ sg_miter_stop
 
     stop mapping iteration
 
-    :param struct sg_mapping_iter \*miter:
+    :param miter:
         sg mapping iter to be stopped
+    :type miter: struct sg_mapping_iter \*
 
 .. _`sg_miter_stop.description`:
 
@@ -610,24 +670,30 @@ sg_copy_buffer
 
     Copy data between a linear buffer and an SG list
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         The SG list
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of SG entries
+    :type nents: unsigned int
 
-    :param void \*buf:
+    :param buf:
         Where to copy from
+    :type buf: void \*
 
-    :param size_t buflen:
+    :param buflen:
         The number of bytes to copy
+    :type buflen: size_t
 
-    :param off_t skip:
+    :param skip:
         Number of bytes to skip before copying
+    :type skip: off_t
 
-    :param bool to_buffer:
+    :param to_buffer:
         transfer direction (true == from an sg list to a
         buffer, false == from a buffer to an sg list
+    :type to_buffer: bool
 
 .. _`sg_copy_buffer.description`:
 
@@ -645,17 +711,21 @@ sg_copy_from_buffer
 
     Copy from a linear buffer to an SG list
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         The SG list
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of SG entries
+    :type nents: unsigned int
 
-    :param const void \*buf:
+    :param buf:
         Where to copy from
+    :type buf: const void \*
 
-    :param size_t buflen:
+    :param buflen:
         The number of bytes to copy
+    :type buflen: size_t
 
 .. _`sg_copy_from_buffer.description`:
 
@@ -673,17 +743,21 @@ sg_copy_to_buffer
 
     Copy from an SG list to a linear buffer
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         The SG list
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of SG entries
+    :type nents: unsigned int
 
-    :param void \*buf:
+    :param buf:
         Where to copy to
+    :type buf: void \*
 
-    :param size_t buflen:
+    :param buflen:
         The number of bytes to copy
+    :type buflen: size_t
 
 .. _`sg_copy_to_buffer.description`:
 
@@ -701,20 +775,25 @@ sg_pcopy_from_buffer
 
     Copy from a linear buffer to an SG list
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         The SG list
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of SG entries
+    :type nents: unsigned int
 
-    :param const void \*buf:
+    :param buf:
         Where to copy from
+    :type buf: const void \*
 
-    :param size_t buflen:
+    :param buflen:
         The number of bytes to copy
+    :type buflen: size_t
 
-    :param off_t skip:
+    :param skip:
         Number of bytes to skip before copying
+    :type skip: off_t
 
 .. _`sg_pcopy_from_buffer.description`:
 
@@ -732,20 +811,25 @@ sg_pcopy_to_buffer
 
     Copy from an SG list to a linear buffer
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         The SG list
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of SG entries
+    :type nents: unsigned int
 
-    :param void \*buf:
+    :param buf:
         Where to copy to
+    :type buf: void \*
 
-    :param size_t buflen:
+    :param buflen:
         The number of bytes to copy
+    :type buflen: size_t
 
-    :param off_t skip:
+    :param skip:
         Number of bytes to skip before copying
+    :type skip: off_t
 
 .. _`sg_pcopy_to_buffer.description`:
 
@@ -763,17 +847,21 @@ sg_zero_buffer
 
     Zero-out a part of a SG list
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         The SG list
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         Number of SG entries
+    :type nents: unsigned int
 
-    :param size_t buflen:
+    :param buflen:
         The number of bytes to zero out
+    :type buflen: size_t
 
-    :param off_t skip:
+    :param skip:
         Number of bytes to skip before zeroing
+    :type skip: off_t
 
 .. _`sg_zero_buffer.description`:
 

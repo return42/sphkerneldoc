@@ -10,11 +10,13 @@ netcell_init_one
 
     Register Netcell ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         Entry in netcell_pci_tbl matching with \ ``pdev``\ 
+    :type ent: const struct pci_device_id \*
 
 .. _`netcell_init_one.description`:
 

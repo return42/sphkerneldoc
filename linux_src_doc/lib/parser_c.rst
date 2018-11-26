@@ -10,15 +10,18 @@ match_one
 
     - Determines if a string matches a simple pattern
 
-    :param char \*s:
+    :param s:
         the string to examine for presence of the pattern
+    :type s: char \*
 
-    :param const char \*p:
+    :param p:
         the string containing the pattern
+    :type p: const char \*
 
-    :param substring_t args:
+    :param args:
         array of \ ``MAX_OPT_ARGS``\  \ :c:type:`struct substring_t <substring_t>`\  elements. Used to return match
         locations.
+    :type args: substring_t
 
 .. _`match_one.description`:
 
@@ -38,17 +41,20 @@ match_token
 
     - Find a token (and optional args) in a string
 
-    :param char \*s:
+    :param s:
         the string to examine for token/argument pairs
+    :type s: char \*
 
-    :param const match_table_t table:
+    :param table:
         match_table_t describing the set of allowed option tokens and the
         arguments that may be associated with them. Must be terminated with a
         \ :c:type:`struct match_token <match_token>`\  whose pattern is set to the NULL pointer.
+    :type table: const match_table_t
 
-    :param substring_t args:
+    :param args:
         array of \ ``MAX_OPT_ARGS``\  \ :c:type:`struct substring_t <substring_t>`\  elements. Used to return match
         locations.
+    :type args: substring_t
 
 .. _`match_token.description`:
 
@@ -69,14 +75,17 @@ match_number
 
     scan a number in the given base from a substring_t
 
-    :param substring_t \*s:
+    :param s:
         substring to be scanned
+    :type s: substring_t \*
 
-    :param int \*result:
+    :param result:
         resulting integer on success
+    :type result: int \*
 
-    :param int base:
+    :param base:
         base to use when converting string
+    :type base: int
 
 .. _`match_number.description`:
 
@@ -96,14 +105,17 @@ match_u64int
 
     scan a number in the given base from a substring_t
 
-    :param substring_t \*s:
+    :param s:
         substring to be scanned
+    :type s: substring_t \*
 
-    :param u64 \*result:
+    :param result:
         resulting u64 on success
+    :type result: u64 \*
 
-    :param int base:
+    :param base:
         base to use when converting string
+    :type base: int
 
 .. _`match_u64int.description`:
 
@@ -123,11 +135,13 @@ match_int
 
     - scan a decimal representation of an integer from a substring_t
 
-    :param substring_t \*s:
+    :param s:
         substring_t to be scanned
+    :type s: substring_t \*
 
-    :param int \*result:
+    :param result:
         resulting integer on success
+    :type result: int \*
 
 .. _`match_int.description`:
 
@@ -147,11 +161,13 @@ match_u64
 
     - scan a decimal representation of a u64 from a substring_t
 
-    :param substring_t \*s:
+    :param s:
         substring_t to be scanned
+    :type s: substring_t \*
 
-    :param u64 \*result:
+    :param result:
         resulting unsigned long long on success
+    :type result: u64 \*
 
 .. _`match_u64.description`:
 
@@ -172,11 +188,13 @@ match_octal
 
     - scan an octal representation of an integer from a substring_t
 
-    :param substring_t \*s:
+    :param s:
         substring_t to be scanned
+    :type s: substring_t \*
 
-    :param int \*result:
+    :param result:
         resulting integer on success
+    :type result: int \*
 
 .. _`match_octal.description`:
 
@@ -196,11 +214,13 @@ match_hex
 
     - scan a hex representation of an integer from a substring_t
 
-    :param substring_t \*s:
+    :param s:
         substring_t to be scanned
+    :type s: substring_t \*
 
-    :param int \*result:
+    :param result:
         resulting integer on success
+    :type result: int \*
 
 .. _`match_hex.description`:
 
@@ -220,11 +240,13 @@ match_wildcard
 
     - parse if a string matches given wildcard pattern
 
-    :param const char \*pattern:
+    :param pattern:
         wildcard pattern
+    :type pattern: const char \*
 
-    :param const char \*str:
+    :param str:
         the string to be parsed
+    :type str: const char \*
 
 .. _`match_wildcard.description`:
 
@@ -246,14 +268,17 @@ match_strlcpy
 
     - Copy the characters from a substring_t to a sized buffer
 
-    :param char \*dest:
+    :param dest:
         where to copy to
+    :type dest: char \*
 
-    :param const substring_t \*src:
+    :param src:
         \ :c:type:`struct substring_t <substring_t>`\  to copy
+    :type src: const substring_t \*
 
-    :param size_t size:
+    :param size:
         size of destination buffer
+    :type size: size_t
 
 .. _`match_strlcpy.description`:
 
@@ -273,8 +298,9 @@ match_strdup
 
     - allocate a new string with the contents of a substring_t
 
-    :param const substring_t \*s:
+    :param s:
         \ :c:type:`struct substring_t <substring_t>`\  to copy
+    :type s: const substring_t \*
 
 .. _`match_strdup.description`:
 

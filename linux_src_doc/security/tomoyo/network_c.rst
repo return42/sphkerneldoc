@@ -10,11 +10,13 @@ tomoyo_parse_ipaddr_union
 
     Parse an IP address.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
-    :param struct tomoyo_ipaddr_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_ipaddr_union".
+    :type ptr: struct tomoyo_ipaddr_union \*
 
 .. _`tomoyo_parse_ipaddr_union.description`:
 
@@ -32,17 +34,21 @@ tomoyo_print_ipv4
 
     Print an IPv4 address.
 
-    :param char \*buffer:
+    :param buffer:
         Buffer to write to.
+    :type buffer: char \*
 
-    :param const unsigned int buffer_len:
+    :param buffer_len:
         Size of \ ``buffer``\ .
+    :type buffer_len: const unsigned int
 
-    :param const __be32 \*min_ip:
+    :param min_ip:
         Pointer to \__be32.
+    :type min_ip: const __be32 \*
 
-    :param const __be32 \*max_ip:
+    :param max_ip:
         Pointer to \__be32.
+    :type max_ip: const __be32 \*
 
 .. _`tomoyo_print_ipv4.description`:
 
@@ -60,17 +66,21 @@ tomoyo_print_ipv6
 
     Print an IPv6 address.
 
-    :param char \*buffer:
+    :param buffer:
         Buffer to write to.
+    :type buffer: char \*
 
-    :param const unsigned int buffer_len:
+    :param buffer_len:
         Size of \ ``buffer``\ .
+    :type buffer_len: const unsigned int
 
-    :param const struct in6_addr \*min_ip:
+    :param min_ip:
         Pointer to "struct in6_addr".
+    :type min_ip: const struct in6_addr \*
 
-    :param const struct in6_addr \*max_ip:
+    :param max_ip:
         Pointer to "struct in6_addr".
+    :type max_ip: const struct in6_addr \*
 
 .. _`tomoyo_print_ipv6.description`:
 
@@ -88,14 +98,17 @@ tomoyo_print_ip
 
     Print an IP address.
 
-    :param char \*buf:
+    :param buf:
         Buffer to write to.
+    :type buf: char \*
 
-    :param const unsigned int size:
+    :param size:
         Size of \ ``buf``\ .
+    :type size: const unsigned int
 
-    :param const struct tomoyo_ipaddr_union \*ptr:
+    :param ptr:
         Pointer to "struct ipaddr_union".
+    :type ptr: const struct tomoyo_ipaddr_union \*
 
 .. _`tomoyo_print_ip.description`:
 
@@ -113,11 +126,13 @@ tomoyo_same_inet_acl
 
     Check for duplicated "struct tomoyo_inet_acl" entry.
 
-    :param const struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: const struct tomoyo_acl_info \*
 
-    :param const struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_same_inet_acl.description`:
 
@@ -135,11 +150,13 @@ tomoyo_same_unix_acl
 
     Check for duplicated "struct tomoyo_unix_acl" entry.
 
-    :param const struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: const struct tomoyo_acl_info \*
 
-    :param const struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_same_unix_acl.description`:
 
@@ -157,14 +174,17 @@ tomoyo_merge_inet_acl
 
     Merge duplicated "struct tomoyo_inet_acl" entry.
 
-    :param struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: struct tomoyo_acl_info \*
 
-    :param struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: struct tomoyo_acl_info \*
 
-    :param const bool is_delete:
+    :param is_delete:
         True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
+    :type is_delete: const bool
 
 .. _`tomoyo_merge_inet_acl.description`:
 
@@ -182,14 +202,17 @@ tomoyo_merge_unix_acl
 
     Merge duplicated "struct tomoyo_unix_acl" entry.
 
-    :param struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: struct tomoyo_acl_info \*
 
-    :param struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: struct tomoyo_acl_info \*
 
-    :param const bool is_delete:
+    :param is_delete:
         True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
+    :type is_delete: const bool
 
 .. _`tomoyo_merge_unix_acl.description`:
 
@@ -207,8 +230,9 @@ tomoyo_write_inet_network
 
     Write "struct tomoyo_inet_acl" list.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_write_inet_network.description`:
 
@@ -228,8 +252,9 @@ tomoyo_write_unix_network
 
     Write "struct tomoyo_unix_acl" list.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_write_unix_network.description`:
 
@@ -247,20 +272,25 @@ tomoyo_audit_net_log
 
     Audit network log.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const char \*family:
+    :param family:
         Name of socket family ("inet" or "unix").
+    :type family: const char \*
 
-    :param const u8 protocol:
+    :param protocol:
         Name of protocol in \ ``family``\ .
+    :type protocol: const u8
 
-    :param const u8 operation:
+    :param operation:
         Name of socket operation.
+    :type operation: const u8
 
-    :param const char \*address:
+    :param address:
         Name of address.
+    :type address: const char \*
 
 .. _`tomoyo_audit_net_log.description`:
 
@@ -278,8 +308,9 @@ tomoyo_audit_inet_log
 
     Audit INET network log.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
 .. _`tomoyo_audit_inet_log.description`:
 
@@ -297,8 +328,9 @@ tomoyo_audit_unix_log
 
     Audit UNIX network log.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
 .. _`tomoyo_audit_unix_log.description`:
 
@@ -316,11 +348,13 @@ tomoyo_check_inet_acl
 
     Check permission for inet domain socket operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_acl_info \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_acl_info".
+    :type ptr: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_check_inet_acl.description`:
 
@@ -338,11 +372,13 @@ tomoyo_check_unix_acl
 
     Check permission for unix domain socket operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_acl_info \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_acl_info".
+    :type ptr: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_check_unix_acl.description`:
 
@@ -360,8 +396,9 @@ tomoyo_inet_entry
 
     Check permission for INET network operation.
 
-    :param const struct tomoyo_addr_info \*address:
+    :param address:
         Pointer to "struct tomoyo_addr_info".
+    :type address: const struct tomoyo_addr_info \*
 
 .. _`tomoyo_inet_entry.description`:
 
@@ -379,17 +416,21 @@ tomoyo_check_inet_address
 
     Check permission for inet domain socket's operation.
 
-    :param const struct sockaddr \*addr:
+    :param addr:
         Pointer to "struct sockaddr".
+    :type addr: const struct sockaddr \*
 
-    :param const unsigned int addr_len:
+    :param addr_len:
         Size of \ ``addr``\ .
+    :type addr_len: const unsigned int
 
-    :param const u16 port:
+    :param port:
         Port number.
+    :type port: const u16
 
-    :param struct tomoyo_addr_info \*address:
+    :param address:
         Pointer to "struct tomoyo_addr_info".
+    :type address: struct tomoyo_addr_info \*
 
 .. _`tomoyo_check_inet_address.description`:
 
@@ -407,8 +448,9 @@ tomoyo_unix_entry
 
     Check permission for UNIX network operation.
 
-    :param const struct tomoyo_addr_info \*address:
+    :param address:
         Pointer to "struct tomoyo_addr_info".
+    :type address: const struct tomoyo_addr_info \*
 
 .. _`tomoyo_unix_entry.description`:
 
@@ -426,14 +468,17 @@ tomoyo_check_unix_address
 
     Check permission for unix domain socket's operation.
 
-    :param struct sockaddr \*addr:
+    :param addr:
         Pointer to "struct sockaddr".
+    :type addr: struct sockaddr \*
 
-    :param const unsigned int addr_len:
+    :param addr_len:
         Size of \ ``addr``\ .
+    :type addr_len: const unsigned int
 
-    :param struct tomoyo_addr_info \*address:
+    :param address:
         Pointer to "struct tomoyo_addr_info".
+    :type address: struct tomoyo_addr_info \*
 
 .. _`tomoyo_check_unix_address.description`:
 
@@ -451,8 +496,9 @@ tomoyo_kernel_service
 
     Check whether I'm kernel service or not.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_kernel_service.description`:
 
@@ -470,8 +516,9 @@ tomoyo_sock_family
 
     Get socket's family.
 
-    :param struct sock \*sk:
+    :param sk:
         Pointer to "struct sock".
+    :type sk: struct sock \*
 
 .. _`tomoyo_sock_family.description`:
 
@@ -489,8 +536,9 @@ tomoyo_socket_listen_permission
 
     Check permission for listening a socket.
 
-    :param struct socket \*sock:
+    :param sock:
         Pointer to "struct socket".
+    :type sock: struct socket \*
 
 .. _`tomoyo_socket_listen_permission.description`:
 
@@ -508,14 +556,17 @@ tomoyo_socket_connect_permission
 
     Check permission for setting the remote address of a socket.
 
-    :param struct socket \*sock:
+    :param sock:
         Pointer to "struct socket".
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         Pointer to "struct sockaddr".
+    :type addr: struct sockaddr \*
 
-    :param int addr_len:
+    :param addr_len:
         Size of \ ``addr``\ .
+    :type addr_len: int
 
 .. _`tomoyo_socket_connect_permission.description`:
 
@@ -533,14 +584,17 @@ tomoyo_socket_bind_permission
 
     Check permission for setting the local address of a socket.
 
-    :param struct socket \*sock:
+    :param sock:
         Pointer to "struct socket".
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         Pointer to "struct sockaddr".
+    :type addr: struct sockaddr \*
 
-    :param int addr_len:
+    :param addr_len:
         Size of \ ``addr``\ .
+    :type addr_len: int
 
 .. _`tomoyo_socket_bind_permission.description`:
 
@@ -558,14 +612,17 @@ tomoyo_socket_sendmsg_permission
 
     Check permission for sending a datagram.
 
-    :param struct socket \*sock:
+    :param sock:
         Pointer to "struct socket".
+    :type sock: struct socket \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         Pointer to "struct msghdr".
+    :type msg: struct msghdr \*
 
-    :param int size:
+    :param size:
         Unused.
+    :type size: int
 
 .. _`tomoyo_socket_sendmsg_permission.description`:
 

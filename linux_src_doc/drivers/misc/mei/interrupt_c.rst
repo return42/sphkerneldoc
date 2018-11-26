@@ -10,11 +10,13 @@ mei_irq_compl_handler
 
     dispatch complete handlers for the completed callbacks
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
-    :param struct list_head \*cmpl_list:
+    :param cmpl_list:
         list of completed cbs
+    :type cmpl_list: struct list_head \*
 
 .. _`mei_cl_hbm_equal`:
 
@@ -25,11 +27,13 @@ mei_cl_hbm_equal
 
     check if hbm is addressed to the client
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_msg_hdr \*mei_hdr:
+    :param mei_hdr:
         header of mei client message
+    :type mei_hdr: struct mei_msg_hdr \*
 
 .. _`mei_cl_hbm_equal.return`:
 
@@ -47,11 +51,13 @@ mei_irq_discard_msg
 
     discard received message
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
-    :param struct mei_msg_hdr \*hdr:
+    :param hdr:
         message header
+    :type hdr: struct mei_msg_hdr \*
 
 .. _`mei_cl_irq_read_msg`:
 
@@ -62,14 +68,17 @@ mei_cl_irq_read_msg
 
     process client message
 
-    :param struct mei_cl \*cl:
+    :param cl:
         reading client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_msg_hdr \*mei_hdr:
+    :param mei_hdr:
         header of mei client message
+    :type mei_hdr: struct mei_msg_hdr \*
 
-    :param struct list_head \*cmpl_list:
+    :param cmpl_list:
         completion list
+    :type cmpl_list: struct list_head \*
 
 .. _`mei_cl_irq_read_msg.return`:
 
@@ -87,14 +96,17 @@ mei_cl_irq_disconnect_rsp
 
     send disconnection response message
 
-    :param struct mei_cl \*cl:
+    :param cl:
         client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         callback block.
+    :type cb: struct mei_cl_cb \*
 
-    :param struct list_head \*cmpl_list:
+    :param cmpl_list:
         complete list.
+    :type cmpl_list: struct list_head \*
 
 .. _`mei_cl_irq_disconnect_rsp.return`:
 
@@ -112,14 +124,17 @@ mei_cl_irq_read
 
     processes client read related operation from the interrupt thread context - request for flow control credits
 
-    :param struct mei_cl \*cl:
+    :param cl:
         client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         callback block.
+    :type cb: struct mei_cl_cb \*
 
-    :param struct list_head \*cmpl_list:
+    :param cmpl_list:
         complete list.
+    :type cmpl_list: struct list_head \*
 
 .. _`mei_cl_irq_read.return`:
 
@@ -137,14 +152,17 @@ mei_irq_read_handler
 
     bottom half read routine after ISR to handle the read processing.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct list_head \*cmpl_list:
+    :param cmpl_list:
         An instance of our list structure
+    :type cmpl_list: struct list_head \*
 
-    :param s32 \*slots:
+    :param slots:
         slots to read.
+    :type slots: s32 \*
 
 .. _`mei_irq_read_handler.return`:
 
@@ -162,11 +180,13 @@ mei_irq_write_handler
 
     dispatch write requests after irq received
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct list_head \*cmpl_list:
+    :param cmpl_list:
         An instance of our list structure
+    :type cmpl_list: struct list_head \*
 
 .. _`mei_irq_write_handler.return`:
 
@@ -184,8 +204,9 @@ mei_connect_timeout
 
     connect/disconnect timeouts
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_schedule_stall_timer`:
 
@@ -196,8 +217,9 @@ mei_schedule_stall_timer
 
     re-arm stall_timer work
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_schedule_stall_timer.description`:
 
@@ -215,8 +237,9 @@ mei_timer
 
     timer function.
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. This file was automatic generated / don't edit.
 

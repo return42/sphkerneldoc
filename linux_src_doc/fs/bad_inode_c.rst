@@ -10,8 +10,9 @@ make_bad_inode
 
     mark an inode bad due to an I/O error
 
-    :param struct inode \*inode:
+    :param inode:
         Inode to mark bad
+    :type inode: struct inode \*
 
 .. _`make_bad_inode.description`:
 
@@ -31,8 +32,9 @@ is_bad_inode
 
     is an inode errored
 
-    :param struct inode \*inode:
+    :param inode:
         inode to test
+    :type inode: struct inode \*
 
 .. _`is_bad_inode.description`:
 
@@ -50,8 +52,9 @@ iget_failed
 
     Mark an under-construction inode as dead and release it
 
-    :param struct inode \*inode:
+    :param inode:
         The inode to discard
+    :type inode: struct inode \*
 
 .. _`iget_failed.description`:
 

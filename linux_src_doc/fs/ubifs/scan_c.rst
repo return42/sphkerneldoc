@@ -10,11 +10,13 @@ scan_padding_bytes
 
     scan for padding bytes.
 
-    :param void \*buf:
+    :param buf:
         buffer to scan
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         length of buffer
+    :type len: int
 
 .. _`scan_padding_bytes.description`:
 
@@ -33,23 +35,29 @@ ubifs_scan_a_node
 
     scan for a node or padding.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer to scan
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         length of buffer
+    :type len: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset within the logical eraseblock
+    :type offs: int
 
-    :param int quiet:
+    :param quiet:
         print no messages
+    :type quiet: int
 
 .. _`ubifs_scan_a_node.description`:
 
@@ -67,17 +75,21 @@ ubifs_start_scan
 
     create LEB scanning information at start of scan.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset to start at (usually zero)
+    :type offs: int
 
-    :param void \*sbuf:
+    :param sbuf:
         scan buffer (must be c->leb_size)
+    :type sbuf: void \*
 
 .. _`ubifs_start_scan.description`:
 
@@ -96,17 +108,21 @@ ubifs_end_scan
 
     update LEB scanning information at end of scan.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param struct ubifs_scan_leb \*sleb:
+    :param sleb:
         scanning information
+    :type sleb: struct ubifs_scan_leb \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset to start at (usually zero)
+    :type offs: int
 
 .. _`ubifs_add_snod`:
 
@@ -117,17 +133,21 @@ ubifs_add_snod
 
     add a scanned node to LEB scanning information.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param struct ubifs_scan_leb \*sleb:
+    :param sleb:
         scanning information
+    :type sleb: struct ubifs_scan_leb \*
 
-    :param void \*buf:
+    :param buf:
         buffer containing node
+    :type buf: void \*
 
-    :param int offs:
+    :param offs:
         offset of node on flash
+    :type offs: int
 
 .. _`ubifs_add_snod.description`:
 
@@ -145,17 +165,21 @@ ubifs_scanned_corruption
 
     print information after UBIFS scanned corruption.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of corruption
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset of corruption
+    :type offs: int
 
-    :param void \*buf:
+    :param buf:
         buffer containing corruption
+    :type buf: void \*
 
 .. _`ubifs_scan`:
 
@@ -166,20 +190,25 @@ ubifs_scan
 
     scan a logical eraseblock.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset to start at (usually zero)
+    :type offs: int
 
-    :param void \*sbuf:
-        scan buffer (must be of \ ``c``\ ->leb_size bytes in size)
+    :param sbuf:
+        scan buffer (must be of \ ``c->leb_size``\  bytes in size)
+    :type sbuf: void \*
 
-    :param int quiet:
+    :param quiet:
         print no messages
+    :type quiet: int
 
 .. _`ubifs_scan.description`:
 
@@ -203,8 +232,9 @@ ubifs_scan_destroy
 
     destroy LEB scanning information.
 
-    :param struct ubifs_scan_leb \*sleb:
+    :param sleb:
         scanning information to free
+    :type sleb: struct ubifs_scan_leb \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ find_next_bit
 
     find the next set bit in a memory region
 
-    :param const unsigned long \*addr:
+    :param addr:
         The address to base the search on
+    :type addr: const unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The bitmap size in bits
+    :type size: unsigned long
 
-    :param unsigned long offset:
+    :param offset:
         The bitnumber to start searching at
+    :type offset: unsigned long
 
 .. _`find_next_bit.description`:
 
@@ -36,17 +39,21 @@ find_next_and_bit
 
     find the next set bit in both memory regions
 
-    :param const unsigned long \*addr1:
+    :param addr1:
         The first address to base the search on
+    :type addr1: const unsigned long \*
 
-    :param const unsigned long \*addr2:
+    :param addr2:
         The second address to base the search on
+    :type addr2: const unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The bitmap size in bits
+    :type size: unsigned long
 
-    :param unsigned long offset:
+    :param offset:
         The bitnumber to start searching at
+    :type offset: unsigned long
 
 .. _`find_next_and_bit.description`:
 
@@ -65,14 +72,17 @@ find_next_zero_bit
 
     find the next cleared bit in a memory region
 
-    :param const unsigned long \*addr:
+    :param addr:
         The address to base the search on
+    :type addr: const unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The bitmap size in bits
+    :type size: unsigned long
 
-    :param unsigned long offset:
+    :param offset:
         The bitnumber to start searching at
+    :type offset: unsigned long
 
 .. _`find_next_zero_bit.description`:
 
@@ -91,11 +101,13 @@ find_first_bit
 
     find the first set bit in a memory region
 
-    :param const unsigned long \*addr:
+    :param addr:
         The address to start the search at
+    :type addr: const unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The maximum number of bits to search
+    :type size: unsigned long
 
 .. _`find_first_bit.description`:
 
@@ -114,11 +126,13 @@ find_first_zero_bit
 
     find the first cleared bit in a memory region
 
-    :param const unsigned long \*addr:
+    :param addr:
         The address to start the search at
+    :type addr: const unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The maximum number of bits to search
+    :type size: unsigned long
 
 .. _`find_first_zero_bit.description`:
 

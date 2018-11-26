@@ -10,23 +10,29 @@ guest_translate
 
     translate a guest virtual into a guest absolute address
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gva:
+    :param gva:
         guest virtual address
+    :type gva: unsigned long
 
-    :param unsigned long \*gpa:
+    :param gpa:
         points to where guest physical (absolute) address should be stored
+    :type gpa: unsigned long \*
 
-    :param const union asce asce:
+    :param asce:
         effective asce
+    :type asce: const union asce
 
-    :param enum gacc_mode mode:
+    :param mode:
         indicates the access mode to be used
+    :type mode: enum gacc_mode
 
-    :param enum prot_type \*prot:
+    :param prot:
         returns the type for protection exceptions
+    :type prot: enum prot_type \*
 
 .. _`guest_translate.description`:
 
@@ -59,20 +65,25 @@ guest_translate_address
 
     translate guest logical into guest absolute address
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gva:
+    :param gva:
         *undescribed*
+    :type gva: unsigned long
 
-    :param u8 ar:
+    :param ar:
         *undescribed*
+    :type ar: u8
 
-    :param unsigned long \*gpa:
+    :param gpa:
         *undescribed*
+    :type gpa: unsigned long \*
 
-    :param enum gacc_mode mode:
+    :param mode:
         *undescribed*
+    :type mode: enum gacc_mode
 
 .. _`guest_translate_address.description`:
 
@@ -99,20 +110,25 @@ check_gva_range
 
     test a range of guest virtual addresses for accessibility
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gva:
+    :param gva:
         *undescribed*
+    :type gva: unsigned long
 
-    :param u8 ar:
+    :param ar:
         *undescribed*
+    :type ar: u8
 
-    :param unsigned long length:
+    :param length:
         *undescribed*
+    :type length: unsigned long
 
-    :param enum gacc_mode mode:
+    :param mode:
         *undescribed*
+    :type mode: enum gacc_mode
 
 .. _`kvm_s390_check_low_addr_prot_real`:
 
@@ -123,11 +139,13 @@ kvm_s390_check_low_addr_prot_real
 
     check for low-address protection
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gra:
+    :param gra:
         Guest real address
+    :type gra: unsigned long
 
 .. _`kvm_s390_check_low_addr_prot_real.description`:
 
@@ -153,20 +171,25 @@ kvm_s390_shadow_tables
 
     walk the guest page table and create shadow tables
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long saddr:
+    :param saddr:
         faulting address in the shadow gmap
+    :type saddr: unsigned long
 
-    :param unsigned long \*pgt:
+    :param pgt:
         pointer to the page table address result
+    :type pgt: unsigned long \*
 
-    :param int \*dat_protection:
+    :param dat_protection:
         *undescribed*
+    :type dat_protection: int \*
 
-    :param int \*fake:
+    :param fake:
         pgt references contiguous guest memory block, not a pgtable
+    :type fake: int \*
 
 .. _`kvm_s390_shadow_fault`:
 
@@ -177,14 +200,17 @@ kvm_s390_shadow_fault
 
     handle fault on a shadow page table
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long saddr:
+    :param saddr:
         faulting address in the shadow gmap
+    :type saddr: unsigned long
 
 .. _`kvm_s390_shadow_fault.return`:
 

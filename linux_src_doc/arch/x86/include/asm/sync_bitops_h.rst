@@ -10,11 +10,13 @@ sync_set_bit
 
     Atomically set a bit in memory
 
-    :param long nr:
+    :param nr:
         the bit to set
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`sync_set_bit.description`:
 
@@ -36,11 +38,13 @@ sync_clear_bit
 
     Clears a bit in memory
 
-    :param long nr:
+    :param nr:
         Bit to clear
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`sync_clear_bit.description`:
 
@@ -61,11 +65,13 @@ sync_change_bit
 
     Toggle a bit in memory
 
-    :param long nr:
+    :param nr:
         Bit to change
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`sync_change_bit.description`:
 
@@ -85,11 +91,13 @@ sync_test_and_set_bit
 
     Set a bit and return its old value
 
-    :param long nr:
+    :param nr:
         Bit to set
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`sync_test_and_set_bit.description`:
 
@@ -108,11 +116,13 @@ sync_test_and_clear_bit
 
     Clear a bit and return its old value
 
-    :param long nr:
+    :param nr:
         Bit to clear
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`sync_test_and_clear_bit.description`:
 
@@ -131,11 +141,13 @@ sync_test_and_change_bit
 
     Change a bit and return its old value
 
-    :param long nr:
+    :param nr:
         Bit to change
+    :type nr: long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`sync_test_and_change_bit.description`:
 

@@ -10,8 +10,9 @@ dwc2_enable_common_interrupts
 
     Initializes the commmon interrupts, used in both device and host modes
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_enable_host_interrupts`:
 
@@ -22,8 +23,9 @@ dwc2_enable_host_interrupts
 
     Enables the Host mode interrupts
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_disable_host_interrupts`:
 
@@ -34,8 +36,9 @@ dwc2_disable_host_interrupts
 
     Disables the Host Mode interrupts
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_calc_frame_interval`:
 
@@ -46,8 +49,9 @@ dwc2_calc_frame_interval
 
     Calculates the correct frame Interval value for the HFIR register according to PHY type and speed
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_calc_frame_interval.note`:
 
@@ -67,14 +71,17 @@ dwc2_read_packet
 
     Reads a packet from the Rx FIFO into the destination buffer
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param u8 \*dest:
+    :param dest:
         Destination buffer for the packet
+    :type dest: u8 \*
 
-    :param u16 bytes:
+    :param bytes:
         Number of bytes to copy to the destination
+    :type bytes: u16
 
 .. _`dwc2_dump_channel_info`:
 
@@ -85,11 +92,13 @@ dwc2_dump_channel_info
 
     Prints the state of a host channel
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Pointer to the channel to dump
+    :type chan: struct dwc2_host_chan \*
 
 .. _`dwc2_dump_channel_info.description`:
 
@@ -115,11 +124,13 @@ dwc2_hc_init
 
     Prepares a host channel for transferring packets to/from a specific endpoint
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Information needed to initialize the host channel
+    :type chan: struct dwc2_host_chan \*
 
 .. _`dwc2_hc_init.description`:
 
@@ -139,14 +150,17 @@ dwc2_hc_halt
 
     Attempts to halt a host channel
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Controller register interface
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Host channel to halt
+    :type chan: struct dwc2_host_chan \*
 
-    :param enum dwc2_halt_status halt_status:
+    :param halt_status:
         Reason for halting the channel
+    :type halt_status: enum dwc2_halt_status
 
 .. _`dwc2_hc_halt.description`:
 
@@ -183,11 +197,13 @@ dwc2_hc_cleanup
 
     Clears the transfer state for a host channel
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Identifies the host channel to clean up
+    :type chan: struct dwc2_host_chan \*
 
 .. _`dwc2_hc_cleanup.description`:
 
@@ -206,14 +222,17 @@ dwc2_hc_set_even_odd_frame
 
     Sets the channel property that indicates in which frame a periodic transfer should occur
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Identifies the host channel to set up and its properties
+    :type chan: struct dwc2_host_chan \*
 
-    :param u32 \*hcchar:
+    :param hcchar:
         Current value of the HCCHAR register for the specified host channel
+    :type hcchar: u32 \*
 
 .. _`dwc2_hc_set_even_odd_frame.description`:
 
@@ -231,11 +250,13 @@ dwc2_hc_write_packet
 
     Writes a packet into the Tx FIFO associated with the Host Channel
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Information needed to initialize the host channel
+    :type chan: struct dwc2_host_chan \*
 
 .. _`dwc2_hc_write_packet.description`:
 
@@ -258,11 +279,13 @@ dwc2_hc_do_ping
 
     Starts a PING transfer
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Information needed to initialize the host channel
+    :type chan: struct dwc2_host_chan \*
 
 .. _`dwc2_hc_do_ping.description`:
 
@@ -281,14 +304,16 @@ dwc2_hc_start_transfer
 
     Does the setup for a data transfer for a host channel and starts the transfer
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Information needed to initialize the host channel. The xfer_len value
         may be reduced to accommodate the max widths of the XferSize and
         PktCnt fields in the HCTSIZn register. The multi_count value may be
         changed to reflect the final xfer_len value.
+    :type chan: struct dwc2_host_chan \*
 
 .. _`dwc2_hc_start_transfer.description`:
 
@@ -327,11 +352,13 @@ dwc2_hc_start_transfer_ddma
 
     Does the setup for a data transfer for a host channel and starts the transfer in Descriptor DMA mode
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Information needed to initialize the host channel
+    :type chan: struct dwc2_host_chan \*
 
 .. _`dwc2_hc_start_transfer_ddma.description`:
 
@@ -354,11 +381,13 @@ dwc2_hc_continue_transfer
 
     Continues a data transfer that was started by a previous call to \ :c:func:`dwc2_hc_start_transfer`\ 
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Information needed to initialize the host channel
+    :type chan: struct dwc2_host_chan \*
 
 .. _`dwc2_hc_continue_transfer.description`:
 
@@ -392,8 +421,9 @@ dwc2_hcd_start
 
     Starts the HCD when switching to Host mode
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Pointer to struct dwc2_hsotg
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hcd_connect`:
 
@@ -404,8 +434,9 @@ dwc2_hcd_connect
 
     Handles connect of the HCD
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Pointer to struct dwc2_hsotg
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hcd_connect.description`:
 
@@ -423,11 +454,13 @@ dwc2_hcd_disconnect
 
     Handles disconnect of the HCD
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Pointer to struct dwc2_hsotg
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param bool force:
+    :param force:
         If true, we won't try to reconnect even if we see device connected.
+    :type force: bool
 
 .. _`dwc2_hcd_disconnect.description`:
 
@@ -445,8 +478,9 @@ dwc2_hcd_rem_wakeup
 
     Handles Remote Wakeup
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Pointer to struct dwc2_hsotg
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hcd_stop`:
 
@@ -457,8 +491,9 @@ dwc2_hcd_stop
 
     Halts the DWC_otg host mode operations in a clean manner
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Pointer to struct dwc2_hsotg
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hcd_stop.description`:
 
@@ -476,11 +511,13 @@ dwc2_core_init
 
     Initializes the DWC_otg controller registers and prepares the core for device mode or host mode operation
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param bool initial_setup:
+    :param initial_setup:
         If true then this is the first init for this instance.
+    :type initial_setup: bool
 
 .. _`dwc2_core_host_init`:
 
@@ -491,8 +528,9 @@ dwc2_core_host_init
 
     Initializes the DWC_otg controller registers for Host mode
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_core_host_init.description`:
 
@@ -512,12 +550,14 @@ dwc2_assign_and_init_hc
 
     Assigns transactions from a QTD to a free host channel and initializes the host channel to perform the transactions. The host channel is removed from the free list.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         Transactions from the first QTD for this QH are selected and assigned
         to a free host channel
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_hcd_select_transactions`:
 
@@ -528,8 +568,9 @@ dwc2_hcd_select_transactions
 
     Selects transactions from the HCD transfer schedule and assigns them to available host channels. Called from the HCD interrupt handler functions.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hcd_select_transactions.return`:
 
@@ -547,17 +588,20 @@ dwc2_queue_transaction
 
     Attempts to queue a single transaction request for a host channel associated with either a periodic or non-periodic transfer
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Host channel descriptor associated with either a periodic or
         non-periodic transfer
+    :type chan: struct dwc2_host_chan \*
 
-    :param u16 fifo_dwords_avail:
+    :param fifo_dwords_avail:
         Number of DWORDs available in the periodic Tx FIFO
         for periodic transfers or the non-periodic Tx FIFO
         for non-periodic transfers
+    :type fifo_dwords_avail: u16
 
 .. _`dwc2_queue_transaction.return`:
 
@@ -583,12 +627,14 @@ dwc2_hcd_queue_transactions
 
     Processes the currently active host channels and queues transactions for these channels to the DWC_otg controller. Called from the HCD interrupt handler functions.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param enum dwc2_transaction_type tr_type:
+    :param tr_type:
         The type(s) of transactions to queue (non-periodic, periodic,
         or both)
+    :type tr_type: enum dwc2_transaction_type
 
 .. _`dwc2_hcd_queue_transactions.description`:
 
@@ -606,18 +652,22 @@ dwc2_host_get_tt_info
 
     Get the dwc2_tt associated with context
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param void \*context:
+    :param context:
         The priv pointer from a struct dwc2_hcd_urb.
+    :type context: void \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         Flags for allocating memory.
+    :type mem_flags: gfp_t
 
-    :param int \*ttport:
+    :param ttport:
         We'll return this device's port number here.  That's used to
         reference into the bitmap if we're on a multi_tt hub.
+    :type ttport: int \*
 
 .. _`dwc2_host_get_tt_info.description`:
 
@@ -648,11 +698,13 @@ dwc2_host_put_tt_info
 
     Put the dwc2_tt from \ :c:func:`dwc2_host_get_tt_info`\ 
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_tt \*dwc_tt:
+    :param dwc_tt:
         The pointer returned by dwc2_host_get_tt_info.
+    :type dwc_tt: struct dwc2_tt \*
 
 .. _`dwc2_host_put_tt_info.description`:
 
@@ -673,8 +725,9 @@ dwc2_backup_host_registers
 
     Backup controller host registers. When suspending usb bus, registers needs to be backuped if controller power is disabled once suspended.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_restore_host_registers`:
 
@@ -685,8 +738,9 @@ dwc2_restore_host_registers
 
     Restore controller host registers. When resuming usb bus, device registers needs to be restored if controller power were disabled.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_host_enter_hibernation`:
 
@@ -697,8 +751,9 @@ dwc2_host_enter_hibernation
 
     Put controller in Hibernation.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. This file was automatic generated / don't edit.
 

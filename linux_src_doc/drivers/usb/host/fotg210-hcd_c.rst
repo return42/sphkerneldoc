@@ -10,8 +10,9 @@ fotg210_hcd_probe
 
     initialize faraday FOTG210 HCDs
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`fotg210_hcd_probe.description`:
 
@@ -31,8 +32,9 @@ fotg210_hcd_remove
 
     shutdown processing for EHCI HCDs
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

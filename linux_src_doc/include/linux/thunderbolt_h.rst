@@ -690,25 +690,27 @@ tb_ring_rx
 
     enqueue a frame on an RX ring
 
-    :param struct tb_ring \*ring:
+    :param ring:
         Ring to enqueue the frame
+    :type ring: struct tb_ring \*
 
-    :param struct ring_frame \*frame:
+    :param frame:
         Frame to enqueue
+    :type frame: struct ring_frame \*
 
 .. _`tb_ring_rx.description`:
 
 Description
 -----------
 
-\ ``frame``\ ->buffer, \ ``frame``\ ->buffer_phy have to be set. The buffer must
+\ ``frame->buffer``\ , \ ``frame->buffer_phy``\  have to be set. The buffer must
 contain at least \ ``TB_FRAME_SIZE``\  bytes.
 
-\ ``frame``\ ->callback will be invoked with \ ``frame``\ ->size, \ ``frame``\ ->flags,
-\ ``frame``\ ->eof, \ ``frame``\ ->sof set once the frame has been received.
+\ ``frame->callback``\  will be invoked with \ ``frame->size``\ , \ ``frame->flags``\ ,
+\ ``frame->eof``\ , \ ``frame->sof``\  set once the frame has been received.
 
 If \ :c:func:`ring_stop`\  is called after the packet has been enqueued
-\ ``frame``\ ->callback will be called with canceled set to true.
+\ ``frame->callback``\  will be called with canceled set to true.
 
 .. _`tb_ring_rx.return`:
 
@@ -726,23 +728,25 @@ tb_ring_tx
 
     enqueue a frame on an TX ring
 
-    :param struct tb_ring \*ring:
+    :param ring:
         Ring the enqueue the frame
+    :type ring: struct tb_ring \*
 
-    :param struct ring_frame \*frame:
+    :param frame:
         Frame to enqueue
+    :type frame: struct ring_frame \*
 
 .. _`tb_ring_tx.description`:
 
 Description
 -----------
 
-\ ``frame``\ ->buffer, \ ``frame``\ ->buffer_phy, \ ``frame``\ ->size, \ ``frame``\ ->eof and
-\ ``frame``\ ->sof have to be set.
+\ ``frame->buffer``\ , \ ``frame->buffer_phy``\ , \ ``frame->size``\ , \ ``frame->eof``\  and
+\ ``frame->sof``\  have to be set.
 
-\ ``frame``\ ->callback will be invoked with once the frame has been transmitted.
+\ ``frame->callback``\  will be invoked with once the frame has been transmitted.
 
-If \ :c:func:`ring_stop`\  is called after the packet has been enqueued \ ``frame``\ ->callback
+If \ :c:func:`ring_stop`\  is called after the packet has been enqueued \ ``frame->callback``\ 
 will be called with canceled set to true.
 
 .. _`tb_ring_tx.return`:
@@ -761,8 +765,9 @@ tb_ring_dma_device
 
     Return device used for DMA mapping
 
-    :param struct tb_ring \*ring:
+    :param ring:
         Ring whose DMA device is retrieved
+    :type ring: struct tb_ring \*
 
 .. _`tb_ring_dma_device.description`:
 

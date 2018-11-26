@@ -10,8 +10,9 @@ do_calc_lpt_geom
 
     calculate sizes for the LPT area.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`do_calc_lpt_geom.description`:
 
@@ -30,8 +31,9 @@ ubifs_calc_lpt_geom
 
     calculate and check sizes for the LPT area.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_calc_lpt_geom.description`:
 
@@ -49,14 +51,17 @@ calc_dflt_lpt_geom
 
     calculate default LPT geometry.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int \*main_lebs:
+    :param main_lebs:
         number of main area LEBs is passed and returned here
+    :type main_lebs: int \*
 
-    :param int \*big_lpt:
+    :param big_lpt:
         whether the LPT area is "big" is returned here
+    :type big_lpt: int \*
 
 .. _`calc_dflt_lpt_geom.description`:
 
@@ -74,39 +79,54 @@ This function returns \ ``0``\  on success and a negative error code on failure.
 pack_bits
 =========
 
-.. c:function:: void pack_bits(uint8_t **addr, int *pos, uint32_t val, int nrbits)
+.. c:function:: void pack_bits(const struct ubifs_info *c, uint8_t **addr, int *pos, uint32_t val, int nrbits)
 
     pack bit fields end-to-end.
 
-    :param uint8_t \*\*addr:
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
+
+    :param addr:
         address at which to pack (passed and next address returned)
+    :type addr: uint8_t \*\*
 
-    :param int \*pos:
+    :param pos:
         bit position at which to pack (passed and next position returned)
+    :type pos: int \*
 
-    :param uint32_t val:
+    :param val:
         value to pack
+    :type val: uint32_t
 
-    :param int nrbits:
+    :param nrbits:
         number of bits of value to pack (1-32)
+    :type nrbits: int
 
 .. _`ubifs_unpack_bits`:
 
 ubifs_unpack_bits
 =================
 
-.. c:function:: uint32_t ubifs_unpack_bits(uint8_t **addr, int *pos, int nrbits)
+.. c:function:: uint32_t ubifs_unpack_bits(const struct ubifs_info *c, uint8_t **addr, int *pos, int nrbits)
 
     unpack bit fields.
 
-    :param uint8_t \*\*addr:
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
+
+    :param addr:
         address at which to unpack (passed and next address returned)
+    :type addr: uint8_t \*\*
 
-    :param int \*pos:
+    :param pos:
         bit position at which to unpack (passed and next position returned)
+    :type pos: int \*
 
-    :param int nrbits:
+    :param nrbits:
         number of bits of value to unpack (1-32)
+    :type nrbits: int
 
 .. _`ubifs_unpack_bits.description`:
 
@@ -124,14 +144,17 @@ ubifs_pack_pnode
 
     pack all the bit fields of a pnode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer into which to pack
+    :type buf: void \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode to pack
+    :type pnode: struct ubifs_pnode \*
 
 .. _`ubifs_pack_nnode`:
 
@@ -142,14 +165,17 @@ ubifs_pack_nnode
 
     pack all the bit fields of a nnode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer into which to pack
+    :type buf: void \*
 
-    :param struct ubifs_nnode \*nnode:
+    :param nnode:
         nnode to pack
+    :type nnode: struct ubifs_nnode \*
 
 .. _`ubifs_pack_ltab`:
 
@@ -160,14 +186,17 @@ ubifs_pack_ltab
 
     pack the LPT's own lprops table.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer into which to pack
+    :type buf: void \*
 
-    :param struct ubifs_lpt_lprops \*ltab:
+    :param ltab:
         LPT's own lprops table to pack
+    :type ltab: struct ubifs_lpt_lprops \*
 
 .. _`ubifs_pack_lsave`:
 
@@ -178,14 +207,17 @@ ubifs_pack_lsave
 
     pack the LPT's save table.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer into which to pack
+    :type buf: void \*
 
-    :param int \*lsave:
+    :param lsave:
         LPT's save table to pack
+    :type lsave: int \*
 
 .. _`ubifs_add_lpt_dirt`:
 
@@ -196,14 +228,17 @@ ubifs_add_lpt_dirt
 
     add dirty space to LPT LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number to which to add dirty space
+    :type lnum: int
 
-    :param int dirty:
+    :param dirty:
         amount of dirty space to add
+    :type dirty: int
 
 .. _`set_ltab`:
 
@@ -214,17 +249,21 @@ set_ltab
 
     set LPT LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number
+    :type lnum: int
 
-    :param int free:
+    :param free:
         amount of free space
+    :type free: int
 
-    :param int dirty:
+    :param dirty:
         amount of dirty space
+    :type dirty: int
 
 .. _`ubifs_add_nnode_dirt`:
 
@@ -235,11 +274,13 @@ ubifs_add_nnode_dirt
 
     add dirty space to LPT LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_nnode \*nnode:
+    :param nnode:
         nnode for which to add dirt
+    :type nnode: struct ubifs_nnode \*
 
 .. _`add_pnode_dirt`:
 
@@ -250,11 +291,13 @@ add_pnode_dirt
 
     add dirty space to LPT LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode for which to add dirt
+    :type pnode: struct ubifs_pnode \*
 
 .. _`calc_nnode_num`:
 
@@ -265,11 +308,13 @@ calc_nnode_num
 
     calculate nnode number.
 
-    :param int row:
+    :param row:
         the row in the tree (root is zero)
+    :type row: int
 
-    :param int col:
+    :param col:
         the column in the row (leftmost is zero)
+    :type col: int
 
 .. _`calc_nnode_num.description`:
 
@@ -291,14 +336,17 @@ calc_nnode_num_from_parent
 
     calculate nnode number.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param struct ubifs_nnode \*parent:
+    :param parent:
         parent nnode
+    :type parent: struct ubifs_nnode \*
 
-    :param int iip:
+    :param iip:
         index in parent
+    :type iip: int
 
 .. _`calc_nnode_num_from_parent.description`:
 
@@ -320,14 +368,17 @@ calc_pnode_num_from_parent
 
     calculate pnode number.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param struct ubifs_nnode \*parent:
+    :param parent:
         parent nnode
+    :type parent: struct ubifs_nnode \*
 
-    :param int iip:
+    :param iip:
         index in parent
+    :type iip: int
 
 .. _`calc_pnode_num_from_parent.description`:
 
@@ -345,24 +396,33 @@ nnode number and the index in parent.
 ubifs_create_dflt_lpt
 =====================
 
-.. c:function:: int ubifs_create_dflt_lpt(struct ubifs_info *c, int *main_lebs, int lpt_first, int *lpt_lebs, int *big_lpt)
+.. c:function:: int ubifs_create_dflt_lpt(struct ubifs_info *c, int *main_lebs, int lpt_first, int *lpt_lebs, int *big_lpt, u8 *hash)
 
     create default LPT.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int \*main_lebs:
+    :param main_lebs:
         number of main area LEBs is passed and returned here
+    :type main_lebs: int \*
 
-    :param int lpt_first:
+    :param lpt_first:
         LEB number of first LPT LEB
+    :type lpt_first: int
 
-    :param int \*lpt_lebs:
+    :param lpt_lebs:
         number of LEBs for LPT is passed and returned here
+    :type lpt_lebs: int \*
 
-    :param int \*big_lpt:
+    :param big_lpt:
         use big LPT model is passed and returned here
+    :type big_lpt: int \*
+
+    :param hash:
+        hash of the LPT is returned here
+    :type hash: u8 \*
 
 .. _`ubifs_create_dflt_lpt.description`:
 
@@ -380,11 +440,13 @@ update_cats
 
     add LEB properties of a pnode to LEB category lists and heaps.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode
+    :type pnode: struct ubifs_pnode \*
 
 .. _`update_cats.description`:
 
@@ -403,14 +465,17 @@ replace_cats
 
     add LEB properties of a pnode to LEB category lists and heaps.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_pnode \*old_pnode:
+    :param old_pnode:
         pnode copied
+    :type old_pnode: struct ubifs_pnode \*
 
-    :param struct ubifs_pnode \*new_pnode:
+    :param new_pnode:
         pnode copy
+    :type new_pnode: struct ubifs_pnode \*
 
 .. _`replace_cats.description`:
 
@@ -430,14 +495,17 @@ check_lpt_crc
 
     check LPT node crc is correct.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer containing node
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         length of node
+    :type len: int
 
 .. _`check_lpt_crc.description`:
 
@@ -455,17 +523,21 @@ check_lpt_type
 
     check LPT node type is correct.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param uint8_t \*\*addr:
+    :param addr:
         address of type bit field is passed and returned updated here
+    :type addr: uint8_t \*\*
 
-    :param int \*pos:
+    :param pos:
         position of type bit field is passed and returned updated here
+    :type pos: int \*
 
-    :param int type:
+    :param type:
         expected type
+    :type type: int
 
 .. _`check_lpt_type.description`:
 
@@ -483,14 +555,17 @@ unpack_pnode
 
     unpack a pnode.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer containing packed pnode to unpack
+    :type buf: void \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode structure to fill
+    :type pnode: struct ubifs_pnode \*
 
 .. _`unpack_pnode.description`:
 
@@ -508,14 +583,17 @@ ubifs_unpack_nnode
 
     unpack a nnode.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer containing packed nnode to unpack
+    :type buf: void \*
 
-    :param struct ubifs_nnode \*nnode:
+    :param nnode:
         nnode structure to fill
+    :type nnode: struct ubifs_nnode \*
 
 .. _`ubifs_unpack_nnode.description`:
 
@@ -533,11 +611,13 @@ unpack_ltab
 
     unpack the LPT's own lprops table.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer from which to unpack
+    :type buf: void \*
 
 .. _`unpack_ltab.description`:
 
@@ -555,11 +635,13 @@ unpack_lsave
 
     unpack the LPT's save table.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer from which to unpack
+    :type buf: void \*
 
 .. _`unpack_lsave.description`:
 
@@ -577,17 +659,21 @@ validate_nnode
 
     validate a nnode.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param struct ubifs_nnode \*nnode:
+    :param nnode:
         nnode to validate
+    :type nnode: struct ubifs_nnode \*
 
-    :param struct ubifs_nnode \*parent:
+    :param parent:
         parent nnode (or NULL for the root nnode)
+    :type parent: struct ubifs_nnode \*
 
-    :param int iip:
+    :param iip:
         index in parent
+    :type iip: int
 
 .. _`validate_nnode.description`:
 
@@ -605,17 +691,21 @@ validate_pnode
 
     validate a pnode.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode to validate
+    :type pnode: struct ubifs_pnode \*
 
-    :param struct ubifs_nnode \*parent:
+    :param parent:
         parent nnode
+    :type parent: struct ubifs_nnode \*
 
-    :param int iip:
+    :param iip:
         index in parent
+    :type iip: int
 
 .. _`validate_pnode.description`:
 
@@ -633,11 +723,13 @@ set_pnode_lnum
 
     set LEB numbers on a pnode.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode to update
+    :type pnode: struct ubifs_pnode \*
 
 .. _`set_pnode_lnum.description`:
 
@@ -656,14 +748,17 @@ ubifs_read_nnode
 
     read a nnode from flash and link it to the tree in memory.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_nnode \*parent:
+    :param parent:
         parent nnode (or NULL for the root)
+    :type parent: struct ubifs_nnode \*
 
-    :param int iip:
+    :param iip:
         index in parent
+    :type iip: int
 
 .. _`ubifs_read_nnode.description`:
 
@@ -681,14 +776,17 @@ read_pnode
 
     read a pnode from flash and link it to the tree in memory.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_nnode \*parent:
+    :param parent:
         parent nnode
+    :type parent: struct ubifs_nnode \*
 
-    :param int iip:
+    :param iip:
         index in parent
+    :type iip: int
 
 .. _`read_pnode.description`:
 
@@ -706,8 +804,9 @@ read_ltab
 
     read LPT's own lprops table.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`read_ltab.description`:
 
@@ -725,8 +824,9 @@ read_lsave
 
     read LPT's save table.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`read_lsave.description`:
 
@@ -744,14 +844,17 @@ ubifs_get_nnode
 
     get a nnode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_nnode \*parent:
+    :param parent:
         parent nnode (or NULL for the root)
+    :type parent: struct ubifs_nnode \*
 
-    :param int iip:
+    :param iip:
         index in parent
+    :type iip: int
 
 .. _`ubifs_get_nnode.description`:
 
@@ -770,14 +873,17 @@ ubifs_get_pnode
 
     get a pnode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_nnode \*parent:
+    :param parent:
         parent nnode
+    :type parent: struct ubifs_nnode \*
 
-    :param int iip:
+    :param iip:
         index in parent
+    :type iip: int
 
 .. _`ubifs_get_pnode.description`:
 
@@ -786,6 +892,31 @@ Description
 
 This function returns a pointer to the pnode on success or a negative error
 code on failure.
+
+.. _`ubifs_pnode_lookup`:
+
+ubifs_pnode_lookup
+==================
+
+.. c:function:: struct ubifs_pnode *ubifs_pnode_lookup(struct ubifs_info *c, int i)
+
+    lookup a pnode in the LPT.
+
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param i:
+        pnode number (0 to (main_lebs - 1) / UBIFS_LPT_FANOUT)
+    :type i: int
+
+.. _`ubifs_pnode_lookup.description`:
+
+Description
+-----------
+
+This function returns a pointer to the pnode on success or a negative
+error code on failure.
 
 .. _`ubifs_lpt_lookup`:
 
@@ -796,11 +927,13 @@ ubifs_lpt_lookup
 
     lookup LEB properties in the LPT.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number to lookup
+    :type lnum: int
 
 .. _`ubifs_lpt_lookup.description`:
 
@@ -819,11 +952,13 @@ dirty_cow_nnode
 
     ensure a nnode is not being committed.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_nnode \*nnode:
+    :param nnode:
         nnode to check
+    :type nnode: struct ubifs_nnode \*
 
 .. _`dirty_cow_nnode.description`:
 
@@ -841,11 +976,13 @@ dirty_cow_pnode
 
     ensure a pnode is not being committed.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode to check
+    :type pnode: struct ubifs_pnode \*
 
 .. _`dirty_cow_pnode.description`:
 
@@ -863,11 +1000,13 @@ ubifs_lpt_lookup_dirty
 
     lookup LEB properties in the LPT.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number to lookup
+    :type lnum: int
 
 .. _`ubifs_lpt_lookup_dirty.description`:
 
@@ -876,6 +1015,53 @@ Description
 
 This function returns a pointer to the LEB properties on success or a
 negative error code on failure.
+
+.. _`ubifs_lpt_calc_hash`:
+
+ubifs_lpt_calc_hash
+===================
+
+.. c:function:: int ubifs_lpt_calc_hash(struct ubifs_info *c, u8 *hash)
+
+    Calculate hash of the LPT pnodes
+
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param hash:
+        the returned hash of the LPT pnodes
+    :type hash: u8 \*
+
+.. _`ubifs_lpt_calc_hash.description`:
+
+Description
+-----------
+
+This function iterates over the LPT pnodes and creates a hash over them.
+Returns 0 for success or a negative error code otherwise.
+
+.. _`lpt_check_hash`:
+
+lpt_check_hash
+==============
+
+.. c:function:: int lpt_check_hash(struct ubifs_info *c)
+
+    check the hash of the LPT.
+
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+.. _`lpt_check_hash.description`:
+
+Description
+-----------
+
+This function calculates a hash over all pnodes in the LPT and compares it with
+the hash stored in the master node. Returns \ ``0``\  on success and a negative error
+code on failure.
 
 .. _`lpt_init_rd`:
 
@@ -886,8 +1072,9 @@ lpt_init_rd
 
     initialize the LPT for reading.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`lpt_init_rd.description`:
 
@@ -905,8 +1092,9 @@ lpt_init_wr
 
     initialize the LPT for writing.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`lpt_init_wr.description`:
 
@@ -926,14 +1114,17 @@ ubifs_lpt_init
 
     initialize the LPT.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int rd:
+    :param rd:
         whether to initialize lpt for reading
+    :type rd: int
 
-    :param int wr:
+    :param wr:
         whether to initialize lpt for writing
+    :type wr: int
 
 .. _`ubifs_lpt_init.description`:
 
@@ -1018,17 +1209,21 @@ scan_get_nnode
 
     for the scan, get a nnode from either the tree or flash.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct lpt_scan_node \*path:
+    :param path:
         where to put the nnode
+    :type path: struct lpt_scan_node \*
 
-    :param struct ubifs_nnode \*parent:
+    :param parent:
         parent of the nnode
+    :type parent: struct ubifs_nnode \*
 
-    :param int iip:
+    :param iip:
         index in parent of the nnode
+    :type iip: int
 
 .. _`scan_get_nnode.description`:
 
@@ -1047,17 +1242,21 @@ scan_get_pnode
 
     for the scan, get a pnode from either the tree or flash.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct lpt_scan_node \*path:
+    :param path:
         where to put the pnode
+    :type path: struct lpt_scan_node \*
 
-    :param struct ubifs_nnode \*parent:
+    :param parent:
         parent of the pnode
+    :type parent: struct ubifs_nnode \*
 
-    :param int iip:
+    :param iip:
         index in parent of the pnode
+    :type iip: int
 
 .. _`scan_get_pnode.description`:
 
@@ -1076,20 +1275,25 @@ ubifs_lpt_scan_nolock
 
     scan the LPT.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int start_lnum:
+    :param start_lnum:
         LEB number from which to start scanning
+    :type start_lnum: int
 
-    :param int end_lnum:
+    :param end_lnum:
         LEB number at which to stop scanning
+    :type end_lnum: int
 
-    :param ubifs_lpt_scan_callback scan_cb:
+    :param scan_cb:
         callback function called for each lprops
+    :type scan_cb: ubifs_lpt_scan_callback
 
-    :param void \*data:
+    :param data:
         data to be passed to the callback function
+    :type data: void \*
 
 .. _`ubifs_lpt_scan_nolock.description`:
 
@@ -1107,14 +1311,17 @@ dbg_chk_pnode
 
     check a pnode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode to check
+    :type pnode: struct ubifs_pnode \*
 
-    :param int col:
+    :param col:
         pnode column
+    :type col: int
 
 .. _`dbg_chk_pnode.description`:
 
@@ -1132,17 +1339,21 @@ dbg_check_lpt_nodes
 
     check nnodes and pnodes.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_cnode \*cnode:
+    :param cnode:
         next cnode (nnode or pnode) to check
+    :type cnode: struct ubifs_cnode \*
 
-    :param int row:
+    :param row:
         row of cnode (root is zero)
+    :type row: int
 
-    :param int col:
+    :param col:
         column of cnode (leftmost is zero)
+    :type col: int
 
 .. _`dbg_check_lpt_nodes.description`:
 

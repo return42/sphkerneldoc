@@ -10,14 +10,17 @@ nfs40_discover_server_trunking
 
     Detect server IP address trunking (mv0)
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client under test
+    :type clp: struct nfs_client \*
 
-    :param struct nfs_client \*\*result:
+    :param result:
         OUT: found nfs_client, or clp
+    :type result: struct nfs_client \*\*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         credential to use for trunking test
+    :type cred: struct rpc_cred \*
 
 .. _`nfs40_discover_server_trunking.description`:
 
@@ -44,8 +47,9 @@ nfs4_get_renew_cred_locked
 
     Acquire credential for a renew operation
 
-    :param struct nfs_client \*clp:
+    :param clp:
         client state handle
+    :type clp: struct nfs_client \*
 
 .. _`nfs4_get_renew_cred_locked.description`:
 
@@ -64,14 +68,17 @@ nfs41_discover_server_trunking
 
     Detect server IP address trunking (mv1)
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client under test
+    :type clp: struct nfs_client \*
 
-    :param struct nfs_client \*\*result:
+    :param result:
         OUT: found nfs_client, or clp
+    :type result: struct nfs_client \*\*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         credential to use for trunking test
+    :type cred: struct rpc_cred \*
 
 .. _`nfs41_discover_server_trunking.description`:
 
@@ -98,8 +105,9 @@ nfs4_get_clid_cred
 
     Acquire credential for a setclientid operation
 
-    :param struct nfs_client \*clp:
+    :param clp:
         client state handle
+    :type clp: struct nfs_client \*
 
 .. _`nfs4_get_clid_cred.description`:
 
@@ -117,14 +125,17 @@ nfs4_get_state_owner
 
     Look up a state owner given a credential
 
-    :param struct nfs_server \*server:
+    :param server:
         nfs_server to search
+    :type server: struct nfs_server \*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         RPC credential to match
+    :type cred: struct rpc_cred \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         *undescribed*
+    :type gfp_flags: gfp_t
 
 .. _`nfs4_get_state_owner.description`:
 
@@ -142,8 +153,9 @@ nfs4_put_state_owner
 
     Release a nfs4_state_owner
 
-    :param struct nfs4_state_owner \*sp:
+    :param sp:
         state owner data to release
+    :type sp: struct nfs4_state_owner \*
 
 .. _`nfs4_put_state_owner.description`:
 
@@ -167,8 +179,9 @@ nfs4_purge_state_owners
 
     Release all cached state owners
 
-    :param struct nfs_server \*server:
+    :param server:
         nfs_server with cached state owners to release
+    :type server: struct nfs_server \*
 
 .. _`nfs4_purge_state_owners.description`:
 
@@ -187,8 +200,9 @@ nfs4_schedule_migration_recovery
 
     trigger migration recovery
 
-    :param const struct nfs_server \*server:
+    :param server:
         FSID that is migrating
+    :type server: const struct nfs_server \*
 
 .. _`nfs4_schedule_migration_recovery.description`:
 
@@ -207,8 +221,9 @@ nfs4_schedule_lease_moved_recovery
 
     start lease-moved recovery
 
-    :param struct nfs_client \*clp:
+    :param clp:
         server to check for moved leases
+    :type clp: struct nfs_client \*
 
 .. _`nfs4_discover_server_trunking`:
 
@@ -219,11 +234,13 @@ nfs4_discover_server_trunking
 
     Detect server IP address trunking
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client under test
+    :type clp: struct nfs_client \*
 
-    :param struct nfs_client \*\*result:
+    :param result:
         OUT: found nfs_client, or clp
+    :type result: struct nfs_client \*\*
 
 .. _`nfs4_discover_server_trunking.description`:
 

@@ -41,6 +41,7 @@ Definition
         u32 lp0_vec_size;
         DECLARE_BITMAP(powergates_available, TEGRA_POWERGATE_MAX);
         struct mutex powergates_lock;
+        struct pinctrl_dev *pctl_dev;
     }
 
 .. _`tegra_pmc.members`:
@@ -117,6 +118,9 @@ powergates_available
 powergates_lock
     mutex for power gate register access
 
+pctl_dev
+    *undescribed*
+
 .. _`tegra_powergate_set`:
 
 tegra_powergate_set
@@ -126,11 +130,13 @@ tegra_powergate_set
 
     set the state of a partition
 
-    :param unsigned int id:
+    :param id:
         partition ID
+    :type id: unsigned int
 
-    :param bool new_state:
+    :param new_state:
         new state of the partition
+    :type new_state: bool
 
 .. _`tegra_powergate_power_on`:
 
@@ -141,8 +147,9 @@ tegra_powergate_power_on
 
     power on partition
 
-    :param unsigned int id:
+    :param id:
         partition ID
+    :type id: unsigned int
 
 .. _`tegra_powergate_power_off`:
 
@@ -153,8 +160,9 @@ tegra_powergate_power_off
 
     power off partition
 
-    :param unsigned int id:
+    :param id:
         partition ID
+    :type id: unsigned int
 
 .. _`tegra_powergate_is_powered`:
 
@@ -165,8 +173,9 @@ tegra_powergate_is_powered
 
     check if partition is powered
 
-    :param unsigned int id:
+    :param id:
         partition ID
+    :type id: unsigned int
 
 .. _`tegra_powergate_remove_clamping`:
 
@@ -177,8 +186,9 @@ tegra_powergate_remove_clamping
 
     remove power clamps for partition
 
-    :param unsigned int id:
+    :param id:
         partition ID
+    :type id: unsigned int
 
 .. _`tegra_powergate_sequence_power_up`:
 
@@ -189,14 +199,17 @@ tegra_powergate_sequence_power_up
 
     power up partition
 
-    :param unsigned int id:
+    :param id:
         partition ID
+    :type id: unsigned int
 
-    :param struct clk \*clk:
+    :param clk:
         clock for partition
+    :type clk: struct clk \*
 
-    :param struct reset_control \*rst:
+    :param rst:
         reset for partition
+    :type rst: struct reset_control \*
 
 .. _`tegra_powergate_sequence_power_up.description`:
 
@@ -214,8 +227,9 @@ tegra_get_cpu_powergate_id
 
     convert from CPU ID to partition ID
 
-    :param unsigned int cpuid:
+    :param cpuid:
         CPU partition ID
+    :type cpuid: unsigned int
 
 .. _`tegra_get_cpu_powergate_id.description`:
 
@@ -234,8 +248,9 @@ tegra_pmc_cpu_is_powered
 
     check if CPU partition is powered
 
-    :param unsigned int cpuid:
+    :param cpuid:
         CPU partition ID
+    :type cpuid: unsigned int
 
 .. _`tegra_pmc_cpu_power_on`:
 
@@ -246,8 +261,9 @@ tegra_pmc_cpu_power_on
 
     power on CPU partition
 
-    :param unsigned int cpuid:
+    :param cpuid:
         CPU partition ID
+    :type cpuid: unsigned int
 
 .. _`tegra_pmc_cpu_remove_clamping`:
 
@@ -258,8 +274,9 @@ tegra_pmc_cpu_remove_clamping
 
     remove power clamps for CPU partition
 
-    :param unsigned int cpuid:
+    :param cpuid:
         CPU partition ID
+    :type cpuid: unsigned int
 
 .. _`tegra_io_pad_power_enable`:
 
@@ -270,8 +287,9 @@ tegra_io_pad_power_enable
 
     enable power to I/O pad
 
-    :param enum tegra_io_pad id:
+    :param id:
         Tegra I/O pad ID for which to enable power
+    :type id: enum tegra_io_pad
 
 .. _`tegra_io_pad_power_enable.return`:
 
@@ -289,8 +307,9 @@ tegra_io_pad_power_disable
 
     disable power to I/O pad
 
-    :param enum tegra_io_pad id:
+    :param id:
         Tegra I/O pad ID for which to disable power
+    :type id: enum tegra_io_pad
 
 .. _`tegra_io_pad_power_disable.return`:
 
@@ -308,8 +327,9 @@ tegra_io_rail_power_on
 
     enable power to I/O rail
 
-    :param unsigned int id:
+    :param id:
         Tegra I/O pad ID for which to enable power
+    :type id: unsigned int
 
 .. _`tegra_io_rail_power_on.see-also`:
 
@@ -327,8 +347,9 @@ tegra_io_rail_power_off
 
     disable power to I/O rail
 
-    :param unsigned int id:
+    :param id:
         Tegra I/O pad ID for which to disable power
+    :type id: unsigned int
 
 .. _`tegra_io_rail_power_off.see-also`:
 

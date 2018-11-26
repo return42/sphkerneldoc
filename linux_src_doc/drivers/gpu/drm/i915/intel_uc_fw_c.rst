@@ -10,11 +10,13 @@ intel_uc_fw_fetch
 
     fetch uC firmware
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param struct intel_uc_fw \*uc_fw:
+    :param uc_fw:
         uC firmware
+    :type uc_fw: struct intel_uc_fw \*
 
 .. _`intel_uc_fw_fetch.description`:
 
@@ -32,8 +34,9 @@ intel_uc_fw_upload
 
     load uC firmware using custom loader
 
-    :param struct intel_uc_fw \*uc_fw:
+    :param uc_fw:
         uC firmware
+    :type uc_fw: struct intel_uc_fw \*
 
     :param int (\*xfer)(struct intel_uc_fw \*uc_fw, struct i915_vma \*vma):
         custom uC firmware loader function
@@ -61,8 +64,9 @@ intel_uc_fw_fini
 
     cleanup uC firmware
 
-    :param struct intel_uc_fw \*uc_fw:
+    :param uc_fw:
         uC firmware
+    :type uc_fw: struct intel_uc_fw \*
 
 .. _`intel_uc_fw_fini.description`:
 
@@ -80,11 +84,13 @@ intel_uc_fw_dump
 
     dump information about uC firmware
 
-    :param const struct intel_uc_fw \*uc_fw:
+    :param uc_fw:
         uC firmware
+    :type uc_fw: const struct intel_uc_fw \*
 
-    :param struct drm_printer \*p:
+    :param p:
         the \ :c:type:`struct drm_printer <drm_printer>`\ 
+    :type p: struct drm_printer \*
 
 .. _`intel_uc_fw_dump.description`:
 

@@ -10,11 +10,13 @@ iort_set_fwnode
 
     Create iort_fwnode and use it to register iommu data in the iort_fwnode_list
 
-    :param struct acpi_iort_node \*iort_node:
+    :param iort_node:
         *undescribed*
+    :type iort_node: struct acpi_iort_node \*
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         fwnode associated with the IORT node
+    :type fwnode: struct fwnode_handle \*
 
 .. _`iort_set_fwnode.return`:
 
@@ -33,8 +35,9 @@ iort_get_fwnode
 
     Retrieve fwnode associated with an IORT node
 
-    :param struct acpi_iort_node \*node:
+    :param node:
         IORT table node to be looked-up
+    :type node: struct acpi_iort_node \*
 
 .. _`iort_get_fwnode.return`:
 
@@ -52,8 +55,9 @@ iort_delete_fwnode
 
     Delete fwnode associated with an IORT node
 
-    :param struct acpi_iort_node \*node:
+    :param node:
         IORT table node associated with fwnode to delete
+    :type node: struct acpi_iort_node \*
 
 .. _`iort_get_iort_node`:
 
@@ -64,8 +68,9 @@ iort_get_iort_node
 
     Retrieve iort_node associated with an fwnode
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         fwnode associated with device to be looked-up
+    :type fwnode: struct fwnode_handle \*
 
 .. _`iort_get_iort_node.return`:
 
@@ -83,14 +88,17 @@ iort_register_domain_token
 
     register domain token along with related ITS ID and base address to the list from where we can get it back later on.
 
-    :param int trans_id:
+    :param trans_id:
         ITS ID.
+    :type trans_id: int
 
-    :param phys_addr_t base:
+    :param base:
         ITS base address.
+    :type base: phys_addr_t
 
-    :param struct fwnode_handle \*fw_node:
+    :param fw_node:
         Domain token.
+    :type fw_node: struct fwnode_handle \*
 
 .. _`iort_register_domain_token.return`:
 
@@ -108,8 +116,9 @@ iort_deregister_domain_token
 
     Deregister domain token based on ITS ID
 
-    :param int trans_id:
+    :param trans_id:
         ITS ID.
+    :type trans_id: int
 
 .. _`iort_deregister_domain_token.return`:
 
@@ -127,8 +136,9 @@ iort_find_domain_token
 
     Find domain token based on given ITS ID
 
-    :param int trans_id:
+    :param trans_id:
         ITS ID.
+    :type trans_id: int
 
 .. _`iort_find_domain_token.return`:
 
@@ -146,11 +156,13 @@ iort_msi_map_rid
 
     Map a MSI requester ID for a device
 
-    :param struct device \*dev:
+    :param dev:
         The device for which the mapping is to be done.
+    :type dev: struct device \*
 
-    :param u32 req_id:
+    :param req_id:
         The device requester ID.
+    :type req_id: u32
 
 .. _`iort_msi_map_rid.return`:
 
@@ -168,11 +180,13 @@ iort_pmsi_get_dev_id
 
     Get the device id for a device
 
-    :param struct device \*dev:
+    :param dev:
         The device for which the mapping is to be done.
+    :type dev: struct device \*
 
-    :param u32 \*dev_id:
+    :param dev_id:
         The device ID found.
+    :type dev_id: u32 \*
 
 .. _`iort_pmsi_get_dev_id.return`:
 
@@ -190,17 +204,21 @@ iort_dev_find_its_id
 
     Find the ITS identifier for a device
 
-    :param struct device \*dev:
+    :param dev:
         The device.
+    :type dev: struct device \*
 
-    :param u32 req_id:
+    :param req_id:
         Device's requester ID
+    :type req_id: u32
 
-    :param unsigned int idx:
+    :param idx:
         Index of the ITS identifier list.
+    :type idx: unsigned int
 
-    :param int \*its_id:
+    :param its_id:
         ITS identifier.
+    :type its_id: int \*
 
 .. _`iort_dev_find_its_id.return`:
 
@@ -218,11 +236,13 @@ iort_get_device_domain
 
     Find MSI domain related to a device
 
-    :param struct device \*dev:
+    :param dev:
         The device.
+    :type dev: struct device \*
 
-    :param u32 req_id:
+    :param req_id:
         Requester ID for the device.
+    :type req_id: u32
 
 .. _`iort_get_device_domain.return`:
 
@@ -240,8 +260,9 @@ iort_get_platform_device_domain
 
     Find MSI domain related to a platform device
 
-    :param struct device \*dev:
+    :param dev:
         the dev pointer associated with the platform device
+    :type dev: struct device \*
 
 .. _`iort_get_platform_device_domain.return`:
 
@@ -259,11 +280,13 @@ iort_iommu_msi_get_resv_regions
 
     Reserved region driver helper
 
-    :param struct device \*dev:
+    :param dev:
         Device from \ :c:func:`iommu_get_resv_regions`\ 
+    :type dev: struct device \*
 
-    :param struct list_head \*head:
+    :param head:
         Reserved region list from \ :c:func:`iommu_get_resv_regions`\ 
+    :type head: struct list_head \*
 
 .. _`iort_iommu_msi_get_resv_regions.return`:
 
@@ -285,14 +308,17 @@ iort_dma_setup
 
     Set-up device DMA parameters.
 
-    :param struct device \*dev:
+    :param dev:
         device to configure
+    :type dev: struct device \*
 
-    :param u64 \*dma_addr:
+    :param dma_addr:
         device DMA address result pointer
+    :type dma_addr: u64 \*
 
-    :param u64 \*dma_size:
+    :param dma_size:
         *undescribed*
+    :type dma_size: u64 \*
 
 .. _`iort_iommu_configure`:
 
@@ -303,8 +329,9 @@ iort_iommu_configure
 
     Set-up IOMMU configuration for a device.
 
-    :param struct device \*dev:
+    :param dev:
         device to configure
+    :type dev: struct device \*
 
 .. _`iort_iommu_configure.return`:
 
@@ -323,11 +350,13 @@ iort_add_platform_device
 
     Allocate a platform device for IORT node
 
-    :param struct acpi_iort_node \*node:
+    :param node:
         Pointer to device ACPI IORT node
+    :type node: struct acpi_iort_node \*
 
-    :param const struct iort_dev_config \*ops:
+    :param ops:
         *undescribed*
+    :type ops: const struct iort_dev_config \*
 
 .. _`iort_add_platform_device.return`:
 

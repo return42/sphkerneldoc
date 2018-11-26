@@ -182,8 +182,9 @@ st_i2c_hw_config
 
     Prepare SSC block, calculate and apply tuning timings
 
-    :param struct st_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct st_i2c_dev \*
 
 .. _`st_i2c_write_tx_fifo`:
 
@@ -194,11 +195,13 @@ st_i2c_write_tx_fifo
 
     Write a byte in the Tx FIFO
 
-    :param struct st_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct st_i2c_dev \*
 
-    :param u8 byte:
+    :param byte:
         Data to write in the Tx FIFO
+    :type byte: u8
 
 .. _`st_i2c_wr_fill_tx_fifo`:
 
@@ -209,8 +212,9 @@ st_i2c_wr_fill_tx_fifo
 
     Fill the Tx FIFO in write mode
 
-    :param struct st_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct st_i2c_dev \*
 
 .. _`st_i2c_wr_fill_tx_fifo.description`:
 
@@ -229,11 +233,13 @@ st_i2c_rd_fill_tx_fifo
 
     Fill the Tx FIFO in read mode
 
-    :param struct st_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct st_i2c_dev \*
 
-    :param int max:
+    :param max:
         *undescribed*
+    :type max: int
 
 .. _`st_i2c_rd_fill_tx_fifo.description`:
 
@@ -252,8 +258,9 @@ st_i2c_terminate_xfer
 
     Send either STOP or REPSTART condition
 
-    :param struct st_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct st_i2c_dev \*
 
 .. _`st_i2c_handle_write`:
 
@@ -264,8 +271,9 @@ st_i2c_handle_write
 
     Handle FIFO empty interrupt in case of write
 
-    :param struct st_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct st_i2c_dev \*
 
 .. _`st_i2c_handle_read`:
 
@@ -276,8 +284,9 @@ st_i2c_handle_read
 
     Handle FIFO enmpty interrupt in case of read
 
-    :param struct st_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct st_i2c_dev \*
 
 .. _`st_i2c_isr_thread`:
 
@@ -288,11 +297,13 @@ st_i2c_isr_thread
 
     Interrupt routine
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Controller's private data
+    :type data: void \*
 
 .. _`st_i2c_xfer_msg`:
 
@@ -303,17 +314,21 @@ st_i2c_xfer_msg
 
     Transfer a single I2C message
 
-    :param struct st_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct st_i2c_dev \*
 
-    :param struct i2c_msg \*msg:
+    :param msg:
         I2C message to transfer
+    :type msg: struct i2c_msg \*
 
-    :param bool is_first:
+    :param is_first:
         first message of the sequence
+    :type is_first: bool
 
-    :param bool is_last:
+    :param is_last:
         last message of the sequence
+    :type is_last: bool
 
 .. _`st_i2c_xfer`:
 
@@ -324,14 +339,17 @@ st_i2c_xfer
 
     Transfer a single I2C message
 
-    :param struct i2c_adapter \*i2c_adap:
+    :param i2c_adap:
         Adapter pointer to the controller
+    :type i2c_adap: struct i2c_adapter \*
 
-    :param struct i2c_msg msgs:
+    :param msgs:
         Pointer to data to be written.
+    :type msgs: struct i2c_msg
 
-    :param int num:
+    :param num:
         Number of messages to be executed
+    :type num: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,26 +10,33 @@ nlmclnt_lookup_host
 
     Find an NLM host handle matching a remote server
 
-    :param const struct sockaddr \*sap:
+    :param sap:
         network address of server
+    :type sap: const struct sockaddr \*
 
-    :param const size_t salen:
+    :param salen:
         length of server address
+    :type salen: const size_t
 
-    :param const unsigned short protocol:
+    :param protocol:
         transport protocol to use
+    :type protocol: const unsigned short
 
-    :param const u32 version:
+    :param version:
         NLM protocol version
+    :type version: const u32
 
-    :param const char \*hostname:
+    :param hostname:
         '\0'-terminated hostname of server
+    :type hostname: const char \*
 
-    :param int noresvport:
+    :param noresvport:
         1 if non-privileged port should be used
+    :type noresvport: int
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
 .. _`nlmclnt_lookup_host.description`:
 
@@ -50,8 +57,9 @@ nlmclnt_release_host
 
     release client nlm_host
 
-    :param struct nlm_host \*host:
+    :param host:
         nlm_host to release
+    :type host: struct nlm_host \*
 
 .. _`nlmsvc_lookup_host`:
 
@@ -62,14 +70,17 @@ nlmsvc_lookup_host
 
     Find an NLM host handle matching a remote client
 
-    :param const struct svc_rqst \*rqstp:
+    :param rqstp:
         incoming NLM request
+    :type rqstp: const struct svc_rqst \*
 
-    :param const char \*hostname:
+    :param hostname:
         name of client host
+    :type hostname: const char \*
 
-    :param const size_t hostname_len:
+    :param hostname_len:
         length of client hostname
+    :type hostname_len: const size_t
 
 .. _`nlmsvc_lookup_host.description`:
 
@@ -97,8 +108,9 @@ nlmsvc_release_host
 
     release server nlm_host
 
-    :param struct nlm_host \*host:
+    :param host:
         nlm_host to release
+    :type host: struct nlm_host \*
 
 .. _`nlmsvc_release_host.description`:
 
@@ -116,11 +128,13 @@ nlm_host_rebooted
 
     Release all resources held by rebooted host
 
-    :param const struct net \*net:
+    :param net:
         network namespace
+    :type net: const struct net \*
 
-    :param const struct nlm_reboot \*info:
+    :param info:
         pointer to decoded results of NLM_SM_NOTIFY call
+    :type info: const struct nlm_reboot \*
 
 .. _`nlm_host_rebooted.description`:
 

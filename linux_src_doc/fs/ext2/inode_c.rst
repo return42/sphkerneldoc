@@ -10,16 +10,19 @@ ext2_block_to_path
 
     parse the block number into array of offsets
 
-    :param struct inode \*inode:
+    :param inode:
         inode in question (we are only interested in its superblock)
+    :type inode: struct inode \*
 
-    :param long i_block:
+    :param i_block:
         block number to be parsed
+    :type i_block: long
 
-    :param int offsets:
+    :param offsets:
         array to store the offsets in
+    :type offsets: int
 
-    :param int \*boundary:
+    :param boundary:
         set this non-zero if the referred-to block is likely to be
         followed (on disk) by an indirect block.
         To store the locations of file's data ext2 uses a data structure common
@@ -29,6 +32,7 @@ ext2_block_to_path
         return value is the path length and \ ``offsets``\ [n] is the offset of
         pointer to (n+1)th node in the nth one. If \ ``block``\  is out of range
         (negative or too large) warning is printed and zero returned.
+    :type boundary: int \*
 
 .. _`ext2_block_to_path.note`:
 
@@ -48,20 +52,25 @@ ext2_get_branch
 
     read the chain of indirect blocks leading to data
 
-    :param struct inode \*inode:
+    :param inode:
         inode in question
+    :type inode: struct inode \*
 
-    :param int depth:
+    :param depth:
         depth of the chain (1 - direct pointer, etc.)
+    :type depth: int
 
-    :param int \*offsets:
+    :param offsets:
         offsets of pointers in inode/indirect blocks
+    :type offsets: int \*
 
-    :param Indirect chain:
+    :param chain:
         place to store the result
+    :type chain: Indirect
 
-    :param int \*err:
+    :param err:
         here we store the error value
+    :type err: int \*
 
 .. _`ext2_get_branch.description`:
 
@@ -98,11 +107,13 @@ ext2_find_near
 
     find a place for allocation with sufficient locality
 
-    :param struct inode \*inode:
+    :param inode:
         owner
+    :type inode: struct inode \*
 
-    :param Indirect \*ind:
+    :param ind:
         descriptor of indirect block.
+    :type ind: Indirect \*
 
 .. _`ext2_find_near.description`:
 
@@ -137,14 +148,17 @@ ext2_find_goal
 
     find a preferred place for allocation.
 
-    :param struct inode \*inode:
+    :param inode:
         owner
+    :type inode: struct inode \*
 
-    :param long block:
+    :param block:
         block we want
+    :type block: long
 
-    :param Indirect \*partial:
+    :param partial:
         pointer to the last triple within a chain
+    :type partial: Indirect \*
 
 .. _`ext2_find_goal.description`:
 
@@ -162,17 +176,21 @@ ext2_blks_to_allocate
 
     Look up the block map and count the number of direct blocks need to be allocated for the given branch.
 
-    :param Indirect \*branch:
+    :param branch:
         chain of indirect blocks
+    :type branch: Indirect \*
 
-    :param int k:
+    :param k:
         number of blocks need for indirect blocks
+    :type k: int
 
-    :param unsigned long blks:
+    :param blks:
         number of data blocks to be mapped.
+    :type blks: unsigned long
 
-    :param int blocks_to_boundary:
+    :param blocks_to_boundary:
         the offset in the indirect block
+    :type blocks_to_boundary: int
 
 .. _`ext2_blks_to_allocate.description`:
 
@@ -191,26 +209,32 @@ ext2_alloc_blocks
 
     multiple allocate blocks needed for a branch
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param ext2_fsblk_t goal:
+    :param goal:
         *undescribed*
+    :type goal: ext2_fsblk_t
 
-    :param int indirect_blks:
+    :param indirect_blks:
         the number of blocks need to allocate for indirect
         blocks
+    :type indirect_blks: int
 
-    :param int blks:
+    :param blks:
         on return it will store the total number of allocated
         direct blocks
+    :type blks: int
 
-    :param ext2_fsblk_t new_blocks:
+    :param new_blocks:
         on return it will store the new block numbers for
         the indirect blocks(if needed) and the first direct block,
+    :type new_blocks: ext2_fsblk_t
 
-    :param int \*err:
+    :param err:
         *undescribed*
+    :type err: int \*
 
 .. _`ext2_alloc_branch`:
 
@@ -221,23 +245,29 @@ ext2_alloc_branch
 
     allocate and set up a chain of blocks.
 
-    :param struct inode \*inode:
+    :param inode:
         owner
+    :type inode: struct inode \*
 
-    :param int indirect_blks:
+    :param indirect_blks:
         *undescribed*
+    :type indirect_blks: int
 
-    :param int \*blks:
+    :param blks:
         *undescribed*
+    :type blks: int \*
 
-    :param ext2_fsblk_t goal:
+    :param goal:
         *undescribed*
+    :type goal: ext2_fsblk_t
 
-    :param int \*offsets:
+    :param offsets:
         offsets (in the blocks) to store the pointers to next.
+    :type offsets: int \*
 
-    :param Indirect \*branch:
+    :param branch:
         place to store the chain in.
+    :type branch: Indirect \*
 
 .. _`ext2_alloc_branch.description`:
 
@@ -270,20 +300,25 @@ ext2_splice_branch
 
     splice the allocated branch onto inode.
 
-    :param struct inode \*inode:
+    :param inode:
         owner
+    :type inode: struct inode \*
 
-    :param long block:
+    :param block:
         (logical) number of block we are adding
+    :type block: long
 
-    :param Indirect \*where:
+    :param where:
         location of missing link
+    :type where: Indirect \*
 
-    :param int num:
+    :param num:
         number of indirect blocks we are adding
+    :type num: int
 
-    :param int blks:
+    :param blks:
         number of direct blocks we are adding
+    :type blks: int
 
 .. _`ext2_splice_branch.description`:
 
@@ -303,20 +338,25 @@ ext2_find_shared
 
     find the indirect blocks for partial truncation.
 
-    :param struct inode \*inode:
+    :param inode:
         inode in question
+    :type inode: struct inode \*
 
-    :param int depth:
+    :param depth:
         depth of the affected branch
+    :type depth: int
 
-    :param int offsets:
+    :param offsets:
         offsets of pointers in that branch (see ext2_block_to_path)
+    :type offsets: int
 
-    :param Indirect chain:
+    :param chain:
         place to store the pointers to partial indirect blocks
+    :type chain: Indirect
 
-    :param __le32 \*top:
+    :param top:
         place to the (detached) top of branch
+    :type top: __le32 \*
 
 .. _`ext2_find_shared.description`:
 
@@ -361,14 +401,17 @@ ext2_free_data
 
     free a list of data blocks
 
-    :param struct inode \*inode:
+    :param inode:
         inode we are dealing with
+    :type inode: struct inode \*
 
-    :param __le32 \*p:
+    :param p:
         array of block numbers
+    :type p: __le32 \*
 
-    :param __le32 \*q:
+    :param q:
         points immediately past the end of array
+    :type q: __le32 \*
 
 .. _`ext2_free_data.description`:
 
@@ -376,7 +419,7 @@ Description
 -----------
 
 We are freeing all blocks referred from that array (numbers are
-stored as little-endian 32-bit) and updating \ ``inode``\ ->i_blocks
+stored as little-endian 32-bit) and updating \ ``inode->i_blocks``\ 
 appropriately.
 
 .. _`ext2_free_branches`:
@@ -388,17 +431,21 @@ ext2_free_branches
 
     free an array of branches
 
-    :param struct inode \*inode:
+    :param inode:
         inode we are dealing with
+    :type inode: struct inode \*
 
-    :param __le32 \*p:
+    :param p:
         array of block numbers
+    :type p: __le32 \*
 
-    :param __le32 \*q:
+    :param q:
         pointer immediately past the end of array
+    :type q: __le32 \*
 
-    :param int depth:
+    :param depth:
         depth of the branches to free
+    :type depth: int
 
 .. _`ext2_free_branches.description`:
 
@@ -406,7 +453,7 @@ Description
 -----------
 
 We are freeing all blocks referred from these branches (numbers are
-stored as little-endian 32-bit) and updating \ ``inode``\ ->i_blocks
+stored as little-endian 32-bit) and updating \ ``inode->i_blocks``\ 
 appropriately.
 
 .. This file was automatic generated / don't edit.

@@ -10,11 +10,13 @@ batadv_choose_claim
 
     choose the right bucket for a claim.
 
-    :param const void \*data:
+    :param data:
         data to hash
+    :type data: const void \*
 
-    :param u32 size:
+    :param size:
         size of the hash table
+    :type size: u32
 
 .. _`batadv_choose_claim.return`:
 
@@ -32,11 +34,13 @@ batadv_choose_backbone_gw
 
     choose the right bucket for a backbone gateway.
 
-    :param const void \*data:
+    :param data:
         data to hash
+    :type data: const void \*
 
-    :param u32 size:
+    :param size:
         size of the hash table
+    :type size: u32
 
 .. _`batadv_choose_backbone_gw.return`:
 
@@ -54,11 +58,13 @@ batadv_compare_backbone_gw
 
     compare address and vid of two backbone gws
 
-    :param const struct hlist_node \*node:
+    :param node:
         list node of the first entry to compare
+    :type node: const struct hlist_node \*
 
-    :param const void \*data2:
+    :param data2:
         pointer to the second backbone gateway
+    :type data2: const void \*
 
 .. _`batadv_compare_backbone_gw.return`:
 
@@ -76,11 +82,13 @@ batadv_compare_claim
 
     compare address and vid of two claims
 
-    :param const struct hlist_node \*node:
+    :param node:
         list node of the first entry to compare
+    :type node: const struct hlist_node \*
 
-    :param const void \*data2:
+    :param data2:
         pointer to the second claims
+    :type data2: const void \*
 
 .. _`batadv_compare_claim.return`:
 
@@ -98,8 +106,9 @@ batadv_backbone_gw_release
 
     release backbone gw from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the backbone gw
+    :type ref: struct kref \*
 
 .. _`batadv_backbone_gw_put`:
 
@@ -110,8 +119,9 @@ batadv_backbone_gw_put
 
     decrement the backbone gw refcounter and possibly release it
 
-    :param struct batadv_bla_backbone_gw \*backbone_gw:
+    :param backbone_gw:
         backbone gateway to be free'd
+    :type backbone_gw: struct batadv_bla_backbone_gw \*
 
 .. _`batadv_claim_release`:
 
@@ -122,8 +132,9 @@ batadv_claim_release
 
     release claim from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the claim
+    :type ref: struct kref \*
 
 .. _`batadv_claim_put`:
 
@@ -134,8 +145,9 @@ batadv_claim_put
 
     decrement the claim refcounter and possibly release it
 
-    :param struct batadv_bla_claim \*claim:
+    :param claim:
         claim to be free'd
+    :type claim: struct batadv_bla_claim \*
 
 .. _`batadv_claim_hash_find`:
 
@@ -146,11 +158,13 @@ batadv_claim_hash_find
 
     looks for a claim in the claim hash
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_bla_claim \*data:
+    :param data:
         search data (may be local/static data)
+    :type data: struct batadv_bla_claim \*
 
 .. _`batadv_claim_hash_find.return`:
 
@@ -168,14 +182,17 @@ batadv_backbone_hash_find
 
     looks for a backbone gateway in the hash
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*addr:
+    :param addr:
         the address of the originator
+    :type addr: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID
+    :type vid: unsigned short
 
 .. _`batadv_backbone_hash_find.return`:
 
@@ -193,8 +210,9 @@ batadv_bla_del_backbone_claims
 
     delete all claims for a backbone
 
-    :param struct batadv_bla_backbone_gw \*backbone_gw:
+    :param backbone_gw:
         backbone gateway where the claims should be removed
+    :type backbone_gw: struct batadv_bla_backbone_gw \*
 
 .. _`batadv_bla_send_claim`:
 
@@ -205,17 +223,21 @@ batadv_bla_send_claim
 
     sends a claim frame according to the provided info
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*mac:
+    :param mac:
         the mac address to be announced within the claim
+    :type mac: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID
+    :type vid: unsigned short
 
-    :param int claimtype:
+    :param claimtype:
         the type of the claim (CLAIM, UNCLAIM, ANNOUNCE, ...)
+    :type claimtype: int
 
 .. _`batadv_bla_loopdetect_report`:
 
@@ -226,8 +248,9 @@ batadv_bla_loopdetect_report
 
     worker for reporting the loop
 
-    :param struct work_struct \*work:
+    :param work:
         work queue item
+    :type work: struct work_struct \*
 
 .. _`batadv_bla_loopdetect_report.description`:
 
@@ -246,17 +269,21 @@ batadv_bla_get_backbone_gw
 
     finds or creates a backbone gateway
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*orig:
+    :param orig:
         the mac address of the originator
+    :type orig: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID
+    :type vid: unsigned short
 
-    :param bool own_backbone:
+    :param own_backbone:
         set if the requested backbone is local
+    :type own_backbone: bool
 
 .. _`batadv_bla_get_backbone_gw.return`:
 
@@ -274,14 +301,17 @@ batadv_bla_update_own_backbone_gw
 
     updates the own backbone gw for a VLAN
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         the selected primary interface
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_bla_update_own_backbone_gw.description`:
 
@@ -300,14 +330,17 @@ batadv_bla_answer_request
 
     answer a bla request by sending own claims
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         interface where the request came on
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param unsigned short vid:
+    :param vid:
         the vid where the request came on
+    :type vid: unsigned short
 
 .. _`batadv_bla_answer_request.description`:
 
@@ -326,8 +359,9 @@ batadv_bla_send_request
 
     send a request to repeat claims
 
-    :param struct batadv_bla_backbone_gw \*backbone_gw:
+    :param backbone_gw:
         the backbone gateway from whom we are out of sync
+    :type backbone_gw: struct batadv_bla_backbone_gw \*
 
 .. _`batadv_bla_send_request.description`:
 
@@ -347,11 +381,13 @@ batadv_bla_send_announce
 
     Send an announcement frame
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_bla_backbone_gw \*backbone_gw:
+    :param backbone_gw:
         our backbone gateway which should be announced
+    :type backbone_gw: struct batadv_bla_backbone_gw \*
 
 .. _`batadv_bla_add_claim`:
 
@@ -362,17 +398,21 @@ batadv_bla_add_claim
 
     Adds a claim in the claim hash
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*mac:
+    :param mac:
         the mac address of the claim
+    :type mac: const u8 \*
 
-    :param const unsigned short vid:
+    :param vid:
         the VLAN ID of the frame
+    :type vid: const unsigned short
 
-    :param struct batadv_bla_backbone_gw \*backbone_gw:
+    :param backbone_gw:
         the backbone gateway which claims it
+    :type backbone_gw: struct batadv_bla_backbone_gw \*
 
 .. _`batadv_bla_claim_get_backbone_gw`:
 
@@ -383,8 +423,9 @@ batadv_bla_claim_get_backbone_gw
 
     Get valid reference for backbone_gw of claim
 
-    :param struct batadv_bla_claim \*claim:
+    :param claim:
         claim whose backbone_gw should be returned
+    :type claim: struct batadv_bla_claim \*
 
 .. _`batadv_bla_claim_get_backbone_gw.description`:
 
@@ -402,14 +443,17 @@ batadv_bla_del_claim
 
     delete a claim from the claim hash
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*mac:
+    :param mac:
         mac address of the claim to be removed
+    :type mac: const u8 \*
 
-    :param const unsigned short vid:
+    :param vid:
         VLAN id for the claim to be removed
+    :type vid: const unsigned short
 
 .. _`batadv_handle_announce`:
 
@@ -420,17 +464,21 @@ batadv_handle_announce
 
     check for ANNOUNCE frame
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*an_addr:
+    :param an_addr:
         announcement mac address (ARP Sender HW address)
+    :type an_addr: u8 \*
 
-    :param u8 \*backbone_addr:
+    :param backbone_addr:
         originator address of the sender (Ethernet source MAC)
+    :type backbone_addr: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID of the frame
+    :type vid: unsigned short
 
 .. _`batadv_handle_announce.return`:
 
@@ -448,20 +496,25 @@ batadv_handle_request
 
     check for REQUEST frame
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         the primary hard interface of this batman soft interface
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param u8 \*backbone_addr:
+    :param backbone_addr:
         backbone address to be requested (ARP sender HW MAC)
+    :type backbone_addr: u8 \*
 
-    :param struct ethhdr \*ethhdr:
+    :param ethhdr:
         ethernet header of a packet
+    :type ethhdr: struct ethhdr \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID of the frame
+    :type vid: unsigned short
 
 .. _`batadv_handle_request.return`:
 
@@ -479,20 +532,25 @@ batadv_handle_unclaim
 
     check for UNCLAIM frame
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         the primary hard interface of this batman soft interface
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param u8 \*backbone_addr:
+    :param backbone_addr:
         originator address of the backbone (Ethernet source)
+    :type backbone_addr: u8 \*
 
-    :param u8 \*claim_addr:
+    :param claim_addr:
         Client to be unclaimed (ARP sender HW MAC)
+    :type claim_addr: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID of the frame
+    :type vid: unsigned short
 
 .. _`batadv_handle_unclaim.return`:
 
@@ -510,20 +568,25 @@ batadv_handle_claim
 
     check for CLAIM frame
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         the primary hard interface of this batman soft interface
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param u8 \*backbone_addr:
+    :param backbone_addr:
         originator address of the backbone (Ethernet Source)
+    :type backbone_addr: u8 \*
 
-    :param u8 \*claim_addr:
+    :param claim_addr:
         client mac address to be claimed (ARP sender HW MAC)
+    :type claim_addr: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID of the frame
+    :type vid: unsigned short
 
 .. _`batadv_handle_claim.return`:
 
@@ -541,20 +604,25 @@ batadv_check_claim_group
 
     check for claim group membership
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         the primary interface of this batman interface
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param u8 \*hw_src:
+    :param hw_src:
         the Hardware source in the ARP Header
+    :type hw_src: u8 \*
 
-    :param u8 \*hw_dst:
+    :param hw_dst:
         the Hardware destination in the ARP Header
+    :type hw_dst: u8 \*
 
-    :param struct ethhdr \*ethhdr:
+    :param ethhdr:
         pointer to the Ethernet header of the claim frame
+    :type ethhdr: struct ethhdr \*
 
 .. _`batadv_check_claim_group.description`:
 
@@ -583,14 +651,17 @@ batadv_bla_process_claim
 
     Check if this is a claim frame, and process it
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         the primary hard interface of this batman soft interface
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the frame to be checked
+    :type skb: struct sk_buff \*
 
 .. _`batadv_bla_process_claim.return`:
 
@@ -609,11 +680,13 @@ batadv_bla_purge_backbone_gw
 
     Remove backbone gateways after a timeout or immediately
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param int now:
+    :param now:
         whether the whole hash shall be wiped now
+    :type now: int
 
 .. _`batadv_bla_purge_backbone_gw.description`:
 
@@ -632,14 +705,17 @@ batadv_bla_purge_claims
 
     Remove claims after a timeout or immediately
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         the selected primary interface, may be NULL if now is set
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param int now:
+    :param now:
         whether the whole hash shall be wiped now
+    :type now: int
 
 .. _`batadv_bla_purge_claims.description`:
 
@@ -658,14 +734,17 @@ batadv_bla_update_orig_address
 
     Update the backbone gateways when the own originator address changes
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         the new selected primary_if
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*oldif:
+    :param oldif:
         the old primary interface, may be NULL
+    :type oldif: struct batadv_hard_iface \*
 
 .. _`batadv_bla_send_loopdetect`:
 
@@ -676,11 +755,13 @@ batadv_bla_send_loopdetect
 
     send a loopdetect frame
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_bla_backbone_gw \*backbone_gw:
+    :param backbone_gw:
         the backbone gateway for which a loop should be detected
+    :type backbone_gw: struct batadv_bla_backbone_gw \*
 
 .. _`batadv_bla_send_loopdetect.description`:
 
@@ -701,8 +782,9 @@ batadv_bla_status_update
 
     purge bla interfaces if necessary
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the soft interface net device
+    :type net_dev: struct net_device \*
 
 .. _`batadv_bla_periodic_work`:
 
@@ -713,8 +795,9 @@ batadv_bla_periodic_work
 
     performs periodic bla work
 
-    :param struct work_struct \*work:
+    :param work:
         kernel work struct
+    :type work: struct work_struct \*
 
 .. _`batadv_bla_periodic_work.periodic-work-to-do`:
 
@@ -733,8 +816,9 @@ batadv_bla_init
 
     initialize all bla structures
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_bla_init.return`:
 
@@ -752,11 +836,13 @@ batadv_bla_check_bcast_duplist
 
     Check if a frame is in the broadcast dup.
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         contains the bcast_packet to be checked
+    :type skb: struct sk_buff \*
 
 .. _`batadv_bla_check_bcast_duplist.description`:
 
@@ -788,14 +874,17 @@ batadv_bla_is_backbone_gw_orig
 
     Check if the originator is a gateway for the VLAN identified by vid.
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*orig:
+    :param orig:
         originator mac address
+    :type orig: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_bla_is_backbone_gw_orig.return`:
 
@@ -813,14 +902,17 @@ batadv_bla_is_backbone_gw
 
     check if originator is a backbone gw for a VLAN
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the frame to be checked
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig_node of the frame
+    :type orig_node: struct batadv_orig_node \*
 
-    :param int hdr_size:
+    :param hdr_size:
         maximum length of the frame
+    :type hdr_size: int
 
 .. _`batadv_bla_is_backbone_gw.return`:
 
@@ -839,8 +931,9 @@ batadv_bla_free
 
     free all bla structures
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_bla_free.description`:
 
@@ -858,17 +951,21 @@ batadv_bla_loopdetect_check
 
     check and handle a detected loop
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet to check
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         interface where the request came on
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID of the frame
+    :type vid: unsigned short
 
 .. _`batadv_bla_loopdetect_check.description`:
 
@@ -895,17 +992,21 @@ batadv_bla_rx
 
     check packets coming from the mesh.
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the frame to be checked
+    :type skb: struct sk_buff \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID of the frame
+    :type vid: unsigned short
 
-    :param bool is_bcast:
+    :param is_bcast:
         the packet came in a broadcast packet type.
+    :type is_bcast: bool
 
 .. _`batadv_bla_rx.batadv_bla_rx-avoidance-checks-if`:
 
@@ -934,14 +1035,17 @@ batadv_bla_tx
 
     check packets going into the mesh
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the frame to be checked
+    :type skb: struct sk_buff \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID of the frame
+    :type vid: unsigned short
 
 .. _`batadv_bla_tx.batadv_bla_tx-checks-if`:
 
@@ -972,11 +1076,13 @@ batadv_bla_claim_table_seq_print_text
 
     print the claim table in a seq file
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq file to print on
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_bla_claim_table_seq_print_text.return`:
 
@@ -994,20 +1100,25 @@ batadv_bla_claim_dump_entry
 
     dump one entry of the claim table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink port
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         primary interface
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param struct batadv_bla_claim \*claim:
+    :param claim:
         entry to dump
+    :type claim: struct batadv_bla_claim \*
 
 .. _`batadv_bla_claim_dump_entry.return`:
 
@@ -1025,23 +1136,29 @@ batadv_bla_claim_dump_bucket
 
     dump one bucket of the claim table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink port
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         primary interface
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param struct hlist_head \*head:
+    :param head:
         bucket to dump
+    :type head: struct hlist_head \*
 
-    :param int \*idx_skip:
+    :param idx_skip:
         How many entries to skip
+    :type idx_skip: int \*
 
 .. _`batadv_bla_claim_dump_bucket.return`:
 
@@ -1059,11 +1176,13 @@ batadv_bla_claim_dump
 
     dump claim table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         callback structure containing arguments
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_bla_claim_dump.return`:
 
@@ -1081,11 +1200,13 @@ batadv_bla_backbone_table_seq_print_text
 
     print the backbone table in a seq file
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq file to print on
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_bla_backbone_table_seq_print_text.return`:
 
@@ -1103,20 +1224,25 @@ batadv_bla_backbone_dump_entry
 
     dump one entry of the backbone table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink port
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         primary interface
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param struct batadv_bla_backbone_gw \*backbone_gw:
+    :param backbone_gw:
         entry to dump
+    :type backbone_gw: struct batadv_bla_backbone_gw \*
 
 .. _`batadv_bla_backbone_dump_entry.return`:
 
@@ -1134,23 +1260,29 @@ batadv_bla_backbone_dump_bucket
 
     dump one bucket of the backbone table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink port
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         primary interface
+    :type primary_if: struct batadv_hard_iface \*
 
-    :param struct hlist_head \*head:
+    :param head:
         bucket to dump
+    :type head: struct hlist_head \*
 
-    :param int \*idx_skip:
+    :param idx_skip:
         How many entries to skip
+    :type idx_skip: int \*
 
 .. _`batadv_bla_backbone_dump_bucket.return`:
 
@@ -1168,11 +1300,13 @@ batadv_bla_backbone_dump
 
     dump backbone table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         callback structure containing arguments
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_bla_backbone_dump.return`:
 
@@ -1190,14 +1324,17 @@ batadv_bla_check_claim
 
     check if address is claimed
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*addr:
+    :param addr:
         mac address of which the claim status is checked
+    :type addr: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN ID
+    :type vid: unsigned short
 
 .. _`batadv_bla_check_claim.description`:
 

@@ -10,8 +10,9 @@ bch_data_insert
 
     stick some data in the cache
 
-    :param struct closure \*cl:
+    :param cl:
         closure pointer.
+    :type cl: struct closure \*
 
 .. _`bch_data_insert.description`:
 

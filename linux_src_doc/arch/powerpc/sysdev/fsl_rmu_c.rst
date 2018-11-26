@@ -10,11 +10,13 @@ fsl_rio_tx_handler
 
     MPC85xx outbound message interrupt handler
 
-    :param int irq:
+    :param irq:
         Linux interrupt number
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         Pointer to interrupt-specific data
+    :type dev_instance: void \*
 
 .. _`fsl_rio_tx_handler.description`:
 
@@ -33,11 +35,13 @@ fsl_rio_rx_handler
 
     MPC85xx inbound message interrupt handler
 
-    :param int irq:
+    :param irq:
         Linux interrupt number
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         Pointer to interrupt-specific data
+    :type dev_instance: void \*
 
 .. _`fsl_rio_rx_handler.description`:
 
@@ -56,11 +60,13 @@ fsl_rio_dbell_handler
 
     MPC85xx doorbell interrupt handler
 
-    :param int irq:
+    :param irq:
         Linux interrupt number
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         Pointer to interrupt-specific data
+    :type dev_instance: void \*
 
 .. _`fsl_rio_dbell_handler.description`:
 
@@ -79,11 +85,13 @@ fsl_rio_port_write_handler
 
     MPC85xx port write interrupt handler
 
-    :param int irq:
+    :param irq:
         Linux interrupt number
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         Pointer to interrupt-specific data
+    :type dev_instance: void \*
 
 .. _`fsl_rio_port_write_handler.description`:
 
@@ -102,11 +110,13 @@ fsl_rio_pw_enable
 
     enable/disable port-write interface init
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the port write unit
+    :type mport: struct rio_mport \*
 
-    :param int enable:
+    :param enable:
         1=enable; 0=disable port-write message handling
+    :type enable: int
 
 .. _`fsl_rio_port_write_init`:
 
@@ -117,8 +127,9 @@ fsl_rio_port_write_init
 
     MPC85xx port write interface init
 
-    :param struct fsl_rio_pw \*pw:
+    :param pw:
         *undescribed*
+    :type pw: struct fsl_rio_pw \*
 
 .. _`fsl_rio_port_write_init.description`:
 
@@ -138,17 +149,21 @@ fsl_rio_doorbell_send
 
     Send a MPC85xx doorbell message
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port info
+    :type mport: struct rio_mport \*
 
-    :param int index:
+    :param index:
         ID of RapidIO interface
+    :type index: int
 
-    :param u16 destid:
+    :param destid:
         Destination ID of target device
+    :type destid: u16
 
-    :param u16 data:
+    :param data:
         16-bit info field of RapidIO doorbell message
+    :type data: u16
 
 .. _`fsl_rio_doorbell_send.description`:
 
@@ -167,20 +182,25 @@ fsl_add_outb_message
 
     Add message to the MPC85xx outbound message queue
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port with outbound message queue
+    :type mport: struct rio_mport \*
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         Target of outbound message
+    :type rdev: struct rio_dev \*
 
-    :param int mbox:
+    :param mbox:
         Outbound mailbox
+    :type mbox: int
 
-    :param void \*buffer:
+    :param buffer:
         Message to add to outbound queue
+    :type buffer: void \*
 
-    :param size_t len:
+    :param len:
         Length of message
+    :type len: size_t
 
 .. _`fsl_add_outb_message.description`:
 
@@ -199,17 +219,21 @@ fsl_open_outb_mbox
 
     Initialize MPC85xx outbound mailbox
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the outbound message unit
+    :type mport: struct rio_mport \*
 
-    :param void \*dev_id:
+    :param dev_id:
         Device specific pointer to pass on event
+    :type dev_id: void \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox to open
+    :type mbox: int
 
-    :param int entries:
+    :param entries:
         Number of entries in the outbound mailbox ring
+    :type entries: int
 
 .. _`fsl_open_outb_mbox.description`:
 
@@ -229,11 +253,13 @@ fsl_close_outb_mbox
 
     Shut down MPC85xx outbound mailbox
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the outbound message unit
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox to close
+    :type mbox: int
 
 .. _`fsl_close_outb_mbox.description`:
 
@@ -252,17 +278,21 @@ fsl_open_inb_mbox
 
     Initialize MPC85xx inbound mailbox
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the inbound message unit
+    :type mport: struct rio_mport \*
 
-    :param void \*dev_id:
+    :param dev_id:
         Device specific pointer to pass on event
+    :type dev_id: void \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox to open
+    :type mbox: int
 
-    :param int entries:
+    :param entries:
         Number of entries in the inbound mailbox ring
+    :type entries: int
 
 .. _`fsl_open_inb_mbox.description`:
 
@@ -282,11 +312,13 @@ fsl_close_inb_mbox
 
     Shut down MPC85xx inbound mailbox
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the inbound message unit
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox to close
+    :type mbox: int
 
 .. _`fsl_close_inb_mbox.description`:
 
@@ -305,14 +337,17 @@ fsl_add_inb_buffer
 
     Add buffer to the MPC85xx inbound message queue
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the inbound message unit
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         Inbound mailbox number
+    :type mbox: int
 
-    :param void \*buf:
+    :param buf:
         Buffer to add to inbound queue
+    :type buf: void \*
 
 .. _`fsl_add_inb_buffer.description`:
 
@@ -331,11 +366,13 @@ fsl_get_inb_message
 
     Fetch inbound message from the MPC85xx message unit
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the inbound message unit
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         Inbound mailbox number
+    :type mbox: int
 
 .. _`fsl_get_inb_message.description`:
 
@@ -354,8 +391,9 @@ fsl_rio_doorbell_init
 
     MPC85xx doorbell interface init
 
-    :param struct fsl_rio_dbell \*dbell:
+    :param dbell:
         *undescribed*
+    :type dbell: struct fsl_rio_dbell \*
 
 .. _`fsl_rio_doorbell_init.description`:
 

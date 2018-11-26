@@ -10,8 +10,9 @@ qla4xxx_create_chap_list
 
     Create CHAP list from FLASH
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_create_chap_list.description`:
 
@@ -33,11 +34,13 @@ qla4xxx_find_free_chap_index
 
     Find the first free chap index
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param uint16_t \*chap_index:
+    :param chap_index:
         CHAP index to be returned
+    :type chap_index: uint16_t \*
 
 .. _`qla4xxx_find_free_chap_index.description`:
 
@@ -62,14 +65,17 @@ qla4xxx_set_chap_entry
 
     Make chap entry with given information
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         pointer to host
+    :type shost: struct Scsi_Host \*
 
-    :param void \*data:
+    :param data:
         chap info - credentials, index and type to make chap entry
+    :type data: void \*
 
-    :param int len:
+    :param len:
         length of data
+    :type len: int
 
 .. _`qla4xxx_set_chap_entry.description`:
 
@@ -87,8 +93,9 @@ qla4xxx_mark_all_devices_missing
 
     mark all devices as missing.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_mark_all_devices_missing.description`:
 
@@ -106,11 +113,13 @@ qla4xxx_queuecommand
 
     scsi layer issues scsi command to driver.
 
-    :param struct Scsi_Host \*host:
+    :param host:
         scsi host
+    :type host: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         Pointer to Linux's SCSI command structure
+    :type cmd: struct scsi_cmnd \*
 
 .. _`qla4xxx_queuecommand.remarks`:
 
@@ -133,8 +142,9 @@ qla4xxx_mem_free
 
     frees memory allocated to adapter
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_mem_free.description`:
 
@@ -152,8 +162,9 @@ qla4xxx_mem_alloc
 
     allocates memory for use by adapter.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_mem_alloc.description`:
 
@@ -172,8 +183,9 @@ qla4_8xxx_check_temp
 
     Check the ISP82XX temperature.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         adapter block pointer.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_8xxx_check_temp.note`:
 
@@ -191,8 +203,9 @@ qla4_8xxx_check_fw_alive
 
     Check firmware health
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_8xxx_check_fw_alive.context`:
 
@@ -210,8 +223,9 @@ qla4_8xxx_watchdog
 
     Poll dev state
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_8xxx_watchdog.context`:
 
@@ -229,8 +243,9 @@ qla4xxx_timer
 
     checks every second for work to do.
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`qla4xxx_cmd_wait`:
 
@@ -241,8 +256,9 @@ qla4xxx_cmd_wait
 
     waits for all outstanding commands to complete
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_cmd_wait.description`:
 
@@ -261,8 +277,9 @@ qla4xxx_soft_reset
 
     performs soft reset.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_abort_active_cmds`:
 
@@ -273,11 +290,13 @@ qla4xxx_abort_active_cmds
 
     returns all outstanding i/o requests to O.S.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param int res:
+    :param res:
         returned scsi status
+    :type res: int
 
 .. _`qla4xxx_abort_active_cmds.description`:
 
@@ -304,8 +323,9 @@ qla4xxx_recover_adapter
 
     recovers adapter after a fatal error
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_do_dpc`:
 
@@ -316,8 +336,9 @@ qla4xxx_do_dpc
 
     dpc routine
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`qla4xxx_do_dpc.description`:
 
@@ -340,8 +361,9 @@ qla4xxx_free_adapter
 
     release the adapter
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_get_bidi_chap`:
 
@@ -352,14 +374,17 @@ qla4xxx_get_bidi_chap
 
     Get a BIDI CHAP user and password
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param char \*username:
+    :param username:
         CHAP username to be returned
+    :type username: char \*
 
-    :param char \*password:
+    :param password:
         CHAP password to be returned
+    :type password: char \*
 
 .. _`qla4xxx_get_bidi_chap.description`:
 
@@ -380,11 +405,13 @@ qla4xxx_check_existing_isid
 
     check if target with same isid exist in target list
 
-    :param struct list_head \*list_nt:
+    :param list_nt:
         list of target
+    :type list_nt: struct list_head \*
 
-    :param uint8_t \*isid:
+    :param isid:
         isid to check
+    :type isid: uint8_t \*
 
 .. _`qla4xxx_check_existing_isid.description`:
 
@@ -402,14 +429,17 @@ qla4xxx_update_isid
 
     compare ddbs and updated isid
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct list_head \*list_nt:
+    :param list_nt:
         list of nt target
+    :type list_nt: struct list_head \*
 
-    :param struct dev_db_entry \*fw_ddb_entry:
+    :param fw_ddb_entry:
         firmware ddb entry
+    :type fw_ddb_entry: struct dev_db_entry \*
 
 .. _`qla4xxx_update_isid.description`:
 
@@ -429,14 +459,17 @@ qla4xxx_should_update_isid
 
     check if isid need to update
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct ql4_tuple_ddb \*old_tddb:
+    :param old_tddb:
         ddb tuple
+    :type old_tddb: struct ql4_tuple_ddb \*
 
-    :param struct ql4_tuple_ddb \*new_tddb:
+    :param new_tddb:
         ddb tuple
+    :type new_tddb: struct ql4_tuple_ddb \*
 
 .. _`qla4xxx_should_update_isid.description`:
 
@@ -455,14 +488,17 @@ qla4xxx_is_flash_ddb_exists
 
     check if fw_ddb_entry already exists in list_nt
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct list_head \*list_nt:
+    :param list_nt:
         list of nt target.
+    :type list_nt: struct list_head \*
 
-    :param struct dev_db_entry \*fw_ddb_entry:
+    :param fw_ddb_entry:
         firmware ddb entry.
+    :type fw_ddb_entry: struct dev_db_entry \*
 
 .. _`qla4xxx_is_flash_ddb_exists.description`:
 
@@ -489,11 +525,13 @@ qla4xxx_remove_failed_ddb
 
     Remove inactive or failed ddb from list
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param struct list_head \*list_ddb:
+    :param list_ddb:
         List from which failed ddb to be removed
+    :type list_ddb: struct list_head \*
 
 .. _`qla4xxx_remove_failed_ddb.description`:
 
@@ -512,11 +550,13 @@ qla4xxx_sysfs_ddb_is_non_persistent
 
     check for non-persistence of ddb entry
 
-    :param struct device \*dev:
+    :param dev:
         dev associated with the sysfs entry
+    :type dev: struct device \*
 
-    :param void \*data:
+    :param data:
         pointer to flashnode session object
+    :type data: void \*
 
 .. _`qla4xxx_sysfs_ddb_is_non_persistent.return`:
 
@@ -535,17 +575,21 @@ qla4xxx_sysfs_ddb_tgt_create
 
     Create sysfs entry for target
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host
+    :type ha: struct scsi_qla_host \*
 
-    :param struct dev_db_entry \*fw_ddb_entry:
+    :param fw_ddb_entry:
         flash ddb data
+    :type fw_ddb_entry: struct dev_db_entry \*
 
-    :param uint16_t \*idx:
+    :param idx:
         target index
+    :type idx: uint16_t \*
 
-    :param int user:
+    :param user:
         if set then this call is made from userland else from kernel
+    :type user: int
 
 .. _`qla4xxx_sysfs_ddb_tgt_create.on-sucess`:
 
@@ -575,14 +619,17 @@ qla4xxx_sysfs_ddb_add
 
     Add new ddb entry in flash
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         pointer to host
+    :type shost: struct Scsi_Host \*
 
-    :param const char \*buf:
+    :param buf:
         type of ddb entry (ipv4/ipv6)
+    :type buf: const char \*
 
-    :param int len:
+    :param len:
         length of buf
+    :type len: int
 
 .. _`qla4xxx_sysfs_ddb_add.description`:
 
@@ -601,11 +648,13 @@ qla4xxx_sysfs_ddb_apply
 
     write the target ddb contents to Flash
 
-    :param struct iscsi_bus_flash_session \*fnode_sess:
+    :param fnode_sess:
         pointer to session attrs of flash ddb entry
+    :type fnode_sess: struct iscsi_bus_flash_session \*
 
-    :param struct iscsi_bus_flash_conn \*fnode_conn:
+    :param fnode_conn:
         pointer to connection attrs of flash ddb entry
+    :type fnode_conn: struct iscsi_bus_flash_conn \*
 
 .. _`qla4xxx_sysfs_ddb_apply.description`:
 
@@ -624,11 +673,13 @@ qla4xxx_sysfs_ddb_login
 
     Login to the specified target
 
-    :param struct iscsi_bus_flash_session \*fnode_sess:
+    :param fnode_sess:
         pointer to session attrs of flash ddb entry
+    :type fnode_sess: struct iscsi_bus_flash_session \*
 
-    :param struct iscsi_bus_flash_conn \*fnode_conn:
+    :param fnode_conn:
         pointer to connection attrs of flash ddb entry
+    :type fnode_conn: struct iscsi_bus_flash_conn \*
 
 .. _`qla4xxx_sysfs_ddb_login.description`:
 
@@ -646,8 +697,9 @@ qla4xxx_sysfs_ddb_logout_sid
 
     Logout session for the specified target
 
-    :param struct iscsi_cls_session \*cls_sess:
+    :param cls_sess:
         pointer to session to be logged out
+    :type cls_sess: struct iscsi_cls_session \*
 
 .. _`qla4xxx_sysfs_ddb_logout_sid.description`:
 
@@ -665,11 +717,13 @@ qla4xxx_sysfs_ddb_logout
 
     Logout from the specified target
 
-    :param struct iscsi_bus_flash_session \*fnode_sess:
+    :param fnode_sess:
         pointer to session attrs of flash ddb entry
+    :type fnode_sess: struct iscsi_bus_flash_session \*
 
-    :param struct iscsi_bus_flash_conn \*fnode_conn:
+    :param fnode_conn:
         pointer to connection attrs of flash ddb entry
+    :type fnode_conn: struct iscsi_bus_flash_conn \*
 
 .. _`qla4xxx_sysfs_ddb_logout.description`:
 
@@ -687,17 +741,21 @@ qla4xxx_sysfs_ddb_set_param
 
     Set parameter for firmware DDB entry
 
-    :param struct iscsi_bus_flash_session \*fnode_sess:
+    :param fnode_sess:
         pointer to session attrs of flash ddb entry
+    :type fnode_sess: struct iscsi_bus_flash_session \*
 
-    :param struct iscsi_bus_flash_conn \*fnode_conn:
+    :param fnode_conn:
         pointer to connection attrs of flash ddb entry
+    :type fnode_conn: struct iscsi_bus_flash_conn \*
 
-    :param void \*data:
+    :param data:
         Parameters and their values to update
+    :type data: void \*
 
-    :param int len:
+    :param len:
         len of data
+    :type len: int
 
 .. _`qla4xxx_sysfs_ddb_set_param.description`:
 
@@ -715,8 +773,9 @@ qla4xxx_sysfs_ddb_delete
 
     Delete firmware DDB entry
 
-    :param struct iscsi_bus_flash_session \*fnode_sess:
+    :param fnode_sess:
         pointer to session attrs of flash ddb entry
+    :type fnode_sess: struct iscsi_bus_flash_session \*
 
 .. _`qla4xxx_sysfs_ddb_delete.description`:
 
@@ -734,8 +793,9 @@ qla4xxx_sysfs_ddb_export
 
     Create sysfs entries for firmware DDBs
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_sysfs_ddb_export.description`:
 
@@ -753,11 +813,13 @@ qla4xxx_build_ddb_list
 
     Build ddb list and setup sessions
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param int is_reset:
+    :param is_reset:
         Is this init path or reset path
+    :type is_reset: int
 
 .. _`qla4xxx_build_ddb_list.description`:
 
@@ -778,8 +840,9 @@ qla4xxx_wait_login_resp_boot_tgt
 
     Wait for iSCSI boot target login response.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_wait_login_resp_boot_tgt.description`:
 
@@ -799,11 +862,13 @@ qla4xxx_probe_adapter
 
     callback function to probe HBA
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to pci_dev structure
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         *undescribed*
+    :type ent: const struct pci_device_id \*
 
 .. _`qla4xxx_probe_adapter.description`:
 
@@ -823,8 +888,9 @@ qla4xxx_prevent_other_port_reinit
 
     prevent other port from re-initialize
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_prevent_other_port_reinit.description`:
 
@@ -844,8 +910,9 @@ qla4xxx_remove_adapter
 
     callback function to remove adapter.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`qla4xxx_config_dma_addressing`:
 
@@ -856,16 +923,9 @@ qla4xxx_config_dma_addressing
 
     Configure OS DMA addressing method.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         HA context
-
-.. _`qla4xxx_config_dma_addressing.description`:
-
-Description
------------
-
-At exit, the \ ``ha``\ 's flags.enable_64bit_addressing set to indicated
-supported addressing method.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_del_from_active_array`:
 
@@ -876,11 +936,13 @@ qla4xxx_del_from_active_array
 
     returns an active srb
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param uint32_t index:
+    :param index:
         index into the active_array
+    :type index: uint32_t
 
 .. _`qla4xxx_del_from_active_array.description`:
 
@@ -898,11 +960,13 @@ qla4xxx_eh_wait_on_command
 
     waits for command to be returned by firmware
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         Scsi Command to wait on.
+    :type cmd: struct scsi_cmnd \*
 
 .. _`qla4xxx_eh_wait_on_command.description`:
 
@@ -921,8 +985,9 @@ qla4xxx_wait_for_hba_online
 
     waits for HBA to come online
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_eh_wait_for_commands`:
 
@@ -933,14 +998,17 @@ qla4xxx_eh_wait_for_commands
 
     wait for active cmds to finish.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to HBA
+    :type ha: struct scsi_qla_host \*
 
-    :param struct scsi_target \*stgt:
+    :param stgt:
         *undescribed*
+    :type stgt: struct scsi_target \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         *undescribed*
+    :type sdev: struct scsi_device \*
 
 .. _`qla4xxx_eh_wait_for_commands.description`:
 
@@ -959,8 +1027,9 @@ qla4xxx_eh_abort
 
     callback for abort task.
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         Pointer to Linux's SCSI command structure
+    :type cmd: struct scsi_cmnd \*
 
 .. _`qla4xxx_eh_abort.description`:
 
@@ -979,8 +1048,9 @@ qla4xxx_eh_device_reset
 
     callback for target reset.
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         Pointer to Linux's SCSI command structure
+    :type cmd: struct scsi_cmnd \*
 
 .. _`qla4xxx_eh_device_reset.description`:
 
@@ -999,8 +1069,9 @@ qla4xxx_eh_target_reset
 
     callback for target reset.
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         Pointer to Linux's SCSI command structure
+    :type cmd: struct scsi_cmnd \*
 
 .. _`qla4xxx_eh_target_reset.description`:
 
@@ -1018,8 +1089,9 @@ qla4xxx_is_eh_active
 
     check if error handler is running
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to SCSI Host struct
+    :type shost: struct Scsi_Host \*
 
 .. _`qla4xxx_is_eh_active.description`:
 
@@ -1038,8 +1110,9 @@ qla4xxx_eh_host_reset
 
     kernel callback
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         Pointer to Linux's SCSI command structure
+    :type cmd: struct scsi_cmnd \*
 
 .. _`qla4xxx_eh_host_reset.description`:
 
@@ -1058,8 +1131,9 @@ qla4xxx_pci_mmio_enabled
 
     \ :c:func:`qla4xxx_pci_error_detected`\  returns PCI_ERS_RESULT_CAN_RECOVER and read/write to the device still works.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. This file was automatic generated / don't edit.
 

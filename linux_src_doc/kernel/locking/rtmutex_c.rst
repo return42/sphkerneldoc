@@ -10,18 +10,22 @@
 
     Perform the wait-wake-try-to-take loop
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex to take
+    :type lock: struct rt_mutex \*
 
-    :param int state:
+    :param state:
         the state the task should block in (TASK_INTERRUPTIBLE
         or TASK_UNINTERRUPTIBLE)
+    :type state: int
 
-    :param struct hrtimer_sleeper \*timeout:
+    :param timeout:
         the pre-initialized and started timer, or NULL for none
+    :type timeout: struct hrtimer_sleeper \*
 
-    :param struct rt_mutex_waiter \*waiter:
+    :param waiter:
         the pre-initialized rt_mutex_waiter
+    :type waiter: struct rt_mutex_waiter \*
 
 .. _`__rt_mutex_slowlock.description`:
 
@@ -39,11 +43,13 @@ rt_mutex_lock_nested
 
     lock a rt_mutex
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex to be locked
+    :type lock: struct rt_mutex \*
 
-    :param unsigned int subclass:
+    :param subclass:
         the lockdep subclass
+    :type subclass: unsigned int
 
 .. _`rt_mutex_lock`:
 
@@ -54,8 +60,9 @@ rt_mutex_lock
 
     lock a rt_mutex
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex to be locked
+    :type lock: struct rt_mutex \*
 
 .. _`rt_mutex_lock_interruptible`:
 
@@ -66,8 +73,9 @@ rt_mutex_lock_interruptible
 
     lock a rt_mutex interruptible
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex to be locked
+    :type lock: struct rt_mutex \*
 
 .. _`rt_mutex_lock_interruptible.return`:
 
@@ -86,11 +94,13 @@ rt_mutex_timed_lock
 
     lock a rt_mutex interruptible the timeout structure is provided by the caller
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex to be locked
+    :type lock: struct rt_mutex \*
 
-    :param struct hrtimer_sleeper \*timeout:
+    :param timeout:
         timeout structure or NULL (no timeout)
+    :type timeout: struct hrtimer_sleeper \*
 
 .. _`rt_mutex_timed_lock.return`:
 
@@ -110,8 +120,9 @@ rt_mutex_trylock
 
     try to lock a rt_mutex
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex to be locked
+    :type lock: struct rt_mutex \*
 
 .. _`rt_mutex_trylock.description`:
 
@@ -133,8 +144,9 @@ rt_mutex_unlock
 
     unlock a rt_mutex
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex to be unlocked
+    :type lock: struct rt_mutex \*
 
 .. _`__rt_mutex_futex_unlock`:
 
@@ -145,11 +157,13 @@ rt_mutex_unlock
 
     path, can be simple and will not need to retry.
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         *undescribed*
+    :type lock: struct rt_mutex \*
 
-    :param struct wake_q_head \*wake_q:
+    :param wake_q:
         *undescribed*
+    :type wake_q: struct wake_q_head \*
 
 .. _`rt_mutex_destroy`:
 
@@ -160,8 +174,9 @@ rt_mutex_destroy
 
     mark a mutex unusable
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the mutex to be destroyed
+    :type lock: struct rt_mutex \*
 
 .. _`rt_mutex_destroy.description`:
 
@@ -181,14 +196,17 @@ this function is called.
 
     initialize the rt lock
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt lock to be initialized
+    :type lock: struct rt_mutex \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param struct lock_class_key \*key:
+    :param key:
         *undescribed*
+    :type key: struct lock_class_key \*
 
 .. _`__rt_mutex_init.description`:
 
@@ -208,11 +226,13 @@ rt_mutex_init_proxy_locked
 
     initialize and lock a rt_mutex on behalf of a proxy owner
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex to be locked
+    :type lock: struct rt_mutex \*
 
-    :param struct task_struct \*proxy_owner:
+    :param proxy_owner:
         the task to set as owner
+    :type proxy_owner: struct task_struct \*
 
 .. _`rt_mutex_init_proxy_locked.description`:
 
@@ -235,11 +255,13 @@ rt_mutex_proxy_unlock
 
     release a lock on behalf of owner
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex to be locked
+    :type lock: struct rt_mutex \*
 
-    :param struct task_struct \*proxy_owner:
+    :param proxy_owner:
         *undescribed*
+    :type proxy_owner: struct task_struct \*
 
 .. _`rt_mutex_proxy_unlock.description`:
 
@@ -262,14 +284,17 @@ rt_mutex_start_proxy_lock
 
     Start lock acquisition for another task
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex to take
+    :type lock: struct rt_mutex \*
 
-    :param struct rt_mutex_waiter \*waiter:
+    :param waiter:
         the pre-initialized rt_mutex_waiter
+    :type waiter: struct rt_mutex_waiter \*
 
-    :param struct task_struct \*task:
+    :param task:
         the task to prepare
+    :type task: struct task_struct \*
 
 .. _`rt_mutex_start_proxy_lock.return`:
 
@@ -291,8 +316,9 @@ rt_mutex_next_owner
 
     return the next owner of the lock
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt lock query
+    :type lock: struct rt_mutex \*
 
 .. _`rt_mutex_next_owner.description`:
 
@@ -315,15 +341,18 @@ rt_mutex_wait_proxy_lock
 
     Wait for lock acquisition
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex we were woken on
+    :type lock: struct rt_mutex \*
 
-    :param struct hrtimer_sleeper \*to:
+    :param to:
         the timeout, null if none. hrtimer should already have
         been started.
+    :type to: struct hrtimer_sleeper \*
 
-    :param struct rt_mutex_waiter \*waiter:
+    :param waiter:
         the pre-initialized rt_mutex_waiter
+    :type waiter: struct rt_mutex_waiter \*
 
 .. _`rt_mutex_wait_proxy_lock.description`:
 
@@ -353,11 +382,13 @@ rt_mutex_cleanup_proxy_lock
 
     Cleanup failed lock acquisition
 
-    :param struct rt_mutex \*lock:
+    :param lock:
         the rt_mutex we were woken on
+    :type lock: struct rt_mutex \*
 
-    :param struct rt_mutex_waiter \*waiter:
+    :param waiter:
         the pre-initialized rt_mutex_waiter
+    :type waiter: struct rt_mutex_waiter \*
 
 .. _`rt_mutex_cleanup_proxy_lock.description`:
 

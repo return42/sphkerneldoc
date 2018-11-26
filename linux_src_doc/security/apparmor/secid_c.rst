@@ -10,11 +10,13 @@ aa_secid_update
 
     update a secid mapping to a new label
 
-    :param u32 secid:
+    :param secid:
         secid to update
+    :type secid: u32
 
-    :param struct aa_label \*label:
+    :param label:
         label the secid will now map to
+    :type label: struct aa_label \*
 
 .. _`aa_alloc_secid`:
 
@@ -25,19 +27,21 @@ aa_alloc_secid
 
     allocate a new secid for a profile
 
-    :param struct aa_label \*label:
+    :param label:
         the label to allocate a secid for
+    :type label: struct aa_label \*
 
-    :param gfp_t gfp:
+    :param gfp:
         memory allocation flags
+    :type gfp: gfp_t
 
 .. _`aa_alloc_secid.return`:
 
 Return
 ------
 
-0 with \ ``label``\ ->secid initialized
-<0 returns error with \ ``label``\ ->secid set to AA_SECID_INVALID
+0 with \ ``label->secid``\  initialized
+<0 returns error with \ ``label->secid``\  set to AA_SECID_INVALID
 
 .. _`aa_free_secid`:
 
@@ -48,8 +52,9 @@ aa_free_secid
 
     free a secid
 
-    :param u32 secid:
+    :param secid:
         secid to free
+    :type secid: u32
 
 .. This file was automatic generated / don't edit.
 

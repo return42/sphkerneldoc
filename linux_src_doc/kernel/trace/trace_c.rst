@@ -10,11 +10,13 @@ trace_find_filtered_pid
 
     check if a pid exists in a filtered_pid list
 
-    :param struct trace_pid_list \*filtered_pids:
+    :param filtered_pids:
         The list of pids to check
+    :type filtered_pids: struct trace_pid_list \*
 
-    :param pid_t search_pid:
+    :param search_pid:
         The PID to find in \ ``filtered_pids``\ 
+    :type search_pid: pid_t
 
 .. _`trace_find_filtered_pid.description`:
 
@@ -32,11 +34,13 @@ trace_ignore_this_task
 
     should a task be ignored for tracing
 
-    :param struct trace_pid_list \*filtered_pids:
+    :param filtered_pids:
         The list of pids to check
+    :type filtered_pids: struct trace_pid_list \*
 
-    :param struct task_struct \*task:
+    :param task:
         The task that should be ignored if not filtered
+    :type task: struct task_struct \*
 
 .. _`trace_ignore_this_task.description`:
 
@@ -56,14 +60,17 @@ trace_filter_add_remove_task
 
     Add or remove a task from a pid_list
 
-    :param struct trace_pid_list \*pid_list:
+    :param pid_list:
         The list to modify
+    :type pid_list: struct trace_pid_list \*
 
-    :param struct task_struct \*self:
+    :param self:
         The current task for fork or NULL for exit
+    :type self: struct task_struct \*
 
-    :param struct task_struct \*task:
+    :param task:
         The task to add or remove
+    :type task: struct task_struct \*
 
 .. _`trace_filter_add_remove_task.description`:
 
@@ -85,14 +92,17 @@ trace_pid_next
 
     Used for seq_file to get to the next pid of a pid_list
 
-    :param struct trace_pid_list \*pid_list:
+    :param pid_list:
         The pid list to show
+    :type pid_list: struct trace_pid_list \*
 
-    :param void \*v:
+    :param v:
         The last pid that was shown (+1 the actual pid to let zero be displayed)
+    :type v: void \*
 
-    :param loff_t \*pos:
+    :param pos:
         The position of the file
+    :type pos: loff_t \*
 
 .. _`trace_pid_next.description`:
 
@@ -114,11 +124,13 @@ trace_pid_start
 
     Used for seq_file to start reading pid lists
 
-    :param struct trace_pid_list \*pid_list:
+    :param pid_list:
         The pid list to show
+    :type pid_list: struct trace_pid_list \*
 
-    :param loff_t \*pos:
+    :param pos:
         The position of the file
+    :type pos: loff_t \*
 
 .. _`trace_pid_start.description`:
 
@@ -140,11 +152,13 @@ trace_pid_show
 
     show the current pid in seq_file processing
 
-    :param struct seq_file \*m:
+    :param m:
         The seq_file structure to write into
+    :type m: struct seq_file \*
 
-    :param void \*v:
+    :param v:
         A void pointer of the pid (+1) value to display
+    :type v: void \*
 
 .. _`trace_pid_show.description`:
 
@@ -163,8 +177,9 @@ tracing_is_enabled
 
     Show if global_trace has been disabled
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tracing_is_enabled.description`:
 
@@ -186,8 +201,9 @@ tracing_on
 
     enable tracing buffers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tracing_on.description`:
 
@@ -206,14 +222,17 @@ disabled with tracing_off.
 
     write a constant string into the trace buffer.
 
-    :param unsigned long ip:
+    :param ip:
         The address of the caller
+    :type ip: unsigned long
 
-    :param const char \*str:
+    :param str:
         The constant string to write
+    :type str: const char \*
 
-    :param int size:
+    :param size:
         The size of the string.
+    :type size: int
 
 .. _`__trace_bputs`:
 
@@ -224,11 +243,13 @@ disabled with tracing_off.
 
     write the pointer to a constant string into trace buffer
 
-    :param unsigned long ip:
+    :param ip:
         The address of the caller
+    :type ip: unsigned long
 
-    :param const char \*str:
+    :param str:
         The constant string to write to the buffer to
+    :type str: const char \*
 
 .. _`tracing_snapshot`:
 
@@ -239,8 +260,9 @@ tracing_snapshot
 
     take a snapshot of the current buffer.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tracing_snapshot.description`:
 
@@ -273,8 +295,9 @@ tracing_alloc_snapshot
 
     allocate snapshot buffer.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tracing_alloc_snapshot.description`:
 
@@ -297,8 +320,9 @@ tracing_snapshot_alloc
 
     allocate and take a snapshot of the current buffer.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tracing_snapshot_alloc.description`:
 
@@ -322,8 +346,9 @@ tracing_off
 
     turn off tracing buffers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tracing_off.description`:
 
@@ -340,12 +365,13 @@ the ring buffers to fail.
 tracer_tracing_is_on
 ====================
 
-.. c:function:: int tracer_tracing_is_on(struct trace_array *tr)
+.. c:function:: bool tracer_tracing_is_on(struct trace_array *tr)
 
     show real state of ring buffer enabled
 
-    :param struct trace_array \*tr:
+    :param tr:
         the trace array to know if ring buffer is enabled
+    :type tr: struct trace_array \*
 
 .. _`tracer_tracing_is_on.description`:
 
@@ -363,8 +389,9 @@ tracing_is_on
 
     show state of ring buffers enabled
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`update_max_tr`:
 
@@ -375,14 +402,17 @@ update_max_tr
 
     snapshot all trace buffers from global_trace to max_tr
 
-    :param struct trace_array \*tr:
+    :param tr:
         tracer
+    :type tr: struct trace_array \*
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         the task with the latency
+    :type tsk: struct task_struct \*
 
-    :param int cpu:
+    :param cpu:
         The cpu that initiated the trace.
+    :type cpu: int
 
 .. _`update_max_tr.description`:
 
@@ -401,14 +431,17 @@ update_max_tr_single
 
     only copy one trace over, and reset the rest \ ``tr``\  - tracer \ ``tsk``\  - task with the latency \ ``cpu``\  - the cpu of the buffer to copy.
 
-    :param struct trace_array \*tr:
+    :param tr:
         *undescribed*
+    :type tr: struct trace_array \*
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         *undescribed*
+    :type tsk: struct task_struct \*
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. _`update_max_tr_single.description`:
 
@@ -426,8 +459,9 @@ register_tracer
 
     register a tracer with the ftrace system. \ ``type``\  - the plugin for the tracer
 
-    :param struct tracer \*type:
+    :param type:
         *undescribed*
+    :type type: struct tracer \*
 
 .. _`register_tracer.description`:
 
@@ -445,8 +479,9 @@ tracing_start
 
     quick start of the tracer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tracing_start.description`:
 
@@ -465,8 +500,9 @@ tracing_stop
 
     quick stop of the tracer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tracing_stop.description`:
 
@@ -485,11 +521,13 @@ tracing_record_taskinfo
 
     record the task info of a task
 
-    :param struct task_struct \*task:
+    :param task:
         *undescribed*
+    :type task: struct task_struct \*
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`tracing_record_taskinfo.description`:
 
@@ -509,14 +547,17 @@ tracing_record_taskinfo_sched_switch
 
     record task info for sched_switch
 
-    :param struct task_struct \*prev:
+    :param prev:
         *undescribed*
+    :type prev: struct task_struct \*
 
-    :param struct task_struct \*next:
+    :param next:
         *undescribed*
+    :type next: struct task_struct \*
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`tracing_record_taskinfo_sched_switch.description`:
 
@@ -537,8 +578,9 @@ trace_buffered_event_enable
 
     enable buffering events
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`trace_buffered_event_enable.description`:
 
@@ -565,8 +607,9 @@ trace_buffered_event_disable
 
     disable buffering events
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`trace_buffered_event_disable.description`:
 
@@ -587,8 +630,9 @@ trace_dump_stack
 
     record a stack back trace in the trace buffer
 
-    :param int skip:
+    :param skip:
         Number of functions to skip (helper handlers)
+    :type skip: int
 
 .. _`trace_vbprintk`:
 
@@ -599,14 +643,17 @@ trace_vbprintk
 
     write binary msg to tracing buffer
 
-    :param unsigned long ip:
+    :param ip:
         *undescribed*
+    :type ip: unsigned long
 
-    :param const char \*fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: const char \*
 
-    :param va_list args:
+    :param args:
         *undescribed*
+    :type args: va_list
 
 .. _`tracing_update_buffers`:
 
@@ -617,8 +664,9 @@ tracing_update_buffers
 
     used by tracing facility to expand ring buffers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tracing_update_buffers.description`:
 
@@ -641,8 +689,9 @@ tracing_init_dentry
 
     initialize top level trace array
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tracing_init_dentry.description`:
 

@@ -10,23 +10,29 @@ eth_header
 
     create the Ethernet header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to alter
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         source device
+    :type dev: struct net_device \*
 
-    :param unsigned short type:
+    :param type:
         Ethernet type field
+    :type type: unsigned short
 
-    :param const void \*daddr:
+    :param daddr:
         destination address (NULL leave destination address)
+    :type daddr: const void \*
 
-    :param const void \*saddr:
+    :param saddr:
         source address (NULL use device source address)
+    :type saddr: const void \*
 
-    :param unsigned int len:
+    :param len:
         packet length (<= skb->len)
+    :type len: unsigned int
 
 .. _`eth_header.description`:
 
@@ -46,11 +52,13 @@ eth_get_headlen
 
     determine the length of header for an ethernet frame
 
-    :param void \*data:
+    :param data:
         pointer to start of frame
+    :type data: void \*
 
-    :param unsigned int len:
+    :param len:
         total length of frame
+    :type len: unsigned int
 
 .. _`eth_get_headlen.description`:
 
@@ -69,11 +77,13 @@ eth_type_trans
 
     determine the packet's protocol ID.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received socket data
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         receiving network device
+    :type dev: struct net_device \*
 
 .. _`eth_type_trans.description`:
 
@@ -93,11 +103,13 @@ eth_header_parse
 
     extract hardware address from packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         packet to extract header from
+    :type skb: const struct sk_buff \*
 
-    :param unsigned char \*haddr:
+    :param haddr:
         destination buffer
+    :type haddr: unsigned char \*
 
 .. _`eth_header_cache`:
 
@@ -108,14 +120,17 @@ eth_header_cache
 
     fill cache entry from neighbour
 
-    :param const struct neighbour \*neigh:
+    :param neigh:
         source neighbour
+    :type neigh: const struct neighbour \*
 
-    :param struct hh_cache \*hh:
+    :param hh:
         destination cache entry
+    :type hh: struct hh_cache \*
 
-    :param __be16 type:
+    :param type:
         Ethernet type field
+    :type type: __be16
 
 .. _`eth_header_cache.description`:
 
@@ -133,14 +148,17 @@ eth_header_cache_update
 
     update cache entry
 
-    :param struct hh_cache \*hh:
+    :param hh:
         destination cache entry
+    :type hh: struct hh_cache \*
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
-    :param const unsigned char \*haddr:
+    :param haddr:
         new hardware address
+    :type haddr: const unsigned char \*
 
 .. _`eth_header_cache_update.description`:
 
@@ -158,11 +176,13 @@ eth_prepare_mac_addr_change
 
     prepare for mac change
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         socket address
+    :type p: void \*
 
 .. _`eth_commit_mac_addr_change`:
 
@@ -173,11 +193,13 @@ eth_commit_mac_addr_change
 
     commit mac change
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         socket address
+    :type p: void \*
 
 .. _`eth_mac_addr`:
 
@@ -188,11 +210,13 @@ eth_mac_addr
 
     set new Ethernet hardware address
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         socket address
+    :type p: void \*
 
 .. _`eth_mac_addr.description`:
 
@@ -213,11 +237,13 @@ eth_change_mtu
 
     set new MTU size
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new Maximum Transfer Unit
+    :type new_mtu: int
 
 .. _`eth_change_mtu.description`:
 
@@ -236,8 +262,9 @@ ether_setup
 
     setup Ethernet network device
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`ether_setup.description`:
 
@@ -255,15 +282,18 @@ alloc_etherdev_mqs
 
     Allocates and sets up an Ethernet device
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         Size of additional driver-private structure to be allocated
         for this Ethernet device
+    :type sizeof_priv: int
 
-    :param unsigned int txqs:
+    :param txqs:
         The number of TX queues this device has.
+    :type txqs: unsigned int
 
-    :param unsigned int rxqs:
+    :param rxqs:
         The number of RX queues this device has.
+    :type rxqs: unsigned int
 
 .. _`alloc_etherdev_mqs.description`:
 

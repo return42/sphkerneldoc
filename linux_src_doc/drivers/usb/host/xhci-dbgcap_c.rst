@@ -10,17 +10,21 @@ dbc_dma_alloc_coherent
 
     dbgcap.c - xHCI debug capability support
 
-    :param struct xhci_hcd \*xhci:
+    :param xhci:
         *undescribed*
+    :type xhci: struct xhci_hcd \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param dma_addr_t \*dma_handle:
+    :param dma_handle:
         *undescribed*
+    :type dma_handle: dma_addr_t \*
 
-    :param gfp_t flags:
+    :param flags:
         *undescribed*
+    :type flags: gfp_t
 
 .. _`dbc_dma_alloc_coherent.description`:
 

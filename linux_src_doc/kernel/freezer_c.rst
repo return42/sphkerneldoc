@@ -10,8 +10,9 @@ freezing_slow_path
 
     slow path for testing whether a task needs to be frozen
 
-    :param struct task_struct \*p:
+    :param p:
         task to be tested
+    :type p: struct task_struct \*
 
 .. _`freezing_slow_path.description`:
 
@@ -32,8 +33,9 @@ freeze_task
 
     send a freeze request to given task
 
-    :param struct task_struct \*p:
+    :param p:
         task to send the request to
+    :type p: struct task_struct \*
 
 .. _`freeze_task.description`:
 
@@ -60,8 +62,9 @@ set_freezable
 
     make \ ``current``\  freezable
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`set_freezable.description`:
 

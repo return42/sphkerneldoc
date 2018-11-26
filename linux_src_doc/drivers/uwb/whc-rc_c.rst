@@ -8,14 +8,17 @@ whcrc_cmd
 
 .. c:function:: int whcrc_cmd(struct uwb_rc *uwb_rc, const struct uwb_rccb *cmd, size_t cmd_size)
 
-    :param struct uwb_rc \*uwb_rc:
+    :param uwb_rc:
         *undescribed*
+    :type uwb_rc: struct uwb_rc \*
 
-    :param const struct uwb_rccb \*cmd:
+    :param cmd:
         Buffer containing the RCCB and payload to execute
+    :type cmd: const struct uwb_rccb \*
 
-    :param size_t cmd_size:
+    :param cmd_size:
         Size of the command buffer.
+    :type cmd_size: size_t
 
 .. _`whcrc_cmd.description`:
 
@@ -41,8 +44,9 @@ whcrc_enable_events
 
 .. c:function:: void whcrc_enable_events(struct whcrc *whcrc)
 
-    :param struct whcrc \*whcrc:
+    :param whcrc:
         *undescribed*
+    :type whcrc: struct whcrc \*
 
 .. _`whcrc_enable_events.description`:
 
@@ -67,11 +71,13 @@ whcrc_irq_cb
 
 .. c:function:: irqreturn_t whcrc_irq_cb(int irq, void *_whcrc)
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*_whcrc:
+    :param _whcrc:
         *undescribed*
+    :type _whcrc: void \*
 
 .. _`whcrc_irq_cb.description`:
 
@@ -90,8 +96,9 @@ whcrc_setup_rc_umc
 
     map regions, get (shared) IRQ
 
-    :param struct whcrc \*whcrc:
+    :param whcrc:
         *undescribed*
+    :type whcrc: struct whcrc \*
 
 .. _`whcrc_release_rc_umc`:
 
@@ -100,8 +107,9 @@ whcrc_release_rc_umc
 
 .. c:function:: void whcrc_release_rc_umc(struct whcrc *whcrc)
 
-    :param struct whcrc \*whcrc:
+    :param whcrc:
         *undescribed*
+    :type whcrc: struct whcrc \*
 
 .. _`whcrc_start_rc`:
 
@@ -112,8 +120,9 @@ whcrc_start_rc
 
     start a WHCI radio controller
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
 .. _`whcrc_start_rc.description`:
 
@@ -132,8 +141,9 @@ whcrc_stop_rc
 
     stop a WHCI radio controller
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
 .. _`whcrc_stop_rc.description`:
 
@@ -150,8 +160,9 @@ whcrc_probe
 
 .. c:function:: int whcrc_probe(struct umc_dev *umc_dev)
 
-    :param struct umc_dev \*umc_dev:
+    :param umc_dev:
         *undescribed*
+    :type umc_dev: struct umc_dev \*
 
 .. _`whcrc_probe.note`:
 
@@ -170,8 +181,9 @@ whcrc_remove
 
 .. c:function:: void whcrc_remove(struct umc_dev *umc_dev)
 
-    :param struct umc_dev \*umc_dev:
+    :param umc_dev:
         *undescribed*
+    :type umc_dev: struct umc_dev \*
 
 .. _`whcrc_remove.description`:
 

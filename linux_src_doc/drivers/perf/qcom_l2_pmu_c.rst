@@ -10,11 +10,13 @@ set_l2_indirect_reg
 
     write value to an L2 register
 
-    :param u64 reg:
+    :param reg:
         Address of L2 register.
+    :type reg: u64
 
-    :param u64 val:
+    :param val:
         *undescribed*
+    :type val: u64
 
 .. _`set_l2_indirect_reg.description`:
 
@@ -33,8 +35,9 @@ get_l2_indirect_reg
 
     read an L2 register value
 
-    :param u64 reg:
+    :param reg:
         Address of L2 register.
+    :type reg: u64
 
 .. _`get_l2_indirect_reg.description`:
 

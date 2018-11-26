@@ -98,8 +98,9 @@ st_dwc3_drd_init
 
     program the port
 
-    :param struct st_dwc3 \*dwc3_data:
+    :param dwc3_data:
         driver private structure
+    :type dwc3_data: struct st_dwc3 \*
 
 .. _`st_dwc3_drd_init.description`:
 
@@ -119,8 +120,9 @@ st_dwc3_init
 
     init the controller via glue logic
 
-    :param struct st_dwc3 \*dwc3_data:
+    :param dwc3_data:
         driver private structure
+    :type dwc3_data: struct st_dwc3 \*
 
 .. This file was automatic generated / don't edit.
 

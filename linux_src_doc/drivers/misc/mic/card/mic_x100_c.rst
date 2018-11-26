@@ -10,11 +10,13 @@ mic_read_spad
 
     read from the scratchpad register
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param unsigned int idx:
+    :param idx:
         index to scratchpad register, 0 based
+    :type idx: unsigned int
 
 .. _`mic_read_spad.description`:
 
@@ -39,11 +41,13 @@ mic_send_intr
 
     Send interrupt to Host.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param int doorbell:
+    :param doorbell:
         Doorbell number.
+    :type doorbell: int
 
 .. _`mic_ack_interrupt`:
 
@@ -54,8 +58,9 @@ mic_ack_interrupt
 
     Device specific interrupt handling.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_ack_interrupt.return`:
 
@@ -73,8 +78,9 @@ mic_hw_intr_init
 
     Initialize h/w specific interrupt information.
 
-    :param struct mic_driver \*mdrv:
+    :param mdrv:
         pointer to mic_driver
+    :type mdrv: struct mic_driver \*
 
 .. _`mic_db_to_irq`:
 
@@ -85,12 +91,14 @@ mic_db_to_irq
 
     Retrieve irq number corresponding to a doorbell.
 
-    :param struct mic_driver \*mdrv:
+    :param mdrv:
         pointer to mic_driver
+    :type mdrv: struct mic_driver \*
 
-    :param int db:
+    :param db:
         The doorbell obtained for which the irq is needed. Doorbell
         may correspond to an sbox doorbell or an rdmasr index.
+    :type db: int
 
 .. _`mic_db_to_irq.description`:
 

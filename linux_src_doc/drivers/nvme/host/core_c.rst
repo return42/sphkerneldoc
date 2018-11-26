@@ -10,8 +10,9 @@ nvme_kill_queues
 
     Ends all namespace queues
 
-    :param struct nvme_ctrl \*ctrl:
+    :param ctrl:
         the dead controller that needs to end
+    :type ctrl: struct nvme_ctrl \*
 
 .. _`nvme_kill_queues.description`:
 

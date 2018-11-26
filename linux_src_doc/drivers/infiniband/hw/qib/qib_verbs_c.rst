@@ -1,27 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/qib/qib_verbs.c
 
-.. _`qib_copy_sge`:
-
-qib_copy_sge
-============
-
-.. c:function:: void qib_copy_sge(struct rvt_sge_state *ss, void *data, u32 length, int release)
-
-    copy data to SGE memory
-
-    :param struct rvt_sge_state \*ss:
-        the SGE state
-
-    :param void \*data:
-        the data to copy
-
-    :param u32 length:
-        the length of the data
-
-    :param int release:
-        *undescribed*
-
 .. _`qib_qp_rcv`:
 
 qib_qp_rcv
@@ -31,23 +10,29 @@ qib_qp_rcv
 
     processing an incoming packet on a QP
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the context pointer
+    :type rcd: struct qib_ctxtdata \*
 
-    :param struct ib_header \*hdr:
+    :param hdr:
         the packet header
+    :type hdr: struct ib_header \*
 
-    :param int has_grh:
+    :param has_grh:
         true if the packet has a GRH
+    :type has_grh: int
 
-    :param void \*data:
+    :param data:
         the packet data
+    :type data: void \*
 
-    :param u32 tlen:
+    :param tlen:
         the packet length
+    :type tlen: u32
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP the packet came on
+    :type qp: struct rvt_qp \*
 
 .. _`qib_qp_rcv.description`:
 
@@ -67,17 +52,21 @@ qib_ib_rcv
 
     process an incoming packet
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the context pointer
+    :type rcd: struct qib_ctxtdata \*
 
-    :param void \*rhdr:
+    :param rhdr:
         the header of the packet
+    :type rhdr: void \*
 
-    :param void \*data:
+    :param data:
         the packet payload
+    :type data: void \*
 
-    :param u32 tlen:
+    :param tlen:
         the packet length
+    :type tlen: u32
 
 .. _`qib_ib_rcv.description`:
 
@@ -96,20 +85,25 @@ qib_verbs_send
 
     send a packet
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP to send on
+    :type qp: struct rvt_qp \*
 
-    :param struct ib_header \*hdr:
+    :param hdr:
         the packet header
+    :type hdr: struct ib_header \*
 
-    :param u32 hdrwords:
+    :param hdrwords:
         the number of 32-bit words in the header
+    :type hdrwords: u32
 
-    :param struct rvt_sge_state \*ss:
+    :param ss:
         the SGE to send
+    :type ss: struct rvt_sge_state \*
 
-    :param u32 len:
+    :param len:
         the length of the packet in bytes
+    :type len: u32
 
 .. _`qib_verbs_send.description`:
 
@@ -128,11 +122,13 @@ qib_get_counters
 
     get various chip counters
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         *undescribed*
+    :type ppd: struct qib_pportdata \*
 
-    :param struct qib_verbs_counters \*cntrs:
+    :param cntrs:
         counters are placed here
+    :type cntrs: struct qib_verbs_counters \*
 
 .. _`qib_get_counters.description`:
 
@@ -150,8 +146,9 @@ qib_ib_piobufavail
 
     callback when a PIO buffer is available
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the device pointer
+    :type dd: struct qib_devdata \*
 
 .. _`qib_ib_piobufavail.description`:
 
@@ -171,8 +168,9 @@ qib_get_npkeys
 
     return the size of the PKEY table for context 0
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`qib_fill_device_attr`:
 
@@ -183,8 +181,9 @@ qib_fill_device_attr
 
     Fill in rvt dev info device attributes.
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the device data structure
+    :type dd: struct qib_devdata \*
 
 .. _`qib_register_ib_device`:
 
@@ -195,21 +194,23 @@ qib_register_ib_device
 
     register our device with the infiniband core
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the device data structure
         Return the allocated qib_ibdev pointer or NULL on error.
+    :type dd: struct qib_devdata \*
 
 .. _`_qib_schedule_send`:
 
 \_qib_schedule_send
 ===================
 
-.. c:function:: void _qib_schedule_send(struct rvt_qp *qp)
+.. c:function:: bool _qib_schedule_send(struct rvt_qp *qp)
 
     schedule progress \ ``qp``\  - the qp
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
 .. _`_qib_schedule_send.description`:
 
@@ -226,12 +227,13 @@ the s_lock.
 qib_schedule_send
 =================
 
-.. c:function:: void qib_schedule_send(struct rvt_qp *qp)
+.. c:function:: bool qib_schedule_send(struct rvt_qp *qp)
 
     schedule progress \ ``qp``\  - the qp
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
 .. _`qib_schedule_send.description`:
 

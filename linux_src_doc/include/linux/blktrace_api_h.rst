@@ -10,15 +10,18 @@ blk_add_cgroup_trace_msg
 
     Add a (simple) message to the blktrace stream
 
-    :param  q:
+    :param q:
         queue the io is for
+    :type q: 
 
-    :param  cg:
+    :param cg:
         *undescribed*
+    :type cg: 
 
-    :param  fmt:
+    :param fmt:
         format to print message in
         args...      Variable argument list for format
+    :type fmt: 
 
     :param ellipsis ellipsis:
         variable arguments

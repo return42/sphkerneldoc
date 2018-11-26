@@ -10,14 +10,17 @@ snd_soc_component_read
 
     Read register value
 
-    :param struct snd_soc_component \*component:
+    :param component:
         Component to read from
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to read
+    :type reg: unsigned int
 
-    :param unsigned int \*val:
+    :param val:
         Pointer to where the read value is stored
+    :type val: unsigned int \*
 
 .. _`snd_soc_component_read.return`:
 
@@ -35,14 +38,17 @@ snd_soc_component_write
 
     Write register value
 
-    :param struct snd_soc_component \*component:
+    :param component:
         Component to write to
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to write
+    :type reg: unsigned int
 
-    :param unsigned int val:
+    :param val:
         Value to write to the register
+    :type val: unsigned int
 
 .. _`snd_soc_component_write.return`:
 
@@ -60,17 +66,21 @@ snd_soc_component_update_bits
 
     Perform read/modify/write cycle
 
-    :param struct snd_soc_component \*component:
+    :param component:
         Component to update
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to update
+    :type reg: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         Mask that specifies which bits to update
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         New value for the bits specified by mask
+    :type val: unsigned int
 
 .. _`snd_soc_component_update_bits.return`:
 
@@ -90,17 +100,21 @@ snd_soc_component_update_bits_async
 
     Perform asynchronous read/modify/write cycle
 
-    :param struct snd_soc_component \*component:
+    :param component:
         Component to update
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to update
+    :type reg: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         Mask that specifies which bits to update
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         New value for the bits specified by mask
+    :type val: unsigned int
 
 .. _`snd_soc_component_update_bits_async.description`:
 
@@ -130,8 +144,9 @@ snd_soc_component_async_complete
 
     Ensure asynchronous I/O has completed
 
-    :param struct snd_soc_component \*component:
+    :param component:
         Component for which to wait
+    :type component: struct snd_soc_component \*
 
 .. _`snd_soc_component_async_complete.description`:
 
@@ -150,17 +165,21 @@ snd_soc_component_test_bits
 
     Test register for change
 
-    :param struct snd_soc_component \*component:
+    :param component:
         component
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to test
+    :type reg: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         Mask that specifies which bits to test
+    :type mask: unsigned int
 
-    :param unsigned int value:
+    :param value:
         Value to test against
+    :type value: unsigned int
 
 .. _`snd_soc_component_test_bits.description`:
 

@@ -10,8 +10,9 @@ z_comp_free
 
     free the memory used by a compressor
 
-    :param void \*arg:
+    :param arg:
         pointer to the private state for the compressor.
+    :type arg: void \*
 
 .. _`z_comp_alloc`:
 
@@ -22,11 +23,13 @@ z_comp_alloc
 
     allocate space for a compressor.
 
-    :param unsigned char \*options:
+    :param options:
         pointer to CCP option data
+    :type options: unsigned char \*
 
-    :param int opt_len:
+    :param opt_len:
         length of the CCP option at \ ``options``\ .
+    :type opt_len: int
 
 .. _`z_comp_alloc.description`:
 
@@ -51,24 +54,30 @@ z_comp_init
 
     initialize a previously-allocated compressor.
 
-    :param void \*arg:
+    :param arg:
         pointer to the private state for the compressor
+    :type arg: void \*
 
-    :param unsigned char \*options:
+    :param options:
         pointer to the CCP option data describing the
         compression that was negotiated with the peer
+    :type options: unsigned char \*
 
-    :param int opt_len:
+    :param opt_len:
         length of the CCP option data at \ ``options``\ 
+    :type opt_len: int
 
-    :param int unit:
+    :param unit:
         PPP unit number for diagnostic messages
+    :type unit: int
 
-    :param int hdrlen:
+    :param hdrlen:
         ignored (present for backwards compatibility)
+    :type hdrlen: int
 
-    :param int debug:
+    :param debug:
         debug flag; if non-zero, debug messages are printed.
+    :type debug: int
 
 .. _`z_comp_init.description`:
 
@@ -89,8 +98,9 @@ z_comp_reset
 
     reset a previously-allocated compressor.
 
-    :param void \*arg:
+    :param arg:
         pointer to private state for the compressor.
+    :type arg: void \*
 
 .. _`z_comp_reset.description`:
 
@@ -109,20 +119,25 @@ z_compress
 
     compress a PPP packet with Deflate compression.
 
-    :param void \*arg:
+    :param arg:
         pointer to private state for the compressor
+    :type arg: void \*
 
-    :param unsigned char \*rptr:
+    :param rptr:
         uncompressed packet (input)
+    :type rptr: unsigned char \*
 
-    :param unsigned char \*obuf:
+    :param obuf:
         compressed packet (output)
+    :type obuf: unsigned char \*
 
-    :param int isize:
+    :param isize:
         size of uncompressed packet
+    :type isize: int
 
-    :param int osize:
+    :param osize:
         space available at \ ``obuf``\ 
+    :type osize: int
 
 .. _`z_compress.description`:
 
@@ -141,11 +156,13 @@ z_comp_stats
 
     return compression statistics for a compressor or decompressor.
 
-    :param void \*arg:
+    :param arg:
         pointer to private space for the (de)compressor
+    :type arg: void \*
 
-    :param struct compstat \*stats:
+    :param stats:
         pointer to a struct compstat to receive the result.
+    :type stats: struct compstat \*
 
 .. _`z_decomp_free`:
 
@@ -156,8 +173,9 @@ z_decomp_free
 
     Free the memory used by a decompressor.
 
-    :param void \*arg:
+    :param arg:
         pointer to private space for the decompressor.
+    :type arg: void \*
 
 .. _`z_decomp_alloc`:
 
@@ -168,11 +186,13 @@ z_decomp_alloc
 
     allocate space for a decompressor.
 
-    :param unsigned char \*options:
+    :param options:
         pointer to CCP option data
+    :type options: unsigned char \*
 
-    :param int opt_len:
+    :param opt_len:
         length of the CCP option at \ ``options``\ .
+    :type opt_len: int
 
 .. _`z_decomp_alloc.description`:
 
@@ -197,27 +217,34 @@ z_decomp_init
 
     initialize a previously-allocated decompressor.
 
-    :param void \*arg:
+    :param arg:
         pointer to the private state for the decompressor
+    :type arg: void \*
 
-    :param unsigned char \*options:
+    :param options:
         pointer to the CCP option data describing the
         compression that was negotiated with the peer
+    :type options: unsigned char \*
 
-    :param int opt_len:
+    :param opt_len:
         length of the CCP option data at \ ``options``\ 
+    :type opt_len: int
 
-    :param int unit:
+    :param unit:
         PPP unit number for diagnostic messages
+    :type unit: int
 
-    :param int hdrlen:
+    :param hdrlen:
         ignored (present for backwards compatibility)
+    :type hdrlen: int
 
-    :param int mru:
+    :param mru:
         maximum length of decompressed packets
+    :type mru: int
 
-    :param int debug:
+    :param debug:
         debug flag; if non-zero, debug messages are printed.
+    :type debug: int
 
 .. _`z_decomp_init.description`:
 
@@ -238,8 +265,9 @@ z_decomp_reset
 
     reset a previously-allocated decompressor.
 
-    :param void \*arg:
+    :param arg:
         pointer to private state for the decompressor.
+    :type arg: void \*
 
 .. _`z_decomp_reset.description`:
 
@@ -258,20 +286,25 @@ z_decompress
 
     decompress a Deflate-compressed packet.
 
-    :param void \*arg:
+    :param arg:
         pointer to private state for the decompressor
+    :type arg: void \*
 
-    :param unsigned char \*ibuf:
+    :param ibuf:
         pointer to input (compressed) packet data
+    :type ibuf: unsigned char \*
 
-    :param int isize:
+    :param isize:
         length of input packet
+    :type isize: int
 
-    :param unsigned char \*obuf:
+    :param obuf:
         pointer to space for output (decompressed) packet
+    :type obuf: unsigned char \*
 
-    :param int osize:
+    :param osize:
         amount of space available at \ ``obuf``\ 
+    :type osize: int
 
 .. _`z_decompress.description`:
 
@@ -300,14 +333,17 @@ z_incomp
 
     add incompressible input data to the history.
 
-    :param void \*arg:
+    :param arg:
         pointer to private state for the decompressor
+    :type arg: void \*
 
-    :param unsigned char \*ibuf:
+    :param ibuf:
         pointer to input packet data
+    :type ibuf: unsigned char \*
 
-    :param int icnt:
+    :param icnt:
         length of input data.
+    :type icnt: int
 
 .. This file was automatic generated / don't edit.
 

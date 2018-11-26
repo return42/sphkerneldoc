@@ -10,8 +10,9 @@ drm_atomic_state_default_release
 
     release memory initialized by drm_atomic_state_init
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_state_default_release.description`:
 
@@ -31,11 +32,13 @@ drm_atomic_state_init
 
     init new atomic state
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_state_init.description`:
 
@@ -55,8 +58,9 @@ drm_atomic_state_alloc
 
     allocate atomic state
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_atomic_state_alloc.description`:
 
@@ -74,8 +78,9 @@ drm_atomic_state_default_clear
 
     clear base atomic state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_state_default_clear.description`:
 
@@ -95,8 +100,9 @@ drm_atomic_state_clear
 
     clear state object
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_state_clear.description`:
 
@@ -122,8 +128,9 @@ __drm_atomic_state_free
 
     free all memory for an atomic state
 
-    :param struct kref \*ref:
+    :param ref:
         This atomic state to deallocate
+    :type ref: struct kref \*
 
 .. _`__drm_atomic_state_free.description`:
 
@@ -142,11 +149,13 @@ drm_atomic_get_crtc_state
 
     get crtc state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         crtc to get state object for
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_atomic_get_crtc_state.description`:
 
@@ -167,224 +176,6 @@ Either the allocated state or the error code encoded into the pointer. When
 the error is EDEADLK then the w/w mutex code has detected a deadlock and the
 entire atomic sequence must be restarted. All other errors are fatal.
 
-.. _`drm_atomic_set_mode_for_crtc`:
-
-drm_atomic_set_mode_for_crtc
-============================
-
-.. c:function:: int drm_atomic_set_mode_for_crtc(struct drm_crtc_state *state, const struct drm_display_mode *mode)
-
-    set mode for CRTC
-
-    :param struct drm_crtc_state \*state:
-        the CRTC whose incoming state to update
-
-    :param const struct drm_display_mode \*mode:
-        kernel-internal mode to use for the CRTC, or NULL to disable
-
-.. _`drm_atomic_set_mode_for_crtc.description`:
-
-Description
------------
-
-Set a mode (originating from the kernel) on the desired CRTC state and update
-the enable property.
-
-.. _`drm_atomic_set_mode_for_crtc.return`:
-
-Return
-------
-
-Zero on success, error code on failure. Cannot return -EDEADLK.
-
-.. _`drm_atomic_set_mode_prop_for_crtc`:
-
-drm_atomic_set_mode_prop_for_crtc
-=================================
-
-.. c:function:: int drm_atomic_set_mode_prop_for_crtc(struct drm_crtc_state *state, struct drm_property_blob *blob)
-
-    set mode for CRTC
-
-    :param struct drm_crtc_state \*state:
-        the CRTC whose incoming state to update
-
-    :param struct drm_property_blob \*blob:
-        pointer to blob property to use for mode
-
-.. _`drm_atomic_set_mode_prop_for_crtc.description`:
-
-Description
------------
-
-Set a mode (originating from a blob property) on the desired CRTC state.
-This function will take a reference on the blob property for the CRTC state,
-and release the reference held on the state's existing mode property, if any
-was set.
-
-.. _`drm_atomic_set_mode_prop_for_crtc.return`:
-
-Return
-------
-
-Zero on success, error code on failure. Cannot return -EDEADLK.
-
-.. _`drm_atomic_replace_property_blob_from_id`:
-
-drm_atomic_replace_property_blob_from_id
-========================================
-
-.. c:function:: int drm_atomic_replace_property_blob_from_id(struct drm_device *dev, struct drm_property_blob **blob, uint64_t blob_id, ssize_t expected_size, ssize_t expected_elem_size, bool *replaced)
-
-    lookup the new blob and replace the old one with it
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param struct drm_property_blob \*\*blob:
-        a pointer to the member blob to be replaced
-
-    :param uint64_t blob_id:
-        ID of the new blob
-
-    :param ssize_t expected_size:
-        total expected size of the blob data (in bytes)
-
-    :param ssize_t expected_elem_size:
-        expected element size of the blob data (in bytes)
-
-    :param bool \*replaced:
-        did the blob get replaced?
-
-.. _`drm_atomic_replace_property_blob_from_id.description`:
-
-Description
------------
-
-Replace \ ``blob``\  with another blob with the ID \ ``blob_id``\ . If \ ``blob_id``\  is zero
-\ ``blob``\  becomes NULL.
-
-If \ ``expected_size``\  is positive the new blob length is expected to be equal
-to \ ``expected_size``\  bytes. If \ ``expected_elem_size``\  is positive the new blob
-length is expected to be a multiple of \ ``expected_elem_size``\  bytes. Otherwise
-an error is returned.
-
-\ ``replaced``\  will indicate to the caller whether the blob was replaced or not.
-If the old and new blobs were in fact the same blob \ ``replaced``\  will be false
-otherwise it will be true.
-
-.. _`drm_atomic_replace_property_blob_from_id.return`:
-
-Return
-------
-
-Zero on success, error code on failure.
-
-.. _`drm_atomic_crtc_set_property`:
-
-drm_atomic_crtc_set_property
-============================
-
-.. c:function:: int drm_atomic_crtc_set_property(struct drm_crtc *crtc, struct drm_crtc_state *state, struct drm_property *property, uint64_t val)
-
-    set property on CRTC
-
-    :param struct drm_crtc \*crtc:
-        the drm CRTC to set a property on
-
-    :param struct drm_crtc_state \*state:
-        the state object to update with the new property value
-
-    :param struct drm_property \*property:
-        the property to set
-
-    :param uint64_t val:
-        the new property value
-
-.. _`drm_atomic_crtc_set_property.description`:
-
-Description
------------
-
-This function handles generic/core properties and calls out to driver's
-\ :c:type:`drm_crtc_funcs.atomic_set_property <drm_crtc_funcs>`\  for driver properties. To ensure
-consistent behavior you must call this function rather than the driver hook
-directly.
-
-.. _`drm_atomic_crtc_set_property.return`:
-
-Return
-------
-
-Zero on success, error code on failure
-
-.. _`drm_atomic_crtc_get_property`:
-
-drm_atomic_crtc_get_property
-============================
-
-.. c:function:: int drm_atomic_crtc_get_property(struct drm_crtc *crtc, const struct drm_crtc_state *state, struct drm_property *property, uint64_t *val)
-
-    get property value from CRTC state
-
-    :param struct drm_crtc \*crtc:
-        the drm CRTC to set a property on
-
-    :param const struct drm_crtc_state \*state:
-        the state object to get the property value from
-
-    :param struct drm_property \*property:
-        the property to set
-
-    :param uint64_t \*val:
-        return location for the property value
-
-.. _`drm_atomic_crtc_get_property.description`:
-
-Description
------------
-
-This function handles generic/core properties and calls out to driver's
-\ :c:type:`drm_crtc_funcs.atomic_get_property <drm_crtc_funcs>`\  for driver properties. To ensure
-consistent behavior you must call this function rather than the driver hook
-directly.
-
-.. _`drm_atomic_crtc_get_property.return`:
-
-Return
-------
-
-Zero on success, error code on failure
-
-.. _`drm_atomic_crtc_check`:
-
-drm_atomic_crtc_check
-=====================
-
-.. c:function:: int drm_atomic_crtc_check(struct drm_crtc *crtc, struct drm_crtc_state *state)
-
-    check crtc state
-
-    :param struct drm_crtc \*crtc:
-        crtc to check
-
-    :param struct drm_crtc_state \*state:
-        crtc state to check
-
-.. _`drm_atomic_crtc_check.description`:
-
-Description
------------
-
-Provides core sanity checks for crtc state.
-
-.. _`drm_atomic_crtc_check.return`:
-
-Return
-------
-
-Zero on success, error code on failure
-
 .. _`drm_atomic_get_plane_state`:
 
 drm_atomic_get_plane_state
@@ -394,11 +185,13 @@ drm_atomic_get_plane_state
 
     get plane state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to get state object for
+    :type plane: struct drm_plane \*
 
 .. _`drm_atomic_get_plane_state.description`:
 
@@ -419,82 +212,6 @@ Either the allocated state or the error code encoded into the pointer. When
 the error is EDEADLK then the w/w mutex code has detected a deadlock and the
 entire atomic sequence must be restarted. All other errors are fatal.
 
-.. _`drm_atomic_plane_set_property`:
-
-drm_atomic_plane_set_property
-=============================
-
-.. c:function:: int drm_atomic_plane_set_property(struct drm_plane *plane, struct drm_plane_state *state, struct drm_property *property, uint64_t val)
-
-    set property on plane
-
-    :param struct drm_plane \*plane:
-        the drm plane to set a property on
-
-    :param struct drm_plane_state \*state:
-        the state object to update with the new property value
-
-    :param struct drm_property \*property:
-        the property to set
-
-    :param uint64_t val:
-        the new property value
-
-.. _`drm_atomic_plane_set_property.description`:
-
-Description
------------
-
-This function handles generic/core properties and calls out to driver's
-\ :c:type:`drm_plane_funcs.atomic_set_property <drm_plane_funcs>`\  for driver properties.  To ensure
-consistent behavior you must call this function rather than the driver hook
-directly.
-
-.. _`drm_atomic_plane_set_property.return`:
-
-Return
-------
-
-Zero on success, error code on failure
-
-.. _`drm_atomic_plane_get_property`:
-
-drm_atomic_plane_get_property
-=============================
-
-.. c:function:: int drm_atomic_plane_get_property(struct drm_plane *plane, const struct drm_plane_state *state, struct drm_property *property, uint64_t *val)
-
-    get property value from plane state
-
-    :param struct drm_plane \*plane:
-        the drm plane to set a property on
-
-    :param const struct drm_plane_state \*state:
-        the state object to get the property value from
-
-    :param struct drm_property \*property:
-        the property to set
-
-    :param uint64_t \*val:
-        return location for the property value
-
-.. _`drm_atomic_plane_get_property.description`:
-
-Description
------------
-
-This function handles generic/core properties and calls out to driver's
-\ :c:type:`drm_plane_funcs.atomic_get_property <drm_plane_funcs>`\  for driver properties.  To ensure
-consistent behavior you must call this function rather than the driver hook
-directly.
-
-.. _`drm_atomic_plane_get_property.return`:
-
-Return
-------
-
-Zero on success, error code on failure
-
 .. _`drm_atomic_plane_check`:
 
 drm_atomic_plane_check
@@ -504,11 +221,13 @@ drm_atomic_plane_check
 
     check plane state
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to check
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*state:
+    :param state:
         plane state to check
+    :type state: struct drm_plane_state \*
 
 .. _`drm_atomic_plane_check.description`:
 
@@ -570,15 +289,18 @@ drm_atomic_private_obj_init
 
     initialize private object
 
-    :param struct drm_private_obj \*obj:
+    :param obj:
         private object
+    :type obj: struct drm_private_obj \*
 
-    :param struct drm_private_state \*state:
+    :param state:
         initial private object state
+    :type state: struct drm_private_state \*
 
-    :param const struct drm_private_state_funcs \*funcs:
+    :param funcs:
         pointer to the struct of function pointers that identify the object
         type
+    :type funcs: const struct drm_private_state_funcs \*
 
 .. _`drm_atomic_private_obj_init.description`:
 
@@ -597,8 +319,9 @@ drm_atomic_private_obj_fini
 
     finalize private object
 
-    :param struct drm_private_obj \*obj:
+    :param obj:
         private object
+    :type obj: struct drm_private_obj \*
 
 .. _`drm_atomic_private_obj_fini.description`:
 
@@ -616,11 +339,13 @@ drm_atomic_get_private_obj_state
 
     get private object state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_private_obj \*obj:
+    :param obj:
         private object to get the state for
+    :type obj: struct drm_private_obj \*
 
 .. _`drm_atomic_get_private_obj_state.description`:
 
@@ -648,11 +373,13 @@ drm_atomic_get_connector_state
 
     get connector state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to get state object for
+    :type connector: struct drm_connector \*
 
 .. _`drm_atomic_get_connector_state.description`:
 
@@ -673,212 +400,6 @@ Either the allocated state or the error code encoded into the pointer. When
 the error is EDEADLK then the w/w mutex code has detected a deadlock and the
 entire atomic sequence must be restarted. All other errors are fatal.
 
-.. _`drm_atomic_connector_set_property`:
-
-drm_atomic_connector_set_property
-=================================
-
-.. c:function:: int drm_atomic_connector_set_property(struct drm_connector *connector, struct drm_connector_state *state, struct drm_property *property, uint64_t val)
-
-    set property on connector.
-
-    :param struct drm_connector \*connector:
-        the drm connector to set a property on
-
-    :param struct drm_connector_state \*state:
-        the state object to update with the new property value
-
-    :param struct drm_property \*property:
-        the property to set
-
-    :param uint64_t val:
-        the new property value
-
-.. _`drm_atomic_connector_set_property.description`:
-
-Description
------------
-
-This function handles generic/core properties and calls out to driver's
-\ :c:type:`drm_connector_funcs.atomic_set_property <drm_connector_funcs>`\  for driver properties.  To ensure
-consistent behavior you must call this function rather than the driver hook
-directly.
-
-.. _`drm_atomic_connector_set_property.return`:
-
-Return
-------
-
-Zero on success, error code on failure
-
-.. _`drm_atomic_connector_get_property`:
-
-drm_atomic_connector_get_property
-=================================
-
-.. c:function:: int drm_atomic_connector_get_property(struct drm_connector *connector, const struct drm_connector_state *state, struct drm_property *property, uint64_t *val)
-
-    get property value from connector state
-
-    :param struct drm_connector \*connector:
-        the drm connector to set a property on
-
-    :param const struct drm_connector_state \*state:
-        the state object to get the property value from
-
-    :param struct drm_property \*property:
-        the property to set
-
-    :param uint64_t \*val:
-        return location for the property value
-
-.. _`drm_atomic_connector_get_property.description`:
-
-Description
------------
-
-This function handles generic/core properties and calls out to driver's
-\ :c:type:`drm_connector_funcs.atomic_get_property <drm_connector_funcs>`\  for driver properties.  To ensure
-consistent behavior you must call this function rather than the driver hook
-directly.
-
-.. _`drm_atomic_connector_get_property.return`:
-
-Return
-------
-
-Zero on success, error code on failure
-
-.. _`drm_atomic_set_crtc_for_plane`:
-
-drm_atomic_set_crtc_for_plane
-=============================
-
-.. c:function:: int drm_atomic_set_crtc_for_plane(struct drm_plane_state *plane_state, struct drm_crtc *crtc)
-
-    set crtc for plane
-
-    :param struct drm_plane_state \*plane_state:
-        the plane whose incoming state to update
-
-    :param struct drm_crtc \*crtc:
-        crtc to use for the plane
-
-.. _`drm_atomic_set_crtc_for_plane.description`:
-
-Description
------------
-
-Changing the assigned crtc for a plane requires us to grab the lock and state
-for the new crtc, as needed. This function takes care of all these details
-besides updating the pointer in the state object itself.
-
-.. _`drm_atomic_set_crtc_for_plane.return`:
-
-Return
-------
-
-0 on success or can fail with -EDEADLK or -ENOMEM. When the error is EDEADLK
-then the w/w mutex code has detected a deadlock and the entire atomic
-sequence must be restarted. All other errors are fatal.
-
-.. _`drm_atomic_set_fb_for_plane`:
-
-drm_atomic_set_fb_for_plane
-===========================
-
-.. c:function:: void drm_atomic_set_fb_for_plane(struct drm_plane_state *plane_state, struct drm_framebuffer *fb)
-
-    set framebuffer for plane
-
-    :param struct drm_plane_state \*plane_state:
-        atomic state object for the plane
-
-    :param struct drm_framebuffer \*fb:
-        fb to use for the plane
-
-.. _`drm_atomic_set_fb_for_plane.description`:
-
-Description
------------
-
-Changing the assigned framebuffer for a plane requires us to grab a reference
-to the new fb and drop the reference to the old fb, if there is one. This
-function takes care of all these details besides updating the pointer in the
-state object itself.
-
-.. _`drm_atomic_set_fence_for_plane`:
-
-drm_atomic_set_fence_for_plane
-==============================
-
-.. c:function:: void drm_atomic_set_fence_for_plane(struct drm_plane_state *plane_state, struct dma_fence *fence)
-
-    set fence for plane
-
-    :param struct drm_plane_state \*plane_state:
-        atomic state object for the plane
-
-    :param struct dma_fence \*fence:
-        dma_fence to use for the plane
-
-.. _`drm_atomic_set_fence_for_plane.description`:
-
-Description
------------
-
-Helper to setup the plane_state fence in case it is not set yet.
-By using this drivers doesn't need to worry if the user choose
-implicit or explicit fencing.
-
-This function will not set the fence to the state if it was set
-via explicit fencing interfaces on the atomic ioctl. In that case it will
-drop the reference to the fence as we are not storing it anywhere.
-Otherwise, if \ :c:type:`drm_plane_state.fence <drm_plane_state>`\  is not set this function we just set it
-with the received implicit fence. In both cases this function consumes a
-reference for \ ``fence``\ .
-
-This way explicit fencing can be used to overrule implicit fencing, which is
-important to make explicit fencing use-cases work: One example is using one
-buffer for 2 screens with different refresh rates. Implicit fencing will
-clamp rendering to the refresh rate of the slower screen, whereas explicit
-fence allows 2 independent render and display loops on a single buffer. If a
-driver allows obeys both implicit and explicit fences for plane updates, then
-it will break all the benefits of explicit fencing.
-
-.. _`drm_atomic_set_crtc_for_connector`:
-
-drm_atomic_set_crtc_for_connector
-=================================
-
-.. c:function:: int drm_atomic_set_crtc_for_connector(struct drm_connector_state *conn_state, struct drm_crtc *crtc)
-
-    set crtc for connector
-
-    :param struct drm_connector_state \*conn_state:
-        atomic state object for the connector
-
-    :param struct drm_crtc \*crtc:
-        crtc to use for the connector
-
-.. _`drm_atomic_set_crtc_for_connector.description`:
-
-Description
------------
-
-Changing the assigned crtc for a connector requires us to grab the lock and
-state for the new crtc, as needed. This function takes care of all these
-details besides updating the pointer in the state object itself.
-
-.. _`drm_atomic_set_crtc_for_connector.return`:
-
-Return
-------
-
-0 on success or can fail with -EDEADLK or -ENOMEM. When the error is EDEADLK
-then the w/w mutex code has detected a deadlock and the entire atomic
-sequence must be restarted. All other errors are fatal.
-
 .. _`drm_atomic_add_affected_connectors`:
 
 drm_atomic_add_affected_connectors
@@ -888,11 +409,13 @@ drm_atomic_add_affected_connectors
 
     add connectors for crtc
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_atomic_add_affected_connectors.description`:
 
@@ -924,11 +447,13 @@ drm_atomic_add_affected_planes
 
     add planes for crtc
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_atomic_add_affected_planes.description`:
 
@@ -963,8 +488,9 @@ drm_atomic_check_only
 
     check whether a given config would work
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic configuration to check
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_check_only.description`:
 
@@ -991,8 +517,9 @@ drm_atomic_commit
 
     commit configuration atomically
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic configuration to check
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_commit.description`:
 
@@ -1022,8 +549,9 @@ drm_atomic_nonblocking_commit
 
     atomic nonblocking commit
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic configuration to check
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_nonblocking_commit.description`:
 
@@ -1053,11 +581,13 @@ drm_state_dump
 
     dump entire device atomic state
 
-    :param struct drm_device \*dev:
+    :param dev:
         the drm device
+    :type dev: struct drm_device \*
 
-    :param struct drm_printer \*p:
+    :param p:
         where to print the state to
+    :type p: struct drm_printer \*
 
 .. _`drm_state_dump.description`:
 
@@ -1073,87 +603,6 @@ from error irq handler, it should not be enabled by default.
 (Ie. if you are debugging errors you might not care that this
 is racey.  But calling this without all modeset locks held is
 not inherently safe.)
-
-.. _`drm_atomic_clean_old_fb`:
-
-drm_atomic_clean_old_fb
-=======================
-
-.. c:function:: void drm_atomic_clean_old_fb(struct drm_device *dev, unsigned plane_mask, int ret)
-
-    - Unset old_fb pointers and set plane->fb pointers.
-
-    :param struct drm_device \*dev:
-        drm device to check.
-
-    :param unsigned plane_mask:
-        plane mask for planes that were updated.
-
-    :param int ret:
-        return value, can be -EDEADLK for a retry.
-
-.. _`drm_atomic_clean_old_fb.description`:
-
-Description
------------
-
-Before doing an update \ :c:type:`drm_plane.old_fb <drm_plane>`\  is set to \ :c:type:`drm_plane.fb <drm_plane>`\ , but before
-dropping the locks old_fb needs to be set to NULL and plane->fb updated. This
-is a common operation for each atomic update, so this call is split off as a
-helper.
-
-.. _`explicit-fencing-properties`:
-
-explicit fencing properties
-===========================
-
-Explicit fencing allows userspace to control the buffer synchronization
-between devices. A Fence or a group of fences are transfered to/from
-userspace using Sync File fds and there are two DRM properties for that.
-IN_FENCE_FD on each DRM Plane to send fences to the kernel and
-OUT_FENCE_PTR on each DRM CRTC to receive fences from the kernel.
-
-As a contrast, with implicit fencing the kernel keeps track of any
-ongoing rendering, and automatically ensures that the atomic update waits
-for any pending rendering to complete. For shared buffers represented with
-a \ :c:type:`struct dma_buf <dma_buf>`\  this is tracked in \ :c:type:`struct reservation_object <reservation_object>`\ .
-Implicit syncing is how Linux traditionally worked (e.g. DRI2/3 on X.org),
-whereas explicit fencing is what Android wants.
-
-"IN_FENCE_FD”:
-     Use this property to pass a fence that DRM should wait on before
-     proceeding with the Atomic Commit request and show the framebuffer for
-     the plane on the screen. The fence can be either a normal fence or a
-     merged one, the sync_file framework will handle both cases and use a
-     fence_array if a merged fence is received. Passing -1 here means no
-     fences to wait on.
-
-     If the Atomic Commit request has the DRM_MODE_ATOMIC_TEST_ONLY flag
-     it will only check if the Sync File is a valid one.
-
-     On the driver side the fence is stored on the \ ``fence``\  parameter of
-     \ :c:type:`struct drm_plane_state <drm_plane_state>`\ . Drivers which also support implicit fencing
-     should set the implicit fence using \ :c:func:`drm_atomic_set_fence_for_plane`\ ,
-     to make sure there's consistent behaviour between drivers in precedence
-     of implicit vs. explicit fencing.
-
-"OUT_FENCE_PTR”:
-     Use this property to pass a file descriptor pointer to DRM. Once the
-     Atomic Commit request call returns OUT_FENCE_PTR will be filled with
-     the file descriptor number of a Sync File. This Sync File contains the
-     CRTC fence that will be signaled when all framebuffers present on the
-     Atomic Commit * request for that given CRTC are scanned out on the
-     screen.
-
-     The Atomic Commit request fails if a invalid pointer is passed. If the
-     Atomic Commit request fails for any other reason the out fence fd
-     returned will be -1. On a Atomic Commit with the
-     DRM_MODE_ATOMIC_TEST_ONLY flag the out fence will also be set to -1.
-
-     Note that out-fences don't have a special interface to drivers and are
-     internally represented by a \ :c:type:`struct drm_pending_vblank_event <drm_pending_vblank_event>`\  in struct
-     \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\ , which is also used by the nonblocking atomic commit
-     helpers and for the DRM event handling for existing userspace.
 
 .. This file was automatic generated / don't edit.
 

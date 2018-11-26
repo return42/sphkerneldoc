@@ -10,22 +10,27 @@ nau8540_set_tdm_slot
 
     configure DAI TX TDM.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param unsigned int tx_mask:
+    :param tx_mask:
         bitmask representing active TX slots. Ex.
         0xf for normal 4 channel TDM.
         0xf0 for shifted 4 channel TDM
+    :type tx_mask: unsigned int
 
-    :param unsigned int rx_mask:
+    :param rx_mask:
         no used.
+    :type rx_mask: unsigned int
 
-    :param int slots:
+    :param slots:
         Number of slots in use.
+    :type slots: int
 
-    :param int slot_width:
+    :param slot_width:
         Width in bits for each slot.
+    :type slot_width: int
 
 .. _`nau8540_set_tdm_slot.description`:
 
@@ -43,14 +48,17 @@ nau8540_calc_fll_param
 
     Calculate FLL parameters.
 
-    :param unsigned int fll_in:
+    :param fll_in:
         external clock provided to codec.
+    :type fll_in: unsigned int
 
-    :param unsigned int fs:
+    :param fs:
         sampling rate.
+    :type fs: unsigned int
 
-    :param struct nau8540_fll \*fll_param:
+    :param fll_param:
         Pointer to structure of FLL parameters.
+    :type fll_param: struct nau8540_fll \*
 
 .. _`nau8540_calc_fll_param.description`:
 

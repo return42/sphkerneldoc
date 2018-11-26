@@ -10,8 +10,9 @@ hlwd_quiesce
 
     quiesce hollywood irq controller
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hlwd_quiesce.description`:
 

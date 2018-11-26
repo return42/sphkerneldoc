@@ -10,13 +10,15 @@ sys_capget
 
     get the capabilities of a given process.
 
-    :param cap_user_header_t header:
+    :param header:
         pointer to struct that contains capability version and
         target pid data
+    :type header: cap_user_header_t
 
-    :param cap_user_data_t dataptr:
+    :param dataptr:
         pointer to struct that contains the effective, permitted,
         and inheritable capabilities that are returned
+    :type dataptr: cap_user_data_t
 
 .. _`sys_capget.description`:
 
@@ -34,13 +36,15 @@ sys_capset
 
     set capabilities for a process or (\*) a group of processes
 
-    :param cap_user_header_t header:
+    :param header:
         pointer to struct that contains capability version and
         target pid data
+    :type header: cap_user_header_t
 
-    :param const cap_user_data_t data:
+    :param data:
         pointer to struct that contains the effective, permitted,
         and inheritable capabilities
+    :type data: const cap_user_data_t
 
 .. _`sys_capset.description`:
 
@@ -71,14 +75,17 @@ has_ns_capability
 
     Does a task have a capability in a specific user ns
 
-    :param struct task_struct \*t:
+    :param t:
         The task in question
+    :type t: struct task_struct \*
 
-    :param struct user_namespace \*ns:
+    :param ns:
         target user namespace
+    :type ns: struct user_namespace \*
 
-    :param int cap:
+    :param cap:
         The capability to be tested for
+    :type cap: int
 
 .. _`has_ns_capability.description`:
 
@@ -99,11 +106,13 @@ has_capability
 
     Does a task have a capability in init_user_ns
 
-    :param struct task_struct \*t:
+    :param t:
         The task in question
+    :type t: struct task_struct \*
 
-    :param int cap:
+    :param cap:
         The capability to be tested for
+    :type cap: int
 
 .. _`has_capability.description`:
 
@@ -124,14 +133,17 @@ has_ns_capability_noaudit
 
     Does a task have a capability (unaudited) in a specific user ns.
 
-    :param struct task_struct \*t:
+    :param t:
         The task in question
+    :type t: struct task_struct \*
 
-    :param struct user_namespace \*ns:
+    :param ns:
         target user namespace
+    :type ns: struct user_namespace \*
 
-    :param int cap:
+    :param cap:
         The capability to be tested for
+    :type cap: int
 
 .. _`has_ns_capability_noaudit.description`:
 
@@ -153,11 +165,13 @@ has_capability_noaudit
 
     Does a task have a capability (unaudited) in the initial user ns
 
-    :param struct task_struct \*t:
+    :param t:
         The task in question
+    :type t: struct task_struct \*
 
-    :param int cap:
+    :param cap:
         The capability to be tested for
+    :type cap: int
 
 .. _`has_capability_noaudit.description`:
 
@@ -179,11 +193,13 @@ ns_capable
 
     Determine if the current task has a superior capability in effect
 
-    :param struct user_namespace \*ns:
+    :param ns:
         The usernamespace we want the capability in
+    :type ns: struct user_namespace \*
 
-    :param int cap:
+    :param cap:
         The capability to be tested for
+    :type cap: int
 
 .. _`ns_capable.description`:
 
@@ -205,11 +221,13 @@ ns_capable_noaudit
 
     Determine if the current task has a superior capability (unaudited) in effect
 
-    :param struct user_namespace \*ns:
+    :param ns:
         The usernamespace we want the capability in
+    :type ns: struct user_namespace \*
 
-    :param int cap:
+    :param cap:
         The capability to be tested for
+    :type cap: int
 
 .. _`ns_capable_noaudit.description`:
 
@@ -231,8 +249,9 @@ capable
 
     Determine if the current task has a superior capability in effect
 
-    :param int cap:
+    :param cap:
         The capability to be tested for
+    :type cap: int
 
 .. _`capable.description`:
 
@@ -254,14 +273,17 @@ file_ns_capable
 
     Determine if the file's opener had a capability in effect
 
-    :param const struct file \*file:
+    :param file:
         The file we want to check
+    :type file: const struct file \*
 
-    :param struct user_namespace \*ns:
+    :param ns:
         The usernamespace we want the capability in
+    :type ns: struct user_namespace \*
 
-    :param int cap:
+    :param cap:
         The capability to be tested for
+    :type cap: int
 
 .. _`file_ns_capable.description`:
 
@@ -283,11 +305,13 @@ privileged_wrt_inode_uidgid
 
     Do capabilities in the namespace work over the inode?
 
-    :param struct user_namespace \*ns:
+    :param ns:
         The user namespace in question
+    :type ns: struct user_namespace \*
 
-    :param const struct inode \*inode:
+    :param inode:
         The inode in question
+    :type inode: const struct inode \*
 
 .. _`privileged_wrt_inode_uidgid.description`:
 
@@ -305,11 +329,13 @@ capable_wrt_inode_uidgid
 
     Check nsown_capable and uid and gid mapped
 
-    :param const struct inode \*inode:
+    :param inode:
         The inode in question
+    :type inode: const struct inode \*
 
-    :param int cap:
+    :param cap:
         The capability in question
+    :type cap: int
 
 .. _`capable_wrt_inode_uidgid.description`:
 
@@ -329,11 +355,13 @@ ptracer_capable
 
     Determine if the ptracer holds CAP_SYS_PTRACE in the namespace
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         The task that may be ptraced
+    :type tsk: struct task_struct \*
 
-    :param struct user_namespace \*ns:
+    :param ns:
         The user namespace to search for CAP_SYS_PTRACE in
+    :type ns: struct user_namespace \*
 
 .. _`ptracer_capable.description`:
 

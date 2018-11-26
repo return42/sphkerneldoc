@@ -10,20 +10,25 @@ do_siga_output
 
     perform SIGA-w/wt function
 
-    :param unsigned long schid:
+    :param schid:
         subchannel id or in case of QEBSM the subchannel token
+    :type schid: unsigned long
 
-    :param unsigned long mask:
+    :param mask:
         which output queues to process
+    :type mask: unsigned long
 
-    :param unsigned int \*bb:
+    :param bb:
         busy bit indicator, set only if SIGA-w/wt could not access a buffer
+    :type bb: unsigned int \*
 
-    :param unsigned int fc:
+    :param fc:
         function code to perform
+    :type fc: unsigned int
 
-    :param unsigned long aob:
+    :param aob:
         asynchronous operation block
+    :type aob: unsigned long
 
 .. _`do_siga_output.description`:
 
@@ -48,20 +53,25 @@ qdio_do_eqbs
 
     extract buffer states for QEBSM
 
-    :param struct qdio_q \*q:
+    :param q:
         queue to manipulate
+    :type q: struct qdio_q \*
 
-    :param unsigned char \*state:
+    :param state:
         state of the extracted buffers
+    :type state: unsigned char \*
 
-    :param int start:
+    :param start:
         buffer number to start at
+    :type start: int
 
-    :param int count:
+    :param count:
         count of buffers to examine
+    :type count: int
 
-    :param int auto_ack:
+    :param auto_ack:
         automatically acknowledge buffers
+    :type auto_ack: int
 
 .. _`qdio_do_eqbs.description`:
 
@@ -80,17 +90,21 @@ qdio_do_sqbs
 
     set buffer states for QEBSM
 
-    :param struct qdio_q \*q:
+    :param q:
         queue to manipulate
+    :type q: struct qdio_q \*
 
-    :param unsigned char state:
+    :param state:
         new state of the buffers
+    :type state: unsigned char
 
-    :param int start:
+    :param start:
         first buffer number to change
+    :type start: int
 
-    :param int count:
+    :param count:
         how many buffers to change
+    :type count: int
 
 .. _`qdio_do_sqbs.description`:
 
@@ -110,11 +124,13 @@ qdio_get_ssqd_desc
 
     get qdio subchannel description
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device to get description for
+    :type cdev: struct ccw_device \*
 
-    :param struct qdio_ssqd_desc \*data:
+    :param data:
         where to store the ssqd
+    :type data: struct qdio_ssqd_desc \*
 
 .. _`qdio_get_ssqd_desc.description`:
 
@@ -133,11 +149,13 @@ qdio_shutdown
 
     shut down a qdio subchannel
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         associated ccw device
+    :type cdev: struct ccw_device \*
 
-    :param int how:
+    :param how:
         use halt or clear to shutdown
+    :type how: int
 
 .. _`qdio_free`:
 
@@ -148,8 +166,9 @@ qdio_free
 
     free data structures for a qdio subchannel
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         associated ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`qdio_allocate`:
 
@@ -160,8 +179,9 @@ qdio_allocate
 
     allocate qdio queues and associated data
 
-    :param struct qdio_initialize \*init_data:
+    :param init_data:
         initialization data
+    :type init_data: struct qdio_initialize \*
 
 .. _`qdio_establish`:
 
@@ -172,8 +192,9 @@ qdio_establish
 
     establish queues on a qdio subchannel
 
-    :param struct qdio_initialize \*init_data:
+    :param init_data:
         initialization data
+    :type init_data: struct qdio_initialize \*
 
 .. _`qdio_activate`:
 
@@ -184,8 +205,9 @@ qdio_activate
 
     activate queues on a qdio subchannel
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         associated cdev
+    :type cdev: struct ccw_device \*
 
 .. _`handle_inbound`:
 
@@ -196,17 +218,21 @@ handle_inbound
 
     reset processed input buffers
 
-    :param struct qdio_q \*q:
+    :param q:
         queue containing the buffers
+    :type q: struct qdio_q \*
 
-    :param unsigned int callflags:
+    :param callflags:
         flags
+    :type callflags: unsigned int
 
-    :param int bufnr:
+    :param bufnr:
         first buffer to process
+    :type bufnr: int
 
-    :param int count:
+    :param count:
         how many buffers are emptied
+    :type count: int
 
 .. _`handle_outbound`:
 
@@ -217,17 +243,21 @@ handle_outbound
 
     process filled outbound buffers
 
-    :param struct qdio_q \*q:
+    :param q:
         queue containing the buffers
+    :type q: struct qdio_q \*
 
-    :param unsigned int callflags:
+    :param callflags:
         flags
+    :type callflags: unsigned int
 
-    :param int bufnr:
+    :param bufnr:
         first buffer to process
+    :type bufnr: int
 
-    :param int count:
+    :param count:
         how many buffers are filled
+    :type count: int
 
 .. _`do_qdio`:
 
@@ -238,20 +268,25 @@ do_QDIO
 
     process input or output buffers
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         associated ccw_device for the qdio subchannel
+    :type cdev: struct ccw_device \*
 
-    :param unsigned int callflags:
+    :param callflags:
         input or output and special flags from the program
+    :type callflags: unsigned int
 
-    :param int q_nr:
+    :param q_nr:
         queue number
+    :type q_nr: int
 
-    :param unsigned int bufnr:
+    :param bufnr:
         buffer number
+    :type bufnr: unsigned int
 
-    :param unsigned int count:
+    :param count:
         how many buffers to process
+    :type count: unsigned int
 
 .. _`qdio_start_irq`:
 
@@ -262,11 +297,13 @@ qdio_start_irq
 
     process input buffers
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         associated ccw_device for the qdio subchannel
+    :type cdev: struct ccw_device \*
 
-    :param int nr:
+    :param nr:
         input queue number
+    :type nr: int
 
 .. _`qdio_start_irq.description`:
 
@@ -286,17 +323,21 @@ qdio_get_next_buffers
 
     process input buffers
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         associated ccw_device for the qdio subchannel
+    :type cdev: struct ccw_device \*
 
-    :param int nr:
+    :param nr:
         input queue number
+    :type nr: int
 
-    :param int \*bufnr:
+    :param bufnr:
         first filled buffer number
+    :type bufnr: int \*
 
-    :param int \*error:
+    :param error:
         buffers are in error state
+    :type error: int \*
 
 .. _`qdio_get_next_buffers.description`:
 
@@ -317,11 +358,13 @@ qdio_stop_irq
 
     disable interrupt processing for the device
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         associated ccw_device for the qdio subchannel
+    :type cdev: struct ccw_device \*
 
-    :param int nr:
+    :param nr:
         input queue number
+    :type nr: int
 
 .. _`qdio_stop_irq.description`:
 
@@ -341,21 +384,25 @@ qdio_pnso_brinfo
 
     perform network subchannel op #0 - bridge info.
 
-    :param struct subchannel_id schid:
+    :param schid:
         Subchannel ID.
+    :type schid: struct subchannel_id
 
-    :param int cnc:
+    :param cnc:
         Boolean Change-Notification Control
+    :type cnc: int
 
-    :param u16 \*response:
+    :param response:
         Response code will be stored at this address
+    :type response: u16 \*
 
     :param void (\*cb)(void \*priv, enum qdio_brinfo_entry_type type, void \*entry):
         Callback function will be executed for each element
         of the address list
 
-    :param void \*priv:
+    :param priv:
         Pointer to pass to the callback function.
+    :type priv: void \*
 
 .. _`qdio_pnso_brinfo.description`:
 

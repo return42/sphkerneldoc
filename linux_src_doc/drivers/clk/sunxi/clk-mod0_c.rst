@@ -10,8 +10,9 @@ sun4i_a10_get_mod0_factors
 
     calculates m, n factors for MOD0-style clocks MOD0 rate is calculated as follows rate = (parent_rate >> p) / (m + 1);
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ mpc8610hpcd_set_pixel_clock
 
     program the DIU's clock
 
-    :param unsigned int pixclock:
+    :param pixclock:
         the wavelength, in picoseconds, of the clock
+    :type pixclock: unsigned int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ sched_set_itmt_support
 
     Indicate platform supports ITMT
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sched_set_itmt_support.description`:
 
@@ -46,8 +47,9 @@ sched_clear_itmt_support
 
     Revoke platform's support of ITMT
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sched_clear_itmt_support.description`:
 
@@ -70,11 +72,13 @@ sched_set_itmt_core_prio
 
     Set CPU priority based on ITMT
 
-    :param int prio:
+    :param prio:
         Priority of cpu core
+    :type prio: int
 
-    :param int core_cpu:
+    :param core_cpu:
         The cpu number associated with the core
+    :type core_cpu: int
 
 .. _`sched_set_itmt_core_prio.description`:
 

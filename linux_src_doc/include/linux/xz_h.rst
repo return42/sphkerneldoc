@@ -232,10 +232,11 @@ xz_dec_init
 
     Allocate and initialize a XZ decoder state
 
-    :param enum xz_mode mode:
+    :param mode:
         Operation mode
+    :type mode: enum xz_mode
 
-    :param uint32_t dict_max:
+    :param dict_max:
         Maximum size of the LZMA2 dictionary (history buffer) for
         multi-call decoding. This is ignored in single-call mode
         (mode == XZ_SINGLE). LZMA2 dictionary is always 2^n bytes
@@ -245,6 +246,7 @@ xz_dec_init
         512 KiB, and 1 MiB are probably the only reasonable values,
         except for kernel and initramfs images where a bigger
         dictionary can be fine and useful.
+    :type dict_max: uint32_t
 
 .. _`xz_dec_init.description`:
 
@@ -290,11 +292,13 @@ xz_dec_run
 
     Run the XZ decoder
 
-    :param struct xz_dec \*s:
+    :param s:
         Decoder state allocated using \ :c:func:`xz_dec_init`\ 
+    :type s: struct xz_dec \*
 
-    :param struct xz_buf \*b:
+    :param b:
         Input and output buffers
+    :type b: struct xz_buf \*
 
 .. _`xz_dec_run.description`:
 
@@ -323,8 +327,9 @@ xz_dec_reset
 
     Reset an already allocated decoder state
 
-    :param struct xz_dec \*s:
+    :param s:
         Decoder state allocated using \ :c:func:`xz_dec_init`\ 
+    :type s: struct xz_dec \*
 
 .. _`xz_dec_reset.description`:
 
@@ -347,9 +352,10 @@ xz_dec_end
 
     Free the memory allocated for the decoder state
 
-    :param struct xz_dec \*s:
+    :param s:
         Decoder state allocated using \ :c:func:`xz_dec_init`\ . If s is NULL,
         this function does nothing.
+    :type s: struct xz_dec \*
 
 .. This file was automatic generated / don't edit.
 

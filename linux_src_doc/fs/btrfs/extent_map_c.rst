@@ -10,8 +10,9 @@ extent_map_tree_init
 
     initialize extent map tree
 
-    :param struct extent_map_tree \*tree:
+    :param tree:
         tree to initialize
+    :type tree: struct extent_map_tree \*
 
 .. _`extent_map_tree_init.description`:
 
@@ -30,8 +31,9 @@ alloc_extent_map
 
     allocate new extent map structure
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`alloc_extent_map.description`:
 
@@ -51,8 +53,9 @@ free_extent_map
 
     drop reference count of an extent_map
 
-    :param struct extent_map \*em:
+    :param em:
         extent map being released
+    :type em: struct extent_map \*
 
 .. _`free_extent_map.description`:
 
@@ -71,17 +74,21 @@ unpin_extent_cache
 
     unpin an extent from the cache
 
-    :param struct extent_map_tree \*tree:
+    :param tree:
         tree to unpin the extent in
+    :type tree: struct extent_map_tree \*
 
-    :param u64 start:
+    :param start:
         logical offset in the file
+    :type start: u64
 
-    :param u64 len:
+    :param len:
         length of the extent
+    :type len: u64
 
-    :param u64 gen:
+    :param gen:
         generation that this extent has been modified in
+    :type gen: u64
 
 .. _`unpin_extent_cache.description`:
 
@@ -101,14 +108,17 @@ add_extent_mapping
 
     add new extent map to the extent tree
 
-    :param struct extent_map_tree \*tree:
+    :param tree:
         tree to insert new map in
+    :type tree: struct extent_map_tree \*
 
-    :param struct extent_map \*em:
+    :param em:
         map to insert
+    :type em: struct extent_map \*
 
-    :param int modified:
+    :param modified:
         *undescribed*
+    :type modified: int
 
 .. _`add_extent_mapping.description`:
 
@@ -129,14 +139,17 @@ lookup_extent_mapping
 
     lookup extent_map
 
-    :param struct extent_map_tree \*tree:
+    :param tree:
         tree to lookup in
+    :type tree: struct extent_map_tree \*
 
-    :param u64 start:
+    :param start:
         byte offset to start the search
+    :type start: u64
 
-    :param u64 len:
+    :param len:
         length of the lookup range
+    :type len: u64
 
 .. _`lookup_extent_mapping.description`:
 
@@ -157,14 +170,17 @@ search_extent_mapping
 
     find a nearby extent map
 
-    :param struct extent_map_tree \*tree:
+    :param tree:
         tree to lookup in
+    :type tree: struct extent_map_tree \*
 
-    :param u64 start:
+    :param start:
         byte offset to start the search
+    :type start: u64
 
-    :param u64 len:
+    :param len:
         length of the lookup range
+    :type len: u64
 
 .. _`search_extent_mapping.description`:
 
@@ -181,15 +197,17 @@ If one can't be found, any nearby extent may be returned
 remove_extent_mapping
 =====================
 
-.. c:function:: int remove_extent_mapping(struct extent_map_tree *tree, struct extent_map *em)
+.. c:function:: void remove_extent_mapping(struct extent_map_tree *tree, struct extent_map *em)
 
     removes an extent_map from the extent tree
 
-    :param struct extent_map_tree \*tree:
+    :param tree:
         extent tree to remove from
+    :type tree: struct extent_map_tree \*
 
-    :param struct extent_map \*em:
+    :param em:
         extent map being removed
+    :type em: struct extent_map \*
 
 .. _`remove_extent_mapping.description`:
 
@@ -208,20 +226,25 @@ btrfs_add_extent_mapping
 
     add extent mapping into em_tree \ ``fs_info``\  - used for tracepoint \ ``em_tree``\  - the extent tree into which we want to insert the extent mapping \ ``em_in``\    - extent we are inserting \ ``start``\    - start of the logical range \ :c:func:`btrfs_get_extent`\  is requesting \ ``len``\      - length of the logical range \ :c:func:`btrfs_get_extent`\  is requesting
 
-    :param struct btrfs_fs_info \*fs_info:
+    :param fs_info:
         *undescribed*
+    :type fs_info: struct btrfs_fs_info \*
 
-    :param struct extent_map_tree \*em_tree:
+    :param em_tree:
         *undescribed*
+    :type em_tree: struct extent_map_tree \*
 
-    :param struct extent_map \*\*em_in:
+    :param em_in:
         *undescribed*
+    :type em_in: struct extent_map \*\*
 
-    :param u64 start:
+    :param start:
         *undescribed*
+    :type start: u64
 
-    :param u64 len:
+    :param len:
         *undescribed*
+    :type len: u64
 
 .. _`btrfs_add_extent_mapping.description`:
 

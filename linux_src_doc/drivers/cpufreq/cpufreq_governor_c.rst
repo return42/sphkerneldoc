@@ -10,14 +10,17 @@ store_sampling_rate
 
     update sampling rate effective immediately if needed.
 
-    :param struct gov_attr_set \*attr_set:
+    :param attr_set:
         *undescribed*
+    :type attr_set: struct gov_attr_set \*
 
-    :param const char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`store_sampling_rate.description`:
 
@@ -45,8 +48,9 @@ gov_update_cpu_data
 
     Update CPU load data.
 
-    :param struct dbs_data \*dbs_data:
+    :param dbs_data:
         Top-level governor data pointer.
+    :type dbs_data: struct dbs_data \*
 
 .. _`gov_update_cpu_data.description`:
 

@@ -10,8 +10,9 @@ crypto_register_acomp
 
     - Register asynchronous compression algorithm
 
-    :param struct acomp_alg \*alg:
+    :param alg:
         algorithm definition
+    :type alg: struct acomp_alg \*
 
 .. _`crypto_register_acomp.description`:
 
@@ -37,8 +38,9 @@ crypto_unregister_acomp
 
     - Unregister asynchronous compression algorithm
 
-    :param struct acomp_alg \*alg:
+    :param alg:
         algorithm definition
+    :type alg: struct acomp_alg \*
 
 .. _`crypto_unregister_acomp.description`:
 

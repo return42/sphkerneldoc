@@ -10,11 +10,13 @@ inv_mpu6050_set_enable
 
     enable chip functions.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         Device driver instance.
+    :type indio_dev: struct iio_dev \*
 
-    :param bool enable:
+    :param enable:
         enable/disable
+    :type enable: bool
 
 .. _`inv_mpu_data_rdy_trigger_set_state`:
 
@@ -25,11 +27,13 @@ inv_mpu_data_rdy_trigger_set_state
 
     set data ready interrupt state
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         Trigger instance
+    :type trig: struct iio_trigger \*
 
-    :param bool state:
+    :param state:
         Desired trigger state
+    :type state: bool
 
 .. This file was automatic generated / don't edit.
 

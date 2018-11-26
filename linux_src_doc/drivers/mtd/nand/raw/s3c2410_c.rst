@@ -54,7 +54,7 @@ Definition
 .. code-block:: c
 
     struct s3c2410_nand_info {
-        struct nand_hw_control controller;
+        struct nand_controller controller;
         struct s3c2410_nand_mtd *mtds;
         struct s3c2410_platform_nand *platform;
         struct device *device;
@@ -128,11 +128,13 @@ s3c2410_nand_clk_set_state
 
     Enable, disable or suspend NAND clock.
 
-    :param struct s3c2410_nand_info \*info:
+    :param info:
         The controller instance.
+    :type info: struct s3c2410_nand_info \*
 
-    :param enum s3c_nand_clk_state new_state:
+    :param new_state:
         State to which clock should be set.
+    :type new_state: enum s3c_nand_clk_state
 
 .. _`s3c_nand_calc_rate`:
 
@@ -143,14 +145,17 @@ s3c_nand_calc_rate
 
     calculate timing data.
 
-    :param int wanted:
+    :param wanted:
         The cycle time in nanoseconds.
+    :type wanted: int
 
-    :param unsigned long clk:
+    :param clk:
         The clock rate in kHz.
+    :type clk: unsigned long
 
-    :param int max:
+    :param max:
         The maximum divider value.
+    :type max: int
 
 .. _`s3c_nand_calc_rate.description`:
 
@@ -168,8 +173,9 @@ s3c2410_nand_setrate
 
     setup controller timing information.
 
-    :param struct s3c2410_nand_info \*info:
+    :param info:
         The controller instance.
+    :type info: struct s3c2410_nand_info \*
 
 .. _`s3c2410_nand_setrate.description`:
 
@@ -189,8 +195,9 @@ s3c2410_nand_inithw
 
     basic hardware initialisation
 
-    :param struct s3c2410_nand_info \*info:
+    :param info:
         The hardware state.
+    :type info: struct s3c2410_nand_info \*
 
 .. _`s3c2410_nand_inithw.description`:
 
@@ -205,15 +212,17 @@ to setup the hardware access speeds and set the controller to be enabled.
 s3c2410_nand_select_chip
 ========================
 
-.. c:function:: void s3c2410_nand_select_chip(struct mtd_info *mtd, int chip)
+.. c:function:: void s3c2410_nand_select_chip(struct nand_chip *this, int chip)
 
     select the given nand chip
 
-    :param struct mtd_info \*mtd:
-        The MTD instance for this chip.
+    :param this:
+        NAND chip object.
+    :type this: struct nand_chip \*
 
-    :param int chip:
+    :param chip:
         The chip number.
+    :type chip: int
 
 .. _`s3c2410_nand_select_chip.description`:
 
@@ -237,14 +246,17 @@ s3c2410_nand_init_chip
 
     initialise a single instance of an chip
 
-    :param struct s3c2410_nand_info \*info:
+    :param info:
         The base NAND controller the chip is on.
+    :type info: struct s3c2410_nand_info \*
 
-    :param struct s3c2410_nand_mtd \*nmtd:
+    :param nmtd:
         The new controller MTD instance to fill in.
+    :type nmtd: struct s3c2410_nand_mtd \*
 
-    :param struct s3c2410_nand_set \*set:
+    :param set:
         The information passed from the board specific platform data.
+    :type set: struct s3c2410_nand_set \*
 
 .. _`s3c2410_nand_init_chip.description`:
 
@@ -255,28 +267,26 @@ Initialise the given \ ``nmtd``\  from the information in \ ``info``\  and \ ``s
 readies the structure for use with the MTD layer functions by ensuring
 all pointers are setup and the necessary control routines selected.
 
-.. _`s3c2410_nand_update_chip`:
+.. _`s3c2410_nand_attach_chip`:
 
-s3c2410_nand_update_chip
+s3c2410_nand_attach_chip
 ========================
 
-.. c:function:: int s3c2410_nand_update_chip(struct s3c2410_nand_info *info, struct s3c2410_nand_mtd *nmtd)
+.. c:function:: int s3c2410_nand_attach_chip(struct nand_chip *chip)
 
-    post probe update
+    Init the ECC engine after NAND scan
 
-    :param struct s3c2410_nand_info \*info:
-        The controller instance.
+    :param chip:
+        The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param struct s3c2410_nand_mtd \*nmtd:
-        The driver version of the MTD instance.
-
-.. _`s3c2410_nand_update_chip.description`:
+.. _`s3c2410_nand_attach_chip.description`:
 
 Description
 -----------
 
-This routine is called after the chip probe has successfully completed
-and the relevant per-chip information updated. This call ensure that
+This hook is called by the core after the identification of the NAND chip,
+once the relevant per-chip information is up to date.. This call ensure that
 we update the internal state accordingly.
 
 The internal state is currently limited to the ECC state information.

@@ -10,11 +10,13 @@ zd_rx_rate
 
     report zd-rate \ ``rx_frame``\  - received frame \ ``rx_status``\  - rx_status as given by the device
 
-    :param const void \*rx_frame:
+    :param rx_frame:
         *undescribed*
+    :type rx_frame: const void \*
 
-    :param const struct rx_status \*status:
+    :param status:
         *undescribed*
+    :type status: const struct rx_status \*
 
 .. _`zd_rx_rate.description`:
 

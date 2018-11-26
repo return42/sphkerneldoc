@@ -10,8 +10,9 @@ transport_class_register
 
     register an initial transport class
 
-    :param struct transport_class \*tclass:
+    :param tclass:
         a pointer to the transport class structure to be initialised
+    :type tclass: struct transport_class \*
 
 .. _`transport_class_register.description`:
 
@@ -36,8 +37,9 @@ transport_class_unregister
 
     unregister a previously registered class
 
-    :param struct transport_class \*tclass:
+    :param tclass:
         The transport class to unregister
+    :type tclass: struct transport_class \*
 
 .. _`transport_class_unregister.description`:
 
@@ -56,8 +58,9 @@ anon_transport_class_register
 
     register an anonymous class
 
-    :param struct anon_transport_class \*atc:
+    :param atc:
         The anon transport class to register
+    :type atc: struct anon_transport_class \*
 
 .. _`anon_transport_class_register.description`:
 
@@ -80,8 +83,9 @@ anon_transport_class_unregister
 
     unregister an anon class
 
-    :param struct anon_transport_class \*atc:
+    :param atc:
         Pointer to the anon transport class to unregister
+    :type atc: struct anon_transport_class \*
 
 .. _`anon_transport_class_unregister.description`:
 
@@ -100,8 +104,9 @@ transport_setup_device
 
     declare a new dev for transport class association but don't make it visible yet.
 
-    :param struct device \*dev:
+    :param dev:
         the generic device representing the entity being added
+    :type dev: struct device \*
 
 .. _`transport_setup_device.description`:
 
@@ -127,8 +132,9 @@ transport_add_device
 
     declare a new dev for transport class association
 
-    :param struct device \*dev:
+    :param dev:
         the generic device representing the entity being added
+    :type dev: struct device \*
 
 .. _`transport_add_device.description`:
 
@@ -149,8 +155,9 @@ transport_configure_device
 
     configure an already set up device
 
-    :param struct device \*dev:
+    :param dev:
         generic device representing device to be configured
+    :type dev: struct device \*
 
 .. _`transport_configure_device.description`:
 
@@ -173,8 +180,9 @@ transport_remove_device
 
     remove the visibility of a device
 
-    :param struct device \*dev:
+    :param dev:
         generic device to remove
+    :type dev: struct device \*
 
 .. _`transport_remove_device.description`:
 
@@ -197,8 +205,9 @@ transport_destroy_device
 
     destroy a removed device
 
-    :param struct device \*dev:
+    :param dev:
         device to eliminate from the transport class.
+    :type dev: struct device \*
 
 .. _`transport_destroy_device.description`:
 

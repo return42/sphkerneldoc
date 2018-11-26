@@ -10,8 +10,9 @@ closure_sync
 
     sleep until a closure a closure has nothing left to wait on
 
-    :param struct closure \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct closure \*
 
 .. _`closure_sync.description`:
 
@@ -30,8 +31,9 @@ closure_get
 
     increment a closure's refcount
 
-    :param struct closure \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct closure \*
 
 .. _`closure_init`:
 
@@ -42,12 +44,14 @@ closure_init
 
     Initialize a closure, setting the refcount to 1
 
-    :param struct closure \*cl:
+    :param cl:
         closure to initialize
+    :type cl: struct closure \*
 
-    :param struct closure \*parent:
+    :param parent:
         parent of the new closure. cl will take a refcount on it for its
         lifetime; may be NULL.
+    :type parent: struct closure \*
 
 .. _`closure_wake_up`:
 
@@ -56,10 +60,11 @@ closure_wake_up
 
 .. c:function:: void closure_wake_up(struct closure_waitlist *list)
 
-    wake up all closures on a wait list.
+    wake up all closures on a wait list, with memory barrier
 
-    :param struct closure_waitlist \*list:
+    :param list:
         *undescribed*
+    :type list: struct closure_waitlist \*
 
 .. _`continue_at`:
 
@@ -70,14 +75,17 @@ continue_at
 
     jump to another function with barrier
 
-    :param  _cl:
+    :param _cl:
         *undescribed*
+    :type _cl: 
 
-    :param  _fn:
+    :param _fn:
         *undescribed*
+    :type _fn: 
 
-    :param  _wq:
+    :param _wq:
         *undescribed*
+    :type _wq: 
 
 .. _`continue_at.description`:
 
@@ -103,8 +111,9 @@ closure_return
 
     finish execution of a closure
 
-    :param  _cl:
+    :param _cl:
         *undescribed*
+    :type _cl: 
 
 .. _`closure_return.description`:
 
@@ -125,14 +134,17 @@ continue_at_nobarrier
 
     jump to another function without barrier
 
-    :param  _cl:
+    :param _cl:
         *undescribed*
+    :type _cl: 
 
-    :param  _fn:
+    :param _fn:
         *undescribed*
+    :type _fn: 
 
-    :param  _wq:
+    :param _wq:
         *undescribed*
+    :type _wq: 
 
 .. _`continue_at_nobarrier.description`:
 
@@ -155,11 +167,13 @@ closure_return_with_destructor
 
     finish execution of a closure, with destructor
 
-    :param  _cl:
+    :param _cl:
         *undescribed*
+    :type _cl: 
 
-    :param  _destructor:
+    :param _destructor:
         *undescribed*
+    :type _destructor: 
 
 .. _`closure_return_with_destructor.description`:
 
@@ -181,17 +195,21 @@ closure_call
 
     execute \ ``fn``\  out of a new, uninitialized closure
 
-    :param struct closure \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct closure \*
 
-    :param closure_fn fn:
+    :param fn:
         *undescribed*
+    :type fn: closure_fn
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         *undescribed*
+    :type wq: struct workqueue_struct \*
 
-    :param struct closure \*parent:
+    :param parent:
         *undescribed*
+    :type parent: struct closure \*
 
 .. _`closure_call.description`:
 

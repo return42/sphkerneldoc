@@ -10,17 +10,20 @@ subdev_8255_init
 
     initialize DIO subdevice for driving I/O mapped 8255
 
-    :param struct comedi_device \*dev:
+    :param dev:
         comedi device owning subdevice
+    :type dev: struct comedi_device \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         comedi subdevice to initialize
+    :type s: struct comedi_subdevice \*
 
     :param int (\*io)(struct comedi_device \*dev, int dir, int port, int data, unsigned long regbase):
         (optional) register I/O call-back function
 
-    :param unsigned long regbase:
+    :param regbase:
         offset of 8255 registers from dev->iobase, or call-back context
+    :type regbase: unsigned long
 
 .. _`subdev_8255_init.description`:
 
@@ -65,17 +68,20 @@ subdev_8255_mm_init
 
     initialize DIO subdevice for driving mmio-mapped 8255
 
-    :param struct comedi_device \*dev:
+    :param dev:
         comedi device owning subdevice
+    :type dev: struct comedi_device \*
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         comedi subdevice to initialize
+    :type s: struct comedi_subdevice \*
 
     :param int (\*io)(struct comedi_device \*dev, int dir, int port, int data, unsigned long regbase):
         (optional) register I/O call-back function
 
-    :param unsigned long regbase:
+    :param regbase:
         offset of 8255 registers from dev->mmio, or call-back context
+    :type regbase: unsigned long
 
 .. _`subdev_8255_mm_init.description`:
 
@@ -120,8 +126,9 @@ subdev_8255_regbase
 
     get offset of 8255 registers or call-back context
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         comedi subdevice
+    :type s: struct comedi_subdevice \*
 
 .. _`subdev_8255_regbase.description`:
 

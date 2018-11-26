@@ -10,11 +10,13 @@ centrino_target
 
     set a new CPUFreq policy
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         new policy
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int index:
+    :param index:
         index of target frequency
+    :type index: unsigned int
 
 .. _`centrino_target.description`:
 
@@ -32,8 +34,9 @@ centrino_init
 
     initializes the Enhanced SpeedStep CPUFreq driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`centrino_init.description`:
 

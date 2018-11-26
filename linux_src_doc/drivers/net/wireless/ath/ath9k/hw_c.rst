@@ -10,8 +10,9 @@ ath9k_hw_dfs_tested
 
     checks if DFS has been tested with used chipset
 
-    :param struct ath_hw \*ah:
+    :param ah:
         the atheros hardware data structure
+    :type ah: struct ath_hw \*
 
 .. _`ath9k_hw_dfs_tested.description`:
 

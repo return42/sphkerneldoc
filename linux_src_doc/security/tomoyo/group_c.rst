@@ -10,11 +10,13 @@ tomoyo_same_path_group
 
     Check for duplicated "struct tomoyo_path_group" entry.
 
-    :param const struct tomoyo_acl_head \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_head".
+    :type a: const struct tomoyo_acl_head \*
 
-    :param const struct tomoyo_acl_head \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_head".
+    :type b: const struct tomoyo_acl_head \*
 
 .. _`tomoyo_same_path_group.description`:
 
@@ -32,11 +34,13 @@ tomoyo_same_number_group
 
     Check for duplicated "struct tomoyo_number_group" entry.
 
-    :param const struct tomoyo_acl_head \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_head".
+    :type a: const struct tomoyo_acl_head \*
 
-    :param const struct tomoyo_acl_head \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_head".
+    :type b: const struct tomoyo_acl_head \*
 
 .. _`tomoyo_same_number_group.description`:
 
@@ -54,11 +58,13 @@ tomoyo_same_address_group
 
     Check for duplicated "struct tomoyo_address_group" entry.
 
-    :param const struct tomoyo_acl_head \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_head".
+    :type a: const struct tomoyo_acl_head \*
 
-    :param const struct tomoyo_acl_head \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_head".
+    :type b: const struct tomoyo_acl_head \*
 
 .. _`tomoyo_same_address_group.description`:
 
@@ -76,11 +82,13 @@ tomoyo_write_group
 
     Write "struct tomoyo_path_group"/"struct tomoyo_number_group"/"struct tomoyo_address_group" list.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
-    :param const u8 type:
+    :param type:
         Type of this group.
+    :type type: const u8
 
 .. _`tomoyo_write_group.description`:
 
@@ -98,11 +106,13 @@ tomoyo_path_matches_group
 
     Check whether the given pathname matches members of the given pathname group.
 
-    :param const struct tomoyo_path_info \*pathname:
+    :param pathname:
         The name of pathname.
+    :type pathname: const struct tomoyo_path_info \*
 
-    :param const struct tomoyo_group \*group:
+    :param group:
         Pointer to "struct tomoyo_path_group".
+    :type group: const struct tomoyo_group \*
 
 .. _`tomoyo_path_matches_group.description`:
 
@@ -123,14 +133,17 @@ tomoyo_number_matches_group
 
     Check whether the given number matches members of the given number group.
 
-    :param const unsigned long min:
+    :param min:
         Min number.
+    :type min: const unsigned long
 
-    :param const unsigned long max:
+    :param max:
         Max number.
+    :type max: const unsigned long
 
-    :param const struct tomoyo_group \*group:
+    :param group:
         Pointer to "struct tomoyo_number_group".
+    :type group: const struct tomoyo_group \*
 
 .. _`tomoyo_number_matches_group.description`:
 
@@ -150,14 +163,17 @@ tomoyo_address_matches_group
 
     Check whether the given address matches members of the given address group.
 
-    :param const bool is_ipv6:
+    :param is_ipv6:
         True if \ ``address``\  is an IPv6 address.
+    :type is_ipv6: const bool
 
-    :param const __be32 \*address:
+    :param address:
         An IPv4 or IPv6 address.
+    :type address: const __be32 \*
 
-    :param const struct tomoyo_group \*group:
+    :param group:
         Pointer to "struct tomoyo_address_group".
+    :type group: const struct tomoyo_group \*
 
 .. _`tomoyo_address_matches_group.description`:
 

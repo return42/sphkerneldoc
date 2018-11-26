@@ -10,11 +10,13 @@ test__parse_no_sample_id_all
 
     test parsing with no sample_id_all bit set.
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
 .. _`test__parse_no_sample_id_all.description`:
 

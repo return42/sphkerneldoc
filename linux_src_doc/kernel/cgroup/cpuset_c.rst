@@ -10,14 +10,17 @@ cpuset_for_each_child
 
     traverse online children of a cpuset
 
-    :param  child_cs:
+    :param child_cs:
         loop cursor pointing to the current child
+    :type child_cs: 
 
-    :param  pos_css:
+    :param pos_css:
         used for iteration
+    :type pos_css: 
 
-    :param  parent_cs:
+    :param parent_cs:
         target cpuset to walk children of
+    :type parent_cs: 
 
 .. _`cpuset_for_each_child.description`:
 
@@ -36,14 +39,17 @@ cpuset_for_each_descendant_pre
 
     pre-order walk of a cpuset's descendants
 
-    :param  des_cs:
+    :param des_cs:
         loop cursor pointing to the current descendant
+    :type des_cs: 
 
-    :param  pos_css:
+    :param pos_css:
         used for iteration
+    :type pos_css: 
 
-    :param  root_cs:
+    :param root_cs:
         target cpuset to walk ancestor of
+    :type root_cs: 
 
 .. _`cpuset_for_each_descendant_pre.description`:
 
@@ -64,8 +70,9 @@ alloc_trial_cpuset
 
     allocate a trial cpuset
 
-    :param struct cpuset \*cs:
+    :param cs:
         the cpuset that the trial cpuset duplicates
+    :type cs: struct cpuset \*
 
 .. _`free_trial_cpuset`:
 
@@ -76,8 +83,9 @@ free_trial_cpuset
 
     free the trial cpuset
 
-    :param struct cpuset \*trial:
+    :param trial:
         the trial cpuset to be freed
+    :type trial: struct cpuset \*
 
 .. _`update_tasks_cpumask`:
 
@@ -88,8 +96,9 @@ update_tasks_cpumask
 
     Update the cpumasks of tasks in the cpuset.
 
-    :param struct cpuset \*cs:
+    :param cs:
         the cpuset in which each task's cpus_allowed mask needs to be changed
+    :type cs: struct cpuset \*
 
 .. _`update_tasks_cpumask.description`:
 
@@ -109,14 +118,17 @@ update_cpumask
 
     update the cpus_allowed mask of a cpuset and all tasks in it
 
-    :param struct cpuset \*cs:
+    :param cs:
         the cpuset to consider
+    :type cs: struct cpuset \*
 
-    :param struct cpuset \*trialcs:
+    :param trialcs:
         trial cpuset
+    :type trialcs: struct cpuset \*
 
-    :param const char \*buf:
+    :param buf:
         buffer of cpu numbers written to this cpuset
+    :type buf: const char \*
 
 .. _`update_tasks_nodemask`:
 
@@ -127,8 +139,9 @@ update_tasks_nodemask
 
     Update the nodemasks of tasks in the cpuset.
 
-    :param struct cpuset \*cs:
+    :param cs:
         the cpuset in which each task's mems_allowed mask needs to be changed
+    :type cs: struct cpuset \*
 
 .. _`update_tasks_nodemask.description`:
 
@@ -148,8 +161,9 @@ update_tasks_flags
 
     update the spread flags of tasks in the cpuset.
 
-    :param struct cpuset \*cs:
+    :param cs:
         the cpuset in which each task's spread flags needs to be changed
+    :type cs: struct cpuset \*
 
 .. _`update_tasks_flags.description`:
 
@@ -169,8 +183,9 @@ cpuset_init
 
     initialize cpusets at system boot
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuset_init.description`:
 
@@ -188,8 +203,9 @@ cpuset_hotplug_update_tasks
 
     update tasks in a cpuset for hotunplug
 
-    :param struct cpuset \*cs:
+    :param cs:
         cpuset in interest
+    :type cs: struct cpuset \*
 
 .. _`cpuset_hotplug_update_tasks.description`:
 
@@ -209,8 +225,9 @@ cpuset_hotplug_workfn
 
     handle CPU/memory hotunplug for a cpuset
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`cpuset_hotplug_workfn.description`:
 
@@ -239,8 +256,9 @@ cpuset_init_smp
 
     initialize cpus_allowed
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuset_init_smp.description`:
 
@@ -258,11 +276,13 @@ cpuset_cpus_allowed
 
     return cpus_allowed mask from a tasks cpuset.
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         pointer to task_struct from which to obtain cpuset->cpus_allowed.
+    :type tsk: struct task_struct \*
 
-    :param struct cpumask \*pmask:
+    :param pmask:
         pointer to struct cpumask variable to receive cpus_allowed set.
+    :type pmask: struct cpumask \*
 
 .. _`cpuset_cpus_allowed.description`:
 
@@ -283,8 +303,9 @@ cpuset_mems_allowed
 
     return mems_allowed mask from a tasks cpuset.
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         pointer to task_struct from which to obtain cpuset->mems_allowed.
+    :type tsk: struct task_struct \*
 
 .. _`cpuset_mems_allowed.description`:
 
@@ -305,8 +326,9 @@ cpuset_nodemask_valid_mems_allowed
 
     check nodemask vs. curremt mems_allowed
 
-    :param nodemask_t \*nodemask:
+    :param nodemask:
         the nodemask to be checked
+    :type nodemask: nodemask_t \*
 
 .. _`cpuset_nodemask_valid_mems_allowed.description`:
 
@@ -324,11 +346,13 @@ Are any of the nodes in the nodemask allowed in current->mems_allowed?
 
     Can we allocate on a memory node?
 
-    :param int node:
+    :param node:
         is this an allowed node?
+    :type node: int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags
+    :type gfp_mask: gfp_t
 
 .. _`__cpuset_node_allowed.description`:
 
@@ -384,8 +408,9 @@ cpuset_spread_node
 
     On which node to begin search for a file page \ :c:func:`cpuset_slab_spread_node`\  - On which node to begin search for a slab page
 
-    :param int \*rotor:
+    :param rotor:
         *undescribed*
+    :type rotor: int \*
 
 .. _`cpuset_spread_node.description`:
 
@@ -423,11 +448,13 @@ cpuset_mems_allowed_intersects
 
     Does \ ``tsk1``\ 's mems_allowed intersect \ ``tsk2``\ 's?
 
-    :param const struct task_struct \*tsk1:
+    :param tsk1:
         pointer to task_struct of some task.
+    :type tsk1: const struct task_struct \*
 
-    :param const struct task_struct \*tsk2:
+    :param tsk2:
         pointer to task_struct of some other task.
+    :type tsk2: const struct task_struct \*
 
 .. _`cpuset_mems_allowed_intersects.description`:
 
@@ -448,8 +475,9 @@ cpuset_print_current_mems_allowed
 
     prints current's cpuset and mems_allowed
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuset_print_current_mems_allowed.description`:
 
@@ -468,8 +496,9 @@ mems_allowed to the kernel log.
 
     keep stats of per-cpuset reclaims.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__cpuset_memory_pressure_bump.description`:
 

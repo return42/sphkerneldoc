@@ -142,6 +142,7 @@ Definition
         unsigned universal_planes:1;
         unsigned atomic:1;
         unsigned aspect_ratio_allowed:1;
+        unsigned writeback_connectors:1;
         unsigned is_master:1;
         struct drm_master *master;
         struct pid *pid;
@@ -194,6 +195,10 @@ aspect_ratio_allowed
 
     True, if client can handle picture aspect ratios, and has requested
     to pass this information along with the mode.
+
+writeback_connectors
+
+    True if client understands writeback connectors
 
 is_master
 
@@ -313,8 +318,9 @@ drm_is_primary_client
 
     is this an open file of the primary node
 
-    :param const struct drm_file \*file_priv:
+    :param file_priv:
         DRM file
+    :type file_priv: const struct drm_file \*
 
 .. _`drm_is_primary_client.description`:
 
@@ -336,8 +342,9 @@ drm_is_render_client
 
     is this an open file of the render node
 
-    :param const struct drm_file \*file_priv:
+    :param file_priv:
         DRM file
+    :type file_priv: const struct drm_file \*
 
 .. _`drm_is_render_client.description`:
 

@@ -10,4 +10,5 @@ uapi
     drm/index
     linux/index
     mtd/index
+    scsi/index
     sound/index

@@ -10,8 +10,9 @@ sclp_chp_configure
 
     perform configure channel-path sclp command
 
-    :param struct chp_id chpid:
+    :param chpid:
         channel-path ID
+    :type chpid: struct chp_id
 
 .. _`sclp_chp_configure.description`:
 
@@ -30,8 +31,9 @@ sclp_chp_deconfigure
 
     perform deconfigure channel-path sclp command
 
-    :param struct chp_id chpid:
+    :param chpid:
         channel-path ID
+    :type chpid: struct chp_id
 
 .. _`sclp_chp_deconfigure.description`:
 
@@ -50,8 +52,9 @@ sclp_chp_read_info
 
     perform read channel-path information sclp command
 
-    :param struct sclp_chp_info \*info:
+    :param info:
         resulting channel-path information data
+    :type info: struct sclp_chp_info \*
 
 .. _`sclp_chp_read_info.description`:
 

@@ -10,8 +10,9 @@ ia64_pci_get_legacy_mem
 
     generic legacy mem routine
 
-    :param struct pci_bus \*bus:
+    :param bus:
         bus to get legacy memory base address for
+    :type bus: struct pci_bus \*
 
 .. _`ia64_pci_get_legacy_mem.description`:
 
@@ -35,14 +36,17 @@ pci_mmap_legacy_page_range
 
     map legacy memory space to userland
 
-    :param struct pci_bus \*bus:
+    :param bus:
         bus whose legacy space we're mapping
+    :type bus: struct pci_bus \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vma passed in by mmap
+    :type vma: struct vm_area_struct \*
 
-    :param enum pci_mmap_state mmap_state:
+    :param mmap_state:
         *undescribed*
+    :type mmap_state: enum pci_mmap_state
 
 .. _`pci_mmap_legacy_page_range.description`:
 
@@ -61,17 +65,21 @@ ia64_pci_legacy_read
 
     read from legacy I/O space
 
-    :param struct pci_bus \*bus:
+    :param bus:
         bus to read
+    :type bus: struct pci_bus \*
 
-    :param u16 port:
+    :param port:
         legacy port value
+    :type port: u16
 
-    :param u32 \*val:
+    :param val:
         caller allocated storage for returned value
+    :type val: u32 \*
 
-    :param u8 size:
+    :param size:
         number of bytes to read
+    :type size: u8
 
 .. _`ia64_pci_legacy_read.description`:
 
@@ -93,17 +101,21 @@ ia64_pci_legacy_write
 
     perform a legacy I/O write
 
-    :param struct pci_bus \*bus:
+    :param bus:
         bus pointer
+    :type bus: struct pci_bus \*
 
-    :param u16 port:
+    :param port:
         port to write
+    :type port: u16
 
-    :param u32 val:
+    :param val:
         value to write
+    :type val: u32
 
-    :param u8 size:
+    :param size:
         number of bytes to write from \ ``val``\ 
+    :type size: u8
 
 .. _`ia64_pci_legacy_write.description`:
 
@@ -121,8 +133,9 @@ set_pci_dfl_cacheline_size
 
     determine cacheline size for PCI devices
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`set_pci_dfl_cacheline_size.description`:
 

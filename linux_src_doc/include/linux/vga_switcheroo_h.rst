@@ -226,6 +226,7 @@ Definition
         void (*set_gpu_state)(struct pci_dev *dev, enum vga_switcheroo_state);
         void (*reprobe)(struct pci_dev *dev);
         bool (*can_switch)(struct pci_dev *dev);
+        void (*gpu_bound)(struct pci_dev *dev, enum vga_switcheroo_client_id);
     }
 
 .. _`vga_switcheroo_client_ops.members`:
@@ -248,6 +249,9 @@ can_switch
     Mandatory. The client should return false if a user space process
     has one of its device files open
 
+gpu_bound
+    notify the client id to audio client when the GPU is bound.
+
 .. _`vga_switcheroo_client_ops.description`:
 
 Description
@@ -256,6 +260,7 @@ Description
 Client callbacks. A client can be either a GPU or an audio device on a GPU.
 The \ ``set_gpu_state``\  and \ ``can_switch``\  methods are mandatory, \ ``reprobe``\  may be
 set to NULL. For audio clients, the \ ``reprobe``\  member is bogus.
+OTOH, \ ``gpu_bound``\  is only for audio clients, and not used for GPU clients.
 
 .. This file was automatic generated / don't edit.
 

@@ -82,8 +82,9 @@ hash_futex
 
     Return the hash bucket in the global hash
 
-    :param union futex_key \*key:
+    :param key:
         Pointer to the futex key for which the hash is calculated
+    :type key: union futex_key \*
 
 .. _`hash_futex.description`:
 
@@ -102,11 +103,13 @@ match_futex
 
     Check whether two futex keys are equal
 
-    :param union futex_key \*key1:
+    :param key1:
         Pointer to key1
+    :type key1: union futex_key \*
 
-    :param union futex_key \*key2:
+    :param key2:
         Pointer to key2
+    :type key2: union futex_key \*
 
 .. _`match_futex.description`:
 
@@ -124,18 +127,22 @@ get_futex_key
 
     Get parameters which are the keys for a futex
 
-    :param u32 __user \*uaddr:
+    :param uaddr:
         virtual address of the futex
+    :type uaddr: u32 __user \*
 
-    :param int fshared:
+    :param fshared:
         0 for a PROCESS_PRIVATE futex, 1 for PROCESS_SHARED
+    :type fshared: int
 
-    :param union futex_key \*key:
+    :param key:
         address where result is stored.
+    :type key: union futex_key \*
 
-    :param int rw:
+    :param rw:
         mapping needs to be read/write (values: VERIFY_READ,
         VERIFY_WRITE)
+    :type rw: int
 
 .. _`get_futex_key.return`:
 
@@ -161,8 +168,9 @@ fault_in_user_writeable
 
     Fault in user address and verify RW access
 
-    :param u32 __user \*uaddr:
+    :param uaddr:
         pointer to faulting user space address
+    :type uaddr: u32 __user \*
 
 .. _`fault_in_user_writeable.description`:
 
@@ -186,11 +194,13 @@ futex_top_waiter
 
     Return the highest priority waiter on a futex
 
-    :param struct futex_hash_bucket \*hb:
+    :param hb:
         the hash bucket the futex_q's reside in
+    :type hb: struct futex_hash_bucket \*
 
-    :param union futex_key \*key:
+    :param key:
         the futex key (to distinguish it from other futex futex_q's)
+    :type key: union futex_key \*
 
 .. _`futex_top_waiter.description`:
 
@@ -208,25 +218,31 @@ futex_lock_pi_atomic
 
     Atomic work required to acquire a pi aware futex
 
-    :param u32 __user \*uaddr:
+    :param uaddr:
         the pi futex user address
+    :type uaddr: u32 __user \*
 
-    :param struct futex_hash_bucket \*hb:
+    :param hb:
         the pi futex hash bucket
+    :type hb: struct futex_hash_bucket \*
 
-    :param union futex_key \*key:
+    :param key:
         the futex key associated with uaddr and hb
+    :type key: union futex_key \*
 
-    :param struct futex_pi_state \*\*ps:
+    :param ps:
         the pi_state pointer where we store the result of the
         lookup
+    :type ps: struct futex_pi_state \*\*
 
-    :param struct task_struct \*task:
+    :param task:
         the task to perform the atomic lock work for.  This will
         be "current" except in the case of requeue pi.
+    :type task: struct task_struct \*
 
-    :param int set_waiters:
+    :param set_waiters:
         force setting the FUTEX_WAITERS bit (1) or not (0)
+    :type set_waiters: int
 
 .. _`futex_lock_pi_atomic.return`:
 
@@ -248,8 +264,9 @@ __unqueue_futex
 
     Remove the futex_q from its futex_hash_bucket
 
-    :param struct futex_q \*q:
+    :param q:
         The futex_q to unqueue
+    :type q: struct futex_q \*
 
 .. _`__unqueue_futex.description`:
 
@@ -267,17 +284,21 @@ requeue_futex
 
     Requeue a futex_q from one hb to another
 
-    :param struct futex_q \*q:
+    :param q:
         the futex_q to requeue
+    :type q: struct futex_q \*
 
-    :param struct futex_hash_bucket \*hb1:
+    :param hb1:
         the source hash_bucket
+    :type hb1: struct futex_hash_bucket \*
 
-    :param struct futex_hash_bucket \*hb2:
+    :param hb2:
         the target hash_bucket
+    :type hb2: struct futex_hash_bucket \*
 
-    :param union futex_key \*key2:
+    :param key2:
         the new key for the requeued futex_q
+    :type key2: union futex_key \*
 
 .. _`requeue_pi_wake_futex`:
 
@@ -288,14 +309,17 @@ requeue_pi_wake_futex
 
     Wake a task that acquired the lock during requeue
 
-    :param struct futex_q \*q:
+    :param q:
         the futex_q
+    :type q: struct futex_q \*
 
-    :param union futex_key \*key:
+    :param key:
         the key of the requeue target futex
+    :type key: union futex_key \*
 
-    :param struct futex_hash_bucket \*hb:
+    :param hb:
         the hash_bucket of the requeue target futex
+    :type hb: struct futex_hash_bucket \*
 
 .. _`requeue_pi_wake_futex.description`:
 
@@ -319,26 +343,33 @@ futex_proxy_trylock_atomic
 
     Attempt an atomic lock for the top waiter
 
-    :param u32 __user \*pifutex:
+    :param pifutex:
         the user address of the to futex
+    :type pifutex: u32 __user \*
 
-    :param struct futex_hash_bucket \*hb1:
+    :param hb1:
         the from futex hash bucket, must be locked by the caller
+    :type hb1: struct futex_hash_bucket \*
 
-    :param struct futex_hash_bucket \*hb2:
+    :param hb2:
         the to futex hash bucket, must be locked by the caller
+    :type hb2: struct futex_hash_bucket \*
 
-    :param union futex_key \*key1:
+    :param key1:
         the from futex key
+    :type key1: union futex_key \*
 
-    :param union futex_key \*key2:
+    :param key2:
         the to futex key
+    :type key2: union futex_key \*
 
-    :param struct futex_pi_state \*\*ps:
+    :param ps:
         address to store the pi_state pointer
+    :type ps: struct futex_pi_state \*\*
 
-    :param int set_waiters:
+    :param set_waiters:
         force setting the FUTEX_WAITERS bit (1) or not (0)
+    :type set_waiters: int
 
 .. _`futex_proxy_trylock_atomic.description`:
 
@@ -368,27 +399,34 @@ futex_requeue
 
     Requeue waiters from uaddr1 to uaddr2
 
-    :param u32 __user \*uaddr1:
+    :param uaddr1:
         source futex user address
+    :type uaddr1: u32 __user \*
 
-    :param unsigned int flags:
+    :param flags:
         futex flags (FLAGS_SHARED, etc.)
+    :type flags: unsigned int
 
-    :param u32 __user \*uaddr2:
+    :param uaddr2:
         target futex user address
+    :type uaddr2: u32 __user \*
 
-    :param int nr_wake:
+    :param nr_wake:
         number of waiters to wake (must be 1 for requeue_pi)
+    :type nr_wake: int
 
-    :param int nr_requeue:
+    :param nr_requeue:
         number of waiters to requeue (0-INT_MAX)
+    :type nr_requeue: int
 
-    :param u32 \*cmpval:
+    :param cmpval:
         \ ``uaddr1``\  expected value (or \ ``NULL``\ )
+    :type cmpval: u32 \*
 
-    :param int requeue_pi:
+    :param requeue_pi:
         if we are attempting to requeue from a non-pi futex to a
         pi futex (pi to pi requeue is not supported)
+    :type requeue_pi: int
 
 .. _`futex_requeue.description`:
 
@@ -415,11 +453,13 @@ queue_me
 
     Enqueue the futex_q on the futex_hash_bucket
 
-    :param struct futex_q \*q:
+    :param q:
         The futex_q to enqueue
+    :type q: struct futex_q \*
 
-    :param struct futex_hash_bucket \*hb:
+    :param hb:
         The destination hash bucket
+    :type hb: struct futex_hash_bucket \*
 
 .. _`queue_me.description`:
 
@@ -442,8 +482,9 @@ unqueue_me
 
     Remove the futex_q from its futex_hash_bucket
 
-    :param struct futex_q \*q:
+    :param q:
         The futex_q to unqueue
+    :type q: struct futex_q \*
 
 .. _`unqueue_me.description`:
 
@@ -470,14 +511,17 @@ fixup_owner
 
     Post lock pi_state and corner case management
 
-    :param u32 __user \*uaddr:
+    :param uaddr:
         user address of the futex
+    :type uaddr: u32 __user \*
 
-    :param struct futex_q \*q:
+    :param q:
         futex_q (contains pi_state and access to the rt_mutex)
+    :type q: struct futex_q \*
 
-    :param int locked:
+    :param locked:
         if the attempt to take the rt_mutex succeeded (1) or not (0)
+    :type locked: int
 
 .. _`fixup_owner.description`:
 
@@ -506,14 +550,17 @@ futex_wait_queue_me
 
     \ :c:func:`queue_me`\  and wait for wakeup, timeout, or signal
 
-    :param struct futex_hash_bucket \*hb:
+    :param hb:
         the futex hash bucket, must be locked by the caller
+    :type hb: struct futex_hash_bucket \*
 
-    :param struct futex_q \*q:
+    :param q:
         the futex_q to queue up on
+    :type q: struct futex_q \*
 
-    :param struct hrtimer_sleeper \*timeout:
+    :param timeout:
         the prepared hrtimer_sleeper, or null for no timeout
+    :type timeout: struct hrtimer_sleeper \*
 
 .. _`futex_wait_setup`:
 
@@ -524,20 +571,25 @@ futex_wait_setup
 
     Prepare to wait on a futex
 
-    :param u32 __user \*uaddr:
+    :param uaddr:
         the futex userspace address
+    :type uaddr: u32 __user \*
 
-    :param u32 val:
+    :param val:
         the expected value
+    :type val: u32
 
-    :param unsigned int flags:
+    :param flags:
         futex flags (FLAGS_SHARED, etc.)
+    :type flags: unsigned int
 
-    :param struct futex_q \*q:
+    :param q:
         the associated futex_q
+    :type q: struct futex_q \*
 
-    :param struct futex_hash_bucket \*\*hb:
+    :param hb:
         storage for hash_bucket pointer to be returned to caller
+    :type hb: struct futex_hash_bucket \*\*
 
 .. _`futex_wait_setup.description`:
 
@@ -566,17 +618,21 @@ handle_early_requeue_pi_wakeup
 
     Detect early wakeup on the initial futex
 
-    :param struct futex_hash_bucket \*hb:
+    :param hb:
         the hash_bucket futex_q was original enqueued on
+    :type hb: struct futex_hash_bucket \*
 
-    :param struct futex_q \*q:
+    :param q:
         the futex_q woken while waiting to be requeued
+    :type q: struct futex_q \*
 
-    :param union futex_key \*key2:
+    :param key2:
         the futex_key of the requeue target futex
+    :type key2: union futex_key \*
 
-    :param struct hrtimer_sleeper \*timeout:
+    :param timeout:
         the timeout associated with the wait (NULL if none)
+    :type timeout: struct hrtimer_sleeper \*
 
 .. _`handle_early_requeue_pi_wakeup.description`:
 
@@ -605,24 +661,30 @@ futex_wait_requeue_pi
 
     Wait on uaddr and take uaddr2
 
-    :param u32 __user \*uaddr:
+    :param uaddr:
         the futex we initially wait on (non-pi)
+    :type uaddr: u32 __user \*
 
-    :param unsigned int flags:
+    :param flags:
         futex flags (FLAGS_SHARED, FLAGS_CLOCKRT, etc.), they must be
         the same type, no requeueing from private to shared, etc.
+    :type flags: unsigned int
 
-    :param u32 val:
+    :param val:
         the expected value of uaddr
+    :type val: u32
 
-    :param ktime_t \*abs_time:
+    :param abs_time:
         absolute timeout
+    :type abs_time: ktime_t \*
 
-    :param u32 bitset:
+    :param bitset:
         32 bit wakeup bitset set by userspace, defaults to all
+    :type bitset: u32
 
-    :param u32 __user \*uaddr2:
+    :param uaddr2:
         the pi futex we will take prior to returning to user-space
+    :type uaddr2: u32 __user \*
 
 .. _`futex_wait_requeue_pi.description`:
 
@@ -672,11 +734,13 @@ sys_set_robust_list
 
     Set the robust-futex list head of a task
 
-    :param struct robust_list_head __user \*head:
+    :param head:
         pointer to the list-head
+    :type head: struct robust_list_head __user \*
 
-    :param size_t len:
+    :param len:
         length of the list-head, as userspace expects
+    :type len: size_t
 
 .. _`sys_get_robust_list`:
 
@@ -687,14 +751,17 @@ sys_get_robust_list
 
     Get the robust-futex list head of a task
 
-    :param int pid:
+    :param pid:
         pid of the process [zero for current task]
+    :type pid: int
 
-    :param struct robust_list_head __user \* __user \*head_ptr:
+    :param head_ptr:
         pointer to a list-head pointer, the kernel fills it in
+    :type head_ptr: struct robust_list_head __user \* __user \*
 
-    :param size_t __user \*len_ptr:
+    :param len_ptr:
         pointer to a length field, the kernel fills in the header size
+    :type len_ptr: size_t __user \*
 
 .. This file was automatic generated / don't edit.
 

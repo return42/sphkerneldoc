@@ -10,8 +10,9 @@ interrupt_init_v2_hw
 
     to map in all mbigen interrupts, even if they are not used.
 
-    :param struct hisi_hba \*hisi_hba:
+    :param hisi_hba:
         *undescribed*
+    :type hisi_hba: struct hisi_hba \*
 
 .. This file was automatic generated / don't edit.
 

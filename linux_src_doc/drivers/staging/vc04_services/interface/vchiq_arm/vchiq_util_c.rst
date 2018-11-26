@@ -10,8 +10,9 @@ is_pow2
 
     2012 Broadcom. All rights reserved.
 
-    :param int i:
+    :param i:
         *undescribed*
+    :type i: int
 
 .. _`is_pow2.description`:
 

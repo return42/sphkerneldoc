@@ -10,11 +10,13 @@ generic_init_one
 
     called when a PIIX is found
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the generic device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         the matching pci id
+    :type id: const struct pci_device_id \*
 
 .. _`generic_init_one.description`:
 

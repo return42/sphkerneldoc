@@ -10,8 +10,9 @@ kvm_vz_should_use_htimer
 
     Find whether to use the VZ hard guest timer.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_vz_should_use_htimer.return`:
 
@@ -31,14 +32,17 @@ false otherwise.
 
     Restore soft timer state.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u32 compare:
+    :param compare:
         CP0_Compare register value, restored by caller.
+    :type compare: u32
 
-    :param u32 cause:
+    :param cause:
         CP0_Cause register to restore.
+    :type cause: u32
 
 .. _`_kvm_vz_restore_stimer.description`:
 
@@ -57,14 +61,17 @@ later.
 
     Restore hard timer state.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u32 compare:
+    :param compare:
         CP0_Compare register value, restored by caller.
+    :type compare: u32
 
-    :param u32 cause:
+    :param cause:
         CP0_Cause register to restore.
+    :type cause: u32
 
 .. _`_kvm_vz_restore_htimer.description`:
 
@@ -83,8 +90,9 @@ kvm_vz_restore_timer
 
     Restore timer state.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_vz_restore_timer.description`:
 
@@ -102,8 +110,9 @@ kvm_vz_acquire_htimer
 
     Switch to hard timer state.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_vz_acquire_htimer.description`:
 
@@ -124,14 +133,17 @@ disabled by the caller.
 
     Switch to software emulation of guest timer.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u32 \*out_compare:
+    :param out_compare:
         *undescribed*
+    :type out_compare: u32 \*
 
-    :param u32 \*out_cause:
+    :param out_cause:
         *undescribed*
+    :type out_cause: u32 \*
 
 .. _`_kvm_vz_save_htimer.description`:
 
@@ -151,8 +163,9 @@ kvm_vz_save_timer
 
     Save guest timer state.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_vz_save_timer.description`:
 
@@ -171,8 +184,9 @@ kvm_vz_lose_htimer
 
     Ensure hard guest timer is not in use.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_vz_lose_htimer.description`:
 
@@ -191,8 +205,9 @@ is_eva_access
 
     Find whether an instruction is an EVA memory accessor.
 
-    :param union mips_instruction inst:
+    :param inst:
         32-bit instruction encoding.
+    :type inst: union mips_instruction
 
 .. _`is_eva_access.description`:
 
@@ -220,14 +235,17 @@ is_eva_am_mapped
 
     Find whether an access mode is mapped.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         KVM VCPU state.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned int am:
+    :param am:
         3-bit encoded access mode.
+    :type am: unsigned int
 
-    :param bool eu:
+    :param eu:
         Segment becomes unmapped and uncached when Status.ERL=1.
+    :type eu: bool
 
 .. _`is_eva_am_mapped.description`:
 
@@ -254,14 +272,17 @@ kvm_vz_gva_to_gpa
 
     Convert valid GVA to GPA.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         KVM VCPU state.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gva:
+    :param gva:
         Guest virtual address to convert.
+    :type gva: unsigned long
 
-    :param unsigned long \*gpa:
+    :param gpa:
         Output guest physical address.
+    :type gpa: unsigned long \*
 
 .. _`kvm_vz_gva_to_gpa.description`:
 
@@ -288,14 +309,17 @@ kvm_vz_badvaddr_to_gpa
 
     Convert GVA BadVAddr from root exception to GPA.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         KVM VCPU state.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long badvaddr:
+    :param badvaddr:
         Root BadVAddr.
+    :type badvaddr: unsigned long
 
-    :param unsigned long \*gpa:
+    :param gpa:
         Output guest physical address.
+    :type gpa: unsigned long \*
 
 .. _`kvm_vz_badvaddr_to_gpa.description`:
 
@@ -325,8 +349,9 @@ kvm_trap_vz_handle_cop_unusable
 
     Guest used unusable coprocessor.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU context.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_trap_vz_handle_cop_unusable.description`:
 
@@ -345,8 +370,9 @@ kvm_trap_vz_handle_msa_disabled
 
     Guest used MSA while disabled in root.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU context.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_trap_vz_handle_msa_disabled.description`:
 
@@ -365,8 +391,9 @@ kvm_vz_resize_guest_vtlb
 
     Attempt to resize guest VTLB.
 
-    :param unsigned int size:
+    :param size:
         Number of guest VTLB entries (0 < \ ``size``\  <= root VTLB entries).
+    :type size: unsigned int
 
 .. _`kvm_vz_resize_guest_vtlb.description`:
 

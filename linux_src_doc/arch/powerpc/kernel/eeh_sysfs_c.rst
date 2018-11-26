@@ -10,14 +10,17 @@ EEH_SHOW_ATTR
 
     - Create sysfs entry for eeh statistic
 
-    :param  _name:
+    :param _name:
         name of file in sysfs directory
+    :type _name: 
 
-    :param  _memb:
+    :param _memb:
         name of member in struct pci_dn to access
+    :type _memb: 
 
-    :param  _format:
+    :param _format:
         printf format for display
+    :type _format: 
 
 .. _`eeh_show_attr.description`:
 

@@ -10,8 +10,9 @@ waitqueue_active
 
     - locklessly test for waiters on the queue
 
-    :param struct wait_queue_head \*wq_head:
+    :param wq_head:
         the waitqueue to test for waiters
+    :type wq_head: struct wait_queue_head \*
 
 .. _`waitqueue_active.description`:
 
@@ -58,8 +59,9 @@ wq_has_sleeper
 
     check if there are any waiting processes
 
-    :param struct wait_queue_head \*wq_head:
+    :param wq_head:
         wait queue head
+    :type wq_head: struct wait_queue_head \*
 
 .. _`wq_has_sleeper.description`:
 
@@ -79,11 +81,13 @@ wait_event
 
     sleep until a condition gets true
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
 .. _`wait_event.description`:
 
@@ -106,11 +110,13 @@ wait_event_freezable
 
     sleep (or freeze) until a condition gets true
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
 .. _`wait_event_freezable.description`:
 
@@ -133,14 +139,17 @@ wait_event_timeout
 
     sleep until a condition gets true or a timeout elapses
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  timeout:
+    :param timeout:
         timeout, in jiffies
+    :type timeout: 
 
 .. _`wait_event_timeout.description`:
 
@@ -173,17 +182,21 @@ wait_event_cmd
 
     sleep until a condition gets true
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  cmd1:
+    :param cmd1:
         the command will be executed before sleep
+    :type cmd1: 
 
-    :param  cmd2:
+    :param cmd2:
         the command will be executed after sleep
+    :type cmd2: 
 
 .. _`wait_event_cmd.description`:
 
@@ -206,11 +219,13 @@ wait_event_interruptible
 
     sleep until a condition gets true
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
 .. _`wait_event_interruptible.description`:
 
@@ -236,14 +251,17 @@ wait_event_interruptible_timeout
 
     sleep until a condition gets true or a timeout elapses
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  timeout:
+    :param timeout:
         timeout, in jiffies
+    :type timeout: 
 
 .. _`wait_event_interruptible_timeout.description`:
 
@@ -277,14 +295,17 @@ wait_event_hrtimeout
 
     sleep until a condition gets true or a timeout elapses
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  timeout:
+    :param timeout:
         timeout, as a ktime_t
+    :type timeout: 
 
 .. _`wait_event_hrtimeout.description`:
 
@@ -310,14 +331,17 @@ wait_event_interruptible_hrtimeout
 
     sleep until a condition gets true or a timeout elapses
 
-    :param  wq:
+    :param wq:
         the waitqueue to wait on
+    :type wq: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  timeout:
+    :param timeout:
         timeout, as a ktime_t
+    :type timeout: 
 
 .. _`wait_event_interruptible_hrtimeout.description`:
 
@@ -343,11 +367,13 @@ wait_event_idle
 
     wait for a condition without contributing to system load
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
 .. _`wait_event_idle.description`:
 
@@ -370,11 +396,13 @@ wait_event_idle_exclusive
 
     wait for a condition with contributing to system load
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
 .. _`wait_event_idle_exclusive.description`:
 
@@ -401,14 +429,17 @@ wait_event_idle_timeout
 
     sleep without load until a condition becomes true or a timeout elapses
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  timeout:
+    :param timeout:
         timeout, in jiffies
+    :type timeout: 
 
 .. _`wait_event_idle_timeout.description`:
 
@@ -441,14 +472,17 @@ wait_event_idle_exclusive_timeout
 
     sleep without load until a condition becomes true or a timeout elapses
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  timeout:
+    :param timeout:
         timeout, in jiffies
+    :type timeout: 
 
 .. _`wait_event_idle_exclusive_timeout.description`:
 
@@ -485,11 +519,13 @@ wait_event_interruptible_locked
 
     sleep until a condition gets true
 
-    :param  wq:
+    :param wq:
         the waitqueue to wait on
+    :type wq: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
 .. _`wait_event_interruptible_locked.description`:
 
@@ -523,11 +559,13 @@ wait_event_interruptible_locked_irq
 
     sleep until a condition gets true
 
-    :param  wq:
+    :param wq:
         the waitqueue to wait on
+    :type wq: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
 .. _`wait_event_interruptible_locked_irq.description`:
 
@@ -561,11 +599,13 @@ wait_event_interruptible_exclusive_locked
 
     sleep exclusively until a condition gets true
 
-    :param  wq:
+    :param wq:
         the waitqueue to wait on
+    :type wq: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
 .. _`wait_event_interruptible_exclusive_locked.description`:
 
@@ -603,11 +643,13 @@ wait_event_interruptible_exclusive_locked_irq
 
     sleep until a condition gets true
 
-    :param  wq:
+    :param wq:
         the waitqueue to wait on
+    :type wq: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
 .. _`wait_event_interruptible_exclusive_locked_irq.description`:
 
@@ -645,11 +687,13 @@ wait_event_killable
 
     sleep until a condition gets true
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
 .. _`wait_event_killable.description`:
 
@@ -675,14 +719,17 @@ wait_event_killable_timeout
 
     sleep until a condition gets true or a timeout elapses
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  timeout:
+    :param timeout:
         timeout, in jiffies
+    :type timeout: 
 
 .. _`wait_event_killable_timeout.description`:
 
@@ -718,19 +765,23 @@ wait_event_lock_irq_cmd
 
     sleep until a condition gets true. The condition is checked under the lock. This is expected to be called with the lock taken.
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  lock:
+    :param lock:
         a locked spinlock_t, which will be released before cmd
         and \ :c:func:`schedule`\  and reacquired afterwards.
+    :type lock: 
 
-    :param  cmd:
+    :param cmd:
         a command which is invoked outside the critical section before
         sleep
+    :type cmd: 
 
 .. _`wait_event_lock_irq_cmd.description`:
 
@@ -757,15 +808,18 @@ wait_event_lock_irq
 
     sleep until a condition gets true. The condition is checked under the lock. This is expected to be called with the lock taken.
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  lock:
+    :param lock:
         a locked spinlock_t, which will be released before \ :c:func:`schedule`\ 
         and reacquired afterwards.
+    :type lock: 
 
 .. _`wait_event_lock_irq.description`:
 
@@ -791,19 +845,23 @@ wait_event_interruptible_lock_irq_cmd
 
     sleep until a condition gets true. The condition is checked under the lock. This is expected to be called with the lock taken.
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  lock:
+    :param lock:
         a locked spinlock_t, which will be released before cmd and
         \ :c:func:`schedule`\  and reacquired afterwards.
+    :type lock: 
 
-    :param  cmd:
+    :param cmd:
         a command which is invoked outside the critical section before
         sleep
+    :type cmd: 
 
 .. _`wait_event_interruptible_lock_irq_cmd.description`:
 
@@ -833,15 +891,18 @@ wait_event_interruptible_lock_irq
 
     sleep until a condition gets true. The condition is checked under the lock. This is expected to be called with the lock taken.
 
-    :param  wq_head:
+    :param wq_head:
         the waitqueue to wait on
+    :type wq_head: 
 
-    :param  condition:
+    :param condition:
         a C expression for the event to wait for
+    :type condition: 
 
-    :param  lock:
+    :param lock:
         a locked spinlock_t, which will be released before \ :c:func:`schedule`\ 
         and reacquired afterwards.
+    :type lock: 
 
 .. _`wait_event_interruptible_lock_irq.description`:
 

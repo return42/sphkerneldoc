@@ -46,17 +46,21 @@ cvmx_cmd_queue_initialize
 
     allocated and the hardware unit is configured to point to the new command queue.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Hardware command queue to initialize.
+    :type queue_id: cvmx_cmd_queue_id_t
 
-    :param int max_depth:
+    :param max_depth:
         Maximum outstanding commands that can be queued.
+    :type max_depth: int
 
-    :param int fpa_pool:
+    :param fpa_pool:
         FPA pool the command queues should come from.
+    :type fpa_pool: int
 
-    :param int pool_size:
+    :param pool_size:
         Size of each buffer in the FPA pool (bytes)
+    :type pool_size: int
 
 .. _`cvmx_cmd_queue_initialize.description`:
 
@@ -74,8 +78,9 @@ cvmx_cmd_queue_shutdown
 
     hardware connected to the queue must be stopped before this function is called.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Queue to shutdown
+    :type queue_id: cvmx_cmd_queue_id_t
 
 .. _`cvmx_cmd_queue_shutdown.description`:
 
@@ -93,8 +98,9 @@ cvmx_cmd_queue_length
 
     function may be relatively slow for some hardware units.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Hardware command queue to query
+    :type queue_id: cvmx_cmd_queue_id_t
 
 .. _`cvmx_cmd_queue_length.description`:
 
@@ -112,8 +118,9 @@ cvmx_cmd_queue_buffer
 
     function is to allow CVMX routine access t othe low level buffer for initial hardware setup. User applications should not call this function directly.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Command queue to query
+    :type queue_id: cvmx_cmd_queue_id_t
 
 .. _`cvmx_cmd_queue_buffer.description`:
 
@@ -129,8 +136,9 @@ Returns Command buffer or NULL on failure
 
 .. c:function:: int __cvmx_cmd_queue_get_index(cvmx_cmd_queue_id_t queue_id)
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Queue ID to get an index for
+    :type queue_id: cvmx_cmd_queue_id_t
 
 .. _`__cvmx_cmd_queue_get_index.description`:
 
@@ -148,11 +156,13 @@ Returns Index into the state arrays
 
     time as us.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Queue ID to lock
+    :type queue_id: cvmx_cmd_queue_id_t
 
-    :param __cvmx_cmd_queue_state_t \*qptr:
+    :param qptr:
         Pointer to the queue's global state
+    :type qptr: __cvmx_cmd_queue_state_t \*
 
 .. _`__cvmx_cmd_queue_unlock`:
 
@@ -161,8 +171,9 @@ Returns Index into the state arrays
 
 .. c:function:: void __cvmx_cmd_queue_unlock(__cvmx_cmd_queue_state_t *qptr)
 
-    :param __cvmx_cmd_queue_state_t \*qptr:
+    :param qptr:
         Queue to unlock
+    :type qptr: __cvmx_cmd_queue_state_t \*
 
 .. _`__cvmx_cmd_queue_get_state`:
 
@@ -171,8 +182,9 @@ Returns Index into the state arrays
 
 .. c:function:: __cvmx_cmd_queue_state_t *__cvmx_cmd_queue_get_state(cvmx_cmd_queue_id_t queue_id)
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Queue id to get
+    :type queue_id: cvmx_cmd_queue_id_t
 
 .. _`__cvmx_cmd_queue_get_state.description`:
 
@@ -190,19 +202,23 @@ cvmx_cmd_queue_write
 
     This is a generic function; the fixed number of command word functions yield higher performance.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Hardware command queue to write to
+    :type queue_id: cvmx_cmd_queue_id_t
 
-    :param int use_locking:
+    :param use_locking:
         Use internal locking to ensure exclusive access for queue
         updates. If you don't use this locking you must ensure
         exclusivity some other way. Locking is strongly recommended.
+    :type use_locking: int
 
-    :param int cmd_count:
+    :param cmd_count:
         Number of command words to write
+    :type cmd_count: int
 
-    :param uint64_t \*cmds:
+    :param cmds:
         Array of commands to write
+    :type cmds: uint64_t \*
 
 .. _`cvmx_cmd_queue_write.description`:
 
@@ -220,19 +236,23 @@ cvmx_cmd_queue_write2
 
     queue.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Hardware command queue to write to
+    :type queue_id: cvmx_cmd_queue_id_t
 
-    :param int use_locking:
+    :param use_locking:
         Use internal locking to ensure exclusive access for queue
         updates. If you don't use this locking you must ensure
         exclusivity some other way. Locking is strongly recommended.
+    :type use_locking: int
 
-    :param uint64_t cmd1:
+    :param cmd1:
         Command
+    :type cmd1: uint64_t
 
-    :param uint64_t cmd2:
+    :param cmd2:
         Command
+    :type cmd2: uint64_t
 
 .. _`cvmx_cmd_queue_write2.description`:
 
@@ -250,22 +270,27 @@ cvmx_cmd_queue_write3
 
     queue.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Hardware command queue to write to
+    :type queue_id: cvmx_cmd_queue_id_t
 
-    :param int use_locking:
+    :param use_locking:
         Use internal locking to ensure exclusive access for queue
         updates. If you don't use this locking you must ensure
         exclusivity some other way. Locking is strongly recommended.
+    :type use_locking: int
 
-    :param uint64_t cmd1:
+    :param cmd1:
         Command
+    :type cmd1: uint64_t
 
-    :param uint64_t cmd2:
+    :param cmd2:
         Command
+    :type cmd2: uint64_t
 
-    :param uint64_t cmd3:
+    :param cmd3:
         Command
+    :type cmd3: uint64_t
 
 .. _`cvmx_cmd_queue_write3.description`:
 

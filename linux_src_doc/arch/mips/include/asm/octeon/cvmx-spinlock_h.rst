@@ -16,8 +16,9 @@ cvmx_spinlock_init
 
 .. c:function:: void cvmx_spinlock_init(cvmx_spinlock_t *lock)
 
-    :param cvmx_spinlock_t \*lock:
+    :param lock:
         Lock to initialize
+    :type lock: cvmx_spinlock_t \*
 
 .. _`cvmx_spinlock_locked`:
 
@@ -28,9 +29,10 @@ cvmx_spinlock_locked
 
     zero if the spinlock is currently locked
 
-    :param cvmx_spinlock_t \*lock:
+    :param lock:
         Lock to check
         Returns Non-zero if locked
+    :type lock: cvmx_spinlock_t \*
 
 .. _`cvmx_spinlock_unlock`:
 
@@ -39,8 +41,9 @@ cvmx_spinlock_unlock
 
 .. c:function:: void cvmx_spinlock_unlock(cvmx_spinlock_t *lock)
 
-    :param cvmx_spinlock_t \*lock:
+    :param lock:
         pointer to lock structure
+    :type lock: cvmx_spinlock_t \*
 
 .. _`cvmx_spinlock_trylock`:
 
@@ -51,8 +54,9 @@ cvmx_spinlock_trylock
 
     May take some time to acquire the lock even if it is available due to the ll/sc not succeeding.
 
-    :param cvmx_spinlock_t \*lock:
+    :param lock:
         pointer to lock structure
+    :type lock: cvmx_spinlock_t \*
 
 .. _`cvmx_spinlock_trylock.returns-0`:
 
@@ -70,8 +74,9 @@ cvmx_spinlock_lock
 
 .. c:function:: void cvmx_spinlock_lock(cvmx_spinlock_t *lock)
 
-    :param cvmx_spinlock_t \*lock:
+    :param lock:
         pointer to lock structure
+    :type lock: cvmx_spinlock_t \*
 
 .. _`cvmx_spinlock_bit_lock`:
 
@@ -82,8 +87,9 @@ cvmx_spinlock_bit_lock
 
     Preserves the low 31 bits of the 32 bit word used for the lock.
 
-    :param uint32_t \*word:
+    :param word:
         word to lock bit 31 of
+    :type word: uint32_t \*
 
 .. _`cvmx_spinlock_bit_trylock`:
 
@@ -94,8 +100,9 @@ cvmx_spinlock_bit_trylock
 
     Preserves the low 31 bits of the 32 bit word used for the lock.
 
-    :param uint32_t \*word:
+    :param word:
         word to lock bit 31 of
+    :type word: uint32_t \*
 
 .. _`cvmx_spinlock_bit_trylock.returns-0`:
 
@@ -113,8 +120,9 @@ cvmx_spinlock_bit_unlock
 
 .. c:function:: void cvmx_spinlock_bit_unlock(uint32_t *word)
 
-    :param uint32_t \*word:
+    :param word:
         word to unlock bit 31 in
+    :type word: uint32_t \*
 
 .. _`cvmx_spinlock_bit_unlock.description`:
 

@@ -42,8 +42,9 @@ omap_common_suspend_init
 
     Set common suspend routines for OMAP SoCs
 
-    :param void \*pm_suspend:
+    :param pm_suspend:
         function pointer to SoC specific suspend function
+    :type pm_suspend: void \*
 
 .. This file was automatic generated / don't edit.
 

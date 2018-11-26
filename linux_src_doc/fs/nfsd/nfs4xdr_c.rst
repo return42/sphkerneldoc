@@ -10,11 +10,13 @@ svcxdr_tmpalloc
 
     allocate memory to be freed after compound processing
 
-    :param struct nfsd4_compoundargs \*argp:
+    :param argp:
         NFSv4 compound argument structure
+    :type argp: struct nfsd4_compoundargs \*
 
-    :param u32 len:
+    :param len:
         *undescribed*
+    :type len: u32
 
 .. _`svcxdr_tmpalloc.description`:
 
@@ -33,14 +35,17 @@ savemem
 
     duplicate a chunk of memory for later processing
 
-    :param struct nfsd4_compoundargs \*argp:
+    :param argp:
         NFSv4 compound argument structure to be freed with
+    :type argp: struct nfsd4_compoundargs \*
 
-    :param __be32 \*p:
+    :param p:
         pointer to be duplicated
+    :type p: __be32 \*
 
-    :param int nbytes:
+    :param nbytes:
         length to be duplicated
+    :type nbytes: int
 
 .. _`savemem.description`:
 

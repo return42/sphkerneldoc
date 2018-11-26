@@ -89,20 +89,25 @@ collapse_shmem
 
     collapse small tmpfs/shmem pages into huge one.
 
-    :param struct mm_struct \*mm:
+    :param mm:
         *undescribed*
+    :type mm: struct mm_struct \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         *undescribed*
+    :type mapping: struct address_space \*
 
-    :param pgoff_t start:
+    :param start:
         *undescribed*
+    :type start: pgoff_t
 
-    :param struct page \*\*hpage:
+    :param hpage:
         *undescribed*
+    :type hpage: struct page \*\*
 
-    :param int node:
+    :param node:
         *undescribed*
+    :type node: int
 
 .. _`collapse_shmem.description`:
 
@@ -111,17 +116,17 @@ Description
 
 Basic scheme is simple, details are more complex:
 - allocate and freeze a new huge page;
-- scan over radix tree replacing old pages the new one
+- scan page cache replacing old pages with the new one
 + swap in pages if necessary;
 + fill in gaps;
-+ keep old pages around in case if rollback is required;
-- if replacing succeed:
++ keep old pages around in case rollback is required;
+- if replacing succeeds:
 + copy data over;
 + free old pages;
 + unfreeze huge page;
 - if replacing failed;
 + put all pages back and unfreeze them;
-+ restore gaps in the radix-tree;
++ restore gaps in the page cache;
 + free huge page;
 
 .. This file was automatic generated / don't edit.

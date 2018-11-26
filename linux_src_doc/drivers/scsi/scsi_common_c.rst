@@ -10,8 +10,9 @@ scsi_device_type
 
     Return 17-char string indicating device type.
 
-    :param unsigned type:
+    :param type:
         type number to look up
+    :type type: unsigned
 
 .. _`scsilun_to_int`:
 
@@ -22,8 +23,9 @@ scsilun_to_int
 
     convert a scsi_lun to an int
 
-    :param struct scsi_lun \*scsilun:
+    :param scsilun:
         struct scsi_lun to be converted.
+    :type scsilun: struct scsi_lun \*
 
 .. _`scsilun_to_int.description`:
 
@@ -58,11 +60,13 @@ int_to_scsilun
 
     reverts an int into a scsi_lun
 
-    :param u64 lun:
+    :param lun:
         integer to be reverted
+    :type lun: u64
 
-    :param struct scsi_lun \*scsilun:
+    :param scsilun:
         struct scsi_lun to be set.
+    :type scsilun: struct scsi_lun \*
 
 .. _`int_to_scsilun.description`:
 
@@ -90,15 +94,18 @@ scsi_normalize_sense
 
     normalize main elements from either fixed or descriptor sense data format into a common format.
 
-    :param const u8 \*sense_buffer:
+    :param sense_buffer:
         byte array containing sense data returned by device
+    :type sense_buffer: const u8 \*
 
-    :param int sb_len:
+    :param sb_len:
         number of valid bytes in sense_buffer
+    :type sb_len: int
 
-    :param struct scsi_sense_hdr \*sshdr:
+    :param sshdr:
         pointer to instance of structure that common
         elements are written to.
+    :type sshdr: struct scsi_sense_hdr \*
 
 .. _`scsi_normalize_sense.notes`:
 
@@ -127,15 +134,18 @@ scsi_sense_desc_find
 
     search for a given descriptor type in descriptor sense data format.
 
-    :param const u8 \*sense_buffer:
+    :param sense_buffer:
         byte array of descriptor format sense data
+    :type sense_buffer: const u8 \*
 
-    :param int sb_len:
+    :param sb_len:
         number of valid bytes in sense_buffer
+    :type sb_len: int
 
-    :param int desc_type:
+    :param desc_type:
         value of descriptor type to find
         (e.g. 0 -> information)
+    :type desc_type: int
 
 .. _`scsi_sense_desc_find.notes`:
 
@@ -160,21 +170,26 @@ scsi_build_sense_buffer
 
     build sense data in a buffer
 
-    :param int desc:
+    :param desc:
         Sense format (non-zero == descriptor format,
         0 == fixed format)
+    :type desc: int
 
-    :param u8 \*buf:
+    :param buf:
         Where to build sense data
+    :type buf: u8 \*
 
-    :param u8 key:
+    :param key:
         Sense key
+    :type key: u8
 
-    :param u8 asc:
+    :param asc:
         Additional sense code
+    :type asc: u8
 
-    :param u8 ascq:
+    :param ascq:
         Additional sense code qualifier
+    :type ascq: u8
 
 .. _`scsi_set_sense_information`:
 
@@ -185,14 +200,17 @@ scsi_set_sense_information
 
     set the information field in a formatted sense data buffer
 
-    :param u8 \*buf:
+    :param buf:
         Where to build sense data
+    :type buf: u8 \*
 
-    :param int buf_len:
+    :param buf_len:
         buffer length
+    :type buf_len: int
 
-    :param u64 info:
+    :param info:
         64-bit information value to be set
+    :type info: u64
 
 .. _`scsi_set_sense_information.return-value`:
 
@@ -210,20 +228,25 @@ scsi_set_sense_field_pointer
 
     set the field pointer sense key specific information in a formatted sense data buffer
 
-    :param u8 \*buf:
+    :param buf:
         Where to build sense data
+    :type buf: u8 \*
 
-    :param int buf_len:
+    :param buf_len:
         buffer length
+    :type buf_len: int
 
-    :param u16 fp:
+    :param fp:
         field pointer to be set
+    :type fp: u16
 
-    :param u8 bp:
+    :param bp:
         bit pointer to be set
+    :type bp: u8
 
-    :param bool cd:
+    :param cd:
         command/data bit
+    :type cd: bool
 
 .. _`scsi_set_sense_field_pointer.return-value`:
 

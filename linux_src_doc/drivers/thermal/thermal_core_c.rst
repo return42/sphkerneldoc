@@ -10,11 +10,13 @@ bind_previous_governor
 
     bind the previous governor of the thermal zone
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         a valid pointer to a struct thermal_zone_device
+    :type tz: struct thermal_zone_device \*
 
-    :param const char \*failed_gov_name:
+    :param failed_gov_name:
         the name of the governor that failed to register
+    :type failed_gov_name: const char \*
 
 .. _`bind_previous_governor.description`:
 
@@ -33,11 +35,13 @@ thermal_set_governor
 
     Switch to another governor
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         a valid pointer to a struct thermal_zone_device
+    :type tz: struct thermal_zone_device \*
 
-    :param struct thermal_governor \*new_gov:
+    :param new_gov:
         pointer to the new governor
+    :type new_gov: struct thermal_governor \*
 
 .. _`thermal_set_governor.description`:
 
@@ -62,8 +66,9 @@ thermal_emergency_poweroff_func
 
     emergency poweroff work after a known delay
 
-    :param struct work_struct \*work:
+    :param work:
         work_struct associated with the emergency poweroff function
+    :type work: struct work_struct \*
 
 .. _`thermal_emergency_poweroff_func.description`:
 
@@ -82,8 +87,9 @@ thermal_emergency_poweroff
 
     Trigger an emergency system poweroff
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`thermal_emergency_poweroff.description`:
 
@@ -102,11 +108,13 @@ thermal_notify_framework
 
     Sensor drivers use this API to notify framework
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         thermal zone device
+    :type tz: struct thermal_zone_device \*
 
-    :param int trip:
+    :param trip:
         indicates which trip point has been crossed
+    :type trip: int
 
 .. _`thermal_notify_framework.description`:
 
@@ -129,14 +137,17 @@ power_actor_get_max_power
 
     get the maximum power that a cdev can consume
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         pointer to \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\ 
+    :type cdev: struct thermal_cooling_device \*
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         a valid thermal zone device pointer
+    :type tz: struct thermal_zone_device \*
 
-    :param u32 \*max_power:
+    :param max_power:
         pointer in which to store the maximum power
+    :type max_power: u32 \*
 
 .. _`power_actor_get_max_power.description`:
 
@@ -163,14 +174,17 @@ power_actor_get_min_power
 
     get the mainimum power that a cdev can consume
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         pointer to \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\ 
+    :type cdev: struct thermal_cooling_device \*
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         a valid thermal zone device pointer
+    :type tz: struct thermal_zone_device \*
 
-    :param u32 \*min_power:
+    :param min_power:
         pointer in which to store the minimum power
+    :type min_power: u32 \*
 
 .. _`power_actor_get_min_power.description`:
 
@@ -197,14 +211,17 @@ power_actor_set_power
 
     limit the maximum power a cooling device consumes
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         pointer to \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\ 
+    :type cdev: struct thermal_cooling_device \*
 
-    :param struct thermal_instance \*instance:
+    :param instance:
         thermal instance to update
+    :type instance: struct thermal_instance \*
 
-    :param u32 power:
+    :param power:
         the power in milliwatts
+    :type power: u32
 
 .. _`power_actor_set_power.description`:
 
@@ -231,30 +248,36 @@ thermal_zone_bind_cooling_device
 
     bind a cooling device to a thermal zone
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         pointer to struct thermal_zone_device
+    :type tz: struct thermal_zone_device \*
 
-    :param int trip:
+    :param trip:
         indicates which trip point the cooling devices is
         associated with in this thermal zone.
+    :type trip: int
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         pointer to struct thermal_cooling_device
+    :type cdev: struct thermal_cooling_device \*
 
-    :param unsigned long upper:
+    :param upper:
         the Maximum cooling state for this trip point.
         THERMAL_NO_LIMIT means no upper limit,
         and the cooling device can be in max_state.
+    :type upper: unsigned long
 
-    :param unsigned long lower:
+    :param lower:
         the Minimum cooling state can be used for this trip point.
         THERMAL_NO_LIMIT means no lower limit,
         and the cooling device can be in cooling state 0.
+    :type lower: unsigned long
 
-    :param unsigned int weight:
+    :param weight:
         The weight of the cooling device to be bound to the
         thermal zone. Use THERMAL_WEIGHT_DEFAULT for the
         default value
+    :type weight: unsigned int
 
 .. _`thermal_zone_bind_cooling_device.description`:
 
@@ -281,15 +304,18 @@ thermal_zone_unbind_cooling_device
 
     unbind a cooling device from a thermal zone.
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         pointer to a struct thermal_zone_device.
+    :type tz: struct thermal_zone_device \*
 
-    :param int trip:
+    :param trip:
         indicates which trip point the cooling devices is
         associated with in this thermal zone.
+    :type trip: int
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         pointer to a struct thermal_cooling_device.
+    :type cdev: struct thermal_cooling_device \*
 
 .. _`thermal_zone_unbind_cooling_device.description`:
 
@@ -316,17 +342,21 @@ Return
 
     register a new thermal cooling device
 
-    :param struct device_node \*np:
+    :param np:
         a pointer to a device tree node.
+    :type np: struct device_node \*
 
-    :param char \*type:
+    :param type:
         the thermal cooling device type.
+    :type type: char \*
 
-    :param void \*devdata:
+    :param devdata:
         device private data.
+    :type devdata: void \*
 
-    :param const struct thermal_cooling_device_ops \*ops:
+    :param ops:
         standard thermal cooling devices callbacks.
+    :type ops: const struct thermal_cooling_device_ops \*
 
 .. _`__thermal_cooling_device_register.description`:
 
@@ -356,14 +386,17 @@ thermal_cooling_device_register
 
     register a new thermal cooling device
 
-    :param char \*type:
+    :param type:
         the thermal cooling device type.
+    :type type: char \*
 
-    :param void \*devdata:
+    :param devdata:
         device private data.
+    :type devdata: void \*
 
-    :param const struct thermal_cooling_device_ops \*ops:
+    :param ops:
         standard thermal cooling devices callbacks.
+    :type ops: const struct thermal_cooling_device_ops \*
 
 .. _`thermal_cooling_device_register.description`:
 
@@ -391,17 +424,21 @@ thermal_of_cooling_device_register
 
     register an OF thermal cooling device
 
-    :param struct device_node \*np:
+    :param np:
         a pointer to a device tree node.
+    :type np: struct device_node \*
 
-    :param char \*type:
+    :param type:
         the thermal cooling device type.
+    :type type: char \*
 
-    :param void \*devdata:
+    :param devdata:
         device private data.
+    :type devdata: void \*
 
-    :param const struct thermal_cooling_device_ops \*ops:
+    :param ops:
         standard thermal cooling devices callbacks.
+    :type ops: const struct thermal_cooling_device_ops \*
 
 .. _`thermal_of_cooling_device_register.description`:
 
@@ -430,8 +467,9 @@ thermal_cooling_device_unregister
 
     removes a thermal cooling device
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         the thermal cooling device to remove.
+    :type cdev: struct thermal_cooling_device \*
 
 .. _`thermal_cooling_device_unregister.description`:
 
@@ -450,32 +488,40 @@ thermal_zone_device_register
 
     register a new thermal zone device
 
-    :param const char \*type:
+    :param type:
         the thermal zone device type
+    :type type: const char \*
 
-    :param int trips:
+    :param trips:
         the number of trip points the thermal zone support
+    :type trips: int
 
-    :param int mask:
+    :param mask:
         a bit string indicating the writeablility of trip points
+    :type mask: int
 
-    :param void \*devdata:
+    :param devdata:
         private device data
+    :type devdata: void \*
 
-    :param struct thermal_zone_device_ops \*ops:
+    :param ops:
         standard thermal zone device callbacks
+    :type ops: struct thermal_zone_device_ops \*
 
-    :param struct thermal_zone_params \*tzp:
+    :param tzp:
         thermal zone platform parameters
+    :type tzp: struct thermal_zone_params \*
 
-    :param int passive_delay:
+    :param passive_delay:
         number of milliseconds to wait between polls when
         performing passive cooling
+    :type passive_delay: int
 
-    :param int polling_delay:
+    :param polling_delay:
         number of milliseconds to wait between polls when checking
         whether trip points have been crossed (0 for interrupt
         driven systems)
+    :type polling_delay: int
 
 .. _`thermal_zone_device_register.description`:
 
@@ -506,8 +552,9 @@ thermal_zone_device_unregister
 
     removes the registered thermal zone device
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         the thermal zone device to remove
+    :type tz: struct thermal_zone_device \*
 
 .. _`thermal_zone_get_zone_by_name`:
 
@@ -518,8 +565,9 @@ thermal_zone_get_zone_by_name
 
     search for a zone and returns its ref
 
-    :param const char \*name:
+    :param name:
         thermal zone name to fetch the temperature
+    :type name: const char \*
 
 .. _`thermal_zone_get_zone_by_name.description`:
 

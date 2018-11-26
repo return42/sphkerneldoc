@@ -8,8 +8,9 @@ vfio_register_iommu_driver
 
 .. c:function:: int vfio_register_iommu_driver(const struct vfio_iommu_driver_ops *ops)
 
-    :param const struct vfio_iommu_driver_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: const struct vfio_iommu_driver_ops \*
 
 .. _`vfio_alloc_group_minor`:
 
@@ -20,8 +21,9 @@ vfio_alloc_group_minor
 
     both called with vfio.group_lock held
 
-    :param struct vfio_group \*group:
+    :param group:
         *undescribed*
+    :type group: struct vfio_group \*
 
 .. _`vfio_container_get`:
 
@@ -32,8 +34,9 @@ vfio_container_get
 
     containers are created when /dev/vfio/vfio is opened, but their lifecycle extends until the last user is done, so it's freed via kref.  Must support container/group/device being closed in any order.
 
-    :param struct vfio_container \*container:
+    :param container:
         *undescribed*
+    :type container: struct vfio_container \*
 
 .. _`vfio_create_group`:
 
@@ -44,8 +47,9 @@ vfio_create_group
 
     create, release, get, put, search
 
-    :param struct iommu_group \*iommu_group:
+    :param iommu_group:
         *undescribed*
+    :type iommu_group: struct iommu_group \*
 
 .. _`vfio_group_create_device`:
 
@@ -56,17 +60,21 @@ vfio_group_create_device
 
     create, release, get, put, search
 
-    :param struct vfio_group \*group:
+    :param group:
         *undescribed*
+    :type group: struct vfio_group \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param const struct vfio_device_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: const struct vfio_device_ops \*
 
-    :param void \*device_data:
+    :param device_data:
         *undescribed*
+    :type device_data: void \*
 
 .. _`vfio_group_nb_add_dev`:
 
@@ -75,11 +83,13 @@ vfio_group_nb_add_dev
 
 .. c:function:: int vfio_group_nb_add_dev(struct vfio_group *group, struct device *dev)
 
-    :param struct vfio_group \*group:
+    :param group:
         *undescribed*
+    :type group: struct vfio_group \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`vfio_add_group_dev`:
 
@@ -88,14 +98,17 @@ vfio_add_group_dev
 
 .. c:function:: int vfio_add_group_dev(struct device *dev, const struct vfio_device_ops *ops, void *device_data)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param const struct vfio_device_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: const struct vfio_device_ops \*
 
-    :param void \*device_data:
+    :param device_data:
         *undescribed*
+    :type device_data: void \*
 
 .. _`vfio_device_get_from_dev`:
 
@@ -106,8 +119,9 @@ vfio_device_get_from_dev
 
     caller thinks they own the device, they could be racing with a release call path, so we can't trust drvdata for the shortcut. Go the long way around, from the iommu_group to the vfio_group to the vfio_device.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`vfio_ioctl_check_extension`:
 
@@ -116,11 +130,13 @@ vfio_ioctl_check_extension
 
 .. c:function:: long vfio_ioctl_check_extension(struct vfio_container *container, unsigned long arg)
 
-    :param struct vfio_container \*container:
+    :param container:
         *undescribed*
+    :type container: struct vfio_container \*
 
-    :param unsigned long arg:
+    :param arg:
         *undescribed*
+    :type arg: unsigned long
 
 .. _`__vfio_group_unset_container`:
 
@@ -129,8 +145,9 @@ vfio_ioctl_check_extension
 
 .. c:function:: void __vfio_group_unset_container(struct vfio_group *group)
 
-    :param struct vfio_group \*group:
+    :param group:
         *undescribed*
+    :type group: struct vfio_group \*
 
 .. _`vfio_device_fops_release`:
 
@@ -139,11 +156,13 @@ vfio_device_fops_release
 
 .. c:function:: int vfio_device_fops_release(struct inode *inode, struct file *filep)
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*filep:
+    :param filep:
         *undescribed*
+    :type filep: struct file \*
 
 .. _`vfio_group_get_external_user`:
 
@@ -152,8 +171,9 @@ vfio_group_get_external_user
 
 .. c:function:: struct vfio_group *vfio_group_get_external_user(struct file *filep)
 
-    :param struct file \*filep:
+    :param filep:
         *undescribed*
+    :type filep: struct file \*
 
 .. _`vfio_group_get_external_user.the-protocol-includes`:
 
@@ -197,17 +217,21 @@ vfio_info_cap_add
 
     module support
 
-    :param struct vfio_info_cap \*caps:
+    :param caps:
         *undescribed*
+    :type caps: struct vfio_info_cap \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param u16 id:
+    :param id:
         *undescribed*
+    :type id: u16
 
-    :param u16 version:
+    :param version:
         *undescribed*
+    :type version: u16
 
 .. _`vfio_devnode`:
 
@@ -216,11 +240,13 @@ vfio_devnode
 
 .. c:function:: char *vfio_devnode(struct device *dev, umode_t *mode)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param umode_t \*mode:
+    :param mode:
         *undescribed*
+    :type mode: umode_t \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,8 +8,9 @@ rsi_determine_min_weight_queue
 
 .. c:function:: u8 rsi_determine_min_weight_queue(struct rsi_common *common)
 
-    :param struct rsi_common \*common:
+    :param common:
         *undescribed*
+    :type common: struct rsi_common \*
 
 .. _`rsi_determine_min_weight_queue.description`:
 
@@ -37,8 +38,9 @@ rsi_recalculate_weights
 
     This function recalculates the weights corresponding to each queue.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_recalculate_weights.return`:
 
@@ -56,11 +58,13 @@ rsi_get_num_pkts_dequeue
 
     This function determines the number of packets to be dequeued based on the number of bytes calculated using txop.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u8 q_num:
+    :param q_num:
         the queue from which pkts have to be dequeued
+    :type q_num: u8
 
 .. _`rsi_get_num_pkts_dequeue.return`:
 
@@ -78,8 +82,9 @@ rsi_core_determine_hal_queue
 
     This function determines the queue from which packet has to be dequeued.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_core_determine_hal_queue.return`:
 
@@ -97,11 +102,13 @@ rsi_core_queue_pkt
 
     This functions enqueues the packet to the queue specified by the queue number.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Pointer to the socket buffer structure.
+    :type skb: struct sk_buff \*
 
 .. _`rsi_core_queue_pkt.return`:
 
@@ -119,11 +126,13 @@ rsi_core_dequeue_pkt
 
     This functions dequeues the packet from the queue specified by the queue number.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u8 q_num:
+    :param q_num:
         Queue number.
+    :type q_num: u8
 
 .. _`rsi_core_dequeue_pkt.return`:
 
@@ -141,8 +150,9 @@ rsi_core_qos_processor
 
     This function is used to determine the wmm queue based on the backoff procedure. Data packets are dequeued from the selected hal queue and sent to the below layers.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_core_qos_processor.return`:
 
@@ -160,11 +170,13 @@ rsi_core_xmit
 
     This function transmits the packets received from mac80211
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Pointer to the socket buffer structure.
+    :type skb: struct sk_buff \*
 
 .. _`rsi_core_xmit.return`:
 

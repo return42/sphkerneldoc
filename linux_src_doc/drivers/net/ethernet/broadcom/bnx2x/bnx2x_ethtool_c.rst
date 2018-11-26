@@ -10,14 +10,17 @@ bnx2x_read_pages_regs
 
     read "paged" registers
 
-    :param struct bnx2x \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bnx2x \*
 
-    :param u32 \*p:
+    :param p:
         *undescribed*
+    :type p: u32 \*
 
-    :param u32 preset:
+    :param preset:
         *undescribed*
+    :type preset: u32
 
 .. _`bnx2x_read_pages_regs.description`:
 
@@ -41,11 +44,13 @@ bnx2x_get_channels
 
     gets the number of RSS queues.
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param struct ethtool_channels \*channels:
+    :param channels:
         returns the number of max / current queues
+    :type channels: struct ethtool_channels \*
 
 .. _`bnx2x_change_num_queues`:
 
@@ -56,11 +61,13 @@ bnx2x_change_num_queues
 
     change the number of RSS queues.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         bnx2x private structure
+    :type bp: struct bnx2x \*
 
-    :param int num_rss:
+    :param num_rss:
         *undescribed*
+    :type num_rss: int
 
 .. _`bnx2x_change_num_queues.description`:
 
@@ -79,11 +86,13 @@ bnx2x_set_channels
 
     sets the number of RSS queues.
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param struct ethtool_channels \*channels:
+    :param channels:
         includes the number of queues requested
+    :type channels: struct ethtool_channels \*
 
 .. This file was automatic generated / don't edit.
 

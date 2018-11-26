@@ -1,25 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/powerpc/include/asm/atomic.h
 
-.. _`__atomic_add_unless`:
+.. _`atomic_fetch_add_unless`:
 
-\__atomic_add_unless
-====================
+atomic_fetch_add_unless
+=======================
 
-.. c:function:: int __atomic_add_unless(atomic_t *v, int a, int u)
+.. c:function:: int atomic_fetch_add_unless(atomic_t *v, int a, int u)
 
     add unless the number is a given value
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
-    :param int a:
+    :param a:
         the amount to add to v...
+    :type a: int
 
-    :param int u:
+    :param u:
         ...unless v is equal to u.
+    :type u: int
 
-.. _`__atomic_add_unless.description`:
+.. _`atomic_fetch_add_unless.description`:
 
 Description
 -----------
@@ -36,8 +39,9 @@ atomic_inc_not_zero
 
     increment unless the number is zero
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`atomic_inc_not_zero.description`:
 
@@ -47,25 +51,28 @@ Description
 Atomically increments \ ``v``\  by 1, so long as \ ``v``\  is non-zero.
 Returns non-zero if \ ``v``\  was non-zero, and zero otherwise.
 
-.. _`atomic64_add_unless`:
+.. _`atomic64_fetch_add_unless`:
 
-atomic64_add_unless
-===================
+atomic64_fetch_add_unless
+=========================
 
-.. c:function:: int atomic64_add_unless(atomic64_t *v, long a, long u)
+.. c:function:: long atomic64_fetch_add_unless(atomic64_t *v, long a, long u)
 
     add unless the number is a given value
 
-    :param atomic64_t \*v:
+    :param v:
         pointer of type atomic64_t
+    :type v: atomic64_t \*
 
-    :param long a:
+    :param a:
         the amount to add to v...
+    :type a: long
 
-    :param long u:
+    :param u:
         ...unless v is equal to u.
+    :type u: long
 
-.. _`atomic64_add_unless.description`:
+.. _`atomic64_fetch_add_unless.description`:
 
 Description
 -----------
@@ -82,8 +89,9 @@ atomic64_inc_not_zero
 
     increment unless the number is zero
 
-    :param atomic64_t \*v:
+    :param v:
         pointer of type atomic64_t
+    :type v: atomic64_t \*
 
 .. _`atomic64_inc_not_zero.description`:
 

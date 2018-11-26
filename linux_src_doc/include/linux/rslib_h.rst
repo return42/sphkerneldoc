@@ -118,23 +118,28 @@ init_rs
 
     Create a RS control struct and initialize it
 
-    :param int symsize:
+    :param symsize:
         the symbol size (number of bits)
+    :type symsize: int
 
-    :param int gfpoly:
+    :param gfpoly:
         the extended Galois field generator polynomial coefficients,
         with the 0th coefficient in the low order bit. The polynomial
         must be primitive;
+    :type gfpoly: int
 
-    :param int fcr:
+    :param fcr:
         the first consecutive root of the rs code generator polynomial
         in index form
+    :type fcr: int
 
-    :param int prim:
+    :param prim:
         primitive element to generate polynomial roots
+    :type prim: int
 
-    :param int nroots:
+    :param nroots:
         RS code generator polynomial degree (number of roots)
+    :type nroots: int
 
 .. _`init_rs.description`:
 

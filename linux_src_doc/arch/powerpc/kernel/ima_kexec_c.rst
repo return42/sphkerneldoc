@@ -10,11 +10,13 @@ ima_get_kexec_buffer
 
     get IMA buffer from the previous kernel
 
-    :param void \*\*addr:
+    :param addr:
         On successful return, set to point to the buffer contents.
+    :type addr: void \*\*
 
-    :param size_t \*size:
+    :param size:
         On successful return, set to the buffer size.
+    :type size: size_t \*
 
 .. _`ima_get_kexec_buffer.return`:
 
@@ -32,8 +34,9 @@ ima_free_kexec_buffer
 
     free memory used by the IMA buffer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`remove_ima_buffer`:
 
@@ -44,11 +47,13 @@ remove_ima_buffer
 
     remove the IMA buffer property and reservation from \ ``fdt``\ 
 
-    :param void \*fdt:
+    :param fdt:
         *undescribed*
+    :type fdt: void \*
 
-    :param int chosen_node:
+    :param chosen_node:
         *undescribed*
+    :type chosen_node: int
 
 .. _`remove_ima_buffer.description`:
 
@@ -67,14 +72,17 @@ arch_ima_add_kexec_buffer
 
     do arch-specific steps to add the IMA buffer
 
-    :param struct kimage \*image:
+    :param image:
         *undescribed*
+    :type image: struct kimage \*
 
-    :param unsigned long load_addr:
+    :param load_addr:
         *undescribed*
+    :type load_addr: unsigned long
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`arch_ima_add_kexec_buffer.description`:
 
@@ -100,14 +108,17 @@ setup_ima_buffer
 
     add IMA buffer information to the fdt
 
-    :param const struct kimage \*image:
+    :param image:
         kexec image being loaded.
+    :type image: const struct kimage \*
 
-    :param void \*fdt:
+    :param fdt:
         Flattened device tree for the next kernel.
+    :type fdt: void \*
 
-    :param int chosen_node:
+    :param chosen_node:
         Offset to the chosen node.
+    :type chosen_node: int
 
 .. _`setup_ima_buffer.return`:
 

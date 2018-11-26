@@ -222,8 +222,9 @@ binder_alloc_get_free_async_space
 
     get free space available for async
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         binder_alloc for this proc
+    :type alloc: struct binder_alloc \*
 
 .. _`binder_alloc_get_free_async_space.return`:
 
@@ -241,8 +242,9 @@ binder_alloc_get_user_buffer_offset
 
     get offset between kernel/user addrs
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         binder_alloc for this proc
+    :type alloc: struct binder_alloc \*
 
 .. _`binder_alloc_get_user_buffer_offset.return`:
 

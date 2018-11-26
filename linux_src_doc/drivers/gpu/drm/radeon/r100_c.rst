@@ -10,11 +10,13 @@ r100_wait_for_vblank
 
     vblank wait asic callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int crtc:
+    :param crtc:
         crtc to wait for vblank on
+    :type crtc: int
 
 .. _`r100_wait_for_vblank.description`:
 
@@ -32,17 +34,21 @@ r100_page_flip
 
     pageflip callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int crtc_id:
+    :param crtc_id:
         crtc to cleanup pageflip on
+    :type crtc_id: int
 
-    :param u64 crtc_base:
+    :param crtc_base:
         new address of the crtc (GPU MC address)
+    :type crtc_base: u64
 
-    :param bool async:
+    :param async:
         *undescribed*
+    :type async: bool
 
 .. _`r100_page_flip.description`:
 
@@ -63,11 +69,13 @@ r100_page_flip_pending
 
     check if page flip is still pending
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int crtc_id:
+    :param crtc_id:
         crtc to check
+    :type crtc_id: int
 
 .. _`r100_page_flip_pending.description`:
 
@@ -86,8 +94,9 @@ r100_pm_get_dynpm_state
 
     look up dynpm power state callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r100_pm_get_dynpm_state.description`:
 
@@ -107,8 +116,9 @@ r100_pm_init_profile
 
     Initialize power profiles callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r100_pm_init_profile.description`:
 
@@ -128,8 +138,9 @@ r100_pm_misc
 
     set additional pm hw parameters callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r100_pm_misc.description`:
 
@@ -148,8 +159,9 @@ r100_pm_prepare
 
     pre-power state change callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r100_pm_prepare.description`:
 
@@ -167,8 +179,9 @@ r100_pm_finish
 
     post-power state change callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r100_pm_finish.description`:
 
@@ -186,8 +199,9 @@ r100_gui_idle
 
     gui idle callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r100_gui_idle.description`:
 
@@ -206,11 +220,13 @@ r100_hpd_sense
 
     hpd sense callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param enum radeon_hpd_id hpd:
+    :param hpd:
         hpd (hotplug detect) pin
+    :type hpd: enum radeon_hpd_id
 
 .. _`r100_hpd_sense.description`:
 
@@ -229,11 +245,13 @@ r100_hpd_set_polarity
 
     hpd set polarity callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param enum radeon_hpd_id hpd:
+    :param hpd:
         hpd (hotplug detect) pin
+    :type hpd: enum radeon_hpd_id
 
 .. _`r100_hpd_set_polarity.description`:
 
@@ -251,8 +269,9 @@ r100_hpd_init
 
     hpd setup callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r100_hpd_init.description`:
 
@@ -271,8 +290,9 @@ r100_hpd_fini
 
     hpd tear down callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`r100_hpd_fini.description`:
 
@@ -291,11 +311,13 @@ r100_ring_hdp_flush
 
     flush Host Data Path via the ring buffer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct radeon_ring \*
 
 .. _`r100_ring_hdp_flush.rdev`:
 
@@ -320,8 +342,9 @@ r100_cs_packet_parse_vline
 
     parse userspace VLINE packet
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         *undescribed*
+    :type p: struct radeon_cs_parser \*
 
 .. _`r100_cs_packet_parse_vline.description`:
 

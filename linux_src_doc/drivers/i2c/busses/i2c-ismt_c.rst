@@ -10,11 +10,13 @@
 
     dump the contents of a specific descriptor
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param const struct ismt_desc \*desc:
+    :param desc:
         *undescribed*
+    :type desc: const struct ismt_desc \*
 
 .. _`ismt_desc_dump`:
 
@@ -25,8 +27,9 @@ ismt_desc_dump
 
     dump the contents of a descriptor for debug purposes
 
-    :param struct ismt_priv \*priv:
+    :param priv:
         iSMT private data
+    :type priv: struct ismt_priv \*
 
 .. _`ismt_gen_reg_dump`:
 
@@ -37,8 +40,9 @@ ismt_gen_reg_dump
 
     dump the iSMT General Registers
 
-    :param struct ismt_priv \*priv:
+    :param priv:
         iSMT private data
+    :type priv: struct ismt_priv \*
 
 .. _`ismt_mstr_reg_dump`:
 
@@ -49,8 +53,9 @@ ismt_mstr_reg_dump
 
     dump the iSMT Master Registers
 
-    :param struct ismt_priv \*priv:
+    :param priv:
         iSMT private data
+    :type priv: struct ismt_priv \*
 
 .. _`ismt_submit_desc`:
 
@@ -61,8 +66,9 @@ ismt_submit_desc
 
     add a descriptor to the ring
 
-    :param struct ismt_priv \*priv:
+    :param priv:
         iSMT private data
+    :type priv: struct ismt_priv \*
 
 .. _`ismt_process_desc`:
 
@@ -73,20 +79,25 @@ ismt_process_desc
 
     handle the completion of the descriptor
 
-    :param const struct ismt_desc \*desc:
+    :param desc:
         the iSMT hardware descriptor
+    :type desc: const struct ismt_desc \*
 
-    :param union i2c_smbus_data \*data:
+    :param data:
         data buffer from the upper layer
+    :type data: union i2c_smbus_data \*
 
-    :param struct ismt_priv \*priv:
+    :param priv:
         ismt_priv struct holding our dma buffer
+    :type priv: struct ismt_priv \*
 
-    :param int size:
+    :param size:
         SMBus transaction type
+    :type size: int
 
-    :param char read_write:
+    :param read_write:
         flag to indicate if this is a read or write
+    :type read_write: char
 
 .. _`ismt_access`:
 
@@ -97,26 +108,33 @@ ismt_access
 
     process an SMBus command
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         the i2c host adapter
+    :type adap: struct i2c_adapter \*
 
-    :param u16 addr:
+    :param addr:
         address of the i2c/SMBus target
+    :type addr: u16
 
-    :param unsigned short flags:
+    :param flags:
         command options
+    :type flags: unsigned short
 
-    :param char read_write:
+    :param read_write:
         read from or write to device
+    :type read_write: char
 
-    :param u8 command:
+    :param command:
         the i2c/SMBus command to issue
+    :type command: u8
 
-    :param int size:
+    :param size:
         SMBus transaction type
+    :type size: int
 
-    :param union i2c_smbus_data \*data:
+    :param data:
         read/write data buffer
+    :type data: union i2c_smbus_data \*
 
 .. _`ismt_func`:
 
@@ -127,8 +145,9 @@ ismt_func
 
     report which i2c commands are supported by this adapter
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         the i2c host adapter
+    :type adap: struct i2c_adapter \*
 
 .. _`ismt_handle_isr`:
 
@@ -139,8 +158,9 @@ ismt_handle_isr
 
     interrupt handler bottom half
 
-    :param struct ismt_priv \*priv:
+    :param priv:
         iSMT private data
+    :type priv: struct ismt_priv \*
 
 .. _`ismt_do_interrupt`:
 
@@ -151,11 +171,13 @@ ismt_do_interrupt
 
     IRQ interrupt handler
 
-    :param int vec:
+    :param vec:
         interrupt vector
+    :type vec: int
 
-    :param void \*data:
+    :param data:
         iSMT private data
+    :type data: void \*
 
 .. _`ismt_do_msi_interrupt`:
 
@@ -166,11 +188,13 @@ ismt_do_msi_interrupt
 
     MSI interrupt handler
 
-    :param int vec:
+    :param vec:
         interrupt vector
+    :type vec: int
 
-    :param void \*data:
+    :param data:
         iSMT private data
+    :type data: void \*
 
 .. _`ismt_hw_init`:
 
@@ -181,8 +205,9 @@ ismt_hw_init
 
     initialize the iSMT hardware
 
-    :param struct ismt_priv \*priv:
+    :param priv:
         iSMT private data
+    :type priv: struct ismt_priv \*
 
 .. _`ismt_dev_init`:
 
@@ -193,8 +218,9 @@ ismt_dev_init
 
     initialize the iSMT data structures
 
-    :param struct ismt_priv \*priv:
+    :param priv:
         iSMT private data
+    :type priv: struct ismt_priv \*
 
 .. _`ismt_int_init`:
 
@@ -205,8 +231,9 @@ ismt_int_init
 
     initialize interrupts
 
-    :param struct ismt_priv \*priv:
+    :param priv:
         iSMT private data
+    :type priv: struct ismt_priv \*
 
 .. _`ismt_probe`:
 
@@ -217,11 +244,13 @@ ismt_probe
 
     probe for iSMT devices
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI-Express device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         PCI-Express device ID
+    :type id: const struct pci_device_id \*
 
 .. _`ismt_remove`:
 
@@ -232,8 +261,9 @@ ismt_remove
 
     release driver resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI-Express device
+    :type pdev: struct pci_dev \*
 
 .. This file was automatic generated / don't edit.
 

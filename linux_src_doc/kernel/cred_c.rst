@@ -10,8 +10,9 @@
 
     Destroy a set of credentials
 
-    :param struct cred \*cred:
+    :param cred:
         The record to release
+    :type cred: struct cred \*
 
 .. _`__put_cred.description`:
 
@@ -29,8 +30,9 @@ get_task_cred
 
     Get another task's objective credentials
 
-    :param struct task_struct \*task:
+    :param task:
         The task to query
+    :type task: struct task_struct \*
 
 .. _`get_task_cred.description`:
 
@@ -52,8 +54,9 @@ prepare_creds
 
     Prepare a new set of credentials for modification
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`prepare_creds.description`:
 
@@ -80,8 +83,9 @@ commit_creds
 
     Install new credentials upon the current task
 
-    :param struct cred \*new:
+    :param new:
         The credentials to be assigned
+    :type new: struct cred \*
 
 .. _`commit_creds.description`:
 
@@ -107,8 +111,9 @@ abort_creds
 
     Discard a set of credentials and unlock the current task
 
-    :param struct cred \*new:
+    :param new:
         The credentials that were going to be applied
+    :type new: struct cred \*
 
 .. _`abort_creds.description`:
 
@@ -127,8 +132,9 @@ override_creds
 
     Override the current process's subjective credentials
 
-    :param const struct cred \*new:
+    :param new:
         The credentials to be assigned
+    :type new: const struct cred \*
 
 .. _`override_creds.description`:
 
@@ -147,8 +153,9 @@ revert_creds
 
     Revert a temporary subjective credentials override
 
-    :param const struct cred \*old:
+    :param old:
         The credentials to be restored
+    :type old: const struct cred \*
 
 .. _`revert_creds.description`:
 
@@ -167,8 +174,9 @@ prepare_kernel_cred
 
     Prepare a set of credentials for a kernel service
 
-    :param struct task_struct \*daemon:
+    :param daemon:
         A userspace daemon to be used as a reference
+    :type daemon: struct task_struct \*
 
 .. _`prepare_kernel_cred.description`:
 
@@ -198,11 +206,13 @@ set_security_override
 
     Set the security ID in a set of credentials
 
-    :param struct cred \*new:
+    :param new:
         The credentials to alter
+    :type new: struct cred \*
 
-    :param u32 secid:
+    :param secid:
         The LSM security ID to set
+    :type secid: u32
 
 .. _`set_security_override.description`:
 
@@ -221,11 +231,13 @@ set_security_override_from_ctx
 
     Set the security ID in a set of credentials
 
-    :param struct cred \*new:
+    :param new:
         The credentials to alter
+    :type new: struct cred \*
 
-    :param const char \*secctx:
+    :param secctx:
         The LSM security context to generate the security ID from.
+    :type secctx: const char \*
 
 .. _`set_security_override_from_ctx.description`:
 
@@ -246,11 +258,13 @@ set_create_files_as
 
     Set the LSM file create context in a set of credentials
 
-    :param struct cred \*new:
+    :param new:
         The credentials to alter
+    :type new: struct cred \*
 
-    :param struct inode \*inode:
+    :param inode:
         The inode to take the context from
+    :type inode: struct inode \*
 
 .. _`set_create_files_as.description`:
 

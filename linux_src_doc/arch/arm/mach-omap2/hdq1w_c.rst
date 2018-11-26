@@ -10,8 +10,9 @@ omap_hdq1w_reset
 
     reset the OMAP HDQ1W module
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hdq1w_reset.description`:
 

@@ -8,14 +8,17 @@
 
 .. c:function:: int __cmdline_find_option_bool(const char *cmdline, int max_cmdline_size, const char *option)
 
-    :param const char \*cmdline:
+    :param cmdline:
         the cmdline string
+    :type cmdline: const char \*
 
-    :param int max_cmdline_size:
+    :param max_cmdline_size:
         *undescribed*
+    :type max_cmdline_size: int
 
-    :param const char \*option:
+    :param option:
         option string to look for
+    :type option: const char \*
 
 .. _`__cmdline_find_option_bool.description`:
 

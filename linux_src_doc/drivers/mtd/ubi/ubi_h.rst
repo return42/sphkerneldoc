@@ -373,6 +373,7 @@ Definition
         long long upd_received;
         void *upd_buf;
         struct ubi_eba_table *eba_tbl;
+        unsigned int skip_check:1;
         unsigned int checked:1;
         unsigned int corrupted:1;
         unsigned int upd_marker:1;
@@ -468,6 +469,11 @@ upd_buf
 
 eba_tbl
     EBA table of this volume (LEB->PEB mapping)
+
+skip_check
+    \ ``1``\  if CRC check of this static volume should be skipped.
+    Directly reflects the presence of the
+    \ ``UBI_VTBL_SKIP_CRC_CHECK_FLG``\  flag in the vtbl entry
 
 checked
     \ ``1``\  if this static volume was checked
@@ -772,9 +778,9 @@ volumes
 volumes_lock
     protects \ ``volumes``\ , \ ``rsvd_pebs``\ , \ ``avail_pebs``\ , beb_rsvd_pebs,
     \ ``beb_rsvd_level``\ , \ ``bad_peb_count``\ , \ ``good_peb_count``\ , \ ``vol_count``\ ,
-    \ ``vol``\ ->readers, \ ``vol``\ ->writers, \ ``vol``\ ->exclusive,
-    \ ``vol``\ ->metaonly, \ ``vol``\ ->ref_count, \ ``vol``\ ->mapping and
-    \ ``vol``\ ->eba_tbl.
+    \ ``vol->readers``\ , \ ``vol->writers``\ , \ ``vol->exclusive``\ ,
+    \ ``vol->metaonly``\ , \ ``vol->ref_count``\ , \ ``vol->mapping``\  and
+    \ ``vol->eba_tbl``\ .
 
 ref_count
     count of references on the UBI device
@@ -1374,14 +1380,17 @@ ubi_init_vid_buf
 
     Initialize a VID buffer
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         the UBI device
+    :type ubi: const struct ubi_device \*
 
-    :param struct ubi_vid_io_buf \*vidb:
+    :param vidb:
         the VID buffer to initialize
+    :type vidb: struct ubi_vid_io_buf \*
 
-    :param void \*buf:
+    :param buf:
         the underlying buffer
+    :type buf: void \*
 
 .. _`ubi_alloc_vid_buf`:
 
@@ -1392,11 +1401,13 @@ ubi_alloc_vid_buf
 
     Allocate a VID buffer
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         the UBI device
+    :type ubi: const struct ubi_device \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         GFP flags to use for the allocation
+    :type gfp_flags: gfp_t
 
 .. _`ubi_free_vid_buf`:
 
@@ -1407,8 +1418,9 @@ ubi_free_vid_buf
 
     Free a VID buffer
 
-    :param struct ubi_vid_io_buf \*vidb:
+    :param vidb:
         the VID buffer to free
+    :type vidb: struct ubi_vid_io_buf \*
 
 .. _`ubi_get_vid_hdr`:
 
@@ -1419,8 +1431,9 @@ ubi_get_vid_hdr
 
     Get the VID header attached to a VID buffer
 
-    :param struct ubi_vid_io_buf \*vidb:
+    :param vidb:
         VID buffer
+    :type vidb: struct ubi_vid_io_buf \*
 
 .. _`ubi_ro_mode`:
 
@@ -1431,8 +1444,9 @@ ubi_ro_mode
 
     switch to read-only mode.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`vol_id2idx`:
 
@@ -1443,11 +1457,13 @@ vol_id2idx
 
     get table index by volume ID.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
 .. _`idx2vol_id`:
 
@@ -1458,11 +1474,13 @@ idx2vol_id
 
     get volume ID by table index.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int idx:
+    :param idx:
         table index
+    :type idx: int
 
 .. _`ubi_is_fm_vol`:
 
@@ -1473,8 +1491,9 @@ ubi_is_fm_vol
 
     check whether a volume ID is a Fastmap volume.
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
 .. _`ubi_find_fm_block`:
 
@@ -1485,11 +1504,13 @@ ubi_find_fm_block
 
     check whether a PEB is part of the current Fastmap.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock to look for
+    :type pnum: int
 
 .. _`ubi_find_fm_block.description`:
 

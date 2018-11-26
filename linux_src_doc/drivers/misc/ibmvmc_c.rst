@@ -10,8 +10,9 @@ h_request_vmc
 
     - request a hypervisor virtual management channel device
 
-    :param u32 \*vmc_index:
+    :param vmc_index:
         drc index of the vmc device created
+    :type vmc_index: u32 \*
 
 .. _`h_request_vmc.description`:
 
@@ -39,11 +40,13 @@ ibmvmc_handle_event
 
     - Interrupt handler for crq events
 
-    :param int irq:
+    :param irq:
         number of irq to handle, not used
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         crq_server_adapter that received interrupt
+    :type dev_instance: void \*
 
 .. _`ibmvmc_handle_event.description`:
 
@@ -63,8 +66,9 @@ ibmvmc_release_crq_queue
 
     Release CRQ Queue
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
 .. _`ibmvmc_release_crq_queue.return`:
 
@@ -83,8 +87,9 @@ ibmvmc_reset_crq_queue
 
     Reset CRQ Queue
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
 .. _`ibmvmc_reset_crq_queue.description`:
 
@@ -111,8 +116,9 @@ crq_queue_next_crq
 
     - Returns the next entry in message queue
 
-    :param struct crq_queue \*queue:
+    :param queue:
         crq_queue to use
+    :type queue: struct crq_queue \*
 
 .. _`crq_queue_next_crq.description`:
 
@@ -131,14 +137,17 @@ ibmvmc_send_crq
 
     Send CRQ
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param u64 word1:
+    :param word1:
         Word1 Data field
+    :type word1: u64
 
-    :param u64 word2:
+    :param word2:
         Word2 Data field
+    :type word2: u64
 
 .. _`ibmvmc_send_crq.return`:
 
@@ -157,14 +166,17 @@ alloc_dma_buffer
 
     Create DMA Buffer
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         vio_dev struct
+    :type vdev: struct vio_dev \*
 
-    :param size_t size:
+    :param size:
         Size field
+    :type size: size_t
 
-    :param dma_addr_t \*dma_handle:
+    :param dma_handle:
         DMA address field
+    :type dma_handle: dma_addr_t \*
 
 .. _`alloc_dma_buffer.description`:
 
@@ -185,17 +197,21 @@ free_dma_buffer
 
     Free DMA Buffer
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         vio_dev struct
+    :type vdev: struct vio_dev \*
 
-    :param size_t size:
+    :param size:
         Size field
+    :type size: size_t
 
-    :param void \*vaddr:
+    :param vaddr:
         Address field
+    :type vaddr: void \*
 
-    :param dma_addr_t dma_handle:
+    :param dma_handle:
         DMA address field
+    :type dma_handle: dma_addr_t
 
 .. _`free_dma_buffer.description`:
 
@@ -213,8 +229,9 @@ ibmvmc_get_valid_hmc_buffer
 
     Retrieve Valid HMC Buffer
 
-    :param u8 hmc_index:
+    :param hmc_index:
         HMC Index Field
+    :type hmc_index: u8
 
 .. _`ibmvmc_get_valid_hmc_buffer.return`:
 
@@ -232,11 +249,13 @@ ibmvmc_get_free_hmc_buffer
 
     Get Free HMC Buffer
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param u8 hmc_index:
+    :param hmc_index:
         Hmc Index field
+    :type hmc_index: u8
 
 .. _`ibmvmc_get_free_hmc_buffer.return`:
 
@@ -254,11 +273,13 @@ ibmvmc_free_hmc_buffer
 
     Free an HMC Buffer
 
-    :param struct ibmvmc_hmc \*hmc:
+    :param hmc:
         ibmvmc_hmc struct
+    :type hmc: struct ibmvmc_hmc \*
 
-    :param struct ibmvmc_buffer \*buffer:
+    :param buffer:
         ibmvmc_buffer struct
+    :type buffer: struct ibmvmc_buffer \*
 
 .. _`ibmvmc_count_hmc_buffers`:
 
@@ -269,14 +290,17 @@ ibmvmc_count_hmc_buffers
 
     Count HMC Buffers
 
-    :param u8 hmc_index:
+    :param hmc_index:
         HMC Index field
+    :type hmc_index: u8
 
-    :param unsigned int \*valid:
+    :param valid:
         Valid number of buffers field
+    :type valid: unsigned int \*
 
-    :param unsigned int \*free:
+    :param free:
         Free number of buffers field
+    :type free: unsigned int \*
 
 .. _`ibmvmc_get_free_hmc`:
 
@@ -287,8 +311,9 @@ ibmvmc_get_free_hmc
 
     Get Free HMC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ibmvmc_get_free_hmc.return`:
 
@@ -307,11 +332,13 @@ ibmvmc_return_hmc
 
     Return an HMC Connection
 
-    :param struct ibmvmc_hmc \*hmc:
+    :param hmc:
         ibmvmc_hmc struct
+    :type hmc: struct ibmvmc_hmc \*
 
-    :param bool release_readers:
+    :param release_readers:
         Number of readers connected to session
+    :type release_readers: bool
 
 .. _`ibmvmc_return_hmc.description`:
 
@@ -337,11 +364,13 @@ ibmvmc_send_open
 
     Interface Open
 
-    :param struct ibmvmc_buffer \*buffer:
+    :param buffer:
         Pointer to ibmvmc_buffer struct
+    :type buffer: struct ibmvmc_buffer \*
 
-    :param struct ibmvmc_hmc \*hmc:
+    :param hmc:
         Pointer to ibmvmc_hmc struct
+    :type hmc: struct ibmvmc_hmc \*
 
 .. _`ibmvmc_send_open.description`:
 
@@ -374,8 +403,9 @@ ibmvmc_send_close
 
     Interface Close
 
-    :param struct ibmvmc_hmc \*hmc:
+    :param hmc:
         Pointer to ibmvmc_hmc struct
+    :type hmc: struct ibmvmc_hmc \*
 
 .. _`ibmvmc_send_close.description`:
 
@@ -405,8 +435,9 @@ ibmvmc_send_capabilities
 
     Send VMC Capabilities
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
 .. _`ibmvmc_send_capabilities.description`:
 
@@ -437,20 +468,25 @@ ibmvmc_send_add_buffer_resp
 
     Add Buffer Response
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param u8 status:
+    :param status:
         Status field
+    :type status: u8
 
-    :param u8 hmc_session:
+    :param hmc_session:
         HMC Session field
+    :type hmc_session: u8
 
-    :param u8 hmc_index:
+    :param hmc_index:
         HMC Index field
+    :type hmc_index: u8
 
-    :param u16 buffer_id:
+    :param buffer_id:
         Buffer Id field
+    :type buffer_id: u16
 
 .. _`ibmvmc_send_add_buffer_resp.description`:
 
@@ -477,20 +513,25 @@ ibmvmc_send_rem_buffer_resp
 
     Remove Buffer Response
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param u8 status:
+    :param status:
         Status field
+    :type status: u8
 
-    :param u8 hmc_session:
+    :param hmc_session:
         HMC Session field
+    :type hmc_session: u8
 
-    :param u8 hmc_index:
+    :param hmc_index:
         HMC Index field
+    :type hmc_index: u8
 
-    :param u16 buffer_id:
+    :param buffer_id:
         Buffer Id field
+    :type buffer_id: u16
 
 .. _`ibmvmc_send_rem_buffer_resp.description`:
 
@@ -518,17 +559,21 @@ ibmvmc_send_msg
 
     Signal Message
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param struct ibmvmc_buffer \*buffer:
+    :param buffer:
         ibmvmc_buffer struct
+    :type buffer: struct ibmvmc_buffer \*
 
-    :param struct ibmvmc_hmc \*hmc:
+    :param hmc:
         ibmvmc_hmc struct
+    :type hmc: struct ibmvmc_hmc \*
 
-    :param int msg_len:
+    :param msg_len:
         *undescribed*
+    :type msg_len: int
 
 .. _`ibmvmc_send_msg.description`:
 
@@ -560,11 +605,13 @@ ibmvmc_open
 
     Open Session
 
-    :param struct inode \*inode:
+    :param inode:
         inode struct
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file struct
+    :type file: struct file \*
 
 .. _`ibmvmc_open.return`:
 
@@ -582,11 +629,13 @@ ibmvmc_close
 
     Close Session
 
-    :param struct inode \*inode:
+    :param inode:
         inode struct
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file struct
+    :type file: struct file \*
 
 .. _`ibmvmc_close.return`:
 
@@ -605,17 +654,21 @@ ibmvmc_read
 
     Read
 
-    :param struct file \*file:
+    :param file:
         file struct
+    :type file: struct file \*
 
-    :param char \*buf:
+    :param buf:
         Character buffer
+    :type buf: char \*
 
-    :param size_t nbytes:
+    :param nbytes:
         Size in bytes
+    :type nbytes: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Offset
+    :type ppos: loff_t \*
 
 .. _`ibmvmc_read.return`:
 
@@ -634,11 +687,13 @@ ibmvmc_poll
 
     Poll
 
-    :param struct file \*file:
+    :param file:
         file struct
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         Poll Table
+    :type wait: poll_table \*
 
 .. _`ibmvmc_poll.return`:
 
@@ -656,17 +711,21 @@ ibmvmc_write
 
     Write
 
-    :param struct file \*file:
+    :param file:
         file struct
+    :type file: struct file \*
 
-    :param const char \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: const char \*
 
-    :param size_t count:
+    :param count:
         Count field
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Offset
+    :type ppos: loff_t \*
 
 .. _`ibmvmc_write.return`:
 
@@ -685,8 +744,9 @@ ibmvmc_setup_hmc
 
     Setup the HMC
 
-    :param struct ibmvmc_file_session \*session:
+    :param session:
         ibmvmc_file_session struct
+    :type session: struct ibmvmc_file_session \*
 
 .. _`ibmvmc_setup_hmc.return`:
 
@@ -705,11 +765,13 @@ ibmvmc_ioctl_sethmcid
 
     IOCTL Set HMC ID
 
-    :param struct ibmvmc_file_session \*session:
+    :param session:
         ibmvmc_file_session struct
+    :type session: struct ibmvmc_file_session \*
 
-    :param unsigned char __user \*new_hmc_id:
+    :param new_hmc_id:
         HMC id field
+    :type new_hmc_id: unsigned char __user \*
 
 .. _`ibmvmc_ioctl_sethmcid.description`:
 
@@ -735,11 +797,13 @@ ibmvmc_ioctl_query
 
     IOCTL Query
 
-    :param struct ibmvmc_file_session \*session:
+    :param session:
         ibmvmc_file_session struct
+    :type session: struct ibmvmc_file_session \*
 
-    :param struct ibmvmc_query_struct __user \*ret_struct:
+    :param ret_struct:
         ibmvmc_query_struct
+    :type ret_struct: struct ibmvmc_query_struct __user \*
 
 .. _`ibmvmc_ioctl_query.return`:
 
@@ -758,11 +822,13 @@ ibmvmc_ioctl_requestvmc
 
     IOCTL Request VMC
 
-    :param struct ibmvmc_file_session \*session:
+    :param session:
         ibmvmc_file_session struct
+    :type session: struct ibmvmc_file_session \*
 
-    :param u32 __user \*ret_vmc_index:
+    :param ret_vmc_index:
         VMC Index
+    :type ret_vmc_index: u32 __user \*
 
 .. _`ibmvmc_ioctl_requestvmc.return`:
 
@@ -781,14 +847,17 @@ ibmvmc_ioctl
 
     IOCTL
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         cmd field
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         Argument field
+    :type arg: unsigned long
 
 .. _`ibmvmc_ioctl.return`:
 
@@ -807,11 +876,13 @@ ibmvmc_add_buffer
 
     Add Buffer
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param struct ibmvmc_crq_msg \*crq:
+    :param crq:
         ibmvmc_crq_msg struct
+    :type crq: struct ibmvmc_crq_msg \*
 
 .. _`ibmvmc_add_buffer.description`:
 
@@ -856,11 +927,13 @@ ibmvmc_rem_buffer
 
     Remove Buffer
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param struct ibmvmc_crq_msg \*crq:
+    :param crq:
         ibmvmc_crq_msg struct
+    :type crq: struct ibmvmc_crq_msg \*
 
 .. _`ibmvmc_rem_buffer.description`:
 
@@ -906,11 +979,13 @@ ibmvmc_process_capabilities
 
     Process Capabilities
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param struct ibmvmc_crq_msg \*crqp:
+    :param crqp:
         ibmvmc_crq_msg struct
+    :type crqp: struct ibmvmc_crq_msg \*
 
 .. _`ibmvmc_validate_hmc_session`:
 
@@ -921,11 +996,13 @@ ibmvmc_validate_hmc_session
 
     Validate HMC Session
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param struct ibmvmc_crq_msg \*crq:
+    :param crq:
         ibmvmc_crq_msg struct
+    :type crq: struct ibmvmc_crq_msg \*
 
 .. _`ibmvmc_validate_hmc_session.return`:
 
@@ -944,12 +1021,14 @@ ibmvmc_reset
 
     Reset
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param bool xport_event:
+    :param xport_event:
         If true, the partner closed their CRQ; we don't need to reset.
         If false, we need to schedule a CRQ reset.
+    :type xport_event: bool
 
 .. _`ibmvmc_reset.description`:
 
@@ -967,8 +1046,9 @@ ibmvmc_reset_task
 
     Reset Task
 
-    :param void \*data:
+    :param data:
         Data field
+    :type data: void \*
 
 .. _`ibmvmc_reset_task.description`:
 
@@ -993,11 +1073,13 @@ ibmvmc_process_open_resp
 
     Process Open Response
 
-    :param struct ibmvmc_crq_msg \*crq:
+    :param crq:
         ibmvmc_crq_msg struct
+    :type crq: struct ibmvmc_crq_msg \*
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
 .. _`ibmvmc_process_open_resp.description`:
 
@@ -1017,11 +1099,13 @@ ibmvmc_process_close_resp
 
     Process Close Response
 
-    :param struct ibmvmc_crq_msg \*crq:
+    :param crq:
         ibmvmc_crq_msg struct
+    :type crq: struct ibmvmc_crq_msg \*
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
 .. _`ibmvmc_process_close_resp.description`:
 
@@ -1043,11 +1127,13 @@ ibmvmc_crq_process
 
     Process CRQ
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
-    :param struct ibmvmc_crq_msg \*crq:
+    :param crq:
         ibmvmc_crq_msg struct
+    :type crq: struct ibmvmc_crq_msg \*
 
 .. _`ibmvmc_crq_process.description`:
 
@@ -1065,11 +1151,13 @@ ibmvmc_handle_crq_init
 
     Handle CRQ Init
 
-    :param struct ibmvmc_crq_msg \*crq:
+    :param crq:
         ibmvmc_crq_msg struct
+    :type crq: struct ibmvmc_crq_msg \*
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
 .. _`ibmvmc_handle_crq_init.description`:
 
@@ -1088,11 +1176,13 @@ ibmvmc_handle_crq
 
     Handle CRQ
 
-    :param struct ibmvmc_crq_msg \*crq:
+    :param crq:
         ibmvmc_crq_msg struct
+    :type crq: struct ibmvmc_crq_msg \*
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
 .. _`ibmvmc_handle_crq.description`:
 
@@ -1111,8 +1201,9 @@ ibmvmc_init_crq_queue
 
     Init CRQ Queue
 
-    :param struct crq_server_adapter \*adapter:
+    :param adapter:
         crq_server_adapter struct
+    :type adapter: struct crq_server_adapter \*
 
 .. _`ibmvmc_init_crq_queue.return`:
 

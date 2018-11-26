@@ -10,11 +10,13 @@ csio_lnode_lookup_by_wwpn
 
     Lookup lnode using given wwpn.
 
-    :param struct csio_hw \*hw:
+    :param hw:
         HW module.
+    :type hw: struct csio_hw \*
 
-    :param uint8_t \*wwpn:
+    :param wwpn:
         WWPN.
+    :type wwpn: uint8_t \*
 
 .. _`csio_lnode_lookup_by_wwpn.description`:
 
@@ -32,11 +34,13 @@ csio_ln_fdmi_start
 
     Start an FDMI request.
 
-    :param struct csio_lnode \*ln:
+    :param ln:
         lnode
+    :type ln: struct csio_lnode \*
 
-    :param void \*context:
+    :param context:
         session context
+    :type context: void \*
 
 .. _`csio_ln_fdmi_start.description`:
 
@@ -54,14 +58,17 @@ csio_fcoe_fwevt_handler
 
     Event handler for Firmware FCoE events.
 
-    :param struct csio_hw \*hw:
+    :param hw:
         HW module
+    :type hw: struct csio_hw \*
 
-    :param __u8 cpl_op:
+    :param cpl_op:
         CPL opcode
+    :type cpl_op: __u8
 
-    :param __be64 \*cmd:
+    :param cmd:
         FW cmd/WR.
+    :type cmd: __be64 \*
 
 .. _`csio_fcoe_fwevt_handler.description`:
 
@@ -79,8 +86,9 @@ csio_lnode_start
 
     Kickstart lnode discovery.
 
-    :param struct csio_lnode \*ln:
+    :param ln:
         lnode
+    :type ln: struct csio_lnode \*
 
 .. _`csio_lnode_start.description`:
 
@@ -98,8 +106,9 @@ csio_lnode_stop
 
     Stop the lnode.
 
-    :param struct csio_lnode \*ln:
+    :param ln:
         lnode
+    :type ln: struct csio_lnode \*
 
 .. _`csio_lnode_stop.description`:
 
@@ -118,8 +127,9 @@ csio_lnode_close
 
     Close an lnode.
 
-    :param struct csio_lnode \*ln:
+    :param ln:
         lnode
+    :type ln: struct csio_lnode \*
 
 .. _`csio_lnode_close.description`:
 
@@ -139,14 +149,17 @@ csio_lnode_init
 
     Initialize the members of an lnode.
 
-    :param struct csio_lnode \*ln:
+    :param ln:
         lnode
+    :type ln: struct csio_lnode \*
 
-    :param struct csio_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct csio_hw \*
 
-    :param struct csio_lnode \*pln:
+    :param pln:
         *undescribed*
+    :type pln: struct csio_lnode \*
 
 .. _`csio_lnode_exit`:
 
@@ -157,8 +170,9 @@ csio_lnode_exit
 
     De-instantiate an lnode.
 
-    :param struct csio_lnode \*ln:
+    :param ln:
         lnode
+    :type ln: struct csio_lnode \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ iio_device_register_trigger_consumer
 
     set up an iio_dev to use triggers
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         iio_dev associated with the device that will consume the trigger
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_device_unregister_trigger_consumer`:
 
@@ -22,8 +23,9 @@ iio_device_unregister_trigger_consumer
 
     reverse the registration process
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         iio_dev associated with the device that consumed the trigger
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_device_register_trigger_consumer`:
 
@@ -34,8 +36,9 @@ iio_device_register_trigger_consumer
 
     set up an iio_dev to use triggers
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         iio_dev associated with the device that will consume the trigger
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_device_unregister_trigger_consumer`:
 
@@ -46,8 +49,9 @@ iio_device_unregister_trigger_consumer
 
     reverse the registration process
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         iio_dev associated with the device that consumed the trigger
+    :type indio_dev: struct iio_dev \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ mca_page_isolate
 
     isolate a poisoned page in order not to use it later
 
-    :param unsigned long paddr:
+    :param paddr:
         poisoned memory location
+    :type paddr: unsigned long
 
 .. _`mca_page_isolate.return-value`:
 
@@ -29,14 +30,17 @@ mca_handler_bh
 
     Kill the process which occurred memory read error
 
-    :param unsigned long paddr:
+    :param paddr:
         poisoned address received from MCA Handler
+    :type paddr: unsigned long
 
-    :param void \*iip:
+    :param iip:
         *undescribed*
+    :type iip: void \*
 
-    :param unsigned long ipsr:
+    :param ipsr:
         *undescribed*
+    :type ipsr: unsigned long
 
 .. _`mca_make_peidx`:
 
@@ -47,11 +51,13 @@ mca_make_peidx
 
     Make index of processor error section
 
-    :param sal_log_processor_info_t \*slpi:
+    :param slpi:
         pointer to record of processor error section
+    :type slpi: sal_log_processor_info_t \*
 
-    :param peidx_table_t \*peidx:
+    :param peidx:
         pointer to index of processor error section
+    :type peidx: peidx_table_t \*
 
 .. _`log_index_add_sect_ptr`:
 
@@ -62,11 +68,13 @@ LOG_INDEX_ADD_SECT_PTR
 
     Make index of SAL error record
 
-    :param  sect:
+    :param sect:
         *undescribed*
+    :type sect: 
 
-    :param  ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: 
 
 .. _`log_index_add_sect_ptr.return-value`:
 
@@ -84,8 +92,9 @@ init_record_index_pools
 
     Initialize pool of lists for SAL record index
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`init_record_index_pools.return-value`:
 
@@ -103,14 +112,17 @@ is_mca_global
 
     Check whether this MCA is global or not
 
-    :param peidx_table_t \*peidx:
+    :param peidx:
         pointer of index of processor error section
+    :type peidx: peidx_table_t \*
 
-    :param pal_bus_check_info_t \*pbci:
+    :param pbci:
         pointer to pal_bus_check_info_t
+    :type pbci: pal_bus_check_info_t \*
 
-    :param struct ia64_sal_os_state \*sos:
+    :param sos:
         pointer to hand off struct between SAL and OS
+    :type sos: struct ia64_sal_os_state \*
 
 .. _`is_mca_global.return-value`:
 
@@ -128,8 +140,9 @@ get_target_identifier
 
     Get the valid Cache or Bus check target identifier.
 
-    :param peidx_table_t \*peidx:
+    :param peidx:
         pointer of index of processor error section
+    :type peidx: peidx_table_t \*
 
 .. _`get_target_identifier.return-value`:
 
@@ -147,17 +160,21 @@ recover_from_read_error
 
     Try to recover the errors which type are "read"s.
 
-    :param slidx_table_t \*slidx:
+    :param slidx:
         pointer of index of SAL error record
+    :type slidx: slidx_table_t \*
 
-    :param peidx_table_t \*peidx:
+    :param peidx:
         pointer of index of processor error section
+    :type peidx: peidx_table_t \*
 
-    :param pal_bus_check_info_t \*pbci:
+    :param pbci:
         pointer of pal_bus_check_info
+    :type pbci: pal_bus_check_info_t \*
 
-    :param struct ia64_sal_os_state \*sos:
+    :param sos:
         pointer to hand off struct between SAL and OS
+    :type sos: struct ia64_sal_os_state \*
 
 .. _`recover_from_read_error.return-value`:
 
@@ -175,17 +192,21 @@ recover_from_platform_error
 
     Recover from platform error.
 
-    :param slidx_table_t \*slidx:
+    :param slidx:
         pointer of index of SAL error record
+    :type slidx: slidx_table_t \*
 
-    :param peidx_table_t \*peidx:
+    :param peidx:
         pointer of index of processor error section
+    :type peidx: peidx_table_t \*
 
-    :param pal_bus_check_info_t \*pbci:
+    :param pbci:
         pointer of pal_bus_check_info
+    :type pbci: pal_bus_check_info_t \*
 
-    :param struct ia64_sal_os_state \*sos:
+    :param sos:
         pointer to hand off struct between SAL and OS
+    :type sos: struct ia64_sal_os_state \*
 
 .. _`recover_from_platform_error.return-value`:
 
@@ -201,20 +222,25 @@ recover_from_processor_error
 
 .. c:function:: int recover_from_processor_error(int platform, slidx_table_t *slidx, peidx_table_t *peidx, pal_bus_check_info_t *pbci, struct ia64_sal_os_state *sos)
 
-    :param int platform:
+    :param platform:
         whether there are some platform error section or not
+    :type platform: int
 
-    :param slidx_table_t \*slidx:
+    :param slidx:
         pointer of index of SAL error record
+    :type slidx: slidx_table_t \*
 
-    :param peidx_table_t \*peidx:
+    :param peidx:
         pointer of index of processor error section
+    :type peidx: peidx_table_t \*
 
-    :param pal_bus_check_info_t \*pbci:
+    :param pbci:
         pointer of pal_bus_check_info
+    :type pbci: pal_bus_check_info_t \*
 
-    :param struct ia64_sal_os_state \*sos:
+    :param sos:
         pointer to hand off struct between SAL and OS
+    :type sos: struct ia64_sal_os_state \*
 
 .. _`recover_from_processor_error.return-value`:
 
@@ -232,11 +258,13 @@ mca_try_to_recover
 
     Try to recover from MCA
 
-    :param void \*rec:
+    :param rec:
         pointer to a SAL error record
+    :type rec: void \*
 
-    :param struct ia64_sal_os_state \*sos:
+    :param sos:
         pointer to hand off struct between SAL and OS
+    :type sos: struct ia64_sal_os_state \*
 
 .. _`mca_try_to_recover.return-value`:
 

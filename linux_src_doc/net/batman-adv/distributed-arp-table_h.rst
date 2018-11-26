@@ -10,8 +10,9 @@ batadv_dat_init_orig_node_addr
 
     assign a DAT address to the orig_node
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the node to assign the DAT address to
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_dat_init_own_addr`:
 
@@ -22,11 +23,13 @@ batadv_dat_init_own_addr
 
     assign a DAT address to the node itself
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*primary_if:
+    :param primary_if:
         a pointer to the primary interface
+    :type primary_if: struct batadv_hard_iface \*
 
 .. _`batadv_dat_inc_counter`:
 
@@ -37,11 +40,13 @@ batadv_dat_inc_counter
 
     increment the correct DAT packet counter
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 subtype:
+    :param subtype:
         the 4addr subtype of the packet to be counted
+    :type subtype: u8
 
 .. _`batadv_dat_inc_counter.description`:
 

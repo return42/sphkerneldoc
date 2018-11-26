@@ -218,8 +218,9 @@ mei_wdt_ping
 
     send wd start/ping command
 
-    :param struct mei_wdt \*wdt:
+    :param wdt:
         mei watchdog device
+    :type wdt: struct mei_wdt \*
 
 .. _`mei_wdt_ping.return`:
 
@@ -238,8 +239,9 @@ mei_wdt_stop
 
     send wd stop command
 
-    :param struct mei_wdt \*wdt:
+    :param wdt:
         mei watchdog device
+    :type wdt: struct mei_wdt \*
 
 .. _`mei_wdt_stop.return`:
 
@@ -258,8 +260,9 @@ mei_wdt_ops_start
 
     wd start command from the watchdog core.
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
 .. _`mei_wdt_ops_start.return`:
 
@@ -277,8 +280,9 @@ mei_wdt_ops_stop
 
     wd stop command from the watchdog core.
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
 .. _`mei_wdt_ops_stop.return`:
 
@@ -296,8 +300,9 @@ mei_wdt_ops_ping
 
     wd ping command from the watchdog core.
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
 .. _`mei_wdt_ops_ping.return`:
 
@@ -315,11 +320,13 @@ mei_wdt_ops_set_timeout
 
     wd set timeout command from the watchdog core.
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
-    :param unsigned int timeout:
+    :param timeout:
         timeout value to set
+    :type timeout: unsigned int
 
 .. _`mei_wdt_ops_set_timeout.return`:
 
@@ -337,8 +344,9 @@ Return
 
     check if wdt is registered
 
-    :param struct mei_wdt \*wdt:
+    :param wdt:
         mei watchdog device
+    :type wdt: struct mei_wdt \*
 
 .. _`__mei_wdt_is_registered.return`:
 
@@ -363,8 +371,9 @@ mei_wdt_unregister
 
     unregister from the watchdog subsystem
 
-    :param struct mei_wdt \*wdt:
+    :param wdt:
         mei watchdog device
+    :type wdt: struct mei_wdt \*
 
 .. _`mei_wdt_register`:
 
@@ -375,8 +384,9 @@ mei_wdt_register
 
     register with the watchdog subsystem
 
-    :param struct mei_wdt \*wdt:
+    :param wdt:
         mei watchdog device
+    :type wdt: struct mei_wdt \*
 
 .. _`mei_wdt_register.return`:
 
@@ -394,8 +404,9 @@ mei_wdt_rx
 
     callback for data receive
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         bus device
+    :type cldev: struct mei_cl_device \*
 
 .. This file was automatic generated / don't edit.
 

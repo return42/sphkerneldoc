@@ -10,11 +10,13 @@ wm97xx_read_aux_adc
 
     Read the aux adc.
 
-    :param struct wm97xx \*wm:
+    :param wm:
         wm97xx device.
+    :type wm: struct wm97xx \*
 
-    :param u16 adcsel:
+    :param adcsel:
         codec ADC to be read
+    :type adcsel: u16
 
 .. _`wm97xx_read_aux_adc.description`:
 
@@ -32,11 +34,13 @@ wm97xx_get_gpio
 
     Get the status of a codec GPIO.
 
-    :param struct wm97xx \*wm:
+    :param wm:
         wm97xx device.
+    :type wm: struct wm97xx \*
 
-    :param u32 gpio:
+    :param gpio:
         gpio
+    :type gpio: u32
 
 .. _`wm97xx_get_gpio.description`:
 
@@ -54,14 +58,17 @@ wm97xx_set_gpio
 
     Set the status of a codec GPIO.
 
-    :param struct wm97xx \*wm:
+    :param wm:
         wm97xx device.
+    :type wm: struct wm97xx \*
 
-    :param u32 gpio:
+    :param gpio:
         gpio
+    :type gpio: u32
 
-    :param enum wm97xx_gpio_status status:
+    :param status:
         *undescribed*
+    :type status: enum wm97xx_gpio_status
 
 .. _`wm97xx_set_gpio.description`:
 
@@ -80,8 +87,9 @@ wm97xx_ts_input_open
 
     Open the touch screen input device.
 
-    :param struct input_dev \*idev:
+    :param idev:
         Input device to be opened.
+    :type idev: struct input_dev \*
 
 .. _`wm97xx_ts_input_open.description`:
 
@@ -100,8 +108,9 @@ wm97xx_ts_input_close
 
     Close the touch screen input device.
 
-    :param struct input_dev \*idev:
+    :param idev:
         Input device to be closed.
+    :type idev: struct input_dev \*
 
 .. _`wm97xx_ts_input_close.description`:
 

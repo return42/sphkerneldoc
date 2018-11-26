@@ -10,8 +10,22 @@ native_calibrate_tsc
 
     Determine TSC frequency via CPUID, else return 0.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
+
+.. _`native_calibrate_cpu_early`:
+
+native_calibrate_cpu_early
+==========================
+
+.. c:function:: unsigned long native_calibrate_cpu_early( void)
+
+    can calibrate the cpu early in boot
+
+    :param void:
+        no arguments
+    :type void: 
 
 .. _`native_calibrate_cpu`:
 
@@ -20,10 +34,11 @@ native_calibrate_cpu
 
 .. c:function:: unsigned long native_calibrate_cpu( void)
 
-    calibrate the cpu on boot
+    calibrate the cpu
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`convert_art_ns_to_tsc`:
 
@@ -34,8 +49,9 @@ convert_art_ns_to_tsc
 
     Convert ART in nanoseconds to TSC.
 
-    :param u64 art_ns:
+    :param art_ns:
         ART (Always Running Timer) in unit of nanoseconds
+    :type art_ns: u64
 
 .. _`convert_art_ns_to_tsc.description`:
 
@@ -67,8 +83,9 @@ tsc_refine_calibration_work
 
     Further refine tsc freq calibration \ ``work``\  - ignored.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`tsc_refine_calibration_work.description`:
 

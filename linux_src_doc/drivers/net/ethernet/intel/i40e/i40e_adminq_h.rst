@@ -10,11 +10,13 @@ i40e_aq_rc_to_posix
 
     convert errors to user-land codes
 
-    :param int aq_ret:
+    :param aq_ret:
         *undescribed*
+    :type aq_ret: int
 
-    :param int aq_rc:
+    :param aq_rc:
         *undescribed*
+    :type aq_rc: int
 
 .. _`i40e_aq_rc_to_posix.aq_ret`:
 

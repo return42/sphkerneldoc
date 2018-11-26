@@ -221,11 +221,13 @@ qcom_smp2p_intr
 
     interrupt handler for incoming notifications
 
-    :param int irq:
+    :param irq:
         unused
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         smp2p driver context
+    :type data: void \*
 
 .. _`qcom_smp2p_intr.description`:
 

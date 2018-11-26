@@ -37,15 +37,18 @@ sfp_parse_port
 
     Parse the EEPROM base ID, setting the port type
 
-    :param struct sfp_bus \*bus:
+    :param bus:
         a pointer to the \ :c:type:`struct sfp_bus <sfp_bus>`\  structure for the sfp module
+    :type bus: struct sfp_bus \*
 
-    :param const struct sfp_eeprom_id \*id:
+    :param id:
         a pointer to the module's \ :c:type:`struct sfp_eeprom_id <sfp_eeprom_id>`\ 
+    :type id: const struct sfp_eeprom_id \*
 
-    :param unsigned long \*support:
+    :param support:
         optional pointer to an array of unsigned long for the
         ethtool support mask
+    :type support: unsigned long \*
 
 .. _`sfp_parse_port.description`:
 
@@ -68,14 +71,17 @@ sfp_parse_support
 
     Parse the eeprom id for supported link modes
 
-    :param struct sfp_bus \*bus:
+    :param bus:
         a pointer to the \ :c:type:`struct sfp_bus <sfp_bus>`\  structure for the sfp module
+    :type bus: struct sfp_bus \*
 
-    :param const struct sfp_eeprom_id \*id:
+    :param id:
         a pointer to the module's \ :c:type:`struct sfp_eeprom_id <sfp_eeprom_id>`\ 
+    :type id: const struct sfp_eeprom_id \*
 
-    :param unsigned long \*support:
+    :param support:
         pointer to an array of unsigned long for the ethtool support mask
+    :type support: unsigned long \*
 
 .. _`sfp_parse_support.description`:
 
@@ -94,14 +100,17 @@ sfp_select_interface
 
     Select appropriate phy_interface_t mode
 
-    :param struct sfp_bus \*bus:
+    :param bus:
         a pointer to the \ :c:type:`struct sfp_bus <sfp_bus>`\  structure for the sfp module
+    :type bus: struct sfp_bus \*
 
-    :param const struct sfp_eeprom_id \*id:
+    :param id:
         a pointer to the module's \ :c:type:`struct sfp_eeprom_id <sfp_eeprom_id>`\ 
+    :type id: const struct sfp_eeprom_id \*
 
-    :param unsigned long \*link_modes:
+    :param link_modes:
         ethtool link modes mask
+    :type link_modes: unsigned long \*
 
 .. _`sfp_select_interface.description`:
 
@@ -122,11 +131,13 @@ sfp_get_module_info
 
     Get the ethtool_modinfo for a SFP module
 
-    :param struct sfp_bus \*bus:
+    :param bus:
         a pointer to the \ :c:type:`struct sfp_bus <sfp_bus>`\  structure for the sfp module
+    :type bus: struct sfp_bus \*
 
-    :param struct ethtool_modinfo \*modinfo:
+    :param modinfo:
         a \ :c:type:`struct ethtool_modinfo <ethtool_modinfo>`\ 
+    :type modinfo: struct ethtool_modinfo \*
 
 .. _`sfp_get_module_info.description`:
 
@@ -147,14 +158,17 @@ sfp_get_module_eeprom
 
     Read the SFP module EEPROM
 
-    :param struct sfp_bus \*bus:
+    :param bus:
         a pointer to the \ :c:type:`struct sfp_bus <sfp_bus>`\  structure for the sfp module
+    :type bus: struct sfp_bus \*
 
-    :param struct ethtool_eeprom \*ee:
+    :param ee:
         a \ :c:type:`struct ethtool_eeprom <ethtool_eeprom>`\ 
+    :type ee: struct ethtool_eeprom \*
 
-    :param u8 \*data:
-        buffer to contain the EEPROM data (must be at least \ ``ee``\ ->len bytes)
+    :param data:
+        buffer to contain the EEPROM data (must be at least \ ``ee->len``\  bytes)
+    :type data: u8 \*
 
 .. _`sfp_get_module_eeprom.description`:
 
@@ -175,8 +189,9 @@ sfp_upstream_start
 
     Inform the SFP that the network device is up
 
-    :param struct sfp_bus \*bus:
+    :param bus:
         a pointer to the \ :c:type:`struct sfp_bus <sfp_bus>`\  structure for the sfp module
+    :type bus: struct sfp_bus \*
 
 .. _`sfp_upstream_start.description`:
 
@@ -197,8 +212,9 @@ sfp_upstream_stop
 
     Inform the SFP that the network device is down
 
-    :param struct sfp_bus \*bus:
+    :param bus:
         a pointer to the \ :c:type:`struct sfp_bus <sfp_bus>`\  structure for the sfp module
+    :type bus: struct sfp_bus \*
 
 .. _`sfp_upstream_stop.description`:
 
@@ -219,17 +235,21 @@ sfp_register_upstream
 
     Register the neighbouring device
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         firmware node for the SFP bus
+    :type fwnode: struct fwnode_handle \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         network device associated with the interface
+    :type ndev: struct net_device \*
 
-    :param void \*upstream:
+    :param upstream:
         the upstream private data
+    :type upstream: void \*
 
-    :param const struct sfp_upstream_ops \*ops:
+    :param ops:
         the upstream's \ :c:type:`struct sfp_upstream_ops <sfp_upstream_ops>`\ 
+    :type ops: const struct sfp_upstream_ops \*
 
 .. _`sfp_register_upstream.description`:
 
@@ -251,8 +271,9 @@ sfp_unregister_upstream
 
     Unregister sfp bus
 
-    :param struct sfp_bus \*bus:
+    :param bus:
         a pointer to the \ :c:type:`struct sfp_bus <sfp_bus>`\  structure for the sfp module
+    :type bus: struct sfp_bus \*
 
 .. _`sfp_unregister_upstream.description`:
 

@@ -10,8 +10,9 @@ sdw_add_bus_master
 
     add a bus Master instance
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         bus instance
+    :type bus: struct sdw_bus \*
 
 .. _`sdw_add_bus_master.description`:
 
@@ -30,8 +31,9 @@ sdw_delete_bus_master
 
     delete the bus master instance
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         bus to be deleted
+    :type bus: struct sdw_bus \*
 
 .. _`sdw_delete_bus_master.description`:
 
@@ -49,11 +51,13 @@ sdw_transfer
 
     Synchronous transfer message to a SDW Slave device
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         SDW bus
+    :type bus: struct sdw_bus \*
 
-    :param struct sdw_msg \*msg:
+    :param msg:
         SDW message to be xfered
+    :type msg: struct sdw_msg \*
 
 .. _`sdw_transfer_defer`:
 
@@ -64,14 +68,17 @@ sdw_transfer_defer
 
     Asynchronously transfer message to a SDW Slave device
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         SDW bus
+    :type bus: struct sdw_bus \*
 
-    :param struct sdw_msg \*msg:
+    :param msg:
         SDW message to be xfered
+    :type msg: struct sdw_msg \*
 
-    :param struct sdw_defer \*defer:
+    :param defer:
         Defer block for signal completion
+    :type defer: struct sdw_defer \*
 
 .. _`sdw_transfer_defer.description`:
 
@@ -89,17 +96,21 @@ sdw_nread
 
     Read "n" contiguous SDW Slave registers
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         SDW Slave
+    :type slave: struct sdw_slave \*
 
-    :param u32 addr:
+    :param addr:
         Register address
+    :type addr: u32
 
-    :param size_t count:
+    :param count:
         length
+    :type count: size_t
 
-    :param u8 \*val:
+    :param val:
         Buffer for values to be read
+    :type val: u8 \*
 
 .. _`sdw_nwrite`:
 
@@ -110,17 +121,21 @@ sdw_nwrite
 
     Write "n" contiguous SDW Slave registers
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         SDW Slave
+    :type slave: struct sdw_slave \*
 
-    :param u32 addr:
+    :param addr:
         Register address
+    :type addr: u32
 
-    :param size_t count:
+    :param count:
         length
+    :type count: size_t
 
-    :param u8 \*val:
+    :param val:
         Buffer for values to be read
+    :type val: u8 \*
 
 .. _`sdw_read`:
 
@@ -131,11 +146,13 @@ sdw_read
 
     Read a SDW Slave register
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         SDW Slave
+    :type slave: struct sdw_slave \*
 
-    :param u32 addr:
+    :param addr:
         Register address
+    :type addr: u32
 
 .. _`sdw_write`:
 
@@ -146,14 +163,17 @@ sdw_write
 
     Write a SDW Slave register
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         SDW Slave
+    :type slave: struct sdw_slave \*
 
-    :param u32 addr:
+    :param addr:
         Register address
+    :type addr: u32
 
-    :param u8 value:
+    :param value:
         Register value
+    :type value: u8
 
 .. _`sdw_handle_slave_status`:
 
@@ -164,11 +184,13 @@ sdw_handle_slave_status
 
     Handle Slave status
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         SDW bus instance
+    :type bus: struct sdw_bus \*
 
-    :param enum sdw_slave_status status:
+    :param status:
         Status for all Slave(s)
+    :type status: enum sdw_slave_status
 
 .. This file was automatic generated / don't edit.
 

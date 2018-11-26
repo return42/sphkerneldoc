@@ -10,8 +10,9 @@ ntfs_sysctl
 
     add or remove the debug sysctl
 
-    :param int add:
+    :param add:
         add (1) or remove (0) the sysctl
+    :type add: int
 
 .. _`ntfs_sysctl.description`:
 

@@ -10,8 +10,9 @@ create_cipher_wr
 
     form the WR for cipher operations
 
-    :param struct cipher_wr_param \*wrparam:
+    :param wrparam:
         *undescribed*
+    :type wrparam: struct cipher_wr_param \*
 
 .. _`create_hash_wr`:
 
@@ -22,11 +23,13 @@ create_hash_wr
 
     Create hash work request \ ``req``\  - Cipher req base
 
-    :param struct ahash_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct ahash_request \*
 
-    :param struct hash_wr_param \*param:
+    :param param:
         *undescribed*
+    :type param: struct hash_wr_param \*
 
 .. This file was automatic generated / don't edit.
 

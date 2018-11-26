@@ -10,8 +10,9 @@ dccp_invalid_packet
 
     check for malformed packets Implements RFC 4340, 8.5:  Step 1: Check header basics Packets that fail these checks are ignored and do not receive Resets.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. This file was automatic generated / don't edit.
 

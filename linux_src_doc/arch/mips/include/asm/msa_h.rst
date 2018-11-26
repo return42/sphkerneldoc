@@ -10,14 +10,17 @@ read_msa_wr
 
     Read a single MSA vector register
 
-    :param unsigned idx:
+    :param idx:
         The index of the vector register to read
+    :type idx: unsigned
 
-    :param union fpureg \*to:
+    :param to:
         The FPU register union to store the registers value in
+    :type to: union fpureg \*
 
-    :param enum msa_2b_fmt fmt:
+    :param fmt:
         The format of the data in the vector register
+    :type fmt: enum msa_2b_fmt
 
 .. _`read_msa_wr.description`:
 
@@ -36,14 +39,17 @@ write_msa_wr
 
     Write a single MSA vector register
 
-    :param unsigned idx:
+    :param idx:
         The index of the vector register to write
+    :type idx: unsigned
 
-    :param union fpureg \*from:
+    :param from:
         The FPU register union to take the registers value from
+    :type from: union fpureg \*
 
-    :param enum msa_2b_fmt fmt:
+    :param fmt:
         The format of the data in the vector register
+    :type fmt: enum msa_2b_fmt
 
 .. _`write_msa_wr.description`:
 

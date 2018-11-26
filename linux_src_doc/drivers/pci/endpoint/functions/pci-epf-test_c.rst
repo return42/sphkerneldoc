@@ -1,21 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/pci/endpoint/functions/pci-epf-test.c
 
-.. _`command_raise_legacy_irq`:
+.. _`irq_type_legacy`:
 
-COMMAND_RAISE_LEGACY_IRQ
-========================
+IRQ_TYPE_LEGACY
+===============
 
-.. c:function::  COMMAND_RAISE_LEGACY_IRQ()
+.. c:function::  IRQ_TYPE_LEGACY()
 
-.. _`command_raise_legacy_irq.description`:
+.. _`irq_type_legacy.description`:
 
 Description
 -----------
 
 Copyright (C) 2017 Texas Instruments
 
-.. _`command_raise_legacy_irq.author`:
+.. _`irq_type_legacy.author`:
 
 Author
 ------

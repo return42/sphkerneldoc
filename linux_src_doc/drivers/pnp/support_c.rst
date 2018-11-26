@@ -10,8 +10,9 @@ pnp_is_active
 
     Determines if a device is active based on its current resources
 
-    :param struct pnp_dev \*dev:
+    :param dev:
         pointer to the desired PnP device
+    :type dev: struct pnp_dev \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ ACPI_DEVICE_CLASS
 
     macro used to describe an ACPI device with the PCI-defined class-code information
 
-    :param  _cls:
+    :param _cls:
         the class, subclass, prog-if triple for this device
+    :type _cls: 
 
-    :param  _msk:
+    :param _msk:
         the class mask for this device
+    :type _msk: 
 
 .. _`acpi_device_class.description`:
 

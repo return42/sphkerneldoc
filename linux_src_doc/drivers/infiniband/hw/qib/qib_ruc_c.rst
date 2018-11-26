@@ -1,30 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/qib/qib_ruc.c
 
-.. _`qib_ruc_loopback`:
-
-qib_ruc_loopback
-================
-
-.. c:function:: void qib_ruc_loopback(struct rvt_qp *sqp)
-
-    handle UC and RC lookback requests
-
-    :param struct rvt_qp \*sqp:
-        the sending QP
-
-.. _`qib_ruc_loopback.description`:
-
-Description
------------
-
-This is called from \ :c:func:`qib_do_send`\  to
-forward a WQE addressed to the same HCA.
-Note that although we are single threaded due to the tasklet, we still
-have to protect against \ :c:func:`post_send`\ .  We don't have to worry about
-receive interrupts since this is a connected protocol and all packets
-will pass through here.
-
 .. _`qib_make_grh`:
 
 qib_make_grh
@@ -34,20 +10,25 @@ qib_make_grh
 
     construct a GRH header
 
-    :param struct qib_ibport \*ibp:
+    :param ibp:
         a pointer to the IB port
+    :type ibp: struct qib_ibport \*
 
-    :param struct ib_grh \*hdr:
+    :param hdr:
         a pointer to the GRH header being constructed
+    :type hdr: struct ib_grh \*
 
-    :param const struct ib_global_route \*grh:
+    :param grh:
         the global route address to send to
+    :type grh: const struct ib_global_route \*
 
-    :param u32 hwords:
+    :param hwords:
         the number of 32 bit words of header being sent
+    :type hwords: u32
 
-    :param u32 nwords:
+    :param nwords:
         the number of 32 bit words of data being sent
+    :type nwords: u32
 
 .. _`qib_make_grh.description`:
 
@@ -65,8 +46,9 @@ qib_do_send
 
     perform a send on a QP
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         pointer to the QP
+    :type qp: struct rvt_qp \*
 
 .. _`qib_do_send.description`:
 

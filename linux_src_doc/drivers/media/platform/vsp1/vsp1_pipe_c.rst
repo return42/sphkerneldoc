@@ -10,11 +10,13 @@ vsp1_get_format_info
 
     Retrieve format information for a 4CC
 
-    :param struct vsp1_device \*vsp1:
+    :param vsp1:
         the VSP1 device
+    :type vsp1: struct vsp1_device \*
 
-    :param u32 fourcc:
+    :param fourcc:
         the format 4CC
+    :type fourcc: u32
 
 .. _`vsp1_get_format_info.description`:
 

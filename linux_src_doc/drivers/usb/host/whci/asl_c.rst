@@ -10,11 +10,13 @@ process_qset
 
     process any recently inactivated or halted qTDs in a qset.
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
 .. _`process_qset.description`:
 
@@ -36,11 +38,13 @@ asl_update
 
     request an ASL update and wait for the hardware to be synced
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI HC
+    :type whc: struct whc \*
 
-    :param uint32_t wusbcmd:
+    :param wusbcmd:
         WUSBCMD value to start the update.
+    :type wusbcmd: uint32_t
 
 .. _`asl_update.description`:
 
@@ -60,8 +64,9 @@ scan_async_work
 
     scan the ASL for qsets to process.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`scan_async_work.description`:
 
@@ -82,14 +87,17 @@ asl_urb_enqueue
 
     queue an URB onto the asynchronous list (ASL).
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI host controller
+    :type whc: struct whc \*
 
-    :param struct urb \*urb:
+    :param urb:
         the URB to enqueue
+    :type urb: struct urb \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         flags for any memory allocations
+    :type mem_flags: gfp_t
 
 .. _`asl_urb_enqueue.description`:
 
@@ -109,14 +117,17 @@ asl_urb_dequeue
 
     remove an URB (qset) from the async list.
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI host controller
+    :type whc: struct whc \*
 
-    :param struct urb \*urb:
+    :param urb:
         the URB to dequeue
+    :type urb: struct urb \*
 
-    :param int status:
+    :param status:
         the current status of the URB
+    :type status: int
 
 .. _`asl_urb_dequeue.description`:
 
@@ -136,11 +147,13 @@ asl_qset_delete
 
     delete a qset from the ASL
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
 .. _`asl_init`:
 
@@ -151,8 +164,9 @@ asl_init
 
     initialize the asynchronous schedule list
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
 .. _`asl_init.description`:
 
@@ -171,8 +185,9 @@ asl_clean_up
 
     free ASL resources
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
 .. _`asl_clean_up.description`:
 

@@ -10,8 +10,9 @@ userspace_tramp
 
     userspace trampoline
 
-    :param void \*stack:
+    :param stack:
         pointer to the new userspace stack page, can be NULL, if? FIXME:
+    :type stack: void \*
 
 .. _`userspace_tramp.description`:
 
@@ -48,8 +49,9 @@ start_userspace
 
     prepare a new userspace process
 
-    :param unsigned long stub_stack:
+    :param stub_stack:
         pointer to the stub stack. Can be NULL, if? FIXME:
+    :type stub_stack: unsigned long
 
 .. _`start_userspace.description`:
 

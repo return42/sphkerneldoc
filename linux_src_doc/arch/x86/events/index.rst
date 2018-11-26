@@ -8,3 +8,4 @@ events
     :maxdepth: 1
 
     intel/index
+    core_c

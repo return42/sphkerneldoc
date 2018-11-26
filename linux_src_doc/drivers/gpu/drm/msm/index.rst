@@ -8,4 +8,5 @@ msm
     :maxdepth: 1
 
     disp/index
+    msm_drv_h
     msm_gem_shrinker_c

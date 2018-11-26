@@ -10,11 +10,13 @@ intel_pmc_gcr_read
 
     Read a 32-bit PMC GCR register
 
-    :param u32 offset:
+    :param offset:
         offset of GCR register from GCR address base
+    :type offset: u32
 
-    :param u32 \*data:
+    :param data:
         data pointer for storing the register output
+    :type data: u32 \*
 
 .. _`intel_pmc_gcr_read.description`:
 
@@ -39,11 +41,13 @@ intel_pmc_gcr_read64
 
     Read a 64-bit PMC GCR register
 
-    :param u32 offset:
+    :param offset:
         offset of GCR register from GCR address base
+    :type offset: u32
 
-    :param u64 \*data:
+    :param data:
         data pointer for storing the register output
+    :type data: u64 \*
 
 .. _`intel_pmc_gcr_read64.description`:
 
@@ -68,11 +72,13 @@ intel_pmc_gcr_write
 
     Write PMC GCR register
 
-    :param u32 offset:
+    :param offset:
         offset of GCR register from GCR address base
+    :type offset: u32
 
-    :param u32 data:
+    :param data:
         register update value
+    :type data: u32
 
 .. _`intel_pmc_gcr_write.description`:
 
@@ -98,14 +104,17 @@ intel_pmc_gcr_update
 
     Update PMC GCR register bits
 
-    :param u32 offset:
+    :param offset:
         offset of GCR register from GCR address base
+    :type offset: u32
 
-    :param u32 mask:
+    :param mask:
         bit mask for update operation
+    :type mask: u32
 
-    :param u32 val:
+    :param val:
         update value
+    :type val: u32
 
 .. _`intel_pmc_gcr_update.description`:
 
@@ -131,11 +140,13 @@ intel_pmc_ipc_simple_command
 
     Simple IPC command
 
-    :param int cmd:
+    :param cmd:
         IPC command code.
+    :type cmd: int
 
-    :param int sub:
+    :param sub:
         IPC command sub type.
+    :type sub: int
 
 .. _`intel_pmc_ipc_simple_command.description`:
 
@@ -161,29 +172,37 @@ intel_pmc_ipc_raw_cmd
 
     IPC command with data and pointers
 
-    :param u32 cmd:
+    :param cmd:
         IPC command code.
+    :type cmd: u32
 
-    :param u32 sub:
+    :param sub:
         IPC command sub type.
+    :type sub: u32
 
-    :param u8 \*in:
+    :param in:
         input data of this IPC command.
+    :type in: u8 \*
 
-    :param u32 inlen:
+    :param inlen:
         input data length in bytes.
+    :type inlen: u32
 
-    :param u32 \*out:
+    :param out:
         output data of this IPC command.
+    :type out: u32 \*
 
-    :param u32 outlen:
+    :param outlen:
         output data length in dwords.
+    :type outlen: u32
 
-    :param u32 dptr:
+    :param dptr:
         data writing to DPTR register.
+    :type dptr: u32
 
-    :param u32 sptr:
+    :param sptr:
         data writing to SPTR register.
+    :type sptr: u32
 
 .. _`intel_pmc_ipc_raw_cmd.description`:
 
@@ -208,23 +227,29 @@ intel_pmc_ipc_command
 
     IPC command with input/output data
 
-    :param u32 cmd:
+    :param cmd:
         IPC command code.
+    :type cmd: u32
 
-    :param u32 sub:
+    :param sub:
         IPC command sub type.
+    :type sub: u32
 
-    :param u8 \*in:
+    :param in:
         input data of this IPC command.
+    :type in: u8 \*
 
-    :param u32 inlen:
+    :param inlen:
         input data length in bytes.
+    :type inlen: u32
 
-    :param u32 \*out:
+    :param out:
         output data of this IPC command.
+    :type out: u32 \*
 
-    :param u32 outlen:
+    :param outlen:
         output data length in dwords.
+    :type outlen: u32
 
 .. _`intel_pmc_ipc_command.description`:
 
@@ -249,8 +274,9 @@ intel_pmc_s0ix_counter_read
 
     Read S0ix residency.
 
-    :param u64 \*data:
+    :param data:
         Out param that contains current S0ix residency count.
+    :type data: u64 \*
 
 .. _`intel_pmc_s0ix_counter_read.return`:
 

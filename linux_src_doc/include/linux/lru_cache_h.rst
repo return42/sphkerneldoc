@@ -10,8 +10,9 @@ lc_try_lock_for_transaction
 
     can be used to stop \ :c:func:`lc_get`\  from changing the tracked set
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
 .. _`lc_try_lock_for_transaction.description`:
 
@@ -31,8 +32,9 @@ lc_try_lock
 
     variant to stop \ :c:func:`lc_get`\  from changing the tracked set
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
 .. _`lc_try_lock.description`:
 
@@ -53,8 +55,9 @@ lc_unlock
 
     unlock \ ``lc``\ , allow \ :c:func:`lc_get`\  to change the set again
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
 .. This file was automatic generated / don't edit.
 

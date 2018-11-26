@@ -10,14 +10,17 @@ blk_trace_ioctl
 
     - handle the ioctls associated with tracing
 
-    :param struct block_device \*bdev:
+    :param bdev:
         the block device
+    :type bdev: struct block_device \*
 
-    :param unsigned cmd:
+    :param cmd:
         the ioctl cmd
+    :type cmd: unsigned
 
-    :param char __user \*arg:
+    :param arg:
         the argument data, if any
+    :type arg: char __user \*
 
 .. _`blk_trace_shutdown`:
 
@@ -28,8 +31,9 @@ blk_trace_shutdown
 
     - stop and cleanup trace structures
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue associated with the device
+    :type q: struct request_queue \*
 
 .. _`blk_add_trace_rq`:
 
@@ -40,20 +44,25 @@ blk_add_trace_rq
 
     Add a trace for a request oriented action
 
-    :param struct request \*rq:
+    :param rq:
         the source request
+    :type rq: struct request \*
 
-    :param int error:
+    :param error:
         return status to log
+    :type error: int
 
-    :param unsigned int nr_bytes:
+    :param nr_bytes:
         number of completed bytes
+    :type nr_bytes: unsigned int
 
-    :param u32 what:
+    :param what:
         the action
+    :type what: u32
 
-    :param union kernfs_node_id \*cgid:
+    :param cgid:
         the cgroup info
+    :type cgid: union kernfs_node_id \*
 
 .. _`blk_add_trace_rq.description`:
 
@@ -71,17 +80,21 @@ blk_add_trace_bio
 
     Add a trace for a bio oriented action
 
-    :param struct request_queue \*q:
+    :param q:
         queue the io is for
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         the source bio
+    :type bio: struct bio \*
 
-    :param u32 what:
+    :param what:
         the action
+    :type what: u32
 
-    :param int error:
+    :param error:
         error, if any
+    :type error: int
 
 .. _`blk_add_trace_bio.description`:
 
@@ -99,20 +112,25 @@ blk_add_trace_bio_remap
 
     Add a trace for a bio-remap operation
 
-    :param void \*ignore:
+    :param ignore:
         trace callback data parameter (not used)
+    :type ignore: void \*
 
-    :param struct request_queue \*q:
+    :param q:
         queue the io is for
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         the source bio
+    :type bio: struct bio \*
 
-    :param dev_t dev:
+    :param dev:
         target device
+    :type dev: dev_t
 
-    :param sector_t from:
+    :param from:
         source sector
+    :type from: sector_t
 
 .. _`blk_add_trace_bio_remap.description`:
 
@@ -131,20 +149,25 @@ blk_add_trace_rq_remap
 
     Add a trace for a request-remap operation
 
-    :param void \*ignore:
+    :param ignore:
         trace callback data parameter (not used)
+    :type ignore: void \*
 
-    :param struct request_queue \*q:
+    :param q:
         queue the io is for
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         the source request
+    :type rq: struct request \*
 
-    :param dev_t dev:
+    :param dev:
         target device
+    :type dev: dev_t
 
-    :param sector_t from:
+    :param from:
         source sector
+    :type from: sector_t
 
 .. _`blk_add_trace_rq_remap.description`:
 
@@ -163,17 +186,21 @@ blk_add_driver_data
 
     Add binary message with driver-specific data
 
-    :param struct request_queue \*q:
+    :param q:
         queue the io is for
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         io request
+    :type rq: struct request \*
 
-    :param void \*data:
+    :param data:
         driver-specific data
+    :type data: void \*
 
-    :param size_t len:
+    :param len:
         length of driver-specific data
+    :type len: size_t
 
 .. _`blk_add_driver_data.description`:
 

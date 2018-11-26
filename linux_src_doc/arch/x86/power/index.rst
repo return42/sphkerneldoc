@@ -8,4 +8,4 @@ power
     :maxdepth: 1
 
     cpu_c
-    hibernate_64_c
+    hibernate_c

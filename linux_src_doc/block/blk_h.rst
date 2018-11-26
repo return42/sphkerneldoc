@@ -10,8 +10,9 @@ rq_ioc
 
     determine io_context for request allocation
 
-    :param struct bio \*bio:
+    :param bio:
         request being allocated is for this bio (can be \ ``NULL``\ )
+    :type bio: struct bio \*
 
 .. _`rq_ioc.description`:
 
@@ -30,11 +31,13 @@ create_io_context
 
     try to create task->io_context
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation mask
+    :type gfp_mask: gfp_t
 
-    :param int node:
+    :param node:
         allocation node
+    :type node: int
 
 .. _`create_io_context.description`:
 

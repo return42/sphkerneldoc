@@ -289,6 +289,7 @@ Definition
         const char *clkdm_name;
         struct clockdomain *clkdm;
         const struct clk_hw_omap_ops *ops;
+        u32 context;
     }
 
 .. _`clk_hw_omap.members`:
@@ -331,6 +332,9 @@ clkdm
 
 ops
     clock ops for this clock
+
+context
+    *undescribed*
 
 .. _`ti_clk_ll_ops`:
 

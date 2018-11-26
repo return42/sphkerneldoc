@@ -10,8 +10,9 @@ spin_is_locked
 
     Check whether a spinlock is locked.
 
-    :param spinlock_t \*lock:
+    :param lock:
         Pointer to the spinlock.
+    :type lock: spinlock_t \*
 
 .. _`spin_is_locked.description`:
 
@@ -46,11 +47,13 @@ Therefore you should not rely heavily on the return value.
 
     lock on reaching reference count zero
 
-    :param atomic_t \*atomic:
+    :param atomic:
         the atomic counter
+    :type atomic: atomic_t \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         the spinlock in question
+    :type lock: spinlock_t \*
 
 .. _`_atomic_dec_and_lock.description`:
 

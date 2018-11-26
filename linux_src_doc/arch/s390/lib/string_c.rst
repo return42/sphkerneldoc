@@ -10,8 +10,9 @@ strlen
 
     Find the length of a string
 
-    :param const char \*s:
+    :param s:
         The string to be sized
+    :type s: const char \*
 
 .. _`strlen.description`:
 
@@ -29,11 +30,13 @@ strnlen
 
     Find the length of a length-limited string
 
-    :param const char \*s:
+    :param s:
         The string to be sized
+    :type s: const char \*
 
-    :param size_t n:
+    :param n:
         The maximum number of bytes to search
+    :type n: size_t
 
 .. _`strnlen.description`:
 
@@ -51,11 +54,13 @@ strcpy
 
     Copy a \ ``NUL``\  terminated string
 
-    :param char \*dest:
+    :param dest:
         Where to copy the string to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         Where to copy the string from
+    :type src: const char \*
 
 .. _`strcpy.description`:
 
@@ -73,14 +78,17 @@ strlcpy
 
     Copy a \ ``NUL``\  terminated string into a sized buffer
 
-    :param char \*dest:
+    :param dest:
         Where to copy the string to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         Where to copy the string from
+    :type src: const char \*
 
-    :param size_t size:
+    :param size:
         size of destination buffer
+    :type size: size_t
 
 .. _`strlcpy.description`:
 
@@ -101,14 +109,17 @@ strncpy
 
     Copy a length-limited, \ ``NUL-terminated``\  string
 
-    :param char \*dest:
+    :param dest:
         Where to copy the string to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         Where to copy the string from
+    :type src: const char \*
 
-    :param size_t n:
+    :param n:
         The maximum number of bytes to copy
+    :type n: size_t
 
 .. _`strncpy.description`:
 
@@ -127,11 +138,13 @@ strcat
 
     Append one \ ``NUL-terminated``\  string to another
 
-    :param char \*dest:
+    :param dest:
         The string to be appended to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         The string to append to it
+    :type src: const char \*
 
 .. _`strcat.description`:
 
@@ -149,14 +162,17 @@ strlcat
 
     Append a length-limited, \ ``NUL-terminated``\  string to another
 
-    :param char \*dest:
+    :param dest:
         The string to be appended to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         The string to append to it
+    :type src: const char \*
 
-    :param size_t n:
+    :param n:
         The size of the destination buffer.
+    :type n: size_t
 
 .. _`strncat`:
 
@@ -167,14 +183,17 @@ strncat
 
     Append a length-limited, \ ``NUL-terminated``\  string to another
 
-    :param char \*dest:
+    :param dest:
         The string to be appended to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         The string to append to it
+    :type src: const char \*
 
-    :param size_t n:
+    :param n:
         The maximum numbers of bytes to copy
+    :type n: size_t
 
 .. _`strncat.description`:
 
@@ -195,11 +214,13 @@ strcmp
 
     Compare two strings
 
-    :param const char \*s1:
+    :param s1:
         One string
+    :type s1: const char \*
 
-    :param const char \*s2:
+    :param s2:
         Another string
+    :type s2: const char \*
 
 .. _`strcmp.description`:
 
@@ -219,11 +240,13 @@ strrchr
 
     Find the last occurrence of a character in a string
 
-    :param const char \*s:
+    :param s:
         The string to be searched
+    :type s: const char \*
 
-    :param int c:
+    :param c:
         The character to search for
+    :type c: int
 
 .. _`strstr`:
 
@@ -234,11 +257,13 @@ strstr
 
     Find the first substring in a \ ``NUL``\  terminated string
 
-    :param const char \*s1:
+    :param s1:
         The string to be searched
+    :type s1: const char \*
 
-    :param const char \*s2:
+    :param s2:
         The string to search for
+    :type s2: const char \*
 
 .. _`memchr`:
 
@@ -249,14 +274,17 @@ memchr
 
     Find a character in an area of memory.
 
-    :param const void \*s:
+    :param s:
         The memory area
+    :type s: const void \*
 
-    :param int c:
+    :param c:
         The byte to search for
+    :type c: int
 
-    :param size_t n:
+    :param n:
         The size of the area.
+    :type n: size_t
 
 .. _`memchr.description`:
 
@@ -275,14 +303,17 @@ memcmp
 
     Compare two areas of memory
 
-    :param const void \*s1:
+    :param s1:
         One area of memory
+    :type s1: const void \*
 
-    :param const void \*s2:
+    :param s2:
         Another area of memory
+    :type s2: const void \*
 
-    :param size_t n:
+    :param n:
         *undescribed*
+    :type n: size_t
 
 .. _`memscan`:
 
@@ -293,14 +324,17 @@ memscan
 
     Find a character in an area of memory.
 
-    :param void \*s:
+    :param s:
         The memory area
+    :type s: void \*
 
-    :param int c:
+    :param c:
         The byte to search for
+    :type c: int
 
-    :param size_t n:
+    :param n:
         The size of the area.
+    :type n: size_t
 
 .. _`memscan.description`:
 

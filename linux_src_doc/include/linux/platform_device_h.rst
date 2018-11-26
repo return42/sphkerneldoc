@@ -10,26 +10,33 @@ platform_device_register_resndata
 
     add a platform-level device with resources and platform-specific data
 
-    :param struct device \*parent:
+    :param parent:
         parent device for the device we're adding
+    :type parent: struct device \*
 
-    :param const char \*name:
+    :param name:
         base name of the device we're adding
+    :type name: const char \*
 
-    :param int id:
+    :param id:
         instance id
+    :type id: int
 
-    :param const struct resource \*res:
+    :param res:
         set of resources that needs to be allocated for the device
+    :type res: const struct resource \*
 
-    :param unsigned int num:
+    :param num:
         number of resources
+    :type num: unsigned int
 
-    :param const void \*data:
+    :param data:
         platform specific data for this platform device
+    :type data: const void \*
 
-    :param size_t size:
+    :param size:
         size of platform specific data
+    :type size: size_t
 
 .. _`platform_device_register_resndata.description`:
 
@@ -47,17 +54,21 @@ platform_device_register_simple
 
     add a platform-level device and its resources
 
-    :param const char \*name:
+    :param name:
         base name of the device we're adding
+    :type name: const char \*
 
-    :param int id:
+    :param id:
         instance id
+    :type id: int
 
-    :param const struct resource \*res:
+    :param res:
         set of resources that needs to be allocated for the device
+    :type res: const struct resource \*
 
-    :param unsigned int num:
+    :param num:
         number of resources
+    :type num: unsigned int
 
 .. _`platform_device_register_simple.description`:
 
@@ -88,20 +99,25 @@ platform_device_register_data
 
     add a platform-level device with platform-specific data
 
-    :param struct device \*parent:
+    :param parent:
         parent device for the device we're adding
+    :type parent: struct device \*
 
-    :param const char \*name:
+    :param name:
         base name of the device we're adding
+    :type name: const char \*
 
-    :param int id:
+    :param id:
         instance id
+    :type id: int
 
-    :param const void \*data:
+    :param data:
         platform specific data for this platform device
+    :type data: const void \*
 
-    :param size_t size:
+    :param size:
         size of platform specific data
+    :type size: size_t
 
 .. _`platform_device_register_data.description`:
 

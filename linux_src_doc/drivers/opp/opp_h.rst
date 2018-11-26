@@ -159,10 +159,12 @@ Definition
         struct list_head dev_list;
         struct list_head opp_list;
         struct kref kref;
+        struct kref list_kref;
         struct mutex lock;
         struct device_node *np;
         unsigned long clock_latency_ns_max;
         unsigned int voltage_tolerance_v1;
+        bool parsed_static_opps;
         enum opp_table_access shared_opp;
         struct dev_pm_opp *suspend_opp;
         unsigned int *supported_hw;
@@ -202,8 +204,11 @@ opp_list
 kref
     for reference count of the table.
 
+list_kref
+    for reference count of the OPP list.
+
 lock
-    mutex protecting the opp_list.
+    mutex protecting the opp_list and dev_list.
 
 np
     struct device_node pointer for opp's DT node.
@@ -213,6 +218,9 @@ clock_latency_ns_max
 
 voltage_tolerance_v1
     In percentage, for v1 bindings only.
+
+parsed_static_opps
+    True if OPPs are initialized from DT.
 
 shared_opp
     OPP is shared between multiple devices.

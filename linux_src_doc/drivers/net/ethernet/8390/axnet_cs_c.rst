@@ -10,8 +10,9 @@ ax_open
 
     Open/initialize the board.
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to initialize
+    :type dev: struct net_device \*
 
 .. _`ax_open.description`:
 
@@ -31,8 +32,9 @@ ax_close
 
     shut down network device
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to close
+    :type dev: struct net_device \*
 
 .. _`ax_close.description`:
 
@@ -50,8 +52,9 @@ axnet_tx_timeout
 
     handle transmit time out condition
 
-    :param struct net_device \*dev:
+    :param dev:
         network device which has apparently fallen asleep
+    :type dev: struct net_device \*
 
 .. _`axnet_tx_timeout.description`:
 
@@ -70,11 +73,13 @@ axnet_start_xmit
 
     begin packet transmission
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to be sent
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to which packet is sent
+    :type dev: struct net_device \*
 
 .. _`axnet_start_xmit.description`:
 
@@ -92,11 +97,13 @@ ax_interrupt
 
     handle the interrupts from an 8390
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         a pointer to the net_device
+    :type dev_id: void \*
 
 .. _`ax_interrupt.description`:
 
@@ -118,8 +125,9 @@ ei_tx_err
 
     handle transmitter error
 
-    :param struct net_device \*dev:
+    :param dev:
         network device which threw the exception
+    :type dev: struct net_device \*
 
 .. _`ei_tx_err.description`:
 
@@ -144,8 +152,9 @@ ei_tx_intr
 
     transmit interrupt handler
 
-    :param struct net_device \*dev:
+    :param dev:
         network device for which tx intr is handled
+    :type dev: struct net_device \*
 
 .. _`ei_tx_intr.we-have-finished-a-transmit`:
 
@@ -164,8 +173,9 @@ ei_receive
 
     receive some packets
 
-    :param struct net_device \*dev:
+    :param dev:
         network device with which receive will be run
+    :type dev: struct net_device \*
 
 .. _`ei_receive.description`:
 
@@ -184,8 +194,9 @@ ei_rx_overrun
 
     handle receiver overrun
 
-    :param struct net_device \*dev:
+    :param dev:
         network device which threw exception
+    :type dev: struct net_device \*
 
 .. _`ei_rx_overrun.we-have-a-receiver-overrun`:
 
@@ -209,8 +220,9 @@ do_set_multicast_list
 
     set/clear multicast filter
 
-    :param struct net_device \*dev:
+    :param dev:
         net device for which multicast filter is adjusted
+    :type dev: struct net_device \*
 
 .. _`do_set_multicast_list.description`:
 
@@ -229,11 +241,13 @@ AX88190_init
 
     initialize 8390 hardware
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to initialize
+    :type dev: struct net_device \*
 
-    :param int startp:
+    :param startp:
         boolean.  non-zero value to initiate chip processing
+    :type startp: int
 
 .. _`ax88190_init.description`:
 

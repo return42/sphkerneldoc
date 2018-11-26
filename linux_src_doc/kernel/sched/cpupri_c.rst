@@ -10,14 +10,17 @@ cpupri_find
 
     find the best (lowest-pri) CPU in the system
 
-    :param struct cpupri \*cp:
+    :param cp:
         The cpupri context
+    :type cp: struct cpupri \*
 
-    :param struct task_struct \*p:
+    :param p:
         The task
+    :type p: struct task_struct \*
 
-    :param struct cpumask \*lowest_mask:
+    :param lowest_mask:
         A mask to fill in with selected CPUs (or NULL)
+    :type lowest_mask: struct cpumask \*
 
 .. _`cpupri_find.note`:
 
@@ -47,14 +50,17 @@ cpupri_set
 
     update the CPU priority setting
 
-    :param struct cpupri \*cp:
+    :param cp:
         The cpupri context
+    :type cp: struct cpupri \*
 
-    :param int cpu:
+    :param cpu:
         The target CPU
+    :type cpu: int
 
-    :param int newpri:
+    :param newpri:
         The priority (INVALID-RT99) to assign to this CPU
+    :type newpri: int
 
 .. _`cpupri_set.note`:
 
@@ -79,8 +85,9 @@ cpupri_init
 
     initialize the cpupri structure
 
-    :param struct cpupri \*cp:
+    :param cp:
         The cpupri context
+    :type cp: struct cpupri \*
 
 .. _`cpupri_init.return`:
 
@@ -98,8 +105,9 @@ cpupri_cleanup
 
     clean up the cpupri structure
 
-    :param struct cpupri \*cp:
+    :param cp:
         The cpupri context
+    :type cp: struct cpupri \*
 
 .. This file was automatic generated / don't edit.
 

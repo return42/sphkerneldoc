@@ -10,11 +10,13 @@ iommu_insert_resv_region
 
     Insert a new region in the list of reserved regions.
 
-    :param struct iommu_resv_region \*new:
+    :param new:
         new region to insert
+    :type new: struct iommu_resv_region \*
 
-    :param struct list_head \*regions:
+    :param regions:
         list of regions
+    :type regions: struct list_head \*
 
 .. _`iommu_insert_resv_region.description`:
 
@@ -36,8 +38,9 @@ iommu_group_alloc
 
     Allocate a new group
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iommu_group_alloc.description`:
 
@@ -61,8 +64,9 @@ iommu_group_get_iommudata
 
     retrieve iommu_data registered for a group
 
-    :param struct iommu_group \*group:
+    :param group:
         the group
+    :type group: struct iommu_group \*
 
 .. _`iommu_group_get_iommudata.description`:
 
@@ -82,11 +86,13 @@ iommu_group_set_iommudata
 
     set iommu_data for a group
 
-    :param struct iommu_group \*group:
+    :param group:
         the group
+    :type group: struct iommu_group \*
 
-    :param void \*iommu_data:
+    :param iommu_data:
         new data
+    :type iommu_data: void \*
 
     :param void (\*release)(void \*iommu_data):
         release function for iommu_data
@@ -109,11 +115,13 @@ iommu_group_set_name
 
     set name for a group
 
-    :param struct iommu_group \*group:
+    :param group:
         the group
+    :type group: struct iommu_group \*
 
-    :param const char \*name:
+    :param name:
         name
+    :type name: const char \*
 
 .. _`iommu_group_set_name.description`:
 
@@ -132,11 +140,13 @@ iommu_group_add_device
 
     add a device to an iommu group
 
-    :param struct iommu_group \*group:
+    :param group:
         the group into which to add the device (reference should be held)
+    :type group: struct iommu_group \*
 
-    :param struct device \*dev:
+    :param dev:
         the device
+    :type dev: struct device \*
 
 .. _`iommu_group_add_device.description`:
 
@@ -155,8 +165,9 @@ iommu_group_remove_device
 
     remove a device from it's current group
 
-    :param struct device \*dev:
+    :param dev:
         device to be removed
+    :type dev: struct device \*
 
 .. _`iommu_group_remove_device.description`:
 
@@ -175,11 +186,13 @@ it's current group.  This decrements the iommu group reference count.
 
     iterate over each device in the group
 
-    :param struct iommu_group \*group:
+    :param group:
         the group
+    :type group: struct iommu_group \*
 
-    :param void \*data:
+    :param data:
         caller opaque data to be passed to callback function
+    :type data: void \*
 
     :param int (\*fn)(struct device \*, void \*):
         caller supplied callback function
@@ -203,8 +216,9 @@ iommu_group_get
 
     Return the group for a device and increment reference
 
-    :param struct device \*dev:
+    :param dev:
         get the group that this device belongs to
+    :type dev: struct device \*
 
 .. _`iommu_group_get.description`:
 
@@ -224,8 +238,9 @@ iommu_group_ref_get
 
     Increment reference on a group
 
-    :param struct iommu_group \*group:
+    :param group:
         the group to use, must not be NULL
+    :type group: struct iommu_group \*
 
 .. _`iommu_group_ref_get.description`:
 
@@ -244,8 +259,9 @@ iommu_group_put
 
     Decrement group reference
 
-    :param struct iommu_group \*group:
+    :param group:
         the group to use
+    :type group: struct iommu_group \*
 
 .. _`iommu_group_put.description`:
 
@@ -264,11 +280,13 @@ iommu_group_register_notifier
 
     Register a notifier for group changes
 
-    :param struct iommu_group \*group:
+    :param group:
         the group to watch
+    :type group: struct iommu_group \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block to signal
+    :type nb: struct notifier_block \*
 
 .. _`iommu_group_register_notifier.description`:
 
@@ -288,11 +306,13 @@ iommu_group_unregister_notifier
 
     Unregister a notifier
 
-    :param struct iommu_group \*group:
+    :param group:
         the group to watch
+    :type group: struct iommu_group \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block to signal
+    :type nb: struct notifier_block \*
 
 .. _`iommu_group_unregister_notifier.description`:
 
@@ -310,8 +330,9 @@ iommu_group_id
 
     Return ID for a group
 
-    :param struct iommu_group \*group:
+    :param group:
         the group to ID
+    :type group: struct iommu_group \*
 
 .. _`iommu_group_id.description`:
 
@@ -329,8 +350,9 @@ iommu_group_get_for_dev
 
     Find or create the IOMMU group for a device
 
-    :param struct device \*dev:
+    :param dev:
         target device
+    :type dev: struct device \*
 
 .. _`iommu_group_get_for_dev.description`:
 
@@ -352,11 +374,13 @@ bus_set_iommu
 
     set iommu-callbacks for the bus
 
-    :param struct bus_type \*bus:
+    :param bus:
         bus.
+    :type bus: struct bus_type \*
 
-    :param const struct iommu_ops \*ops:
+    :param ops:
         the callbacks provided by the iommu-driver
+    :type ops: const struct iommu_ops \*
 
 .. _`bus_set_iommu.description`:
 
@@ -380,14 +404,17 @@ iommu_set_fault_handler
 
     set a fault handler for an iommu domain
 
-    :param struct iommu_domain \*domain:
+    :param domain:
         iommu domain
+    :type domain: struct iommu_domain \*
 
-    :param iommu_fault_handler_t handler:
+    :param handler:
         fault handler
+    :type handler: iommu_fault_handler_t
 
-    :param void \*token:
+    :param token:
         user data, will be passed back to the fault handler
+    :type token: void \*
 
 .. _`iommu_set_fault_handler.description`:
 
@@ -409,17 +436,21 @@ report_iommu_fault
 
     report about an IOMMU fault to the IOMMU framework
 
-    :param struct iommu_domain \*domain:
+    :param domain:
         the iommu domain where the fault has happened
+    :type domain: struct iommu_domain \*
 
-    :param struct device \*dev:
+    :param dev:
         the device where the fault has happened
+    :type dev: struct device \*
 
-    :param unsigned long iova:
+    :param iova:
         the faulting address
+    :type iova: unsigned long
 
-    :param int flags:
+    :param flags:
         mmu fault flags (e.g. IOMMU_FAULT_READ/IOMMU_FAULT_WRITE/...)
+    :type flags: int
 
 .. _`report_iommu_fault.description`:
 

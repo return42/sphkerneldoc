@@ -184,21 +184,26 @@ sbitmap_init_node
 
     Initialize a \ :c:type:`struct sbitmap <sbitmap>`\  on a specific memory node.
 
-    :param struct sbitmap \*sb:
+    :param sb:
         Bitmap to initialize.
+    :type sb: struct sbitmap \*
 
-    :param unsigned int depth:
+    :param depth:
         Number of bits to allocate.
+    :type depth: unsigned int
 
-    :param int shift:
+    :param shift:
         Use 2^@shift bits per word in the bitmap; if a negative number if
         given, a good default is chosen.
+    :type shift: int
 
-    :param gfp_t flags:
+    :param flags:
         Allocation flags.
+    :type flags: gfp_t
 
-    :param int node:
+    :param node:
         Memory node to allocate on.
+    :type node: int
 
 .. _`sbitmap_init_node.return`:
 
@@ -216,8 +221,9 @@ sbitmap_free
 
     Free memory used by a \ :c:type:`struct sbitmap <sbitmap>`\ .
 
-    :param struct sbitmap \*sb:
+    :param sb:
         Bitmap to free.
+    :type sb: struct sbitmap \*
 
 .. _`sbitmap_resize`:
 
@@ -228,11 +234,13 @@ sbitmap_resize
 
     Resize a \ :c:type:`struct sbitmap <sbitmap>`\ .
 
-    :param struct sbitmap \*sb:
+    :param sb:
         Bitmap to resize.
+    :type sb: struct sbitmap \*
 
-    :param unsigned int depth:
+    :param depth:
         New number of bits to resize to.
+    :type depth: unsigned int
 
 .. _`sbitmap_resize.description`:
 
@@ -251,16 +259,19 @@ sbitmap_get
 
     Try to allocate a free bit from a \ :c:type:`struct sbitmap <sbitmap>`\ .
 
-    :param struct sbitmap \*sb:
+    :param sb:
         Bitmap to allocate from.
+    :type sb: struct sbitmap \*
 
-    :param unsigned int alloc_hint:
+    :param alloc_hint:
         Hint for where to start searching for a free bit.
+    :type alloc_hint: unsigned int
 
-    :param bool round_robin:
+    :param round_robin:
         If true, be stricter about allocation order; always allocate
         starting from the last allocated bit. This is less efficient
         than the default behavior (false).
+    :type round_robin: bool
 
 .. _`sbitmap_get.description`:
 
@@ -285,14 +296,17 @@ sbitmap_get_shallow
 
     Try to allocate a free bit from a \ :c:type:`struct sbitmap <sbitmap>`\ , limiting the depth used from each word.
 
-    :param struct sbitmap \*sb:
+    :param sb:
         Bitmap to allocate from.
+    :type sb: struct sbitmap \*
 
-    :param unsigned int alloc_hint:
+    :param alloc_hint:
         Hint for where to start searching for a free bit.
+    :type alloc_hint: unsigned int
 
-    :param unsigned long shallow_depth:
+    :param shallow_depth:
         The maximum number of bits to allocate from a single word.
+    :type shallow_depth: unsigned long
 
 .. _`sbitmap_get_shallow.description`:
 
@@ -322,8 +336,9 @@ sbitmap_any_bit_set
 
     Check for a set bit in a \ :c:type:`struct sbitmap <sbitmap>`\ .
 
-    :param const struct sbitmap \*sb:
+    :param sb:
         Bitmap to check.
+    :type sb: const struct sbitmap \*
 
 .. _`sbitmap_any_bit_set.return`:
 
@@ -341,8 +356,9 @@ sbitmap_any_bit_clear
 
     Check for an unset bit in a \ :c:type:`struct sbitmap <sbitmap>`\ .
 
-    :param const struct sbitmap \*sb:
+    :param sb:
         Bitmap to check.
+    :type sb: const struct sbitmap \*
 
 .. _`sbitmap_any_bit_clear.return`:
 
@@ -360,17 +376,21 @@ true if any bit in the bitmap is clear, false otherwise.
 
     Iterate over each set bit in a \ :c:type:`struct sbitmap <sbitmap>`\ .
 
-    :param struct sbitmap \*sb:
+    :param sb:
         Bitmap to iterate over.
+    :type sb: struct sbitmap \*
 
-    :param unsigned int start:
+    :param start:
         Where to start the iteration.
+    :type start: unsigned int
 
-    :param sb_for_each_fn fn:
+    :param fn:
         Callback. Should return true to continue or false to break early.
+    :type fn: sb_for_each_fn
 
-    :param void \*data:
+    :param data:
         Pointer to pass to callback.
+    :type data: void \*
 
 .. _`__sbitmap_for_each_set.description`:
 
@@ -389,14 +409,17 @@ sbitmap_for_each_set
 
     Iterate over each set bit in a \ :c:type:`struct sbitmap <sbitmap>`\ .
 
-    :param struct sbitmap \*sb:
+    :param sb:
         Bitmap to iterate over.
+    :type sb: struct sbitmap \*
 
-    :param sb_for_each_fn fn:
+    :param fn:
         Callback. Should return true to continue or false to break early.
+    :type fn: sb_for_each_fn
 
-    :param void \*data:
+    :param data:
         Pointer to pass to callback.
+    :type data: void \*
 
 .. _`sbitmap_show`:
 
@@ -407,11 +430,13 @@ sbitmap_show
 
     Dump \ :c:type:`struct sbitmap <sbitmap>`\  information to a \ :c:type:`struct seq_file <seq_file>`\ .
 
-    :param struct sbitmap \*sb:
+    :param sb:
         Bitmap to show.
+    :type sb: struct sbitmap \*
 
-    :param struct seq_file \*m:
+    :param m:
         struct seq_file to write to.
+    :type m: struct seq_file \*
 
 .. _`sbitmap_show.description`:
 
@@ -429,11 +454,13 @@ sbitmap_bitmap_show
 
     Write a hex dump of a \ :c:type:`struct sbitmap <sbitmap>`\  to a \ :c:type:`struct seq_file <seq_file>`\ .
 
-    :param struct sbitmap \*sb:
+    :param sb:
         Bitmap to show.
+    :type sb: struct sbitmap \*
 
-    :param struct seq_file \*m:
+    :param m:
         struct seq_file to write to.
+    :type m: struct seq_file \*
 
 .. _`sbitmap_bitmap_show.description`:
 
@@ -452,23 +479,29 @@ sbitmap_queue_init_node
 
     Initialize a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\  on a specific memory node.
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to initialize.
+    :type sbq: struct sbitmap_queue \*
 
-    :param unsigned int depth:
+    :param depth:
         See \ :c:func:`sbitmap_init_node`\ .
+    :type depth: unsigned int
 
-    :param int shift:
+    :param shift:
         See \ :c:func:`sbitmap_init_node`\ .
+    :type shift: int
 
-    :param bool round_robin:
+    :param round_robin:
         See \ :c:func:`sbitmap_get`\ .
+    :type round_robin: bool
 
-    :param gfp_t flags:
+    :param flags:
         Allocation flags.
+    :type flags: gfp_t
 
-    :param int node:
+    :param node:
         Memory node to allocate on.
+    :type node: int
 
 .. _`sbitmap_queue_init_node.return`:
 
@@ -486,8 +519,9 @@ sbitmap_queue_free
 
     Free memory used by a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ .
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to free.
+    :type sbq: struct sbitmap_queue \*
 
 .. _`sbitmap_queue_resize`:
 
@@ -498,11 +532,13 @@ sbitmap_queue_resize
 
     Resize a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ .
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to resize.
+    :type sbq: struct sbitmap_queue \*
 
-    :param unsigned int depth:
+    :param depth:
         New number of bits to resize to.
+    :type depth: unsigned int
 
 .. _`sbitmap_queue_resize.description`:
 
@@ -522,8 +558,9 @@ resize the underlying \ :c:type:`struct sbitmap <sbitmap>`\ .
 
     Try to allocate a free bit from a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\  with preemption already disabled.
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to allocate from.
+    :type sbq: struct sbitmap_queue \*
 
 .. _`__sbitmap_queue_get.return`:
 
@@ -541,12 +578,14 @@ Non-negative allocated bit number if successful, -1 otherwise.
 
     Try to allocate a free bit from a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ , limiting the depth used from each word, with preemption already disabled.
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to allocate from.
+    :type sbq: struct sbitmap_queue \*
 
-    :param unsigned int shallow_depth:
+    :param shallow_depth:
         The maximum number of bits to allocate from a single word.
         See \ :c:func:`sbitmap_get_shallow`\ .
+    :type shallow_depth: unsigned int
 
 .. _`__sbitmap_queue_get_shallow.description`:
 
@@ -572,12 +611,14 @@ sbitmap_queue_get
 
     Try to allocate a free bit from a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ .
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to allocate from.
+    :type sbq: struct sbitmap_queue \*
 
-    :param unsigned int \*cpu:
+    :param cpu:
         Output parameter; will contain the CPU we ran on (e.g., to be passed to
         \ :c:func:`sbitmap_queue_clear`\ ).
+    :type cpu: unsigned int \*
 
 .. _`sbitmap_queue_get.return`:
 
@@ -595,16 +636,19 @@ sbitmap_queue_get_shallow
 
     Try to allocate a free bit from a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ , limiting the depth used from each word.
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to allocate from.
+    :type sbq: struct sbitmap_queue \*
 
-    :param unsigned int \*cpu:
+    :param cpu:
         Output parameter; will contain the CPU we ran on (e.g., to be passed to
         \ :c:func:`sbitmap_queue_clear`\ ).
+    :type cpu: unsigned int \*
 
-    :param unsigned int shallow_depth:
+    :param shallow_depth:
         The maximum number of bits to allocate from a single word.
         See \ :c:func:`sbitmap_get_shallow`\ .
+    :type shallow_depth: unsigned int
 
 .. _`sbitmap_queue_get_shallow.description`:
 
@@ -630,12 +674,14 @@ sbitmap_queue_min_shallow_depth
 
     Inform a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\  of the minimum shallow depth that will be used.
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue in question.
+    :type sbq: struct sbitmap_queue \*
 
-    :param unsigned int min_shallow_depth:
+    :param min_shallow_depth:
         The minimum shallow depth that will be passed to
         \ :c:func:`sbitmap_queue_get_shallow`\  or \__sbitmap_queue_get_shallow().
+    :type min_shallow_depth: unsigned int
 
 .. _`sbitmap_queue_min_shallow_depth.description`:
 
@@ -658,14 +704,17 @@ sbitmap_queue_clear
 
     Free an allocated bit and wake up waiters on a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ .
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap to free from.
+    :type sbq: struct sbitmap_queue \*
 
-    :param unsigned int nr:
+    :param nr:
         Bit number to free.
+    :type nr: unsigned int
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU the bit was allocated on.
+    :type cpu: unsigned int
 
 .. _`sbq_wait_ptr`:
 
@@ -676,11 +725,13 @@ sbq_wait_ptr
 
     Get the next wait queue to use for a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ .
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to wait on.
+    :type sbq: struct sbitmap_queue \*
 
-    :param atomic_t \*wait_index:
+    :param wait_index:
         A counter per "user" of \ ``sbq``\ .
+    :type wait_index: atomic_t \*
 
 .. _`sbitmap_queue_wake_all`:
 
@@ -691,8 +742,9 @@ sbitmap_queue_wake_all
 
     Wake up everything waiting on a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ .
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to wake up.
+    :type sbq: struct sbitmap_queue \*
 
 .. _`sbitmap_queue_wake_up`:
 
@@ -703,8 +755,9 @@ sbitmap_queue_wake_up
 
     Wake up some of waiters in one waitqueue on a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ .
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to wake up.
+    :type sbq: struct sbitmap_queue \*
 
 .. _`sbitmap_queue_show`:
 
@@ -715,11 +768,13 @@ sbitmap_queue_show
 
     Dump \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\  information to a \ :c:type:`struct seq_file <seq_file>`\ .
 
-    :param struct sbitmap_queue \*sbq:
+    :param sbq:
         Bitmap queue to show.
+    :type sbq: struct sbitmap_queue \*
 
-    :param struct seq_file \*m:
+    :param m:
         struct seq_file to write to.
+    :type m: struct seq_file \*
 
 .. _`sbitmap_queue_show.description`:
 

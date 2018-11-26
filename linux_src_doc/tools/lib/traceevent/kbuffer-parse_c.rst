@@ -10,11 +10,13 @@ kbuffer_alloc
 
     allocat a new kbuffer \ ``size``\ ;       enum to denote size of word
 
-    :param enum kbuffer_long_size size:
+    :param size:
         *undescribed*
+    :type size: enum kbuffer_long_size
 
-    :param enum kbuffer_endian endian:
+    :param endian:
         enum to denote endianness
+    :type endian: enum kbuffer_endian
 
 .. _`kbuffer_alloc.description`:
 
@@ -32,14 +34,17 @@ kbuffer_translate_data
 
     read raw data to get a record
 
-    :param int swap:
+    :param swap:
         Set to 1 if bytes in words need to be swapped when read
+    :type swap: int
 
-    :param void \*data:
+    :param data:
         The raw data to read
+    :type data: void \*
 
-    :param unsigned int \*size:
+    :param size:
         Address to store the size of the event data.
+    :type size: unsigned int \*
 
 .. _`kbuffer_translate_data.description`:
 
@@ -59,11 +64,13 @@ kbuffer_next_event
 
     increment the current pointer
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to read
+    :type kbuf: struct kbuffer \*
 
-    :param unsigned long long \*ts:
+    :param ts:
         Address to store the next record's timestamp (may be NULL to ignore)
+    :type ts: unsigned long long \*
 
 .. _`kbuffer_next_event.description`:
 
@@ -86,11 +93,13 @@ kbuffer_load_subbuffer
 
     load a new subbuffer into the kbuffer
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to load
+    :type kbuf: struct kbuffer \*
 
-    :param void \*subbuffer:
+    :param subbuffer:
         The subbuffer to load into \ ``kbuf``\ .
+    :type subbuffer: void \*
 
 .. _`kbuffer_load_subbuffer.description`:
 
@@ -112,11 +121,13 @@ kbuffer_read_event
 
     read the next event in the kbuffer subbuffer
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to read from
+    :type kbuf: struct kbuffer \*
 
-    :param unsigned long long \*ts:
+    :param ts:
         The address to store the timestamp of the event (may be NULL to ignore)
+    :type ts: unsigned long long \*
 
 .. _`kbuffer_read_event.description`:
 
@@ -135,8 +146,9 @@ kbuffer_timestamp
 
     Return the timestamp of the current event
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to read from
+    :type kbuf: struct kbuffer \*
 
 .. _`kbuffer_timestamp.description`:
 
@@ -154,14 +166,17 @@ kbuffer_read_at_offset
 
     read the event that is at offset
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to read from
+    :type kbuf: struct kbuffer \*
 
-    :param int offset:
+    :param offset:
         The offset into the subbuffer
+    :type offset: int
 
-    :param unsigned long long \*ts:
+    :param ts:
         The address to store the timestamp of the event (may be NULL to ignore)
+    :type ts: unsigned long long \*
 
 .. _`kbuffer_read_at_offset.description`:
 
@@ -189,8 +204,9 @@ kbuffer_subbuffer_size
 
     the size of the loaded subbuffer
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to read from
+    :type kbuf: struct kbuffer \*
 
 .. _`kbuffer_subbuffer_size.description`:
 
@@ -210,8 +226,9 @@ kbuffer_curr_index
 
     Return the index of the record
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to read from
+    :type kbuf: struct kbuffer \*
 
 .. _`kbuffer_curr_index.description`:
 
@@ -233,8 +250,9 @@ kbuffer_curr_offset
 
     Return the offset of the record
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to read from
+    :type kbuf: struct kbuffer \*
 
 .. _`kbuffer_curr_offset.description`:
 
@@ -253,8 +271,9 @@ kbuffer_event_size
 
     return the size of the event data
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to read
+    :type kbuf: struct kbuffer \*
 
 .. _`kbuffer_event_size.description`:
 
@@ -273,8 +292,9 @@ kbuffer_curr_size
 
     return the size of the entire record
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to read
+    :type kbuf: struct kbuffer \*
 
 .. _`kbuffer_curr_size.description`:
 
@@ -293,8 +313,9 @@ kbuffer_missed_events
 
     return the # of missed events from last event.
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to read from
+    :type kbuf: struct kbuffer \*
 
 .. _`kbuffer_missed_events.description`:
 
@@ -315,8 +336,9 @@ kbuffer_set_old_format
 
     set the kbuffer to use the old format parsing
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer to set
+    :type kbuf: struct kbuffer \*
 
 .. _`kbuffer_set_old_format.description`:
 
@@ -337,8 +359,9 @@ kbuffer_start_of_data
 
     return offset of where data starts on subbuffer
 
-    :param struct kbuffer \*kbuf:
+    :param kbuf:
         The kbuffer
+    :type kbuf: struct kbuffer \*
 
 .. _`kbuffer_start_of_data.description`:
 

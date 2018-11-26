@@ -78,5 +78,28 @@ write
     \ ``val``\ :   Value to write
     The function returns 0 on success or a negative error number.
 
+.. _`hwmon_is_bad_char`:
+
+hwmon_is_bad_char
+=================
+
+.. c:function:: bool hwmon_is_bad_char(const char ch)
+
+    Is the char invalid in a hwmon name
+
+    :param ch:
+        the char to be considered
+    :type ch: const char
+
+.. _`hwmon_is_bad_char.description`:
+
+Description
+-----------
+
+\ :c:func:`hwmon_is_bad_char`\  can be used to determine if the given character
+may not be used in a hwmon name.
+
+Returns true if the char is invalid, false otherwise.
+
 .. This file was automatic generated / don't edit.
 

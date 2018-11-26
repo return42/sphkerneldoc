@@ -10,11 +10,13 @@ radeon_ring_write
 
     write a value to the ring
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
-    :param uint32_t v:
+    :param v:
         dword (dw) value to write
+    :type v: uint32_t
 
 .. _`radeon_ring_write.description`:
 

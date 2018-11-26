@@ -58,14 +58,17 @@ qcom_smem_state_update_bits
 
     update the masked bits in state with value
 
-    :param struct qcom_smem_state \*state:
+    :param state:
         state handle acquired by calling \ :c:func:`qcom_smem_state_get`\ 
+    :type state: struct qcom_smem_state \*
 
-    :param u32 mask:
+    :param mask:
         bit mask for the change
+    :type mask: u32
 
-    :param u32 value:
+    :param value:
         new value for the masked bits
+    :type value: u32
 
 .. _`qcom_smem_state_update_bits.description`:
 
@@ -83,14 +86,17 @@ qcom_smem_state_get
 
     acquire handle to a state
 
-    :param struct device \*dev:
+    :param dev:
         client device pointer
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         name of the state to lookup
+    :type con_id: const char \*
 
-    :param unsigned \*bit:
+    :param bit:
         flags from the state reference, indicating which bit's affected
+    :type bit: unsigned \*
 
 .. _`qcom_smem_state_get.description`:
 
@@ -109,8 +115,9 @@ qcom_smem_state_put
 
     release state handle
 
-    :param struct qcom_smem_state \*state:
+    :param state:
         state handle to be released
+    :type state: struct qcom_smem_state \*
 
 .. _`qcom_smem_state_register`:
 
@@ -121,14 +128,17 @@ qcom_smem_state_register
 
     register a new state
 
-    :param struct device_node \*of_node:
+    :param of_node:
         of_node used for matching client lookups
+    :type of_node: struct device_node \*
 
-    :param const struct qcom_smem_state_ops \*ops:
+    :param ops:
         implementation ops
+    :type ops: const struct qcom_smem_state_ops \*
 
-    :param void \*priv:
+    :param priv:
         implementation specific private data
+    :type priv: void \*
 
 .. _`qcom_smem_state_unregister`:
 
@@ -139,8 +149,9 @@ qcom_smem_state_unregister
 
     unregister a registered state
 
-    :param struct qcom_smem_state \*state:
+    :param state:
         state handle to be unregistered
+    :type state: struct qcom_smem_state \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ find_php_slot
 
     return hotplug slot structure for device node
 
-    :param struct device_node \*dn:
+    :param dn:
         target \ :c:type:`struct device_node <device_node>`\ 
+    :type dn: struct device_node \*
 
 .. _`find_php_slot.description`:
 
@@ -32,8 +33,9 @@ dlpar_add_slot
 
     DLPAR add an I/O Slot
 
-    :param char \*drc_name:
+    :param drc_name:
         drc-name of newly added slot
+    :type drc_name: char \*
 
 .. _`dlpar_add_slot.description`:
 
@@ -62,11 +64,13 @@ dlpar_remove_vio_slot
 
     DLPAR remove a virtual I/O Slot
 
-    :param char \*drc_name:
+    :param drc_name:
         drc-name of newly added slot
+    :type drc_name: char \*
 
-    :param struct device_node \*dn:
+    :param dn:
         \ :c:type:`struct device_node <device_node>`\ 
+    :type dn: struct device_node \*
 
 .. _`dlpar_remove_vio_slot.description`:
 
@@ -92,11 +96,13 @@ dlpar_remove_pci_slot
 
     DLPAR remove a PCI I/O Slot
 
-    :param char \*drc_name:
+    :param drc_name:
         drc-name of newly added slot
+    :type drc_name: char \*
 
-    :param struct device_node \*dn:
+    :param dn:
         \ :c:type:`struct device_node <device_node>`\ 
+    :type dn: struct device_node \*
 
 .. _`dlpar_remove_pci_slot.description`:
 
@@ -123,8 +129,9 @@ dlpar_remove_slot
 
     DLPAR remove an I/O Slot
 
-    :param char \*drc_name:
+    :param drc_name:
         drc-name of newly added slot
+    :type drc_name: char \*
 
 .. _`dlpar_remove_slot.description`:
 

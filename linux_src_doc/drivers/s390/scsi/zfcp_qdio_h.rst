@@ -138,11 +138,13 @@ zfcp_qdio_sbale_req
 
     return pointer to sbale on req_q for a request
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         *undescribed*
+    :type q_req: struct zfcp_qdio_req \*
 
 .. _`zfcp_qdio_sbale_req.return`:
 
@@ -160,11 +162,13 @@ zfcp_qdio_sbale_curr
 
     return current sbale on req_q for a request
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         *undescribed*
+    :type q_req: struct zfcp_qdio_req \*
 
 .. _`zfcp_qdio_sbale_curr.return`:
 
@@ -182,23 +186,29 @@ zfcp_qdio_req_init
 
     initialize qdio request
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         request queue where to start putting the request
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         the qdio request to start
+    :type q_req: struct zfcp_qdio_req \*
 
-    :param unsigned long req_id:
+    :param req_id:
         The request id
+    :type req_id: unsigned long
 
-    :param u8 sbtype:
+    :param sbtype:
         type flags to set for all sbals
+    :type sbtype: u8
 
-    :param void \*data:
+    :param data:
         First data block
+    :type data: void \*
 
-    :param u32 len:
+    :param len:
         Length of first data block
+    :type len: u32
 
 .. _`zfcp_qdio_req_init.description`:
 
@@ -218,17 +228,21 @@ zfcp_qdio_fill_next
 
     Fill next sbale, only for single sbal requests
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         pointer to struct zfcp_queue_req
+    :type q_req: struct zfcp_qdio_req \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param u32 len:
+    :param len:
         *undescribed*
+    :type len: u32
 
 .. _`zfcp_qdio_fill_next.description`:
 
@@ -247,11 +261,13 @@ zfcp_qdio_set_sbale_last
 
     set last entry flag in current sbale
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         pointer to struct zfcp_queue_req
+    :type q_req: struct zfcp_qdio_req \*
 
 .. _`zfcp_qdio_sg_one_sbale`:
 
@@ -262,8 +278,9 @@ zfcp_qdio_sg_one_sbale
 
     check if one sbale is enough for sg data
 
-    :param struct scatterlist \*sg:
+    :param sg:
         The scatterlist where to check the data size
+    :type sg: struct scatterlist \*
 
 .. _`zfcp_qdio_sg_one_sbale.return`:
 
@@ -282,11 +299,13 @@ zfcp_qdio_skip_to_last_sbale
 
     skip to last sbale in sbal
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         *undescribed*
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         The current zfcp_qdio_req
+    :type q_req: struct zfcp_qdio_req \*
 
 .. _`zfcp_qdio_sbal_limit`:
 
@@ -297,14 +316,17 @@ zfcp_qdio_sbal_limit
 
     set the sbal limit for a request in q_req
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         The current zfcp_qdio_req
+    :type q_req: struct zfcp_qdio_req \*
 
-    :param int max_sbals:
+    :param max_sbals:
         maximum number of SBALs allowed
+    :type max_sbals: int
 
 .. _`zfcp_qdio_set_data_div`:
 
@@ -315,14 +337,17 @@ zfcp_qdio_set_data_div
 
     set data division count
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         The current zfcp_qdio_req
+    :type q_req: struct zfcp_qdio_req \*
 
-    :param u32 count:
+    :param count:
         The data division count
+    :type count: u32
 
 .. _`zfcp_qdio_real_bytes`:
 
@@ -333,8 +358,9 @@ zfcp_qdio_real_bytes
 
     count bytes used
 
-    :param struct scatterlist \*sg:
+    :param sg:
         pointer to struct scatterlist
+    :type sg: struct scatterlist \*
 
 .. _`zfcp_qdio_set_scount`:
 
@@ -345,11 +371,13 @@ zfcp_qdio_set_scount
 
     set SBAL count value
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         The current zfcp_qdio_req
+    :type q_req: struct zfcp_qdio_req \*
 
 .. This file was automatic generated / don't edit.
 

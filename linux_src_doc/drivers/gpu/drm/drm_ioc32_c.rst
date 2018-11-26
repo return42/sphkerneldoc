@@ -10,14 +10,17 @@ drm_compat_ioctl
 
     32bit IOCTL compatibility handler for DRM drivers
 
-    :param struct file \*filp:
+    :param filp:
         file this ioctl is called on
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl cmd number
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         user argument
+    :type arg: unsigned long
 
 .. _`drm_compat_ioctl.description`:
 

@@ -88,8 +88,9 @@ module_mei_cl_driver
 
     Helper macro for registering mei cl driver
 
-    :param  __mei_cldrv:
+    :param __mei_cldrv:
         mei_cl_driver structure
+    :type __mei_cldrv: 
 
 .. _`module_mei_cl_driver.description`:
 

@@ -10,8 +10,9 @@ hash_init
 
     initialize a hash table
 
-    :param  hashtable:
+    :param hashtable:
         hashtable to be initialized
+    :type hashtable: 
 
 .. _`hash_init.description`:
 
@@ -33,14 +34,17 @@ hash_add
 
     add an object to a hashtable
 
-    :param  hashtable:
+    :param hashtable:
         hashtable to add to
+    :type hashtable: 
 
-    :param  node:
+    :param node:
         the \ :c:type:`struct hlist_node <hlist_node>`\  of the object to be added
+    :type node: 
 
-    :param  key:
+    :param key:
         the key of the object to be added
+    :type key: 
 
 .. _`hash_add_rcu`:
 
@@ -51,14 +55,17 @@ hash_add_rcu
 
     add an object to a rcu enabled hashtable
 
-    :param  hashtable:
+    :param hashtable:
         hashtable to add to
+    :type hashtable: 
 
-    :param  node:
+    :param node:
         the \ :c:type:`struct hlist_node <hlist_node>`\  of the object to be added
+    :type node: 
 
-    :param  key:
+    :param key:
         the key of the object to be added
+    :type key: 
 
 .. _`hash_hashed`:
 
@@ -69,8 +76,9 @@ hash_hashed
 
     check whether an object is in any hashtable
 
-    :param struct hlist_node \*node:
+    :param node:
         the \ :c:type:`struct hlist_node <hlist_node>`\  of the object to be checked
+    :type node: struct hlist_node \*
 
 .. _`hash_empty`:
 
@@ -81,8 +89,9 @@ hash_empty
 
     check whether a hashtable is empty
 
-    :param  hashtable:
+    :param hashtable:
         hashtable to check
+    :type hashtable: 
 
 .. _`hash_empty.description`:
 
@@ -101,8 +110,9 @@ hash_del
 
     remove an object from a hashtable
 
-    :param struct hlist_node \*node:
+    :param node:
         \ :c:type:`struct hlist_node <hlist_node>`\  of the object to remove
+    :type node: struct hlist_node \*
 
 .. _`hash_del_rcu`:
 
@@ -113,8 +123,9 @@ hash_del_rcu
 
     remove an object from a rcu enabled hashtable
 
-    :param struct hlist_node \*node:
+    :param node:
         \ :c:type:`struct hlist_node <hlist_node>`\  of the object to remove
+    :type node: struct hlist_node \*
 
 .. _`hash_for_each`:
 
@@ -125,17 +136,21 @@ hash_for_each
 
     iterate over a hashtable
 
-    :param  name:
+    :param name:
         hashtable to iterate
+    :type name: 
 
-    :param  bkt:
+    :param bkt:
         integer to use as bucket loop cursor
+    :type bkt: 
 
-    :param  obj:
+    :param obj:
         the type \* to use as a loop cursor for each entry
+    :type obj: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct
+    :type member: 
 
 .. _`hash_for_each_rcu`:
 
@@ -146,17 +161,21 @@ hash_for_each_rcu
 
     iterate over a rcu enabled hashtable
 
-    :param  name:
+    :param name:
         hashtable to iterate
+    :type name: 
 
-    :param  bkt:
+    :param bkt:
         integer to use as bucket loop cursor
+    :type bkt: 
 
-    :param  obj:
+    :param obj:
         the type \* to use as a loop cursor for each entry
+    :type obj: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct
+    :type member: 
 
 .. _`hash_for_each_safe`:
 
@@ -167,20 +186,25 @@ hash_for_each_safe
 
     iterate over a hashtable safe against removal of hash entry
 
-    :param  name:
+    :param name:
         hashtable to iterate
+    :type name: 
 
-    :param  bkt:
+    :param bkt:
         integer to use as bucket loop cursor
+    :type bkt: 
 
-    :param  tmp:
+    :param tmp:
         a \ :c:type:`struct used <used>`\  for temporary storage
+    :type tmp: 
 
-    :param  obj:
+    :param obj:
         the type \* to use as a loop cursor for each entry
+    :type obj: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct
+    :type member: 
 
 .. _`hash_for_each_possible`:
 
@@ -191,17 +215,21 @@ hash_for_each_possible
 
     iterate over all possible objects hashing to the same bucket
 
-    :param  name:
+    :param name:
         hashtable to iterate
+    :type name: 
 
-    :param  obj:
+    :param obj:
         the type \* to use as a loop cursor for each entry
+    :type obj: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct
+    :type member: 
 
-    :param  key:
+    :param key:
         the key of the objects to iterate over
+    :type key: 
 
 .. _`hash_for_each_possible_rcu`:
 
@@ -212,17 +240,21 @@ hash_for_each_possible_rcu
 
     iterate over all possible objects hashing to the same bucket in an rcu enabled hashtable
 
-    :param  name:
+    :param name:
         hashtable to iterate
+    :type name: 
 
-    :param  obj:
+    :param obj:
         the type \* to use as a loop cursor for each entry
+    :type obj: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct
+    :type member: 
 
-    :param  key:
+    :param key:
         the key of the objects to iterate over
+    :type key: 
 
 .. _`hash_for_each_possible_rcu_notrace`:
 
@@ -233,17 +265,21 @@ hash_for_each_possible_rcu_notrace
 
     iterate over all possible objects hashing to the same bucket in an rcu enabled hashtable in a rcu enabled hashtable
 
-    :param  name:
+    :param name:
         hashtable to iterate
+    :type name: 
 
-    :param  obj:
+    :param obj:
         the type \* to use as a loop cursor for each entry
+    :type obj: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct
+    :type member: 
 
-    :param  key:
+    :param key:
         the key of the objects to iterate over
+    :type key: 
 
 .. _`hash_for_each_possible_rcu_notrace.description`:
 
@@ -262,20 +298,25 @@ hash_for_each_possible_safe
 
     iterate over all possible objects hashing to the same bucket safe against removals
 
-    :param  name:
+    :param name:
         hashtable to iterate
+    :type name: 
 
-    :param  obj:
+    :param obj:
         the type \* to use as a loop cursor for each entry
+    :type obj: 
 
-    :param  tmp:
+    :param tmp:
         a \ :c:type:`struct used <used>`\  for temporary storage
+    :type tmp: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct
+    :type member: 
 
-    :param  key:
+    :param key:
         the key of the objects to iterate over
+    :type key: 
 
 .. This file was automatic generated / don't edit.
 

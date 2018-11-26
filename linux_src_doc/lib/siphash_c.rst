@@ -10,11 +10,13 @@ siphash_1u64
 
     compute 64-bit siphash PRF value of a u64
 
-    :param const u64 first:
+    :param first:
         first u64
+    :type first: const u64
 
-    :param const siphash_key_t \*key:
+    :param key:
         the siphash key
+    :type key: const siphash_key_t \*
 
 .. _`siphash_2u64`:
 
@@ -25,14 +27,17 @@ siphash_2u64
 
     compute 64-bit siphash PRF value of 2 u64
 
-    :param const u64 first:
+    :param first:
         first u64
+    :type first: const u64
 
-    :param const u64 second:
+    :param second:
         second u64
+    :type second: const u64
 
-    :param const siphash_key_t \*key:
+    :param key:
         the siphash key
+    :type key: const siphash_key_t \*
 
 .. _`siphash_3u64`:
 
@@ -43,17 +48,21 @@ siphash_3u64
 
     compute 64-bit siphash PRF value of 3 u64
 
-    :param const u64 first:
+    :param first:
         first u64
+    :type first: const u64
 
-    :param const u64 second:
+    :param second:
         second u64
+    :type second: const u64
 
-    :param const u64 third:
+    :param third:
         third u64
+    :type third: const u64
 
-    :param const siphash_key_t \*key:
+    :param key:
         the siphash key
+    :type key: const siphash_key_t \*
 
 .. _`siphash_4u64`:
 
@@ -64,20 +73,25 @@ siphash_4u64
 
     compute 64-bit siphash PRF value of 4 u64
 
-    :param const u64 first:
+    :param first:
         first u64
+    :type first: const u64
 
-    :param const u64 second:
+    :param second:
         second u64
+    :type second: const u64
 
-    :param const u64 third:
+    :param third:
         third u64
+    :type third: const u64
 
-    :param const u64 forth:
+    :param forth:
         forth u64
+    :type forth: const u64
 
-    :param const siphash_key_t \*key:
+    :param key:
         the siphash key
+    :type key: const siphash_key_t \*
 
 .. _`hsiphash_1u32`:
 
@@ -88,11 +102,13 @@ hsiphash_1u32
 
     compute 64-bit hsiphash PRF value of a u32
 
-    :param const u32 first:
+    :param first:
         first u32
+    :type first: const u32
 
-    :param const hsiphash_key_t \*key:
+    :param key:
         the hsiphash key
+    :type key: const hsiphash_key_t \*
 
 .. _`hsiphash_2u32`:
 
@@ -103,14 +119,17 @@ hsiphash_2u32
 
     compute 32-bit hsiphash PRF value of 2 u32
 
-    :param const u32 first:
+    :param first:
         first u32
+    :type first: const u32
 
-    :param const u32 second:
+    :param second:
         second u32
+    :type second: const u32
 
-    :param const hsiphash_key_t \*key:
+    :param key:
         the hsiphash key
+    :type key: const hsiphash_key_t \*
 
 .. _`hsiphash_3u32`:
 
@@ -121,17 +140,21 @@ hsiphash_3u32
 
     compute 32-bit hsiphash PRF value of 3 u32
 
-    :param const u32 first:
+    :param first:
         first u32
+    :type first: const u32
 
-    :param const u32 second:
+    :param second:
         second u32
+    :type second: const u32
 
-    :param const u32 third:
+    :param third:
         third u32
+    :type third: const u32
 
-    :param const hsiphash_key_t \*key:
+    :param key:
         the hsiphash key
+    :type key: const hsiphash_key_t \*
 
 .. _`hsiphash_4u32`:
 
@@ -142,20 +165,25 @@ hsiphash_4u32
 
     compute 32-bit hsiphash PRF value of 4 u32
 
-    :param const u32 first:
+    :param first:
         first u32
+    :type first: const u32
 
-    :param const u32 second:
+    :param second:
         second u32
+    :type second: const u32
 
-    :param const u32 third:
+    :param third:
         third u32
+    :type third: const u32
 
-    :param const u32 forth:
+    :param forth:
         forth u32
+    :type forth: const u32
 
-    :param const hsiphash_key_t \*key:
+    :param key:
         the hsiphash key
+    :type key: const hsiphash_key_t \*
 
 .. _`hsiphash_1u32`:
 
@@ -166,11 +194,13 @@ hsiphash_1u32
 
     compute 32-bit hsiphash PRF value of a u32
 
-    :param const u32 first:
+    :param first:
         first u32
+    :type first: const u32
 
-    :param const hsiphash_key_t \*key:
+    :param key:
         the hsiphash key
+    :type key: const hsiphash_key_t \*
 
 .. _`hsiphash_2u32`:
 
@@ -181,14 +211,17 @@ hsiphash_2u32
 
     compute 32-bit hsiphash PRF value of 2 u32
 
-    :param const u32 first:
+    :param first:
         first u32
+    :type first: const u32
 
-    :param const u32 second:
+    :param second:
         second u32
+    :type second: const u32
 
-    :param const hsiphash_key_t \*key:
+    :param key:
         the hsiphash key
+    :type key: const hsiphash_key_t \*
 
 .. _`hsiphash_3u32`:
 
@@ -199,17 +232,21 @@ hsiphash_3u32
 
     compute 32-bit hsiphash PRF value of 3 u32
 
-    :param const u32 first:
+    :param first:
         first u32
+    :type first: const u32
 
-    :param const u32 second:
+    :param second:
         second u32
+    :type second: const u32
 
-    :param const u32 third:
+    :param third:
         third u32
+    :type third: const u32
 
-    :param const hsiphash_key_t \*key:
+    :param key:
         the hsiphash key
+    :type key: const hsiphash_key_t \*
 
 .. _`hsiphash_4u32`:
 
@@ -220,20 +257,25 @@ hsiphash_4u32
 
     compute 32-bit hsiphash PRF value of 4 u32
 
-    :param const u32 first:
+    :param first:
         first u32
+    :type first: const u32
 
-    :param const u32 second:
+    :param second:
         second u32
+    :type second: const u32
 
-    :param const u32 third:
+    :param third:
         third u32
+    :type third: const u32
 
-    :param const u32 forth:
+    :param forth:
         forth u32
+    :type forth: const u32
 
-    :param const hsiphash_key_t \*key:
+    :param key:
         the hsiphash key
+    :type key: const hsiphash_key_t \*
 
 .. This file was automatic generated / don't edit.
 

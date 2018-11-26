@@ -10,23 +10,29 @@
 
     Update the success/failure sliding window
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         *undescribed*
+    :type mvm: struct iwl_mvm \*
 
-    :param struct iwl_scale_tbl_info \*tbl:
+    :param tbl:
         *undescribed*
+    :type tbl: struct iwl_scale_tbl_info \*
 
-    :param int scale_index:
+    :param scale_index:
         *undescribed*
+    :type scale_index: int
 
-    :param int attempts:
+    :param attempts:
         *undescribed*
+    :type attempts: int
 
-    :param int successes:
+    :param successes:
         *undescribed*
+    :type successes: int
 
-    :param struct iwl_rate_scale_data \*window:
+    :param window:
         *undescribed*
+    :type window: struct iwl_rate_scale_data \*
 
 .. _`_rs_collect_tx_data.description`:
 
@@ -42,21 +48,29 @@ packets.
 rs_initialize_lq
 ================
 
-.. c:function:: void rs_initialize_lq(struct iwl_mvm *mvm, struct ieee80211_sta *sta, struct iwl_lq_sta *lq_sta, enum nl80211_band band)
+.. c:function:: void rs_initialize_lq(struct iwl_mvm *mvm, struct ieee80211_sta *sta, struct iwl_lq_sta *lq_sta, enum nl80211_band band, bool update)
 
     Initialize a station's hardware rate table
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         *undescribed*
+    :type mvm: struct iwl_mvm \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
-    :param struct iwl_lq_sta \*lq_sta:
+    :param lq_sta:
         *undescribed*
+    :type lq_sta: struct iwl_lq_sta \*
 
-    :param enum nl80211_band band:
+    :param band:
         *undescribed*
+    :type band: enum nl80211_band
+
+    :param update:
+        *undescribed*
+    :type update: bool
 
 .. _`rs_initialize_lq.description`:
 
@@ -88,11 +102,13 @@ rs_program_fix_rate
 
     This is for debugging/testing only once the device start use fixed rate, we need to reload the module to being back the normal operation.
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         *undescribed*
+    :type mvm: struct iwl_mvm \*
 
-    :param struct iwl_lq_sta \*lq_sta:
+    :param lq_sta:
         *undescribed*
+    :type lq_sta: struct iwl_lq_sta \*
 
 .. _`iwl_mvm_tx_protection`:
 
@@ -103,14 +119,17 @@ iwl_mvm_tx_protection
 
     ask FW to enable RTS/CTS protection
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         *undescribed*
+    :type mvm: struct iwl_mvm \*
 
-    :param struct iwl_mvm_sta \*mvmsta:
+    :param mvmsta:
         The station
+    :type mvmsta: struct iwl_mvm_sta \*
 
-    :param bool enable:
+    :param enable:
         Enable Tx protection?
+    :type enable: bool
 
 .. This file was automatic generated / don't edit.
 

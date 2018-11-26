@@ -10,17 +10,21 @@ hwmon_device_register_with_groups
 
     register w/ hwmon
 
-    :param struct device \*dev:
+    :param dev:
         the parent device
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         hwmon name attribute
+    :type name: const char \*
 
-    :param void \*drvdata:
+    :param drvdata:
         driver data to attach to created device
+    :type drvdata: void \*
 
-    :param const struct attribute_group \*\*groups:
+    :param groups:
         List of attribute groups to create
+    :type groups: const struct attribute_group \*\*
 
 .. _`hwmon_device_register_with_groups.description`:
 
@@ -41,20 +45,25 @@ hwmon_device_register_with_info
 
     register w/ hwmon
 
-    :param struct device \*dev:
+    :param dev:
         the parent device
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         hwmon name attribute
+    :type name: const char \*
 
-    :param void \*drvdata:
+    :param drvdata:
         driver data to attach to created device
+    :type drvdata: void \*
 
-    :param const struct hwmon_chip_info \*chip:
+    :param chip:
         pointer to hwmon chip information
+    :type chip: const struct hwmon_chip_info \*
 
-    :param const struct attribute_group \*\*extra_groups:
+    :param extra_groups:
         pointer to list of additional non-standard attribute groups
+    :type extra_groups: const struct attribute_group \*\*
 
 .. _`hwmon_device_register_with_info.description`:
 
@@ -75,8 +84,9 @@ hwmon_device_register
 
     register w/ hwmon
 
-    :param struct device \*dev:
+    :param dev:
         the device to register
+    :type dev: struct device \*
 
 .. _`hwmon_device_register.description`:
 
@@ -97,8 +107,9 @@ hwmon_device_unregister
 
     removes the previously registered class device
 
-    :param struct device \*dev:
+    :param dev:
         the class device to destroy
+    :type dev: struct device \*
 
 .. _`devm_hwmon_device_register_with_groups`:
 
@@ -109,17 +120,21 @@ devm_hwmon_device_register_with_groups
 
     register w/ hwmon
 
-    :param struct device \*dev:
+    :param dev:
         the parent device
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         hwmon name attribute
+    :type name: const char \*
 
-    :param void \*drvdata:
+    :param drvdata:
         driver data to attach to created device
+    :type drvdata: void \*
 
-    :param const struct attribute_group \*\*groups:
+    :param groups:
         List of attribute groups to create
+    :type groups: const struct attribute_group \*\*
 
 .. _`devm_hwmon_device_register_with_groups.description`:
 
@@ -138,20 +153,25 @@ devm_hwmon_device_register_with_info
 
     register w/ hwmon
 
-    :param struct device \*dev:
+    :param dev:
         the parent device
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         hwmon name attribute
+    :type name: const char \*
 
-    :param void \*drvdata:
+    :param drvdata:
         driver data to attach to created device
+    :type drvdata: void \*
 
-    :param const struct hwmon_chip_info \*chip:
+    :param chip:
         pointer to hwmon chip information
+    :type chip: const struct hwmon_chip_info \*
 
-    :param const struct attribute_group \*\*groups:
+    :param groups:
         pointer to list of driver specific attribute groups
+    :type groups: const struct attribute_group \*\*
 
 .. _`devm_hwmon_device_register_with_info.description`:
 
@@ -170,8 +190,9 @@ devm_hwmon_device_unregister
 
     removes a previously registered hwmon device
 
-    :param struct device \*dev:
+    :param dev:
         the parent device of the device to unregister
+    :type dev: struct device \*
 
 .. This file was automatic generated / don't edit.
 

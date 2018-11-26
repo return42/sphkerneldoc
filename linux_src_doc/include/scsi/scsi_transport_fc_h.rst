@@ -10,8 +10,9 @@ fc_remote_port_chkready
 
     called to validate the remote port state prior to initiating io to the port.
 
-    :param struct fc_rport \*rport:
+    :param rport:
         remote port to be checked
+    :type rport: struct fc_rport \*
 
 .. _`fc_remote_port_chkready.description`:
 
@@ -29,11 +30,13 @@ fc_vport_set_state
 
     called to set a vport's state. Saves the old state, excepting the transitory states of initializing and sending the ELS traffic to instantiate the vport on the link.
 
-    :param struct fc_vport \*vport:
+    :param vport:
         virtual port whose state is changing
+    :type vport: struct fc_vport \*
 
-    :param enum fc_vport_state new_state:
+    :param new_state:
         new state
+    :type new_state: enum fc_vport_state
 
 .. _`fc_vport_set_state.description`:
 

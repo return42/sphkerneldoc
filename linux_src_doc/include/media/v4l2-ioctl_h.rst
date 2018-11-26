@@ -673,8 +673,9 @@ v4l2_norm_to_name
 
     Ancillary routine to analog TV standard name from its ID.
 
-    :param v4l2_std_id id:
+    :param id:
         analog TV standard ID.
+    :type id: v4l2_std_id
 
 .. _`v4l2_norm_to_name.return`:
 
@@ -694,11 +695,13 @@ v4l2_video_std_frame_period
 
     Ancillary routine that fills a struct \ :c:type:`struct v4l2_fract <v4l2_fract>`\  pointer with the default framerate fraction.
 
-    :param int id:
-        analog TV sdandard ID.
+    :param id:
+        analog TV standard ID.
+    :type id: int
 
-    :param struct v4l2_fract \*frameperiod:
+    :param frameperiod:
         struct \ :c:type:`struct v4l2_fract <v4l2_fract>`\  pointer to be filled
+    :type frameperiod: struct v4l2_fract \*
 
 .. _`v4l2_video_std_construct`:
 
@@ -709,14 +712,17 @@ v4l2_video_std_construct
 
     Ancillary routine that fills in the fields of a \ :c:type:`struct v4l2_standard <v4l2_standard>`\  structure according to the \ ``id``\  parameter.
 
-    :param struct v4l2_standard \*vs:
+    :param vs:
         struct \ :c:type:`struct v4l2_standard <v4l2_standard>`\  pointer to be filled
+    :type vs: struct v4l2_standard \*
 
-    :param int id:
-        analog TV sdandard ID.
+    :param id:
+        analog TV standard ID.
+    :type id: int
 
-    :param const char \*name:
+    :param name:
         name of the standard to be used
+    :type name: const char \*
 
 .. _`v4l2_video_std_construct.description`:
 
@@ -727,6 +733,23 @@ Description
 
    This ancillary routine is obsolete. Shouldn't be used on newer drivers.
 
+.. _`v4l_video_std_enumstd`:
+
+v4l_video_std_enumstd
+=====================
+
+.. c:function:: int v4l_video_std_enumstd(struct v4l2_standard *vs, v4l2_std_id id)
+
+    Ancillary routine that fills in the fields of a \ :c:type:`struct v4l2_standard <v4l2_standard>`\  structure according to the \ ``id``\  and \ ``vs->index``\  parameters.
+
+    :param vs:
+        struct \ :c:type:`struct v4l2_standard <v4l2_standard>`\  pointer to be filled.
+    :type vs: struct v4l2_standard \*
+
+    :param id:
+        analog TV standard ID.
+    :type id: v4l2_std_id
+
 .. _`v4l_printk_ioctl`:
 
 v4l_printk_ioctl
@@ -736,11 +759,13 @@ v4l_printk_ioctl
 
     Ancillary routine that prints the ioctl in a human-readable format.
 
-    :param const char \*prefix:
+    :param prefix:
         prefix to be added at the ioctl prints.
+    :type prefix: const char \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl name
+    :type cmd: unsigned int
 
 .. _`v4l_printk_ioctl.description`:
 
@@ -761,14 +786,17 @@ v4l2_compat_ioctl32
 
     32 Bits compatibility layer for 64 bits processors
 
-    :param struct file \*file:
+    :param file:
         Pointer to struct \ :c:type:`struct file <file>`\ .
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         Ioctl name.
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         Ioctl argument.
+    :type arg: unsigned long
 
 .. _`v4l2_kioctl`:
 
@@ -779,14 +807,17 @@ v4l2_kioctl
 
     Typedef used to pass an ioctl handler.
 
-    :param struct file \*file:
+    :param file:
         Pointer to struct \ :c:type:`struct file <file>`\ .
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         Ioctl name.
+    :type cmd: unsigned int
 
-    :param void \*arg:
+    :param arg:
         Ioctl argument.
+    :type arg: void \*
 
 .. _`video_usercopy`:
 
@@ -797,17 +828,21 @@ video_usercopy
 
     copies data from/to userspace memory when an ioctl is issued.
 
-    :param struct file \*file:
+    :param file:
         Pointer to struct \ :c:type:`struct file <file>`\ .
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         Ioctl name.
+    :type cmd: unsigned int
 
-    :param unsigned long int arg:
+    :param arg:
         Ioctl argument.
+    :type arg: unsigned long int
 
-    :param v4l2_kioctl func:
+    :param func:
         function that will handle the ioctl
+    :type func: v4l2_kioctl
 
 .. _`video_usercopy.description`:
 
@@ -827,14 +862,17 @@ video_ioctl2
 
     Handles a V4L2 ioctl.
 
-    :param struct file \*file:
+    :param file:
         Pointer to struct \ :c:type:`struct file <file>`\ .
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         Ioctl name.
+    :type cmd: unsigned int
 
-    :param unsigned long int arg:
+    :param arg:
         Ioctl argument.
+    :type arg: unsigned long int
 
 .. _`video_ioctl2.description`:
 

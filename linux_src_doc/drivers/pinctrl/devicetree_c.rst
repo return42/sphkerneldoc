@@ -50,20 +50,25 @@ pinctrl_get_list_and_count
 
     Gets the list and it's cell size and number
 
-    :param const struct device_node \*np:
+    :param np:
         pointer to device node with the property
+    :type np: const struct device_node \*
 
-    :param const char \*list_name:
+    :param list_name:
         property that contains the list
+    :type list_name: const char \*
 
-    :param const __be32 \*\*list:
+    :param list:
         pointer for the list found
+    :type list: const __be32 \*\*
 
-    :param int \*cells_size:
+    :param cells_size:
         pointer for the cell size found
+    :type cells_size: int \*
 
-    :param int \*nr_elements:
+    :param nr_elements:
         pointer for the number of elements found
+    :type nr_elements: int \*
 
 .. _`pinctrl_get_list_and_count.description`:
 
@@ -81,11 +86,13 @@ pinctrl_count_index_with_args
 
     Count number of elements in a pinctrl entry
 
-    :param const struct device_node \*np:
+    :param np:
         pointer to device node with the property
+    :type np: const struct device_node \*
 
-    :param const char \*list_name:
+    :param list_name:
         property that contains the list
+    :type list_name: const char \*
 
 .. _`pinctrl_count_index_with_args.description`:
 
@@ -105,23 +112,29 @@ pinctrl_copy_args
 
     Populates of_phandle_args based on index
 
-    :param const struct device_node \*np:
+    :param np:
         pointer to device node with the property
+    :type np: const struct device_node \*
 
-    :param const __be32 \*list:
+    :param list:
         pointer to a list with the elements
+    :type list: const __be32 \*
 
-    :param int index:
+    :param index:
         entry within the list of elements
+    :type index: int
 
-    :param int nr_cells:
+    :param nr_cells:
         number of cells in the list
+    :type nr_cells: int
 
-    :param int nr_elem:
+    :param nr_elem:
         number of elements for each entry in the list
+    :type nr_elem: int
 
-    :param struct of_phandle_args \*out_args:
+    :param out_args:
         returned values
+    :type out_args: struct of_phandle_args \*
 
 .. _`pinctrl_copy_args.description`:
 
@@ -139,17 +152,21 @@ pinctrl_parse_index_with_args
 
     Find a node pointed by index in a list
 
-    :param const struct device_node \*np:
+    :param np:
         pointer to device node with the property
+    :type np: const struct device_node \*
 
-    :param const char \*list_name:
+    :param list_name:
         property that contains the list
+    :type list_name: const char \*
 
-    :param int index:
+    :param index:
         index within the list
+    :type index: int
 
-    :param struct of_phandle_args \*out_args:
+    :param out_args:
         *undescribed*
+    :type out_args: struct of_phandle_args \*
 
 .. _`pinctrl_parse_index_with_args.description`:
 

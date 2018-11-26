@@ -10,8 +10,9 @@ omap4_dpll_lpmode_recalc
 
     compute DPLL low-power setting
 
-    :param struct dpll_data \*dd:
+    :param dd:
         pointer to the dpll data structure
+    :type dd: struct dpll_data \*
 
 .. _`omap4_dpll_lpmode_recalc.description`:
 
@@ -35,11 +36,13 @@ omap4_dpll_regm4xen_recalc
 
     compute DPLL rate, considering REGM4XEN bit
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         *undescribed*
+    :type parent_rate: unsigned long
 
 .. _`omap4_dpll_regm4xen_recalc.description`:
 
@@ -60,14 +63,17 @@ omap4_dpll_regm4xen_round_rate
 
     round DPLL rate, considering REGM4XEN bit
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
-    :param unsigned long target_rate:
+    :param target_rate:
         the desired rate of the DPLL
+    :type target_rate: unsigned long
 
-    :param unsigned long \*parent_rate:
+    :param parent_rate:
         *undescribed*
+    :type parent_rate: unsigned long \*
 
 .. _`omap4_dpll_regm4xen_round_rate.description`:
 
@@ -90,11 +96,13 @@ omap4_dpll_regm4xen_determine_rate
 
     determine rate for a DPLL
 
-    :param struct clk_hw \*hw:
+    :param hw:
         pointer to the clock to determine rate for
+    :type hw: struct clk_hw \*
 
-    :param struct clk_rate_request \*req:
+    :param req:
         target rate request
+    :type req: struct clk_rate_request \*
 
 .. _`omap4_dpll_regm4xen_determine_rate.description`:
 

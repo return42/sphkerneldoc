@@ -35,6 +35,7 @@ pinctrl
     pinctrl-lpc18xx_c
     pinctrl-rockchip_c
     pinctrl-rza1_c
+    pinctrl-rzn1_c
     pinctrl-single_c
     pinctrl-st_c
     pinctrl-tb10x_c

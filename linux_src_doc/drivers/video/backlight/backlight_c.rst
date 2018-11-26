@@ -10,11 +10,13 @@ backlight_force_update
 
     tell the backlight subsystem that hardware state has changed
 
-    :param struct backlight_device \*bd:
+    :param bd:
         the backlight device to update
+    :type bd: struct backlight_device \*
 
-    :param enum backlight_update_reason reason:
+    :param reason:
         *undescribed*
+    :type reason: enum backlight_update_reason
 
 .. _`backlight_force_update.description`:
 
@@ -33,22 +35,27 @@ backlight_device_register
 
     create and register a new object of backlight_device class.
 
-    :param const char \*name:
+    :param name:
         the name of the new object(must be the same as the name of the
         respective framebuffer device).
+    :type name: const char \*
 
-    :param struct device \*parent:
+    :param parent:
         a pointer to the parent device
+    :type parent: struct device \*
 
-    :param void \*devdata:
+    :param devdata:
         an optional pointer to be stored for private driver use. The
         methods may retrieve it by using bl_get_data(bd).
+    :type devdata: void \*
 
-    :param const struct backlight_ops \*ops:
+    :param ops:
         the backlight operations structure.
+    :type ops: const struct backlight_ops \*
 
-    :param const struct backlight_properties \*props:
+    :param props:
         *undescribed*
+    :type props: const struct backlight_properties \*
 
 .. _`backlight_device_register.description`:
 
@@ -67,8 +74,9 @@ backlight_device_unregister
 
     unregisters a backlight device object.
 
-    :param struct backlight_device \*bd:
+    :param bd:
         the backlight device object to be unregistered and freed.
+    :type bd: struct backlight_device \*
 
 .. _`backlight_device_unregister.description`:
 
@@ -86,8 +94,9 @@ backlight_register_notifier
 
     get notified of backlight (un)registration
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block with the notifier to call on backlight (un)registration
+    :type nb: struct notifier_block \*
 
 .. _`backlight_register_notifier.description`:
 
@@ -108,8 +117,9 @@ backlight_unregister_notifier
 
     unregister a backlight notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block to unregister
+    :type nb: struct notifier_block \*
 
 .. _`backlight_unregister_notifier.description`:
 
@@ -130,23 +140,29 @@ devm_backlight_device_register
 
     resource managed \ :c:func:`backlight_device_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device to register
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         the name of the device
+    :type name: const char \*
 
-    :param struct device \*parent:
+    :param parent:
         a pointer to the parent device
+    :type parent: struct device \*
 
-    :param void \*devdata:
+    :param devdata:
         an optional pointer to be stored for private driver use
+    :type devdata: void \*
 
-    :param const struct backlight_ops \*ops:
+    :param ops:
         the backlight operations structure
+    :type ops: const struct backlight_ops \*
 
-    :param const struct backlight_properties \*props:
+    :param props:
         the backlight properties
+    :type props: const struct backlight_properties \*
 
 .. _`devm_backlight_device_register.description`:
 
@@ -168,11 +184,13 @@ devm_backlight_device_unregister
 
     resource managed \ :c:func:`backlight_device_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device to unregister
+    :type dev: struct device \*
 
-    :param struct backlight_device \*bd:
+    :param bd:
         the backlight device to unregister
+    :type bd: struct backlight_device \*
 
 .. _`devm_backlight_device_unregister.description`:
 
@@ -192,8 +210,9 @@ of_find_backlight_by_node
 
     find backlight device by device-tree node
 
-    :param struct device_node \*node:
+    :param node:
         device-tree node of the backlight device
+    :type node: struct device_node \*
 
 .. _`of_find_backlight_by_node.description`:
 
@@ -217,8 +236,9 @@ of_find_backlight
 
     Get backlight device
 
-    :param struct device \*dev:
+    :param dev:
         Device
+    :type dev: struct device \*
 
 .. _`of_find_backlight.description`:
 
@@ -249,8 +269,9 @@ devm_of_find_backlight
 
     Resource-managed \ :c:func:`of_find_backlight`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device
+    :type dev: struct device \*
 
 .. _`devm_of_find_backlight.description`:
 

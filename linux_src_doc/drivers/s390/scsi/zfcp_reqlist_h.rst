@@ -42,8 +42,9 @@ zfcp_reqlist_alloc
 
     Allocate and initialize reqlist
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zfcp_reqlist_alloc.description`:
 
@@ -62,8 +63,9 @@ zfcp_reqlist_isempty
 
     Check whether the request list empty
 
-    :param struct zfcp_reqlist \*rl:
+    :param rl:
         pointer to reqlist
+    :type rl: struct zfcp_reqlist \*
 
 .. _`zfcp_reqlist_isempty.return`:
 
@@ -81,8 +83,9 @@ zfcp_reqlist_free
 
     Free allocated memory for reqlist
 
-    :param struct zfcp_reqlist \*rl:
+    :param rl:
         The reqlist where to free memory
+    :type rl: struct zfcp_reqlist \*
 
 .. _`zfcp_reqlist_find`:
 
@@ -93,11 +96,13 @@ zfcp_reqlist_find
 
     Lookup FSF request by its request id
 
-    :param struct zfcp_reqlist \*rl:
+    :param rl:
         The reqlist where to lookup the FSF request
+    :type rl: struct zfcp_reqlist \*
 
-    :param unsigned long req_id:
+    :param req_id:
         The request id to look for
+    :type req_id: unsigned long
 
 .. _`zfcp_reqlist_find.description`:
 
@@ -116,11 +121,13 @@ zfcp_reqlist_find_rm
 
     Lookup request by id and remove it from reqlist
 
-    :param struct zfcp_reqlist \*rl:
+    :param rl:
         reqlist where to search and remove entry
+    :type rl: struct zfcp_reqlist \*
 
-    :param unsigned long req_id:
+    :param req_id:
         The request id of the request to look for
+    :type req_id: unsigned long
 
 .. _`zfcp_reqlist_find_rm.description`:
 
@@ -148,11 +155,13 @@ zfcp_reqlist_add
 
     Add entry to reqlist
 
-    :param struct zfcp_reqlist \*rl:
+    :param rl:
         reqlist where to add the entry
+    :type rl: struct zfcp_reqlist \*
 
-    :param struct zfcp_fsf_req \*req:
+    :param req:
         The entry to add
+    :type req: struct zfcp_fsf_req \*
 
 .. _`zfcp_reqlist_add.description`:
 
@@ -173,11 +182,13 @@ zfcp_reqlist_move
 
     Move all entries from reqlist to simple list
 
-    :param struct zfcp_reqlist \*rl:
+    :param rl:
         The zfcp_reqlist where to remove all entries
+    :type rl: struct zfcp_reqlist \*
 
-    :param struct list_head \*list:
+    :param list:
         The list where to move all entries
+    :type list: struct list_head \*
 
 .. _`zfcp_reqlist_apply_for_all`:
 
@@ -188,16 +199,18 @@ zfcp_reqlist_apply_for_all
 
     apply a function to every request.
 
-    :param struct zfcp_reqlist \*rl:
+    :param rl:
         the requestlist that contains the target requests.
+    :type rl: struct zfcp_reqlist \*
 
     :param void (\*f)(struct zfcp_fsf_req \*, void \*):
         the function to apply to each request; the first parameter of the
         function will be the target-request; the second parameter is the same
         pointer as given with the argument \ ``data``\ .
 
-    :param void \*data:
+    :param data:
         freely chosen argument; passed through to \ ``f``\  as second parameter.
+    :type data: void \*
 
 .. _`zfcp_reqlist_apply_for_all.description`:
 
@@ -207,7 +220,7 @@ Description
 Uses :c:macro:\`list_for_each_entry\` to iterate over the lists in the hash-
 table (not a 'safe' variant, so don't modify the list).
 
-Holds \ ``rl``\ ->lock over the entire request-iteration.
+Holds \ ``rl->lock``\  over the entire request-iteration.
 
 .. This file was automatic generated / don't edit.
 

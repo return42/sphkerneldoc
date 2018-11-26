@@ -10,20 +10,25 @@ nla_validate
 
     Validate a stream of attributes
 
-    :param const struct nlattr \*head:
+    :param head:
         head of attribute stream
+    :type head: const struct nlattr \*
 
-    :param int len:
+    :param len:
         length of attribute stream
+    :type len: int
 
-    :param int maxtype:
+    :param maxtype:
         maximum attribute type to be expected
+    :type maxtype: int
 
-    :param const struct nla_policy \*policy:
+    :param policy:
         validation policy
+    :type policy: const struct nla_policy \*
 
-    :param struct netlink_ext_ack \*extack:
+    :param extack:
         extended ACK report struct
+    :type extack: struct netlink_ext_ack \*
 
 .. _`nla_validate.description`:
 
@@ -45,11 +50,13 @@ nla_policy_len
 
     Determin the max. length of a policy
 
-    :param const struct nla_policy \*p:
+    :param p:
         *undescribed*
+    :type p: const struct nla_policy \*
 
-    :param int n:
+    :param n:
         number of policies
+    :type n: int
 
 .. _`nla_policy_len.description`:
 
@@ -62,34 +69,44 @@ message.
 
 Returns 0 on success or a negative error code.
 
-.. _`nla_parse`:
+.. _`__nla_parse`:
 
-nla_parse
-=========
+\__nla_parse
+============
 
-.. c:function:: int nla_parse(struct nlattr **tb, int maxtype, const struct nlattr *head, int len, const struct nla_policy *policy, struct netlink_ext_ack *extack)
+.. c:function:: int __nla_parse(struct nlattr **tb, int maxtype, const struct nlattr *head, int len, bool strict, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     Parse a stream of attributes into a tb buffer
 
-    :param struct nlattr \*\*tb:
+    :param tb:
         destination array with maxtype+1 elements
+    :type tb: struct nlattr \*\*
 
-    :param int maxtype:
+    :param maxtype:
         maximum attribute type to be expected
+    :type maxtype: int
 
-    :param const struct nlattr \*head:
+    :param head:
         head of attribute stream
+    :type head: const struct nlattr \*
 
-    :param int len:
+    :param len:
         length of attribute stream
+    :type len: int
 
-    :param const struct nla_policy \*policy:
-        validation policy
-
-    :param struct netlink_ext_ack \*extack:
+    :param strict:
         *undescribed*
+    :type strict: bool
 
-.. _`nla_parse.description`:
+    :param policy:
+        validation policy
+    :type policy: const struct nla_policy \*
+
+    :param extack:
+        *undescribed*
+    :type extack: struct netlink_ext_ack \*
+
+.. _`__nla_parse.description`:
 
 Description
 -----------
@@ -110,14 +127,17 @@ nla_find
 
     Find a specific attribute in a stream of attributes
 
-    :param const struct nlattr \*head:
+    :param head:
         head of attribute stream
+    :type head: const struct nlattr \*
 
-    :param int len:
+    :param len:
         length of attribute stream
+    :type len: int
 
-    :param int attrtype:
+    :param attrtype:
         type of attribute to look for
+    :type attrtype: int
 
 .. _`nla_find.description`:
 
@@ -135,14 +155,17 @@ nla_strlcpy
 
     Copy string attribute payload into a sized buffer
 
-    :param char \*dst:
+    :param dst:
         where to copy the string to
+    :type dst: char \*
 
-    :param const struct nlattr \*nla:
+    :param nla:
         attribute to copy the string from
+    :type nla: const struct nlattr \*
 
-    :param size_t dstsize:
+    :param dstsize:
         size of destination buffer
+    :type dstsize: size_t
 
 .. _`nla_strlcpy.description`:
 
@@ -164,11 +187,13 @@ nla_strdup
 
     Copy string attribute payload into a newly allocated buffer
 
-    :param const struct nlattr \*nla:
+    :param nla:
         attribute to copy the string from
+    :type nla: const struct nlattr \*
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate (see kmalloc).
+    :type flags: gfp_t
 
 .. _`nla_strdup.description`:
 
@@ -186,14 +211,17 @@ nla_memcpy
 
     Copy a netlink attribute into another memory area
 
-    :param void \*dest:
+    :param dest:
         where to copy to memcpy
+    :type dest: void \*
 
-    :param const struct nlattr \*src:
+    :param src:
         netlink attribute to copy from
+    :type src: const struct nlattr \*
 
-    :param int count:
+    :param count:
         size of the destination area
+    :type count: int
 
 .. _`nla_memcpy.note`:
 
@@ -214,14 +242,17 @@ nla_memcmp
 
     Compare an attribute with sized memory area
 
-    :param const struct nlattr \*nla:
+    :param nla:
         netlink attribute
+    :type nla: const struct nlattr \*
 
-    :param const void \*data:
+    :param data:
         memory area
+    :type data: const void \*
 
-    :param size_t size:
+    :param size:
         size of memory area
+    :type size: size_t
 
 .. _`nla_strcmp`:
 
@@ -232,11 +263,13 @@ nla_strcmp
 
     Compare a string attribute against a string
 
-    :param const struct nlattr \*nla:
+    :param nla:
         netlink string attribute
+    :type nla: const struct nlattr \*
 
-    :param const char \*str:
+    :param str:
         another string
+    :type str: const char \*
 
 .. _`__nla_reserve`:
 
@@ -247,14 +280,17 @@ nla_strcmp
 
     reserve room for attribute on the skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to reserve room on
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
 .. _`__nla_reserve.description`:
 
@@ -276,17 +312,21 @@ tailroom for the attribute header and payload.
 
     reserve room for attribute on the skb and align it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to reserve room on
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`__nla_reserve_64bit.description`:
 
@@ -309,11 +349,13 @@ tailroom for the attribute header and payload.
 
     reserve room for attribute without header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to reserve room on
+    :type skb: struct sk_buff \*
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
 .. _`__nla_reserve_nohdr.description`:
 
@@ -334,14 +376,17 @@ nla_reserve
 
     reserve room for attribute on the skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to reserve room on
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
 .. _`nla_reserve.description`:
 
@@ -363,17 +408,21 @@ nla_reserve_64bit
 
     reserve room for attribute on the skb and align it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to reserve room on
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`nla_reserve_64bit.description`:
 
@@ -396,11 +445,13 @@ nla_reserve_nohdr
 
     reserve room for attribute without header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to reserve room on
+    :type skb: struct sk_buff \*
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
 .. _`nla_reserve_nohdr.description`:
 
@@ -421,17 +472,21 @@ the attribute payload.
 
     Add a netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
-    :param const void \*data:
+    :param data:
         head of attribute payload
+    :type data: const void \*
 
 .. _`__nla_put.description`:
 
@@ -450,20 +505,25 @@ tailroom for the attribute header and payload.
 
     Add a netlink attribute to a socket buffer and align it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
-    :param const void \*data:
+    :param data:
         head of attribute payload
+    :type data: const void \*
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`__nla_put_64bit.description`:
 
@@ -482,14 +542,17 @@ tailroom for the attribute header and payload.
 
     Add a netlink attribute without header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
-    :param const void \*data:
+    :param data:
         head of attribute payload
+    :type data: const void \*
 
 .. _`__nla_put_nohdr.description`:
 
@@ -508,17 +571,21 @@ nla_put
 
     Add a netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
-    :param const void \*data:
+    :param data:
         head of attribute payload
+    :type data: const void \*
 
 .. _`nla_put.description`:
 
@@ -537,20 +604,25 @@ nla_put_64bit
 
     Add a netlink attribute to a socket buffer and align it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
-    :param const void \*data:
+    :param data:
         head of attribute payload
+    :type data: const void \*
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`nla_put_64bit.description`:
 
@@ -569,14 +641,17 @@ nla_put_nohdr
 
     Add a netlink attribute without header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
-    :param const void \*data:
+    :param data:
         head of attribute payload
+    :type data: const void \*
 
 .. _`nla_put_nohdr.description`:
 
@@ -595,14 +670,17 @@ nla_append
 
     Add a netlink attribute without header or padding
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrlen:
+    :param attrlen:
         length of attribute payload
+    :type attrlen: int
 
-    :param const void \*data:
+    :param data:
         head of attribute payload
+    :type data: const void \*
 
 .. _`nla_append.description`:
 

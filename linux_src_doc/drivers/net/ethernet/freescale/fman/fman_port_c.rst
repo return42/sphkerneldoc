@@ -8,11 +8,13 @@ fman_port_config
 
 .. c:function:: int fman_port_config(struct fman_port *port, struct fman_port_params *params)
 
-    :param struct fman_port \*port:
+    :param port:
         Pointer to the port structure
+    :type port: struct fman_port \*
 
-    :param struct fman_port_params \*params:
+    :param params:
         Pointer to data structure of parameters
+    :type params: struct fman_port_params \*
 
 .. _`fman_port_config.description`:
 
@@ -40,11 +42,13 @@ fman_port_use_kg_hash
 
 .. c:function:: void fman_port_use_kg_hash(struct fman_port *port, bool enable)
 
-    :param struct fman_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fman_port \*
 
-    :param bool enable:
+    :param enable:
         *undescribed*
+    :type enable: bool
 
 .. _`fman_port_use_kg_hash.port`:
 
@@ -62,8 +66,9 @@ fman_port_init
 
 .. c:function:: int fman_port_init(struct fman_port *port)
 
-    :param struct fman_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fman_port \*
 
 .. _`fman_port_init.port`:
 
@@ -90,11 +95,13 @@ fman_port_cfg_buf_prefix_content
 
     \ ``port``\                         A pointer to a FM Port module. \ ``buffer_prefix_content``\        A structure of parameters describing the structure of the buffer. Out parameter: Start margin - offset of data from start of external buffer. Defines the structure, size and content of the application buffer. The prefix, in Tx ports, if 'pass_prs_result', the application should set a value to their offsets in the prefix of the FM will save the first 'priv_data_size', than, depending on 'pass_prs_result' and 'pass_time_stamp', copy parse result and timeStamp, and the packet itself (in this order), to the application buffer, and to offset. Calling this routine changes the buffer margins definitions in the internal
 
-    :param struct fman_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fman_port \*
 
-    :param struct fman_buffer_prefix_content \*buffer_prefix_content:
+    :param buffer_prefix_content:
         *undescribed*
+    :type buffer_prefix_content: struct fman_buffer_prefix_content \*
 
 .. _`fman_port_cfg_buf_prefix_content.data-size`:
 
@@ -134,8 +141,9 @@ fman_port_disable
 
 .. c:function:: int fman_port_disable(struct fman_port *port)
 
-    :param struct fman_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fman_port \*
 
 .. _`fman_port_disable.port`:
 
@@ -166,8 +174,9 @@ fman_port_enable
 
 .. c:function:: int fman_port_enable(struct fman_port *port)
 
-    :param struct fman_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fman_port \*
 
 .. _`fman_port_enable.port`:
 
@@ -194,8 +203,9 @@ fman_port_bind
 
 .. c:function:: struct fman_port *fman_port_bind(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`fman_port_bind.dev`:
 
@@ -222,8 +232,9 @@ fman_port_get_qman_channel_id
 
 .. c:function:: u32 fman_port_get_qman_channel_id(struct fman_port *port)
 
-    :param struct fman_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fman_port \*
 
 .. _`fman_port_get_qman_channel_id.port`:
 

@@ -8,8 +8,9 @@ phm_start_thermal_controller
 
 .. c:function:: int phm_start_thermal_controller(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`phm_start_thermal_controller.description`:
 
@@ -26,17 +27,21 @@ phm_get_clock_info
 
 .. c:function:: int phm_get_clock_info(struct pp_hwmgr *hwmgr, const struct pp_hw_power_state *state, struct pp_clock_info *pclock_info, PHM_PerformanceLevelDesignation designation)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param const struct pp_hw_power_state \*state:
+    :param state:
         *undescribed*
+    :type state: const struct pp_hw_power_state \*
 
-    :param struct pp_clock_info \*pclock_info:
+    :param pclock_info:
         *undescribed*
+    :type pclock_info: struct pp_clock_info \*
 
-    :param PHM_PerformanceLevelDesignation designation:
+    :param designation:
         *undescribed*
+    :type designation: PHM_PerformanceLevelDesignation
 
 .. _`phm_get_clock_info.description`:
 

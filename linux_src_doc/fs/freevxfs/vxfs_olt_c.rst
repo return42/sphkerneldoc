@@ -10,11 +10,13 @@ vxfs_read_olt
 
     read olt
 
-    :param struct super_block \*sbp:
+    :param sbp:
         superblock of the filesystem
+    :type sbp: struct super_block \*
 
-    :param u_long bsize:
+    :param bsize:
         blocksize of the filesystem
+    :type bsize: u_long
 
 .. _`vxfs_read_olt.description`:
 

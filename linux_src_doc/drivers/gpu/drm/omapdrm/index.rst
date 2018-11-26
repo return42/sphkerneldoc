@@ -7,6 +7,7 @@ omapdrm
 .. toctree::
     :maxdepth: 1
 
+    dss/index
     omap_dmm_tiler_c
     omap_gem_c
     omap_irq_c

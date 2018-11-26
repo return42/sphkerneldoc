@@ -10,11 +10,13 @@ may_commit_transaction
 
     possibly commit the transaction if its ok to \ ``root``\  - the root we're allocating for \ ``bytes``\  - the number of bytes we want to reserve \ ``force``\  - force the commit
 
-    :param struct btrfs_fs_info \*fs_info:
+    :param fs_info:
         *undescribed*
+    :type fs_info: struct btrfs_fs_info \*
 
-    :param struct btrfs_space_info \*space_info:
+    :param space_info:
         *undescribed*
+    :type space_info: struct btrfs_space_info \*
 
 .. _`may_commit_transaction.description`:
 
@@ -34,20 +36,25 @@ will return -ENOSPC.
 
     try to reserve bytes from the block_rsv's space \ ``root``\  - the root we're allocating for \ ``space_info``\  - the space info we want to allocate from \ ``orig_bytes``\  - the number of bytes we want \ ``flush``\  - whether or not we can flush to make our reservation
 
-    :param struct btrfs_fs_info \*fs_info:
+    :param fs_info:
         *undescribed*
+    :type fs_info: struct btrfs_fs_info \*
 
-    :param struct btrfs_space_info \*space_info:
+    :param space_info:
         *undescribed*
+    :type space_info: struct btrfs_space_info \*
 
-    :param u64 orig_bytes:
+    :param orig_bytes:
         *undescribed*
+    :type orig_bytes: u64
 
-    :param enum btrfs_reserve_flush_enum flush:
+    :param flush:
         *undescribed*
+    :type flush: enum btrfs_reserve_flush_enum
 
-    :param bool system_chunk:
+    :param system_chunk:
         *undescribed*
+    :type system_chunk: bool
 
 .. _`__reserve_metadata_bytes.description`:
 
@@ -70,17 +77,21 @@ reserve_metadata_bytes
 
     try to reserve bytes from the block_rsv's space \ ``root``\  - the root we're allocating for \ ``block_rsv``\  - the block_rsv we're allocating for \ ``orig_bytes``\  - the number of bytes we want \ ``flush``\  - whether or not we can flush to make our reservation
 
-    :param struct btrfs_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct btrfs_root \*
 
-    :param struct btrfs_block_rsv \*block_rsv:
+    :param block_rsv:
         *undescribed*
+    :type block_rsv: struct btrfs_block_rsv \*
 
-    :param u64 orig_bytes:
+    :param orig_bytes:
         *undescribed*
+    :type orig_bytes: u64
 
-    :param enum btrfs_reserve_flush_enum flush:
+    :param flush:
         *undescribed*
+    :type flush: enum btrfs_reserve_flush_enum
 
 .. _`reserve_metadata_bytes.description`:
 
@@ -103,11 +114,13 @@ btrfs_inode_rsv_refill
 
     refill the inode block rsv. \ ``inode``\  - the inode we are refilling. \ ``flush``\  - the flusing restriction.
 
-    :param struct btrfs_inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct btrfs_inode \*
 
-    :param enum btrfs_reserve_flush_enum flush:
+    :param flush:
         *undescribed*
+    :type flush: enum btrfs_reserve_flush_enum
 
 .. _`btrfs_inode_rsv_refill.description`:
 
@@ -128,11 +141,13 @@ btrfs_inode_rsv_release
 
     release any excessive reservation. \ ``inode``\  - the inode we need to release from. \ ``qgroup_free``\  - free or convert qgroup meta. Unlike normal operation, qgroup meta reservation needs to know if we are freeing qgroup reservation or just converting it into per-trans.  Normally \ ``qgroup_free``\  is true for error handling, and false for normal release.
 
-    :param struct btrfs_inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct btrfs_inode \*
 
-    :param bool qgroup_free:
+    :param qgroup_free:
         *undescribed*
+    :type qgroup_free: bool
 
 .. _`btrfs_inode_rsv_release.description`:
 
@@ -151,14 +166,17 @@ btrfs_delalloc_release_metadata
 
     release a metadata reservation for an inode
 
-    :param struct btrfs_inode \*inode:
+    :param inode:
         the inode to release the reservation for.
+    :type inode: struct btrfs_inode \*
 
-    :param u64 num_bytes:
+    :param num_bytes:
         the number of bytes we are releasing.
+    :type num_bytes: u64
 
-    :param bool qgroup_free:
+    :param qgroup_free:
         free qgroup reservation or convert it to per-trans reservation
+    :type qgroup_free: bool
 
 .. _`btrfs_delalloc_release_metadata.description`:
 
@@ -178,14 +196,17 @@ btrfs_delalloc_release_extents
 
     release our outstanding_extents
 
-    :param struct btrfs_inode \*inode:
+    :param inode:
         the inode to balance the reservation for.
+    :type inode: struct btrfs_inode \*
 
-    :param u64 num_bytes:
+    :param num_bytes:
         the number of bytes we originally reserved with
+    :type num_bytes: u64
 
-    :param bool qgroup_free:
+    :param qgroup_free:
         do we need to free qgroup meta reservation or convert them.
+    :type qgroup_free: bool
 
 .. _`btrfs_delalloc_release_extents.description`:
 
@@ -207,18 +228,22 @@ btrfs_delalloc_reserve_space
 
     reserve data and metadata space for delalloc
 
-    :param struct inode \*inode:
+    :param inode:
         inode we're writing to
+    :type inode: struct inode \*
 
-    :param struct extent_changeset \*\*reserved:
+    :param reserved:
         mandatory parameter, record actually reserved qgroup ranges of
         current reservation.
+    :type reserved: struct extent_changeset \*\*
 
-    :param u64 start:
+    :param start:
         start range we are writing to
+    :type start: u64
 
-    :param u64 len:
+    :param len:
         how long the range we are writing to
+    :type len: u64
 
 .. _`btrfs_delalloc_reserve_space.description`:
 
@@ -250,20 +275,25 @@ btrfs_delalloc_release_space
 
     release data and metadata space for delalloc
 
-    :param struct inode \*inode:
+    :param inode:
         inode we're releasing space for
+    :type inode: struct inode \*
 
-    :param struct extent_changeset \*reserved:
+    :param reserved:
         *undescribed*
+    :type reserved: struct extent_changeset \*
 
-    :param u64 start:
+    :param start:
         start position of the space already reserved
+    :type start: u64
 
-    :param u64 len:
+    :param len:
         the len of the space already reserved
+    :type len: u64
 
-    :param bool qgroup_free:
+    :param qgroup_free:
         *undescribed*
+    :type qgroup_free: bool
 
 .. _`btrfs_delalloc_release_space.description`:
 
@@ -284,18 +314,22 @@ btrfs_add_reserved_bytes
 
     update the block_group and space info counters
 
-    :param struct btrfs_block_group_cache \*cache:
+    :param cache:
         The cache we are manipulating
+    :type cache: struct btrfs_block_group_cache \*
 
-    :param u64 ram_bytes:
+    :param ram_bytes:
         The number of bytes of file content, and will be same to
         \ ``num_bytes``\  except for the compress path.
+    :type ram_bytes: u64
 
-    :param u64 num_bytes:
+    :param num_bytes:
         The number of bytes in question
+    :type num_bytes: u64
 
-    :param int delalloc:
+    :param delalloc:
         The blocks are allocated for the delalloc write
+    :type delalloc: int
 
 .. _`btrfs_add_reserved_bytes.description`:
 
@@ -311,18 +345,21 @@ reservation and return -EAGAIN, otherwise this function always succeeds.
 btrfs_free_reserved_bytes
 =========================
 
-.. c:function:: int btrfs_free_reserved_bytes(struct btrfs_block_group_cache *cache, u64 num_bytes, int delalloc)
+.. c:function:: void btrfs_free_reserved_bytes(struct btrfs_block_group_cache *cache, u64 num_bytes, int delalloc)
 
     update the block_group and space info counters
 
-    :param struct btrfs_block_group_cache \*cache:
+    :param cache:
         The cache we are manipulating
+    :type cache: struct btrfs_block_group_cache \*
 
-    :param u64 num_bytes:
+    :param num_bytes:
         The number of bytes in question
+    :type num_bytes: u64
 
-    :param int delalloc:
+    :param delalloc:
         The blocks are allocated for the delalloc write
+    :type delalloc: int
 
 .. _`btrfs_free_reserved_bytes.description`:
 

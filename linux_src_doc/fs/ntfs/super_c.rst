@@ -8,11 +8,13 @@ simple_getbool
 
 .. c:function:: int simple_getbool(char *s, bool *setval)
 
-    :param char \*s:
+    :param s:
         *undescribed*
+    :type s: char \*
 
-    :param bool \*setval:
+    :param setval:
         *undescribed*
+    :type setval: bool \*
 
 .. _`simple_getbool.description`:
 
@@ -30,11 +32,13 @@ parse_options
 
     parse the (re)mount options
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume
+    :type vol: ntfs_volume \*
 
-    :param char \*opt:
+    :param opt:
         string containing the (re)mount options
+    :type opt: char \*
 
 .. _`parse_options.description`:
 
@@ -52,11 +56,13 @@ ntfs_write_volume_flags
 
     write new flags to the volume information flags
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume on which to modify the flags
+    :type vol: ntfs_volume \*
 
-    :param const VOLUME_FLAGS flags:
+    :param flags:
         new flags value for the volume information flags
+    :type flags: const VOLUME_FLAGS
 
 .. _`ntfs_write_volume_flags.description`:
 
@@ -82,11 +88,13 @@ ntfs_set_volume_flags
 
     set bits in the volume information flags
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume on which to modify the flags
+    :type vol: ntfs_volume \*
 
-    :param VOLUME_FLAGS flags:
+    :param flags:
         flags to set on the volume
+    :type flags: VOLUME_FLAGS
 
 .. _`ntfs_set_volume_flags.description`:
 
@@ -106,11 +114,13 @@ ntfs_clear_volume_flags
 
     clear bits in the volume information flags
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume on which to modify the flags
+    :type vol: ntfs_volume \*
 
-    :param VOLUME_FLAGS flags:
+    :param flags:
         flags to clear on the volume
+    :type flags: VOLUME_FLAGS
 
 .. _`ntfs_clear_volume_flags.description`:
 
@@ -130,14 +140,17 @@ ntfs_remount
 
     change the mount options of a mounted ntfs filesystem
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock of mounted ntfs filesystem
+    :type sb: struct super_block \*
 
-    :param int \*flags:
+    :param flags:
         remount flags
+    :type flags: int \*
 
-    :param char \*opt:
+    :param opt:
         remount options string
+    :type opt: char \*
 
 .. _`ntfs_remount.description`:
 
@@ -151,9 +164,9 @@ Change the mount options of an already mounted ntfs filesystem.
 NOTE
 ----
 
-The VFS sets the \ ``sb``\ ->s_flags remount flags to \ ``flags``\  after
+The VFS sets the \ ``sb->s_flags``\  remount flags to \ ``flags``\  after
 \ :c:func:`ntfs_remount`\  returns successfully (i.e. returns 0).  Otherwise,
-\ ``sb``\ ->s_flags are not changed.
+\ ``sb->s_flags``\  are not changed.
 
 .. _`is_boot_sector_ntfs`:
 
@@ -164,14 +177,17 @@ is_boot_sector_ntfs
 
     check whether a boot sector is a valid NTFS boot sector
 
-    :param const struct super_block \*sb:
+    :param sb:
         Super block of the device to which \ ``b``\  belongs.
+    :type sb: const struct super_block \*
 
-    :param const NTFS_BOOT_SECTOR \*b:
+    :param b:
         Boot sector of device \ ``sb``\  to check.
+    :type b: const NTFS_BOOT_SECTOR \*
 
-    :param const bool silent:
+    :param silent:
         If 'true', all output will be silenced.
+    :type silent: const bool
 
 .. _`is_boot_sector_ntfs.description`:
 
@@ -193,11 +209,13 @@ read_ntfs_boot_sector
 
     read the NTFS boot sector of a device
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of device to read the boot sector from
+    :type sb: struct super_block \*
 
-    :param const int silent:
+    :param silent:
         if true, suppress all output
+    :type silent: const int
 
 .. _`read_ntfs_boot_sector.description`:
 
@@ -232,11 +250,13 @@ parse_ntfs_boot_sector
 
     parse the boot sector and store the data in \ ``vol``\ 
 
-    :param ntfs_volume \*vol:
+    :param vol:
         volume structure to initialise with data from boot sector
+    :type vol: ntfs_volume \*
 
-    :param const NTFS_BOOT_SECTOR \*b:
+    :param b:
         boot sector to parse
+    :type b: const NTFS_BOOT_SECTOR \*
 
 .. _`parse_ntfs_boot_sector.description`:
 
@@ -255,8 +275,9 @@ ntfs_setup_allocators
 
     initialize the cluster and mft allocators
 
-    :param ntfs_volume \*vol:
+    :param vol:
         volume structure for which to setup the allocators
+    :type vol: ntfs_volume \*
 
 .. _`ntfs_setup_allocators.description`:
 
@@ -274,8 +295,9 @@ load_and_init_mft_mirror
 
     load and setup the mft mirror inode for a volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs super block describing device whose mft mirror to load
+    :type vol: ntfs_volume \*
 
 .. _`load_and_init_mft_mirror.description`:
 
@@ -293,8 +315,9 @@ check_mft_mirror
 
     compare contents of the mft mirror with the mft
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs super block describing device whose mft mirror to check
+    :type vol: ntfs_volume \*
 
 .. _`check_mft_mirror.description`:
 
@@ -316,11 +339,13 @@ load_and_check_logfile
 
     load and check the logfile inode for a volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs super block describing device whose logfile to load
+    :type vol: ntfs_volume \*
 
-    :param RESTART_PAGE_HEADER \*\*rp:
+    :param rp:
         *undescribed*
+    :type rp: RESTART_PAGE_HEADER \*\*
 
 .. _`load_and_check_logfile.description`:
 
@@ -338,8 +363,9 @@ check_windows_hibernation_status
 
     check if Windows is suspended on a volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs super block of device to check
+    :type vol: ntfs_volume \*
 
 .. _`check_windows_hibernation_status.description`:
 
@@ -375,8 +401,9 @@ load_and_init_quota
 
     load and setup the quota file for a volume if present
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs super block describing device whose quota file to load
+    :type vol: ntfs_volume \*
 
 .. _`load_and_init_quota.description`:
 
@@ -395,8 +422,9 @@ load_and_init_usnjrnl
 
     load and setup the transaction log if present
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs super block describing device whose usnjrnl file to load
+    :type vol: ntfs_volume \*
 
 .. _`load_and_init_usnjrnl.description`:
 
@@ -422,8 +450,9 @@ load_and_init_attrdef
 
     load the attribute definitions table for a volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs super block describing device whose attrdef to load
+    :type vol: ntfs_volume \*
 
 .. _`load_and_init_attrdef.description`:
 
@@ -441,8 +470,9 @@ load_and_init_upcase
 
     load the upcase table for an ntfs volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs super block describing device whose upcase to load
+    :type vol: ntfs_volume \*
 
 .. _`load_and_init_upcase.description`:
 
@@ -460,8 +490,9 @@ load_system_files
 
     open the system files using normal functions
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs super block describing device whose system files to load
+    :type vol: ntfs_volume \*
 
 .. _`load_system_files.description`:
 
@@ -482,8 +513,9 @@ ntfs_put_super
 
     called by the vfs to unmount a volume
 
-    :param struct super_block \*sb:
+    :param sb:
         vfs superblock of volume to unmount
+    :type sb: struct super_block \*
 
 .. _`ntfs_put_super.description`:
 
@@ -504,8 +536,9 @@ get_nr_free_clusters
 
     return the number of free clusters on a volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume for which to obtain free cluster count
+    :type vol: ntfs_volume \*
 
 .. _`get_nr_free_clusters.description`:
 
@@ -536,14 +569,17 @@ an overestimate.
 
     return the number of free inodes on a volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume for which to obtain free inode count
+    :type vol: ntfs_volume \*
 
-    :param s64 nr_free:
+    :param nr_free:
         number of mft records in filesystem
+    :type nr_free: s64
 
-    :param const pgoff_t max_index:
+    :param max_index:
         maximum number of pages containing set bits
+    :type max_index: const pgoff_t
 
 .. _`__get_nr_free_mft_records.description`:
 
@@ -575,11 +611,13 @@ ntfs_statfs
 
     return information about mounted NTFS volume
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry from mounted volume
+    :type dentry: struct dentry \*
 
-    :param struct kstatfs \*sfs:
+    :param sfs:
         statfs structure in which to return the information
+    :type sfs: struct kstatfs \*
 
 .. _`ntfs_statfs.description`:
 
@@ -608,14 +646,17 @@ ntfs_fill_super
 
     mount an ntfs filesystem
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of ntfs filesystem to mount
+    :type sb: struct super_block \*
 
-    :param void \*opt:
+    :param opt:
         string containing the mount options
+    :type opt: void \*
 
-    :param const int silent:
+    :param silent:
         silence error output
+    :type silent: const int
 
 .. _`ntfs_fill_super.description`:
 
@@ -637,7 +678,7 @@ fact this is what is supposed to happen.
 NOTE
 ----
 
-\ ``sb``\ ->s_flags contains the mount options flags.
+\ ``sb->s_flags``\  contains the mount options flags.
 
 .. This file was automatic generated / don't edit.
 

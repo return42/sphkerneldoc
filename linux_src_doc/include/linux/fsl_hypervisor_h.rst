@@ -10,8 +10,9 @@ fsl_hv_failover_register
 
     register a callback for failover events
 
-    :param struct notifier_block \*nb:
+    :param nb:
         pointer to caller-supplied notifier_block structure
+    :type nb: struct notifier_block \*
 
 .. _`fsl_hv_failover_register.description`:
 
@@ -33,8 +34,9 @@ fsl_hv_failover_unregister
 
     unregister a callback for failover events
 
-    :param struct notifier_block \*nb:
+    :param nb:
         the same 'nb' used in previous fsl_hv_failover_register call
+    :type nb: struct notifier_block \*
 
 .. This file was automatic generated / don't edit.
 

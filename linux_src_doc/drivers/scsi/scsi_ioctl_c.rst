@@ -10,11 +10,13 @@ ioctl_probe
 
     -  return host identification
 
-    :param struct Scsi_Host \*host:
+    :param host:
         host to identify
+    :type host: struct Scsi_Host \*
 
-    :param void __user \*buffer:
+    :param buffer:
         userspace buffer for identification
+    :type buffer: void __user \*
 
 .. _`ioctl_probe.description`:
 
@@ -33,14 +35,17 @@ scsi_ioctl
 
     Dispatch ioctl to scsi device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device receiving ioctl
+    :type sdev: struct scsi_device \*
 
-    :param int cmd:
+    :param cmd:
         which ioctl is it
+    :type cmd: int
 
-    :param void __user \*arg:
+    :param arg:
         data associated with ioctl
+    :type arg: void __user \*
 
 .. _`scsi_ioctl.description`:
 

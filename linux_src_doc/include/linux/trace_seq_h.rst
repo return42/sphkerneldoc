@@ -10,8 +10,9 @@ trace_seq_used
 
     amount of actual data written to buffer
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
 .. _`trace_seq_used.description`:
 
@@ -22,9 +23,9 @@ Returns the amount of data written to the buffer.
 
 IMPORTANT!
 
-Use this instead of \ ``s``\ ->seq.len if you need to pass the amount
+Use this instead of \ ``s->seq.len``\  if you need to pass the amount
 of data from the buffer to another buffer (userspace, or what not).
-The \ ``s``\ ->seq.len on overflow is bigger than the buffer size and
+The \ ``s->seq.len``\  on overflow is bigger than the buffer size and
 using it can cause access to undefined memory.
 
 .. _`trace_seq_buffer_ptr`:
@@ -36,8 +37,9 @@ trace_seq_buffer_ptr
 
     return pointer to next location in buffer
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
 .. _`trace_seq_buffer_ptr.description`:
 
@@ -58,8 +60,9 @@ trace_seq_has_overflowed
 
     return true if the trace_seq took too much
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
 .. _`trace_seq_has_overflowed.description`:
 

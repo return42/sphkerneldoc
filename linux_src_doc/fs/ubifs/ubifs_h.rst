@@ -229,7 +229,7 @@ creat_sqnum
 
 del_cmtno
     commit number corresponding to the time the inode was deleted,
-    protected by \ ``c``\ ->commit_sem;
+    protected by \ ``c->commit_sem``\ ;
 
 xattr_size
     summarized size of all extended attributes in bytes
@@ -310,9 +310,9 @@ The \ ``synced_i_size``\  field is used to make sure we never write pages which 
 beyond last synchronized inode size. See 'ubifs_writepage()' for more
 information.
 
-The \ ``ui_size``\  is a "shadow" variable for \ ``inode``\ ->i_size and UBIFS uses
-\ ``ui_size``\  instead of \ ``inode``\ ->i_size. The reason for this is that UBIFS cannot
-make sure \ ``inode``\ ->i_size is always changed under \ ``ui_mutex``\ , because it
+The \ ``ui_size``\  is a "shadow" variable for \ ``inode->i_size``\  and UBIFS uses
+\ ``ui_size``\  instead of \ ``inode->i_size``\ . The reason for this is that UBIFS cannot
+make sure \ ``inode->i_size``\  is always changed under \ ``ui_mutex``\ , because it
 cannot call 'truncate_setsize()' with \ ``ui_mutex``\  locked, because it would
 deadlock with 'ubifs_writepage()' (see file.c). All the other inode fields
 are changed under \ ``ui_mutex``\ , so they do not need "shadow" fields. Note, one
@@ -835,7 +835,7 @@ used
     number of used bytes in the write-buffer
 
 size
-    write-buffer size (in [@c->min_io_size, \ ``c``\ ->max_write_size] range)
+    write-buffer size (in [@c->min_io_size, \ ``c->max_write_size``\ ] range)
 
 jhead
     journal head the mutex belongs to (note, needed only to shut lockdep
@@ -908,6 +908,7 @@ Definition
         int jhead;
         struct list_head list;
         struct rb_node rb;
+        struct shash_desc *log_hash;
     }
 
 .. _`ubifs_bud.members`:
@@ -930,6 +931,9 @@ list
 rb
     link in the tree of all buds
 
+log_hash
+    the log hash from the commit start node up to this bud
+
 .. _`ubifs_jhead`:
 
 struct ubifs_jhead
@@ -950,6 +954,7 @@ Definition
         struct ubifs_wbuf wbuf;
         struct list_head buds_list;
         unsigned int grouped:1;
+        struct shash_desc *log_hash;
     }
 
 .. _`ubifs_jhead.members`:
@@ -966,12 +971,15 @@ buds_list
 grouped
     non-zero if UBIFS groups nodes when writing to this journal head
 
+log_hash
+    the log hash from the commit start node up to this journal head
+
 .. _`ubifs_jhead.description`:
 
 Description
 -----------
 
-Note, the \ ``buds``\  list is protected by the \ ``c``\ ->buds_lock.
+Note, the \ ``buds``\  list is protected by the \ ``c->buds_lock``\ .
 
 .. _`ubifs_zbranch`:
 
@@ -998,6 +1006,7 @@ Definition
         int lnum;
         int offs;
         int len;
+        u8 hash[UBIFS_HASH_ARR_SZ];
     }
 
 .. _`ubifs_zbranch.members`:
@@ -1026,6 +1035,9 @@ offs
 len
     target node length
 
+hash
+    the hash of the target node
+
 .. _`ubifs_znode`:
 
 struct ubifs_znode
@@ -1045,8 +1057,10 @@ Definition
     struct ubifs_znode {
         struct ubifs_znode *parent;
         struct ubifs_znode *cnext;
+        struct ubifs_znode *cparent;
+        int ciip;
         unsigned long flags;
-        unsigned long time;
+        time64_t time;
         int level;
         int child_cnt;
         int iip;
@@ -1067,6 +1081,12 @@ parent
 
 cnext
     next znode to commit
+
+cparent
+    parent node for this commit
+
+ciip
+    index in cparent's zbranch array
 
 flags
     znode flags (%DIRTY_ZNODE, \ ``COW_ZNODE``\  or \ ``OBSOLETE_ZNODE``\ )
@@ -1592,6 +1612,7 @@ Definition
 
     struct ubifs_info {
         struct super_block *vfs_sb;
+        struct ubifs_sb_node *sup_node;
         ino_t highest_inum;
         unsigned long long max_sqnum;
         unsigned long long cmt_no;
@@ -1626,6 +1647,8 @@ Definition
         unsigned int bulk_read:1;
         unsigned int default_compr:2;
         unsigned int rw_incompat:1;
+        unsigned int assert_action:2;
+        unsigned int authenticated:1;
         struct mutex tnc_mutex;
         struct ubifs_zbranch zroot;
         struct ubifs_znode *cnext;
@@ -1664,6 +1687,7 @@ Definition
         uint32_t (*key_hash)(const char *str, int len);
         int key_fmt;
         int key_len;
+        int hash_len;
         int fanout;
         int min_io_size;
         int min_io_shift;
@@ -1776,6 +1800,13 @@ Definition
         long long report_rp_size;
         kuid_t rp_uid;
         kgid_t rp_gid;
+        struct crypto_shash *hash_tfm;
+        struct crypto_shash *hmac_tfm;
+        int hmac_desc_len;
+        char *auth_key_name;
+        char *auth_hash_name;
+        enum hash_algo auth_hash_algo;
+        struct shash_desc *log_hash;
         unsigned int empty:1;
         unsigned int need_recovery:1;
         unsigned int replaying:1;
@@ -1799,6 +1830,9 @@ Members
 
 vfs_sb
     VFS \ ``struct``\  super_block object
+
+sup_node
+    The super block node as read from the device
 
 highest_inum
     highest used inode number
@@ -1907,6 +1941,12 @@ default_compr
 rw_incompat
     the media is not R/W compatible
 
+assert_action
+    action to take when a \ :c:func:`ubifs_assert`\  fails
+
+authenticated
+    flag indigating the FS is mounted in authenticated mode
+
 tnc_mutex
     protects the Tree Node Cache (TNC), \ ``zroot``\ , \ ``cnext``\ , \ ``enext``\ , and
     \ ``calc_idx_sz``\ 
@@ -1963,7 +2003,7 @@ max_bu_buf_len
     maximum bulk-read buffer length
 
 bu_mutex
-    protects the pre-allocated bulk-read buffer and \ ``c``\ ->bu
+    protects the pre-allocated bulk-read buffer and \ ``c->bu``\ 
 
 bu
     pre-allocated bulk-read information
@@ -2023,6 +2063,9 @@ key_fmt
 
 key_len
     key length
+
+hash_len
+    The length of the index node hashes
 
 fanout
     fanout of the index tree (number of links per indexing node)
@@ -2368,6 +2411,28 @@ rp_uid
 rp_gid
     reserved pool group ID
 
+hash_tfm
+    the hash transformation used for hashing nodes
+
+hmac_tfm
+    the HMAC transformation for this filesystem
+
+hmac_desc_len
+    length of the HMAC used for authentication
+
+auth_key_name
+    the authentication key name
+
+auth_hash_name
+    the name of the hash algorithm used for authentication
+
+auth_hash_algo
+    the authentication hash used for this fs
+
+log_hash
+    the log hash from the commit start node up to the latest reference
+    node.
+
 empty
     \ ``1``\  if the UBI device is empty
 
@@ -2411,6 +2476,139 @@ mount_opts
 
 dbg
     debugging-related information
+
+.. _`ubifs_check_hash`:
+
+ubifs_check_hash
+================
+
+.. c:function:: int ubifs_check_hash(const struct ubifs_info *c, const u8 *expected, const u8 *got)
+
+    compare two hashes
+
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
+
+    :param expected:
+        first hash
+    :type expected: const u8 \*
+
+    :param got:
+        second hash
+    :type got: const u8 \*
+
+.. _`ubifs_check_hash.description`:
+
+Description
+-----------
+
+Compare two hashes \ ``expected``\  and \ ``got``\ . Returns 0 when they are equal, a
+negative error code otherwise.
+
+.. _`ubifs_check_hmac`:
+
+ubifs_check_hmac
+================
+
+.. c:function:: int ubifs_check_hmac(const struct ubifs_info *c, const u8 *expected, const u8 *got)
+
+    compare two HMACs
+
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
+
+    :param expected:
+        first HMAC
+    :type expected: const u8 \*
+
+    :param got:
+        second HMAC
+    :type got: const u8 \*
+
+.. _`ubifs_check_hmac.description`:
+
+Description
+-----------
+
+Compare two hashes \ ``expected``\  and \ ``got``\ . Returns 0 when they are equal, a
+negative error code otherwise.
+
+.. _`ubifs_branch_hash`:
+
+ubifs_branch_hash
+=================
+
+.. c:function:: u8 *ubifs_branch_hash(struct ubifs_info *c, struct ubifs_branch *br)
+
+    returns a pointer to the hash of a branch
+
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param br:
+        branch to get the hash from
+    :type br: struct ubifs_branch \*
+
+.. _`ubifs_branch_hash.description`:
+
+Description
+-----------
+
+This returns a pointer to the hash of a branch. Since the key already is a
+dynamically sized object we cannot use a struct member here.
+
+.. _`ubifs_copy_hash`:
+
+ubifs_copy_hash
+===============
+
+.. c:function:: void ubifs_copy_hash(const struct ubifs_info *c, const u8 *from, u8 *to)
+
+    copy a hash
+
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
+
+    :param from:
+        source hash
+    :type from: const u8 \*
+
+    :param to:
+        destination hash
+    :type to: u8 \*
+
+.. _`ubifs_copy_hash.description`:
+
+Description
+-----------
+
+With authentication this copies a hash, otherwise does nothing.
+
+.. _`ubifs_auth_node_sz`:
+
+ubifs_auth_node_sz
+==================
+
+.. c:function:: int ubifs_auth_node_sz(const struct ubifs_info *c)
+
+    returns the size of an authentication node
+
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
+
+.. _`ubifs_auth_node_sz.description`:
+
+Description
+-----------
+
+This function returns the size of an authentication node which can
+be 0 for unauthenticated filesystems or the real size of an auth node
+authentication is enabled.
 
 .. This file was automatic generated / don't edit.
 

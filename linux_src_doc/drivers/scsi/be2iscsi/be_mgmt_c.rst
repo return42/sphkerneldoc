@@ -10,17 +10,21 @@ mgmt_open_connection
 
     Establish a TCP CXN
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct beiscsi_hba \*
 
-    :param struct sockaddr \*dst_addr:
+    :param dst_addr:
         Destination Address
+    :type dst_addr: struct sockaddr \*
 
-    :param struct beiscsi_endpoint \*beiscsi_ep:
+    :param beiscsi_ep:
         ptr to device endpoint struct
+    :type beiscsi_ep: struct beiscsi_endpoint \*
 
-    :param struct be_dma_mem \*nonemb_cmd:
+    :param nonemb_cmd:
         ptr to memory allocated for command
+    :type nonemb_cmd: struct be_dma_mem \*
 
 .. _`mgmt_open_connection.description`:
 
@@ -52,14 +56,17 @@ beiscsi_get_initiator_name
 
     read initiator name from flash
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         device priv structure
+    :type phba: struct beiscsi_hba \*
 
-    :param char \*name:
+    :param name:
         buffer pointer
+    :type name: char \*
 
-    :param bool cfg:
+    :param cfg:
         fetch user configured
+    :type cfg: bool
 
 .. _`beiscsi_if_set_vlan`:
 
@@ -70,11 +77,13 @@ beiscsi_if_set_vlan
 
     Issue and wait for CMD completion
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         device private structure instance
+    :type phba: struct beiscsi_hba \*
 
-    :param uint16_t vlan_tag:
+    :param vlan_tag:
         VLAN tag
+    :type vlan_tag: uint16_t
 
 .. _`beiscsi_if_set_vlan.description`:
 
@@ -109,8 +118,9 @@ beiscsi_boot_logout_sess
 
     Logout from boot FW session
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         Device priv structure instance
+    :type phba: struct beiscsi_hba \*
 
 .. _`beiscsi_boot_logout_sess.description`:
 
@@ -129,8 +139,9 @@ beiscsi_boot_reopen_sess
 
     Reopen boot session
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         Device priv structure instance
+    :type phba: struct beiscsi_hba \*
 
 .. _`beiscsi_boot_reopen_sess.description`:
 
@@ -149,8 +160,9 @@ beiscsi_boot_get_sinfo
 
     Get boot session info
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         device priv structure instance
+    :type phba: struct beiscsi_hba \*
 
 .. _`beiscsi_boot_get_sinfo.description`:
 
@@ -170,11 +182,13 @@ beiscsi_boot_get_shandle
 
     Get boot session handle
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         device priv structure instance
+    :type phba: struct beiscsi_hba \*
 
-    :param unsigned int \*s_handle:
+    :param s_handle:
         session handle returned for boot session.
+    :type s_handle: unsigned int \*
 
 .. _`beiscsi_boot_get_shandle.description`:
 
@@ -206,14 +220,17 @@ beiscsi_drvr_ver_disp
 
     Display the driver Name and Version
 
-    :param struct device \*dev:
+    :param dev:
         ptr to device not used.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         contains formatted text driver name and version
+    :type buf: char \*
 
 .. _`beiscsi_drvr_ver_disp.description`:
 
@@ -232,14 +249,17 @@ beiscsi_fw_ver_disp
 
     Display Firmware Version
 
-    :param struct device \*dev:
+    :param dev:
         ptr to device not used.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         contains formatted text Firmware version
+    :type buf: char \*
 
 .. _`beiscsi_fw_ver_disp.description`:
 
@@ -258,14 +278,17 @@ beiscsi_active_session_disp
 
     Display Sessions Active
 
-    :param struct device \*dev:
+    :param dev:
         ptr to device not used.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         contains formatted text Session Count
+    :type buf: char \*
 
 .. _`beiscsi_active_session_disp.description`:
 
@@ -284,14 +307,17 @@ beiscsi_free_session_disp
 
     Display Avaliable Session
 
-    :param struct device \*dev:
+    :param dev:
         ptr to device not used.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         contains formatted text Session Count
+    :type buf: char \*
 
 .. _`beiscsi_free_session_disp.description`:
 
@@ -310,14 +336,17 @@ beiscsi_adap_family_disp
 
     Display adapter family.
 
-    :param struct device \*dev:
+    :param dev:
         ptr to device to get priv structure
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         contains formatted text driver name and version
+    :type buf: char \*
 
 .. _`beiscsi_adap_family_disp.description`:
 
@@ -336,14 +365,17 @@ beiscsi_phys_port_disp
 
     Display Physical Port Identifier
 
-    :param struct device \*dev:
+    :param dev:
         ptr to device not used.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         contains formatted text port identifier
+    :type buf: char \*
 
 .. _`beiscsi_phys_port_disp.description`:
 

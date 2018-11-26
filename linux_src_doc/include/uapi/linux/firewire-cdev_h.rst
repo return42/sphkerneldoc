@@ -8,7 +8,7 @@ struct fw_cdev_event_common
 
 .. c:type:: struct fw_cdev_event_common
 
-    Common part of all fw_cdev_event\_ types
+    Common part of all fw_cdev_event_* types
 
 .. _`fw_cdev_event_common.definition`:
 
@@ -31,14 +31,14 @@ closure
     For arbitrary use by userspace
 
 type
-    Discriminates the fw_cdev_event\_ types
+    Discriminates the fw_cdev_event_* types
 
 .. _`fw_cdev_event_common.description`:
 
 Description
 -----------
 
-This struct may be used to access generic members of all fw_cdev_event_
+This struct may be used to access generic members of all fw_cdev_event_*
 types regardless of the specific type.
 
 Data passed in the \ ``closure``\  field for a request will be returned in the
@@ -207,25 +207,25 @@ Members
 -------
 
 closure
-    *undescribed*
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; set by \ ``FW_CDEV_IOC_ALLOCATE``\  ioctl
 
 type
     See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; always \ ``FW_CDEV_EVENT_REQUEST``\ 
 
 tcode
-    *undescribed*
+    Transaction code of the incoming request
 
 offset
-    *undescribed*
+    The offset into the 48-bit per-node address space
 
 handle
-    *undescribed*
+    Reference to the kernel-side pending request
 
 length
-    *undescribed*
+    Data length, i.e. the request's payload size in bytes
 
 data
-    *undescribed*
+    Incoming data, if any
 
 .. _`fw_cdev_event_request.description`:
 
@@ -415,32 +415,22 @@ packet are returned in the \ ``header``\  field.  The amount of header data per
 packet is as specified at iso context creation by
 \ :c:type:`fw_cdev_create_iso_context.header_size <fw_cdev_create_iso_context>`\ .
 
-Hence, \_interrupt.header_length / \_context.header_size is the number of
+Hence, _interrupt.header_length / _context.header_size is the number of
 packets received in this interrupt event.  The client can now iterate
 through the \ :c:func:`mmap`\ 'ed DMA buffer according to this number of packets and
 to the buffer sizes as the client specified in \ :c:type:`struct fw_cdev_queue_iso <fw_cdev_queue_iso>`\ .
 
-Since version 2 of this ABI, the portion for each packet in \_interrupt.header
+Since version 2 of this ABI, the portion for each packet in _interrupt.header
 consists of the 1394 isochronous packet header, followed by a timestamp
 quadlet if \ :c:type:`fw_cdev_create_iso_context.header_size <fw_cdev_create_iso_context>`\  > 4, followed by quadlets
 from the packet payload if \ :c:type:`fw_cdev_create_iso_context.header_size <fw_cdev_create_iso_context>`\  > 8.
 
-.. _`fw_cdev_event_iso_interrupt.format-of-1394-iso-packet-header`:
-
-Format of 1394 iso packet header
---------------------------------
-
-16 bits data_length, 2 bits tag, 6 bits
+Format of 1394 iso packet header:  16 bits data_length, 2 bits tag, 6 bits
 channel, 4 bits tcode, 4 bits sy, in big endian byte order.
 data_length is the actual received size of the packet without the four
 1394 iso packet header bytes.
 
-.. _`fw_cdev_event_iso_interrupt.format-of-timestamp`:
-
-Format of timestamp
--------------------
-
-16 bits invalid, 3 bits cycleSeconds, 13 bits
+Format of timestamp:  16 bits invalid, 3 bits cycleSeconds, 13 bits
 cycleCount, in big endian byte order.
 
 In version 1 of the ABI, no timestamp quadlet was inserted; instead, payload
@@ -496,13 +486,13 @@ chunks that have been completely filled and that have the
 \ ``FW_CDEV_IOC_FLUSH_ISO``\ .
 
 The buffer is continuously filled with the following data, per packet:
-- the 1394 iso packet header as described at \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\ ,
-but in little endian byte order,
-- packet payload (as many bytes as specified in the data_length field of
-the 1394 iso packet header) in big endian byte order,
-- 0...3 padding bytes as needed to align the following trailer quadlet,
-- trailer quadlet, containing the reception timestamp as described at
-\ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\ , but in little endian byte order.
+ - the 1394 iso packet header as described at \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\ ,
+   but in little endian byte order,
+ - packet payload (as many bytes as specified in the data_length field of
+   the 1394 iso packet header) in big endian byte order,
+ - 0...3 padding bytes as needed to align the following trailer quadlet,
+ - trailer quadlet, containing the reception timestamp as described at
+   \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\ , but in little endian byte order.
 
 Hence the per-packet size is data_length (rounded up to a multiple of 4) + 8.
 When processing the data, stop before a packet that would cross the
@@ -626,13 +616,7 @@ Description
 -----------
 
 If \ ``type``\  is \ ``FW_CDEV_EVENT_PHY_PACKET_SENT``\ , \ ``length``\  is 0 and \ ``data``\  empty,
-
-.. _`fw_cdev_event_phy_packet.except-in-case-of-a-ping-packet`:
-
-except in case of a ping packet
--------------------------------
-
-Then, \ ``length``\  is 4, and \ ``data``\ [0] is the
+except in case of a ping packet:  Then, \ ``length``\  is 4, and \ ``data``\ [0] is the
 ping time in 49.152MHz clocks if \ ``rcode``\  is \ ``RCODE_COMPLETE``\ .
 
 If \ ``type``\  is \ ``FW_CDEV_EVENT_PHY_PACKET_RECEIVED``\ , \ ``length``\  is 8 and \ ``data``\ 
@@ -645,7 +629,7 @@ union fw_cdev_event
 
 .. c:type:: struct fw_cdev_event
 
-    Convenience union of fw_cdev_event\_ types
+    Convenience union of fw_cdev_event_* types
 
 .. _`fw_cdev_event.definition`:
 
@@ -780,7 +764,7 @@ Description
 -----------
 
 The \ ``FW_CDEV_IOC_GET_INFO``\  ioctl is usually the very first one which a client
-performs right after it opened a /dev/fw\* file.
+performs right after it opened a /dev/fw* file.
 
 As a side effect, reception of \ ``FW_CDEV_EVENT_BUS_RESET``\  events to be read(2)
 is started by this ioctl.
@@ -1318,7 +1302,7 @@ Description
 -----------
 
 \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\  is used to describe isochronous packet queues.
-Use the FW_CDEV_ISO\_ macros to fill in \ ``control``\ .
+Use the FW_CDEV_ISO_* macros to fill in \ ``control``\ .
 The \ ``header``\  array is empty in case of receive contexts.
 
 Context type \ ``FW_CDEV_ISO_CONTEXT_TRANSMIT``\ :
@@ -1364,7 +1348,7 @@ multiple receive packets is completed when its last packet is completed.
 
 Context type \ ``FW_CDEV_ISO_CONTEXT_RECEIVE_MULTICHANNEL``\ :
 
-Here, \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\  would be more aptly named \_iso_buffer_chunk since
+Here, \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\  would be more aptly named _iso_buffer_chunk since
 it specifies a chunk of the \ :c:func:`mmap`\ 'ed buffer, while the number and alignment
 of packets to be placed into the buffer chunk is not known beforehand.
 
@@ -1476,7 +1460,7 @@ sync
 tags
     Tag filter bit mask.  Only valid for isochronous reception.
     Determines the tag values for which packets will be accepted.
-    Use FW_CDEV_ISO_CONTEXT_MATCH\_ macros to set \ ``tags``\ .
+    Use FW_CDEV_ISO_CONTEXT_MATCH_* macros to set \ ``tags``\ .
 
 handle
     Isochronous context handle within which to transmit or receive
@@ -1851,8 +1835,8 @@ The \ ``FW_CDEV_IOC_SEND_PHY_PACKET``\  ioctl sends a PHY packet to all nodes
 on the same card as this device.  After transmission, an
 \ ``FW_CDEV_EVENT_PHY_PACKET_SENT``\  event is generated.
 
-The payload \ ``data``\ [] shall be specified in host byte order.  Usually,
-\ ``data``\ [1] needs to be the bitwise inverse of \ ``data``\ [0].  VersaPHY packets
+The payload \ ``data``\ \[\] shall be specified in host byte order.  Usually,
+\ ``data``\ \[1\] needs to be the bitwise inverse of \ ``data``\ \[0\].  VersaPHY packets
 are an exception to this rule.
 
 The ioctl is only permitted on device files which represent a local node.

@@ -10,14 +10,17 @@ pcm_new_ver
 
     Create the new version of PCM from the old version.
 
-    :param struct soc_tplg \*tplg:
+    :param tplg:
         topology context
+    :type tplg: struct soc_tplg \*
 
-    :param struct snd_soc_tplg_pcm \*src:
+    :param src:
         older version of pcm as a source
+    :type src: struct snd_soc_tplg_pcm \*
 
-    :param struct snd_soc_tplg_pcm \*\*pcm:
+    :param pcm:
         latest version of pcm created from the source
+    :type pcm: struct snd_soc_tplg_pcm \*\*
 
 .. _`pcm_new_ver.description`:
 
@@ -35,11 +38,13 @@ set_link_hw_format
 
     Set the HW audio format of the physical DAI link.
 
-    :param struct snd_soc_dai_link \*link:
+    :param link:
         \ :c:type:`struct snd_soc_dai_link <snd_soc_dai_link>`\  which should be updated
+    :type link: struct snd_soc_dai_link \*
 
-    :param struct snd_soc_tplg_link_config \*cfg:
+    :param cfg:
         physical link configs.
+    :type cfg: struct snd_soc_tplg_link_config \*
 
 .. _`set_link_hw_format.description`:
 
@@ -59,14 +64,17 @@ link_new_ver
 
     Create a new physical link config from the old version of source.
 
-    :param struct soc_tplg \*tplg:
+    :param tplg:
         topology context
+    :type tplg: struct soc_tplg \*
 
-    :param struct snd_soc_tplg_link_config \*src:
+    :param src:
         old version of phyical link config as a source
+    :type src: struct snd_soc_tplg_link_config \*
 
-    :param struct snd_soc_tplg_link_config \*\*link:
+    :param link:
         latest version of physical link config created from the source
+    :type link: struct snd_soc_tplg_link_config \*\*
 
 .. _`link_new_ver.description`:
 
@@ -84,11 +92,13 @@ soc_tplg_dai_config
 
     Find and configure an existing physical DAI.
 
-    :param struct soc_tplg \*tplg:
+    :param tplg:
         topology context
+    :type tplg: struct soc_tplg \*
 
-    :param struct snd_soc_tplg_dai \*d:
+    :param d:
         physical DAI configs.
+    :type d: struct snd_soc_tplg_dai \*
 
 .. _`soc_tplg_dai_config.description`:
 
@@ -107,14 +117,17 @@ manifest_new_ver
 
     Create a new version of manifest from the old version of source.
 
-    :param struct soc_tplg \*tplg:
+    :param tplg:
         topology context
+    :type tplg: struct soc_tplg \*
 
-    :param struct snd_soc_tplg_manifest \*src:
+    :param src:
         old version of manifest as a source
+    :type src: struct snd_soc_tplg_manifest \*
 
-    :param struct snd_soc_tplg_manifest \*\*manifest:
+    :param manifest:
         latest version of manifest created from the source
+    :type manifest: struct snd_soc_tplg_manifest \*\*
 
 .. _`manifest_new_ver.description`:
 

@@ -10,20 +10,25 @@ v4l2_ctrl_query_fill
 
     Fill in a struct v4l2_queryctrl
 
-    :param struct v4l2_queryctrl \*qctrl:
+    :param qctrl:
         pointer to the \ :c:type:`struct v4l2_queryctrl <v4l2_queryctrl>`\  to be filled
+    :type qctrl: struct v4l2_queryctrl \*
 
-    :param s32 min:
+    :param min:
         minimum value for the control
+    :type min: s32
 
-    :param s32 max:
+    :param max:
         maximum value for the control
+    :type max: s32
 
-    :param s32 step:
+    :param step:
         control step
+    :type step: s32
 
-    :param s32 def:
+    :param def:
         default value for the control
+    :type def: s32
 
 .. _`v4l2_ctrl_query_fill.description`:
 
@@ -47,21 +52,26 @@ v4l2_i2c_new_subdev
 
     Load an i2c module and return an initialized \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ .
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to \ :c:type:`struct v4l2_device <v4l2_device>`\ 
+    :type v4l2_dev: struct v4l2_device \*
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         pointer to struct i2c_adapter
+    :type adapter: struct i2c_adapter \*
 
-    :param const char \*client_type:
+    :param client_type:
         name of the chip that's on the adapter.
+    :type client_type: const char \*
 
-    :param u8 addr:
+    :param addr:
         I2C address. If zero, it will use \ ``probe_addrs``\ 
+    :type addr: u8
 
-    :param const unsigned short \*probe_addrs:
+    :param probe_addrs:
         array with a list of address. The last entry at such
         array should be \ ``I2C_CLIENT_END``\ .
+    :type probe_addrs: const unsigned short \*
 
 .. _`v4l2_i2c_new_subdev.description`:
 
@@ -79,19 +89,23 @@ v4l2_i2c_new_subdev_board
 
     Load an i2c module and return an initialized \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ .
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to \ :c:type:`struct v4l2_device <v4l2_device>`\ 
+    :type v4l2_dev: struct v4l2_device \*
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         pointer to struct i2c_adapter
+    :type adapter: struct i2c_adapter \*
 
-    :param struct i2c_board_info \*info:
+    :param info:
         pointer to struct i2c_board_info used to replace the irq,
         platform_data and addr arguments.
+    :type info: struct i2c_board_info \*
 
-    :param const unsigned short \*probe_addrs:
+    :param probe_addrs:
         array with a list of address. The last entry at such
         array should be \ ``I2C_CLIENT_END``\ .
+    :type probe_addrs: const unsigned short \*
 
 .. _`v4l2_i2c_new_subdev_board.description`:
 
@@ -99,6 +113,32 @@ Description
 -----------
 
 returns a \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  pointer.
+
+.. _`v4l2_i2c_subdev_set_name`:
+
+v4l2_i2c_subdev_set_name
+========================
+
+.. c:function:: void v4l2_i2c_subdev_set_name(struct v4l2_subdev *sd, struct i2c_client *client, const char *devname, const char *postfix)
+
+    Set name for an I²C sub-device
+
+    :param sd:
+        pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
+
+    :param client:
+        pointer to struct i2c_client
+    :type client: struct i2c_client \*
+
+    :param devname:
+        the name of the device; if NULL, the I²C device's name will be used
+    :type devname: const char \*
+
+    :param postfix:
+        sub-device specific string to put right after the I²C device name;
+        may be NULL
+    :type postfix: const char \*
 
 .. _`v4l2_i2c_subdev_init`:
 
@@ -109,14 +149,17 @@ v4l2_i2c_subdev_init
 
     Initializes a \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  with data from an i2c_client struct.
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param struct i2c_client \*client:
+    :param client:
         pointer to struct i2c_client
+    :type client: struct i2c_client \*
 
-    :param const struct v4l2_subdev_ops \*ops:
+    :param ops:
         pointer to \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ 
+    :type ops: const struct v4l2_subdev_ops \*
 
 .. _`v4l2_i2c_subdev_addr`:
 
@@ -127,8 +170,9 @@ v4l2_i2c_subdev_addr
 
     returns i2c client address of \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ .
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
 .. _`v4l2_i2c_subdev_addr.description`:
 
@@ -205,9 +249,10 @@ v4l2_i2c_tuner_addrs
 
     Return a list of I2C tuner addresses to probe.
 
-    :param enum v4l2_i2c_tuner_type type:
+    :param type:
         type of the tuner to seek, as defined by
         \ :c:type:`enum v4l2_i2c_tuner_type <v4l2_i2c_tuner_type>`\ .
+    :type type: enum v4l2_i2c_tuner_type
 
 .. _`v4l2_i2c_tuner_addrs.note`:
 
@@ -225,14 +270,17 @@ v4l2_spi_new_subdev
 
     Load an spi module and return an initialized \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ .
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to \ :c:type:`struct v4l2_device <v4l2_device>`\ .
+    :type v4l2_dev: struct v4l2_device \*
 
-    :param struct spi_master \*master:
+    :param master:
         pointer to struct spi_master.
+    :type master: struct spi_master \*
 
-    :param struct spi_board_info \*info:
+    :param info:
         pointer to struct spi_board_info.
+    :type info: struct spi_board_info \*
 
 .. _`v4l2_spi_new_subdev.description`:
 
@@ -250,14 +298,17 @@ v4l2_spi_subdev_init
 
     Initialize a v4l2_subdev with data from an spi_device struct.
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param struct spi_device \*spi:
+    :param spi:
         pointer to struct spi_device.
+    :type spi: struct spi_device \*
 
-    :param const struct v4l2_subdev_ops \*ops:
+    :param ops:
         pointer to \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ 
+    :type ops: const struct v4l2_subdev_ops \*
 
 .. _`v4l_bound_align_image`:
 
@@ -268,33 +319,42 @@ v4l_bound_align_image
 
     adjust video dimensions according to a given constraints.
 
-    :param unsigned int \*width:
+    :param width:
         pointer to width that will be adjusted if needed.
+    :type width: unsigned int \*
 
-    :param unsigned int wmin:
+    :param wmin:
         minimum width.
+    :type wmin: unsigned int
 
-    :param unsigned int wmax:
+    :param wmax:
         maximum width.
+    :type wmax: unsigned int
 
-    :param unsigned int walign:
+    :param walign:
         least significant bit on width.
+    :type walign: unsigned int
 
-    :param unsigned int \*height:
+    :param height:
         pointer to height that will be adjusted if needed.
+    :type height: unsigned int \*
 
-    :param unsigned int hmin:
+    :param hmin:
         minimum height.
+    :type hmin: unsigned int
 
-    :param unsigned int hmax:
+    :param hmax:
         maximum height.
+    :type hmax: unsigned int
 
-    :param unsigned int halign:
-        least significant bit on width.
+    :param halign:
+        least significant bit on height.
+    :type halign: unsigned int
 
-    :param unsigned int salign:
+    :param salign:
         least significant bit for the image size (e. g.
         :math:`width * height`).
+    :type salign: unsigned int
 
 .. _`v4l_bound_align_image.description`:
 
@@ -332,8 +392,9 @@ v4l2_get_timestamp
 
     helper routine to get a timestamp to be used when filling streaming metadata. Internally, it uses \ :c:func:`ktime_get_ts`\ , which is the recommended way to get it.
 
-    :param struct timeval \*tv:
+    :param tv:
         pointer to \ :c:type:`struct timeval <timeval>`\  to be filled.
+    :type tv: struct timeval \*
 
 .. _`v4l2_g_parm_cap`:
 
@@ -344,14 +405,17 @@ v4l2_g_parm_cap
 
     helper routine for vidioc_g_parm to fill this in by calling the g_frame_interval op of the given subdev. It only works for V4L2_BUF_TYPE_VIDEO_CAPTURE(_MPLANE), hence the _cap in the function name.
 
-    :param struct video_device \*vdev:
+    :param vdev:
         the struct video_device pointer. Used to determine the device caps.
+    :type vdev: struct video_device \*
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         the sub-device pointer.
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_streamparm \*a:
+    :param a:
         the VIDIOC_G_PARM argument.
+    :type a: struct v4l2_streamparm \*
 
 .. _`v4l2_s_parm_cap`:
 
@@ -362,14 +426,17 @@ v4l2_s_parm_cap
 
     helper routine for vidioc_s_parm to fill this in by calling the s_frame_interval op of the given subdev. It only works for V4L2_BUF_TYPE_VIDEO_CAPTURE(_MPLANE), hence the _cap in the function name.
 
-    :param struct video_device \*vdev:
+    :param vdev:
         the struct video_device pointer. Used to determine the device caps.
+    :type vdev: struct video_device \*
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         the sub-device pointer.
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_streamparm \*a:
+    :param a:
         the VIDIOC_S_PARM argument.
+    :type a: struct v4l2_streamparm \*
 
 .. This file was automatic generated / don't edit.
 

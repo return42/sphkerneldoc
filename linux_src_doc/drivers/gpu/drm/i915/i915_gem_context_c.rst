@@ -10,8 +10,9 @@ i915_gem_context_create_gvt
 
     create a GVT GEM context
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device \*
+    :type dev: struct drm_device \*
 
 .. _`i915_gem_context_create_gvt.description`:
 

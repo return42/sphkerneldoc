@@ -10,8 +10,9 @@ ieee80211_has_tods
 
     check if IEEE80211_FCTL_TODS is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_has_fromds`:
 
@@ -22,8 +23,9 @@ ieee80211_has_fromds
 
     check if IEEE80211_FCTL_FROMDS is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_has_a4`:
 
@@ -34,8 +36,9 @@ ieee80211_has_a4
 
     check if IEEE80211_FCTL_TODS and IEEE80211_FCTL_FROMDS are set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_has_morefrags`:
 
@@ -46,8 +49,9 @@ ieee80211_has_morefrags
 
     check if IEEE80211_FCTL_MOREFRAGS is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_has_retry`:
 
@@ -58,8 +62,9 @@ ieee80211_has_retry
 
     check if IEEE80211_FCTL_RETRY is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_has_pm`:
 
@@ -70,8 +75,9 @@ ieee80211_has_pm
 
     check if IEEE80211_FCTL_PM is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_has_moredata`:
 
@@ -82,8 +88,9 @@ ieee80211_has_moredata
 
     check if IEEE80211_FCTL_MOREDATA is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_has_protected`:
 
@@ -94,8 +101,9 @@ ieee80211_has_protected
 
     check if IEEE80211_FCTL_PROTECTED is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_has_order`:
 
@@ -106,8 +114,9 @@ ieee80211_has_order
 
     check if IEEE80211_FCTL_ORDER is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_mgmt`:
 
@@ -118,8 +127,9 @@ ieee80211_is_mgmt
 
     check if type is IEEE80211_FTYPE_MGMT
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_ctl`:
 
@@ -130,8 +140,9 @@ ieee80211_is_ctl
 
     check if type is IEEE80211_FTYPE_CTL
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_data`:
 
@@ -142,8 +153,9 @@ ieee80211_is_data
 
     check if type is IEEE80211_FTYPE_DATA
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_data_qos`:
 
@@ -154,8 +166,9 @@ ieee80211_is_data_qos
 
     check if type is IEEE80211_FTYPE_DATA and IEEE80211_STYPE_QOS_DATA is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_data_present`:
 
@@ -166,8 +179,9 @@ ieee80211_is_data_present
 
     check if type is IEEE80211_FTYPE_DATA and has data
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_assoc_req`:
 
@@ -178,8 +192,9 @@ ieee80211_is_assoc_req
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_ASSOC_REQ
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_assoc_resp`:
 
@@ -190,8 +205,9 @@ ieee80211_is_assoc_resp
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_ASSOC_RESP
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_reassoc_req`:
 
@@ -202,8 +218,9 @@ ieee80211_is_reassoc_req
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_REASSOC_REQ
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_reassoc_resp`:
 
@@ -214,8 +231,9 @@ ieee80211_is_reassoc_resp
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_REASSOC_RESP
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_probe_req`:
 
@@ -226,8 +244,9 @@ ieee80211_is_probe_req
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_PROBE_REQ
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_probe_resp`:
 
@@ -238,8 +257,9 @@ ieee80211_is_probe_resp
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_PROBE_RESP
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_beacon`:
 
@@ -250,8 +270,9 @@ ieee80211_is_beacon
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_BEACON
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_atim`:
 
@@ -262,8 +283,9 @@ ieee80211_is_atim
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_ATIM
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_disassoc`:
 
@@ -274,8 +296,9 @@ ieee80211_is_disassoc
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_DISASSOC
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_auth`:
 
@@ -286,8 +309,9 @@ ieee80211_is_auth
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_AUTH
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_deauth`:
 
@@ -298,8 +322,9 @@ ieee80211_is_deauth
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_DEAUTH
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_action`:
 
@@ -310,8 +335,9 @@ ieee80211_is_action
 
     check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_ACTION
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_back_req`:
 
@@ -322,8 +348,9 @@ ieee80211_is_back_req
 
     check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_BACK_REQ
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_back`:
 
@@ -334,8 +361,9 @@ ieee80211_is_back
 
     check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_BACK
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_pspoll`:
 
@@ -346,8 +374,9 @@ ieee80211_is_pspoll
 
     check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_PSPOLL
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_rts`:
 
@@ -358,8 +387,9 @@ ieee80211_is_rts
 
     check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_RTS
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_cts`:
 
@@ -370,8 +400,9 @@ ieee80211_is_cts
 
     check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_CTS
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_ack`:
 
@@ -382,8 +413,9 @@ ieee80211_is_ack
 
     check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_ACK
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_cfend`:
 
@@ -394,8 +426,9 @@ ieee80211_is_cfend
 
     check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_CFEND
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_cfendack`:
 
@@ -406,8 +439,9 @@ ieee80211_is_cfendack
 
     check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_CFENDACK
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_nullfunc`:
 
@@ -418,8 +452,9 @@ ieee80211_is_nullfunc
 
     check if frame is a regular (non-QoS) nullfunc frame
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_qos_nullfunc`:
 
@@ -430,8 +465,9 @@ ieee80211_is_qos_nullfunc
 
     check if frame is a QoS nullfunc frame
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_bufferable_mmpdu`:
 
@@ -442,8 +478,9 @@ ieee80211_is_bufferable_mmpdu
 
     check if frame is bufferable MMPDU
 
-    :param __le16 fc:
+    :param fc:
         frame control field in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee80211_is_first_frag`:
 
@@ -454,8 +491,9 @@ ieee80211_is_first_frag
 
     check if IEEE80211_SCTL_FRAG is not set
 
-    :param __le16 seq_ctrl:
+    :param seq_ctrl:
         frame sequence control bytes in little-endian byteorder
+    :type seq_ctrl: __le16
 
 .. _`ieee80211_is_frag`:
 
@@ -466,8 +504,9 @@ ieee80211_is_frag
 
     check if a frame is a fragment
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         802.11 header of the frame
+    :type hdr: struct ieee80211_hdr \*
 
 .. _`ieee80211_preq_flags`:
 
@@ -1480,7 +1519,8 @@ rx_highest
     STA can receive. Rate expressed in units of 1 Mbps.
     If this field is 0 this value should not be used to
     consider the highest RX data rate supported.
-    The top 3 bits of this field are reserved.
+    The top 3 bits of this field indicate the Maximum NSTS,total
+    (a beamformee capability.)
 
 tx_mcs_map
     TX MCS map 2 bits for each stream, total 8 streams
@@ -1490,7 +1530,9 @@ tx_highest
     STA can transmit. Rate expressed in units of 1 Mbps.
     If this field is 0 this value should not be used to
     consider the highest TX data rate supported.
-    The top 3 bits of this field are reserved.
+    The top 2 bits of this field are reserved, the
+    3rd bit from the top indiciates VHT Extended NSS BW
+    Capability.
 
 .. _`ieee80211_vht_mcs_support`:
 
@@ -1672,6 +1714,342 @@ Description
 
 This structure is the "VHT operation element" as
 described in 802.11ac D3.0 8.4.2.161
+
+.. _`ieee80211_he_cap_elem`:
+
+struct ieee80211_he_cap_elem
+============================
+
+.. c:type:: struct ieee80211_he_cap_elem
+
+    HE capabilities element
+
+.. _`ieee80211_he_cap_elem.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_he_cap_elem {
+        u8 mac_cap_info[6];
+        u8 phy_cap_info[11];
+    }
+
+.. _`ieee80211_he_cap_elem.members`:
+
+Members
+-------
+
+mac_cap_info
+    *undescribed*
+
+phy_cap_info
+    *undescribed*
+
+.. _`ieee80211_he_cap_elem.description`:
+
+Description
+-----------
+
+This structure is the "HE capabilities element" fixed fields as
+described in P802.11ax_D3.0 section 9.4.2.237.2 and 9.4.2.237.3
+
+.. _`ieee80211_he_mcs_support`:
+
+enum ieee80211_he_mcs_support
+=============================
+
+.. c:type:: enum ieee80211_he_mcs_support
+
+    HE MCS support definitions
+
+.. _`ieee80211_he_mcs_support.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee80211_he_mcs_support {
+        IEEE80211_HE_MCS_SUPPORT_0_7,
+        IEEE80211_HE_MCS_SUPPORT_0_9,
+        IEEE80211_HE_MCS_SUPPORT_0_11,
+        IEEE80211_HE_MCS_NOT_SUPPORTED
+    };
+
+.. _`ieee80211_he_mcs_support.constants`:
+
+Constants
+---------
+
+IEEE80211_HE_MCS_SUPPORT_0_7
+    MCSes 0-7 are supported for the
+    number of streams
+
+IEEE80211_HE_MCS_SUPPORT_0_9
+    MCSes 0-9 are supported
+
+IEEE80211_HE_MCS_SUPPORT_0_11
+    MCSes 0-11 are supported
+
+IEEE80211_HE_MCS_NOT_SUPPORTED
+    This number of streams isn't supported
+
+.. _`ieee80211_he_mcs_support.description`:
+
+Description
+-----------
+
+These definitions are used in each 2-bit subfield of the rx_mcs\_\*
+and tx_mcs\_\* fields of \ :c:type:`struct ieee80211_he_mcs_nss_supp <ieee80211_he_mcs_nss_supp>`\ , which are
+both split into 8 subfields by number of streams. These values indicate
+which MCSes are supported for the number of streams the value appears
+for.
+
+.. _`ieee80211_he_mcs_nss_supp`:
+
+struct ieee80211_he_mcs_nss_supp
+================================
+
+.. c:type:: struct ieee80211_he_mcs_nss_supp
+
+    HE Tx/Rx HE MCS NSS Support Field
+
+.. _`ieee80211_he_mcs_nss_supp.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_he_mcs_nss_supp {
+        __le16 rx_mcs_80;
+        __le16 tx_mcs_80;
+        __le16 rx_mcs_160;
+        __le16 tx_mcs_160;
+        __le16 rx_mcs_80p80;
+        __le16 tx_mcs_80p80;
+    }
+
+.. _`ieee80211_he_mcs_nss_supp.members`:
+
+Members
+-------
+
+rx_mcs_80
+    Rx MCS map 2 bits for each stream, total 8 streams, for channel
+    widths less than 80MHz.
+
+tx_mcs_80
+    Tx MCS map 2 bits for each stream, total 8 streams, for channel
+    widths less than 80MHz.
+
+rx_mcs_160
+    Rx MCS map 2 bits for each stream, total 8 streams, for channel
+    width 160MHz.
+
+tx_mcs_160
+    Tx MCS map 2 bits for each stream, total 8 streams, for channel
+    width 160MHz.
+
+rx_mcs_80p80
+    Rx MCS map 2 bits for each stream, total 8 streams, for
+    channel width 80p80MHz.
+
+tx_mcs_80p80
+    Tx MCS map 2 bits for each stream, total 8 streams, for
+    channel width 80p80MHz.
+
+.. _`ieee80211_he_mcs_nss_supp.description`:
+
+Description
+-----------
+
+This structure holds the data required for the Tx/Rx HE MCS NSS Support Field
+described in P802.11ax_D2.0 section 9.4.2.237.4
+
+.. _`ieee80211_he_operation`:
+
+struct ieee80211_he_operation
+=============================
+
+.. c:type:: struct ieee80211_he_operation
+
+    HE capabilities element
+
+.. _`ieee80211_he_operation.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_he_operation {
+        __le32 he_oper_params;
+        __le16 he_mcs_nss_set;
+        u8 optional[0];
+    }
+
+.. _`ieee80211_he_operation.members`:
+
+Members
+-------
+
+he_oper_params
+    *undescribed*
+
+he_mcs_nss_set
+    *undescribed*
+
+optional
+    *undescribed*
+
+.. _`ieee80211_he_operation.description`:
+
+Description
+-----------
+
+This structure is the "HE operation element" fields as
+described in P802.11ax_D2.0 section 9.4.2.238
+
+.. _`ieee80211_he_mu_edca_param_ac_rec`:
+
+struct ieee80211_he_mu_edca_param_ac_rec
+========================================
+
+.. c:type:: struct ieee80211_he_mu_edca_param_ac_rec
+
+    MU AC Parameter Record field
+
+.. _`ieee80211_he_mu_edca_param_ac_rec.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_he_mu_edca_param_ac_rec {
+        u8 aifsn;
+        u8 ecw_min_max;
+        u8 mu_edca_timer;
+    }
+
+.. _`ieee80211_he_mu_edca_param_ac_rec.members`:
+
+Members
+-------
+
+aifsn
+    *undescribed*
+
+ecw_min_max
+    *undescribed*
+
+mu_edca_timer
+    *undescribed*
+
+.. _`ieee80211_he_mu_edca_param_ac_rec.description`:
+
+Description
+-----------
+
+This structure is the "MU AC Parameter Record" fields as
+described in P802.11ax_D2.0 section 9.4.2.240
+
+.. _`ieee80211_mu_edca_param_set`:
+
+struct ieee80211_mu_edca_param_set
+==================================
+
+.. c:type:: struct ieee80211_mu_edca_param_set
+
+    MU EDCA Parameter Set element
+
+.. _`ieee80211_mu_edca_param_set.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_mu_edca_param_set {
+        u8 mu_qos_info;
+        struct ieee80211_he_mu_edca_param_ac_rec ac_be;
+        struct ieee80211_he_mu_edca_param_ac_rec ac_bk;
+        struct ieee80211_he_mu_edca_param_ac_rec ac_vi;
+        struct ieee80211_he_mu_edca_param_ac_rec ac_vo;
+    }
+
+.. _`ieee80211_mu_edca_param_set.members`:
+
+Members
+-------
+
+mu_qos_info
+    *undescribed*
+
+ac_be
+    *undescribed*
+
+ac_bk
+    *undescribed*
+
+ac_vi
+    *undescribed*
+
+ac_vo
+    *undescribed*
+
+.. _`ieee80211_mu_edca_param_set.description`:
+
+Description
+-----------
+
+This structure is the "MU EDCA Parameter Set element" fields as
+described in P802.11ax_D2.0 section 9.4.2.240
+
+.. _`ieee80211_get_vht_max_nss`:
+
+ieee80211_get_vht_max_nss
+=========================
+
+.. c:function:: int ieee80211_get_vht_max_nss(struct ieee80211_vht_cap *cap, enum ieee80211_vht_chanwidth bw, int mcs, bool ext_nss_bw_capable)
+
+    return max NSS for a given bandwidth/MCS
+
+    :param cap:
+        VHT capabilities of the peer
+    :type cap: struct ieee80211_vht_cap \*
+
+    :param bw:
+        bandwidth to use
+    :type bw: enum ieee80211_vht_chanwidth
+
+    :param mcs:
+        MCS index to use
+    :type mcs: int
+
+    :param ext_nss_bw_capable:
+        indicates whether or not the local transmitter
+        (rate scaling algorithm) can deal with the new logic
+        (dot11VHTExtendedNSSBWCapable)
+    :type ext_nss_bw_capable: bool
+
+.. _`ieee80211_get_vht_max_nss.description`:
+
+Description
+-----------
+
+Due to the VHT Extended NSS Bandwidth Support, the maximum NSS can
+vary for a given BW/MCS. This function parses the data.
+
+.. _`ieee80211_get_vht_max_nss.note`:
+
+Note
+----
+
+This function is exported by cfg80211.
 
 .. _`ieee80211_mesh_sync_method`:
 
@@ -1939,8 +2317,9 @@ ieee80211_get_qos_ctl
 
     get pointer to qos control bytes
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         the frame
+    :type hdr: struct ieee80211_hdr \*
 
 .. _`ieee80211_get_qos_ctl.description`:
 
@@ -1973,8 +2352,9 @@ ieee80211_get_tid
 
     get qos TID
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         the frame
+    :type hdr: struct ieee80211_hdr \*
 
 .. _`ieee80211_get_sa`:
 
@@ -1985,8 +2365,9 @@ ieee80211_get_SA
 
     get pointer to SA
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         the frame
+    :type hdr: struct ieee80211_hdr \*
 
 .. _`ieee80211_get_sa.description`:
 
@@ -2008,8 +2389,9 @@ ieee80211_get_DA
 
     get pointer to DA
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         the frame
+    :type hdr: struct ieee80211_hdr \*
 
 .. _`ieee80211_get_da.description`:
 
@@ -2031,8 +2413,9 @@ field.
 
     check if frame is a robust management frame
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         the frame (buffer must include at least the first octet of payload)
+    :type hdr: struct ieee80211_hdr \*
 
 .. _`ieee80211_is_robust_mgmt_frame`:
 
@@ -2043,8 +2426,9 @@ ieee80211_is_robust_mgmt_frame
 
     check if skb contains a robust mgmt frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb containing the frame, length will be checked
+    :type skb: struct sk_buff \*
 
 .. _`ieee80211_is_public_action`:
 
@@ -2055,11 +2439,13 @@ ieee80211_is_public_action
 
     check if frame is a public action frame
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         the frame
+    :type hdr: struct ieee80211_hdr \*
 
-    :param size_t len:
+    :param len:
         length of the frame
+    :type len: size_t
 
 .. _`_ieee80211_is_group_privacy_action`:
 
@@ -2070,8 +2456,9 @@ ieee80211_is_public_action
 
     check if frame is a group addressed privacy action frame
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         the frame
+    :type hdr: struct ieee80211_hdr \*
 
 .. _`ieee80211_is_group_privacy_action`:
 
@@ -2082,8 +2469,9 @@ ieee80211_is_group_privacy_action
 
     check if frame is a group addressed privacy action frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb containing the frame, length will be checked
+    :type skb: struct sk_buff \*
 
 .. _`ieee80211_tu_to_usec`:
 
@@ -2094,8 +2482,9 @@ ieee80211_tu_to_usec
 
     convert time units (TU) to microseconds
 
-    :param unsigned long tu:
+    :param tu:
         the TUs
+    :type tu: unsigned long
 
 .. _`ieee80211_check_tim`:
 
@@ -2106,14 +2495,17 @@ ieee80211_check_tim
 
     check if AID bit is set in TIM
 
-    :param const struct ieee80211_tim_ie \*tim:
+    :param tim:
         the TIM IE
+    :type tim: const struct ieee80211_tim_ie \*
 
-    :param u8 tim_len:
+    :param tim_len:
         length of the TIM IE
+    :type tim_len: u8
 
-    :param u16 aid:
+    :param aid:
         the AID to look for
+    :type aid: u16
 
 .. _`ieee80211_get_tdls_action`:
 
@@ -2124,11 +2516,13 @@ ieee80211_get_tdls_action
 
     get tdls packet action (or -1, if not tdls packet)
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb containing the frame, length will not be checked
+    :type skb: struct sk_buff \*
 
-    :param u32 hdr_size:
+    :param hdr_size:
         the size of the ieee80211_hdr that starts at skb->data
+    :type hdr_size: u32
 
 .. _`ieee80211_get_tdls_action.description`:
 
@@ -2147,8 +2541,9 @@ ieee80211_action_contains_tpc
 
     checks if the frame contains TPC element
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb containing the frame, length will be checked
+    :type skb: struct sk_buff \*
 
 .. _`ieee80211_action_contains_tpc.description`:
 

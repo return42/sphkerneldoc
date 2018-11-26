@@ -10,11 +10,13 @@ abx500_gpio_get
 
     Get the particular GPIO value
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         Gpio device
+    :type chip: struct gpio_chip \*
 
-    :param unsigned offset:
+    :param offset:
         GPIO number to read
+    :type offset: unsigned
 
 .. _`abx500_gpio_remove`:
 
@@ -25,8 +27,9 @@ abx500_gpio_remove
 
     remove Ab8500-gpio driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Platform device registered
+    :type pdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

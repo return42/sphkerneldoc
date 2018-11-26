@@ -10,11 +10,13 @@ efi_mem_reserve
 
     Reserve an EFI memory region
 
-    :param phys_addr_t addr:
+    :param addr:
         Physical address to reserve
+    :type addr: phys_addr_t
 
-    :param u64 size:
+    :param size:
         Size of reservation
+    :type size: u64
 
 .. _`efi_mem_reserve.description`:
 

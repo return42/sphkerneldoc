@@ -10,11 +10,13 @@ irq_set_chip
 
     set the irq chip for an irq
 
-    :param unsigned int irq:
+    :param irq:
         irq number
+    :type irq: unsigned int
 
-    :param struct irq_chip \*chip:
+    :param chip:
         pointer to irq chip description structure
+    :type chip: struct irq_chip \*
 
 .. _`irq_set_irq_type`:
 
@@ -25,11 +27,13 @@ irq_set_irq_type
 
     set the irq trigger type for an irq
 
-    :param unsigned int irq:
+    :param irq:
         irq number
+    :type irq: unsigned int
 
-    :param unsigned int type:
+    :param type:
         IRQ_TYPE_{LEVEL,EDGE}_* value - see include/linux/irq.h
+    :type type: unsigned int
 
 .. _`irq_set_handler_data`:
 
@@ -40,11 +44,13 @@ irq_set_handler_data
 
     set irq handler data for an irq
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt number
+    :type irq: unsigned int
 
-    :param void \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: void \*
 
 .. _`irq_set_handler_data.description`:
 
@@ -62,14 +68,17 @@ irq_set_msi_desc_off
 
     set MSI descriptor data for an irq at offset
 
-    :param unsigned int irq_base:
+    :param irq_base:
         Interrupt number base
+    :type irq_base: unsigned int
 
-    :param unsigned int irq_offset:
+    :param irq_offset:
         Interrupt number offset
+    :type irq_offset: unsigned int
 
-    :param struct msi_desc \*entry:
+    :param entry:
         Pointer to MSI descriptor data
+    :type entry: struct msi_desc \*
 
 .. _`irq_set_msi_desc_off.description`:
 
@@ -87,11 +96,13 @@ irq_set_msi_desc
 
     set MSI descriptor data for an irq
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt number
+    :type irq: unsigned int
 
-    :param struct msi_desc \*entry:
+    :param entry:
         Pointer to MSI descriptor data
+    :type entry: struct msi_desc \*
 
 .. _`irq_set_msi_desc.description`:
 
@@ -109,11 +120,13 @@ irq_set_chip_data
 
     set irq chip data for an irq
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt number
+    :type irq: unsigned int
 
-    :param void \*data:
+    :param data:
         Pointer to chip specific data
+    :type data: void \*
 
 .. _`irq_set_chip_data.description`:
 
@@ -131,8 +144,9 @@ irq_disable
 
     Mark interrupt disabled
 
-    :param struct irq_desc \*desc:
+    :param desc:
         irq descriptor which should be disabled
+    :type desc: struct irq_desc \*
 
 .. _`irq_disable.description`:
 
@@ -164,8 +178,9 @@ handle_simple_irq
 
     Simple and software-decoded IRQs.
 
-    :param struct irq_desc \*desc:
+    :param desc:
         the interrupt description structure for this irq
+    :type desc: struct irq_desc \*
 
 .. _`handle_simple_irq.description`:
 
@@ -193,8 +208,9 @@ handle_untracked_irq
 
     Simple and software-decoded IRQs.
 
-    :param struct irq_desc \*desc:
+    :param desc:
         the interrupt description structure for this irq
+    :type desc: struct irq_desc \*
 
 .. _`handle_untracked_irq.description`:
 
@@ -224,8 +240,9 @@ handle_level_irq
 
     Level type irq handler
 
-    :param struct irq_desc \*desc:
+    :param desc:
         the interrupt description structure for this irq
+    :type desc: struct irq_desc \*
 
 .. _`handle_level_irq.description`:
 
@@ -246,8 +263,9 @@ handle_fasteoi_irq
 
     irq handler for transparent controllers
 
-    :param struct irq_desc \*desc:
+    :param desc:
         the interrupt description structure for this irq
+    :type desc: struct irq_desc \*
 
 .. _`handle_fasteoi_irq.description`:
 
@@ -268,8 +286,9 @@ handle_edge_irq
 
     edge type IRQ handler
 
-    :param struct irq_desc \*desc:
+    :param desc:
         the interrupt description structure for this irq
+    :type desc: struct irq_desc \*
 
 .. _`handle_edge_irq.description`:
 
@@ -296,8 +315,9 @@ handle_edge_eoi_irq
 
     edge eoi type IRQ handler
 
-    :param struct irq_desc \*desc:
+    :param desc:
         the interrupt description structure for this irq
+    :type desc: struct irq_desc \*
 
 .. _`handle_edge_eoi_irq.description`:
 
@@ -316,8 +336,9 @@ handle_percpu_irq
 
     Per CPU local irq handler
 
-    :param struct irq_desc \*desc:
+    :param desc:
         the interrupt description structure for this irq
+    :type desc: struct irq_desc \*
 
 .. _`handle_percpu_irq.description`:
 
@@ -335,8 +356,9 @@ handle_percpu_devid_irq
 
     Per CPU local irq handler with per cpu dev ids
 
-    :param struct irq_desc \*desc:
+    :param desc:
         the interrupt description structure for this irq
+    :type desc: struct irq_desc \*
 
 .. _`handle_percpu_devid_irq.description`:
 
@@ -359,8 +381,9 @@ irq_cpu_online
 
     Invoke all irq_cpu_online functions.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`irq_cpu_online.description`:
 
@@ -379,8 +402,9 @@ irq_cpu_offline
 
     Invoke all irq_cpu_offline functions.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`irq_cpu_offline.description`:
 
@@ -399,8 +423,9 @@ handle_fasteoi_ack_irq
 
     irq handler for edge hierarchy stacked on transparent controllers
 
-    :param struct irq_desc \*desc:
+    :param desc:
         the interrupt description structure for this irq
+    :type desc: struct irq_desc \*
 
 .. _`handle_fasteoi_ack_irq.description`:
 
@@ -420,8 +445,9 @@ handle_fasteoi_mask_irq
 
     irq handler for level hierarchy stacked on transparent controllers
 
-    :param struct irq_desc \*desc:
+    :param desc:
         the interrupt description structure for this irq
+    :type desc: struct irq_desc \*
 
 .. _`handle_fasteoi_mask_irq.description`:
 
@@ -441,8 +467,9 @@ irq_chip_enable_parent
 
     Enable the parent interrupt (defaults to unmask if NULL)
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
 .. _`irq_chip_disable_parent`:
 
@@ -453,8 +480,9 @@ irq_chip_disable_parent
 
     Disable the parent interrupt (defaults to mask if NULL)
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
 .. _`irq_chip_ack_parent`:
 
@@ -465,8 +493,9 @@ irq_chip_ack_parent
 
     Acknowledge the parent interrupt
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
 .. _`irq_chip_mask_parent`:
 
@@ -477,8 +506,9 @@ irq_chip_mask_parent
 
     Mask the parent interrupt
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
 .. _`irq_chip_unmask_parent`:
 
@@ -489,8 +519,9 @@ irq_chip_unmask_parent
 
     Unmask the parent interrupt
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
 .. _`irq_chip_eoi_parent`:
 
@@ -501,8 +532,9 @@ irq_chip_eoi_parent
 
     Invoke EOI on the parent interrupt
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
 .. _`irq_chip_set_affinity_parent`:
 
@@ -513,14 +545,17 @@ irq_chip_set_affinity_parent
 
     Set affinity on the parent interrupt
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
-    :param const struct cpumask \*dest:
+    :param dest:
         The affinity mask to set
+    :type dest: const struct cpumask \*
 
-    :param bool force:
+    :param force:
         Flag to enforce setting (disable online checks)
+    :type force: bool
 
 .. _`irq_chip_set_affinity_parent.description`:
 
@@ -538,11 +573,13 @@ irq_chip_set_type_parent
 
     Set IRQ type on the parent interrupt
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
-    :param unsigned int type:
+    :param type:
         IRQ_TYPE_{LEVEL,EDGE}_* value - see include/linux/irq.h
+    :type type: unsigned int
 
 .. _`irq_chip_set_type_parent.description`:
 
@@ -560,8 +597,9 @@ irq_chip_retrigger_hierarchy
 
     Retrigger an interrupt in hardware
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
 .. _`irq_chip_retrigger_hierarchy.description`:
 
@@ -580,11 +618,13 @@ irq_chip_set_vcpu_affinity_parent
 
     Set vcpu affinity on the parent interrupt
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
-    :param void \*vcpu_info:
+    :param vcpu_info:
         The vcpu affinity information
+    :type vcpu_info: void \*
 
 .. _`irq_chip_set_wake_parent`:
 
@@ -595,11 +635,13 @@ irq_chip_set_wake_parent
 
     Set/reset wake-up on the parent interrupt
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
-    :param unsigned int on:
+    :param on:
         Whether to set or reset the wake-up capability of this irq
+    :type on: unsigned int
 
 .. _`irq_chip_set_wake_parent.description`:
 
@@ -617,11 +659,13 @@ irq_chip_compose_msi_msg
 
     Componse msi message for a irq chip
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
-    :param struct msi_msg \*msg:
+    :param msg:
         Pointer to the MSI message
+    :type msg: struct msi_msg \*
 
 .. _`irq_chip_compose_msi_msg.description`:
 
@@ -641,8 +685,9 @@ irq_chip_pm_get
 
     Enable power for an IRQ chip
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
 .. _`irq_chip_pm_get.description`:
 
@@ -661,8 +706,9 @@ irq_chip_pm_put
 
     Disable power for an IRQ chip
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to interrupt specific data
+    :type data: struct irq_data \*
 
 .. _`irq_chip_pm_put.description`:
 

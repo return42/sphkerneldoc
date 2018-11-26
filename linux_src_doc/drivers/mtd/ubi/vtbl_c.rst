@@ -10,8 +10,9 @@ ubi_update_layout_vol
 
     helper for updatting layout volumes on flash
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_change_vtbl_record`:
 
@@ -22,14 +23,17 @@ ubi_change_vtbl_record
 
     change volume table record.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int idx:
+    :param idx:
         table index to change
+    :type idx: int
 
-    :param struct ubi_vtbl_record \*vtbl_rec:
+    :param vtbl_rec:
         new volume table record
+    :type vtbl_rec: struct ubi_vtbl_record \*
 
 .. _`ubi_change_vtbl_record.description`:
 
@@ -50,11 +54,13 @@ ubi_vtbl_rename_volumes
 
     rename UBI volumes in the volume table.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct list_head \*rename_list:
+    :param rename_list:
         list of \ :c:type:`struct ubi_rename_entry <ubi_rename_entry>`\  objects
+    :type rename_list: struct list_head \*
 
 .. _`ubi_vtbl_rename_volumes.description`:
 
@@ -74,11 +80,13 @@ vtbl_check
 
     check if volume table is not corrupted and sensible.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param const struct ubi_vtbl_record \*vtbl:
+    :param vtbl:
         volume table
+    :type vtbl: const struct ubi_vtbl_record \*
 
 .. _`vtbl_check.description`:
 
@@ -97,17 +105,21 @@ create_vtbl
 
     create a copy of volume table.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int copy:
+    :param copy:
         number of the volume table copy
+    :type copy: int
 
-    :param void \*vtbl:
+    :param vtbl:
         contents of the volume table
+    :type vtbl: void \*
 
 .. _`create_vtbl.description`:
 
@@ -126,14 +138,17 @@ process_lvol
 
     process the layout volume.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param struct ubi_ainf_volume \*av:
+    :param av:
         layout volume attaching information
+    :type av: struct ubi_ainf_volume \*
 
 .. _`process_lvol.description`:
 
@@ -153,11 +168,13 @@ create_empty_lvol
 
     create empty layout volume.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
 .. _`create_empty_lvol.description`:
 
@@ -176,14 +193,17 @@ init_volumes
 
     initialize volume information for existing volumes.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param const struct ubi_attach_info \*ai:
+    :param ai:
         scanning information
+    :type ai: const struct ubi_attach_info \*
 
-    :param const struct ubi_vtbl_record \*vtbl:
+    :param vtbl:
         volume table
+    :type vtbl: const struct ubi_vtbl_record \*
 
 .. _`init_volumes.description`:
 
@@ -203,11 +223,13 @@ check_av
 
     check volume attaching information.
 
-    :param const struct ubi_volume \*vol:
+    :param vol:
         UBI volume description object
+    :type vol: const struct ubi_volume \*
 
-    :param const struct ubi_ainf_volume \*av:
+    :param av:
         volume attaching information
+    :type av: const struct ubi_ainf_volume \*
 
 .. _`check_av.description`:
 
@@ -226,11 +248,13 @@ check_attaching_info
 
     check that attaching information.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
 .. _`check_attaching_info.description`:
 
@@ -251,11 +275,13 @@ ubi_read_volume_table
 
     read the volume table.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
 .. _`ubi_read_volume_table.description`:
 
@@ -275,8 +301,9 @@ self_vtbl_check
 
     check volume table.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
 .. This file was automatic generated / don't edit.
 

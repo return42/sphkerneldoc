@@ -10,20 +10,25 @@
 
     set a run of bits in a bitmap to a value
 
-    :param struct inode \*vi:
+    :param vi:
         vfs inode describing the bitmap
+    :type vi: struct inode \*
 
-    :param const s64 start_bit:
+    :param start_bit:
         first bit to set
+    :type start_bit: const s64
 
-    :param const s64 count:
+    :param count:
         number of bits to set
+    :type count: const s64
 
-    :param const u8 value:
+    :param value:
         value to set the bits to (i.e. 0 or 1)
+    :type value: const u8
 
-    :param const bool is_rollback:
+    :param is_rollback:
         if 'true' this is a rollback operation
+    :type is_rollback: const bool
 
 .. _`__ntfs_bitmap_set_bits_in_run.description`:
 

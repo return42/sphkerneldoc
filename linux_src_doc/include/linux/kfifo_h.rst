@@ -10,11 +10,13 @@ DECLARE_KFIFO_PTR
 
     macro to declare a fifo pointer object
 
-    :param  fifo:
+    :param fifo:
         name of the declared fifo
+    :type fifo: 
 
-    :param  type:
+    :param type:
         type of the fifo elements
+    :type type: 
 
 .. _`declare_kfifo`:
 
@@ -25,14 +27,17 @@ DECLARE_KFIFO
 
     macro to declare a fifo object
 
-    :param  fifo:
+    :param fifo:
         name of the declared fifo
+    :type fifo: 
 
-    :param  type:
+    :param type:
         type of the fifo elements
+    :type type: 
 
-    :param  size:
+    :param size:
         the number of elements in the fifo, this must be a power of 2
+    :type size: 
 
 .. _`init_kfifo`:
 
@@ -43,8 +48,9 @@ INIT_KFIFO
 
     Initialize a fifo declared by DECLARE_KFIFO
 
-    :param  fifo:
+    :param fifo:
         name of the declared fifo datatype
+    :type fifo: 
 
 .. _`define_kfifo`:
 
@@ -55,14 +61,17 @@ DEFINE_KFIFO
 
     macro to define and initialize a fifo
 
-    :param  fifo:
+    :param fifo:
         name of the declared fifo datatype
+    :type fifo: 
 
-    :param  type:
+    :param type:
         type of the fifo elements
+    :type type: 
 
-    :param  size:
+    :param size:
         the number of elements in the fifo, this must be a power of 2
+    :type size: 
 
 .. _`define_kfifo.note`:
 
@@ -80,8 +89,9 @@ kfifo_initialized
 
     Check if the fifo is initialized
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to check
+    :type fifo: 
 
 .. _`kfifo_initialized.description`:
 
@@ -100,8 +110,9 @@ kfifo_esize
 
     returns the size of the element managed by the fifo
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_recsize`:
 
@@ -112,8 +123,9 @@ kfifo_recsize
 
     returns the size of the record length field
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_size`:
 
@@ -124,8 +136,9 @@ kfifo_size
 
     returns the size of the fifo in elements
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_reset`:
 
@@ -136,8 +149,9 @@ kfifo_reset
 
     removes the entire fifo content
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_reset.note`:
 
@@ -157,8 +171,9 @@ kfifo_reset_out
 
     skip fifo content
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_reset_out.note`:
 
@@ -178,8 +193,9 @@ kfifo_len
 
     returns the number of used elements in the fifo
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_is_empty`:
 
@@ -190,8 +206,9 @@ kfifo_is_empty
 
     returns true if the fifo is empty
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_is_full`:
 
@@ -202,8 +219,9 @@ kfifo_is_full
 
     returns true if the fifo is full
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_avail`:
 
@@ -214,8 +232,9 @@ kfifo_avail
 
     returns the number of unused elements in the fifo
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_skip`:
 
@@ -226,8 +245,9 @@ kfifo_skip
 
     skip output data
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_peek_len`:
 
@@ -238,8 +258,9 @@ kfifo_peek_len
 
     gets the size of the next fifo record
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
 .. _`kfifo_peek_len.description`:
 
@@ -257,14 +278,17 @@ kfifo_alloc
 
     dynamically allocates a new fifo buffer
 
-    :param  fifo:
+    :param fifo:
         pointer to the fifo
+    :type fifo: 
 
-    :param  size:
+    :param size:
         the number of elements in the fifo, this must be a power of 2
+    :type size: 
 
-    :param  gfp_mask:
+    :param gfp_mask:
         get_free_pages mask, passed to \ :c:func:`kmalloc`\ 
+    :type gfp_mask: 
 
 .. _`kfifo_alloc.description`:
 
@@ -286,8 +310,9 @@ kfifo_free
 
     frees the fifo
 
-    :param  fifo:
+    :param fifo:
         the fifo to be freed
+    :type fifo: 
 
 .. _`kfifo_init`:
 
@@ -298,14 +323,17 @@ kfifo_init
 
     initialize a fifo using a preallocated buffer
 
-    :param  fifo:
+    :param fifo:
         the fifo to assign the buffer
+    :type fifo: 
 
-    :param  buffer:
+    :param buffer:
         the preallocated buffer to be used
+    :type buffer: 
 
-    :param  size:
+    :param size:
         the size of the internal buffer, this have to be a power of 2
+    :type size: 
 
 .. _`kfifo_init.description`:
 
@@ -326,11 +354,13 @@ kfifo_put
 
     put data into the fifo
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  val:
+    :param val:
         the data to be added
+    :type val: 
 
 .. _`kfifo_put.description`:
 
@@ -353,11 +383,13 @@ kfifo_get
 
     get data from the fifo
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  val:
+    :param val:
         address where to store the data
+    :type val: 
 
 .. _`kfifo_get.description`:
 
@@ -380,11 +412,13 @@ kfifo_peek
 
     get data from the fifo without removing
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  val:
+    :param val:
         address where to store the data
+    :type val: 
 
 .. _`kfifo_peek.description`:
 
@@ -407,14 +441,17 @@ kfifo_in
 
     put data into the fifo
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  buf:
+    :param buf:
         the data to be added
+    :type buf: 
 
-    :param  n:
+    :param n:
         number of elements to be added
+    :type n: 
 
 .. _`kfifo_in.description`:
 
@@ -436,17 +473,21 @@ kfifo_in_spinlocked
 
     put data into the fifo using a spinlock for locking
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  buf:
+    :param buf:
         the data to be added
+    :type buf: 
 
-    :param  n:
+    :param n:
         number of elements to be added
+    :type n: 
 
-    :param  lock:
+    :param lock:
         pointer to the spinlock to use for locking
+    :type lock: 
 
 .. _`kfifo_in_spinlocked.description`:
 
@@ -465,14 +506,17 @@ kfifo_out
 
     get data from the fifo
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  buf:
+    :param buf:
         pointer to the storage buffer
+    :type buf: 
 
-    :param  n:
+    :param n:
         max. number of elements to get
+    :type n: 
 
 .. _`kfifo_out.description`:
 
@@ -494,17 +538,21 @@ kfifo_out_spinlocked
 
     get data from the fifo using a spinlock for locking
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  buf:
+    :param buf:
         pointer to the storage buffer
+    :type buf: 
 
-    :param  n:
+    :param n:
         max. number of elements to get
+    :type n: 
 
-    :param  lock:
+    :param lock:
         pointer to the spinlock to use for locking
+    :type lock: 
 
 .. _`kfifo_out_spinlocked.description`:
 
@@ -523,17 +571,21 @@ kfifo_from_user
 
     puts some data from user space into the fifo
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  from:
+    :param from:
         pointer to the data to be added
+    :type from: 
 
-    :param  len:
+    :param len:
         the length of the data to be added
+    :type len: 
 
-    :param  copied:
+    :param copied:
         pointer to output variable to store the number of copied bytes
+    :type copied: 
 
 .. _`kfifo_from_user.description`:
 
@@ -555,17 +607,21 @@ kfifo_to_user
 
     copies data from the fifo into user space
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  to:
+    :param to:
         where the data must be copied
+    :type to: 
 
-    :param  len:
+    :param len:
         the size of the destination buffer
+    :type len: 
 
-    :param  copied:
+    :param copied:
         pointer to output variable to store the number of copied bytes
+    :type copied: 
 
 .. _`kfifo_to_user.description`:
 
@@ -587,17 +643,21 @@ kfifo_dma_in_prepare
 
     setup a scatterlist for DMA input
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  sgl:
+    :param sgl:
         pointer to the scatterlist array
+    :type sgl: 
 
-    :param  nents:
+    :param nents:
         number of entries in the scatterlist array
+    :type nents: 
 
-    :param  len:
+    :param len:
         number of elements to transfer
+    :type len: 
 
 .. _`kfifo_dma_in_prepare.description`:
 
@@ -619,11 +679,13 @@ kfifo_dma_in_finish
 
     finish a DMA IN operation
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  len:
+    :param len:
         number of bytes to received
+    :type len: 
 
 .. _`kfifo_dma_in_finish.description`:
 
@@ -645,17 +707,21 @@ kfifo_dma_out_prepare
 
     setup a scatterlist for DMA output
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  sgl:
+    :param sgl:
         pointer to the scatterlist array
+    :type sgl: 
 
-    :param  nents:
+    :param nents:
         number of entries in the scatterlist array
+    :type nents: 
 
-    :param  len:
+    :param len:
         number of elements to transfer
+    :type len: 
 
 .. _`kfifo_dma_out_prepare.description`:
 
@@ -679,11 +745,13 @@ kfifo_dma_out_finish
 
     finish a DMA OUT operation
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  len:
+    :param len:
         number of bytes transferred
+    :type len: 
 
 .. _`kfifo_dma_out_finish.description`:
 
@@ -705,14 +773,17 @@ kfifo_out_peek
 
     gets some data from the fifo
 
-    :param  fifo:
+    :param fifo:
         address of the fifo to be used
+    :type fifo: 
 
-    :param  buf:
+    :param buf:
         pointer to the storage buffer
+    :type buf: 
 
-    :param  n:
+    :param n:
         max. number of elements to get
+    :type n: 
 
 .. _`kfifo_out_peek.description`:
 

@@ -10,11 +10,13 @@ vxfs_bmap_ext4
 
     do bmap for ext4 extents
 
-    :param struct inode \*ip:
+    :param ip:
         pointer to the inode we do bmap for
+    :type ip: struct inode \*
 
-    :param long bn:
+    :param bn:
         *undescribed*
+    :type bn: long
 
 .. _`vxfs_bmap_ext4.description`:
 
@@ -41,17 +43,21 @@ vxfs_bmap_indir
 
     recursion for vxfs_bmap_typed
 
-    :param struct inode \*ip:
+    :param ip:
         pointer to the inode we do bmap for
+    :type ip: struct inode \*
 
-    :param long indir:
+    :param indir:
         indirect block we start reading at
+    :type indir: long
 
-    :param int size:
+    :param size:
         size of the typed area to search
+    :type size: int
 
-    :param long block:
+    :param block:
         partially result from further searches
+    :type block: long
 
 .. _`vxfs_bmap_indir.description`:
 
@@ -84,11 +90,13 @@ vxfs_bmap_typed
 
     bmap for typed extents
 
-    :param struct inode \*ip:
+    :param ip:
         pointer to the inode we do bmap for
+    :type ip: struct inode \*
 
-    :param long iblock:
+    :param iblock:
         logical block
+    :type iblock: long
 
 .. _`vxfs_bmap_typed.description`:
 
@@ -113,11 +121,13 @@ vxfs_bmap1
 
     vxfs-internal bmap operation
 
-    :param struct inode \*ip:
+    :param ip:
         pointer to the inode we do bmap for
+    :type ip: struct inode \*
 
-    :param long iblock:
+    :param iblock:
         logical block
+    :type iblock: long
 
 .. _`vxfs_bmap1.description`:
 

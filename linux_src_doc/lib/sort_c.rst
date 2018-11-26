@@ -10,14 +10,17 @@ sort
 
     sort an array of elements
 
-    :param void \*base:
+    :param base:
         pointer to data to sort
+    :type base: void \*
 
-    :param size_t num:
+    :param num:
         number of elements
+    :type num: size_t
 
-    :param size_t size:
+    :param size:
         size of each element
+    :type size: size_t
 
     :param int (\*cmp_func)(const void \*, const void \*):
         pointer to comparison function

@@ -10,14 +10,17 @@ lowpan_fetch_skb
 
     getting inline data from 6LoWPAN header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer where the inline data should be pulled from.
+    :type skb: struct sk_buff \*
 
-    :param void \*data:
+    :param data:
         destination buffer for the inline data.
+    :type data: void \*
 
-    :param unsigned int len:
+    :param len:
         amount of data which should be pulled in bytes.
+    :type len: unsigned int
 
 .. _`lowpan_fetch_skb.description`:
 
@@ -38,19 +41,23 @@ lowpan_header_decompress
 
     replace 6LoWPAN header with IPv6 header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer which should be manipulate.
+    :type skb: struct sk_buff \*
 
-    :param const struct net_device \*dev:
+    :param dev:
         the lowpan net device pointer.
+    :type dev: const struct net_device \*
 
-    :param const void \*daddr:
+    :param daddr:
         destination lladdr of mac header which is used for compression
         methods.
+    :type daddr: const void \*
 
-    :param const void \*saddr:
+    :param saddr:
         source lladdr of mac header which is used for compression
         methods.
+    :type saddr: const void \*
 
 .. _`lowpan_header_decompress.description`:
 
@@ -72,19 +79,23 @@ lowpan_header_compress
 
     replace IPv6 header with 6LoWPAN header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer which should be manipulate.
+    :type skb: struct sk_buff \*
 
-    :param const struct net_device \*dev:
+    :param dev:
         the lowpan net device pointer.
+    :type dev: const struct net_device \*
 
-    :param const void \*daddr:
+    :param daddr:
         destination lladdr of mac header which is used for compression
         methods.
+    :type daddr: const void \*
 
-    :param const void \*saddr:
+    :param saddr:
         source lladdr of mac header which is used for compression
         methods.
+    :type saddr: const void \*
 
 .. _`lowpan_header_compress.description`:
 

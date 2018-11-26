@@ -10,8 +10,9 @@ freeze_bdev
 
     -  lock a filesystem and force it into a consistent state
 
-    :param struct block_device \*bdev:
+    :param bdev:
         blockdevice to lock
+    :type bdev: struct block_device \*
 
 .. _`freeze_bdev.description`:
 
@@ -35,11 +36,13 @@ thaw_bdev
 
     - unlock filesystem
 
-    :param struct block_device \*bdev:
+    :param bdev:
         blockdevice to unlock
+    :type bdev: struct block_device \*
 
-    :param struct super_block \*sb:
+    :param sb:
         associated superblock
+    :type sb: struct super_block \*
 
 .. _`thaw_bdev.description`:
 
@@ -57,14 +60,17 @@ bdev_read_page
 
     Start reading a page from a block device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         The device to read the page from
+    :type bdev: struct block_device \*
 
-    :param sector_t sector:
+    :param sector:
         The offset on the device to read the page to (need not be aligned)
+    :type sector: sector_t
 
-    :param struct page \*page:
+    :param page:
         The page to read
+    :type page: struct page \*
 
 .. _`bdev_read_page.description`:
 
@@ -95,17 +101,21 @@ bdev_write_page
 
     Start writing a page to a block device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         The device to write the page to
+    :type bdev: struct block_device \*
 
-    :param sector_t sector:
+    :param sector:
         The offset on the device to write the page to (need not be aligned)
+    :type sector: sector_t
 
-    :param struct page \*page:
+    :param page:
         The page to write
+    :type page: struct page \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback_control for the write
+    :type wbc: struct writeback_control \*
 
 .. _`bdev_write_page.description`:
 
@@ -138,8 +148,9 @@ bdgrab
 
     - Grab a reference to an already referenced block device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         Block device to grab a reference to.
+    :type bdev: struct block_device \*
 
 .. _`bd_may_claim`:
 
@@ -150,14 +161,17 @@ bd_may_claim
 
     test whether a block device can be claimed
 
-    :param struct block_device \*bdev:
+    :param bdev:
         block device of interest
+    :type bdev: struct block_device \*
 
-    :param struct block_device \*whole:
+    :param whole:
         whole block device containing \ ``bdev``\ , may equal \ ``bdev``\ 
+    :type whole: struct block_device \*
 
-    :param void \*holder:
+    :param holder:
         holder trying to claim \ ``bdev``\ 
+    :type holder: void \*
 
 .. _`bd_may_claim.description`:
 
@@ -189,14 +203,17 @@ bd_prepare_to_claim
 
     prepare to claim a block device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         block device of interest
+    :type bdev: struct block_device \*
 
-    :param struct block_device \*whole:
+    :param whole:
         the whole device containing \ ``bdev``\ , may equal \ ``bdev``\ 
+    :type whole: struct block_device \*
 
-    :param void \*holder:
+    :param holder:
         holder trying to claim \ ``bdev``\ 
+    :type holder: void \*
 
 .. _`bd_prepare_to_claim.description`:
 
@@ -232,11 +249,13 @@ bd_start_claiming
 
     start claiming a block device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         block device of interest
+    :type bdev: struct block_device \*
 
-    :param void \*holder:
+    :param holder:
         holder trying to claim \ ``bdev``\ 
+    :type holder: void \*
 
 .. _`bd_start_claiming.description`:
 
@@ -278,11 +297,13 @@ bd_link_disk_holder
 
     create symlinks between holding disk and slave bdev
 
-    :param struct block_device \*bdev:
+    :param bdev:
         the claimed slave bdev
+    :type bdev: struct block_device \*
 
-    :param struct gendisk \*disk:
+    :param disk:
         the holding disk
+    :type disk: struct gendisk \*
 
 .. _`bd_link_disk_holder.description`:
 
@@ -329,11 +350,13 @@ bd_unlink_disk_holder
 
     destroy symlinks created by \ :c:func:`bd_link_disk_holder`\ 
 
-    :param struct block_device \*bdev:
+    :param bdev:
         the calimed slave bdev
+    :type bdev: struct block_device \*
 
-    :param struct gendisk \*disk:
+    :param disk:
         the holding disk
+    :type disk: struct gendisk \*
 
 .. _`bd_unlink_disk_holder.description`:
 
@@ -358,11 +381,13 @@ flush_disk
 
     invalidates all buffer-cache entries on a disk
 
-    :param struct block_device \*bdev:
+    :param bdev:
         struct block device to be flushed
+    :type bdev: struct block_device \*
 
-    :param bool kill_dirty:
+    :param kill_dirty:
         flag to guide handling of dirty inodes
+    :type kill_dirty: bool
 
 .. _`flush_disk.description`:
 
@@ -382,14 +407,17 @@ check_disk_size_change
 
     checks for disk size change and adjusts bdev size.
 
-    :param struct gendisk \*disk:
+    :param disk:
         struct gendisk to check
+    :type disk: struct gendisk \*
 
-    :param struct block_device \*bdev:
+    :param bdev:
         struct bdev to adjust.
+    :type bdev: struct block_device \*
 
-    :param bool verbose:
+    :param verbose:
         if \ ``true``\  log a message about a size change if there is any
+    :type verbose: bool
 
 .. _`check_disk_size_change.description`:
 
@@ -409,8 +437,9 @@ revalidate_disk
 
     wrapper for lower-level driver's revalidate_disk call-back
 
-    :param struct gendisk \*disk:
+    :param disk:
         struct gendisk to be revalidated
+    :type disk: struct gendisk \*
 
 .. _`revalidate_disk.description`:
 
@@ -430,14 +459,17 @@ blkdev_get
 
     open a block device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         block_device to open
+    :type bdev: struct block_device \*
 
-    :param fmode_t mode:
+    :param mode:
         FMODE_* mask
+    :type mode: fmode_t
 
-    :param void \*holder:
+    :param holder:
         exclusive holder identifier
+    :type holder: void \*
 
 .. _`blkdev_get.description`:
 
@@ -474,14 +506,17 @@ blkdev_get_by_path
 
     open a block device by name
 
-    :param const char \*path:
+    :param path:
         path to the block device to open
+    :type path: const char \*
 
-    :param fmode_t mode:
+    :param mode:
         FMODE_* mask
+    :type mode: fmode_t
 
-    :param void \*holder:
+    :param holder:
         exclusive holder identifier
+    :type holder: void \*
 
 .. _`blkdev_get_by_path.description`:
 
@@ -516,14 +551,17 @@ blkdev_get_by_dev
 
     open a block device by device number
 
-    :param dev_t dev:
+    :param dev:
         device number of block device to open
+    :type dev: dev_t
 
-    :param fmode_t mode:
+    :param mode:
         FMODE_* mask
+    :type mode: fmode_t
 
-    :param void \*holder:
+    :param holder:
         exclusive holder identifier
+    :type holder: void \*
 
 .. _`blkdev_get_by_dev.description`:
 
@@ -563,8 +601,9 @@ lookup_bdev
 
     lookup a struct block_device by name
 
-    :param const char \*pathname:
+    :param pathname:
         special file representing the block device
+    :type pathname: const char \*
 
 .. _`lookup_bdev.description`:
 

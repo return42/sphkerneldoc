@@ -8,8 +8,9 @@ wdt_ping
 
 .. c:function:: void wdt_ping( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdt_ping.description`:
 
@@ -26,8 +27,9 @@ wdt_disable
 
 .. c:function:: void wdt_disable( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdt_disable.description`:
 
@@ -43,17 +45,21 @@ wdt_write
 
 .. c:function:: ssize_t wdt_write(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    :param struct file \*file:
+    :param file:
         file handle to the watchdog
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         buffer to write (unused as data does not matter here
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         count of bytes
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         pointer to the position to write. No seeks allowed
+    :type ppos: loff_t \*
 
 .. _`wdt_write.description`:
 
@@ -70,14 +76,17 @@ wdt_ioctl
 
 .. c:function:: int wdt_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
-    :param struct file \*file:
+    :param file:
         file handle to the device
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         watchdog command
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         argument pointer
+    :type arg: unsigned long
 
 .. _`wdt_ioctl.description`:
 
@@ -95,11 +104,13 @@ wdt_open
 
 .. c:function:: int wdt_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode of device
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle to device
+    :type file: struct file \*
 
 .. _`wdt_release`:
 
@@ -108,11 +119,13 @@ wdt_release
 
 .. c:function:: int wdt_release(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode to board
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle to board
+    :type file: struct file \*
 
 .. _`wdt_notify_sys`:
 
@@ -121,14 +134,17 @@ wdt_notify_sys
 
 .. c:function:: int wdt_notify_sys(struct notifier_block *this, unsigned long code, void *unused)
 
-    :param struct notifier_block \*this:
+    :param this:
         our notifier block
+    :type this: struct notifier_block \*
 
-    :param unsigned long code:
+    :param code:
         the event being reported
+    :type code: unsigned long
 
-    :param void \*unused:
+    :param unused:
         unused
+    :type unused: void \*
 
 .. _`wdt_notify_sys.description`:
 

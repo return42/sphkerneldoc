@@ -8,18 +8,22 @@ uwb_rc_dev_addr_mgmt
 
 .. c:function:: int uwb_rc_dev_addr_mgmt(struct uwb_rc *rc, u8 bmOperationType, const u8 *baAddr, struct uwb_rc_evt_dev_addr_mgmt *reply)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param u8 bmOperationType:
+    :param bmOperationType:
         Set/get, MAC/DEV (see WUSB1.0[8.6.2.2])
+    :type bmOperationType: u8
 
-    :param const u8 \*baAddr:
+    :param baAddr:
         address buffer--assumed to have enough data to hold
         the address type requested.
+    :type baAddr: const u8 \*
 
-    :param struct uwb_rc_evt_dev_addr_mgmt \*reply:
+    :param reply:
         Pointer to reply buffer (can be stack allocated)
+    :type reply: struct uwb_rc_evt_dev_addr_mgmt \*
 
 .. _`uwb_rc_dev_addr_mgmt.description`:
 
@@ -36,15 +40,18 @@ uwb_rc_addr_set
 
 .. c:function:: int uwb_rc_addr_set(struct uwb_rc *rc, const void *_addr, enum uwb_addr_type type)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Radio Controller
+    :type rc: struct uwb_rc \*
 
-    :param const void \*_addr:
+    :param _addr:
         Pointer to address to write [assumed to be either a
         'struct uwb_mac_addr \*' or a 'struct uwb_dev_addr \*'].
+    :type _addr: const void \*
 
-    :param enum uwb_addr_type type:
+    :param type:
         Type of address to set (UWB_ADDR_DEV or UWB_ADDR_MAC).
+    :type type: enum uwb_addr_type
 
 .. _`uwb_rc_addr_set.some-anal-retentivity-here`:
 
@@ -64,15 +71,18 @@ uwb_rc_addr_get
 
 .. c:function:: int uwb_rc_addr_get(struct uwb_rc *rc, void *_addr, enum uwb_addr_type type)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Radio Controller
+    :type rc: struct uwb_rc \*
 
-    :param void \*_addr:
+    :param _addr:
         Where to write the address data [assumed to be either a
         'struct uwb_mac_addr \*' or a 'struct uwb_dev_addr \*'].
+    :type _addr: void \*
 
-    :param enum uwb_addr_type type:
+    :param type:
         Type of address to get (UWB_ADDR_DEV or UWB_ADDR_MAC).
+    :type type: enum uwb_addr_type
 
 .. _`uwb_rc_addr_get.description`:
 
@@ -91,8 +101,9 @@ uwb_rc_dev_addr_assign
 
     assigned a generated DevAddr to a radio controller
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the (local) radio controller device requiring a new DevAddr
+    :type rc: struct uwb_rc \*
 
 .. _`uwb_rc_dev_addr_assign.a-new-devaddr-is-required-when`:
 
@@ -117,8 +128,9 @@ uwbd_evt_handle_rc_dev_addr_conflict
 
     handle a DEV_ADDR_CONFLICT event
 
-    :param struct uwb_event \*evt:
+    :param evt:
         the DEV_ADDR_CONFLICT notification from the radio controller
+    :type evt: struct uwb_event \*
 
 .. _`uwbd_evt_handle_rc_dev_addr_conflict.description`:
 

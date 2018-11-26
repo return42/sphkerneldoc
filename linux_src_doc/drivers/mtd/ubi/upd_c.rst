@@ -10,11 +10,13 @@ set_update_marker
 
     set update marker.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
 .. _`set_update_marker.description`:
 
@@ -33,14 +35,17 @@ clear_update_marker
 
     clear update marker.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param long long bytes:
+    :param bytes:
         new data size in bytes
+    :type bytes: long long
 
 .. _`clear_update_marker.description`:
 
@@ -60,14 +65,17 @@ ubi_start_update
 
     start volume update.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param long long bytes:
+    :param bytes:
         update bytes
+    :type bytes: long long
 
 .. _`ubi_start_update.description`:
 
@@ -87,14 +95,17 @@ ubi_start_leb_change
 
     start atomic LEB change.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param const struct ubi_leb_change_req \*req:
+    :param req:
         operation request
+    :type req: const struct ubi_leb_change_req \*
 
 .. _`ubi_start_leb_change.description`:
 
@@ -113,24 +124,30 @@ write_leb
 
     write update data.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param void \*buf:
+    :param buf:
         data to write
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         data size
+    :type len: int
 
-    :param int used_ebs:
+    :param used_ebs:
         how many logical eraseblocks will this volume contain (static
         volumes only)
+    :type used_ebs: int
 
 .. _`write_leb.description`:
 
@@ -165,17 +182,21 @@ ubi_more_update_data
 
     write more update data.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param const void __user \*buf:
+    :param buf:
         write data (user-space memory buffer)
+    :type buf: const void __user \*
 
-    :param int count:
+    :param count:
         how much bytes to write
+    :type count: int
 
 .. _`ubi_more_update_data.description`:
 
@@ -197,17 +218,21 @@ ubi_more_leb_change_data
 
     accept more data for atomic LEB change.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
-    :param const void __user \*buf:
+    :param buf:
         write data (user-space memory buffer)
+    :type buf: const void __user \*
 
-    :param int count:
+    :param count:
         how much bytes to write
+    :type count: int
 
 .. _`ubi_more_leb_change_data.description`:
 

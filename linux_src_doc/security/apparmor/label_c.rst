@@ -10,11 +10,13 @@ ns_cmp
 
     compare ns for label set ordering
 
-    :param struct aa_ns \*a:
+    :param a:
         ns to compare (NOT NULL)
+    :type a: struct aa_ns \*
 
-    :param struct aa_ns \*b:
+    :param b:
         ns to compare (NOT NULL)
+    :type b: struct aa_ns \*
 
 .. _`ns_cmp.return`:
 
@@ -34,11 +36,13 @@ profile_cmp
 
     profile comparison for set ordering
 
-    :param struct aa_profile \*a:
+    :param a:
         profile to compare (NOT NULL)
+    :type a: struct aa_profile \*
 
-    :param struct aa_profile \*b:
+    :param b:
         profile to compare (NOT NULL)
+    :type b: struct aa_profile \*
 
 .. _`profile_cmp.return`:
 
@@ -58,17 +62,21 @@ vec_cmp
 
     label comparison for set ordering
 
-    :param struct aa_profile \*\*a:
+    :param a:
         label to compare (NOT NULL)
+    :type a: struct aa_profile \*\*
 
-    :param int an:
+    :param an:
         *undescribed*
+    :type an: int
 
-    :param struct aa_profile \*\*b:
+    :param b:
         *undescribed*
+    :type b: struct aa_profile \*\*
 
-    :param int bn:
+    :param bn:
         *undescribed*
+    :type bn: int
 
 .. _`vec_cmp.return`:
 
@@ -88,14 +96,17 @@ aa_vec_unique
 
     canonical sort and unique a list of profiles
 
-    :param struct aa_profile \*\*vec:
+    :param vec:
         list of profiles to sort and merge
+    :type vec: struct aa_profile \*\*
 
-    :param int n:
+    :param n:
         number of refcounted profiles in the list (@n > 0)
+    :type n: int
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`aa_vec_unique.return`:
 
@@ -116,14 +127,17 @@ aa_label_alloc
 
     allocate a label with a profile vector of \ ``size``\  length
 
-    :param int size:
+    :param size:
         size of profile vector in the label
+    :type size: int
 
-    :param struct aa_proxy \*proxy:
+    :param proxy:
         proxy to use OR null if to allocate a new one
+    :type proxy: struct aa_proxy \*
 
-    :param gfp_t gfp:
+    :param gfp:
         memory allocation type
+    :type gfp: gfp_t
 
 .. _`aa_label_alloc.return`:
 
@@ -142,11 +156,13 @@ label_cmp
 
     label comparison for set ordering
 
-    :param struct aa_label \*a:
+    :param a:
         label to compare (NOT NULL)
+    :type a: struct aa_label \*
 
-    :param struct aa_label \*b:
+    :param b:
         label to compare (NOT NULL)
+    :type b: struct aa_label \*
 
 .. _`label_cmp.return`:
 
@@ -166,14 +182,17 @@ Return
 
     return the next profile of \ ``sub``\  not in \ ``set``\ 
 
-    :param struct label_it \*I:
+    :param I:
         label iterator
+    :type I: struct label_it \*
 
-    :param struct aa_label \*set:
+    :param set:
         label to test against
+    :type set: struct aa_label \*
 
-    :param struct aa_label \*sub:
+    :param sub:
         label to if is subset of \ ``set``\ 
+    :type sub: struct aa_label \*
 
 .. _`__aa_label_next_not_in_set.return`:
 
@@ -192,11 +211,13 @@ aa_label_is_subset
 
     test if \ ``sub``\  is a subset of \ ``set``\ 
 
-    :param struct aa_label \*set:
+    :param set:
         label to test against
+    :type set: struct aa_label \*
 
-    :param struct aa_label \*sub:
+    :param sub:
         label to test if is subset of \ ``set``\ 
+    :type sub: struct aa_label \*
 
 .. _`aa_label_is_subset.return`:
 
@@ -215,11 +236,13 @@ else false
 
     remove \ ``label``\  from the label set
 
-    :param struct aa_label \*label:
+    :param label:
         *undescribed*
+    :type label: struct aa_label \*
 
-    :param struct aa_label \*new:
+    :param new:
         label to redirect to
+    :type new: struct aa_label \*
 
 .. _`__label_remove.requires`:
 
@@ -244,11 +267,13 @@ true if the label was in the tree and removed
 
     replace \ ``old``\  with \ ``new``\  in label set
 
-    :param struct aa_label \*old:
+    :param old:
         label to remove from label set
+    :type old: struct aa_label \*
 
-    :param struct aa_label \*new:
+    :param new:
         label to replace \ ``old``\  with
+    :type new: struct aa_label \*
 
 .. _`__label_replace.requires`:
 
@@ -283,21 +308,24 @@ using pointer comparison of the label address would not work)
 
     attempt to insert \ ``l``\  into a label set
 
-    :param struct aa_labelset \*ls:
+    :param ls:
         set of labels to insert \ ``l``\  into (NOT NULL)
+    :type ls: struct aa_labelset \*
 
-    :param struct aa_label \*label:
+    :param label:
         new label to insert (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param bool replace:
+    :param replace:
         whether insertion should replace existing entry that is not stale
+    :type replace: bool
 
 .. _`__label_insert.requires`:
 
 Requires
 --------
 
-\ ``ls``\ ->lock
+\ ``ls->lock``\ 
 caller to hold a valid ref on l
 if \ ``replace``\  is true l has a preallocated proxy associated
 
@@ -319,11 +347,13 @@ the else condition only happens if \ ``replace``\  is false
 
     find label that matches \ ``vec``\  in label set
 
-    :param struct aa_profile \*\*vec:
+    :param vec:
         vec of profiles to find matching label for (NOT NULL)
+    :type vec: struct aa_profile \*\*
 
-    :param int n:
+    :param n:
         length of \ ``vec``\ 
+    :type n: int
 
 .. _`__vec_find.requires`:
 
@@ -351,8 +381,9 @@ else NULL if \ ``vec``\  equiv is not in tree
 
     find label \ ``label``\  in label set
 
-    :param struct aa_label \*label:
+    :param label:
         label to find (NOT NULL)
+    :type label: struct aa_label \*
 
 .. _`__label_find.requires`:
 
@@ -380,8 +411,9 @@ aa_label_remove
 
     remove a label from the labelset
 
-    :param struct aa_label \*label:
+    :param label:
         label to remove
+    :type label: struct aa_label \*
 
 .. _`aa_label_remove.return`:
 
@@ -400,11 +432,13 @@ aa_label_replace
 
     replace a label \ ``old``\  with a new version \ ``new``\ 
 
-    :param struct aa_label \*old:
+    :param old:
         label to replace
+    :type old: struct aa_label \*
 
-    :param struct aa_label \*new:
+    :param new:
         label replacing \ ``old``\ 
+    :type new: struct aa_label \*
 
 .. _`aa_label_replace.return`:
 
@@ -423,11 +457,13 @@ vec_find
 
     find label \ ``l``\  in label set
 
-    :param struct aa_profile \*\*vec:
+    :param vec:
         array of profiles to find equiv label for (NOT NULL)
+    :type vec: struct aa_profile \*\*
 
-    :param int n:
+    :param n:
         length of \ ``vec``\ 
+    :type n: int
 
 .. _`vec_find.return`:
 
@@ -446,8 +482,9 @@ aa_label_find
 
     find label \ ``label``\  in label set
 
-    :param struct aa_label \*label:
+    :param label:
         label to find (NOT NULL)
+    :type label: struct aa_label \*
 
 .. _`aa_label_find.requires`:
 
@@ -474,11 +511,13 @@ aa_label_insert
 
     insert label \ ``label``\  into \ ``ls``\  or return existing label \ ``ls``\  - labelset to insert \ ``label``\  into \ ``label``\  - label to insert
 
-    :param struct aa_labelset \*ls:
+    :param ls:
         *undescribed*
+    :type ls: struct aa_labelset \*
 
-    :param struct aa_label \*label:
+    :param label:
         *undescribed*
+    :type label: struct aa_label \*
 
 .. _`aa_label_insert.requires`:
 
@@ -504,14 +543,17 @@ aa_label_next_in_merge
 
     find the next profile when merging \ ``a``\  and \ ``b``\ 
 
-    :param struct label_it \*I:
+    :param I:
         label iterator
+    :type I: struct label_it \*
 
-    :param struct aa_label \*a:
+    :param a:
         label to merge
+    :type a: struct aa_label \*
 
-    :param struct aa_label \*b:
+    :param b:
         label to merge
+    :type b: struct aa_label \*
 
 .. _`aa_label_next_in_merge.return`:
 
@@ -530,14 +572,17 @@ label_merge_cmp
 
     cmp of \ ``a``\  merging with \ ``b``\  against \ ``z``\  for set ordering
 
-    :param struct aa_label \*a:
+    :param a:
         label to merge then compare (NOT NULL)
+    :type a: struct aa_label \*
 
-    :param struct aa_label \*b:
+    :param b:
         label to merge then compare (NOT NULL)
+    :type b: struct aa_label \*
 
-    :param struct aa_label \*z:
+    :param z:
         label to compare merge against (NOT NULL)
+    :type z: struct aa_label \*
 
 .. _`label_merge_cmp.assumes`:
 
@@ -564,14 +609,17 @@ label_merge_insert
 
     create a new label by merging \ ``a``\  and \ ``b``\ 
 
-    :param struct aa_label \*new:
+    :param new:
         preallocated label to merge into (NOT NULL)
+    :type new: struct aa_label \*
 
-    :param struct aa_label \*a:
+    :param a:
         label to merge with \ ``b``\   (NOT NULL)
+    :type a: struct aa_label \*
 
-    :param struct aa_label \*b:
+    :param b:
         label to merge with \ ``a``\   (NOT NULL)
+    :type b: struct aa_label \*
 
 .. _`label_merge_insert.requires`:
 
@@ -608,11 +656,13 @@ labelset_of_merge
 
     find which labelset a merged label should be inserted
 
-    :param struct aa_label \*a:
+    :param a:
         label to merge and insert
+    :type a: struct aa_label \*
 
-    :param struct aa_label \*b:
+    :param b:
         label to merge and insert
+    :type b: struct aa_label \*
 
 .. _`labelset_of_merge.return`:
 
@@ -630,14 +680,17 @@ labelset that the merged label should be inserted into
 
     find label that is equiv to merge of \ ``a``\  and \ ``b``\ 
 
-    :param struct aa_labelset \*ls:
+    :param ls:
         set of labels to search (NOT NULL)
+    :type ls: struct aa_labelset \*
 
-    :param struct aa_label \*a:
+    :param a:
         label to merge with \ ``b``\   (NOT NULL)
+    :type a: struct aa_label \*
 
-    :param struct aa_label \*b:
+    :param b:
         label to merge with \ ``a``\   (NOT NULL)
+    :type b: struct aa_label \*
 
 .. _`__label_find_merge.requires`:
 
@@ -663,11 +716,13 @@ aa_label_find_merge
 
     find label that is equiv to merge of \ ``a``\  and \ ``b``\ 
 
-    :param struct aa_label \*a:
+    :param a:
         label to merge with \ ``b``\   (NOT NULL)
+    :type a: struct aa_label \*
 
-    :param struct aa_label \*b:
+    :param b:
         label to merge with \ ``a``\   (NOT NULL)
+    :type b: struct aa_label \*
 
 .. _`aa_label_find_merge.requires`:
 
@@ -693,14 +748,17 @@ aa_label_merge
 
     attempt to insert new merged label of \ ``a``\  and \ ``b``\ 
 
-    :param struct aa_label \*a:
+    :param a:
         label to merge with \ ``b``\   (NOT NULL)
+    :type a: struct aa_label \*
 
-    :param struct aa_label \*b:
+    :param b:
         label to merge with \ ``a``\   (NOT NULL)
+    :type b: struct aa_label \*
 
-    :param gfp_t gfp:
+    :param gfp:
         memory allocation type
+    :type gfp: gfp_t
 
 .. _`aa_label_merge.requires`:
 
@@ -728,23 +786,29 @@ label_compound_match
 
     find perms for full compound label
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to find perms for
+    :type profile: struct aa_profile \*
 
-    :param struct aa_label \*label:
+    :param label:
         label to check access permissions for
+    :type label: struct aa_label \*
 
-    :param unsigned int state:
+    :param state:
         *undescribed*
+    :type state: unsigned int
 
-    :param bool subns:
+    :param subns:
         whether to do permission checks on components in a subns
+    :type subns: bool
 
-    :param u32 request:
+    :param request:
         permissions to request
+    :type request: u32
 
-    :param struct aa_perms \*perms:
+    :param perms:
         perms struct to set
+    :type perms: struct aa_perms \*
 
 .. _`label_compound_match.return`:
 
@@ -766,23 +830,29 @@ label_components_match
 
     find perms for all subcomponents of a label
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to find perms for
+    :type profile: struct aa_profile \*
 
-    :param struct aa_label \*label:
+    :param label:
         label to check access permissions for
+    :type label: struct aa_label \*
 
-    :param unsigned int start:
+    :param start:
         state to start match in
+    :type start: unsigned int
 
-    :param bool subns:
+    :param subns:
         whether to do permission checks on components in a subns
+    :type subns: bool
 
-    :param u32 request:
+    :param request:
         permissions to request
+    :type request: u32
 
-    :param struct aa_perms \*perms:
+    :param perms:
         an initialized perms struct to add accumulation to
+    :type perms: struct aa_perms \*
 
 .. _`label_components_match.return`:
 
@@ -804,23 +874,29 @@ aa_label_match
 
     do a multi-component label match
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to match against (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param struct aa_label \*label:
+    :param label:
         label to match (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param unsigned int state:
+    :param state:
         state to start in
+    :type state: unsigned int
 
-    :param bool subns:
+    :param subns:
         whether to match subns components
+    :type subns: bool
 
-    :param u32 request:
+    :param request:
         permission request
+    :type request: u32
 
-    :param struct aa_perms \*perms:
+    :param perms:
         Returns computed perms (NOT NULL)
+    :type perms: struct aa_perms \*
 
 .. _`aa_label_match.return`:
 
@@ -838,14 +914,17 @@ aa_update_label_name
 
     update a label to have a stored name
 
-    :param struct aa_ns \*ns:
+    :param ns:
         ns being viewed from (NOT NULL)
+    :type ns: struct aa_ns \*
 
-    :param struct aa_label \*label:
+    :param label:
         label to update (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param gfp_t gfp:
+    :param gfp:
         type of memory allocation
+    :type gfp: gfp_t
 
 .. _`aa_update_label_name.requires`:
 
@@ -871,23 +950,29 @@ aa_profile_snxprint
 
     print a profile name to a buffer
 
-    :param char \*str:
+    :param str:
         buffer to write to. (MAY BE NULL if \ ``size``\  == 0)
+    :type str: char \*
 
-    :param size_t size:
+    :param size:
         size of buffer
+    :type size: size_t
 
-    :param struct aa_ns \*view:
+    :param view:
         namespace profile is being viewed from
+    :type view: struct aa_ns \*
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to view (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param int flags:
+    :param flags:
         whether to include the mode string
+    :type flags: int
 
-    :param struct aa_ns \*\*prev_ns:
+    :param prev_ns:
         last ns printed when used in compound print
+    :type prev_ns: struct aa_ns \*\*
 
 .. _`aa_profile_snxprint.return`:
 
@@ -913,20 +998,25 @@ aa_label_snxprint
 
     print a label name to a string buffer
 
-    :param char \*str:
+    :param str:
         buffer to write to. (MAY BE NULL if \ ``size``\  == 0)
+    :type str: char \*
 
-    :param size_t size:
+    :param size:
         size of buffer
+    :type size: size_t
 
-    :param struct aa_ns \*ns:
+    :param ns:
         namespace profile is being viewed from
+    :type ns: struct aa_ns \*
 
-    :param struct aa_label \*label:
+    :param label:
         label to view (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param int flags:
+    :param flags:
         whether to include the mode string
+    :type flags: int
 
 .. _`aa_label_snxprint.return`:
 
@@ -956,20 +1046,25 @@ aa_label_asxprint
 
     allocate a string buffer and print label into it
 
-    :param char \*\*strp:
+    :param strp:
         Returns - the allocated buffer with the label name. (NOT NULL)
+    :type strp: char \*\*
 
-    :param struct aa_ns \*ns:
+    :param ns:
         namespace profile is being viewed from
+    :type ns: struct aa_ns \*
 
-    :param struct aa_label \*label:
+    :param label:
         label to view (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param int flags:
+    :param flags:
         flags controlling what label info is printed
+    :type flags: int
 
-    :param gfp_t gfp:
+    :param gfp:
         kernel memory allocation type
+    :type gfp: gfp_t
 
 .. _`aa_label_asxprint.return`:
 
@@ -988,20 +1083,25 @@ aa_label_acntsxprint
 
     allocate a \__counted string buffer and print label
 
-    :param char __counted \*\*strp:
+    :param strp:
         buffer to write to. (MAY BE NULL if \ ``size``\  == 0)
+    :type strp: char __counted \*\*
 
-    :param struct aa_ns \*ns:
+    :param ns:
         namespace profile is being viewed from
+    :type ns: struct aa_ns \*
 
-    :param struct aa_label \*label:
+    :param label:
         label to view (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param int flags:
+    :param flags:
         flags controlling what label info is printed
+    :type flags: int
 
-    :param gfp_t gfp:
+    :param gfp:
         kernel memory allocation type
+    :type gfp: gfp_t
 
 .. _`aa_label_acntsxprint.return`:
 
@@ -1020,23 +1120,29 @@ aa_label_strn_parse
 
     parse, validate and convert a text string to a label
 
-    :param struct aa_label \*base:
+    :param base:
         base label to use for lookups (NOT NULL)
+    :type base: struct aa_label \*
 
-    :param const char \*str:
+    :param str:
         null terminated text string (NOT NULL)
+    :type str: const char \*
 
-    :param size_t n:
+    :param n:
         length of str to parse, will stop at \0 if encountered before n
+    :type n: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation type
+    :type gfp: gfp_t
 
-    :param bool create:
+    :param create:
         true if should create compound labels if they don't exist
+    :type create: bool
 
-    :param bool force_stack:
+    :param force_stack:
         true if should stack even if no leading &
+    :type force_stack: bool
 
 .. _`aa_label_strn_parse.return`:
 
@@ -1055,8 +1161,9 @@ aa_labelset_destroy
 
     remove all labels from the label set
 
-    :param struct aa_labelset \*ls:
+    :param ls:
         label set to cleanup (NOT NULL)
+    :type ls: struct aa_labelset \*
 
 .. _`aa_labelset_destroy.description`:
 
@@ -1075,8 +1182,9 @@ being destroyed depending on their reference counting
 
     insert updated version of \ ``label``\  into labelset \ ``label``\  - the label to update/replace
 
-    :param struct aa_label \*label:
+    :param label:
         *undescribed*
+    :type label: struct aa_label \*
 
 .. _`__label_update.return`:
 
@@ -1110,8 +1218,9 @@ to be updated at a later time.
 
     update labels in \ ``ns``\ 
 
-    :param struct aa_ns \*ns:
+    :param ns:
         namespace to update labels in  (NOT NULL)
+    :type ns: struct aa_ns \*
 
 .. _`__labelset_update.requires`:
 
@@ -1136,8 +1245,9 @@ be left in place until the next pass.
 
     update all labels with a stale component
 
-    :param struct aa_ns \*ns:
+    :param ns:
         ns to start update at (NOT NULL)
+    :type ns: struct aa_ns \*
 
 .. _`__aa_labelset_update_subtree.requires`:
 

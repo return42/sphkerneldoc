@@ -10,8 +10,9 @@ read_dscr
 
     Fetch the cpu specific DSCR default
 
-    :param void \*val:
+    :param val:
         Returned cpu specific DSCR default value
+    :type val: void \*
 
 .. _`read_dscr.description`:
 
@@ -30,8 +31,9 @@ write_dscr
 
     Update the cpu specific DSCR default
 
-    :param void \*val:
+    :param val:
         New cpu specific DSCR default value to update
+    :type val: void \*
 
 .. _`write_dscr.description`:
 
@@ -50,14 +52,17 @@ show_dscr_default
 
     Fetch the system wide DSCR default
 
-    :param struct device \*dev:
+    :param dev:
         Device structure
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute structure
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Interface buffer
+    :type buf: char \*
 
 .. _`show_dscr_default.description`:
 
@@ -75,17 +80,21 @@ store_dscr_default
 
     Update the system wide DSCR default
 
-    :param struct device \*dev:
+    :param dev:
         Device structure
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         Device attribute structure
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         Interface buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         Size of the update
+    :type count: size_t
 
 .. _`store_dscr_default.description`:
 

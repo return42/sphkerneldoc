@@ -10,26 +10,33 @@ nilfs_compute_checksum
 
     compute checksum of blocks continuously
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param struct buffer_head \*bhs:
+    :param bhs:
         buffer head of start block
+    :type bhs: struct buffer_head \*
 
-    :param u32 \*sum:
+    :param sum:
         place to store result
+    :type sum: u32 \*
 
-    :param unsigned long offset:
+    :param offset:
         offset bytes in the first block
+    :type offset: unsigned long
 
-    :param u64 check_bytes:
+    :param check_bytes:
         number of bytes to be checked
+    :type check_bytes: u64
 
-    :param sector_t start:
+    :param start:
         DBN of start block
+    :type start: sector_t
 
-    :param unsigned long nblock:
+    :param nblock:
         number of blocks to be checked
+    :type nblock: unsigned long
 
 .. _`nilfs_read_super_root_block`:
 
@@ -40,17 +47,21 @@ nilfs_read_super_root_block
 
     read super root block
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param sector_t sr_block:
+    :param sr_block:
         disk block number of the super root block
+    :type sr_block: sector_t
 
-    :param struct buffer_head \*\*pbh:
+    :param pbh:
         address of a buffer_head pointer to return super root buffer
+    :type pbh: struct buffer_head \*\*
 
-    :param int check:
+    :param check:
         CRC check flag
+    :type check: int
 
 .. _`nilfs_read_log_header`:
 
@@ -61,14 +72,17 @@ nilfs_read_log_header
 
     read summary header of the specified log
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param sector_t start_blocknr:
+    :param start_blocknr:
         start block number of the log
+    :type start_blocknr: sector_t
 
-    :param struct nilfs_segment_summary \*\*sum:
+    :param sum:
         pointer to return segment summary structure
+    :type sum: struct nilfs_segment_summary \*\*
 
 .. _`nilfs_validate_log`:
 
@@ -79,17 +93,21 @@ nilfs_validate_log
 
     verify consistency of log
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param u64 seg_seq:
+    :param seg_seq:
         sequence number of segment
+    :type seg_seq: u64
 
-    :param struct buffer_head \*bh_sum:
+    :param bh_sum:
         buffer head of summary block
+    :type bh_sum: struct buffer_head \*
 
-    :param struct nilfs_segment_summary \*sum:
+    :param sum:
         segment summary struct
+    :type sum: struct nilfs_segment_summary \*
 
 .. _`nilfs_read_summary_info`:
 
@@ -100,17 +118,21 @@ nilfs_read_summary_info
 
     read an item on summary blocks of a log
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param struct buffer_head \*\*pbh:
+    :param pbh:
         the current buffer head on summary blocks [in, out]
+    :type pbh: struct buffer_head \*\*
 
-    :param unsigned int \*offset:
+    :param offset:
         the current byte offset on summary blocks [in, out]
+    :type offset: unsigned int \*
 
-    :param unsigned int bytes:
+    :param bytes:
         byte size of the item to be read
+    :type bytes: unsigned int
 
 .. _`nilfs_skip_summary_info`:
 
@@ -121,20 +143,25 @@ nilfs_skip_summary_info
 
     skip items on summary blocks of a log
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param struct buffer_head \*\*pbh:
+    :param pbh:
         the current buffer head on summary blocks [in, out]
+    :type pbh: struct buffer_head \*\*
 
-    :param unsigned int \*offset:
+    :param offset:
         the current byte offset on summary blocks [in, out]
+    :type offset: unsigned int \*
 
-    :param unsigned int bytes:
+    :param bytes:
         byte size of the item to be skipped
+    :type bytes: unsigned int
 
-    :param unsigned long count:
+    :param count:
         number of items to be skipped
+    :type count: unsigned long
 
 .. _`nilfs_scan_dsync_log`:
 
@@ -145,17 +172,21 @@ nilfs_scan_dsync_log
 
     get block information of a log written for data sync
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param sector_t start_blocknr:
+    :param start_blocknr:
         start block number of the log
+    :type start_blocknr: sector_t
 
-    :param struct nilfs_segment_summary \*sum:
+    :param sum:
         log summary information
+    :type sum: struct nilfs_segment_summary \*
 
-    :param struct list_head \*head:
+    :param head:
         list head to add nilfs_recovery_block struct
+    :type head: struct list_head \*
 
 .. _`nilfs_do_roll_forward`:
 
@@ -166,17 +197,21 @@ nilfs_do_roll_forward
 
     salvage logical segments newer than the latest checkpoint
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
-    :param struct nilfs_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct nilfs_root \*
 
-    :param struct nilfs_recovery_info \*ri:
+    :param ri:
         pointer to a nilfs_recovery_info
+    :type ri: struct nilfs_recovery_info \*
 
 .. _`nilfs_salvage_orphan_logs`:
 
@@ -187,14 +222,17 @@ nilfs_salvage_orphan_logs
 
     salvage logs written after the latest checkpoint
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
-    :param struct nilfs_recovery_info \*ri:
+    :param ri:
         pointer to a nilfs_recovery_info struct to store search results.
+    :type ri: struct nilfs_recovery_info \*
 
 .. _`nilfs_salvage_orphan_logs.return-value`:
 
@@ -223,11 +261,13 @@ nilfs_search_super_root
 
     search the latest valid super root
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         the_nilfs
+    :type nilfs: struct the_nilfs \*
 
-    :param struct nilfs_recovery_info \*ri:
+    :param ri:
         pointer to a nilfs_recovery_info struct to store search results.
+    :type ri: struct nilfs_recovery_info \*
 
 .. _`nilfs_search_super_root.description`:
 

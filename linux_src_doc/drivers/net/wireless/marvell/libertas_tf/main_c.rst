@@ -10,8 +10,9 @@ lbtf_setup_firmware
 
     initialize firmware.
 
-    :param struct lbtf_private \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct lbtf_private \*
 
 .. _`lbtf_setup_firmware.description`:
 
@@ -36,8 +37,9 @@ command_timer_fn
 
     It will re-send the same command again.
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`lbtf_add_card`:
 
@@ -48,11 +50,13 @@ lbtf_add_card
 
     Add and initialize the card, no fw upload yet.
 
-    :param void \*card:
+    :param card:
         *undescribed*
+    :type card: void \*
 
-    :param struct device \*dmdev:
+    :param dmdev:
         *undescribed*
+    :type dmdev: struct device \*
 
 .. _`lbtf_add_card.description`:
 

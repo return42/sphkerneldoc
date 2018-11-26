@@ -8,11 +8,13 @@ LOCK_TEST_WITH_RETURN
 
 .. c:function::  LOCK_TEST_WITH_RETURN( dev,  _file_priv)
 
-    :param  dev:
+    :param dev:
         *undescribed*
+    :type dev: 
 
-    :param  _file_priv:
+    :param _file_priv:
         *undescribed*
+    :type _file_priv: 
 
 .. _`lock_test_with_return.description`:
 

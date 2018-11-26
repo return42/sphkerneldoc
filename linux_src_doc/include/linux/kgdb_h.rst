@@ -10,11 +10,13 @@ kgdb_skipexception
 
     (optional) exit kgdb_handle_exception early
 
-    :param int exception:
+    :param exception:
         Exception vector number
+    :type exception: int
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Current \ :c:type:`struct pt_regs <pt_regs>`\ .
+    :type regs: struct pt_regs \*
 
 .. _`kgdb_skipexception.description`:
 
@@ -34,8 +36,9 @@ kgdb_breakpoint
 
     compiled in breakpoint
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_breakpoint.description`:
 
@@ -55,8 +58,9 @@ kgdb_arch_init
 
     Perform any architecture specific initalization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_arch_init.description`:
 
@@ -75,8 +79,9 @@ kgdb_arch_exit
 
     Perform any architecture specific uninitalization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_arch_exit.description`:
 
@@ -95,11 +100,13 @@ pt_regs_to_gdb_regs
 
     Convert ptrace regs to GDB regs
 
-    :param unsigned long \*gdb_regs:
+    :param gdb_regs:
         A pointer to hold the registers in the order GDB wants.
+    :type gdb_regs: unsigned long \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         The \ :c:type:`struct pt_regs <pt_regs>`\  of the current process.
+    :type regs: struct pt_regs \*
 
 .. _`pt_regs_to_gdb_regs.description`:
 
@@ -118,11 +125,13 @@ sleeping_thread_to_gdb_regs
 
     Convert ptrace regs to GDB regs
 
-    :param unsigned long \*gdb_regs:
+    :param gdb_regs:
         A pointer to hold the registers in the order GDB wants.
+    :type gdb_regs: unsigned long \*
 
-    :param struct task_struct \*p:
+    :param p:
         The \ :c:type:`struct task_struct <task_struct>`\  of the desired process.
+    :type p: struct task_struct \*
 
 .. _`sleeping_thread_to_gdb_regs.description`:
 
@@ -145,11 +154,13 @@ gdb_regs_to_pt_regs
 
     Convert GDB regs to ptrace regs.
 
-    :param unsigned long \*gdb_regs:
+    :param gdb_regs:
         A pointer to hold the registers we've received from GDB.
+    :type gdb_regs: unsigned long \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         A pointer to a \ :c:type:`struct pt_regs <pt_regs>`\  to hold these values in.
+    :type regs: struct pt_regs \*
 
 .. _`gdb_regs_to_pt_regs.description`:
 
@@ -168,23 +179,29 @@ kgdb_arch_handle_exception
 
     Handle architecture specific GDB packets.
 
-    :param int vector:
+    :param vector:
         The error vector of the exception that happened.
+    :type vector: int
 
-    :param int signo:
+    :param signo:
         The signal number of the exception that happened.
+    :type signo: int
 
-    :param int err_code:
+    :param err_code:
         The error code of the exception that happened.
+    :type err_code: int
 
-    :param char \*remcom_in_buffer:
+    :param remcom_in_buffer:
         The buffer of the packet we have read.
+    :type remcom_in_buffer: char \*
 
-    :param char \*remcom_out_buffer:
+    :param remcom_out_buffer:
         The buffer of \ ``BUFMAX``\  bytes to write a packet into.
+    :type remcom_out_buffer: char \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         The \ :c:type:`struct pt_regs <pt_regs>`\  of the current process.
+    :type regs: struct pt_regs \*
 
 .. _`kgdb_arch_handle_exception.description`:
 
@@ -207,8 +224,9 @@ kgdb_roundup_cpus
 
     Get other CPUs into a holding pattern
 
-    :param unsigned long flags:
+    :param flags:
         Current IRQ state
+    :type flags: unsigned long
 
 .. _`kgdb_roundup_cpus.description`:
 
@@ -236,11 +254,13 @@ kgdb_arch_set_pc
 
     Generic call back to the program counter
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Current \ :c:type:`struct pt_regs <pt_regs>`\ .
+    :type regs: struct pt_regs \*
 
-    :param unsigned long pc:
+    :param pc:
         The new value for the program counter
+    :type pc: unsigned long
 
 .. _`kgdb_arch_set_pc.description`:
 
@@ -259,8 +279,9 @@ kgdb_arch_late
 
     Perform any architecture specific initalization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_arch_late.description`:
 

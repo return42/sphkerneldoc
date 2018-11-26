@@ -10,8 +10,9 @@ csum_fold
 
     Fold and invert a 32bit checksum.
 
-    :param __wsum sum:
+    :param sum:
         *undescribed*
+    :type sum: __wsum
 
 .. _`csum_fold.sum`:
 
@@ -33,20 +34,25 @@ csum_tcpudp_nofold
 
     Compute an IPv4 pseudo header checksum.
 
-    :param __be32 saddr:
+    :param saddr:
         source address
+    :type saddr: __be32
 
-    :param __be32 daddr:
+    :param daddr:
         destination address
+    :type daddr: __be32
 
-    :param __u32 len:
+    :param len:
         length of packet
+    :type len: __u32
 
-    :param __u8 proto:
+    :param proto:
         ip protocol of packet
+    :type proto: __u8
 
-    :param __wsum sum:
+    :param sum:
         initial sum to be added in (32bit unfolded)
+    :type sum: __wsum
 
 .. _`csum_tcpudp_nofold.description`:
 
@@ -65,11 +71,13 @@ ip_fast_csum
 
     Compute the IPv4 header checksum efficiently.
 
-    :param const void \*iph:
+    :param iph:
         *undescribed*
+    :type iph: const void \*
 
-    :param unsigned int ihl:
+    :param ihl:
         *undescribed*
+    :type ihl: unsigned int
 
 .. _`ip_fast_csum.iph`:
 

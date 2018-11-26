@@ -10,8 +10,9 @@ is_dx_dir
 
     inode refers to an htree-indexed directory (or a directory which could potentially get converted to use htree indexing).
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`is_dx_dir.description`:
 

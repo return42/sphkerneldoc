@@ -10,11 +10,13 @@ request_resource_conflict
 
     request and reserve an I/O or memory resource
 
-    :param struct resource \*root:
+    :param root:
         root resource descriptor
+    :type root: struct resource \*
 
-    :param struct resource \*new:
+    :param new:
         resource descriptor desired by caller
+    :type new: struct resource \*
 
 .. _`request_resource_conflict.description`:
 
@@ -32,11 +34,13 @@ request_resource
 
     request and reserve an I/O or memory resource
 
-    :param struct resource \*root:
+    :param root:
         root resource descriptor
+    :type root: struct resource \*
 
-    :param struct resource \*new:
+    :param new:
         resource descriptor desired by caller
+    :type new: struct resource \*
 
 .. _`request_resource.description`:
 
@@ -54,8 +58,94 @@ release_resource
 
     release a previously reserved resource
 
-    :param struct resource \*old:
+    :param old:
         resource pointer
+    :type old: struct resource \*
+
+.. _`find_next_iomem_res`:
+
+find_next_iomem_res
+===================
+
+.. c:function:: int find_next_iomem_res(resource_size_t start, resource_size_t end, unsigned long flags, unsigned long desc, bool first_lvl, struct resource *res)
+
+    caller must specify \ ``start``\ , \ ``end``\ , \ ``flags``\ , and \ ``desc``\  (which may be IORES_DESC_NONE).
+
+    :param start:
+        start address of the resource searched for
+    :type start: resource_size_t
+
+    :param end:
+        end address of same resource
+    :type end: resource_size_t
+
+    :param flags:
+        flags which the resource must have
+    :type flags: unsigned long
+
+    :param desc:
+        descriptor the resource must have
+    :type desc: unsigned long
+
+    :param first_lvl:
+        walk only the first level children, if set
+    :type first_lvl: bool
+
+    :param res:
+        return ptr, if resource found
+    :type res: struct resource \*
+
+.. _`find_next_iomem_res.description`:
+
+Description
+-----------
+
+If a resource is found, returns 0 and \ ````\ *res is overwritten with the part
+of the resource that's within [@start..@end]; if none is found, returns
+-1 or -EINVAL for other invalid parameters.
+
+This function walks the whole tree and not just first level children
+unless \ ``first_lvl``\  is true.
+
+.. _`walk_iomem_res_desc`:
+
+walk_iomem_res_desc
+===================
+
+.. c:function:: int walk_iomem_res_desc(unsigned long desc, unsigned long flags, u64 start, u64 end, void *arg, int (*func)(struct resource *, void *))
+
+    ranges. This walks through whole tree and not just first level children. All the memory ranges which overlap start,end and also match flags and desc are valid candidates.
+
+    :param desc:
+        I/O resource descriptor. Use IORES_DESC_NONE to skip \ ``desc``\  check.
+    :type desc: unsigned long
+
+    :param flags:
+        I/O resource flags
+    :type flags: unsigned long
+
+    :param start:
+        start addr
+    :type start: u64
+
+    :param end:
+        end addr
+    :type end: u64
+
+    :param arg:
+        function argument for the callback \ ``func``\ 
+    :type arg: void \*
+
+    :param int (\*func)(struct resource \*, void \*):
+        callback function that is called for each qualifying resource area
+
+.. _`walk_iomem_res_desc.note`:
+
+NOTE
+----
+
+For a new descriptor search, define a new IORES_DESC in
+<linux/ioport.h> and set it in 'desc' of a target resource entry.
 
 .. _`region_intersects`:
 
@@ -66,17 +156,21 @@ region_intersects
 
     determine intersection of region with known resources
 
-    :param resource_size_t start:
+    :param start:
         region start address
+    :type start: resource_size_t
 
-    :param size_t size:
+    :param size:
         size of region
+    :type size: size_t
 
-    :param unsigned long flags:
+    :param flags:
         flags of resource (in iomem_resource)
+    :type flags: unsigned long
 
-    :param unsigned long desc:
+    :param desc:
         descriptor of resource (in iomem_resource) or IORES_DESC_NONE
+    :type desc: unsigned long
 
 .. _`region_intersects.description`:
 
@@ -105,17 +199,21 @@ reallocate_resource
 
     allocate a slot in the resource tree given range & alignment. The resource will be relocated if the new size cannot be reallocated in the current location.
 
-    :param struct resource \*root:
+    :param root:
         root resource descriptor
+    :type root: struct resource \*
 
-    :param struct resource \*old:
+    :param old:
         resource descriptor desired by caller
+    :type old: struct resource \*
 
-    :param resource_size_t newsize:
+    :param newsize:
         new size of the resource descriptor
+    :type newsize: resource_size_t
 
-    :param struct resource_constraint \*constraint:
+    :param constraint:
         the size and alignment constraints to be met.
+    :type constraint: struct resource_constraint \*
 
 .. _`allocate_resource`:
 
@@ -126,29 +224,36 @@ allocate_resource
 
     allocate empty slot in the resource tree given range & alignment. The resource will be reallocated with a new size if it was already allocated
 
-    :param struct resource \*root:
+    :param root:
         root resource descriptor
+    :type root: struct resource \*
 
-    :param struct resource \*new:
+    :param new:
         resource descriptor desired by caller
+    :type new: struct resource \*
 
-    :param resource_size_t size:
+    :param size:
         requested resource region size
+    :type size: resource_size_t
 
-    :param resource_size_t min:
+    :param min:
         minimum boundary to allocate
+    :type min: resource_size_t
 
-    :param resource_size_t max:
+    :param max:
         maximum boundary to allocate
+    :type max: resource_size_t
 
-    :param resource_size_t align:
+    :param align:
         alignment requested, in bytes
+    :type align: resource_size_t
 
     :param resource_size_t (\*alignf)(void \*, const struct resource \*, resource_size_t, resource_size_t):
         alignment function, optional, called if not NULL
 
-    :param void \*alignf_data:
+    :param alignf_data:
         arbitrary data to pass to the \ ``alignf``\  function
+    :type alignf_data: void \*
 
 .. _`lookup_resource`:
 
@@ -159,11 +264,13 @@ lookup_resource
 
     find an existing resource by a resource start address
 
-    :param struct resource \*root:
+    :param root:
         root resource descriptor
+    :type root: struct resource \*
 
-    :param resource_size_t start:
+    :param start:
         resource start address
+    :type start: resource_size_t
 
 .. _`lookup_resource.description`:
 
@@ -181,11 +288,13 @@ insert_resource_conflict
 
     Inserts resource in the resource tree
 
-    :param struct resource \*parent:
+    :param parent:
         parent of the new resource
+    :type parent: struct resource \*
 
-    :param struct resource \*new:
+    :param new:
         new resource to insert
+    :type new: struct resource \*
 
 .. _`insert_resource_conflict.description`:
 
@@ -212,11 +321,13 @@ insert_resource
 
     Inserts a resource in the resource tree
 
-    :param struct resource \*parent:
+    :param parent:
         parent of the new resource
+    :type parent: struct resource \*
 
-    :param struct resource \*new:
+    :param new:
         new resource to insert
+    :type new: struct resource \*
 
 .. _`insert_resource.description`:
 
@@ -237,11 +348,13 @@ insert_resource_expand_to_fit
 
     Insert a resource into the resource tree
 
-    :param struct resource \*root:
+    :param root:
         root resource descriptor
+    :type root: struct resource \*
 
-    :param struct resource \*new:
+    :param new:
         new resource to insert
+    :type new: struct resource \*
 
 .. _`insert_resource_expand_to_fit.description`:
 
@@ -260,8 +373,9 @@ remove_resource
 
     Remove a resource in the resource tree
 
-    :param struct resource \*old:
+    :param old:
         resource to remove
+    :type old: struct resource \*
 
 .. _`remove_resource.description`:
 
@@ -288,14 +402,17 @@ adjust_resource
 
     modify a resource's start and size
 
-    :param struct resource \*res:
+    :param res:
         resource to modify
+    :type res: struct resource \*
 
-    :param resource_size_t start:
+    :param start:
         new start value
+    :type start: resource_size_t
 
-    :param resource_size_t size:
+    :param size:
         new size
+    :type size: resource_size_t
 
 .. _`adjust_resource.description`:
 
@@ -315,8 +432,9 @@ resource_alignment
 
     calculate resource's alignment
 
-    :param struct resource \*res:
+    :param res:
         resource pointer
+    :type res: struct resource \*
 
 .. _`resource_alignment.description`:
 
@@ -334,20 +452,25 @@ __request_region
 
     create a new busy resource region
 
-    :param struct resource \*parent:
+    :param parent:
         parent resource descriptor
+    :type parent: struct resource \*
 
-    :param resource_size_t start:
+    :param start:
         resource start address
+    :type start: resource_size_t
 
-    :param resource_size_t n:
+    :param n:
         resource region size
+    :type n: resource_size_t
 
-    :param const char \*name:
+    :param name:
         reserving caller's ID string
+    :type name: const char \*
 
-    :param int flags:
+    :param flags:
         IO resource flags
+    :type flags: int
 
 .. _`__release_region`:
 
@@ -358,14 +481,17 @@ __release_region
 
     release a previously reserved resource region
 
-    :param struct resource \*parent:
+    :param parent:
         parent resource descriptor
+    :type parent: struct resource \*
 
-    :param resource_size_t start:
+    :param start:
         resource start address
+    :type start: resource_size_t
 
-    :param resource_size_t n:
+    :param n:
         resource region size
+    :type n: resource_size_t
 
 .. _`__release_region.description`:
 
@@ -383,14 +509,17 @@ release_mem_region_adjustable
 
     release a previously reserved memory region
 
-    :param struct resource \*parent:
+    :param parent:
         parent resource descriptor
+    :type parent: struct resource \*
 
-    :param resource_size_t start:
+    :param start:
         resource start address
+    :type start: resource_size_t
 
-    :param resource_size_t size:
+    :param size:
         resource region size
+    :type size: resource_size_t
 
 .. _`release_mem_region_adjustable.description`:
 
@@ -424,14 +553,17 @@ devm_request_resource
 
     request and reserve an I/O or memory resource
 
-    :param struct device \*dev:
+    :param dev:
         device for which to request the resource
+    :type dev: struct device \*
 
-    :param struct resource \*root:
+    :param root:
         root of the resource tree from which to request the resource
+    :type root: struct resource \*
 
-    :param struct resource \*new:
+    :param new:
         descriptor of the resource to request
+    :type new: struct resource \*
 
 .. _`devm_request_resource.description`:
 
@@ -459,11 +591,13 @@ devm_release_resource
 
     release a previously requested resource
 
-    :param struct device \*dev:
+    :param dev:
         device for which to release the resource
+    :type dev: struct device \*
 
-    :param struct resource \*new:
+    :param new:
         descriptor of the resource to release
+    :type new: struct resource \*
 
 .. _`devm_release_resource.description`:
 

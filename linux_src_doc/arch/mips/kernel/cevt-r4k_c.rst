@@ -10,8 +10,9 @@ calculate_min_delta
 
     Calculate a good minimum delta for \ :c:func:`mips_next_event`\ .
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`calculate_min_delta.description`:
 

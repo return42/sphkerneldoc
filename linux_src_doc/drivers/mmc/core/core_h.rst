@@ -10,8 +10,9 @@ mmc_claim_host
 
     exclusively claim a host
 
-    :param struct mmc_host \*host:
+    :param host:
         mmc host to claim
+    :type host: struct mmc_host \*
 
 .. _`mmc_claim_host.description`:
 
@@ -29,11 +30,13 @@ mmc_pre_req
 
     Prepare for a new request
 
-    :param struct mmc_host \*host:
+    :param host:
         MMC host to prepare command
+    :type host: struct mmc_host \*
 
-    :param struct mmc_request \*mrq:
+    :param mrq:
         MMC request to prepare for
+    :type mrq: struct mmc_request \*
 
 .. _`mmc_pre_req.description`:
 
@@ -53,14 +56,17 @@ mmc_post_req
 
     Post process a completed request
 
-    :param struct mmc_host \*host:
+    :param host:
         MMC host to post process command
+    :type host: struct mmc_host \*
 
-    :param struct mmc_request \*mrq:
+    :param mrq:
         MMC request to post process for
+    :type mrq: struct mmc_request \*
 
-    :param int err:
+    :param err:
         Error, if non zero, clean up any resources made in pre_req
+    :type err: int
 
 .. _`mmc_post_req.description`:
 

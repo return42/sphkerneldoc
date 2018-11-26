@@ -10,11 +10,13 @@ bnx2x_send_unload_req
 
     request unload mode from the MCP.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int unload_mode:
+    :param unload_mode:
         requested function's unload mode
+    :type unload_mode: int
 
 .. _`bnx2x_send_unload_req.return-unload-mode-returned-by-the-mcp`:
 
@@ -32,11 +34,13 @@ bnx2x_send_unload_done
 
     send UNLOAD_DONE command to the MCP.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param bool keep_link:
+    :param keep_link:
         true iff link should be kept up
+    :type keep_link: bool
 
 .. _`bnx2x_rss`:
 
@@ -47,17 +51,21 @@ bnx2x_rss
 
     configure RSS parameters in a PF.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_rss_config_obj \*rss_obj:
+    :param rss_obj:
         RSS object to use
+    :type rss_obj: struct bnx2x_rss_config_obj \*
 
-    :param bool config_hash:
+    :param config_hash:
         re-configure RSS hash keys configuration
+    :type config_hash: bool
 
-    :param bool enable:
+    :param enable:
         enabled or disabled configuration
+    :type enable: bool
 
 .. _`bnx2x__init_func_obj`:
 
@@ -68,8 +76,9 @@ bnx2x__init_func_obj
 
     init function object
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x__init_func_obj.description`:
 
@@ -89,14 +98,17 @@ bnx2x_setup_queue
 
     setup eth queue.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_fastpath \*fp:
+    :param fp:
         pointer to the fastpath structure
+    :type fp: struct bnx2x_fastpath \*
 
-    :param bool leading:
+    :param leading:
         boolean
+    :type leading: bool
 
 .. _`bnx2x_setup_leading`:
 
@@ -107,8 +119,9 @@ bnx2x_setup_leading
 
     bring up a leading eth queue.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_fw_command`:
 
@@ -119,14 +132,17 @@ bnx2x_fw_command
 
     send the MCP a request
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 command:
+    :param command:
         request
+    :type command: u32
 
-    :param u32 param:
+    :param param:
         request's parameter
+    :type param: u32
 
 .. _`bnx2x_fw_command.description`:
 
@@ -144,11 +160,13 @@ bnx2x_initial_phy_init
 
     initialize link parameters structure variables.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int load_mode:
+    :param load_mode:
         current mode
+    :type load_mode: int
 
 .. _`bnx2x_link_set`:
 
@@ -159,8 +177,9 @@ bnx2x_link_set
 
     configure hw according to link parameters structure.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_force_link_reset`:
 
@@ -171,8 +190,9 @@ bnx2x_force_link_reset
 
     Forces link reset, and put the PHY in reset as well.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_link_test`:
 
@@ -183,11 +203,13 @@ bnx2x_link_test
 
     query link status.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u8 is_serdes:
+    :param is_serdes:
         bool
+    :type is_serdes: u8
 
 .. _`bnx2x_link_test.description`:
 
@@ -205,8 +227,9 @@ bnx2x_drv_pulse
 
     write driver pulse to shmem
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_drv_pulse.description`:
 
@@ -225,23 +248,29 @@ bnx2x_igu_ack_sb
 
     update IGU with current SB value
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u8 igu_sb_id:
+    :param igu_sb_id:
         SB id
+    :type igu_sb_id: u8
 
-    :param u8 segment:
+    :param segment:
         SB segment
+    :type segment: u8
 
-    :param u16 index:
+    :param index:
         SB index
+    :type index: u16
 
-    :param u8 op:
+    :param op:
         SB operation
+    :type op: u8
 
-    :param u8 update:
+    :param update:
         is HW update required
+    :type update: u8
 
 .. _`bnx2x__link_status_update`:
 
@@ -252,8 +281,9 @@ bnx2x__link_status_update
 
     handles link status change.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_link_report`:
 
@@ -264,8 +294,9 @@ bnx2x_link_report
 
     report link status to upper layer.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_get_mf_speed`:
 
@@ -276,8 +307,9 @@ bnx2x_get_mf_speed
 
     calculate MF speed.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_get_mf_speed.description`:
 
@@ -295,11 +327,13 @@ bnx2x_msix_sp_int
 
     MSI-X slowpath interrupt handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         private instance
+    :type dev_instance: void \*
 
 .. _`bnx2x_interrupt`:
 
@@ -310,11 +344,13 @@ bnx2x_interrupt
 
     non MSI-X interrupt handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         private instance
+    :type dev_instance: void \*
 
 .. _`bnx2x_cnic_notify`:
 
@@ -325,11 +361,13 @@ bnx2x_cnic_notify
 
     send command to cnic driver
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int cmd:
+    :param cmd:
         command
+    :type cmd: int
 
 .. _`bnx2x_setup_cnic_irq_info`:
 
@@ -340,8 +378,9 @@ bnx2x_setup_cnic_irq_info
 
     provides cnic with IRQ information
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_setup_cnic_info`:
 
@@ -352,8 +391,9 @@ bnx2x_setup_cnic_info
 
     provides cnic with updated info
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_int_enable`:
 
@@ -364,8 +404,9 @@ bnx2x_int_enable
 
     enable HW interrupts.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_int_disable_sync`:
 
@@ -376,11 +417,13 @@ bnx2x_int_disable_sync
 
     disable interrupts.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int disable_hw:
+    :param disable_hw:
         true, disable HW interrupts.
+    :type disable_hw: int
 
 .. _`bnx2x_int_disable_sync.description`:
 
@@ -399,8 +442,9 @@ bnx2x_nic_init_cnic
 
     init driver internals for cnic.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_nic_init_cnic.initializes`:
 
@@ -420,8 +464,9 @@ bnx2x_pre_irq_nic_init
 
     init driver internals.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_pre_irq_nic_init.initializes`:
 
@@ -441,11 +486,13 @@ bnx2x_post_irq_nic_init
 
     init driver internals.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 load_code:
+    :param load_code:
         COMMON, PORT or FUNCTION
+    :type load_code: u32
 
 .. _`bnx2x_post_irq_nic_init.initializes`:
 
@@ -465,8 +512,9 @@ bnx2x_alloc_mem_cnic
 
     allocate driver's memory for cnic.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_alloc_mem`:
 
@@ -477,8 +525,9 @@ bnx2x_alloc_mem
 
     allocate driver's memory.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_free_mem_cnic`:
 
@@ -489,8 +538,9 @@ bnx2x_free_mem_cnic
 
     release driver's memory for cnic.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_free_mem`:
 
@@ -501,8 +551,9 @@ bnx2x_free_mem
 
     release driver's memory.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_set_num_queues`:
 
@@ -513,8 +564,9 @@ bnx2x_set_num_queues
 
     set number of queues according to mode.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_chip_cleanup`:
 
@@ -525,14 +577,17 @@ bnx2x_chip_cleanup
 
     cleanup chip internals.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int unload_mode:
+    :param unload_mode:
         COMMON, PORT, FUNCTION
+    :type unload_mode: int
 
-    :param bool keep_link:
+    :param keep_link:
         true iff link should be kept up.
+    :type keep_link: bool
 
 .. _`bnx2x_chip_cleanup.description`:
 
@@ -552,11 +607,13 @@ bnx2x_acquire_hw_lock
 
     acquire HW lock.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 resource:
+    :param resource:
         resource bit which was locked
+    :type resource: u32
 
 .. _`bnx2x_release_hw_lock`:
 
@@ -567,11 +624,13 @@ bnx2x_release_hw_lock
 
     release HW lock.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 resource:
+    :param resource:
         resource bit which was locked
+    :type resource: u32
 
 .. _`bnx2x_release_leader_lock`:
 
@@ -582,8 +641,9 @@ bnx2x_release_leader_lock
 
     release recovery leader lock
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_set_eth_mac`:
 
@@ -594,11 +654,13 @@ bnx2x_set_eth_mac
 
     configure eth MAC address in the HW
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param bool set:
+    :param set:
         set or clear
+    :type set: bool
 
 .. _`bnx2x_set_eth_mac.description`:
 
@@ -616,8 +678,9 @@ bnx2x_set_rx_mode_inner
 
     set MAC filtering configurations.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         *undescribed*
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_set_rx_mode_inner.description`:
 
@@ -637,11 +700,13 @@ bnx2x_sp_event
 
     handle ramrods completion.
 
-    :param struct bnx2x_fastpath \*fp:
+    :param fp:
         fastpath handle for the event
+    :type fp: struct bnx2x_fastpath \*
 
-    :param union eth_rx_cqe \*rr_cqe:
+    :param rr_cqe:
         eth_rx_cqe
+    :type rr_cqe: union eth_rx_cqe \*
 
 .. _`bnx2x_ilt_set_info`:
 
@@ -652,8 +717,9 @@ bnx2x_ilt_set_info
 
     prepare ILT configurations.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_ilt_set_info_cnic`:
 
@@ -664,8 +730,9 @@ bnx2x_ilt_set_info_cnic
 
     prepare ILT configurations for SRC and TM.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_dcbx_init`:
 
@@ -676,11 +743,13 @@ bnx2x_dcbx_init
 
     initialize dcbx protocol.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param bool update_shmem:
+    :param update_shmem:
         *undescribed*
+    :type update_shmem: bool
 
 .. _`bnx2x_set_power_state`:
 
@@ -691,11 +760,13 @@ bnx2x_set_power_state
 
     set power state to the requested value.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param pci_power_t state:
+    :param state:
         required state D0 or D3hot
+    :type state: pci_power_t
 
 .. _`bnx2x_set_power_state.description`:
 
@@ -713,11 +784,13 @@ bnx2x_update_max_mf_config
 
     update MAX part of MF configuration in HW.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 value:
+    :param value:
         new value
+    :type value: u32
 
 .. _`bnx2x_enable_msix`:
 
@@ -728,8 +801,9 @@ bnx2x_enable_msix
 
     set msix configuration.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_enable_msix.description`:
 
@@ -748,8 +822,9 @@ bnx2x_enable_msi
 
     request msi mode from OS, updated internals accordingly
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_alloc_mem_bp`:
 
@@ -760,8 +835,9 @@ bnx2x_alloc_mem_bp
 
     allocate memories outsize main driver structure
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_free_mem_bp`:
 
@@ -772,8 +848,9 @@ bnx2x_free_mem_bp
 
     release memories outsize main driver structure
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_change_mtu`:
 
@@ -784,11 +861,13 @@ bnx2x_change_mtu
 
     change mtu netdev callback
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         requested mtu
+    :type new_mtu: int
 
 .. _`bnx2x_fcoe_get_wwn`:
 
@@ -799,14 +878,17 @@ bnx2x_fcoe_get_wwn
 
     return the requested WWN value for this port
 
-    :param struct net_device \*dev:
+    :param dev:
         net_device
+    :type dev: struct net_device \*
 
-    :param u64 \*wwn:
+    :param wwn:
         output buffer
+    :type wwn: u64 \*
 
-    :param int type:
+    :param type:
         WWN type: NETDEV_FCOE_WWNN (node) or NETDEV_FCOE_WWPN (port)
+    :type type: int
 
 .. _`bnx2x_tx_timeout`:
 
@@ -817,8 +899,9 @@ bnx2x_tx_timeout
 
     tx timeout netdev callback
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
 .. _`bnx2x_tx_disable`:
 
@@ -829,8 +912,9 @@ bnx2x_tx_disable
 
     disables tx from stack point of view
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_func_start`:
 
@@ -841,8 +925,9 @@ bnx2x_func_start
 
     init function
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_func_start.description`:
 
@@ -860,17 +945,21 @@ bnx2x_set_fw_mac_addr
 
     fill in a MAC address in FW format
 
-    :param __le16 \*fw_hi:
+    :param fw_hi:
         pointer to upper part
+    :type fw_hi: __le16 \*
 
-    :param __le16 \*fw_mid:
+    :param fw_mid:
         pointer to middle part
+    :type fw_mid: __le16 \*
 
-    :param __le16 \*fw_lo:
+    :param fw_lo:
         pointer to lower part
+    :type fw_lo: __le16 \*
 
-    :param u8 \*mac:
+    :param mac:
         pointer to MAC address
+    :type mac: u8 \*
 
 .. _`bnx2x_get_path_func_num`:
 
@@ -881,8 +970,9 @@ bnx2x_get_path_func_num
 
     get number of active functions
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_get_path_func_num.description`:
 
@@ -901,11 +991,13 @@ bnx2x_wait_sp_comp
 
     wait for the outstanding SP commands.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param unsigned long mask:
+    :param mask:
         bits that need to be cleared
+    :type mask: unsigned long
 
 .. _`bnx2x_set_ctx_validation`:
 
@@ -916,14 +1008,17 @@ bnx2x_set_ctx_validation
 
     set CDU context validation values
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct eth_context \*cxt:
+    :param cxt:
         context of the connection on the host memory
+    :type cxt: struct eth_context \*
 
-    :param u32 cid:
+    :param cid:
         SW CID of the connection to be configured
+    :type cid: u32
 
 .. _`bnx2x_extract_max_cfg`:
 
@@ -934,11 +1029,13 @@ bnx2x_extract_max_cfg
 
     extract MAX BW part from MF configuration.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 mf_cfg:
+    :param mf_cfg:
         MF configuration
+    :type mf_cfg: u32
 
 .. _`bnx2x_get_iscsi_info`:
 
@@ -949,8 +1046,9 @@ bnx2x_get_iscsi_info
 
     update iSCSI params according to licensing info.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_link_sync_notify`:
 
@@ -961,8 +1059,9 @@ bnx2x_link_sync_notify
 
     send notification to other functions.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_update_drv_flags`:
 
@@ -973,14 +1072,17 @@ bnx2x_update_drv_flags
 
     update flags in shmem
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 flags:
+    :param flags:
         flags to update
+    :type flags: u32
 
-    :param u32 set:
+    :param set:
         set or clear
+    :type set: u32
 
 .. _`bnx2x_fill_fw_str`:
 
@@ -991,14 +1093,17 @@ bnx2x_fill_fw_str
 
     Fill buffer with FW version string
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param char \*buf:
+    :param buf:
         character buffer to fill with the fw name
+    :type buf: char \*
 
-    :param size_t buf_len:
+    :param buf_len:
         length of the above buffer
+    :type buf_len: size_t
 
 .. _`bnx2x_set_os_driver_state`:
 
@@ -1009,11 +1114,13 @@ bnx2x_set_os_driver_state
 
     write driver state for management FW usage
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 state:
+    :param state:
         OS_DRIVER_STATE\_\* value reflecting current driver state
+    :type state: u32
 
 .. _`bnx2x_nvram_read`:
 
@@ -1024,17 +1131,21 @@ bnx2x_nvram_read
 
     reads data from nvram [might sleep]
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u32 offset:
+    :param offset:
         byte offset in nvram
+    :type offset: u32
 
-    :param u8 \*ret_buf:
+    :param ret_buf:
         pointer to buffer where data is to be stored
+    :type ret_buf: u8 \*
 
-    :param int buf_size:
+    :param buf_size:
         Length of 'ret_buf' in bytes
+    :type buf_size: int
 
 .. This file was automatic generated / don't edit.
 

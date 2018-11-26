@@ -10,17 +10,21 @@ jz4780_bch_calculate
 
     calculate ECC for a data buffer
 
-    :param struct jz4780_bch \*bch:
+    :param bch:
         BCH device.
+    :type bch: struct jz4780_bch \*
 
-    :param struct jz4780_bch_params \*params:
+    :param params:
         BCH parameters.
+    :type params: struct jz4780_bch_params \*
 
-    :param const u8 \*buf:
+    :param buf:
         input buffer with raw data.
+    :type buf: const u8 \*
 
-    :param u8 \*ecc_code:
+    :param ecc_code:
         output buffer with ECC.
+    :type ecc_code: u8 \*
 
 .. _`jz4780_bch_calculate.return`:
 
@@ -39,17 +43,21 @@ jz4780_bch_correct
 
     detect and correct bit errors
 
-    :param struct jz4780_bch \*bch:
+    :param bch:
         BCH device.
+    :type bch: struct jz4780_bch \*
 
-    :param struct jz4780_bch_params \*params:
+    :param params:
         BCH parameters.
+    :type params: struct jz4780_bch_params \*
 
-    :param u8 \*buf:
+    :param buf:
         raw data read from the chip.
+    :type buf: u8 \*
 
-    :param u8 \*ecc_code:
+    :param ecc_code:
         ECC read from the chip.
+    :type ecc_code: u8 \*
 
 .. _`jz4780_bch_correct.description`:
 
@@ -76,8 +84,9 @@ jz4780_bch_get
 
     get the BCH controller device
 
-    :param struct device_node \*np:
+    :param np:
         BCH device tree node.
+    :type np: struct device_node \*
 
 .. _`jz4780_bch_get.description`:
 
@@ -105,8 +114,9 @@ of_jz4780_bch_get
 
     get the BCH controller from a DT node
 
-    :param struct device_node \*of_node:
+    :param of_node:
         the node that contains a bch-controller property.
+    :type of_node: struct device_node \*
 
 .. _`of_jz4780_bch_get.description`:
 
@@ -133,8 +143,9 @@ jz4780_bch_release
 
     release the BCH controller device
 
-    :param struct jz4780_bch \*bch:
+    :param bch:
         BCH device.
+    :type bch: struct jz4780_bch \*
 
 .. This file was automatic generated / don't edit.
 

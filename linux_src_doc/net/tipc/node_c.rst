@@ -29,6 +29,7 @@ Definition
         int action_flags;
         struct list_head list;
         int state;
+        bool failover_sent;
         u16 sync_point;
         int link_cnt;
         u16 working_links;
@@ -41,6 +42,7 @@ Definition
         unsigned long keepalive_intv;
         struct timer_list timer;
         struct rcu_head rcu;
+        unsigned long delete_at;
     }
 
 .. _`tipc_node.members`:
@@ -81,6 +83,9 @@ list
 state
     connectivity state vs peer node
 
+failover_sent
+    *undescribed*
+
 sync_point
     sequence number where synch/failover is finished
 
@@ -117,6 +122,9 @@ timer
 rcu
     rcu struct for tipc_node
 
+delete_at
+    indicates the time for deleting a down node
+
 .. _`__tipc_node_link_up`:
 
 \__tipc_node_link_up
@@ -126,14 +134,17 @@ rcu
 
     handle addition of link Node lock must be held by caller Link becomes active (alone or shared) or standby, depending on its priority.
 
-    :param struct tipc_node \*n:
+    :param n:
         *undescribed*
+    :type n: struct tipc_node \*
 
-    :param int bearer_id:
+    :param bearer_id:
         *undescribed*
+    :type bearer_id: int
 
-    :param struct sk_buff_head \*xmitq:
+    :param xmitq:
         *undescribed*
+    :type xmitq: struct sk_buff_head \*
 
 .. _`tipc_node_link_up`:
 
@@ -144,14 +155,17 @@ tipc_node_link_up
 
     handle addition of link
 
-    :param struct tipc_node \*n:
+    :param n:
         *undescribed*
+    :type n: struct tipc_node \*
 
-    :param int bearer_id:
+    :param bearer_id:
         *undescribed*
+    :type bearer_id: int
 
-    :param struct sk_buff_head \*xmitq:
+    :param xmitq:
         *undescribed*
+    :type xmitq: struct sk_buff_head \*
 
 .. _`tipc_node_link_up.description`:
 
@@ -169,17 +183,21 @@ Link becomes active (alone or shared) or standby, depending on its priority.
 
     handle loss of link
 
-    :param struct tipc_node \*n:
+    :param n:
         *undescribed*
+    :type n: struct tipc_node \*
 
-    :param int \*bearer_id:
+    :param bearer_id:
         *undescribed*
+    :type bearer_id: int \*
 
-    :param struct sk_buff_head \*xmitq:
+    :param xmitq:
         *undescribed*
+    :type xmitq: struct sk_buff_head \*
 
-    :param struct tipc_media_addr \*\*maddr:
+    :param maddr:
         *undescribed*
+    :type maddr: struct tipc_media_addr \*\*
 
 .. _`tipc_node_get_linkname`:
 
@@ -190,20 +208,25 @@ tipc_node_get_linkname
 
     get the name of a link
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param u32 bearer_id:
+    :param bearer_id:
         id of the bearer
+    :type bearer_id: u32
 
-    :param u32 addr:
+    :param addr:
         *undescribed*
+    :type addr: u32
 
-    :param char \*linkname:
+    :param linkname:
         link name output buffer
+    :type linkname: char \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`tipc_node_get_linkname.description`:
 
@@ -219,19 +242,23 @@ tipc_node_xmit
 
 .. c:function:: int tipc_node_xmit(struct net *net, struct sk_buff_head *list, u32 dnode, int selector)
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param struct sk_buff_head \*list:
+    :param list:
         chain of buffers containing message
+    :type list: struct sk_buff_head \*
 
-    :param u32 dnode:
+    :param dnode:
         address of destination node
+    :type dnode: u32
 
-    :param int selector:
+    :param selector:
         a number used for deterministic link selection
         Consumes the buffer chain.
         Returns 0 if success, otherwise: -ELINKCONG,-EHOSTUNREACH,-EMSGSIZE,-ENOBUF
+    :type selector: int
 
 .. _`tipc_node_bc_rcv`:
 
@@ -242,14 +269,17 @@ tipc_node_bc_rcv
 
     process TIPC broadcast packet arriving from off-node
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         TIPC packet
+    :type skb: struct sk_buff \*
 
-    :param int bearer_id:
+    :param bearer_id:
         id of bearer message arrived on
+    :type bearer_id: int
 
 .. _`tipc_node_bc_rcv.description`:
 
@@ -267,18 +297,22 @@ tipc_node_check_state
 
     check and if necessary update node state
 
-    :param struct tipc_node \*n:
+    :param n:
         *undescribed*
+    :type n: struct tipc_node \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         TIPC packet
+    :type skb: struct sk_buff \*
 
-    :param int bearer_id:
+    :param bearer_id:
         identity of bearer delivering the packet
-        Returns true if state is ok, otherwise consumes buffer and returns false
+        Returns true if state and msg are ok, otherwise false
+    :type bearer_id: int
 
-    :param struct sk_buff_head \*xmitq:
+    :param xmitq:
         *undescribed*
+    :type xmitq: struct sk_buff_head \*
 
 .. _`tipc_rcv`:
 
@@ -289,14 +323,17 @@ tipc_rcv
 
     process TIPC packets/messages arriving from off-node
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         TIPC packet
+    :type skb: struct sk_buff \*
 
-    :param struct tipc_bearer \*b:
+    :param b:
         *undescribed*
+    :type b: struct tipc_bearer \*
 
 .. _`tipc_rcv.description`:
 

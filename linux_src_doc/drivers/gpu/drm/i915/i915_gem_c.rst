@@ -8,17 +8,21 @@ i915_gem_object_wait
 
 .. c:function:: int i915_gem_object_wait(struct drm_i915_gem_object *obj, unsigned int flags, long timeout, struct intel_rps_client *rps_client)
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         i915 gem object
+    :type obj: struct drm_i915_gem_object \*
 
-    :param unsigned int flags:
+    :param flags:
         how to wait (under a lock, for all rendering or just for writes etc)
+    :type flags: unsigned int
 
-    :param long timeout:
+    :param timeout:
         how long to wait
+    :type timeout: long
 
-    :param struct intel_rps_client \*rps_client:
+    :param rps_client:
         client (user process) to charge for any waitboosting
+    :type rps_client: struct intel_rps_client \*
 
 .. _`i915_gem_create_ioctl`:
 
@@ -27,14 +31,17 @@ i915_gem_create_ioctl
 
 .. c:function:: int i915_gem_create_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device pointer
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data blob
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file pointer
+    :type file: struct drm_file \*
 
 .. _`i915_gem_pread_ioctl`:
 
@@ -43,14 +50,17 @@ i915_gem_pread_ioctl
 
 .. c:function:: int i915_gem_pread_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device pointer
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data blob
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file pointer
+    :type file: struct drm_file \*
 
 .. _`i915_gem_pread_ioctl.description`:
 
@@ -68,11 +78,13 @@ i915_gem_gtt_pwrite_fast
 
     user into the GTT, uncached.
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         i915 GEM object
+    :type obj: struct drm_i915_gem_object \*
 
-    :param const struct drm_i915_gem_pwrite \*args:
+    :param args:
         pwrite arguments structure
+    :type args: const struct drm_i915_gem_pwrite \*
 
 .. _`i915_gem_pwrite_ioctl`:
 
@@ -81,14 +93,17 @@ i915_gem_pwrite_ioctl
 
 .. c:function:: int i915_gem_pwrite_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data blob
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file
+    :type file: struct drm_file \*
 
 .. _`i915_gem_pwrite_ioctl.description`:
 
@@ -106,14 +121,17 @@ i915_gem_set_domain_ioctl
 
     through the mmap ioctl's mapping or a GTT mapping.
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data blob
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file
+    :type file: struct drm_file \*
 
 .. _`i915_gem_sw_finish_ioctl`:
 
@@ -122,14 +140,17 @@ i915_gem_sw_finish_ioctl
 
 .. c:function:: int i915_gem_sw_finish_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data blob
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file
+    :type file: struct drm_file \*
 
 .. _`i915_gem_mmap_ioctl`:
 
@@ -140,14 +161,17 @@ i915_gem_mmap_ioctl
 
     Maps the contents of an object, returning the address it is mapped to.
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data blob
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file
+    :type file: struct drm_file \*
 
 .. _`i915_gem_mmap_ioctl.description`:
 
@@ -180,8 +204,9 @@ i915_gem_mmap_gtt_version
 
     report the current feature set for GTT mmaps
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i915_gem_mmap_gtt_version.a-history-of-the-gtt-mmap-interface`:
 
@@ -244,12 +269,13 @@ Caveats
 i915_gem_fault
 ==============
 
-.. c:function:: int i915_gem_fault(struct vm_fault *vmf)
+.. c:function:: vm_fault_t i915_gem_fault(struct vm_fault *vmf)
 
     fault a page into the GTT
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         fault info
+    :type vmf: struct vm_fault \*
 
 .. _`i915_gem_fault.description`:
 
@@ -279,8 +305,9 @@ i915_gem_release_mmap
 
     remove physical page mappings
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         obj in question
+    :type obj: struct drm_i915_gem_object \*
 
 .. _`i915_gem_release_mmap.description`:
 
@@ -306,14 +333,17 @@ i915_gem_mmap_gtt_ioctl
 
     prepare an object for GTT mmap'ing
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         GTT mapping ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         GEM object info
+    :type file: struct drm_file \*
 
 .. _`i915_gem_mmap_gtt_ioctl.description`:
 
@@ -338,14 +368,17 @@ i915_gem_wait_ioctl
 
     implements DRM_IOCTL_I915_GEM_WAIT
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device pointer
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data blob
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file pointer
+    :type file: struct drm_file \*
 
 .. _`i915_gem_wait_ioctl.description`:
 
@@ -377,11 +410,13 @@ i915_gem_object_set_to_wc_domain
 
 .. c:function:: int i915_gem_object_set_to_wc_domain(struct drm_i915_gem_object *obj, bool write)
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         object to act on
+    :type obj: struct drm_i915_gem_object \*
 
-    :param bool write:
+    :param write:
         ask for write access or read only
+    :type write: bool
 
 .. _`i915_gem_object_set_to_wc_domain.description`:
 
@@ -398,11 +433,13 @@ i915_gem_object_set_to_gtt_domain
 
 .. c:function:: int i915_gem_object_set_to_gtt_domain(struct drm_i915_gem_object *obj, bool write)
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         object to act on
+    :type obj: struct drm_i915_gem_object \*
 
-    :param bool write:
+    :param write:
         ask for write access or read only
+    :type write: bool
 
 .. _`i915_gem_object_set_to_gtt_domain.description`:
 
@@ -421,11 +458,13 @@ i915_gem_object_set_cache_level
 
     level of an object across all VMA.
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         object to act on
+    :type obj: struct drm_i915_gem_object \*
 
-    :param enum i915_cache_level cache_level:
+    :param cache_level:
         new cache level to set for the object
+    :type cache_level: enum i915_cache_level
 
 .. _`i915_gem_object_set_cache_level.description`:
 
@@ -449,11 +488,13 @@ i915_gem_object_set_to_cpu_domain
 
 .. c:function:: int i915_gem_object_set_to_cpu_domain(struct drm_i915_gem_object *obj, bool write)
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         object to act on
+    :type obj: struct drm_i915_gem_object \*
 
-    :param bool write:
+    :param write:
         requesting write or read-only access
+    :type write: bool
 
 .. _`i915_gem_object_set_to_cpu_domain.description`:
 
@@ -472,14 +513,17 @@ i915_gem_track_fb
 
     update frontbuffer tracking
 
-    :param struct drm_i915_gem_object \*old:
+    :param old:
         current GEM buffer for the frontbuffer slots
+    :type old: struct drm_i915_gem_object \*
 
-    :param struct drm_i915_gem_object \*new:
+    :param new:
         new GEM buffer for the frontbuffer slots
+    :type new: struct drm_i915_gem_object \*
 
-    :param unsigned frontbuffer_bits:
+    :param frontbuffer_bits:
         bitmask of frontbuffer slots
+    :type frontbuffer_bits: unsigned
 
 .. _`i915_gem_track_fb.description`:
 

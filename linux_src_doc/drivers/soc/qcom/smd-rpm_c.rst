@@ -182,23 +182,29 @@ qcom_rpm_smd_write
 
     write \ ``buf``\  to \ ``type``\ :@id
 
-    :param struct qcom_smd_rpm \*rpm:
+    :param rpm:
         rpm handle
+    :type rpm: struct qcom_smd_rpm \*
 
-    :param int state:
+    :param state:
         *undescribed*
+    :type state: int
 
-    :param u32 type:
+    :param type:
         resource type
+    :type type: u32
 
-    :param u32 id:
+    :param id:
         resource identifier
+    :type id: u32
 
-    :param void \*buf:
+    :param buf:
         the data to be written
+    :type buf: void \*
 
-    :param size_t count:
+    :param count:
         number of bytes in \ ``buf``\ 
+    :type count: size_t
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ saa711x_detect_chip
 
     Detects the saa711x (or clone) variant
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client structure.
+    :type client: struct i2c_client \*
 
-    :param const struct i2c_device_id \*id:
+    :param id:
         I2C device ID structure.
+    :type id: const struct i2c_device_id \*
 
-    :param char \*name:
+    :param name:
         Name of the device to be filled.
+    :type name: char \*
 
 .. _`saa711x_detect_chip.description`:
 

@@ -10,11 +10,13 @@ clock_cooling_register
 
     function to create clock cooling device.
 
-    :param struct device \*dev:
+    :param dev:
         struct device pointer to the device used as clock cooling device.
+    :type dev: struct device \*
 
-    :param const char \*clock_name:
+    :param clock_name:
         string containing the clock used as cooling mechanism.
+    :type clock_name: const char \*
 
 .. _`clock_cooling_unregister`:
 
@@ -25,8 +27,9 @@ clock_cooling_unregister
 
     function to remove clock cooling device.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         thermal cooling device pointer.
+    :type cdev: struct thermal_cooling_device \*
 
 .. This file was automatic generated / don't edit.
 

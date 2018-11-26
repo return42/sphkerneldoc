@@ -10,8 +10,9 @@ axp20x_match_device
 
     Setup axp20x variant related fields
 
-    :param struct axp20x_dev \*axp20x:
+    :param axp20x:
         axp20x device to setup (.dev field must be set)
+    :type axp20x: struct axp20x_dev \*
 
 .. _`axp20x_match_device.description`:
 
@@ -30,8 +31,9 @@ axp20x_device_probe
 
     Probe a configured axp20x device
 
-    :param struct axp20x_dev \*axp20x:
+    :param axp20x:
         axp20x device to probe (must be configured)
+    :type axp20x: struct axp20x_dev \*
 
 .. _`axp20x_device_probe.description`:
 
@@ -51,8 +53,9 @@ axp20x_device_remove
 
     Remove a axp20x device
 
-    :param struct axp20x_dev \*axp20x:
+    :param axp20x:
         axp20x device to remove
+    :type axp20x: struct axp20x_dev \*
 
 .. _`axp20x_device_remove.description`:
 

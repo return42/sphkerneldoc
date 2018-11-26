@@ -10,11 +10,13 @@ xb_write
 
     low level write
 
-    :param const void \*data:
+    :param data:
         buffer to send
+    :type data: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of buffer
+    :type len: unsigned int
 
 .. _`xb_write.description`:
 
@@ -32,8 +34,9 @@ xb_init_comms
 
     Set up interrupt handler off store event channel.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

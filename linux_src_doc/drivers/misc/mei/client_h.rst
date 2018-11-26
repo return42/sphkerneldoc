@@ -10,8 +10,9 @@ mei_me_cl_is_active
 
     check whether me client is active in the fw
 
-    :param const struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: const struct mei_me_client \*
 
 .. _`mei_me_cl_is_active.return`:
 
@@ -29,8 +30,9 @@ mei_me_cl_uuid
 
     return me client protocol name (uuid)
 
-    :param const struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: const struct mei_me_client \*
 
 .. _`mei_me_cl_uuid.return`:
 
@@ -48,8 +50,9 @@ mei_me_cl_ver
 
     return me client protocol version
 
-    :param const struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: const struct mei_me_client \*
 
 .. _`mei_me_cl_ver.return`:
 
@@ -67,8 +70,9 @@ mei_cl_is_connected
 
     host client is connected
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_is_connected.return`:
 
@@ -86,8 +90,9 @@ mei_cl_me_id
 
     me client id
 
-    :param const struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: const struct mei_cl \*
 
 .. _`mei_cl_me_id.return`:
 
@@ -105,8 +110,9 @@ mei_cl_mtu
 
     maximal message that client can send and receive
 
-    :param const struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: const struct mei_cl \*
 
 .. _`mei_cl_mtu.return`:
 
@@ -124,8 +130,9 @@ mei_cl_is_fixed_address
 
     check whether the me client uses fixed address
 
-    :param const struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: const struct mei_cl \*
 
 .. _`mei_cl_is_fixed_address.return`:
 
@@ -143,8 +150,9 @@ mei_cl_is_single_recv_buf
 
     check whether the me client uses single receiving buffer
 
-    :param const struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: const struct mei_cl \*
 
 .. _`mei_cl_is_single_recv_buf.return`:
 
@@ -162,8 +170,9 @@ mei_cl_uuid
 
     client's uuid
 
-    :param const struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: const struct mei_cl \*
 
 .. _`mei_cl_uuid.return`:
 
@@ -181,8 +190,9 @@ mei_cl_host_addr
 
     client's host address
 
-    :param const struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: const struct mei_cl \*
 
 .. _`mei_cl_host_addr.return`:
 

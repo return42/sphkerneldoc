@@ -18,10 +18,10 @@ Definition
 .. code-block:: c
 
     struct slim_eaddr {
-        u16 manf_id;
-        u16 prod_code;
-        u8 dev_index;
         u8 instance;
+        u8 dev_index;
+        u16 prod_code;
+        u16 manf_id;
     }
 
 .. _`slim_eaddr.members`:
@@ -29,17 +29,17 @@ Definition
 Members
 -------
 
-manf_id
-    Manufacturer Id for the device
-
-prod_code
-    Product code
+instance
+    Instance value
 
 dev_index
     Device index
 
-instance
-    Instance value
+prod_code
+    Product code
+
+manf_id
+    Manufacturer Id for the device
 
 .. _`slim_device_status`:
 
@@ -100,6 +100,8 @@ Definition
         enum slim_device_status status;
         u8 laddr;
         bool is_laddr_valid;
+        struct list_head stream_list;
+        spinlock_t stream_list_lock;
     }
 
 .. _`slim_device.members`:
@@ -124,6 +126,12 @@ laddr
 
 is_laddr_valid
     indicates if the laddr is valid or not
+
+stream_list
+    List of streams on this device
+
+stream_list_lock
+    lock to protect the stream list
 
 .. _`slim_device.description`:
 
@@ -232,6 +240,55 @@ comp
     required for transaction, like REQUEST operations.
     Rest of the transactions are synchronous anyway.
 
+.. _`slim_stream_config`:
+
+struct slim_stream_config
+=========================
+
+.. c:type:: struct slim_stream_config
+
+    SLIMbus stream configuration Configuring a stream is done at hw_params or prepare call from audio drivers where they have all the required information regarding rate, number of channels and so on. There is a 1:1 mapping of channel and ports.
+
+.. _`slim_stream_config.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct slim_stream_config {
+        unsigned int rate;
+        unsigned int bps;
+        unsigned int ch_count;
+        unsigned int *chs;
+        unsigned long port_mask;
+        int direction;
+    }
+
+.. _`slim_stream_config.members`:
+
+Members
+-------
+
+rate
+    data rate
+
+bps
+    bits per data sample
+
+ch_count
+    number of channels
+
+chs
+    pointer to list of channel numbers
+
+port_mask
+    port mask of ports to use for this stream
+
+direction
+    direction of the stream, SNDRV_PCM_STREAM_PLAYBACK
+    or SNDRV_PCM_STREAM_CAPTURE.
+
 .. _`module_slim_driver`:
 
 module_slim_driver
@@ -241,8 +298,9 @@ module_slim_driver
 
     Helper macro for registering a SLIMbus driver
 
-    :param  __slim_driver:
+    :param __slim_driver:
         slimbus_driver struct
+    :type __slim_driver: 
 
 .. _`module_slim_driver.description`:
 

@@ -10,14 +10,17 @@ radeon_fence_write
 
     write a fence value
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 seq:
+    :param seq:
         sequence number to write
+    :type seq: u32
 
-    :param int ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: int
 
 .. _`radeon_fence_write.description`:
 
@@ -35,11 +38,13 @@ radeon_fence_read
 
     read a fence value
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: int
 
 .. _`radeon_fence_read.description`:
 
@@ -58,11 +63,13 @@ radeon_fence_schedule_check
 
     schedule lockup check
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring index we should work with
+    :type ring: int
 
 .. _`radeon_fence_schedule_check.description`:
 
@@ -80,14 +87,17 @@ radeon_fence_emit
 
     emit a fence on the requested ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_fence \*\*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*\*
 
-    :param int ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: int
 
 .. _`radeon_fence_emit.description`:
 
@@ -106,17 +116,21 @@ radeon_fence_check_signaled
 
     callback from fence_queue
 
-    :param wait_queue_entry_t \*wait:
+    :param wait:
         *undescribed*
+    :type wait: wait_queue_entry_t \*
 
-    :param unsigned mode:
+    :param mode:
         *undescribed*
+    :type mode: unsigned
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
-    :param void \*key:
+    :param key:
         *undescribed*
+    :type key: void \*
 
 .. _`radeon_fence_check_signaled.description`:
 
@@ -136,11 +150,13 @@ radeon_fence_activity
 
     check for fence activity
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: int
 
 .. _`radeon_fence_activity.description`:
 
@@ -160,8 +176,9 @@ radeon_fence_check_lockup
 
     check for hardware lockup
 
-    :param struct work_struct \*work:
+    :param work:
         delayed work item
+    :type work: struct work_struct \*
 
 .. _`radeon_fence_check_lockup.description`:
 
@@ -180,11 +197,13 @@ radeon_fence_process
 
     process a fence
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: int
 
 .. _`radeon_fence_process.description`:
 
@@ -203,14 +222,17 @@ radeon_fence_seq_signaled
 
     check if a fence sequence number has signaled
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u64 seq:
+    :param seq:
         sequence number
+    :type seq: u64
 
-    :param unsigned ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: unsigned
 
 .. _`radeon_fence_seq_signaled.description`:
 
@@ -233,8 +255,9 @@ radeon_fence_enable_signaling
 
     enable signalling on fence
 
-    :param struct dma_fence \*f:
+    :param f:
         *undescribed*
+    :type f: struct dma_fence \*
 
 .. _`radeon_fence_enable_signaling.description`:
 
@@ -254,8 +277,9 @@ radeon_fence_signaled
 
     check if a fence has signaled
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
 .. _`radeon_fence_signaled.description`:
 
@@ -274,11 +298,13 @@ radeon_fence_any_seq_signaled
 
     check if any sequence number is signaled
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u64 \*seq:
+    :param seq:
         sequence numbers
+    :type seq: u64 \*
 
 .. _`radeon_fence_any_seq_signaled.description`:
 
@@ -299,17 +325,21 @@ radeon_fence_wait_seq_timeout
 
     wait for a specific sequence numbers
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u64 \*target_seq:
+    :param target_seq:
         sequence number(s) we want to wait for
+    :type target_seq: u64 \*
 
-    :param bool intr:
+    :param intr:
         use interruptable sleep
+    :type intr: bool
 
-    :param long timeout:
+    :param timeout:
         maximum time to wait, or MAX_SCHEDULE_TIMEOUT for infinite wait
+    :type timeout: long
 
 .. _`radeon_fence_wait_seq_timeout.description`:
 
@@ -334,16 +364,19 @@ radeon_fence_wait_timeout
 
     wait for a fence to signal with timeout
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
-    :param bool intr:
+    :param intr:
         use interruptible sleep
+    :type intr: bool
 
-    :param long timeout:
+    :param timeout:
         maximum time to wait, or MAX_SCHEDULE_TIMEOUT for infinite wait
         Returns remaining time if the sequence number has passed, 0 when
         the wait timeout, or an error for all other cases.
+    :type timeout: long
 
 .. _`radeon_fence_wait_timeout.description`:
 
@@ -363,11 +396,13 @@ radeon_fence_wait
 
     wait for a fence to signal
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
-    :param bool intr:
+    :param intr:
         use interruptible sleep
+    :type intr: bool
 
 .. _`radeon_fence_wait.description`:
 
@@ -388,14 +423,17 @@ radeon_fence_wait_any
 
     wait for a fence to signal on any ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_fence \*\*fences:
+    :param fences:
         radeon fence object(s)
+    :type fences: struct radeon_fence \*\*
 
-    :param bool intr:
+    :param intr:
         use interruptable sleep
+    :type intr: bool
 
 .. _`radeon_fence_wait_any.description`:
 
@@ -417,11 +455,13 @@ radeon_fence_wait_next
 
     wait for the next fence to signal
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: int
 
 .. _`radeon_fence_wait_next.description`:
 
@@ -441,11 +481,13 @@ radeon_fence_wait_empty
 
     wait for all fences to signal
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: int
 
 .. _`radeon_fence_wait_empty.description`:
 
@@ -465,8 +507,9 @@ radeon_fence_ref
 
     take a ref on a fence
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
 .. _`radeon_fence_ref.description`:
 
@@ -485,8 +528,9 @@ radeon_fence_unref
 
     remove a ref on a fence
 
-    :param struct radeon_fence \*\*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*\*
 
 .. _`radeon_fence_unref.description`:
 
@@ -504,11 +548,13 @@ radeon_fence_count_emitted
 
     get the count of emitted fences
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: int
 
 .. _`radeon_fence_count_emitted.description`:
 
@@ -528,11 +574,13 @@ radeon_fence_need_sync
 
     do we need a semaphore
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
-    :param int dst_ring:
+    :param dst_ring:
         which ring to check against
+    :type dst_ring: int
 
 .. _`radeon_fence_need_sync.description`:
 
@@ -553,11 +601,13 @@ radeon_fence_note_sync
 
     record the sync point
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
-    :param int dst_ring:
+    :param dst_ring:
         which ring to check against
+    :type dst_ring: int
 
 .. _`radeon_fence_note_sync.description`:
 
@@ -576,11 +626,13 @@ radeon_fence_driver_start_ring
 
     make the fence driver ready for use on the requested ring.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring index to start the fence driver on
+    :type ring: int
 
 .. _`radeon_fence_driver_start_ring.description`:
 
@@ -601,11 +653,13 @@ radeon_fence_driver_init_ring
 
     init the fence driver for the requested ring.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring index to start the fence driver on
+    :type ring: int
 
 .. _`radeon_fence_driver_init_ring.description`:
 
@@ -624,8 +678,9 @@ radeon_fence_driver_init
 
     init the fence driver for all possible rings.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_fence_driver_init.description`:
 
@@ -647,8 +702,9 @@ radeon_fence_driver_fini
 
     tear down the fence driver for all possible rings.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_fence_driver_fini.description`:
 
@@ -666,11 +722,13 @@ radeon_fence_driver_force_completion
 
     force all fence waiter to complete
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         the ring to complete
+    :type ring: int
 
 .. _`radeon_fence_driver_force_completion.description`:
 
@@ -689,11 +747,13 @@ radeon_debugfs_gpu_reset
 
     manually trigger a gpu reset
 
-    :param struct seq_file \*m:
+    :param m:
         *undescribed*
+    :type m: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`radeon_debugfs_gpu_reset.description`:
 

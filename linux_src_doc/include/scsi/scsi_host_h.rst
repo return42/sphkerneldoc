@@ -10,8 +10,9 @@ scsi_host_scan_allowed
 
     Is scanning of this host allowed
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to Scsi_Host.
+    :type shost: struct Scsi_Host \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ comp_open
 
     implements the syscall to open the device
 
-    :param struct inode \*inode:
+    :param inode:
         inode pointer
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
 .. _`comp_open.description`:
 
@@ -33,11 +35,13 @@ comp_close
 
     implements the syscall to close the device
 
-    :param struct inode \*inode:
+    :param inode:
         inode pointer
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
 .. _`comp_close.description`:
 
@@ -55,17 +59,21 @@ comp_write
 
     implements the syscall to write to the device
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         pointer to user buffer
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to write
+    :type count: size_t
 
-    :param loff_t \*offset:
+    :param offset:
         offset from where to start writing
+    :type offset: loff_t \*
 
 .. _`comp_read`:
 
@@ -76,17 +84,21 @@ comp_read
 
     implements the syscall to read from the device
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         pointer to user buffer
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to read
+    :type count: size_t
 
-    :param loff_t \*offset:
+    :param offset:
         offset from where to start reading
+    :type offset: loff_t \*
 
 .. _`comp_disconnect_channel`:
 
@@ -97,11 +109,13 @@ comp_disconnect_channel
 
     disconnect a channel
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface instance
+    :type iface: struct most_interface \*
 
-    :param int channel_id:
+    :param channel_id:
         channel index
+    :type channel_id: int
 
 .. _`comp_disconnect_channel.description`:
 
@@ -120,8 +134,9 @@ comp_rx_completion
 
     completion handler for rx channels
 
-    :param struct mbo \*mbo:
+    :param mbo:
         pointer to buffer object that has completed
+    :type mbo: struct mbo \*
 
 .. _`comp_rx_completion.description`:
 
@@ -140,11 +155,13 @@ comp_tx_completion
 
     completion handler for tx channels
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface instance
+    :type iface: struct most_interface \*
 
-    :param int channel_id:
+    :param channel_id:
         channel index/ID
+    :type channel_id: int
 
 .. _`comp_tx_completion.description`:
 
@@ -162,17 +179,21 @@ comp_probe
 
     probe function of the driver module
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface instance
+    :type iface: struct most_interface \*
 
-    :param int channel_id:
+    :param channel_id:
         channel index/ID
+    :type channel_id: int
 
-    :param struct most_channel_config \*cfg:
+    :param cfg:
         pointer to actual channel configuration
+    :type cfg: struct most_channel_config \*
 
-    :param char \*name:
+    :param name:
         name of the device to be created
+    :type name: char \*
 
 .. _`comp_probe.description`:
 

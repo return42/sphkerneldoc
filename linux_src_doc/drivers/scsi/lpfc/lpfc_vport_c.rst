@@ -10,8 +10,9 @@ lpfc_discovery_wait
 
     Wait for driver discovery to quiesce
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port for which this call is being executed.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_discovery_wait.description`:
 
@@ -38,8 +39,9 @@ lpfc_vport_reset_stat_data
 
     Reset the statistical data for the vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Pointer to vport object.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_vport_reset_stat_data.description`:
 
@@ -58,8 +60,9 @@ lpfc_alloc_bucket
 
     Allocate data buffer required for statistical data
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Pointer to vport object.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_alloc_bucket.description`:
 
@@ -78,8 +81,9 @@ lpfc_free_bucket
 
     Free data buffer required for statistical data
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Pointer to vport object.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_free_bucket.description`:
 

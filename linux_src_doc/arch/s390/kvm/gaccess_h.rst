@@ -10,11 +10,13 @@ kvm_s390_real_to_abs
 
     convert guest real address to guest absolute address \ ``vcpu``\  - guest virtual cpu \ ``gra``\  - guest real address
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gra:
+    :param gra:
         *undescribed*
+    :type gra: unsigned long
 
 .. _`kvm_s390_real_to_abs.description`:
 
@@ -33,11 +35,13 @@ kvm_s390_logical_to_effective
 
     convert guest logical to effective address
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         guest virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long ga:
+    :param ga:
         guest logical address
+    :type ga: unsigned long
 
 .. _`kvm_s390_logical_to_effective.description`:
 
@@ -61,14 +65,17 @@ put_guest_lc
 
     write a simple variable to a guest vcpu's lowcore
 
-    :param  vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: 
 
-    :param  x:
+    :param x:
         value to copy to guest
+    :type x: 
 
-    :param  gra:
+    :param gra:
         vcpu's destination guest real address
+    :type gra: 
 
 .. _`put_guest_lc.description`:
 
@@ -100,17 +107,21 @@ write_guest_lc
 
     copy data from kernel space to guest vcpu's lowcore
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gra:
+    :param gra:
         vcpu's source guest real address
+    :type gra: unsigned long
 
-    :param void \*data:
+    :param data:
         source address in kernel space
+    :type data: void \*
 
-    :param unsigned long len:
+    :param len:
         number of bytes to copy
+    :type len: unsigned long
 
 .. _`write_guest_lc.description`:
 
@@ -141,17 +152,21 @@ read_guest_lc
 
     copy data from guest vcpu's lowcore to kernel space
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gra:
+    :param gra:
         vcpu's source guest real address
+    :type gra: unsigned long
 
-    :param void \*data:
+    :param data:
         destination address in kernel space
+    :type data: void \*
 
-    :param unsigned long len:
+    :param len:
         number of bytes to copy
+    :type len: unsigned long
 
 .. _`read_guest_lc.description`:
 
@@ -182,20 +197,25 @@ write_guest
 
     copy data from kernel space to guest space
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long ga:
+    :param ga:
         guest address
+    :type ga: unsigned long
 
-    :param u8 ar:
+    :param ar:
         access register
+    :type ar: u8
 
-    :param void \*data:
+    :param data:
         source address in kernel space
+    :type data: void \*
 
-    :param unsigned long len:
+    :param len:
         number of bytes to copy
+    :type len: unsigned long
 
 .. _`write_guest.description`:
 
@@ -268,20 +288,25 @@ read_guest
 
     copy data from guest space to kernel space
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long ga:
+    :param ga:
         guest address
+    :type ga: unsigned long
 
-    :param u8 ar:
+    :param ar:
         access register
+    :type ar: u8
 
-    :param void \*data:
+    :param data:
         destination address in kernel space
+    :type data: void \*
 
-    :param unsigned long len:
+    :param len:
         number of bytes to copy
+    :type len: unsigned long
 
 .. _`read_guest.description`:
 
@@ -302,17 +327,21 @@ read_guest_instr
 
     copy instruction data from guest space to kernel space
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long ga:
+    :param ga:
         guest address
+    :type ga: unsigned long
 
-    :param void \*data:
+    :param data:
         destination address in kernel space
+    :type data: void \*
 
-    :param unsigned long len:
+    :param len:
         number of bytes to copy
+    :type len: unsigned long
 
 .. _`read_guest_instr.description`:
 
@@ -335,17 +364,21 @@ write_guest_abs
 
     copy data from kernel space to guest space absolute
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gpa:
+    :param gpa:
         guest physical (absolute) address
+    :type gpa: unsigned long
 
-    :param void \*data:
+    :param data:
         source address in kernel space
+    :type data: void \*
 
-    :param unsigned long len:
+    :param len:
         number of bytes to copy
+    :type len: unsigned long
 
 .. _`write_guest_abs.description`:
 
@@ -370,17 +403,21 @@ read_guest_abs
 
     copy data from guest space absolute to kernel space
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gpa:
+    :param gpa:
         guest physical (absolute) address
+    :type gpa: unsigned long
 
-    :param void \*data:
+    :param data:
         destination address in kernel space
+    :type data: void \*
 
-    :param unsigned long len:
+    :param len:
         number of bytes to copy
+    :type len: unsigned long
 
 .. _`read_guest_abs.description`:
 
@@ -405,17 +442,21 @@ write_guest_real
 
     copy data from kernel space to guest space real
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gra:
+    :param gra:
         guest real address
+    :type gra: unsigned long
 
-    :param void \*data:
+    :param data:
         source address in kernel space
+    :type data: void \*
 
-    :param unsigned long len:
+    :param len:
         number of bytes to copy
+    :type len: unsigned long
 
 .. _`write_guest_real.description`:
 
@@ -440,17 +481,21 @@ read_guest_real
 
     copy data from guest space real to kernel space
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gra:
+    :param gra:
         guest real address
+    :type gra: unsigned long
 
-    :param void \*data:
+    :param data:
         destination address in kernel space
+    :type data: void \*
 
-    :param unsigned long len:
+    :param len:
         number of bytes to copy
+    :type len: unsigned long
 
 .. _`read_guest_real.description`:
 

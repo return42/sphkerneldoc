@@ -10,8 +10,9 @@ pseries_of_derive_parent
 
     basically like dirname(1)
 
-    :param const char \*path:
+    :param path:
         the full_name of a node to be added to the tree
+    :type path: const char \*
 
 .. _`pseries_of_derive_parent.description`:
 

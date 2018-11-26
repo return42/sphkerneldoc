@@ -10,17 +10,21 @@ fdt_reserved_mem_save_node
 
     save fdt node for second pass initialization
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
-    :param const char \*uname:
+    :param uname:
         *undescribed*
+    :type uname: const char \*
 
-    :param phys_addr_t base:
+    :param base:
         *undescribed*
+    :type base: phys_addr_t
 
-    :param phys_addr_t size:
+    :param size:
         *undescribed*
+    :type size: phys_addr_t
 
 .. _`__reserved_mem_alloc_size`:
 
@@ -31,17 +35,21 @@ fdt_reserved_mem_save_node
 
     allocate reserved memory described by 'size', 'align' and 'alloc-ranges' properties
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
-    :param const char \*uname:
+    :param uname:
         *undescribed*
+    :type uname: const char \*
 
-    :param phys_addr_t \*res_base:
+    :param res_base:
         *undescribed*
+    :type res_base: phys_addr_t \*
 
-    :param phys_addr_t \*res_size:
+    :param res_size:
         *undescribed*
+    :type res_size: phys_addr_t \*
 
 .. _`__reserved_mem_init_node`:
 
@@ -52,8 +60,9 @@ fdt_reserved_mem_save_node
 
     call region specific reserved memory init code
 
-    :param struct reserved_mem \*rmem:
+    :param rmem:
         *undescribed*
+    :type rmem: struct reserved_mem \*
 
 .. _`fdt_init_reserved_mem`:
 
@@ -64,8 +73,9 @@ fdt_init_reserved_mem
 
     allocate and init all saved reserved memory regions
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`of_reserved_mem_device_init_by_idx`:
 
@@ -76,14 +86,17 @@ of_reserved_mem_device_init_by_idx
 
     assign reserved memory region to given device
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to the device to configure
+    :type dev: struct device \*
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to the device_node with 'reserved-memory' property
+    :type np: struct device_node \*
 
-    :param int idx:
+    :param idx:
         Index of selected region
+    :type idx: int
 
 .. _`of_reserved_mem_device_init_by_idx.description`:
 
@@ -107,8 +120,9 @@ of_reserved_mem_device_release
 
     release reserved memory device structures
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to the device to deconfigure
+    :type dev: struct device \*
 
 .. _`of_reserved_mem_device_release.description`:
 
@@ -127,8 +141,9 @@ of_reserved_mem_lookup
 
     acquire reserved_mem from a device node
 
-    :param struct device_node \*np:
+    :param np:
         node pointer of the desired reserved-memory region
+    :type np: struct device_node \*
 
 .. _`of_reserved_mem_lookup.description`:
 

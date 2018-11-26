@@ -7,4 +7,4 @@ i2c-hid
 .. toctree::
     :maxdepth: 1
 
-    i2c-hid_c
+    i2c-hid-core_c

@@ -10,8 +10,9 @@ nfs_start_io_read
 
     declare the file is being used for buffered reads \ ``inode``\  - file inode
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`nfs_start_io_read.description`:
 
@@ -39,8 +40,9 @@ nfs_end_io_read
 
     declare that the buffered read operation is done \ ``inode``\  - file inode
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`nfs_end_io_read.description`:
 
@@ -59,8 +61,9 @@ nfs_start_io_write
 
     declare the file is being used for buffered writes \ ``inode``\  - file inode
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`nfs_start_io_write.description`:
 
@@ -79,8 +82,9 @@ nfs_end_io_write
 
     declare that the buffered write operation is done \ ``inode``\  - file inode
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`nfs_end_io_write.description`:
 
@@ -99,8 +103,9 @@ nfs_start_io_direct
 
     declare the file is being used for direct i/o \ ``inode``\  - file inode
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`nfs_start_io_direct.description`:
 
@@ -128,8 +133,9 @@ nfs_end_io_direct
 
     declare that the direct i/o operation is done \ ``inode``\  - file inode
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`nfs_end_io_direct.description`:
 

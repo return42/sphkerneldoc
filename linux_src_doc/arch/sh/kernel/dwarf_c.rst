@@ -10,11 +10,13 @@ dwarf_frame_alloc_reg
 
     allocate memory for a DWARF register
 
-    :param struct dwarf_frame \*frame:
+    :param frame:
         the DWARF frame whose list of registers we insert on
+    :type frame: struct dwarf_frame \*
 
-    :param unsigned int reg_num:
+    :param reg_num:
         the register number
+    :type reg_num: unsigned int
 
 .. _`dwarf_frame_alloc_reg.description`:
 
@@ -36,11 +38,13 @@ dwarf_frame_reg
 
     return a DWARF register
 
-    :param struct dwarf_frame \*frame:
+    :param frame:
         the DWARF frame to search in for \ ``reg_num``\ 
+    :type frame: struct dwarf_frame \*
 
-    :param unsigned int reg_num:
+    :param reg_num:
         the register number to search for
+    :type reg_num: unsigned int
 
 .. _`dwarf_frame_reg.description`:
 
@@ -59,11 +63,13 @@ dwarf_read_addr
 
     read dwarf data
 
-    :param unsigned long \*src:
+    :param src:
         source address of data
+    :type src: unsigned long \*
 
-    :param unsigned long \*dst:
+    :param dst:
         destination address to store the data to
+    :type dst: unsigned long \*
 
 .. _`dwarf_read_addr.description`:
 
@@ -85,11 +91,13 @@ dwarf_read_uleb128
 
     read unsigned LEB128 data
 
-    :param char \*addr:
+    :param addr:
         the address where the ULEB128 data is stored
+    :type addr: char \*
 
-    :param unsigned int \*ret:
+    :param ret:
         address to store the result
+    :type ret: unsigned int \*
 
 .. _`dwarf_read_uleb128.description`:
 
@@ -110,11 +118,13 @@ dwarf_read_leb128
 
     read signed LEB128 data
 
-    :param char \*addr:
+    :param addr:
         the address of the LEB128 encoded data
+    :type addr: char \*
 
-    :param int \*ret:
+    :param ret:
         address to store the result
+    :type ret: int \*
 
 .. _`dwarf_read_leb128.description`:
 
@@ -133,14 +143,17 @@ dwarf_read_encoded_value
 
     return the decoded value at \ ``addr``\ 
 
-    :param char \*addr:
+    :param addr:
         the address of the encoded value
+    :type addr: char \*
 
-    :param unsigned long \*val:
+    :param val:
         where to write the decoded value
+    :type val: unsigned long \*
 
-    :param char encoding:
+    :param encoding:
         the encoding with which we can decode \ ``addr``\ 
+    :type encoding: char
 
 .. _`dwarf_read_encoded_value.description`:
 
@@ -160,11 +173,13 @@ dwarf_entry_len
 
     return the length of an FDE or CIE
 
-    :param char \*addr:
+    :param addr:
         the address of the entry
+    :type addr: char \*
 
-    :param unsigned long \*len:
+    :param len:
         the length of the entry
+    :type len: unsigned long \*
 
 .. _`dwarf_entry_len.description`:
 
@@ -184,8 +199,9 @@ dwarf_lookup_cie
 
     locate the cie
 
-    :param unsigned long cie_ptr:
+    :param cie_ptr:
         pointer to help with lookup
+    :type cie_ptr: unsigned long
 
 .. _`dwarf_lookup_fde`:
 
@@ -196,8 +212,9 @@ dwarf_lookup_fde
 
     locate the FDE that covers pc
 
-    :param unsigned long pc:
+    :param pc:
         the program counter
+    :type pc: unsigned long
 
 .. _`dwarf_cfa_execute_insns`:
 
@@ -208,23 +225,29 @@ dwarf_cfa_execute_insns
 
     execute instructions to calculate a CFA
 
-    :param unsigned char \*insn_start:
+    :param insn_start:
         address of the first instruction
+    :type insn_start: unsigned char \*
 
-    :param unsigned char \*insn_end:
+    :param insn_end:
         address of the last instruction
+    :type insn_end: unsigned char \*
 
-    :param struct dwarf_cie \*cie:
+    :param cie:
         the CIE for this function
+    :type cie: struct dwarf_cie \*
 
-    :param struct dwarf_fde \*fde:
+    :param fde:
         the FDE for this function
+    :type fde: struct dwarf_fde \*
 
-    :param struct dwarf_frame \*frame:
+    :param frame:
         the instructions calculate the CFA for this frame
+    :type frame: struct dwarf_frame \*
 
-    :param unsigned long pc:
+    :param pc:
         the program counter of the address we're interested in
+    :type pc: unsigned long
 
 .. _`dwarf_cfa_execute_insns.description`:
 
@@ -245,8 +268,9 @@ dwarf_free_frame
 
     free the memory allocated for \ ``frame``\ 
 
-    :param struct dwarf_frame \*frame:
+    :param frame:
         the frame to free
+    :type frame: struct dwarf_frame \*
 
 .. _`dwarf_unwind_stack`:
 
@@ -257,11 +281,13 @@ dwarf_unwind_stack
 
     unwind the stack
 
-    :param unsigned long pc:
+    :param pc:
         address of the function to unwind
+    :type pc: unsigned long
 
-    :param struct dwarf_frame \*prev:
+    :param prev:
         struct dwarf_frame of the previous stackframe on the callstack
+    :type prev: struct dwarf_frame \*
 
 .. _`dwarf_unwind_stack.description`:
 
@@ -281,14 +307,17 @@ dwarf_parse_section
 
     parse DWARF section
 
-    :param char \*eh_frame_start:
+    :param eh_frame_start:
         start address of the .eh_frame section
+    :type eh_frame_start: char \*
 
-    :param char \*eh_frame_end:
+    :param eh_frame_end:
         end address of the .eh_frame section
+    :type eh_frame_end: char \*
 
-    :param struct module \*mod:
+    :param mod:
         the kernel module containing the .eh_frame section
+    :type mod: struct module \*
 
 .. _`dwarf_parse_section.description`:
 
@@ -306,8 +335,9 @@ module_dwarf_cleanup
 
     remove FDE/CIEs associated with \ ``mod``\ 
 
-    :param struct module \*mod:
+    :param mod:
         the module that is being unloaded
+    :type mod: struct module \*
 
 .. _`module_dwarf_cleanup.description`:
 
@@ -326,8 +356,9 @@ dwarf_unwinder_init
 
     initialise the dwarf unwinder
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dwarf_unwinder_init.description`:
 

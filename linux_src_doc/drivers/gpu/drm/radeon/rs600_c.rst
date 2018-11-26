@@ -10,11 +10,13 @@ avivo_wait_for_vblank
 
     vblank wait asic callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int crtc:
+    :param crtc:
         crtc to wait for vblank on
+    :type crtc: int
 
 .. _`avivo_wait_for_vblank.description`:
 

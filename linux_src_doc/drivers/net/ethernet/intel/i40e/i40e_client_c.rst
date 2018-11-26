@@ -10,11 +10,13 @@ i40e_client_get_params
 
     Get the params that can change at runtime
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI with the message
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_params \*params:
+    :param params:
         client param struct
+    :type params: struct i40e_params \*
 
 .. _`i40e_notify_client_of_vf_msg`:
 
@@ -25,17 +27,21 @@ i40e_notify_client_of_vf_msg
 
     call the client vf message callback
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI with the message
+    :type vsi: struct i40e_vsi \*
 
-    :param u32 vf_id:
+    :param vf_id:
         the absolute VF id that sent the message
+    :type vf_id: u32
 
-    :param u8 \*msg:
+    :param msg:
         message buffer
+    :type msg: u8 \*
 
-    :param u16 len:
+    :param len:
         length of the message
+    :type len: u16
 
 .. _`i40e_notify_client_of_vf_msg.description`:
 
@@ -53,8 +59,9 @@ i40e_notify_client_of_l2_param_changes
 
     call the client notify callback
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI with l2 param changes
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_notify_client_of_l2_param_changes.description`:
 
@@ -72,8 +79,9 @@ i40e_client_release_qvlist
 
     release MSI-X vector mapping for client
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         pointer to L2 context.
+    :type ldev: struct i40e_info \*
 
 .. _`i40e_notify_client_of_netdev_close`:
 
@@ -84,11 +92,13 @@ i40e_notify_client_of_netdev_close
 
     call the client close callback
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI with netdev closed
+    :type vsi: struct i40e_vsi \*
 
-    :param bool reset:
+    :param reset:
         true when close called due to a reset pending
+    :type reset: bool
 
 .. _`i40e_notify_client_of_netdev_close.description`:
 
@@ -106,11 +116,13 @@ i40e_notify_client_of_vf_reset
 
     call the client vf reset callback
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF device pointer
+    :type pf: struct i40e_pf \*
 
-    :param u32 vf_id:
+    :param vf_id:
         asolute id of VF being reset
+    :type vf_id: u32
 
 .. _`i40e_notify_client_of_vf_reset.description`:
 
@@ -128,11 +140,13 @@ i40e_notify_client_of_vf_enable
 
     call the client vf notification callback
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF device pointer
+    :type pf: struct i40e_pf \*
 
-    :param u32 num_vfs:
+    :param num_vfs:
         the number of VFs currently enabled, 0 for disable
+    :type num_vfs: u32
 
 .. _`i40e_notify_client_of_vf_enable.description`:
 
@@ -150,11 +164,13 @@ i40e_vf_client_capable
 
     ask the client if it likes the specified VF
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF device pointer
+    :type pf: struct i40e_pf \*
 
-    :param u32 vf_id:
+    :param vf_id:
         the VF in question
+    :type vf_id: u32
 
 .. _`i40e_vf_client_capable.description`:
 
@@ -173,8 +189,9 @@ i40e_client_add_instance
 
     add a client instance struct to the instance list
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the board struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_client_del_instance`:
 
@@ -185,8 +202,9 @@ i40e_client_del_instance
 
     removes a client instance from the list
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the board struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_client_subtask`:
 
@@ -197,8 +215,9 @@ i40e_client_subtask
 
     client maintenance work
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_lan_add_device`:
 
@@ -209,8 +228,9 @@ i40e_lan_add_device
 
     add a lan device struct to the list of lan devices
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the board struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_lan_add_device.description`:
 
@@ -228,8 +248,9 @@ i40e_lan_del_device
 
     removes a lan device from the device list
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the board struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_lan_del_device.description`:
 
@@ -247,8 +268,9 @@ i40e_client_release
 
     release client specific resources
 
-    :param struct i40e_client \*client:
+    :param client:
         pointer to the registered client
+    :type client: struct i40e_client \*
 
 .. _`i40e_client_prepare`:
 
@@ -259,8 +281,9 @@ i40e_client_prepare
 
     prepare client specific resources
 
-    :param struct i40e_client \*client:
+    :param client:
         pointer to the registered client
+    :type client: struct i40e_client \*
 
 .. _`i40e_client_virtchnl_send`:
 
@@ -271,20 +294,25 @@ i40e_client_virtchnl_send
 
     TBD
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         pointer to L2 context
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         Client pointer
+    :type client: struct i40e_client \*
 
-    :param u32 vf_id:
+    :param vf_id:
         absolute VF identifier
+    :type vf_id: u32
 
-    :param u8 \*msg:
+    :param msg:
         message buffer
+    :type msg: u8 \*
 
-    :param u16 len:
+    :param len:
         length of message buffer
+    :type len: u16
 
 .. _`i40e_client_virtchnl_send.description`:
 
@@ -300,14 +328,17 @@ i40e_client_setup_qvlist
 
 .. c:function:: int i40e_client_setup_qvlist(struct i40e_info *ldev, struct i40e_client *client, struct i40e_qvlist_info *qvlist_info)
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         pointer to L2 context.
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         Client pointer.
+    :type client: struct i40e_client \*
 
-    :param struct i40e_qvlist_info \*qvlist_info:
+    :param qvlist_info:
         queue and vector list
+    :type qvlist_info: struct i40e_qvlist_info \*
 
 .. _`i40e_client_setup_qvlist.description`:
 
@@ -323,14 +354,17 @@ i40e_client_request_reset
 
 .. c:function:: void i40e_client_request_reset(struct i40e_info *ldev, struct i40e_client *client, u32 reset_level)
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         pointer to L2 context.
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         Client pointer.
+    :type client: struct i40e_client \*
 
-    :param u32 reset_level:
+    :param reset_level:
         reset level
+    :type reset_level: u32
 
 .. _`i40e_client_update_vsi_ctxt`:
 
@@ -339,23 +373,29 @@ i40e_client_update_vsi_ctxt
 
 .. c:function:: int i40e_client_update_vsi_ctxt(struct i40e_info *ldev, struct i40e_client *client, bool is_vf, u32 vf_id, u32 flag, u32 valid_flag)
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         pointer to L2 context.
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         Client pointer.
+    :type client: struct i40e_client \*
 
-    :param bool is_vf:
+    :param is_vf:
         if this for the VF
+    :type is_vf: bool
 
-    :param u32 vf_id:
+    :param vf_id:
         if is_vf true this carries the vf_id
+    :type vf_id: u32
 
-    :param u32 flag:
+    :param flag:
         Any device level setting that needs to be done for PE
+    :type flag: u32
 
-    :param u32 valid_flag:
+    :param valid_flag:
         Bits in this match up and enable changing of flag bits
+    :type valid_flag: u32
 
 .. _`i40e_client_update_vsi_ctxt.description`:
 
@@ -373,8 +413,9 @@ i40e_register_client
 
     Register a i40e client driver with the L2 driver
 
-    :param struct i40e_client \*client:
+    :param client:
         pointer to the i40e_client struct
+    :type client: struct i40e_client \*
 
 .. _`i40e_register_client.description`:
 
@@ -392,8 +433,9 @@ i40e_unregister_client
 
     Unregister a i40e client driver with the L2 driver
 
-    :param struct i40e_client \*client:
+    :param client:
         pointer to the i40e_client struct
+    :type client: struct i40e_client \*
 
 .. _`i40e_unregister_client.description`:
 

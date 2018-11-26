@@ -10,18 +10,22 @@ ext4_block_to_path
 
     parse the block number into array of offsets
 
-    :param struct inode \*inode:
+    :param inode:
         inode in question (we are only interested in its superblock)
+    :type inode: struct inode \*
 
-    :param ext4_lblk_t i_block:
+    :param i_block:
         block number to be parsed
+    :type i_block: ext4_lblk_t
 
-    :param ext4_lblk_t offsets:
+    :param offsets:
         array to store the offsets in
+    :type offsets: ext4_lblk_t
 
-    :param int \*boundary:
+    :param boundary:
         set this non-zero if the referred-to block is likely to be
         followed (on disk) by an indirect block.
+    :type boundary: int \*
 
 .. _`ext4_block_to_path.description`:
 
@@ -54,20 +58,25 @@ ext4_get_branch
 
     read the chain of indirect blocks leading to data
 
-    :param struct inode \*inode:
+    :param inode:
         inode in question
+    :type inode: struct inode \*
 
-    :param int depth:
+    :param depth:
         depth of the chain (1 - direct pointer, etc.)
+    :type depth: int
 
-    :param ext4_lblk_t \*offsets:
+    :param offsets:
         offsets of pointers in inode/indirect blocks
+    :type offsets: ext4_lblk_t \*
 
-    :param Indirect chain:
+    :param chain:
         place to store the result
+    :type chain: Indirect
 
-    :param int \*err:
+    :param err:
         here we store the error value
+    :type err: int \*
 
 .. _`ext4_get_branch.description`:
 
@@ -105,11 +114,13 @@ ext4_find_near
 
     find a place for allocation with sufficient locality
 
-    :param struct inode \*inode:
+    :param inode:
         owner
+    :type inode: struct inode \*
 
-    :param Indirect \*ind:
+    :param ind:
         descriptor of indirect block.
+    :type ind: Indirect \*
 
 .. _`ext4_find_near.description`:
 
@@ -145,14 +156,17 @@ ext4_find_goal
 
     find a preferred place for allocation.
 
-    :param struct inode \*inode:
+    :param inode:
         owner
+    :type inode: struct inode \*
 
-    :param ext4_lblk_t block:
+    :param block:
         block we want
+    :type block: ext4_lblk_t
 
-    :param Indirect \*partial:
+    :param partial:
         pointer to the last triple within a chain
+    :type partial: Indirect \*
 
 .. _`ext4_find_goal.description`:
 
@@ -173,17 +187,21 @@ ext4_blks_to_allocate
 
     Look up the block map and count the number of direct blocks need to be allocated for the given branch.
 
-    :param Indirect \*branch:
+    :param branch:
         chain of indirect blocks
+    :type branch: Indirect \*
 
-    :param int k:
+    :param k:
         number of blocks need for indirect blocks
+    :type k: int
 
-    :param unsigned int blks:
+    :param blks:
         number of data blocks to be mapped.
+    :type blks: unsigned int
 
-    :param int blocks_to_boundary:
+    :param blocks_to_boundary:
         the offset in the indirect block
+    :type blocks_to_boundary: int
 
 .. _`ext4_blks_to_allocate.description`:
 
@@ -202,20 +220,25 @@ ext4_alloc_branch
 
     allocate and set up a chain of blocks.
 
-    :param handle_t \*handle:
+    :param handle:
         handle for this transaction
+    :type handle: handle_t \*
 
-    :param struct ext4_allocation_request \*ar:
+    :param ar:
         *undescribed*
+    :type ar: struct ext4_allocation_request \*
 
-    :param int indirect_blks:
+    :param indirect_blks:
         number of allocated indirect blocks
+    :type indirect_blks: int
 
-    :param ext4_lblk_t \*offsets:
+    :param offsets:
         offsets (in the blocks) to store the pointers to next.
+    :type offsets: ext4_lblk_t \*
 
-    :param Indirect \*branch:
+    :param branch:
         place to store the chain in.
+    :type branch: Indirect \*
 
 .. _`ext4_alloc_branch.description`:
 
@@ -248,17 +271,21 @@ ext4_splice_branch
 
     splice the allocated branch onto inode.
 
-    :param handle_t \*handle:
+    :param handle:
         handle for this transaction
+    :type handle: handle_t \*
 
-    :param struct ext4_allocation_request \*ar:
+    :param ar:
         *undescribed*
+    :type ar: struct ext4_allocation_request \*
 
-    :param Indirect \*where:
+    :param where:
         location of missing link
+    :type where: Indirect \*
 
-    :param int num:
+    :param num:
         number of indirect blocks we are adding
+    :type num: int
 
 .. _`ext4_splice_branch.description`:
 
@@ -278,20 +305,25 @@ ext4_find_shared
 
     find the indirect blocks for partial truncation.
 
-    :param struct inode \*inode:
+    :param inode:
         inode in question
+    :type inode: struct inode \*
 
-    :param int depth:
+    :param depth:
         depth of the affected branch
+    :type depth: int
 
-    :param ext4_lblk_t offsets:
+    :param offsets:
         offsets of pointers in that branch (see ext4_block_to_path)
+    :type offsets: ext4_lblk_t
 
-    :param Indirect chain:
+    :param chain:
         place to store the pointers to partial indirect blocks
+    :type chain: Indirect
 
-    :param __le32 \*top:
+    :param top:
         place to the (detached) top of branch
+    :type top: __le32 \*
 
 .. _`ext4_find_shared.description`:
 
@@ -337,20 +369,25 @@ ext4_free_data
 
     free a list of data blocks
 
-    :param handle_t \*handle:
+    :param handle:
         handle for this transaction
+    :type handle: handle_t \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode we are dealing with
+    :type inode: struct inode \*
 
-    :param struct buffer_head \*this_bh:
+    :param this_bh:
         indirect buffer_head which contains \*@first and \*@last
+    :type this_bh: struct buffer_head \*
 
-    :param __le32 \*first:
+    :param first:
         array of block numbers
+    :type first: __le32 \*
 
-    :param __le32 \*last:
+    :param last:
         points immediately past the end of array
+    :type last: __le32 \*
 
 .. _`ext4_free_data.description`:
 
@@ -358,7 +395,7 @@ Description
 -----------
 
 We are freeing all blocks referred from that array (numbers are stored as
-little-endian 32-bit) and updating \ ``inode``\ ->i_blocks appropriately.
+little-endian 32-bit) and updating \ ``inode->i_blocks``\  appropriately.
 
 We accumulate contiguous runs of blocks to free.  Conveniently, if these
 blocks are contiguous then releasing them at one time will only affect one
@@ -377,23 +414,29 @@ ext4_free_branches
 
     free an array of branches
 
-    :param handle_t \*handle:
+    :param handle:
         JBD handle for this transaction
+    :type handle: handle_t \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode we are dealing with
+    :type inode: struct inode \*
 
-    :param struct buffer_head \*parent_bh:
+    :param parent_bh:
         the buffer_head which contains \*@first and \*@last
+    :type parent_bh: struct buffer_head \*
 
-    :param __le32 \*first:
+    :param first:
         array of block numbers
+    :type first: __le32 \*
 
-    :param __le32 \*last:
+    :param last:
         pointer immediately past the end of array
+    :type last: __le32 \*
 
-    :param int depth:
+    :param depth:
         depth of the branches to free
+    :type depth: int
 
 .. _`ext4_free_branches.description`:
 
@@ -401,7 +444,7 @@ Description
 -----------
 
 We are freeing all blocks referred from these branches (numbers are
-stored as little-endian 32-bit) and updating \ ``inode``\ ->i_blocks
+stored as little-endian 32-bit) and updating \ ``inode->i_blocks``\ 
 appropriately.
 
 .. _`ext4_ind_remove_space`:
@@ -413,17 +456,21 @@ ext4_ind_remove_space
 
     remove space from the range
 
-    :param handle_t \*handle:
+    :param handle:
         JBD handle for this transaction
+    :type handle: handle_t \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode we are dealing with
+    :type inode: struct inode \*
 
-    :param ext4_lblk_t start:
+    :param start:
         First block to remove
+    :type start: ext4_lblk_t
 
-    :param ext4_lblk_t end:
+    :param end:
         One block after the last block to remove (exclusive)
+    :type end: ext4_lblk_t
 
 .. _`ext4_ind_remove_space.description`:
 

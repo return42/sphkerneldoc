@@ -8,8 +8,9 @@ cpu_init
 
 .. c:function:: void cpu_init( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpu_init.description`:
 

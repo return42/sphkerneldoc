@@ -10,8 +10,9 @@ omap_pm_finish
 
     Finish up suspend sequence.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_pm_finish.description`:
 

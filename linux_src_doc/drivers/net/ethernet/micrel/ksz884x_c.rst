@@ -10,8 +10,9 @@ pr_fmt
 
     Micrel KSZ8841/2 PCI Ethernet driver
 
-    :param  fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: 
 
 .. _`pr_fmt.description`:
 
@@ -1102,11 +1103,13 @@ hw_turn_on_intr
 
     turn on specified interrupts
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u32 bit:
+    :param bit:
         The interrupt bits to be on.
+    :type bit: u32
 
 .. _`hw_turn_on_intr.description`:
 
@@ -1125,8 +1128,9 @@ hw_block_intr
 
     block hardware interrupts
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct ksz_hw \*
 
 .. _`hw_block_intr.description`:
 
@@ -1147,17 +1151,21 @@ sw_r_table
 
     read 4 bytes of data from switch table
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int table:
+    :param table:
         The table selector.
+    :type table: int
 
-    :param u16 addr:
+    :param addr:
         The address of the table entry.
+    :type addr: u16
 
-    :param u32 \*data:
+    :param data:
         Buffer to store the read data.
+    :type data: u32 \*
 
 .. _`sw_r_table.description`:
 
@@ -1176,20 +1184,25 @@ sw_w_table_64
 
     write 8 bytes of data to the switch table
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int table:
+    :param table:
         The table selector.
+    :type table: int
 
-    :param u16 addr:
+    :param addr:
         The address of the table entry.
+    :type addr: u16
 
-    :param u32 data_hi:
+    :param data_hi:
         The high part of data to be written (bit63 ~ bit32).
+    :type data_hi: u32
 
-    :param u32 data_lo:
+    :param data_lo:
         The low part of data to be written (bit31 ~ bit0).
+    :type data_lo: u32
 
 .. _`sw_w_table_64.description`:
 
@@ -1208,29 +1221,37 @@ sw_w_sta_mac_table
 
     write to the static MAC table
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u16 addr:
+    :param addr:
         The address of the table entry.
+    :type addr: u16
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         The MAC address.
+    :type mac_addr: u8 \*
 
-    :param u8 ports:
+    :param ports:
         The port members.
+    :type ports: u8
 
-    :param int override:
+    :param override:
         The flag to override the port receive/transmit settings.
+    :type override: int
 
-    :param int valid:
+    :param valid:
         The flag to indicate entry is valid.
+    :type valid: int
 
-    :param int use_fid:
+    :param use_fid:
         The flag to indicate the FID is valid.
+    :type use_fid: int
 
-    :param u8 fid:
+    :param fid:
         The FID value.
+    :type fid: u8
 
 .. _`sw_w_sta_mac_table.description`:
 
@@ -1249,20 +1270,25 @@ sw_r_vlan_table
 
     read from the VLAN table
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u16 addr:
+    :param addr:
         The address of the table entry.
+    :type addr: u16
 
-    :param u16 \*vid:
+    :param vid:
         Buffer to store the VID.
+    :type vid: u16 \*
 
-    :param u8 \*fid:
+    :param fid:
         Buffer to store the VID.
+    :type fid: u8 \*
 
-    :param u8 \*member:
+    :param member:
         Buffer to store the port membership.
+    :type member: u8 \*
 
 .. _`sw_r_vlan_table.description`:
 
@@ -1283,17 +1309,21 @@ port_r_mib_cnt
 
     read MIB counter
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param u16 addr:
+    :param addr:
         The address of the counter.
+    :type addr: u16
 
-    :param u64 \*cnt:
+    :param cnt:
         Buffer to store the counter.
+    :type cnt: u64 \*
 
 .. _`port_r_mib_cnt.description`:
 
@@ -1312,17 +1342,21 @@ port_r_mib_pkt
 
     read dropped packet counts
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param u32 \*last:
+    :param last:
         *undescribed*
+    :type last: u32 \*
 
-    :param u64 \*cnt:
+    :param cnt:
         Buffer to store the receive and transmit dropped packet counts.
+    :type cnt: u64 \*
 
 .. _`port_r_mib_pkt.description`:
 
@@ -1341,11 +1375,13 @@ port_r_cnt
 
     read MIB counters periodically
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
 .. _`port_r_cnt.description`:
 
@@ -1367,11 +1403,13 @@ port_init_cnt
 
     initialize MIB counter values
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
 .. _`port_init_cnt.description`:
 
@@ -1390,17 +1428,21 @@ port_chk
 
     check port register bits
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param int offset:
+    :param offset:
         The offset of the port register.
+    :type offset: int
 
-    :param u16 bits:
+    :param bits:
         The data bits to check.
+    :type bits: u16
 
 .. _`port_chk.description`:
 
@@ -1421,20 +1463,25 @@ port_cfg
 
     set port register bits
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param int offset:
+    :param offset:
         The offset of the port register.
+    :type offset: int
 
-    :param u16 bits:
+    :param bits:
         The data bits to set.
+    :type bits: u16
 
-    :param int set:
+    :param set:
         The flag indicating whether the bits are to be set or not.
+    :type set: int
 
 .. _`port_cfg.description`:
 
@@ -1452,17 +1499,21 @@ port_chk_shift
 
     check port bit
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param u32 addr:
+    :param addr:
         *undescribed*
+    :type addr: u32
 
-    :param int shift:
+    :param shift:
         Number of bits to shift.
+    :type shift: int
 
 .. _`port_chk_shift.description`:
 
@@ -1483,20 +1534,25 @@ port_cfg_shift
 
     set port bit
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param u32 addr:
+    :param addr:
         *undescribed*
+    :type addr: u32
 
-    :param int shift:
+    :param shift:
         Number of bits to shift.
+    :type shift: int
 
-    :param int set:
+    :param set:
         The flag indicating whether the port is to be set or not.
+    :type set: int
 
 .. _`port_cfg_shift.description`:
 
@@ -1514,17 +1570,21 @@ port_r8
 
     read byte from port register
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param int offset:
+    :param offset:
         The offset of the port register.
+    :type offset: int
 
-    :param u8 \*data:
+    :param data:
         Buffer to store the data.
+    :type data: u8 \*
 
 .. _`port_r8.description`:
 
@@ -1542,17 +1602,21 @@ port_r16
 
     read word from port register.
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param int offset:
+    :param offset:
         The offset of the port register.
+    :type offset: int
 
-    :param u16 \*data:
+    :param data:
         Buffer to store the data.
+    :type data: u16 \*
 
 .. _`port_r16.description`:
 
@@ -1570,17 +1634,21 @@ port_w16
 
     write word to port register.
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param int offset:
+    :param offset:
         The offset of the port register.
+    :type offset: int
 
-    :param u16 data:
+    :param data:
         Data to write.
+    :type data: u16
 
 .. _`port_w16.description`:
 
@@ -1598,14 +1666,17 @@ sw_chk
 
     check switch register bits
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u32 addr:
+    :param addr:
         The address of the switch register.
+    :type addr: u32
 
-    :param u16 bits:
+    :param bits:
         The data bits to check.
+    :type bits: u16
 
 .. _`sw_chk.description`:
 
@@ -1626,17 +1697,21 @@ sw_cfg
 
     set switch register bits
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u32 addr:
+    :param addr:
         The address of the switch register.
+    :type addr: u32
 
-    :param u16 bits:
+    :param bits:
         The data bits to set.
+    :type bits: u16
 
-    :param int set:
+    :param set:
         The flag indicating whether the bits are to be set or not.
+    :type set: int
 
 .. _`sw_cfg.description`:
 
@@ -1654,11 +1729,13 @@ sw_cfg_broad_storm
 
     configure broadcast storm threshold
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u8 percent:
+    :param percent:
         Broadcast storm threshold in percent of transmit rate.
+    :type percent: u8
 
 .. _`sw_cfg_broad_storm.description`:
 
@@ -1676,11 +1753,13 @@ sw_get_broad_storm
 
     get broadcast storm threshold
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u8 \*percent:
+    :param percent:
         Buffer to store the broadcast storm threshold percentage.
+    :type percent: u8 \*
 
 .. _`sw_get_broad_storm.description`:
 
@@ -1698,11 +1777,13 @@ sw_dis_broad_storm
 
     disable broadstorm
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
 .. _`sw_dis_broad_storm.description`:
 
@@ -1720,11 +1801,13 @@ sw_ena_broad_storm
 
     enable broadcast storm
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
 .. _`sw_ena_broad_storm.description`:
 
@@ -1742,8 +1825,9 @@ sw_init_broad_storm
 
     initialize broadcast storm
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`sw_init_broad_storm.description`:
 
@@ -1761,11 +1845,13 @@ hw_cfg_broad_storm
 
     configure broadcast storm
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u8 percent:
+    :param percent:
         Broadcast storm threshold in percent of transmit rate.
+    :type percent: u8
 
 .. _`hw_cfg_broad_storm.description`:
 
@@ -1784,11 +1870,13 @@ sw_dis_prio_rate
 
     disable switch priority rate
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
 .. _`sw_dis_prio_rate.description`:
 
@@ -1806,8 +1894,9 @@ sw_init_prio_rate
 
     initialize switch prioirty rate
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`sw_init_prio_rate.description`:
 
@@ -1825,11 +1914,13 @@ sw_dis_diffserv
 
     disable switch DiffServ priority
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
 .. _`sw_dis_diffserv.description`:
 
@@ -1847,11 +1938,13 @@ sw_dis_802_1p
 
     disable switch 802.1p priority
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
 .. _`sw_dis_802_1p.description`:
 
@@ -1867,11 +1960,13 @@ sw_cfg_replace_null_vid
 
 .. c:function:: void sw_cfg_replace_null_vid(struct ksz_hw *hw, int set)
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int set:
+    :param set:
         The flag to disable or enable.
+    :type set: int
 
 .. _`sw_cfg_replace_vid`:
 
@@ -1882,14 +1977,17 @@ sw_cfg_replace_vid
 
     enable switch 802.10 priority re-mapping
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param int set:
+    :param set:
         The flag to disable or enable.
+    :type set: int
 
 .. _`sw_cfg_replace_vid.description`:
 
@@ -1910,14 +2008,17 @@ sw_cfg_port_based
 
     configure switch port based priority
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param u8 prio:
+    :param prio:
         The priority to set.
+    :type prio: u8
 
 .. _`sw_cfg_port_based.description`:
 
@@ -1935,11 +2036,13 @@ sw_dis_multi_queue
 
     disable transmit multiple queues
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
 .. _`sw_dis_multi_queue.description`:
 
@@ -1958,8 +2061,9 @@ sw_init_prio
 
     initialize switch priority
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`sw_init_prio.description`:
 
@@ -1977,14 +2081,17 @@ port_get_def_vid
 
     get port default VID.
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param u16 \*vid:
+    :param vid:
         Buffer to store the VID.
+    :type vid: u16 \*
 
 .. _`port_get_def_vid.description`:
 
@@ -2002,8 +2109,9 @@ sw_init_vlan
 
     initialize switch VLAN
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`sw_init_vlan.description`:
 
@@ -2021,14 +2129,17 @@ sw_cfg_port_base_vlan
 
     configure port-based VLAN membership
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param u8 member:
+    :param member:
         The port-based VLAN membership.
+    :type member: u8
 
 .. _`sw_cfg_port_base_vlan.description`:
 
@@ -2046,11 +2157,13 @@ sw_get_addr
 
     get the switch MAC address.
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         Buffer to store the MAC address.
+    :type mac_addr: u8 \*
 
 .. _`sw_get_addr.description`:
 
@@ -2068,11 +2181,13 @@ sw_set_addr
 
     configure switch MAC address
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         The MAC address.
+    :type mac_addr: u8 \*
 
 .. _`sw_set_addr.description`:
 
@@ -2090,8 +2205,9 @@ sw_set_global_ctrl
 
     set switch global control
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`sw_set_global_ctrl.description`:
 
@@ -2109,14 +2225,17 @@ port_set_stp_state
 
     configure port spanning tree state
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         The port index.
+    :type port: int
 
-    :param int state:
+    :param state:
         The spanning tree state.
+    :type state: int
 
 .. _`port_set_stp_state.description`:
 
@@ -2134,8 +2253,9 @@ sw_clr_sta_mac_table
 
     clear static MAC table
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`sw_clr_sta_mac_table.description`:
 
@@ -2153,8 +2273,9 @@ sw_init_stp
 
     initialize switch spanning tree support
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`sw_init_stp.description`:
 
@@ -2172,8 +2293,9 @@ sw_block_addr
 
     block certain packets from the host port
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`sw_block_addr.description`:
 
@@ -2191,17 +2313,21 @@ hw_r_phy
 
     read data from PHY register
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         Port to read.
+    :type port: int
 
-    :param u16 reg:
+    :param reg:
         PHY register to read.
+    :type reg: u16
 
-    :param u16 \*val:
+    :param val:
         Buffer to store the read data.
+    :type val: u16 \*
 
 .. _`hw_r_phy.description`:
 
@@ -2219,17 +2345,21 @@ hw_w_phy
 
     write data to PHY register
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int port:
+    :param port:
         Port to write.
+    :type port: int
 
-    :param u16 reg:
+    :param reg:
         PHY register to write.
+    :type reg: u16
 
-    :param u16 val:
+    :param val:
         Word data to write.
+    :type val: u16
 
 .. _`hw_w_phy.description`:
 
@@ -2247,11 +2377,13 @@ eeprom_read
 
     read from AT93C46 EEPROM
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u8 reg:
+    :param reg:
         The register offset.
+    :type reg: u8
 
 .. _`eeprom_read.description`:
 
@@ -2271,14 +2403,17 @@ eeprom_write
 
     write to AT93C46 EEPROM
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u8 reg:
+    :param reg:
         The register offset.
+    :type reg: u8
 
-    :param u16 data:
+    :param data:
         The data value.
+    :type data: u16
 
 .. _`eeprom_write.description`:
 
@@ -2296,8 +2431,9 @@ port_get_link_speed
 
     get current link status
 
-    :param struct ksz_port \*port:
+    :param port:
         The port instance.
+    :type port: struct ksz_port \*
 
 .. _`port_get_link_speed.description`:
 
@@ -2316,8 +2452,9 @@ port_set_link_speed
 
     set port speed
 
-    :param struct ksz_port \*port:
+    :param port:
         The port instance.
+    :type port: struct ksz_port \*
 
 .. _`port_set_link_speed.description`:
 
@@ -2335,8 +2472,9 @@ port_force_link_speed
 
     force port speed
 
-    :param struct ksz_port \*port:
+    :param port:
         The port instance.
+    :type port: struct ksz_port \*
 
 .. _`port_force_link_speed.description`:
 
@@ -2354,8 +2492,9 @@ hw_chk_wol_pme_status
 
     check PMEN pin
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_chk_wol_pme_status.description`:
 
@@ -2375,8 +2514,9 @@ hw_clr_wol_pme_status
 
     clear PMEN pin
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_clr_wol_pme_status.description`:
 
@@ -2394,11 +2534,13 @@ hw_cfg_wol_pme
 
     enable or disable Wake-on-LAN
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int set:
+    :param set:
         The flag indicating whether to enable or disable.
+    :type set: int
 
 .. _`hw_cfg_wol_pme.description`:
 
@@ -2416,14 +2558,17 @@ hw_cfg_wol
 
     configure Wake-on-LAN features
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u16 frame:
+    :param frame:
         The pattern frame bit.
+    :type frame: u16
 
-    :param int set:
+    :param set:
         The flag indicating whether to enable or disable.
+    :type set: int
 
 .. _`hw_cfg_wol.description`:
 
@@ -2441,23 +2586,29 @@ hw_set_wol_frame
 
     program Wake-on-LAN pattern
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int i:
+    :param i:
         The frame index.
+    :type i: int
 
-    :param uint mask_size:
+    :param mask_size:
         The size of the mask.
+    :type mask_size: uint
 
-    :param const u8 \*mask:
+    :param mask:
         Mask to ignore certain bytes in the pattern.
+    :type mask: const u8 \*
 
-    :param uint frame_size:
+    :param frame_size:
         The size of the frame.
+    :type frame_size: uint
 
-    :param const u8 \*pattern:
+    :param pattern:
         The frame data.
+    :type pattern: const u8 \*
 
 .. _`hw_set_wol_frame.description`:
 
@@ -2475,11 +2626,13 @@ hw_add_wol_arp
 
     add ARP pattern
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param const u8 \*ip_addr:
+    :param ip_addr:
         The IPv4 address assigned to the device.
+    :type ip_addr: const u8 \*
 
 .. _`hw_add_wol_arp.description`:
 
@@ -2497,8 +2650,9 @@ hw_add_wol_bcast
 
     add broadcast pattern
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_add_wol_bcast.description`:
 
@@ -2516,8 +2670,9 @@ hw_add_wol_mcast
 
     add multicast pattern
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_add_wol_mcast.description`:
 
@@ -2539,8 +2694,9 @@ hw_add_wol_ucast
 
     add unicast pattern
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_add_wol_ucast.description`:
 
@@ -2561,14 +2717,17 @@ hw_enable_wol
 
     enable Wake-on-LAN
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u32 wol_enable:
+    :param wol_enable:
         The Wake-on-LAN settings.
+    :type wol_enable: u32
 
-    :param const u8 \*net_addr:
+    :param net_addr:
         The IPv4 address assigned to the device.
+    :type net_addr: const u8 \*
 
 .. _`hw_enable_wol.description`:
 
@@ -2586,8 +2745,9 @@ hw_init
 
     check driver is correct for the hardware
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_init.description`:
 
@@ -2608,8 +2768,9 @@ hw_reset
 
     reset the hardware
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_reset.description`:
 
@@ -2627,8 +2788,9 @@ hw_setup
 
     setup the hardware
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_setup.description`:
 
@@ -2646,8 +2808,9 @@ hw_setup_intr
 
     setup interrupt mask
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_setup_intr.description`:
 
@@ -2665,14 +2828,17 @@ hw_set_desc_base
 
     set descriptor base addresses
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u32 tx_addr:
+    :param tx_addr:
         The transmit descriptor base.
+    :type tx_addr: u32
 
-    :param u32 rx_addr:
+    :param rx_addr:
         The receive descriptor base.
+    :type rx_addr: u32
 
 .. _`hw_set_desc_base.description`:
 
@@ -2690,8 +2856,9 @@ hw_start_rx
 
     start receiving
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_start_rx.description`:
 
@@ -2709,8 +2876,9 @@ hw_stop_rx
 
     stop receiving
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_stop_rx.description`:
 
@@ -2728,8 +2896,9 @@ hw_start_tx
 
     start transmitting
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_start_tx.description`:
 
@@ -2747,8 +2916,9 @@ hw_stop_tx
 
     stop transmitting
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_stop_tx.description`:
 
@@ -2766,8 +2936,9 @@ hw_disable
 
     disable hardware
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_disable.description`:
 
@@ -2785,8 +2956,9 @@ hw_enable
 
     enable hardware
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_enable.description`:
 
@@ -2804,14 +2976,17 @@ hw_alloc_pkt
 
     allocate enough descriptors for transmission
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int length:
+    :param length:
         The length of the packet.
+    :type length: int
 
-    :param int physical:
+    :param physical:
         Number of descriptors required.
+    :type physical: int
 
 .. _`hw_alloc_pkt.description`:
 
@@ -2831,8 +3006,9 @@ hw_send_pkt
 
     mark packet for transmission
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_send_pkt.description`:
 
@@ -2850,8 +3026,9 @@ hw_set_addr
 
     set MAC address
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_set_addr.description`:
 
@@ -2870,8 +3047,9 @@ hw_read_addr
 
     read MAC address
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_read_addr.description`:
 
@@ -2889,8 +3067,9 @@ hw_clr_multicast
 
     clear multicast addresses
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_clr_multicast.description`:
 
@@ -2908,8 +3087,9 @@ hw_set_grp_addr
 
     set multicast addresses
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`hw_set_grp_addr.description`:
 
@@ -2928,11 +3108,13 @@ hw_set_multicast
 
     enable or disable all multicast receiving
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u8 multicast:
+    :param multicast:
         To turn on or off the all multicast feature.
+    :type multicast: u8
 
 .. _`hw_set_multicast.description`:
 
@@ -2950,11 +3132,13 @@ hw_set_promiscuous
 
     enable or disable promiscuous receiving
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param u8 prom:
+    :param prom:
         To turn on or off the promiscuous feature.
+    :type prom: u8
 
 .. _`hw_set_promiscuous.description`:
 
@@ -2972,11 +3156,13 @@ sw_enable
 
     enable the switch
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
-    :param int enable:
+    :param enable:
         The flag to enable or disable the switch
+    :type enable: int
 
 .. _`sw_enable.description`:
 
@@ -2994,8 +3180,9 @@ sw_setup
 
     setup the switch
 
-    :param struct ksz_hw \*hw:
+    :param hw:
         The hardware instance.
+    :type hw: struct ksz_hw \*
 
 .. _`sw_setup.description`:
 
@@ -3013,11 +3200,13 @@ ksz_start_timer
 
     start kernel timer
 
-    :param struct ksz_timer_info \*info:
+    :param info:
         Kernel timer information.
+    :type info: struct ksz_timer_info \*
 
-    :param int time:
+    :param time:
         The time tick.
+    :type time: int
 
 .. _`ksz_start_timer.description`:
 
@@ -3035,8 +3224,9 @@ ksz_stop_timer
 
     stop kernel timer
 
-    :param struct ksz_timer_info \*info:
+    :param info:
         Kernel timer information.
+    :type info: struct ksz_timer_info \*
 
 .. _`ksz_stop_timer.description`:
 
@@ -3054,11 +3244,13 @@ ksz_alloc_soft_desc
 
     allocate software descriptors
 
-    :param struct ksz_desc_info \*desc_info:
+    :param desc_info:
         Descriptor information structure.
+    :type desc_info: struct ksz_desc_info \*
 
-    :param int transmit:
+    :param transmit:
         Indication that descriptors are for transmit.
+    :type transmit: int
 
 .. _`ksz_alloc_soft_desc.description`:
 
@@ -3079,8 +3271,9 @@ ksz_alloc_desc
 
     allocate hardware descriptors
 
-    :param struct dev_info \*adapter:
+    :param adapter:
         Adapter information structure.
+    :type adapter: struct dev_info \*
 
 .. _`ksz_alloc_desc.description`:
 
@@ -3101,14 +3294,17 @@ free_dma_buf
 
     release DMA buffer resources
 
-    :param struct dev_info \*adapter:
+    :param adapter:
         Adapter information structure.
+    :type adapter: struct dev_info \*
 
-    :param struct ksz_dma_buf \*dma_buf:
+    :param dma_buf:
         *undescribed*
+    :type dma_buf: struct ksz_dma_buf \*
 
-    :param int direction:
+    :param direction:
         *undescribed*
+    :type direction: int
 
 .. _`free_dma_buf.description`:
 
@@ -3126,8 +3322,9 @@ ksz_init_rx_buffers
 
     initialize receive descriptors
 
-    :param struct dev_info \*adapter:
+    :param adapter:
         Adapter information structure.
+    :type adapter: struct dev_info \*
 
 .. _`ksz_init_rx_buffers.description`:
 
@@ -3145,8 +3342,9 @@ ksz_alloc_mem
 
     allocate memory for hardware descriptors
 
-    :param struct dev_info \*adapter:
+    :param adapter:
         Adapter information structure.
+    :type adapter: struct dev_info \*
 
 .. _`ksz_alloc_mem.description`:
 
@@ -3167,8 +3365,9 @@ ksz_free_desc
 
     free software and hardware descriptors
 
-    :param struct dev_info \*adapter:
+    :param adapter:
         Adapter information structure.
+    :type adapter: struct dev_info \*
 
 .. _`ksz_free_desc.description`:
 
@@ -3187,14 +3386,17 @@ ksz_free_buffers
 
     free buffers used in the descriptors
 
-    :param struct dev_info \*adapter:
+    :param adapter:
         Adapter information structure.
+    :type adapter: struct dev_info \*
 
-    :param struct ksz_desc_info \*desc_info:
+    :param desc_info:
         Descriptor information structure.
+    :type desc_info: struct ksz_desc_info \*
 
-    :param int direction:
+    :param direction:
         *undescribed*
+    :type direction: int
 
 .. _`ksz_free_buffers.description`:
 
@@ -3212,8 +3414,9 @@ ksz_free_mem
 
     free all resources used by descriptors
 
-    :param struct dev_info \*adapter:
+    :param adapter:
         Adapter information structure.
+    :type adapter: struct dev_info \*
 
 .. _`ksz_free_mem.description`:
 
@@ -3231,11 +3434,13 @@ send_packet
 
     send packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Socket buffer.
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`send_packet.description`:
 
@@ -3253,11 +3458,13 @@ transmit_cleanup
 
     clean up transmit descriptors
 
-    :param struct dev_info \*hw_priv:
+    :param hw_priv:
         *undescribed*
+    :type hw_priv: struct dev_info \*
 
-    :param int normal:
+    :param normal:
         *undescribed*
+    :type normal: int
 
 .. _`transmit_cleanup.description`:
 
@@ -3275,8 +3482,9 @@ tx_done
 
     transmit done processing
 
-    :param struct dev_info \*hw_priv:
+    :param hw_priv:
         *undescribed*
+    :type hw_priv: struct dev_info \*
 
 .. _`tx_done.description`:
 
@@ -3295,11 +3503,13 @@ netdev_tx
 
     send out packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Socket buffer.
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_tx.description`:
 
@@ -3319,8 +3529,9 @@ netdev_tx_timeout
 
     transmit timeout processing
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_tx_timeout.description`:
 
@@ -3341,11 +3552,13 @@ netdev_intr
 
     interrupt handling
 
-    :param int irq:
+    :param irq:
         Interrupt number.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Network device.
+    :type dev_id: void \*
 
 .. _`netdev_intr.description`:
 
@@ -3365,8 +3578,9 @@ netdev_close
 
     close network device
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_close.description`:
 
@@ -3387,8 +3601,9 @@ netdev_open
 
     open network device
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_open.description`:
 
@@ -3409,8 +3624,9 @@ netdev_query_statistics
 
     query network device statistics
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_query_statistics.description`:
 
@@ -3431,11 +3647,13 @@ netdev_set_mac_address
 
     set network device MAC address
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param void \*addr:
+    :param addr:
         Buffer of MAC address.
+    :type addr: void \*
 
 .. _`netdev_set_mac_address.description`:
 
@@ -3453,8 +3671,9 @@ netdev_set_rx_mode
 
 .. c:function:: void netdev_set_rx_mode(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_set_rx_mode.description`:
 
@@ -3473,14 +3692,17 @@ netdev_ioctl
 
     I/O control processing
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         Interface request structure.
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         I/O control code.
+    :type cmd: int
 
 .. _`netdev_ioctl.description`:
 
@@ -3500,14 +3722,17 @@ mdio_read
 
     read PHY register
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param int phy_id:
+    :param phy_id:
         The PHY id.
+    :type phy_id: int
 
-    :param int reg_num:
+    :param reg_num:
         The register number.
+    :type reg_num: int
 
 .. _`mdio_read.description`:
 
@@ -3527,17 +3752,21 @@ mdio_write
 
     set PHY register
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param int phy_id:
+    :param phy_id:
         The PHY id.
+    :type phy_id: int
 
-    :param int reg_num:
+    :param reg_num:
         The register number.
+    :type reg_num: int
 
-    :param int val:
+    :param val:
         The register value.
+    :type val: int
 
 .. _`mdio_write.description`:
 
@@ -3555,11 +3784,13 @@ netdev_get_link_ksettings
 
     get network device settings
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         Ethtool command.
+    :type cmd: struct ethtool_link_ksettings \*
 
 .. _`netdev_get_link_ksettings.description`:
 
@@ -3579,11 +3810,13 @@ netdev_set_link_ksettings
 
     set network device settings
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param const struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         Ethtool command.
+    :type cmd: const struct ethtool_link_ksettings \*
 
 .. _`netdev_set_link_ksettings.description`:
 
@@ -3603,8 +3836,9 @@ netdev_nway_reset
 
     restart auto-negotiation
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_nway_reset.description`:
 
@@ -3624,8 +3858,9 @@ netdev_get_link
 
     get network device link status
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_get_link.description`:
 
@@ -3645,11 +3880,13 @@ netdev_get_drvinfo
 
     get network driver information
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_drvinfo \*info:
+    :param info:
         Ethtool driver info data structure.
+    :type info: struct ethtool_drvinfo \*
 
 .. _`netdev_get_drvinfo.description`:
 
@@ -3667,14 +3904,17 @@ netdev_get_regs
 
     get register dump
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_regs \*regs:
+    :param regs:
         Ethtool registers data structure.
+    :type regs: struct ethtool_regs \*
 
-    :param void \*ptr:
+    :param ptr:
         Buffer to store the register values.
+    :type ptr: void \*
 
 .. _`netdev_get_regs.description`:
 
@@ -3692,11 +3932,13 @@ netdev_get_wol
 
     get Wake-on-LAN support
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_wolinfo \*wol:
+    :param wol:
         Ethtool Wake-on-LAN data structure.
+    :type wol: struct ethtool_wolinfo \*
 
 .. _`netdev_get_wol.description`:
 
@@ -3714,11 +3956,13 @@ netdev_set_wol
 
     set Wake-on-LAN support
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_wolinfo \*wol:
+    :param wol:
         Ethtool Wake-on-LAN data structure.
+    :type wol: struct ethtool_wolinfo \*
 
 .. _`netdev_set_wol.description`:
 
@@ -3738,8 +3982,9 @@ netdev_get_msglevel
 
     get debug message level
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_get_msglevel.description`:
 
@@ -3759,11 +4004,13 @@ netdev_set_msglevel
 
     set debug message level
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param u32 value:
+    :param value:
         Debug message flags.
+    :type value: u32
 
 .. _`netdev_set_msglevel.description`:
 
@@ -3781,8 +4028,9 @@ netdev_get_eeprom_len
 
     get EEPROM length
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_get_eeprom_len.description`:
 
@@ -3820,14 +4068,17 @@ netdev_set_eeprom
 
     write EEPROM data
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_eeprom \*eeprom:
+    :param eeprom:
         Ethtool EEPROM data structure.
+    :type eeprom: struct ethtool_eeprom \*
 
-    :param u8 \*data:
+    :param data:
         Data buffer.
+    :type data: u8 \*
 
 .. _`netdev_set_eeprom.description`:
 
@@ -3847,11 +4098,13 @@ netdev_get_pauseparam
 
     get flow control parameters
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*pause:
+    :param pause:
         Ethtool PAUSE settings data structure.
+    :type pause: struct ethtool_pauseparam \*
 
 .. _`netdev_get_pauseparam.description`:
 
@@ -3869,11 +4122,13 @@ netdev_set_pauseparam
 
     set flow control parameters
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*pause:
+    :param pause:
         Ethtool PAUSE settings data structure.
+    :type pause: struct ethtool_pauseparam \*
 
 .. _`netdev_set_pauseparam.description`:
 
@@ -3894,11 +4149,13 @@ netdev_get_ringparam
 
     get tx/rx ring parameters
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_ringparam \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct ethtool_ringparam \*
 
 .. _`netdev_get_ringparam.description`:
 
@@ -3916,14 +4173,17 @@ netdev_get_strings
 
     get statistics identity strings
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param u32 stringset:
+    :param stringset:
         String set identifier.
+    :type stringset: u32
 
-    :param u8 \*buf:
+    :param buf:
         Buffer to store the strings.
+    :type buf: u8 \*
 
 .. _`netdev_get_strings.description`:
 
@@ -3941,11 +4201,13 @@ netdev_get_sset_count
 
     get statistics size
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param int sset:
+    :param sset:
         The statistics set number.
+    :type sset: int
 
 .. _`netdev_get_sset_count.description`:
 
@@ -3965,14 +4227,17 @@ netdev_get_ethtool_stats
 
     get network device statistics
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_stats \*stats:
+    :param stats:
         Ethtool statistics data structure.
+    :type stats: struct ethtool_stats \*
 
-    :param u64 \*data:
+    :param data:
         Buffer to store the statistics.
+    :type data: u64 \*
 
 .. _`netdev_get_ethtool_stats.description`:
 
@@ -3990,11 +4255,13 @@ netdev_set_features
 
     set receive checksum support
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
-    :param netdev_features_t features:
+    :param features:
         New device features (offloads).
+    :type features: netdev_features_t
 
 .. _`netdev_set_features.description`:
 
@@ -4014,8 +4281,9 @@ dev_monitor
 
     periodic monitoring
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`dev_monitor.description`:
 
@@ -4033,8 +4301,9 @@ netdev_init
 
     initialize network device.
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device.
+    :type dev: struct net_device \*
 
 .. _`netdev_init.description`:
 

@@ -10,20 +10,25 @@ mrst_lvds_find_best_pll
 
     or FALSE.  Divisor values are the actual divisors for
 
-    :param const struct gma_limit_t \*limit:
+    :param limit:
         *undescribed*
+    :type limit: const struct gma_limit_t \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
+    :type crtc: struct drm_crtc \*
 
-    :param int target:
+    :param target:
         *undescribed*
+    :type target: int
 
-    :param int refclk:
+    :param refclk:
         *undescribed*
+    :type refclk: int
 
-    :param struct gma_clock_t \*best_clock:
+    :param best_clock:
         *undescribed*
+    :type best_clock: struct gma_clock_t \*
 
 .. _`oaktrail_crtc_dpms`:
 
@@ -32,11 +37,13 @@ oaktrail_crtc_dpms
 
 .. c:function:: void oaktrail_crtc_dpms(struct drm_crtc *crtc, int mode)
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
+    :type crtc: struct drm_crtc \*
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
 .. _`oaktrail_crtc_dpms.description`:
 
@@ -55,8 +62,9 @@ oaktrail_panel_fitter_pipe
 
     or -1 if the panel fitter is not present or not in use
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. This file was automatic generated / don't edit.
 

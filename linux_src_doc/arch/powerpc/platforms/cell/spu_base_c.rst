@@ -10,14 +10,17 @@
 
     zero if the address \ ``new_addr``\  is present.
 
-    :param struct copro_slb \*slbs:
+    :param slbs:
         *undescribed*
+    :type slbs: struct copro_slb \*
 
-    :param int nr_slbs:
+    :param nr_slbs:
         *undescribed*
+    :type nr_slbs: int
 
-    :param void \*new_addr:
+    :param new_addr:
         *undescribed*
+    :type new_addr: void \*
 
 .. _`spu_setup_kernel_slbs`:
 
@@ -28,17 +31,21 @@ spu_setup_kernel_slbs
 
     need to map both the context save area, and the save/restore code.
 
-    :param struct spu \*spu:
+    :param spu:
         *undescribed*
+    :type spu: struct spu \*
 
-    :param struct spu_lscsa \*lscsa:
+    :param lscsa:
         *undescribed*
+    :type lscsa: struct spu_lscsa \*
 
-    :param void \*code:
+    :param code:
         *undescribed*
+    :type code: void \*
 
-    :param int code_size:
+    :param code_size:
         *undescribed*
+    :type code_size: int
 
 .. _`spu_setup_kernel_slbs.description`:
 

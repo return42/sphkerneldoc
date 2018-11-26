@@ -8,11 +8,13 @@ cn_proc_mcast_ctl
 
 .. c:function:: void cn_proc_mcast_ctl(struct cn_msg *msg, struct netlink_skb_parms *nsp)
 
-    :param struct cn_msg \*msg:
+    :param msg:
         *undescribed*
+    :type msg: struct cn_msg \*
 
-    :param struct netlink_skb_parms \*nsp:
+    :param nsp:
         *undescribed*
+    :type nsp: struct netlink_skb_parms \*
 
 .. This file was automatic generated / don't edit.
 

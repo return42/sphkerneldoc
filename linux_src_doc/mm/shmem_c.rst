@@ -10,8 +10,9 @@ shmem_recalc_inode
 
     recalculate the block usage of an inode
 
-    :param struct inode \*inode:
+    :param inode:
         inode to recalc
+    :type inode: struct inode \*
 
 .. _`shmem_recalc_inode.description`:
 
@@ -35,14 +36,17 @@ shmem_kernel_file_setup
 
     get an unlinked file living in tmpfs which must be kernel internal.  There will be NO LSM permission checks against the underlying inode.  So users of this interface must do LSM checks at a higher layer.  The users are the big_key and shm implementations.  LSM checks are provided at the key or shm level rather than the inode.
 
-    :param const char \*name:
+    :param name:
         name for dentry (to be seen in /proc/<pid>/maps
+    :type name: const char \*
 
-    :param loff_t size:
+    :param size:
         size to be set for the file
+    :type size: loff_t
 
-    :param unsigned long flags:
+    :param flags:
         VM_NORESERVE suppresses pre-accounting of the entire object size
+    :type flags: unsigned long
 
 .. _`shmem_file_setup`:
 
@@ -53,14 +57,17 @@ shmem_file_setup
 
     get an unlinked file living in tmpfs
 
-    :param const char \*name:
+    :param name:
         name for dentry (to be seen in /proc/<pid>/maps
+    :type name: const char \*
 
-    :param loff_t size:
+    :param size:
         size to be set for the file
+    :type size: loff_t
 
-    :param unsigned long flags:
+    :param flags:
         VM_NORESERVE suppresses pre-accounting of the entire object size
+    :type flags: unsigned long
 
 .. _`shmem_file_setup_with_mnt`:
 
@@ -71,17 +78,21 @@ shmem_file_setup_with_mnt
 
     get an unlinked file living in tmpfs
 
-    :param struct vfsmount \*mnt:
+    :param mnt:
         the tmpfs mount where the file will be created
+    :type mnt: struct vfsmount \*
 
-    :param const char \*name:
+    :param name:
         name for dentry (to be seen in /proc/<pid>/maps
+    :type name: const char \*
 
-    :param loff_t size:
+    :param size:
         size to be set for the file
+    :type size: loff_t
 
-    :param unsigned long flags:
+    :param flags:
         VM_NORESERVE suppresses pre-accounting of the entire object size
+    :type flags: unsigned long
 
 .. _`shmem_zero_setup`:
 
@@ -92,8 +103,9 @@ shmem_zero_setup
 
     setup a shared anonymous mapping
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the vma to be mmapped is prepared by do_mmap_pgoff
+    :type vma: struct vm_area_struct \*
 
 .. _`shmem_read_mapping_page_gfp`:
 
@@ -104,14 +116,17 @@ shmem_read_mapping_page_gfp
 
     read into page cache, using specified page allocation flags.
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the page's address_space
+    :type mapping: struct address_space \*
 
-    :param pgoff_t index:
+    :param index:
         the page index
+    :type index: pgoff_t
 
-    :param gfp_t gfp:
+    :param gfp:
         the page allocator flags to use if allocating
+    :type gfp: gfp_t
 
 .. _`shmem_read_mapping_page_gfp.description`:
 

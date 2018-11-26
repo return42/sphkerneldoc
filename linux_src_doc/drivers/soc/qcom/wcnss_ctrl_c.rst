@@ -210,20 +210,25 @@ wcnss_ctrl_smd_callback
 
     handler from SMD responses
 
-    :param struct rpmsg_device \*rpdev:
+    :param rpdev:
         *undescribed*
+    :type rpdev: struct rpmsg_device \*
 
-    :param void \*data:
+    :param data:
         pointer to the incoming data packet
+    :type data: void \*
 
-    :param int count:
+    :param count:
         size of the incoming data packet
+    :type count: int
 
-    :param void \*priv:
+    :param priv:
         *undescribed*
+    :type priv: void \*
 
-    :param u32 addr:
+    :param addr:
         *undescribed*
+    :type addr: u32
 
 .. _`wcnss_ctrl_smd_callback.description`:
 
@@ -241,8 +246,9 @@ wcnss_request_version
 
     send a version request to WCNSS
 
-    :param struct wcnss_ctrl \*wcnss:
+    :param wcnss:
         wcnss ctrl driver context
+    :type wcnss: struct wcnss_ctrl \*
 
 .. _`wcnss_download_nv`:
 
@@ -253,11 +259,13 @@ wcnss_download_nv
 
     send nv binary to WCNSS
 
-    :param struct wcnss_ctrl \*wcnss:
+    :param wcnss:
         wcnss_ctrl state handle
+    :type wcnss: struct wcnss_ctrl \*
 
-    :param bool \*expect_cbc:
+    :param expect_cbc:
         indicator to caller that an cbc event is expected
+    :type expect_cbc: bool \*
 
 .. _`wcnss_download_nv.description`:
 
@@ -275,17 +283,21 @@ qcom_wcnss_open_channel
 
     open additional SMD channel to WCNSS
 
-    :param void \*wcnss:
+    :param wcnss:
         wcnss handle, retrieved from drvdata
+    :type wcnss: void \*
 
-    :param const char \*name:
+    :param name:
         SMD channel name
+    :type name: const char \*
 
-    :param rpmsg_rx_cb_t cb:
+    :param cb:
         callback to handle incoming data on the channel
+    :type cb: rpmsg_rx_cb_t
 
-    :param void \*priv:
+    :param priv:
         *undescribed*
+    :type priv: void \*
 
 .. This file was automatic generated / don't edit.
 

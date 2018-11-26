@@ -10,11 +10,13 @@ user_regset_active_fn
 
     type of \ ``active``\  function in \ :c:type:`struct user_regset <user_regset>`\ 
 
-    :param struct task_struct \*target:
+    :param target:
         thread being examined
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         regset being examined
+    :type regset: const struct user_regset \*
 
 .. _`user_regset_active_fn.description`:
 
@@ -40,23 +42,29 @@ user_regset_get_fn
 
     type of \ ``get``\  function in \ :c:type:`struct user_regset <user_regset>`\ 
 
-    :param struct task_struct \*target:
+    :param target:
         thread being examined
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         regset being examined
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         offset into the regset data to access, in bytes
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         amount of data to copy, in bytes
+    :type count: unsigned int
 
-    :param void \*kbuf:
+    :param kbuf:
         if not \ ``NULL``\ , a kernel-space pointer to copy into
+    :type kbuf: void \*
 
-    :param void __user \*ubuf:
+    :param ubuf:
         if \ ``kbuf``\  is \ ``NULL``\ , a user-space pointer to copy into
+    :type ubuf: void __user \*
 
 .. _`user_regset_get_fn.description`:
 
@@ -79,23 +87,29 @@ user_regset_set_fn
 
     type of \ ``set``\  function in \ :c:type:`struct user_regset <user_regset>`\ 
 
-    :param struct task_struct \*target:
+    :param target:
         thread being examined
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         regset being examined
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         offset into the regset data to access, in bytes
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         amount of data to copy, in bytes
+    :type count: unsigned int
 
-    :param const void \*kbuf:
+    :param kbuf:
         if not \ ``NULL``\ , a kernel-space pointer to copy from
+    :type kbuf: const void \*
 
-    :param const void __user \*ubuf:
+    :param ubuf:
         if \ ``kbuf``\  is \ ``NULL``\ , a user-space pointer to copy from
+    :type ubuf: const void __user \*
 
 .. _`user_regset_set_fn.description`:
 
@@ -118,14 +132,17 @@ user_regset_writeback_fn
 
     type of \ ``writeback``\  function in \ :c:type:`struct user_regset <user_regset>`\ 
 
-    :param struct task_struct \*target:
+    :param target:
         thread being examined
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         regset being examined
+    :type regset: const struct user_regset \*
 
-    :param int immediate:
+    :param immediate:
         zero if writeback at completion of next context switch is OK
+    :type immediate: int
 
 .. _`user_regset_writeback_fn.description`:
 
@@ -333,8 +350,9 @@ task_user_regset_view
 
     Return the process's native regset view.
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         a thread of the process in question
+    :type tsk: struct task_struct \*
 
 .. _`task_user_regset_view.description`:
 
@@ -354,23 +372,29 @@ copy_regset_to_user
 
     fetch a thread's user_regset data into user memory
 
-    :param struct task_struct \*target:
+    :param target:
         thread to be examined
+    :type target: struct task_struct \*
 
-    :param const struct user_regset_view \*view:
+    :param view:
         \ :c:type:`struct user_regset_view <user_regset_view>`\  describing user thread machine state
+    :type view: const struct user_regset_view \*
 
-    :param unsigned int setno:
-        index in \ ``view``\ ->regsets
+    :param setno:
+        index in \ ``view->regsets``\ 
+    :type setno: unsigned int
 
-    :param unsigned int offset:
+    :param offset:
         offset into the regset data, in bytes
+    :type offset: unsigned int
 
-    :param unsigned int size:
+    :param size:
         amount of data to copy, in bytes
+    :type size: unsigned int
 
-    :param void __user \*data:
+    :param data:
         user-mode pointer to copy into
+    :type data: void __user \*
 
 .. _`copy_regset_from_user`:
 
@@ -381,23 +405,29 @@ copy_regset_from_user
 
     store into thread's user_regset data from user memory
 
-    :param struct task_struct \*target:
+    :param target:
         thread to be examined
+    :type target: struct task_struct \*
 
-    :param const struct user_regset_view \*view:
+    :param view:
         \ :c:type:`struct user_regset_view <user_regset_view>`\  describing user thread machine state
+    :type view: const struct user_regset_view \*
 
-    :param unsigned int setno:
-        index in \ ``view``\ ->regsets
+    :param setno:
+        index in \ ``view->regsets``\ 
+    :type setno: unsigned int
 
-    :param unsigned int offset:
+    :param offset:
         offset into the regset data, in bytes
+    :type offset: unsigned int
 
-    :param unsigned int size:
+    :param size:
         amount of data to copy, in bytes
+    :type size: unsigned int
 
-    :param const void __user \*data:
+    :param data:
         user-mode pointer to copy from
+    :type data: const void __user \*
 
 .. _`regset_size`:
 
@@ -408,11 +438,13 @@ regset_size
 
     determine the current size of a regset
 
-    :param struct task_struct \*target:
+    :param target:
         thread to be examined
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         regset to be examined
+    :type regset: const struct user_regset \*
 
 .. _`regset_size.description`:
 

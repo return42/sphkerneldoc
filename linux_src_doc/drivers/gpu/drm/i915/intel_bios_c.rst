@@ -33,11 +33,13 @@ intel_bios_is_valid_vbt
 
     does the given buffer contain a valid VBT
 
-    :param const void \*buf:
+    :param buf:
         pointer to a buffer to validate
+    :type buf: const void \*
 
-    :param size_t size:
+    :param size:
         size of the buffer
+    :type size: size_t
 
 .. _`intel_bios_is_valid_vbt.description`:
 
@@ -55,8 +57,9 @@ intel_bios_init
 
     find VBT and initialize settings from the BIOS
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_bios_init.description`:
 
@@ -76,8 +79,9 @@ intel_bios_cleanup
 
     Free any resources allocated by \ :c:func:`intel_bios_init`\ 
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_bios_is_tv_present`:
 
@@ -88,8 +92,9 @@ intel_bios_is_tv_present
 
     is integrated TV present in VBT
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_bios_is_tv_present.description`:
 
@@ -108,11 +113,13 @@ intel_bios_is_lvds_present
 
     is LVDS present in VBT
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param u8 \*i2c_pin:
+    :param i2c_pin:
         i2c pin for LVDS if present
+    :type i2c_pin: u8 \*
 
 .. _`intel_bios_is_lvds_present.description`:
 
@@ -131,11 +138,13 @@ intel_bios_is_port_present
 
     is the specified digital port present
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum port port:
+    :param port:
         port to check
+    :type port: enum port
 
 .. _`intel_bios_is_port_present.description`:
 
@@ -153,11 +162,13 @@ intel_bios_is_port_edp
 
     is the device in given port eDP
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum port port:
+    :param port:
         port to check
+    :type port: enum port
 
 .. _`intel_bios_is_port_edp.description`:
 
@@ -175,11 +186,13 @@ intel_bios_is_dsi_present
 
     is DSI present in VBT
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum port \*port:
+    :param port:
         port for DSI if present
+    :type port: enum port \*
 
 .. _`intel_bios_is_dsi_present.description`:
 
@@ -197,11 +210,13 @@ intel_bios_is_port_hpd_inverted
 
     is HPD inverted for \ ``port``\ 
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum port port:
+    :param port:
         port to check
+    :type port: enum port
 
 .. _`intel_bios_is_port_hpd_inverted.description`:
 
@@ -219,11 +234,13 @@ intel_bios_is_lspcon_present
 
     if LSPCON is attached on \ ``port``\ 
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum port port:
+    :param port:
         port to check
+    :type port: enum port
 
 .. _`intel_bios_is_lspcon_present.description`:
 

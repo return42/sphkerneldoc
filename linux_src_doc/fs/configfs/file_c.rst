@@ -10,18 +10,20 @@ fill_read_buffer
 
     allocate and fill buffer from item.
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry pointer.
+    :type dentry: struct dentry \*
 
-    :param struct configfs_buffer \*buffer:
+    :param buffer:
         data buffer for file.
+    :type buffer: struct configfs_buffer \*
 
 .. _`fill_read_buffer.description`:
 
 Description
 -----------
 
-Allocate \ ``buffer``\ ->page, if it hasn't been already, then call the
+Allocate \ ``buffer->page``\ , if it hasn't been already, then call the
 config_item's \ :c:func:`show`\  method to fill the buffer with this attribute's
 data.
 This is called only once, on the file's first read.
@@ -35,17 +37,21 @@ configfs_read_file
 
     read an attribute.
 
-    :param struct file \*file:
+    :param file:
         file pointer.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         buffer to fill.
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to read.
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         starting offset in file.
+    :type ppos: loff_t \*
 
 .. _`configfs_read_file.description`:
 
@@ -72,17 +78,21 @@ configfs_read_bin_file
 
     read a binary attribute.
 
-    :param struct file \*file:
+    :param file:
         file pointer.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         buffer to fill.
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to read.
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         starting offset in file.
+    :type ppos: loff_t \*
 
 .. _`configfs_read_bin_file.description`:
 
@@ -110,21 +120,24 @@ fill_write_buffer
 
     copy buffer from userspace.
 
-    :param struct configfs_buffer \*buffer:
+    :param buffer:
         data buffer for file.
+    :type buffer: struct configfs_buffer \*
 
-    :param const char __user \*buf:
+    :param buf:
         data from user.
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes in \ ``userbuf``\ .
+    :type count: size_t
 
 .. _`fill_write_buffer.description`:
 
 Description
 -----------
 
-Allocate \ ``buffer``\ ->page if it hasn't been already, then
+Allocate \ ``buffer->page``\  if it hasn't been already, then
 copy the user-supplied buffer into it.
 
 .. _`flush_write_buffer`:
@@ -136,14 +149,17 @@ flush_write_buffer
 
     push buffer to config_item.
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to the attribute
+    :type dentry: struct dentry \*
 
-    :param struct configfs_buffer \*buffer:
+    :param buffer:
         data buffer for file.
+    :type buffer: struct configfs_buffer \*
 
-    :param size_t count:
+    :param count:
         number of bytes
+    :type count: size_t
 
 .. _`flush_write_buffer.description`:
 
@@ -163,17 +179,21 @@ configfs_write_file
 
     write an attribute.
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         data to write
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         starting offset
+    :type ppos: loff_t \*
 
 .. _`configfs_write_file.description`:
 
@@ -204,17 +224,21 @@ configfs_write_bin_file
 
     write a binary attribute.
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         data to write
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         starting offset
+    :type ppos: loff_t \*
 
 .. _`configfs_write_bin_file.description`:
 
@@ -235,11 +259,13 @@ configfs_create_file
 
     create an attribute file for an item.
 
-    :param struct config_item \*item:
+    :param item:
         item we're creating for.
+    :type item: struct config_item \*
 
-    :param const struct configfs_attribute \*attr:
+    :param attr:
         atrribute descriptor.
+    :type attr: const struct configfs_attribute \*
 
 .. _`configfs_create_bin_file`:
 
@@ -250,11 +276,13 @@ configfs_create_bin_file
 
     create a binary attribute file for an item.
 
-    :param struct config_item \*item:
+    :param item:
         item we're creating for.
+    :type item: struct config_item \*
 
-    :param const struct configfs_bin_attribute \*bin_attr:
+    :param bin_attr:
         *undescribed*
+    :type bin_attr: const struct configfs_bin_attribute \*
 
 .. This file was automatic generated / don't edit.
 

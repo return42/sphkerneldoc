@@ -10,8 +10,9 @@ stub_complete
 
     completion handler of a usbip urb
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to the urb completed
+    :type urb: struct urb \*
 
 .. _`stub_complete.description`:
 

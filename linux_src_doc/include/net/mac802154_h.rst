@@ -222,8 +222,9 @@ ieee802154_get_fc_from_skb
 
     get the frame control field from an skb
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skb where the frame control field will be get from
+    :type skb: const struct sk_buff \*
 
 .. _`ieee802154_skb_dst_pan`:
 
@@ -234,11 +235,13 @@ ieee802154_skb_dst_pan
 
     get the pointer to destination pan field
 
-    :param __le16 fc:
+    :param fc:
         mac header frame control field
+    :type fc: __le16
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skb where the destination pan pointer will be get from
+    :type skb: const struct sk_buff \*
 
 .. _`ieee802154_skb_src_pan`:
 
@@ -249,11 +252,13 @@ ieee802154_skb_src_pan
 
     get the pointer to source pan field
 
-    :param __le16 fc:
+    :param fc:
         mac header frame control field
+    :type fc: __le16
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skb where the source pan pointer will be get from
+    :type skb: const struct sk_buff \*
 
 .. _`ieee802154_skb_is_intra_pan_addressing`:
 
@@ -264,11 +269,13 @@ ieee802154_skb_is_intra_pan_addressing
 
     checks whenever the mac addressing is an intra pan communication
 
-    :param __le16 fc:
+    :param fc:
         mac header frame control field
+    :type fc: __le16
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skb where the source and destination pan should be get from
+    :type skb: const struct sk_buff \*
 
 .. _`ieee802154_be64_to_le64`:
 
@@ -279,11 +286,13 @@ ieee802154_be64_to_le64
 
     copies and convert be64 to le64
 
-    :param void \*le64_dst:
+    :param le64_dst:
         le64 destination pointer
+    :type le64_dst: void \*
 
-    :param const void \*be64_src:
+    :param be64_src:
         be64 source pointer
+    :type be64_src: const void \*
 
 .. _`ieee802154_le64_to_be64`:
 
@@ -294,11 +303,13 @@ ieee802154_le64_to_be64
 
     copies and convert le64 to be64
 
-    :param void \*be64_dst:
+    :param be64_dst:
         be64 destination pointer
+    :type be64_dst: void \*
 
-    :param const void \*le64_src:
+    :param le64_src:
         le64 source pointer
+    :type le64_src: const void \*
 
 .. _`ieee802154_le16_to_be16`:
 
@@ -309,11 +320,13 @@ ieee802154_le16_to_be16
 
     copies and convert le16 to be16
 
-    :param void \*be16_dst:
+    :param be16_dst:
         be16 destination pointer
+    :type be16_dst: void \*
 
-    :param const void \*le16_src:
+    :param le16_src:
         le16 source pointer
+    :type le16_src: const void \*
 
 .. _`ieee802154_be16_to_le16`:
 
@@ -324,11 +337,13 @@ ieee802154_be16_to_le16
 
     copies and convert be16 to le16
 
-    :param void \*le16_dst:
+    :param le16_dst:
         le16 destination pointer
+    :type le16_dst: void \*
 
-    :param const void \*be16_src:
+    :param be16_src:
         be16 source pointer
+    :type be16_src: const void \*
 
 .. _`ieee802154_alloc_hw`:
 
@@ -339,11 +354,13 @@ ieee802154_alloc_hw
 
     Allocate a new hardware device
 
-    :param size_t priv_data_len:
+    :param priv_data_len:
         length of private data
+    :type priv_data_len: size_t
 
-    :param const struct ieee802154_ops \*ops:
+    :param ops:
         callbacks for this device
+    :type ops: const struct ieee802154_ops \*
 
 .. _`ieee802154_alloc_hw.description`:
 
@@ -372,8 +389,9 @@ ieee802154_free_hw
 
     free hardware descriptor
 
-    :param struct ieee802154_hw \*hw:
+    :param hw:
         the hardware to free
+    :type hw: struct ieee802154_hw \*
 
 .. _`ieee802154_free_hw.description`:
 
@@ -393,8 +411,9 @@ ieee802154_register_hw
 
     Register hardware device
 
-    :param struct ieee802154_hw \*hw:
+    :param hw:
         the device to register as returned by \ :c:func:`ieee802154_alloc_hw`\ 
+    :type hw: struct ieee802154_hw \*
 
 .. _`ieee802154_register_hw.description`:
 
@@ -421,8 +440,9 @@ ieee802154_unregister_hw
 
     Unregister a hardware device
 
-    :param struct ieee802154_hw \*hw:
+    :param hw:
         the hardware to unregister
+    :type hw: struct ieee802154_hw \*
 
 .. _`ieee802154_unregister_hw.description`:
 
@@ -441,14 +461,17 @@ ieee802154_rx_irqsafe
 
     receive frame
 
-    :param struct ieee802154_hw \*hw:
+    :param hw:
         the hardware this frame came in on
+    :type hw: struct ieee802154_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer to receive, owned by mac802154 after this call
+    :type skb: struct sk_buff \*
 
-    :param u8 lqi:
+    :param lqi:
         link quality indicator
+    :type lqi: u8
 
 .. _`ieee802154_rx_irqsafe.description`:
 
@@ -467,8 +490,9 @@ ieee802154_wake_queue
 
     wake ieee802154 queue
 
-    :param struct ieee802154_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee802154_alloc_hw`\ .
+    :type hw: struct ieee802154_hw \*
 
 .. _`ieee802154_wake_queue.description`:
 
@@ -486,8 +510,9 @@ ieee802154_stop_queue
 
     stop ieee802154 queue
 
-    :param struct ieee802154_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee802154_alloc_hw`\ .
+    :type hw: struct ieee802154_hw \*
 
 .. _`ieee802154_stop_queue.description`:
 
@@ -505,14 +530,17 @@ ieee802154_xmit_complete
 
     frame transmission complete
 
-    :param struct ieee802154_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee802154_alloc_hw`\ .
+    :type hw: struct ieee802154_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer for transmission
+    :type skb: struct sk_buff \*
 
-    :param bool ifs_handling:
+    :param ifs_handling:
         indicate interframe space handling
+    :type ifs_handling: bool
 
 .. This file was automatic generated / don't edit.
 

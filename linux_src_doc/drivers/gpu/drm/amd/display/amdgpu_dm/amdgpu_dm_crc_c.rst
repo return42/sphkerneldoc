@@ -10,8 +10,9 @@ amdgpu_dm_crtc_handle_crc_irq
 
     Report to DRM the CRC on given CRTC.
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM CRTC object.
+    :type crtc: struct drm_crtc \*
 
 .. _`amdgpu_dm_crtc_handle_crc_irq.description`:
 

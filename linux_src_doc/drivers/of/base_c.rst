@@ -10,9 +10,10 @@ of_find_all_nodes
 
     Get next node in global list
 
-    :param struct device_node \*prev:
+    :param prev:
         Previous node or NULL to start iteration
         \ :c:func:`of_node_put`\  will be called on it
+    :type prev: struct device_node \*
 
 .. _`of_find_all_nodes.description`:
 
@@ -31,17 +32,21 @@ Returns a node pointer with refcount incremented, use
 
     core/thread corresponding to the logical cpu 'cpu'. If 'thread' is not NULL, local thread number within the core is returned in it.
 
-    :param struct device_node \*cpun:
+    :param cpun:
         *undescribed*
+    :type cpun: struct device_node \*
 
-    :param const char \*prop_name:
+    :param prop_name:
         *undescribed*
+    :type prop_name: const char \*
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
-    :param unsigned int \*thread:
+    :param thread:
         *undescribed*
+    :type thread: unsigned int \*
 
 .. _`of_get_cpu_node`:
 
@@ -52,12 +57,14 @@ of_get_cpu_node
 
     Get device node associated with the given logical CPU
 
-    :param int cpu:
+    :param cpu:
         CPU number(logical index) for which device node is required
+    :type cpu: int
 
-    :param unsigned int \*thread:
+    :param thread:
         if not NULL, local thread number within the physical core is
         returned
+    :type thread: unsigned int \*
 
 .. _`of_get_cpu_node.description`:
 
@@ -85,8 +92,9 @@ of_cpu_node_to_id
 
     Get the logical CPU number for a given device_node
 
-    :param struct device_node \*cpu_node:
+    :param cpu_node:
         Pointer to the device_node for CPU.
+    :type cpu_node: struct device_node \*
 
 .. _`of_cpu_node_to_id.description`:
 
@@ -105,17 +113,21 @@ Returns -ENODEV if the CPU is not found.
 
     Check if the node matches given constraints
 
-    :param const struct device_node \*device:
+    :param device:
         pointer to node
+    :type device: const struct device_node \*
 
-    :param const char \*compat:
+    :param compat:
         required compatible string, NULL or "" for any match
+    :type compat: const char \*
 
-    :param const char \*type:
+    :param type:
         required device_type value, NULL or "" for any match
+    :type type: const char \*
 
-    :param const char \*name:
+    :param name:
         required node name, NULL or "" for any match
+    :type name: const char \*
 
 .. _`__of_device_is_compatible.description`:
 
@@ -159,8 +171,9 @@ of_machine_is_compatible
 
     Test root of device tree for a given compatible value
 
-    :param const char \*compat:
+    :param compat:
         compatible string to look for in root node's compatible property.
+    :type compat: const char \*
 
 .. _`of_machine_is_compatible.description`:
 
@@ -179,8 +192,9 @@ compatible property.
 
     check if a device is available for use
 
-    :param const struct device_node \*device:
+    :param device:
         Node to check for availability, with locks already held
+    :type device: const struct device_node \*
 
 .. _`__of_device_is_available.description`:
 
@@ -199,8 +213,9 @@ of_device_is_available
 
     check if a device is available for use
 
-    :param const struct device_node \*device:
+    :param device:
         Node to check for availability
+    :type device: const struct device_node \*
 
 .. _`of_device_is_available.description`:
 
@@ -219,8 +234,9 @@ of_device_is_big_endian
 
     check if a device has BE registers
 
-    :param const struct device_node \*device:
+    :param device:
         Node to check for endianness
+    :type device: const struct device_node \*
 
 .. _`of_device_is_big_endian.description`:
 
@@ -243,8 +259,9 @@ of_get_parent
 
     Get a node's parent if any
 
-    :param const struct device_node \*node:
+    :param node:
         Node to get parent
+    :type node: const struct device_node \*
 
 .. _`of_get_parent.description`:
 
@@ -263,8 +280,9 @@ of_get_next_parent
 
     Iterate to a node's parent
 
-    :param struct device_node \*node:
+    :param node:
         Node to get parent of
+    :type node: struct device_node \*
 
 .. _`of_get_next_parent.description`:
 
@@ -287,11 +305,13 @@ of_get_next_child
 
     Iterate a node childs
 
-    :param const struct device_node \*node:
+    :param node:
         parent node
+    :type node: const struct device_node \*
 
-    :param struct device_node \*prev:
+    :param prev:
         previous child of the parent node, or NULL to get first
+    :type prev: struct device_node \*
 
 .. _`of_get_next_child.description`:
 
@@ -311,11 +331,13 @@ of_get_next_available_child
 
     Find the next available child node
 
-    :param const struct device_node \*node:
+    :param node:
         parent node
+    :type node: const struct device_node \*
 
-    :param struct device_node \*prev:
+    :param prev:
         previous child of the parent node, or NULL to get first
+    :type prev: struct device_node \*
 
 .. _`of_get_next_available_child.description`:
 
@@ -324,6 +346,56 @@ Description
 
 This function is like \ :c:func:`of_get_next_child`\ , except that it
 automatically skips any disabled nodes (i.e. status = "disabled").
+
+.. _`of_get_next_cpu_node`:
+
+of_get_next_cpu_node
+====================
+
+.. c:function:: struct device_node *of_get_next_cpu_node(struct device_node *prev)
+
+    Iterate on cpu nodes
+
+    :param prev:
+        previous child of the /cpus node, or NULL to get first
+    :type prev: struct device_node \*
+
+.. _`of_get_next_cpu_node.description`:
+
+Description
+-----------
+
+Returns a cpu node pointer with refcount incremented, use \ :c:func:`of_node_put`\ 
+on it when done. Returns NULL when prev is the last child. Decrements
+the refcount of prev.
+
+.. _`of_get_compatible_child`:
+
+of_get_compatible_child
+=======================
+
+.. c:function:: struct device_node *of_get_compatible_child(const struct device_node *parent, const char *compatible)
+
+    Find compatible child node
+
+    :param parent:
+        parent node
+    :type parent: const struct device_node \*
+
+    :param compatible:
+        compatible string
+    :type compatible: const char \*
+
+.. _`of_get_compatible_child.description`:
+
+Description
+-----------
+
+Lookup child node whose compatible property contains the given compatible
+string.
+
+Returns a node pointer with refcount incremented, use \ :c:func:`of_node_put`\  on it
+when done; or NULL if not found.
 
 .. _`of_get_child_by_name`:
 
@@ -334,11 +406,13 @@ of_get_child_by_name
 
     Find the child node by name for a given parent
 
-    :param const struct device_node \*node:
+    :param node:
         parent node
+    :type node: const struct device_node \*
 
-    :param const char \*name:
+    :param name:
         child name to look for.
+    :type name: const char \*
 
 .. _`of_get_child_by_name.description`:
 
@@ -360,16 +434,18 @@ of_find_node_opts_by_path
 
     Find a node matching a full OF path
 
-    :param const char \*path:
+    :param path:
         Either the full path to match, or if the path does not
         start with '/', the name of a property of the /aliases
         node (an alias).  In the case of an alias, the node
         matching the alias' value will be returned.
+    :type path: const char \*
 
-    :param const char \*\*opts:
+    :param opts:
         Address of a pointer into which to store the start of
         an options string appended to the end of the path with
         a ':' separator.
+    :type opts: const char \*\*
 
 .. _`of_find_node_opts_by_path.valid-paths`:
 
@@ -392,14 +468,16 @@ of_find_node_by_name
 
     Find a node by its "name" property
 
-    :param struct device_node \*from:
+    :param from:
         The node to start searching from or NULL; the node
         you pass will not be searched, only the next one
         will. Typically, you pass what the previous call
         returned. \ :c:func:`of_node_put`\  will be called on \ ``from``\ .
+    :type from: struct device_node \*
 
-    :param const char \*name:
+    :param name:
         The name string to match against
+    :type name: const char \*
 
 .. _`of_find_node_by_name.description`:
 
@@ -418,15 +496,17 @@ of_find_node_by_type
 
     Find a node by its "device_type" property
 
-    :param struct device_node \*from:
+    :param from:
         The node to start searching from, or NULL to start searching
         the entire device tree. The node you pass will not be
         searched, only the next one will; typically, you pass
         what the previous call returned. \ :c:func:`of_node_put`\  will be
         called on from for you.
+    :type from: struct device_node \*
 
-    :param const char \*type:
+    :param type:
         The type string to match against
+    :type type: const char \*
 
 .. _`of_find_node_by_type.description`:
 
@@ -445,18 +525,21 @@ of_find_compatible_node
 
     Find a node based on type and one of the tokens in its "compatible" property
 
-    :param struct device_node \*from:
+    :param from:
         The node to start searching from or NULL, the node
         you pass will not be searched, only the next one
         will; typically, you pass what the previous call
         returned. \ :c:func:`of_node_put`\  will be called on it
+    :type from: struct device_node \*
 
-    :param const char \*type:
+    :param type:
         The type string to match "device_type" or NULL to ignore
+    :type type: const char \*
 
-    :param const char \*compatible:
+    :param compatible:
         The string to match to one of the tokens in the device
         "compatible" list.
+    :type compatible: const char \*
 
 .. _`of_find_compatible_node.description`:
 
@@ -475,14 +558,16 @@ of_find_node_with_property
 
     Find a node which has a property with the given name.
 
-    :param struct device_node \*from:
+    :param from:
         The node to start searching from or NULL, the node
         you pass will not be searched, only the next one
         will; typically, you pass what the previous call
         returned. \ :c:func:`of_node_put`\  will be called on it
+    :type from: struct device_node \*
 
-    :param const char \*prop_name:
+    :param prop_name:
         The name of the property to look for.
+    :type prop_name: const char \*
 
 .. _`of_find_node_with_property.description`:
 
@@ -501,11 +586,13 @@ of_match_node
 
     Tell if a device_node has a matching of_match structure
 
-    :param const struct of_device_id \*matches:
+    :param matches:
         array of of device match structures to search in
+    :type matches: const struct of_device_id \*
 
-    :param const struct device_node \*node:
+    :param node:
         the of device structure to match against
+    :type node: const struct device_node \*
 
 .. _`of_match_node.description`:
 
@@ -523,18 +610,21 @@ of_find_matching_node_and_match
 
     Find a node based on an of_device_id match table.
 
-    :param struct device_node \*from:
+    :param from:
         The node to start searching from or NULL, the node
         you pass will not be searched, only the next one
         will; typically, you pass what the previous call
         returned. \ :c:func:`of_node_put`\  will be called on it
+    :type from: struct device_node \*
 
-    :param const struct of_device_id \*matches:
+    :param matches:
         array of of device match structures to search in
         \ ``match``\           Updated to point at the matches entry which matched
+    :type matches: const struct of_device_id \*
 
-    :param const struct of_device_id \*\*match:
+    :param match:
         *undescribed*
+    :type match: const struct of_device_id \*\*
 
 .. _`of_find_matching_node_and_match.description`:
 
@@ -553,14 +643,17 @@ of_modalias_node
 
     Lookup appropriate modalias for a device node
 
-    :param struct device_node \*node:
+    :param node:
         pointer to a device tree node
+    :type node: struct device_node \*
 
-    :param char \*modalias:
+    :param modalias:
         Pointer to buffer that modalias value will be copied into
+    :type modalias: char \*
 
-    :param int len:
+    :param len:
         Length of modalias value
+    :type len: int
 
 .. _`of_modalias_node.description`:
 
@@ -583,8 +676,9 @@ of_find_node_by_phandle
 
     Find a node given a phandle
 
-    :param phandle handle:
+    :param handle:
         phandle of the node to find
+    :type handle: phandle
 
 .. _`of_find_node_by_phandle.description`:
 
@@ -603,15 +697,18 @@ of_parse_phandle
 
     Resolve a phandle property to a device_node pointer
 
-    :param const struct device_node \*np:
+    :param np:
         Pointer to device node holding phandle property
+    :type np: const struct device_node \*
 
-    :param const char \*phandle_name:
+    :param phandle_name:
         Name of property holding a phandle value
+    :type phandle_name: const char \*
 
-    :param int index:
+    :param index:
         For properties holding a table of phandles, this is the index into
         the table
+    :type index: int
 
 .. _`of_parse_phandle.description`:
 
@@ -630,20 +727,25 @@ of_parse_phandle_with_args
 
     Find a node pointed by phandle in a list
 
-    :param const struct device_node \*np:
+    :param np:
         pointer to a device tree node containing a list
+    :type np: const struct device_node \*
 
-    :param const char \*list_name:
+    :param list_name:
         property name that contains a list
+    :type list_name: const char \*
 
-    :param const char \*cells_name:
+    :param cells_name:
         property name that specifies phandles' arguments count
+    :type cells_name: const char \*
 
-    :param int index:
+    :param index:
         index of a phandle to parse out
+    :type index: int
 
-    :param struct of_phandle_args \*out_args:
+    :param out_args:
         optional pointer to output arguments structure (will be filled)
+    :type out_args: struct of_phandle_args \*
 
 .. _`of_parse_phandle_with_args.description`:
 
@@ -691,20 +793,25 @@ of_parse_phandle_with_args_map
 
     Find a node pointed by phandle in a list and remap it
 
-    :param const struct device_node \*np:
+    :param np:
         pointer to a device tree node containing a list
+    :type np: const struct device_node \*
 
-    :param const char \*list_name:
+    :param list_name:
         property name that contains a list
+    :type list_name: const char \*
 
-    :param const char \*stem_name:
+    :param stem_name:
         stem of property names that specify phandles' arguments count
+    :type stem_name: const char \*
 
-    :param int index:
+    :param index:
         index of a phandle to parse out
+    :type index: int
 
-    :param struct of_phandle_args \*out_args:
+    :param out_args:
         optional pointer to output arguments structure (will be filled)
+    :type out_args: struct of_phandle_args \*
 
 .. _`of_parse_phandle_with_args_map.description`:
 
@@ -767,20 +874,25 @@ of_parse_phandle_with_fixed_args
 
     Find a node pointed by phandle in a list
 
-    :param const struct device_node \*np:
+    :param np:
         pointer to a device tree node containing a list
+    :type np: const struct device_node \*
 
-    :param const char \*list_name:
+    :param list_name:
         property name that contains a list
+    :type list_name: const char \*
 
-    :param int cell_count:
+    :param cell_count:
         number of argument cells following the phandle
+    :type cell_count: int
 
-    :param int index:
+    :param index:
         index of a phandle to parse out
+    :type index: int
 
-    :param struct of_phandle_args \*out_args:
+    :param out_args:
         optional pointer to output arguments structure (will be filled)
+    :type out_args: struct of_phandle_args \*
 
 .. _`of_parse_phandle_with_fixed_args.description`:
 
@@ -826,14 +938,17 @@ of_count_phandle_with_args
 
     Find the number of phandles references in a property
 
-    :param const struct device_node \*np:
+    :param np:
         pointer to a device tree node containing a list
+    :type np: const struct device_node \*
 
-    :param const char \*list_name:
+    :param list_name:
         property name that contains a list
+    :type list_name: const char \*
 
-    :param const char \*cells_name:
+    :param cells_name:
         property name that specifies phandles' arguments count
+    :type cells_name: const char \*
 
 .. _`of_count_phandle_with_args.description`:
 
@@ -858,11 +973,13 @@ phandle.
 
     Add a property to a node without lock operations
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
-    :param struct property \*prop:
+    :param prop:
         *undescribed*
+    :type prop: struct property \*
 
 .. _`of_add_property`:
 
@@ -873,11 +990,13 @@ of_add_property
 
     Add a property to a node
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
-    :param struct property \*prop:
+    :param prop:
         *undescribed*
+    :type prop: struct property \*
 
 .. _`of_remove_property`:
 
@@ -888,11 +1007,13 @@ of_remove_property
 
     Remove a property from a node.
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
-    :param struct property \*prop:
+    :param prop:
         *undescribed*
+    :type prop: struct property \*
 
 .. _`of_remove_property.description`:
 
@@ -935,11 +1056,13 @@ of_alias_get_id
 
     Get alias id for the given device_node
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to the given device_node
+    :type np: struct device_node \*
 
-    :param const char \*stem:
+    :param stem:
         Alias stem of the given device_node
+    :type stem: const char \*
 
 .. _`of_alias_get_id.description`:
 
@@ -948,6 +1071,47 @@ Description
 
 The function travels the lookup table to get the alias id for the given
 device_node and alias stem.  It returns the alias id if found.
+
+.. _`of_alias_get_alias_list`:
+
+of_alias_get_alias_list
+=======================
+
+.. c:function:: int of_alias_get_alias_list(const struct of_device_id *matches, const char *stem, unsigned long *bitmap, unsigned int nbits)
+
+    Get alias list for the given device driver
+
+    :param matches:
+        Array of OF device match structures to search in
+    :type matches: const struct of_device_id \*
+
+    :param stem:
+        Alias stem of the given device_node
+    :type stem: const char \*
+
+    :param bitmap:
+        Bitmap field pointer
+    :type bitmap: unsigned long \*
+
+    :param nbits:
+        Maximum number of alias IDs which can be recorded in bitmap
+    :type nbits: unsigned int
+
+.. _`of_alias_get_alias_list.description`:
+
+Description
+-----------
+
+The function travels the lookup table to record alias ids for the given
+device match structures and alias stem.
+
+.. _`of_alias_get_alias_list.return`:
+
+Return
+------
+
+0 or -ENOSYS when !CONFIG_OF or
+-EOVERFLOW if alias ID is greater then allocated nbits
 
 .. _`of_alias_get_highest_id`:
 
@@ -958,8 +1122,9 @@ of_alias_get_highest_id
 
     Get highest alias id for the given stem
 
-    :param const char \*stem:
+    :param stem:
         Alias stem to be examined
+    :type stem: const char \*
 
 .. _`of_alias_get_highest_id.description`:
 
@@ -978,14 +1143,17 @@ of_console_check
 
     Test and setup console for DT setup \ ``dn``\  - Pointer to device node \ ``name``\  - Name to use for preferred console without index. ex. "ttyS" \ ``index``\  - Index to use for preferred console.
 
-    :param struct device_node \*dn:
+    :param dn:
         *undescribed*
+    :type dn: struct device_node \*
 
-    :param char \*name:
+    :param name:
         *undescribed*
+    :type name: char \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. _`of_console_check.description`:
 
@@ -1005,8 +1173,9 @@ of_find_next_cache_node
 
     Find a node's subsidiary cache
 
-    :param const struct device_node \*np:
+    :param np:
         node of type "cpu" or "cache"
+    :type np: const struct device_node \*
 
 .. _`of_find_next_cache_node.description`:
 
@@ -1026,8 +1195,9 @@ of_find_last_cache_level
 
     Find the level at which the last cache is present for the given logical cpu
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu number(logical index) for which the last cache level is needed
+    :type cpu: unsigned int
 
 .. _`of_find_last_cache_level.description`:
 
@@ -1036,6 +1206,59 @@ Description
 
 Returns the the level at which the last cache is present. It is exactly
 same as  the total number of cache levels for the given logical cpu.
+
+.. _`of_map_rid`:
+
+of_map_rid
+==========
+
+.. c:function:: int of_map_rid(struct device_node *np, u32 rid, const char *map_name, const char *map_mask_name, struct device_node **target, u32 *id_out)
+
+    Translate a requester ID through a downstream mapping.
+
+    :param np:
+        root complex device node.
+    :type np: struct device_node \*
+
+    :param rid:
+        device requester ID to map.
+    :type rid: u32
+
+    :param map_name:
+        property name of the map to use.
+    :type map_name: const char \*
+
+    :param map_mask_name:
+        optional property name of the mask to use.
+    :type map_mask_name: const char \*
+
+    :param target:
+        optional pointer to a target device node.
+    :type target: struct device_node \*\*
+
+    :param id_out:
+        optional pointer to receive the translated ID.
+    :type id_out: u32 \*
+
+.. _`of_map_rid.description`:
+
+Description
+-----------
+
+Given a device requester ID, look up the appropriate implementation-defined
+platform ID and/or the target device which receives transactions on that
+ID, as per the "iommu-map" and "msi-map" bindings. Either of \ ``target``\  or
+\ ``id_out``\  may be NULL if only the other is required. If \ ``target``\  points to
+a non-NULL device node pointer, only entries targeting that node will be
+matched; if it points to a NULL value, it will receive the device node of
+the first matching target phandle, with a reference held.
+
+.. _`of_map_rid.return`:
+
+Return
+------
+
+0 on success or a standard error code on failure.
 
 .. This file was automatic generated / don't edit.
 

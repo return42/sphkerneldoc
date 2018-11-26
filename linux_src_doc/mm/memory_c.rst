@@ -1,37 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/memory.c
 
-.. _`tlb_gather_mmu`:
-
-tlb_gather_mmu
-==============
-
-.. c:function:: void tlb_gather_mmu(struct mmu_gather *tlb, struct mm_struct *mm, unsigned long start, unsigned long end)
-
-    initialize an mmu_gather structure for page-table tear-down
-
-    :param struct mmu_gather \*tlb:
-        the mmu_gather structure to initialize
-
-    :param struct mm_struct \*mm:
-        the mm_struct of the target address space
-
-    :param unsigned long start:
-        start of the region that will be removed from the page-table
-
-    :param unsigned long end:
-        end of the region that will be removed from the page-table
-
-.. _`tlb_gather_mmu.description`:
-
-Description
------------
-
-Called to initialize an (on-stack) mmu_gather structure for page-table
-tear-down from \ ``mm``\ . The \ ``start``\  and \ ``end``\  are set to 0 and -1
-respectively when \ ``mm``\  is without users and we're going to destroy
-the full address space (exit/execve).
-
 .. _`unmap_vmas`:
 
 unmap_vmas
@@ -41,17 +10,21 @@ unmap_vmas
 
     unmap a range of memory covered by a list of vma's
 
-    :param struct mmu_gather \*tlb:
+    :param tlb:
         address of the caller's struct mmu_gather
+    :type tlb: struct mmu_gather \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the starting vma
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long start_addr:
+    :param start_addr:
         virtual address at which to start unmapping
+    :type start_addr: unsigned long
 
-    :param unsigned long end_addr:
+    :param end_addr:
         virtual address at which to end unmapping
+    :type end_addr: unsigned long
 
 .. _`unmap_vmas.description`:
 
@@ -78,14 +51,17 @@ zap_page_range
 
     remove user pages in a given range
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vm_area_struct holding the applicable pages
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long start:
+    :param start:
         starting address of pages to zap
+    :type start: unsigned long
 
-    :param unsigned long size:
+    :param size:
         number of bytes to zap
+    :type size: unsigned long
 
 .. _`zap_page_range.description`:
 
@@ -103,17 +79,21 @@ zap_page_range_single
 
     remove user pages in a given range
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vm_area_struct holding the applicable pages
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long address:
+    :param address:
         starting address of pages to zap
+    :type address: unsigned long
 
-    :param unsigned long size:
+    :param size:
         number of bytes to zap
+    :type size: unsigned long
 
-    :param struct zap_details \*details:
+    :param details:
         details of shared cache invalidation
+    :type details: struct zap_details \*
 
 .. _`zap_page_range_single.description`:
 
@@ -131,14 +111,17 @@ zap_vma_ptes
 
     remove ptes mapping the vma
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vm_area_struct holding ptes to be zapped
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long address:
+    :param address:
         starting address of pages to zap
+    :type address: unsigned long
 
-    :param unsigned long size:
+    :param size:
         number of bytes to zap
+    :type size: unsigned long
 
 .. _`zap_vma_ptes.description`:
 
@@ -158,14 +141,17 @@ vm_insert_page
 
     insert single page into user vma
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         user vma to map to
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         target user address of this page
+    :type addr: unsigned long
 
-    :param struct page \*page:
+    :param page:
         source kernel page
+    :type page: struct page \*
 
 .. _`vm_insert_page.description`:
 
@@ -193,25 +179,80 @@ under mm->mmap_sem write-lock, so it can change vma->vm_flags.
 Caller must set VM_MIXEDMAP on vma if it wants to call this
 function from other places, for example from page-fault handler.
 
-.. _`vm_insert_pfn`:
+.. _`vmf_insert_pfn_prot`:
 
-vm_insert_pfn
-=============
+vmf_insert_pfn_prot
+===================
 
-.. c:function:: int vm_insert_pfn(struct vm_area_struct *vma, unsigned long addr, unsigned long pfn)
+.. c:function:: vm_fault_t vmf_insert_pfn_prot(struct vm_area_struct *vma, unsigned long addr, unsigned long pfn, pgprot_t pgprot)
+
+    insert single pfn into user vma with specified pgprot
+
+    :param vma:
+        user vma to map to
+    :type vma: struct vm_area_struct \*
+
+    :param addr:
+        target user address of this page
+    :type addr: unsigned long
+
+    :param pfn:
+        source kernel pfn
+    :type pfn: unsigned long
+
+    :param pgprot:
+        pgprot flags for the inserted page
+    :type pgprot: pgprot_t
+
+.. _`vmf_insert_pfn_prot.description`:
+
+Description
+-----------
+
+This is exactly like \ :c:func:`vmf_insert_pfn`\ , except that it allows drivers to
+to override pgprot on a per-page basis.
+
+This only makes sense for IO mappings, and it makes no sense for
+COW mappings.  In general, using multiple vmas is preferable;
+vmf_insert_pfn_prot should only be used if using multiple VMAs is
+impractical.
+
+.. _`vmf_insert_pfn_prot.context`:
+
+Context
+-------
+
+Process context.  May allocate using \ ``GFP_KERNEL``\ .
+
+.. _`vmf_insert_pfn_prot.return`:
+
+Return
+------
+
+vm_fault_t value.
+
+.. _`vmf_insert_pfn`:
+
+vmf_insert_pfn
+==============
+
+.. c:function:: vm_fault_t vmf_insert_pfn(struct vm_area_struct *vma, unsigned long addr, unsigned long pfn)
 
     insert single pfn into user vma
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         user vma to map to
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         target user address of this page
+    :type addr: unsigned long
 
-    :param unsigned long pfn:
+    :param pfn:
         source kernel pfn
+    :type pfn: unsigned long
 
-.. _`vm_insert_pfn.description`:
+.. _`vmf_insert_pfn.description`:
 
 Description
 -----------
@@ -220,46 +261,26 @@ Similar to vm_insert_page, this allows drivers to insert individual pages
 they've allocated into a user vma. Same comments apply.
 
 This function should only be called from a vm_ops->fault handler, and
-in that case the handler should return NULL.
+in that case the handler should return the result of this function.
 
 vma cannot be a COW mapping.
 
 As this is called only for pages that do not currently exist, we
 do not need to flush old virtual caches or the TLB.
 
-.. _`vm_insert_pfn_prot`:
+.. _`vmf_insert_pfn.context`:
 
-vm_insert_pfn_prot
-==================
+Context
+-------
 
-.. c:function:: int vm_insert_pfn_prot(struct vm_area_struct *vma, unsigned long addr, unsigned long pfn, pgprot_t pgprot)
+Process context.  May allocate using \ ``GFP_KERNEL``\ .
 
-    insert single pfn into user vma with specified pgprot
+.. _`vmf_insert_pfn.return`:
 
-    :param struct vm_area_struct \*vma:
-        user vma to map to
+Return
+------
 
-    :param unsigned long addr:
-        target user address of this page
-
-    :param unsigned long pfn:
-        source kernel pfn
-
-    :param pgprot_t pgprot:
-        pgprot flags for the inserted page
-
-.. _`vm_insert_pfn_prot.description`:
-
-Description
------------
-
-This is exactly like vm_insert_pfn, except that it allows drivers to
-to override pgprot on a per-page basis.
-
-This only makes sense for IO mappings, and it makes no sense for
-cow mappings.  In general, using multiple vmas is preferable;
-vm_insert_pfn_prot should only be used if using multiple VMAs is
-impractical.
+vm_fault_t value.
 
 .. _`remap_pfn_range`:
 
@@ -270,20 +291,25 @@ remap_pfn_range
 
     remap kernel memory to userspace
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         user vma to map to
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         target user address to start at
+    :type addr: unsigned long
 
-    :param unsigned long pfn:
+    :param pfn:
         physical address of kernel memory
+    :type pfn: unsigned long
 
-    :param unsigned long size:
+    :param size:
         size of map area
+    :type size: unsigned long
 
-    :param pgprot_t prot:
+    :param prot:
         page protection flags for this mapping
+    :type prot: pgprot_t
 
 .. _`remap_pfn_range.note`:
 
@@ -301,14 +327,17 @@ vm_iomap_memory
 
     remap memory to userspace
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         user vma to map to
+    :type vma: struct vm_area_struct \*
 
-    :param phys_addr_t start:
+    :param start:
         start of area
+    :type start: phys_addr_t
 
-    :param unsigned long len:
+    :param len:
         size of area
+    :type len: unsigned long
 
 .. _`vm_iomap_memory.description`:
 
@@ -327,12 +356,13 @@ whatever write-combining details or similar.
 finish_mkwrite_fault
 ====================
 
-.. c:function:: int finish_mkwrite_fault(struct vm_fault *vmf)
+.. c:function:: vm_fault_t finish_mkwrite_fault(struct vm_fault *vmf)
 
     finish page fault for a shared mapping, making PTE writeable once the page is prepared
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         structure describing the fault
+    :type vmf: struct vm_fault \*
 
 .. _`finish_mkwrite_fault.description`:
 
@@ -357,17 +387,21 @@ unmap_mapping_pages
 
     Unmap pages from processes.
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The address space containing pages to be unmapped.
+    :type mapping: struct address_space \*
 
-    :param pgoff_t start:
+    :param start:
         Index of first page to be unmapped.
+    :type start: pgoff_t
 
-    :param pgoff_t nr:
+    :param nr:
         Number of pages to be unmapped.  0 to unmap to end of file.
+    :type nr: pgoff_t
 
-    :param bool even_cows:
+    :param even_cows:
         Whether to unmap even private COWed pages.
+    :type even_cows: bool
 
 .. _`unmap_mapping_pages.description`:
 
@@ -388,42 +422,49 @@ unmap_mapping_range
 
     unmap the portion of all mmaps in the specified address_space corresponding to the specified byte range in the underlying file.
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address space containing mmaps to be unmapped.
+    :type mapping: struct address_space \*
 
-    :param loff_t const holebegin:
+    :param holebegin:
         byte in first page to unmap, relative to the start of
         the underlying file.  This will be rounded down to a PAGE_SIZE
         boundary.  Note that this is different from \ :c:func:`truncate_pagecache`\ , which
         must keep the partial page.  In contrast, we must get rid of
         partial pages.
+    :type holebegin: loff_t const
 
-    :param loff_t const holelen:
+    :param holelen:
         size of prospective hole in bytes.  This will be rounded
         up to a PAGE_SIZE boundary.  A holelen of zero truncates to the
         end of the file.
+    :type holelen: loff_t const
 
-    :param int even_cows:
+    :param even_cows:
         1 when truncating a file, unmap even private COWed pages;
         but 0 when invalidating pagecache, don't throw away private data.
+    :type even_cows: int
 
 .. _`alloc_set_pte`:
 
 alloc_set_pte
 =============
 
-.. c:function:: int alloc_set_pte(struct vm_fault *vmf, struct mem_cgroup *memcg, struct page *page)
+.. c:function:: vm_fault_t alloc_set_pte(struct vm_fault *vmf, struct mem_cgroup *memcg, struct page *page)
 
     setup new PTE entry for given page and add reverse page mapping. If needed, the fucntion allocates page table or use pre-allocated.
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         fault environment
+    :type vmf: struct vm_fault \*
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg to charge page (only for private mappings)
+    :type memcg: struct mem_cgroup \*
 
-    :param struct page \*page:
+    :param page:
         page to map
+    :type page: struct page \*
 
 .. _`alloc_set_pte.description`:
 
@@ -441,12 +482,13 @@ vm_ops->map_pages.
 finish_fault
 ============
 
-.. c:function:: int finish_fault(struct vm_fault *vmf)
+.. c:function:: vm_fault_t finish_fault(struct vm_fault *vmf)
 
     finish page fault once we have prepared the page to fault
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         structure describing the fault
+    :type vmf: struct vm_fault \*
 
 .. _`finish_fault.description`:
 
@@ -471,14 +513,17 @@ follow_pfn
 
     look up PFN at a user virtual address
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         memory mapping
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long address:
+    :param address:
         user virtual address
+    :type address: unsigned long
 
-    :param unsigned long \*pfn:
+    :param pfn:
         location to store found PFN
+    :type pfn: unsigned long \*
 
 .. _`follow_pfn.description`:
 
@@ -498,20 +543,25 @@ access_remote_vm
 
     access another process' address space
 
-    :param struct mm_struct \*mm:
+    :param mm:
         the mm_struct of the target address space
+    :type mm: struct mm_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         start address to access
+    :type addr: unsigned long
 
-    :param void \*buf:
+    :param buf:
         source or destination buffer
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         number of bytes to transfer
+    :type len: int
 
-    :param unsigned int gup_flags:
+    :param gup_flags:
         flags modifying lookup behaviour
+    :type gup_flags: unsigned int
 
 .. _`access_remote_vm.description`:
 

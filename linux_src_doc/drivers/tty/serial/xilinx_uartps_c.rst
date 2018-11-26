@@ -21,7 +21,9 @@ Definition
         struct uart_port *port;
         struct clk *uartclk;
         struct clk *pclk;
+        struct uart_driver *cdns_uart_driver;
         unsigned int baud;
+        int id;
         struct notifier_block clk_rate_change_nb;
         u32 quirks;
     }
@@ -40,8 +42,14 @@ uartclk
 pclk
     APB clock
 
+cdns_uart_driver
+    Pointer to UART driver
+
 baud
     Current baud rate
+
+id
+    Port ID
 
 clk_rate_change_nb
     Notifier block for clock changes
@@ -58,11 +66,13 @@ cdns_uart_handle_rx
 
     Handle the received bytes along with Rx errors.
 
-    :param void \*dev_id:
+    :param dev_id:
         Id of the UART port
+    :type dev_id: void \*
 
-    :param unsigned int isrstatus:
+    :param isrstatus:
         The interrupt status register value as read
+    :type isrstatus: unsigned int
 
 .. _`cdns_uart_handle_rx.return`:
 
@@ -80,8 +90,9 @@ cdns_uart_handle_tx
 
     Handle the bytes to be Txed.
 
-    :param void \*dev_id:
+    :param dev_id:
         Id of the UART port
+    :type dev_id: void \*
 
 .. _`cdns_uart_handle_tx.return`:
 
@@ -99,11 +110,13 @@ cdns_uart_isr
 
     Interrupt handler
 
-    :param int irq:
+    :param irq:
         Irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Id of the port
+    :type dev_id: void \*
 
 .. _`cdns_uart_isr.return`:
 
@@ -121,20 +134,25 @@ cdns_uart_calc_baud_divs
 
     Calculate baud rate divisors
 
-    :param unsigned int clk:
+    :param clk:
         UART module input clock
+    :type clk: unsigned int
 
-    :param unsigned int baud:
+    :param baud:
         Desired baud rate
+    :type baud: unsigned int
 
-    :param u32 \*rbdiv:
+    :param rbdiv:
         BDIV value (return value)
+    :type rbdiv: u32 \*
 
-    :param u32 \*rcd:
+    :param rcd:
         CD value (return value)
+    :type rcd: u32 \*
 
-    :param int \*div8:
+    :param div8:
         Value for clk_sel bit in mod (return value)
+    :type div8: int \*
 
 .. _`cdns_uart_calc_baud_divs.return`:
 
@@ -163,11 +181,13 @@ cdns_uart_set_baud_rate
 
     Calculate and set the baud rate
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
-    :param unsigned int baud:
+    :param baud:
         Baud rate to set
+    :type baud: unsigned int
 
 .. _`cdns_uart_set_baud_rate.return`:
 
@@ -186,14 +206,17 @@ cdns_uart_clk_notifier_cb
 
     Clock notifier callback
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Notifier block
+    :type nb: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         Notify event
+    :type event: unsigned long
 
-    :param void \*data:
+    :param data:
         Notifier data
+    :type data: void \*
 
 .. _`cdns_uart_clk_notifier_cb.return`:
 
@@ -211,8 +234,9 @@ cdns_uart_start_tx
 
     Start transmitting bytes
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
 .. _`cdns_uart_stop_tx`:
 
@@ -223,8 +247,9 @@ cdns_uart_stop_tx
 
     Stop TX
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
 .. _`cdns_uart_stop_rx`:
 
@@ -235,8 +260,9 @@ cdns_uart_stop_rx
 
     Stop RX
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
 .. _`cdns_uart_tx_empty`:
 
@@ -247,8 +273,9 @@ cdns_uart_tx_empty
 
     Check whether TX is empty
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
 .. _`cdns_uart_tx_empty.return`:
 
@@ -266,11 +293,13 @@ cdns_uart_break_ctl
 
     Based on the input ctl we have to start or stop transmitting char breaks
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
-    :param int ctl:
+    :param ctl:
         Value based on which start or stop decision is taken
+    :type ctl: int
 
 .. _`cdns_uart_set_termios`:
 
@@ -281,14 +310,17 @@ cdns_uart_set_termios
 
     termios operations, handling data length, parity, stop bits, flow control, baud rate
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
-    :param struct ktermios \*termios:
+    :param termios:
         Handle to the input termios structure
+    :type termios: struct ktermios \*
 
-    :param struct ktermios \*old:
+    :param old:
         Values of the previously saved termios structure
+    :type old: struct ktermios \*
 
 .. _`cdns_uart_startup`:
 
@@ -299,8 +331,9 @@ cdns_uart_startup
 
     Called when an application opens a cdns_uart port
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
 .. _`cdns_uart_startup.return`:
 
@@ -318,8 +351,9 @@ cdns_uart_shutdown
 
     Called when an application closes a cdns_uart port
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
 .. _`cdns_uart_type`:
 
@@ -330,8 +364,9 @@ cdns_uart_type
 
     Set UART type to cdns_uart port
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
 .. _`cdns_uart_type.return`:
 
@@ -349,11 +384,13 @@ cdns_uart_verify_port
 
     Verify the port params
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
-    :param struct serial_struct \*ser:
+    :param ser:
         Handle to the structure whose members are compared
+    :type ser: struct serial_struct \*
 
 .. _`cdns_uart_verify_port.return`:
 
@@ -371,8 +408,9 @@ cdns_uart_request_port
 
     Claim the memory region attached to cdns_uart port, called when the driver adds a cdns_uart port via \ :c:func:`uart_add_one_port`\ 
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
 .. _`cdns_uart_request_port.return`:
 
@@ -390,8 +428,9 @@ cdns_uart_release_port
 
     Release UART port
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
 .. _`cdns_uart_release_port.description`:
 
@@ -410,11 +449,13 @@ cdns_uart_config_port
 
     Configure UART port
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
-    :param int flags:
+    :param flags:
         If any
+    :type flags: int
 
 .. _`cdns_uart_get_mctrl`:
 
@@ -425,8 +466,9 @@ cdns_uart_get_mctrl
 
     Get the modem control state
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
 .. _`cdns_uart_get_mctrl.return`:
 
@@ -434,18 +476,6 @@ Return
 ------
 
 the modem control state
-
-.. _`cdns_uart_console_wait_tx`:
-
-cdns_uart_console_wait_tx
-=========================
-
-.. c:function:: void cdns_uart_console_wait_tx(struct uart_port *port)
-
-    Wait for the TX to be full
-
-    :param struct uart_port \*port:
-        Handle to the uart port structure
 
 .. _`cdns_uart_console_putchar`:
 
@@ -456,11 +486,13 @@ cdns_uart_console_putchar
 
     write the character to the FIFO buffer
 
-    :param struct uart_port \*port:
+    :param port:
         Handle to the uart port structure
+    :type port: struct uart_port \*
 
-    :param int ch:
+    :param ch:
         Character to be written
+    :type ch: int
 
 .. _`cdns_uart_console_write`:
 
@@ -471,14 +503,17 @@ cdns_uart_console_write
 
     perform write operation
 
-    :param struct console \*co:
+    :param co:
         Console handle
+    :type co: struct console \*
 
-    :param const char \*s:
+    :param s:
         Pointer to character array
+    :type s: const char \*
 
-    :param unsigned int count:
+    :param count:
         No of characters
+    :type count: unsigned int
 
 .. _`cdns_uart_console_setup`:
 
@@ -489,11 +524,13 @@ cdns_uart_console_setup
 
     Initialize the uart to default config
 
-    :param struct console \*co:
+    :param co:
         Console handle
+    :type co: struct console \*
 
-    :param char \*options:
+    :param options:
         Initial settings of uart
+    :type options: char \*
 
 .. _`cdns_uart_console_setup.return`:
 
@@ -511,8 +548,9 @@ cdns_uart_suspend
 
     suspend event
 
-    :param struct device \*device:
+    :param device:
         Pointer to the device structure
+    :type device: struct device \*
 
 .. _`cdns_uart_suspend.return`:
 
@@ -530,8 +568,9 @@ cdns_uart_resume
 
     Resume after a previous suspend
 
-    :param struct device \*device:
+    :param device:
         Pointer to the device structure
+    :type device: struct device \*
 
 .. _`cdns_uart_resume.return`:
 
@@ -549,8 +588,9 @@ cdns_uart_probe
 
     Platform driver probe
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`cdns_uart_probe.return`:
 
@@ -568,8 +608,9 @@ cdns_uart_remove
 
     called when the platform driver is unregistered
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`cdns_uart_remove.return`:
 

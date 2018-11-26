@@ -10,11 +10,13 @@ sdw_get_device_id
 
     find the matching SoundWire device id
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         SoundWire Slave Device
+    :type slave: struct sdw_slave \*
 
-    :param struct sdw_driver \*drv:
+    :param drv:
         SoundWire Slave Driver
+    :type drv: struct sdw_driver \*
 
 .. _`sdw_get_device_id.description`:
 
@@ -33,11 +35,13 @@ struct sdw_device_id.
 
     register a SoundWire Slave driver
 
-    :param struct sdw_driver \*drv:
+    :param drv:
         driver to register
+    :type drv: struct sdw_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         owning module/driver
+    :type owner: struct module \*
 
 .. _`__sdw_register_driver.return`:
 
@@ -55,8 +59,9 @@ sdw_unregister_driver
 
     unregisters the SoundWire Slave driver
 
-    :param struct sdw_driver \*drv:
+    :param drv:
         driver to unregister
+    :type drv: struct sdw_driver \*
 
 .. This file was automatic generated / don't edit.
 

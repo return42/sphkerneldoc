@@ -6,15 +6,17 @@
 ib_cm_handler
 =============
 
-.. c:function:: int ib_cm_handler(struct ib_cm_id *cm_id, struct ib_cm_event *event)
+.. c:function:: int ib_cm_handler(struct ib_cm_id *cm_id, const struct ib_cm_event *event)
 
     User-defined callback to process communication events.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Communication identifier associated with the reported event.
+    :type cm_id: struct ib_cm_id \*
 
-    :param struct ib_cm_event \*event:
+    :param event:
         Information about the communication event.
+    :type event: const struct ib_cm_event \*
 
 .. _`ib_cm_handler.description`:
 
@@ -41,16 +43,19 @@ ib_create_cm_id
 
     Allocate a communication identifier.
 
-    :param struct ib_device \*device:
+    :param device:
         Device associated with the cm_id.  All related communication will
         be associated with the specified device.
+    :type device: struct ib_device \*
 
-    :param ib_cm_handler cm_handler:
+    :param cm_handler:
         Callback invoked to notify the user of CM events.
+    :type cm_handler: ib_cm_handler
 
-    :param void \*context:
+    :param context:
         User specified context associated with the communication
         identifier.
+    :type context: void \*
 
 .. _`ib_create_cm_id.description`:
 
@@ -69,8 +74,9 @@ ib_destroy_cm_id
 
     Destroy a connection identifier.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier to destroy.
+    :type cm_id: struct ib_cm_id \*
 
 .. _`ib_destroy_cm_id.description`:
 
@@ -88,20 +94,23 @@ ib_cm_listen
 
     Initiates listening on the specified service ID for connection and service ID resolution requests.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier associated with the listen request.
+    :type cm_id: struct ib_cm_id \*
 
-    :param __be64 service_id:
+    :param service_id:
         Service identifier matched against incoming connection
         and service ID resolution requests.  The service ID should be specified
         network-byte order.  If set to IB_CM_ASSIGN_SERVICE_ID, the CM will
         assign a service ID to the caller.
+    :type service_id: __be64
 
-    :param __be64 service_mask:
+    :param service_mask:
         Mask applied to service ID used to listen across a
         range of service IDs.  If set to 0, the service ID is matched
         exactly.  This parameter is ignored if \ ``service_id``\  is set to
         IB_CM_ASSIGN_SERVICE_ID.
+    :type service_mask: __be64
 
 .. _`ib_send_cm_req`:
 
@@ -112,13 +121,15 @@ ib_send_cm_req
 
     Sends a connection request to the remote node.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier that will be associated with the
         connection request.
+    :type cm_id: struct ib_cm_id \*
 
-    :param struct ib_cm_req_param \*param:
+    :param param:
         Connection request information needed to establish the
         connection.
+    :type param: struct ib_cm_req_param \*
 
 .. _`ib_send_cm_rep`:
 
@@ -129,13 +140,15 @@ ib_send_cm_rep
 
     Sends a connection reply in response to a connection request.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier that will be associated with the
         connection request.
+    :type cm_id: struct ib_cm_id \*
 
-    :param struct ib_cm_rep_param \*param:
+    :param param:
         Connection reply information needed to establish the
         connection.
+    :type param: struct ib_cm_rep_param \*
 
 .. _`ib_send_cm_rtu`:
 
@@ -146,15 +159,18 @@ ib_send_cm_rtu
 
     Sends a connection ready to use message in response to a connection reply message.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier associated with the connection request.
+    :type cm_id: struct ib_cm_id \*
 
-    :param const void \*private_data:
+    :param private_data:
         Optional user-defined private data sent with the
         ready to use message.
+    :type private_data: const void \*
 
-    :param u8 private_data_len:
+    :param private_data_len:
         Size of the private data buffer, in bytes.
+    :type private_data_len: u8
 
 .. _`ib_send_cm_dreq`:
 
@@ -165,16 +181,19 @@ ib_send_cm_dreq
 
     Sends a disconnection request for an existing connection.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier associated with the connection being
         released.
+    :type cm_id: struct ib_cm_id \*
 
-    :param const void \*private_data:
+    :param private_data:
         Optional user-defined private data sent with the
         disconnection request message.
+    :type private_data: const void \*
 
-    :param u8 private_data_len:
+    :param private_data_len:
         Size of the private data buffer, in bytes.
+    :type private_data_len: u8
 
 .. _`ib_send_cm_drep`:
 
@@ -185,16 +204,19 @@ ib_send_cm_drep
 
     Sends a disconnection reply to a disconnection request.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier associated with the connection being
         released.
+    :type cm_id: struct ib_cm_id \*
 
-    :param const void \*private_data:
+    :param private_data:
         Optional user-defined private data sent with the
         disconnection reply message.
+    :type private_data: const void \*
 
-    :param u8 private_data_len:
+    :param private_data_len:
         Size of the private data buffer, in bytes.
+    :type private_data_len: u8
 
 .. _`ib_send_cm_drep.description`:
 
@@ -213,11 +235,13 @@ ib_cm_notify
 
     Notifies the CM of an event reported to the consumer.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier to transition to established.
+    :type cm_id: struct ib_cm_id \*
 
-    :param enum ib_event_type event:
+    :param event:
         Type of event.
+    :type event: enum ib_event_type
 
 .. _`ib_cm_notify.description`:
 
@@ -247,25 +271,31 @@ ib_send_cm_rej
 
     Sends a connection rejection message to the remote node.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier associated with the connection being
         rejected.
+    :type cm_id: struct ib_cm_id \*
 
-    :param enum ib_cm_rej_reason reason:
+    :param reason:
         Reason for the connection request rejection.
+    :type reason: enum ib_cm_rej_reason
 
-    :param void \*ari:
+    :param ari:
         Optional additional rejection information.
+    :type ari: void \*
 
-    :param u8 ari_length:
+    :param ari_length:
         Size of the additional rejection information, in bytes.
+    :type ari_length: u8
 
-    :param const void \*private_data:
+    :param private_data:
         Optional user-defined private data sent with the
         rejection message.
+    :type private_data: const void \*
 
-    :param u8 private_data_len:
+    :param private_data_len:
         Size of the private data buffer, in bytes.
+    :type private_data_len: u8
 
 .. _`ib_send_cm_mra`:
 
@@ -276,20 +306,24 @@ ib_send_cm_mra
 
     Sends a message receipt acknowledgement to a connection message.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier associated with the connection message.
+    :type cm_id: struct ib_cm_id \*
 
-    :param u8 service_timeout:
+    :param service_timeout:
         The lower 5-bits specify the maximum time required for
         the sender to reply to the connection message.  The upper 3-bits
         specify additional control flags.
+    :type service_timeout: u8
 
-    :param const void \*private_data:
+    :param private_data:
         Optional user-defined private data sent with the
         message receipt acknowledgement.
+    :type private_data: const void \*
 
-    :param u8 private_data_len:
+    :param private_data_len:
         Size of the private data buffer, in bytes.
+    :type private_data_len: u8
 
 .. _`ib_send_cm_lap`:
 
@@ -300,20 +334,24 @@ ib_send_cm_lap
 
     Sends a load alternate path request.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier associated with the load alternate path
         message.
+    :type cm_id: struct ib_cm_id \*
 
-    :param struct sa_path_rec \*alternate_path:
+    :param alternate_path:
         A path record that identifies the alternate path to
         load.
+    :type alternate_path: struct sa_path_rec \*
 
-    :param const void \*private_data:
+    :param private_data:
         Optional user-defined private data sent with the
         load alternate path message.
+    :type private_data: const void \*
 
-    :param u8 private_data_len:
+    :param private_data_len:
         Size of the private data buffer, in bytes.
+    :type private_data_len: u8
 
 .. _`ib_cm_init_qp_attr`:
 
@@ -324,25 +362,28 @@ ib_cm_init_qp_attr
 
     Initializes the QP attributes for use in transitioning to a specified QP state.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Communication identifier associated with the QP attributes to
         initialize.
+    :type cm_id: struct ib_cm_id \*
 
-    :param struct ib_qp_attr \*qp_attr:
+    :param qp_attr:
         On input, specifies the desired QP state.  On output, the
         mandatory and desired optional attributes will be set in order to
         modify the QP to the specified state.
+    :type qp_attr: struct ib_qp_attr \*
 
-    :param int \*qp_attr_mask:
+    :param qp_attr_mask:
         The QP attribute mask that may be used to transition the
         QP to the specified state.
+    :type qp_attr_mask: int \*
 
 .. _`ib_cm_init_qp_attr.description`:
 
 Description
 -----------
 
-Users must set the \ ``qp_attr``\ ->qp_state to the desired QP state.  This call
+Users must set the \ ``qp_attr->qp_state``\  to the desired QP state.  This call
 will set all required attributes for the given transition, along with
 known optional attributes.  Users may override the attributes returned from
 this call before calling ib_modify_qp.
@@ -356,25 +397,31 @@ ib_send_cm_apr
 
     Sends an alternate path response message in response to a load alternate path request.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier associated with the alternate path response.
+    :type cm_id: struct ib_cm_id \*
 
-    :param enum ib_cm_apr_status status:
+    :param status:
         Reply status sent with the alternate path response.
+    :type status: enum ib_cm_apr_status
 
-    :param void \*info:
+    :param info:
         Optional additional information sent with the alternate path
         response.
+    :type info: void \*
 
-    :param u8 info_length:
+    :param info_length:
         Size of the additional information, in bytes.
+    :type info_length: u8
 
-    :param const void \*private_data:
+    :param private_data:
         Optional user-defined private data sent with the
         alternate path response message.
+    :type private_data: const void \*
 
-    :param u8 private_data_len:
+    :param private_data_len:
         Size of the private data buffer, in bytes.
+    :type private_data_len: u8
 
 .. _`ib_send_cm_sidr_req`:
 
@@ -385,12 +432,14 @@ ib_send_cm_sidr_req
 
     Sends a service ID resolution request to the remote node.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Communication identifier that will be associated with the
         service ID resolution request.
+    :type cm_id: struct ib_cm_id \*
 
-    :param struct ib_cm_sidr_req_param \*param:
+    :param param:
         Service ID resolution request information.
+    :type param: struct ib_cm_sidr_req_param \*
 
 .. _`ib_send_cm_sidr_rep`:
 
@@ -401,12 +450,14 @@ ib_send_cm_sidr_rep
 
     Sends a service ID resolution reply to the remote node.
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         Communication identifier associated with the received service ID
         resolution request.
+    :type cm_id: struct ib_cm_id \*
 
-    :param struct ib_cm_sidr_rep_param \*param:
+    :param param:
         Service ID resolution reply information.
+    :type param: struct ib_cm_sidr_rep_param \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ vxfs_get_page
 
     read a page into memory.
 
-    :param struct address_space \*mapping:
+    :param mapping:
         *undescribed*
+    :type mapping: struct address_space \*
 
-    :param u_long n:
+    :param n:
         page number
+    :type n: u_long
 
 .. _`vxfs_get_page.description`:
 
@@ -39,11 +41,13 @@ vxfs_bread
 
     read buffer for a give inode,block tuple
 
-    :param struct inode \*ip:
+    :param ip:
         inode
+    :type ip: struct inode \*
 
-    :param int block:
+    :param block:
         logical block
+    :type block: int
 
 .. _`vxfs_bread.description`:
 
@@ -69,17 +73,21 @@ vxfs_getblk
 
     locate buffer for given inode,block tuple
 
-    :param struct inode \*ip:
+    :param ip:
         inode
+    :type ip: struct inode \*
 
-    :param sector_t iblock:
+    :param iblock:
         logical block
+    :type iblock: sector_t
 
-    :param struct buffer_head \*bp:
+    :param bp:
         buffer skeleton
+    :type bp: struct buffer_head \*
 
-    :param int create:
+    :param create:
         \ ``TRUE``\  if blocks may be newly allocated.
+    :type create: int
 
 .. _`vxfs_getblk.description`:
 
@@ -106,11 +114,13 @@ vxfs_readpage
 
     read one page synchronously into the pagecache
 
-    :param struct file \*file:
+    :param file:
         file context (unused)
+    :type file: struct file \*
 
-    :param struct page \*page:
+    :param page:
         page frame to fill in.
+    :type page: struct page \*
 
 .. _`vxfs_readpage.description`:
 
@@ -143,11 +153,13 @@ vxfs_bmap
 
     perform logical to physical block mapping
 
-    :param struct address_space \*mapping:
+    :param mapping:
         logical to physical mapping to use
+    :type mapping: struct address_space \*
 
-    :param sector_t block:
+    :param block:
         logical block (relative to \ ``mapping``\ ).
+    :type block: sector_t
 
 .. _`vxfs_bmap.description`:
 

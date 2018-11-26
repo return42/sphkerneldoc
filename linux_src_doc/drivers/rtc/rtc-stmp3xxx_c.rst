@@ -10,12 +10,14 @@ stmp3xxx_wdt_set_timeout
 
     configure the watchdog inside the STMP3xxx RTC
 
-    :param struct device \*dev:
+    :param dev:
         the parent device of the watchdog (= the RTC)
+    :type dev: struct device \*
 
-    :param u32 timeout:
+    :param timeout:
         the desired value for the timeout register of the watchdog.
         0 disables the watchdog
+    :type timeout: u32
 
 .. _`stmp3xxx_wdt_set_timeout.description`:
 

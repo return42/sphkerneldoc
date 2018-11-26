@@ -10,8 +10,9 @@
 
     get a reference count to uncounted data reference
 
-    :param struct aa_loaddata \*data:
+    :param data:
         reference to get a count on
+    :type data: struct aa_loaddata \*
 
 .. _`__aa_get_loaddata.return`:
 
@@ -26,9 +27,9 @@ being repeated.
 Requires
 --------
 
-\ ``data``\ ->ns->lock held, and the return code MUST be checked
+\ ``data->ns->lock``\  held, and the return code MUST be checked
 
-Use only from inode->i_private and \ ``data``\ ->list found references
+Use only from inode->i_private and \ ``data->list``\  found references
 
 .. _`aa_get_loaddata`:
 
@@ -39,8 +40,9 @@ aa_get_loaddata
 
     get a reference count from a counted data reference
 
-    :param struct aa_loaddata \*data:
+    :param data:
         reference to get a count on
+    :type data: struct aa_loaddata \*
 
 .. _`aa_get_loaddata.return`:
 

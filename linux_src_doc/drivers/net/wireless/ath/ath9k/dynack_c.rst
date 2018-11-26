@@ -10,11 +10,13 @@ ath_dynack_ewma
 
     EWMA (Exponentially Weighted Moving Average) calculation
 
-    :param u32 old:
+    :param old:
         *undescribed*
+    :type old: u32
 
-    :param u32 new:
+    :param new:
         *undescribed*
+    :type new: u32
 
 .. _`ath_dynack_get_sifs`:
 
@@ -25,11 +27,13 @@ ath_dynack_get_sifs
 
     get sifs time based on phy used
 
-    :param struct ath_hw \*ah:
+    :param ah:
         ath hw
+    :type ah: struct ath_hw \*
 
-    :param int phy:
+    :param phy:
         phy used
+    :type phy: int
 
 .. _`ath_dynack_bssidmask`:
 
@@ -40,11 +44,13 @@ ath_dynack_bssidmask
 
     filter out ACK frames based on BSSID mask
 
-    :param struct ath_hw \*ah:
+    :param ah:
         ath hw
+    :type ah: struct ath_hw \*
 
-    :param const u8 \*mac:
+    :param mac:
         receiver address
+    :type mac: const u8 \*
 
 .. _`ath_dynack_compute_ackto`:
 
@@ -55,8 +61,9 @@ ath_dynack_compute_ackto
 
     compute ACK timeout as the maximum STA timeout
 
-    :param struct ath_hw \*ah:
+    :param ah:
         ath hw
+    :type ah: struct ath_hw \*
 
 .. _`ath_dynack_compute_ackto.description`:
 
@@ -74,8 +81,9 @@ ath_dynack_compute_to
 
     compute STA ACK timeout
 
-    :param struct ath_hw \*ah:
+    :param ah:
         ath hw
+    :type ah: struct ath_hw \*
 
 .. _`ath_dynack_compute_to.description`:
 
@@ -93,14 +101,17 @@ ath_dynack_sample_tx_ts
 
     status timestamp sampling method
 
-    :param struct ath_hw \*ah:
+    :param ah:
         ath hw
+    :type ah: struct ath_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer
+    :type skb: struct sk_buff \*
 
-    :param struct ath_tx_status \*ts:
+    :param ts:
         tx status info
+    :type ts: struct ath_tx_status \*
 
 .. _`ath_dynack_sample_ack_ts`:
 
@@ -111,14 +122,17 @@ ath_dynack_sample_ack_ts
 
     ACK timestamp sampling method
 
-    :param struct ath_hw \*ah:
+    :param ah:
         ath hw
+    :type ah: struct ath_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer
+    :type skb: struct sk_buff \*
 
-    :param u32 ts:
+    :param ts:
         rx timestamp
+    :type ts: u32
 
 .. _`ath_dynack_node_init`:
 
@@ -129,11 +143,13 @@ ath_dynack_node_init
 
     init ath_node related info
 
-    :param struct ath_hw \*ah:
+    :param ah:
         ath hw
+    :type ah: struct ath_hw \*
 
-    :param struct ath_node \*an:
+    :param an:
         ath node
+    :type an: struct ath_node \*
 
 .. _`ath_dynack_node_deinit`:
 
@@ -144,11 +160,13 @@ ath_dynack_node_deinit
 
     deinit ath_node related info
 
-    :param struct ath_hw \*ah:
+    :param ah:
         ath hw
+    :type ah: struct ath_hw \*
 
-    :param struct ath_node \*an:
+    :param an:
         ath node
+    :type an: struct ath_node \*
 
 .. _`ath_dynack_reset`:
 
@@ -159,8 +177,9 @@ ath_dynack_reset
 
     reset dynack processing
 
-    :param struct ath_hw \*ah:
+    :param ah:
         ath hw
+    :type ah: struct ath_hw \*
 
 .. _`ath_dynack_init`:
 
@@ -171,8 +190,9 @@ ath_dynack_init
 
     init dynack data structure
 
-    :param struct ath_hw \*ah:
+    :param ah:
         ath hw
+    :type ah: struct ath_hw \*
 
 .. This file was automatic generated / don't edit.
 

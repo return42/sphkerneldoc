@@ -10,14 +10,17 @@ aa_ns_visible
 
     test if \ ``view``\  is visible from \ ``curr``\ 
 
-    :param struct aa_ns \*curr:
+    :param curr:
         namespace to treat as the parent (NOT NULL)
+    :type curr: struct aa_ns \*
 
-    :param struct aa_ns \*view:
+    :param view:
         namespace to test if visible from \ ``curr``\  (NOT NULL)
+    :type view: struct aa_ns \*
 
-    :param bool subns:
+    :param subns:
         whether view of a subns is allowed
+    :type subns: bool
 
 .. _`aa_ns_visible.return`:
 
@@ -35,14 +38,17 @@ aa_ns_name
 
     Find the ns name to display for \ ``view``\  from \ ``curr``\  \ ``curr``\  - current namespace (NOT NULL) \ ``view``\  - namespace attempting to view (NOT NULL) \ ``subns``\  - are subns visible
 
-    :param struct aa_ns \*curr:
+    :param curr:
         *undescribed*
+    :type curr: struct aa_ns \*
 
-    :param struct aa_ns \*view:
+    :param view:
         *undescribed*
+    :type view: struct aa_ns \*
 
-    :param bool subns:
+    :param subns:
         *undescribed*
+    :type subns: bool
 
 .. _`aa_ns_name.return`:
 
@@ -60,11 +66,13 @@ alloc_ns
 
     allocate, initialize and return a new namespace
 
-    :param const char \*prefix:
+    :param prefix:
         parent namespace name (MAYBE NULL)
+    :type prefix: const char \*
 
-    :param const char \*name:
+    :param name:
         a preallocated name  (NOT NULL)
+    :type name: const char \*
 
 .. _`alloc_ns.return`:
 
@@ -82,8 +90,9 @@ aa_free_ns
 
     free a profile namespace
 
-    :param struct aa_ns \*ns:
+    :param ns:
         the namespace to free  (MAYBE NULL)
+    :type ns: struct aa_ns \*
 
 .. _`aa_free_ns.requires`:
 
@@ -102,14 +111,17 @@ aa_findn_ns
 
     look up a profile namespace on the namespace list
 
-    :param struct aa_ns \*root:
+    :param root:
         namespace to search in  (NOT NULL)
+    :type root: struct aa_ns \*
 
-    :param const char \*name:
+    :param name:
         name of namespace to find  (NOT NULL)
+    :type name: const char \*
 
-    :param size_t n:
+    :param n:
         length of \ ``name``\ 
+    :type n: size_t
 
 .. _`aa_findn_ns.return`:
 
@@ -130,11 +142,13 @@ aa_find_ns
 
     look up a profile namespace on the namespace list
 
-    :param struct aa_ns \*root:
+    :param root:
         namespace to search in  (NOT NULL)
+    :type root: struct aa_ns \*
 
-    :param const char \*name:
+    :param name:
         name of namespace to find  (NOT NULL)
+    :type name: const char \*
 
 .. _`aa_find_ns.return`:
 
@@ -155,14 +169,17 @@ refcount released by caller
 
     lookup the namespace matching \ ``hname``\ 
 
-    :param struct aa_ns \*view:
+    :param view:
         *undescribed*
+    :type view: struct aa_ns \*
 
-    :param const char \*hname:
+    :param hname:
         hierarchical ns name  (NOT NULL)
+    :type hname: const char \*
 
-    :param size_t n:
+    :param n:
         length of \ ``hname``\ 
+    :type n: size_t
 
 .. _`__aa_lookupn_ns.requires`:
 
@@ -189,14 +206,17 @@ aa_lookupn_ns
 
     look up a policy namespace relative to \ ``view``\ 
 
-    :param struct aa_ns \*view:
+    :param view:
         namespace to search in  (NOT NULL)
+    :type view: struct aa_ns \*
 
-    :param const char \*name:
+    :param name:
         name of namespace to find  (NOT NULL)
+    :type name: const char \*
 
-    :param size_t n:
+    :param n:
         length of \ ``name``\ 
+    :type n: size_t
 
 .. _`aa_lookupn_ns.return`:
 
@@ -217,14 +237,17 @@ refcount released by caller
 
     create an ns, fail if it already exists
 
-    :param struct aa_ns \*parent:
+    :param parent:
         the parent of the namespace being created
+    :type parent: struct aa_ns \*
 
-    :param const char \*name:
+    :param name:
         the name of the namespace
+    :type name: const char \*
 
-    :param struct dentry \*dir:
+    :param dir:
         if not null the dir to put the ns entries in
+    :type dir: struct dentry \*
 
 .. _`__aa_find_or_create_ns.return`:
 
@@ -242,11 +265,13 @@ aa_prepare_ns
 
     find an existing or create a new namespace of \ ``name``\ 
 
-    :param struct aa_ns \*parent:
+    :param parent:
         ns to treat as parent
+    :type parent: struct aa_ns \*
 
-    :param const char \*name:
+    :param name:
         the namespace to find or add  (NOT NULL)
+    :type name: const char \*
 
 .. _`aa_prepare_ns.return`:
 
@@ -264,8 +289,9 @@ destroy_ns
 
     remove everything contained by \ ``ns``\ 
 
-    :param struct aa_ns \*ns:
+    :param ns:
         namespace to have it contents removed  (NOT NULL)
+    :type ns: struct aa_ns \*
 
 .. _`__aa_remove_ns`:
 
@@ -276,8 +302,9 @@ destroy_ns
 
     remove a namespace and all its children
 
-    :param struct aa_ns \*ns:
+    :param ns:
         namespace to be removed  (NOT NULL)
+    :type ns: struct aa_ns \*
 
 .. _`__aa_remove_ns.requires`:
 
@@ -295,8 +322,9 @@ ns->parent->lock be held and ns removed from parent.
 
     remove all profile namespaces on the list put refs
 
-    :param struct list_head \*head:
+    :param head:
         list of profile namespaces  (NOT NULL)
+    :type head: struct list_head \*
 
 .. _`__ns_list_release.requires`:
 
@@ -314,8 +342,9 @@ aa_alloc_root_ns
 
     allocate the root profile namespace
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`aa_alloc_root_ns.return`:
 

@@ -10,14 +10,17 @@ amdgpu_debugfs_add_files
 
     Add simple debugfs entries
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         Device to attach debugfs entries to
+    :type adev: struct amdgpu_device \*
 
-    :param const struct drm_info_list \*files:
+    :param files:
         Array of function callbacks that respond to reads
+    :type files: const struct drm_info_list \*
 
-    :param unsigned nfiles:
+    :param nfiles:
         Number of callbacks to register
+    :type nfiles: unsigned
 
 .. _`amdgpu_debugfs_process_reg_op`:
 
@@ -28,20 +31,25 @@ amdgpu_debugfs_process_reg_op
 
     Handle MMIO register reads/writes
 
-    :param bool read:
+    :param read:
         True if reading
+    :type read: bool
 
-    :param struct file \*f:
+    :param f:
         open file handle
+    :type f: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         User buffer to write/read to
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to write/read
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         Offset to seek to
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_process_reg_op.description`:
 
@@ -90,17 +98,21 @@ amdgpu_debugfs_regs_read
 
     Callback for reading MMIO registers
 
-    :param struct file \*f:
+    :param f:
         *undescribed*
+    :type f: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         *undescribed*
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_regs_write`:
 
@@ -111,17 +123,21 @@ amdgpu_debugfs_regs_write
 
     Callback for writing MMIO registers
 
-    :param struct file \*f:
+    :param f:
         *undescribed*
+    :type f: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char __user \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         *undescribed*
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_regs_pcie_read`:
 
@@ -132,17 +148,21 @@ amdgpu_debugfs_regs_pcie_read
 
     Read from a PCIE register
 
-    :param struct file \*f:
+    :param f:
         open file handle
+    :type f: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         User buffer to store read data in
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to read
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         Offset to seek to
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_regs_pcie_read.description`:
 
@@ -162,17 +182,21 @@ amdgpu_debugfs_regs_pcie_write
 
     Write to a PCIE register
 
-    :param struct file \*f:
+    :param f:
         open file handle
+    :type f: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         User buffer to write data from
+    :type buf: const char __user \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to write
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         Offset to seek to
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_regs_pcie_write.description`:
 
@@ -192,17 +216,21 @@ amdgpu_debugfs_regs_didt_read
 
     Read from a DIDT register
 
-    :param struct file \*f:
+    :param f:
         open file handle
+    :type f: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         User buffer to store read data in
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to read
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         Offset to seek to
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_regs_didt_read.description`:
 
@@ -222,17 +250,21 @@ amdgpu_debugfs_regs_didt_write
 
     Write to a DIDT register
 
-    :param struct file \*f:
+    :param f:
         open file handle
+    :type f: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         User buffer to write data from
+    :type buf: const char __user \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to write
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         Offset to seek to
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_regs_didt_write.description`:
 
@@ -252,17 +284,21 @@ amdgpu_debugfs_regs_smc_read
 
     Read from a SMC register
 
-    :param struct file \*f:
+    :param f:
         open file handle
+    :type f: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         User buffer to store read data in
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to read
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         Offset to seek to
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_regs_smc_read.description`:
 
@@ -282,17 +318,21 @@ amdgpu_debugfs_regs_smc_write
 
     Write to a SMC register
 
-    :param struct file \*f:
+    :param f:
         open file handle
+    :type f: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         User buffer to write data from
+    :type buf: const char __user \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to write
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         Offset to seek to
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_regs_smc_write.description`:
 
@@ -312,17 +352,21 @@ amdgpu_debugfs_gca_config_read
 
     Read from gfx config data
 
-    :param struct file \*f:
+    :param f:
         open file handle
+    :type f: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         User buffer to store read data in
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to read
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         Offset to seek to
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_gca_config_read.description`:
 
@@ -343,17 +387,21 @@ amdgpu_debugfs_sensor_read
 
     Read from the powerplay sensors
 
-    :param struct file \*f:
+    :param f:
         open file handle
+    :type f: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         User buffer to store read data in
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to read
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         Offset to seek to
+    :type pos: loff_t \*
 
 .. _`amdgpu_debugfs_sensor_read.description`:
 
@@ -374,8 +422,9 @@ amdgpu_debugfs_regs_init
 
     Initialize debugfs entries that provide register access.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         The device to attach the debugfs entries to
+    :type adev: struct amdgpu_device \*
 
 .. This file was automatic generated / don't edit.
 

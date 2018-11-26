@@ -10,8 +10,9 @@ attribute_container_classdev_to_container
 
     given a classdev, return the container
 
-    :param struct device \*classdev:
+    :param classdev:
         the class device created by attribute_container_add_device.
+    :type classdev: struct device \*
 
 .. _`attribute_container_classdev_to_container.description`:
 
@@ -29,9 +30,10 @@ attribute_container_register
 
     register an attribute container
 
-    :param struct attribute_container \*cont:
+    :param cont:
         The container to register.  This must be allocated by the
         callee and should also be zeroed by it.
+    :type cont: struct attribute_container \*
 
 .. _`attribute_container_unregister`:
 
@@ -42,8 +44,9 @@ attribute_container_unregister
 
     remove a container registration
 
-    :param struct attribute_container \*cont:
+    :param cont:
         previously registered container to remove
+    :type cont: struct attribute_container \*
 
 .. _`attribute_container_add_device`:
 
@@ -54,8 +57,9 @@ attribute_container_add_device
 
     see if any container is interested in dev
 
-    :param struct device \*dev:
+    :param dev:
         device to add attributes to
+    :type dev: struct device \*
 
     :param int (\*fn)(struct attribute_container \*, struct device \*, struct device \*):
         function to trigger addition of class device.
@@ -86,8 +90,9 @@ attribute_container_remove_device
 
     make device eligible for removal.
 
-    :param struct device \*dev:
+    :param dev:
         The generic device
+    :type dev: struct device \*
 
     :param void (\*fn)(struct attribute_container \*, struct device \*, struct device \*):
         A function to call to remove the device
@@ -121,9 +126,10 @@ attribute_container_device_trigger
 
     execute a trigger for each matching classdev
 
-    :param struct device \*dev:
+    :param dev:
         The generic device to run the trigger for
         \ ``fn``\     the function to execute for each classdev.
+    :type dev: struct device \*
 
     :param int (\*fn)(struct attribute_container \*, struct device \*, struct device \*):
         *undescribed*
@@ -146,8 +152,9 @@ attribute_container_trigger
 
     trigger a function for each matching container
 
-    :param struct device \*dev:
+    :param dev:
         The generic device to activate the trigger for
+    :type dev: struct device \*
 
     :param int (\*fn)(struct attribute_container \*, struct device \*):
         the function to trigger
@@ -172,8 +179,9 @@ attribute_container_add_attrs
 
     add attributes
 
-    :param struct device \*classdev:
+    :param classdev:
         The class device
+    :type classdev: struct device \*
 
 .. _`attribute_container_add_attrs.description`:
 
@@ -192,8 +200,9 @@ attribute_container_add_class_device
 
     same function as device_add
 
-    :param struct device \*classdev:
+    :param classdev:
         the class device to add
+    :type classdev: struct device \*
 
 .. _`attribute_container_add_class_device.description`:
 
@@ -213,14 +222,17 @@ attribute_container_add_class_device_adapter
 
     simple adapter for triggers
 
-    :param struct attribute_container \*cont:
+    :param cont:
         *undescribed*
+    :type cont: struct attribute_container \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device \*classdev:
+    :param classdev:
         *undescribed*
+    :type classdev: struct device \*
 
 .. _`attribute_container_add_class_device_adapter.description`:
 
@@ -239,8 +251,9 @@ attribute_container_remove_attrs
 
     remove any attribute files
 
-    :param struct device \*classdev:
+    :param classdev:
         The class device to remove the files from
+    :type classdev: struct device \*
 
 .. _`attribute_container_class_device_del`:
 
@@ -251,8 +264,9 @@ attribute_container_class_device_del
 
     equivalent of class_device_del
 
-    :param struct device \*classdev:
+    :param classdev:
         the class device
+    :type classdev: struct device \*
 
 .. _`attribute_container_class_device_del.description`:
 
@@ -271,11 +285,13 @@ attribute_container_find_class_device
 
     find the corresponding class_device
 
-    :param struct attribute_container \*cont:
+    :param cont:
         the container
+    :type cont: struct attribute_container \*
 
-    :param struct device \*dev:
+    :param dev:
         the generic device
+    :type dev: struct device \*
 
 .. _`attribute_container_find_class_device.description`:
 

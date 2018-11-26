@@ -10,17 +10,21 @@ nilfs_btree_node_broken
 
     verify consistency of btree node
 
-    :param const struct nilfs_btree_node \*node:
+    :param node:
         btree node block to be examined
+    :type node: const struct nilfs_btree_node \*
 
-    :param size_t size:
+    :param size:
         node size (in bytes)
+    :type size: size_t
 
-    :param struct inode \*inode:
+    :param inode:
         host inode of btree
+    :type inode: struct inode \*
 
-    :param sector_t blocknr:
+    :param blocknr:
         block number
+    :type blocknr: sector_t
 
 .. _`nilfs_btree_node_broken.return-value`:
 
@@ -38,11 +42,13 @@ nilfs_btree_root_broken
 
     verify consistency of btree root node
 
-    :param const struct nilfs_btree_node \*node:
+    :param node:
         btree root node to be examined
+    :type node: const struct nilfs_btree_node \*
 
-    :param struct inode \*inode:
+    :param inode:
         host inode of btree
+    :type inode: struct inode \*
 
 .. _`nilfs_btree_root_broken.return-value`:
 
@@ -60,17 +66,21 @@ nilfs_btree_get_next_key
 
     get next valid key from btree path array
 
-    :param const struct nilfs_bmap \*btree:
+    :param btree:
         bmap struct of btree
+    :type btree: const struct nilfs_bmap \*
 
-    :param const struct nilfs_btree_path \*path:
+    :param path:
         array of nilfs_btree_path struct
+    :type path: const struct nilfs_btree_path \*
 
-    :param int minlevel:
+    :param minlevel:
         start level
+    :type minlevel: int
 
-    :param __u64 \*nextkey:
+    :param nextkey:
         place to store the next valid key
+    :type nextkey: __u64 \*
 
 .. _`nilfs_btree_get_next_key.return-value`:
 
@@ -87,23 +97,29 @@ nilfs_btree_convert_and_insert
 
 .. c:function:: int nilfs_btree_convert_and_insert(struct nilfs_bmap *btree, __u64 key, __u64 ptr, const __u64 *keys, const __u64 *ptrs, int n)
 
-    :param struct nilfs_bmap \*btree:
+    :param btree:
         *undescribed*
+    :type btree: struct nilfs_bmap \*
 
-    :param __u64 key:
+    :param key:
         *undescribed*
+    :type key: __u64
 
-    :param __u64 ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: __u64
 
-    :param const __u64 \*keys:
+    :param keys:
         *undescribed*
+    :type keys: const __u64 \*
 
-    :param const __u64 \*ptrs:
+    :param ptrs:
         *undescribed*
+    :type ptrs: const __u64 \*
 
-    :param int n:
+    :param n:
         *undescribed*
+    :type n: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ aa_get_newest_profile
 
     simple wrapper fn to wrap the label version
 
-    :param struct aa_profile \*p:
+    :param p:
         profile (NOT NULL)
+    :type p: struct aa_profile \*
 
 .. _`aa_get_newest_profile.description`:
 
@@ -36,8 +37,9 @@ aa_get_profile
 
     increment refcount on profile \ ``p``\ 
 
-    :param struct aa_profile \*p:
+    :param p:
         profile  (MAYBE NULL)
+    :type p: struct aa_profile \*
 
 .. _`aa_get_profile.return`:
 
@@ -62,8 +64,9 @@ aa_get_profile_not0
 
     increment refcount on profile \ ``p``\  found via lookup
 
-    :param struct aa_profile \*p:
+    :param p:
         profile  (MAYBE NULL)
+    :type p: struct aa_profile \*
 
 .. _`aa_get_profile_not0.return`:
 
@@ -88,8 +91,9 @@ aa_get_profile_rcu
 
     increment a refcount profile that can be replaced
 
-    :param struct aa_profile __rcu \*\*p:
+    :param p:
         pointer to profile that can be replaced (NOT NULL)
+    :type p: struct aa_profile __rcu \*\*
 
 .. _`aa_get_profile_rcu.return`:
 
@@ -108,8 +112,9 @@ aa_put_profile
 
     decrement refcount on profile \ ``p``\ 
 
-    :param struct aa_profile \*p:
+    :param p:
         profile  (MAYBE NULL)
+    :type p: struct aa_profile \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ radeon_atpx_call
 
     call an ATPX method
 
-    :param acpi_handle handle:
+    :param handle:
         acpi handle
+    :type handle: acpi_handle
 
-    :param int function:
+    :param function:
         the ATPX function to execute
+    :type function: int
 
-    :param struct acpi_buffer \*params:
+    :param params:
         ATPX function params
+    :type params: struct acpi_buffer \*
 
 .. _`radeon_atpx_call.description`:
 
@@ -36,11 +39,13 @@ radeon_atpx_parse_functions
 
     parse supported functions
 
-    :param struct radeon_atpx_functions \*f:
+    :param f:
         supported functions struct
+    :type f: struct radeon_atpx_functions \*
 
-    :param u32 mask:
+    :param mask:
         supported functions mask from ATPX
+    :type mask: u32
 
 .. _`radeon_atpx_parse_functions.description`:
 
@@ -60,8 +65,9 @@ radeon_atpx_validate
 
     validate ATPX functions
 
-    :param struct radeon_atpx \*atpx:
+    :param atpx:
         radeon atpx struct
+    :type atpx: struct radeon_atpx \*
 
 .. _`radeon_atpx_validate.description`:
 
@@ -80,8 +86,9 @@ radeon_atpx_verify_interface
 
     verify ATPX
 
-    :param struct radeon_atpx \*atpx:
+    :param atpx:
         radeon atpx struct
+    :type atpx: struct radeon_atpx \*
 
 .. _`radeon_atpx_verify_interface.description`:
 
@@ -102,11 +109,13 @@ radeon_atpx_set_discrete_state
 
     power up/down discrete GPU
 
-    :param struct radeon_atpx \*atpx:
+    :param atpx:
         atpx info struct
+    :type atpx: struct radeon_atpx \*
 
-    :param u8 state:
+    :param state:
         discrete GPU state (0 = power down, 1 = power up)
+    :type state: u8
 
 .. _`radeon_atpx_set_discrete_state.description`:
 
@@ -126,11 +135,13 @@ radeon_atpx_switch_disp_mux
 
     switch display mux
 
-    :param struct radeon_atpx \*atpx:
+    :param atpx:
         atpx info struct
+    :type atpx: struct radeon_atpx \*
 
-    :param u16 mux_id:
+    :param mux_id:
         mux state (0 = integrated GPU, 1 = discrete GPU)
+    :type mux_id: u16
 
 .. _`radeon_atpx_switch_disp_mux.description`:
 
@@ -151,11 +162,13 @@ radeon_atpx_switch_i2c_mux
 
     switch i2c/hpd mux
 
-    :param struct radeon_atpx \*atpx:
+    :param atpx:
         atpx info struct
+    :type atpx: struct radeon_atpx \*
 
-    :param u16 mux_id:
+    :param mux_id:
         mux state (0 = integrated GPU, 1 = discrete GPU)
+    :type mux_id: u16
 
 .. _`radeon_atpx_switch_i2c_mux.description`:
 
@@ -176,11 +189,13 @@ radeon_atpx_switch_start
 
     notify the sbios of a GPU switch
 
-    :param struct radeon_atpx \*atpx:
+    :param atpx:
         atpx info struct
+    :type atpx: struct radeon_atpx \*
 
-    :param u16 mux_id:
+    :param mux_id:
         mux state (0 = integrated GPU, 1 = discrete GPU)
+    :type mux_id: u16
 
 .. _`radeon_atpx_switch_start.description`:
 
@@ -201,11 +216,13 @@ radeon_atpx_switch_end
 
     notify the sbios of a GPU switch
 
-    :param struct radeon_atpx \*atpx:
+    :param atpx:
         atpx info struct
+    :type atpx: struct radeon_atpx \*
 
-    :param u16 mux_id:
+    :param mux_id:
         mux state (0 = integrated GPU, 1 = discrete GPU)
+    :type mux_id: u16
 
 .. _`radeon_atpx_switch_end.description`:
 
@@ -226,8 +243,9 @@ radeon_atpx_switchto
 
     switch to the requested GPU
 
-    :param enum vga_switcheroo_client_id id:
+    :param id:
         GPU to switch to
+    :type id: enum vga_switcheroo_client_id
 
 .. _`radeon_atpx_switchto.description`:
 
@@ -247,11 +265,13 @@ radeon_atpx_power_state
 
     power down/up the requested GPU
 
-    :param enum vga_switcheroo_client_id id:
+    :param id:
         GPU to power down/up
+    :type id: enum vga_switcheroo_client_id
 
-    :param enum vga_switcheroo_state state:
+    :param state:
         requested power state (0 = off, 1 = on)
+    :type state: enum vga_switcheroo_state
 
 .. _`radeon_atpx_power_state.description`:
 
@@ -271,8 +291,9 @@ radeon_atpx_pci_probe_handle
 
     look up the ATPX handle
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device
+    :type pdev: struct pci_dev \*
 
 .. _`radeon_atpx_pci_probe_handle.description`:
 
@@ -291,8 +312,9 @@ radeon_atpx_init
 
     verify the ATPX interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`radeon_atpx_init.description`:
 
@@ -311,8 +333,9 @@ radeon_atpx_get_client_id
 
     get the client id
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device
+    :type pdev: struct pci_dev \*
 
 .. _`radeon_atpx_get_client_id.description`:
 
@@ -331,8 +354,9 @@ radeon_atpx_detect
 
     detect whether we have PX
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`radeon_atpx_detect.description`:
 
@@ -351,8 +375,9 @@ radeon_register_atpx_handler
 
     register with vga_switcheroo
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`radeon_register_atpx_handler.description`:
 
@@ -370,8 +395,9 @@ radeon_unregister_atpx_handler
 
     unregister with vga_switcheroo
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`radeon_unregister_atpx_handler.description`:
 

@@ -10,8 +10,9 @@ init_llist_head
 
     initialize lock-less list head
 
-    :param struct llist_head \*list:
+    :param list:
         *undescribed*
+    :type list: struct llist_head \*
 
 .. _`llist_entry`:
 
@@ -22,14 +23,17 @@ llist_entry
 
     get the struct of this entry
 
-    :param  ptr:
+    :param ptr:
         the \ :c:type:`struct llist_node <llist_node>`\  pointer.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the llist_node within the struct.
+    :type member: 
 
 .. _`member_address_is_nonnull`:
 
@@ -40,11 +44,13 @@ member_address_is_nonnull
 
     check whether the member address is not NULL
 
-    :param  ptr:
+    :param ptr:
         the object pointer (struct type \* that contains the llist_node)
+    :type ptr: 
 
-    :param  member:
+    :param member:
         the name of the llist_node within the struct.
+    :type member: 
 
 .. _`member_address_is_nonnull.description`:
 
@@ -69,11 +75,13 @@ llist_for_each
 
     iterate over some deleted entries of a lock-less list
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct llist_node <llist_node>`\  to use as a loop cursor
+    :type pos: 
 
-    :param  node:
+    :param node:
         the first entry of deleted list entries
+    :type node: 
 
 .. _`llist_for_each.description`:
 
@@ -98,14 +106,17 @@ llist_for_each_safe
 
     iterate over some deleted entries of a lock-less list safe against removal of list entry
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct llist_node <llist_node>`\  to use as a loop cursor
+    :type pos: 
 
-    :param  n:
+    :param n:
         another \ :c:type:`struct llist_node <llist_node>`\  to use as temporary storage
+    :type n: 
 
-    :param  node:
+    :param node:
         the first entry of deleted list entries
+    :type node: 
 
 .. _`llist_for_each_safe.description`:
 
@@ -130,14 +141,17 @@ llist_for_each_entry
 
     iterate over some deleted entries of lock-less list of given type
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  node:
+    :param node:
         the fist entry of deleted list entries.
+    :type node: 
 
-    :param  member:
+    :param member:
         the name of the llist_node with the struct.
+    :type member: 
 
 .. _`llist_for_each_entry.description`:
 
@@ -162,17 +176,21 @@ llist_for_each_entry_safe
 
     iterate over some deleted entries of lock-less list of given type safe against removal of list entry
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another type \* to use as temporary storage
+    :type n: 
 
-    :param  node:
+    :param node:
         the first entry of deleted list entries.
+    :type node: 
 
-    :param  member:
+    :param member:
         the name of the llist_node with the struct.
+    :type member: 
 
 .. _`llist_for_each_entry_safe.description`:
 
@@ -197,8 +215,9 @@ llist_empty
 
     tests whether a lock-less list is empty
 
-    :param const struct llist_head \*head:
+    :param head:
         the list to test
+    :type head: const struct llist_head \*
 
 .. _`llist_empty.description`:
 
@@ -218,11 +237,13 @@ llist_add
 
     add a new entry
 
-    :param struct llist_node \*new:
+    :param new:
         new entry to be added
+    :type new: struct llist_node \*
 
-    :param struct llist_head \*head:
+    :param head:
         the head for your lock-less list
+    :type head: struct llist_head \*
 
 .. _`llist_add.description`:
 
@@ -240,8 +261,9 @@ llist_del_all
 
     delete all entries from lock-less list
 
-    :param struct llist_head \*head:
+    :param head:
         the head of lock-less list to delete all entries
+    :type head: struct llist_head \*
 
 .. _`llist_del_all.description`:
 

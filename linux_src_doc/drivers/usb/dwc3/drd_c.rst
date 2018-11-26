@@ -10,11 +10,13 @@ dwc3_otg_disable_events
 
     DesignWare USB3 DRD Controller Dual-role support
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         *undescribed*
+    :type dwc: struct dwc3 \*
 
-    :param u32 disable_mask:
+    :param disable_mask:
         *undescribed*
+    :type disable_mask: u32
 
 .. _`dwc3_otg_disable_events.description`:
 

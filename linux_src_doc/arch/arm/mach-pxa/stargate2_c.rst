@@ -10,11 +10,13 @@ stargate2_mci_setpower
 
     set state of mmc power supply
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param unsigned int vdd:
+    :param vdd:
         *undescribed*
+    :type vdd: unsigned int
 
 .. _`stargate2_mci_setpower.description`:
 
@@ -30,8 +32,9 @@ stargate2_reset_bluetooth
 
 .. c:function:: int stargate2_reset_bluetooth( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

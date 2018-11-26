@@ -10,15 +10,16 @@ comedi_to_pci_dev
 
     Return PCI device attached to COMEDI device
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
 .. _`comedi_to_pci_dev.description`:
 
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
+Assuming \ ``dev->hw_dev``\  is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pci_dev <pci_dev>`\ .
 
 .. _`comedi_to_pci_dev.return`:
@@ -26,8 +27,8 @@ a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pci_dev <
 Return
 ------
 
-Attached PCI device if \ ``dev``\ ->hw_dev is non-%NULL.
-Return \ ``NULL``\  if \ ``dev``\ ->hw_dev is \ ``NULL``\ .
+Attached PCI device if \ ``dev->hw_dev``\  is non-%NULL.
+Return \ ``NULL``\  if \ ``dev->hw_dev``\  is \ ``NULL``\ .
 
 .. _`comedi_pci_enable`:
 
@@ -38,17 +39,18 @@ comedi_pci_enable
 
     Enable the PCI device and request the regions
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
 .. _`comedi_pci_enable.description`:
 
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
+Assuming \ ``dev->hw_dev``\  is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pci_dev <pci_dev>`\ .  Enable the PCI device
-and request its regions.  Set \ ``dev``\ ->ioenabled to \ ``true``\  if successful,
+and request its regions.  Set \ ``dev->ioenabled``\  to \ ``true``\  if successful,
 otherwise undo what was done.
 
 Calls to \ :c:func:`comedi_pci_enable`\  and \ :c:func:`comedi_pci_disable`\  cannot be nested.
@@ -59,7 +61,7 @@ Return
 ------
 
 0 on success,
--%ENODEV if \ ``dev``\ ->hw_dev is \ ``NULL``\ ,
+-%ENODEV if \ ``dev->hw_dev``\  is \ ``NULL``\ ,
 -%EBUSY if regions busy,
 or some negative error number if failed to enable PCI device.
 
@@ -72,18 +74,19 @@ comedi_pci_disable
 
     Release the regions and disable the PCI device
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
 .. _`comedi_pci_disable.description`:
 
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
+Assuming \ ``dev->hw_dev``\  is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pci_dev <pci_dev>`\ .  If the earlier call
 to \ :c:func:`comedi_pci_enable`\  was successful, release the PCI device's regions
-and disable it.  Reset \ ``dev``\ ->ioenabled back to \ ``false``\ .
+and disable it.  Reset \ ``dev->ioenabled``\  back to \ ``false``\ .
 
 .. _`comedi_pci_detach`:
 
@@ -94,8 +97,9 @@ comedi_pci_detach
 
     A generic "detach" handler for PCI COMEDI drivers
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
 .. _`comedi_pci_detach.description`:
 
@@ -103,12 +107,12 @@ Description
 -----------
 
 COMEDI drivers for PCI devices that need no special clean-up of private data
-and have no ioremapped regions other than that pointed to by \ ``dev``\ ->mmio may
+and have no ioremapped regions other than that pointed to by \ ``dev->mmio``\  may
 use this function as its "detach" handler called by the COMEDI core when a
 COMEDI device is being detached from the low-level driver.  It may be also
 called from a more specific "detach" handler that does additional clean-up.
 
-Free the IRQ if \ ``dev``\ ->irq is non-zero, iounmap \ ``dev``\ ->mmio if it is
+Free the IRQ if \ ``dev->irq``\  is non-zero, iounmap \ ``dev->mmio``\  if it is
 non-%NULL, and call \ :c:func:`comedi_pci_disable`\  to release the PCI device's regions
 and disable it.
 
@@ -121,14 +125,17 @@ comedi_pci_auto_config
 
     Configure/probe a PCI COMEDI device
 
-    :param struct pci_dev \*pcidev:
+    :param pcidev:
         PCI device.
+    :type pcidev: struct pci_dev \*
 
-    :param struct comedi_driver \*driver:
+    :param driver:
         Registered COMEDI driver.
+    :type driver: struct comedi_driver \*
 
-    :param unsigned long context:
+    :param context:
         Driver specific data, passed to \ :c:func:`comedi_auto_config`\ .
+    :type context: unsigned long
 
 .. _`comedi_pci_auto_config.description`:
 
@@ -158,8 +165,9 @@ comedi_pci_auto_unconfig
 
     Unconfigure/remove a PCI COMEDI device
 
-    :param struct pci_dev \*pcidev:
+    :param pcidev:
         PCI device.
+    :type pcidev: struct pci_dev \*
 
 .. _`comedi_pci_auto_unconfig.description`:
 
@@ -185,11 +193,13 @@ comedi_pci_driver_register
 
     Register a PCI COMEDI driver
 
-    :param struct comedi_driver \*comedi_driver:
+    :param comedi_driver:
         COMEDI driver to be registered.
+    :type comedi_driver: struct comedi_driver \*
 
-    :param struct pci_driver \*pci_driver:
+    :param pci_driver:
         PCI driver to be registered.
+    :type pci_driver: struct pci_driver \*
 
 .. _`comedi_pci_driver_register.description`:
 
@@ -216,11 +226,13 @@ comedi_pci_driver_unregister
 
     Unregister a PCI COMEDI driver
 
-    :param struct comedi_driver \*comedi_driver:
+    :param comedi_driver:
         COMEDI driver to be unregistered.
+    :type comedi_driver: struct comedi_driver \*
 
-    :param struct pci_driver \*pci_driver:
+    :param pci_driver:
         PCI driver to be unregistered.
+    :type pci_driver: struct pci_driver \*
 
 .. _`comedi_pci_driver_unregister.description`:
 

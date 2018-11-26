@@ -10,8 +10,9 @@ nilfs_palloc_entries_per_group
 
     get the number of entries per group
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: const struct inode \*
 
 .. _`nilfs_palloc_entries_per_group.description`:
 

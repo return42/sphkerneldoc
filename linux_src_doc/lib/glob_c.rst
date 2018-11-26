@@ -10,11 +10,13 @@ glob_match
 
     Shell-style pattern matching, like !fnmatch(pat, str, 0)
 
-    :param char const \*pat:
+    :param pat:
         Shell-style pattern to match, e.g. "\*.[ch]".
+    :type pat: char const \*
 
-    :param char const \*str:
+    :param str:
         String to match.  The pattern must match the entire string.
+    :type str: char const \*
 
 .. _`glob_match.description`:
 

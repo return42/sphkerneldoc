@@ -31,11 +31,13 @@ drm_syncobj_find
 
     lookup and reference a sync object.
 
-    :param struct drm_file \*file_private:
+    :param file_private:
         drm file private pointer
+    :type file_private: struct drm_file \*
 
-    :param u32 handle:
+    :param handle:
         sync object handle to lookup.
+    :type handle: u32
 
 .. _`drm_syncobj_find.description`:
 
@@ -45,85 +47,58 @@ Description
 Returns a reference to the syncobj pointed to by handle or NULL. The
 reference must be released by calling \ :c:func:`drm_syncobj_put`\ .
 
-.. _`drm_syncobj_add_callback`:
-
-drm_syncobj_add_callback
-========================
-
-.. c:function:: void drm_syncobj_add_callback(struct drm_syncobj *syncobj, struct drm_syncobj_cb *cb, drm_syncobj_func_t func)
-
-    adds a callback to syncobj::cb_list
-
-    :param struct drm_syncobj \*syncobj:
-        Sync object to which to add the callback
-
-    :param struct drm_syncobj_cb \*cb:
-        Callback to add
-
-    :param drm_syncobj_func_t func:
-        Func to use when initializing the drm_syncobj_cb struct
-
-.. _`drm_syncobj_add_callback.description`:
-
-Description
------------
-
-This adds a callback to be called next time the fence is replaced
-
-.. _`drm_syncobj_remove_callback`:
-
-drm_syncobj_remove_callback
-===========================
-
-.. c:function:: void drm_syncobj_remove_callback(struct drm_syncobj *syncobj, struct drm_syncobj_cb *cb)
-
-    removes a callback to syncobj::cb_list
-
-    :param struct drm_syncobj \*syncobj:
-        Sync object from which to remove the callback
-
-    :param struct drm_syncobj_cb \*cb:
-        Callback to remove
-
 .. _`drm_syncobj_replace_fence`:
 
 drm_syncobj_replace_fence
 =========================
 
-.. c:function:: void drm_syncobj_replace_fence(struct drm_syncobj *syncobj, struct dma_fence *fence)
+.. c:function:: void drm_syncobj_replace_fence(struct drm_syncobj *syncobj, u64 point, struct dma_fence *fence)
 
     replace fence in a sync object.
 
-    :param struct drm_syncobj \*syncobj:
+    :param syncobj:
         Sync object to replace fence in
+    :type syncobj: struct drm_syncobj \*
 
-    :param struct dma_fence \*fence:
+    :param point:
+        timeline point
+    :type point: u64
+
+    :param fence:
         fence to install in sync file.
+    :type fence: struct dma_fence \*
 
 .. _`drm_syncobj_replace_fence.description`:
 
 Description
 -----------
 
-This replaces the fence on a sync object.
+This replaces the fence on a sync object, or a timeline point fence.
 
 .. _`drm_syncobj_find_fence`:
 
 drm_syncobj_find_fence
 ======================
 
-.. c:function:: int drm_syncobj_find_fence(struct drm_file *file_private, u32 handle, struct dma_fence **fence)
+.. c:function:: int drm_syncobj_find_fence(struct drm_file *file_private, u32 handle, u64 point, struct dma_fence **fence)
 
     lookup and reference the fence in a sync object
 
-    :param struct drm_file \*file_private:
+    :param file_private:
         drm file private pointer
+    :type file_private: struct drm_file \*
 
-    :param u32 handle:
+    :param handle:
         sync object handle to lookup.
+    :type handle: u32
 
-    :param struct dma_fence \*\*fence:
+    :param point:
+        timeline point
+    :type point: u64
+
+    :param fence:
         out parameter for the fence
+    :type fence: struct dma_fence \*\*
 
 .. _`drm_syncobj_find_fence.description`:
 
@@ -146,8 +121,9 @@ drm_syncobj_free
 
     free a sync object.
 
-    :param struct kref \*kref:
+    :param kref:
         kref to free.
+    :type kref: struct kref \*
 
 .. _`drm_syncobj_free.description`:
 
@@ -165,14 +141,17 @@ drm_syncobj_create
 
     create a new syncobj
 
-    :param struct drm_syncobj \*\*out_syncobj:
+    :param out_syncobj:
         returned syncobj
+    :type out_syncobj: struct drm_syncobj \*\*
 
-    :param uint32_t flags:
+    :param flags:
         DRM_SYNCOBJ_* flags
+    :type flags: uint32_t
 
-    :param struct dma_fence \*fence:
+    :param fence:
         if non-NULL, the syncobj will represent this fence
+    :type fence: struct dma_fence \*
 
 .. _`drm_syncobj_create.description`:
 
@@ -194,14 +173,17 @@ drm_syncobj_get_handle
 
     get a handle from a syncobj
 
-    :param struct drm_file \*file_private:
+    :param file_private:
         drm file private pointer
+    :type file_private: struct drm_file \*
 
-    :param struct drm_syncobj \*syncobj:
+    :param syncobj:
         Sync object to export
+    :type syncobj: struct drm_syncobj \*
 
-    :param u32 \*handle:
+    :param handle:
         out parameter with the new handle
+    :type handle: u32 \*
 
 .. _`drm_syncobj_get_handle.description`:
 
@@ -222,11 +204,13 @@ drm_syncobj_get_fd
 
     get a file descriptor from a syncobj
 
-    :param struct drm_syncobj \*syncobj:
+    :param syncobj:
         Sync object to export
+    :type syncobj: struct drm_syncobj \*
 
-    :param int \*p_fd:
+    :param p_fd:
         out parameter with the new file descriptor
+    :type p_fd: int \*
 
 .. _`drm_syncobj_get_fd.description`:
 
@@ -246,8 +230,9 @@ drm_syncobj_open
 
     initalizes syncobj file-private structures at devnode open time
 
-    :param struct drm_file \*file_private:
+    :param file_private:
         drm file-private structure to set up
+    :type file_private: struct drm_file \*
 
 .. _`drm_syncobj_open.description`:
 
@@ -266,8 +251,9 @@ drm_syncobj_release
 
     release file-private sync object resources
 
-    :param struct drm_file \*file_private:
+    :param file_private:
         drm file-private structure to clean up
+    :type file_private: struct drm_file \*
 
 .. _`drm_syncobj_release.description`:
 
@@ -287,8 +273,9 @@ drm_timeout_abs_to_jiffies
 
     calculate jiffies timeout from absolute value
 
-    :param int64_t timeout_nsec:
+    :param timeout_nsec:
         timeout nsec component in ns, 0 for poll
+    :type timeout_nsec: int64_t
 
 .. _`drm_timeout_abs_to_jiffies.description`:
 

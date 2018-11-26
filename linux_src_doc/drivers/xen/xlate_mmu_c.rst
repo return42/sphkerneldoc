@@ -10,15 +10,18 @@ xen_xlate_map_ballooned_pages
 
     map a new set of ballooned pages
 
-    :param xen_pfn_t \*\*gfns:
+    :param gfns:
         returns the array of corresponding GFNs
+    :type gfns: xen_pfn_t \*\*
 
-    :param void \*\*virt:
+    :param virt:
         returns the virtual address of the mapped region
+    :type virt: void \*\*
 
-    :param unsigned long nr_grant_frames:
+    :param nr_grant_frames:
         number of GFNs
         \ ``return``\  0 on success, error otherwise
+    :type nr_grant_frames: unsigned long
 
 .. _`xen_xlate_map_ballooned_pages.description`:
 

@@ -10,8 +10,9 @@ PHY_CalculateBitShift
 
     PHY_CalculateBitShift
 
-    :param u32 BitMask:
+    :param BitMask:
         *undescribed*
+    :type BitMask: u32
 
 .. _`phy_calculatebitshift.overview`:
 

@@ -10,8 +10,9 @@ ide_device_get
 
     get an additional reference to a ide_drive_t
 
-    :param ide_drive_t \*drive:
+    :param drive:
         device to get a reference to
+    :type drive: ide_drive_t \*
 
 .. _`ide_device_get.description`:
 
@@ -30,8 +31,9 @@ ide_device_put
 
     release a reference to a ide_drive_t
 
-    :param ide_drive_t \*drive:
+    :param drive:
         device to release a reference on
+    :type drive: ide_drive_t \*
 
 .. _`ide_device_put.description`:
 

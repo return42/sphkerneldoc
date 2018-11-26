@@ -10,17 +10,21 @@ amdgpu_pll_reduce_ratio
 
     fractional number reduction
 
-    :param unsigned \*nom:
+    :param nom:
         nominator
+    :type nom: unsigned \*
 
-    :param unsigned \*den:
+    :param den:
         denominator
+    :type den: unsigned \*
 
-    :param unsigned nom_min:
+    :param nom_min:
         minimum value for nominator
+    :type nom_min: unsigned
 
-    :param unsigned den_min:
+    :param den_min:
         minimum value for denominator
+    :type den_min: unsigned
 
 .. _`amdgpu_pll_reduce_ratio.description`:
 
@@ -40,26 +44,33 @@ amdgpu_pll_get_fb_ref_div
 
     feedback and ref divider calculation
 
-    :param unsigned nom:
+    :param nom:
         nominator
+    :type nom: unsigned
 
-    :param unsigned den:
+    :param den:
         denominator
+    :type den: unsigned
 
-    :param unsigned post_div:
+    :param post_div:
         post divider
+    :type post_div: unsigned
 
-    :param unsigned fb_div_max:
+    :param fb_div_max:
         feedback divider maximum
+    :type fb_div_max: unsigned
 
-    :param unsigned ref_div_max:
+    :param ref_div_max:
         reference divider maximum
+    :type ref_div_max: unsigned
 
-    :param unsigned \*fb_div:
+    :param fb_div:
         resulting feedback divider
+    :type fb_div: unsigned \*
 
-    :param unsigned \*ref_div:
+    :param ref_div:
         resulting reference divider
+    :type ref_div: unsigned \*
 
 .. _`amdgpu_pll_get_fb_ref_div.description`:
 
@@ -78,26 +89,33 @@ amdgpu_pll_compute
 
     compute PLL paramaters
 
-    :param struct amdgpu_pll \*pll:
+    :param pll:
         information about the PLL
+    :type pll: struct amdgpu_pll \*
 
-    :param u32 freq:
+    :param freq:
         *undescribed*
+    :type freq: u32
 
-    :param u32 \*dot_clock_p:
+    :param dot_clock_p:
         resulting pixel clock
+    :type dot_clock_p: u32 \*
 
-    :param u32 \*fb_div_p:
+    :param fb_div_p:
         *undescribed*
+    :type fb_div_p: u32 \*
 
-    :param u32 \*frac_fb_div_p:
+    :param frac_fb_div_p:
         *undescribed*
+    :type frac_fb_div_p: u32 \*
 
-    :param u32 \*ref_div_p:
+    :param ref_div_p:
         *undescribed*
+    :type ref_div_p: u32 \*
 
-    :param u32 \*post_div_p:
+    :param post_div_p:
         *undescribed*
+    :type post_div_p: u32 \*
 
 .. _`amdgpu_pll_compute.fb_div_p`:
 
@@ -143,8 +161,9 @@ amdgpu_pll_get_use_mask
 
     look up a mask of which pplls are in use
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`amdgpu_pll_get_use_mask.description`:
 
@@ -162,8 +181,9 @@ amdgpu_pll_get_shared_dp_ppll
 
     return the PPLL used by another crtc for DP
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`amdgpu_pll_get_shared_dp_ppll.description`:
 
@@ -183,8 +203,9 @@ amdgpu_pll_get_shared_nondp_ppll
 
     return the PPLL used by another non-DP crtc
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`amdgpu_pll_get_shared_nondp_ppll.description`:
 

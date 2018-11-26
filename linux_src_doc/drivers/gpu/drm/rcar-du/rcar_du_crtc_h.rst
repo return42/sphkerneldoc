@@ -24,6 +24,7 @@ Definition
         unsigned int mmio_offset;
         unsigned int index;
         bool initialized;
+        u32 dsysr;
         bool vblank_enable;
         struct drm_pending_vblank_event *event;
         wait_queue_head_t flip_wait;
@@ -34,6 +35,8 @@ Definition
         struct rcar_du_group *group;
         struct rcar_du_vsp *vsp;
         unsigned int vsp_pipe;
+        const char *const *sources;
+        unsigned int sources_count;
     }
 
 .. _`rcar_du_crtc.members`:
@@ -58,6 +61,9 @@ index
 
 initialized
     whether the CRTC has been initialized and clocks enabled
+
+dsysr
+    cached value of the DSYSR register
 
 vblank_enable
     whether vblank events are enabled on this CRTC
@@ -88,6 +94,12 @@ vsp
 
 vsp_pipe
     index of the VSP pipeline feeding video to this CRTC
+
+sources
+    *undescribed*
+
+sources_count
+    *undescribed*
 
 .. _`rcar_du_crtc_state`:
 

@@ -10,14 +10,17 @@ input_mt_init_slots
 
     initialize MT input slots
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device supporting MT events and finger tracking
+    :type dev: struct input_dev \*
 
-    :param unsigned int num_slots:
+    :param num_slots:
         number of slots used by the device
+    :type num_slots: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         mt tasks to handle in core
+    :type flags: unsigned int
 
 .. _`input_mt_init_slots.description`:
 
@@ -42,8 +45,9 @@ input_mt_destroy_slots
 
     frees the MT slots of the input device
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device with allocated MT slots
+    :type dev: struct input_dev \*
 
 .. _`input_mt_destroy_slots.description`:
 
@@ -62,14 +66,17 @@ input_mt_report_slot_state
 
     report contact state
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device with allocated MT slots
+    :type dev: struct input_dev \*
 
-    :param unsigned int tool_type:
+    :param tool_type:
         the tool type to use in this slot
+    :type tool_type: unsigned int
 
-    :param bool active:
+    :param active:
         true if contact is active, false otherwise
+    :type active: bool
 
 .. _`input_mt_report_slot_state.description`:
 
@@ -93,11 +100,13 @@ input_mt_report_finger_count
 
     report contact count
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device with allocated MT slots
+    :type dev: struct input_dev \*
 
-    :param int count:
+    :param count:
         the number of contacts
+    :type count: int
 
 .. _`input_mt_report_finger_count.description`:
 
@@ -119,11 +128,13 @@ input_mt_report_pointer_emulation
 
     common pointer emulation
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device with allocated MT slots
+    :type dev: struct input_dev \*
 
-    :param bool use_count:
+    :param use_count:
         report number of active contacts as finger count
+    :type use_count: bool
 
 .. _`input_mt_report_pointer_emulation.description`:
 
@@ -145,8 +156,9 @@ input_mt_drop_unused
 
     Inactivate slots not seen in this frame
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device with allocated MT slots
+    :type dev: struct input_dev \*
 
 .. _`input_mt_drop_unused.description`:
 
@@ -164,8 +176,9 @@ input_mt_sync_frame
 
     synchronize mt frame
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device with allocated MT slots
+    :type dev: struct input_dev \*
 
 .. _`input_mt_sync_frame.description`:
 
@@ -185,20 +198,25 @@ input_mt_assign_slots
 
     perform a best-match assignment
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device with allocated MT slots
+    :type dev: struct input_dev \*
 
-    :param int \*slots:
+    :param slots:
         the slot assignment to be filled
+    :type slots: int \*
 
-    :param const struct input_mt_pos \*pos:
+    :param pos:
         the position array to match
+    :type pos: const struct input_mt_pos \*
 
-    :param int num_pos:
+    :param num_pos:
         number of positions
+    :type num_pos: int
 
-    :param int dmax:
+    :param dmax:
         maximum ABS_MT_POSITION displacement (zero for infinite)
+    :type dmax: int
 
 .. _`input_mt_assign_slots.description`:
 
@@ -224,11 +242,13 @@ input_mt_get_slot_by_key
 
     return slot matching key
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device with allocated MT slots
+    :type dev: struct input_dev \*
 
-    :param int key:
+    :param key:
         the key of the sought slot
+    :type key: int
 
 .. _`input_mt_get_slot_by_key.description`:
 

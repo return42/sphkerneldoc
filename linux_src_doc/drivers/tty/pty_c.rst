@@ -10,14 +10,17 @@ pty_write
 
     write to a pty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty we write from
+    :type tty: struct tty_struct \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         kernel buffer of data
+    :type buf: const unsigned char \*
 
-    :param int c:
+    :param c:
         *undescribed*
+    :type c: int
 
 .. _`pty_write.description`:
 
@@ -38,8 +41,9 @@ pty_write_room
 
     write space
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty we are writing from
+    :type tty: struct tty_struct \*
 
 .. _`pty_write_room.description`:
 
@@ -58,8 +62,9 @@ pty_chars_in_buffer
 
     characters currently in our tx queue
 
-    :param struct tty_struct \*tty:
+    :param tty:
         our tty
+    :type tty: struct tty_struct \*
 
 .. _`pty_chars_in_buffer.description`:
 
@@ -78,11 +83,13 @@ pty_resize
 
     resize event
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty being resized
+    :type tty: struct tty_struct \*
 
-    :param struct winsize \*ws:
+    :param ws:
         window size being set.
+    :type ws: struct winsize \*
 
 .. _`pty_resize.description`:
 
@@ -101,8 +108,9 @@ pty_start
 
     \ :c:func:`start`\  handler pty_stop  - \ :c:func:`stop`\  handler
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty being flow-controlled
+    :type tty: struct tty_struct \*
 
 .. _`pty_start.description`:
 
@@ -123,14 +131,17 @@ pty_common_install
 
     set up the pty pair
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the pty driver
+    :type driver: struct tty_driver \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty being instantiated
+    :type tty: struct tty_struct \*
 
-    :param bool legacy:
+    :param legacy:
         true if this is BSD style
+    :type legacy: bool
 
 .. _`pty_common_install.description`:
 
@@ -156,14 +167,17 @@ ptm_open_peer
 
     open the peer of a pty
 
-    :param struct file \*master:
+    :param master:
         the open struct file of the ptmx device node
+    :type master: struct file \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the master of the pty being opened
+    :type tty: struct tty_struct \*
 
-    :param int flags:
+    :param flags:
         the flags for open
+    :type flags: int
 
 .. _`ptm_open_peer.description`:
 
@@ -183,14 +197,17 @@ ptm_unix98_lookup
 
     find a pty master
 
-    :param struct tty_driver \*driver:
+    :param driver:
         ptm driver
+    :type driver: struct tty_driver \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param int idx:
+    :param idx:
         tty index
+    :type idx: int
 
 .. _`ptm_unix98_lookup.description`:
 
@@ -209,14 +226,17 @@ pts_unix98_lookup
 
     find a pty slave
 
-    :param struct tty_driver \*driver:
+    :param driver:
         pts driver
+    :type driver: struct tty_driver \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param int idx:
+    :param idx:
         tty index
+    :type idx: int
 
 .. _`pts_unix98_lookup.description`:
 
@@ -235,11 +255,13 @@ ptmx_open
 
     open a unix 98 pty master
 
-    :param struct inode \*inode:
+    :param inode:
         inode of device file
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file pointer to tty
+    :type filp: struct file \*
 
 .. _`ptmx_open.description`:
 

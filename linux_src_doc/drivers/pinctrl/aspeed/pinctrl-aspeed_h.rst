@@ -10,14 +10,17 @@ SIG_DESC_BIT
 
     hand macro for describing an SCU descriptor enabled by the state of one bit. The disable value is derived.
 
-    :param  reg:
+    :param reg:
         The signal's associated register, offset from base
+    :type reg: 
 
-    :param  idx:
+    :param idx:
         The signal's bit index in the register
+    :type idx: 
 
-    :param  val:
+    :param val:
         The value (0 or 1) that enables the function
+    :type val: 
 
 .. _`sig_desc_set`:
 
@@ -28,11 +31,13 @@ SIG_DESC_SET
 
     hand macro expanding to an SCU descriptor enabled by a set bit.
 
-    :param  reg:
+    :param reg:
         The register, offset from base
+    :type reg: 
 
-    :param  idx:
+    :param idx:
         The bit index in the register
+    :type idx: 
 
 .. _`sig_expr_decl`:
 
@@ -41,12 +46,14 @@ SIG_EXPR_DECL
 
 .. c:function::  SIG_EXPR_DECL( sig,  func,  ...)
 
-    :param  sig:
+    :param sig:
         A macro symbol name for the signal (is subjected to stringification
         and token pasting)
+    :type sig: 
 
-    :param  func:
+    :param func:
         The function in which the signal is participating
+    :type func: 
 
     :param ellipsis ellipsis:
         Signal descriptors that define the signal expression
@@ -76,11 +83,13 @@ SIG_EXPR_PTR
 
 .. c:function::  SIG_EXPR_PTR( sig,  func)
 
-    :param  sig:
+    :param sig:
         The macro symbol name for the signal (subjected to token pasting)
+    :type sig: 
 
-    :param  func:
+    :param func:
         The macro symbol name for the function (subjected to token pasting)
+    :type func: 
 
 .. _`sig_expr_list_decl`:
 
@@ -89,8 +98,9 @@ SIG_EXPR_LIST_DECL
 
 .. c:function::  SIG_EXPR_LIST_DECL( sig,  ...)
 
-    :param  sig:
+    :param sig:
         A macro symbol name for the signal (is subjected to token pasting)
+    :type sig: 
 
     :param ellipsis ellipsis:
         Signal expression structure pointers (use \ :c:func:`SIG_EXPR_PTR`\ )
@@ -123,11 +133,13 @@ SIG_EXPR_LIST_DECL_SINGLE
 
     hand macro for declaring a function expression and an expression list with a single function.
 
-    :param  sig:
+    :param sig:
         *undescribed*
+    :type sig: 
 
-    :param  func:
+    :param func:
         A macro symbol name for the function (is subjected to token pasting)
+    :type func: 
 
     :param ellipsis ellipsis:
         Function descriptors that define the function expression
@@ -150,17 +162,21 @@ MS_PIN_DECL
 
     signal pin
 
-    :param  pin:
+    :param pin:
         The pin number
+    :type pin: 
 
-    :param  other:
+    :param other:
         Macro name for "other" functionality (subjected to stringification)
+    :type other: 
 
-    :param  high:
+    :param high:
         Macro name for the highest priority signal functions
+    :type high: 
 
-    :param  low:
+    :param low:
         Macro name for the low signal functions
+    :type low: 
 
 .. _`ms_pin_decl.for-example`:
 
@@ -184,14 +200,17 @@ SS_PIN_DECL
 
 .. c:function::  SS_PIN_DECL( pin,  other,  sig)
 
-    :param  pin:
+    :param pin:
         The pin number
+    :type pin: 
 
-    :param  other:
+    :param other:
         Macro name for "other" functionality (subjected to stringification)
+    :type other: 
 
-    :param  sig:
+    :param sig:
         Macro name for the signal (subjected to stringification)
+    :type sig: 
 
 .. _`ss_pin_decl.for-example`:
 
@@ -210,14 +229,17 @@ SSSF_PIN_DECL
 
 .. c:function::  SSSF_PIN_DECL( pin,  other,  sig,  ...)
 
-    :param  pin:
+    :param pin:
         The pin number
+    :type pin: 
 
-    :param  other:
+    :param other:
         Macro name for "other" functionality (subjected to stringification)
+    :type other: 
 
-    :param  sig:
+    :param sig:
         Macro name for the signal (subjected to stringification)
+    :type sig: 
 
     :param ellipsis ellipsis:
         Signal descriptors that define the function expression

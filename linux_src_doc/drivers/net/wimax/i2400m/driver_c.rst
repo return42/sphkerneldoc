@@ -10,11 +10,13 @@
 
     Bring up driver communication with the device
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
-    :param enum i2400m_bri flags:
+    :param flags:
         boot mode flags
+    :type flags: enum i2400m_bri
 
 .. _`__i2400m_dev_start.return`:
 
@@ -43,8 +45,9 @@ shutdown, the bus-tx code could try to access it).
 
     Tear down driver communication with the device
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
 .. _`__i2400m_dev_stop.return`:
 
@@ -66,11 +69,13 @@ i2400m_dev_reset_handle
 
     Handle a device's reset in a thread context
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         *undescribed*
+    :type i2400m: struct i2400m \*
 
-    :param const char \*reason:
+    :param reason:
         *undescribed*
+    :type reason: const char \*
 
 .. _`i2400m_dev_reset_handle.description`:
 
@@ -95,8 +100,9 @@ i2400m_init
 
     Initialize a 'struct i2400m' from all zeroes
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         *undescribed*
+    :type i2400m: struct i2400m \*
 
 .. _`i2400m_init.description`:
 
@@ -114,11 +120,13 @@ i2400m_setup
 
     bus-generic setup function for the i2400m device
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor (bus-specific parts have been initialized)
+    :type i2400m: struct i2400m \*
 
-    :param enum i2400m_bri bm_flags:
+    :param bm_flags:
         *undescribed*
+    :type bm_flags: enum i2400m_bri
 
 .. _`i2400m_setup.return`:
 
@@ -140,8 +148,9 @@ i2400m_release
 
     release the bus-generic driver resources
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         *undescribed*
+    :type i2400m: struct i2400m \*
 
 .. _`i2400m_release.description`:
 

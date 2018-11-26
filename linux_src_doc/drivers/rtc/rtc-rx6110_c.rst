@@ -10,11 +10,13 @@ rx6110_rtc_tm_to_data
 
     convert rtc_time to native time encoding
 
-    :param struct rtc_time \*tm:
+    :param tm:
         holds date and time
+    :type tm: struct rtc_time \*
 
-    :param u8 \*data:
+    :param data:
         holds the encoding in rx6110 native form
+    :type data: u8 \*
 
 .. _`rx6110_data_to_rtc_tm`:
 
@@ -25,11 +27,13 @@ rx6110_data_to_rtc_tm
 
     convert native time encoding to rtc_time
 
-    :param u8 \*data:
+    :param data:
         holds the encoding in rx6110 native form
+    :type data: u8 \*
 
-    :param struct rtc_time \*tm:
+    :param tm:
         holds date and time
+    :type tm: struct rtc_time \*
 
 .. _`rx6110_set_time`:
 
@@ -40,11 +44,13 @@ rx6110_set_time
 
     set the current time in the rx6110 registers
 
-    :param struct device \*dev:
+    :param dev:
         the rtc device in use
+    :type dev: struct device \*
 
-    :param struct rtc_time \*tm:
+    :param tm:
         holds date and time
+    :type tm: struct rtc_time \*
 
 .. _`rx6110_set_time.bug`:
 
@@ -71,11 +77,13 @@ rx6110_get_time
 
     get the current time from the rx6110 registers
 
-    :param struct device \*dev:
+    :param dev:
         the rtc device in use
+    :type dev: struct device \*
 
-    :param struct rtc_time \*tm:
+    :param tm:
         holds date and time
+    :type tm: struct rtc_time \*
 
 .. _`rx6110_init`:
 
@@ -86,8 +94,9 @@ rx6110_init
 
     initialize the rx6110 registers
 
-    :param struct rx6110_data \*rx6110:
+    :param rx6110:
         pointer to the rx6110 struct in use
+    :type rx6110: struct rx6110_data \*
 
 .. _`rx6110_probe`:
 
@@ -98,8 +107,9 @@ rx6110_probe
 
     initialize rtc driver
 
-    :param struct spi_device \*spi:
+    :param spi:
         pointer to spi device
+    :type spi: struct spi_device \*
 
 .. This file was automatic generated / don't edit.
 

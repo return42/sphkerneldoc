@@ -10,8 +10,9 @@ ixgbevf_start_hw_vf
 
     Prepare hardware for Tx/Rx
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbevf_start_hw_vf.description`:
 
@@ -32,8 +33,9 @@ ixgbevf_init_hw_vf
 
     virtual function hardware initialization
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbevf_init_hw_vf.description`:
 
@@ -52,8 +54,9 @@ ixgbevf_reset_hw_vf
 
     Performs hardware reset
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbevf_reset_hw_vf.description`:
 
@@ -72,8 +75,9 @@ ixgbevf_hv_reset_hw_vf
 
     V variant; the VF/PF communication is through the PCI config space.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to private hardware struct
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbevf_stop_hw_vf`:
 
@@ -84,8 +88,9 @@ ixgbevf_stop_hw_vf
 
     Generic stop Tx/Rx units
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbevf_stop_hw_vf.description`:
 
@@ -106,11 +111,13 @@ ixgbevf_mta_vector
 
     Determines bit-vector in multicast table to set
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 \*mc_addr:
+    :param mc_addr:
         the multicast address
+    :type mc_addr: u8 \*
 
 .. _`ixgbevf_mta_vector.description`:
 
@@ -133,11 +140,13 @@ ixgbevf_get_mac_addr_vf
 
     Read device MAC address
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         pointer to storage for retrieved MAC address
+    :type mac_addr: u8 \*
 
 .. _`ixgbevf_get_reta_locked`:
 
@@ -148,14 +157,17 @@ ixgbevf_get_reta_locked
 
     get the RSS redirection table (RETA) contents.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*reta:
+    :param reta:
         buffer to fill with RETA contents.
+    :type reta: u32 \*
 
-    :param int num_rx_queues:
+    :param num_rx_queues:
         Number of Rx queues configured for this port
+    :type num_rx_queues: int
 
 .. _`ixgbevf_get_reta_locked.description`:
 
@@ -181,11 +193,13 @@ ixgbevf_get_rss_key_locked
 
     get the RSS Random Key
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 \*rss_key:
+    :param rss_key:
         buffer to fill with RSS Hash Key contents.
+    :type rss_key: u8 \*
 
 .. _`ixgbevf_get_rss_key_locked.description`:
 
@@ -211,17 +225,21 @@ ixgbevf_set_rar_vf
 
     set device MAC address
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 index:
+    :param index:
         Receive address register to write
+    :type index: u32
 
-    :param u8 \*addr:
+    :param addr:
         Address to put into receive address register
+    :type addr: u8 \*
 
-    :param u32 vmdq:
+    :param vmdq:
         Unused in this implementation
+    :type vmdq: u32
 
 .. _`ixgbevf_hv_set_rar_vf`:
 
@@ -232,17 +250,21 @@ ixgbevf_hv_set_rar_vf
 
     set device MAC address Hyper-V variant
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 index:
+    :param index:
         Receive address register to write
+    :type index: u32
 
-    :param u8 \*addr:
+    :param addr:
         Address to put into receive address register
+    :type addr: u8 \*
 
-    :param u32 vmdq:
+    :param vmdq:
         Unused in this implementation
+    :type vmdq: u32
 
 .. _`ixgbevf_hv_set_rar_vf.description`:
 
@@ -262,11 +284,13 @@ ixgbevf_update_mc_addr_list_vf
 
     Update Multicast addresses
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         pointer to net device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbevf_update_mc_addr_list_vf.description`:
 
@@ -284,11 +308,13 @@ ixgbevf_hv_update_mc_addr_list_vf
 
     V variant - just a stub.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         unused
+    :type hw: struct ixgbe_hw \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         unused
+    :type netdev: struct net_device \*
 
 .. _`ixgbevf_update_xcast_mode`:
 
@@ -299,11 +325,13 @@ ixgbevf_update_xcast_mode
 
     Update Multicast mode
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param int xcast_mode:
+    :param xcast_mode:
         new multicast mode
+    :type xcast_mode: int
 
 .. _`ixgbevf_update_xcast_mode.description`:
 
@@ -321,11 +349,13 @@ ixgbevf_hv_update_xcast_mode
 
     V variant - just a stub.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         unused
+    :type hw: struct ixgbe_hw \*
 
-    :param int xcast_mode:
+    :param xcast_mode:
         unused
+    :type xcast_mode: int
 
 .. _`ixgbevf_set_vfta_vf`:
 
@@ -336,17 +366,21 @@ ixgbevf_set_vfta_vf
 
     Set/Unset VLAN filter table address
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 vlan:
+    :param vlan:
         12 bit VLAN ID
+    :type vlan: u32
 
-    :param u32 vind:
+    :param vind:
         unused by VF drivers
+    :type vind: u32
 
-    :param bool vlan_on:
+    :param vlan_on:
         if true then set bit, else clear bit
+    :type vlan_on: bool
 
 .. _`ixgbevf_hv_set_vfta_vf`:
 
@@ -357,17 +391,21 @@ ixgbevf_hv_set_vfta_vf
 
     V variant - just a stub.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         unused
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 vlan:
+    :param vlan:
         unused
+    :type vlan: u32
 
-    :param u32 vind:
+    :param vind:
         unused
+    :type vind: u32
 
-    :param bool vlan_on:
+    :param vlan_on:
         unused
+    :type vlan_on: bool
 
 .. _`ixgbevf_setup_mac_link_vf`:
 
@@ -378,17 +416,21 @@ ixgbevf_setup_mac_link_vf
 
     Setup MAC link settings
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         Unused in this implementation
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg:
+    :param autoneg:
         Unused in this implementation
+    :type autoneg: bool
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         Unused in this implementation
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbevf_setup_mac_link_vf.description`:
 
@@ -407,17 +449,21 @@ ixgbevf_check_mac_link_vf
 
     Get link/speed status
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed \*speed:
+    :param speed:
         pointer to link speed
+    :type speed: ixgbe_link_speed \*
 
-    :param bool \*link_up:
+    :param link_up:
         true is link is up, false otherwise
+    :type link_up: bool \*
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         unused
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbevf_check_mac_link_vf.description`:
 
@@ -435,17 +481,21 @@ ixgbevf_hv_check_mac_link_vf
 
     V variant; there is no mailbox communication.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to private hardware struct
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed \*speed:
+    :param speed:
         pointer to link speed
+    :type speed: ixgbe_link_speed \*
 
-    :param bool \*link_up:
+    :param link_up:
         true is link is up, false otherwise
+    :type link_up: bool \*
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         unused
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbevf_set_rlpml_vf`:
 
@@ -456,11 +506,13 @@ ixgbevf_set_rlpml_vf
 
     Set the maximum receive packet length
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 max_size:
+    :param max_size:
         value to assign to max frame size
+    :type max_size: u16
 
 .. _`ixgbevf_hv_set_rlpml_vf`:
 
@@ -471,12 +523,14 @@ ixgbevf_hv_set_rlpml_vf
 
     Set the maximum receive packet length
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 max_size:
+    :param max_size:
         value to assign to max frame size
         Hyper-V variant.
+    :type max_size: u16
 
 .. _`ixgbevf_negotiate_api_version_vf`:
 
@@ -487,11 +541,13 @@ ixgbevf_negotiate_api_version_vf
 
     Negotiate supported API version
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param int api:
+    :param api:
         integer containing requested API version
+    :type api: int
 
 .. _`ixgbevf_hv_negotiate_api_version_vf`:
 
@@ -502,12 +558,14 @@ ixgbevf_hv_negotiate_api_version_vf
 
     Negotiate supported API version
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param int api:
+    :param api:
         integer containing requested API version
         Hyper-V version - only ixgbe_mbox_api_10 supported.
+    :type api: int
 
 .. This file was automatic generated / don't edit.
 

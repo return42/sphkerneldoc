@@ -131,8 +131,9 @@ whc_std_last
 
     is this sTD the URB's last?
 
-    :param struct whc_std \*std:
+    :param std:
         the sTD to check.
+    :type std: struct whc_std \*
 
 .. This file was automatic generated / don't edit.
 

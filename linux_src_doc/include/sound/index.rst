@@ -15,7 +15,6 @@ sound
     core_h
     dmaengine_pcm_h
     hda_regmap_h
-    hdaudio_ext_h
     hdaudio_h
     info_h
     jack_h

@@ -10,11 +10,13 @@ BUILD_BUG_ON_MSG
 
     break compile if a condition is true & emit supplied error message.
 
-    :param  cond:
+    :param cond:
         *undescribed*
+    :type cond: 
 
-    :param  msg:
+    :param msg:
         *undescribed*
+    :type msg: 
 
 .. _`build_bug_on_msg.description`:
 
@@ -32,8 +34,9 @@ BUILD_BUG_ON
 
     break compile if a condition is true.
 
-    :param  condition:
+    :param condition:
         the condition which the compiler should know is false.
+    :type condition: 
 
 .. _`build_bug_on.description`:
 
@@ -63,8 +66,9 @@ BUILD_BUG
 
     break compile if used.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`build_bug.description`:
 

@@ -10,17 +10,21 @@ ixgbe_read_mbx
 
     Reads a message from the mailbox
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to read
+    :type mbx_id: u16
 
 .. _`ixgbe_read_mbx.description`:
 
@@ -38,17 +42,21 @@ ixgbe_write_mbx
 
     Write a message to the mailbox
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to write
+    :type mbx_id: u16
 
 .. _`ixgbe_write_mbx.description`:
 
@@ -66,11 +74,13 @@ ixgbe_check_for_msg
 
     checks to see if someone sent us mail
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to check
+    :type mbx_id: u16
 
 .. _`ixgbe_check_for_msg.description`:
 
@@ -88,11 +98,13 @@ ixgbe_check_for_ack
 
     checks to see if someone sent us ACK
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to check
+    :type mbx_id: u16
 
 .. _`ixgbe_check_for_ack.description`:
 
@@ -110,11 +122,13 @@ ixgbe_check_for_rst
 
     checks to see if other side has reset
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to check
+    :type mbx_id: u16
 
 .. _`ixgbe_check_for_rst.description`:
 
@@ -132,11 +146,13 @@ ixgbe_poll_for_msg
 
     Wait for message notification
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to write
+    :type mbx_id: u16
 
 .. _`ixgbe_poll_for_msg.description`:
 
@@ -154,11 +170,13 @@ ixgbe_poll_for_ack
 
     Wait for message acknowledgement
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to write
+    :type mbx_id: u16
 
 .. _`ixgbe_poll_for_ack.description`:
 
@@ -176,17 +194,21 @@ ixgbe_read_posted_mbx
 
     Wait for message notification and receive message
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to write
+    :type mbx_id: u16
 
 .. _`ixgbe_read_posted_mbx.description`:
 
@@ -205,17 +227,21 @@ ixgbe_write_posted_mbx
 
     Write a message to the mailbox, wait for ack
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 mbx_id:
+    :param mbx_id:
         id of mailbox to write
+    :type mbx_id: u16
 
 .. _`ixgbe_write_posted_mbx.description`:
 
@@ -234,11 +260,13 @@ ixgbe_check_for_msg_pf
 
     checks to see if the VF has sent mail
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`ixgbe_check_for_msg_pf.description`:
 
@@ -256,11 +284,13 @@ ixgbe_check_for_ack_pf
 
     checks to see if the VF has ACKed
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`ixgbe_check_for_ack_pf.description`:
 
@@ -278,11 +308,13 @@ ixgbe_check_for_rst_pf
 
     checks to see if the VF has reset
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`ixgbe_check_for_rst_pf.description`:
 
@@ -300,11 +332,13 @@ ixgbe_obtain_mbx_lock_pf
 
     obtain mailbox lock
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`ixgbe_obtain_mbx_lock_pf.description`:
 
@@ -322,17 +356,21 @@ ixgbe_write_mbx_pf
 
     Places a message in the mailbox
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`ixgbe_write_mbx_pf.description`:
 
@@ -350,17 +388,21 @@ ixgbe_read_mbx_pf
 
     Read a message from the mailbox
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         The message buffer
+    :type msg: u32 \*
 
-    :param u16 size:
+    :param size:
         Length of buffer
+    :type size: u16
 
-    :param u16 vf_number:
+    :param vf_number:
         the VF index
+    :type vf_number: u16
 
 .. _`ixgbe_read_mbx_pf.description`:
 
@@ -380,8 +422,9 @@ ixgbe_init_mbx_params_pf
 
     set initial values for pf mailbox
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_init_mbx_params_pf.description`:
 

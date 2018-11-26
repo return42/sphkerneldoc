@@ -10,8 +10,9 @@ kobject_namespace
 
     return \ ``kobj``\ 's namespace tag
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject in question
+    :type kobj: struct kobject \*
 
 .. _`kobject_namespace.description`:
 
@@ -22,6 +23,36 @@ Returns namespace tag of \ ``kobj``\  if its parent has namespace ops enabled
 and thus \ ``kobj``\  should have a namespace tag associated with it.  Returns
 \ ``NULL``\  otherwise.
 
+.. _`kobject_get_ownership`:
+
+kobject_get_ownership
+=====================
+
+.. c:function:: void kobject_get_ownership(struct kobject *kobj, kuid_t *uid, kgid_t *gid)
+
+    get sysfs ownership data for \ ``kobj``\ 
+
+    :param kobj:
+        kobject in question
+    :type kobj: struct kobject \*
+
+    :param uid:
+        kernel user ID for sysfs objects
+    :type uid: kuid_t \*
+
+    :param gid:
+        kernel group ID for sysfs objects
+    :type gid: kgid_t \*
+
+.. _`kobject_get_ownership.description`:
+
+Description
+-----------
+
+Returns initial uid/gid pair that should be used when creating sysfs
+representation of given kobject. Normally used to adjust ownership of
+objects in a container.
+
 .. _`kobject_get_path`:
 
 kobject_get_path
@@ -31,11 +62,13 @@ kobject_get_path
 
     generate and return the path associated with a given kobj and kset pair.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject in question, with which to build the path
+    :type kobj: struct kobject \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         the allocation type used to allocate the path
+    :type gfp_mask: gfp_t
 
 .. _`kobject_get_path.description`:
 
@@ -53,14 +86,17 @@ kobject_set_name_vargs
 
     Set the name of an kobject
 
-    :param struct kobject \*kobj:
+    :param kobj:
         struct kobject to set the name of
+    :type kobj: struct kobject \*
 
-    :param const char \*fmt:
+    :param fmt:
         format string used to build the name
+    :type fmt: const char \*
 
-    :param va_list vargs:
+    :param vargs:
         vargs to format the string.
+    :type vargs: va_list
 
 .. _`kobject_set_name`:
 
@@ -71,11 +107,13 @@ kobject_set_name
 
     Set the name of a kobject
 
-    :param struct kobject \*kobj:
+    :param kobj:
         struct kobject to set the name of
+    :type kobj: struct kobject \*
 
-    :param const char \*fmt:
+    :param fmt:
         format string used to build the name
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -98,11 +136,13 @@ kobject_init
 
     initialize a kobject structure
 
-    :param struct kobject \*kobj:
+    :param kobj:
         pointer to the kobject to initialize
+    :type kobj: struct kobject \*
 
-    :param struct kobj_type \*ktype:
+    :param ktype:
         pointer to the ktype for this kobject.
+    :type ktype: struct kobj_type \*
 
 .. _`kobject_init.description`:
 
@@ -125,14 +165,17 @@ kobject_add
 
     the main kobject add function
 
-    :param struct kobject \*kobj:
+    :param kobj:
         the kobject to add
+    :type kobj: struct kobject \*
 
-    :param struct kobject \*parent:
+    :param parent:
         pointer to the parent of the kobject.
+    :type parent: struct kobject \*
 
-    :param const char \*fmt:
+    :param fmt:
         format to name the kobject with.
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -170,17 +213,21 @@ kobject_init_and_add
 
     initialize a kobject structure and add it to the kobject hierarchy
 
-    :param struct kobject \*kobj:
+    :param kobj:
         pointer to the kobject to initialize
+    :type kobj: struct kobject \*
 
-    :param struct kobj_type \*ktype:
+    :param ktype:
         pointer to the ktype for this kobject.
+    :type ktype: struct kobj_type \*
 
-    :param struct kobject \*parent:
+    :param parent:
         pointer to the parent of this kobject.
+    :type parent: struct kobject \*
 
-    :param const char \*fmt:
+    :param fmt:
         the name of the kobject.
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -203,11 +250,13 @@ kobject_rename
 
     change the name of an object
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object in question.
+    :type kobj: struct kobject \*
 
-    :param const char \*new_name:
+    :param new_name:
         object's new name
+    :type new_name: const char \*
 
 .. _`kobject_rename.description`:
 
@@ -228,11 +277,13 @@ kobject_move
 
     move object to another parent
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object in question.
+    :type kobj: struct kobject \*
 
-    :param struct kobject \*new_parent:
+    :param new_parent:
         object's new parent (can be NULL)
+    :type new_parent: struct kobject \*
 
 .. _`kobject_del`:
 
@@ -243,8 +294,9 @@ kobject_del
 
     unlink kobject from hierarchy.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object.
+    :type kobj: struct kobject \*
 
 .. _`kobject_get`:
 
@@ -255,8 +307,9 @@ kobject_get
 
     increment refcount for object.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object.
+    :type kobj: struct kobject \*
 
 .. _`kobject_put`:
 
@@ -267,8 +320,9 @@ kobject_put
 
     decrement refcount for object.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object.
+    :type kobj: struct kobject \*
 
 .. _`kobject_put.description`:
 
@@ -286,8 +340,9 @@ kobject_create
 
     create a struct kobject dynamically
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kobject_create.description`:
 
@@ -311,11 +366,13 @@ kobject_create_and_add
 
     create a struct kobject dynamically and register it with sysfs
 
-    :param const char \*name:
+    :param name:
         the name for the kobject
+    :type name: const char \*
 
-    :param struct kobject \*parent:
+    :param parent:
         the parent kobject of this kobject, if any.
+    :type parent: struct kobject \*
 
 .. _`kobject_create_and_add.description`:
 
@@ -338,8 +395,9 @@ kset_init
 
     initialize a kset for use
 
-    :param struct kset \*k:
+    :param k:
         kset
+    :type k: struct kset \*
 
 .. _`kset_register`:
 
@@ -350,8 +408,9 @@ kset_register
 
     initialize and add a kset.
 
-    :param struct kset \*k:
+    :param k:
         kset.
+    :type k: struct kset \*
 
 .. _`kset_unregister`:
 
@@ -362,8 +421,9 @@ kset_unregister
 
     remove a kset.
 
-    :param struct kset \*k:
+    :param k:
         kset.
+    :type k: struct kset \*
 
 .. _`kset_find_obj`:
 
@@ -374,18 +434,20 @@ kset_find_obj
 
     search for object in kset.
 
-    :param struct kset \*kset:
+    :param kset:
         kset we're looking in.
+    :type kset: struct kset \*
 
-    :param const char \*name:
+    :param name:
         object's name.
+    :type name: const char \*
 
 .. _`kset_find_obj.description`:
 
 Description
 -----------
 
-Lock kset via \ ``kset``\ ->subsys, and iterate over \ ``kset``\ ->list,
+Lock kset via \ ``kset->subsys``\ , and iterate over \ ``kset->list``\ ,
 looking for a matching kobject. If matching object is found
 take a reference and return the object.
 
@@ -398,14 +460,17 @@ kset_create
 
     create a struct kset dynamically
 
-    :param const char \*name:
+    :param name:
         the name for the kset
+    :type name: const char \*
 
-    :param const struct kset_uevent_ops \*uevent_ops:
+    :param uevent_ops:
         a struct kset_uevent_ops for the kset
+    :type uevent_ops: const struct kset_uevent_ops \*
 
-    :param struct kobject \*parent_kobj:
+    :param parent_kobj:
         the parent kobject of this kset, if any.
+    :type parent_kobj: struct kobject \*
 
 .. _`kset_create.description`:
 
@@ -429,14 +494,17 @@ kset_create_and_add
 
     create a struct kset dynamically and add it to sysfs
 
-    :param const char \*name:
+    :param name:
         the name for the kset
+    :type name: const char \*
 
-    :param const struct kset_uevent_ops \*uevent_ops:
+    :param uevent_ops:
         a struct kset_uevent_ops for the kset
+    :type uevent_ops: const struct kset_uevent_ops \*
 
-    :param struct kobject \*parent_kobj:
+    :param parent_kobj:
         the parent kobject of this kset, if any.
+    :type parent_kobj: struct kobject \*
 
 .. _`kset_create_and_add.description`:
 

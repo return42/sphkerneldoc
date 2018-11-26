@@ -10,11 +10,13 @@
 
     Callback function to dump trace messages
 
-    :param  2:
+    :param 2:
         *undescribed*
+    :type 2: 
 
-    :param  3:
+    :param 3:
         *undescribed*
+    :type 3: 
 
 .. _`__printf.description`:
 
@@ -32,8 +34,9 @@ ish_init
 
     Init function
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
 .. _`ish_init.description`:
 
@@ -60,11 +63,13 @@ ish_probe
 
     PCI driver probe callback
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         pci device id
+    :type ent: const struct pci_device_id \*
 
 .. _`ish_probe.description`:
 
@@ -89,8 +94,9 @@ ish_remove
 
     PCI driver remove callback
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device
+    :type pdev: struct pci_dev \*
 
 .. _`ish_remove.description`:
 
@@ -108,8 +114,9 @@ ish_resume_handler
 
     Work function to complete resume
 
-    :param struct work_struct \*work:
+    :param work:
         work struct
+    :type work: struct work_struct \*
 
 .. _`ish_resume_handler.description`:
 
@@ -130,8 +137,9 @@ ish_suspend
 
     ISH suspend callback
 
-    :param struct device \*device:
+    :param device:
         device pointer
+    :type device: struct device \*
 
 .. _`ish_suspend.description`:
 
@@ -156,8 +164,9 @@ ish_resume
 
     ISH resume callback
 
-    :param struct device \*device:
+    :param device:
         device pointer
+    :type device: struct device \*
 
 .. _`ish_resume.description`:
 

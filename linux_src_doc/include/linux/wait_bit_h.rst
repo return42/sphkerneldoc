@@ -10,14 +10,17 @@ wait_on_bit
 
     wait for a bit to be cleared
 
-    :param unsigned long \*word:
+    :param word:
         the word being waited on, a kernel virtual address
+    :type word: unsigned long \*
 
-    :param int bit:
+    :param bit:
         the bit of the word being waited on
+    :type bit: int
 
-    :param unsigned mode:
+    :param mode:
         the task state to sleep in
+    :type mode: unsigned
 
 .. _`wait_on_bit.description`:
 
@@ -43,14 +46,17 @@ wait_on_bit_io
 
     wait for a bit to be cleared
 
-    :param unsigned long \*word:
+    :param word:
         the word being waited on, a kernel virtual address
+    :type word: unsigned long \*
 
-    :param int bit:
+    :param bit:
         the bit of the word being waited on
+    :type bit: int
 
-    :param unsigned mode:
+    :param mode:
         the task state to sleep in
+    :type mode: unsigned
 
 .. _`wait_on_bit_io.description`:
 
@@ -74,17 +80,21 @@ wait_on_bit_timeout
 
     wait for a bit to be cleared or a timeout elapses
 
-    :param unsigned long \*word:
+    :param word:
         the word being waited on, a kernel virtual address
+    :type word: unsigned long \*
 
-    :param int bit:
+    :param bit:
         the bit of the word being waited on
+    :type bit: int
 
-    :param unsigned mode:
+    :param mode:
         the task state to sleep in
+    :type mode: unsigned
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout, in jiffies
+    :type timeout: unsigned long
 
 .. _`wait_on_bit_timeout.description`:
 
@@ -108,17 +118,21 @@ wait_on_bit_action
 
     wait for a bit to be cleared
 
-    :param unsigned long \*word:
+    :param word:
         the word being waited on, a kernel virtual address
+    :type word: unsigned long \*
 
-    :param int bit:
+    :param bit:
         the bit of the word being waited on
+    :type bit: int
 
-    :param wait_bit_action_f \*action:
+    :param action:
         the function used to sleep, which may take special actions
+    :type action: wait_bit_action_f \*
 
-    :param unsigned mode:
+    :param mode:
         the task state to sleep in
+    :type mode: unsigned
 
 .. _`wait_on_bit_action.description`:
 
@@ -143,14 +157,17 @@ wait_on_bit_lock
 
     wait for a bit to be cleared, when wanting to set it
 
-    :param unsigned long \*word:
+    :param word:
         the word being waited on, a kernel virtual address
+    :type word: unsigned long \*
 
-    :param int bit:
+    :param bit:
         the bit of the word being waited on
+    :type bit: int
 
-    :param unsigned mode:
+    :param mode:
         the task state to sleep in
+    :type mode: unsigned
 
 .. _`wait_on_bit_lock.description`:
 
@@ -179,14 +196,17 @@ wait_on_bit_lock_io
 
     wait for a bit to be cleared, when wanting to set it
 
-    :param unsigned long \*word:
+    :param word:
         the word being waited on, a kernel virtual address
+    :type word: unsigned long \*
 
-    :param int bit:
+    :param bit:
         the bit of the word being waited on
+    :type bit: int
 
-    :param unsigned mode:
+    :param mode:
         the task state to sleep in
+    :type mode: unsigned
 
 .. _`wait_on_bit_lock_io.description`:
 
@@ -211,17 +231,21 @@ wait_on_bit_lock_action
 
     wait for a bit to be cleared, when wanting to set it
 
-    :param unsigned long \*word:
+    :param word:
         the word being waited on, a kernel virtual address
+    :type word: unsigned long \*
 
-    :param int bit:
+    :param bit:
         the bit of the word being waited on
+    :type bit: int
 
-    :param wait_bit_action_f \*action:
+    :param action:
         the function used to sleep, which may take special actions
+    :type action: wait_bit_action_f \*
 
-    :param unsigned mode:
+    :param mode:
         the task state to sleep in
+    :type mode: unsigned
 
 .. _`wait_on_bit_lock_action.description`:
 
@@ -247,11 +271,13 @@ clear_and_wake_up_bit
 
     clear a bit and wake up anyone waiting on that bit
 
-    :param int bit:
+    :param bit:
         the bit of the word being waited on
+    :type bit: int
 
-    :param void \*word:
+    :param word:
         the word being waited on, a kernel virtual address
+    :type word: void \*
 
 .. _`clear_and_wake_up_bit.description`:
 

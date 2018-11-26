@@ -10,8 +10,9 @@ octeon_io_clk_delay
 
     wait for a given number of io clock cycles to pass.
 
-    :param unsigned long count:
+    :param count:
         The number of clocks to wait.
+    :type count: unsigned long
 
 .. _`octeon_io_clk_delay.description`:
 

@@ -10,20 +10,25 @@ string_get_size
 
     get the size in the specified units
 
-    :param u64 size:
+    :param size:
         The size to be converted in blocks
+    :type size: u64
 
-    :param u64 blk_size:
+    :param blk_size:
         Size of the block (use 1 for size in bytes)
+    :type blk_size: u64
 
-    :param const enum string_size_units units:
+    :param units:
         units to use (powers of 1000 or 1024)
+    :type units: const enum string_size_units
 
-    :param char \*buf:
+    :param buf:
         buffer to format to
+    :type buf: char \*
 
-    :param int len:
+    :param len:
         length of buffer
+    :type len: int
 
 .. _`string_get_size.description`:
 
@@ -43,16 +48,19 @@ string_unescape
 
     unquote characters in the given string
 
-    :param char \*src:
+    :param src:
         source buffer (escaped)
+    :type src: char \*
 
-    :param char \*dst:
+    :param dst:
         destination buffer (unescaped)
+    :type dst: char \*
 
-    :param size_t size:
+    :param size:
         size of the destination buffer (0 to unlimit)
+    :type size: size_t
 
-    :param unsigned int flags:
+    :param flags:
         combination of the flags (bitwise OR):
         \ ``UNESCAPE_SPACE``\ :
         '\f' - form feed
@@ -71,6 +79,7 @@ string_unescape
         '\e' - escape
         \ ``UNESCAPE_ANY``\ :
         all previous together
+    :type flags: unsigned int
 
 .. _`string_unescape.description`:
 
@@ -103,19 +112,23 @@ string_escape_mem
 
     quote characters in the given memory buffer
 
-    :param const char \*src:
+    :param src:
         source buffer (unescaped)
+    :type src: const char \*
 
-    :param size_t isz:
+    :param isz:
         source buffer size
+    :type isz: size_t
 
-    :param char \*dst:
+    :param dst:
         destination buffer (escaped)
+    :type dst: char \*
 
-    :param size_t osz:
+    :param osz:
         destination buffer size
+    :type osz: size_t
 
-    :param unsigned int flags:
+    :param flags:
         combination of the flags (bitwise OR):
         \ ``ESCAPE_SPACE``\ : (special white space, not space itself)
         '\f' - form feed
@@ -139,12 +152,14 @@ string_escape_mem
         all previous together
         \ ``ESCAPE_HEX``\ :
         '\xHH' - byte with hexadecimal value HH (2 digits)
+    :type flags: unsigned int
 
-    :param const char \*only:
+    :param only:
         NULL-terminated string containing characters used to limit
         the selected escape class. If characters are included in \ ``only``\ 
         that would not normally be escaped by the classes selected
         in \ ``flags``\ , they will be copied to \ ``dst``\  unescaped.
+    :type only: const char \*
 
 .. _`string_escape_mem.description`:
 

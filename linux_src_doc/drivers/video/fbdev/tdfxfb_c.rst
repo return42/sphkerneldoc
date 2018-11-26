@@ -10,11 +10,13 @@ tdfxfb_probe
 
     Device Initializiation
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI Device to initialize
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         PCI Device ID
+    :type id: const struct pci_device_id \*
 
 .. _`tdfxfb_probe.description`:
 
@@ -32,8 +34,9 @@ tdfxfb_remove
 
     Device removal
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI Device to cleanup
+    :type pdev: struct pci_dev \*
 
 .. _`tdfxfb_remove.description`:
 

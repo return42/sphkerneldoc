@@ -126,8 +126,9 @@ stm32_spi_get_fifo_size
 
     Return fifo size
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         pointer to the spi controller data structure
+    :type spi: struct stm32_spi \*
 
 .. _`stm32_spi_get_bpw_mask`:
 
@@ -138,8 +139,9 @@ stm32_spi_get_bpw_mask
 
     Return bits per word mask
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         pointer to the spi controller data structure
+    :type spi: struct stm32_spi \*
 
 .. _`stm32_spi_prepare_mbr`:
 
@@ -150,11 +152,13 @@ stm32_spi_prepare_mbr
 
     Determine SPI_CFG1.MBR value
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         pointer to the spi controller data structure
+    :type spi: struct stm32_spi \*
 
-    :param u32 speed_hz:
+    :param speed_hz:
         requested speed
+    :type speed_hz: u32
 
 .. _`stm32_spi_prepare_mbr.description`:
 
@@ -172,8 +176,9 @@ stm32_spi_prepare_fthlv
 
     Determine FIFO threshold level
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         pointer to the spi controller data structure
+    :type spi: struct stm32_spi \*
 
 .. _`stm32_spi_write_txfifo`:
 
@@ -184,8 +189,9 @@ stm32_spi_write_txfifo
 
     Write bytes in Transmit Data Register
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         pointer to the spi controller data structure
+    :type spi: struct stm32_spi \*
 
 .. _`stm32_spi_write_txfifo.description`:
 
@@ -204,11 +210,13 @@ stm32_spi_read_rxfifo
 
     Read bytes in Receive Data Register
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         pointer to the spi controller data structure
+    :type spi: struct stm32_spi \*
 
-    :param bool flush:
+    :param flush:
         *undescribed*
+    :type flush: bool
 
 .. _`stm32_spi_read_rxfifo.description`:
 
@@ -227,8 +235,9 @@ stm32_spi_enable
 
     Enable SPI controller
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         pointer to the spi controller data structure
+    :type spi: struct stm32_spi \*
 
 .. _`stm32_spi_enable.description`:
 
@@ -247,8 +256,9 @@ stm32_spi_disable
 
     Disable SPI controller
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         pointer to the spi controller data structure
+    :type spi: struct stm32_spi \*
 
 .. _`stm32_spi_disable.description`:
 
@@ -268,14 +278,17 @@ stm32_spi_can_dma
 
     Determine if the transfer is eligible for DMA use
 
-    :param struct spi_master \*master:
+    :param master:
         *undescribed*
+    :type master: struct spi_master \*
 
-    :param struct spi_device \*spi_dev:
+    :param spi_dev:
         *undescribed*
+    :type spi_dev: struct spi_device \*
 
-    :param struct spi_transfer \*transfer:
+    :param transfer:
         *undescribed*
+    :type transfer: struct spi_transfer \*
 
 .. _`stm32_spi_can_dma.description`:
 
@@ -293,11 +306,13 @@ stm32_spi_irq
 
     Interrupt handler for SPI controller events
 
-    :param int irq:
+    :param irq:
         interrupt line
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         SPI controller master interface
+    :type dev_id: void \*
 
 .. _`stm32_spi_setup`:
 
@@ -308,8 +323,9 @@ stm32_spi_setup
 
     setup device chip select
 
-    :param struct spi_device \*spi_dev:
+    :param spi_dev:
         *undescribed*
+    :type spi_dev: struct spi_device \*
 
 .. _`stm32_spi_prepare_msg`:
 
@@ -320,11 +336,13 @@ stm32_spi_prepare_msg
 
     set up the controller to transfer a single message
 
-    :param struct spi_master \*master:
+    :param master:
         *undescribed*
+    :type master: struct spi_master \*
 
-    :param struct spi_message \*msg:
+    :param msg:
         *undescribed*
+    :type msg: struct spi_message \*
 
 .. _`stm32_spi_dma_cb`:
 
@@ -335,8 +353,9 @@ stm32_spi_dma_cb
 
     dma callback
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`stm32_spi_dma_cb.description`:
 
@@ -355,14 +374,17 @@ stm32_spi_dma_config
 
     configure dma slave channel depending on current transfer bits_per_word.
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct stm32_spi \*
 
-    :param struct dma_slave_config \*dma_conf:
+    :param dma_conf:
         *undescribed*
+    :type dma_conf: struct dma_slave_config \*
 
-    :param enum dma_transfer_direction dir:
+    :param dir:
         *undescribed*
+    :type dir: enum dma_transfer_direction
 
 .. _`stm32_spi_transfer_one_irq`:
 
@@ -373,8 +395,9 @@ stm32_spi_transfer_one_irq
 
     transfer a single spi_transfer using interrupts
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct stm32_spi \*
 
 .. _`stm32_spi_transfer_one_irq.description`:
 
@@ -393,11 +416,13 @@ stm32_spi_transfer_one_dma
 
     transfer a single spi_transfer using DMA
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct stm32_spi \*
 
-    :param struct spi_transfer \*xfer:
+    :param xfer:
         *undescribed*
+    :type xfer: struct spi_transfer \*
 
 .. _`stm32_spi_transfer_one_dma.description`:
 
@@ -416,14 +441,17 @@ stm32_spi_transfer_one_setup
 
     common setup to transfer a single spi_transfer either using DMA or interrupts.
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct stm32_spi \*
 
-    :param struct spi_device \*spi_dev:
+    :param spi_dev:
         *undescribed*
+    :type spi_dev: struct spi_device \*
 
-    :param struct spi_transfer \*transfer:
+    :param transfer:
         *undescribed*
+    :type transfer: struct spi_transfer \*
 
 .. _`stm32_spi_transfer_one`:
 
@@ -434,14 +462,17 @@ stm32_spi_transfer_one
 
     transfer a single spi_transfer
 
-    :param struct spi_master \*master:
+    :param master:
         *undescribed*
+    :type master: struct spi_master \*
 
-    :param struct spi_device \*spi_dev:
+    :param spi_dev:
         *undescribed*
+    :type spi_dev: struct spi_device \*
 
-    :param struct spi_transfer \*transfer:
+    :param transfer:
         *undescribed*
+    :type transfer: struct spi_transfer \*
 
 .. _`stm32_spi_transfer_one.description`:
 
@@ -460,11 +491,13 @@ stm32_spi_unprepare_msg
 
     relax the hardware
 
-    :param struct spi_master \*master:
+    :param master:
         *undescribed*
+    :type master: struct spi_master \*
 
-    :param struct spi_message \*msg:
+    :param msg:
         *undescribed*
+    :type msg: struct spi_message \*
 
 .. _`stm32_spi_unprepare_msg.description`:
 
@@ -485,8 +518,9 @@ stm32_spi_config
 
     Configure SPI controller as SPI master
 
-    :param struct stm32_spi \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct stm32_spi \*
 
 .. This file was automatic generated / don't edit.
 

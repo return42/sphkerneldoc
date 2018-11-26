@@ -10,12 +10,14 @@ wimax_report_rfkill_hw
 
     Reports changes in the hardware RF switch
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor
+    :type wimax_dev: struct wimax_dev \*
 
-    :param enum wimax_rf_state state:
+    :param state:
         New state of the RF Kill switch. \ ``WIMAX_RF_ON``\  radio on,
         \ ``WIMAX_RF_OFF``\  radio off.
+    :type state: enum wimax_rf_state
 
 .. _`wimax_report_rfkill_hw.description`:
 
@@ -42,12 +44,14 @@ wimax_report_rfkill_sw
 
     Reports changes in the software RF switch
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor
+    :type wimax_dev: struct wimax_dev \*
 
-    :param enum wimax_rf_state state:
+    :param state:
         New state of the RF kill switch. \ ``WIMAX_RF_ON``\  radio on,
         \ ``WIMAX_RF_OFF``\  radio off.
+    :type state: enum wimax_rf_state
 
 .. _`wimax_report_rfkill_sw.description`:
 
@@ -73,11 +77,13 @@ wimax_rfkill
 
     Set the software RF switch state for a WiMAX device
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor
+    :type wimax_dev: struct wimax_dev \*
 
-    :param enum wimax_rf_state state:
+    :param state:
         New RF state.
+    :type state: enum wimax_rf_state
 
 .. _`wimax_rfkill.return`:
 

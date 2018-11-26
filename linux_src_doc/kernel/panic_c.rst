@@ -10,8 +10,9 @@ panic
 
     halt the system
 
-    :param const char \*fmt:
+    :param fmt:
         The text string to print
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -34,8 +35,9 @@ print_tainted
 
     return a string to represent the kernel taint state.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`print_tainted.description`:
 
@@ -56,11 +58,13 @@ add_taint
 
     add a taint flag if not already set.
 
-    :param unsigned flag:
+    :param flag:
         one of the TAINT_* constants.
+    :type flag: unsigned
 
-    :param enum lockdep_ok lockdep_ok:
+    :param lockdep_ok:
         whether lock debugging is still OK.
+    :type lockdep_ok: enum lockdep_ok
 
 .. _`add_taint.description`:
 

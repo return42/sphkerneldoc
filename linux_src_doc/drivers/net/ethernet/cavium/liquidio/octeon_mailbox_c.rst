@@ -8,8 +8,9 @@ octeon_mbox_read
 
 .. c:function:: int octeon_mbox_read(struct octeon_mbox *mbox)
 
-    :param struct octeon_mbox \*mbox:
+    :param mbox:
         *undescribed*
+    :type mbox: struct octeon_mbox \*
 
 .. _`octeon_mbox_read.description`:
 
@@ -26,11 +27,13 @@ octeon_mbox_write
 
 .. c:function:: int octeon_mbox_write(struct octeon_device *oct, struct octeon_mbox_cmd *mbox_cmd)
 
-    :param struct octeon_device \*oct:
+    :param oct:
         Pointer Octeon Device
+    :type oct: struct octeon_device \*
 
-    :param struct octeon_mbox_cmd \*mbox_cmd:
+    :param mbox_cmd:
         Cmd to send to mailbox.
+    :type mbox_cmd: struct octeon_mbox_cmd \*
 
 .. _`octeon_mbox_write.description`:
 
@@ -48,11 +51,13 @@ octeon_mbox_process_cmd
 
 .. c:function:: int octeon_mbox_process_cmd(struct octeon_mbox *mbox, struct octeon_mbox_cmd *mbox_cmd)
 
-    :param struct octeon_mbox \*mbox:
+    :param mbox:
         Pointer mailbox
+    :type mbox: struct octeon_mbox \*
 
-    :param struct octeon_mbox_cmd \*mbox_cmd:
+    :param mbox_cmd:
         Pointer to command received
+    :type mbox_cmd: struct octeon_mbox_cmd \*
 
 .. _`octeon_mbox_process_cmd.description`:
 
@@ -68,8 +73,9 @@ octeon_mbox_process_message
 
 .. c:function:: int octeon_mbox_process_message(struct octeon_mbox *mbox)
 
-    :param struct octeon_mbox \*mbox:
+    :param mbox:
         *undescribed*
+    :type mbox: struct octeon_mbox \*
 
 .. _`octeon_mbox_process_message.description`:
 

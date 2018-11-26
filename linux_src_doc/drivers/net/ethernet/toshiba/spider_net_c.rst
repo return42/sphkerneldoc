@@ -10,11 +10,13 @@ spider_net_read_reg
 
     reads an SMMIO register of a card
 
-    :param struct spider_net_card \*card:
+    :param card:
         device structure
+    :type card: struct spider_net_card \*
 
-    :param u32 reg:
+    :param reg:
         register to read from
+    :type reg: u32
 
 .. _`spider_net_read_reg.description`:
 
@@ -32,14 +34,17 @@ spider_net_write_reg
 
     writes to an SMMIO register of a card
 
-    :param struct spider_net_card \*card:
+    :param card:
         device structure
+    :type card: struct spider_net_card \*
 
-    :param u32 reg:
+    :param reg:
         register to write to
+    :type reg: u32
 
-    :param u32 value:
+    :param value:
         value to write into the specified SMMIO register
+    :type value: u32
 
 .. _`spider_net_write_phy`:
 
@@ -50,17 +55,21 @@ spider_net_write_phy
 
     write to phy register
 
-    :param struct net_device \*netdev:
+    :param netdev:
         adapter to be written to
+    :type netdev: struct net_device \*
 
-    :param int mii_id:
+    :param mii_id:
         id of MII
+    :type mii_id: int
 
-    :param int reg:
+    :param reg:
         PHY register
+    :type reg: int
 
-    :param int val:
+    :param val:
         value to be written to phy register
+    :type val: int
 
 .. _`spider_net_write_phy.description`:
 
@@ -80,14 +89,17 @@ spider_net_read_phy
 
     read from phy register
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network device to be read from
+    :type netdev: struct net_device \*
 
-    :param int mii_id:
+    :param mii_id:
         id of MII
+    :type mii_id: int
 
-    :param int reg:
+    :param reg:
         PHY register
+    :type reg: int
 
 .. _`spider_net_read_phy.description`:
 
@@ -108,8 +120,9 @@ spider_net_setup_aneg
 
     initial auto-negotiation setup
 
-    :param struct spider_net_card \*card:
+    :param card:
         device structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_rx_irq_off`:
 
@@ -120,8 +133,9 @@ spider_net_rx_irq_off
 
     switch off rx irq on this spider card
 
-    :param struct spider_net_card \*card:
+    :param card:
         device structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_rx_irq_off.description`:
 
@@ -139,8 +153,9 @@ spider_net_rx_irq_on
 
     switch on rx irq on this spider card
 
-    :param struct spider_net_card \*card:
+    :param card:
         device structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_rx_irq_on.description`:
 
@@ -158,8 +173,9 @@ spider_net_set_promisc
 
     sets the unicast address or the promiscuous mode
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_set_promisc.description`:
 
@@ -178,8 +194,9 @@ spider_net_get_descr_status
 
     - returns the status of a descriptor
 
-    :param struct spider_net_hw_descr \*hwdescr:
+    :param hwdescr:
         *undescribed*
+    :type hwdescr: struct spider_net_hw_descr \*
 
 .. _`spider_net_get_descr_status.description`:
 
@@ -197,11 +214,13 @@ spider_net_free_chain
 
     free descriptor chain
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
-    :param struct spider_net_descr_chain \*chain:
+    :param chain:
         address of chain
+    :type chain: struct spider_net_descr_chain \*
 
 .. _`spider_net_init_chain`:
 
@@ -212,11 +231,13 @@ spider_net_init_chain
 
     alloc and link descriptor chain
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
-    :param struct spider_net_descr_chain \*chain:
+    :param chain:
         address of chain
+    :type chain: struct spider_net_descr_chain \*
 
 .. _`spider_net_init_chain.description`:
 
@@ -237,8 +258,9 @@ spider_net_free_rx_chain_contents
 
     frees descr contents in rx chain
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_free_rx_chain_contents.description`:
 
@@ -256,11 +278,13 @@ spider_net_prepare_rx_descr
 
     Reinitialize RX descriptor
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
-    :param struct spider_net_descr \*descr:
+    :param descr:
         descriptor to re-init
+    :type descr: struct spider_net_descr \*
 
 .. _`spider_net_prepare_rx_descr.description`:
 
@@ -281,8 +305,9 @@ spider_net_enable_rxchtails
 
     sets RX dmac chain tail addresses
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_enable_rxchtails.description`:
 
@@ -302,8 +327,9 @@ spider_net_enable_rxdmac
 
     enables a receive DMA controller
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_enable_rxdmac.description`:
 
@@ -322,8 +348,9 @@ spider_net_disable_rxdmac
 
     disables the receive DMA controller
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_disable_rxdmac.description`:
 
@@ -342,8 +369,9 @@ spider_net_refill_rx_chain
 
     refills descriptors/skbs in the rx chains
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_refill_rx_chain.refills-descriptors-in-the-rx-chain`:
 
@@ -361,8 +389,9 @@ spider_net_alloc_rx_skbs
 
     Allocates rx skbs in rx descriptor chains
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_alloc_rx_skbs.description`:
 
@@ -380,11 +409,13 @@ spider_net_get_multicast_hash
 
     generates hash for multicast filter table
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param __u8 \*addr:
+    :param addr:
         multicast address
+    :type addr: __u8 \*
 
 .. _`spider_net_get_multicast_hash.description`:
 
@@ -405,8 +436,9 @@ spider_net_set_multi
 
     sets multicast addresses and promisc flags
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`spider_net_set_multi.description`:
 
@@ -426,11 +458,13 @@ spider_net_prepare_tx_descr
 
     fill tx descriptor with skb data
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to use
+    :type skb: struct sk_buff \*
 
 .. _`spider_net_prepare_tx_descr.description`:
 
@@ -451,11 +485,13 @@ spider_net_release_tx_chain
 
     processes sent tx descriptors
 
-    :param struct spider_net_card \*card:
+    :param card:
         adapter structure
+    :type card: struct spider_net_card \*
 
-    :param int brutal:
+    :param brutal:
         if set, don't care about whether descriptor seems to be in use
+    :type brutal: int
 
 .. _`spider_net_release_tx_chain.description`:
 
@@ -478,8 +514,9 @@ spider_net_kick_tx_dma
 
     enables TX DMA processing
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_kick_tx_dma.description`:
 
@@ -498,22 +535,24 @@ DMA engine.
 spider_net_xmit
 ===============
 
-.. c:function:: int spider_net_xmit(struct sk_buff *skb, struct net_device *netdev)
+.. c:function:: netdev_tx_t spider_net_xmit(struct sk_buff *skb, struct net_device *netdev)
 
     transmits a frame over the device
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send out
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`spider_net_xmit.description`:
 
 Description
 -----------
 
-returns 0 on success, !0 on failure
+returns NETDEV_TX_OK on success, NETDEV_TX_BUSY on failure
 
 .. _`spider_net_cleanup_tx_ring`:
 
@@ -524,8 +563,9 @@ spider_net_cleanup_tx_ring
 
     cleans up the TX ring
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`spider_net_cleanup_tx_ring.description`:
 
@@ -546,14 +586,17 @@ spider_net_do_ioctl
 
     called for device ioctls
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         request parameter structure for ioctl
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         command code for ioctl
+    :type cmd: int
 
 .. _`spider_net_do_ioctl.description`:
 
@@ -572,11 +615,13 @@ spider_net_pass_skb_up
 
     takes an skb from a descriptor and passes it on
 
-    :param struct spider_net_descr \*descr:
+    :param descr:
         descriptor to process
+    :type descr: struct spider_net_descr \*
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_pass_skb_up.description`:
 
@@ -595,8 +640,9 @@ spider_net_resync_head_ptr
 
     Advance head ptr past empty descrs
 
-    :param struct spider_net_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_resync_head_ptr.description`:
 
@@ -618,8 +664,9 @@ spider_net_decode_one_descr
 
     processes an RX descriptor
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_decode_one_descr.description`:
 
@@ -642,11 +689,13 @@ spider_net_poll
 
     NAPI poll function called by the stack to return packets
 
-    :param struct napi_struct \*napi:
+    :param napi:
         *undescribed*
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         number of packets we can pass to the stack at most
+    :type budget: int
 
 .. _`spider_net_poll.description`:
 
@@ -669,11 +718,13 @@ spider_net_set_mac
 
     sets the MAC of an interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         *undescribed*
+    :type p: void \*
 
 .. _`spider_net_set_mac.description`:
 
@@ -690,8 +741,9 @@ spider_net_link_reset
 
 .. c:function:: void spider_net_link_reset(struct net_device *netdev)
 
-    :param struct net_device \*netdev:
+    :param netdev:
         net device structure
+    :type netdev: struct net_device \*
 
 .. _`spider_net_link_reset.description`:
 
@@ -710,17 +762,21 @@ spider_net_handle_error_irq
 
     handles errors raised by an interrupt
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
-    :param u32 status_reg:
+    :param status_reg:
         interrupt status register 0 (GHIINT0STS)
+    :type status_reg: u32
 
-    :param u32 error_reg1:
+    :param error_reg1:
         *undescribed*
+    :type error_reg1: u32
 
-    :param u32 error_reg2:
+    :param error_reg2:
         *undescribed*
+    :type error_reg2: u32
 
 .. _`spider_net_handle_error_irq.description`:
 
@@ -739,11 +795,13 @@ spider_net_interrupt
 
     interrupt handler for spider_net
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*ptr:
+    :param ptr:
         pointer to net_device
+    :type ptr: void \*
 
 .. _`spider_net_interrupt.description`:
 
@@ -765,8 +823,9 @@ spider_net_poll_controller
 
     artificial interrupt for netconsole etc.
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`spider_net_poll_controller.description`:
 
@@ -784,8 +843,9 @@ spider_net_enable_interrupts
 
     enable interrupts
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_enable_interrupts.description`:
 
@@ -803,8 +863,9 @@ spider_net_disable_interrupts
 
     disable interrupts
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_disable_interrupts.description`:
 
@@ -822,8 +883,9 @@ spider_net_init_card
 
     initializes the card
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_init_card.description`:
 
@@ -842,8 +904,9 @@ spider_net_enable_card
 
     enables the card by setting all kinds of regs
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_enable_card.description`:
 
@@ -861,11 +924,13 @@ spider_net_download_firmware
 
     loads firmware into the adapter
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
-    :param const void \*firmware_ptr:
+    :param firmware_ptr:
         pointer to firmware data
+    :type firmware_ptr: const void \*
 
 .. _`spider_net_download_firmware.description`:
 
@@ -884,8 +949,9 @@ spider_net_init_firmware
 
     reads in firmware parts
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_init_firmware.description`:
 
@@ -928,8 +994,9 @@ spider_net_open
 
     called upon ifonfig up
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`spider_net_open.description`:
 
@@ -948,8 +1015,9 @@ spider_net_link_phy
 
 .. c:function:: void spider_net_link_phy(struct timer_list *t)
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`spider_net_setup_phy`:
 
@@ -960,8 +1028,9 @@ spider_net_setup_phy
 
     setup PHY
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_setup_phy.description`:
 
@@ -981,8 +1050,9 @@ spider_net_workaround_rxramfull
 
     work around firmware bug
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_workaround_rxramfull.description`:
 
@@ -1000,8 +1070,9 @@ spider_net_stop
 
     called upon ifconfig down
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`spider_net_stop.description`:
 
@@ -1019,8 +1090,9 @@ spider_net_tx_timeout_task
 
     task scheduled by the watchdog timeout function (to be called not under interrupt status)
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`spider_net_tx_timeout_task.description`:
 
@@ -1038,8 +1110,9 @@ spider_net_tx_timeout
 
     called when the tx timeout watchdog kicks in.
 
-    :param struct net_device \*netdev:
+    :param netdev:
         interface device structure
+    :type netdev: struct net_device \*
 
 .. _`spider_net_tx_timeout.description`:
 
@@ -1057,8 +1130,9 @@ spider_net_setup_netdev_ops
 
     initialization of net_device operations
 
-    :param struct net_device \*netdev:
+    :param netdev:
         net_device structure
+    :type netdev: struct net_device \*
 
 .. _`spider_net_setup_netdev_ops.description`:
 
@@ -1076,8 +1150,9 @@ spider_net_setup_netdev
 
     initialization of net_device
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_setup_netdev.description`:
 
@@ -1097,8 +1172,9 @@ spider_net_alloc_card
 
     allocates net_device and card structure
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`spider_net_alloc_card.description`:
 
@@ -1118,8 +1194,9 @@ spider_net_undo_pci_setup
 
     releases PCI ressources
 
-    :param struct spider_net_card \*card:
+    :param card:
         card structure
+    :type card: struct spider_net_card \*
 
 .. _`spider_net_undo_pci_setup.description`:
 
@@ -1137,8 +1214,9 @@ spider_net_setup_pci_dev
 
     sets up the device in terms of PCI operations
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`spider_net_setup_pci_dev.description`:
 
@@ -1162,11 +1240,13 @@ spider_net_probe
 
     initialization of a device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in the device id list
+    :type ent: const struct pci_device_id \*
 
 .. _`spider_net_probe.description`:
 
@@ -1187,8 +1267,9 @@ spider_net_remove
 
     removal of a device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`spider_net_remove.description`:
 
@@ -1209,8 +1290,9 @@ spider_net_init
 
     init function when the driver is loaded
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`spider_net_init.description`:
 
@@ -1228,8 +1310,9 @@ spider_net_cleanup
 
     exit function when driver is unloaded
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`spider_net_cleanup.description`:
 

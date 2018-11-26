@@ -10,23 +10,29 @@ do_async_gen_syndrome
 
     asynchronously calculate P and/or Q
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param const unsigned char \*scfs:
+    :param scfs:
         *undescribed*
+    :type scfs: const unsigned char \*
 
-    :param int disks:
+    :param disks:
         *undescribed*
+    :type disks: int
 
-    :param struct dmaengine_unmap_data \*unmap:
+    :param unmap:
         *undescribed*
+    :type unmap: struct dmaengine_unmap_data \*
 
-    :param enum dma_ctrl_flags dma_flags:
+    :param dma_flags:
         *undescribed*
+    :type dma_flags: enum dma_ctrl_flags
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         *undescribed*
+    :type submit: struct async_submit_ctl \*
 
 .. _`do_sync_gen_syndrome`:
 
@@ -37,20 +43,25 @@ do_sync_gen_syndrome
 
     synchronously calculate a raid6 syndrome
 
-    :param struct page \*\*blocks:
+    :param blocks:
         *undescribed*
+    :type blocks: struct page \*\*
 
-    :param unsigned int offset:
+    :param offset:
         *undescribed*
+    :type offset: unsigned int
 
-    :param int disks:
+    :param disks:
         *undescribed*
+    :type disks: int
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         *undescribed*
+    :type submit: struct async_submit_ctl \*
 
 .. _`async_gen_syndrome`:
 
@@ -61,20 +72,25 @@ async_gen_syndrome
 
     asynchronously calculate a raid6 syndrome
 
-    :param struct page \*\*blocks:
+    :param blocks:
         source blocks from idx 0..disks-3, P \ ````\  disks-2 and Q \ ````\  disks-1
+    :type blocks: struct page \*\*
 
-    :param unsigned int offset:
+    :param offset:
         common offset into each block (src and dest) to start transaction
+    :type offset: unsigned int
 
-    :param int disks:
+    :param disks:
         number of blocks (including missing P or Q, see below)
+    :type disks: int
 
-    :param size_t len:
+    :param len:
         length of operation in bytes
+    :type len: size_t
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         submission/completion modifiers
+    :type submit: struct async_submit_ctl \*
 
 .. _`async_gen_syndrome.general-note`:
 
@@ -103,26 +119,33 @@ async_syndrome_val
 
     asynchronously validate a raid6 syndrome
 
-    :param struct page \*\*blocks:
+    :param blocks:
         source blocks from idx 0..disks-3, P \ ````\  disks-2 and Q \ ````\  disks-1
+    :type blocks: struct page \*\*
 
-    :param unsigned int offset:
+    :param offset:
         common offset into each block (src and dest) to start transaction
+    :type offset: unsigned int
 
-    :param int disks:
+    :param disks:
         number of blocks (including missing P or Q, see below)
+    :type disks: int
 
-    :param size_t len:
+    :param len:
         length of operation in bytes
+    :type len: size_t
 
-    :param enum sum_check_flags \*pqres:
+    :param pqres:
         on val failure SUM_CHECK_P_RESULT and/or SUM_CHECK_Q_RESULT are set
+    :type pqres: enum sum_check_flags \*
 
-    :param struct page \*spare:
+    :param spare:
         temporary result buffer for the synchronous case
+    :type spare: struct page \*
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         submission / completion modifiers
+    :type submit: struct async_submit_ctl \*
 
 .. _`async_syndrome_val.description`:
 

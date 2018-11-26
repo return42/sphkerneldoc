@@ -10,11 +10,13 @@ rpc_init_rtt
 
     Initialize an RPC RTT estimator context
 
-    :param struct rpc_rtt \*rt:
+    :param rt:
         context to initialize
+    :type rt: struct rpc_rtt \*
 
-    :param unsigned long timeo:
+    :param timeo:
         initial timeout value, in jiffies
+    :type timeo: unsigned long
 
 .. _`rpc_update_rtt`:
 
@@ -25,14 +27,17 @@ rpc_update_rtt
 
     Update an RPC RTT estimator context
 
-    :param struct rpc_rtt \*rt:
+    :param rt:
         context to update
+    :type rt: struct rpc_rtt \*
 
-    :param unsigned int timer:
+    :param timer:
         timer array index (request type)
+    :type timer: unsigned int
 
-    :param long m:
+    :param m:
         recent actual RTT, in jiffies
+    :type m: long
 
 .. _`rpc_update_rtt.description`:
 
@@ -51,11 +56,13 @@ rpc_calc_rto
 
     Provide an estimated timeout value
 
-    :param struct rpc_rtt \*rt:
+    :param rt:
         context to use for calculation
+    :type rt: struct rpc_rtt \*
 
-    :param unsigned int timer:
+    :param timer:
         timer array index (request type)
+    :type timer: unsigned int
 
 .. _`rpc_calc_rto.description`:
 

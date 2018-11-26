@@ -10,26 +10,33 @@
 
     attach a platform interface
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct resource \*io_res:
+    :param io_res:
         Resource representing I/O base
+    :type io_res: struct resource \*
 
-    :param struct resource \*ctl_res:
+    :param ctl_res:
         Resource representing CTL base
+    :type ctl_res: struct resource \*
 
-    :param struct resource \*irq_res:
+    :param irq_res:
         Resource representing IRQ and its flags
+    :type irq_res: struct resource \*
 
-    :param unsigned int ioport_shift:
+    :param ioport_shift:
         I/O port shift
+    :type ioport_shift: unsigned int
 
-    :param int __pio_mask:
+    :param __pio_mask:
         PIO mask
+    :type __pio_mask: int
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         scsi_host_template to use when registering
+    :type sht: struct scsi_host_template \*
 
 .. _`__pata_platform_probe.description`:
 

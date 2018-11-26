@@ -474,7 +474,7 @@ enum perf_event_state
 
 .. c:type:: enum perf_event_state
 
-    the states of a event
+    the states of an event:
 
 .. _`perf_event_state.definition`:
 

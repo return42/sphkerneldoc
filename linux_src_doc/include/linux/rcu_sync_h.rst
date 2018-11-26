@@ -10,8 +10,9 @@ rcu_sync_is_idle
 
     Are readers permitted to use their fastpaths?
 
-    :param struct rcu_sync \*rsp:
+    :param rsp:
         Pointer to rcu_sync structure to use for synchronization
+    :type rsp: struct rcu_sync \*
 
 .. _`rcu_sync_is_idle.description`:
 

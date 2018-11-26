@@ -10,8 +10,9 @@ net_failover_create
 
     Create and register a failover instance
 
-    :param struct net_device \*standby_dev:
+    :param standby_dev:
         *undescribed*
+    :type standby_dev: struct net_device \*
 
 .. _`net_failover_create.description`:
 
@@ -40,8 +41,9 @@ net_failover_destroy
 
     Destroy a failover instance
 
-    :param struct failover \*failover:
+    :param failover:
         pointer to failover instance
+    :type failover: struct failover \*
 
 .. _`net_failover_destroy.description`:
 

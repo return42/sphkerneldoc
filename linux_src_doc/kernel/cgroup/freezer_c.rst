@@ -10,8 +10,9 @@ freezer_css_online
 
     commit creation of a freezer css
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         css being created
+    :type css: struct cgroup_subsys_state \*
 
 .. _`freezer_css_online.description`:
 
@@ -31,8 +32,9 @@ freezer_css_offline
 
     initiate destruction of a freezer css
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         css being destroyed
+    :type css: struct cgroup_subsys_state \*
 
 .. _`freezer_css_offline.description`:
 
@@ -51,8 +53,9 @@ freezer_fork
 
     cgroup post fork callback
 
-    :param struct task_struct \*task:
+    :param task:
         a task which has just been forked
+    :type task: struct task_struct \*
 
 .. _`freezer_fork.description`:
 
@@ -74,8 +77,9 @@ update_if_frozen
 
     update whether a cgroup finished freezing
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         css of interest
+    :type css: struct cgroup_subsys_state \*
 
 .. _`update_if_frozen.description`:
 
@@ -103,14 +107,17 @@ freezer_apply_state
 
     apply state change to a single cgroup_freezer
 
-    :param struct freezer \*freezer:
+    :param freezer:
         freezer to apply state change to
+    :type freezer: struct freezer \*
 
-    :param bool freeze:
+    :param freeze:
         whether to freeze or unfreeze
+    :type freeze: bool
 
-    :param unsigned int state:
+    :param state:
         CGROUP_FREEZING\_\* flag to set or clear
+    :type state: unsigned int
 
 .. _`freezer_apply_state.description`:
 
@@ -129,11 +136,13 @@ freezer_change_state
 
     change the freezing state of a cgroup_freezer
 
-    :param struct freezer \*freezer:
+    :param freezer:
         freezer of interest
+    :type freezer: struct freezer \*
 
-    :param bool freeze:
+    :param freeze:
         whether to freeze or thaw
+    :type freeze: bool
 
 .. _`freezer_change_state.description`:
 

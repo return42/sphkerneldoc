@@ -10,11 +10,13 @@ inherit_flags
 
     inherit flags of the parent inode.
 
-    :param const struct inode \*dir:
+    :param dir:
         parent inode
+    :type dir: const struct inode \*
 
-    :param umode_t mode:
+    :param mode:
         new inode mode flags
+    :type mode: umode_t
 
 .. _`inherit_flags.description`:
 
@@ -39,14 +41,17 @@ ubifs_new_inode
 
     allocate new UBIFS inode object.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct inode \*dir:
+    :param dir:
         parent directory inode
+    :type dir: struct inode \*
 
-    :param umode_t mode:
+    :param mode:
         inode mode flags
+    :type mode: umode_t
 
 .. _`ubifs_new_inode.description`:
 
@@ -66,8 +71,9 @@ vfs_dent_type
 
     get VFS directory entry type.
 
-    :param uint8_t type:
+    :param type:
         UBIFS directory entry type
+    :type type: uint8_t
 
 .. _`vfs_dent_type.description`:
 
@@ -86,11 +92,13 @@ lock_2_inodes
 
     a wrapper for locking two UBIFS inodes.
 
-    :param struct inode \*inode1:
+    :param inode1:
         first inode
+    :type inode1: struct inode \*
 
-    :param struct inode \*inode2:
+    :param inode2:
         second inode
+    :type inode2: struct inode \*
 
 .. _`lock_2_inodes.description`:
 
@@ -110,11 +118,13 @@ unlock_2_inodes
 
     a wrapper for unlocking two UBIFS inodes.
 
-    :param struct inode \*inode1:
+    :param inode1:
         first inode
+    :type inode1: struct inode \*
 
-    :param struct inode \*inode2:
+    :param inode2:
         second inode
+    :type inode2: struct inode \*
 
 .. _`ubifs_check_dir_empty`:
 
@@ -125,8 +135,9 @@ ubifs_check_dir_empty
 
     check if a directory is empty or not.
 
-    :param struct inode \*dir:
+    :param dir:
         VFS inode object of the directory to check
+    :type dir: struct inode \*
 
 .. _`ubifs_check_dir_empty.description`:
 
@@ -146,17 +157,21 @@ lock_4_inodes
 
     a wrapper for locking three UBIFS inodes.
 
-    :param struct inode \*inode1:
+    :param inode1:
         first inode
+    :type inode1: struct inode \*
 
-    :param struct inode \*inode2:
+    :param inode2:
         second inode
+    :type inode2: struct inode \*
 
-    :param struct inode \*inode3:
+    :param inode3:
         third inode
+    :type inode3: struct inode \*
 
-    :param struct inode \*inode4:
+    :param inode4:
         fouth inode
+    :type inode4: struct inode \*
 
 .. _`lock_4_inodes.description`:
 
@@ -179,17 +194,21 @@ unlock_4_inodes
 
     a wrapper for unlocking three UBIFS inodes for rename.
 
-    :param struct inode \*inode1:
+    :param inode1:
         first inode
+    :type inode1: struct inode \*
 
-    :param struct inode \*inode2:
+    :param inode2:
         second inode
+    :type inode2: struct inode \*
 
-    :param struct inode \*inode3:
+    :param inode3:
         third inode
+    :type inode3: struct inode \*
 
-    :param struct inode \*inode4:
+    :param inode4:
         fouth inode
+    :type inode4: struct inode \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ create_field_var_hist
 
     Automatically create a histogram and var for a field
 
-    :param struct hist_trigger_data \*target_hist_data:
+    :param target_hist_data:
         The target hist trigger
+    :type target_hist_data: struct hist_trigger_data \*
 
-    :param char \*subsys_name:
+    :param subsys_name:
         Optional subsystem name
+    :type subsys_name: char \*
 
-    :param char \*event_name:
+    :param event_name:
         Optional event name
+    :type event_name: char \*
 
-    :param char \*field_name:
+    :param field_name:
         The name of the field (and the resulting variable)
+    :type field_name: char \*
 
 .. _`create_field_var_hist.description`:
 
@@ -58,17 +62,21 @@ create_target_field_var
 
     Automatically create a variable for a field
 
-    :param struct hist_trigger_data \*target_hist_data:
+    :param target_hist_data:
         The target hist trigger
+    :type target_hist_data: struct hist_trigger_data \*
 
-    :param char \*subsys_name:
+    :param subsys_name:
         Optional subsystem name
+    :type subsys_name: char \*
 
-    :param char \*event_name:
+    :param event_name:
         Optional event name
+    :type event_name: char \*
 
-    :param char \*var_name:
+    :param var_name:
         The name of the field (and the resulting variable)
+    :type var_name: char \*
 
 .. _`create_target_field_var.description`:
 

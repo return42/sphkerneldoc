@@ -10,8 +10,9 @@ i2c_acpi_register_devices
 
     enumerate I2C slave devices behind adapter
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         pointer to adapter
+    :type adap: struct i2c_adapter \*
 
 .. _`i2c_acpi_register_devices.description`:
 
@@ -31,8 +32,9 @@ i2c_acpi_find_bus_speed
 
     find I2C bus speed from ACPI
 
-    :param struct device \*dev:
+    :param dev:
         The device owning the bus
+    :type dev: struct device \*
 
 .. _`i2c_acpi_find_bus_speed.description`:
 
@@ -53,14 +55,17 @@ i2c_acpi_new_device
 
     Create i2c-client for the Nth I2cSerialBus resource
 
-    :param struct device \*dev:
+    :param dev:
         Device owning the ACPI resources to get the client from
+    :type dev: struct device \*
 
-    :param int index:
+    :param index:
         Index of ACPI resource to get
+    :type index: int
 
-    :param struct i2c_board_info \*info:
+    :param info:
         describes the I2C device; note this is modified (addr gets set)
+    :type info: struct i2c_board_info \*
 
 .. _`i2c_acpi_new_device.context`:
 

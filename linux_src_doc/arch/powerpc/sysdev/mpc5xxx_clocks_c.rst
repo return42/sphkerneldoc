@@ -10,8 +10,9 @@ mpc5xxx_get_bus_frequency
 
     Find the bus frequency for a device
 
-    :param struct device_node \*node:
+    :param node:
         device node
+    :type node: struct device_node \*
 
 .. _`mpc5xxx_get_bus_frequency.description`:
 

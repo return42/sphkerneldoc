@@ -56,8 +56,9 @@ drm_modeset_lock_all
 
     take all modeset locks
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_modeset_lock_all.description`:
 
@@ -84,8 +85,9 @@ drm_modeset_unlock_all
 
     drop all modeset locks
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_modeset_unlock_all.description`:
 
@@ -111,8 +113,9 @@ drm_warn_on_modeset_not_all_locked
 
     check that all modeset locks are locked
 
-    :param struct drm_device \*dev:
+    :param dev:
         device
+    :type dev: struct drm_device \*
 
 .. _`drm_warn_on_modeset_not_all_locked.description`:
 
@@ -130,11 +133,13 @@ drm_modeset_acquire_init
 
     initialize acquire context
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         the acquire context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
-    :param uint32_t flags:
+    :param flags:
         0 or \ ``DRM_MODESET_ACQUIRE_INTERRUPTIBLE``\ 
+    :type flags: uint32_t
 
 .. _`drm_modeset_acquire_init.description`:
 
@@ -154,8 +159,9 @@ drm_modeset_acquire_fini
 
     cleanup acquire context
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         the acquire context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_modeset_drop_locks`:
 
@@ -166,8 +172,9 @@ drm_modeset_drop_locks
 
     drop all locks
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         the acquire context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_modeset_drop_locks.description`:
 
@@ -185,8 +192,9 @@ drm_modeset_backoff
 
     deadlock avoidance backoff
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         the acquire context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_modeset_backoff.description`:
 
@@ -210,8 +218,9 @@ drm_modeset_lock_init
 
     initialize lock
 
-    :param struct drm_modeset_lock \*lock:
+    :param lock:
         lock to init
+    :type lock: struct drm_modeset_lock \*
 
 .. _`drm_modeset_lock`:
 
@@ -222,11 +231,13 @@ drm_modeset_lock
 
     take modeset lock
 
-    :param struct drm_modeset_lock \*lock:
+    :param lock:
         lock to take
+    :type lock: struct drm_modeset_lock \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         acquire ctx
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_modeset_lock.description`:
 
@@ -255,8 +266,9 @@ drm_modeset_lock_single_interruptible
 
     take a single modeset lock
 
-    :param struct drm_modeset_lock \*lock:
+    :param lock:
         lock to take
+    :type lock: struct drm_modeset_lock \*
 
 .. _`drm_modeset_lock_single_interruptible.description`:
 
@@ -277,8 +289,9 @@ drm_modeset_unlock
 
     drop modeset lock
 
-    :param struct drm_modeset_lock \*lock:
+    :param lock:
         lock to release
+    :type lock: struct drm_modeset_lock \*
 
 .. _`drm_modeset_lock_all_ctx`:
 
@@ -289,11 +302,13 @@ drm_modeset_lock_all_ctx
 
     take all modeset locks
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquisition context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_modeset_lock_all_ctx.description`:
 

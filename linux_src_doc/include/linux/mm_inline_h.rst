@@ -10,8 +10,9 @@ page_is_file_cache
 
     should the page be on a file LRU or anon LRU?
 
-    :param struct page \*page:
+    :param page:
         the page to test
+    :type page: struct page \*
 
 .. _`page_is_file_cache.description`:
 
@@ -36,8 +37,9 @@ page_lru_base_type
 
     which LRU list type should a page be on?
 
-    :param struct page \*page:
+    :param page:
         the page to test
+    :type page: struct page \*
 
 .. _`page_lru_base_type.description`:
 
@@ -57,8 +59,9 @@ page_off_lru
 
     which LRU list was page on? clearing its lru flags.
 
-    :param struct page \*page:
+    :param page:
         the page to test
+    :type page: struct page \*
 
 .. _`page_off_lru.description`:
 
@@ -77,8 +80,9 @@ page_lru
 
     which LRU list should a page be on?
 
-    :param struct page \*page:
+    :param page:
         the page to test
+    :type page: struct page \*
 
 .. _`page_lru.description`:
 

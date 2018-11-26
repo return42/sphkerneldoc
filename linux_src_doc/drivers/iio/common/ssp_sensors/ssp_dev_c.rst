@@ -10,11 +10,13 @@ ssp_get_sensor_delay
 
     gets sensor data acquisition period
 
-    :param struct ssp_data \*data:
+    :param data:
         sensorhub structure
+    :type data: struct ssp_data \*
 
-    :param enum ssp_sensor_type type:
+    :param type:
         SSP sensor type
+    :type type: enum ssp_sensor_type
 
 .. _`ssp_get_sensor_delay.description`:
 
@@ -32,14 +34,17 @@ ssp_enable_sensor
 
     enables data acquisition for sensor
 
-    :param struct ssp_data \*data:
+    :param data:
         sensorhub structure
+    :type data: struct ssp_data \*
 
-    :param enum ssp_sensor_type type:
+    :param type:
         SSP sensor type
+    :type type: enum ssp_sensor_type
 
-    :param u32 delay:
+    :param delay:
         delay in ms
+    :type delay: u32
 
 .. _`ssp_enable_sensor.description`:
 
@@ -57,14 +62,17 @@ ssp_change_delay
 
     changes data acquisition for sensor
 
-    :param struct ssp_data \*data:
+    :param data:
         sensorhub structure
+    :type data: struct ssp_data \*
 
-    :param enum ssp_sensor_type type:
+    :param type:
         SSP sensor type
+    :type type: enum ssp_sensor_type
 
-    :param u32 delay:
+    :param delay:
         delay in ms
+    :type delay: u32
 
 .. _`ssp_change_delay.description`:
 
@@ -82,11 +90,13 @@ ssp_disable_sensor
 
     disables sensor
 
-    :param struct ssp_data \*data:
+    :param data:
         sensorhub structure
+    :type data: struct ssp_data \*
 
-    :param enum ssp_sensor_type type:
+    :param type:
         SSP sensor type
+    :type type: enum ssp_sensor_type
 
 .. _`ssp_disable_sensor.description`:
 
@@ -104,11 +114,13 @@ ssp_register_consumer
 
     registers iio consumer in ssp framework
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         consumer iio device
+    :type indio_dev: struct iio_dev \*
 
-    :param enum ssp_sensor_type type:
+    :param type:
         ssp sensor type
+    :type type: enum ssp_sensor_type
 
 .. This file was automatic generated / don't edit.
 

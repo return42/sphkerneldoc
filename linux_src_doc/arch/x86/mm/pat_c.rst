@@ -10,8 +10,9 @@ pat_init
 
     Initialize PAT MSR and PAT table
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pat_init.description`:
 
@@ -34,8 +35,9 @@ lookup_memtype
 
     Looksup the memory type for a physical address
 
-    :param u64 paddr:
+    :param paddr:
         physical address of which memory type needs to be looked up
+    :type paddr: u64
 
 .. _`lookup_memtype.description`:
 
@@ -56,8 +58,9 @@ pat_pfn_immune_to_uc_mtrr
 
     Check whether the PAT memory type of \ ``pfn``\  cannot be overridden by UC MTRR memory type.
 
-    :param unsigned long pfn:
+    :param pfn:
         *undescribed*
+    :type pfn: unsigned long
 
 .. _`pat_pfn_immune_to_uc_mtrr.description`:
 
@@ -78,15 +81,18 @@ io_reserve_memtype
 
     Request a memory type mapping for a region of memory
 
-    :param resource_size_t start:
+    :param start:
         start (physical address) of the region
+    :type start: resource_size_t
 
-    :param resource_size_t end:
+    :param end:
         end (physical address) of the region
+    :type end: resource_size_t
 
-    :param enum page_cache_mode \*type:
+    :param type:
         A pointer to memtype, with requested type. On success, requested
         or any other compatible type that was available for the region is returned
+    :type type: enum page_cache_mode \*
 
 .. _`io_reserve_memtype.description`:
 
@@ -105,11 +111,13 @@ io_free_memtype
 
     Release a memory type mapping for a region of memory
 
-    :param resource_size_t start:
+    :param start:
         start (physical address) of the region
+    :type start: resource_size_t
 
-    :param resource_size_t end:
+    :param end:
         end (physical address) of the region
+    :type end: resource_size_t
 
 .. This file was automatic generated / don't edit.
 

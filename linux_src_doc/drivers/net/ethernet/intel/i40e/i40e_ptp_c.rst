@@ -10,11 +10,13 @@ i40e_ptp_read
 
     Read the PHC time from the device
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct timespec64 \*ts:
+    :param ts:
         timespec structure to hold the current time value
+    :type ts: struct timespec64 \*
 
 .. _`i40e_ptp_read.description`:
 
@@ -34,11 +36,13 @@ i40e_ptp_write
 
     Write the PHC time to the device
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         timespec structure that holds the new time value
+    :type ts: const struct timespec64 \*
 
 .. _`i40e_ptp_write.description`:
 
@@ -58,11 +62,13 @@ i40e_ptp_convert_to_hwtstamp
 
     Convert device clock to system time
 
-    :param struct skb_shared_hwtstamps \*hwtstamps:
+    :param hwtstamps:
         Timestamp structure to update
+    :type hwtstamps: struct skb_shared_hwtstamps \*
 
-    :param u64 timestamp:
+    :param timestamp:
         Timestamp from the hardware
+    :type timestamp: u64
 
 .. _`i40e_ptp_convert_to_hwtstamp.description`:
 
@@ -82,11 +88,13 @@ i40e_ptp_adjfreq
 
     Adjust the PHC frequency
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         The PTP clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s32 ppb:
+    :param ppb:
         Parts per billion adjustment from the base
+    :type ppb: s32
 
 .. _`i40e_ptp_adjfreq.description`:
 
@@ -105,11 +113,13 @@ i40e_ptp_adjtime
 
     Adjust the PHC time
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         The PTP clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s64 delta:
+    :param delta:
         Offset in nanoseconds to adjust the PHC time by
+    :type delta: s64
 
 .. _`i40e_ptp_adjtime.description`:
 
@@ -128,11 +138,13 @@ i40e_ptp_gettime
 
     Get the time of the PHC
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         The PTP clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct timespec64 \*ts:
+    :param ts:
         timespec structure to hold the current time value
+    :type ts: struct timespec64 \*
 
 .. _`i40e_ptp_gettime.description`:
 
@@ -151,11 +163,13 @@ i40e_ptp_settime
 
     Set the time of the PHC
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         The PTP clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         timespec structure that holds the new time value
+    :type ts: const struct timespec64 \*
 
 .. _`i40e_ptp_settime.description`:
 
@@ -174,14 +188,17 @@ i40e_ptp_feature_enable
 
     Enable/disable ancillary features of the PHC subsystem
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         The PTP clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct ptp_clock_request \*rq:
+    :param rq:
         The requested feature to change
+    :type rq: struct ptp_clock_request \*
 
-    :param int on:
+    :param on:
         Enable/disable flag
+    :type on: int
 
 .. _`i40e_ptp_feature_enable.description`:
 
@@ -200,8 +217,9 @@ i40e_ptp_get_rx_events
 
     Read I40E_PRTTSYN_STAT_1 and latch events
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF data structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_ptp_get_rx_events.description`:
 
@@ -225,8 +243,9 @@ i40e_ptp_rx_hang
 
     Detect error case when Rx timestamp registers are hung
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         The PF private data structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_ptp_rx_hang.description`:
 
@@ -247,8 +266,9 @@ i40e_ptp_tx_hang
 
     Detect error case when Tx timestamp register is hung
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         The PF private data structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_ptp_tx_hang.description`:
 
@@ -269,8 +289,9 @@ i40e_ptp_tx_hwtstamp
 
     Utility function which returns the Tx timestamp
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_ptp_tx_hwtstamp.description`:
 
@@ -290,14 +311,17 @@ i40e_ptp_rx_hwtstamp
 
     Utility function which checks for an Rx timestamp
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Particular skb to send timestamp with
+    :type skb: struct sk_buff \*
 
-    :param u8 index:
+    :param index:
         Index into the receive timestamp registers for the timestamp
+    :type index: u8
 
 .. _`i40e_ptp_rx_hwtstamp.description`:
 
@@ -319,8 +343,9 @@ i40e_ptp_set_increment
 
     Utility function to update clock increment rate
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_ptp_set_increment.description`:
 
@@ -340,11 +365,13 @@ i40e_ptp_get_ts_config
 
     ioctl interface to read the HW timestamping
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         ioctl data
+    :type ifr: struct ifreq \*
 
 .. _`i40e_ptp_get_ts_config.description`:
 
@@ -364,11 +391,13 @@ i40e_ptp_set_timestamp_mode
 
     setup hardware for requested timestamp mode
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct hwtstamp_config \*config:
+    :param config:
         hwtstamp settings requested or saved
+    :type config: struct hwtstamp_config \*
 
 .. _`i40e_ptp_set_timestamp_mode.description`:
 
@@ -396,11 +425,13 @@ i40e_ptp_set_ts_config
 
     ioctl interface to control the HW timestamping
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         ioctl data
+    :type ifr: struct ifreq \*
 
 .. _`i40e_ptp_set_ts_config.description`:
 
@@ -425,8 +456,9 @@ i40e_ptp_create_clock
 
     Create PTP clock device for userspace
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_ptp_create_clock.description`:
 
@@ -448,8 +480,9 @@ i40e_ptp_init
 
     Initialize the 1588 support after device probe or reset
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_ptp_init.description`:
 
@@ -469,8 +502,9 @@ i40e_ptp_stop
 
     Disable the driver/hardware support and unregister the PHC
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Board private structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_ptp_stop.description`:
 

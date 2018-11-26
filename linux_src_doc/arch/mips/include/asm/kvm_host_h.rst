@@ -49,8 +49,9 @@ kvm_is_ifetch_fault
 
     Find whether a TLBL exception is due to ifetch fault.
 
-    :param struct kvm_vcpu_arch \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu_arch \*
 
 .. _`kvm_is_ifetch_fault.return`:
 

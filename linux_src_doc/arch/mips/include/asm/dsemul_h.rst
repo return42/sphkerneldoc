@@ -10,17 +10,21 @@ mips_dsemul
 
     'Emulate' an instruction from a branch delay slot
 
-    :param struct pt_regs \*regs:
+    :param regs:
         User thread register context.
+    :type regs: struct pt_regs \*
 
-    :param mips_instruction ir:
+    :param ir:
         The instruction to be 'emulated'.
+    :type ir: mips_instruction
 
-    :param unsigned long branch_pc:
+    :param branch_pc:
         The PC of the branch instruction.
+    :type branch_pc: unsigned long
 
-    :param unsigned long cont_pc:
+    :param cont_pc:
         The PC to continue at following 'emulation'.
+    :type cont_pc: unsigned long
 
 .. _`mips_dsemul.description`:
 
@@ -48,8 +52,9 @@ do_dsemulret
 
     Return from a delay slot 'emulation' frame
 
-    :param struct pt_regs \*xcp:
+    :param xcp:
         User thread register context.
+    :type xcp: struct pt_regs \*
 
 .. _`do_dsemulret.description`:
 
@@ -77,8 +82,9 @@ dsemul_thread_cleanup
 
     Cleanup thread 'emulation' frame
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         The task structure associated with the thread
+    :type tsk: struct task_struct \*
 
 .. _`dsemul_thread_cleanup.description`:
 
@@ -104,8 +110,9 @@ dsemul_thread_rollback
 
     Rollback from an 'emulation' frame
 
-    :param struct pt_regs \*regs:
+    :param regs:
         User thread register context.
+    :type regs: struct pt_regs \*
 
 .. _`dsemul_thread_rollback.description`:
 
@@ -134,8 +141,9 @@ dsemul_mm_cleanup
 
     Cleanup per-mm delay slot 'emulation' state
 
-    :param struct mm_struct \*mm:
+    :param mm:
         The struct mm_struct to cleanup state for.
+    :type mm: struct mm_struct \*
 
 .. _`dsemul_mm_cleanup.description`:
 

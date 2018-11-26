@@ -8,8 +8,9 @@ wdtpci_start
 
 .. c:function:: int wdtpci_start( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdtpci_start.description`:
 
@@ -25,8 +26,9 @@ wdtpci_stop
 
 .. c:function:: int wdtpci_stop( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdtpci_stop.description`:
 
@@ -42,8 +44,9 @@ wdtpci_ping
 
 .. c:function:: int wdtpci_ping( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdtpci_ping.description`:
 
@@ -60,8 +63,9 @@ wdtpci_set_heartbeat
 
 .. c:function:: int wdtpci_set_heartbeat(int t)
 
-    :param int t:
+    :param t:
         the new heartbeat value that needs to be set.
+    :type t: int
 
 .. _`wdtpci_set_heartbeat.description`:
 
@@ -79,8 +83,9 @@ wdtpci_get_status
 
 .. c:function:: int wdtpci_get_status(int *status)
 
-    :param int \*status:
+    :param status:
         the new status.
+    :type status: int \*
 
 .. _`wdtpci_get_status.description`:
 
@@ -100,8 +105,9 @@ wdtpci_get_temperature
 
 .. c:function:: int wdtpci_get_temperature(int *temperature)
 
-    :param int \*temperature:
+    :param temperature:
         *undescribed*
+    :type temperature: int \*
 
 .. _`wdtpci_get_temperature.description`:
 
@@ -118,11 +124,13 @@ wdtpci_interrupt
 
 .. c:function:: irqreturn_t wdtpci_interrupt(int irq, void *dev_id)
 
-    :param int irq:
+    :param irq:
         Interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Unused as we don't allow multiple devices.
+    :type dev_id: void \*
 
 .. _`wdtpci_interrupt.description`:
 
@@ -140,17 +148,21 @@ wdtpci_write
 
 .. c:function:: ssize_t wdtpci_write(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    :param struct file \*file:
+    :param file:
         file handle to the watchdog
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         buffer to write (unused as data does not matter here
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         count of bytes
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         pointer to the position to write. No seeks allowed
+    :type ppos: loff_t \*
 
 .. _`wdtpci_write.description`:
 
@@ -167,14 +179,17 @@ wdtpci_ioctl
 
 .. c:function:: long wdtpci_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
-    :param struct file \*file:
+    :param file:
         file handle to the device
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         watchdog command
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         argument pointer
+    :type arg: unsigned long
 
 .. _`wdtpci_ioctl.description`:
 
@@ -192,11 +207,13 @@ wdtpci_open
 
 .. c:function:: int wdtpci_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode of device
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle to device
+    :type file: struct file \*
 
 .. _`wdtpci_open.description`:
 
@@ -216,11 +233,13 @@ wdtpci_release
 
 .. c:function:: int wdtpci_release(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode to board
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle to board
+    :type file: struct file \*
 
 .. _`wdtpci_release.description`:
 
@@ -240,17 +259,21 @@ wdtpci_temp_read
 
 .. c:function:: ssize_t wdtpci_temp_read(struct file *file, char __user *buf, size_t count, loff_t *ptr)
 
-    :param struct file \*file:
+    :param file:
         file handle to the watchdog board
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         buffer to write 1 byte into
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         length of buffer
+    :type count: size_t
 
-    :param loff_t \*ptr:
+    :param ptr:
         offset (no seek allowed)
+    :type ptr: loff_t \*
 
 .. _`wdtpci_temp_read.description`:
 
@@ -267,11 +290,13 @@ wdtpci_temp_open
 
 .. c:function:: int wdtpci_temp_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode of device
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle to device
+    :type file: struct file \*
 
 .. _`wdtpci_temp_open.description`:
 
@@ -287,11 +312,13 @@ wdtpci_temp_release
 
 .. c:function:: int wdtpci_temp_release(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode to board
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle to board
+    :type file: struct file \*
 
 .. _`wdtpci_temp_release.description`:
 
@@ -307,14 +334,17 @@ wdtpci_notify_sys
 
 .. c:function:: int wdtpci_notify_sys(struct notifier_block *this, unsigned long code, void *unused)
 
-    :param struct notifier_block \*this:
+    :param this:
         our notifier block
+    :type this: struct notifier_block \*
 
-    :param unsigned long code:
+    :param code:
         the event being reported
+    :type code: unsigned long
 
-    :param void \*unused:
+    :param unused:
         unused
+    :type unused: void \*
 
 .. _`wdtpci_notify_sys.description`:
 

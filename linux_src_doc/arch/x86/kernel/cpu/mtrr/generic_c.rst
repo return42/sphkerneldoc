@@ -10,11 +10,13 @@ mtrr_type_lookup_fixed
 
     look up memory type in MTRR fixed entries
 
-    :param u64 start:
+    :param start:
         *undescribed*
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         *undescribed*
+    :type end: u64
 
 .. _`mtrr_type_lookup_fixed.description`:
 
@@ -49,20 +51,25 @@ mtrr_type_lookup_variable
 
     look up memory type in MTRR variable entries
 
-    :param u64 start:
+    :param start:
         *undescribed*
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         *undescribed*
+    :type end: u64
 
-    :param u64 \*partial_end:
+    :param partial_end:
         *undescribed*
+    :type partial_end: u64 \*
 
-    :param int \*repeat:
+    :param repeat:
         *undescribed*
+    :type repeat: int \*
 
-    :param u8 \*uniform:
+    :param uniform:
         *undescribed*
+    :type uniform: u8 \*
 
 .. _`mtrr_type_lookup_variable.return-value`:
 
@@ -93,14 +100,17 @@ mtrr_type_lookup
 
     look up memory type in MTRR
 
-    :param u64 start:
+    :param start:
         *undescribed*
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         *undescribed*
+    :type end: u64
 
-    :param u8 \*uniform:
+    :param uniform:
         *undescribed*
+    :type uniform: u8 \*
 
 .. _`mtrr_type_lookup.return-values`:
 
@@ -128,14 +138,17 @@ set_fixed_range
 
     checks & updates a fixed-range MTRR if it differs from the value it should have
 
-    :param int msr:
+    :param msr:
         MSR address of the MTTR which should be checked and updated
+    :type msr: int
 
-    :param bool \*changed:
+    :param changed:
         pointer which indicates whether the MTRR needed to be changed
+    :type changed: bool \*
 
-    :param unsigned int \*msrwords:
+    :param msrwords:
         pointer to the MSR values which the MSR should have
+    :type msrwords: unsigned int \*
 
 .. _`generic_get_free_region`:
 
@@ -146,14 +159,17 @@ generic_get_free_region
 
     Get a free MTRR.
 
-    :param unsigned long base:
+    :param base:
         The starting (base) address of the region.
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         The size (in bytes) of the region.
+    :type size: unsigned long
 
-    :param int replace_reg:
+    :param replace_reg:
         mtrr index to be replaced; set to invalid value if none.
+    :type replace_reg: int
 
 .. _`generic_get_free_region.return`:
 
@@ -171,8 +187,9 @@ set_fixed_ranges
 
     checks & updates the fixed-range MTRRs if they differ from the saved set
 
-    :param mtrr_type \*frs:
+    :param frs:
         pointer to fixed-range MTRR values, saved by \ :c:func:`get_fixed_ranges`\ 
+    :type frs: mtrr_type \*
 
 .. _`set_mtrr_state`:
 
@@ -183,8 +200,9 @@ set_mtrr_state
 
     Set the MTRR state for this CPU.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`set_mtrr_state.note`:
 
@@ -209,17 +227,21 @@ generic_set_mtrr
 
     set variable MTRR register on the local CPU.
 
-    :param unsigned int reg:
+    :param reg:
         The register to set.
+    :type reg: unsigned int
 
-    :param unsigned long base:
+    :param base:
         The base address of the region.
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         The size of the region. If this is 0 the region is disabled.
+    :type size: unsigned long
 
-    :param mtrr_type type:
+    :param type:
         The type of the region.
+    :type type: mtrr_type
 
 .. _`generic_set_mtrr.description`:
 

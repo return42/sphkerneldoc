@@ -10,11 +10,13 @@ nfp_port_configure
 
     helper to set the interface configured bit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         net_device instance
+    :type netdev: struct net_device \*
 
-    :param bool configed:
+    :param configed:
         Desired state
+    :type configed: bool
 
 .. _`nfp_port_configure.description`:
 

@@ -10,11 +10,13 @@ test__insn_x86
 
     test x86 instruction decoder - new instructions.
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
 .. _`test__insn_x86.description`:
 

@@ -86,14 +86,17 @@ ti_sci_reset_set
 
     program a device's reset
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         reset controller entity
+    :type rcdev: struct reset_controller_dev \*
 
-    :param unsigned long id:
+    :param id:
         ID of the reset to toggle
+    :type id: unsigned long
 
-    :param bool assert:
+    :param assert:
         boolean flag to indicate assert or deassert
+    :type assert: bool
 
 .. _`ti_sci_reset_set.description`:
 
@@ -124,11 +127,13 @@ ti_sci_reset_assert
 
     assert device reset
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         reset controller entity
+    :type rcdev: struct reset_controller_dev \*
 
-    :param unsigned long id:
+    :param id:
         ID of the reset to be asserted
+    :type id: unsigned long
 
 .. _`ti_sci_reset_assert.description`:
 
@@ -156,11 +161,13 @@ ti_sci_reset_deassert
 
     deassert device reset
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         reset controller entity
+    :type rcdev: struct reset_controller_dev \*
 
-    :param unsigned long id:
+    :param id:
         ID of the reset to be deasserted
+    :type id: unsigned long
 
 .. _`ti_sci_reset_deassert.description`:
 
@@ -188,11 +195,13 @@ ti_sci_reset_status
 
     check device reset status
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         reset controller entity
+    :type rcdev: struct reset_controller_dev \*
 
-    :param unsigned long id:
+    :param id:
         ID of reset to be checked
+    :type id: unsigned long
 
 .. _`ti_sci_reset_status.description`:
 
@@ -221,11 +230,13 @@ ti_sci_reset_of_xlate
 
     translate a set of OF arguments to a reset ID
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         reset controller entity
+    :type rcdev: struct reset_controller_dev \*
 
-    :param const struct of_phandle_args \*reset_spec:
+    :param reset_spec:
         OF reset argument specifier
+    :type reset_spec: const struct of_phandle_args \*
 
 .. _`ti_sci_reset_of_xlate.description`:
 

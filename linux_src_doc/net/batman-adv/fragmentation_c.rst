@@ -10,11 +10,13 @@ batadv_frag_clear_chain
 
     delete entries in the fragment buffer chain
 
-    :param struct hlist_head \*head:
+    :param head:
         head of chain with entries.
+    :type head: struct hlist_head \*
 
-    :param bool dropped:
+    :param dropped:
         whether the chain is cleared because all fragments are dropped
+    :type dropped: bool
 
 .. _`batadv_frag_clear_chain.description`:
 
@@ -32,8 +34,9 @@ batadv_frag_purge_orig
 
     free fragments associated to an orig
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator to free fragments from
+    :type orig_node: struct batadv_orig_node \*
 
     :param bool (\*check_cb)(struct batadv_frag_table_entry \*):
         optional function to tell if an entry should be purged
@@ -47,8 +50,9 @@ batadv_frag_size_limit
 
     maximum possible size of packet to be fragmented
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_frag_size_limit.return`:
 
@@ -66,11 +70,13 @@ batadv_frag_init_chain
 
     check and prepare fragment chain for new fragment
 
-    :param struct batadv_frag_table_entry \*chain:
+    :param chain:
         chain in fragments table to init
+    :type chain: struct batadv_frag_table_entry \*
 
-    :param u16 seqno:
+    :param seqno:
         sequence number of the received fragment
+    :type seqno: u16
 
 .. _`batadv_frag_init_chain.description`:
 
@@ -99,14 +105,17 @@ batadv_frag_insert_packet
 
     insert a fragment into a fragment chain
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator that the fragment was received from
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to insert
+    :type skb: struct sk_buff \*
 
-    :param struct hlist_head \*chain_out:
+    :param chain_out:
         list head to attach complete chains of fragments to
+    :type chain_out: struct hlist_head \*
 
 .. _`batadv_frag_insert_packet.description`:
 
@@ -134,8 +143,9 @@ batadv_frag_merge_packets
 
     merge a chain of fragments
 
-    :param struct hlist_head \*chain:
+    :param chain:
         head of chain with fragments
+    :type chain: struct hlist_head \*
 
 .. _`batadv_frag_merge_packets.description`:
 
@@ -161,11 +171,13 @@ batadv_frag_skb_buffer
 
     buffer fragment for later merge
 
-    :param struct sk_buff \*\*skb:
+    :param skb:
         skb to buffer
+    :type skb: struct sk_buff \*\*
 
-    :param struct batadv_orig_node \*orig_node_src:
+    :param orig_node_src:
         originator that the skb is received from
+    :type orig_node_src: struct batadv_orig_node \*
 
 .. _`batadv_frag_skb_buffer.description`:
 
@@ -200,14 +212,17 @@ batadv_frag_skb_fwd
 
     forward fragments that would exceed MTU when merged
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to forward
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         interface that the skb is received on
+    :type recv_if: struct batadv_hard_iface \*
 
-    :param struct batadv_orig_node \*orig_node_src:
+    :param orig_node_src:
         originator that the skb is received from
+    :type orig_node_src: struct batadv_orig_node \*
 
 .. _`batadv_frag_skb_fwd.description`:
 
@@ -234,14 +249,17 @@ batadv_frag_create
 
     create a fragment from skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to create fragment from
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_frag_packet \*frag_head:
+    :param frag_head:
         header to use in new fragment
+    :type frag_head: struct batadv_frag_packet \*
 
-    :param unsigned int fragment_size:
+    :param fragment_size:
         size of new fragment
+    :type fragment_size: unsigned int
 
 .. _`batadv_frag_create.split-the-passed-skb-into-two-fragments`:
 
@@ -268,14 +286,17 @@ batadv_frag_send_packet
 
     create up to 16 fragments from the passed skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to create fragments from
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         final destination of the created fragments
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         next-hop of the created fragments
+    :type neigh_node: struct batadv_neigh_node \*
 
 .. _`batadv_frag_send_packet.return`:
 

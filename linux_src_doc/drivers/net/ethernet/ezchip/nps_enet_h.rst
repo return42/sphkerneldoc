@@ -58,14 +58,17 @@ nps_enet_reg_set
 
     Sets ENET register with provided value.
 
-    :param struct nps_enet_priv \*priv:
+    :param priv:
         Pointer to EZchip ENET private data structure.
+    :type priv: struct nps_enet_priv \*
 
-    :param s32 reg:
+    :param reg:
         Register offset from base address.
+    :type reg: s32
 
-    :param s32 value:
+    :param value:
         Value to set in register.
+    :type value: s32
 
 .. _`nps_enet_reg_get`:
 
@@ -76,11 +79,13 @@ nps_enet_reg_get
 
     Gets value of specified ENET register.
 
-    :param struct nps_enet_priv \*priv:
+    :param priv:
         Pointer to EZchip ENET private data structure.
+    :type priv: struct nps_enet_priv \*
 
-    :param s32 reg:
+    :param reg:
         Register offset from base address.
+    :type reg: s32
 
 .. _`nps_enet_reg_get.return`:
 

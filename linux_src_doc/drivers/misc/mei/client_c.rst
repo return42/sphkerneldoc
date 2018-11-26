@@ -10,8 +10,9 @@ mei_me_cl_init
 
     initialize me client
 
-    :param struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: struct mei_me_client \*
 
 .. _`mei_me_cl_get`:
 
@@ -22,8 +23,9 @@ mei_me_cl_get
 
     increases me client refcount
 
-    :param struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: struct mei_me_client \*
 
 .. _`mei_me_cl_get.locking`:
 
@@ -48,8 +50,9 @@ mei_me_cl_release
 
     free me client
 
-    :param struct kref \*ref:
+    :param ref:
         me_client refcount
+    :type ref: struct kref \*
 
 .. _`mei_me_cl_release.locking`:
 
@@ -67,8 +70,9 @@ mei_me_cl_put
 
     decrease me client refcount and free client if necessary
 
-    :param struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: struct mei_me_client \*
 
 .. _`mei_me_cl_put.locking`:
 
@@ -86,11 +90,13 @@ called under "dev->device_lock" lock
 
     delete me client from the list and decrease reference counter
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
-    :param struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: struct mei_me_client \*
 
 .. _`__mei_me_cl_del.locking`:
 
@@ -108,11 +114,13 @@ mei_me_cl_del
 
     delete me client from the list and decrease reference counter
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
-    :param struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: struct mei_me_client \*
 
 .. _`mei_me_cl_add`:
 
@@ -123,11 +131,13 @@ mei_me_cl_add
 
     add me client to the list
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
-    :param struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: struct mei_me_client \*
 
 .. _`__mei_me_cl_by_uuid`:
 
@@ -138,11 +148,13 @@ mei_me_cl_add
 
     locate me client by uuid increases ref count
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
-    :param const uuid_le \*uuid:
+    :param uuid:
         me client uuid
+    :type uuid: const uuid_le \*
 
 .. _`__mei_me_cl_by_uuid.return`:
 
@@ -167,11 +179,13 @@ mei_me_cl_by_uuid
 
     locate me client by uuid increases ref count
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
-    :param const uuid_le \*uuid:
+    :param uuid:
         me client uuid
+    :type uuid: const uuid_le \*
 
 .. _`mei_me_cl_by_uuid.return`:
 
@@ -196,11 +210,13 @@ mei_me_cl_by_id
 
     locate me client by client id increases ref count
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u8 client_id:
+    :param client_id:
         me client id
+    :type client_id: u8
 
 .. _`mei_me_cl_by_id.return`:
 
@@ -225,14 +241,17 @@ dev->me_clients_rwsem
 
     locate me client by client id and uuid increases ref count
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param const uuid_le \*uuid:
+    :param uuid:
         me client uuid
+    :type uuid: const uuid_le \*
 
-    :param u8 client_id:
+    :param client_id:
         me client id
+    :type client_id: u8
 
 .. _`__mei_me_cl_by_uuid_id.return`:
 
@@ -257,14 +276,17 @@ mei_me_cl_by_uuid_id
 
     locate me client by client id and uuid increases ref count
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param const uuid_le \*uuid:
+    :param uuid:
         me client uuid
+    :type uuid: const uuid_le \*
 
-    :param u8 client_id:
+    :param client_id:
         me client id
+    :type client_id: u8
 
 .. _`mei_me_cl_by_uuid_id.return`:
 
@@ -282,11 +304,13 @@ mei_me_cl_rm_by_uuid
 
     remove all me clients matching uuid
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param const uuid_le \*uuid:
+    :param uuid:
         me client uuid
+    :type uuid: const uuid_le \*
 
 .. _`mei_me_cl_rm_by_uuid.locking`:
 
@@ -304,14 +328,17 @@ mei_me_cl_rm_by_uuid_id
 
     remove all me clients matching client id
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param const uuid_le \*uuid:
+    :param uuid:
         me client uuid
+    :type uuid: const uuid_le \*
 
-    :param u8 id:
+    :param id:
         me client id
+    :type id: u8
 
 .. _`mei_me_cl_rm_by_uuid_id.locking`:
 
@@ -329,8 +356,9 @@ mei_me_cl_rm_all
 
     remove all me clients
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_cl_rm_all.locking`:
 
@@ -348,11 +376,13 @@ mei_cl_cmp_id
 
     tells if the clients are the same
 
-    :param const struct mei_cl \*cl1:
+    :param cl1:
         host client 1
+    :type cl1: const struct mei_cl \*
 
-    :param const struct mei_cl \*cl2:
+    :param cl2:
         host client 2
+    :type cl2: const struct mei_cl \*
 
 .. _`mei_cl_cmp_id.return`:
 
@@ -371,8 +401,9 @@ mei_io_cb_free
 
     free mei_cb_private related memory
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         mei callback struct
+    :type cb: struct mei_cl_cb \*
 
 .. _`mei_tx_cb_enqueue`:
 
@@ -383,11 +414,13 @@ mei_tx_cb_enqueue
 
     queue tx callback
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         mei callback struct
+    :type cb: struct mei_cl_cb \*
 
-    :param struct list_head \*head:
+    :param head:
         an instance of list to queue on
+    :type head: struct list_head \*
 
 .. _`mei_tx_cb_enqueue.locking`:
 
@@ -405,8 +438,9 @@ mei_tx_cb_dequeue
 
     dequeue tx callback
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         mei callback struct to dequeue and free
+    :type cb: struct mei_cl_cb \*
 
 .. _`mei_tx_cb_dequeue.locking`:
 
@@ -424,14 +458,17 @@ mei_io_cb_init
 
     allocate and initialize io callback
 
-    :param struct mei_cl \*cl:
+    :param cl:
         mei client
+    :type cl: struct mei_cl \*
 
-    :param enum mei_cb_file_ops type:
+    :param type:
         operation type
+    :type type: enum mei_cb_file_ops
 
-    :param const struct file \*fp:
+    :param fp:
         pointer to file structure
+    :type fp: const struct file \*
 
 .. _`mei_io_cb_init.return`:
 
@@ -449,11 +486,13 @@ mei_io_list_flush_cl
 
     removes cbs belonging to the cl.
 
-    :param struct list_head \*head:
+    :param head:
         an instance of our list structure
+    :type head: struct list_head \*
 
-    :param const struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: const struct mei_cl \*
 
 .. _`mei_io_tx_list_free_cl`:
 
@@ -464,11 +503,13 @@ mei_io_tx_list_free_cl
 
     removes cb belonging to the cl and free them
 
-    :param struct list_head \*head:
+    :param head:
         An instance of our list structure
+    :type head: struct list_head \*
 
-    :param const struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: const struct mei_cl \*
 
 .. _`mei_io_list_free_fp`:
 
@@ -479,11 +520,13 @@ mei_io_list_free_fp
 
     free cb from a list that matches file pointer
 
-    :param struct list_head \*head:
+    :param head:
         io list
+    :type head: struct list_head \*
 
-    :param const struct file \*fp:
+    :param fp:
         file pointer (matching cb file object), may be NULL
+    :type fp: const struct file \*
 
 .. _`mei_cl_alloc_cb`:
 
@@ -494,17 +537,21 @@ mei_cl_alloc_cb
 
     a convenient wrapper for allocating read cb
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param size_t length:
+    :param length:
         size of the buffer
+    :type length: size_t
 
-    :param enum mei_cb_file_ops fop_type:
+    :param fop_type:
         operation type
+    :type fop_type: enum mei_cb_file_ops
 
-    :param const struct file \*fp:
+    :param fp:
         associated file pointer (might be NULL)
+    :type fp: const struct file \*
 
 .. _`mei_cl_alloc_cb.return`:
 
@@ -522,17 +569,21 @@ mei_cl_enqueue_ctrl_wr_cb
 
     a convenient wrapper for allocating and enqueuing of the control commands cb
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param size_t length:
+    :param length:
         size of the buffer
+    :type length: size_t
 
-    :param enum mei_cb_file_ops fop_type:
+    :param fop_type:
         operation type
+    :type fop_type: enum mei_cb_file_ops
 
-    :param const struct file \*fp:
+    :param fp:
         associated file pointer (might be NULL)
+    :type fp: const struct file \*
 
 .. _`mei_cl_enqueue_ctrl_wr_cb.return`:
 
@@ -557,11 +608,13 @@ mei_cl_read_cb
 
     find this cl's callback in the read list for a specific file
 
-    :param const struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: const struct mei_cl \*
 
-    :param const struct file \*fp:
+    :param fp:
         file pointer (matching cb file object), may be NULL
+    :type fp: const struct file \*
 
 .. _`mei_cl_read_cb.return`:
 
@@ -579,11 +632,13 @@ mei_cl_flush_queues
 
     flushes queue lists belonging to cl.
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param const struct file \*fp:
+    :param fp:
         file pointer (matching cb file object), may be NULL
+    :type fp: const struct file \*
 
 .. _`mei_cl_flush_queues.return`:
 
@@ -601,11 +656,13 @@ mei_cl_init
 
     initializes cl.
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client to be initialized
+    :type cl: struct mei_cl \*
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_cl_allocate`:
 
@@ -616,8 +673,9 @@ mei_cl_allocate
 
     allocates cl  structure and sets it up.
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_cl_allocate.return`:
 
@@ -635,8 +693,9 @@ mei_cl_link
 
     allocate host id in the host map
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_link.return`:
 
@@ -656,8 +715,9 @@ mei_cl_unlink
 
     remove host client from the list
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_unlink.return`:
 
@@ -675,8 +735,9 @@ mei_hbuf_acquire
 
     try to acquire host buffer
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_hbuf_acquire.return`:
 
@@ -694,8 +755,9 @@ mei_cl_wake_all
 
     wake up readers, writers and event waiters so they can be interrupted
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_set_disconnected`:
 
@@ -706,8 +768,9 @@ mei_cl_set_disconnected
 
     set disconnected state and clear associated states and resources
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_irq_disconnect`:
 
@@ -718,14 +781,17 @@ mei_cl_irq_disconnect
 
     processes close related operation from interrupt thread context - send disconnect request
 
-    :param struct mei_cl \*cl:
+    :param cl:
         client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         callback block.
+    :type cb: struct mei_cl_cb \*
 
-    :param struct list_head \*cmpl_list:
+    :param cmpl_list:
         complete list.
+    :type cmpl_list: struct list_head \*
 
 .. _`mei_cl_irq_disconnect.return`:
 
@@ -743,8 +809,9 @@ Return
 
     disconnect host client from the me one internal function runtime pm has to be already acquired
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`__mei_cl_disconnect.return`:
 
@@ -762,8 +829,9 @@ mei_cl_disconnect
 
     disconnect host client from the me one
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_disconnect.locking`:
 
@@ -788,8 +856,9 @@ mei_cl_is_other_connecting
 
     checks if other client with the same me client id is connecting
 
-    :param struct mei_cl \*cl:
+    :param cl:
         private data of the file object
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_is_other_connecting.return`:
 
@@ -807,11 +876,13 @@ mei_cl_send_connect
 
     send connect request
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         callback block
+    :type cb: struct mei_cl_cb \*
 
 .. _`mei_cl_send_connect.return`:
 
@@ -829,14 +900,17 @@ mei_cl_irq_connect
 
     send connect request in irq_thread context
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         callback block
+    :type cb: struct mei_cl_cb \*
 
-    :param struct list_head \*cmpl_list:
+    :param cmpl_list:
         complete list
+    :type cmpl_list: struct list_head \*
 
 .. _`mei_cl_irq_connect.return`:
 
@@ -854,14 +928,17 @@ mei_cl_connect
 
     connect host client to the me one
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: struct mei_me_client \*
 
-    :param const struct file \*fp:
+    :param fp:
         pointer to file structure
+    :type fp: const struct file \*
 
 .. _`mei_cl_connect.locking`:
 
@@ -886,8 +963,9 @@ mei_cl_alloc_linked
 
     allocate and link host client
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_cl_alloc_linked.return`:
 
@@ -905,8 +983,9 @@ mei_cl_tx_flow_ctrl_creds
 
     checks flow_control credits for cl.
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_tx_flow_ctrl_creds.return`:
 
@@ -924,8 +1003,9 @@ mei_cl_tx_flow_ctrl_creds_reduce
 
     reduces transmit flow control credits for a client
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_tx_flow_ctrl_creds_reduce.return`:
 
@@ -944,8 +1024,9 @@ mei_cl_notify_fop2req
 
     convert fop to proper request
 
-    :param enum mei_cb_file_ops fop:
+    :param fop:
         client notification start response command
+    :type fop: enum mei_cb_file_ops
 
 .. _`mei_cl_notify_fop2req.return`:
 
@@ -963,8 +1044,9 @@ mei_cl_notify_req2fop
 
     convert notification request top file operation type
 
-    :param u8 req:
+    :param req:
         hbm notification request type
+    :type req: u8
 
 .. _`mei_cl_notify_req2fop.return`:
 
@@ -982,14 +1064,17 @@ mei_cl_irq_notify
 
     send notification request in irq_thread context
 
-    :param struct mei_cl \*cl:
+    :param cl:
         client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         callback block.
+    :type cb: struct mei_cl_cb \*
 
-    :param struct list_head \*cmpl_list:
+    :param cmpl_list:
         complete list.
+    :type cmpl_list: struct list_head \*
 
 .. _`mei_cl_irq_notify.return`:
 
@@ -1007,14 +1092,17 @@ mei_cl_notify_request
 
     send notification stop/start request
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param const struct file \*fp:
+    :param fp:
         associate request with file
+    :type fp: const struct file \*
 
-    :param u8 request:
+    :param request:
         1 for start or 0 for stop
+    :type request: u8
 
 .. _`mei_cl_notify_request.locking`:
 
@@ -1039,8 +1127,9 @@ mei_cl_notify
 
     raise notification
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_notify.locking`:
 
@@ -1058,14 +1147,17 @@ mei_cl_notify_get
 
     get or wait for notification event
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param bool block:
+    :param block:
         this request is blocking
+    :type block: bool
 
-    :param bool \*notify_ev:
+    :param notify_ev:
         true if notification event was received
+    :type notify_ev: bool \*
 
 .. _`mei_cl_notify_get.locking`:
 
@@ -1090,14 +1182,17 @@ mei_cl_read_start
 
     the start read client message function.
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param size_t length:
+    :param length:
         number of bytes to read
+    :type length: size_t
 
-    :param const struct file \*fp:
+    :param fp:
         pointer to file structure
+    :type fp: const struct file \*
 
 .. _`mei_cl_read_start.return`:
 
@@ -1105,6 +1200,23 @@ Return
 ------
 
 0 on success, <0 on failure.
+
+.. _`mei_msg_hdr_init`:
+
+mei_msg_hdr_init
+================
+
+.. c:function:: void mei_msg_hdr_init(struct mei_msg_hdr *mei_hdr, struct mei_cl_cb *cb)
+
+    initialize mei message header
+
+    :param mei_hdr:
+        mei message header
+    :type mei_hdr: struct mei_msg_hdr \*
+
+    :param cb:
+        message callback structure
+    :type cb: struct mei_cl_cb \*
 
 .. _`mei_cl_irq_write`:
 
@@ -1115,14 +1227,17 @@ mei_cl_irq_write
 
     write a message to device from the interrupt thread context
 
-    :param struct mei_cl \*cl:
+    :param cl:
         client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         callback block.
+    :type cb: struct mei_cl_cb \*
 
-    :param struct list_head \*cmpl_list:
+    :param cmpl_list:
         complete list.
+    :type cmpl_list: struct list_head \*
 
 .. _`mei_cl_irq_write.return`:
 
@@ -1136,15 +1251,17 @@ Return
 mei_cl_write
 ============
 
-.. c:function:: int mei_cl_write(struct mei_cl *cl, struct mei_cl_cb *cb)
+.. c:function:: ssize_t mei_cl_write(struct mei_cl *cl, struct mei_cl_cb *cb)
 
     submit a write cb to mei device assumes device_lock is locked
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         write callback with filled data
+    :type cb: struct mei_cl_cb \*
 
 .. _`mei_cl_write.return`:
 
@@ -1162,11 +1279,13 @@ mei_cl_complete
 
     processes completed operation for a client
 
-    :param struct mei_cl \*cl:
+    :param cl:
         private data of the file object.
+    :type cl: struct mei_cl \*
 
-    :param struct mei_cl_cb \*cb:
+    :param cb:
         callback block.
+    :type cb: struct mei_cl_cb \*
 
 .. _`mei_cl_all_disconnect`:
 
@@ -1177,8 +1296,9 @@ mei_cl_all_disconnect
 
     disconnect forcefully all connected clients
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. This file was automatic generated / don't edit.
 

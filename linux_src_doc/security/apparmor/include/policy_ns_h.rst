@@ -10,8 +10,9 @@ aa_get_ns
 
     increment references count on \ ``ns``\ 
 
-    :param struct aa_ns \*ns:
+    :param ns:
         namespace to increment reference count of (MAYBE NULL)
+    :type ns: struct aa_ns \*
 
 .. _`aa_get_ns.return`:
 
@@ -36,8 +37,9 @@ aa_put_ns
 
     decrement refcount on \ ``ns``\ 
 
-    :param struct aa_ns \*ns:
+    :param ns:
         namespace to put reference of
+    :type ns: struct aa_ns \*
 
 .. _`aa_put_ns.description`:
 
@@ -55,14 +57,17 @@ Decrement reference count of \ ``ns``\  and if no longer in use free it
 
     find a namespace on a list by \ ``name``\ 
 
-    :param struct list_head \*head:
+    :param head:
         list to search for namespace on  (NOT NULL)
+    :type head: struct list_head \*
 
-    :param const char \*name:
+    :param name:
         name of namespace to look for  (NOT NULL)
+    :type name: const char \*
 
-    :param size_t n:
+    :param n:
         length of \ ``name``\ 
+    :type n: size_t
 
 .. _`__aa_findn_ns.return`:
 

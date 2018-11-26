@@ -10,8 +10,9 @@ aica_rtc_gettimeofday
 
     Get the time from the AICA RTC
 
-    :param struct timespec \*ts:
+    :param ts:
         pointer to resulting timespec
+    :type ts: struct timespec \*
 
 .. _`aica_rtc_gettimeofday.description`:
 
@@ -29,8 +30,9 @@ aica_rtc_settimeofday
 
     Set the AICA RTC to the current time
 
-    :param const time_t secs:
+    :param secs:
         contains the time_t to set
+    :type secs: const time_t
 
 .. _`aica_rtc_settimeofday.description`:
 

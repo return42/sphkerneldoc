@@ -8,11 +8,13 @@ gma_pipe_has_type
 
 .. c:function:: bool gma_pipe_has_type(struct drm_crtc *crtc, int type)
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
+    :type crtc: struct drm_crtc \*
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
 .. _`gma_crtc_dpms`:
 
@@ -21,11 +23,13 @@ gma_crtc_dpms
 
 .. c:function:: void gma_crtc_dpms(struct drm_crtc *crtc, int mode)
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
+    :type crtc: struct drm_crtc \*
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
 .. _`gma_crtc_dpms.description`:
 
@@ -42,8 +46,9 @@ gma_crtc_save
 
 .. c:function:: void gma_crtc_save(struct drm_crtc *crtc)
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
+    :type crtc: struct drm_crtc \*
 
 .. _`gma_crtc_restore`:
 
@@ -52,8 +57,9 @@ gma_crtc_restore
 
 .. c:function:: void gma_crtc_restore(struct drm_crtc *crtc)
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
+    :type crtc: struct drm_crtc \*
 
 .. This file was automatic generated / don't edit.
 

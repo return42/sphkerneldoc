@@ -8,14 +8,17 @@ gcm_aes_nx_set_key
 
 .. c:function:: int gcm_aes_nx_set_key(struct crypto_aead *tfm, const u8 *in_key, unsigned int key_len)
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         *undescribed*
+    :type tfm: struct crypto_aead \*
 
-    :param const u8 \*in_key:
+    :param in_key:
         *undescribed*
+    :type in_key: const u8 \*
 
-    :param unsigned int key_len:
+    :param key_len:
         *undescribed*
+    :type key_len: unsigned int
 
 .. _`gcm_aes_nx_set_key.description`:
 

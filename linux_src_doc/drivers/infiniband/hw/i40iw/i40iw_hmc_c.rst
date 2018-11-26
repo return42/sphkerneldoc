@@ -10,23 +10,29 @@ i40iw_find_sd_index_limit
 
     finds segment descriptor index limit
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param u32 type:
+    :param type:
         type of HMC resources we're searching
+    :type type: u32
 
-    :param u32 idx:
+    :param idx:
         *undescribed*
+    :type idx: u32
 
-    :param u32 cnt:
+    :param cnt:
         number of objects we're trying to create
+    :type cnt: u32
 
-    :param u32 \*sd_idx:
+    :param sd_idx:
         pointer to return index of the segment descriptor in question
+    :type sd_idx: u32 \*
 
-    :param u32 \*sd_limit:
+    :param sd_limit:
         pointer to return the maximum number of segment descriptors
+    :type sd_limit: u32 \*
 
 .. _`i40iw_find_sd_index_limit.description`:
 
@@ -45,23 +51,29 @@ i40iw_find_pd_index_limit
 
     finds page descriptor index limit
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information struct
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param u32 type:
+    :param type:
         HMC resource type we're examining
+    :type type: u32
 
-    :param u32 idx:
+    :param idx:
         starting index for the object
+    :type idx: u32
 
-    :param u32 cnt:
+    :param cnt:
         number of objects we're trying to create
+    :type cnt: u32
 
-    :param u32 \*pd_idx:
+    :param pd_idx:
         *undescribed*
+    :type pd_idx: u32 \*
 
-    :param u32 \*pd_limit:
+    :param pd_limit:
         pointer to return page descriptor index limit
+    :type pd_limit: u32 \*
 
 .. _`i40iw_find_pd_index_limit.description`:
 
@@ -80,17 +92,21 @@ i40iw_set_sd_entry
 
     setup entry for sd programming
 
-    :param u64 pa:
+    :param pa:
         physical addr
+    :type pa: u64
 
-    :param u32 idx:
+    :param idx:
         sd index
+    :type idx: u32
 
-    :param enum i40iw_sd_entry_type type:
+    :param type:
         paged or direct sd
+    :type type: enum i40iw_sd_entry_type
 
-    :param struct update_sd_entry \*entry:
+    :param entry:
         sd entry ptr
+    :type entry: struct update_sd_entry \*
 
 .. _`i40iw_clr_sd_entry`:
 
@@ -101,14 +117,17 @@ i40iw_clr_sd_entry
 
     setup entry for sd clear
 
-    :param u32 idx:
+    :param idx:
         sd index
+    :type idx: u32
 
-    :param enum i40iw_sd_entry_type type:
+    :param type:
         paged or direct sd
+    :type type: enum i40iw_sd_entry_type
 
-    :param struct update_sd_entry \*entry:
+    :param entry:
         sd entry ptr
+    :type entry: struct update_sd_entry \*
 
 .. _`i40iw_hmc_sd_one`:
 
@@ -119,23 +138,29 @@ i40iw_hmc_sd_one
 
     setup 1 sd entry for cqp
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u8 hmc_fn_id:
+    :param hmc_fn_id:
         hmc's function id
+    :type hmc_fn_id: u8
 
-    :param u64 pa:
+    :param pa:
         physical addr
+    :type pa: u64
 
-    :param u32 sd_idx:
+    :param sd_idx:
         sd index
+    :type sd_idx: u32
 
-    :param enum i40iw_sd_entry_type type:
+    :param type:
         paged or direct sd
+    :type type: enum i40iw_sd_entry_type
 
-    :param bool setsd:
+    :param setsd:
         flag to set or clear sd
+    :type setsd: bool
 
 .. _`i40iw_hmc_sd_grp`:
 
@@ -146,20 +171,25 @@ i40iw_hmc_sd_grp
 
     setup group od sd entries for cqp
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information struct
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param u32 sd_index:
+    :param sd_index:
         sd index
+    :type sd_index: u32
 
-    :param u32 sd_cnt:
+    :param sd_cnt:
         number of sd entries
+    :type sd_cnt: u32
 
-    :param bool setsd:
+    :param setsd:
         flag to set or clear sd
+    :type setsd: bool
 
 .. _`i40iw_vfdev_from_fpm`:
 
@@ -170,11 +200,13 @@ i40iw_vfdev_from_fpm
 
     return vf dev ptr for hmc function id
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u8 hmc_fn_id:
+    :param hmc_fn_id:
         hmc's function id
+    :type hmc_fn_id: u8
 
 .. _`i40iw_vf_hmcinfo_from_fpm`:
 
@@ -185,11 +217,13 @@ i40iw_vf_hmcinfo_from_fpm
 
     get ptr to hmc for func_id
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u8 hmc_fn_id:
+    :param hmc_fn_id:
         hmc's function id
+    :type hmc_fn_id: u8
 
 .. _`i40iw_hmc_finish_add_sd_reg`:
 
@@ -200,11 +234,13 @@ i40iw_hmc_finish_add_sd_reg
 
     program sd entries for objects
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_create_obj_info \*info:
+    :param info:
         create obj info
+    :type info: struct i40iw_hmc_create_obj_info \*
 
 .. _`i40iw_sc_create_hmc_obj`:
 
@@ -215,11 +251,13 @@ i40iw_sc_create_hmc_obj
 
     allocate backing store for hmc objects
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_create_obj_info \*info:
+    :param info:
         pointer to i40iw_hmc_iw_create_obj_info struct
+    :type info: struct i40iw_hmc_create_obj_info \*
 
 .. _`i40iw_sc_create_hmc_obj.description`:
 
@@ -238,14 +276,17 @@ i40iw_finish_del_sd_reg
 
     delete sd entries for objects
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_del_obj_info \*info:
+    :param info:
         dele obj info
+    :type info: struct i40iw_hmc_del_obj_info \*
 
-    :param bool reset:
+    :param reset:
         true if called before reset
+    :type reset: bool
 
 .. _`i40iw_sc_del_hmc_obj`:
 
@@ -256,14 +297,17 @@ i40iw_sc_del_hmc_obj
 
     remove pe hmc objects
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_del_obj_info \*info:
+    :param info:
         pointer to i40iw_hmc_del_obj_info struct
+    :type info: struct i40iw_hmc_del_obj_info \*
 
-    :param bool reset:
+    :param reset:
         true if called before reset
+    :type reset: bool
 
 .. _`i40iw_sc_del_hmc_obj.description`:
 
@@ -284,20 +328,25 @@ i40iw_add_sd_table_entry
 
     Adds a segment descriptor to the table
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         pointer to our hw struct
+    :type hw: struct i40iw_hw \*
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information struct
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param u32 sd_index:
+    :param sd_index:
         segment descriptor index to manipulate
+    :type sd_index: u32
 
-    :param enum i40iw_sd_entry_type type:
+    :param type:
         what type of segment descriptor we're manipulating
+    :type type: enum i40iw_sd_entry_type
 
-    :param u64 direct_mode_sz:
+    :param direct_mode_sz:
         size to alloc in direct mode
+    :type direct_mode_sz: u64
 
 .. _`i40iw_add_pd_table_entry`:
 
@@ -308,17 +357,21 @@ i40iw_add_pd_table_entry
 
     Adds page descriptor to the specified table
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         pointer to our HW structure
+    :type hw: struct i40iw_hw \*
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param u32 pd_index:
+    :param pd_index:
         which page descriptor index to manipulate
+    :type pd_index: u32
 
-    :param struct i40iw_dma_mem \*rsrc_pg:
+    :param rsrc_pg:
         if not NULL, use preallocated page instead of allocating new one.
+    :type rsrc_pg: struct i40iw_dma_mem \*
 
 .. _`i40iw_add_pd_table_entry.this-function`:
 
@@ -348,17 +401,21 @@ i40iw_remove_pd_bp
 
     remove a backing page from a page descriptor
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         pointer to our HW structure
+    :type hw: struct i40iw_hw \*
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param u32 idx:
+    :param idx:
         the page index
+    :type idx: u32
 
-    :param bool is_pf:
+    :param is_pf:
         distinguishes a VF from a PF
+    :type is_pf: bool
 
 .. _`i40iw_remove_pd_bp.this-function`:
 
@@ -387,11 +444,13 @@ i40iw_prep_remove_sd_bp
 
     Prepares to remove a backing page from a sd entry
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param u32 idx:
+    :param idx:
         the page index
+    :type idx: u32
 
 .. _`i40iw_prep_remove_pd_page`:
 
@@ -402,11 +461,13 @@ i40iw_prep_remove_pd_page
 
     Prepares to remove a PD page from sd entry.
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param u32 idx:
+    :param idx:
         segment descriptor index to find the relevant page descriptor
+    :type idx: u32
 
 .. _`i40iw_pf_init_vfhmc`:
 
@@ -415,14 +476,17 @@ i40iw_pf_init_vfhmc
 
 .. c:function:: enum i40iw_status_code i40iw_pf_init_vfhmc(struct i40iw_sc_dev *dev, u8 vf_hmc_fn_id, u32 *vf_cnt_array)
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         pointer to i40iw_dev struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u8 vf_hmc_fn_id:
+    :param vf_hmc_fn_id:
         hmc function id ofr vf driver
+    :type vf_hmc_fn_id: u8
 
-    :param u32 \*vf_cnt_array:
+    :param vf_cnt_array:
         array of cnt values of iwarp hmc objects
+    :type vf_cnt_array: u32 \*
 
 .. _`i40iw_pf_init_vfhmc.description`:
 

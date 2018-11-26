@@ -26,8 +26,9 @@ intel_gvt_sanitize_options
 
     sanitize GVT related options
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         drm i915 private data
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_gvt_sanitize_options.description`:
 
@@ -45,8 +46,9 @@ intel_gvt_init
 
     initialize GVT components
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         drm i915 private data
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_gvt_init.description`:
 
@@ -71,8 +73,9 @@ intel_gvt_cleanup
 
     cleanup GVT components when i915 driver is unloading
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         drm i915 private *
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_gvt_cleanup.description`:
 

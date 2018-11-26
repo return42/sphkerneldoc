@@ -8,14 +8,17 @@ zl10036_attach
 
 .. c:function:: struct dvb_frontend *zl10036_attach(struct dvb_frontend *fe, const struct zl10036_config *config, struct i2c_adapter *i2c)
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         Frontend to attach to.
+    :type fe: struct dvb_frontend \*
 
-    :param const struct zl10036_config \*config:
+    :param config:
         zl10036_config structure.
+    :type config: const struct zl10036_config \*
 
-    :param struct i2c_adapter \*i2c:
+    :param i2c:
         pointer to struct i2c_adapter.
+    :type i2c: struct i2c_adapter \*
 
 .. _`zl10036_attach.return`:
 

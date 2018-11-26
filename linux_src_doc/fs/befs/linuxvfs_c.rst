@@ -10,20 +10,25 @@ befs_nls2utf
 
     Convert NLS string to utf8 encodeing
 
-    :param struct super_block \*sb:
+    :param sb:
         Superblock
+    :type sb: struct super_block \*
 
-    :param const char \*in:
+    :param in:
         Input string buffer in NLS format
+    :type in: const char \*
 
-    :param int in_len:
+    :param in_len:
         Length of input string in bytes
+    :type in_len: int
 
-    :param char \*\*out:
+    :param out:
         The output string in UTF-8 format
+    :type out: char \*\*
 
-    :param int \*out_len:
+    :param out_len:
         Length of the output buffer
+    :type out_len: int \*
 
 .. _`befs_nls2utf.description`:
 

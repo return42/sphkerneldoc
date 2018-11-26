@@ -10,11 +10,13 @@ cap_to_cyls
 
     accounting for the fact capacity could be a 64 bit value
 
-    :param sector_t capacity:
+    :param capacity:
         *undescribed*
+    :type capacity: sector_t
 
-    :param unsigned divisor:
+    :param divisor:
         *undescribed*
+    :type divisor: unsigned
 
 .. This file was automatic generated / don't edit.
 

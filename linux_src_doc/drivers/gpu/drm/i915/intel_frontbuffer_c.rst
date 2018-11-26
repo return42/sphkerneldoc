@@ -47,14 +47,17 @@ intel_frontbuffer_flush
 
     flush frontbuffer
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param unsigned frontbuffer_bits:
+    :param frontbuffer_bits:
         frontbuffer plane tracking bits
+    :type frontbuffer_bits: unsigned
 
-    :param enum fb_op_origin origin:
+    :param origin:
         which operation caused the flush
+    :type origin: enum fb_op_origin
 
 .. _`intel_frontbuffer_flush.description`:
 
@@ -76,11 +79,13 @@ intel_frontbuffer_flip_prepare
 
     prepare asynchronous frontbuffer flip
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param unsigned frontbuffer_bits:
+    :param frontbuffer_bits:
         frontbuffer plane tracking bits
+    :type frontbuffer_bits: unsigned
 
 .. _`intel_frontbuffer_flip_prepare.description`:
 
@@ -103,11 +108,13 @@ intel_frontbuffer_flip_complete
 
     complete asynchronous frontbuffer flip
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param unsigned frontbuffer_bits:
+    :param frontbuffer_bits:
         frontbuffer plane tracking bits
+    :type frontbuffer_bits: unsigned
 
 .. _`intel_frontbuffer_flip_complete.description`:
 
@@ -128,11 +135,13 @@ intel_frontbuffer_flip
 
     synchronous frontbuffer flip
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param unsigned frontbuffer_bits:
+    :param frontbuffer_bits:
         frontbuffer plane tracking bits
+    :type frontbuffer_bits: unsigned
 
 .. _`intel_frontbuffer_flip.description`:
 

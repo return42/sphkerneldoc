@@ -10,8 +10,9 @@ mtu3_set_dma_mask
 
     bit DMA mask by default, here check whether the controller supports 36-bit DMA or not, if it does, set 36-bit DMA mask.
 
-    :param struct mtu3 \*mtu:
+    :param mtu:
         *undescribed*
+    :type mtu: struct mtu3 \*
 
 .. This file was automatic generated / don't edit.
 

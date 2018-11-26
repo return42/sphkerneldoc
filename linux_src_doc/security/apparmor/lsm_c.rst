@@ -10,17 +10,21 @@ common_perm
 
     basic common permission check wrapper fn for paths
 
-    :param const char \*op:
+    :param op:
         operation being checked
+    :type op: const char \*
 
-    :param const struct path \*path:
+    :param path:
         path to check permission of  (NOT NULL)
+    :type path: const struct path \*
 
-    :param u32 mask:
+    :param mask:
         requested permissions mask
+    :type mask: u32
 
-    :param struct path_cond \*cond:
+    :param cond:
         conditional info for the permission request  (NOT NULL)
+    :type cond: struct path_cond \*
 
 .. _`common_perm.return`:
 
@@ -38,14 +42,17 @@ common_perm_cond
 
     common permission wrapper around inode cond
 
-    :param const char \*op:
+    :param op:
         operation being checked
+    :type op: const char \*
 
-    :param const struct path \*path:
+    :param path:
         location to check (NOT NULL)
+    :type path: const struct path \*
 
-    :param u32 mask:
+    :param mask:
         requested permissions mask
+    :type mask: u32
 
 .. _`common_perm_cond.return`:
 
@@ -63,20 +70,25 @@ common_perm_dir_dentry
 
     common permission wrapper when path is dir, dentry
 
-    :param const char \*op:
+    :param op:
         operation being checked
+    :type op: const char \*
 
-    :param const struct path \*dir:
+    :param dir:
         directory of the dentry  (NOT NULL)
+    :type dir: const struct path \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to check  (NOT NULL)
+    :type dentry: struct dentry \*
 
-    :param u32 mask:
+    :param mask:
         requested permissions mask
+    :type mask: u32
 
-    :param struct path_cond \*cond:
+    :param cond:
         conditional info for the permission request  (NOT NULL)
+    :type cond: struct path_cond \*
 
 .. _`common_perm_dir_dentry.return`:
 
@@ -94,17 +106,21 @@ common_perm_rm
 
     common permission wrapper for operations doing rm
 
-    :param const char \*op:
+    :param op:
         operation being checked
+    :type op: const char \*
 
-    :param const struct path \*dir:
+    :param dir:
         directory that the dentry is in  (NOT NULL)
+    :type dir: const struct path \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry being rm'd  (NOT NULL)
+    :type dentry: struct dentry \*
 
-    :param u32 mask:
+    :param mask:
         requested permission mask
+    :type mask: u32
 
 .. _`common_perm_rm.return`:
 
@@ -122,20 +138,25 @@ common_perm_create
 
     common permission wrapper for operations doing create
 
-    :param const char \*op:
+    :param op:
         operation being checked
+    :type op: const char \*
 
-    :param const struct path \*dir:
+    :param dir:
         directory that dentry will be created in  (NOT NULL)
+    :type dir: const struct path \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to create   (NOT NULL)
+    :type dentry: struct dentry \*
 
-    :param u32 mask:
+    :param mask:
         request permission mask
+    :type mask: u32
 
-    :param umode_t mode:
+    :param mode:
         created file mode
+    :type mode: umode_t
 
 .. _`common_perm_create.return`:
 
@@ -153,8 +174,9 @@ apparmor_bprm_committing_creds
 
     do task cleanup on committing new creds
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         binprm for the exec  (NOT NULL)
+    :type bprm: struct linux_binprm \*
 
 .. _`apparmor_bprm_committed_creds`:
 
@@ -165,8 +187,9 @@ apparmor_bprm_committed_creds
 
     do cleanup after new creds committed
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         binprm for the exec  (NOT NULL)
+    :type bprm: struct linux_binprm \*
 
 .. _`apparmor_sk_alloc_security`:
 
@@ -177,14 +200,17 @@ apparmor_sk_alloc_security
 
     allocate and attach the sk_security field
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param int family:
+    :param family:
         *undescribed*
+    :type family: int
 
-    :param gfp_t flags:
+    :param flags:
         *undescribed*
+    :type flags: gfp_t
 
 .. _`apparmor_sk_free_security`:
 
@@ -195,8 +221,9 @@ apparmor_sk_free_security
 
     free the sk_security field
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`apparmor_sk_clone_security`:
 
@@ -207,11 +234,13 @@ apparmor_sk_clone_security
 
     clone the sk_security field
 
-    :param const struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: const struct sock \*
 
-    :param struct sock \*newsk:
+    :param newsk:
         *undescribed*
+    :type newsk: struct sock \*
 
 .. _`apparmor_socket_create`:
 
@@ -222,17 +251,21 @@ apparmor_socket_create
 
     check perms before creating a new socket
 
-    :param int family:
+    :param family:
         *undescribed*
+    :type family: int
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
-    :param int protocol:
+    :param protocol:
         *undescribed*
+    :type protocol: int
 
-    :param int kern:
+    :param kern:
         *undescribed*
+    :type kern: int
 
 .. _`apparmor_socket_post_create`:
 
@@ -243,20 +276,25 @@ apparmor_socket_post_create
 
     setup the per-socket security struct
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param int family:
+    :param family:
         *undescribed*
+    :type family: int
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
-    :param int protocol:
+    :param protocol:
         *undescribed*
+    :type protocol: int
 
-    :param int kern:
+    :param kern:
         *undescribed*
+    :type kern: int
 
 .. _`apparmor_socket_post_create.note`:
 
@@ -278,14 +316,17 @@ apparmor_socket_bind
 
     check perms before bind addr to socket
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*address:
+    :param address:
         *undescribed*
+    :type address: struct sockaddr \*
 
-    :param int addrlen:
+    :param addrlen:
         *undescribed*
+    :type addrlen: int
 
 .. _`apparmor_socket_connect`:
 
@@ -296,14 +337,17 @@ apparmor_socket_connect
 
     check perms before connecting \ ``sock``\  to \ ``address``\ 
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*address:
+    :param address:
         *undescribed*
+    :type address: struct sockaddr \*
 
-    :param int addrlen:
+    :param addrlen:
         *undescribed*
+    :type addrlen: int
 
 .. _`apparmor_socket_listen`:
 
@@ -314,11 +358,13 @@ apparmor_socket_listen
 
     check perms before allowing listen
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param int backlog:
+    :param backlog:
         *undescribed*
+    :type backlog: int
 
 .. _`apparmor_socket_accept`:
 
@@ -329,11 +375,13 @@ apparmor_socket_accept
 
     check perms before accepting a new connection.
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param struct socket \*newsock:
+    :param newsock:
         *undescribed*
+    :type newsock: struct socket \*
 
 .. _`apparmor_socket_accept.note`:
 
@@ -352,14 +400,17 @@ apparmor_socket_sendmsg
 
     check perms before sending msg to another socket
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         *undescribed*
+    :type msg: struct msghdr \*
 
-    :param int size:
+    :param size:
         *undescribed*
+    :type size: int
 
 .. _`apparmor_socket_recvmsg`:
 
@@ -370,17 +421,21 @@ apparmor_socket_recvmsg
 
     check perms before receiving a message
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         *undescribed*
+    :type msg: struct msghdr \*
 
-    :param int size:
+    :param size:
         *undescribed*
+    :type size: int
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`apparmor_socket_getsockname`:
 
@@ -391,8 +446,9 @@ apparmor_socket_getsockname
 
     check perms before getting the local address
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
 .. _`apparmor_socket_getpeername`:
 
@@ -403,8 +459,9 @@ apparmor_socket_getpeername
 
     check perms before getting remote address
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
 .. _`apparmor_socket_getsockopt`:
 
@@ -415,14 +472,17 @@ apparmor_socket_getsockopt
 
     check perms before getting socket options
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param int level:
+    :param level:
         *undescribed*
+    :type level: int
 
-    :param int optname:
+    :param optname:
         *undescribed*
+    :type optname: int
 
 .. _`apparmor_socket_setsockopt`:
 
@@ -433,14 +493,17 @@ apparmor_socket_setsockopt
 
     check perms before setting socket options
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param int level:
+    :param level:
         *undescribed*
+    :type level: int
 
-    :param int optname:
+    :param optname:
         *undescribed*
+    :type optname: int
 
 .. _`apparmor_socket_shutdown`:
 
@@ -451,11 +514,13 @@ apparmor_socket_shutdown
 
     check perms before shutting down \ ``sock``\  conn
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param int how:
+    :param how:
         *undescribed*
+    :type how: int
 
 .. _`apparmor_socket_sock_rcv_skb`:
 
@@ -466,11 +531,13 @@ apparmor_socket_sock_rcv_skb
 
     check perms before associating skb to sk
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`apparmor_socket_sock_rcv_skb.note`:
 
@@ -491,17 +558,21 @@ apparmor_socket_getpeersec_stream
 
     get security context of peer
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param char __user \*optval:
+    :param optval:
         *undescribed*
+    :type optval: char __user \*
 
-    :param int __user \*optlen:
+    :param optlen:
         *undescribed*
+    :type optlen: int __user \*
 
-    :param unsigned int len:
+    :param len:
         *undescribed*
+    :type len: unsigned int
 
 .. _`apparmor_socket_getpeersec_stream.note`:
 
@@ -519,14 +590,17 @@ apparmor_socket_getpeersec_dgram
 
     get security label of packet
 
-    :param struct socket \*sock:
+    :param sock:
         the peer socket
+    :type sock: struct socket \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet data
+    :type skb: struct sk_buff \*
 
-    :param u32 \*secid:
+    :param secid:
         pointer to where to put the secid of the packet
+    :type secid: u32 \*
 
 .. _`apparmor_socket_getpeersec_dgram.description`:
 
@@ -544,11 +618,13 @@ apparmor_sock_graft
 
     Initialize newly created socket
 
-    :param struct sock \*sk:
+    :param sk:
         child sock
+    :type sk: struct sock \*
 
-    :param struct socket \*parent:
+    :param parent:
         parent socket
+    :type parent: struct socket \*
 
 .. _`apparmor_sock_graft.note`:
 
@@ -570,8 +646,9 @@ set_init_ctx
 
     set a task context and profile on the first task.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`set_init_ctx.todo`:
 

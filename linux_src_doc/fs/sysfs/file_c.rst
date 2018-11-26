@@ -10,14 +10,17 @@ sysfs_create_file_ns
 
     create an attribute file for an object with custom ns
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object we're creating for
+    :type kobj: struct kobject \*
 
-    :param const struct attribute \*attr:
+    :param attr:
         attribute descriptor
+    :type attr: const struct attribute \*
 
-    :param const void \*ns:
+    :param ns:
         namespace the new file should belong to
+    :type ns: const void \*
 
 .. _`sysfs_add_file_to_group`:
 
@@ -28,14 +31,17 @@ sysfs_add_file_to_group
 
     add an attribute file to a pre-existing group.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object we're acting for.
+    :type kobj: struct kobject \*
 
-    :param const struct attribute \*attr:
+    :param attr:
         attribute descriptor.
+    :type attr: const struct attribute \*
 
-    :param const char \*group:
+    :param group:
         group name.
+    :type group: const char \*
 
 .. _`sysfs_chmod_file`:
 
@@ -46,14 +52,69 @@ sysfs_chmod_file
 
     update the modified mode value on an object attribute.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object we're acting for.
+    :type kobj: struct kobject \*
 
-    :param const struct attribute \*attr:
+    :param attr:
         attribute descriptor.
+    :type attr: const struct attribute \*
 
-    :param umode_t mode:
+    :param mode:
         file permissions.
+    :type mode: umode_t
+
+.. _`sysfs_break_active_protection`:
+
+sysfs_break_active_protection
+=============================
+
+.. c:function:: struct kernfs_node *sysfs_break_active_protection(struct kobject *kobj, const struct attribute *attr)
+
+    break "active" protection
+
+    :param kobj:
+        The kernel object \ ``attr``\  is associated with.
+    :type kobj: struct kobject \*
+
+    :param attr:
+        The attribute to break the "active" protection for.
+    :type attr: const struct attribute \*
+
+.. _`sysfs_break_active_protection.description`:
+
+Description
+-----------
+
+With sysfs, just like kernfs, deletion of an attribute is postponed until
+all active .show() and .store() callbacks have finished unless this function
+is called. Hence this function is useful in methods that implement self
+deletion.
+
+.. _`sysfs_unbreak_active_protection`:
+
+sysfs_unbreak_active_protection
+===============================
+
+.. c:function:: void sysfs_unbreak_active_protection(struct kernfs_node *kn)
+
+    restore "active" protection
+
+    :param kn:
+        Pointer returned by \ :c:func:`sysfs_break_active_protection`\ .
+    :type kn: struct kernfs_node \*
+
+.. _`sysfs_unbreak_active_protection.description`:
+
+Description
+-----------
+
+Undo the effects of \ :c:func:`sysfs_break_active_protection`\ . Since this function
+calls \ :c:func:`kernfs_put`\  on the kernfs node that corresponds to the 'attr'
+argument passed to \ :c:func:`sysfs_break_active_protection`\  that attribute may have
+been removed between the \ :c:func:`sysfs_break_active_protection`\  and
+\ :c:func:`sysfs_unbreak_active_protection`\  calls, it is not safe to access \ ``kn``\  after
+this function has returned.
 
 .. _`sysfs_remove_file_ns`:
 
@@ -64,14 +125,17 @@ sysfs_remove_file_ns
 
     remove an object attribute with a custom ns tag
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object we're acting for
+    :type kobj: struct kobject \*
 
-    :param const struct attribute \*attr:
+    :param attr:
         attribute descriptor
+    :type attr: const struct attribute \*
 
-    :param const void \*ns:
+    :param ns:
         namespace tag of the file to remove
+    :type ns: const void \*
 
 .. _`sysfs_remove_file_ns.description`:
 
@@ -89,11 +153,13 @@ sysfs_remove_file_self
 
     remove an object attribute from its own method
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object we're acting for
+    :type kobj: struct kobject \*
 
-    :param const struct attribute \*attr:
+    :param attr:
         attribute descriptor
+    :type attr: const struct attribute \*
 
 .. _`sysfs_remove_file_self.description`:
 
@@ -111,14 +177,17 @@ sysfs_remove_file_from_group
 
     remove an attribute file from a group.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object we're acting for.
+    :type kobj: struct kobject \*
 
-    :param const struct attribute \*attr:
+    :param attr:
         attribute descriptor.
+    :type attr: const struct attribute \*
 
-    :param const char \*group:
+    :param group:
         group name.
+    :type group: const char \*
 
 .. _`sysfs_create_bin_file`:
 
@@ -129,11 +198,13 @@ sysfs_create_bin_file
 
     create binary file for object.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object.
+    :type kobj: struct kobject \*
 
-    :param const struct bin_attribute \*attr:
+    :param attr:
         attribute descriptor.
+    :type attr: const struct bin_attribute \*
 
 .. _`sysfs_remove_bin_file`:
 
@@ -144,11 +215,13 @@ sysfs_remove_bin_file
 
     remove binary file for object.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object.
+    :type kobj: struct kobject \*
 
-    :param const struct bin_attribute \*attr:
+    :param attr:
         attribute descriptor.
+    :type attr: const struct bin_attribute \*
 
 .. This file was automatic generated / don't edit.
 

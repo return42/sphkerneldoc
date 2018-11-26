@@ -10,23 +10,28 @@ qeth_bridge_emit_host_event
 
     bridgeport address change notification
 
-    :param struct qeth_card \*card:
+    :param card:
         qeth_card structure pointer, for udev events.
+    :type card: struct qeth_card \*
 
-    :param enum qeth_an_event_type evtype:
+    :param evtype:
         "normal" register/unregister, or abort, or reset. For abort
         and reset token and addr_lnid are unused and may be NULL.
+    :type evtype: enum qeth_an_event_type
 
-    :param u8 code:
+    :param code:
         event bitmask: high order bit 0x80 value 1 means removal of an
         object, 0 - addition of an object.
         0x01 - VLAN, 0x02 - MAC, 0x03 - VLAN and MAC.
+    :type code: u8
 
-    :param struct net_if_token \*token:
+    :param token:
         "network token" structure identifying physical address of the port.
+    :type token: struct net_if_token \*
 
-    :param struct mac_addr_lnid \*addr_lnid:
+    :param addr_lnid:
         pointer to structure with MAC address and VLAN ID.
+    :type addr_lnid: struct mac_addr_lnid \*
 
 .. _`qeth_bridge_emit_host_event.description`:
 
@@ -46,14 +51,17 @@ qeth_bridgeport_makerc
 
     derive "traditional" error from hardware codes.
 
-    :param struct qeth_card \*card:
+    :param card:
         qeth_card structure pointer, for debug messages.
+    :type card: struct qeth_card \*
 
-    :param struct _qeth_sbp_cbctl \*cbctl:
+    :param cbctl:
         state structure with hardware return codes.
+    :type cbctl: struct _qeth_sbp_cbctl \*
 
-    :param enum qeth_ipa_sbp_cmd setcmd:
+    :param setcmd:
         IPA command code
+    :type setcmd: enum qeth_ipa_sbp_cmd
 
 .. _`qeth_bridgeport_makerc.description`:
 
@@ -71,8 +79,9 @@ qeth_bridgeport_query_support
 
     store bitmask of supported subfunctions.
 
-    :param struct qeth_card \*card:
+    :param card:
         qeth_card structure pointer.
+    :type card: struct qeth_card \*
 
 .. _`qeth_bridgeport_query_support.description`:
 
@@ -97,14 +106,17 @@ qeth_bridgeport_query_ports
 
     query local bridgeport status.
 
-    :param struct qeth_card \*card:
+    :param card:
         qeth_card structure pointer.
+    :type card: struct qeth_card \*
 
-    :param enum qeth_sbp_roles \*role:
+    :param role:
         Role of the port: 0-none, 1-primary, 2-secondary.
+    :type role: enum qeth_sbp_roles \*
 
-    :param enum qeth_sbp_states \*state:
+    :param state:
         State of the port: 0-inactive, 1-standby, 2-active.
+    :type state: enum qeth_sbp_states \*
 
 .. _`qeth_bridgeport_query_ports.description`:
 
@@ -124,11 +136,13 @@ qeth_bridgeport_setrole
 
     Assign primary role to the port.
 
-    :param struct qeth_card \*card:
+    :param card:
         qeth_card structure pointer.
+    :type card: struct qeth_card \*
 
-    :param enum qeth_sbp_roles role:
+    :param role:
         Role to assign.
+    :type role: enum qeth_sbp_roles
 
 .. _`qeth_bridgeport_setrole.description`:
 
@@ -146,14 +160,17 @@ qeth_anset_makerc
 
     derive "traditional" error from hardware codes.
 
-    :param struct qeth_card \*card:
+    :param card:
         qeth_card structure pointer, for debug messages.
+    :type card: struct qeth_card \*
 
-    :param int pnso_rc:
+    :param pnso_rc:
         *undescribed*
+    :type pnso_rc: int
 
-    :param u16 response:
+    :param response:
         *undescribed*
+    :type response: u16
 
 .. _`qeth_anset_makerc.description`:
 
@@ -171,11 +188,13 @@ qeth_bridgeport_an_set
 
     Enable or disable bridgeport address notification
 
-    :param struct qeth_card \*card:
+    :param card:
         qeth_card structure pointer.
+    :type card: struct qeth_card \*
 
-    :param int enable:
+    :param enable:
         0 - disable, non-zero - enable notifications
+    :type enable: int
 
 .. _`qeth_bridgeport_an_set.description`:
 

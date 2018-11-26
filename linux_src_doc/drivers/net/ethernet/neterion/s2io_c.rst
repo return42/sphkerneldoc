@@ -10,8 +10,9 @@ init_shared_mem
 
     Allocation and Initialization of Memory
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         Device private variable.
+    :type nic: struct s2io_nic \*
 
 .. _`init_shared_mem.description`:
 
@@ -31,8 +32,9 @@ free_shared_mem
 
     Free the allocated Memory
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         Device private variable.
+    :type nic: struct s2io_nic \*
 
 .. _`free_shared_mem.description`:
 
@@ -49,8 +51,9 @@ s2io_verify_pci_mode
 
 .. c:function:: int s2io_verify_pci_mode(struct s2io_nic *nic)
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         *undescribed*
+    :type nic: struct s2io_nic \*
 
 .. _`s2io_print_pci_mode`:
 
@@ -59,8 +62,9 @@ s2io_print_pci_mode
 
 .. c:function:: int s2io_print_pci_mode(struct s2io_nic *nic)
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         *undescribed*
+    :type nic: struct s2io_nic \*
 
 .. _`init_tti`:
 
@@ -71,12 +75,14 @@ init_tti
 
     Initialization transmit traffic interrupt scheme
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         device private variable
+    :type nic: struct s2io_nic \*
 
-    :param int link:
+    :param link:
         link status (UP/DOWN) used to enable/disable continuous
         transmit interrupts
+    :type link: int
 
 .. _`init_tti.description`:
 
@@ -102,8 +108,9 @@ init_nic
 
     Initialization of hardware
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         device private variable
+    :type nic: struct s2io_nic \*
 
 .. _`init_nic.description`:
 
@@ -130,14 +137,17 @@ do_s2io_write_bits
 
     update alarm bits in alarm register
 
-    :param u64 value:
+    :param value:
         alarm bits
+    :type value: u64
 
-    :param int flag:
+    :param flag:
         interrupt status
+    :type flag: int
 
-    :param void __iomem \*addr:
+    :param addr:
         address value
+    :type addr: void __iomem \*
 
 .. _`do_s2io_write_bits.description`:
 
@@ -162,14 +172,17 @@ en_dis_able_nic_intrs
 
     Enable or Disable the interrupts
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         device private variable,
+    :type nic: struct s2io_nic \*
 
-    :param u16 mask:
+    :param mask:
         A mask indicating which Intr block must be modified and,
+    :type mask: u16
 
-    :param int flag:
+    :param flag:
         A flag indicating whether to enable or disable the Intrs.
+    :type flag: int
 
 .. _`en_dis_able_nic_intrs.description`:
 
@@ -196,11 +209,13 @@ verify_pcc_quiescent
 
     Checks for PCC quiescent state
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct s2io_nic \*
 
-    :param int flag:
+    :param flag:
         *undescribed*
+    :type flag: int
 
 .. _`verify_pcc_quiescent.return`:
 
@@ -219,8 +234,9 @@ verify_xena_quiescence
 
     Checks whether the H/W is ready
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct s2io_nic \*
 
 .. _`verify_xena_quiescence.description`:
 
@@ -249,10 +265,11 @@ fix_mac_address
 
     Fix for Mac addr problem on Alpha platforms
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         Pointer to device specifc structure
         Description :
         New procedure to clear mac address reading  problems on Alpha platforms
+    :type sp: struct s2io_nic \*
 
 .. _`start_nic`:
 
@@ -263,8 +280,9 @@ start_nic
 
     Turns the device on
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         device private variable.
+    :type nic: struct s2io_nic \*
 
 .. _`start_nic.description`:
 
@@ -293,14 +311,17 @@ s2io_txdl_getskb
 
     Get the skb from txdl, unmap and return skb
 
-    :param struct fifo_info \*fifo_data:
+    :param fifo_data:
         *undescribed*
+    :type fifo_data: struct fifo_info \*
 
-    :param struct TxD \*txdlp:
+    :param txdlp:
         *undescribed*
+    :type txdlp: struct TxD \*
 
-    :param int get_off:
+    :param get_off:
         *undescribed*
+    :type get_off: int
 
 .. _`free_tx_buffers`:
 
@@ -311,8 +332,9 @@ free_tx_buffers
 
     Free all queued Tx buffers
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         device private variable.
+    :type nic: struct s2io_nic \*
 
 .. _`free_tx_buffers.description`:
 
@@ -337,8 +359,9 @@ stop_nic
 
     To stop the nic \ ``nic``\  ; device private variable.
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         *undescribed*
+    :type nic: struct s2io_nic \*
 
 .. _`stop_nic.description`:
 
@@ -364,16 +387,19 @@ fill_rx_buffers
 
     Allocates the Rx side skbs
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         *undescribed*
+    :type nic: struct s2io_nic \*
 
-    :param struct ring_info \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct ring_info \*
 
-    :param int from_card_up:
+    :param from_card_up:
         If this is true, we will map the buffer to get
         the dma address for buf0 and buf1 to give it to the card.
         Else we will sync the already mapped buffer to give it to the card.
+    :type from_card_up: int
 
 .. _`fill_rx_buffers.description`:
 
@@ -409,8 +435,9 @@ free_rx_buffers
 
     Frees all Rx buffers
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         device private variable.
+    :type sp: struct s2io_nic \*
 
 .. _`free_rx_buffers.description`:
 
@@ -435,12 +462,14 @@ s2io_poll_msix
 
     Rx interrupt handler for NAPI support
 
-    :param struct napi_struct \*napi:
+    :param napi:
         pointer to the napi structure.
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         The number of packets that were budgeted to be processed
         during  one pass through the 'Poll" function.
+    :type budget: int
 
 .. _`s2io_poll_msix.description`:
 
@@ -467,8 +496,9 @@ s2io_netpoll
 
     netpoll event handler entry point
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure.
+    :type dev: struct net_device \*
 
 .. _`s2io_netpoll.description`:
 
@@ -489,11 +519,13 @@ rx_intr_handler
 
     Rx interrupt handler
 
-    :param struct ring_info \*ring_data:
+    :param ring_data:
         *undescribed*
+    :type ring_data: struct ring_info \*
 
-    :param int budget:
+    :param budget:
         budget for napi processing.
+    :type budget: int
 
 .. _`rx_intr_handler.description`:
 
@@ -522,8 +554,9 @@ tx_intr_handler
 
     Transmit interrupt handler
 
-    :param struct fifo_info \*fifo_data:
+    :param fifo_data:
         *undescribed*
+    :type fifo_data: struct fifo_info \*
 
 .. _`tx_intr_handler.description`:
 
@@ -551,17 +584,21 @@ s2io_mdio_write
 
     Function to write in to MDIO registers
 
-    :param u32 mmd_type:
+    :param mmd_type:
         MMD type value (PMA/PMD/WIS/PCS/PHYXS)
+    :type mmd_type: u32
 
-    :param u64 addr:
+    :param addr:
         address value
+    :type addr: u64
 
-    :param u16 value:
+    :param value:
         data value
+    :type value: u16
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device structure
+    :type dev: struct net_device \*
 
 .. _`s2io_mdio_write.description`:
 
@@ -580,14 +617,17 @@ s2io_mdio_read
 
     Function to write in to MDIO registers
 
-    :param u32 mmd_type:
+    :param mmd_type:
         MMD type value (PMA/PMD/WIS/PCS/PHYXS)
+    :type mmd_type: u32
 
-    :param u64 addr:
+    :param addr:
         address value
+    :type addr: u64
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device structure
+    :type dev: struct net_device \*
 
 .. _`s2io_mdio_read.description`:
 
@@ -606,20 +646,25 @@ s2io_chk_xpak_counter
 
     Function to check the status of the xpak counters
 
-    :param u64 \*counter:
+    :param counter:
         counter value to be updated
+    :type counter: u64 \*
 
-    :param u64 \*regs_stat:
+    :param regs_stat:
         *undescribed*
+    :type regs_stat: u64 \*
 
-    :param u32 index:
+    :param index:
         *undescribed*
+    :type index: u32
 
-    :param u16 flag:
+    :param flag:
         flag to indicate the status
+    :type flag: u16
 
-    :param u16 type:
+    :param type:
         counter type
+    :type type: u16
 
 .. _`s2io_chk_xpak_counter.description`:
 
@@ -638,8 +683,9 @@ s2io_updt_xpak_counter
 
     Function to update the xpak counters
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device struct
+    :type dev: struct net_device \*
 
 .. _`s2io_updt_xpak_counter.description`:
 
@@ -658,14 +704,17 @@ wait_for_cmd_complete
 
     waits for a command to complete.
 
-    :param void __iomem \*addr:
+    :param addr:
         *undescribed*
+    :type addr: void __iomem \*
 
-    :param u64 busy_bit:
+    :param busy_bit:
         *undescribed*
+    :type busy_bit: u64
 
-    :param int bit_state:
+    :param bit_state:
         *undescribed*
+    :type bit_state: int
 
 .. _`wait_for_cmd_complete.description`:
 
@@ -692,8 +741,9 @@ check_pci_device_id
 
     Checks if the device id is supported
 
-    :param u16 id:
+    :param id:
         device id
+    :type id: u16
 
 .. _`check_pci_device_id.description`:
 
@@ -718,8 +768,9 @@ s2io_reset
 
     Resets the card.
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         private member of the device structure.
+    :type sp: struct s2io_nic \*
 
 .. _`s2io_reset.description`:
 
@@ -746,9 +797,10 @@ s2io_set_swapper
 
     to set the swapper controle on the card
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         private member of the device structure,
         pointer to the s2io_nic structure.
+    :type sp: struct s2io_nic \*
 
 .. _`s2io_set_swapper.description`:
 
@@ -774,8 +826,9 @@ s2io_open
 
     open entry point of the driver
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure.
+    :type dev: struct net_device \*
 
 .. _`s2io_open.description`:
 
@@ -803,8 +856,9 @@ s2io_close
 
     close entry point of the driver
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
 .. _`s2io_close.description`:
 
@@ -833,14 +887,16 @@ s2io_xmit
 
     Tx entry point of te driver
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the socket buffer containing the Tx data.
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
         Description :
         This function is the Tx entry point of the driver. S2IO NIC supports
         certain protocol assist features on Tx side, namely  CSO, S/G, LSO.
+    :type dev: struct net_device \*
 
 .. _`s2io_xmit.note`:
 
@@ -866,14 +922,17 @@ do_s2io_chk_alarm_bit
 
     Check for alarm and incrment the counter
 
-    :param u64 value:
+    :param value:
         alarm bits
+    :type value: u64
 
-    :param void __iomem \*addr:
+    :param addr:
         address value
+    :type addr: void __iomem \*
 
-    :param unsigned long long \*cnt:
+    :param cnt:
         counter variable
+    :type cnt: unsigned long long \*
 
 .. _`do_s2io_chk_alarm_bit.description`:
 
@@ -899,8 +958,9 @@ s2io_handle_errors
 
     Xframe error indication handler
 
-    :param void \*dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: void \*
 
 .. _`s2io_handle_errors.description`:
 
@@ -926,11 +986,13 @@ s2io_isr
 
     ISR handler of the device .
 
-    :param int irq:
+    :param irq:
         the irq of the device.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         a void pointer to the dev structure of the NIC.
+    :type dev_id: void \*
 
 .. _`s2io_isr.description`:
 
@@ -964,8 +1026,9 @@ s2io_updt_stats
 
 .. c:function:: void s2io_updt_stats(struct s2io_nic *sp)
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct s2io_nic \*
 
 .. _`s2io_get_stats`:
 
@@ -976,8 +1039,9 @@ s2io_get_stats
 
     Updates the device statistics structure.
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure.
+    :type dev: struct net_device \*
 
 .. _`s2io_get_stats.description`:
 
@@ -1003,8 +1067,9 @@ s2io_set_multicast
 
     entry point for multicast address enable/disable.
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct net_device \*
 
 .. _`s2io_set_multicast.description`:
 
@@ -1033,11 +1098,13 @@ s2io_set_mac_addr
 
     driver entry point
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         *undescribed*
+    :type p: void \*
 
 .. _`do_s2io_prog_unicast`:
 
@@ -1048,13 +1115,15 @@ do_s2io_prog_unicast
 
     Programs the Xframe mac address
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure.
+    :type dev: struct net_device \*
 
-    :param u8 \*addr:
+    :param addr:
         a uchar pointer to the new mac address which is to be set.
         Description : This procedure will program the Xframe to receive
         frames with new Mac Address
+    :type addr: u8 \*
 
 .. _`do_s2io_prog_unicast.return-value`:
 
@@ -1073,12 +1142,14 @@ s2io_ethtool_set_link_ksettings
 
     Sets different link parameters.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param const struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         pointer to the structure with parameters given by ethtool to set
         link information.
+    :type cmd: const struct ethtool_link_ksettings \*
 
 .. _`s2io_ethtool_set_link_ksettings.description`:
 
@@ -1104,12 +1175,14 @@ s2io_ethtool_get_link_ksettings
 
     Return link specific information.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         pointer to the structure with parameters given by ethtool
         to return link information.
+    :type cmd: struct ethtool_link_ksettings \*
 
 .. _`s2io_ethtool_get_link_ksettings.description`:
 
@@ -1129,12 +1202,14 @@ s2io_ethtool_gdrvinfo
 
     Returns driver specific information.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ethtool_drvinfo \*info:
+    :param info:
         pointer to the structure with parameters given by ethtool to
         return driver information.
+    :type info: struct ethtool_drvinfo \*
 
 .. _`s2io_ethtool_gdrvinfo.description`:
 
@@ -1159,15 +1234,18 @@ s2io_ethtool_gregs
 
     dumps the entire space of Xfame into the buffer.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ethtool_regs \*regs:
+    :param regs:
         pointer to the structure with parameters given by ethtool for
         dumping the registers.
+    :type regs: struct ethtool_regs \*
 
-    :param void \*space:
+    :param space:
         *undescribed*
+    :type space: void \*
 
 .. _`s2io_ethtool_gregs.description`:
 
@@ -1188,11 +1266,13 @@ s2io_ethtool_set_led
 
     To physically identify the nic on the system.
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param enum ethtool_phys_id_state state:
+    :param state:
         led setting
+    :type state: enum ethtool_phys_id_state
 
 .. _`s2io_ethtool_set_led.description`:
 
@@ -1220,11 +1300,13 @@ s2io_ethtool_getpause_data
 
     Pause frame frame generation and reception.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*ep:
+    :param ep:
         pointer to the structure with pause parameters given by ethtool.
+    :type ep: struct ethtool_pauseparam \*
 
 .. _`s2io_ethtool_getpause_data.description`:
 
@@ -1249,11 +1331,13 @@ s2io_ethtool_setpause_data
 
     set/reset pause frame generation.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*ep:
+    :param ep:
         pointer to the structure with pause parameters given by ethtool.
+    :type ep: struct ethtool_pauseparam \*
 
 .. _`s2io_ethtool_setpause_data.description`:
 
@@ -1311,19 +1395,23 @@ write_eeprom
 
     actually writes the relevant part of the data value.
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         private member of the device structure, which is a pointer to the
         s2io_nic structure.
+    :type sp: struct s2io_nic \*
 
-    :param int off:
+    :param off:
         offset at which the data must be written
+    :type off: int
 
-    :param u64 data:
+    :param data:
         The data that is to be written
+    :type data: u64
 
-    :param int cnt:
+    :param cnt:
         Number of bytes of the data that are actually to be written into
         the Eeprom. (max of 3)
+    :type cnt: int
 
 .. _`write_eeprom.description`:
 
@@ -1349,15 +1437,18 @@ s2io_ethtool_geeprom
 
     reads the value stored in the Eeprom.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ethtool_eeprom \*eeprom:
+    :param eeprom:
         pointer to the user level structure provided by ethtool,
         containing all relevant information.
+    :type eeprom: struct ethtool_eeprom \*
 
-    :param u8 \*data_buf:
+    :param data_buf:
         user defined value to be written into Eeprom.
+    :type data_buf: u8 \*
 
 .. _`s2io_ethtool_geeprom.description`:
 
@@ -1384,16 +1475,19 @@ s2io_ethtool_seeprom
 
     tries to write the user provided value in Eeprom
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ethtool_eeprom \*eeprom:
+    :param eeprom:
         pointer to the user level structure provided by ethtool,
         containing all relevant information.
         \ ``data_buf``\  ; user defined value to be written into Eeprom.
+    :type eeprom: struct ethtool_eeprom \*
 
-    :param u8 \*data_buf:
+    :param data_buf:
         *undescribed*
+    :type data_buf: u8 \*
 
 .. _`s2io_ethtool_seeprom.description`:
 
@@ -1419,13 +1513,15 @@ s2io_register_test
 
     reads and writes into all clock domains.
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         private member of the device structure, which is a pointer to the
         s2io_nic structure.
+    :type sp: struct s2io_nic \*
 
-    :param uint64_t \*data:
+    :param data:
         variable that returns the result of each of the test conducted b
         by the driver.
+    :type data: uint64_t \*
 
 .. _`s2io_register_test.description`:
 
@@ -1451,13 +1547,15 @@ s2io_eeprom_test
 
     to verify that EEprom in the xena can be programmed.
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         private member of the device structure, which is a pointer to the
         s2io_nic structure.
+    :type sp: struct s2io_nic \*
 
-    :param uint64_t \*data:
+    :param data:
         variable that returns the result of each of the test conducted by
         the driver.
+    :type data: uint64_t \*
 
 .. _`s2io_eeprom_test.description`:
 
@@ -1483,13 +1581,15 @@ s2io_bist_test
 
     invokes the MemBist test of the card .
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         private member of the device structure, which is a pointer to the
         s2io_nic structure.
+    :type sp: struct s2io_nic \*
 
-    :param uint64_t \*data:
+    :param data:
         variable that returns the result of each of the test conducted by
         the driver.
+    :type data: uint64_t \*
 
 .. _`s2io_bist_test.description`:
 
@@ -1516,12 +1616,14 @@ s2io_link_test
 
     verifies the link state of the nic \ ``sp``\  ; private member of the device structure, which is a pointer to the s2io_nic structure.
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct s2io_nic \*
 
-    :param uint64_t \*data:
+    :param data:
         variable that returns the result of each of the test conducted by
         the driver.
+    :type data: uint64_t \*
 
 .. _`s2io_link_test.description`:
 
@@ -1547,13 +1649,15 @@ s2io_rldram_test
 
     offline test for access to the RldRam chip on the NIC
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         private member of the device structure, which is a pointer to the
         s2io_nic structure.
+    :type sp: struct s2io_nic \*
 
-    :param uint64_t \*data:
+    :param data:
         variable that returns the result of each of the test
         conducted by the driver.
+    :type data: uint64_t \*
 
 .. _`s2io_rldram_test.description`:
 
@@ -1579,16 +1683,19 @@ s2io_ethtool_test
 
     conducts 6 tsets to determine the health of card.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ethtool_test \*ethtest:
+    :param ethtest:
         pointer to a ethtool command specific structure that will be
         returned to the user.
+    :type ethtest: struct ethtool_test \*
 
-    :param uint64_t \*data:
+    :param data:
         variable that returns the result of each of the test
         conducted by the driver.
+    :type data: uint64_t \*
 
 .. _`s2io_ethtool_test.description`:
 
@@ -1614,15 +1721,18 @@ s2io_ioctl
 
     Entry point for the Ioctl
 
-    :param struct net_device \*dev:
+    :param dev:
         Device pointer.
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*rq:
+    :param rq:
         *undescribed*
+    :type rq: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         This is used to distinguish between the different commands that
         can be passed to the IOCTL functions.
+    :type cmd: int
 
 .. _`s2io_ioctl.description`:
 
@@ -1641,11 +1751,13 @@ s2io_change_mtu
 
     entry point to change MTU size for the device.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         the new MTU size for the device.
+    :type new_mtu: int
 
 .. _`s2io_change_mtu.description`:
 
@@ -1672,8 +1784,9 @@ s2io_set_link
 
     Set the LInk status
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`s2io_set_link.description`:
 
@@ -1691,8 +1804,9 @@ s2io_restart_nic
 
     Resets the NIC.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`s2io_restart_nic.description`:
 
@@ -1713,8 +1827,9 @@ s2io_tx_watchdog
 
     Watchdog for transmit side.
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to net device structure
+    :type dev: struct net_device \*
 
 .. _`s2io_tx_watchdog.description`:
 
@@ -1743,11 +1858,13 @@ rx_osm_handler
 
     To perform some OS related operations on SKB.
 
-    :param struct ring_info \*ring_data:
+    :param ring_data:
         *undescribed*
+    :type ring_data: struct ring_info \*
 
-    :param struct RxD_t \*rxdp:
+    :param rxdp:
         *undescribed*
+    :type rxdp: struct RxD_t \*
 
 .. _`rx_osm_handler.description`:
 
@@ -1777,12 +1894,14 @@ s2io_link
 
     stops/starts the Tx queue.
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         private member of the device structure, which is a pointer to the
         s2io_nic structure.
+    :type sp: struct s2io_nic \*
 
-    :param int link:
+    :param link:
         inidicates whether link is UP/DOWN.
+    :type link: int
 
 .. _`s2io_link.description`:
 
@@ -1809,9 +1928,10 @@ s2io_init_pci
 
     Initialization of PCI and PCI-X configuration registers .
 
-    :param struct s2io_nic \*sp:
+    :param sp:
         private member of the device structure, which is a pointer to the
         s2io_nic structure.
+    :type sp: struct s2io_nic \*
 
 .. _`s2io_init_pci.description`:
 
@@ -1837,14 +1957,17 @@ rts_ds_steer
 
     Receive traffic steering based on IPv4 or IPv6 TOS or Traffic class respectively.
 
-    :param struct s2io_nic \*nic:
+    :param nic:
         device private variable
+    :type nic: struct s2io_nic \*
 
-    :param u8 ds_codepoint:
+    :param ds_codepoint:
         *undescribed*
+    :type ds_codepoint: u8
 
-    :param u8 ring:
+    :param ring:
         *undescribed*
+    :type ring: u8
 
 .. _`rts_ds_steer.description`:
 
@@ -1871,11 +1994,13 @@ s2io_init_nic
 
     Initialization of the adapter .
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         structure containing the PCI related information of the device.
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*pre:
+    :param pre:
         List of PCI devices supported by the driver listed in s2io_tbl.
+    :type pre: const struct pci_device_id \*
 
 .. _`s2io_init_nic.description`:
 
@@ -1904,8 +2029,9 @@ s2io_rem_nic
 
     Free the PCI device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         structure containing the PCI related information of the device.
+    :type pdev: struct pci_dev \*
 
 .. _`s2io_rem_nic.description`:
 
@@ -1926,11 +2052,13 @@ s2io_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`s2io_io_error_detected.description`:
 
@@ -1949,8 +2077,9 @@ s2io_io_slot_reset
 
     called after the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`s2io_io_slot_reset.description`:
 
@@ -1971,8 +2100,9 @@ s2io_io_resume
 
     called when traffic can start flowing again.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`s2io_io_resume.description`:
 

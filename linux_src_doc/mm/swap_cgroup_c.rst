@@ -10,14 +10,17 @@ swap_cgroup_cmpxchg
 
     cmpxchg mem_cgroup's id for this swp_entry.
 
-    :param swp_entry_t ent:
+    :param ent:
         swap entry to be cmpxchged
+    :type ent: swp_entry_t
 
-    :param unsigned short old:
+    :param old:
         old id
+    :type old: unsigned short
 
-    :param unsigned short new:
+    :param new:
         new id
+    :type new: unsigned short
 
 .. _`swap_cgroup_cmpxchg.description`:
 
@@ -36,14 +39,17 @@ swap_cgroup_record
 
     record mem_cgroup for a set of swap entries
 
-    :param swp_entry_t ent:
+    :param ent:
         the first swap entry to be recorded into
+    :type ent: swp_entry_t
 
-    :param unsigned short id:
+    :param id:
         mem_cgroup to be recorded
+    :type id: unsigned short
 
-    :param unsigned int nr_ents:
+    :param nr_ents:
         number of swap entries to be recorded
+    :type nr_ents: unsigned int
 
 .. _`swap_cgroup_record.description`:
 
@@ -62,8 +68,9 @@ lookup_swap_cgroup_id
 
     lookup mem_cgroup id tied to swap entry
 
-    :param swp_entry_t ent:
+    :param ent:
         swap entry to be looked up.
+    :type ent: swp_entry_t
 
 .. _`lookup_swap_cgroup_id.description`:
 

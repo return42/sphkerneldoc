@@ -43,8 +43,9 @@ drm_put_dev
 
     Unregister and release a DRM device
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_put_dev.description`:
 
@@ -75,11 +76,13 @@ drm_dev_enter
 
     Enter device critical section
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param int \*idx:
+    :param idx:
         Pointer to index that will be passed to the matching \ :c:func:`drm_dev_exit`\ 
+    :type idx: int \*
 
 .. _`drm_dev_enter.description`:
 
@@ -106,8 +109,9 @@ drm_dev_exit
 
     Exit device critical section
 
-    :param int idx:
+    :param idx:
         index returned from \ :c:func:`drm_dev_enter`\ 
+    :type idx: int
 
 .. _`drm_dev_exit.description`:
 
@@ -126,8 +130,9 @@ drm_dev_unplug
 
     unplug a DRM device
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_dev_unplug.description`:
 
@@ -149,14 +154,17 @@ drm_dev_init
 
     Initialise new DRM device
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_driver \*driver:
+    :param driver:
         DRM driver
+    :type driver: struct drm_driver \*
 
-    :param struct device \*parent:
+    :param parent:
         Parent device object
+    :type parent: struct device \*
 
 .. _`drm_dev_init.description`:
 
@@ -200,8 +208,9 @@ drm_dev_fini
 
     Finalize a dead DRM device
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_dev_fini.description`:
 
@@ -225,11 +234,13 @@ drm_dev_alloc
 
     Allocate new DRM device
 
-    :param struct drm_driver \*driver:
+    :param driver:
         DRM driver to allocate device for
+    :type driver: struct drm_driver \*
 
-    :param struct device \*parent:
+    :param parent:
         Parent device object
+    :type parent: struct device \*
 
 .. _`drm_dev_alloc.description`:
 
@@ -266,8 +277,9 @@ drm_dev_get
 
     Take reference of a DRM device
 
-    :param struct drm_device \*dev:
+    :param dev:
         device to take reference of or NULL
+    :type dev: struct drm_device \*
 
 .. _`drm_dev_get.description`:
 
@@ -291,8 +303,9 @@ drm_dev_put
 
     Drop reference of a DRM device
 
-    :param struct drm_device \*dev:
+    :param dev:
         device to drop reference of or NULL
+    :type dev: struct drm_device \*
 
 .. _`drm_dev_put.description`:
 
@@ -311,8 +324,9 @@ drm_dev_unref
 
     Drop reference of a DRM device
 
-    :param struct drm_device \*dev:
+    :param dev:
         device to drop reference of or NULL
+    :type dev: struct drm_device \*
 
 .. _`drm_dev_unref.description`:
 
@@ -331,11 +345,13 @@ drm_dev_register
 
     Register DRM device
 
-    :param struct drm_device \*dev:
+    :param dev:
         Device to register
+    :type dev: struct drm_device \*
 
-    :param unsigned long flags:
+    :param flags:
         Flags passed to the driver's .load() function
+    :type flags: unsigned long
 
 .. _`drm_dev_register.description`:
 
@@ -375,8 +391,9 @@ drm_dev_unregister
 
     Unregister DRM device
 
-    :param struct drm_device \*dev:
+    :param dev:
         Device to unregister
+    :type dev: struct drm_device \*
 
 .. _`drm_dev_unregister.description`:
 
@@ -402,11 +419,13 @@ drm_dev_set_unique
 
     Set the unique name of a DRM device
 
-    :param struct drm_device \*dev:
+    :param dev:
         device of which to set the unique name
+    :type dev: struct drm_device \*
 
-    :param const char \*name:
+    :param name:
         unique name
+    :type name: const char \*
 
 .. _`drm_dev_set_unique.description`:
 

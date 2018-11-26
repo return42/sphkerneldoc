@@ -10,8 +10,9 @@ cleanup_srcu_struct
 
     deconstruct a sleep-RCU structure
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         structure to clean up.
+    :type sp: struct srcu_struct \*
 
 .. _`cleanup_srcu_struct.description`:
 
@@ -30,8 +31,9 @@ cleanup_srcu_struct_quiesced
 
     deconstruct a quiesced sleep-RCU structure
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         structure to clean up.
+    :type sp: struct srcu_struct \*
 
 .. _`cleanup_srcu_struct_quiesced.description`:
 
@@ -60,8 +62,9 @@ srcu_read_lock_held
 
     might we be in SRCU read-side critical section?
 
-    :param const struct srcu_struct \*sp:
+    :param sp:
         The srcu_struct structure to check
+    :type sp: const struct srcu_struct \*
 
 .. _`srcu_read_lock_held.description`:
 
@@ -89,15 +92,18 @@ srcu_dereference_check
 
     fetch SRCU-protected pointer for later dereferencing
 
-    :param  p:
+    :param p:
         the pointer to fetch and protect for later dereferencing
+    :type p: 
 
-    :param  sp:
+    :param sp:
         pointer to the srcu_struct, which is used to check that we
         really are in an SRCU read-side critical section.
+    :type sp: 
 
-    :param  c:
+    :param c:
         condition to check for update-side use
+    :type c: 
 
 .. _`srcu_dereference_check.description`:
 
@@ -118,12 +124,14 @@ srcu_dereference
 
     fetch SRCU-protected pointer for later dereferencing
 
-    :param  p:
+    :param p:
         the pointer to fetch and protect for later dereferencing
+    :type p: 
 
-    :param  sp:
+    :param sp:
         pointer to the srcu_struct, which is used to check that we
         really are in an SRCU read-side critical section.
+    :type sp: 
 
 .. _`srcu_dereference.description`:
 
@@ -134,6 +142,23 @@ Makes \ :c:func:`rcu_dereference_check`\  do the dirty work.  If PROVE_RCU
 is enabled, invoking this outside of an RCU read-side critical
 section will result in an RCU-lockdep splat.
 
+.. _`srcu_dereference_notrace`:
+
+srcu_dereference_notrace
+========================
+
+.. c:function::  srcu_dereference_notrace( p,  sp)
+
+    no tracing and no lockdep calls from here
+
+    :param p:
+        *undescribed*
+    :type p: 
+
+    :param sp:
+        *undescribed*
+    :type sp: 
+
 .. _`srcu_read_lock`:
 
 srcu_read_lock
@@ -143,8 +168,9 @@ srcu_read_lock
 
     register a new reader for an SRCU-protected structure.
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         srcu_struct in which to register the new reader.
+    :type sp: struct srcu_struct \*
 
 .. _`srcu_read_lock.description`:
 
@@ -173,11 +199,13 @@ srcu_read_unlock
 
     unregister a old reader from an SRCU-protected structure.
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         srcu_struct in which to unregister the old reader.
+    :type sp: struct srcu_struct \*
 
-    :param int idx:
+    :param idx:
         return value from corresponding \ :c:func:`srcu_read_lock`\ .
+    :type idx: int
 
 .. _`srcu_read_unlock.description`:
 
@@ -195,8 +223,9 @@ smp_mb__after_srcu_read_unlock
 
     ensure full ordering after srcu_read_unlock
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`smp_mb__after_srcu_read_unlock.description`:
 

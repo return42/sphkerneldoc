@@ -10,11 +10,13 @@ cg6_fillrect
 
     Draws a rectangle on the screen.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
-    :param const struct fb_fillrect \*rect:
+    :param rect:
         structure defining the rectagle and operation.
+    :type rect: const struct fb_fillrect \*
 
 .. _`cg6_copyarea`:
 
@@ -25,12 +27,14 @@ cg6_copyarea
 
     Copies one area of the screen to another area.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
-    :param const struct fb_copyarea \*area:
+    :param area:
         Structure providing the data to copy the framebuffer contents
         from one region to another.
+    :type area: const struct fb_copyarea \*
 
 .. _`cg6_copyarea.description`:
 
@@ -49,11 +53,13 @@ cg6_imageblit
 
     Copies a image from system memory to the screen.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
-    :param const struct fb_image \*image:
+    :param image:
         structure defining the image.
+    :type image: const struct fb_image \*
 
 .. _`cg6_setcolreg`:
 
@@ -64,23 +70,29 @@ cg6_setcolreg
 
     Sets a color register.
 
-    :param unsigned regno:
+    :param regno:
         boolean, 0 copy local, 1 \ :c:func:`get_user`\  function
+    :type regno: unsigned
 
-    :param unsigned red:
+    :param red:
         frame buffer colormap structure
+    :type red: unsigned
 
-    :param unsigned green:
+    :param green:
         The green value which can be up to 16 bits wide
+    :type green: unsigned
 
-    :param unsigned blue:
+    :param blue:
         The blue value which can be up to 16 bits wide.
+    :type blue: unsigned
 
-    :param unsigned transp:
+    :param transp:
         If supported the alpha value which can be up to 16 bits wide.
+    :type transp: unsigned
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. _`cg6_blank`:
 
@@ -91,11 +103,13 @@ cg6_blank
 
     Blanks the display.
 
-    :param int blank:
+    :param blank:
         *undescribed*
+    :type blank: int
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. This file was automatic generated / don't edit.
 

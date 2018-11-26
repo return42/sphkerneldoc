@@ -10,8 +10,9 @@ dev_to_dma_chan
 
     convert a device pointer to the its sysfs container object \ ``dev``\  - device node
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`dev_to_dma_chan.description`:
 
@@ -29,8 +30,9 @@ balance_ref_count
 
     catch up the channel reference count \ ``chan``\  - channel to balance ->client_count versus dmaengine_ref_count
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
 .. _`balance_ref_count.description`:
 
@@ -48,8 +50,9 @@ dma_chan_get
 
     try to grab a dma channel's parent driver module \ ``chan``\  - channel to grab
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
 .. _`dma_chan_get.description`:
 
@@ -67,8 +70,9 @@ dma_chan_put
 
     drop a reference to a dma channel's parent driver module \ ``chan``\  - channel to release
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
 .. _`dma_chan_put.description`:
 
@@ -86,8 +90,9 @@ dma_find_channel
 
     find a channel to carry out the operation
 
-    :param enum dma_transaction_type tx_type:
+    :param tx_type:
         transaction type
+    :type tx_type: enum dma_transaction_type
 
 .. _`dma_issue_pending_all`:
 
@@ -98,8 +103,9 @@ dma_issue_pending_all
 
     flush all pending operations across all channels
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dma_chan_is_local`:
 
@@ -110,11 +116,13 @@ dma_chan_is_local
 
     returns true if the channel is in the same numa-node as the cpu
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. _`min_chan`:
 
@@ -125,11 +133,13 @@ min_chan
 
     returns the channel with min count and in the same numa-node as the cpu
 
-    :param enum dma_transaction_type cap:
+    :param cap:
         capability to match
+    :type cap: enum dma_transaction_type
 
-    :param int cpu:
+    :param cpu:
         cpu index which the channel should be close to
+    :type cpu: int
 
 .. _`min_chan.description`:
 
@@ -150,8 +160,9 @@ dma_channel_rebalance
 
     redistribute the available channels
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dma_channel_rebalance.description`:
 
@@ -172,8 +183,9 @@ dma_get_slave_channel
 
     try to get specific channel exclusively
 
-    :param struct dma_chan \*chan:
+    :param chan:
         target channel
+    :type chan: struct dma_chan \*
 
 .. _`__dma_request_channel`:
 
@@ -184,14 +196,17 @@ dma_get_slave_channel
 
     try to allocate an exclusive channel
 
-    :param const dma_cap_mask_t \*mask:
+    :param mask:
         capabilities that the channel must satisfy
+    :type mask: const dma_cap_mask_t \*
 
-    :param dma_filter_fn fn:
+    :param fn:
         optional callback to disposition available channels
+    :type fn: dma_filter_fn
 
-    :param void \*fn_param:
+    :param fn_param:
         opaque parameter to pass to dma_filter_fn
+    :type fn_param: void \*
 
 .. _`__dma_request_channel.description`:
 
@@ -209,11 +224,13 @@ dma_request_chan
 
     try to allocate an exclusive slave channel
 
-    :param struct device \*dev:
+    :param dev:
         pointer to client device structure
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         slave channel name
+    :type name: const char \*
 
 .. _`dma_request_chan.description`:
 
@@ -231,11 +248,13 @@ dma_request_slave_channel
 
     try to allocate an exclusive slave channel
 
-    :param struct device \*dev:
+    :param dev:
         pointer to client device structure
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         slave channel name
+    :type name: const char \*
 
 .. _`dma_request_slave_channel.description`:
 
@@ -253,8 +272,9 @@ dma_request_chan_by_mask
 
     allocate a channel satisfying certain capabilities
 
-    :param const dma_cap_mask_t \*mask:
+    :param mask:
         capabilities that the channel must satisfy
+    :type mask: const dma_cap_mask_t \*
 
 .. _`dma_request_chan_by_mask.description`:
 
@@ -272,8 +292,9 @@ dmaengine_get
 
     register interest in dma_channels
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dmaengine_put`:
 
@@ -284,8 +305,9 @@ dmaengine_put
 
     let dma drivers be removed when ref_count == 0
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dma_async_device_register`:
 
@@ -296,8 +318,9 @@ dma_async_device_register
 
     registers DMA devices found
 
-    :param struct dma_device \*device:
+    :param device:
         \ :c:type:`struct dma_device <dma_device>`\ 
+    :type device: struct dma_device \*
 
 .. _`dma_async_device_unregister`:
 
@@ -308,8 +331,9 @@ dma_async_device_unregister
 
     unregister a DMA device
 
-    :param struct dma_device \*device:
+    :param device:
         \ :c:type:`struct dma_device <dma_device>`\ 
+    :type device: struct dma_device \*
 
 .. _`dma_async_device_unregister.description`:
 
@@ -318,6 +342,26 @@ Description
 
 This routine is called by dma driver exit routines, dmaengine holds module
 references to prevent it being called while channels are in use.
+
+.. _`dmaenginem_async_device_register`:
+
+dmaenginem_async_device_register
+================================
+
+.. c:function:: int dmaenginem_async_device_register(struct dma_device *device)
+
+    registers DMA devices found
+
+    :param device:
+        \ :c:type:`struct dma_device <dma_device>`\ 
+    :type device: struct dma_device \*
+
+.. _`dmaenginem_async_device_register.description`:
+
+Description
+-----------
+
+The operation is managed and will be undone on driver detach.
 
 .. This file was automatic generated / don't edit.
 

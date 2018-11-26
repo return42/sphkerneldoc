@@ -83,8 +83,9 @@ xemaclite_enable_interrupts
 
     Enable the interrupts for the EmacLite device
 
-    :param struct net_local \*drvdata:
+    :param drvdata:
         Pointer to the Emaclite device private data
+    :type drvdata: struct net_local \*
 
 .. _`xemaclite_enable_interrupts.description`:
 
@@ -103,8 +104,9 @@ xemaclite_disable_interrupts
 
     Disable the interrupts for the EmacLite device
 
-    :param struct net_local \*drvdata:
+    :param drvdata:
         Pointer to the Emaclite device private data
+    :type drvdata: struct net_local \*
 
 .. _`xemaclite_disable_interrupts.description`:
 
@@ -123,14 +125,17 @@ xemaclite_aligned_write
 
     Write from 16-bit aligned to 32-bit aligned address
 
-    :param void \*src_ptr:
+    :param src_ptr:
         Void pointer to the 16-bit aligned source address
+    :type src_ptr: void \*
 
-    :param u32 \*dest_ptr:
+    :param dest_ptr:
         Pointer to the 32-bit aligned destination address
+    :type dest_ptr: u32 \*
 
-    :param unsigned length:
+    :param length:
         Number bytes to write from source to destination
+    :type length: unsigned
 
 .. _`xemaclite_aligned_write.description`:
 
@@ -149,14 +154,17 @@ xemaclite_aligned_read
 
     Read from 32-bit aligned to 16-bit aligned buffer
 
-    :param u32 \*src_ptr:
+    :param src_ptr:
         Pointer to the 32-bit aligned source address
+    :type src_ptr: u32 \*
 
-    :param u8 \*dest_ptr:
+    :param dest_ptr:
         Pointer to the 16-bit aligned destination address
+    :type dest_ptr: u8 \*
 
-    :param unsigned length:
+    :param length:
         Number bytes to read from source to destination
+    :type length: unsigned
 
 .. _`xemaclite_aligned_read.description`:
 
@@ -175,14 +183,17 @@ xemaclite_send_data
 
     Send an Ethernet frame
 
-    :param struct net_local \*drvdata:
+    :param drvdata:
         Pointer to the Emaclite device private data
+    :type drvdata: struct net_local \*
 
-    :param u8 \*data:
+    :param data:
         Pointer to the data to be sent
+    :type data: u8 \*
 
-    :param unsigned int byte_count:
+    :param byte_count:
         Total frame size, including header
+    :type byte_count: unsigned int
 
 .. _`xemaclite_send_data.description`:
 
@@ -217,14 +228,17 @@ xemaclite_recv_data
 
     Receive a frame
 
-    :param struct net_local \*drvdata:
+    :param drvdata:
         Pointer to the Emaclite device private data
+    :type drvdata: struct net_local \*
 
-    :param u8 \*data:
+    :param data:
         Address where the data is to be received
+    :type data: u8 \*
 
-    :param int maxlen:
-        *undescribed*
+    :param maxlen:
+        Maximum supported ethernet packet length
+    :type maxlen: int
 
 .. _`xemaclite_recv_data.description`:
 
@@ -250,11 +264,13 @@ xemaclite_update_address
 
     Update the MAC address in the device
 
-    :param struct net_local \*drvdata:
+    :param drvdata:
         Pointer to the Emaclite device private data
+    :type drvdata: struct net_local \*
 
-    :param u8 \*address_ptr:
+    :param address_ptr:
         Pointer to the MAC address (MAC address is a 48-bit value)
+    :type address_ptr: u8 \*
 
 .. _`xemaclite_update_address.description`:
 
@@ -276,11 +292,13 @@ xemaclite_set_mac_address
 
     Set the MAC address for this device
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to the network device instance
+    :type dev: struct net_device \*
 
-    :param void \*address:
-        *undescribed*
+    :param address:
+        Void pointer to the sockaddr structure
+    :type address: void \*
 
 .. _`xemaclite_set_mac_address.description`:
 
@@ -307,8 +325,9 @@ xemaclite_tx_timeout
 
     Callback for Tx Timeout
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to the network device
+    :type dev: struct net_device \*
 
 .. _`xemaclite_tx_timeout.description`:
 
@@ -326,8 +345,9 @@ xemaclite_tx_handler
 
     Interrupt handler for frames sent
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to the network device
+    :type dev: struct net_device \*
 
 .. _`xemaclite_tx_handler.description`:
 
@@ -346,8 +366,9 @@ xemaclite_rx_handler
 
     Interrupt handler for frames received
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to the network device
+    :type dev: struct net_device \*
 
 .. _`xemaclite_rx_handler.description`:
 
@@ -366,17 +387,21 @@ xemaclite_interrupt
 
     Interrupt handler for this driver
 
-    :param int irq:
+    :param irq:
         Irq of the Emaclite device
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Void pointer to the network device instance used as callback
         reference
+    :type dev_id: void \*
 
-.. _`xemaclite_interrupt.description`:
+.. _`xemaclite_interrupt.return`:
 
-Description
------------
+Return
+------
+
+IRQ_HANDLED
 
 This function handles the Tx and Rx interrupts of the EmacLite device.
 
@@ -389,8 +414,9 @@ xemaclite_mdio_wait
 
     Wait for the MDIO to be ready to use
 
-    :param struct net_local \*lp:
+    :param lp:
         Pointer to the Emaclite device private data
+    :type lp: struct net_local \*
 
 .. _`xemaclite_mdio_wait.description`:
 
@@ -416,14 +442,17 @@ xemaclite_mdio_read
 
     Read from a given MII management register
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the mii_bus struct
+    :type bus: struct mii_bus \*
 
-    :param int phy_id:
+    :param phy_id:
         the phy address
+    :type phy_id: int
 
-    :param int reg:
+    :param reg:
         register number to read from
+    :type reg: int
 
 .. _`xemaclite_mdio_read.description`:
 
@@ -450,17 +479,21 @@ xemaclite_mdio_write
 
     Write to a given MII management register
 
-    :param struct mii_bus \*bus:
+    :param bus:
         the mii_bus struct
+    :type bus: struct mii_bus \*
 
-    :param int phy_id:
+    :param phy_id:
         the phy address
+    :type phy_id: int
 
-    :param int reg:
+    :param reg:
         register number to write to
+    :type reg: int
 
-    :param u16 val:
+    :param val:
         value to write to the register number specified by reg
+    :type val: u16
 
 .. _`xemaclite_mdio_write.description`:
 
@@ -469,6 +502,13 @@ Description
 
 This function waits till the device is ready to accept a new MDIO
 request and then writes the val to the MDIO Write Data register.
+
+.. _`xemaclite_mdio_write.return`:
+
+Return
+------
+
+0 upon success or a negative error upon failure
 
 .. _`xemaclite_mdio_setup`:
 
@@ -479,11 +519,13 @@ xemaclite_mdio_setup
 
     Register mii_bus for the Emaclite device
 
-    :param struct net_local \*lp:
+    :param lp:
         Pointer to the Emaclite device private data
+    :type lp: struct net_local \*
 
-    :param struct device \*dev:
-        *undescribed*
+    :param dev:
+        Pointer to OF device structure
+    :type dev: struct device \*
 
 .. _`xemaclite_mdio_setup.description`:
 
@@ -509,8 +551,9 @@ xemaclite_adjust_link
 
     Link state callback for the Emaclite device
 
-    :param struct net_device \*ndev:
+    :param ndev:
         pointer to net_device struct
+    :type ndev: struct net_device \*
 
 .. _`xemaclite_adjust_link.description`:
 
@@ -529,8 +572,9 @@ xemaclite_open
 
     Open the network device
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to the network device
+    :type dev: struct net_device \*
 
 .. _`xemaclite_open.description`:
 
@@ -541,6 +585,14 @@ This function sets the MAC address, requests an IRQ and enables interrupts
 for the Emaclite device and starts the Tx queue.
 It also connects to the phy device, if MDIO is included in Emaclite device.
 
+.. _`xemaclite_open.return`:
+
+Return
+------
+
+0 on success. -ENODEV, if PHY cannot be connected.
+Non-zero error value on failure.
+
 .. _`xemaclite_close`:
 
 xemaclite_close
@@ -550,8 +602,9 @@ xemaclite_close
 
     Close the network device
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to the network device
+    :type dev: struct net_device \*
 
 .. _`xemaclite_close.description`:
 
@@ -562,20 +615,29 @@ This function stops the Tx queue, disables interrupts and frees the IRQ for
 the Emaclite device.
 It also disconnects the phy device associated with the Emaclite device.
 
+.. _`xemaclite_close.return`:
+
+Return
+------
+
+0, always.
+
 .. _`xemaclite_send`:
 
 xemaclite_send
 ==============
 
-.. c:function:: int xemaclite_send(struct sk_buff *orig_skb, struct net_device *dev)
+.. c:function:: netdev_tx_t xemaclite_send(struct sk_buff *orig_skb, struct net_device *dev)
 
     Transmit a frame
 
-    :param struct sk_buff \*orig_skb:
+    :param orig_skb:
         Pointer to the socket buffer to be transmitted
+    :type orig_skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to the network device
+    :type dev: struct net_device \*
 
 .. _`xemaclite_send.description`:
 
@@ -594,7 +656,7 @@ be transmitted when the Emaclite device is free to transmit data.
 Return
 ------
 
-0, always.
+NETDEV_TX_OK, always.
 
 .. _`get_bool`:
 
@@ -605,11 +667,13 @@ get_bool
 
     Get a parameter from the OF device
 
-    :param struct platform_device \*ofdev:
+    :param ofdev:
         Pointer to OF device structure
+    :type ofdev: struct platform_device \*
 
-    :param const char \*s:
+    :param s:
         Property to be retrieved
+    :type s: const char \*
 
 .. _`get_bool.description`:
 
@@ -635,8 +699,9 @@ xemaclite_of_probe
 
     Probe method for the Emaclite device.
 
-    :param struct platform_device \*ofdev:
+    :param ofdev:
         Pointer to OF device structure
+    :type ofdev: struct platform_device \*
 
 .. _`xemaclite_of_probe.description`:
 
@@ -666,8 +731,9 @@ xemaclite_of_remove
 
     Unbind the driver from the Emaclite device.
 
-    :param struct platform_device \*of_dev:
+    :param of_dev:
         Pointer to OF device structure
+    :type of_dev: struct platform_device \*
 
 .. _`xemaclite_of_remove.description`:
 

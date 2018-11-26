@@ -10,8 +10,9 @@ atmel_ssc_set_audio
 
     Allocate the specified SSC for audio use.
 
-    :param int ssc_id:
+    :param ssc_id:
         *undescribed*
+    :type ssc_id: int
 
 .. This file was automatic generated / don't edit.
 

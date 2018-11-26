@@ -10,20 +10,25 @@ usb_find_common_endpoints
 
     - look up common endpoint descriptors
 
-    :param struct usb_host_interface \*alt:
+    :param alt:
         alternate setting to search
+    :type alt: struct usb_host_interface \*
 
-    :param struct usb_endpoint_descriptor \*\*bulk_in:
+    :param bulk_in:
         pointer to descriptor pointer, or NULL
+    :type bulk_in: struct usb_endpoint_descriptor \*\*
 
-    :param struct usb_endpoint_descriptor \*\*bulk_out:
+    :param bulk_out:
         pointer to descriptor pointer, or NULL
+    :type bulk_out: struct usb_endpoint_descriptor \*\*
 
-    :param struct usb_endpoint_descriptor \*\*int_in:
+    :param int_in:
         pointer to descriptor pointer, or NULL
+    :type int_in: struct usb_endpoint_descriptor \*\*
 
-    :param struct usb_endpoint_descriptor \*\*int_out:
+    :param int_out:
         pointer to descriptor pointer, or NULL
+    :type int_out: struct usb_endpoint_descriptor \*\*
 
 .. _`usb_find_common_endpoints.description`:
 
@@ -53,20 +58,25 @@ usb_find_common_endpoints_reverse
 
     - look up common endpoint descriptors
 
-    :param struct usb_host_interface \*alt:
+    :param alt:
         alternate setting to search
+    :type alt: struct usb_host_interface \*
 
-    :param struct usb_endpoint_descriptor \*\*bulk_in:
+    :param bulk_in:
         pointer to descriptor pointer, or NULL
+    :type bulk_in: struct usb_endpoint_descriptor \*\*
 
-    :param struct usb_endpoint_descriptor \*\*bulk_out:
+    :param bulk_out:
         pointer to descriptor pointer, or NULL
+    :type bulk_out: struct usb_endpoint_descriptor \*\*
 
-    :param struct usb_endpoint_descriptor \*\*int_in:
+    :param int_in:
         pointer to descriptor pointer, or NULL
+    :type int_in: struct usb_endpoint_descriptor \*\*
 
-    :param struct usb_endpoint_descriptor \*\*int_out:
+    :param int_out:
         pointer to descriptor pointer, or NULL
+    :type int_out: struct usb_endpoint_descriptor \*\*
 
 .. _`usb_find_common_endpoints_reverse.description`:
 
@@ -96,14 +106,17 @@ usb_find_alt_setting
 
     Given a configuration, find the alternate setting for the given interface.
 
-    :param struct usb_host_config \*config:
+    :param config:
         the configuration to search (not necessarily the current config).
+    :type config: struct usb_host_config \*
 
-    :param unsigned int iface_num:
+    :param iface_num:
         interface number to search in
+    :type iface_num: unsigned int
 
-    :param unsigned int alt_num:
+    :param alt_num:
         alternate interface setting number to search for.
+    :type alt_num: unsigned int
 
 .. _`usb_find_alt_setting.description`:
 
@@ -128,11 +141,13 @@ usb_ifnum_to_if
 
     get the interface object with a given interface number
 
-    :param const struct usb_device \*dev:
+    :param dev:
         the device whose current configuration is considered
+    :type dev: const struct usb_device \*
 
-    :param unsigned ifnum:
+    :param ifnum:
         the desired interface
+    :type ifnum: unsigned
 
 .. _`usb_ifnum_to_if.description`:
 
@@ -169,11 +184,13 @@ usb_altnum_to_altsetting
 
     get the altsetting structure with a given alternate setting number.
 
-    :param const struct usb_interface \*intf:
+    :param intf:
         the interface containing the altsetting in question
+    :type intf: const struct usb_interface \*
 
-    :param unsigned int altnum:
+    :param altnum:
         the desired alternate setting number
+    :type altnum: unsigned int
 
 .. _`usb_altnum_to_altsetting.description`:
 
@@ -208,11 +225,13 @@ usb_find_interface
 
     find usb_interface pointer for driver and device
 
-    :param struct usb_driver \*drv:
+    :param drv:
         the driver whose current configuration is considered
+    :type drv: struct usb_driver \*
 
-    :param int minor:
+    :param minor:
         the minor number of the desired device
+    :type minor: int
 
 .. _`usb_find_interface.description`:
 
@@ -239,8 +258,9 @@ usb_for_each_dev
 
     iterate over all USB devices in the system
 
-    :param void \*data:
+    :param data:
         data pointer that will be handed to the callback function
+    :type data: void \*
 
     :param int (\*fn)(struct usb_device \*, void \*):
         callback function to be called for each USB device
@@ -263,8 +283,9 @@ usb_release_dev
 
     free a usb device structure when all users of it are finished.
 
-    :param struct device \*dev:
+    :param dev:
         device that's been disconnected
+    :type dev: struct device \*
 
 .. _`usb_release_dev.description`:
 
@@ -283,14 +304,17 @@ usb_alloc_dev
 
     usb device constructor (usbcore-internal)
 
-    :param struct usb_device \*parent:
+    :param parent:
         hub to which device is connected; null to allocate a root hub
+    :type parent: struct usb_device \*
 
-    :param struct usb_bus \*bus:
+    :param bus:
         bus used to access the device
+    :type bus: struct usb_bus \*
 
-    :param unsigned port1:
+    :param port1:
         one-based index of port; ignored for root hubs
+    :type port1: unsigned
 
 .. _`usb_alloc_dev.context`:
 
@@ -326,8 +350,9 @@ usb_get_dev
 
     increments the reference count of the usb device structure
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device being referenced
+    :type dev: struct usb_device \*
 
 .. _`usb_get_dev.description`:
 
@@ -356,8 +381,9 @@ usb_put_dev
 
     release a use of the usb device structure
 
-    :param struct usb_device \*dev:
+    :param dev:
         device that's been disconnected
+    :type dev: struct usb_device \*
 
 .. _`usb_put_dev.description`:
 
@@ -376,8 +402,9 @@ usb_get_intf
 
     increments the reference count of the usb interface structure
 
-    :param struct usb_interface \*intf:
+    :param intf:
         the interface being referenced
+    :type intf: struct usb_interface \*
 
 .. _`usb_get_intf.description`:
 
@@ -406,8 +433,9 @@ usb_put_intf
 
     release a use of the usb interface structure
 
-    :param struct usb_interface \*intf:
+    :param intf:
         interface that's been decremented
+    :type intf: struct usb_interface \*
 
 .. _`usb_put_intf.description`:
 
@@ -427,11 +455,13 @@ usb_lock_device_for_reset
 
     cautiously acquire the lock for a usb device structure
 
-    :param struct usb_device \*udev:
+    :param udev:
         device that's being locked
+    :type udev: struct usb_device \*
 
-    :param const struct usb_interface \*iface:
+    :param iface:
         interface bound to the driver making the request (optional)
+    :type iface: const struct usb_interface \*
 
 .. _`usb_lock_device_for_reset.description`:
 
@@ -461,8 +491,9 @@ usb_get_current_frame_number
 
     return current bus frame number
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose bus is being queried
+    :type dev: struct usb_device \*
 
 .. _`usb_get_current_frame_number.return`:
 
@@ -492,17 +523,21 @@ usb_alloc_coherent
 
     allocate dma-consistent buffer for URB_NO_xxx_DMA_MAP
 
-    :param struct usb_device \*dev:
+    :param dev:
         device the buffer will be used with
+    :type dev: struct usb_device \*
 
-    :param size_t size:
+    :param size:
         requested buffer size
+    :type size: size_t
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         affect whether allocation may block
+    :type mem_flags: gfp_t
 
-    :param dma_addr_t \*dma:
+    :param dma:
         used to return DMA address of buffer
+    :type dma: dma_addr_t \*
 
 .. _`usb_alloc_coherent.return`:
 
@@ -538,17 +573,21 @@ usb_free_coherent
 
     free memory allocated with \ :c:func:`usb_alloc_coherent`\ 
 
-    :param struct usb_device \*dev:
+    :param dev:
         device the buffer was used with
+    :type dev: struct usb_device \*
 
-    :param size_t size:
+    :param size:
         requested buffer size
+    :type size: size_t
 
-    :param void \*addr:
+    :param addr:
         CPU address of buffer
+    :type addr: void \*
 
-    :param dma_addr_t dma:
+    :param dma:
         DMA address of buffer
+    :type dma: dma_addr_t
 
 .. _`usb_free_coherent.description`:
 
@@ -568,8 +607,9 @@ usb_buffer_map
 
     create DMA mapping(s) for an urb
 
-    :param struct urb \*urb:
+    :param urb:
         urb whose transfer_buffer/setup_packet will be mapped
+    :type urb: struct urb \*
 
 .. _`usb_buffer_map.description`:
 
@@ -602,8 +642,9 @@ usb_buffer_dmasync
 
     synchronize DMA and CPU view of buffer(s)
 
-    :param struct urb \*urb:
+    :param urb:
         urb whose transfer_buffer/setup_packet will be synchronized
+    :type urb: struct urb \*
 
 .. _`usb_buffer_unmap`:
 
@@ -614,8 +655,9 @@ usb_buffer_unmap
 
     free DMA mapping(s) for an urb
 
-    :param struct urb \*urb:
+    :param urb:
         urb whose transfer_buffer will be unmapped
+    :type urb: struct urb \*
 
 .. _`usb_buffer_unmap.description`:
 
@@ -633,17 +675,21 @@ usb_buffer_map_sg
 
     create scatterlist DMA mapping(s) for an endpoint
 
-    :param const struct usb_device \*dev:
+    :param dev:
         device to which the scatterlist will be mapped
+    :type dev: const struct usb_device \*
 
-    :param int is_in:
+    :param is_in:
         mapping transfer direction
+    :type is_in: int
 
-    :param struct scatterlist \*sg:
+    :param sg:
         the scatterlist to map
+    :type sg: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         the number of entries in the scatterlist
+    :type nents: int
 
 .. _`usb_buffer_map_sg.return`:
 
@@ -683,17 +729,21 @@ usb_buffer_dmasync_sg
 
     synchronize DMA and CPU view of scatterlist buffer(s)
 
-    :param const struct usb_device \*dev:
+    :param dev:
         device to which the scatterlist will be mapped
+    :type dev: const struct usb_device \*
 
-    :param int is_in:
+    :param is_in:
         mapping transfer direction
+    :type is_in: int
 
-    :param struct scatterlist \*sg:
+    :param sg:
         the scatterlist to synchronize
+    :type sg: struct scatterlist \*
 
-    :param int n_hw_ents:
+    :param n_hw_ents:
         the positive return value from usb_buffer_map_sg
+    :type n_hw_ents: int
 
 .. _`usb_buffer_dmasync_sg.description`:
 
@@ -712,17 +762,21 @@ usb_buffer_unmap_sg
 
     free DMA mapping(s) for a scatterlist
 
-    :param const struct usb_device \*dev:
+    :param dev:
         device to which the scatterlist will be mapped
+    :type dev: const struct usb_device \*
 
-    :param int is_in:
+    :param is_in:
         mapping transfer direction
+    :type is_in: int
 
-    :param struct scatterlist \*sg:
+    :param sg:
         the scatterlist to unmap
+    :type sg: struct scatterlist \*
 
-    :param int n_hw_ents:
+    :param n_hw_ents:
         the positive return value from usb_buffer_map_sg
+    :type n_hw_ents: int
 
 .. _`usb_buffer_unmap_sg.description`:
 

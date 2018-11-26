@@ -10,8 +10,9 @@ zfcp_fc_post_event
 
     post event to userspace via fc_transport
 
-    :param struct work_struct \*work:
+    :param work:
         work struct with enqueued events
+    :type work: struct work_struct \*
 
 .. _`zfcp_fc_enqueue_event`:
 
@@ -22,15 +23,18 @@ zfcp_fc_enqueue_event
 
     safely enqueue FC HBA API event from irq context
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         The adapter where to enqueue the event
+    :type adapter: struct zfcp_adapter \*
 
-    :param enum fc_host_event_code event_code:
+    :param event_code:
         The event code (as defined in fc_host_event_code in
         scsi_transport_fc.h)
+    :type event_code: enum fc_host_event_code
 
-    :param u32 event_data:
+    :param event_data:
         The event data (e.g. n_port page in case of els)
+    :type event_data: u32
 
 .. _`zfcp_fc_incoming_els`:
 
@@ -41,8 +45,9 @@ zfcp_fc_incoming_els
 
     handle incoming ELS \ ``fsf_req``\  - request which contains incoming ELS
 
-    :param struct zfcp_fsf_req \*fsf_req:
+    :param fsf_req:
         *undescribed*
+    :type fsf_req: struct zfcp_fsf_req \*
 
 .. _`zfcp_fc_ns_gid_pn`:
 
@@ -53,8 +58,9 @@ zfcp_fc_ns_gid_pn
 
     initiate GID_PN nameserver request
 
-    :param struct zfcp_port \*port:
+    :param port:
         port where GID_PN request is needed
+    :type port: struct zfcp_port \*
 
 .. _`zfcp_fc_ns_gid_pn.return`:
 
@@ -72,8 +78,9 @@ zfcp_fc_trigger_did_lookup
 
     trigger the d_id lookup using a GID_PN request
 
-    :param struct zfcp_port \*port:
+    :param port:
         The zfcp_port to lookup the d_id for.
+    :type port: struct zfcp_port \*
 
 .. _`zfcp_fc_plogi_evaluate`:
 
@@ -84,11 +91,13 @@ zfcp_fc_plogi_evaluate
 
     evaluate PLOGI playload
 
-    :param struct zfcp_port \*port:
+    :param port:
         zfcp_port structure
+    :type port: struct zfcp_port \*
 
-    :param struct fc_els_flogi \*plogi:
+    :param plogi:
         plogi payload
+    :type plogi: struct fc_els_flogi \*
 
 .. _`zfcp_fc_plogi_evaluate.description`:
 
@@ -106,8 +115,9 @@ zfcp_fc_test_link
 
     lightweight link test procedure
 
-    :param struct zfcp_port \*port:
+    :param port:
         port to be tested
+    :type port: struct zfcp_port \*
 
 .. _`zfcp_fc_test_link.description`:
 
@@ -127,8 +137,9 @@ zfcp_fc_scan_ports
 
     scan remote ports and attach new ports
 
-    :param struct work_struct \*work:
+    :param work:
         reference to scheduled work
+    :type work: struct work_struct \*
 
 .. _`zfcp_fc_sym_name_update`:
 
@@ -139,8 +150,9 @@ zfcp_fc_sym_name_update
 
     Retrieve and update the symbolic port name
 
-    :param struct work_struct \*work:
+    :param work:
         ns_up_work of the adapter where to update the symbolic port name
+    :type work: struct work_struct \*
 
 .. _`zfcp_fc_sym_name_update.description`:
 

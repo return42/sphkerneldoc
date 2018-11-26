@@ -10,17 +10,21 @@ intel_gvt_i2c_handle_gmbus_read
 
     emulate gmbus register mmio read
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int offset:
-        *undescribed*
+    :param offset:
+        reg offset
+    :type offset: unsigned int
 
-    :param void \*p_data:
-        *undescribed*
+    :param p_data:
+        data return buffer
+    :type p_data: void \*
 
-    :param unsigned int bytes:
-        *undescribed*
+    :param bytes:
+        access data length
+    :type bytes: unsigned int
 
 .. _`intel_gvt_i2c_handle_gmbus_read.description`:
 
@@ -45,17 +49,21 @@ intel_gvt_i2c_handle_gmbus_write
 
     emulate gmbus register mmio write
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int offset:
-        *undescribed*
+    :param offset:
+        reg offset
+    :type offset: unsigned int
 
-    :param void \*p_data:
-        *undescribed*
+    :param p_data:
+        data return buffer
+    :type p_data: void \*
 
-    :param unsigned int bytes:
-        *undescribed*
+    :param bytes:
+        access data length
+    :type bytes: unsigned int
 
 .. _`intel_gvt_i2c_handle_gmbus_write.description`:
 
@@ -80,17 +88,21 @@ intel_gvt_i2c_handle_aux_ch_write
 
     emulate AUX channel register write
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param int port_idx:
-        *undescribed*
+    :param port_idx:
+        port index
+    :type port_idx: int
 
-    :param unsigned int offset:
-        *undescribed*
+    :param offset:
+        reg offset
+    :type offset: unsigned int
 
-    :param void \*p_data:
-        *undescribed*
+    :param p_data:
+        write ptr
+    :type p_data: void \*
 
 .. _`intel_gvt_i2c_handle_aux_ch_write.description`:
 
@@ -108,8 +120,9 @@ intel_vgpu_init_i2c_edid
 
     initialize vGPU i2c edid emulation
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_init_i2c_edid.description`:
 

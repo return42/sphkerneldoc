@@ -10,8 +10,9 @@ s3c2440_cpufreq_calcdivs
 
     calculate divider settings
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The cpu frequency settings.
+    :type cfg: struct s3c_cpufreq_config \*
 
 .. _`s3c2440_cpufreq_calcdivs.description`:
 
@@ -31,8 +32,9 @@ s3c2440_cpufreq_setdivs
 
     set the cpu frequency divider settings
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The cpu frequency settings.
+    :type cfg: struct s3c_cpufreq_config \*
 
 .. _`s3c2440_cpufreq_setdivs.description`:
 

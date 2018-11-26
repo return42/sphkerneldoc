@@ -10,8 +10,9 @@ lan743x_pcidev_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`lan743x_pcidev_remove.description`:
 

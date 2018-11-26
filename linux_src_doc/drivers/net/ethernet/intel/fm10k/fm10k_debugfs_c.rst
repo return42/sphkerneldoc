@@ -10,8 +10,9 @@ fm10k_dbg_q_vector_init
 
     setup debugfs for the q_vectors
 
-    :param struct fm10k_q_vector \*q_vector:
+    :param q_vector:
         q_vector to allocate directories for
+    :type q_vector: struct fm10k_q_vector \*
 
 .. _`fm10k_dbg_q_vector_init.description`:
 
@@ -31,8 +32,9 @@ fm10k_dbg_q_vector_exit
 
     setup debugfs for the q_vectors
 
-    :param struct fm10k_q_vector \*q_vector:
+    :param q_vector:
         q_vector to allocate directories for
+    :type q_vector: struct fm10k_q_vector \*
 
 .. _`fm10k_dbg_intfc_init`:
 
@@ -43,8 +45,9 @@ fm10k_dbg_intfc_init
 
     setup the debugfs directory for the intferface
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         the interface that is starting up
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_dbg_intfc_exit`:
 
@@ -55,8 +58,9 @@ fm10k_dbg_intfc_exit
 
     clean out the interface's debugfs entries
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         the interface that is stopping
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_dbg_init`:
 
@@ -67,8 +71,9 @@ fm10k_dbg_init
 
     start up debugfs for the driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fm10k_dbg_exit`:
 
@@ -79,8 +84,9 @@ fm10k_dbg_exit
 
     clean out the driver's debugfs entries
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

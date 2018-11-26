@@ -10,8 +10,9 @@ drm_mode_debug_printmodeline
 
     print a mode to dmesg
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         mode to print
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_mode_debug_printmodeline.description`:
 
@@ -29,8 +30,9 @@ drm_mode_create
 
     create a new display mode
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_mode_create.description`:
 
@@ -56,11 +58,13 @@ drm_mode_destroy
 
     remove a mode
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_display_mode \*mode:
+    :param mode:
         mode to remove
+    :type mode: struct drm_display_mode \*
 
 .. _`drm_mode_destroy.description`:
 
@@ -78,11 +82,13 @@ drm_mode_probed_add
 
     add a mode to a connector's probed_mode list
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector the new mode
+    :type connector: struct drm_connector \*
 
-    :param struct drm_display_mode \*mode:
+    :param mode:
         mode data
+    :type mode: struct drm_display_mode \*
 
 .. _`drm_mode_probed_add.description`:
 
@@ -102,26 +108,33 @@ drm_cvt_mode
 
     create a modeline based on the CVT algorithm
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param int hdisplay:
+    :param hdisplay:
         hdisplay size
+    :type hdisplay: int
 
-    :param int vdisplay:
+    :param vdisplay:
         vdisplay size
+    :type vdisplay: int
 
-    :param int vrefresh:
+    :param vrefresh:
         vrefresh rate
+    :type vrefresh: int
 
-    :param bool reduced:
+    :param reduced:
         whether to use reduced blanking
+    :type reduced: bool
 
-    :param bool interlaced:
+    :param interlaced:
         whether to compute an interlaced mode
+    :type interlaced: bool
 
-    :param bool margins:
+    :param margins:
         whether to add margins (borders)
+    :type margins: bool
 
 .. _`drm_cvt_mode.description`:
 
@@ -155,35 +168,45 @@ drm_gtf_mode_complex
 
     create the modeline based on the full GTF algorithm
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param int hdisplay:
+    :param hdisplay:
         hdisplay size
+    :type hdisplay: int
 
-    :param int vdisplay:
+    :param vdisplay:
         vdisplay size
+    :type vdisplay: int
 
-    :param int vrefresh:
+    :param vrefresh:
         vrefresh rate.
+    :type vrefresh: int
 
-    :param bool interlaced:
+    :param interlaced:
         whether to compute an interlaced mode
+    :type interlaced: bool
 
-    :param int margins:
+    :param margins:
         desired margin (borders) size
+    :type margins: int
 
-    :param int GTF_M:
+    :param GTF_M:
         extended GTF formula parameters
+    :type GTF_M: int
 
-    :param int GTF_2C:
+    :param GTF_2C:
         extended GTF formula parameters
+    :type GTF_2C: int
 
-    :param int GTF_K:
+    :param GTF_K:
         extended GTF formula parameters
+    :type GTF_K: int
 
-    :param int GTF_2J:
+    :param GTF_2J:
         extended GTF formula parameters
+    :type GTF_2J: int
 
 .. _`drm_gtf_mode_complex.description`:
 
@@ -211,23 +234,29 @@ drm_gtf_mode
 
     create the modeline based on the GTF algorithm
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param int hdisplay:
+    :param hdisplay:
         hdisplay size
+    :type hdisplay: int
 
-    :param int vdisplay:
+    :param vdisplay:
         vdisplay size
+    :type vdisplay: int
 
-    :param int vrefresh:
+    :param vrefresh:
         vrefresh rate.
+    :type vrefresh: int
 
-    :param bool interlaced:
+    :param interlaced:
         whether to compute an interlaced mode
+    :type interlaced: bool
 
-    :param int margins:
+    :param margins:
         desired margin (borders) size
+    :type margins: int
 
 .. _`drm_gtf_mode.description`:
 
@@ -277,11 +306,13 @@ drm_display_mode_from_videomode
 
     fill in \ ``dmode``\  using \ ``vm``\ ,
 
-    :param const struct videomode \*vm:
+    :param vm:
         videomode structure to use as source
+    :type vm: const struct videomode \*
 
-    :param struct drm_display_mode \*dmode:
+    :param dmode:
         drm_display_mode structure to use as destination
+    :type dmode: struct drm_display_mode \*
 
 .. _`drm_display_mode_from_videomode.description`:
 
@@ -299,11 +330,13 @@ drm_display_mode_to_videomode
 
     fill in \ ``vm``\  using \ ``dmode``\ ,
 
-    :param const struct drm_display_mode \*dmode:
+    :param dmode:
         drm_display_mode structure to use as source
+    :type dmode: const struct drm_display_mode \*
 
-    :param struct videomode \*vm:
+    :param vm:
         videomode structure to use as destination
+    :type vm: struct videomode \*
 
 .. _`drm_display_mode_to_videomode.description`:
 
@@ -321,19 +354,23 @@ drm_bus_flags_from_videomode
 
     extract information about pixelclk and DE polarity from videomode and store it in a separate variable
 
-    :param const struct videomode \*vm:
+    :param vm:
         videomode structure to use
+    :type vm: const struct videomode \*
 
-    :param u32 \*bus_flags:
-        information about pixelclk and DE polarity will be stored here
+    :param bus_flags:
+        information about pixelclk, sync and DE polarity will be stored
+        here
+    :type bus_flags: u32 \*
 
 .. _`drm_bus_flags_from_videomode.description`:
 
 Description
 -----------
 
-Sets DRM_BUS_FLAG_DE_(LOW|HIGH) and DRM_BUS_FLAG_PIXDATA_(POS|NEG)EDGE
-in \ ``bus_flags``\  according to DISPLAY_FLAGS found in \ ``vm``\ 
+Sets DRM_BUS_FLAG_DE_(LOW|HIGH),  DRM_BUS_FLAG_PIXDATA_(POS|NEG)EDGE and
+DISPLAY_FLAGS_SYNC_(POS|NEG)EDGE in \ ``bus_flags``\  according to DISPLAY_FLAGS
+found in \ ``vm``\ 
 
 .. _`of_get_drm_display_mode`:
 
@@ -344,17 +381,21 @@ of_get_drm_display_mode
 
     get a drm_display_mode from devicetree
 
-    :param struct device_node \*np:
+    :param np:
         device_node with the timing specification
+    :type np: struct device_node \*
 
-    :param struct drm_display_mode \*dmode:
+    :param dmode:
         will be set to the return value
+    :type dmode: struct drm_display_mode \*
 
-    :param u32 \*bus_flags:
-        information about pixelclk and DE polarity
+    :param bus_flags:
+        information about pixelclk, sync and DE polarity
+    :type bus_flags: u32 \*
 
-    :param int index:
+    :param index:
         index into the list of display timings in devicetree
+    :type index: int
 
 .. _`of_get_drm_display_mode.description`:
 
@@ -381,8 +422,9 @@ drm_mode_set_name
 
     set the name on a mode
 
-    :param struct drm_display_mode \*mode:
+    :param mode:
         name will be set in this mode
+    :type mode: struct drm_display_mode \*
 
 .. _`drm_mode_set_name.description`:
 
@@ -401,8 +443,9 @@ drm_mode_hsync
 
     get the hsync of a mode
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         mode
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_mode_hsync.return`:
 
@@ -421,8 +464,9 @@ drm_mode_vrefresh
 
     get the vrefresh of a mode
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         mode
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_mode_vrefresh.return`:
 
@@ -441,14 +485,17 @@ drm_mode_get_hv_timing
 
     Fetches hdisplay/vdisplay for given mode
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         mode to query
+    :type mode: const struct drm_display_mode \*
 
-    :param int \*hdisplay:
+    :param hdisplay:
         hdisplay value to fill in
+    :type hdisplay: int \*
 
-    :param int \*vdisplay:
+    :param vdisplay:
         vdisplay value to fill in
+    :type vdisplay: int \*
 
 .. _`drm_mode_get_hv_timing.description`:
 
@@ -467,11 +514,13 @@ drm_mode_set_crtcinfo
 
     set CRTC modesetting timing parameters
 
-    :param struct drm_display_mode \*p:
+    :param p:
         mode
+    :type p: struct drm_display_mode \*
 
-    :param int adjust_flags:
+    :param adjust_flags:
         a combination of adjustment flags
+    :type adjust_flags: int
 
 .. _`drm_mode_set_crtcinfo.description`:
 
@@ -497,11 +546,13 @@ drm_mode_copy
 
     copy the mode
 
-    :param struct drm_display_mode \*dst:
+    :param dst:
         mode to overwrite
+    :type dst: struct drm_display_mode \*
 
-    :param const struct drm_display_mode \*src:
+    :param src:
         mode to copy
+    :type src: const struct drm_display_mode \*
 
 .. _`drm_mode_copy.description`:
 
@@ -520,11 +571,13 @@ drm_mode_duplicate
 
     allocate and duplicate an existing mode
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device to allocate the duplicated mode for
+    :type dev: struct drm_device \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         mode to duplicate
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_mode_duplicate.description`:
 
@@ -550,14 +603,17 @@ drm_mode_match
 
     test modes for (partial) equality
 
-    :param const struct drm_display_mode \*mode1:
+    :param mode1:
         first mode
+    :type mode1: const struct drm_display_mode \*
 
-    :param const struct drm_display_mode \*mode2:
+    :param mode2:
         second mode
+    :type mode2: const struct drm_display_mode \*
 
-    :param unsigned int match_flags:
+    :param match_flags:
         which parts need to match (DRM_MODE_MATCH_*)
+    :type match_flags: unsigned int
 
 .. _`drm_mode_match.description`:
 
@@ -582,11 +638,13 @@ drm_mode_equal
 
     test modes for equality
 
-    :param const struct drm_display_mode \*mode1:
+    :param mode1:
         first mode
+    :type mode1: const struct drm_display_mode \*
 
-    :param const struct drm_display_mode \*mode2:
+    :param mode2:
         second mode
+    :type mode2: const struct drm_display_mode \*
 
 .. _`drm_mode_equal.description`:
 
@@ -611,11 +669,13 @@ drm_mode_equal_no_clocks
 
     test modes for equality
 
-    :param const struct drm_display_mode \*mode1:
+    :param mode1:
         first mode
+    :type mode1: const struct drm_display_mode \*
 
-    :param const struct drm_display_mode \*mode2:
+    :param mode2:
         second mode
+    :type mode2: const struct drm_display_mode \*
 
 .. _`drm_mode_equal_no_clocks.description`:
 
@@ -641,11 +701,13 @@ drm_mode_equal_no_clocks_no_stereo
 
     test modes for equality
 
-    :param const struct drm_display_mode \*mode1:
+    :param mode1:
         first mode
+    :type mode1: const struct drm_display_mode \*
 
-    :param const struct drm_display_mode \*mode2:
+    :param mode2:
         second mode
+    :type mode2: const struct drm_display_mode \*
 
 .. _`drm_mode_equal_no_clocks_no_stereo.description`:
 
@@ -671,11 +733,13 @@ drm_mode_validate_driver
 
     make sure the mode is somewhat sane
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         mode to check
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_mode_validate_driver.description`:
 
@@ -702,14 +766,17 @@ drm_mode_validate_size
 
     make sure modes adhere to size constraints
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         mode to check
+    :type mode: const struct drm_display_mode \*
 
-    :param int maxX:
+    :param maxX:
         maximum width
+    :type maxX: int
 
-    :param int maxY:
+    :param maxY:
         maximum height
+    :type maxY: int
 
 .. _`drm_mode_validate_size.description`:
 
@@ -737,11 +804,13 @@ drm_mode_validate_ycbcr420
 
     add 'ycbcr420-only' modes only when allowed
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         mode to check
+    :type mode: const struct drm_display_mode \*
 
-    :param struct drm_connector \*connector:
+    :param connector:
         drm connector under action
+    :type connector: struct drm_connector \*
 
 .. _`drm_mode_validate_ycbcr420.description`:
 
@@ -767,14 +836,17 @@ drm_mode_prune_invalid
 
     remove invalid modes from mode list
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct list_head \*mode_list:
+    :param mode_list:
         list of modes to check
+    :type mode_list: struct list_head \*
 
-    :param bool verbose:
+    :param verbose:
         be verbose about it
+    :type verbose: bool
 
 .. _`drm_mode_prune_invalid.description`:
 
@@ -795,14 +867,17 @@ drm_mode_compare
 
     compare modes for favorability
 
-    :param void \*priv:
+    :param priv:
         unused
+    :type priv: void \*
 
-    :param struct list_head \*lh_a:
+    :param lh_a:
         list_head for first mode
+    :type lh_a: struct list_head \*
 
-    :param struct list_head \*lh_b:
+    :param lh_b:
         list_head for second mode
+    :type lh_b: struct list_head \*
 
 .. _`drm_mode_compare.description`:
 
@@ -829,8 +904,9 @@ drm_mode_sort
 
     sort mode list
 
-    :param struct list_head \*mode_list:
+    :param mode_list:
         list of drm_display_mode structures to sort
+    :type mode_list: struct list_head \*
 
 .. _`drm_mode_sort.description`:
 
@@ -839,19 +915,20 @@ Description
 
 Sort \ ``mode_list``\  by favorability, moving good modes to the head of the list.
 
-.. _`drm_mode_connector_list_update`:
+.. _`drm_connector_list_update`:
 
-drm_mode_connector_list_update
-==============================
+drm_connector_list_update
+=========================
 
-.. c:function:: void drm_mode_connector_list_update(struct drm_connector *connector)
+.. c:function:: void drm_connector_list_update(struct drm_connector *connector)
 
     update the mode list for the connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         the connector to update
+    :type connector: struct drm_connector \*
 
-.. _`drm_mode_connector_list_update.description`:
+.. _`drm_connector_list_update.description`:
 
 Description
 -----------
@@ -872,14 +949,17 @@ drm_mode_parse_command_line_for_connector
 
     parse command line modeline for connector
 
-    :param const char \*mode_option:
+    :param mode_option:
         optional per connector mode option
+    :type mode_option: const char \*
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to parse modeline for
+    :type connector: struct drm_connector \*
 
-    :param struct drm_cmdline_mode \*mode:
+    :param mode:
         preallocated drm_cmdline_mode structure to fill out
+    :type mode: struct drm_cmdline_mode \*
 
 .. _`drm_mode_parse_command_line_for_connector.description`:
 
@@ -914,11 +994,13 @@ drm_mode_create_from_cmdline_mode
 
     convert a command line modeline into a DRM display mode
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device to create the new mode for
+    :type dev: struct drm_device \*
 
-    :param struct drm_cmdline_mode \*cmd:
+    :param cmd:
         input command line modeline
+    :type cmd: struct drm_cmdline_mode \*
 
 .. _`drm_mode_create_from_cmdline_mode.return`:
 
@@ -936,11 +1018,13 @@ drm_mode_convert_to_umode
 
     convert a drm_display_mode into a modeinfo
 
-    :param struct drm_mode_modeinfo \*out:
+    :param out:
         drm_mode_modeinfo struct to return to the user
+    :type out: struct drm_mode_modeinfo \*
 
-    :param const struct drm_display_mode \*in:
+    :param in:
         drm_display_mode to use
+    :type in: const struct drm_display_mode \*
 
 .. _`drm_mode_convert_to_umode.description`:
 
@@ -959,14 +1043,17 @@ drm_mode_convert_umode
 
     convert a modeinfo into a drm_display_mode
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct drm_display_mode \*out:
+    :param out:
         drm_display_mode to return to the user
+    :type out: struct drm_display_mode \*
 
-    :param const struct drm_mode_modeinfo \*in:
+    :param in:
         drm_mode_modeinfo to use
+    :type in: const struct drm_mode_modeinfo \*
 
 .. _`drm_mode_convert_umode.description`:
 
@@ -992,11 +1079,13 @@ drm_mode_is_420_only
 
     if a given videomode can be only supported in YCBCR420 output format
 
-    :param const struct drm_display_info \*display:
+    :param display:
         display under action
+    :type display: const struct drm_display_info \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         video mode to be tested.
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_mode_is_420_only.return`:
 
@@ -1015,11 +1104,13 @@ drm_mode_is_420_also
 
     if a given videomode can be supported in YCBCR420 output format also (along with RGB/YCBCR444/422)
 
-    :param const struct drm_display_info \*display:
+    :param display:
         display under action.
+    :type display: const struct drm_display_info \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         video mode to be tested.
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_mode_is_420_also.return`:
 
@@ -1038,11 +1129,13 @@ drm_mode_is_420
 
     if a given videomode can be supported in YCBCR420 output format
 
-    :param const struct drm_display_info \*display:
+    :param display:
         display under action.
+    :type display: const struct drm_display_info \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         video mode to be tested.
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_mode_is_420.return`:
 

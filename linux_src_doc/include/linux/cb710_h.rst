@@ -10,14 +10,17 @@ cb710_sg_dwiter_write_from_io
 
     transfer data to mapped buffer from 32-bit IO port
 
-    :param struct sg_mapping_iter \*miter:
+    :param miter:
         sg mapping iter
+    :type miter: struct sg_mapping_iter \*
 
-    :param void __iomem \*port:
+    :param port:
         PIO port - IO or MMIO address
+    :type port: void __iomem \*
 
-    :param size_t count:
+    :param count:
         number of 32-bit words to transfer
+    :type count: size_t
 
 .. _`cb710_sg_dwiter_write_from_io.description`:
 
@@ -45,14 +48,17 @@ cb710_sg_dwiter_read_to_io
 
     transfer data to 32-bit IO port from mapped buffer
 
-    :param struct sg_mapping_iter \*miter:
+    :param miter:
         sg mapping iter
+    :type miter: struct sg_mapping_iter \*
 
-    :param void __iomem \*port:
+    :param port:
         PIO port - IO or MMIO address
+    :type port: void __iomem \*
 
-    :param size_t count:
+    :param count:
         number of 32-bit words to transfer
+    :type count: size_t
 
 .. _`cb710_sg_dwiter_read_to_io.description`:
 

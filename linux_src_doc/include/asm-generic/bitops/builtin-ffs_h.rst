@@ -10,8 +10,9 @@ ffs
 
     find first bit set
 
-    :param int x:
+    :param x:
         the word to search
+    :type x: int
 
 .. _`ffs.description`:
 

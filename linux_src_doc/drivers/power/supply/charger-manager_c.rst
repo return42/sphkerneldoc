@@ -10,8 +10,9 @@ is_batt_present
 
     See if the battery presents in place.
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`is_ext_pwr_online`:
 
@@ -22,8 +23,9 @@ is_ext_pwr_online
 
     See if an external power source is attached to charge
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`is_ext_pwr_online.description`:
 
@@ -43,11 +45,13 @@ get_batt_uV
 
     Get the voltage level of the battery
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
-    :param int \*uV:
+    :param uV:
         the voltage level returned.
+    :type uV: int \*
 
 .. _`get_batt_uv.description`:
 
@@ -66,8 +70,9 @@ is_charging
 
     Returns true if the battery is being charged.
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`is_full_charged`:
 
@@ -78,8 +83,9 @@ is_full_charged
 
     Returns true if the battery is fully charged.
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`is_polling_required`:
 
@@ -90,8 +96,9 @@ is_polling_required
 
     Return true if need to continue polling for this CM.
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`try_charger_enable`:
 
@@ -102,11 +109,13 @@ try_charger_enable
 
     Enable/Disable chargers altogether
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
-    :param bool enable:
+    :param enable:
         true: enable / false: disable
+    :type enable: bool
 
 .. _`try_charger_enable.description`:
 
@@ -127,8 +136,9 @@ try_charger_restart
 
     Restart charging.
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`try_charger_restart.description`:
 
@@ -146,11 +156,13 @@ uevent_notify
 
     Let users know something has changed.
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
-    :param const char \*event:
+    :param event:
         the event string.
+    :type event: const char \*
 
 .. _`uevent_notify.description`:
 
@@ -173,8 +185,9 @@ fullbatt_vchk
 
     Check voltage drop some times after "FULL" event.
 
-    :param struct work_struct \*work:
+    :param work:
         the work_struct appointing the function
+    :type work: struct work_struct \*
 
 .. _`fullbatt_vchk.description`:
 
@@ -195,8 +208,9 @@ check_charging_duration
 
     Monitor charging/discharging duration
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`check_charging_duration.description`:
 
@@ -218,8 +232,9 @@ charged state for battery.
 
     Monitor the temperature and return true for exceptions.
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`_cm_monitor.description`:
 
@@ -238,8 +253,9 @@ cm_monitor
 
     Monitor every battery.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cm_monitor.description`:
 
@@ -258,8 +274,9 @@ Returns true if there is an event to notify from any of the batteries.
 
     Setup the next instance of polling.
 
-    :param struct work_struct \*work:
+    :param work:
         work_struct of the function \_setup_polling.
+    :type work: struct work_struct \*
 
 .. _`cm_monitor_poller`:
 
@@ -270,8 +287,9 @@ cm_monitor_poller
 
     The Monitor / Poller.
 
-    :param struct work_struct \*work:
+    :param work:
         work_struct of the function cm_monitor_poller
+    :type work: struct work_struct \*
 
 .. _`cm_monitor_poller.description`:
 
@@ -290,8 +308,9 @@ fullbatt_handler
 
     Event handler for CM_EVENT_BATT_FULL
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`battout_handler`:
 
@@ -302,8 +321,9 @@ battout_handler
 
     Event handler for CM_EVENT_BATT_OUT
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`misc_event_handler`:
 
@@ -314,11 +334,13 @@ misc_event_handler
 
     Handler for other evnets
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
-    :param enum cm_event_types type:
+    :param type:
         the Charger Manager representing the battery.
+    :type type: enum cm_event_types
 
 .. _`cm_setup_timer`:
 
@@ -329,8 +351,9 @@ cm_setup_timer
 
     For in-suspend monitoring setup wakeup alarm for suspend_again.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cm_setup_timer.description`:
 
@@ -352,8 +375,9 @@ charger_extcon_work
 
     enable/diable charger according to the state of charger cable
 
-    :param struct work_struct \*work:
+    :param work:
         work_struct of the function charger_extcon_work.
+    :type work: struct work_struct \*
 
 .. _`charger_extcon_notifier`:
 
@@ -364,14 +388,17 @@ charger_extcon_notifier
 
     receive the state of charger cable when registered cable is attached or detached.
 
-    :param struct notifier_block \*self:
+    :param self:
         the notifier block of the charger_extcon_notifier.
+    :type self: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         the cable state.
+    :type event: unsigned long
 
-    :param void \*ptr:
+    :param ptr:
         the data pointer of notifier block.
+    :type ptr: void \*
 
 .. _`charger_extcon_init`:
 
@@ -382,11 +409,13 @@ charger_extcon_init
 
     register external connector to use it as the charger cable
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
-    :param struct charger_cable \*cable:
+    :param cable:
         the Charger cable representing the external connector.
+    :type cable: struct charger_cable \*
 
 .. _`charger_manager_register_extcon`:
 
@@ -397,8 +426,9 @@ charger_manager_register_extcon
 
     Register extcon device to recevie state of charger cable.
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`charger_manager_register_extcon.description`:
 
@@ -419,8 +449,9 @@ charger_manager_register_sysfs
 
     Register sysfs entry for each charger
 
-    :param struct charger_manager \*cm:
+    :param cm:
         the Charger Manager representing the battery.
+    :type cm: struct charger_manager \*
 
 .. _`charger_manager_register_sysfs.description`:
 
@@ -445,14 +476,17 @@ cm_notify_event
 
     charger driver notify Charger Manager of charger event
 
-    :param struct power_supply \*psy:
+    :param psy:
         pointer to instance of charger's power_supply
+    :type psy: struct power_supply \*
 
-    :param enum cm_event_types type:
+    :param type:
         type of charger event
+    :type type: enum cm_event_types
 
-    :param char \*msg:
+    :param msg:
         optional message passed to uevent_notify fuction
+    :type msg: char \*
 
 .. This file was automatic generated / don't edit.
 

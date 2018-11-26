@@ -10,11 +10,13 @@ inode_init_always
 
     perform inode structure initialisation
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock inode belongs to
+    :type sb: struct super_block \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode to initialise
+    :type inode: struct inode \*
 
 .. _`inode_init_always.description`:
 
@@ -33,8 +35,9 @@ drop_nlink
 
     directly drop an inode's link count
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
 .. _`drop_nlink.description`:
 
@@ -57,8 +60,9 @@ clear_nlink
 
     directly zero an inode's link count
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
 .. _`clear_nlink.description`:
 
@@ -78,11 +82,13 @@ set_nlink
 
     directly set an inode's link count
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
-    :param unsigned int nlink:
+    :param nlink:
         new nlink (should be non-zero)
+    :type nlink: unsigned int
 
 .. _`set_nlink.description`:
 
@@ -101,8 +107,9 @@ inc_nlink
 
     directly increment an inode's link count
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
 .. _`inc_nlink.description`:
 
@@ -122,8 +129,9 @@ inode_sb_list_add
 
     add inode to the superblock list of inodes
 
-    :param struct inode \*inode:
+    :param inode:
         inode to add
+    :type inode: struct inode \*
 
 .. _`__insert_inode_hash`:
 
@@ -134,12 +142,14 @@ __insert_inode_hash
 
     hash an inode
 
-    :param struct inode \*inode:
+    :param inode:
         unhashed inode
+    :type inode: struct inode \*
 
-    :param unsigned long hashval:
+    :param hashval:
         unsigned long value used to locate this object in the
         inode_hashtable.
+    :type hashval: unsigned long
 
 .. _`__insert_inode_hash.description`:
 
@@ -157,8 +167,9 @@ __remove_inode_hash
 
     remove an inode from the hash
 
-    :param struct inode \*inode:
+    :param inode:
         inode to unhash
+    :type inode: struct inode \*
 
 .. _`__remove_inode_hash.description`:
 
@@ -176,8 +187,9 @@ evict_inodes
 
     evict all evictable inodes for a superblock
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock to operate on
+    :type sb: struct super_block \*
 
 .. _`evict_inodes.description`:
 
@@ -198,11 +210,13 @@ invalidate_inodes
 
     attempt to free all inodes on a superblock
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock to operate on
+    :type sb: struct super_block \*
 
-    :param bool kill_dirty:
+    :param kill_dirty:
         flag to guide handling of dirty inodes
+    :type kill_dirty: bool
 
 .. _`invalidate_inodes.description`:
 
@@ -223,8 +237,9 @@ new_inode_pseudo
 
     obtain an inode
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
 .. _`new_inode_pseudo.description`:
 
@@ -246,8 +261,9 @@ new_inode
 
     obtain an inode
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
 .. _`new_inode.description`:
 
@@ -270,8 +286,9 @@ unlock_new_inode
 
     clear the I_NEW state and wake up any waiters
 
-    :param struct inode \*inode:
+    :param inode:
         new inode to unlock
+    :type inode: struct inode \*
 
 .. _`unlock_new_inode.description`:
 
@@ -290,11 +307,13 @@ lock_two_nondirectories
 
     take two i_mutexes on non-directory objects
 
-    :param struct inode \*inode1:
+    :param inode1:
         first inode to lock
+    :type inode1: struct inode \*
 
-    :param struct inode \*inode2:
+    :param inode2:
         second inode to lock
+    :type inode2: struct inode \*
 
 .. _`lock_two_nondirectories.description`:
 
@@ -313,11 +332,13 @@ unlock_two_nondirectories
 
     release locks from \ :c:func:`lock_two_nondirectories`\ 
 
-    :param struct inode \*inode1:
+    :param inode1:
         first inode to unlock
+    :type inode1: struct inode \*
 
-    :param struct inode \*inode2:
+    :param inode2:
         second inode to unlock
+    :type inode2: struct inode \*
 
 .. _`inode_insert5`:
 
@@ -328,11 +349,13 @@ inode_insert5
 
     obtain an inode from a mounted file system
 
-    :param struct inode \*inode:
+    :param inode:
         pre-allocated inode to use for insert to cache
+    :type inode: struct inode \*
 
-    :param unsigned long hashval:
+    :param hashval:
         hash value (usually inode number) to get
+    :type hashval: unsigned long
 
     :param int (\*test)(struct inode \*, void \*):
         callback used for comparisons between inodes
@@ -340,8 +363,9 @@ inode_insert5
     :param int (\*set)(struct inode \*, void \*):
         callback used to initialize a new struct inode
 
-    :param void \*data:
+    :param data:
         opaque data pointer to pass to \ ``test``\  and \ ``set``\ 
+    :type data: void \*
 
 .. _`inode_insert5.description`:
 
@@ -369,11 +393,13 @@ iget5_locked
 
     obtain an inode from a mounted file system
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of file system
+    :type sb: struct super_block \*
 
-    :param unsigned long hashval:
+    :param hashval:
         hash value (usually inode number) to get
+    :type hashval: unsigned long
 
     :param int (\*test)(struct inode \*, void \*):
         callback used for comparisons between inodes
@@ -381,8 +407,9 @@ iget5_locked
     :param int (\*set)(struct inode \*, void \*):
         callback used to initialize a new struct inode
 
-    :param void \*data:
+    :param data:
         opaque data pointer to pass to \ ``test``\  and \ ``set``\ 
+    :type data: void \*
 
 .. _`iget5_locked.description`:
 
@@ -410,11 +437,13 @@ iget_locked
 
     obtain an inode from a mounted file system
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of file system
+    :type sb: struct super_block \*
 
-    :param unsigned long ino:
+    :param ino:
         inode number to get
+    :type ino: unsigned long
 
 .. _`iget_locked.description`:
 
@@ -438,11 +467,13 @@ iunique
 
     get a unique inode number
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
-    :param ino_t max_reserved:
+    :param max_reserved:
         highest reserved inode number
+    :type max_reserved: ino_t
 
 .. _`iunique.description`:
 
@@ -471,17 +502,20 @@ ilookup5_nowait
 
     search for an inode in the inode cache
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of file system to search
+    :type sb: struct super_block \*
 
-    :param unsigned long hashval:
+    :param hashval:
         hash value (usually inode number) to search for
+    :type hashval: unsigned long
 
     :param int (\*test)(struct inode \*, void \*):
         callback used for comparisons between inodes
 
-    :param void \*data:
+    :param data:
         opaque data pointer to pass to \ ``test``\ 
+    :type data: void \*
 
 .. _`ilookup5_nowait.description`:
 
@@ -511,17 +545,20 @@ ilookup5
 
     search for an inode in the inode cache
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of file system to search
+    :type sb: struct super_block \*
 
-    :param unsigned long hashval:
+    :param hashval:
         hash value (usually inode number) to search for
+    :type hashval: unsigned long
 
     :param int (\*test)(struct inode \*, void \*):
         callback used for comparisons between inodes
 
-    :param void \*data:
+    :param data:
         opaque data pointer to pass to \ ``test``\ 
+    :type data: void \*
 
 .. _`ilookup5.description`:
 
@@ -552,11 +589,13 @@ ilookup
 
     search for an inode in the inode cache
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of file system to search
+    :type sb: struct super_block \*
 
-    :param unsigned long ino:
+    :param ino:
         inode number to search for
+    :type ino: unsigned long
 
 .. _`ilookup.description`:
 
@@ -575,17 +614,20 @@ find_inode_nowait
 
     find an inode in the inode cache
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of file system to search
+    :type sb: struct super_block \*
 
-    :param unsigned long hashval:
+    :param hashval:
         hash value (usually inode number) to search for
+    :type hashval: unsigned long
 
     :param int (\*match)(struct inode \*, unsigned long, void \*):
         callback used for comparisons between inodes
 
-    :param void \*data:
+    :param data:
         opaque data pointer to pass to \ ``match``\ 
+    :type data: void \*
 
 .. _`find_inode_nowait.description`:
 
@@ -617,8 +659,9 @@ iput
 
     put an inode
 
-    :param struct inode \*inode:
+    :param inode:
         inode to put
+    :type inode: struct inode \*
 
 .. _`iput.description`:
 
@@ -639,11 +682,13 @@ bmap
 
     find a block number in a file
 
-    :param struct inode \*inode:
+    :param inode:
         inode of file
+    :type inode: struct inode \*
 
-    :param sector_t block:
+    :param block:
         block to find
+    :type block: sector_t
 
 .. _`bmap.description`:
 
@@ -656,25 +701,24 @@ Description
      disk block relative to the disk start that holds that block of the
      file.
 
-.. _`__atime_needs_update`:
+.. _`atime_needs_update`:
 
-__atime_needs_update
-====================
+atime_needs_update
+==================
 
-.. c:function:: bool __atime_needs_update(const struct path *path, struct inode *inode, bool rcu)
+.. c:function:: bool atime_needs_update(const struct path *path, struct inode *inode)
 
     update the access time
 
-    :param const struct path \*path:
+    :param path:
         the \ :c:type:`struct path <path>`\  to update
+    :type path: const struct path \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode to update
+    :type inode: struct inode \*
 
-    :param bool rcu:
-        *undescribed*
-
-.. _`__atime_needs_update.description`:
+.. _`atime_needs_update.description`:
 
 Description
 -----------
@@ -692,8 +736,9 @@ file_update_time
 
     update mtime and ctime time
 
-    :param struct file \*file:
+    :param file:
         file accessed
+    :type file: struct file \*
 
 .. _`file_update_time.description`:
 
@@ -717,14 +762,17 @@ inode_init_owner
 
     Init uid,gid,mode for new inode according to posix standards
 
-    :param struct inode \*inode:
+    :param inode:
         New inode
+    :type inode: struct inode \*
 
-    :param const struct inode \*dir:
+    :param dir:
         Directory inode
+    :type dir: const struct inode \*
 
-    :param umode_t mode:
+    :param mode:
         mode of the new inode
+    :type mode: umode_t
 
 .. _`inode_owner_or_capable`:
 
@@ -735,8 +783,9 @@ inode_owner_or_capable
 
     check current task permissions to inode
 
-    :param const struct inode \*inode:
+    :param inode:
         inode being checked
+    :type inode: const struct inode \*
 
 .. _`inode_owner_or_capable.description`:
 
@@ -755,8 +804,9 @@ inode_dio_wait
 
     wait for outstanding DIO requests to finish
 
-    :param struct inode \*inode:
+    :param inode:
         inode to wait for
+    :type inode: struct inode \*
 
 .. _`inode_dio_wait.description`:
 
@@ -778,11 +828,13 @@ timespec64_trunc
 
     Truncate timespec64 to a granularity
 
-    :param struct timespec64 t:
+    :param t:
         Timespec64
+    :type t: struct timespec64
 
-    :param unsigned gran:
+    :param gran:
         Granularity in ns.
+    :type gran: unsigned
 
 .. _`timespec64_trunc.description`:
 
@@ -801,8 +853,9 @@ current_time
 
     Return FS time
 
-    :param struct inode \*inode:
+    :param inode:
         inode.
+    :type inode: struct inode \*
 
 .. _`current_time.description`:
 

@@ -10,8 +10,9 @@ ali_c2_cable_detect
 
     cable detection
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
 .. _`ali_c2_cable_detect.description`:
 
@@ -29,11 +30,13 @@ ali_20_filter
 
     filter for earlier ALI DMA
 
-    :param struct ata_device \*adev:
+    :param adev:
         attached device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         *undescribed*
+    :type mask: unsigned long
 
 .. _`ali_20_filter.description`:
 
@@ -52,14 +55,17 @@ ali_fifo_control
 
     FIFO manager
 
-    :param struct ata_port \*ap:
+    :param ap:
         ALi channel to control
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device for FIFO control
+    :type adev: struct ata_device \*
 
-    :param int on:
+    :param on:
         0 for off 1 for on
+    :type on: int
 
 .. _`ali_fifo_control.description`:
 
@@ -79,17 +85,21 @@ ali_program_modes
 
     load mode registers
 
-    :param struct ata_port \*ap:
+    :param ap:
         ALi channel to load
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device the timing is for
+    :type adev: struct ata_device \*
 
-    :param struct ata_timing \*t:
+    :param t:
         timing data
+    :type t: struct ata_timing \*
 
-    :param u8 ultra:
+    :param ultra:
         UDMA timing or zero for off
+    :type ultra: u8
 
 .. _`ali_program_modes.description`:
 
@@ -109,11 +119,13 @@ ali_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`ali_set_piomode.description`:
 
@@ -131,11 +143,13 @@ ali_set_dmamode
 
     set initial DMA mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`ali_set_dmamode.description`:
 
@@ -153,8 +167,9 @@ ali_warn_atapi_dma
 
     Warn about ATAPI DMA disablement
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device
+    :type adev: struct ata_device \*
 
 .. _`ali_warn_atapi_dma.description`:
 
@@ -173,8 +188,9 @@ ali_lock_sectors
 
     Keep older devices to 255 sector mode
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device
+    :type adev: struct ata_device \*
 
 .. _`ali_lock_sectors.description`:
 
@@ -196,8 +212,9 @@ ali_check_atapi_dma
 
     DMA check for most ALi controllers
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         *undescribed*
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ali_check_atapi_dma.description`:
 
@@ -215,8 +232,9 @@ ali_init_chipset
 
     chip setup function
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device of ATA controller
+    :type pdev: struct pci_dev \*
 
 .. _`ali_init_chipset.description`:
 
@@ -235,11 +253,13 @@ ali_init_one
 
     discovery callback
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device ID
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         PCI table info
+    :type id: const struct pci_device_id \*
 
 .. _`ali_init_one.description`:
 

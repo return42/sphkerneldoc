@@ -10,11 +10,13 @@ v9fs_fid_readpage
 
     read an entire page in from 9P
 
-    :param struct p9_fid \*fid:
+    :param fid:
         fid being read
+    :type fid: struct p9_fid \*
 
-    :param struct page \*page:
+    :param page:
         structure to page
+    :type page: struct page \*
 
 .. _`v9fs_vfs_readpage`:
 
@@ -25,11 +27,13 @@ v9fs_vfs_readpage
 
     read an entire page in from 9P
 
-    :param struct file \*filp:
+    :param filp:
         file being read
+    :type filp: struct file \*
 
-    :param struct page \*page:
+    :param page:
         structure to page
+    :type page: struct page \*
 
 .. _`v9fs_vfs_readpages`:
 
@@ -40,17 +44,21 @@ v9fs_vfs_readpages
 
     read a set of pages from 9P
 
-    :param struct file \*filp:
+    :param filp:
         file being read
+    :type filp: struct file \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address space
+    :type mapping: struct address_space \*
 
-    :param struct list_head \*pages:
+    :param pages:
         list of pages to read
+    :type pages: struct list_head \*
 
-    :param unsigned nr_pages:
+    :param nr_pages:
         count of pages to read
+    :type nr_pages: unsigned
 
 .. _`v9fs_release_page`:
 
@@ -61,11 +69,13 @@ v9fs_release_page
 
     release the private state associated with a page
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
-    :param gfp_t gfp:
+    :param gfp:
         *undescribed*
+    :type gfp: gfp_t
 
 .. _`v9fs_release_page.description`:
 
@@ -83,14 +93,17 @@ v9fs_invalidate_page
 
     Invalidate a page completely or partially
 
-    :param struct page \*page:
+    :param page:
         structure to page
+    :type page: struct page \*
 
-    :param unsigned int offset:
+    :param offset:
         offset in the page
+    :type offset: unsigned int
 
-    :param unsigned int length:
+    :param length:
         *undescribed*
+    :type length: unsigned int
 
 .. _`v9fs_launder_page`:
 
@@ -101,8 +114,9 @@ v9fs_launder_page
 
     Writeback a dirty page Returns 0 on success.
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
 .. _`v9fs_direct_io`:
 
@@ -113,11 +127,13 @@ v9fs_direct_IO
 
     9P address space operation for direct I/O
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         target I/O control block
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         *undescribed*
+    :type iter: struct iov_iter \*
 
 .. _`v9fs_direct_io.description`:
 

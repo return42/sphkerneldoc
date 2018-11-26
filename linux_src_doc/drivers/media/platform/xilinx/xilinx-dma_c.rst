@@ -10,11 +10,13 @@ xvip_pipeline_start_stop
 
     Start ot stop streaming on a pipeline
 
-    :param struct xvip_pipeline \*pipe:
+    :param pipe:
         The pipeline
+    :type pipe: struct xvip_pipeline \*
 
-    :param bool start:
+    :param start:
         Start (when true) or stop (when false) the pipeline
+    :type start: bool
 
 .. _`xvip_pipeline_start_stop.description`:
 
@@ -36,11 +38,13 @@ xvip_pipeline_set_stream
 
     Enable/disable streaming on a pipeline
 
-    :param struct xvip_pipeline \*pipe:
+    :param pipe:
         The pipeline
+    :type pipe: struct xvip_pipeline \*
 
-    :param bool on:
+    :param on:
         Turn the stream on when true or off when false
+    :type on: bool
 
 .. _`xvip_pipeline_set_stream.description`:
 
@@ -76,8 +80,9 @@ xvip_pipeline_cleanup
 
     Cleanup the pipeline after streaming
 
-    :param struct xvip_pipeline \*pipe:
+    :param pipe:
         the pipeline
+    :type pipe: struct xvip_pipeline \*
 
 .. _`xvip_pipeline_cleanup.description`:
 
@@ -95,11 +100,13 @@ xvip_pipeline_prepare
 
     Prepare the pipeline for streaming
 
-    :param struct xvip_pipeline \*pipe:
+    :param pipe:
         the pipeline
+    :type pipe: struct xvip_pipeline \*
 
-    :param struct xvip_dma \*dma:
+    :param dma:
         DMA engine at one end of the pipeline
+    :type dma: struct xvip_dma \*
 
 .. _`xvip_pipeline_prepare.description`:
 

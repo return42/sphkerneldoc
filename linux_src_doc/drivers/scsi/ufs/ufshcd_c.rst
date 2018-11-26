@@ -10,8 +10,9 @@ ufshcd_print_pwr_info
 
     print power params as saved in hba power info
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_get_intr_mask`:
 
@@ -22,8 +23,9 @@ ufshcd_get_intr_mask
 
     Get the interrupt bit mask
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_get_intr_mask.description`:
 
@@ -41,8 +43,9 @@ ufshcd_get_ufs_version
 
     Get the UFS version supported by the HBA
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_get_ufs_version.description`:
 
@@ -60,8 +63,9 @@ ufshcd_is_device_present
 
     Check if any device connected to the host controller
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_is_device_present.description`:
 
@@ -79,8 +83,9 @@ ufshcd_get_tr_ocs
 
     Get the UTRD Overall Command Status
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         pointer to local command reference block
+    :type lrbp: struct ufshcd_lrb \*
 
 .. _`ufshcd_get_tr_ocs.description`:
 
@@ -89,26 +94,6 @@ Description
 
 This function is used to get the OCS field from UTRD
 Returns the OCS field in the UTRD
-
-.. _`ufshcd_get_tmr_ocs`:
-
-ufshcd_get_tmr_ocs
-==================
-
-.. c:function:: int ufshcd_get_tmr_ocs(struct utp_task_req_desc *task_req_descp)
-
-    Get the UTMRD Overall Command Status
-
-    :param struct utp_task_req_desc \*task_req_descp:
-        pointer to utp_task_req_desc structure
-
-.. _`ufshcd_get_tmr_ocs.description`:
-
-Description
------------
-
-This function is used to get the OCS field from UTMRD
-Returns the OCS field in the UTMRD
 
 .. _`ufshcd_get_tm_free_slot`:
 
@@ -119,11 +104,13 @@ ufshcd_get_tm_free_slot
 
     get a free slot for task management request
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param int \*free_slot:
+    :param free_slot:
         pointer to variable with available slot value
+    :type free_slot: int \*
 
 .. _`ufshcd_get_tm_free_slot.description`:
 
@@ -143,11 +130,13 @@ ufshcd_utrl_clear
 
     Clear a bit in UTRLCLR register
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u32 pos:
+    :param pos:
         position of the bit to be cleared
+    :type pos: u32
 
 .. _`ufshcd_utmrl_clear`:
 
@@ -158,11 +147,13 @@ ufshcd_utmrl_clear
 
     Clear a bit in UTRMLCLR register
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u32 pos:
+    :param pos:
         position of the bit to be cleared
+    :type pos: u32
 
 .. _`ufshcd_outstanding_req_clear`:
 
@@ -173,11 +164,13 @@ ufshcd_outstanding_req_clear
 
     Clear a bit in outstanding request field
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param int tag:
+    :param tag:
         position of the bit to be cleared
+    :type tag: int
 
 .. _`ufshcd_get_lists_status`:
 
@@ -188,8 +181,9 @@ ufshcd_get_lists_status
 
     Check UCRDY, UTRLRDY and UTMRLRDY
 
-    :param u32 reg:
+    :param reg:
         Register value of host controller status
+    :type reg: u32
 
 .. _`ufshcd_get_lists_status.description`:
 
@@ -207,8 +201,9 @@ ufshcd_get_uic_cmd_result
 
     Get the UIC command result
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_get_uic_cmd_result.description`:
 
@@ -227,8 +222,9 @@ ufshcd_get_dme_attr_val
 
     Get the value of attribute returned by UIC command
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_get_dme_attr_val.description`:
 
@@ -247,8 +243,9 @@ ufshcd_get_req_rsp
 
     returns the TR response transaction type
 
-    :param struct utp_upiu_rsp \*ucd_rsp_ptr:
+    :param ucd_rsp_ptr:
         pointer to response UPIU
+    :type ucd_rsp_ptr: struct utp_upiu_rsp \*
 
 .. _`ufshcd_get_rsp_upiu_result`:
 
@@ -259,8 +256,9 @@ ufshcd_get_rsp_upiu_result
 
     Get the result from response UPIU
 
-    :param struct utp_upiu_rsp \*ucd_rsp_ptr:
+    :param ucd_rsp_ptr:
         pointer to response UPIU
+    :type ucd_rsp_ptr: struct utp_upiu_rsp \*
 
 .. _`ufshcd_get_rsp_upiu_result.description`:
 
@@ -279,8 +277,9 @@ ufshcd_is_exception_event
 
     Check if the device raised an exception event
 
-    :param struct utp_upiu_rsp \*ucd_rsp_ptr:
+    :param ucd_rsp_ptr:
         pointer to response UPIU
+    :type ucd_rsp_ptr: struct utp_upiu_rsp \*
 
 .. _`ufshcd_is_exception_event.description`:
 
@@ -301,8 +300,9 @@ ufshcd_reset_intr_aggr
 
     Reset interrupt aggregation values.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_config_intr_aggr`:
 
@@ -313,14 +313,17 @@ ufshcd_config_intr_aggr
 
     Configure interrupt aggregation values.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u8 cnt:
+    :param cnt:
         Interrupt aggregation counter threshold
+    :type cnt: u8
 
-    :param u8 tmout:
+    :param tmout:
         Interrupt aggregation timeout value
+    :type tmout: u8
 
 .. _`ufshcd_disable_intr_aggr`:
 
@@ -331,8 +334,9 @@ ufshcd_disable_intr_aggr
 
     Disables interrupt aggregation.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_enable_run_stop_reg`:
 
@@ -343,8 +347,9 @@ ufshcd_enable_run_stop_reg
 
     Enable run-stop registers, When run-stop registers are set to 1, it indicates the host controller that it can process the requests
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_hba_start`:
 
@@ -355,8 +360,9 @@ ufshcd_hba_start
 
     Start controller initialization sequence
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_is_hba_active`:
 
@@ -367,8 +373,9 @@ ufshcd_is_hba_active
 
     Get controller state
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_is_hba_active.description`:
 
@@ -386,11 +393,13 @@ ufshcd_is_devfreq_scaling_required
 
     check if scaling is required or not
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param bool scale_up:
+    :param scale_up:
         True if scaling up and false if scaling down
+    :type scale_up: bool
 
 .. _`ufshcd_is_devfreq_scaling_required.description`:
 
@@ -408,11 +417,13 @@ ufshcd_scale_gear
 
     scale up/down UFS gear
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param bool scale_up:
+    :param scale_up:
         True for scaling up gear and false for scaling down
+    :type scale_up: bool
 
 .. _`ufshcd_scale_gear.description`:
 
@@ -432,11 +443,13 @@ ufshcd_devfreq_scale
 
     scale up/down UFS clocks and gear
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param bool scale_up:
+    :param scale_up:
         True for scaling up and false for scalin down
+    :type scale_up: bool
 
 .. _`ufshcd_devfreq_scale.description`:
 
@@ -456,11 +469,13 @@ ufshcd_hold
 
     Enable clocks that were gated earlier due to ufshcd_release. Also, exit from hibern8 mode and set the link as active.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param bool async:
+    :param async:
         This indicates whether caller should ungate clocks asynchronously.
+    :type async: bool
 
 .. _`ufshcd_send_command`:
 
@@ -471,11 +486,13 @@ ufshcd_send_command
 
     Send SCSI or device management commands
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param unsigned int task_tag:
+    :param task_tag:
         Task tag of the command
+    :type task_tag: unsigned int
 
 .. _`ufshcd_copy_sense_data`:
 
@@ -486,8 +503,9 @@ ufshcd_copy_sense_data
 
     Copy sense data in case of check condition
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         pointer to local reference block
+    :type lrbp: struct ufshcd_lrb \*
 
 .. _`ufshcd_copy_query_response`:
 
@@ -498,11 +516,13 @@ ufshcd_copy_query_response
 
     Copy the Query Response and the data descriptor
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         pointer to local reference block
+    :type lrbp: struct ufshcd_lrb \*
 
 .. _`ufshcd_hba_capabilities`:
 
@@ -513,8 +533,9 @@ ufshcd_hba_capabilities
 
     Read controller capabilities
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_ready_for_uic_cmd`:
 
@@ -525,9 +546,10 @@ ufshcd_ready_for_uic_cmd
 
     Check if controller is ready to accept UIC commands
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
         Return true on success, else false
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_get_upmcrs`:
 
@@ -538,8 +560,9 @@ ufshcd_get_upmcrs
 
     Get the power mode change request status
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_get_upmcrs.description`:
 
@@ -558,11 +581,13 @@ ufshcd_dispatch_uic_cmd
 
     Dispatch UIC commands to unipro layers
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct uic_command \*uic_cmd:
+    :param uic_cmd:
         UIC command
+    :type uic_cmd: struct uic_command \*
 
 .. _`ufshcd_dispatch_uic_cmd.description`:
 
@@ -580,11 +605,13 @@ ufshcd_wait_for_uic_cmd
 
     Wait complectioin of UIC command
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct uic_command \*uic_cmd:
+    :param uic_cmd:
         UIC command
+    :type uic_cmd: struct uic_command \*
 
 .. _`ufshcd_wait_for_uic_cmd.description`:
 
@@ -603,14 +630,17 @@ Returns 0 only if success.
 
     Send UIC commands and retrieve the result
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct uic_command \*uic_cmd:
+    :param uic_cmd:
         UIC command
+    :type uic_cmd: struct uic_command \*
 
-    :param bool completion:
+    :param completion:
         initialize the completion only if this is set to true
+    :type completion: bool
 
 .. _`__ufshcd_send_uic_cmd.description`:
 
@@ -630,11 +660,13 @@ ufshcd_send_uic_cmd
 
     Send UIC commands and retrieve the result
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct uic_command \*uic_cmd:
+    :param uic_cmd:
         UIC command
+    :type uic_cmd: struct uic_command \*
 
 .. _`ufshcd_send_uic_cmd.description`:
 
@@ -652,11 +684,13 @@ ufshcd_map_sg
 
     Map scatter-gather list to prdt
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         pointer to local reference block
+    :type lrbp: struct ufshcd_lrb \*
 
 .. _`ufshcd_map_sg.description`:
 
@@ -674,11 +708,13 @@ ufshcd_enable_intr
 
     enable interrupts
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u32 intrs:
+    :param intrs:
         interrupt bits
+    :type intrs: u32
 
 .. _`ufshcd_disable_intr`:
 
@@ -689,11 +725,13 @@ ufshcd_disable_intr
 
     disable interrupts
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u32 intrs:
+    :param intrs:
         interrupt bits
+    :type intrs: u32
 
 .. _`ufshcd_prepare_req_desc_hdr`:
 
@@ -704,14 +742,17 @@ ufshcd_prepare_req_desc_hdr
 
     Fills the requests header descriptor according to request
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         pointer to local reference block
+    :type lrbp: struct ufshcd_lrb \*
 
-    :param u32 \*upiu_flags:
+    :param upiu_flags:
         flags required in the header
+    :type upiu_flags: u32 \*
 
-    :param enum dma_data_direction cmd_dir:
+    :param cmd_dir:
         requests data direction
+    :type cmd_dir: enum dma_data_direction
 
 .. _`ufshcd_prepare_utp_scsi_cmd_upiu`:
 
@@ -722,11 +763,13 @@ ufshcd_prepare_utp_scsi_cmd_upiu
 
     fills the utp_transfer_req_desc, for scsi commands
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         local reference block pointer
+    :type lrbp: struct ufshcd_lrb \*
 
-    :param u32 upiu_flags:
+    :param upiu_flags:
         flags
+    :type upiu_flags: u32
 
 .. _`ufshcd_prepare_utp_query_req_upiu`:
 
@@ -737,14 +780,17 @@ ufshcd_prepare_utp_query_req_upiu
 
     fills the utp_transfer_req_desc, for query requsts
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         UFS hba
+    :type hba: struct ufs_hba \*
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         local reference block pointer
+    :type lrbp: struct ufshcd_lrb \*
 
-    :param u32 upiu_flags:
+    :param upiu_flags:
         flags
+    :type upiu_flags: u32
 
 .. _`ufshcd_comp_devman_upiu`:
 
@@ -755,11 +801,13 @@ ufshcd_comp_devman_upiu
 
     UFS Protocol Information Unit(UPIU) for Device Management Purposes
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         pointer to local reference block
+    :type lrbp: struct ufshcd_lrb \*
 
 .. _`ufshcd_comp_scsi_upiu`:
 
@@ -770,11 +818,13 @@ ufshcd_comp_scsi_upiu
 
     UFS Protocol Information Unit(UPIU) for SCSI Purposes
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         pointer to local reference block
+    :type lrbp: struct ufshcd_lrb \*
 
 .. _`ufshcd_upiu_wlun_to_scsi_wlun`:
 
@@ -785,8 +835,9 @@ ufshcd_upiu_wlun_to_scsi_wlun
 
     maps UPIU W-LUN id to SCSI W-LUN ID
 
-    :param u8 upiu_wlun_id:
+    :param upiu_wlun_id:
         UPIU W-LUN id
+    :type upiu_wlun_id: u8
 
 .. _`ufshcd_upiu_wlun_to_scsi_wlun.description`:
 
@@ -804,11 +855,13 @@ ufshcd_queuecommand
 
     main entry point for SCSI requests
 
-    :param struct Scsi_Host \*host:
+    :param host:
         SCSI host pointer
+    :type host: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         command from SCSI Midlayer
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ufshcd_queuecommand.description`:
 
@@ -826,11 +879,13 @@ ufshcd_dev_cmd_completion
 
     handles device management command responses
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         pointer to local reference block
+    :type lrbp: struct ufshcd_lrb \*
 
 .. _`ufshcd_get_dev_cmd_tag`:
 
@@ -841,11 +896,13 @@ ufshcd_get_dev_cmd_tag
 
     Get device management command tag
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param int \*tag_out:
+    :param tag_out:
         pointer to variable with available slot value
+    :type tag_out: int \*
 
 .. _`ufshcd_get_dev_cmd_tag.description`:
 
@@ -867,14 +924,17 @@ ufshcd_exec_dev_cmd
 
     API for sending device management requests
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         UFS hba
+    :type hba: struct ufs_hba \*
 
-    :param enum dev_cmd_type cmd_type:
+    :param cmd_type:
         specifies the type (NOP, Query...)
+    :type cmd_type: enum dev_cmd_type
 
-    :param int timeout:
+    :param timeout:
         time in seconds
+    :type timeout: int
 
 .. _`ufshcd_exec_dev_cmd.note`:
 
@@ -893,26 +953,33 @@ ufshcd_init_query
 
     init the query response and request parameters
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct ufs_query_req \*\*request:
+    :param request:
         address of the request pointer to be initialized
+    :type request: struct ufs_query_req \*\*
 
-    :param struct ufs_query_res \*\*response:
+    :param response:
         address of the response pointer to be initialized
+    :type response: struct ufs_query_res \*\*
 
-    :param enum query_opcode opcode:
+    :param opcode:
         operation to perform
+    :type opcode: enum query_opcode
 
-    :param u8 idn:
+    :param idn:
         flag idn to access
+    :type idn: u8
 
-    :param u8 index:
+    :param index:
         LU number to access
+    :type index: u8
 
-    :param u8 selector:
+    :param selector:
         query/flag/descriptor further identification
+    :type selector: u8
 
 .. _`ufshcd_query_flag`:
 
@@ -923,17 +990,21 @@ ufshcd_query_flag
 
     API function for sending flag query requests
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum query_opcode opcode:
+    :param opcode:
         flag query to perform
+    :type opcode: enum query_opcode
 
-    :param enum flag_idn idn:
+    :param idn:
         flag idn to access
+    :type idn: enum flag_idn
 
-    :param bool \*flag_res:
+    :param flag_res:
         the flag value after the query request completes
+    :type flag_res: bool \*
 
 .. _`ufshcd_query_flag.description`:
 
@@ -951,23 +1022,29 @@ ufshcd_query_attr
 
     API function for sending attribute requests
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum query_opcode opcode:
+    :param opcode:
         attribute opcode
+    :type opcode: enum query_opcode
 
-    :param enum attr_idn idn:
+    :param idn:
         attribute idn to access
+    :type idn: enum attr_idn
 
-    :param u8 index:
+    :param index:
         index field
+    :type index: u8
 
-    :param u8 selector:
+    :param selector:
         selector field
+    :type selector: u8
 
-    :param u32 \*attr_val:
+    :param attr_val:
         the attribute value after the query request completes
+    :type attr_val: u32 \*
 
 .. _`ufshcd_query_attr.description`:
 
@@ -985,24 +1062,30 @@ ufshcd_query_attr_retry
 
     API function for sending query attribute with retries
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum query_opcode opcode:
+    :param opcode:
         attribute opcode
+    :type opcode: enum query_opcode
 
-    :param enum attr_idn idn:
+    :param idn:
         attribute idn to access
+    :type idn: enum attr_idn
 
-    :param u8 index:
+    :param index:
         index field
+    :type index: u8
 
-    :param u8 selector:
+    :param selector:
         selector field
+    :type selector: u8
 
-    :param u32 \*attr_val:
+    :param attr_val:
         the attribute value after the query request
         completes
+    :type attr_val: u32 \*
 
 .. _`ufshcd_query_attr_retry.description`:
 
@@ -1020,26 +1103,33 @@ ufshcd_query_descriptor_retry
 
     API function for sending descriptor requests
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum query_opcode opcode:
+    :param opcode:
         attribute opcode
+    :type opcode: enum query_opcode
 
-    :param enum desc_idn idn:
+    :param idn:
         attribute idn to access
+    :type idn: enum desc_idn
 
-    :param u8 index:
+    :param index:
         index field
+    :type index: u8
 
-    :param u8 selector:
+    :param selector:
         selector field
+    :type selector: u8
 
-    :param u8 \*desc_buf:
+    :param desc_buf:
         the buffer that contains the descriptor
+    :type desc_buf: u8 \*
 
-    :param int \*buf_len:
+    :param buf_len:
         length parameter passed to the device
+    :type buf_len: int \*
 
 .. _`ufshcd_query_descriptor_retry.description`:
 
@@ -1059,17 +1149,21 @@ ufshcd_read_desc_length
 
     read the specified descriptor length from header
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum desc_idn desc_id:
+    :param desc_id:
         descriptor idn value
+    :type desc_id: enum desc_idn
 
-    :param int desc_index:
+    :param desc_index:
         descriptor index
+    :type desc_index: int
 
-    :param int \*desc_length:
+    :param desc_length:
         pointer to variable to read the length of descriptor
+    :type desc_length: int \*
 
 .. _`ufshcd_read_desc_length.description`:
 
@@ -1087,14 +1181,17 @@ ufshcd_map_desc_id_to_length
 
     map descriptor IDN to its length
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum desc_idn desc_id:
+    :param desc_id:
         descriptor idn value
+    :type desc_id: enum desc_idn
 
-    :param int \*desc_len:
+    :param desc_len:
         mapped desc length (out)
+    :type desc_len: int \*
 
 .. _`ufshcd_map_desc_id_to_length.description`:
 
@@ -1112,23 +1209,29 @@ ufshcd_read_desc_param
 
     read the specified descriptor parameter
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum desc_idn desc_id:
+    :param desc_id:
         descriptor idn value
+    :type desc_id: enum desc_idn
 
-    :param int desc_index:
+    :param desc_index:
         descriptor index
+    :type desc_index: int
 
-    :param u8 param_offset:
+    :param param_offset:
         offset of the parameter to read
+    :type param_offset: u8
 
-    :param u8 \*param_read_buf:
+    :param param_read_buf:
         pointer to buffer where parameter would be read
+    :type param_read_buf: u8 \*
 
-    :param u8 param_size:
+    :param param_size:
         sizeof(param_read_buf)
+    :type param_size: u8
 
 .. _`ufshcd_read_desc_param.description`:
 
@@ -1146,20 +1249,25 @@ ufshcd_read_string_desc
 
     read string descriptor
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param int desc_index:
+    :param desc_index:
         descriptor index
+    :type desc_index: int
 
-    :param u8 \*buf:
+    :param buf:
         pointer to buffer where descriptor would be read
+    :type buf: u8 \*
 
-    :param u32 size:
+    :param size:
         size of buf
+    :type size: u32
 
-    :param bool ascii:
+    :param ascii:
         if true convert from unicode to ascii characters
+    :type ascii: bool
 
 .. _`ufshcd_read_string_desc.description`:
 
@@ -1177,20 +1285,25 @@ ufshcd_read_unit_desc_param
 
     read the specified unit descriptor parameter
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param int lun:
+    :param lun:
         lun id
+    :type lun: int
 
-    :param enum unit_desc_param param_offset:
+    :param param_offset:
         offset of the parameter to read
+    :type param_offset: enum unit_desc_param
 
-    :param u8 \*param_read_buf:
+    :param param_read_buf:
         pointer to buffer where parameter would be read
+    :type param_read_buf: u8 \*
 
-    :param u32 param_size:
+    :param param_size:
         sizeof(param_read_buf)
+    :type param_size: u32
 
 .. _`ufshcd_read_unit_desc_param.description`:
 
@@ -1208,8 +1321,9 @@ ufshcd_memory_alloc
 
     allocate memory for host memory space data structures
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_memory_alloc.description`:
 
@@ -1234,8 +1348,9 @@ ufshcd_host_memory_configure
 
     configure local reference block with memory offsets
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_host_memory_configure.description`:
 
@@ -1259,8 +1374,9 @@ ufshcd_dme_link_startup
 
     Notify Unipro to perform link startup
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_dme_link_startup.description`:
 
@@ -1283,8 +1399,9 @@ ufshcd_dme_reset
 
     UIC command for DME_RESET
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_dme_reset.description`:
 
@@ -1305,8 +1422,9 @@ ufshcd_dme_enable
 
     UIC command for DME_ENABLE
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_dme_enable.description`:
 
@@ -1326,20 +1444,25 @@ ufshcd_dme_set_attr
 
     UIC command for DME_SET, DME_PEER_SET
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u32 attr_sel:
+    :param attr_sel:
         uic command argument1
+    :type attr_sel: u32
 
-    :param u8 attr_set:
+    :param attr_set:
         attribute set type as uic command argument2
+    :type attr_set: u8
 
-    :param u32 mib_val:
+    :param mib_val:
         setting value as uic command argument3
+    :type mib_val: u32
 
-    :param u8 peer:
+    :param peer:
         indicate whether peer or local
+    :type peer: u8
 
 .. _`ufshcd_dme_set_attr.description`:
 
@@ -1357,17 +1480,21 @@ ufshcd_dme_get_attr
 
     UIC command for DME_GET, DME_PEER_GET
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u32 attr_sel:
+    :param attr_sel:
         uic command argument1
+    :type attr_sel: u32
 
-    :param u32 \*mib_val:
+    :param mib_val:
         the value of the attribute as returned by the UIC command
+    :type mib_val: u32 \*
 
-    :param u8 peer:
+    :param peer:
         indicate whether peer or local
+    :type peer: u8
 
 .. _`ufshcd_dme_get_attr.description`:
 
@@ -1385,11 +1512,13 @@ ufshcd_uic_pwr_ctrl
 
     executes UIC commands (which affects the link power state) and waits for it to take effect.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct uic_command \*cmd:
+    :param cmd:
         UIC command to execute
+    :type cmd: struct uic_command \*
 
 .. _`ufshcd_uic_pwr_ctrl.description`:
 
@@ -1414,11 +1543,13 @@ ufshcd_uic_change_pwr_mode
 
     Perform the UIC power mode chage using DME_SET primitives.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u8 mode:
+    :param mode:
         powr mode value
+    :type mode: u8
 
 .. _`ufshcd_uic_change_pwr_mode.description`:
 
@@ -1436,8 +1567,9 @@ ufshcd_get_max_pwr_mode
 
     reads the max power mode negotiated with device
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_config_pwr_mode`:
 
@@ -1448,11 +1580,13 @@ ufshcd_config_pwr_mode
 
     configure a new power mode
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct ufs_pa_layer_attr \*desired_pwr_mode:
+    :param desired_pwr_mode:
         desired power configuration
+    :type desired_pwr_mode: struct ufs_pa_layer_attr \*
 
 .. _`ufshcd_complete_dev_init`:
 
@@ -1463,8 +1597,9 @@ ufshcd_complete_dev_init
 
     checks device readiness
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_complete_dev_init.description`:
 
@@ -1482,8 +1617,9 @@ ufshcd_make_hba_operational
 
     Make UFS controller operational
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_make_hba_operational.description`:
 
@@ -1507,11 +1643,13 @@ ufshcd_hba_stop
 
     Send controller to reset state
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param bool can_sleep:
+    :param can_sleep:
         perform sleep or just spin
+    :type can_sleep: bool
 
 .. _`ufshcd_hba_execute_hce`:
 
@@ -1522,8 +1660,9 @@ ufshcd_hba_execute_hce
 
     initialize the controller
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_hba_execute_hce.description`:
 
@@ -1545,8 +1684,9 @@ ufshcd_link_startup
 
     Initialize unipro link startup
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_link_startup.description`:
 
@@ -1564,8 +1704,9 @@ ufshcd_verify_dev_init
 
     Verify device initialization
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_verify_dev_init.description`:
 
@@ -1587,8 +1728,9 @@ ufshcd_set_queue_depth
 
     set lun queue depth
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         pointer to SCSI device
+    :type sdev: struct scsi_device \*
 
 .. _`ufshcd_set_queue_depth.description`:
 
@@ -1609,11 +1751,13 @@ ufshcd_get_lu_power_on_wp_status
 
     get LU's power on write protect status
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         pointer to SCSI device
+    :type sdev: struct scsi_device \*
 
 .. _`ufshcd_slave_alloc`:
 
@@ -1624,8 +1768,9 @@ ufshcd_slave_alloc
 
     handle initial SCSI device configurations
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         pointer to SCSI device
+    :type sdev: struct scsi_device \*
 
 .. _`ufshcd_slave_alloc.description`:
 
@@ -1643,11 +1788,13 @@ ufshcd_change_queue_depth
 
     change queue depth
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         pointer to SCSI device
+    :type sdev: struct scsi_device \*
 
-    :param int depth:
+    :param depth:
         required depth to set
+    :type depth: int
 
 .. _`ufshcd_change_queue_depth.description`:
 
@@ -1665,8 +1812,9 @@ ufshcd_slave_configure
 
     adjust SCSI device configurations
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         pointer to SCSI device
+    :type sdev: struct scsi_device \*
 
 .. _`ufshcd_slave_destroy`:
 
@@ -1677,33 +1825,9 @@ ufshcd_slave_destroy
 
     remove SCSI device configurations
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         pointer to SCSI device
-
-.. _`ufshcd_task_req_compl`:
-
-ufshcd_task_req_compl
-=====================
-
-.. c:function:: int ufshcd_task_req_compl(struct ufs_hba *hba, u32 index, u8 *resp)
-
-    handle task management request completion
-
-    :param struct ufs_hba \*hba:
-        per adapter instance
-
-    :param u32 index:
-        index of the completed request
-
-    :param u8 \*resp:
-        task management service response
-
-.. _`ufshcd_task_req_compl.description`:
-
-Description
------------
-
-Returns non-zero value on error, zero on success
+    :type sdev: struct scsi_device \*
 
 .. _`ufshcd_scsi_cmd_status`:
 
@@ -1714,11 +1838,13 @@ ufshcd_scsi_cmd_status
 
     Update SCSI command result based on SCSI status
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         pointer to local reference block of completed command
+    :type lrbp: struct ufshcd_lrb \*
 
-    :param int scsi_status:
+    :param scsi_status:
         SCSI command status
+    :type scsi_status: int
 
 .. _`ufshcd_scsi_cmd_status.description`:
 
@@ -1736,11 +1862,13 @@ ufshcd_transfer_rsp_status
 
     Get overall status of the response
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param struct ufshcd_lrb \*lrbp:
+    :param lrbp:
         pointer to local reference block of completed command
+    :type lrbp: struct ufshcd_lrb \*
 
 .. _`ufshcd_transfer_rsp_status.description`:
 
@@ -1758,11 +1886,13 @@ ufshcd_uic_cmd_compl
 
     handle completion of uic command
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u32 intr_status:
+    :param intr_status:
         interrupt status generated by the controller
+    :type intr_status: u32
 
 .. _`__ufshcd_transfer_req_compl`:
 
@@ -1773,11 +1903,13 @@ ufshcd_uic_cmd_compl
 
     handle SCSI and query command completion
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param unsigned long completed_reqs:
+    :param completed_reqs:
         requests to complete
+    :type completed_reqs: unsigned long
 
 .. _`ufshcd_transfer_req_compl`:
 
@@ -1788,8 +1920,9 @@ ufshcd_transfer_req_compl
 
     handle SCSI and query command completion
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_disable_ee`:
 
@@ -1800,11 +1933,13 @@ ufshcd_disable_ee
 
     disable exception event
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u16 mask:
+    :param mask:
         exception event to disable
+    :type mask: u16
 
 .. _`ufshcd_disable_ee.description`:
 
@@ -1825,11 +1960,13 @@ ufshcd_enable_ee
 
     enable exception event
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u16 mask:
+    :param mask:
         exception event to enable
+    :type mask: u16
 
 .. _`ufshcd_enable_ee.description`:
 
@@ -1850,8 +1987,9 @@ ufshcd_enable_auto_bkops
 
     Allow device managed BKOPS
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_enable_auto_bkops.description`:
 
@@ -1874,8 +2012,9 @@ ufshcd_disable_auto_bkops
 
     block device in doing background operations
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_disable_auto_bkops.description`:
 
@@ -1899,8 +2038,9 @@ ufshcd_force_reset_auto_bkops
 
     force reset auto bkops state
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_force_reset_auto_bkops.description`:
 
@@ -1921,11 +2061,13 @@ ufshcd_bkops_ctrl
 
     control the auto bkops based on current bkops status
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum bkops_status status:
+    :param status:
         bkops_status value
+    :type status: enum bkops_status
 
 .. _`ufshcd_bkops_ctrl.description`:
 
@@ -1957,8 +2099,9 @@ ufshcd_urgent_bkops
 
     handle urgent bkops exception event
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_urgent_bkops.description`:
 
@@ -1980,8 +2123,9 @@ ufshcd_exception_event_handler
 
     handle exceptions raised by device
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work data
+    :type work: struct work_struct \*
 
 .. _`ufshcd_exception_event_handler.description`:
 
@@ -2000,8 +2144,9 @@ ufshcd_quirk_dl_nac_errors
 
     This function checks if error handling is to recover from the DL NAC errors or not.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_quirk_dl_nac_errors.description`:
 
@@ -2019,8 +2164,9 @@ ufshcd_err_handler
 
     handle UFS errors that require s/w attention
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work structure
+    :type work: struct work_struct \*
 
 .. _`ufshcd_update_uic_error`:
 
@@ -2031,8 +2177,9 @@ ufshcd_update_uic_error
 
     check and set fatal UIC error flags.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_check_errors`:
 
@@ -2043,8 +2190,9 @@ ufshcd_check_errors
 
     Check for errors that need s/w attention
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_tmc_handler`:
 
@@ -2055,8 +2203,9 @@ ufshcd_tmc_handler
 
     handle task management function completion
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_sl_intr`:
 
@@ -2067,11 +2216,13 @@ ufshcd_sl_intr
 
     Interrupt service routine
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u32 intr_status:
+    :param intr_status:
         contains interrupts generated by the controller
+    :type intr_status: u32
 
 .. _`ufshcd_intr`:
 
@@ -2082,11 +2233,13 @@ ufshcd_intr
 
     Main interrupt service routine
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*__hba:
+    :param __hba:
         pointer to adapter instance
+    :type __hba: void \*
 
 .. _`ufshcd_intr.description`:
 
@@ -2105,20 +2258,25 @@ ufshcd_issue_tm_cmd
 
     issues task management commands to controller
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param int lun_id:
+    :param lun_id:
         LUN ID to which TM command is sent
+    :type lun_id: int
 
-    :param int task_id:
+    :param task_id:
         task ID to which the TM command is applicable
+    :type task_id: int
 
-    :param u8 tm_function:
+    :param tm_function:
         task management function opcode
+    :type tm_function: u8
 
-    :param u8 \*tm_response:
+    :param tm_response:
         task management service response return value
+    :type tm_response: u8 \*
 
 .. _`ufshcd_issue_tm_cmd.description`:
 
@@ -2126,6 +2284,102 @@ Description
 -----------
 
 Returns non-zero value on error, zero on success.
+
+.. _`ufshcd_issue_devman_upiu_cmd`:
+
+ufshcd_issue_devman_upiu_cmd
+============================
+
+.. c:function:: int ufshcd_issue_devman_upiu_cmd(struct ufs_hba *hba, struct utp_upiu_req *req_upiu, struct utp_upiu_req *rsp_upiu, u8 *desc_buff, int *buff_len, int cmd_type, enum query_opcode desc_op)
+
+    API for sending "utrd" type requests
+
+    :param hba:
+        per-adapter instance
+    :type hba: struct ufs_hba \*
+
+    :param req_upiu:
+        upiu request
+    :type req_upiu: struct utp_upiu_req \*
+
+    :param rsp_upiu:
+        upiu reply
+    :type rsp_upiu: struct utp_upiu_req \*
+
+    :param desc_buff:
+        pointer to descriptor buffer, NULL if NA
+    :type desc_buff: u8 \*
+
+    :param buff_len:
+        descriptor size, 0 if NA
+    :type buff_len: int \*
+
+    :param cmd_type:
+        *undescribed*
+    :type cmd_type: int
+
+    :param desc_op:
+        descriptor operation
+    :type desc_op: enum query_opcode
+
+.. _`ufshcd_issue_devman_upiu_cmd.description`:
+
+Description
+-----------
+
+Those type of requests uses UTP Transfer Request Descriptor - utrd.
+Therefore, it "rides" the device management infrastructure: uses its tag and
+tasks work queues.
+
+Since there is only one available tag for device management commands,
+the caller is expected to hold the hba->dev_cmd.lock mutex.
+
+.. _`ufshcd_exec_raw_upiu_cmd`:
+
+ufshcd_exec_raw_upiu_cmd
+========================
+
+.. c:function:: int ufshcd_exec_raw_upiu_cmd(struct ufs_hba *hba, struct utp_upiu_req *req_upiu, struct utp_upiu_req *rsp_upiu, int msgcode, u8 *desc_buff, int *buff_len, enum query_opcode desc_op)
+
+    API function for sending raw upiu commands
+
+    :param hba:
+        per-adapter instance
+    :type hba: struct ufs_hba \*
+
+    :param req_upiu:
+        upiu request
+    :type req_upiu: struct utp_upiu_req \*
+
+    :param rsp_upiu:
+        upiu reply - only 8 DW as we do not support scsi commands
+    :type rsp_upiu: struct utp_upiu_req \*
+
+    :param msgcode:
+        message code, one of UPIU Transaction Codes Initiator to Target
+    :type msgcode: int
+
+    :param desc_buff:
+        pointer to descriptor buffer, NULL if NA
+    :type desc_buff: u8 \*
+
+    :param buff_len:
+        descriptor size, 0 if NA
+    :type buff_len: int \*
+
+    :param desc_op:
+        descriptor operation
+    :type desc_op: enum query_opcode
+
+.. _`ufshcd_exec_raw_upiu_cmd.description`:
+
+Description
+-----------
+
+Supports UTP Transfer requests (nop and query), and UTP Task
+Management requests.
+It is up to the caller to fill the upiu conent properly, as it will
+be copied without any further input validations.
 
 .. _`ufshcd_eh_device_reset_handler`:
 
@@ -2136,8 +2390,9 @@ ufshcd_eh_device_reset_handler
 
     device reset handler registered to scsi layer.
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command pointer
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ufshcd_eh_device_reset_handler.description`:
 
@@ -2155,8 +2410,9 @@ ufshcd_abort
 
     abort a specific command
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command pointer
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ufshcd_abort.description`:
 
@@ -2180,8 +2436,9 @@ ufshcd_host_reset_and_restore
 
     reset and restore host controller
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_host_reset_and_restore.description`:
 
@@ -2203,8 +2460,9 @@ ufshcd_reset_and_restore
 
     reset and re-initialize host/device
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_reset_and_restore.description`:
 
@@ -2225,8 +2483,9 @@ ufshcd_eh_host_reset_handler
 
     host reset handler registered to scsi layer
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command pointer
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ufshcd_eh_host_reset_handler.description`:
 
@@ -2244,14 +2503,17 @@ ufshcd_get_max_icc_level
 
     calculate the ICC level
 
-    :param int sup_curr_uA:
+    :param sup_curr_uA:
         max. current supported by the regulator
+    :type sup_curr_uA: int
 
-    :param u32 start_scan:
+    :param start_scan:
         row at the desc table to start scan from
+    :type start_scan: u32
 
-    :param char \*buff:
+    :param buff:
         power descriptor buffer
+    :type buff: char \*
 
 .. _`ufshcd_get_max_icc_level.description`:
 
@@ -2269,14 +2531,17 @@ ufshcd_find_max_sup_active_icc_level
 
     calculate the max ICC level In case regulators are not initialized we'll return 0
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param u8 \*desc_buf:
+    :param desc_buf:
         power descriptor buffer to extract ICC levels from.
+    :type desc_buf: u8 \*
 
-    :param int len:
+    :param len:
         length of desc_buff
+    :type len: int
 
 .. _`ufshcd_find_max_sup_active_icc_level.description`:
 
@@ -2294,8 +2559,9 @@ ufshcd_scsi_add_wlus
 
     Adds required W-LUs
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_scsi_add_wlus.description`:
 
@@ -2338,8 +2604,9 @@ ufshcd_tune_pa_tactivate
 
     Tunes PA_TActivate of local UniPro
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_tune_pa_tactivate.description`:
 
@@ -2362,8 +2629,9 @@ ufshcd_tune_pa_hibern8time
 
     Tunes PA_Hibern8Time of local UniPro
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_tune_pa_hibern8time.description`:
 
@@ -2386,8 +2654,9 @@ ufshcd_quirk_tune_host_pa_tactivate
 
     Ensures that host PA_TACTIVATE is less than device PA_TACTIVATE time.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_quirk_tune_host_pa_tactivate.description`:
 
@@ -2409,8 +2678,9 @@ ufshcd_probe_hba
 
     probe hba to detect device and initialize
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_probe_hba.description`:
 
@@ -2428,11 +2698,13 @@ ufshcd_async_scan
 
     asynchronous execution for probing hba
 
-    :param void \*data:
+    :param data:
         data pointer to pass to this function
+    :type data: void \*
 
-    :param async_cookie_t cookie:
+    :param cookie:
         cookie data
+    :type cookie: async_cookie_t
 
 .. _`ufshcd_set_dev_pwr_mode`:
 
@@ -2443,11 +2715,13 @@ ufshcd_set_dev_pwr_mode
 
     sends START STOP UNIT command to set device power mode
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum ufs_dev_pwr_mode pwr_mode:
+    :param pwr_mode:
         device power mode to set
+    :type pwr_mode: enum ufs_dev_pwr_mode
 
 .. _`ufshcd_set_dev_pwr_mode.description`:
 
@@ -2466,11 +2740,13 @@ ufshcd_suspend
 
     helper function for suspend operations
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum ufs_pm_op pm_op:
+    :param pm_op:
         desired low power operation type
+    :type pm_op: enum ufs_pm_op
 
 .. _`ufshcd_suspend.description`:
 
@@ -2502,11 +2778,13 @@ ufshcd_resume
 
     helper function for resume operations
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param enum ufs_pm_op pm_op:
+    :param pm_op:
         runtime PM or system PM
+    :type pm_op: enum ufs_pm_op
 
 .. _`ufshcd_resume.description`:
 
@@ -2527,8 +2805,9 @@ ufshcd_system_suspend
 
     system suspend routine
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_system_suspend.description`:
 
@@ -2548,8 +2827,9 @@ ufshcd_system_resume
 
     system resume routine
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_system_resume.description`:
 
@@ -2567,8 +2847,9 @@ ufshcd_runtime_suspend
 
     runtime suspend routine
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_runtime_suspend.description`:
 
@@ -2588,8 +2869,9 @@ ufshcd_runtime_resume
 
     runtime resume routine
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_runtime_resume.description`:
 
@@ -2627,8 +2909,9 @@ ufshcd_shutdown
 
     shutdown routine
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_shutdown.description`:
 
@@ -2648,8 +2931,9 @@ ufshcd_remove
 
     de-allocate SCSI host and host memory space data structure memory
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_dealloc_host`:
 
@@ -2660,8 +2944,9 @@ ufshcd_dealloc_host
 
     deallocate Host Bus Adapter (HBA)
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         pointer to Host Bus Adapter (HBA)
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_set_dma_mask`:
 
@@ -2672,8 +2957,9 @@ ufshcd_set_dma_mask
 
     Set dma mask based on the controller addressing capability
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_set_dma_mask.description`:
 
@@ -2691,12 +2977,14 @@ ufshcd_alloc_host
 
     allocate Host Bus Adapter (HBA)
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device handle
+    :type dev: struct device \*
 
-    :param struct ufs_hba \*\*hba_handle:
+    :param hba_handle:
         driver private handle
         Returns 0 on success, non-zero value on failure
+    :type hba_handle: struct ufs_hba \*\*
 
 .. _`ufshcd_init`:
 
@@ -2707,15 +2995,18 @@ ufshcd_init
 
     Driver initialization routine
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per-adapter instance
+    :type hba: struct ufs_hba \*
 
-    :param void __iomem \*mmio_base:
+    :param mmio_base:
         base register address
+    :type mmio_base: void __iomem \*
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt line of device
         Returns 0 on success, non-zero value on failure
+    :type irq: unsigned int
 
 .. This file was automatic generated / don't edit.
 

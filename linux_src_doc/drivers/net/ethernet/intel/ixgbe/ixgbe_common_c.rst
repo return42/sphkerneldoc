@@ -10,8 +10,9 @@ ixgbe_device_supports_autoneg_fc
 
     Check if phy supports autoneg flow control
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_device_supports_autoneg_fc.description`:
 
@@ -31,8 +32,9 @@ ixgbe_setup_fc_generic
 
     Set up flow control
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_setup_fc_generic.description`:
 
@@ -50,8 +52,9 @@ ixgbe_start_hw_generic
 
     Prepare hardware for Tx/Rx
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_start_hw_generic.description`:
 
@@ -72,8 +75,9 @@ ixgbe_start_hw_gen2
 
     Init sequence for common device family
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hw structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_start_hw_gen2.description`:
 
@@ -100,8 +104,9 @@ ixgbe_init_hw_generic
 
     Generic hardware initialization
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_init_hw_generic.description`:
 
@@ -123,8 +128,9 @@ ixgbe_clear_hw_cntrs_generic
 
     Generic clear hardware counters
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_clear_hw_cntrs_generic.description`:
 
@@ -143,14 +149,17 @@ ixgbe_read_pba_string_generic
 
     Reads part number string from EEPROM
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 \*pba_num:
+    :param pba_num:
         stores the part number string from the EEPROM
+    :type pba_num: u8 \*
 
-    :param u32 pba_num_size:
+    :param pba_num_size:
         part number string buffer length
+    :type pba_num_size: u32
 
 .. _`ixgbe_read_pba_string_generic.description`:
 
@@ -168,11 +177,13 @@ ixgbe_get_mac_addr_generic
 
     Generic get MAC address
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         Adapter MAC address
+    :type mac_addr: u8 \*
 
 .. _`ixgbe_get_mac_addr_generic.description`:
 
@@ -192,8 +203,9 @@ ixgbe_get_bus_info_generic
 
     Generic set PCI bus info
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_bus_info_generic.description`:
 
@@ -211,8 +223,9 @@ ixgbe_set_lan_id_multi_port_pcie
 
     Set LAN id for PCIe multiple port devices
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_set_lan_id_multi_port_pcie.description`:
 
@@ -231,8 +244,9 @@ ixgbe_stop_adapter_generic
 
     Generic stop Tx/Rx units
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_stop_adapter_generic.description`:
 
@@ -253,8 +267,9 @@ ixgbe_init_led_link_act_generic
 
     Store the LED index link/activity.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_init_led_link_act_generic.description`:
 
@@ -273,11 +288,13 @@ ixgbe_led_on_generic
 
     Turns on the software controllable LEDs.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 index:
+    :param index:
         led number to turn on
+    :type index: u32
 
 .. _`ixgbe_led_off_generic`:
 
@@ -288,11 +305,13 @@ ixgbe_led_off_generic
 
     Turns off the software controllable LEDs.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 index:
+    :param index:
         led number to turn off
+    :type index: u32
 
 .. _`ixgbe_init_eeprom_params_generic`:
 
@@ -303,8 +322,9 @@ ixgbe_init_eeprom_params_generic
 
     Initialize EEPROM params
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_init_eeprom_params_generic.description`:
 
@@ -323,17 +343,21 @@ ixgbe_write_eeprom_buffer_bit_bang_generic
 
     Write EEPROM using bit-bang
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to write
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         16 bit word(s) to write to EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_write_eeprom_buffer_bit_bang_generic.description`:
 
@@ -351,17 +375,21 @@ ixgbe_write_eeprom_buffer_bit_bang
 
     Writes 16 bit word(s) to EEPROM
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be written to
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of word(s)
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         16 bit word(s) to be written to the EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_write_eeprom_buffer_bit_bang.description`:
 
@@ -380,14 +408,17 @@ ixgbe_write_eeprom_generic
 
     Writes 16 bit value to EEPROM
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be written to
+    :type offset: u16
 
-    :param u16 data:
+    :param data:
         16 bit word to be written to the EEPROM
+    :type data: u16
 
 .. _`ixgbe_write_eeprom_generic.description`:
 
@@ -406,17 +437,21 @@ ixgbe_read_eeprom_buffer_bit_bang_generic
 
     Read EEPROM using bit-bang
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of word(s)
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         read 16 bit words(s) from EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_read_eeprom_buffer_bit_bang_generic.description`:
 
@@ -434,17 +469,21 @@ ixgbe_read_eeprom_buffer_bit_bang
 
     Read EEPROM using bit-bang
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of word(s)
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         read 16 bit word(s) from EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_read_eeprom_buffer_bit_bang.description`:
 
@@ -462,14 +501,17 @@ ixgbe_read_eeprom_bit_bang_generic
 
     Read EEPROM word using bit-bang
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be read
+    :type offset: u16
 
-    :param u16 \*data:
+    :param data:
         read 16 bit value from EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_read_eeprom_bit_bang_generic.description`:
 
@@ -487,17 +529,21 @@ ixgbe_read_eerd_buffer_generic
 
     Read EEPROM word(s) using EERD
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of word in the EEPROM to read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of word(s)
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         16 bit word(s) from the EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_read_eerd_buffer_generic.description`:
 
@@ -515,11 +561,13 @@ ixgbe_detect_eeprom_page_size_generic
 
     Detect EEPROM page size
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be used as a scratch pad
+    :type offset: u16
 
 .. _`ixgbe_detect_eeprom_page_size_generic.description`:
 
@@ -539,14 +587,17 @@ ixgbe_read_eerd_generic
 
     Read EEPROM word using EERD
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of  word in the EEPROM to read
+    :type offset: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_read_eerd_generic.description`:
 
@@ -564,17 +615,21 @@ ixgbe_write_eewr_buffer_generic
 
     Write EEPROM word(s) using EEWR
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of  word in the EEPROM to write
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         word(s) write to the EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_write_eewr_buffer_generic.description`:
 
@@ -592,14 +647,17 @@ ixgbe_write_eewr_generic
 
     Write EEPROM word using EEWR
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of  word in the EEPROM to write
+    :type offset: u16
 
-    :param u16 data:
+    :param data:
         word write to the EEPROM
+    :type data: u16
 
 .. _`ixgbe_write_eewr_generic.description`:
 
@@ -617,11 +675,13 @@ ixgbe_poll_eerd_eewr_done
 
     Poll EERD read or EEWR write status
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 ee_reg:
+    :param ee_reg:
         EEPROM flag for polling
+    :type ee_reg: u32
 
 .. _`ixgbe_poll_eerd_eewr_done.description`:
 
@@ -640,8 +700,9 @@ ixgbe_acquire_eeprom
 
     Acquire EEPROM using bit-bang
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_acquire_eeprom.description`:
 
@@ -660,8 +721,9 @@ ixgbe_get_eeprom_semaphore
 
     Get hardware semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_eeprom_semaphore.description`:
 
@@ -679,8 +741,9 @@ ixgbe_release_eeprom_semaphore
 
     Release hardware semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_release_eeprom_semaphore.description`:
 
@@ -698,8 +761,9 @@ ixgbe_ready_eeprom
 
     Polls for EEPROM ready
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_standby_eeprom`:
 
@@ -710,8 +774,9 @@ ixgbe_standby_eeprom
 
     Returns EEPROM to a "standby" state
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_shift_out_eeprom_bits`:
 
@@ -722,14 +787,17 @@ ixgbe_shift_out_eeprom_bits
 
     Shift data bits out to the EEPROM.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 data:
+    :param data:
         data to send to the EEPROM
+    :type data: u16
 
-    :param u16 count:
+    :param count:
         number of bits to shift out
+    :type count: u16
 
 .. _`ixgbe_shift_in_eeprom_bits`:
 
@@ -740,11 +808,13 @@ ixgbe_shift_in_eeprom_bits
 
     Shift data bits in from the EEPROM
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 count:
+    :param count:
         number of bits to shift
+    :type count: u16
 
 .. _`ixgbe_raise_eeprom_clk`:
 
@@ -755,11 +825,13 @@ ixgbe_raise_eeprom_clk
 
     Raises the EEPROM's clock input.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*eec:
+    :param eec:
         EEC register's current value
+    :type eec: u32 \*
 
 .. _`ixgbe_lower_eeprom_clk`:
 
@@ -770,11 +842,13 @@ ixgbe_lower_eeprom_clk
 
     Lowers the EEPROM's clock input.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*eec:
+    :param eec:
         EEC's current value
+    :type eec: u32 \*
 
 .. _`ixgbe_release_eeprom`:
 
@@ -785,8 +859,9 @@ ixgbe_release_eeprom
 
     Release EEPROM, release semaphores
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_calc_eeprom_checksum_generic`:
 
@@ -797,8 +872,9 @@ ixgbe_calc_eeprom_checksum_generic
 
     Calculates and returns the checksum
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_validate_eeprom_checksum_generic`:
 
@@ -809,11 +885,13 @@ ixgbe_validate_eeprom_checksum_generic
 
     Validate EEPROM checksum
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*checksum_val:
+    :param checksum_val:
         calculated checksum
+    :type checksum_val: u16 \*
 
 .. _`ixgbe_validate_eeprom_checksum_generic.description`:
 
@@ -832,8 +910,9 @@ ixgbe_update_eeprom_checksum_generic
 
     Updates the EEPROM checksum
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_set_rar_generic`:
 
@@ -844,20 +923,25 @@ ixgbe_set_rar_generic
 
     Set Rx address register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 index:
+    :param index:
         Receive address register to write
+    :type index: u32
 
-    :param u8 \*addr:
+    :param addr:
         Address to put into receive address register
+    :type addr: u8 \*
 
-    :param u32 vmdq:
+    :param vmdq:
         VMDq "set" or "pool" index
+    :type vmdq: u32
 
-    :param u32 enable_addr:
+    :param enable_addr:
         set flag that address is active
+    :type enable_addr: u32
 
 .. _`ixgbe_set_rar_generic.description`:
 
@@ -875,11 +959,13 @@ ixgbe_clear_rar_generic
 
     Remove Rx address register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 index:
+    :param index:
         Receive address register to write
+    :type index: u32
 
 .. _`ixgbe_clear_rar_generic.description`:
 
@@ -897,8 +983,9 @@ ixgbe_init_rx_addrs_generic
 
     Initializes receive address filters.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_init_rx_addrs_generic.description`:
 
@@ -918,11 +1005,13 @@ ixgbe_mta_vector
 
     Determines bit-vector in multicast table to set
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 \*mc_addr:
+    :param mc_addr:
         the multicast address
+    :type mc_addr: u8 \*
 
 .. _`ixgbe_mta_vector.description`:
 
@@ -945,11 +1034,13 @@ ixgbe_set_mta
 
     Set bit-vector in multicast table
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 \*mc_addr:
+    :param mc_addr:
         Multicast address
+    :type mc_addr: u8 \*
 
 .. _`ixgbe_set_mta.description`:
 
@@ -967,11 +1058,13 @@ ixgbe_update_mc_addr_list_generic
 
     Updates MAC list of multicast addresses
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         pointer to net device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbe_update_mc_addr_list_generic.description`:
 
@@ -992,8 +1085,9 @@ ixgbe_enable_mc_generic
 
     Enable multicast address in RAR
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_enable_mc_generic.description`:
 
@@ -1011,8 +1105,9 @@ ixgbe_disable_mc_generic
 
     Disable multicast address in RAR
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_disable_mc_generic.description`:
 
@@ -1030,8 +1125,9 @@ ixgbe_fc_enable_generic
 
     Enable flow control
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_enable_generic.description`:
 
@@ -1049,26 +1145,33 @@ ixgbe_negotiate_fc
 
     Negotiate flow control
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 adv_reg:
+    :param adv_reg:
         flow control advertised settings
+    :type adv_reg: u32
 
-    :param u32 lp_reg:
+    :param lp_reg:
         link partner's flow control settings
+    :type lp_reg: u32
 
-    :param u32 adv_sym:
+    :param adv_sym:
         symmetric pause bit in advertisement
+    :type adv_sym: u32
 
-    :param u32 adv_asm:
+    :param adv_asm:
         asymmetric pause bit in advertisement
+    :type adv_asm: u32
 
-    :param u32 lp_sym:
+    :param lp_sym:
         symmetric pause bit in link partner advertisement
+    :type lp_sym: u32
 
-    :param u32 lp_asm:
+    :param lp_asm:
         asymmetric pause bit in link partner advertisement
+    :type lp_asm: u32
 
 .. _`ixgbe_negotiate_fc.description`:
 
@@ -1087,8 +1190,9 @@ ixgbe_fc_autoneg_fiber
 
     Enable flow control on 1 gig fiber
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_autoneg_fiber.description`:
 
@@ -1106,8 +1210,9 @@ ixgbe_fc_autoneg_backplane
 
     Enable flow control IEEE clause 37
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_autoneg_backplane.description`:
 
@@ -1125,8 +1230,9 @@ ixgbe_fc_autoneg_copper
 
     Enable flow control IEEE clause 37
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_autoneg_copper.description`:
 
@@ -1144,8 +1250,9 @@ ixgbe_fc_autoneg
 
     Configure flow control
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_autoneg.description`:
 
@@ -1164,8 +1271,9 @@ ixgbe_pcie_timeout_poll
 
     Return number of times to poll for completion
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_pcie_timeout_poll.description`:
 
@@ -1187,8 +1295,9 @@ ixgbe_disable_pcie_master
 
     Disable PCI-express master access
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_disable_pcie_master.description`:
 
@@ -1209,11 +1318,13 @@ ixgbe_acquire_swfw_sync
 
     Acquire SWFW semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 mask:
+    :param mask:
         Mask to specify which semaphore to acquire
+    :type mask: u32
 
 .. _`ixgbe_acquire_swfw_sync.description`:
 
@@ -1232,11 +1343,13 @@ ixgbe_release_swfw_sync
 
     Release SWFW semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 mask:
+    :param mask:
         Mask to specify which semaphore to release
+    :type mask: u32
 
 .. _`ixgbe_release_swfw_sync.description`:
 
@@ -1255,15 +1368,18 @@ prot_autoc_read_generic
 
     Hides MAC differences needed for AUTOC read
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param bool \*locked:
+    :param locked:
         bool to indicate whether the SW/FW lock should be taken.  Never
         true in this the generic case.
+    :type locked: bool \*
 
-    :param u32 \*reg_val:
+    :param reg_val:
         Value we read from AUTOC
+    :type reg_val: u32 \*
 
 .. _`prot_autoc_read_generic.description`:
 
@@ -1281,15 +1397,18 @@ prot_autoc_write_generic
 
     Hides MAC differences needed for AUTOC write
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg_val:
+    :param reg_val:
         value to write to AUTOC
+    :type reg_val: u32
 
-    :param bool locked:
+    :param locked:
         bool to indicate whether the SW/FW lock was already taken by
         previous read.
+    :type locked: bool
 
 .. _`ixgbe_disable_rx_buff_generic`:
 
@@ -1300,8 +1419,9 @@ ixgbe_disable_rx_buff_generic
 
     Stops the receive data path
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_disable_rx_buff_generic.description`:
 
@@ -1320,8 +1440,9 @@ ixgbe_enable_rx_buff_generic
 
     Enables the receive data path
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_enable_rx_buff_generic.description`:
 
@@ -1339,11 +1460,13 @@ ixgbe_enable_rx_dma_generic
 
     Enable the Rx DMA unit
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 regval:
+    :param regval:
         register value to write to RXCTRL
+    :type regval: u32
 
 .. _`ixgbe_enable_rx_dma_generic.description`:
 
@@ -1361,11 +1484,13 @@ ixgbe_blink_led_start_generic
 
     Blink LED based on index.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 index:
+    :param index:
         led number to blink
+    :type index: u32
 
 .. _`ixgbe_blink_led_stop_generic`:
 
@@ -1376,11 +1501,13 @@ ixgbe_blink_led_stop_generic
 
     Stop blinking LED based on index.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 index:
+    :param index:
         led number to stop blinking
+    :type index: u32
 
 .. _`ixgbe_get_san_mac_addr_offset`:
 
@@ -1391,11 +1518,13 @@ ixgbe_get_san_mac_addr_offset
 
     Get SAN MAC address offset from the EEPROM
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*san_mac_offset:
+    :param san_mac_offset:
         SAN MAC address offset
+    :type san_mac_offset: u16 \*
 
 .. _`ixgbe_get_san_mac_addr_offset.description`:
 
@@ -1415,11 +1544,13 @@ ixgbe_get_san_mac_addr_generic
 
     SAN MAC address retrieval from the EEPROM
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 \*san_mac_addr:
+    :param san_mac_addr:
         SAN MAC address
+    :type san_mac_addr: u8 \*
 
 .. _`ixgbe_get_san_mac_addr_generic.description`:
 
@@ -1440,8 +1571,9 @@ ixgbe_get_pcie_msix_count_generic
 
     Gets MSI-X vector count
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_pcie_msix_count_generic.description`:
 
@@ -1460,14 +1592,17 @@ ixgbe_clear_vmdq_generic
 
     Disassociate a VMDq pool index from a rx address
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware struct
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 rar:
+    :param rar:
         receive address register index to disassociate
+    :type rar: u32
 
-    :param u32 vmdq:
+    :param vmdq:
         VMDq pool index to remove from the rar
+    :type vmdq: u32
 
 .. _`ixgbe_set_vmdq_generic`:
 
@@ -1478,14 +1613,17 @@ ixgbe_set_vmdq_generic
 
     Associate a VMDq pool index with a rx address
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware struct
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 rar:
+    :param rar:
         receive address register index to associate with a VMDq index
+    :type rar: u32
 
-    :param u32 vmdq:
+    :param vmdq:
         VMDq pool index
+    :type vmdq: u32
 
 .. _`ixgbe_set_vmdq_san_mac_generic`:
 
@@ -1496,11 +1634,13 @@ ixgbe_set_vmdq_san_mac_generic
 
     In IOV mode, Default pool is next pool after the number of VFs advertized and not 0. MPSAR table needs to be updated for SAN_MAC RAR [hw->mac.san_mac_rar_index]
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware struct
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 vmdq:
+    :param vmdq:
         VMDq pool index
+    :type vmdq: u32
 
 .. _`ixgbe_set_vmdq_san_mac_generic.description`:
 
@@ -1518,8 +1658,9 @@ ixgbe_init_uta_tables_generic
 
     Initialize the Unicast Table Array
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_find_vlvf_slot`:
 
@@ -1530,15 +1671,18 @@ ixgbe_find_vlvf_slot
 
     find the vlanid or the first empty slot
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 vlan:
+    :param vlan:
         VLAN id to write to VLAN filter
+    :type vlan: u32
 
-    :param bool vlvf_bypass:
+    :param vlvf_bypass:
         true to find vlanid only, false returns first empty slot if
         vlanid not found
+    :type vlvf_bypass: bool
 
 .. _`ixgbe_find_vlvf_slot.description`:
 
@@ -1556,20 +1700,25 @@ ixgbe_set_vfta_generic
 
     Set VLAN filter table
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 vlan:
+    :param vlan:
         VLAN id to write to VLAN filter
+    :type vlan: u32
 
-    :param u32 vind:
+    :param vind:
         VMDq output index that maps queue to VLAN id in VFVFB
+    :type vind: u32
 
-    :param bool vlan_on:
+    :param vlan_on:
         boolean flag to turn on/off VLAN in VFVF
+    :type vlan_on: bool
 
-    :param bool vlvf_bypass:
+    :param vlvf_bypass:
         boolean flag indicating updating default pool is okay
+    :type vlvf_bypass: bool
 
 .. _`ixgbe_set_vfta_generic.description`:
 
@@ -1587,8 +1736,9 @@ ixgbe_clear_vfta_generic
 
     Clear VLAN filter table
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_clear_vfta_generic.description`:
 
@@ -1606,8 +1756,9 @@ ixgbe_need_crosstalk_fix
 
     Determine if we need to do cross talk fix
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_need_crosstalk_fix.description`:
 
@@ -1626,17 +1777,21 @@ ixgbe_check_mac_link_generic
 
     Determine link and speed status
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed \*speed:
+    :param speed:
         pointer to link speed
+    :type speed: ixgbe_link_speed \*
 
-    :param bool \*link_up:
+    :param link_up:
         true when link is up
+    :type link_up: bool \*
 
-    :param bool link_up_wait_to_complete:
+    :param link_up_wait_to_complete:
         bool used to wait for link up or not
+    :type link_up_wait_to_complete: bool
 
 .. _`ixgbe_check_mac_link_generic.description`:
 
@@ -1654,14 +1809,17 @@ ixgbe_get_wwn_prefix_generic
 
     Get alternative WWNN/WWPN prefix from the EEPROM
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*wwnn_prefix:
+    :param wwnn_prefix:
         the alternative WWNN prefix
+    :type wwnn_prefix: u16 \*
 
-    :param u16 \*wwpn_prefix:
+    :param wwpn_prefix:
         the alternative WWPN prefix
+    :type wwpn_prefix: u16 \*
 
 .. _`ixgbe_get_wwn_prefix_generic.description`:
 
@@ -1680,14 +1838,17 @@ ixgbe_set_mac_anti_spoofing
 
     Enable/Disable MAC anti-spoofing
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param bool enable:
+    :param enable:
         enable or disable switch for MAC anti-spoofing
+    :type enable: bool
 
-    :param int vf:
+    :param vf:
         Virtual Function pool - VF Pool to set for MAC anti-spoofing
+    :type vf: int
 
 .. _`ixgbe_set_vlan_anti_spoofing`:
 
@@ -1698,14 +1859,17 @@ ixgbe_set_vlan_anti_spoofing
 
     Enable/Disable VLAN anti-spoofing
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param bool enable:
+    :param enable:
         enable or disable switch for VLAN anti-spoofing
+    :type enable: bool
 
-    :param int vf:
+    :param vf:
         Virtual Function pool - VF Pool to set for VLAN anti-spoofing
+    :type vf: int
 
 .. _`ixgbe_get_device_caps_generic`:
 
@@ -1716,11 +1880,13 @@ ixgbe_get_device_caps_generic
 
     Get additional device capabilities
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*device_caps:
+    :param device_caps:
         the EEPROM word with the extra device capabilities
+    :type device_caps: u16 \*
 
 .. _`ixgbe_get_device_caps_generic.description`:
 
@@ -1739,17 +1905,21 @@ ixgbe_set_rxpba_generic
 
     Initialize RX packet buffer
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param int num_pb:
+    :param num_pb:
         number of packet buffers to allocate
+    :type num_pb: int
 
-    :param u32 headroom:
+    :param headroom:
         reserve n KB of headroom
+    :type headroom: u32
 
-    :param int strategy:
+    :param strategy:
         packet buffer allocation strategy
+    :type strategy: int
 
 .. _`ixgbe_calculate_checksum`:
 
@@ -1760,11 +1930,13 @@ ixgbe_calculate_checksum
 
     Calculate checksum for buffer
 
-    :param u8 \*buffer:
+    :param buffer:
         pointer to EEPROM
+    :type buffer: u8 \*
 
-    :param u32 length:
+    :param length:
         size of EEPROM to calculate a checksum for
+    :type length: u32
 
 .. _`ixgbe_calculate_checksum.description`:
 
@@ -1783,17 +1955,21 @@ ixgbe_hic_unlocked
 
     Issue command to manageability block unlocked
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*buffer:
+    :param buffer:
         command to write and where the return status will be placed
+    :type buffer: u32 \*
 
-    :param u32 length:
+    :param length:
         length of buffer, must be multiple of 4 bytes
+    :type length: u32
 
-    :param u32 timeout:
+    :param timeout:
         time in ms to wait for command completion
+    :type timeout: u32
 
 .. _`ixgbe_hic_unlocked.description`:
 
@@ -1816,26 +1992,31 @@ ixgbe_host_interface_command
 
     Issue command to manageability block
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param void \*buffer:
+    :param buffer:
         contains the command to write and where the return status will
         be placed
+    :type buffer: void \*
 
-    :param u32 length:
+    :param length:
         length of buffer, must be multiple of 4 bytes
+    :type length: u32
 
-    :param u32 timeout:
+    :param timeout:
         time in ms to wait for command completion
+    :type timeout: u32
 
-    :param bool return_data:
+    :param return_data:
         read and return data from the buffer (true) or not (false)
         Needed because FW structures are big endian and decoding of
         these fields can be 8 bit or 16 bit based on command. Decoding
         is not easily understood without making a table of commands.
         So we will leave this up to the caller to read back the data
         in these cases.
+    :type return_data: bool
 
 .. _`ixgbe_host_interface_command.description`:
 
@@ -1854,26 +2035,33 @@ ixgbe_set_fw_drv_ver_generic
 
     Sends driver version to firmware
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 maj:
+    :param maj:
         driver version major number
+    :type maj: u8
 
-    :param u8 min:
+    :param min:
         driver version minor number
+    :type min: u8
 
-    :param u8 build:
+    :param build:
         driver version build number
+    :type build: u8
 
-    :param u8 sub:
+    :param sub:
         driver version sub build number
+    :type sub: u8
 
-    :param __always_unused u16 len:
+    :param len:
         length of driver_ver string
+    :type len: __always_unused u16
 
-    :param __always_unused const char \*driver_ver:
+    :param driver_ver:
         driver string
+    :type driver_ver: __always_unused const char \*
 
 .. _`ixgbe_set_fw_drv_ver_generic.description`:
 
@@ -1894,8 +2082,9 @@ ixgbe_clear_tx_pending
 
     Clear pending TX work from the PCIe fifo
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_clear_tx_pending.description`:
 
@@ -1915,14 +2104,17 @@ ixgbe_get_ets_data
 
     Extracts the ETS bit data
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*ets_cfg:
+    :param ets_cfg:
         extected ETS data
+    :type ets_cfg: u16 \*
 
-    :param u16 \*ets_offset:
+    :param ets_offset:
         offset of ETS data
+    :type ets_offset: u16 \*
 
 .. _`ixgbe_get_ets_data.description`:
 
@@ -1940,8 +2132,9 @@ ixgbe_get_thermal_sensor_data_generic
 
     Gathers thermal sensor data
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_thermal_sensor_data_generic.description`:
 
@@ -1959,8 +2152,9 @@ ixgbe_init_thermal_sensor_thresh_generic
 
     Inits thermal sensor thresholds
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_init_thermal_sensor_thresh_generic.description`:
 
@@ -1979,11 +2173,13 @@ ixgbe_get_orom_version
 
     Return option ROM from EEPROM
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param struct ixgbe_nvm_version \*nvm_ver:
+    :param nvm_ver:
         pointer to output structure
+    :type nvm_ver: struct ixgbe_nvm_version \*
 
 .. _`ixgbe_get_orom_version.description`:
 
@@ -2000,11 +2196,13 @@ ixgbe_get_oem_prod_version
 
 .. c:function:: void ixgbe_get_oem_prod_version(struct ixgbe_hw *hw, struct ixgbe_nvm_version *nvm_ver)
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param struct ixgbe_nvm_version \*nvm_ver:
+    :param nvm_ver:
         pointer to output structure
+    :type nvm_ver: struct ixgbe_nvm_version \*
 
 .. _`ixgbe_get_oem_prod_version.description`:
 
@@ -2023,11 +2221,13 @@ ixgbe_get_etk_id
 
     Return Etrack ID from EEPROM
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param struct ixgbe_nvm_version \*nvm_ver:
+    :param nvm_ver:
         pointer to output structure
+    :type nvm_ver: struct ixgbe_nvm_version \*
 
 .. _`ixgbe_get_etk_id.description`:
 
@@ -2045,14 +2245,17 @@ ixgbe_setup_mac_link_multispeed_fiber
 
     Set MAC link speed
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         new link speed
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         true when waiting for completion is needed
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbe_setup_mac_link_multispeed_fiber.description`:
 
@@ -2070,11 +2273,13 @@ ixgbe_set_soft_rate_select_speed
 
     Set module link speed
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         link speed to set
+    :type speed: ixgbe_link_speed
 
 .. _`ixgbe_set_soft_rate_select_speed.description`:
 

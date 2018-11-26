@@ -10,14 +10,17 @@ radix_tree_find_next_bit
 
     find the next set bit in a memory region
 
-    :param struct radix_tree_node \*node:
+    :param node:
         *undescribed*
+    :type node: struct radix_tree_node \*
 
-    :param unsigned int tag:
+    :param tag:
         *undescribed*
+    :type tag: unsigned int
 
-    :param unsigned long offset:
+    :param offset:
         The bitnumber to start searching at
+    :type offset: unsigned long
 
 .. _`radix_tree_find_next_bit.description`:
 
@@ -33,39 +36,38 @@ Returns next bit offset, or size if nothing found.
 radix_tree_shrink
 =================
 
-.. c:function:: bool radix_tree_shrink(struct radix_tree_root *root, radix_tree_update_node_t update_node)
+.. c:function:: bool radix_tree_shrink(struct radix_tree_root *root)
 
     shrink radix tree to minimum height \ ``root``\            radix tree root
 
-    :param struct radix_tree_root \*root:
+    :param root:
         *undescribed*
-
-    :param radix_tree_update_node_t update_node:
-        *undescribed*
+    :type root: struct radix_tree_root \*
 
 .. _`__radix_tree_create`:
 
 \__radix_tree_create
 ====================
 
-.. c:function:: int __radix_tree_create(struct radix_tree_root *root, unsigned long index, unsigned order, struct radix_tree_node **nodep, void __rcu ***slotp)
+.. c:function:: int __radix_tree_create(struct radix_tree_root *root, unsigned long index, struct radix_tree_node **nodep, void __rcu ***slotp)
 
     create a slot in a radix tree
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param unsigned long index:
+    :param index:
         index key
+    :type index: unsigned long
 
-    :param unsigned order:
-        index occupies 2^order aligned slots
-
-    :param struct radix_tree_node \*\*nodep:
+    :param nodep:
         returns node
+    :type nodep: struct radix_tree_node \*\*
 
-    :param void __rcu \*\*\*slotp:
+    :param slotp:
         returns slot
+    :type slotp: void __rcu \*\*\*
 
 .. _`__radix_tree_create.description`:
 
@@ -76,33 +78,33 @@ Create, if necessary, and return the node and slot for an item
 at position \ ``index``\  in the radix tree \ ``root``\ .
 
 Until there is more than one item in the tree, no nodes are
-allocated and \ ``root``\ ->rnode is used as a direct slot instead of
+allocated and \ ``root->xa_head``\  is used as a direct slot instead of
 pointing to a node, in which case \*@nodep will be NULL.
 
 Returns -ENOMEM, or 0 for success.
 
-.. _`__radix_tree_insert`:
+.. _`radix_tree_insert`:
 
-\__radix_tree_insert
-====================
+radix_tree_insert
+=================
 
-.. c:function:: int __radix_tree_insert(struct radix_tree_root *root, unsigned long index, unsigned order, void *item)
+.. c:function:: int radix_tree_insert(struct radix_tree_root *root, unsigned long index, void *item)
 
     insert into a radix tree
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param unsigned long index:
+    :param index:
         index key
+    :type index: unsigned long
 
-    :param unsigned order:
-        key covers the 2^order indices around index
-
-    :param void \*item:
+    :param item:
         item to insert
+    :type item: void \*
 
-.. _`__radix_tree_insert.description`:
+.. _`radix_tree_insert.description`:
 
 Description
 -----------
@@ -118,17 +120,21 @@ Insert an item into the radix tree at position \ ``index``\ .
 
     lookup an item in a radix tree
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param unsigned long index:
+    :param index:
         index key
+    :type index: unsigned long
 
-    :param struct radix_tree_node \*\*nodep:
+    :param nodep:
         returns node
+    :type nodep: struct radix_tree_node \*\*
 
-    :param void __rcu \*\*\*slotp:
+    :param slotp:
         returns slot
+    :type slotp: void __rcu \*\*\*
 
 .. _`__radix_tree_lookup.description`:
 
@@ -139,7 +145,7 @@ Lookup and return the item at position \ ``index``\  in the radix
 tree \ ``root``\ .
 
 Until there is more than one item in the tree, no nodes are
-allocated and \ ``root``\ ->rnode is used as a direct slot instead of
+allocated and \ ``root->xa_head``\  is used as a direct slot instead of
 pointing to a node, in which case \*@nodep will be NULL.
 
 .. _`radix_tree_lookup_slot`:
@@ -151,11 +157,13 @@ radix_tree_lookup_slot
 
     lookup a slot in a radix tree
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param unsigned long index:
+    :param index:
         index key
+    :type index: unsigned long
 
 .. _`radix_tree_lookup_slot.return`:
 
@@ -179,11 +187,13 @@ radix_tree_lookup
 
     perform lookup operation on a radix tree
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param unsigned long index:
+    :param index:
         index key
+    :type index: unsigned long
 
 .. _`radix_tree_lookup.description`:
 
@@ -202,24 +212,25 @@ returned item, however.
 \__radix_tree_replace
 =====================
 
-.. c:function:: void __radix_tree_replace(struct radix_tree_root *root, struct radix_tree_node *node, void __rcu **slot, void *item, radix_tree_update_node_t update_node)
+.. c:function:: void __radix_tree_replace(struct radix_tree_root *root, struct radix_tree_node *node, void __rcu **slot, void *item)
 
     replace item in a slot
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param struct radix_tree_node \*node:
+    :param node:
         pointer to tree node
+    :type node: struct radix_tree_node \*
 
-    :param void __rcu \*\*slot:
+    :param slot:
         pointer to slot in \ ``node``\ 
+    :type slot: void __rcu \*\*
 
-    :param void \*item:
+    :param item:
         new item to store in the slot.
-
-    :param radix_tree_update_node_t update_node:
-        callback for changing leaf nodes
+    :type item: void \*
 
 .. _`__radix_tree_replace.description`:
 
@@ -238,21 +249,24 @@ radix_tree_replace_slot
 
     replace item in a slot
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param void __rcu \*\*slot:
+    :param slot:
         pointer to slot
+    :type slot: void __rcu \*\*
 
-    :param void \*item:
+    :param item:
         new item to store in the slot.
+    :type item: void \*
 
 .. _`radix_tree_replace_slot.description`:
 
 Description
 -----------
 
-For use with \ :c:func:`radix_tree_lookup_slot`\ , \ :c:func:`radix_tree_gang_lookup_slot`\ ,
+For use with \ :c:func:`radix_tree_lookup_slot`\  and
 \ :c:func:`radix_tree_gang_lookup_tag_slot`\ .  Caller must hold tree write locked
 across slot lookup and replacement.
 
@@ -262,7 +276,7 @@ NOTE
 ----
 
 This cannot be used to switch between non-entries (empty slots),
-regular entries, and exceptional entries, as that requires accounting
+regular entries, and value entries, as that requires accounting
 inside the radix tree node. When switching from one type of entry or
 deleting, use \__radix_tree_lookup() and \__radix_tree_replace() or
 \ :c:func:`radix_tree_iter_replace`\ .
@@ -276,92 +290,29 @@ radix_tree_iter_replace
 
     replace item in a slot
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param const struct radix_tree_iter \*iter:
+    :param iter:
         *undescribed*
+    :type iter: const struct radix_tree_iter \*
 
-    :param void __rcu \*\*slot:
+    :param slot:
         pointer to slot
+    :type slot: void __rcu \*\*
 
-    :param void \*item:
+    :param item:
         new item to store in the slot.
+    :type item: void \*
 
 .. _`radix_tree_iter_replace.description`:
 
 Description
 -----------
 
-For use with \ :c:func:`radix_tree_split`\  and \ :c:func:`radix_tree_for_each_slot`\ .
-Caller must hold tree write locked across split and replacement.
-
-.. _`radix_tree_join`:
-
-radix_tree_join
-===============
-
-.. c:function:: int radix_tree_join(struct radix_tree_root *root, unsigned long index, unsigned order, void *item)
-
-    replace multiple entries with one multiorder entry
-
-    :param struct radix_tree_root \*root:
-        radix tree root
-
-    :param unsigned long index:
-        an index inside the new entry
-
-    :param unsigned order:
-        order of the new entry
-
-    :param void \*item:
-        new entry
-
-.. _`radix_tree_join.description`:
-
-Description
------------
-
-Call this function to replace several entries with one larger entry.
-The existing entries are presumed to not need freeing as a result of
-this call.
-
-The replacement entry will have all the tags set on it that were set
-on any of the entries it is replacing.
-
-.. _`radix_tree_split`:
-
-radix_tree_split
-================
-
-.. c:function:: int radix_tree_split(struct radix_tree_root *root, unsigned long index, unsigned order)
-
-    Split an entry into smaller entries
-
-    :param struct radix_tree_root \*root:
-        radix tree root
-
-    :param unsigned long index:
-        An index within the large entry
-
-    :param unsigned order:
-        Order of new entries
-
-.. _`radix_tree_split.description`:
-
-Description
------------
-
-Call this function as the first step in replacing a multiorder entry
-with several entries of lower order.  After this function returns,
-loop over the relevant portion of the tree using \ :c:func:`radix_tree_for_each_slot`\ 
-and call \ :c:func:`radix_tree_iter_replace`\  to set up each new entry.
-
-The tags from this entry are replicated to all the new entries.
-
-The radix tree should be locked against modification during the entire
-replacement operation.  Lock-free lookups will see RADIX_TREE_RETRY which
-should prompt RCU walkers to restart the lookup from the root.
+For use with \ :c:func:`radix_tree_for_each_slot`\ .
+Caller must hold tree write locked.
 
 .. _`radix_tree_tag_set`:
 
@@ -372,14 +323,17 @@ radix_tree_tag_set
 
     set a tag on a radix tree node
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param unsigned long index:
+    :param index:
         index key
+    :type index: unsigned long
 
-    :param unsigned int tag:
+    :param tag:
         tag index
+    :type tag: unsigned int
 
 .. _`radix_tree_tag_set.description`:
 
@@ -393,24 +347,6 @@ the root all the way down to the leaf node.
 Returns the address of the tagged item.  Setting a tag on a not-present
 item is a bug.
 
-.. _`radix_tree_iter_tag_set`:
-
-radix_tree_iter_tag_set
-=======================
-
-.. c:function:: void radix_tree_iter_tag_set(struct radix_tree_root *root, const struct radix_tree_iter *iter, unsigned int tag)
-
-    set a tag on the current iterator entry
-
-    :param struct radix_tree_root \*root:
-        radix tree root
-
-    :param const struct radix_tree_iter \*iter:
-        iterator state
-
-    :param unsigned int tag:
-        tag to set
-
 .. _`radix_tree_tag_clear`:
 
 radix_tree_tag_clear
@@ -420,14 +356,17 @@ radix_tree_tag_clear
 
     clear a tag on a radix tree node
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param unsigned long index:
+    :param index:
         index key
+    :type index: unsigned long
 
-    :param unsigned int tag:
+    :param tag:
         tag index
+    :type tag: unsigned int
 
 .. _`radix_tree_tag_clear.description`:
 
@@ -451,14 +390,17 @@ radix_tree_iter_tag_clear
 
     clear a tag on the current iterator entry
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param const struct radix_tree_iter \*iter:
+    :param iter:
         iterator state
+    :type iter: const struct radix_tree_iter \*
 
-    :param unsigned int tag:
+    :param tag:
         tag to clear
+    :type tag: unsigned int
 
 .. _`radix_tree_tag_get`:
 
@@ -469,14 +411,17 @@ radix_tree_tag_get
 
     get a tag on a radix tree node
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param unsigned long index:
+    :param index:
         index key
+    :type index: unsigned long
 
-    :param unsigned int tag:
+    :param tag:
         tag index (< RADIX_TREE_MAX_TAGS)
+    :type tag: unsigned int
 
 .. _`radix_tree_tag_get.return-values`:
 
@@ -500,14 +445,17 @@ radix_tree_next_chunk
 
     find next chunk of slots for iteration
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param struct radix_tree_iter \*iter:
+    :param iter:
         iterator state
+    :type iter: struct radix_tree_iter \*
 
-    :param unsigned flags:
+    :param flags:
         RADIX_TREE_ITER\_\* flags and tag index
+    :type flags: unsigned
 
 .. _`radix_tree_next_chunk.return`:
 
@@ -525,17 +473,21 @@ radix_tree_gang_lookup
 
     perform multiple lookup on a radix tree
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param void \*\*results:
+    :param results:
         where the results of the lookup are placed
+    :type results: void \*\*
 
-    :param unsigned long first_index:
+    :param first_index:
         start the lookup from this key
+    :type first_index: unsigned long
 
-    :param unsigned int max_items:
+    :param max_items:
         place up to this many items at \*results
+    :type max_items: unsigned int
 
 .. _`radix_tree_gang_lookup.description`:
 
@@ -555,45 +507,6 @@ semantics of an RCU protected gang lookup are as though multiple
 radix_tree_lookups have been issued in individual locks, and results
 stored in 'results'.
 
-.. _`radix_tree_gang_lookup_slot`:
-
-radix_tree_gang_lookup_slot
-===========================
-
-.. c:function:: unsigned int radix_tree_gang_lookup_slot(const struct radix_tree_root *root, void __rcu ***results, unsigned long *indices, unsigned long first_index, unsigned int max_items)
-
-    perform multiple slot lookup on radix tree
-
-    :param const struct radix_tree_root \*root:
-        radix tree root
-
-    :param void __rcu \*\*\*results:
-        where the results of the lookup are placed
-
-    :param unsigned long \*indices:
-        where their indices should be placed (but usually NULL)
-
-    :param unsigned long first_index:
-        start the lookup from this key
-
-    :param unsigned int max_items:
-        place up to this many items at \*results
-
-.. _`radix_tree_gang_lookup_slot.description`:
-
-Description
------------
-
-Performs an index-ascending scan of the tree for present items.  Places
-their slots at \*@results and returns the number of items which were
-placed at \*@results.
-
-The implementation is naive.
-
-Like radix_tree_gang_lookup as far as RCU and locking goes. Slots must
-be dereferenced with radix_tree_deref_slot, and if using only RCU
-protection, radix_tree_deref_slot may fail requiring a retry.
-
 .. _`radix_tree_gang_lookup_tag`:
 
 radix_tree_gang_lookup_tag
@@ -603,20 +516,25 @@ radix_tree_gang_lookup_tag
 
     perform multiple lookup on a radix tree based on a tag
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param void \*\*results:
+    :param results:
         where the results of the lookup are placed
+    :type results: void \*\*
 
-    :param unsigned long first_index:
+    :param first_index:
         start the lookup from this key
+    :type first_index: unsigned long
 
-    :param unsigned int max_items:
+    :param max_items:
         place up to this many items at \*results
+    :type max_items: unsigned int
 
-    :param unsigned int tag:
+    :param tag:
         the tag index (< RADIX_TREE_MAX_TAGS)
+    :type tag: unsigned int
 
 .. _`radix_tree_gang_lookup_tag.description`:
 
@@ -636,20 +554,25 @@ radix_tree_gang_lookup_tag_slot
 
     perform multiple slot lookup on a radix tree based on a tag
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param void __rcu \*\*\*results:
+    :param results:
         where the results of the lookup are placed
+    :type results: void __rcu \*\*\*
 
-    :param unsigned long first_index:
+    :param first_index:
         start the lookup from this key
+    :type first_index: unsigned long
 
-    :param unsigned int max_items:
+    :param max_items:
         place up to this many items at \*results
+    :type max_items: unsigned int
 
-    :param unsigned int tag:
+    :param tag:
         the tag index (< RADIX_TREE_MAX_TAGS)
+    :type tag: unsigned int
 
 .. _`radix_tree_gang_lookup_tag_slot.description`:
 
@@ -660,33 +583,6 @@ Performs an index-ascending scan of the tree for present items which
 have the tag indexed by \ ``tag``\  set.  Places the slots at \*@results and
 returns the number of slots which were placed at \*@results.
 
-.. _`__radix_tree_delete_node`:
-
-\__radix_tree_delete_node
-=========================
-
-.. c:function:: void __radix_tree_delete_node(struct radix_tree_root *root, struct radix_tree_node *node, radix_tree_update_node_t update_node)
-
-    try to free node after clearing a slot
-
-    :param struct radix_tree_root \*root:
-        radix tree root
-
-    :param struct radix_tree_node \*node:
-        node containing \ ``index``\ 
-
-    :param radix_tree_update_node_t update_node:
-        callback for changing leaf nodes
-
-.. _`__radix_tree_delete_node.description`:
-
-Description
------------
-
-After clearing the slot at \ ``index``\  in \ ``node``\  from radix tree
-rooted at \ ``root``\ , call this function to attempt freeing the
-node and shrinking the tree.
-
 .. _`radix_tree_iter_delete`:
 
 radix_tree_iter_delete
@@ -696,14 +592,17 @@ radix_tree_iter_delete
 
     delete the entry at this iterator position
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param struct radix_tree_iter \*iter:
+    :param iter:
         iterator state
+    :type iter: struct radix_tree_iter \*
 
-    :param void __rcu \*\*slot:
+    :param slot:
         pointer to slot
+    :type slot: void __rcu \*\*
 
 .. _`radix_tree_iter_delete.description`:
 
@@ -725,14 +624,17 @@ radix_tree_delete_item
 
     delete an item from a radix tree
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param unsigned long index:
+    :param index:
         index key
+    :type index: unsigned long
 
-    :param void \*item:
+    :param item:
         expected item
+    :type item: void \*
 
 .. _`radix_tree_delete_item.description`:
 
@@ -758,11 +660,13 @@ radix_tree_delete
 
     delete an entry from a radix tree
 
-    :param struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: struct radix_tree_root \*
 
-    :param unsigned long index:
+    :param index:
         index key
+    :type index: unsigned long
 
 .. _`radix_tree_delete.description`:
 
@@ -787,11 +691,13 @@ radix_tree_tagged
 
     test whether any items in the tree are tagged
 
-    :param const struct radix_tree_root \*root:
+    :param root:
         radix tree root
+    :type root: const struct radix_tree_root \*
 
-    :param unsigned int tag:
+    :param tag:
         tag to test
+    :type tag: unsigned int
 
 .. _`idr_preload`:
 
@@ -802,8 +708,9 @@ idr_preload
 
     preload for \ :c:func:`idr_alloc`\ 
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation mask to use for preloading
+    :type gfp_mask: gfp_t
 
 .. _`idr_preload.description`:
 
@@ -812,29 +719,6 @@ Description
 
 Preallocate memory to use for the next call to \ :c:func:`idr_alloc`\ .  This function
 returns with preemption disabled.  It will be enabled by \ :c:func:`idr_preload_end`\ .
-
-.. _`ida_pre_get`:
-
-ida_pre_get
-===========
-
-.. c:function:: int ida_pre_get(struct ida *ida, gfp_t gfp)
-
-    reserve resources for ida allocation
-
-    :param struct ida \*ida:
-        ida handle
-
-    :param gfp_t gfp:
-        memory allocation flags
-
-.. _`ida_pre_get.description`:
-
-Description
------------
-
-This function should be called before calling \ :c:func:`ida_get_new_above`\ .  If it
-is unable to allocate memory, it will return \ ``0``\ .  On success, it returns \ ``1``\ .
 
 .. _`idr_destroy`:
 
@@ -845,8 +729,9 @@ idr_destroy
 
     release all internal memory from an IDR
 
-    :param struct idr \*idr:
+    :param idr:
         idr handle
+    :type idr: struct idr \*
 
 .. _`idr_destroy.description`:
 

@@ -10,11 +10,13 @@ vxge_hw_device_hw_info_get
 
     Get the hw information Returns the vpath mask that has the bits set for each vpath allocated for the driver, FW version information, and the first mac address for each vpath
 
-    :param void __iomem \*bar0:
+    :param bar0:
         *undescribed*
+    :type bar0: void __iomem \*
 
-    :param struct vxge_hw_device_hw_info \*hw_info:
+    :param hw_info:
         *undescribed*
+    :type hw_info: struct vxge_hw_device_hw_info \*
 
 .. _`vxge_hw_device_flick_link_led`:
 
@@ -25,11 +27,13 @@ vxge_hw_device_flick_link_led
 
     Flick (blink) link LED.
 
-    :param struct __vxge_hw_device \*hldev:
+    :param hldev:
         HW device.
+    :type hldev: struct __vxge_hw_device \*
 
-    :param u64 on_off:
+    :param on_off:
         TRUE if flickering to be on, FALSE to be off
+    :type on_off: u64
 
 .. _`vxge_hw_device_flick_link_led.description`:
 
@@ -47,8 +51,9 @@ vxge_hw_vpath_check_leak
 
     Check for memory leak
 
-    :param struct __vxge_hw_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct __vxge_hw_ring \*
 
 .. _`vxge_hw_vpath_check_leak.description`:
 
@@ -74,8 +79,9 @@ vxge_hw_vpath_rx_doorbell_init
 
     Close the handle got from previous vpath (vpath) open
 
-    :param struct __vxge_hw_vpath_handle \*vp:
+    :param vp:
         Handle got from previous vpath open
+    :type vp: struct __vxge_hw_vpath_handle \*
 
 .. _`vxge_hw_vpath_rx_doorbell_init.description`:
 

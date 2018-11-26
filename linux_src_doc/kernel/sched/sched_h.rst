@@ -10,13 +10,15 @@ highest_flag_domain
 
     Return highest sched_domain containing flag.
 
-    :param int cpu:
+    :param cpu:
         The CPU whose highest level of sched domain is to
         be returned.
+    :type cpu: int
 
-    :param int flag:
+    :param flag:
         The flag to check for the highest sched_domain
         for the given CPU.
+    :type flag: int
 
 .. _`highest_flag_domain.description`:
 
@@ -34,8 +36,9 @@ group_first_cpu
 
     Returns the first CPU in the cpumask of a sched_group.
 
-    :param struct sched_group \*group:
+    :param group:
         The group whose first CPU is to be returned.
+    :type group: struct sched_group \*
 
 .. _`cpufreq_update_util`:
 
@@ -46,11 +49,13 @@ cpufreq_update_util
 
     Take a note about CPU utilization changes.
 
-    :param struct rq \*rq:
+    :param rq:
         Runqueue to carry out the update for.
+    :type rq: struct rq \*
 
-    :param unsigned int flags:
+    :param flags:
         Update reason flags.
+    :type flags: unsigned int
 
 .. _`cpufreq_update_util.description`:
 

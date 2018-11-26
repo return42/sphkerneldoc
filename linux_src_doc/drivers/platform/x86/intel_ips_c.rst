@@ -10,8 +10,9 @@ ips_cpu_busy
 
     is CPU busy?
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`ips_cpu_busy.description`:
 
@@ -36,8 +37,9 @@ ips_cpu_raise
 
     raise CPU power clamp
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`ips_cpu_raise.description`:
 
@@ -59,8 +61,9 @@ ips_cpu_lower
 
     lower CPU power clamp
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`ips_cpu_lower.description`:
 
@@ -82,8 +85,9 @@ do_enable_cpu_turbo
 
     internal turbo enable function
 
-    :param void \*data:
+    :param data:
         unused
+    :type data: void \*
 
 .. _`do_enable_cpu_turbo.description`:
 
@@ -103,8 +107,9 @@ ips_enable_cpu_turbo
 
     enable turbo mode on all CPUs
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`ips_enable_cpu_turbo.description`:
 
@@ -123,8 +128,9 @@ do_disable_cpu_turbo
 
     internal turbo disable function
 
-    :param void \*data:
+    :param data:
         unused
+    :type data: void \*
 
 .. _`do_disable_cpu_turbo.description`:
 
@@ -144,8 +150,9 @@ ips_disable_cpu_turbo
 
     disable turbo mode on all CPUs
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`ips_disable_cpu_turbo.description`:
 
@@ -164,8 +171,9 @@ ips_gpu_busy
 
     is GPU busy?
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`ips_gpu_busy.description`:
 
@@ -191,8 +199,9 @@ ips_gpu_raise
 
     raise GPU power clamp
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`ips_gpu_raise.description`:
 
@@ -211,8 +220,9 @@ ips_gpu_lower
 
     lower GPU power clamp
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`ips_gpu_lower.description`:
 
@@ -230,8 +240,9 @@ ips_enable_gpu_turbo
 
     notify the gfx driver turbo is available
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`ips_enable_gpu_turbo.description`:
 
@@ -250,8 +261,9 @@ ips_disable_gpu_turbo
 
     notify the gfx driver to disable turbo mode
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`ips_disable_gpu_turbo.description`:
 
@@ -269,8 +281,9 @@ mcp_exceeded
 
     check whether we're outside our thermal & power limits
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`mcp_exceeded.description`:
 
@@ -288,11 +301,13 @@ cpu_exceeded
 
     check whether a CPU core is outside its limits
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
-    :param int cpu:
+    :param cpu:
         CPU number to check
+    :type cpu: int
 
 .. _`cpu_exceeded.description`:
 
@@ -310,8 +325,9 @@ mch_exceeded
 
     check whether the GPU is over budget
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`mch_exceeded.description`:
 
@@ -329,8 +345,9 @@ verify_limits
 
     verify BIOS provided limits
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS structure
+    :type ips: struct ips_driver \*
 
 .. _`verify_limits.description`:
 
@@ -350,8 +367,9 @@ update_turbo_limits
 
     get various limits & settings from regs
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver struct
+    :type ips: struct ips_driver \*
 
 .. _`update_turbo_limits.description`:
 
@@ -380,8 +398,9 @@ ips_adjust
 
     adjust power clamp based on thermal state
 
-    :param void \*data:
+    :param data:
         ips driver structure
+    :type data: void \*
 
 .. _`ips_adjust.description`:
 
@@ -422,8 +441,9 @@ ips_monitor
 
     temp/power monitoring thread
 
-    :param void \*data:
+    :param data:
         ips driver structure
+    :type data: void \*
 
 .. _`ips_monitor.description`:
 
@@ -446,11 +466,13 @@ ips_irq_handler
 
     handle temperature triggers and other IPS events
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         unused
+    :type arg: void \*
 
 .. _`ips_irq_handler.description`:
 
@@ -470,8 +492,9 @@ ips_detect_cpu
 
     detect whether CPU supports IPS
 
-    :param struct ips_driver \*ips:
+    :param ips:
         *undescribed*
+    :type ips: struct ips_driver \*
 
 .. _`ips_detect_cpu.description`:
 
@@ -490,8 +513,9 @@ ips_get_i915_syms
 
     try to get GPU control methods from i915 driver
 
-    :param struct ips_driver \*ips:
+    :param ips:
         IPS driver
+    :type ips: struct ips_driver \*
 
 .. _`ips_get_i915_syms.description`:
 

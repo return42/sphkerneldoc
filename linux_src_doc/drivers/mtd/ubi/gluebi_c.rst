@@ -58,11 +58,13 @@ find_gluebi_nolock
 
     find a gluebi device.
 
-    :param int ubi_num:
+    :param ubi_num:
         UBI device number
+    :type ubi_num: int
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
 .. _`find_gluebi_nolock.description`:
 
@@ -83,8 +85,9 @@ gluebi_get_device
 
     get MTD device reference.
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         the MTD device description object
+    :type mtd: struct mtd_info \*
 
 .. _`gluebi_get_device.description`:
 
@@ -104,8 +107,9 @@ gluebi_put_device
 
     put MTD device reference.
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         the MTD device description object
+    :type mtd: struct mtd_info \*
 
 .. _`gluebi_put_device.description`:
 
@@ -124,20 +128,25 @@ gluebi_read
 
     read operation of emulated MTD devices.
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device description object
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         absolute offset from where to read
+    :type from: loff_t
 
-    :param size_t len:
+    :param len:
         how many bytes to read
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         count of read bytes is returned here
+    :type retlen: size_t \*
 
-    :param unsigned char \*buf:
+    :param buf:
         buffer to store the read data
+    :type buf: unsigned char \*
 
 .. _`gluebi_read.description`:
 
@@ -156,20 +165,25 @@ gluebi_write
 
     write operation of emulated MTD devices.
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device description object
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         absolute offset where to write
+    :type to: loff_t
 
-    :param size_t len:
+    :param len:
         how many bytes to write
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         count of written bytes is returned here
+    :type retlen: size_t \*
 
-    :param const u_char \*buf:
+    :param buf:
         buffer with data to write
+    :type buf: const u_char \*
 
 .. _`gluebi_write.description`:
 
@@ -188,11 +202,13 @@ gluebi_erase
 
     erase operation of emulated MTD devices.
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         the MTD device description object
+    :type mtd: struct mtd_info \*
 
-    :param struct erase_info \*instr:
+    :param instr:
         the erase operation description
+    :type instr: struct erase_info \*
 
 .. _`gluebi_erase.description`:
 
@@ -211,11 +227,13 @@ gluebi_create
 
     create a gluebi device for an UBI volume.
 
-    :param struct ubi_device_info \*di:
+    :param di:
         UBI device description object
+    :type di: struct ubi_device_info \*
 
-    :param struct ubi_volume_info \*vi:
+    :param vi:
         UBI volume description object
+    :type vi: struct ubi_volume_info \*
 
 .. _`gluebi_create.description`:
 
@@ -235,8 +253,9 @@ gluebi_remove
 
     remove a gluebi device.
 
-    :param struct ubi_volume_info \*vi:
+    :param vi:
         UBI volume description object
+    :type vi: struct ubi_volume_info \*
 
 .. _`gluebi_remove.description`:
 
@@ -256,8 +275,9 @@ gluebi_updated
 
     UBI volume was updated notifier.
 
-    :param struct ubi_volume_info \*vi:
+    :param vi:
         volume info structure
+    :type vi: struct ubi_volume_info \*
 
 .. _`gluebi_updated.description`:
 
@@ -279,8 +299,9 @@ gluebi_resized
 
     UBI volume was re-sized notifier.
 
-    :param struct ubi_volume_info \*vi:
+    :param vi:
         volume info structure
+    :type vi: struct ubi_volume_info \*
 
 .. _`gluebi_resized.description`:
 
@@ -300,14 +321,17 @@ gluebi_notify
 
     UBI notification handler.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         registered notifier block
+    :type nb: struct notifier_block \*
 
-    :param unsigned long l:
+    :param l:
         notification type
+    :type l: unsigned long
 
-    :param void \*ns_ptr:
+    :param ns_ptr:
         *undescribed*
+    :type ns_ptr: void \*
 
 .. This file was automatic generated / don't edit.
 

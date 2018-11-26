@@ -10,11 +10,13 @@ si_dma_is_lockup
 
     Check if the DMA engine is locked up
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`si_dma_is_lockup.description`:
 
@@ -33,20 +35,25 @@ si_dma_vm_copy_pages
 
     update PTEs by copying them from the GART
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t src:
+    :param src:
         src addr where to copy from
+    :type src: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
 .. _`si_dma_vm_copy_pages.description`:
 
@@ -64,26 +71,33 @@ si_dma_vm_write_pages
 
     update PTEs by writing them manually
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t addr:
+    :param addr:
         dst addr to write into pe
+    :type addr: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
-    :param uint32_t incr:
+    :param incr:
         increase next addr by incr bytes
+    :type incr: uint32_t
 
-    :param uint32_t flags:
+    :param flags:
         access flags
+    :type flags: uint32_t
 
 .. _`si_dma_vm_write_pages.description`:
 
@@ -101,26 +115,33 @@ si_dma_vm_set_pages
 
     update the page tables using the DMA
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t addr:
+    :param addr:
         dst addr to write into pe
+    :type addr: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
-    :param uint32_t incr:
+    :param incr:
         increase next addr by incr bytes
+    :type incr: uint32_t
 
-    :param uint32_t flags:
+    :param flags:
         access flags
+    :type flags: uint32_t
 
 .. _`si_dma_vm_set_pages.description`:
 
@@ -138,20 +159,25 @@ si_copy_dma
 
     copy pages using the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint64_t src_offset:
+    :param src_offset:
         src GPU address
+    :type src_offset: uint64_t
 
-    :param uint64_t dst_offset:
+    :param dst_offset:
         dst GPU address
+    :type dst_offset: uint64_t
 
-    :param unsigned num_gpu_pages:
+    :param num_gpu_pages:
         number of GPU pages to xfer
+    :type num_gpu_pages: unsigned
 
-    :param struct reservation_object \*resv:
+    :param resv:
         reservation object to sync to
+    :type resv: struct reservation_object \*
 
 .. _`si_copy_dma.description`:
 

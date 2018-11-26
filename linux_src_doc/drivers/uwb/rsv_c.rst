@@ -10,8 +10,9 @@ uwb_rsv_state_str
 
     return a string for a reservation state
 
-    :param enum uwb_rsv_state state:
+    :param state:
         the reservation state.
+    :type state: enum uwb_rsv_state
 
 .. _`uwb_rsv_type_str`:
 
@@ -22,8 +23,9 @@ uwb_rsv_type_str
 
     return a string for a reservation type
 
-    :param enum uwb_drp_type type:
+    :param type:
         the reservation type
+    :type type: enum uwb_drp_type
 
 .. _`uwb_rsv_create`:
 
@@ -34,14 +36,17 @@ uwb_rsv_create
 
     allocate and initialize a UWB reservation structure
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller
+    :type rc: struct uwb_rc \*
 
-    :param uwb_rsv_cb_f cb:
+    :param cb:
         callback to use when the reservation completes or terminates
+    :type cb: uwb_rsv_cb_f
 
-    :param void \*pal_priv:
+    :param pal_priv:
         data private to the PAL to be passed in the callback
+    :type pal_priv: void \*
 
 .. _`uwb_rsv_create.the-callback-is-called-when-the-state-of-the-reservation-changes-from`:
 
@@ -63,8 +68,9 @@ uwb_rsv_destroy
 
     free a UWB reservation structure
 
-    :param struct uwb_rsv \*rsv:
+    :param rsv:
         the reservation to free
+    :type rsv: struct uwb_rsv \*
 
 .. _`uwb_rsv_destroy.description`:
 
@@ -82,8 +88,9 @@ uwb_rsv_establish
 
     start a reservation establishment
 
-    :param struct uwb_rsv \*rsv:
+    :param rsv:
         the reservation
+    :type rsv: struct uwb_rsv \*
 
 .. _`uwb_rsv_establish.description`:
 
@@ -106,17 +113,21 @@ uwb_rsv_modify
 
     modify an already established reservation
 
-    :param struct uwb_rsv \*rsv:
+    :param rsv:
         the reservation to modify
+    :type rsv: struct uwb_rsv \*
 
-    :param int max_mas:
+    :param max_mas:
         new maximum MAS to reserve
+    :type max_mas: int
 
-    :param int min_mas:
+    :param min_mas:
         new minimum MAS to reserve
+    :type min_mas: int
 
-    :param int max_interval:
+    :param max_interval:
         new max_interval to use
+    :type max_interval: int
 
 .. _`uwb_rsv_modify.fixme`:
 
@@ -134,8 +145,9 @@ uwb_rsv_terminate
 
     terminate an established reservation
 
-    :param struct uwb_rsv \*rsv:
+    :param rsv:
         the reservation to terminate
+    :type rsv: struct uwb_rsv \*
 
 .. _`uwb_rsv_terminate.description`:
 
@@ -157,14 +169,17 @@ uwb_rsv_accept
 
     accept a new reservation from a peer
 
-    :param struct uwb_rsv \*rsv:
+    :param rsv:
         the reservation
+    :type rsv: struct uwb_rsv \*
 
-    :param uwb_rsv_cb_f cb:
+    :param cb:
         call back for reservation changes
+    :type cb: uwb_rsv_cb_f
 
-    :param void \*pal_priv:
+    :param pal_priv:
         data to be passed in the above call back
+    :type pal_priv: void \*
 
 .. _`uwb_rsv_accept.description`:
 
@@ -186,11 +201,13 @@ uwb_rsv_get_usable_mas
 
     get the bitmap of the usable MAS of a reservations
 
-    :param struct uwb_rsv \*rsv:
+    :param rsv:
         the reservation.
+    :type rsv: struct uwb_rsv \*
 
-    :param struct uwb_mas_bm \*mas:
+    :param mas:
         returns the available MAS.
+    :type mas: struct uwb_mas_bm \*
 
 .. _`uwb_rsv_get_usable_mas.description`:
 
@@ -209,14 +226,17 @@ uwb_rsv_find
 
     find a reservation for a received DRP IE.
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_dev \*src:
+    :param src:
         source of the DRP IE
+    :type src: struct uwb_dev \*
 
-    :param struct uwb_ie_drp \*drp_ie:
+    :param drp_ie:
         the DRP IE
+    :type drp_ie: struct uwb_ie_drp \*
 
 .. _`uwb_rsv_find.description`:
 
@@ -236,8 +256,9 @@ uwb_rsv_sched_update
 
     schedule an update of the DRP IEs
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller.
+    :type rc: struct uwb_rc \*
 
 .. _`uwb_rsv_sched_update.description`:
 
@@ -281,8 +302,9 @@ uwb_rsv_remove_all
 
     remove all reservations
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller
+    :type rc: struct uwb_rc \*
 
 .. _`uwb_rsv_remove_all.description`:
 

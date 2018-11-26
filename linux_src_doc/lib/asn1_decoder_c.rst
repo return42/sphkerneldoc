@@ -10,17 +10,21 @@ asn1_ber_decoder
 
     Decoder BER/DER/CER ASN.1 according to pattern
 
-    :param const struct asn1_decoder \*decoder:
+    :param decoder:
         The decoder definition (produced by asn1_compiler)
+    :type decoder: const struct asn1_decoder \*
 
-    :param void \*context:
+    :param context:
         The caller's context (to be passed to the action functions)
+    :type context: void \*
 
-    :param const unsigned char \*data:
+    :param data:
         The encoded data
+    :type data: const unsigned char \*
 
-    :param size_t datalen:
+    :param datalen:
         The size of the encoded data
+    :type datalen: size_t
 
 .. _`asn1_ber_decoder.description`:
 

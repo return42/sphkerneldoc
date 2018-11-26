@@ -10,23 +10,29 @@ lc_create
 
     prepares to track objects in an active set
 
-    :param const char \*name:
+    :param name:
         descriptive name only used in lc_seq_printf_stats and lc_seq_dump_details
+    :type name: const char \*
 
-    :param struct kmem_cache \*cache:
+    :param cache:
         *undescribed*
+    :type cache: struct kmem_cache \*
 
-    :param unsigned max_pending_changes:
+    :param max_pending_changes:
         maximum changes to accumulate until a transaction is required
+    :type max_pending_changes: unsigned
 
-    :param unsigned e_count:
+    :param e_count:
         number of elements allowed to be active simultaneously
+    :type e_count: unsigned
 
-    :param size_t e_size:
+    :param e_size:
         size of the tracked objects
+    :type e_size: size_t
 
-    :param size_t e_off:
+    :param e_off:
         offset to the \ :c:type:`struct lc_element <lc_element>`\  member in a tracked object
+    :type e_off: size_t
 
 .. _`lc_create.description`:
 
@@ -45,8 +51,9 @@ lc_destroy
 
     frees memory allocated by \ :c:func:`lc_create`\ 
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to destroy
+    :type lc: struct lru_cache \*
 
 .. _`lc_reset`:
 
@@ -57,8 +64,9 @@ lc_reset
 
     does a full reset for \ ``lc``\  and the hash table slots.
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
 .. _`lc_reset.description`:
 
@@ -77,11 +85,13 @@ lc_seq_printf_stats
 
     print stats about \ ``lc``\  into \ ``seq``\ 
 
-    :param struct seq_file \*seq:
+    :param seq:
         the seq_file to print into
+    :type seq: struct seq_file \*
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to print statistics of
+    :type lc: struct lru_cache \*
 
 .. _`lc_find`:
 
@@ -92,11 +102,13 @@ lc_find
 
     find element by label, if present in the hash table
 
-    :param struct lru_cache \*lc:
+    :param lc:
         The lru_cache object
+    :type lc: struct lru_cache \*
 
-    :param unsigned int enr:
+    :param enr:
         element number
+    :type enr: unsigned int
 
 .. _`lc_find.description`:
 
@@ -118,11 +130,13 @@ lc_is_used
 
     find element by label
 
-    :param struct lru_cache \*lc:
+    :param lc:
         The lru_cache object
+    :type lc: struct lru_cache \*
 
-    :param unsigned int enr:
+    :param enr:
         element number
+    :type enr: unsigned int
 
 .. _`lc_is_used.description`:
 
@@ -143,11 +157,13 @@ lc_del
 
     removes an element from the cache
 
-    :param struct lru_cache \*lc:
+    :param lc:
         The lru_cache object
+    :type lc: struct lru_cache \*
 
-    :param struct lc_element \*e:
+    :param e:
         The element to remove
+    :type e: struct lc_element \*
 
 .. _`lc_del.description`:
 
@@ -155,7 +171,7 @@ Description
 -----------
 
 \ ``e``\  must be unused (refcnt == 0). Moves \ ``e``\  from "lru" to "free" list,
-sets \ ``e``\ ->enr to \ ``LC_FREE``\ .
+sets \ ``e->enr``\  to \ ``LC_FREE``\ .
 
 .. _`lc_get`:
 
@@ -166,11 +182,13 @@ lc_get
 
     get element by label, maybe change the active set
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
-    :param unsigned int enr:
+    :param enr:
         the label to look up
+    :type enr: unsigned int
 
 .. _`lc_get.description`:
 
@@ -230,11 +248,13 @@ lc_get_cumulative
 
     like lc_get; also finds to-be-changed elements
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
-    :param unsigned int enr:
+    :param enr:
         the label to look up
+    :type enr: unsigned int
 
 .. _`lc_get_cumulative.description`:
 
@@ -265,11 +285,13 @@ lc_try_get
 
     get element by label, if present; do not change the active set
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
-    :param unsigned int enr:
+    :param enr:
         the label to look up
+    :type enr: unsigned int
 
 .. _`lc_try_get.description`:
 
@@ -300,8 +322,9 @@ lc_committed
 
     tell \ ``lc``\  that pending changes have been recorded
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
 .. _`lc_committed.description`:
 
@@ -321,11 +344,13 @@ lc_put
 
     give up refcnt of \ ``e``\ 
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
-    :param struct lc_element \*e:
+    :param e:
         the element to put
+    :type e: struct lc_element \*
 
 .. _`lc_put.description`:
 
@@ -343,11 +368,13 @@ lc_element_by_index
 
 .. c:function:: struct lc_element *lc_element_by_index(struct lru_cache *lc, unsigned i)
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
-    :param unsigned i:
+    :param i:
         the index of the element to return
+    :type i: unsigned
 
 .. _`lc_index_of`:
 
@@ -356,11 +383,13 @@ lc_index_of
 
 .. c:function:: unsigned int lc_index_of(struct lru_cache *lc, struct lc_element *e)
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
-    :param struct lc_element \*e:
+    :param e:
         the element to query for its index position in lc->element
+    :type e: struct lc_element \*
 
 .. _`lc_set`:
 
@@ -371,14 +400,17 @@ lc_set
 
     associate index with label
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
-    :param unsigned int enr:
+    :param enr:
         the label to set
+    :type enr: unsigned int
 
-    :param int index:
+    :param index:
         the element index to associate label with.
+    :type index: int
 
 .. _`lc_set.description`:
 
@@ -396,14 +428,17 @@ lc_seq_dump_details
 
     Dump a complete LRU cache to seq in textual form.
 
-    :param struct seq_file \*seq:
+    :param seq:
         the \ :c:type:`struct seq_file <seq_file>`\  pointer to seq_printf into
+    :type seq: struct seq_file \*
 
-    :param struct lru_cache \*lc:
+    :param lc:
         the lru cache to operate on
+    :type lc: struct lru_cache \*
 
-    :param char \*utext:
+    :param utext:
         user supplied additional "heading" or other info
+    :type utext: char \*
 
     :param void (\*detail)(struct seq_file \*, struct lc_element \*):
         function pointer the user may provide to dump further details

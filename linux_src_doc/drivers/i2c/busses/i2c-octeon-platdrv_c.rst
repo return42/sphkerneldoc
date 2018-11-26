@@ -10,8 +10,9 @@ octeon_i2c_int_enable
 
     enable the CORE interrupt
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
 .. _`octeon_i2c_int_enable.description`:
 
@@ -30,8 +31,9 @@ octeon_i2c_int_enable78
 
     enable the CORE interrupt
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
 .. _`octeon_i2c_int_enable78.description`:
 
@@ -50,8 +52,9 @@ octeon_i2c_hlc_int_enable78
 
     enable the ST interrupt
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
 .. _`octeon_i2c_hlc_int_enable78.description`:
 

@@ -10,11 +10,13 @@ regs_get_kernel_stack_nth
 
     get Nth entry of the stack
 
-    :param struct pt_regs \*regs:
+    :param regs:
         pt_regs which contains kernel stack pointer.
+    :type regs: struct pt_regs \*
 
-    :param unsigned int n:
+    :param n:
         stack entry number.
+    :type n: unsigned int
 
 .. _`regs_get_kernel_stack_nth.description`:
 

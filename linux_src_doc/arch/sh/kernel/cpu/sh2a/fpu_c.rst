@@ -10,11 +10,13 @@ denormal_to_double
 
     Given denormalized float number, store double float
 
-    :param struct sh_fpu_hard_struct \*fpu:
+    :param fpu:
         Pointer to sh_fpu_hard structure
+    :type fpu: struct sh_fpu_hard_struct \*
 
-    :param int n:
+    :param n:
         Index to FP register
+    :type n: int
 
 .. _`ieee_fpe_handler`:
 
@@ -25,8 +27,9 @@ ieee_fpe_handler
 
     Handle denormalized number exception
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Pointer to register structure
+    :type regs: struct pt_regs \*
 
 .. _`ieee_fpe_handler.description`:
 

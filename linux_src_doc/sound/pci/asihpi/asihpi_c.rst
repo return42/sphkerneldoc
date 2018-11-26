@@ -10,8 +10,9 @@ snd_printddd
 
     very verbose debug printk
 
-    :param  format:
+    :param format:
         format string
+    :type format: 
 
 .. _`snd_printddd.description`:
 

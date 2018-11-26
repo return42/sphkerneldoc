@@ -8,11 +8,13 @@ bfa_nw_ioc_fwver_cmp
 
 .. c:function:: bool bfa_nw_ioc_fwver_cmp(struct bfa_ioc *ioc, struct bfi_ioc_image_hdr *fwhdr)
 
-    :param struct bfa_ioc \*ioc:
+    :param ioc:
         *undescribed*
+    :type ioc: struct bfa_ioc \*
 
-    :param struct bfi_ioc_image_hdr \*fwhdr:
+    :param fwhdr:
         *undescribed*
+    :type fwhdr: struct bfi_ioc_image_hdr \*
 
 .. _`bfa_nw_ioc_smem_read`:
 
@@ -23,17 +25,21 @@ bfa_nw_ioc_smem_read
 
     Read data from SMEM to host through PCI memmap
 
-    :param struct bfa_ioc \*ioc:
+    :param ioc:
         memory for IOC
+    :type ioc: struct bfa_ioc \*
 
-    :param void \*tbuf:
+    :param tbuf:
         app memory to store data from smem
+    :type tbuf: void \*
 
-    :param u32 soff:
+    :param soff:
         smem offset
+    :type soff: u32
 
-    :param u32 sz:
+    :param sz:
         size of smem in bytes
+    :type sz: u32
 
 .. _`bfa_nw_ioc_attach`:
 
@@ -44,14 +50,17 @@ bfa_nw_ioc_attach
 
     IOC attach time initialization and setup.
 
-    :param struct bfa_ioc \*ioc:
+    :param ioc:
         memory for IOC
+    :type ioc: struct bfa_ioc \*
 
-    :param void \*bfa:
+    :param bfa:
         driver instance structure
+    :type bfa: void \*
 
-    :param struct bfa_ioc_cbfn \*cbfn:
+    :param cbfn:
         *undescribed*
+    :type cbfn: struct bfa_ioc_cbfn \*
 
 .. _`bfa_nw_ioc_pci_init`:
 
@@ -62,14 +71,17 @@ bfa_nw_ioc_pci_init
 
     Setup IOC PCI properties.
 
-    :param struct bfa_ioc \*ioc:
+    :param ioc:
         *undescribed*
+    :type ioc: struct bfa_ioc \*
 
-    :param struct bfa_pcidev \*pcidev:
+    :param pcidev:
         PCI device information for this IOC
+    :type pcidev: struct bfa_pcidev \*
 
-    :param enum bfi_pcifn_class clscode:
+    :param clscode:
         *undescribed*
+    :type clscode: enum bfi_pcifn_class
 
 .. _`bfa_nw_ioc_mem_claim`:
 
@@ -80,14 +92,17 @@ bfa_nw_ioc_mem_claim
 
     Initialize IOC dma memory
 
-    :param struct bfa_ioc \*ioc:
+    :param ioc:
         *undescribed*
+    :type ioc: struct bfa_ioc \*
 
-    :param u8 \*dm_kva:
+    :param dm_kva:
         kernel virtual address of IOC dma memory
+    :type dm_kva: u8 \*
 
-    :param u64 dm_pa:
+    :param dm_pa:
         physical address of IOC dma memory
+    :type dm_pa: u64
 
 .. _`bfa_nw_ioc_mbox_queue`:
 
@@ -98,17 +113,21 @@ bfa_nw_ioc_mbox_queue
 
     Queue a mailbox command request to firmware.
 
-    :param struct bfa_ioc \*ioc:
+    :param ioc:
         IOC instance
+    :type ioc: struct bfa_ioc \*
 
-    :param struct bfa_mbox_cmd \*cmd:
+    :param cmd:
         Mailbox command
+    :type cmd: struct bfa_mbox_cmd \*
 
-    :param bfa_mbox_cmd_cbfn_t cbfn:
+    :param cbfn:
         *undescribed*
+    :type cbfn: bfa_mbox_cmd_cbfn_t
 
-    :param void \*cbarg:
+    :param cbarg:
         *undescribed*
+    :type cbarg: void \*
 
 .. _`bfa_nw_ioc_mbox_queue.description`:
 
@@ -126,8 +145,9 @@ bfa_flash_read_send
 
     Send flash read request.
 
-    :param void \*cbarg:
+    :param cbarg:
         callback argument
+    :type cbarg: void \*
 
 .. _`bfa_flash_intr`:
 
@@ -138,11 +158,13 @@ bfa_flash_intr
 
     Process flash response messages upon receiving interrupts.
 
-    :param void \*flasharg:
+    :param flasharg:
         flash structure
+    :type flasharg: void \*
 
-    :param struct bfi_mbmsg \*msg:
+    :param msg:
         message structure
+    :type msg: struct bfi_mbmsg \*
 
 .. _`bfa_nw_flash_attach`:
 
@@ -153,14 +175,17 @@ bfa_nw_flash_attach
 
     Flash attach API.
 
-    :param struct bfa_flash \*flash:
+    :param flash:
         flash structure
+    :type flash: struct bfa_flash \*
 
-    :param struct bfa_ioc \*ioc:
+    :param ioc:
         ioc structure
+    :type ioc: struct bfa_ioc \*
 
-    :param void \*dev:
+    :param dev:
         device structure
+    :type dev: void \*
 
 .. _`bfa_nw_flash_memclaim`:
 
@@ -171,14 +196,17 @@ bfa_nw_flash_memclaim
 
     Claim memory for flash
 
-    :param struct bfa_flash \*flash:
+    :param flash:
         flash structure
+    :type flash: struct bfa_flash \*
 
-    :param u8 \*dm_kva:
+    :param dm_kva:
         pointer to virtual memory address
+    :type dm_kva: u8 \*
 
-    :param u64 dm_pa:
+    :param dm_pa:
         physical memory address
+    :type dm_pa: u64
 
 .. _`bfa_nw_flash_get_attr`:
 
@@ -189,17 +217,21 @@ bfa_nw_flash_get_attr
 
     Get flash attribute.
 
-    :param struct bfa_flash \*flash:
+    :param flash:
         flash structure
+    :type flash: struct bfa_flash \*
 
-    :param struct bfa_flash_attr \*attr:
+    :param attr:
         flash attribute structure
+    :type attr: struct bfa_flash_attr \*
 
-    :param bfa_cb_flash cbfn:
+    :param cbfn:
         callback function
+    :type cbfn: bfa_cb_flash
 
-    :param void \*cbarg:
+    :param cbarg:
         callback argument
+    :type cbarg: void \*
 
 .. _`bfa_nw_flash_get_attr.description`:
 
@@ -217,29 +249,37 @@ bfa_nw_flash_update_part
 
     Update flash partition.
 
-    :param struct bfa_flash \*flash:
+    :param flash:
         flash structure
+    :type flash: struct bfa_flash \*
 
-    :param u32 type:
+    :param type:
         flash partition type
+    :type type: u32
 
-    :param u8 instance:
+    :param instance:
         flash partition instance
+    :type instance: u8
 
-    :param void \*buf:
+    :param buf:
         update data buffer
+    :type buf: void \*
 
-    :param u32 len:
+    :param len:
         data buffer length
+    :type len: u32
 
-    :param u32 offset:
+    :param offset:
         offset relative to the partition starting address
+    :type offset: u32
 
-    :param bfa_cb_flash cbfn:
+    :param cbfn:
         callback function
+    :type cbfn: bfa_cb_flash
 
-    :param void \*cbarg:
+    :param cbarg:
         callback argument
+    :type cbarg: void \*
 
 .. _`bfa_nw_flash_update_part.description`:
 
@@ -257,29 +297,37 @@ bfa_nw_flash_read_part
 
     Read flash partition.
 
-    :param struct bfa_flash \*flash:
+    :param flash:
         flash structure
+    :type flash: struct bfa_flash \*
 
-    :param u32 type:
+    :param type:
         flash partition type
+    :type type: u32
 
-    :param u8 instance:
+    :param instance:
         flash partition instance
+    :type instance: u8
 
-    :param void \*buf:
+    :param buf:
         read data buffer
+    :type buf: void \*
 
-    :param u32 len:
+    :param len:
         data buffer length
+    :type len: u32
 
-    :param u32 offset:
+    :param offset:
         offset relative to the partition starting address
+    :type offset: u32
 
-    :param bfa_cb_flash cbfn:
+    :param cbfn:
         callback function
+    :type cbfn: bfa_cb_flash
 
-    :param void \*cbarg:
+    :param cbarg:
         callback argument
+    :type cbarg: void \*
 
 .. _`bfa_nw_flash_read_part.description`:
 

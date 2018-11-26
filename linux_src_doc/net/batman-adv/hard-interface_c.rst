@@ -10,8 +10,9 @@ batadv_hardif_release
 
     release hard interface from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the hard interface
+    :type ref: struct kref \*
 
 .. _`batadv_hardif_get_by_netdev`:
 
@@ -22,8 +23,9 @@ batadv_hardif_get_by_netdev
 
     Get hard interface object of a net_device
 
-    :param const struct net_device \*net_dev:
+    :param net_dev:
         net_device to search for
+    :type net_dev: const struct net_device \*
 
 .. _`batadv_hardif_get_by_netdev.return`:
 
@@ -41,11 +43,13 @@ batadv_getlink_net
 
     return link net namespace (of use fallback)
 
-    :param const struct net_device \*netdev:
+    :param netdev:
         net_device to check
+    :type netdev: const struct net_device \*
 
-    :param struct net \*fallback_net:
+    :param fallback_net:
         return in case get_link_net is not available for \ ``netdev``\ 
+    :type fallback_net: struct net \*
 
 .. _`batadv_getlink_net.return`:
 
@@ -63,17 +67,21 @@ batadv_mutual_parents
 
     check if two devices are each others parent
 
-    :param const struct net_device \*dev1:
+    :param dev1:
         1st net dev
+    :type dev1: const struct net_device \*
 
-    :param struct net \*net1:
+    :param net1:
         1st devices netns
+    :type net1: struct net \*
 
-    :param const struct net_device \*dev2:
+    :param dev2:
         2nd net dev
+    :type dev2: const struct net_device \*
 
-    :param struct net \*net2:
+    :param net2:
         2nd devices netns
+    :type net2: struct net \*
 
 .. _`batadv_mutual_parents.description`:
 
@@ -98,8 +106,9 @@ batadv_is_on_batman_iface
 
     check if a device is a batman iface descendant
 
-    :param const struct net_device \*net_dev:
+    :param net_dev:
         the device to check
+    :type net_dev: const struct net_device \*
 
 .. _`batadv_is_on_batman_iface.description`:
 
@@ -129,8 +138,9 @@ batadv_get_real_netdevice
 
     check if the given netdev struct is a virtual interface on top of another 'real' interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the device to check
+    :type netdev: struct net_device \*
 
 .. _`batadv_get_real_netdevice.description`:
 
@@ -157,8 +167,9 @@ batadv_get_real_netdev
 
     check if the given net_device struct is a virtual interface on top of another 'real' interface
 
-    :param struct net_device \*net_device:
+    :param net_device:
         the device to check
+    :type net_device: struct net_device \*
 
 .. _`batadv_get_real_netdev.return`:
 
@@ -177,8 +188,9 @@ batadv_is_wext_netdev
 
     check if the given net_device struct is a wext wifi interface
 
-    :param struct net_device \*net_device:
+    :param net_device:
         the device to check
+    :type net_device: struct net_device \*
 
 .. _`batadv_is_wext_netdev.return`:
 
@@ -197,8 +209,9 @@ batadv_is_cfg80211_netdev
 
     check if the given net_device struct is a cfg80211 wifi interface
 
-    :param struct net_device \*net_device:
+    :param net_device:
         the device to check
+    :type net_device: struct net_device \*
 
 .. _`batadv_is_cfg80211_netdev.return`:
 
@@ -217,8 +230,9 @@ batadv_wifi_flags_evaluate
 
     calculate wifi flags for net_device
 
-    :param struct net_device \*net_device:
+    :param net_device:
         the device to check
+    :type net_device: struct net_device \*
 
 .. _`batadv_wifi_flags_evaluate.return`:
 
@@ -236,8 +250,9 @@ batadv_is_cfg80211_hardif
 
     check if the given hardif is a cfg80211 wifi interface
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the device to check
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_is_cfg80211_hardif.return`:
 
@@ -256,8 +271,9 @@ batadv_is_wifi_hardif
 
     check if the given hardif is a wifi interface
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the device to check
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_is_wifi_hardif.return`:
 
@@ -275,15 +291,18 @@ batadv_hardif_no_broadcast
 
     check whether (re)broadcast is necessary
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the outgoing interface checked and considered for (re)broadcast
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param u8 \*orig_addr:
+    :param orig_addr:
         the originator of this packet
+    :type orig_addr: u8 \*
 
-    :param u8 \*orig_neigh:
+    :param orig_neigh:
         originator address of the forwarder we just got the packet from
         (NULL if we originated)
+    :type orig_neigh: u8 \*
 
 .. _`batadv_hardif_no_broadcast.description`:
 
@@ -329,8 +348,9 @@ batadv_hardif_recalc_extra_skbroom
 
     Recalculate skbuff extra head/tailroom
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         netdev struct of the mesh interface
+    :type soft_iface: struct net_device \*
 
 .. _`batadv_hardif_min_mtu`:
 
@@ -341,8 +361,9 @@ batadv_hardif_min_mtu
 
     Calculate maximum MTU for soft interface
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         netdev struct of the soft interface
+    :type soft_iface: struct net_device \*
 
 .. _`batadv_hardif_min_mtu.return`:
 
@@ -361,8 +382,9 @@ batadv_update_min_mtu
 
     Adjusts the MTU if a new interface with a smaller MTU appeared
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         netdev struct of the soft interface
+    :type soft_iface: struct net_device \*
 
 .. _`batadv_master_del_slave`:
 
@@ -373,11 +395,13 @@ batadv_master_del_slave
 
     remove hard_iface from the current master iface
 
-    :param struct batadv_hard_iface \*slave:
+    :param slave:
         the interface enslaved in another master
+    :type slave: struct batadv_hard_iface \*
 
-    :param struct net_device \*master:
+    :param master:
         the master from which slave has to be removed
+    :type master: struct net_device \*
 
 .. _`batadv_master_del_slave.description`:
 
@@ -403,14 +427,17 @@ batadv_hardif_enable_interface
 
     Enslave hard interface to soft interface
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         hard interface to add to soft interface
+    :type hard_iface: struct batadv_hard_iface \*
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param const char \*iface_name:
+    :param iface_name:
         name of the soft interface
+    :type iface_name: const char \*
 
 .. _`batadv_hardif_enable_interface.return`:
 
@@ -418,6 +445,35 @@ Return
 ------
 
 0 on success or negative error number in case of failure
+
+.. _`batadv_hardif_cnt`:
+
+batadv_hardif_cnt
+=================
+
+.. c:function:: size_t batadv_hardif_cnt(const struct net_device *soft_iface)
+
+    get number of interfaces enslaved to soft interface
+
+    :param soft_iface:
+        soft interface to check
+    :type soft_iface: const struct net_device \*
+
+.. _`batadv_hardif_cnt.description`:
+
+Description
+-----------
+
+This function is only using RCU for locking - the result can therefore be
+off when another functions is modifying the list at the same time. The
+caller can use the rtnl_lock to make sure that the count is accurate.
+
+.. _`batadv_hardif_cnt.return`:
+
+Return
+------
+
+number of connected/enslaved hard interfaces
 
 .. _`batadv_hardif_disable_interface`:
 
@@ -428,12 +484,14 @@ batadv_hardif_disable_interface
 
     Remove hard interface from soft interface
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         hard interface to be removed
+    :type hard_iface: struct batadv_hard_iface \*
 
-    :param enum batadv_hard_if_cleanup autodel:
+    :param autodel:
         whether to delete soft interface when it doesn't contain any other
         slave interfaces
+    :type autodel: enum batadv_hard_if_cleanup
 
 .. _`batadv_hardif_remove_interfaces`:
 
@@ -444,8 +502,9 @@ batadv_hardif_remove_interfaces
 
     Remove all hard interfaces
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_hard_if_event_softif`:
 
@@ -456,11 +515,13 @@ batadv_hard_if_event_softif
 
     Handle events for soft interfaces
 
-    :param unsigned long event:
+    :param event:
         NETDEV\_\* event to handle
+    :type event: unsigned long
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         net_device which generated an event
+    :type net_dev: struct net_device \*
 
 .. _`batadv_hard_if_event_softif.return`:
 

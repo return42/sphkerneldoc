@@ -10,8 +10,9 @@ vmw_kms_legacy_hotspot_clear
 
     Clear legacy hotspots
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to the device private struct.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_kms_legacy_hotspot_clear.description`:
 
@@ -29,11 +30,13 @@ vmw_du_plane_unpin_surf
 
     unpins resource associated with a framebuffer surface
 
-    :param struct vmw_plane_state \*vps:
+    :param vps:
         plane state associated with the display surface
+    :type vps: struct vmw_plane_state \*
 
-    :param bool unreference:
+    :param unreference:
         true if we also want to unreference the display.
+    :type unreference: bool
 
 .. _`vmw_du_plane_cleanup_fb`:
 
@@ -44,11 +47,13 @@ vmw_du_plane_cleanup_fb
 
     Unpins the cursor
 
-    :param struct drm_plane \*plane:
+    :param plane:
         display plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*old_state:
+    :param old_state:
         Contains the FB to clean up
+    :type old_state: struct drm_plane_state \*
 
 .. _`vmw_du_plane_cleanup_fb.description`:
 
@@ -68,11 +73,13 @@ vmw_du_cursor_plane_prepare_fb
 
     Readies the cursor by referencing it
 
-    :param struct drm_plane \*plane:
+    :param plane:
         display plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*new_state:
+    :param new_state:
         info on the new plane state, including the FB
+    :type new_state: struct drm_plane_state \*
 
 .. _`vmw_du_cursor_plane_prepare_fb.description`:
 
@@ -90,11 +97,13 @@ vmw_du_primary_plane_atomic_check
 
     check if the new state is okay
 
-    :param struct drm_plane \*plane:
+    :param plane:
         display plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*state:
+    :param state:
         info on the new plane state, including the FB
+    :type state: struct drm_plane_state \*
 
 .. _`vmw_du_primary_plane_atomic_check.description`:
 
@@ -116,11 +125,13 @@ vmw_du_cursor_plane_atomic_check
 
     check if the new state is okay
 
-    :param struct drm_plane \*plane:
+    :param plane:
         cursor plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*new_state:
+    :param new_state:
         *undescribed*
+    :type new_state: struct drm_plane_state \*
 
 .. _`vmw_du_cursor_plane_atomic_check.description`:
 
@@ -141,8 +152,9 @@ vmw_du_crtc_duplicate_state
 
     duplicate crtc state
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`vmw_du_crtc_duplicate_state.description`:
 
@@ -168,8 +180,9 @@ vmw_du_crtc_reset
 
     creates a blank vmw crtc state
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`vmw_du_crtc_reset.description`:
 
@@ -189,11 +202,13 @@ vmw_du_crtc_destroy_state
 
     destroy crtc state
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM crtc
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_crtc_state \*state:
+    :param state:
         state object to destroy
+    :type state: struct drm_crtc_state \*
 
 .. _`vmw_du_crtc_destroy_state.description`:
 
@@ -212,8 +227,9 @@ vmw_du_plane_duplicate_state
 
     duplicate plane state
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
 .. _`vmw_du_plane_duplicate_state.description`:
 
@@ -239,8 +255,9 @@ vmw_du_plane_reset
 
     creates a blank vmw plane state
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
 .. _`vmw_du_plane_reset.description`:
 
@@ -259,11 +276,13 @@ vmw_du_plane_destroy_state
 
     destroy plane state
 
-    :param struct drm_plane \*plane:
+    :param plane:
         DRM plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*state:
+    :param state:
         state object to destroy
+    :type state: struct drm_plane_state \*
 
 .. _`vmw_du_plane_destroy_state.description`:
 
@@ -282,8 +301,9 @@ vmw_du_connector_duplicate_state
 
     duplicate connector state
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector
+    :type connector: struct drm_connector \*
 
 .. _`vmw_du_connector_duplicate_state.description`:
 
@@ -309,8 +329,9 @@ vmw_du_connector_reset
 
     creates a blank vmw connector state
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector
+    :type connector: struct drm_connector \*
 
 .. _`vmw_du_connector_reset.description`:
 
@@ -330,11 +351,13 @@ vmw_du_connector_destroy_state
 
     destroy connector state
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector
+    :type connector: struct drm_connector \*
 
-    :param struct drm_connector_state \*state:
+    :param state:
         state object to destroy
+    :type state: struct drm_connector_state \*
 
 .. _`vmw_du_connector_destroy_state.description`:
 
@@ -351,27 +374,33 @@ vmw_kms_readback
 
 .. c:function:: int vmw_kms_readback(struct vmw_private *dev_priv, struct drm_file *file_priv, struct vmw_framebuffer *vfb, struct drm_vmw_fence_rep __user *user_fence_rep, struct drm_vmw_rect *vclips, uint32_t num_clips)
 
-    Perform a readback from the screen system to a dma-buffer backed framebuffer.
+    Perform a readback from the screen system to a buffer-object backed framebuffer.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to the device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to a struct drm_file identifying the caller.
         Must be set to NULL if \ ``user_fence_rep``\  is NULL.
+    :type file_priv: struct drm_file \*
 
-    :param struct vmw_framebuffer \*vfb:
-        Pointer to the dma-buffer backed framebuffer.
+    :param vfb:
+        Pointer to the buffer-object backed framebuffer.
+    :type vfb: struct vmw_framebuffer \*
 
-    :param struct drm_vmw_fence_rep __user \*user_fence_rep:
+    :param user_fence_rep:
         User-space provided structure for fence information.
         Must be set to non-NULL if \ ``file_priv``\  is non-NULL.
+    :type user_fence_rep: struct drm_vmw_fence_rep __user \*
 
-    :param struct drm_vmw_rect \*vclips:
+    :param vclips:
         Array of clip rects.
+    :type vclips: struct drm_vmw_rect \*
 
-    :param uint32_t num_clips:
+    :param num_clips:
         Number of clip rects in \ ``vclips``\ .
+    :type num_clips: uint32_t
 
 .. _`vmw_kms_readback.description`:
 
@@ -390,40 +419,45 @@ vmw_framebuffer_pin
 
     display system.
 
-    :param struct vmw_framebuffer \*vfb:
+    :param vfb:
         *undescribed*
+    :type vfb: struct vmw_framebuffer \*
 
-.. _`vmw_create_dmabuf_proxy`:
+.. _`vmw_create_bo_proxy`:
 
-vmw_create_dmabuf_proxy
-=======================
+vmw_create_bo_proxy
+===================
 
-.. c:function:: int vmw_create_dmabuf_proxy(struct drm_device *dev, const struct drm_mode_fb_cmd2 *mode_cmd, struct vmw_dma_buffer *dmabuf_mob, struct vmw_surface **srf_out)
+.. c:function:: int vmw_create_bo_proxy(struct drm_device *dev, const struct drm_mode_fb_cmd2 *mode_cmd, struct vmw_buffer_object *bo_mob, struct vmw_surface **srf_out)
 
-    create a proxy surface for the DMA buf
+    create a proxy surface for the buffer object
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
+    :param mode_cmd:
         parameters for the new surface
+    :type mode_cmd: const struct drm_mode_fb_cmd2 \*
 
-    :param struct vmw_dma_buffer \*dmabuf_mob:
-        MOB backing the DMA buf
+    :param bo_mob:
+        MOB backing the buffer object
+    :type bo_mob: struct vmw_buffer_object \*
 
-    :param struct vmw_surface \*\*srf_out:
+    :param srf_out:
         newly created surface
+    :type srf_out: struct vmw_surface \*\*
 
-.. _`vmw_create_dmabuf_proxy.description`:
+.. _`vmw_create_bo_proxy.description`:
 
 Description
 -----------
 
-When the content FB is a DMA buf, we create a surface as a proxy to the
+When the content FB is a buffer object, we create a surface as a proxy to the
 same buffer.  This way we can do a surface copy rather than a surface DMA.
 This is a more efficient approach
 
-.. _`vmw_create_dmabuf_proxy.return`:
+.. _`vmw_create_bo_proxy.return`:
 
 Return
 ------
@@ -439,14 +473,17 @@ vmw_kms_srf_ok
 
     check if a surface can be created
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param uint32_t width:
+    :param width:
         requested width
+    :type width: uint32_t
 
-    :param uint32_t height:
+    :param height:
         requested height
+    :type height: uint32_t
 
 .. _`vmw_kms_srf_ok.description`:
 
@@ -460,27 +497,85 @@ Surfaces need to be less than texture size
 vmw_kms_new_framebuffer
 =======================
 
-.. c:function:: struct vmw_framebuffer *vmw_kms_new_framebuffer(struct vmw_private *dev_priv, struct vmw_dma_buffer *dmabuf, struct vmw_surface *surface, bool only_2d, const struct drm_mode_fb_cmd2 *mode_cmd)
+.. c:function:: struct vmw_framebuffer *vmw_kms_new_framebuffer(struct vmw_private *dev_priv, struct vmw_buffer_object *bo, struct vmw_surface *surface, bool only_2d, const struct drm_mode_fb_cmd2 *mode_cmd)
 
     Create a new framebuffer.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_dma_buffer \*dmabuf:
-        Pointer to dma buffer to wrap the kms framebuffer around.
-        Either \ ``dmabuf``\  or \ ``surface``\  must be NULL.
+    :param bo:
+        Pointer to buffer object to wrap the kms framebuffer around.
+        Either \ ``bo``\  or \ ``surface``\  must be NULL.
+    :type bo: struct vmw_buffer_object \*
 
-    :param struct vmw_surface \*surface:
+    :param surface:
         Pointer to a surface to wrap the kms framebuffer around.
-        Either \ ``dmabuf``\  or \ ``surface``\  must be NULL.
+        Either \ ``bo``\  or \ ``surface``\  must be NULL.
+    :type surface: struct vmw_surface \*
 
-    :param bool only_2d:
-        No presents will occur to this dma buffer based framebuffer. This
-        Helps the code to do some important optimizations.
+    :param only_2d:
+        No presents will occur to this buffer object based framebuffer.
+        This helps the code to do some important optimizations.
+    :type only_2d: bool
 
-    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
+    :param mode_cmd:
         Frame-buffer metadata.
+    :type mode_cmd: const struct drm_mode_fb_cmd2 \*
+
+.. _`vmw_kms_check_display_memory`:
+
+vmw_kms_check_display_memory
+============================
+
+.. c:function:: int vmw_kms_check_display_memory(struct drm_device *dev, uint32_t num_rects, struct drm_rect *rects)
+
+    Validates display memory required for a topology
+
+    :param dev:
+        DRM device
+    :type dev: struct drm_device \*
+
+    :param num_rects:
+        number of drm_rect in rects
+    :type num_rects: uint32_t
+
+    :param rects:
+        array of drm_rect representing the topology to validate indexed by
+        crtc index.
+    :type rects: struct drm_rect \*
+
+.. _`vmw_kms_check_display_memory.return`:
+
+Return
+------
+
+0 on success otherwise negative error code
+
+.. _`vmw_kms_check_topology`:
+
+vmw_kms_check_topology
+======================
+
+.. c:function:: int vmw_kms_check_topology(struct drm_device *dev, struct drm_atomic_state *state)
+
+    Validates topology in drm_atomic_state
+
+    :param dev:
+        DRM device
+    :type dev: struct drm_device \*
+
+    :param state:
+        the driver state object
+    :type state: struct drm_atomic_state \*
+
+.. _`vmw_kms_check_topology.return`:
+
+Return
+------
+
+0 on success otherwise negative error code
 
 .. _`vmw_kms_atomic_check_modeset`:
 
@@ -491,11 +586,13 @@ vmw_kms_atomic_check_modeset
 
     validate state object for modeset changes
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         the driver state object
+    :type state: struct drm_atomic_state \*
 
 .. _`vmw_kms_atomic_check_modeset.description`:
 
@@ -506,7 +603,11 @@ This is a simple wrapper around \ :c:func:`drm_atomic_helper_check_modeset`\  fo
 us to assign a value to mode->crtc_clock so that
 \ :c:func:`drm_calc_timestamping_constants`\  won't throw an error message
 
-RETURNS
+.. _`vmw_kms_atomic_check_modeset.return`:
+
+Return
+------
+
 Zero for success or -errno
 
 .. _`vmw_get_vblank_counter`:
@@ -516,11 +617,13 @@ vmw_get_vblank_counter
 
 .. c:function:: u32 vmw_get_vblank_counter(struct drm_device *dev, unsigned int pipe)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         *undescribed*
+    :type pipe: unsigned int
 
 .. _`vmw_enable_vblank`:
 
@@ -529,11 +632,13 @@ vmw_enable_vblank
 
 .. c:function:: int vmw_enable_vblank(struct drm_device *dev, unsigned int pipe)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         *undescribed*
+    :type pipe: unsigned int
 
 .. _`vmw_disable_vblank`:
 
@@ -542,11 +647,34 @@ vmw_disable_vblank
 
 .. c:function:: void vmw_disable_vblank(struct drm_device *dev, unsigned int pipe)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         *undescribed*
+    :type pipe: unsigned int
+
+.. _`vmw_du_update_layout`:
+
+vmw_du_update_layout
+====================
+
+.. c:function:: int vmw_du_update_layout(struct vmw_private *dev_priv, unsigned int num_rects, struct drm_rect *rects)
+
+    Update the display unit with topology from resolution plugin and generate DRM uevent
+
+    :param dev_priv:
+        device private
+    :type dev_priv: struct vmw_private \*
+
+    :param num_rects:
+        number of drm_rect in rects
+    :type num_rects: unsigned int
+
+    :param rects:
+        toplogy to update
+    :type rects: struct drm_rect \*
 
 .. _`vmw_guess_mode_timing`:
 
@@ -557,8 +685,9 @@ vmw_guess_mode_timing
 
     Provide fake timings for a 60Hz vrefresh mode.
 
-    :param struct drm_display_mode \*mode:
+    :param mode:
         *undescribed*
+    :type mode: struct drm_display_mode \*
 
 .. _`vmw_guess_mode_timing.description`:
 
@@ -577,17 +706,21 @@ vmw_du_connector_atomic_set_property
 
     Atomic version of get property
 
-    :param struct drm_connector \*connector:
+    :param connector:
         *undescribed*
+    :type connector: struct drm_connector \*
 
-    :param struct drm_connector_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct drm_connector_state \*
 
-    :param struct drm_property \*property:
+    :param property:
         *undescribed*
+    :type property: struct drm_property \*
 
-    :param uint64_t val:
+    :param val:
         *undescribed*
+    :type val: uint64_t
 
 .. _`vmw_du_connector_atomic_set_property.description`:
 
@@ -612,17 +745,21 @@ vmw_du_connector_atomic_get_property
 
     Atomic version of get property
 
-    :param struct drm_connector \*connector:
+    :param connector:
         *undescribed*
+    :type connector: struct drm_connector \*
 
-    :param const struct drm_connector_state \*state:
+    :param state:
         *undescribed*
+    :type state: const struct drm_connector_state \*
 
-    :param struct drm_property \*property:
+    :param property:
         *undescribed*
+    :type property: struct drm_property \*
 
-    :param uint64_t \*val:
+    :param val:
         *undescribed*
+    :type val: uint64_t \*
 
 .. _`vmw_du_connector_atomic_get_property.description`:
 
@@ -638,6 +775,53 @@ Return
 
 Zero on success, negative errno on failure.
 
+.. _`vmw_kms_update_layout_ioctl`:
+
+vmw_kms_update_layout_ioctl
+===========================
+
+.. c:function:: int vmw_kms_update_layout_ioctl(struct drm_device *dev, void *data, struct drm_file *file_priv)
+
+    Handler for DRM_VMW_UPDATE_LAYOUT ioctl
+
+    :param dev:
+        drm device for the ioctl
+    :type dev: struct drm_device \*
+
+    :param data:
+        data pointer for the ioctl
+    :type data: void \*
+
+    :param file_priv:
+        drm file for the ioctl call
+    :type file_priv: struct drm_file \*
+
+.. _`vmw_kms_update_layout_ioctl.description`:
+
+Description
+-----------
+
+Update preferred topology of display unit as per ioctl request. The topology
+is expressed as array of drm_vmw_rect.
+e.g.
+[0 0 640 480] [640 0 800 600] [0 480 640 480]
+
+.. _`vmw_kms_update_layout_ioctl.note`:
+
+NOTE
+----
+
+The x and y offset (upper left) in drm_vmw_rect cannot be less than 0. Beside
+device limit on topology, x + w and y + h (lower right) cannot be greater
+than INT_MAX. So topology beyond these limits will return with error.
+
+.. _`vmw_kms_update_layout_ioctl.return`:
+
+Return
+------
+
+Zero on success, negative errno on failure.
+
 .. _`vmw_kms_helper_dirty`:
 
 vmw_kms_helper_dirty
@@ -647,183 +831,74 @@ vmw_kms_helper_dirty
 
     Helper to build commands and perform actions based on a set of cliprects and a set of display units.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_framebuffer \*framebuffer:
+    :param framebuffer:
         Pointer to the framebuffer on which to perform the actions.
+    :type framebuffer: struct vmw_framebuffer \*
 
-    :param const struct drm_clip_rect \*clips:
+    :param clips:
         A set of struct drm_clip_rect. Either this os \ ``vclips``\  must be NULL.
         Cliprects are given in framebuffer coordinates.
+    :type clips: const struct drm_clip_rect \*
 
-    :param const struct drm_vmw_rect \*vclips:
+    :param vclips:
         A set of struct drm_vmw_rect cliprects. Either this or \ ``clips``\  must
         be NULL. Cliprects are given in source coordinates.
+    :type vclips: const struct drm_vmw_rect \*
 
-    :param s32 dest_x:
+    :param dest_x:
         X coordinate offset for the crtc / destination clip rects.
+    :type dest_x: s32
 
-    :param s32 dest_y:
+    :param dest_y:
         Y coordinate offset for the crtc / destination clip rects.
+    :type dest_y: s32
 
-    :param int num_clips:
+    :param num_clips:
         Number of cliprects in the \ ``clips``\  or \ ``vclips``\  array.
+    :type num_clips: int
 
-    :param int increment:
+    :param increment:
         Integer with which to increment the clip counter when looping.
         Used to skip a predetermined number of clip rects.
+    :type increment: int
 
-    :param struct vmw_kms_dirty \*dirty:
+    :param dirty:
         Closure structure. See the description of struct vmw_kms_dirty.
+    :type dirty: struct vmw_kms_dirty \*
 
-.. _`vmw_kms_helper_buffer_prepare`:
+.. _`vmw_kms_helper_validation_finish`:
 
-vmw_kms_helper_buffer_prepare
-=============================
+vmw_kms_helper_validation_finish
+================================
 
-.. c:function:: int vmw_kms_helper_buffer_prepare(struct vmw_private *dev_priv, struct vmw_dma_buffer *buf, bool interruptible, bool validate_as_mob, bool for_cpu_blit)
+.. c:function:: void vmw_kms_helper_validation_finish(struct vmw_private *dev_priv, struct drm_file *file_priv, struct vmw_validation_context *ctx, struct vmw_fence_obj **out_fence, struct drm_vmw_fence_rep __user *user_fence_rep)
 
-    Reserve and validate a buffer object before command submission.
+    Helper for post KMS command submission cleanup and fencing
 
-    :param struct vmw_private \*dev_priv:
-        *undescribed*
+    :param dev_priv:
+        Pointer to the device-private struct
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_dma_buffer \*buf:
-        The buffer object
+    :param file_priv:
+        Pointer identifying the client when user-space fencing is used
+    :type file_priv: struct drm_file \*
 
-    :param bool interruptible:
-        Whether to perform waits as interruptible.
+    :param ctx:
+        Pointer to the validation context
+    :type ctx: struct vmw_validation_context \*
 
-    :param bool validate_as_mob:
-        Whether the buffer should be validated as a MOB. If false,
-        The buffer will be validated as a GMR. Already pinned buffers will not be
-        validated.
+    :param out_fence:
+        If non-NULL, returned refcounted fence-pointer
+    :type out_fence: struct vmw_fence_obj \*\*
 
-    :param bool for_cpu_blit:
-        *undescribed*
-
-.. _`vmw_kms_helper_buffer_prepare.description`:
-
-Description
------------
-
-\ ``dev_priv``\ . Pointer to a device private structure.
-
-Returns 0 on success, negative error code on failure, -ERESTARTSYS if
-interrupted by a signal.
-
-.. _`vmw_kms_helper_buffer_revert`:
-
-vmw_kms_helper_buffer_revert
-============================
-
-.. c:function:: void vmw_kms_helper_buffer_revert(struct vmw_dma_buffer *buf)
-
-    Undo the actions of vmw_kms_helper_buffer_prepare.
-
-    :param struct vmw_dma_buffer \*buf:
-        *undescribed*
-
-.. _`vmw_kms_helper_buffer_revert.description`:
-
-Description
------------
-
-Helper to be used if an error forces the caller to undo the actions of
-vmw_kms_helper_buffer_prepare.
-
-.. _`vmw_kms_helper_buffer_finish`:
-
-vmw_kms_helper_buffer_finish
-============================
-
-.. c:function:: void vmw_kms_helper_buffer_finish(struct vmw_private *dev_priv, struct drm_file *file_priv, struct vmw_dma_buffer *buf, struct vmw_fence_obj **out_fence, struct drm_vmw_fence_rep __user *user_fence_rep)
-
-    Unreserve and fence a buffer object after kms command submission.
-
-    :param struct vmw_private \*dev_priv:
-        Pointer to a device private structure.
-
-    :param struct drm_file \*file_priv:
-        Pointer to a struct drm_file representing the caller's
-        connection. Must be set to NULL if \ ``user_fence_rep``\  is NULL, and conversely
-        if non-NULL, \ ``user_fence_rep``\  must be non-NULL.
-
-    :param struct vmw_dma_buffer \*buf:
-        The buffer object.
-
-    :param struct vmw_fence_obj \*\*out_fence:
-        Optional pointer to a fence pointer. If non-NULL, a
-        ref-counted fence pointer is returned here.
-
-    :param struct drm_vmw_fence_rep __user \*user_fence_rep:
-        Optional pointer to a user-space provided struct
-        drm_vmw_fence_rep. If provided, \ ``file_priv``\  must also be provided and the
-        function copies fence data to user-space in a fail-safe manner.
-
-.. _`vmw_kms_helper_resource_revert`:
-
-vmw_kms_helper_resource_revert
-==============================
-
-.. c:function:: void vmw_kms_helper_resource_revert(struct vmw_validation_ctx *ctx)
-
-    Undo the actions of vmw_kms_helper_resource_prepare.
-
-    :param struct vmw_validation_ctx \*ctx:
-        *undescribed*
-
-.. _`vmw_kms_helper_resource_revert.description`:
-
-Description
------------
-
-Helper to be used if an error forces the caller to undo the actions of
-vmw_kms_helper_resource_prepare.
-
-.. _`vmw_kms_helper_resource_prepare`:
-
-vmw_kms_helper_resource_prepare
-===============================
-
-.. c:function:: int vmw_kms_helper_resource_prepare(struct vmw_resource *res, bool interruptible, struct vmw_validation_ctx *ctx)
-
-    Reserve and validate a resource before command submission.
-
-    :param struct vmw_resource \*res:
-        Pointer to the resource. Typically a surface.
-
-    :param bool interruptible:
-        Whether to perform waits as interruptible.
-
-    :param struct vmw_validation_ctx \*ctx:
-        *undescribed*
-
-.. _`vmw_kms_helper_resource_prepare.description`:
-
-Description
------------
-
-Reserves and validates also the backup buffer if a guest-backed resource.
-Returns 0 on success, negative error code on failure. -ERESTARTSYS if
-interrupted by a signal.
-
-.. _`vmw_kms_helper_resource_finish`:
-
-vmw_kms_helper_resource_finish
-==============================
-
-.. c:function:: void vmw_kms_helper_resource_finish(struct vmw_validation_ctx *ctx, struct vmw_fence_obj **out_fence)
-
-    Unreserve and fence a resource after kms command submission.
-
-    :param struct vmw_validation_ctx \*ctx:
-        *undescribed*
-
-    :param struct vmw_fence_obj \*\*out_fence:
-        Optional pointer to a fence pointer. If non-NULL, a
-        ref-counted fence pointer is returned here.
+    :param user_fence_rep:
+        If non-NULL, pointer to user-space address area
+        in which to copy user-space fence info
+    :type user_fence_rep: struct drm_vmw_fence_rep __user \*
 
 .. _`vmw_kms_update_proxy`:
 
@@ -834,18 +909,22 @@ vmw_kms_update_proxy
 
     Helper function to update a proxy surface from its backing MOB.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the surface resource
+    :type res: struct vmw_resource \*
 
-    :param const struct drm_clip_rect \*clips:
+    :param clips:
         Clip rects in framebuffer (surface) space.
+    :type clips: const struct drm_clip_rect \*
 
-    :param unsigned num_clips:
+    :param num_clips:
         Number of clips in \ ``clips``\ .
+    :type num_clips: unsigned
 
-    :param int increment:
+    :param increment:
         Integer with which to increment the clip counter when looping.
         Used to skip a predetermined number of clip rects.
+    :type increment: int
 
 .. _`vmw_kms_update_proxy.description`:
 
@@ -865,11 +944,13 @@ vmw_kms_del_active
 
     unregister a crtc binding to the implicit framebuffer
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_display_unit \*du:
+    :param du:
         The display unit of the crtc.
+    :type du: struct vmw_display_unit \*
 
 .. _`vmw_kms_add_active`:
 
@@ -880,14 +961,17 @@ vmw_kms_add_active
 
     register a crtc binding to an implicit framebuffer
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_display_unit \*du:
+    :param du:
         The display unit of the crtc.
+    :type du: struct vmw_display_unit \*
 
-    :param struct vmw_framebuffer \*vfb:
+    :param vfb:
         The implicit framebuffer
+    :type vfb: struct vmw_framebuffer \*
 
 .. _`vmw_kms_add_active.description`:
 
@@ -905,11 +989,13 @@ vmw_kms_crtc_flippable
 
     Check whether we can page-flip a crtc.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device-private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         The crtc we want to flip.
+    :type crtc: struct drm_crtc \*
 
 .. _`vmw_kms_crtc_flippable.description`:
 
@@ -929,11 +1015,13 @@ vmw_kms_update_implicit_fb
 
     Update the implicit fb.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device-private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         The crtc the new implicit frame-buffer is bound to.
+    :type crtc: struct drm_crtc \*
 
 .. _`vmw_kms_create_implicit_placement_property`:
 
@@ -944,11 +1032,13 @@ vmw_kms_create_implicit_placement_property
 
     Set up the implicit placement property.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param bool immutable:
+    :param immutable:
         Whether the property is immutable.
+    :type immutable: bool
 
 .. _`vmw_kms_create_implicit_placement_property.description`:
 
@@ -966,11 +1056,13 @@ vmw_kms_set_config
 
     Wrapper around drm_atomic_helper_set_config
 
-    :param struct drm_mode_set \*set:
+    :param set:
         The configuration to set.
+    :type set: struct drm_mode_set \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`vmw_kms_set_config.description`:
 
@@ -992,8 +1084,9 @@ vmw_kms_suspend
 
     Save modesetting state and turn modesetting off.
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to the drm device
+    :type dev: struct drm_device \*
 
 .. _`vmw_kms_suspend.return`:
 
@@ -1011,8 +1104,9 @@ vmw_kms_resume
 
     Re-enable modesetting and restore state
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to the drm device
+    :type dev: struct drm_device \*
 
 .. _`vmw_kms_resume.return`:
 
@@ -1033,8 +1127,9 @@ vmw_kms_lost_device
 
     Notify kms that modesetting capabilities will be lost
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to the drm device
+    :type dev: struct drm_device \*
 
 .. This file was automatic generated / don't edit.
 

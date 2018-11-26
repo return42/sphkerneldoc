@@ -10,11 +10,13 @@ vio_vdev_node
 
     Find VDEV node in MD
 
-    :param struct mdesc_handle \*hp:
+    :param hp:
         Handle to the MD
+    :type hp: struct mdesc_handle \*
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         Pointer to VDEV
+    :type vdev: struct vio_dev \*
 
 .. _`vio_vdev_node.description`:
 

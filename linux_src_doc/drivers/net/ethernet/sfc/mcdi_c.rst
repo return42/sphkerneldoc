@@ -10,30 +10,37 @@ efx_mcdi_rpc
 
     Issue an MCDI command and wait for completion
 
-    :param struct efx_nic \*efx:
+    :param efx:
         NIC through which to issue the command
+    :type efx: struct efx_nic \*
 
-    :param unsigned cmd:
+    :param cmd:
         Command type number
+    :type cmd: unsigned
 
-    :param const efx_dword_t \*inbuf:
+    :param inbuf:
         Command parameters
+    :type inbuf: const efx_dword_t \*
 
-    :param size_t inlen:
+    :param inlen:
         Length of command parameters, in bytes.  Must be a multiple
         of 4 and no greater than \ ``MCDI_CTL_SDU_LEN_MAX_V1``\ .
+    :type inlen: size_t
 
-    :param efx_dword_t \*outbuf:
+    :param outbuf:
         Response buffer.  May be \ ``NULL``\  if \ ``outlen``\  is 0.
+    :type outbuf: efx_dword_t \*
 
-    :param size_t outlen:
+    :param outlen:
         Length of response buffer, in bytes.  If the actual
         response is longer than \ ``outlen``\  & ~3, it will be truncated
         to that length.
+    :type outlen: size_t
 
-    :param size_t \*outlen_actual:
+    :param outlen_actual:
         Pointer through which to return the actual response
         length.  May be \ ``NULL``\  if this is not needed.
+    :type outlen_actual: size_t \*
 
 .. _`efx_mcdi_rpc.description`:
 
@@ -64,26 +71,33 @@ efx_mcdi_rpc_async
 
     Schedule an MCDI command to run asynchronously
 
-    :param struct efx_nic \*efx:
+    :param efx:
         NIC through which to issue the command
+    :type efx: struct efx_nic \*
 
-    :param unsigned int cmd:
+    :param cmd:
         Command type number
+    :type cmd: unsigned int
 
-    :param const efx_dword_t \*inbuf:
+    :param inbuf:
         Command parameters
+    :type inbuf: const efx_dword_t \*
 
-    :param size_t inlen:
+    :param inlen:
         Length of command parameters, in bytes
+    :type inlen: size_t
 
-    :param size_t outlen:
+    :param outlen:
         Length to allocate for response buffer, in bytes
+    :type outlen: size_t
 
-    :param efx_mcdi_async_completer \*complete:
+    :param complete:
         Function to be called on completion or cancellation.
+    :type complete: efx_mcdi_async_completer \*
 
-    :param unsigned long cookie:
+    :param cookie:
         Arbitrary value to be passed to \ ``complete``\ .
+    :type cookie: unsigned long
 
 .. _`efx_mcdi_rpc_async.description`:
 

@@ -10,8 +10,9 @@ for_each_efi_memory_desc
 
     iterate over descriptors in efi.memmap
 
-    :param  md:
+    :param md:
         the efi_memory_desc_t \* iterator
+    :type md: 
 
 .. _`for_each_efi_memory_desc.description`:
 
@@ -29,11 +30,13 @@ efi_range_is_wc
 
     check the WC bit on an address range
 
-    :param unsigned long start:
+    :param start:
         starting kvirt address
+    :type start: unsigned long
 
-    :param unsigned long len:
+    :param len:
         length of range
+    :type len: unsigned long
 
 .. _`efi_range_is_wc.description`:
 

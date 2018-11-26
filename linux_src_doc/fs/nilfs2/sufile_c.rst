@@ -50,8 +50,9 @@ nilfs_sufile_get_ncleansegs
 
     return the number of clean segments
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
 .. _`nilfs_sufile_updatev`:
 
@@ -62,20 +63,25 @@ nilfs_sufile_updatev
 
     modify multiple segment usages at a time
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 \*segnumv:
+    :param segnumv:
         array of segment numbers
+    :type segnumv: __u64 \*
 
-    :param size_t nsegs:
+    :param nsegs:
         size of \ ``segnumv``\  array
+    :type nsegs: size_t
 
-    :param int create:
+    :param create:
         creation flag
+    :type create: int
 
-    :param size_t \*ndone:
+    :param ndone:
         place to store number of modified segments on \ ``segnumv``\ 
+    :type ndone: size_t \*
 
     :param void (\*dofunc)(struct inode \*, __u64, struct buffer_head \*, struct buffer_head \*):
         primitive operation for the update
@@ -118,14 +124,17 @@ nilfs_sufile_set_alloc_range
 
     limit range of segment to be allocated
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 start:
+    :param start:
         minimum segment number of allocatable region (inclusive)
+    :type start: __u64
 
-    :param __u64 end:
+    :param end:
         maximum segment number of allocatable region (inclusive)
+    :type end: __u64
 
 .. _`nilfs_sufile_set_alloc_range.return-value`:
 
@@ -146,11 +155,13 @@ nilfs_sufile_alloc
 
     allocate a segment
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 \*segnump:
+    :param segnump:
         pointer to segment number
+    :type segnump: __u64 \*
 
 .. _`nilfs_sufile_alloc.description`:
 
@@ -183,11 +194,13 @@ nilfs_sufile_mark_dirty
 
     mark the buffer having a segment usage dirty
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 segnum:
+    :param segnum:
         segment number
+    :type segnum: __u64
 
 .. _`nilfs_sufile_set_segment_usage`:
 
@@ -198,17 +211,21 @@ nilfs_sufile_set_segment_usage
 
     set usage of a segment
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 segnum:
+    :param segnum:
         segment number
+    :type segnum: __u64
 
-    :param unsigned long nblocks:
+    :param nblocks:
         number of live blocks in the segment
+    :type nblocks: unsigned long
 
-    :param time64_t modtime:
+    :param modtime:
         modification time (option)
+    :type modtime: time64_t
 
 .. _`nilfs_sufile_get_stat`:
 
@@ -219,11 +236,13 @@ nilfs_sufile_get_stat
 
     get segment usage statistics
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param struct nilfs_sustat \*sustat:
+    :param sustat:
         *undescribed*
+    :type sustat: struct nilfs_sustat \*
 
 .. _`nilfs_sufile_get_stat.description`:
 
@@ -255,14 +274,17 @@ nilfs_sufile_truncate_range
 
     truncate range of segment array
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 start:
+    :param start:
         start segment number (inclusive)
+    :type start: __u64
 
-    :param __u64 end:
+    :param end:
         end segment number (inclusive)
+    :type end: __u64
 
 .. _`nilfs_sufile_truncate_range.return-value`:
 
@@ -289,11 +311,13 @@ nilfs_sufile_resize
 
     resize segment array
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 newnsegs:
+    :param newnsegs:
         new number of segments
+    :type newnsegs: __u64
 
 .. _`nilfs_sufile_resize.return-value`:
 
@@ -318,20 +342,25 @@ nilfs_sufile_get_suinfo
 
 .. c:function:: ssize_t nilfs_sufile_get_suinfo(struct inode *sufile, __u64 segnum, void *buf, unsigned int sisz, size_t nsi)
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 segnum:
+    :param segnum:
         segment number to start looking
+    :type segnum: __u64
 
-    :param void \*buf:
+    :param buf:
         array of suinfo
+    :type buf: void \*
 
-    :param unsigned int sisz:
+    :param sisz:
         byte size of suinfo
+    :type sisz: unsigned int
 
-    :param size_t nsi:
+    :param nsi:
         size of suinfo array
+    :type nsi: size_t
 
 .. _`nilfs_sufile_get_suinfo.return-value`:
 
@@ -354,17 +383,21 @@ nilfs_sufile_set_suinfo
 
     sets segment usage info
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param void \*buf:
+    :param buf:
         array of suinfo_update
+    :type buf: void \*
 
-    :param unsigned int supsz:
+    :param supsz:
         byte size of suinfo_update
+    :type supsz: unsigned int
 
-    :param size_t nsup:
+    :param nsup:
         size of suinfo_update array
+    :type nsup: size_t
 
 .. _`nilfs_sufile_set_suinfo.description`:
 
@@ -398,11 +431,13 @@ nilfs_sufile_trim_fs
 
     trim ioctl handle function
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param struct fstrim_range \*range:
+    :param range:
         fstrim_range structure
+    :type range: struct fstrim_range \*
 
 .. _`nilfs_sufile_trim_fs.start`:
 
@@ -451,17 +486,21 @@ nilfs_sufile_read
 
     read or get sufile inode
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
-    :param size_t susize:
+    :param susize:
         size of a segment usage entry
+    :type susize: size_t
 
-    :param struct nilfs_inode \*raw_inode:
+    :param raw_inode:
         on-disk sufile inode
+    :type raw_inode: struct nilfs_inode \*
 
-    :param struct inode \*\*inodep:
+    :param inodep:
         buffer to store the inode
+    :type inodep: struct inode \*\*
 
 .. This file was automatic generated / don't edit.
 

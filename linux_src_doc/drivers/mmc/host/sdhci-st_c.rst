@@ -10,11 +10,13 @@ st_mmcss_cconfig
 
     configure the Arasan HC inside the flashSS.
 
-    :param struct device_node \*np:
+    :param np:
         dt device node.
+    :type np: struct device_node \*
 
-    :param struct sdhci_host \*host:
+    :param host:
         sdhci host
+    :type host: struct sdhci_host \*
 
 .. _`st_mmcss_cconfig.description`:
 

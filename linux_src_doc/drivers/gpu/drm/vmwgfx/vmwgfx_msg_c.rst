@@ -8,11 +8,13 @@ vmw_open_channel
 
 .. c:function:: int vmw_open_channel(struct rpc_channel *channel, unsigned int protocol)
 
-    :param struct rpc_channel \*channel:
+    :param channel:
         RPC channel
+    :type channel: struct rpc_channel \*
 
-    :param unsigned int protocol:
+    :param protocol:
         *undescribed*
+    :type protocol: unsigned int
 
 .. _`vmw_open_channel.return`:
 
@@ -28,8 +30,9 @@ vmw_close_channel
 
 .. c:function:: int vmw_close_channel(struct rpc_channel *channel)
 
-    :param struct rpc_channel \*channel:
+    :param channel:
         RPC channel
+    :type channel: struct rpc_channel \*
 
 .. _`vmw_close_channel.return`:
 
@@ -47,11 +50,13 @@ vmw_send_msg
 
     Sends a message to the host
 
-    :param struct rpc_channel \*channel:
+    :param channel:
         RPC channel
+    :type channel: struct rpc_channel \*
 
-    :param const char \*msg:
+    :param msg:
         *undescribed*
+    :type msg: const char \*
 
 .. _`vmw_send_msg.return`:
 
@@ -69,14 +74,17 @@ vmw_recv_msg
 
     Receives a message from the host
 
-    :param struct rpc_channel \*channel:
+    :param channel:
         channel opened by vmw_open_channel
+    :type channel: struct rpc_channel \*
 
-    :param void \*\*msg:
+    :param msg:
         [OUT] message received from the host
+    :type msg: void \*\*
 
-    :param size_t \*msg_len:
+    :param msg_len:
         message length
+    :type msg_len: size_t \*
 
 .. _`vmw_recv_msg.note`:
 
@@ -94,14 +102,17 @@ vmw_host_get_guestinfo
 
     Gets a GuestInfo parameter
 
-    :param const char \*guest_info_param:
+    :param guest_info_param:
         Parameter to get, e.g. GuestInfo.svga.gl3
+    :type guest_info_param: const char \*
 
-    :param char \*buffer:
+    :param buffer:
         if NULL, \*reply_len will contain reply size.
+    :type buffer: char \*
 
-    :param size_t \*length:
+    :param length:
         size of the reply_buf.  Set to size of reply upon return
+    :type length: size_t \*
 
 .. _`vmw_host_get_guestinfo.description`:
 
@@ -127,8 +138,9 @@ vmw_host_log
 
     Sends a log message to the host
 
-    :param const char \*log:
+    :param log:
         NULL terminated string
+    :type log: const char \*
 
 .. _`vmw_host_log.return`:
 

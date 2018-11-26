@@ -10,17 +10,21 @@ devm_nvdimm_memremap
 
     map a resource that is shared across regions
 
-    :param struct device \*dev:
+    :param dev:
         device that will own a reference to the shared mapping
+    :type dev: struct device \*
 
-    :param resource_size_t offset:
+    :param offset:
         physical base address of the mapping
+    :type offset: resource_size_t
 
-    :param size_t size:
+    :param size:
         mapping size
+    :type size: size_t
 
-    :param unsigned long flags:
+    :param flags:
         memremap flags, or, if zero, perform an ioremap instead
+    :type flags: unsigned long
 
 .. _`nd_uuid_store`:
 
@@ -31,17 +35,21 @@ nd_uuid_store
 
     common implementation for writing 'uuid' sysfs attributes
 
-    :param struct device \*dev:
+    :param dev:
         container device for the uuid property
+    :type dev: struct device \*
 
-    :param u8 \*\*uuid_out:
+    :param uuid_out:
         uuid buffer to replace
+    :type uuid_out: u8 \*\*
 
-    :param const char \*buf:
+    :param buf:
         raw sysfs buffer to parse
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`nd_uuid_store.description`:
 

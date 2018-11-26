@@ -8,10 +8,11 @@ qlcnic_83xx_init_mgmt_vnic
 
 .. c:function:: int qlcnic_83xx_init_mgmt_vnic(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
         Management virtual NIC sets the operational mode of other vNIC's and
         configures embedded switch (ESWITCH).
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_init_mgmt_vnic.return`:
 
@@ -27,9 +28,10 @@ qlcnic_83xx_config_vnic_opmode
 
 .. c:function:: int qlcnic_83xx_config_vnic_opmode(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
         Identify virtual NIC operational modes.
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_config_vnic_opmode.return`:
 

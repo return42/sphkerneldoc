@@ -10,8 +10,9 @@ batadv_dat_start_timer
 
     initialise the DAT periodic worker
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_dat_entry_release`:
 
@@ -22,8 +23,9 @@ batadv_dat_entry_release
 
     release dat_entry from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the dat_entry
+    :type ref: struct kref \*
 
 .. _`batadv_dat_entry_put`:
 
@@ -34,8 +36,9 @@ batadv_dat_entry_put
 
     decrement the dat_entry refcounter and possibly release it
 
-    :param struct batadv_dat_entry \*dat_entry:
+    :param dat_entry:
         dat_entry to be free'd
+    :type dat_entry: struct batadv_dat_entry \*
 
 .. _`batadv_dat_to_purge`:
 
@@ -46,8 +49,9 @@ batadv_dat_to_purge
 
     check whether a dat_entry has to be purged or not
 
-    :param struct batadv_dat_entry \*dat_entry:
+    :param dat_entry:
         the entry to check
+    :type dat_entry: struct batadv_dat_entry \*
 
 .. _`batadv_dat_to_purge.return`:
 
@@ -65,8 +69,9 @@ true if the entry has to be purged now, false otherwise.
 
     delete entries from the DAT local storage
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
     :param bool (\*to_purge)(struct batadv_dat_entry \*):
         function in charge to decide whether an entry has to be purged or
@@ -91,8 +96,9 @@ batadv_dat_purge
 
     periodic task that deletes old entries from the local DAT hash table
 
-    :param struct work_struct \*work:
+    :param work:
         kernel work struct
+    :type work: struct work_struct \*
 
 .. _`batadv_compare_dat`:
 
@@ -103,11 +109,13 @@ batadv_compare_dat
 
     comparing function used in the local DAT hash table
 
-    :param const struct hlist_node \*node:
+    :param node:
         node in the local table
+    :type node: const struct hlist_node \*
 
-    :param const void \*data2:
+    :param data2:
         second object to compare the node to
+    :type data2: const void \*
 
 .. _`batadv_compare_dat.return`:
 
@@ -125,11 +133,13 @@ batadv_arp_hw_src
 
     extract the hw_src field from an ARP packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         ARP packet
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         size of the possible header before the ARP packet
+    :type hdr_size: int
 
 .. _`batadv_arp_hw_src.return`:
 
@@ -147,11 +157,13 @@ batadv_arp_ip_src
 
     extract the ip_src field from an ARP packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         ARP packet
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         size of the possible header before the ARP packet
+    :type hdr_size: int
 
 .. _`batadv_arp_ip_src.return`:
 
@@ -169,11 +181,13 @@ batadv_arp_hw_dst
 
     extract the hw_dst field from an ARP packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         ARP packet
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         size of the possible header before the ARP packet
+    :type hdr_size: int
 
 .. _`batadv_arp_hw_dst.return`:
 
@@ -191,11 +205,13 @@ batadv_arp_ip_dst
 
     extract the ip_dst field from an ARP packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         ARP packet
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         size of the possible header before the ARP packet
+    :type hdr_size: int
 
 .. _`batadv_arp_ip_dst.return`:
 
@@ -213,11 +229,13 @@ batadv_hash_dat
 
     compute the hash value for an IP address
 
-    :param const void \*data:
+    :param data:
         data to hash
+    :type data: const void \*
 
-    :param u32 size:
+    :param size:
         size of the hash table
+    :type size: u32
 
 .. _`batadv_hash_dat.return`:
 
@@ -235,14 +253,17 @@ batadv_dat_entry_hash_find
 
     look for a given dat_entry in the local hash table
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param __be32 ip:
+    :param ip:
         search key
+    :type ip: __be32
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_dat_entry_hash_find.return`:
 
@@ -260,17 +281,21 @@ batadv_dat_entry_add
 
     add a new dat entry or update it if already exists
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param __be32 ip:
+    :param ip:
         ipv4 to add/edit
+    :type ip: __be32
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         mac address to assign to the given ipv4
+    :type mac_addr: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_dbg_arp`:
 
@@ -281,17 +306,21 @@ batadv_dbg_arp
 
     print a debug message containing all the ARP packet details
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         ARP packet
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         size of the possible header before the ARP packet
+    :type hdr_size: int
 
-    :param char \*msg:
+    :param msg:
         message to print together with the debugging information
+    :type msg: char \*
 
 .. _`batadv_is_orig_node_eligible`:
 
@@ -302,26 +331,33 @@ batadv_is_orig_node_eligible
 
     check whether a node can be a DHT candidate
 
-    :param struct batadv_dat_candidate \*res:
+    :param res:
         the array with the already selected candidates
+    :type res: struct batadv_dat_candidate \*
 
-    :param int select:
+    :param select:
         number of already selected candidates
+    :type select: int
 
-    :param batadv_dat_addr_t tmp_max:
+    :param tmp_max:
         address of the currently evaluated node
+    :type tmp_max: batadv_dat_addr_t
 
-    :param batadv_dat_addr_t max:
+    :param max:
         current round max address
+    :type max: batadv_dat_addr_t
 
-    :param batadv_dat_addr_t last_max:
+    :param last_max:
         address of the last selected candidate
+    :type last_max: batadv_dat_addr_t
 
-    :param struct batadv_orig_node \*candidate:
+    :param candidate:
         orig_node under evaluation
+    :type candidate: struct batadv_orig_node \*
 
-    :param struct batadv_orig_node \*max_orig_node:
+    :param max_orig_node:
         last selected candidate
+    :type max_orig_node: struct batadv_orig_node \*
 
 .. _`batadv_is_orig_node_eligible.return`:
 
@@ -340,20 +376,25 @@ batadv_choose_next_candidate
 
     select the next DHT candidate
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_dat_candidate \*cands:
+    :param cands:
         candidates array
+    :type cands: struct batadv_dat_candidate \*
 
-    :param int select:
+    :param select:
         number of candidates already present in the array
+    :type select: int
 
-    :param batadv_dat_addr_t ip_key:
+    :param ip_key:
         key to look up in the DHT
+    :type ip_key: batadv_dat_addr_t
 
-    :param batadv_dat_addr_t \*last_max:
+    :param last_max:
         pointer where the address of the selected candidate will be saved
+    :type last_max: batadv_dat_addr_t \*
 
 .. _`batadv_dat_select_candidates`:
 
@@ -364,14 +405,17 @@ batadv_dat_select_candidates
 
     select the nodes which the DHT message has to be sent to
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param __be32 ip_dst:
+    :param ip_dst:
         ipv4 to look up in the DHT
+    :type ip_dst: __be32
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_dat_select_candidates.description`:
 
@@ -398,20 +442,25 @@ batadv_dat_send_data
 
     send a payload to the selected candidates
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         payload to send
+    :type skb: struct sk_buff \*
 
-    :param __be32 ip:
+    :param ip:
         the DHT key
+    :type ip: __be32
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
-    :param int packet_subtype:
+    :param packet_subtype:
         unicast4addr packet subtype to use
+    :type packet_subtype: int
 
 .. _`batadv_dat_send_data.description`:
 
@@ -438,8 +487,9 @@ batadv_dat_tvlv_container_update
 
     update the dat tvlv container after dat setting change
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_dat_status_update`:
 
@@ -450,8 +500,9 @@ batadv_dat_status_update
 
     update the dat tvlv container after dat setting change
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the soft interface net device
+    :type net_dev: struct net_device \*
 
 .. _`batadv_dat_tvlv_ogm_handler_v1`:
 
@@ -462,20 +513,25 @@ batadv_dat_tvlv_ogm_handler_v1
 
     process incoming dat tvlv container
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig:
+    :param orig:
         the orig_node of the ogm
+    :type orig: struct batadv_orig_node \*
 
-    :param u8 flags:
+    :param flags:
         flags indicating the tvlv state (see batadv_tvlv_handler_flags)
+    :type flags: u8
 
-    :param void \*tvlv_value:
+    :param tvlv_value:
         tvlv buffer containing the gateway data
+    :type tvlv_value: void \*
 
-    :param u16 tvlv_value_len:
+    :param tvlv_value_len:
         tvlv buffer length
+    :type tvlv_value_len: u16
 
 .. _`batadv_dat_hash_free`:
 
@@ -486,8 +542,9 @@ batadv_dat_hash_free
 
     free the local DAT hash table
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_dat_init`:
 
@@ -498,8 +555,9 @@ batadv_dat_init
 
     initialise the DAT internals
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_dat_init.return`:
 
@@ -517,8 +575,9 @@ batadv_dat_free
 
     free the DAT internals
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_dat_cache_seq_print_text`:
 
@@ -529,11 +588,13 @@ batadv_dat_cache_seq_print_text
 
     print the local DAT hash table
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq file to print on
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_dat_cache_seq_print_text.return`:
 
@@ -551,17 +612,21 @@ batadv_dat_cache_dump_entry
 
     dump one entry of the DAT cache table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink port
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_dat_entry \*dat_entry:
+    :param dat_entry:
         entry to dump
+    :type dat_entry: struct batadv_dat_entry \*
 
 .. _`batadv_dat_cache_dump_entry.return`:
 
@@ -579,20 +644,25 @@ batadv_dat_cache_dump_bucket
 
     dump one bucket of the DAT cache table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink port
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct hlist_head \*head:
+    :param head:
         bucket to dump
+    :type head: struct hlist_head \*
 
-    :param int \*idx_skip:
+    :param idx_skip:
         How many entries to skip
+    :type idx_skip: int \*
 
 .. _`batadv_dat_cache_dump_bucket.return`:
 
@@ -610,11 +680,13 @@ batadv_dat_cache_dump
 
     dump DAT cache table to a netlink socket
 
-    :param struct sk_buff \*msg:
+    :param msg:
         buffer for the message
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         callback structure containing arguments
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_dat_cache_dump.return`:
 
@@ -632,14 +704,17 @@ batadv_arp_get_type
 
     parse an ARP packet and gets the type
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to analyse
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         size of the possible header before the ARP packet in the skb
+    :type hdr_size: int
 
 .. _`batadv_arp_get_type.return`:
 
@@ -657,11 +732,13 @@ batadv_dat_get_vid
 
     extract the VLAN identifier from skb if any
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer containing the packet to extract the VID from
+    :type skb: struct sk_buff \*
 
-    :param int \*hdr_size:
+    :param hdr_size:
         the size of the batman-adv header encapsulating the packet
+    :type hdr_size: int \*
 
 .. _`batadv_dat_get_vid.return`:
 
@@ -681,23 +758,29 @@ batadv_dat_arp_create_reply
 
     create an ARP Reply
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param __be32 ip_src:
+    :param ip_src:
         ARP sender IP
+    :type ip_src: __be32
 
-    :param __be32 ip_dst:
+    :param ip_dst:
         ARP target IP
+    :type ip_dst: __be32
 
-    :param u8 \*hw_src:
+    :param hw_src:
         Ethernet source and ARP sender MAC
+    :type hw_src: u8 \*
 
-    :param u8 \*hw_dst:
+    :param hw_dst:
         Ethernet destination and ARP target MAC
+    :type hw_dst: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier (optional, set to zero otherwise)
+    :type vid: unsigned short
 
 .. _`batadv_dat_arp_create_reply.description`:
 
@@ -723,11 +806,13 @@ batadv_dat_snoop_outgoing_arp_request
 
     snoop the ARP request and try to answer using DAT
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to check
+    :type skb: struct sk_buff \*
 
 .. _`batadv_dat_snoop_outgoing_arp_request.return`:
 
@@ -747,14 +832,17 @@ batadv_dat_snoop_incoming_arp_request
 
     snoop the ARP request and try to answer using the local DAT storage
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to check
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         size of the encapsulation header
+    :type hdr_size: int
 
 .. _`batadv_dat_snoop_incoming_arp_request.return`:
 
@@ -772,11 +860,13 @@ batadv_dat_snoop_outgoing_arp_reply
 
     snoop the ARP reply and fill the DHT
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to check
+    :type skb: struct sk_buff \*
 
 .. _`batadv_dat_snoop_incoming_arp_reply`:
 
@@ -787,14 +877,17 @@ batadv_dat_snoop_incoming_arp_reply
 
     snoop the ARP reply and fill the local DAT storage only
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to check
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         size of the encapsulation header
+    :type hdr_size: int
 
 .. _`batadv_dat_snoop_incoming_arp_reply.return`:
 
@@ -813,11 +906,13 @@ batadv_dat_drop_broadcast_packet
 
     check if an ARP request has to be dropped (because the node has already obtained the reply via DAT) or not
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         the broadcast packet
+    :type forw_packet: struct batadv_forw_packet \*
 
 .. _`batadv_dat_drop_broadcast_packet.return`:
 

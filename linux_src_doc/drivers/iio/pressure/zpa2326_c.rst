@@ -157,8 +157,9 @@ zpa2326_enable_device
 
     Enable device, i.e. get out of low power mode.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the hardware to enable.
+    :type indio_dev: const struct iio_dev \*
 
 .. _`zpa2326_enable_device.description`:
 
@@ -184,8 +185,9 @@ zpa2326_sleep
 
     Disable device, i.e. switch to low power mode.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the hardware to disable.
+    :type indio_dev: const struct iio_dev \*
 
 .. _`zpa2326_sleep.description`:
 
@@ -211,8 +213,9 @@ zpa2326_reset_device
 
     Reset device to default hardware state.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the hardware to reset.
+    :type indio_dev: const struct iio_dev \*
 
 .. _`zpa2326_reset_device.description`:
 
@@ -238,8 +241,9 @@ zpa2326_start_oneshot
 
     Start a single sampling cycle, i.e. in one shot mode.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: const struct iio_dev \*
 
 .. _`zpa2326_start_oneshot.description`:
 
@@ -265,11 +269,13 @@ zpa2326_power_on
 
     Power on device to allow subsequent configuration.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: const struct iio_dev \*
 
-    :param const struct zpa2326_private \*private:
+    :param private:
         Internal private state related to \ ``indio_dev``\ .
+    :type private: const struct zpa2326_private \*
 
 .. _`zpa2326_power_on.description`:
 
@@ -297,11 +303,13 @@ zpa2326_power_off
 
     Power off device, i.e. disable attached power regulators.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: const struct iio_dev \*
 
-    :param const struct zpa2326_private \*private:
+    :param private:
         Internal private state related to \ ``indio_dev``\ .
+    :type private: const struct zpa2326_private \*
 
 .. _`zpa2326_power_off.return`:
 
@@ -319,13 +327,15 @@ zpa2326_config_oneshot
 
     Setup device for one shot / on demand mode.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: const struct iio_dev \*
 
-    :param int irq:
+    :param irq:
         Optional interrupt line the hardware uses to notify new data
         samples are ready. Negative or zero values indicate no interrupts
         are available, meaning polling is required.
+    :type irq: int
 
 .. _`zpa2326_config_oneshot.description`:
 
@@ -356,11 +366,13 @@ zpa2326_clear_fifo
 
     Clear remaining entries in hardware FIFO.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: const struct iio_dev \*
 
-    :param unsigned int min_count:
+    :param min_count:
         Number of samples present within hardware FIFO.
+    :type min_count: unsigned int
 
 .. _`zpa2326_clear_fifo.description`:
 
@@ -388,11 +400,13 @@ zpa2326_dequeue_pressure
 
     Retrieve the most recent pressure sample from hardware FIFO.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: const struct iio_dev \*
 
-    :param u32 \*pressure:
+    :param pressure:
         Sampled pressure output.
+    :type pressure: u32 \*
 
 .. _`zpa2326_dequeue_pressure.description`:
 
@@ -417,11 +431,13 @@ zpa2326_fill_sample_buffer
 
     Enqueue new channel samples to IIO buffer.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: struct iio_dev \*
 
-    :param const struct zpa2326_private \*private:
+    :param private:
         Internal private state related to \ ``indio_dev``\ .
+    :type private: const struct zpa2326_private \*
 
 .. _`zpa2326_fill_sample_buffer.return`:
 
@@ -439,8 +455,9 @@ zpa2326_resume
 
     Request the PM layer to power supply the device.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: const struct iio_dev \*
 
 .. _`zpa2326_resume.return`:
 
@@ -460,8 +477,9 @@ zpa2326_suspend
 
     Schedule a power down using autosuspend feature of PM layer.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: struct iio_dev \*
 
 .. _`zpa2326_suspend.description`:
 
@@ -480,11 +498,13 @@ zpa2326_handle_irq
 
     Process hardware interrupts.
 
-    :param int irq:
+    :param irq:
         Interrupt line the hardware uses to notify new data has arrived.
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         The IIO device associated with the sampling hardware.
+    :type data: void \*
 
 .. _`zpa2326_handle_irq.description`:
 
@@ -510,11 +530,13 @@ zpa2326_handle_threaded_irq
 
     Interrupt bottom-half handler.
 
-    :param int irq:
+    :param irq:
         Interrupt line the hardware uses to notify new data has arrived.
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         The IIO device associated with the sampling hardware.
+    :type data: void \*
 
 .. _`zpa2326_handle_threaded_irq.description`:
 
@@ -555,11 +577,13 @@ zpa2326_wait_oneshot_completion
 
     Wait for oneshot data ready interrupt.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: const struct iio_dev \*
 
-    :param struct zpa2326_private \*private:
+    :param private:
         Internal private state related to \ ``indio_dev``\ .
+    :type private: struct zpa2326_private \*
 
 .. _`zpa2326_wait_oneshot_completion.return`:
 
@@ -577,8 +601,9 @@ zpa2326_poll_oneshot_completion
 
     Actively poll for one shot data ready.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: const struct iio_dev \*
 
 .. _`zpa2326_poll_oneshot_completion.description`:
 
@@ -604,14 +629,17 @@ zpa2326_fetch_raw_sample
 
     Retrieve a raw sample and convert it to CPU endianness.
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: const struct iio_dev \*
 
-    :param enum iio_chan_type type:
+    :param type:
         Type of measurement / channel to fetch from.
+    :type type: enum iio_chan_type
 
-    :param int \*value:
+    :param value:
         Sample output.
+    :type value: int \*
 
 .. _`zpa2326_fetch_raw_sample.return`:
 
@@ -629,14 +657,17 @@ zpa2326_sample_oneshot
 
     Perform a complete one shot sampling cycle.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: struct iio_dev \*
 
-    :param enum iio_chan_type type:
+    :param type:
         Type of measurement / channel to fetch from.
+    :type type: enum iio_chan_type
 
-    :param int \*value:
+    :param value:
         Sample output.
+    :type value: int \*
 
 .. _`zpa2326_sample_oneshot.return`:
 
@@ -654,12 +685,14 @@ zpa2326_trigger_handler
 
     Perform an IIO buffered sampling round in one shot mode.
 
-    :param int irq:
+    :param irq:
         The software interrupt assigned to \ ``data``\ 
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         The IIO poll function dispatched by external trigger our device is
         attached to.
+    :type data: void \*
 
 .. _`zpa2326_trigger_handler.description`:
 
@@ -699,8 +732,9 @@ zpa2326_preenable_buffer
 
     Prepare device for configuring triggered sampling modes.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: struct iio_dev \*
 
 .. _`zpa2326_preenable_buffer.description`:
 
@@ -726,8 +760,9 @@ zpa2326_postenable_buffer
 
     Configure device for triggered sampling.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: struct iio_dev \*
 
 .. _`zpa2326_postenable_buffer.description`:
 
@@ -760,12 +795,14 @@ zpa2326_set_trigger_state
 
     Start / stop continuous sampling.
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         The trigger being attached to IIO device associated with the sampling
         hardware.
+    :type trig: struct iio_trigger \*
 
-    :param bool state:
+    :param state:
         Tell whether to start (true) or stop (false)
+    :type state: bool
 
 .. _`zpa2326_set_trigger_state.description`:
 
@@ -792,19 +829,23 @@ zpa2326_init_managed_trigger
 
     Create an interrupt driven / hardware trigger allowing to notify external devices a new sample is ready.
 
-    :param struct device \*parent:
+    :param parent:
         Hardware sampling device \ ``indio_dev``\  is a child of.
+    :type parent: struct device \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device associated with the sampling hardware.
+    :type indio_dev: struct iio_dev \*
 
-    :param struct zpa2326_private \*private:
+    :param private:
         Internal private state related to \ ``indio_dev``\ .
+    :type private: struct zpa2326_private \*
 
-    :param int irq:
+    :param irq:
         Optional interrupt line the hardware uses to notify new data
         samples are ready. Negative or zero values indicate no interrupts
         are available, meaning polling is required.
+    :type irq: int
 
 .. _`zpa2326_init_managed_trigger.description`:
 

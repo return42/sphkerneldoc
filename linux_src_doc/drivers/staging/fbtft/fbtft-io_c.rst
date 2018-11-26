@@ -10,14 +10,17 @@ fbtft_write_spi_emulate_9
 
     write SPI emulating 9-bit
 
-    :param struct fbtft_par \*par:
+    :param par:
         Driver data
+    :type par: struct fbtft_par \*
 
-    :param void \*buf:
+    :param buf:
         Buffer to write
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         Length of buffer (must be divisible by 8)
+    :type len: size_t
 
 .. _`fbtft_write_spi_emulate_9.description`:
 

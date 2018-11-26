@@ -31,11 +31,13 @@ fsl_ssi_isr
 
 .. c:function:: irqreturn_t fsl_ssi_isr(int irq, void *dev_id)
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: void \*
 
 .. _`fsl_ssi_config_enable`:
 
@@ -44,11 +46,13 @@ fsl_ssi_config_enable
 
 .. c:function:: void fsl_ssi_config_enable(struct fsl_ssi *ssi, bool tx)
 
-    :param struct fsl_ssi \*ssi:
+    :param ssi:
         *undescribed*
+    :type ssi: struct fsl_ssi \*
 
-    :param bool tx:
+    :param tx:
         *undescribed*
+    :type tx: bool
 
 .. _`fsl_ssi_config_enable.notes`:
 
@@ -66,14 +70,17 @@ when 1st stream starts, even if the opposite stream will not start
 
 .. c:function::  _ssi_xor_shared_bits( vals,  avals,  aactive)
 
-    :param  vals:
+    :param vals:
         regvals of the current stream
+    :type vals: 
 
-    :param  avals:
+    :param avals:
         regvals of the opposite stream
+    :type avals: 
 
-    :param  aactive:
+    :param aactive:
         active state of the opposite stream
+    :type aactive: 
 
 .. _`_ssi_xor_shared_bits.description`:
 
@@ -94,11 +101,13 @@ fsl_ssi_config_disable
 
 .. c:function:: void fsl_ssi_config_disable(struct fsl_ssi *ssi, bool tx)
 
-    :param struct fsl_ssi \*ssi:
+    :param ssi:
         *undescribed*
+    :type ssi: struct fsl_ssi \*
 
-    :param bool tx:
+    :param tx:
         *undescribed*
+    :type tx: bool
 
 .. _`fsl_ssi_config_disable.notes`:
 
@@ -116,8 +125,9 @@ fsl_ssi_setup_regvals
 
 .. c:function:: void fsl_ssi_setup_regvals(struct fsl_ssi *ssi)
 
-    :param struct fsl_ssi \*ssi:
+    :param ssi:
         *undescribed*
+    :type ssi: struct fsl_ssi \*
 
 .. _`fsl_ssi_set_bclk`:
 
@@ -126,14 +136,17 @@ fsl_ssi_set_bclk
 
 .. c:function:: int fsl_ssi_set_bclk(struct snd_pcm_substream *substream, struct snd_soc_dai *dai, struct snd_pcm_hw_params *hw_params)
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         *undescribed*
+    :type dai: struct snd_soc_dai \*
 
-    :param struct snd_pcm_hw_params \*hw_params:
+    :param hw_params:
         *undescribed*
+    :type hw_params: struct snd_pcm_hw_params \*
 
 .. _`fsl_ssi_set_bclk.note`:
 
@@ -157,14 +170,17 @@ fsl_ssi_hw_params
 
 .. c:function:: int fsl_ssi_hw_params(struct snd_pcm_substream *substream, struct snd_pcm_hw_params *hw_params, struct snd_soc_dai *dai)
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*hw_params:
+    :param hw_params:
         *undescribed*
+    :type hw_params: struct snd_pcm_hw_params \*
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         *undescribed*
+    :type dai: struct snd_soc_dai \*
 
 .. _`fsl_ssi_hw_params.notes`:
 
@@ -185,11 +201,13 @@ fsl_ssi_set_dai_fmt
 
 .. c:function:: int fsl_ssi_set_dai_fmt(struct snd_soc_dai *dai, unsigned int fmt)
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         *undescribed*
+    :type dai: struct snd_soc_dai \*
 
-    :param unsigned int fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: unsigned int
 
 .. _`fsl_ssi_set_dai_tdm_slot`:
 
@@ -198,20 +216,25 @@ fsl_ssi_set_dai_tdm_slot
 
 .. c:function:: int fsl_ssi_set_dai_tdm_slot(struct snd_soc_dai *dai, u32 tx_mask, u32 rx_mask, int slots, int slot_width)
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         *undescribed*
+    :type dai: struct snd_soc_dai \*
 
-    :param u32 tx_mask:
+    :param tx_mask:
         *undescribed*
+    :type tx_mask: u32
 
-    :param u32 rx_mask:
+    :param rx_mask:
         *undescribed*
+    :type rx_mask: u32
 
-    :param int slots:
+    :param slots:
         *undescribed*
+    :type slots: int
 
-    :param int slot_width:
+    :param slot_width:
         *undescribed*
+    :type slot_width: int
 
 .. _`fsl_ssi_trigger`:
 
@@ -220,14 +243,17 @@ fsl_ssi_trigger
 
 .. c:function:: int fsl_ssi_trigger(struct snd_pcm_substream *substream, int cmd, struct snd_soc_dai *dai)
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         *undescribed*
+    :type dai: struct snd_soc_dai \*
 
 .. _`fsl_ssi_trigger.description`:
 
@@ -244,8 +270,9 @@ fsl_ssi_hw_init
 
 .. c:function:: int fsl_ssi_hw_init(struct fsl_ssi *ssi)
 
-    :param struct fsl_ssi \*ssi:
+    :param ssi:
         *undescribed*
+    :type ssi: struct fsl_ssi \*
 
 .. _`fsl_ssi_hw_clean`:
 
@@ -254,8 +281,9 @@ fsl_ssi_hw_clean
 
 .. c:function:: void fsl_ssi_hw_clean(struct fsl_ssi *ssi)
 
-    :param struct fsl_ssi \*ssi:
+    :param ssi:
         *undescribed*
+    :type ssi: struct fsl_ssi \*
 
 .. _`make_lowercase`:
 
@@ -266,8 +294,9 @@ make_lowercase
 
     case
 
-    :param char \*s:
+    :param s:
         *undescribed*
+    :type s: char \*
 
 .. This file was automatic generated / don't edit.
 

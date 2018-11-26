@@ -10,8 +10,9 @@ con_set_default_unimap
 
     set default unicode map
 
-    :param struct vc_data \*vc:
+    :param vc:
         the console we are updating
+    :type vc: struct vc_data \*
 
 .. _`con_set_default_unimap.description`:
 
@@ -34,11 +35,13 @@ con_copy_unimap
 
     copy unimap between two vts
 
-    :param struct vc_data \*dst_vc:
+    :param dst_vc:
         target
+    :type dst_vc: struct vc_data \*
 
-    :param struct vc_data \*src_vc:
+    :param src_vc:
         *undescribed*
+    :type src_vc: struct vc_data \*
 
 .. _`con_copy_unimap.description`:
 
@@ -56,17 +59,21 @@ con_get_unimap
 
     get the unicode map
 
-    :param struct vc_data \*vc:
+    :param vc:
         the console to read from
+    :type vc: struct vc_data \*
 
-    :param ushort ct:
+    :param ct:
         *undescribed*
+    :type ct: ushort
 
-    :param ushort __user \*uct:
+    :param uct:
         *undescribed*
+    :type uct: ushort __user \*
 
-    :param struct unipair __user \*list:
+    :param list:
         *undescribed*
+    :type list: struct unipair __user \*
 
 .. _`con_get_unimap.description`:
 

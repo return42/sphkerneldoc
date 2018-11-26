@@ -10,8 +10,9 @@ psb_intel_panel_fitter_pipe
 
     or -1 if the panel fitter is not present or not in use
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`mdfld_crtc_dpms`:
 
@@ -20,11 +21,13 @@ mdfld_crtc_dpms
 
 .. c:function:: void mdfld_crtc_dpms(struct drm_crtc *crtc, int mode)
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
+    :type crtc: struct drm_crtc \*
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
 .. _`mdfld_crtc_dpms.description`:
 
@@ -43,17 +46,21 @@ mdfldFindBestPLL
 
     or FALSE.  Divisor values are the actual divisors for
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
+    :type crtc: struct drm_crtc \*
 
-    :param int target:
+    :param target:
         *undescribed*
+    :type target: int
 
-    :param int refclk:
+    :param refclk:
         *undescribed*
+    :type refclk: int
 
-    :param struct mrst_clock_t \*best_clock:
+    :param best_clock:
         *undescribed*
+    :type best_clock: struct mrst_clock_t \*
 
 .. This file was automatic generated / don't edit.
 

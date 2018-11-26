@@ -10,11 +10,13 @@ adis_setup_buffer_and_trigger
 
     Sets up buffer and trigger for the adis device
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device.
+    :type adis: struct adis \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device.
+    :type indio_dev: struct iio_dev \*
 
     :param irqreturn_t (\*trigger_handler)(int, void \*):
         Optional trigger handler, may be NULL.
@@ -43,11 +45,13 @@ adis_cleanup_buffer_and_trigger
 
     Free buffer and trigger resources
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device.
+    :type adis: struct adis \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device.
+    :type indio_dev: struct iio_dev \*
 
 .. _`adis_cleanup_buffer_and_trigger.description`:
 

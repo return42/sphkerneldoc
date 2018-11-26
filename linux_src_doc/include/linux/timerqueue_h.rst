@@ -10,8 +10,9 @@ timerqueue_getnext
 
     Returns the timer with the earliest expiration time
 
-    :param struct timerqueue_head \*head:
+    :param head:
         head of timerqueue
+    :type head: struct timerqueue_head \*
 
 .. _`timerqueue_getnext.description`:
 

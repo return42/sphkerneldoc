@@ -10,8 +10,9 @@
 
     perform a sync point for a particular cache level
 
-    :param struct uniphier_cache_data \*data:
+    :param data:
         cache controller specific data
+    :type data: struct uniphier_cache_data \*
 
 .. _`__uniphier_cache_maint_common`:
 
@@ -22,17 +23,21 @@
 
     run a queue operation for a particular level
 
-    :param struct uniphier_cache_data \*data:
+    :param data:
         cache controller specific data
+    :type data: struct uniphier_cache_data \*
 
-    :param unsigned long start:
+    :param start:
         start address of range operation (don't care for "all" operation)
+    :type start: unsigned long
 
-    :param unsigned long size:
+    :param size:
         data size of range operation (don't care for "all" operation)
+    :type size: unsigned long
 
-    :param u32 operation:
+    :param operation:
         flags to specify the desired cache operation
+    :type operation: u32
 
 .. This file was automatic generated / don't edit.
 

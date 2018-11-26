@@ -10,11 +10,13 @@ load_elf_phdrs
 
     load ELF program headers
 
-    :param struct elfhdr \*elf_ex:
+    :param elf_ex:
         ELF header of the binary whose program headers should be loaded
+    :type elf_ex: struct elfhdr \*
 
-    :param struct file \*elf_file:
+    :param elf_file:
         the opened ELF binary file
+    :type elf_file: struct file \*
 
 .. _`load_elf_phdrs.description`:
 
@@ -74,22 +76,27 @@ arch_elf_pt_proc
 
     check a PT_LOPROC..PT_HIPROC ELF program header
 
-    :param struct elfhdr \*ehdr:
+    :param ehdr:
         The main ELF header
+    :type ehdr: struct elfhdr \*
 
-    :param struct elf_phdr \*phdr:
+    :param phdr:
         The program header to check
+    :type phdr: struct elf_phdr \*
 
-    :param struct file \*elf:
+    :param elf:
         The open ELF file
+    :type elf: struct file \*
 
-    :param bool is_interp:
+    :param is_interp:
         True if the phdr is from the interpreter of the ELF being
         loaded, else false.
+    :type is_interp: bool
 
-    :param struct arch_elf_state \*state:
+    :param state:
         Architecture-specific state preserved throughout the process
         of loading the ELF.
+    :type state: struct arch_elf_state \*
 
 .. _`arch_elf_pt_proc.description`:
 
@@ -118,18 +125,22 @@ arch_check_elf
 
     check an ELF executable
 
-    :param struct elfhdr \*ehdr:
+    :param ehdr:
         The main ELF header
+    :type ehdr: struct elfhdr \*
 
-    :param bool has_interp:
+    :param has_interp:
         True if the ELF has an interpreter, else false.
+    :type has_interp: bool
 
-    :param struct elfhdr \*interp_ehdr:
+    :param interp_ehdr:
         The interpreter's ELF header
+    :type interp_ehdr: struct elfhdr \*
 
-    :param struct arch_elf_state \*state:
+    :param state:
         Architecture-specific state preserved throughout the process
         of loading the ELF.
+    :type state: struct arch_elf_state \*
 
 .. _`arch_check_elf.description`:
 

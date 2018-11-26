@@ -10,17 +10,21 @@ __get_pfnblock_flags_mask
 
     Return the requested group of flags for the pageblock_nr_pages block of pages
 
-    :param struct page \*page:
+    :param page:
         The page within the block of interest
+    :type page: struct page \*
 
-    :param unsigned long pfn:
+    :param pfn:
         The target page frame number
+    :type pfn: unsigned long
 
-    :param unsigned long end_bitidx:
+    :param end_bitidx:
         The last bit of interest to retrieve
+    :type end_bitidx: unsigned long
 
-    :param unsigned long mask:
+    :param mask:
         mask of bits that the caller is interested in
+    :type mask: unsigned long
 
 .. _`__get_pfnblock_flags_mask.return`:
 
@@ -38,20 +42,25 @@ set_pfnblock_flags_mask
 
     Set the requested group of flags for a pageblock_nr_pages block of pages
 
-    :param struct page \*page:
+    :param page:
         The page within the block of interest
+    :type page: struct page \*
 
-    :param unsigned long flags:
+    :param flags:
         The flags to set
+    :type flags: unsigned long
 
-    :param unsigned long pfn:
+    :param pfn:
         The target page frame number
+    :type pfn: unsigned long
 
-    :param unsigned long end_bitidx:
+    :param end_bitidx:
         The last bit of interest
+    :type end_bitidx: unsigned long
 
-    :param unsigned long mask:
+    :param mask:
         mask of bits that the caller is interested in
+    :type mask: unsigned long
 
 .. _`alloc_pages_exact`:
 
@@ -62,11 +71,13 @@ alloc_pages_exact
 
     allocate an exact number physically-contiguous pages.
 
-    :param size_t size:
+    :param size:
         the number of bytes to allocate
+    :type size: size_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         GFP flags for the allocation
+    :type gfp_mask: gfp_t
 
 .. _`alloc_pages_exact.description`:
 
@@ -90,14 +101,17 @@ alloc_pages_exact_nid
 
     allocate an exact number of physically-contiguous pages on a node.
 
-    :param int nid:
+    :param nid:
         the preferred node ID where memory should be allocated
+    :type nid: int
 
-    :param size_t size:
+    :param size:
         the number of bytes to allocate
+    :type size: size_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         GFP flags for the allocation
+    :type gfp_mask: gfp_t
 
 .. _`alloc_pages_exact_nid.description`:
 
@@ -116,11 +130,13 @@ free_pages_exact
 
     release memory allocated via \ :c:func:`alloc_pages_exact`\ 
 
-    :param void \*virt:
+    :param virt:
         the value returned by alloc_pages_exact.
+    :type virt: void \*
 
-    :param size_t size:
+    :param size:
         size of allocation, same value as passed to \ :c:func:`alloc_pages_exact`\ .
+    :type size: size_t
 
 .. _`free_pages_exact.description`:
 
@@ -138,8 +154,9 @@ nr_free_zone_pages
 
     count number of pages beyond high watermark
 
-    :param int offset:
+    :param offset:
         The zone index of the highest zone
+    :type offset: int
 
 .. _`nr_free_zone_pages.description`:
 
@@ -161,8 +178,9 @@ nr_free_buffer_pages
 
     count number of pages beyond high watermark
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nr_free_buffer_pages.description`:
 
@@ -181,8 +199,9 @@ nr_free_pagecache_pages
 
     count number of pages beyond high watermark
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nr_free_pagecache_pages.description`:
 
@@ -201,11 +220,13 @@ find_next_best_node
 
     find the next node that should appear in a given node's fallback list
 
-    :param int node:
+    :param node:
         node whose fallback list we're appending
+    :type node: int
 
-    :param nodemask_t \*used_node_mask:
+    :param used_node_mask:
         nodemask_t of already used nodes
+    :type used_node_mask: nodemask_t \*
 
 .. _`find_next_best_node.description`:
 
@@ -230,11 +251,13 @@ free_bootmem_with_active_regions
 
     Call memblock_free_early_nid for each active range
 
-    :param int nid:
+    :param nid:
         The node to free memory on. If MAX_NUMNODES, all nodes are freed.
+    :type nid: int
 
-    :param unsigned long max_low_pfn:
+    :param max_low_pfn:
         The highest PFN that will be passed to memblock_free_early_nid
+    :type max_low_pfn: unsigned long
 
 .. _`free_bootmem_with_active_regions.description`:
 
@@ -254,8 +277,9 @@ sparse_memory_present_with_active_regions
 
     Call memory_present for each active range
 
-    :param int nid:
+    :param nid:
         The node to call memory_present for. If MAX_NUMNODES, all nodes will be used.
+    :type nid: int
 
 .. _`sparse_memory_present_with_active_regions.description`:
 
@@ -274,14 +298,17 @@ get_pfn_range_for_nid
 
     Return the start and end page frames for a node
 
-    :param unsigned int nid:
+    :param nid:
         The nid to return the range for. If MAX_NUMNODES, the min and max PFN are returned.
+    :type nid: unsigned int
 
-    :param unsigned long \*start_pfn:
+    :param start_pfn:
         Passed by reference. On return, it will have the node start_pfn.
+    :type start_pfn: unsigned long \*
 
-    :param unsigned long \*end_pfn:
+    :param end_pfn:
         Passed by reference. On return, it will have the node end_pfn.
+    :type end_pfn: unsigned long \*
 
 .. _`get_pfn_range_for_nid.description`:
 
@@ -302,11 +329,13 @@ absent_pages_in_range
 
     Return number of page frames in holes within a range
 
-    :param unsigned long start_pfn:
+    :param start_pfn:
         The start PFN to start searching for holes
+    :type start_pfn: unsigned long
 
-    :param unsigned long end_pfn:
+    :param end_pfn:
         The end PFN to stop searching for holes
+    :type end_pfn: unsigned long
 
 .. _`absent_pages_in_range.description`:
 
@@ -324,8 +353,9 @@ node_map_pfn_alignment
 
     determine the maximum internode alignment
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`node_map_pfn_alignment.description`:
 
@@ -357,8 +387,9 @@ find_min_pfn_with_active_regions
 
     Find the minimum PFN registered
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`find_min_pfn_with_active_regions.description`:
 
@@ -377,8 +408,9 @@ free_area_init_nodes
 
     Initialise all pg_data_t and zone data
 
-    :param unsigned long \*max_zone_pfn:
+    :param max_zone_pfn:
         an array of max PFNs for each zone
+    :type max_zone_pfn: unsigned long \*
 
 .. _`free_area_init_nodes.description`:
 
@@ -403,8 +435,9 @@ set_dma_reserve
 
     set the specified number of pages reserved in the first zone
 
-    :param unsigned long new_dma_reserve:
+    :param new_dma_reserve:
         The number of pages to mark reserved
+    :type new_dma_reserve: unsigned long
 
 .. _`set_dma_reserve.description`:
 
@@ -427,8 +460,9 @@ setup_per_zone_wmarks
 
     called when min_free_kbytes changes or when memory is hot-{added|removed}
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`setup_per_zone_wmarks.description`:
 
@@ -447,20 +481,24 @@ alloc_contig_range
 
     - tries to allocate given range of pages
 
-    :param unsigned long start:
+    :param start:
         start PFN to allocate
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         one-past-the-last PFN to allocate
+    :type end: unsigned long
 
-    :param unsigned migratetype:
+    :param migratetype:
         migratetype of the underlaying pageblocks (either
         #MIGRATE_MOVABLE or #MIGRATE_CMA).  All pageblocks
         in range must have the same migratetype and it must
         be either of the two.
+    :type migratetype: unsigned
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         GFP mask to use during compaction
+    :type gfp_mask: gfp_t
 
 .. _`alloc_contig_range.description`:
 

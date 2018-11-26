@@ -31,20 +31,25 @@ MRAID_GET_DEVICE_MAP
 
     device ids
 
-    :param  adp:
+    :param adp:
         adapter's soft state
+    :type adp: 
 
-    :param  scp:
+    :param scp:
         mid-layer scsi command pointer
+    :type scp: 
 
-    :param  p_chan:
+    :param p_chan:
         physical channel on the controller
+    :type p_chan: 
 
-    :param  target:
+    :param target:
         target id of the device or logical drive number
+    :type target: 
 
-    :param  islogical:
+    :param islogical:
         set if the command is for the logical drive
+    :type islogical: 
 
 .. _`mraid_get_device_map.description`:
 

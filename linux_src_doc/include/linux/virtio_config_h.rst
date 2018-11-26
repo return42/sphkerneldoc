@@ -10,8 +10,9 @@ vq_callback_t
 
     operations for configuring a virtio device
 
-    :param struct virtqueue \*:
+    :param :
         *undescribed*
+    :type : struct virtqueue \*
 
 .. _`vq_callback_t.vdev`:
 
@@ -129,11 +130,13 @@ Returns 0 on success or error status
 
     helper to test feature bits. For use by transports. Devices should normally use virtio_has_feature, which includes more checks.
 
-    :param const struct virtio_device \*vdev:
+    :param vdev:
         the device
+    :type vdev: const struct virtio_device \*
 
-    :param unsigned int fbit:
+    :param fbit:
         the feature bit
+    :type fbit: unsigned int
 
 .. _`__virtio_set_bit`:
 
@@ -144,11 +147,13 @@ Returns 0 on success or error status
 
     helper to set feature bits. For use by transports.
 
-    :param struct virtio_device \*vdev:
+    :param vdev:
         the device
+    :type vdev: struct virtio_device \*
 
-    :param unsigned int fbit:
+    :param fbit:
         the feature bit
+    :type fbit: unsigned int
 
 .. _`__virtio_clear_bit`:
 
@@ -159,11 +164,13 @@ Returns 0 on success or error status
 
     helper to clear feature bits. For use by transports.
 
-    :param struct virtio_device \*vdev:
+    :param vdev:
         the device
+    :type vdev: struct virtio_device \*
 
-    :param unsigned int fbit:
+    :param fbit:
         the feature bit
+    :type fbit: unsigned int
 
 .. _`virtio_has_feature`:
 
@@ -174,11 +181,13 @@ virtio_has_feature
 
     helper to determine if this device has this feature.
 
-    :param const struct virtio_device \*vdev:
+    :param vdev:
         the device
+    :type vdev: const struct virtio_device \*
 
-    :param unsigned int fbit:
+    :param fbit:
         the feature bit
+    :type fbit: unsigned int
 
 .. _`virtio_has_iommu_quirk`:
 
@@ -189,8 +198,9 @@ virtio_has_iommu_quirk
 
     determine whether this device has the iommu quirk
 
-    :param const struct virtio_device \*vdev:
+    :param vdev:
         the device
+    :type vdev: const struct virtio_device \*
 
 .. _`virtio_device_ready`:
 
@@ -201,8 +211,9 @@ virtio_device_ready
 
     enable vq use in probe function
 
-    :param struct virtio_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct virtio_device \*
 
 .. _`virtio_device_ready.description`:
 
@@ -223,15 +234,17 @@ vqs are enabled automatically after probe returns.
 virtqueue_set_affinity
 ======================
 
-.. c:function:: int virtqueue_set_affinity(struct virtqueue *vq, int cpu)
+.. c:function:: int virtqueue_set_affinity(struct virtqueue *vq, const struct cpumask *cpu_mask)
 
     setting affinity for a virtqueue
 
-    :param struct virtqueue \*vq:
+    :param vq:
         the virtqueue
+    :type vq: struct virtqueue \*
 
-    :param int cpu:
-        the cpu no.
+    :param cpu_mask:
+        *undescribed*
+    :type cpu_mask: const struct cpumask \*
 
 .. _`virtqueue_set_affinity.description`:
 

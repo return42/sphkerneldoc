@@ -10,8 +10,9 @@ main
 
     entry point for SPU-side context save.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`main.this-code-deviates-from-the-documented-sequence-as-follows`:
 

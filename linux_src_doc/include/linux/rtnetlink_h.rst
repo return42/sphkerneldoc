@@ -10,8 +10,9 @@ rcu_dereference_rtnl
 
     rcu_dereference with debug checking
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
 .. _`rcu_dereference_rtnl.description`:
 
@@ -30,8 +31,9 @@ rcu_dereference_bh_rtnl
 
     rcu_dereference_bh with debug checking
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereference
+    :type p: 
 
 .. _`rcu_dereference_bh_rtnl.description`:
 
@@ -50,8 +52,9 @@ rtnl_dereference
 
     fetch RCU pointer when updates are prevented by RTNL
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
 .. _`rtnl_dereference.description`:
 

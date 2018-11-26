@@ -10,18 +10,22 @@ hisi_sas_internal_task_abort
 
     - execute an internal abort command for single IO command or a device
 
-    :param struct hisi_hba \*hisi_hba:
+    :param hisi_hba:
         host controller struct
+    :type hisi_hba: struct hisi_hba \*
 
-    :param struct domain_device \*device:
+    :param device:
         domain device
+    :type device: struct domain_device \*
 
-    :param int abort_flag:
+    :param abort_flag:
         mode of operation, device or single IO
+    :type abort_flag: int
 
-    :param int tag:
+    :param tag:
         tag of IO to be aborted (only relevant to single
         IO mode)
+    :type tag: int
 
 .. This file was automatic generated / don't edit.
 

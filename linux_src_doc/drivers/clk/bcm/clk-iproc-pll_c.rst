@@ -10,8 +10,9 @@ iproc_pll_sw_cfg
 
     applied to the PLL
 
-    :param struct iproc_pll \*pll:
+    :param pll:
         *undescribed*
+    :type pll: struct iproc_pll \*
 
 .. This file was automatic generated / don't edit.
 

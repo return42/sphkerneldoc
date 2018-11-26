@@ -10,14 +10,17 @@ batadv_test_bit
 
     check if bit is set in the current window
 
-    :param const unsigned long \*seq_bits:
+    :param seq_bits:
         pointer to the sequence number receive packet
+    :type seq_bits: const unsigned long \*
 
-    :param u32 last_seqno:
+    :param last_seqno:
         latest sequence number in seq_bits
+    :type last_seqno: u32
 
-    :param u32 curr_seqno:
+    :param curr_seqno:
         sequence number to test for
+    :type curr_seqno: u32
 
 .. _`batadv_test_bit.return`:
 
@@ -36,11 +39,13 @@ batadv_set_bit
 
     Turn corresponding bit on, so we can remember that we got the packet
 
-    :param unsigned long \*seq_bits:
+    :param seq_bits:
         bitmap of the packet receive window
+    :type seq_bits: unsigned long \*
 
-    :param s32 n:
+    :param n:
         relative sequence number of newly received packet
+    :type n: s32
 
 .. This file was automatic generated / don't edit.
 

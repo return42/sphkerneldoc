@@ -8,26 +8,33 @@ fc_fill_fc_hdr
 
 .. c:function:: void fc_fill_fc_hdr(struct fc_frame *fp, enum fc_rctl r_ctl, u32 did, u32 sid, enum fc_fh_type type, u32 f_ctl, u32 parm_offset)
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
-    :param enum fc_rctl r_ctl:
+    :param r_ctl:
         *undescribed*
+    :type r_ctl: enum fc_rctl
 
-    :param u32 did:
+    :param did:
         *undescribed*
+    :type did: u32
 
-    :param u32 sid:
+    :param sid:
         *undescribed*
+    :type sid: u32
 
-    :param enum fc_fh_type type:
+    :param type:
         *undescribed*
+    :type type: enum fc_fh_type
 
-    :param u32 f_ctl:
+    :param f_ctl:
         *undescribed*
+    :type f_ctl: u32
 
-    :param u32 parm_offset:
+    :param parm_offset:
         *undescribed*
+    :type parm_offset: u32
 
 .. _`fc_adisc_fill`:
 
@@ -38,11 +45,13 @@ fc_adisc_fill
 
     Fill in adisc request frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         local port.
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         fc frame where payload will be placed.
+    :type fp: struct fc_frame \*
 
 .. _`fc_ct_hdr_fill`:
 
@@ -53,20 +62,25 @@ fc_ct_hdr_fill
 
     fills ct header and reset ct payload returns pointer to ct request.
 
-    :param const struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: const struct fc_frame \*
 
-    :param unsigned int op:
+    :param op:
         *undescribed*
+    :type op: unsigned int
 
-    :param size_t req_size:
+    :param req_size:
         *undescribed*
+    :type req_size: size_t
 
-    :param enum fc_ct_fs_type fs_type:
+    :param fs_type:
         *undescribed*
+    :type fs_type: enum fc_ct_fs_type
 
-    :param u8 subtype:
+    :param subtype:
         *undescribed*
+    :type subtype: u8
 
 .. _`fc_ct_ns_fill`:
 
@@ -77,23 +91,29 @@ fc_ct_ns_fill
 
     Fill in a name service request frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         local port.
+    :type lport: struct fc_lport \*
 
-    :param u32 fc_id:
+    :param fc_id:
         FC_ID of non-destination rport for GPN_ID and similar inquiries.
+    :type fc_id: u32
 
-    :param struct fc_frame \*fp:
+    :param fp:
         frame to contain payload.
+    :type fp: struct fc_frame \*
 
-    :param unsigned int op:
+    :param op:
         CT opcode.
+    :type op: unsigned int
 
-    :param enum fc_rctl \*r_ctl:
+    :param r_ctl:
         pointer to FC header R_CTL.
+    :type r_ctl: enum fc_rctl \*
 
-    :param enum fc_fh_type \*fh_type:
+    :param fh_type:
         pointer to FC-4 type.
+    :type fh_type: enum fc_fh_type \*
 
 .. _`fc_ct_ms_fill`:
 
@@ -104,23 +124,29 @@ fc_ct_ms_fill
 
     Fill in a mgmt service request frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         local port.
+    :type lport: struct fc_lport \*
 
-    :param u32 fc_id:
+    :param fc_id:
         FC_ID of non-destination rport for GPN_ID and similar inquiries.
+    :type fc_id: u32
 
-    :param struct fc_frame \*fp:
+    :param fp:
         frame to contain payload.
+    :type fp: struct fc_frame \*
 
-    :param unsigned int op:
+    :param op:
         CT opcode.
+    :type op: unsigned int
 
-    :param enum fc_rctl \*r_ctl:
+    :param r_ctl:
         pointer to FC header R_CTL.
+    :type r_ctl: enum fc_rctl \*
 
-    :param enum fc_fh_type \*fh_type:
+    :param fh_type:
         pointer to FC-4 type.
+    :type fh_type: enum fc_fh_type \*
 
 .. _`fc_ct_fill`:
 
@@ -131,26 +157,33 @@ fc_ct_fill
 
     Fill in a common transport service request frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         local port.
+    :type lport: struct fc_lport \*
 
-    :param u32 fc_id:
+    :param fc_id:
         FC_ID of non-destination rport for GPN_ID and similar inquiries.
+    :type fc_id: u32
 
-    :param struct fc_frame \*fp:
+    :param fp:
         frame to contain payload.
+    :type fp: struct fc_frame \*
 
-    :param unsigned int op:
+    :param op:
         CT opcode.
+    :type op: unsigned int
 
-    :param enum fc_rctl \*r_ctl:
+    :param r_ctl:
         pointer to FC header R_CTL.
+    :type r_ctl: enum fc_rctl \*
 
-    :param enum fc_fh_type \*fh_type:
+    :param fh_type:
         pointer to FC-4 type.
+    :type fh_type: enum fc_fh_type \*
 
-    :param u32 \*did:
+    :param did:
         *undescribed*
+    :type did: u32 \*
 
 .. _`fc_plogi_fill`:
 
@@ -161,14 +194,17 @@ fc_plogi_fill
 
     Fill in plogi request frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
-    :param unsigned int op:
+    :param op:
         *undescribed*
+    :type op: unsigned int
 
 .. _`fc_flogi_fill`:
 
@@ -179,11 +215,13 @@ fc_flogi_fill
 
     Fill in a flogi request frame.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
 .. _`fc_fdisc_fill`:
 
@@ -194,11 +232,13 @@ fc_fdisc_fill
 
     Fill in a fdisc request frame.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
 .. _`fc_logo_fill`:
 
@@ -209,11 +249,13 @@ fc_logo_fill
 
     Fill in a logo request frame.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
 .. _`fc_rtv_fill`:
 
@@ -224,11 +266,13 @@ fc_rtv_fill
 
     Fill in RTV (read timeout value) request frame.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
 .. _`fc_rec_fill`:
 
@@ -239,11 +283,13 @@ fc_rec_fill
 
     Fill in rec request frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
 .. _`fc_prli_fill`:
 
@@ -254,11 +300,13 @@ fc_prli_fill
 
     Fill in prli request frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
 .. _`fc_scr_fill`:
 
@@ -269,11 +317,13 @@ fc_scr_fill
 
     Fill in a scr request frame.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
 .. _`fc_els_fill`:
 
@@ -284,23 +334,29 @@ fc_els_fill
 
     Fill in an ELS  request frame
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param u32 did:
+    :param did:
         *undescribed*
+    :type did: u32
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
-    :param unsigned int op:
+    :param op:
         *undescribed*
+    :type op: unsigned int
 
-    :param enum fc_rctl \*r_ctl:
+    :param r_ctl:
         *undescribed*
+    :type r_ctl: enum fc_rctl \*
 
-    :param enum fc_fh_type \*fh_type:
+    :param fh_type:
         *undescribed*
+    :type fh_type: enum fc_fh_type \*
 
 .. This file was automatic generated / don't edit.
 

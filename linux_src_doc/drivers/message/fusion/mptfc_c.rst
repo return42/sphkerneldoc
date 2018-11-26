@@ -10,8 +10,9 @@ mptfc_init
 
     Register MPT adapter(s) as SCSI host(s) with SCSI mid-layer.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mptfc_init.description`:
 
@@ -29,8 +30,9 @@ mptfc_remove
 
     Remove fc infrastructure for devices
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to pci_dev structure
+    :type pdev: struct pci_dev \*
 
 .. _`mptfc_exit`:
 
@@ -41,8 +43,9 @@ mptfc_exit
 
     Unregisters MPT adapter(s)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

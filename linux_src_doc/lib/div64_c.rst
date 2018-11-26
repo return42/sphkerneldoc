@@ -10,14 +10,17 @@ div_s64_rem
 
     signed 64bit divide with 64bit divisor and remainder
 
-    :param s64 dividend:
+    :param dividend:
         64bit dividend
+    :type dividend: s64
 
-    :param s32 divisor:
+    :param divisor:
         64bit divisor
+    :type divisor: s32
 
-    :param s32 \*remainder:
+    :param remainder:
         64bit remainder
+    :type remainder: s32 \*
 
 .. _`div64_u64_rem`:
 
@@ -28,14 +31,17 @@ div64_u64_rem
 
     unsigned 64bit divide with 64bit divisor and remainder
 
-    :param u64 dividend:
+    :param dividend:
         64bit dividend
+    :type dividend: u64
 
-    :param u64 divisor:
+    :param divisor:
         64bit divisor
+    :type divisor: u64
 
-    :param u64 \*remainder:
+    :param remainder:
         64bit remainder
+    :type remainder: u64 \*
 
 .. _`div64_u64_rem.description`:
 
@@ -56,11 +62,13 @@ div64_u64
 
     unsigned 64bit divide with 64bit divisor
 
-    :param u64 dividend:
+    :param dividend:
         64bit dividend
+    :type dividend: u64
 
-    :param u64 divisor:
+    :param divisor:
         64bit divisor
+    :type divisor: u64
 
 .. _`div64_u64.description`:
 
@@ -82,11 +90,13 @@ div64_s64
 
     signed 64bit divide with 64bit divisor
 
-    :param s64 dividend:
+    :param dividend:
         64bit dividend
+    :type dividend: s64
 
-    :param s64 divisor:
+    :param divisor:
         64bit divisor
+    :type divisor: s64
 
 .. This file was automatic generated / don't edit.
 

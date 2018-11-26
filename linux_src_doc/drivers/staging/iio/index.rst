@@ -10,6 +10,5 @@ iio
     adc/index
     cdc/index
     frequency/index
-    gyro/index
     impedance-analyzer/index
     meter/index

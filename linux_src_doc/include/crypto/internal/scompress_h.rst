@@ -54,8 +54,9 @@ crypto_register_scomp
 
     - Register synchronous compression algorithm
 
-    :param struct scomp_alg \*alg:
+    :param alg:
         algorithm definition
+    :type alg: struct scomp_alg \*
 
 .. _`crypto_register_scomp.description`:
 
@@ -81,8 +82,9 @@ crypto_unregister_scomp
 
     - Unregister synchronous compression algorithm
 
-    :param struct scomp_alg \*alg:
+    :param alg:
         algorithm definition
+    :type alg: struct scomp_alg \*
 
 .. _`crypto_unregister_scomp.description`:
 

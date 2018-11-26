@@ -10,8 +10,6 @@ ttm
     ttm_bo_api_h
     ttm_bo_driver_h
     ttm_execbuf_util_h
-    ttm_lock_h
-    ttm_object_h
     ttm_page_alloc_h
     ttm_placement_h
     ttm_tt_h

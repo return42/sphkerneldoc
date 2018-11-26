@@ -10,14 +10,17 @@ check_signature
 
     find BIOS signatures
 
-    :param const volatile void __iomem \*io_addr:
+    :param io_addr:
         mmio address to check
+    :type io_addr: const volatile void __iomem \*
 
-    :param const unsigned char \*signature:
+    :param signature:
         signature block
+    :type signature: const unsigned char \*
 
-    :param int length:
+    :param length:
         length of signature
+    :type length: int
 
 .. _`check_signature.description`:
 

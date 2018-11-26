@@ -37,20 +37,25 @@ drm_encoder_init
 
     Init a preallocated encoder
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         the encoder to init
+    :type encoder: struct drm_encoder \*
 
-    :param const struct drm_encoder_funcs \*funcs:
+    :param funcs:
         callbacks for this encoder
+    :type funcs: const struct drm_encoder_funcs \*
 
-    :param int encoder_type:
+    :param encoder_type:
         user visible type of the encoder
+    :type encoder_type: int
 
-    :param const char \*name:
+    :param name:
         printf style format string for the encoder name, or NULL for default name
+    :type name: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -80,8 +85,9 @@ drm_encoder_cleanup
 
     cleans up an initialised encoder
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         encoder to cleanup
+    :type encoder: struct drm_encoder \*
 
 .. _`drm_encoder_cleanup.description`:
 

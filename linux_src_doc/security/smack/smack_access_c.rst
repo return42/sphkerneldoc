@@ -10,14 +10,17 @@ smk_access_entry
 
     look up matching access rule
 
-    :param char \*subject_label:
+    :param subject_label:
         a pointer to the subject's Smack label
+    :type subject_label: char \*
 
-    :param char \*object_label:
+    :param object_label:
         a pointer to the object's Smack label
+    :type object_label: char \*
 
-    :param struct list_head \*rule_list:
+    :param rule_list:
         the list of rules to search
+    :type rule_list: struct list_head \*
 
 .. _`smk_access_entry.description`:
 
@@ -58,17 +61,21 @@ smk_access
 
     determine if a subject has a specific access to an object
 
-    :param struct smack_known \*subject:
+    :param subject:
         a pointer to the subject's Smack label entry
+    :type subject: struct smack_known \*
 
-    :param struct smack_known \*object:
+    :param object:
         a pointer to the object's Smack label entry
+    :type object: struct smack_known \*
 
-    :param int request:
+    :param request:
         the access requested, in "MAY" format
+    :type request: int
 
-    :param struct smk_audit_info \*a:
+    :param a:
         a pointer to the audit data
+    :type a: struct smk_audit_info \*
 
 .. _`smk_access.description`:
 
@@ -90,17 +97,21 @@ smk_tskacc
 
     determine if a task has a specific access to an object
 
-    :param struct task_smack \*tsp:
+    :param tsp:
         a pointer to the subject's task
+    :type tsp: struct task_smack \*
 
-    :param struct smack_known \*obj_known:
+    :param obj_known:
         a pointer to the object's label entry
+    :type obj_known: struct smack_known \*
 
-    :param u32 mode:
+    :param mode:
         the access requested, in "MAY" format
+    :type mode: u32
 
-    :param struct smk_audit_info \*a:
+    :param a:
         common audit data
+    :type a: struct smk_audit_info \*
 
 .. _`smk_tskacc.description`:
 
@@ -121,14 +132,17 @@ smk_curacc
 
     determine if current has a specific access to an object
 
-    :param struct smack_known \*obj_known:
+    :param obj_known:
         a pointer to the object's Smack label entry
+    :type obj_known: struct smack_known \*
 
-    :param u32 mode:
+    :param mode:
         the access requested, in "MAY" format
+    :type mode: u32
 
-    :param struct smk_audit_info \*a:
+    :param a:
         common audit data
+    :type a: struct smk_audit_info \*
 
 .. _`smk_curacc.description`:
 
@@ -149,11 +163,13 @@ smack_str_from_perm
 
     helper to transalate an int to a readable string
 
-    :param char \*string:
+    :param string:
         the string to fill
+    :type string: char \*
 
-    :param int access:
+    :param access:
         the int
+    :type access: int
 
 .. _`smack_log_callback`:
 
@@ -164,11 +180,13 @@ smack_log_callback
 
     SMACK specific information will be called by generic audit code
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         the audit_buffer
+    :type ab: struct audit_buffer \*
 
-    :param void \*a:
+    :param a:
         audit_data
+    :type a: void \*
 
 .. _`smack_log`:
 
@@ -179,20 +197,25 @@ smack_log
 
     Audit the granting or denial of permissions.
 
-    :param char \*subject_label:
+    :param subject_label:
         smack label of the requester
+    :type subject_label: char \*
 
-    :param char \*object_label:
+    :param object_label:
         smack label of the object being accessed
+    :type object_label: char \*
 
-    :param int request:
+    :param request:
         requested permissions
+    :type request: int
 
-    :param int result:
+    :param result:
         result from smk_access
+    :type result: int
 
-    :param struct smk_audit_info \*ad:
+    :param ad:
         *undescribed*
+    :type ad: struct smk_audit_info \*
 
 .. _`smack_log.description`:
 
@@ -211,8 +234,9 @@ smk_insert_entry
 
     insert a smack label into a hash map,
 
-    :param struct smack_known \*skp:
+    :param skp:
         *undescribed*
+    :type skp: struct smack_known \*
 
 .. _`smk_insert_entry.description`:
 
@@ -230,8 +254,9 @@ smk_find_entry
 
     find a label on the list, return the list entry
 
-    :param const char \*string:
+    :param string:
         a text string that might be a Smack label
+    :type string: const char \*
 
 .. _`smk_find_entry.description`:
 
@@ -250,11 +275,13 @@ smk_parse_smack
 
     parse smack label from a text string
 
-    :param const char \*string:
+    :param string:
         a text string that might contain a Smack label
+    :type string: const char \*
 
-    :param int len:
+    :param len:
         the maximum size, or zero if it is NULL terminated.
+    :type len: int
 
 .. _`smk_parse_smack.description`:
 
@@ -272,17 +299,21 @@ smk_netlbl_mls
 
     convert a catset to netlabel mls categories
 
-    :param int level:
+    :param level:
         *undescribed*
+    :type level: int
 
-    :param char \*catset:
+    :param catset:
         the Smack categories
+    :type catset: char \*
 
-    :param struct netlbl_lsm_secattr \*sap:
+    :param sap:
         where to put the netlabel categories
+    :type sap: struct netlbl_lsm_secattr \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
 .. _`smk_netlbl_mls.description`:
 
@@ -301,11 +332,13 @@ smk_import_entry
 
     import a label, return the list entry
 
-    :param const char \*string:
+    :param string:
         a text string that might be a Smack label
+    :type string: const char \*
 
-    :param int len:
+    :param len:
         the maximum size, or zero if it is NULL terminated.
+    :type len: int
 
 .. _`smk_import_entry.description`:
 
@@ -325,8 +358,9 @@ smack_from_secid
 
     find the Smack label associated with a secid
 
-    :param const u32 secid:
+    :param secid:
         an integer that might be associated with a Smack label
+    :type secid: const u32
 
 .. _`smack_from_secid.description`:
 
@@ -345,11 +379,13 @@ smack_privileged_cred
 
     are all privilege requirements met by cred
 
-    :param int cap:
+    :param cap:
         The requested capability
+    :type cap: int
 
-    :param const struct cred \*cred:
+    :param cred:
         the credential to use
+    :type cred: const struct cred \*
 
 .. _`smack_privileged_cred.description`:
 
@@ -370,8 +406,9 @@ smack_privileged
 
     are all privilege requirements met
 
-    :param int cap:
+    :param cap:
         The requested capability
+    :type cap: int
 
 .. _`smack_privileged.description`:
 

@@ -84,35 +84,45 @@ state
 
     make SMC calls
 
-    :param unsigned long a0:
+    :param a0:
         arguments passed in registers 0 to 7
+    :type a0: unsigned long
 
-    :param unsigned long a1:
+    :param a1:
         *undescribed*
+    :type a1: unsigned long
 
-    :param unsigned long a2:
+    :param a2:
         *undescribed*
+    :type a2: unsigned long
 
-    :param unsigned long a3:
+    :param a3:
         *undescribed*
+    :type a3: unsigned long
 
-    :param unsigned long a4:
+    :param a4:
         *undescribed*
+    :type a4: unsigned long
 
-    :param unsigned long a5:
+    :param a5:
         *undescribed*
+    :type a5: unsigned long
 
-    :param unsigned long a6:
+    :param a6:
         *undescribed*
+    :type a6: unsigned long
 
-    :param unsigned long a7:
+    :param a7:
         *undescribed*
+    :type a7: unsigned long
 
-    :param struct arm_smccc_res \*res:
+    :param res:
         result values from registers 0 to 3
+    :type res: struct arm_smccc_res \*
 
-    :param struct arm_smccc_quirk \*quirk:
+    :param quirk:
         points to an arm_smccc_quirk, or NULL when no quirks are required.
+    :type quirk: struct arm_smccc_quirk \*
 
 .. _`__arm_smccc_smc.description`:
 
@@ -134,35 +144,45 @@ quirk structure provides vendor specific behavior.
 
     make HVC calls
 
-    :param unsigned long a0:
+    :param a0:
         arguments passed in registers 0 to 7
+    :type a0: unsigned long
 
-    :param unsigned long a1:
+    :param a1:
         *undescribed*
+    :type a1: unsigned long
 
-    :param unsigned long a2:
+    :param a2:
         *undescribed*
+    :type a2: unsigned long
 
-    :param unsigned long a3:
+    :param a3:
         *undescribed*
+    :type a3: unsigned long
 
-    :param unsigned long a4:
+    :param a4:
         *undescribed*
+    :type a4: unsigned long
 
-    :param unsigned long a5:
+    :param a5:
         *undescribed*
+    :type a5: unsigned long
 
-    :param unsigned long a6:
+    :param a6:
         *undescribed*
+    :type a6: unsigned long
 
-    :param unsigned long a7:
+    :param a7:
         *undescribed*
+    :type a7: unsigned long
 
-    :param struct arm_smccc_res \*res:
+    :param res:
         result values from registers 0 to 3
+    :type res: struct arm_smccc_res \*
 
-    :param struct arm_smccc_quirk \*quirk:
+    :param quirk:
         points to an arm_smccc_quirk, or NULL when no quirks are required.
+    :type quirk: struct arm_smccc_quirk \*
 
 .. _`__arm_smccc_hvc.description`:
 

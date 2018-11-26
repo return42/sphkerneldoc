@@ -10,23 +10,29 @@ nfsacl_encode
 
     Encode an NFSv3 ACL
 
-    :param struct xdr_buf \*buf:
+    :param buf:
         destination xdr_buf to contain XDR encoded ACL
+    :type buf: struct xdr_buf \*
 
-    :param unsigned int base:
+    :param base:
         byte offset in xdr_buf where XDR'd ACL begins
+    :type base: unsigned int
 
-    :param struct inode \*inode:
+    :param inode:
         inode of file whose ACL this is
+    :type inode: struct inode \*
 
-    :param struct posix_acl \*acl:
+    :param acl:
         posix_acl to encode
+    :type acl: struct posix_acl \*
 
-    :param int encode_entries:
+    :param encode_entries:
         whether to encode ACEs as well
+    :type encode_entries: int
 
-    :param int typeflag:
+    :param typeflag:
         ACL type: NFS_ACL_DEFAULT or zero
+    :type typeflag: int
 
 .. _`nfsacl_encode.description`:
 
@@ -44,17 +50,21 @@ nfsacl_decode
 
     Decode an NFSv3 ACL
 
-    :param struct xdr_buf \*buf:
+    :param buf:
         xdr_buf containing XDR'd ACL data to decode
+    :type buf: struct xdr_buf \*
 
-    :param unsigned int base:
+    :param base:
         byte offset in xdr_buf where XDR'd ACL begins
+    :type base: unsigned int
 
-    :param unsigned int \*aclcnt:
+    :param aclcnt:
         count of ACEs in decoded posix_acl
+    :type aclcnt: unsigned int \*
 
-    :param struct posix_acl \*\*pacl:
+    :param pacl:
         buffer in which to place decoded posix_acl
+    :type pacl: struct posix_acl \*\*
 
 .. _`nfsacl_decode.description`:
 

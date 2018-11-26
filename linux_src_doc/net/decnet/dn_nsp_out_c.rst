@@ -10,11 +10,13 @@ dn_nsp_clone_and_send
 
     Send a data packet by cloning it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The packet to clone and transmit
+    :type skb: struct sk_buff \*
 
-    :param gfp_t gfp:
+    :param gfp:
         memory allocation flag
+    :type gfp: gfp_t
 
 .. _`dn_nsp_clone_and_send.description`:
 
@@ -39,8 +41,9 @@ dn_nsp_output
 
     Try and send something from socket queues
 
-    :param struct sock \*sk:
+    :param sk:
         The socket whose queues are to be investigated
+    :type sk: struct sock \*
 
 .. _`dn_nsp_output.description`:
 

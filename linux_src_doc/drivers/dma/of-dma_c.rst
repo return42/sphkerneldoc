@@ -10,8 +10,9 @@ of_dma_find_controller
 
     Get a DMA controller in DT DMA helpers list
 
-    :param struct of_phandle_args \*dma_spec:
+    :param dma_spec:
         pointer to DMA specifier as found in the device tree
+    :type dma_spec: struct of_phandle_args \*
 
 .. _`of_dma_find_controller.description`:
 
@@ -32,11 +33,13 @@ of_dma_router_xlate
 
     translation function for router devices
 
-    :param struct of_phandle_args \*dma_spec:
+    :param dma_spec:
         pointer to DMA specifier as found in the device tree
+    :type dma_spec: struct of_phandle_args \*
 
-    :param struct of_dma \*ofdma:
+    :param ofdma:
         *undescribed*
+    :type ofdma: struct of_dma \*
 
 .. _`of_dma_router_xlate.description`:
 
@@ -56,8 +59,9 @@ of_dma_controller_register
 
     Register a DMA controller to DT DMA helpers
 
-    :param struct device_node \*np:
+    :param np:
         device node of DMA controller
+    :type np: struct device_node \*
 
     :param struct dma_chan \*(\*of_dma_xlate)(struct of_phandle_args \*, struct of_dma \*):
         translation function which converts a phandle
@@ -65,8 +69,9 @@ of_dma_controller_register
         \ ``data``\                 pointer to controller specific data to be used by
         translation function
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`of_dma_controller_register.description`:
 
@@ -87,8 +92,9 @@ of_dma_controller_free
 
     Remove a DMA controller from DT DMA helpers list
 
-    :param struct device_node \*np:
+    :param np:
         device node of DMA controller
+    :type np: struct device_node \*
 
 .. _`of_dma_controller_free.description`:
 
@@ -106,17 +112,19 @@ of_dma_router_register
 
     Register a DMA router to DT DMA helpers as a controller
 
-    :param struct device_node \*np:
+    :param np:
         device node of DMA router
+    :type np: struct device_node \*
 
     :param void \*(\*of_dma_route_allocate)(struct of_phandle_args \*, struct of_dma \*):
         setup function for the router which need to
         modify the dma_spec for the DMA controller to
         use and to set up the requested route.
 
-    :param struct dma_router \*dma_router:
+    :param dma_router:
         pointer to dma_router structure to be used when
         the route need to be free up.
+    :type dma_router: struct dma_router \*
 
 .. _`of_dma_router_register.description`:
 
@@ -137,17 +145,21 @@ of_dma_match_channel
 
     Check if a DMA specifier matches name
 
-    :param struct device_node \*np:
+    :param np:
         device node to look for DMA channels
+    :type np: struct device_node \*
 
-    :param const char \*name:
+    :param name:
         channel name to be matched
+    :type name: const char \*
 
-    :param int index:
+    :param index:
         index of DMA specifier in list of DMA specifiers
+    :type index: int
 
-    :param struct of_phandle_args \*dma_spec:
+    :param dma_spec:
         pointer to DMA specifier as found in the device tree
+    :type dma_spec: struct of_phandle_args \*
 
 .. _`of_dma_match_channel.description`:
 
@@ -167,11 +179,13 @@ of_dma_request_slave_channel
 
     Get the DMA slave channel
 
-    :param struct device_node \*np:
+    :param np:
         device node to get DMA request from
+    :type np: struct device_node \*
 
-    :param const char \*name:
+    :param name:
         name of desired channel
+    :type name: const char \*
 
 .. _`of_dma_request_slave_channel.description`:
 
@@ -189,11 +203,13 @@ of_dma_simple_xlate
 
     Simple DMA engine translation function
 
-    :param struct of_phandle_args \*dma_spec:
+    :param dma_spec:
         pointer to DMA specifier as found in the device tree
+    :type dma_spec: struct of_phandle_args \*
 
-    :param struct of_dma \*ofdma:
+    :param ofdma:
         *undescribed*
+    :type ofdma: struct of_dma \*
 
 .. _`of_dma_simple_xlate.description`:
 
@@ -215,11 +231,13 @@ of_dma_xlate_by_chan_id
 
     Translate dt property to DMA channel by channel id
 
-    :param struct of_phandle_args \*dma_spec:
+    :param dma_spec:
         pointer to DMA specifier as found in the device tree
+    :type dma_spec: struct of_phandle_args \*
 
-    :param struct of_dma \*ofdma:
+    :param ofdma:
         *undescribed*
+    :type ofdma: struct of_dma \*
 
 .. _`of_dma_xlate_by_chan_id.description`:
 

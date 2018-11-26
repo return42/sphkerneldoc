@@ -10,8 +10,9 @@ sh64_tlb_init
 
     Perform initial setup for the DTLB and ITLB.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sh64_next_free_dtlb_entry`:
 
@@ -22,8 +23,9 @@ sh64_next_free_dtlb_entry
 
     Find the next available DTLB entry
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sh64_get_wired_dtlb_entry`:
 
@@ -34,8 +36,9 @@ sh64_get_wired_dtlb_entry
 
     Allocate a wired (locked-in) entry in the DTLB
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sh64_put_wired_dtlb_entry`:
 
@@ -46,8 +49,9 @@ sh64_put_wired_dtlb_entry
 
     Free a wired (locked-in) entry in the DTLB.
 
-    :param unsigned long long entry:
+    :param entry:
         Address of TLB slot.
+    :type entry: unsigned long long
 
 .. _`sh64_put_wired_dtlb_entry.description`:
 
@@ -65,17 +69,21 @@ sh64_setup_tlb_slot
 
     Load up a translation in a wired slot.
 
-    :param unsigned long long config_addr:
+    :param config_addr:
         Address of TLB slot.
+    :type config_addr: unsigned long long
 
-    :param unsigned long eaddr:
+    :param eaddr:
         Virtual address.
+    :type eaddr: unsigned long
 
-    :param unsigned long asid:
+    :param asid:
         Address Space Identifier.
+    :type asid: unsigned long
 
-    :param unsigned long paddr:
+    :param paddr:
         Physical address.
+    :type paddr: unsigned long
 
 .. _`sh64_setup_tlb_slot.description`:
 
@@ -94,8 +102,9 @@ sh64_teardown_tlb_slot
 
     Teardown a translation.
 
-    :param unsigned long long config_addr:
+    :param config_addr:
         Address of TLB slot.
+    :type config_addr: unsigned long long
 
 .. _`sh64_teardown_tlb_slot.description`:
 

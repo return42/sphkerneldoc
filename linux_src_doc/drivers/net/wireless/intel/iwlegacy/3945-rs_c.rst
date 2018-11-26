@@ -10,8 +10,9 @@ il3945_rate_scale_flush_wins
 
     flush out the rate scale wins
 
-    :param struct il3945_rs_sta \*rs_sta:
+    :param rs_sta:
         *undescribed*
+    :type rs_sta: struct il3945_rs_sta \*
 
 .. _`il3945_rate_scale_flush_wins.description`:
 
@@ -31,20 +32,25 @@ il3945_collect_tx_data
 
     Update the success/failure sliding win
 
-    :param struct il3945_rs_sta \*rs_sta:
+    :param rs_sta:
         *undescribed*
+    :type rs_sta: struct il3945_rs_sta \*
 
-    :param struct il3945_rate_scale_data \*win:
+    :param win:
         *undescribed*
+    :type win: struct il3945_rate_scale_data \*
 
-    :param int success:
+    :param success:
         *undescribed*
+    :type success: int
 
-    :param int retries:
+    :param retries:
         *undescribed*
+    :type retries: int
 
-    :param int idx:
+    :param idx:
         *undescribed*
+    :type idx: int
 
 .. _`il3945_collect_tx_data.description`:
 
@@ -64,20 +70,25 @@ il3945_rs_tx_status
 
     Update rate control values based on Tx results
 
-    :param void \*il_rate:
+    :param il_rate:
         *undescribed*
+    :type il_rate: void \*
 
-    :param struct ieee80211_supported_band \*sband:
+    :param sband:
         *undescribed*
+    :type sband: struct ieee80211_supported_band \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
-    :param void \*il_sta:
+    :param il_sta:
         *undescribed*
+    :type il_sta: void \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`il3945_rs_tx_status.note`:
 
@@ -96,17 +107,21 @@ il3945_rs_get_rate
 
     find the rate for the requested packet
 
-    :param void \*il_r:
+    :param il_r:
         *undescribed*
+    :type il_r: void \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
-    :param void \*il_sta:
+    :param il_sta:
         *undescribed*
+    :type il_sta: void \*
 
-    :param struct ieee80211_tx_rate_control \*txrc:
+    :param txrc:
         *undescribed*
+    :type txrc: struct ieee80211_tx_rate_control \*
 
 .. _`il3945_rs_get_rate.description`:
 

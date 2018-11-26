@@ -10,8 +10,9 @@ mesh_plink_fsm_restart
 
     restart a mesh peer link finite state machine
 
-    :param struct sta_info \*sta:
+    :param sta:
         mesh peer link to restart
+    :type sta: struct sta_info \*
 
 .. _`mesh_plink_fsm_restart.locking`:
 
@@ -29,8 +30,9 @@ mesh_set_ht_prot_mode
 
     set correct HT protection mode
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         *undescribed*
+    :type sdata: struct ieee80211_sub_if_data \*
 
 .. _`mesh_set_ht_prot_mode.description`:
 
@@ -53,8 +55,9 @@ HT20 peer is present. Otherwise no-protection mode is selected.
 
     deactivate mesh peer link
 
-    :param struct sta_info \*sta:
+    :param sta:
         mesh peer link to deactivate
+    :type sta: struct sta_info \*
 
 .. _`__mesh_plink_deactivate.description`:
 
@@ -82,8 +85,9 @@ mesh_plink_deactivate
 
     deactivate mesh peer link
 
-    :param struct sta_info \*sta:
+    :param sta:
         mesh peer link to deactivate
+    :type sta: struct sta_info \*
 
 .. _`mesh_plink_deactivate.description`:
 
@@ -101,14 +105,17 @@ mesh_plink_fsm
 
     step \ ``sta``\  MPM based on \ ``event``\ 
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         interface
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct sta_info \*sta:
+    :param sta:
         mesh neighbor
+    :type sta: struct sta_info \*
 
-    :param enum plink_event event:
+    :param event:
         peering event
+    :type event: enum plink_event
 
 .. _`mesh_plink_fsm.return`:
 

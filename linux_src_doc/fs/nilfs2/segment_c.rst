@@ -10,14 +10,17 @@ nilfs_transaction_begin
 
     start indivisible file operations.
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
-    :param struct nilfs_transaction_info \*ti:
+    :param ti:
         nilfs_transaction_info
+    :type ti: struct nilfs_transaction_info \*
 
-    :param int vacancy_check:
+    :param vacancy_check:
         flags for vacancy rate checks
+    :type vacancy_check: int
 
 .. _`nilfs_transaction_begin.description`:
 
@@ -59,8 +62,9 @@ nilfs_transaction_commit
 
     commit indivisible file operations.
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
 .. _`nilfs_transaction_commit.description`:
 
@@ -83,8 +87,9 @@ nilfs_segctor_reset_segment_buffer
 
     reset the current segment buffer
 
-    :param struct nilfs_sc_info \*sci:
+    :param sci:
         nilfs_sc_info
+    :type sci: struct nilfs_sc_info \*
 
 .. _`nilfs_segctor_begin_construction`:
 
@@ -95,11 +100,13 @@ nilfs_segctor_begin_construction
 
     setup segment buffer to make a new log
 
-    :param struct nilfs_sc_info \*sci:
+    :param sci:
         nilfs_sc_info
+    :type sci: struct nilfs_sc_info \*
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
 .. _`nilfs_segctor_start_timer`:
 
@@ -110,8 +117,9 @@ nilfs_segctor_start_timer
 
     set timer of background write
 
-    :param struct nilfs_sc_info \*sci:
+    :param sci:
         nilfs_sc_info
+    :type sci: struct nilfs_sc_info \*
 
 .. _`nilfs_segctor_start_timer.description`:
 
@@ -131,11 +139,13 @@ nilfs_flush_segment
 
     trigger a segment construction for resource control
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
-    :param ino_t ino:
+    :param ino:
         inode number of the file to be flushed out.
+    :type ino: ino_t
 
 .. _`nilfs_construct_segment`:
 
@@ -146,8 +156,9 @@ nilfs_construct_segment
 
     construct a logical segment
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
 .. _`nilfs_construct_segment.return-value`:
 
@@ -176,17 +187,21 @@ nilfs_construct_dsync_segment
 
     construct a data-only logical segment
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode whose data blocks should be written out
+    :type inode: struct inode \*
 
-    :param loff_t start:
+    :param start:
         start byte offset
+    :type start: loff_t
 
-    :param loff_t end:
+    :param end:
         end byte offset (inclusive)
+    :type end: loff_t
 
 .. _`nilfs_construct_dsync_segment.return-value`:
 
@@ -215,8 +230,9 @@ nilfs_segctor_accept
 
     record accepted sequence count of log-write requests
 
-    :param struct nilfs_sc_info \*sci:
+    :param sci:
         segment constructor object
+    :type sci: struct nilfs_sc_info \*
 
 .. _`nilfs_segctor_notify`:
 
@@ -227,14 +243,17 @@ nilfs_segctor_notify
 
     notify the result of request to caller threads
 
-    :param struct nilfs_sc_info \*sci:
+    :param sci:
         segment constructor object
+    :type sci: struct nilfs_sc_info \*
 
-    :param int mode:
+    :param mode:
         mode of log forming
+    :type mode: int
 
-    :param int err:
+    :param err:
         error code to be notified
+    :type err: int
 
 .. _`nilfs_segctor_construct`:
 
@@ -245,11 +264,13 @@ nilfs_segctor_construct
 
     form logs and write them to disk
 
-    :param struct nilfs_sc_info \*sci:
+    :param sci:
         segment constructor object
+    :type sci: struct nilfs_sc_info \*
 
-    :param int mode:
+    :param mode:
         mode of log forming
+    :type mode: int
 
 .. _`nilfs_segctor_thread`:
 
@@ -260,8 +281,9 @@ nilfs_segctor_thread
 
     main loop of the segment constructor thread.
 
-    :param void \*arg:
+    :param arg:
         pointer to a struct nilfs_sc_info.
+    :type arg: void \*
 
 .. _`nilfs_segctor_thread.description`:
 
@@ -280,8 +302,9 @@ nilfs_segctor_destroy
 
     destroy the segment constructor.
 
-    :param struct nilfs_sc_info \*sci:
+    :param sci:
         nilfs_sc_info
+    :type sci: struct nilfs_sc_info \*
 
 .. _`nilfs_segctor_destroy.description`:
 
@@ -301,11 +324,13 @@ nilfs_attach_log_writer
 
     attach log writer
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
-    :param struct nilfs_root \*root:
+    :param root:
         root object of the current filesystem tree
+    :type root: struct nilfs_root \*
 
 .. _`nilfs_attach_log_writer.description`:
 
@@ -334,8 +359,9 @@ nilfs_detach_log_writer
 
     destroy log writer
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
 .. _`nilfs_detach_log_writer.description`:
 

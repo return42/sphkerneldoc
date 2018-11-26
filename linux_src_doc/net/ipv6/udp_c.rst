@@ -10,21 +10,26 @@ udp6_hwcsum_outgoing
 
     handle outgoing HW checksumming
 
-    :param struct sock \*sk:
+    :param sk:
         socket we are sending on
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff containing the filled-in UDP header
         (checksum field must be zeroed out)
+    :type skb: struct sk_buff \*
 
-    :param const struct in6_addr \*saddr:
+    :param saddr:
         *undescribed*
+    :type saddr: const struct in6_addr \*
 
-    :param const struct in6_addr \*daddr:
+    :param daddr:
         *undescribed*
+    :type daddr: const struct in6_addr \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
 .. This file was automatic generated / don't edit.
 

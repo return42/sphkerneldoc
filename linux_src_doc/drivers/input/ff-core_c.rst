@@ -10,14 +10,17 @@ input_ff_upload
 
     upload effect into force-feedback device
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device
+    :type dev: struct input_dev \*
 
-    :param struct ff_effect \*effect:
+    :param effect:
         effect to be uploaded
+    :type effect: struct ff_effect \*
 
-    :param struct file \*file:
+    :param file:
         owner of the effect
+    :type file: struct file \*
 
 .. _`input_ff_erase`:
 
@@ -28,14 +31,17 @@ input_ff_erase
 
     erase a force-feedback effect from device
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device to erase effect from
+    :type dev: struct input_dev \*
 
-    :param int effect_id:
+    :param effect_id:
         id of the effect to be erased
+    :type effect_id: int
 
-    :param struct file \*file:
+    :param file:
         purported owner of the request
+    :type file: struct file \*
 
 .. _`input_ff_erase.description`:
 
@@ -55,17 +61,21 @@ input_ff_event
 
     generic handler for force-feedback events
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device to send the effect to
+    :type dev: struct input_dev \*
 
-    :param unsigned int type:
+    :param type:
         event type (anything but EV_FF is ignored)
+    :type type: unsigned int
 
-    :param unsigned int code:
+    :param code:
         event code
+    :type code: unsigned int
 
-    :param int value:
+    :param value:
         event value
+    :type value: int
 
 .. _`input_ff_create`:
 
@@ -76,11 +86,13 @@ input_ff_create
 
     create force-feedback device
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device supporting force-feedback
+    :type dev: struct input_dev \*
 
-    :param unsigned int max_effects:
+    :param max_effects:
         maximum number of effects supported by the device
+    :type max_effects: unsigned int
 
 .. _`input_ff_create.description`:
 
@@ -89,7 +101,7 @@ Description
 
 This function allocates all necessary memory for a force feedback
 portion of an input device and installs all default handlers.
-\ ``dev``\ ->ffbit should be already set up before calling this function.
+\ ``dev->ffbit``\  should be already set up before calling this function.
 Once ff device is created you need to setup its upload, erase,
 playback and other handlers before registering input device
 
@@ -102,8 +114,9 @@ input_ff_destroy
 
     frees force feedback portion of input device
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device supporting force feedback
+    :type dev: struct input_dev \*
 
 .. _`input_ff_destroy.description`:
 

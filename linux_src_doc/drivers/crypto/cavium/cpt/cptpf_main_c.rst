@@ -10,8 +10,9 @@ cpt_unload_microcode
 
     calling \ :c:func:`cpt_disable_all_cores`\  before calling this function.
 
-    :param struct cpt_device \*cpt:
+    :param cpt:
         *undescribed*
+    :type cpt: struct cpt_device \*
 
 .. This file was automatic generated / don't edit.
 

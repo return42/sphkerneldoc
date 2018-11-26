@@ -10,8 +10,9 @@ i915_debugfs_connector_add
 
     add i915 specific connector debugfs files
 
-    :param struct drm_connector \*connector:
+    :param connector:
         pointer to a registered drm_connector
+    :type connector: struct drm_connector \*
 
 .. _`i915_debugfs_connector_add.description`:
 

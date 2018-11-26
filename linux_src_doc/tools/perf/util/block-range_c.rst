@@ -8,11 +8,13 @@ block_range__create
 
 .. c:function:: struct block_range_iter block_range__create(u64 start, u64 end)
 
-    :param u64 start:
+    :param start:
         branch target starting this basic block
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         branch ending this basic block
+    :type end: u64
 
 .. _`block_range__create.description`:
 

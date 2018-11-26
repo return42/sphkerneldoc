@@ -123,12 +123,14 @@ pll_data
 
     PLL initialisation via DT
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for this clock
+    :type node: struct device_node \*
 
-    :param bool pllctrl:
+    :param pllctrl:
         If true, lower 6 bits of multiplier is in pllm register of
         pll controller, else it is in the control register0(bit 11-6)
+    :type pllctrl: bool
 
 .. _`of_keystone_pll_clk_init`:
 
@@ -139,8 +141,9 @@ of_keystone_pll_clk_init
 
     PLL initialisation DT wrapper
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for this clock
+    :type node: struct device_node \*
 
 .. _`of_keystone_main_pll_clk_init`:
 
@@ -151,8 +154,9 @@ of_keystone_main_pll_clk_init
 
     Main PLL initialisation DT wrapper
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for this clock
+    :type node: struct device_node \*
 
 .. _`of_pll_div_clk_init`:
 
@@ -163,8 +167,9 @@ of_pll_div_clk_init
 
     PLL divider setup function
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for this clock
+    :type node: struct device_node \*
 
 .. _`of_pll_mux_clk_init`:
 
@@ -175,8 +180,9 @@ of_pll_mux_clk_init
 
     PLL mux setup function
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for this clock
+    :type node: struct device_node \*
 
 .. This file was automatic generated / don't edit.
 

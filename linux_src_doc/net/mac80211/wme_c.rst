@@ -10,8 +10,9 @@ ieee80211_fix_reserved_tid
 
     return the TID to use if this one is reserved
 
-    :param u8 tid:
+    :param tid:
         the assumed-reserved TID
+    :type tid: u8
 
 .. _`ieee80211_fix_reserved_tid.return`:
 
@@ -29,11 +30,13 @@ ieee80211_set_qos_hdr
 
     Fill in the QoS header if there is one.
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to be updated
+    :type skb: struct sk_buff \*
 
 .. This file was automatic generated / don't edit.
 

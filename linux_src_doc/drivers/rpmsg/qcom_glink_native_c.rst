@@ -35,14 +35,12 @@ msg
     message header
 
 data
-    *undescribed*
+    payload of the message
 
-.. _`glink_defer_cmd.data`:
+.. _`glink_defer_cmd.description`:
 
-data
-----
-
-payload of the message
+Description
+-----------
 
 Copy of a received control message, to be added to \ ``rx_queue``\  and processed
 by \ ``rx_work``\  of \ ``qcom_glink``\ .
@@ -79,61 +77,25 @@ Members
 -------
 
 data
-    *undescribed*
+    pointer to the data (may be NULL for zero-copy)
 
 id
-    *undescribed*
+    remote or local intent ID
 
 size
-    *undescribed*
+    size of the original intent (do not modify)
 
 reuse
-    *undescribed*
+    To mark if the intent can be reused after first use
 
 in_use
-    *undescribed*
+    To mark if intent is already in use for the channel
 
 offset
-    *undescribed*
+    next write offset (initially 0)
 
 node
-    *undescribed*
-
-.. _`glink_core_rx_intent.data`:
-
-data
-----
-
-pointer to the data (may be NULL for zero-copy)
-id: remote or local intent ID
-
-.. _`glink_core_rx_intent.size`:
-
-size
-----
-
-size of the original intent (do not modify)
-
-.. _`glink_core_rx_intent.reuse`:
-
-reuse
------
-
-To mark if the intent can be reused after first use
-
-.. _`glink_core_rx_intent.in_use`:
-
-in_use
-------
-
-To mark if intent is already in use for the channel
-
-.. _`glink_core_rx_intent.offset`:
-
-offset
-------
-
-next write offset (initially 0)
+    list node
 
 .. _`qcom_glink`:
 
@@ -153,6 +115,7 @@ Definition
 
     struct qcom_glink {
         struct device *dev;
+        const char *name;
         struct mbox_client mbox_client;
         struct mbox_chan *mbox_chan;
         struct qcom_glink_pipe *rx_pipe;
@@ -176,6 +139,9 @@ Members
 
 dev
     reference to the associated struct device
+
+name
+    *undescribed*
 
 mbox_client
     mailbox client
@@ -214,10 +180,10 @@ rcids
     idr of all channels with a known remote channel id
 
 features
-    *undescribed*
+    remote features
 
 intentless
-    *undescribed*
+    flag to indicate that there is no intent
 
 .. _`glink_channel`:
 
@@ -336,11 +302,13 @@ qcom_glink_send_open_req
 
     send a RPM_CMD_OPEN request to the remote
 
-    :param struct qcom_glink \*glink:
+    :param glink:
         Ptr to the glink edge
+    :type glink: struct qcom_glink \*
 
-    :param struct glink_channel \*channel:
+    :param channel:
         Ptr to the channel that the open req is sent
+    :type channel: struct glink_channel \*
 
 .. _`qcom_glink_send_open_req.description`:
 
@@ -361,14 +329,17 @@ qcom_glink_receive_version
 
     receive version/features from remote system
 
-    :param struct qcom_glink \*glink:
+    :param glink:
         pointer to transport interface
+    :type glink: struct qcom_glink \*
 
-    :param u32 version:
-        *undescribed*
+    :param version:
+        remote version
+    :type version: u32
 
-    :param u32 features:
-        *undescribed*
+    :param features:
+        remote features
+    :type features: u32
 
 .. _`qcom_glink_receive_version.description`:
 
@@ -387,14 +358,17 @@ qcom_glink_receive_version_ack
 
     receive negotiation ack from remote system
 
-    :param struct qcom_glink \*glink:
+    :param glink:
         pointer to transport interface
+    :type glink: struct qcom_glink \*
 
-    :param u32 version:
-        *undescribed*
+    :param version:
+        remote version response
+    :type version: u32
 
-    :param u32 features:
-        *undescribed*
+    :param features:
+        remote features response
+    :type features: u32
 
 .. _`qcom_glink_receive_version_ack.description`:
 
@@ -412,16 +386,19 @@ qcom_glink_send_intent_req_ack
 
 .. c:function:: int qcom_glink_send_intent_req_ack(struct qcom_glink *glink, struct glink_channel *channel, bool granted)
 
-    convert an rx intent request ack cmd to
+    convert an rx intent request ack cmd to wire format and transmit
 
-    :param struct qcom_glink \*glink:
+    :param glink:
         The transport to transmit on.
+    :type glink: struct qcom_glink \*
 
-    :param struct glink_channel \*channel:
+    :param channel:
         The glink channel
+    :type channel: struct glink_channel \*
 
-    :param bool granted:
+    :param granted:
         The request response to encode.
+    :type granted: bool
 
 .. _`qcom_glink_send_intent_req_ack.return`:
 
@@ -439,14 +416,17 @@ qcom_glink_advertise_intent
 
     convert an rx intent cmd to wire format and transmit
 
-    :param struct qcom_glink \*glink:
+    :param glink:
         The transport to transmit on.
+    :type glink: struct qcom_glink \*
 
-    :param struct glink_channel \*channel:
+    :param channel:
         The local channel
+    :type channel: struct glink_channel \*
 
-    :param struct glink_core_rx_intent \*intent:
-        *undescribed*
+    :param intent:
+        The intent to pass on to remote.
+    :type intent: struct glink_core_rx_intent \*
 
 .. _`qcom_glink_advertise_intent.return`:
 
@@ -464,35 +444,22 @@ qcom_glink_handle_intent_req
 
     Receive a request for rx_intent from remote side
 
-    :param struct qcom_glink \*glink:
-        *undescribed*
+    :param glink:
+        Pointer to the transport interface
+    :type glink: struct qcom_glink \*
 
-    :param u32 cid:
-        *undescribed*
+    :param cid:
+        Remote channel ID
+    :type cid: u32
 
-    :param size_t size:
-        *undescribed*
+    :param size:
+        size of the intent
+    :type size: size_t
 
-.. _`qcom_glink_handle_intent_req.if_ptr`:
+.. _`qcom_glink_handle_intent_req.description`:
 
-if_ptr
-------
-
-Pointer to the transport interface
-
-.. _`qcom_glink_handle_intent_req.rcid`:
-
-rcid
-----
-
-Remote channel ID
-
-.. _`qcom_glink_handle_intent_req.size`:
-
-size
-----
-
-size of the intent
+Description
+-----------
 
 The function searches for the local channel to which the request for
 rx_intent has arrived and allocates and notifies the remote back

@@ -10,8 +10,9 @@ hdmi_avi_infoframe_init
 
     initialize an HDMI AVI infoframe
 
-    :param struct hdmi_avi_infoframe \*frame:
+    :param frame:
         HDMI AVI infoframe
+    :type frame: struct hdmi_avi_infoframe \*
 
 .. _`hdmi_avi_infoframe_init.description`:
 
@@ -29,14 +30,17 @@ hdmi_avi_infoframe_pack
 
     write HDMI AVI infoframe to binary buffer
 
-    :param struct hdmi_avi_infoframe \*frame:
+    :param frame:
         HDMI AVI infoframe
+    :type frame: struct hdmi_avi_infoframe \*
 
-    :param void \*buffer:
+    :param buffer:
         destination buffer
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         size of buffer
+    :type size: size_t
 
 .. _`hdmi_avi_infoframe_pack.description`:
 
@@ -60,14 +64,17 @@ hdmi_spd_infoframe_init
 
     initialize an HDMI SPD infoframe
 
-    :param struct hdmi_spd_infoframe \*frame:
+    :param frame:
         HDMI SPD infoframe
+    :type frame: struct hdmi_spd_infoframe \*
 
-    :param const char \*vendor:
+    :param vendor:
         vendor string
+    :type vendor: const char \*
 
-    :param const char \*product:
+    :param product:
         product string
+    :type product: const char \*
 
 .. _`hdmi_spd_infoframe_init.description`:
 
@@ -85,14 +92,17 @@ hdmi_spd_infoframe_pack
 
     write HDMI SPD infoframe to binary buffer
 
-    :param struct hdmi_spd_infoframe \*frame:
+    :param frame:
         HDMI SPD infoframe
+    :type frame: struct hdmi_spd_infoframe \*
 
-    :param void \*buffer:
+    :param buffer:
         destination buffer
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         size of buffer
+    :type size: size_t
 
 .. _`hdmi_spd_infoframe_pack.description`:
 
@@ -116,8 +126,9 @@ hdmi_audio_infoframe_init
 
     initialize an HDMI audio infoframe
 
-    :param struct hdmi_audio_infoframe \*frame:
+    :param frame:
         HDMI audio infoframe
+    :type frame: struct hdmi_audio_infoframe \*
 
 .. _`hdmi_audio_infoframe_init.description`:
 
@@ -135,14 +146,17 @@ hdmi_audio_infoframe_pack
 
     write HDMI audio infoframe to binary buffer
 
-    :param struct hdmi_audio_infoframe \*frame:
+    :param frame:
         HDMI audio infoframe
+    :type frame: struct hdmi_audio_infoframe \*
 
-    :param void \*buffer:
+    :param buffer:
         destination buffer
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         size of buffer
+    :type size: size_t
 
 .. _`hdmi_audio_infoframe_pack.description`:
 
@@ -166,8 +180,9 @@ hdmi_vendor_infoframe_init
 
     initialize an HDMI vendor infoframe
 
-    :param struct hdmi_vendor_infoframe \*frame:
+    :param frame:
         HDMI vendor infoframe
+    :type frame: struct hdmi_vendor_infoframe \*
 
 .. _`hdmi_vendor_infoframe_init.description`:
 
@@ -185,14 +200,17 @@ hdmi_vendor_infoframe_pack
 
     write a HDMI vendor infoframe to binary buffer
 
-    :param struct hdmi_vendor_infoframe \*frame:
+    :param frame:
         HDMI infoframe
+    :type frame: struct hdmi_vendor_infoframe \*
 
-    :param void \*buffer:
+    :param buffer:
         destination buffer
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         size of buffer
+    :type size: size_t
 
 .. _`hdmi_vendor_infoframe_pack.description`:
 
@@ -216,14 +234,17 @@ hdmi_infoframe_pack
 
     write a HDMI infoframe to binary buffer
 
-    :param union hdmi_infoframe \*frame:
+    :param frame:
         HDMI infoframe
+    :type frame: union hdmi_infoframe \*
 
-    :param void \*buffer:
+    :param buffer:
         destination buffer
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         size of buffer
+    :type size: size_t
 
 .. _`hdmi_infoframe_pack.description`:
 
@@ -247,14 +268,17 @@ hdmi_avi_infoframe_log
 
     log info of HDMI AVI infoframe
 
-    :param const char \*level:
+    :param level:
         logging level
+    :type level: const char \*
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct hdmi_avi_infoframe \*frame:
+    :param frame:
         HDMI AVI infoframe
+    :type frame: struct hdmi_avi_infoframe \*
 
 .. _`hdmi_spd_infoframe_log`:
 
@@ -265,14 +289,17 @@ hdmi_spd_infoframe_log
 
     log info of HDMI SPD infoframe
 
-    :param const char \*level:
+    :param level:
         logging level
+    :type level: const char \*
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct hdmi_spd_infoframe \*frame:
+    :param frame:
         HDMI SPD infoframe
+    :type frame: struct hdmi_spd_infoframe \*
 
 .. _`hdmi_audio_infoframe_log`:
 
@@ -283,14 +310,17 @@ hdmi_audio_infoframe_log
 
     log info of HDMI AUDIO infoframe
 
-    :param const char \*level:
+    :param level:
         logging level
+    :type level: const char \*
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct hdmi_audio_infoframe \*frame:
+    :param frame:
         HDMI AUDIO infoframe
+    :type frame: struct hdmi_audio_infoframe \*
 
 .. _`hdmi_vendor_any_infoframe_log`:
 
@@ -301,14 +331,17 @@ hdmi_vendor_any_infoframe_log
 
     log info of HDMI VENDOR infoframe
 
-    :param const char \*level:
+    :param level:
         logging level
+    :type level: const char \*
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param union hdmi_vendor_any_infoframe \*frame:
+    :param frame:
         HDMI VENDOR infoframe
+    :type frame: union hdmi_vendor_any_infoframe \*
 
 .. _`hdmi_infoframe_log`:
 
@@ -319,14 +352,17 @@ hdmi_infoframe_log
 
     log info of HDMI infoframe
 
-    :param const char \*level:
+    :param level:
         logging level
+    :type level: const char \*
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param union hdmi_infoframe \*frame:
+    :param frame:
         HDMI infoframe
+    :type frame: union hdmi_infoframe \*
 
 .. _`hdmi_avi_infoframe_unpack`:
 
@@ -337,11 +373,13 @@ hdmi_avi_infoframe_unpack
 
     unpack binary buffer to a HDMI AVI infoframe
 
-    :param struct hdmi_avi_infoframe \*frame:
+    :param frame:
         HDMI AVI infoframe
+    :type frame: struct hdmi_avi_infoframe \*
 
-    :param void \*buffer:
+    :param buffer:
         source buffer
+    :type buffer: void \*
 
 .. _`hdmi_avi_infoframe_unpack.description`:
 
@@ -364,11 +402,13 @@ hdmi_spd_infoframe_unpack
 
     unpack binary buffer to a HDMI SPD infoframe
 
-    :param struct hdmi_spd_infoframe \*frame:
+    :param frame:
         HDMI SPD infoframe
+    :type frame: struct hdmi_spd_infoframe \*
 
-    :param void \*buffer:
+    :param buffer:
         source buffer
+    :type buffer: void \*
 
 .. _`hdmi_spd_infoframe_unpack.description`:
 
@@ -391,11 +431,13 @@ hdmi_audio_infoframe_unpack
 
     unpack binary buffer to a HDMI AUDIO infoframe
 
-    :param struct hdmi_audio_infoframe \*frame:
+    :param frame:
         HDMI Audio infoframe
+    :type frame: struct hdmi_audio_infoframe \*
 
-    :param void \*buffer:
+    :param buffer:
         source buffer
+    :type buffer: void \*
 
 .. _`hdmi_audio_infoframe_unpack.description`:
 
@@ -418,11 +460,13 @@ hdmi_vendor_any_infoframe_unpack
 
     unpack binary buffer to a HDMI vendor infoframe
 
-    :param union hdmi_vendor_any_infoframe \*frame:
+    :param frame:
         HDMI Vendor infoframe
+    :type frame: union hdmi_vendor_any_infoframe \*
 
-    :param void \*buffer:
+    :param buffer:
         source buffer
+    :type buffer: void \*
 
 .. _`hdmi_vendor_any_infoframe_unpack.description`:
 
@@ -445,11 +489,13 @@ hdmi_infoframe_unpack
 
     unpack binary buffer to a HDMI infoframe
 
-    :param union hdmi_infoframe \*frame:
+    :param frame:
         HDMI infoframe
+    :type frame: union hdmi_infoframe \*
 
-    :param void \*buffer:
+    :param buffer:
         source buffer
+    :type buffer: void \*
 
 .. _`hdmi_infoframe_unpack.description`:
 

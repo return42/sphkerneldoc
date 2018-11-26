@@ -10,8 +10,9 @@ sel_netnode_hashfn_ipv4
 
     IPv4 hashing function for the node table
 
-    :param __be32 addr:
+    :param addr:
         IPv4 address
+    :type addr: __be32
 
 .. _`sel_netnode_hashfn_ipv4.description`:
 
@@ -30,8 +31,9 @@ sel_netnode_hashfn_ipv6
 
     IPv6 hashing function for the node table
 
-    :param const struct in6_addr \*addr:
+    :param addr:
         IPv6 address
+    :type addr: const struct in6_addr \*
 
 .. _`sel_netnode_hashfn_ipv6.description`:
 
@@ -50,11 +52,13 @@ sel_netnode_find
 
     Search for a node record
 
-    :param const void \*addr:
+    :param addr:
         IP address
+    :type addr: const void \*
 
-    :param u16 family:
+    :param family:
         address family
+    :type family: u16
 
 .. _`sel_netnode_find.description`:
 
@@ -73,8 +77,9 @@ sel_netnode_insert
 
     Insert a new node into the table
 
-    :param struct sel_netnode \*node:
+    :param node:
         the new node record
+    :type node: struct sel_netnode \*
 
 .. _`sel_netnode_insert.description`:
 
@@ -92,14 +97,17 @@ sel_netnode_sid_slow
 
     Lookup the SID of a network address using the policy
 
-    :param void \*addr:
+    :param addr:
         the IP address
+    :type addr: void \*
 
-    :param u16 family:
+    :param family:
         the address family
+    :type family: u16
 
-    :param u32 \*sid:
+    :param sid:
         node SID
+    :type sid: u32 \*
 
 .. _`sel_netnode_sid_slow.description`:
 
@@ -120,14 +128,17 @@ sel_netnode_sid
 
     Lookup the SID of a network address
 
-    :param void \*addr:
+    :param addr:
         the IP address
+    :type addr: void \*
 
-    :param u16 family:
+    :param family:
         the address family
+    :type family: u16
 
-    :param u32 \*sid:
+    :param sid:
         node SID
+    :type sid: u32 \*
 
 .. _`sel_netnode_sid.description`:
 
@@ -149,8 +160,9 @@ sel_netnode_flush
 
     Flush the entire network address table
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sel_netnode_flush.description`:
 

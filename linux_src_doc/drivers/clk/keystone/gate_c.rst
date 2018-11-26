@@ -82,20 +82,25 @@ clk_register_psc
 
     register psc clock
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         name of clock's parent
+    :type parent_name: const char \*
 
-    :param struct clk_psc_data \*psc_data:
+    :param psc_data:
         platform data to configure this clock
+    :type psc_data: struct clk_psc_data \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         spinlock used by this clock
+    :type lock: spinlock_t \*
 
 .. _`of_psc_clk_init`:
 
@@ -106,11 +111,13 @@ of_psc_clk_init
 
     initialize psc clock through DT
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for this clock
+    :type node: struct device_node \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         spinlock used by this clock
+    :type lock: spinlock_t \*
 
 .. _`of_keystone_psc_clk_init`:
 
@@ -121,8 +128,9 @@ of_keystone_psc_clk_init
 
     initialize psc clock through DT
 
-    :param struct device_node \*node:
+    :param node:
         device tree node for this clock
+    :type node: struct device_node \*
 
 .. This file was automatic generated / don't edit.
 

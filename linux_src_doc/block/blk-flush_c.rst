@@ -10,17 +10,21 @@ blk_flush_complete_seq
 
     complete flush sequence
 
-    :param struct request \*rq:
+    :param rq:
         PREFLUSH/FUA request being sequenced
+    :type rq: struct request \*
 
-    :param struct blk_flush_queue \*fq:
+    :param fq:
         flush queue
+    :type fq: struct blk_flush_queue \*
 
-    :param unsigned int seq:
+    :param seq:
         sequences to complete (mask of \ ``REQ_FSEQ_``\ *, can be zero)
+    :type seq: unsigned int
 
-    :param blk_status_t error:
+    :param error:
         whether an error occurred
+    :type error: blk_status_t
 
 .. _`blk_flush_complete_seq.description`:
 
@@ -53,14 +57,17 @@ blk_kick_flush
 
     consider issuing flush request
 
-    :param struct request_queue \*q:
+    :param q:
         request_queue being kicked
+    :type q: struct request_queue \*
 
-    :param struct blk_flush_queue \*fq:
+    :param fq:
         flush queue
+    :type fq: struct blk_flush_queue \*
 
-    :param unsigned int flags:
+    :param flags:
         cmd_flags of the original request
+    :type flags: unsigned int
 
 .. _`blk_kick_flush.description`:
 
@@ -93,8 +100,9 @@ blk_insert_flush
 
     insert a new PREFLUSH/FUA request
 
-    :param struct request \*rq:
+    :param rq:
         request to insert
+    :type rq: struct request \*
 
 .. _`blk_insert_flush.description`:
 
@@ -115,14 +123,17 @@ blkdev_issue_flush
 
     queue a flush
 
-    :param struct block_device \*bdev:
+    :param bdev:
         blockdev to issue flush for
+    :type bdev: struct block_device \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags (for bio_alloc)
+    :type gfp_mask: gfp_t
 
-    :param sector_t \*error_sector:
+    :param error_sector:
         error sector
+    :type error_sector: sector_t \*
 
 .. _`blkdev_issue_flush.description`:
 

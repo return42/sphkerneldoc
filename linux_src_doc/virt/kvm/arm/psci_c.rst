@@ -10,8 +10,9 @@ kvm_psci_call
 
     handle PSCI call if r0 value is in range
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Pointer to the VCPU struct
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_psci_call.description`:
 

@@ -10,14 +10,17 @@ text_poke_early
 
     Update instructions on a live kernel at boot time
 
-    :param void \*addr:
+    :param addr:
         address to modify
+    :type addr: void \*
 
-    :param const void \*opcode:
+    :param opcode:
         source of the copy
+    :type opcode: const void \*
 
-    :param size_t len:
+    :param len:
         length to copy
+    :type len: size_t
 
 .. _`text_poke_early.description`:
 
@@ -39,14 +42,17 @@ text_poke
 
     Update instructions on a live kernel
 
-    :param void \*addr:
+    :param addr:
         address to modify
+    :type addr: void \*
 
-    :param const void \*opcode:
+    :param opcode:
         source of the copy
+    :type opcode: const void \*
 
-    :param size_t len:
+    :param len:
         length to copy
+    :type len: size_t
 
 .. _`text_poke.description`:
 
@@ -58,13 +64,6 @@ It means the size must be writable atomically and the address must be aligned
 in a way that permits an atomic write. It also makes sure we fit on a single
 page.
 
-.. _`text_poke.note`:
-
-Note
-----
-
-Must be called under text_mutex.
-
 .. _`text_poke_bp`:
 
 text_poke_bp
@@ -74,17 +73,21 @@ text_poke_bp
 
     - update instructions on live kernel on SMP
 
-    :param void \*addr:
+    :param addr:
         address to patch
+    :type addr: void \*
 
-    :param const void \*opcode:
+    :param opcode:
         opcode of new instruction
+    :type opcode: const void \*
 
-    :param size_t len:
+    :param len:
         length to copy
+    :type len: size_t
 
-    :param void \*handler:
+    :param handler:
         address to jump to when the temporary breakpoint is hit
+    :type handler: void \*
 
 .. _`text_poke_bp.description`:
 
@@ -107,13 +110,6 @@ The way it is done
 - replace the first byte (int3) by the first byte of
 replacing opcode
 - sync cores
-
-.. _`text_poke_bp.note`:
-
-Note
-----
-
-must be called under text_mutex.
 
 .. This file was automatic generated / don't edit.
 

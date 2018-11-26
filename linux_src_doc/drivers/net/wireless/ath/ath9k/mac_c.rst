@@ -10,11 +10,13 @@ ath9k_hw_updatetxtriglevel
 
     adjusts the frame trigger level
 
-    :param struct ath_hw \*ah:
+    :param ah:
         atheros hardware struct
+    :type ah: struct ath_hw \*
 
-    :param bool bIncTrigLevel:
+    :param bIncTrigLevel:
         whether or not the frame trigger level should be updated
+    :type bIncTrigLevel: bool
 
 .. _`ath9k_hw_updatetxtriglevel.description`:
 

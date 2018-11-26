@@ -8,8 +8,9 @@ string_to_prio
 
 .. c:function:: enum sched_prio string_to_prio(const char *str)
 
-    :param const char \*str:
+    :param str:
         *undescribed*
+    :type str: const char \*
 
 .. _`string_to_prio.description`:
 
@@ -28,8 +29,9 @@ prepare_output
 
 .. c:function:: FILE *prepare_output(const char *dirname)
 
-    :param const char \*dirname:
+    :param dirname:
         *undescribed*
+    :type dirname: const char \*
 
 .. _`prepare_output.description`:
 
@@ -48,8 +50,9 @@ prepare_default_config
 
 .. c:function:: struct config *prepare_default_config( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`prepare_default_config.description`:
 
@@ -66,11 +69,13 @@ prepare_config
 
 .. c:function:: int prepare_config(const char *path, struct config *config)
 
-    :param const char \*path:
+    :param path:
         *undescribed*
+    :type path: const char \*
 
-    :param struct config \*config:
+    :param config:
         *undescribed*
+    :type config: struct config \*
 
 .. _`prepare_config.description`:
 

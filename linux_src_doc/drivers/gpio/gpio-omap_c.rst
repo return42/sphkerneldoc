@@ -10,14 +10,17 @@ omap2_set_gpio_debounce
 
     low level gpio debounce time
 
-    :param struct gpio_bank \*bank:
+    :param bank:
         the gpio bank we're acting upon
+    :type bank: struct gpio_bank \*
 
-    :param unsigned offset:
+    :param offset:
         the gpio number on this \ ``bank``\ 
+    :type offset: unsigned
 
-    :param unsigned debounce:
+    :param debounce:
         debounce time to use
+    :type debounce: unsigned
 
 .. _`omap2_set_gpio_debounce.description`:
 
@@ -44,11 +47,13 @@ omap_clear_gpio_debounce
 
     clear debounce settings for a gpio
 
-    :param struct gpio_bank \*bank:
+    :param bank:
         the gpio bank we're acting upon
+    :type bank: struct gpio_bank \*
 
-    :param unsigned offset:
+    :param offset:
         the gpio number on this \ ``bank``\ 
+    :type offset: unsigned
 
 .. _`omap_clear_gpio_debounce.description`:
 

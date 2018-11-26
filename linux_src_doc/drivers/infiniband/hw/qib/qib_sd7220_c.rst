@@ -10,20 +10,25 @@ qib_sd7220_reg_mod
 
     modify SERDES register
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param int sdnum:
+    :param sdnum:
         which SERDES to access
+    :type sdnum: int
 
-    :param u32 loc:
+    :param loc:
         location - channel, element, register, as packed by \ :c:func:`EPB_LOC`\  macro.
+    :type loc: u32
 
-    :param u32 wd:
+    :param wd:
         Write Data - value to set in register
+    :type wd: u32
 
-    :param u32 mask:
+    :param mask:
         ones where data should be spliced into reg.
+    :type mask: u32
 
 .. _`qib_sd7220_reg_mod.description`:
 

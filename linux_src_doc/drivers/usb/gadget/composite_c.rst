@@ -54,11 +54,13 @@ function_descriptors
 
     get function descriptors for speed
 
-    :param struct usb_function \*f:
+    :param f:
         the function
+    :type f: struct usb_function \*
 
-    :param enum usb_device_speed speed:
+    :param speed:
         the speed
+    :type speed: enum usb_device_speed
 
 .. _`function_descriptors.description`:
 
@@ -72,12 +74,13 @@ Returns the descriptors or NULL if not set.
 next_ep_desc
 ============
 
-.. c:function:: struct usb_descriptor_header**next_ep_desc(struct usb_descriptor_header **t)
+.. c:function:: struct usb_descriptor_header** next_ep_desc(struct usb_descriptor_header **t)
 
     advance to the next EP descriptor
 
-    :param struct usb_descriptor_header \*\*t:
+    :param t:
         currect pointer within descriptor array
+    :type t: struct usb_descriptor_header \*\*
 
 .. _`next_ep_desc.return`:
 
@@ -98,14 +101,17 @@ config_ep_by_speed
 
     configures the given endpoint according to gadget speed.
 
-    :param struct usb_gadget \*g:
+    :param g:
         pointer to the gadget
+    :type g: struct usb_gadget \*
 
-    :param struct usb_function \*f:
+    :param f:
         usb function
+    :type f: struct usb_function \*
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         the endpoint to configure
+    :type _ep: struct usb_ep \*
 
 .. _`config_ep_by_speed.return`:
 
@@ -138,11 +144,13 @@ usb_add_function
 
     add a function to a configuration
 
-    :param struct usb_configuration \*config:
+    :param config:
         the configuration
+    :type config: struct usb_configuration \*
 
-    :param struct usb_function \*function:
+    :param function:
         the function being added
+    :type function: struct usb_function \*
 
 .. _`usb_add_function.context`:
 
@@ -173,8 +181,9 @@ usb_function_deactivate
 
     prevent function and gadget enumeration
 
-    :param struct usb_function \*function:
+    :param function:
         the function that isn't yet ready to respond
+    :type function: struct usb_function \*
 
 .. _`usb_function_deactivate.description`:
 
@@ -205,8 +214,9 @@ usb_function_activate
 
     allow function and gadget enumeration
 
-    :param struct usb_function \*function:
+    :param function:
         function on which \ :c:func:`usb_function_activate`\  was called
+    :type function: struct usb_function \*
 
 .. _`usb_function_activate.description`:
 
@@ -228,11 +238,13 @@ usb_interface_id
 
     allocate an unused interface ID
 
-    :param struct usb_configuration \*config:
+    :param config:
         configuration associated with the interface
+    :type config: struct usb_configuration \*
 
-    :param struct usb_function \*function:
+    :param function:
         function handling the interface
+    :type function: struct usb_function \*
 
 .. _`usb_interface_id.context`:
 
@@ -272,9 +284,10 @@ bos_desc
 
     prepares the BOS descriptor.
 
-    :param struct usb_composite_dev \*cdev:
+    :param cdev:
         pointer to usb_composite device to generate the bos
         descriptor for
+    :type cdev: struct usb_composite_dev \*
 
 .. _`bos_desc.description`:
 
@@ -294,11 +307,13 @@ usb_add_config
 
     add a configuration to a device.
 
-    :param struct usb_composite_dev \*cdev:
+    :param cdev:
         wraps the USB gadget
+    :type cdev: struct usb_composite_dev \*
 
-    :param struct usb_configuration \*config:
+    :param config:
         the configuration, with bConfigurationValue assigned
+    :type config: struct usb_configuration \*
 
     :param int (\*bind)(struct usb_configuration \*):
         the configuration's bind function
@@ -332,11 +347,13 @@ usb_remove_config
 
     remove a configuration from a device.
 
-    :param struct usb_composite_dev \*cdev:
+    :param cdev:
         wraps the USB gadget
+    :type cdev: struct usb_composite_dev \*
 
-    :param struct usb_configuration \*config:
+    :param config:
         the configuration
+    :type config: struct usb_configuration \*
 
 .. _`usb_remove_config.description`:
 
@@ -356,8 +373,9 @@ usb_string_id
 
     allocate an unused string ID
 
-    :param struct usb_composite_dev \*cdev:
+    :param cdev:
         the device whose string descriptor IDs are being allocated
+    :type cdev: struct usb_composite_dev \*
 
 .. _`usb_string_id.context`:
 
@@ -389,11 +407,13 @@ usb_string_ids_tab
 
     allocate unused string IDs in batch
 
-    :param struct usb_composite_dev \*cdev:
+    :param cdev:
         the device whose string descriptor IDs are being allocated
+    :type cdev: struct usb_composite_dev \*
 
-    :param struct usb_string \*str:
+    :param str:
         an array of usb_string objects to assign numbers to
+    :type str: struct usb_string \*
 
 .. _`usb_string_ids_tab.context`:
 
@@ -426,15 +446,18 @@ usb_gstrings_attach
 
     attach gadget strings to a cdev and assign ids
 
-    :param struct usb_composite_dev \*cdev:
+    :param cdev:
         the device whose string descriptor IDs are being allocated
         and attached.
+    :type cdev: struct usb_composite_dev \*
 
-    :param struct usb_gadget_strings \*\*sp:
+    :param sp:
         an array of usb_gadget_strings to attach.
+    :type sp: struct usb_gadget_strings \*\*
 
-    :param unsigned n_strings:
+    :param n_strings:
         number of entries in each usb_strings array (sp[]->strings)
+    :type n_strings: unsigned
 
 .. _`usb_gstrings_attach.description`:
 
@@ -460,11 +483,13 @@ usb_string_ids_n
 
     allocate unused string IDs in batch
 
-    :param struct usb_composite_dev \*c:
+    :param c:
         the device whose string descriptor IDs are being allocated
+    :type c: struct usb_composite_dev \*
 
-    :param unsigned n:
+    :param n:
         number of string IDs to allocate
+    :type n: unsigned
 
 .. _`usb_string_ids_n.context`:
 
@@ -500,8 +525,9 @@ usb_composite_probe
 
     register a composite driver
 
-    :param struct usb_composite_driver \*driver:
+    :param driver:
         the driver to register
+    :type driver: struct usb_composite_driver \*
 
 .. _`usb_composite_probe.context`:
 
@@ -534,8 +560,9 @@ usb_composite_unregister
 
     unregister a composite driver
 
-    :param struct usb_composite_driver \*driver:
+    :param driver:
         the driver to unregister
+    :type driver: struct usb_composite_driver \*
 
 .. _`usb_composite_unregister.description`:
 
@@ -554,8 +581,9 @@ usb_composite_setup_continue
 
     Continue with the control transfer
 
-    :param struct usb_composite_dev \*cdev:
+    :param cdev:
         the composite device who's control transfer was kept waiting
+    :type cdev: struct usb_composite_dev \*
 
 .. _`usb_composite_setup_continue.description`:
 

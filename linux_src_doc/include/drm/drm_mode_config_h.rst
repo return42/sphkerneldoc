@@ -376,6 +376,7 @@ Definition
         struct drm_property *tv_hue_property;
         struct drm_property *scaling_mode_property;
         struct drm_property *aspect_ratio_property;
+        struct drm_property *content_type_property;
         struct drm_property *degamma_lut_property;
         struct drm_property *degamma_lut_size_property;
         struct drm_property *ctm_property;
@@ -385,7 +386,12 @@ Definition
         struct drm_property *suggested_y_property;
         struct drm_property *non_desktop_property;
         struct drm_property *panel_orientation_property;
+        struct drm_property *writeback_fb_id_property;
+        struct drm_property *writeback_pixel_formats_property;
+        struct drm_property *writeback_out_fence_ptr_property;
         uint32_t preferred_depth, prefer_shadow;
+        bool quirk_addfb_prefer_xbgr_30bpp;
+        bool quirk_addfb_prefer_host_byte_order;
         bool async_page_flip;
         bool allow_fb_modifiers;
         bool normalize_zpos;
@@ -512,16 +518,16 @@ property_list
     locks.
 
 min_width
-    minimum pixel width on this device
+    minimum fb pixel width on this device
 
 min_height
-    minimum pixel height on this device
+    minimum fb pixel height on this device
 
 max_width
-    maximum pixel width on this device
+    maximum fb pixel width on this device
 
 max_height
-    maximum pixel height on this device
+    maximum fb pixel height on this device
 
 funcs
     core driver provided mode setting functions
@@ -666,6 +672,9 @@ scaling_mode_property
 aspect_ratio_property
     Optional connector property to control theHDMI infoframe aspect ratio setting.
 
+content_type_property
+    Optional connector property to control theHDMI infoframe content type setting.
+
 degamma_lut_property
     Optional CRTC property to set the LUT used toconvert the framebuffer's colors to linear gamma.
 
@@ -697,11 +706,40 @@ panel_orientation_property
     Optional connector property indicatinghow the lcd-panel is mounted inside the casing (e.g. normal or
     upside-down).
 
+writeback_fb_id_property
+    Property for writeback connectors, storingthe ID of the output framebuffer.
+    See also: \ :c:func:`drm_writeback_connector_init`\ 
+
+writeback_pixel_formats_property
+    Property for writeback connectors,storing an array of the supported pixel formats for the writeback
+    engine (read-only).
+    See also: \ :c:func:`drm_writeback_connector_init`\ 
+
+writeback_out_fence_ptr_property
+    Property for writeback connectors,fd pointer representing the outgoing fences for a writeback
+    connector. Userspace should provide a pointer to a value of type s32,
+    and then cast that pointer to u64.
+    See also: \ :c:func:`drm_writeback_connector_init`\ 
+
 preferred_depth
     preferred RBG pixel depth, used by fb helpers
 
 prefer_shadow
     hint to userspace to prefer shadow-fb rendering
+
+quirk_addfb_prefer_xbgr_30bpp
+    *undescribed*
+
+quirk_addfb_prefer_host_byte_order
+
+    When set to true \ :c:func:`drm_mode_addfb`\  will pick host byte order
+    pixel_format when calling \ :c:func:`drm_mode_addfb2`\ .  This is how
+    \ :c:func:`drm_mode_addfb`\  should have worked from day one.  It
+    didn't though, so we ended up with quirks in both kernel
+    and userspace drivers to deal with the broken behavior.
+    Simply fixing \ :c:func:`drm_mode_addfb`\  unconditionally would break
+    these drivers, so add a quirk bit here to allow drivers
+    opt-in.
 
 async_page_flip
     Does this device support async flips on the primaryplane?

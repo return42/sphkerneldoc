@@ -10,14 +10,17 @@ wm8996_detect
 
     Enable default WM8996 jack detection
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         *undescribed*
+    :type jack: struct snd_soc_jack \*
 
-    :param wm8996_polarity_fn polarity_cb:
+    :param polarity_cb:
         *undescribed*
+    :type polarity_cb: wm8996_polarity_fn
 
 .. _`wm8996_detect.description`:
 

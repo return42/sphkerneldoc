@@ -10,23 +10,29 @@ psb_gem_create
 
     create a mappable object
 
-    :param struct drm_file \*file:
+    :param file:
         the DRM file of the client
+    :type file: struct drm_file \*
 
-    :param struct drm_device \*dev:
+    :param dev:
         our device
+    :type dev: struct drm_device \*
 
-    :param u64 size:
+    :param size:
         the size requested
+    :type size: u64
 
-    :param u32 \*handlep:
+    :param handlep:
         returned handle (opaque number)
+    :type handlep: u32 \*
 
-    :param int stolen:
+    :param stolen:
         *undescribed*
+    :type stolen: int
 
-    :param u32 align:
+    :param align:
         *undescribed*
+    :type align: u32
 
 .. _`psb_gem_create.description`:
 
@@ -46,14 +52,17 @@ psb_gem_dumb_create
 
     create a dumb buffer
 
-    :param struct drm_file \*file:
+    :param file:
         *undescribed*
+    :type file: struct drm_file \*
 
-    :param struct drm_device \*dev:
+    :param dev:
         our device
+    :type dev: struct drm_device \*
 
-    :param struct drm_mode_create_dumb \*args:
+    :param args:
         the requested arguments copied from userspace
+    :type args: struct drm_mode_create_dumb \*
 
 .. _`psb_gem_dumb_create.description`:
 
@@ -69,12 +78,13 @@ to reference it.
 psb_gem_fault
 =============
 
-.. c:function:: int psb_gem_fault(struct vm_fault *vmf)
+.. c:function:: vm_fault_t psb_gem_fault(struct vm_fault *vmf)
 
     pagefault handler for GEM objects
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         fault detail
+    :type vmf: struct vm_fault \*
 
 .. _`psb_gem_fault.description`:
 

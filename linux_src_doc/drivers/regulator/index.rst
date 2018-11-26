@@ -22,6 +22,7 @@ regulator
     max77802-regulator_c
     of_regulator_c
     pwm-regulator_c
+    qcom-rpmh-regulator_c
     qcom_spmi-regulator_c
     ti-abb-regulator_c
     tps65090-regulator_c

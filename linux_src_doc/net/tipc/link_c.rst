@@ -21,14 +21,17 @@ Definition
         u32 addr;
         char name[TIPC_MAX_LINK_NAME];
         struct net *net;
-        u32 peer_session;
-        u32 session;
+        u16 peer_session;
+        u16 session;
+        u16 snd_nxt_state;
+        u16 rcv_nxt_state;
         u32 peer_bearer_id;
         u32 bearer_id;
         u32 tolerance;
         u32 abort_limit;
         u32 state;
         u16 peer_caps;
+        bool in_session;
         bool active;
         u32 silent_intv_cnt;
         char if_name[TIPC_MAX_IF_NAME];
@@ -49,7 +52,8 @@ Definition
         u16 snd_nxt;
         u16 last_retransm;
         u16 window;
-        u32 stale_count;
+        u16 stale_cnt;
+        unsigned long stale_limit;
         u16 rcv_nxt;
         u32 rcv_unacked;
         struct sk_buff_head deferdq;
@@ -89,6 +93,12 @@ peer_session
 session
     *undescribed*
 
+snd_nxt_state
+    *undescribed*
+
+rcv_nxt_state
+    *undescribed*
+
 peer_bearer_id
     bearer id used by link's peer endpoint
 
@@ -106,6 +116,9 @@ state
 
 peer_caps
     bitmap describing capabilities of peer node
+
+in_session
+    *undescribed*
 
 active
     *undescribed*
@@ -158,8 +171,11 @@ last_retransm
 window
     *undescribed*
 
-stale_count
-    # of identical retransmit requests made by peer
+stale_cnt
+    counter for number of identical retransmit attempts
+
+stale_limit
+    time when repeated identical retransmits must force link reset
 
 rcv_nxt
     next sequence number to expect for inbound messages
@@ -221,59 +237,77 @@ tipc_link_create
 
     create a new link
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param char \*if_name:
+    :param if_name:
         associated interface name
+    :type if_name: char \*
 
-    :param int bearer_id:
+    :param bearer_id:
         id (index) of associated bearer
+    :type bearer_id: int
 
-    :param int tolerance:
+    :param tolerance:
         link tolerance to be used by link
+    :type tolerance: int
 
-    :param char net_plane:
+    :param net_plane:
         network plane (A,B,c..) this link belongs to
+    :type net_plane: char
 
-    :param u32 mtu:
+    :param mtu:
         mtu to be advertised by link
+    :type mtu: u32
 
-    :param int priority:
+    :param priority:
         priority to be used by link
+    :type priority: int
 
-    :param int window:
+    :param window:
         send window to be used by link
+    :type window: int
 
-    :param u32 session:
+    :param session:
         session to be used by link
+    :type session: u32
 
-    :param u32 self:
+    :param self:
         *undescribed*
+    :type self: u32
 
-    :param u32 peer:
+    :param peer:
         node id of peer node
+    :type peer: u32
 
-    :param u8 \*peer_id:
+    :param peer_id:
         *undescribed*
+    :type peer_id: u8 \*
 
-    :param u16 peer_caps:
+    :param peer_caps:
         bitmap describing peer node capabilities
+    :type peer_caps: u16
 
-    :param struct tipc_link \*bc_sndlink:
+    :param bc_sndlink:
         the namespace global link used for broadcast sending
+    :type bc_sndlink: struct tipc_link \*
 
-    :param struct tipc_link \*bc_rcvlink:
+    :param bc_rcvlink:
         the peer specific link used for broadcast reception
+    :type bc_rcvlink: struct tipc_link \*
 
-    :param struct sk_buff_head \*inputq:
+    :param inputq:
         queue to put messages ready for delivery
+    :type inputq: struct sk_buff_head \*
 
-    :param struct sk_buff_head \*namedq:
+    :param namedq:
         queue to put binding table update messages ready for delivery
+    :type namedq: struct sk_buff_head \*
 
-    :param struct tipc_link \*\*link:
+    :param link:
         return value, pointer to put the created link
+    :type link: struct tipc_link \*\*
 
 .. _`tipc_link_create.description`:
 
@@ -291,35 +325,45 @@ tipc_link_bc_create
 
     create new link to be used for broadcast
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param u32 ownnode:
+    :param ownnode:
         *undescribed*
+    :type ownnode: u32
 
-    :param u32 peer:
+    :param peer:
         *undescribed*
+    :type peer: u32
 
-    :param int mtu:
+    :param mtu:
         mtu to be used initially if no peers
+    :type mtu: int
 
-    :param int window:
+    :param window:
         send window to be used
+    :type window: int
 
-    :param u16 peer_caps:
+    :param peer_caps:
         *undescribed*
+    :type peer_caps: u16
 
-    :param struct sk_buff_head \*inputq:
+    :param inputq:
         queue to put messages ready for delivery
+    :type inputq: struct sk_buff_head \*
 
-    :param struct sk_buff_head \*namedq:
+    :param namedq:
         queue to put binding table update messages ready for delivery
+    :type namedq: struct sk_buff_head \*
 
-    :param struct tipc_link \*bc_sndlink:
+    :param bc_sndlink:
         *undescribed*
+    :type bc_sndlink: struct tipc_link \*
 
-    :param struct tipc_link \*\*link:
+    :param link:
         return value, pointer to put the created link
+    :type link: struct tipc_link \*\*
 
 .. _`tipc_link_bc_create.description`:
 
@@ -337,11 +381,13 @@ tipc_link_fsm_evt
 
     link finite state machine
 
-    :param struct tipc_link \*l:
+    :param l:
         pointer to link
+    :type l: struct tipc_link \*
 
-    :param int evt:
+    :param evt:
         state machine event to be processed
+    :type evt: int
 
 .. _`link_schedule_user`:
 
@@ -352,12 +398,14 @@ link_schedule_user
 
     schedule a message sender for wakeup after congestion
 
-    :param struct tipc_link \*l:
+    :param l:
         congested link
+    :type l: struct tipc_link \*
 
-    :param struct tipc_msg \*hdr:
+    :param hdr:
         header of message that is being sent
         Create pseudo msg to send back to user when congestion abates
+    :type hdr: struct tipc_msg \*
 
 .. _`link_prepare_wakeup`:
 
@@ -368,10 +416,11 @@ link_prepare_wakeup
 
     prepare users for wakeup after congestion
 
-    :param struct tipc_link \*l:
+    :param l:
         congested link
         Wake up a number of waiting users, as permitted by available space
         in the send queue
+    :type l: struct tipc_link \*
 
 .. _`tipc_link_xmit`:
 
@@ -382,14 +431,17 @@ tipc_link_xmit
 
     enqueue buffer list according to queue situation
 
-    :param struct tipc_link \*l:
+    :param l:
         *undescribed*
+    :type l: struct tipc_link \*
 
-    :param struct sk_buff_head \*list:
+    :param list:
         chain of buffers containing message
+    :type list: struct sk_buff_head \*
 
-    :param struct sk_buff_head \*xmitq:
+    :param xmitq:
         returned list of packets to be sent by caller
+    :type xmitq: struct sk_buff_head \*
 
 .. _`tipc_link_xmit.description`:
 
@@ -409,8 +461,9 @@ tipc_link_reset_stats
 
     reset link statistics
 
-    :param struct tipc_link \*l:
+    :param l:
         pointer to link
+    :type l: struct tipc_link \*
 
 .. This file was automatic generated / don't edit.
 

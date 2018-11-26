@@ -10,14 +10,17 @@ cros_ec_keyb_report_bs
 
     Report non-matrixed buttons or switches
 
-    :param struct cros_ec_keyb \*ckdev:
+    :param ckdev:
         The keyboard device.
+    :type ckdev: struct cros_ec_keyb \*
 
-    :param unsigned int ev_type:
+    :param ev_type:
         The input event type (e.g., EV_KEY).
+    :type ev_type: unsigned int
 
-    :param u32 mask:
+    :param mask:
         A bitmap of buttons from the EC.
+    :type mask: u32
 
 .. _`cros_ec_keyb_report_bs.description`:
 
@@ -36,23 +39,28 @@ cros_ec_keyb_info
 
     Wrap the EC command EC_CMD_MKBP_INFO
 
-    :param struct cros_ec_device \*ec_dev:
+    :param ec_dev:
         The EC device
+    :type ec_dev: struct cros_ec_device \*
 
-    :param enum ec_mkbp_info_type info_type:
+    :param info_type:
         Either EC_MKBP_INFO_SUPPORTED or EC_MKBP_INFO_CURRENT.
+    :type info_type: enum ec_mkbp_info_type
 
-    :param enum ec_mkbp_event event_type:
+    :param event_type:
         Either EC_MKBP_EVENT_BUTTON or EC_MKBP_EVENT_SWITCH.  Actually
         in some cases this could be EC_MKBP_EVENT_KEY_MATRIX or
         EC_MKBP_EVENT_HOST_EVENT too but we don't use in this driver.
+    :type event_type: enum ec_mkbp_event
 
-    :param union ec_response_get_next_data \*result:
+    :param result:
         Where we'll store the result; a union
+    :type result: union ec_response_get_next_data \*
 
-    :param size_t result_size:
+    :param result_size:
         The size of the result.  Expected to be the size of one of
         the elements in the union.
+    :type result_size: size_t
 
 .. _`cros_ec_keyb_info.description`:
 
@@ -73,8 +81,9 @@ cros_ec_keyb_query_switches
 
     Query the state of switches and report
 
-    :param struct cros_ec_keyb \*ckdev:
+    :param ckdev:
         The keyboard device
+    :type ckdev: struct cros_ec_keyb \*
 
 .. _`cros_ec_keyb_query_switches.description`:
 
@@ -96,8 +105,9 @@ cros_ec_keyb_resume
 
     Resume the keyboard
 
-    :param struct device \*dev:
+    :param dev:
         The keyboard device
+    :type dev: struct device \*
 
 .. _`cros_ec_keyb_resume.description`:
 
@@ -117,8 +127,9 @@ cros_ec_keyb_register_bs
 
     Register non-matrix buttons/switches
 
-    :param struct cros_ec_keyb \*ckdev:
+    :param ckdev:
         The keyboard device
+    :type ckdev: struct cros_ec_keyb \*
 
 .. _`cros_ec_keyb_register_bs.description`:
 
@@ -143,8 +154,9 @@ cros_ec_keyb_register_matrix
 
     Register matrix keys
 
-    :param struct cros_ec_keyb \*ckdev:
+    :param ckdev:
         The keyboard device
+    :type ckdev: struct cros_ec_keyb \*
 
 .. _`cros_ec_keyb_register_matrix.description`:
 

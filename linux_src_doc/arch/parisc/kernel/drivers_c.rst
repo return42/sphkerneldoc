@@ -13,8 +13,9 @@ for_each_padev
     :param int (\*fn)(struct device \*, void \*):
         Function to call for each device.
 
-    :param void \*data:
+    :param data:
         Data to pass to the called function.
+    :type data: void \*
 
 .. _`for_each_padev.description`:
 
@@ -34,11 +35,13 @@ match_device
 
     Report whether this driver can handle this device
 
-    :param struct parisc_driver \*driver:
+    :param driver:
         the PA-RISC driver to try
+    :type driver: struct parisc_driver \*
 
-    :param struct parisc_device \*dev:
+    :param dev:
         the PA-RISC device to try
+    :type dev: struct parisc_device \*
 
 .. _`register_parisc_driver`:
 
@@ -49,8 +52,9 @@ register_parisc_driver
 
     Register this driver if it can handle a device
 
-    :param struct parisc_driver \*driver:
+    :param driver:
         the PA-RISC driver to try
+    :type driver: struct parisc_driver \*
 
 .. _`count_parisc_driver`:
 
@@ -61,8 +65,9 @@ count_parisc_driver
 
     count # of devices this driver would match
 
-    :param struct parisc_driver \*driver:
+    :param driver:
         the PA-RISC driver to try
+    :type driver: struct parisc_driver \*
 
 .. _`count_parisc_driver.description`:
 
@@ -81,8 +86,9 @@ unregister_parisc_driver
 
     Unregister this driver from the list of drivers
 
-    :param struct parisc_driver \*driver:
+    :param driver:
         the PA-RISC driver to unregister
+    :type driver: struct parisc_driver \*
 
 .. _`find_pa_parent_type`:
 
@@ -93,11 +99,13 @@ find_pa_parent_type
 
     Find a parent of a specific type
 
-    :param const struct parisc_device \*padev:
+    :param padev:
         *undescribed*
+    :type padev: const struct parisc_device \*
 
-    :param int type:
+    :param type:
         The device type to search for.
+    :type type: int
 
 .. _`find_pa_parent_type.description`:
 
@@ -116,11 +124,13 @@ print_pa_hwpath
 
     Returns hardware path for PA devices
 
-    :param struct parisc_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct parisc_device \*
 
-    :param char \*output:
+    :param output:
         *undescribed*
+    :type output: char \*
 
 .. _`print_pa_hwpath.dev`:
 
@@ -149,11 +159,13 @@ get_pci_node_path
 
     Determines the hardware path for a PCI device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The device to return the path for
+    :type pdev: struct pci_dev \*
 
-    :param struct hardware_path \*path:
+    :param path:
         Pointer to a previously-allocated array to place the path in.
+    :type path: struct hardware_path \*
 
 .. _`get_pci_node_path.description`:
 
@@ -173,11 +185,13 @@ print_pci_hwpath
 
     Returns hardware path for PCI devices
 
-    :param struct pci_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct pci_dev \*
 
-    :param char \*output:
+    :param output:
         *undescribed*
+    :type output: char \*
 
 .. _`print_pci_hwpath.dev`:
 
@@ -206,11 +220,13 @@ alloc_tree_node
 
     returns a device entry in the iotree
 
-    :param struct device \*parent:
+    :param parent:
         the parent node in the tree
+    :type parent: struct device \*
 
-    :param char id:
+    :param id:
         the element of the module path for this entry
+    :type id: char
 
 .. _`alloc_tree_node.description`:
 
@@ -229,8 +245,9 @@ register_parisc_device
 
     Locate a driver to manage this device.
 
-    :param struct parisc_device \*dev:
+    :param dev:
         The parisc device.
+    :type dev: struct parisc_device \*
 
 .. _`register_parisc_device.description`:
 
@@ -249,14 +266,17 @@ match_pci_device
 
     Matches a pci device against a given hardware path entry.
 
-    :param struct device \*dev:
+    :param dev:
         the generic device (known to be contained by a pci_dev).
+    :type dev: struct device \*
 
-    :param int index:
+    :param index:
         the current BC index
+    :type index: int
 
-    :param struct hardware_path \*modpath:
+    :param modpath:
         the hardware path.
+    :type modpath: struct hardware_path \*
 
 .. _`match_parisc_device`:
 
@@ -267,14 +287,17 @@ match_parisc_device
 
     Matches a parisc device against a given hardware path entry.
 
-    :param struct device \*dev:
+    :param dev:
         the generic device (known to be contained by a parisc_device).
+    :type dev: struct device \*
 
-    :param int index:
+    :param index:
         the current BC index
+    :type index: int
 
-    :param struct hardware_path \*modpath:
+    :param modpath:
         the hardware path.
+    :type modpath: struct hardware_path \*
 
 .. _`parse_tree_node`:
 
@@ -285,14 +308,17 @@ parse_tree_node
 
     returns a device entry in the iotree
 
-    :param struct device \*parent:
+    :param parent:
         the parent node in the tree
+    :type parent: struct device \*
 
-    :param int index:
+    :param index:
         the current BC index
+    :type index: int
 
-    :param struct hardware_path \*modpath:
+    :param modpath:
         the hardware_path struct to match a device against
+    :type modpath: struct hardware_path \*
 
 .. _`parse_tree_node.description`:
 
@@ -311,8 +337,9 @@ hwpath_to_device
 
     Finds the generic device corresponding to a given hardware path.
 
-    :param struct hardware_path \*modpath:
+    :param modpath:
         the hardware path.
+    :type modpath: struct hardware_path \*
 
 .. _`device_to_hwpath`:
 
@@ -323,11 +350,13 @@ device_to_hwpath
 
     Populates the hwpath corresponding to the given device. \ ``param``\  dev the target device \ ``param``\  path pointer to a previously allocated hwpath struct to be filled in
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct hardware_path \*path:
+    :param path:
         *undescribed*
+    :type path: struct hardware_path \*
 
 .. _`walk_native_bus`:
 
@@ -338,14 +367,17 @@ walk_native_bus
 
     - Probe a bus for devices
 
-    :param unsigned long io_io_low:
+    :param io_io_low:
         Base address of this bus.
+    :type io_io_low: unsigned long
 
-    :param unsigned long io_io_high:
+    :param io_io_high:
         Last address of this bus.
+    :type io_io_high: unsigned long
 
-    :param struct device \*parent:
+    :param parent:
         The parent bus device.
+    :type parent: struct device \*
 
 .. _`walk_native_bus.description`:
 
@@ -367,8 +399,9 @@ walk_central_bus
 
     Find devices attached to the central bus
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`walk_central_bus.description`:
 
@@ -387,8 +420,9 @@ init_parisc_bus
 
     Some preparation to be done before inventory
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`print_parisc_devices`:
 
@@ -399,8 +433,9 @@ print_parisc_devices
 
     Print out a list of devices found in this system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

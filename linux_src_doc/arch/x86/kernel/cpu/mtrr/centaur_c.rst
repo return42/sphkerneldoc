@@ -10,14 +10,17 @@ centaur_get_free_region
 
     Get a free MTRR.
 
-    :param unsigned long base:
+    :param base:
         The starting (base) address of the region.
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         The size (in bytes) of the region.
+    :type size: unsigned long
 
-    :param int replace_reg:
+    :param replace_reg:
         *undescribed*
+    :type replace_reg: int
 
 .. _`centaur_get_free_region.return`:
 

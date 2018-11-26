@@ -105,6 +105,7 @@ num_vf
 
 dma_configure
     Called to setup DMA configuration on a device on
+    this bus.
 
 pm
     Power management operations of this bus, callback the specific
@@ -389,6 +390,7 @@ Definition
         int (*shutdown_pre)(struct device *dev);
         const struct kobj_ns_type_operations *ns_type;
         const void *(*namespace)(struct device *dev);
+        void (*get_ownership)(struct device *dev, kuid_t *uid, kgid_t *gid);
         const struct dev_pm_ops *pm;
         struct subsys_private *p;
     }
@@ -436,6 +438,11 @@ ns_type
 namespace
     Namespace of the device belongs to this class.
 
+get_ownership
+    Allows class to specify uid/gid of the sysfs directories
+    for the devices belonging to the class. Usually tied to
+    device's namespace.
+
 pm
     The default device power management operations of this class.
 
@@ -463,11 +470,13 @@ devm_alloc_percpu
 
     Resource-managed alloc_percpu
 
-    :param  dev:
+    :param dev:
         Device to allocate per-cpu memory for
+    :type dev: 
 
-    :param  type:
+    :param type:
         Type to allocate per-cpu memory for
+    :type type: 
 
 .. _`devm_alloc_percpu.description`:
 
@@ -519,6 +528,32 @@ id
 
 list
     List head, private, for internal use only
+
+.. _`device_connections_add`:
+
+device_connections_add
+======================
+
+.. c:function:: void device_connections_add(struct device_connection *cons)
+
+    Add multiple device connections at once
+
+    :param cons:
+        Zero terminated array of device connection descriptors
+    :type cons: struct device_connection \*
+
+.. _`device_connections_remove`:
+
+device_connections_remove
+=========================
+
+.. c:function:: void device_connections_remove(struct device_connection *cons)
+
+    Remove multiple device connections at once
+
+    :param cons:
+        Zero terminated array of device connection descriptors
+    :type cons: struct device_connection \*
 
 .. _`device_link_state`:
 
@@ -751,6 +786,7 @@ Definition
         const struct dma_map_ops *dma_ops;
         u64 *dma_mask;
         u64 coherent_dma_mask;
+        u64 bus_dma_mask;
         unsigned long dma_pfn_offset;
         struct device_dma_parameters *dma_parms;
         struct list_head dma_pools;
@@ -774,7 +810,9 @@ Definition
         bool offline_disabled:1;
         bool offline:1;
         bool of_node_reused:1;
-        bool dma_32bit_limit:1;
+    #if defined(CONFIG_ARCH_HAS_SYNC_DMA_FOR_DEVICE) || \
+        defined(CONFIG_ARCH_HAS_SYNC_DMA_FOR_CPU) || \defined(CONFIG_ARCH_HAS_SYNC_DMA_FOR_CPU_ALL) bool dma_coherent:1;
+    #endif
     }
 
 .. _`device.members`:
@@ -861,6 +899,10 @@ coherent_dma_mask
     hardware supports 64-bit addresses for consistent allocations
     such descriptors.
 
+bus_dma_mask
+    Mask of an upstream bridge or bus which imposes a smaller DMA
+    limit than the device itself supports.
+
 dma_pfn_offset
     offset of DMA memory range relatively of RAM
 
@@ -928,9 +970,9 @@ of_node_reused
     Set if the device-tree node is shared with an ancestor
     device.
 
-dma_32bit_limit
-    bridge limited to 32bit DMA even if the device itself
-    indicates support for a higher limit in the dma_mask field.
+dma_coherent
+    this particular device is dma coherent, even if the
+    architecture supports non-coherent devices.
 
 .. _`device.description`:
 
@@ -954,14 +996,17 @@ module_driver
 
     Helper macro for drivers that don't do anything special in module init/exit. This eliminates a lot of boilerplate. Each module may only use this macro once, and calling it replaces \ :c:func:`module_init`\  and \ :c:func:`module_exit`\ .
 
-    :param  __driver:
+    :param __driver:
         driver name
+    :type __driver: 
 
-    :param  __register:
+    :param __register:
         register function for this driver type
+    :type __register: 
 
-    :param  __unregister:
+    :param __unregister:
         unregister function for this driver type
+    :type __unregister: 
 
     :param ellipsis ellipsis:
         Additional arguments to be passed to __register and __unregister.
@@ -983,11 +1028,13 @@ builtin_driver
 
     Helper macro for drivers that don't do anything special in init and have no exit. This eliminates some boilerplate. Each driver may only use this macro once, and calling it replaces device_initcall (or in some cases, the legacy __initcall).  This is meant to be a direct parallel of \ :c:func:`module_driver`\  above but without the __exit stuff that is not used for builtin cases.
 
-    :param  __driver:
+    :param __driver:
         driver name
+    :type __driver: 
 
-    :param  __register:
+    :param __register:
         register function for this driver type
+    :type __register: 
 
     :param ellipsis ellipsis:
         Additional arguments to be passed to __register

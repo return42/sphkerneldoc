@@ -10,8 +10,9 @@ ccwgroup_set_online
 
     enable a ccwgroup device
 
-    :param struct ccwgroup_device \*gdev:
+    :param gdev:
         target ccwgroup device
+    :type gdev: struct ccwgroup_device \*
 
 .. _`ccwgroup_set_online.description`:
 
@@ -36,8 +37,9 @@ ccwgroup_set_offline
 
     disable a ccwgroup device
 
-    :param struct ccwgroup_device \*gdev:
+    :param gdev:
         target ccwgroup device
+    :type gdev: struct ccwgroup_device \*
 
 .. _`ccwgroup_set_offline.description`:
 
@@ -62,17 +64,21 @@ ccwgroup_create_dev
 
     create and register a ccw group device
 
-    :param struct device \*parent:
+    :param parent:
         parent device for the new device
+    :type parent: struct device \*
 
-    :param struct ccwgroup_driver \*gdrv:
+    :param gdrv:
         driver for the new group device
+    :type gdrv: struct ccwgroup_driver \*
 
-    :param int num_devices:
+    :param num_devices:
         number of slave devices
+    :type num_devices: int
 
-    :param const char \*buf:
+    :param buf:
         buffer containing comma separated bus ids of slave devices
+    :type buf: const char \*
 
 .. _`ccwgroup_create_dev.description`:
 
@@ -105,8 +111,9 @@ ccwgroup_driver_register
 
     register a ccw group driver
 
-    :param struct ccwgroup_driver \*cdriver:
+    :param cdriver:
         driver to be registered
+    :type cdriver: struct ccwgroup_driver \*
 
 .. _`ccwgroup_driver_register.description`:
 
@@ -124,8 +131,9 @@ ccwgroup_driver_unregister
 
     deregister a ccw group driver
 
-    :param struct ccwgroup_driver \*cdriver:
+    :param cdriver:
         driver to be deregistered
+    :type cdriver: struct ccwgroup_driver \*
 
 .. _`ccwgroup_driver_unregister.description`:
 
@@ -133,6 +141,39 @@ Description
 -----------
 
 This function is mainly a wrapper around \ :c:func:`driver_unregister`\ .
+
+.. _`get_ccwgroupdev_by_busid`:
+
+get_ccwgroupdev_by_busid
+========================
+
+.. c:function:: struct ccwgroup_device *get_ccwgroupdev_by_busid(struct ccwgroup_driver *gdrv, char *bus_id)
+
+    obtain device from a bus id
+
+    :param gdrv:
+        driver the device is owned by
+    :type gdrv: struct ccwgroup_driver \*
+
+    :param bus_id:
+        bus id of the device to be searched
+    :type bus_id: char \*
+
+.. _`get_ccwgroupdev_by_busid.description`:
+
+Description
+-----------
+
+This function searches all devices owned by \ ``gdrv``\  for a device with a bus
+id matching \ ``bus_id``\ .
+
+.. _`get_ccwgroupdev_by_busid.return`:
+
+Return
+------
+
+ If a match is found, its reference count of the found device is increased
+ and it is returned; else \ ``NULL``\  is returned.
 
 .. _`ccwgroup_probe_ccwdev`:
 
@@ -143,8 +184,9 @@ ccwgroup_probe_ccwdev
 
     probe function for slave devices
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device to be probed
+    :type cdev: struct ccw_device \*
 
 .. _`ccwgroup_probe_ccwdev.description`:
 
@@ -170,8 +212,9 @@ ccwgroup_remove_ccwdev
 
     remove function for slave devices
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device to be removed
+    :type cdev: struct ccw_device \*
 
 .. _`ccwgroup_remove_ccwdev.description`:
 

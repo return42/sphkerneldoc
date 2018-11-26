@@ -241,8 +241,9 @@ msc_oldest_window
 
     locate the window with oldest data
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
 .. _`msc_oldest_window.description`:
 
@@ -268,8 +269,9 @@ msc_win_oldest_block
 
     locate the oldest block in a given window
 
-    :param struct msc_window \*win:
+    :param win:
         window to look at
+    :type win: struct msc_window \*
 
 .. _`msc_win_oldest_block.return`:
 
@@ -287,8 +289,9 @@ msc_is_last_win
 
     check if a window is the last one for a given MSC
 
-    :param struct msc_window \*win:
+    :param win:
         window
+    :type win: struct msc_window \*
 
 .. _`msc_is_last_win.return`:
 
@@ -306,8 +309,9 @@ msc_next_window
 
     return next window in the multiblock buffer
 
-    :param struct msc_window \*win:
+    :param win:
         current window
+    :type win: struct msc_window \*
 
 .. _`msc_next_window.return`:
 
@@ -325,14 +329,17 @@ msc_buffer_iterate
 
     go through multiblock buffer's data
 
-    :param struct msc_iter \*iter:
+    :param iter:
         iterator structure
+    :type iter: struct msc_iter \*
 
-    :param size_t size:
+    :param size:
         amount of data to scan
+    :type size: size_t
 
-    :param void \*data:
+    :param data:
         callback's private data
+    :type data: void \*
 
     :param unsigned long (\*fn)(void \*, void \*, size_t):
         iterator callback
@@ -365,8 +372,9 @@ msc_buffer_clear_hw_header
 
     clear hw header for multiblock
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
 .. _`msc_configure`:
 
@@ -377,8 +385,9 @@ msc_configure
 
     set up MSC hardware
 
-    :param struct msc \*msc:
+    :param msc:
         the MSC device to configure
+    :type msc: struct msc \*
 
 .. _`msc_configure.description`:
 
@@ -398,8 +407,9 @@ msc_disable
 
     disable MSC hardware
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device to disable
+    :type msc: struct msc \*
 
 .. _`msc_disable.description`:
 
@@ -418,11 +428,13 @@ msc_buffer_contig_alloc
 
     allocate a contiguous buffer for SINGLE mode
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
-    :param unsigned long size:
+    :param size:
         allocation size in bytes
+    :type size: unsigned long
 
 .. _`msc_buffer_contig_alloc.description`:
 
@@ -448,8 +460,9 @@ msc_buffer_contig_free
 
     free a contiguous buffer
 
-    :param struct msc \*msc:
+    :param msc:
         MSC configured in SINGLE mode
+    :type msc: struct msc \*
 
 .. _`msc_buffer_contig_get_page`:
 
@@ -460,11 +473,13 @@ msc_buffer_contig_get_page
 
     find a page at a given offset
 
-    :param struct msc \*msc:
+    :param msc:
         MSC configured in SINGLE mode
+    :type msc: struct msc \*
 
-    :param unsigned long pgoff:
+    :param pgoff:
         page offset
+    :type pgoff: unsigned long
 
 .. _`msc_buffer_contig_get_page.return`:
 
@@ -482,11 +497,13 @@ msc_buffer_win_alloc
 
     alloc a window for a multiblock mode
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
-    :param unsigned int nr_blocks:
+    :param nr_blocks:
         number of pages in this window
+    :type nr_blocks: unsigned int
 
 .. _`msc_buffer_win_alloc.description`:
 
@@ -512,11 +529,13 @@ msc_buffer_win_free
 
     free a window from MSC's window list
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
-    :param struct msc_window \*win:
+    :param win:
         window to free
+    :type win: struct msc_window \*
 
 .. _`msc_buffer_win_free.description`:
 
@@ -535,8 +554,9 @@ msc_buffer_relink
 
     set up block descriptors for multiblock mode
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
 .. _`msc_buffer_relink.description`:
 
@@ -555,8 +575,9 @@ msc_buffer_free
 
     free buffers for MSC
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
 .. _`msc_buffer_free.description`:
 
@@ -577,14 +598,17 @@ msc_buffer_alloc
 
     allocate a buffer for MSC
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
-    :param unsigned long \*nr_pages:
+    :param nr_pages:
         *undescribed*
+    :type nr_pages: unsigned long \*
 
-    :param unsigned int nr_wins:
+    :param nr_wins:
         *undescribed*
+    :type nr_wins: unsigned int
 
 .. _`msc_buffer_alloc.description`:
 
@@ -616,8 +640,9 @@ msc_buffer_unlocked_free_unless_used
 
     free a buffer unless it's in use
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
 .. _`msc_buffer_unlocked_free_unless_used.description`:
 
@@ -645,8 +670,9 @@ msc_buffer_free_unless_used
 
     free a buffer unless it's in use
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
 .. _`msc_buffer_free_unless_used.description`:
 
@@ -664,11 +690,13 @@ msc_buffer_get_page
 
     get MSC buffer page at a given offset
 
-    :param struct msc \*msc:
+    :param msc:
         MSC device
+    :type msc: struct msc \*
 
-    :param unsigned long pgoff:
+    :param pgoff:
         page offset into the storage buffer
+    :type pgoff: unsigned long
 
 .. _`msc_buffer_get_page.description`:
 
@@ -726,14 +754,17 @@ msc_win_to_user
 
     iterator for \ :c:func:`msc_buffer_iterate`\  to copy data to user
 
-    :param void \*data:
+    :param data:
         callback's private data
+    :type data: void \*
 
-    :param void \*src:
+    :param src:
         source buffer
+    :type src: void \*
 
-    :param size_t len:
+    :param len:
         amount of data to copy from the source buffer
+    :type len: size_t
 
 .. This file was automatic generated / don't edit.
 

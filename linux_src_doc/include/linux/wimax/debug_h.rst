@@ -75,9 +75,10 @@ D_SUBMODULE_DECLARE
 
     Declare a submodule for runtime debug level control
 
-    :param  _name:
+    :param _name:
         name of the submodule, restricted to the chars that make up a
         valid C identifier ([a-zA-Z0-9_]).
+    :type _name: 
 
 .. _`d_submodule_declare.description`:
 
@@ -104,9 +105,10 @@ D_SUBMODULE_DEFINE
 
     Define a submodule for runtime debug level control
 
-    :param  _name:
+    :param _name:
         name of the submodule, restricted to the chars that make up a
         valid C identifier ([a-zA-Z0-9_]).
+    :type _name: 
 
 .. _`d_submodule_define.description`:
 
@@ -135,8 +137,9 @@ d_test
 
     Returns true if debugging should be enabled
 
-    :param  l:
+    :param l:
         intended debug level (unsigned)
+    :type l: 
 
 .. _`d_test.description`:
 
@@ -166,14 +169,17 @@ d_fnstart
 
     log message at function start if debugging enabled
 
-    :param  l:
+    :param l:
         intended debug level
+    :type l: 
 
-    :param  _dev:
+    :param _dev:
         'struct device' pointer, NULL if none (for context)
+    :type _dev: 
 
-    :param  f:
+    :param f:
         printf-like format and arguments
+    :type f: 
 
 .. _`d_fnend`:
 
@@ -184,14 +190,17 @@ d_fnend
 
     log message at function end if debugging enabled
 
-    :param  l:
+    :param l:
         intended debug level
+    :type l: 
 
-    :param  _dev:
+    :param _dev:
         'struct device' pointer, NULL if none (for context)
+    :type _dev: 
 
-    :param  f:
+    :param f:
         printf-like format and arguments
+    :type f: 
 
 .. _`d_printf`:
 
@@ -202,14 +211,17 @@ d_printf
 
     log message if debugging enabled
 
-    :param  l:
+    :param l:
         intended debug level
+    :type l: 
 
-    :param  _dev:
+    :param _dev:
         'struct device' pointer, NULL if none (for context)
+    :type _dev: 
 
-    :param  f:
+    :param f:
         printf-like format and arguments
+    :type f: 
 
 .. _`d_dump`:
 
@@ -220,17 +232,21 @@ d_dump
 
     log buffer hex dump if debugging enabled
 
-    :param  l:
+    :param l:
         intended debug level
+    :type l: 
 
-    :param  dev:
+    :param dev:
         *undescribed*
+    :type dev: 
 
-    :param  ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: 
 
-    :param  size:
+    :param size:
         *undescribed*
+    :type size: 
 
 .. _`d_level_register_debugfs`:
 
@@ -239,14 +255,17 @@ d_level_register_debugfs
 
 .. c:function::  d_level_register_debugfs( prefix,  name,  parent)
 
-    :param  prefix:
+    :param prefix:
         string to prefix the name with
+    :type prefix: 
 
-    :param  name:
+    :param name:
         *undescribed*
+    :type name: 
 
-    :param  parent:
+    :param parent:
         *undescribed*
+    :type parent: 
 
 .. _`d_level_register_debugfs.return`:
 
@@ -266,20 +285,24 @@ d_parse_params
 
     Parse a string with debug parameters from the command line
 
-    :param struct d_level \*d_level:
+    :param d_level:
         level structure (D_LEVEL)
+    :type d_level: struct d_level \*
 
-    :param size_t d_level_size:
+    :param d_level_size:
         number of items in the level structure
         (D_LEVEL_SIZE).
+    :type d_level_size: size_t
 
-    :param const char \*_params:
+    :param _params:
         string with the parameters; this is a space (not tab!)
         separated list of NAME:VALUE, where value is the debug level
         and NAME is the name of the submodule.
+    :type _params: const char \*
 
-    :param const char \*tag:
+    :param tag:
         string for error messages (example: MODULE.ARGNAME).
+    :type tag: const char \*
 
 .. This file was automatic generated / don't edit.
 

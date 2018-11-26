@@ -10,11 +10,13 @@ m5mols_do_scenemode
 
     Change current scenemode
 
-    :param struct m5mols_info \*info:
+    :param info:
         M-5MOLS driver data structure
+    :type info: struct m5mols_info \*
 
-    :param u8 mode:
+    :param mode:
         Desired mode of the scenemode
+    :type mode: u8
 
 .. _`m5mols_do_scenemode.warning`:
 

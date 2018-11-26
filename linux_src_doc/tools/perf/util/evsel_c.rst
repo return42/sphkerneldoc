@@ -10,8 +10,9 @@
 
     calculate id_pos.
 
-    :param u64 sample_type:
+    :param sample_type:
         sample type
+    :type sample_type: u64
 
 .. _`__perf_evsel__calc_id_pos.description`:
 
@@ -31,8 +32,9 @@ sample_event.
 
     calculate is_pos.
 
-    :param u64 sample_type:
+    :param sample_type:
         sample type
+    :type sample_type: u64
 
 .. _`__perf_evsel__calc_is_pos.description`:
 
@@ -52,8 +54,9 @@ perf_evsel__is_function_event
 
     Return whether given evsel is a function trace event
 
-    :param struct perf_evsel \*evsel:
+    :param evsel:
         *undescribed*
+    :type evsel: struct perf_evsel \*
 
 .. _`perf_evsel__is_function_event.description`:
 

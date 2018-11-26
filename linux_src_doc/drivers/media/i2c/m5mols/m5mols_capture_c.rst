@@ -10,17 +10,21 @@ m5mols_read_rational
 
     I2C read of a rational number
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         sub-device, as pointed by struct v4l2_subdev
+    :type sd: struct v4l2_subdev \*
 
-    :param u32 addr_num:
+    :param addr_num:
         numerator register
+    :type addr_num: u32
 
-    :param u32 addr_den:
+    :param addr_den:
         denominator register
+    :type addr_den: u32
 
-    :param u32 \*val:
+    :param val:
         place to store the division result
+    :type val: u32 \*
 
 .. _`m5mols_read_rational.description`:
 
@@ -39,8 +43,9 @@ m5mols_capture_info
 
     Gather captured image information
 
-    :param struct m5mols_info \*info:
+    :param info:
         M-5MOLS driver data structure
+    :type info: struct m5mols_info \*
 
 .. _`m5mols_capture_info.description`:
 

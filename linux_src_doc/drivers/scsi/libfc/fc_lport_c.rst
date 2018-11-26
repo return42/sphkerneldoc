@@ -58,11 +58,13 @@ fc_frame_drop
 
     Dummy frame handler
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port the frame was received on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The received frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_lport_rport_callback`:
 
@@ -73,14 +75,17 @@ fc_lport_rport_callback
 
     Event handler for rport events
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The lport which is receiving the event
+    :type lport: struct fc_lport \*
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         private remote port data
+    :type rdata: struct fc_rport_priv \*
 
-    :param enum fc_rport_event event:
+    :param event:
         The event that occurred
+    :type event: enum fc_rport_event
 
 .. _`fc_lport_rport_callback.locking-note`:
 
@@ -99,8 +104,9 @@ fc_lport_state
 
     Return a string which represents the lport's state
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The lport whose state is to converted to a string
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_ptp_setup`:
 
@@ -111,25 +117,21 @@ fc_lport_ptp_setup
 
     Create an rport for point-to-point mode
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The lport to attach the ptp rport to
+    :type lport: struct fc_lport \*
 
-    :param u32 remote_fid:
+    :param remote_fid:
         The FID of the ptp rport
+    :type remote_fid: u32
 
-    :param u64 remote_wwpn:
+    :param remote_wwpn:
         The WWPN of the ptp rport
+    :type remote_wwpn: u64
 
-    :param u64 remote_wwnn:
+    :param remote_wwnn:
         The WWNN of the ptp rport
-
-.. _`fc_lport_ptp_setup.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type remote_wwnn: u64
 
 .. _`fc_get_host_port_state`:
 
@@ -140,8 +142,9 @@ fc_get_host_port_state
 
     Return the port state of the given Scsi_Host
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         The SCSI host whose port state is to be determined
+    :type shost: struct Scsi_Host \*
 
 .. _`fc_get_host_speed`:
 
@@ -152,8 +155,9 @@ fc_get_host_speed
 
     Return the speed of the given Scsi_Host
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         The SCSI host whose port speed is to be determined
+    :type shost: struct Scsi_Host \*
 
 .. _`fc_get_host_stats`:
 
@@ -164,8 +168,9 @@ fc_get_host_stats
 
     Return the Scsi_Host's statistics
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         The SCSI host whose statistics are to be returned
+    :type shost: struct Scsi_Host \*
 
 .. _`fc_lport_flogi_fill`:
 
@@ -176,14 +181,17 @@ fc_lport_flogi_fill
 
     Fill in FLOGI command for request
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port the FLOGI is for
+    :type lport: struct fc_lport \*
 
-    :param struct fc_els_flogi \*flogi:
+    :param flogi:
         The FLOGI command
+    :type flogi: struct fc_els_flogi \*
 
-    :param unsigned int op:
+    :param op:
         The opcode
+    :type op: unsigned int
 
 .. _`fc_lport_add_fc4_type`:
 
@@ -194,11 +202,13 @@ fc_lport_add_fc4_type
 
     Add a supported FC-4 type to a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to add a new FC-4 type to
+    :type lport: struct fc_lport \*
 
-    :param enum fc_fh_type type:
+    :param type:
         The new FC-4 type
+    :type type: enum fc_fh_type
 
 .. _`fc_lport_recv_rlir_req`:
 
@@ -209,19 +219,13 @@ fc_lport_recv_rlir_req
 
     Handle received Registered Link Incident Report.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         Fibre Channel local port receiving the RLIR
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The RLIR request frame
-
-.. _`fc_lport_recv_rlir_req.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this function.
+    :type fp: struct fc_frame \*
 
 .. _`fc_lport_recv_echo_req`:
 
@@ -232,19 +236,13 @@ fc_lport_recv_echo_req
 
     Handle received ECHO request
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port receiving the ECHO
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*in_fp:
+    :param in_fp:
         *undescribed*
-
-.. _`fc_lport_recv_echo_req.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this function.
+    :type in_fp: struct fc_frame \*
 
 .. _`fc_lport_recv_rnid_req`:
 
@@ -255,19 +253,13 @@ fc_lport_recv_rnid_req
 
     Handle received Request Node ID data request
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port receiving the RNID
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*in_fp:
+    :param in_fp:
         *undescribed*
-
-.. _`fc_lport_recv_rnid_req.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this function.
+    :type in_fp: struct fc_frame \*
 
 .. _`fc_lport_recv_logo_req`:
 
@@ -278,19 +270,13 @@ fc_lport_recv_logo_req
 
     Handle received fabric LOGO request
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port receiving the LOGO
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The LOGO request frame
-
-.. _`fc_lport_recv_logo_req.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this function.
+    :type fp: struct fc_frame \*
 
 .. _`fc_fabric_login`:
 
@@ -301,8 +287,9 @@ fc_fabric_login
 
     Start the lport state machine
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that should log into the fabric
+    :type lport: struct fc_lport \*
 
 .. _`fc_fabric_login.locking-note`:
 
@@ -321,15 +308,9 @@ with the lport lock held.
 
     Handler for transport linkup events
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The lport whose link is up
-
-.. _`__fc_linkup.locking`:
-
-Locking
--------
-
-must be called with the lp_mutex held
+    :type lport: struct fc_lport \*
 
 .. _`fc_linkup`:
 
@@ -340,8 +321,9 @@ fc_linkup
 
     Handler for transport linkup events
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose link is up
+    :type lport: struct fc_lport \*
 
 .. _`__fc_linkdown`:
 
@@ -352,15 +334,9 @@ fc_linkup
 
     Handler for transport linkdown events
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The lport whose link is down
-
-.. _`__fc_linkdown.locking`:
-
-Locking
--------
-
-must be called with the lp_mutex held
+    :type lport: struct fc_lport \*
 
 .. _`fc_linkdown`:
 
@@ -371,8 +347,9 @@ fc_linkdown
 
     Handler for transport linkdown events
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose link is down
+    :type lport: struct fc_lport \*
 
 .. _`fc_fabric_logoff`:
 
@@ -383,8 +360,9 @@ fc_fabric_logoff
 
     Logout of the fabric
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to logoff the fabric
+    :type lport: struct fc_lport \*
 
 .. _`fc_fabric_logoff.return-value`:
 
@@ -402,8 +380,9 @@ fc_lport_destroy
 
     Unregister a fc_lport
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to unregister
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_destroy.note`:
 
@@ -423,11 +402,13 @@ fc_set_mfs
 
     Set the maximum frame size for a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to set the MFS for
+    :type lport: struct fc_lport \*
 
-    :param u32 mfs:
+    :param mfs:
         The new MFS
+    :type mfs: u32
 
 .. _`fc_lport_disc_callback`:
 
@@ -438,11 +419,13 @@ fc_lport_disc_callback
 
     Callback for discovery events
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port receiving the event
+    :type lport: struct fc_lport \*
 
-    :param enum fc_disc_event event:
+    :param event:
         The discovery event
+    :type event: enum fc_disc_event
 
 .. _`fc_lport_enter_ready`:
 
@@ -453,16 +436,9 @@ fc_lport_enter_ready
 
     Enter the ready state and start discovery
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that is ready
-
-.. _`fc_lport_enter_ready.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_set_port_id`:
 
@@ -473,22 +449,17 @@ fc_lport_set_port_id
 
     set the local port Port ID
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port which will have its Port ID set.
+    :type lport: struct fc_lport \*
 
-    :param u32 port_id:
+    :param port_id:
         The new port ID.
+    :type port_id: u32
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame containing the incoming request, or NULL.
-
-.. _`fc_lport_set_port_id.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this function.
+    :type fp: struct fc_frame \*
 
 .. _`fc_lport_set_local_id`:
 
@@ -499,11 +470,13 @@ fc_lport_set_local_id
 
     set the local port Port ID for point-to-multipoint
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port which will have its Port ID set.
+    :type lport: struct fc_lport \*
 
-    :param u32 port_id:
+    :param port_id:
         The new port ID.
+    :type port_id: u32
 
 .. _`fc_lport_set_local_id.description`:
 
@@ -523,11 +496,13 @@ fc_lport_recv_flogi_req
 
     Receive a FLOGI request
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that received the request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*rx_fp:
+    :param rx_fp:
         The FLOGI frame
+    :type rx_fp: struct fc_frame \*
 
 .. _`fc_lport_recv_flogi_req.description`:
 
@@ -538,14 +513,6 @@ A received FLOGI request indicates a point-to-point connection.
 Accept it with the common service parameters indicating our N port.
 Set up to do a PLOGI if we have the higher-number WWPN.
 
-.. _`fc_lport_recv_flogi_req.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this function.
-
 .. _`fc_lport_recv_els_req`:
 
 fc_lport_recv_els_req
@@ -555,11 +522,13 @@ fc_lport_recv_els_req
 
     The generic lport ELS request handler
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that received the request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The request frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_lport_recv_els_req.description`:
 
@@ -586,11 +555,13 @@ fc_lport_recv
 
     The generic lport request handler
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The lport that received the request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame the request is in
+    :type fp: struct fc_frame \*
 
 .. _`fc_lport_recv.locking-note`:
 
@@ -609,8 +580,9 @@ fc_lport_reset
 
     Reset a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port which should be reset
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_reset.locking-note`:
 
@@ -629,16 +601,9 @@ fc_lport_reset_locked
 
     Reset the local port w/ the lport lock held
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to be reset
-
-.. _`fc_lport_reset_locked.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_enter_reset`:
 
@@ -649,16 +614,9 @@ fc_lport_enter_reset
 
     Reset the local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to be reset
-
-.. _`fc_lport_enter_reset.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_enter_disabled`:
 
@@ -669,16 +627,9 @@ fc_lport_enter_disabled
 
     Disable the local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to be reset
-
-.. _`fc_lport_enter_disabled.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_error`:
 
@@ -689,11 +640,13 @@ fc_lport_error
 
     Handler for any errors
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that the error was on
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The error code encoded in a frame pointer
+    :type fp: struct fc_frame \*
 
 .. _`fc_lport_error.description`:
 
@@ -713,14 +666,17 @@ fc_lport_ns_resp
 
     Handle response to a name server registration exchange
 
-    :param struct fc_seq \*sp:
+    :param sp:
         current sequence in exchange
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*lp_arg:
+    :param lp_arg:
         Fibre Channel host port instance
+    :type lp_arg: void \*
 
 .. _`fc_lport_ns_resp.locking-note`:
 
@@ -740,14 +696,17 @@ fc_lport_ms_resp
 
     Handle response to a management server exchange
 
-    :param struct fc_seq \*sp:
+    :param sp:
         current sequence in exchange
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*lp_arg:
+    :param lp_arg:
         Fibre Channel host port instance
+    :type lp_arg: void \*
 
 .. _`fc_lport_ms_resp.locking-note`:
 
@@ -767,14 +726,17 @@ fc_lport_scr_resp
 
     Handle response to State Change Register (SCR) request
 
-    :param struct fc_seq \*sp:
+    :param sp:
         current sequence in SCR exchange
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*lp_arg:
+    :param lp_arg:
         Fibre Channel lport port instance that sent the registration request
+    :type lp_arg: void \*
 
 .. _`fc_lport_scr_resp.locking-note`:
 
@@ -794,16 +756,9 @@ fc_lport_enter_scr
 
     Send a SCR (State Change Register) request
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to register for state changes
-
-.. _`fc_lport_enter_scr.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_enter_ns`:
 
@@ -814,19 +769,13 @@ fc_lport_enter_ns
 
     register some object with the name server
 
-    :param struct fc_lport \*lport:
+    :param lport:
         Fibre Channel local port to register
+    :type lport: struct fc_lport \*
 
-    :param enum fc_lport_state state:
+    :param state:
         *undescribed*
-
-.. _`fc_lport_enter_ns.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type state: enum fc_lport_state
 
 .. _`fc_lport_enter_dns`:
 
@@ -837,16 +786,9 @@ fc_lport_enter_dns
 
     Create a fc_rport for the name server
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port requesting a remote port for the name server
-
-.. _`fc_lport_enter_dns.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_enter_ms`:
 
@@ -857,19 +799,13 @@ fc_lport_enter_ms
 
     management server commands
 
-    :param struct fc_lport \*lport:
+    :param lport:
         Fibre Channel local port to register
+    :type lport: struct fc_lport \*
 
-    :param enum fc_lport_state state:
+    :param state:
         *undescribed*
-
-.. _`fc_lport_enter_ms.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type state: enum fc_lport_state
 
 .. _`fc_lport_enter_fdmi`:
 
@@ -880,16 +816,9 @@ fc_lport_enter_fdmi
 
     Create a fc_rport for the management server
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port requesting a remote port for the management server
-
-.. _`fc_lport_enter_fdmi.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_timeout`:
 
@@ -900,8 +829,9 @@ fc_lport_timeout
 
     Handler for the retry_work timer
 
-    :param struct work_struct \*work:
+    :param work:
         The work struct of the local port
+    :type work: struct work_struct \*
 
 .. _`fc_lport_logo_resp`:
 
@@ -912,14 +842,17 @@ fc_lport_logo_resp
 
     Handle response to LOGO request
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence that the LOGO was on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The LOGO frame
+    :type fp: struct fc_frame \*
 
-    :param void \*lp_arg:
+    :param lp_arg:
         The lport port that received the LOGO request
+    :type lp_arg: void \*
 
 .. _`fc_lport_logo_resp.locking-note`:
 
@@ -939,16 +872,9 @@ fc_lport_enter_logo
 
     Logout of the fabric
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to be logged out
-
-.. _`fc_lport_enter_logo.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_flogi_resp`:
 
@@ -959,14 +885,17 @@ fc_lport_flogi_resp
 
     Handle response to FLOGI request
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence that the FLOGI was on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The FLOGI response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*lp_arg:
+    :param lp_arg:
         The lport port that received the FLOGI response
+    :type lp_arg: void \*
 
 .. _`fc_lport_flogi_resp.locking-note`:
 
@@ -986,16 +915,9 @@ fc_lport_enter_flogi
 
     Send a FLOGI request to the fabric manager
 
-    :param struct fc_lport \*lport:
+    :param lport:
         Fibre Channel local port to be logged in to the fabric
-
-.. _`fc_lport_enter_flogi.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_config`:
 
@@ -1006,8 +928,9 @@ fc_lport_config
 
     Configure a fc_lport
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to be configured
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_init`:
 
@@ -1018,8 +941,9 @@ fc_lport_init
 
     Initialize the lport layer for a local port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to initialize the exchange layer for
+    :type lport: struct fc_lport \*
 
 .. _`fc_lport_bsg_resp`:
 
@@ -1030,14 +954,17 @@ fc_lport_bsg_resp
 
     The common response handler for FC Passthrough requests
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence for the FC Passthrough response
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*info_arg:
+    :param info_arg:
         The BSG info that the response is for
+    :type info_arg: void \*
 
 .. _`fc_lport_els_request`:
 
@@ -1048,25 +975,21 @@ fc_lport_els_request
 
     Send ELS passthrough request
 
-    :param struct bsg_job \*job:
+    :param job:
         The BSG Passthrough job
+    :type job: struct bsg_job \*
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port sending the request
+    :type lport: struct fc_lport \*
 
-    :param u32 did:
+    :param did:
         The destination port id
+    :type did: u32
 
-    :param u32 tov:
+    :param tov:
         *undescribed*
-
-.. _`fc_lport_els_request.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type tov: u32
 
 .. _`fc_lport_ct_request`:
 
@@ -1077,25 +1000,21 @@ fc_lport_ct_request
 
     Send CT Passthrough request
 
-    :param struct bsg_job \*job:
+    :param job:
         The BSG Passthrough job
+    :type job: struct bsg_job \*
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port sending the request
+    :type lport: struct fc_lport \*
 
-    :param u32 did:
+    :param did:
         The destination FC-ID
+    :type did: u32
 
-    :param u32 tov:
+    :param tov:
         The timeout period to wait for the response
-
-.. _`fc_lport_ct_request.locking-note`:
-
-Locking Note
-------------
-
-The lport lock is expected to be held before calling
-this routine.
+    :type tov: u32
 
 .. _`fc_lport_bsg_request`:
 
@@ -1106,8 +1025,9 @@ fc_lport_bsg_request
 
     The common entry point for sending FC Passthrough requests
 
-    :param struct bsg_job \*job:
+    :param job:
         The BSG passthrough job
+    :type job: struct bsg_job \*
 
 .. This file was automatic generated / don't edit.
 

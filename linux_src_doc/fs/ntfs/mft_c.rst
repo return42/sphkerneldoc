@@ -1,19 +1,16 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/ntfs/mft.c
 
-.. _`map_mft_record_page`:
+.. _`max_bhs`:
 
-map_mft_record_page
-===================
+MAX_BHS
+=======
 
-.. c:function:: MFT_RECORD *map_mft_record_page(ntfs_inode *ni)
+.. c:function::  MAX_BHS()
 
     NTFS kernel mft record operations. Part of the Linux-NTFS project.
 
-    :param ntfs_inode \*ni:
-        *undescribed*
-
-.. _`map_mft_record_page.description`:
+.. _`max_bhs.description`:
 
 Description
 -----------
@@ -36,6 +33,30 @@ along with this program (in the main directory of the Linux-NTFS
 distribution in the file COPYING); if not, write to the Free Software
 Foundation,Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+.. _`map_mft_record_page`:
+
+map_mft_record_page
+===================
+
+.. c:function:: MFT_RECORD *map_mft_record_page(ntfs_inode *ni)
+
+    map the page in which a specific mft record resides
+
+    :param ni:
+        ntfs inode whose mft record page to map
+    :type ni: ntfs_inode \*
+
+.. _`map_mft_record_page.description`:
+
+Description
+-----------
+
+This maps the page in which the mft record of the ntfs inode \ ``ni``\  is situated
+and returns a pointer to the mft record within the mapped page.
+
+Return value needs to be checked with \ :c:func:`IS_ERR`\  and if that is true \ :c:func:`PTR_ERR`\ 
+contains the negative error code returned.
+
 .. _`map_mft_record`:
 
 map_mft_record
@@ -45,8 +66,9 @@ map_mft_record
 
     map, pin and lock an mft record
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode whose MFT record to map
+    :type ni: ntfs_inode \*
 
 .. _`map_mft_record.description`:
 
@@ -113,8 +135,9 @@ unmap_mft_record_page
 
     unmap the page in which a specific mft record resides
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode whose mft record page to unmap
+    :type ni: ntfs_inode \*
 
 .. _`unmap_mft_record_page.description`:
 
@@ -140,8 +163,9 @@ unmap_mft_record
 
     release a mapped mft record
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode whose MFT record to unmap
+    :type ni: ntfs_inode \*
 
 .. _`unmap_mft_record.description`:
 
@@ -169,14 +193,17 @@ map_extent_mft_record
 
     load an extent inode and attach it to its base
 
-    :param ntfs_inode \*base_ni:
+    :param base_ni:
         base ntfs inode
+    :type base_ni: ntfs_inode \*
 
-    :param MFT_REF mref:
+    :param mref:
         mft reference of the extent inode to load
+    :type mref: MFT_REF
 
-    :param ntfs_inode \*\*ntfs_ino:
+    :param ntfs_ino:
         on successful return, pointer to the ntfs_inode structure
+    :type ntfs_ino: ntfs_inode \*\*
 
 .. _`map_extent_mft_record.description`:
 
@@ -199,8 +226,9 @@ structure of the mapped extent inode.
 
     set the mft record and the page containing it dirty
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode describing the mapped mft record
+    :type ni: ntfs_inode \*
 
 .. _`__mark_mft_record_dirty.description`:
 
@@ -240,14 +268,17 @@ ntfs_sync_mft_mirror_umount
 
     synchronise an mft record to the mft mirror
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume on which the mft record to synchronize resides
+    :type vol: ntfs_volume \*
 
-    :param const unsigned long mft_no:
+    :param mft_no:
         mft record number of mft record to synchronize
+    :type mft_no: const unsigned long
 
-    :param MFT_RECORD \*m:
+    :param m:
         mapped, mst protected (extent) mft record to synchronize
+    :type m: MFT_RECORD \*
 
 .. _`ntfs_sync_mft_mirror_umount.description`:
 
@@ -284,17 +315,21 @@ ntfs_sync_mft_mirror
 
     synchronize an mft record to the mft mirror
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume on which the mft record to synchronize resides
+    :type vol: ntfs_volume \*
 
-    :param const unsigned long mft_no:
+    :param mft_no:
         mft record number of mft record to synchronize
+    :type mft_no: const unsigned long
 
-    :param MFT_RECORD \*m:
+    :param m:
         mapped, mst protected (extent) mft record to synchronize
+    :type m: MFT_RECORD \*
 
-    :param int sync:
+    :param sync:
         if true, wait for i/o completion
+    :type sync: int
 
 .. _`ntfs_sync_mft_mirror.description`:
 
@@ -331,14 +366,17 @@ write_mft_record_nolock
 
     write out a mapped (extent) mft record
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode describing the mapped (extent) mft record
+    :type ni: ntfs_inode \*
 
-    :param MFT_RECORD \*m:
+    :param m:
         mapped (extent) mft record to write
+    :type m: MFT_RECORD \*
 
-    :param int sync:
+    :param sync:
         if true, wait for i/o completion
+    :type sync: int
 
 .. _`write_mft_record_nolock.description`:
 
@@ -389,17 +427,21 @@ ntfs_may_write_mft_record
 
     check if an mft record may be written out
 
-    :param ntfs_volume \*vol:
+    :param vol:
         [IN]  ntfs volume on which the mft record to check resides
+    :type vol: ntfs_volume \*
 
-    :param const unsigned long mft_no:
+    :param mft_no:
         [IN]  mft record number of the mft record to check
+    :type mft_no: const unsigned long
 
-    :param const MFT_RECORD \*m:
+    :param m:
         [IN]  mapped mft record to check
+    :type m: const MFT_RECORD \*
 
-    :param ntfs_inode \*\*locked_ni:
+    :param locked_ni:
         [OUT] caller has to unlock this ntfs inode if one is returned
+    :type locked_ni: ntfs_inode \*\*
 
 .. _`ntfs_may_write_mft_record.description`:
 
@@ -491,11 +533,13 @@ ntfs_mft_bitmap_find_and_alloc_free_rec_nolock
 
     see name
 
-    :param ntfs_volume \*vol:
+    :param vol:
         volume on which to search for a free mft record
+    :type vol: ntfs_volume \*
 
-    :param ntfs_inode \*base_ni:
+    :param base_ni:
         open base inode if allocating an extent mft record or NULL
+    :type base_ni: ntfs_inode \*
 
 .. _`ntfs_mft_bitmap_find_and_alloc_free_rec_nolock.description`:
 
@@ -530,8 +574,9 @@ ntfs_mft_bitmap_extend_allocation_nolock
 
     extend mft bitmap by a cluster
 
-    :param ntfs_volume \*vol:
+    :param vol:
         volume on which to extend the mft bitmap attribute
+    :type vol: ntfs_volume \*
 
 .. _`ntfs_mft_bitmap_extend_allocation_nolock.description`:
 
@@ -570,8 +615,9 @@ ntfs_mft_bitmap_extend_initialized_nolock
 
     extend mftbmp initialized data
 
-    :param ntfs_volume \*vol:
+    :param vol:
         volume on which to extend the mft bitmap attribute
+    :type vol: ntfs_volume \*
 
 .. _`ntfs_mft_bitmap_extend_initialized_nolock.description`:
 
@@ -607,8 +653,9 @@ ntfs_mft_data_extend_allocation_nolock
 
     extend mft data attribute
 
-    :param ntfs_volume \*vol:
+    :param vol:
         volume on which to extend the mft data attribute
+    :type vol: ntfs_volume \*
 
 .. _`ntfs_mft_data_extend_allocation_nolock.description`:
 
@@ -649,14 +696,17 @@ ntfs_mft_record_layout
 
     layout an mft record into a memory buffer
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         volume to which the mft record will belong
+    :type vol: const ntfs_volume \*
 
-    :param const s64 mft_no:
+    :param mft_no:
         mft reference specifying the mft record number
+    :type mft_no: const s64
 
-    :param MFT_RECORD \*m:
-        destination buffer of size >= \ ``vol``\ ->mft_record_size bytes
+    :param m:
+        destination buffer of size >= \ ``vol->mft_record_size``\  bytes
+    :type m: MFT_RECORD \*
 
 .. _`ntfs_mft_record_layout.description`:
 
@@ -679,11 +729,13 @@ ntfs_mft_record_format
 
     format an mft record on an ntfs volume
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         volume on which to format the mft record
+    :type vol: const ntfs_volume \*
 
-    :param const s64 mft_no:
+    :param mft_no:
         mft record number to format
+    :type mft_no: const s64
 
 .. _`ntfs_mft_record_format.description`:
 
@@ -705,17 +757,21 @@ ntfs_mft_record_alloc
 
     allocate an mft record on an ntfs volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         [IN]  volume on which to allocate the mft record
+    :type vol: ntfs_volume \*
 
-    :param const int mode:
+    :param mode:
         [IN]  mode if want a file or directory, i.e. base inode or 0
+    :type mode: const int
 
-    :param ntfs_inode \*base_ni:
+    :param base_ni:
         [IN]  open base inode if allocating an extent mft record or NULL
+    :type base_ni: ntfs_inode \*
 
-    :param MFT_RECORD \*\*mrec:
+    :param mrec:
         [OUT] on successful return this is the mapped mft record
+    :type mrec: MFT_RECORD \*\*
 
 .. _`ntfs_mft_record_alloc.description`:
 
@@ -818,11 +874,13 @@ ntfs_extent_mft_record_free
 
     free an extent mft record on an ntfs volume
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode of the mapped extent mft record to free
+    :type ni: ntfs_inode \*
 
-    :param MFT_RECORD \*m:
+    :param m:
         mapped extent mft record of the ntfs inode \ ``ni``\ 
+    :type m: MFT_RECORD \*
 
 .. _`ntfs_extent_mft_record_free.description`:
 

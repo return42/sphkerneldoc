@@ -10,10 +10,11 @@ pch_gbe_phy_get_id
 
     Retrieve the PHY ID and revision
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
         Returns
         0:                      Successful.
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_phy_get_id.negative-value`:
 
@@ -31,17 +32,20 @@ pch_gbe_phy_read_reg_miic
 
     Read MII control register
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
-    :param u32 offset:
+    :param offset:
         Register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         Pointer to the read data
         Returns
         0:              Successful.
         -EINVAL:        Invalid argument.
+    :type data: u16 \*
 
 .. _`pch_gbe_phy_write_reg_miic`:
 
@@ -52,17 +56,20 @@ pch_gbe_phy_write_reg_miic
 
     Write MII control register
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
-    :param u32 offset:
+    :param offset:
         Register offset to be read
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write to register at offset
         Returns
         0:              Successful.
         -EINVAL:        Invalid argument.
+    :type data: u16
 
 .. _`pch_gbe_phy_sw_reset`:
 
@@ -73,8 +80,9 @@ pch_gbe_phy_sw_reset
 
     PHY software reset
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_phy_hw_reset`:
 
@@ -85,8 +93,9 @@ pch_gbe_phy_hw_reset
 
     PHY hardware reset
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_phy_power_up`:
 
@@ -97,8 +106,9 @@ pch_gbe_phy_power_up
 
     restore link in case the phy was powered down
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_phy_power_down`:
 
@@ -109,8 +119,9 @@ pch_gbe_phy_power_down
 
     Power down PHY
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_phy_set_rgmii`:
 
@@ -121,8 +132,9 @@ pch_gbe_phy_set_rgmii
 
     RGMII interface setting
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_phy_tx_clk_delay`:
 
@@ -133,11 +145,12 @@ pch_gbe_phy_tx_clk_delay
 
     Setup TX clock delay via the PHY
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
         Returns
         0:              Successful.
         -EINVAL:        Invalid argument.
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_phy_init_setting`:
 
@@ -148,8 +161,9 @@ pch_gbe_phy_init_setting
 
     PHY initial setting
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
+    :type hw: struct pch_gbe_hw \*
 
 .. _`pch_gbe_phy_disable_hibernate`:
 
@@ -160,11 +174,12 @@ pch_gbe_phy_disable_hibernate
 
     Disable the PHY low power state
 
-    :param struct pch_gbe_hw \*hw:
+    :param hw:
         Pointer to the HW structure
         Returns
         0:              Successful.
         -EINVAL:        Invalid argument.
+    :type hw: struct pch_gbe_hw \*
 
 .. This file was automatic generated / don't edit.
 

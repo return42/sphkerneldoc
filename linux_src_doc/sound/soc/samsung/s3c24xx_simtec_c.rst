@@ -10,11 +10,13 @@ speaker_gain_get
 
     read the speaker gain setting.
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The control for the speaker gain.
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         The value that needs to be updated.
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`speaker_gain_get.description`:
 
@@ -32,8 +34,9 @@ speaker_gain_set
 
     set the value of the speaker amp gain
 
-    :param int value:
+    :param value:
         The value to write.
+    :type value: int
 
 .. _`speaker_gain_put`:
 
@@ -44,11 +47,13 @@ speaker_gain_put
 
     set the speaker gain setting.
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The control for the speaker gain.
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         The value that needs to be set.
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`speaker_gain_put.description`:
 
@@ -71,8 +76,9 @@ spk_unmute_state
 
     set the unmute state of the speaker
 
-    :param int to:
+    :param to:
         zero to unmute, non-zero to ununmute.
+    :type to: int
 
 .. _`speaker_unmute_get`:
 
@@ -83,11 +89,13 @@ speaker_unmute_get
 
     read the speaker unmute setting.
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The control for the speaker gain.
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         The value that needs to be updated.
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`speaker_unmute_get.description`:
 
@@ -105,11 +113,13 @@ speaker_unmute_put
 
     set the speaker unmute setting.
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The control for the speaker gain.
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         The value that needs to be set.
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`speaker_unmute_put.description`:
 
@@ -128,11 +138,13 @@ simtec_hw_params
 
     update hardware parameters
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         The audio substream instance.
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         The parameters requested.
+    :type params: struct snd_pcm_hw_params \*
 
 .. _`simtec_hw_params.description`:
 
@@ -151,11 +163,13 @@ attach_gpio_amp
 
     get and configure the necessary gpios
 
-    :param struct device \*dev:
+    :param dev:
         The device we're probing.
+    :type dev: struct device \*
 
-    :param struct s3c24xx_audio_simtec_pdata \*pd:
+    :param pd:
         The platform data supplied by the board.
+    :type pd: struct s3c24xx_audio_simtec_pdata \*
 
 .. _`attach_gpio_amp.description`:
 

@@ -99,8 +99,8 @@ Definition
 .. code-block:: c
 
     struct v4l2_fwnode_bus_mipi_csi1 {
-        bool clock_inv;
-        bool strobe;
+        unsigned char clock_inv:1;
+        unsigned char strobe:1;
         bool lane_polarity[2];
         unsigned char data_lane;
         unsigned char clock_lane;
@@ -241,24 +241,34 @@ v4l2_fwnode_endpoint_parse
 
     parse all fwnode node properties
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         pointer to the endpoint's fwnode handle
+    :type fwnode: struct fwnode_handle \*
 
-    :param struct v4l2_fwnode_endpoint \*vep:
+    :param vep:
         pointer to the V4L2 fwnode data structure
+    :type vep: struct v4l2_fwnode_endpoint \*
 
 .. _`v4l2_fwnode_endpoint_parse.description`:
 
 Description
 -----------
 
-All properties are optional. If none are found, we don't set any flags. This
-means the port has a static configuration and no properties have to be
-specified explicitly. If any properties that identify the bus as parallel
-are found and slave-mode isn't set, we set V4L2_MBUS_MASTER. Similarly, if
-we recognise the bus as serial CSI-2 and clock-noncontinuous isn't set, we
-set the V4L2_MBUS_CSI2_CONTINUOUS_CLOCK flag. The caller should hold a
-reference to \ ``fwnode``\ .
+This function parses the V4L2 fwnode endpoint specific parameters from the
+firmware. The caller is responsible for assigning \ ``vep.bus_type``\  to a valid
+media bus type. The caller may also set the default configuration for the
+endpoint --- a configuration that shall be in line with the DT binding
+documentation. Should a device support multiple bus types, the caller may
+call this function once the correct type is found --- with a default
+configuration valid for that type.
+
+As a compatibility means guessing the bus type is also supported by setting
+\ ``vep.bus_type``\  to V4L2_MBUS_UNKNOWN. The caller may not provide a default
+configuration in this case as the defaults are specific to a given bus type.
+This functionality is deprecated and should not be used in new drivers and it
+is only supported for CSI-2 D-PHY, parallel and Bt.656 busses.
+
+The function does not change the V4L2 fwnode endpoint state if it fails.
 
 .. _`v4l2_fwnode_endpoint_parse.note`:
 
@@ -274,7 +284,10 @@ new drivers instead.
 Return
 ------
 
-0 on success or a negative error code on failure.
+\ ``0``\  on success or a negative error code on failure:
+        \ ``-ENOMEM``\  on memory allocation failure
+        \ ``-EINVAL``\  on parsing failure
+        \ ``-ENXIO``\  on mismatching bus types
 
 .. _`v4l2_fwnode_endpoint_free`:
 
@@ -285,8 +298,9 @@ v4l2_fwnode_endpoint_free
 
     free the V4L2 fwnode acquired by \ :c:func:`v4l2_fwnode_endpoint_alloc_parse`\ 
 
-    :param struct v4l2_fwnode_endpoint \*vep:
+    :param vep:
         the V4L2 fwnode the resources of which are to be released
+    :type vep: struct v4l2_fwnode_endpoint \*
 
 .. _`v4l2_fwnode_endpoint_free.description`:
 
@@ -301,25 +315,38 @@ parsing of which failed.
 v4l2_fwnode_endpoint_alloc_parse
 ================================
 
-.. c:function:: struct v4l2_fwnode_endpoint *v4l2_fwnode_endpoint_alloc_parse(struct fwnode_handle *fwnode)
+.. c:function:: int v4l2_fwnode_endpoint_alloc_parse(struct fwnode_handle *fwnode, struct v4l2_fwnode_endpoint *vep)
 
     parse all fwnode node properties
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         pointer to the endpoint's fwnode handle
+    :type fwnode: struct fwnode_handle \*
+
+    :param vep:
+        pointer to the V4L2 fwnode data structure
+    :type vep: struct v4l2_fwnode_endpoint \*
 
 .. _`v4l2_fwnode_endpoint_alloc_parse.description`:
 
 Description
 -----------
 
-All properties are optional. If none are found, we don't set any flags. This
-means the port has a static configuration and no properties have to be
-specified explicitly. If any properties that identify the bus as parallel
-are found and slave-mode isn't set, we set V4L2_MBUS_MASTER. Similarly, if
-we recognise the bus as serial CSI-2 and clock-noncontinuous isn't set, we
-set the V4L2_MBUS_CSI2_CONTINUOUS_CLOCK flag. The caller should hold a
-reference to \ ``fwnode``\ .
+This function parses the V4L2 fwnode endpoint specific parameters from the
+firmware. The caller is responsible for assigning \ ``vep.bus_type``\  to a valid
+media bus type. The caller may also set the default configuration for the
+endpoint --- a configuration that shall be in line with the DT binding
+documentation. Should a device support multiple bus types, the caller may
+call this function once the correct type is found --- with a default
+configuration valid for that type.
+
+As a compatibility means guessing the bus type is also supported by setting
+\ ``vep.bus_type``\  to V4L2_MBUS_UNKNOWN. The caller may not provide a default
+configuration in this case as the defaults are specific to a given bus type.
+This functionality is deprecated and should not be used in new drivers and it
+is only supported for CSI-2 D-PHY, parallel and Bt.656 busses.
+
+The function does not change the V4L2 fwnode endpoint state if it fails.
 
 \ :c:func:`v4l2_fwnode_endpoint_alloc_parse`\  has two important differences to
 \ :c:func:`v4l2_fwnode_endpoint_parse`\ :
@@ -334,8 +361,10 @@ reference to \ ``fwnode``\ .
 Return
 ------
 
-Pointer to v4l2_fwnode_endpoint if successful, on an error pointer
-on error.
+\ ``0``\  on success or a negative error code on failure:
+        \ ``-ENOMEM``\  on memory allocation failure
+        \ ``-EINVAL``\  on parsing failure
+        \ ``-ENXIO``\  on mismatching bus types
 
 .. _`v4l2_fwnode_parse_link`:
 
@@ -346,11 +375,13 @@ v4l2_fwnode_parse_link
 
     parse a link between two endpoints
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         pointer to the endpoint's fwnode at the local end of the link
+    :type fwnode: struct fwnode_handle \*
 
-    :param struct v4l2_fwnode_link \*link:
+    :param link:
         pointer to the V4L2 fwnode link data structure
+    :type link: struct v4l2_fwnode_link \*
 
 .. _`v4l2_fwnode_parse_link.description`:
 
@@ -384,8 +415,9 @@ v4l2_fwnode_put_link
 
     drop references to nodes in a link
 
-    :param struct v4l2_fwnode_link \*link:
+    :param link:
         pointer to the V4L2 fwnode link data structure
+    :type link: struct v4l2_fwnode_link \*
 
 .. _`v4l2_fwnode_put_link.description`:
 
@@ -404,14 +436,17 @@ parse_endpoint_func
 
     Driver's callback function to be called on each V4L2 fwnode endpoint.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct v4l2_fwnode_endpoint \*vep:
+    :param vep:
         pointer to \ :c:type:`struct v4l2_fwnode_endpoint <v4l2_fwnode_endpoint>`\ 
+    :type vep: struct v4l2_fwnode_endpoint \*
 
-    :param struct v4l2_async_subdev \*asd:
+    :param asd:
         pointer to \ :c:type:`struct v4l2_async_subdev <v4l2_async_subdev>`\ 
+    :type asd: struct v4l2_async_subdev \*
 
 .. _`parse_endpoint_func.return`:
 
@@ -432,22 +467,26 @@ v4l2_async_notifier_parse_fwnode_endpoints
 
     Parse V4L2 fwnode endpoints in a device node
 
-    :param struct device \*dev:
+    :param dev:
         the device the endpoints of which are to be parsed
+    :type dev: struct device \*
 
-    :param struct v4l2_async_notifier \*notifier:
+    :param notifier:
         notifier for \ ``dev``\ 
+    :type notifier: struct v4l2_async_notifier \*
 
-    :param size_t asd_struct_size:
+    :param asd_struct_size:
         size of the driver's async sub-device struct, including
         sizeof(struct v4l2_async_subdev). The \ :c:type:`struct struct <struct>`\ 
         v4l2_async_subdev shall be the first member of
         the driver's async sub-device struct, i.e. both
         begin at the same memory address.
+    :type asd_struct_size: size_t
 
-    :param parse_endpoint_func parse_endpoint:
+    :param parse_endpoint:
         Driver's callback function called on each V4L2 fwnode
         endpoint. Optional.
+    :type parse_endpoint: parse_endpoint_func
 
 .. _`v4l2_async_notifier_parse_fwnode_endpoints.description`:
 
@@ -455,7 +494,7 @@ Description
 -----------
 
 Parse the fwnode endpoints of the \ ``dev``\  device and populate the async sub-
-devices array of the notifier. The \ ``parse_endpoint``\  callback function is
+devices list in the notifier. The \ ``parse_endpoint``\  callback function is
 called for each endpoint with the corresponding async sub-device pointer to
 let the caller initialize the driver-specific part of the async sub-device
 structure.
@@ -465,11 +504,6 @@ notifier.
 
 This function may not be called on a registered notifier and may be called on
 a notifier only once.
-
-Do not change the notifier's subdevs array, take references to the subdevs
-array itself or change the notifier's num_subdevs field. This is because this
-function allocates and reallocates the subdevs array based on parsing
-endpoints.
 
 The \ :c:type:`struct v4l2_fwnode_endpoint <v4l2_fwnode_endpoint>`\  passed to the callback function
 \ ``parse_endpoint``\  is released once the function is finished. If there is a need
@@ -498,25 +532,30 @@ v4l2_async_notifier_parse_fwnode_endpoints_by_port
 
     Parse V4L2 fwnode endpoints of a port in a device node
 
-    :param struct device \*dev:
+    :param dev:
         the device the endpoints of which are to be parsed
+    :type dev: struct device \*
 
-    :param struct v4l2_async_notifier \*notifier:
+    :param notifier:
         notifier for \ ``dev``\ 
+    :type notifier: struct v4l2_async_notifier \*
 
-    :param size_t asd_struct_size:
+    :param asd_struct_size:
         size of the driver's async sub-device struct, including
         sizeof(struct v4l2_async_subdev). The \ :c:type:`struct struct <struct>`\ 
         v4l2_async_subdev shall be the first member of
         the driver's async sub-device struct, i.e. both
         begin at the same memory address.
+    :type asd_struct_size: size_t
 
-    :param unsigned int port:
+    :param port:
         port number where endpoints are to be parsed
+    :type port: unsigned int
 
-    :param parse_endpoint_func parse_endpoint:
+    :param parse_endpoint:
         Driver's callback function called on each V4L2 fwnode
         endpoint. Optional.
+    :type parse_endpoint: parse_endpoint_func
 
 .. _`v4l2_async_notifier_parse_fwnode_endpoints_by_port.description`:
 
@@ -530,7 +569,7 @@ to sources have already been configured by another driver (on capture
 devices). In this case the driver must know which ports to parse.
 
 Parse the fwnode endpoints of the \ ``dev``\  device on a given \ ``port``\  and populate
-the async sub-devices array of the notifier. The \ ``parse_endpoint``\  callback
+the async sub-devices list of the notifier. The \ ``parse_endpoint``\  callback
 function is called for each endpoint with the corresponding async sub-device
 pointer to let the caller initialize the driver-specific part of the async
 sub-device structure.
@@ -540,11 +579,6 @@ notifier the first time.
 
 This function may not be called on a registered notifier and may be called on
 a notifier only once per port.
-
-Do not change the notifier's subdevs array, take references to the subdevs
-array itself or change the notifier's num_subdevs field. This is because this
-function allocates and reallocates the subdevs array based on parsing
-endpoints.
 
 The \ :c:type:`struct v4l2_fwnode_endpoint <v4l2_fwnode_endpoint>`\  passed to the callback function
 \ ``parse_endpoint``\  is released once the function is finished. If there is a need
@@ -573,11 +607,13 @@ v4l2_async_notifier_parse_fwnode_sensor_common
 
     parse common references on sensors for async sub-devices
 
-    :param struct device \*dev:
+    :param dev:
         the device node the properties of which are parsed for references
+    :type dev: struct device \*
 
-    :param struct v4l2_async_notifier \*notifier:
+    :param notifier:
         the async notifier where the async subdevs will be added
+    :type notifier: struct v4l2_async_notifier \*
 
 .. _`v4l2_async_notifier_parse_fwnode_sensor_common.description`:
 
@@ -600,6 +636,59 @@ Return
 0 on success
         -ENOMEM if memory allocation failed
         -EINVAL if property parsing failed
+
+.. _`v4l2_async_register_fwnode_subdev`:
+
+v4l2_async_register_fwnode_subdev
+=================================
+
+.. c:function:: int v4l2_async_register_fwnode_subdev(struct v4l2_subdev *sd, size_t asd_struct_size, unsigned int *ports, unsigned int num_ports, parse_endpoint_func parse_endpoint)
+
+    registers a sub-device to the asynchronous sub-device framework and parses fwnode endpoints
+
+    :param sd:
+        pointer to struct \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
+
+    :param asd_struct_size:
+        size of the driver's async sub-device struct, including
+        sizeof(struct v4l2_async_subdev). The \ :c:type:`struct struct <struct>`\ 
+        v4l2_async_subdev shall be the first member of
+        the driver's async sub-device struct, i.e. both
+        begin at the same memory address.
+    :type asd_struct_size: size_t
+
+    :param ports:
+        array of port id's to parse for fwnode endpoints. If NULL, will
+        parse all ports owned by the sub-device.
+    :type ports: unsigned int \*
+
+    :param num_ports:
+        number of ports in \ ``ports``\  array. Ignored if \ ``ports``\  is NULL.
+    :type num_ports: unsigned int
+
+    :param parse_endpoint:
+        Driver's callback function called on each V4L2 fwnode
+        endpoint. Optional.
+    :type parse_endpoint: parse_endpoint_func
+
+.. _`v4l2_async_register_fwnode_subdev.description`:
+
+Description
+-----------
+
+This function is just like \ :c:func:`v4l2_async_register_subdev`\  with the
+exception that calling it will also allocate a notifier for the
+sub-device, parse the sub-device's firmware node endpoints using
+\ :c:func:`v4l2_async_notifier_parse_fwnode_endpoints`\  or
+\ :c:func:`v4l2_async_notifier_parse_fwnode_endpoints_by_port`\ , and
+registers the sub-device notifier. The sub-device is similarly
+unregistered by calling \ :c:func:`v4l2_async_unregister_subdev`\ .
+
+While registered, the subdev module is marked as in-use.
+
+An error is returned if the module is no longer loaded on any attempts
+to register it.
 
 .. This file was automatic generated / don't edit.
 

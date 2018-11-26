@@ -10,11 +10,13 @@ ocfs2_resv_discard
 
     truncate a reservation
 
-    :param struct ocfs2_reservation_map \*resmap:
+    :param resmap:
         *undescribed*
+    :type resmap: struct ocfs2_reservation_map \*
 
-    :param struct ocfs2_alloc_reservation \*resv:
+    :param resv:
         the reservation to truncate.
+    :type resv: struct ocfs2_alloc_reservation \*
 
 .. _`ocfs2_resv_discard.description`:
 
@@ -33,11 +35,13 @@ ocfs2_resmap_init
 
     Initialize fields of a reservations bitmap
 
-    :param struct ocfs2_super \*osb:
+    :param osb:
         *undescribed*
+    :type osb: struct ocfs2_super \*
 
-    :param struct ocfs2_reservation_map \*resmap:
+    :param resmap:
         struct ocfs2_reservation_map to initialize
+    :type resmap: struct ocfs2_reservation_map \*
 
 .. _`ocfs2_resmap_init.description`:
 
@@ -56,14 +60,17 @@ ocfs2_resmap_restart
 
     "restart" a reservation bitmap
 
-    :param struct ocfs2_reservation_map \*resmap:
+    :param resmap:
         reservations bitmap
+    :type resmap: struct ocfs2_reservation_map \*
 
-    :param unsigned int clen:
+    :param clen:
         Number of valid bits in the bitmap
+    :type clen: unsigned int
 
-    :param char \*disk_bitmap:
+    :param disk_bitmap:
         the disk bitmap this resmap should refer to.
+    :type disk_bitmap: char \*
 
 .. _`ocfs2_resmap_restart.description`:
 
@@ -86,8 +93,9 @@ ocfs2_resmap_uninit
 
     uninitialize a reservation bitmap structure
 
-    :param struct ocfs2_reservation_map \*resmap:
+    :param resmap:
         the struct ocfs2_reservation_map to uninitialize
+    :type resmap: struct ocfs2_reservation_map \*
 
 .. _`ocfs2_resmap_resv_bits`:
 
@@ -98,17 +106,21 @@ ocfs2_resmap_resv_bits
 
     Return still-valid reservation bits
 
-    :param struct ocfs2_reservation_map \*resmap:
+    :param resmap:
         reservations bitmap
+    :type resmap: struct ocfs2_reservation_map \*
 
-    :param struct ocfs2_alloc_reservation \*resv:
+    :param resv:
         reservation to base search from
+    :type resv: struct ocfs2_alloc_reservation \*
 
-    :param int \*cstart:
+    :param cstart:
         start of proposed allocation
+    :type cstart: int \*
 
-    :param int \*clen:
+    :param clen:
         length (in clusters) of proposed allocation
+    :type clen: int \*
 
 .. _`ocfs2_resmap_resv_bits.description`:
 
@@ -134,17 +146,21 @@ ocfs2_resmap_claimed_bits
 
     Tell the reservation code that bits were used.
 
-    :param struct ocfs2_reservation_map \*resmap:
+    :param resmap:
         reservations bitmap
+    :type resmap: struct ocfs2_reservation_map \*
 
-    :param struct ocfs2_alloc_reservation \*resv:
+    :param resv:
         optional reservation to recalulate based on new bitmap
+    :type resv: struct ocfs2_alloc_reservation \*
 
-    :param u32 cstart:
+    :param cstart:
         start of allocation in clusters
+    :type cstart: u32
 
-    :param u32 clen:
+    :param clen:
         end of allocation in clusters.
+    :type clen: u32
 
 .. _`ocfs2_resmap_claimed_bits.description`:
 

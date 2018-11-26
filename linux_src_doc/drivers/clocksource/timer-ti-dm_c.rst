@@ -10,11 +10,13 @@ omap_dm_timer_read_reg
 
     read timer registers in posted and non-posted mode
 
-    :param struct omap_dm_timer \*timer:
+    :param timer:
         timer pointer over which read operation to perform
+    :type timer: struct omap_dm_timer \*
 
-    :param u32 reg:
+    :param reg:
         lowest byte holds the register offset
+    :type reg: u32
 
 .. _`omap_dm_timer_read_reg.description`:
 
@@ -34,14 +36,17 @@ omap_dm_timer_write_reg
 
     write timer registers in posted and non-posted mode
 
-    :param struct omap_dm_timer \*timer:
+    :param timer:
         timer pointer over which write operation is to perform
+    :type timer: struct omap_dm_timer \*
 
-    :param u32 reg:
+    :param reg:
         lowest byte holds the register offset
+    :type reg: u32
 
-    :param u32 value:
+    :param value:
         data to write into the register
+    :type value: u32
 
 .. _`omap_dm_timer_write_reg.description`:
 
@@ -61,8 +66,9 @@ omap_dm_timer_request_by_cap
 
     Request a timer by capability
 
-    :param u32 cap:
+    :param cap:
         Bit mask of capabilities to match
+    :type cap: u32
 
 .. _`omap_dm_timer_request_by_cap.description`:
 
@@ -83,8 +89,9 @@ omap_dm_timer_request_by_node
 
     Request a timer by device-tree node
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to device-tree timer node
+    :type np: struct device_node \*
 
 .. _`omap_dm_timer_request_by_node.description`:
 
@@ -103,8 +110,9 @@ omap_dm_timer_modify_idlect_mask
 
     Check if any running timers use ARMXOR
 
-    :param __u32 inputmask:
+    :param inputmask:
         current value of idlect mask
+    :type inputmask: __u32
 
 .. _`omap_dm_timer_set_int_disable`:
 
@@ -115,11 +123,13 @@ omap_dm_timer_set_int_disable
 
     disable timer interrupts
 
-    :param struct omap_dm_timer \*timer:
+    :param timer:
         pointer to timer handle
+    :type timer: struct omap_dm_timer \*
 
-    :param u32 mask:
+    :param mask:
         bit mask of interrupts to be disabled
+    :type mask: u32
 
 .. _`omap_dm_timer_set_int_disable.description`:
 
@@ -137,8 +147,9 @@ omap_dm_timer_probe
 
     probe function called for every registered device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to current timer platform device
+    :type pdev: struct platform_device \*
 
 .. _`omap_dm_timer_probe.description`:
 
@@ -157,8 +168,9 @@ omap_dm_timer_remove
 
     cleanup a registered timer device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to current timer platform device
+    :type pdev: struct platform_device \*
 
 .. _`omap_dm_timer_remove.description`:
 

@@ -10,11 +10,13 @@ sdw_intel_init
 
     SoundWire Intel init routine
 
-    :param acpi_handle \*parent_handle:
+    :param parent_handle:
         ACPI parent handle
+    :type parent_handle: acpi_handle \*
 
-    :param struct sdw_intel_res \*res:
+    :param res:
         resource data
+    :type res: struct sdw_intel_res \*
 
 .. _`sdw_intel_init.description`:
 
@@ -33,8 +35,9 @@ sdw_intel_exit
 
     SoundWire Intel exit
 
-    :param void \*arg:
+    :param arg:
         callback context
+    :type arg: void \*
 
 .. _`sdw_intel_exit.description`:
 

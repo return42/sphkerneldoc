@@ -10,8 +10,9 @@ exynos_cpu_power_down
 
     power down the specified cpu
 
-    :param int cpu:
+    :param cpu:
         the cpu to power down
+    :type cpu: int
 
 .. _`exynos_cpu_power_down.description`:
 
@@ -30,8 +31,9 @@ exynos_cpu_power_up
 
     power up the specified cpu
 
-    :param int cpu:
+    :param cpu:
         the cpu to power up
+    :type cpu: int
 
 .. _`exynos_cpu_power_up.description`:
 
@@ -49,8 +51,9 @@ exynos_cpu_power_state
 
     returns the power state of the cpu
 
-    :param int cpu:
+    :param cpu:
         the cpu to retrieve the power state from
+    :type cpu: int
 
 .. _`exynos_cluster_power_down`:
 
@@ -61,8 +64,9 @@ exynos_cluster_power_down
 
     power down the specified cluster
 
-    :param int cluster:
+    :param cluster:
         the cluster to power down
+    :type cluster: int
 
 .. _`exynos_cluster_power_up`:
 
@@ -73,8 +77,9 @@ exynos_cluster_power_up
 
     power up the specified cluster
 
-    :param int cluster:
+    :param cluster:
         the cluster to power up
+    :type cluster: int
 
 .. _`exynos_cluster_power_state`:
 
@@ -85,8 +90,9 @@ exynos_cluster_power_state
 
     returns the power state of the cluster
 
-    :param int cluster:
+    :param cluster:
         the cluster to retrieve the power state from
+    :type cluster: int
 
 .. _`exynos_scu_enable`:
 
@@ -97,8 +103,9 @@ exynos_scu_enable
 
     enables SCU for Cortex-A9 based system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

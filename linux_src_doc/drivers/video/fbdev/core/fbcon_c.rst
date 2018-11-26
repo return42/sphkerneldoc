@@ -10,14 +10,17 @@ set_con2fb_map
 
     map console to frame buffer device
 
-    :param int unit:
+    :param unit:
         virtual console number to map
+    :type unit: int
 
-    :param int newidx:
+    :param newidx:
         frame buffer index to map virtual console to
+    :type newidx: int
 
-    :param int user:
+    :param user:
         user request
+    :type user: int
 
 .. _`set_con2fb_map.description`:
 

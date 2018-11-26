@@ -21,7 +21,7 @@ Definition
         const char *name;
         u64 addr;
         u64 size;
-        int type;
+        enum nfp_rtsym_type type;
         int target;
         int domain;
     }

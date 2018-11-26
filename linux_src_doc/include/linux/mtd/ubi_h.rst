@@ -183,8 +183,9 @@ ubi_sgl_init
 
     initialize an UBI scatter gather list data structure.
 
-    :param struct ubi_sgl \*usgl:
+    :param usgl:
         the UBI scatter gather struct itself
+    :type usgl: struct ubi_sgl \*
 
 .. _`ubi_sgl_init.description`:
 

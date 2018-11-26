@@ -10,8 +10,9 @@ freezer_do_not_count
 
     tell freezer to ignore \ ``current``\ 
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`freezer_do_not_count.description`:
 
@@ -35,8 +36,9 @@ freezer_count
 
     tell freezer to stop ignoring \ ``current``\ 
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`freezer_count.description`:
 
@@ -56,8 +58,9 @@ freezer_should_skip
 
     whether to skip a task when determining frozen state is reached
 
-    :param struct task_struct \*p:
+    :param p:
         task in quesion
+    :type p: struct task_struct \*
 
 .. _`freezer_should_skip.description`:
 

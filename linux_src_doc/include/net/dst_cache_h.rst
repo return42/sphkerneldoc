@@ -10,8 +10,9 @@ dst_cache_get
 
     perform cache lookup
 
-    :param struct dst_cache \*dst_cache:
+    :param dst_cache:
         the cache
+    :type dst_cache: struct dst_cache \*
 
 .. _`dst_cache_get.description`:
 
@@ -31,11 +32,13 @@ dst_cache_get_ip4
 
     perform cache lookup and fetch ipv4 source address
 
-    :param struct dst_cache \*dst_cache:
+    :param dst_cache:
         the cache
+    :type dst_cache: struct dst_cache \*
 
-    :param __be32 \*saddr:
+    :param saddr:
         return value for the retrieved source address
+    :type saddr: __be32 \*
 
 .. _`dst_cache_get_ip4.description`:
 
@@ -53,14 +56,17 @@ dst_cache_set_ip4
 
     store the ipv4 dst into the cache
 
-    :param struct dst_cache \*dst_cache:
+    :param dst_cache:
         the cache
+    :type dst_cache: struct dst_cache \*
 
-    :param struct dst_entry \*dst:
+    :param dst:
         the entry to be cached
+    :type dst: struct dst_entry \*
 
-    :param __be32 saddr:
+    :param saddr:
         the source address to be stored inside the cache
+    :type saddr: __be32
 
 .. _`dst_cache_set_ip4.description`:
 
@@ -78,14 +84,17 @@ dst_cache_set_ip6
 
     store the ipv6 dst into the cache
 
-    :param struct dst_cache \*dst_cache:
+    :param dst_cache:
         the cache
+    :type dst_cache: struct dst_cache \*
 
-    :param struct dst_entry \*dst:
+    :param dst:
         the entry to be cached
+    :type dst: struct dst_entry \*
 
-    :param const struct in6_addr \*saddr:
+    :param saddr:
         the source address to be stored inside the cache
+    :type saddr: const struct in6_addr \*
 
 .. _`dst_cache_set_ip6.description`:
 
@@ -103,11 +112,13 @@ dst_cache_get_ip6
 
     perform cache lookup and fetch ipv6 source address
 
-    :param struct dst_cache \*dst_cache:
+    :param dst_cache:
         the cache
+    :type dst_cache: struct dst_cache \*
 
-    :param struct in6_addr \*saddr:
+    :param saddr:
         return value for the retrieved source address
+    :type saddr: struct in6_addr \*
 
 .. _`dst_cache_get_ip6.description`:
 
@@ -125,8 +136,9 @@ dst_cache_reset
 
     invalidate the cache contents
 
-    :param struct dst_cache \*dst_cache:
+    :param dst_cache:
         the cache
+    :type dst_cache: struct dst_cache \*
 
 .. _`dst_cache_reset.description`:
 
@@ -145,11 +157,13 @@ dst_cache_init
 
     initialize the cache, allocating the required storage
 
-    :param struct dst_cache \*dst_cache:
+    :param dst_cache:
         the cache
+    :type dst_cache: struct dst_cache \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`dst_cache_destroy`:
 
@@ -160,8 +174,9 @@ dst_cache_destroy
 
     empty the cache and free the allocated storage
 
-    :param struct dst_cache \*dst_cache:
+    :param dst_cache:
         the cache
+    :type dst_cache: struct dst_cache \*
 
 .. _`dst_cache_destroy.no-synchronization-is-enforced`:
 

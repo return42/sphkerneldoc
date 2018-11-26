@@ -1,23 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/s390/crypto/zcrypt_api.h
 
-.. _`zcrypt_pcica`:
+.. _`zcrypt_cex2c`:
 
-ZCRYPT_PCICA
+ZCRYPT_CEX2C
 ============
 
-.. c:function::  ZCRYPT_PCICA()
-
-    PCIXCC_MCL3, CEX2C, or CEX2A
-
-.. _`zcrypt_pcica.note`:
-
-NOTE
-----
-
-PCIXCC_MCL3 refers to a PCIXCC with May 2004 version of Licensed
-Internal Code (LIC) (EC J12220 level 29).
-PCIXCC_MCL2 refers to any LIC before this level.
+.. c:function::  ZCRYPT_CEX2C()
 
 .. _`zcrypt_rng_buffer_size`:
 

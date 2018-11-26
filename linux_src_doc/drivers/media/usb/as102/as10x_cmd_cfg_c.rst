@@ -10,14 +10,17 @@ as10x_cmd_get_context
 
     Send get context command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
-    :param uint16_t tag:
+    :param tag:
         context tag
+    :type tag: uint16_t
 
-    :param uint32_t \*pvalue:
+    :param pvalue:
         pointer where to store context value read
+    :type pvalue: uint32_t \*
 
 .. _`as10x_cmd_get_context.description`:
 
@@ -35,14 +38,17 @@ as10x_cmd_set_context
 
     send set context command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
-    :param uint16_t tag:
+    :param tag:
         context tag
+    :type tag: uint16_t
 
-    :param uint32_t value:
+    :param value:
         value to set in context
+    :type value: uint32_t
 
 .. _`as10x_cmd_set_context.description`:
 
@@ -60,15 +66,17 @@ as10x_cmd_eLNA_change_mode
 
     send eLNA change mode command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
-    :param uint8_t mode:
+    :param mode:
         mode selected:
         - ON    : 0x0 => eLNA always ON
         - OFF   : 0x1 => eLNA always OFF
         - AUTO  : 0x2 => eLNA follow hysteresis parameters
         to be ON or OFF
+    :type mode: uint8_t
 
 .. _`as10x_cmd_elna_change_mode.description`:
 
@@ -86,11 +94,13 @@ as10x_context_rsp_parse
 
     Parse context command response
 
-    :param struct as10x_cmd_t \*prsp:
+    :param prsp:
         pointer to AS10x command response buffer
+    :type prsp: struct as10x_cmd_t \*
 
-    :param uint16_t proc_id:
+    :param proc_id:
         id of the command
+    :type proc_id: uint16_t
 
 .. _`as10x_context_rsp_parse.description`:
 

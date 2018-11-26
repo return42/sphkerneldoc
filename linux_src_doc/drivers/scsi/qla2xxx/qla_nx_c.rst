@@ -10,8 +10,9 @@ qla82xx_pci_config
 
     Setup ISP82xx PCI configuration registers.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla82xx_pci_config.description`:
 
@@ -29,8 +30,9 @@ qla82xx_reset_chip
 
     Setup ISP82xx PCI configuration registers.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla82xx_reset_chip.description`:
 
@@ -48,11 +50,13 @@ qla82xx_intr_handler
 
     Process interrupts for the ISP23xx and ISP63xx.
 
-    :param int irq:
-        *undescribed*
+    :param irq:
+        interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         SCSI driver HA context
+    :type dev_id: void \*
 
 .. _`qla82xx_intr_handler.description`:
 

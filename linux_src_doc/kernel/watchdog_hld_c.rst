@@ -10,8 +10,9 @@ hardlockup_detector_perf_enable
 
     Enable the local event
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hardlockup_detector_perf_disable`:
 
@@ -22,8 +23,9 @@ hardlockup_detector_perf_disable
 
     Disable the local event
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hardlockup_detector_perf_cleanup`:
 
@@ -34,8 +36,9 @@ hardlockup_detector_perf_cleanup
 
     Cleanup disabled events and destroy them
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hardlockup_detector_perf_cleanup.description`:
 
@@ -53,8 +56,9 @@ hardlockup_detector_perf_stop
 
     Globally stop watchdog events
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hardlockup_detector_perf_stop.description`:
 
@@ -72,8 +76,9 @@ hardlockup_detector_perf_restart
 
     Globally restart watchdog events
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hardlockup_detector_perf_restart.description`:
 
@@ -91,8 +96,9 @@ hardlockup_detector_perf_init
 
     Probe whether NMI event is available at all
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ ctcmpc_unpack_skb
 
     upper layers. special MPC version of unpack_skb.
 
-    :param struct channel \*ch:
+    :param ch:
         *undescribed*
+    :type ch: struct channel \*
 
-    :param struct sk_buff \*pskb:
+    :param pskb:
         *undescribed*
+    :type pskb: struct sk_buff \*
 
 .. _`ctcmpc_unpack_skb.description`:
 
@@ -31,8 +33,9 @@ ctcmpc_bh
 
 .. c:function:: void ctcmpc_bh(unsigned long thischan)
 
-    :param unsigned long thischan:
+    :param thischan:
         *undescribed*
+    :type thischan: unsigned long
 
 .. _`ctcmpc_bh.description`:
 
@@ -51,14 +54,17 @@ mpc_action_nop
 
 .. c:function:: void mpc_action_nop(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`mpc_action_timeout`:
 
@@ -69,14 +75,17 @@ mpc_action_timeout
 
     MPC Group Station FSM action CTCM_PROTO_MPC only
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`mpc_action_timeout.description`:
 

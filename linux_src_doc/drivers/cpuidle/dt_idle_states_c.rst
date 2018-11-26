@@ -10,18 +10,21 @@ dt_init_idle_driver
 
     Parse the DT idle states and initialize the idle driver states array
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         Pointer to CPU idle driver to be initialized
+    :type drv: struct cpuidle_driver \*
 
-    :param const struct of_device_id \*matches:
+    :param matches:
         Array of of_device_id match structures to search in for
         compatible idle state nodes. The data pointer for each valid
         struct of_device_id entry in the matches array must point to
         a function with the following signature, that corresponds to
         the CPUidle state enter function signature:
+    :type matches: const struct of_device_id \*
 
-    :param unsigned int start_idx:
+    :param start_idx:
         First idle state index to be initialized
+    :type start_idx: unsigned int
 
 .. _`dt_init_idle_driver.description`:
 

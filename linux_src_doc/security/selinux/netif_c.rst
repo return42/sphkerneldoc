@@ -10,11 +10,13 @@ sel_netif_hashfn
 
     Hashing function for the interface table
 
-    :param const struct net \*ns:
+    :param ns:
         the network namespace
+    :type ns: const struct net \*
 
-    :param int ifindex:
+    :param ifindex:
         the network interface
+    :type ifindex: int
 
 .. _`sel_netif_hashfn.description`:
 
@@ -33,11 +35,13 @@ sel_netif_find
 
     Search for an interface record
 
-    :param const struct net \*ns:
+    :param ns:
         the network namespace
+    :type ns: const struct net \*
 
-    :param int ifindex:
+    :param ifindex:
         the network interface
+    :type ifindex: int
 
 .. _`sel_netif_find.description`:
 
@@ -56,8 +60,9 @@ sel_netif_insert
 
     Insert a new interface into the table
 
-    :param struct sel_netif \*netif:
+    :param netif:
         the new interface record
+    :type netif: struct sel_netif \*
 
 .. _`sel_netif_insert.description`:
 
@@ -76,8 +81,9 @@ sel_netif_destroy
 
     Remove an interface record from the table
 
-    :param struct sel_netif \*netif:
+    :param netif:
         the existing interface record
+    :type netif: struct sel_netif \*
 
 .. _`sel_netif_destroy.description`:
 
@@ -95,14 +101,17 @@ sel_netif_sid_slow
 
     Lookup the SID of a network interface using the policy
 
-    :param struct net \*ns:
+    :param ns:
         the network namespace
+    :type ns: struct net \*
 
-    :param int ifindex:
+    :param ifindex:
         the network interface
+    :type ifindex: int
 
-    :param u32 \*sid:
+    :param sid:
         interface SID
+    :type sid: u32 \*
 
 .. _`sel_netif_sid_slow.description`:
 
@@ -123,14 +132,17 @@ sel_netif_sid
 
     Lookup the SID of a network interface
 
-    :param struct net \*ns:
+    :param ns:
         the network namespace
+    :type ns: struct net \*
 
-    :param int ifindex:
+    :param ifindex:
         the network interface
+    :type ifindex: int
 
-    :param u32 \*sid:
+    :param sid:
         interface SID
+    :type sid: u32 \*
 
 .. _`sel_netif_sid.description`:
 
@@ -152,11 +164,13 @@ sel_netif_kill
 
     Remove an entry from the network interface table
 
-    :param const struct net \*ns:
+    :param ns:
         the network namespace
+    :type ns: const struct net \*
 
-    :param int ifindex:
+    :param ifindex:
         the network interface
+    :type ifindex: int
 
 .. _`sel_netif_kill.description`:
 
@@ -175,8 +189,9 @@ sel_netif_flush
 
     Flush the entire network interface table
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sel_netif_flush.description`:
 

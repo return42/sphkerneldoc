@@ -10,11 +10,13 @@ newque
 
     Create a new msg queue
 
-    :param struct ipc_namespace \*ns:
+    :param ns:
         namespace
+    :type ns: struct ipc_namespace \*
 
-    :param struct ipc_params \*params:
+    :param params:
         ptr to the structure that contains the key and msgflg
+    :type params: struct ipc_params \*
 
 .. _`newque.description`:
 

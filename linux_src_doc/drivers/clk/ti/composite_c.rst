@@ -10,14 +10,17 @@ ti_clk_add_component
 
     add a component clock to the pool
 
-    :param struct device_node \*node:
+    :param node:
         device node of the component clock
+    :type node: struct device_node \*
 
-    :param struct clk_hw \*hw:
+    :param hw:
         hardware clock definition for the component clock
+    :type hw: struct clk_hw \*
 
-    :param int type:
+    :param type:
         type of the component clock
+    :type type: int
 
 .. _`ti_clk_add_component.description`:
 

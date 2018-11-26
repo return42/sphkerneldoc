@@ -10,8 +10,9 @@ acpiphp_init_context
 
     Create hotplug context and grab a reference to it.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device object to create the context for.
+    :type adev: struct acpi_device \*
 
 .. _`acpiphp_init_context.description`:
 
@@ -29,8 +30,9 @@ acpiphp_get_context
 
     Get hotplug context and grab a reference to it.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device object to get the context for.
+    :type adev: struct acpi_device \*
 
 .. _`acpiphp_get_context.description`:
 
@@ -48,8 +50,9 @@ acpiphp_put_context
 
     Drop a reference to ACPI hotplug context.
 
-    :param struct acpiphp_context \*context:
+    :param context:
         ACPI hotplug context to drop a reference to.
+    :type context: struct acpiphp_context \*
 
 .. _`acpiphp_put_context.description`:
 
@@ -69,8 +72,9 @@ acpiphp_post_dock_fixup
 
     Post-dock fixups for PCI devices.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device object corresponding to a PCI device.
+    :type adev: struct acpi_device \*
 
 .. _`acpiphp_post_dock_fixup.description`:
 
@@ -88,17 +92,21 @@ acpiphp_add_context
 
     Add ACPIPHP context to an ACPI device object.
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI handle of the object to add a context to.
+    :type handle: acpi_handle
 
-    :param u32 lvl:
+    :param lvl:
         Not used.
+    :type lvl: u32
 
-    :param void \*data:
+    :param data:
         The object's parent ACPIPHP bridge.
+    :type data: void \*
 
-    :param void \*\*rv:
+    :param rv:
         Not used.
+    :type rv: void \*\*
 
 .. _`acpiphp_max_busnr`:
 
@@ -109,20 +117,26 @@ acpiphp_max_busnr
 
     return the highest reserved bus number under the given bus.
 
-    :param struct pci_bus \*bus:
+    :param bus:
         bus to start search with
+    :type bus: struct pci_bus \*
 
 .. _`enable_slot`:
 
 enable_slot
 ===========
 
-.. c:function:: void enable_slot(struct acpiphp_slot *slot)
+.. c:function:: void enable_slot(struct acpiphp_slot *slot, bool bridge)
 
     enable, configure a slot
 
-    :param struct acpiphp_slot \*slot:
+    :param slot:
         slot to be enabled
+    :type slot: struct acpiphp_slot \*
+
+    :param bridge:
+        true if enable is for the whole bridge (not a single slot)
+    :type bridge: bool
 
 .. _`enable_slot.description`:
 
@@ -141,8 +155,9 @@ disable_slot
 
     disable a slot
 
-    :param struct acpiphp_slot \*slot:
+    :param slot:
         ACPI PHP slot
+    :type slot: struct acpiphp_slot \*
 
 .. _`get_slot_status`:
 
@@ -153,8 +168,9 @@ get_slot_status
 
     get ACPI slot status
 
-    :param struct acpiphp_slot \*slot:
+    :param slot:
         ACPI PHP slot
+    :type slot: struct acpiphp_slot \*
 
 .. _`get_slot_status.description`:
 
@@ -178,8 +194,9 @@ trim_stale_devices
 
     remove PCI devices that are not responding.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to start walking the hierarchy from.
+    :type dev: struct pci_dev \*
 
 .. _`acpiphp_check_bridge`:
 
@@ -190,8 +207,9 @@ acpiphp_check_bridge
 
     re-enumerate devices
 
-    :param struct acpiphp_bridge \*bridge:
+    :param bridge:
         where to begin re-enumeration
+    :type bridge: struct acpiphp_bridge \*
 
 .. _`acpiphp_check_bridge.description`:
 
@@ -210,8 +228,9 @@ acpiphp_enumerate_slots
 
     Enumerate PCI slots for a given bus.
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus to enumerate the slots for.
+    :type bus: struct pci_bus \*
 
 .. _`acpiphp_enumerate_slots.description`:
 
@@ -230,8 +249,9 @@ acpiphp_remove_slots
 
     Remove slot objects associated with a given bus.
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus to remove the slot objects for.
+    :type bus: struct pci_bus \*
 
 .. _`acpiphp_enable_slot`:
 
@@ -242,8 +262,9 @@ acpiphp_enable_slot
 
     power on slot
 
-    :param struct acpiphp_slot \*slot:
+    :param slot:
         ACPI PHP slot
+    :type slot: struct acpiphp_slot \*
 
 .. _`acpiphp_disable_and_eject_slot`:
 
@@ -254,8 +275,9 @@ acpiphp_disable_and_eject_slot
 
     power off and eject slot
 
-    :param struct acpiphp_slot \*slot:
+    :param slot:
         ACPI PHP slot
+    :type slot: struct acpiphp_slot \*
 
 .. This file was automatic generated / don't edit.
 

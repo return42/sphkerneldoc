@@ -10,8 +10,9 @@ omap_i2c_reset
 
     reset the omap i2c module.
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_i2c_reset.description`:
 

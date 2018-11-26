@@ -10,8 +10,9 @@ kfree_const
 
     conditionally free memory
 
-    :param const void \*x:
+    :param x:
         pointer to the memory
+    :type x: const void \*
 
 .. _`kfree_const.description`:
 
@@ -29,11 +30,13 @@ kstrdup
 
     allocate space for and copy an existing string
 
-    :param const char \*s:
+    :param s:
         the string to duplicate
+    :type s: const char \*
 
-    :param gfp_t gfp:
+    :param gfp:
         the GFP mask used in the \ :c:func:`kmalloc`\  call when allocating memory
+    :type gfp: gfp_t
 
 .. _`kstrdup_const`:
 
@@ -44,11 +47,13 @@ kstrdup_const
 
     conditionally duplicate an existing const string
 
-    :param const char \*s:
+    :param s:
         the string to duplicate
+    :type s: const char \*
 
-    :param gfp_t gfp:
+    :param gfp:
         the GFP mask used in the \ :c:func:`kmalloc`\  call when allocating memory
+    :type gfp: gfp_t
 
 .. _`kstrdup_const.description`:
 
@@ -68,14 +73,17 @@ kstrndup
 
     allocate space for and copy an existing string
 
-    :param const char \*s:
+    :param s:
         the string to duplicate
+    :type s: const char \*
 
-    :param size_t max:
+    :param max:
         read at most \ ``max``\  chars from \ ``s``\ 
+    :type max: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         the GFP mask used in the \ :c:func:`kmalloc`\  call when allocating memory
+    :type gfp: gfp_t
 
 .. _`kstrndup.note`:
 
@@ -93,14 +101,17 @@ kmemdup
 
     duplicate region of memory
 
-    :param const void \*src:
+    :param src:
         memory region to duplicate
+    :type src: const void \*
 
-    :param size_t len:
+    :param len:
         memory region length
+    :type len: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         GFP mask to use
+    :type gfp: gfp_t
 
 .. _`kmemdup_nul`:
 
@@ -111,14 +122,17 @@ kmemdup_nul
 
     Create a NUL-terminated string from unterminated data
 
-    :param const char \*s:
+    :param s:
         The data to stringify
+    :type s: const char \*
 
-    :param size_t len:
+    :param len:
         The size of the data
+    :type len: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         the GFP mask used in the \ :c:func:`kmalloc`\  call when allocating memory
+    :type gfp: gfp_t
 
 .. _`memdup_user`:
 
@@ -129,11 +143,13 @@ memdup_user
 
     duplicate memory region from user space
 
-    :param const void __user \*src:
+    :param src:
         source address in user space
+    :type src: const void __user \*
 
-    :param size_t len:
+    :param len:
         number of bytes to copy
+    :type len: size_t
 
 .. _`memdup_user.description`:
 
@@ -152,11 +168,13 @@ vmemdup_user
 
     duplicate memory region from user space
 
-    :param const void __user \*src:
+    :param src:
         source address in user space
+    :type src: const void __user \*
 
-    :param size_t len:
+    :param len:
         number of bytes to copy
+    :type len: size_t
 
 .. _`vmemdup_user.description`:
 
@@ -165,6 +183,23 @@ Description
 
 Returns an \ :c:func:`ERR_PTR`\  on failure.  Result may be not
 physically contiguous.  Use \ :c:func:`kvfree`\  to free.
+
+.. _`strndup_user`:
+
+strndup_user
+============
+
+.. c:function:: char *strndup_user(const char __user *s, long n)
+
+    duplicate an existing string from user space
+
+    :param s:
+        The string to duplicate
+    :type s: const char __user \*
+
+    :param n:
+        Maximum number of bytes to copy, including the trailing NUL.
+    :type n: long
 
 .. _`memdup_user_nul`:
 
@@ -175,11 +210,13 @@ memdup_user_nul
 
     duplicate memory region from user space and NUL-terminate
 
-    :param const void __user \*src:
+    :param src:
         source address in user space
+    :type src: const void __user \*
 
-    :param size_t len:
+    :param len:
         number of bytes to copy
+    :type len: size_t
 
 .. _`memdup_user_nul.description`:
 
@@ -197,18 +234,22 @@ get_user_pages_fast
 
     pin user pages in memory
 
-    :param unsigned long start:
+    :param start:
         starting user address
+    :type start: unsigned long
 
-    :param int nr_pages:
+    :param nr_pages:
         number of pages from start to pin
+    :type nr_pages: int
 
-    :param int write:
+    :param write:
         whether pages will be written to
+    :type write: int
 
-    :param struct page \*\*pages:
+    :param pages:
         array that receives pointers to the pages pinned.
         Should be at least nr_pages long.
+    :type pages: struct page \*\*
 
 .. _`get_user_pages_fast.description`:
 
@@ -240,14 +281,17 @@ kvmalloc_node
 
     attempt to allocate physically contiguous memory, but upon failure, fall back to non-contiguous (vmalloc) allocation.
 
-    :param size_t size:
+    :param size:
         size of the request.
+    :type size: size_t
 
-    :param gfp_t flags:
+    :param flags:
         gfp mask for the allocation - must be compatible (superset) with GFP_KERNEL.
+    :type flags: gfp_t
 
-    :param int node:
+    :param node:
         numa node to allocate from
+    :type node: int
 
 .. _`kvmalloc_node.description`:
 
@@ -264,6 +308,35 @@ preferable to the vmalloc fallback, due to visible performance drawbacks.
 Please note that any use of gfp flags outside of GFP_KERNEL is careful to not
 fall back to vmalloc.
 
+.. _`kvfree`:
+
+kvfree
+======
+
+.. c:function:: void kvfree(const void *addr)
+
+    Free memory.
+
+    :param addr:
+        Pointer to allocated memory.
+    :type addr: const void \*
+
+.. _`kvfree.description`:
+
+Description
+-----------
+
+kvfree frees memory allocated by any of \ :c:func:`vmalloc`\ , \ :c:func:`kmalloc`\  or \ :c:func:`kvmalloc`\ .
+It is slightly more efficient to use \ :c:func:`kfree`\  or \ :c:func:`vfree`\  if you are certain
+that you know which one to use.
+
+.. _`kvfree.context`:
+
+Context
+-------
+
+Either preemptible task context or not-NMI interrupt.
+
 .. _`get_cmdline`:
 
 get_cmdline
@@ -273,17 +346,20 @@ get_cmdline
 
     copy the cmdline value to a buffer.
 
-    :param struct task_struct \*task:
+    :param task:
         the task whose cmdline value to copy.
+    :type task: struct task_struct \*
 
-    :param char \*buffer:
+    :param buffer:
         the buffer to copy to.
+    :type buffer: char \*
 
-    :param int buflen:
+    :param buflen:
         the length of the buffer. Larger cmdline values are truncated
         to this length.
         Returns the size of the cmdline field copied. Note that the copy does
         not guarantee an ending NULL byte.
+    :type buflen: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,35 +10,45 @@ hgsmi_process_display_info
 
     initialised first using \ ``a``\  VBoxHGSMISendViewInfo and if the mode is being set on the first display then it must be set first using registers. \ ``param``\   ctx           The context containing the heap to use \ ``param``\   display       The screen number \ ``param``\   origin_x      The horizontal displacement relative to the first scrn \ ``param``\   origin_y      The vertical displacement relative to the first screen \ ``param``\   start_offset  The offset of the visible area of the framebuffer relative to the framebuffer start \ ``param``\   pitch         The offset in bytes between the starts of two adjecent scan lines in video RAM \ ``param``\   width         The mode width \ ``param``\   height        The mode height \ ``param``\   bpp           The colour depth of the mode \ ``param``\   flags         Flags
 
-    :param struct gen_pool \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct gen_pool \*
 
-    :param u32 display:
+    :param display:
         *undescribed*
+    :type display: u32
 
-    :param s32 origin_x:
+    :param origin_x:
         *undescribed*
+    :type origin_x: s32
 
-    :param s32 origin_y:
+    :param origin_y:
         *undescribed*
+    :type origin_y: s32
 
-    :param u32 start_offset:
+    :param start_offset:
         *undescribed*
+    :type start_offset: u32
 
-    :param u32 pitch:
+    :param pitch:
         *undescribed*
+    :type pitch: u32
 
-    :param u32 width:
+    :param width:
         *undescribed*
+    :type width: u32
 
-    :param u32 height:
+    :param height:
         *undescribed*
+    :type height: u32
 
-    :param u16 bpp:
+    :param bpp:
         *undescribed*
+    :type bpp: u16
 
-    :param u16 flags:
+    :param flags:
         *undescribed*
+    :type flags: u16
 
 .. _`hgsmi_update_input_mapping`:
 
@@ -49,20 +59,25 @@ hgsmi_update_input_mapping
 
     expressed.  This information remains valid until the next VBVA resize event for any screen, at which time it is reset to the bounding rectangle of all virtual screens. \ ``param``\   ctx       The context containing the heap to use. \ ``param``\   origin_x  Upper left X co-ordinate relative to the first screen. \ ``param``\   origin_y  Upper left Y co-ordinate relative to the first screen. \ ``param``\   width     Rectangle width. \ ``param``\   height    Rectangle height. \ ``returns``\  0 on success, -errno on failure
 
-    :param struct gen_pool \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct gen_pool \*
 
-    :param s32 origin_x:
+    :param origin_x:
         *undescribed*
+    :type origin_x: s32
 
-    :param s32 origin_y:
+    :param origin_y:
         *undescribed*
+    :type origin_y: s32
 
-    :param u32 width:
+    :param width:
         *undescribed*
+    :type width: u32
 
-    :param u32 height:
+    :param height:
         *undescribed*
+    :type height: u32
 
 .. _`hgsmi_get_mode_hints`:
 
@@ -73,14 +88,17 @@ hgsmi_get_mode_hints
 
     \ ``param``\   ctx      The context containing the heap to use. \ ``param``\   screens  The number of screens to query hints for, starting at 0. \ ``param``\   hints    Array of vbva_modehint structures for receiving the hints. \ ``returns``\  0 on success, -errno on failure
 
-    :param struct gen_pool \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct gen_pool \*
 
-    :param unsigned int screens:
+    :param screens:
         *undescribed*
+    :type screens: unsigned int
 
-    :param struct vbva_modehint \*hints:
+    :param hints:
         *undescribed*
+    :type hints: struct vbva_modehint \*
 
 .. This file was automatic generated / don't edit.
 

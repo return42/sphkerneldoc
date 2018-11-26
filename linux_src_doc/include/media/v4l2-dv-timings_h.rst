@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/media/v4l2-dv-timings.h
 
+.. _`v4l2_calc_timeperframe`:
+
+v4l2_calc_timeperframe
+======================
+
+.. c:function:: struct v4l2_fract v4l2_calc_timeperframe(const struct v4l2_dv_timings *t)
+
+    helper function to calculate timeperframe based v4l2_dv_timings fields.
+
+    :param t:
+        Timings for the video mode.
+    :type t: const struct v4l2_dv_timings \*
+
+.. _`v4l2_calc_timeperframe.description`:
+
+Description
+-----------
+
+Calculates the expected timeperframe using the pixel clock value and
+horizontal/vertical measures. This means that v4l2_dv_timings structure
+must be correctly and fully filled.
+
 .. _`v4l2_check_dv_timings_fnc`:
 
 v4l2_check_dv_timings_fnc
@@ -10,11 +32,13 @@ v4l2_check_dv_timings_fnc
 
     timings check callback
 
-    :param const struct v4l2_dv_timings \*t:
+    :param t:
         the v4l2_dv_timings struct.
+    :type t: const struct v4l2_dv_timings \*
 
-    :param void \*handle:
+    :param handle:
         a handle from the driver.
+    :type handle: void \*
 
 .. _`v4l2_check_dv_timings_fnc.description`:
 
@@ -32,17 +56,21 @@ v4l2_valid_dv_timings
 
     are these timings valid?
 
-    :param const struct v4l2_dv_timings \*t:
+    :param t:
         the v4l2_dv_timings struct.
+    :type t: const struct v4l2_dv_timings \*
 
-    :param const struct v4l2_dv_timings_cap \*cap:
+    :param cap:
         the v4l2_dv_timings_cap capabilities.
+    :type cap: const struct v4l2_dv_timings_cap \*
 
-    :param v4l2_check_dv_timings_fnc fnc:
+    :param fnc:
         callback to check if this timing is OK. May be NULL.
+    :type fnc: v4l2_check_dv_timings_fnc
 
-    :param void \*fnc_handle:
+    :param fnc_handle:
         a handle that is passed on to \ ``fnc``\ .
+    :type fnc_handle: void \*
 
 .. _`v4l2_valid_dv_timings.description`:
 
@@ -62,17 +90,21 @@ v4l2_enum_dv_timings_cap
 
     Helper function to enumerate possible DV timings based on capabilities
 
-    :param struct v4l2_enum_dv_timings \*t:
+    :param t:
         the v4l2_enum_dv_timings struct.
+    :type t: struct v4l2_enum_dv_timings \*
 
-    :param const struct v4l2_dv_timings_cap \*cap:
+    :param cap:
         the v4l2_dv_timings_cap capabilities.
+    :type cap: const struct v4l2_dv_timings_cap \*
 
-    :param v4l2_check_dv_timings_fnc fnc:
+    :param fnc:
         callback to check if this timing is OK. May be NULL.
+    :type fnc: v4l2_check_dv_timings_fnc
 
-    :param void \*fnc_handle:
+    :param fnc_handle:
         a handle that is passed on to \ ``fnc``\ .
+    :type fnc_handle: void \*
 
 .. _`v4l2_enum_dv_timings_cap.description`:
 
@@ -95,21 +127,26 @@ v4l2_find_dv_timings_cap
 
     Find the closest timings struct
 
-    :param struct v4l2_dv_timings \*t:
+    :param t:
         the v4l2_enum_dv_timings struct.
+    :type t: struct v4l2_dv_timings \*
 
-    :param const struct v4l2_dv_timings_cap \*cap:
+    :param cap:
         the v4l2_dv_timings_cap capabilities.
+    :type cap: const struct v4l2_dv_timings_cap \*
 
-    :param unsigned pclock_delta:
+    :param pclock_delta:
         maximum delta between t->pixelclock and the timing struct
         under consideration.
+    :type pclock_delta: unsigned
 
-    :param v4l2_check_dv_timings_fnc fnc:
+    :param fnc:
         callback to check if a given timings struct is OK. May be NULL.
+    :type fnc: v4l2_check_dv_timings_fnc
 
-    :param void \*fnc_handle:
+    :param fnc_handle:
         a handle that is passed on to \ ``fnc``\ .
+    :type fnc_handle: void \*
 
 .. _`v4l2_find_dv_timings_cap.description`:
 
@@ -133,11 +170,13 @@ v4l2_find_dv_timings_cea861_vic
 
     find timings based on CEA-861 VIC
 
-    :param struct v4l2_dv_timings \*t:
+    :param t:
         the timings data.
+    :type t: struct v4l2_dv_timings \*
 
-    :param u8 vic:
+    :param vic:
         CEA-861 VIC code
+    :type vic: u8
 
 .. _`v4l2_find_dv_timings_cea861_vic.description`:
 
@@ -156,19 +195,23 @@ v4l2_match_dv_timings
 
     do two timings match?
 
-    :param const struct v4l2_dv_timings \*measured:
+    :param measured:
         the measured timings data.
+    :type measured: const struct v4l2_dv_timings \*
 
-    :param const struct v4l2_dv_timings \*standard:
+    :param standard:
         the timings according to the standard.
+    :type standard: const struct v4l2_dv_timings \*
 
-    :param unsigned pclock_delta:
+    :param pclock_delta:
         maximum delta in Hz between standard->pixelclock and
         the measured timings.
+    :type pclock_delta: unsigned
 
-    :param bool match_reduced_fps:
+    :param match_reduced_fps:
         if true, then fail if V4L2_DV_FL_REDUCED_FPS does not
         match.
+    :type match_reduced_fps: bool
 
 .. _`v4l2_match_dv_timings.description`:
 
@@ -186,17 +229,21 @@ v4l2_print_dv_timings
 
     log the contents of a dv_timings struct
 
-    :param const char \*dev_prefix:
+    :param dev_prefix:
         device prefix for each log line.
+    :type dev_prefix: const char \*
 
-    :param const char \*prefix:
+    :param prefix:
         additional prefix for each log line, may be NULL.
+    :type prefix: const char \*
 
-    :param const struct v4l2_dv_timings \*t:
+    :param t:
         the timings data.
+    :type t: const struct v4l2_dv_timings \*
 
-    :param bool detailed:
+    :param detailed:
         if true, give a detailed log.
+    :type detailed: bool
 
 .. _`v4l2_detect_cvt`:
 
@@ -207,29 +254,36 @@ v4l2_detect_cvt
 
     detect if the given timings follow the CVT standard
 
-    :param unsigned frame_height:
+    :param frame_height:
         the total height of the frame (including blanking) in lines.
+    :type frame_height: unsigned
 
-    :param unsigned hfreq:
+    :param hfreq:
         the horizontal frequency in Hz.
+    :type hfreq: unsigned
 
-    :param unsigned vsync:
+    :param vsync:
         the height of the vertical sync in lines.
+    :type vsync: unsigned
 
-    :param unsigned active_width:
+    :param active_width:
         active width of image (does not include blanking). This
         information is needed only in case of version 2 of reduced blanking.
         In other cases, this parameter does not have any effect on timings.
+    :type active_width: unsigned
 
-    :param u32 polarities:
+    :param polarities:
         the horizontal and vertical polarities (same as struct
         v4l2_bt_timings polarities).
+    :type polarities: u32
 
-    :param bool interlaced:
+    :param interlaced:
         if this flag is true, it indicates interlaced format
+    :type interlaced: bool
 
-    :param struct v4l2_dv_timings \*fmt:
+    :param fmt:
         the resulting timings.
+    :type fmt: struct v4l2_dv_timings \*
 
 .. _`v4l2_detect_cvt.description`:
 
@@ -249,31 +303,38 @@ v4l2_detect_gtf
 
     detect if the given timings follow the GTF standard
 
-    :param unsigned frame_height:
+    :param frame_height:
         the total height of the frame (including blanking) in lines.
+    :type frame_height: unsigned
 
-    :param unsigned hfreq:
+    :param hfreq:
         the horizontal frequency in Hz.
+    :type hfreq: unsigned
 
-    :param unsigned vsync:
+    :param vsync:
         the height of the vertical sync in lines.
+    :type vsync: unsigned
 
-    :param u32 polarities:
+    :param polarities:
         the horizontal and vertical polarities (same as struct
         v4l2_bt_timings polarities).
+    :type polarities: u32
 
-    :param bool interlaced:
+    :param interlaced:
         if this flag is true, it indicates interlaced format
+    :type interlaced: bool
 
-    :param struct v4l2_fract aspect:
+    :param aspect:
         preferred aspect ratio. GTF has no method of determining the
         aspect ratio in order to derive the image width from the
         image height, so it has to be passed explicitly. Usually
         the native screen aspect ratio is used for this. If it
         is not filled in correctly, then 16:9 will be assumed.
+    :type aspect: struct v4l2_fract
 
-    :param struct v4l2_dv_timings \*fmt:
+    :param fmt:
         the resulting timings.
+    :type fmt: struct v4l2_dv_timings \*
 
 .. _`v4l2_detect_gtf.description`:
 
@@ -293,11 +354,13 @@ v4l2_calc_aspect_ratio
 
     calculate the aspect ratio based on bytes 0x15 and 0x16 from the EDID.
 
-    :param u8 hor_landscape:
+    :param hor_landscape:
         byte 0x15 from the EDID.
+    :type hor_landscape: u8
 
-    :param u8 vert_portrait:
+    :param vert_portrait:
         byte 0x16 from the EDID.
+    :type vert_portrait: u8
 
 .. _`v4l2_calc_aspect_ratio.description`:
 
@@ -317,8 +380,9 @@ v4l2_dv_timings_aspect_ratio
 
     calculate the aspect ratio based on the v4l2_dv_timings information.
 
-    :param const struct v4l2_dv_timings \*t:
+    :param t:
         the timings data.
+    :type t: const struct v4l2_dv_timings \*
 
 .. _`can_reduce_fps`:
 
@@ -329,8 +393,9 @@ can_reduce_fps
 
     check if conditions for reduced fps are true.
 
-    :param struct v4l2_bt_timings \*bt:
+    :param bt:
         v4l2 timing structure
+    :type bt: struct v4l2_bt_timings \*
 
 .. _`can_reduce_fps.description`:
 

@@ -10,14 +10,17 @@ drm_pci_alloc
 
     Allocate a PCI consistent memory block, for DMA.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param size_t size:
+    :param size:
         size of block to allocate
+    :type size: size_t
 
-    :param size_t align:
+    :param align:
         alignment of block
+    :type align: size_t
 
 .. _`drm_pci_alloc.description`:
 
@@ -44,11 +47,13 @@ drm_pci_free
 
     Free a PCI consistent memory block
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param drm_dma_handle_t \*dmah:
+    :param dmah:
         handle to memory block
+    :type dmah: drm_dma_handle_t \*
 
 .. _`drm_pci_free.description`:
 
@@ -67,14 +72,17 @@ drm_irq_by_busid
 
     Get interrupt from bus ID
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         IOCTL parameter pointing to a drm_irq_busid structure
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file private.
+    :type file_priv: struct drm_file \*
 
 .. _`drm_irq_by_busid.description`:
 
@@ -101,14 +109,17 @@ drm_get_pci_dev
 
     Register a PCI device with the DRM subsystem
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry from the PCI ID table that matches \ ``pdev``\ 
+    :type ent: const struct pci_device_id \*
 
-    :param struct drm_driver \*driver:
+    :param driver:
         DRM device driver
+    :type driver: struct drm_driver \*
 
 .. _`drm_get_pci_dev.description`:
 
@@ -143,11 +154,13 @@ drm_legacy_pci_init
 
     shadow-attach a legacy DRM PCI driver
 
-    :param struct drm_driver \*driver:
+    :param driver:
         DRM device driver
+    :type driver: struct drm_driver \*
 
-    :param struct pci_driver \*pdriver:
+    :param pdriver:
         PCI device driver
+    :type pdriver: struct pci_driver \*
 
 .. _`drm_legacy_pci_init.description`:
 
@@ -172,11 +185,13 @@ drm_legacy_pci_exit
 
     unregister shadow-attach legacy DRM driver
 
-    :param struct drm_driver \*driver:
+    :param driver:
         DRM device driver
+    :type driver: struct drm_driver \*
 
-    :param struct pci_driver \*pdriver:
+    :param pdriver:
         PCI device driver
+    :type pdriver: struct pci_driver \*
 
 .. _`drm_legacy_pci_exit.description`:
 

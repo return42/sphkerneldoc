@@ -10,8 +10,9 @@ dwc2_backup_global_registers
 
     Backup global controller registers. When suspending usb bus, registers needs to be backuped if controller power is disabled once suspended.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_restore_global_registers`:
 
@@ -22,8 +23,9 @@ dwc2_restore_global_registers
 
     Restore controller global registers. When resuming usb bus, device registers needs to be restored if controller power were disabled.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_exit_partial_power_down`:
 
@@ -34,11 +36,13 @@ dwc2_exit_partial_power_down
 
     Exit controller from Partial Power Down.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param bool restore:
+    :param restore:
         Controller registers need to be restored
+    :type restore: bool
 
 .. _`dwc2_enter_partial_power_down`:
 
@@ -49,8 +53,9 @@ dwc2_enter_partial_power_down
 
     Put controller in Partial Power Down.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_restore_essential_regs`:
 
@@ -61,14 +66,17 @@ dwc2_restore_essential_regs
 
     Restore essiential regs of core.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param int rmode:
+    :param rmode:
         Restore mode, enabled in case of remote-wakeup.
+    :type rmode: int
 
-    :param int is_host:
+    :param is_host:
         Host or device mode.
+    :type is_host: int
 
 .. _`dwc2_hib_restore_common`:
 
@@ -79,14 +87,17 @@ dwc2_hib_restore_common
 
     Common part of restore routine.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param int rem_wakeup:
+    :param rem_wakeup:
         Remote-wakeup, enabled in case of remote-wakeup.
+    :type rem_wakeup: int
 
-    :param int is_host:
+    :param is_host:
         Host or device mode.
+    :type is_host: int
 
 .. _`dwc2_wait_for_mode`:
 
@@ -97,11 +108,13 @@ dwc2_wait_for_mode
 
     Waits for the controller mode.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param bool host_mode:
+    :param host_mode:
         If true, waits for host mode, otherwise device mode.
+    :type host_mode: bool
 
 .. _`dwc2_iddig_filter_enabled`:
 
@@ -112,8 +125,9 @@ dwc2_iddig_filter_enabled
 
     Returns true if the IDDIG debounce filter is enabled.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_force_mode`:
 
@@ -124,11 +138,13 @@ dwc2_force_mode
 
     Force the mode of the controller.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param bool host:
+    :param host:
         Host mode flag
+    :type host: bool
 
 .. _`dwc2_force_mode.forcing-the-mode-is-needed-for-two-cases`:
 
@@ -164,8 +180,9 @@ dwc2_clear_force_mode
 
     Clears the force mode bits.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_clear_force_mode.description`:
 
@@ -187,8 +204,9 @@ dwc2_dump_host_registers
 
     Prints the host registers
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_dump_host_registers.note`:
 
@@ -207,8 +225,9 @@ dwc2_dump_global_registers
 
     Prints the core global registers
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_dump_global_registers.note`:
 
@@ -227,11 +246,13 @@ dwc2_flush_tx_fifo
 
     Flushes a Tx FIFO
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param const int num:
+    :param num:
         Tx FIFO to flush
+    :type num: const int
 
 .. _`dwc2_flush_rx_fifo`:
 
@@ -242,8 +263,9 @@ dwc2_flush_rx_fifo
 
     Flushes the Rx FIFO
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_enable_global_interrupts`:
 
@@ -254,8 +276,9 @@ dwc2_enable_global_interrupts
 
     Enables the controller's Global Interrupt in the AHB Config register
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_disable_global_interrupts`:
 
@@ -266,8 +289,9 @@ dwc2_disable_global_interrupts
 
     Disables the controller's Global Interrupt in the AHB Config register
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_wait_bit_set`:
 
@@ -278,17 +302,21 @@ dwc2_hsotg_wait_bit_set
 
     Waits for bit to be set.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param u32 offset:
+    :param offset:
         Register's offset where bit/bits must be set.
+    :type offset: u32
 
-    :param u32 mask:
+    :param mask:
         Mask of the bit/bits which must be set.
+    :type mask: u32
 
-    :param u32 timeout:
+    :param timeout:
         Timeout to wait.
+    :type timeout: u32
 
 .. _`dwc2_hsotg_wait_bit_set.return`:
 
@@ -306,17 +334,21 @@ dwc2_hsotg_wait_bit_clear
 
     Waits for bit to be clear.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param u32 offset:
+    :param offset:
         Register's offset where bit/bits must be set.
+    :type offset: u32
 
-    :param u32 mask:
+    :param mask:
         Mask of the bit/bits which must be set.
+    :type mask: u32
 
-    :param u32 timeout:
+    :param timeout:
         Timeout to wait.
+    :type timeout: u32
 
 .. _`dwc2_hsotg_wait_bit_clear.return`:
 

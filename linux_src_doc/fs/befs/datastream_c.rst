@@ -10,17 +10,21 @@ befs_read_datastream
 
     get buffer_head containing data, starting from pos.
 
-    :param struct super_block \*sb:
+    :param sb:
         Filesystem superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*ds:
+    :param ds:
         datastream to find data with
+    :type ds: const befs_data_stream \*
 
-    :param befs_off_t pos:
+    :param pos:
         start of data
+    :type pos: befs_off_t
 
-    :param uint \*off:
+    :param off:
         offset of data in buffer_head->b_data
+    :type off: uint \*
 
 .. _`befs_read_datastream.description`:
 
@@ -39,17 +43,21 @@ befs_fblock2brun
 
     give back block run for fblock
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*data:
+    :param data:
         datastream to read from
+    :type data: const befs_data_stream \*
 
-    :param befs_blocknr_t fblock:
+    :param fblock:
         the blocknumber with the file position to find
+    :type fblock: befs_blocknr_t
 
-    :param befs_block_run \*run:
+    :param run:
         The found run is passed back through this pointer
+    :type run: befs_block_run \*
 
 .. _`befs_fblock2brun.description`:
 
@@ -73,17 +81,21 @@ befs_read_lsymlink
 
     read long symlink from datastream.
 
-    :param struct super_block \*sb:
+    :param sb:
         Filesystem superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*ds:
+    :param ds:
         Datastream to read from
+    :type ds: const befs_data_stream \*
 
-    :param void \*buff:
+    :param buff:
         Buffer in which to place long symlink data
+    :type buff: void \*
 
-    :param befs_off_t len:
+    :param len:
         Length of the long symlink in bytes
+    :type len: befs_off_t
 
 .. _`befs_read_lsymlink.description`:
 
@@ -101,11 +113,13 @@ befs_count_blocks
 
     blocks used by a file
 
-    :param struct super_block \*sb:
+    :param sb:
         Filesystem superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*ds:
+    :param ds:
         Datastream of the file
+    :type ds: const befs_data_stream \*
 
 .. _`befs_count_blocks.description`:
 
@@ -126,17 +140,21 @@ befs_find_brun_direct
 
     find a direct block run in the datastream
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*data:
+    :param data:
         the datastream
+    :type data: const befs_data_stream \*
 
-    :param befs_blocknr_t blockno:
+    :param blockno:
         the blocknumber to find
+    :type blockno: befs_blocknr_t
 
-    :param befs_block_run \*run:
+    :param run:
         The found run is passed back through this pointer
+    :type run: befs_block_run \*
 
 .. _`befs_find_brun_direct.description`:
 
@@ -178,17 +196,21 @@ befs_find_brun_indirect
 
     find a block run in the datastream
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*data:
+    :param data:
         the datastream
+    :type data: const befs_data_stream \*
 
-    :param befs_blocknr_t blockno:
+    :param blockno:
         the blocknumber to find
+    :type blockno: befs_blocknr_t
 
-    :param befs_block_run \*run:
+    :param run:
         The found run is passed back through this pointer
+    :type run: befs_block_run \*
 
 .. _`befs_find_brun_indirect.description`:
 
@@ -227,17 +249,21 @@ befs_find_brun_dblindirect
 
     find a block run in the datastream
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*data:
+    :param data:
         the datastream
+    :type data: const befs_data_stream \*
 
-    :param befs_blocknr_t blockno:
+    :param blockno:
         the blocknumber to find
+    :type blockno: befs_blocknr_t
 
-    :param befs_block_run \*run:
+    :param run:
         The found run is passed back through this pointer
+    :type run: befs_block_run \*
 
 .. _`befs_find_brun_dblindirect.description`:
 

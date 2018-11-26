@@ -10,11 +10,13 @@ iser_send_command
 
     send command PDU
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         *undescribed*
+    :type conn: struct iscsi_conn \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         *undescribed*
+    :type task: struct iscsi_task \*
 
 .. _`iser_send_data_out`:
 
@@ -25,14 +27,17 @@ iser_send_data_out
 
     send data out PDU
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         *undescribed*
+    :type conn: struct iscsi_conn \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         *undescribed*
+    :type task: struct iscsi_task \*
 
-    :param struct iscsi_data \*hdr:
+    :param hdr:
         *undescribed*
+    :type hdr: struct iscsi_data \*
 
 .. This file was automatic generated / don't edit.
 

@@ -311,11 +311,13 @@ brcmf_p2p_is_pub_action
 
     true if p2p public type frame.
 
-    :param void \*frame:
+    :param frame:
         action frame data.
+    :type frame: void \*
 
-    :param u32 frame_len:
+    :param frame_len:
         length of action frame data.
+    :type frame_len: u32
 
 .. _`brcmf_p2p_is_pub_action.description`:
 
@@ -333,11 +335,13 @@ brcmf_p2p_is_p2p_action
 
     true if p2p action type frame.
 
-    :param void \*frame:
+    :param frame:
         action frame data.
+    :type frame: void \*
 
-    :param u32 frame_len:
+    :param frame_len:
         length of action frame data.
+    :type frame_len: u32
 
 .. _`brcmf_p2p_is_p2p_action.description`:
 
@@ -355,11 +359,13 @@ brcmf_p2p_is_gas_action
 
     true if p2p gas action type frame.
 
-    :param void \*frame:
+    :param frame:
         action frame data.
+    :type frame: void \*
 
-    :param u32 frame_len:
+    :param frame_len:
         length of action frame data.
+    :type frame_len: u32
 
 .. _`brcmf_p2p_is_gas_action.description`:
 
@@ -377,14 +383,17 @@ brcmf_p2p_print_actframe
 
     debug print routine.
 
-    :param bool tx:
+    :param tx:
         Received or to be transmitted
+    :type tx: bool
 
-    :param void \*frame:
+    :param frame:
         action frame data.
+    :type frame: void \*
 
-    :param u32 frame_len:
+    :param frame_len:
         length of action frame data.
+    :type frame_len: u32
 
 .. _`brcmf_p2p_print_actframe.description`:
 
@@ -402,11 +411,13 @@ brcmf_p2p_set_firmware
 
     prepare firmware for peer-to-peer operation.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         ifp to use for iovars (primary).
+    :type ifp: struct brcmf_if \*
 
-    :param u8 \*p2p_mac:
+    :param p2p_mac:
         mac address to configure for p2p_da_override
+    :type p2p_mac: u8 \*
 
 .. _`brcmf_p2p_generate_bss_mac`:
 
@@ -417,11 +428,13 @@ brcmf_p2p_generate_bss_mac
 
     derive mac addresses for P2P.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         P2P specific data.
+    :type p2p: struct brcmf_p2p_info \*
 
-    :param u8 \*dev_addr:
+    :param dev_addr:
         optional device address.
+    :type dev_addr: u8 \*
 
 .. _`brcmf_p2p_generate_bss_mac.description`:
 
@@ -441,8 +454,9 @@ brcmf_p2p_scan_is_p2p_request
 
     is cfg80211 scan request a P2P scan.
 
-    :param struct cfg80211_scan_request \*request:
+    :param request:
         the scan request as received from cfg80211.
+    :type request: struct cfg80211_scan_request \*
 
 .. _`brcmf_p2p_scan_is_p2p_request.description`:
 
@@ -461,17 +475,21 @@ brcmf_p2p_set_discover_state
 
     set discover state in firmware.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         low-level interface object.
+    :type ifp: struct brcmf_if \*
 
-    :param u8 state:
+    :param state:
         discover state to set.
+    :type state: u8
 
-    :param u16 chanspec:
+    :param chanspec:
         channel parameters (for state \ ``WL_P2P_DISC_ST_LISTEN``\  only).
+    :type chanspec: u16
 
-    :param u16 listen_ms:
+    :param listen_ms:
         duration to listen (for state \ ``WL_P2P_DISC_ST_LISTEN``\  only).
+    :type listen_ms: u16
 
 .. _`brcmf_p2p_deinit_discovery`:
 
@@ -482,8 +500,9 @@ brcmf_p2p_deinit_discovery
 
     disable P2P device discovery.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         P2P specific data.
+    :type p2p: struct brcmf_p2p_info \*
 
 .. _`brcmf_p2p_deinit_discovery.description`:
 
@@ -501,8 +520,9 @@ brcmf_p2p_enable_discovery
 
     initialize and configure discovery.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         P2P specific data.
+    :type p2p: struct brcmf_p2p_info \*
 
 .. _`brcmf_p2p_enable_discovery.description`:
 
@@ -520,20 +540,25 @@ brcmf_p2p_escan
 
     initiate a P2P scan.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         P2P specific data.
+    :type p2p: struct brcmf_p2p_info \*
 
-    :param u32 num_chans:
+    :param num_chans:
         number of channels to scan.
+    :type num_chans: u32
 
-    :param u16 chanspecs:
+    :param chanspecs:
         channel parameters for \ ``num_chans``\  channels.
+    :type chanspecs: u16
 
-    :param s32 search_state:
+    :param search_state:
         P2P discover state to use.
+    :type search_state: s32
 
-    :param enum p2p_bss_type bss_type:
+    :param bss_type:
         type of P2P bss.
+    :type bss_type: enum p2p_bss_type
 
 .. _`brcmf_p2p_run_escan`:
 
@@ -544,14 +569,17 @@ brcmf_p2p_run_escan
 
     escan callback for peer-to-peer.
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         driver private data for cfg80211 interface.
+    :type cfg: struct brcmf_cfg80211_info \*
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         *undescribed*
+    :type ifp: struct brcmf_if \*
 
-    :param struct cfg80211_scan_request \*request:
+    :param request:
         scan request from cfg80211.
+    :type request: struct cfg80211_scan_request \*
 
 .. _`brcmf_p2p_run_escan.description`:
 
@@ -570,11 +598,13 @@ brcmf_p2p_find_listen_channel
 
     find listen channel in ie string.
 
-    :param const u8 \*ie:
+    :param ie:
         string of information elements.
+    :type ie: const u8 \*
 
-    :param u32 ie_len:
+    :param ie_len:
         length of string.
+    :type ie_len: u32
 
 .. _`brcmf_p2p_find_listen_channel.description`:
 
@@ -593,14 +623,17 @@ brcmf_p2p_scan_prep
 
     prepare scan based on request.
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         wiphy device.
+    :type wiphy: struct wiphy \*
 
-    :param struct cfg80211_scan_request \*request:
+    :param request:
         scan request from cfg80211.
+    :type request: struct cfg80211_scan_request \*
 
-    :param struct brcmf_cfg80211_vif \*vif:
+    :param vif:
         vif on which scan request is to be executed.
+    :type vif: struct brcmf_cfg80211_vif \*
 
 .. _`brcmf_p2p_scan_prep.description`:
 
@@ -619,14 +652,17 @@ brcmf_p2p_discover_listen
 
     set firmware to discover listen state.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         p2p device.
+    :type p2p: struct brcmf_p2p_info \*
 
-    :param u16 channel:
+    :param channel:
         channel nr for discover listen.
+    :type channel: u16
 
-    :param u32 duration:
+    :param duration:
         time in ms to stay on channel.
+    :type duration: u32
 
 .. _`brcmf_p2p_remain_on_channel`:
 
@@ -637,20 +673,25 @@ brcmf_p2p_remain_on_channel
 
     put device on channel and stay there.
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         wiphy device.
+    :type wiphy: struct wiphy \*
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         *undescribed*
+    :type wdev: struct wireless_dev \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         channel to stay on.
+    :type channel: struct ieee80211_channel \*
 
-    :param unsigned int duration:
+    :param duration:
         time in ms to remain on channel.
+    :type duration: unsigned int
 
-    :param u64 \*cookie:
+    :param cookie:
         *undescribed*
+    :type cookie: u64 \*
 
 .. _`brcmf_p2p_notify_listen_complete`:
 
@@ -661,14 +702,17 @@ brcmf_p2p_notify_listen_complete
 
     p2p listen has completed.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interfac control.
+    :type ifp: struct brcmf_if \*
 
-    :param const struct brcmf_event_msg \*e:
+    :param e:
         event message. Not used, to make it usable for fweh event dispatcher.
+    :type e: const struct brcmf_event_msg \*
 
-    :param void \*data:
+    :param data:
         payload of message. Not used.
+    :type data: void \*
 
 .. _`brcmf_p2p_cancel_remain_on_channel`:
 
@@ -679,8 +723,9 @@ brcmf_p2p_cancel_remain_on_channel
 
     cancel p2p listen state.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interfac control.
+    :type ifp: struct brcmf_if \*
 
 .. _`brcmf_p2p_act_frm_search`:
 
@@ -691,11 +736,13 @@ brcmf_p2p_act_frm_search
 
     search function for action frame.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         p2p device.
+    :type p2p: struct brcmf_p2p_info \*
 
-    :param u16 channel:
+    :param channel:
         *undescribed*
+    :type channel: u16
 
 .. _`brcmf_p2p_act_frm_search.channel`:
 
@@ -716,8 +763,9 @@ brcmf_p2p_afx_handler
 
     afx worker thread.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`brcmf_p2p_af_searching_channel`:
 
@@ -728,8 +776,9 @@ brcmf_p2p_af_searching_channel
 
     search channel.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         p2p device info struct.
+    :type p2p: struct brcmf_p2p_info \*
 
 .. _`brcmf_p2p_scan_finding_common_channel`:
 
@@ -740,11 +789,13 @@ brcmf_p2p_scan_finding_common_channel
 
     was escan used for finding channel
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         common configuration struct.
+    :type cfg: struct brcmf_cfg80211_info \*
 
-    :param struct brcmf_bss_info_le \*bi:
+    :param bi:
         bss info struct, result from scan.
+    :type bi: struct brcmf_bss_info_le \*
 
 .. _`brcmf_p2p_stop_wait_next_action_frame`:
 
@@ -755,8 +806,9 @@ brcmf_p2p_stop_wait_next_action_frame
 
     finish scan if af tx complete.
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         common configuration struct.
+    :type cfg: struct brcmf_cfg80211_info \*
 
 .. _`brcmf_p2p_gon_req_collision`:
 
@@ -767,11 +819,13 @@ brcmf_p2p_gon_req_collision
 
     Check if go negotiaton collission
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         p2p device info struct.
+    :type p2p: struct brcmf_p2p_info \*
 
-    :param u8 \*mac:
+    :param mac:
         *undescribed*
+    :type mac: u8 \*
 
 .. _`brcmf_p2p_gon_req_collision.description`:
 
@@ -789,14 +843,17 @@ brcmf_p2p_notify_action_frame_rx
 
     received action frame.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interfac control.
+    :type ifp: struct brcmf_if \*
 
-    :param const struct brcmf_event_msg \*e:
+    :param e:
         event message. Not used, to make it usable for fweh event dispatcher.
+    :type e: const struct brcmf_event_msg \*
 
-    :param void \*data:
+    :param data:
         payload of message, containing action frame data.
+    :type data: void \*
 
 .. _`brcmf_p2p_notify_action_tx_complete`:
 
@@ -807,14 +864,17 @@ brcmf_p2p_notify_action_tx_complete
 
     transmit action frame complete
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interfac control.
+    :type ifp: struct brcmf_if \*
 
-    :param const struct brcmf_event_msg \*e:
+    :param e:
         event message. Not used, to make it usable for fweh event dispatcher.
+    :type e: const struct brcmf_event_msg \*
 
-    :param void \*data:
+    :param data:
         not used.
+    :type data: void \*
 
 .. _`brcmf_p2p_tx_action_frame`:
 
@@ -825,11 +885,13 @@ brcmf_p2p_tx_action_frame
 
     send action frame over fil.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         p2p info struct for vif.
+    :type p2p: struct brcmf_p2p_info \*
 
-    :param struct brcmf_fil_af_params_le \*af_params:
+    :param af_params:
         action frame data/info.
+    :type af_params: struct brcmf_fil_af_params_le \*
 
 .. _`brcmf_p2p_tx_action_frame.description`:
 
@@ -851,14 +913,17 @@ brcmf_p2p_pub_af_tx
 
     public action frame tx routine.
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         driver private data for cfg80211 interface.
+    :type cfg: struct brcmf_cfg80211_info \*
 
-    :param struct brcmf_fil_af_params_le \*af_params:
+    :param af_params:
         action frame data/info.
+    :type af_params: struct brcmf_fil_af_params_le \*
 
-    :param struct brcmf_config_af_params \*config_af_params:
+    :param config_af_params:
         configuration data for action frame.
+    :type config_af_params: struct brcmf_config_af_params \*
 
 .. _`brcmf_p2p_pub_af_tx.description`:
 
@@ -876,14 +941,17 @@ brcmf_p2p_send_action_frame
 
     send action frame .
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         driver private data for cfg80211 interface.
+    :type cfg: struct brcmf_cfg80211_info \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         net device to transmit on.
+    :type ndev: struct net_device \*
 
-    :param struct brcmf_fil_af_params_le \*af_params:
+    :param af_params:
         configuration data for action frame.
+    :type af_params: struct brcmf_fil_af_params_le \*
 
 .. _`brcmf_p2p_notify_rx_mgmt_p2p_probereq`:
 
@@ -894,14 +962,17 @@ brcmf_p2p_notify_rx_mgmt_p2p_probereq
 
     Event handler for p2p probe req.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interface pointer for which event was received.
+    :type ifp: struct brcmf_if \*
 
-    :param const struct brcmf_event_msg \*e:
+    :param e:
         even message.
+    :type e: const struct brcmf_event_msg \*
 
-    :param void \*data:
+    :param data:
         payload of event message (probe request).
+    :type data: void \*
 
 .. _`brcmf_p2p_get_current_chanspec`:
 
@@ -912,11 +983,13 @@ brcmf_p2p_get_current_chanspec
 
     Get current operation channel.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         P2P specific data.
+    :type p2p: struct brcmf_p2p_info \*
 
-    :param u16 \*chanspec:
+    :param chanspec:
         chanspec to be returned.
+    :type chanspec: u16 \*
 
 .. _`brcmf_p2p_ifchange`:
 
@@ -925,11 +998,13 @@ brcmf_p2p_ifchange
 
 .. c:function:: int brcmf_p2p_ifchange(struct brcmf_cfg80211_info *cfg, enum brcmf_fil_p2p_if_types if_type)
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         *undescribed*
+    :type cfg: struct brcmf_cfg80211_info \*
 
-    :param enum brcmf_fil_p2p_if_types if_type:
+    :param if_type:
         *undescribed*
+    :type if_type: enum brcmf_fil_p2p_if_types
 
 .. _`brcmf_p2p_create_p2pdev`:
 
@@ -940,14 +1015,17 @@ brcmf_p2p_create_p2pdev
 
     create a P2P_DEVICE virtual interface.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         P2P specific data.
+    :type p2p: struct brcmf_p2p_info \*
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         wiphy device of new interface.
+    :type wiphy: struct wiphy \*
 
-    :param u8 \*addr:
+    :param addr:
         mac address for this new interface.
+    :type addr: u8 \*
 
 .. _`brcmf_p2p_add_vif`:
 
@@ -958,20 +1036,25 @@ brcmf_p2p_add_vif
 
     create a new P2P virtual interface.
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         wiphy device of new interface.
+    :type wiphy: struct wiphy \*
 
-    :param const char \*name:
+    :param name:
         name of the new interface.
+    :type name: const char \*
 
-    :param unsigned char name_assign_type:
+    :param name_assign_type:
         origin of the interface name
+    :type name_assign_type: unsigned char
 
-    :param enum nl80211_iftype type:
+    :param type:
         nl80211 interface type.
+    :type type: enum nl80211_iftype
 
-    :param struct vif_params \*params:
+    :param params:
         contains mac address for P2P device.
+    :type params: struct vif_params \*
 
 .. _`brcmf_p2p_del_vif`:
 
@@ -982,11 +1065,13 @@ brcmf_p2p_del_vif
 
     delete a P2P virtual interface.
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         wiphy device of interface.
+    :type wiphy: struct wiphy \*
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         wireless device of interface.
+    :type wdev: struct wireless_dev \*
 
 .. _`brcmf_p2p_attach`:
 
@@ -997,11 +1082,13 @@ brcmf_p2p_attach
 
     attach for P2P.
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         driver private data for cfg80211 interface.
+    :type cfg: struct brcmf_cfg80211_info \*
 
-    :param bool p2pdev_forced:
+    :param p2pdev_forced:
         create p2p device interface at attach.
+    :type p2pdev_forced: bool
 
 .. _`brcmf_p2p_detach`:
 
@@ -1012,8 +1099,9 @@ brcmf_p2p_detach
 
     detach P2P.
 
-    :param struct brcmf_p2p_info \*p2p:
+    :param p2p:
         P2P specific data.
+    :type p2p: struct brcmf_p2p_info \*
 
 .. This file was automatic generated / don't edit.
 

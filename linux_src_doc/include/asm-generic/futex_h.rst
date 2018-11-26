@@ -10,17 +10,21 @@ arch_futex_atomic_op_inuser
 
     Atomic arithmetic operation with constant argument and comparison of the previous futex value with another constant.
 
-    :param int op:
+    :param op:
         *undescribed*
+    :type op: int
 
-    :param u32 oparg:
+    :param oparg:
         *undescribed*
+    :type oparg: u32
 
-    :param int \*oval:
+    :param oval:
         *undescribed*
+    :type oval: int \*
 
-    :param u32 __user \*uaddr:
+    :param uaddr:
         pointer to user space address
+    :type uaddr: u32 __user \*
 
 .. _`arch_futex_atomic_op_inuser.return`:
 
@@ -39,17 +43,21 @@ futex_atomic_cmpxchg_inatomic
 
     Compare and exchange the content of the uaddr with newval if the current value is oldval.
 
-    :param u32 \*uval:
+    :param uval:
         pointer to store content of \ ``uaddr``\ 
+    :type uval: u32 \*
 
-    :param u32 __user \*uaddr:
+    :param uaddr:
         pointer to user space address
+    :type uaddr: u32 __user \*
 
-    :param u32 oldval:
+    :param oldval:
         old value
+    :type oldval: u32
 
-    :param u32 newval:
+    :param newval:
         new value to store to \ ``uaddr``\ 
+    :type newval: u32
 
 .. _`futex_atomic_cmpxchg_inatomic.return`:
 

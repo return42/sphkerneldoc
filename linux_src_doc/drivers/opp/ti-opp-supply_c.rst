@@ -117,11 +117,13 @@ efuse_voltage_uv
 
     store optimized voltages
 
-    :param struct device \*dev:
+    :param dev:
         ti opp supply device for which we need to store info
+    :type dev: struct device \*
 
-    :param struct ti_opp_supply_data \*data:
+    :param data:
         data specific to the device
+    :type data: struct ti_opp_supply_data \*
 
 .. _`_store_optimized_voltages.description`:
 
@@ -147,11 +149,13 @@ If successful, 0, else appropriate error value.
 
     free resources for optvoltages
 
-    :param struct device \*dev:
+    :param dev:
         device for which we need to free info
+    :type dev: struct device \*
 
-    :param struct ti_opp_supply_data \*data:
+    :param data:
         data specific to the device
+    :type data: struct ti_opp_supply_data \*
 
 .. _`_get_optimal_vdd_voltage`:
 
@@ -162,14 +166,17 @@ If successful, 0, else appropriate error value.
 
     Finds optimal voltage for the supply
 
-    :param struct device \*dev:
+    :param dev:
         device for which we need to find info
+    :type dev: struct device \*
 
-    :param struct ti_opp_supply_data \*data:
+    :param data:
         data specific to the device
+    :type data: struct ti_opp_supply_data \*
 
-    :param int reference_uv:
+    :param reference_uv:
         reference voltage (OPP voltage) for which we need value
+    :type reference_uv: int
 
 .. _`_get_optimal_vdd_voltage.return`:
 
@@ -188,9 +195,10 @@ ti_opp_supply_set_opp
 
     do the opp supply transition
 
-    :param struct dev_pm_set_opp_data \*data:
+    :param data:
         information on regulators and new and old opps provided by
         opp core to use in transition
+    :type data: struct dev_pm_set_opp_data \*
 
 .. _`ti_opp_supply_set_opp.return`:
 

@@ -10,14 +10,17 @@ iwpm_get_nlmsg_request
 
     Allocate and initialize netlink message request
 
-    :param __u32 nlmsg_seq:
+    :param nlmsg_seq:
         Sequence number of the netlink message
+    :type nlmsg_seq: __u32
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
-    :param gfp_t gfp:
+    :param gfp:
         Indicates how the memory for the request should be allocated
+    :type gfp: gfp_t
 
 .. _`iwpm_get_nlmsg_request.description`:
 
@@ -36,8 +39,9 @@ iwpm_free_nlmsg_request
 
     Deallocate netlink message request
 
-    :param struct kref \*kref:
+    :param kref:
         Holds reference of netlink message request
+    :type kref: struct kref \*
 
 .. _`iwpm_find_nlmsg_request`:
 
@@ -48,8 +52,9 @@ iwpm_find_nlmsg_request
 
     Find netlink message request in the request list
 
-    :param __u32 echo_seq:
+    :param echo_seq:
         Sequence number of the netlink request to find
+    :type echo_seq: __u32
 
 .. _`iwpm_find_nlmsg_request.description`:
 
@@ -68,8 +73,9 @@ iwpm_wait_complete_req
 
     Block while servicing the netlink request
 
-    :param struct iwpm_nlmsg_request \*nlmsg_request:
+    :param nlmsg_request:
         Netlink message request to service
+    :type nlmsg_request: struct iwpm_nlmsg_request \*
 
 .. _`iwpm_wait_complete_req.description`:
 
@@ -88,8 +94,9 @@ iwpm_get_nlmsg_seq
 
     Get the sequence number for a netlink message to send to the port mapper
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iwpm_get_nlmsg_seq.description`:
 
@@ -107,8 +114,9 @@ iwpm_add_remote_info
 
     Add remote address info of the connecting peer to the remote info hash table
 
-    :param struct iwpm_remote_info \*reminfo:
+    :param reminfo:
         The remote info to be added
+    :type reminfo: struct iwpm_remote_info \*
 
 .. _`iwpm_valid_client`:
 
@@ -119,8 +127,9 @@ iwpm_valid_client
 
     Check if the port mapper client is valid
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
 .. _`iwpm_valid_client.description`:
 
@@ -139,11 +148,13 @@ iwpm_set_valid
 
     Set the port mapper client to valid or not
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
-    :param int valid:
+    :param valid:
         1 if valid or 0 if invalid
+    :type valid: int
 
 .. _`iwpm_check_registration`:
 
@@ -154,11 +165,13 @@ iwpm_check_registration
 
     Check if the client registration matches the given one
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
-    :param u32 reg:
+    :param reg:
         The given registration type to compare with
+    :type reg: u32
 
 .. _`iwpm_check_registration.description`:
 
@@ -178,11 +191,13 @@ iwpm_set_registration
 
     Set the client registration
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
-    :param u32 reg:
+    :param reg:
         Registration type to set
+    :type reg: u32
 
 .. _`iwpm_get_registration`:
 
@@ -191,8 +206,9 @@ iwpm_get_registration
 
 .. c:function:: u32 iwpm_get_registration(u8 nl_client)
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
 .. _`iwpm_get_registration.description`:
 
@@ -210,11 +226,13 @@ iwpm_send_mapinfo
 
     Send local and mapped IPv4/IPv6 address info of a client to the user space port mapper
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
-    :param int iwpm_pid:
+    :param iwpm_pid:
         The pid of the user space port mapper
+    :type iwpm_pid: int
 
 .. _`iwpm_send_mapinfo.description`:
 
@@ -232,8 +250,9 @@ iwpm_mapinfo_available
 
     Check if any mapping info records is available in the hash table
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iwpm_mapinfo_available.description`:
 
@@ -251,11 +270,13 @@ iwpm_compare_sockaddr
 
     Compare two sockaddr storage structs
 
-    :param struct sockaddr_storage \*a_sockaddr:
+    :param a_sockaddr:
         *undescribed*
+    :type a_sockaddr: struct sockaddr_storage \*
 
-    :param struct sockaddr_storage \*b_sockaddr:
+    :param b_sockaddr:
         *undescribed*
+    :type b_sockaddr: struct sockaddr_storage \*
 
 .. _`iwpm_compare_sockaddr.description`:
 
@@ -274,11 +295,13 @@ iwpm_validate_nlmsg_attr
 
     Check for NULL netlink attributes
 
-    :param struct nlattr  \*nltb:
+    :param nltb:
         Holds address of each netlink message attributes
+    :type nltb: struct nlattr  \*
 
-    :param int nla_count:
+    :param nla_count:
         Number of netlink message attributes
+    :type nla_count: int
 
 .. _`iwpm_validate_nlmsg_attr.description`:
 
@@ -296,14 +319,17 @@ iwpm_create_nlmsg
 
     Allocate skb and form a netlink message
 
-    :param u32 nl_op:
+    :param nl_op:
         Netlink message opcode
+    :type nl_op: u32
 
-    :param struct nlmsghdr \*\*nlh:
+    :param nlh:
         Holds address of the netlink message header in skb
+    :type nlh: struct nlmsghdr \*\*
 
-    :param int nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: int
 
 .. _`iwpm_create_nlmsg.description`:
 
@@ -322,20 +348,25 @@ iwpm_parse_nlmsg
 
     Validate and parse the received netlink message
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Netlink callback structure
+    :type cb: struct netlink_callback \*
 
-    :param int policy_max:
+    :param policy_max:
         Maximum attribute type to be expected
+    :type policy_max: int
 
-    :param const struct nla_policy \*nlmsg_policy:
+    :param nlmsg_policy:
         Validation policy
+    :type nlmsg_policy: const struct nla_policy \*
 
-    :param struct nlattr  \*nltb:
+    :param nltb:
         Array to store policy_max parsed elements
+    :type nltb: struct nlattr  \*
 
-    :param const char \*msg_type:
+    :param msg_type:
         Type of netlink message
+    :type msg_type: const char \*
 
 .. _`iwpm_parse_nlmsg.description`:
 
@@ -353,11 +384,13 @@ iwpm_print_sockaddr
 
     Print IPv4/IPv6 address and TCP port
 
-    :param struct sockaddr_storage \*sockaddr:
+    :param sockaddr:
         Socket address to print
+    :type sockaddr: struct sockaddr_storage \*
 
-    :param char \*msg:
+    :param msg:
         Message to print
+    :type msg: char \*
 
 .. This file was automatic generated / don't edit.
 

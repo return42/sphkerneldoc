@@ -61,8 +61,9 @@ crypto_ecdh_key_len
 
     Obtain the size of the private ECDH key
 
-    :param const struct ecdh \*params:
+    :param params:
         private ECDH key
+    :type params: const struct ecdh \*
 
 .. _`crypto_ecdh_key_len.description`:
 
@@ -89,16 +90,19 @@ crypto_ecdh_encode_key
 
     encode the private key
 
-    :param char \*buf:
+    :param buf:
         Buffer allocated by the caller to hold the packet ECDH
         private key. The buffer should be at least crypto_ecdh_key_len
         bytes in size.
+    :type buf: char \*
 
-    :param unsigned int len:
+    :param len:
         Length of the packet private key buffer
+    :type len: unsigned int
 
-    :param const struct ecdh \*p:
+    :param p:
         Buffer with the caller-specified private key
+    :type p: const struct ecdh \*
 
 .. _`crypto_ecdh_encode_key.description`:
 
@@ -124,15 +128,18 @@ crypto_ecdh_decode_key
 
     decode a private key
 
-    :param const char \*buf:
+    :param buf:
         Buffer holding a packet key that should be decoded
+    :type buf: const char \*
 
-    :param unsigned int len:
+    :param len:
         Length of the packet private key buffer
+    :type len: unsigned int
 
-    :param struct ecdh \*p:
+    :param p:
         Buffer allocated by the caller that is filled with the
         unpacked ECDH private key.
+    :type p: struct ecdh \*
 
 .. _`crypto_ecdh_decode_key.description`:
 

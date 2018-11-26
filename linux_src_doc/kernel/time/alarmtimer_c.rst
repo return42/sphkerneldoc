@@ -10,8 +10,9 @@ alarmtimer_get_rtcdev
 
     Return selected rtcdevice
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`alarmtimer_get_rtcdev.description`:
 
@@ -31,11 +32,13 @@ alarmtimer_enqueue
 
     Adds an alarm timer to an alarm_base timerqueue
 
-    :param struct alarm_base \*base:
+    :param base:
         pointer to the base where the timer is being run
+    :type base: struct alarm_base \*
 
-    :param struct alarm \*alarm:
+    :param alarm:
         pointer to alarm being enqueued.
+    :type alarm: struct alarm \*
 
 .. _`alarmtimer_enqueue.description`:
 
@@ -55,11 +58,13 @@ alarmtimer_dequeue
 
     Removes an alarm timer from an alarm_base timerqueue
 
-    :param struct alarm_base \*base:
+    :param base:
         pointer to the base where the timer is running
+    :type base: struct alarm_base \*
 
-    :param struct alarm \*alarm:
+    :param alarm:
         pointer to alarm being removed
+    :type alarm: struct alarm \*
 
 .. _`alarmtimer_dequeue.description`:
 
@@ -79,8 +84,9 @@ alarmtimer_fired
 
     Handles alarm hrtimer being fired.
 
-    :param struct hrtimer \*timer:
+    :param timer:
         pointer to hrtimer being run
+    :type timer: struct hrtimer \*
 
 .. _`alarmtimer_fired.description`:
 
@@ -101,8 +107,9 @@ alarmtimer_suspend
 
     Suspend time callback
 
-    :param struct device \*dev:
+    :param dev:
         unused
+    :type dev: struct device \*
 
 .. _`alarmtimer_suspend.description`:
 
@@ -123,11 +130,13 @@ alarm_init
 
     Initialize an alarm structure
 
-    :param struct alarm \*alarm:
+    :param alarm:
         ptr to alarm to be initialized
+    :type alarm: struct alarm \*
 
-    :param enum alarmtimer_type type:
+    :param type:
         the type of the alarm
+    :type type: enum alarmtimer_type
 
     :param enum alarmtimer_restart (\*function)(struct alarm \*, ktime_t):
         callback that is run when the alarm fires
@@ -141,11 +150,13 @@ alarm_start
 
     Sets an absolute alarm to fire
 
-    :param struct alarm \*alarm:
+    :param alarm:
         ptr to alarm to set
+    :type alarm: struct alarm \*
 
-    :param ktime_t start:
+    :param start:
         time to run the alarm
+    :type start: ktime_t
 
 .. _`alarm_start_relative`:
 
@@ -156,11 +167,13 @@ alarm_start_relative
 
     Sets a relative alarm to fire
 
-    :param struct alarm \*alarm:
+    :param alarm:
         ptr to alarm to set
+    :type alarm: struct alarm \*
 
-    :param ktime_t start:
+    :param start:
         time relative to now to run the alarm
+    :type start: ktime_t
 
 .. _`alarm_try_to_cancel`:
 
@@ -171,8 +184,9 @@ alarm_try_to_cancel
 
     Tries to cancel an alarm timer
 
-    :param struct alarm \*alarm:
+    :param alarm:
         ptr to alarm to be canceled
+    :type alarm: struct alarm \*
 
 .. _`alarm_try_to_cancel.description`:
 
@@ -191,8 +205,9 @@ alarm_cancel
 
     Spins trying to cancel an alarm timer until it is done
 
-    :param struct alarm \*alarm:
+    :param alarm:
         ptr to alarm to be canceled
+    :type alarm: struct alarm \*
 
 .. _`alarm_cancel.description`:
 
@@ -210,8 +225,9 @@ clock2alarm
 
     helper that converts from clockid to alarmtypes
 
-    :param clockid_t clockid:
+    :param clockid:
         clockid.
+    :type clockid: clockid_t
 
 .. _`alarm_handle_timer`:
 
@@ -222,11 +238,13 @@ alarm_handle_timer
 
     Callback for posix timers
 
-    :param struct alarm \*alarm:
+    :param alarm:
         alarm that fired
+    :type alarm: struct alarm \*
 
-    :param ktime_t now:
+    :param now:
         *undescribed*
+    :type now: ktime_t
 
 .. _`alarm_handle_timer.description`:
 
@@ -244,23 +262,26 @@ alarm_timer_rearm
 
     Posix timer callback for rearming timer
 
-    :param struct k_itimer \*timr:
+    :param timr:
         Pointer to the posixtimer data struct
+    :type timr: struct k_itimer \*
 
 .. _`alarm_timer_forward`:
 
 alarm_timer_forward
 ===================
 
-.. c:function:: int alarm_timer_forward(struct k_itimer *timr, ktime_t now)
+.. c:function:: s64 alarm_timer_forward(struct k_itimer *timr, ktime_t now)
 
     Posix timer callback for forwarding timer
 
-    :param struct k_itimer \*timr:
+    :param timr:
         Pointer to the posixtimer data struct
+    :type timr: struct k_itimer \*
 
-    :param ktime_t now:
+    :param now:
         Current time to forward the timer against
+    :type now: ktime_t
 
 .. _`alarm_timer_remaining`:
 
@@ -271,11 +292,13 @@ alarm_timer_remaining
 
     Posix timer callback to retrieve remaining time
 
-    :param struct k_itimer \*timr:
+    :param timr:
         Pointer to the posixtimer data struct
+    :type timr: struct k_itimer \*
 
-    :param ktime_t now:
+    :param now:
         Current time to calculate against
+    :type now: ktime_t
 
 .. _`alarm_timer_try_to_cancel`:
 
@@ -286,8 +309,9 @@ alarm_timer_try_to_cancel
 
     Posix timer callback to cancel a timer
 
-    :param struct k_itimer \*timr:
+    :param timr:
         Pointer to the posixtimer data struct
+    :type timr: struct k_itimer \*
 
 .. _`alarm_timer_arm`:
 
@@ -298,17 +322,21 @@ alarm_timer_arm
 
     Posix timer callback to arm a timer
 
-    :param struct k_itimer \*timr:
+    :param timr:
         Pointer to the posixtimer data struct
+    :type timr: struct k_itimer \*
 
-    :param ktime_t expires:
+    :param expires:
         The new expiry time
+    :type expires: ktime_t
 
-    :param bool absolute:
+    :param absolute:
         Expiry value is absolute time
+    :type absolute: bool
 
-    :param bool sigev_none:
+    :param sigev_none:
         Posix timer does not deliver signals
+    :type sigev_none: bool
 
 .. _`alarm_clock_getres`:
 
@@ -319,11 +347,13 @@ alarm_clock_getres
 
     posix getres interface
 
-    :param const clockid_t which_clock:
+    :param which_clock:
         clockid
+    :type which_clock: const clockid_t
 
-    :param struct timespec64 \*tp:
+    :param tp:
         timespec to fill
+    :type tp: struct timespec64 \*
 
 .. _`alarm_clock_getres.description`:
 
@@ -341,11 +371,13 @@ alarm_clock_get
 
     posix clock_get interface
 
-    :param clockid_t which_clock:
+    :param which_clock:
         clockid
+    :type which_clock: clockid_t
 
-    :param struct timespec64 \*tp:
+    :param tp:
         timespec to fill.
+    :type tp: struct timespec64 \*
 
 .. _`alarm_clock_get.description`:
 
@@ -363,8 +395,9 @@ alarm_timer_create
 
     posix timer_create interface
 
-    :param struct k_itimer \*new_timer:
+    :param new_timer:
         k_itimer pointer to manage
+    :type new_timer: struct k_itimer \*
 
 .. _`alarm_timer_create.description`:
 
@@ -382,11 +415,13 @@ alarmtimer_nsleep_wakeup
 
     Wakeup function for alarm_timer_nsleep
 
-    :param struct alarm \*alarm:
+    :param alarm:
         ptr to alarm that fired
+    :type alarm: struct alarm \*
 
-    :param ktime_t now:
+    :param now:
         *undescribed*
+    :type now: ktime_t
 
 .. _`alarmtimer_nsleep_wakeup.description`:
 
@@ -404,14 +439,17 @@ alarmtimer_do_nsleep
 
     Internal alarmtimer nsleep implementation
 
-    :param struct alarm \*alarm:
+    :param alarm:
         ptr to alarmtimer
+    :type alarm: struct alarm \*
 
-    :param ktime_t absexp:
+    :param absexp:
         absolute expiration time
+    :type absexp: ktime_t
 
-    :param enum alarmtimer_type type:
+    :param type:
         *undescribed*
+    :type type: enum alarmtimer_type
 
 .. _`alarmtimer_do_nsleep.description`:
 
@@ -429,8 +467,9 @@ alarm_timer_nsleep_restart
 
     restartblock alarmtimer nsleep
 
-    :param struct restart_block \*restart:
+    :param restart:
         ptr to restart block
+    :type restart: struct restart_block \*
 
 .. _`alarm_timer_nsleep_restart.description`:
 
@@ -448,14 +487,17 @@ alarm_timer_nsleep
 
     alarmtimer nanosleep
 
-    :param const clockid_t which_clock:
+    :param which_clock:
         clockid
+    :type which_clock: const clockid_t
 
-    :param int flags:
+    :param flags:
         determins abstime or relative
+    :type flags: int
 
-    :param const struct timespec64 \*tsreq:
+    :param tsreq:
         requested sleep time (abs or rel)
+    :type tsreq: const struct timespec64 \*
 
 .. _`alarm_timer_nsleep.description`:
 
@@ -473,8 +515,9 @@ alarmtimer_init
 
     Initialize alarm timer code
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`alarmtimer_init.description`:
 

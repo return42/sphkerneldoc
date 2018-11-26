@@ -10,8 +10,9 @@ NTFS_SB
 
     return the ntfs volume given a vfs super block
 
-    :param struct super_block \*sb:
+    :param sb:
         VFS super block
+    :type sb: struct super_block \*
 
 .. _`ntfs_sb.description`:
 

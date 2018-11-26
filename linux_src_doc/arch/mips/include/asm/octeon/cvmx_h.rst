@@ -8,12 +8,14 @@ cvmx_build_io_address
 
 .. c:function:: uint64_t cvmx_build_io_address(uint64_t major_did, uint64_t sub_did)
 
-    :param uint64_t major_did:
+    :param major_did:
         5 bit major did
+    :type major_did: uint64_t
 
-    :param uint64_t sub_did:
+    :param sub_did:
         3 bit sub did
         Returns I/O base address
+    :type sub_did: uint64_t
 
 .. _`cvmx_build_bits`:
 
@@ -24,15 +26,18 @@ cvmx_build_bits
 
     the supplied bit rage.
 
-    :param uint64_t high_bit:
+    :param high_bit:
         Highest bit value can occupy (inclusive) 0-63
+    :type high_bit: uint64_t
 
-    :param uint64_t low_bit:
+    :param low_bit:
         Lowest bit value can occupy inclusive 0-high_bit
+    :type low_bit: uint64_t
 
-    :param uint64_t value:
+    :param value:
         Value to use
         Returns Value masked and shifted
+    :type value: uint64_t
 
 .. _`cvmx_build_bits.example`:
 
@@ -59,9 +64,10 @@ cvmx_ptr_to_phys
 
     memory address (uint64_t). Octeon hardware widgets don't understand logical addresses.
 
-    :param void \*ptr:
+    :param ptr:
         C style memory pointer
         Returns Hardware physical address
+    :type ptr: void \*
 
 .. _`cvmx_phys_to_ptr`:
 
@@ -72,9 +78,10 @@ cvmx_phys_to_ptr
 
     memory pointer (void \*).
 
-    :param uint64_t physical_address:
+    :param physical_address:
         Hardware physical address to memory
         Returns Pointer to memory
+    :type physical_address: uint64_t
 
 .. _`cvmx_pop`:
 
@@ -85,8 +92,9 @@ cvmx_pop
 
     Simple wrapper for POP instruction.
 
-    :param uint32_t val:
+    :param val:
         32 bit value to count set bits in
+    :type val: uint32_t
 
 .. _`cvmx_pop.description`:
 
@@ -104,8 +112,9 @@ cvmx_dpop
 
     Simple wrapper for DPOP instruction.
 
-    :param uint64_t val:
+    :param val:
         64 bit value to count set bits in
+    :type val: uint64_t
 
 .. _`cvmx_dpop.description`:
 
@@ -121,8 +130,9 @@ cvmx_get_cycle
 
 .. c:function:: uint64_t cvmx_get_cycle( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_get_cycle.description`:
 
@@ -140,8 +150,9 @@ cvmx_get_cycle_global
 
     chip reset.  The counter is 64 bit. This register does not exist on CN38XX pass 1 silicion
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_get_cycle_global.description`:
 
@@ -159,23 +170,29 @@ CVMX_WAIT_FOR_FIELD64
 
     is common in code to need to wait for a specific field in a CSR to match a specific value. Conceptually this macro expands to:
 
-    :param  address:
+    :param address:
         *undescribed*
+    :type address: 
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
-    :param  field:
+    :param field:
         *undescribed*
+    :type field: 
 
-    :param  op:
+    :param op:
         *undescribed*
+    :type op: 
 
-    :param  value:
+    :param value:
         *undescribed*
+    :type value: 
 
-    :param  timeout_usec:
+    :param timeout_usec:
         *undescribed*
+    :type timeout_usec: 
 
 .. _`cvmx_wait_for_field64.description`:
 

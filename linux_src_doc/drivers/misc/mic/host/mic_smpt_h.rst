@@ -162,8 +162,9 @@ mic_map_error
 
     Check a MIC address for errors.
 
-    :param dma_addr_t mic_addr:
+    :param mic_addr:
         *undescribed*
+    :type mic_addr: dma_addr_t
 
 .. _`mic_map_error.description`:
 

@@ -33,14 +33,17 @@ size_is_lt
 
     Returns whether a miplevel of the given size will use the lineartile (LT) tiling layout rather than the normal T tiling layout.
 
-    :param uint32_t width:
+    :param width:
         Width in pixels of the miplevel
+    :type width: uint32_t
 
-    :param uint32_t height:
+    :param height:
         Height in pixels of the miplevel
+    :type height: uint32_t
 
-    :param int cpp:
+    :param cpp:
         Bytes per pixel of the pixel format
+    :type cpp: int
 
 .. This file was automatic generated / don't edit.
 

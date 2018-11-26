@@ -10,11 +10,13 @@ nfs4_delegation_exists
 
     Discover if this delegation already exists
 
-    :param struct nfs4_client \*clp:
+    :param clp:
         a pointer to the nfs4_client we're granting a delegation to
+    :type clp: struct nfs4_client \*
 
-    :param struct nfs4_file \*fp:
+    :param fp:
         a pointer to the nfs4_file we're granting a delegation on
+    :type fp: struct nfs4_file \*
 
 .. _`nfs4_delegation_exists.on-success`:
 
@@ -32,11 +34,13 @@ hash_delegation_locked
 
     Add a delegation to the appropriate lists
 
-    :param struct nfs4_delegation \*dp:
+    :param dp:
         a pointer to the nfs4_delegation we are adding.
+    :type dp: struct nfs4_delegation \*
 
-    :param struct nfs4_file \*fp:
+    :param fp:
         a pointer to the nfs4_file we're granting a delegation on
+    :type fp: struct nfs4_file \*
 
 .. _`hash_delegation_locked.on-success`:
 

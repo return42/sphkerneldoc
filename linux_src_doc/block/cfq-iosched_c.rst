@@ -10,11 +10,13 @@ cfqg_scale_charge
 
     scale disk time charge according to cfqg weight
 
-    :param u64 charge:
+    :param charge:
         disk time being charged
+    :type charge: u64
 
-    :param unsigned int vfraction:
+    :param vfraction:
         vfraction of the cfqg, fixed point w/ CFQ_SERVICE_SHIFT
+    :type vfraction: unsigned int
 
 .. _`cfqg_scale_charge.description`:
 
@@ -37,8 +39,9 @@ cfq_init_cfqg_base
 
     initialize base part of a cfq_group
 
-    :param struct cfq_group \*cfqg:
+    :param cfqg:
         cfq_group to initialize
+    :type cfqg: struct cfq_group \*
 
 .. _`cfq_init_cfqg_base.description`:
 

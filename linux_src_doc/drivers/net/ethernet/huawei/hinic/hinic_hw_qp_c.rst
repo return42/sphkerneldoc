@@ -10,8 +10,9 @@ alloc_sq_skb_arr
 
     allocate sq array for saved skb
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         HW Send Queue
+    :type sq: struct hinic_sq \*
 
 .. _`alloc_sq_skb_arr.description`:
 
@@ -29,8 +30,9 @@ free_sq_skb_arr
 
     free sq array for saved skb
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         HW Send Queue
+    :type sq: struct hinic_sq \*
 
 .. _`alloc_rq_skb_arr`:
 
@@ -41,8 +43,9 @@ alloc_rq_skb_arr
 
     allocate rq array for saved skb
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         HW Receive Queue
+    :type rq: struct hinic_rq \*
 
 .. _`alloc_rq_skb_arr.description`:
 
@@ -60,8 +63,9 @@ free_rq_skb_arr
 
     free rq array for saved skb
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         HW Receive Queue
+    :type rq: struct hinic_rq \*
 
 .. _`hinic_init_sq`:
 
@@ -72,26 +76,33 @@ hinic_init_sq
 
     Initialize HW Send Queue
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         HW Send Queue
+    :type sq: struct hinic_sq \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         HW Interface for accessing HW
+    :type hwif: struct hinic_hwif \*
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         Work Queue for the data of the SQ
+    :type wq: struct hinic_wq \*
 
-    :param struct msix_entry \*entry:
+    :param entry:
         msix entry for sq
+    :type entry: struct msix_entry \*
 
-    :param void \*ci_addr:
+    :param ci_addr:
         address for reading the current HW consumer index
+    :type ci_addr: void \*
 
-    :param dma_addr_t ci_dma_addr:
+    :param ci_dma_addr:
         dma address for reading the current HW consumer index
+    :type ci_dma_addr: dma_addr_t
 
-    :param void __iomem \*db_base:
+    :param db_base:
         doorbell base address
+    :type db_base: void __iomem \*
 
 .. _`hinic_init_sq.description`:
 
@@ -109,8 +120,9 @@ hinic_clean_sq
 
     Clean HW Send Queue's Resources
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         Send Queue
+    :type sq: struct hinic_sq \*
 
 .. _`alloc_rq_cqe`:
 
@@ -121,8 +133,9 @@ alloc_rq_cqe
 
     allocate rq completion queue elements
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         HW Receive Queue
+    :type rq: struct hinic_rq \*
 
 .. _`alloc_rq_cqe.description`:
 
@@ -140,8 +153,9 @@ free_rq_cqe
 
     free rq completion queue elements
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         HW Receive Queue
+    :type rq: struct hinic_rq \*
 
 .. _`hinic_init_rq`:
 
@@ -152,17 +166,21 @@ hinic_init_rq
 
     Initialize HW Receive Queue
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         HW Receive Queue
+    :type rq: struct hinic_rq \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         HW Interface for accessing HW
+    :type hwif: struct hinic_hwif \*
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         Work Queue for the data of the RQ
+    :type wq: struct hinic_wq \*
 
-    :param struct msix_entry \*entry:
+    :param entry:
         msix entry for rq
+    :type entry: struct msix_entry \*
 
 .. _`hinic_init_rq.description`:
 
@@ -180,8 +198,9 @@ hinic_clean_rq
 
     Clean HW Receive Queue's Resources
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         HW Receive Queue
+    :type rq: struct hinic_rq \*
 
 .. _`hinic_get_sq_free_wqebbs`:
 
@@ -192,8 +211,9 @@ hinic_get_sq_free_wqebbs
 
     return number of free wqebbs for use
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         send queue
+    :type sq: struct hinic_sq \*
 
 .. _`hinic_get_sq_free_wqebbs.description`:
 
@@ -211,8 +231,9 @@ hinic_get_rq_free_wqebbs
 
     return number of free wqebbs for use
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         recv queue
+    :type rq: struct hinic_rq \*
 
 .. _`hinic_get_rq_free_wqebbs.description`:
 
@@ -230,20 +251,25 @@ hinic_sq_prepare_wqe
 
     prepare wqe before insert to the queue
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         send queue
+    :type sq: struct hinic_sq \*
 
-    :param u16 prod_idx:
+    :param prod_idx:
         pi value
+    :type prod_idx: u16
 
-    :param struct hinic_sq_wqe \*sq_wqe:
+    :param sq_wqe:
         wqe to prepare
+    :type sq_wqe: struct hinic_sq_wqe \*
 
-    :param struct hinic_sge \*sges:
+    :param sges:
         sges for use by the wqe for send for buf addresses
+    :type sges: struct hinic_sge \*
 
-    :param int nr_sges:
+    :param nr_sges:
         number of sges
+    :type nr_sges: int
 
 .. _`sq_prepare_db`:
 
@@ -254,14 +280,17 @@ sq_prepare_db
 
     prepare doorbell to write
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         send queue
+    :type sq: struct hinic_sq \*
 
-    :param u16 prod_idx:
+    :param prod_idx:
         pi value for the doorbell
+    :type prod_idx: u16
 
-    :param unsigned int cos:
+    :param cos:
         cos of the doorbell
+    :type cos: unsigned int
 
 .. _`sq_prepare_db.description`:
 
@@ -279,17 +308,21 @@ hinic_sq_write_db
 
     write doorbell
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         send queue
+    :type sq: struct hinic_sq \*
 
-    :param u16 prod_idx:
+    :param prod_idx:
         pi value for the doorbell
+    :type prod_idx: u16
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         wqe size
+    :type wqe_size: unsigned int
 
-    :param unsigned int cos:
+    :param cos:
         cos of the wqe
+    :type cos: unsigned int
 
 .. _`hinic_sq_get_wqe`:
 
@@ -300,14 +333,17 @@ hinic_sq_get_wqe
 
     get wqe ptr in the current pi and update the pi
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         sq to get wqe from
+    :type sq: struct hinic_sq \*
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         wqe size
+    :type wqe_size: unsigned int
 
-    :param u16 \*prod_idx:
+    :param prod_idx:
         returned pi
+    :type prod_idx: u16 \*
 
 .. _`hinic_sq_get_wqe.description`:
 
@@ -315,6 +351,23 @@ Description
 -----------
 
 Return wqe pointer
+
+.. _`hinic_sq_return_wqe`:
+
+hinic_sq_return_wqe
+===================
+
+.. c:function:: void hinic_sq_return_wqe(struct hinic_sq *sq, unsigned int wqe_size)
+
+    return the wqe to the sq
+
+    :param sq:
+        send queue
+    :type sq: struct hinic_sq \*
+
+    :param wqe_size:
+        the size of the wqe
+    :type wqe_size: unsigned int
 
 .. _`hinic_sq_write_wqe`:
 
@@ -325,41 +378,82 @@ hinic_sq_write_wqe
 
     write the wqe to the sq
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         send queue
+    :type sq: struct hinic_sq \*
 
-    :param u16 prod_idx:
+    :param prod_idx:
         pi of the wqe
+    :type prod_idx: u16
 
-    :param struct hinic_sq_wqe \*sq_wqe:
+    :param sq_wqe:
         the wqe to write
+    :type sq_wqe: struct hinic_sq_wqe \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to save
+    :type skb: struct sk_buff \*
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         the size of the wqe
+    :type wqe_size: unsigned int
+
+.. _`hinic_sq_read_wqebb`:
+
+hinic_sq_read_wqebb
+===================
+
+.. c:function:: struct hinic_sq_wqe *hinic_sq_read_wqebb(struct hinic_sq *sq, struct sk_buff **skb, unsigned int *wqe_size, u16 *cons_idx)
+
+    read wqe ptr in the current ci and update the ci, the wqe only have one wqebb
+
+    :param sq:
+        send queue
+    :type sq: struct hinic_sq \*
+
+    :param skb:
+        return skb that was saved
+    :type skb: struct sk_buff \*\*
+
+    :param wqe_size:
+        the wqe size ptr
+    :type wqe_size: unsigned int \*
+
+    :param cons_idx:
+        consumer index of the wqe
+    :type cons_idx: u16 \*
+
+.. _`hinic_sq_read_wqebb.description`:
+
+Description
+-----------
+
+Return wqe in ci position
 
 .. _`hinic_sq_read_wqe`:
 
 hinic_sq_read_wqe
 =================
 
-.. c:function:: struct hinic_sq_wqe *hinic_sq_read_wqe(struct hinic_sq *sq, struct sk_buff **skb, unsigned int *wqe_size, u16 *cons_idx)
+.. c:function:: struct hinic_sq_wqe *hinic_sq_read_wqe(struct hinic_sq *sq, struct sk_buff **skb, unsigned int wqe_size, u16 *cons_idx)
 
     read wqe ptr in the current ci and update the ci
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         send queue
+    :type sq: struct hinic_sq \*
 
-    :param struct sk_buff \*\*skb:
+    :param skb:
         return skb that was saved
+    :type skb: struct sk_buff \*\*
 
-    :param unsigned int \*wqe_size:
+    :param wqe_size:
         the size of the wqe
+    :type wqe_size: unsigned int
 
-    :param u16 \*cons_idx:
+    :param cons_idx:
         consumer index of the wqe
+    :type cons_idx: u16 \*
 
 .. _`hinic_sq_read_wqe.description`:
 
@@ -377,11 +471,13 @@ hinic_sq_put_wqe
 
     release the ci for new wqes
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         send queue
+    :type sq: struct hinic_sq \*
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         the size of the wqe
+    :type wqe_size: unsigned int
 
 .. _`hinic_sq_get_sges`:
 
@@ -392,14 +488,17 @@ hinic_sq_get_sges
 
     get sges from the wqe
 
-    :param struct hinic_sq_wqe \*sq_wqe:
+    :param sq_wqe:
         wqe to get the sges from its buffer addresses
+    :type sq_wqe: struct hinic_sq_wqe \*
 
-    :param struct hinic_sge \*sges:
+    :param sges:
         returned sges
+    :type sges: struct hinic_sge \*
 
-    :param int nr_sges:
+    :param nr_sges:
         number sges to return
+    :type nr_sges: int
 
 .. _`hinic_rq_get_wqe`:
 
@@ -410,14 +509,17 @@ hinic_rq_get_wqe
 
     get wqe ptr in the current pi and update the pi
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         rq to get wqe from
+    :type rq: struct hinic_rq \*
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         wqe size
+    :type wqe_size: unsigned int
 
-    :param u16 \*prod_idx:
+    :param prod_idx:
         returned pi
+    :type prod_idx: u16 \*
 
 .. _`hinic_rq_get_wqe.description`:
 
@@ -435,17 +537,21 @@ hinic_rq_write_wqe
 
     write the wqe to the rq
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         recv queue
+    :type rq: struct hinic_rq \*
 
-    :param u16 prod_idx:
+    :param prod_idx:
         pi of the wqe
+    :type prod_idx: u16
 
-    :param struct hinic_rq_wqe \*rq_wqe:
+    :param rq_wqe:
         the wqe to write
+    :type rq_wqe: struct hinic_rq_wqe \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to save
+    :type skb: struct sk_buff \*
 
 .. _`hinic_rq_read_wqe`:
 
@@ -456,17 +562,21 @@ hinic_rq_read_wqe
 
     read wqe ptr in the current ci and update the ci
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         recv queue
+    :type rq: struct hinic_rq \*
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         the size of the wqe
+    :type wqe_size: unsigned int
 
-    :param struct sk_buff \*\*skb:
+    :param skb:
         return saved skb
+    :type skb: struct sk_buff \*\*
 
-    :param u16 \*cons_idx:
+    :param cons_idx:
         consumer index of the wqe
+    :type cons_idx: u16 \*
 
 .. _`hinic_rq_read_wqe.description`:
 
@@ -484,17 +594,21 @@ hinic_rq_read_next_wqe
 
     increment ci and read the wqe in ci position
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         recv queue
+    :type rq: struct hinic_rq \*
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         the size of the wqe
+    :type wqe_size: unsigned int
 
-    :param struct sk_buff \*\*skb:
+    :param skb:
         return saved skb
+    :type skb: struct sk_buff \*\*
 
-    :param u16 \*cons_idx:
+    :param cons_idx:
         consumer index in the wq
+    :type cons_idx: u16 \*
 
 .. _`hinic_rq_read_next_wqe.description`:
 
@@ -512,14 +626,17 @@ hinic_rq_put_wqe
 
     release the ci for new wqes
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         recv queue
+    :type rq: struct hinic_rq \*
 
-    :param u16 cons_idx:
+    :param cons_idx:
         consumer index of the wqe
+    :type cons_idx: u16
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         the size of the wqe
+    :type wqe_size: unsigned int
 
 .. _`hinic_rq_get_sge`:
 
@@ -530,17 +647,21 @@ hinic_rq_get_sge
 
     get sge from the wqe
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         recv queue
+    :type rq: struct hinic_rq \*
 
-    :param struct hinic_rq_wqe \*rq_wqe:
+    :param rq_wqe:
         wqe to get the sge from its buf address
+    :type rq_wqe: struct hinic_rq_wqe \*
 
-    :param u16 cons_idx:
+    :param cons_idx:
         consumer index
+    :type cons_idx: u16
 
-    :param struct hinic_sge \*sge:
+    :param sge:
         returned sge
+    :type sge: struct hinic_sge \*
 
 .. _`hinic_rq_prepare_wqe`:
 
@@ -551,17 +672,21 @@ hinic_rq_prepare_wqe
 
     prepare wqe before insert to the queue
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         recv queue
+    :type rq: struct hinic_rq \*
 
-    :param u16 prod_idx:
+    :param prod_idx:
         pi value
+    :type prod_idx: u16
 
-    :param struct hinic_rq_wqe \*rq_wqe:
+    :param rq_wqe:
         the wqe
+    :type rq_wqe: struct hinic_rq_wqe \*
 
-    :param struct hinic_sge \*sge:
+    :param sge:
         sge for use by the wqe for recv buf address
+    :type sge: struct hinic_sge \*
 
 .. _`hinic_rq_update`:
 
@@ -572,11 +697,13 @@ hinic_rq_update
 
     update pi of the rq
 
-    :param struct hinic_rq \*rq:
+    :param rq:
         recv queue
+    :type rq: struct hinic_rq \*
 
-    :param u16 prod_idx:
+    :param prod_idx:
         pi value
+    :type prod_idx: u16
 
 .. This file was automatic generated / don't edit.
 

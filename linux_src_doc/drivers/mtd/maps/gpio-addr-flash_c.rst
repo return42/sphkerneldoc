@@ -20,10 +20,9 @@ Definition
     struct async_state {
         struct mtd_info *mtd;
         struct map_info map;
-        size_t gpio_count;
-        unsigned *gpio_addrs;
-        int *gpio_values;
-        unsigned long win_size;
+        struct gpio_descs *gpios;
+        unsigned int gpio_values;
+        unsigned int win_order;
     }
 
 .. _`async_state.members`:
@@ -37,16 +36,13 @@ mtd
 map
     MTD map state for this flash
 
-gpio_count
-    number of GPIOs used to address
-
-gpio_addrs
-    array of GPIOs to twiddle
+gpios
+    Struct containing the array of GPIO descriptors
 
 gpio_values
     cached GPIO values
 
-win_size
+win_order
     dedicated memory size (if no GPIOs)
 
 .. _`gf_set_gpios`:
@@ -58,11 +54,13 @@ gf_set_gpios
 
     set GPIO address lines to access specified flash offset
 
-    :param struct async_state \*state:
+    :param state:
         GPIO flash state
+    :type state: struct async_state \*
 
-    :param unsigned long ofs:
+    :param ofs:
         desired offset to access
+    :type ofs: unsigned long
 
 .. _`gf_set_gpios.description`:
 
@@ -71,8 +69,7 @@ Description
 
 Rather than call the GPIO framework every time, cache the last-programmed
 value.  This speeds up sequential accesses (which are by far the most common
-type).  We rely on the GPIO framework to treat non-zero value as high so
-that we don't have to normalize the bits.
+type).
 
 .. _`gf_read`:
 
@@ -83,11 +80,13 @@ gf_read
 
     read a word at the specified offset
 
-    :param struct map_info \*map:
+    :param map:
         MTD map state
+    :type map: struct map_info \*
 
-    :param unsigned long ofs:
+    :param ofs:
         desired offset to read
+    :type ofs: unsigned long
 
 .. _`gf_copy_from`:
 
@@ -98,17 +97,21 @@ gf_copy_from
 
     copy a chunk of data from the flash
 
-    :param struct map_info \*map:
+    :param map:
         MTD map state
+    :type map: struct map_info \*
 
-    :param void \*to:
+    :param to:
         memory to copy to
+    :type to: void \*
 
-    :param unsigned long from:
+    :param from:
         flash offset to copy from
+    :type from: unsigned long
 
-    :param ssize_t len:
+    :param len:
         how much to copy
+    :type len: ssize_t
 
 .. _`gf_copy_from.description`:
 
@@ -127,14 +130,17 @@ gf_write
 
     write a word at the specified offset
 
-    :param struct map_info \*map:
+    :param map:
         MTD map state
+    :type map: struct map_info \*
 
-    :param map_word d1:
+    :param d1:
         *undescribed*
+    :type d1: map_word
 
-    :param unsigned long ofs:
+    :param ofs:
         desired offset to write
+    :type ofs: unsigned long
 
 .. _`gf_copy_to`:
 
@@ -145,17 +151,21 @@ gf_copy_to
 
     copy a chunk of data to the flash
 
-    :param struct map_info \*map:
+    :param map:
         MTD map state
+    :type map: struct map_info \*
 
-    :param unsigned long to:
+    :param to:
         flash offset to copy to
+    :type to: unsigned long
 
-    :param const void \*from:
+    :param from:
         memory to copy from
+    :type from: const void \*
 
-    :param ssize_t len:
+    :param len:
         how much to copy
+    :type len: ssize_t
 
 .. _`gf_copy_to.description`:
 
@@ -173,8 +183,9 @@ gpio_flash_probe
 
     setup a mapping for a GPIO assisted flash
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
 .. _`gpio_flash_probe.the-platform-resource-layout-expected-looks-something-like`:
 
@@ -183,18 +194,22 @@ The platform resource layout expected looks something like
 
 struct mtd_partition partitions[] = { ... };
 struct physmap_flash_data flash_data = { ... };
-unsigned flash_gpios[] = { GPIO_XX, GPIO_XX, ... };
+static struct gpiod_lookup_table addr_flash_gpios = {
+.dev_id = "gpio-addr-flash.0",
+.table = {
+GPIO_LOOKUP_IDX("gpio.0", 15, "addr", 0, GPIO_ACTIVE_HIGH),
+GPIO_LOOKUP_IDX("gpio.0", 16, "addr", 1, GPIO_ACTIVE_HIGH),
+);
+};
+gpiod_add_lookup_table(&addr_flash_gpios);
+
 struct resource flash_resource[] = {
 {
 .name  = "cfi_probe",
 .start = 0x20000000,
 .end   = 0x201fffff,
 .flags = IORESOURCE_MEM,
-}, {
-.start = (unsigned long)flash_gpios,
-.end   = ARRAY_SIZE(flash_gpios),
-.flags = IORESOURCE_IRQ,
-}
+},
 };
 struct platform_device flash_device = {
 .name          = "gpio-addr-flash",

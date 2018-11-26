@@ -10,8 +10,9 @@ i915_vma_pin_iomap
 
     calls ioremap_wc to map the GGTT VMA via the aperture
 
-    :param struct i915_vma \*vma:
+    :param vma:
         VMA to iomap
+    :type vma: struct i915_vma \*
 
 .. _`i915_vma_pin_iomap.description`:
 
@@ -36,8 +37,9 @@ i915_vma_unpin_iomap
 
     unpins the mapping returned from i915_vma_iomap
 
-    :param struct i915_vma \*vma:
+    :param vma:
         VMA to unpin
+    :type vma: struct i915_vma \*
 
 .. _`i915_vma_unpin_iomap.description`:
 
@@ -58,8 +60,9 @@ i915_vma_pin_fence
 
     pin fencing state
 
-    :param struct i915_vma \*vma:
+    :param vma:
         vma to pin fencing for
+    :type vma: struct i915_vma \*
 
 .. _`i915_vma_pin_fence.description`:
 
@@ -90,8 +93,9 @@ i915_vma_unpin_fence
 
     unpin fencing state
 
-    :param struct i915_vma \*vma:
+    :param vma:
         vma to unpin fencing for
+    :type vma: struct i915_vma \*
 
 .. _`i915_vma_unpin_fence.description`:
 
@@ -111,11 +115,13 @@ for_each_ggtt_vma
 
     Iterate over the GGTT VMA belonging to an object.
 
-    :param  V:
+    :param V:
         the #i915_vma iterator
+    :type V: 
 
-    :param  OBJ:
+    :param OBJ:
         the #drm_i915_gem_object
+    :type OBJ: 
 
 .. _`for_each_ggtt_vma.description`:
 

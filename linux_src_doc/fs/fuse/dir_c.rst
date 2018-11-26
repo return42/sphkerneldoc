@@ -10,8 +10,9 @@ fuse_invalidate_atime
 
     atime is not used.
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. This file was automatic generated / don't edit.
 

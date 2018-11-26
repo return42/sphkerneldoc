@@ -10,11 +10,13 @@ ibmvscsi_handle_event
 
     - Interrupt handler for crq events
 
-    :param int irq:
+    :param irq:
         number of irq to handle, not used
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         ibmvscsi_host_data of host that received interrupt
+    :type dev_instance: void \*
 
 .. _`ibmvscsi_handle_event.description`:
 
@@ -33,14 +35,17 @@ ibmvscsi_release_crq_queue
 
     - Deallocates data and unregisters CRQ
 
-    :param struct crq_queue \*queue:
+    :param queue:
         crq_queue to initialize and register
+    :type queue: struct crq_queue \*
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         *undescribed*
+    :type hostdata: struct ibmvscsi_host_data \*
 
-    :param int max_requests:
+    :param max_requests:
         *undescribed*
+    :type max_requests: int
 
 .. _`ibmvscsi_release_crq_queue.description`:
 
@@ -59,8 +64,9 @@ crq_queue_next_crq
 
     - Returns the next entry in message queue
 
-    :param struct crq_queue \*queue:
+    :param queue:
         crq_queue to use
+    :type queue: struct crq_queue \*
 
 .. _`crq_queue_next_crq.description`:
 
@@ -79,14 +85,17 @@ ibmvscsi_send_crq
 
     - Send a CRQ
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         the adapter
+    :type hostdata: struct ibmvscsi_host_data \*
 
-    :param u64 word1:
+    :param word1:
         the first 64 bits of the data
+    :type word1: u64
 
-    :param u64 word2:
+    :param word2:
         the second 64 bits of the data
+    :type word2: u64
 
 .. _`ibmvscsi_task`:
 
@@ -97,8 +106,9 @@ ibmvscsi_task
 
     - Process srps asynchronously
 
-    :param void \*data:
+    :param data:
         ibmvscsi_host_data of host
+    :type data: void \*
 
 .. _`ibmvscsi_reset_crq_queue`:
 
@@ -109,11 +119,13 @@ ibmvscsi_reset_crq_queue
 
     - resets a crq after a failure
 
-    :param struct crq_queue \*queue:
+    :param queue:
         crq_queue to initialize and register
+    :type queue: struct crq_queue \*
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`ibmvscsi_init_crq_queue`:
 
@@ -124,14 +136,17 @@ ibmvscsi_init_crq_queue
 
     - Initializes and registers CRQ with hypervisor
 
-    :param struct crq_queue \*queue:
+    :param queue:
         crq_queue to initialize and register
+    :type queue: struct crq_queue \*
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
-    :param int max_requests:
+    :param max_requests:
         *undescribed*
+    :type max_requests: int
 
 .. _`ibmvscsi_init_crq_queue.description`:
 
@@ -151,11 +166,13 @@ ibmvscsi_reenable_crq_queue
 
     - reenables a crq after
 
-    :param struct crq_queue \*queue:
+    :param queue:
         crq_queue to initialize and register
+    :type queue: struct crq_queue \*
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`initialize_event_pool`:
 
@@ -166,14 +183,17 @@ initialize_event_pool
 
     - Allocates and initializes the event pool for a host
 
-    :param struct event_pool \*pool:
+    :param pool:
         event_pool to be initialized
+    :type pool: struct event_pool \*
 
-    :param int size:
+    :param size:
         Number of events in pool
+    :type size: int
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data who owns the event pool
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`initialize_event_pool.description`:
 
@@ -191,11 +211,13 @@ release_event_pool
 
     - Frees memory of an event pool of a host
 
-    :param struct event_pool \*pool:
+    :param pool:
         event_pool to be released
+    :type pool: struct event_pool \*
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data who owns the even pool
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`release_event_pool.description`:
 
@@ -213,11 +235,13 @@ valid_event_struct
 
     - Determines if event is valid.
 
-    :param struct event_pool \*pool:
+    :param pool:
         event_pool that contains the event
+    :type pool: struct event_pool \*
 
-    :param struct srp_event_struct \*evt:
+    :param evt:
         srp_event_struct to be checked for validity
+    :type evt: struct srp_event_struct \*
 
 .. _`valid_event_struct.description`:
 
@@ -235,11 +259,13 @@ free_event_struct
 
     event_struct: - Changes status of event to "free"
 
-    :param struct event_pool \*pool:
+    :param pool:
         event_pool that contains the event
+    :type pool: struct event_pool \*
 
-    :param struct srp_event_struct \*evt:
+    :param evt:
         srp_event_struct to be modified
+    :type evt: struct srp_event_struct \*
 
 .. _`get_event_struct`:
 
@@ -250,8 +276,9 @@ get_event_struct
 
     - Gets the next free event in pool
 
-    :param struct event_pool \*pool:
+    :param pool:
         event_pool that contains the events to be searched
+    :type pool: struct event_pool \*
 
 .. _`get_event_struct.description`:
 
@@ -271,17 +298,20 @@ init_event_struct
 
     Initialize fields in an event struct that are always required.
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         *undescribed*
+    :type evt_struct: struct srp_event_struct \*
 
     :param void (\*done)(struct srp_event_struct \*):
         Routine to call when the event is responded to
 
-    :param u8 format:
+    :param format:
         SRP or MAD format
+    :type format: u8
 
-    :param int timeout:
+    :param timeout:
         timeout value set in the CRQ
+    :type timeout: int
 
 .. _`set_srp_direction`:
 
@@ -292,14 +322,17 @@ set_srp_direction
 
     Set the fields in the srp related to data direction and number of buffers based on the direction in the scsi_cmnd and the number of buffers
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct scsi_cmnd \*
 
-    :param struct srp_cmd \*srp_cmd:
+    :param srp_cmd:
         *undescribed*
+    :type srp_cmd: struct srp_cmd \*
 
-    :param int numbuf:
+    :param numbuf:
         *undescribed*
+    :type numbuf: int
 
 .. _`unmap_cmd_data`:
 
@@ -310,14 +343,17 @@ unmap_cmd_data
 
     - Unmap data pointed in srp_cmd based on the format
 
-    :param struct srp_cmd \*cmd:
+    :param cmd:
         srp_cmd whose additional_data member will be unmapped
+    :type cmd: struct srp_cmd \*
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         *undescribed*
+    :type evt_struct: struct srp_event_struct \*
 
-    :param struct device \*dev:
+    :param dev:
         device for which the memory is mapped
+    :type dev: struct device \*
 
 .. _`map_sg_data`:
 
@@ -328,17 +364,21 @@ map_sg_data
 
     - Maps dma for a scatterlist and initializes decriptor fields
 
-    :param struct scsi_cmnd \*cmd:
-        Scsi_Cmnd with the scatterlist
+    :param cmd:
+        struct scsi_cmnd with the scatterlist
+    :type cmd: struct scsi_cmnd \*
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         *undescribed*
+    :type evt_struct: struct srp_event_struct \*
 
-    :param struct srp_cmd \*srp_cmd:
+    :param srp_cmd:
         srp_cmd that contains the memory descriptor
+    :type srp_cmd: struct srp_cmd \*
 
-    :param struct device \*dev:
+    :param dev:
         device for which to map dma memory
+    :type dev: struct device \*
 
 .. _`map_sg_data.description`:
 
@@ -357,17 +397,21 @@ map_data_for_srp_cmd
 
     - Calls functions to map data for srp cmds
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         struct scsi_cmnd with the memory to be mapped
+    :type cmd: struct scsi_cmnd \*
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         *undescribed*
+    :type evt_struct: struct srp_event_struct \*
 
-    :param struct srp_cmd \*srp_cmd:
+    :param srp_cmd:
         srp_cmd that contains the memory descriptor
+    :type srp_cmd: struct srp_cmd \*
 
-    :param struct device \*dev:
+    :param dev:
         dma device for which to map dma memory
+    :type dev: struct device \*
 
 .. _`map_data_for_srp_cmd.description`:
 
@@ -386,11 +430,13 @@ purge_requests
 
     Our virtual adapter just shut down.  purge any sent requests
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         the adapter
+    :type hostdata: struct ibmvscsi_host_data \*
 
-    :param int error_code:
+    :param error_code:
         *undescribed*
+    :type error_code: int
 
 .. _`ibmvscsi_reset_host`:
 
@@ -401,8 +447,9 @@ ibmvscsi_reset_host
 
     Reset the connection to the server
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         struct ibmvscsi_host_data to reset
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`ibmvscsi_timeout`:
 
@@ -413,8 +460,9 @@ ibmvscsi_timeout
 
     Internal command timeout handler
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`ibmvscsi_timeout.description`:
 
@@ -432,14 +480,17 @@ ibmvscsi_send_srp_event
 
     - Transforms event to u64 array and calls \ :c:func:`send_crq`\ 
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         evt_struct to be sent
+    :type evt_struct: struct srp_event_struct \*
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout in seconds - 0 means do not time command
+    :type timeout: unsigned long
 
 .. _`ibmvscsi_send_srp_event.description`:
 
@@ -458,8 +509,9 @@ handle_cmd_rsp
 
     -  Handle responses from commands
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         srp_event_struct to be handled
+    :type evt_struct: struct srp_event_struct \*
 
 .. _`handle_cmd_rsp.description`:
 
@@ -478,8 +530,9 @@ lun_from_dev
 
     - Returns the lun of the scsi device
 
-    :param struct scsi_device \*dev:
+    :param dev:
         struct scsi_device
+    :type dev: struct scsi_device \*
 
 .. _`ibmvscsi_queuecommand_lck`:
 
@@ -490,8 +543,9 @@ ibmvscsi_queuecommand_lck
 
     - The queuecommand function of the scsi template
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         *undescribed*
+    :type cmnd: struct scsi_cmnd \*
 
     :param void (\*done)(struct scsi_cmnd \*):
         Callback function to be called when cmd is completed
@@ -505,8 +559,9 @@ map_persist_bufs
 
     - Pre-map persistent data for adapter logins
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`map_persist_bufs.description`:
 
@@ -525,8 +580,9 @@ unmap_persist_bufs
 
     - Unmap persistent data needed for adapter logins
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`unmap_persist_bufs.description`:
 
@@ -544,8 +600,9 @@ login_rsp
 
     - Handle response to SRP login request
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         srp_event_struct with the response
+    :type evt_struct: struct srp_event_struct \*
 
 .. _`login_rsp.description`:
 
@@ -564,8 +621,9 @@ send_srp_login
 
     - Sends the srp login
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`send_srp_login.description`:
 
@@ -583,8 +641,9 @@ capabilities_rsp
 
     - Handle response to MAD adapter capabilities request
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         srp_event_struct with the response
+    :type evt_struct: struct srp_event_struct \*
 
 .. _`capabilities_rsp.description`:
 
@@ -602,8 +661,9 @@ send_mad_capabilities
 
     - Sends the mad capabilities request and stores the result so it can be retrieved with
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`fast_fail_rsp`:
 
@@ -614,8 +674,9 @@ fast_fail_rsp
 
     - Handle response to MAD enable fast fail
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         srp_event_struct with the response
+    :type evt_struct: struct srp_event_struct \*
 
 .. _`fast_fail_rsp.description`:
 
@@ -634,8 +695,9 @@ enable_fast_fail
 
     Start host initialization
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`enable_fast_fail.description`:
 
@@ -653,8 +715,9 @@ adapter_info_rsp
 
     - Handle response to MAD adapter info request
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         srp_event_struct with the response
+    :type evt_struct: struct srp_event_struct \*
 
 .. _`adapter_info_rsp.description`:
 
@@ -673,8 +736,9 @@ send_mad_adapter_info
 
     - Sends the mad adapter info request and stores the result so it can be retrieved with sysfs.  We COULD consider causing a failure if the returned SRP version doesn't match ours.
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`send_mad_adapter_info.description`:
 
@@ -692,8 +756,9 @@ init_adapter
 
     Start virtual adapter initialization sequence
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         *undescribed*
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`sync_completion`:
 
@@ -704,8 +769,9 @@ sync_completion
 
     Signal that a synchronous command has completed Note that after returning from this call, the evt_struct is freed. the caller waiting on this completion shouldn't touch the evt_struct again.
 
-    :param struct srp_event_struct \*evt_struct:
+    :param evt_struct:
         *undescribed*
+    :type evt_struct: struct srp_event_struct \*
 
 .. _`ibmvscsi_eh_abort_handler`:
 
@@ -716,8 +782,9 @@ ibmvscsi_eh_abort_handler
 
     Abort a command...from scsi host template send this over to the server and wait synchronously for the response
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ibmvscsi_eh_device_reset_handler`:
 
@@ -728,8 +795,9 @@ ibmvscsi_eh_device_reset_handler
 
     Reset a single LUN...from scsi host template send this over to the server and wait synchronously for the response
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ibmvscsi_eh_host_reset_handler`:
 
@@ -740,8 +808,9 @@ ibmvscsi_eh_host_reset_handler
 
     Reset the connection to the server
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         struct scsi_cmnd having problems
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ibmvscsi_handle_crq`:
 
@@ -752,11 +821,13 @@ ibmvscsi_handle_crq
 
     - Handles and frees received events in the CRQ
 
-    :param struct viosrp_crq \*crq:
+    :param crq:
         Command/Response queue
+    :type crq: struct viosrp_crq \*
 
-    :param struct ibmvscsi_host_data \*hostdata:
+    :param hostdata:
         ibmvscsi_host_data of host
+    :type hostdata: struct ibmvscsi_host_data \*
 
 .. _`ibmvscsi_slave_configure`:
 
@@ -767,8 +838,9 @@ ibmvscsi_slave_configure
 
     Set the "allow_restart" flag for each disk.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         struct scsi_device device to configure
+    :type sdev: struct scsi_device \*
 
 .. _`ibmvscsi_slave_configure.description`:
 
@@ -788,11 +860,13 @@ ibmvscsi_change_queue_depth
 
     Change the device's queue depth
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param int qdepth:
+    :param qdepth:
         depth to set
+    :type qdepth: int
 
 .. _`ibmvscsi_change_queue_depth.return-value`:
 
@@ -810,8 +884,9 @@ ibmvscsi_get_desired_dma
 
     Calculate IO memory desired by the driver
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         struct vio_dev for the device whose desired IO mem is to be returned
+    :type vdev: struct vio_dev \*
 
 .. _`ibmvscsi_get_desired_dma.return-value`:
 
@@ -827,11 +902,13 @@ ibmvscsi_probe
 
 .. c:function:: int ibmvscsi_probe(struct vio_dev *vdev, const struct vio_device_id *id)
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         *undescribed*
+    :type vdev: struct vio_dev \*
 
-    :param const struct vio_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct vio_device_id \*
 
 .. _`ibmvscsi_resume`:
 
@@ -842,8 +919,9 @@ ibmvscsi_resume
 
     Resume from suspend
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
 .. _`ibmvscsi_resume.description`:
 

@@ -10,11 +10,13 @@ iio_dmaengine_buffer_alloc
 
     Allocate new buffer which uses DMAengine
 
-    :param struct device \*dev:
+    :param dev:
         Parent device for the buffer
+    :type dev: struct device \*
 
-    :param const char \*channel:
+    :param channel:
         DMA channel name, typically "rx".
+    :type channel: const char \*
 
 .. _`iio_dmaengine_buffer_alloc.description`:
 
@@ -37,8 +39,9 @@ iio_dmaengine_buffer_free
 
     Free dmaengine buffer
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         Buffer to free
+    :type buffer: struct iio_buffer \*
 
 .. _`iio_dmaengine_buffer_free.description`:
 

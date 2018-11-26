@@ -10,8 +10,9 @@ tomoyo_audit_mount_log
 
     Audit mount log.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
 .. _`tomoyo_audit_mount_log.description`:
 
@@ -29,11 +30,13 @@ tomoyo_check_mount_acl
 
     Check permission for path path path number operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const struct tomoyo_acl_info \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_acl_info".
+    :type ptr: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_check_mount_acl.description`:
 
@@ -51,20 +54,25 @@ tomoyo_mount_acl
 
     Check permission for \ :c:func:`mount`\  operation.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const char \*dev_name:
+    :param dev_name:
         Name of device file. Maybe NULL.
+    :type dev_name: const char \*
 
-    :param const struct path \*dir:
+    :param dir:
         Pointer to "struct path".
+    :type dir: const struct path \*
 
-    :param const char \*type:
+    :param type:
         Name of filesystem type.
+    :type type: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         Mount options.
+    :type flags: unsigned long
 
 .. _`tomoyo_mount_acl.description`:
 
@@ -84,20 +92,25 @@ tomoyo_mount_permission
 
     Check permission for \ :c:func:`mount`\  operation.
 
-    :param const char \*dev_name:
+    :param dev_name:
         Name of device file. Maybe NULL.
+    :type dev_name: const char \*
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
-    :param const char \*type:
+    :param type:
         Name of filesystem type. Maybe NULL.
+    :type type: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         Mount options.
+    :type flags: unsigned long
 
-    :param void \*data_page:
+    :param data_page:
         Optional data. Maybe NULL.
+    :type data_page: void \*
 
 .. _`tomoyo_mount_permission.description`:
 

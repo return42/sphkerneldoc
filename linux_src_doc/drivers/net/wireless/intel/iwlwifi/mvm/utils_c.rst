@@ -6,19 +6,21 @@
 iwl_mvm_send_lq_cmd
 ===================
 
-.. c:function:: int iwl_mvm_send_lq_cmd(struct iwl_mvm *mvm, struct iwl_lq_cmd *lq, bool init)
+.. c:function:: int iwl_mvm_send_lq_cmd(struct iwl_mvm *mvm, struct iwl_lq_cmd *lq, bool sync)
 
     Send link quality command
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         *undescribed*
+    :type mvm: struct iwl_mvm \*
 
-    :param struct iwl_lq_cmd \*lq:
+    :param lq:
         *undescribed*
+    :type lq: struct iwl_lq_cmd \*
 
-    :param bool init:
-        This command is sent as part of station initialization right
-        after station has been added.
+    :param sync:
+        This command can be sent synchronously.
+    :type sync: bool
 
 .. _`iwl_mvm_send_lq_cmd.description`:
 
@@ -39,17 +41,21 @@ iwl_mvm_update_smps
 
     Get a request to change the SMPS mode
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         *undescribed*
+    :type mvm: struct iwl_mvm \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         *undescribed*
+    :type vif: struct ieee80211_vif \*
 
-    :param enum iwl_mvm_smps_type_request req_type:
+    :param req_type:
         The part of the driver who call for a change.
+    :type req_type: enum iwl_mvm_smps_type_request
 
-    :param enum ieee80211_smps_mode smps_request:
+    :param smps_request:
         *undescribed*
+    :type smps_request: enum ieee80211_smps_mode
 
 .. _`iwl_mvm_update_smps.description`:
 

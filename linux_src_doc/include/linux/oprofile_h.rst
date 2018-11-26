@@ -10,8 +10,9 @@ oprofile_arch_init
 
     time initialisation. \*ops must be set to a filled-in operations structure. This is called even in timer interrupt mode so an arch can set a backtrace callback.
 
-    :param struct oprofile_operations \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct oprofile_operations \*
 
 .. _`oprofile_arch_init.description`:
 
@@ -29,8 +30,9 @@ oprofile_arch_exit
 
     time exit/cleanup for the arch.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`oprofile_add_sample`:
 
@@ -39,11 +41,13 @@ oprofile_add_sample
 
 .. c:function:: void oprofile_add_sample(struct pt_regs * const regs, unsigned long event)
 
-    :param struct pt_regs \* const regs:
+    :param regs:
         *undescribed*
+    :type regs: struct pt_regs \* const
 
-    :param unsigned long event:
+    :param event:
         *undescribed*
+    :type event: unsigned long
 
 .. _`oprofile_add_ext_sample`:
 
@@ -54,17 +58,21 @@ oprofile_add_ext_sample
 
     we cannot determine if we're in kernel mode from the regs.
 
-    :param unsigned long pc:
+    :param pc:
         *undescribed*
+    :type pc: unsigned long
 
-    :param struct pt_regs \* const regs:
+    :param regs:
         *undescribed*
+    :type regs: struct pt_regs \* const
 
-    :param unsigned long event:
+    :param event:
         *undescribed*
+    :type event: unsigned long
 
-    :param int is_kernel:
+    :param is_kernel:
         *undescribed*
+    :type is_kernel: int
 
 .. _`oprofile_add_ext_sample.description`:
 
@@ -80,20 +88,25 @@ oprofile_add_ext_hw_sample
 
 .. c:function:: void oprofile_add_ext_hw_sample(unsigned long pc, struct pt_regs * const regs, unsigned long event, int is_kernel, struct task_struct *task)
 
-    :param unsigned long pc:
+    :param pc:
         *undescribed*
+    :type pc: unsigned long
 
-    :param struct pt_regs \* const regs:
+    :param regs:
         *undescribed*
+    :type regs: struct pt_regs \* const
 
-    :param unsigned long event:
+    :param event:
         *undescribed*
+    :type event: unsigned long
 
-    :param int is_kernel:
+    :param is_kernel:
         *undescribed*
+    :type is_kernel: int
 
-    :param struct task_struct \*task:
+    :param task:
         *undescribed*
+    :type task: struct task_struct \*
 
 .. _`oprofilefs_create_file`:
 
@@ -104,14 +117,17 @@ oprofilefs_create_file
 
     the specified file operations.
 
-    :param struct dentry \*root:
+    :param root:
         *undescribed*
+    :type root: struct dentry \*
 
-    :param char const \*name:
+    :param name:
         *undescribed*
+    :type name: char const \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         *undescribed*
+    :type fops: const struct file_operations \*
 
 .. _`oprofilefs_str_to_user`:
 
@@ -122,17 +138,21 @@ oprofilefs_str_to_user
 
     appropriately. Returns bytes written or -EFAULT.
 
-    :param char const \*str:
+    :param str:
         *undescribed*
+    :type str: char const \*
 
-    :param char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*offset:
+    :param offset:
         *undescribed*
+    :type offset: loff_t \*
 
 .. _`oprofilefs_ulong_to_user`:
 
@@ -143,17 +163,21 @@ oprofilefs_ulong_to_user
 
     updating \*offset appropriately. Returns bytes written or -EFAULT.
 
-    :param unsigned long val:
+    :param val:
         *undescribed*
+    :type val: unsigned long
 
-    :param char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*offset:
+    :param offset:
         *undescribed*
+    :type offset: loff_t \*
 
 .. _`oprofilefs_ulong_from_user`:
 
@@ -164,14 +188,17 @@ oprofilefs_ulong_from_user
 
     Returns 0 on success, < 0 on error.
 
-    :param unsigned long \*val:
+    :param val:
         *undescribed*
+    :type val: unsigned long \*
 
-    :param char const __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char const __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`oprofile_put_buff`:
 
@@ -180,17 +207,21 @@ oprofile_put_buff
 
 .. c:function:: void oprofile_put_buff(unsigned long *buf, unsigned int start, unsigned int stop, unsigned int max)
 
-    :param unsigned long \*buf:
+    :param buf:
         *undescribed*
+    :type buf: unsigned long \*
 
-    :param unsigned int start:
+    :param start:
         *undescribed*
+    :type start: unsigned int
 
-    :param unsigned int stop:
+    :param stop:
         *undescribed*
+    :type stop: unsigned int
 
-    :param unsigned int max:
+    :param max:
         *undescribed*
+    :type max: unsigned int
 
 .. This file was automatic generated / don't edit.
 

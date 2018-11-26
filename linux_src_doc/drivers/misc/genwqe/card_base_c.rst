@@ -46,8 +46,9 @@ genwqe_dev_alloc
 
     Create and prepare a new card descriptor
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`genwqe_dev_alloc.return`:
 
@@ -65,8 +66,9 @@ genwqe_bus_reset
 
     Card recovery
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_bus_reset.description`:
 
@@ -87,8 +89,9 @@ genwqe_recovery_on_fatal_gfir_required
 
     Version depended actions
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_recovery_on_fatal_gfir_required.description`:
 
@@ -109,8 +112,9 @@ genwqe_T_psec
 
     Calculate PF/VF timeout register content
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_t_psec.note`:
 
@@ -133,8 +137,9 @@ genwqe_setup_pf_jtimer
 
     Setup PF hardware timeouts for DDCB execution
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_setup_pf_jtimer.description`:
 
@@ -156,8 +161,9 @@ genwqe_setup_vf_jtimer
 
     Setup VF hardware timeouts for DDCB execution
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_stop`:
 
@@ -168,8 +174,9 @@ genwqe_stop
 
     Stop card operation
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_stop.recovery-notes`:
 
@@ -193,11 +200,13 @@ genwqe_recover_card
 
     Try to recover the card if it is possible
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param int fatal_err:
+    :param fatal_err:
         *undescribed*
+    :type fatal_err: int
 
 .. _`genwqe_recover_card.description`:
 
@@ -220,8 +229,9 @@ genwqe_fir_checking
 
     Check the fault isolation registers of the card
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_fir_checking.description`:
 
@@ -243,8 +253,9 @@ genwqe_pci_fundamental_reset
 
     trigger a PCIe fundamental reset on the slot
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         *undescribed*
+    :type pci_dev: struct pci_dev \*
 
 .. _`genwqe_pci_fundamental_reset.note`:
 
@@ -270,8 +281,9 @@ genwqe_health_thread
 
     Health checking thread
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`genwqe_health_thread.description`:
 
@@ -303,8 +315,9 @@ genwqe_pci_setup
 
     Allocate PCIe related resources for our card
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_pci_remove`:
 
@@ -315,8 +328,9 @@ genwqe_pci_remove
 
     Free PCIe related resources for our card
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_probe`:
 
@@ -327,11 +341,13 @@ genwqe_probe
 
     Device initialization
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         *undescribed*
+    :type pci_dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct pci_device_id \*
 
 .. _`genwqe_probe.description`:
 
@@ -356,8 +372,9 @@ genwqe_remove
 
     Called when device is removed (hot-plugable)
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         *undescribed*
+    :type pci_dev: struct pci_dev \*
 
 .. _`genwqe_remove.description`:
 
@@ -375,11 +392,13 @@ genwqe_devnode
 
     Set default access mode for genwqe devices.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param umode_t \*mode:
+    :param mode:
         *undescribed*
+    :type mode: umode_t \*
 
 .. _`genwqe_devnode.description`:
 
@@ -398,8 +417,9 @@ genwqe_init_module
 
     Driver registration and initialization
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`genwqe_exit_module`:
 
@@ -410,8 +430,9 @@ genwqe_exit_module
 
     Driver exit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

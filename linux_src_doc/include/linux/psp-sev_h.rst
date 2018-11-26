@@ -1106,8 +1106,9 @@ sev_platform_init
 
     perform SEV INIT command
 
-    :param int \*error:
+    :param error:
         SEV command return code
+    :type error: int \*
 
 .. _`sev_platform_init.return`:
 
@@ -1129,11 +1130,13 @@ sev_platform_status
 
     perform SEV PLATFORM_STATUS command
 
-    :param struct sev_user_data_status \*status:
+    :param status:
         sev_user_data_status structure to be processed
+    :type status: struct sev_user_data_status \*
 
-    :param int \*error:
+    :param error:
         SEV command return code
+    :type error: int \*
 
 .. _`sev_platform_status.return`:
 
@@ -1155,17 +1158,21 @@ sev_issue_cmd_external_user
 
     issue SEV command by other driver with a file handle.
 
-    :param struct file \*filep:
+    :param filep:
         *undescribed*
+    :type filep: struct file \*
 
-    :param unsigned int id:
+    :param id:
         *undescribed*
+    :type id: unsigned int
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param int \*error:
+    :param error:
         SEV command return code
+    :type error: int \*
 
 .. _`sev_issue_cmd_external_user.description`:
 
@@ -1201,11 +1208,13 @@ sev_guest_deactivate
 
     perform SEV DEACTIVATE command
 
-    :param struct sev_data_deactivate \*data:
+    :param data:
         *undescribed*
+    :type data: struct sev_data_deactivate \*
 
-    :param int \*error:
+    :param error:
         *undescribed*
+    :type error: int \*
 
 .. _`sev_guest_deactivate.return`:
 
@@ -1227,11 +1236,13 @@ sev_guest_activate
 
     perform SEV ACTIVATE command
 
-    :param struct sev_data_activate \*data:
+    :param data:
         *undescribed*
+    :type data: struct sev_data_activate \*
 
-    :param int \*error:
+    :param error:
         *undescribed*
+    :type error: int \*
 
 .. _`sev_guest_activate.return`:
 
@@ -1253,8 +1264,9 @@ sev_guest_df_flush
 
     perform SEV DF_FLUSH command
 
-    :param int \*error:
+    :param error:
         *undescribed*
+    :type error: int \*
 
 .. _`sev_guest_df_flush.return`:
 
@@ -1276,11 +1288,13 @@ sev_guest_decommission
 
     perform SEV DECOMMISSION command
 
-    :param struct sev_data_decommission \*data:
+    :param data:
         *undescribed*
+    :type data: struct sev_data_decommission \*
 
-    :param int \*error:
+    :param error:
         *undescribed*
+    :type error: int \*
 
 .. _`sev_guest_decommission.return`:
 

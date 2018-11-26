@@ -10,8 +10,9 @@ amdgpu_dm_irq_init
 
     Initialize internal structures of 'amdgpu_dm_irq'.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_dm_irq_init.description`:
 
@@ -37,8 +38,9 @@ amdgpu_dm_irq_fini
 
     deallocate internal structures of 'amdgpu_dm_irq'.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_dm_irq_fini.description`:
 
@@ -56,17 +58,20 @@ amdgpu_dm_irq_register_interrupt
 
     register irq handler for Display block.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         AMD DRM device
+    :type adev: struct amdgpu_device \*
 
-    :param struct dc_interrupt_params \*int_params:
+    :param int_params:
         parameters for the irq
+    :type int_params: struct dc_interrupt_params \*
 
     :param void (\*ih)(void \*):
         pointer to the irq hander function
 
-    :param void \*handler_args:
+    :param handler_args:
         arguments which will be passed to ih
+    :type handler_args: void \*
 
 .. _`amdgpu_dm_irq_register_interrupt.return`:
 
@@ -87,15 +92,18 @@ amdgpu_dm_irq_unregister_interrupt
 
     unregister handler which was registered by \ :c:func:`amdgpu_dm_irq_register_interrupt`\ .
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         AMD DRM device.
+    :type adev: struct amdgpu_device \*
 
-    :param enum dc_irq_source irq_source:
+    :param irq_source:
         *undescribed*
+    :type irq_source: enum dc_irq_source
 
-    :param void \*ih_index:
+    :param ih_index:
         irq handler index which was returned by
         amdgpu_dm_irq_register_interrupt
+    :type ih_index: void \*
 
 .. _`amdgpu_dm_irq_suspend`:
 
@@ -106,8 +114,9 @@ amdgpu_dm_irq_suspend
 
     disable ASIC interrupt during suspend.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_dm_irq_resume_early`:
 
@@ -118,8 +127,9 @@ amdgpu_dm_irq_resume_early
 
     enable HPDRX ASIC interrupts during resume. amdgpu_dm_irq_resume - enable ASIC interrupt during resume.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. This file was automatic generated / don't edit.
 

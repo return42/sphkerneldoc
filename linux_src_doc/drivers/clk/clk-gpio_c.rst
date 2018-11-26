@@ -32,20 +32,25 @@ clk_hw_register_gpio_gate
 
     register a gpio clock gate with the clock framework
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         name of this clock's parent
+    :type parent_name: const char \*
 
-    :param struct gpio_desc \*gpiod:
+    :param gpiod:
         gpio descriptor to gate this clock
+    :type gpiod: struct gpio_desc \*
 
-    :param unsigned long flags:
+    :param flags:
         clock flags
+    :type flags: unsigned long
 
 .. _`clk_hw_register_gpio_mux`:
 
@@ -56,23 +61,29 @@ clk_hw_register_gpio_mux
 
     register a gpio clock mux with the clock framework
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \* const \*parent_names:
+    :param parent_names:
         names of this clock's parents
+    :type parent_names: const char \* const \*
 
-    :param u8 num_parents:
+    :param num_parents:
         number of parents listed in \ ``parent_names``\ 
+    :type num_parents: u8
 
-    :param struct gpio_desc \*gpiod:
+    :param gpiod:
         gpio descriptor to gate this clock
+    :type gpiod: struct gpio_desc \*
 
-    :param unsigned long flags:
+    :param flags:
         clock flags
+    :type flags: unsigned long
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ ide_find_setting
 
     find a specific setting
 
-    :param const struct ide_proc_devset \*st:
+    :param st:
         setting table pointer
+    :type st: const struct ide_proc_devset \*
 
-    :param char \*name:
+    :param name:
         setting name
+    :type name: char \*
 
 .. _`ide_find_setting.description`:
 
@@ -34,11 +36,13 @@ ide_read_setting
 
     read an IDE setting
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to read from
+    :type drive: ide_drive_t \*
 
-    :param const struct ide_proc_devset \*setting:
+    :param setting:
         drive setting
+    :type setting: const struct ide_proc_devset \*
 
 .. _`ide_read_setting.description`:
 
@@ -66,14 +70,17 @@ ide_write_setting
 
     read an IDE setting
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to read from
+    :type drive: ide_drive_t \*
 
-    :param const struct ide_proc_devset \*setting:
+    :param setting:
         drive setting
+    :type setting: const struct ide_proc_devset \*
 
-    :param int val:
+    :param val:
         value
+    :type val: int
 
 .. _`ide_write_setting.description`:
 
@@ -110,11 +117,13 @@ ide_proc_unregister_driver
 
     remove driver specific data
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
-    :param struct ide_driver \*driver:
+    :param driver:
         driver
+    :type driver: struct ide_driver \*
 
 .. _`ide_proc_unregister_driver.description`:
 

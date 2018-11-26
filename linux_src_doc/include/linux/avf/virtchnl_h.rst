@@ -8,17 +8,21 @@ virtchnl_vc_validate_vf_msg
 
 .. c:function:: int virtchnl_vc_validate_vf_msg(struct virtchnl_version_info *ver, u32 v_opcode, u8 *msg, u16 msglen)
 
-    :param struct virtchnl_version_info \*ver:
+    :param ver:
         Virtchnl version info
+    :type ver: struct virtchnl_version_info \*
 
-    :param u32 v_opcode:
+    :param v_opcode:
         Opcode for the message
+    :type v_opcode: u32
 
-    :param u8 \*msg:
+    :param msg:
         pointer to the msg buffer
+    :type msg: u8 \*
 
-    :param u16 msglen:
+    :param msglen:
         msg length
+    :type msglen: u16
 
 .. _`virtchnl_vc_validate_vf_msg.description`:
 

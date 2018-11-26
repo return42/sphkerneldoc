@@ -10,26 +10,32 @@ codec_init
 
     Initialize a Reed-Solomon codec
 
-    :param int symsize:
+    :param symsize:
         symbol size, bits (1-8)
+    :type symsize: int
 
-    :param int gfpoly:
+    :param gfpoly:
         Field generator polynomial coefficients
+    :type gfpoly: int
 
     :param int (\*gffunc)(int):
         Field generator function
 
-    :param int fcr:
+    :param fcr:
         first root of RS code generator polynomial, index form
+    :type fcr: int
 
-    :param int prim:
+    :param prim:
         primitive element to generate polynomial roots
+    :type prim: int
 
-    :param int nroots:
+    :param nroots:
         RS code generator polynomial degree (number of roots)
+    :type nroots: int
 
-    :param gfp_t gfp:
+    :param gfp:
         GFP_ flags for allocations
+    :type gfp: gfp_t
 
 .. _`codec_init.description`:
 
@@ -48,9 +54,10 @@ free_rs
 
     Free the rs control structure
 
-    :param struct rs_control \*rs:
+    :param rs:
         The control structure which is not longer used by the
         caller
+    :type rs: struct rs_control \*
 
 .. _`free_rs.description`:
 
@@ -69,31 +76,37 @@ init_rs_internal
 
     Allocate rs control, find a matching codec or allocate a new one
 
-    :param int symsize:
+    :param symsize:
         the symbol size (number of bits)
+    :type symsize: int
 
-    :param int gfpoly:
+    :param gfpoly:
         the extended Galois field generator polynomial coefficients,
         with the 0th coefficient in the low order bit. The polynomial
         must be primitive;
+    :type gfpoly: int
 
     :param int (\*gffunc)(int):
         pointer to function to generate the next field element,
         or the multiplicative identity element if given 0.  Used
         instead of gfpoly if gfpoly is 0
 
-    :param int fcr:
+    :param fcr:
         the first consecutive root of the rs code generator polynomial
         in index form
+    :type fcr: int
 
-    :param int prim:
+    :param prim:
         primitive element to generate polynomial roots
+    :type prim: int
 
-    :param int nroots:
+    :param nroots:
         RS code generator polynomial degree (number of roots)
+    :type nroots: int
 
-    :param gfp_t gfp:
+    :param gfp:
         GFP_ flags for allocations
+    :type gfp: gfp_t
 
 .. _`init_rs_gfp`:
 
@@ -104,26 +117,32 @@ init_rs_gfp
 
     Create a RS control struct and initialize it
 
-    :param int symsize:
+    :param symsize:
         the symbol size (number of bits)
+    :type symsize: int
 
-    :param int gfpoly:
+    :param gfpoly:
         the extended Galois field generator polynomial coefficients,
         with the 0th coefficient in the low order bit. The polynomial
         must be primitive;
+    :type gfpoly: int
 
-    :param int fcr:
+    :param fcr:
         the first consecutive root of the rs code generator polynomial
         in index form
+    :type fcr: int
 
-    :param int prim:
+    :param prim:
         primitive element to generate polynomial roots
+    :type prim: int
 
-    :param int nroots:
+    :param nroots:
         RS code generator polynomial degree (number of roots)
+    :type nroots: int
 
-    :param gfp_t gfp:
-        GFP_ flags for allocations
+    :param gfp:
+        Memory allocation flags.
+    :type gfp: gfp_t
 
 .. _`init_rs_non_canonical`:
 
@@ -134,23 +153,27 @@ init_rs_non_canonical
 
     Allocate rs control struct for fields with non-canonical representation
 
-    :param int symsize:
+    :param symsize:
         the symbol size (number of bits)
+    :type symsize: int
 
     :param int (\*gffunc)(int):
         pointer to function to generate the next field element,
         or the multiplicative identity element if given 0.  Used
         instead of gfpoly if gfpoly is 0
 
-    :param int fcr:
+    :param fcr:
         the first consecutive root of the rs code generator polynomial
         in index form
+    :type fcr: int
 
-    :param int prim:
+    :param prim:
         primitive element to generate polynomial roots
+    :type prim: int
 
-    :param int nroots:
+    :param nroots:
         RS code generator polynomial degree (number of roots)
+    :type nroots: int
 
 .. _`encode_rs8`:
 
@@ -161,20 +184,25 @@ encode_rs8
 
     Calculate the parity for data values (8bit data width)
 
-    :param struct rs_control \*rsc:
+    :param rsc:
         the rs control structure
+    :type rsc: struct rs_control \*
 
-    :param uint8_t \*data:
+    :param data:
         data field of a given type
+    :type data: uint8_t \*
 
-    :param int len:
+    :param len:
         data length
+    :type len: int
 
-    :param uint16_t \*par:
+    :param par:
         parity data, must be initialized by caller (usually all 0)
+    :type par: uint16_t \*
 
-    :param uint16_t invmsk:
+    :param invmsk:
         invert data mask (will be xored on data)
+    :type invmsk: uint16_t
 
 .. _`encode_rs8.description`:
 
@@ -194,32 +222,41 @@ decode_rs8
 
     Decode codeword (8bit data width)
 
-    :param struct rs_control \*rsc:
+    :param rsc:
         the rs control structure
+    :type rsc: struct rs_control \*
 
-    :param uint8_t \*data:
+    :param data:
         data field of a given type
+    :type data: uint8_t \*
 
-    :param uint16_t \*par:
+    :param par:
         received parity data field
+    :type par: uint16_t \*
 
-    :param int len:
+    :param len:
         data length
+    :type len: int
 
-    :param uint16_t \*s:
+    :param s:
         syndrome data field (if NULL, syndrome is calculated)
+    :type s: uint16_t \*
 
-    :param int no_eras:
+    :param no_eras:
         number of erasures
+    :type no_eras: int
 
-    :param int \*eras_pos:
+    :param eras_pos:
         position of erasures, can be NULL
+    :type eras_pos: int \*
 
-    :param uint16_t invmsk:
+    :param invmsk:
         invert data mask (will be xored on data, not on parity!)
+    :type invmsk: uint16_t
 
-    :param uint16_t \*corr:
+    :param corr:
         buffer to store correction bitmask on eras_pos
+    :type corr: uint16_t \*
 
 .. _`decode_rs8.description`:
 
@@ -250,20 +287,25 @@ encode_rs16
 
     Calculate the parity for data values (16bit data width)
 
-    :param struct rs_control \*rsc:
+    :param rsc:
         the rs control structure
+    :type rsc: struct rs_control \*
 
-    :param uint16_t \*data:
+    :param data:
         data field of a given type
+    :type data: uint16_t \*
 
-    :param int len:
+    :param len:
         data length
+    :type len: int
 
-    :param uint16_t \*par:
+    :param par:
         parity data, must be initialized by caller (usually all 0)
+    :type par: uint16_t \*
 
-    :param uint16_t invmsk:
+    :param invmsk:
         invert data mask (will be xored on data, not on parity!)
+    :type invmsk: uint16_t
 
 .. _`encode_rs16.description`:
 
@@ -281,32 +323,41 @@ decode_rs16
 
     Decode codeword (16bit data width)
 
-    :param struct rs_control \*rsc:
+    :param rsc:
         the rs control structure
+    :type rsc: struct rs_control \*
 
-    :param uint16_t \*data:
+    :param data:
         data field of a given type
+    :type data: uint16_t \*
 
-    :param uint16_t \*par:
+    :param par:
         received parity data field
+    :type par: uint16_t \*
 
-    :param int len:
+    :param len:
         data length
+    :type len: int
 
-    :param uint16_t \*s:
+    :param s:
         syndrome data field (if NULL, syndrome is calculated)
+    :type s: uint16_t \*
 
-    :param int no_eras:
+    :param no_eras:
         number of erasures
+    :type no_eras: int
 
-    :param int \*eras_pos:
+    :param eras_pos:
         position of erasures, can be NULL
+    :type eras_pos: int \*
 
-    :param uint16_t invmsk:
+    :param invmsk:
         invert data mask (will be xored on data, not on parity!)
+    :type invmsk: uint16_t
 
-    :param uint16_t \*corr:
+    :param corr:
         buffer to store correction bitmask on eras_pos
+    :type corr: uint16_t \*
 
 .. _`decode_rs16.description`:
 

@@ -10,8 +10,9 @@ qla2x00_get_cmd_direction
 
     Determine control_flag data direction.
 
-    :param srb_t \*sp:
+    :param sp:
         SCSI command
+    :type sp: srb_t \*
 
 .. _`qla2x00_get_cmd_direction.description`:
 
@@ -29,8 +30,9 @@ qla2x00_calc_iocbs_32
 
     Determine number of Command Type 2 and Continuation Type 0 IOCBs to allocate.
 
-    :param uint16_t dsds:
+    :param dsds:
         number of data segment decriptors needed
+    :type dsds: uint16_t
 
 .. _`qla2x00_calc_iocbs_32.description`:
 
@@ -48,8 +50,9 @@ qla2x00_calc_iocbs_64
 
     Determine number of Command Type 3 and Continuation Type 1 IOCBs to allocate.
 
-    :param uint16_t dsds:
+    :param dsds:
         number of data segment decriptors needed
+    :type dsds: uint16_t
 
 .. _`qla2x00_calc_iocbs_64.description`:
 
@@ -67,8 +70,9 @@ qla2x00_prep_cont_type0_iocb
 
     Initialize a Continuation Type 0 IOCB.
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         HA context
+    :type vha: struct scsi_qla_host \*
 
 .. _`qla2x00_prep_cont_type0_iocb.description`:
 
@@ -86,11 +90,13 @@ qla2x00_prep_cont_type1_iocb
 
     Initialize a Continuation Type 1 IOCB.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param struct req_que \*req:
+    :param req:
         request queue
+    :type req: struct req_que \*
 
 .. _`qla2x00_prep_cont_type1_iocb.description`:
 
@@ -108,14 +114,17 @@ qla2x00_build_scsi_iocbs_64
 
     Build IOCB command utilizing 64bit capable IOCB types.
 
-    :param srb_t \*sp:
+    :param sp:
         SRB command to process
+    :type sp: srb_t \*
 
-    :param cmd_entry_t \*cmd_pkt:
+    :param cmd_pkt:
         Command type 3 IOCB
+    :type cmd_pkt: cmd_entry_t \*
 
-    :param uint16_t tot_dsds:
+    :param tot_dsds:
         Total number of segments to transfer
+    :type tot_dsds: uint16_t
 
 .. _`qla2x00_start_scsi`:
 
@@ -126,8 +135,9 @@ qla2x00_start_scsi
 
     Send a SCSI command to the ISP
 
-    :param srb_t \*sp:
+    :param sp:
         command to send to the ISP
+    :type sp: srb_t \*
 
 .. _`qla2x00_start_scsi.description`:
 
@@ -145,11 +155,13 @@ qla2x00_start_iocbs
 
     Execute the IOCB command
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         HA context
+    :type vha: struct scsi_qla_host \*
 
-    :param struct req_que \*req:
+    :param req:
         request queue
+    :type req: struct req_que \*
 
 .. _`__qla2x00_marker`:
 
@@ -160,23 +172,29 @@ qla2x00_start_iocbs
 
     Send a marker IOCB to the firmware.
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         HA context
+    :type vha: struct scsi_qla_host \*
 
-    :param struct req_que \*req:
+    :param req:
         request queue
+    :type req: struct req_que \*
 
-    :param struct rsp_que \*rsp:
+    :param rsp:
         response queue
+    :type rsp: struct rsp_que \*
 
-    :param uint16_t loop_id:
+    :param loop_id:
         loop ID
+    :type loop_id: uint16_t
 
-    :param uint64_t lun:
+    :param lun:
         LUN
+    :type lun: uint64_t
 
-    :param uint8_t type:
+    :param type:
         marker modifier
+    :type type: uint8_t
 
 .. _`__qla2x00_marker.description`:
 
@@ -196,17 +214,21 @@ qla24xx_build_scsi_iocbs
 
     Build IOCB command utilizing Command Type 7 IOCB types.
 
-    :param srb_t \*sp:
+    :param sp:
         SRB command to process
+    :type sp: srb_t \*
 
-    :param struct cmd_type_7 \*cmd_pkt:
+    :param cmd_pkt:
         Command type 3 IOCB
+    :type cmd_pkt: struct cmd_type_7 \*
 
-    :param uint16_t tot_dsds:
+    :param tot_dsds:
         Total number of segments to transfer
+    :type tot_dsds: uint16_t
 
-    :param struct req_que \*req:
+    :param req:
         pointer to request queue
+    :type req: struct req_que \*
 
 .. _`qla24xx_build_scsi_crc_2_iocbs`:
 
@@ -217,20 +239,25 @@ qla24xx_build_scsi_crc_2_iocbs
 
     Build IOCB command utilizing Command Type 6 IOCB types.
 
-    :param srb_t \*sp:
+    :param sp:
         SRB command to process
+    :type sp: srb_t \*
 
-    :param struct cmd_type_crc_2 \*cmd_pkt:
+    :param cmd_pkt:
         Command type 3 IOCB
+    :type cmd_pkt: struct cmd_type_crc_2 \*
 
-    :param uint16_t tot_dsds:
+    :param tot_dsds:
         Total number of segments to transfer
+    :type tot_dsds: uint16_t
 
-    :param uint16_t tot_prot_dsds:
-        *undescribed*
+    :param tot_prot_dsds:
+        Total number of segments with protection information
+    :type tot_prot_dsds: uint16_t
 
-    :param uint16_t fw_prot_opts:
-        *undescribed*
+    :param fw_prot_opts:
+        Protection options to be passed to firmware
+    :type fw_prot_opts: uint16_t
 
 .. _`qla24xx_start_scsi`:
 
@@ -241,8 +268,9 @@ qla24xx_start_scsi
 
     Send a SCSI command to the ISP
 
-    :param srb_t \*sp:
+    :param sp:
         command to send to the ISP
+    :type sp: srb_t \*
 
 .. _`qla24xx_start_scsi.description`:
 
@@ -260,8 +288,9 @@ qla24xx_dif_start_scsi
 
     Send a SCSI command to the ISP
 
-    :param srb_t \*sp:
+    :param sp:
         command to send to the ISP
+    :type sp: srb_t \*
 
 .. _`qla24xx_dif_start_scsi.description`:
 
@@ -279,8 +308,9 @@ qla2xxx_start_scsi_mq
 
     Send a SCSI command to the ISP
 
-    :param srb_t \*sp:
+    :param sp:
         command to send to the ISP
+    :type sp: srb_t \*
 
 .. _`qla2xxx_start_scsi_mq.description`:
 
@@ -298,8 +328,9 @@ qla2xxx_dif_start_scsi_mq
 
     Send a SCSI command to the ISP
 
-    :param srb_t \*sp:
+    :param sp:
         command to send to the ISP
+    :type sp: srb_t \*
 
 .. _`qla2xxx_dif_start_scsi_mq.description`:
 

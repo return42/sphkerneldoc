@@ -10,8 +10,9 @@ voltdm_get_voltage
 
     Gets the current non-auto-compensated voltage
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         pointer to the voltdm for which current voltage info is needed
+    :type voltdm: struct voltagedomain \*
 
 .. _`voltdm_get_voltage.description`:
 
@@ -30,11 +31,13 @@ voltdm_scale
 
     API to scale voltage of a particular voltage domain.
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         pointer to the voltage domain which is to be scaled.
+    :type voltdm: struct voltagedomain \*
 
-    :param unsigned long target_volt:
+    :param target_volt:
         The target voltage of the voltage domain
+    :type target_volt: unsigned long
 
 .. _`voltdm_scale.description`:
 
@@ -53,8 +56,9 @@ voltdm_reset
 
     Resets the voltage of a particular voltage domain to that of the current OPP.
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         pointer to the voltage domain whose voltage is to be reset.
+    :type voltdm: struct voltagedomain \*
 
 .. _`voltdm_reset.description`:
 
@@ -74,12 +78,14 @@ omap_voltage_get_volttable
 
     API to get the voltage table associated with a particular voltage domain.
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         pointer to the VDD for which the voltage table is required
+    :type voltdm: struct voltagedomain \*
 
-    :param struct omap_volt_data \*\*volt_data:
+    :param volt_data:
         the voltage table for the particular vdd which is to be
         populated by this API
+    :type volt_data: struct omap_volt_data \*\*
 
 .. _`omap_voltage_get_volttable.description`:
 
@@ -99,11 +105,13 @@ omap_voltage_get_voltdata
 
     API to get the voltage table entry for a particular voltage
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         pointer to the VDD whose voltage table has to be searched
+    :type voltdm: struct voltagedomain \*
 
-    :param unsigned long volt:
+    :param volt:
         the voltage to be searched in the voltage table
+    :type volt: unsigned long
 
 .. _`omap_voltage_get_voltdata.description`:
 
@@ -128,12 +136,14 @@ omap_voltage_register_pmic
 
     API to register PMIC specific data
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         pointer to the VDD for which the PMIC specific data is
         to be registered
+    :type voltdm: struct voltagedomain \*
 
-    :param struct omap_voltdm_pmic \*pmic:
+    :param pmic:
         the structure containing pmic info
+    :type pmic: struct omap_voltdm_pmic \*
 
 .. _`omap_voltage_register_pmic.description`:
 
@@ -152,8 +162,9 @@ omap_voltage_late_init
 
     Init the various voltage parameters
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_voltage_late_init.description`:
 
@@ -173,8 +184,9 @@ voltdm_lookup
 
     look up a voltagedomain by name, return a pointer
 
-    :param const char \*name:
+    :param name:
         name of voltagedomain
+    :type name: const char \*
 
 .. _`voltdm_lookup.description`:
 
@@ -193,8 +205,9 @@ voltdm_init
 
     set up the voltagedomain layer
 
-    :param struct voltagedomain \*\*voltdms:
+    :param voltdms:
         *undescribed*
+    :type voltdms: struct voltagedomain \*\*
 
 .. _`voltdm_init.description`:
 

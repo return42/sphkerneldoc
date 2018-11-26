@@ -10,8 +10,9 @@ amdgpu_gart_dummy_page_init
 
     init dummy page used by the driver
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_gart_dummy_page_init.description`:
 
@@ -32,8 +33,9 @@ amdgpu_gart_dummy_page_fini
 
     free dummy page used by the driver
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_gart_dummy_page_fini.description`:
 
@@ -51,8 +53,9 @@ amdgpu_gart_table_vram_alloc
 
     allocate vram for gart page table
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_gart_table_vram_alloc.description`:
 
@@ -73,8 +76,9 @@ amdgpu_gart_table_vram_pin
 
     pin gart page table in vram
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_gart_table_vram_pin.description`:
 
@@ -95,8 +99,9 @@ amdgpu_gart_table_vram_unpin
 
     unpin gart page table in vram
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_gart_table_vram_unpin.description`:
 
@@ -115,8 +120,9 @@ amdgpu_gart_table_vram_free
 
     free gart page table vram
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_gart_table_vram_free.description`:
 
@@ -136,14 +142,17 @@ amdgpu_gart_unbind
 
     unbind pages from the gart page table
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint64_t offset:
+    :param offset:
         offset into the GPU's gart aperture
+    :type offset: uint64_t
 
-    :param int pages:
+    :param pages:
         number of pages to unbind
+    :type pages: int
 
 .. _`amdgpu_gart_unbind.description`:
 
@@ -163,23 +172,29 @@ amdgpu_gart_map
 
     map dma_addresses into GART entries
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint64_t offset:
+    :param offset:
         offset into the GPU's gart aperture
+    :type offset: uint64_t
 
-    :param int pages:
+    :param pages:
         number of pages to bind
+    :type pages: int
 
-    :param dma_addr_t \*dma_addr:
+    :param dma_addr:
         DMA addresses of pages
+    :type dma_addr: dma_addr_t \*
 
-    :param uint64_t flags:
+    :param flags:
         *undescribed*
+    :type flags: uint64_t
 
-    :param void \*dst:
+    :param dst:
         *undescribed*
+    :type dst: void \*
 
 .. _`amdgpu_gart_map.description`:
 
@@ -198,23 +213,29 @@ amdgpu_gart_bind
 
     bind pages into the gart page table
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint64_t offset:
+    :param offset:
         offset into the GPU's gart aperture
+    :type offset: uint64_t
 
-    :param int pages:
+    :param pages:
         number of pages to bind
+    :type pages: int
 
-    :param struct page \*\*pagelist:
+    :param pagelist:
         pages to bind
+    :type pagelist: struct page \*\*
 
-    :param dma_addr_t \*dma_addr:
+    :param dma_addr:
         DMA addresses of pages
+    :type dma_addr: dma_addr_t \*
 
-    :param uint64_t flags:
+    :param flags:
         *undescribed*
+    :type flags: uint64_t
 
 .. _`amdgpu_gart_bind.description`:
 
@@ -234,8 +255,9 @@ amdgpu_gart_init
 
     init the driver info for managing the gart
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_gart_init.description`:
 
@@ -254,8 +276,9 @@ amdgpu_gart_fini
 
     tear down the driver info for managing the gart
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_gart_fini.description`:
 

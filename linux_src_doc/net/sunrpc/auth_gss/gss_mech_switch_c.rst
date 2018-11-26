@@ -10,8 +10,9 @@ gss_mech_register
 
     register a GSS mechanism
 
-    :param struct gss_api_mech \*gm:
+    :param gm:
         GSS mechanism handle
+    :type gm: struct gss_api_mech \*
 
 .. _`gss_mech_register.description`:
 
@@ -29,8 +30,9 @@ gss_mech_unregister
 
     release a GSS mechanism
 
-    :param struct gss_api_mech \*gm:
+    :param gm:
         GSS mechanism handle
+    :type gm: struct gss_api_mech \*
 
 .. _`gss_mech_list_pseudoflavors`:
 
@@ -41,11 +43,13 @@ gss_mech_list_pseudoflavors
 
     Discover registered GSS pseudoflavors
 
-    :param rpc_authflavor_t \*array_ptr:
+    :param array_ptr:
         *undescribed*
+    :type array_ptr: rpc_authflavor_t \*
 
-    :param int size:
+    :param size:
         size of "array"
+    :type size: int
 
 .. _`gss_mech_list_pseudoflavors.description`:
 
@@ -66,14 +70,17 @@ gss_svc_to_pseudoflavor
 
     map a GSS service number to a pseudoflavor
 
-    :param struct gss_api_mech \*gm:
+    :param gm:
         GSS mechanism handle
+    :type gm: struct gss_api_mech \*
 
-    :param u32 qop:
+    :param qop:
         GSS quality-of-protection value
+    :type qop: u32
 
-    :param u32 service:
+    :param service:
         GSS service value
+    :type service: u32
 
 .. _`gss_svc_to_pseudoflavor.description`:
 
@@ -91,8 +98,9 @@ gss_mech_info2flavor
 
     look up a pseudoflavor given a GSS tuple
 
-    :param struct rpcsec_gss_info \*info:
+    :param info:
         a GSS mech OID, quality of protection, and service value
+    :type info: struct rpcsec_gss_info \*
 
 .. _`gss_mech_info2flavor.description`:
 
@@ -111,11 +119,13 @@ gss_mech_flavor2info
 
     look up a GSS tuple for a given pseudoflavor
 
-    :param rpc_authflavor_t pseudoflavor:
+    :param pseudoflavor:
         GSS pseudoflavor to match
+    :type pseudoflavor: rpc_authflavor_t
 
-    :param struct rpcsec_gss_info \*info:
+    :param info:
         rpcsec_gss_info structure to fill in
+    :type info: struct rpcsec_gss_info \*
 
 .. _`gss_mech_flavor2info.description`:
 

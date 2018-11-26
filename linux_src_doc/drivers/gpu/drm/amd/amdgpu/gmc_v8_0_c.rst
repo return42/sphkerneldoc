@@ -10,8 +10,9 @@ gmc_v8_0_init_microcode
 
     load ucode images from disk
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gmc_v8_0_init_microcode.description`:
 
@@ -31,8 +32,9 @@ gmc_v8_0_tonga_mc_load_microcode
 
     load tonga MC ucode into the hw
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gmc_v8_0_tonga_mc_load_microcode.description`:
 
@@ -51,8 +53,9 @@ gmc_v8_0_mc_program
 
     program the GPU memory controller
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gmc_v8_0_mc_program.description`:
 
@@ -71,8 +74,9 @@ gmc_v8_0_mc_init
 
     initialize the memory controller driver params
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gmc_v8_0_mc_init.description`:
 
@@ -92,11 +96,13 @@ gmc_v8_0_flush_gpu_tlb
 
     gart tlb flush callback
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t vmid:
+    :param vmid:
         vm instance to flush
+    :type vmid: uint32_t
 
 .. _`gmc_v8_0_flush_gpu_tlb.description`:
 
@@ -114,20 +120,25 @@ gmc_v8_0_set_pte_pde
 
     update the page tables using MMIO
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param void \*cpu_pt_addr:
+    :param cpu_pt_addr:
         cpu address of the page table
+    :type cpu_pt_addr: void \*
 
-    :param uint32_t gpu_page_idx:
+    :param gpu_page_idx:
         entry in the page table to update
+    :type gpu_page_idx: uint32_t
 
-    :param uint64_t addr:
+    :param addr:
         dst addr to write into pte/pde
+    :type addr: uint64_t
 
-    :param uint64_t flags:
+    :param flags:
         access flags
+    :type flags: uint64_t
 
 .. _`gmc_v8_0_set_pte_pde.description`:
 
@@ -145,11 +156,13 @@ gmc_v8_0_set_fault_enable_default
 
     update VM fault handling
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param bool value:
+    :param value:
         true redirects VM faults to the default page
+    :type value: bool
 
 .. _`gmc_v8_0_set_prt`:
 
@@ -160,11 +173,13 @@ gmc_v8_0_set_prt
 
     set PRT VM fault
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param bool enable:
+    :param enable:
         enable/disable VM fault handling for PRT
+    :type enable: bool
 
 .. _`gmc_v8_0_gart_enable`:
 
@@ -175,8 +190,9 @@ gmc_v8_0_gart_enable
 
     gart enable
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gmc_v8_0_gart_enable.description`:
 
@@ -198,8 +214,9 @@ gmc_v8_0_gart_disable
 
     gart disable
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gmc_v8_0_gart_disable.description`:
 
@@ -207,25 +224,6 @@ Description
 -----------
 
 This disables all VM page table (CIK).
-
-.. _`gmc_v8_0_gart_fini`:
-
-gmc_v8_0_gart_fini
-==================
-
-.. c:function:: void gmc_v8_0_gart_fini(struct amdgpu_device *adev)
-
-    vm fini callback
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`gmc_v8_0_gart_fini.description`:
-
-Description
------------
-
-Tears down the driver GART/VM setup (CIK).
 
 .. _`gmc_v8_0_vm_decode_fault`:
 
@@ -236,20 +234,25 @@ gmc_v8_0_vm_decode_fault
 
     print human readable fault info
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 status:
+    :param status:
         VM_CONTEXT1_PROTECTION_FAULT_STATUS register value
+    :type status: u32
 
-    :param u32 addr:
+    :param addr:
         VM_CONTEXT1_PROTECTION_FAULT_ADDR register value
+    :type addr: u32
 
-    :param u32 mc_client:
+    :param mc_client:
         *undescribed*
+    :type mc_client: u32
 
-    :param unsigned pasid:
+    :param pasid:
         *undescribed*
+    :type pasid: unsigned
 
 .. _`gmc_v8_0_vm_decode_fault.description`:
 

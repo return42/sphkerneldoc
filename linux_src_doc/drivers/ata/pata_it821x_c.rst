@@ -10,14 +10,17 @@ it821x_program
 
     program the PIO/MWDMA registers
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device to program
+    :type adev: struct ata_device \*
 
-    :param u16 timing:
+    :param timing:
         Timing value (66Mhz in top 8bits, 50 in the low 8)
+    :type timing: u16
 
 .. _`it821x_program.description`:
 
@@ -37,14 +40,17 @@ it821x_program_udma
 
     program the UDMA registers
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device to update
+    :type adev: struct ata_device \*
 
-    :param u16 timing:
+    :param timing:
         Timing bits. Top 8 are for 66Mhz bottom for 50Mhz
+    :type timing: u16
 
 .. _`it821x_program_udma.description`:
 
@@ -63,11 +69,13 @@ it821x_clock_strategy
 
 .. c:function:: void it821x_clock_strategy(struct ata_port *ap, struct ata_device *adev)
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device being updated
+    :type adev: struct ata_device \*
 
 .. _`it821x_clock_strategy.description`:
 
@@ -86,11 +94,13 @@ it821x_passthru_set_piomode
 
     set PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`it821x_passthru_set_piomode.description`:
 
@@ -109,11 +119,13 @@ it821x_passthru_set_dmamode
 
     set initial DMA mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`it821x_passthru_set_dmamode.description`:
 
@@ -135,8 +147,9 @@ it821x_passthru_bmdma_start
 
     DMA start callback
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command in progress
+    :type qc: struct ata_queued_cmd \*
 
 .. _`it821x_passthru_bmdma_start.description`:
 
@@ -156,8 +169,9 @@ it821x_passthru_bmdma_stop
 
     DMA stop callback
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`it821x_passthru_bmdma_stop.description`:
 
@@ -177,11 +191,13 @@ it821x_passthru_dev_select
 
     Select master/slave
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param unsigned int device:
+    :param device:
         Device number (not pointer)
+    :type device: unsigned int
 
 .. _`it821x_passthru_dev_select.description`:
 
@@ -199,8 +215,9 @@ it821x_smart_qc_issue
 
     wrap qc issue prot
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`it821x_smart_qc_issue.description`:
 
@@ -220,8 +237,9 @@ it821x_passthru_qc_issue
 
     wrap qc issue prot
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`it821x_passthru_qc_issue.description`:
 
@@ -241,11 +259,13 @@ it821x_smart_set_mode
 
     mode setting
 
-    :param struct ata_link \*link:
+    :param link:
         interface to set up
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*unused:
+    :param unused:
         device that failed (error only)
+    :type unused: struct ata_device \*\*
 
 .. _`it821x_smart_set_mode.description`:
 
@@ -266,8 +286,9 @@ it821x_dev_config
 
     Called each device identify
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device that has just been identified
+    :type adev: struct ata_device \*
 
 .. _`it821x_dev_config.description`:
 
@@ -287,14 +308,17 @@ it821x_read_id
 
     Hack identify data up
 
-    :param struct ata_device \*adev:
+    :param adev:
         device to read
+    :type adev: struct ata_device \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         proposed taskfile
+    :type tf: struct ata_taskfile \*
 
-    :param u16 \*id:
+    :param id:
         buffer for returned ident data
+    :type id: u16 \*
 
 .. _`it821x_read_id.description`:
 
@@ -315,8 +339,9 @@ it821x_check_atapi_dma
 
     ATAPI DMA handler
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command we are about to issue
+    :type qc: struct ata_queued_cmd \*
 
 .. _`it821x_check_atapi_dma.description`:
 
@@ -335,11 +360,13 @@ it821x_display_disk
 
     display disk setup
 
-    :param int n:
+    :param n:
         Device number
+    :type n: int
 
-    :param u8 \*buf:
+    :param buf:
         Buffer block from firmware
+    :type buf: u8 \*
 
 .. _`it821x_display_disk.description`:
 
@@ -358,14 +385,17 @@ it821x_firmware_command
 
     issue firmware command
 
-    :param struct ata_port \*ap:
+    :param ap:
         IT821x port to interrogate
+    :type ap: struct ata_port \*
 
-    :param u8 cmd:
+    :param cmd:
         command
+    :type cmd: u8
 
-    :param int len:
+    :param len:
         length
+    :type len: int
 
 .. _`it821x_firmware_command.description`:
 
@@ -385,8 +415,9 @@ it821x_probe_firmware
 
     firmware reporting/setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         IT821x port being probed
+    :type ap: struct ata_port \*
 
 .. _`it821x_probe_firmware.description`:
 
@@ -405,8 +436,9 @@ it821x_port_start
 
     port setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port being set up
+    :type ap: struct ata_port \*
 
 .. _`it821x_port_start.description`:
 
@@ -427,8 +459,9 @@ it821x_rdc_cable
 
     Cable detect for RDC1010
 
-    :param struct ata_port \*ap:
+    :param ap:
         port we are checking
+    :type ap: struct ata_port \*
 
 .. _`it821x_rdc_cable.description`:
 

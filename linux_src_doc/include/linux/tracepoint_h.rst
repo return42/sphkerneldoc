@@ -10,8 +10,9 @@ tracepoint_string
 
     register constant persistent string to trace system \ ``str``\  - a constant persistent string that will be referenced in tracepoints
 
-    :param  str:
+    :param str:
         *undescribed*
+    :type str: 
 
 .. _`tracepoint_string.description`:
 

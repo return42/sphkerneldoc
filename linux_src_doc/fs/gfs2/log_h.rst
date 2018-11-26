@@ -10,8 +10,9 @@ gfs2_log_lock
 
     acquire the right to mess with the log manager
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_log_unlock`:
 
@@ -22,8 +23,9 @@ gfs2_log_unlock
 
     release the right to mess with the log manager
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
 .. This file was automatic generated / don't edit.
 

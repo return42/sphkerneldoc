@@ -10,14 +10,17 @@ nwl_pcie_map_bus
 
     Get configuration base
 
-    :param struct pci_bus \*bus:
+    :param bus:
         Bus structure of current bus
+    :type bus: struct pci_bus \*
 
-    :param unsigned int devfn:
+    :param devfn:
         Device/function
+    :type devfn: unsigned int
 
-    :param int where:
+    :param where:
         Offset from base
+    :type where: int
 
 .. _`nwl_pcie_map_bus.return`:
 

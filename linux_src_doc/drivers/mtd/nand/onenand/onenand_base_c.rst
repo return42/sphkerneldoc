@@ -10,14 +10,17 @@ onenand_ooblayout_32_64_ecc
 
     oob info for large (2KB) page
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int section:
+    :param section:
         *undescribed*
+    :type section: int
 
-    :param struct mtd_oob_region \*oobregion:
+    :param oobregion:
         *undescribed*
+    :type oobregion: struct mtd_oob_region \*
 
 .. _`onenand_readw`:
 
@@ -28,8 +31,9 @@ onenand_readw
 
     [OneNAND Interface] Read OneNAND register \ ``param``\  addr          address to read
 
-    :param void __iomem \*addr:
+    :param addr:
         *undescribed*
+    :type addr: void __iomem \*
 
 .. _`onenand_readw.description`:
 
@@ -47,11 +51,13 @@ onenand_writew
 
     [OneNAND Interface] Write OneNAND register with value \ ``param``\  value         value to write \ ``param``\  addr          address to write
 
-    :param unsigned short value:
+    :param value:
         *undescribed*
+    :type value: unsigned short
 
-    :param void __iomem \*addr:
+    :param addr:
         *undescribed*
+    :type addr: void __iomem \*
 
 .. _`onenand_writew.description`:
 
@@ -69,11 +75,13 @@ onenand_block_address
 
     [DEFAULT] Get block address \ ``param``\  this          onenand chip data structure \ ``param``\  block         the block \ ``return``\               translated block address if DDP, otherwise same
 
-    :param struct onenand_chip \*this:
+    :param this:
         *undescribed*
+    :type this: struct onenand_chip \*
 
-    :param int block:
+    :param block:
         *undescribed*
+    :type block: int
 
 .. _`onenand_block_address.description`:
 
@@ -91,11 +99,13 @@ onenand_bufferram_address
 
     [DEFAULT] Get bufferram address \ ``param``\  this          onenand chip data structure \ ``param``\  block         the block \ ``return``\               set DBS value if DDP, otherwise 0
 
-    :param struct onenand_chip \*this:
+    :param this:
         *undescribed*
+    :type this: struct onenand_chip \*
 
-    :param int block:
+    :param block:
         *undescribed*
+    :type block: int
 
 .. _`onenand_bufferram_address.description`:
 
@@ -113,11 +123,13 @@ onenand_page_address
 
     [DEFAULT] Get page address \ ``param``\  page          the page address \ ``param``\  sector        the sector address \ ``return``\               combined page and sector address
 
-    :param int page:
+    :param page:
         *undescribed*
+    :type page: int
 
-    :param int sector:
+    :param sector:
         *undescribed*
+    :type sector: int
 
 .. _`onenand_page_address.description`:
 
@@ -135,14 +147,17 @@ onenand_buffer_address
 
     [DEFAULT] Get buffer address \ ``param``\  dataram1      DataRAM index \ ``param``\  sectors       the sector address \ ``param``\  count         the number of sectors \ ``return``\               the start buffer value
 
-    :param int dataram1:
+    :param dataram1:
         *undescribed*
+    :type dataram1: int
 
-    :param int sectors:
+    :param sectors:
         *undescribed*
+    :type sectors: int
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
 .. _`onenand_buffer_address.description`:
 
@@ -160,11 +175,13 @@ flexonenand_block
 
     For given address return block number \ ``param``\  this         - OneNAND device structure \ ``param``\  addr          - Address for which block number is needed
 
-    :param struct onenand_chip \*this:
+    :param this:
         *undescribed*
+    :type this: struct onenand_chip \*
 
-    :param loff_t addr:
+    :param addr:
         *undescribed*
+    :type addr: loff_t
 
 .. _`flexonenand_addr`:
 
@@ -175,11 +192,13 @@ flexonenand_addr
 
     Return address of the block
 
-    :param struct onenand_chip \*this:
+    :param this:
         OneNAND device structure
+    :type this: struct onenand_chip \*
 
-    :param int block:
+    :param block:
         Block number on Flex-OneNAND
+    :type block: int
 
 .. _`flexonenand_addr.description`:
 
@@ -197,8 +216,9 @@ onenand_get_density
 
     [DEFAULT] Get OneNAND density \ ``param``\  dev_id        OneNAND device ID
 
-    :param int dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: int
 
 .. _`onenand_get_density.description`:
 
@@ -216,11 +236,13 @@ flexonenand_region
 
     [Flex-OneNAND] Return erase region of addr \ ``param``\  mtd           MTD device structure \ ``param``\  addr          address whose erase region needs to be identified
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t addr:
+    :param addr:
         *undescribed*
+    :type addr: loff_t
 
 .. _`onenand_command`:
 
@@ -231,17 +253,21 @@ onenand_command
 
     [DEFAULT] Send command to OneNAND device \ ``param``\  mtd           MTD device structure \ ``param``\  cmd           the command to be sent \ ``param``\  addr          offset to read from or write to \ ``param``\  len           number of bytes to read or write
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
-    :param loff_t addr:
+    :param addr:
         *undescribed*
+    :type addr: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`onenand_command.description`:
 
@@ -260,8 +286,9 @@ onenand_read_ecc
 
     return ecc status \ ``param``\  this          onenand chip structure
 
-    :param struct onenand_chip \*this:
+    :param this:
         *undescribed*
+    :type this: struct onenand_chip \*
 
 .. _`onenand_wait`:
 
@@ -272,11 +299,13 @@ onenand_wait
 
     [DEFAULT] wait until the command is done \ ``param``\  mtd           MTD device structure \ ``param``\  state         state to select the max. timeout value
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int state:
+    :param state:
         *undescribed*
+    :type state: int
 
 .. _`onenand_wait.description`:
 
@@ -296,11 +325,13 @@ onenand_bufferram_offset
 
     [DEFAULT] BufferRAM offset \ ``param``\  mtd           MTD data structure \ ``param``\  area          BufferRAM area \ ``return``\               offset given area
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int area:
+    :param area:
         *undescribed*
+    :type area: int
 
 .. _`onenand_bufferram_offset.description`:
 
@@ -318,20 +349,25 @@ onenand_read_bufferram
 
     [OneNAND Interface] Read the bufferram area \ ``param``\  mtd           MTD data structure \ ``param``\  area          BufferRAM area \ ``param``\  buffer        the databuffer to put/get data \ ``param``\  offset        offset to read from or write to \ ``param``\  count         number of bytes to read/write
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int area:
+    :param area:
         *undescribed*
+    :type area: int
 
-    :param unsigned char \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: unsigned char \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`onenand_read_bufferram.description`:
 
@@ -349,20 +385,25 @@ onenand_sync_read_bufferram
 
     [OneNAND Interface] Read the bufferram area with Sync. Burst mode \ ``param``\  mtd           MTD data structure \ ``param``\  area          BufferRAM area \ ``param``\  buffer        the databuffer to put/get data \ ``param``\  offset        offset to read from or write to \ ``param``\  count         number of bytes to read/write
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int area:
+    :param area:
         *undescribed*
+    :type area: int
 
-    :param unsigned char \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: unsigned char \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`onenand_sync_read_bufferram.description`:
 
@@ -380,20 +421,25 @@ onenand_write_bufferram
 
     [OneNAND Interface] Write the bufferram area \ ``param``\  mtd           MTD data structure \ ``param``\  area          BufferRAM area \ ``param``\  buffer        the databuffer to put/get data \ ``param``\  offset        offset to read from or write to \ ``param``\  count         number of bytes to read/write
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int area:
+    :param area:
         *undescribed*
+    :type area: int
 
-    :param const unsigned char \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: const unsigned char \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`onenand_write_bufferram.description`:
 
@@ -411,11 +457,13 @@ onenand_get_2x_blockpage
 
     [GENERIC] Get blockpage at 2x program mode \ ``param``\  mtd           MTD data structure \ ``param``\  addr          address to check \ ``return``\               blockpage address
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t addr:
+    :param addr:
         *undescribed*
+    :type addr: loff_t
 
 .. _`onenand_get_2x_blockpage.description`:
 
@@ -433,11 +481,13 @@ onenand_check_bufferram
 
     [GENERIC] Check BufferRAM information \ ``param``\  mtd           MTD data structure \ ``param``\  addr          address to check \ ``return``\               1 if there are valid data, otherwise 0
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t addr:
+    :param addr:
         *undescribed*
+    :type addr: loff_t
 
 .. _`onenand_check_bufferram.description`:
 
@@ -455,14 +505,17 @@ onenand_update_bufferram
 
     [GENERIC] Update BufferRAM information \ ``param``\  mtd           MTD data structure \ ``param``\  addr          address to update \ ``param``\  valid         valid flag
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t addr:
+    :param addr:
         *undescribed*
+    :type addr: loff_t
 
-    :param int valid:
+    :param valid:
         *undescribed*
+    :type valid: int
 
 .. _`onenand_update_bufferram.description`:
 
@@ -480,14 +533,17 @@ onenand_invalidate_bufferram
 
     [GENERIC] Invalidate BufferRAM information \ ``param``\  mtd           MTD data structure \ ``param``\  addr          start address to invalidate \ ``param``\  len           length to invalidate
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t addr:
+    :param addr:
         *undescribed*
+    :type addr: loff_t
 
-    :param unsigned int len:
+    :param len:
         *undescribed*
+    :type len: unsigned int
 
 .. _`onenand_invalidate_bufferram.description`:
 
@@ -505,11 +561,13 @@ onenand_get_device
 
     [GENERIC] Get chip for selected access \ ``param``\  mtd           MTD device structure \ ``param``\  new_state     the state which is requested
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int new_state:
+    :param new_state:
         *undescribed*
+    :type new_state: int
 
 .. _`onenand_get_device.description`:
 
@@ -527,8 +585,9 @@ onenand_release_device
 
     [GENERIC] release chip \ ``param``\  mtd           MTD device structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`onenand_release_device.description`:
 
@@ -546,17 +605,21 @@ onenand_transfer_auto_oob
 
     [INTERN] oob auto-placement transfer \ ``param``\  mtd           MTD device structure \ ``param``\  buf           destination address \ ``param``\  column        oob offset to read from \ ``param``\  thislen       oob length to read
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         *undescribed*
+    :type buf: uint8_t \*
 
-    :param int column:
+    :param column:
         *undescribed*
+    :type column: int
 
-    :param int thislen:
+    :param thislen:
         *undescribed*
+    :type thislen: int
 
 .. _`onenand_recover_lsb`:
 
@@ -567,14 +630,17 @@ onenand_recover_lsb
 
     [Flex-OneNAND] Recover LSB page data \ ``param``\  mtd           MTD device structure \ ``param``\  addr          address to recover \ ``param``\  status        return value from onenand_wait / onenand_bbt_wait
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t addr:
+    :param addr:
         *undescribed*
+    :type addr: loff_t
 
-    :param int status:
+    :param status:
         *undescribed*
+    :type status: int
 
 .. _`onenand_recover_lsb.description`:
 
@@ -597,14 +663,17 @@ onenand_mlc_read_ops_nolock
 
     MLC OneNAND read main and/or out-of-band \ ``param``\  mtd           MTD device structure \ ``param``\  from          offset to read from
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct mtd_oob_ops \*
 
 .. _`onenand_mlc_read_ops_nolock.description`:
 
@@ -623,14 +692,17 @@ onenand_read_ops_nolock
 
     [OneNAND Interface] OneNAND read main and/or out-of-band \ ``param``\  mtd           MTD device structure \ ``param``\  from          offset to read from
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct mtd_oob_ops \*
 
 .. _`onenand_read_ops_nolock.description`:
 
@@ -648,14 +720,17 @@ onenand_read_oob_nolock
 
     [MTD Interface] OneNAND read out-of-band \ ``param``\  mtd           MTD device structure \ ``param``\  from          offset to read from
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct mtd_oob_ops \*
 
 .. _`onenand_read_oob_nolock.description`:
 
@@ -673,14 +748,17 @@ onenand_read_oob
 
     [MTD Interface] Read main and/or out-of-band
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct mtd_oob_ops \*
 
 .. _`onenand_bbt_wait`:
 
@@ -691,11 +769,13 @@ onenand_bbt_wait
 
     [DEFAULT] wait until the command is done \ ``param``\  mtd           MTD device structure \ ``param``\  state         state to select the max. timeout value
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int state:
+    :param state:
         *undescribed*
+    :type state: int
 
 .. _`onenand_bbt_wait.description`:
 
@@ -713,14 +793,17 @@ onenand_bbt_read_oob
 
     [MTD Interface] OneNAND read out-of-band for bbt scan \ ``param``\  mtd           MTD device structure \ ``param``\  from          offset to read from \ ``param``\  ops           oob operation description structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct mtd_oob_ops \*
 
 .. _`onenand_bbt_read_oob.description`:
 
@@ -738,14 +821,17 @@ onenand_verify_oob
 
     [GENERIC] verify the oob contents after a write \ ``param``\  mtd           MTD device structure \ ``param``\  buf           the databuffer to verify \ ``param``\  to            offset to read from
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param const u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const u_char \*
 
-    :param loff_t to:
+    :param to:
         *undescribed*
+    :type to: loff_t
 
 .. _`onenand_verify`:
 
@@ -756,17 +842,21 @@ onenand_verify
 
     [GENERIC] verify the chip contents after a write \ ``param``\  mtd          MTD device structure \ ``param``\  buf          the databuffer to verify \ ``param``\  addr         offset to read from \ ``param``\  len          number of bytes to read and compare
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param const u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const u_char \*
 
-    :param loff_t addr:
+    :param addr:
         *undescribed*
+    :type addr: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`onenand_panic_write`:
 
@@ -777,20 +867,25 @@ onenand_panic_write
 
     [MTD Interface] write buffer to FLASH in a panic context \ ``param``\  mtd           MTD device structure \ ``param``\  to            offset to write to \ ``param``\  len           number of bytes to write \ ``param``\  retlen        pointer to variable to store the number of written bytes \ ``param``\  buf           the data to write
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         *undescribed*
+    :type to: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         *undescribed*
+    :type retlen: size_t \*
 
-    :param const u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const u_char \*
 
 .. _`onenand_panic_write.description`:
 
@@ -808,20 +903,25 @@ onenand_fill_auto_oob
 
     [INTERN] oob auto-placement transfer \ ``param``\  mtd           MTD device structure \ ``param``\  oob_buf       oob buffer \ ``param``\  buf           source address \ ``param``\  column        oob offset to write to \ ``param``\  thislen       oob length to write
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param u_char \*oob_buf:
+    :param oob_buf:
         *undescribed*
+    :type oob_buf: u_char \*
 
-    :param const u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const u_char \*
 
-    :param int column:
+    :param column:
         *undescribed*
+    :type column: int
 
-    :param int thislen:
+    :param thislen:
         *undescribed*
+    :type thislen: int
 
 .. _`onenand_write_ops_nolock`:
 
@@ -832,14 +932,17 @@ onenand_write_ops_nolock
 
     [OneNAND Interface] write main and/or out-of-band \ ``param``\  mtd           MTD device structure \ ``param``\  to            offset to write to \ ``param``\  ops           oob operation description structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         *undescribed*
+    :type to: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct mtd_oob_ops \*
 
 .. _`onenand_write_ops_nolock.description`:
 
@@ -857,14 +960,17 @@ onenand_write_oob_nolock
 
     [INTERN] OneNAND write out-of-band \ ``param``\  mtd           MTD device structure \ ``param``\  to            offset to write to \ ``param``\  len           number of bytes to write \ ``param``\  retlen        pointer to variable to store the number of written bytes \ ``param``\  buf           the data to write \ ``param``\  mode          operation mode
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         *undescribed*
+    :type to: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct mtd_oob_ops \*
 
 .. _`onenand_write_oob_nolock.description`:
 
@@ -882,14 +988,17 @@ onenand_write_oob
 
     [MTD Interface] NAND write data and/or out-of-band
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         *undescribed*
+    :type to: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct mtd_oob_ops \*
 
 .. _`onenand_block_isbad_nolock`:
 
@@ -900,14 +1009,17 @@ onenand_block_isbad_nolock
 
     [GENERIC] Check if a block is marked bad \ ``param``\  mtd           MTD device structure \ ``param``\  ofs           offset from device start \ ``param``\  allowbbt      1, if its allowed to access the bbt area
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         *undescribed*
+    :type ofs: loff_t
 
-    :param int allowbbt:
+    :param allowbbt:
         *undescribed*
+    :type allowbbt: int
 
 .. _`onenand_block_isbad_nolock.description`:
 
@@ -926,14 +1038,17 @@ onenand_multiblock_erase
 
     [INTERN] erase block(s) using multiblock erase \ ``param``\  mtd           MTD device structure \ ``param``\  instr         erase instruction \ ``param``\  region        erase region
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param struct erase_info \*instr:
+    :param instr:
         *undescribed*
+    :type instr: struct erase_info \*
 
-    :param unsigned int block_size:
+    :param block_size:
         *undescribed*
+    :type block_size: unsigned int
 
 .. _`onenand_multiblock_erase.description`:
 
@@ -951,17 +1066,21 @@ onenand_block_by_block_erase
 
     [INTERN] erase block(s) using regular erase \ ``param``\  mtd           MTD device structure \ ``param``\  instr         erase instruction \ ``param``\  region        erase region \ ``param``\  block_size    erase block size
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param struct erase_info \*instr:
+    :param instr:
         *undescribed*
+    :type instr: struct erase_info \*
 
-    :param struct mtd_erase_region_info \*region:
+    :param region:
         *undescribed*
+    :type region: struct mtd_erase_region_info \*
 
-    :param unsigned int block_size:
+    :param block_size:
         *undescribed*
+    :type block_size: unsigned int
 
 .. _`onenand_block_by_block_erase.description`:
 
@@ -979,11 +1098,13 @@ onenand_erase
 
     [MTD Interface] erase block(s) \ ``param``\  mtd           MTD device structure \ ``param``\  instr         erase instruction
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param struct erase_info \*instr:
+    :param instr:
         *undescribed*
+    :type instr: struct erase_info \*
 
 .. _`onenand_erase.description`:
 
@@ -1001,8 +1122,9 @@ onenand_sync
 
     [MTD Interface] sync \ ``param``\  mtd           MTD device structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`onenand_sync.description`:
 
@@ -1020,11 +1142,13 @@ onenand_block_isbad
 
     [MTD Interface] Check whether the block at the given offset is bad \ ``param``\  mtd           MTD device structure \ ``param``\  ofs           offset relative to mtd start
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         *undescribed*
+    :type ofs: loff_t
 
 .. _`onenand_block_isbad.description`:
 
@@ -1042,11 +1166,13 @@ onenand_default_block_markbad
 
     [DEFAULT] mark a block bad \ ``param``\  mtd           MTD device structure \ ``param``\  ofs           offset from device start
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         *undescribed*
+    :type ofs: loff_t
 
 .. _`onenand_default_block_markbad.description`:
 
@@ -1065,11 +1191,13 @@ onenand_block_markbad
 
     [MTD Interface] Mark the block at the given offset as bad \ ``param``\  mtd           MTD device structure \ ``param``\  ofs           offset relative to mtd start
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         *undescribed*
+    :type ofs: loff_t
 
 .. _`onenand_block_markbad.description`:
 
@@ -1087,17 +1215,21 @@ onenand_do_lock_cmd
 
     [OneNAND Interface] Lock or unlock block(s) \ ``param``\  mtd           MTD device structure \ ``param``\  ofs           offset relative to mtd start \ ``param``\  len           number of bytes to lock or unlock \ ``param``\  cmd           lock or unlock command
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         *undescribed*
+    :type ofs: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
 .. _`onenand_do_lock_cmd.description`:
 
@@ -1115,14 +1247,17 @@ onenand_lock
 
     [MTD Interface] Lock block(s) \ ``param``\  mtd           MTD device structure \ ``param``\  ofs           offset relative to mtd start \ ``param``\  len           number of bytes to unlock
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         *undescribed*
+    :type ofs: loff_t
 
-    :param uint64_t len:
+    :param len:
         *undescribed*
+    :type len: uint64_t
 
 .. _`onenand_lock.description`:
 
@@ -1140,14 +1275,17 @@ onenand_unlock
 
     [MTD Interface] Unlock block(s) \ ``param``\  mtd           MTD device structure \ ``param``\  ofs           offset relative to mtd start \ ``param``\  len           number of bytes to unlock
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         *undescribed*
+    :type ofs: loff_t
 
-    :param uint64_t len:
+    :param len:
         *undescribed*
+    :type len: uint64_t
 
 .. _`onenand_unlock.description`:
 
@@ -1165,8 +1303,9 @@ onenand_check_lock_status
 
     [OneNAND Interface] Check lock status \ ``param``\  this          onenand chip data structure
 
-    :param struct onenand_chip \*this:
+    :param this:
         *undescribed*
+    :type this: struct onenand_chip \*
 
 .. _`onenand_check_lock_status.description`:
 
@@ -1184,8 +1323,9 @@ onenand_unlock_all
 
     [OneNAND Interface] unlock all blocks \ ``param``\  mtd           MTD device structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`onenand_unlock_all.description`:
 
@@ -1203,17 +1343,21 @@ onenand_otp_command
 
     Send OTP specific command to OneNAND device \ ``param``\  mtd    MTD device structure \ ``param``\  cmd    the command to be sent \ ``param``\  addr   offset to read from or write to \ ``param``\  len    number of bytes to read or write
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
-    :param loff_t addr:
+    :param addr:
         *undescribed*
+    :type addr: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`onenand_otp_write_oob_nolock`:
 
@@ -1224,14 +1368,17 @@ onenand_otp_write_oob_nolock
 
     [INTERN] OneNAND write out-of-band, specific to OTP \ ``param``\  mtd           MTD device structure \ ``param``\  to            offset to write to \ ``param``\  len           number of bytes to write \ ``param``\  retlen        pointer to variable to store the number of written bytes \ ``param``\  buf           the data to write
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         *undescribed*
+    :type to: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct mtd_oob_ops \*
 
 .. _`onenand_otp_write_oob_nolock.description`:
 
@@ -1249,20 +1396,25 @@ do_otp_read
 
     [DEFAULT] Read OTP block area \ ``param``\  mtd           MTD device structure \ ``param``\  from          The offset to read \ ``param``\  len           number of bytes to read \ ``param``\  retlen        pointer to variable to store the number of readbytes \ ``param``\  buf           the databuffer to put/get data
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         *undescribed*
+    :type retlen: size_t \*
 
-    :param u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: u_char \*
 
 .. _`do_otp_read.description`:
 
@@ -1280,20 +1432,25 @@ do_otp_write
 
     [DEFAULT] Write OTP block area \ ``param``\  mtd           MTD device structure \ ``param``\  to            The offset to write \ ``param``\  len           number of bytes to write \ ``param``\  retlen        pointer to variable to store the number of write bytes \ ``param``\  buf           the databuffer to put/get data
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         *undescribed*
+    :type to: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         *undescribed*
+    :type retlen: size_t \*
 
-    :param u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: u_char \*
 
 .. _`do_otp_write.description`:
 
@@ -1311,20 +1468,25 @@ do_otp_lock
 
     [DEFAULT] Lock OTP block area \ ``param``\  mtd           MTD device structure \ ``param``\  from          The offset to lock \ ``param``\  len           number of bytes to lock \ ``param``\  retlen        pointer to variable to store the number of lock bytes \ ``param``\  buf           the databuffer to put/get data
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         *undescribed*
+    :type retlen: size_t \*
 
-    :param u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: u_char \*
 
 .. _`do_otp_lock.description`:
 
@@ -1342,26 +1504,33 @@ onenand_otp_walk
 
     [DEFAULT] Handle OTP operation \ ``param``\  mtd           MTD device structure \ ``param``\  from          The offset to read/write \ ``param``\  len           number of bytes to read/write \ ``param``\  retlen        pointer to variable to store the number of read bytes \ ``param``\  buf           the databuffer to put/get data \ ``param``\  action        do given action \ ``param``\  mode          specify user and factory
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         *undescribed*
+    :type retlen: size_t \*
 
-    :param u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: u_char \*
 
-    :param otp_op_t action:
+    :param action:
         *undescribed*
+    :type action: otp_op_t
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
 .. _`onenand_otp_walk.description`:
 
@@ -1379,17 +1548,21 @@ onenand_get_fact_prot_info
 
     [MTD Interface] Read factory OTP info \ ``param``\  mtd           MTD device structure \ ``param``\  len           number of bytes to read \ ``param``\  retlen        pointer to variable to store the number of read bytes \ ``param``\  buf           the databuffer to put/get data
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         *undescribed*
+    :type retlen: size_t \*
 
-    :param struct otp_info \*buf:
+    :param buf:
         *undescribed*
+    :type buf: struct otp_info \*
 
 .. _`onenand_get_fact_prot_info.description`:
 
@@ -1407,20 +1580,25 @@ onenand_read_fact_prot_reg
 
     [MTD Interface] Read factory OTP area \ ``param``\  mtd           MTD device structure \ ``param``\  from          The offset to read \ ``param``\  len           number of bytes to read \ ``param``\  retlen        pointer to variable to store the number of read bytes \ ``param``\  buf           the databuffer to put/get data
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         *undescribed*
+    :type retlen: size_t \*
 
-    :param u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: u_char \*
 
 .. _`onenand_read_fact_prot_reg.description`:
 
@@ -1438,17 +1616,21 @@ onenand_get_user_prot_info
 
     [MTD Interface] Read user OTP info \ ``param``\  mtd           MTD device structure \ ``param``\  retlen        pointer to variable to store the number of read bytes \ ``param``\  len           number of bytes to read \ ``param``\  buf           the databuffer to put/get data
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         *undescribed*
+    :type retlen: size_t \*
 
-    :param struct otp_info \*buf:
+    :param buf:
         *undescribed*
+    :type buf: struct otp_info \*
 
 .. _`onenand_get_user_prot_info.description`:
 
@@ -1466,20 +1648,25 @@ onenand_read_user_prot_reg
 
     [MTD Interface] Read user OTP area \ ``param``\  mtd           MTD device structure \ ``param``\  from          The offset to read \ ``param``\  len           number of bytes to read \ ``param``\  retlen        pointer to variable to store the number of read bytes \ ``param``\  buf           the databuffer to put/get data
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         *undescribed*
+    :type retlen: size_t \*
 
-    :param u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: u_char \*
 
 .. _`onenand_read_user_prot_reg.description`:
 
@@ -1497,20 +1684,25 @@ onenand_write_user_prot_reg
 
     [MTD Interface] Write user OTP area \ ``param``\  mtd           MTD device structure \ ``param``\  from          The offset to write \ ``param``\  len           number of bytes to write \ ``param``\  retlen        pointer to variable to store the number of write bytes \ ``param``\  buf           the databuffer to put/get data
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         *undescribed*
+    :type retlen: size_t \*
 
-    :param u_char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: u_char \*
 
 .. _`onenand_write_user_prot_reg.description`:
 
@@ -1528,14 +1720,17 @@ onenand_lock_user_prot_reg
 
     [MTD Interface] Lock user OTP area \ ``param``\  mtd           MTD device structure \ ``param``\  from          The offset to lock \ ``param``\  len           number of bytes to unlock
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`onenand_lock_user_prot_reg.description`:
 
@@ -1553,8 +1748,9 @@ onenand_check_features
 
     Check and set OneNAND features \ ``param``\  mtd           MTD data structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`onenand_check_features.description`:
 
@@ -1574,11 +1770,13 @@ onenand_print_device_info
 
     Print device & version ID \ ``param``\  device        device ID \ ``param``\  version       version ID
 
-    :param int device:
+    :param device:
         *undescribed*
+    :type device: int
 
-    :param int version:
+    :param version:
         *undescribed*
+    :type version: int
 
 .. _`onenand_print_device_info.description`:
 
@@ -1596,8 +1794,9 @@ onenand_check_maf
 
     Check manufacturer ID \ ``param``\  manuf         manufacturer ID
 
-    :param int manuf:
+    :param manuf:
         *undescribed*
+    :type manuf: int
 
 .. _`onenand_check_maf.description`:
 
@@ -1615,8 +1814,9 @@ flexonenand_get_boundary
 
     Reads the SLC boundary \ ``param``\  onenand_info           - onenand info structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`flexonenand_get_size`:
 
@@ -1627,8 +1827,9 @@ flexonenand_get_size
 
     Fill up fields in onenand_chip and mtd_info boundary[], diesize[], mtd->size, mtd->erasesize \ ``param``\  mtd           - MTD device structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`flexonenand_check_blocks_erased`:
 
@@ -1639,14 +1840,17 @@ flexonenand_check_blocks_erased
 
     Check if blocks are erased \ ``param``\  mtd_info      - mtd info structure \ ``param``\  start         - first erase block to check \ ``param``\  end           - last erase block to check
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int start:
+    :param start:
         *undescribed*
+    :type start: int
 
-    :param int end:
+    :param end:
         *undescribed*
+    :type end: int
 
 .. _`flexonenand_check_blocks_erased.description`:
 
@@ -1670,17 +1874,21 @@ flexonenand_set_boundary
 
     Writes the SLC boundary \ ``param``\  mtd                   - mtd info structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int die:
+    :param die:
         *undescribed*
+    :type die: int
 
-    :param int boundary:
+    :param boundary:
         *undescribed*
+    :type boundary: int
 
-    :param int lock:
+    :param lock:
         *undescribed*
+    :type lock: int
 
 .. _`onenand_chip_probe`:
 
@@ -1691,8 +1899,9 @@ onenand_chip_probe
 
     [OneNAND Interface] The generic chip probe \ ``param``\  mtd           MTD device structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`onenand_chip_probe.onenand-detection-method`:
 
@@ -1710,8 +1919,9 @@ onenand_probe
 
     [OneNAND Interface] Probe the OneNAND device \ ``param``\  mtd           MTD device structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`onenand_suspend`:
 
@@ -1722,8 +1932,9 @@ onenand_suspend
 
     [MTD Interface] Suspend the OneNAND flash \ ``param``\  mtd           MTD device structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`onenand_resume`:
 
@@ -1734,8 +1945,9 @@ onenand_resume
 
     [MTD Interface] Resume the OneNAND flash \ ``param``\  mtd           MTD device structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. _`onenand_scan`:
 
@@ -1746,11 +1958,13 @@ onenand_scan
 
     [OneNAND Interface] Scan for the OneNAND device \ ``param``\  mtd           MTD device structure \ ``param``\  maxchips      Number of chips to scan for
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
-    :param int maxchips:
+    :param maxchips:
         *undescribed*
+    :type maxchips: int
 
 .. _`onenand_scan.description`:
 
@@ -1771,8 +1985,9 @@ onenand_release
 
     [OneNAND Interface] Free resources held by the OneNAND device \ ``param``\  mtd           MTD device structure
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         *undescribed*
+    :type mtd: struct mtd_info \*
 
 .. This file was automatic generated / don't edit.
 

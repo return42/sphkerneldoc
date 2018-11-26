@@ -10,8 +10,9 @@ svc_rdma_send_ctxts_destroy
 
     Release all send_ctxt's for an xprt
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         svcxprt_rdma being torn down
+    :type rdma: struct svcxprt_rdma \*
 
 .. _`svc_rdma_send_ctxt_get`:
 
@@ -22,8 +23,9 @@ svc_rdma_send_ctxt_get
 
     Get a free send_ctxt
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         controlling svcxprt_rdma
+    :type rdma: struct svcxprt_rdma \*
 
 .. _`svc_rdma_send_ctxt_get.description`:
 
@@ -42,11 +44,13 @@ svc_rdma_send_ctxt_put
 
     Return send_ctxt to free list
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         controlling svcxprt_rdma
+    :type rdma: struct svcxprt_rdma \*
 
-    :param struct svc_rdma_send_ctxt \*ctxt:
+    :param ctxt:
         object to return to the free list
+    :type ctxt: struct svc_rdma_send_ctxt \*
 
 .. _`svc_rdma_send_ctxt_put.description`:
 
@@ -64,11 +68,13 @@ svc_rdma_wc_send
 
     Invoked by RDMA provider for each polled Send WC
 
-    :param struct ib_cq \*cq:
+    :param cq:
         Completion Queue context
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         Work Completion object
+    :type wc: struct ib_wc \*
 
 .. _`svc_rdma_wc_send.description`:
 
@@ -87,11 +93,13 @@ svc_rdma_send
 
     Post a single Send WR
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         transport on which to post the WR
+    :type rdma: struct svcxprt_rdma \*
 
-    :param struct ib_send_wr \*wr:
+    :param wr:
         prepared Send WR to post
+    :type wr: struct ib_send_wr \*
 
 .. _`svc_rdma_send.description`:
 
@@ -110,14 +118,17 @@ svc_rdma_sync_reply_hdr
 
     DMA sync the transport header buffer
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         controlling transport
+    :type rdma: struct svcxprt_rdma \*
 
-    :param struct svc_rdma_send_ctxt \*ctxt:
+    :param ctxt:
         send_ctxt for the Send WR
+    :type ctxt: struct svc_rdma_send_ctxt \*
 
-    :param unsigned int len:
+    :param len:
         length of transport header
+    :type len: unsigned int
 
 .. _`svc_rdma_sendto`:
 
@@ -128,8 +139,9 @@ svc_rdma_sendto
 
     Transmit an RPC reply
 
-    :param struct svc_rqst \*rqstp:
+    :param rqstp:
         processed RPC request, reply XDR already in ::rq_res
+    :type rqstp: struct svc_rqst \*
 
 .. _`svc_rdma_sendto.description`:
 

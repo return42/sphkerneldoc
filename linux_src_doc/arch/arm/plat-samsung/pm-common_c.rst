@@ -10,11 +10,13 @@ s3c_pm_do_save
 
     save a set of registers for restoration on resume.
 
-    :param struct sleep_save \*ptr:
+    :param ptr:
         Pointer to an array of registers.
+    :type ptr: struct sleep_save \*
 
-    :param int count:
+    :param count:
         Size of the ptr array.
+    :type count: int
 
 .. _`s3c_pm_do_save.description`:
 
@@ -33,11 +35,13 @@ s3c_pm_do_restore
 
     restore register values from the save list.
 
-    :param const struct sleep_save \*ptr:
+    :param ptr:
         Pointer to an array of registers.
+    :type ptr: const struct sleep_save \*
 
-    :param int count:
+    :param count:
         Size of the ptr array.
+    :type count: int
 
 .. _`s3c_pm_do_restore.description`:
 
@@ -58,11 +62,13 @@ s3c_pm_do_restore_core
 
     early restore register values from save list.
 
-    :param const struct sleep_save \*ptr:
+    :param ptr:
         *undescribed*
+    :type ptr: const struct sleep_save \*
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
 .. _`s3c_pm_do_restore_core.description`:
 

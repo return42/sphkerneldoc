@@ -10,9 +10,10 @@ mempool_exit
 
     exit a mempool initialized with \ :c:func:`mempool_init`\ 
 
-    :param mempool_t \*pool:
+    :param pool:
         pointer to the memory pool which was initialized with
         \ :c:func:`mempool_init`\ .
+    :type pool: mempool_t \*
 
 .. _`mempool_exit.description`:
 
@@ -34,9 +35,10 @@ mempool_destroy
 
     deallocate a memory pool
 
-    :param mempool_t \*pool:
+    :param pool:
         pointer to the memory pool which was allocated via
         \ :c:func:`mempool_create`\ .
+    :type pool: mempool_t \*
 
 .. _`mempool_destroy.description`:
 
@@ -55,21 +57,26 @@ mempool_init
 
     initialize a memory pool
 
-    :param mempool_t \*pool:
-        *undescribed*
+    :param pool:
+        pointer to the memory pool that should be initialized
+    :type pool: mempool_t \*
 
-    :param int min_nr:
+    :param min_nr:
         the minimum number of elements guaranteed to be
         allocated for this pool.
+    :type min_nr: int
 
-    :param mempool_alloc_t \*alloc_fn:
+    :param alloc_fn:
         user-defined element-allocation function.
+    :type alloc_fn: mempool_alloc_t \*
 
-    :param mempool_free_t \*free_fn:
+    :param free_fn:
         user-defined element-freeing function.
+    :type free_fn: mempool_free_t \*
 
-    :param void \*pool_data:
+    :param pool_data:
         optional private data available to the user-defined functions.
+    :type pool_data: void \*
 
 .. _`mempool_init.description`:
 
@@ -88,18 +95,22 @@ mempool_create
 
     create a memory pool
 
-    :param int min_nr:
+    :param min_nr:
         the minimum number of elements guaranteed to be
         allocated for this pool.
+    :type min_nr: int
 
-    :param mempool_alloc_t \*alloc_fn:
+    :param alloc_fn:
         user-defined element-allocation function.
+    :type alloc_fn: mempool_alloc_t \*
 
-    :param mempool_free_t \*free_fn:
+    :param free_fn:
         user-defined element-freeing function.
+    :type free_fn: mempool_free_t \*
 
-    :param void \*pool_data:
+    :param pool_data:
         optional private data available to the user-defined functions.
+    :type pool_data: void \*
 
 .. _`mempool_create.description`:
 
@@ -121,13 +132,15 @@ mempool_resize
 
     resize an existing memory pool
 
-    :param mempool_t \*pool:
+    :param pool:
         pointer to the memory pool which was allocated via
         \ :c:func:`mempool_create`\ .
+    :type pool: mempool_t \*
 
-    :param int new_min_nr:
+    :param new_min_nr:
         the new minimum number of elements guaranteed to be
         allocated for this pool.
+    :type new_min_nr: int
 
 .. _`mempool_resize.description`:
 
@@ -152,12 +165,14 @@ mempool_alloc
 
     allocate an element from a specific memory pool
 
-    :param mempool_t \*pool:
+    :param pool:
         pointer to the memory pool which was allocated via
         \ :c:func:`mempool_create`\ .
+    :type pool: mempool_t \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         the usual allocation bitmask.
+    :type gfp_mask: gfp_t
 
 .. _`mempool_alloc.description`:
 
@@ -185,12 +200,14 @@ mempool_free
 
     return an element to the pool.
 
-    :param void \*element:
+    :param element:
         pool element pointer.
+    :type element: void \*
 
-    :param mempool_t \*pool:
+    :param pool:
         pointer to the memory pool which was allocated via
         \ :c:func:`mempool_create`\ .
+    :type pool: mempool_t \*
 
 .. _`mempool_free.description`:
 

@@ -10,8 +10,9 @@ batadv_nc_init
 
     one-time initialization for network coding
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_nc_init.return`:
 
@@ -29,8 +30,9 @@ batadv_nc_start_timer
 
     initialise the nc periodic worker
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_nc_tvlv_container_update`:
 
@@ -41,8 +43,9 @@ batadv_nc_tvlv_container_update
 
     update the network coding tvlv container after network coding setting change
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_nc_status_update`:
 
@@ -53,8 +56,9 @@ batadv_nc_status_update
 
     update the network coding tvlv container after network coding setting change
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the soft interface net device
+    :type net_dev: struct net_device \*
 
 .. _`batadv_nc_tvlv_ogm_handler_v1`:
 
@@ -65,20 +69,25 @@ batadv_nc_tvlv_ogm_handler_v1
 
     process incoming nc tvlv container
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig:
+    :param orig:
         the orig_node of the ogm
+    :type orig: struct batadv_orig_node \*
 
-    :param u8 flags:
+    :param flags:
         flags indicating the tvlv state (see batadv_tvlv_handler_flags)
+    :type flags: u8
 
-    :param void \*tvlv_value:
+    :param tvlv_value:
         tvlv buffer containing the gateway data
+    :type tvlv_value: void \*
 
-    :param u16 tvlv_value_len:
+    :param tvlv_value_len:
         tvlv buffer length
+    :type tvlv_value_len: u16
 
 .. _`batadv_nc_mesh_init`:
 
@@ -89,8 +98,9 @@ batadv_nc_mesh_init
 
     initialise coding hash table and start house keeping
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_nc_mesh_init.return`:
 
@@ -108,8 +118,9 @@ batadv_nc_init_bat_priv
 
     initialise the nc specific bat_priv variables
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_nc_init_orig`:
 
@@ -120,8 +131,9 @@ batadv_nc_init_orig
 
     initialise the nc fields of an orig_node
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig_node which is going to be initialised
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_nc_node_release`:
 
@@ -132,8 +144,9 @@ batadv_nc_node_release
 
     release nc_node from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the nc_node
+    :type ref: struct kref \*
 
 .. _`batadv_nc_node_put`:
 
@@ -144,8 +157,9 @@ batadv_nc_node_put
 
     decrement the nc_node refcounter and possibly release it
 
-    :param struct batadv_nc_node \*nc_node:
+    :param nc_node:
         nc_node to be free'd
+    :type nc_node: struct batadv_nc_node \*
 
 .. _`batadv_nc_path_release`:
 
@@ -156,8 +170,9 @@ batadv_nc_path_release
 
     release nc_path from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the nc_path
+    :type ref: struct kref \*
 
 .. _`batadv_nc_path_put`:
 
@@ -168,8 +183,9 @@ batadv_nc_path_put
 
     decrement the nc_path refcounter and possibly release it
 
-    :param struct batadv_nc_path \*nc_path:
+    :param nc_path:
         nc_path to be free'd
+    :type nc_path: struct batadv_nc_path \*
 
 .. _`batadv_nc_packet_free`:
 
@@ -180,11 +196,13 @@ batadv_nc_packet_free
 
     frees nc packet
 
-    :param struct batadv_nc_packet \*nc_packet:
+    :param nc_packet:
         the nc packet to free
+    :type nc_packet: struct batadv_nc_packet \*
 
-    :param bool dropped:
+    :param dropped:
         whether the packet is freed because is is dropped
+    :type dropped: bool
 
 .. _`batadv_nc_to_purge_nc_node`:
 
@@ -195,11 +213,13 @@ batadv_nc_to_purge_nc_node
 
     checks whether an nc node has to be purged
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_nc_node \*nc_node:
+    :param nc_node:
         the nc node to check
+    :type nc_node: struct batadv_nc_node \*
 
 .. _`batadv_nc_to_purge_nc_node.return`:
 
@@ -217,11 +237,13 @@ batadv_nc_to_purge_nc_path_coding
 
     checks whether an nc path has timed out
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_nc_path \*nc_path:
+    :param nc_path:
         the nc path to check
+    :type nc_path: struct batadv_nc_path \*
 
 .. _`batadv_nc_to_purge_nc_path_coding.return`:
 
@@ -239,11 +261,13 @@ batadv_nc_to_purge_nc_path_decoding
 
     checks whether an nc path has timed out
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_nc_path \*nc_path:
+    :param nc_path:
         the nc path to check
+    :type nc_path: struct batadv_nc_path \*
 
 .. _`batadv_nc_to_purge_nc_path_decoding.return`:
 
@@ -261,14 +285,17 @@ batadv_nc_purge_orig_nc_nodes
 
     go through list of nc nodes and purge stale entries
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct list_head \*list:
+    :param list:
         list of nc nodes
+    :type list: struct list_head \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         nc node list lock
+    :type lock: spinlock_t \*
 
     :param bool (\*to_purge)(struct batadv_priv \*, struct batadv_nc_node \*):
         function in charge to decide whether an entry has to be purged or
@@ -285,11 +312,13 @@ batadv_nc_purge_orig
 
     purges all nc node data attached of the given originator
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig_node with the nc node entries to be purged
+    :type orig_node: struct batadv_orig_node \*
 
     :param bool (\*to_purge)(struct batadv_priv \*, struct batadv_nc_node \*):
         function in charge to decide whether an entry has to be purged or
@@ -306,8 +335,9 @@ batadv_nc_purge_orig_hash
 
     traverse entire originator hash to check if they have timed out nc nodes
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_nc_purge_paths`:
 
@@ -318,11 +348,13 @@ batadv_nc_purge_paths
 
     traverse all nc paths part of the hash and remove unused ones
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hashtable \*hash:
+    :param hash:
         hash table containing the nc paths to check
+    :type hash: struct batadv_hashtable \*
 
     :param bool (\*to_purge)(struct batadv_priv \*, struct batadv_nc_path \*):
         function in charge to decide whether an entry has to be purged or
@@ -339,14 +371,17 @@ batadv_nc_hash_key_gen
 
     computes the nc_path hash key
 
-    :param struct batadv_nc_path \*key:
+    :param key:
         buffer to hold the final hash key
+    :type key: struct batadv_nc_path \*
 
-    :param const char \*src:
+    :param src:
         source ethernet mac address going into the hash key
+    :type src: const char \*
 
-    :param const char \*dst:
+    :param dst:
         destination ethernet mac address going into the hash key
+    :type dst: const char \*
 
 .. _`batadv_nc_hash_choose`:
 
@@ -357,11 +392,13 @@ batadv_nc_hash_choose
 
     compute the hash value for an nc path
 
-    :param const void \*data:
+    :param data:
         data to hash
+    :type data: const void \*
 
-    :param u32 size:
+    :param size:
         size of the hash table
+    :type size: u32
 
 .. _`batadv_nc_hash_choose.return`:
 
@@ -379,11 +416,13 @@ batadv_nc_hash_compare
 
     comparing function used in the network coding hash tables
 
-    :param const struct hlist_node \*node:
+    :param node:
         node in the local table
+    :type node: const struct hlist_node \*
 
-    :param const void \*data2:
+    :param data2:
         second object to compare the node to
+    :type data2: const void \*
 
 .. _`batadv_nc_hash_compare.return`:
 
@@ -401,11 +440,13 @@ batadv_nc_hash_find
 
     search for an existing nc path and return it
 
-    :param struct batadv_hashtable \*hash:
+    :param hash:
         hash table containing the nc path
+    :type hash: struct batadv_hashtable \*
 
-    :param void \*data:
+    :param data:
         search key
+    :type data: void \*
 
 .. _`batadv_nc_hash_find.return`:
 
@@ -423,8 +464,9 @@ batadv_nc_send_packet
 
     send non-coded packet and free nc_packet struct
 
-    :param struct batadv_nc_packet \*nc_packet:
+    :param nc_packet:
         the nc packet to send
+    :type nc_packet: struct batadv_nc_packet \*
 
 .. _`batadv_nc_sniffed_purge`:
 
@@ -435,14 +477,17 @@ batadv_nc_sniffed_purge
 
     Checks timestamp of given sniffed nc_packet.
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_nc_path \*nc_path:
+    :param nc_path:
         the nc path the packet belongs to
+    :type nc_path: struct batadv_nc_path \*
 
-    :param struct batadv_nc_packet \*nc_packet:
+    :param nc_packet:
         the nc packet to be checked
+    :type nc_packet: struct batadv_nc_packet \*
 
 .. _`batadv_nc_sniffed_purge.description`:
 
@@ -470,14 +515,17 @@ batadv_nc_fwd_flush
 
     Checks the timestamp of the given nc packet.
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_nc_path \*nc_path:
+    :param nc_path:
         the nc path the packet belongs to
+    :type nc_path: struct batadv_nc_path \*
 
-    :param struct batadv_nc_packet \*nc_packet:
+    :param nc_packet:
         the nc packet to be checked
+    :type nc_packet: struct batadv_nc_packet \*
 
 .. _`batadv_nc_fwd_flush.description`:
 
@@ -505,11 +553,13 @@ batadv_nc_process_nc_paths
 
     traverse given nc packet pool and free timed out nc packets
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hashtable \*hash:
+    :param hash:
         to be processed hash table
+    :type hash: struct batadv_hashtable \*
 
     :param bool (\*process_fn)(struct batadv_priv \*, struct batadv_nc_path \*, struct batadv_nc_packet \*):
         Function called to process given nc packet. Should return true
@@ -525,8 +575,9 @@ batadv_nc_worker
 
     periodic task for house keeping related to network coding
 
-    :param struct work_struct \*work:
+    :param work:
         kernel work struct
+    :type work: struct work_struct \*
 
 .. _`batadv_can_nc_with_orig`:
 
@@ -537,14 +588,17 @@ batadv_can_nc_with_orig
 
     checks whether the given orig node is suitable for coding or not
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         neighboring orig node which may be used as nc candidate
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_ogm_packet \*ogm_packet:
+    :param ogm_packet:
         incoming ogm packet also used for the checks
+    :type ogm_packet: struct batadv_ogm_packet \*
 
 .. _`batadv_can_nc_with_orig.return`:
 
@@ -566,15 +620,18 @@ batadv_nc_find_nc_node
 
     search for an existing nc node and return it
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node originating the ogm packet
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_orig_node \*orig_neigh_node:
+    :param orig_neigh_node:
         neighboring orig node from which we received the ogm packet
         (can be equal to orig_node)
+    :type orig_neigh_node: struct batadv_orig_node \*
 
-    :param bool in_coding:
+    :param in_coding:
         traverse incoming or outgoing network coding list
+    :type in_coding: bool
 
 .. _`batadv_nc_find_nc_node.return`:
 
@@ -592,18 +649,22 @@ batadv_nc_get_nc_node
 
     retrieves an nc node or creates the entry if it was not found
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node originating the ogm packet
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_orig_node \*orig_neigh_node:
+    :param orig_neigh_node:
         neighboring orig node from which we received the ogm packet
         (can be equal to orig_node)
+    :type orig_neigh_node: struct batadv_orig_node \*
 
-    :param bool in_coding:
+    :param in_coding:
         traverse incoming or outgoing network coding list
+    :type in_coding: bool
 
 .. _`batadv_nc_get_nc_node.return`:
 
@@ -621,21 +682,26 @@ batadv_nc_update_nc_node
 
     updates stored incoming and outgoing nc node structs (best called on incoming OGMs)
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node originating the ogm packet
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_orig_node \*orig_neigh_node:
+    :param orig_neigh_node:
         neighboring orig node from which we received the ogm packet
         (can be equal to orig_node)
+    :type orig_neigh_node: struct batadv_orig_node \*
 
-    :param struct batadv_ogm_packet \*ogm_packet:
+    :param ogm_packet:
         incoming ogm packet
+    :type ogm_packet: struct batadv_ogm_packet \*
 
-    :param int is_single_hop_neigh:
+    :param is_single_hop_neigh:
         orig_node is a single hop neighbor
+    :type is_single_hop_neigh: int
 
 .. _`batadv_nc_get_path`:
 
@@ -646,17 +712,21 @@ batadv_nc_get_path
 
     get existing nc_path or allocate a new one
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hashtable \*hash:
+    :param hash:
         hash table containing the nc path
+    :type hash: struct batadv_hashtable \*
 
-    :param u8 \*src:
+    :param src:
         ethernet source address - first half of the nc path search key
+    :type src: u8 \*
 
-    :param u8 \*dst:
+    :param dst:
         ethernet destination address - second half of the nc path search key
+    :type dst: u8 \*
 
 .. _`batadv_nc_get_path.return`:
 
@@ -675,8 +745,9 @@ batadv_nc_random_weight_tq
 
     scale the receivers TQ-value to avoid unfair selection of a receiver with slightly lower TQ than the other
 
-    :param u8 tq:
+    :param tq:
         to be weighted tq value
+    :type tq: u8
 
 .. _`batadv_nc_random_weight_tq.return`:
 
@@ -694,14 +765,17 @@ batadv_nc_memxor
 
     XOR destination with source
 
-    :param char \*dst:
+    :param dst:
         byte array to XOR into
+    :type dst: char \*
 
-    :param const char \*src:
+    :param src:
         byte array to XOR from
+    :type src: const char \*
 
-    :param unsigned int len:
+    :param len:
         length of destination array
+    :type len: unsigned int
 
 .. _`batadv_nc_code_packets`:
 
@@ -712,20 +786,25 @@ batadv_nc_code_packets
 
     code a received unicast_packet with an nc packet into a coded_packet and send it
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data skb to forward
+    :type skb: struct sk_buff \*
 
-    :param struct ethhdr \*ethhdr:
+    :param ethhdr:
         pointer to the ethernet header inside the skb
+    :type ethhdr: struct ethhdr \*
 
-    :param struct batadv_nc_packet \*nc_packet:
+    :param nc_packet:
         structure containing the packet to the skb can be coded with
+    :type nc_packet: struct batadv_nc_packet \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         next hop to forward packet to
+    :type neigh_node: struct batadv_neigh_node \*
 
 .. _`batadv_nc_code_packets.return`:
 
@@ -743,14 +822,17 @@ batadv_nc_skb_coding_possible
 
     true if a decoded skb is available at dst.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data skb to forward
+    :type skb: struct sk_buff \*
 
-    :param u8 \*dst:
+    :param dst:
         destination mac address of the other skb to code with
+    :type dst: u8 \*
 
-    :param u8 \*src:
+    :param src:
         source mac address of skb
+    :type src: u8 \*
 
 .. _`batadv_nc_skb_coding_possible.description`:
 
@@ -782,20 +864,25 @@ batadv_nc_path_search
 
     Find the coding path matching in_nc_node and out_nc_node to retrieve a buffered packet that can be used for coding.
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_nc_node \*in_nc_node:
+    :param in_nc_node:
         pointer to skb next hop's neighbor nc node
+    :type in_nc_node: struct batadv_nc_node \*
 
-    :param struct batadv_nc_node \*out_nc_node:
+    :param out_nc_node:
         pointer to skb source's neighbor nc node
+    :type out_nc_node: struct batadv_nc_node \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data skb to forward
+    :type skb: struct sk_buff \*
 
-    :param u8 \*eth_dst:
+    :param eth_dst:
         next hop mac address of skb
+    :type eth_dst: u8 \*
 
 .. _`batadv_nc_path_search.return`:
 
@@ -813,20 +900,25 @@ batadv_nc_skb_src_search
 
     Loops through the list of neighoring nodes of the skb's sender (may be equal to the originator).
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data skb to forward
+    :type skb: struct sk_buff \*
 
-    :param u8 \*eth_dst:
+    :param eth_dst:
         next hop mac address of skb
+    :type eth_dst: u8 \*
 
-    :param u8 \*eth_src:
+    :param eth_src:
         source mac address of skb
+    :type eth_src: u8 \*
 
-    :param struct batadv_nc_node \*in_nc_node:
+    :param in_nc_node:
         pointer to skb next hop's neighbor nc node
+    :type in_nc_node: struct batadv_nc_node \*
 
 .. _`batadv_nc_skb_src_search.return`:
 
@@ -844,14 +936,17 @@ batadv_nc_skb_store_before_coding
 
     set the ethernet src and dst of the unicast skb before it is stored for use in later decoding
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data skb to store
+    :type skb: struct sk_buff \*
 
-    :param u8 \*eth_dst_new:
+    :param eth_dst_new:
         new destination mac address of skb
+    :type eth_dst_new: u8 \*
 
 .. _`batadv_nc_skb_dst_search`:
 
@@ -862,14 +957,17 @@ batadv_nc_skb_dst_search
 
     Loops through list of neighboring nodes to dst.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data skb to forward
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         next hop to forward packet to
+    :type neigh_node: struct batadv_neigh_node \*
 
-    :param struct ethhdr \*ethhdr:
+    :param ethhdr:
         pointer to the ethernet header inside the skb
+    :type ethhdr: struct ethhdr \*
 
 .. _`batadv_nc_skb_dst_search.description`:
 
@@ -897,17 +995,21 @@ batadv_nc_skb_add_to_path
 
     buffer skb for later encoding / decoding
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to add to path
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_nc_path \*nc_path:
+    :param nc_path:
         path to add skb to
+    :type nc_path: struct batadv_nc_path \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         next hop to forward packet to
+    :type neigh_node: struct batadv_neigh_node \*
 
-    :param __be32 packet_id:
+    :param packet_id:
         checksum to identify packet
+    :type packet_id: __be32
 
 .. _`batadv_nc_skb_add_to_path.return`:
 
@@ -925,11 +1027,13 @@ batadv_nc_skb_forward
 
     try to code a packet or add it to the coding packet buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data skb to forward
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         next hop to forward packet to
+    :type neigh_node: struct batadv_neigh_node \*
 
 .. _`batadv_nc_skb_forward.return`:
 
@@ -947,11 +1051,13 @@ batadv_nc_skb_store_for_decoding
 
     save a clone of the skb which can be used when decoding coded packets
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data skb to store
+    :type skb: struct sk_buff \*
 
 .. _`batadv_nc_skb_store_sniffed_unicast`:
 
@@ -962,11 +1068,13 @@ batadv_nc_skb_store_sniffed_unicast
 
     check if a received unicast packet should be saved in the decoding buffer and, if so, store it there
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         unicast skb to store
+    :type skb: struct sk_buff \*
 
 .. _`batadv_nc_skb_decode_packet`:
 
@@ -977,14 +1085,17 @@ batadv_nc_skb_decode_packet
 
     decode given skb using the decode data stored in nc_packet
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         unicast skb to decode
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_nc_packet \*nc_packet:
+    :param nc_packet:
         decode data needed to decode the skb
+    :type nc_packet: struct batadv_nc_packet \*
 
 .. _`batadv_nc_skb_decode_packet.return`:
 
@@ -1003,14 +1114,17 @@ batadv_nc_find_decoding_packet
 
     search through buffered decoding data to find the data needed to decode the coded packet
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct ethhdr \*ethhdr:
+    :param ethhdr:
         pointer to the ethernet header inside the coded packet
+    :type ethhdr: struct ethhdr \*
 
-    :param struct batadv_coded_packet \*coded:
+    :param coded:
         coded packet we try to find decode data for
+    :type coded: struct batadv_coded_packet \*
 
 .. _`batadv_nc_find_decoding_packet.return`:
 
@@ -1028,11 +1142,13 @@ batadv_nc_recv_coded_packet
 
     try to decode coded packet and enqueue the resulting unicast packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         incoming coded packet
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         pointer to interface this packet was received on
+    :type recv_if: struct batadv_hard_iface \*
 
 .. _`batadv_nc_recv_coded_packet.return`:
 
@@ -1051,8 +1167,9 @@ batadv_nc_mesh_free
 
     clean up network coding memory
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_nc_nodes_seq_print_text`:
 
@@ -1063,11 +1180,13 @@ batadv_nc_nodes_seq_print_text
 
     print the nc node information
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq file to print on
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_nc_nodes_seq_print_text.return`:
 
@@ -1085,8 +1204,9 @@ batadv_nc_init_debugfs
 
     create nc folder and related files in debugfs
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_nc_init_debugfs.return`:
 

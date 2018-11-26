@@ -10,8 +10,9 @@ mic_create_debug_dir
 
     Initialize MIC debugfs entries.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         *undescribed*
+    :type mdev: struct mic_device \*
 
 .. _`mic_delete_debug_dir`:
 
@@ -22,8 +23,9 @@ mic_delete_debug_dir
 
     Uninitialize MIC debugfs entries.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         *undescribed*
+    :type mdev: struct mic_device \*
 
 .. _`mic_init_debugfs`:
 
@@ -34,8 +36,9 @@ mic_init_debugfs
 
     Initialize global debugfs entry.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mic_exit_debugfs`:
 
@@ -46,8 +49,9 @@ mic_exit_debugfs
 
     Uninitialize global debugfs entry
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

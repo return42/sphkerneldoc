@@ -10,8 +10,9 @@ gma_intel_setup_gmbus
 
     instantiate all Intel i2c GMBuses
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,14 +8,17 @@ ql4_printk
 
 .. c:function::  ql4_printk( level,  ha,  format,  arg...)
 
-    :param  level:
+    :param level:
         *undescribed*
+    :type level: 
 
-    :param  ha:
+    :param ha:
         *undescribed*
+    :type ha: 
 
-    :param  format:
+    :param format:
         *undescribed*
+    :type format: 
 
 .. This file was automatic generated / don't edit.
 

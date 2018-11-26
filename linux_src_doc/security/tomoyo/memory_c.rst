@@ -10,8 +10,9 @@ tomoyo_warn_oom
 
     Print out of memory warning message.
 
-    :param const char \*function:
+    :param function:
         Function's name.
+    :type function: const char \*
 
 .. _`tomoyo_memory_ok`:
 
@@ -22,8 +23,9 @@ tomoyo_memory_ok
 
     Check memory quota.
 
-    :param void \*ptr:
+    :param ptr:
         Pointer to allocated memory.
+    :type ptr: void \*
 
 .. _`tomoyo_memory_ok.description`:
 
@@ -45,11 +47,13 @@ tomoyo_commit_ok
 
     Check memory quota.
 
-    :param void \*data:
+    :param data:
         Data to copy from.
+    :type data: void \*
 
-    :param const unsigned int size:
+    :param size:
         Size in byte.
+    :type size: const unsigned int
 
 .. _`tomoyo_commit_ok.description`:
 
@@ -70,11 +74,13 @@ tomoyo_get_group
 
     Allocate memory for "struct tomoyo_path_group"/"struct tomoyo_number_group".
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
-    :param const u8 idx:
+    :param idx:
         Index number.
+    :type idx: const u8
 
 .. _`tomoyo_get_group.description`:
 
@@ -92,8 +98,9 @@ tomoyo_get_name
 
     Allocate permanent memory for string data.
 
-    :param const char \*name:
+    :param name:
         The string to store into the permernent memory.
+    :type name: const char \*
 
 .. _`tomoyo_get_name.description`:
 
@@ -111,8 +118,9 @@ tomoyo_mm_init
 
     Initialize mm related code.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

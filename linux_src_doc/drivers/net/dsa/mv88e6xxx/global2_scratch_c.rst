@@ -10,17 +10,21 @@ mv88e6xxx_g2_scratch_get_bit
 
     get a bit
 
-    :param struct mv88e6xxx_chip \*chip:
+    :param chip:
         chip private data
+    :type chip: struct mv88e6xxx_chip \*
 
-    :param int base_reg:
+    :param base_reg:
         *undescribed*
+    :type base_reg: int
 
-    :param unsigned int offset:
+    :param offset:
         *undescribed*
+    :type offset: unsigned int
 
-    :param int \*set:
+    :param set:
         is bit set?
+    :type set: int \*
 
 .. _`mv88e6xxx_g2_scratch_set_bit`:
 
@@ -31,17 +35,21 @@ mv88e6xxx_g2_scratch_set_bit
 
     set (or clear) a bit
 
-    :param struct mv88e6xxx_chip \*chip:
+    :param chip:
         chip private data
+    :type chip: struct mv88e6xxx_chip \*
 
-    :param int base_reg:
+    :param base_reg:
         *undescribed*
+    :type base_reg: int
 
-    :param unsigned int offset:
+    :param offset:
         *undescribed*
+    :type offset: unsigned int
 
-    :param int set:
+    :param set:
         set if true, clear if false
+    :type set: int
 
 .. _`mv88e6xxx_g2_scratch_set_bit.description`:
 
@@ -59,11 +67,13 @@ mv88e6352_g2_scratch_gpio_get_data
 
     get data on gpio pin
 
-    :param struct mv88e6xxx_chip \*chip:
+    :param chip:
         chip private data
+    :type chip: struct mv88e6xxx_chip \*
 
-    :param unsigned int pin:
+    :param pin:
         gpio index
+    :type pin: unsigned int
 
 .. _`mv88e6352_g2_scratch_gpio_get_data.return`:
 
@@ -81,14 +91,17 @@ mv88e6352_g2_scratch_gpio_set_data
 
     set data on gpio pin
 
-    :param struct mv88e6xxx_chip \*chip:
+    :param chip:
         chip private data
+    :type chip: struct mv88e6xxx_chip \*
 
-    :param unsigned int pin:
+    :param pin:
         gpio index
+    :type pin: unsigned int
 
-    :param int value:
+    :param value:
         value to set
+    :type value: int
 
 .. _`mv88e6352_g2_scratch_gpio_get_dir`:
 
@@ -99,11 +112,13 @@ mv88e6352_g2_scratch_gpio_get_dir
 
     get direction of gpio pin
 
-    :param struct mv88e6xxx_chip \*chip:
+    :param chip:
         chip private data
+    :type chip: struct mv88e6xxx_chip \*
 
-    :param unsigned int pin:
+    :param pin:
         gpio index
+    :type pin: unsigned int
 
 .. _`mv88e6352_g2_scratch_gpio_get_dir.return`:
 
@@ -121,14 +136,17 @@ mv88e6352_g2_scratch_gpio_set_dir
 
     set direction of gpio pin
 
-    :param struct mv88e6xxx_chip \*chip:
+    :param chip:
         chip private data
+    :type chip: struct mv88e6xxx_chip \*
 
-    :param unsigned int pin:
+    :param pin:
         gpio index
+    :type pin: unsigned int
 
-    :param bool input:
+    :param input:
         *undescribed*
+    :type input: bool
 
 .. _`mv88e6352_g2_scratch_gpio_get_pctl`:
 
@@ -139,14 +157,17 @@ mv88e6352_g2_scratch_gpio_get_pctl
 
     get pin control setting
 
-    :param struct mv88e6xxx_chip \*chip:
+    :param chip:
         chip private data
+    :type chip: struct mv88e6xxx_chip \*
 
-    :param unsigned int pin:
+    :param pin:
         gpio index
+    :type pin: unsigned int
 
-    :param int \*func:
+    :param func:
         function number
+    :type func: int \*
 
 .. _`mv88e6352_g2_scratch_gpio_get_pctl.description`:
 
@@ -164,14 +185,17 @@ mv88e6352_g2_scratch_gpio_set_pctl
 
     set pin control setting
 
-    :param struct mv88e6xxx_chip \*chip:
+    :param chip:
         chip private data
+    :type chip: struct mv88e6xxx_chip \*
 
-    :param unsigned int pin:
+    :param pin:
         gpio index
+    :type pin: unsigned int
 
-    :param int func:
+    :param func:
         function number
+    :type func: int
 
 .. _`mv88e6xxx_g2_scratch_gpio_set_smi`:
 
@@ -182,11 +206,13 @@ mv88e6xxx_g2_scratch_gpio_set_smi
 
     set gpio muxing for external smi
 
-    :param struct mv88e6xxx_chip \*chip:
+    :param chip:
         chip private data
+    :type chip: struct mv88e6xxx_chip \*
 
-    :param bool external:
+    :param external:
         set mux for external smi, or free for gpio usage
+    :type external: bool
 
 .. _`mv88e6xxx_g2_scratch_gpio_set_smi.description`:
 

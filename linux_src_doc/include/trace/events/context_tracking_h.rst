@@ -10,8 +10,9 @@ trace_user_enter
 
     called when the kernel resumes to userspace
 
-    :param int dummy:
+    :param dummy:
         dummy arg to make trace event macro happy
+    :type dummy: int
 
 .. _`trace_user_enter.description`:
 
@@ -30,8 +31,9 @@ trace_user_exit
 
     called when userspace enters the kernel
 
-    :param int dummy:
+    :param dummy:
         dummy arg to make trace event macro happy
+    :type dummy: int
 
 .. _`trace_user_exit.description`:
 

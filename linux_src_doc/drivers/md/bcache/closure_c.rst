@@ -10,12 +10,14 @@ closure_wait
 
     add a closure to a waitlist
 
-    :param struct closure_waitlist \*waitlist:
+    :param waitlist:
         will own a ref on \ ``cl``\ , which will be released when
         \ :c:func:`closure_wake_up`\  is called on \ ``waitlist``\ .
+    :type waitlist: struct closure_waitlist \*
 
-    :param struct closure \*cl:
+    :param cl:
         closure pointer.
+    :type cl: struct closure \*
 
 .. This file was automatic generated / don't edit.
 

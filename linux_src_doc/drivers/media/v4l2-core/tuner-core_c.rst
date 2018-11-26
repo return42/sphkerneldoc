@@ -1,6 +1,93 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/media/v4l2-core/tuner-core.c
 
+.. _`tuner_pad_index`:
+
+enum tuner_pad_index
+====================
+
+.. c:type:: enum tuner_pad_index
+
+    tuner pad index for MEDIA_ENT_F_TUNER
+
+.. _`tuner_pad_index.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum tuner_pad_index {
+        TUNER_PAD_RF_INPUT,
+        TUNER_PAD_OUTPUT,
+        TUNER_PAD_AUD_OUT,
+        TUNER_NUM_PADS
+    };
+
+.. _`tuner_pad_index.constants`:
+
+Constants
+---------
+
+TUNER_PAD_RF_INPUT
+    Radiofrequency (RF) sink pad, usually linked to a RF connector entity.
+
+TUNER_PAD_OUTPUT
+    tuner video output source pad. Contains the video chrominance
+    and luminance or the hole bandwidth of the signal converted to
+    an Intermediate Frequency (IF) or to baseband (on zero-IF tuners).
+
+TUNER_PAD_AUD_OUT
+    Tuner audio output source pad. Tuners used to decode analog TV
+    signals have an extra pad for audio output. Old tuners use an
+    analog stage with a saw filter for the audio IF frequency. The
+    output of the pad is, in this case, the audio IF, with should be
+    decoded either by the bridge chipset (that's the case of cx2388x
+    chipsets) or may require an external IF sound processor, like
+    msp34xx. On modern silicon tuners, the audio IF decoder is usually
+    incorporated at the tuner. On such case, the output of this pad
+    is an audio sampled data.
+
+TUNER_NUM_PADS
+    Number of pads of the tuner.
+
+.. _`if_vid_dec_pad_index`:
+
+enum if_vid_dec_pad_index
+=========================
+
+.. c:type:: enum if_vid_dec_pad_index
+
+    video IF-PLL pad index for MEDIA_ENT_F_IF_VID_DECODER
+
+.. _`if_vid_dec_pad_index.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum if_vid_dec_pad_index {
+        IF_VID_DEC_PAD_IF_INPUT,
+        IF_VID_DEC_PAD_OUT,
+        IF_VID_DEC_PAD_NUM_PADS
+    };
+
+.. _`if_vid_dec_pad_index.constants`:
+
+Constants
+---------
+
+IF_VID_DEC_PAD_IF_INPUT
+    video Intermediate Frequency (IF) sink pad
+
+IF_VID_DEC_PAD_OUT
+    IF-PLL video output source pad. Contains the video chrominance
+    and luminance IF signals.
+
+IF_VID_DEC_PAD_NUM_PADS
+    Number of pads of the video IF-PLL.
+
 .. _`set_type`:
 
 set_type
@@ -10,18 +97,22 @@ set_type
 
     Sets the tuner type for a given device
 
-    :param struct i2c_client \*c:
+    :param c:
         i2c_client descriptor
+    :type c: struct i2c_client \*
 
-    :param unsigned int type:
+    :param type:
         type of the tuner (e. g. tuner number)
+    :type type: unsigned int
 
-    :param unsigned int new_mode_mask:
+    :param new_mode_mask:
         Indicates if tuner supports TV and/or Radio
+    :type new_mode_mask: unsigned int
 
-    :param void \*new_config:
+    :param new_config:
         an optional parameter used by a few tuners to adjust
         internal parameters, like LNA mode
+    :type new_config: void \*
 
     :param int (\*tuner_callback)(void \*dev, int component, int cmd, int arg):
         an optional function to be called when switching
@@ -44,11 +135,13 @@ tuner_s_type_addr
 
     Sets the tuner type for a device
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         subdev descriptor
+    :type sd: struct v4l2_subdev \*
 
-    :param struct tuner_setup \*tun_setup:
+    :param tun_setup:
         type to be associated to a given tuner i2c address
+    :type tun_setup: struct tuner_setup \*
 
 .. _`tuner_s_type_addr.description`:
 
@@ -72,11 +165,13 @@ tuner_s_config
 
     Sets tuner configuration
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         subdev descriptor
+    :type sd: struct v4l2_subdev \*
 
-    :param const struct v4l2_priv_tun_config \*cfg:
+    :param cfg:
         tuner configuration
+    :type cfg: const struct v4l2_priv_tun_config \*
 
 .. _`tuner_s_config.description`:
 
@@ -95,14 +190,17 @@ tuner_lookup
 
     Seek for tuner adapters
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         i2c_adapter struct
+    :type adap: struct i2c_adapter \*
 
-    :param struct tuner \*\*radio:
+    :param radio:
         pointer to be filled if the adapter is radio
+    :type radio: struct tuner \*\*
 
-    :param struct tuner \*\*tv:
+    :param tv:
         pointer to be filled if the adapter is TV
+    :type tv: struct tuner \*\*
 
 .. _`tuner_lookup.description`:
 
@@ -125,11 +223,13 @@ tuner_probe
 
     Probes the existing tuners on an I2C bus
 
-    :param struct i2c_client \*client:
+    :param client:
         i2c_client descriptor
+    :type client: struct i2c_client \*
 
-    :param const struct i2c_device_id \*id:
+    :param id:
         not used
+    :type id: const struct i2c_device_id \*
 
 .. _`tuner_probe.description`:
 
@@ -154,8 +254,9 @@ tuner_remove
 
     detaches a tuner
 
-    :param struct i2c_client \*client:
+    :param client:
         i2c_client descriptor
+    :type client: struct i2c_client \*
 
 .. _`check_mode`:
 
@@ -166,11 +267,13 @@ check_mode
 
     Verify if tuner supports the requested mode
 
-    :param struct tuner \*t:
+    :param t:
         a pointer to the module's internal struct_tuner
+    :type t: struct tuner \*
 
-    :param enum v4l2_tuner_type mode:
+    :param mode:
         mode of the tuner, as defined by \ :c:type:`enum v4l2_tuner_type <v4l2_tuner_type>`\ .
+    :type mode: enum v4l2_tuner_type
 
 .. _`check_mode.description`:
 
@@ -202,11 +305,13 @@ set_mode
 
     Switch tuner to other mode.
 
-    :param struct tuner \*t:
+    :param t:
         a pointer to the module's internal struct_tuner
+    :type t: struct tuner \*
 
-    :param enum v4l2_tuner_type mode:
+    :param mode:
         enum v4l2_type (radio or TV)
+    :type mode: enum v4l2_tuner_type
 
 .. _`set_mode.description`:
 
@@ -226,11 +331,13 @@ set_freq
 
     Set the tuner to the desired frequency.
 
-    :param struct tuner \*t:
+    :param t:
         a pointer to the module's internal struct_tuner
+    :type t: struct tuner \*
 
-    :param unsigned int freq:
+    :param freq:
         frequency to set (0 means to use the current frequency)
+    :type freq: unsigned int
 
 .. _`set_tv_freq`:
 
@@ -241,11 +348,13 @@ set_tv_freq
 
     Set tuner frequency,  freq in Units of 62.5 kHz = 1/16MHz
 
-    :param struct i2c_client \*c:
+    :param c:
         i2c_client descriptor
+    :type c: struct i2c_client \*
 
-    :param unsigned int freq:
+    :param freq:
         frequency
+    :type freq: unsigned int
 
 .. _`tuner_fixup_std`:
 
@@ -256,11 +365,13 @@ tuner_fixup_std
 
     force a given video standard variant
 
-    :param struct tuner \*t:
+    :param t:
         tuner internal struct
+    :type t: struct tuner \*
 
-    :param v4l2_std_id std:
+    :param std:
         TV standard
+    :type std: v4l2_std_id
 
 .. _`tuner_fixup_std.description`:
 
@@ -284,11 +395,13 @@ set_radio_freq
 
     Set tuner frequency,  freq in Units of 62.5 Hz  = 1/16kHz
 
-    :param struct i2c_client \*c:
+    :param c:
         i2c_client descriptor
+    :type c: struct i2c_client \*
 
-    :param unsigned int freq:
+    :param freq:
         frequency
+    :type freq: unsigned int
 
 .. _`tuner_status`:
 
@@ -299,8 +412,9 @@ tuner_status
 
     Dumps the current tuner status at dmesg
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         pointer to struct dvb_frontend
+    :type fe: struct dvb_frontend \*
 
 .. _`tuner_status.description`:
 
@@ -319,8 +433,9 @@ tuner_standby
 
     places the tuner in standby mode
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to struct v4l2_subdev
+    :type sd: struct v4l2_subdev \*
 
 .. _`tuner_g_frequency`:
 
@@ -331,11 +446,13 @@ tuner_g_frequency
 
     Get the tuned frequency for the tuner
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to struct v4l2_subdev
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_frequency \*f:
+    :param f:
         pointer to struct v4l2_frequency
+    :type f: struct v4l2_frequency \*
 
 .. _`tuner_g_frequency.description`:
 
@@ -362,11 +479,13 @@ tuner_g_tuner
 
     Fill in tuner information
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to struct v4l2_subdev
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_tuner \*vt:
+    :param vt:
         pointer to struct v4l2_tuner
+    :type vt: struct v4l2_tuner \*
 
 .. _`tuner_g_tuner.description`:
 
@@ -393,11 +512,13 @@ tuner_s_tuner
 
     Set the tuner's audio mode
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to struct v4l2_subdev
+    :type sd: struct v4l2_subdev \*
 
-    :param const struct v4l2_tuner \*vt:
+    :param vt:
         pointer to struct v4l2_tuner
+    :type vt: const struct v4l2_tuner \*
 
 .. _`tuner_s_tuner.description`:
 

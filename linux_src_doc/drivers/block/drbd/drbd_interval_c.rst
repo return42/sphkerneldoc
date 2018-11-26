@@ -10,8 +10,9 @@ interval_end
 
     return end of \ ``node``\ 
 
-    :param struct rb_node \*node:
+    :param node:
         *undescribed*
+    :type node: struct rb_node \*
 
 .. _`compute_subtree_last`:
 
@@ -22,8 +23,9 @@ compute_subtree_last
 
     compute end of \ ``node``\ 
 
-    :param struct drbd_interval \*node:
+    :param node:
         *undescribed*
+    :type node: struct drbd_interval \*
 
 .. _`compute_subtree_last.description`:
 
@@ -43,11 +45,13 @@ drbd_insert_interval
 
     insert a new interval into a tree
 
-    :param struct rb_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct rb_root \*
 
-    :param struct drbd_interval \*this:
+    :param this:
         *undescribed*
+    :type this: struct drbd_interval \*
 
 .. _`drbd_contains_interval`:
 
@@ -58,14 +62,17 @@ drbd_contains_interval
 
     check if a tree contains a given interval
 
-    :param struct rb_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct rb_root \*
 
-    :param sector_t sector:
+    :param sector:
         start sector of \ ``interval``\ 
+    :type sector: sector_t
 
-    :param struct drbd_interval \*interval:
+    :param interval:
         may not be a valid pointer
+    :type interval: struct drbd_interval \*
 
 .. _`drbd_contains_interval.description`:
 
@@ -86,11 +93,13 @@ drbd_remove_interval
 
     remove an interval from a tree
 
-    :param struct rb_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct rb_root \*
 
-    :param struct drbd_interval \*this:
+    :param this:
         *undescribed*
+    :type this: struct drbd_interval \*
 
 .. _`drbd_find_overlap`:
 
@@ -101,14 +110,17 @@ drbd_find_overlap
 
     search for an interval overlapping with [sector, sector + size)
 
-    :param struct rb_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct rb_root \*
 
-    :param sector_t sector:
+    :param sector:
         start sector
+    :type sector: sector_t
 
-    :param unsigned int size:
+    :param size:
         size, aligned to 512 bytes
+    :type size: unsigned int
 
 .. _`drbd_find_overlap.description`:
 

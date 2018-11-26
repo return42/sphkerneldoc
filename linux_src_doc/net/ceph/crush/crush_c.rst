@@ -10,11 +10,13 @@ crush_get_bucket_item_weight
 
     Get weight of an item in given bucket
 
-    :param const struct crush_bucket \*b:
+    :param b:
         bucket pointer
+    :type b: const struct crush_bucket \*
 
-    :param int p:
+    :param p:
         item index in bucket
+    :type p: int
 
 .. _`crush_destroy`:
 
@@ -25,8 +27,9 @@ crush_destroy
 
     Destroy a crush_map
 
-    :param struct crush_map \*map:
+    :param map:
         crush_map pointer
+    :type map: struct crush_map \*
 
 .. This file was automatic generated / don't edit.
 

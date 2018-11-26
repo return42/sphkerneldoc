@@ -10,8 +10,9 @@ mips_cps_numclusters
 
     return the number of clusters present in the system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cps_numclusters.description`:
 
@@ -29,8 +30,9 @@ mips_cps_cluster_config
 
     return (GCR\|CPC)_CONFIG from a cluster
 
-    :param unsigned int cluster:
+    :param cluster:
         the ID of the cluster whose config we want
+    :type cluster: unsigned int
 
 .. _`mips_cps_cluster_config.description`:
 
@@ -50,8 +52,9 @@ mips_cps_numcores
 
     return the number of cores present in a cluster
 
-    :param unsigned int cluster:
+    :param cluster:
         the ID of the cluster whose core count we want
+    :type cluster: unsigned int
 
 .. _`mips_cps_numcores.description`:
 
@@ -70,8 +73,9 @@ mips_cps_numiocu
 
     return the number of IOCUs present in a cluster
 
-    :param unsigned int cluster:
+    :param cluster:
         the ID of the cluster whose IOCU count we want
+    :type cluster: unsigned int
 
 .. _`mips_cps_numiocu.description`:
 
@@ -90,11 +94,13 @@ mips_cps_numvps
 
     return the number of VPs (threads) supported by a core
 
-    :param unsigned int cluster:
+    :param cluster:
         the ID of the cluster containing the core we want to examine
+    :type cluster: unsigned int
 
-    :param unsigned int core:
+    :param core:
         the ID of the core whose VP count we want
+    :type core: unsigned int
 
 .. _`mips_cps_numvps.description`:
 

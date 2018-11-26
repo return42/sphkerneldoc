@@ -10,11 +10,13 @@ sstfb_check_var
 
     Optional function.  Validates a var passed in.
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer variable screen structure
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`sstfb_check_var.description`:
 
@@ -33,8 +35,9 @@ sstfb_set_par
 
     Optional function.  Alters the hardware state.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`sstfb_setcolreg`:
 
@@ -45,23 +48,29 @@ sstfb_setcolreg
 
     Optional function. Sets a color register.
 
-    :param u_int regno:
+    :param regno:
         hardware colormap register
+    :type regno: u_int
 
-    :param u_int red:
+    :param red:
         frame buffer colormap structure
+    :type red: u_int
 
-    :param u_int green:
+    :param green:
         The green value which can be up to 16 bits wide
+    :type green: u_int
 
-    :param u_int blue:
+    :param blue:
         The blue value which can be up to 16 bits wide.
+    :type blue: u_int
 
-    :param u_int transp:
+    :param transp:
         If supported the alpha value which can be up to 16 bits wide.
+    :type transp: u_int
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. This file was automatic generated / don't edit.
 

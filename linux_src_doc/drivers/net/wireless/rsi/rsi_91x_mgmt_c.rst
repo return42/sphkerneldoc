@@ -10,8 +10,9 @@ rsi_set_default_parameters
 
     This function sets default parameters.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_set_default_parameters.return`:
 
@@ -29,8 +30,9 @@ rsi_set_contention_vals
 
     This function sets the contention values for the backoff procedure.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_set_contention_vals.return`:
 
@@ -48,11 +50,13 @@ rsi_send_internal_mgmt_frame
 
     This function sends management frames to firmware.Also schedules packet to queue for transmission.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Pointer to the socket buffer structure.
+    :type skb: struct sk_buff \*
 
 .. _`rsi_send_internal_mgmt_frame.return`:
 
@@ -70,8 +74,9 @@ rsi_load_radio_caps
 
     This function is used to send radio capabilities values to firmware.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_load_radio_caps.return`:
 
@@ -89,14 +94,17 @@ rsi_mgmt_pkt_to_core
 
     This function is the entry point for Mgmt module.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u8 \*msg:
+    :param msg:
         Pointer to received packet.
+    :type msg: u8 \*
 
-    :param s32 msg_len:
+    :param msg_len:
         Length of the recieved packet.
+    :type msg_len: s32
 
 .. _`rsi_mgmt_pkt_to_core.return`:
 
@@ -114,29 +122,37 @@ rsi_hal_send_sta_notify_frame
 
     This function sends the station notify frame to firmware.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param enum opmode opmode:
+    :param opmode:
         Operating mode of device.
+    :type opmode: enum opmode
 
-    :param u8 notify_event:
+    :param notify_event:
         Notification about station connection.
+    :type notify_event: u8
 
-    :param const unsigned char \*bssid:
+    :param bssid:
         bssid.
+    :type bssid: const unsigned char \*
 
-    :param u8 qos_enable:
+    :param qos_enable:
         Qos is enabled.
+    :type qos_enable: u8
 
-    :param u16 aid:
+    :param aid:
         Aid (unique for all STA).
+    :type aid: u16
 
-    :param u16 sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: u16
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         *undescribed*
+    :type vif: struct ieee80211_vif \*
 
 .. _`rsi_hal_send_sta_notify_frame.return`:
 
@@ -154,23 +170,29 @@ rsi_send_aggregation_params_frame
 
     This function sends the ampdu indication frame to firmware.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u16 tid:
+    :param tid:
         traffic identifier.
+    :type tid: u16
 
-    :param u16 ssn:
+    :param ssn:
         ssn.
+    :type ssn: u16
 
-    :param u8 buf_size:
+    :param buf_size:
         buffer size.
+    :type buf_size: u8
 
-    :param u8 event:
+    :param event:
         notification about station connection.
+    :type event: u8
 
-    :param u8 sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: u8
 
 .. _`rsi_send_aggregation_params_frame.return`:
 
@@ -188,8 +210,9 @@ rsi_program_bb_rf
 
     This function starts base band and RF programming. This is called after initial configurations are done.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_program_bb_rf.return`:
 
@@ -207,20 +230,25 @@ rsi_set_vap_capabilities
 
     This function send vap capability to firmware.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param enum opmode mode:
+    :param mode:
         *undescribed*
+    :type mode: enum opmode
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         *undescribed*
+    :type mac_addr: u8 \*
 
-    :param u8 vap_id:
+    :param vap_id:
         *undescribed*
+    :type vap_id: u8
 
-    :param u8 vap_status:
+    :param vap_status:
         *undescribed*
+    :type vap_status: u8
 
 .. _`rsi_set_vap_capabilities.return`:
 
@@ -238,29 +266,37 @@ rsi_hal_load_key
 
     This function is used to load keys within the firmware.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u8 \*data:
+    :param data:
         Pointer to the key data.
+    :type data: u8 \*
 
-    :param u16 key_len:
+    :param key_len:
         Key length to be loaded.
+    :type key_len: u16
 
-    :param u8 key_type:
+    :param key_type:
         Type of key: GROUP/PAIRWISE.
+    :type key_type: u8
 
-    :param u8 key_id:
+    :param key_id:
         Key index.
+    :type key_id: u8
 
-    :param u32 cipher:
+    :param cipher:
         Type of cipher used.
+    :type cipher: u32
 
-    :param s16 sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: s16
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         *undescribed*
+    :type vif: struct ieee80211_vif \*
 
 .. _`rsi_hal_load_key.return`:
 
@@ -278,8 +314,9 @@ rsi_send_reset_mac
 
     This function prepares reset MAC request and sends an internal management frame to indicate it to firmware.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_send_reset_mac.return`:
 
@@ -297,11 +334,13 @@ rsi_band_check
 
     This function programs the band
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param struct ieee80211_channel \*curchan:
+    :param curchan:
         *undescribed*
+    :type curchan: struct ieee80211_channel \*
 
 .. _`rsi_band_check.return`:
 
@@ -319,11 +358,13 @@ rsi_set_channel
 
     This function programs the channel.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         Channel value to be set.
+    :type channel: struct ieee80211_channel \*
 
 .. _`rsi_set_channel.return`:
 
@@ -341,8 +382,9 @@ rsi_send_radio_params_update
 
     This function sends the radio parameters update to device
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_send_radio_params_update.return`:
 
@@ -360,11 +402,13 @@ rsi_compare
 
     This function is used to compare two integers
 
-    :param const void \*a:
+    :param a:
         pointer to the first integer
+    :type a: const void \*
 
-    :param const void \*b:
+    :param b:
         pointer to the second integer
+    :type b: const void \*
 
 .. _`rsi_compare.return`:
 
@@ -382,11 +426,13 @@ rsi_map_rates
 
     This function is used to map selected rates to hw rates.
 
-    :param u16 rate:
+    :param rate:
         The standard rate to be mapped.
+    :type rate: u16
 
-    :param int \*offset:
+    :param offset:
         Offset that will be returned.
+    :type offset: int \*
 
 .. _`rsi_map_rates.return`:
 
@@ -404,17 +450,21 @@ rsi_send_auto_rate_request
 
     This function is to set rates for connection and send autorate request to firmware.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
-    :param u16 sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: u16
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         *undescribed*
+    :type vif: struct ieee80211_vif \*
 
 .. _`rsi_send_auto_rate_request.return`:
 
@@ -432,35 +482,45 @@ rsi_inform_bss_status
 
     This function informs about bss status with the help of sta notify params by sending an internal management frame to firmware.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param enum opmode opmode:
+    :param opmode:
         *undescribed*
+    :type opmode: enum opmode
 
-    :param u8 status:
+    :param status:
         Bss status type.
+    :type status: u8
 
-    :param const u8 \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const u8 \*
 
-    :param u8 qos_enable:
+    :param qos_enable:
         Qos is enabled.
+    :type qos_enable: u8
 
-    :param u16 aid:
+    :param aid:
         Aid (unique for all STAs).
+    :type aid: u16
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
-    :param u16 sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: u16
 
-    :param u16 assoc_cap:
+    :param assoc_cap:
         *undescribed*
+    :type assoc_cap: u16
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         *undescribed*
+    :type vif: struct ieee80211_vif \*
 
 .. _`rsi_inform_bss_status.return`:
 
@@ -478,8 +538,9 @@ rsi_eeprom_read
 
     This function sends a frame to read the mac address from the eeprom.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_eeprom_read.return`:
 
@@ -497,11 +558,13 @@ rsi_send_block_unblock_frame
 
     data queues in the firmware
 
-    :param struct rsi_common \*common:
+    :param common:
         *undescribed*
+    :type common: struct rsi_common \*
 
-    :param bool block_event:
+    :param block_event:
         *undescribed*
+    :type block_event: bool
 
 .. _`rsi_send_block_unblock_frame.description`:
 
@@ -521,11 +584,13 @@ rsi_send_rx_filter_frame
 
     Sends a frame to filter the RX packets
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u16 rx_filter_word:
+    :param rx_filter_word:
         Flags of filter packets
+    :type rx_filter_word: u16
 
 .. _`rsi_set_antenna`:
 
@@ -536,11 +601,13 @@ rsi_set_antenna
 
     This fuction send antenna configuration request to device
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u8 antenna:
+    :param antenna:
         bitmap for tx antenna selection
+    :type antenna: u8
 
 .. _`rsi_set_antenna.return`:
 
@@ -558,11 +625,13 @@ rsi_handle_ta_confirm_type
 
     This function handles the confirm frames.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u8 \*msg:
+    :param msg:
         Pointer to received packet.
+    :type msg: u8 \*
 
 .. _`rsi_handle_ta_confirm_type.return`:
 
@@ -580,11 +649,13 @@ rsi_mgmt_pkt_recv
 
     This function processes the management packets recieved from the hardware.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u8 \*msg:
+    :param msg:
         Pointer to the received packet.
+    :type msg: u8 \*
 
 .. _`rsi_mgmt_pkt_recv.return`:
 

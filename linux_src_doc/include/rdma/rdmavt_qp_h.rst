@@ -10,8 +10,9 @@ rvt_is_user_qp
 
     return if this is user mode QP \ ``qp``\  - the target QP
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_get_qp`:
 
@@ -22,8 +23,9 @@ rvt_get_qp
 
     get a QP reference \ ``qp``\  - the QP to hold
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_put_qp`:
 
@@ -34,8 +36,9 @@ rvt_put_qp
 
     release a QP reference \ ``qp``\  - the QP to release
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_put_swqe`:
 
@@ -46,8 +49,9 @@ rvt_put_swqe
 
     drop mr refs held by swqe \ ``wqe``\  - the send wqe
 
-    :param struct rvt_swqe \*wqe:
+    :param wqe:
         *undescribed*
+    :type wqe: struct rvt_swqe \*
 
 .. _`rvt_put_swqe.description`:
 
@@ -65,11 +69,13 @@ rvt_qp_wqe_reserve
 
     reserve operation \ ``qp``\  - the rvt qp \ ``wqe``\  - the send wqe
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param struct rvt_swqe \*wqe:
+    :param wqe:
         *undescribed*
+    :type wqe: struct rvt_swqe \*
 
 .. _`rvt_qp_wqe_reserve.description`:
 
@@ -88,11 +94,13 @@ rvt_qp_wqe_unreserve
 
     clean reserved operation \ ``qp``\  - the rvt qp \ ``wqe``\  - the send wqe
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param struct rvt_swqe \*wqe:
+    :param wqe:
         *undescribed*
+    :type wqe: struct rvt_swqe \*
 
 .. _`rvt_qp_wqe_unreserve.description`:
 
@@ -118,17 +126,21 @@ rvt_qp_swqe_complete
 
     insert send completion \ ``qp``\  - the qp \ ``wqe``\  - the send wqe \ ``status``\  - completion status
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param struct rvt_swqe \*wqe:
+    :param wqe:
         *undescribed*
+    :type wqe: struct rvt_swqe \*
 
-    :param enum ib_wc_opcode opcode:
+    :param opcode:
         *undescribed*
+    :type opcode: enum ib_wc_opcode
 
-    :param enum ib_wc_status status:
+    :param status:
         *undescribed*
+    :type status: enum ib_wc_status
 
 .. _`rvt_qp_swqe_complete.description`:
 
@@ -150,8 +162,9 @@ rvt_compute_aeth
 
     compute the AETH (syndrome + MSN)
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the queue pair to compute the AETH for
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_compute_aeth.description`:
 
@@ -169,11 +182,13 @@ rvt_get_credit
 
     flush the send work queue of a QP
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the qp who's send work queue to flush
+    :type qp: struct rvt_qp \*
 
-    :param u32 aeth:
+    :param aeth:
         the Acknowledge Extended Transport Header
+    :type aeth: u32
 
 .. _`rvt_get_credit.description`:
 
@@ -191,8 +206,9 @@ rvt_timeout_to_jiffies
 
     Convert a ULP timeout input into jiffies \ ``timeout``\  - timeout input(0 - 31).
 
-    :param u8 timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: u8
 
 .. _`rvt_timeout_to_jiffies.description`:
 

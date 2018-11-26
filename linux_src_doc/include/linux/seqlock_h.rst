@@ -10,8 +10,9 @@
 
     begin a seq-read critical section (without barrier)
 
-    :param const seqcount_t \*s:
+    :param s:
         pointer to seqcount_t
+    :type s: const seqcount_t \*
 
 .. _`__read_seqcount_begin.return`:
 
@@ -37,8 +38,9 @@ raw_read_seqcount
 
     Read the raw seqcount
 
-    :param const seqcount_t \*s:
+    :param s:
         pointer to seqcount_t
+    :type s: const seqcount_t \*
 
 .. _`raw_read_seqcount.return`:
 
@@ -60,8 +62,9 @@ raw_read_seqcount_begin
 
     start seq-read critical section w/o lockdep
 
-    :param const seqcount_t \*s:
+    :param s:
         pointer to seqcount_t
+    :type s: const seqcount_t \*
 
 .. _`raw_read_seqcount_begin.return`:
 
@@ -83,8 +86,9 @@ read_seqcount_begin
 
     begin a seq-read critical section
 
-    :param const seqcount_t \*s:
+    :param s:
         pointer to seqcount_t
+    :type s: const seqcount_t \*
 
 .. _`read_seqcount_begin.return`:
 
@@ -106,8 +110,9 @@ raw_seqcount_begin
 
     begin a seq-read critical section
 
-    :param const seqcount_t \*s:
+    :param s:
         pointer to seqcount_t
+    :type s: const seqcount_t \*
 
 .. _`raw_seqcount_begin.return`:
 
@@ -134,11 +139,13 @@ critical section.
 
     end a seq-read critical section (without barrier)
 
-    :param const seqcount_t \*s:
+    :param s:
         pointer to seqcount_t
+    :type s: const seqcount_t \*
 
-    :param unsigned start:
+    :param start:
         count, from read_seqcount_begin
+    :type start: unsigned
 
 .. _`__read_seqcount_retry.return`:
 
@@ -164,11 +171,13 @@ read_seqcount_retry
 
     end a seq-read critical section
 
-    :param const seqcount_t \*s:
+    :param s:
         pointer to seqcount_t
+    :type s: const seqcount_t \*
 
-    :param unsigned start:
+    :param start:
         count, from read_seqcount_begin
+    :type start: unsigned
 
 .. _`read_seqcount_retry.return`:
 
@@ -190,8 +199,9 @@ raw_write_seqcount_barrier
 
     do a seq write barrier
 
-    :param seqcount_t \*s:
+    :param s:
         pointer to seqcount_t
+    :type s: seqcount_t \*
 
 .. _`raw_write_seqcount_barrier.description`:
 
@@ -237,8 +247,9 @@ raw_write_seqcount_latch
 
     redirect readers to even/odd copy
 
-    :param seqcount_t \*s:
+    :param s:
         pointer to seqcount_t
+    :type s: seqcount_t \*
 
 .. _`raw_write_seqcount_latch.description`:
 
@@ -350,8 +361,9 @@ write_seqcount_invalidate
 
     invalidate in-progress read-side seq operations
 
-    :param seqcount_t \*s:
+    :param s:
         pointer to seqcount_t
+    :type s: seqcount_t \*
 
 .. _`write_seqcount_invalidate.description`:
 
@@ -370,11 +382,13 @@ read_seqbegin_or_lock
 
     begin a sequence number check or locking block
 
-    :param seqlock_t \*lock:
+    :param lock:
         sequence lock
+    :type lock: seqlock_t \*
 
-    :param int \*seq:
+    :param seq:
         sequence number to be checked
+    :type seq: int \*
 
 .. _`read_seqbegin_or_lock.description`:
 

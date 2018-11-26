@@ -10,8 +10,9 @@ regs_query_register_offset
 
     query register offset from its name
 
-    :param const char \*name:
+    :param name:
         the name of a register
+    :type name: const char \*
 
 .. _`regs_query_register_offset.description`:
 
@@ -30,8 +31,9 @@ regs_query_register_name
 
     query register name from its offset
 
-    :param unsigned int offset:
+    :param offset:
         the offset of a register in struct pt_regs.
+    :type offset: unsigned int
 
 .. _`regs_query_register_name.description`:
 

@@ -10,43 +10,54 @@ bcm2835_dma_create_cb_chain
 
     create a control block and fills data in
 
-    :param struct dma_chan \*chan:
+    :param chan:
         the \ ``dma_chan``\  for which we run this
+    :type chan: struct dma_chan \*
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         the direction in which we transfer
+    :type direction: enum dma_transfer_direction
 
-    :param bool cyclic:
+    :param cyclic:
         it is a cyclic transfer
+    :type cyclic: bool
 
-    :param u32 info:
+    :param info:
         the default info bits to apply per controlblock
+    :type info: u32
 
-    :param u32 finalextrainfo:
+    :param finalextrainfo:
         additional bits in last controlblock
         (or when period_len is reached in case of cyclic)
+    :type finalextrainfo: u32
 
-    :param size_t frames:
+    :param frames:
         number of controlblocks to allocate
+    :type frames: size_t
 
-    :param dma_addr_t src:
+    :param src:
         the src address to assign (if the S_INC bit is set
         in \ ``info``\ , then it gets incremented)
+    :type src: dma_addr_t
 
-    :param dma_addr_t dst:
+    :param dst:
         the dst address to assign (if the D_INC bit is set
         in \ ``info``\ , then it gets incremented)
+    :type dst: dma_addr_t
 
-    :param size_t buf_len:
+    :param buf_len:
         the full buffer length (may also be 0)
+    :type buf_len: size_t
 
-    :param size_t period_len:
+    :param period_len:
         the period length when to apply \ ``finalextrainfo``\ 
         in addition to the last transfer
         this will also break some control-blocks early
+    :type period_len: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         the GFP flag to use for allocation
+    :type gfp: gfp_t
 
 .. This file was automatic generated / don't edit.
 

@@ -82,8 +82,9 @@ palmas_power_button_work
 
     Detects the button release event
 
-    :param struct work_struct \*work:
+    :param work:
         work item to detect button release
+    :type work: struct work_struct \*
 
 .. _`pwron_irq`:
 
@@ -94,11 +95,13 @@ pwron_irq
 
     button press isr
 
-    :param int irq:
+    :param irq:
         irq
+    :type irq: int
 
-    :param void \*palmas_pwron:
+    :param palmas_pwron:
         pwron struct
+    :type palmas_pwron: void \*
 
 .. _`pwron_irq.return`:
 
@@ -116,11 +119,13 @@ palmas_pwron_params_ofinit
 
     device tree parameter parser
 
-    :param struct device \*dev:
+    :param dev:
         palmas button device
+    :type dev: struct device \*
 
-    :param struct palmas_pwron_config \*config:
+    :param config:
         configuration params that this fills up
+    :type config: struct palmas_pwron_config \*
 
 .. _`palmas_pwron_probe`:
 
@@ -131,8 +136,9 @@ palmas_pwron_probe
 
     probe
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device for the button
+    :type pdev: struct platform_device \*
 
 .. _`palmas_pwron_probe.return`:
 
@@ -150,8 +156,9 @@ palmas_pwron_remove
 
     Cleanup on removal
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device for the button
+    :type pdev: struct platform_device \*
 
 .. _`palmas_pwron_remove.return`:
 
@@ -169,8 +176,9 @@ palmas_pwron_suspend
 
     suspend handler
 
-    :param struct device \*dev:
+    :param dev:
         power button device
+    :type dev: struct device \*
 
 .. _`palmas_pwron_suspend.description`:
 
@@ -195,8 +203,9 @@ palmas_pwron_resume
 
     resume handler
 
-    :param struct device \*dev:
+    :param dev:
         power button device
+    :type dev: struct device \*
 
 .. _`palmas_pwron_resume.description`:
 

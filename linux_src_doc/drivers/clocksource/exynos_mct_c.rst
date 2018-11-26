@@ -10,8 +10,9 @@ exynos4_read_count_64
 
     Read all 64-bits of the global counter
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`exynos4_read_count_64.description`:
 
@@ -34,8 +35,9 @@ exynos4_read_count_32
 
     Read the lower 32-bits of the global counter
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`exynos4_read_count_32.description`:
 

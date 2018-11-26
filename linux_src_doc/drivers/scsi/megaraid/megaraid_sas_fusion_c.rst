@@ -10,14 +10,17 @@ megasas_check_same_4gb_region
 
     check if allocation crosses same 4GB boundary or not \ ``instance``\  -                          adapter's soft instance start_addr -                 start address of DMA allocation size -                               size of allocation in bytes return -                             true : allocation does not cross same 4GB boundary false: allocation crosses same 4GB boundary
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param dma_addr_t start_addr:
+    :param start_addr:
         *undescribed*
+    :type start_addr: dma_addr_t
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`megasas_enable_intr_fusion`:
 
@@ -28,8 +31,9 @@ megasas_enable_intr_fusion
 
     Enables interrupts
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_disable_intr_fusion`:
 
@@ -40,8 +44,9 @@ megasas_disable_intr_fusion
 
     Disables interrupt
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_get_cmd_fusion`:
 
@@ -52,11 +57,13 @@ megasas_get_cmd_fusion
 
     Get a command from the free pool
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param u32 blk_tag:
+    :param blk_tag:
         *undescribed*
+    :type blk_tag: u32
 
 .. _`megasas_get_cmd_fusion.description`:
 
@@ -74,11 +81,13 @@ megasas_return_cmd_fusion
 
     Return a cmd to free command pool
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd_fusion \*cmd:
+    :param cmd:
         Command packet to be returned to free command pool
+    :type cmd: struct megasas_cmd_fusion \*
 
 .. _`megasas_fire_cmd_fusion`:
 
@@ -89,11 +98,13 @@ megasas_fire_cmd_fusion
 
     Sends command to the FW
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param union MEGASAS_REQUEST_DESCRIPTOR_UNION \*req_desc:
+    :param req_desc:
         64bit Request descriptor
+    :type req_desc: union MEGASAS_REQUEST_DESCRIPTOR_UNION \*
 
 .. _`megasas_fire_cmd_fusion.description`:
 
@@ -111,11 +122,13 @@ megasas_fusion_update_can_queue
 
     Do all Adapter Queue depth related calculations here
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param int fw_boot_context:
+    :param fw_boot_context:
         *undescribed*
+    :type fw_boot_context: int
 
 .. _`megasas_fusion_update_can_queue.fw_boot_context`:
 
@@ -138,8 +151,9 @@ megasas_free_cmds_fusion
 
     Free all the cmds in the free cmd pool
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_create_sg_sense_fusion`:
 
@@ -150,8 +164,9 @@ megasas_create_sg_sense_fusion
 
     Creates DMA pool for cmd frames
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_alloc_cmds_fusion`:
 
@@ -162,8 +177,9 @@ megasas_alloc_cmds_fusion
 
     Allocates the command packets
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_alloc_cmds_fusion.description`:
 
@@ -191,14 +207,17 @@ wait_and_poll
 
     Issues a polling command
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         Command packet to be issued
+    :type cmd: struct megasas_cmd \*
 
-    :param int seconds:
+    :param seconds:
         *undescribed*
+    :type seconds: int
 
 .. _`wait_and_poll.description`:
 
@@ -216,8 +235,9 @@ megasas_ioc_init_fusion
 
     Initializes the FW
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_ioc_init_fusion.description`:
 
@@ -235,11 +255,13 @@ megasas_sync_pd_seq_num
 
     JBOD SEQ MAP
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param bool pend:
+    :param pend:
         set to 1, if it is pended jbod map.
+    :type pend: bool
 
 .. _`megasas_sync_pd_seq_num.description`:
 
@@ -259,8 +281,9 @@ megasas_allocate_raid_maps
 
     Allocate memory for RAID maps
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_allocate_raid_maps.return`:
 
@@ -279,8 +302,9 @@ megasas_configure_queue_sizes
 
     Calculate size of request desc queue, reply desc queue, IO request frame queue, set can_queue.
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_free_ioc_init_cmd`:
 
@@ -291,8 +315,9 @@ megasas_free_ioc_init_cmd
 
     Free IOC INIT command frame
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_init_adapter_fusion`:
 
@@ -303,8 +328,9 @@ megasas_init_adapter_fusion
 
     Initializes the FW
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_init_adapter_fusion.description`:
 
@@ -322,23 +348,29 @@ map_cmd_status
 
     Maps FW cmd status to OS cmd status
 
-    :param struct fusion_context \*fusion:
+    :param fusion:
         *undescribed*
+    :type fusion: struct fusion_context \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         *undescribed*
+    :type scmd: struct scsi_cmnd \*
 
-    :param u8 status:
+    :param status:
         status of cmd returned by FW
+    :type status: u8
 
-    :param u8 ext_status:
+    :param ext_status:
         ext status of cmd returned by FW
+    :type ext_status: u8
 
-    :param u32 data_length:
+    :param data_length:
         *undescribed*
+    :type data_length: u32
 
-    :param u8 \*sense:
+    :param sense:
         *undescribed*
+    :type sense: u8 \*
 
 .. _`megasas_is_prp_possible`:
 
@@ -349,14 +381,17 @@ megasas_is_prp_possible
 
     Checks if native NVMe PRPs can be built for the IO
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command from the mid-layer
+    :type scmd: struct scsi_cmnd \*
 
-    :param int sge_count:
+    :param sge_count:
         scatter gather element count.
+    :type sge_count: int
 
 .. _`megasas_is_prp_possible.return`:
 
@@ -375,20 +410,25 @@ megasas_make_prp_nvme
 
     Prepare PRPs(Physical Region Page)- SGLs specific to NVMe drives only
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command from the mid-layer
+    :type scmd: struct scsi_cmnd \*
 
-    :param struct MPI25_IEEE_SGE_CHAIN64 \*sgl_ptr:
+    :param sgl_ptr:
         SGL to be filled in
+    :type sgl_ptr: struct MPI25_IEEE_SGE_CHAIN64 \*
 
-    :param struct megasas_cmd_fusion \*cmd:
+    :param cmd:
         Fusion command frame
+    :type cmd: struct megasas_cmd_fusion \*
 
-    :param int sge_count:
+    :param sge_count:
         scatter gather element count.
+    :type sge_count: int
 
 .. _`megasas_make_prp_nvme.return`:
 
@@ -407,21 +447,26 @@ megasas_make_sgl_fusion
 
     Prepares 32-bit SGL
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command from the mid-layer
+    :type scp: struct scsi_cmnd \*
 
-    :param struct MPI25_IEEE_SGE_CHAIN64 \*sgl_ptr:
+    :param sgl_ptr:
         SGL to be filled in
+    :type sgl_ptr: struct MPI25_IEEE_SGE_CHAIN64 \*
 
-    :param struct megasas_cmd_fusion \*cmd:
+    :param cmd:
         cmd we are working on
         \ ``sge_count``\            sge count
+    :type cmd: struct megasas_cmd_fusion \*
 
-    :param int sge_count:
+    :param sge_count:
         *undescribed*
+    :type sge_count: int
 
 .. _`megasas_make_sgl`:
 
@@ -432,14 +477,17 @@ megasas_make_sgl
 
     Build Scatter Gather List(SGLs)
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Soft instance of controller
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command pointer
+    :type scp: struct scsi_cmnd \*
 
-    :param struct megasas_cmd_fusion \*cmd:
+    :param cmd:
         Fusion command pointer
+    :type cmd: struct megasas_cmd_fusion \*
 
 .. _`megasas_make_sgl.description`:
 
@@ -462,23 +510,29 @@ megasas_set_pd_lba
 
     Sets PD LBA
 
-    :param struct MPI2_RAID_SCSI_IO_REQUEST \*io_request:
+    :param io_request:
         *undescribed*
+    :type io_request: struct MPI2_RAID_SCSI_IO_REQUEST \*
 
-    :param u8 cdb_len:
+    :param cdb_len:
         cdb length
+    :type cdb_len: u8
 
-    :param struct IO_REQUEST_INFO \*io_info:
+    :param io_info:
         *undescribed*
+    :type io_info: struct IO_REQUEST_INFO \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         *undescribed*
+    :type scp: struct scsi_cmnd \*
 
-    :param struct MR_DRV_RAID_MAP_ALL \*local_map_ptr:
+    :param local_map_ptr:
         *undescribed*
+    :type local_map_ptr: struct MR_DRV_RAID_MAP_ALL \*
 
-    :param u32 ref_tag:
+    :param ref_tag:
         *undescribed*
+    :type ref_tag: u32
 
 .. _`megasas_set_pd_lba.description`:
 
@@ -496,14 +550,17 @@ megasas_stream_detect
 
     stream detection on read and and write IOs
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd_fusion \*cmd:
+    :param cmd:
         Command to be prepared
+    :type cmd: struct megasas_cmd_fusion \*
 
-    :param struct IO_REQUEST_INFO \*io_info:
+    :param io_info:
         IO Request info
+    :type io_info: struct IO_REQUEST_INFO \*
 
 .. _`megasas_set_raidflag_cpu_affinity`:
 
@@ -514,20 +571,25 @@ megasas_set_raidflag_cpu_affinity
 
     This function sets the cpu affinity (cpu of the controller) and raid_flags in the raid context based on IO type.
 
-    :param union RAID_CONTEXT_UNION \*praid_context:
+    :param praid_context:
         IO RAID context
+    :type praid_context: union RAID_CONTEXT_UNION \*
 
-    :param struct MR_LD_RAID \*raid:
+    :param raid:
         LD raid map
+    :type raid: struct MR_LD_RAID \*
 
-    :param bool fp_possible:
+    :param fp_possible:
         Is fast path possible?
+    :type fp_possible: bool
 
-    :param u8 is_read:
+    :param is_read:
         Is read IO?
+    :type is_read: u8
 
-    :param u32 scsi_buff_len:
+    :param scsi_buff_len:
         *undescribed*
+    :type scsi_buff_len: u32
 
 .. _`megasas_build_ldio_fusion`:
 
@@ -538,14 +600,17 @@ megasas_build_ldio_fusion
 
     Prepares IOs to devices
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command
+    :type scp: struct scsi_cmnd \*
 
-    :param struct megasas_cmd_fusion \*cmd:
+    :param cmd:
         Command to be prepared
+    :type cmd: struct megasas_cmd_fusion \*
 
 .. _`megasas_build_ldio_fusion.description`:
 
@@ -564,14 +629,17 @@ megasas_build_ld_nonrw_fusion
 
     prepares non rw ios for virtual disk
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         *undescribed*
+    :type scmd: struct scsi_cmnd \*
 
-    :param struct megasas_cmd_fusion \*cmd:
+    :param cmd:
         Command to be prepared
+    :type cmd: struct megasas_cmd_fusion \*
 
 .. _`megasas_build_ld_nonrw_fusion.description`:
 
@@ -589,17 +657,21 @@ megasas_build_syspd_fusion
 
     prepares rw/non-rw ios for syspd
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         *undescribed*
+    :type scmd: struct scsi_cmnd \*
 
-    :param struct megasas_cmd_fusion \*cmd:
+    :param cmd:
         Command to be prepared
+    :type cmd: struct megasas_cmd_fusion \*
 
-    :param bool fp_possible:
+    :param fp_possible:
         parameter to detect fast path or firmware path io.
+    :type fp_possible: bool
 
 .. _`megasas_build_syspd_fusion.description`:
 
@@ -617,14 +689,17 @@ megasas_build_io_fusion
 
     Prepares IOs to devices
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command
+    :type scp: struct scsi_cmnd \*
 
-    :param struct megasas_cmd_fusion \*cmd:
+    :param cmd:
         Command to be prepared
+    :type cmd: struct megasas_cmd_fusion \*
 
 .. _`megasas_build_io_fusion.description`:
 
@@ -643,11 +718,13 @@ megasas_build_and_issue_cmd_fusion
 
     Main routine for building and issuing non IOCTL cmd
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi cmd from OS
+    :type scmd: struct scsi_cmnd \*
 
 .. _`megasas_complete_r1_command`:
 
@@ -658,11 +735,13 @@ megasas_complete_r1_command
 
     completes R1 FP write commands which has valid peer smid
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd_fusion \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct megasas_cmd_fusion \*
 
 .. _`complete_cmd_fusion`:
 
@@ -673,12 +752,14 @@ complete_cmd_fusion
 
     Completes command
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
         Completes all commands that is in reply descriptor queue
+    :type instance: struct megasas_instance \*
 
-    :param u32 MSIxIndex:
+    :param MSIxIndex:
         *undescribed*
+    :type MSIxIndex: u32
 
 .. _`megasas_sync_irqs`:
 
@@ -689,8 +770,9 @@ megasas_sync_irqs
 
     Synchronizes all IRQs owned by adapter
 
-    :param unsigned long instance_addr:
+    :param instance_addr:
         *undescribed*
+    :type instance_addr: unsigned long
 
 .. _`megasas_complete_cmd_dpc_fusion`:
 
@@ -701,8 +783,9 @@ megasas_complete_cmd_dpc_fusion
 
     Completes command
 
-    :param unsigned long instance_addr:
+    :param instance_addr:
         *undescribed*
+    :type instance_addr: unsigned long
 
 .. _`megasas_complete_cmd_dpc_fusion.description`:
 
@@ -720,11 +803,13 @@ megasas_isr_fusion
 
     isr entry point
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*devp:
+    :param devp:
         *undescribed*
+    :type devp: void \*
 
 .. _`build_mpt_mfi_pass_thru`:
 
@@ -735,11 +820,13 @@ build_mpt_mfi_pass_thru
 
     builds a cmd fo MFI Pass thru
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*mfi_cmd:
+    :param mfi_cmd:
         *undescribed*
+    :type mfi_cmd: struct megasas_cmd \*
 
 .. _`build_mpt_mfi_pass_thru.mfi_cmd`:
 
@@ -757,11 +844,13 @@ build_mpt_cmd
 
     Calls helper function to build a cmd MFI Pass thru cmd
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         mfi cmd to build
+    :type cmd: struct megasas_cmd \*
 
 .. _`megasas_issue_dcmd_fusion`:
 
@@ -772,11 +861,13 @@ megasas_issue_dcmd_fusion
 
     Issues a MFI Pass thru cmd
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         mfi cmd pointer
+    :type cmd: struct megasas_cmd \*
 
 .. _`megasas_release_fusion`:
 
@@ -787,8 +878,9 @@ megasas_release_fusion
 
     Reverses the FW initialization
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_read_fw_status_reg_fusion`:
 
@@ -799,8 +891,9 @@ megasas_read_fw_status_reg_fusion
 
     returns the current FW status value
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_alloc_host_crash_buffer`:
 
@@ -811,8 +904,9 @@ megasas_alloc_host_crash_buffer
 
     Host buffers for Crash dump collection from Firmware
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Controller's soft instance
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_alloc_host_crash_buffer.return`:
 
@@ -830,8 +924,9 @@ megasas_free_host_crash_buffer
 
     Host buffers for Crash dump collection from Firmware
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Controller's soft instance
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_adp_reset_fusion`:
 
@@ -842,11 +937,13 @@ megasas_adp_reset_fusion
 
     For controller reset
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_check_reset_fusion`:
 
@@ -857,11 +954,13 @@ megasas_check_reset_fusion
 
     For controller reset check
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_tm_response_code`:
 
@@ -872,11 +971,13 @@ megasas_tm_response_code
 
     translation of device response code
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param struct MPI2_SCSI_TASK_MANAGE_REPLY \*mpi_reply:
+    :param mpi_reply:
         MPI reply returned by firmware
+    :type mpi_reply: struct MPI2_SCSI_TASK_MANAGE_REPLY \*
 
 .. _`megasas_tm_response_code.description`:
 
@@ -890,27 +991,37 @@ Return nothing.
 megasas_issue_tm
 ================
 
-.. c:function:: int megasas_issue_tm(struct megasas_instance *instance, u16 device_handle, uint channel, uint id, u16 smid_task, u8 type)
+.. c:function:: int megasas_issue_tm(struct megasas_instance *instance, u16 device_handle, uint channel, uint id, u16 smid_task, u8 type, struct MR_PRIV_DEVICE *mr_device_priv_data)
 
     main routine for sending tm requests
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         per adapter struct
+    :type instance: struct megasas_instance \*
 
-    :param u16 device_handle:
+    :param device_handle:
         device handle
+    :type device_handle: u16
 
-    :param uint channel:
+    :param channel:
         the channel assigned by the OS
+    :type channel: uint
 
-    :param uint id:
+    :param id:
         the id assigned by the OS
+    :type id: uint
 
-    :param u16 smid_task:
+    :param smid_task:
         smid assigned to the task
+    :type smid_task: u16
 
-    :param u8 type:
+    :param type:
         MPI2_SCSITASKMGMT_TASKTYPE__XXX (defined in megaraid_sas_fusion.c)
+    :type type: u8
+
+    :param mr_device_priv_data:
+        *undescribed*
+    :type mr_device_priv_data: struct MR_PRIV_DEVICE \*
 
 .. _`megasas_issue_tm.context`:
 

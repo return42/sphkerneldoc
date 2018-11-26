@@ -10,11 +10,13 @@ vce_v1_0_get_rptr
 
     get read pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`vce_v1_0_get_rptr.description`:
 
@@ -32,11 +34,13 @@ vce_v1_0_get_wptr
 
     get write pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`vce_v1_0_get_wptr.description`:
 
@@ -54,11 +58,13 @@ vce_v1_0_set_wptr
 
     set write pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`vce_v1_0_set_wptr.description`:
 
@@ -76,8 +82,9 @@ vce_v1_0_start
 
     start VCE block
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`vce_v1_0_start.description`:
 

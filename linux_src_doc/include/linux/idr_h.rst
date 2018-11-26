@@ -10,8 +10,9 @@ IDR_INIT
 
     Initialise an IDR.
 
-    :param  name:
+    :param name:
         Name of IDR.
+    :type name: 
 
 .. _`idr_init.description`:
 
@@ -29,8 +30,9 @@ DEFINE_IDR
 
     Define a statically-allocated IDR.
 
-    :param  name:
+    :param name:
         Name of IDR.
+    :type name: 
 
 .. _`define_idr.description`:
 
@@ -49,8 +51,9 @@ idr_get_cursor
 
     Return the current position of the cyclic allocator
 
-    :param const struct idr \*idr:
+    :param idr:
         idr handle
+    :type idr: const struct idr \*
 
 .. _`idr_get_cursor.description`:
 
@@ -70,11 +73,13 @@ idr_set_cursor
 
     Set the current position of the cyclic allocator
 
-    :param struct idr \*idr:
+    :param idr:
         idr handle
+    :type idr: struct idr \*
 
-    :param unsigned int val:
+    :param val:
         new position
+    :type val: unsigned int
 
 .. _`idr_set_cursor.description`:
 
@@ -112,11 +117,13 @@ idr_init_base
 
     Initialise an IDR.
 
-    :param struct idr \*idr:
+    :param idr:
         IDR handle.
+    :type idr: struct idr \*
 
-    :param int base:
+    :param base:
         The base value for the IDR.
+    :type base: int
 
 .. _`idr_init_base.description`:
 
@@ -135,8 +142,9 @@ idr_init
 
     Initialise an IDR.
 
-    :param struct idr \*idr:
+    :param idr:
         IDR handle.
+    :type idr: struct idr \*
 
 .. _`idr_init.description`:
 
@@ -155,8 +163,9 @@ idr_is_empty
 
     Are there any IDs allocated?
 
-    :param const struct idr \*idr:
+    :param idr:
         IDR handle.
+    :type idr: const struct idr \*
 
 .. _`idr_is_empty.return`:
 
@@ -174,8 +183,9 @@ idr_preload_end
 
     end preload section started with \ :c:func:`idr_preload`\ 
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`idr_preload_end.description`:
 
@@ -194,14 +204,17 @@ idr_for_each_entry
 
     Iterate over an IDR's elements of a given type.
 
-    :param  idr:
+    :param idr:
         IDR handle.
+    :type idr: 
 
-    :param  entry:
+    :param entry:
         The type * to use as cursor
+    :type entry: 
 
-    :param  id:
+    :param id:
         Entry ID.
+    :type id: 
 
 .. _`idr_for_each_entry.description`:
 
@@ -221,14 +234,17 @@ idr_for_each_entry_ul
 
     Iterate over an IDR's elements of a given type.
 
-    :param  idr:
+    :param idr:
         IDR handle.
+    :type idr: 
 
-    :param  entry:
+    :param entry:
         The type * to use as cursor.
+    :type entry: 
 
-    :param  id:
+    :param id:
         Entry ID.
+    :type id: 
 
 .. _`idr_for_each_entry_ul.description`:
 
@@ -248,14 +264,17 @@ idr_for_each_entry_continue
 
     Continue iteration over an IDR's elements of a given type
 
-    :param  idr:
+    :param idr:
         IDR handle.
+    :type idr: 
 
-    :param  entry:
+    :param entry:
         The type * to use as a cursor.
+    :type entry: 
 
-    :param  id:
+    :param id:
         Entry ID.
+    :type id: 
 
 .. _`idr_for_each_entry_continue.description`:
 
@@ -264,27 +283,130 @@ Description
 
 Continue to iterate over entries, continuing after the current position.
 
-.. _`ida_get_new`:
+.. _`ida_alloc`:
 
-ida_get_new
-===========
+ida_alloc
+=========
 
-.. c:function:: int ida_get_new(struct ida *ida, int *p_id)
+.. c:function:: int ida_alloc(struct ida *ida, gfp_t gfp)
 
-    allocate new ID
+    Allocate an unused ID.
 
-    :param struct ida \*ida:
-        idr handle
+    :param ida:
+        IDA handle.
+    :type ida: struct ida \*
 
-    :param int \*p_id:
-        pointer to the allocated handle
+    :param gfp:
+        Memory allocation flags.
+    :type gfp: gfp_t
 
-.. _`ida_get_new.description`:
+.. _`ida_alloc.description`:
 
 Description
 -----------
 
-Simple wrapper around \ :c:func:`ida_get_new_above`\  w/ \ ``starting_id``\  of zero.
+Allocate an ID between 0 and \ ``INT_MAX``\ , inclusive.
+
+.. _`ida_alloc.context`:
+
+Context
+-------
+
+Any context.
+
+.. _`ida_alloc.return`:
+
+Return
+------
+
+The allocated ID, or \ ``-ENOMEM``\  if memory could not be allocated,
+or \ ``-ENOSPC``\  if there are no free IDs.
+
+.. _`ida_alloc_min`:
+
+ida_alloc_min
+=============
+
+.. c:function:: int ida_alloc_min(struct ida *ida, unsigned int min, gfp_t gfp)
+
+    Allocate an unused ID.
+
+    :param ida:
+        IDA handle.
+    :type ida: struct ida \*
+
+    :param min:
+        Lowest ID to allocate.
+    :type min: unsigned int
+
+    :param gfp:
+        Memory allocation flags.
+    :type gfp: gfp_t
+
+.. _`ida_alloc_min.description`:
+
+Description
+-----------
+
+Allocate an ID between \ ``min``\  and \ ``INT_MAX``\ , inclusive.
+
+.. _`ida_alloc_min.context`:
+
+Context
+-------
+
+Any context.
+
+.. _`ida_alloc_min.return`:
+
+Return
+------
+
+The allocated ID, or \ ``-ENOMEM``\  if memory could not be allocated,
+or \ ``-ENOSPC``\  if there are no free IDs.
+
+.. _`ida_alloc_max`:
+
+ida_alloc_max
+=============
+
+.. c:function:: int ida_alloc_max(struct ida *ida, unsigned int max, gfp_t gfp)
+
+    Allocate an unused ID.
+
+    :param ida:
+        IDA handle.
+    :type ida: struct ida \*
+
+    :param max:
+        Highest ID to allocate.
+    :type max: unsigned int
+
+    :param gfp:
+        Memory allocation flags.
+    :type gfp: gfp_t
+
+.. _`ida_alloc_max.description`:
+
+Description
+-----------
+
+Allocate an ID between 0 and \ ``max``\ , inclusive.
+
+.. _`ida_alloc_max.context`:
+
+Context
+-------
+
+Any context.
+
+.. _`ida_alloc_max.return`:
+
+Return
+------
+
+The allocated ID, or \ ``-ENOMEM``\  if memory could not be allocated,
+or \ ``-ENOSPC``\  if there are no free IDs.
 
 .. This file was automatic generated / don't edit.
 

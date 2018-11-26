@@ -10,17 +10,21 @@ snd_device_new
 
     create an ALSA device component
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param enum snd_device_type type:
+    :param type:
         the device type, SNDRV_DEV_XXX
+    :type type: enum snd_device_type
 
-    :param void \*device_data:
+    :param device_data:
         the data pointer of this device
+    :type device_data: void \*
 
-    :param struct snd_device_ops \*ops:
+    :param ops:
         the operator table
+    :type ops: struct snd_device_ops \*
 
 .. _`snd_device_new.description`:
 
@@ -50,11 +54,13 @@ snd_device_disconnect
 
     disconnect the device
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param void \*device_data:
+    :param device_data:
         the data pointer to disconnect
+    :type device_data: void \*
 
 .. _`snd_device_disconnect.description`:
 
@@ -83,11 +89,13 @@ snd_device_free
 
     release the device from the card
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param void \*device_data:
+    :param device_data:
         the data pointer to release
+    :type device_data: void \*
 
 .. _`snd_device_free.description`:
 
@@ -107,11 +115,13 @@ snd_device_register
 
     register the device
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param void \*device_data:
+    :param device_data:
         the data pointer to register
+    :type device_data: void \*
 
 .. _`snd_device_register.description`:
 

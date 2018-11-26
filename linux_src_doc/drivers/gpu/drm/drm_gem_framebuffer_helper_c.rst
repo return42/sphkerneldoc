@@ -22,11 +22,13 @@ drm_gem_fb_get_obj
 
     Get GEM object backing the framebuffer
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         Framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param unsigned int plane:
+    :param plane:
         Plane index
+    :type plane: unsigned int
 
 .. _`drm_gem_fb_get_obj.description`:
 
@@ -53,8 +55,9 @@ drm_gem_fb_destroy
 
     Free GEM backed framebuffer
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         Framebuffer
+    :type fb: struct drm_framebuffer \*
 
 .. _`drm_gem_fb_destroy.description`:
 
@@ -74,14 +77,17 @@ drm_gem_fb_create_handle
 
     Create handle for GEM backed framebuffer
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         Framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_file \*file:
+    :param file:
         DRM file to register the handle for
+    :type file: struct drm_file \*
 
-    :param unsigned int \*handle:
+    :param handle:
         Pointer to return the created handle
+    :type handle: unsigned int \*
 
 .. _`drm_gem_fb_create_handle.description`:
 
@@ -108,17 +114,21 @@ drm_gem_fb_create_with_funcs
 
     Helper function for the \ :c:type:`drm_mode_config_funcs.fb_create <drm_mode_config_funcs>`\  callback
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file:
+    :param file:
         DRM file that holds the GEM handle(s) backing the framebuffer
+    :type file: struct drm_file \*
 
-    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
+    :param mode_cmd:
         Metadata from the userspace framebuffer creation request
+    :type mode_cmd: const struct drm_mode_fb_cmd2 \*
 
-    :param const struct drm_framebuffer_funcs \*funcs:
+    :param funcs:
         vtable to be used for the new framebuffer object
+    :type funcs: const struct drm_framebuffer_funcs \*
 
 .. _`drm_gem_fb_create_with_funcs.description`:
 
@@ -146,14 +156,17 @@ drm_gem_fb_create
 
     Helper function for the \ :c:type:`drm_mode_config_funcs.fb_create <drm_mode_config_funcs>`\  callback
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file:
+    :param file:
         DRM file that holds the GEM handle(s) backing the framebuffer
+    :type file: struct drm_file \*
 
-    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
+    :param mode_cmd:
         Metadata from the userspace framebuffer creation request
+    :type mode_cmd: const struct drm_mode_fb_cmd2 \*
 
 .. _`drm_gem_fb_create.description`:
 
@@ -188,11 +201,13 @@ drm_gem_fb_prepare_fb
 
     Prepare a GEM backed framebuffer
 
-    :param struct drm_plane \*plane:
+    :param plane:
         Plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*state:
+    :param state:
         Plane state the fence will be attached to
+    :type state: struct drm_plane_state \*
 
 .. _`drm_gem_fb_prepare_fb.description`:
 
@@ -218,11 +233,13 @@ drm_gem_fb_simple_display_pipe_prepare_fb
 
     prepare_fb helper for \ :c:type:`struct drm_simple_display_pipe <drm_simple_display_pipe>`\ 
 
-    :param struct drm_simple_display_pipe \*pipe:
+    :param pipe:
         Simple display pipe
+    :type pipe: struct drm_simple_display_pipe \*
 
-    :param struct drm_plane_state \*plane_state:
+    :param plane_state:
         Plane state
+    :type plane_state: struct drm_plane_state \*
 
 .. _`drm_gem_fb_simple_display_pipe_prepare_fb.description`:
 
@@ -243,21 +260,26 @@ drm_gem_fbdev_fb_create
 
     Create a GEM backed \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  for fbdev emulation
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_fb_helper_surface_size \*sizes:
+    :param sizes:
         fbdev size description
+    :type sizes: struct drm_fb_helper_surface_size \*
 
-    :param unsigned int pitch_align:
+    :param pitch_align:
         Optional pitch alignment
+    :type pitch_align: unsigned int
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM object backing the framebuffer
+    :type obj: struct drm_gem_object \*
 
-    :param const struct drm_framebuffer_funcs \*funcs:
+    :param funcs:
         Optional vtable to be used for the new framebuffer object when the
         dirty callback is needed.
+    :type funcs: const struct drm_framebuffer_funcs \*
 
 .. _`drm_gem_fbdev_fb_create.description`:
 

@@ -26,6 +26,7 @@ lib
     crc16_c
     crc32_c
     crc4_c
+    crc64_c
     crc7_c
     crc8_c
     debugobjects_c
@@ -64,7 +65,6 @@ lib
     pci_iomap_c
     percpu-refcount_c
     percpu_counter_c
-    percpu_ida_c
     plist_c
     prime_numbers_c
     radix-tree_c
@@ -90,3 +90,4 @@ lib
     uuid_c
     vsprintf_c
     win_minmax_c
+    xarray_c

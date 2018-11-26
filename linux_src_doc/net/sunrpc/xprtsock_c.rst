@@ -10,50 +10,59 @@ xs_sendpages
 
     write pages directly to a socket
 
-    :param struct socket \*sock:
+    :param sock:
         socket to send on
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         UDP only -- address of destination
+    :type addr: struct sockaddr \*
 
-    :param int addrlen:
+    :param addrlen:
         UDP only -- length of destination address
+    :type addrlen: int
 
-    :param struct xdr_buf \*xdr:
+    :param xdr:
         buffer containing this request
+    :type xdr: struct xdr_buf \*
 
-    :param unsigned int base:
+    :param base:
         starting position in the buffer
+    :type base: unsigned int
 
-    :param bool zerocopy:
+    :param zerocopy:
         true if it is safe to use \ :c:func:`sendpage`\ 
+    :type zerocopy: bool
 
-    :param int \*sent_p:
+    :param sent_p:
         return the total number of bytes successfully queued for sending
+    :type sent_p: int \*
 
 .. _`xs_nospace`:
 
 xs_nospace
 ==========
 
-.. c:function:: int xs_nospace(struct rpc_task *task)
+.. c:function:: int xs_nospace(struct rpc_rqst *req)
 
-    place task on wait queue if transmit was incomplete
+    handle transmit was incomplete
 
-    :param struct rpc_task \*task:
-        task to put to sleep
+    :param req:
+        pointer to RPC request
+    :type req: struct rpc_rqst \*
 
 .. _`xs_local_send_request`:
 
 xs_local_send_request
 =====================
 
-.. c:function:: int xs_local_send_request(struct rpc_task *task)
+.. c:function:: int xs_local_send_request(struct rpc_rqst *req)
 
     write an RPC request to an AF_LOCAL socket
 
-    :param struct rpc_task \*task:
-        RPC task that manages the state of an RPC request
+    :param req:
+        pointer to RPC request
+    :type req: struct rpc_rqst \*
 
 .. _`xs_local_send_request.return-values`:
 
@@ -89,12 +98,13 @@ Some other error occured, the request was not sent
 xs_udp_send_request
 ===================
 
-.. c:function:: int xs_udp_send_request(struct rpc_task *task)
+.. c:function:: int xs_udp_send_request(struct rpc_rqst *req)
 
     write an RPC request to a UDP socket
 
-    :param struct rpc_task \*task:
-        address of RPC task that manages the state of an RPC request
+    :param req:
+        pointer to RPC request
+    :type req: struct rpc_rqst \*
 
 .. _`xs_udp_send_request.return-values`:
 
@@ -130,12 +140,13 @@ Some other error occurred, the request was not sent
 xs_tcp_send_request
 ===================
 
-.. c:function:: int xs_tcp_send_request(struct rpc_task *task)
+.. c:function:: int xs_tcp_send_request(struct rpc_rqst *req)
 
     write an RPC request to a TCP socket
 
-    :param struct rpc_task \*task:
-        address of RPC task that manages the state of an RPC request
+    :param req:
+        pointer to RPC request
+    :type req: struct rpc_rqst \*
 
 .. _`xs_tcp_send_request.return-values`:
 
@@ -174,30 +185,6 @@ XXX
 In the case of soft timeouts, should we eventually give up
 if sendmsg is not able to make progress?
 
-.. _`xs_tcp_release_xprt`:
-
-xs_tcp_release_xprt
-===================
-
-.. c:function:: void xs_tcp_release_xprt(struct rpc_xprt *xprt, struct rpc_task *task)
-
-    clean up after a tcp transmission
-
-    :param struct rpc_xprt \*xprt:
-        transport
-
-    :param struct rpc_task \*task:
-        rpc task
-
-.. _`xs_tcp_release_xprt.description`:
-
-Description
------------
-
-This cleans up if an error causes us to abort the transmission of a request.
-In this case, the socket may need to be reset in order to avoid confusing
-the server.
-
 .. _`xs_error_report`:
 
 xs_error_report
@@ -207,8 +194,9 @@ xs_error_report
 
     callback to handle TCP socket state errors
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`xs_error_report.note`:
 
@@ -227,8 +215,9 @@ xs_close
 
     close a socket
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport
+    :type xprt: struct rpc_xprt \*
 
 .. _`xs_close.description`:
 
@@ -250,31 +239,9 @@ xs_destroy
 
     prepare to shutdown a transport
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         doomed transport
-
-.. _`xs_local_data_read_skb`:
-
-xs_local_data_read_skb
-======================
-
-.. c:function:: void xs_local_data_read_skb(struct rpc_xprt *xprt, struct sock *sk, struct sk_buff *skb)
-
-    :param struct rpc_xprt \*xprt:
-        transport
-
-    :param struct sock \*sk:
-        socket
-
-    :param struct sk_buff \*skb:
-        skbuff
-
-.. _`xs_local_data_read_skb.description`:
-
-Description
------------
-
-Currently this assumes we can read the whole reply in a single gulp.
+    :type xprt: struct rpc_xprt \*
 
 .. _`xs_udp_data_read_skb`:
 
@@ -285,14 +252,17 @@ xs_udp_data_read_skb
 
     receive callback for UDP sockets
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport
+    :type xprt: struct rpc_xprt \*
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff
+    :type skb: struct sk_buff \*
 
 .. _`xs_data_ready`:
 
@@ -303,8 +273,9 @@ xs_data_ready
 
     "data ready" callback for UDP sockets
 
-    :param struct sock \*sk:
+    :param sk:
         socket with data to read
+    :type sk: struct sock \*
 
 .. _`xs_tcp_state_change`:
 
@@ -315,8 +286,9 @@ xs_tcp_state_change
 
     callback to handle TCP socket state changes
 
-    :param struct sock \*sk:
+    :param sk:
         socket whose state has changed
+    :type sk: struct sock \*
 
 .. _`xs_udp_write_space`:
 
@@ -327,8 +299,9 @@ xs_udp_write_space
 
     callback invoked when socket buffer space becomes available
 
-    :param struct sock \*sk:
+    :param sk:
         socket whose state has changed
+    :type sk: struct sock \*
 
 .. _`xs_udp_write_space.description`:
 
@@ -349,8 +322,9 @@ xs_tcp_write_space
 
     callback invoked when socket buffer space becomes available
 
-    :param struct sock \*sk:
+    :param sk:
         socket whose state has changed
+    :type sk: struct sock \*
 
 .. _`xs_tcp_write_space.description`:
 
@@ -371,14 +345,17 @@ xs_udp_set_buffer_size
 
     set send and receive limits
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         generic transport
+    :type xprt: struct rpc_xprt \*
 
-    :param size_t sndsize:
+    :param sndsize:
         requested size of send buffer, in bytes
+    :type sndsize: size_t
 
-    :param size_t rcvsize:
+    :param rcvsize:
         requested size of receive buffer, in bytes
+    :type rcvsize: size_t
 
 .. _`xs_udp_set_buffer_size.description`:
 
@@ -396,11 +373,13 @@ xs_udp_timer
 
     called when a retransmit timeout occurs on a UDP transport
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         *undescribed*
+    :type xprt: struct rpc_xprt \*
 
-    :param struct rpc_task \*task:
+    :param task:
         task that timed out
+    :type task: struct rpc_task \*
 
 .. _`xs_udp_timer.description`:
 
@@ -418,8 +397,9 @@ xs_sock_set_reuseport
 
     set the socket's port and address reuse options
 
-    :param struct socket \*sock:
+    :param sock:
         socket
+    :type sock: struct socket \*
 
 .. _`xs_sock_set_reuseport.description`:
 
@@ -438,11 +418,13 @@ xs_set_port
 
     reset the port number in the remote endpoint address
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         generic transport
+    :type xprt: struct rpc_xprt \*
 
-    :param unsigned short port:
+    :param port:
         new port number
+    :type port: unsigned short
 
 .. _`xs_local_setup_socket`:
 
@@ -453,8 +435,9 @@ xs_local_setup_socket
 
     create AF_LOCAL socket, connect to a local endpoint
 
-    :param struct sock_xprt \*transport:
+    :param transport:
         socket transport to connect
+    :type transport: struct sock_xprt \*
 
 .. _`xs_enable_swap`:
 
@@ -465,8 +448,9 @@ xs_enable_swap
 
     Tag this transport as being used for swap.
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport to tag
+    :type xprt: struct rpc_xprt \*
 
 .. _`xs_enable_swap.description`:
 
@@ -485,8 +469,9 @@ xs_disable_swap
 
     Untag this transport as being used for swap.
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport to tag
+    :type xprt: struct rpc_xprt \*
 
 .. _`xs_disable_swap.description`:
 
@@ -505,8 +490,9 @@ xs_tcp_shutdown
 
     gracefully shut down a TCP socket
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport
+    :type xprt: struct rpc_xprt \*
 
 .. _`xs_tcp_shutdown.description`:
 
@@ -525,8 +511,9 @@ xs_tcp_setup_socket
 
     create a TCP socket and connect to a remote endpoint
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`xs_tcp_setup_socket.description`:
 
@@ -544,11 +531,13 @@ xs_connect
 
     connect a socket to a remote endpoint
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         pointer to transport structure
+    :type xprt: struct rpc_xprt \*
 
-    :param struct rpc_task \*task:
+    :param task:
         address of RPC task that manages state of connect request
+    :type task: struct rpc_task \*
 
 .. _`xs_connect.tcp`:
 
@@ -573,11 +562,13 @@ xs_local_print_stats
 
     display AF_LOCAL socket-specifc stats
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         rpc_xprt struct containing statistics
+    :type xprt: struct rpc_xprt \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         output file
+    :type seq: struct seq_file \*
 
 .. _`xs_udp_print_stats`:
 
@@ -588,11 +579,13 @@ xs_udp_print_stats
 
     display UDP socket-specifc stats
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         rpc_xprt struct containing statistics
+    :type xprt: struct rpc_xprt \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         output file
+    :type seq: struct seq_file \*
 
 .. _`xs_tcp_print_stats`:
 
@@ -603,11 +596,13 @@ xs_tcp_print_stats
 
     display TCP socket-specifc stats
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         rpc_xprt struct containing statistics
+    :type xprt: struct rpc_xprt \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         output file
+    :type seq: struct seq_file \*
 
 .. _`xs_setup_local`:
 
@@ -618,8 +613,9 @@ xs_setup_local
 
     Set up transport to use an AF_LOCAL socket
 
-    :param struct xprt_create \*args:
+    :param args:
         rpc transport creation arguments
+    :type args: struct xprt_create \*
 
 .. _`xs_setup_local.description`:
 
@@ -637,8 +633,9 @@ xs_setup_udp
 
     Set up transport to use a UDP socket
 
-    :param struct xprt_create \*args:
+    :param args:
         rpc transport creation arguments
+    :type args: struct xprt_create \*
 
 .. _`xs_setup_tcp`:
 
@@ -649,8 +646,9 @@ xs_setup_tcp
 
     Set up transport to use a TCP socket
 
-    :param struct xprt_create \*args:
+    :param args:
         rpc transport creation arguments
+    :type args: struct xprt_create \*
 
 .. _`xs_setup_bc_tcp`:
 
@@ -661,8 +659,9 @@ xs_setup_bc_tcp
 
     Set up transport to use a TCP backchannel socket
 
-    :param struct xprt_create \*args:
+    :param args:
         rpc transport creation arguments
+    :type args: struct xprt_create \*
 
 .. _`init_socket_xprt`:
 
@@ -673,8 +672,9 @@ init_socket_xprt
 
     set up xprtsock's sysctls, register with RPC client
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cleanup_socket_xprt`:
 
@@ -685,8 +685,9 @@ cleanup_socket_xprt
 
     remove xprtsock's sysctls, unregister
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

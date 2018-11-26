@@ -10,8 +10,9 @@ next_request
 
     gets the next request on the given list
 
-    :param struct list_head \*list:
+    :param list:
         the request list to operate on
+    :type list: struct list_head \*
 
 .. _`next_request.description`:
 
@@ -30,8 +31,9 @@ dwc3_gadget_move_started_request
 
     move \ ``req``\  to the started_list
 
-    :param struct dwc3_request \*req:
+    :param req:
         the request to be moved
+    :type req: struct dwc3_request \*
 
 .. _`dwc3_gadget_move_started_request.description`:
 
@@ -50,8 +52,9 @@ dwc3_gadget_ep_get_transfer_index
 
     Gets transfer index from HW
 
-    :param struct dwc3_ep \*dep:
+    :param dep:
         dwc3 endpoint
+    :type dep: struct dwc3_ep \*
 
 .. _`dwc3_gadget_ep_get_transfer_index.description`:
 

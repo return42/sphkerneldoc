@@ -29,6 +29,7 @@ linux
     errqueue_h
     ethtool_h
     firewire-cdev_h
+    fpga-dfl_h
     fsl_hypervisor_h
     fuse_h
     gen_stats_h

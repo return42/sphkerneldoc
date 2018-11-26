@@ -66,7 +66,7 @@ Definition
 
     struct exynos_cpuclk {
         struct clk_hw hw;
-        struct clk *alt_parent;
+        struct clk_hw *alt_parent;
         void __iomem *ctrl_base;
         spinlock_t *lock;
         const struct exynos_cpuclk_cfg_data *cfg;

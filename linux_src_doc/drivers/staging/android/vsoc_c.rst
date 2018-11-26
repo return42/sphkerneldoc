@@ -8,8 +8,9 @@ vsoc_validate_inode
 
 .. c:function:: int vsoc_validate_inode(struct inode *inode)
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`vsoc_region_from_inode`:
 
@@ -20,8 +21,9 @@ vsoc_region_from_inode
 
     Dangerous to call before validating the inode/file.
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`handle_vsoc_cond_wait`:
 
@@ -32,11 +34,13 @@ handle_vsoc_cond_wait
 
     done in the helper function below.
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param struct vsoc_cond_wait \*arg:
+    :param arg:
         *undescribed*
+    :type arg: struct vsoc_cond_wait \*
 
 .. _`do_vsoc_cond_wait`:
 
@@ -47,11 +51,13 @@ do_vsoc_cond_wait
 
     happen on all of the return paths of cond_wait.
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param struct vsoc_cond_wait __user \*untrusted_in:
+    :param untrusted_in:
         *undescribed*
+    :type untrusted_in: struct vsoc_cond_wait __user \*
 
 .. This file was automatic generated / don't edit.
 

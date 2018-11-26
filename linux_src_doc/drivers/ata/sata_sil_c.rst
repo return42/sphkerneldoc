@@ -10,11 +10,13 @@ sil_set_mode
 
     wrap set_mode functions
 
-    :param struct ata_link \*link:
+    :param link:
         link to set up
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*r_failed:
+    :param r_failed:
         returned device when we fail
+    :type r_failed: struct ata_device \*\*
 
 .. _`sil_set_mode.description`:
 
@@ -33,8 +35,9 @@ sil_dev_config
 
     Apply device/host-specific errata fixups
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device to be examined
+    :type dev: struct ata_device \*
 
 .. _`sil_dev_config.description`:
 

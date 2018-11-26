@@ -10,11 +10,13 @@
 
     Add clkdev entry for hwmod optional clocks and main clock
 
-    :param struct omap_device \*od:
+    :param od:
         struct omap_device \*od
+    :type od: struct omap_device \*
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*oh
+    :type oh: struct omap_hwmod \*
 
 .. _`_add_hwmod_clocks_clkdev.description`:
 
@@ -43,8 +45,9 @@ omap_device_build_from_dt
 
     build an omap_device with multiple hwmods
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`omap_device_build_from_dt.description`:
 
@@ -64,8 +67,9 @@ Returns 0 or \ :c:func:`PTR_ERR`\  on error.
 
     call \ :c:func:`omap_hwmod_enable`\  on all hwmods
 
-    :param struct omap_device \*od:
+    :param od:
         struct omap_device \*od
+    :type od: struct omap_device \*
 
 .. _`_omap_device_enable_hwmods.description`:
 
@@ -83,8 +87,9 @@ Enable all underlying hwmods.  Returns 0.
 
     call \ :c:func:`omap_hwmod_idle`\  on all hwmods
 
-    :param struct omap_device \*od:
+    :param od:
         struct omap_device \*od
+    :type od: struct omap_device \*
 
 .. _`_omap_device_idle_hwmods.description`:
 
@@ -102,8 +107,9 @@ omap_device_get_context_loss_count
 
     get lost context count
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`omap_device_get_context_loss_count.description`:
 
@@ -130,14 +136,17 @@ omap_device_alloc
 
     allocate an omap_device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform_device that will be included in this omap_device
+    :type pdev: struct platform_device \*
 
-    :param struct omap_hwmod \*\*ohs:
+    :param ohs:
         *undescribed*
+    :type ohs: struct omap_hwmod \*\*
 
-    :param int oh_cnt:
+    :param oh_cnt:
         *undescribed*
+    :type oh_cnt: int
 
 .. _`omap_device_alloc.description`:
 
@@ -158,11 +167,13 @@ omap_device_copy_resources
 
     Add legacy IO and IRQ resources
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         interconnect target module
+    :type oh: struct omap_hwmod \*
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device to copy resources to
+    :type pdev: struct platform_device \*
 
 .. _`omap_device_copy_resources.description`:
 
@@ -184,20 +195,25 @@ omap_device_build
 
     build and register an omap_device with one omap_hwmod
 
-    :param const char \*pdev_name:
+    :param pdev_name:
         name of the platform_device driver to use
+    :type pdev_name: const char \*
 
-    :param int pdev_id:
+    :param pdev_id:
         this platform_device's connection ID
+    :type pdev_id: int
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         ptr to the single omap_hwmod that backs this omap_device
+    :type oh: struct omap_hwmod \*
 
-    :param void \*pdata:
+    :param pdata:
         platform_data ptr to associate with the platform_device
+    :type pdata: void \*
 
-    :param int pdata_len:
+    :param pdata_len:
         amount of memory pointed to by \ ``pdata``\ 
+    :type pdata_len: int
 
 .. _`omap_device_build.description`:
 
@@ -219,8 +235,9 @@ omap_device_register
 
     register an omap_device with one omap_hwmod
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`omap_device_register.description`:
 
@@ -240,8 +257,9 @@ omap_device_enable
 
     fully activate an omap_device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`omap_device_enable.description`:
 
@@ -265,8 +283,9 @@ omap_device_idle
 
     idle an omap_device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`omap_device_idle.description`:
 
@@ -287,11 +306,13 @@ omap_device_assert_hardreset
 
     set a device's hardreset line
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         struct platform_device \* to reset
+    :type pdev: struct platform_device \*
 
-    :param const char \*name:
+    :param name:
         const char \* name of the reset line
+    :type name: const char \*
 
 .. _`omap_device_assert_hardreset.description`:
 
@@ -314,11 +335,13 @@ omap_device_deassert_hardreset
 
     release a device's hardreset line
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         struct platform_device \* to reset
+    :type pdev: struct platform_device \*
 
-    :param const char \*name:
+    :param name:
         const char \* name of the reset line
+    :type name: const char \*
 
 .. _`omap_device_deassert_hardreset.description`:
 
@@ -341,8 +364,9 @@ omap_device_get_by_hwmod_name
 
     convert a hwmod name to device pointer.
 
-    :param const char \*oh_name:
+    :param oh_name:
         name of the hwmod device
+    :type oh_name: const char \*
 
 .. _`omap_device_get_by_hwmod_name.description`:
 
@@ -361,11 +385,13 @@ omap_device_late_idle
 
     idle devices without drivers
 
-    :param struct device \*dev:
+    :param dev:
         struct device \* associated with omap_device
+    :type dev: struct device \*
 
-    :param void \*data:
+    :param data:
         unused
+    :type data: void \*
 
 .. _`omap_device_late_idle.description`:
 

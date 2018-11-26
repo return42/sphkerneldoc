@@ -64,6 +64,7 @@ Definition
         u32 intr_cfg_reg;
         u32 intr_status_reg;
         u32 intr_target_reg;
+        unsigned int tile:2;
         unsigned mux_bit:5;
         unsigned pull_bit:5;
         unsigned drv_bit:5;
@@ -120,6 +121,9 @@ intr_status_reg
 intr_target_reg
     Offset of the register specifying routing of the interrupts
     from this group.
+
+tile
+    *undescribed*
 
 mux_bit
     Offset in \ ``ctl_reg``\  for the pinmux function selection.
@@ -195,6 +199,8 @@ Definition
         unsigned ngroups;
         unsigned ngpios;
         bool pull_no_keeper;
+        const char *const *tiles;
+        unsigned int ntiles;
     }
 
 .. _`msm_pinctrl_soc_data.members`:
@@ -225,6 +231,12 @@ ngpios
 
 pull_no_keeper
     The SoC does not support keeper bias.
+
+tiles
+    *undescribed*
+
+ntiles
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

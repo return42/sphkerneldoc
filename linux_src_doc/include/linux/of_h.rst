@@ -10,17 +10,21 @@ of_property_read_u8_array
 
     Find and read an array of u8 from a property.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u8 \*out_values:
+    :param out_values:
         pointer to return value, modified only if return value is 0.
+    :type out_values: u8 \*
 
-    :param size_t sz:
+    :param sz:
         number of array elements to read
+    :type sz: size_t
 
 .. _`of_property_read_u8_array.description`:
 
@@ -50,17 +54,21 @@ of_property_read_u16_array
 
     Find and read an array of u16 from a property.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u16 \*out_values:
+    :param out_values:
         pointer to return value, modified only if return value is 0.
+    :type out_values: u16 \*
 
-    :param size_t sz:
+    :param sz:
         number of array elements to read
+    :type sz: size_t
 
 .. _`of_property_read_u16_array.description`:
 
@@ -90,17 +98,21 @@ of_property_read_u32_array
 
     Find and read an array of 32 bit integers from a property.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u32 \*out_values:
+    :param out_values:
         pointer to return value, modified only if return value is 0.
+    :type out_values: u32 \*
 
-    :param size_t sz:
+    :param sz:
         number of array elements to read
+    :type sz: size_t
 
 .. _`of_property_read_u32_array.description`:
 
@@ -123,17 +135,21 @@ of_property_read_u64_array
 
     Find and read an array of 64 bit integers from a property.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param u64 \*out_values:
+    :param out_values:
         pointer to return value, modified only if return value is 0.
+    :type out_values: u64 \*
 
-    :param size_t sz:
+    :param sz:
         number of array elements to read
+    :type sz: size_t
 
 .. _`of_property_read_u64_array.description`:
 
@@ -156,11 +172,13 @@ of_property_count_u8_elems
 
     Count the number of u8 elements in a property
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
 .. _`of_property_count_u8_elems.description`:
 
@@ -181,11 +199,13 @@ of_property_count_u16_elems
 
     Count the number of u16 elements in a property
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
 .. _`of_property_count_u16_elems.description`:
 
@@ -206,11 +226,13 @@ of_property_count_u32_elems
 
     Count the number of u32 elements in a property
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
 .. _`of_property_count_u32_elems.description`:
 
@@ -231,11 +253,13 @@ of_property_count_u64_elems
 
     Count the number of u64 elements in a property
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
 .. _`of_property_count_u64_elems.description`:
 
@@ -256,17 +280,21 @@ of_property_read_string_array
 
     Read an array of strings from a multiple strings property.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param const char \*\*out_strs:
+    :param out_strs:
         output array of string pointers.
+    :type out_strs: const char \*\*
 
-    :param size_t sz:
+    :param sz:
         number of array elements to read.
+    :type sz: size_t
 
 .. _`of_property_read_string_array.description`:
 
@@ -287,11 +315,13 @@ of_property_count_strings
 
     Find and return the number of strings from a multiple strings property.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
 .. _`of_property_count_strings.description`:
 
@@ -313,17 +343,21 @@ of_property_read_string_index
 
     Find and read a string from a multiple strings property.
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
-    :param int index:
+    :param index:
         index of the string in the list of strings
+    :type index: int
 
-    :param const char \*\*output:
+    :param output:
         *undescribed*
+    :type output: const char \*\*
 
 .. _`of_property_read_string_index.description`:
 
@@ -348,11 +382,13 @@ of_property_read_bool
 
     Findfrom a property
 
-    :param const struct device_node \*np:
+    :param np:
         device node from which the property value is to be read.
+    :type np: const struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         name of the property to be searched.
+    :type propname: const char \*
 
 .. _`of_property_read_bool.description`:
 
@@ -463,8 +499,9 @@ of_device_is_system_power_controller
 
     Tells if system-power-controller is found for device_node
 
-    :param const struct device_node \*np:
+    :param np:
         Pointer to the given device_node
+    :type np: const struct device_node \*
 
 .. _`of_device_is_system_power_controller.description`:
 

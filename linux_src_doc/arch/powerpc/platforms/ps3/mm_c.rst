@@ -133,20 +133,22 @@ ps3_mm_phys_to_lpar
 
     translate a linux physical address to lpar address
 
-    :param unsigned long phys_addr:
+    :param phys_addr:
         linux physical address
+    :type phys_addr: unsigned long
 
 .. _`ps3_mm_vas_create`:
 
 ps3_mm_vas_create
 =================
 
-.. c:function:: void ps3_mm_vas_create(unsigned long*htab_size)
+.. c:function:: void ps3_mm_vas_create(unsigned long* htab_size)
 
     create the virtual address space
 
-    :param unsigned long\*htab_size:
+    :param htab_size:
         *undescribed*
+    :type htab_size: unsigned long\*
 
 .. _`ps3_mm_vas_destroy`:
 
@@ -155,8 +157,9 @@ ps3_mm_vas_destroy
 
 .. c:function:: void ps3_mm_vas_destroy( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ps3_mm_region_create`:
 
@@ -167,11 +170,13 @@ ps3_mm_region_create
 
     create a memory region in the vas
 
-    :param struct mem_region \*r:
+    :param r:
         pointer to a struct mem_region to accept initialized values
+    :type r: struct mem_region \*
 
-    :param unsigned long size:
+    :param size:
         requested region size
+    :type size: unsigned long
 
 .. _`ps3_mm_region_create.description`:
 
@@ -190,8 +195,9 @@ ps3_mm_region_destroy
 
     destroy a memory region
 
-    :param struct mem_region \*r:
+    :param r:
         pointer to struct mem_region
+    :type r: struct mem_region \*
 
 .. _`dma_sb_lpar_to_bus`:
 
@@ -202,11 +208,13 @@ dma_sb_lpar_to_bus
 
     Translate an lpar address to ioc mapped bus address.
 
-    :param struct ps3_dma_region \*r:
+    :param r:
         pointer to dma region structure
+    :type r: struct ps3_dma_region \*
 
-    :param unsigned long lpar_addr:
+    :param lpar_addr:
         HV lpar address
+    :type lpar_addr: unsigned long
 
 .. _`dma_sb_map_pages`:
 
@@ -217,20 +225,25 @@ dma_sb_map_pages
 
     Maps dma pages into the io controller bus address space.
 
-    :param struct ps3_dma_region \*r:
+    :param r:
         Pointer to a struct ps3_dma_region.
+    :type r: struct ps3_dma_region \*
 
-    :param unsigned long phys_addr:
+    :param phys_addr:
         Starting physical address of the area to map.
+    :type phys_addr: unsigned long
 
-    :param unsigned long len:
+    :param len:
         Length in bytes of the area to map.
+    :type len: unsigned long
 
-    :param struct dma_chunk \*\*c_out:
+    :param c_out:
         *undescribed*
+    :type c_out: struct dma_chunk \*\*
 
-    :param u64 iopte_flag:
+    :param iopte_flag:
         *undescribed*
+    :type iopte_flag: u64
 
 .. _`dma_sb_map_pages.c_out`:
 
@@ -251,8 +264,9 @@ dma_sb_region_create
 
     Create a device dma region.
 
-    :param struct ps3_dma_region \*r:
+    :param r:
         Pointer to a struct ps3_dma_region.
+    :type r: struct ps3_dma_region \*
 
 .. _`dma_sb_region_create.description`:
 
@@ -271,8 +285,9 @@ dma_sb_region_free
 
     Free a device dma region.
 
-    :param struct ps3_dma_region \*r:
+    :param r:
         Pointer to a struct ps3_dma_region.
+    :type r: struct ps3_dma_region \*
 
 .. _`dma_sb_region_free.description`:
 
@@ -291,21 +306,26 @@ dma_sb_map_area
 
     Map an area of memory into a device dma region.
 
-    :param struct ps3_dma_region \*r:
+    :param r:
         Pointer to a struct ps3_dma_region.
+    :type r: struct ps3_dma_region \*
 
-    :param unsigned long virt_addr:
+    :param virt_addr:
         Starting virtual address of the area to map.
+    :type virt_addr: unsigned long
 
-    :param unsigned long len:
+    :param len:
         Length in bytes of the area to map.
+    :type len: unsigned long
 
-    :param dma_addr_t \*bus_addr:
+    :param bus_addr:
         A pointer to return the starting ioc bus address of the area to
         map.
+    :type bus_addr: dma_addr_t \*
 
-    :param u64 iopte_flag:
+    :param iopte_flag:
         *undescribed*
+    :type iopte_flag: u64
 
 .. _`dma_sb_map_area.description`:
 
@@ -323,14 +343,17 @@ dma_sb_unmap_area
 
     Unmap an area of memory from a device dma region.
 
-    :param struct ps3_dma_region \*r:
+    :param r:
         Pointer to a struct ps3_dma_region.
+    :type r: struct ps3_dma_region \*
 
-    :param dma_addr_t bus_addr:
+    :param bus_addr:
         The starting ioc bus address of the area to unmap.
+    :type bus_addr: dma_addr_t
 
-    :param unsigned long len:
+    :param len:
         Length in bytes of the area to unmap.
+    :type len: unsigned long
 
 .. _`dma_sb_unmap_area.description`:
 
@@ -348,8 +371,9 @@ dma_sb_region_create_linear
 
     Setup a linear dma mapping for a device.
 
-    :param struct ps3_dma_region \*r:
+    :param r:
         Pointer to a struct ps3_dma_region.
+    :type r: struct ps3_dma_region \*
 
 .. _`dma_sb_region_create_linear.description`:
 
@@ -368,8 +392,9 @@ dma_sb_region_free_linear
 
     Free a linear dma mapping for a device.
 
-    :param struct ps3_dma_region \*r:
+    :param r:
         Pointer to a struct ps3_dma_region.
+    :type r: struct ps3_dma_region \*
 
 .. _`dma_sb_region_free_linear.description`:
 
@@ -387,21 +412,26 @@ dma_sb_map_area_linear
 
     Map an area of memory into a device dma region.
 
-    :param struct ps3_dma_region \*r:
+    :param r:
         Pointer to a struct ps3_dma_region.
+    :type r: struct ps3_dma_region \*
 
-    :param unsigned long virt_addr:
+    :param virt_addr:
         Starting virtual address of the area to map.
+    :type virt_addr: unsigned long
 
-    :param unsigned long len:
+    :param len:
         Length in bytes of the area to map.
+    :type len: unsigned long
 
-    :param dma_addr_t \*bus_addr:
+    :param bus_addr:
         A pointer to return the starting ioc bus address of the area to
         map.
+    :type bus_addr: dma_addr_t \*
 
-    :param u64 iopte_flag:
+    :param iopte_flag:
         *undescribed*
+    :type iopte_flag: u64
 
 .. _`dma_sb_map_area_linear.description`:
 
@@ -420,14 +450,17 @@ dma_sb_unmap_area_linear
 
     Unmap an area of memory from a device dma region.
 
-    :param struct ps3_dma_region \*r:
+    :param r:
         Pointer to a struct ps3_dma_region.
+    :type r: struct ps3_dma_region \*
 
-    :param dma_addr_t bus_addr:
+    :param bus_addr:
         The starting ioc bus address of the area to unmap.
+    :type bus_addr: dma_addr_t
 
-    :param unsigned long len:
+    :param len:
         Length in bytes of the area to unmap.
+    :type len: unsigned long
 
 .. _`dma_sb_unmap_area_linear.description`:
 
@@ -445,8 +478,9 @@ ps3_mm_init
 
     initialize the address space state variables
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ps3_mm_shutdown`:
 
@@ -457,8 +491,9 @@ ps3_mm_shutdown
 
     final cleanup of address space
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

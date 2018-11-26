@@ -10,11 +10,13 @@ ibmasm_exec_command
 
     send a command to a service processor Commands are executed sequentially. One command (sp->current_command) is sent to the service processor. Once the interrupt handler gets a message of type command_response, the message is copied into the current commands buffer,
 
-    :param struct service_processor \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct service_processor \*
 
-    :param struct command \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct command \*
 
 .. _`ibmasm_wait_for_response`:
 
@@ -25,11 +27,13 @@ ibmasm_wait_for_response
 
     and the command status been updated by the interrupt handler. (see receive_response).
 
-    :param struct command \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct command \*
 
-    :param int timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: int
 
 .. _`ibmasm_receive_command_response`:
 
@@ -40,14 +44,17 @@ ibmasm_receive_command_response
 
     called by the interrupt handler when a dot command of type command_response was received.
 
-    :param struct service_processor \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct service_processor \*
 
-    :param void \*response:
+    :param response:
         *undescribed*
+    :type response: void \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. This file was automatic generated / don't edit.
 

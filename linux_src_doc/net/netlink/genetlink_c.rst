@@ -10,8 +10,9 @@ genl_register_family
 
     register a generic netlink family
 
-    :param struct genl_family \*family:
+    :param family:
         generic netlink family
+    :type family: struct genl_family \*
 
 .. _`genl_register_family.description`:
 
@@ -35,8 +36,9 @@ genl_unregister_family
 
     unregister generic netlink family
 
-    :param const struct genl_family \*family:
+    :param family:
         generic netlink family
+    :type family: const struct genl_family \*
 
 .. _`genl_unregister_family.description`:
 
@@ -56,23 +58,29 @@ genlmsg_put
 
     Add generic netlink header to netlink message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer holding the message
+    :type skb: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink portid the message is addressed to
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         sequence number (usually the one of the sender)
+    :type seq: u32
 
-    :param const struct genl_family \*family:
+    :param family:
         generic netlink family
+    :type family: const struct genl_family \*
 
-    :param int flags:
+    :param flags:
         netlink message flags
+    :type flags: int
 
-    :param u8 cmd:
+    :param cmd:
         generic netlink command
+    :type cmd: u8
 
 .. _`genlmsg_put.description`:
 
@@ -90,8 +98,9 @@ genl_family_attrbuf
 
     return family's attrbuf
 
-    :param const struct genl_family \*family:
+    :param family:
         the family
+    :type family: const struct genl_family \*
 
 .. _`genl_family_attrbuf.description`:
 

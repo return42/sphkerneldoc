@@ -10,14 +10,17 @@ rtas_config_addr
 
     Format a busno, devfn and reg for RTAS.
 
-    :param int busno:
+    :param busno:
         The bus number.
+    :type busno: int
 
-    :param int devfn:
+    :param devfn:
         The device and function number as encoded by \ :c:func:`PCI_DEVFN`\ .
+    :type devfn: int
 
-    :param int reg:
+    :param reg:
         The register number.
+    :type reg: int
 
 .. _`rtas_config_addr.description`:
 

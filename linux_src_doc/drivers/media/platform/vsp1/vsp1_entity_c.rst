@@ -10,14 +10,17 @@ vsp1_entity_get_pad_config
 
     Get the pad configuration for an entity
 
-    :param struct vsp1_entity \*entity:
+    :param entity:
         the entity
+    :type entity: struct vsp1_entity \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         the TRY pad configuration
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param enum v4l2_subdev_format_whence which:
+    :param which:
         configuration selector (ACTIVE or TRY)
+    :type which: enum v4l2_subdev_format_whence
 
 .. _`vsp1_entity_get_pad_config.description`:
 
@@ -41,14 +44,17 @@ vsp1_entity_get_pad_format
 
     Get a pad format from storage for an entity
 
-    :param struct vsp1_entity \*entity:
+    :param entity:
         the entity
+    :type entity: struct vsp1_entity \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         the configuration storage
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param unsigned int pad:
+    :param pad:
         the pad number
+    :type pad: unsigned int
 
 .. _`vsp1_entity_get_pad_format.description`:
 
@@ -67,17 +73,21 @@ vsp1_entity_get_pad_selection
 
     Get a pad selection from storage for entity
 
-    :param struct vsp1_entity \*entity:
+    :param entity:
         the entity
+    :type entity: struct vsp1_entity \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         the configuration storage
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param unsigned int pad:
+    :param pad:
         the pad number
+    :type pad: unsigned int
 
-    :param unsigned int target:
+    :param target:
         the selection target
+    :type target: unsigned int
 
 .. _`vsp1_entity_get_pad_selection.description`:
 
@@ -97,8 +107,9 @@ vsp1_entity_remote_pad
 
     Find the pad at the remote end of a link
 
-    :param struct media_pad \*pad:
+    :param pad:
         Pad at the local end of the link
+    :type pad: struct media_pad \*
 
 .. _`vsp1_entity_remote_pad.description`:
 

@@ -10,20 +10,25 @@ read_download_mem
 
     Read edgeport memory from TI chip
 
-    :param struct usb_device \*dev:
+    :param dev:
         usb device pointer
+    :type dev: struct usb_device \*
 
-    :param int start_address:
+    :param start_address:
         Device CPU address at which to read
+    :type start_address: int
 
-    :param int length:
+    :param length:
         Length of above data
+    :type length: int
 
-    :param __u8 address_type:
+    :param address_type:
         Can read both XDATA and I2C
+    :type address_type: __u8
 
-    :param __u8 \*buffer:
+    :param buffer:
         pointer to input data buffer
+    :type buffer: __u8 \*
 
 .. This file was automatic generated / don't edit.
 

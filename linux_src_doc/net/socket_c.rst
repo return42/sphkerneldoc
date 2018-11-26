@@ -10,14 +10,17 @@ move_addr_to_kernel
 
     copy a socket address into kernel space
 
-    :param void __user \*uaddr:
+    :param uaddr:
         Address in user space
+    :type uaddr: void __user \*
 
-    :param int ulen:
+    :param ulen:
         Length in user space
+    :type ulen: int
 
-    :param struct sockaddr_storage \*kaddr:
+    :param kaddr:
         Address in kernel space
+    :type kaddr: struct sockaddr_storage \*
 
 .. _`move_addr_to_kernel.description`:
 
@@ -37,17 +40,21 @@ move_addr_to_user
 
     copy an address to user space
 
-    :param struct sockaddr_storage \*kaddr:
+    :param kaddr:
         kernel space address
+    :type kaddr: struct sockaddr_storage \*
 
-    :param int klen:
+    :param klen:
         length of address in kernel
+    :type klen: int
 
-    :param void __user \*uaddr:
+    :param uaddr:
         user space address
+    :type uaddr: void __user \*
 
-    :param int __user \*ulen:
+    :param ulen:
         pointer to user length field
+    :type ulen: int __user \*
 
 .. _`move_addr_to_user.description`:
 
@@ -72,11 +79,13 @@ sockfd_lookup
 
     Go from a file number to its socket slot
 
-    :param int fd:
+    :param fd:
         file handle
+    :type fd: int
 
-    :param int \*err:
+    :param err:
         pointer to an error code return
+    :type err: int \*
 
 .. _`sockfd_lookup.description`:
 
@@ -99,8 +108,9 @@ sock_alloc
 
     allocate a socket
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sock_alloc.description`:
 
@@ -120,11 +130,13 @@ __sock_release
 
     close a socket
 
-    :param struct socket \*sock:
+    :param sock:
         socket to close
+    :type sock: struct socket \*
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`__sock_release.description`:
 
@@ -144,23 +156,29 @@ kernel_recvmsg
 
     Receive a message from a socket (kernel space)
 
-    :param struct socket \*sock:
+    :param sock:
         The socket to receive the message from
+    :type sock: struct socket \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         Received message
+    :type msg: struct msghdr \*
 
-    :param struct kvec \*vec:
+    :param vec:
         Input s/g array for message data
+    :type vec: struct kvec \*
 
-    :param size_t num:
+    :param num:
         Size of input s/g array
+    :type num: size_t
 
-    :param size_t size:
+    :param size:
         Number of bytes to read
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         Message flags (MSG_DONTWAIT, etc...)
+    :type flags: int
 
 .. _`kernel_recvmsg.description`:
 
@@ -182,8 +200,9 @@ sock_register
 
     add a socket protocol handler
 
-    :param const struct net_proto_family \*ops:
+    :param ops:
         description of protocol
+    :type ops: const struct net_proto_family \*
 
 .. _`sock_register.description`:
 
@@ -204,8 +223,9 @@ sock_unregister
 
     remove a protocol handler
 
-    :param int family:
+    :param family:
         protocol family to remove
+    :type family: int
 
 .. _`sock_unregister.description`:
 

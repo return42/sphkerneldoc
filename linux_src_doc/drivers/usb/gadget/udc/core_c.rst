@@ -10,11 +10,13 @@ usb_ep_set_maxpacket_limit
 
     set maximum packet size limit for endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint being configured
+    :type ep: struct usb_ep \*
 
-    :param unsigned maxpacket_limit:
+    :param maxpacket_limit:
         value of maximum packet size limit
+    :type maxpacket_limit: unsigned
 
 .. _`usb_ep_set_maxpacket_limit.description`:
 
@@ -33,9 +35,10 @@ usb_ep_enable
 
     configure endpoint, making it usable
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint being configured.  may not be the endpoint named "ep0".
         drivers discover endpoints through the ep_list of a usb_gadget.
+    :type ep: struct usb_ep \*
 
 .. _`usb_ep_enable.description`:
 
@@ -55,6 +58,8 @@ for iso transfers or for endpoint 14.  some endpoints are fully
 configurable, with more generic names like "ep-a".  (remember that for
 USB, "in" means "towards the USB master".)
 
+This routine must be called in process context.
+
 returns zero, or a negative error code.
 
 .. _`usb_ep_disable`:
@@ -66,8 +71,9 @@ usb_ep_disable
 
     endpoint is no longer usable
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint being unconfigured.  may not be the endpoint named "ep0".
+    :type ep: struct usb_ep \*
 
 .. _`usb_ep_disable.description`:
 
@@ -80,6 +86,8 @@ indicating disconnect (-ESHUTDOWN) before this call returns.
 gadget drivers must call \ :c:func:`usb_ep_enable`\  again before queueing
 requests to the endpoint.
 
+This routine must be called in process context.
+
 returns zero, or a negative error code.
 
 .. _`usb_ep_alloc_request`:
@@ -91,11 +99,13 @@ usb_ep_alloc_request
 
     allocate a request object to use with this endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint to be used with with the request
+    :type ep: struct usb_ep \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         GFP\_\* flags to use
+    :type gfp_flags: gfp_t
 
 .. _`usb_ep_alloc_request.description`:
 
@@ -120,11 +130,13 @@ usb_ep_free_request
 
     frees a request object
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint associated with the request
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         the request being freed
+    :type req: struct usb_request \*
 
 .. _`usb_ep_free_request.description`:
 
@@ -144,15 +156,18 @@ usb_ep_queue
 
     queues (submits) an I/O request to an endpoint.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint associated with the request
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         the request being submitted
+    :type req: struct usb_request \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         GFP\_\* flags to use in case the lower level driver couldn't
         pre-allocate all necessary memory with the request.
+    :type gfp_flags: gfp_t
 
 .. _`usb_ep_queue.description`:
 
@@ -208,12 +223,14 @@ have queued some data to transfer at that time.
 Note that \ ``req``\ 's ->complete() callback must never be called from
 within \ :c:func:`usb_ep_queue`\  as that can create deadlock situations.
 
+This routine may be called in interrupt context.
+
 Returns zero, or a negative error code.  Endpoints that are not enabled
 report errors; errors will also be
 reported when the usb peripheral is disconnected.
 
 If and only if \ ``req``\  is successfully queued (the return value is zero),
-\ ``req``\ ->complete() will be called exactly once, when the Gadget core and
+\ ``req->complete``\ () will be called exactly once, when the Gadget core and
 UDC are finished with the request.  When the completion function is called,
 control of the request is returned to the device driver which submitted it.
 The completion handler may then immediately free or reuse \ ``req``\ .
@@ -227,11 +244,13 @@ usb_ep_dequeue
 
     dequeues (cancels, unlinks) an I/O request from an endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint associated with the request
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         the request being canceled
+    :type req: struct usb_request \*
 
 .. _`usb_ep_dequeue.description`:
 
@@ -248,6 +267,8 @@ at the head of the queue) except as part of disconnecting from usb. Such
 restrictions prevent drivers from supporting configuration changes,
 even to configuration zero (a "chapter 9" requirement).
 
+This routine may be called in interrupt context.
+
 .. _`usb_ep_set_halt`:
 
 usb_ep_set_halt
@@ -257,8 +278,9 @@ usb_ep_set_halt
 
     sets the endpoint halt feature.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the non-isochronous endpoint being stalled
+    :type ep: struct usb_ep \*
 
 .. _`usb_ep_set_halt.description`:
 
@@ -276,6 +298,8 @@ gadget driver, a SET_INTERFACE will not be.  To reset endpoints for the
 current altsetting, see \ :c:func:`usb_ep_clear_halt`\ .  When switching altsettings,
 it's simplest to use \ :c:func:`usb_ep_enable`\  or \ :c:func:`usb_ep_disable`\  for the endpoints.
 
+This routine may be called in interrupt context.
+
 Returns zero, or a negative error code.  On success, this call sets
 underlying hardware state that blocks data transfers.
 Attempts to halt IN endpoints will fail (returning -EAGAIN) if any
@@ -291,8 +315,9 @@ usb_ep_clear_halt
 
     clears endpoint halt, and resets toggle
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the bulk or interrupt endpoint being reset
+    :type ep: struct usb_ep \*
 
 .. _`usb_ep_clear_halt.description`:
 
@@ -302,6 +327,8 @@ Description
 Use this when responding to the standard usb "set interface" request,
 for endpoints that aren't reconfigured, after clearing any other state
 in the endpoint's i/o queue.
+
+This routine may be called in interrupt context.
 
 Returns zero, or a negative error code.  On success, this call clears
 the underlying hardware state reflecting endpoint halt and data toggle.
@@ -317,8 +344,9 @@ usb_ep_set_wedge
 
     sets the halt feature and ignores clear requests
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint being wedged
+    :type ep: struct usb_ep \*
 
 .. _`usb_ep_set_wedge.description`:
 
@@ -328,6 +356,8 @@ Description
 Use this to stall an endpoint and ignore CLEAR_FEATURE(HALT_ENDPOINT)
 requests. If the gadget driver clears the halt status, it will
 automatically unwedge the endpoint.
+
+This routine may be called in interrupt context.
 
 Returns zero on success, else negative errno.
 
@@ -340,8 +370,9 @@ usb_ep_fifo_status
 
     returns number of bytes in fifo, or error
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint whose fifo status is being checked.
+    :type ep: struct usb_ep \*
 
 .. _`usb_ep_fifo_status.description`:
 
@@ -354,6 +385,8 @@ the IN data written by the gadget driver (and reported by a request
 completion).  The gadget driver may not have collected all the data
 written OUT to it by the host.  Drivers that need precise handling for
 fault reporting or recovery may need to use this call.
+
+This routine may be called in interrupt context.
 
 This returns the number of such bytes in the fifo, or a negative
 errno if the endpoint doesn't use a FIFO or doesn't support such
@@ -368,8 +401,9 @@ usb_ep_fifo_flush
 
     flushes contents of a fifo
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint whose fifo is being flushed.
+    :type ep: struct usb_ep \*
 
 .. _`usb_ep_fifo_flush.description`:
 
@@ -381,6 +415,8 @@ an endpoint fifo after abnormal transaction terminations.  The call
 must never be used except when endpoint is not being used for any
 protocol translation.
 
+This routine may be called in interrupt context.
+
 .. _`usb_gadget_frame_number`:
 
 usb_gadget_frame_number
@@ -390,8 +426,9 @@ usb_gadget_frame_number
 
     returns the current frame number
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         controller that reports the frame number
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_gadget_frame_number.description`:
 
@@ -410,8 +447,9 @@ usb_gadget_wakeup
 
     tries to wake up the host connected to this gadget
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         controller used to wake up the host
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_gadget_wakeup.description`:
 
@@ -436,8 +474,9 @@ usb_gadget_set_selfpowered
 
     sets the device selfpowered feature.
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         the device being declared as self-powered
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_gadget_set_selfpowered.description`:
 
@@ -458,8 +497,9 @@ usb_gadget_clear_selfpowered
 
     clear the device selfpowered feature.
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         the device being declared as bus-powered
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_gadget_clear_selfpowered.description`:
 
@@ -481,8 +521,9 @@ usb_gadget_vbus_connect
 
     Notify controller that VBUS is powered
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The device which now has VBUS power.
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_gadget_vbus_connect.context`:
 
@@ -513,12 +554,14 @@ usb_gadget_vbus_draw
 
     constrain controller's VBUS power usage
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The device whose VBUS usage is being described
+    :type gadget: struct usb_gadget \*
 
-    :param unsigned mA:
+    :param mA:
         How much current to draw, in milliAmperes.  This should be twice
         the value listed in the configuration descriptor bMaxPower field.
+    :type mA: unsigned
 
 .. _`usb_gadget_vbus_draw.description`:
 
@@ -540,8 +583,9 @@ usb_gadget_vbus_disconnect
 
     notify controller about VBUS session end
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         the device whose VBUS supply is being described
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_gadget_vbus_disconnect.context`:
 
@@ -570,8 +614,9 @@ usb_gadget_connect
 
     software-controlled connect to USB host
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         the peripheral being connected
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_gadget_connect.description`:
 
@@ -594,8 +639,9 @@ usb_gadget_disconnect
 
     software-controlled disconnect from USB host
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         the peripheral being disconnected
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_gadget_disconnect.description`:
 
@@ -605,6 +651,9 @@ Description
 Disables the D+ (or potentially D-) pullup, which the host may see
 as a disconnect (when a VBUS session is active).  Not all systems
 support software pullup controls.
+
+Following a successful disconnect, invoke the ->disconnect() callback
+for the current gadget driver so that UDC drivers don't need to.
 
 Returns zero on success, else negative errno.
 
@@ -617,8 +666,9 @@ usb_gadget_deactivate
 
     deactivate function which is not ready to work
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         the peripheral being deactivated
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_gadget_deactivate.description`:
 
@@ -641,8 +691,9 @@ usb_gadget_activate
 
     activate function which is not ready to work
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         the peripheral being activated
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_gadget_activate.description`:
 
@@ -663,11 +714,13 @@ usb_gadget_giveback_request
 
     give the request back to the gadget layer
 
-    :param struct usb_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct usb_request \*
 
 .. _`usb_gadget_giveback_request.context`:
 
@@ -693,11 +746,13 @@ gadget_find_ep_by_name
 
     returns ep whose name is the same as sting passed in second parameter or NULL if searched endpoint not found
 
-    :param struct usb_gadget \*g:
+    :param g:
         controller to check for quirk
+    :type g: struct usb_gadget \*
 
-    :param const char \*name:
+    :param name:
         name of searched endpoint
+    :type name: const char \*
 
 .. _`usb_udc_vbus_handler`:
 
@@ -708,11 +763,13 @@ usb_udc_vbus_handler
 
     updates the udc core vbus status, and try to connect or disconnect gadget
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The gadget which vbus change occurs
+    :type gadget: struct usb_gadget \*
 
-    :param bool status:
+    :param status:
         The vbus status
+    :type status: bool
 
 .. _`usb_udc_vbus_handler.description`:
 
@@ -731,11 +788,13 @@ usb_gadget_udc_reset
 
     notifies the udc core that bus reset occurs
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The gadget which bus reset occurs
+    :type gadget: struct usb_gadget \*
 
-    :param struct usb_gadget_driver \*driver:
+    :param driver:
         The gadget driver we want to notify
+    :type driver: struct usb_gadget_driver \*
 
 .. _`usb_gadget_udc_reset.description`:
 
@@ -755,8 +814,9 @@ usb_gadget_udc_start
 
     tells usb device controller to start up
 
-    :param struct usb_udc \*udc:
+    :param udc:
         The UDC to be started
+    :type udc: struct usb_udc \*
 
 .. _`usb_gadget_udc_start.description`:
 
@@ -781,8 +841,9 @@ usb_gadget_udc_stop
 
     tells usb device controller we don't need it anymore
 
-    :param struct usb_udc \*udc:
+    :param udc:
         *undescribed*
+    :type udc: struct usb_udc \*
 
 .. _`usb_gadget_udc_stop.description`:
 
@@ -805,11 +866,13 @@ usb_gadget_udc_set_speed
 
     tells usb device controller speed supported by current driver
 
-    :param struct usb_udc \*udc:
+    :param udc:
         The device we want to set maximum speed
+    :type udc: struct usb_udc \*
 
-    :param enum usb_device_speed speed:
+    :param speed:
         The maximum speed to allowed to run
+    :type speed: enum usb_device_speed
 
 .. _`usb_gadget_udc_set_speed.description`:
 
@@ -829,8 +892,9 @@ usb_udc_release
 
     release the usb_udc struct
 
-    :param struct device \*dev:
+    :param dev:
         the dev member within usb_udc
+    :type dev: struct device \*
 
 .. _`usb_udc_release.description`:
 
@@ -849,12 +913,14 @@ usb_add_gadget_udc_release
 
     adds a new gadget to the udc class driver list
 
-    :param struct device \*parent:
+    :param parent:
         the parent device to this udc. Usually the controller driver's
         device.
+    :type parent: struct device \*
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         the gadget to be added to the list.
+    :type gadget: struct usb_gadget \*
 
     :param void (\*release)(struct device \*dev):
         a gadget release function.
@@ -876,8 +942,9 @@ usb_get_gadget_udc_name
 
     get the name of the first UDC controller This functions returns the name of the first UDC controller in the system. Please note that this interface is usefull only for legacy drivers which assume that there is only one UDC controller in the system and they need to get its name before initialization. There is no guarantee that the UDC of the returned name will be still available, when gadget driver registers itself.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`usb_get_gadget_udc_name.description`:
 
@@ -896,12 +963,14 @@ usb_add_gadget_udc
 
     adds a new gadget to the udc class driver list
 
-    :param struct device \*parent:
+    :param parent:
         the parent device to this udc. Usually the controller
         driver's device.
+    :type parent: struct device \*
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         the gadget to be added to the list
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_add_gadget_udc.description`:
 
@@ -919,8 +988,9 @@ usb_del_gadget_udc
 
     deletes \ ``udc``\  from udc_list
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         the gadget to be removed.
+    :type gadget: struct usb_gadget \*
 
 .. _`usb_del_gadget_udc.description`:
 

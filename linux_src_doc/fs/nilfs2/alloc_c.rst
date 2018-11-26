@@ -10,8 +10,9 @@ nilfs_palloc_groups_per_desc_block
 
     get the number of groups that a group descriptor block can maintain
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: const struct inode \*
 
 .. _`nilfs_palloc_groups_count`:
 
@@ -22,8 +23,9 @@ nilfs_palloc_groups_count
 
     get maximum number of groups
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: const struct inode \*
 
 .. _`nilfs_palloc_init_blockgroup`:
 
@@ -34,11 +36,13 @@ nilfs_palloc_init_blockgroup
 
     initialize private variables for allocator
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param unsigned int entry_size:
+    :param entry_size:
         size of the persistent object
+    :type entry_size: unsigned int
 
 .. _`nilfs_palloc_group`:
 
@@ -49,14 +53,17 @@ nilfs_palloc_group
 
     get group number and offset from an entry number
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: const struct inode \*
 
-    :param __u64 nr:
+    :param nr:
         serial number of the entry (e.g. inode number)
+    :type nr: __u64
 
-    :param unsigned long \*offset:
+    :param offset:
         pointer to store offset number in the group
+    :type offset: unsigned long \*
 
 .. _`nilfs_palloc_desc_blkoff`:
 
@@ -67,11 +74,13 @@ nilfs_palloc_desc_blkoff
 
     get block offset of a group descriptor block
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: const struct inode \*
 
-    :param unsigned long group:
+    :param group:
         group number
+    :type group: unsigned long
 
 .. _`nilfs_palloc_desc_blkoff.description`:
 
@@ -90,11 +99,13 @@ nilfs_palloc_bitmap_blkoff
 
     get block offset of a bitmap block
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: const struct inode \*
 
-    :param unsigned long group:
+    :param group:
         group number
+    :type group: unsigned long
 
 .. _`nilfs_palloc_bitmap_blkoff.description`:
 
@@ -113,11 +124,13 @@ nilfs_palloc_group_desc_nfrees
 
     get the number of free entries in a group
 
-    :param const struct nilfs_palloc_group_desc \*desc:
+    :param desc:
         pointer to descriptor structure for the group
+    :type desc: const struct nilfs_palloc_group_desc \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         spin lock protecting \ ``desc``\ 
+    :type lock: spinlock_t \*
 
 .. _`nilfs_palloc_group_desc_add_entries`:
 
@@ -128,14 +141,17 @@ nilfs_palloc_group_desc_add_entries
 
     adjust count of free entries
 
-    :param struct nilfs_palloc_group_desc \*desc:
+    :param desc:
         pointer to descriptor structure for the group
+    :type desc: struct nilfs_palloc_group_desc \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         spin lock protecting \ ``desc``\ 
+    :type lock: spinlock_t \*
 
-    :param u32 n:
+    :param n:
         delta to be added
+    :type n: u32
 
 .. _`nilfs_palloc_entry_blkoff`:
 
@@ -146,11 +162,13 @@ nilfs_palloc_entry_blkoff
 
     get block offset of an entry block
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: const struct inode \*
 
-    :param __u64 nr:
+    :param nr:
         serial number of the entry (e.g. inode number)
+    :type nr: __u64
 
 .. _`nilfs_palloc_desc_block_init`:
 
@@ -161,14 +179,17 @@ nilfs_palloc_desc_block_init
 
     initialize buffer of a group descriptor block
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file
+    :type inode: struct inode \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer head of the buffer to be initialized
+    :type bh: struct buffer_head \*
 
-    :param void \*kaddr:
+    :param kaddr:
         kernel address mapped for the page including the buffer
+    :type kaddr: void \*
 
 .. _`nilfs_palloc_delete_block`:
 
@@ -179,17 +200,21 @@ nilfs_palloc_delete_block
 
     delete a block on the persistent allocator file
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param unsigned long blkoff:
+    :param blkoff:
         block offset
+    :type blkoff: unsigned long
 
-    :param struct nilfs_bh_assoc \*prev:
+    :param prev:
         nilfs_bh_assoc struct of the last used buffer
+    :type prev: struct nilfs_bh_assoc \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         spin lock protecting \ ``prev``\ 
+    :type lock: spinlock_t \*
 
 .. _`nilfs_palloc_get_desc_block`:
 
@@ -200,17 +225,21 @@ nilfs_palloc_get_desc_block
 
     get buffer head of a group descriptor block
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param unsigned long group:
+    :param group:
         group number
+    :type group: unsigned long
 
-    :param int create:
+    :param create:
         create flag
+    :type create: int
 
-    :param struct buffer_head \*\*bhp:
+    :param bhp:
         pointer to store the resultant buffer head
+    :type bhp: struct buffer_head \*\*
 
 .. _`nilfs_palloc_get_bitmap_block`:
 
@@ -221,17 +250,21 @@ nilfs_palloc_get_bitmap_block
 
     get buffer head of a bitmap block
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param unsigned long group:
+    :param group:
         group number
+    :type group: unsigned long
 
-    :param int create:
+    :param create:
         create flag
+    :type create: int
 
-    :param struct buffer_head \*\*bhp:
+    :param bhp:
         pointer to store the resultant buffer head
+    :type bhp: struct buffer_head \*\*
 
 .. _`nilfs_palloc_delete_bitmap_block`:
 
@@ -242,11 +275,13 @@ nilfs_palloc_delete_bitmap_block
 
     delete a bitmap block
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param unsigned long group:
+    :param group:
         group number
+    :type group: unsigned long
 
 .. _`nilfs_palloc_get_entry_block`:
 
@@ -257,17 +292,21 @@ nilfs_palloc_get_entry_block
 
     get buffer head of an entry block
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param __u64 nr:
+    :param nr:
         serial number of the entry (e.g. inode number)
+    :type nr: __u64
 
-    :param int create:
+    :param create:
         create flag
+    :type create: int
 
-    :param struct buffer_head \*\*bhp:
+    :param bhp:
         pointer to store the resultant buffer head
+    :type bhp: struct buffer_head \*\*
 
 .. _`nilfs_palloc_delete_entry_block`:
 
@@ -278,11 +317,13 @@ nilfs_palloc_delete_entry_block
 
     delete an entry block
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param __u64 nr:
+    :param nr:
         serial number of the entry
+    :type nr: __u64
 
 .. _`nilfs_palloc_block_get_group_desc`:
 
@@ -293,17 +334,21 @@ nilfs_palloc_block_get_group_desc
 
     get kernel address of a group descriptor
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: const struct inode \*
 
-    :param unsigned long group:
+    :param group:
         group number
+    :type group: unsigned long
 
-    :param const struct buffer_head \*bh:
+    :param bh:
         buffer head of the buffer storing the group descriptor block
+    :type bh: const struct buffer_head \*
 
-    :param void \*kaddr:
+    :param kaddr:
         kernel address mapped for the page including the buffer
+    :type kaddr: void \*
 
 .. _`nilfs_palloc_block_get_entry`:
 
@@ -314,17 +359,21 @@ nilfs_palloc_block_get_entry
 
     get kernel address of an entry
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: const struct inode \*
 
-    :param __u64 nr:
+    :param nr:
         serial number of the entry (e.g. inode number)
+    :type nr: __u64
 
-    :param const struct buffer_head \*bh:
+    :param bh:
         buffer head of the buffer storing the entry block
+    :type bh: const struct buffer_head \*
 
-    :param void \*kaddr:
+    :param kaddr:
         kernel address mapped for the page including the buffer
+    :type kaddr: void \*
 
 .. _`nilfs_palloc_find_available_slot`:
 
@@ -335,17 +384,21 @@ nilfs_palloc_find_available_slot
 
     find available slot in a group
 
-    :param unsigned char \*bitmap:
+    :param bitmap:
         bitmap of the group
+    :type bitmap: unsigned char \*
 
-    :param unsigned long target:
+    :param target:
         offset number of an entry in the group (start point)
+    :type target: unsigned long
 
-    :param unsigned int bsize:
+    :param bsize:
         size in bits
+    :type bsize: unsigned int
 
-    :param spinlock_t \*lock:
+    :param lock:
         spin lock protecting \ ``bitmap``\ 
+    :type lock: spinlock_t \*
 
 .. _`nilfs_palloc_rest_groups_in_desc_block`:
 
@@ -356,14 +409,17 @@ nilfs_palloc_rest_groups_in_desc_block
 
     get the remaining number of groups in a group descriptor block
 
-    :param const struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: const struct inode \*
 
-    :param unsigned long curr:
+    :param curr:
         current group number
+    :type curr: unsigned long
 
-    :param unsigned long max:
+    :param max:
         maximum number of groups
+    :type max: unsigned long
 
 .. _`nilfs_palloc_count_desc_blocks`:
 
@@ -374,11 +430,13 @@ nilfs_palloc_count_desc_blocks
 
     count descriptor blocks number
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param unsigned long \*desc_blocks:
+    :param desc_blocks:
         descriptor blocks number [out]
+    :type desc_blocks: unsigned long \*
 
 .. _`nilfs_palloc_mdt_file_can_grow`:
 
@@ -389,11 +447,13 @@ nilfs_palloc_mdt_file_can_grow
 
     check potential opportunity for MDT file growing
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param unsigned long desc_blocks:
+    :param desc_blocks:
         known current descriptor blocks count
+    :type desc_blocks: unsigned long
 
 .. _`nilfs_palloc_count_max_entries`:
 
@@ -404,14 +464,17 @@ nilfs_palloc_count_max_entries
 
     count max number of entries that can be described by descriptor blocks count
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param u64 nused:
+    :param nused:
         current number of used entries
+    :type nused: u64
 
-    :param u64 \*nmaxp:
+    :param nmaxp:
         max number of entries [out]
+    :type nmaxp: u64 \*
 
 .. _`nilfs_palloc_prepare_alloc_entry`:
 
@@ -422,11 +485,13 @@ nilfs_palloc_prepare_alloc_entry
 
     prepare to allocate a persistent object
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param struct nilfs_palloc_req \*req:
+    :param req:
         nilfs_palloc_req structure exchanged for the allocation
+    :type req: struct nilfs_palloc_req \*
 
 .. _`nilfs_palloc_commit_alloc_entry`:
 
@@ -437,11 +502,13 @@ nilfs_palloc_commit_alloc_entry
 
     finish allocation of a persistent object
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param struct nilfs_palloc_req \*req:
+    :param req:
         nilfs_palloc_req structure exchanged for the allocation
+    :type req: struct nilfs_palloc_req \*
 
 .. _`nilfs_palloc_commit_free_entry`:
 
@@ -452,11 +519,13 @@ nilfs_palloc_commit_free_entry
 
     finish deallocating a persistent object
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param struct nilfs_palloc_req \*req:
+    :param req:
         nilfs_palloc_req structure exchanged for the removal
+    :type req: struct nilfs_palloc_req \*
 
 .. _`nilfs_palloc_abort_alloc_entry`:
 
@@ -467,11 +536,13 @@ nilfs_palloc_abort_alloc_entry
 
     cancel allocation of a persistent object
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param struct nilfs_palloc_req \*req:
+    :param req:
         nilfs_palloc_req structure exchanged for the allocation
+    :type req: struct nilfs_palloc_req \*
 
 .. _`nilfs_palloc_prepare_free_entry`:
 
@@ -482,11 +553,13 @@ nilfs_palloc_prepare_free_entry
 
     prepare to deallocate a persistent object
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param struct nilfs_palloc_req \*req:
+    :param req:
         nilfs_palloc_req structure exchanged for the removal
+    :type req: struct nilfs_palloc_req \*
 
 .. _`nilfs_palloc_abort_free_entry`:
 
@@ -497,11 +570,13 @@ nilfs_palloc_abort_free_entry
 
     cancel deallocating a persistent object
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param struct nilfs_palloc_req \*req:
+    :param req:
         nilfs_palloc_req structure exchanged for the removal
+    :type req: struct nilfs_palloc_req \*
 
 .. _`nilfs_palloc_freev`:
 
@@ -512,14 +587,17 @@ nilfs_palloc_freev
 
     deallocate a set of persistent objects
 
-    :param struct inode \*inode:
+    :param inode:
         inode of metadata file using this allocator
+    :type inode: struct inode \*
 
-    :param __u64 \*entry_nrs:
+    :param entry_nrs:
         array of entry numbers to be deallocated
+    :type entry_nrs: __u64 \*
 
-    :param size_t nitems:
+    :param nitems:
         number of entries stored in \ ``entry_nrs``\ 
+    :type nitems: size_t
 
 .. This file was automatic generated / don't edit.
 

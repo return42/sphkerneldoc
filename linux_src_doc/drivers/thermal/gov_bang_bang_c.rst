@@ -10,11 +10,13 @@ bang_bang_control
 
     controls devices associated with the given zone \ ``tz``\  - thermal_zone_device \ ``trip``\  - the trip point
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         *undescribed*
+    :type tz: struct thermal_zone_device \*
 
-    :param int trip:
+    :param trip:
         *undescribed*
+    :type trip: int
 
 .. _`bang_bang_control.regulation-logic`:
 

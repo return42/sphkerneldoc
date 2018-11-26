@@ -1,33 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/cavium/liquidio/lio_main.c
 
-.. _`lio_sync_octeon_time_cb`:
-
-lio_sync_octeon_time_cb
-=======================
-
-.. c:function:: void lio_sync_octeon_time_cb(struct octeon_device *oct, u32 status, void *buf)
-
-    callback that is invoked when soft command sent by \ :c:func:`lio_sync_octeon_time`\  has completed successfully or failed
-
-    :param struct octeon_device \*oct:
-        *undescribed*
-
-    :param u32 status:
-        *undescribed*
-
-    :param void \*buf:
-        *undescribed*
-
-.. _`lio_sync_octeon_time_cb.description`:
-
-Description
------------
-
-\ ``oct``\  - octeon device structure
-\ ``status``\  - indicates success or failure
-\ ``buf``\  - pointer to the command that was sent to firmware
-
 .. _`lio_sync_octeon_time`:
 
 lio_sync_octeon_time
@@ -37,8 +10,9 @@ lio_sync_octeon_time
 
     send latest localtime to octeon firmware so that firmware will correct it's time, in case there is a time skew
 
-    :param struct work_struct \*work:
+    :param work:
         work scheduled to send time update to octeon firmware
+    :type work: struct work_struct \*
 
 .. _`setup_sync_octeon_time_wq`:
 
@@ -49,8 +23,9 @@ setup_sync_octeon_time_wq
 
     Sets up the work to periodically update local time to octeon firmware
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
 .. _`setup_sync_octeon_time_wq.description`:
 
@@ -68,8 +43,9 @@ cleanup_sync_octeon_time_wq
 
     stop scheduling and destroy the work created to periodically update local time to octeon firmware
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
 .. _`cleanup_sync_octeon_time_wq.description`:
 

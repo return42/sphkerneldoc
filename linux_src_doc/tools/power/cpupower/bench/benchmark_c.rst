@@ -10,11 +10,13 @@ calculate_timespace
 
     to get the given load time
 
-    :param long load:
+    :param load:
         *undescribed*
+    :type load: long
 
-    :param struct config \*config:
+    :param config:
         *undescribed*
+    :type config: struct config \*
 
 .. _`calculate_timespace.description`:
 
@@ -34,8 +36,9 @@ start_benchmark
 
     generates a specific sleep an load time with the performance governor and compares the used time for same calculations done with the configured powersave governor
 
-    :param struct config \*config:
+    :param config:
         *undescribed*
+    :type config: struct config \*
 
 .. _`start_benchmark.description`:
 

@@ -10,8 +10,9 @@ kvm_reset_vcpu
 
     sets core registers and cp15 registers to reset value
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_reset_vcpu.description`:
 

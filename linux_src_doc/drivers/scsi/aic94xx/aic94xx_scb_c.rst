@@ -10,11 +10,13 @@ asd_get_attached_sas_addr
 
     - extract/generate attached SAS address
 
-    :param struct asd_phy \*phy:
+    :param phy:
         *undescribed*
+    :type phy: struct asd_phy \*
 
-    :param u8 \*sas_addr:
+    :param sas_addr:
         *undescribed*
+    :type sas_addr: u8 \*
 
 .. _`asd_get_attached_sas_addr.phy`:
 
@@ -51,11 +53,13 @@ asd_invalidate_edb
 
     - invalidate an EDB and if necessary post the ESCB
 
-    :param struct asd_ascb \*ascb:
+    :param ascb:
         pointer to Empty SCB
+    :type ascb: struct asd_ascb \*
 
-    :param int edb_id:
+    :param edb_id:
         index [0,6] to the empty data buffer which is to be invalidated
+    :type edb_id: int
 
 .. _`asd_invalidate_edb.description`:
 
@@ -75,11 +79,13 @@ control_phy_tasklet_complete
 
     - tasklet complete for CONTROL PHY ascb
 
-    :param struct asd_ascb \*ascb:
+    :param ascb:
         pointer to an ascb
+    :type ascb: struct asd_ascb \*
 
-    :param struct done_list_struct \*dl:
+    :param dl:
         pointer to the done list entry
+    :type dl: struct done_list_struct \*
 
 .. _`control_phy_tasklet_complete.description`:
 
@@ -106,14 +112,17 @@ asd_build_control_phy
 
     - build a CONTROL PHY SCB
 
-    :param struct asd_ascb \*ascb:
+    :param ascb:
         pointer to an ascb
+    :type ascb: struct asd_ascb \*
 
-    :param int phy_id:
+    :param phy_id:
         phy id to control, integer
+    :type phy_id: int
 
-    :param u8 subfunc:
+    :param subfunc:
         subfunction, what to actually to do the phy
+    :type subfunc: u8
 
 .. _`asd_build_control_phy.description`:
 
@@ -136,8 +145,9 @@ asd_ascb_timedout
 
     - called when a pending SCB's timer has expired
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`asd_ascb_timedout.description`:
 

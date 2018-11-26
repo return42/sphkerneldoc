@@ -19,29 +19,37 @@ efi_fpswa_t
 
     library. This function is invoked by the Floating point software assist trap/fault handler.
 
-    :param unsigned long trap_type:
+    :param trap_type:
         *undescribed*
+    :type trap_type: unsigned long
 
-    :param void \*bundle:
+    :param bundle:
         *undescribed*
+    :type bundle: void \*
 
-    :param unsigned long \*ipsr:
+    :param ipsr:
         *undescribed*
+    :type ipsr: unsigned long \*
 
-    :param unsigned long \*fsr:
+    :param fsr:
         *undescribed*
+    :type fsr: unsigned long \*
 
-    :param unsigned long \*isr:
+    :param isr:
         *undescribed*
+    :type isr: unsigned long \*
 
-    :param unsigned long \*preds:
+    :param preds:
         *undescribed*
+    :type preds: unsigned long \*
 
-    :param unsigned long \*ifs:
+    :param ifs:
         *undescribed*
+    :type ifs: unsigned long \*
 
-    :param fp_state_t \*fp_state:
+    :param fp_state:
         *undescribed*
+    :type fp_state: fp_state_t \*
 
 .. _`fpswa_interface_t`:
 

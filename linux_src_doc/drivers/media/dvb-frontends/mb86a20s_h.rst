@@ -45,11 +45,13 @@ mb86a20s_attach
 
 .. c:function:: struct dvb_frontend *mb86a20s_attach(const struct mb86a20s_config *config, struct i2c_adapter *i2c)
 
-    :param const struct mb86a20s_config \*config:
+    :param config:
         pointer to \ :c:type:`struct mb86a20s_config <mb86a20s_config>`\  with demod configuration.
+    :type config: const struct mb86a20s_config \*
 
-    :param struct i2c_adapter \*i2c:
+    :param i2c:
         i2c adapter to use.
+    :type i2c: struct i2c_adapter \*
 
 .. _`mb86a20s_attach.return`:
 

@@ -8,11 +8,13 @@ longhaul_setstate
 
 .. c:function:: int longhaul_setstate(struct cpufreq_policy *policy, unsigned int table_index)
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int table_index:
+    :param table_index:
         *undescribed*
+    :type table_index: unsigned int
 
 .. _`longhaul_setstate.description`:
 

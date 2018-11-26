@@ -10,8 +10,9 @@ uwb_drp_avail_init
 
     initialize an RC's MAS availability
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
 .. _`uwb_drp_avail_init.description`:
 
@@ -30,11 +31,13 @@ uwb_drp_avail_reserve_pending
 
     reserve MAS for a new reservation
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_mas_bm \*mas:
+    :param mas:
         the MAS to reserve
+    :type mas: struct uwb_mas_bm \*
 
 .. _`uwb_drp_avail_reserve_pending.description`:
 
@@ -52,11 +55,13 @@ uwb_drp_avail_reserve
 
     reserve MAS for an established reservation
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_mas_bm \*mas:
+    :param mas:
         the MAS to reserve
+    :type mas: struct uwb_mas_bm \*
 
 .. _`uwb_drp_avail_release`:
 
@@ -67,11 +72,13 @@ uwb_drp_avail_release
 
     release MAS from a pending or established reservation
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_mas_bm \*mas:
+    :param mas:
         the MAS to release
+    :type mas: struct uwb_mas_bm \*
 
 .. _`uwb_drp_avail_ie_update`:
 
@@ -82,8 +89,9 @@ uwb_drp_avail_ie_update
 
     update the DRP Availability IE
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller
+    :type rc: struct uwb_rc \*
 
 .. _`uwb_drp_avail_ie_update.description`:
 
@@ -99,18 +107,21 @@ get_val
 
 .. c:function:: unsigned long get_val(u8 *array, size_t itr, size_t len)
 
-    :param u8 \*array:
+    :param array:
         pointer to buffer
+    :type array: u8 \*
 
-    :param size_t itr:
+    :param itr:
         index of buffer from where we start
+    :type itr: size_t
 
-    :param size_t len:
+    :param len:
         the buffer's remaining size may not be exact multiple of
         sizeof(unsigned long), \ ``len``\  is the length of buffer that needs
         to be converted. This will be sizeof(unsigned long) or smaller
         (BUG if not). If it is smaller then we will pad the remaining
         space of the result with zeroes.
+    :type len: size_t
 
 .. _`buffer_to_bmp`:
 
@@ -119,14 +130,17 @@ buffer_to_bmp
 
 .. c:function:: void buffer_to_bmp(unsigned long *bmp_itr, void *_buffer, size_t buffer_size)
 
-    :param unsigned long \*bmp_itr:
+    :param bmp_itr:
         pointer to bitmap (can be declared with DECLARE_BITMAP)
+    :type bmp_itr: unsigned long \*
 
-    :param void \*_buffer:
+    :param _buffer:
         *undescribed*
+    :type _buffer: void \*
 
-    :param size_t buffer_size:
+    :param buffer_size:
         number of bytes with which bitmap should be initialized
+    :type buffer_size: size_t
 
 .. _`buffer_to_bmp.description`:
 
@@ -190,11 +204,13 @@ uwbd_evt_get_drp_avail
 
 .. c:function:: int uwbd_evt_get_drp_avail(struct uwb_event *evt, unsigned long *bmp)
 
-    :param struct uwb_event \*evt:
+    :param evt:
         *undescribed*
+    :type evt: struct uwb_event \*
 
-    :param unsigned long \*bmp:
+    :param bmp:
         *undescribed*
+    :type bmp: unsigned long \*
 
 .. _`uwbd_evt_get_drp_avail.description`:
 
@@ -211,9 +227,10 @@ uwbd_evt_handle_rc_drp_avail
 
 .. c:function:: int uwbd_evt_handle_rc_drp_avail(struct uwb_event *evt)
 
-    :param struct uwb_event \*evt:
+    :param evt:
         Event information (packs the actual event data, which
         radio controller it came to, etc).
+    :type evt: struct uwb_event \*
 
 .. _`uwbd_evt_handle_rc_drp_avail.description`:
 

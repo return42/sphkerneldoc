@@ -90,11 +90,13 @@ extcon_sync
 
     Synchronize the state for an external connector.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         *undescribed*
+    :type id: unsigned int
 
 .. _`extcon_sync.description`:
 
@@ -115,11 +117,13 @@ extcon_get_state
 
     Get the state of an external connector.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param const unsigned int id:
+    :param id:
         the unique id indicating an external connector
+    :type id: const unsigned int
 
 .. _`extcon_get_state.description`:
 
@@ -137,15 +141,18 @@ extcon_set_state
 
     Set the state of an external connector.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         the unique id indicating an external connector
+    :type id: unsigned int
 
-    :param bool state:
+    :param state:
         the new state of an external connector.
         the default semantics is true: attached / false: detached.
+    :type state: bool
 
 .. _`extcon_set_state.description`:
 
@@ -167,15 +174,18 @@ extcon_set_state_sync
 
     Set the state of an external connector with sync.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         the unique id indicating an external connector
+    :type id: unsigned int
 
-    :param bool state:
+    :param state:
         the new state of external connector.
         the default semantics is true: attached / false: detached.
+    :type state: bool
 
 .. _`extcon_set_state_sync.description`:
 
@@ -196,17 +206,21 @@ extcon_get_property
 
     Get the property value of an external connector.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         the unique id indicating an external connector
+    :type id: unsigned int
 
-    :param unsigned int prop:
+    :param prop:
         the property id indicating an extcon property
+    :type prop: unsigned int
 
-    :param union extcon_property_value \*prop_val:
+    :param prop_val:
         the pointer which store the value of extcon property
+    :type prop_val: union extcon_property_value \*
 
 .. _`extcon_get_property.description`:
 
@@ -229,17 +243,21 @@ extcon_set_property
 
     Set the property value of an external connector.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         the unique id indicating an external connector
+    :type id: unsigned int
 
-    :param unsigned int prop:
+    :param prop:
         the property id indicating an extcon property
+    :type prop: unsigned int
 
-    :param union extcon_property_value prop_val:
+    :param prop_val:
         the pointer including the new value of extcon property
+    :type prop_val: union extcon_property_value
 
 .. _`extcon_set_property.description`:
 
@@ -260,17 +278,21 @@ extcon_set_property_sync
 
     Set property of an external connector with sync.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         *undescribed*
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         *undescribed*
+    :type id: unsigned int
 
-    :param unsigned int prop:
+    :param prop:
         *undescribed*
+    :type prop: unsigned int
 
-    :param union extcon_property_value prop_val:
+    :param prop_val:
         the pointer including the new value of extcon property
+    :type prop_val: union extcon_property_value
 
 .. _`extcon_set_property_sync.description`:
 
@@ -292,14 +314,17 @@ extcon_get_property_capability
 
     Get the capability of the property for an external connector.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         the unique id indicating an external connector
+    :type id: unsigned int
 
-    :param unsigned int prop:
+    :param prop:
         the property id indicating an extcon property
+    :type prop: unsigned int
 
 .. _`extcon_get_property_capability.description`:
 
@@ -317,14 +342,17 @@ extcon_set_property_capability
 
     Set the capability of the property for an external connector.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         the unique id indicating an external connector
+    :type id: unsigned int
 
-    :param unsigned int prop:
+    :param prop:
         the property id indicating an extcon property
+    :type prop: unsigned int
 
 .. _`extcon_set_property_capability.description`:
 
@@ -346,8 +374,9 @@ extcon_get_extcon_dev
 
     Get the extcon device instance from the name.
 
-    :param const char \*extcon_name:
+    :param extcon_name:
         the extcon name provided with \ :c:func:`extcon_dev_register`\ 
+    :type extcon_name: const char \*
 
 .. _`extcon_get_extcon_dev.description`:
 
@@ -365,14 +394,17 @@ extcon_register_notifier
 
     Register a notifier block to get notified by any state changes from the extcon.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         the unique id indicating an external connector
+    :type id: unsigned int
 
-    :param struct notifier_block \*nb:
+    :param nb:
         a notifier block to be registered
+    :type nb: struct notifier_block \*
 
 .. _`extcon_register_notifier.description`:
 
@@ -394,14 +426,17 @@ extcon_unregister_notifier
 
     Unregister a notifier block from the extcon.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         the unique id indicating an external connector
+    :type id: unsigned int
 
-    :param struct notifier_block \*nb:
+    :param nb:
         a notifier block to be registered
+    :type nb: struct notifier_block \*
 
 .. _`extcon_unregister_notifier.description`:
 
@@ -419,11 +454,13 @@ extcon_register_notifier_all
 
     Register a notifier block for all connectors.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         a notifier block to be registered
+    :type nb: struct notifier_block \*
 
 .. _`extcon_register_notifier_all.description`:
 
@@ -446,11 +483,13 @@ extcon_unregister_notifier_all
 
     Unregister a notifier block from extcon.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         a notifier block to be registered
+    :type nb: struct notifier_block \*
 
 .. _`extcon_unregister_notifier_all.description`:
 
@@ -468,8 +507,9 @@ extcon_dev_register
 
     Register an new extcon device
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device to be registered
+    :type edev: struct extcon_dev \*
 
 .. _`extcon_dev_register.description`:
 
@@ -495,8 +535,9 @@ extcon_dev_unregister
 
     Unregister the extcon device.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device to be unregistered.
+    :type edev: struct extcon_dev \*
 
 .. _`extcon_dev_unregister.description`:
 
@@ -515,8 +556,9 @@ extcon_get_edev_name
 
     Get the name of the extcon device.
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
 .. This file was automatic generated / don't edit.
 

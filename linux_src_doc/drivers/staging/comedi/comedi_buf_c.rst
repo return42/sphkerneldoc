@@ -10,11 +10,13 @@ comedi_buf_write_alloc
 
     Reserve buffer space for writing
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         Maximum space to reserve in bytes.
+    :type nbytes: unsigned int
 
 .. _`comedi_buf_write_alloc.description`:
 
@@ -41,11 +43,13 @@ comedi_buf_write_free
 
     Free buffer space after it is written
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         Maximum space to free in bytes.
+    :type nbytes: unsigned int
 
 .. _`comedi_buf_write_free.description`:
 
@@ -76,8 +80,9 @@ comedi_buf_read_n_available
 
     Determine amount of readable buffer space
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`comedi_buf_read_n_available.description`:
 
@@ -105,11 +110,13 @@ comedi_buf_read_alloc
 
     Reserve buffer space for reading
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         Maximum space to reserve in bytes.
+    :type nbytes: unsigned int
 
 .. _`comedi_buf_read_alloc.description`:
 
@@ -140,11 +147,13 @@ comedi_buf_read_free
 
     Free buffer space after it has been read
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         Maximum space to free in bytes.
+    :type nbytes: unsigned int
 
 .. _`comedi_buf_read_free.description`:
 
@@ -173,14 +182,17 @@ comedi_buf_write_samples
 
     Write sample data to COMEDI buffer
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param const void \*data:
+    :param data:
         Pointer to source samples.
+    :type data: const void \*
 
-    :param unsigned int nsamples:
+    :param nsamples:
         Number of samples to write.
+    :type nsamples: unsigned int
 
 .. _`comedi_buf_write_samples.description`:
 
@@ -212,14 +224,17 @@ comedi_buf_read_samples
 
     Read sample data from COMEDI buffer
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param void \*data:
+    :param data:
         Pointer to destination.
+    :type data: void \*
 
-    :param unsigned int nsamples:
+    :param nsamples:
         Maximum number of samples to read.
+    :type nsamples: unsigned int
 
 .. _`comedi_buf_read_samples.description`:
 

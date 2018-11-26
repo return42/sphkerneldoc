@@ -10,11 +10,13 @@ get_indexed_reg
 
     Get indexed register
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         for the port address
+    :type hwif: ide_hwif_t \*
 
-    :param u8 index:
+    :param index:
         index of the indexed register
+    :type index: u8
 
 .. _`set_indexed_reg`:
 
@@ -25,14 +27,17 @@ set_indexed_reg
 
     Set indexed register
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         for the port address
+    :type hwif: ide_hwif_t \*
 
-    :param u8 index:
+    :param index:
         index of the indexed register
+    :type index: u8
 
-    :param u8 value:
+    :param value:
         *undescribed*
+    :type value: u8
 
 .. _`read_counter`:
 
@@ -43,8 +48,9 @@ read_counter
 
     Read the byte count registers
 
-    :param u32 dma_base:
+    :param dma_base:
         for the port address
+    :type dma_base: u32
 
 .. _`detect_pll_input_clock`:
 
@@ -55,9 +61,10 @@ detect_pll_input_clock
 
     Detect the PLL input clock in Hz.
 
-    :param unsigned long dma_base:
+    :param dma_base:
         for the port address
         E.g. 16949000 on 33 MHz PCI bus, i.e. half of the PCI clock.
+    :type dma_base: unsigned long
 
 .. _`pdc202new_init_one`:
 
@@ -68,11 +75,13 @@ pdc202new_init_one
 
     called when a pdc202xx is found
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the pdc202new device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         the matching pci id
+    :type id: const struct pci_device_id \*
 
 .. _`pdc202new_init_one.description`:
 

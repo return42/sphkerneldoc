@@ -10,8 +10,9 @@ mpc52xx_declare_of_platform_devices
 
     register internal devices and children of the localplus bus to the of_platform bus.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mpc52xx_map_common_devices`:
 
@@ -22,8 +23,9 @@ mpc52xx_map_common_devices
 
     iomap devices required by common code
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mpc52xx_set_psc_clkdiv`:
 
@@ -34,11 +36,13 @@ mpc52xx_set_psc_clkdiv
 
     Set clock divider in the CDM for PSC ports
 
-    :param int psc_id:
+    :param psc_id:
         id of psc port; must be 1,2,3 or 6
+    :type psc_id: int
 
-    :param int clkdiv:
+    :param clkdiv:
         clock divider value to put into CDM PSC register.
+    :type clkdiv: int
 
 .. _`mpc52xx_get_xtal_freq`:
 
@@ -49,8 +53,9 @@ mpc52xx_get_xtal_freq
 
     Get SYS_XTAL_IN frequency for a device
 
-    :param struct device_node \*node:
+    :param node:
         device node
+    :type node: struct device_node \*
 
 .. _`mpc52xx_get_xtal_freq.description`:
 
@@ -69,8 +74,9 @@ mpc52xx_restart
 
     ppc_md->restart hook for mpc5200 using the watchdog timer
 
-    :param char \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: char \*
 
 .. _`mpc5200_psc_ac97_gpio_reset`:
 
@@ -81,8 +87,9 @@ mpc5200_psc_ac97_gpio_reset
 
     Use gpio pins to reset the ac97 bus
 
-    :param int psc_number:
+    :param psc_number:
         *undescribed*
+    :type psc_number: int
 
 .. This file was automatic generated / don't edit.
 

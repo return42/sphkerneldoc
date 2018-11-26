@@ -10,8 +10,9 @@ prcmu_set_rc_a2p
 
     This function is used to run few power state sequences
 
-    :param enum romcode_write val:
+    :param val:
         Value to be set, i.e. transition requested
+    :type val: enum romcode_write
 
 .. _`prcmu_set_rc_a2p.return`:
 
@@ -32,8 +33,9 @@ prcmu_get_rc_p2a
 
     This function is used to get power state sequences
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`prcmu_get_rc_p2a.return`:
 
@@ -54,8 +56,9 @@ prcmu_get_xp70_current_state
 
     Return the current XP70 power mode
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`prcmu_get_xp70_current_state.return`:
 
@@ -74,14 +77,17 @@ prcmu_config_clkout
 
     Configure one of the programmable clock outputs.
 
-    :param u8 clkout:
+    :param clkout:
         The CLKOUT number (0 or 1).
+    :type clkout: u8
 
-    :param u8 source:
+    :param source:
         The clock to be used (one of the PRCMU_CLKSRC\_\*).
+    :type source: u8
 
-    :param u8 div:
+    :param div:
         The divider to be applied.
+    :type div: u8
 
 .. _`prcmu_config_clkout.description`:
 
@@ -101,8 +107,9 @@ db8500_prcmu_set_arm_opp
 
     set the appropriate ARM OPP
 
-    :param u8 opp:
+    :param opp:
         The new ARM operating point to which transition is to be made
+    :type opp: u8
 
 .. _`db8500_prcmu_set_arm_opp.return`:
 
@@ -122,8 +129,9 @@ db8500_prcmu_get_arm_opp
 
     get the current ARM OPP
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`db8500_prcmu_get_arm_opp.return`:
 
@@ -141,8 +149,9 @@ db8500_prcmu_get_ddr_opp
 
     get the current DDR OPP
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`db8500_prcmu_get_ddr_opp.return`:
 
@@ -160,8 +169,9 @@ db8500_prcmu_set_ape_opp
 
     set the appropriate APE OPP
 
-    :param u8 opp:
+    :param opp:
         The new APE operating point to which transition is to be made
+    :type opp: u8
 
 .. _`db8500_prcmu_set_ape_opp.return`:
 
@@ -181,8 +191,9 @@ db8500_prcmu_get_ape_opp
 
     get the current APE OPP
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`db8500_prcmu_get_ape_opp.return`:
 
@@ -200,8 +211,9 @@ db8500_prcmu_request_ape_opp_100_voltage
 
     Request APE OPP 100% voltage
 
-    :param bool enable:
+    :param enable:
         true to request the higher voltage, false to drop a request.
+    :type enable: bool
 
 .. _`db8500_prcmu_request_ape_opp_100_voltage.description`:
 
@@ -219,8 +231,9 @@ prcmu_release_usb_wakeup_state
 
     release the state required by a USB wakeup
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`prcmu_release_usb_wakeup_state.description`:
 
@@ -238,11 +251,13 @@ db8500_prcmu_set_epod
 
     set the state of a EPOD (power domain)
 
-    :param u16 epod_id:
+    :param epod_id:
         The EPOD to set
+    :type epod_id: u16
 
-    :param u8 epod_state:
+    :param epod_state:
         The new EPOD state
+    :type epod_state: u8
 
 .. _`db8500_prcmu_set_epod.description`:
 
@@ -261,11 +276,13 @@ prcmu_configure_auto_pm
 
     Configure autonomous power management.
 
-    :param struct prcmu_auto_pm_config \*sleep:
+    :param sleep:
         Configuration for ApSleep.
+    :type sleep: struct prcmu_auto_pm_config \*
 
-    :param struct prcmu_auto_pm_config \*idle:
+    :param idle:
         Configuration for ApIdle.
+    :type idle: struct prcmu_auto_pm_config \*
 
 .. _`db8500_prcmu_request_clock`:
 
@@ -276,11 +293,13 @@ db8500_prcmu_request_clock
 
     Request for a clock to be enabled or disabled.
 
-    :param u8 clock:
+    :param clock:
         The clock for which the request is made.
+    :type clock: u8
 
-    :param bool enable:
+    :param enable:
         Whether the clock should be enabled (true) or disabled (false).
+    :type enable: bool
 
 .. _`db8500_prcmu_request_clock.description`:
 
@@ -299,17 +318,21 @@ prcmu_abb_read
 
     Read register value(s) from the ABB.
 
-    :param u8 slave:
+    :param slave:
         The I2C slave address.
+    :type slave: u8
 
-    :param u8 reg:
+    :param reg:
         The (start) register address.
+    :type reg: u8
 
-    :param u8 \*value:
+    :param value:
         The read out value(s).
+    :type value: u8 \*
 
-    :param u8 size:
+    :param size:
         The number of registers to read.
+    :type size: u8
 
 .. _`prcmu_abb_read.description`:
 
@@ -328,20 +351,25 @@ prcmu_abb_write_masked
 
     Write masked register value(s) to the ABB.
 
-    :param u8 slave:
+    :param slave:
         The I2C slave address.
+    :type slave: u8
 
-    :param u8 reg:
+    :param reg:
         The (start) register address.
+    :type reg: u8
 
-    :param u8 \*value:
+    :param value:
         The value(s) to write.
+    :type value: u8 \*
 
-    :param u8 \*mask:
+    :param mask:
         The mask(s) to use.
+    :type mask: u8 \*
 
-    :param u8 size:
+    :param size:
         The number of registers to write.
+    :type size: u8
 
 .. _`prcmu_abb_write_masked.description`:
 
@@ -362,17 +390,21 @@ prcmu_abb_write
 
     Write register value(s) to the ABB.
 
-    :param u8 slave:
+    :param slave:
         The I2C slave address.
+    :type slave: u8
 
-    :param u8 reg:
+    :param reg:
         The (start) register address.
+    :type reg: u8
 
-    :param u8 \*value:
+    :param value:
         The value(s) to write.
+    :type value: u8 \*
 
-    :param u8 size:
+    :param size:
         The number of registers to write.
+    :type size: u8
 
 .. _`prcmu_abb_write.description`:
 
@@ -391,8 +423,9 @@ prcmu_ac_wake_req
 
     should be called whenever ARM wants to wakeup Modem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`prcmu_ac_sleep_req`:
 
@@ -403,8 +436,9 @@ prcmu_ac_sleep_req
 
     called when ARM no longer needs to talk to modem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`db8500_prcmu_system_reset`:
 
@@ -415,8 +449,9 @@ db8500_prcmu_system_reset
 
     System reset
 
-    :param u16 reset_code:
+    :param reset_code:
         *undescribed*
+    :type reset_code: u16
 
 .. _`db8500_prcmu_system_reset.description`:
 
@@ -435,8 +470,9 @@ db8500_prcmu_get_reset_code
 
     Retrieve SW reset reason code
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`db8500_prcmu_get_reset_code.description`:
 
@@ -455,8 +491,9 @@ db8500_prcmu_modem_reset
 
     ask the PRCMU to reset modem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`db8500_prcmu_probe`:
 
@@ -467,8 +504,9 @@ db8500_prcmu_probe
 
     arch init call for the Linux PRCMU fw init logic
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

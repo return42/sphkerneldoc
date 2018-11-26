@@ -8,11 +8,13 @@ octeon_wdt_poke_irq
 
 .. c:function:: irqreturn_t octeon_wdt_poke_irq(int cpl, void *dev_id)
 
-    :param int cpl:
+    :param cpl:
         *undescribed*
+    :type cpl: int
 
-    :param void \*dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: void \*
 
 .. _`octeon_wdt_poke_irq.description`:
 
@@ -28,8 +30,9 @@ octeon_wdt_write_string
 
 .. c:function:: void octeon_wdt_write_string(const char *str)
 
-    :param const char \*str:
+    :param str:
         String to write
+    :type str: const char \*
 
 .. _`octeon_wdt_write_hex`:
 
@@ -38,11 +41,13 @@ octeon_wdt_write_hex
 
 .. c:function:: void octeon_wdt_write_hex(u64 value, int digits)
 
-    :param u64 value:
+    :param value:
         Number to display
+    :type value: u64
 
-    :param int digits:
+    :param digits:
         Number of digits to print (1 to 16)
+    :type digits: int
 
 .. _`octeon_wdt_nmi_stage3`:
 
@@ -53,8 +58,9 @@ octeon_wdt_nmi_stage3
 
     1) The first NMI handler enables CVMSEG and transfers from the bootbus region into normal memory. It is careful to not destroy any registers. 2) The second stage handler uses CVMSEG to save the registers and create a stack for C code. It then calls the third level handler with one argument, a pointer to the register values. 3) The third, and final, level handler is the following C function that prints out some useful infomration.
 
-    :param u64 reg:
+    :param reg:
         Pointer to register state before the NMI
+    :type reg: u64
 
 .. _`octeon_wdt_init`:
 
@@ -63,8 +69,9 @@ octeon_wdt_init
 
 .. c:function:: int octeon_wdt_init( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_wdt_init.description`:
 
@@ -80,8 +87,9 @@ octeon_wdt_cleanup
 
 .. c:function:: void __exit octeon_wdt_cleanup( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

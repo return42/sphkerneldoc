@@ -10,11 +10,13 @@ omap2xxx_restart
 
     Set DPLL to bypass mode for reboot to work
 
-    :param enum reboot_mode mode:
+    :param mode:
         *undescribed*
+    :type mode: enum reboot_mode
 
-    :param const char \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: const char \*
 
 .. _`omap2xxx_restart.description`:
 
@@ -33,8 +35,9 @@ omap2xxx_common_look_up_clks_for_reset
 
     look up clocks needed for restart
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2xxx_common_look_up_clks_for_reset.description`:
 

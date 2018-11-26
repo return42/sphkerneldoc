@@ -10,8 +10,9 @@ scom_init
 
     Initialize the SCOM backend, called by the platform
 
-    :param const struct scom_controller \*controller:
+    :param controller:
         The platform SCOM controller
+    :type controller: const struct scom_controller \*
 
 .. _`scom_map_ok`:
 
@@ -22,8 +23,9 @@ scom_map_ok
 
     Test is a SCOM mapping is successful
 
-    :param scom_map_t map:
+    :param map:
         The result of scom_map to test
+    :type map: scom_map_t
 
 .. _`scom_map`:
 
@@ -34,15 +36,18 @@ scom_map
 
     Map a block of SCOM registers
 
-    :param struct device_node \*ctrl_dev:
+    :param ctrl_dev:
         Device node of the SCOM controller
         some implementations allow NULL here
+    :type ctrl_dev: struct device_node \*
 
-    :param u64 reg:
+    :param reg:
         first SCOM register to map
+    :type reg: u64
 
-    :param u64 count:
+    :param count:
         Number of SCOM registers to map
+    :type count: u64
 
 .. _`scom_find_parent`:
 
@@ -53,8 +58,9 @@ scom_find_parent
 
     Find the SCOM controller for a device
 
-    :param struct device_node \*dev:
+    :param dev:
         OF node of the device
+    :type dev: struct device_node \*
 
 .. _`scom_find_parent.description`:
 
@@ -75,11 +81,13 @@ scom_map_device
 
     Map a device's block of SCOM registers
 
-    :param struct device_node \*dev:
+    :param dev:
         OF node of the device
+    :type dev: struct device_node \*
 
-    :param int index:
+    :param index:
         Register bank index (index in "scom-reg" property)
+    :type index: int
 
 .. _`scom_map_device.description`:
 
@@ -102,8 +110,9 @@ scom_unmap
 
     Unmap a block of SCOM registers
 
-    :param scom_map_t map:
+    :param map:
         Result of scom_map is to be unmapped
+    :type map: scom_map_t
 
 .. _`scom_read`:
 
@@ -114,14 +123,17 @@ scom_read
 
     Read a SCOM register
 
-    :param scom_map_t map:
+    :param map:
         Result of scom_map
+    :type map: scom_map_t
 
-    :param u64 reg:
+    :param reg:
         Register index within that map
+    :type reg: u64
 
-    :param u64 \*value:
+    :param value:
         Updated with the value read
+    :type value: u64 \*
 
 .. _`scom_read.description`:
 
@@ -139,14 +151,17 @@ scom_write
 
     Write to a SCOM register
 
-    :param scom_map_t map:
+    :param map:
         Result of scom_map
+    :type map: scom_map_t
 
-    :param u64 reg:
+    :param reg:
         Register index within that map
+    :type reg: u64
 
-    :param u64 value:
+    :param value:
         Value to write
+    :type value: u64
 
 .. _`scom_write.description`:
 

@@ -25,6 +25,7 @@ Definition
         int bound_dev_if;
         enum rdma_transport_type transport;
         struct net *net;
+        const struct ib_gid_attr *sgid_attr;
         enum rdma_network_type network;
         int hoplimit;
     }
@@ -55,6 +56,9 @@ transport
 net
     Network namespace containing the bound_dev_if net_dev.
 
+sgid_attr
+    GID attribute to use for identified SGID
+
 network
     *undescribed*
 
@@ -70,11 +74,13 @@ rdma_translate_ip
 
     Translate a local IP address to an RDMA hardware address.
 
-    :param const struct sockaddr \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const struct sockaddr \*
 
-    :param struct rdma_dev_addr \*dev_addr:
+    :param dev_addr:
         *undescribed*
+    :type dev_addr: struct rdma_dev_addr \*
 
 .. _`rdma_translate_ip.description`:
 
@@ -88,32 +94,42 @@ The dev_addr->net field must be initialized.
 rdma_resolve_ip
 ===============
 
-.. c:function:: int rdma_resolve_ip(struct sockaddr *src_addr, struct sockaddr *dst_addr, struct rdma_dev_addr *addr, int timeout_ms, void (*callback)(int status, struct sockaddr *src_addr, struct rdma_dev_addr *addr, void *context), void *context)
+.. c:function:: int rdma_resolve_ip(struct sockaddr *src_addr, const struct sockaddr *dst_addr, struct rdma_dev_addr *addr, unsigned long timeout_ms, void (*callback)(int status, struct sockaddr *src_addr, struct rdma_dev_addr *addr, void *context), bool resolve_by_gid_attr, void *context)
 
     Resolve source and destination IP addresses to RDMA hardware addresses.
 
-    :param struct sockaddr \*src_addr:
+    :param src_addr:
         An optional source address to use in the resolution.  If a
         source address is not provided, a usable address will be returned via
         the callback.
+    :type src_addr: struct sockaddr \*
 
-    :param struct sockaddr \*dst_addr:
+    :param dst_addr:
         The destination address to resolve.
+    :type dst_addr: const struct sockaddr \*
 
-    :param struct rdma_dev_addr \*addr:
+    :param addr:
         A reference to a data location that will receive the resolved
         addresses.  The data location must remain valid until the callback has
         been invoked. The net field of the addr struct must be valid.
+    :type addr: struct rdma_dev_addr \*
 
-    :param int timeout_ms:
+    :param timeout_ms:
         Amount of time to wait for the address resolution to complete.
+    :type timeout_ms: unsigned long
 
     :param void (\*callback)(int status, struct sockaddr \*src_addr, struct rdma_dev_addr \*addr, void \*context):
         Call invoked once address resolution has completed, timed out,
         or been canceled.  A status of 0 indicates success.
 
-    :param void \*context:
+    :param resolve_by_gid_attr:
+        Resolve the ip based on the GID attribute from
+        rdma_dev_addr.
+    :type resolve_by_gid_attr: bool
+
+    :param context:
         User-specified context associated with the call.
+    :type context: void \*
 
 .. This file was automatic generated / don't edit.
 

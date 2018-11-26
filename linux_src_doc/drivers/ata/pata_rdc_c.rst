@@ -10,8 +10,9 @@ rdc_pata_cable_detect
 
     Probe host controller cable detect info
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port for which cable detect info is desired
+    :type ap: struct ata_port \*
 
 .. _`rdc_pata_cable_detect.description`:
 
@@ -37,11 +38,13 @@ rdc_pata_prereset
 
     prereset for PATA host controller
 
-    :param struct ata_link \*link:
+    :param link:
         Target link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`rdc_pata_prereset.locking`:
 
@@ -59,11 +62,13 @@ rdc_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         um
+    :type adev: struct ata_device \*
 
 .. _`rdc_set_piomode.description`:
 
@@ -88,11 +93,13 @@ rdc_set_dmamode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Drive in question
+    :type adev: struct ata_device \*
 
 .. _`rdc_set_dmamode.description`:
 
@@ -117,11 +124,13 @@ rdc_init_one
 
     Register PIIX ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         Entry in rdc_pci_tbl matching with \ ``pdev``\ 
+    :type ent: const struct pci_device_id \*
 
 .. _`rdc_init_one.description`:
 

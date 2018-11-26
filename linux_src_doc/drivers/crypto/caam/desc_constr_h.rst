@@ -65,26 +65,31 @@ desc_inline_query
 
     Provide indications on which data items can be inlined and which shall be referenced in a shared descriptor.
 
-    :param unsigned int sd_base_len:
+    :param sd_base_len:
         Shared descriptor base length - bytes consumed by the commands,
         excluding the data items to be inlined (or corresponding
         pointer if an item is not inlined). Each cnstr\_\* function that
         generates descriptors should have a define mentioning
         corresponding length.
+    :type sd_base_len: unsigned int
 
-    :param unsigned int jd_len:
+    :param jd_len:
         Maximum length of the job descriptor(s) that will be used
         together with the shared descriptor.
+    :type jd_len: unsigned int
 
-    :param unsigned int \*data_len:
+    :param data_len:
         Array of lengths of the data items trying to be inlined
+    :type data_len: unsigned int \*
 
-    :param u32 \*inl_mask:
+    :param inl_mask:
         32bit mask with bit x = 1 if data item x can be inlined, 0
         otherwise.
+    :type inl_mask: u32 \*
 
-    :param unsigned int count:
+    :param count:
         Number of data items (size of \ ``data_len``\  array); must be <= 32
+    :type count: unsigned int
 
 .. _`desc_inline_query.return`:
 
@@ -103,15 +108,17 @@ append_proto_dkp
 
     Derived Key Protocol (DKP): key -> split key
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*adata:
+    :param adata:
         pointer to authentication transform definitions.
         keylen should be the length of initial key, while keylen_pad
         the length of the derived (split) key.
         Valid algorithm values - one of OP_ALG_ALGSEL_{MD5, SHA1, SHA224,
         SHA256, SHA384, SHA512}.
+    :type adata: struct alginfo \*
 
 .. This file was automatic generated / don't edit.
 

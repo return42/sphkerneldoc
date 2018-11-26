@@ -10,8 +10,9 @@ omap_prcm_event_to_irq
 
     given a PRCM event name, returns the corresponding IRQ on which the handler should be registered
 
-    :param const char \*name:
+    :param name:
         name of the PRCM interrupt bit to look up - see struct omap_prcm_irq
+    :type name: const char \*
 
 .. _`omap_prcm_event_to_irq.description`:
 
@@ -30,8 +31,9 @@ omap_prcm_irq_cleanup
 
     reverses memory allocated and other steps done by \ :c:func:`omap_prcm_register_chain_handler`\ 
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_prcm_irq_cleanup.description`:
 
@@ -49,8 +51,9 @@ omap_prcm_register_chain_handler
 
     initializes the prcm chained interrupt handler based on provided parameters
 
-    :param struct omap_prcm_irq_setup \*irq_setup:
+    :param irq_setup:
         hardware data about the underlying PRM/PRCM
+    :type irq_setup: struct omap_prcm_irq_setup \*
 
 .. _`omap_prcm_register_chain_handler.description`:
 
@@ -71,8 +74,9 @@ omap2_set_globals_prm
 
     set the PRM base address (for early use)
 
-    :param void __iomem \*prm:
+    :param prm:
         PRM base virtual address
+    :type prm: void __iomem \*
 
 .. _`omap2_set_globals_prm.description`:
 
@@ -90,8 +94,9 @@ prm_read_reset_sources
 
     return the sources of the SoC's last reset
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`prm_read_reset_sources.description`:
 
@@ -116,14 +121,17 @@ prm_was_any_context_lost_old
 
     was device context lost? (old API)
 
-    :param u8 part:
+    :param part:
         PRM partition ID (e.g., OMAP4430_PRM_PARTITION)
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         PRM instance offset (e.g., OMAP4430_PRM_MPU_INST)
+    :type inst: s16
 
-    :param u16 idx:
+    :param idx:
         CONTEXT register offset
+    :type idx: u16
 
 .. _`prm_was_any_context_lost_old.description`:
 
@@ -145,14 +153,17 @@ prm_clear_context_loss_flags_old
 
     clear context loss flags (old API)
 
-    :param u8 part:
+    :param part:
         PRM partition ID (e.g., OMAP4430_PRM_PARTITION)
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         PRM instance offset (e.g., OMAP4430_PRM_MPU_INST)
+    :type inst: s16
 
-    :param u16 idx:
+    :param idx:
         CONTEXT register offset
+    :type idx: u16
 
 .. _`prm_clear_context_loss_flags_old.description`:
 
@@ -173,17 +184,21 @@ omap_prm_assert_hardreset
 
     assert hardreset for an IP block
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line
+    :type shift: u8
 
-    :param u8 part:
+    :param part:
         PRM partition
+    :type part: u8
 
-    :param s16 prm_mod:
+    :param prm_mod:
         PRM submodule base or instance offset
+    :type prm_mod: s16
 
-    :param u16 offset:
+    :param offset:
         register offset
+    :type offset: u16
 
 .. _`omap_prm_assert_hardreset.description`:
 
@@ -201,23 +216,29 @@ omap_prm_deassert_hardreset
 
     deassert hardreset for an IP block
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line
+    :type shift: u8
 
-    :param u8 st_shift:
+    :param st_shift:
         reset status bit shift corresponding to the reset line
+    :type st_shift: u8
 
-    :param u8 part:
+    :param part:
         PRM partition
+    :type part: u8
 
-    :param s16 prm_mod:
+    :param prm_mod:
         PRM submodule base or instance offset
+    :type prm_mod: s16
 
-    :param u16 offset:
+    :param offset:
         register offset
+    :type offset: u16
 
-    :param u16 st_offset:
+    :param st_offset:
         status register offset
+    :type st_offset: u16
 
 .. _`omap_prm_deassert_hardreset.description`:
 
@@ -235,17 +256,21 @@ omap_prm_is_hardreset_asserted
 
     check the hardreset status for an IP block
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line
+    :type shift: u8
 
-    :param u8 part:
+    :param part:
         PRM partition
+    :type part: u8
 
-    :param s16 prm_mod:
+    :param prm_mod:
         PRM submodule base or instance offset
+    :type prm_mod: s16
 
-    :param u16 offset:
+    :param offset:
         register offset
+    :type offset: u16
 
 .. _`omap_prm_is_hardreset_asserted.description`:
 
@@ -263,8 +288,9 @@ omap_prm_reconfigure_io_chain
 
     clear latches and reconfigure I/O chain
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_prm_reconfigure_io_chain.description`:
 
@@ -285,8 +311,9 @@ omap_prm_reset_system
 
     trigger global SW reset
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_prm_reset_system.description`:
 
@@ -304,14 +331,17 @@ omap_prm_clear_mod_irqs
 
     clear wake-up events from PRCM interrupt
 
-    :param s16 module:
+    :param module:
         PRM module to clear wakeups from
+    :type module: s16
 
-    :param u8 regs:
+    :param regs:
         register to clear
+    :type regs: u8
 
-    :param u32 wkst_mask:
+    :param wkst_mask:
         wkst bits to clear
+    :type wkst_mask: u32
 
 .. _`omap_prm_clear_mod_irqs.description`:
 
@@ -331,8 +361,9 @@ omap_prm_vp_check_txdone
 
     check voltage processor TX done status
 
-    :param u8 vp_id:
+    :param vp_id:
         *undescribed*
+    :type vp_id: u8
 
 .. _`omap_prm_vp_check_txdone.description`:
 
@@ -351,8 +382,9 @@ omap_prm_vp_clear_txdone
 
     clears voltage processor TX done status
 
-    :param u8 vp_id:
+    :param vp_id:
         *undescribed*
+    :type vp_id: u8
 
 .. _`omap_prm_vp_clear_txdone.description`:
 
@@ -371,8 +403,9 @@ prm_register
 
     register per-SoC low-level data with the PRM
 
-    :param struct prm_ll_data \*pld:
+    :param pld:
         low-level per-SoC OMAP PRM data & function pointers to register
+    :type pld: struct prm_ll_data \*
 
 .. _`prm_register.description`:
 
@@ -395,8 +428,9 @@ prm_unregister
 
     unregister per-SoC low-level data & function pointers
 
-    :param struct prm_ll_data \*pld:
+    :param pld:
         low-level per-SoC OMAP PRM data & function pointers to unregister
+    :type pld: struct prm_ll_data \*
 
 .. _`prm_unregister.description`:
 
@@ -419,8 +453,9 @@ omap2_prm_base_init
 
     initialize iomappings for the PRM driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2_prm_base_init.description`:
 
@@ -440,8 +475,9 @@ omap_prcm_init
 
     low level init for the PRCM drivers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_prcm_init.description`:
 

@@ -10,20 +10,25 @@ fscache_operation_init
 
     Do basic initialisation of an operation
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         *undescribed*
+    :type cookie: struct fscache_cookie \*
 
-    :param struct fscache_operation \*op:
+    :param op:
         The operation to initialise
+    :type op: struct fscache_operation \*
 
-    :param fscache_operation_processor_t processor:
+    :param processor:
         *undescribed*
+    :type processor: fscache_operation_processor_t
 
-    :param fscache_operation_cancel_t cancel:
+    :param cancel:
         *undescribed*
+    :type cancel: fscache_operation_cancel_t
 
-    :param fscache_operation_release_t release:
+    :param release:
         The release function to assign
+    :type release: fscache_operation_release_t
 
 .. _`fscache_operation_init.description`:
 
@@ -42,8 +47,9 @@ fscache_enqueue_operation
 
     Enqueue an operation for processing
 
-    :param struct fscache_operation \*op:
+    :param op:
         The operation to enqueue
+    :type op: struct fscache_operation \*
 
 .. _`fscache_enqueue_operation.description`:
 

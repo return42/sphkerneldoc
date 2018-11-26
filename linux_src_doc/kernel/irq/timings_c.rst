@@ -10,11 +10,13 @@ irqs_update
 
     update the irq timing statistics with a new timestamp
 
-    :param struct irqt_stat \*irqs:
+    :param irqs:
         an irqt_stat struct pointer
+    :type irqs: struct irqt_stat \*
 
-    :param u64 ts:
+    :param ts:
         the new timestamp
+    :type ts: u64
 
 .. _`irqs_update.description`:
 
@@ -110,8 +112,9 @@ irq_timings_next_event
 
     Return when the next event is supposed to arrive
 
-    :param u64 now:
+    :param now:
         *undescribed*
+    :type now: u64
 
 .. _`irq_timings_next_event.description`:
 

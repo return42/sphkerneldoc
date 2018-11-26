@@ -10,15 +10,18 @@ spi_controller_dma_map_mem_op_data
 
     DMA-map the buffer attached to a memory operation
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         the SPI controller requesting this \ :c:func:`dma_map`\ 
+    :type ctlr: struct spi_controller \*
 
-    :param const struct spi_mem_op \*op:
+    :param op:
         the memory operation containing the buffer to map
+    :type op: const struct spi_mem_op \*
 
-    :param struct sg_table \*sgt:
+    :param sgt:
         a pointer to a non-initialized sg_table that will be filled by this
         function
+    :type sgt: struct sg_table \*
 
 .. _`spi_controller_dma_map_mem_op_data.description`:
 
@@ -48,15 +51,18 @@ spi_controller_dma_unmap_mem_op_data
 
     DMA-unmap the buffer attached to a memory operation
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         the SPI controller requesting this \ :c:func:`dma_unmap`\ 
+    :type ctlr: struct spi_controller \*
 
-    :param const struct spi_mem_op \*op:
+    :param op:
         the memory operation containing the buffer to unmap
+    :type op: const struct spi_mem_op \*
 
-    :param struct sg_table \*sgt:
+    :param sgt:
         a pointer to an sg_table previously initialized by
         \ :c:func:`spi_controller_dma_map_mem_op_data`\ 
+    :type sgt: struct sg_table \*
 
 .. _`spi_controller_dma_unmap_mem_op_data.description`:
 
@@ -90,11 +96,13 @@ spi_mem_supports_op
 
     Check if a memory device and the controller it is connected to support a specific memory operation
 
-    :param struct spi_mem \*mem:
+    :param mem:
         the SPI memory
+    :type mem: struct spi_mem \*
 
-    :param const struct spi_mem_op \*op:
+    :param op:
         the memory operation to check
+    :type op: const struct spi_mem_op \*
 
 .. _`spi_mem_supports_op.description`:
 
@@ -124,11 +132,13 @@ spi_mem_exec_op
 
     Execute a memory operation
 
-    :param struct spi_mem \*mem:
+    :param mem:
         the SPI memory
+    :type mem: struct spi_mem \*
 
-    :param const struct spi_mem_op \*op:
+    :param op:
         the memory operation to execute
+    :type op: const struct spi_mem_op \*
 
 .. _`spi_mem_exec_op.description`:
 
@@ -147,6 +157,36 @@ Return
 
 0 in case of success, a negative error code otherwise.
 
+.. _`spi_mem_get_name`:
+
+spi_mem_get_name
+================
+
+.. c:function:: const char *spi_mem_get_name(struct spi_mem *mem)
+
+    Return the SPI mem device name to be used by the upper layer if necessary
+
+    :param mem:
+        the SPI memory
+    :type mem: struct spi_mem \*
+
+.. _`spi_mem_get_name.description`:
+
+Description
+-----------
+
+This function allows SPI mem users to retrieve the SPI mem device name.
+It is useful if the upper layer needs to expose a custom name for
+compatibility reasons.
+
+.. _`spi_mem_get_name.return`:
+
+Return
+------
+
+a string containing the name of the memory device to be used
+by the SPI mem user
+
 .. _`spi_mem_adjust_op_size`:
 
 spi_mem_adjust_op_size
@@ -156,11 +196,13 @@ spi_mem_adjust_op_size
 
     Adjust the data size of a SPI mem operation to match controller limitations
 
-    :param struct spi_mem \*mem:
+    :param mem:
         the SPI memory
+    :type mem: struct spi_mem \*
 
-    :param struct spi_mem_op \*op:
+    :param op:
         the operation to adjust
+    :type op: struct spi_mem_op \*
 
 .. _`spi_mem_adjust_op_size.description`:
 
@@ -178,7 +220,7 @@ Return
 ------
 
 a negative error code if the controller can't properly adjust \ ``op``\ ,
-0 otherwise. Note that \ ``op``\ ->data.nbytes will be updated if \ ``op``\ 
+0 otherwise. Note that \ ``op->data.nbytes``\  will be updated if \ ``op``\ 
 can't be handled in a single step.
 
 .. _`spi_mem_driver_register_with_owner`:
@@ -190,11 +232,13 @@ spi_mem_driver_register_with_owner
 
     Register a SPI memory driver
 
-    :param struct spi_mem_driver \*memdrv:
+    :param memdrv:
         the SPI memory driver to register
+    :type memdrv: struct spi_mem_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         the owner of this driver
+    :type owner: struct module \*
 
 .. _`spi_mem_driver_register_with_owner.description`:
 
@@ -219,8 +263,9 @@ spi_mem_driver_unregister
 
     Unregister a SPI memory driver
 
-    :param struct spi_mem_driver \*memdrv:
+    :param memdrv:
         the SPI memory driver to unregister
+    :type memdrv: struct spi_mem_driver \*
 
 .. _`spi_mem_driver_unregister.description`:
 

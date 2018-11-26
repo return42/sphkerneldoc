@@ -10,26 +10,33 @@ amdtp_stream_init
 
     initialize an AMDTP stream structure
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream to initialize
+    :type s: struct amdtp_stream \*
 
-    :param struct fw_unit \*unit:
+    :param unit:
         the target of the stream
+    :type unit: struct fw_unit \*
 
-    :param enum amdtp_stream_direction dir:
+    :param dir:
         the direction of stream
+    :type dir: enum amdtp_stream_direction
 
-    :param enum cip_flags flags:
+    :param flags:
         the packet transmission method to use
+    :type flags: enum cip_flags
 
-    :param unsigned int fmt:
+    :param fmt:
         the value of fmt field in CIP header
+    :type fmt: unsigned int
 
-    :param amdtp_stream_process_data_blocks_t process_data_blocks:
+    :param process_data_blocks:
         callback handler to process data blocks
+    :type process_data_blocks: amdtp_stream_process_data_blocks_t
 
-    :param unsigned int protocol_size:
+    :param protocol_size:
         the size to allocate newly for protocol
+    :type protocol_size: unsigned int
 
 .. _`amdtp_stream_destroy`:
 
@@ -40,8 +47,9 @@ amdtp_stream_destroy
 
     free stream resources
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream to destroy
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_stream_add_pcm_hw_constraints`:
 
@@ -52,11 +60,13 @@ amdtp_stream_add_pcm_hw_constraints
 
     add hw constraints for PCM substream
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream, which must be initialized.
+    :type s: struct amdtp_stream \*
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         the PCM substream runtime
+    :type runtime: struct snd_pcm_runtime \*
 
 .. _`amdtp_stream_set_parameters`:
 
@@ -67,14 +77,17 @@ amdtp_stream_set_parameters
 
     set stream parameters
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream to configure
+    :type s: struct amdtp_stream \*
 
-    :param unsigned int rate:
+    :param rate:
         the sample rate
+    :type rate: unsigned int
 
-    :param unsigned int data_block_quadlets:
+    :param data_block_quadlets:
         the size of a data block in quadlet unit
+    :type data_block_quadlets: unsigned int
 
 .. _`amdtp_stream_set_parameters.description`:
 
@@ -93,8 +106,9 @@ amdtp_stream_get_max_payload
 
     get the stream's packet size
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_stream_get_max_payload.description`:
 
@@ -113,8 +127,9 @@ amdtp_stream_pcm_prepare
 
     prepare PCM device for running
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_stream_pcm_prepare.description`:
 
@@ -132,14 +147,17 @@ amdtp_stream_start
 
     start transferring packets
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream to start
+    :type s: struct amdtp_stream \*
 
-    :param int channel:
+    :param channel:
         the isochronous channel on the bus
+    :type channel: int
 
-    :param int speed:
+    :param speed:
         firewire speed code
+    :type speed: int
 
 .. _`amdtp_stream_start.description`:
 
@@ -159,8 +177,9 @@ amdtp_stream_pcm_pointer
 
     get the PCM buffer position
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream that transports the PCM data
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_stream_pcm_pointer.description`:
 
@@ -178,8 +197,9 @@ amdtp_stream_pcm_ack
 
     acknowledge queued PCM frames
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream that transfers the PCM frames
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_stream_pcm_ack.description`:
 
@@ -197,8 +217,9 @@ amdtp_stream_update
 
     update the stream after a bus reset
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_stream_stop`:
 
@@ -209,8 +230,9 @@ amdtp_stream_stop
 
     stop sending packets
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream to stop
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_stream_stop.description`:
 
@@ -229,8 +251,9 @@ amdtp_stream_pcm_abort
 
     abort the running PCM device
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream about to be stopped
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_stream_pcm_abort.description`:
 

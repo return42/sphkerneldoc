@@ -10,14 +10,17 @@ drm_ioctl_t
 
     DRM ioctl function type.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device inode
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         private pointer of the ioctl call
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file this ioctl was made on
+    :type file_priv: struct drm_file \*
 
 .. _`drm_ioctl_t.description`:
 
@@ -37,14 +40,17 @@ drm_ioctl_compat_t
 
     compatibility DRM ioctl function type.
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command code
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         DRM file this ioctl was made on
+    :type arg: unsigned long
 
 .. _`drm_ioctl_compat_t.description`:
 
@@ -188,14 +194,17 @@ DRM_IOCTL_DEF_DRV
 
     helper macro to fill out a \ :c:type:`struct drm_ioctl_desc <drm_ioctl_desc>`\ 
 
-    :param  ioctl:
+    :param ioctl:
         ioctl command suffix
+    :type ioctl: 
 
-    :param  _func:
+    :param _func:
         handler for the ioctl
+    :type _func: 
 
-    :param  _flags:
+    :param _flags:
         a bitmask of \ :c:type:`enum drm_ioctl_flags <drm_ioctl_flags>`\ 
+    :type _flags: 
 
 .. _`drm_ioctl_def_drv.description`:
 

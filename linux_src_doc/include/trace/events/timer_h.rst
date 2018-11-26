@@ -10,8 +10,9 @@ trace_timer_init
 
     called when the timer is initialized
 
-    :param struct timer_list \*timer:
+    :param timer:
         pointer to struct timer_list
+    :type timer: struct timer_list \*
 
 .. _`trace_timer_start`:
 
@@ -22,14 +23,17 @@ trace_timer_start
 
     called when the timer is started
 
-    :param struct timer_list \*timer:
+    :param timer:
         pointer to struct timer_list
+    :type timer: struct timer_list \*
 
-    :param unsigned long expires:
+    :param expires:
         the timers expiry time
+    :type expires: unsigned long
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`trace_timer_expire_entry`:
 
@@ -40,8 +44,9 @@ trace_timer_expire_entry
 
     called immediately before the timer callback
 
-    :param struct timer_list \*timer:
+    :param timer:
         pointer to struct timer_list
+    :type timer: struct timer_list \*
 
 .. _`trace_timer_expire_entry.description`:
 
@@ -59,8 +64,9 @@ trace_timer_expire_exit
 
     called immediately after the timer callback returns
 
-    :param struct timer_list \*timer:
+    :param timer:
         pointer to struct timer_list
+    :type timer: struct timer_list \*
 
 .. _`trace_timer_expire_exit.description`:
 
@@ -87,8 +93,9 @@ trace_timer_cancel
 
     called when the timer is canceled
 
-    :param struct timer_list \*timer:
+    :param timer:
         pointer to struct timer_list
+    :type timer: struct timer_list \*
 
 .. _`trace_hrtimer_init`:
 
@@ -99,14 +106,17 @@ trace_hrtimer_init
 
     called when the hrtimer is initialized
 
-    :param struct hrtimer \*hrtimer:
+    :param hrtimer:
         pointer to struct hrtimer
+    :type hrtimer: struct hrtimer \*
 
-    :param clockid_t clockid:
+    :param clockid:
         the hrtimers clock
+    :type clockid: clockid_t
 
-    :param enum hrtimer_mode mode:
+    :param mode:
         the hrtimers mode
+    :type mode: enum hrtimer_mode
 
 .. _`trace_hrtimer_start`:
 
@@ -117,11 +127,13 @@ trace_hrtimer_start
 
     called when the hrtimer is started
 
-    :param struct hrtimer \*hrtimer:
+    :param hrtimer:
         pointer to struct hrtimer
+    :type hrtimer: struct hrtimer \*
 
-    :param enum hrtimer_mode mode:
+    :param mode:
         *undescribed*
+    :type mode: enum hrtimer_mode
 
 .. _`trace_hrtimer_expire_entry`:
 
@@ -132,12 +144,14 @@ trace_hrtimer_expire_entry
 
     called immediately before the hrtimer callback
 
-    :param struct hrtimer \*hrtimer:
+    :param hrtimer:
         pointer to struct hrtimer
+    :type hrtimer: struct hrtimer \*
 
-    :param ktime_t \*now:
+    :param now:
         pointer to variable which contains current time of the
         timers base.
+    :type now: ktime_t \*
 
 .. _`trace_hrtimer_expire_entry.description`:
 
@@ -155,8 +169,9 @@ trace_hrtimer_expire_exit
 
     called immediately after the hrtimer callback returns
 
-    :param struct hrtimer \*hrtimer:
+    :param hrtimer:
         pointer to struct hrtimer
+    :type hrtimer: struct hrtimer \*
 
 .. _`trace_hrtimer_expire_exit.description`:
 
@@ -175,8 +190,9 @@ trace_hrtimer_cancel
 
     called when the hrtimer is canceled
 
-    :param struct hrtimer \*hrtimer:
+    :param hrtimer:
         pointer to struct hrtimer
+    :type hrtimer: struct hrtimer \*
 
 .. _`trace_itimer_state`:
 
@@ -187,15 +203,18 @@ trace_itimer_state
 
     called when itimer is started or canceled
 
-    :param int which:
+    :param which:
         name of the interval timer
+    :type which: int
 
-    :param const struct itimerval \*const value:
+    :param value:
         the itimers value, itimer is canceled if value->it_value is
         zero, otherwise it is started
+    :type value: const struct itimerval \*const
 
-    :param unsigned long long expires:
+    :param expires:
         the itimers expiry time
+    :type expires: unsigned long long
 
 .. _`trace_itimer_expire`:
 
@@ -206,14 +225,17 @@ trace_itimer_expire
 
     called when itimer expires
 
-    :param int which:
+    :param which:
         type of the interval timer
+    :type which: int
 
-    :param struct pid \*pid:
+    :param pid:
         pid of the process which owns the timer
+    :type pid: struct pid \*
 
-    :param unsigned long long now:
+    :param now:
         current time, used to calculate the latency of itimer
+    :type now: unsigned long long
 
 .. This file was automatic generated / don't edit.
 

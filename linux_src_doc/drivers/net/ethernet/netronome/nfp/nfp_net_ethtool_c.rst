@@ -10,11 +10,13 @@ nfp_net_get_link_ksettings
 
     Get Link Speed settings
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         ethtool command
+    :type cmd: struct ethtool_link_ksettings \*
 
 .. _`nfp_net_get_link_ksettings.description`:
 

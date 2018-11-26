@@ -10,14 +10,17 @@ ccroc_writel
 
     writes a value to a CCROC register
 
-    :param struct tegra_soctherm \*ts:
+    :param ts:
         pointer to a struct tegra_soctherm
+    :type ts: struct tegra_soctherm \*
 
-    :param u32 value:
+    :param value:
         *undescribed*
+    :type value: u32
 
-    :param u32 reg:
+    :param reg:
         the register offset
+    :type reg: u32
 
 .. _`ccroc_writel.description`:
 
@@ -35,11 +38,13 @@ ccroc_readl
 
     reads specified register from CCROC IP block
 
-    :param struct tegra_soctherm \*ts:
+    :param ts:
         pointer to a struct tegra_soctherm
+    :type ts: struct tegra_soctherm \*
 
-    :param u32 reg:
+    :param reg:
         register address to be read
+    :type reg: u32
 
 .. _`ccroc_readl.return`:
 
@@ -57,11 +62,13 @@ enforce_temp_range
 
     check and enforce temperature range [min, max]
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param int trip_temp:
+    :param trip_temp:
         the trip temperature to check
+    :type trip_temp: int
 
 .. _`enforce_temp_range.description`:
 
@@ -88,14 +95,17 @@ thermtrip_program
 
     Configures the hardware to shut down the system if a given sensor group reaches a given temperature
 
-    :param struct device \*dev:
+    :param dev:
         ptr to the struct device for the SOC_THERM IP block
+    :type dev: struct device \*
 
-    :param const struct tegra_tsensor_group \*sg:
+    :param sg:
         pointer to the sensor group to set the thermtrip temperature for
+    :type sg: const struct tegra_tsensor_group \*
 
-    :param int trip_temp:
+    :param trip_temp:
         the temperature in millicelsius to trigger the thermal trip at
+    :type trip_temp: int
 
 .. _`thermtrip_program.description`:
 
@@ -125,17 +135,21 @@ throttrip_program
 
     Configures the hardware to throttle the pulse if a given sensor group reaches a given temperature
 
-    :param struct device \*dev:
+    :param dev:
         ptr to the struct device for the SOC_THERM IP block
+    :type dev: struct device \*
 
-    :param const struct tegra_tsensor_group \*sg:
+    :param sg:
         pointer to the sensor group to set the thermtrip temperature for
+    :type sg: const struct tegra_tsensor_group \*
 
-    :param struct soctherm_throt_cfg \*stc:
+    :param stc:
         pointer to the throttle need to be triggered
+    :type stc: struct soctherm_throt_cfg \*
 
-    :param int trip_temp:
+    :param trip_temp:
         the temperature in millicelsius to trigger the thermal trip at
+    :type trip_temp: int
 
 .. _`throttrip_program.description`:
 
@@ -165,14 +179,17 @@ tegra_soctherm_set_hwtrips
 
     set HW trip point from DT data
 
-    :param struct device \*dev:
+    :param dev:
         struct device \* of the SOC_THERM instance
+    :type dev: struct device \*
 
-    :param const struct tegra_tsensor_group \*sg:
+    :param sg:
         *undescribed*
+    :type sg: const struct tegra_tsensor_group \*
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         *undescribed*
+    :type tz: struct thermal_zone_device \*
 
 .. _`tegra_soctherm_set_hwtrips.description`:
 
@@ -215,8 +232,9 @@ soctherm_init_hw_throt_cdev
 
     Parse the HW throttle configurations and register them as cooling devices.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`throttlectl_cpu_level_cfg`:
 
@@ -227,11 +245,13 @@ throttlectl_cpu_level_cfg
 
     programs CCROC NV_THERM level config
 
-    :param struct tegra_soctherm \*ts:
+    :param ts:
         *undescribed*
+    :type ts: struct tegra_soctherm \*
 
-    :param int level:
+    :param level:
         describing the level LOW/MED/HIGH of throttling
+    :type level: int
 
 .. _`throttlectl_cpu_level_cfg.description`:
 
@@ -254,11 +274,13 @@ throttlectl_cpu_level_select
 
     program CPU pulse skipper config
 
-    :param struct tegra_soctherm \*ts:
+    :param ts:
         *undescribed*
+    :type ts: struct tegra_soctherm \*
 
-    :param enum soctherm_throttle_id throt:
+    :param throt:
         the LIGHT/HEAVY of throttle event id
+    :type throt: enum soctherm_throttle_id
 
 .. _`throttlectl_cpu_level_select.description`:
 
@@ -281,11 +303,13 @@ throttlectl_cpu_mn
 
     program CPU pulse skipper configuration
 
-    :param struct tegra_soctherm \*ts:
+    :param ts:
         *undescribed*
+    :type ts: struct tegra_soctherm \*
 
-    :param enum soctherm_throttle_id throt:
+    :param throt:
         the LIGHT/HEAVY of throttle event id
+    :type throt: enum soctherm_throttle_id
 
 .. _`throttlectl_cpu_mn.description`:
 
@@ -308,11 +332,13 @@ soctherm_throttle_program
 
     programs pulse skippers' configuration
 
-    :param struct tegra_soctherm \*ts:
+    :param ts:
         *undescribed*
+    :type ts: struct tegra_soctherm \*
 
-    :param enum soctherm_throttle_id throt:
+    :param throt:
         the LIGHT/HEAVY of the throttle event id.
+    :type throt: enum soctherm_throttle_id
 
 .. _`soctherm_throttle_program.description`:
 

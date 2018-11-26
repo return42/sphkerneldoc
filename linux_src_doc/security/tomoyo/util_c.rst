@@ -10,11 +10,13 @@ tomoyo_convert_time
 
     Convert time_t to YYYY/MM/DD hh/mm/ss.
 
-    :param time64_t time64:
+    :param time64:
         *undescribed*
+    :type time64: time64_t
 
-    :param struct tomoyo_time \*stamp:
+    :param stamp:
         Pointer to "struct tomoyo_time".
+    :type stamp: struct tomoyo_time \*
 
 .. _`tomoyo_convert_time.description`:
 
@@ -32,11 +34,13 @@ tomoyo_permstr
 
     Find permission keywords.
 
-    :param const char \*string:
+    :param string:
         String representation for permissions in foo/bar/buz format.
+    :type string: const char \*
 
-    :param const char \*keyword:
+    :param keyword:
         Keyword to find from \ ``string``\ /
+    :type keyword: const char \*
 
 .. _`tomoyo_permstr.description`:
 
@@ -56,8 +60,9 @@ tomoyo_read_token
 
     Read a word from a line.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_read_token.description`:
 
@@ -78,8 +83,9 @@ tomoyo_get_domainname
 
     Read a domainname from a line.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_get_domainname.description`:
 
@@ -97,11 +103,13 @@ tomoyo_parse_ulong
 
     Parse an "unsigned long" value.
 
-    :param unsigned long \*result:
+    :param result:
         Pointer to "unsigned long".
+    :type result: unsigned long \*
 
-    :param char \*\*str:
+    :param str:
         Pointer to string to parse.
+    :type str: char \*\*
 
 .. _`tomoyo_parse_ulong.description`:
 
@@ -122,17 +130,21 @@ tomoyo_print_ulong
 
     Print an "unsigned long" value.
 
-    :param char \*buffer:
+    :param buffer:
         Pointer to buffer.
+    :type buffer: char \*
 
-    :param const int buffer_len:
+    :param buffer_len:
         Size of \ ``buffer``\ .
+    :type buffer_len: const int
 
-    :param const unsigned long value:
+    :param value:
         An "unsigned long" value.
+    :type value: const unsigned long
 
-    :param const u8 type:
+    :param type:
         Type of \ ``value``\ .
+    :type type: const u8
 
 .. _`tomoyo_print_ulong.description`:
 
@@ -150,11 +162,13 @@ tomoyo_parse_name_union
 
     Parse a tomoyo_name_union.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
-    :param struct tomoyo_name_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_name_union".
+    :type ptr: struct tomoyo_name_union \*
 
 .. _`tomoyo_parse_name_union.description`:
 
@@ -172,11 +186,13 @@ tomoyo_parse_number_union
 
     Parse a tomoyo_number_union.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
-    :param struct tomoyo_number_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_number_union".
+    :type ptr: struct tomoyo_number_union \*
 
 .. _`tomoyo_parse_number_union.description`:
 
@@ -194,8 +210,9 @@ tomoyo_byte_range
 
     Check whether the string is a \ooo style octal value.
 
-    :param const char \*str:
+    :param str:
         Pointer to the string.
+    :type str: const char \*
 
 .. _`tomoyo_byte_range.description`:
 
@@ -216,8 +233,9 @@ tomoyo_alphabet_char
 
     Check whether the character is an alphabet.
 
-    :param const char c:
+    :param c:
         The character to check.
+    :type c: const char
 
 .. _`tomoyo_alphabet_char.description`:
 
@@ -235,14 +253,17 @@ tomoyo_make_byte
 
     Make byte value from three octal characters.
 
-    :param const u8 c1:
+    :param c1:
         The first character.
+    :type c1: const u8
 
-    :param const u8 c2:
+    :param c2:
         The second character.
+    :type c2: const u8
 
-    :param const u8 c3:
+    :param c3:
         The third character.
+    :type c3: const u8
 
 .. _`tomoyo_make_byte.description`:
 
@@ -260,8 +281,9 @@ tomoyo_valid
 
     Check whether the character is a valid char.
 
-    :param const unsigned char c:
+    :param c:
         The character to check.
+    :type c: const unsigned char
 
 .. _`tomoyo_valid.description`:
 
@@ -279,8 +301,9 @@ tomoyo_invalid
 
     Check whether the character is an invalid char.
 
-    :param const unsigned char c:
+    :param c:
         The character to check.
+    :type c: const unsigned char
 
 .. _`tomoyo_invalid.description`:
 
@@ -298,11 +321,13 @@ tomoyo_str_starts
 
     Check whether the given string starts with the given keyword.
 
-    :param char \*\*src:
+    :param src:
         Pointer to pointer to the string.
+    :type src: char \*\*
 
-    :param const char \*find:
+    :param find:
         Pointer to the keyword.
+    :type find: const char \*
 
 .. _`tomoyo_str_starts.description`:
 
@@ -323,8 +348,9 @@ tomoyo_normalize_line
 
     Format string.
 
-    :param unsigned char \*buffer:
+    :param buffer:
         The line to normalize.
+    :type buffer: unsigned char \*
 
 .. _`tomoyo_normalize_line.description`:
 
@@ -345,11 +371,13 @@ tomoyo_correct_word2
 
     Validate a string.
 
-    :param const char \*string:
+    :param string:
         The string to check. Maybe non-'\0'-terminated.
+    :type string: const char \*
 
-    :param size_t len:
+    :param len:
         Length of \ ``string``\ .
+    :type len: size_t
 
 .. _`tomoyo_correct_word2.description`:
 
@@ -368,8 +396,9 @@ tomoyo_correct_word
 
     Validate a string.
 
-    :param const char \*string:
+    :param string:
         The string to check.
+    :type string: const char \*
 
 .. _`tomoyo_correct_word.description`:
 
@@ -388,8 +417,9 @@ tomoyo_correct_path
 
     Validate a pathname.
 
-    :param const char \*filename:
+    :param filename:
         The pathname to check.
+    :type filename: const char \*
 
 .. _`tomoyo_correct_path.description`:
 
@@ -408,8 +438,9 @@ tomoyo_correct_domain
 
     Check whether the given domainname follows the naming rules.
 
-    :param const unsigned char \*domainname:
+    :param domainname:
         The domainname to check.
+    :type domainname: const unsigned char \*
 
 .. _`tomoyo_correct_domain.description`:
 
@@ -427,8 +458,9 @@ tomoyo_domain_def
 
     Check whether the given token can be a domainname.
 
-    :param const unsigned char \*buffer:
+    :param buffer:
         The token to check.
+    :type buffer: const unsigned char \*
 
 .. _`tomoyo_domain_def.description`:
 
@@ -446,8 +478,9 @@ tomoyo_find_domain
 
     Find a domain by the given name.
 
-    :param const char \*domainname:
+    :param domainname:
         The domainname to find.
+    :type domainname: const char \*
 
 .. _`tomoyo_find_domain.description`:
 
@@ -467,8 +500,9 @@ tomoyo_const_part_length
 
     Evaluate the initial length without a pattern in a token.
 
-    :param const char \*filename:
+    :param filename:
         The string to evaluate.
+    :type filename: const char \*
 
 .. _`tomoyo_const_part_length.description`:
 
@@ -486,8 +520,9 @@ tomoyo_fill_path_info
 
     Fill in "struct tomoyo_path_info" members.
 
-    :param struct tomoyo_path_info \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_path_info" to fill in.
+    :type ptr: struct tomoyo_path_info \*
 
 .. _`tomoyo_fill_path_info.description`:
 
@@ -505,17 +540,21 @@ tomoyo_file_matches_pattern2
 
     Pattern matching without '/' character and "\-" pattern.
 
-    :param const char \*filename:
+    :param filename:
         The start of string to check.
+    :type filename: const char \*
 
-    :param const char \*filename_end:
+    :param filename_end:
         The end of string to check.
+    :type filename_end: const char \*
 
-    :param const char \*pattern:
+    :param pattern:
         The start of pattern to compare.
+    :type pattern: const char \*
 
-    :param const char \*pattern_end:
+    :param pattern_end:
         The end of pattern to compare.
+    :type pattern_end: const char \*
 
 .. _`tomoyo_file_matches_pattern2.description`:
 
@@ -533,17 +572,21 @@ tomoyo_file_matches_pattern
 
     Pattern matching without '/' character.
 
-    :param const char \*filename:
+    :param filename:
         The start of string to check.
+    :type filename: const char \*
 
-    :param const char \*filename_end:
+    :param filename_end:
         The end of string to check.
+    :type filename_end: const char \*
 
-    :param const char \*pattern:
+    :param pattern:
         The start of pattern to compare.
+    :type pattern: const char \*
 
-    :param const char \*pattern_end:
+    :param pattern_end:
         The end of pattern to compare.
+    :type pattern_end: const char \*
 
 .. _`tomoyo_file_matches_pattern.description`:
 
@@ -561,11 +604,13 @@ tomoyo_path_matches_pattern2
 
     Do pathname pattern matching.
 
-    :param const char \*f:
+    :param f:
         The start of string to check.
+    :type f: const char \*
 
-    :param const char \*p:
+    :param p:
         The start of pattern to compare.
+    :type p: const char \*
 
 .. _`tomoyo_path_matches_pattern2.description`:
 
@@ -583,11 +628,13 @@ tomoyo_path_matches_pattern
 
     Check whether the given filename matches the given pattern.
 
-    :param const struct tomoyo_path_info \*filename:
+    :param filename:
         The filename to check.
+    :type filename: const struct tomoyo_path_info \*
 
-    :param const struct tomoyo_path_info \*pattern:
+    :param pattern:
         The pattern to compare.
+    :type pattern: const struct tomoyo_path_info \*
 
 .. _`tomoyo_path_matches_pattern.description`:
 
@@ -623,8 +670,9 @@ tomoyo_get_exe
 
     Get \ :c:func:`tomoyo_realpath`\  of current process.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_get_exe.description`:
 
@@ -645,14 +693,17 @@ tomoyo_get_mode
 
     Get MAC mode.
 
-    :param const struct tomoyo_policy_namespace \*ns:
+    :param ns:
         Pointer to "struct tomoyo_policy_namespace".
+    :type ns: const struct tomoyo_policy_namespace \*
 
-    :param const u8 profile:
+    :param profile:
         Profile number.
+    :type profile: const u8
 
-    :param const u8 index:
+    :param index:
         Index number of functionality.
+    :type index: const u8
 
 .. _`tomoyo_get_mode.description`:
 
@@ -670,14 +721,17 @@ tomoyo_init_request_info
 
     Initialize "struct tomoyo_request_info" members.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info" to initialize.
+    :type r: struct tomoyo_request_info \*
 
-    :param struct tomoyo_domain_info \*domain:
+    :param domain:
         Pointer to "struct tomoyo_domain_info". NULL for \ :c:func:`tomoyo_domain`\ .
+    :type domain: struct tomoyo_domain_info \*
 
-    :param const u8 index:
+    :param index:
         Index number of functionality.
+    :type index: const u8
 
 .. _`tomoyo_init_request_info.description`:
 
@@ -695,8 +749,9 @@ tomoyo_domain_quota_is_ok
 
     Check for domain's quota.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
 .. _`tomoyo_domain_quota_is_ok.description`:
 

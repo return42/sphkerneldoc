@@ -10,8 +10,9 @@ e1000_init_phy_params_80003es2lan
 
     Init ESB2 PHY func ptrs.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_nvm_params_80003es2lan`:
 
@@ -22,8 +23,9 @@ e1000_init_nvm_params_80003es2lan
 
     Init ESB2 NVM func ptrs.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_mac_params_80003es2lan`:
 
@@ -34,8 +36,9 @@ e1000_init_mac_params_80003es2lan
 
     Init ESB2 MAC func ptrs.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_acquire_phy_80003es2lan`:
 
@@ -46,8 +49,9 @@ e1000_acquire_phy_80003es2lan
 
     Acquire rights to access PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_acquire_phy_80003es2lan.description`:
 
@@ -65,8 +69,9 @@ e1000_release_phy_80003es2lan
 
     Release rights to access PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_release_phy_80003es2lan.description`:
 
@@ -84,8 +89,9 @@ e1000_acquire_mac_csr_80003es2lan
 
     Acquire right to access Kumeran register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_acquire_mac_csr_80003es2lan.description`:
 
@@ -103,8 +109,9 @@ e1000_release_mac_csr_80003es2lan
 
     Release right to access Kumeran Register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_release_mac_csr_80003es2lan.description`:
 
@@ -122,8 +129,9 @@ e1000_acquire_nvm_80003es2lan
 
     Acquire rights to access NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_acquire_nvm_80003es2lan.description`:
 
@@ -141,8 +149,9 @@ e1000_release_nvm_80003es2lan
 
     Relinquish rights to access NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_release_nvm_80003es2lan.description`:
 
@@ -160,11 +169,13 @@ e1000_acquire_swfw_sync_80003es2lan
 
     Acquire SW/FW semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mask:
+    :param mask:
         specifies which semaphore to acquire
+    :type mask: u16
 
 .. _`e1000_acquire_swfw_sync_80003es2lan.description`:
 
@@ -183,11 +194,13 @@ e1000_release_swfw_sync_80003es2lan
 
     Release SW/FW semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 mask:
+    :param mask:
         specifies which semaphore to acquire
+    :type mask: u16
 
 .. _`e1000_release_swfw_sync_80003es2lan.description`:
 
@@ -206,14 +219,17 @@ e1000_read_phy_reg_gg82563_80003es2lan
 
     Read GG82563 PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         offset of the register to read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the data returned from the operation
+    :type data: u16 \*
 
 .. _`e1000_read_phy_reg_gg82563_80003es2lan.description`:
 
@@ -231,14 +247,17 @@ e1000_write_phy_reg_gg82563_80003es2lan
 
     Write GG82563 PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         offset of the register to read
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         value to write to the register
+    :type data: u16
 
 .. _`e1000_write_phy_reg_gg82563_80003es2lan.description`:
 
@@ -256,17 +275,21 @@ e1000_write_nvm_80003es2lan
 
     Write to ESB2 NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of the register to read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         buffer of data to write to the NVM
+    :type data: u16 \*
 
 .. _`e1000_write_nvm_80003es2lan.description`:
 
@@ -284,8 +307,9 @@ e1000_get_cfg_done_80003es2lan
 
     Wait for configuration to complete
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_cfg_done_80003es2lan.description`:
 
@@ -304,8 +328,9 @@ e1000_phy_force_speed_duplex_80003es2lan
 
     Force PHY speed and duplex
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_force_speed_duplex_80003es2lan.description`:
 
@@ -324,8 +349,9 @@ e1000_get_cable_length_80003es2lan
 
     Set approximate cable length
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_cable_length_80003es2lan.description`:
 
@@ -344,14 +370,17 @@ e1000_get_link_up_info_80003es2lan
 
     Report speed and duplex
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*speed:
+    :param speed:
         pointer to speed buffer
+    :type speed: u16 \*
 
-    :param u16 \*duplex:
+    :param duplex:
         pointer to duplex buffer
+    :type duplex: u16 \*
 
 .. _`e1000_get_link_up_info_80003es2lan.description`:
 
@@ -369,8 +398,9 @@ e1000_reset_hw_80003es2lan
 
     Reset the ESB2 controller
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_reset_hw_80003es2lan.description`:
 
@@ -388,8 +418,9 @@ e1000_init_hw_80003es2lan
 
     Initialize the ESB2 controller
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_hw_80003es2lan.description`:
 
@@ -407,8 +438,9 @@ e1000_initialize_hw_bits_80003es2lan
 
     Init hw bits of ESB2
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_initialize_hw_bits_80003es2lan.description`:
 
@@ -426,8 +458,9 @@ e1000_copper_link_setup_gg82563_80003es2lan
 
     Configure GG82563 Link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_copper_link_setup_gg82563_80003es2lan.description`:
 
@@ -445,8 +478,9 @@ e1000_setup_copper_link_80003es2lan
 
     Setup Copper Link for ESB2
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_copper_link_80003es2lan.description`:
 
@@ -465,8 +499,9 @@ e1000_cfg_on_link_up_80003es2lan
 
     es2 link configuration after link-up
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_cfg_on_link_up_80003es2lan.description`:
 
@@ -485,11 +520,13 @@ e1000_cfg_kmrn_10_100_80003es2lan
 
     Apply "quirks" for 10/100 operation
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 duplex:
+    :param duplex:
         current duplex setting
+    :type duplex: u16
 
 .. _`e1000_cfg_kmrn_10_100_80003es2lan.description`:
 
@@ -508,8 +545,9 @@ e1000_cfg_kmrn_1000_80003es2lan
 
     Apply "quirks" for gigabit operation
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_cfg_kmrn_1000_80003es2lan.description`:
 
@@ -528,14 +566,17 @@ e1000_read_kmrn_reg_80003es2lan
 
     Read kumeran register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`e1000_read_kmrn_reg_80003es2lan.description`:
 
@@ -555,14 +596,17 @@ e1000_write_kmrn_reg_80003es2lan
 
     Write kumeran register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`e1000_write_kmrn_reg_80003es2lan.description`:
 
@@ -582,8 +626,9 @@ e1000_read_mac_addr_80003es2lan
 
     Read device MAC address
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_power_down_phy_copper_80003es2lan`:
 
@@ -594,8 +639,9 @@ e1000_power_down_phy_copper_80003es2lan
 
     Remove link during PHY power down
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_power_down_phy_copper_80003es2lan.description`:
 
@@ -614,8 +660,9 @@ e1000_clear_hw_cntrs_80003es2lan
 
     Clear device specific hardware counters
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_clear_hw_cntrs_80003es2lan.description`:
 

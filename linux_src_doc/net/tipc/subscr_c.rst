@@ -10,14 +10,17 @@ tipc_sub_check_overlap
 
     test for subscription overlap with the given values
 
-    :param struct tipc_name_seq \*seq:
+    :param seq:
         *undescribed*
+    :type seq: struct tipc_name_seq \*
 
-    :param u32 found_lower:
+    :param found_lower:
         *undescribed*
+    :type found_lower: u32
 
-    :param u32 found_upper:
+    :param found_upper:
         *undescribed*
+    :type found_upper: u32
 
 .. _`tipc_sub_check_overlap.description`:
 

@@ -10,11 +10,13 @@ triflex_prereset
 
     probe begin
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`triflex_prereset.description`:
 
@@ -32,14 +34,17 @@ triflex_load_timing
 
     timing configuration
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device on the bus
+    :type adev: struct ata_device \*
 
-    :param int speed:
+    :param speed:
         speed to configure
+    :type speed: int
 
 .. _`triflex_load_timing.description`:
 
@@ -60,11 +65,13 @@ triflex_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`triflex_set_piomode.description`:
 
@@ -84,8 +91,9 @@ triflex_bmdma_start
 
     DMA start callback
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command in progress
+    :type qc: struct ata_queued_cmd \*
 
 .. _`triflex_bmdma_start.description`:
 
@@ -107,8 +115,9 @@ triflex_bmdma_stop
 
     DMA stop callback
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         *undescribed*
+    :type qc: struct ata_queued_cmd \*
 
 .. _`triflex_bmdma_stop.description`:
 

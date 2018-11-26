@@ -10,14 +10,17 @@ vsp1_du_setup_lif
 
     Setup the output part of the VSP pipeline
 
-    :param struct device \*dev:
+    :param dev:
         the VSP device
+    :type dev: struct device \*
 
-    :param unsigned int pipe_index:
+    :param pipe_index:
         the DRM pipeline index
+    :type pipe_index: unsigned int
 
-    :param const struct vsp1_du_lif_config \*cfg:
+    :param cfg:
         the LIF configuration
+    :type cfg: const struct vsp1_du_lif_config \*
 
 .. _`vsp1_du_setup_lif.description`:
 
@@ -48,11 +51,13 @@ vsp1_du_atomic_begin
 
     Prepare for an atomic update
 
-    :param struct device \*dev:
+    :param dev:
         the VSP device
+    :type dev: struct device \*
 
-    :param unsigned int pipe_index:
+    :param pipe_index:
         the DRM pipeline index
+    :type pipe_index: unsigned int
 
 .. _`vsp1_du_atomic_update`:
 
@@ -63,17 +68,21 @@ vsp1_du_atomic_update
 
     Setup one RPF input of the VSP pipeline
 
-    :param struct device \*dev:
+    :param dev:
         the VSP device
+    :type dev: struct device \*
 
-    :param unsigned int pipe_index:
+    :param pipe_index:
         the DRM pipeline index
+    :type pipe_index: unsigned int
 
-    :param unsigned int rpf_index:
+    :param rpf_index:
         index of the RPF to setup (0-based)
+    :type rpf_index: unsigned int
 
-    :param const struct vsp1_du_atomic_config \*cfg:
+    :param cfg:
         the RPF configuration
+    :type cfg: const struct vsp1_du_atomic_config \*
 
 .. _`vsp1_du_atomic_update.description`:
 
@@ -112,14 +121,17 @@ vsp1_du_atomic_flush
 
     Commit an atomic update
 
-    :param struct device \*dev:
+    :param dev:
         the VSP device
+    :type dev: struct device \*
 
-    :param unsigned int pipe_index:
+    :param pipe_index:
         the DRM pipeline index
+    :type pipe_index: unsigned int
 
-    :param const struct vsp1_du_atomic_pipe_config \*cfg:
+    :param cfg:
         atomic pipe configuration
+    :type cfg: const struct vsp1_du_atomic_pipe_config \*
 
 .. This file was automatic generated / don't edit.
 

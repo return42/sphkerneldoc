@@ -10,11 +10,13 @@ sysfs_create_group
 
     given a directory kobject, create an attribute group
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject to create the group on
+    :type kobj: struct kobject \*
 
-    :param const struct attribute_group \*grp:
+    :param grp:
         The attribute group to create
+    :type grp: const struct attribute_group \*
 
 .. _`sysfs_create_group.description`:
 
@@ -35,11 +37,13 @@ sysfs_create_groups
 
     given a directory kobject, create a bunch of attribute groups
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject to create the group on
+    :type kobj: struct kobject \*
 
-    :param const struct attribute_group \*\*groups:
+    :param groups:
         The attribute groups to create, NULL terminated
+    :type groups: const struct attribute_group \*\*
 
 .. _`sysfs_create_groups.description`:
 
@@ -63,11 +67,13 @@ sysfs_update_group
 
     given a directory kobject, update an attribute group
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject to update the group on
+    :type kobj: struct kobject \*
 
-    :param const struct attribute_group \*grp:
+    :param grp:
         The attribute group to update
+    :type grp: const struct attribute_group \*
 
 .. _`sysfs_update_group.description`:
 
@@ -79,7 +85,8 @@ This function updates an attribute group.  Unlike
 of the attribute files being created already exist.  Furthermore,
 if the visibility of the files has changed through the \ :c:func:`is_visible`\ 
 callback, it will update the permissions and add or remove the
-relevant files.
+relevant files. Changing a group's name (subdirectory name under
+kobj's directory in sysfs) is not allowed.
 
 The primary use for this function is to call it after making a change
 that affects group visibility.
@@ -95,11 +102,13 @@ sysfs_remove_group
 
     remove a group from a kobject
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject to remove the group from
+    :type kobj: struct kobject \*
 
-    :param const struct attribute_group \*grp:
+    :param grp:
         group to remove
+    :type grp: const struct attribute_group \*
 
 .. _`sysfs_remove_group.description`:
 
@@ -118,11 +127,13 @@ sysfs_remove_groups
 
     remove a list of groups
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject for the groups to be removed from
+    :type kobj: struct kobject \*
 
-    :param const struct attribute_group \*\*groups:
+    :param groups:
         NULL terminated list of groups to be removed
+    :type groups: const struct attribute_group \*\*
 
 .. _`sysfs_remove_groups.description`:
 
@@ -140,11 +151,13 @@ sysfs_merge_group
 
     merge files into a pre-existing attribute group.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject containing the group.
+    :type kobj: struct kobject \*
 
-    :param const struct attribute_group \*grp:
+    :param grp:
         The files to create and the attribute group they belong to.
+    :type grp: const struct attribute_group \*
 
 .. _`sysfs_merge_group.description`:
 
@@ -164,11 +177,13 @@ sysfs_unmerge_group
 
     remove files from a pre-existing attribute group.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject containing the group.
+    :type kobj: struct kobject \*
 
-    :param const struct attribute_group \*grp:
+    :param grp:
         The files to remove and the attribute group they belong to.
+    :type grp: const struct attribute_group \*
 
 .. _`sysfs_add_link_to_group`:
 
@@ -179,17 +194,21 @@ sysfs_add_link_to_group
 
     add a symlink to an attribute group.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject containing the group.
+    :type kobj: struct kobject \*
 
-    :param const char \*group_name:
+    :param group_name:
         The name of the group.
+    :type group_name: const char \*
 
-    :param struct kobject \*target:
+    :param target:
         The target kobject of the symlink to create.
+    :type target: struct kobject \*
 
-    :param const char \*link_name:
+    :param link_name:
         The name of the symlink to create.
+    :type link_name: const char \*
 
 .. _`sysfs_remove_link_from_group`:
 
@@ -200,14 +219,17 @@ sysfs_remove_link_from_group
 
     remove a symlink from an attribute group.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject containing the group.
+    :type kobj: struct kobject \*
 
-    :param const char \*group_name:
+    :param group_name:
         The name of the group.
+    :type group_name: const char \*
 
-    :param const char \*link_name:
+    :param link_name:
         The name of the symlink to remove.
+    :type link_name: const char \*
 
 .. _`__compat_only_sysfs_link_entry_to_kobj`:
 
@@ -218,14 +240,17 @@ sysfs_remove_link_from_group
 
     add a symlink to a kobject pointing to a group or an attribute
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject containing the group.
+    :type kobj: struct kobject \*
 
-    :param struct kobject \*target_kobj:
+    :param target_kobj:
         The target kobject.
+    :type target_kobj: struct kobject \*
 
-    :param const char \*target_name:
+    :param target_name:
         The name of the target group or attribute.
+    :type target_name: const char \*
 
 .. This file was automatic generated / don't edit.
 

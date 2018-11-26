@@ -10,11 +10,13 @@ mips_machine_is_compatible
 
     check if a machine is compatible with an FDT
 
-    :param const struct mips_machine \*mach:
+    :param mach:
         the machine struct to check
+    :type mach: const struct mips_machine \*
 
-    :param const void \*fdt:
+    :param fdt:
         the FDT to check for compatibility with
+    :type fdt: const void \*
 
 .. _`mips_machine_is_compatible.description`:
 
@@ -81,17 +83,21 @@ apply_mips_fdt_fixups
 
     apply fixups to an FDT blob
 
-    :param void \*fdt_out:
+    :param fdt_out:
         buffer in which to place the fixed-up FDT
+    :type fdt_out: void \*
 
-    :param size_t fdt_out_size:
+    :param fdt_out_size:
         the size of the \ ``fdt_out``\  buffer
+    :type fdt_out_size: size_t
 
-    :param const void \*fdt_in:
+    :param fdt_in:
         the FDT blob
+    :type fdt_in: const void \*
 
-    :param const struct mips_fdt_fixup \*fixups:
+    :param fixups:
         pointer to an array of fixups to be applied
+    :type fixups: const struct mips_fdt_fixup \*
 
 .. _`apply_mips_fdt_fixups.description`:
 

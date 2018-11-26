@@ -10,8 +10,9 @@ chain_busy
 
     check if the chain is still processing last requests
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         chain to check
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`chain_busy.description`:
 
@@ -29,8 +30,9 @@ get_cell_data_size
 
     get the data size of a specific cell type
 
-    :param enum hinic_api_cmd_chain_type type:
+    :param type:
         chain type
+    :type type: enum hinic_api_cmd_chain_type
 
 .. _`get_cell_data_size.description`:
 
@@ -48,11 +50,13 @@ prepare_cell_ctrl
 
     prepare the ctrl of the cell for the command
 
-    :param u64 \*cell_ctrl:
+    :param cell_ctrl:
         the control of the cell to set the control value into it
+    :type cell_ctrl: u64 \*
 
-    :param u16 data_size:
+    :param data_size:
         the size of the data in the cell
+    :type data_size: u16
 
 .. _`prepare_api_cmd`:
 
@@ -63,17 +67,21 @@ prepare_api_cmd
 
     prepare API CMD command
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         chain for the command
+    :type chain: struct hinic_api_cmd_chain \*
 
-    :param enum hinic_node_id dest:
+    :param dest:
         destination node on the card that will receive the command
+    :type dest: enum hinic_node_id
 
-    :param void \*cmd:
+    :param cmd:
         command data
+    :type cmd: void \*
 
-    :param u16 cmd_size:
+    :param cmd_size:
         the command size
+    :type cmd_size: u16
 
 .. _`prepare_cell`:
 
@@ -84,17 +92,21 @@ prepare_cell
 
     prepare cell ctrl and cmd in the current cell
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         chain for the command
+    :type chain: struct hinic_api_cmd_chain \*
 
-    :param enum hinic_node_id dest:
+    :param dest:
         destination node on the card that will receive the command
+    :type dest: enum hinic_node_id
 
-    :param void \*cmd:
+    :param cmd:
         command data
+    :type cmd: void \*
 
-    :param u16 cmd_size:
+    :param cmd_size:
         the command size
+    :type cmd_size: u16
 
 .. _`prepare_cell.description`:
 
@@ -112,8 +124,9 @@ api_cmd_status_update
 
     update the status in the chain struct
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         chain to update
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`wait_for_status_poll`:
 
@@ -124,8 +137,9 @@ wait_for_status_poll
 
     wait for write to api cmd command to complete
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the chain of the command
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`wait_for_status_poll.description`:
 
@@ -143,8 +157,9 @@ wait_for_api_cmd_completion
 
     wait for command to complete
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         chain for the command
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`wait_for_api_cmd_completion.description`:
 
@@ -162,17 +177,21 @@ api_cmd
 
     API CMD command
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         chain for the command
+    :type chain: struct hinic_api_cmd_chain \*
 
-    :param enum hinic_node_id dest:
+    :param dest:
         destination node on the card that will receive the command
+    :type dest: enum hinic_node_id
 
-    :param u8 \*cmd:
+    :param cmd:
         command data
+    :type cmd: u8 \*
 
-    :param u16 cmd_size:
+    :param cmd_size:
         *undescribed*
+    :type cmd_size: u16
 
 .. _`api_cmd.description`:
 
@@ -190,17 +209,21 @@ hinic_api_cmd_write
 
     Write API CMD command
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         chain for write command
+    :type chain: struct hinic_api_cmd_chain \*
 
-    :param enum hinic_node_id dest:
+    :param dest:
         destination node on the card that will receive the command
+    :type dest: enum hinic_node_id
 
-    :param u8 \*cmd:
+    :param cmd:
         command data
+    :type cmd: u8 \*
 
-    :param u16 size:
+    :param size:
         the command size
+    :type size: u16
 
 .. _`hinic_api_cmd_write.description`:
 
@@ -218,8 +241,9 @@ api_cmd_hw_restart
 
     restart the chain in the HW
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to restart
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`api_cmd_hw_restart.description`:
 
@@ -237,8 +261,9 @@ api_cmd_ctrl_init
 
     set the control register of a chain
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to set control register for
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`api_cmd_set_status_addr`:
 
@@ -249,8 +274,9 @@ api_cmd_set_status_addr
 
     set the status address of a chain in the HW
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to set in HW status address for
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`api_cmd_set_num_cells`:
 
@@ -261,8 +287,9 @@ api_cmd_set_num_cells
 
     set the number cells of a chain in the HW
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to set in HW the number of cells for
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`api_cmd_head_init`:
 
@@ -273,8 +300,9 @@ api_cmd_head_init
 
     set the head of a chain in the HW
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to set in HW the head for
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`api_cmd_chain_hw_clean`:
 
@@ -285,8 +313,9 @@ api_cmd_chain_hw_clean
 
     clean the HW
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`api_cmd_chain_hw_init`:
 
@@ -297,8 +326,9 @@ api_cmd_chain_hw_init
 
     initialize the chain in the HW
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to initialize in HW
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`api_cmd_chain_hw_init.description`:
 
@@ -316,11 +346,13 @@ free_cmd_buf
 
     free the dma buffer of API CMD command
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain of the cmd
+    :type chain: struct hinic_api_cmd_chain \*
 
-    :param int cell_idx:
+    :param cell_idx:
         the cell index of the cmd
+    :type cell_idx: int
 
 .. _`alloc_cmd_buf`:
 
@@ -331,14 +363,17 @@ alloc_cmd_buf
 
     allocate a dma buffer for API CMD command
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain for the cmd
+    :type chain: struct hinic_api_cmd_chain \*
 
-    :param struct hinic_api_cmd_cell \*cell:
+    :param cell:
         the cell in the HW for the cmd
+    :type cell: struct hinic_api_cmd_cell \*
 
-    :param int cell_idx:
+    :param cell_idx:
         the index of the cell
+    :type cell_idx: int
 
 .. _`alloc_cmd_buf.description`:
 
@@ -356,17 +391,21 @@ api_cmd_create_cell
 
     create API CMD cell for specific chain
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to create its cell
+    :type chain: struct hinic_api_cmd_chain \*
 
-    :param int cell_idx:
+    :param cell_idx:
         the index of the cell to create
+    :type cell_idx: int
 
-    :param struct hinic_api_cmd_cell \*pre_node:
+    :param pre_node:
         previous cell
+    :type pre_node: struct hinic_api_cmd_cell \*
 
-    :param struct hinic_api_cmd_cell \*\*node_vaddr:
+    :param node_vaddr:
         the returned virt addr of the cell
+    :type node_vaddr: struct hinic_api_cmd_cell \*\*
 
 .. _`api_cmd_create_cell.description`:
 
@@ -384,11 +423,13 @@ api_cmd_destroy_cell
 
     destroy API CMD cell of specific chain
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to destroy its cell
+    :type chain: struct hinic_api_cmd_chain \*
 
-    :param int cell_idx:
+    :param cell_idx:
         the cell to destroy
+    :type cell_idx: int
 
 .. _`api_cmd_destroy_cells`:
 
@@ -399,11 +440,13 @@ api_cmd_destroy_cells
 
     destroy API CMD cells of specific chain
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to destroy its cells
+    :type chain: struct hinic_api_cmd_chain \*
 
-    :param int num_cells:
+    :param num_cells:
         number of cells to destroy
+    :type num_cells: int
 
 .. _`api_cmd_create_cells`:
 
@@ -414,8 +457,9 @@ api_cmd_create_cells
 
     create API CMD cells for specific chain
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`api_cmd_create_cells.description`:
 
@@ -433,11 +477,13 @@ api_chain_init
 
     initialize API CMD specific chain
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to initialize
+    :type chain: struct hinic_api_cmd_chain \*
 
-    :param struct hinic_api_cmd_chain_attr \*attr:
+    :param attr:
         attributes to set in the chain
+    :type attr: struct hinic_api_cmd_chain_attr \*
 
 .. _`api_chain_init.description`:
 
@@ -455,8 +501,9 @@ api_chain_free
 
     free API CMD specific chain
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to free
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`api_cmd_create_chain`:
 
@@ -467,8 +514,9 @@ api_cmd_create_chain
 
     create API CMD specific chain
 
-    :param struct hinic_api_cmd_chain_attr \*attr:
+    :param attr:
         attributes to set the chain
+    :type attr: struct hinic_api_cmd_chain_attr \*
 
 .. _`api_cmd_create_chain.description`:
 
@@ -486,8 +534,9 @@ api_cmd_destroy_chain
 
     destroy API CMD specific chain
 
-    :param struct hinic_api_cmd_chain \*chain:
+    :param chain:
         the API CMD specific chain to destroy
+    :type chain: struct hinic_api_cmd_chain \*
 
 .. _`hinic_api_cmd_init`:
 
@@ -498,11 +547,13 @@ hinic_api_cmd_init
 
     Initialize all the API CMD chains
 
-    :param struct hinic_api_cmd_chain \*\*chain:
+    :param chain:
         the API CMD chains that are initialized
+    :type chain: struct hinic_api_cmd_chain \*\*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the hardware interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
 .. _`hinic_api_cmd_init.description`:
 
@@ -520,8 +571,9 @@ hinic_api_cmd_free
 
     free the API CMD chains
 
-    :param struct hinic_api_cmd_chain \*\*chain:
+    :param chain:
         the API CMD chains that are freed
+    :type chain: struct hinic_api_cmd_chain \*\*
 
 .. This file was automatic generated / don't edit.
 

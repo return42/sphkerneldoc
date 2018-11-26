@@ -10,8 +10,9 @@ module_serio_driver
 
     Helper macro for registering a serio driver
 
-    :param  __serio_driver:
+    :param __serio_driver:
         serio_driver struct
+    :type __serio_driver: 
 
 .. _`module_serio_driver.description`:
 

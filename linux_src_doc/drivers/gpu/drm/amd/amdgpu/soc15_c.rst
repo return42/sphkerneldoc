@@ -10,14 +10,17 @@ soc15_program_register_sequence
 
     program an array of registers.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param const struct soc15_reg_golden \*regs:
+    :param regs:
         pointer to the register array
+    :type regs: const struct soc15_reg_golden \*
 
-    :param const u32 array_size:
+    :param array_size:
         size of the register array
+    :type array_size: const u32
 
 .. _`soc15_program_register_sequence.description`:
 

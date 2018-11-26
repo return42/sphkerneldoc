@@ -10,14 +10,17 @@ max9611_read_single
 
     read a single value from ADC interface
 
-    :param struct max9611_dev \*max9611:
+    :param max9611:
         max9611 device
+    :type max9611: struct max9611_dev \*
 
-    :param enum max9611_conf_ids selector:
+    :param selector:
         index for mux and register configuration
+    :type selector: enum max9611_conf_ids
 
-    :param u16 \*raw_val:
+    :param raw_val:
         the value returned from ADC
+    :type raw_val: u16 \*
 
 .. _`max9611_read_single.description`:
 
@@ -40,14 +43,17 @@ max9611_read_csa_voltage
 
     read current sense amplifier output voltage
 
-    :param struct max9611_dev \*max9611:
+    :param max9611:
         max9611 device
+    :type max9611: struct max9611_dev \*
 
-    :param u16 \*adc_raw:
+    :param adc_raw:
         raw value read from ADC output
+    :type adc_raw: u16 \*
 
-    :param enum max9611_csa_gain \*csa_gain:
+    :param csa_gain:
         gain configuration option selector
+    :type csa_gain: enum max9611_csa_gain \*
 
 .. _`max9611_read_csa_voltage.description`:
 

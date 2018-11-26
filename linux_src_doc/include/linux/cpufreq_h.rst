@@ -10,14 +10,17 @@ cpufreq_scale
 
     "old \* mult / div" calculation for large values (32-bit-arch safe)
 
-    :param unsigned long old:
+    :param old:
         old value
+    :type old: unsigned long
 
-    :param u_int div:
+    :param div:
         divisor
+    :type div: u_int
 
-    :param u_int mult:
+    :param mult:
         multiplier
+    :type mult: u_int
 
 .. _`cpufreq_scale.description`:
 

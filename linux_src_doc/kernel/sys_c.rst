@@ -10,8 +10,9 @@ sys_getpid
 
     return the thread group id of the current process
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sys_getpid.description`:
 
@@ -33,8 +34,9 @@ do_sysinfo
 
     fill in sysinfo struct
 
-    :param struct sysinfo \*info:
+    :param info:
         pointer to buffer to fill
+    :type info: struct sysinfo \*
 
 .. This file was automatic generated / don't edit.
 

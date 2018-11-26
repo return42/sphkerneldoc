@@ -12,3 +12,4 @@ bitops
     find_h
     fls64_h
     fls_h
+    non-atomic_h

@@ -146,7 +146,10 @@ Definition
         } m;
         __u32 length;
         __u32 reserved2;
-        __u32 reserved;
+        union {
+            __s32 request_fd;
+            __u32 reserved;
+        } ;
     }
 
 .. _`v4l2_buffer.members`:
@@ -194,6 +197,12 @@ length
 
 reserved2
     *undescribed*
+
+{unnamed_union}
+    anonymous
+
+request_fd
+    fd of the request that this buffer should use
 
 reserved
     *undescribed*
@@ -608,7 +617,8 @@ Definition
         __u32 count;
         __u32 memory;
         struct v4l2_format format;
-        __u32 reserved[8];
+        __u32 capabilities;
+        __u32 reserved[7];
     }
 
 .. _`v4l2_create_buffers.members`:
@@ -628,6 +638,9 @@ memory
 
 format
     frame format, for which buffers are requested
+
+capabilities
+    capabilities of this buffer type.
 
 reserved
     future extensions

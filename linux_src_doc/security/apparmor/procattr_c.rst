@@ -10,11 +10,13 @@ aa_getprocattr
 
     Return the profile information for \ ``profile``\ 
 
-    :param struct aa_label \*label:
+    :param label:
         *undescribed*
+    :type label: struct aa_label \*
 
-    :param char \*\*string:
+    :param string:
         Returns - string containing the profile info (NOT NULL)
+    :type string: char \*\*
 
 .. _`aa_getprocattr.return`:
 
@@ -44,14 +46,17 @@ split_token_from_name
 
     separate a string of form  <token>^<name>
 
-    :param const char \*op:
+    :param op:
         operation being checked
+    :type op: const char \*
 
-    :param char \*args:
+    :param args:
         string to parse  (NOT NULL)
+    :type args: char \*
 
-    :param u64 \*token:
+    :param token:
         stores returned parsed token value  (NOT NULL)
+    :type token: u64 \*
 
 .. _`split_token_from_name.return`:
 
@@ -69,14 +74,17 @@ aa_setprocattr_changehat
 
     handle procattr interface to change_hat
 
-    :param char \*args:
+    :param args:
         args received from writing to /proc/<pid>/attr/current (NOT NULL)
+    :type args: char \*
 
-    :param size_t size:
+    :param size:
         size of the args
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         set of flags governing behavior
+    :type flags: int
 
 .. _`aa_setprocattr_changehat.return`:
 

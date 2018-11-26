@@ -10,8 +10,9 @@ gmap_alloc
 
     allocate and initialize a guest address space
 
-    :param unsigned long limit:
+    :param limit:
         maximum address of the gmap address space
+    :type limit: unsigned long
 
 .. _`gmap_alloc.description`:
 
@@ -29,11 +30,13 @@ gmap_create
 
     create a guest address space
 
-    :param struct mm_struct \*mm:
+    :param mm:
         pointer to the parent mm_struct
+    :type mm: struct mm_struct \*
 
-    :param unsigned long limit:
+    :param limit:
         maximum size of the gmap address space
+    :type limit: unsigned long
 
 .. _`gmap_create.description`:
 
@@ -51,8 +54,9 @@ gmap_free
 
     free a guest address space
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to the guest address space structure
+    :type gmap: struct gmap \*
 
 .. _`gmap_free.description`:
 
@@ -70,8 +74,9 @@ gmap_get
 
     increase reference counter for guest address space
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to the guest address space structure
+    :type gmap: struct gmap \*
 
 .. _`gmap_get.description`:
 
@@ -89,8 +94,9 @@ gmap_put
 
     decrease reference counter for guest address space
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to the guest address space structure
+    :type gmap: struct gmap \*
 
 .. _`gmap_put.description`:
 
@@ -108,8 +114,9 @@ gmap_remove
 
     remove a guest address space but do not free it yet
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to the guest address space structure
+    :type gmap: struct gmap \*
 
 .. _`gmap_enable`:
 
@@ -120,8 +127,9 @@ gmap_enable
 
     switch primary space to the guest address space
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to the guest address space structure
+    :type gmap: struct gmap \*
 
 .. _`gmap_disable`:
 
@@ -132,8 +140,9 @@ gmap_disable
 
     switch back to the standard primary address space
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to the guest address space structure
+    :type gmap: struct gmap \*
 
 .. _`gmap_get_enabled`:
 
@@ -144,8 +153,9 @@ gmap_get_enabled
 
     get a pointer to the currently enabled gmap
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`gmap_get_enabled.description`:
 
@@ -163,8 +173,9 @@ Returns a pointer to the currently enabled gmap. 0 if none is enabled.
 
     find virtual address from segment pointer
 
-    :param unsigned long \*entry:
+    :param entry:
         pointer to a segment table entry in the guest address space
+    :type entry: unsigned long \*
 
 .. _`__gmap_segment_gaddr.description`:
 
@@ -182,11 +193,13 @@ Returns the virtual address in the guest address space for the segment
 
     unlink a single segment via a host address
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to the guest address space structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long vmaddr:
+    :param vmaddr:
         address in the host process address space
+    :type vmaddr: unsigned long
 
 .. _`__gmap_unlink_by_vmaddr.description`:
 
@@ -204,11 +217,13 @@ Returns 1 if a TLB flush is required
 
     unmap a single segment via a guest address
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to the guest address space structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long gaddr:
+    :param gaddr:
         address in the guest address space
+    :type gaddr: unsigned long
 
 .. _`__gmap_unmap_by_gaddr.description`:
 
@@ -226,14 +241,17 @@ gmap_unmap_segment
 
     unmap segment from the guest address space
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to the guest address space structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long to:
+    :param to:
         address in the guest address space
+    :type to: unsigned long
 
-    :param unsigned long len:
+    :param len:
         length of the memory area to unmap
+    :type len: unsigned long
 
 .. _`gmap_unmap_segment.description`:
 
@@ -251,17 +269,21 @@ gmap_map_segment
 
     map a segment to the guest address space
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to the guest address space structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long from:
+    :param from:
         source address in the parent address space
+    :type from: unsigned long
 
-    :param unsigned long to:
+    :param to:
         target address in the guest address space
+    :type to: unsigned long
 
-    :param unsigned long len:
+    :param len:
         length of the memory area to map
+    :type len: unsigned long
 
 .. _`gmap_map_segment.description`:
 
@@ -279,11 +301,13 @@ Returns 0 if the mmap succeeded, -EINVAL or -ENOMEM if not.
 
     translate a guest address to a user space address
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long gaddr:
+    :param gaddr:
         guest address
+    :type gaddr: unsigned long
 
 .. _`__gmap_translate.description`:
 
@@ -312,11 +336,13 @@ gmap_translate
 
     translate a guest address to a user space address
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long gaddr:
+    :param gaddr:
         guest address
+    :type gaddr: unsigned long
 
 .. _`gmap_translate.description`:
 
@@ -336,14 +362,17 @@ gmap_unlink
 
     disconnect a page table from the gmap shadow tables
 
-    :param struct mm_struct \*mm:
+    :param mm:
         *undescribed*
+    :type mm: struct mm_struct \*
 
-    :param unsigned long \*table:
+    :param table:
         pointer to the host page table
+    :type table: unsigned long \*
 
-    :param unsigned long vmaddr:
+    :param vmaddr:
         vm address associated with the host page table
+    :type vmaddr: unsigned long
 
 .. _`__gmap_link`:
 
@@ -354,14 +383,17 @@ gmap_unlink
 
     set up shadow page tables to connect a host to a guest address
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long gaddr:
+    :param gaddr:
         guest address
+    :type gaddr: unsigned long
 
-    :param unsigned long vmaddr:
+    :param vmaddr:
         vm address
+    :type vmaddr: unsigned long
 
 .. _`__gmap_link.description`:
 
@@ -382,14 +414,17 @@ gmap_fault
 
     resolve a fault on a guest address
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long gaddr:
+    :param gaddr:
         guest address
+    :type gaddr: unsigned long
 
-    :param unsigned int fault_flags:
+    :param fault_flags:
         flags to pass down to \ :c:func:`handle_mm_fault`\ 
+    :type fault_flags: unsigned int
 
 .. _`gmap_fault.description`:
 
@@ -408,8 +443,9 @@ gmap_register_pte_notifier
 
     register a pte invalidation callback
 
-    :param struct gmap_notifier \*nb:
+    :param nb:
         pointer to the gmap notifier block
+    :type nb: struct gmap_notifier \*
 
 .. _`gmap_unregister_pte_notifier`:
 
@@ -420,8 +456,9 @@ gmap_unregister_pte_notifier
 
     remove a pte invalidation callback
 
-    :param struct gmap_notifier \*nb:
+    :param nb:
         pointer to the gmap notifier block
+    :type nb: struct gmap_notifier \*
 
 .. _`gmap_call_notifier`:
 
@@ -432,14 +469,17 @@ gmap_call_notifier
 
     call all registered invalidation callbacks
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long start:
+    :param start:
         start virtual address in the guest address space
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         end virtual address in the guest address space
+    :type end: unsigned long
 
 .. _`gmap_table_walk`:
 
@@ -450,14 +490,17 @@ gmap_table_walk
 
     walk the gmap page tables
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long gaddr:
+    :param gaddr:
         virtual address in the guest address space
+    :type gaddr: unsigned long
 
-    :param int level:
+    :param level:
         returns a pointer to a region-1 table entry (or NULL)
+    :type level: int
 
 .. _`gmap_table_walk.description`:
 
@@ -485,14 +528,17 @@ gmap_pte_op_walk
 
     walk the gmap page table, get the page table lock and return the pte pointer
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long gaddr:
+    :param gaddr:
         virtual address in the guest address space
+    :type gaddr: unsigned long
 
-    :param spinlock_t \*\*ptl:
+    :param ptl:
         pointer to the spinlock pointer
+    :type ptl: spinlock_t \*\*
 
 .. _`gmap_pte_op_walk.description`:
 
@@ -510,17 +556,21 @@ gmap_pte_op_fixup
 
     force a page in and connect the gmap page table
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long gaddr:
+    :param gaddr:
         virtual address in the guest address space
+    :type gaddr: unsigned long
 
-    :param unsigned long vmaddr:
+    :param vmaddr:
         address in the host process address space
+    :type vmaddr: unsigned long
 
-    :param int prot:
+    :param prot:
         indicates access rights: PROT_NONE, PROT_READ or PROT_WRITE
+    :type prot: int
 
 .. _`gmap_pte_op_fixup.description`:
 
@@ -540,8 +590,50 @@ gmap_pte_op_end
 
     release the page table lock
 
-    :param spinlock_t \*ptl:
+    :param ptl:
         pointer to the spinlock pointer
+    :type ptl: spinlock_t \*
+
+.. _`gmap_pmd_op_walk`:
+
+gmap_pmd_op_walk
+================
+
+.. c:function:: pmd_t *gmap_pmd_op_walk(struct gmap *gmap, unsigned long gaddr)
+
+    walk the gmap tables, get the guest table lock and return the pmd pointer
+
+    :param gmap:
+        pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
+
+    :param gaddr:
+        virtual address in the guest address space
+    :type gaddr: unsigned long
+
+.. _`gmap_pmd_op_walk.description`:
+
+Description
+-----------
+
+Returns a pointer to the pmd for a guest address, or NULL
+
+.. _`gmap_pmd_op_end`:
+
+gmap_pmd_op_end
+===============
+
+.. c:function:: void gmap_pmd_op_end(struct gmap *gmap, pmd_t *pmdp)
+
+    release the guest_table_lock if needed
+
+    :param gmap:
+        pointer to the guest mapping meta data structure
+    :type gmap: struct gmap \*
+
+    :param pmdp:
+        pointer to the pmd
+    :type pmdp: pmd_t \*
 
 .. _`gmap_mprotect_notify`:
 
@@ -552,17 +644,21 @@ gmap_mprotect_notify
 
     change access rights for a range of ptes and call the notifier if any pte changes again
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long gaddr:
+    :param gaddr:
         virtual address in the guest address space
+    :type gaddr: unsigned long
 
-    :param unsigned long len:
+    :param len:
         size of area
+    :type len: unsigned long
 
-    :param int prot:
+    :param prot:
         indicates access rights: PROT_NONE, PROT_READ or PROT_WRITE
+    :type prot: int
 
 .. _`gmap_mprotect_notify.description`:
 
@@ -584,14 +680,17 @@ gmap_read_table
 
     get an unsigned long value from a guest page table using absolute addressing, without marking the page referenced.
 
-    :param struct gmap \*gmap:
+    :param gmap:
         pointer to guest mapping meta data structure
+    :type gmap: struct gmap \*
 
-    :param unsigned long gaddr:
+    :param gaddr:
         virtual address in the guest address space
+    :type gaddr: unsigned long
 
-    :param unsigned long \*val:
+    :param val:
         pointer to the unsigned long value to return
+    :type val: unsigned long \*
 
 .. _`gmap_read_table.description`:
 
@@ -613,14 +712,17 @@ gmap_insert_rmap
 
     add a rmap to the host_to_rmap radix tree
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long vmaddr:
+    :param vmaddr:
         vm address associated with the rmap
+    :type vmaddr: unsigned long
 
-    :param struct gmap_rmap \*rmap:
+    :param rmap:
         pointer to the rmap structure
+    :type rmap: struct gmap_rmap \*
 
 .. _`gmap_insert_rmap.description`:
 
@@ -638,17 +740,21 @@ gmap_protect_rmap
 
     restrict access rights to memory (RO) and create an rmap
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         rmap address in the shadow gmap
+    :type raddr: unsigned long
 
-    :param unsigned long paddr:
+    :param paddr:
         address in the parent guest address space
+    :type paddr: unsigned long
 
-    :param unsigned long len:
+    :param len:
         length of the memory area to protect
+    :type len: unsigned long
 
 .. _`gmap_protect_rmap.description`:
 
@@ -667,11 +773,13 @@ gmap_idte_one
 
     invalidate a single region or segment table entry
 
-    :param unsigned long asce:
+    :param asce:
         region or segment table \*origin\* + table-type bits
+    :type asce: unsigned long
 
-    :param unsigned long vaddr:
+    :param vaddr:
         virtual address to identify the table entry to flush
+    :type vaddr: unsigned long
 
 .. _`gmap_idte_one.description`:
 
@@ -692,11 +800,13 @@ gmap_unshadow_page
 
     remove a page from a shadow page table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         rmap address in the shadow guest address space
+    :type raddr: unsigned long
 
 .. _`gmap_unshadow_page.description`:
 
@@ -714,14 +824,17 @@ Called with the sg->guest_table_lock
 
     remove all entries from a shadow page table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         rmap address in the shadow guest address space
+    :type raddr: unsigned long
 
-    :param unsigned long \*pgt:
+    :param pgt:
         pointer to the start of a shadow page table
+    :type pgt: unsigned long \*
 
 .. _`__gmap_unshadow_pgt.description`:
 
@@ -739,11 +852,13 @@ gmap_unshadow_pgt
 
     remove a shadow page table from a segment entry
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         address in the shadow guest address space
+    :type raddr: unsigned long
 
 .. _`gmap_unshadow_pgt.description`:
 
@@ -761,14 +876,17 @@ Called with the sg->guest_table_lock
 
     remove all entries from a shadow segment table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         rmap address in the shadow guest address space
+    :type raddr: unsigned long
 
-    :param unsigned long \*sgt:
+    :param sgt:
         pointer to the start of a shadow segment table
+    :type sgt: unsigned long \*
 
 .. _`__gmap_unshadow_sgt.description`:
 
@@ -786,11 +904,13 @@ gmap_unshadow_sgt
 
     remove a shadow segment table from a region-3 entry
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         rmap address in the shadow guest address space
+    :type raddr: unsigned long
 
 .. _`gmap_unshadow_sgt.description`:
 
@@ -808,14 +928,17 @@ Called with the shadow->guest_table_lock
 
     remove all entries from a shadow region-3 table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         address in the shadow guest address space
+    :type raddr: unsigned long
 
-    :param unsigned long \*r3t:
+    :param r3t:
         pointer to the start of a shadow region-3 table
+    :type r3t: unsigned long \*
 
 .. _`__gmap_unshadow_r3t.description`:
 
@@ -833,11 +956,13 @@ gmap_unshadow_r3t
 
     remove a shadow region-3 table from a region-2 entry
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         rmap address in the shadow guest address space
+    :type raddr: unsigned long
 
 .. _`gmap_unshadow_r3t.description`:
 
@@ -855,14 +980,17 @@ Called with the sg->guest_table_lock
 
     remove all entries from a shadow region-2 table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         rmap address in the shadow guest address space
+    :type raddr: unsigned long
 
-    :param unsigned long \*r2t:
+    :param r2t:
         pointer to the start of a shadow region-2 table
+    :type r2t: unsigned long \*
 
 .. _`__gmap_unshadow_r2t.description`:
 
@@ -880,11 +1008,13 @@ gmap_unshadow_r2t
 
     remove a shadow region-2 table from a region-1 entry
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         rmap address in the shadow guest address space
+    :type raddr: unsigned long
 
 .. _`gmap_unshadow_r2t.description`:
 
@@ -902,14 +1032,17 @@ Called with the sg->guest_table_lock
 
     remove all entries from a shadow region-1 table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long raddr:
+    :param raddr:
         rmap address in the shadow guest address space
+    :type raddr: unsigned long
 
-    :param unsigned long \*r1t:
+    :param r1t:
         pointer to the start of a shadow region-1 table
+    :type r1t: unsigned long \*
 
 .. _`__gmap_unshadow_r1t.description`:
 
@@ -927,8 +1060,9 @@ gmap_unshadow
 
     remove a shadow page table completely
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
 .. _`gmap_unshadow.description`:
 
@@ -946,14 +1080,17 @@ gmap_find_shadow
 
     find a specific asce in the list of shadow tables
 
-    :param struct gmap \*parent:
+    :param parent:
         pointer to the parent gmap
+    :type parent: struct gmap \*
 
-    :param unsigned long asce:
+    :param asce:
         ASCE for which the shadow table is created
+    :type asce: unsigned long
 
-    :param int edat_level:
+    :param edat_level:
         edat level to be used for the shadow translation
+    :type edat_level: int
 
 .. _`gmap_find_shadow.description`:
 
@@ -973,14 +1110,17 @@ gmap_shadow_valid
 
     check if a shadow guest address space matches the given properties and is still valid
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long asce:
+    :param asce:
         ASCE for which the shadow table is requested
+    :type asce: unsigned long
 
-    :param int edat_level:
+    :param edat_level:
         edat level to be used for the shadow translation
+    :type edat_level: int
 
 .. _`gmap_shadow_valid.description`:
 
@@ -1000,14 +1140,17 @@ gmap_shadow
 
     create/find a shadow guest address space
 
-    :param struct gmap \*parent:
+    :param parent:
         pointer to the parent gmap
+    :type parent: struct gmap \*
 
-    :param unsigned long asce:
+    :param asce:
         ASCE for which the shadow table is created
+    :type asce: unsigned long
 
-    :param int edat_level:
+    :param edat_level:
         edat level to be used for the shadow translation
+    :type edat_level: int
 
 .. _`gmap_shadow.description`:
 
@@ -1032,17 +1175,21 @@ gmap_shadow_r2t
 
     create an empty shadow region 2 table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long saddr:
+    :param saddr:
         faulting address in the shadow gmap
+    :type saddr: unsigned long
 
-    :param unsigned long r2t:
+    :param r2t:
         parent gmap address of the region 2 table to get shadowed
+    :type r2t: unsigned long
 
-    :param int fake:
+    :param fake:
         r2t references contiguous guest memory block, not a r2t
+    :type fake: int
 
 .. _`gmap_shadow_r2t.description`:
 
@@ -1069,17 +1216,21 @@ gmap_shadow_r3t
 
     create a shadow region 3 table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long saddr:
+    :param saddr:
         faulting address in the shadow gmap
+    :type saddr: unsigned long
 
-    :param unsigned long r3t:
+    :param r3t:
         parent gmap address of the region 3 table to get shadowed
+    :type r3t: unsigned long
 
-    :param int fake:
+    :param fake:
         r3t references contiguous guest memory block, not a r3t
+    :type fake: int
 
 .. _`gmap_shadow_r3t.description`:
 
@@ -1101,17 +1252,21 @@ gmap_shadow_sgt
 
     create a shadow segment table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long saddr:
+    :param saddr:
         faulting address in the shadow gmap
+    :type saddr: unsigned long
 
-    :param unsigned long sgt:
+    :param sgt:
         parent gmap address of the segment table to get shadowed
+    :type sgt: unsigned long
 
-    :param int fake:
+    :param fake:
         sgt references contiguous guest memory block, not a sgt
+    :type fake: int
 
 .. _`gmap_shadow_sgt.return`:
 
@@ -1133,20 +1288,25 @@ gmap_shadow_pgt_lookup
 
     find a shadow page table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long saddr:
+    :param saddr:
         the address in the shadow aguest address space
+    :type saddr: unsigned long
 
-    :param unsigned long \*pgt:
+    :param pgt:
         parent gmap address of the page table to get shadowed
+    :type pgt: unsigned long \*
 
-    :param int \*dat_protection:
+    :param dat_protection:
         if the pgtable is marked as protected by dat
+    :type dat_protection: int \*
 
-    :param int \*fake:
+    :param fake:
         pgt references contiguous guest memory block, not a pgtable
+    :type fake: int \*
 
 .. _`gmap_shadow_pgt_lookup.description`:
 
@@ -1167,17 +1327,21 @@ gmap_shadow_pgt
 
     instantiate a shadow page table
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long saddr:
+    :param saddr:
         faulting address in the shadow gmap
+    :type saddr: unsigned long
 
-    :param unsigned long pgt:
+    :param pgt:
         parent gmap address of the page table to get shadowed
+    :type pgt: unsigned long
 
-    :param int fake:
+    :param fake:
         pgt references contiguous guest memory block, not a pgtable
+    :type fake: int
 
 .. _`gmap_shadow_pgt.description`:
 
@@ -1199,14 +1363,17 @@ gmap_shadow_page
 
     create a shadow page mapping
 
-    :param struct gmap \*sg:
+    :param sg:
         pointer to the shadow guest address space structure
+    :type sg: struct gmap \*
 
-    :param unsigned long saddr:
+    :param saddr:
         faulting address in the shadow gmap
+    :type saddr: unsigned long
 
-    :param pte_t pte:
+    :param pte:
         pte in parent gmap address space to get shadowed
+    :type pte: pte_t
 
 .. _`gmap_shadow_page.description`:
 
@@ -1228,14 +1395,17 @@ gmap_shadow_notify
 
     handle notifications for shadow gmap
 
-    :param struct gmap \*sg:
+    :param sg:
         *undescribed*
+    :type sg: struct gmap \*
 
-    :param unsigned long vmaddr:
+    :param vmaddr:
         *undescribed*
+    :type vmaddr: unsigned long
 
-    :param unsigned long gaddr:
+    :param gaddr:
         *undescribed*
+    :type gaddr: unsigned long
 
 .. _`gmap_shadow_notify.description`:
 
@@ -1253,17 +1423,21 @@ ptep_notify
 
     call all invalidation callbacks for a specific pte.
 
-    :param struct mm_struct \*mm:
+    :param mm:
         pointer to the process mm_struct
+    :type mm: struct mm_struct \*
 
-    :param unsigned long vmaddr:
+    :param vmaddr:
         *undescribed*
+    :type vmaddr: unsigned long
 
-    :param pte_t \*pte:
+    :param pte:
         pointer to the page table entry
+    :type pte: pte_t \*
 
-    :param unsigned long bits:
+    :param bits:
         bits from the pgste that caused the notify call
+    :type bits: unsigned long
 
 .. _`ptep_notify.description`:
 
@@ -1272,6 +1446,169 @@ Description
 
 This function is assumed to be called with the page table lock held
 for the pte to notify.
+
+.. _`gmap_pmdp_xchg`:
+
+gmap_pmdp_xchg
+==============
+
+.. c:function:: void gmap_pmdp_xchg(struct gmap *gmap, pmd_t *pmdp, pmd_t new, unsigned long gaddr)
+
+    exchange a gmap pmd with another
+
+    :param gmap:
+        pointer to the guest address space structure
+    :type gmap: struct gmap \*
+
+    :param pmdp:
+        pointer to the pmd entry
+    :type pmdp: pmd_t \*
+
+    :param new:
+        replacement entry
+    :type new: pmd_t
+
+    :param gaddr:
+        the affected guest address
+    :type gaddr: unsigned long
+
+.. _`gmap_pmdp_xchg.description`:
+
+Description
+-----------
+
+This function is assumed to be called with the guest_table_lock
+held.
+
+.. _`gmap_pmdp_invalidate`:
+
+gmap_pmdp_invalidate
+====================
+
+.. c:function:: void gmap_pmdp_invalidate(struct mm_struct *mm, unsigned long vmaddr)
+
+    invalidate all affected guest pmd entries without flushing
+
+    :param mm:
+        pointer to the process mm_struct
+    :type mm: struct mm_struct \*
+
+    :param vmaddr:
+        virtual address in the process address space
+    :type vmaddr: unsigned long
+
+.. _`gmap_pmdp_csp`:
+
+gmap_pmdp_csp
+=============
+
+.. c:function:: void gmap_pmdp_csp(struct mm_struct *mm, unsigned long vmaddr)
+
+    csp all affected guest pmd entries
+
+    :param mm:
+        pointer to the process mm_struct
+    :type mm: struct mm_struct \*
+
+    :param vmaddr:
+        virtual address in the process address space
+    :type vmaddr: unsigned long
+
+.. _`gmap_pmdp_idte_local`:
+
+gmap_pmdp_idte_local
+====================
+
+.. c:function:: void gmap_pmdp_idte_local(struct mm_struct *mm, unsigned long vmaddr)
+
+    invalidate and clear a guest pmd entry
+
+    :param mm:
+        pointer to the process mm_struct
+    :type mm: struct mm_struct \*
+
+    :param vmaddr:
+        virtual address in the process address space
+    :type vmaddr: unsigned long
+
+.. _`gmap_pmdp_idte_global`:
+
+gmap_pmdp_idte_global
+=====================
+
+.. c:function:: void gmap_pmdp_idte_global(struct mm_struct *mm, unsigned long vmaddr)
+
+    invalidate and clear a guest pmd entry
+
+    :param mm:
+        pointer to the process mm_struct
+    :type mm: struct mm_struct \*
+
+    :param vmaddr:
+        virtual address in the process address space
+    :type vmaddr: unsigned long
+
+.. _`gmap_test_and_clear_dirty_pmd`:
+
+gmap_test_and_clear_dirty_pmd
+=============================
+
+.. c:function:: bool gmap_test_and_clear_dirty_pmd(struct gmap *gmap, pmd_t *pmdp, unsigned long gaddr)
+
+    test and reset segment dirty status
+
+    :param gmap:
+        pointer to guest address space
+    :type gmap: struct gmap \*
+
+    :param pmdp:
+        pointer to the pmd to be tested
+    :type pmdp: pmd_t \*
+
+    :param gaddr:
+        virtual address in the guest address space
+    :type gaddr: unsigned long
+
+.. _`gmap_test_and_clear_dirty_pmd.description`:
+
+Description
+-----------
+
+This function is assumed to be called with the guest_table_lock
+held.
+
+.. _`gmap_sync_dirty_log_pmd`:
+
+gmap_sync_dirty_log_pmd
+=======================
+
+.. c:function:: void gmap_sync_dirty_log_pmd(struct gmap *gmap, unsigned long bitmap, unsigned long gaddr, unsigned long vmaddr)
+
+    set bitmap based on dirty status of segment
+
+    :param gmap:
+        pointer to guest address space
+    :type gmap: struct gmap \*
+
+    :param bitmap:
+        dirty bitmap for this pmd
+    :type bitmap: unsigned long
+
+    :param gaddr:
+        virtual address in the guest address space
+    :type gaddr: unsigned long
+
+    :param vmaddr:
+        virtual address in the host address space
+    :type vmaddr: unsigned long
+
+.. _`gmap_sync_dirty_log_pmd.description`:
+
+Description
+-----------
+
+This function is assumed to be called with the guest_table_lock
+held.
 
 .. This file was automatic generated / don't edit.
 

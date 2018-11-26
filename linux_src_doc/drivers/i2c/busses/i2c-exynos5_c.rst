@@ -39,7 +39,7 @@ Definition
 
     struct exynos_hsi2c_variant {
         unsigned int fifo_depth;
-        unsigned int hw;
+        enum i2c_type_exynos hw;
     }
 
 .. _`exynos_hsi2c_variant.members`:
@@ -51,7 +51,7 @@ fifo_depth
     the fifo depth supported by the HSI2C module
 
 hw
-    *undescribed*
+    the hardware variant of Exynos I2C controller
 
 .. _`exynos_hsi2c_variant.description`:
 

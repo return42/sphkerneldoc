@@ -10,14 +10,17 @@ nvkm_acr_load_firmware
 
     it has the required minimum size.
 
-    :param const struct nvkm_subdev \*subdev:
+    :param subdev:
         *undescribed*
+    :type subdev: const struct nvkm_subdev \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param size_t min_size:
+    :param min_size:
         *undescribed*
+    :type min_size: size_t
 
 .. This file was automatic generated / don't edit.
 

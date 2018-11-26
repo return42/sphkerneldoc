@@ -10,11 +10,13 @@ xprt_rdma_bc_setup
 
     Pre-allocate resources for handling backchannel requests
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport associated with these backchannel resources
+    :type xprt: struct rpc_xprt \*
 
-    :param unsigned int reqs:
+    :param reqs:
         number of concurrent incoming requests to expect
+    :type reqs: unsigned int
 
 .. _`xprt_rdma_bc_setup.description`:
 
@@ -32,11 +34,13 @@ xprt_rdma_bc_up
 
     Create transport endpoint for backchannel service
 
-    :param struct svc_serv \*serv:
+    :param serv:
         server endpoint
+    :type serv: struct svc_serv \*
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
 .. _`xprt_rdma_bc_up.description`:
 
@@ -57,8 +61,9 @@ xprt_rdma_bc_maxpayload
 
     Return maximum backchannel message size
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport
+    :type xprt: struct rpc_xprt \*
 
 .. _`xprt_rdma_bc_maxpayload.description`:
 
@@ -76,8 +81,9 @@ xprt_rdma_bc_send_reply
 
     marshal and send a backchannel reply
 
-    :param struct rpc_rqst \*rqst:
+    :param rqst:
         RPC rqst with a backchannel RPC reply in rq_snd_buf
+    :type rqst: struct rpc_rqst \*
 
 .. _`xprt_rdma_bc_send_reply.description`:
 
@@ -105,11 +111,13 @@ xprt_rdma_bc_destroy
 
     Release resources for handling backchannel requests
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport associated with these backchannel resources
+    :type xprt: struct rpc_xprt \*
 
-    :param unsigned int reqs:
+    :param reqs:
         number of incoming requests to destroy; ignored
+    :type reqs: unsigned int
 
 .. _`xprt_rdma_bc_free_rqst`:
 
@@ -120,8 +128,9 @@ xprt_rdma_bc_free_rqst
 
     Release a backchannel rqst
 
-    :param struct rpc_rqst \*rqst:
+    :param rqst:
         request to release
+    :type rqst: struct rpc_rqst \*
 
 .. _`rpcrdma_bc_receive_call`:
 
@@ -132,11 +141,13 @@ rpcrdma_bc_receive_call
 
     Handle a backward direction call
 
-    :param struct rpcrdma_xprt \*r_xprt:
+    :param r_xprt:
         transport receiving the call
+    :type r_xprt: struct rpcrdma_xprt \*
 
-    :param struct rpcrdma_rep \*rep:
+    :param rep:
         receive buffer containing the call
+    :type rep: struct rpcrdma_rep \*
 
 .. _`rpcrdma_bc_receive_call.operational-assumptions`:
 

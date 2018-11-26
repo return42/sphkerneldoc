@@ -10,11 +10,13 @@ fc_rport_lookup
 
     Lookup a remote port by port_id
 
-    :param const struct fc_lport \*lport:
+    :param lport:
         The local port to lookup the remote port on
+    :type lport: const struct fc_lport \*
 
-    :param u32 port_id:
+    :param port_id:
         The remote port ID to look up
+    :type port_id: u32
 
 .. _`fc_rport_lookup.description`:
 
@@ -33,11 +35,13 @@ fc_rport_create
 
     Create a new remote port
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port this remote port will be associated with
+    :type lport: struct fc_lport \*
 
-    :param u32 port_id:
+    :param port_id:
         *undescribed*
+    :type port_id: u32
 
 .. _`fc_rport_create.description`:
 
@@ -45,13 +49,6 @@ Description
 -----------
 
 The remote port will start in the INIT state.
-
-.. _`fc_rport_create.locking-note`:
-
-Locking note
-------------
-
-must be called with the disc_mutex held.
 
 .. _`fc_rport_destroy`:
 
@@ -62,8 +59,9 @@ fc_rport_destroy
 
     Free a remote port after last reference is released
 
-    :param struct kref \*kref:
+    :param kref:
         The remote port's kref
+    :type kref: struct kref \*
 
 .. _`fc_rport_state`:
 
@@ -74,8 +72,9 @@ fc_rport_state
 
     Return a string identifying the remote port's state
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fc_set_rport_loss_tmo`:
 
@@ -86,11 +85,13 @@ fc_set_rport_loss_tmo
 
     Set the remote port loss timeout
 
-    :param struct fc_rport \*rport:
+    :param rport:
         The remote port that gets a new timeout value
+    :type rport: struct fc_rport \*
 
-    :param u32 timeout:
+    :param timeout:
         The new timeout value (in seconds)
+    :type timeout: u32
 
 .. _`fc_plogi_get_maxframe`:
 
@@ -101,12 +102,14 @@ fc_plogi_get_maxframe
 
     Get the maximum payload from the common service parameters in a FLOGI frame
 
-    :param struct fc_els_flogi \*flp:
+    :param flp:
         The FLOGI or PLOGI payload
+    :type flp: struct fc_els_flogi \*
 
-    :param unsigned int maxval:
+    :param maxval:
         The maximum frame size upper limit; this may be less than what
         is in the service parameters
+    :type maxval: unsigned int
 
 .. _`fc_rport_state_enter`:
 
@@ -117,18 +120,13 @@ fc_rport_state_enter
 
     Change the state of a remote port
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port whose state should change
+    :type rdata: struct fc_rport_priv \*
 
-    :param enum fc_rport_state new:
+    :param new:
         The new state
-
-.. _`fc_rport_state_enter.locking-note`:
-
-Locking Note
-------------
-
-Called with the rport lock held
+    :type new: enum fc_rport_state
 
 .. _`fc_rport_work`:
 
@@ -139,8 +137,9 @@ fc_rport_work
 
     Handler for remote port events in the rport_event_queue
 
-    :param struct work_struct \*work:
+    :param work:
         Handle to the remote port being dequeued
+    :type work: struct work_struct \*
 
 .. _`fc_rport_work.reference-counting`:
 
@@ -158,8 +157,9 @@ fc_rport_login
 
     Start the remote port login state machine
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port to be logged in to
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fc_rport_login.description`:
 
@@ -196,18 +196,18 @@ fc_rport_enter_delete
 
     Schedule a remote port to be deleted
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port to be deleted
+    :type rdata: struct fc_rport_priv \*
 
-    :param enum fc_rport_event event:
+    :param event:
         The event to report as the reason for deletion
+    :type event: enum fc_rport_event
 
-.. _`fc_rport_enter_delete.locking-note`:
+.. _`fc_rport_enter_delete.description`:
 
-Locking Note
-------------
-
-Called with the rport lock held.
+Description
+-----------
 
 Allow state change into DELETE only once.
 
@@ -232,8 +232,9 @@ fc_rport_logoff
 
     Logoff and remove a remote port
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port to be logged off of
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fc_rport_logoff.locking-note`:
 
@@ -253,16 +254,9 @@ fc_rport_enter_ready
 
     Transition to the RPORT_ST_READY state
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port that is ready
-
-.. _`fc_rport_enter_ready.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this routine.
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fc_rport_enter_ready.reference-counting`:
 
@@ -280,8 +274,9 @@ fc_rport_timeout
 
     Handler for the retry_work timer
 
-    :param struct work_struct \*work:
+    :param work:
         Handle to the remote port that has timed out
+    :type work: struct work_struct \*
 
 .. _`fc_rport_timeout.locking-note`:
 
@@ -308,19 +303,13 @@ fc_rport_error
 
     Error handler, called once retries have been exhausted
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port the error is happened on
+    :type rdata: struct fc_rport_priv \*
 
-    :param int err:
+    :param err:
         The error code
-
-.. _`fc_rport_error.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before
-calling this routine
+    :type err: int
 
 .. _`fc_rport_error.reference-counting`:
 
@@ -338,11 +327,13 @@ fc_rport_error_retry
 
     Handler for remote port state retries
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port whose state is to be retried
+    :type rdata: struct fc_rport_priv \*
 
-    :param int err:
+    :param err:
         The error code
+    :type err: int
 
 .. _`fc_rport_error_retry.description`:
 
@@ -351,14 +342,6 @@ Description
 
 If the error was an exchange timeout retry immediately,
 otherwise wait for E_D_TOV.
-
-.. _`fc_rport_error_retry.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before
-calling this routine
 
 .. _`fc_rport_error_retry.reference-counting`:
 
@@ -376,11 +359,13 @@ fc_rport_login_complete
 
     Handle parameters and completion of p-mp login.
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port which we logged into or which logged into us.
+    :type rdata: struct fc_rport_priv \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The FLOGI or PLOGI request or response frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_rport_login_complete.description`:
 
@@ -401,14 +386,17 @@ fc_rport_flogi_resp
 
     Handle response to FLOGI request for p-mp mode
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence that the FLOGI was on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The FLOGI response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*rp_arg:
+    :param rp_arg:
         The remote port that received the FLOGI response
+    :type rp_arg: void \*
 
 .. _`fc_rport_enter_flogi`:
 
@@ -419,16 +407,9 @@ fc_rport_enter_flogi
 
     Send a FLOGI request to the remote port for p-mp
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port to send a FLOGI to
-
-.. _`fc_rport_enter_flogi.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this routine.
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fc_rport_enter_flogi.reference-counting`:
 
@@ -446,11 +427,13 @@ fc_rport_recv_flogi_req
 
     Handle Fabric Login (FLOGI) request in p-mp mode
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that received the PLOGI request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*rx_fp:
+    :param rx_fp:
         The PLOGI request frame
+    :type rx_fp: struct fc_frame \*
 
 .. _`fc_rport_recv_flogi_req.reference-counting`:
 
@@ -468,14 +451,17 @@ fc_rport_plogi_resp
 
     Handler for ELS PLOGI responses
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence the PLOGI is on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The PLOGI response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*rdata_arg:
+    :param rdata_arg:
         The remote port that sent the PLOGI response
+    :type rdata_arg: void \*
 
 .. _`fc_rport_plogi_resp.locking-note`:
 
@@ -495,16 +481,9 @@ fc_rport_enter_plogi
 
     Send Port Login (PLOGI) request
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port to send a PLOGI to
-
-.. _`fc_rport_enter_plogi.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this routine.
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fc_rport_enter_plogi.reference-counting`:
 
@@ -522,14 +501,17 @@ fc_rport_prli_resp
 
     Process Login (PRLI) response handler
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence the PRLI response was on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The PRLI response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*rdata_arg:
+    :param rdata_arg:
         The remote port that sent the PRLI response
+    :type rdata_arg: void \*
 
 .. _`fc_rport_prli_resp.locking-note`:
 
@@ -549,16 +531,9 @@ fc_rport_enter_prli
 
     Send Process Login (PRLI) request
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port to send the PRLI request to
-
-.. _`fc_rport_enter_prli.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this routine.
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fc_rport_enter_prli.reference-counting`:
 
@@ -576,14 +551,17 @@ fc_rport_rtv_resp
 
     Handler for Request Timeout Value (RTV) responses
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence the RTV was on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The RTV response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*rdata_arg:
+    :param rdata_arg:
         The remote port that sent the RTV response
+    :type rdata_arg: void \*
 
 .. _`fc_rport_rtv_resp.description`:
 
@@ -610,16 +588,9 @@ fc_rport_enter_rtv
 
     Send Request Timeout Value (RTV) request
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port to send the RTV request to
-
-.. _`fc_rport_enter_rtv.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this routine.
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fc_rport_enter_rtv.reference-counting`:
 
@@ -637,18 +608,13 @@ fc_rport_recv_rtv_req
 
     Handler for Read Timeout Value (RTV) requests
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port that sent the RTV request
+    :type rdata: struct fc_rport_priv \*
 
-    :param struct fc_frame \*in_fp:
+    :param in_fp:
         The RTV request frame
-
-.. _`fc_rport_recv_rtv_req.locking-note`:
-
-Locking Note
-------------
-
-Called with the lport and rport locks held.
+    :type in_fp: struct fc_frame \*
 
 .. _`fc_rport_logo_resp`:
 
@@ -659,14 +625,17 @@ fc_rport_logo_resp
 
     Handler for logout (LOGO) responses
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence the LOGO was on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The LOGO response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*rdata_arg:
+    :param rdata_arg:
         *undescribed*
+    :type rdata_arg: void \*
 
 .. _`fc_rport_enter_logo`:
 
@@ -677,16 +646,9 @@ fc_rport_enter_logo
 
     Send a logout (LOGO) request
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port to send the LOGO request to
-
-.. _`fc_rport_enter_logo.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this routine.
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fc_rport_enter_logo.reference-counting`:
 
@@ -704,14 +666,17 @@ fc_rport_adisc_resp
 
     Handler for Address Discovery (ADISC) responses
 
-    :param struct fc_seq \*sp:
+    :param sp:
         The sequence the ADISC response was on
+    :type sp: struct fc_seq \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The ADISC response frame
+    :type fp: struct fc_frame \*
 
-    :param void \*rdata_arg:
+    :param rdata_arg:
         The remote port that sent the ADISC response
+    :type rdata_arg: void \*
 
 .. _`fc_rport_adisc_resp.locking-note`:
 
@@ -731,16 +696,9 @@ fc_rport_enter_adisc
 
     Send Address Discover (ADISC) request
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port to send the ADISC request to
-
-.. _`fc_rport_enter_adisc.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this routine.
+    :type rdata: struct fc_rport_priv \*
 
 .. _`fc_rport_enter_adisc.reference-counting`:
 
@@ -758,18 +716,13 @@ fc_rport_recv_adisc_req
 
     Handler for Address Discovery (ADISC) requests
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port that sent the ADISC request
+    :type rdata: struct fc_rport_priv \*
 
-    :param struct fc_frame \*in_fp:
+    :param in_fp:
         The ADISC request frame
-
-.. _`fc_rport_recv_adisc_req.locking-note`:
-
-Locking Note
-------------
-
-Called with the lport and rport locks held.
+    :type in_fp: struct fc_frame \*
 
 .. _`fc_rport_recv_rls_req`:
 
@@ -780,19 +733,13 @@ fc_rport_recv_rls_req
 
     Handle received Read Link Status request
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port that sent the RLS request
+    :type rdata: struct fc_rport_priv \*
 
-    :param struct fc_frame \*rx_fp:
+    :param rx_fp:
         The PRLI request frame
-
-.. _`fc_rport_recv_rls_req.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this function.
+    :type rx_fp: struct fc_frame \*
 
 .. _`fc_rport_recv_els_req`:
 
@@ -803,11 +750,13 @@ fc_rport_recv_els_req
 
     Handler for validated ELS requests
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that received the ELS request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The ELS request frame
+    :type fp: struct fc_frame \*
 
 .. _`fc_rport_recv_els_req.description`:
 
@@ -816,13 +765,6 @@ Description
 
 Handle incoming ELS requests that require port login.
 The ELS opcode has already been validated by the caller.
-
-.. _`fc_rport_recv_els_req.locking-note`:
-
-Locking Note
-------------
-
-Called with the lport lock held.
 
 .. _`fc_rport_recv_els_req.reference-counting`:
 
@@ -840,18 +782,13 @@ fc_rport_recv_req
 
     Handler for requests
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that received the request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The request frame
-
-.. _`fc_rport_recv_req.locking-note`:
-
-Locking Note
-------------
-
-Called with the lport lock held.
+    :type fp: struct fc_frame \*
 
 .. _`fc_rport_recv_req.reference-counting`:
 
@@ -869,18 +806,13 @@ fc_rport_recv_plogi_req
 
     Handler for Port Login (PLOGI) requests
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that received the PLOGI request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*rx_fp:
+    :param rx_fp:
         The PLOGI request frame
-
-.. _`fc_rport_recv_plogi_req.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is held before calling this function.
+    :type rx_fp: struct fc_frame \*
 
 .. _`fc_rport_recv_plogi_req.reference-counting`:
 
@@ -898,19 +830,13 @@ fc_rport_recv_prli_req
 
     Handler for process login (PRLI) requests
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port that sent the PRLI request
+    :type rdata: struct fc_rport_priv \*
 
-    :param struct fc_frame \*rx_fp:
+    :param rx_fp:
         The PRLI request frame
-
-.. _`fc_rport_recv_prli_req.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this function.
+    :type rx_fp: struct fc_frame \*
 
 .. _`fc_rport_recv_prlo_req`:
 
@@ -921,19 +847,13 @@ fc_rport_recv_prlo_req
 
     Handler for process logout (PRLO) requests
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         The remote port that sent the PRLO request
+    :type rdata: struct fc_rport_priv \*
 
-    :param struct fc_frame \*rx_fp:
+    :param rx_fp:
         The PRLO request frame
-
-.. _`fc_rport_recv_prlo_req.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this function.
+    :type rx_fp: struct fc_frame \*
 
 .. _`fc_rport_recv_logo_req`:
 
@@ -944,19 +864,13 @@ fc_rport_recv_logo_req
 
     Handler for logout (LOGO) requests
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port that received the LOGO request
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The LOGO request frame
-
-.. _`fc_rport_recv_logo_req.locking-note`:
-
-Locking Note
-------------
-
-The rport lock is expected to be held before calling
-this function.
+    :type fp: struct fc_frame \*
 
 .. _`fc_rport_recv_logo_req.reference-counting`:
 
@@ -974,8 +888,9 @@ fc_rport_flush_queue
 
     Flush the rport_event_queue
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fc_rport_fcp_prli`:
 
@@ -986,17 +901,21 @@ fc_rport_fcp_prli
 
     Handle incoming PRLI for the FCP initiator.
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         remote port private
+    :type rdata: struct fc_rport_priv \*
 
-    :param u32 spp_len:
+    :param spp_len:
         service parameter page length
+    :type spp_len: u32
 
-    :param const struct fc_els_spp \*rspp:
+    :param rspp:
         received service parameter page
+    :type rspp: const struct fc_els_spp \*
 
-    :param struct fc_els_spp \*spp:
+    :param spp:
         response service parameter page
+    :type spp: struct fc_els_spp \*
 
 .. _`fc_rport_fcp_prli.description`:
 
@@ -1015,17 +934,21 @@ fc_rport_t0_prli
 
     Handle incoming PRLI parameters for type 0
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         remote port private
+    :type rdata: struct fc_rport_priv \*
 
-    :param u32 spp_len:
+    :param spp_len:
         service parameter page length
+    :type spp_len: u32
 
-    :param const struct fc_els_spp \*rspp:
+    :param rspp:
         received service parameter page
+    :type rspp: const struct fc_els_spp \*
 
-    :param struct fc_els_spp \*spp:
+    :param spp:
         response service parameter page
+    :type spp: struct fc_els_spp \*
 
 .. _`fc_setup_rport`:
 
@@ -1036,8 +959,9 @@ fc_setup_rport
 
     Initialize the rport_event_queue
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fc_destroy_rport`:
 
@@ -1048,8 +972,9 @@ fc_destroy_rport
 
     Destroy the rport_event_queue
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fc_rport_terminate_io`:
 
@@ -1060,8 +985,9 @@ fc_rport_terminate_io
 
     Stop all outstanding I/O on a remote port
 
-    :param struct fc_rport \*rport:
+    :param rport:
         The remote port whose I/O should be terminated
+    :type rport: struct fc_rport \*
 
 .. This file was automatic generated / don't edit.
 

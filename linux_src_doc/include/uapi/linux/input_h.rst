@@ -135,8 +135,9 @@ EVIOCGMTSLOTS
 
     get MT slot values
 
-    :param  len:
+    :param len:
         size of the data buffer in bytes
+    :type len: 
 
 .. _`eviocgmtslots.description`:
 

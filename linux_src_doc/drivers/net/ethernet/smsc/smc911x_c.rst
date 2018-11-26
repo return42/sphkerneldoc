@@ -10,11 +10,13 @@ smc911x_phy_reset
 
     reset the phy
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param int phy:
+    :param phy:
         phy address
+    :type phy: int
 
 .. _`smc911x_phy_reset.description`:
 
@@ -36,11 +38,13 @@ smc911x_phy_powerdown
 
     powerdown phy
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param int phy:
+    :param phy:
         phy address
+    :type phy: int
 
 .. _`smc911x_phy_powerdown.description`:
 
@@ -58,11 +62,13 @@ smc911x_phy_check_media
 
     check the media status and adjust BMCR
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param int init:
+    :param init:
         set true for initialisation
+    :type init: int
 
 .. _`smc911x_phy_check_media.description`:
 

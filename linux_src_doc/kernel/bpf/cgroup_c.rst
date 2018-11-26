@@ -10,8 +10,9 @@ cgroup_bpf_put
 
     put references of all bpf programs
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup to modify
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_bpf_inherit`:
 
@@ -22,8 +23,9 @@ cgroup_bpf_inherit
 
     inherit effective programs from parent
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup to modify
+    :type cgrp: struct cgroup \*
 
 .. _`__cgroup_bpf_attach`:
 
@@ -34,17 +36,21 @@ cgroup_bpf_inherit
 
     Attach the program to a cgroup, and propagate the change to descendants
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         The cgroup which descendants to traverse
+    :type cgrp: struct cgroup \*
 
-    :param struct bpf_prog \*prog:
+    :param prog:
         A program to attach
+    :type prog: struct bpf_prog \*
 
-    :param enum bpf_attach_type type:
+    :param type:
         Type of attach operation
+    :type type: enum bpf_attach_type
 
-    :param u32 flags:
+    :param flags:
         *undescribed*
+    :type flags: u32
 
 .. _`__cgroup_bpf_attach.description`:
 
@@ -62,17 +68,21 @@ Must be called with cgroup_mutex held.
 
     Detach the program from a cgroup, and propagate the change to descendants
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         The cgroup which descendants to traverse
+    :type cgrp: struct cgroup \*
 
-    :param struct bpf_prog \*prog:
+    :param prog:
         A program to detach or NULL
+    :type prog: struct bpf_prog \*
 
-    :param enum bpf_attach_type type:
+    :param type:
         Type of detach operation
+    :type type: enum bpf_attach_type
 
-    :param u32 unused_flags:
+    :param unused_flags:
         *undescribed*
+    :type unused_flags: u32
 
 .. _`__cgroup_bpf_detach.description`:
 
@@ -90,14 +100,17 @@ Must be called with cgroup_mutex held.
 
     Run a program for packet filtering
 
-    :param struct sock \*sk:
+    :param sk:
         The socket sending or receiving traffic
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb that is being sent or received
+    :type skb: struct sk_buff \*
 
-    :param enum bpf_attach_type type:
+    :param type:
         The type of program to be exectuted
+    :type type: enum bpf_attach_type
 
 .. _`__cgroup_bpf_run_filter_skb.description`:
 
@@ -122,11 +135,13 @@ and if it returned != 1 during execution. In all other cases, 0 is returned.
 
     Run a program on a sock
 
-    :param struct sock \*sk:
+    :param sk:
         sock structure to manipulate
+    :type sk: struct sock \*
 
-    :param enum bpf_attach_type type:
+    :param type:
         The type of program to be exectuted
+    :type type: enum bpf_attach_type
 
 .. _`__cgroup_bpf_run_filter_sk.description`:
 
@@ -150,17 +165,21 @@ and if it returned != 1 during execution. In all other cases, 0 is returned.
 
     Run a program on a sock and provided by user sockaddr
 
-    :param struct sock \*sk:
+    :param sk:
         sock struct that will use sockaddr
+    :type sk: struct sock \*
 
-    :param struct sockaddr \*uaddr:
+    :param uaddr:
         sockaddr struct provided by user
+    :type uaddr: struct sockaddr \*
 
-    :param enum bpf_attach_type type:
+    :param type:
         The type of program to be exectuted
+    :type type: enum bpf_attach_type
 
-    :param void \*t_ctx:
+    :param t_ctx:
         Pointer to attach type specific context
+    :type t_ctx: void \*
 
 .. _`__cgroup_bpf_run_filter_sock_addr.description`:
 
@@ -181,16 +200,19 @@ returned value != 1 during execution. In all other cases, 0 is returned.
 
     Run a program on a sock
 
-    :param struct sock \*sk:
+    :param sk:
         socket to get cgroup from
+    :type sk: struct sock \*
 
-    :param struct bpf_sock_ops_kern \*sock_ops:
+    :param sock_ops:
         bpf_sock_ops_kern struct to pass to program. Contains
         sk with connection information (IP addresses, etc.) May not contain
         cgroup info if it is a req sock.
+    :type sock_ops: struct bpf_sock_ops_kern \*
 
-    :param enum bpf_attach_type type:
+    :param type:
         The type of program to be exectuted
+    :type type: enum bpf_attach_type
 
 .. _`__cgroup_bpf_run_filter_sock_ops.description`:
 

@@ -10,11 +10,13 @@ oslec_create
 
     Create a voice echo canceller context.
 
-    :param int len:
+    :param len:
         The length of the canceller, in samples.
+    :type len: int
 
-    :param int adaption_mode:
+    :param adaption_mode:
         *undescribed*
+    :type adaption_mode: int
 
 .. _`oslec_free`:
 
@@ -25,8 +27,9 @@ oslec_free
 
     Free a voice echo canceller context.
 
-    :param struct oslec_state \*ec:
+    :param ec:
         The echo canceller context.
+    :type ec: struct oslec_state \*
 
 .. _`oslec_flush`:
 
@@ -37,8 +40,9 @@ oslec_flush
 
     Flush (reinitialise) a voice echo canceller context.
 
-    :param struct oslec_state \*ec:
+    :param ec:
         The echo canceller context.
+    :type ec: struct oslec_state \*
 
 .. _`oslec_adaption_mode`:
 
@@ -49,11 +53,13 @@ oslec_adaption_mode
 
     set the adaption mode of a voice echo canceller context. \ ``ec``\  The echo canceller context.
 
-    :param struct oslec_state \*ec:
+    :param ec:
         *undescribed*
+    :type ec: struct oslec_state \*
 
-    :param int adaption_mode:
+    :param adaption_mode:
         The mode.
+    :type adaption_mode: int
 
 .. _`oslec_update`:
 
@@ -64,14 +70,17 @@ oslec_update
 
     Process a sample through a voice echo canceller.
 
-    :param struct oslec_state \*ec:
+    :param ec:
         The echo canceller context.
+    :type ec: struct oslec_state \*
 
-    :param int16_t tx:
+    :param tx:
         The transmitted audio sample.
+    :type tx: int16_t
 
-    :param int16_t rx:
+    :param rx:
         The received audio sample.
+    :type rx: int16_t
 
 .. _`oslec_update.description`:
 
@@ -89,11 +98,13 @@ oslec_hpf_tx
 
     Process to high pass filter the tx signal.
 
-    :param struct oslec_state \*ec:
+    :param ec:
         The echo canceller context.
+    :type ec: struct oslec_state \*
 
-    :param int16_t tx:
+    :param tx:
         The transmitted auio sample.
+    :type tx: int16_t
 
 .. _`oslec_hpf_tx.description`:
 

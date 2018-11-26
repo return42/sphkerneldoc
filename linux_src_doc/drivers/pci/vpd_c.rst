@@ -10,17 +10,21 @@ pci_read_vpd
 
     Read one entry from Vital Product Data
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci device struct
+    :type dev: struct pci_dev \*
 
-    :param loff_t pos:
+    :param pos:
         offset in vpd space
+    :type pos: loff_t
 
-    :param size_t count:
+    :param count:
         number of bytes to read
+    :type count: size_t
 
-    :param void \*buf:
+    :param buf:
         pointer to where to store result
+    :type buf: void \*
 
 .. _`pci_write_vpd`:
 
@@ -31,17 +35,21 @@ pci_write_vpd
 
     Write entry to Vital Product Data
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci device struct
+    :type dev: struct pci_dev \*
 
-    :param loff_t pos:
+    :param pos:
         offset in vpd space
+    :type pos: loff_t
 
-    :param size_t count:
+    :param count:
         number of bytes to write
+    :type count: size_t
 
-    :param const void \*buf:
+    :param buf:
         buffer containing write data
+    :type buf: const void \*
 
 .. _`pci_set_vpd_size`:
 
@@ -52,11 +60,13 @@ pci_set_vpd_size
 
     Set size of Vital Product Data space
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci device struct
+    :type dev: struct pci_dev \*
 
-    :param size_t len:
+    :param len:
         size of vpd space
+    :type len: size_t
 
 .. _`pci_vpd_size`:
 
@@ -67,11 +77,13 @@ pci_vpd_size
 
     determine actual size of Vital Product Data
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci device struct
+    :type dev: struct pci_dev \*
 
-    :param size_t old_size:
+    :param old_size:
         current assumed size, also maximum allowed size
+    :type old_size: size_t
 
 .. This file was automatic generated / don't edit.
 

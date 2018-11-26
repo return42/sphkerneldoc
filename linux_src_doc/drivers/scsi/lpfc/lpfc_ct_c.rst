@@ -10,11 +10,13 @@ lpfc_ct_handle_unsol_abort
 
     ct upper level protocol abort handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct hbq_dmabuf \*dmabuf:
+    :param dmabuf:
         pointer to a dmabuf that describes the FC sequence
+    :type dmabuf: struct hbq_dmabuf \*
 
 .. _`lpfc_ct_handle_unsol_abort.description`:
 
@@ -35,35 +37,44 @@ lpfc_gen_req
 
     Build and issue a GEN_REQUEST command  to the SLI Layer
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_dmabuf \*bmp:
+    :param bmp:
         Pointer to BPL for SLI command
+    :type bmp: struct lpfc_dmabuf \*
 
-    :param struct lpfc_dmabuf \*inp:
+    :param inp:
         Pointer to data buffer for response data.
+    :type inp: struct lpfc_dmabuf \*
 
-    :param struct lpfc_dmabuf \*outp:
+    :param outp:
         Pointer to data buffer that hold the CT command.
+    :type outp: struct lpfc_dmabuf \*
 
     :param void (\*cmpl)(struct lpfc_hba \*, struct lpfc_iocbq \*, struct lpfc_iocbq \*):
         completion routine to call when command completes
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         Destination NPort nodelist entry
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param uint32_t usr_flg:
+    :param usr_flg:
         *undescribed*
+    :type usr_flg: uint32_t
 
-    :param uint32_t num_entry:
+    :param num_entry:
         *undescribed*
+    :type num_entry: uint32_t
 
-    :param uint32_t tmo:
+    :param tmo:
         *undescribed*
+    :type tmo: uint32_t
 
-    :param uint8_t retry:
+    :param retry:
         *undescribed*
+    :type retry: uint8_t
 
 .. _`lpfc_gen_req.description`:
 
@@ -81,26 +92,32 @@ lpfc_ct_cmd
 
     Build and issue a CT command
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_dmabuf \*inmp:
+    :param inmp:
         Pointer to data buffer for response data.
+    :type inmp: struct lpfc_dmabuf \*
 
-    :param struct lpfc_dmabuf \*bmp:
+    :param bmp:
         Pointer to BPL for SLI command
+    :type bmp: struct lpfc_dmabuf \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         Destination NPort nodelist entry
+    :type ndlp: struct lpfc_nodelist \*
 
     :param void (\*cmpl)(struct lpfc_hba \*, struct lpfc_iocbq \*, struct lpfc_iocbq \*):
         completion routine to call when command completes
 
-    :param uint32_t rsp_size:
+    :param rsp_size:
         *undescribed*
+    :type rsp_size: uint32_t
 
-    :param uint8_t retry:
+    :param retry:
         *undescribed*
+    :type retry: uint8_t
 
 .. _`lpfc_ct_cmd.description`:
 
@@ -118,14 +135,17 @@ lpfc_cmpl_ct_disc_fdmi
 
     Handle a discovery FDMI completion
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         Pointer to the command IOCBQ.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         Pointer to the response IOCBQ.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_ct_disc_fdmi.description`:
 
@@ -144,8 +164,9 @@ lpfc_fdmi_num_disc_check
 
     Check how many mapped NPorts we are connected to
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_fdmi_num_disc_check.description`:
 
@@ -164,17 +185,21 @@ lpfc_fdmi_cmd
 
     Build and send a FDMI cmd to the specified NPort
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         ndlp to send FDMI cmd to (if NULL use FDMI_DID)
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param int cmdcode:
+    :param cmdcode:
         *undescribed*
+    :type cmdcode: int
 
-    :param uint32_t new_mask:
+    :param new_mask:
         *undescribed*
+    :type new_mask: uint32_t
 
 .. _`lpfc_fdmi_cmd.cmdcode`:
 
@@ -201,8 +226,9 @@ lpfc_delayed_disc_tmo
 
     Timeout handler for delayed discovery timer. \ ``ptr``\  - Context object of the timer.
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`lpfc_delayed_disc_tmo.description`:
 
@@ -221,8 +247,9 @@ lpfc_delayed_disc_timeout_handler
 
     Function called by worker thread to handle delayed discovery.
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_delayed_disc_timeout_handler.description`:
 

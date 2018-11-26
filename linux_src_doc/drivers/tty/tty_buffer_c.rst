@@ -10,8 +10,9 @@ tty_buffer_lock_exclusive
 
     gain exclusive access to buffer tty_buffer_unlock_exclusive     -       release exclusive access
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
 .. _`tty_buffer_lock_exclusive.description`:
 
@@ -37,8 +38,9 @@ tty_buffer_space_avail
 
     return unused buffer space \ ``port``\  - tty_port owning the flip buffer
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
 .. _`tty_buffer_space_avail.description`:
 
@@ -66,8 +68,9 @@ tty_buffer_free_all
 
     free buffers used by a tty
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
 .. _`tty_buffer_free_all.description`:
 
@@ -86,11 +89,13 @@ tty_buffer_alloc
 
     allocate a tty buffer
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
-    :param size_t size:
+    :param size:
         desired size (characters)
+    :type size: size_t
 
 .. _`tty_buffer_alloc.description`:
 
@@ -112,11 +117,13 @@ tty_buffer_free
 
     free a tty buffer
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
-    :param struct tty_buffer \*b:
+    :param b:
         the buffer to free
+    :type b: struct tty_buffer \*
 
 .. _`tty_buffer_free.description`:
 
@@ -135,11 +142,13 @@ tty_buffer_flush
 
     flush full tty buffers
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to flush
+    :type tty: struct tty_struct \*
 
-    :param struct tty_ldisc \*ld:
+    :param ld:
         optional ldisc ptr (must be referenced)
+    :type ld: struct tty_ldisc \*
 
 .. _`tty_buffer_flush.description`:
 
@@ -166,14 +175,17 @@ takes buffer lock to ensure single-threaded flip buffer
 
     grow tty buffer if needed
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
-    :param size_t size:
+    :param size:
         size desired
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         buffer flags if new buffer allocated (default = 0)
+    :type flags: int
 
 .. _`__tty_buffer_request_room.description`:
 
@@ -196,17 +208,21 @@ tty_insert_flip_string_fixed_flag
 
     Add characters to the tty buffer
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
-    :param const unsigned char \*chars:
+    :param chars:
         characters
+    :type chars: const unsigned char \*
 
-    :param char flag:
+    :param flag:
         flag value for each character
+    :type flag: char
 
-    :param size_t size:
+    :param size:
         size
+    :type size: size_t
 
 .. _`tty_insert_flip_string_fixed_flag.description`:
 
@@ -225,17 +241,21 @@ tty_insert_flip_string_flags
 
     Add characters to the tty buffer
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
-    :param const unsigned char \*chars:
+    :param chars:
         characters
+    :type chars: const unsigned char \*
 
-    :param const char \*flags:
+    :param flags:
         flag bytes
+    :type flags: const char \*
 
-    :param size_t size:
+    :param size:
         size
+    :type size: size_t
 
 .. _`tty_insert_flip_string_flags.description`:
 
@@ -255,14 +275,17 @@ number added.
 
     Add one character to the tty buffer
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
-    :param unsigned char ch:
+    :param ch:
         character
+    :type ch: unsigned char
 
-    :param char flag:
+    :param flag:
         flag byte
+    :type flag: char
 
 .. _`__tty_insert_flip_char.description`:
 
@@ -281,8 +304,9 @@ tty_schedule_flip
 
     push characters to ldisc
 
-    :param struct tty_port \*port:
+    :param port:
         tty port to push from
+    :type port: struct tty_port \*
 
 .. _`tty_schedule_flip.description`:
 
@@ -302,14 +326,17 @@ tty_prepare_flip_string
 
     make room for characters
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
-    :param unsigned char \*\*chars:
+    :param chars:
         return pointer for character write area
+    :type chars: unsigned char \*\*
 
-    :param size_t size:
+    :param size:
         desired size
+    :type size: size_t
 
 .. _`tty_prepare_flip_string.description`:
 
@@ -331,17 +358,21 @@ tty_ldisc_receive_buf
 
     forward data to line discipline
 
-    :param struct tty_ldisc \*ld:
+    :param ld:
         line discipline to process input
+    :type ld: struct tty_ldisc \*
 
-    :param const unsigned char \*p:
+    :param p:
         char buffer
+    :type p: const unsigned char \*
 
-    :param char \*f:
+    :param f:
         TTY\_\* flags buffer
+    :type f: char \*
 
-    :param int count:
+    :param count:
         number of bytes to process
+    :type count: int
 
 .. _`tty_ldisc_receive_buf.description`:
 
@@ -360,8 +391,9 @@ flush_to_ldisc
 
 .. c:function:: void flush_to_ldisc(struct work_struct *work)
 
-    :param struct work_struct \*work:
+    :param work:
         tty structure passed from work queue.
+    :type work: struct work_struct \*
 
 .. _`flush_to_ldisc.description`:
 
@@ -390,8 +422,9 @@ tty_flip_buffer_push
 
     terminal
 
-    :param struct tty_port \*port:
+    :param port:
         tty port to push
+    :type port: struct tty_port \*
 
 .. _`tty_flip_buffer_push.description`:
 
@@ -413,8 +446,9 @@ tty_buffer_init
 
     prepare a tty buffer structure
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
 .. _`tty_buffer_init.description`:
 
@@ -433,11 +467,13 @@ tty_buffer_set_limit
 
     change the tty buffer memory limit
 
-    :param struct tty_port \*port:
+    :param port:
         tty port to change
+    :type port: struct tty_port \*
 
-    :param int limit:
+    :param limit:
         *undescribed*
+    :type limit: int
 
 .. _`tty_buffer_set_limit.description`:
 

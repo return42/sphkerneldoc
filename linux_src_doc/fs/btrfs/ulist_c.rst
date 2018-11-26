@@ -10,8 +10,9 @@ ulist_init
 
     freshly initialize a ulist
 
-    :param struct ulist \*ulist:
+    :param ulist:
         the ulist to initialize
+    :type ulist: struct ulist \*
 
 .. _`ulist_init.note`:
 
@@ -30,8 +31,9 @@ ulist_release
 
     free up additionally allocated memory for the ulist
 
-    :param struct ulist \*ulist:
+    :param ulist:
         the ulist from which to free the additional memory
+    :type ulist: struct ulist \*
 
 .. _`ulist_release.description`:
 
@@ -50,8 +52,9 @@ ulist_reinit
 
     prepare a ulist for reuse
 
-    :param struct ulist \*ulist:
+    :param ulist:
         ulist to be reused
+    :type ulist: struct ulist \*
 
 .. _`ulist_reinit.description`:
 
@@ -70,8 +73,9 @@ ulist_alloc
 
     dynamically allocate a ulist
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation flags to for base allocation
+    :type gfp_mask: gfp_t
 
 .. _`ulist_alloc.description`:
 
@@ -89,8 +93,9 @@ ulist_free
 
     free dynamically allocated ulist
 
-    :param struct ulist \*ulist:
+    :param ulist:
         ulist to free
+    :type ulist: struct ulist \*
 
 .. _`ulist_free.description`:
 
@@ -108,17 +113,21 @@ ulist_add
 
     add an element to the ulist
 
-    :param struct ulist \*ulist:
+    :param ulist:
         ulist to add the element to
+    :type ulist: struct ulist \*
 
-    :param u64 val:
+    :param val:
         value to add to ulist
+    :type val: u64
 
-    :param u64 aux:
+    :param aux:
         auxiliary value to store along with val
+    :type aux: u64
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         flags to use for allocation
+    :type gfp_mask: gfp_t
 
 .. _`ulist_add.note`:
 
@@ -147,11 +156,13 @@ ulist_next
 
     iterate ulist
 
-    :param struct ulist \*ulist:
+    :param ulist:
         ulist to iterate
+    :type ulist: struct ulist \*
 
-    :param struct ulist_iterator \*uiter:
+    :param uiter:
         iterator variable, initialized with ULIST_ITER_INIT(&iterator)
+    :type uiter: struct ulist_iterator \*
 
 .. _`ulist_next.note`:
 

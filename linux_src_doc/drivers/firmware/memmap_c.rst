@@ -10,18 +10,22 @@ firmware_map_add_entry
 
     Does the real work to add a firmware memmap entry.
 
-    :param u64 start:
+    :param start:
         Start of the memory range.
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         End of the memory range (exclusive).
+    :type end: u64
 
-    :param const char \*type:
+    :param type:
         Type of the memory range.
+    :type type: const char \*
 
-    :param struct firmware_map_entry \*entry:
+    :param entry:
         Pre-allocated (either \ :c:func:`kmalloc`\  or bootmem allocator), uninitialised
         entry.
+    :type entry: struct firmware_map_entry \*
 
 .. _`firmware_map_add_entry.description`:
 
@@ -47,8 +51,9 @@ firmware_map_remove_entry
 
     Does the real work to remove a firmware memmap entry.
 
-    :param struct firmware_map_entry \*entry:
+    :param entry:
         removed entry.
+    :type entry: struct firmware_map_entry \*
 
 .. _`firmware_map_remove_entry.description`:
 
@@ -66,17 +71,21 @@ firmware_map_find_entry_in_list
 
     Search memmap entry in a given list.
 
-    :param u64 start:
+    :param start:
         Start of the memory range.
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         End of the memory range (exclusive).
+    :type end: u64
 
-    :param const char \*type:
+    :param type:
         Type of the memory range.
+    :type type: const char \*
 
-    :param struct list_head \*list:
+    :param list:
         In which to find the entry.
+    :type list: struct list_head \*
 
 .. _`firmware_map_find_entry_in_list.description`:
 
@@ -103,14 +112,17 @@ firmware_map_find_entry
 
     Search memmap entry in map_entries.
 
-    :param u64 start:
+    :param start:
         Start of the memory range.
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         End of the memory range (exclusive).
+    :type end: u64
 
-    :param const char \*type:
+    :param type:
         Type of the memory range.
+    :type type: const char \*
 
 .. _`firmware_map_find_entry.description`:
 
@@ -137,14 +149,17 @@ firmware_map_find_entry_bootmem
 
     Search memmap entry in map_entries_bootmem.
 
-    :param u64 start:
+    :param start:
         Start of the memory range.
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         End of the memory range (exclusive).
+    :type end: u64
 
-    :param const char \*type:
+    :param type:
         Type of the memory range.
+    :type type: const char \*
 
 .. _`firmware_map_find_entry_bootmem.description`:
 
@@ -170,14 +185,17 @@ firmware_map_add_hotplug
 
     Adds a firmware mapping entry when we do memory hotplug.
 
-    :param u64 start:
+    :param start:
         Start of the memory range.
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         End of the memory range (exclusive)
+    :type end: u64
 
-    :param const char \*type:
+    :param type:
         Type of the memory range.
+    :type type: const char \*
 
 .. _`firmware_map_add_hotplug.description`:
 
@@ -204,14 +222,17 @@ firmware_map_add_early
 
     Adds a firmware mapping entry.
 
-    :param u64 start:
+    :param start:
         Start of the memory range.
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         End of the memory range.
+    :type end: u64
 
-    :param const char \*type:
+    :param type:
         Type of the memory range.
+    :type type: const char \*
 
 .. _`firmware_map_add_early.description`:
 
@@ -239,14 +260,17 @@ firmware_map_remove
 
     remove a firmware mapping entry
 
-    :param u64 start:
+    :param start:
         Start of the memory range.
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         End of the memory range.
+    :type end: u64
 
-    :param const char \*type:
+    :param type:
         Type of the memory range.
+    :type type: const char \*
 
 .. _`firmware_map_remove.description`:
 

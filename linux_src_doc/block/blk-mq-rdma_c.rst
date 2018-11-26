@@ -10,14 +10,17 @@ blk_mq_rdma_map_queues
 
     provide a default queue mapping for rdma device
 
-    :param struct blk_mq_tag_set \*set:
+    :param set:
         tagset to provide the mapping for
+    :type set: struct blk_mq_tag_set \*
 
-    :param struct ib_device \*dev:
+    :param dev:
         rdma device associated with \ ``set``\ .
+    :type dev: struct ib_device \*
 
-    :param int first_vec:
+    :param first_vec:
         first interrupt vectors to use for queues (usually 0)
+    :type first_vec: int
 
 .. _`blk_mq_rdma_map_queues.description`:
 
@@ -30,7 +33,7 @@ and built queue mapping that maps a queue to the CPUs that have irq affinity
 for the corresponding vector.
 
 In case either the driver passed a \ ``dev``\  with less vectors than
-\ ``set``\ ->nr_hw_queues, or \ ``dev``\  does not provide an affinity mask for a
+\ ``set->nr_hw_queues``\ , or \ ``dev``\  does not provide an affinity mask for a
 vector, we fallback to the naive mapping.
 
 .. This file was automatic generated / don't edit.

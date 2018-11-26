@@ -100,8 +100,9 @@ textsearch_register
 
     register a textsearch module
 
-    :param struct ts_ops \*ops:
+    :param ops:
         operations lookup table
+    :type ops: struct ts_ops \*
 
 .. _`textsearch_register.description`:
 
@@ -125,8 +126,9 @@ textsearch_unregister
 
     unregister a textsearch module
 
-    :param struct ts_ops \*ops:
+    :param ops:
         operations lookup table
+    :type ops: struct ts_ops \*
 
 .. _`textsearch_unregister.description`:
 
@@ -150,17 +152,21 @@ textsearch_find_continuous
 
     search a pattern in continuous/linear data
 
-    :param struct ts_config \*conf:
+    :param conf:
         search configuration
+    :type conf: struct ts_config \*
 
-    :param struct ts_state \*state:
+    :param state:
         search state
+    :type state: struct ts_state \*
 
-    :param const void \*data:
+    :param data:
         data to search in
+    :type data: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of data
+    :type len: unsigned int
 
 .. _`textsearch_find_continuous.description`:
 
@@ -182,20 +188,25 @@ textsearch_prepare
 
     Prepare a search
 
-    :param const char \*algo:
+    :param algo:
         name of search algorithm
+    :type algo: const char \*
 
-    :param const void \*pattern:
+    :param pattern:
         pattern data
+    :type pattern: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of pattern
+    :type len: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation mask
+    :type gfp_mask: gfp_t
 
-    :param int flags:
+    :param flags:
         search flags
+    :type flags: int
 
 .. _`textsearch_prepare.description`:
 
@@ -226,8 +237,9 @@ textsearch_destroy
 
     destroy a search configuration
 
-    :param struct ts_config \*conf:
+    :param conf:
         search configuration
+    :type conf: struct ts_config \*
 
 .. _`textsearch_destroy.description`:
 

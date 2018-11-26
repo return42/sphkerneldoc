@@ -10,23 +10,29 @@ DEVID
 
     have their own test registers and more important their own little problems. Some fixup code to make everybody happy (TM).
 
-    :param  _vend:
+    :param _vend:
         *undescribed*
+    :type _vend: 
 
-    :param  _dev:
+    :param _dev:
         *undescribed*
+    :type _dev: 
 
-    :param  _subvend:
+    :param _subvend:
         *undescribed*
+    :type _subvend: 
 
-    :param  _subdev:
+    :param _subdev:
         *undescribed*
+    :type _subdev: 
 
-    :param  mask:
+    :param mask:
         *undescribed*
+    :type mask: 
 
-    :param  bits:
+    :param bits:
         *undescribed*
+    :type bits: 
 
 .. This file was automatic generated / don't edit.
 

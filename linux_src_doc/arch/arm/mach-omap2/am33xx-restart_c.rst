@@ -10,11 +10,13 @@ am33xx_restart
 
     trigger a software restart of the SoC
 
-    :param enum reboot_mode mode:
+    :param mode:
         the "reboot mode", see arch/arm/kernel/{setup,process}.c
+    :type mode: enum reboot_mode
 
-    :param const char \*cmd:
+    :param cmd:
         passed from the userspace program rebooting the system (if provided)
+    :type cmd: const char \*
 
 .. _`am33xx_restart.description`:
 

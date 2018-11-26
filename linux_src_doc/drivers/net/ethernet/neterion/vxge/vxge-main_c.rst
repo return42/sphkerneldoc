@@ -8,11 +8,13 @@ vxge_xmit
 
 .. c:function:: netdev_tx_t vxge_xmit(struct sk_buff *skb, struct net_device *dev)
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the socket buffer containing the Tx data.
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
 .. _`vxge_xmit.description`:
 
@@ -29,8 +31,9 @@ vxge_set_multicast
 
 .. c:function:: void vxge_set_multicast(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct net_device \*
 
 .. _`vxge_set_multicast.description`:
 
@@ -51,11 +54,13 @@ vxge_set_mac_addr
 
 .. c:function:: int vxge_set_mac_addr(struct net_device *dev, void *p)
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         *undescribed*
+    :type p: void \*
 
 .. _`vxge_set_mac_addr.description`:
 
@@ -73,11 +78,13 @@ vxge_poll_msix
 
     Receive handler when Receive Polling is used.
 
-    :param struct napi_struct \*napi:
+    :param napi:
         *undescribed*
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         Number of packets budgeted to be processed in this iteration.
+    :type budget: int
 
 .. _`vxge_poll_msix.description`:
 
@@ -100,8 +107,9 @@ vxge_netpoll
 
     netpoll event handler entry point
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure.
+    :type dev: struct net_device \*
 
 .. _`vxge_netpoll.description`:
 
@@ -122,8 +130,9 @@ adaptive_coalesce_tx_interrupts
 
     Changes the interrupt coalescing if the interrupts are not within a range
 
-    :param struct vxge_fifo \*fifo:
+    :param fifo:
         pointer to transmit fifo structure
+    :type fifo: struct vxge_fifo \*
 
 .. _`adaptive_coalesce_tx_interrupts.description`:
 
@@ -149,8 +158,9 @@ adaptive_coalesce_rx_interrupts
 
     Changes the interrupt coalescing if the interrupts are not within a range
 
-    :param struct vxge_ring \*ring:
+    :param ring:
         pointer to receive ring structure
+    :type ring: struct vxge_ring \*
 
 .. _`adaptive_coalesce_rx_interrupts.description`:
 
@@ -175,8 +185,9 @@ vxge_open
 
 .. c:function:: int vxge_open(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure.
+    :type dev: struct net_device \*
 
 .. _`vxge_open.description`:
 
@@ -202,8 +213,9 @@ vxge_close
 
 .. c:function:: int vxge_close(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
 .. _`vxge_close.description`:
 
@@ -230,11 +242,13 @@ vxge_change_mtu
 
 .. c:function:: int vxge_change_mtu(struct net_device *dev, int new_mtu)
 
-    :param struct net_device \*dev:
+    :param dev:
         net device pointer.
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         the new MTU size for the device.
+    :type new_mtu: int
 
 .. _`vxge_change_mtu.description`:
 
@@ -251,11 +265,13 @@ vxge_get_stats64
 
 .. c:function:: void vxge_get_stats64(struct net_device *dev, struct rtnl_link_stats64 *net_stats)
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct net_device \*
 
-    :param struct rtnl_link_stats64 \*net_stats:
+    :param net_stats:
         *undescribed*
+    :type net_stats: struct rtnl_link_stats64 \*
 
 .. _`vxge_ioctl`:
 
@@ -264,15 +280,18 @@ vxge_ioctl
 
 .. c:function:: int vxge_ioctl(struct net_device *dev, struct ifreq *rq, int cmd)
 
-    :param struct net_device \*dev:
+    :param dev:
         Device pointer.
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*rq:
+    :param rq:
         *undescribed*
+    :type rq: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         This is used to distinguish between the different commands that
         can be passed to the IOCTL functions.
+    :type cmd: int
 
 .. _`vxge_ioctl.description`:
 
@@ -288,8 +307,9 @@ vxge_tx_watchdog
 
 .. c:function:: void vxge_tx_watchdog(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net device structure
+    :type dev: struct net_device \*
 
 .. _`vxge_tx_watchdog.description`:
 
@@ -307,14 +327,17 @@ vxge_vlan_rx_add_vid
 
 .. c:function:: int vxge_vlan_rx_add_vid(struct net_device *dev, __be16 proto, u16 vid)
 
-    :param struct net_device \*dev:
+    :param dev:
         net device pointer.
+    :type dev: struct net_device \*
 
-    :param __be16 proto:
+    :param proto:
         vlan protocol
+    :type proto: __be16
 
-    :param u16 vid:
+    :param vid:
         vid
+    :type vid: u16
 
 .. _`vxge_vlan_rx_add_vid.description`:
 
@@ -330,14 +353,17 @@ vxge_vlan_rx_kill_vid
 
 .. c:function:: int vxge_vlan_rx_kill_vid(struct net_device *dev, __be16 proto, u16 vid)
 
-    :param struct net_device \*dev:
+    :param dev:
         net device pointer.
+    :type dev: struct net_device \*
 
-    :param __be16 proto:
+    :param proto:
         vlan protocol
+    :type proto: __be16
 
-    :param u16 vid:
+    :param vid:
         vid
+    :type vid: u16
 
 .. _`vxge_vlan_rx_kill_vid.description`:
 
@@ -355,11 +381,13 @@ vxge_pm_suspend
 
     vxge power management suspend entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t state:
+    :param state:
         *undescribed*
+    :type state: pm_message_t
 
 .. _`vxge_pm_resume`:
 
@@ -370,8 +398,9 @@ vxge_pm_resume
 
     vxge power management resume entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`vxge_io_error_detected`:
 
@@ -382,11 +411,13 @@ vxge_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`vxge_io_error_detected.description`:
 
@@ -405,8 +436,9 @@ vxge_io_slot_reset
 
     called after the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`vxge_io_slot_reset.description`:
 
@@ -427,8 +459,9 @@ vxge_io_resume
 
     called when traffic can start flowing again.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`vxge_io_resume.description`:
 
@@ -445,11 +478,13 @@ vxge_probe
 
 .. c:function:: int vxge_probe(struct pci_dev *pdev, const struct pci_device_id *pre)
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         structure containing the PCI related information of the device.
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*pre:
+    :param pre:
         List of PCI devices supported by the driver listed in vxge_id_table.
+    :type pre: const struct pci_device_id \*
 
 .. _`vxge_probe.description`:
 
@@ -475,8 +510,9 @@ vxge_remove
 
     Free the PCI device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         structure containing the PCI related information of the device.
+    :type pdev: struct pci_dev \*
 
 .. _`vxge_remove.description`:
 

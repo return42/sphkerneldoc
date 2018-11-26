@@ -10,11 +10,13 @@ complete_request_key
 
     Complete the construction of a key.
 
-    :param struct key_construction \*cons:
+    :param cons:
         The key construction record.
+    :type cons: struct key_construction \*
 
-    :param int error:
+    :param error:
         The success or failute of the construction.
+    :type error: int
 
 .. _`complete_request_key.description`:
 
@@ -34,26 +36,33 @@ request_key_and_link
 
     Request a key and cache it in a keyring.
 
-    :param struct key_type \*type:
+    :param type:
         The type of key we want.
+    :type type: struct key_type \*
 
-    :param const char \*description:
+    :param description:
         The searchable description of the key.
+    :type description: const char \*
 
-    :param const void \*callout_info:
+    :param callout_info:
         The data to pass to the instantiation upcall (or NULL).
+    :type callout_info: const void \*
 
-    :param size_t callout_len:
+    :param callout_len:
         The length of callout_info.
+    :type callout_len: size_t
 
-    :param void \*aux:
+    :param aux:
         Auxiliary data for the upcall.
+    :type aux: void \*
 
-    :param struct key \*dest_keyring:
+    :param dest_keyring:
         Where to cache the key.
+    :type dest_keyring: struct key \*
 
-    :param unsigned long flags:
+    :param flags:
         Flags to \ :c:func:`key_alloc`\ .
+    :type flags: unsigned long
 
 .. _`request_key_and_link.description`:
 
@@ -86,11 +95,13 @@ wait_for_key_construction
 
     Wait for construction of a key to complete
 
-    :param struct key \*key:
+    :param key:
         The key being waited for.
+    :type key: struct key \*
 
-    :param bool intr:
+    :param intr:
         Whether to wait interruptibly.
+    :type intr: bool
 
 .. _`wait_for_key_construction.description`:
 
@@ -112,14 +123,17 @@ request_key
 
     Request a key and wait for construction
 
-    :param struct key_type \*type:
+    :param type:
         Type of key.
+    :type type: struct key_type \*
 
-    :param const char \*description:
+    :param description:
         The searchable description of the key.
+    :type description: const char \*
 
-    :param const char \*callout_info:
+    :param callout_info:
         The data to pass to the instantiation upcall (or NULL).
+    :type callout_info: const char \*
 
 .. _`request_key.description`:
 
@@ -143,20 +157,25 @@ request_key_with_auxdata
 
     Request a key with auxiliary data for the upcaller
 
-    :param struct key_type \*type:
+    :param type:
         The type of key we want.
+    :type type: struct key_type \*
 
-    :param const char \*description:
+    :param description:
         The searchable description of the key.
+    :type description: const char \*
 
-    :param const void \*callout_info:
+    :param callout_info:
         The data to pass to the instantiation upcall (or NULL).
+    :type callout_info: const void \*
 
-    :param size_t callout_len:
+    :param callout_len:
         The length of callout_info.
+    :type callout_len: size_t
 
-    :param void \*aux:
+    :param aux:
         Auxiliary data for the upcall.
+    :type aux: void \*
 
 .. _`request_key_with_auxdata.description`:
 

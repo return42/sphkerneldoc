@@ -10,11 +10,13 @@ artop62x0_pre_reset
 
     probe begin
 
-    :param struct ata_link \*link:
+    :param link:
         link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`artop62x0_pre_reset.description`:
 
@@ -32,8 +34,9 @@ artop6260_cable_detect
 
     identify cable type
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port
+    :type ap: struct ata_port \*
 
 .. _`artop6260_cable_detect.description`:
 
@@ -51,14 +54,17 @@ artop6210_load_piomode
 
     Load a set of PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device
+    :type adev: struct ata_device \*
 
-    :param unsigned int pio:
+    :param pio:
         PIO mode
+    :type pio: unsigned int
 
 .. _`artop6210_load_piomode.description`:
 
@@ -85,11 +91,13 @@ artop6210_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device we are configuring
+    :type adev: struct ata_device \*
 
 .. _`artop6210_set_piomode.description`:
 
@@ -117,14 +125,17 @@ artop6260_load_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device we are configuring
+    :type adev: struct ata_device \*
 
-    :param unsigned int pio:
+    :param pio:
         PIO mode
+    :type pio: unsigned int
 
 .. _`artop6260_load_piomode.description`:
 
@@ -150,11 +161,13 @@ artop6260_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device we are configuring
+    :type adev: struct ata_device \*
 
 .. _`artop6260_set_piomode.description`:
 
@@ -182,11 +195,13 @@ artop6210_set_dmamode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device whose timings we are configuring
+    :type adev: struct ata_device \*
 
 .. _`artop6210_set_dmamode.description`:
 
@@ -211,11 +226,13 @@ artop6260_set_dmamode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device we are configuring
+    :type adev: struct ata_device \*
 
 .. _`artop6260_set_dmamode.description`:
 
@@ -241,8 +258,9 @@ artop6210_qc_defer
 
     implement serialization
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`artop6210_qc_defer.description`:
 
@@ -260,11 +278,13 @@ artop_init_one
 
     Register ARTOP ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct pci_device_id \*
 
 .. _`artop_init_one.description`:
 

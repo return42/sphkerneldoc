@@ -10,14 +10,17 @@ set_hw_cap
 
     \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  setIt A flag indication if the capability should be set (TRUE) or reset (FALSE). \ ``param``\  cap Which capability to set/reset.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param bool setIt:
+    :param setIt:
         *undescribed*
+    :type setIt: bool
 
-    :param enum phm_platform_caps cap:
+    :param cap:
         *undescribed*
+    :type cap: enum phm_platform_caps
 
 .. _`set_platform_caps`:
 
@@ -28,11 +31,13 @@ set_platform_caps
 
     \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  powerplay_caps the bit array (from BIOS) of capability bits. \ ``exception``\  the current implementation always returns 1.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param uint32_t powerplay_caps:
+    :param powerplay_caps:
         *undescribed*
+    :type powerplay_caps: uint32_t
 
 .. _`get_powerplay_table`:
 
@@ -41,8 +46,9 @@ get_powerplay_table
 
 .. c:function:: const void *get_powerplay_table(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`get_platform_power_management_table`:
 
@@ -53,11 +59,13 @@ get_platform_power_management_table
 
     Initialize Platform Power Management Parameter table \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  atom_ppm_table Pointer to PPM table in VBIOS
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param ATOM_Tonga_PPM_Table \*atom_ppm_table:
+    :param atom_ppm_table:
         *undescribed*
+    :type atom_ppm_table: ATOM_Tonga_PPM_Table \*
 
 .. _`init_dpm_2_parameters`:
 
@@ -68,11 +76,13 @@ init_dpm_2_parameters
 
     Initialize TDP limits for DPM2 \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  powerplay_table Pointer to the PowerPlay Table.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param const ATOM_Tonga_POWERPLAYTABLE \*powerplay_table:
+    :param powerplay_table:
         *undescribed*
+    :type powerplay_table: const ATOM_Tonga_POWERPLAYTABLE \*
 
 .. _`init_clock_voltage_dependency`:
 
@@ -83,11 +93,13 @@ init_clock_voltage_dependency
 
     Initialize clock voltage dependency \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  powerplay_table Pointer to the PowerPlay Table.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param const ATOM_Tonga_POWERPLAYTABLE \*powerplay_table:
+    :param powerplay_table:
         *undescribed*
+    :type powerplay_table: const ATOM_Tonga_POWERPLAYTABLE \*
 
 .. _`init_thermal_controller`:
 
@@ -98,11 +110,13 @@ init_thermal_controller
 
     Inspect the PowerPlay table for obvious signs of corruption. \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  powerplay_table Pointer to the PowerPlay Table. \ ``exception``\  This implementation always returns 1.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param const ATOM_Tonga_POWERPLAYTABLE \*powerplay_table:
+    :param powerplay_table:
         *undescribed*
+    :type powerplay_table: const ATOM_Tonga_POWERPLAYTABLE \*
 
 .. _`check_powerplay_tables`:
 
@@ -113,11 +127,13 @@ check_powerplay_tables
 
     Inspect the PowerPlay table for obvious signs of corruption. \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  powerplay_table Pointer to the PowerPlay Table. \ ``exception``\  2 if the powerplay table is incorrect.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param const ATOM_Tonga_POWERPLAYTABLE \*powerplay_table:
+    :param powerplay_table:
         *undescribed*
+    :type powerplay_table: const ATOM_Tonga_POWERPLAYTABLE \*
 
 .. _`make_classification_flags`:
 
@@ -126,14 +142,17 @@ make_classification_flags
 
 .. c:function:: uint32_t make_classification_flags(struct pp_hwmgr *hwmgr, uint16_t classification, uint16_t classification2)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param uint16_t classification:
+    :param classification:
         *undescribed*
+    :type classification: uint16_t
 
-    :param uint16_t classification2:
+    :param classification2:
         *undescribed*
+    :type classification2: uint16_t
 
 .. _`get_powerplay_table_entry_v1_0`:
 
@@ -144,14 +163,17 @@ get_powerplay_table_entry_v1_0
 
     This function is called by the hardware back-end. \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  entry_index The index of the entry to be extracted from the table. \ ``param``\  power_state The address of the PowerState instance being created. \ ``return``\  -1 if the entry cannot be retrieved.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param uint32_t entry_index:
+    :param entry_index:
         *undescribed*
+    :type entry_index: uint32_t
 
-    :param struct pp_power_state \*power_state:
+    :param power_state:
         *undescribed*
+    :type power_state: struct pp_power_state \*
 
     :param int (\*call_back_func)(struct pp_hwmgr \*, void \*, struct pp_power_state \*, void \*, uint32_t):
         *undescribed*

@@ -10,11 +10,13 @@ pm8001_find_tag
 
     from sas task to find out  tag that belongs to this task
 
-    :param struct sas_task \*task:
+    :param task:
         the task sent to the LLDD
+    :type task: struct sas_task \*
 
-    :param u32 \*tag:
+    :param tag:
         the found tag associated with the task
+    :type tag: u32 \*
 
 .. _`pm8001_tag_free`:
 
@@ -25,11 +27,13 @@ pm8001_tag_free
 
     free the no more needed tag
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba struct
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 tag:
+    :param tag:
         the found tag associated with the task
+    :type tag: u32
 
 .. _`pm8001_tag_alloc`:
 
@@ -40,11 +44,13 @@ pm8001_tag_alloc
 
     allocate a empty tag for task used.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba struct
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 \*tag_out:
+    :param tag_out:
         the found empty tag .
+    :type tag_out: u32 \*
 
 .. _`pm8001_find_ha_by_dev`:
 
@@ -55,8 +61,9 @@ pm8001_find_ha_by_dev
 
     from domain device which come from sas layer to find out our hba struct.
 
-    :param struct domain_device \*dev:
+    :param dev:
         the domain device which from sas layer.
+    :type dev: struct domain_device \*
 
 .. _`pm8001_phy_control`:
 
@@ -67,14 +74,17 @@ pm8001_phy_control
 
     this function should be registered to sas_domain_function_template to provide libsas used, note: this is just control the HBA phy rather than other expander phy if you want control other phy, you should use SMP command.
 
-    :param struct asd_sas_phy \*sas_phy:
+    :param sas_phy:
         which phy in HBA phys.
+    :type sas_phy: struct asd_sas_phy \*
 
-    :param enum phy_func func:
+    :param func:
         the operation.
+    :type func: enum phy_func
 
-    :param void \*funcdata:
+    :param funcdata:
         always NULL.
+    :type funcdata: void \*
 
 .. _`pm8001_scan_start`:
 
@@ -85,8 +95,9 @@ pm8001_scan_start
 
     we should enable all HBA phys by sending the phy_start command to HBA.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         the scsi host data.
+    :type shost: struct Scsi_Host \*
 
 .. _`pm8001_task_prep_smp`:
 
@@ -97,11 +108,13 @@ pm8001_task_prep_smp
 
     the dispatcher function, prepare data for smp task
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_ccb_info \*ccb:
+    :param ccb:
         the ccb which attached to smp task
+    :type ccb: struct pm8001_ccb_info \*
 
 .. _`pm8001_task_prep_ata`:
 
@@ -112,11 +125,13 @@ pm8001_task_prep_ata
 
     the dispatcher function, prepare data for sata task
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_ccb_info \*ccb:
+    :param ccb:
         the ccb which attached to sata task
+    :type ccb: struct pm8001_ccb_info \*
 
 .. _`pm8001_task_prep_ssp_tm`:
 
@@ -127,14 +142,17 @@ pm8001_task_prep_ssp_tm
 
     the dispatcher function, prepare task management data
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_ccb_info \*ccb:
+    :param ccb:
         the ccb which attached to TM
+    :type ccb: struct pm8001_ccb_info \*
 
-    :param struct pm8001_tmf_task \*tmf:
+    :param tmf:
         the task management IU
+    :type tmf: struct pm8001_tmf_task \*
 
 .. _`pm8001_task_prep_ssp`:
 
@@ -145,11 +163,13 @@ pm8001_task_prep_ssp
 
     the dispatcher function,prepare ssp data for ssp task
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_ccb_info \*ccb:
+    :param ccb:
         the ccb which attached to ssp task
+    :type ccb: struct pm8001_ccb_info \*
 
 .. _`dev_is_gone`:
 
@@ -160,8 +180,9 @@ DEV_IS_GONE
 
     queue the task(ssp, smp && ata) to the hardware.
 
-    :param  pm8001_dev:
+    :param pm8001_dev:
         *undescribed*
+    :type pm8001_dev: 
 
 .. _`pm8001_queue_command`:
 
@@ -172,11 +193,13 @@ pm8001_queue_command
 
     register for upper layer used, all IO commands sent to HBA are from this interface.
 
-    :param struct sas_task \*task:
+    :param task:
         the task to be execute.
+    :type task: struct sas_task \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         gfp_flags
+    :type gfp_flags: gfp_t
 
 .. _`pm8001_ccb_task_free`:
 
@@ -187,17 +210,21 @@ pm8001_ccb_task_free
 
     free the sg for ssp and smp command, free the ccb.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct sas_task \*task:
+    :param task:
         the task to be free.
+    :type task: struct sas_task \*
 
-    :param struct pm8001_ccb_info \*ccb:
+    :param ccb:
         the ccb which attached to ssp task
+    :type ccb: struct pm8001_ccb_info \*
 
-    :param u32 ccb_idx:
+    :param ccb_idx:
         ccb index.
+    :type ccb_idx: u32
 
 .. _`pm8001_find_dev`:
 
@@ -208,11 +235,13 @@ pm8001_find_dev
 
     find a matching pm8001_device
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 device_id:
+    :param device_id:
         *undescribed*
+    :type device_id: u32
 
 .. _`pm8001_dev_found_notify`:
 
@@ -223,8 +252,9 @@ pm8001_dev_found_notify
 
     libsas notify a device is found.
 
-    :param struct domain_device \*dev:
+    :param dev:
         the device structure which sas layer used.
+    :type dev: struct domain_device \*
 
 .. _`pm8001_dev_found_notify.description`:
 
@@ -248,17 +278,21 @@ pm8001_exec_internal_tmf_task
 
     execute some task management commands.
 
-    :param struct domain_device \*dev:
+    :param dev:
         the wanted device.
+    :type dev: struct domain_device \*
 
-    :param void \*parameter:
+    :param parameter:
         ssp task parameter.
+    :type parameter: void \*
 
-    :param u32 para_len:
+    :param para_len:
         para_len.
+    :type para_len: u32
 
-    :param struct pm8001_tmf_task \*tmf:
+    :param tmf:
         which task management wanted to be take.
+    :type tmf: struct pm8001_tmf_task \*
 
 .. _`pm8001_exec_internal_tmf_task.description`:
 
@@ -278,8 +312,9 @@ pm8001_dev_gone_notify
 
     see the comments for "pm8001_dev_found_notify"
 
-    :param struct domain_device \*dev:
+    :param dev:
         the device structure which sas layer used.
+    :type dev: struct domain_device \*
 
 .. _`pm8001_i_t_nexus_reset`:
 
@@ -290,8 +325,9 @@ pm8001_I_T_nexus_reset
 
     SSP (type 1) , only for RECOVERY
 
-    :param struct domain_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct domain_device \*
 
 .. This file was automatic generated / don't edit.
 

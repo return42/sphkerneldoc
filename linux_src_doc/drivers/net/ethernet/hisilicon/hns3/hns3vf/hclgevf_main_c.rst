@@ -10,11 +10,13 @@ hclgevf_get_channels
 
     Get the current channels enabled and max supported.
 
-    :param struct hnae3_handle \*handle:
+    :param handle:
         hardware information for network interface
+    :type handle: struct hnae3_handle \*
 
-    :param struct ethtool_channels \*ch:
+    :param ch:
         ethtool channels structure
+    :type ch: struct ethtool_channels \*
 
 .. _`hclgevf_get_channels.description`:
 

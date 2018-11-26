@@ -10,8 +10,9 @@ hwicap_type_1_read
 
     Generates a Type 1 read packet header.
 
-    :param u32 reg:
+    :param reg:
         is the address of the register to be read back.
+    :type reg: u32
 
 .. _`hwicap_type_1_read.return`:
 
@@ -32,8 +33,9 @@ hwicap_type_1_write
 
     Generates a Type 1 write packet header
 
-    :param u32 reg:
+    :param reg:
         is the address of the register to be read back.
+    :type reg: u32
 
 .. _`hwicap_type_1_write.return`:
 

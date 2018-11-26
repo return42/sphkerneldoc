@@ -71,8 +71,9 @@ vpu_dec_init
 
     init decoder instance and allocate required resource in VPU.
 
-    :param struct vdec_vpu_inst \*vpu:
+    :param vpu:
         instance for vdec_vpu_inst
+    :type vpu: struct vdec_vpu_inst \*
 
 .. _`vpu_dec_start`:
 
@@ -83,14 +84,17 @@ vpu_dec_start
 
     start decoding, basically the function will be invoked once every frame.
 
-    :param struct vdec_vpu_inst \*vpu:
+    :param vpu:
         instance for vdec_vpu_inst
+    :type vpu: struct vdec_vpu_inst \*
 
-    :param uint32_t \*data:
+    :param data:
         meta data to pass bitstream info to VPU decoder
+    :type data: uint32_t \*
 
-    :param unsigned int len:
+    :param len:
         meta data length
+    :type len: unsigned int
 
 .. _`vpu_dec_end`:
 
@@ -101,8 +105,9 @@ vpu_dec_end
 
     end decoding, basically the function will be invoked once when HW decoding done interrupt received successfully. The decoder in VPU will continute to do referene frame management and check if there is a new decoded frame available to display.
 
-    :param struct vdec_vpu_inst \*vpu:
+    :param vpu:
         instance for vdec_vpu_inst
+    :type vpu: struct vdec_vpu_inst \*
 
 .. _`vpu_dec_deinit`:
 
@@ -113,8 +118,9 @@ vpu_dec_deinit
 
     deinit decoder instance and resource freed in VPU.
 
-    :param struct vdec_vpu_inst \*vpu:
+    :param vpu:
         instance for vdec_vpu_inst
+    :type vpu: struct vdec_vpu_inst \*
 
 .. _`vpu_dec_reset`:
 
@@ -125,8 +131,9 @@ vpu_dec_reset
 
     reset decoder, use for flush decoder when end of stream or seek. Remainig non displayed frame will be pushed to display.
 
-    :param struct vdec_vpu_inst \*vpu:
+    :param vpu:
         instance for vdec_vpu_inst
+    :type vpu: struct vdec_vpu_inst \*
 
 .. _`vpu_dec_ipi_handler`:
 
@@ -137,14 +144,17 @@ vpu_dec_ipi_handler
 
     Handler for VPU ipi message.
 
-    :param void \*data:
+    :param data:
         ipi message
+    :type data: void \*
 
-    :param unsigned int len:
+    :param len:
         length of ipi message
+    :type len: unsigned int
 
-    :param void \*priv:
+    :param priv:
         callback private data which is passed by decoder when register.
+    :type priv: void \*
 
 .. This file was automatic generated / don't edit.
 

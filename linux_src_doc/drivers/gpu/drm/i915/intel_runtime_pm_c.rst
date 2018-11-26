@@ -28,11 +28,13 @@ __intel_display_power_is_enabled
 
     unlocked check for a power domain
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum intel_display_power_domain domain:
+    :param domain:
         power domain to check
+    :type domain: enum intel_display_power_domain
 
 .. _`__intel_display_power_is_enabled.description`:
 
@@ -59,11 +61,13 @@ intel_display_power_is_enabled
 
     check for a power domain
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum intel_display_power_domain domain:
+    :param domain:
         power domain to check
+    :type domain: enum intel_display_power_domain
 
 .. _`intel_display_power_is_enabled.description`:
 
@@ -86,31 +90,6 @@ Return
 
 True when the power domain is enabled, false otherwise.
 
-.. _`intel_display_set_init_power`:
-
-intel_display_set_init_power
-============================
-
-.. c:function:: void intel_display_set_init_power(struct drm_i915_private *dev_priv, bool enable)
-
-    set the initial power domain state
-
-    :param struct drm_i915_private \*dev_priv:
-        i915 device instance
-
-    :param bool enable:
-        whether to enable or disable the initial power domain state
-
-.. _`intel_display_set_init_power.description`:
-
-Description
------------
-
-For simplicity our driver load/unload and system suspend/resume code assumes
-that all power domains are always enabled. This functions controls the state
-of this little hack. While the initial power domain state is enabled runtime
-pm is effectively disabled.
-
 .. _`gen9_set_dc_state`:
 
 gen9_set_dc_state
@@ -120,15 +99,17 @@ gen9_set_dc_state
 
     set target display C power state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param uint32_t state:
+    :param state:
         target DC power state
         - DC_STATE_DISABLE
         - DC_STATE_EN_UPTO_DC5
         - DC_STATE_EN_UPTO_DC6
         - DC_STATE_EN_DC9
+    :type state: uint32_t
 
 .. _`gen9_set_dc_state.description`:
 
@@ -158,11 +139,13 @@ intel_display_power_get
 
     grab a power domain reference
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum intel_display_power_domain domain:
+    :param domain:
         power domain to reference
+    :type domain: enum intel_display_power_domain
 
 .. _`intel_display_power_get.description`:
 
@@ -185,11 +168,13 @@ intel_display_power_get_if_enabled
 
     grab a reference for an enabled display power domain
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum intel_display_power_domain domain:
+    :param domain:
         power domain to reference
+    :type domain: enum intel_display_power_domain
 
 .. _`intel_display_power_get_if_enabled.description`:
 
@@ -212,11 +197,13 @@ intel_display_power_put
 
     release a power domain reference
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum intel_display_power_domain domain:
+    :param domain:
         power domain to reference
+    :type domain: enum intel_display_power_domain
 
 .. _`intel_display_power_put.description`:
 
@@ -236,8 +223,9 @@ intel_power_domains_init
 
     initializes the power domain structures
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_power_domains_init.description`:
 
@@ -247,26 +235,25 @@ Description
 Initializes the power domain structures for \ ``dev_priv``\  depending upon the
 supported platform.
 
-.. _`intel_power_domains_fini`:
+.. _`intel_power_domains_cleanup`:
 
-intel_power_domains_fini
-========================
+intel_power_domains_cleanup
+===========================
 
-.. c:function:: void intel_power_domains_fini(struct drm_i915_private *dev_priv)
+.. c:function:: void intel_power_domains_cleanup(struct drm_i915_private *dev_priv)
 
-    finalizes the power domain structures
+    clean up power domains resources
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-.. _`intel_power_domains_fini.description`:
+.. _`intel_power_domains_cleanup.description`:
 
 Description
 -----------
 
-Finalizes the power domain structures for \ ``dev_priv``\  depending upon the
-supported platform. This function also disables runtime pm and ensures that
-the device stays powered up so that the driver can be reloaded.
+Release any resources acquired by \ :c:func:`intel_power_domains_init`\ 
 
 .. _`intel_power_domains_init_hw`:
 
@@ -277,11 +264,13 @@ intel_power_domains_init_hw
 
     initialize hardware power domain state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param bool resume:
+    :param resume:
         Called from resume code paths or not
+    :type resume: bool
 
 .. _`intel_power_domains_init_hw.description`:
 
@@ -290,21 +279,103 @@ Description
 
 This function initializes the hardware power domain state and enables all
 power wells belonging to the INIT power domain. Power wells in other
-domains (and not in the INIT domain) are referenced or disabled during the
-modeset state HW readout. After that the reference count of each power well
-must match its HW enabled state, see \ :c:func:`intel_power_domains_verify_state`\ .
+domains (and not in the INIT domain) are referenced or disabled by
+\ :c:func:`intel_modeset_readout_hw_state`\ . After that the reference count of each
+power well must match its HW enabled state, see
+\ :c:func:`intel_power_domains_verify_state`\ .
+
+It will return with power domains disabled (to be enabled later by
+\ :c:func:`intel_power_domains_enable`\ ) and must be paired with
+\ :c:func:`intel_power_domains_fini_hw`\ .
+
+.. _`intel_power_domains_fini_hw`:
+
+intel_power_domains_fini_hw
+===========================
+
+.. c:function:: void intel_power_domains_fini_hw(struct drm_i915_private *dev_priv)
+
+    deinitialize hw power domain state
+
+    :param dev_priv:
+        i915 device instance
+    :type dev_priv: struct drm_i915_private \*
+
+.. _`intel_power_domains_fini_hw.description`:
+
+Description
+-----------
+
+De-initializes the display power domain HW state. It also ensures that the
+device stays powered up so that the driver can be reloaded.
+
+It must be called with power domains already disabled (after a call to
+\ :c:func:`intel_power_domains_disable`\ ) and must be paired with
+\ :c:func:`intel_power_domains_init_hw`\ .
+
+.. _`intel_power_domains_enable`:
+
+intel_power_domains_enable
+==========================
+
+.. c:function:: void intel_power_domains_enable(struct drm_i915_private *dev_priv)
+
+    enable toggling of display power wells
+
+    :param dev_priv:
+        i915 device instance
+    :type dev_priv: struct drm_i915_private \*
+
+.. _`intel_power_domains_enable.description`:
+
+Description
+-----------
+
+Enable the ondemand enabling/disabling of the display power wells. Note that
+power wells not belonging to POWER_DOMAIN_INIT are allowed to be toggled
+only at specific points of the display modeset sequence, thus they are not
+affected by the \ :c:func:`intel_power_domains_enable`\ /disable() calls. The purpose
+of these function is to keep the rest of power wells enabled until the end
+of display HW readout (which will acquire the power references reflecting
+the current HW state).
+
+.. _`intel_power_domains_disable`:
+
+intel_power_domains_disable
+===========================
+
+.. c:function:: void intel_power_domains_disable(struct drm_i915_private *dev_priv)
+
+    disable toggling of display power wells
+
+    :param dev_priv:
+        i915 device instance
+    :type dev_priv: struct drm_i915_private \*
+
+.. _`intel_power_domains_disable.description`:
+
+Description
+-----------
+
+Disable the ondemand enabling/disabling of the display power wells. See
+\ :c:func:`intel_power_domains_enable`\  for which power wells this call controls.
 
 .. _`intel_power_domains_suspend`:
 
 intel_power_domains_suspend
 ===========================
 
-.. c:function:: void intel_power_domains_suspend(struct drm_i915_private *dev_priv)
+.. c:function:: void intel_power_domains_suspend(struct drm_i915_private *dev_priv, enum i915_drm_suspend_mode suspend_mode)
 
     suspend power domain state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
+
+    :param suspend_mode:
+        specifies the target suspend state (idle, mem, hibernation)
+    :type suspend_mode: enum i915_drm_suspend_mode
 
 .. _`intel_power_domains_suspend.description`:
 
@@ -312,7 +383,34 @@ Description
 -----------
 
 This function prepares the hardware power domain state before entering
-system suspend. It must be paired with \ :c:func:`intel_power_domains_init_hw`\ .
+system suspend.
+
+It must be called with power domains already disabled (after a call to
+\ :c:func:`intel_power_domains_disable`\ ) and paired with \ :c:func:`intel_power_domains_resume`\ .
+
+.. _`intel_power_domains_resume`:
+
+intel_power_domains_resume
+==========================
+
+.. c:function:: void intel_power_domains_resume(struct drm_i915_private *dev_priv)
+
+    resume power domain state
+
+    :param dev_priv:
+        i915 device instance
+    :type dev_priv: struct drm_i915_private \*
+
+.. _`intel_power_domains_resume.description`:
+
+Description
+-----------
+
+This function resume the hardware power domain state during system resume.
+
+It will return with power domain support disabled (to be enabled later by
+\ :c:func:`intel_power_domains_enable`\ ) and must be paired with
+\ :c:func:`intel_power_domains_suspend`\ .
 
 .. _`intel_power_domains_verify_state`:
 
@@ -323,8 +421,9 @@ intel_power_domains_verify_state
 
     verify the HW/SW state for all power wells
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_power_domains_verify_state.description`:
 
@@ -346,8 +445,9 @@ intel_runtime_pm_get
 
     grab a runtime pm reference
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_runtime_pm_get.description`:
 
@@ -369,8 +469,9 @@ intel_runtime_pm_get_if_in_use
 
     grab a runtime pm reference if device in use
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_runtime_pm_get_if_in_use.description`:
 
@@ -400,8 +501,9 @@ intel_runtime_pm_get_noresume
 
     grab a runtime pm reference
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_runtime_pm_get_noresume.description`:
 
@@ -430,8 +532,9 @@ intel_runtime_pm_put
 
     release a runtime pm reference
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_runtime_pm_put.description`:
 
@@ -451,8 +554,9 @@ intel_runtime_pm_enable
 
     enable runtime pm
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_runtime_pm_enable.description`:
 
@@ -462,8 +566,8 @@ Description
 This function enables runtime pm at the end of the driver load sequence.
 
 Note that this function does currently not enable runtime pm for the
-subordinate display power domains. That is only done on the first modeset
-using \ :c:func:`intel_display_set_init_power`\ .
+subordinate display power domains. That is done by
+\ :c:func:`intel_power_domains_enable`\ .
 
 .. This file was automatic generated / don't edit.
 

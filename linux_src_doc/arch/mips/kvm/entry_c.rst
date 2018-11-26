@@ -10,8 +10,9 @@ kvm_mips_entry_setup
 
     Perform global setup for entry code.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kvm_mips_entry_setup.description`:
 
@@ -37,11 +38,13 @@ build_set_exc_base
 
     Assemble code to write exception base address.
 
-    :param u32 \*\*p:
+    :param p:
         Code buffer pointer.
+    :type p: u32 \*\*
 
-    :param unsigned int reg:
+    :param reg:
         Source register (generated code may set WG bit in \ ``reg``\ ).
+    :type reg: unsigned int
 
 .. _`build_set_exc_base.description`:
 
@@ -60,8 +63,9 @@ kvm_mips_build_vcpu_run
 
     Assemble function to start running a guest VCPU.
 
-    :param void \*addr:
+    :param addr:
         Address to start writing code.
+    :type addr: void \*
 
 .. _`kvm_mips_build_vcpu_run.description`:
 
@@ -97,8 +101,9 @@ kvm_mips_build_enter_guest
 
     Assemble code to resume guest execution.
 
-    :param void \*addr:
+    :param addr:
         Address to start writing code.
+    :type addr: void \*
 
 .. _`kvm_mips_build_enter_guest.description`:
 
@@ -125,11 +130,13 @@ kvm_mips_build_tlb_refill_exception
 
     Assemble TLB refill handler.
 
-    :param void \*addr:
+    :param addr:
         Address to start writing code.
+    :type addr: void \*
 
-    :param void \*handler:
+    :param handler:
         Address of common handler (within range of \ ``addr``\ ).
+    :type handler: void \*
 
 .. _`kvm_mips_build_tlb_refill_exception.description`:
 
@@ -154,11 +161,13 @@ kvm_mips_build_exception
 
     Assemble first level guest exception handler.
 
-    :param void \*addr:
+    :param addr:
         Address to start writing code.
+    :type addr: void \*
 
-    :param void \*handler:
+    :param handler:
         Address of common handler (within range of \ ``addr``\ ).
+    :type handler: void \*
 
 .. _`kvm_mips_build_exception.description`:
 
@@ -184,8 +193,9 @@ kvm_mips_build_exit
 
     Assemble common guest exit handler.
 
-    :param void \*addr:
+    :param addr:
         Address to start writing code.
+    :type addr: void \*
 
 .. _`kvm_mips_build_exit.description`:
 
@@ -213,8 +223,9 @@ kvm_mips_build_ret_from_exit
 
     Assemble guest exit return handler.
 
-    :param void \*addr:
+    :param addr:
         Address to start writing code.
+    :type addr: void \*
 
 .. _`kvm_mips_build_ret_from_exit.description`:
 
@@ -240,8 +251,9 @@ kvm_mips_build_ret_to_guest
 
     Assemble code to return to the guest.
 
-    :param void \*addr:
+    :param addr:
         Address to start writing code.
+    :type addr: void \*
 
 .. _`kvm_mips_build_ret_to_guest.description`:
 
@@ -267,8 +279,9 @@ kvm_mips_build_ret_to_host
 
     Assemble code to return to the host.
 
-    :param void \*addr:
+    :param addr:
         Address to start writing code.
+    :type addr: void \*
 
 .. _`kvm_mips_build_ret_to_host.description`:
 

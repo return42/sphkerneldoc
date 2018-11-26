@@ -10,8 +10,9 @@ amba_driver_register
 
     register an AMBA device driver
 
-    :param struct amba_driver \*drv:
+    :param drv:
         amba device driver structure
+    :type drv: struct amba_driver \*
 
 .. _`amba_driver_register.description`:
 
@@ -31,8 +32,9 @@ amba_driver_unregister
 
     remove an AMBA device driver
 
-    :param struct amba_driver \*drv:
+    :param drv:
         AMBA device driver structure to remove
+    :type drv: struct amba_driver \*
 
 .. _`amba_driver_unregister.description`:
 
@@ -52,11 +54,13 @@ amba_device_add
 
     add a previously allocated AMBA device structure
 
-    :param struct amba_device \*dev:
+    :param dev:
         AMBA device allocated by amba_device_alloc
+    :type dev: struct amba_device \*
 
-    :param struct resource \*parent:
+    :param parent:
         resource parent for this devices resources
+    :type parent: struct resource \*
 
 .. _`amba_device_add.description`:
 
@@ -76,14 +80,17 @@ amba_device_alloc
 
     allocate an AMBA device
 
-    :param const char \*name:
+    :param name:
         sysfs name of the AMBA device
+    :type name: const char \*
 
-    :param resource_size_t base:
+    :param base:
         base of AMBA device
+    :type base: resource_size_t
 
-    :param size_t size:
+    :param size:
         size of AMBA device
+    :type size: size_t
 
 .. _`amba_device_alloc.description`:
 
@@ -102,11 +109,13 @@ amba_device_register
 
     register an AMBA device
 
-    :param struct amba_device \*dev:
+    :param dev:
         AMBA device to register
+    :type dev: struct amba_device \*
 
-    :param struct resource \*parent:
+    :param parent:
         parent memory resource
+    :type parent: struct resource \*
 
 .. _`amba_device_register.description`:
 
@@ -126,8 +135,9 @@ amba_device_put
 
     put an AMBA device
 
-    :param struct amba_device \*dev:
+    :param dev:
         AMBA device to put
+    :type dev: struct amba_device \*
 
 .. _`amba_device_unregister`:
 
@@ -138,8 +148,9 @@ amba_device_unregister
 
     unregister an AMBA device
 
-    :param struct amba_device \*dev:
+    :param dev:
         AMBA device to remove
+    :type dev: struct amba_device \*
 
 .. _`amba_device_unregister.description`:
 
@@ -162,17 +173,21 @@ amba_find_device
 
     locate an AMBA device given a bus id
 
-    :param const char \*busid:
+    :param busid:
         bus id for device (or NULL)
+    :type busid: const char \*
 
-    :param struct device \*parent:
+    :param parent:
         parent device (or NULL)
+    :type parent: struct device \*
 
-    :param unsigned int id:
+    :param id:
         peripheral ID (or 0)
+    :type id: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         peripheral ID mask (or 0)
+    :type mask: unsigned int
 
 .. _`amba_find_device.description`:
 
@@ -200,11 +215,13 @@ amba_request_regions
 
     request all mem regions associated with device
 
-    :param struct amba_device \*dev:
+    :param dev:
         amba_device structure for device
+    :type dev: struct amba_device \*
 
-    :param const char \*name:
+    :param name:
         name, or NULL to use driver name
+    :type name: const char \*
 
 .. _`amba_release_regions`:
 
@@ -215,8 +232,9 @@ amba_release_regions
 
     release mem regions associated with device
 
-    :param struct amba_device \*dev:
+    :param dev:
         amba_device structure for device
+    :type dev: struct amba_device \*
 
 .. _`amba_release_regions.description`:
 

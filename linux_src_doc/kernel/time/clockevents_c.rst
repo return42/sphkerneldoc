@@ -10,11 +10,13 @@ clockevent_delta2ns
 
     Convert a latch value (device ticks) to nanoseconds
 
-    :param unsigned long latch:
+    :param latch:
         value to convert
+    :type latch: unsigned long
 
-    :param struct clock_event_device \*evt:
+    :param evt:
         pointer to clock event device descriptor
+    :type evt: struct clock_event_device \*
 
 .. _`clockevent_delta2ns.description`:
 
@@ -32,11 +34,13 @@ clockevents_switch_state
 
     set the operating state of a clock event device
 
-    :param struct clock_event_device \*dev:
+    :param dev:
         device to modify
+    :type dev: struct clock_event_device \*
 
-    :param enum clock_event_state state:
+    :param state:
         new state
+    :type state: enum clock_event_state
 
 .. _`clockevents_switch_state.description`:
 
@@ -54,8 +58,9 @@ clockevents_shutdown
 
     shutdown the device and clear next_event
 
-    :param struct clock_event_device \*dev:
+    :param dev:
         device to shutdown
+    :type dev: struct clock_event_device \*
 
 .. _`clockevents_tick_resume`:
 
@@ -66,8 +71,9 @@ clockevents_tick_resume
 
     Resume the tick device before using it again
 
-    :param struct clock_event_device \*dev:
+    :param dev:
         device to resume
+    :type dev: struct clock_event_device \*
 
 .. _`clockevents_increase_min_delta`:
 
@@ -78,8 +84,9 @@ clockevents_increase_min_delta
 
     raise minimum delta of a clock event device
 
-    :param struct clock_event_device \*dev:
+    :param dev:
         device to increase the minimum delta
+    :type dev: struct clock_event_device \*
 
 .. _`clockevents_increase_min_delta.description`:
 
@@ -97,8 +104,9 @@ clockevents_program_min_delta
 
     Set clock event device to the minimum delay.
 
-    :param struct clock_event_device \*dev:
+    :param dev:
         device to program
+    :type dev: struct clock_event_device \*
 
 .. _`clockevents_program_min_delta.description`:
 
@@ -116,8 +124,9 @@ clockevents_program_min_delta
 
     Set clock event device to the minimum delay.
 
-    :param struct clock_event_device \*dev:
+    :param dev:
         device to program
+    :type dev: struct clock_event_device \*
 
 .. _`clockevents_program_min_delta.description`:
 
@@ -135,14 +144,17 @@ clockevents_program_event
 
     Reprogram the clock event device.
 
-    :param struct clock_event_device \*dev:
+    :param dev:
         device to program
+    :type dev: struct clock_event_device \*
 
-    :param ktime_t expires:
+    :param expires:
         absolute expiry time (monotonic clock)
+    :type expires: ktime_t
 
-    :param bool force:
+    :param force:
         program minimum delay if expires can not be set
+    :type force: bool
 
 .. _`clockevents_program_event.description`:
 
@@ -160,8 +172,9 @@ clockevents_register_device
 
     register a clock event device
 
-    :param struct clock_event_device \*dev:
+    :param dev:
         device to register
+    :type dev: struct clock_event_device \*
 
 .. _`clockevents_config_and_register`:
 
@@ -172,17 +185,21 @@ clockevents_config_and_register
 
     Configure and register a clock event device
 
-    :param struct clock_event_device \*dev:
+    :param dev:
         device to register
+    :type dev: struct clock_event_device \*
 
-    :param u32 freq:
+    :param freq:
         The clock frequency
+    :type freq: u32
 
-    :param unsigned long min_delta:
+    :param min_delta:
         The minimum clock ticks to program in oneshot mode
+    :type min_delta: unsigned long
 
-    :param unsigned long max_delta:
+    :param max_delta:
         The maximum clock ticks to program in oneshot mode
+    :type max_delta: unsigned long
 
 .. _`clockevents_config_and_register.description`:
 
@@ -200,11 +217,13 @@ clockevents_update_freq
 
     Update frequency and reprogram a clock event device.
 
-    :param struct clock_event_device \*dev:
+    :param dev:
         device to modify
+    :type dev: struct clock_event_device \*
 
-    :param u32 freq:
+    :param freq:
         new device frequency
+    :type freq: u32
 
 .. _`clockevents_update_freq.description`:
 
@@ -227,11 +246,13 @@ clockevents_exchange_device
 
     release and request clock devices
 
-    :param struct clock_event_device \*old:
+    :param old:
         device to release (can be NULL)
+    :type old: struct clock_event_device \*
 
-    :param struct clock_event_device \*new:
+    :param new:
         device to request (can be NULL)
+    :type new: struct clock_event_device \*
 
 .. _`clockevents_exchange_device.description`:
 
@@ -250,8 +271,9 @@ clockevents_suspend
 
     suspend clock devices
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`clockevents_resume`:
 
@@ -262,8 +284,9 @@ clockevents_resume
 
     resume clock devices
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_cleanup_dead_cpu`:
 
@@ -274,8 +297,9 @@ tick_cleanup_dead_cpu
 
     Cleanup the tick and clockevents of a dead cpu
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. This file was automatic generated / don't edit.
 

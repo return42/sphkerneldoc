@@ -10,14 +10,17 @@ macvlan_changelink_sources
 
     (only for macvlan devices in source mode)
 
-    :param struct macvlan_dev \*vlan:
+    :param vlan:
         *undescribed*
+    :type vlan: struct macvlan_dev \*
 
-    :param u32 mode:
+    :param mode:
         *undescribed*
+    :type mode: u32
 
-    :param struct nlattr  \*data:
+    :param data:
         *undescribed*
+    :type data: struct nlattr  \*
 
 .. _`macvlan_changelink_sources.note-regarding-alignment`:
 

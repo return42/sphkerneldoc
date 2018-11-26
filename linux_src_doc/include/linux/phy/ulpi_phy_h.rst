@@ -10,11 +10,13 @@ ulpi_phy_create
 
     and it's controller, which is always the parent.
 
-    :param struct ulpi \*ulpi:
+    :param ulpi:
         *undescribed*
+    :type ulpi: struct ulpi \*
 
-    :param const struct phy_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: const struct phy_ops \*
 
 .. This file was automatic generated / don't edit.
 

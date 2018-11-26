@@ -10,8 +10,9 @@ vgic_v4_init
 
     Initialize the GICv4 data structures
 
-    :param struct kvm \*kvm:
+    :param kvm:
         Pointer to the VM being initialized
+    :type kvm: struct kvm \*
 
 .. _`vgic_v4_init.description`:
 
@@ -32,8 +33,9 @@ vgic_v4_teardown
 
     Free the GICv4 data structures
 
-    :param struct kvm \*kvm:
+    :param kvm:
         Pointer to the VM being destroyed
+    :type kvm: struct kvm \*
 
 .. _`vgic_v4_teardown.description`:
 

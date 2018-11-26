@@ -42,14 +42,17 @@ hash_messagepad
 
     Pads a message and write the nblw bits.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
-    :param const u32 \*message:
+    :param message:
         Last word of a message
+    :type message: const u32 \*
 
-    :param u8 index_bytes:
+    :param index_bytes:
         The number of bytes in the last message
+    :type index_bytes: u8
 
 .. _`hash_messagepad.description`:
 
@@ -68,8 +71,9 @@ release_hash_device
 
     Releases a previously allocated hash device.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
 .. _`get_empty_message_digest`:
 
@@ -80,17 +84,21 @@ get_empty_message_digest
 
     Returns a pre-calculated digest for the empty message.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
-    :param u8 \*zero_hash:
+    :param zero_hash:
         Buffer to return the empty message digest.
+    :type zero_hash: u8 \*
 
-    :param u32 \*zero_hash_size:
+    :param zero_hash_size:
         Hash size of the empty message digest.
+    :type zero_hash_size: u32 \*
 
-    :param bool \*zero_digest:
+    :param zero_digest:
         True if zero_digest returned.
+    :type zero_digest: bool \*
 
 .. _`hash_disable_power`:
 
@@ -101,11 +109,13 @@ hash_disable_power
 
     Request to disable power and clock.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
-    :param bool save_device_state:
+    :param save_device_state:
         If true, saves the current hw state.
+    :type save_device_state: bool
 
 .. _`hash_disable_power.description`:
 
@@ -124,11 +134,13 @@ hash_enable_power
 
     Request to enable power and clock.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
-    :param bool restore_device_state:
+    :param restore_device_state:
         If true, restores a previous saved hw state.
+    :type restore_device_state: bool
 
 .. _`hash_enable_power.description`:
 
@@ -147,11 +159,13 @@ hash_get_device_data
 
     Checks for an available hash device and return it.
 
-    :param struct hash_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct hash_ctx \*
 
-    :param struct hash_device_data \*\*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*\*
 
 .. _`hash_get_device_data.description`:
 
@@ -171,14 +185,17 @@ hash_hw_write_key
 
     Writes the key to the hardware registries.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
-    :param const u8 \*key:
+    :param key:
         Key to be written.
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         The lengt of the key.
+    :type keylen: unsigned int
 
 .. _`hash_hw_write_key.description`:
 
@@ -198,11 +215,13 @@ init_hash_hw
 
     Initialise the hash hardware for a new calculation.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
-    :param struct hash_ctx \*ctx:
+    :param ctx:
         The hash context.
+    :type ctx: struct hash_ctx \*
 
 .. _`init_hash_hw.description`:
 
@@ -221,14 +240,17 @@ hash_get_nents
 
     Return number of entries (nents) in scatterlist (sg).
 
-    :param struct scatterlist \*sg:
+    :param sg:
         Scatterlist.
+    :type sg: struct scatterlist \*
 
-    :param int size:
+    :param size:
         Size in bytes.
+    :type size: int
 
-    :param bool \*aligned:
+    :param aligned:
         True if sg data aligned to work in DMA mode.
+    :type aligned: bool \*
 
 .. _`hash_dma_valid_data`:
 
@@ -239,11 +261,13 @@ hash_dma_valid_data
 
     checks for dma valid sg data.
 
-    :param struct scatterlist \*sg:
+    :param sg:
         Scatterlist.
+    :type sg: struct scatterlist \*
 
-    :param int datasize:
+    :param datasize:
         Datasize in bytes.
+    :type datasize: int
 
 .. _`hash_dma_valid_data.description`:
 
@@ -262,8 +286,9 @@ hash_init
 
     Common hash init function for SHA1/SHA2 (SHA256).
 
-    :param struct ahash_request \*req:
+    :param req:
         The hash request for the job.
+    :type req: struct ahash_request \*
 
 .. _`hash_init.description`:
 
@@ -281,15 +306,18 @@ hash_processblock
 
     This function processes a single block of 512 bits (64 bytes), word aligned, starting at message.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
-    :param const u32 \*message:
+    :param message:
         Block (512 bits) of message to be written to
         the HASH hardware.
+    :type message: const u32 \*
 
-    :param int length:
+    :param length:
         *undescribed*
+    :type length: int
 
 .. _`hash_messagepad`:
 
@@ -300,14 +328,17 @@ hash_messagepad
 
     Pads a message and write the nblw bits.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
-    :param const u32 \*message:
+    :param message:
         Last word of a message.
+    :type message: const u32 \*
 
-    :param u8 index_bytes:
+    :param index_bytes:
         The number of bytes in the last message.
+    :type index_bytes: u8
 
 .. _`hash_messagepad.description`:
 
@@ -326,11 +357,13 @@ hash_incrementlength
 
     Increments the length of the current message.
 
-    :param struct hash_req_ctx \*ctx:
+    :param ctx:
         Hash context
+    :type ctx: struct hash_req_ctx \*
 
-    :param u32 incr:
+    :param incr:
         Length of message processed already
+    :type incr: u32
 
 .. _`hash_incrementlength.description`:
 
@@ -349,11 +382,13 @@ hash_setconfiguration
 
     Sets the required configuration for the hash hardware.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
-    :param struct hash_config \*config:
+    :param config:
         Pointer to a configuration structure.
+    :type config: struct hash_config \*
 
 .. _`hash_begin`:
 
@@ -364,11 +399,13 @@ hash_begin
 
     This routine resets some globals and initializes the hash hardware.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Structure for the hash device.
+    :type device_data: struct hash_device_data \*
 
-    :param struct hash_ctx \*ctx:
+    :param ctx:
         Hash context.
+    :type ctx: struct hash_ctx \*
 
 .. _`hash_dma_final`:
 
@@ -379,8 +416,9 @@ hash_dma_final
 
     The hash dma final function for SHA1/SHA256.
 
-    :param struct ahash_request \*req:
+    :param req:
         The hash request for the job.
+    :type req: struct ahash_request \*
 
 .. _`hash_hw_final`:
 
@@ -391,8 +429,9 @@ hash_hw_final
 
     The final hash calculation function
 
-    :param struct ahash_request \*req:
+    :param req:
         The hash request for the job.
+    :type req: struct ahash_request \*
 
 .. _`hash_hw_update`:
 
@@ -403,9 +442,10 @@ hash_hw_update
 
     Updates current HASH computation hashing another part of the message.
 
-    :param struct ahash_request \*req:
+    :param req:
         Byte array containing the message to be hashed (caller
         allocated).
+    :type req: struct ahash_request \*
 
 .. _`hash_resume_state`:
 
@@ -416,11 +456,13 @@ hash_resume_state
 
     Function that resumes the state of an calculation.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Pointer to the device structure.
+    :type device_data: struct hash_device_data \*
 
-    :param const struct hash_state \*device_state:
+    :param device_state:
         The state to be restored in the hash hardware
+    :type device_state: const struct hash_state \*
 
 .. _`hash_save_state`:
 
@@ -431,11 +473,13 @@ hash_save_state
 
     Function that saves the state of hardware.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Pointer to the device structure.
+    :type device_data: struct hash_device_data \*
 
-    :param struct hash_state \*device_state:
+    :param device_state:
         The strucure where the hardware state should be saved.
+    :type device_state: struct hash_state \*
 
 .. _`hash_check_hw`:
 
@@ -446,8 +490,9 @@ hash_check_hw
 
     This routine checks for peripheral Ids and PCell Ids.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         *undescribed*
+    :type device_data: struct hash_device_data \*
 
 .. _`hash_get_digest`:
 
@@ -458,14 +503,17 @@ hash_get_digest
 
     Gets the digest.
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         Pointer to the device structure.
+    :type device_data: struct hash_device_data \*
 
-    :param u8 \*digest:
+    :param digest:
         User allocated byte array for the calculated digest.
+    :type digest: u8 \*
 
-    :param int algorithm:
+    :param algorithm:
         The algorithm in use.
+    :type algorithm: int
 
 .. _`ahash_update`:
 
@@ -476,8 +524,9 @@ ahash_update
 
     The hash update function for SHA1/SHA2 (SHA256).
 
-    :param struct ahash_request \*req:
+    :param req:
         The hash request for the job.
+    :type req: struct ahash_request \*
 
 .. _`ahash_final`:
 
@@ -488,8 +537,9 @@ ahash_final
 
     The hash final function for SHA1/SHA2 (SHA256).
 
-    :param struct ahash_request \*req:
+    :param req:
         The hash request for the job.
+    :type req: struct ahash_request \*
 
 .. _`ahash_algs_register_all`:
 
@@ -498,8 +548,9 @@ ahash_algs_register_all
 
 .. c:function:: int ahash_algs_register_all(struct hash_device_data *device_data)
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         *undescribed*
+    :type device_data: struct hash_device_data \*
 
 .. _`ahash_algs_unregister_all`:
 
@@ -508,8 +559,9 @@ ahash_algs_unregister_all
 
 .. c:function:: void ahash_algs_unregister_all(struct hash_device_data *device_data)
 
-    :param struct hash_device_data \*device_data:
+    :param device_data:
         *undescribed*
+    :type device_data: struct hash_device_data \*
 
 .. _`ux500_hash_probe`:
 
@@ -520,8 +572,9 @@ ux500_hash_probe
 
     Function that probes the hash hardware.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The platform device.
+    :type pdev: struct platform_device \*
 
 .. _`ux500_hash_remove`:
 
@@ -532,8 +585,9 @@ ux500_hash_remove
 
     Function that removes the hash device from the platform.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The platform device.
+    :type pdev: struct platform_device \*
 
 .. _`ux500_hash_shutdown`:
 
@@ -544,8 +598,9 @@ ux500_hash_shutdown
 
     Function that shutdown the hash device.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The platform device
+    :type pdev: struct platform_device \*
 
 .. _`ux500_hash_suspend`:
 
@@ -556,8 +611,9 @@ ux500_hash_suspend
 
     Function that suspends the hash device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
 .. _`ux500_hash_resume`:
 
@@ -568,8 +624,9 @@ ux500_hash_resume
 
     Function that resume the hash device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to resume.
+    :type dev: struct device \*
 
 .. _`ux500_hash_mod_init`:
 
@@ -580,8 +637,9 @@ ux500_hash_mod_init
 
     The kernel module init function.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ux500_hash_mod_fini`:
 
@@ -592,8 +650,9 @@ ux500_hash_mod_fini
 
     The kernel module exit function.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

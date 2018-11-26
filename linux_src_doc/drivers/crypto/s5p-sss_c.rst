@@ -314,11 +314,13 @@ s5p_set_dma_hashdata
 
     start DMA with sg
 
-    :param struct s5p_aes_dev \*dev:
+    :param dev:
         device
+    :type dev: struct s5p_aes_dev \*
 
-    :param const struct scatterlist \*sg:
+    :param sg:
         scatterlist ready to DMA transmit
+    :type sg: const struct scatterlist \*
 
 .. _`s5p_hash_rx`:
 
@@ -329,8 +331,9 @@ s5p_hash_rx
 
     get next hash_sg_iter
 
-    :param struct s5p_aes_dev \*dev:
+    :param dev:
         device
+    :type dev: struct s5p_aes_dev \*
 
 .. _`s5p_hash_rx.return`:
 
@@ -350,8 +353,9 @@ s5p_hash_read_msg
 
     read message or IV from HW
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_write_ctx_iv`:
 
@@ -362,11 +366,13 @@ s5p_hash_write_ctx_iv
 
     write IV for next partial/finup op.
 
-    :param struct s5p_aes_dev \*dd:
+    :param dd:
         device
+    :type dd: struct s5p_aes_dev \*
 
-    :param const struct s5p_hash_reqctx \*ctx:
+    :param ctx:
         request context
+    :type ctx: const struct s5p_hash_reqctx \*
 
 .. _`s5p_hash_write_iv`:
 
@@ -377,8 +383,9 @@ s5p_hash_write_iv
 
     write IV for next partial/finup op.
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_copy_result`:
 
@@ -389,8 +396,9 @@ s5p_hash_copy_result
 
     copy digest into req->result
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_dma_flush`:
 
@@ -401,8 +409,9 @@ s5p_hash_dma_flush
 
     flush HASH DMA
 
-    :param struct s5p_aes_dev \*dev:
+    :param dev:
         secss device
+    :type dev: struct s5p_aes_dev \*
 
 .. _`s5p_hash_dma_enable`:
 
@@ -413,8 +422,9 @@ s5p_hash_dma_enable
 
     enable DMA mode for HASH
 
-    :param struct s5p_aes_dev \*dev:
+    :param dev:
         secss device
+    :type dev: struct s5p_aes_dev \*
 
 .. _`s5p_hash_dma_enable.description`:
 
@@ -432,11 +442,13 @@ s5p_hash_irq_disable
 
     disable irq HASH signals
 
-    :param struct s5p_aes_dev \*dev:
+    :param dev:
         secss device
+    :type dev: struct s5p_aes_dev \*
 
-    :param u32 flags:
+    :param flags:
         bitfield with irq's to be disabled
+    :type flags: u32
 
 .. _`s5p_hash_irq_enable`:
 
@@ -447,11 +459,13 @@ s5p_hash_irq_enable
 
     enable irq signals
 
-    :param struct s5p_aes_dev \*dev:
+    :param dev:
         secss device
+    :type dev: struct s5p_aes_dev \*
 
-    :param int flags:
+    :param flags:
         bitfield with irq's to be enabled
+    :type flags: int
 
 .. _`s5p_hash_set_flow`:
 
@@ -462,11 +476,13 @@ s5p_hash_set_flow
 
     set flow inside SecSS AES/DES with/without HASH
 
-    :param struct s5p_aes_dev \*dev:
+    :param dev:
         secss device
+    :type dev: struct s5p_aes_dev \*
 
-    :param u32 hashflow:
+    :param hashflow:
         HASH stream flow with/without crypto AES/DES
+    :type hashflow: u32
 
 .. _`s5p_ahash_dma_init`:
 
@@ -477,11 +493,13 @@ s5p_ahash_dma_init
 
     enable DMA and set HASH flow inside SecSS
 
-    :param struct s5p_aes_dev \*dev:
+    :param dev:
         secss device
+    :type dev: struct s5p_aes_dev \*
 
-    :param u32 hashflow:
+    :param hashflow:
         HASH stream flow with/without AES/DES
+    :type hashflow: u32
 
 .. _`s5p_ahash_dma_init.description`:
 
@@ -500,14 +518,17 @@ s5p_hash_write_ctrl
 
     prepare HASH block in SecSS for processing
 
-    :param struct s5p_aes_dev \*dd:
+    :param dd:
         secss device
+    :type dd: struct s5p_aes_dev \*
 
-    :param size_t length:
+    :param length:
         length for request
+    :type length: size_t
 
-    :param bool final:
+    :param final:
         true if final op
+    :type final: bool
 
 .. _`s5p_hash_write_ctrl.description`:
 
@@ -531,14 +552,17 @@ s5p_hash_xmit_dma
 
     start DMA hash processing
 
-    :param struct s5p_aes_dev \*dd:
+    :param dd:
         secss device
+    :type dd: struct s5p_aes_dev \*
 
-    :param size_t length:
+    :param length:
         length for request
+    :type length: size_t
 
-    :param bool final:
+    :param final:
         true if final op
+    :type final: bool
 
 .. _`s5p_hash_xmit_dma.description`:
 
@@ -556,14 +580,17 @@ s5p_hash_copy_sgs
 
     copy request's bytes into new buffer
 
-    :param struct s5p_hash_reqctx \*ctx:
+    :param ctx:
         request context
+    :type ctx: struct s5p_hash_reqctx \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         source scatterlist request
+    :type sg: struct scatterlist \*
 
-    :param unsigned int new_len:
+    :param new_len:
         number of bytes to process from sg
+    :type new_len: unsigned int
 
 .. _`s5p_hash_copy_sgs.description`:
 
@@ -585,14 +612,17 @@ s5p_hash_copy_sg_lists
 
     copy sg list and make fixes in copy
 
-    :param struct s5p_hash_reqctx \*ctx:
+    :param ctx:
         request context
+    :type ctx: struct s5p_hash_reqctx \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         source scatterlist request
+    :type sg: struct scatterlist \*
 
-    :param unsigned int new_len:
+    :param new_len:
         number of bytes to process from sg
+    :type new_len: unsigned int
 
 .. _`s5p_hash_copy_sg_lists.description`:
 
@@ -616,17 +646,21 @@ s5p_hash_prepare_sgs
 
     prepare sg for processing
 
-    :param struct s5p_hash_reqctx \*ctx:
+    :param ctx:
         request context
+    :type ctx: struct s5p_hash_reqctx \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         source scatterlist request
+    :type sg: struct scatterlist \*
 
-    :param unsigned int new_len:
+    :param new_len:
         *undescribed*
+    :type new_len: unsigned int
 
-    :param bool final:
+    :param final:
         final flag
+    :type final: bool
 
 .. _`s5p_hash_prepare_sgs.check-two-conditions`:
 
@@ -651,11 +685,13 @@ s5p_hash_prepare_request
 
     prepare request for processing
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
-    :param bool update:
+    :param update:
         true if UPDATE op
+    :type update: bool
 
 .. _`s5p_hash_prepare_request.note-1`:
 
@@ -682,8 +718,9 @@ s5p_hash_update_dma_stop
 
     unmap DMA
 
-    :param struct s5p_aes_dev \*dd:
+    :param dd:
         secss device
+    :type dd: struct s5p_aes_dev \*
 
 .. _`s5p_hash_update_dma_stop.description`:
 
@@ -701,8 +738,9 @@ s5p_hash_finish
 
     copy calculated digest to crypto layer
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_finish_req`:
 
@@ -713,11 +751,13 @@ s5p_hash_finish_req
 
     finish request
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
-    :param int err:
+    :param err:
         error
+    :type err: int
 
 .. _`s5p_hash_handle_queue`:
 
@@ -728,11 +768,13 @@ s5p_hash_handle_queue
 
     handle hash queue
 
-    :param struct s5p_aes_dev \*dd:
+    :param dd:
         device s5p_aes_dev
+    :type dd: struct s5p_aes_dev \*
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_handle_queue.description`:
 
@@ -758,8 +800,9 @@ s5p_hash_tasklet_cb
 
     hash tasklet
 
-    :param unsigned long data:
+    :param data:
         ptr to s5p_aes_dev
+    :type data: unsigned long
 
 .. _`s5p_hash_enqueue`:
 
@@ -770,11 +813,13 @@ s5p_hash_enqueue
 
     enqueue request
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
-    :param bool op:
+    :param op:
         operation UPDATE (true) or FINAL (false)
+    :type op: bool
 
 .. _`s5p_hash_enqueue.return`:
 
@@ -792,8 +837,9 @@ s5p_hash_update
 
     process the hash input data
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_update.description`:
 
@@ -819,20 +865,25 @@ s5p_hash_shash_digest
 
     calculate shash digest
 
-    :param struct crypto_shash \*tfm:
+    :param tfm:
         crypto transformation
+    :type tfm: struct crypto_shash \*
 
-    :param u32 flags:
+    :param flags:
         tfm flags
+    :type flags: u32
 
-    :param const u8 \*data:
+    :param data:
         input data
+    :type data: const u8 \*
 
-    :param unsigned int len:
+    :param len:
         length of data
+    :type len: unsigned int
 
-    :param u8 \*out:
+    :param out:
         output buffer
+    :type out: u8 \*
 
 .. _`s5p_hash_final_shash`:
 
@@ -843,8 +894,9 @@ s5p_hash_final_shash
 
     calculate shash digest
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_final`:
 
@@ -855,8 +907,9 @@ s5p_hash_final
 
     close up hash and calculate digest
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_final.note`:
 
@@ -895,8 +948,9 @@ s5p_hash_finup
 
     process last req->src and calculate digest
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request containing the last update data
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_finup.return-values`:
 
@@ -914,8 +968,9 @@ s5p_hash_init
 
     initialize AHASH request contex
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_init.description`:
 
@@ -933,8 +988,9 @@ s5p_hash_digest
 
     calculate digest from req->src
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
 .. _`s5p_hash_digest.return-values`:
 
@@ -952,8 +1008,9 @@ s5p_hash_cra_init_alg
 
     init crypto alg transformation
 
-    :param struct crypto_tfm \*tfm:
+    :param tfm:
         crypto transformation
+    :type tfm: struct crypto_tfm \*
 
 .. _`s5p_hash_cra_init`:
 
@@ -964,8 +1021,9 @@ s5p_hash_cra_init
 
     init crypto tfm
 
-    :param struct crypto_tfm \*tfm:
+    :param tfm:
         crypto transformation
+    :type tfm: struct crypto_tfm \*
 
 .. _`s5p_hash_cra_exit`:
 
@@ -976,8 +1034,9 @@ s5p_hash_cra_exit
 
     exit crypto tfm
 
-    :param struct crypto_tfm \*tfm:
+    :param tfm:
         crypto transformation
+    :type tfm: struct crypto_tfm \*
 
 .. _`s5p_hash_cra_exit.description`:
 
@@ -995,11 +1054,13 @@ s5p_hash_export
 
     export hash state
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
-    :param void \*out:
+    :param out:
         buffer for exported state
+    :type out: void \*
 
 .. _`s5p_hash_import`:
 
@@ -1010,11 +1071,13 @@ s5p_hash_import
 
     import hash state
 
-    :param struct ahash_request \*req:
+    :param req:
         AHASH request
+    :type req: struct ahash_request \*
 
-    :param const void \*in:
+    :param in:
         buffer with state to be imported from
+    :type in: const void \*
 
 .. This file was automatic generated / don't edit.
 

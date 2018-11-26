@@ -10,9 +10,10 @@ hvcs_free_partner_info
 
     free pi allocated by hvcs_get_partner_info
 
-    :param struct list_head \*head:
+    :param head:
         list_head pointer for an allocated list of partner info structs to
         free.
+    :type head: struct list_head \*
 
 .. _`hvcs_free_partner_info.description`:
 
@@ -31,18 +32,21 @@ hvcs_get_partner_info
 
     Get all of the partner info for a vty-server adapter
 
-    :param uint32_t unit_address:
+    :param unit_address:
         The unit_address of the vty-server adapter for which this
         function is fetching partner info.
+    :type unit_address: uint32_t
 
-    :param struct list_head \*head:
+    :param head:
         An initialized list_head pointer to an empty list to use to return the
         list of partner info fetched from the hypervisor to the caller.
+    :type head: struct list_head \*
 
-    :param unsigned long \*pi_buff:
+    :param pi_buff:
         A page sized buffer pre-allocated prior to calling this function
         that is to be used to be used by firmware as an iterator to keep track
         of the partner info retrieval.
+    :type pi_buff: unsigned long \*
 
 .. _`hvcs_get_partner_info.description`:
 
@@ -73,16 +77,19 @@ hvcs_register_connection
 
     establish a connection between this vty-server and a vty.
 
-    :param uint32_t unit_address:
+    :param unit_address:
         The unit address of the vty-server adapter that is to be
         establish a connection.
+    :type unit_address: uint32_t
 
-    :param uint32_t p_partition_ID:
+    :param p_partition_ID:
         The partition ID of the vty adapter that is to be connected.
+    :type p_partition_ID: uint32_t
 
-    :param uint32_t p_unit_address:
+    :param p_unit_address:
         The unit address of the vty adapter to which the vty-server
         is to be connected.
+    :type p_unit_address: uint32_t
 
 .. _`hvcs_register_connection.description`:
 
@@ -110,9 +117,10 @@ hvcs_free_connection
 
     free the connection between a vty-server and vty
 
-    :param uint32_t unit_address:
+    :param unit_address:
         The unit address of the vty-server that is to have its
         connection severed.
+    :type unit_address: uint32_t
 
 .. _`hvcs_free_connection.description`:
 

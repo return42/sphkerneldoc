@@ -8,14 +8,17 @@ fman_set_mac_active_pause
 
 .. c:function:: int fman_set_mac_active_pause(struct mac_device *mac_dev, bool rx, bool tx)
 
-    :param struct mac_device \*mac_dev:
+    :param mac_dev:
         A pointer to the MAC device
+    :type mac_dev: struct mac_device \*
 
-    :param bool rx:
+    :param rx:
         Pause frame setting for RX
+    :type rx: bool
 
-    :param bool tx:
+    :param tx:
         Pause frame setting for TX
+    :type tx: bool
 
 .. _`fman_set_mac_active_pause.description`:
 
@@ -42,14 +45,17 @@ fman_get_pause_cfg
 
 .. c:function:: void fman_get_pause_cfg(struct mac_device *mac_dev, bool *rx_pause, bool *tx_pause)
 
-    :param struct mac_device \*mac_dev:
+    :param mac_dev:
         A pointer to the MAC device
+    :type mac_dev: struct mac_device \*
 
-    :param bool \*rx_pause:
+    :param rx_pause:
         *undescribed*
+    :type rx_pause: bool \*
 
-    :param bool \*tx_pause:
+    :param tx_pause:
         *undescribed*
+    :type tx_pause: bool \*
 
 .. _`fman_get_pause_cfg.description`:
 

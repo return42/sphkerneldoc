@@ -10,8 +10,9 @@ sis_old_port_base
 
     return PCI configuration base for dev
 
-    :param struct ata_device \*adev:
+    :param adev:
         device
+    :type adev: struct ata_device \*
 
 .. _`sis_old_port_base.description`:
 
@@ -30,8 +31,9 @@ sis_port_base
 
     return PCI configuration base for dev
 
-    :param struct ata_device \*adev:
+    :param adev:
         device
+    :type adev: struct ata_device \*
 
 .. _`sis_port_base.description`:
 
@@ -50,8 +52,9 @@ sis_133_cable_detect
 
     check for 40/80 pin
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port
+    :type ap: struct ata_port \*
 
 .. _`sis_133_cable_detect.description`:
 
@@ -70,8 +73,9 @@ sis_66_cable_detect
 
     check for 40/80 pin
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port
+    :type ap: struct ata_port \*
 
 .. _`sis_66_cable_detect.description`:
 
@@ -90,11 +94,13 @@ sis_pre_reset
 
     probe begin
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`sis_pre_reset.description`:
 
@@ -112,11 +118,13 @@ sis_set_fifo
 
     Set RWP fifo bits for this device
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device
+    :type adev: struct ata_device \*
 
 .. _`sis_set_fifo.description`:
 
@@ -136,11 +144,13 @@ sis_old_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device we are configuring for.
+    :type adev: struct ata_device \*
 
 .. _`sis_old_set_piomode.description`:
 
@@ -167,11 +177,13 @@ sis_100_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device we are configuring for.
+    :type adev: struct ata_device \*
 
 .. _`sis_100_set_piomode.description`:
 
@@ -197,11 +209,13 @@ sis_133_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device we are configuring for.
+    :type adev: struct ata_device \*
 
 .. _`sis_133_set_piomode.description`:
 
@@ -227,11 +241,13 @@ sis_old_set_dmamode
 
     Initialize host controller PATA DMA timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device to program
+    :type adev: struct ata_device \*
 
 .. _`sis_old_set_dmamode.description`:
 
@@ -258,11 +274,13 @@ sis_66_set_dmamode
 
     Initialize host controller PATA DMA timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device to program
+    :type adev: struct ata_device \*
 
 .. _`sis_66_set_dmamode.description`:
 
@@ -289,11 +307,13 @@ sis_100_set_dmamode
 
     Initialize host controller PATA DMA timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device to program
+    :type adev: struct ata_device \*
 
 .. _`sis_100_set_dmamode.description`:
 
@@ -319,11 +339,13 @@ sis_133_early_set_dmamode
 
     Initialize host controller PATA DMA timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device to program
+    :type adev: struct ata_device \*
 
 .. _`sis_133_early_set_dmamode.description`:
 
@@ -349,11 +371,13 @@ sis_133_set_dmamode
 
     Initialize host controller PATA DMA timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device to program
+    :type adev: struct ata_device \*
 
 .. _`sis_133_set_dmamode.description`:
 
@@ -378,11 +402,13 @@ sis_133_mode_filter
 
     mode selection filter
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         *undescribed*
+    :type mask: unsigned long
 
 .. _`sis_133_mode_filter.description`:
 
@@ -400,11 +426,13 @@ sis_init_one
 
     Register SiS ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         Entry in sis_pci_tbl matching with \ ``pdev``\ 
+    :type ent: const struct pci_device_id \*
 
 .. _`sis_init_one.description`:
 

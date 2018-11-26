@@ -10,11 +10,13 @@ max14577_get_regmap
 
     different regmaps must be used for them.
 
-    :param struct max14577 \*max14577:
+    :param max14577:
         *undescribed*
+    :type max14577: struct max14577 \*
 
-    :param int reg_id:
+    :param reg_id:
         *undescribed*
+    :type reg_id: int
 
 .. _`max14577_get_regmap.description`:
 

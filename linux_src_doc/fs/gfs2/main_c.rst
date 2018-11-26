@@ -10,8 +10,9 @@ init_gfs2_fs
 
     Register GFS2 as a filesystem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`init_gfs2_fs.return`:
 
@@ -29,8 +30,9 @@ exit_gfs2_fs
 
     Unregister the file system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

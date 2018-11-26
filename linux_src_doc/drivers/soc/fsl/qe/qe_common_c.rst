@@ -10,8 +10,9 @@ cpm_muram_free
 
     free a chunk of multi-user ram
 
-    :param unsigned long offset:
+    :param offset:
         The beginning of the chunk as returned by \ :c:func:`cpm_muram_alloc`\ .
+    :type offset: unsigned long
 
 .. _`cpm_muram_addr`:
 
@@ -22,8 +23,9 @@ cpm_muram_addr
 
     turn a muram offset into a virtual address
 
-    :param unsigned long offset:
+    :param offset:
         muram offset to convert
+    :type offset: unsigned long
 
 .. _`cpm_muram_dma`:
 
@@ -34,8 +36,9 @@ cpm_muram_dma
 
     turn a muram virtual address into a DMA address
 
-    :param void __iomem \*addr:
+    :param addr:
         *undescribed*
+    :type addr: void __iomem \*
 
 .. This file was automatic generated / don't edit.
 

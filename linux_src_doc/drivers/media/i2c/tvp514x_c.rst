@@ -142,11 +142,13 @@ tvp514x_read_reg
 
     Read a value from a register in an TVP5146/47.
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         ptr to v4l2_subdev struct
+    :type sd: struct v4l2_subdev \*
 
-    :param u8 reg:
+    :param reg:
         TVP5146/47 register address
+    :type reg: u8
 
 .. _`tvp514x_read_reg.description`:
 
@@ -164,11 +166,13 @@ dump_reg
 
     dump the register content of TVP5146/47.
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         ptr to v4l2_subdev struct
+    :type sd: struct v4l2_subdev \*
 
-    :param u8 reg:
+    :param reg:
         TVP5146/47 register address
+    :type reg: u8
 
 .. _`tvp514x_write_reg`:
 
@@ -179,14 +183,17 @@ tvp514x_write_reg
 
     Write a value to a register in TVP5146/47
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         ptr to v4l2_subdev struct
+    :type sd: struct v4l2_subdev \*
 
-    :param u8 reg:
+    :param reg:
         TVP5146/47 register address
+    :type reg: u8
 
-    :param u8 val:
+    :param val:
         value to be written to the register
+    :type val: u8
 
 .. _`tvp514x_write_reg.description`:
 
@@ -205,11 +212,13 @@ tvp514x_write_regs
 
     Initializes a list of TVP5146/47 registers
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         ptr to v4l2_subdev struct
+    :type sd: struct v4l2_subdev \*
 
-    :param const struct tvp514x_reg reglist:
+    :param reglist:
         list of TVP5146/47 registers and values
+    :type reglist: const struct tvp514x_reg
 
 .. _`tvp514x_write_regs.description`:
 
@@ -232,8 +241,9 @@ tvp514x_query_current_std
 
     Query the current standard detected by TVP5146/47
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         ptr to v4l2_subdev struct
+    :type sd: struct v4l2_subdev \*
 
 .. _`tvp514x_query_current_std.description`:
 
@@ -252,11 +262,13 @@ tvp514x_configure
 
     Configure the TVP5146/47 registers
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         ptr to v4l2_subdev struct
+    :type sd: struct v4l2_subdev \*
 
-    :param struct tvp514x_decoder \*decoder:
+    :param decoder:
         ptr to tvp514x_decoder structure
+    :type decoder: struct tvp514x_decoder \*
 
 .. _`tvp514x_configure.description`:
 
@@ -274,11 +286,13 @@ tvp514x_detect
 
     Detect if an tvp514x is present, and if so which revision.
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to standard V4L2 sub-device structure
+    :type sd: struct v4l2_subdev \*
 
-    :param struct tvp514x_decoder \*decoder:
+    :param decoder:
         pointer to tvp514x_decoder structure
+    :type decoder: struct tvp514x_decoder \*
 
 .. _`tvp514x_detect.description`:
 
@@ -300,11 +314,13 @@ tvp514x_querystd
 
     V4L2 decoder interface handler for querystd
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to standard V4L2 sub-device structure
+    :type sd: struct v4l2_subdev \*
 
-    :param v4l2_std_id \*std_id:
+    :param std_id:
         standard V4L2 std_id ioctl enum
+    :type std_id: v4l2_std_id \*
 
 .. _`tvp514x_querystd.description`:
 
@@ -323,11 +339,13 @@ tvp514x_s_std
 
     V4L2 decoder interface handler for s_std
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to standard V4L2 sub-device structure
+    :type sd: struct v4l2_subdev \*
 
-    :param v4l2_std_id std_id:
+    :param std_id:
         standard V4L2 v4l2_std_id ioctl enum
+    :type std_id: v4l2_std_id
 
 .. _`tvp514x_s_std.description`:
 
@@ -346,17 +364,21 @@ tvp514x_s_routing
 
     V4L2 decoder interface handler for s_routing
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to standard V4L2 sub-device structure
+    :type sd: struct v4l2_subdev \*
 
-    :param u32 input:
+    :param input:
         input selector for routing the signal
+    :type input: u32
 
-    :param u32 output:
+    :param output:
         output selector for routing the signal
+    :type output: u32
 
-    :param u32 config:
+    :param config:
         config value. Not used
+    :type config: u32
 
 .. _`tvp514x_s_routing.description`:
 
@@ -376,8 +398,9 @@ tvp514x_s_ctrl
 
     V4L2 decoder interface handler for s_ctrl
 
-    :param struct v4l2_ctrl \*ctrl:
+    :param ctrl:
         pointer to v4l2_ctrl structure
+    :type ctrl: struct v4l2_ctrl \*
 
 .. _`tvp514x_s_ctrl.description`:
 
@@ -396,11 +419,13 @@ tvp514x_g_frame_interval
 
     V4L2 decoder interface handler
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to standard V4L2 sub-device structure
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_subdev_frame_interval \*ival:
+    :param ival:
         pointer to a v4l2_subdev_frame_interval structure
+    :type ival: struct v4l2_subdev_frame_interval \*
 
 .. _`tvp514x_g_frame_interval.description`:
 
@@ -418,11 +443,13 @@ tvp514x_s_frame_interval
 
     V4L2 decoder interface handler
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to standard V4L2 sub-device structure
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_subdev_frame_interval \*ival:
+    :param ival:
         pointer to a v4l2_subdev_frame_interval structure
+    :type ival: struct v4l2_subdev_frame_interval \*
 
 .. _`tvp514x_s_frame_interval.description`:
 
@@ -441,11 +468,13 @@ tvp514x_s_stream
 
     V4L2 decoder i/f handler for s_stream
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to standard V4L2 sub-device structure
+    :type sd: struct v4l2_subdev \*
 
-    :param int enable:
+    :param enable:
         streaming enable or disable
+    :type enable: int
 
 .. _`tvp514x_s_stream.description`:
 
@@ -463,14 +492,17 @@ tvp514x_enum_mbus_code
 
     V4L2 decoder interface handler for enum_mbus_code
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to standard V4L2 sub-device structure
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         pad configuration
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param struct v4l2_subdev_mbus_code_enum \*code:
+    :param code:
         pointer to v4l2_subdev_mbus_code_enum structure
+    :type code: struct v4l2_subdev_mbus_code_enum \*
 
 .. _`tvp514x_enum_mbus_code.description`:
 
@@ -488,14 +520,17 @@ tvp514x_get_pad_format
 
     V4L2 decoder interface handler for get pad format
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to standard V4L2 sub-device structure
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         pad configuration
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param struct v4l2_subdev_format \*format:
+    :param format:
         pointer to v4l2_subdev_format structure
+    :type format: struct v4l2_subdev_format \*
 
 .. _`tvp514x_get_pad_format.description`:
 
@@ -513,14 +548,17 @@ tvp514x_set_pad_format
 
     V4L2 decoder interface handler for set pad format
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to standard V4L2 sub-device structure
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         pad configuration
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param struct v4l2_subdev_format \*fmt:
+    :param fmt:
         pointer to v4l2_subdev_format structure
+    :type fmt: struct v4l2_subdev_format \*
 
 .. _`tvp514x_set_pad_format.description`:
 
@@ -538,11 +576,13 @@ tvp514x_probe
 
     decoder driver i2c probe handler
 
-    :param struct i2c_client \*client:
+    :param client:
         i2c driver client device structure
+    :type client: struct i2c_client \*
 
-    :param const struct i2c_device_id \*id:
+    :param id:
         i2c driver id table
+    :type id: const struct i2c_device_id \*
 
 .. _`tvp514x_probe.description`:
 
@@ -561,8 +601,9 @@ tvp514x_remove
 
     decoder driver i2c remove handler
 
-    :param struct i2c_client \*client:
+    :param client:
         i2c driver client device structure
+    :type client: struct i2c_client \*
 
 .. _`tvp514x_remove.description`:
 

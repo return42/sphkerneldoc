@@ -43,11 +43,13 @@ ttm_eu_backoff_reservation
 
 .. c:function:: void ttm_eu_backoff_reservation(struct ww_acquire_ctx *ticket, struct list_head *list)
 
-    :param struct ww_acquire_ctx \*ticket:
+    :param ticket:
         ww_acquire_ctx from reserve call
+    :type ticket: struct ww_acquire_ctx \*
 
-    :param struct list_head \*list:
+    :param list:
         thread private list of ttm_validate_buffer structs.
+    :type list: struct list_head \*
 
 .. _`ttm_eu_backoff_reservation.description`:
 
@@ -64,18 +66,22 @@ ttm_eu_reserve_buffers
 
 .. c:function:: int ttm_eu_reserve_buffers(struct ww_acquire_ctx *ticket, struct list_head *list, bool intr, struct list_head *dups)
 
-    :param struct ww_acquire_ctx \*ticket:
+    :param ticket:
         [out] ww_acquire_ctx filled in by call, or NULL if only
         non-blocking reserves should be tried.
+    :type ticket: struct ww_acquire_ctx \*
 
-    :param struct list_head \*list:
+    :param list:
         thread private list of ttm_validate_buffer structs.
+    :type list: struct list_head \*
 
-    :param bool intr:
+    :param intr:
         should the wait be interruptible
+    :type intr: bool
 
-    :param struct list_head \*dups:
+    :param dups:
         [out] optional list of duplicates.
+    :type dups: struct list_head \*
 
 .. _`ttm_eu_reserve_buffers.description`:
 
@@ -113,14 +119,17 @@ ttm_eu_fence_buffer_objects
 
 .. c:function:: void ttm_eu_fence_buffer_objects(struct ww_acquire_ctx *ticket, struct list_head *list, struct dma_fence *fence)
 
-    :param struct ww_acquire_ctx \*ticket:
+    :param ticket:
         ww_acquire_ctx from reserve call
+    :type ticket: struct ww_acquire_ctx \*
 
-    :param struct list_head \*list:
+    :param list:
         thread private list of ttm_validate_buffer structs.
+    :type list: struct list_head \*
 
-    :param struct dma_fence \*fence:
+    :param fence:
         The new exclusive fence for the buffers.
+    :type fence: struct dma_fence \*
 
 .. _`ttm_eu_fence_buffer_objects.description`:
 

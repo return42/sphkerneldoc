@@ -10,8 +10,9 @@ afiucv_pm_freeze
 
     Freeze PM callback
 
-    :param struct device \*dev:
+    :param dev:
         AFIUCV dummy device
+    :type dev: struct device \*
 
 .. _`afiucv_pm_freeze.description`:
 
@@ -29,8 +30,9 @@ afiucv_pm_restore_thaw
 
     Thaw and restore PM callback
 
-    :param struct device \*dev:
+    :param dev:
         AFIUCV dummy device
+    :type dev: struct device \*
 
 .. _`afiucv_pm_restore_thaw.description`:
 
@@ -48,8 +50,9 @@ iucv_msg_length
 
     Returns the length of an iucv message.
 
-    :param struct iucv_message \*msg:
+    :param msg:
         Pointer to struct iucv_message, MUST NOT be NULL
+    :type msg: struct iucv_message \*
 
 .. _`iucv_msg_length.description`:
 
@@ -86,14 +89,17 @@ iucv_sock_in_state
 
     check for specific states
 
-    :param struct sock \*sk:
+    :param sk:
         sock structure
+    :type sk: struct sock \*
 
-    :param int state:
+    :param state:
         second iucv sk state
+    :type state: int
 
-    :param int state2:
+    :param state2:
         *undescribed*
+    :type state2: int
 
 .. _`iucv_sock_in_state.description`:
 
@@ -111,8 +117,9 @@ iucv_below_msglim
 
     function to check if messages can be sent
 
-    :param struct sock \*sk:
+    :param sk:
         sock structure
+    :type sk: struct sock \*
 
 .. _`iucv_below_msglim.description`:
 
@@ -132,8 +139,9 @@ iucv_sock_wake_msglim
 
     Wake up thread waiting on msg limit
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`afiucv_hs_send`:
 
@@ -144,17 +152,21 @@ afiucv_hs_send
 
     send a message through HiperSockets transport
 
-    :param struct iucv_message \*imsg:
+    :param imsg:
         *undescribed*
+    :type imsg: struct iucv_message \*
 
-    :param struct sock \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param u8 flags:
+    :param flags:
         *undescribed*
+    :type flags: u8
 
 .. _`iucv_send_iprm`:
 
@@ -165,14 +177,17 @@ iucv_send_iprm
 
     Send socket data in parameter list of an iucv message.
 
-    :param struct iucv_path \*path:
+    :param path:
         IUCV path
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         Pointer to a struct iucv_message
+    :type msg: struct iucv_message \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The socket data to send, skb->len MUST BE <= 7
+    :type skb: struct sk_buff \*
 
 .. _`iucv_send_iprm.description`:
 
@@ -195,11 +210,13 @@ afiucv_hs_callback_syn
 
     react on received SYN
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`afiucv_hs_callback_synack`:
 
@@ -210,11 +227,13 @@ afiucv_hs_callback_synack
 
     react on received SYN-ACK
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`afiucv_hs_callback_synfin`:
 
@@ -225,11 +244,13 @@ afiucv_hs_callback_synfin
 
     react on received SYN_FIN
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`afiucv_hs_callback_fin`:
 
@@ -240,11 +261,13 @@ afiucv_hs_callback_fin
 
     react on received FIN
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`afiucv_hs_callback_win`:
 
@@ -255,11 +278,13 @@ afiucv_hs_callback_win
 
     react on received WIN
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`afiucv_hs_callback_rx`:
 
@@ -270,11 +295,13 @@ afiucv_hs_callback_rx
 
     react on received data
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`afiucv_hs_rcv`:
 
@@ -285,17 +312,21 @@ afiucv_hs_rcv
 
     base function for arriving data through HiperSockets transport called from netif RX softirq
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct packet_type \*pt:
+    :param pt:
         *undescribed*
+    :type pt: struct packet_type \*
 
-    :param struct net_device \*orig_dev:
+    :param orig_dev:
         *undescribed*
+    :type orig_dev: struct net_device \*
 
 .. _`afiucv_hs_callback_txnotify`:
 
@@ -306,11 +337,13 @@ afiucv_hs_callback_txnotify
 
     handle send notifcations from HiperSockets transport
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param enum iucv_tx_notify n:
+    :param n:
         *undescribed*
+    :type n: enum iucv_tx_notify
 
 .. This file was automatic generated / don't edit.
 

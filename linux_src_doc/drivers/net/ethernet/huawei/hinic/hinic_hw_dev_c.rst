@@ -10,11 +10,13 @@ get_capability
 
     convert device capabilities to NIC capabilities
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the HW device to set and convert device capabilities for
+    :type hwdev: struct hinic_hwdev \*
 
-    :param struct hinic_dev_cap \*dev_cap:
+    :param dev_cap:
         device capabilities from FW
+    :type dev_cap: struct hinic_dev_cap \*
 
 .. _`get_capability.description`:
 
@@ -32,8 +34,9 @@ get_cap_from_fw
 
     get device capabilities from FW
 
-    :param struct hinic_pfhwdev \*pfhwdev:
+    :param pfhwdev:
         the PF HW device to get capabilities for
+    :type pfhwdev: struct hinic_pfhwdev \*
 
 .. _`get_cap_from_fw.description`:
 
@@ -51,8 +54,9 @@ get_dev_cap
 
     get device capabilities
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device to get capabilities for
+    :type hwdev: struct hinic_hwdev \*
 
 .. _`get_dev_cap.description`:
 
@@ -70,8 +74,9 @@ init_msix
 
     enable the msix and save the entries
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
 .. _`init_msix.description`:
 
@@ -89,8 +94,9 @@ disable_msix
 
     disable the msix
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
 .. _`hinic_port_msg_cmd`:
 
@@ -101,23 +107,29 @@ hinic_port_msg_cmd
 
     send port msg to mgmt
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param enum hinic_port_cmd cmd:
+    :param cmd:
         the port command
+    :type cmd: enum hinic_port_cmd
 
-    :param void \*buf_in:
+    :param buf_in:
         input buffer
+    :type buf_in: void \*
 
-    :param u16 in_size:
+    :param in_size:
         input size
+    :type in_size: u16
 
-    :param void \*buf_out:
+    :param buf_out:
         output buffer
+    :type buf_out: void \*
 
-    :param u16 \*out_size:
+    :param out_size:
         returned output size
+    :type out_size: u16 \*
 
 .. _`hinic_port_msg_cmd.description`:
 
@@ -135,8 +147,9 @@ init_fw_ctxt
 
     Init Firmware tables before network mgmt and io operations
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
 .. _`init_fw_ctxt.description`:
 
@@ -154,14 +167,17 @@ set_hw_ioctxt
 
     set the shape of the IO queues in FW
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param unsigned int rq_depth:
+    :param rq_depth:
         rq depth
+    :type rq_depth: unsigned int
 
-    :param unsigned int sq_depth:
+    :param sq_depth:
         sq depth
+    :type sq_depth: unsigned int
 
 .. _`set_hw_ioctxt.description`:
 
@@ -179,8 +195,9 @@ clear_io_resources
 
     set the IO resources as not active in the NIC
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
 .. _`clear_io_resources.description`:
 
@@ -198,11 +215,13 @@ set_resources_state
 
     set the state of the resources in the NIC
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param enum hinic_res_state state:
+    :param state:
         the state to set
+    :type state: enum hinic_res_state
 
 .. _`set_resources_state.description`:
 
@@ -220,11 +239,13 @@ get_base_qpn
 
     get the first qp number
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param u16 \*base_qpn:
+    :param base_qpn:
         returned qp number
+    :type base_qpn: u16 \*
 
 .. _`get_base_qpn.description`:
 
@@ -242,8 +263,9 @@ hinic_hwdev_ifup
 
     Preparing the HW for passing IO
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
 .. _`hinic_hwdev_ifup.description`:
 
@@ -261,8 +283,9 @@ hinic_hwdev_ifdown
 
     Closing the HW for passing IO
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
 .. _`hinic_hwdev_cb_register`:
 
@@ -273,14 +296,17 @@ hinic_hwdev_cb_register
 
     register callback handler for MGMT events
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param enum hinic_mgmt_msg_cmd cmd:
+    :param cmd:
         the mgmt event
+    :type cmd: enum hinic_mgmt_msg_cmd
 
-    :param void \*handle:
+    :param handle:
         private data for the handler
+    :type handle: void \*
 
     :param void (\*handler)(void \*handle, void \*buf_in, u16 in_size, void \*buf_out, u16 \*out_size):
         event handler
@@ -294,11 +320,13 @@ hinic_hwdev_cb_unregister
 
     unregister callback handler for MGMT events
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param enum hinic_mgmt_msg_cmd cmd:
+    :param cmd:
         the mgmt event
+    :type cmd: enum hinic_mgmt_msg_cmd
 
 .. _`nic_mgmt_msg_handler`:
 
@@ -309,23 +337,29 @@ nic_mgmt_msg_handler
 
     nic mgmt event handler
 
-    :param void \*handle:
+    :param handle:
         private data for the handler
+    :type handle: void \*
 
-    :param u8 cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: u8
 
-    :param void \*buf_in:
+    :param buf_in:
         input buffer
+    :type buf_in: void \*
 
-    :param u16 in_size:
+    :param in_size:
         input size
+    :type in_size: u16
 
-    :param void \*buf_out:
+    :param buf_out:
         output buffer
+    :type buf_out: void \*
 
-    :param u16 \*out_size:
+    :param out_size:
         returned output size
+    :type out_size: u16 \*
 
 .. _`init_pfhwdev`:
 
@@ -336,8 +370,9 @@ init_pfhwdev
 
     Initialize the extended components of PF
 
-    :param struct hinic_pfhwdev \*pfhwdev:
+    :param pfhwdev:
         the HW device for PF
+    :type pfhwdev: struct hinic_pfhwdev \*
 
 .. _`init_pfhwdev.description`:
 
@@ -355,8 +390,9 @@ free_pfhwdev
 
     Free the extended components of PF
 
-    :param struct hinic_pfhwdev \*pfhwdev:
+    :param pfhwdev:
         the HW device for PF
+    :type pfhwdev: struct hinic_pfhwdev \*
 
 .. _`hinic_init_hwdev`:
 
@@ -367,8 +403,9 @@ hinic_init_hwdev
 
     Initialize the NIC HW
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         the NIC pci device
+    :type pdev: struct pci_dev \*
 
 .. _`hinic_init_hwdev.description`:
 
@@ -388,8 +425,9 @@ hinic_free_hwdev
 
     Free the NIC HW device
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
 .. _`hinic_hwdev_num_qps`:
 
@@ -400,8 +438,9 @@ hinic_hwdev_num_qps
 
     return the number QPs available for use
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
 .. _`hinic_hwdev_num_qps.description`:
 
@@ -419,11 +458,13 @@ hinic_hwdev_get_sq
 
     get SQ
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param int i:
+    :param i:
         the position of the SQ
+    :type i: int
 
 .. _`hinic_hwdev_get_sq.return`:
 
@@ -441,11 +482,13 @@ hinic_hwdev_get_rq
 
     get RQ
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param int i:
+    :param i:
         the position of the RQ
+    :type i: int
 
 .. _`hinic_hwdev_get_rq.return`:
 
@@ -463,11 +506,13 @@ hinic_hwdev_msix_cnt_set
 
     clear message attribute counters for msix entry
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param u16 msix_index:
+    :param msix_index:
         msix_index
+    :type msix_index: u16
 
 .. _`hinic_hwdev_msix_cnt_set.description`:
 
@@ -485,26 +530,33 @@ hinic_hwdev_msix_set
 
     set message attribute for msix entry
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param u16 msix_index:
+    :param msix_index:
         msix_index
+    :type msix_index: u16
 
-    :param u8 pending_limit:
+    :param pending_limit:
         the maximum pending interrupt events (unit 8)
+    :type pending_limit: u8
 
-    :param u8 coalesc_timer:
+    :param coalesc_timer:
         coalesc period for interrupt (unit 8 us)
+    :type coalesc_timer: u8
 
-    :param u8 lli_timer_cfg:
+    :param lli_timer_cfg:
         *undescribed*
+    :type lli_timer_cfg: u8
 
-    :param u8 lli_credit_limit:
+    :param lli_credit_limit:
         maximum credits for low latency msix messages (unit 8)
+    :type lli_credit_limit: u8
 
-    :param u8 resend_timer:
+    :param resend_timer:
         maximum wait for resending msix (unit coalesc period)
+    :type resend_timer: u8
 
 .. _`hinic_hwdev_msix_set.description`:
 
@@ -522,17 +574,21 @@ hinic_hwdev_hw_ci_addr_set
 
     set cons idx addr and attributes in HW for sq
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param struct hinic_sq \*sq:
+    :param sq:
         send queue
+    :type sq: struct hinic_sq \*
 
-    :param u8 pending_limit:
+    :param pending_limit:
         the maximum pending update ci events (unit 8)
+    :type pending_limit: u8
 
-    :param u8 coalesc_timer:
+    :param coalesc_timer:
         coalesc period for update ci (unit 8 us)
+    :type coalesc_timer: u8
 
 .. _`hinic_hwdev_hw_ci_addr_set.description`:
 

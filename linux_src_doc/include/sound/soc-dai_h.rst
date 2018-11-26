@@ -10,17 +10,20 @@ snd_soc_dai_set_sdw_stream
 
     Configures a DAI for SDW stream operation
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param void \*stream:
+    :param stream:
         STREAM
+    :type stream: void \*
 
-    :param int direction:
+    :param direction:
         Stream direction(Playback/Capture)
         SoundWire subsystem doesn't have a notion of direction and we reuse
         the ASoC stream direction to configure sink/source ports.
         Playback maps to source ports and Capture for sink ports.
+    :type direction: int
 
 .. _`snd_soc_dai_set_sdw_stream.description`:
 

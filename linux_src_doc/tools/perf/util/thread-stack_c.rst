@@ -24,6 +24,7 @@ Definition
         u64 branch_count;
         struct call_path *cp;
         bool no_call;
+        bool trace_end;
     }
 
 .. _`thread_stack_entry.members`:
@@ -48,6 +49,9 @@ cp
 
 no_call
     a 'call' was not seen
+
+trace_end
+    a 'call' but trace ended
 
 .. _`thread_stack`:
 

@@ -10,9 +10,10 @@ ib_device_register_rdmacg
 
     register with rdma cgroup.
 
-    :param struct ib_device \*device:
+    :param device:
         device to register to participate in resource
         accounting by rdma cgroup.
+    :type device: struct ib_device \*
 
 .. _`ib_device_register_rdmacg.description`:
 
@@ -33,8 +34,9 @@ ib_device_unregister_rdmacg
 
     unregister with rdma cgroup.
 
-    :param struct ib_device \*device:
+    :param device:
         device to unregister.
+    :type device: struct ib_device \*
 
 .. _`ib_device_unregister_rdmacg.description`:
 

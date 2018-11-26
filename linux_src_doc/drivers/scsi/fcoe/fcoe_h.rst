@@ -72,8 +72,9 @@ fcoe_netdev
 
     Return the net device associated with a local port
 
-    :param const struct fc_lport \*lport:
+    :param lport:
         The local port to get the net device from
+    :type lport: const struct fc_lport \*
 
 .. This file was automatic generated / don't edit.
 

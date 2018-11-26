@@ -10,8 +10,9 @@ dwc3_gadget_ep_cmd_string
 
     returns endpoint command string
 
-    :param u8 cmd:
+    :param cmd:
         command code
+    :type cmd: u8
 
 .. _`dwc3_gadget_generic_cmd_string`:
 
@@ -22,8 +23,9 @@ dwc3_gadget_generic_cmd_string
 
     returns generic command string
 
-    :param u8 cmd:
+    :param cmd:
         command code
+    :type cmd: u8
 
 .. _`dwc3_gadget_link_string`:
 
@@ -34,8 +36,9 @@ dwc3_gadget_link_string
 
     returns link name
 
-    :param enum dwc3_link_state link_state:
+    :param link_state:
         link state code
+    :type link_state: enum dwc3_link_state
 
 .. _`dwc3_trb_type_string`:
 
@@ -46,8 +49,9 @@ dwc3_trb_type_string
 
     returns TRB type as a string
 
-    :param unsigned int type:
+    :param type:
         the type of the TRB
+    :type type: unsigned int
 
 .. _`dwc3_gadget_event_string`:
 
@@ -58,11 +62,13 @@ dwc3_gadget_event_string
 
     returns event name
 
-    :param char \*str:
+    :param str:
         *undescribed*
+    :type str: char \*
 
-    :param const struct dwc3_event_devt \*event:
+    :param event:
         the event code
+    :type event: const struct dwc3_event_devt \*
 
 .. _`dwc3_decode_ctrl`:
 
@@ -73,23 +79,29 @@ dwc3_decode_ctrl
 
     returns a string represetion of ctrl request
 
-    :param char \*str:
+    :param str:
         *undescribed*
+    :type str: char \*
 
-    :param __u8 bRequestType:
+    :param bRequestType:
         *undescribed*
+    :type bRequestType: __u8
 
-    :param __u8 bRequest:
+    :param bRequest:
         *undescribed*
+    :type bRequest: __u8
 
-    :param __u16 wValue:
+    :param wValue:
         *undescribed*
+    :type wValue: __u16
 
-    :param __u16 wIndex:
+    :param wIndex:
         *undescribed*
+    :type wIndex: __u16
 
-    :param __u16 wLength:
+    :param wLength:
         *undescribed*
+    :type wLength: __u16
 
 .. _`dwc3_ep_event_string`:
 
@@ -100,14 +112,17 @@ dwc3_ep_event_string
 
     returns event name
 
-    :param char \*str:
+    :param str:
         *undescribed*
+    :type str: char \*
 
-    :param const struct dwc3_event_depevt \*event:
+    :param event:
         then event code
+    :type event: const struct dwc3_event_depevt \*
 
-    :param u32 ep0state:
+    :param ep0state:
         *undescribed*
+    :type ep0state: u32
 
 .. _`dwc3_gadget_event_type_string`:
 
@@ -118,8 +133,9 @@ dwc3_gadget_event_type_string
 
     return event name
 
-    :param u8 event:
+    :param event:
         the event code
+    :type event: u8
 
 .. This file was automatic generated / don't edit.
 

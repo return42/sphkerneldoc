@@ -10,8 +10,9 @@ qpnp_tm_get_temp_stage
 
     return over-temperature stage
 
-    :param struct qpnp_tm_chip \*chip:
+    :param chip:
         Pointer to the qpnp_tm chip
+    :type chip: struct qpnp_tm_chip \*
 
 .. _`qpnp_tm_get_temp_stage.return`:
 

@@ -10,8 +10,9 @@
 
     find last (most-significant) set bit in a long word
 
-    :param unsigned long word:
+    :param word:
         the word to search
+    :type word: unsigned long
 
 .. _`__fls.description`:
 

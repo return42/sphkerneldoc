@@ -10,14 +10,17 @@ tee_shm_alloc
 
     Allocate shared memory
 
-    :param struct tee_context \*ctx:
+    :param ctx:
         Context that allocates the shared memory
+    :type ctx: struct tee_context \*
 
-    :param size_t size:
+    :param size:
         Requested size of shared memory
+    :type size: size_t
 
-    :param u32 flags:
+    :param flags:
         Flags setting properties for the requested shared memory.
+    :type flags: u32
 
 .. _`tee_shm_alloc.description`:
 
@@ -39,9 +42,10 @@ tee_shm_get_fd
 
     Increase reference count and return file descriptor
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
         \ ``returns``\  user space file descriptor to shared memory
+    :type shm: struct tee_shm \*
 
 .. _`tee_shm_free`:
 
@@ -52,8 +56,9 @@ tee_shm_free
 
     Free shared memory
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Handle to shared memory to free
+    :type shm: struct tee_shm \*
 
 .. _`tee_shm_va2pa`:
 
@@ -64,15 +69,18 @@ tee_shm_va2pa
 
     Get physical address of a virtual address
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
-    :param void \*va:
+    :param va:
         Virtual address to tranlsate
+    :type va: void \*
 
-    :param phys_addr_t \*pa:
+    :param pa:
         Returned physical address
         \ ``returns``\  0 on success and < 0 on failure
+    :type pa: phys_addr_t \*
 
 .. _`tee_shm_pa2va`:
 
@@ -83,15 +91,18 @@ tee_shm_pa2va
 
     Get virtual address of a physical address
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
-    :param phys_addr_t pa:
+    :param pa:
         Physical address to tranlsate
+    :type pa: phys_addr_t
 
-    :param void \*\*va:
+    :param va:
         Returned virtual address
         \ ``returns``\  0 on success and < 0 on failure
+    :type va: void \*\*
 
 .. _`tee_shm_get_va`:
 
@@ -102,13 +113,15 @@ tee_shm_get_va
 
     Get virtual address of a shared memory plus an offset
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
-    :param size_t offs:
+    :param offs:
         Offset from start of this shared memory
         \ ``returns``\  virtual address of the shared memory + offs if offs is within
         the bounds of this shared memory, else an ERR_PTR
+    :type offs: size_t
 
 .. _`tee_shm_get_pa`:
 
@@ -119,16 +132,19 @@ tee_shm_get_pa
 
     Get physical address of a shared memory plus an offset
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
-    :param size_t offs:
+    :param offs:
         Offset from start of this shared memory
+    :type offs: size_t
 
-    :param phys_addr_t \*pa:
+    :param pa:
         Physical address to return
         \ ``returns``\  0 if offs is within the bounds of this shared memory, else an
         error code.
+    :type pa: phys_addr_t \*
 
 .. _`tee_shm_get_from_id`:
 
@@ -139,12 +155,14 @@ tee_shm_get_from_id
 
     Find shared memory object and increase reference count
 
-    :param struct tee_context \*ctx:
+    :param ctx:
         Context owning the shared memory
+    :type ctx: struct tee_context \*
 
-    :param int id:
+    :param id:
         Id of shared memory object
         \ ``returns``\  a pointer to 'struct tee_shm' on success or an ERR_PTR on failure
+    :type id: int
 
 .. _`tee_shm_put`:
 
@@ -155,8 +173,9 @@ tee_shm_put
 
     Decrease reference count on a shared memory handle
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
 .. This file was automatic generated / don't edit.
 

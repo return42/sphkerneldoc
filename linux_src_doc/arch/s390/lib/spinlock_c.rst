@@ -8,8 +8,9 @@ spin_retry_setup
 
 .. c:function:: int spin_retry_setup(char *str)
 
-    :param char \*str:
+    :param str:
         *undescribed*
+    :type str: char \*
 
 .. This file was automatic generated / don't edit.
 

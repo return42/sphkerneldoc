@@ -10,8 +10,9 @@ caam_jr_alloc
 
     Alloc a job ring for someone to use as needed.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`caam_jr_alloc.description`:
 
@@ -30,8 +31,9 @@ caam_jr_free
 
     Free the Job Ring \ ``rdev``\      - points to the dev that identifies the Job ring to be released.
 
-    :param struct device \*rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: struct device \*
 
 .. _`caam_jr_enqueue`:
 
@@ -42,22 +44,25 @@ caam_jr_enqueue
 
     Enqueue a job descriptor head. Returns 0 if OK, -EBUSY if the queue is full, -EIO if it cannot map the caller's descriptor.
 
-    :param struct device \*dev:
+    :param dev:
         contains the job ring device that processed this
         response.
+    :type dev: struct device \*
 
-    :param u32 \*desc:
+    :param desc:
         descriptor that initiated the request, same as
         "desc" being argued to \ :c:func:`caam_jr_enqueue`\ .
+    :type desc: u32 \*
 
     :param void (\*cbk)(struct device \*dev, u32 \*desc, u32 status, void \*areq):
         pointer to a callback function to be invoked upon completion
         of this request. This has the form:
         callback(struct device \*dev, u32 \*desc, u32 stat, void \*arg)
 
-    :param void \*areq:
+    :param areq:
         optional pointer to a user argument for use at callback
         time.
+    :type areq: void \*
 
 .. This file was automatic generated / don't edit.
 

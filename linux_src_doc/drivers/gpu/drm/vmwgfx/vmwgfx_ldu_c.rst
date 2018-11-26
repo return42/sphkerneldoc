@@ -10,8 +10,9 @@ vmw_ldu_crtc_mode_set_nofb
 
     Enable svga
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC associated with the new screen
+    :type crtc: struct drm_crtc \*
 
 .. _`vmw_ldu_crtc_mode_set_nofb.description`:
 
@@ -29,11 +30,13 @@ vmw_ldu_crtc_atomic_enable
 
     Noop
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC associated with the new screen
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_crtc_state \*old_state:
+    :param old_state:
         *undescribed*
+    :type old_state: struct drm_crtc_state \*
 
 .. _`vmw_ldu_crtc_atomic_enable.description`:
 
@@ -54,11 +57,13 @@ vmw_ldu_crtc_atomic_disable
 
     Turns off CRTC
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC to be turned off
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_crtc_state \*old_state:
+    :param old_state:
         *undescribed*
+    :type old_state: struct drm_crtc_state \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ via_set_speed
 
     write timing registers
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         *undescribed*
+    :type hwif: ide_hwif_t \*
 
-    :param u8 dn:
+    :param dn:
         device
+    :type dn: u8
 
-    :param struct ide_timing \*timing:
+    :param timing:
         IDE timing data to use
+    :type timing: struct ide_timing \*
 
 .. _`via_set_speed.description`:
 
@@ -35,11 +38,13 @@ via_set_drive
 
     configure transfer mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         Drive to set up
+    :type drive: ide_drive_t \*
 
 .. _`via_set_drive.description`:
 
@@ -58,11 +63,13 @@ via_set_pio_mode
 
     set host controller for PIO mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`via_set_pio_mode.description`:
 
@@ -80,8 +87,9 @@ init_chipset_via82cxxx
 
     initialization handler
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`init_chipset_via82cxxx.description`:
 

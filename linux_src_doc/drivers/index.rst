@@ -89,6 +89,7 @@ drivers
     platform/index
     pnp/index
     power/index
+    powercap/index
     ps3/index
     ptp/index
     pwm/index

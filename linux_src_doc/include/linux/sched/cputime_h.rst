@@ -10,8 +10,9 @@ get_running_cputimer
 
     return \ :c:type:`tsk->signal <tsk>`\ ->cputimer if cputimer is running
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         Pointer to target task.
+    :type tsk: struct task_struct \*
 
 .. _`account_group_user_time`:
 
@@ -22,12 +23,14 @@ account_group_user_time
 
     Maintain utime for a thread group.
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         Pointer to task structure.
+    :type tsk: struct task_struct \*
 
-    :param u64 cputime:
+    :param cputime:
         Time value by which to increment the utime field of the
         thread_group_cputime structure.
+    :type cputime: u64
 
 .. _`account_group_user_time.description`:
 
@@ -46,12 +49,14 @@ account_group_system_time
 
     Maintain stime for a thread group.
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         Pointer to task structure.
+    :type tsk: struct task_struct \*
 
-    :param u64 cputime:
+    :param cputime:
         Time value by which to increment the stime field of the
         thread_group_cputime structure.
+    :type cputime: u64
 
 .. _`account_group_system_time.description`:
 
@@ -70,12 +75,14 @@ account_group_exec_runtime
 
     Maintain exec runtime for a thread group.
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         Pointer to task structure.
+    :type tsk: struct task_struct \*
 
-    :param unsigned long long ns:
+    :param ns:
         Time value by which to increment the sum_exec_runtime field
         of the thread_group_cputime structure.
+    :type ns: unsigned long long
 
 .. _`account_group_exec_runtime.description`:
 

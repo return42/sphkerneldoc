@@ -10,23 +10,27 @@ find_or_add_av
 
     internal function to find a volume, add a volume or do both (find and add if missing).
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int vol_id:
+    :param vol_id:
         the requested volume ID
+    :type vol_id: int
 
-    :param unsigned int flags:
+    :param flags:
         a combination of the \ ``AV_FIND``\  and \ ``AV_ADD``\  flags describing the
         expected operation. If only \ ``AV_ADD``\  is set, -EEXIST is returned
         if the volume already exists. If only \ ``AV_FIND``\  is set, NULL is
         returned if the volume does not exist. And if both flags are
         set, the helper first tries to find an existing volume, and if
         it does not exist it creates a new one.
+    :type flags: unsigned int
 
-    :param bool \*created:
+    :param created:
         in value used to inform the caller whether it"s a newly created
         volume or not.
+    :type created: bool \*
 
 .. _`find_or_add_av.description`:
 
@@ -46,14 +50,17 @@ ubi_find_or_add_av
 
     search for a volume in the attaching information and add one if it does not exist.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int vol_id:
+    :param vol_id:
         the requested volume ID
+    :type vol_id: int
 
-    :param bool \*created:
+    :param created:
         whether the volume has been created or not
+    :type created: bool \*
 
 .. _`ubi_find_or_add_av.description`:
 
@@ -72,14 +79,17 @@ ubi_alloc_aeb
 
     allocate an aeb element
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number
+    :type pnum: int
 
-    :param int ec:
+    :param ec:
         erase counter of the physical eraseblock
+    :type ec: int
 
 .. _`ubi_alloc_aeb.description`:
 
@@ -100,11 +110,13 @@ ubi_free_aeb
 
     free an aeb element
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param struct ubi_ainf_peb \*aeb:
+    :param aeb:
         the element to free
+    :type aeb: struct ubi_ainf_peb \*
 
 .. _`ubi_free_aeb.description`:
 
@@ -123,26 +135,33 @@ add_to_list
 
     add physical eraseblock to a list.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number to add
+    :type pnum: int
 
-    :param int vol_id:
+    :param vol_id:
         the last used volume id for the PEB
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         the last used LEB number for the PEB
+    :type lnum: int
 
-    :param int ec:
+    :param ec:
         erase counter of the physical eraseblock
+    :type ec: int
 
-    :param int to_head:
+    :param to_head:
         if not zero, add to the head of the list
+    :type to_head: int
 
-    :param struct list_head \*list:
+    :param list:
         the list to add to
+    :type list: struct list_head \*
 
 .. _`add_to_list.description`:
 
@@ -169,14 +188,17 @@ add_corrupted
 
     add a corrupted physical eraseblock.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number to add
+    :type pnum: int
 
-    :param int ec:
+    :param ec:
         erase counter of the physical eraseblock
+    :type ec: int
 
 .. _`add_corrupted.description`:
 
@@ -197,17 +219,21 @@ add_fastmap
 
     add a Fastmap related physical eraseblock.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number the VID header came from
+    :type pnum: int
 
-    :param struct ubi_vid_hdr \*vid_hdr:
+    :param vid_hdr:
         the volume identifier header
+    :type vid_hdr: struct ubi_vid_hdr \*
 
-    :param int ec:
+    :param ec:
         erase counter of the physical eraseblock
+    :type ec: int
 
 .. _`add_fastmap.description`:
 
@@ -229,17 +255,21 @@ validate_vid_hdr
 
     check volume identifier header.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param const struct ubi_vid_hdr \*vid_hdr:
+    :param vid_hdr:
         the volume identifier header to check
+    :type vid_hdr: const struct ubi_vid_hdr \*
 
-    :param const struct ubi_ainf_volume \*av:
+    :param av:
         information about the volume this logical eraseblock belongs to
+    :type av: const struct ubi_ainf_volume \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number the VID header came from
+    :type pnum: int
 
 .. _`validate_vid_hdr.description`:
 
@@ -263,17 +293,21 @@ add_volume
 
     add volume to the attaching information.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int vol_id:
+    :param vol_id:
         ID of the volume to add
+    :type vol_id: int
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number
+    :type pnum: int
 
-    :param const struct ubi_vid_hdr \*vid_hdr:
+    :param vid_hdr:
         volume identifier header
+    :type vid_hdr: const struct ubi_vid_hdr \*
 
 .. _`add_volume.description`:
 
@@ -295,18 +329,22 @@ ubi_compare_lebs
 
     find out which logical eraseblock is newer.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param const struct ubi_ainf_peb \*aeb:
+    :param aeb:
         first logical eraseblock to compare
+    :type aeb: const struct ubi_ainf_peb \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number of the second logical eraseblock to
         compare
+    :type pnum: int
 
-    :param const struct ubi_vid_hdr \*vid_hdr:
+    :param vid_hdr:
         volume identifier header of the second logical eraseblock
+    :type vid_hdr: const struct ubi_vid_hdr \*
 
 .. _`ubi_compare_lebs.description`:
 
@@ -369,23 +407,29 @@ ubi_add_to_av
 
     add used physical eraseblock to the attaching information.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number
+    :type pnum: int
 
-    :param int ec:
+    :param ec:
         erase counter
+    :type ec: int
 
-    :param const struct ubi_vid_hdr \*vid_hdr:
+    :param vid_hdr:
         the volume identifier header
+    :type vid_hdr: const struct ubi_vid_hdr \*
 
-    :param int bitflips:
+    :param bitflips:
         if bit-flips were detected when this physical eraseblock was read
+    :type bitflips: int
 
 .. _`ubi_add_to_av.description`:
 
@@ -408,11 +452,13 @@ ubi_add_av
 
     add volume to the attaching information.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int vol_id:
+    :param vol_id:
         the requested volume ID
+    :type vol_id: int
 
 .. _`ubi_add_av.description`:
 
@@ -431,11 +477,13 @@ ubi_find_av
 
     find volume in the attaching information.
 
-    :param const struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: const struct ubi_attach_info \*
 
-    :param int vol_id:
+    :param vol_id:
         the requested volume ID
+    :type vol_id: int
 
 .. _`ubi_find_av.description`:
 
@@ -454,11 +502,13 @@ ubi_remove_av
 
     delete attaching information about a volume.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param struct ubi_ainf_volume \*av:
+    :param av:
         the volume attaching information to delete
+    :type av: struct ubi_ainf_volume \*
 
 .. _`early_erase_peb`:
 
@@ -469,17 +519,21 @@ early_erase_peb
 
     erase a physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param const struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: const struct ubi_attach_info \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number to erase;
+    :type pnum: int
 
-    :param int ec:
+    :param ec:
         erase counter value to write (%UBI_UNKNOWN if it is unknown)
+    :type ec: int
 
 .. _`early_erase_peb.description`:
 
@@ -501,11 +555,13 @@ ubi_early_get_peb
 
     get a free physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
 .. _`ubi_early_get_peb.description`:
 
@@ -530,14 +586,17 @@ check_corruption
 
     check the data area of PEB.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_vid_hdr \*vid_hdr:
+    :param vid_hdr:
         the (corrupted) VID header of this PEB
+    :type vid_hdr: struct ubi_vid_hdr \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to check
+    :type pnum: int
 
 .. _`check_corruption.description`:
 
@@ -564,17 +623,21 @@ scan_peb
 
     scan and process UBI headers of a PEB.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number
+    :type pnum: int
 
-    :param bool fast:
+    :param fast:
         true if we're scanning for a Fastmap
+    :type fast: bool
 
 .. _`scan_peb.description`:
 
@@ -595,11 +658,13 @@ late_analysis
 
     analyze the overall situation with PEB.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
 .. _`late_analysis.description`:
 
@@ -621,14 +686,17 @@ destroy_av
 
     free volume attaching information.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
-    :param struct ubi_ainf_volume \*av:
+    :param av:
         volume attaching information
+    :type av: struct ubi_ainf_volume \*
 
-    :param struct list_head \*list:
+    :param list:
         put the aeb elements in there if !NULL, otherwise free them
+    :type list: struct list_head \*
 
 .. _`destroy_av.description`:
 
@@ -646,8 +714,9 @@ destroy_ai
 
     destroy attaching information.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
 .. _`scan_all`:
 
@@ -658,14 +727,17 @@ scan_all
 
     scan entire MTD device.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attach info object
+    :type ai: struct ubi_attach_info \*
 
-    :param int start:
+    :param start:
         start scanning at this PEB
+    :type start: int
 
 .. _`scan_all.description`:
 
@@ -685,11 +757,13 @@ scan_fast
 
     try to find a fastmap and attach from it.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*\*ai:
+    :param ai:
         attach info object
+    :type ai: struct ubi_attach_info \*\*
 
 .. _`scan_fast.description`:
 
@@ -710,11 +784,13 @@ ubi_attach
 
     attach an MTD device.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device descriptor
+    :type ubi: struct ubi_device \*
 
-    :param int force_scan:
+    :param force_scan:
         if set to non-zero attach by scanning
+    :type force_scan: int
 
 .. _`ubi_attach.description`:
 
@@ -733,11 +809,13 @@ self_check_ai
 
     check the attaching information.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
 .. _`self_check_ai.description`:
 

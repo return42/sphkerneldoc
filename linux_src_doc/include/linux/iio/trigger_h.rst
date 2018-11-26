@@ -138,11 +138,13 @@ iio_trigger_set_drvdata
 
     Set trigger driver data
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         IIO trigger structure
+    :type trig: struct iio_trigger \*
 
-    :param void \*data:
+    :param data:
         Driver specific data
+    :type data: void \*
 
 .. _`iio_trigger_set_drvdata.description`:
 
@@ -161,8 +163,9 @@ iio_trigger_get_drvdata
 
     Get trigger driver data
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         IIO trigger structure
+    :type trig: struct iio_trigger \*
 
 .. _`iio_trigger_get_drvdata.description`:
 
@@ -180,8 +183,9 @@ iio_trigger_register
 
     register a trigger with the IIO core
 
-    :param  trig_info:
+    :param trig_info:
         trigger to be registered
+    :type trig_info: 
 
 .. _`iio_trigger_unregister`:
 
@@ -192,8 +196,9 @@ iio_trigger_unregister
 
     unregister a trigger from the core
 
-    :param struct iio_trigger \*trig_info:
+    :param trig_info:
         trigger to be unregistered
+    :type trig_info: struct iio_trigger \*
 
 .. _`iio_trigger_set_immutable`:
 
@@ -204,11 +209,13 @@ iio_trigger_set_immutable
 
     set an immutable trigger on destination
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure containing the device
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         trigger to assign to device
+    :type trig: struct iio_trigger \*
 
 .. _`iio_trigger_poll`:
 
@@ -219,8 +226,9 @@ iio_trigger_poll
 
     called on a trigger occurring
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         trigger which occurred
+    :type trig: struct iio_trigger \*
 
 .. _`iio_trigger_poll.description`:
 
@@ -238,8 +246,9 @@ iio_trigger_using_own
 
     tells us if we use our own HW trigger ourselves
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         device to check
+    :type indio_dev: struct iio_dev \*
 
 .. This file was automatic generated / don't edit.
 

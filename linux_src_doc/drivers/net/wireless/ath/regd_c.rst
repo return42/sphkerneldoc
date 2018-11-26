@@ -8,14 +8,17 @@ ath_reg_apply_ir_flags
 
 .. c:function:: void ath_reg_apply_ir_flags(struct wiphy *wiphy, struct ath_regulatory *reg, enum nl80211_reg_initiator initiator)
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy to use
+    :type wiphy: struct wiphy \*
 
-    :param struct ath_regulatory \*reg:
+    :param reg:
         *undescribed*
+    :type reg: struct ath_regulatory \*
 
-    :param enum nl80211_reg_initiator initiator:
+    :param initiator:
         the regulatory hint initiator
+    :type initiator: enum nl80211_reg_initiator
 
 .. _`ath_reg_apply_ir_flags.description`:
 

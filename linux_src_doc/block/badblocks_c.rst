@@ -10,20 +10,25 @@ badblocks_check
 
     check a given range for bad sectors
 
-    :param struct badblocks \*bb:
+    :param bb:
         the badblocks structure that holds all badblock information
+    :type bb: struct badblocks \*
 
-    :param sector_t s:
+    :param s:
         sector (start) at which to check for badblocks
+    :type s: sector_t
 
-    :param int sectors:
+    :param sectors:
         number of sectors to check for badblocks
+    :type sectors: int
 
-    :param sector_t \*first_bad:
+    :param first_bad:
         pointer to store location of the first badblock
+    :type first_bad: sector_t \*
 
-    :param int \*bad_sectors:
+    :param bad_sectors:
         pointer to store number of badblocks after \ ``first_bad``\ 
+    :type bad_sectors: int \*
 
 .. _`badblocks_check.description`:
 
@@ -69,17 +74,21 @@ badblocks_set
 
     Add a range of bad blocks to the table.
 
-    :param struct badblocks \*bb:
+    :param bb:
         the badblocks structure that holds all badblock information
+    :type bb: struct badblocks \*
 
-    :param sector_t s:
+    :param s:
         first sector to mark as bad
+    :type s: sector_t
 
-    :param int sectors:
+    :param sectors:
         number of sectors to mark as bad
+    :type sectors: int
 
-    :param int acknowledged:
+    :param acknowledged:
         weather to mark the bad sectors as acknowledged
+    :type acknowledged: int
 
 .. _`badblocks_set.description`:
 
@@ -107,14 +116,17 @@ badblocks_clear
 
     Remove a range of bad blocks to the table.
 
-    :param struct badblocks \*bb:
+    :param bb:
         the badblocks structure that holds all badblock information
+    :type bb: struct badblocks \*
 
-    :param sector_t s:
+    :param s:
         first sector to mark as bad
+    :type s: sector_t
 
-    :param int sectors:
+    :param sectors:
         number of sectors to mark as bad
+    :type sectors: int
 
 .. _`badblocks_clear.description`:
 
@@ -142,8 +154,9 @@ ack_all_badblocks
 
     Acknowledge all bad blocks in a list.
 
-    :param struct badblocks \*bb:
+    :param bb:
         the badblocks structure that holds all badblock information
+    :type bb: struct badblocks \*
 
 .. _`ack_all_badblocks.description`:
 
@@ -162,14 +175,17 @@ badblocks_show
 
     sysfs access to bad-blocks list
 
-    :param struct badblocks \*bb:
+    :param bb:
         the badblocks structure that holds all badblock information
+    :type bb: struct badblocks \*
 
-    :param char \*page:
+    :param page:
         buffer received from sysfs
+    :type page: char \*
 
-    :param int unack:
+    :param unack:
         weather to show unacknowledged badblocks
+    :type unack: int
 
 .. _`badblocks_show.return`:
 
@@ -187,17 +203,21 @@ badblocks_store
 
     sysfs access to bad-blocks list
 
-    :param struct badblocks \*bb:
+    :param bb:
         the badblocks structure that holds all badblock information
+    :type bb: struct badblocks \*
 
-    :param const char \*page:
+    :param page:
         buffer received from sysfs
+    :type page: const char \*
 
-    :param size_t len:
+    :param len:
         length of data received from sysfs
+    :type len: size_t
 
-    :param int unack:
+    :param unack:
         weather to show unacknowledged badblocks
+    :type unack: int
 
 .. _`badblocks_store.return`:
 
@@ -215,11 +235,13 @@ badblocks_init
 
     initialize the badblocks structure
 
-    :param struct badblocks \*bb:
+    :param bb:
         the badblocks structure that holds all badblock information
+    :type bb: struct badblocks \*
 
-    :param int enable:
+    :param enable:
         weather to enable badblocks accounting
+    :type enable: int
 
 .. _`badblocks_init.return`:
 
@@ -238,8 +260,9 @@ badblocks_exit
 
     free the badblocks structure
 
-    :param struct badblocks \*bb:
+    :param bb:
         the badblocks structure that holds all badblock information
+    :type bb: struct badblocks \*
 
 .. This file was automatic generated / don't edit.
 

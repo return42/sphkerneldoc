@@ -10,8 +10,9 @@ pcpu_get_pages
 
     get temp pages array
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pcpu_get_pages.description`:
 
@@ -38,17 +39,21 @@ pcpu_free_pages
 
     free pages which were allocated for \ ``chunk``\ 
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk pages were allocated for
+    :type chunk: struct pcpu_chunk \*
 
-    :param struct page \*\*pages:
+    :param pages:
         array of pages to be freed, indexed by \ :c:func:`pcpu_page_idx`\ 
+    :type pages: struct page \*\*
 
-    :param int page_start:
+    :param page_start:
         page index of the first page to be freed
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         page index of the last page to be freed + 1
+    :type page_end: int
 
 .. _`pcpu_free_pages.description`:
 
@@ -67,20 +72,25 @@ pcpu_alloc_pages
 
     allocates pages for \ ``chunk``\ 
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         target chunk
+    :type chunk: struct pcpu_chunk \*
 
-    :param struct page \*\*pages:
+    :param pages:
         array to put the allocated pages into, indexed by \ :c:func:`pcpu_page_idx`\ 
+    :type pages: struct page \*\*
 
-    :param int page_start:
+    :param page_start:
         page index of the first page to be allocated
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         page index of the last page to be allocated + 1
+    :type page_end: int
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags passed to the underlying allocator
+    :type gfp: gfp_t
 
 .. _`pcpu_alloc_pages.description`:
 
@@ -100,14 +110,17 @@ pcpu_pre_unmap_flush
 
     flush cache prior to unmapping
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk the regions to be flushed belongs to
+    :type chunk: struct pcpu_chunk \*
 
-    :param int page_start:
+    :param page_start:
         page index of the first page to be flushed
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         page index of the last page to be flushed + 1
+    :type page_end: int
 
 .. _`pcpu_pre_unmap_flush.description`:
 
@@ -129,17 +142,21 @@ pcpu_unmap_pages
 
     unmap pages out of a pcpu_chunk
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param struct page \*\*pages:
+    :param pages:
         pages array which can be used to pass information to free
+    :type pages: struct page \*\*
 
-    :param int page_start:
+    :param page_start:
         page index of the first page to unmap
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         page index of the last page to unmap + 1
+    :type page_end: int
 
 .. _`pcpu_unmap_pages.description`:
 
@@ -161,14 +178,17 @@ pcpu_post_unmap_tlb_flush
 
     flush TLB after unmapping
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         pcpu_chunk the regions to be flushed belong to
+    :type chunk: struct pcpu_chunk \*
 
-    :param int page_start:
+    :param page_start:
         page index of the first page to be flushed
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         page index of the last page to be flushed + 1
+    :type page_end: int
 
 .. _`pcpu_post_unmap_tlb_flush.description`:
 
@@ -191,17 +211,21 @@ pcpu_map_pages
 
     map pages into a pcpu_chunk
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param struct page \*\*pages:
+    :param pages:
         pages array containing pages to be mapped
+    :type pages: struct page \*\*
 
-    :param int page_start:
+    :param page_start:
         page index of the first page to map
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         page index of the last page to map + 1
+    :type page_end: int
 
 .. _`pcpu_map_pages.description`:
 
@@ -224,14 +248,17 @@ pcpu_post_map_flush
 
     flush cache after mapping
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         pcpu_chunk the regions to be flushed belong to
+    :type chunk: struct pcpu_chunk \*
 
-    :param int page_start:
+    :param page_start:
         page index of the first page to be flushed
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         page index of the last page to be flushed + 1
+    :type page_end: int
 
 .. _`pcpu_post_map_flush.description`:
 
@@ -253,17 +280,21 @@ pcpu_populate_chunk
 
     populate and map an area of a pcpu_chunk
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
-    :param int page_start:
+    :param page_start:
         the start page
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         the end page
+    :type page_end: int
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags passed to the underlying memory allocator
+    :type gfp: gfp_t
 
 .. _`pcpu_populate_chunk.description`:
 
@@ -289,14 +320,17 @@ pcpu_depopulate_chunk
 
     depopulate and unmap an area of a pcpu_chunk
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk to depopulate
+    :type chunk: struct pcpu_chunk \*
 
-    :param int page_start:
+    :param page_start:
         the start page
+    :type page_start: int
 
-    :param int page_end:
+    :param page_end:
         the end page
+    :type page_end: int
 
 .. _`pcpu_depopulate_chunk.description`:
 

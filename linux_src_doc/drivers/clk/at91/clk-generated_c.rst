@@ -10,8 +10,9 @@ clk_generated_startup
 
     Initialize a given clock to its default parent and divisor parameter.
 
-    :param struct clk_generated \*gck:
+    :param gck:
         Generated clock to set the startup parameters for.
+    :type gck: struct clk_generated \*
 
 .. _`clk_generated_startup.description`:
 

@@ -6,18 +6,17 @@
 typec_altmode_update_active
 ===========================
 
-.. c:function:: void typec_altmode_update_active(struct typec_altmode *alt, int mode, bool active)
+.. c:function:: void typec_altmode_update_active(struct typec_altmode *adev, bool active)
 
     Report Enter/Exit mode
 
-    :param struct typec_altmode \*alt:
+    :param adev:
         Handle to the alternate mode
+    :type adev: struct typec_altmode \*
 
-    :param int mode:
-        Mode index
-
-    :param bool active:
+    :param active:
         True when the mode has been entered
+    :type active: bool
 
 .. _`typec_altmode_update_active.description`:
 
@@ -36,8 +35,9 @@ typec_altmode2port
 
     Alternate Mode to USB Type-C port
 
-    :param struct typec_altmode \*alt:
+    :param alt:
         The Alternate Mode
+    :type alt: struct typec_altmode \*
 
 .. _`typec_altmode2port.description`:
 
@@ -52,12 +52,13 @@ connected to.
 typec_unregister_altmode
 ========================
 
-.. c:function:: void typec_unregister_altmode(struct typec_altmode *alt)
+.. c:function:: void typec_unregister_altmode(struct typec_altmode *adev)
 
     Unregister Alternate Mode
 
-    :param struct typec_altmode \*alt:
+    :param adev:
         The alternate mode to be unregistered
+    :type adev: struct typec_altmode \*
 
 .. _`typec_unregister_altmode.description`:
 
@@ -76,8 +77,9 @@ typec_partner_set_identity
 
     Report result from Discover Identity command
 
-    :param struct typec_partner \*partner:
+    :param partner:
         The partner updated identity values
+    :type partner: struct typec_partner \*
 
 .. _`typec_partner_set_identity.description`:
 
@@ -96,11 +98,13 @@ typec_partner_register_altmode
 
     Register USB Type-C Partner Alternate Mode
 
-    :param struct typec_partner \*partner:
+    :param partner:
         USB Type-C Partner that supports the alternate mode
+    :type partner: struct typec_partner \*
 
-    :param const struct typec_altmode_desc \*desc:
+    :param desc:
         Description of the alternate mode
+    :type desc: const struct typec_altmode_desc \*
 
 .. _`typec_partner_register_altmode.description`:
 
@@ -123,11 +127,13 @@ typec_register_partner
 
     Register a USB Type-C Partner
 
-    :param struct typec_port \*port:
+    :param port:
         The USB Type-C Port the partner is connected to
+    :type port: struct typec_port \*
 
-    :param struct typec_partner_desc \*desc:
+    :param desc:
         Description of the partner
+    :type desc: struct typec_partner_desc \*
 
 .. _`typec_register_partner.description`:
 
@@ -147,8 +153,9 @@ typec_unregister_partner
 
     Unregister a USB Type-C Partner
 
-    :param struct typec_partner \*partner:
+    :param partner:
         The partner to be unregistered
+    :type partner: struct typec_partner \*
 
 .. _`typec_unregister_partner.description`:
 
@@ -166,11 +173,13 @@ typec_plug_register_altmode
 
     Register USB Type-C Cable Plug Alternate Mode
 
-    :param struct typec_plug \*plug:
+    :param plug:
         USB Type-C Cable Plug that supports the alternate mode
+    :type plug: struct typec_plug \*
 
-    :param const struct typec_altmode_desc \*desc:
+    :param desc:
         Description of the alternate mode
+    :type desc: const struct typec_altmode_desc \*
 
 .. _`typec_plug_register_altmode.description`:
 
@@ -193,11 +202,13 @@ typec_register_plug
 
     Register a USB Type-C Cable Plug
 
-    :param struct typec_cable \*cable:
+    :param cable:
         USB Type-C Cable with the plug
+    :type cable: struct typec_cable \*
 
-    :param struct typec_plug_desc \*desc:
+    :param desc:
         Description of the cable plug
+    :type desc: struct typec_plug_desc \*
 
 .. _`typec_register_plug.description`:
 
@@ -219,8 +230,9 @@ typec_unregister_plug
 
     Unregister a USB Type-C Cable Plug
 
-    :param struct typec_plug \*plug:
+    :param plug:
         The cable plug to be unregistered
+    :type plug: struct typec_plug \*
 
 .. _`typec_unregister_plug.description`:
 
@@ -238,8 +250,9 @@ typec_cable_set_identity
 
     Report result from Discover Identity command
 
-    :param struct typec_cable \*cable:
+    :param cable:
         The cable updated identity values
+    :type cable: struct typec_cable \*
 
 .. _`typec_cable_set_identity.description`:
 
@@ -258,11 +271,13 @@ typec_register_cable
 
     Register a USB Type-C Cable
 
-    :param struct typec_port \*port:
+    :param port:
         The USB Type-C Port the cable is connected to
+    :type port: struct typec_port \*
 
-    :param struct typec_cable_desc \*desc:
+    :param desc:
         Description of the cable
+    :type desc: struct typec_cable_desc \*
 
 .. _`typec_register_cable.description`:
 
@@ -283,8 +298,9 @@ typec_unregister_cable
 
     Unregister a USB Type-C Cable
 
-    :param struct typec_cable \*cable:
+    :param cable:
         The cable to be unregistered
+    :type cable: struct typec_cable \*
 
 .. _`typec_unregister_cable.description`:
 
@@ -302,11 +318,13 @@ typec_set_data_role
 
     Report data role change
 
-    :param struct typec_port \*port:
+    :param port:
         The USB Type-C Port where the role was changed
+    :type port: struct typec_port \*
 
-    :param enum typec_data_role role:
+    :param role:
         The new data role
+    :type role: enum typec_data_role
 
 .. _`typec_set_data_role.description`:
 
@@ -324,11 +342,13 @@ typec_set_pwr_role
 
     Report power role change
 
-    :param struct typec_port \*port:
+    :param port:
         The USB Type-C Port where the role was changed
+    :type port: struct typec_port \*
 
-    :param enum typec_role role:
+    :param role:
         The new data role
+    :type role: enum typec_role
 
 .. _`typec_set_pwr_role.description`:
 
@@ -346,11 +366,13 @@ typec_set_vconn_role
 
     Report VCONN source change
 
-    :param struct typec_port \*port:
+    :param port:
         The USB Type-C Port which VCONN role changed
+    :type port: struct typec_port \*
 
-    :param enum typec_role role:
+    :param role:
         Source when \ ``port``\  is sourcing VCONN, or Sink when it's not
+    :type role: enum typec_role
 
 .. _`typec_set_vconn_role.description`:
 
@@ -369,11 +391,13 @@ typec_set_pwr_opmode
 
     Report changed power operation mode
 
-    :param struct typec_port \*port:
+    :param port:
         The USB Type-C Port where the mode was changed
+    :type port: struct typec_port \*
 
-    :param enum typec_pwr_opmode opmode:
+    :param opmode:
         New power operation mode
+    :type opmode: enum typec_pwr_opmode
 
 .. _`typec_set_pwr_opmode.description`:
 
@@ -385,6 +409,72 @@ mode in \ ``port``\ . The modes are USB (default), 1.5A, 3.0A as defined in USB
 Type-C specification, and "USB Power Delivery" when the power levels are
 negotiated with methods defined in USB Power Delivery specification.
 
+.. _`typec_find_port_power_role`:
+
+typec_find_port_power_role
+==========================
+
+.. c:function:: int typec_find_port_power_role(const char *name)
+
+    Get the typec port power capability
+
+    :param name:
+        port power capability string
+    :type name: const char \*
+
+.. _`typec_find_port_power_role.description`:
+
+Description
+-----------
+
+This routine is used to find the typec_port_type by its string name.
+
+Returns typec_port_type if success, otherwise negative error code.
+
+.. _`typec_find_power_role`:
+
+typec_find_power_role
+=====================
+
+.. c:function:: int typec_find_power_role(const char *name)
+
+    Find the typec one specific power role
+
+    :param name:
+        power role string
+    :type name: const char \*
+
+.. _`typec_find_power_role.description`:
+
+Description
+-----------
+
+This routine is used to find the typec_role by its string name.
+
+Returns typec_role if success, otherwise negative error code.
+
+.. _`typec_find_port_data_role`:
+
+typec_find_port_data_role
+=========================
+
+.. c:function:: int typec_find_port_data_role(const char *name)
+
+    Get the typec port data capability
+
+    :param name:
+        port data capability string
+    :type name: const char \*
+
+.. _`typec_find_port_data_role.description`:
+
+Description
+-----------
+
+This routine is used to find the typec_port_data by its string name.
+
+Returns typec_port_data if success, otherwise negative error code.
+
 .. _`typec_set_orientation`:
 
 typec_set_orientation
@@ -394,11 +484,13 @@ typec_set_orientation
 
     Set USB Type-C cable plug orientation
 
-    :param struct typec_port \*port:
+    :param port:
         USB Type-C Port
+    :type port: struct typec_port \*
 
-    :param enum typec_orientation orientation:
+    :param orientation:
         USB Type-C cable plug orientation
+    :type orientation: enum typec_orientation
 
 .. _`typec_set_orientation.description`:
 
@@ -406,6 +498,26 @@ Description
 -----------
 
 Set cable plug orientation for \ ``port``\ .
+
+.. _`typec_get_orientation`:
+
+typec_get_orientation
+=====================
+
+.. c:function:: enum typec_orientation typec_get_orientation(struct typec_port *port)
+
+    Get USB Type-C cable plug orientation
+
+    :param port:
+        USB Type-C Port
+    :type port: struct typec_port \*
+
+.. _`typec_get_orientation.description`:
+
+Description
+-----------
+
+Get current cable plug orientation for \ ``port``\ .
 
 .. _`typec_set_mode`:
 
@@ -416,19 +528,21 @@ typec_set_mode
 
     Set mode of operation for USB Type-C connector
 
-    :param struct typec_port \*port:
-        USB Type-C port for the connector
+    :param port:
+        USB Type-C connector
+    :type port: struct typec_port \*
 
-    :param int mode:
-        Operation mode for the connector
+    :param mode:
+        Accessory Mode, USB Operation or Safe State
+    :type mode: int
 
 .. _`typec_set_mode.description`:
 
 Description
 -----------
 
-Set mode \ ``mode``\  for \ ``port``\ . This function will configure the muxes needed to
-enter \ ``mode``\ .
+Configure \ ``port``\  for Accessory Mode \ ``mode``\ . This function will configure the
+muxes needed for \ ``mode``\ .
 
 .. _`typec_port_register_altmode`:
 
@@ -439,11 +553,13 @@ typec_port_register_altmode
 
     Register USB Type-C Port Alternate Mode
 
-    :param struct typec_port \*port:
+    :param port:
         USB Type-C Port that supports the alternate mode
+    :type port: struct typec_port \*
 
-    :param const struct typec_altmode_desc \*desc:
+    :param desc:
         Description of the alternate mode
+    :type desc: const struct typec_altmode_desc \*
 
 .. _`typec_port_register_altmode.description`:
 
@@ -464,11 +580,13 @@ typec_register_port
 
     Register a USB Type-C Port
 
-    :param struct device \*parent:
+    :param parent:
         Parent device
+    :type parent: struct device \*
 
-    :param const struct typec_capability \*cap:
+    :param cap:
         Description of the port
+    :type cap: const struct typec_capability \*
 
 .. _`typec_register_port.description`:
 
@@ -488,8 +606,9 @@ typec_unregister_port
 
     Unregister a USB Type-C Port
 
-    :param struct typec_port \*port:
+    :param port:
         The port to be unregistered
+    :type port: struct typec_port \*
 
 .. _`typec_unregister_port.description`:
 

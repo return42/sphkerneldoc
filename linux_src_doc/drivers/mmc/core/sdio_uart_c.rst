@@ -10,11 +10,13 @@ uart_dtr_rts
 
     port helper to set uart signals
 
-    :param struct tty_port \*tport:
+    :param tport:
         tty port to be updated
+    :type tport: struct tty_port \*
 
-    :param int onoff:
+    :param onoff:
         set to turn on DTR/RTS
+    :type onoff: int
 
 .. _`uart_dtr_rts.description`:
 
@@ -33,11 +35,13 @@ sdio_uart_activate
 
     start up hardware
 
-    :param struct tty_port \*tport:
+    :param tport:
         tty port to activate
+    :type tport: struct tty_port \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty bound to this port
+    :type tty: struct tty_struct \*
 
 .. _`sdio_uart_activate.description`:
 
@@ -62,8 +66,9 @@ sdio_uart_shutdown
 
     stop hardware
 
-    :param struct tty_port \*tport:
+    :param tport:
         tty port to shut down
+    :type tport: struct tty_port \*
 
 .. _`sdio_uart_shutdown.description`:
 
@@ -84,11 +89,13 @@ sdio_uart_install
 
     install method
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the driver in use (sdio_uart in our case)
+    :type driver: struct tty_driver \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty being bound
+    :type tty: struct tty_struct \*
 
 .. _`sdio_uart_install.description`:
 
@@ -107,8 +114,9 @@ sdio_uart_cleanup
 
     called on the last tty kref drop
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty being destroyed
+    :type tty: struct tty_struct \*
 
 .. _`sdio_uart_cleanup.description`:
 

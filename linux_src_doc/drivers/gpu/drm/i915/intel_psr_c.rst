@@ -41,11 +41,13 @@ intel_psr_enable
 
     Enable PSR
 
-    :param struct intel_dp \*intel_dp:
+    :param intel_dp:
         Intel DP
+    :type intel_dp: struct intel_dp \*
 
-    :param const struct intel_crtc_state \*crtc_state:
+    :param crtc_state:
         new CRTC state
+    :type crtc_state: const struct intel_crtc_state \*
 
 .. _`intel_psr_enable.description`:
 
@@ -63,11 +65,13 @@ intel_psr_disable
 
     Disable PSR
 
-    :param struct intel_dp \*intel_dp:
+    :param intel_dp:
         Intel DP
+    :type intel_dp: struct intel_dp \*
 
-    :param const struct intel_crtc_state \*old_crtc_state:
+    :param old_crtc_state:
         old CRTC state
+    :type old_crtc_state: const struct intel_crtc_state \*
 
 .. _`intel_psr_disable.description`:
 
@@ -76,30 +80,37 @@ Description
 
 This function needs to be called before disabling pipe.
 
-.. _`intel_psr_single_frame_update`:
+.. _`intel_psr_wait_for_idle`:
 
-intel_psr_single_frame_update
-=============================
+intel_psr_wait_for_idle
+=======================
 
-.. c:function:: void intel_psr_single_frame_update(struct drm_i915_private *dev_priv, unsigned frontbuffer_bits)
+.. c:function:: int intel_psr_wait_for_idle(const struct intel_crtc_state *new_crtc_state, u32 *out_value)
 
-    Single Frame Update
+    wait for PSR1 to idle
 
-    :param struct drm_i915_private \*dev_priv:
-        i915 device
+    :param new_crtc_state:
+        new CRTC state
+    :type new_crtc_state: const struct intel_crtc_state \*
 
-    :param unsigned frontbuffer_bits:
-        frontbuffer plane tracking bits
+    :param out_value:
+        PSR status in case of failure
+    :type out_value: u32 \*
 
-.. _`intel_psr_single_frame_update.description`:
+.. _`intel_psr_wait_for_idle.description`:
 
 Description
 -----------
 
-Some platforms support a single frame update feature that is used to
-send and update only one frame on Remote Frame Buffer.
-So far it is only implemented for Valleyview and Cherryview because
-hardware requires this to be done before a page flip.
+This function is expected to be called from \ :c:func:`pipe_update_start`\  where it is
+not expected to race with PSR enable or disable.
+
+.. _`intel_psr_wait_for_idle.return`:
+
+Return
+------
+
+0 on success or -ETIMEOUT if PSR status does not idle.
 
 .. _`intel_psr_invalidate`:
 
@@ -110,14 +121,17 @@ intel_psr_invalidate
 
     Invalidade PSR
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param unsigned frontbuffer_bits:
+    :param frontbuffer_bits:
         frontbuffer plane tracking bits
+    :type frontbuffer_bits: unsigned
 
-    :param enum fb_op_origin origin:
+    :param origin:
         which operation caused the invalidate
+    :type origin: enum fb_op_origin
 
 .. _`intel_psr_invalidate.description`:
 
@@ -140,14 +154,17 @@ intel_psr_flush
 
     Flush PSR
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param unsigned frontbuffer_bits:
+    :param frontbuffer_bits:
         frontbuffer plane tracking bits
+    :type frontbuffer_bits: unsigned
 
-    :param enum fb_op_origin origin:
+    :param origin:
         which operation caused the flush
+    :type origin: enum fb_op_origin
 
 .. _`intel_psr_flush.description`:
 
@@ -170,8 +187,9 @@ intel_psr_init
 
     Init basic PSR work and mutex.
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_psr_init.description`:
 

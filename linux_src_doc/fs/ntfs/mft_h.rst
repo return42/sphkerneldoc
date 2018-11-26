@@ -10,8 +10,9 @@ flush_dcache_mft_record_page
 
     \ :c:func:`flush_dcache_page`\  for mft records
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode structure of mft record
+    :type ni: ntfs_inode \*
 
 .. _`flush_dcache_mft_record_page.description`:
 
@@ -32,8 +33,9 @@ mark_mft_record_dirty
 
     set the mft record and the page containing it dirty
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode describing the mapped mft record
+    :type ni: ntfs_inode \*
 
 .. _`mark_mft_record_dirty.description`:
 
@@ -61,14 +63,17 @@ write_mft_record
 
     write out a mapped (extent) mft record
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode describing the mapped (extent) mft record
+    :type ni: ntfs_inode \*
 
-    :param MFT_RECORD \*m:
+    :param m:
         mapped (extent) mft record to write
+    :type m: MFT_RECORD \*
 
-    :param int sync:
+    :param sync:
         if true, wait for i/o completion
+    :type sync: int
 
 .. _`write_mft_record.description`:
 

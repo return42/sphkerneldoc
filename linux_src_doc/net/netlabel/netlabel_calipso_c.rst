@@ -10,11 +10,13 @@ netlbl_calipso_add_pass
 
     Adds a CALIPSO pass DOI definition
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_calipso_add_pass.description`:
 
@@ -34,11 +36,13 @@ netlbl_calipso_add
 
     Handle an ADD message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_calipso_add.description`:
 
@@ -57,11 +61,13 @@ netlbl_calipso_list
 
     Handle a LIST message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_calipso_list.description`:
 
@@ -80,11 +86,13 @@ netlbl_calipso_listall_cb
 
     \ :c:func:`calipso_doi_walk`\  callback for LISTALL
 
-    :param struct calipso_doi \*doi_def:
+    :param doi_def:
         the CALIPSO DOI definition
+    :type doi_def: struct calipso_doi \*
 
-    :param void \*arg:
+    :param arg:
         the netlbl_calipso_doiwalk_arg structure
+    :type arg: void \*
 
 .. _`netlbl_calipso_listall_cb.description`:
 
@@ -105,11 +113,13 @@ netlbl_calipso_listall
 
     Handle a LISTALL message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         the NETLINK callback
+    :type cb: struct netlink_callback \*
 
 .. _`netlbl_calipso_listall.description`:
 
@@ -128,11 +138,13 @@ netlbl_calipso_remove_cb
 
     \ :c:func:`netlbl_calipso_remove`\  callback for REMOVE
 
-    :param struct netlbl_dom_map \*entry:
+    :param entry:
         LSM domain mapping entry
+    :type entry: struct netlbl_dom_map \*
 
-    :param void \*arg:
+    :param arg:
         the netlbl_domhsh_walk_arg structure
+    :type arg: void \*
 
 .. _`netlbl_calipso_remove_cb.description`:
 
@@ -153,11 +165,13 @@ netlbl_calipso_remove
 
     Handle a REMOVE message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_calipso_remove.description`:
 
@@ -176,8 +190,9 @@ netlbl_calipso_genl_init
 
     Register the CALIPSO NetLabel component
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`netlbl_calipso_genl_init.description`:
 
@@ -196,8 +211,9 @@ netlbl_calipso_ops_register
 
     Register the CALIPSO operations
 
-    :param const struct netlbl_calipso_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: const struct netlbl_calipso_ops \*
 
 .. _`netlbl_calipso_ops_register.description`:
 
@@ -215,11 +231,13 @@ calipso_doi_add
 
     Add a new DOI to the CALIPSO protocol engine
 
-    :param struct calipso_doi \*doi_def:
+    :param doi_def:
         the DOI structure
+    :type doi_def: struct calipso_doi \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`calipso_doi_add.description`:
 
@@ -228,7 +246,7 @@ Description
 
 The caller defines a new DOI for use by the CALIPSO engine and calls this
 function to add it to the list of acceptable domains.  The caller must
-ensure that the mapping table specified in \ ``doi_def``\ ->map meets all of the
+ensure that the mapping table specified in \ ``doi_def->map``\  meets all of the
 requirements of the mapping type (see calipso.h for details).  Returns
 zero on success and non-zero on failure.
 
@@ -241,8 +259,9 @@ calipso_doi_free
 
     Frees a DOI definition
 
-    :param struct calipso_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: struct calipso_doi \*
 
 .. _`calipso_doi_free.description`:
 
@@ -260,11 +279,13 @@ calipso_doi_remove
 
     Remove an existing DOI from the CALIPSO protocol engine
 
-    :param u32 doi:
+    :param doi:
         the DOI value
+    :type doi: u32
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         *undescribed*
+    :type audit_info: struct netlbl_audit \*
 
 .. _`calipso_doi_remove.description`:
 
@@ -284,8 +305,9 @@ calipso_doi_getdef
 
     Returns a reference to a valid DOI definition
 
-    :param u32 doi:
+    :param doi:
         the DOI value
+    :type doi: u32
 
 .. _`calipso_doi_getdef.description`:
 
@@ -305,8 +327,9 @@ calipso_doi_putdef
 
     Releases a reference for the given DOI definition
 
-    :param struct calipso_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: struct calipso_doi \*
 
 .. _`calipso_doi_putdef.description`:
 
@@ -324,14 +347,16 @@ calipso_doi_walk
 
     Iterate through the DOI definitions
 
-    :param u32 \*skip_cnt:
+    :param skip_cnt:
         skip past this number of DOI definitions, updated
+    :type skip_cnt: u32 \*
 
     :param int (\*callback)(struct calipso_doi \*doi_def, void \*arg):
         callback for each DOI definition
 
-    :param void \*cb_arg:
+    :param cb_arg:
         argument for the callback function
+    :type cb_arg: void \*
 
 .. _`calipso_doi_walk.description`:
 
@@ -352,11 +377,13 @@ calipso_sock_getattr
 
     Get the security attributes from a sock
 
-    :param struct sock \*sk:
+    :param sk:
         the sock
+    :type sk: struct sock \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`calipso_sock_getattr.description`:
 
@@ -377,14 +404,17 @@ calipso_sock_setattr
 
     Add a CALIPSO option to a socket
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
-    :param const struct calipso_doi \*doi_def:
+    :param doi_def:
         the CALIPSO DOI to use
+    :type doi_def: const struct calipso_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the specific security attributes of the socket
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`calipso_sock_setattr.description`:
 
@@ -406,8 +436,9 @@ calipso_sock_delattr
 
     Delete the CALIPSO option from a socket
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
 .. _`calipso_sock_delattr.description`:
 
@@ -425,14 +456,17 @@ calipso_req_setattr
 
     Add a CALIPSO option to a connection request socket
 
-    :param struct request_sock \*req:
+    :param req:
         the connection request socket
+    :type req: struct request_sock \*
 
-    :param const struct calipso_doi \*doi_def:
+    :param doi_def:
         the CALIPSO DOI to use
+    :type doi_def: const struct calipso_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the specific security attributes of the socket
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`calipso_req_setattr.description`:
 
@@ -452,8 +486,9 @@ calipso_req_delattr
 
     Delete the CALIPSO option from a request socket
 
-    :param struct request_sock \*req:
+    :param req:
         *undescribed*
+    :type req: struct request_sock \*
 
 .. _`calipso_req_delattr.description`:
 
@@ -471,8 +506,9 @@ calipso_optptr
 
     Find the CALIPSO option in the packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
 .. _`calipso_optptr.description`:
 
@@ -491,11 +527,13 @@ calipso_getattr
 
     Get the security attributes from a memory block.
 
-    :param const unsigned char \*calipso:
+    :param calipso:
         the CALIPSO option
+    :type calipso: const unsigned char \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`calipso_getattr.description`:
 
@@ -514,14 +552,17 @@ calipso_skbuff_setattr
 
     Set the CALIPSO option on a packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param const struct calipso_doi \*doi_def:
+    :param doi_def:
         the CALIPSO DOI to use
+    :type doi_def: const struct calipso_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`calipso_skbuff_setattr.description`:
 
@@ -540,8 +581,9 @@ calipso_skbuff_delattr
 
     Delete any CALIPSO options from a packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`calipso_skbuff_delattr.description`:
 
@@ -560,8 +602,9 @@ calipso_cache_invalidate
 
     Invalidates the current CALIPSO cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`calipso_cache_invalidate.description`:
 
@@ -580,11 +623,13 @@ calipso_cache_add
 
     Add an entry to the CALIPSO cache
 
-    :param const unsigned char \*calipso_ptr:
+    :param calipso_ptr:
         the CALIPSO option
+    :type calipso_ptr: const unsigned char \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the packet's security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`calipso_cache_add.description`:
 

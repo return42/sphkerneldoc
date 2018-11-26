@@ -10,11 +10,13 @@ vxfs_immed_readpage
 
     read part of an immed inode into pagecache
 
-    :param struct file \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct file \*
 
-    :param struct page \*pp:
+    :param pp:
         *undescribed*
+    :type pp: struct page \*
 
 .. _`vxfs_immed_readpage.description`:
 

@@ -10,35 +10,45 @@ rvt_process_mad
 
     process an incoming MAD packet
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the infiniband device this packet came in on
+    :type ibdev: struct ib_device \*
 
-    :param int mad_flags:
+    :param mad_flags:
         MAD flags
+    :type mad_flags: int
 
-    :param u8 port_num:
+    :param port_num:
         the port number this packet came in on, 1 based from ib core
+    :type port_num: u8
 
-    :param const struct ib_wc \*in_wc:
+    :param in_wc:
         the work completion entry for this packet
+    :type in_wc: const struct ib_wc \*
 
-    :param const struct ib_grh \*in_grh:
+    :param in_grh:
         the global route header for this packet
+    :type in_grh: const struct ib_grh \*
 
-    :param const struct ib_mad_hdr \*in:
+    :param in:
         *undescribed*
+    :type in: const struct ib_mad_hdr \*
 
-    :param size_t in_mad_size:
+    :param in_mad_size:
         *undescribed*
+    :type in_mad_size: size_t
 
-    :param struct ib_mad_hdr \*out:
+    :param out:
         *undescribed*
+    :type out: struct ib_mad_hdr \*
 
-    :param size_t \*out_mad_size:
+    :param out_mad_size:
         *undescribed*
+    :type out_mad_size: size_t \*
 
-    :param u16 \*out_mad_pkey_index:
+    :param out_mad_pkey_index:
         *undescribed*
+    :type out_mad_pkey_index: u16 \*
 
 .. _`rvt_process_mad.description`:
 
@@ -67,8 +77,9 @@ rvt_create_mad_agents
 
     create mad agents
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev struct
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_create_mad_agents.description`:
 
@@ -88,8 +99,9 @@ rvt_free_mad_agents
 
     free up mad agents
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev struct
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_free_mad_agents.description`:
 

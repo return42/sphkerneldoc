@@ -10,8 +10,9 @@ videobuf_dma_contig_user_put
 
     reset pointer to user space buffer
 
-    :param struct videobuf_dma_contig_memory \*mem:
+    :param mem:
         per-buffer private videobuf-dma-contig data
+    :type mem: struct videobuf_dma_contig_memory \*
 
 .. _`videobuf_dma_contig_user_put.description`:
 
@@ -29,11 +30,13 @@ videobuf_dma_contig_user_get
 
     setup user space memory pointer
 
-    :param struct videobuf_dma_contig_memory \*mem:
+    :param mem:
         per-buffer private videobuf-dma-contig data
+    :type mem: struct videobuf_dma_contig_memory \*
 
-    :param struct videobuf_buffer \*vb:
+    :param vb:
         video buffer to map
+    :type vb: struct videobuf_buffer \*
 
 .. _`videobuf_dma_contig_user_get.description`:
 

@@ -10,11 +10,13 @@ __ata_ehi_push_desc
 
     push error description without adding separator
 
-    :param struct ata_eh_info \*ehi:
+    :param ehi:
         target EHI
+    :type ehi: struct ata_eh_info \*
 
-    :param const char \*fmt:
+    :param fmt:
         printf format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -24,7 +26,7 @@ __ata_ehi_push_desc
 Description
 -----------
 
-     Format string according to \ ``fmt``\  and append it to \ ``ehi``\ ->desc.
+     Format string according to \ ``fmt``\  and append it to \ ``ehi->desc``\ .
 
 .. _`__ata_ehi_push_desc.locking`:
 
@@ -42,11 +44,13 @@ ata_ehi_push_desc
 
     push error description with separator
 
-    :param struct ata_eh_info \*ehi:
+    :param ehi:
         target EHI
+    :type ehi: struct ata_eh_info \*
 
-    :param const char \*fmt:
+    :param fmt:
         printf format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -56,8 +60,8 @@ ata_ehi_push_desc
 Description
 -----------
 
-     Format string according to \ ``fmt``\  and append it to \ ``ehi``\ ->desc.
-     If \ ``ehi``\ ->desc is not empty, ", " is added in-between.
+     Format string according to \ ``fmt``\  and append it to \ ``ehi->desc``\ .
+     If \ ``ehi->desc``\  is not empty, ", " is added in-between.
 
 .. _`ata_ehi_push_desc.locking`:
 
@@ -75,15 +79,16 @@ ata_ehi_clear_desc
 
     clean error description
 
-    :param struct ata_eh_info \*ehi:
+    :param ehi:
         target EHI
+    :type ehi: struct ata_eh_info \*
 
 .. _`ata_ehi_clear_desc.description`:
 
 Description
 -----------
 
-     Clear \ ``ehi``\ ->desc.
+     Clear \ ``ehi->desc``\ .
 
 .. _`ata_ehi_clear_desc.locking`:
 
@@ -101,11 +106,13 @@ ata_port_desc
 
     append port description
 
-    :param struct ata_port \*ap:
+    :param ap:
         target ATA port
+    :type ap: struct ata_port \*
 
-    :param const char \*fmt:
+    :param fmt:
         printf format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -136,17 +143,21 @@ ata_port_pbar_desc
 
     append PCI BAR description
 
-    :param struct ata_port \*ap:
+    :param ap:
         target ATA port
+    :type ap: struct ata_port \*
 
-    :param int bar:
+    :param bar:
         target PCI BAR
+    :type bar: int
 
-    :param ssize_t offset:
+    :param offset:
         offset into PCI BAR
+    :type offset: ssize_t
 
-    :param const char \*name:
+    :param name:
         name of the area
+    :type name: const char \*
 
 .. _`ata_port_pbar_desc.description`:
 
@@ -174,11 +185,13 @@ ata_internal_cmd_timeout
 
     determine timeout for an internal command
 
-    :param struct ata_device \*dev:
+    :param dev:
         target device
+    :type dev: struct ata_device \*
 
-    :param u8 cmd:
+    :param cmd:
         internal command to be issued
+    :type cmd: u8
 
 .. _`ata_internal_cmd_timeout.description`:
 
@@ -210,11 +223,13 @@ ata_internal_cmd_timed_out
 
     notification for internal command timeout
 
-    :param struct ata_device \*dev:
+    :param dev:
         target device
+    :type dev: struct ata_device \*
 
-    :param u8 cmd:
+    :param cmd:
         internal command which timed out
+    :type cmd: u8
 
 .. _`ata_internal_cmd_timed_out.description`:
 
@@ -241,8 +256,9 @@ ata_eh_acquire
 
     acquire EH ownership
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to acquire EH ownership for
+    :type ap: struct ata_port \*
 
 .. _`ata_eh_acquire.description`:
 
@@ -269,8 +285,9 @@ ata_eh_release
 
     release EH ownership
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to release EH ownership for
+    :type ap: struct ata_port \*
 
 .. _`ata_eh_release.description`:
 
@@ -296,8 +313,9 @@ ata_scsi_error
 
     SCSI layer error handler callback
 
-    :param struct Scsi_Host \*host:
+    :param host:
         SCSI host on which error occurred
+    :type host: struct Scsi_Host \*
 
 .. _`ata_scsi_error.description`:
 
@@ -329,14 +347,17 @@ ata_scsi_cmd_error_handler
 
     error callback for a list of commands
 
-    :param struct Scsi_Host \*host:
+    :param host:
         scsi host containing the port
+    :type host: struct Scsi_Host \*
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port within the host
+    :type ap: struct ata_port \*
 
-    :param struct list_head \*eh_work_q:
+    :param eh_work_q:
         list of commands to process
+    :type eh_work_q: struct list_head \*
 
 .. _`ata_scsi_cmd_error_handler.description`:
 
@@ -356,11 +377,13 @@ ata_scsi_port_error_handler
 
     recover the port after the commands
 
-    :param struct Scsi_Host \*host:
+    :param host:
         SCSI host containing the port
+    :type host: struct Scsi_Host \*
 
-    :param struct ata_port \*ap:
+    :param ap:
         the ATA port
+    :type ap: struct ata_port \*
 
 .. _`ata_scsi_port_error_handler.description`:
 
@@ -379,8 +402,9 @@ ata_port_wait_eh
 
     Wait for the currently pending EH to complete
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to wait EH for
+    :type ap: struct ata_port \*
 
 .. _`ata_port_wait_eh.description`:
 
@@ -405,11 +429,13 @@ ata_eh_set_pending
 
     set ATA_PFLAG_EH_PENDING and activate fast drain
 
-    :param struct ata_port \*ap:
+    :param ap:
         target ATA port
+    :type ap: struct ata_port \*
 
-    :param int fastdrain:
+    :param fastdrain:
         activate fast drain
+    :type fastdrain: int
 
 .. _`ata_eh_set_pending.description`:
 
@@ -436,8 +462,9 @@ ata_qc_schedule_eh
 
     schedule qc for error handling
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command to schedule error handling for
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_qc_schedule_eh.description`:
 
@@ -463,8 +490,9 @@ ata_std_sched_eh
 
     non-libsas ata_ports issue eh with this common routine
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to schedule EH for
+    :type ap: struct ata_port \*
 
 .. _`ata_std_sched_eh.description`:
 
@@ -483,8 +511,9 @@ ata_std_end_eh
 
     non-libsas ata_ports complete eh with this common routine
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to end EH for
+    :type ap: struct ata_port \*
 
 .. _`ata_std_end_eh.description`:
 
@@ -512,8 +541,9 @@ ata_port_schedule_eh
 
     schedule error handling without a qc
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to schedule EH for
+    :type ap: struct ata_port \*
 
 .. _`ata_port_schedule_eh.description`:
 
@@ -539,8 +569,9 @@ ata_link_abort
 
     abort all qc's on the link
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to abort qc's for
+    :type link: struct ata_link \*
 
 .. _`ata_link_abort.description`:
 
@@ -572,8 +603,9 @@ ata_port_abort
 
     abort all qc's on the port
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to abort qc's for
+    :type ap: struct ata_port \*
 
 .. _`ata_port_abort.description`:
 
@@ -605,8 +637,9 @@ __ata_port_freeze
 
     freeze port
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to freeze
+    :type ap: struct ata_port \*
 
 .. _`__ata_port_freeze.description`:
 
@@ -640,8 +673,9 @@ ata_port_freeze
 
     abort & freeze port
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to freeze
+    :type ap: struct ata_port \*
 
 .. _`ata_port_freeze.description`:
 
@@ -675,8 +709,9 @@ sata_async_notification
 
     SATA async notification handler
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port where async notification is received
+    :type ap: struct ata_port \*
 
 .. _`sata_async_notification.description`:
 
@@ -709,8 +744,9 @@ ata_eh_freeze_port
 
     EH helper to freeze port
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to freeze
+    :type ap: struct ata_port \*
 
 .. _`ata_eh_freeze_port.description`:
 
@@ -735,8 +771,9 @@ ata_eh_thaw_port
 
     EH helper to thaw port
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to thaw
+    :type ap: struct ata_port \*
 
 .. _`ata_eh_thaw_port.description`:
 
@@ -761,8 +798,9 @@ ata_eh_qc_complete
 
     Complete an active ATA command from EH
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command to complete
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_eh_qc_complete.description`:
 
@@ -781,8 +819,9 @@ ata_eh_qc_retry
 
     Tell midlayer to retry an ATA command after EH
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command to retry
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_eh_qc_retry.description`:
 
@@ -805,8 +844,9 @@ ata_dev_disable
 
     disable ATA device
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device to disable
+    :type dev: struct ata_device \*
 
 .. _`ata_dev_disable.description`:
 
@@ -831,8 +871,9 @@ ata_eh_detach_dev
 
     detach ATA device
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device to detach
+    :type dev: struct ata_device \*
 
 .. _`ata_eh_detach_dev.description`:
 
@@ -857,14 +898,17 @@ ata_eh_about_to_do
 
     about to perform eh_action
 
-    :param struct ata_link \*link:
+    :param link:
         target ATA link
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*dev:
+    :param dev:
         target ATA dev for per-dev action (can be NULL)
+    :type dev: struct ata_device \*
 
-    :param unsigned int action:
+    :param action:
         action about to be performed
+    :type action: unsigned int
 
 .. _`ata_eh_about_to_do.description`:
 
@@ -872,7 +916,7 @@ Description
 -----------
 
      Called just before performing EH actions to clear related bits
-     in \ ``link``\ ->eh_info such that eh actions are not unnecessarily
+     in \ ``link->eh_info``\  such that eh actions are not unnecessarily
      repeated.
 
 .. _`ata_eh_about_to_do.locking`:
@@ -891,14 +935,17 @@ ata_eh_done
 
     EH action complete
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link for which EH actions are complete
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*dev:
+    :param dev:
         target ATA dev for per-dev action (can be NULL)
+    :type dev: struct ata_device \*
 
-    :param unsigned int action:
+    :param action:
         action just completed
+    :type action: unsigned int
 
 .. _`ata_eh_done.description`:
 
@@ -906,7 +953,7 @@ Description
 -----------
 
      Called right after performing EH actions to clear related bits
-     in \ ``link``\ ->eh_context.
+     in \ ``link->eh_context``\ .
 
 .. _`ata_eh_done.locking`:
 
@@ -924,8 +971,9 @@ ata_err_string
 
     convert err_mask to descriptive string
 
-    :param unsigned int err_mask:
+    :param err_mask:
         error mask to convert to string
+    :type err_mask: unsigned int
 
 .. _`ata_err_string.description`:
 
@@ -959,14 +1007,17 @@ ata_eh_read_log_10h
 
     Read log page 10h for NCQ error details
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device to read log page 10h from
+    :type dev: struct ata_device \*
 
-    :param int \*tag:
+    :param tag:
         Resulting tag of the failed command
+    :type tag: int \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         Resulting taskfile registers of the failed command
+    :type tf: struct ata_taskfile \*
 
 .. _`ata_eh_read_log_10h.description`:
 
@@ -999,11 +1050,13 @@ atapi_eh_tur
 
     perform ATAPI TEST_UNIT_READY
 
-    :param struct ata_device \*dev:
+    :param dev:
         target ATAPI device
+    :type dev: struct ata_device \*
 
-    :param u8 \*r_sense_key:
+    :param r_sense_key:
         out parameter for sense_key
+    :type r_sense_key: u8 \*
 
 .. _`atapi_eh_tur.description`:
 
@@ -1035,11 +1088,13 @@ ata_eh_request_sense
 
     perform REQUEST_SENSE_DATA_EXT
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         qc to perform REQUEST_SENSE_SENSE_DATA_EXT to
+    :type qc: struct ata_queued_cmd \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         scsi command for which the sense code should be set
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ata_eh_request_sense.description`:
 
@@ -1065,14 +1120,17 @@ atapi_eh_request_sense
 
     perform ATAPI REQUEST_SENSE
 
-    :param struct ata_device \*dev:
+    :param dev:
         device to perform REQUEST_SENSE to
+    :type dev: struct ata_device \*
 
-    :param u8 \*sense_buf:
+    :param sense_buf:
         result sense data buffer (SCSI_SENSE_BUFFERSIZE bytes long)
+    :type sense_buf: u8 \*
 
-    :param u8 dfl_sense_key:
+    :param dfl_sense_key:
         default sense key to use
+    :type dfl_sense_key: u8
 
 .. _`atapi_eh_request_sense.description`:
 
@@ -1105,8 +1163,9 @@ ata_eh_analyze_serror
 
     analyze SError for a failed port
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to analyze SError for
+    :type link: struct ata_link \*
 
 .. _`ata_eh_analyze_serror.description`:
 
@@ -1132,8 +1191,9 @@ ata_eh_analyze_ncq_error
 
     analyze NCQ error
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to analyze NCQ error for
+    :type link: struct ata_link \*
 
 .. _`ata_eh_analyze_ncq_error.description`:
 
@@ -1161,11 +1221,13 @@ ata_eh_analyze_tf
 
     analyze taskfile of a failed qc
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         qc to analyze
+    :type qc: struct ata_queued_cmd \*
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         Taskfile registers to analyze
+    :type tf: const struct ata_taskfile \*
 
 .. _`ata_eh_analyze_tf.description`:
 
@@ -1199,8 +1261,9 @@ ata_eh_speed_down_verdict
 
     Determine speed down verdict
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device of interest
+    :type dev: struct ata_device \*
 
 .. _`ata_eh_speed_down_verdict.description`:
 
@@ -1277,14 +1340,17 @@ ata_eh_speed_down
 
     record error and speed down if necessary
 
-    :param struct ata_device \*dev:
+    :param dev:
         Failed device
+    :type dev: struct ata_device \*
 
-    :param unsigned int eflags:
+    :param eflags:
         mask of ATA_EFLAG_* flags
+    :type eflags: unsigned int
 
-    :param unsigned int err_mask:
+    :param err_mask:
         err_mask of the error
+    :type err_mask: unsigned int
 
 .. _`ata_eh_speed_down.description`:
 
@@ -1319,8 +1385,9 @@ ata_eh_worth_retry
 
     analyze error and decide whether to retry
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         qc to possibly retry
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_eh_worth_retry.description`:
 
@@ -1341,8 +1408,9 @@ ata_eh_quiet
 
     check if we need to be quiet about a command error
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         qc to check
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_eh_quiet.description`:
 
@@ -1361,8 +1429,9 @@ ata_eh_link_autopsy
 
     analyze error and determine recovery action
 
-    :param struct ata_link \*link:
+    :param link:
         host link to perform autopsy on
+    :type link: struct ata_link \*
 
 .. _`ata_eh_link_autopsy.description`:
 
@@ -1389,8 +1458,9 @@ ata_eh_autopsy
 
     analyze error and determine recovery action
 
-    :param struct ata_port \*ap:
+    :param ap:
         host port to perform autopsy on
+    :type ap: struct ata_port \*
 
 .. _`ata_eh_autopsy.description`:
 
@@ -1416,8 +1486,9 @@ ata_get_cmd_descript
 
     get description for ATA command
 
-    :param u8 command:
+    :param command:
         ATA command code to get description for
+    :type command: u8
 
 .. _`ata_get_cmd_descript.description`:
 
@@ -1443,8 +1514,9 @@ ata_eh_link_report
 
     report error handling to user
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link EH is going on
+    :type link: struct ata_link \*
 
 .. _`ata_eh_link_report.description`:
 
@@ -1469,8 +1541,9 @@ ata_eh_report
 
     report error handling to user
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to report EH about
+    :type ap: struct ata_port \*
 
 .. _`ata_eh_report.description`:
 
@@ -1495,11 +1568,13 @@ ata_set_mode
 
     Program timings and issue SET FEATURES - XFER
 
-    :param struct ata_link \*link:
+    :param link:
         link on which timings will be programmed
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*r_failed_dev:
+    :param r_failed_dev:
         out parameter for failed device
+    :type r_failed_dev: struct ata_device \*\*
 
 .. _`ata_set_mode.description`:
 
@@ -1533,8 +1608,9 @@ atapi_eh_clear_ua
 
     Clear ATAPI UNIT ATTENTION after reset
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATAPI device to clear UA for
+    :type dev: struct ata_device \*
 
 .. _`atapi_eh_clear_ua.description`:
 
@@ -1568,8 +1644,9 @@ ata_eh_maybe_retry_flush
 
     Retry FLUSH if necessary
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device which may need FLUSH retry
+    :type dev: struct ata_device \*
 
 .. _`ata_eh_maybe_retry_flush.description`:
 
@@ -1602,14 +1679,17 @@ ata_eh_set_lpm
 
     configure SATA interface power management
 
-    :param struct ata_link \*link:
+    :param link:
         link to configure power management
+    :type link: struct ata_link \*
 
-    :param enum ata_lpm_policy policy:
+    :param policy:
         the link power management policy
+    :type policy: enum ata_lpm_policy
 
-    :param struct ata_device \*\*r_failed_dev:
+    :param r_failed_dev:
         out parameter for failed device
+    :type r_failed_dev: struct ata_device \*\*
 
 .. _`ata_eh_set_lpm.description`:
 
@@ -1644,23 +1724,29 @@ ata_eh_recover
 
     recover host port after error
 
-    :param struct ata_port \*ap:
+    :param ap:
         host port to recover
+    :type ap: struct ata_port \*
 
-    :param ata_prereset_fn_t prereset:
+    :param prereset:
         prereset method (can be NULL)
+    :type prereset: ata_prereset_fn_t
 
-    :param ata_reset_fn_t softreset:
+    :param softreset:
         softreset method (can be NULL)
+    :type softreset: ata_reset_fn_t
 
-    :param ata_reset_fn_t hardreset:
+    :param hardreset:
         hardreset method (can be NULL)
+    :type hardreset: ata_reset_fn_t
 
-    :param ata_postreset_fn_t postreset:
+    :param postreset:
         postreset method (can be NULL)
+    :type postreset: ata_postreset_fn_t
 
-    :param struct ata_link \*\*r_failed_link:
+    :param r_failed_link:
         out parameter for failed link
+    :type r_failed_link: struct ata_link \*\*
 
 .. _`ata_eh_recover.description`:
 
@@ -1697,8 +1783,9 @@ ata_eh_finish
 
     finish up EH
 
-    :param struct ata_port \*ap:
+    :param ap:
         host port to finish EH for
+    :type ap: struct ata_port \*
 
 .. _`ata_eh_finish.description`:
 
@@ -1724,20 +1811,25 @@ ata_do_eh
 
     do standard error handling
 
-    :param struct ata_port \*ap:
+    :param ap:
         host port to handle error for
+    :type ap: struct ata_port \*
 
-    :param ata_prereset_fn_t prereset:
+    :param prereset:
         prereset method (can be NULL)
+    :type prereset: ata_prereset_fn_t
 
-    :param ata_reset_fn_t softreset:
+    :param softreset:
         softreset method (can be NULL)
+    :type softreset: ata_reset_fn_t
 
-    :param ata_reset_fn_t hardreset:
+    :param hardreset:
         hardreset method (can be NULL)
+    :type hardreset: ata_reset_fn_t
 
-    :param ata_postreset_fn_t postreset:
+    :param postreset:
         postreset method (can be NULL)
+    :type postreset: ata_postreset_fn_t
 
 .. _`ata_do_eh.description`:
 
@@ -1762,8 +1854,9 @@ ata_std_error_handler
 
     standard error handler
 
-    :param struct ata_port \*ap:
+    :param ap:
         host port to handle error for
+    :type ap: struct ata_port \*
 
 .. _`ata_std_error_handler.description`:
 
@@ -1788,8 +1881,9 @@ ata_eh_handle_port_suspend
 
     perform port suspend operation
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to suspend
+    :type ap: struct ata_port \*
 
 .. _`ata_eh_handle_port_suspend.description`:
 
@@ -1814,8 +1908,9 @@ ata_eh_handle_port_resume
 
     perform port resume operation
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to resume
+    :type ap: struct ata_port \*
 
 .. _`ata_eh_handle_port_resume.description`:
 

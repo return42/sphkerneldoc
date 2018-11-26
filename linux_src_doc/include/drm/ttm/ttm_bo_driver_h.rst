@@ -360,6 +360,86 @@ lru_lock
 Spinlock that protects the buffer+device lru lists and
 ddestroy lists.
 
+.. _`ttm_lru_bulk_move_pos`:
+
+struct ttm_lru_bulk_move_pos
+============================
+
+.. c:type:: struct ttm_lru_bulk_move_pos
+
+
+.. _`ttm_lru_bulk_move_pos.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ttm_lru_bulk_move_pos {
+        struct ttm_buffer_object *first;
+        struct ttm_buffer_object *last;
+    }
+
+.. _`ttm_lru_bulk_move_pos.members`:
+
+Members
+-------
+
+first
+    first BO in the bulk move range
+
+last
+    last BO in the bulk move range
+
+.. _`ttm_lru_bulk_move_pos.description`:
+
+Description
+-----------
+
+Positions for a lru bulk move.
+
+.. _`ttm_lru_bulk_move`:
+
+struct ttm_lru_bulk_move
+========================
+
+.. c:type:: struct ttm_lru_bulk_move
+
+
+.. _`ttm_lru_bulk_move.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ttm_lru_bulk_move {
+        struct ttm_lru_bulk_move_pos tt[TTM_MAX_BO_PRIORITY];
+        struct ttm_lru_bulk_move_pos vram[TTM_MAX_BO_PRIORITY];
+        struct ttm_lru_bulk_move_pos swap[TTM_MAX_BO_PRIORITY];
+    }
+
+.. _`ttm_lru_bulk_move.members`:
+
+Members
+-------
+
+tt
+    first/last lru entry for BOs in the TT domain
+
+vram
+    first/last lru entry for BOs in the VRAM domain
+
+swap
+    first/last lru entry for BOs on the swap list
+
+.. _`ttm_lru_bulk_move.description`:
+
+Description
+-----------
+
+Helper structure for bulk moves on the LRU list.
+
 .. _`ttm_flag_masked`:
 
 ttm_flag_masked
@@ -367,14 +447,17 @@ ttm_flag_masked
 
 .. c:function:: uint32_t ttm_flag_masked(uint32_t *old, uint32_t new, uint32_t mask)
 
-    :param uint32_t \*old:
+    :param old:
         Pointer to the result and original value.
+    :type old: uint32_t \*
 
-    :param uint32_t new:
+    :param new:
         New value of bits.
+    :type new: uint32_t
 
-    :param uint32_t mask:
+    :param mask:
         Mask of bits to change.
+    :type mask: uint32_t
 
 .. _`ttm_flag_masked.description`:
 
@@ -390,11 +473,13 @@ ttm_mem_reg_is_pci
 
 .. c:function:: bool ttm_mem_reg_is_pci(struct ttm_bo_device *bdev, struct ttm_mem_reg *mem)
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         Pointer to a struct ttm_bo_device.
+    :type bdev: struct ttm_bo_device \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         A valid struct ttm_mem_reg.
+    :type mem: struct ttm_mem_reg \*
 
 .. _`ttm_mem_reg_is_pci.description`:
 
@@ -411,18 +496,22 @@ ttm_bo_mem_space
 
 .. c:function:: int ttm_bo_mem_space(struct ttm_buffer_object *bo, struct ttm_placement *placement, struct ttm_mem_reg *mem, struct ttm_operation_ctx *ctx)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         Pointer to a struct ttm_buffer_object. the data of which
         we want to allocate space for.
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct ttm_placement \*placement:
+    :param placement:
         *undescribed*
+    :type placement: struct ttm_placement \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         A struct ttm_mem_reg.
+    :type mem: struct ttm_mem_reg \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
 .. _`ttm_bo_mem_space.description`:
 
@@ -450,25 +539,31 @@ ttm_bo_device_init
 
 .. c:function:: int ttm_bo_device_init(struct ttm_bo_device *bdev, struct ttm_bo_global *glob, struct ttm_bo_driver *driver, struct address_space *mapping, uint64_t file_page_offset, bool need_dma32)
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         A pointer to a struct ttm_bo_device to initialize.
+    :type bdev: struct ttm_bo_device \*
 
-    :param struct ttm_bo_global \*glob:
+    :param glob:
         A pointer to an initialized struct ttm_bo_global.
+    :type glob: struct ttm_bo_global \*
 
-    :param struct ttm_bo_driver \*driver:
+    :param driver:
         A pointer to a struct ttm_bo_driver set up by the caller.
+    :type driver: struct ttm_bo_driver \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The address space to use for this bo.
+    :type mapping: struct address_space \*
 
-    :param uint64_t file_page_offset:
+    :param file_page_offset:
         Offset into the device address space that is available
         for buffer data. This ensures compatibility with other users of the
         address space.
+    :type file_page_offset: uint64_t
 
-    :param bool need_dma32:
+    :param need_dma32:
         *undescribed*
+    :type need_dma32: bool
 
 .. _`ttm_bo_device_init.return`:
 
@@ -484,8 +579,9 @@ ttm_bo_unmap_virtual
 
 .. c:function:: void ttm_bo_unmap_virtual(struct ttm_buffer_object *bo)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         tear down the virtual mappings for this BO
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_bo_unmap_virtual_locked`:
 
@@ -494,8 +590,9 @@ ttm_bo_unmap_virtual_locked
 
 .. c:function:: void ttm_bo_unmap_virtual_locked(struct ttm_buffer_object *bo)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         tear down the virtual mappings for this BO
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_bo_unmap_virtual_locked.description`:
 
@@ -511,17 +608,21 @@ The caller must take ttm_mem_io_lock before calling this function.
 
 .. c:function:: int __ttm_bo_reserve(struct ttm_buffer_object *bo, bool interruptible, bool no_wait, struct ww_acquire_ctx *ticket)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool interruptible:
+    :param interruptible:
         Sleep interruptible if waiting.
+    :type interruptible: bool
 
-    :param bool no_wait:
+    :param no_wait:
         Don't sleep while trying to reserve, rather return -EBUSY.
+    :type no_wait: bool
 
-    :param struct ww_acquire_ctx \*ticket:
+    :param ticket:
         ticket used to acquire the ww_mutex.
+    :type ticket: struct ww_acquire_ctx \*
 
 .. _`__ttm_bo_reserve.description`:
 
@@ -552,17 +653,21 @@ ttm_bo_reserve
 
 .. c:function:: int ttm_bo_reserve(struct ttm_buffer_object *bo, bool interruptible, bool no_wait, struct ww_acquire_ctx *ticket)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool interruptible:
+    :param interruptible:
         Sleep interruptible if waiting.
+    :type interruptible: bool
 
-    :param bool no_wait:
+    :param no_wait:
         Don't sleep while trying to reserve, rather return -EBUSY.
+    :type no_wait: bool
 
-    :param struct ww_acquire_ctx \*ticket:
+    :param ticket:
         ticket used to acquire the ww_mutex.
+    :type ticket: struct ww_acquire_ctx \*
 
 .. _`ttm_bo_reserve.description`:
 
@@ -586,7 +691,7 @@ occurring
 Processes attempting to reserve multiple buffers other than for eviction,
 (typically execbuf), should first obtain a unique 32-bit
 validation sequence number,
-and call this function with \ ``use_ticket``\  == 1 and \ ``ticket``\ ->stamp == the unique
+and call this function with \ ``use_ticket``\  == 1 and \ ``ticket->stamp``\  == the unique
 sequence number. If upon call of this function, the buffer object is already
 reserved, the validation sequence is checked against the validation
 sequence of the process currently reserving the buffer,
@@ -621,14 +726,17 @@ ttm_bo_reserve_slowpath
 
 .. c:function:: int ttm_bo_reserve_slowpath(struct ttm_buffer_object *bo, bool interruptible, struct ww_acquire_ctx *ticket)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool interruptible:
+    :param interruptible:
         Sleep interruptible if waiting.
+    :type interruptible: bool
 
-    :param struct ww_acquire_ctx \*ticket:
+    :param ticket:
         *undescribed*
+    :type ticket: struct ww_acquire_ctx \*
 
 .. _`ttm_bo_reserve_slowpath.description`:
 
@@ -646,8 +754,9 @@ ttm_bo_unreserve
 
 .. c:function:: void ttm_bo_unreserve(struct ttm_buffer_object *bo)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_bo_unreserve.description`:
 
@@ -663,14 +772,17 @@ ttm_bo_move_ttm
 
 .. c:function:: int ttm_bo_move_ttm(struct ttm_buffer_object *bo, struct ttm_operation_ctx *ctx, struct ttm_mem_reg *new_mem)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
-    :param struct ttm_mem_reg \*new_mem:
+    :param new_mem:
         struct ttm_mem_reg indicating where to move.
+    :type new_mem: struct ttm_mem_reg \*
 
 .. _`ttm_bo_move_ttm.description`:
 
@@ -698,14 +810,17 @@ ttm_bo_move_memcpy
 
 .. c:function:: int ttm_bo_move_memcpy(struct ttm_buffer_object *bo, struct ttm_operation_ctx *ctx, struct ttm_mem_reg *new_mem)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
-    :param struct ttm_mem_reg \*new_mem:
+    :param new_mem:
         struct ttm_mem_reg indicating where to move.
+    :type new_mem: struct ttm_mem_reg \*
 
 .. _`ttm_bo_move_memcpy.description`:
 
@@ -733,8 +848,9 @@ ttm_bo_free_old_node
 
 .. c:function:: void ttm_bo_free_old_node(struct ttm_buffer_object *bo)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_bo_free_old_node.description`:
 
@@ -750,17 +866,21 @@ ttm_bo_move_accel_cleanup
 
 .. c:function:: int ttm_bo_move_accel_cleanup(struct ttm_buffer_object *bo, struct dma_fence *fence, bool evict, struct ttm_mem_reg *new_mem)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct dma_fence \*fence:
+    :param fence:
         A fence object that signals when moving is complete.
+    :type fence: struct dma_fence \*
 
-    :param bool evict:
+    :param evict:
         This is an evict move. Don't return until the buffer is idle.
+    :type evict: bool
 
-    :param struct ttm_mem_reg \*new_mem:
+    :param new_mem:
         struct ttm_mem_reg indicating where to move.
+    :type new_mem: struct ttm_mem_reg \*
 
 .. _`ttm_bo_move_accel_cleanup.description`:
 
@@ -781,17 +901,21 @@ ttm_bo_pipeline_move
 
 .. c:function:: int ttm_bo_pipeline_move(struct ttm_buffer_object *bo, struct dma_fence *fence, bool evict, struct ttm_mem_reg *new_mem)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct dma_fence \*fence:
+    :param fence:
         A fence object that signals when moving is complete.
+    :type fence: struct dma_fence \*
 
-    :param bool evict:
+    :param evict:
         This is an evict move. Don't return until the buffer is idle.
+    :type evict: bool
 
-    :param struct ttm_mem_reg \*new_mem:
+    :param new_mem:
         struct ttm_mem_reg indicating where to move.
+    :type new_mem: struct ttm_mem_reg \*
 
 .. _`ttm_bo_pipeline_move.description`:
 
@@ -808,8 +932,9 @@ ttm_bo_pipeline_gutting
 
 .. c:function:: int ttm_bo_pipeline_gutting(struct ttm_buffer_object *bo)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         A pointer to a struct ttm_buffer_object.
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_bo_pipeline_gutting.description`:
 
@@ -825,11 +950,13 @@ ttm_io_prot
 
 .. c:function:: pgprot_t ttm_io_prot(uint32_t caching_flags, pgprot_t tmp)
 
-    :param uint32_t caching_flags:
+    :param caching_flags:
         *undescribed*
+    :type caching_flags: uint32_t
 
-    :param pgprot_t tmp:
+    :param tmp:
         Page protection flag for a normal, cached mapping.
+    :type tmp: pgprot_t
 
 .. _`ttm_io_prot.description`:
 

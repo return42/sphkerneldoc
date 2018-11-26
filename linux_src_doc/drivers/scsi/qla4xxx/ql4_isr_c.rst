@@ -10,14 +10,17 @@ qla4xxx_copy_sense
 
     copy sense data into cmd sense buffer
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct status_entry \*sts_entry:
+    :param sts_entry:
         Pointer to status entry structure.
+    :type sts_entry: struct status_entry \*
 
-    :param struct srb \*srb:
+    :param srb:
         Pointer to srb structure.
+    :type srb: struct srb \*
 
 .. _`qla4xxx_status_cont_entry`:
 
@@ -28,11 +31,13 @@ qla4xxx_status_cont_entry
 
     Process a Status Continuations entry.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         SCSI driver HA context
+    :type ha: struct scsi_qla_host \*
 
-    :param struct status_cont_entry \*sts_cont:
+    :param sts_cont:
         Entry pointer
+    :type sts_cont: struct status_cont_entry \*
 
 .. _`qla4xxx_status_cont_entry.description`:
 
@@ -50,11 +55,13 @@ qla4xxx_status_entry
 
     processes status IOCBs
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct status_entry \*sts_entry:
+    :param sts_entry:
         Pointer to status entry structure.
+    :type sts_entry: struct status_entry \*
 
 .. _`qla4xxx_passthru_status_entry`:
 
@@ -65,11 +72,13 @@ qla4xxx_passthru_status_entry
 
     processes passthru status IOCBs (0x3C)
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct passthru_status \*sts_entry:
+    :param sts_entry:
         Pointer to status entry structure.
+    :type sts_entry: struct passthru_status \*
 
 .. _`qla4xxx_process_response_queue`:
 
@@ -80,8 +89,9 @@ qla4xxx_process_response_queue
 
     process response queue completions
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_process_response_queue.description`:
 
@@ -100,8 +110,9 @@ qla4_83xx_loopback_in_progress
 
     Is loopback in progress?
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_isr_decode_mailbox`:
 
@@ -112,11 +123,13 @@ qla4xxx_isr_decode_mailbox
 
     decodes mailbox status
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param uint32_t mbox_status:
+    :param mbox_status:
         *undescribed*
+    :type mbox_status: uint32_t
 
 .. _`qla4xxx_isr_decode_mailbox.description`:
 
@@ -135,11 +148,13 @@ qla4_82xx_interrupt_service_routine
 
     isr
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param uint32_t intr_status:
+    :param intr_status:
         *undescribed*
+    :type intr_status: uint32_t
 
 .. _`qla4_82xx_interrupt_service_routine.description`:
 
@@ -158,11 +173,13 @@ qla4xxx_interrupt_service_routine
 
     isr
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param uint32_t intr_status:
+    :param intr_status:
         *undescribed*
+    :type intr_status: uint32_t
 
 .. _`qla4xxx_interrupt_service_routine.description`:
 
@@ -181,11 +198,13 @@ qla4_82xx_spurious_interrupt
 
     processes spurious interrupt
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param uint8_t reqs_count:
+    :param reqs_count:
         .
+    :type reqs_count: uint8_t
 
 .. _`qla4xxx_intr_handler`:
 
@@ -196,11 +215,13 @@ qla4xxx_intr_handler
 
     hardware interrupt handler.
 
-    :param int irq:
+    :param irq:
         Unused
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to host adapter structure
+    :type dev_id: void \*
 
 .. _`qla4_82xx_intr_handler`:
 
@@ -211,11 +232,13 @@ qla4_82xx_intr_handler
 
     hardware interrupt handler.
 
-    :param int irq:
+    :param irq:
         Unused
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to host adapter structure
+    :type dev_id: void \*
 
 .. _`qla4_83xx_intr_handler`:
 
@@ -226,11 +249,13 @@ qla4_83xx_intr_handler
 
     hardware interrupt handler.
 
-    :param int irq:
+    :param irq:
         Unused
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to host adapter structure
+    :type dev_id: void \*
 
 .. _`qla4_8xxx_default_intr_handler`:
 
@@ -241,11 +266,13 @@ qla4_8xxx_default_intr_handler
 
     hardware interrupt handler.
 
-    :param int irq:
+    :param irq:
         Unused
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to host adapter structure
+    :type dev_id: void \*
 
 .. _`qla4_8xxx_default_intr_handler.description`:
 
@@ -264,11 +291,13 @@ qla4xxx_process_aen
 
     processes AENs generated by firmware
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param uint8_t process_aen:
+    :param process_aen:
         type of AENs to process
+    :type process_aen: uint8_t
 
 .. _`qla4xxx_process_aen.description`:
 

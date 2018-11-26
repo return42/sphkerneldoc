@@ -10,17 +10,21 @@ ocfs2_vfs_reflink
 
     Create a reference-counted link
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         source dentry + inode
+    :type old_dentry: struct dentry \*
 
-    :param struct inode \*dir:
+    :param dir:
         directory to create the target
+    :type dir: struct inode \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         target dentry
+    :type new_dentry: struct dentry \*
 
-    :param bool preserve:
+    :param preserve:
         if true, preserve all file attributes
+    :type preserve: bool
 
 .. This file was automatic generated / don't edit.
 

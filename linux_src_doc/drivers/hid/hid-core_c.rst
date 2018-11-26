@@ -10,14 +10,17 @@ hid_parse_report
 
     parse device report
 
-    :param struct hid_device \*hid:
+    :param hid:
         *undescribed*
+    :type hid: struct hid_device \*
 
-    :param __u8 \*start:
+    :param start:
         report start
+    :type start: __u8 \*
 
-    :param unsigned size:
+    :param size:
         report size
+    :type size: unsigned
 
 .. _`hid_parse_report.description`:
 
@@ -36,20 +39,25 @@ hid_validate_values
 
     validate existing device report's value indexes
 
-    :param struct hid_device \*hid:
+    :param hid:
         *undescribed*
+    :type hid: struct hid_device \*
 
-    :param unsigned int type:
+    :param type:
         which report type to examine
+    :type type: unsigned int
 
-    :param unsigned int id:
+    :param id:
         which report ID to examine (0 for first)
+    :type id: unsigned int
 
-    :param unsigned int field_index:
+    :param field_index:
         which report field to examine
+    :type field_index: unsigned int
 
-    :param unsigned int report_counts:
+    :param report_counts:
         expected number of values
+    :type report_counts: unsigned int
 
 .. _`hid_validate_values.description`:
 
@@ -68,8 +76,9 @@ hid_open_report
 
     open a driver-specific device report
 
-    :param struct hid_device \*device:
+    :param device:
         hid device
+    :type device: struct hid_device \*
 
 .. _`hid_open_report.description`:
 
@@ -92,11 +101,13 @@ hid_match_report
 
     check if driver's raw_event should be called
 
-    :param struct hid_device \*hid:
+    :param hid:
         hid device
+    :type hid: struct hid_device \*
 
-    :param struct hid_report \*report:
+    :param report:
         *undescribed*
+    :type report: struct hid_report \*
 
 .. _`hid_match_report.description`:
 
@@ -114,11 +125,13 @@ hid_match_usage
 
     check if driver's event should be called
 
-    :param struct hid_device \*hid:
+    :param hid:
         hid device
+    :type hid: struct hid_device \*
 
-    :param struct hid_usage \*usage:
+    :param usage:
         usage to match against
+    :type usage: struct hid_usage \*
 
 .. _`hid_match_usage.description`:
 
@@ -137,20 +150,25 @@ hid_input_report
 
     report data from lower layer (usb, bt...)
 
-    :param struct hid_device \*hid:
+    :param hid:
         hid device
+    :type hid: struct hid_device \*
 
-    :param int type:
+    :param type:
         HID report type (HID\_\*\_REPORT)
+    :type type: int
 
-    :param u8 \*data:
+    :param data:
         report contents
+    :type data: u8 \*
 
-    :param u32 size:
+    :param size:
         size of data parameter
+    :type size: u32
 
-    :param int interrupt:
+    :param interrupt:
         distinguish between interrupt and control transfers
+    :type interrupt: int
 
 .. _`hid_input_report.description`:
 
@@ -168,11 +186,13 @@ hid_hw_start
 
     start underlying HW
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
-    :param unsigned int connect_mask:
+    :param connect_mask:
         which outputs to connect, see HID_CONNECT\_\*
+    :type connect_mask: unsigned int
 
 .. _`hid_hw_start.description`:
 
@@ -192,8 +212,9 @@ hid_hw_stop
 
     stop underlying HW
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
 .. _`hid_hw_stop.description`:
 
@@ -212,8 +233,9 @@ hid_hw_open
 
     signal underlying HW to start delivering events
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
 .. _`hid_hw_open.description`:
 
@@ -233,8 +255,9 @@ hid_hw_close
 
     signal underlaying HW to stop delivering events
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
 .. _`hid_hw_close.description`:
 
@@ -254,14 +277,17 @@ new_id_store
 
     add a new HID device ID to this driver and re-probe devices
 
-    :param struct device_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct device_driver \*
 
-    :param const char \*buf:
+    :param buf:
         buffer for scanning device ID data
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         input size
+    :type count: size_t
 
 .. _`new_id_store.description`:
 
@@ -270,6 +296,36 @@ Description
 
 Adds a new dynamic hid device ID to this driver,
 and causes the driver to probe for all devices again.
+
+.. _`hid_compare_device_paths`:
+
+hid_compare_device_paths
+========================
+
+.. c:function:: bool hid_compare_device_paths(struct hid_device *hdev_a, struct hid_device *hdev_b, char separator)
+
+    check if both devices share the same path
+
+    :param hdev_a:
+        hid device
+    :type hdev_a: struct hid_device \*
+
+    :param hdev_b:
+        hid device
+    :type hdev_b: struct hid_device \*
+
+    :param separator:
+        char to use as separator
+    :type separator: char
+
+.. _`hid_compare_device_paths.description`:
+
+Description
+-----------
+
+Check if two devices share the same path up to the last occurrence of
+the separator char. Both paths must exist (i.e., zero-length paths
+don't match).
 
 .. _`hid_allocate_device`:
 
@@ -280,8 +336,9 @@ hid_allocate_device
 
     allocate new hid device descriptor
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hid_allocate_device.description`:
 
@@ -303,8 +360,9 @@ hid_destroy_device
 
     free previously allocated device
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
 .. _`hid_destroy_device.description`:
 

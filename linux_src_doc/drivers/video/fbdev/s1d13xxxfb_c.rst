@@ -10,8 +10,9 @@ s1d13xxxfb_set_par
 
     Alters the hardware state.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure
+    :type info: struct fb_info \*
 
 .. _`s1d13xxxfb_set_par.description`:
 
@@ -42,23 +43,29 @@ s1d13xxxfb_setcolreg
 
     sets a color register.
 
-    :param u_int regno:
+    :param regno:
         Which register in the CLUT we are programming
+    :type regno: u_int
 
-    :param u_int red:
+    :param red:
         The red value which can be up to 16 bits wide
+    :type red: u_int
 
-    :param u_int green:
+    :param green:
         The green value which can be up to 16 bits wide
+    :type green: u_int
 
-    :param u_int blue:
+    :param blue:
         The blue value which can be up to 16 bits wide.
+    :type blue: u_int
 
-    :param u_int transp:
+    :param transp:
         If supported the alpha value which can be up to 16 bits wide.
+    :type transp: u_int
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. _`s1d13xxxfb_setcolreg.description`:
 
@@ -76,11 +83,13 @@ s1d13xxxfb_blank
 
     blanks the display.
 
-    :param int blank_mode:
+    :param blank_mode:
         the blank mode we want.
+    :type blank_mode: int
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`s1d13xxxfb_blank.description`:
 
@@ -106,11 +115,13 @@ s1d13xxxfb_pan_display
 
     Pans the display.
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer variable screen structure
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`s1d13xxxfb_pan_display.description`:
 
@@ -132,14 +143,17 @@ bltbit_wait_bitclear
 
     waits for change in register value
 
-    :param struct fb_info \*info:
+    :param info:
         frambuffer structure
+    :type info: struct fb_info \*
 
-    :param u8 bit:
+    :param bit:
         value currently in register
+    :type bit: u8
 
-    :param int timeout:
+    :param timeout:
         ...
+    :type timeout: int
 
 .. _`bltbit_wait_bitclear.description`:
 
@@ -157,8 +171,9 @@ s1d13xxxfb_fetch_hw_state
 
     Configure the framebuffer according to hardware setup.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure
+    :type info: struct fb_info \*
 
 .. _`s1d13xxxfb_fetch_hw_state.description`:
 

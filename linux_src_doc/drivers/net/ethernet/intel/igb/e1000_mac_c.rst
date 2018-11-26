@@ -10,8 +10,9 @@ igb_get_bus_info_pcie
 
     Get PCIe bus information
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_bus_info_pcie.description`:
 
@@ -31,8 +32,9 @@ igb_clear_vfta
 
     Clear VLAN filter table
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_clear_vfta.description`:
 
@@ -51,14 +53,17 @@ igb_write_vfta
 
     Write value to VLAN filter table
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset in VLAN filter table
+    :type offset: u32
 
-    :param u32 value:
+    :param value:
         register value written to VLAN filter table
+    :type value: u32
 
 .. _`igb_write_vfta.description`:
 
@@ -77,11 +82,13 @@ igb_init_rx_addrs
 
     Initialize receive address's
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 rar_count:
+    :param rar_count:
         receive address registers
+    :type rar_count: u16
 
 .. _`igb_init_rx_addrs.description`:
 
@@ -101,14 +108,17 @@ igb_find_vlvf_slot
 
     find the VLAN id or the first empty slot
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 vlan:
+    :param vlan:
         VLAN id to write to VLAN filter
+    :type vlan: u32
 
-    :param bool vlvf_bypass:
+    :param vlvf_bypass:
         skip VLVF if no match is found
+    :type vlvf_bypass: bool
 
 .. _`igb_find_vlvf_slot.description`:
 
@@ -126,20 +136,25 @@ igb_vfta_set
 
     enable or disable vlan in VLAN filter table
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 vlan:
+    :param vlan:
         VLAN id to add or remove
+    :type vlan: u32
 
-    :param u32 vind:
+    :param vind:
         VMDq output index that maps queue to VLAN id
+    :type vind: u32
 
-    :param bool vlan_on:
+    :param vlan_on:
         if true add filter, if false remove
+    :type vlan_on: bool
 
-    :param bool vlvf_bypass:
+    :param vlvf_bypass:
         *undescribed*
+    :type vlvf_bypass: bool
 
 .. _`igb_vfta_set.description`:
 
@@ -158,8 +173,9 @@ igb_check_alt_mac_addr
 
     Check for alternate MAC addr
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_check_alt_mac_addr.description`:
 
@@ -182,14 +198,17 @@ igb_rar_set
 
     Set receive address register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*addr:
+    :param addr:
         pointer to the receive address
+    :type addr: u8 \*
 
-    :param u32 index:
+    :param index:
         receive address array register
+    :type index: u32
 
 .. _`igb_rar_set.description`:
 
@@ -208,11 +227,13 @@ igb_mta_set
 
     Set multicast filter table address
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 hash_value:
+    :param hash_value:
         determines the MTA register and bit to set
+    :type hash_value: u32
 
 .. _`igb_mta_set.description`:
 
@@ -233,11 +254,13 @@ igb_hash_mc_addr
 
     Generate a multicast hash value
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*mc_addr:
+    :param mc_addr:
         pointer to a multicast address
+    :type mc_addr: u8 \*
 
 .. _`igb_hash_mc_addr.description`:
 
@@ -257,14 +280,17 @@ igb_update_mc_addr_list
 
     Update Multicast addresses
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*mc_addr_list:
+    :param mc_addr_list:
         array of multicast addresses to program
+    :type mc_addr_list: u8 \*
 
-    :param u32 mc_addr_count:
+    :param mc_addr_count:
         number of multicast addresses to program
+    :type mc_addr_count: u32
 
 .. _`igb_update_mc_addr_list.description`:
 
@@ -283,8 +309,9 @@ igb_clear_hw_cntrs_base
 
     Clear base hardware counters
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_clear_hw_cntrs_base.description`:
 
@@ -302,8 +329,9 @@ igb_check_for_copper_link
 
     Check for link (Copper)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_check_for_copper_link.description`:
 
@@ -323,8 +351,9 @@ igb_setup_link
 
     Setup flow control and link settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_setup_link.description`:
 
@@ -346,8 +375,9 @@ igb_config_collision_dist
 
     Configure collision distance
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_config_collision_dist.description`:
 
@@ -367,8 +397,9 @@ igb_set_fc_watermarks
 
     Set flow control high/low watermarks
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_set_fc_watermarks.description`:
 
@@ -388,8 +419,9 @@ igb_set_default_fc
 
     Set flow control default values
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_set_default_fc.description`:
 
@@ -408,8 +440,9 @@ igb_force_mac_fc
 
     Force the MAC's flow control settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_force_mac_fc.description`:
 
@@ -431,8 +464,9 @@ igb_config_fc_after_link_up
 
     Configures flow control after link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_config_fc_after_link_up.description`:
 
@@ -454,14 +488,17 @@ igb_get_speed_and_duplex_copper
 
     Retrieve current speed/duplex
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*speed:
+    :param speed:
         stores the current speed
+    :type speed: u16 \*
 
-    :param u16 \*duplex:
+    :param duplex:
         stores the current duplex
+    :type duplex: u16 \*
 
 .. _`igb_get_speed_and_duplex_copper.description`:
 
@@ -480,8 +517,9 @@ igb_get_hw_semaphore
 
     Acquire hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_hw_semaphore.description`:
 
@@ -499,8 +537,9 @@ igb_put_hw_semaphore
 
     Release hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_put_hw_semaphore.description`:
 
@@ -518,8 +557,9 @@ igb_get_auto_rd_done
 
     Check for auto read completion
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_auto_rd_done.description`:
 
@@ -537,11 +577,13 @@ igb_valid_led_default
 
     Verify a valid default LED config
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*data:
+    :param data:
         pointer to the NVM (EEPROM)
+    :type data: u16 \*
 
 .. _`igb_valid_led_default.description`:
 
@@ -558,8 +600,9 @@ igb_id_led_init
 
 .. c:function:: s32 igb_id_led_init(struct e1000_hw *hw)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_cleanup_led`:
 
@@ -570,8 +613,9 @@ igb_cleanup_led
 
     Set LED config to default operation
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_cleanup_led.description`:
 
@@ -590,8 +634,9 @@ igb_blink_led
 
     Blink LED
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_blink_led.description`:
 
@@ -609,8 +654,9 @@ igb_led_off
 
     Turn LED off
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_led_off.description`:
 
@@ -628,8 +674,9 @@ igb_disable_pcie_master
 
     Disables PCI-express master access
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_disable_pcie_master.description`:
 
@@ -652,8 +699,9 @@ igb_validate_mdi_setting
 
     Verify MDI/MDIx settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_validate_mdi_setting.description`:
 
@@ -672,17 +720,21 @@ igb_write_8bit_ctrl_reg
 
     Write a 8bit CTRL register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 reg:
+    :param reg:
         32bit register offset such as E1000_SCTL
+    :type reg: u32
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u8 data:
+    :param data:
         data to write at register offset
+    :type data: u8
 
 .. _`igb_write_8bit_ctrl_reg.description`:
 
@@ -702,8 +754,9 @@ igb_enable_mng_pass_thru
 
     Enable processing of ARP's
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_enable_mng_pass_thru.description`:
 

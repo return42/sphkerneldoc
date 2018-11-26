@@ -10,8 +10,9 @@ bnx2fc_eh_target_reset
 
     Reset a target
 
-    :param struct scsi_cmnd \*sc_cmd:
+    :param sc_cmd:
         SCSI command
+    :type sc_cmd: struct scsi_cmnd \*
 
 .. _`bnx2fc_eh_target_reset.description`:
 
@@ -30,8 +31,9 @@ bnx2fc_eh_device_reset
 
     Reset a single LUN
 
-    :param struct scsi_cmnd \*sc_cmd:
+    :param sc_cmd:
         SCSI command
+    :type sc_cmd: struct scsi_cmnd \*
 
 .. _`bnx2fc_eh_device_reset.description`:
 
@@ -50,8 +52,9 @@ bnx2fc_eh_abort
 
     eh_abort_handler api to abort an outstanding SCSI command
 
-    :param struct scsi_cmnd \*sc_cmd:
+    :param sc_cmd:
         SCSI_ML command pointer
+    :type sc_cmd: struct scsi_cmnd \*
 
 .. _`bnx2fc_eh_abort.description`:
 
@@ -69,11 +72,13 @@ bnx2fc_queuecommand
 
     Queuecommand function of the scsi template
 
-    :param struct Scsi_Host \*host:
+    :param host:
         The Scsi_Host the command was issued to
+    :type host: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*sc_cmd:
+    :param sc_cmd:
         struct scsi_cmnd to be executed
+    :type sc_cmd: struct scsi_cmnd \*
 
 .. _`bnx2fc_queuecommand.description`:
 

@@ -27,7 +27,6 @@ Definition
         wait_queue_head_t *vc_wq;
         unsigned long p9_max_pages;
         struct scatterlist sg[VIRTQUEUE_NUM];
-        int tag_len;
         char *tag;
         struct list_head chan_list;
     }
@@ -64,9 +63,6 @@ p9_max_pages
 sg
     scatter gather list which is used to pack a request (protected?)
 
-tag_len
-    *undescribed*
-
 tag
     *undescribed*
 
@@ -91,8 +87,9 @@ p9_virtio_close
 
     reclaim resources of a channel
 
-    :param struct p9_client \*client:
+    :param client:
         client instance
+    :type client: struct p9_client \*
 
 .. _`p9_virtio_close.description`:
 
@@ -111,8 +108,9 @@ req_done
 
     callback which signals activity from the server
 
-    :param struct virtqueue \*vq:
+    :param vq:
         virtio queue activity was received on
+    :type vq: struct virtqueue \*
 
 .. _`req_done.description`:
 
@@ -140,20 +138,25 @@ pack_sg_list
 
     pack a scatter gather list from a linear buffer
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatter/gather list to pack into
+    :type sg: struct scatterlist \*
 
-    :param int start:
+    :param start:
         which segment of the sg_list to start at
+    :type start: int
 
-    :param int limit:
+    :param limit:
         maximum segment to pack data to
+    :type limit: int
 
-    :param char \*data:
+    :param data:
         data to pack into scatter/gather list
+    :type data: char \*
 
-    :param int count:
+    :param count:
         amount of data to pack into the scatter/gather list
+    :type count: int
 
 .. _`pack_sg_list.description`:
 
@@ -173,26 +176,33 @@ pack_sg_list_p
 
     Just like pack_sg_list. Instead of taking a buffer, this takes a list of pages.
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatter/gather list to pack into
+    :type sg: struct scatterlist \*
 
-    :param int start:
+    :param start:
         which segment of the sg_list to start at
+    :type start: int
 
-    :param int limit:
+    :param limit:
         *undescribed*
+    :type limit: int
 
-    :param struct page \*\*pdata:
+    :param pdata:
         a list of pages to add into sg.
+    :type pdata: struct page \*\*
 
-    :param int nr_pages:
+    :param nr_pages:
         number of pages to pack into the scatter/gather list
+    :type nr_pages: int
 
-    :param size_t offs:
+    :param offs:
         amount of data in the beginning of first page \_not\_ to pack
+    :type offs: size_t
 
-    :param int count:
+    :param count:
         amount of data to pack into the scatter/gather list
+    :type count: int
 
 .. _`p9_virtio_request`:
 
@@ -203,11 +213,13 @@ p9_virtio_request
 
     issue a request
 
-    :param struct p9_client \*client:
+    :param client:
         client instance issuing the request
+    :type client: struct p9_client \*
 
-    :param struct p9_req_t \*req:
+    :param req:
         request to be issued
+    :type req: struct p9_req_t \*
 
 .. _`p9_virtio_zc_request`:
 
@@ -218,26 +230,33 @@ p9_virtio_zc_request
 
     issue a zero copy request
 
-    :param struct p9_client \*client:
+    :param client:
         client instance issuing the request
+    :type client: struct p9_client \*
 
-    :param struct p9_req_t \*req:
+    :param req:
         request to be issued
+    :type req: struct p9_req_t \*
 
-    :param struct iov_iter \*uidata:
-        user bffer that should be ued for zero copy read
+    :param uidata:
+        user buffer that should be used for zero copy read
+    :type uidata: struct iov_iter \*
 
-    :param struct iov_iter \*uodata:
-        user buffer that shoud be user for zero copy write
+    :param uodata:
+        user buffer that should be used for zero copy write
+    :type uodata: struct iov_iter \*
 
-    :param int inlen:
+    :param inlen:
         read buffer size
+    :type inlen: int
 
-    :param int outlen:
+    :param outlen:
         write buffer size
+    :type outlen: int
 
-    :param int in_hdr_len:
+    :param in_hdr_len:
         reader header size, This is the size of response protocol data
+    :type in_hdr_len: int
 
 .. _`p9_virtio_probe`:
 
@@ -248,8 +267,9 @@ p9_virtio_probe
 
     probe for existence of 9P virtio channels
 
-    :param struct virtio_device \*vdev:
+    :param vdev:
         virtio device to probe
+    :type vdev: struct virtio_device \*
 
 .. _`p9_virtio_probe.description`:
 
@@ -267,14 +287,17 @@ p9_virtio_create
 
     allocate a new virtio channel
 
-    :param struct p9_client \*client:
+    :param client:
         client instance invoking this transport
+    :type client: struct p9_client \*
 
-    :param const char \*devname:
+    :param devname:
         string identifying the channel to connect to (unused)
+    :type devname: const char \*
 
-    :param char \*args:
+    :param args:
         args passed from \ :c:func:`sys_mount`\  for per-transport options (unused)
+    :type args: char \*
 
 .. _`p9_virtio_create.description`:
 
@@ -296,8 +319,9 @@ p9_virtio_remove
 
     clean up resources associated with a virtio device
 
-    :param struct virtio_device \*vdev:
+    :param vdev:
         virtio device to remove
+    :type vdev: struct virtio_device \*
 
 .. This file was automatic generated / don't edit.
 

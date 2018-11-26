@@ -10,29 +10,37 @@ pci_add_dynid
 
     add a new PCI device ID to this driver and re-probe devices
 
-    :param struct pci_driver \*drv:
+    :param drv:
         target pci driver
+    :type drv: struct pci_driver \*
 
-    :param unsigned int vendor:
+    :param vendor:
         PCI vendor ID
+    :type vendor: unsigned int
 
-    :param unsigned int device:
+    :param device:
         PCI device ID
+    :type device: unsigned int
 
-    :param unsigned int subvendor:
+    :param subvendor:
         PCI subvendor ID
+    :type subvendor: unsigned int
 
-    :param unsigned int subdevice:
+    :param subdevice:
         PCI subdevice ID
+    :type subdevice: unsigned int
 
-    :param unsigned int class:
+    :param class:
         PCI class
+    :type class: unsigned int
 
-    :param unsigned int class_mask:
+    :param class_mask:
         PCI class mask
+    :type class_mask: unsigned int
 
-    :param unsigned long driver_data:
+    :param driver_data:
         private driver data
+    :type driver_data: unsigned long
 
 .. _`pci_add_dynid.description`:
 
@@ -66,14 +74,17 @@ new_id_store
 
     sysfs frontend to \ :c:func:`pci_add_dynid`\ 
 
-    :param struct device_driver \*driver:
+    :param driver:
         target device driver
+    :type driver: struct device_driver \*
 
-    :param const char \*buf:
+    :param buf:
         buffer for scanning device ID data
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         input size
+    :type count: size_t
 
 .. _`new_id_store.description`:
 
@@ -91,14 +102,17 @@ remove_id_store
 
     remove a PCI device ID from this driver
 
-    :param struct device_driver \*driver:
+    :param driver:
         target device driver
+    :type driver: struct device_driver \*
 
-    :param const char \*buf:
+    :param buf:
         buffer for scanning device ID data
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         input size
+    :type count: size_t
 
 .. _`remove_id_store.description`:
 
@@ -116,11 +130,13 @@ pci_match_id
 
     See if a pci device matches a given pci_id table
 
-    :param const struct pci_device_id \*ids:
+    :param ids:
         array of PCI device id structures to search in
+    :type ids: const struct pci_device_id \*
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device structure to match against.
+    :type dev: struct pci_dev \*
 
 .. _`pci_match_id.description`:
 
@@ -143,11 +159,13 @@ pci_match_device
 
     Tell if a PCI device structure has a matching PCI device id structure
 
-    :param struct pci_driver \*drv:
+    :param drv:
         the PCI driver to match against
+    :type drv: struct pci_driver \*
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device structure to match against
+    :type dev: struct pci_dev \*
 
 .. _`pci_match_device.description`:
 
@@ -167,11 +185,13 @@ __pci_device_probe
 
     check if a driver wants to claim a specific PCI device
 
-    :param struct pci_driver \*drv:
+    :param drv:
         driver to call to check if it wants the PCI device
+    :type drv: struct pci_driver \*
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         PCI device being probed
+    :type pci_dev: struct pci_dev \*
 
 .. _`__pci_device_probe.description`:
 
@@ -190,8 +210,9 @@ pci_restore_standard_config
 
     restore standard config registers of PCI device
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         PCI device to handle
+    :type pci_dev: struct pci_dev \*
 
 .. _`__pci_register_driver`:
 
@@ -202,14 +223,17 @@ __pci_register_driver
 
     register a new pci driver
 
-    :param struct pci_driver \*drv:
+    :param drv:
         the driver structure to register
+    :type drv: struct pci_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         owner module of drv
+    :type owner: struct module \*
 
-    :param const char \*mod_name:
+    :param mod_name:
         module name string
+    :type mod_name: const char \*
 
 .. _`__pci_register_driver.description`:
 
@@ -230,8 +254,9 @@ pci_unregister_driver
 
     unregister a pci driver
 
-    :param struct pci_driver \*drv:
+    :param drv:
         the driver structure to unregister
+    :type drv: struct pci_driver \*
 
 .. _`pci_unregister_driver.description`:
 
@@ -252,8 +277,9 @@ pci_dev_driver
 
     get the pci_driver of a device
 
-    :param const struct pci_dev \*dev:
+    :param dev:
         the device to query
+    :type dev: const struct pci_dev \*
 
 .. _`pci_dev_driver.description`:
 
@@ -272,11 +298,13 @@ pci_bus_match
 
     Tell if a PCI device structure has a matching PCI device id structure
 
-    :param struct device \*dev:
+    :param dev:
         the PCI device structure to match against
+    :type dev: struct device \*
 
-    :param struct device_driver \*drv:
+    :param drv:
         the device driver to search for matching PCI device id structures
+    :type drv: struct device_driver \*
 
 .. _`pci_bus_match.description`:
 
@@ -296,8 +324,9 @@ pci_dev_get
 
     increments the reference count of the pci device structure
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the device being referenced
+    :type dev: struct pci_dev \*
 
 .. _`pci_dev_get.description`:
 
@@ -321,8 +350,9 @@ pci_dev_put
 
     release a use of the pci device structure
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device that's been disconnected
+    :type dev: struct pci_dev \*
 
 .. _`pci_dev_put.description`:
 
@@ -341,11 +371,13 @@ pci_uevent_ers
 
     emit a uevent during recovery path of PCI device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device undergoing error recovery
+    :type pdev: struct pci_dev \*
 
-    :param enum pci_ers_result err_type:
+    :param err_type:
         type of error event
+    :type err_type: enum pci_ers_result
 
 .. _`pci_dma_configure`:
 
@@ -356,8 +388,9 @@ pci_dma_configure
 
     Setup DMA configuration
 
-    :param struct device \*dev:
+    :param dev:
         ptr to dev structure
+    :type dev: struct device \*
 
 .. _`pci_dma_configure.description`:
 

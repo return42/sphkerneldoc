@@ -10,14 +10,17 @@ siphash
 
     compute 64-bit siphash PRF value
 
-    :param const void \*data:
+    :param data:
         buffer to hash
+    :type data: const void \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param const siphash_key_t \*key:
+    :param key:
         the siphash key
+    :type key: const siphash_key_t \*
 
 .. _`hsiphash`:
 
@@ -28,14 +31,17 @@ hsiphash
 
     compute 32-bit hsiphash PRF value
 
-    :param const void \*data:
+    :param data:
         buffer to hash
+    :type data: const void \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param const hsiphash_key_t \*key:
+    :param key:
         the hsiphash key
+    :type key: const hsiphash_key_t \*
 
 .. This file was automatic generated / don't edit.
 

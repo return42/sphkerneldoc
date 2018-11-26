@@ -10,15 +10,18 @@ spin_event_timeout
 
     spin until a condition gets true or a timeout elapses
 
-    :param  condition:
+    :param condition:
         a C expression to evalate
+    :type condition: 
 
-    :param  timeout:
+    :param timeout:
         timeout, in microseconds
+    :type timeout: 
 
-    :param  delay:
+    :param delay:
         the number of microseconds to delay between each evaluation of
         \ ``condition``\ 
+    :type delay: 
 
 .. _`spin_event_timeout.description`:
 

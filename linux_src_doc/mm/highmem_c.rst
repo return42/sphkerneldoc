@@ -10,8 +10,9 @@ kmap_flush_unused
 
     flush all unused kmap mappings in order to remove stray mappings
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kmap_high`:
 
@@ -22,8 +23,9 @@ kmap_high
 
     map a highmem page into memory
 
-    :param struct page \*page:
+    :param page:
         \ :c:type:`struct page <page>`\  to map
+    :type page: struct page \*
 
 .. _`kmap_high.description`:
 
@@ -43,8 +45,9 @@ kmap_high_get
 
     pin a highmem page into memory
 
-    :param struct page \*page:
+    :param page:
         \ :c:type:`struct page <page>`\  to pin
+    :type page: struct page \*
 
 .. _`kmap_high_get.description`:
 
@@ -66,8 +69,9 @@ kunmap_high
 
     unmap a highmem page into memory
 
-    :param struct page \*page:
+    :param page:
         \ :c:type:`struct page <page>`\  to unmap
+    :type page: struct page \*
 
 .. _`kunmap_high.description`:
 
@@ -86,8 +90,9 @@ page_address
 
     get the mapped virtual address of a page
 
-    :param const struct page \*page:
+    :param page:
         \ :c:type:`struct page <page>`\  to get the virtual address of
+    :type page: const struct page \*
 
 .. _`page_address.description`:
 
@@ -105,11 +110,13 @@ set_page_address
 
     set a page's virtual address
 
-    :param struct page \*page:
+    :param page:
         \ :c:type:`struct page <page>`\  to set
+    :type page: struct page \*
 
-    :param void \*virtual:
+    :param virtual:
         virtual address to use
+    :type virtual: void \*
 
 .. This file was automatic generated / don't edit.
 

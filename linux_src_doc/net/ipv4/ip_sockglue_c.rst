@@ -10,11 +10,13 @@ ipv4_pktinfo_prepare
 
     transfer some info from rtable to skb
 
-    :param const struct sock \*sk:
+    :param sk:
         socket
+    :type sk: const struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: struct sk_buff \*
 
 .. _`ipv4_pktinfo_prepare.description`:
 

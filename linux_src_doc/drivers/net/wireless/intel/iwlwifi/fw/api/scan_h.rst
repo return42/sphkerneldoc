@@ -785,7 +785,8 @@ Definition
 .. code-block:: c
 
     enum iwl_umac_scan_general_flags2 {
-        IWL_UMAC_SCAN_GEN_FLAGS2_NOTIF_PER_CHNL
+        IWL_UMAC_SCAN_GEN_FLAGS2_NOTIF_PER_CHNL,
+        IWL_UMAC_SCAN_GEN_FLAGS2_ALLOW_CHNL_REORDER
     };
 
 .. _`iwl_umac_scan_general_flags2.constants`:
@@ -796,6 +797,10 @@ Constants
 IWL_UMAC_SCAN_GEN_FLAGS2_NOTIF_PER_CHNL
     Whether to send a complete
     notification per channel or not.
+
+IWL_UMAC_SCAN_GEN_FLAGS2_ALLOW_CHNL_REORDER
+    Whether to allow channel
+    reorder optimization or not.
 
 .. _`iwl_scan_channel_cfg_umac`:
 

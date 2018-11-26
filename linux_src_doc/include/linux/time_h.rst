@@ -10,11 +10,13 @@ time_after32
 
     compare two 32-bit relative times
 
-    :param  a:
+    :param a:
         the time which may be after \ ``b``\ 
+    :type a: 
 
-    :param  b:
+    :param b:
         the time which may be before \ ``a``\ 
+    :type b: 
 
 .. _`time_after32.description`:
 

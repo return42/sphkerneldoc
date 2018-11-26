@@ -10,11 +10,13 @@ trace_wbt_stat
 
     trace stats for blk_wb
 
-    :param struct backing_dev_info \*bdi:
+    :param bdi:
         *undescribed*
+    :type bdi: struct backing_dev_info \*
 
-    :param struct blk_rq_stat \*stat:
+    :param stat:
         array of read/write stats
+    :type stat: struct blk_rq_stat \*
 
 .. _`trace_wbt_lat`:
 
@@ -25,11 +27,13 @@ trace_wbt_lat
 
     trace latency event
 
-    :param struct backing_dev_info \*bdi:
+    :param bdi:
         *undescribed*
+    :type bdi: struct backing_dev_info \*
 
-    :param unsigned long lat:
+    :param lat:
         latency trigger
+    :type lat: unsigned long
 
 .. _`trace_wbt_step`:
 
@@ -40,26 +44,33 @@ trace_wbt_step
 
     trace wb event step
 
-    :param struct backing_dev_info \*bdi:
+    :param bdi:
         *undescribed*
+    :type bdi: struct backing_dev_info \*
 
-    :param const char \*msg:
+    :param msg:
         context message
+    :type msg: const char \*
 
-    :param int step:
+    :param step:
         the current scale step count
+    :type step: int
 
-    :param unsigned long window:
+    :param window:
         the current monitoring window
+    :type window: unsigned long
 
-    :param unsigned int bg:
+    :param bg:
         the current background queue limit
+    :type bg: unsigned int
 
-    :param unsigned int normal:
+    :param normal:
         the current normal writeback limit
+    :type normal: unsigned int
 
-    :param unsigned int max:
+    :param max:
         the current max throughput writeback limit
+    :type max: unsigned int
 
 .. _`trace_wbt_timer`:
 
@@ -70,17 +81,21 @@ trace_wbt_timer
 
     trace wb timer event
 
-    :param struct backing_dev_info \*bdi:
+    :param bdi:
         *undescribed*
+    :type bdi: struct backing_dev_info \*
 
-    :param unsigned int status:
+    :param status:
         timer state status
+    :type status: unsigned int
 
-    :param int step:
+    :param step:
         the current scale step count
+    :type step: int
 
-    :param unsigned int inflight:
+    :param inflight:
         tracked writes inflight
+    :type inflight: unsigned int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ bnx2x_save_statistics
 
     save statistics when unloading.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. This file was automatic generated / don't edit.
 

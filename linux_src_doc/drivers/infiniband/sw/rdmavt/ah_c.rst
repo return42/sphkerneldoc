@@ -10,11 +10,13 @@ rvt_check_ah
 
     validate the attributes of AH
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the ib device
+    :type ibdev: struct ib_device \*
 
-    :param struct rdma_ah_attr \*ah_attr:
+    :param ah_attr:
         the attributes of the AH
+    :type ah_attr: struct rdma_ah_attr \*
 
 .. _`rvt_check_ah.description`:
 
@@ -40,11 +42,13 @@ rvt_create_ah
 
     create an address handle
 
-    :param struct ib_pd \*pd:
+    :param pd:
         the protection domain
+    :type pd: struct ib_pd \*
 
-    :param struct rdma_ah_attr \*ah_attr:
+    :param ah_attr:
         the attributes of the AH
+    :type ah_attr: struct rdma_ah_attr \*
 
 .. _`rvt_create_ah.description`:
 
@@ -69,8 +73,9 @@ rvt_destroy_ah
 
     Destory an address handle
 
-    :param struct ib_ah \*ibah:
+    :param ibah:
         address handle
+    :type ibah: struct ib_ah \*
 
 .. _`rvt_destroy_ah.return`:
 
@@ -88,11 +93,13 @@ rvt_modify_ah
 
     modify an ah with given attrs
 
-    :param struct ib_ah \*ibah:
+    :param ibah:
         address handle to modify
+    :type ibah: struct ib_ah \*
 
-    :param struct rdma_ah_attr \*ah_attr:
+    :param ah_attr:
         attrs to apply
+    :type ah_attr: struct rdma_ah_attr \*
 
 .. _`rvt_modify_ah.return`:
 
@@ -110,11 +117,13 @@ rvt_query_ah
 
     return attrs for ah
 
-    :param struct ib_ah \*ibah:
+    :param ibah:
         address handle to query
+    :type ibah: struct ib_ah \*
 
-    :param struct rdma_ah_attr \*ah_attr:
+    :param ah_attr:
         return info in this
+    :type ah_attr: struct rdma_ah_attr \*
 
 .. _`rvt_query_ah.return`:
 

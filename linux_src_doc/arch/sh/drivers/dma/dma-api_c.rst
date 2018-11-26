@@ -10,14 +10,17 @@ request_dma_bycap
 
     Allocate a DMA channel based on its capabilities
 
-    :param const char \*\*dmac:
+    :param dmac:
         List of DMA controllers to search
+    :type dmac: const char \*\*
 
-    :param const char \*\*caps:
+    :param caps:
         List of capabilities
+    :type caps: const char \*\*
 
-    :param const char \*dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: const char \*
 
 .. _`request_dma_bycap.description`:
 

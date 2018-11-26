@@ -10,14 +10,17 @@ dio_complete
 
     called when all DIO BIO I/O has been completed
 
-    :param struct dio \*dio:
+    :param dio:
         *undescribed*
+    :type dio: struct dio \*
 
-    :param ssize_t ret:
+    :param ret:
         *undescribed*
+    :type ret: ssize_t
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`dio_complete.description`:
 
@@ -41,8 +44,9 @@ dio_end_io
 
     handle the end io action for the given bio
 
-    :param struct bio \*bio:
+    :param bio:
         The direct io bio thats being completed
+    :type bio: struct bio \*
 
 .. _`dio_end_io.description`:
 

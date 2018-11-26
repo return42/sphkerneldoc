@@ -10,11 +10,13 @@ gm20b_secboot_tegra_read_wpr
 
     read the WPR registers on Tegra
 
-    :param struct gm200_secboot \*gsb:
+    :param gsb:
         *undescribed*
+    :type gsb: struct gm200_secboot \*
 
-    :param u32 mc_base:
+    :param mc_base:
         *undescribed*
+    :type mc_base: u32
 
 .. _`gm20b_secboot_tegra_read_wpr.description`:
 

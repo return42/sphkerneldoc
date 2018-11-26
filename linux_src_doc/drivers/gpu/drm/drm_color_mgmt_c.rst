@@ -89,11 +89,13 @@ drm_color_lut_extract
 
     clamp and round LUT entries
 
-    :param uint32_t user_input:
+    :param user_input:
         input value
+    :type user_input: uint32_t
 
-    :param uint32_t bit_precision:
+    :param bit_precision:
         number of bits the hw LUT supports
+    :type bit_precision: uint32_t
 
 .. _`drm_color_lut_extract.description`:
 
@@ -113,17 +115,21 @@ drm_crtc_enable_color_mgmt
 
     enable color management properties
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM CRTC
+    :type crtc: struct drm_crtc \*
 
-    :param uint degamma_lut_size:
+    :param degamma_lut_size:
         the size of the degamma lut (before CSC)
+    :type degamma_lut_size: uint
 
-    :param bool has_ctm:
+    :param has_ctm:
         whether to attach ctm_property for CSC matrix
+    :type has_ctm: bool
 
-    :param uint gamma_lut_size:
+    :param gamma_lut_size:
         the size of the gamma lut (after CSC)
+    :type gamma_lut_size: uint
 
 .. _`drm_crtc_enable_color_mgmt.description`:
 
@@ -150,11 +156,13 @@ drm_mode_crtc_set_gamma_size
 
     set the gamma table size
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC to set the gamma table size for
+    :type crtc: struct drm_crtc \*
 
-    :param int gamma_size:
+    :param gamma_size:
         size of the gamma table
+    :type gamma_size: int
 
 .. _`drm_mode_crtc_set_gamma_size.description`:
 
@@ -181,14 +189,17 @@ drm_mode_gamma_set_ioctl
 
     set the gamma table
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file info
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_gamma_set_ioctl.description`:
 
@@ -216,14 +227,17 @@ drm_mode_gamma_get_ioctl
 
     get the gamma table
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file info
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_gamma_get_ioctl.description`:
 
@@ -252,8 +266,9 @@ drm_get_color_encoding_name
 
     return a string for color encoding
 
-    :param enum drm_color_encoding encoding:
+    :param encoding:
         color encoding to compute name of
+    :type encoding: enum drm_color_encoding
 
 .. _`drm_get_color_encoding_name.description`:
 
@@ -272,8 +287,9 @@ drm_get_color_range_name
 
     return a string for color range
 
-    :param enum drm_color_range range:
+    :param range:
         color range to compute name of
+    :type range: enum drm_color_range
 
 .. _`drm_get_color_range_name.description`:
 
@@ -292,20 +308,25 @@ drm_plane_create_color_properties
 
     color encoding related plane properties
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane object
+    :type plane: struct drm_plane \*
 
-    :param u32 supported_encodings:
+    :param supported_encodings:
         bitfield indicating supported color encodings
+    :type supported_encodings: u32
 
-    :param u32 supported_ranges:
+    :param supported_ranges:
         bitfileld indicating supported color ranges
+    :type supported_ranges: u32
 
-    :param enum drm_color_encoding default_encoding:
+    :param default_encoding:
         default color encoding
+    :type default_encoding: enum drm_color_encoding
 
-    :param enum drm_color_range default_range:
+    :param default_range:
         default color range
+    :type default_range: enum drm_color_range
 
 .. _`drm_plane_create_color_properties.description`:
 

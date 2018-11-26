@@ -10,11 +10,13 @@ div64_s64_precise
 
     wrapper for \ :c:func:`div64_s64`\ 
 
-    :param s64 a:
+    :param a:
         the dividend
+    :type a: s64
 
-    :param s32 b:
+    :param b:
         the divisor
+    :type b: s32
 
 .. _`div64_s64_precise.description`:
 

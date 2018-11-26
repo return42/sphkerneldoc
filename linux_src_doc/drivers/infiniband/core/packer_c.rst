@@ -10,17 +10,21 @@ ib_pack
 
     Pack a structure into a buffer
 
-    :param const struct ib_field \*desc:
+    :param desc:
         Array of structure field descriptions
+    :type desc: const struct ib_field \*
 
-    :param int desc_len:
+    :param desc_len:
         Number of entries in \ ``desc``\ 
+    :type desc_len: int
 
-    :param void \*structure:
+    :param structure:
         Structure to pack from
+    :type structure: void \*
 
-    :param void \*buf:
+    :param buf:
         Buffer to pack into
+    :type buf: void \*
 
 .. _`ib_pack.description`:
 
@@ -39,17 +43,21 @@ ib_unpack
 
     Unpack a buffer into a structure
 
-    :param const struct ib_field \*desc:
+    :param desc:
         Array of structure field descriptions
+    :type desc: const struct ib_field \*
 
-    :param int desc_len:
+    :param desc_len:
         Number of entries in \ ``desc``\ 
+    :type desc_len: int
 
-    :param void \*buf:
+    :param buf:
         Buffer to unpack from
+    :type buf: void \*
 
-    :param void \*structure:
+    :param structure:
         Structure to unpack into
+    :type structure: void \*
 
 .. _`ib_unpack.description`:
 

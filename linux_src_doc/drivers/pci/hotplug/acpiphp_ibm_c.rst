@@ -10,8 +10,9 @@ ibm_slot_from_id
 
     workaround for bad ibm hardware
 
-    :param int id:
+    :param id:
         the slot number that linux refers to the slot by
+    :type id: int
 
 .. _`ibm_slot_from_id.description`:
 
@@ -32,11 +33,13 @@ ibm_set_attention_status
 
     callback method to set the attention LED
 
-    :param struct hotplug_slot \*slot:
+    :param slot:
         the hotplug_slot to work with
+    :type slot: struct hotplug_slot \*
 
-    :param u8 status:
+    :param status:
         what to set the LED to (0 or 1)
+    :type status: u8
 
 .. _`ibm_set_attention_status.description`:
 
@@ -55,11 +58,13 @@ ibm_get_attention_status
 
     callback method to get attention LED status
 
-    :param struct hotplug_slot \*slot:
+    :param slot:
         the hotplug_slot to work with
+    :type slot: struct hotplug_slot \*
 
-    :param u8 \*status:
+    :param status:
         returns what the LED is set to (0 or 1)
+    :type status: u8 \*
 
 .. _`ibm_get_attention_status.description`:
 
@@ -82,14 +87,17 @@ ibm_handle_events
 
     listens for ACPI events for the IBM37D0 device
 
-    :param acpi_handle handle:
+    :param handle:
         an ACPI handle to the device that caused the event
+    :type handle: acpi_handle
 
-    :param u32 event:
+    :param event:
         the event info (device specific)
+    :type event: u32
 
-    :param void \*context:
+    :param context:
         passed context (our notification struct)
+    :type context: void \*
 
 .. _`ibm_handle_events.description`:
 
@@ -117,8 +125,9 @@ ibm_get_table_from_acpi
 
     reads the APLS buffer from ACPI
 
-    :param char \*\*bufp:
+    :param bufp:
         address to pointer to allocate for the table
+    :type bufp: char \*\*
 
 .. _`ibm_get_table_from_acpi.description`:
 
@@ -144,23 +153,29 @@ ibm_read_apci_table
 
     callback for the sysfs apci_table file
 
-    :param struct file \*filp:
+    :param filp:
         the open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         the kobject this binary attribute is a part of
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         struct bin_attribute for this file
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buffer:
+    :param buffer:
         the kernel space buffer to fill
+    :type buffer: char \*
 
-    :param loff_t pos:
+    :param pos:
         the offset into the file
+    :type pos: loff_t
 
-    :param size_t size:
+    :param size:
         the number of bytes requested
+    :type size: size_t
 
 .. _`ibm_read_apci_table.description`:
 
@@ -183,17 +198,21 @@ ibm_find_acpi_device
 
     callback to find our ACPI device
 
-    :param acpi_handle handle:
+    :param handle:
         the ACPI handle of the device we are inspecting
+    :type handle: acpi_handle
 
-    :param u32 lvl:
+    :param lvl:
         depth into the namespace tree
+    :type lvl: u32
 
-    :param void \*context:
+    :param context:
         a pointer to our handle to fill when we find the device
+    :type context: void \*
 
-    :param void \*\*rv:
+    :param rv:
         a return value to fill if desired
+    :type rv: void \*\*
 
 .. _`ibm_find_acpi_device.description`:
 

@@ -10,8 +10,9 @@ hvc_iucv_get_private
 
     Return a struct hvc_iucv_private instance.
 
-    :param uint32_t num:
+    :param num:
         The HVC virtual terminal number (vtermno)
+    :type num: uint32_t
 
 .. _`hvc_iucv_get_private.description`:
 
@@ -30,11 +31,13 @@ alloc_tty_buffer
 
     Return a new struct iucv_tty_buffer element.
 
-    :param size_t size:
+    :param size:
         Size of the internal buffer used to store data.
+    :type size: size_t
 
-    :param gfp_t flags:
+    :param flags:
         Memory allocation flags passed to mempool.
+    :type flags: gfp_t
 
 .. _`alloc_tty_buffer.description`:
 
@@ -64,8 +67,9 @@ destroy_tty_buffer
 
     destroy struct iucv_tty_buffer element.
 
-    :param struct iucv_tty_buffer \*bufp:
+    :param bufp:
         Pointer to a struct iucv_tty_buffer element, SHALL NOT be NULL.
+    :type bufp: struct iucv_tty_buffer \*
 
 .. _`destroy_tty_buffer_list`:
 
@@ -76,8 +80,9 @@ destroy_tty_buffer_list
 
     call \ :c:func:`destroy_tty_buffer`\  for each list element.
 
-    :param struct list_head \*list:
+    :param list:
         List containing struct iucv_tty_buffer elements.
+    :type list: struct list_head \*
 
 .. _`hvc_iucv_write`:
 
@@ -88,17 +93,21 @@ hvc_iucv_write
 
     Receive IUCV message & write data to HVC buffer.
 
-    :param struct hvc_iucv_private \*priv:
+    :param priv:
         Pointer to struct hvc_iucv_private
+    :type priv: struct hvc_iucv_private \*
 
-    :param char \*buf:
+    :param buf:
         HVC buffer for writing received terminal data.
+    :type buf: char \*
 
-    :param int count:
+    :param count:
         HVC buffer size.
+    :type count: int
 
-    :param int \*has_more_data:
+    :param has_more_data:
         Pointer to an int variable.
+    :type has_more_data: int \*
 
 .. _`hvc_iucv_write.description`:
 
@@ -127,14 +136,17 @@ hvc_iucv_get_chars
 
     HVC get_chars operation.
 
-    :param uint32_t vtermno:
+    :param vtermno:
         HVC virtual terminal number.
+    :type vtermno: uint32_t
 
-    :param char \*buf:
+    :param buf:
         Pointer to a buffer to store data
+    :type buf: char \*
 
-    :param int count:
+    :param count:
         Size of buffer available for writing
+    :type count: int
 
 .. _`hvc_iucv_get_chars.description`:
 
@@ -163,14 +175,17 @@ hvc_iucv_queue
 
     Buffer terminal data for sending.
 
-    :param struct hvc_iucv_private \*priv:
+    :param priv:
         Pointer to struct hvc_iucv_private instance.
+    :type priv: struct hvc_iucv_private \*
 
-    :param const char \*buf:
+    :param buf:
         Buffer containing data to send.
+    :type buf: const char \*
 
-    :param int count:
+    :param count:
         Size of buffer and amount of data to send.
+    :type count: int
 
 .. _`hvc_iucv_queue.description`:
 
@@ -196,8 +211,9 @@ hvc_iucv_send
 
     Send an IUCV message containing terminal data.
 
-    :param struct hvc_iucv_private \*priv:
+    :param priv:
         Pointer to struct hvc_iucv_private instance.
+    :type priv: struct hvc_iucv_private \*
 
 .. _`hvc_iucv_send.description`:
 
@@ -218,8 +234,9 @@ hvc_iucv_sndbuf_work
 
     Send buffered data over IUCV
 
-    :param struct work_struct \*work:
+    :param work:
         Work structure.
+    :type work: struct work_struct \*
 
 .. _`hvc_iucv_sndbuf_work.description`:
 
@@ -238,14 +255,17 @@ hvc_iucv_put_chars
 
     HVC put_chars operation.
 
-    :param uint32_t vtermno:
+    :param vtermno:
         HVC virtual terminal number.
+    :type vtermno: uint32_t
 
-    :param const char \*buf:
+    :param buf:
         Pointer to an buffer to read data from
+    :type buf: const char \*
 
-    :param int count:
+    :param count:
         Size of buffer available for reading
+    :type count: int
 
 .. _`hvc_iucv_put_chars.description`:
 
@@ -272,12 +292,14 @@ hvc_iucv_notifier_add
 
     HVC notifier for opening a TTY for the first time.
 
-    :param struct hvc_struct \*hp:
+    :param hp:
         Pointer to the HVC device (struct hvc_struct)
+    :type hp: struct hvc_struct \*
 
-    :param int id:
+    :param id:
         Additional data (originally passed to hvc_alloc): the index of an struct
         hvc_iucv_private instance.
+    :type id: int
 
 .. _`hvc_iucv_notifier_add.description`:
 
@@ -303,8 +325,9 @@ hvc_iucv_cleanup
 
     Clean up and reset a z/VM IUCV HVC instance.
 
-    :param struct hvc_iucv_private \*priv:
+    :param priv:
         Pointer to the struct hvc_iucv_private instance.
+    :type priv: struct hvc_iucv_private \*
 
 .. _`tty_outqueue_empty`:
 
@@ -315,8 +338,9 @@ tty_outqueue_empty
 
     Test if the tty outq is empty
 
-    :param struct hvc_iucv_private \*priv:
+    :param priv:
         Pointer to struct hvc_iucv_private instance.
+    :type priv: struct hvc_iucv_private \*
 
 .. _`flush_sndbuf_sync`:
 
@@ -327,8 +351,9 @@ flush_sndbuf_sync
 
     Flush send buffer and wait for completion
 
-    :param struct hvc_iucv_private \*priv:
+    :param priv:
         Pointer to struct hvc_iucv_private instance.
+    :type priv: struct hvc_iucv_private \*
 
 .. _`flush_sndbuf_sync.description`:
 
@@ -347,8 +372,9 @@ hvc_iucv_hangup
 
     Sever IUCV path and schedule hvc tty hang up
 
-    :param struct hvc_iucv_private \*priv:
+    :param priv:
         Pointer to hvc_iucv_private structure
+    :type priv: struct hvc_iucv_private \*
 
 .. _`hvc_iucv_hangup.description`:
 
@@ -401,12 +427,14 @@ hvc_iucv_notifier_hangup
 
     HVC notifier for TTY hangups.
 
-    :param struct hvc_struct \*hp:
+    :param hp:
         Pointer to the HVC device (struct hvc_struct)
+    :type hp: struct hvc_struct \*
 
-    :param int id:
+    :param id:
         Additional data (originally passed to hvc_alloc):
         the index of an struct hvc_iucv_private instance.
+    :type id: int
 
 .. _`hvc_iucv_notifier_hangup.description`:
 
@@ -438,11 +466,13 @@ hvc_iucv_dtr_rts
 
     HVC notifier for handling DTR/RTS
 
-    :param struct hvc_struct \*hp:
+    :param hp:
         Pointer the HVC device (struct hvc_struct)
+    :type hp: struct hvc_struct \*
 
-    :param int raise:
+    :param raise:
         Non-zero to raise or zero to lower DTR/RTS lines
+    :type raise: int
 
 .. _`hvc_iucv_dtr_rts.description`:
 
@@ -462,12 +492,14 @@ hvc_iucv_notifier_del
 
     HVC notifier for closing a TTY for the last time.
 
-    :param struct hvc_struct \*hp:
+    :param hp:
         Pointer to the HVC device (struct hvc_struct)
+    :type hp: struct hvc_struct \*
 
-    :param int id:
+    :param id:
         Additional data (originally passed to hvc_alloc):
         the index of an struct hvc_iucv_private instance.
+    :type id: int
 
 .. _`hvc_iucv_notifier_del.description`:
 
@@ -495,8 +527,9 @@ hvc_iucv_filter_connreq
 
     Filter connection request based on z/VM user ID
 
-    :param u8 ipvmid:
+    :param ipvmid:
         Originating z/VM user ID (right padded with blanks)
+    :type ipvmid: u8
 
 .. _`hvc_iucv_filter_connreq.description`:
 
@@ -515,15 +548,18 @@ hvc_iucv_path_pending
 
     IUCV handler to process a connection request.
 
-    :param struct iucv_path \*path:
+    :param path:
         Pending path (struct iucv_path)
+    :type path: struct iucv_path \*
 
-    :param u8 \*ipvmid:
+    :param ipvmid:
         z/VM system identifier of originator
+    :type ipvmid: u8 \*
 
-    :param u8 \*ipuser:
+    :param ipuser:
         User specified data for this path
         (AF_IUCV: port/service name and originator port)
+    :type ipuser: u8 \*
 
 .. _`hvc_iucv_path_pending.description`:
 
@@ -556,12 +592,14 @@ hvc_iucv_path_severed
 
     IUCV handler to process a path sever.
 
-    :param struct iucv_path \*path:
+    :param path:
         Pending path (struct iucv_path)
+    :type path: struct iucv_path \*
 
-    :param u8 \*ipuser:
+    :param ipuser:
         User specified data for this path
         (AF_IUCV: port/service name and originator port)
+    :type ipuser: u8 \*
 
 .. _`hvc_iucv_path_severed.description`:
 
@@ -587,11 +625,13 @@ hvc_iucv_msg_pending
 
     IUCV handler to process an incoming IUCV message.
 
-    :param struct iucv_path \*path:
+    :param path:
         Pending path (struct iucv_path)
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         Pointer to the IUCV message
+    :type msg: struct iucv_message \*
 
 .. _`hvc_iucv_msg_pending.description`:
 
@@ -618,11 +658,13 @@ hvc_iucv_msg_complete
 
     IUCV handler to process message completion
 
-    :param struct iucv_path \*path:
+    :param path:
         Pending path (struct iucv_path)
+    :type path: struct iucv_path \*
 
-    :param struct iucv_message \*msg:
+    :param msg:
         Pointer to the IUCV message
+    :type msg: struct iucv_message \*
 
 .. _`hvc_iucv_msg_complete.description`:
 
@@ -650,8 +692,9 @@ hvc_iucv_pm_freeze
 
     Freeze PM callback
 
-    :param struct device \*dev:
+    :param dev:
         IUVC HVC terminal device
+    :type dev: struct device \*
 
 .. _`hvc_iucv_pm_freeze.description`:
 
@@ -670,8 +713,9 @@ hvc_iucv_pm_restore_thaw
 
     Thaw and restore PM callback
 
-    :param struct device \*dev:
+    :param dev:
         IUVC HVC terminal device
+    :type dev: struct device \*
 
 .. _`hvc_iucv_pm_restore_thaw.description`:
 
@@ -690,11 +734,13 @@ hvc_iucv_alloc
 
     Allocates a new struct hvc_iucv_private instance
 
-    :param int id:
+    :param id:
         hvc_iucv_table index
+    :type id: int
 
-    :param unsigned int is_console:
+    :param is_console:
         Flag if the instance is used as Linux console
+    :type is_console: unsigned int
 
 .. _`hvc_iucv_alloc.description`:
 
@@ -714,8 +760,9 @@ hvc_iucv_destroy
 
     Destroy and free hvc_iucv_private instances
 
-    :param struct hvc_iucv_private \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct hvc_iucv_private \*
 
 .. _`hvc_iucv_parse_filter`:
 
@@ -726,11 +773,13 @@ hvc_iucv_parse_filter
 
     Parse filter for a single z/VM user ID
 
-    :param const char \*filter:
+    :param filter:
         String containing a comma-separated list of z/VM user IDs
+    :type filter: const char \*
 
-    :param char \*dest:
+    :param dest:
         Location where to store the parsed z/VM user ID
+    :type dest: char \*
 
 .. _`hvc_iucv_setup_filter`:
 
@@ -741,8 +790,9 @@ hvc_iucv_setup_filter
 
     Set up z/VM user ID filter
 
-    :param const char \*val:
+    :param val:
         *undescribed*
+    :type val: const char \*
 
 .. _`hvc_iucv_setup_filter.description`:
 
@@ -764,11 +814,13 @@ param_set_vmidfilter
 
     Set z/VM user ID filter parameter
 
-    :param const char \*val:
+    :param val:
         String consisting of a comma-separated list of z/VM user IDs
+    :type val: const char \*
 
-    :param const struct kernel_param \*kp:
+    :param kp:
         Kernel parameter pointing to hvc_iucv_filter array
+    :type kp: const struct kernel_param \*
 
 .. _`param_set_vmidfilter.description`:
 
@@ -795,12 +847,14 @@ param_get_vmidfilter
 
     Get z/VM user ID filter
 
-    :param char \*buffer:
+    :param buffer:
         Buffer to store z/VM user ID filter,
         (buffer size assumption PAGE_SIZE)
+    :type buffer: char \*
 
-    :param const struct kernel_param \*kp:
+    :param kp:
         Kernel parameter pointing to the hvc_iucv_filter array
+    :type kp: const struct kernel_param \*
 
 .. _`param_get_vmidfilter.description`:
 
@@ -819,8 +873,9 @@ hvc_iucv_init
 
     z/VM IUCV HVC device driver initialization
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hvc_iucv_config`:
 
@@ -831,8 +886,9 @@ hvc_iucv_config
 
     Parsing of hvc_iucv=  kernel command line parameter
 
-    :param char \*val:
+    :param val:
         Parameter value (numeric)
+    :type val: char \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ snd_dmaengine_pcm_prepare_slave_config
 
     Generic prepare_slave_config callback
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         hw_params
+    :type params: struct snd_pcm_hw_params \*
 
-    :param struct dma_slave_config \*slave_config:
+    :param slave_config:
         DMA slave config to prepare
+    :type slave_config: struct dma_slave_config \*
 
 .. _`snd_dmaengine_pcm_prepare_slave_config.description`:
 
@@ -40,14 +43,17 @@ snd_dmaengine_pcm_register
 
     Register a dmaengine based PCM device
 
-    :param struct device \*dev:
+    :param dev:
         The parent device for the PCM device
+    :type dev: struct device \*
 
-    :param const struct snd_dmaengine_pcm_config \*config:
+    :param config:
         Platform specific PCM configuration
+    :type config: const struct snd_dmaengine_pcm_config \*
 
-    :param unsigned int flags:
+    :param flags:
         Platform specific quirks
+    :type flags: unsigned int
 
 .. _`snd_dmaengine_pcm_unregister`:
 
@@ -58,8 +64,9 @@ snd_dmaengine_pcm_unregister
 
     Removes a dmaengine based PCM device
 
-    :param struct device \*dev:
+    :param dev:
         Parent device the PCM was register with
+    :type dev: struct device \*
 
 .. _`snd_dmaengine_pcm_unregister.description`:
 

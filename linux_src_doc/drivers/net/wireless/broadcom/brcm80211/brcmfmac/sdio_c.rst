@@ -83,14 +83,17 @@ brcmf_sdio_txpkt_prep
 
     packet preparation for transmit
 
-    :param struct brcmf_sdio \*bus:
+    :param bus:
         brcmf_sdio structure pointer
+    :type bus: struct brcmf_sdio \*
 
-    :param struct sk_buff_head \*pktq:
+    :param pktq:
         packet list pointer
+    :type pktq: struct sk_buff_head \*
 
-    :param uint chan:
+    :param chan:
         virtual channel to transmit the packet
+    :type chan: uint
 
 .. _`brcmf_sdio_txpkt_prep.description`:
 
@@ -118,11 +121,13 @@ brcmf_sdio_txpkt_postp
 
     packet post processing for transmit
 
-    :param struct brcmf_sdio \*bus:
+    :param bus:
         brcmf_sdio structure pointer
+    :type bus: struct brcmf_sdio \*
 
-    :param struct sk_buff_head \*pktq:
+    :param pktq:
         packet list pointer
+    :type pktq: struct sk_buff_head \*
 
 .. _`brcmf_sdio_txpkt_postp.description`:
 

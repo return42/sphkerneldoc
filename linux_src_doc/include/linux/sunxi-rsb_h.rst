@@ -91,8 +91,9 @@ sunxi_rsb_driver_unregister
 
     unregister an RSB client driver
 
-    :param struct sunxi_rsb_driver \*rdrv:
+    :param rdrv:
         the driver to unregister
+    :type rdrv: struct sunxi_rsb_driver \*
 
 .. _`devm_regmap_init_sunxi_rsb`:
 
@@ -103,11 +104,13 @@ devm_regmap_init_sunxi_rsb
 
     Initialise managed register map
 
-    :param  rdev:
+    :param rdev:
         Device that will be interacted with
+    :type rdev: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_sunxi_rsb.description`:
 

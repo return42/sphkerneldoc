@@ -10,14 +10,17 @@ superhyway_add_device
 
     Add a SuperHyway module
 
-    :param unsigned long base:
+    :param base:
         Physical address where module is mapped.
+    :type base: unsigned long
 
-    :param struct superhyway_device \*sdev:
+    :param sdev:
         SuperHyway device to add, or NULL to allocate a new one.
+    :type sdev: struct superhyway_device \*
 
-    :param struct superhyway_bus \*bus:
+    :param bus:
         Bus where SuperHyway module resides.
+    :type bus: struct superhyway_bus \*
 
 .. _`superhyway_add_device.description`:
 
@@ -44,8 +47,9 @@ superhyway_register_driver
 
     Register a new SuperHyway driver
 
-    :param struct superhyway_driver \*drv:
+    :param drv:
         SuperHyway driver to register.
+    :type drv: struct superhyway_driver \*
 
 .. _`superhyway_register_driver.description`:
 
@@ -65,8 +69,9 @@ superhyway_unregister_driver
 
     Unregister a SuperHyway driver
 
-    :param struct superhyway_driver \*drv:
+    :param drv:
         SuperHyway driver to unregister.
+    :type drv: struct superhyway_driver \*
 
 .. _`superhyway_unregister_driver.description`:
 

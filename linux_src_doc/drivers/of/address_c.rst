@@ -10,14 +10,17 @@ of_address_to_resource
 
     Translate device tree address and return as resource
 
-    :param struct device_node \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device_node \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
-    :param struct resource \*r:
+    :param r:
         *undescribed*
+    :type r: struct resource \*
 
 .. _`of_address_to_resource.description`:
 
@@ -38,11 +41,13 @@ of_iomap
 
     Maps the memory mapped IO for a given device_node
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
-    :param int index:
+    :param index:
         index of the io range
+    :type index: int
 
 .. _`of_iomap.description`:
 
@@ -60,17 +65,21 @@ of_dma_get_range
 
     Get DMA range info
 
-    :param struct device_node \*np:
+    :param np:
         device node to get DMA range info
+    :type np: struct device_node \*
 
-    :param u64 \*dma_addr:
+    :param dma_addr:
         pointer to store initial DMA address of DMA range
+    :type dma_addr: u64 \*
 
-    :param u64 \*paddr:
+    :param paddr:
         pointer to store initial CPU address of DMA range
+    :type paddr: u64 \*
 
-    :param u64 \*size:
+    :param size:
         pointer to store size of DMA range
+    :type size: u64 \*
 
 .. _`of_dma_get_range.description`:
 
@@ -96,8 +105,9 @@ of_dma_is_coherent
 
     Check if device is coherent
 
-    :param struct device_node \*np:
+    :param np:
         device node
+    :type np: struct device_node \*
 
 .. _`of_dma_is_coherent.description`:
 

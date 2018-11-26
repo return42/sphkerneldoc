@@ -10,8 +10,9 @@ nilfs_remove_all_gcinodes
 
     remove all unprocessed gc inodes
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         *undescribed*
+    :type nilfs: struct the_nilfs \*
 
 .. This file was automatic generated / don't edit.
 

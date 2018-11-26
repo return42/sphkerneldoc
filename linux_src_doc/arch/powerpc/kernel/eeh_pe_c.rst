@@ -10,8 +10,9 @@ eeh_set_pe_aux_size
 
     Set PE auxillary data size
 
-    :param int size:
+    :param size:
         PE auxillary data size
+    :type size: int
 
 .. _`eeh_set_pe_aux_size.description`:
 
@@ -29,11 +30,13 @@ eeh_pe_alloc
 
     Allocate PE
 
-    :param struct pci_controller \*phb:
+    :param phb:
         PCI controller
+    :type phb: struct pci_controller \*
 
-    :param int type:
+    :param type:
         PE type
+    :type type: int
 
 .. _`eeh_pe_alloc.description`:
 
@@ -51,8 +54,9 @@ eeh_phb_pe_create
 
     Create PHB PE
 
-    :param struct pci_controller \*phb:
+    :param phb:
         PCI controller
+    :type phb: struct pci_controller \*
 
 .. _`eeh_phb_pe_create.description`:
 
@@ -61,6 +65,31 @@ Description
 
 The function should be called while the PHB is detected during
 system boot or PCI hotplug in order to create PHB PE.
+
+.. _`eeh_wait_state`:
+
+eeh_wait_state
+==============
+
+.. c:function:: int eeh_wait_state(struct eeh_pe *pe, int max_wait)
+
+    Wait for PE state
+
+    :param pe:
+        EEH PE
+    :type pe: struct eeh_pe \*
+
+    :param max_wait:
+        maximal period in millisecond
+    :type max_wait: int
+
+.. _`eeh_wait_state.description`:
+
+Description
+-----------
+
+Wait for the state of associated PE. It might take some time
+to retrieve the PE's state.
 
 .. _`eeh_phb_pe_get`:
 
@@ -71,8 +100,9 @@ eeh_phb_pe_get
 
     Retrieve PHB PE based on the given PHB
 
-    :param struct pci_controller \*phb:
+    :param phb:
         PCI controller
+    :type phb: struct pci_controller \*
 
 .. _`eeh_phb_pe_get.description`:
 
@@ -92,11 +122,13 @@ eeh_pe_next
 
     Retrieve the next PE in the tree
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         current PE
+    :type pe: struct eeh_pe \*
 
-    :param struct eeh_pe \*root:
+    :param root:
         root PE
+    :type root: struct eeh_pe \*
 
 .. _`eeh_pe_next.description`:
 
@@ -115,14 +147,17 @@ eeh_pe_traverse
 
     Traverse PEs in the specified PHB
 
-    :param struct eeh_pe \*root:
+    :param root:
         root PE
+    :type root: struct eeh_pe \*
 
-    :param eeh_pe_traverse_func fn:
+    :param fn:
         callback
+    :type fn: eeh_pe_traverse_func
 
-    :param void \*flag:
+    :param flag:
         extra parameter to callback
+    :type flag: void \*
 
 .. _`eeh_pe_traverse.description`:
 
@@ -143,14 +178,17 @@ eeh_pe_dev_traverse
 
     Traverse the devices from the PE
 
-    :param struct eeh_pe \*root:
+    :param root:
         EEH PE
+    :type root: struct eeh_pe \*
 
-    :param eeh_edev_traverse_func fn:
+    :param fn:
         function callback
+    :type fn: eeh_edev_traverse_func
 
-    :param void \*flag:
+    :param flag:
         extra parameter to callback
+    :type flag: void \*
 
 .. _`eeh_pe_dev_traverse.description`:
 
@@ -169,14 +207,17 @@ eeh_pe_get
 
     Search PE based on the given address
 
-    :param struct pci_controller \*phb:
+    :param phb:
         PCI controller
+    :type phb: struct pci_controller \*
 
-    :param int pe_no:
+    :param pe_no:
         PE number
+    :type pe_no: int
 
-    :param int config_addr:
+    :param config_addr:
         Config address
+    :type config_addr: int
 
 .. _`eeh_pe_get.description`:
 
@@ -205,8 +246,9 @@ eeh_pe_get_parent
 
     Retrieve the parent PE
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         EEH device
+    :type edev: struct eeh_dev \*
 
 .. _`eeh_pe_get_parent.description`:
 
@@ -226,8 +268,9 @@ eeh_add_to_parent_pe
 
     Add EEH device to parent PE
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         EEH device
+    :type edev: struct eeh_dev \*
 
 .. _`eeh_add_to_parent_pe.description`:
 
@@ -248,8 +291,9 @@ eeh_rmv_from_parent_pe
 
     Remove one EEH device from the associated PE
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         EEH device
+    :type edev: struct eeh_dev \*
 
 .. _`eeh_rmv_from_parent_pe.description`:
 
@@ -270,8 +314,9 @@ eeh_pe_update_time_stamp
 
     Update PE's frozen time stamp
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
 .. _`eeh_pe_update_time_stamp.description`:
 
@@ -283,44 +328,22 @@ frozen in last hour. The function should be called to update
 the time stamp on first error of the specific PE. On the other
 handle, we needn't account for errors happened in last hour.
 
-.. _`__eeh_pe_state_mark`:
-
-\__eeh_pe_state_mark
-====================
-
-.. c:function:: void *__eeh_pe_state_mark(struct eeh_pe *pe, void *flag)
-
-    Mark the state for the PE
-
-    :param struct eeh_pe \*pe:
-        *undescribed*
-
-    :param void \*flag:
-        state
-
-.. _`__eeh_pe_state_mark.description`:
-
-Description
------------
-
-The function is used to mark the indicated state for the given
-PE. Also, the associated PCI devices will be put into IO frozen
-state as well.
-
 .. _`eeh_pe_state_mark`:
 
 eeh_pe_state_mark
 =================
 
-.. c:function:: void eeh_pe_state_mark(struct eeh_pe *pe, int state)
+.. c:function:: void eeh_pe_state_mark(struct eeh_pe *root, int state)
 
     Mark specified state for PE and its associated device
 
-    :param struct eeh_pe \*pe:
-        EEH PE
-
-    :param int state:
+    :param root:
         *undescribed*
+    :type root: struct eeh_pe \*
+
+    :param state:
+        *undescribed*
+    :type state: int
 
 .. _`eeh_pe_state_mark.description`:
 
@@ -331,6 +354,26 @@ EEH error affects the current PE and its child PEs. The function
 is used to mark appropriate state for the affected PEs and the
 associated devices.
 
+.. _`eeh_pe_mark_isolated`:
+
+eeh_pe_mark_isolated
+====================
+
+.. c:function:: void eeh_pe_mark_isolated(struct eeh_pe *root)
+
+    :param root:
+        *undescribed*
+    :type root: struct eeh_pe \*
+
+.. _`eeh_pe_mark_isolated.description`:
+
+Description
+-----------
+
+Record that a PE has been isolated by marking the PE and it's children as
+EEH_PE_ISOLATED (and EEH_PE_CFG_BLOCKED, if required) and their PCI devices
+as pci_channel_io_frozen.
+
 .. _`eeh_pe_dev_mode_mark`:
 
 eeh_pe_dev_mode_mark
@@ -340,11 +383,13 @@ eeh_pe_dev_mode_mark
 
     Mark state for all device under the PE
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
 .. _`eeh_pe_dev_mode_mark.description`:
 
@@ -362,11 +407,13 @@ Mark specific state for all child devices of the PE.
 
     Clear state for the PE
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         *undescribed*
+    :type pe: struct eeh_pe \*
 
-    :param void \*flag:
+    :param flag:
         state
+    :type flag: void \*
 
 .. _`__eeh_pe_state_clear.description`:
 
@@ -386,11 +433,13 @@ eeh_pe_state_clear
 
     Clear state for the PE and its children
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         PE
+    :type pe: struct eeh_pe \*
 
-    :param int state:
+    :param state:
         state to be cleared
+    :type state: int
 
 .. _`eeh_pe_state_clear.description`:
 
@@ -401,32 +450,6 @@ When the PE and its children has been recovered from error,
 we need clear the error state for that. The function is used
 for the purpose.
 
-.. _`eeh_pe_state_mark_with_cfg`:
-
-eeh_pe_state_mark_with_cfg
-==========================
-
-.. c:function:: void eeh_pe_state_mark_with_cfg(struct eeh_pe *pe, int state)
-
-    Mark PE state with unblocked config space
-
-    :param struct eeh_pe \*pe:
-        PE
-
-    :param int state:
-        PE state to be set
-
-.. _`eeh_pe_state_mark_with_cfg.description`:
-
-Description
------------
-
-Set specified flag to PE and its child PEs. The PCI config space
-of some PEs is blocked automatically when EEH_PE_ISOLATED is set,
-which isn't needed in some situations. The function allows to set
-the specified flag to indicated PEs without blocking their PCI
-config space.
-
 .. _`eeh_restore_one_device_bars`:
 
 eeh_restore_one_device_bars
@@ -436,11 +459,13 @@ eeh_restore_one_device_bars
 
     Restore the Base Address Registers for one device
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         *undescribed*
+    :type edev: struct eeh_dev \*
 
-    :param void \*flag:
+    :param flag:
         Unused
+    :type flag: void \*
 
 .. _`eeh_restore_one_device_bars.description`:
 
@@ -460,8 +485,9 @@ eeh_pe_restore_bars
 
     Restore the PCI config space info
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
 .. _`eeh_pe_restore_bars.description`:
 
@@ -480,8 +506,9 @@ eeh_pe_loc_get
 
     Retrieve location code binding to the given PE
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
 .. _`eeh_pe_loc_get.description`:
 
@@ -502,8 +529,9 @@ eeh_pe_bus_get
 
     Retrieve PCI bus according to the given PE
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
 .. _`eeh_pe_bus_get.description`:
 

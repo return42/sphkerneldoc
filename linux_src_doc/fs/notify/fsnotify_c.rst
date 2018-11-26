@@ -10,8 +10,9 @@ fsnotify_unmount_inodes
 
     an sb is unmounting.  handle any watched inodes.
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock being unmounted.
+    :type sb: struct super_block \*
 
 .. _`fsnotify_unmount_inodes.description`:
 

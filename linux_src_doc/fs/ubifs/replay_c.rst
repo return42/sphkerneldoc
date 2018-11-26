@@ -21,6 +21,7 @@ Definition
         int lnum;
         int offs;
         int len;
+        u8 hash[UBIFS_HASH_ARR_SZ];
         unsigned int deletion:1;
         unsigned long long sqnum;
         struct list_head list;
@@ -47,6 +48,9 @@ offs
 
 len
     node length
+
+hash
+    *undescribed*
 
 deletion
     non-zero if this entry corresponds to a node deletion
@@ -137,11 +141,13 @@ set_bud_lprops
 
     set free and dirty space used by a bud.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct bud_entry \*b:
+    :param b:
         bud entry which describes the bud
+    :type b: struct bud_entry \*
 
 .. _`set_bud_lprops.description`:
 
@@ -161,8 +167,9 @@ set_buds_lprops
 
     set free and dirty space for all replayed buds.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`set_buds_lprops.description`:
 
@@ -181,11 +188,13 @@ trun_remove_range
 
     apply a replay entry for a truncation to the TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct replay_entry \*r:
+    :param r:
         replay entry of truncation
+    :type r: struct replay_entry \*
 
 .. _`apply_replay_entry`:
 
@@ -196,11 +205,13 @@ apply_replay_entry
 
     apply a replay entry to the TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct replay_entry \*r:
+    :param r:
         replay entry to apply
+    :type r: struct replay_entry \*
 
 .. _`apply_replay_entry.description`:
 
@@ -218,14 +229,17 @@ replay_entries_cmp
 
     compare 2 replay entries.
 
-    :param void \*priv:
+    :param priv:
         UBIFS file-system description object
+    :type priv: void \*
 
-    :param struct list_head \*a:
+    :param a:
         first replay entry
+    :type a: struct list_head \*
 
-    :param struct list_head \*b:
+    :param b:
         second replay entry
+    :type b: struct list_head \*
 
 .. _`replay_entries_cmp.description`:
 
@@ -245,8 +259,9 @@ apply_replay_list
 
     apply the replay list to the TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`apply_replay_list.description`:
 
@@ -265,8 +280,9 @@ destroy_replay_list
 
     destroy the replay.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`destroy_replay_list.description`:
 
@@ -280,39 +296,53 @@ Destroy the replay list.
 insert_node
 ===========
 
-.. c:function:: int insert_node(struct ubifs_info *c, int lnum, int offs, int len, union ubifs_key *key, unsigned long long sqnum, int deletion, int *used, loff_t old_size, loff_t new_size)
+.. c:function:: int insert_node(struct ubifs_info *c, int lnum, int offs, int len, const u8 *hash, union ubifs_key *key, unsigned long long sqnum, int deletion, int *used, loff_t old_size, loff_t new_size)
 
     insert a node to the replay list
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         node logical eraseblock number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         node offset
+    :type offs: int
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
 
-    :param union ubifs_key \*key:
+    :param hash:
+        *undescribed*
+    :type hash: const u8 \*
+
+    :param key:
         node key
+    :type key: union ubifs_key \*
 
-    :param unsigned long long sqnum:
+    :param sqnum:
         sequence number
+    :type sqnum: unsigned long long
 
-    :param int deletion:
+    :param deletion:
         non-zero if this is a deletion
+    :type deletion: int
 
-    :param int \*used:
+    :param used:
         number of bytes in use in a LEB
+    :type used: int \*
 
-    :param loff_t old_size:
+    :param old_size:
         truncation old size
+    :type old_size: loff_t
 
-    :param loff_t new_size:
+    :param new_size:
         truncation new size
+    :type new_size: loff_t
 
 .. _`insert_node.description`:
 
@@ -331,39 +361,53 @@ in case of success and a negative error code in case of failure.
 insert_dent
 ===========
 
-.. c:function:: int insert_dent(struct ubifs_info *c, int lnum, int offs, int len, union ubifs_key *key, const char *name, int nlen, unsigned long long sqnum, int deletion, int *used)
+.. c:function:: int insert_dent(struct ubifs_info *c, int lnum, int offs, int len, const u8 *hash, union ubifs_key *key, const char *name, int nlen, unsigned long long sqnum, int deletion, int *used)
 
     insert a directory entry node into the replay list.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         node logical eraseblock number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         node offset
+    :type offs: int
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
 
-    :param union ubifs_key \*key:
+    :param hash:
+        *undescribed*
+    :type hash: const u8 \*
+
+    :param key:
         node key
+    :type key: union ubifs_key \*
 
-    :param const char \*name:
+    :param name:
         directory entry name
+    :type name: const char \*
 
-    :param int nlen:
+    :param nlen:
         directory entry name length
+    :type nlen: int
 
-    :param unsigned long long sqnum:
+    :param sqnum:
         sequence number
+    :type sqnum: unsigned long long
 
-    :param int deletion:
+    :param deletion:
         non-zero if this is a deletion
+    :type deletion: int
 
-    :param int \*used:
+    :param used:
         number of bytes in use in a LEB
+    :type used: int \*
 
 .. _`insert_dent.description`:
 
@@ -383,11 +427,13 @@ ubifs_validate_entry
 
     validate directory or extended attribute entry node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct ubifs_dent_node \*dent:
+    :param dent:
         the node to validate
+    :type dent: const struct ubifs_dent_node \*
 
 .. _`ubifs_validate_entry.description`:
 
@@ -406,11 +452,13 @@ is_last_bud
 
     check if the bud is the last in the journal head.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_bud \*bud:
+    :param bud:
         bud description object
+    :type bud: struct ubifs_bud \*
 
 .. _`is_last_bud.description`:
 
@@ -422,6 +470,45 @@ information is then used by 'replay_bud()' to decide whether the bud can
 have corruptions or not. Indeed, only last buds can be corrupted by power
 cuts. Returns \ ``1``\  if this is the last bud, and \ ``0``\  if not.
 
+.. _`authenticate_sleb`:
+
+authenticate_sleb
+=================
+
+.. c:function:: int authenticate_sleb(struct ubifs_info *c, struct ubifs_scan_leb *sleb, struct shash_desc *log_hash, int is_last)
+
+    authenticate one scan LEB
+
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param sleb:
+        the scan LEB to authenticate
+    :type sleb: struct ubifs_scan_leb \*
+
+    :param log_hash:
+        *undescribed*
+    :type log_hash: struct shash_desc \*
+
+    :param is_last:
+        if true, this is is the last LEB
+    :type is_last: int
+
+.. _`authenticate_sleb.description`:
+
+Description
+-----------
+
+This function iterates over the buds of a single LEB authenticating all buds
+with the authentication nodes on this LEB. Authentication nodes are written
+after some buds and contain a HMAC covering the authentication node itself
+and the buds between the last authentication node and the current
+authentication node. It can happen that the last buds cannot be authenticated
+because a powercut happened when some nodes were written but not the
+corresponding authentication node. This function returns the number of nodes
+that could be authenticated or a negative error code.
+
 .. _`replay_bud`:
 
 replay_bud
@@ -431,11 +518,13 @@ replay_bud
 
     replay a bud logical eraseblock.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct bud_entry \*b:
+    :param b:
         bud entry which describes the bud
+    :type b: struct bud_entry \*
 
 .. _`replay_bud.description`:
 
@@ -455,8 +544,9 @@ replay_buds
 
     replay all buds.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`replay_buds.description`:
 
@@ -475,8 +565,9 @@ destroy_bud_list
 
     destroy the list of buds to replay.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`add_replay_bud`:
 
@@ -487,20 +578,25 @@ add_replay_bud
 
     add a bud to the list of buds to replay.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         bud logical eraseblock number to replay
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         bud start offset
+    :type offs: int
 
-    :param int jhead:
+    :param jhead:
         journal head to which this bud belongs
+    :type jhead: int
 
-    :param unsigned long long sqnum:
+    :param sqnum:
         reference node sequence number
+    :type sqnum: unsigned long long
 
 .. _`add_replay_bud.description`:
 
@@ -519,11 +615,13 @@ validate_ref
 
     validate a reference node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct ubifs_ref_node \*ref:
+    :param ref:
         the reference node to validate
+    :type ref: const struct ubifs_ref_node \*
 
 .. _`validate_ref.description`:
 
@@ -543,17 +641,21 @@ replay_log_leb
 
     replay a log logical eraseblock.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         log logical eraseblock to replay
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset to start replaying from
+    :type offs: int
 
-    :param void \*sbuf:
+    :param sbuf:
         scan buffer
+    :type sbuf: void \*
 
 .. _`replay_log_leb.description`:
 
@@ -573,8 +675,9 @@ take_ihead
 
     update the status of the index head in lprops to 'taken'.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`take_ihead.description`:
 
@@ -593,8 +696,9 @@ ubifs_replay_journal
 
     replay journal.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_replay_journal.description`:
 

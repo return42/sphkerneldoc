@@ -10,8 +10,9 @@ nfs_free_unlinkdata
 
     release data from a sillydelete operation.
 
-    :param struct nfs_unlinkdata \*data:
+    :param data:
         pointer to unlink structure.
+    :type data: struct nfs_unlinkdata \*
 
 .. _`nfs_async_unlink_done`:
 
@@ -22,11 +23,13 @@ nfs_async_unlink_done
 
     Sillydelete post-processing
 
-    :param struct rpc_task \*task:
+    :param task:
         rpc_task of the sillydelete
+    :type task: struct rpc_task \*
 
-    :param void \*calldata:
+    :param calldata:
         *undescribed*
+    :type calldata: void \*
 
 .. _`nfs_async_unlink_done.description`:
 
@@ -44,8 +47,9 @@ nfs_async_unlink_release
 
     Release the sillydelete data.
 
-    :param void \*calldata:
+    :param calldata:
         *undescribed*
+    :type calldata: void \*
 
 .. _`nfs_async_unlink_release.description`:
 
@@ -64,11 +68,13 @@ nfs_async_unlink
 
     asynchronous unlinking of a file
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to unlink
+    :type dentry: struct dentry \*
 
-    :param const struct qstr \*name:
+    :param name:
         *undescribed*
+    :type name: const struct qstr \*
 
 .. _`nfs_complete_unlink`:
 
@@ -79,11 +85,13 @@ nfs_complete_unlink
 
     Initialize completion of the sillydelete
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to delete
+    :type dentry: struct dentry \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
 .. _`nfs_complete_unlink.description`:
 
@@ -103,11 +111,13 @@ nfs_async_rename_done
 
     Sillyrename post-processing
 
-    :param struct rpc_task \*task:
+    :param task:
         rpc_task of the sillyrename
+    :type task: struct rpc_task \*
 
-    :param void \*calldata:
+    :param calldata:
         nfs_renamedata for the sillyrename
+    :type calldata: void \*
 
 .. _`nfs_async_rename_done.description`:
 
@@ -125,8 +135,9 @@ nfs_async_rename_release
 
     Release the sillyrename data.
 
-    :param void \*calldata:
+    :param calldata:
         the struct nfs_renamedata to be released
+    :type calldata: void \*
 
 .. _`nfs_async_rename`:
 
@@ -137,17 +148,21 @@ nfs_async_rename
 
     perform an asynchronous rename operation
 
-    :param struct inode \*old_dir:
+    :param old_dir:
         directory that currently holds the dentry to be renamed
+    :type old_dir: struct inode \*
 
-    :param struct inode \*new_dir:
+    :param new_dir:
         target directory for the rename
+    :type new_dir: struct inode \*
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         original dentry to be renamed
+    :type old_dentry: struct dentry \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         dentry to which the old_dentry should be renamed
+    :type new_dentry: struct dentry \*
 
     :param void (\*complete)(struct rpc_task \*, struct nfs_renamedata \*):
         *undescribed*
@@ -168,11 +183,13 @@ nfs_sillyrename
 
     Perform a silly-rename of a dentry
 
-    :param struct inode \*dir:
+    :param dir:
         inode of directory that contains dentry
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to be sillyrenamed
+    :type dentry: struct dentry \*
 
 .. _`nfs_sillyrename.description`:
 

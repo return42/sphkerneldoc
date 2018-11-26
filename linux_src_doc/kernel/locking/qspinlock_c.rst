@@ -10,8 +10,9 @@ clear_pending
 
     clear the pending bit.
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. _`clear_pending.description`:
 
@@ -29,8 +30,9 @@ clear_pending_set_locked
 
     take ownership and clear the pending bit.
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. _`clear_pending_set_locked.description`:
 
@@ -50,8 +52,9 @@ clear_pending
 
     clear the pending bit.
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. _`clear_pending.description`:
 
@@ -69,8 +72,9 @@ clear_pending_set_locked
 
     take ownership and clear the pending bit.
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. _`clear_pending_set_locked.description`:
 
@@ -88,11 +92,13 @@ xchg_tail
 
     Put in the new queue tail code word & retrieve previous one
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
-    :param u32 tail:
+    :param tail:
         The new queue tail code word
+    :type tail: u32
 
 .. _`xchg_tail.return`:
 
@@ -105,6 +111,28 @@ xchg(lock, tail)
 
 p,\*,\* -> n,\*,\* ; prev = xchg(lock, node)
 
+.. _`queued_fetch_set_pending_acquire`:
+
+queued_fetch_set_pending_acquire
+================================
+
+.. c:function:: u32 queued_fetch_set_pending_acquire(struct qspinlock *lock)
+
+    fetch the whole lock value and set pending
+
+    :param lock:
+        Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
+
+.. _`queued_fetch_set_pending_acquire.return`:
+
+Return
+------
+
+The previous lock value
+
+\*,\*,\* -> \*,1,\*
+
 .. _`set_locked`:
 
 set_locked
@@ -114,8 +142,9 @@ set_locked
 
     Set the lock bit and own the lock
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
 .. _`set_locked.description`:
 
@@ -133,11 +162,13 @@ queued_spin_lock_slowpath
 
     acquire the queued spinlock
 
-    :param struct qspinlock \*lock:
+    :param lock:
         Pointer to queued spinlock structure
+    :type lock: struct qspinlock \*
 
-    :param u32 val:
+    :param val:
         Current value of the queued spinlock 32-bit word
+    :type val: u32
 
 .. _`queued_spin_lock_slowpath.description`:
 

@@ -33,14 +33,17 @@ htb_add_to_id_tree
 
     adds class to the round robin list
 
-    :param struct rb_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct rb_root \*
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
-    :param int prio:
+    :param prio:
         *undescribed*
+    :type prio: int
 
 .. _`htb_add_to_id_tree.description`:
 
@@ -59,14 +62,17 @@ htb_add_to_wait_tree
 
     adds class to the event queue with delay
 
-    :param struct htb_sched \*q:
+    :param q:
         *undescribed*
+    :type q: struct htb_sched \*
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
-    :param s64 delay:
+    :param delay:
         *undescribed*
+    :type delay: s64
 
 .. _`htb_add_to_wait_tree.description`:
 
@@ -86,8 +92,9 @@ htb_next_rb_node
 
     finds next node in binary tree
 
-    :param struct rb_node \*\*n:
+    :param n:
         *undescribed*
+    :type n: struct rb_node \*\*
 
 .. _`htb_next_rb_node.description`:
 
@@ -106,14 +113,17 @@ htb_add_class_to_row
 
     add class to its row
 
-    :param struct htb_sched \*q:
+    :param q:
         *undescribed*
+    :type q: struct htb_sched \*
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
-    :param int mask:
+    :param mask:
         *undescribed*
+    :type mask: int
 
 .. _`htb_add_class_to_row.description`:
 
@@ -132,14 +142,17 @@ htb_remove_class_from_row
 
     removes class from its row
 
-    :param struct htb_sched \*q:
+    :param q:
         *undescribed*
+    :type q: struct htb_sched \*
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
-    :param int mask:
+    :param mask:
         *undescribed*
+    :type mask: int
 
 .. _`htb_remove_class_from_row.description`:
 
@@ -158,11 +171,13 @@ htb_activate_prios
 
     creates active classe's feed chain
 
-    :param struct htb_sched \*q:
+    :param q:
         *undescribed*
+    :type q: struct htb_sched \*
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
 .. _`htb_activate_prios.description`:
 
@@ -182,11 +197,13 @@ htb_deactivate_prios
 
     remove class from feed chain
 
-    :param struct htb_sched \*q:
+    :param q:
         *undescribed*
+    :type q: struct htb_sched \*
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
 .. _`htb_deactivate_prios.description`:
 
@@ -206,11 +223,13 @@ htb_class_mode
 
     computes and returns current class mode
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
-    :param s64 \*diff:
+    :param diff:
         *undescribed*
+    :type diff: s64 \*
 
 .. _`htb_class_mode.description`:
 
@@ -234,14 +253,17 @@ htb_change_class_mode
 
     changes classe's mode
 
-    :param struct htb_sched \*q:
+    :param q:
         *undescribed*
+    :type q: struct htb_sched \*
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
-    :param s64 \*diff:
+    :param diff:
         *undescribed*
+    :type diff: s64 \*
 
 .. _`htb_change_class_mode.description`:
 
@@ -263,11 +285,13 @@ htb_activate
 
     inserts leaf cl into appropriate active feeds
 
-    :param struct htb_sched \*q:
+    :param q:
         *undescribed*
+    :type q: struct htb_sched \*
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
 .. _`htb_activate.description`:
 
@@ -287,11 +311,13 @@ htb_deactivate
 
     remove leaf cl from active feeds
 
-    :param struct htb_sched \*q:
+    :param q:
         *undescribed*
+    :type q: struct htb_sched \*
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
 .. _`htb_deactivate.description`:
 
@@ -310,17 +336,21 @@ htb_charge_class
 
     charges amount "bytes" to leaf and ancestors
 
-    :param struct htb_sched \*q:
+    :param q:
         *undescribed*
+    :type q: struct htb_sched \*
 
-    :param struct htb_class \*cl:
+    :param cl:
         *undescribed*
+    :type cl: struct htb_class \*
 
-    :param int level:
+    :param level:
         *undescribed*
+    :type level: int
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`htb_charge_class.description`:
 
@@ -344,14 +374,17 @@ htb_do_events
 
     make mode changes to classes at the level
 
-    :param struct htb_sched \*q:
+    :param q:
         *undescribed*
+    :type q: struct htb_sched \*
 
-    :param const int level:
+    :param level:
         *undescribed*
+    :type level: const int
 
-    :param unsigned long start:
+    :param start:
         *undescribed*
+    :type start: unsigned long
 
 .. _`htb_do_events.description`:
 
@@ -377,11 +410,13 @@ htb_lookup_leaf
 
     returns next leaf class in DRR order
 
-    :param struct htb_prio \*hprio:
+    :param hprio:
         *undescribed*
+    :type hprio: struct htb_prio \*
 
-    :param const int prio:
+    :param prio:
         *undescribed*
+    :type prio: const int
 
 .. _`htb_lookup_leaf.description`:
 

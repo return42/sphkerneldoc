@@ -10,17 +10,21 @@ udf_find_entry
 
     find entry in given directory.
 
-    :param struct inode \*dir:
+    :param dir:
         directory inode to search in
+    :type dir: struct inode \*
 
-    :param const struct qstr \*child:
+    :param child:
         qstr of the name
+    :type child: const struct qstr \*
 
-    :param struct udf_fileident_bh \*fibh:
+    :param fibh:
         buffer head / inode with file identifier descriptor we found
+    :type fibh: struct udf_fileident_bh \*
 
-    :param struct fileIdentDesc \*cfi:
+    :param cfi:
         found file identifier descriptor with given name
+    :type cfi: struct fileIdentDesc \*
 
 .. _`udf_find_entry.description`:
 

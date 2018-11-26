@@ -10,17 +10,21 @@ dvb_pll_attach
 
     pll to the supplied frontend structure.
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         Frontend to attach to.
+    :type fe: struct dvb_frontend \*
 
-    :param int pll_addr:
+    :param pll_addr:
         i2c address of the PLL (if used).
+    :type pll_addr: int
 
-    :param struct i2c_adapter \*i2c:
+    :param i2c:
         i2c adapter to use (set to NULL if not used).
+    :type i2c: struct i2c_adapter \*
 
-    :param unsigned int pll_desc_id:
+    :param pll_desc_id:
         dvb_pll_desc to use.
+    :type pll_desc_id: unsigned int
 
 .. _`dvb_pll_attach.return`:
 

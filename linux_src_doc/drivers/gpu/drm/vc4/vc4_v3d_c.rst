@@ -10,8 +10,9 @@ vc4_allocate_bin_bo
 
     allocates the memory that will be used for tile binning.
 
-    :param struct drm_device \*drm:
+    :param drm:
         *undescribed*
+    :type drm: struct drm_device \*
 
 .. _`vc4_allocate_bin_bo.description`:
 

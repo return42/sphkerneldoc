@@ -10,8 +10,9 @@ halmac_init_adapter_para_88xx
 
     int halmac adapter \ ``halmac_adapter``\ 
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         *undescribed*
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_init_adapter_para_88xx.description`:
 
@@ -32,8 +33,9 @@ halmac_init_adapter_dynamic_para_88xx
 
     int halmac adapter \ ``halmac_adapter``\ 
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         *undescribed*
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_init_adapter_dynamic_para_88xx.description`:
 
@@ -54,8 +56,9 @@ halmac_init_state_machine_88xx
 
     init halmac software state machine \ ``halmac_adapter``\ 
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         *undescribed*
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_init_state_machine_88xx.description`:
 
@@ -76,8 +79,9 @@ halmac_mount_api_88xx
 
     attach functions to function pointer \ ``halmac_adapter``\ 
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         *undescribed*
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_mount_api_88xx.description`:
 
@@ -98,17 +102,20 @@ halmac_download_firmware_88xx
 
     download Firmware
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 \*hamacl_fw:
+    :param hamacl_fw:
         firmware bin
+    :type hamacl_fw: u8 \*
 
-    :param u32 halmac_fw_size:
+    :param halmac_fw_size:
         firmware size
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_fw_size: u32
 
 .. _`halmac_free_download_firmware_88xx`:
 
@@ -119,19 +126,23 @@ halmac_free_download_firmware_88xx
 
     download specific memory firmware \ ``halmac_adapter``\ 
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         *undescribed*
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_dlfw_mem dlfw_mem:
+    :param dlfw_mem:
         memory selection
+    :type dlfw_mem: enum halmac_dlfw_mem
 
-    :param u8 \*hamacl_fw:
+    :param hamacl_fw:
         firmware bin
+    :type hamacl_fw: u8 \*
 
-    :param u32 halmac_fw_size:
+    :param halmac_fw_size:
         firmware size
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
+    :type halmac_fw_size: u32
 
 .. _`halmac_get_fw_version_88xx`:
 
@@ -142,14 +153,16 @@ halmac_get_fw_version_88xx
 
     get FW version
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_fw_version \*fw_version:
+    :param fw_version:
         fw version info
         Author : Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type fw_version: struct halmac_fw_version \*
 
 .. _`halmac_cfg_mac_addr_88xx`:
 
@@ -160,17 +173,20 @@ halmac_cfg_mac_addr_88xx
 
     config mac address
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 halmac_port:
+    :param halmac_port:
         0 for port0, 1 for port1, 2 for port2, 3 for port3, 4 for port4
+    :type halmac_port: u8
 
-    :param union halmac_wlan_addr \*hal_address:
+    :param hal_address:
         mac address
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type hal_address: union halmac_wlan_addr \*
 
 .. _`halmac_cfg_bssid_88xx`:
 
@@ -181,17 +197,20 @@ halmac_cfg_bssid_88xx
 
     config BSSID
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 halmac_port:
+    :param halmac_port:
         0 for port0, 1 for port1, 2 for port2, 3 for port3, 4 for port4
+    :type halmac_port: u8
 
-    :param union halmac_wlan_addr \*hal_address:
+    :param hal_address:
         bssid
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type hal_address: union halmac_wlan_addr \*
 
 .. _`halmac_cfg_multicast_addr_88xx`:
 
@@ -202,14 +221,16 @@ halmac_cfg_multicast_addr_88xx
 
     config multicast address
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param union halmac_wlan_addr \*hal_address:
+    :param hal_address:
         multicast address
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type hal_address: union halmac_wlan_addr \*
 
 .. _`halmac_pre_init_system_cfg_88xx`:
 
@@ -220,11 +241,12 @@ halmac_pre_init_system_cfg_88xx
 
     pre-init system config
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_init_system_cfg_88xx`:
 
@@ -235,11 +257,12 @@ halmac_init_system_cfg_88xx
 
     init system config
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_init_edca_cfg_88xx`:
 
@@ -250,11 +273,12 @@ halmac_init_edca_cfg_88xx
 
     init EDCA config
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_init_wmac_cfg_88xx`:
 
@@ -265,11 +289,12 @@ halmac_init_wmac_cfg_88xx
 
     init wmac config
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_init_mac_cfg_88xx`:
 
@@ -280,14 +305,16 @@ halmac_init_mac_cfg_88xx
 
     config page1~page7 register
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_trx_mode mode:
+    :param mode:
         trx mode
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type mode: enum halmac_trx_mode
 
 .. _`halmac_cfg_operation_mode_88xx`:
 
@@ -298,14 +325,16 @@ halmac_cfg_operation_mode_88xx
 
     config operation mode
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_wireless_mode wireless_mode:
+    :param wireless_mode:
         802.11 standard(b/g/n/ac)
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type wireless_mode: enum halmac_wireless_mode
 
 .. _`halmac_cfg_ch_bw_88xx`:
 
@@ -316,20 +345,24 @@ halmac_cfg_ch_bw_88xx
 
     config channel & bandwidth
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 channel:
+    :param channel:
         WLAN channel, support 2.4G & 5G
+    :type channel: u8
 
-    :param enum halmac_pri_ch_idx pri_ch_idx:
+    :param pri_ch_idx:
         primary channel index, idx1, idx2, idx3, idx4
+    :type pri_ch_idx: enum halmac_pri_ch_idx
 
-    :param enum halmac_bw bw:
+    :param bw:
         band width, 20, 40, 80, 160, 5 ,10
         Author : KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type bw: enum halmac_bw
 
 .. _`halmac_cfg_bw_88xx`:
 
@@ -340,14 +373,16 @@ halmac_cfg_bw_88xx
 
     config bandwidth
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_bw bw:
+    :param bw:
         band width, 20, 40, 80, 160, 5 ,10
         Author : KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type bw: enum halmac_bw
 
 .. _`halmac_dump_efuse_map_88xx`:
 
@@ -358,14 +393,16 @@ halmac_dump_efuse_map_88xx
 
     dump "physical" efuse map
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_efuse_read_cfg cfg:
+    :param cfg:
         dump efuse method
         Author : Ivan Lin/KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type cfg: enum halmac_efuse_read_cfg
 
 .. _`halmac_dump_efuse_map_bt_88xx`:
 
@@ -376,20 +413,24 @@ halmac_dump_efuse_map_bt_88xx
 
     dump "BT physical" efuse map
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_efuse_bank halmac_efuse_bank:
+    :param halmac_efuse_bank:
         bt efuse bank
+    :type halmac_efuse_bank: enum halmac_efuse_bank
 
-    :param u32 bt_efuse_map_size:
+    :param bt_efuse_map_size:
         bt efuse map size. get from halmac_get_efuse_size API
+    :type bt_efuse_map_size: u32
 
-    :param u8 \*bt_efuse_map:
+    :param bt_efuse_map:
         bt efuse map
         Author : Soar / Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type bt_efuse_map: u8 \*
 
 .. _`halmac_write_efuse_bt_88xx`:
 
@@ -400,17 +441,21 @@ halmac_write_efuse_bt_88xx
 
     write "BT physical" efuse offset
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         offset
+    :type halmac_offset: u32
 
-    :param u8 halmac_value:
+    :param halmac_value:
         Write value
+    :type halmac_value: u8
 
-    :param enum halmac_efuse_bank halmac_efuse_bank:
+    :param halmac_efuse_bank:
         *undescribed*
+    :type halmac_efuse_bank: enum halmac_efuse_bank
 
 .. _`halmac_get_efuse_available_size_88xx`:
 
@@ -421,14 +466,16 @@ halmac_get_efuse_available_size_88xx
 
     get efuse available size
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 \*halmac_size:
+    :param halmac_size:
         physical efuse available size
         Author : Soar
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_size: u32 \*
 
 .. _`halmac_get_efuse_size_88xx`:
 
@@ -439,14 +486,16 @@ halmac_get_efuse_size_88xx
 
     get "physical" efuse size
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 \*halmac_size:
+    :param halmac_size:
         physical efuse size
         Author : Ivan Lin/KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_size: u32 \*
 
 .. _`halmac_get_logical_efuse_size_88xx`:
 
@@ -457,14 +506,16 @@ halmac_get_logical_efuse_size_88xx
 
     get "logical" efuse size
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 \*halmac_size:
+    :param halmac_size:
         logical efuse size
         Author : Ivan Lin/KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_size: u32 \*
 
 .. _`halmac_dump_logical_efuse_map_88xx`:
 
@@ -475,14 +526,16 @@ halmac_dump_logical_efuse_map_88xx
 
     dump "logical" efuse map
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_efuse_read_cfg cfg:
+    :param cfg:
         dump efuse method
         Author : Soar
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type cfg: enum halmac_efuse_read_cfg
 
 .. _`halmac_read_logical_efuse_88xx`:
 
@@ -493,17 +546,20 @@ halmac_read_logical_efuse_88xx
 
     read logical efuse map 1 byte
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         offset
+    :type halmac_offset: u32
 
-    :param u8 \*value:
+    :param value:
         1 byte efuse value
         Author : Soar
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type value: u8 \*
 
 .. _`halmac_write_logical_efuse_88xx`:
 
@@ -514,17 +570,20 @@ halmac_write_logical_efuse_88xx
 
     write "logical" efuse offset
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         offset
+    :type halmac_offset: u32
 
-    :param u8 halmac_value:
+    :param halmac_value:
         value
         Author : Soar
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_value: u8
 
 .. _`halmac_pg_efuse_by_map_88xx`:
 
@@ -535,17 +594,20 @@ halmac_pg_efuse_by_map_88xx
 
     pg logical efuse by map
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_pg_efuse_info \*pg_efuse_info:
+    :param pg_efuse_info:
         efuse map information
+    :type pg_efuse_info: struct halmac_pg_efuse_info \*
 
-    :param enum halmac_efuse_read_cfg cfg:
+    :param cfg:
         dump efuse method
         Author : Soar
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type cfg: enum halmac_efuse_read_cfg
 
 .. _`halmac_get_c2h_info_88xx`:
 
@@ -556,15 +618,18 @@ halmac_get_c2h_info_88xx
 
     process halmac C2H packet
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 \*halmac_buf:
+    :param halmac_buf:
         RX Packet pointer
+    :type halmac_buf: u8 \*
 
-    :param u32 halmac_size:
+    :param halmac_size:
         RX Packet size
         Author : KaiYuan Chang/Ivan Lin
+    :type halmac_size: u32
 
 .. _`halmac_get_c2h_info_88xx.description`:
 
@@ -586,11 +651,12 @@ halmac_debug_88xx
 
     dump information for debugging
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_cfg_parameter_88xx`:
 
@@ -601,14 +667,17 @@ halmac_cfg_parameter_88xx
 
     config parameter by FW
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_phy_parameter_info \*para_info:
+    :param para_info:
         cmd id, content
+    :type para_info: struct halmac_phy_parameter_info \*
 
-    :param u8 full_fifo:
+    :param full_fifo:
         parameter information
+    :type full_fifo: u8
 
 .. _`halmac_cfg_parameter_88xx.description`:
 
@@ -652,17 +721,21 @@ halmac_update_packet_88xx
 
     send specific packet to FW
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_packet_id pkt_id:
+    :param pkt_id:
         packet id, to know the purpose of this packet
+    :type pkt_id: enum halmac_packet_id
 
-    :param u8 \*pkt:
+    :param pkt:
         packet
+    :type pkt: u8 \*
 
-    :param u32 pkt_size:
+    :param pkt_size:
         packet size
+    :type pkt_size: u32
 
 .. _`halmac_update_packet_88xx.description`:
 
@@ -684,14 +757,16 @@ halmac_cfg_drv_info_88xx
 
     config driver info
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_drv_info halmac_drv_info:
+    :param halmac_drv_info:
         driver information selection
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_drv_info: enum halmac_drv_info
 
 .. _`halmac_fill_txdesc_check_sum_88xx`:
 
@@ -702,14 +777,16 @@ halmac_fill_txdesc_check_sum_88xx
 
     fill in tx desc check sum
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 \*cur_desc:
+    :param cur_desc:
         tx desc packet
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type cur_desc: u8 \*
 
 .. _`halmac_dump_fifo_88xx`:
 
@@ -720,20 +797,25 @@ halmac_dump_fifo_88xx
 
     dump fifo data
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum hal_fifo_sel halmac_fifo_sel:
+    :param halmac_fifo_sel:
         FIFO selection
+    :type halmac_fifo_sel: enum hal_fifo_sel
 
-    :param u32 halmac_start_addr:
+    :param halmac_start_addr:
         start address of selected FIFO
+    :type halmac_start_addr: u32
 
-    :param u32 halmac_fifo_dump_size:
+    :param halmac_fifo_dump_size:
         dump size of selected FIFO
+    :type halmac_fifo_dump_size: u32
 
-    :param u8 \*fifo_map:
+    :param fifo_map:
         FIFO data
+    :type fifo_map: u8 \*
 
 .. _`halmac_dump_fifo_88xx.description`:
 
@@ -756,14 +838,16 @@ halmac_get_fifo_size_88xx
 
     get fifo size
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum hal_fifo_sel halmac_fifo_sel:
+    :param halmac_fifo_sel:
         FIFO selection
         Author : Ivan Lin/KaiYuan Chang
         Return : u32
         More details of status code can be found in prototype document
+    :type halmac_fifo_sel: enum hal_fifo_sel
 
 .. _`halmac_cfg_txbf_88xx`:
 
@@ -774,20 +858,24 @@ halmac_cfg_txbf_88xx
 
     enable/disable specific user's txbf
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 userid:
+    :param userid:
         su bfee userid = 0 or 1 to apply TXBF
+    :type userid: u8
 
-    :param enum halmac_bw bw:
+    :param bw:
         the sounding bandwidth
+    :type bw: enum halmac_bw
 
-    :param u8 txbf_en:
+    :param txbf_en:
         0: disable TXBF, 1: enable TXBF
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type txbf_en: u8
 
 .. _`halmac_cfg_mumimo_88xx`:
 
@@ -798,14 +886,16 @@ halmac_cfg_mumimo_88xx
 
     config mumimo
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_cfg_mumimo_para \*cfgmu:
+    :param cfgmu:
         parameters to configure MU PPDU Tx/Rx
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type cfgmu: struct halmac_cfg_mumimo_para \*
 
 .. _`halmac_cfg_sounding_88xx`:
 
@@ -816,18 +906,21 @@ halmac_cfg_sounding_88xx
 
     configure general sounding
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_snd_role role:
+    :param role:
         driver's role, BFer or BFee
+    :type role: enum halmac_snd_role
 
-    :param enum halmac_data_rate datarate:
+    :param datarate:
         set ndpa tx rate if driver is BFer, or set csi response rate
         if driver is BFee
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type datarate: enum halmac_data_rate
 
 .. _`halmac_del_sounding_88xx`:
 
@@ -838,14 +931,16 @@ halmac_del_sounding_88xx
 
     reset general sounding
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_snd_role role:
+    :param role:
         driver's role, BFer or BFee
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type role: enum halmac_snd_role
 
 .. _`halmac_su_bfee_entry_init_88xx`:
 
@@ -856,17 +951,20 @@ halmac_su_bfee_entry_init_88xx
 
     config SU beamformee's registers
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 userid:
+    :param userid:
         SU bfee userid = 0 or 1 to be added
+    :type userid: u8
 
-    :param u16 paid:
+    :param paid:
         partial AID of this bfee
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type paid: u16
 
 .. _`halmac_su_bfer_entry_init_88xx`:
 
@@ -877,14 +975,16 @@ halmac_su_bfer_entry_init_88xx
 
     config SU beamformer's registers
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_su_bfer_init_para \*su_bfer_init:
+    :param su_bfer_init:
         parameters to configure SU BFER entry
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type su_bfer_init: struct halmac_su_bfer_init_para \*
 
 .. _`halmac_mu_bfee_entry_init_88xx`:
 
@@ -895,14 +995,16 @@ halmac_mu_bfee_entry_init_88xx
 
     config MU beamformee's registers
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_mu_bfee_init_para \*mu_bfee_init:
+    :param mu_bfee_init:
         parameters to configure MU BFEE entry
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type mu_bfee_init: struct halmac_mu_bfee_init_para \*
 
 .. _`halmac_mu_bfer_entry_init_88xx`:
 
@@ -913,14 +1015,16 @@ halmac_mu_bfer_entry_init_88xx
 
     config MU beamformer's registers
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_mu_bfer_init_para \*mu_bfer_init:
+    :param mu_bfer_init:
         parameters to configure MU BFER entry
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type mu_bfer_init: struct halmac_mu_bfer_init_para \*
 
 .. _`halmac_su_bfee_entry_del_88xx`:
 
@@ -931,14 +1035,16 @@ halmac_su_bfee_entry_del_88xx
 
     reset SU beamformee's registers
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 userid:
+    :param userid:
         the SU BFee userid to be deleted
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type userid: u8
 
 .. _`halmac_su_bfer_entry_del_88xx`:
 
@@ -949,14 +1055,16 @@ halmac_su_bfer_entry_del_88xx
 
     reset SU beamformer's registers
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 userid:
+    :param userid:
         the SU BFer userid to be deleted
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type userid: u8
 
 .. _`halmac_mu_bfee_entry_del_88xx`:
 
@@ -967,14 +1075,16 @@ halmac_mu_bfee_entry_del_88xx
 
     reset MU beamformee's registers
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 userid:
+    :param userid:
         the MU STA userid to be deleted
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type userid: u8
 
 .. _`halmac_mu_bfer_entry_del_88xx`:
 
@@ -985,11 +1095,12 @@ halmac_mu_bfer_entry_del_88xx
 
     reset MU beamformer's registers
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_add_ch_info_88xx`:
 
@@ -1000,14 +1111,16 @@ halmac_add_ch_info_88xx
 
     add channel information
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_ch_info \*ch_info:
+    :param ch_info:
         channel information
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type ch_info: struct halmac_ch_info \*
 
 .. _`halmac_add_extra_ch_info_88xx`:
 
@@ -1018,14 +1131,16 @@ halmac_add_extra_ch_info_88xx
 
     add extra channel information
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_ch_extra_info \*ch_extra_info:
+    :param ch_extra_info:
         extra channel information
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type ch_extra_info: struct halmac_ch_extra_info \*
 
 .. _`halmac_ctrl_ch_switch_88xx`:
 
@@ -1036,14 +1151,16 @@ halmac_ctrl_ch_switch_88xx
 
     send channel switch cmd
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_ch_switch_option \*cs_option:
+    :param cs_option:
         channel switch config
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type cs_option: struct halmac_ch_switch_option \*
 
 .. _`halmac_clear_ch_info_88xx`:
 
@@ -1054,11 +1171,12 @@ halmac_clear_ch_info_88xx
 
     clear channel information
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_send_general_info_88xx`:
 
@@ -1069,14 +1187,16 @@ halmac_send_general_info_88xx
 
     send general information to FW
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_general_info \*general_info:
+    :param general_info:
         general information
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type general_info: struct halmac_general_info \*
 
 .. _`halmac_start_iqk_88xx`:
 
@@ -1087,14 +1207,16 @@ halmac_start_iqk_88xx
 
     trigger FW IQK
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_iqk_para_ \*iqk_para:
+    :param iqk_para:
         IQK parameter
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type iqk_para: struct halmac_iqk_para_ \*
 
 .. _`halmac_ctrl_pwr_tracking_88xx`:
 
@@ -1105,14 +1227,16 @@ halmac_ctrl_pwr_tracking_88xx
 
     trigger FW power tracking
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_pwr_tracking_option \*pwr_tracking_opt:
+    :param pwr_tracking_opt:
         power tracking option
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type pwr_tracking_opt: struct halmac_pwr_tracking_option \*
 
 .. _`halmac_query_status_88xx`:
 
@@ -1123,20 +1247,25 @@ halmac_query_status_88xx
 
     query the offload feature status
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_feature_id feature_id:
+    :param feature_id:
         feature_id
+    :type feature_id: enum halmac_feature_id
 
-    :param enum halmac_cmd_process_status \*process_status:
+    :param process_status:
         feature_status
+    :type process_status: enum halmac_cmd_process_status \*
 
-    :param u8 \*data:
+    :param data:
         data buffer
+    :type data: u8 \*
 
-    :param u32 \*size:
+    :param size:
         data size
+    :type size: u32 \*
 
 .. _`halmac_query_status_88xx.description`:
 
@@ -1162,14 +1291,16 @@ halmac_reset_feature_88xx
 
     reset async api cmd status
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_feature_id feature_id:
+    :param feature_id:
         feature_id
         Author : Ivan Lin/KaiYuan Chang
         Return : enum halmac_ret_status.
         More details of status code can be found in prototype document
+    :type feature_id: enum halmac_feature_id
 
 .. _`halmac_check_fw_status_88xx`:
 
@@ -1180,14 +1311,16 @@ halmac_check_fw_status_88xx
 
     check fw status
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param bool \*fw_status:
+    :param fw_status:
         fw status
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type fw_status: bool \*
 
 .. _`halmac_cfg_max_dl_size_88xx`:
 
@@ -1198,11 +1331,13 @@ halmac_cfg_max_dl_size_88xx
 
     config max download FW size
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 size:
+    :param size:
         max download fw size
+    :type size: u32
 
 .. _`halmac_cfg_max_dl_size_88xx.description`:
 
@@ -1229,17 +1364,20 @@ halmac_psd_88xx
 
     trigger fw psd
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u16 start_psd:
+    :param start_psd:
         start PSD
+    :type start_psd: u16
 
-    :param u16 end_psd:
+    :param end_psd:
         end PSD
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type end_psd: u16
 
 .. _`halmac_cfg_la_mode_88xx`:
 
@@ -1250,16 +1388,18 @@ halmac_cfg_la_mode_88xx
 
     config la mode
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_la_mode la_mode:
+    :param la_mode:
         disable : no TXFF space reserved for LA debug
         partial : partial TXFF space is reserved for LA debug
         full : all TXFF space is reserved for LA debug
         Author : KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type la_mode: enum halmac_la_mode
 
 .. _`halmac_cfg_rx_fifo_expanding_mode_88xx`:
 
@@ -1270,11 +1410,13 @@ halmac_cfg_rx_fifo_expanding_mode_88xx
 
     rx fifo expanding
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_rx_fifo_expanding_mode rx_fifo_expanding_mode:
+    :param rx_fifo_expanding_mode:
         *undescribed*
+    :type rx_fifo_expanding_mode: enum halmac_rx_fifo_expanding_mode
 
 .. _`halmac_get_hw_value_88xx`:
 
@@ -1285,17 +1427,20 @@ halmac_get_hw_value_88xx
 
     get hw config value
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_hw_id hw_id:
+    :param hw_id:
         hw id for driver to query
+    :type hw_id: enum halmac_hw_id
 
-    :param void \*pvalue:
+    :param pvalue:
         hw value, reference table to get data type
         Author : KaiYuan Chang / Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type pvalue: void \*
 
 .. _`halmac_set_hw_value_88xx`:
 
@@ -1306,17 +1451,20 @@ halmac_set_hw_value_88xx
 
     set hw config value
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_hw_id hw_id:
+    :param hw_id:
         hw id for driver to config
+    :type hw_id: enum halmac_hw_id
 
-    :param void \*pvalue:
+    :param pvalue:
         hw value, reference table to get data type
         Author : KaiYuan Chang / Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type pvalue: void \*
 
 .. _`halmac_cfg_drv_rsvd_pg_num_88xx`:
 
@@ -1327,14 +1475,16 @@ halmac_cfg_drv_rsvd_pg_num_88xx
 
     config reserved page number for driver
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_drv_rsvd_pg_num pg_num:
+    :param pg_num:
         page number
         Author : KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type pg_num: enum halmac_drv_rsvd_pg_num
 
 .. _`halmac_chk_txdesc_88xx`:
 
@@ -1345,17 +1495,20 @@ halmac_chk_txdesc_88xx
 
     check if the tx packet format is incorrect
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 \*halmac_buf:
+    :param halmac_buf:
         tx Packet buffer, tx desc is included
+    :type halmac_buf: u8 \*
 
-    :param u32 halmac_size:
+    :param halmac_size:
         tx packet size
         Author : KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_size: u32
 
 .. _`halmac_dl_drv_rsvd_page_88xx`:
 
@@ -1366,20 +1519,24 @@ halmac_dl_drv_rsvd_page_88xx
 
     download packet to rsvd page
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 pg_offset:
+    :param pg_offset:
         page offset of driver's rsvd page
+    :type pg_offset: u8
 
-    :param u8 \*halmac_buf:
+    :param halmac_buf:
         data to be downloaded, tx_desc is not included
+    :type halmac_buf: u8 \*
 
-    :param u32 halmac_size:
+    :param halmac_size:
         data size to be downloaded
         Author : KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_size: u32
 
 .. _`halmac_cfg_csi_rate_88xx`:
 
@@ -1390,23 +1547,28 @@ halmac_cfg_csi_rate_88xx
 
     config CSI frame Tx rate
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 rssi:
+    :param rssi:
         rssi in decimal value
+    :type rssi: u8
 
-    :param u8 current_rate:
+    :param current_rate:
         current CSI frame rate
+    :type current_rate: u8
 
-    :param u8 fixrate_en:
+    :param fixrate_en:
         enable to fix CSI frame in VHT rate, otherwise legacy OFDM rate
+    :type fixrate_en: u8
 
-    :param u8 \*new_rate:
+    :param new_rate:
         API returns the final CSI frame rate
         Author : chunchu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type new_rate: u8 \*
 
 .. _`halmac_sdio_cmd53_4byte_88xx`:
 
@@ -1417,11 +1579,13 @@ halmac_sdio_cmd53_4byte_88xx
 
     cmd53 only for 4byte len register IO
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_sdio_cmd53_4byte_mode cmd53_4byte_mode:
+    :param cmd53_4byte_mode:
         *undescribed*
+    :type cmd53_4byte_mode: enum halmac_sdio_cmd53_4byte_mode
 
 .. _`halmac_txfifo_is_empty_88xx`:
 
@@ -1432,14 +1596,16 @@ halmac_txfifo_is_empty_88xx
 
     check if txfifo is empty
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 chk_num:
+    :param chk_num:
         *undescribed*
+    :type chk_num: u32
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ snd_printk
 
     printk wrapper
 
-    :param  fmt:
+    :param fmt:
         format string
+    :type fmt: 
 
     :param ellipsis ellipsis:
         variable arguments
@@ -33,8 +34,9 @@ snd_printd
 
     debug printk
 
-    :param  fmt:
+    :param fmt:
         format string
+    :type fmt: 
 
     :param ellipsis ellipsis:
         variable arguments
@@ -56,8 +58,9 @@ snd_BUG
 
     give a BUG warning message and stack trace
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`snd_bug.description`:
 
@@ -74,8 +77,9 @@ snd_printd_ratelimit
 
 .. c:function::  snd_printd_ratelimit( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`snd_bug_on`:
 
@@ -86,8 +90,9 @@ snd_BUG_ON
 
     debugging check macro
 
-    :param  cond:
+    :param cond:
         condition to evaluate
+    :type cond: 
 
 .. _`snd_bug_on.description`:
 
@@ -106,8 +111,9 @@ snd_printdd
 
     debug printk
 
-    :param  format:
+    :param format:
         format string
+    :type format: 
 
     :param ellipsis ellipsis:
         variable arguments

@@ -8,8 +8,9 @@ CARD_FROM_DEV
 
 .. c:function::  CARD_FROM_DEV( cdev)
 
-    :param  cdev:
+    :param cdev:
         *undescribed*
+    :type cdev: 
 
 .. _`lcs_ccw_write`:
 

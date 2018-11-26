@@ -10,8 +10,9 @@ mips_pm_suspend
 
     enter a suspend state
 
-    :param unsigned state:
+    :param state:
         the state to enter, one of PIIX4_FUNC3IO_PMCNTRL_SUS_TYP\_\*
+    :type state: unsigned
 
 .. _`mips_pm_suspend.description`:
 

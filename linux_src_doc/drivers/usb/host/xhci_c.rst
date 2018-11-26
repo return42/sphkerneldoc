@@ -10,8 +10,9 @@ xhci_get_endpoint_index
 
     Used for passing endpoint bitmasks between the core and HCDs.  Find the index for an endpoint given its descriptor.  Use the return value to right shift 1 for the bitmask.
 
-    :param struct usb_endpoint_descriptor \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct usb_endpoint_descriptor \*
 
 .. _`xhci_get_endpoint_index.description`:
 

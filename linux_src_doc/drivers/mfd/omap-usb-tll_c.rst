@@ -52,8 +52,9 @@ usbtll_omap_probe
 
     initialize TI-based HCDs
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`usbtll_omap_probe.description`:
 
@@ -71,8 +72,9 @@ usbtll_omap_remove
 
     shutdown processing for UHH & TLL HCDs
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         USB Host Controller being removed
+    :type pdev: struct platform_device \*
 
 .. _`usbtll_omap_remove.description`:
 

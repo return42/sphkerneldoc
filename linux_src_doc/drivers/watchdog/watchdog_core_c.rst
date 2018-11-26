@@ -10,14 +10,17 @@ watchdog_init_timeout
 
     initialize the timeout field
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
-    :param unsigned int timeout_parm:
+    :param timeout_parm:
         timeout module parameter
+    :type timeout_parm: unsigned int
 
-    :param struct device \*dev:
+    :param dev:
         Device that stores the timeout-sec property
+    :type dev: struct device \*
 
 .. _`watchdog_init_timeout.description`:
 
@@ -41,13 +44,15 @@ watchdog_set_restart_priority
 
     Change priority of restart handler
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
-    :param int priority:
+    :param priority:
         priority of the restart handler, should follow these guidelines:
         0:   use watchdog's restart function as last resort, has limited restart
         capabilies
+    :type priority: int
 
 .. _`watchdog_set_restart_priority.128`:
 
@@ -77,8 +82,9 @@ watchdog_register_device
 
     register a watchdog device
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
 .. _`watchdog_register_device.description`:
 
@@ -100,8 +106,9 @@ watchdog_unregister_device
 
     unregister a watchdog device
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device to unregister
+    :type wdd: struct watchdog_device \*
 
 .. _`watchdog_unregister_device.description`:
 
@@ -120,11 +127,13 @@ devm_watchdog_register_device
 
     resource managed \ :c:func:`watchdog_register_device`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this watchdog device
+    :type dev: struct device \*
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         watchdog device
+    :type wdd: struct watchdog_device \*
 
 .. _`devm_watchdog_register_device.description`:
 

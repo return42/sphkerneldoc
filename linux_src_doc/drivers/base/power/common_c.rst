@@ -10,8 +10,9 @@ dev_pm_get_subsys_data
 
     Create or refcount power.subsys_data for device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`dev_pm_get_subsys_data.description`:
 
@@ -31,8 +32,9 @@ dev_pm_put_subsys_data
 
     Drop reference to power.subsys_data.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`dev_pm_put_subsys_data.description`:
 
@@ -51,11 +53,13 @@ dev_pm_domain_attach
 
     Attach a device to its PM domain.
 
-    :param struct device \*dev:
+    :param dev:
         Device to attach.
+    :type dev: struct device \*
 
-    :param bool power_on:
+    :param power_on:
         Used to indicate whether we should power on the device.
+    :type power_on: bool
 
 .. _`dev_pm_domain_attach.description`:
 
@@ -86,11 +90,13 @@ dev_pm_domain_attach_by_id
 
     Associate a device with one of its PM domains.
 
-    :param struct device \*dev:
+    :param dev:
         The device used to lookup the PM domain.
+    :type dev: struct device \*
 
-    :param unsigned int index:
+    :param index:
         The index of the PM domain.
+    :type index: unsigned int
 
 .. _`dev_pm_domain_attach_by_id.description`:
 
@@ -118,6 +124,30 @@ domain, NULL in case \ ``dev``\  don't need a PM domain, else an \ :c:func:`ERR_
 Note that, to detach the returned virtual device, the driver shall call
 \ :c:func:`dev_pm_domain_detach`\  on it, typically during the remove phase.
 
+.. _`dev_pm_domain_attach_by_name`:
+
+dev_pm_domain_attach_by_name
+============================
+
+.. c:function:: struct device *dev_pm_domain_attach_by_name(struct device *dev, char *name)
+
+    Associate a device with one of its PM domains.
+
+    :param dev:
+        The device used to lookup the PM domain.
+    :type dev: struct device \*
+
+    :param name:
+        The name of the PM domain.
+    :type name: char \*
+
+.. _`dev_pm_domain_attach_by_name.description`:
+
+Description
+-----------
+
+For a detailed function description, see \ :c:func:`dev_pm_domain_attach_by_id`\ .
+
 .. _`dev_pm_domain_detach`:
 
 dev_pm_domain_detach
@@ -127,11 +157,13 @@ dev_pm_domain_detach
 
     Detach a device from its PM domain.
 
-    :param struct device \*dev:
+    :param dev:
         Device to detach.
+    :type dev: struct device \*
 
-    :param bool power_off:
+    :param power_off:
         Used to indicate whether we should power off the device.
+    :type power_off: bool
 
 .. _`dev_pm_domain_detach.description`:
 
@@ -155,11 +187,13 @@ dev_pm_domain_set
 
     Set PM domain of a device.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose PM domain is to be set.
+    :type dev: struct device \*
 
-    :param struct dev_pm_domain \*pd:
+    :param pd:
         PM domain to be set, or NULL.
+    :type pd: struct dev_pm_domain \*
 
 .. _`dev_pm_domain_set.description`:
 

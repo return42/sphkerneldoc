@@ -10,8 +10,9 @@ serial_txx9_register_port
 
     register a serial port
 
-    :param struct uart_port \*port:
+    :param port:
         serial port template
+    :type port: struct uart_port \*
 
 .. _`serial_txx9_register_port.description`:
 
@@ -34,8 +35,9 @@ serial_txx9_unregister_port
 
     remove a txx9 serial port at runtime
 
-    :param int line:
+    :param line:
         serial line number
+    :type line: int
 
 .. _`serial_txx9_unregister_port.description`:
 

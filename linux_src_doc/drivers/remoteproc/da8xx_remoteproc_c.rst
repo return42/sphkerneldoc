@@ -62,6 +62,7 @@ Definition
         struct da8xx_rproc_mem *mem;
         int num_mems;
         struct clk *dsp_clk;
+        struct reset_control *dsp_reset;
         void (*ack_fxn)(struct irq_data *data);
         struct irq_data *irq_data;
         void __iomem *chipsig;
@@ -85,6 +86,9 @@ num_mems
 
 dsp_clk
     placeholder for platform's DSP clk
+
+dsp_reset
+    *undescribed*
 
 ack_fxn
     chip-specific ack function for ack'ing irq
@@ -110,11 +114,13 @@ handle_event
 
     inbound virtqueue message workqueue function
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*p:
+    :param p:
         *undescribed*
+    :type p: void \*
 
 .. _`handle_event.description`:
 
@@ -133,11 +139,13 @@ da8xx_rproc_callback
 
     inbound virtqueue message handler
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*p:
+    :param p:
         *undescribed*
+    :type p: void \*
 
 .. _`da8xx_rproc_callback.description`:
 

@@ -10,11 +10,13 @@ intel_gvt_render_mmio_to_ring_id
 
     convert a mmio offset into ring id
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset
+    :type offset: unsigned int
 
 .. _`intel_gvt_render_mmio_to_ring_id.return`:
 
@@ -32,8 +34,9 @@ intel_gvt_clean_mmio_info
 
     clean up MMIO information table for GVT device
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_clean_mmio_info.description`:
 
@@ -52,8 +55,9 @@ intel_gvt_setup_mmio_info
 
     setup MMIO information table for GVT device
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_setup_mmio_info.description`:
 
@@ -79,14 +83,16 @@ intel_gvt_for_each_tracked_mmio
 
     iterate each tracked mmio
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
     :param int (\*handler)(struct intel_gvt \*gvt, u32 offset, void \*data):
         the handler
 
-    :param void \*data:
+    :param data:
         private data given to handler
+    :type data: void \*
 
 .. _`intel_gvt_for_each_tracked_mmio.return`:
 
@@ -104,17 +110,21 @@ intel_vgpu_default_mmio_read
 
     default MMIO read handler
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int offset:
+    :param offset:
         access offset
+    :type offset: unsigned int
 
-    :param void \*p_data:
+    :param p_data:
         data return buffer
+    :type p_data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         access data length
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_default_mmio_read.return`:
 
@@ -132,17 +142,21 @@ intel_vgpu_default_mmio_write
 
     default MMIO write handler
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int offset:
+    :param offset:
         access offset
+    :type offset: unsigned int
 
-    :param void \*p_data:
+    :param p_data:
         write data buffer
+    :type p_data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         access data length
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_default_mmio_write.return`:
 
@@ -160,17 +174,21 @@ intel_vgpu_mask_mmio_write
 
     write mask register
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int offset:
+    :param offset:
         access offset
+    :type offset: unsigned int
 
-    :param void \*p_data:
+    :param p_data:
         write data buffer
+    :type p_data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         access data length
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_mask_mmio_write.return`:
 
@@ -188,11 +206,13 @@ intel_gvt_in_force_nonpriv_whitelist
 
     if a mmio is in whitelist to be force-nopriv register
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset
+    :type offset: unsigned int
 
 .. _`intel_gvt_in_force_nonpriv_whitelist.return`:
 
@@ -211,20 +231,25 @@ intel_vgpu_mmio_reg_rw
 
     emulate tracked mmio registers
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset
+    :type offset: unsigned int
 
-    :param void \*pdata:
+    :param pdata:
         data buffer
+    :type pdata: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         data length
+    :type bytes: unsigned int
 
-    :param bool is_read:
-        *undescribed*
+    :param is_read:
+        read or write
+    :type is_read: bool
 
 .. _`intel_vgpu_mmio_reg_rw.return`:
 

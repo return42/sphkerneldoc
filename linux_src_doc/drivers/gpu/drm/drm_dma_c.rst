@@ -8,8 +8,9 @@ drm_legacy_dma_setup
 
 .. c:function:: int drm_legacy_dma_setup(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`drm_legacy_dma_setup.description`:
 
@@ -28,8 +29,9 @@ drm_legacy_dma_takedown
 
 .. c:function:: void drm_legacy_dma_takedown(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`drm_legacy_dma_takedown.description`:
 
@@ -48,11 +50,13 @@ drm_legacy_free_buffer
 
 .. c:function:: void drm_legacy_free_buffer(struct drm_device *dev, struct drm_buf *buf)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_buf \*buf:
+    :param buf:
         *undescribed*
+    :type buf: struct drm_buf \*
 
 .. _`drm_legacy_free_buffer.description`:
 
@@ -71,11 +75,13 @@ drm_legacy_reclaim_buffers
 
 .. c:function:: void drm_legacy_reclaim_buffers(struct drm_device *dev, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_reclaim_buffers.description`:
 

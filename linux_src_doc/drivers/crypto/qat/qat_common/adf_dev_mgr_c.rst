@@ -10,9 +10,10 @@ adf_clean_vf_map
 
     Cleans VF id mapings
 
-    :param bool vf:
+    :param vf:
         flag indicating whether mappings is cleaned
         for vfs only or for vfs and pfs
+    :type vf: bool
 
 .. _`adf_clean_vf_map.description`:
 
@@ -30,8 +31,9 @@ adf_devmgr_update_class_index
 
     Update internal index
 
-    :param struct adf_hw_device_data \*hw_data:
+    :param hw_data:
         Pointer to internal device data.
+    :type hw_data: struct adf_hw_device_data \*
 
 .. _`adf_devmgr_update_class_index.description`:
 
@@ -49,11 +51,13 @@ adf_devmgr_add_dev
 
     Add accel_dev to the acceleration framework
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
-    :param struct adf_accel_dev \*pf:
+    :param pf:
         Corresponding PF if the accel_dev is a VF
+    :type pf: struct adf_accel_dev \*
 
 .. _`adf_devmgr_add_dev.description`:
 
@@ -79,11 +83,13 @@ adf_devmgr_rm_dev
 
     Remove accel_dev from the acceleration framework.
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
-    :param struct adf_accel_dev \*pf:
+    :param pf:
         Corresponding PF if the accel_dev is a VF
+    :type pf: struct adf_accel_dev \*
 
 .. _`adf_devmgr_rm_dev.description`:
 
@@ -109,8 +115,9 @@ adf_devmgr_pci_to_accel_dev
 
     Get accel_dev associated with the pci_dev.
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         *undescribed*
+    :type pci_dev: struct pci_dev \*
 
 .. _`adf_devmgr_pci_to_accel_dev.description`:
 
@@ -136,8 +143,9 @@ adf_dev_in_use
 
     Check whether accel_dev is currently in use
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_dev_in_use.description`:
 
@@ -162,8 +170,9 @@ adf_dev_get
 
     Increment accel_dev reference count
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_dev_get.description`:
 
@@ -191,8 +200,9 @@ adf_dev_put
 
     Decrement accel_dev reference count
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_dev_put.description`:
 
@@ -220,8 +230,9 @@ adf_devmgr_in_reset
 
     Check whether device is in reset
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_devmgr_in_reset.description`:
 
@@ -246,8 +257,9 @@ adf_dev_started
 
     Check whether device has started
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_dev_started.description`:
 

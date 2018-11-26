@@ -10,11 +10,13 @@ gfs2_drevalidate
 
     Check directory lookup consistency
 
-    :param struct dentry \*dentry:
+    :param dentry:
         the mapping to check
+    :type dentry: struct dentry \*
 
-    :param unsigned int flags:
+    :param flags:
         lookup flags
+    :type flags: unsigned int
 
 .. _`gfs2_drevalidate.description`:
 

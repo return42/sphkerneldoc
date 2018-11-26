@@ -8,6 +8,7 @@ x86
     :maxdepth: 1
 
     apple-gmux_c
+    dcdbas_c
     hp_accel_c
     intel_ips_c
     intel_mid_thermal_c

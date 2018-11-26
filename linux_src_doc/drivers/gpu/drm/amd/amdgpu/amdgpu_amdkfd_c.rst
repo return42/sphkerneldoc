@@ -10,17 +10,21 @@ amdgpu_doorbell_get_kfd_info
 
     Report doorbell configuration required to setup amdkfd
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param phys_addr_t \*aperture_base:
+    :param aperture_base:
         output returning doorbell aperture base physical address
+    :type aperture_base: phys_addr_t \*
 
-    :param size_t \*aperture_size:
+    :param aperture_size:
         output returning doorbell aperture size in bytes
+    :type aperture_size: size_t \*
 
-    :param size_t \*start_offset:
+    :param start_offset:
         output returning # of doorbell bytes reserved for amdgpu.
+    :type start_offset: size_t \*
 
 .. _`amdgpu_doorbell_get_kfd_info.description`:
 

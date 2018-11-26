@@ -10,8 +10,9 @@ irq_remapping_get_ir_irq_domain
 
     Get the irqdomain associated with the IOMMU device serving request \ ``info``\ 
 
-    :param struct irq_alloc_info \*info:
+    :param info:
         interrupt allocation information, used to identify the IOMMU device
+    :type info: struct irq_alloc_info \*
 
 .. _`irq_remapping_get_ir_irq_domain.description`:
 
@@ -30,8 +31,9 @@ irq_remapping_get_irq_domain
 
     Get the irqdomain serving the request \ ``info``\ 
 
-    :param struct irq_alloc_info \*info:
+    :param info:
         interrupt allocation information, used to identify the IOMMU device
+    :type info: struct irq_alloc_info \*
 
 .. _`irq_remapping_get_irq_domain.description`:
 

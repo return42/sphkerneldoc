@@ -10,8 +10,9 @@ get_group_info
 
     Get a reference to a group info structure
 
-    :param struct group_info \*gi:
+    :param gi:
         *undescribed*
+    :type gi: struct group_info \*
 
 .. _`get_group_info.description`:
 
@@ -32,8 +33,9 @@ put_group_info
 
     Release a reference to a group info structure
 
-    :param  group_info:
+    :param group_info:
         The group info to release
+    :type group_info: 
 
 .. _`get_new_cred`:
 
@@ -44,8 +46,9 @@ get_new_cred
 
     Get a reference on a new set of credentials
 
-    :param struct cred \*cred:
+    :param cred:
         The new credentials to reference
+    :type cred: struct cred \*
 
 .. _`get_new_cred.description`:
 
@@ -64,8 +67,9 @@ get_cred
 
     Get a reference on a set of credentials
 
-    :param const struct cred \*cred:
+    :param cred:
         The credentials to reference
+    :type cred: const struct cred \*
 
 .. _`get_cred.description`:
 
@@ -90,8 +94,9 @@ put_cred
 
     Release a reference to a set of credentials
 
-    :param const struct cred \*_cred:
+    :param _cred:
         *undescribed*
+    :type _cred: const struct cred \*
 
 .. _`put_cred.description`:
 
@@ -114,8 +119,9 @@ current_cred
 
     Access the current task's subjective credentials
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`current_cred.description`:
 
@@ -134,8 +140,9 @@ current_real_cred
 
     Access the current task's objective credentials
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`current_real_cred.description`:
 
@@ -154,8 +161,9 @@ since nobody else can modify it.
 
     Access a task's objective credentials
 
-    :param  task:
+    :param task:
         The task to query
+    :type task: 
 
 .. _`__task_cred.description`:
 
@@ -177,8 +185,9 @@ get_current_cred
 
     Get the current task's subjective credentials
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`get_current_cred.description`:
 
@@ -198,8 +207,9 @@ get_current_user
 
     Get the current task's user_struct
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`get_current_user.description`:
 
@@ -218,8 +228,9 @@ get_current_groups
 
     Get the current task's supplementary group list
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`get_current_groups.description`:
 

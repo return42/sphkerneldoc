@@ -10,11 +10,13 @@ c67x00_ll_usb_clear_status
 
     clear the USB status bits
 
-    :param struct c67x00_sie \*sie:
+    :param sie:
         *undescribed*
+    :type sie: struct c67x00_sie \*
 
-    :param u16 bits:
+    :param bits:
         *undescribed*
+    :type bits: u16
 
 .. _`c67x00_ll_write_mem_le16`:
 
@@ -25,17 +27,21 @@ c67x00_ll_write_mem_le16
 
     write into c67x00 memory Only data is little endian, addr has cpu endianess.
 
-    :param struct c67x00_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct c67x00_device \*
 
-    :param u16 addr:
+    :param addr:
         *undescribed*
+    :type addr: u16
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
 .. _`c67x00_ll_read_mem_le16`:
 
@@ -46,17 +52,21 @@ c67x00_ll_read_mem_le16
 
     read from c67x00 memory Only data is little endian, addr has cpu endianess.
 
-    :param struct c67x00_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct c67x00_device \*
 
-    :param u16 addr:
+    :param addr:
         *undescribed*
+    :type addr: u16
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
 .. This file was automatic generated / don't edit.
 

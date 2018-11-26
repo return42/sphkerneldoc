@@ -10,11 +10,13 @@ ps3stor_setup
 
     Setup a storage device before use
 
-    :param struct ps3_storage_device \*dev:
+    :param dev:
         Pointer to a struct ps3_storage_device
+    :type dev: struct ps3_storage_device \*
 
-    :param irq_handler_t handler:
+    :param handler:
         Pointer to an interrupt handler
+    :type handler: irq_handler_t
 
 .. _`ps3stor_setup.description`:
 
@@ -32,8 +34,9 @@ ps3stor_teardown
 
     Tear down a storage device after use
 
-    :param struct ps3_storage_device \*dev:
+    :param dev:
         Pointer to a struct ps3_storage_device
+    :type dev: struct ps3_storage_device \*
 
 .. _`ps3stor_read_write_sectors`:
 
@@ -44,20 +47,25 @@ ps3stor_read_write_sectors
 
     read/write from/to a storage device
 
-    :param struct ps3_storage_device \*dev:
+    :param dev:
         Pointer to a struct ps3_storage_device
+    :type dev: struct ps3_storage_device \*
 
-    :param u64 lpar:
+    :param lpar:
         HV logical partition address
+    :type lpar: u64
 
-    :param u64 start_sector:
+    :param start_sector:
         First sector to read/write
+    :type start_sector: u64
 
-    :param u64 sectors:
+    :param sectors:
         Number of sectors to read/write
+    :type sectors: u64
 
-    :param int write:
+    :param write:
         Flag indicating write (non-zero) or read (zero)
+    :type write: int
 
 .. _`ps3stor_read_write_sectors.description`:
 
@@ -76,23 +84,29 @@ ps3stor_send_command
 
     send a device command to a storage device
 
-    :param struct ps3_storage_device \*dev:
+    :param dev:
         Pointer to a struct ps3_storage_device
+    :type dev: struct ps3_storage_device \*
 
-    :param u64 cmd:
+    :param cmd:
         Command number
+    :type cmd: u64
 
-    :param u64 arg1:
+    :param arg1:
         First command argument
+    :type arg1: u64
 
-    :param u64 arg2:
+    :param arg2:
         Second command argument
+    :type arg2: u64
 
-    :param u64 arg3:
+    :param arg3:
         Third command argument
+    :type arg3: u64
 
-    :param u64 arg4:
+    :param arg4:
         Fourth command argument
+    :type arg4: u64
 
 .. _`ps3stor_send_command.description`:
 

@@ -10,8 +10,9 @@ base_asce_free
 
     free asce and tables returned from \ :c:func:`base_asce_alloc`\ 
 
-    :param unsigned long asce:
+    :param asce:
         asce to be freed
+    :type asce: unsigned long
 
 .. _`base_asce_free.description`:
 
@@ -30,11 +31,13 @@ base_asce_alloc
 
     create kernel mapping without enhanced DAT features
 
-    :param unsigned long addr:
+    :param addr:
         virtual start address of kernel mapping
+    :type addr: unsigned long
 
-    :param unsigned long num_pages:
+    :param num_pages:
         number of consecutive pages
+    :type num_pages: unsigned long
 
 .. _`base_asce_alloc.description`:
 

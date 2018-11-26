@@ -10,14 +10,17 @@ ide_get_dev_handle
 
     finds acpi_handle and PCI device.function
 
-    :param struct device \*dev:
+    :param dev:
         device to locate
+    :type dev: struct device \*
 
-    :param acpi_handle \*handle:
+    :param handle:
         returned acpi_handle for \ ``dev``\ 
+    :type handle: acpi_handle \*
 
-    :param u64 \*pcidevfn:
+    :param pcidevfn:
         return PCI device.func for \ ``dev``\ 
+    :type pcidevfn: u64 \*
 
 .. _`ide_get_dev_handle.description`:
 
@@ -37,8 +40,9 @@ ide_acpi_hwif_get_handle
 
     Get ACPI object handle for a given hwif
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         device to locate
+    :type hwif: ide_hwif_t \*
 
 .. _`ide_acpi_hwif_get_handle.description`:
 
@@ -58,17 +62,21 @@ do_drive_get_GTF
 
     get the drive bootup default taskfile settings
 
-    :param ide_drive_t \*drive:
+    :param drive:
         the drive for which the taskfile settings should be retrieved
+    :type drive: ide_drive_t \*
 
-    :param unsigned int \*gtf_length:
+    :param gtf_length:
         number of bytes of \_GTF data returned at \ ``gtf_address``\ 
+    :type gtf_length: unsigned int \*
 
-    :param unsigned long \*gtf_address:
+    :param gtf_address:
         buffer containing \_GTF taskfile arrays
+    :type gtf_address: unsigned long \*
 
-    :param unsigned long \*obj_loc:
+    :param obj_loc:
         *undescribed*
+    :type obj_loc: unsigned long \*
 
 .. _`do_drive_get_gtf.description`:
 
@@ -93,14 +101,17 @@ do_drive_set_taskfiles
 
     write the drive taskfile settings from \_GTF
 
-    :param ide_drive_t \*drive:
+    :param drive:
         the drive to which the taskfile command should be sent
+    :type drive: ide_drive_t \*
 
-    :param unsigned int gtf_length:
+    :param gtf_length:
         total number of bytes of \_GTF taskfiles
+    :type gtf_length: unsigned int
 
-    :param unsigned long gtf_address:
+    :param gtf_address:
         location of \_GTF taskfile arrays
+    :type gtf_address: unsigned long
 
 .. _`do_drive_set_taskfiles.description`:
 
@@ -119,9 +130,10 @@ ide_acpi_exec_tfs
 
     get then write drive taskfile settings
 
-    :param ide_drive_t \*drive:
+    :param drive:
         the drive for which the taskfile settings should be
         written.
+    :type drive: ide_drive_t \*
 
 .. _`ide_acpi_exec_tfs.description`:
 
@@ -144,8 +156,9 @@ ide_acpi_get_timing
 
     get the channel (controller) timings
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         target IDE interface (channel)
+    :type hwif: ide_hwif_t \*
 
 .. _`ide_acpi_get_timing.description`:
 
@@ -163,8 +176,9 @@ ide_acpi_push_timing
 
     set the channel (controller) timings
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         target IDE interface (channel)
+    :type hwif: ide_hwif_t \*
 
 .. _`ide_acpi_push_timing.description`:
 
@@ -186,11 +200,13 @@ ide_acpi_set_state
 
     set the channel power state
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         target IDE interface
+    :type hwif: ide_hwif_t \*
 
-    :param int on:
+    :param on:
         state, on/off
+    :type on: int
 
 .. _`ide_acpi_set_state.description`:
 
@@ -209,8 +225,9 @@ ide_acpi_init_port
 
     initialize the ACPI link for an IDE interface
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         target IDE interface (channel)
+    :type hwif: ide_hwif_t \*
 
 .. _`ide_acpi_init_port.description`:
 

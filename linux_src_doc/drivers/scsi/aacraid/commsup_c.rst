@@ -10,8 +10,9 @@ fib_map_alloc
 
     allocate the fib objects
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter to allocate for
+    :type dev: struct aac_dev \*
 
 .. _`fib_map_alloc.description`:
 
@@ -30,8 +31,9 @@ aac_fib_map_free
 
     free the fib objects
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter to free
+    :type dev: struct aac_dev \*
 
 .. _`aac_fib_map_free.description`:
 
@@ -50,8 +52,9 @@ aac_fib_setup
 
     setup the fibs
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter to set up
+    :type dev: struct aac_dev \*
 
 .. _`aac_fib_setup.description`:
 
@@ -70,11 +73,13 @@ aac_fib_alloc_tag
 
     allocate a fib using tags
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter to allocate the fib for
+    :type dev: struct aac_dev \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         *undescribed*
+    :type scmd: struct scsi_cmnd \*
 
 .. _`aac_fib_alloc_tag.description`:
 
@@ -93,8 +98,9 @@ aac_fib_alloc
 
     allocate a fib
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter to allocate the fib for
+    :type dev: struct aac_dev \*
 
 .. _`aac_fib_alloc.description`:
 
@@ -113,8 +119,9 @@ aac_fib_free
 
     free a fib
 
-    :param struct fib \*fibptr:
+    :param fibptr:
         fib to free up
+    :type fibptr: struct fib \*
 
 .. _`aac_fib_free.description`:
 
@@ -132,8 +139,9 @@ aac_fib_init
 
     initialise a fib
 
-    :param struct fib \*fibptr:
+    :param fibptr:
         The fib to initialize
+    :type fibptr: struct fib \*
 
 .. _`aac_fib_init.description`:
 
@@ -151,8 +159,9 @@ fib_dealloc
 
     deallocate a fib
 
-    :param struct fib \*fibptr:
+    :param fibptr:
         fib to deallocate
+    :type fibptr: struct fib \*
 
 .. _`fib_dealloc.description`:
 
@@ -171,20 +180,25 @@ aac_get_entry
 
     get a queue entry
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
-    :param u32 qid:
+    :param qid:
         Queue Number
+    :type qid: u32
 
-    :param struct aac_entry \*\*entry:
+    :param entry:
         Entry return
+    :type entry: struct aac_entry \*\*
 
-    :param u32 \*index:
+    :param index:
         Index return
+    :type index: u32 \*
 
-    :param unsigned long \*nonotify:
+    :param nonotify:
         notification control
+    :type nonotify: unsigned long \*
 
 .. _`aac_get_entry.description`:
 
@@ -204,26 +218,33 @@ aac_queue_get
 
     get the next free QE
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
-    :param u32 \*index:
+    :param index:
         Returned index
+    :type index: u32 \*
 
-    :param u32 qid:
+    :param qid:
         *undescribed*
+    :type qid: u32
 
-    :param struct hw_fib \*hw_fib:
+    :param hw_fib:
         *undescribed*
+    :type hw_fib: struct hw_fib \*
 
-    :param int wait:
+    :param wait:
         Wait if queue full
+    :type wait: int
 
-    :param struct fib \*fibptr:
+    :param fibptr:
         Driver fib object to go with fib
+    :type fibptr: struct fib \*
 
-    :param unsigned long \*nonotify:
+    :param nonotify:
         Don't notify the adapter
+    :type nonotify: unsigned long \*
 
 .. _`aac_queue_get.description`:
 
@@ -244,29 +265,37 @@ aac_fib_send
 
     send a fib to the adapter
 
-    :param u16 command:
+    :param command:
         Command to send
+    :type command: u16
 
-    :param struct fib \*fibptr:
+    :param fibptr:
         The fib
+    :type fibptr: struct fib \*
 
-    :param unsigned long size:
+    :param size:
         Size of fib data area
+    :type size: unsigned long
 
-    :param int priority:
+    :param priority:
         Priority of Fib
+    :type priority: int
 
-    :param int wait:
+    :param wait:
         Async/sync select
+    :type wait: int
 
-    :param int reply:
+    :param reply:
         True if a reply is wanted
+    :type reply: int
 
-    :param fib_callback callback:
+    :param callback:
         Called with reply
+    :type callback: fib_callback
 
-    :param void \*callback_data:
+    :param callback_data:
         Passed to callback
+    :type callback_data: void \*
 
 .. _`aac_fib_send.description`:
 
@@ -287,14 +316,17 @@ aac_consumer_get
 
     get the top of the queue
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
-    :param struct aac_queue \*q:
+    :param q:
         Queue
+    :type q: struct aac_queue \*
 
-    :param struct aac_entry \*\*entry:
+    :param entry:
         Return entry
+    :type entry: struct aac_entry \*\*
 
 .. _`aac_consumer_get.description`:
 
@@ -314,14 +346,17 @@ aac_consumer_free
 
     free consumer entry
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
-    :param struct aac_queue \*q:
+    :param q:
         Queue
+    :type q: struct aac_queue \*
 
-    :param u32 qid:
+    :param qid:
         Queue ident
+    :type qid: u32
 
 .. _`aac_consumer_free.description`:
 
@@ -340,11 +375,13 @@ aac_fib_adapter_complete
 
     complete adapter issued fib
 
-    :param struct fib \*fibptr:
+    :param fibptr:
         fib to complete
+    :type fibptr: struct fib \*
 
-    :param unsigned short size:
+    :param size:
         size of fib
+    :type size: unsigned short
 
 .. _`aac_fib_adapter_complete.description`:
 
@@ -363,8 +400,9 @@ aac_fib_complete
 
     fib completion handler
 
-    :param struct fib \*fibptr:
+    :param fibptr:
         *undescribed*
+    :type fibptr: struct fib \*
 
 .. _`aac_fib_complete.description`:
 
@@ -382,11 +420,13 @@ aac_printf
 
     handle printf from firmware
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
-    :param u32 val:
+    :param val:
         Message info
+    :type val: u32
 
 .. _`aac_printf.description`:
 
@@ -420,11 +460,13 @@ aac_handle_sa_aif
 
 .. c:function:: void aac_handle_sa_aif(struct aac_dev *dev, struct fib *fibptr)
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Which adapter this fib is from
+    :type dev: struct aac_dev \*
 
-    :param struct fib \*fibptr:
+    :param fibptr:
         Pointer to fibptr from adapter
+    :type fibptr: struct fib \*
 
 .. _`aac_handle_sa_aif.description`:
 
@@ -443,8 +485,9 @@ aac_command_thread
 
     command processing thread
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`aac_command_thread.description`:
 

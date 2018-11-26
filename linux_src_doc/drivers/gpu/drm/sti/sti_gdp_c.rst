@@ -8,8 +8,9 @@ sti_gdp_get_free_nodes
 
 .. c:function:: struct sti_gdp_node_list *sti_gdp_get_free_nodes(struct sti_gdp *gdp)
 
-    :param struct sti_gdp \*gdp:
+    :param gdp:
         gdp pointer
+    :type gdp: struct sti_gdp \*
 
 .. _`sti_gdp_get_free_nodes.description`:
 
@@ -32,8 +33,9 @@ sti_gdp_get_current_nodes
 
 .. c:function:: struct sti_gdp_node_list *sti_gdp_get_current_nodes(struct sti_gdp *gdp)
 
-    :param struct sti_gdp \*gdp:
+    :param gdp:
         gdp pointer
+    :type gdp: struct sti_gdp \*
 
 .. _`sti_gdp_get_current_nodes.description`:
 
@@ -56,8 +58,9 @@ sti_gdp_disable
 
 .. c:function:: void sti_gdp_disable(struct sti_gdp *gdp)
 
-    :param struct sti_gdp \*gdp:
+    :param gdp:
         gdp pointer
+    :type gdp: struct sti_gdp \*
 
 .. _`sti_gdp_disable.description`:
 
@@ -73,14 +76,17 @@ sti_gdp_field_cb
 
 .. c:function:: int sti_gdp_field_cb(struct notifier_block *nb, unsigned long event, void *data)
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         event message
+    :type event: unsigned long
 
-    :param void \*data:
+    :param data:
         private data
+    :type data: void \*
 
 .. _`sti_gdp_field_cb.description`:
 
@@ -103,14 +109,17 @@ sti_gdp_get_dst
 
 .. c:function:: int sti_gdp_get_dst(struct device *dev, int dst, int src)
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param int dst:
+    :param dst:
         requested destination size
+    :type dst: int
 
-    :param int src:
+    :param src:
         source size
+    :type src: int
 
 .. _`sti_gdp_get_dst.description`:
 

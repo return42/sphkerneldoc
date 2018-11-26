@@ -10,23 +10,29 @@ intc_evt_xlate
 
     Generic xlate for vectored IRQs.
 
-    :param struct irq_domain \*d:
+    :param d:
         *undescribed*
+    :type d: struct irq_domain \*
 
-    :param struct device_node \*ctrlr:
+    :param ctrlr:
         *undescribed*
+    :type ctrlr: struct device_node \*
 
-    :param const u32 \*intspec:
+    :param intspec:
         *undescribed*
+    :type intspec: const u32 \*
 
-    :param unsigned int intsize:
+    :param intsize:
         *undescribed*
+    :type intsize: unsigned int
 
-    :param unsigned long \*out_hwirq:
+    :param out_hwirq:
         *undescribed*
+    :type out_hwirq: unsigned long \*
 
-    :param unsigned int \*out_type:
+    :param out_type:
         *undescribed*
+    :type out_type: unsigned int \*
 
 .. _`intc_evt_xlate.description`:
 

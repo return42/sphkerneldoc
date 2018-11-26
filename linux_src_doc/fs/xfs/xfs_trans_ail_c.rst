@@ -8,14 +8,17 @@ xfs_trans_ail_delete
 
 .. c:function:: void xfs_trans_ail_delete(struct xfs_ail *ailp, struct xfs_log_item *lip, int shutdown_type)
 
-    :param struct xfs_ail \*ailp:
+    :param ailp:
         *undescribed*
+    :type ailp: struct xfs_ail \*
 
-    :param struct xfs_log_item \*lip:
+    :param lip:
         *undescribed*
+    :type lip: struct xfs_log_item \*
 
-    :param int shutdown_type:
+    :param shutdown_type:
         *undescribed*
+    :type shutdown_type: int
 
 .. _`xfs_trans_ail_delete.description`:
 

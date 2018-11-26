@@ -313,8 +313,9 @@ scsw_is_tm
 
     check for transport mode scsw
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_tm.description`:
 
@@ -333,8 +334,9 @@ scsw_key
 
     return scsw key field
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_key.description`:
 
@@ -353,8 +355,9 @@ scsw_eswf
 
     return scsw eswf field
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_eswf.description`:
 
@@ -373,8 +376,9 @@ scsw_cc
 
     return scsw cc field
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cc.description`:
 
@@ -393,8 +397,9 @@ scsw_ectl
 
     return scsw ectl field
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_ectl.description`:
 
@@ -413,8 +418,9 @@ scsw_pno
 
     return scsw pno field
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_pno.description`:
 
@@ -433,8 +439,9 @@ scsw_fctl
 
     return scsw fctl field
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_fctl.description`:
 
@@ -453,8 +460,9 @@ scsw_actl
 
     return scsw actl field
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_actl.description`:
 
@@ -473,8 +481,9 @@ scsw_stctl
 
     return scsw stctl field
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_stctl.description`:
 
@@ -493,8 +502,9 @@ scsw_dstat
 
     return scsw dstat field
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_dstat.description`:
 
@@ -513,8 +523,9 @@ scsw_cstat
 
     return scsw cstat field
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cstat.description`:
 
@@ -533,8 +544,9 @@ scsw_cmd_is_valid_key
 
     check key field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_key.description`:
 
@@ -553,8 +565,9 @@ scsw_cmd_is_valid_sctl
 
     check sctl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_sctl.description`:
 
@@ -573,8 +586,9 @@ scsw_cmd_is_valid_eswf
 
     check eswf field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_eswf.description`:
 
@@ -593,8 +607,9 @@ scsw_cmd_is_valid_cc
 
     check cc field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_cc.description`:
 
@@ -613,8 +628,9 @@ scsw_cmd_is_valid_fmt
 
     check fmt field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_fmt.description`:
 
@@ -633,8 +649,9 @@ scsw_cmd_is_valid_pfch
 
     check pfch field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_pfch.description`:
 
@@ -653,8 +670,9 @@ scsw_cmd_is_valid_isic
 
     check isic field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_isic.description`:
 
@@ -673,8 +691,9 @@ scsw_cmd_is_valid_alcc
 
     check alcc field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_alcc.description`:
 
@@ -693,8 +712,9 @@ scsw_cmd_is_valid_ssi
 
     check ssi field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_ssi.description`:
 
@@ -713,8 +733,9 @@ scsw_cmd_is_valid_zcc
 
     check zcc field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_zcc.description`:
 
@@ -733,8 +754,9 @@ scsw_cmd_is_valid_ectl
 
     check ectl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_ectl.description`:
 
@@ -753,8 +775,9 @@ scsw_cmd_is_valid_pno
 
     check pno field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_pno.description`:
 
@@ -773,8 +796,9 @@ scsw_cmd_is_valid_fctl
 
     check fctl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_fctl.description`:
 
@@ -793,8 +817,9 @@ scsw_cmd_is_valid_actl
 
     check actl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_actl.description`:
 
@@ -813,8 +838,9 @@ scsw_cmd_is_valid_stctl
 
     check stctl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_stctl.description`:
 
@@ -833,8 +859,9 @@ scsw_cmd_is_valid_dstat
 
     check dstat field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_dstat.description`:
 
@@ -853,8 +880,9 @@ scsw_cmd_is_valid_cstat
 
     check cstat field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_valid_cstat.description`:
 
@@ -873,8 +901,9 @@ scsw_tm_is_valid_key
 
     check key field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_key.description`:
 
@@ -893,8 +922,9 @@ scsw_tm_is_valid_eswf
 
     check eswf field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_eswf.description`:
 
@@ -913,8 +943,9 @@ scsw_tm_is_valid_cc
 
     check cc field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_cc.description`:
 
@@ -933,8 +964,9 @@ scsw_tm_is_valid_fmt
 
     check fmt field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_fmt.description`:
 
@@ -953,8 +985,9 @@ scsw_tm_is_valid_x
 
     check x field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_x.description`:
 
@@ -973,8 +1006,9 @@ scsw_tm_is_valid_q
 
     check q field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_q.description`:
 
@@ -993,8 +1027,9 @@ scsw_tm_is_valid_ectl
 
     check ectl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_ectl.description`:
 
@@ -1013,8 +1048,9 @@ scsw_tm_is_valid_pno
 
     check pno field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_pno.description`:
 
@@ -1033,8 +1069,9 @@ scsw_tm_is_valid_fctl
 
     check fctl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_fctl.description`:
 
@@ -1053,8 +1090,9 @@ scsw_tm_is_valid_actl
 
     check actl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_actl.description`:
 
@@ -1073,8 +1111,9 @@ scsw_tm_is_valid_stctl
 
     check stctl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_stctl.description`:
 
@@ -1093,8 +1132,9 @@ scsw_tm_is_valid_dstat
 
     check dstat field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_dstat.description`:
 
@@ -1113,8 +1153,9 @@ scsw_tm_is_valid_cstat
 
     check cstat field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_cstat.description`:
 
@@ -1133,8 +1174,9 @@ scsw_tm_is_valid_fcxs
 
     check fcxs field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_fcxs.description`:
 
@@ -1153,8 +1195,9 @@ scsw_tm_is_valid_schxs
 
     check schxs field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_valid_schxs.description`:
 
@@ -1173,8 +1216,9 @@ scsw_is_valid_actl
 
     check actl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_valid_actl.description`:
 
@@ -1194,8 +1238,9 @@ scsw_is_valid_cc
 
     check cc field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_valid_cc.description`:
 
@@ -1215,8 +1260,9 @@ scsw_is_valid_cstat
 
     check cstat field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_valid_cstat.description`:
 
@@ -1236,8 +1282,9 @@ scsw_is_valid_dstat
 
     check dstat field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_valid_dstat.description`:
 
@@ -1257,8 +1304,9 @@ scsw_is_valid_ectl
 
     check ectl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_valid_ectl.description`:
 
@@ -1278,8 +1326,9 @@ scsw_is_valid_eswf
 
     check eswf field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_valid_eswf.description`:
 
@@ -1299,8 +1348,9 @@ scsw_is_valid_fctl
 
     check fctl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_valid_fctl.description`:
 
@@ -1320,8 +1370,9 @@ scsw_is_valid_key
 
     check key field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_valid_key.description`:
 
@@ -1341,8 +1392,9 @@ scsw_is_valid_pno
 
     check pno field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_valid_pno.description`:
 
@@ -1362,8 +1414,9 @@ scsw_is_valid_stctl
 
     check stctl field validity
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_valid_stctl.description`:
 
@@ -1383,8 +1436,9 @@ scsw_cmd_is_solicited
 
     check for solicited scsw
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_cmd_is_solicited.description`:
 
@@ -1403,8 +1457,9 @@ scsw_tm_is_solicited
 
     check for solicited scsw
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_tm_is_solicited.description`:
 
@@ -1423,8 +1478,9 @@ scsw_is_solicited
 
     check for solicited scsw
 
-    :param union scsw \*scsw:
+    :param scsw:
         pointer to scsw
+    :type scsw: union scsw \*
 
 .. _`scsw_is_solicited.description`:
 

@@ -10,11 +10,13 @@ e1000_raise_eec_clk
 
     Raise EEPROM clock
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*eecd:
+    :param eecd:
         pointer to the EEPROM
+    :type eecd: u32 \*
 
 .. _`e1000_raise_eec_clk.description`:
 
@@ -32,11 +34,13 @@ e1000_lower_eec_clk
 
     Lower EEPROM clock
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*eecd:
+    :param eecd:
         pointer to the EEPROM
+    :type eecd: u32 \*
 
 .. _`e1000_lower_eec_clk.description`:
 
@@ -54,14 +58,17 @@ e1000_shift_out_eec_bits
 
     Shift data bits our to the EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 data:
+    :param data:
         data to send to the EEPROM
+    :type data: u16
 
-    :param u16 count:
+    :param count:
         number of bits to shift out
+    :type count: u16
 
 .. _`e1000_shift_out_eec_bits.description`:
 
@@ -81,11 +88,13 @@ e1000_shift_in_eec_bits
 
     Shift data bits in from the EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 count:
+    :param count:
         number of bits to shift in
+    :type count: u16
 
 .. _`e1000_shift_in_eec_bits.description`:
 
@@ -107,11 +116,13 @@ e1000e_poll_eerd_eewr_done
 
     Poll for EEPROM read/write completion
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param int ee_reg:
+    :param ee_reg:
         EEPROM flag for polling
+    :type ee_reg: int
 
 .. _`e1000e_poll_eerd_eewr_done.description`:
 
@@ -130,8 +141,9 @@ e1000e_acquire_nvm
 
     Generic request for access to EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_acquire_nvm.description`:
 
@@ -151,8 +163,9 @@ e1000_standby_nvm
 
     Return EEPROM to standby state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_standby_nvm.description`:
 
@@ -170,8 +183,9 @@ e1000_stop_nvm
 
     Terminate EEPROM command
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_stop_nvm.description`:
 
@@ -189,8 +203,9 @@ e1000e_release_nvm
 
     Release exclusive access to EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_release_nvm.description`:
 
@@ -208,8 +223,9 @@ e1000_ready_nvm_eeprom
 
     Prepares EEPROM for read/write
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_ready_nvm_eeprom.description`:
 
@@ -227,17 +243,21 @@ e1000e_read_nvm_eerd
 
     Reads EEPROM using EERD register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of word in the EEPROM to read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to read
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the EEPROM
+    :type data: u16 \*
 
 .. _`e1000e_read_nvm_eerd.description`:
 
@@ -255,17 +275,21 @@ e1000e_write_nvm_spi
 
     Write to EEPROM using SPI
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be written to
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         16 bit word(s) to be written to the EEPROM
+    :type data: u16 \*
 
 .. _`e1000e_write_nvm_spi.description`:
 
@@ -286,14 +310,17 @@ e1000_read_pba_string_generic
 
     Read device part number
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*pba_num:
+    :param pba_num:
         pointer to device part number
+    :type pba_num: u8 \*
 
-    :param u32 pba_num_size:
+    :param pba_num_size:
         size of part number buffer
+    :type pba_num_size: u32
 
 .. _`e1000_read_pba_string_generic.description`:
 
@@ -312,8 +339,9 @@ e1000_read_mac_addr_generic
 
     Read device MAC address
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_read_mac_addr_generic.description`:
 
@@ -333,8 +361,9 @@ e1000e_validate_nvm_checksum_generic
 
     Validate EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_validate_nvm_checksum_generic.description`:
 
@@ -353,8 +382,9 @@ e1000e_update_nvm_checksum_generic
 
     Update EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_update_nvm_checksum_generic.description`:
 
@@ -374,8 +404,9 @@ e1000e_reload_nvm_generic
 
     Reloads EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_reload_nvm_generic.description`:
 

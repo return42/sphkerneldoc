@@ -10,11 +10,13 @@ media_device_register_entity
 
     Register an entity with a media device
 
-    :param struct media_device \*mdev:
+    :param mdev:
         The media device
+    :type mdev: struct media_device \*
 
-    :param struct media_entity \*entity:
+    :param entity:
         The entity
+    :type entity: struct media_entity \*
 
 .. _`media_device_init`:
 
@@ -25,8 +27,9 @@ media_device_init
 
     initialize a media device
 
-    :param struct media_device \*mdev:
+    :param mdev:
         The media device
+    :type mdev: struct media_device \*
 
 .. _`media_device_init.description`:
 

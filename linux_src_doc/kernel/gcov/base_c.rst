@@ -10,8 +10,9 @@ gcov_enable_events
 
     enable event reporting through \ :c:func:`gcov_event`\ 
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`gcov_enable_events.description`:
 

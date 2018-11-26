@@ -110,8 +110,9 @@ sysc_init_resets
 
     reset module on init
 
-    :param struct sysc \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct sysc \*
 
 .. _`sysc_init_resets.description`:
 
@@ -135,8 +136,9 @@ sysc_parse_and_check_child_range
 
     parses module IO region from ranges
 
-    :param struct sysc \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct sysc \*
 
 .. _`sysc_parse_and_check_child_range.description`:
 
@@ -157,11 +159,13 @@ sysc_check_one_child
 
     check child configuration
 
-    :param struct sysc \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct sysc \*
 
-    :param struct device_node \*np:
+    :param np:
         child device node
+    :type np: struct device_node \*
 
 .. _`sysc_check_one_child.description`:
 
@@ -181,11 +185,13 @@ sysc_parse_one
 
     parses the interconnect target module registers
 
-    :param struct sysc \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct sysc \*
 
-    :param enum sysc_registers reg:
+    :param reg:
         register to parse
+    :type reg: enum sysc_registers
 
 .. _`sysc_check_registers`:
 
@@ -196,8 +202,9 @@ sysc_check_registers
 
     check for misconfigured register overlaps
 
-    :param struct sysc \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct sysc \*
 
 .. _`sysc_ioremap`:
 
@@ -208,8 +215,9 @@ sysc_ioremap
 
     ioremap register space for the interconnect target module
 
-    :param struct sysc \*ddata:
-        deviec driver data
+    :param ddata:
+        device driver data
+    :type ddata: struct sysc \*
 
 .. _`sysc_ioremap.description`:
 
@@ -217,9 +225,11 @@ Description
 -----------
 
 Note that the interconnect target module registers can be anywhere
-within the first child device address space. For example, SGX has
-them at offset 0x1fc00 in the 32MB module address space. We just
-what we need around the interconnect target module registers.
+within the interconnect target module range. For example, SGX has
+them at offset 0x1fc00 in the 32MB module address space. And cpsw
+has them at offset 0x1200 in the CPSW_WR child. Usually the
+the interconnect target module registers are at the beginning of
+the module range though.
 
 .. _`sysc_map_and_check_registers`:
 
@@ -230,8 +240,9 @@ sysc_map_and_check_registers
 
     ioremap and check device registers
 
-    :param struct sysc \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct sysc \*
 
 .. _`sysc_show_rev`:
 
@@ -242,11 +253,13 @@ sysc_show_rev
 
     read and show interconnect target module revision
 
-    :param char \*bufp:
+    :param bufp:
         buffer to print the information to
+    :type bufp: char \*
 
-    :param struct sysc \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct sysc \*
 
 .. _`sysc_show_registers`:
 
@@ -257,8 +270,9 @@ sysc_show_registers
 
     show information about interconnect target module
 
-    :param struct sysc \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct sysc \*
 
 .. _`sysc_legacy_idle_quirk`:
 
@@ -269,11 +283,13 @@ sysc_legacy_idle_quirk
 
     handle children in omap_device compatible way
 
-    :param struct sysc \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct sysc \*
 
-    :param struct device \*child:
+    :param child:
         child device driver
+    :type child: struct device \*
 
 .. _`sysc_legacy_idle_quirk.description`:
 

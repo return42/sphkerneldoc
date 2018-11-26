@@ -10,8 +10,9 @@ pm_generic_runtime_suspend
 
     Generic runtime suspend callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
 .. _`pm_generic_runtime_suspend.description`:
 
@@ -31,8 +32,9 @@ pm_generic_runtime_resume
 
     Generic runtime resume callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to resume.
+    :type dev: struct device \*
 
 .. _`pm_generic_runtime_resume.description`:
 
@@ -52,8 +54,9 @@ pm_generic_prepare
 
     Generic routine preparing a device for power transition.
 
-    :param struct device \*dev:
+    :param dev:
         Device to prepare.
+    :type dev: struct device \*
 
 .. _`pm_generic_prepare.description`:
 
@@ -71,8 +74,9 @@ pm_generic_suspend_noirq
 
     Generic suspend_noirq callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
 .. _`pm_generic_suspend_late`:
 
@@ -83,8 +87,9 @@ pm_generic_suspend_late
 
     Generic suspend_late callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
 .. _`pm_generic_suspend`:
 
@@ -95,8 +100,9 @@ pm_generic_suspend
 
     Generic suspend callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
 .. _`pm_generic_freeze_noirq`:
 
@@ -107,8 +113,9 @@ pm_generic_freeze_noirq
 
     Generic freeze_noirq callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to freeze.
+    :type dev: struct device \*
 
 .. _`pm_generic_freeze_late`:
 
@@ -119,8 +126,9 @@ pm_generic_freeze_late
 
     Generic freeze_late callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to freeze.
+    :type dev: struct device \*
 
 .. _`pm_generic_freeze`:
 
@@ -131,8 +139,9 @@ pm_generic_freeze
 
     Generic freeze callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to freeze.
+    :type dev: struct device \*
 
 .. _`pm_generic_poweroff_noirq`:
 
@@ -143,8 +152,9 @@ pm_generic_poweroff_noirq
 
     Generic poweroff_noirq callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_generic_poweroff_late`:
 
@@ -155,8 +165,9 @@ pm_generic_poweroff_late
 
     Generic poweroff_late callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_generic_poweroff`:
 
@@ -167,8 +178,9 @@ pm_generic_poweroff
 
     Generic poweroff callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_generic_thaw_noirq`:
 
@@ -179,8 +191,9 @@ pm_generic_thaw_noirq
 
     Generic thaw_noirq callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to thaw.
+    :type dev: struct device \*
 
 .. _`pm_generic_thaw_early`:
 
@@ -191,8 +204,9 @@ pm_generic_thaw_early
 
     Generic thaw_early callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to thaw.
+    :type dev: struct device \*
 
 .. _`pm_generic_thaw`:
 
@@ -203,8 +217,9 @@ pm_generic_thaw
 
     Generic thaw callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to thaw.
+    :type dev: struct device \*
 
 .. _`pm_generic_resume_noirq`:
 
@@ -215,8 +230,9 @@ pm_generic_resume_noirq
 
     Generic resume_noirq callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to resume.
+    :type dev: struct device \*
 
 .. _`pm_generic_resume_early`:
 
@@ -227,8 +243,9 @@ pm_generic_resume_early
 
     Generic resume_early callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to resume.
+    :type dev: struct device \*
 
 .. _`pm_generic_resume`:
 
@@ -239,8 +256,9 @@ pm_generic_resume
 
     Generic resume callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to resume.
+    :type dev: struct device \*
 
 .. _`pm_generic_restore_noirq`:
 
@@ -251,8 +269,9 @@ pm_generic_restore_noirq
 
     Generic restore_noirq callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to restore.
+    :type dev: struct device \*
 
 .. _`pm_generic_restore_early`:
 
@@ -263,8 +282,9 @@ pm_generic_restore_early
 
     Generic restore_early callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to resume.
+    :type dev: struct device \*
 
 .. _`pm_generic_restore`:
 
@@ -275,8 +295,9 @@ pm_generic_restore
 
     Generic restore callback for subsystems.
 
-    :param struct device \*dev:
+    :param dev:
         Device to restore.
+    :type dev: struct device \*
 
 .. _`pm_generic_complete`:
 
@@ -287,8 +308,9 @@ pm_generic_complete
 
     Generic routine completing a device power transition.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`pm_generic_complete.description`:
 

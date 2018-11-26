@@ -19,8 +19,9 @@ drm_dp_update_payload_part1
 
     Execute payload update part 1
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager to use.
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
 .. _`drm_dp_update_payload_part1.description`:
 
@@ -45,8 +46,9 @@ drm_dp_update_payload_part2
 
     Execute payload update part 2
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager to use.
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
 .. _`drm_dp_update_payload_part2.description`:
 
@@ -67,11 +69,13 @@ drm_dp_mst_topology_mgr_set_mst
 
     Set the MST state for a topology manager
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager to set state for
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param bool mst_state:
+    :param mst_state:
         true to enable MST on this connector - false to disable.
+    :type mst_state: bool
 
 .. _`drm_dp_mst_topology_mgr_set_mst.description`:
 
@@ -90,8 +94,9 @@ drm_dp_mst_topology_mgr_suspend
 
     suspend the MST manager
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager to suspend
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
 .. _`drm_dp_mst_topology_mgr_suspend.description`:
 
@@ -110,8 +115,9 @@ drm_dp_mst_topology_mgr_resume
 
     resume the MST manager
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager to resume
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
 .. _`drm_dp_mst_topology_mgr_resume.description`:
 
@@ -133,14 +139,17 @@ drm_dp_mst_hpd_irq
 
     MST hotplug IRQ notify
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager to notify irq for.
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param u8 \*esi:
+    :param esi:
         4 bytes from SINK_COUNT_ESI
+    :type esi: u8 \*
 
-    :param bool \*handled:
+    :param handled:
         whether the hpd interrupt was consumed or not
+    :type handled: bool \*
 
 .. _`drm_dp_mst_hpd_irq.description`:
 
@@ -161,14 +170,17 @@ drm_dp_mst_detect_port
 
     get connection status for an MST port
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector for this port
+    :type connector: struct drm_connector \*
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager for this port
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param struct drm_dp_mst_port \*port:
+    :param port:
         unverified pointer to a port
+    :type port: struct drm_dp_mst_port \*
 
 .. _`drm_dp_mst_detect_port.description`:
 
@@ -187,11 +199,13 @@ drm_dp_mst_port_has_audio
 
     Check whether port has audio capability or not
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager for this port
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param struct drm_dp_mst_port \*port:
+    :param port:
         unverified pointer to a port.
+    :type port: struct drm_dp_mst_port \*
 
 .. _`drm_dp_mst_port_has_audio.description`:
 
@@ -209,14 +223,17 @@ drm_dp_mst_get_edid
 
     get EDID for an MST port
 
-    :param struct drm_connector \*connector:
+    :param connector:
         toplevel connector to get EDID for
+    :type connector: struct drm_connector \*
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager for this port
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param struct drm_dp_mst_port \*port:
+    :param port:
         unverified pointer to a port.
+    :type port: struct drm_dp_mst_port \*
 
 .. _`drm_dp_mst_get_edid.description`:
 
@@ -236,11 +253,13 @@ drm_dp_find_vcpi_slots
 
     find slots for this PBN value
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager to use
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param int pbn:
+    :param pbn:
         payload bandwidth to convert into slots.
+    :type pbn: int
 
 .. _`drm_dp_atomic_find_vcpi_slots`:
 
@@ -251,17 +270,21 @@ drm_dp_atomic_find_vcpi_slots
 
     Find and add vcpi slots to the state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         MST topology manager for the port
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param struct drm_dp_mst_port \*port:
+    :param port:
         port to find vcpi slots for
+    :type port: struct drm_dp_mst_port \*
 
-    :param int pbn:
+    :param pbn:
         bandwidth required for the mode in PBN
+    :type pbn: int
 
 .. _`drm_dp_atomic_find_vcpi_slots.return`:
 
@@ -279,14 +302,17 @@ drm_dp_atomic_release_vcpi_slots
 
     Release allocated vcpi slots
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         MST topology manager for the port
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param int slots:
+    :param slots:
         number of vcpi slots to release
+    :type slots: int
 
 .. _`drm_dp_atomic_release_vcpi_slots.return`:
 
@@ -305,17 +331,21 @@ drm_dp_mst_allocate_vcpi
 
     Allocate a virtual channel
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager for this port
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param struct drm_dp_mst_port \*port:
+    :param port:
         port to allocate a virtual channel for.
+    :type port: struct drm_dp_mst_port \*
 
-    :param int pbn:
+    :param pbn:
         payload bandwidth number to request
+    :type pbn: int
 
-    :param int slots:
+    :param slots:
         returned number of slots for this PBN.
+    :type slots: int
 
 .. _`drm_dp_mst_reset_vcpi_slots`:
 
@@ -326,11 +356,13 @@ drm_dp_mst_reset_vcpi_slots
 
     Reset number of slots to 0 for VCPI
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager for this port
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param struct drm_dp_mst_port \*port:
+    :param port:
         unverified pointer to a port.
+    :type port: struct drm_dp_mst_port \*
 
 .. _`drm_dp_mst_reset_vcpi_slots.description`:
 
@@ -348,11 +380,13 @@ drm_dp_mst_deallocate_vcpi
 
     deallocate a VCPI
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager for this port
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param struct drm_dp_mst_port \*port:
+    :param port:
         unverified port to deallocate vcpi for
+    :type port: struct drm_dp_mst_port \*
 
 .. _`drm_dp_check_act_status`:
 
@@ -363,8 +397,9 @@ drm_dp_check_act_status
 
     Check ACT handled status.
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager to use
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
 .. _`drm_dp_check_act_status.description`:
 
@@ -382,11 +417,13 @@ drm_dp_calc_pbn_mode
 
     Calculate the PBN for a mode.
 
-    :param int clock:
+    :param clock:
         dot clock for the mode
+    :type clock: int
 
-    :param int bpp:
+    :param bpp:
         bpp for the mode.
+    :type bpp: int
 
 .. _`drm_dp_calc_pbn_mode.description`:
 
@@ -404,11 +441,13 @@ drm_dp_mst_dump_topology
 
     dump topology to seq file.
 
-    :param struct seq_file \*m:
+    :param m:
         seq_file to dump output to
+    :type m: struct seq_file \*
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager to dump current topology for.
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
 .. _`drm_dp_mst_dump_topology.description`:
 
@@ -426,11 +465,13 @@ drm_atomic_get_mst_topology_state
 
     get MST topology state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         MST topology manager, also the private object in this case
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
 .. _`drm_atomic_get_mst_topology_state.description`:
 
@@ -459,23 +500,29 @@ drm_dp_mst_topology_mgr_init
 
     initialise a topology manager
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager struct to initialise
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
-    :param struct drm_device \*dev:
+    :param dev:
         device providing this structure - for i2c addition.
+    :type dev: struct drm_device \*
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DP helper aux channel to talk to this device
+    :type aux: struct drm_dp_aux \*
 
-    :param int max_dpcd_transaction_bytes:
+    :param max_dpcd_transaction_bytes:
         hw specific DPCD transaction limit
+    :type max_dpcd_transaction_bytes: int
 
-    :param int max_payloads:
+    :param max_payloads:
         maximum number of payloads this GPU can source
+    :type max_payloads: int
 
-    :param int conn_base_id:
+    :param conn_base_id:
         the connector object ID the MST device is connected to.
+    :type conn_base_id: int
 
 .. _`drm_dp_mst_topology_mgr_init.description`:
 
@@ -493,8 +540,9 @@ drm_dp_mst_topology_mgr_destroy
 
     destroy topology manager.
 
-    :param struct drm_dp_mst_topology_mgr \*mgr:
+    :param mgr:
         manager to destroy
+    :type mgr: struct drm_dp_mst_topology_mgr \*
 
 .. _`drm_dp_mst_register_i2c_bus`:
 
@@ -505,8 +553,9 @@ drm_dp_mst_register_i2c_bus
 
     register an I2C adapter for I2C-over-AUX
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
 .. _`drm_dp_mst_register_i2c_bus.description`:
 
@@ -524,8 +573,9 @@ drm_dp_mst_unregister_i2c_bus
 
     unregister an I2C-over-AUX adapter
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
 .. This file was automatic generated / don't edit.
 

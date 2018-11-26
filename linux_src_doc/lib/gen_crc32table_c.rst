@@ -10,11 +10,13 @@ crc32init_le_generic
 
     allocate and initialize LE table data
 
-    :param const uint32_t polynomial:
+    :param polynomial:
         *undescribed*
+    :type polynomial: const uint32_t
 
-    :param uint32_t tab:
+    :param tab:
         *undescribed*
+    :type tab: uint32_t
 
 .. _`crc32init_le_generic.description`:
 
@@ -33,8 +35,9 @@ crc32init_be
 
     allocate and initialize BE table data
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

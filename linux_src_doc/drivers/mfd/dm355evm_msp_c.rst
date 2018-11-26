@@ -10,11 +10,13 @@ dm355evm_msp_write
 
     Writes a register in dm355evm_msp
 
-    :param u8 value:
+    :param value:
         the value to be written
+    :type value: u8
 
-    :param u8 reg:
+    :param reg:
         register address
+    :type reg: u8
 
 .. _`dm355evm_msp_write.description`:
 
@@ -32,8 +34,9 @@ dm355evm_msp_read
 
     Reads a register from dm355evm_msp
 
-    :param u8 reg:
+    :param reg:
         register address
+    :type reg: u8
 
 .. _`dm355evm_msp_read.description`:
 

@@ -10,23 +10,29 @@ pci_read_legacy_io
 
     read byte(s) from legacy I/O port space
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject corresponding to file to read from
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         struct bin_attribute for this file
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer to store results
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         offset into legacy I/O port space
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         number of bytes to read
+    :type count: size_t
 
 .. _`pci_read_legacy_io.description`:
 
@@ -45,23 +51,29 @@ pci_write_legacy_io
 
     write byte(s) to legacy I/O port space
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject corresponding to file to read from
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         struct bin_attribute for this file
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer containing value to be written
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         offset into legacy I/O port space
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         number of bytes to write
+    :type count: size_t
 
 .. _`pci_write_legacy_io.description`:
 
@@ -80,17 +92,21 @@ pci_mmap_legacy_mem
 
     map legacy PCI memory into user memory space
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject corresponding to device to be mapped
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*attr:
+    :param attr:
         struct bin_attribute for this file
+    :type attr: struct bin_attribute \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         struct vm_area_struct passed to mmap
+    :type vma: struct vm_area_struct \*
 
 .. _`pci_mmap_legacy_mem.description`:
 
@@ -110,17 +126,21 @@ pci_mmap_legacy_io
 
     map legacy PCI IO into user memory space
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject corresponding to device to be mapped
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*attr:
+    :param attr:
         struct bin_attribute for this file
+    :type attr: struct bin_attribute \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         struct vm_area_struct passed to mmap
+    :type vma: struct vm_area_struct \*
 
 .. _`pci_mmap_legacy_io.description`:
 
@@ -140,11 +160,13 @@ pci_adjust_legacy_attr
 
     adjustment of legacy file attributes
 
-    :param struct pci_bus \*b:
+    :param b:
         bus to create files under
+    :type b: struct pci_bus \*
 
-    :param enum pci_mmap_state mmap_type:
+    :param mmap_type:
         I/O port or memory
+    :type mmap_type: enum pci_mmap_state
 
 .. _`pci_adjust_legacy_attr.description`:
 
@@ -162,8 +184,9 @@ pci_create_legacy_files
 
     create legacy I/O port and memory files
 
-    :param struct pci_bus \*b:
+    :param b:
         bus to create files under
+    :type b: struct pci_bus \*
 
 .. _`pci_create_legacy_files.description`:
 
@@ -186,17 +209,21 @@ pci_mmap_resource
 
     map a PCI resource into user memory space
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject for mapping
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*attr:
+    :param attr:
         struct bin_attribute for the file being mapped
+    :type attr: struct bin_attribute \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         struct vm_area_struct passed into the mmap
+    :type vma: struct vm_area_struct \*
 
-    :param int write_combine:
+    :param write_combine:
         1 for write_combine mapping
+    :type write_combine: int
 
 .. _`pci_mmap_resource.description`:
 
@@ -214,8 +241,9 @@ pci_remove_resource_files
 
     cleanup resource files
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         dev to cleanup
+    :type pdev: struct pci_dev \*
 
 .. _`pci_remove_resource_files.description`:
 
@@ -234,8 +262,9 @@ pci_create_resource_files
 
     create resource files in sysfs for \ ``dev``\ 
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         dev in question
+    :type pdev: struct pci_dev \*
 
 .. _`pci_create_resource_files.description`:
 
@@ -253,23 +282,29 @@ pci_write_rom
 
     used to enable access to the PCI ROM display
 
-    :param struct file \*filp:
+    :param filp:
         sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kernel object handle
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         struct bin_attribute for this file
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         user input
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         file offset
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         number of byte in input
+    :type count: size_t
 
 .. _`pci_write_rom.description`:
 
@@ -287,23 +322,29 @@ pci_read_rom
 
     read a PCI ROM
 
-    :param struct file \*filp:
+    :param filp:
         sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kernel object handle
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         struct bin_attribute for this file
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         where to put the data we read from the ROM
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         file offset
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         number of bytes to read
+    :type count: size_t
 
 .. _`pci_read_rom.description`:
 
@@ -322,8 +363,9 @@ pci_remove_sysfs_dev_files
 
     cleanup PCI specific sysfs files
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         device whose entries we should free
+    :type pdev: struct pci_dev \*
 
 .. _`pci_remove_sysfs_dev_files.description`:
 

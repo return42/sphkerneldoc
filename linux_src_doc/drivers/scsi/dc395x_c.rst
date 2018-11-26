@@ -10,8 +10,9 @@ set_safe_settings
 
     if the use_safe_settings option is set then set all values to the safe and slow values.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fix_settings`:
 
@@ -22,8 +23,9 @@ fix_settings
 
     reset any boot parameters which are out of range back to the default values.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`eeprom_index_to_delay`:
 
@@ -34,8 +36,9 @@ eeprom_index_to_delay
 
     Take the eeprom delay setting and convert it into a number of seconds.
 
-    :param struct NvRamType \*eeprom:
+    :param eeprom:
         The eeprom structure in which we find the delay index to map.
+    :type eeprom: struct NvRamType \*
 
 .. _`delay_to_eeprom_index`:
 
@@ -46,8 +49,9 @@ delay_to_eeprom_index
 
     Take a delay in seconds and return the closest eeprom index which will delay for at least that amount of seconds.
 
-    :param int delay:
+    :param delay:
         The delay, in seconds, to find the eeprom index for.
+    :type delay: int
 
 .. _`eeprom_override`:
 
@@ -58,8 +62,9 @@ eeprom_override
 
     Override the eeprom settings, in the provided eeprom structure, with values that have been set on the command line.
 
-    :param struct NvRamType \*eeprom:
+    :param eeprom:
         The eeprom data to override with command line options.
+    :type eeprom: struct NvRamType \*
 
 .. _`dc395x_queue_command_lck`:
 
@@ -70,8 +75,9 @@ dc395x_queue_command_lck
 
     queue scsi command passed from the mid layer, invoke 'done' on completion
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         pointer to scsi command object
+    :type cmd: struct scsi_cmnd \*
 
     :param void (\*done)(struct scsi_cmnd \*):
         function pointer to be invoked on completion
@@ -101,11 +107,13 @@ dc395x_handle_interrupt
 
     Handle an interrupt that has been confirmed to have been triggered for this card.
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         a pointer to the adpter control block
+    :type acb: struct AdapterCtlBlk \*
 
-    :param u16 scsi_status:
+    :param scsi_status:
         the status return when we checked the card
+    :type scsi_status: u16
 
 .. _`device_alloc`:
 
@@ -116,14 +124,17 @@ device_alloc
 
     Allocate a new device instance. This create the devices instance and sets up all the data items. The adapter instance is required to obtain confiuration information for this device. This does \*not\* add this device to the adapters device list.
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         The adapter to obtain configuration information from.
+    :type acb: struct AdapterCtlBlk \*
 
-    :param u8 target:
+    :param target:
         The target for the new device.
+    :type target: u8
 
-    :param u8 lun:
+    :param lun:
         The lun for the new device.
+    :type lun: u8
 
 .. _`device_alloc.description`:
 
@@ -141,11 +152,13 @@ adapter_add_device
 
     Adds the device instance to the adaptor instance.
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         The adapter device to be updated
+    :type acb: struct AdapterCtlBlk \*
 
-    :param struct DeviceCtlBlk \*dcb:
+    :param dcb:
         A newly created and initialised device instance to add.
+    :type dcb: struct DeviceCtlBlk \*
 
 .. _`adapter_remove_device`:
 
@@ -156,11 +169,13 @@ adapter_remove_device
 
     Removes the device instance from the adaptor instance. The device instance is not check in any way or freed by this. The caller is expected to take care of that. This will simply remove the device from the adapters data strcutures.
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         The adapter device to be updated
+    :type acb: struct AdapterCtlBlk \*
 
-    :param struct DeviceCtlBlk \*dcb:
+    :param dcb:
         A device that has previously been added to the adapter.
+    :type dcb: struct DeviceCtlBlk \*
 
 .. _`adapter_remove_and_free_device`:
 
@@ -171,23 +186,26 @@ adapter_remove_and_free_device
 
     Removes a single device from the adapter and then frees the device information.
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         The adapter device to be updated
+    :type acb: struct AdapterCtlBlk \*
 
-    :param struct DeviceCtlBlk \*dcb:
+    :param dcb:
         A device that has previously been added to the adapter.
+    :type dcb: struct DeviceCtlBlk \*
 
 .. _`adapter_remove_and_free_all_devices`:
 
 adapter_remove_and_free_all_devices
 ===================================
 
-.. c:function:: void adapter_remove_and_free_all_devices(struct AdapterCtlBlk*acb)
+.. c:function:: void adapter_remove_and_free_all_devices(struct AdapterCtlBlk* acb)
 
     Removes and frees all of the devices associated with the specified adapter.
 
-    :param struct AdapterCtlBlk\*acb:
+    :param acb:
         The adapter from which all devices should be removed.
+    :type acb: struct AdapterCtlBlk\*
 
 .. _`dc395x_slave_alloc`:
 
@@ -198,8 +216,9 @@ dc395x_slave_alloc
 
     Called by the scsi mid layer to tell us about a new scsi device that we need to deal with. We allocate a new device and then insert that device into the adapters device list.
 
-    :param struct scsi_device \*scsi_device:
+    :param scsi_device:
         The new scsi device that we need to handle.
+    :type scsi_device: struct scsi_device \*
 
 .. _`dc395x_slave_destroy`:
 
@@ -210,8 +229,9 @@ dc395x_slave_destroy
 
     Called by the scsi mid layer to tell us about a device that is going away.
 
-    :param struct scsi_device \*scsi_device:
+    :param scsi_device:
         The new scsi device that we need to handle.
+    :type scsi_device: struct scsi_device \*
 
 .. _`trms1040_wait_30us`:
 
@@ -222,8 +242,9 @@ trms1040_wait_30us
 
     wait for 30 us
 
-    :param unsigned long io_port:
+    :param io_port:
         base I/O address
+    :type io_port: unsigned long
 
 .. _`trms1040_wait_30us.description`:
 
@@ -241,14 +262,17 @@ trms1040_write_cmd
 
     write the secified command and address to chip
 
-    :param unsigned long io_port:
+    :param io_port:
         base I/O address
+    :type io_port: unsigned long
 
-    :param u8 cmd:
+    :param cmd:
         SB + op code (command) to send
+    :type cmd: u8
 
-    :param u8 addr:
+    :param addr:
         address to send
+    :type addr: u8
 
 .. _`trms1040_set_data`:
 
@@ -259,14 +283,17 @@ trms1040_set_data
 
     store a single byte in the eeprom
 
-    :param unsigned long io_port:
+    :param io_port:
         base I/O address
+    :type io_port: unsigned long
 
-    :param u8 addr:
+    :param addr:
         offset into EEPROM
+    :type addr: u8
 
-    :param u8 byte:
+    :param byte:
         bytes to write
+    :type byte: u8
 
 .. _`trms1040_set_data.description`:
 
@@ -285,11 +312,13 @@ trms1040_write_all
 
     write 128 bytes to the eeprom
 
-    :param struct NvRamType \*eeprom:
+    :param eeprom:
         the data to write
+    :type eeprom: struct NvRamType \*
 
-    :param unsigned long io_port:
+    :param io_port:
         the base io port
+    :type io_port: unsigned long
 
 .. _`trms1040_write_all.description`:
 
@@ -307,11 +336,13 @@ trms1040_get_data
 
     get a single byte from the eeprom
 
-    :param unsigned long io_port:
+    :param io_port:
         base I/O address
+    :type io_port: unsigned long
 
-    :param u8 addr:
+    :param addr:
         offset into SEEPROM
+    :type addr: u8
 
 .. _`trms1040_get_data.description`:
 
@@ -332,11 +363,13 @@ trms1040_read_all
 
     read all bytes from the eeprom
 
-    :param struct NvRamType \*eeprom:
+    :param eeprom:
         where to store the data
+    :type eeprom: struct NvRamType \*
 
-    :param unsigned long io_port:
+    :param io_port:
         the base io port
+    :type io_port: unsigned long
 
 .. _`trms1040_read_all.description`:
 
@@ -354,11 +387,13 @@ check_eeprom
 
     get and check contents of the eeprom
 
-    :param struct NvRamType \*eeprom:
+    :param eeprom:
         caller allocated strcuture to read the eeprom data into
+    :type eeprom: struct NvRamType \*
 
-    :param unsigned long io_port:
+    :param io_port:
         io port to read from
+    :type io_port: unsigned long
 
 .. _`check_eeprom.description`:
 
@@ -378,8 +413,9 @@ print_eeprom_settings
 
     output the eeprom settings to the kernel log so people can see what they were.
 
-    :param struct NvRamType \*eeprom:
+    :param eeprom:
         The eeprom data strucutre to show details for.
+    :type eeprom: struct NvRamType \*
 
 .. _`adapter_print_config`:
 
@@ -390,8 +426,9 @@ adapter_print_config
 
     print adapter connection and termination config
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         The adapter to print the information for.
+    :type acb: struct AdapterCtlBlk \*
 
 .. _`adapter_print_config.description`:
 
@@ -410,8 +447,9 @@ adapter_init_params
 
     Initialize the various parameters in the adapter structure. Note that the pointer to the scsi_host is set early (when this instance is created) and the io_port and irq values are set later after they have been reserved. This just gets everything set to a good starting position.
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         The adapter to initialize.
+    :type acb: struct AdapterCtlBlk \*
 
 .. _`adapter_init_params.description`:
 
@@ -430,8 +468,9 @@ adapter_init_scsi_host
 
     Initialize the scsi host instance based on values that we have already stored in the adapter instance. There's some mention that a lot of these are deprecated, so we won't use them (we'll use the ones in the adapter instance) but we'll fill them in in case something else needs them.
 
-    :param struct Scsi_Host \*host:
+    :param host:
         The scsi host instance to fill in the values for.
+    :type host: struct Scsi_Host \*
 
 .. _`adapter_init_scsi_host.description`:
 
@@ -450,8 +489,9 @@ adapter_init_chip
 
     Get the chip into a know state and figure out some of the settings that apply to this adapter.
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         The adapter which we are to init.
+    :type acb: struct AdapterCtlBlk \*
 
 .. _`adapter_init_chip.description`:
 
@@ -470,17 +510,21 @@ adapter_init
 
     Grab the resource for the card, setup the adapter information, set the card into a known state, create the various tables etc etc. This basically gets all adapter information all up to date, initialised and gets the chip in sync with it.
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         *undescribed*
+    :type acb: struct AdapterCtlBlk \*
 
-    :param unsigned long io_port:
+    :param io_port:
         The base I/O port
+    :type io_port: unsigned long
 
-    :param u32 io_port_len:
+    :param io_port_len:
         *undescribed*
+    :type io_port_len: u32
 
-    :param unsigned int irq:
+    :param irq:
         IRQ
+    :type irq: unsigned int
 
 .. _`adapter_init.description`:
 
@@ -499,8 +543,9 @@ adapter_uninit_chip
 
     cleanly shut down the scsi controller chip, stopping all operations and disabling interrupt generation on the card.
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         The adapter which we are to shutdown.
+    :type acb: struct AdapterCtlBlk \*
 
 .. _`adapter_uninit`:
 
@@ -511,8 +556,9 @@ adapter_uninit
 
     Shut down the chip and release any resources that we had allocated. Once this returns the adapter should not be used anymore.
 
-    :param struct AdapterCtlBlk \*acb:
+    :param acb:
         The adapter which we are to un-initialize.
+    :type acb: struct AdapterCtlBlk \*
 
 .. _`banner_display`:
 
@@ -523,8 +569,9 @@ banner_display
 
     Display banner on first instance of driver initialized.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dc395x_init_one`:
 
@@ -535,12 +582,14 @@ dc395x_init_one
 
     Initialise a single instance of the adapter.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         The PCI device to initialize.
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         Looks like a pointer to the entry in our pci device table
         that was actually matched by the PCI subsystem.
+    :type id: const struct pci_device_id \*
 
 .. _`dc395x_init_one.description`:
 
@@ -562,8 +611,9 @@ dc395x_remove_one
 
     Called to remove a single instance of the adapter.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         The PCI device to initialize.
+    :type dev: struct pci_dev \*
 
 .. _`dc395x_module_init`:
 
@@ -574,8 +624,9 @@ dc395x_module_init
 
     Module initialization function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dc395x_module_init.description`:
 
@@ -593,8 +644,9 @@ dc395x_module_exit
 
     Module cleanup function.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

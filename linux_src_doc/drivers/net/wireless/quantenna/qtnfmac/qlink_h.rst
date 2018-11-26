@@ -105,7 +105,11 @@ Definition
     enum qlink_hw_capab {
         QLINK_HW_CAPAB_REG_UPDATE,
         QLINK_HW_CAPAB_STA_INACT_TIMEOUT,
-        QLINK_HW_CAPAB_DFS_OFFLOAD
+        QLINK_HW_CAPAB_DFS_OFFLOAD,
+        QLINK_HW_CAPAB_SCAN_RANDOM_MAC_ADDR,
+        QLINK_HW_CAPAB_PWR_MGMT,
+        QLINK_HW_CAPAB_OBSS_SCAN,
+        QLINK_HW_CAPAB_SCAN_DWELL
     };
 
 .. _`qlink_hw_capab.constants`:
@@ -123,6 +127,19 @@ QLINK_HW_CAPAB_STA_INACT_TIMEOUT
 
 QLINK_HW_CAPAB_DFS_OFFLOAD
     device implements DFS offload functionality
+
+QLINK_HW_CAPAB_SCAN_RANDOM_MAC_ADDR
+    device supports MAC Address
+    Randomization in probe requests.
+
+QLINK_HW_CAPAB_PWR_MGMT
+    *undescribed*
+
+QLINK_HW_CAPAB_OBSS_SCAN
+    device can perform OBSS scanning.
+
+QLINK_HW_CAPAB_SCAN_DWELL
+    *undescribed*
 
 .. _`qlink_intf_info`:
 
@@ -366,7 +383,9 @@ Definition
         QLINK_CMD_SCAN,
         QLINK_CMD_CHAN_STATS,
         QLINK_CMD_CONNECT,
-        QLINK_CMD_DISCONNECT
+        QLINK_CMD_DISCONNECT,
+        QLINK_CMD_PM_SET,
+        QLINK_CMD_WOWLAN_SET
     };
 
 .. _`qlink_cmd_type.constants`:
@@ -474,6 +493,12 @@ QLINK_CMD_CONNECT
     *undescribed*
 
 QLINK_CMD_DISCONNECT
+    *undescribed*
+
+QLINK_CMD_PM_SET
+    *undescribed*
+
+QLINK_CMD_WOWLAN_SET
     *undescribed*
 
 .. _`qlink_cmd_type.description`:
@@ -1571,6 +1596,145 @@ num_entries
 mac_addrs
     *undescribed*
 
+.. _`qlink_pm_mode`:
+
+enum qlink_pm_mode
+==================
+
+.. c:type:: enum qlink_pm_mode
+
+    Power Management mode
+
+.. _`qlink_pm_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_pm_mode {
+        QLINK_PM_OFF,
+        QLINK_PM_AUTO_STANDBY
+    };
+
+.. _`qlink_pm_mode.constants`:
+
+Constants
+---------
+
+QLINK_PM_OFF
+    normal mode, no power saving enabled
+
+QLINK_PM_AUTO_STANDBY
+    enable auto power save mode
+
+.. _`qlink_cmd_pm_set`:
+
+struct qlink_cmd_pm_set
+=======================
+
+.. c:type:: struct qlink_cmd_pm_set
+
+    data for QLINK_CMD_PM_SET command
+
+.. _`qlink_cmd_pm_set.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_pm_set {
+        struct qlink_cmd chdr;
+        __le32 pm_standby_timer;
+        u8 pm_mode;
+    }
+
+.. _`qlink_cmd_pm_set.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+pm_standby_timer
+    *undescribed*
+
+pm_mode
+    power management mode
+
+.. _`qlink_wowlan_trigger`:
+
+enum qlink_wowlan_trigger
+=========================
+
+.. c:type:: enum qlink_wowlan_trigger
+
+
+.. _`qlink_wowlan_trigger.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_wowlan_trigger {
+        QLINK_WOWLAN_TRIG_DISCONNECT,
+        QLINK_WOWLAN_TRIG_MAGIC_PKT,
+        QLINK_WOWLAN_TRIG_PATTERN_PKT
+    };
+
+.. _`qlink_wowlan_trigger.constants`:
+
+Constants
+---------
+
+QLINK_WOWLAN_TRIG_DISCONNECT
+    wakeup on disconnect
+
+QLINK_WOWLAN_TRIG_MAGIC_PKT
+    wakeup on magic packet
+
+QLINK_WOWLAN_TRIG_PATTERN_PKT
+    wakeup on user-defined packet
+
+.. _`qlink_cmd_wowlan_set`:
+
+struct qlink_cmd_wowlan_set
+===========================
+
+.. c:type:: struct qlink_cmd_wowlan_set
+
+    data for QLINK_CMD_WOWLAN_SET command
+
+.. _`qlink_cmd_wowlan_set.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_wowlan_set {
+        struct qlink_cmd chdr;
+        __le32 triggers;
+        u8 data[0];
+    }
+
+.. _`qlink_cmd_wowlan_set.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+triggers
+    requested bitmask of WoWLAN triggers
+
+data
+    *undescribed*
+
 .. _`qlink_resp`:
 
 struct qlink_resp
@@ -2567,7 +2731,13 @@ Definition
         QTN_TLV_ID_BUILD_LABEL,
         QTN_TLV_ID_HW_ID,
         QTN_TLV_ID_CALIBRATION_VER,
-        QTN_TLV_ID_UBOOT_VER
+        QTN_TLV_ID_UBOOT_VER,
+        QTN_TLV_ID_RANDOM_MAC_ADDR,
+        QTN_TLV_ID_MAX_SCAN_SSIDS,
+        QTN_TLV_ID_WOWLAN_CAPAB,
+        QTN_TLV_ID_WOWLAN_PATTERN,
+        QTN_TLV_ID_SCAN_FLUSH,
+        QTN_TLV_ID_SCAN_DWELL
     };
 
 .. _`qlink_tlv_id.constants`:
@@ -2651,6 +2821,25 @@ QTN_TLV_ID_CALIBRATION_VER
     *undescribed*
 
 QTN_TLV_ID_UBOOT_VER
+    *undescribed*
+
+QTN_TLV_ID_RANDOM_MAC_ADDR
+    *undescribed*
+
+QTN_TLV_ID_MAX_SCAN_SSIDS
+    maximum number of SSIDs the device can scan
+    for in any given scan.
+
+QTN_TLV_ID_WOWLAN_CAPAB
+    *undescribed*
+
+QTN_TLV_ID_WOWLAN_PATTERN
+    *undescribed*
+
+QTN_TLV_ID_SCAN_FLUSH
+    *undescribed*
+
+QTN_TLV_ID_SCAN_DWELL
     *undescribed*
 
 .. _`qlink_reg_rule_flags`:
@@ -3220,6 +3409,128 @@ Carries statistics of a STA. Not all fields may be filled with
 valid values. Valid fields should be indicated as such using a bitmap of
 \ :c:type:`enum qlink_sta_info <qlink_sta_info>`\ . Bitmap is carried separately in a payload of
 QTN_TLV_ID_STA_STATS_MAP.
+
+.. _`qlink_random_mac_addr`:
+
+struct qlink_random_mac_addr
+============================
+
+.. c:type:: struct qlink_random_mac_addr
+
+    data for QTN_TLV_ID_RANDOM_MAC_ADDR TLV
+
+.. _`qlink_random_mac_addr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_random_mac_addr {
+        u8 mac_addr[ETH_ALEN];
+        u8 mac_addr_mask[ETH_ALEN];
+    }
+
+.. _`qlink_random_mac_addr.members`:
+
+Members
+-------
+
+mac_addr
+    MAC address used with randomisation
+
+mac_addr_mask
+    MAC address mask used with randomisation, bits that
+    are 0 in the mask should be randomised, bits that are 1 should
+    be taken from the \ ``mac_addr``\ 
+
+.. _`qlink_random_mac_addr.description`:
+
+Description
+-----------
+
+Specifies MAC address mask/value for generation random MAC address
+during scan.
+
+.. _`qlink_wowlan_capab_data`:
+
+struct qlink_wowlan_capab_data
+==============================
+
+.. c:type:: struct qlink_wowlan_capab_data
+
+    data for QTN_TLV_ID_WOWLAN_CAPAB TLV
+
+.. _`qlink_wowlan_capab_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_wowlan_capab_data {
+        __le16 version;
+        __le16 len;
+        u8 data[0];
+    }
+
+.. _`qlink_wowlan_capab_data.members`:
+
+Members
+-------
+
+version
+    version of WoWLAN data structure, to ensure backward
+    compatibility for firmwares with limited WoWLAN support
+
+len
+    Total length of WoWLAN data
+
+data
+    supported WoWLAN features
+
+.. _`qlink_wowlan_capab_data.description`:
+
+Description
+-----------
+
+WoWLAN capabilities supported by cards.
+
+.. _`qlink_wowlan_support`:
+
+struct qlink_wowlan_support
+===========================
+
+.. c:type:: struct qlink_wowlan_support
+
+    supported WoWLAN capabilities
+
+.. _`qlink_wowlan_support.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_wowlan_support {
+        __le32 n_patterns;
+        __le32 pattern_max_len;
+        __le32 pattern_min_len;
+    }
+
+.. _`qlink_wowlan_support.members`:
+
+Members
+-------
+
+n_patterns
+    number of supported wakeup patterns
+
+pattern_max_len
+    maximum length of each pattern
+
+pattern_min_len
+    minimum length of each pattern
 
 .. This file was automatic generated / don't edit.
 

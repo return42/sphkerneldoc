@@ -10,8 +10,9 @@ munlock_vma_page
 
     munlock a vma page
 
-    :param struct page \*page:
+    :param page:
         page to be unlocked, either a normal page or THP page head
+    :type page: struct page \*
 
 .. _`munlock_vma_page.description`:
 

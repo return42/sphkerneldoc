@@ -10,8 +10,9 @@ ntfs_mark_quotas_out_of_date
 
     mark the quotas out of date on an ntfs volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume on which to mark the quotas out of date
+    :type vol: ntfs_volume \*
 
 .. _`ntfs_mark_quotas_out_of_date.description`:
 

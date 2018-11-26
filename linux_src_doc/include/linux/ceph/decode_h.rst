@@ -10,17 +10,21 @@ ceph_start_encoding
 
     start encoding block
 
-    :param void \*\*p:
+    :param p:
         *undescribed*
+    :type p: void \*\*
 
-    :param u8 struct_v:
+    :param struct_v:
         current (code) version of the encoding
+    :type struct_v: u8
 
-    :param u8 struct_compat:
+    :param struct_compat:
         oldest code version that can decode it
+    :type struct_compat: u8
 
-    :param u32 struct_len:
+    :param struct_len:
         length of struct encoding
+    :type struct_len: u32
 
 .. _`ceph_start_decoding`:
 
@@ -31,23 +35,29 @@ ceph_start_decoding
 
     start decoding block
 
-    :param void \*\*p:
+    :param p:
         *undescribed*
+    :type p: void \*\*
 
-    :param void \*end:
+    :param end:
         *undescribed*
+    :type end: void \*
 
-    :param u8 v:
+    :param v:
         current version of the encoding that the code supports
+    :type v: u8
 
-    :param const char \*name:
+    :param name:
         name of the struct (free-form)
+    :type name: const char \*
 
-    :param u8 \*struct_v:
+    :param struct_v:
         out param for the encoding version
+    :type struct_v: u8 \*
 
-    :param u32 \*struct_len:
+    :param struct_len:
         out param for the length of struct encoding
+    :type struct_len: u32 \*
 
 .. _`ceph_start_decoding.description`:
 

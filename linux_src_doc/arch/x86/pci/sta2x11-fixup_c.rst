@@ -10,11 +10,13 @@ p2a
 
     Translate physical address to STA2x11 AMBA address, used for DMA transfers to STA2x11
 
-    :param dma_addr_t p:
+    :param p:
         Physical address
+    :type p: dma_addr_t
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device (must be hosted within the connext)
+    :type pdev: struct pci_dev \*
 
 .. _`a2p`:
 
@@ -25,11 +27,13 @@ a2p
 
     Translate STA2x11 AMBA address to physical address used for DMA transfers from STA2x11
 
-    :param dma_addr_t a:
+    :param a:
         STA2x11 AMBA address
+    :type a: dma_addr_t
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device (must be hosted within the connext)
+    :type pdev: struct pci_dev \*
 
 .. _`dma_capable`:
 
@@ -40,14 +44,17 @@ dma_capable
 
     Check if device can manage DMA transfers (FIXME: kill it)
 
-    :param struct device \*dev:
+    :param dev:
         device for a PCI device
+    :type dev: struct device \*
 
-    :param dma_addr_t addr:
+    :param addr:
         DMA address
+    :type addr: dma_addr_t
 
-    :param size_t size:
+    :param size:
         DMA size
+    :type size: size_t
 
 .. _`__phys_to_dma`:
 
@@ -58,11 +65,13 @@ dma_capable
 
     Return the DMA AMBA address used for this STA2x11 device
 
-    :param struct device \*dev:
+    :param dev:
         device for a PCI device
+    :type dev: struct device \*
 
-    :param phys_addr_t paddr:
+    :param paddr:
         Physical address
+    :type paddr: phys_addr_t
 
 .. _`__dma_to_phys`:
 
@@ -73,11 +82,13 @@ dma_capable
 
     Return the physical address used for this STA2x11 DMA address
 
-    :param struct device \*dev:
+    :param dev:
         device for a PCI device
+    :type dev: struct device \*
 
-    :param dma_addr_t daddr:
+    :param daddr:
         STA2x11 AMBA DMA address
+    :type daddr: dma_addr_t
 
 .. This file was automatic generated / don't edit.
 

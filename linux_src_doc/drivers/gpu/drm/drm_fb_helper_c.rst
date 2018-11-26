@@ -11,6 +11,9 @@ mode setting driver. They can be used mostly independently from the crtc
 helper functions used by many drivers to implement the kernel mode setting
 interfaces.
 
+Drivers that support a dumb buffer with a virtual address and mmap support,
+should try out the generic fbdev emulation using \ :c:func:`drm_fbdev_generic_setup`\ .
+
 Setup fbdev emulation by calling \ :c:func:`drm_fb_helper_fbdev_setup`\  and tear it
 down by calling \ :c:func:`drm_fb_helper_fbdev_teardown`\ .
 
@@ -64,8 +67,9 @@ drm_fb_helper_single_add_all_connectors
 
     add all connectors to fbdev emulation helper
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         fbdev initialized with drm_fb_helper_init, can be NULL
+    :type fb_helper: struct drm_fb_helper \*
 
 .. _`drm_fb_helper_single_add_all_connectors.description`:
 
@@ -90,8 +94,9 @@ drm_fb_helper_debug_enter
 
     implementation for \ :c:type:`fb_ops.fb_debug_enter <fb_ops>`\ 
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
 .. _`drm_fb_helper_debug_leave`:
 
@@ -102,8 +107,9 @@ drm_fb_helper_debug_leave
 
     implementation for \ :c:type:`fb_ops.fb_debug_leave <fb_ops>`\ 
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
 .. _`drm_fb_helper_restore_fbdev_mode_unlocked`:
 
@@ -114,8 +120,9 @@ drm_fb_helper_restore_fbdev_mode_unlocked
 
     restore fbdev configuration
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         driver-allocated fbdev helper, can be NULL
+    :type fb_helper: struct drm_fb_helper \*
 
 .. _`drm_fb_helper_restore_fbdev_mode_unlocked.description`:
 
@@ -142,11 +149,13 @@ drm_fb_helper_blank
 
     implementation for \ :c:type:`fb_ops.fb_blank <fb_ops>`\ 
 
-    :param int blank:
+    :param blank:
         desired blanking state
+    :type blank: int
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
 .. _`drm_fb_helper_prepare`:
 
@@ -157,14 +166,17 @@ drm_fb_helper_prepare
 
     setup a drm_fb_helper structure
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_fb_helper \*helper:
+    :param helper:
         driver-allocated fbdev helper structure to set up
+    :type helper: struct drm_fb_helper \*
 
-    :param const struct drm_fb_helper_funcs \*funcs:
+    :param funcs:
         pointer to structure of functions associate with this helper
+    :type funcs: const struct drm_fb_helper_funcs \*
 
 .. _`drm_fb_helper_prepare.description`:
 
@@ -183,14 +195,17 @@ drm_fb_helper_init
 
     initialize a \ :c:type:`struct drm_fb_helper <drm_fb_helper>`\ 
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         driver-allocated fbdev helper structure to initialize
+    :type fb_helper: struct drm_fb_helper \*
 
-    :param int max_conn_count:
+    :param max_conn_count:
         max connector count
+    :type max_conn_count: int
 
 .. _`drm_fb_helper_init.description`:
 
@@ -220,8 +235,9 @@ drm_fb_helper_alloc_fbi
 
     allocate fb_info and some of its members
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         driver-allocated fbdev helper
+    :type fb_helper: struct drm_fb_helper \*
 
 .. _`drm_fb_helper_alloc_fbi.description`:
 
@@ -250,8 +266,9 @@ drm_fb_helper_unregister_fbi
 
     unregister fb_info framebuffer device
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         driver-allocated fbdev helper, can be NULL
+    :type fb_helper: struct drm_fb_helper \*
 
 .. _`drm_fb_helper_unregister_fbi.description`:
 
@@ -271,8 +288,9 @@ drm_fb_helper_fini
 
     finialize a \ :c:type:`struct drm_fb_helper <drm_fb_helper>`\ 
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         driver-allocated fbdev helper, can be NULL
+    :type fb_helper: struct drm_fb_helper \*
 
 .. _`drm_fb_helper_fini.description`:
 
@@ -291,8 +309,9 @@ drm_fb_helper_unlink_fbi
 
     wrapper around unlink_framebuffer
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         driver-allocated fbdev helper, can be NULL
+    :type fb_helper: struct drm_fb_helper \*
 
 .. _`drm_fb_helper_unlink_fbi.description`:
 
@@ -310,11 +329,13 @@ drm_fb_helper_deferred_io
 
     fbdev deferred_io callback function
 
-    :param struct fb_info \*info:
+    :param info:
         fb_info struct pointer
+    :type info: struct fb_info \*
 
-    :param struct list_head \*pagelist:
+    :param pagelist:
         list of dirty mmap framebuffer pages
+    :type pagelist: struct list_head \*
 
 .. _`drm_fb_helper_deferred_io.description`:
 
@@ -333,8 +354,9 @@ drm_fb_helper_defio_init
 
     fbdev deferred I/O initialization
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         driver-allocated fbdev helper
+    :type fb_helper: struct drm_fb_helper \*
 
 .. _`drm_fb_helper_defio_init.description`:
 
@@ -371,17 +393,21 @@ drm_fb_helper_sys_read
 
     wrapper around fb_sys_read
 
-    :param struct fb_info \*info:
+    :param info:
         fb_info struct pointer
+    :type info: struct fb_info \*
 
-    :param char __user \*buf:
+    :param buf:
         userspace buffer to read from framebuffer memory
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to read from framebuffer memory
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         read offset within framebuffer memory
+    :type ppos: loff_t \*
 
 .. _`drm_fb_helper_sys_read.description`:
 
@@ -399,17 +425,21 @@ drm_fb_helper_sys_write
 
     wrapper around fb_sys_write
 
-    :param struct fb_info \*info:
+    :param info:
         fb_info struct pointer
+    :type info: struct fb_info \*
 
-    :param const char __user \*buf:
+    :param buf:
         userspace buffer to write to framebuffer memory
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to write to framebuffer memory
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         write offset within framebuffer memory
+    :type ppos: loff_t \*
 
 .. _`drm_fb_helper_sys_write.description`:
 
@@ -427,11 +457,13 @@ drm_fb_helper_sys_fillrect
 
     wrapper around sys_fillrect
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
-    :param const struct fb_fillrect \*rect:
+    :param rect:
         info about rectangle to fill
+    :type rect: const struct fb_fillrect \*
 
 .. _`drm_fb_helper_sys_fillrect.description`:
 
@@ -449,11 +481,13 @@ drm_fb_helper_sys_copyarea
 
     wrapper around sys_copyarea
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
-    :param const struct fb_copyarea \*area:
+    :param area:
         info about area to copy
+    :type area: const struct fb_copyarea \*
 
 .. _`drm_fb_helper_sys_copyarea.description`:
 
@@ -471,11 +505,13 @@ drm_fb_helper_sys_imageblit
 
     wrapper around sys_imageblit
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
-    :param const struct fb_image \*image:
+    :param image:
         info about image to blit
+    :type image: const struct fb_image \*
 
 .. _`drm_fb_helper_sys_imageblit.description`:
 
@@ -493,18 +529,20 @@ drm_fb_helper_cfb_fillrect
 
     wrapper around cfb_fillrect
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
-    :param const struct fb_fillrect \*rect:
+    :param rect:
         info about rectangle to fill
+    :type rect: const struct fb_fillrect \*
 
 .. _`drm_fb_helper_cfb_fillrect.description`:
 
 Description
 -----------
 
-A wrapper around cfb_imageblit implemented by fbdev core
+A wrapper around cfb_fillrect implemented by fbdev core
 
 .. _`drm_fb_helper_cfb_copyarea`:
 
@@ -515,11 +553,13 @@ drm_fb_helper_cfb_copyarea
 
     wrapper around cfb_copyarea
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
-    :param const struct fb_copyarea \*area:
+    :param area:
         info about area to copy
+    :type area: const struct fb_copyarea \*
 
 .. _`drm_fb_helper_cfb_copyarea.description`:
 
@@ -537,11 +577,13 @@ drm_fb_helper_cfb_imageblit
 
     wrapper around cfb_imageblit
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
-    :param const struct fb_image \*image:
+    :param image:
         info about image to blit
+    :type image: const struct fb_image \*
 
 .. _`drm_fb_helper_cfb_imageblit.description`:
 
@@ -559,11 +601,13 @@ drm_fb_helper_set_suspend
 
     wrapper around fb_set_suspend
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         driver-allocated fbdev helper, can be NULL
+    :type fb_helper: struct drm_fb_helper \*
 
-    :param bool suspend:
+    :param suspend:
         whether to suspend or resume
+    :type suspend: bool
 
 .. _`drm_fb_helper_set_suspend.description`:
 
@@ -583,11 +627,13 @@ drm_fb_helper_set_suspend_unlocked
 
     wrapper around fb_set_suspend that also takes the console lock
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         driver-allocated fbdev helper, can be NULL
+    :type fb_helper: struct drm_fb_helper \*
 
-    :param bool suspend:
+    :param suspend:
         whether to suspend or resume
+    :type suspend: bool
 
 .. _`drm_fb_helper_set_suspend_unlocked.description`:
 
@@ -613,11 +659,13 @@ drm_fb_helper_setcmap
 
     implementation for \ :c:type:`fb_ops.fb_setcmap <fb_ops>`\ 
 
-    :param struct fb_cmap \*cmap:
+    :param cmap:
         cmap to set
+    :type cmap: struct fb_cmap \*
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
 .. _`drm_fb_helper_ioctl`:
 
@@ -628,14 +676,17 @@ drm_fb_helper_ioctl
 
     legacy ioctl implementation
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         ioctl argument
+    :type arg: unsigned long
 
 .. _`drm_fb_helper_ioctl.description`:
 
@@ -654,11 +705,13 @@ drm_fb_helper_check_var
 
     implementation for \ :c:type:`fb_ops.fb_check_var <fb_ops>`\ 
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         screeninfo to check
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
 .. _`drm_fb_helper_set_par`:
 
@@ -669,8 +722,9 @@ drm_fb_helper_set_par
 
     implementation for \ :c:type:`fb_ops.fb_set_par <fb_ops>`\ 
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
 .. _`drm_fb_helper_set_par.description`:
 
@@ -690,11 +744,13 @@ drm_fb_helper_pan_display
 
     implementation for \ :c:type:`fb_ops.fb_pan_display <fb_ops>`\ 
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         updated screen information
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
 .. _`drm_fb_helper_fill_fix`:
 
@@ -705,14 +761,17 @@ drm_fb_helper_fill_fix
 
     initializes fixed fbdev information
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev registered by the helper
+    :type info: struct fb_info \*
 
-    :param uint32_t pitch:
+    :param pitch:
         desired pitch
+    :type pitch: uint32_t
 
-    :param uint32_t depth:
+    :param depth:
         desired depth
+    :type depth: uint32_t
 
 .. _`drm_fb_helper_fill_fix.description`:
 
@@ -735,17 +794,21 @@ drm_fb_helper_fill_var
 
     initalizes variable fbdev information
 
-    :param struct fb_info \*info:
+    :param info:
         fbdev instance to set up
+    :type info: struct fb_info \*
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         fb helper instance to use as template
+    :type fb_helper: struct drm_fb_helper \*
 
-    :param uint32_t fb_width:
+    :param fb_width:
         desired fb width
+    :type fb_width: uint32_t
 
-    :param uint32_t fb_height:
+    :param fb_height:
         desired fb height
+    :type fb_height: uint32_t
 
 .. _`drm_fb_helper_fill_var.description`:
 
@@ -768,11 +831,13 @@ drm_fb_helper_initial_config
 
     setup a sane initial connector configuration
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         fb_helper device struct
+    :type fb_helper: struct drm_fb_helper \*
 
-    :param int bpp_sel:
+    :param bpp_sel:
         bpp value to use for the framebuffer configuration
+    :type bpp_sel: int
 
 .. _`drm_fb_helper_initial_config.description`:
 
@@ -833,8 +898,9 @@ drm_fb_helper_hotplug_event
 
     respond to a hotplug notification by probing all the outputs attached to the fb
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         driver-allocated fbdev helper, can be NULL
+    :type fb_helper: struct drm_fb_helper \*
 
 .. _`drm_fb_helper_hotplug_event.description`:
 
@@ -870,22 +936,27 @@ drm_fb_helper_fbdev_setup
 
     Setup fbdev emulation
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_fb_helper \*fb_helper:
+    :param fb_helper:
         fbdev helper structure to set up
+    :type fb_helper: struct drm_fb_helper \*
 
-    :param const struct drm_fb_helper_funcs \*funcs:
+    :param funcs:
         fbdev helper functions
+    :type funcs: const struct drm_fb_helper_funcs \*
 
-    :param unsigned int preferred_bpp:
+    :param preferred_bpp:
         Preferred bits per pixel for the device.
-        \ ``dev``\ ->mode_config.preferred_depth is used if this is zero.
+        \ ``dev->mode_config.preferred_depth``\  is used if this is zero.
+    :type preferred_bpp: unsigned int
 
-    :param unsigned int max_conn_count:
+    :param max_conn_count:
         Maximum number of connectors.
-        \ ``dev``\ ->mode_config.num_connector is used if this is zero.
+        \ ``dev->mode_config.num_connector``\  is used if this is zero.
+    :type max_conn_count: unsigned int
 
 .. _`drm_fb_helper_fbdev_setup.description`:
 
@@ -898,7 +969,9 @@ time \ :c:func:`drm_fb_helper_hotplug_event`\  is called.
 The caller must to provide a \ :c:type:`drm_fb_helper_funcs->fb_probe <drm_fb_helper_funcs>`\  callback
 function.
 
-See also: \ :c:func:`drm_fb_helper_initial_config`\ 
+Use \ :c:func:`drm_fb_helper_fbdev_teardown`\  to destroy the fbdev.
+
+See also: \ :c:func:`drm_fb_helper_initial_config`\ , \ :c:func:`drm_fbdev_generic_setup`\ .
 
 .. _`drm_fb_helper_fbdev_setup.return`:
 
@@ -916,8 +989,9 @@ drm_fb_helper_fbdev_teardown
 
     Tear down fbdev emulation
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_fb_helper_fbdev_teardown.description`:
 
@@ -944,8 +1018,9 @@ drm_fb_helper_lastclose
 
     DRM driver lastclose helper for fbdev emulation
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_fb_helper_lastclose.description`:
 
@@ -964,8 +1039,9 @@ drm_fb_helper_output_poll_changed
 
     DRM mode config \.output_poll_changed helper for fbdev emulation
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_fb_helper_output_poll_changed.description`:
 
@@ -975,6 +1051,87 @@ Description
 This function can be used as the
 \ :c:type:`drm_mode_config_funcs.output_poll_changed <drm_mode_config_funcs>`\  callback for drivers that only
 need to call \ :c:func:`drm_fb_helper_hotplug_event`\ .
+
+.. _`drm_fb_helper_generic_probe`:
+
+drm_fb_helper_generic_probe
+===========================
+
+.. c:function:: int drm_fb_helper_generic_probe(struct drm_fb_helper *fb_helper, struct drm_fb_helper_surface_size *sizes)
+
+    Generic fbdev emulation probe helper
+
+    :param fb_helper:
+        fbdev helper structure
+    :type fb_helper: struct drm_fb_helper \*
+
+    :param sizes:
+        describes fbdev size and scanout surface size
+    :type sizes: struct drm_fb_helper_surface_size \*
+
+.. _`drm_fb_helper_generic_probe.description`:
+
+Description
+-----------
+
+This function uses the client API to create a framebuffer backed by a dumb buffer.
+
+The _sys_ versions are used for \ :c:type:`fb_ops.fb_read <fb_ops>`\ , fb_write, fb_fillrect,
+fb_copyarea, fb_imageblit.
+
+.. _`drm_fb_helper_generic_probe.return`:
+
+Return
+------
+
+Zero on success or negative error code on failure.
+
+.. _`drm_fbdev_generic_setup`:
+
+drm_fbdev_generic_setup
+=======================
+
+.. c:function:: int drm_fbdev_generic_setup(struct drm_device *dev, unsigned int preferred_bpp)
+
+    Setup generic fbdev emulation
+
+    :param dev:
+        DRM device
+    :type dev: struct drm_device \*
+
+    :param preferred_bpp:
+        Preferred bits per pixel for the device.
+        \ ``dev->mode_config.preferred_depth``\  is used if this is zero.
+    :type preferred_bpp: unsigned int
+
+.. _`drm_fbdev_generic_setup.description`:
+
+Description
+-----------
+
+This function sets up generic fbdev emulation for drivers that supports
+dumb buffers with a virtual address and that can be mmap'ed. If the driver
+does not support these functions, it could use \ :c:func:`drm_fb_helper_fbdev_setup`\ .
+
+Restore, hotplug events and teardown are all taken care of. Drivers that do
+suspend/resume need to call \ :c:func:`drm_fb_helper_set_suspend_unlocked`\  themselves.
+Simple drivers might use \ :c:func:`drm_mode_config_helper_suspend`\ .
+
+Drivers that set the dirty callback on their framebuffer will get a shadow
+fbdev buffer that is blitted onto the real buffer. This is done in order to
+make deferred I/O work with all kinds of buffers.
+
+This function is safe to call even when there are no connectors present.
+Setup will be retried on the next hotplug event.
+
+The fbdev is destroyed by \ :c:func:`drm_dev_unregister`\ .
+
+.. _`drm_fbdev_generic_setup.return`:
+
+Return
+------
+
+Zero on success or negative error code on failure.
 
 .. This file was automatic generated / don't edit.
 

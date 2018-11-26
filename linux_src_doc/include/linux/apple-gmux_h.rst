@@ -10,8 +10,9 @@ apple_gmux_present
 
     detect if gmux is built into the machine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`apple_gmux_present.description`:
 

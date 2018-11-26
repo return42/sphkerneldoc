@@ -10,8 +10,9 @@ asymmetric_key_subtype
 
     Get the subtype from an asymmetric key
 
-    :param const struct key \*key:
+    :param key:
         The key of interest.
+    :type key: const struct key \*
 
 .. _`asymmetric_key_subtype.description`:
 

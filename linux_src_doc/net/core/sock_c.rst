@@ -10,14 +10,17 @@ sk_ns_capable
 
     General socket capability test
 
-    :param const struct sock \*sk:
+    :param sk:
         Socket to use a capability on or through
+    :type sk: const struct sock \*
 
-    :param struct user_namespace \*user_ns:
+    :param user_ns:
         The user namespace of the capability to use
+    :type user_ns: struct user_namespace \*
 
-    :param int cap:
+    :param cap:
         The capability to use
+    :type cap: int
 
 .. _`sk_ns_capable.description`:
 
@@ -37,11 +40,13 @@ sk_capable
 
     Socket global capability test
 
-    :param const struct sock \*sk:
+    :param sk:
         Socket to use a capability on or through
+    :type sk: const struct sock \*
 
-    :param int cap:
+    :param cap:
         The global capability to use
+    :type cap: int
 
 .. _`sk_capable.description`:
 
@@ -61,11 +66,13 @@ sk_net_capable
 
     Network namespace socket capability test
 
-    :param const struct sock \*sk:
+    :param sk:
         Socket to use a capability on or through
+    :type sk: const struct sock \*
 
-    :param int cap:
+    :param cap:
         The capability to use
+    :type cap: int
 
 .. _`sk_net_capable.description`:
 
@@ -85,8 +92,9 @@ sk_set_memalloc
 
     sets \ ``SOCK_MEMALLOC``\ 
 
-    :param struct sock \*sk:
+    :param sk:
         socket to set it on
+    :type sk: struct sock \*
 
 .. _`sk_set_memalloc.description`:
 
@@ -106,20 +114,25 @@ sk_alloc
 
     All socket objects are allocated here
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param int family:
+    :param family:
         protocol family
+    :type family: int
 
-    :param gfp_t priority:
+    :param priority:
         for allocation (%GFP_KERNEL, \ ``GFP_ATOMIC``\ , etc)
+    :type priority: gfp_t
 
-    :param struct proto \*prot:
+    :param prot:
         struct proto associated with this new sock instance
+    :type prot: struct proto \*
 
-    :param int kern:
+    :param kern:
         is this to be a kernel socket?
+    :type kern: int
 
 .. _`sk_clone_lock`:
 
@@ -130,11 +143,13 @@ sk_clone_lock
 
     clone a socket, and lock its clone
 
-    :param const struct sock \*sk:
+    :param sk:
         the socket to clone
+    :type sk: const struct sock \*
 
-    :param const gfp_t priority:
+    :param priority:
         for allocation (%GFP_KERNEL, \ ``GFP_ATOMIC``\ , etc)
+    :type priority: const gfp_t
 
 .. _`sk_clone_lock.description`:
 
@@ -152,14 +167,17 @@ skb_page_frag_refill
 
     check that a page_frag contains enough room
 
-    :param unsigned int sz:
+    :param sz:
         minimum size of the fragment we want to get
+    :type sz: unsigned int
 
-    :param struct page_frag \*pfrag:
+    :param pfrag:
         pointer to page_frag
+    :type pfrag: struct page_frag \*
 
-    :param gfp_t gfp:
+    :param gfp:
         priority for memory allocation
+    :type gfp: gfp_t
 
 .. _`skb_page_frag_refill.note`:
 
@@ -179,14 +197,17 @@ sk_wait_data
 
     wait for data to arrive at sk_receive_queue
 
-    :param struct sock \*sk:
+    :param sk:
         sock to wait on
+    :type sk: struct sock \*
 
-    :param long \*timeo:
+    :param timeo:
         for how long
+    :type timeo: long \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         last skb seen on sk_receive_queue
+    :type skb: const struct sk_buff \*
 
 .. _`sk_wait_data.description`:
 
@@ -207,17 +228,21 @@ __sk_mem_raise_allocated
 
     increase memory_allocated
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param int size:
+    :param size:
         memory size to allocate
+    :type size: int
 
-    :param int amt:
+    :param amt:
         pages to allocate
+    :type amt: int
 
-    :param int kind:
+    :param kind:
         allocation type
+    :type kind: int
 
 .. _`__sk_mem_raise_allocated.description`:
 
@@ -235,14 +260,17 @@ __sk_mem_schedule
 
     increase sk_forward_alloc and memory_allocated
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param int size:
+    :param size:
         memory size to allocate
+    :type size: int
 
-    :param int kind:
+    :param kind:
         allocation type
+    :type kind: int
 
 .. _`__sk_mem_schedule.description`:
 
@@ -262,11 +290,13 @@ __sk_mem_reduce_allocated
 
     reclaim memory_allocated
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param int amount:
+    :param amount:
         number of quanta
+    :type amount: int
 
 .. _`__sk_mem_reduce_allocated.description`:
 
@@ -284,11 +314,13 @@ __sk_mem_reclaim
 
     reclaim sk_forward_alloc and memory_allocated
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param int amount:
+    :param amount:
         number of bytes (rounded down to a SK_MEM_QUANTUM multiple)
+    :type amount: int
 
 .. _`lock_sock_fast`:
 
@@ -299,8 +331,9 @@ lock_sock_fast
 
     fast version of lock_sock
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`lock_sock_fast.description`:
 

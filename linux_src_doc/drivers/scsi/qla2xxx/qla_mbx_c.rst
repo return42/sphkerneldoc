@@ -8,17 +8,21 @@ qla2x00_set_serdes_params
 
 .. c:function:: int qla2x00_set_serdes_params(scsi_qla_host_t *vha, uint16_t sw_em_1g, uint16_t sw_em_2g, uint16_t sw_em_4g)
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param uint16_t sw_em_1g:
-        *undescribed*
+    :param sw_em_1g:
+        serial link options
+    :type sw_em_1g: uint16_t
 
-    :param uint16_t sw_em_2g:
-        *undescribed*
+    :param sw_em_2g:
+        serial link options
+    :type sw_em_2g: uint16_t
 
-    :param uint16_t sw_em_4g:
-        *undescribed*
+    :param sw_em_4g:
+        serial link options
+    :type sw_em_4g: uint16_t
 
 .. _`qla2x00_set_serdes_params.description`:
 

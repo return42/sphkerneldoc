@@ -10,17 +10,21 @@ dpcon_open
 
     Open a control session for the specified object
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param int dpcon_id:
+    :param dpcon_id:
         DPCON unique ID
+    :type dpcon_id: int
 
-    :param u16 \*token:
+    :param token:
         Returned token; use in subsequent API calls
+    :type token: u16 \*
 
 .. _`dpcon_open.description`:
 
@@ -51,14 +55,17 @@ dpcon_close
 
     Close the control session of the object
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPCON object
+    :type token: u16
 
 .. _`dpcon_close.description`:
 
@@ -84,14 +91,17 @@ dpcon_enable
 
     Enable the DPCON
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPCON object
+    :type token: u16
 
 .. _`dpcon_enable.return`:
 
@@ -109,14 +119,17 @@ dpcon_disable
 
     Disable the DPCON
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPCON object
+    :type token: u16
 
 .. _`dpcon_disable.return`:
 
@@ -134,14 +147,17 @@ dpcon_reset
 
     Reset the DPCON, returns the object to initial state.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPCON object
+    :type token: u16
 
 .. _`dpcon_reset.return`:
 
@@ -159,17 +175,21 @@ dpcon_get_attributes
 
     Retrieve DPCON attributes.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPCON object
+    :type token: u16
 
-    :param struct dpcon_attr \*attr:
+    :param attr:
         Object's attributes
+    :type attr: struct dpcon_attr \*
 
 .. _`dpcon_get_attributes.return`:
 
@@ -187,17 +207,21 @@ dpcon_set_notification
 
     Set DPCON notification destination
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPCON object
+    :type token: u16
 
-    :param struct dpcon_notification_cfg \*cfg:
+    :param cfg:
         Notification parameters
+    :type cfg: struct dpcon_notification_cfg \*
 
 .. _`dpcon_set_notification.return`:
 

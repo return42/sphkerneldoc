@@ -10,8 +10,9 @@ if_usb_write_bulk_callback
 
     call back to handle URB status
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`if_usb_write_bulk_callback.description`:
 
@@ -29,8 +30,9 @@ if_usb_free
 
     free tx/rx urb, skb and rx buffer
 
-    :param struct if_usb_card \*cardp:
+    :param cardp:
         *undescribed*
+    :type cardp: struct if_usb_card \*
 
 .. _`if_usb_free.description`:
 
@@ -48,11 +50,13 @@ if_usb_probe
 
     sets the configuration values
 
-    :param struct usb_interface \*intf:
+    :param intf:
         *undescribed*
+    :type intf: struct usb_interface \*
 
-    :param const struct usb_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct usb_device_id \*
 
 .. _`if_usb_probe.description`:
 
@@ -78,8 +82,9 @@ if_usb_disconnect
 
     free resource and cleanup
 
-    :param struct usb_interface \*intf:
+    :param intf:
         *undescribed*
+    :type intf: struct usb_interface \*
 
 .. _`if_usb_disconnect.description`:
 
@@ -97,8 +102,9 @@ if_usb_send_fw_pkt
 
     This function downloads the FW
 
-    :param struct if_usb_card \*cardp:
+    :param cardp:
         *undescribed*
+    :type cardp: struct if_usb_card \*
 
 .. _`if_usb_send_fw_pkt.description`:
 
@@ -123,17 +129,21 @@ usb_tx_block
 
     transfer data to the device
 
-    :param struct if_usb_card \*cardp:
+    :param cardp:
         *undescribed*
+    :type cardp: struct if_usb_card \*
 
-    :param uint8_t \*payload:
+    :param payload:
         *undescribed*
+    :type payload: uint8_t \*
 
-    :param uint16_t nb:
+    :param nb:
         *undescribed*
+    :type nb: uint16_t
 
-    :param u8 data:
+    :param data:
         *undescribed*
+    :type data: u8
 
 .. _`usb_tx_block.description`:
 
@@ -161,8 +171,9 @@ if_usb_receive
 
     read data received from the device.
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`if_usb_receive.description`:
 
@@ -180,17 +191,21 @@ if_usb_host_to_card
 
     Download data to the device
 
-    :param struct lbtf_private \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct lbtf_private \*
 
-    :param uint8_t type:
+    :param type:
         *undescribed*
+    :type type: uint8_t
 
-    :param uint8_t \*payload:
+    :param payload:
         *undescribed*
+    :type payload: uint8_t \*
 
-    :param uint16_t nb:
+    :param nb:
         *undescribed*
+    :type nb: uint16_t
 
 .. _`if_usb_host_to_card.description`:
 
@@ -218,11 +233,13 @@ if_usb_issue_boot_command
 
     Issue boot command to Boot2.
 
-    :param struct if_usb_card \*cardp:
+    :param cardp:
         *undescribed*
+    :type cardp: struct if_usb_card \*
 
-    :param int ivalue:
+    :param ivalue:
         *undescribed*
+    :type ivalue: int
 
 .. _`if_usb_issue_boot_command.description`:
 
@@ -247,11 +264,13 @@ check_fwfile_format
 
     Check the validity of Boot2/FW image.
 
-    :param const u8 \*data:
+    :param data:
         *undescribed*
+    :type data: const u8 \*
 
-    :param u32 totlen:
+    :param totlen:
         *undescribed*
+    :type totlen: u32
 
 .. _`check_fwfile_format.description`:
 

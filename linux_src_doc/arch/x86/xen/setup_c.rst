@@ -10,8 +10,9 @@ xen_memory_setup
 
     Hook for machine specific memory setup.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

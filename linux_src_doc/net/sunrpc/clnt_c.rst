@@ -10,8 +10,9 @@ rpc_create
 
     create an RPC client and transport with one call
 
-    :param struct rpc_create_args \*args:
+    :param args:
         rpc_clnt create argument structure
+    :type args: struct rpc_create_args \*
 
 .. _`rpc_create.description`:
 
@@ -33,8 +34,9 @@ rpc_clone_client
 
     Clone an RPC client structure
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         RPC client whose parameters are copied
+    :type clnt: struct rpc_clnt \*
 
 .. _`rpc_clone_client.description`:
 
@@ -52,11 +54,13 @@ rpc_clone_client_set_auth
 
     Clone an RPC client structure and set its auth
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         RPC client whose parameters are copied
+    :type clnt: struct rpc_clnt \*
 
-    :param rpc_authflavor_t flavor:
+    :param flavor:
         security flavor for new client
+    :type flavor: rpc_authflavor_t
 
 .. _`rpc_clone_client_set_auth.description`:
 
@@ -74,14 +78,17 @@ rpc_switch_client_transport
 
     switch the RPC transport on the fly
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         pointer to a struct rpc_clnt
+    :type clnt: struct rpc_clnt \*
 
-    :param struct xprt_create \*args:
+    :param args:
         pointer to the new transport arguments
+    :type args: struct xprt_create \*
 
-    :param const struct rpc_timeout \*timeout:
+    :param timeout:
         pointer to the new timeout parameters
+    :type timeout: const struct rpc_timeout \*
 
 .. _`rpc_switch_client_transport.description`:
 
@@ -106,14 +113,16 @@ rpc_clnt_iterate_for_each_xprt
 
     Apply a function to all transports
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         pointer to client
+    :type clnt: struct rpc_clnt \*
 
     :param int (\*fn)(struct rpc_clnt \*, struct rpc_xprt \*, void \*):
         function to apply
 
-    :param void \*data:
+    :param data:
         void pointer to function data
+    :type data: void \*
 
 .. _`rpc_clnt_iterate_for_each_xprt.description`:
 
@@ -134,14 +143,17 @@ rpc_bind_new_program
 
     bind a new RPC program to an existing client
 
-    :param struct rpc_clnt \*old:
+    :param old:
         old rpc_client
+    :type old: struct rpc_clnt \*
 
-    :param const struct rpc_program \*program:
+    :param program:
         rpc program to set
+    :type program: const struct rpc_program \*
 
-    :param u32 vers:
+    :param vers:
         rpc program version
+    :type vers: u32
 
 .. _`rpc_bind_new_program.description`:
 
@@ -161,8 +173,9 @@ rpc_run_task
 
     Allocate a new RPC task, then run rpc_execute against it
 
-    :param const struct rpc_task_setup \*task_setup_data:
+    :param task_setup_data:
         pointer to task initialisation data
+    :type task_setup_data: const struct rpc_task_setup \*
 
 .. _`rpc_call_sync`:
 
@@ -173,14 +186,17 @@ rpc_call_sync
 
     Perform a synchronous RPC call
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         pointer to RPC client
+    :type clnt: struct rpc_clnt \*
 
-    :param const struct rpc_message \*msg:
+    :param msg:
         RPC call parameters
+    :type msg: const struct rpc_message \*
 
-    :param int flags:
+    :param flags:
         RPC call flags
+    :type flags: int
 
 .. _`rpc_call_async`:
 
@@ -191,20 +207,25 @@ rpc_call_async
 
     Perform an asynchronous RPC call
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         pointer to RPC client
+    :type clnt: struct rpc_clnt \*
 
-    :param const struct rpc_message \*msg:
+    :param msg:
         RPC call parameters
+    :type msg: const struct rpc_message \*
 
-    :param int flags:
+    :param flags:
         RPC call flags
+    :type flags: int
 
-    :param const struct rpc_call_ops \*tk_ops:
+    :param tk_ops:
         RPC call ops
+    :type tk_ops: const struct rpc_call_ops \*
 
-    :param void \*data:
+    :param data:
         user call data
+    :type data: void \*
 
 .. _`rpc_run_bc_task`:
 
@@ -215,8 +236,9 @@ rpc_run_bc_task
 
     Allocate a new RPC task for backchannel use, then run rpc_execute against it
 
-    :param struct rpc_rqst \*req:
+    :param req:
         RPC request
+    :type req: struct rpc_rqst \*
 
 .. _`rpc_peeraddr`:
 
@@ -227,14 +249,17 @@ rpc_peeraddr
 
     extract remote peer address from clnt's xprt
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         RPC client structure
+    :type clnt: struct rpc_clnt \*
 
-    :param struct sockaddr \*buf:
+    :param buf:
         target buffer
+    :type buf: struct sockaddr \*
 
-    :param size_t bufsize:
+    :param bufsize:
         length of target buffer
+    :type bufsize: size_t
 
 .. _`rpc_peeraddr.description`:
 
@@ -252,11 +277,13 @@ rpc_peeraddr2str
 
     return remote peer address in printable format
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         RPC client structure
+    :type clnt: struct rpc_clnt \*
 
-    :param enum rpc_display_format_t format:
+    :param format:
         address format
+    :type format: enum rpc_display_format_t
 
 .. _`rpc_peeraddr2str.description`:
 
@@ -276,14 +303,17 @@ rpc_localaddr
 
     discover local endpoint address for an RPC client
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         RPC client structure
+    :type clnt: struct rpc_clnt \*
 
-    :param struct sockaddr \*buf:
+    :param buf:
         target buffer
+    :type buf: struct sockaddr \*
 
-    :param size_t buflen:
+    :param buflen:
         size of target buffer, in bytes
+    :type buflen: size_t
 
 .. _`rpc_localaddr.description`:
 
@@ -309,8 +339,9 @@ rpc_net_ns
 
     Get the network namespace for this RPC client
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         RPC client to query
+    :type clnt: struct rpc_clnt \*
 
 .. _`rpc_max_payload`:
 
@@ -321,8 +352,9 @@ rpc_max_payload
 
     Get maximum payload size for a transport, in bytes
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         RPC client to query
+    :type clnt: struct rpc_clnt \*
 
 .. _`rpc_max_payload.description`:
 
@@ -343,8 +375,9 @@ rpc_max_bc_payload
 
     Get maximum backchannel payload size, in bytes
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         RPC client to query
+    :type clnt: struct rpc_clnt \*
 
 .. _`rpc_force_rebind`:
 
@@ -355,8 +388,9 @@ rpc_force_rebind
 
     force transport to check that remote port is unchanged
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         client to rebind
+    :type clnt: struct rpc_clnt \*
 
 .. _`rpc_clnt_test_and_add_xprt`:
 
@@ -367,17 +401,21 @@ rpc_clnt_test_and_add_xprt
 
     Test and add a new transport to a rpc_clnt
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         pointer to struct rpc_clnt
+    :type clnt: struct rpc_clnt \*
 
-    :param struct rpc_xprt_switch \*xps:
+    :param xps:
         pointer to struct rpc_xprt_switch,
+    :type xps: struct rpc_xprt_switch \*
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         pointer struct rpc_xprt
+    :type xprt: struct rpc_xprt \*
 
-    :param void \*dummy:
+    :param dummy:
         unused
+    :type dummy: void \*
 
 .. _`rpc_clnt_setup_test_and_add_xprt`:
 
@@ -386,18 +424,22 @@ rpc_clnt_setup_test_and_add_xprt
 
 .. c:function:: int rpc_clnt_setup_test_and_add_xprt(struct rpc_clnt *clnt, struct rpc_xprt_switch *xps, struct rpc_xprt *xprt, void *data)
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         struct rpc_clnt to get the new transport
+    :type clnt: struct rpc_clnt \*
 
-    :param struct rpc_xprt_switch \*xps:
+    :param xps:
         the rpc_xprt_switch to hold the new transport
+    :type xps: struct rpc_xprt_switch \*
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         the rpc_xprt to test
+    :type xprt: struct rpc_xprt \*
 
-    :param void \*data:
+    :param data:
         a struct rpc_add_xprt_test pointer that holds the test function
         and test function call data
+    :type data: void \*
 
 .. _`rpc_clnt_setup_test_and_add_xprt.description`:
 
@@ -422,17 +464,20 @@ rpc_clnt_add_xprt
 
     Add a new transport to a rpc_clnt
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         pointer to struct rpc_clnt
+    :type clnt: struct rpc_clnt \*
 
-    :param struct xprt_create \*xprtargs:
+    :param xprtargs:
         pointer to struct xprt_create
+    :type xprtargs: struct xprt_create \*
 
     :param int (\*setup)(struct rpc_clnt \*, struct rpc_xprt_switch \*, struct rpc_xprt \*, void \*):
         callback to test and/or set up the connection
 
-    :param void \*data:
+    :param data:
         pointer to setup function data
+    :type data: void \*
 
 .. _`rpc_clnt_add_xprt.description`:
 

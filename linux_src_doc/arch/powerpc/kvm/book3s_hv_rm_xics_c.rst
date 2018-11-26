@@ -8,11 +8,13 @@ rm_host_ipi_action
 
 .. c:function:: void rm_host_ipi_action(int action, void *data)
 
-    :param int action:
+    :param action:
         *undescribed*
+    :type action: int
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. This file was automatic generated / don't edit.
 

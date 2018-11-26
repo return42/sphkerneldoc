@@ -20,8 +20,9 @@ ath5k_hw_start_rx_dma
 
     Start DMA receive
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_stop_rx_dma`:
 
@@ -32,8 +33,9 @@ ath5k_hw_stop_rx_dma
 
     Stop DMA receive
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_get_rxdp`:
 
@@ -44,8 +46,9 @@ ath5k_hw_get_rxdp
 
     Get RX Descriptor's address
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_set_rxdp`:
 
@@ -56,11 +59,13 @@ ath5k_hw_set_rxdp
 
     Set RX Descriptor's address
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 phys_addr:
+    :param phys_addr:
         RX descriptor address
+    :type phys_addr: u32
 
 .. _`ath5k_hw_set_rxdp.description`:
 
@@ -78,11 +83,13 @@ ath5k_hw_start_tx_dma
 
     Start DMA transmit for a specific queue
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int queue:
+    :param queue:
         The hw queue number
+    :type queue: unsigned int
 
 .. _`ath5k_hw_start_tx_dma.description`:
 
@@ -112,11 +119,13 @@ ath5k_hw_stop_tx_dma
 
     Stop DMA transmit on a specific queue
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int queue:
+    :param queue:
         The hw queue number
+    :type queue: unsigned int
 
 .. _`ath5k_hw_stop_tx_dma.description`:
 
@@ -136,11 +145,13 @@ ath5k_hw_stop_beacon_queue
 
     Stop beacon queue
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int queue:
+    :param queue:
         The queue number
+    :type queue: unsigned int
 
 .. _`ath5k_hw_stop_beacon_queue.description`:
 
@@ -158,11 +169,13 @@ ath5k_hw_get_txdp
 
     Get TX Descriptor's address for a specific queue
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int queue:
+    :param queue:
         The hw queue number
+    :type queue: unsigned int
 
 .. _`ath5k_hw_get_txdp.description`:
 
@@ -190,14 +203,17 @@ ath5k_hw_set_txdp
 
     Set TX Descriptor's address for a specific queue
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int queue:
+    :param queue:
         The hw queue number
+    :type queue: unsigned int
 
-    :param u32 phys_addr:
+    :param phys_addr:
         The physical address
+    :type phys_addr: u32
 
 .. _`ath5k_hw_set_txdp.description`:
 
@@ -220,11 +236,13 @@ ath5k_hw_update_tx_triglevel
 
     Update tx trigger level
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param bool increase:
+    :param increase:
         Flag to force increase of trigger level
+    :type increase: bool
 
 .. _`ath5k_hw_update_tx_triglevel.description`:
 
@@ -262,8 +280,9 @@ ath5k_hw_is_intr_pending
 
     Check if we have pending interrupts
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_is_intr_pending.description`:
 
@@ -282,12 +301,14 @@ ath5k_hw_get_isr
 
     Get interrupt status
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ ``struct``\  ath5k_hw
+    :type ah: struct ath5k_hw \*
 
-    :param enum ath5k_int \*interrupt_mask:
+    :param interrupt_mask:
         Driver's interrupt mask used to filter out
         interrupts in sw.
+    :type interrupt_mask: enum ath5k_int \*
 
 .. _`ath5k_hw_get_isr.description`:
 
@@ -317,11 +338,13 @@ ath5k_hw_set_imr
 
     Set interrupt mask
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum ath5k_int new_mask:
+    :param new_mask:
         The new interrupt mask to be set
+    :type new_mask: enum ath5k_int
 
 .. _`ath5k_hw_set_imr.description`:
 
@@ -341,8 +364,9 @@ ath5k_hw_dma_init
 
     Initialize DMA unit
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_dma_init.description`:
 
@@ -369,8 +393,9 @@ ath5k_hw_dma_stop
 
     stop DMA unit
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_dma_stop.description`:
 

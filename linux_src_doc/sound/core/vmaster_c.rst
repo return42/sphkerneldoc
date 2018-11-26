@@ -10,11 +10,13 @@ snd_ctl_make_virtual_master
 
     Create a virtual master control
 
-    :param char \*name:
+    :param name:
         name string of the control element to create
+    :type name: char \*
 
-    :param const unsigned int \*tlv:
+    :param tlv:
         optional TLV int array for dB information
+    :type tlv: const unsigned int \*
 
 .. _`snd_ctl_make_virtual_master.description`:
 
@@ -47,14 +49,16 @@ snd_ctl_add_vmaster_hook
 
     Add a hook to a vmaster control
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         vmaster kctl element
+    :type kcontrol: struct snd_kcontrol \*
 
     :param void (\*hook)(void \*private_data, int):
         the hook function
 
-    :param void \*private_data:
+    :param private_data:
         the private_data pointer to be saved
+    :type private_data: void \*
 
 .. _`snd_ctl_add_vmaster_hook.description`:
 
@@ -80,11 +84,13 @@ snd_ctl_sync_vmaster
 
     Sync the vmaster slaves and hook
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         vmaster kctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param bool hook_only:
+    :param hook_only:
         sync only the hook
+    :type hook_only: bool
 
 .. _`snd_ctl_sync_vmaster.description`:
 
@@ -104,14 +110,16 @@ snd_ctl_apply_vmaster_slaves
 
     Apply function to each vmaster slave
 
-    :param struct snd_kcontrol \*kctl:
+    :param kctl:
         vmaster kctl element
+    :type kctl: struct snd_kcontrol \*
 
     :param int (\*func)(struct snd_kcontrol \*vslave, struct snd_kcontrol \*slave, void \*arg):
         function to apply
 
-    :param void \*arg:
+    :param arg:
         optional function argument
+    :type arg: void \*
 
 .. _`snd_ctl_apply_vmaster_slaves.description`:
 

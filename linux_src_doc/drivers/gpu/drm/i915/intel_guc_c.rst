@@ -10,11 +10,13 @@ intel_guc_auth_huc
 
     Send action to GuC to authenticate HuC ucode
 
-    :param struct intel_guc \*guc:
+    :param guc:
         intel_guc structure
+    :type guc: struct intel_guc \*
 
-    :param u32 rsa_offset:
+    :param rsa_offset:
         rsa offset w.r.t ggtt base of huc vma
+    :type rsa_offset: u32
 
 .. _`intel_guc_auth_huc.description`:
 
@@ -41,8 +43,9 @@ intel_guc_suspend
 
     notify GuC entering suspend state
 
-    :param struct intel_guc \*guc:
+    :param guc:
         the guc
+    :type guc: struct intel_guc \*
 
 .. _`intel_guc_reset_engine`:
 
@@ -53,11 +56,13 @@ intel_guc_reset_engine
 
     ask GuC to reset an engine
 
-    :param struct intel_guc \*guc:
+    :param guc:
         intel_guc structure
+    :type guc: struct intel_guc \*
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         engine to be reset
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_guc_resume`:
 
@@ -68,8 +73,9 @@ intel_guc_resume
 
     notify GuC resuming from suspend state
 
-    :param struct intel_guc \*guc:
+    :param guc:
         the guc
+    :type guc: struct intel_guc \*
 
 .. _`guc-address-space`:
 
@@ -80,53 +86,25 @@ The layout of GuC address space is shown below:
 
 ::
 
-    +==============> +====================+ <== GUC_GGTT_TOP
-    ^                |                    |
-    |                |                    |
-    |                |        DRAM        |
-    |                |       Memory       |
-    |                |                    |
-   GuC               |                    |
- Address  +========> +====================+ <== WOPCM Top
-  Space   ^          |   HW contexts RSVD |
-    |     |          |        WOPCM       |
-    |     |     +==> +--------------------+ <== GuC WOPCM Top
-    |    GuC    ^    |                    |
-    |    GGTT   |    |                    |
-    |    Pin   GuC   |        GuC         |
-    |    Bias WOPCM  |       WOPCM        |
-    |     |    Size  |                    |
-    |     |     |    |                    |
-    v     v     v    |                    |
-    +=====+=====+==> +====================+ <== GuC WOPCM Base
-                     |   Non-GuC WOPCM    |
-                     |   (HuC/Reserved)   |
-                     +====================+ <== WOPCM Base
+    +===========> +====================+ <== FFFF_FFFF
+    ^             |      Reserved      |
+    |             +====================+ <== GUC_GGTT_TOP
+    |             |                    |
+    |             |        DRAM        |
+   GuC            |                    |
+ Address    +===> +====================+ <== GuC ggtt_pin_bias
+  Space     ^     |                    |
+    |       |     |                    |
+    |      GuC    |        GuC         |
+    |     WOPCM   |       WOPCM        |
+    |      Size   |                    |
+    |       |     |                    |
+    v       v     |                    |
+    +=======+===> +====================+ <== 0000_0000
 
-The lower part of GuC Address Space [0, ggtt_pin_bias) is mapped to WOPCM
+The lower part of GuC Address Space [0, ggtt_pin_bias) is mapped to GuC WOPCM
 while upper part of GuC Address Space [ggtt_pin_bias, GUC_GGTT_TOP) is mapped
-to DRAM. The value of the GuC ggtt_pin_bias is determined by WOPCM size and
-actual GuC WOPCM size.
-
-.. _`intel_guc_init_ggtt_pin_bias`:
-
-intel_guc_init_ggtt_pin_bias
-============================
-
-.. c:function:: void intel_guc_init_ggtt_pin_bias(struct intel_guc *guc)
-
-    Initialize the GuC ggtt_pin_bias value.
-
-    :param struct intel_guc \*guc:
-        intel_guc structure.
-
-.. _`intel_guc_init_ggtt_pin_bias.description`:
-
-Description
------------
-
-This function will calculate and initialize the ggtt_pin_bias value based on
-overall WOPCM size and GuC WOPCM size.
+to DRAM. The value of the GuC ggtt_pin_bias is the GuC WOPCM size.
 
 .. _`intel_guc_allocate_vma`:
 
@@ -137,11 +115,13 @@ intel_guc_allocate_vma
 
     Allocate a GGTT VMA for GuC usage
 
-    :param struct intel_guc \*guc:
+    :param guc:
         the guc
+    :type guc: struct intel_guc \*
 
-    :param u32 size:
+    :param size:
         size of area to allocate (both virtual space and memory)
+    :type size: u32
 
 .. _`intel_guc_allocate_vma.description`:
 
@@ -160,6 +140,34 @@ Return
 ------
 
 A i915_vma if successful, otherwise an ERR_PTR.
+
+.. _`intel_guc_reserved_gtt_size`:
+
+intel_guc_reserved_gtt_size
+===========================
+
+.. c:function:: u32 intel_guc_reserved_gtt_size(struct intel_guc *guc)
+
+    :param guc:
+        intel_guc structure
+    :type guc: struct intel_guc \*
+
+.. _`intel_guc_reserved_gtt_size.description`:
+
+Description
+-----------
+
+The GuC WOPCM mapping shadows the lower part of the GGTT, so if we are using
+GuC we can't have any objects pinned in that region. This function returns
+the size of the shadowed region.
+
+.. _`intel_guc_reserved_gtt_size.return`:
+
+Return
+------
+
+0 if GuC is not present or not in use.
+Otherwise, the GuC WOPCM size.
 
 .. This file was automatic generated / don't edit.
 

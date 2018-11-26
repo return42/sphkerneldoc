@@ -247,6 +247,10 @@ Definition
         unsigned int outen;
         unsigned int inen;
         unsigned int dat;
+        unsigned int intc_ctl;
+        unsigned int intc_pd;
+        unsigned int intc_msk;
+        unsigned int intc_type;
     }
 
 .. _`owl_gpio_port.members`:
@@ -268,6 +272,18 @@ inen
 
 dat
     offset of the data register.
+
+intc_ctl
+    offset of the interrupt control register.
+
+intc_pd
+    offset of the interrupt pending register.
+
+intc_msk
+    offset of the interrupt mask register.
+
+intc_type
+    offset of the interrupt type register.
 
 .. _`owl_pinctrl_soc_data`:
 
@@ -328,7 +344,7 @@ ngpios
     number of pingroups the driver should expose as GPIOs.
 
 ports
-    *undescribed*
+    array describing all GPIO ports of this SoC.
 
 nports
     number of GPIO ports in this SoC.

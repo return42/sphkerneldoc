@@ -10,11 +10,13 @@ amdgpu_ring_alloc
 
     allocate space on the ring buffer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
-    :param unsigned ndw:
+    :param ndw:
         number of dwords to allocate in the ring buffer
+    :type ndw: unsigned
 
 .. _`amdgpu_ring_alloc.description`:
 
@@ -33,8 +35,9 @@ amdgpu_ring_commit
 
     tell the GPU to execute the new commands on the ring buffer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_ring_commit.description`:
 
@@ -53,8 +56,9 @@ amdgpu_ring_undo
 
     reset the wptr
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_ring_undo.description`:
 
@@ -72,11 +76,13 @@ amdgpu_ring_priority_put
 
     restore a ring's priority
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding the information
+    :type ring: struct amdgpu_ring \*
 
-    :param enum drm_sched_priority priority:
+    :param priority:
         target priority
+    :type priority: enum drm_sched_priority
 
 .. _`amdgpu_ring_priority_put.description`:
 
@@ -94,11 +100,13 @@ amdgpu_ring_priority_get
 
     change the ring's priority
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding the information
+    :type ring: struct amdgpu_ring \*
 
-    :param enum drm_sched_priority priority:
+    :param priority:
         target priority
+    :type priority: enum drm_sched_priority
 
 .. _`amdgpu_ring_priority_get.description`:
 
@@ -116,20 +124,25 @@ amdgpu_ring_init
 
     init driver ring struct.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
-    :param unsigned max_dw:
+    :param max_dw:
         *undescribed*
+    :type max_dw: unsigned
 
-    :param struct amdgpu_irq_src \*irq_src:
+    :param irq_src:
         *undescribed*
+    :type irq_src: struct amdgpu_irq_src \*
 
-    :param unsigned irq_type:
+    :param irq_type:
         *undescribed*
+    :type irq_type: unsigned
 
 .. _`amdgpu_ring_init.description`:
 
@@ -148,8 +161,9 @@ amdgpu_ring_fini
 
     tear down the driver ring struct.
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_ring_fini.description`:
 
@@ -157,64 +171,6 @@ Description
 -----------
 
 Tear down the driver information for the selected ring (all asics).
-
-.. _`amdgpu_ring_lru_get`:
-
-amdgpu_ring_lru_get
-===================
-
-.. c:function:: int amdgpu_ring_lru_get(struct amdgpu_device *adev, int type, int *blacklist, int num_blacklist, bool lru_pipe_order, struct amdgpu_ring **ring)
-
-    get the least recently used ring for a HW IP block
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param int type:
-        amdgpu_ring_type enum
-
-    :param int \*blacklist:
-        blacklisted ring ids array
-
-    :param int num_blacklist:
-        number of entries in \ ``blacklist``\ 
-
-    :param bool lru_pipe_order:
-        find a ring from the least recently used pipe
-
-    :param struct amdgpu_ring \*\*ring:
-        output ring
-
-.. _`amdgpu_ring_lru_get.description`:
-
-Description
------------
-
-Retrieve the amdgpu_ring structure for the least recently used ring of
-a specific IP block (all asics).
-Returns 0 on success, error on failure.
-
-.. _`amdgpu_ring_lru_touch`:
-
-amdgpu_ring_lru_touch
-=====================
-
-.. c:function:: void amdgpu_ring_lru_touch(struct amdgpu_device *adev, struct amdgpu_ring *ring)
-
-    mark a ring as recently being used
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param struct amdgpu_ring \*ring:
-        ring to touch
-
-.. _`amdgpu_ring_lru_touch.description`:
-
-Description
------------
-
-Move \ ``ring``\  to the tail of the lru list
 
 .. _`amdgpu_ring_emit_reg_write_reg_wait_helper`:
 
@@ -225,20 +181,25 @@ amdgpu_ring_emit_reg_write_reg_wait_helper
 
     ring helper
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct amdgpu_ring \*
 
-    :param uint32_t reg0:
+    :param reg0:
         register to write
+    :type reg0: uint32_t
 
-    :param uint32_t reg1:
+    :param reg1:
         register to wait on
+    :type reg1: uint32_t
 
-    :param uint32_t ref:
+    :param ref:
         reference value to write/wait on
+    :type ref: uint32_t
 
-    :param uint32_t mask:
+    :param mask:
         mask to wait on
+    :type mask: uint32_t
 
 .. _`amdgpu_ring_emit_reg_write_reg_wait_helper.description`:
 
@@ -247,6 +208,34 @@ Description
 
 Helper for rings that don't support write and wait in a
 single oneshot packet.
+
+.. _`amdgpu_ring_soft_recovery`:
+
+amdgpu_ring_soft_recovery
+=========================
+
+.. c:function:: bool amdgpu_ring_soft_recovery(struct amdgpu_ring *ring, unsigned int vmid, struct dma_fence *fence)
+
+    try to soft recover a ring lockup
+
+    :param ring:
+        ring to try the recovery on
+    :type ring: struct amdgpu_ring \*
+
+    :param vmid:
+        VMID we try to get going again
+    :type vmid: unsigned int
+
+    :param fence:
+        timedout fence
+    :type fence: struct dma_fence \*
+
+.. _`amdgpu_ring_soft_recovery.description`:
+
+Description
+-----------
+
+Tries to get a ring proceeding again when it is stuck.
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ rt5663_v2_jack_detect
 
     Detect headset.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         SoC audio component device.
+    :type component: struct snd_soc_component \*
 
-    :param int jack_insert:
+    :param jack_insert:
         Jack insert or not.
+    :type jack_insert: int
 
 .. _`rt5663_v2_jack_detect.description`:
 
@@ -34,11 +36,13 @@ rt5663_jack_detect
 
     Detect headset.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         SoC audio component device.
+    :type component: struct snd_soc_component \*
 
-    :param int jack_insert:
+    :param jack_insert:
         Jack insert or not.
+    :type jack_insert: int
 
 .. _`rt5663_jack_detect.description`:
 
@@ -58,14 +62,17 @@ rt5663_sel_asrc_clk_src
 
     select ASRC clock source for a set of filters
 
-    :param struct snd_soc_component \*component:
+    :param component:
         SoC audio component device.
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int filter_mask:
+    :param filter_mask:
         mask of filters.
+    :type filter_mask: unsigned int
 
-    :param unsigned int clk_src:
+    :param clk_src:
         clock source
+    :type clk_src: unsigned int
 
 .. _`rt5663_sel_asrc_clk_src.description`:
 

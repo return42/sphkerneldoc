@@ -10,8 +10,9 @@ i2c_handle_smbus_alert
 
     Handle an SMBus alert
 
-    :param struct i2c_client \*ara:
+    :param ara:
         the ARA client on the relevant adapter
+    :type ara: struct i2c_client \*
 
 .. _`i2c_handle_smbus_alert.context`:
 

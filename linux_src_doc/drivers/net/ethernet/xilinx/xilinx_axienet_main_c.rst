@@ -10,11 +10,13 @@ axienet_dma_in32
 
     Memory mapped Axi DMA register read
 
-    :param struct axienet_local \*lp:
+    :param lp:
         Pointer to axienet local structure
+    :type lp: struct axienet_local \*
 
-    :param off_t reg:
+    :param reg:
         Address offset from the base address of the Axi DMA core
+    :type reg: off_t
 
 .. _`axienet_dma_in32.return`:
 
@@ -34,14 +36,17 @@ axienet_dma_out32
 
     Memory mapped Axi DMA register write.
 
-    :param struct axienet_local \*lp:
+    :param lp:
         Pointer to axienet local structure
+    :type lp: struct axienet_local \*
 
-    :param off_t reg:
+    :param reg:
         Address offset from the base address of the Axi DMA core
+    :type reg: off_t
 
-    :param u32 value:
+    :param value:
         Value to be written into the Axi DMA register
+    :type value: u32
 
 .. _`axienet_dma_out32.description`:
 
@@ -60,8 +65,9 @@ axienet_dma_bd_release
 
     Release buffer descriptor rings
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure
+    :type ndev: struct net_device \*
 
 .. _`axienet_dma_bd_release.description`:
 
@@ -81,8 +87,9 @@ axienet_dma_bd_init
 
     Setup buffer descriptor rings for Axi DMA
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure
+    :type ndev: struct net_device \*
 
 .. _`axienet_dma_bd_init.return`:
 
@@ -104,11 +111,13 @@ axienet_set_mac_address
 
     Write the MAC address
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure
+    :type ndev: struct net_device \*
 
-    :param const void \*address:
+    :param address:
         6 byte Address to be written as MAC address
+    :type address: const void \*
 
 .. _`axienet_set_mac_address.description`:
 
@@ -127,11 +136,13 @@ netdev_set_mac_address
 
     Write the MAC address (from outside the driver)
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure
+    :type ndev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         6 byte Address to be written as MAC address
+    :type p: void \*
 
 .. _`netdev_set_mac_address.return`:
 
@@ -153,8 +164,9 @@ axienet_set_multicast_list
 
     Prepare the multicast table
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure
+    :type ndev: struct net_device \*
 
 .. _`axienet_set_multicast_list.description`:
 
@@ -177,11 +189,13 @@ axienet_setoptions
 
     Set an Axi Ethernet option
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure
+    :type ndev: struct net_device \*
 
-    :param u32 options:
+    :param options:
         Option to be enabled/disabled
+    :type options: u32
 
 .. _`axienet_setoptions.description`:
 
@@ -203,8 +217,9 @@ axienet_device_reset
 
     Reset and initialize the Axi Ethernet hardware.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure
+    :type ndev: struct net_device \*
 
 .. _`axienet_device_reset.description`:
 
@@ -227,8 +242,9 @@ axienet_adjust_link
 
     Adjust the PHY link speed/duplex.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure
+    :type ndev: struct net_device \*
 
 .. _`axienet_adjust_link.description`:
 
@@ -248,8 +264,9 @@ axienet_start_xmit_done
 
     Invoked once a transmit is completed by the Axi DMA Tx channel.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to the net_device structure
+    :type ndev: struct net_device \*
 
 .. _`axienet_start_xmit_done.description`:
 
@@ -271,11 +288,13 @@ axienet_check_tx_bd_space
 
     Checks if a BD/group of BDs are currently busy
 
-    :param struct axienet_local \*lp:
+    :param lp:
         Pointer to the axienet_local structure
+    :type lp: struct axienet_local \*
 
-    :param int num_frag:
+    :param num_frag:
         The number of BDs to check for
+    :type num_frag: int
 
 .. _`axienet_check_tx_bd_space.return`:
 
@@ -295,15 +314,17 @@ returns a busy status. This is invoked from axienet_start_xmit.
 axienet_start_xmit
 ==================
 
-.. c:function:: int axienet_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+.. c:function:: netdev_tx_t axienet_start_xmit(struct sk_buff *skb, struct net_device *ndev)
 
     Starts the transmission.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff pointer that contains data to be Txed.
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure.
+    :type ndev: struct net_device \*
 
 .. _`axienet_start_xmit.return`:
 
@@ -327,8 +348,9 @@ axienet_recv
 
     Is called from Axi DMA Rx Isr to complete the received BD processing.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure.
+    :type ndev: struct net_device \*
 
 .. _`axienet_recv.description`:
 
@@ -348,11 +370,13 @@ axienet_tx_irq
 
     Tx Done Isr.
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*_ndev:
+    :param _ndev:
         net_device pointer
+    :type _ndev: void \*
 
 .. _`axienet_tx_irq.return`:
 
@@ -373,11 +397,13 @@ axienet_rx_irq
 
     Rx Isr.
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*_ndev:
+    :param _ndev:
         net_device pointer
+    :type _ndev: void \*
 
 .. _`axienet_rx_irq.return`:
 
@@ -398,8 +424,9 @@ axienet_open
 
     Driver open routine.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`axienet_open.return`:
 
@@ -423,8 +450,9 @@ axienet_stop
 
     Driver stop routine.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`axienet_stop.return`:
 
@@ -446,11 +474,13 @@ axienet_change_mtu
 
     Driver change mtu routine.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         New mtu value to be applied
+    :type new_mtu: int
 
 .. _`axienet_change_mtu.return`:
 
@@ -472,8 +502,9 @@ axienet_poll_controller
 
     Axi Ethernet poll mechanism.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`axienet_poll_controller.description`:
 
@@ -492,11 +523,13 @@ axienet_ethtools_get_drvinfo
 
     Get various Axi Ethernet driver information.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_drvinfo \*ed:
+    :param ed:
         Pointer to ethtool_drvinfo structure
+    :type ed: struct ethtool_drvinfo \*
 
 .. _`axienet_ethtools_get_drvinfo.description`:
 
@@ -515,8 +548,9 @@ axienet_ethtools_get_regs_len
 
     Get the total regs length present in the AxiEthernet core.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`axienet_ethtools_get_regs_len.description`:
 
@@ -542,14 +576,17 @@ axienet_ethtools_get_regs
 
     Dump the contents of all registers present in AxiEthernet core.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_regs \*regs:
+    :param regs:
         Pointer to ethtool_regs structure
+    :type regs: struct ethtool_regs \*
 
-    :param void \*ret:
+    :param ret:
         Void pointer used to return the contents of the registers.
+    :type ret: void \*
 
 .. _`axienet_ethtools_get_regs.description`:
 
@@ -568,11 +605,13 @@ axienet_ethtools_get_pauseparam
 
     Get the pause parameter setting for Tx and Rx paths.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*epauseparm:
+    :param epauseparm:
         Pointer to ethtool_pauseparam structure.
+    :type epauseparm: struct ethtool_pauseparam \*
 
 .. _`axienet_ethtools_get_pauseparam.description`:
 
@@ -591,11 +630,13 @@ axienet_ethtools_set_pauseparam
 
     Set device pause parameter(flow control) settings.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*epauseparm:
+    :param epauseparm:
         Pointer to ethtool_pauseparam structure
+    :type epauseparm: struct ethtool_pauseparam \*
 
 .. _`axienet_ethtools_set_pauseparam.description`:
 
@@ -622,11 +663,13 @@ axienet_ethtools_get_coalesce
 
     Get DMA interrupt coalescing count.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_coalesce \*ecoalesce:
+    :param ecoalesce:
         Pointer to ethtool_coalesce structure
+    :type ecoalesce: struct ethtool_coalesce \*
 
 .. _`axienet_ethtools_get_coalesce.description`:
 
@@ -653,11 +696,13 @@ axienet_ethtools_set_coalesce
 
     Set DMA interrupt coalescing count.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_coalesce \*ecoalesce:
+    :param ecoalesce:
         Pointer to ethtool_coalesce structure
+    :type ecoalesce: struct ethtool_coalesce \*
 
 .. _`axienet_ethtools_set_coalesce.description`:
 
@@ -684,8 +729,9 @@ axienet_dma_err_handler
 
     Tasklet handler for Axi DMA Error
 
-    :param unsigned long data:
+    :param data:
         Data passed
+    :type data: unsigned long
 
 .. _`axienet_dma_err_handler.description`:
 
@@ -704,8 +750,9 @@ axienet_probe
 
     Axi Ethernet probe function.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to platform device structure.
+    :type pdev: struct platform_device \*
 
 .. _`axienet_probe.return`:
 

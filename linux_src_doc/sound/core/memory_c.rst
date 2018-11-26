@@ -10,14 +10,17 @@ copy_to_user_fromio
 
     copy data from mmio-space to user-space
 
-    :param void __user \*dst:
+    :param dst:
         the destination pointer on user-space
+    :type dst: void __user \*
 
-    :param const volatile void __iomem \*src:
+    :param src:
         the source pointer on mmio
+    :type src: const volatile void __iomem \*
 
-    :param size_t count:
+    :param count:
         the data size to copy in bytes
+    :type count: size_t
 
 .. _`copy_to_user_fromio.description`:
 
@@ -42,14 +45,17 @@ copy_from_user_toio
 
     copy data from user-space to mmio-space
 
-    :param volatile void __iomem \*dst:
+    :param dst:
         the destination pointer on mmio-space
+    :type dst: volatile void __iomem \*
 
-    :param const void __user \*src:
+    :param src:
         the source pointer on user-space
+    :type src: const void __user \*
 
-    :param size_t count:
+    :param count:
         the data size to copy in bytes
+    :type count: size_t
 
 .. _`copy_from_user_toio.description`:
 

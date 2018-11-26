@@ -10,8 +10,9 @@ cpumask_bits
 
     get the bits in a cpumask
 
-    :param  maskp:
+    :param maskp:
         the struct cpumask \*
+    :type maskp: 
 
 .. _`cpumask_bits.description`:
 
@@ -30,8 +31,9 @@ cpumask_pr_args
 
     printf args to output a cpumask
 
-    :param  maskp:
+    :param maskp:
         cpumask to be printed
+    :type maskp: 
 
 .. _`cpumask_pr_args.description`:
 
@@ -49,8 +51,9 @@ cpumask_first
 
     get the first cpu in a cpumask
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         the cpumask pointer
+    :type srcp: const struct cpumask \*
 
 .. _`cpumask_first.description`:
 
@@ -68,8 +71,9 @@ cpumask_last
 
     get the last CPU in a cpumask
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         - the cpumask pointer
+    :type srcp: const struct cpumask \*
 
 .. _`cpumask_last.description`:
 
@@ -87,11 +91,13 @@ cpumask_next_zero
 
     get the next unset cpu in a cpumask
 
-    :param int n:
+    :param n:
         the cpu prior to the place to search (ie. return will be > \ ``n``\ )
+    :type n: int
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         the cpumask pointer
+    :type srcp: const struct cpumask \*
 
 .. _`cpumask_next_zero.description`:
 
@@ -109,11 +115,13 @@ for_each_cpu
 
     iterate over every cpu in a mask
 
-    :param  cpu:
+    :param cpu:
         the (optionally unsigned) integer iterator
+    :type cpu: 
 
-    :param  mask:
+    :param mask:
         the cpumask pointer
+    :type mask: 
 
 .. _`for_each_cpu.description`:
 
@@ -131,11 +139,13 @@ for_each_cpu_not
 
     iterate over every cpu in a complemented mask
 
-    :param  cpu:
+    :param cpu:
         the (optionally unsigned) integer iterator
+    :type cpu: 
 
-    :param  mask:
+    :param mask:
         the cpumask pointer
+    :type mask: 
 
 .. _`for_each_cpu_not.description`:
 
@@ -153,14 +163,17 @@ for_each_cpu_wrap
 
     iterate over every cpu in a mask, starting at a specified location
 
-    :param  cpu:
+    :param cpu:
         the (optionally unsigned) integer iterator
+    :type cpu: 
 
-    :param  mask:
+    :param mask:
         the cpumask poiter
+    :type mask: 
 
-    :param  start:
+    :param start:
         the start location
+    :type start: 
 
 .. _`for_each_cpu_wrap.description`:
 
@@ -180,14 +193,17 @@ for_each_cpu_and
 
     iterate over every cpu in both masks
 
-    :param  cpu:
+    :param cpu:
         the (optionally unsigned) integer iterator
+    :type cpu: 
 
-    :param  mask:
+    :param mask:
         the first cpumask pointer
+    :type mask: 
 
-    :param  and:
+    :param and:
         the second cpumask pointer
+    :type and: 
 
 .. _`for_each_cpu_and.description`:
 
@@ -211,11 +227,13 @@ cpumask_set_cpu
 
     set a cpu in a cpumask
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu number (< nr_cpu_ids)
+    :type cpu: unsigned int
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask pointer
+    :type dstp: struct cpumask \*
 
 .. _`cpumask_clear_cpu`:
 
@@ -226,11 +244,13 @@ cpumask_clear_cpu
 
     clear a cpu in a cpumask
 
-    :param int cpu:
+    :param cpu:
         cpu number (< nr_cpu_ids)
+    :type cpu: int
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask pointer
+    :type dstp: struct cpumask \*
 
 .. _`cpumask_test_cpu`:
 
@@ -241,11 +261,13 @@ cpumask_test_cpu
 
     test for a cpu in a cpumask
 
-    :param int cpu:
+    :param cpu:
         cpu number (< nr_cpu_ids)
+    :type cpu: int
 
-    :param const struct cpumask \*cpumask:
+    :param cpumask:
         the cpumask pointer
+    :type cpumask: const struct cpumask \*
 
 .. _`cpumask_test_cpu.description`:
 
@@ -263,11 +285,13 @@ cpumask_test_and_set_cpu
 
     atomically test and set a cpu in a cpumask
 
-    :param int cpu:
+    :param cpu:
         cpu number (< nr_cpu_ids)
+    :type cpu: int
 
-    :param struct cpumask \*cpumask:
+    :param cpumask:
         the cpumask pointer
+    :type cpumask: struct cpumask \*
 
 .. _`cpumask_test_and_set_cpu.description`:
 
@@ -287,11 +311,13 @@ cpumask_test_and_clear_cpu
 
     atomically test and clear a cpu in a cpumask
 
-    :param int cpu:
+    :param cpu:
         cpu number (< nr_cpu_ids)
+    :type cpu: int
 
-    :param struct cpumask \*cpumask:
+    :param cpumask:
         the cpumask pointer
+    :type cpumask: struct cpumask \*
 
 .. _`cpumask_test_and_clear_cpu.description`:
 
@@ -311,8 +337,9 @@ cpumask_setall
 
     set all cpus (< nr_cpu_ids) in a cpumask
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask pointer
+    :type dstp: struct cpumask \*
 
 .. _`cpumask_clear`:
 
@@ -323,8 +350,9 @@ cpumask_clear
 
     clear all cpus (< nr_cpu_ids) in a cpumask
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask pointer
+    :type dstp: struct cpumask \*
 
 .. _`cpumask_and`:
 
@@ -335,14 +363,17 @@ cpumask_and
 
     \*dstp = \*src1p & \*src2p
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask result
+    :type dstp: struct cpumask \*
 
-    :param const struct cpumask \*src1p:
+    :param src1p:
         the first input
+    :type src1p: const struct cpumask \*
 
-    :param const struct cpumask \*src2p:
+    :param src2p:
         the second input
+    :type src2p: const struct cpumask \*
 
 .. _`cpumask_and.description`:
 
@@ -360,14 +391,17 @@ cpumask_or
 
     \*dstp = \*src1p \| \*src2p
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask result
+    :type dstp: struct cpumask \*
 
-    :param const struct cpumask \*src1p:
+    :param src1p:
         the first input
+    :type src1p: const struct cpumask \*
 
-    :param const struct cpumask \*src2p:
+    :param src2p:
         the second input
+    :type src2p: const struct cpumask \*
 
 .. _`cpumask_xor`:
 
@@ -378,14 +412,17 @@ cpumask_xor
 
     \*dstp = \*src1p ^ \*src2p
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask result
+    :type dstp: struct cpumask \*
 
-    :param const struct cpumask \*src1p:
+    :param src1p:
         the first input
+    :type src1p: const struct cpumask \*
 
-    :param const struct cpumask \*src2p:
+    :param src2p:
         the second input
+    :type src2p: const struct cpumask \*
 
 .. _`cpumask_andnot`:
 
@@ -396,14 +433,17 @@ cpumask_andnot
 
     \*dstp = \*src1p & ~\*src2p
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask result
+    :type dstp: struct cpumask \*
 
-    :param const struct cpumask \*src1p:
+    :param src1p:
         the first input
+    :type src1p: const struct cpumask \*
 
-    :param const struct cpumask \*src2p:
+    :param src2p:
         the second input
+    :type src2p: const struct cpumask \*
 
 .. _`cpumask_andnot.description`:
 
@@ -421,11 +461,13 @@ cpumask_complement
 
     \*dstp = ~\*srcp
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask result
+    :type dstp: struct cpumask \*
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         the input to invert
+    :type srcp: const struct cpumask \*
 
 .. _`cpumask_equal`:
 
@@ -436,11 +478,13 @@ cpumask_equal
 
     \*src1p == \*src2p
 
-    :param const struct cpumask \*src1p:
+    :param src1p:
         the first input
+    :type src1p: const struct cpumask \*
 
-    :param const struct cpumask \*src2p:
+    :param src2p:
         the second input
+    :type src2p: const struct cpumask \*
 
 .. _`cpumask_intersects`:
 
@@ -451,11 +495,13 @@ cpumask_intersects
 
     (\*src1p & \*src2p) != 0
 
-    :param const struct cpumask \*src1p:
+    :param src1p:
         the first input
+    :type src1p: const struct cpumask \*
 
-    :param const struct cpumask \*src2p:
+    :param src2p:
         the second input
+    :type src2p: const struct cpumask \*
 
 .. _`cpumask_subset`:
 
@@ -466,11 +512,13 @@ cpumask_subset
 
     (\*src1p & ~\*src2p) == 0
 
-    :param const struct cpumask \*src1p:
+    :param src1p:
         the first input
+    :type src1p: const struct cpumask \*
 
-    :param const struct cpumask \*src2p:
+    :param src2p:
         the second input
+    :type src2p: const struct cpumask \*
 
 .. _`cpumask_subset.description`:
 
@@ -488,8 +536,9 @@ cpumask_empty
 
     \*srcp == 0
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         the cpumask to that all cpus < nr_cpu_ids are clear.
+    :type srcp: const struct cpumask \*
 
 .. _`cpumask_full`:
 
@@ -500,8 +549,9 @@ cpumask_full
 
     \*srcp == 0xFFFFFFFF...
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         the cpumask to that all cpus < nr_cpu_ids are set.
+    :type srcp: const struct cpumask \*
 
 .. _`cpumask_weight`:
 
@@ -512,8 +562,9 @@ cpumask_weight
 
     Count of bits in \*srcp
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         the cpumask to count bits (< nr_cpu_ids) in.
+    :type srcp: const struct cpumask \*
 
 .. _`cpumask_shift_right`:
 
@@ -524,14 +575,17 @@ cpumask_shift_right
 
     \*dstp = \*srcp >> n
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask result
+    :type dstp: struct cpumask \*
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         the input to shift
+    :type srcp: const struct cpumask \*
 
-    :param int n:
+    :param n:
         the number of bits to shift by
+    :type n: int
 
 .. _`cpumask_shift_left`:
 
@@ -542,14 +596,17 @@ cpumask_shift_left
 
     \*dstp = \*srcp << n
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask result
+    :type dstp: struct cpumask \*
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         the input to shift
+    :type srcp: const struct cpumask \*
 
-    :param int n:
+    :param n:
         the number of bits to shift by
+    :type n: int
 
 .. _`cpumask_copy`:
 
@@ -560,11 +617,13 @@ cpumask_copy
 
     \*dstp = \*srcp
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the result
+    :type dstp: struct cpumask \*
 
-    :param const struct cpumask \*srcp:
+    :param srcp:
         the input cpumask
+    :type srcp: const struct cpumask \*
 
 .. _`cpumask_any`:
 
@@ -575,8 +634,9 @@ cpumask_any
 
     pick a "random" cpu from \*srcp
 
-    :param  srcp:
+    :param srcp:
         the input cpumask
+    :type srcp: 
 
 .. _`cpumask_any.description`:
 
@@ -594,11 +654,13 @@ cpumask_first_and
 
     return the first cpu from \*srcp1 & \*srcp2
 
-    :param  src1p:
+    :param src1p:
         the first input
+    :type src1p: 
 
-    :param  src2p:
+    :param src2p:
         the second input
+    :type src2p: 
 
 .. _`cpumask_first_and.description`:
 
@@ -616,11 +678,13 @@ cpumask_any_and
 
     pick a "random" cpu from \*mask1 & \*mask2
 
-    :param  mask1:
+    :param mask1:
         the first input cpumask
+    :type mask1: 
 
-    :param  mask2:
+    :param mask2:
         the second input cpumask
+    :type mask2: 
 
 .. _`cpumask_any_and.description`:
 
@@ -638,8 +702,9 @@ cpumask_of
 
     the cpumask containing just a given cpu
 
-    :param  cpu:
+    :param cpu:
         the cpu (<= nr_cpu_ids)
+    :type cpu: 
 
 .. _`cpumask_parse_user`:
 
@@ -650,14 +715,17 @@ cpumask_parse_user
 
     extract a cpumask from a user string
 
-    :param const char __user \*buf:
+    :param buf:
         the buffer to extract from
+    :type buf: const char __user \*
 
-    :param int len:
+    :param len:
         the length of the buffer
+    :type len: int
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask to set.
+    :type dstp: struct cpumask \*
 
 .. _`cpumask_parse_user.description`:
 
@@ -675,14 +743,17 @@ cpumask_parselist_user
 
     extract a cpumask from a user string
 
-    :param const char __user \*buf:
+    :param buf:
         the buffer to extract from
+    :type buf: const char __user \*
 
-    :param int len:
+    :param len:
         the length of the buffer
+    :type len: int
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask to set.
+    :type dstp: struct cpumask \*
 
 .. _`cpumask_parselist_user.description`:
 
@@ -700,11 +771,13 @@ cpumask_parse
 
     extract a cpumask from a string
 
-    :param const char \*buf:
+    :param buf:
         the buffer to extract from
+    :type buf: const char \*
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask to set.
+    :type dstp: struct cpumask \*
 
 .. _`cpumask_parse.description`:
 
@@ -722,11 +795,13 @@ cpulist_parse
 
     extract a cpumask from a user string of ranges
 
-    :param const char \*buf:
+    :param buf:
         the buffer to extract from
+    :type buf: const char \*
 
-    :param struct cpumask \*dstp:
+    :param dstp:
         the cpumask to set.
+    :type dstp: struct cpumask \*
 
 .. _`cpulist_parse.description`:
 
@@ -744,8 +819,9 @@ cpumask_size
 
     size to allocate for a 'struct cpumask' in bytes
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`to_cpumask`:
 
@@ -756,8 +832,9 @@ to_cpumask
 
     convert an NR_CPUS bitmap to a struct cpumask \*
 
-    :param  bitmap:
+    :param bitmap:
         the bitmap
+    :type bitmap: 
 
 .. _`to_cpumask.description`:
 
@@ -779,14 +856,17 @@ cpumap_print_to_pagebuf
 
     copies the cpumask into the buffer either as comma-separated list of cpus or hex values of cpumask
 
-    :param bool list:
+    :param list:
         indicates whether the cpumap must be list
+    :type list: bool
 
-    :param char \*buf:
+    :param buf:
         the buffer to copy into
+    :type buf: char \*
 
-    :param const struct cpumask \*mask:
+    :param mask:
         the cpumask to copy
+    :type mask: const struct cpumask \*
 
 .. _`cpumap_print_to_pagebuf.description`:
 

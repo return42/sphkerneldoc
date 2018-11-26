@@ -10,11 +10,13 @@ ide_in_drive_list
 
     look for drive in black/white list
 
-    :param u16 \*id:
+    :param id:
         drive identifier
+    :type id: u16 \*
 
-    :param const struct drive_list_entry \*table:
+    :param table:
         list to inspect
+    :type table: const struct drive_list_entry \*
 
 .. _`ide_in_drive_list.description`:
 
@@ -33,17 +35,21 @@ ide_execute_command
 
     execute an IDE command
 
-    :param ide_drive_t \*drive:
+    :param drive:
         IDE drive to issue the command against
+    :type drive: ide_drive_t \*
 
-    :param struct ide_cmd \*cmd:
+    :param cmd:
         command
+    :type cmd: struct ide_cmd \*
 
-    :param ide_handler_t \*handler:
+    :param handler:
         handler for next phase
+    :type handler: ide_handler_t \*
 
-    :param unsigned timeout:
+    :param timeout:
         timeout for command
+    :type timeout: unsigned
 
 .. _`ide_execute_command.description`:
 

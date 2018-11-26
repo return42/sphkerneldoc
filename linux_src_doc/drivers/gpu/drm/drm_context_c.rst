@@ -8,11 +8,13 @@ drm_legacy_ctxbitmap_free
 
 .. c:function:: void drm_legacy_ctxbitmap_free(struct drm_device *dev, int ctx_handle)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param int ctx_handle:
+    :param ctx_handle:
         *undescribed*
+    :type ctx_handle: int
 
 .. _`drm_legacy_ctxbitmap_free.description`:
 
@@ -33,8 +35,9 @@ drm_legacy_ctxbitmap_next
 
 .. c:function:: int drm_legacy_ctxbitmap_next(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`drm_legacy_ctxbitmap_next.description`:
 
@@ -54,8 +57,9 @@ drm_legacy_ctxbitmap_init
 
 .. c:function:: void drm_legacy_ctxbitmap_init(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`drm_legacy_ctxbitmap_init.description`:
 
@@ -73,8 +77,9 @@ drm_legacy_ctxbitmap_cleanup
 
 .. c:function:: void drm_legacy_ctxbitmap_cleanup(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`drm_legacy_ctxbitmap_cleanup.description`:
 
@@ -95,11 +100,13 @@ drm_legacy_ctxbitmap_flush
 
     Flush all contexts owned by a file
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device to operate on
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file:
+    :param file:
         Open file to flush contexts for
+    :type file: struct drm_file \*
 
 .. _`drm_legacy_ctxbitmap_flush.description`:
 
@@ -119,14 +126,17 @@ drm_legacy_getsareactx
 
     context SAREA.
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_getsareactx.description`:
 
@@ -151,14 +161,17 @@ drm_legacy_setsareactx
 
     context SAREA.
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_setsareactx.description`:
 
@@ -181,14 +194,17 @@ drm_context_switch
 
 .. c:function:: int drm_context_switch(struct drm_device *dev, int old, int new)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param int old:
+    :param old:
         *undescribed*
+    :type old: int
 
-    :param int new:
+    :param new:
         *undescribed*
+    :type new: int
 
 .. _`drm_context_switch.description`:
 
@@ -209,14 +225,17 @@ drm_context_switch_complete
 
 .. c:function:: int drm_context_switch_complete(struct drm_device *dev, struct drm_file *file_priv, int new)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
-    :param int new:
+    :param new:
         *undescribed*
+    :type new: int
 
 .. _`drm_context_switch_complete.description`:
 
@@ -238,14 +257,17 @@ drm_legacy_resctx
 
 .. c:function:: int drm_legacy_resctx(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_resctx.description`:
 
@@ -265,14 +287,17 @@ drm_legacy_addctx
 
 .. c:function:: int drm_legacy_addctx(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_addctx.description`:
 
@@ -294,14 +319,17 @@ drm_legacy_getctx
 
 .. c:function:: int drm_legacy_getctx(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_getctx.description`:
 
@@ -321,14 +349,17 @@ drm_legacy_switchctx
 
 .. c:function:: int drm_legacy_switchctx(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_switchctx.description`:
 
@@ -350,14 +381,17 @@ drm_legacy_newctx
 
 .. c:function:: int drm_legacy_newctx(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_newctx.description`:
 
@@ -379,14 +413,17 @@ drm_legacy_rmctx
 
 .. c:function:: int drm_legacy_rmctx(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_rmctx.description`:
 

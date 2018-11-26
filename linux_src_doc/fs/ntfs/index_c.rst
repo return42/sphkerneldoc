@@ -10,8 +10,9 @@ ntfs_index_ctx_get
 
     allocate and initialize a new index context
 
-    :param ntfs_inode \*idx_ni:
+    :param idx_ni:
         ntfs index inode with which to initialize the context
+    :type idx_ni: ntfs_inode \*
 
 .. _`ntfs_index_ctx_get.description`:
 
@@ -37,8 +38,9 @@ ntfs_index_ctx_put
 
     release an index context
 
-    :param ntfs_index_context \*ictx:
+    :param ictx:
         index context to free
+    :type ictx: ntfs_index_context \*
 
 .. _`ntfs_index_ctx_put.description`:
 
@@ -63,14 +65,17 @@ ntfs_index_lookup
 
     find a key in an index and return its index entry
 
-    :param const void \*key:
+    :param key:
         [IN] key for which to search in the index
+    :type key: const void \*
 
-    :param const int key_len:
+    :param key_len:
         [IN] length of \ ``key``\  in bytes
+    :type key_len: const int
 
-    :param ntfs_index_context \*ictx:
+    :param ictx:
         [IN/OUT] context describing the index and the returned entry
+    :type ictx: ntfs_index_context \*
 
 .. _`ntfs_index_lookup.description`:
 
@@ -84,8 +89,8 @@ Look for the \ ``key``\  in the index specified by the index lookup context \ ``
 \ :c:func:`ntfs_index_lookup`\  walks the contents of the index looking for the \ ``key``\ .
 
 If the \ ``key``\  is found in the index, 0 is returned and \ ``ictx``\  is setup to
-describe the index entry containing the matching \ ``key``\ .  \ ``ictx``\ ->entry is the
-index entry and \ ``ictx``\ ->data and \ ``ictx``\ ->data_len are the index entry data and
+describe the index entry containing the matching \ ``key``\ .  \ ``ictx->entry``\  is the
+index entry and \ ``ictx->data``\  and \ ``ictx->data_len``\  are the index entry data and
 its length in bytes, respectively.
 
 If the \ ``key``\  is not found in the index, -ENOENT is returned and \ ``ictx``\  is

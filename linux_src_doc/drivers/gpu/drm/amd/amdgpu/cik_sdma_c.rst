@@ -10,8 +10,9 @@ cik_sdma_init_microcode
 
     load ucode images from disk
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`cik_sdma_init_microcode.description`:
 
@@ -31,8 +32,9 @@ cik_sdma_ring_get_rptr
 
     get the current read pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`cik_sdma_ring_get_rptr.description`:
 
@@ -50,8 +52,9 @@ cik_sdma_ring_get_wptr
 
     get the current write pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`cik_sdma_ring_get_wptr.description`:
 
@@ -69,8 +72,9 @@ cik_sdma_ring_set_wptr
 
     commit the write pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`cik_sdma_ring_set_wptr.description`:
 
@@ -88,17 +92,21 @@ cik_sdma_ring_emit_ib
 
     Schedule an IB on the DMA engine
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu ring pointer
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         IB object to schedule
+    :type ib: struct amdgpu_ib \*
 
-    :param unsigned vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: unsigned
 
-    :param bool ctx_switch:
+    :param ctx_switch:
         *undescribed*
+    :type ctx_switch: bool
 
 .. _`cik_sdma_ring_emit_ib.description`:
 
@@ -116,8 +124,9 @@ cik_sdma_ring_emit_hdp_flush
 
     emit an hdp flush on the DMA ring
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`cik_sdma_ring_emit_hdp_flush.description`:
 
@@ -135,17 +144,21 @@ cik_sdma_ring_emit_fence
 
     emit a fence on the DMA ring
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu ring pointer
+    :type ring: struct amdgpu_ring \*
 
-    :param u64 addr:
+    :param addr:
         *undescribed*
+    :type addr: u64
 
-    :param u64 seq:
+    :param seq:
         *undescribed*
+    :type seq: u64
 
-    :param unsigned flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned
 
 .. _`cik_sdma_ring_emit_fence.description`:
 
@@ -165,8 +178,9 @@ cik_sdma_gfx_stop
 
     stop the gfx async dma engines
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`cik_sdma_gfx_stop.description`:
 
@@ -184,8 +198,9 @@ cik_sdma_rlc_stop
 
     stop the compute async dma engines
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`cik_sdma_rlc_stop.description`:
 
@@ -203,11 +218,13 @@ cik_ctx_switch_enable
 
     stop the async dma engines context switch
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param bool enable:
+    :param enable:
         enable/disable the DMA MEs context switch.
+    :type enable: bool
 
 .. _`cik_ctx_switch_enable.description`:
 
@@ -225,11 +242,13 @@ cik_sdma_enable
 
     stop the async dma engines
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param bool enable:
+    :param enable:
         enable/disable the DMA MEs.
+    :type enable: bool
 
 .. _`cik_sdma_enable.description`:
 
@@ -247,8 +266,9 @@ cik_sdma_gfx_resume
 
     setup and start the async dma engines
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`cik_sdma_gfx_resume.description`:
 
@@ -267,8 +287,9 @@ cik_sdma_rlc_resume
 
     setup and start the async dma engines
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`cik_sdma_rlc_resume.description`:
 
@@ -287,8 +308,9 @@ cik_sdma_load_microcode
 
     load the sDMA ME ucode
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`cik_sdma_load_microcode.description`:
 
@@ -307,8 +329,9 @@ cik_sdma_start
 
     setup and start the async dma engines
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`cik_sdma_start.description`:
 
@@ -327,8 +350,9 @@ cik_sdma_ring_test_ring
 
     simple async dma engine test
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
 .. _`cik_sdma_ring_test_ring.description`:
 
@@ -348,11 +372,13 @@ cik_sdma_ring_test_ib
 
     test an IB on the DMA engine
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
-    :param long timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: long
 
 .. _`cik_sdma_ring_test_ib.description`:
 
@@ -371,17 +397,21 @@ cik_sdma_vm_copy_pte
 
     update PTEs by copying them from the GART
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct amdgpu_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t src:
+    :param src:
         src addr to copy from
+    :type src: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
 .. _`cik_sdma_vm_copy_pte.description`:
 
@@ -399,20 +429,25 @@ cik_sdma_vm_write_pte
 
     update PTEs by writing them manually
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct amdgpu_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t value:
+    :param value:
         dst addr to write into pe
+    :type value: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
-    :param uint32_t incr:
+    :param incr:
         increase next addr by incr bytes
+    :type incr: uint32_t
 
 .. _`cik_sdma_vm_write_pte.description`:
 
@@ -430,23 +465,29 @@ cik_sdma_vm_set_pte_pde
 
     update the page tables using sDMA
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct amdgpu_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t addr:
+    :param addr:
         dst addr to write into pe
+    :type addr: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
-    :param uint32_t incr:
+    :param incr:
         increase next addr by incr bytes
+    :type incr: uint32_t
 
-    :param uint64_t flags:
+    :param flags:
         access flags
+    :type flags: uint64_t
 
 .. _`cik_sdma_vm_set_pte_pde.description`:
 
@@ -464,11 +505,13 @@ cik_sdma_ring_pad_ib
 
     pad the IB to the required number of dw
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         indirect buffer to fill with padding
+    :type ib: struct amdgpu_ib \*
 
 .. _`cik_sdma_ring_emit_pipeline_sync`:
 
@@ -479,8 +522,9 @@ cik_sdma_ring_emit_pipeline_sync
 
     sync the pipeline
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`cik_sdma_ring_emit_pipeline_sync.description`:
 
@@ -498,14 +542,17 @@ cik_sdma_ring_emit_vm_flush
 
     cik vm flush using sDMA
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
-    :param unsigned vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: unsigned
 
-    :param uint64_t pd_addr:
+    :param pd_addr:
         *undescribed*
+    :type pd_addr: uint64_t
 
 .. _`cik_sdma_ring_emit_vm_flush.description`:
 
@@ -524,17 +571,21 @@ cik_sdma_emit_copy_buffer
 
     copy buffer using the sDMA engine
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         *undescribed*
+    :type ib: struct amdgpu_ib \*
 
-    :param uint64_t src_offset:
+    :param src_offset:
         src GPU address
+    :type src_offset: uint64_t
 
-    :param uint64_t dst_offset:
+    :param dst_offset:
         dst GPU address
+    :type dst_offset: uint64_t
 
-    :param uint32_t byte_count:
+    :param byte_count:
         number of bytes to xfer
+    :type byte_count: uint32_t
 
 .. _`cik_sdma_emit_copy_buffer.description`:
 
@@ -554,17 +605,21 @@ cik_sdma_emit_fill_buffer
 
     fill buffer using the sDMA engine
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         *undescribed*
+    :type ib: struct amdgpu_ib \*
 
-    :param uint32_t src_data:
+    :param src_data:
         value to write to buffer
+    :type src_data: uint32_t
 
-    :param uint64_t dst_offset:
+    :param dst_offset:
         dst GPU address
+    :type dst_offset: uint64_t
 
-    :param uint32_t byte_count:
+    :param byte_count:
         number of bytes to xfer
+    :type byte_count: uint32_t
 
 .. _`cik_sdma_emit_fill_buffer.description`:
 

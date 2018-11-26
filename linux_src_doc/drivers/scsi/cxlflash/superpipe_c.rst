@@ -10,11 +10,13 @@ marshal_rele_to_resize
 
     translate release to resize structure
 
-    :param struct dk_cxlflash_release \*release:
+    :param release:
         *undescribed*
+    :type release: struct dk_cxlflash_release \*
 
-    :param struct dk_cxlflash_resize \*resize:
+    :param resize:
         Destination structure for the translate/copy.
+    :type resize: struct dk_cxlflash_resize \*
 
 .. _`marshal_det_to_rele`:
 
@@ -25,11 +27,13 @@ marshal_det_to_rele
 
     translate detach to release structure
 
-    :param struct dk_cxlflash_detach \*detach:
+    :param detach:
         Destination structure for the translate/copy.
+    :type detach: struct dk_cxlflash_detach \*
 
-    :param struct dk_cxlflash_release \*release:
+    :param release:
         *undescribed*
+    :type release: struct dk_cxlflash_release \*
 
 .. _`marshal_udir_to_rele`:
 
@@ -40,11 +44,13 @@ marshal_udir_to_rele
 
     translate udirect to release structure
 
-    :param struct dk_cxlflash_udirect \*udirect:
+    :param udirect:
         Source structure from which to translate/copy.
+    :type udirect: struct dk_cxlflash_udirect \*
 
-    :param struct dk_cxlflash_release \*release:
+    :param release:
         Destination structure for the translate/copy.
+    :type release: struct dk_cxlflash_release \*
 
 .. _`cxlflash_free_errpage`:
 
@@ -55,8 +61,9 @@ cxlflash_free_errpage
 
     frees resources associated with global error page
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cxlflash_stop_term_user_contexts`:
 
@@ -67,8 +74,9 @@ cxlflash_stop_term_user_contexts
 
     stops/terminates known user contexts
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`cxlflash_stop_term_user_contexts.description`:
 
@@ -92,14 +100,17 @@ find_error_context
 
     locates a context by cookie on the error recovery list
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param u64 rctxid:
+    :param rctxid:
         Desired context by id.
+    :type rctxid: u64
 
-    :param struct file \*file:
+    :param file:
         Desired context by file.
+    :type file: struct file \*
 
 .. _`find_error_context.return`:
 
@@ -117,17 +128,21 @@ get_context
 
     obtains a validated and locked context reference
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param u64 rctxid:
+    :param rctxid:
         Desired context (raw, un-decoded format).
+    :type rctxid: u64
 
-    :param void \*arg:
+    :param arg:
         LUN information or file associated with request.
+    :type arg: void \*
 
-    :param enum ctx_ctrl ctx_ctrl:
+    :param ctx_ctrl:
         Control information to 'steer' desired lookup.
+    :type ctx_ctrl: enum ctx_ctrl
 
 .. _`get_context.note`:
 
@@ -156,8 +171,9 @@ put_context
 
     release a context that was retrieved from \ :c:func:`get_context`\ 
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context to release.
+    :type ctxi: struct ctx_info \*
 
 .. _`put_context.description`:
 
@@ -175,11 +191,13 @@ afu_attach
 
     attach a context to the AFU
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context to attach.
+    :type ctxi: struct ctx_info \*
 
 .. _`afu_attach.description`:
 
@@ -206,11 +224,13 @@ read_cap16
 
     issues a SCSI READ_CAP16 command
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param struct llun_info \*lli:
+    :param lli:
         LUN destined for capacity request.
+    :type lli: struct llun_info \*
 
 .. _`read_cap16.description`:
 
@@ -251,14 +271,17 @@ get_rhte
 
     obtains validated resource handle table entry reference
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context owning the resource handle.
+    :type ctxi: struct ctx_info \*
 
-    :param res_hndl_t rhndl:
+    :param rhndl:
         Resource handle associated with entry.
+    :type rhndl: res_hndl_t
 
-    :param struct llun_info \*lli:
+    :param lli:
         LUN associated with request.
+    :type lli: struct llun_info \*
 
 .. _`get_rhte.return`:
 
@@ -276,11 +299,13 @@ rhte_checkout
 
     obtains free/empty resource handle table entry
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context owning the resource handle.
+    :type ctxi: struct ctx_info \*
 
-    :param struct llun_info \*lli:
+    :param lli:
         LUN associated with request.
+    :type lli: struct llun_info \*
 
 .. _`rhte_checkout.return`:
 
@@ -298,11 +323,13 @@ rhte_checkin
 
     releases a resource handle table entry
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context owning the resource handle.
+    :type ctxi: struct ctx_info \*
 
-    :param struct sisl_rht_entry \*rhte:
+    :param rhte:
         RHTE to release.
+    :type rhte: struct sisl_rht_entry \*
 
 .. _`rht_format1`:
 
@@ -313,17 +340,21 @@ rht_format1
 
     populates a RHTE for format 1
 
-    :param struct sisl_rht_entry \*rhte:
+    :param rhte:
         RHTE to populate.
+    :type rhte: struct sisl_rht_entry \*
 
-    :param u64 lun_id:
+    :param lun_id:
         LUN ID of LUN associated with RHTE.
+    :type lun_id: u64
 
-    :param u32 perm:
+    :param perm:
         Desired permissions for RHTE.
+    :type perm: u32
 
-    :param u32 port_sel:
+    :param port_sel:
         Port selection mask
+    :type port_sel: u32
 
 .. _`cxlflash_lun_attach`:
 
@@ -334,14 +365,17 @@ cxlflash_lun_attach
 
     attaches a user to a LUN and manages the LUN's mode
 
-    :param struct glun_info \*gli:
+    :param gli:
         LUN to attach.
+    :type gli: struct glun_info \*
 
-    :param enum lun_mode mode:
+    :param mode:
         Desired mode of the LUN.
+    :type mode: enum lun_mode
 
-    :param bool locked:
+    :param locked:
         Mutex status on current thread.
+    :type locked: bool
 
 .. _`cxlflash_lun_attach.return`:
 
@@ -359,8 +393,9 @@ cxlflash_lun_detach
 
     detaches a user from a LUN and resets the LUN's mode
 
-    :param struct glun_info \*gli:
+    :param gli:
         LUN to detach.
+    :type gli: struct glun_info \*
 
 .. _`cxlflash_lun_detach.description`:
 
@@ -382,14 +417,17 @@ virtual mode).
 
     releases the specified resource entry
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context owning resources.
+    :type ctxi: struct ctx_info \*
 
-    :param struct dk_cxlflash_release \*release:
+    :param release:
         Release ioctl data structure.
+    :type release: struct dk_cxlflash_release \*
 
 .. _`_cxlflash_disk_release.description`:
 
@@ -419,11 +457,13 @@ destroy_context
 
     releases a context
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context to release.
+    :type ctxi: struct ctx_info \*
 
 .. _`destroy_context.description`:
 
@@ -447,8 +487,9 @@ create_context
 
     allocates and initializes a context
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`create_context.return`:
 
@@ -466,26 +507,33 @@ init_context
 
     initializes a previously allocated context
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Previously allocated context
+    :type ctxi: struct ctx_info \*
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param void \*ctx:
+    :param ctx:
         Previously obtained context cookie.
+    :type ctx: void \*
 
-    :param int ctxid:
+    :param ctxid:
         Previously obtained process element associated with CXL context.
+    :type ctxid: int
 
-    :param struct file \*file:
+    :param file:
         Previously obtained file associated with CXL context.
+    :type file: struct file \*
 
-    :param u32 perms:
+    :param perms:
         User-specified permissions.
+    :type perms: u32
 
-    :param u64 irqs:
+    :param irqs:
         User-specified number of interrupts.
+    :type irqs: u64
 
 .. _`remove_context`:
 
@@ -496,8 +544,9 @@ remove_context
 
     context kref release handler
 
-    :param struct kref \*kref:
+    :param kref:
         Kernel reference associated with context to be removed.
+    :type kref: struct kref \*
 
 .. _`remove_context.description`:
 
@@ -517,14 +566,17 @@ relinquishing access to the context holds its mutex.
 
     detaches a LUN from a context
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context owning resources.
+    :type ctxi: struct ctx_info \*
 
-    :param struct dk_cxlflash_detach \*detach:
+    :param detach:
         Detach ioctl data structure.
+    :type detach: struct dk_cxlflash_detach \*
 
 .. _`_cxlflash_disk_detach.description`:
 
@@ -551,11 +603,13 @@ cxlflash_cxl_release
 
     release handler for adapter file descriptor
 
-    :param struct inode \*inode:
+    :param inode:
         File-system inode associated with fd.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         File installed with adapter file descriptor.
+    :type file: struct file \*
 
 .. _`cxlflash_cxl_release.description`:
 
@@ -597,8 +651,9 @@ unmap_context
 
     clears a previously established mapping
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context owning the mapping.
+    :type ctxi: struct ctx_info \*
 
 .. _`unmap_context.description`:
 
@@ -618,8 +673,9 @@ get_err_page
 
     obtains and allocates the error notification page
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`get_err_page.return`:
 
@@ -633,12 +689,13 @@ error notification page on success, NULL on failure
 cxlflash_mmap_fault
 ===================
 
-.. c:function:: int cxlflash_mmap_fault(struct vm_fault *vmf)
+.. c:function:: vm_fault_t cxlflash_mmap_fault(struct vm_fault *vmf)
 
     mmap fault handler for adapter file descriptor
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         VM fault associated with current fault.
+    :type vmf: struct vm_fault \*
 
 .. _`cxlflash_mmap_fault.description`:
 
@@ -670,11 +727,13 @@ cxlflash_cxl_mmap
 
     mmap handler for adapter file descriptor
 
-    :param struct file \*file:
+    :param file:
         File installed with adapter file descriptor.
+    :type file: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VM area associated with mapping.
+    :type vma: struct vm_area_struct \*
 
 .. _`cxlflash_cxl_mmap.description`:
 
@@ -699,8 +758,9 @@ cxlflash_mark_contexts_error
 
     move contexts to error state and list
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`cxlflash_mark_contexts_error.description`:
 
@@ -726,8 +786,9 @@ check_state
 
     checks and responds to the current adapter state
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`check_state.description`:
 
@@ -757,11 +818,13 @@ cxlflash_disk_attach
 
     attach a LUN to a context
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param struct dk_cxlflash_attach \*attach:
+    :param attach:
         Attach ioctl data structure.
+    :type attach: struct dk_cxlflash_attach \*
 
 .. _`cxlflash_disk_attach.description`:
 
@@ -789,14 +852,17 @@ recover_context
 
     recovers a context in error
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context to release.
+    :type ctxi: struct ctx_info \*
 
-    :param int \*adap_fd:
+    :param adap_fd:
         Adapter file descriptor associated with new/recovered context.
+    :type adap_fd: int \*
 
 .. _`recover_context.description`:
 
@@ -821,11 +887,13 @@ cxlflash_afu_recover
 
     initiates AFU recovery
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param struct dk_cxlflash_recover_afu \*recover:
+    :param recover:
         Recover ioctl data structure.
+    :type recover: struct dk_cxlflash_recover_afu \*
 
 .. _`cxlflash_afu_recover.description`:
 
@@ -871,11 +939,13 @@ process_sense
 
     evaluates and processes sense data
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param struct dk_cxlflash_verify \*verify:
+    :param verify:
         Verify ioctl data structure.
+    :type verify: struct dk_cxlflash_verify \*
 
 .. _`process_sense.return`:
 
@@ -893,11 +963,13 @@ cxlflash_disk_verify
 
     verifies a LUN is the same and handle size changes
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param struct dk_cxlflash_verify \*verify:
+    :param verify:
         Verify ioctl data structure.
+    :type verify: struct dk_cxlflash_verify \*
 
 .. _`cxlflash_disk_verify.return`:
 
@@ -915,8 +987,9 @@ decode_ioctl
 
     translates an encoded ioctl to an easily identifiable string
 
-    :param int cmd:
+    :param cmd:
         The ioctl command to decode.
+    :type cmd: int
 
 .. _`decode_ioctl.return`:
 
@@ -934,11 +1007,13 @@ cxlflash_disk_direct_open
 
     opens a direct (physical) disk
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param void \*arg:
+    :param arg:
         UDirect ioctl data structure.
+    :type arg: void \*
 
 .. _`cxlflash_disk_direct_open.description`:
 
@@ -965,11 +1040,13 @@ ioctl_common
 
     common IOCTL handler for driver
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param int cmd:
+    :param cmd:
         IOCTL command.
+    :type cmd: int
 
 .. _`ioctl_common.description`:
 
@@ -996,14 +1073,17 @@ cxlflash_ioctl
 
     IOCTL handler for driver
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param int cmd:
+    :param cmd:
         IOCTL command.
+    :type cmd: int
 
-    :param void __user \*arg:
+    :param arg:
         Userspace ioctl data structure.
+    :type arg: void __user \*
 
 .. _`cxlflash_ioctl.description`:
 

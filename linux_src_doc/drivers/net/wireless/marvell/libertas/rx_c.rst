@@ -10,11 +10,13 @@ lbs_process_rxed_packet
 
     processes received packet and forwards it to kernel/upper layer
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\ 
+    :type priv: struct lbs_private \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         A pointer to skb which includes the received packet
+    :type skb: struct sk_buff \*
 
 .. _`lbs_process_rxed_packet.return`:
 
@@ -32,8 +34,9 @@ convert_mv_rate_to_radiotap
 
     converts Tx/Rx rates from Marvell WLAN format (see Table 2 in Section 3.1) to IEEE80211_RADIOTAP_RATE units (500 Kb/s)
 
-    :param u8 rate:
+    :param rate:
         Input rate
+    :type rate: u8
 
 .. _`convert_mv_rate_to_radiotap.return`:
 
@@ -51,11 +54,13 @@ process_rxed_802_11_packet
 
     processes a received 802.11 packet and forwards it to kernel/upper layer
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\ 
+    :type priv: struct lbs_private \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         A pointer to skb which includes the received packet
+    :type skb: struct sk_buff \*
 
 .. _`process_rxed_802_11_packet.return`:
 

@@ -10,11 +10,13 @@ test__sample_parsing
 
     test sample parsing.
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
 .. _`test__sample_parsing.description`:
 

@@ -10,8 +10,9 @@ dump_stack_set_arch_desc
 
     set arch-specific str to show with task dumps
 
-    :param const char \*fmt:
+    :param fmt:
         printf-style format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         arguments for the format string
@@ -35,8 +36,9 @@ dump_stack_print_info
 
     print generic debug info for \ :c:func:`dump_stack`\ 
 
-    :param const char \*log_lvl:
+    :param log_lvl:
         log level
+    :type log_lvl: const char \*
 
 .. _`dump_stack_print_info.description`:
 
@@ -55,8 +57,9 @@ show_regs_print_info
 
     print generic debug info for \ :c:func:`show_regs`\ 
 
-    :param const char \*log_lvl:
+    :param log_lvl:
         log level
+    :type log_lvl: const char \*
 
 .. _`show_regs_print_info.description`:
 

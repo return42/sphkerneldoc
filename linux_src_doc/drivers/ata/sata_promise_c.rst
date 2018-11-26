@@ -10,8 +10,9 @@ pdc_fill_sg
 
     Fill PCI IDE PRD table
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Metadata associated with taskfile to be transferred
+    :type qc: struct ata_queued_cmd \*
 
 .. _`pdc_fill_sg.description`:
 

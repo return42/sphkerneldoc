@@ -10,8 +10,9 @@ nsm_monitor
 
     Notify a peer in case we reboot
 
-    :param const struct nlm_host \*host:
+    :param host:
         pointer to nlm_host of peer to notify
+    :type host: const struct nlm_host \*
 
 .. _`nsm_monitor.description`:
 
@@ -34,8 +35,9 @@ nsm_unmonitor
 
     Unregister peer notification
 
-    :param const struct nlm_host \*host:
+    :param host:
         pointer to nlm_host of peer to stop monitoring
+    :type host: const struct nlm_host \*
 
 .. _`nsm_unmonitor.description`:
 
@@ -55,20 +57,25 @@ nsm_get_handle
 
     Find or create a cached nsm_handle
 
-    :param const struct net \*net:
+    :param net:
         network namespace
+    :type net: const struct net \*
 
-    :param const struct sockaddr \*sap:
+    :param sap:
         pointer to socket address of handle to find
+    :type sap: const struct sockaddr \*
 
-    :param const size_t salen:
+    :param salen:
         length of socket address
+    :type salen: const size_t
 
-    :param const char \*hostname:
+    :param hostname:
         pointer to C string containing hostname to find
+    :type hostname: const char \*
 
-    :param const size_t hostname_len:
+    :param hostname_len:
         length of C string
+    :type hostname_len: const size_t
 
 .. _`nsm_get_handle.description`:
 
@@ -91,11 +98,13 @@ nsm_reboot_lookup
 
     match NLMPROC_SM_NOTIFY arguments to an nsm_handle
 
-    :param const struct net \*net:
+    :param net:
         network namespace
+    :type net: const struct net \*
 
-    :param const struct nlm_reboot \*info:
+    :param info:
         pointer to NLMPROC_SM_NOTIFY arguments
+    :type info: const struct nlm_reboot \*
 
 .. _`nsm_reboot_lookup.description`:
 
@@ -115,8 +124,9 @@ nsm_release
 
     Release an NSM handle
 
-    :param struct nsm_handle \*nsm:
+    :param nsm:
         pointer to handle to be released
+    :type nsm: struct nsm_handle \*
 
 .. This file was automatic generated / don't edit.
 

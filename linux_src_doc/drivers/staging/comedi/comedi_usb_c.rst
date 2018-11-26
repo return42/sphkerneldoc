@@ -10,15 +10,16 @@ comedi_to_usb_interface
 
     Return USB interface attached to COMEDI device
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
 .. _`comedi_to_usb_interface.description`:
 
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
+Assuming \ ``dev->hw_dev``\  is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct usb_interface <usb_interface>`\ .
 
 .. _`comedi_to_usb_interface.return`:
@@ -26,8 +27,8 @@ a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct usb_inter
 Return
 ------
 
-Attached USB interface if \ ``dev``\ ->hw_dev is non-%NULL.
-Return \ ``NULL``\  if \ ``dev``\ ->hw_dev is \ ``NULL``\ .
+Attached USB interface if \ ``dev->hw_dev``\  is non-%NULL.
+Return \ ``NULL``\  if \ ``dev->hw_dev``\  is \ ``NULL``\ .
 
 .. _`comedi_to_usb_dev`:
 
@@ -38,15 +39,16 @@ comedi_to_usb_dev
 
     Return USB device attached to COMEDI device
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
 .. _`comedi_to_usb_dev.description`:
 
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
+Assuming \ ``dev->hw_dev``\  is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct usb_interface <usb_interface>`\ .
 
 .. _`comedi_to_usb_dev.return`:
@@ -54,8 +56,8 @@ a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct usb_inter
 Return
 ------
 
-USB device to which the USB interface belongs if \ ``dev``\ ->hw_dev is
-non-%NULL.  Return \ ``NULL``\  if \ ``dev``\ ->hw_dev is \ ``NULL``\ .
+USB device to which the USB interface belongs if \ ``dev->hw_dev``\  is
+non-%NULL.  Return \ ``NULL``\  if \ ``dev->hw_dev``\  is \ ``NULL``\ .
 
 .. _`comedi_usb_auto_config`:
 
@@ -66,14 +68,17 @@ comedi_usb_auto_config
 
     Configure/probe a USB COMEDI driver
 
-    :param struct usb_interface \*intf:
+    :param intf:
         USB interface.
+    :type intf: struct usb_interface \*
 
-    :param struct comedi_driver \*driver:
+    :param driver:
         Registered COMEDI driver.
+    :type driver: struct comedi_driver \*
 
-    :param unsigned long context:
+    :param context:
         Driver specific data, passed to \ :c:func:`comedi_auto_config`\ .
+    :type context: unsigned long
 
 .. _`comedi_usb_auto_config.description`:
 
@@ -103,8 +108,9 @@ comedi_usb_auto_unconfig
 
     Unconfigure/disconnect a USB COMEDI device
 
-    :param struct usb_interface \*intf:
+    :param intf:
         USB interface.
+    :type intf: struct usb_interface \*
 
 .. _`comedi_usb_auto_unconfig.description`:
 
@@ -130,11 +136,13 @@ comedi_usb_driver_register
 
     Register a USB COMEDI driver
 
-    :param struct comedi_driver \*comedi_driver:
+    :param comedi_driver:
         COMEDI driver to be registered.
+    :type comedi_driver: struct comedi_driver \*
 
-    :param struct usb_driver \*usb_driver:
+    :param usb_driver:
         USB driver to be registered.
+    :type usb_driver: struct usb_driver \*
 
 .. _`comedi_usb_driver_register.description`:
 
@@ -161,11 +169,13 @@ comedi_usb_driver_unregister
 
     Unregister a USB COMEDI driver
 
-    :param struct comedi_driver \*comedi_driver:
+    :param comedi_driver:
         COMEDI driver to be registered.
+    :type comedi_driver: struct comedi_driver \*
 
-    :param struct usb_driver \*usb_driver:
+    :param usb_driver:
         USB driver to be registered.
+    :type usb_driver: struct usb_driver \*
 
 .. _`comedi_usb_driver_unregister.description`:
 

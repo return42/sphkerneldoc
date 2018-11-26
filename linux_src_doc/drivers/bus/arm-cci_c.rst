@@ -10,11 +10,13 @@
 
     Function to retrieve the port index connected to a cpu or device.
 
-    :param struct device_node \*dn:
+    :param dn:
         device node of the device to look-up
+    :type dn: struct device_node \*
 
-    :param int type:
+    :param type:
         port type
+    :type type: int
 
 .. _`__cci_ace_get_port.return-value`:
 
@@ -33,11 +35,13 @@ cci_port_control
 
     function to control a CCI port
 
-    :param unsigned int port:
+    :param port:
         index of the port to setup
+    :type port: unsigned int
 
-    :param bool enable:
+    :param enable:
         if true enables the port, if false disables it
+    :type enable: bool
 
 .. _`cci_disable_port_by_cpu`:
 
@@ -48,8 +52,9 @@ cci_disable_port_by_cpu
 
     function to disable a CCI port by CPU reference
 
-    :param u64 mpidr:
+    :param mpidr:
         mpidr of the CPU whose CCI port should be disabled
+    :type mpidr: u64
 
 .. _`cci_disable_port_by_cpu.description`:
 
@@ -78,8 +83,9 @@ cci_enable_port_for_self
 
     enable a CCI port for calling CPU
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cci_enable_port_for_self.description`:
 
@@ -110,12 +116,14 @@ fatal and there is no possible recovery at this stage.
 
     function to control a CCI port by device reference
 
-    :param struct device_node \*dn:
+    :param dn:
         device node pointer of the device whose CCI port should be
         controlled
+    :type dn: struct device_node \*
 
-    :param bool enable:
+    :param enable:
         if true enables the port, if false disables it
+    :type enable: bool
 
 .. _`__cci_control_port_by_device.return`:
 
@@ -134,11 +142,13 @@ Return
 
     function to control a CCI port by port index
 
-    :param u32 port:
+    :param port:
         port index previously retrieved with \ :c:func:`cci_ace_get_port`\ 
+    :type port: u32
 
-    :param bool enable:
+    :param enable:
         if true enables the port, if false disables it
+    :type enable: bool
 
 .. _`__cci_control_port_by_index.return`:
 

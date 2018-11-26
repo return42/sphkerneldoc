@@ -10,8 +10,9 @@ ima_file_free
 
     called on \__fput()
 
-    :param struct file \*file:
+    :param file:
         pointer to file structure being freed
+    :type file: struct file \*
 
 .. _`ima_file_free.description`:
 
@@ -29,11 +30,13 @@ ima_file_mmap
 
     based on policy, collect/store measurement.
 
-    :param struct file \*file:
+    :param file:
         pointer to the file to be measured (May be NULL)
+    :type file: struct file \*
 
-    :param unsigned long prot:
+    :param prot:
         contains the protection that will be applied by the kernel.
+    :type prot: unsigned long
 
 .. _`ima_file_mmap.description`:
 
@@ -55,8 +58,9 @@ ima_bprm_check
 
     based on policy, collect/store measurement.
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         contains the linux_binprm structure
+    :type bprm: struct linux_binprm \*
 
 .. _`ima_bprm_check.description`:
 
@@ -77,18 +81,17 @@ is in policy and IMA-appraisal is in enforcing mode, return -EACCES.
 ima_file_check
 ==============
 
-.. c:function:: int ima_file_check(struct file *file, int mask, int opened)
+.. c:function:: int ima_file_check(struct file *file, int mask)
 
     based on policy, collect/store measurement.
 
-    :param struct file \*file:
+    :param file:
         pointer to the file to be measured
+    :type file: struct file \*
 
-    :param int mask:
+    :param mask:
         contains MAY_READ, MAY_WRITE, MAY_EXEC or MAY_APPEND
-
-    :param int opened:
-        *undescribed*
+    :type mask: int
 
 .. _`ima_file_check.description`:
 
@@ -109,8 +112,9 @@ ima_post_path_mknod
 
     mark as a new inode
 
-    :param struct dentry \*dentry:
+    :param dentry:
         newly created dentry
+    :type dentry: struct dentry \*
 
 .. _`ima_post_path_mknod.description`:
 
@@ -129,11 +133,13 @@ ima_read_file
 
     pre-measure/appraise hook decision based on policy
 
-    :param struct file \*file:
+    :param file:
         pointer to the file to be measured/appraised/audit
+    :type file: struct file \*
 
-    :param enum kernel_read_file_id read_id:
+    :param read_id:
         caller identifier
+    :type read_id: enum kernel_read_file_id
 
 .. _`ima_read_file.description`:
 
@@ -155,17 +161,21 @@ ima_post_read_file
 
     in memory collect/appraise/audit measurement
 
-    :param struct file \*file:
+    :param file:
         pointer to the file to be measured/appraised/audit
+    :type file: struct file \*
 
-    :param void \*buf:
+    :param buf:
         pointer to in memory file contents
+    :type buf: void \*
 
-    :param loff_t size:
+    :param size:
         size of in memory file contents
+    :type size: loff_t
 
-    :param enum kernel_read_file_id read_id:
+    :param read_id:
         caller identifier
+    :type read_id: enum kernel_read_file_id
 
 .. _`ima_post_read_file.description`:
 
@@ -177,6 +187,30 @@ are written in terms of a policy identifier.
 
 On success return 0.  On integrity appraisal error, assuming the file
 is in policy and IMA-appraisal is in enforcing mode, return -EACCES.
+
+.. _`ima_load_data`:
+
+ima_load_data
+=============
+
+.. c:function:: int ima_load_data(enum kernel_load_data_id id)
+
+    appraise decision based on policy
+
+    :param id:
+        kernel load data caller identifier
+    :type id: enum kernel_load_data_id
+
+.. _`ima_load_data.description`:
+
+Description
+-----------
+
+Callers of this LSM hook can not measure, appraise, or audit the
+data provided by userspace.  Enforce policy rules requring a file
+signature (eg. kexec'ed kernel image).
+
+For permission return 0, otherwise return -EACCES.
 
 .. This file was automatic generated / don't edit.
 

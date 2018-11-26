@@ -10,8 +10,9 @@ cryp_wait_until_done
 
     Ericsson SA 2010
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         *undescribed*
+    :type device_data: struct cryp_device_data \*
 
 .. _`cryp_wait_until_done.author`:
 
@@ -44,8 +45,9 @@ cryp_check
 
     This routine checks Peripheral and PCell Id
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
 .. _`cryp_activity`:
 
@@ -56,11 +58,13 @@ cryp_activity
 
     This routine enables/disable the cryptography function.
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
-    :param enum cryp_crypen cryp_crypen:
+    :param cryp_crypen:
         Enable/Disable functionality
+    :type cryp_crypen: enum cryp_crypen
 
 .. _`cryp_flush_inoutfifo`:
 
@@ -71,8 +75,9 @@ cryp_flush_inoutfifo
 
     Resets both the input and the output FIFOs
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
 .. _`cryp_set_configuration`:
 
@@ -83,14 +88,17 @@ cryp_set_configuration
 
     This routine set the cr CRYP IP
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
-    :param struct cryp_config \*cryp_config:
+    :param cryp_config:
         Pointer to the configuration parameter
+    :type cryp_config: struct cryp_config \*
 
-    :param u32 \*control_register:
+    :param control_register:
         The control register to be written later on.
+    :type control_register: u32 \*
 
 .. _`cryp_configure_protection`:
 
@@ -101,12 +109,14 @@ cryp_configure_protection
 
     set the protection bits in the CRYP logic.
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
-    :param struct cryp_protection_config \*p_protect_config:
+    :param p_protect_config:
         Pointer to the protection mode and
         secure mode configuration
+    :type p_protect_config: struct cryp_protection_config \*
 
 .. _`cryp_is_logic_busy`:
 
@@ -117,8 +127,9 @@ cryp_is_logic_busy
 
     returns the busy status of the CRYP logic
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
 .. _`cryp_configure_for_dma`:
 
@@ -129,11 +140,13 @@ cryp_configure_for_dma
 
     configures the CRYP IP for DMA operation
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
-    :param enum cryp_dma_req_type dma_req:
+    :param dma_req:
         Specifies the DMA request type value.
+    :type dma_req: enum cryp_dma_req_type
 
 .. _`cryp_configure_key_values`:
 
@@ -144,14 +157,17 @@ cryp_configure_key_values
 
     configures the key values for CRYP operations
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
-    :param enum cryp_key_reg_index key_reg_index:
+    :param key_reg_index:
         Key value index register
+    :type key_reg_index: enum cryp_key_reg_index
 
-    :param struct cryp_key_value key_value:
+    :param key_value:
         The key value struct
+    :type key_value: struct cryp_key_value
 
 .. _`cryp_configure_init_vector`:
 
@@ -162,14 +178,17 @@ cryp_configure_init_vector
 
     configures the initialization vector register
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
-    :param enum cryp_init_vector_index init_vector_index:
+    :param init_vector_index:
         Specifies the index of the init vector.
+    :type init_vector_index: enum cryp_init_vector_index
 
-    :param struct cryp_init_vector_value init_vector_value:
+    :param init_vector_value:
         Specifies the value for the init vector.
+    :type init_vector_value: struct cryp_init_vector_value
 
 .. _`cryp_save_device_context`:
 
@@ -180,14 +199,17 @@ cryp_save_device_context
 
     Store hardware registers and other device context parameter
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
-    :param struct cryp_device_context \*ctx:
+    :param ctx:
         Crypto device context
+    :type ctx: struct cryp_device_context \*
 
-    :param int cryp_mode:
+    :param cryp_mode:
         *undescribed*
+    :type cryp_mode: int
 
 .. _`cryp_restore_device_context`:
 
@@ -198,11 +220,13 @@ cryp_restore_device_context
 
     Restore hardware registers and other device context parameter
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         Pointer to the device data struct for base address.
+    :type device_data: struct cryp_device_data \*
 
-    :param struct cryp_device_context \*ctx:
+    :param ctx:
         Crypto device context
+    :type ctx: struct cryp_device_context \*
 
 .. This file was automatic generated / don't edit.
 

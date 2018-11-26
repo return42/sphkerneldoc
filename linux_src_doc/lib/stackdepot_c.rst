@@ -10,11 +10,13 @@ depot_save_stack
 
     save stack in a stack depot. \ ``trace``\  - the stacktrace to save. \ ``alloc_flags``\  - flags for allocating additional memory if required.
 
-    :param struct stack_trace \*trace:
+    :param trace:
         *undescribed*
+    :type trace: struct stack_trace \*
 
-    :param gfp_t alloc_flags:
+    :param alloc_flags:
         *undescribed*
+    :type alloc_flags: gfp_t
 
 .. _`depot_save_stack.description`:
 

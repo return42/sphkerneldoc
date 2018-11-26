@@ -10,11 +10,13 @@ tomoyo_encode2
 
     Encode binary string to ascii string.
 
-    :param const char \*str:
+    :param str:
         String in binary format.
+    :type str: const char \*
 
-    :param int str_len:
+    :param str_len:
         Size of \ ``str``\  in byte.
+    :type str_len: int
 
 .. _`tomoyo_encode2.description`:
 
@@ -35,8 +37,9 @@ tomoyo_encode
 
     Encode binary string to ascii string.
 
-    :param const char \*str:
+    :param str:
         String in binary format.
+    :type str: const char \*
 
 .. _`tomoyo_encode.description`:
 
@@ -57,14 +60,17 @@ tomoyo_get_absolute_path
 
     Get the path of a dentry but ignores chroot'ed root.
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
-    :param char \* const buffer:
+    :param buffer:
         Pointer to buffer to return value in.
+    :type buffer: char \* const
 
-    :param const int buflen:
+    :param buflen:
         Sizeof \ ``buffer``\ .
+    :type buflen: const int
 
 .. _`tomoyo_get_absolute_path.description`:
 
@@ -84,14 +90,17 @@ tomoyo_get_dentry_path
 
     Get the path of a dentry.
 
-    :param struct dentry \*dentry:
+    :param dentry:
         Pointer to "struct dentry".
+    :type dentry: struct dentry \*
 
-    :param char \* const buffer:
+    :param buffer:
         Pointer to buffer to return value in.
+    :type buffer: char \* const
 
-    :param const int buflen:
+    :param buflen:
         Sizeof \ ``buffer``\ .
+    :type buflen: const int
 
 .. _`tomoyo_get_dentry_path.description`:
 
@@ -111,14 +120,17 @@ tomoyo_get_local_path
 
     Get the path of a dentry.
 
-    :param struct dentry \*dentry:
+    :param dentry:
         Pointer to "struct dentry".
+    :type dentry: struct dentry \*
 
-    :param char \* const buffer:
+    :param buffer:
         Pointer to buffer to return value in.
+    :type buffer: char \* const
 
-    :param const int buflen:
+    :param buflen:
         Sizeof \ ``buffer``\ .
+    :type buflen: const int
 
 .. _`tomoyo_get_local_path.description`:
 
@@ -136,14 +148,17 @@ tomoyo_get_socket_name
 
     Get the name of a socket.
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
-    :param char \* const buffer:
+    :param buffer:
         Pointer to buffer to return value in.
+    :type buffer: char \* const
 
-    :param const int buflen:
+    :param buflen:
         Sizeof \ ``buffer``\ .
+    :type buflen: const int
 
 .. _`tomoyo_get_socket_name.description`:
 
@@ -161,8 +176,9 @@ tomoyo_realpath_from_path
 
     Returns realpath(3) of the given pathname but ignores chroot'ed root.
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
 .. _`tomoyo_realpath_from_path.description`:
 
@@ -188,8 +204,9 @@ tomoyo_realpath_nofollow
 
     Get realpath of a pathname.
 
-    :param const char \*pathname:
+    :param pathname:
         The pathname to solve.
+    :type pathname: const char \*
 
 .. _`tomoyo_realpath_nofollow.description`:
 

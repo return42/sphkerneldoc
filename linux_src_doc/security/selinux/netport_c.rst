@@ -10,8 +10,9 @@ sel_netport_hashfn
 
     Hashing function for the port table
 
-    :param u16 pnum:
+    :param pnum:
         port number
+    :type pnum: u16
 
 .. _`sel_netport_hashfn.description`:
 
@@ -30,11 +31,13 @@ sel_netport_find
 
     Search for a port record
 
-    :param u8 protocol:
+    :param protocol:
         protocol
+    :type protocol: u8
 
-    :param u16 pnum:
+    :param pnum:
         *undescribed*
+    :type pnum: u16
 
 .. _`sel_netport_find.description`:
 
@@ -53,8 +56,9 @@ sel_netport_insert
 
     Insert a new port into the table
 
-    :param struct sel_netport \*port:
+    :param port:
         the new port record
+    :type port: struct sel_netport \*
 
 .. _`sel_netport_insert.description`:
 
@@ -72,14 +76,17 @@ sel_netport_sid_slow
 
     Lookup the SID of a network address using the policy
 
-    :param u8 protocol:
+    :param protocol:
         protocol
+    :type protocol: u8
 
-    :param u16 pnum:
+    :param pnum:
         port
+    :type pnum: u16
 
-    :param u32 \*sid:
+    :param sid:
         port SID
+    :type sid: u32 \*
 
 .. _`sel_netport_sid_slow.description`:
 
@@ -99,14 +106,17 @@ sel_netport_sid
 
     Lookup the SID of a network port
 
-    :param u8 protocol:
+    :param protocol:
         protocol
+    :type protocol: u8
 
-    :param u16 pnum:
+    :param pnum:
         port
+    :type pnum: u16
 
-    :param u32 \*sid:
+    :param sid:
         port SID
+    :type sid: u32 \*
 
 .. _`sel_netport_sid.description`:
 
@@ -127,8 +137,9 @@ sel_netport_flush
 
     Flush the entire network port table
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sel_netport_flush.description`:
 

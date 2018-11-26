@@ -8,18 +8,22 @@ uwb_rc_scan
 
 .. c:function:: int uwb_rc_scan(struct uwb_rc *rc, unsigned channel, enum uwb_scan_type type, unsigned bpst_offset)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Radio Controller
+    :type rc: struct uwb_rc \*
 
-    :param unsigned channel:
+    :param channel:
         Channel to scan; encodings in WUSB1.0[Table 5.12]
+    :type channel: unsigned
 
-    :param enum uwb_scan_type type:
+    :param type:
         Type of scanning to do.
+    :type type: enum uwb_scan_type
 
-    :param unsigned bpst_offset:
+    :param bpst_offset:
         value at which to start scanning (if type ==
         UWB_SCAN_ONLY_STARTTIME)
+    :type bpst_offset: unsigned
 
 .. _`uwb_rc_scan.description`:
 

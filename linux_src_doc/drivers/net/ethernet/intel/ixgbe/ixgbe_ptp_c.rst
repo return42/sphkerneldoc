@@ -8,8 +8,9 @@ ixgbe_ptp_setup_sdp_x540
 
 .. c:function:: void ixgbe_ptp_setup_sdp_x540(struct ixgbe_adapter *adapter)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         private adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_setup_sdp_x540.description`:
 
@@ -33,8 +34,9 @@ ixgbe_ptp_read_X550
 
     read cycle counter value
 
-    :param const struct cyclecounter \*hw_cc:
+    :param hw_cc:
         cyclecounter structure
+    :type hw_cc: const struct cyclecounter \*
 
 .. _`ixgbe_ptp_read_x550.description`:
 
@@ -56,8 +58,9 @@ ixgbe_ptp_read_82599
 
     read raw cycle counter (to be used by time counter)
 
-    :param const struct cyclecounter \*cc:
+    :param cc:
         the cyclecounter structure
+    :type cc: const struct cyclecounter \*
 
 .. _`ixgbe_ptp_read_82599.description`:
 
@@ -77,14 +80,17 @@ ixgbe_ptp_convert_to_hwtstamp
 
     convert register value to hw timestamp
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         private adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
-    :param struct skb_shared_hwtstamps \*hwtstamp:
+    :param hwtstamp:
         stack timestamp structure
+    :type hwtstamp: struct skb_shared_hwtstamps \*
 
-    :param u64 timestamp:
+    :param timestamp:
         unsigned 64bit system time value
+    :type timestamp: u64
 
 .. _`ixgbe_ptp_convert_to_hwtstamp.description`:
 
@@ -109,11 +115,13 @@ ixgbe_ptp_adjfreq_82599
 
 .. c:function:: int ixgbe_ptp_adjfreq_82599(struct ptp_clock_info *ptp, s32 ppb)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s32 ppb:
+    :param ppb:
         parts per billion adjustment from base
+    :type ppb: s32
 
 .. _`ixgbe_ptp_adjfreq_82599.description`:
 
@@ -130,11 +138,13 @@ ixgbe_ptp_adjfreq_X550
 
 .. c:function:: int ixgbe_ptp_adjfreq_X550(struct ptp_clock_info *ptp, s32 ppb)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s32 ppb:
+    :param ppb:
         parts per billion adjustment from base
+    :type ppb: s32
 
 .. _`ixgbe_ptp_adjfreq_x550.description`:
 
@@ -151,11 +161,13 @@ ixgbe_ptp_adjtime
 
 .. c:function:: int ixgbe_ptp_adjtime(struct ptp_clock_info *ptp, s64 delta)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s64 delta:
+    :param delta:
         offset to adjust the cycle counter by
+    :type delta: s64
 
 .. _`ixgbe_ptp_adjtime.description`:
 
@@ -171,11 +183,13 @@ ixgbe_ptp_gettime
 
 .. c:function:: int ixgbe_ptp_gettime(struct ptp_clock_info *ptp, struct timespec64 *ts)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct timespec64 \*ts:
+    :param ts:
         timespec structure to hold the current time value
+    :type ts: struct timespec64 \*
 
 .. _`ixgbe_ptp_gettime.description`:
 
@@ -192,11 +206,13 @@ ixgbe_ptp_settime
 
 .. c:function:: int ixgbe_ptp_settime(struct ptp_clock_info *ptp, const struct timespec64 *ts)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         the timespec containing the new time for the cycle counter
+    :type ts: const struct timespec64 \*
 
 .. _`ixgbe_ptp_settime.description`:
 
@@ -213,14 +229,17 @@ ixgbe_ptp_feature_enable
 
 .. c:function:: int ixgbe_ptp_feature_enable(struct ptp_clock_info *ptp, struct ptp_clock_request *rq, int on)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct ptp_clock_request \*rq:
+    :param rq:
         the requested feature to change
+    :type rq: struct ptp_clock_request \*
 
-    :param int on:
+    :param on:
         whether to enable or disable the feature
+    :type on: int
 
 .. _`ixgbe_ptp_feature_enable.description`:
 
@@ -237,8 +256,9 @@ ixgbe_ptp_check_pps_event
 
 .. c:function:: void ixgbe_ptp_check_pps_event(struct ixgbe_adapter *adapter)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the private adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_check_pps_event.description`:
 
@@ -257,8 +277,9 @@ ixgbe_ptp_overflow_check
 
     watchdog task to detect SYSTIME overflow
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         private adapter struct
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_overflow_check.description`:
 
@@ -278,8 +299,9 @@ ixgbe_ptp_rx_hang
 
     detect error case when Rx timestamp registers latched
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         private network adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_rx_hang.description`:
 
@@ -300,8 +322,9 @@ ixgbe_ptp_clear_tx_timestamp
 
     utility function to clear Tx timestamp state
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the private adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_clear_tx_timestamp.description`:
 
@@ -321,8 +344,9 @@ ixgbe_ptp_tx_hang
 
     detect error case where Tx timestamp never finishes
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         private network adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_tx_hwtstamp`:
 
@@ -333,8 +357,9 @@ ixgbe_ptp_tx_hwtstamp
 
     utility function which checks for TX time stamp
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the private adapter struct
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_tx_hwtstamp.description`:
 
@@ -352,8 +377,9 @@ ixgbe_ptp_tx_hwtstamp_work
 
 .. c:function:: void ixgbe_ptp_tx_hwtstamp_work(struct work_struct *work)
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work struct
+    :type work: struct work_struct \*
 
 .. _`ixgbe_ptp_tx_hwtstamp_work.description`:
 
@@ -373,11 +399,13 @@ ixgbe_ptp_rx_pktstamp
 
     utility function to get RX time stamp from buffer
 
-    :param struct ixgbe_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct ixgbe_q_vector \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`ixgbe_ptp_rx_pktstamp.description`:
 
@@ -397,11 +425,13 @@ ixgbe_ptp_rx_rgtstamp
 
     utility function which checks for RX time stamp
 
-    :param struct ixgbe_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct ixgbe_q_vector \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         particular skb to send timestamp with
+    :type skb: struct sk_buff \*
 
 .. _`ixgbe_ptp_rx_rgtstamp.description`:
 
@@ -421,11 +451,13 @@ ixgbe_ptp_set_timestamp_mode
 
     setup the hardware for the requested mode
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the private ixgbe adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
-    :param struct hwtstamp_config \*config:
+    :param config:
         the hwtstamp configuration requested
+    :type config: struct hwtstamp_config \*
 
 .. _`ixgbe_ptp_set_timestamp_mode.description`:
 
@@ -466,11 +498,13 @@ ixgbe_ptp_set_ts_config
 
     user entry point for timestamp mode
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to adapter struct
+    :type adapter: struct ixgbe_adapter \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         ioctl data
+    :type ifr: struct ifreq \*
 
 .. _`ixgbe_ptp_set_ts_config.description`:
 
@@ -489,8 +523,9 @@ ixgbe_ptp_start_cyclecounter
 
     create the cycle counter from hw
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to the adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_start_cyclecounter.description`:
 
@@ -510,8 +545,9 @@ ixgbe_ptp_reset
 
 .. c:function:: void ixgbe_ptp_reset(struct ixgbe_adapter *adapter)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the ixgbe private board structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_reset.description`:
 
@@ -533,8 +569,9 @@ ixgbe_ptp_create_clock
 
 .. c:function:: long ixgbe_ptp_create_clock(struct ixgbe_adapter *adapter)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the ixgbe private adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_create_clock.description`:
 
@@ -554,8 +591,9 @@ ixgbe_ptp_init
 
 .. c:function:: void ixgbe_ptp_init(struct ixgbe_adapter *adapter)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the ixgbe private adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_init.description`:
 
@@ -575,8 +613,9 @@ ixgbe_ptp_suspend
 
     stop PTP work items
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to adapter struct
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_suspend.description`:
 
@@ -595,8 +634,9 @@ ixgbe_ptp_stop
 
     close the PTP device
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to adapter struct
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ptp_stop.description`:
 

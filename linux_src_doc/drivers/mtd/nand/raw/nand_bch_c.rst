@@ -42,39 +42,46 @@ eccmask
 nand_bch_calculate_ecc
 ======================
 
-.. c:function:: int nand_bch_calculate_ecc(struct mtd_info *mtd, const unsigned char *buf, unsigned char *code)
+.. c:function:: int nand_bch_calculate_ecc(struct nand_chip *chip, const unsigned char *buf, unsigned char *code)
 
     [NAND Interface] Calculate ECC for data block
 
-    :param struct mtd_info \*mtd:
-        MTD block structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         input buffer with raw data
+    :type buf: const unsigned char \*
 
-    :param unsigned char \*code:
+    :param code:
         output buffer with ECC
+    :type code: unsigned char \*
 
 .. _`nand_bch_correct_data`:
 
 nand_bch_correct_data
 =====================
 
-.. c:function:: int nand_bch_correct_data(struct mtd_info *mtd, unsigned char *buf, unsigned char *read_ecc, unsigned char *calc_ecc)
+.. c:function:: int nand_bch_correct_data(struct nand_chip *chip, unsigned char *buf, unsigned char *read_ecc, unsigned char *calc_ecc)
 
     [NAND Interface] Detect and correct bit error(s)
 
-    :param struct mtd_info \*mtd:
-        MTD block structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param unsigned char \*buf:
+    :param buf:
         raw data read from the chip
+    :type buf: unsigned char \*
 
-    :param unsigned char \*read_ecc:
+    :param read_ecc:
         ECC from the chip
+    :type read_ecc: unsigned char \*
 
-    :param unsigned char \*calc_ecc:
+    :param calc_ecc:
         the ECC calculated from raw data
+    :type calc_ecc: unsigned char \*
 
 .. _`nand_bch_correct_data.description`:
 
@@ -92,8 +99,9 @@ nand_bch_init
 
     [NAND Interface] Initialize NAND BCH error correction
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD block structure
+    :type mtd: struct mtd_info \*
 
 .. _`nand_bch_init.return`:
 
@@ -128,8 +136,9 @@ nand_bch_free
 
     [NAND Interface] Release NAND BCH ECC resources
 
-    :param struct nand_bch_control \*nbc:
+    :param nbc:
         NAND BCH control structure
+    :type nbc: struct nand_bch_control \*
 
 .. This file was automatic generated / don't edit.
 

@@ -36,6 +36,13 @@ FOPEN_NONSEEKABLE
 
 the file is not seekable
 
+.. _`fopen_direct_io.fopen_cache_dir`:
+
+FOPEN_CACHE_DIR
+---------------
+
+allow caching this directory
+
 .. _`fuse_async_read`:
 
 FUSE_ASYNC_READ
@@ -196,6 +203,20 @@ FUSE_ABORT_ERROR
 ----------------
 
 reading the device after abort returns ECONNABORTED
+
+.. _`fuse_async_read.fuse_max_pages`:
+
+FUSE_MAX_PAGES
+--------------
+
+init_out.max_pages contains the max number of req pages
+
+.. _`fuse_async_read.fuse_cache_symlinks`:
+
+FUSE_CACHE_SYMLINKS
+-------------------
+
+cache READLINK responses
 
 .. _`cuse_unrestricted_ioctl`:
 

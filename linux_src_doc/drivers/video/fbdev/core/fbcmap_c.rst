@@ -10,17 +10,21 @@ fb_alloc_cmap_gfp
 
     allocate a colormap
 
-    :param struct fb_cmap \*cmap:
+    :param cmap:
         frame buffer colormap structure
+    :type cmap: struct fb_cmap \*
 
-    :param int len:
+    :param len:
         length of \ ``cmap``\ 
+    :type len: int
 
-    :param int transp:
+    :param transp:
         boolean, 1 if there is transparency, 0 otherwise
+    :type transp: int
 
-    :param gfp_t flags:
+    :param flags:
         flags for kmalloc memory allocation
+    :type flags: gfp_t
 
 .. _`fb_alloc_cmap_gfp.description`:
 
@@ -41,8 +45,9 @@ fb_dealloc_cmap
 
     deallocate a colormap
 
-    :param struct fb_cmap \*cmap:
+    :param cmap:
         frame buffer colormap structure
+    :type cmap: struct fb_cmap \*
 
 .. _`fb_dealloc_cmap.description`:
 
@@ -61,11 +66,13 @@ fb_copy_cmap
 
     copy a colormap
 
-    :param const struct fb_cmap \*from:
+    :param from:
         frame buffer colormap structure
+    :type from: const struct fb_cmap \*
 
-    :param struct fb_cmap \*to:
+    :param to:
         frame buffer colormap structure
+    :type to: struct fb_cmap \*
 
 .. _`fb_copy_cmap.description`:
 
@@ -83,11 +90,13 @@ fb_set_cmap
 
     set the colormap
 
-    :param struct fb_cmap \*cmap:
+    :param cmap:
         frame buffer colormap structure
+    :type cmap: struct fb_cmap \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. _`fb_set_cmap.description`:
 
@@ -107,8 +116,9 @@ fb_default_cmap
 
     get default colormap
 
-    :param int len:
+    :param len:
         size of palette for a depth
+    :type len: int
 
 .. _`fb_default_cmap.description`:
 
@@ -129,8 +139,9 @@ fb_invert_cmaps
 
     invert all defaults colormaps
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fb_invert_cmaps.description`:
 

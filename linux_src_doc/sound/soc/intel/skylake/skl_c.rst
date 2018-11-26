@@ -10,11 +10,13 @@ skl_clock_power_gating
 
     Enable/Disable clock and power gating
 
-    :param struct device \*dev:
+    :param dev:
         Device pointer
+    :type dev: struct device \*
 
-    :param bool enable:
+    :param enable:
         Enable/Disable flag
+    :type enable: bool
 
 .. This file was automatic generated / don't edit.
 

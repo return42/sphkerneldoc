@@ -10,14 +10,17 @@ rt5660_set_dmic_clk
 
     Set parameter of dmic.
 
-    :param struct snd_soc_dapm_widget \*w:
+    :param w:
         DAPM widget.
+    :type w: struct snd_soc_dapm_widget \*
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The kcontrol of this widget.
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param int event:
+    :param event:
         Event id.
+    :type event: int
 
 .. This file was automatic generated / don't edit.
 

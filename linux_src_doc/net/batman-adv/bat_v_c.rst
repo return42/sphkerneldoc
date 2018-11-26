@@ -10,8 +10,9 @@ batadv_v_iface_update_mac
 
     react to hard-interface MAC address change
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the modified interface
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_v_iface_update_mac.description`:
 
@@ -30,14 +31,17 @@ batadv_v_orig_print_neigh
 
     print neighbors for the originator table
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig_node for which the neighbors are printed
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         outgoing interface for these entries
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         debugfs table seq_file struct
+    :type seq: struct seq_file \*
 
 .. _`batadv_v_orig_print_neigh.description`:
 
@@ -55,11 +59,13 @@ batadv_v_hardif_neigh_print
 
     print a single ELP neighbour node
 
-    :param struct seq_file \*seq:
+    :param seq:
         neighbour table seq_file struct
+    :type seq: struct seq_file \*
 
-    :param struct batadv_hardif_neigh_node \*hardif_neigh:
+    :param hardif_neigh:
         hardif neighbour information
+    :type hardif_neigh: struct batadv_hardif_neigh_node \*
 
 .. _`batadv_v_neigh_print`:
 
@@ -70,11 +76,13 @@ batadv_v_neigh_print
 
     print the single hop neighbour list
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         neighbour table seq_file struct
+    :type seq: struct seq_file \*
 
 .. _`batadv_v_neigh_dump_neigh`:
 
@@ -85,17 +93,21 @@ batadv_v_neigh_dump_neigh
 
     Dump a neighbour into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_hardif_neigh_node \*hardif_neigh:
+    :param hardif_neigh:
         Neighbour to dump
+    :type hardif_neigh: struct batadv_hardif_neigh_node \*
 
 .. _`batadv_v_neigh_dump_neigh.return`:
 
@@ -113,23 +125,29 @@ batadv_v_neigh_dump_hardif
 
     Dump the  neighbours of a hard interface into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         The hard interface to be dumped
+    :type hard_iface: struct batadv_hard_iface \*
 
-    :param int \*idx_s:
+    :param idx_s:
         Entries to be skipped
+    :type idx_s: int \*
 
 .. _`batadv_v_neigh_dump_hardif.description`:
 
@@ -154,17 +172,21 @@ batadv_v_neigh_dump
 
     Dump the neighbours of a hard interface  into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Control block containing additional options
+    :type cb: struct netlink_callback \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*single_hardif:
+    :param single_hardif:
         Limit dumping to this hard interface
+    :type single_hardif: struct batadv_hard_iface \*
 
 .. _`batadv_v_orig_print`:
 
@@ -175,14 +197,17 @@ batadv_v_orig_print
 
     print the originator table
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         debugfs table seq_file struct
+    :type seq: struct seq_file \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the outgoing interface for which this should be printed
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_v_orig_dump_subentry`:
 
@@ -193,29 +218,37 @@ batadv_v_orig_dump_subentry
 
     Dump an originator subentry into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         Limit dump to entries with this outgoing interface
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         Originator to dump
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         Single hops neighbour
+    :type neigh_node: struct batadv_neigh_node \*
 
-    :param bool best:
+    :param best:
         Is the best originator
+    :type best: bool
 
 .. _`batadv_v_orig_dump_subentry.return`:
 
@@ -233,26 +266,33 @@ batadv_v_orig_dump_entry
 
     Dump an originator entry into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         Limit dump to entries with this outgoing interface
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         Originator to dump
+    :type orig_node: struct batadv_orig_node \*
 
-    :param int \*sub_s:
+    :param sub_s:
         Number of sub entries to skip
+    :type sub_s: int \*
 
 .. _`batadv_v_orig_dump_entry.description`:
 
@@ -277,29 +317,37 @@ batadv_v_orig_dump_bucket
 
     Dump an originator bucket into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         Limit dump to entries with this outgoing interface
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param struct hlist_head \*head:
+    :param head:
         Bucket to be dumped
+    :type head: struct hlist_head \*
 
-    :param int \*idx_s:
+    :param idx_s:
         Number of entries to be skipped
+    :type idx_s: int \*
 
-    :param int \*sub:
+    :param sub:
         Number of sub entries to be skipped
+    :type sub: int \*
 
 .. _`batadv_v_orig_dump_bucket.return`:
 
@@ -317,17 +365,21 @@ batadv_v_orig_dump
 
     Dump the originators into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Control block containing additional options
+    :type cb: struct netlink_callback \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         Limit dump to entries with this outgoing interface
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_v_init_sel_class`:
 
@@ -338,8 +390,9 @@ batadv_v_init_sel_class
 
     initialize GW selection class
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_v_gw_throughput_get`:
 
@@ -350,13 +403,15 @@ batadv_v_gw_throughput_get
 
     retrieve the GW-bandwidth for a given GW
 
-    :param struct batadv_gw_node \*gw_node:
+    :param gw_node:
         the GW to retrieve the metric for
+    :type gw_node: struct batadv_gw_node \*
 
-    :param u32 \*bw:
+    :param bw:
         the pointer where the metric will be stored. The metric is computed as
         the minimum between the GW advertised throughput and the path throughput to
         it in the mesh
+    :type bw: u32 \*
 
 .. _`batadv_v_gw_throughput_get.return`:
 
@@ -374,8 +429,9 @@ batadv_v_gw_get_best_gw_node
 
     retrieve the best GW node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_v_gw_get_best_gw_node.return`:
 
@@ -393,14 +449,17 @@ batadv_v_gw_is_eligible
 
     check if a originator would be selected as GW
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*curr_gw_orig:
+    :param curr_gw_orig:
         originator representing the currently selected GW
+    :type curr_gw_orig: struct batadv_orig_node \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator representing the new candidate
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_v_gw_is_eligible.return`:
 
@@ -418,11 +477,13 @@ batadv_v_gw_print
 
     print the gateway list
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         gateway table seq_file struct
+    :type seq: struct seq_file \*
 
 .. _`batadv_v_gw_dump_entry`:
 
@@ -433,20 +494,25 @@ batadv_v_gw_dump_entry
 
     Dump a gateway into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_gw_node \*gw_node:
+    :param gw_node:
         Gateway to be dumped
+    :type gw_node: struct batadv_gw_node \*
 
 .. _`batadv_v_gw_dump_entry.return`:
 
@@ -464,14 +530,17 @@ batadv_v_gw_dump
 
     Dump gateways into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Control block containing additional options
+    :type cb: struct netlink_callback \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_v_hardif_init`:
 
@@ -482,8 +551,9 @@ batadv_v_hardif_init
 
     initialize the algorithm specific fields in the hard-interface object
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the hard-interface to initialize
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_v_mesh_init`:
 
@@ -494,8 +564,9 @@ batadv_v_mesh_init
 
     initialize the B.A.T.M.A.N. V private resources for a mesh
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the object representing the mesh interface to initialise
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_v_mesh_init.return`:
 
@@ -513,8 +584,9 @@ batadv_v_mesh_free
 
     free the B.A.T.M.A.N. V private resources for a mesh
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the object representing the mesh interface to free
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_v_init`:
 
@@ -525,8 +597,9 @@ batadv_v_init
 
     B.A.T.M.A.N. V initialization function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_v_init.description`:
 

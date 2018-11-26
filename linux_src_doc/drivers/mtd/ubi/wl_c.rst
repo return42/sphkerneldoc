@@ -10,11 +10,13 @@ wl_tree_add
 
     add a wear-leveling entry to a WL RB-tree.
 
-    :param struct ubi_wl_entry \*e:
+    :param e:
         the wear-leveling entry to add
+    :type e: struct ubi_wl_entry \*
 
-    :param struct rb_root \*root:
+    :param root:
         the root of the tree
+    :type root: struct rb_root \*
 
 .. _`wl_tree_add.description`:
 
@@ -22,7 +24,7 @@ Description
 -----------
 
 Note, we use (erase counter, physical eraseblock number) pairs as keys in
-the \ ``ubi``\ ->used and \ ``ubi``\ ->free RB-trees.
+the \ ``ubi->used``\  and \ ``ubi->free``\  RB-trees.
 
 .. _`wl_entry_destroy`:
 
@@ -33,11 +35,13 @@ wl_entry_destroy
 
     destroy a wear-leveling entry.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_wl_entry \*e:
+    :param e:
         the wear-leveling entry to add
+    :type e: struct ubi_wl_entry \*
 
 .. _`wl_entry_destroy.description`:
 
@@ -56,8 +60,9 @@ do_work
 
     do one pending work.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`do_work.description`:
 
@@ -76,11 +81,13 @@ in_wl_tree
 
     check if wear-leveling entry is present in a WL RB-tree.
 
-    :param struct ubi_wl_entry \*e:
+    :param e:
         the wear-leveling entry to check
+    :type e: struct ubi_wl_entry \*
 
-    :param struct rb_root \*root:
+    :param root:
         the root of the tree
+    :type root: struct rb_root \*
 
 .. _`in_wl_tree.description`:
 
@@ -99,20 +106,22 @@ prot_queue_add
 
     add physical eraseblock to the protection queue.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_wl_entry \*e:
+    :param e:
         the physical eraseblock to add
+    :type e: struct ubi_wl_entry \*
 
 .. _`prot_queue_add.description`:
 
 Description
 -----------
 
-This function adds \ ``e``\  to the tail of the protection queue \ ``ubi``\ ->pq, where
+This function adds \ ``e``\  to the tail of the protection queue \ ``ubi->pq``\ , where
 \ ``e``\  will stay for \ ``UBI_PROT_QUEUE_LEN``\  erase operations and will be
-temporarily protected from the wear-leveling worker. Note, \ ``wl``\ ->lock has to
+temporarily protected from the wear-leveling worker. Note, \ ``wl->lock``\  has to
 be locked.
 
 .. _`find_wl_entry`:
@@ -124,14 +133,17 @@ find_wl_entry
 
     find wear-leveling entry closest to certain erase counter.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct rb_root \*root:
+    :param root:
         the RB-tree where to look for
+    :type root: struct rb_root \*
 
-    :param int diff:
+    :param diff:
         maximum possible difference from the smallest erase counter
+    :type diff: int
 
 .. _`find_wl_entry.description`:
 
@@ -150,11 +162,13 @@ find_mean_wl_entry
 
     find wear-leveling entry with medium erase counter.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct rb_root \*root:
+    :param root:
         the RB-tree where to look for
+    :type root: struct rb_root \*
 
 .. _`find_mean_wl_entry.description`:
 
@@ -174,8 +188,9 @@ wl_get_wle
 
     get a mean wl entry to be used by \ :c:func:`ubi_wl_get_peb`\  or \ :c:func:`refill_wl_user_pool`\ .
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`wl_get_wle.description`:
 
@@ -194,11 +209,13 @@ prot_queue_del
 
     remove a physical eraseblock from the protection queue.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock to remove
+    :type pnum: int
 
 .. _`prot_queue_del.description`:
 
@@ -217,14 +234,17 @@ sync_erase
 
     synchronously erase a physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_wl_entry \*e:
+    :param e:
         the the physical eraseblock to erase
+    :type e: struct ubi_wl_entry \*
 
-    :param int torture:
+    :param torture:
         if the physical eraseblock has to be tortured
+    :type torture: int
 
 .. _`sync_erase.description`:
 
@@ -243,8 +263,9 @@ serve_prot_queue
 
     check if it is time to stop protecting PEBs.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`serve_prot_queue.description`:
 
@@ -264,11 +285,13 @@ and should be moved to the used tree.
 
     schedule a work.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_work \*wrk:
+    :param wrk:
         the work to schedule
+    :type wrk: struct ubi_work \*
 
 .. _`__schedule_ubi_work.description`:
 
@@ -287,11 +310,13 @@ schedule_ubi_work
 
     schedule a work.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_work \*wrk:
+    :param wrk:
         the work to schedule
+    :type wrk: struct ubi_work \*
 
 .. _`schedule_ubi_work.description`:
 
@@ -310,23 +335,29 @@ schedule_erase
 
     schedule an erase work.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_wl_entry \*e:
+    :param e:
         the WL entry of the physical eraseblock to erase
+    :type e: struct ubi_wl_entry \*
 
-    :param int vol_id:
+    :param vol_id:
         the volume ID that last used this PEB
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         the last used logical eraseblock number for the PEB
+    :type lnum: int
 
-    :param int torture:
+    :param torture:
         if the physical eraseblock has to be tortured
+    :type torture: int
 
-    :param bool nested:
+    :param nested:
         *undescribed*
+    :type nested: bool
 
 .. _`schedule_erase.description`:
 
@@ -345,20 +376,25 @@ do_sync_erase
 
     run the erase worker synchronously.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_wl_entry \*e:
+    :param e:
         the WL entry of the physical eraseblock to erase
+    :type e: struct ubi_wl_entry \*
 
-    :param int vol_id:
+    :param vol_id:
         the volume ID that last used this PEB
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         the last used logical eraseblock number for the PEB
+    :type lnum: int
 
-    :param int torture:
+    :param torture:
         if the physical eraseblock has to be tortured
+    :type torture: int
 
 .. _`wear_leveling_worker`:
 
@@ -369,15 +405,18 @@ wear_leveling_worker
 
     wear-leveling worker function.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_work \*wrk:
+    :param wrk:
         the work object
+    :type wrk: struct ubi_work \*
 
-    :param int shutdown:
+    :param shutdown:
         non-zero if the worker has to free memory and exit
         because the WL-subsystem is shutting down
+    :type shutdown: int
 
 .. _`wear_leveling_worker.description`:
 
@@ -397,11 +436,13 @@ ensure_wear_leveling
 
     schedule wear-leveling if it is needed.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int nested:
+    :param nested:
         set to non-zero if this function is called from UBI worker
+    :type nested: int
 
 .. _`ensure_wear_leveling.description`:
 
@@ -421,11 +462,13 @@ code in case of failure.
 
     physical eraseblock erase worker function.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_work \*wl_wrk:
+    :param wl_wrk:
         the work object
+    :type wl_wrk: struct ubi_work \*
 
 .. _`__erase_worker.description`:
 
@@ -446,20 +489,25 @@ ubi_wl_put_peb
 
     return a PEB to the wear-leveling sub-system.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         the volume ID that last used this PEB
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         the last used logical eraseblock number for the PEB
+    :type lnum: int
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock to return
+    :type pnum: int
 
-    :param int torture:
+    :param torture:
         if this physical eraseblock has to be tortured
+    :type torture: int
 
 .. _`ubi_wl_put_peb.description`:
 
@@ -480,11 +528,13 @@ ubi_wl_scrub_peb
 
     schedule a physical eraseblock for scrubbing.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock to schedule
+    :type pnum: int
 
 .. _`ubi_wl_scrub_peb.description`:
 
@@ -505,14 +555,17 @@ ubi_wl_flush
 
     flush all pending works.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         the volume id to flush for
+    :type vol_id: int
 
-    :param int lnum:
+    :param lnum:
         the logical eraseblock number to flush for
+    :type lnum: int
 
 .. _`ubi_wl_flush.description`:
 
@@ -534,11 +587,13 @@ tree_destroy
 
     destroy an RB-tree.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct rb_root \*root:
+    :param root:
         the root of the tree to destroy
+    :type root: struct rb_root \*
 
 .. _`ubi_thread`:
 
@@ -549,8 +604,9 @@ ubi_thread
 
     UBI background thread.
 
-    :param void \*u:
+    :param u:
         the UBI device description object pointer
+    :type u: void \*
 
 .. _`shutdown_work`:
 
@@ -561,8 +617,9 @@ shutdown_work
 
     shutdown all pending works.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`erase_aeb`:
 
@@ -573,14 +630,17 @@ erase_aeb
 
     erase a PEB given in UBI attach info PEB
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_ainf_peb \*aeb:
+    :param aeb:
         UBI attach info PEB
+    :type aeb: struct ubi_ainf_peb \*
 
-    :param bool sync:
+    :param sync:
         If true, erase synchronously. Otherwise schedule for erasure
+    :type sync: bool
 
 .. _`ubi_wl_init`:
 
@@ -591,11 +651,13 @@ ubi_wl_init
 
     initialize the WL sub-system using attaching information.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attaching information
+    :type ai: struct ubi_attach_info \*
 
 .. _`ubi_wl_init.description`:
 
@@ -614,8 +676,9 @@ protection_queue_destroy
 
     destroy the protection queue.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_wl_close`:
 
@@ -626,8 +689,9 @@ ubi_wl_close
 
     close the wear-leveling sub-system.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`self_check_ec`:
 
@@ -638,14 +702,17 @@ self_check_ec
 
     make sure that the erase counter of a PEB is correct.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to check
+    :type pnum: int
 
-    :param int ec:
+    :param ec:
         the erase counter to check
+    :type ec: int
 
 .. _`self_check_ec.description`:
 
@@ -665,14 +732,17 @@ self_check_in_wl_tree
 
     check that wear-leveling entry is in WL RB-tree.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param struct ubi_wl_entry \*e:
+    :param e:
         the wear-leveling entry to check
+    :type e: struct ubi_wl_entry \*
 
-    :param struct rb_root \*root:
+    :param root:
         the root of the tree
+    :type root: struct rb_root \*
 
 .. _`self_check_in_wl_tree.description`:
 
@@ -691,18 +761,20 @@ self_check_in_pq
 
     check if wear-leveling entry is in the protection queue.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param struct ubi_wl_entry \*e:
+    :param e:
         the wear-leveling entry to check
+    :type e: struct ubi_wl_entry \*
 
 .. _`self_check_in_pq.description`:
 
 Description
 -----------
 
-This function returns zero if \ ``e``\  is in \ ``ubi``\ ->pq and \ ``-EINVAL``\  if it is not.
+This function returns zero if \ ``e``\  is in \ ``ubi->pq``\  and \ ``-EINVAL``\  if it is not.
 
 .. _`produce_free_peb`:
 
@@ -713,8 +785,9 @@ produce_free_peb
 
     produce a free physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`produce_free_peb.description`:
 
@@ -735,8 +808,9 @@ ubi_wl_get_peb
 
     get a physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_wl_get_peb.description`:
 

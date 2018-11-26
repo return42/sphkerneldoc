@@ -10,11 +10,13 @@ nvmet_rdma_device_removal
 
     Handle RDMA device removal
 
-    :param struct rdma_cm_id \*cm_id:
+    :param cm_id:
         rdma_cm id, used for nvmet port
+    :type cm_id: struct rdma_cm_id \*
 
-    :param struct nvmet_rdma_queue \*queue:
+    :param queue:
         nvmet rdma queue (cm id qp_context)
+    :type queue: struct nvmet_rdma_queue \*
 
 .. _`nvmet_rdma_device_removal.description`:
 

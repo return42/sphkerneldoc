@@ -10,8 +10,9 @@ mei_cl_conn_status_to_errno
 
     convert client connect response status to error code
 
-    :param enum mei_cl_connect_status status:
+    :param status:
         client connect response status
+    :type status: enum mei_cl_connect_status
 
 .. _`mei_cl_conn_status_to_errno.return`:
 
@@ -19,6 +20,27 @@ Return
 ------
 
 corresponding error code
+
+.. _`mei_hbm_write_message`:
+
+mei_hbm_write_message
+=====================
+
+.. c:function:: int mei_hbm_write_message(struct mei_device *dev, struct mei_msg_hdr *hdr, const void *data)
+
+    wrapper for sending hbm messages.
+
+    :param dev:
+        mei device
+    :type dev: struct mei_device \*
+
+    :param hdr:
+        mei header
+    :type hdr: struct mei_msg_hdr \*
+
+    :param data:
+        payload
+    :type data: const void \*
 
 .. _`mei_hbm_idle`:
 
@@ -29,8 +51,9 @@ mei_hbm_idle
 
     set hbm to idle state
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_reset`:
 
@@ -41,8 +64,9 @@ mei_hbm_reset
 
     reset hbm counters and book keeping data structurs
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_hdr`:
 
@@ -53,11 +77,13 @@ mei_hbm_hdr
 
     construct hbm header
 
-    :param struct mei_msg_hdr \*hdr:
+    :param hdr:
         hbm header
+    :type hdr: struct mei_msg_hdr \*
 
-    :param size_t length:
+    :param length:
         payload length
+    :type length: size_t
 
 .. _`mei_hbm_cl_hdr`:
 
@@ -68,17 +94,21 @@ mei_hbm_cl_hdr
 
     construct client hbm header
 
-    :param struct mei_cl \*cl:
+    :param cl:
         client
+    :type cl: struct mei_cl \*
 
-    :param u8 hbm_cmd:
+    :param hbm_cmd:
         host bus message command
+    :type hbm_cmd: u8
 
-    :param void \*buf:
+    :param buf:
         buffer for cl header
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         buffer length
+    :type len: size_t
 
 .. _`mei_hbm_cl_write`:
 
@@ -89,20 +119,25 @@ mei_hbm_cl_write
 
     write simple hbm client message
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_cl \*cl:
+    :param cl:
         client
+    :type cl: struct mei_cl \*
 
-    :param u8 hbm_cmd:
+    :param hbm_cmd:
         host bus message command
+    :type hbm_cmd: u8
 
-    :param void \*buf:
+    :param buf:
         message buffer
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         buffer length
+    :type len: size_t
 
 .. _`mei_hbm_cl_write.return`:
 
@@ -120,11 +155,13 @@ mei_hbm_cl_addr_equal
 
     check if the client's and the message address match
 
-    :param struct mei_cl \*cl:
+    :param cl:
         client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_hbm_cl_cmd \*cmd:
+    :param cmd:
         hbm client message
+    :type cmd: struct mei_hbm_cl_cmd \*
 
 .. _`mei_hbm_cl_addr_equal.return`:
 
@@ -142,11 +179,13 @@ mei_hbm_cl_find_by_cmd
 
     find recipient client
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param void \*buf:
+    :param buf:
         a buffer with hbm cl command
+    :type buf: void \*
 
 .. _`mei_hbm_cl_find_by_cmd.return`:
 
@@ -164,8 +203,9 @@ mei_hbm_start_wait
 
     wait for start response message.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_start_wait.return`:
 
@@ -183,8 +223,9 @@ mei_hbm_start_req
 
     sends start request message.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_start_req.return`:
 
@@ -202,8 +243,9 @@ mei_hbm_enum_clients_req
 
     sends enumeration client request message.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_enum_clients_req.return`:
 
@@ -221,11 +263,13 @@ mei_hbm_me_cl_add
 
     add new me client to the list
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct hbm_props_response \*res:
+    :param res:
         hbm property response
+    :type res: struct hbm_props_response \*
 
 .. _`mei_hbm_me_cl_add.return`:
 
@@ -243,14 +287,17 @@ mei_hbm_add_cl_resp
 
     send response to fw on client add request
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u8 addr:
+    :param addr:
         me address
+    :type addr: u8
 
-    :param u8 status:
+    :param status:
         response status
+    :type status: u8
 
 .. _`mei_hbm_add_cl_resp.return`:
 
@@ -268,11 +315,13 @@ mei_hbm_fw_add_cl_req
 
     request from the fw to add a client
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct hbm_add_client_request \*req:
+    :param req:
         add client request
+    :type req: struct hbm_add_client_request \*
 
 .. _`mei_hbm_fw_add_cl_req.return`:
 
@@ -290,14 +339,17 @@ mei_hbm_cl_notify_req
 
     send notification request
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_cl \*cl:
+    :param cl:
         a client to disconnect from
+    :type cl: struct mei_cl \*
 
-    :param u8 start:
+    :param start:
         true for start false for stop
+    :type start: u8
 
 .. _`mei_hbm_cl_notify_req.return`:
 
@@ -315,8 +367,9 @@ notify_res_to_fop
 
     convert notification response to the proper notification FOP
 
-    :param struct mei_hbm_cl_cmd \*cmd:
+    :param cmd:
         client notification start response command
+    :type cmd: struct mei_hbm_cl_cmd \*
 
 .. _`notify_res_to_fop.return`:
 
@@ -334,14 +387,17 @@ mei_hbm_cl_notify_start_res
 
     update the client state according notify start response
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_cl \*cl:
+    :param cl:
         mei host client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_hbm_cl_cmd \*cmd:
+    :param cmd:
         client notification start response command
+    :type cmd: struct mei_hbm_cl_cmd \*
 
 .. _`mei_hbm_cl_notify_stop_res`:
 
@@ -352,14 +408,17 @@ mei_hbm_cl_notify_stop_res
 
     update the client state according notify stop response
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_cl \*cl:
+    :param cl:
         mei host client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_hbm_cl_cmd \*cmd:
+    :param cmd:
         client notification stop response command
+    :type cmd: struct mei_hbm_cl_cmd \*
 
 .. _`mei_hbm_cl_notify`:
 
@@ -370,11 +429,13 @@ mei_hbm_cl_notify
 
     signal notification event
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_hbm_cl_cmd \*cmd:
+    :param cmd:
         notification client message
+    :type cmd: struct mei_hbm_cl_cmd \*
 
 .. _`mei_hbm_prop_req`:
 
@@ -385,11 +446,13 @@ mei_hbm_prop_req
 
     request property for a single client
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param unsigned long start_idx:
+    :param start_idx:
         client index to start search
+    :type start_idx: unsigned long
 
 .. _`mei_hbm_prop_req.return`:
 
@@ -407,11 +470,13 @@ mei_hbm_pg
 
     sends pg command
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u8 pg_cmd:
+    :param pg_cmd:
         the pg command code
+    :type pg_cmd: u8
 
 .. _`mei_hbm_pg.return`:
 
@@ -430,8 +495,9 @@ mei_hbm_stop_req
 
     send stop request message
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_stop_req.return`:
 
@@ -449,11 +515,13 @@ mei_hbm_cl_flow_control_req
 
     sends flow control request.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_cl \*cl:
+    :param cl:
         client info
+    :type cl: struct mei_cl \*
 
 .. _`mei_hbm_cl_flow_control_req.return`:
 
@@ -471,11 +539,13 @@ mei_hbm_add_single_tx_flow_ctrl_creds
 
     adds single buffer credentials.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct hbm_flow_control \*fctrl:
+    :param fctrl:
         flow control response bus message
+    :type fctrl: struct hbm_flow_control \*
 
 .. _`mei_hbm_add_single_tx_flow_ctrl_creds.return`:
 
@@ -493,11 +563,13 @@ mei_hbm_cl_tx_flow_ctrl_creds_res
 
     flow control response from me
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct hbm_flow_control \*fctrl:
+    :param fctrl:
         flow control response bus message
+    :type fctrl: struct hbm_flow_control \*
 
 .. _`mei_hbm_cl_disconnect_req`:
 
@@ -508,11 +580,13 @@ mei_hbm_cl_disconnect_req
 
     sends disconnect message to fw.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_cl \*cl:
+    :param cl:
         a client to disconnect from
+    :type cl: struct mei_cl \*
 
 .. _`mei_hbm_cl_disconnect_req.return`:
 
@@ -530,11 +604,13 @@ mei_hbm_cl_disconnect_rsp
 
     sends disconnect respose to the FW
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_cl \*cl:
+    :param cl:
         a client to disconnect from
+    :type cl: struct mei_cl \*
 
 .. _`mei_hbm_cl_disconnect_rsp.return`:
 
@@ -552,14 +628,17 @@ mei_hbm_cl_disconnect_res
 
     update the client state according disconnect response
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_cl \*cl:
+    :param cl:
         mei host client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_hbm_cl_cmd \*cmd:
+    :param cmd:
         disconnect client response host bus message
+    :type cmd: struct mei_hbm_cl_cmd \*
 
 .. _`mei_hbm_cl_connect_req`:
 
@@ -570,11 +649,13 @@ mei_hbm_cl_connect_req
 
     send connection request to specific me client
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_cl \*cl:
+    :param cl:
         a client to connect to
+    :type cl: struct mei_cl \*
 
 .. _`mei_hbm_cl_connect_req.return`:
 
@@ -592,14 +673,17 @@ mei_hbm_cl_connect_res
 
     update the client state according connection response
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_cl \*cl:
+    :param cl:
         mei host client
+    :type cl: struct mei_cl \*
 
-    :param struct mei_hbm_cl_cmd \*cmd:
+    :param cmd:
         connect client response host bus message
+    :type cmd: struct mei_hbm_cl_cmd \*
 
 .. _`mei_hbm_cl_res`:
 
@@ -610,14 +694,17 @@ mei_hbm_cl_res
 
     process hbm response received on behalf an client
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_hbm_cl_cmd \*rs:
+    :param rs:
         hbm client message
+    :type rs: struct mei_hbm_cl_cmd \*
 
-    :param enum mei_cb_file_ops fop_type:
+    :param fop_type:
         file operation type
+    :type fop_type: enum mei_cb_file_ops
 
 .. _`mei_hbm_fw_disconnect_req`:
 
@@ -628,11 +715,13 @@ mei_hbm_fw_disconnect_req
 
     disconnect request initiated by ME firmware host sends disconnect response
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure.
+    :type dev: struct mei_device \*
 
-    :param struct hbm_client_connect_request \*disconnect_req:
+    :param disconnect_req:
         disconnect request bus message from the me
+    :type disconnect_req: struct hbm_client_connect_request \*
 
 .. _`mei_hbm_fw_disconnect_req.return`:
 
@@ -650,8 +739,9 @@ mei_hbm_pg_enter_res
 
     PG enter response received
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure.
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_pg_enter_res.return`:
 
@@ -669,8 +759,9 @@ mei_hbm_pg_resume
 
     process with PG resume
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure.
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_pg_exit_res`:
 
@@ -681,8 +772,9 @@ mei_hbm_pg_exit_res
 
     PG exit response received
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure.
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_pg_exit_res.return`:
 
@@ -700,8 +792,9 @@ mei_hbm_config_features
 
     check what hbm features and commands are supported by the fw
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_version_is_supported`:
 
@@ -712,8 +805,9 @@ mei_hbm_version_is_supported
 
     checks whether the driver can support the hbm version of the device
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_hbm_version_is_supported.return`:
 
@@ -731,11 +825,13 @@ mei_hbm_dispatch
 
     bottom half read routine after ISR to handle the read bus message cmd processing.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_msg_hdr \*hdr:
+    :param hdr:
         header of bus message
+    :type hdr: struct mei_msg_hdr \*
 
 .. _`mei_hbm_dispatch.return`:
 

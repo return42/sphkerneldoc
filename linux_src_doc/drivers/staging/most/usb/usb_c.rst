@@ -138,14 +138,17 @@ drci_rd_reg
 
     read a DCI register
 
-    :param struct usb_device \*dev:
+    :param dev:
         usb device
+    :type dev: struct usb_device \*
 
-    :param u16 reg:
+    :param reg:
         register address
+    :type reg: u16
 
-    :param u16 \*buf:
+    :param buf:
         buffer to store data
+    :type buf: u16 \*
 
 .. _`drci_rd_reg.description`:
 
@@ -163,14 +166,17 @@ drci_wr_reg
 
     write a DCI register
 
-    :param struct usb_device \*dev:
+    :param dev:
         usb device
+    :type dev: struct usb_device \*
 
-    :param u16 reg:
+    :param reg:
         register address
+    :type reg: u16
 
-    :param u16 data:
+    :param data:
         data to write
+    :type data: u16
 
 .. _`drci_wr_reg.description`:
 
@@ -188,8 +194,9 @@ get_stream_frame_size
 
     calculate frame size of current configuration
 
-    :param struct most_channel_config \*cfg:
+    :param cfg:
         channel configuration
+    :type cfg: struct most_channel_config \*
 
 .. _`hdm_poison_channel`:
 
@@ -200,11 +207,13 @@ hdm_poison_channel
 
     mark buffers of this channel as invalid
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to the interface
+    :type iface: struct most_interface \*
 
-    :param int channel:
+    :param channel:
         channel ID
+    :type channel: int
 
 .. _`hdm_poison_channel.description`:
 
@@ -226,14 +235,17 @@ hdm_add_padding
 
     add padding bytes
 
-    :param struct most_dev \*mdev:
+    :param mdev:
         most device
+    :type mdev: struct most_dev \*
 
-    :param int channel:
+    :param channel:
         channel ID
+    :type channel: int
 
-    :param struct mbo \*mbo:
+    :param mbo:
         buffer object
+    :type mbo: struct mbo \*
 
 .. _`hdm_add_padding.description`:
 
@@ -252,14 +264,17 @@ hdm_remove_padding
 
     remove padding bytes
 
-    :param struct most_dev \*mdev:
+    :param mdev:
         most device
+    :type mdev: struct most_dev \*
 
-    :param int channel:
+    :param channel:
         channel ID
+    :type channel: int
 
-    :param struct mbo \*mbo:
+    :param mbo:
         buffer object
+    :type mbo: struct mbo \*
 
 .. _`hdm_remove_padding.description`:
 
@@ -278,8 +293,9 @@ hdm_write_completion
 
     completion function for submitted Tx URBs
 
-    :param struct urb \*urb:
+    :param urb:
         the URB that has been completed
+    :type urb: struct urb \*
 
 .. _`hdm_write_completion.description`:
 
@@ -307,8 +323,9 @@ hdm_read_completion
 
     completion function for submitted Rx URBs
 
-    :param struct urb \*urb:
+    :param urb:
         the URB that has been completed
+    :type urb: struct urb \*
 
 .. _`hdm_read_completion.description`:
 
@@ -433,14 +450,17 @@ hdm_enqueue
 
     receive a buffer to be used for data transfer
 
-    :param struct most_interface \*iface:
+    :param iface:
         interface to enqueue to
+    :type iface: struct most_interface \*
 
-    :param int channel:
+    :param channel:
         ID of the channel
+    :type channel: int
 
-    :param struct mbo \*mbo:
+    :param mbo:
         pointer to the buffer object
+    :type mbo: struct mbo \*
 
 .. _`hdm_enqueue.description`:
 
@@ -470,14 +490,17 @@ hdm_configure_channel
 
     receive channel configuration from core
 
-    :param struct most_interface \*iface:
+    :param iface:
         interface
+    :type iface: struct most_interface \*
 
-    :param int channel:
+    :param channel:
         channel ID
+    :type channel: int
 
-    :param struct most_channel_config \*conf:
+    :param conf:
         structure that holds the configuration information
+    :type conf: struct most_channel_config \*
 
 .. _`hdm_configure_channel.description`:
 
@@ -501,11 +524,13 @@ hdm_request_netinfo
 
     request network information
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface
+    :type iface: struct most_interface \*
 
-    :param int channel:
+    :param channel:
         channel ID
+    :type channel: int
 
     :param void (\*on_netinfo)(struct most_interface \*, unsigned char, unsigned char \*):
         *undescribed*
@@ -527,8 +552,9 @@ link_stat_timer_handler
 
     schedule work obtaining mac address and link status
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`link_stat_timer_handler.description`:
 
@@ -547,8 +573,9 @@ wq_netinfo
 
     work queue function to deliver latest networking information
 
-    :param struct work_struct \*wq_obj:
+    :param wq_obj:
         object that holds data for our deferred work to do
+    :type wq_obj: struct work_struct \*
 
 .. _`wq_netinfo.description`:
 
@@ -566,8 +593,9 @@ wq_clear_halt
 
     work queue function
 
-    :param struct work_struct \*wq_obj:
+    :param wq_obj:
         work_struct object to execute
+    :type wq_obj: struct work_struct \*
 
 .. _`wq_clear_halt.description`:
 
@@ -585,11 +613,13 @@ hdm_probe
 
     probe function of USB device driver
 
-    :param struct usb_interface \*interface:
+    :param interface:
         Interface of the attached USB device
+    :type interface: struct usb_interface \*
 
-    :param const struct usb_device_id \*id:
+    :param id:
         Pointer to the USB ID table.
+    :type id: const struct usb_device_id \*
 
 .. _`hdm_probe.description`:
 
@@ -612,8 +642,9 @@ hdm_disconnect
 
     disconnect function of USB device driver
 
-    :param struct usb_interface \*interface:
+    :param interface:
         Interface of the attached USB device
+    :type interface: struct usb_interface \*
 
 .. _`hdm_disconnect.description`:
 

@@ -10,8 +10,9 @@ bsg_teardown_job
 
     routine to teardown a bsg job
 
-    :param struct kref \*kref:
+    :param kref:
         kref inside bsg_job that is to be torn down
+    :type kref: struct kref \*
 
 .. _`bsg_job_done`:
 
@@ -22,14 +23,17 @@ bsg_job_done
 
     completion routine for bsg requests
 
-    :param struct bsg_job \*job:
+    :param job:
         bsg_job that is complete
+    :type job: struct bsg_job \*
 
-    :param int result:
+    :param result:
         job reply result
+    :type result: int
 
-    :param unsigned int reply_payload_rcv_len:
+    :param reply_payload_rcv_len:
         length of payload recvd
+    :type reply_payload_rcv_len: unsigned int
 
 .. _`bsg_job_done.description`:
 
@@ -47,8 +51,9 @@ bsg_softirq_done
 
     softirq done routine for destroying the bsg requests
 
-    :param struct request \*rq:
+    :param rq:
         BSG request that holds the job to be destroyed
+    :type rq: struct request \*
 
 .. _`bsg_prepare_job`:
 
@@ -59,11 +64,13 @@ bsg_prepare_job
 
     create the bsg_job structure for the bsg request
 
-    :param struct device \*dev:
+    :param dev:
         device that is being sent the bsg request
+    :type dev: struct device \*
 
-    :param struct request \*req:
+    :param req:
         BSG request that needs a job structure
+    :type req: struct request \*
 
 .. _`bsg_request_fn`:
 
@@ -74,8 +81,9 @@ bsg_request_fn
 
     generic handler for bsg requests
 
-    :param struct request_queue \*q:
+    :param q:
         request queue to manage
+    :type q: struct request_queue \*
 
 .. _`bsg_request_fn.description`:
 
@@ -96,17 +104,21 @@ bsg_setup_queue
 
     Create and add the bsg hooks so we can receive requests
 
-    :param struct device \*dev:
+    :param dev:
         device to attach bsg device to
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         device to give bsg device
+    :type name: const char \*
 
-    :param bsg_job_fn \*job_fn:
+    :param job_fn:
         bsg job handler
+    :type job_fn: bsg_job_fn \*
 
-    :param int dd_job_size:
+    :param dd_job_size:
         size of LLD data needed for each job
+    :type dd_job_size: int
 
 .. This file was automatic generated / don't edit.
 

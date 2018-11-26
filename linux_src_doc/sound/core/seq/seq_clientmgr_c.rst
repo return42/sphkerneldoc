@@ -10,14 +10,17 @@ snd_seq_kernel_client_ctl
 
     operate a command for a client with data in kernel space.
 
-    :param int clientid:
+    :param clientid:
         A numerical ID for a client.
+    :type clientid: int
 
-    :param unsigned int cmd:
+    :param cmd:
         An ioctl(2) command for ALSA sequencer operation.
+    :type cmd: unsigned int
 
-    :param void \*arg:
+    :param arg:
         A pointer to data in kernel space.
+    :type arg: void \*
 
 .. _`snd_seq_kernel_client_ctl.description`:
 

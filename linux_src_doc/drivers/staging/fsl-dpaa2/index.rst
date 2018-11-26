@@ -7,6 +7,4 @@ fsl-dpaa2
 .. toctree::
     :maxdepth: 1
 
-    ethernet/index
     ethsw/index
-    rtc/index

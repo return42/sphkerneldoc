@@ -10,8 +10,9 @@ hmcdrv_mod_init
 
     module init function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hmcdrv_mod_exit`:
 
@@ -22,8 +23,9 @@ hmcdrv_mod_exit
 
     module exit function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

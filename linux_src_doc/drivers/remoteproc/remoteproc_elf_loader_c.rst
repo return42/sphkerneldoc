@@ -10,11 +10,13 @@ rproc_elf_sanity_check
 
     Sanity Check ELF firmware image
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the remote processor handle
+    :type rproc: struct rproc \*
 
-    :param const struct firmware \*fw:
+    :param fw:
         the ELF firmware image
+    :type fw: const struct firmware \*
 
 .. _`rproc_elf_sanity_check.description`:
 
@@ -32,11 +34,13 @@ rproc_elf_get_boot_addr
 
     Get rproc's boot address.
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the remote processor handle
+    :type rproc: struct rproc \*
 
-    :param const struct firmware \*fw:
+    :param fw:
         the ELF firmware image
+    :type fw: const struct firmware \*
 
 .. _`rproc_elf_get_boot_addr.description`:
 
@@ -58,11 +62,13 @@ rproc_elf_load_segments
 
     load firmware segments to memory
 
-    :param struct rproc \*rproc:
+    :param rproc:
         remote processor which will be booted using these fw segments
+    :type rproc: struct rproc \*
 
-    :param const struct firmware \*fw:
+    :param fw:
         the ELF firmware image
+    :type fw: const struct firmware \*
 
 .. _`rproc_elf_load_segments.description`:
 
@@ -103,11 +109,13 @@ rproc_elf_load_rsc_table
 
     load the resource table
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the rproc handle
+    :type rproc: struct rproc \*
 
-    :param const struct firmware \*fw:
+    :param fw:
         the ELF firmware image
+    :type fw: const struct firmware \*
 
 .. _`rproc_elf_load_rsc_table.description`:
 
@@ -133,11 +141,13 @@ rproc_elf_find_loaded_rsc_table
 
     find the loaded resource table
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the rproc handle
+    :type rproc: struct rproc \*
 
-    :param const struct firmware \*fw:
+    :param fw:
         the ELF firmware image
+    :type fw: const struct firmware \*
 
 .. _`rproc_elf_find_loaded_rsc_table.description`:
 

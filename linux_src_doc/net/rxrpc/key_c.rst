@@ -10,8 +10,9 @@ rxrpc_get_null_key
 
     Generate a null RxRPC key
 
-    :param const char \*keyname:
+    :param keyname:
         The name to give the key.
+    :type keyname: const char \*
 
 .. _`rxrpc_get_null_key.description`:
 

@@ -65,282 +65,6 @@ future_tbl
 buckets
     size \* hash buckets
 
-.. _`rhashtable_compare_arg`:
-
-struct rhashtable_compare_arg
-=============================
-
-.. c:type:: struct rhashtable_compare_arg
-
-    Key for the function rhashtable_compare
-
-.. _`rhashtable_compare_arg.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct rhashtable_compare_arg {
-        struct rhashtable *ht;
-        const void *key;
-    }
-
-.. _`rhashtable_compare_arg.members`:
-
-Members
--------
-
-ht
-    Hash table
-
-key
-    Key to compare against
-
-.. _`rhashtable_params`:
-
-struct rhashtable_params
-========================
-
-.. c:type:: struct rhashtable_params
-
-    Hash table construction parameters
-
-.. _`rhashtable_params.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct rhashtable_params {
-        u16 nelem_hint;
-        u16 key_len;
-        u16 key_offset;
-        u16 head_offset;
-        unsigned int max_size;
-        u16 min_size;
-        bool automatic_shrinking;
-        u8 locks_mul;
-        u32 nulls_base;
-        rht_hashfn_t hashfn;
-        rht_obj_hashfn_t obj_hashfn;
-        rht_obj_cmpfn_t obj_cmpfn;
-    }
-
-.. _`rhashtable_params.members`:
-
-Members
--------
-
-nelem_hint
-    Hint on number of elements, should be 75% of desired size
-
-key_len
-    Length of key
-
-key_offset
-    Offset of key in struct to be hashed
-
-head_offset
-    Offset of rhash_head in struct to be hashed
-
-max_size
-    Maximum size while expanding
-
-min_size
-    Minimum size while shrinking
-
-automatic_shrinking
-    Enable automatic shrinking of tables
-
-locks_mul
-    Number of bucket locks to allocate per cpu (default: 32)
-
-nulls_base
-    Base value to generate nulls marker
-
-hashfn
-    Hash function (default: jhash2 if !(key_len % 4), or jhash)
-
-obj_hashfn
-    Function to hash object
-
-obj_cmpfn
-    Function to compare key with object
-
-.. _`rhashtable`:
-
-struct rhashtable
-=================
-
-.. c:type:: struct rhashtable
-
-    Hash table handle
-
-.. _`rhashtable.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct rhashtable {
-        struct bucket_table __rcu *tbl;
-        unsigned int key_len;
-        unsigned int max_elems;
-        struct rhashtable_params p;
-        bool rhlist;
-        struct work_struct run_work;
-        struct mutex mutex;
-        spinlock_t lock;
-        atomic_t nelems;
-    }
-
-.. _`rhashtable.members`:
-
-Members
--------
-
-tbl
-    Bucket table
-
-key_len
-    Key length for hashfn
-
-max_elems
-    Maximum number of elements in table
-
-p
-    Configuration parameters
-
-rhlist
-    True if this is an rhltable
-
-run_work
-    Deferred worker to expand/shrink asynchronously
-
-mutex
-    Mutex to protect current/future table swapping
-
-lock
-    Spin lock to protect walker list
-
-nelems
-    Number of elements in table
-
-.. _`rhltable`:
-
-struct rhltable
-===============
-
-.. c:type:: struct rhltable
-
-    Hash table with duplicate objects in a list
-
-.. _`rhltable.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct rhltable {
-        struct rhashtable ht;
-    }
-
-.. _`rhltable.members`:
-
-Members
--------
-
-ht
-    Underlying rhtable
-
-.. _`rhashtable_walker`:
-
-struct rhashtable_walker
-========================
-
-.. c:type:: struct rhashtable_walker
-
-    Hash table walker
-
-.. _`rhashtable_walker.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct rhashtable_walker {
-        struct list_head list;
-        struct bucket_table *tbl;
-    }
-
-.. _`rhashtable_walker.members`:
-
-Members
--------
-
-list
-    List entry on list of walkers
-
-tbl
-    The table that we were walking over
-
-.. _`rhashtable_iter`:
-
-struct rhashtable_iter
-======================
-
-.. c:type:: struct rhashtable_iter
-
-    Hash table iterator
-
-.. _`rhashtable_iter.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct rhashtable_iter {
-        struct rhashtable *ht;
-        struct rhash_head *p;
-        struct rhlist_head *list;
-        struct rhashtable_walker walker;
-        unsigned int slot;
-        unsigned int skip;
-        bool end_of_table;
-    }
-
-.. _`rhashtable_iter.members`:
-
-Members
--------
-
-ht
-    Table to iterate through
-
-p
-    Current pointer
-
-list
-    Current hash list pointer
-
-walker
-    Associated rhashtable walker
-
-slot
-    Current slot
-
-skip
-    Number of entries to skip in slot
-
-end_of_table
-    *undescribed*
-
 .. _`rht_grow_above_75`:
 
 rht_grow_above_75
@@ -350,11 +74,13 @@ rht_grow_above_75
 
     returns true if nelems > 0.75 \* table-size
 
-    :param const struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: const struct rhashtable \*
 
-    :param const struct bucket_table \*tbl:
+    :param tbl:
         current table
+    :type tbl: const struct bucket_table \*
 
 .. _`rht_shrink_below_30`:
 
@@ -365,11 +91,13 @@ rht_shrink_below_30
 
     returns true if nelems < 0.3 \* table-size
 
-    :param const struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: const struct rhashtable \*
 
-    :param const struct bucket_table \*tbl:
+    :param tbl:
         current table
+    :type tbl: const struct bucket_table \*
 
 .. _`rht_grow_above_100`:
 
@@ -380,11 +108,13 @@ rht_grow_above_100
 
     returns true if nelems > table-size
 
-    :param const struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: const struct rhashtable \*
 
-    :param const struct bucket_table \*tbl:
+    :param tbl:
         current table
+    :type tbl: const struct bucket_table \*
 
 .. _`rht_grow_above_max`:
 
@@ -395,11 +125,13 @@ rht_grow_above_max
 
     returns true if table is above maximum
 
-    :param const struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: const struct rhashtable \*
 
-    :param const struct bucket_table \*tbl:
+    :param tbl:
         current table
+    :type tbl: const struct bucket_table \*
 
 .. _`rht_for_each_continue`:
 
@@ -410,17 +142,21 @@ rht_for_each_continue
 
     continue iterating over hash chain
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rhash_head <rhash_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the previous \ :c:type:`struct rhash_head <rhash_head>`\  to continue from
+    :type head: 
 
-    :param  tbl:
+    :param tbl:
         the \ :c:type:`struct bucket_table <bucket_table>`\ 
+    :type tbl: 
 
-    :param  hash:
+    :param hash:
         the hash value / bucket index
+    :type hash: 
 
 .. _`rht_for_each`:
 
@@ -431,14 +167,17 @@ rht_for_each
 
     iterate over hash chain
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rhash_head <rhash_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  tbl:
+    :param tbl:
         the \ :c:type:`struct bucket_table <bucket_table>`\ 
+    :type tbl: 
 
-    :param  hash:
+    :param hash:
         the hash value / bucket index
+    :type hash: 
 
 .. _`rht_for_each_entry_continue`:
 
@@ -449,23 +188,29 @@ rht_for_each_entry_continue
 
     continue iterating over hash chain
 
-    :param  tpos:
+    :param tpos:
         the type \* to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rhash_head <rhash_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the previous \ :c:type:`struct rhash_head <rhash_head>`\  to continue from
+    :type head: 
 
-    :param  tbl:
+    :param tbl:
         the \ :c:type:`struct bucket_table <bucket_table>`\ 
+    :type tbl: 
 
-    :param  hash:
+    :param hash:
         the hash value / bucket index
+    :type hash: 
 
-    :param  member:
+    :param member:
         name of the \ :c:type:`struct rhash_head <rhash_head>`\  within the hashable struct.
+    :type member: 
 
 .. _`rht_for_each_entry`:
 
@@ -476,20 +221,25 @@ rht_for_each_entry
 
     iterate over hash chain of given type
 
-    :param  tpos:
+    :param tpos:
         the type \* to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rhash_head <rhash_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  tbl:
+    :param tbl:
         the \ :c:type:`struct bucket_table <bucket_table>`\ 
+    :type tbl: 
 
-    :param  hash:
+    :param hash:
         the hash value / bucket index
+    :type hash: 
 
-    :param  member:
+    :param member:
         name of the \ :c:type:`struct rhash_head <rhash_head>`\  within the hashable struct.
+    :type member: 
 
 .. _`rht_for_each_entry_safe`:
 
@@ -500,23 +250,29 @@ rht_for_each_entry_safe
 
     safely iterate over hash chain of given type
 
-    :param  tpos:
+    :param tpos:
         the type \* to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rhash_head <rhash_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  next:
+    :param next:
         the \ :c:type:`struct rhash_head <rhash_head>`\  to use as next in loop cursor.
+    :type next: 
 
-    :param  tbl:
+    :param tbl:
         the \ :c:type:`struct bucket_table <bucket_table>`\ 
+    :type tbl: 
 
-    :param  hash:
+    :param hash:
         the hash value / bucket index
+    :type hash: 
 
-    :param  member:
+    :param member:
         name of the \ :c:type:`struct rhash_head <rhash_head>`\  within the hashable struct.
+    :type member: 
 
 .. _`rht_for_each_entry_safe.description`:
 
@@ -535,17 +291,21 @@ rht_for_each_rcu_continue
 
     continue iterating over rcu hash chain
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rhash_head <rhash_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the previous \ :c:type:`struct rhash_head <rhash_head>`\  to continue from
+    :type head: 
 
-    :param  tbl:
+    :param tbl:
         the \ :c:type:`struct bucket_table <bucket_table>`\ 
+    :type tbl: 
 
-    :param  hash:
+    :param hash:
         the hash value / bucket index
+    :type hash: 
 
 .. _`rht_for_each_rcu_continue.description`:
 
@@ -565,14 +325,17 @@ rht_for_each_rcu
 
     iterate over rcu hash chain
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rhash_head <rhash_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  tbl:
+    :param tbl:
         the \ :c:type:`struct bucket_table <bucket_table>`\ 
+    :type tbl: 
 
-    :param  hash:
+    :param hash:
         the hash value / bucket index
+    :type hash: 
 
 .. _`rht_for_each_rcu.description`:
 
@@ -592,23 +355,29 @@ rht_for_each_entry_rcu_continue
 
     continue iterating over rcu hash chain
 
-    :param  tpos:
+    :param tpos:
         the type \* to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rhash_head <rhash_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the previous \ :c:type:`struct rhash_head <rhash_head>`\  to continue from
+    :type head: 
 
-    :param  tbl:
+    :param tbl:
         the \ :c:type:`struct bucket_table <bucket_table>`\ 
+    :type tbl: 
 
-    :param  hash:
+    :param hash:
         the hash value / bucket index
+    :type hash: 
 
-    :param  member:
+    :param member:
         name of the \ :c:type:`struct rhash_head <rhash_head>`\  within the hashable struct.
+    :type member: 
 
 .. _`rht_for_each_entry_rcu_continue.description`:
 
@@ -628,20 +397,25 @@ rht_for_each_entry_rcu
 
     iterate over rcu hash chain of given type
 
-    :param  tpos:
+    :param tpos:
         the type \* to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rhash_head <rhash_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  tbl:
+    :param tbl:
         the \ :c:type:`struct bucket_table <bucket_table>`\ 
+    :type tbl: 
 
-    :param  hash:
+    :param hash:
         the hash value / bucket index
+    :type hash: 
 
-    :param  member:
+    :param member:
         name of the \ :c:type:`struct rhash_head <rhash_head>`\  within the hashable struct.
+    :type member: 
 
 .. _`rht_for_each_entry_rcu.description`:
 
@@ -661,11 +435,13 @@ rhl_for_each_rcu
 
     iterate over rcu hash table list
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rlist_head <rlist_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  list:
+    :param list:
         the head of the list
+    :type list: 
 
 .. _`rhl_for_each_rcu.description`:
 
@@ -684,17 +460,21 @@ rhl_for_each_entry_rcu
 
     iterate over rcu hash table list of given type
 
-    :param  tpos:
+    :param tpos:
         the type \* to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct rlist_head <rlist_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  list:
+    :param list:
         the head of the list
+    :type list: 
 
-    :param  member:
+    :param member:
         name of the \ :c:type:`struct rlist_head <rlist_head>`\  within the hashable struct.
+    :type member: 
 
 .. _`rhl_for_each_entry_rcu.description`:
 
@@ -713,14 +493,17 @@ rhashtable_lookup
 
     search hash table
 
-    :param struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: struct rhashtable \*
 
-    :param const void \*key:
+    :param key:
         the pointer to the key
+    :type key: const void \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhashtable_lookup.description`:
 
@@ -743,14 +526,17 @@ rhashtable_lookup_fast
 
     search hash table, without RCU read lock
 
-    :param struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: struct rhashtable \*
 
-    :param const void \*key:
+    :param key:
         the pointer to the key
+    :type key: const void \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhashtable_lookup_fast.description`:
 
@@ -774,14 +560,17 @@ rhltable_lookup
 
     search hash list table
 
-    :param struct rhltable \*hlt:
+    :param hlt:
         hash table
+    :type hlt: struct rhltable \*
 
-    :param const void \*key:
+    :param key:
         the pointer to the key
+    :type key: const void \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhltable_lookup.description`:
 
@@ -805,14 +594,17 @@ rhashtable_insert_fast
 
     insert object into hash table
 
-    :param struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: struct rhashtable \*
 
-    :param struct rhash_head \*obj:
+    :param obj:
         pointer to hash head inside object
+    :type obj: struct rhash_head \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhashtable_insert_fast.description`:
 
@@ -837,17 +629,21 @@ rhltable_insert_key
 
     insert object into hash list table
 
-    :param struct rhltable \*hlt:
+    :param hlt:
         hash list table
+    :type hlt: struct rhltable \*
 
-    :param const void \*key:
+    :param key:
         the pointer to the key
+    :type key: const void \*
 
-    :param struct rhlist_head \*list:
+    :param list:
         pointer to hash list head inside object
+    :type list: struct rhlist_head \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhltable_insert_key.description`:
 
@@ -872,14 +668,17 @@ rhltable_insert
 
     insert object into hash list table
 
-    :param struct rhltable \*hlt:
+    :param hlt:
         hash list table
+    :type hlt: struct rhltable \*
 
-    :param struct rhlist_head \*list:
+    :param list:
         pointer to hash list head inside object
+    :type list: struct rhlist_head \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhltable_insert.description`:
 
@@ -904,14 +703,17 @@ rhashtable_lookup_insert_fast
 
     lookup and insert object into hash table
 
-    :param struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: struct rhashtable \*
 
-    :param struct rhash_head \*obj:
+    :param obj:
         pointer to hash head inside object
+    :type obj: struct rhash_head \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhashtable_lookup_insert_fast.description`:
 
@@ -941,14 +743,17 @@ rhashtable_lookup_get_insert_fast
 
     lookup and insert object into hash table
 
-    :param struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: struct rhashtable \*
 
-    :param struct rhash_head \*obj:
+    :param obj:
         pointer to hash head inside object
+    :type obj: struct rhash_head \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhashtable_lookup_get_insert_fast.description`:
 
@@ -968,17 +773,21 @@ rhashtable_lookup_insert_key
 
     search and insert object to hash table with explicit key
 
-    :param struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: struct rhashtable \*
 
-    :param const void \*key:
+    :param key:
         key
+    :type key: const void \*
 
-    :param struct rhash_head \*obj:
+    :param obj:
         pointer to hash head inside object
+    :type obj: struct rhash_head \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhashtable_lookup_insert_key.description`:
 
@@ -1007,17 +816,21 @@ rhashtable_lookup_get_insert_key
 
     lookup and insert object into hash table
 
-    :param struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: struct rhashtable \*
 
-    :param const void \*key:
+    :param key:
         *undescribed*
+    :type key: const void \*
 
-    :param struct rhash_head \*obj:
+    :param obj:
         pointer to hash head inside object
+    :type obj: struct rhash_head \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhashtable_lookup_get_insert_key.description`:
 
@@ -1037,14 +850,17 @@ rhashtable_remove_fast
 
     remove object from hash table
 
-    :param struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: struct rhashtable \*
 
-    :param struct rhash_head \*obj:
+    :param obj:
         pointer to hash head inside object
+    :type obj: struct rhash_head \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhashtable_remove_fast.description`:
 
@@ -1069,14 +885,17 @@ rhltable_remove
 
     remove object from hash list table
 
-    :param struct rhltable \*hlt:
+    :param hlt:
         hash list table
+    :type hlt: struct rhltable \*
 
-    :param struct rhlist_head \*list:
+    :param list:
         pointer to hash list head inside object
+    :type list: struct rhlist_head \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhltable_remove.description`:
 
@@ -1101,17 +920,21 @@ rhashtable_replace_fast
 
     replace an object in hash table
 
-    :param struct rhashtable \*ht:
+    :param ht:
         hash table
+    :type ht: struct rhashtable \*
 
-    :param struct rhash_head \*obj_old:
+    :param obj_old:
         pointer to hash head inside object being replaced
+    :type obj_old: struct rhash_head \*
 
-    :param struct rhash_head \*obj_new:
+    :param obj_new:
         pointer to hash head inside object which is new
+    :type obj_new: struct rhash_head \*
 
-    :param const struct rhashtable_params params:
+    :param params:
         hash table parameters
+    :type params: const struct rhashtable_params
 
 .. _`rhashtable_replace_fast.description`:
 
@@ -1134,11 +957,13 @@ rhltable_walk_enter
 
     Initialise an iterator
 
-    :param struct rhltable \*hlt:
+    :param hlt:
         Table to walk over
+    :type hlt: struct rhltable \*
 
-    :param struct rhashtable_iter \*iter:
+    :param iter:
         Hash table Iterator
+    :type iter: struct rhashtable_iter \*
 
 .. _`rhltable_walk_enter.description`:
 
@@ -1170,14 +995,16 @@ rhltable_free_and_destroy
 
     free elements and destroy hash list table
 
-    :param struct rhltable \*hlt:
+    :param hlt:
         the hash list table to destroy
+    :type hlt: struct rhltable \*
 
     :param void (\*free_fn)(void \*ptr, void \*arg):
         callback to release resources of element
 
-    :param void \*arg:
+    :param arg:
         pointer passed to free_fn
+    :type arg: void \*
 
 .. _`rhltable_free_and_destroy.description`:
 

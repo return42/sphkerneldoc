@@ -10,14 +10,17 @@ batadv_send_skb_packet
 
     send an already prepared packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet to send
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface to use to send the broadcast packet
+    :type hard_iface: struct batadv_hard_iface \*
 
-    :param const u8 \*dst_addr:
+    :param dst_addr:
         the payload destination
+    :type dst_addr: const u8 \*
 
 .. _`batadv_send_skb_packet.description`:
 
@@ -50,11 +53,13 @@ batadv_send_broadcast_skb
 
     Send broadcast packet via hard interface
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to be transmitted (with batadv header and no outer eth header)
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         outgoing interface
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_send_broadcast_skb.return`:
 
@@ -74,11 +79,13 @@ batadv_send_unicast_skb
 
     Send unicast packet to neighbor
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to be transmitted (with batadv header and no outer eth header)
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_neigh_node \*neigh:
+    :param neigh:
         neighbor which is used as next hop to destination
+    :type neigh: struct batadv_neigh_node \*
 
 .. _`batadv_send_unicast_skb.return`:
 
@@ -98,14 +105,17 @@ batadv_send_skb_to_orig
 
     Lookup next-hop and transmit skb.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Packet to be transmitted.
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         Final destination of the packet.
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         Interface used when receiving the packet (can be NULL).
+    :type recv_if: struct batadv_hard_iface \*
 
 .. _`batadv_send_skb_to_orig.description`:
 
@@ -135,14 +145,17 @@ batadv_send_skb_push_fill_unicast
 
     extend the buffer and initialize the common fields for unicast packets
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb carrying the unicast header to initialize
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         amount of bytes to push at the beginning of the skb
+    :type hdr_size: int
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the destination node
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_send_skb_push_fill_unicast.return`:
 
@@ -160,11 +173,13 @@ batadv_send_skb_prepare_unicast
 
     encapsulate an skb with a unicast header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb containing the payload to encapsulate
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the destination node
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_send_skb_prepare_unicast.return`:
 
@@ -182,17 +197,21 @@ batadv_send_skb_prepare_unicast_4addr
 
     encapsulate an skb with a unicast 4addr header
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb containing the payload to encapsulate
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_orig_node \*orig:
+    :param orig:
         the destination node
+    :type orig: struct batadv_orig_node \*
 
-    :param int packet_subtype:
+    :param packet_subtype:
         the unicast 4addr packet subtype to use
+    :type packet_subtype: int
 
 .. _`batadv_send_skb_prepare_unicast_4addr.return`:
 
@@ -210,24 +229,30 @@ batadv_send_skb_unicast
 
     encapsulate and send an skb via unicast
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         payload to send
+    :type skb: struct sk_buff \*
 
-    :param int packet_type:
+    :param packet_type:
         the batman unicast packet type to use
+    :type packet_type: int
 
-    :param int packet_subtype:
+    :param packet_subtype:
         the unicast 4addr packet subtype (only relevant for unicast
         4addr packets)
+    :type packet_subtype: int
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator to send the packet to
+    :type orig_node: struct batadv_orig_node \*
 
-    :param unsigned short vid:
+    :param vid:
         the vid to be used to search the translation table
+    :type vid: unsigned short
 
 .. _`batadv_send_skb_unicast.description`:
 
@@ -254,24 +279,30 @@ batadv_send_skb_via_tt_generic
 
     send an skb via TT lookup
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         payload to send
+    :type skb: struct sk_buff \*
 
-    :param int packet_type:
+    :param packet_type:
         the batman unicast packet type to use
+    :type packet_type: int
 
-    :param int packet_subtype:
+    :param packet_subtype:
         the unicast 4addr packet subtype (only relevant for unicast
         4addr packets)
+    :type packet_subtype: int
 
-    :param u8 \*dst_hint:
+    :param dst_hint:
         can be used to override the destination contained in the skb
+    :type dst_hint: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the vid to be used to search the translation table
+    :type vid: unsigned short
 
 .. _`batadv_send_skb_via_tt_generic.description`:
 
@@ -300,14 +331,17 @@ batadv_send_skb_via_gw
 
     send an skb via gateway lookup
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         payload to send
+    :type skb: struct sk_buff \*
 
-    :param unsigned short vid:
+    :param vid:
         the vid to be used to search the translation table
+    :type vid: unsigned short
 
 .. _`batadv_send_skb_via_gw.description`:
 
@@ -333,11 +367,13 @@ batadv_forw_packet_free
 
     free a forwarding packet
 
-    :param struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         The packet to free
+    :type forw_packet: struct batadv_forw_packet \*
 
-    :param bool dropped:
+    :param dropped:
         whether the packet is freed because is is dropped
+    :type dropped: bool
 
 .. _`batadv_forw_packet_free.description`:
 
@@ -356,20 +392,25 @@ batadv_forw_packet_alloc
 
     allocate a forwarding packet
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         The (optional) if_incoming to be grabbed
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         The (optional) if_outgoing to be grabbed
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param atomic_t \*queue_left:
+    :param queue_left:
         The (optional) queue counter to decrease
+    :type queue_left: atomic_t \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat_priv for the mesh of this forw_packet
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The raw packet this forwarding packet shall contain
+    :type skb: struct sk_buff \*
 
 .. _`batadv_forw_packet_alloc.description`:
 
@@ -396,8 +437,9 @@ batadv_forw_packet_was_stolen
 
     check whether someone stole this packet
 
-    :param struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         the forwarding packet to check
+    :type forw_packet: struct batadv_forw_packet \*
 
 .. _`batadv_forw_packet_was_stolen.description`:
 
@@ -423,11 +465,13 @@ batadv_forw_packet_steal
 
     claim a forw_packet for \ :c:func:`free`\ 
 
-    :param struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         the forwarding packet to steal
+    :type forw_packet: struct batadv_forw_packet \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         a key to the store to steal from (e.g. forw_{bat,bcast}_list_lock)
+    :type lock: spinlock_t \*
 
 .. _`batadv_forw_packet_steal.description`:
 
@@ -455,14 +499,17 @@ batadv_forw_packet_list_steal
 
     claim a list of forward packets for \ :c:func:`free`\ 
 
-    :param struct hlist_head \*forw_list:
+    :param forw_list:
         the to be stolen forward packets
+    :type forw_list: struct hlist_head \*
 
-    :param struct hlist_head \*cleanup_list:
+    :param cleanup_list:
         a backup pointer, to be able to dispose the packet later
+    :type cleanup_list: struct hlist_head \*
 
-    :param const struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface to steal forward packets from
+    :type hard_iface: const struct batadv_hard_iface \*
 
 .. _`batadv_forw_packet_list_steal.description`:
 
@@ -485,8 +532,9 @@ batadv_forw_packet_list_free
 
     free a list of forward packets
 
-    :param struct hlist_head \*head:
+    :param head:
         a list of to be freed forw_packets
+    :type head: struct hlist_head \*
 
 .. _`batadv_forw_packet_list_free.description`:
 
@@ -508,17 +556,21 @@ batadv_forw_packet_queue
 
     try to queue a forwarding packet
 
-    :param struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         the forwarding packet to queue
+    :type forw_packet: struct batadv_forw_packet \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         a key to the store (e.g. forw_{bat,bcast}_list_lock)
+    :type lock: spinlock_t \*
 
-    :param struct hlist_head \*head:
+    :param head:
         the shelve to queue it on (e.g. forw_{bat,bcast}_list)
+    :type head: struct hlist_head \*
 
-    :param unsigned long send_time:
+    :param send_time:
         timestamp (jiffies) when the packet is to be sent
+    :type send_time: unsigned long
 
 .. _`batadv_forw_packet_queue.description`:
 
@@ -544,14 +596,17 @@ batadv_forw_packet_bcast_queue
 
     try to queue a broadcast packet
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         the forwarding packet to queue
+    :type forw_packet: struct batadv_forw_packet \*
 
-    :param unsigned long send_time:
+    :param send_time:
         timestamp (jiffies) when the packet is to be sent
+    :type send_time: unsigned long
 
 .. _`batadv_forw_packet_bcast_queue.description`:
 
@@ -571,14 +626,17 @@ batadv_forw_packet_ogmv1_queue
 
     try to queue an OGMv1 packet
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         the forwarding packet to queue
+    :type forw_packet: struct batadv_forw_packet \*
 
-    :param unsigned long send_time:
+    :param send_time:
         timestamp (jiffies) when the packet is to be sent
+    :type send_time: unsigned long
 
 .. _`batadv_forw_packet_ogmv1_queue.description`:
 
@@ -598,17 +656,21 @@ batadv_add_bcast_packet_to_list
 
     queue broadcast packet for multiple sends
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         broadcast packet to add
+    :type skb: const struct sk_buff \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait before sending
+    :type delay: unsigned long
 
-    :param bool own_packet:
+    :param own_packet:
         true if it is a self-generated broadcast packet
+    :type own_packet: bool
 
 .. _`batadv_add_bcast_packet_to_list.description`:
 
@@ -637,11 +699,13 @@ batadv_forw_packet_bcasts_left
 
     check if a retransmission is necessary
 
-    :param struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         the forwarding packet to check
+    :type forw_packet: struct batadv_forw_packet \*
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface to check on
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_forw_packet_bcasts_left.description`:
 
@@ -676,8 +740,9 @@ batadv_forw_packet_bcasts_inc
 
     increment retransmission counter of a packet
 
-    :param struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         the packet to increase the counter for
+    :type forw_packet: struct batadv_forw_packet \*
 
 .. _`batadv_forw_packet_is_rebroadcast`:
 
@@ -688,8 +753,9 @@ batadv_forw_packet_is_rebroadcast
 
     check packet for previous transmissions
 
-    :param struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         the packet to check
+    :type forw_packet: struct batadv_forw_packet \*
 
 .. _`batadv_forw_packet_is_rebroadcast.return`:
 
@@ -707,11 +773,13 @@ batadv_purge_outstanding_packets
 
     stop/purge scheduled bcast/OGMv1 packets
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the hard interface to cancel and purge bcast/ogm packets on
+    :type hard_iface: const struct batadv_hard_iface \*
 
 .. _`batadv_purge_outstanding_packets.description`:
 

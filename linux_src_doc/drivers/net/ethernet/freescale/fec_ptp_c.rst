@@ -8,11 +8,13 @@ fec_ptp_enable_pps
 
 .. c:function:: int fec_ptp_enable_pps(struct fec_enet_private *fep, uint enable)
 
-    :param struct fec_enet_private \*fep:
+    :param fep:
         the fec_enet_private structure handle
+    :type fep: struct fec_enet_private \*
 
-    :param uint enable:
+    :param enable:
         enable the channel pps output
+    :type enable: uint
 
 .. _`fec_ptp_enable_pps.description`:
 
@@ -30,8 +32,9 @@ fec_ptp_read
 
     read raw cycle counter (to be used by time counter)
 
-    :param const struct cyclecounter \*cc:
+    :param cc:
         the cyclecounter structure
+    :type cc: const struct cyclecounter \*
 
 .. _`fec_ptp_read.description`:
 
@@ -51,8 +54,9 @@ fec_ptp_start_cyclecounter
 
     create the cycle counter from hw
 
-    :param struct net_device \*ndev:
+    :param ndev:
         network device
+    :type ndev: struct net_device \*
 
 .. _`fec_ptp_start_cyclecounter.description`:
 
@@ -72,11 +76,13 @@ fec_ptp_adjfreq
 
     adjust ptp cycle frequency
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s32 ppb:
+    :param ppb:
         parts per billion adjustment from base
+    :type ppb: s32
 
 .. _`fec_ptp_adjfreq.description`:
 
@@ -96,11 +102,13 @@ fec_ptp_adjtime
 
 .. c:function:: int fec_ptp_adjtime(struct ptp_clock_info *ptp, s64 delta)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s64 delta:
+    :param delta:
         offset to adjust the cycle counter by
+    :type delta: s64
 
 .. _`fec_ptp_adjtime.description`:
 
@@ -116,11 +124,13 @@ fec_ptp_gettime
 
 .. c:function:: int fec_ptp_gettime(struct ptp_clock_info *ptp, struct timespec64 *ts)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct timespec64 \*ts:
+    :param ts:
         timespec structure to hold the current time value
+    :type ts: struct timespec64 \*
 
 .. _`fec_ptp_gettime.description`:
 
@@ -137,11 +147,13 @@ fec_ptp_settime
 
 .. c:function:: int fec_ptp_settime(struct ptp_clock_info *ptp, const struct timespec64 *ts)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         the timespec containing the new time for the cycle counter
+    :type ts: const struct timespec64 \*
 
 .. _`fec_ptp_settime.description`:
 
@@ -158,14 +170,17 @@ fec_ptp_enable
 
 .. c:function:: int fec_ptp_enable(struct ptp_clock_info *ptp, struct ptp_clock_request *rq, int on)
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         the ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct ptp_clock_request \*rq:
+    :param rq:
         the requested feature to change
+    :type rq: struct ptp_clock_request \*
 
-    :param int on:
+    :param on:
         whether to enable or disable the feature
+    :type on: int
 
 .. _`fec_time_keep`:
 
@@ -176,8 +191,9 @@ fec_time_keep
 
     call timecounter_read every second to avoid timer overrun because ENET just support 32bit counter, will timeout in 4s
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`fec_ptp_init`:
 
@@ -186,11 +202,13 @@ fec_ptp_init
 
 .. c:function:: void fec_ptp_init(struct platform_device *pdev, int irq_idx)
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
-    :param int irq_idx:
+    :param irq_idx:
         *undescribed*
+    :type irq_idx: int
 
 .. _`fec_ptp_init.description`:
 

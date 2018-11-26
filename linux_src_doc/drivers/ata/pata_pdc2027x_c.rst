@@ -10,11 +10,13 @@ port_mmio
 
     Get the MMIO address of PDC2027x extended registers
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port
+    :type ap: struct ata_port \*
 
-    :param unsigned int offset:
+    :param offset:
         offset from mmio base
+    :type offset: unsigned int
 
 .. _`dev_mmio`:
 
@@ -25,14 +27,17 @@ dev_mmio
 
     Get the MMIO address of PDC2027x extended registers
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device
+    :type adev: struct ata_device \*
 
-    :param unsigned int offset:
+    :param offset:
         offset from mmio base
+    :type offset: unsigned int
 
 .. _`pdc2027x_cable_detect`:
 
@@ -43,8 +48,9 @@ pdc2027x_cable_detect
 
     Probe host controller cable detect info
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port for which cable detect info is desired
+    :type ap: struct ata_port \*
 
 .. _`pdc2027x_cable_detect.description`:
 
@@ -70,8 +76,9 @@ pdc2027x_port_enabled
 
     Check PDC ATA control register to see whether the port is enabled.
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to check
+    :type ap: struct ata_port \*
 
 .. _`pdc2027x_prereset`:
 
@@ -82,11 +89,13 @@ pdc2027x_prereset
 
     prereset for PATA host controller
 
-    :param struct ata_link \*link:
+    :param link:
         Target link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`pdc2027x_prereset.description`:
 
@@ -111,11 +120,13 @@ pdc2027x_mode_filter
 
     mode selection filter
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         list of modes proposed
+    :type mask: unsigned long
 
 .. _`pdc2027x_mode_filter.description`:
 
@@ -133,11 +144,13 @@ pdc2027x_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to configure
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         um
+    :type adev: struct ata_device \*
 
 .. _`pdc2027x_set_piomode.description`:
 
@@ -162,11 +175,13 @@ pdc2027x_set_dmamode
 
     Initialize host controller PATA UDMA timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to configure
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         um
+    :type adev: struct ata_device \*
 
 .. _`pdc2027x_set_dmamode.description`:
 
@@ -191,11 +206,13 @@ pdc2027x_set_mode
 
     Set the timing registers back to correct values.
 
-    :param struct ata_link \*link:
+    :param link:
         link to configure
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*r_failed:
+    :param r_failed:
         Returned device for failure
+    :type r_failed: struct ata_device \*\*
 
 .. _`pdc2027x_set_mode.description`:
 
@@ -215,8 +232,9 @@ pdc2027x_check_atapi_dma
 
     Check whether ATAPI DMA can be supported for this command
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Metadata associated with taskfile to check
+    :type qc: struct ata_queued_cmd \*
 
 .. _`pdc2027x_check_atapi_dma.locking`:
 
@@ -242,8 +260,9 @@ pdc_read_counter
 
     Read the ctr counter
 
-    :param struct ata_host \*host:
+    :param host:
         target ATA host
+    :type host: struct ata_host \*
 
 .. _`pdc_adjust_pll`:
 
@@ -254,14 +273,17 @@ pdc_adjust_pll
 
     Adjust the PLL input clock in Hz.
 
-    :param struct ata_host \*host:
+    :param host:
         target ATA host
+    :type host: struct ata_host \*
 
-    :param long pll_clock:
+    :param pll_clock:
         The input of PLL in HZ
+    :type pll_clock: long
 
-    :param unsigned int board_idx:
+    :param board_idx:
         *undescribed*
+    :type board_idx: unsigned int
 
 .. _`pdc_detect_pll_input_clock`:
 
@@ -272,10 +294,11 @@ pdc_detect_pll_input_clock
 
     Detect the PLL input clock in Hz.
 
-    :param struct ata_host \*host:
+    :param host:
         target ATA host
         Ex. 16949000 on 33MHz PCI bus for pdc20275.
         Half of the PCI clock.
+    :type host: struct ata_host \*
 
 .. _`pdc_hardware_init`:
 
@@ -286,11 +309,13 @@ pdc_hardware_init
 
     Initialize the hardware.
 
-    :param struct ata_host \*host:
+    :param host:
         target ATA host
+    :type host: struct ata_host \*
 
-    :param unsigned int board_idx:
+    :param board_idx:
         board identifier
+    :type board_idx: unsigned int
 
 .. _`pdc_ata_setup_port`:
 
@@ -301,11 +326,13 @@ pdc_ata_setup_port
 
     setup the mmio address
 
-    :param struct ata_ioports \*port:
+    :param port:
         ata ioports to setup
+    :type port: struct ata_ioports \*
 
-    :param void __iomem \*base:
+    :param base:
         base address
+    :type base: void __iomem \*
 
 .. _`pdc2027x_init_one`:
 
@@ -316,11 +343,13 @@ pdc2027x_init_one
 
     PCI probe function Called when an instance of PCI adapter is inserted. This function checks whether the hardware is supported, initialize hardware and register an instance of ata_host to libata.  (implements struct pci_driver.probe() )
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         instance of pci_dev found
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         matching entry in the id_tbl[]
+    :type ent: const struct pci_device_id \*
 
 .. This file was automatic generated / don't edit.
 

@@ -215,8 +215,9 @@ most_register_interface
 
     Registers instance of the interface.
 
-    :param struct most_interface \*iface:
+    :param iface:
         Pointer to the interface instance description.
+    :type iface: struct most_interface \*
 
 .. _`most_register_interface.description`:
 
@@ -242,8 +243,9 @@ most_deregister_interface
 
     \ ``intf_instance``\  Pointer to the interface instance description.
 
-    :param struct most_interface \*iface:
+    :param iface:
         *undescribed*
+    :type iface: struct most_interface \*
 
 .. _`most_stop_enqueue`:
 
@@ -254,11 +256,13 @@ most_stop_enqueue
 
     prevents core from enqueing MBOs
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface
+    :type iface: struct most_interface \*
 
-    :param int channel_idx:
+    :param channel_idx:
         channel index
+    :type channel_idx: int
 
 .. _`most_resume_enqueue`:
 
@@ -269,11 +273,13 @@ most_resume_enqueue
 
     allow core to enqueue MBOs again
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface
+    :type iface: struct most_interface \*
 
-    :param int channel_idx:
+    :param channel_idx:
         channel index
+    :type channel_idx: int
 
 .. _`most_resume_enqueue.description`:
 

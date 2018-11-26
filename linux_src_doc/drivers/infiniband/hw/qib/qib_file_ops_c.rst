@@ -10,14 +10,17 @@ qib_tid_update
 
     update a context TID
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the context
+    :type rcd: struct qib_ctxtdata \*
 
-    :param struct file \*fp:
+    :param fp:
         the qib device file
+    :type fp: struct file \*
 
-    :param const struct qib_tid_info \*ti:
+    :param ti:
         the TID information
+    :type ti: const struct qib_tid_info \*
 
 .. _`qib_tid_update.description`:
 
@@ -52,14 +55,17 @@ qib_tid_free
 
     free a context TID
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the context
+    :type rcd: struct qib_ctxtdata \*
 
-    :param unsigned subctxt:
+    :param subctxt:
         the subcontext
+    :type subctxt: unsigned
 
-    :param const struct qib_tid_info \*ti:
+    :param ti:
         the TID info
+    :type ti: const struct qib_tid_info \*
 
 .. _`qib_tid_free.description`:
 
@@ -85,11 +91,13 @@ qib_set_part_key
 
     set a partition key
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the context
+    :type rcd: struct qib_ctxtdata \*
 
-    :param u16 key:
+    :param key:
         the key
+    :type key: u16
 
 .. _`qib_set_part_key.description`:
 
@@ -116,14 +124,17 @@ qib_manage_rcvq
 
     manage a context's receive queue
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the context
+    :type rcd: struct qib_ctxtdata \*
 
-    :param unsigned subctxt:
+    :param subctxt:
         the subcontext
+    :type subctxt: unsigned
 
-    :param int start_stop:
+    :param start_stop:
         action to carry out
+    :type start_stop: int
 
 .. _`qib_manage_rcvq.description`:
 
@@ -143,11 +154,13 @@ qib_mmapf
 
     mmap various structures into user space
 
-    :param struct file \*fp:
+    :param fp:
         the file pointer
+    :type fp: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the VM area
+    :type vma: struct vm_area_struct \*
 
 .. _`qib_mmapf.description`:
 
@@ -168,8 +181,9 @@ unlock_expected_tids
 
     unlock any expected TID entries context still had in use
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         ctxt
+    :type rcd: struct qib_ctxtdata \*
 
 .. _`unlock_expected_tids.description`:
 

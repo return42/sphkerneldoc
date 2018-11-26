@@ -10,8 +10,9 @@ notify_remote_via_irq
 
     send event to remote end of event channel via irq
 
-    :param int irq:
+    :param irq:
         irq of event channel to send event to
+    :type irq: int
 
 .. _`notify_remote_via_irq.description`:
 
@@ -31,8 +32,9 @@ xen_evtchn_nr_channels
 
     number of usable event channel ports
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`xen_evtchn_nr_channels.description`:
 
@@ -52,11 +54,13 @@ xen_set_irq_priority
 
     set an event channel priority.
 
-    :param unsigned irq:
+    :param irq:
         irq bound to an event channel.
+    :type irq: unsigned
 
-    :param unsigned priority:
+    :param priority:
         priority between XEN_IRQ_PRIORITY_MAX and XEN_IRQ_PRIORITY_MIN.
+    :type priority: unsigned
 
 .. This file was automatic generated / don't edit.
 

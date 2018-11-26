@@ -10,17 +10,21 @@ mmc_wait_for_app_cmd
 
     start an application command and wait for
 
-    :param struct mmc_host \*host:
+    :param host:
         MMC host to start command
+    :type host: struct mmc_host \*
 
-    :param struct mmc_card \*card:
+    :param card:
         Card to send MMC_APP_CMD to
+    :type card: struct mmc_card \*
 
-    :param struct mmc_command \*cmd:
+    :param cmd:
         MMC command to start
+    :type cmd: struct mmc_command \*
 
-    :param int retries:
+    :param retries:
         maximum number of retries
+    :type retries: int
 
 .. _`mmc_wait_for_app_cmd.description`:
 

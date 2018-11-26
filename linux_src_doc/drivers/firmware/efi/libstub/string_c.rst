@@ -10,11 +10,13 @@ strstr
 
     Find the first substring in a \ ``NUL``\  terminated string
 
-    :param const char \*s1:
+    :param s1:
         The string to be searched
+    :type s1: const char \*
 
-    :param const char \*s2:
+    :param s2:
         The string to search for
+    :type s2: const char \*
 
 .. _`strncmp`:
 
@@ -25,14 +27,17 @@ strncmp
 
     Compare two length-limited strings
 
-    :param const char \*cs:
+    :param cs:
         One string
+    :type cs: const char \*
 
-    :param const char \*ct:
+    :param ct:
         Another string
+    :type ct: const char \*
 
-    :param size_t count:
+    :param count:
         The maximum number of bytes to compare
+    :type count: size_t
 
 .. This file was automatic generated / don't edit.
 

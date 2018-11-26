@@ -10,8 +10,9 @@ intel_guc_ct_init_early
 
     Initialize CT state without requiring device access
 
-    :param struct intel_guc_ct \*ct:
+    :param ct:
         pointer to CT struct
+    :type ct: struct intel_guc_ct \*
 
 .. _`ctb-host-to-guc-request`:
 
@@ -41,14 +42,17 @@ wait_for_ctb_desc_update
 
     Wait for the CT buffer descriptor update.
 
-    :param struct guc_ct_buffer_desc \*desc:
+    :param desc:
         buffer descriptor
+    :type desc: struct guc_ct_buffer_desc \*
 
-    :param u32 fence:
+    :param fence:
         response fence
+    :type fence: u32
 
-    :param u32 \*status:
+    :param status:
         placeholder for status
+    :type status: u32 \*
 
 .. _`wait_for_ctb_desc_update.description`:
 
@@ -78,11 +82,13 @@ wait_for_ct_request_update
 
     Wait for CT request state update.
 
-    :param struct ct_request \*req:
+    :param req:
         pointer to pending request
+    :type req: struct ct_request \*
 
-    :param u32 \*status:
+    :param status:
         placeholder for status
+    :type status: u32 \*
 
 .. _`wait_for_ct_request_update.description`:
 
@@ -149,8 +155,9 @@ intel_guc_ct_enable
 
     Enable buffer based command transport.
 
-    :param struct intel_guc_ct \*ct:
+    :param ct:
         pointer to CT struct
+    :type ct: struct intel_guc_ct \*
 
 .. _`intel_guc_ct_enable.description`:
 
@@ -175,8 +182,9 @@ intel_guc_ct_disable
 
     Disable buffer based command transport.
 
-    :param struct intel_guc_ct \*ct:
+    :param ct:
         pointer to CT struct
+    :type ct: struct intel_guc_ct \*
 
 .. _`intel_guc_ct_disable.description`:
 

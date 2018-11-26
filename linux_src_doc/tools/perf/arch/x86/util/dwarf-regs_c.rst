@@ -10,8 +10,9 @@ regs_query_register_offset
 
     query register offset from its name
 
-    :param const char \*name:
+    :param name:
         the name of a register
+    :type name: const char \*
 
 .. _`regs_query_register_offset.description`:
 

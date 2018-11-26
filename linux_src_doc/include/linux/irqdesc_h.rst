@@ -198,11 +198,13 @@ irq_set_handler_locked
 
     Set irq handler from a locked region
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to the irq_data structure which identifies the irq
+    :type data: struct irq_data \*
 
-    :param irq_flow_handler_t handler:
+    :param handler:
         Flow control handler function for this interrupt
+    :type handler: irq_flow_handler_t
 
 .. _`irq_set_handler_locked.description`:
 
@@ -223,17 +225,21 @@ irq_set_chip_handler_name_locked
 
     Set chip, handler and name from a locked region
 
-    :param struct irq_data \*data:
+    :param data:
         Pointer to the irq_data structure for which the chip is set
+    :type data: struct irq_data \*
 
-    :param struct irq_chip \*chip:
+    :param chip:
         Pointer to the new irq chip
+    :type chip: struct irq_chip \*
 
-    :param irq_flow_handler_t handler:
+    :param handler:
         Flow control handler function for this interrupt
+    :type handler: irq_flow_handler_t
 
-    :param const char \*name:
+    :param name:
         Name of the interrupt
+    :type name: const char \*
 
 .. _`irq_set_chip_handler_name_locked.description`:
 

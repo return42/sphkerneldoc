@@ -10,8 +10,9 @@ sc1200_clock
 
     PCI clock
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sc1200_clock.description`:
 
@@ -30,11 +31,13 @@ sc1200_set_piomode
 
     PIO setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device on the interface
+    :type adev: struct ata_device \*
 
 .. _`sc1200_set_piomode.description`:
 
@@ -52,11 +55,13 @@ sc1200_set_dmamode
 
     DMA timing setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device being configured
+    :type adev: struct ata_device \*
 
 .. _`sc1200_set_dmamode.description`:
 
@@ -75,8 +80,9 @@ sc1200_qc_issue
 
     command issue
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command pending
+    :type qc: struct ata_queued_cmd \*
 
 .. _`sc1200_qc_issue.description`:
 
@@ -97,8 +103,9 @@ sc1200_qc_defer
 
     implement serialization
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`sc1200_qc_defer.description`:
 
@@ -116,11 +123,13 @@ sc1200_init_one
 
     Initialise an SC1200
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         Entry in match table
+    :type id: const struct pci_device_id \*
 
 .. _`sc1200_init_one.description`:
 

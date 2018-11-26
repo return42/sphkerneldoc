@@ -110,7 +110,7 @@ Definition
         __s32 alignment;
         __s64 bytes;
         __s8 vol_type;
-        __s8 padding1;
+        __u8 flags;
         __s16 name_len;
         __s8 padding2[4];
         char name[UBI_MAX_VOLUME_NAME + 1];
@@ -133,8 +133,8 @@ bytes
 vol_type
     volume type (%UBI_DYNAMIC_VOLUME or \ ``UBI_STATIC_VOLUME``\ )
 
-padding1
-    reserved for future, not used, has to be zeroed
+flags
+    volume flags (%UBI_VOL_SKIP_CRC_CHECK_FLG)
 
 name_len
     volume name length

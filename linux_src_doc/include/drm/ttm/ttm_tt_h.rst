@@ -126,11 +126,13 @@ ttm_tt_create
 
 .. c:function:: int ttm_tt_create(struct ttm_buffer_object *bo, bool zero_alloc)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         pointer to a struct ttm_buffer_object
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool zero_alloc:
+    :param zero_alloc:
         true if allocated pages needs to be zeroed
+    :type zero_alloc: bool
 
 .. _`ttm_tt_create.description`:
 
@@ -147,14 +149,17 @@ ttm_tt_init
 
 .. c:function:: int ttm_tt_init(struct ttm_tt *ttm, struct ttm_buffer_object *bo, uint32_t page_flags)
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         The struct ttm_tt.
+    :type ttm: struct ttm_tt \*
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object we create the ttm for.
+    :type bo: struct ttm_buffer_object \*
 
-    :param uint32_t page_flags:
+    :param page_flags:
         Page flags as identified by TTM_PAGE_FLAG_XX flags.
+    :type page_flags: uint32_t
 
 .. _`ttm_tt_init.description`:
 
@@ -178,8 +183,9 @@ ttm_tt_fini
 
 .. c:function:: void ttm_tt_fini(struct ttm_tt *ttm)
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         the ttm_tt structure.
+    :type ttm: struct ttm_tt \*
 
 .. _`ttm_tt_fini.description`:
 
@@ -195,14 +201,17 @@ ttm_tt_bind
 
 .. c:function:: int ttm_tt_bind(struct ttm_tt *ttm, struct ttm_mem_reg *bo_mem, struct ttm_operation_ctx *ctx)
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         The struct ttm_tt containing backing pages.
+    :type ttm: struct ttm_tt \*
 
-    :param struct ttm_mem_reg \*bo_mem:
+    :param bo_mem:
         The struct ttm_mem_reg identifying the binding location.
+    :type bo_mem: struct ttm_mem_reg \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
 .. _`ttm_tt_bind.description`:
 
@@ -218,8 +227,9 @@ ttm_tt_destroy
 
 .. c:function:: void ttm_tt_destroy(struct ttm_tt *ttm)
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         The struct ttm_tt.
+    :type ttm: struct ttm_tt \*
 
 .. _`ttm_tt_destroy.description`:
 
@@ -235,8 +245,9 @@ ttm_tt_unbind
 
 .. c:function:: void ttm_tt_unbind(struct ttm_tt *ttm)
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         The struct ttm_tt.
+    :type ttm: struct ttm_tt \*
 
 .. _`ttm_tt_unbind.description`:
 
@@ -252,8 +263,9 @@ ttm_tt_swapin
 
 .. c:function:: int ttm_tt_swapin(struct ttm_tt *ttm)
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         The struct ttm_tt.
+    :type ttm: struct ttm_tt \*
 
 .. _`ttm_tt_swapin.description`:
 
@@ -269,11 +281,13 @@ ttm_tt_set_placement_caching
 
 .. c:function:: int ttm_tt_set_placement_caching(struct ttm_tt *ttm, uint32_t placement)
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
-    :param uint32_t placement:
+    :param placement:
         Flag indicating the desired caching policy.
+    :type placement: uint32_t
 
 .. _`ttm_tt_set_placement_caching.description`:
 
@@ -298,11 +312,13 @@ ttm_tt_populate
 
     allocate pages for a ttm
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         Pointer to the ttm_tt structure
+    :type ttm: struct ttm_tt \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
 .. _`ttm_tt_populate.description`:
 
@@ -320,8 +336,9 @@ ttm_tt_unpopulate
 
     free pages from a ttm
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         Pointer to the ttm_tt structure
+    :type ttm: struct ttm_tt \*
 
 .. _`ttm_tt_unpopulate.description`:
 
@@ -337,14 +354,17 @@ ttm_agp_tt_create
 
 .. c:function:: struct ttm_tt *ttm_agp_tt_create(struct ttm_buffer_object *bo, struct agp_bridge_data *bridge, uint32_t page_flags)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         Buffer object we allocate the ttm for.
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct agp_bridge_data \*bridge:
+    :param bridge:
         The agp bridge this device is sitting on.
+    :type bridge: struct agp_bridge_data \*
 
-    :param uint32_t page_flags:
+    :param page_flags:
         Page flags as identified by TTM_PAGE_FLAG_XX flags.
+    :type page_flags: uint32_t
 
 .. _`ttm_agp_tt_create.description`:
 

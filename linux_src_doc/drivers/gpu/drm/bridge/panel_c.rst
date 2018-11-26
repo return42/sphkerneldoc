@@ -10,12 +10,14 @@ drm_panel_bridge_add
 
     Creates a drm_bridge and drm_connector that just calls the appropriate functions from drm_panel.
 
-    :param struct drm_panel \*panel:
+    :param panel:
         The drm_panel being wrapped.  Must be non-NULL.
+    :type panel: struct drm_panel \*
 
-    :param u32 connector_type:
+    :param connector_type:
         The DRM_MODE_CONNECTOR_* for the connector to be
         created.
+    :type connector_type: u32
 
 .. _`drm_panel_bridge_add.description`:
 
@@ -43,8 +45,9 @@ drm_panel_bridge_remove
 
     Unregisters and frees a drm_bridge created by \ :c:func:`drm_panel_bridge_add`\ .
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         The drm_bridge being freed.
+    :type bridge: struct drm_bridge \*
 
 .. This file was automatic generated / don't edit.
 

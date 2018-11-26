@@ -567,7 +567,13 @@ Definition
         int len;
         u32 da;
         void *priv;
+        char name[32];
         struct list_head node;
+        u32 rsc_offset;
+        u32 flags;
+        u32 of_resm_idx;
+        int (*alloc)(struct rproc *rproc, struct rproc_mem_entry *mem);
+        int (*release)(struct rproc *rproc, struct rproc_mem_entry *mem);
     }
 
 .. _`rproc_mem_entry.members`:
@@ -590,8 +596,26 @@ da
 priv
     associated data
 
+name
+    associated memory region name (optional)
+
 node
     list node
+
+rsc_offset
+    offset in resource table
+
+flags
+    iommu protection flags
+
+of_resm_idx
+    reserved memory phandle index
+
+alloc
+    specific memory allocator function
+
+release
+    release associated memory
 
 .. _`rproc_ops`:
 
@@ -781,6 +805,8 @@ Definition
         struct list_head node;
         dma_addr_t da;
         size_t size;
+        void *priv;
+        void (*dump)(struct rproc *rproc, struct rproc_dump_segment *segment, void *dest);
         loff_t offset;
     }
 
@@ -797,6 +823,13 @@ da
 
 size
     size of the segment
+
+priv
+    private data associated with the dump_segment
+
+dump
+    custom dump function to fill device memory segment associated
+    with coredump
 
 offset
     *undescribed*
@@ -848,6 +881,7 @@ Definition
         bool has_iommu;
         bool auto_boot;
         struct list_head dump_segments;
+        int nb_vdev;
     }
 
 .. _`rproc.members`:
@@ -940,10 +974,13 @@ has_iommu
     flag to indicate if remote processor is behind an MMU
 
 auto_boot
-    *undescribed*
+    flag to indicate if remote processor should be auto-started
 
 dump_segments
     list of segments in the firmware
+
+nb_vdev
+    number of vdev currently handled by rproc
 
 .. _`rproc_subdev`:
 
@@ -963,8 +1000,10 @@ Definition
 
     struct rproc_subdev {
         struct list_head node;
-        int (*probe)(struct rproc_subdev *subdev);
-        void (*remove)(struct rproc_subdev *subdev, bool crashed);
+        int (*prepare)(struct rproc_subdev *subdev);
+        int (*start)(struct rproc_subdev *subdev);
+        void (*stop)(struct rproc_subdev *subdev, bool crashed);
+        void (*unprepare)(struct rproc_subdev *subdev);
     }
 
 .. _`rproc_subdev.members`:
@@ -975,12 +1014,18 @@ Members
 node
     list node related to the rproc subdevs list
 
-probe
-    probe function, called as the rproc is started
+prepare
+    prepare function, called before the rproc is started
 
-remove
-    remove function, called as the rproc is being stopped, the \ ``crashed``\ 
-    parameter indicates if this originates from the a recovery
+start
+    start function, called after the rproc has been started
+
+stop
+    stop function, called before the rproc is stopped; the \ ``crashed``\ 
+    parameter indicates if this originates from a recovery
+
+unprepare
+    unprepare function, called after the rproc has been stopped
 
 .. _`rproc_vring`:
 
@@ -1000,7 +1045,6 @@ Definition
 
     struct rproc_vring {
         void *va;
-        dma_addr_t dma;
         int len;
         u32 da;
         u32 align;
@@ -1016,9 +1060,6 @@ Members
 
 va
     virtual address
-
-dma
-    dma address
 
 len
     length, in bytes
@@ -1063,6 +1104,7 @@ Definition
         struct virtio_device vdev;
         struct rproc_vring vring[RVDEV_NUM_VRINGS];
         u32 rsc_offset;
+        u32 index;
     }
 
 .. _`rproc_vdev.members`:
@@ -1093,6 +1135,9 @@ vring
 
 rsc_offset
     offset of the vdev's resource entry
+
+index
+    vdev position versus other vdev declared in resource table
 
 .. This file was automatic generated / don't edit.
 

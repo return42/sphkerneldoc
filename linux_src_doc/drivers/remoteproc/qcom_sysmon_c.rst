@@ -10,11 +10,13 @@ sysmon_send_event
 
     send notification of other remote's SSR event
 
-    :param struct qcom_sysmon \*sysmon:
+    :param sysmon:
         sysmon context
+    :type sysmon: struct qcom_sysmon \*
 
-    :param const char \*name:
+    :param name:
         other remote's name
+    :type name: const char \*
 
 .. _`sysmon_request_shutdown`:
 
@@ -25,8 +27,9 @@ sysmon_request_shutdown
 
     request graceful shutdown of remote
 
-    :param struct qcom_sysmon \*sysmon:
+    :param sysmon:
         sysmon context
+    :type sysmon: struct qcom_sysmon \*
 
 .. _`ssctl_request_shutdown`:
 
@@ -37,8 +40,9 @@ ssctl_request_shutdown
 
     request shutdown via SSCTL QMI service
 
-    :param struct qcom_sysmon \*sysmon:
+    :param sysmon:
         sysmon context
+    :type sysmon: struct qcom_sysmon \*
 
 .. _`ssctl_send_event`:
 
@@ -49,11 +53,13 @@ ssctl_send_event
 
     send notification of other remote's SSR event
 
-    :param struct qcom_sysmon \*sysmon:
+    :param sysmon:
         sysmon context
+    :type sysmon: struct qcom_sysmon \*
 
-    :param const char \*name:
+    :param name:
         other remote's name
+    :type name: const char \*
 
 .. _`ssctl_new_server`:
 
@@ -64,11 +70,13 @@ ssctl_new_server
 
     QMI callback indicating a new service
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         QMI handle
+    :type qmi: struct qmi_handle \*
 
-    :param struct qmi_service \*svc:
+    :param svc:
         service information
+    :type svc: struct qmi_service \*
 
 .. _`ssctl_new_server.return`:
 
@@ -86,11 +94,13 @@ ssctl_del_server
 
     QMI callback indicating that \ ``svc``\  is removed
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         QMI handle
+    :type qmi: struct qmi_handle \*
 
-    :param struct qmi_service \*svc:
+    :param svc:
         service information
+    :type svc: struct qmi_service \*
 
 .. _`sysmon_notify`:
 
@@ -101,14 +111,17 @@ sysmon_notify
 
     notify sysmon target of another's SSR
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier_block associated with sysmon instance
+    :type nb: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         unused
+    :type event: unsigned long
 
-    :param void \*data:
+    :param data:
         SSR identifier of the remote that is going down
+    :type data: void \*
 
 .. _`qcom_add_sysmon_subdev`:
 
@@ -119,14 +132,17 @@ qcom_add_sysmon_subdev
 
     create a sysmon subdev for the given remoteproc
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc context to associate the subdev with
+    :type rproc: struct rproc \*
 
-    :param const char \*name:
+    :param name:
         name of this subdev, to use in SSR
+    :type name: const char \*
 
-    :param int ssctl_instance:
+    :param ssctl_instance:
         instance id of the ssctl QMI service
+    :type ssctl_instance: int
 
 .. _`qcom_add_sysmon_subdev.return`:
 
@@ -144,8 +160,9 @@ qcom_remove_sysmon_subdev
 
     release a qcom_sysmon
 
-    :param struct qcom_sysmon \*sysmon:
+    :param sysmon:
         sysmon context, as retrieved by \ :c:func:`qcom_add_sysmon_subdev`\ 
+    :type sysmon: struct qcom_sysmon \*
 
 .. _`sysmon_probe`:
 
@@ -156,8 +173,9 @@ sysmon_probe
 
     probe sys_mon channel
 
-    :param struct rpmsg_device \*rpdev:
+    :param rpdev:
         rpmsg device handle
+    :type rpdev: struct rpmsg_device \*
 
 .. _`sysmon_probe.description`:
 
@@ -183,8 +201,9 @@ sysmon_remove
 
     sys_mon channel remove handler
 
-    :param struct rpmsg_device \*rpdev:
+    :param rpdev:
         rpmsg device handle
+    :type rpdev: struct rpmsg_device \*
 
 .. _`sysmon_remove.description`:
 

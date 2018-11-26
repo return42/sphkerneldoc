@@ -10,14 +10,17 @@ i915_vma_instance
 
     return the singleton instance of the VMA
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         parent \ :c:type:`struct drm_i915_gem_object <drm_i915_gem_object>`\  to be mapped
+    :type obj: struct drm_i915_gem_object \*
 
-    :param struct i915_address_space \*vm:
+    :param vm:
         address space in which the mapping is located
+    :type vm: struct i915_address_space \*
 
-    :param const struct i915_ggtt_view \*view:
+    :param view:
         additional mapping requirements
+    :type view: const struct i915_ggtt_view \*
 
 .. _`i915_vma_instance.description`:
 
@@ -42,14 +45,17 @@ i915_vma_bind
 
     Sets up PTEs for an VMA in it's corresponding address space.
 
-    :param struct i915_vma \*vma:
+    :param vma:
         VMA to map
+    :type vma: struct i915_vma \*
 
-    :param enum i915_cache_level cache_level:
+    :param cache_level:
         mapping cache level
+    :type cache_level: enum i915_cache_level
 
-    :param u32 flags:
+    :param flags:
         flags like global or local mapping
+    :type flags: u32
 
 .. _`i915_vma_bind.description`:
 
@@ -69,17 +75,21 @@ i915_vma_insert
 
     finds a slot for the vma in its address space
 
-    :param struct i915_vma \*vma:
+    :param vma:
         the vma
+    :type vma: struct i915_vma \*
 
-    :param u64 size:
+    :param size:
         requested size in bytes (can be larger than the VMA)
+    :type size: u64
 
-    :param u64 alignment:
+    :param alignment:
         required alignment
+    :type alignment: u64
 
-    :param u64 flags:
+    :param flags:
         mask of PIN\_\* flags to use
+    :type flags: u64
 
 .. _`i915_vma_insert.description`:
 

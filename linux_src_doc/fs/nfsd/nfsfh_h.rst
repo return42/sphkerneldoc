@@ -10,8 +10,9 @@ knfsd_fh_hash
 
     calculate the crc32 hash for the filehandle \ ``fh``\  - pointer to filehandle
 
-    :param struct knfsd_fh \*fh:
+    :param fh:
         *undescribed*
+    :type fh: struct knfsd_fh \*
 
 .. _`knfsd_fh_hash.description`:
 

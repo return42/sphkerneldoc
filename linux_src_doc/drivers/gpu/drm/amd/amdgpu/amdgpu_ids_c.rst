@@ -10,8 +10,9 @@ amdgpu_pasid_alloc
 
     Allocate a PASID
 
-    :param unsigned int bits:
+    :param bits:
         Maximum width of the PASID in bits, must be at least 1
+    :type bits: unsigned int
 
 .. _`amdgpu_pasid_alloc.description`:
 
@@ -34,8 +35,9 @@ amdgpu_pasid_free
 
     Free a PASID
 
-    :param unsigned int pasid:
+    :param pasid:
         PASID to free
+    :type pasid: unsigned int
 
 .. _`amdgpu_pasid_free_delayed`:
 
@@ -46,11 +48,13 @@ amdgpu_pasid_free_delayed
 
     free pasid when fences signal
 
-    :param struct reservation_object \*resv:
+    :param resv:
         reservation object with the fences to wait for
+    :type resv: struct reservation_object \*
 
-    :param unsigned int pasid:
+    :param pasid:
         pasid to free
+    :type pasid: unsigned int
 
 .. _`amdgpu_pasid_free_delayed.description`:
 
@@ -68,11 +72,13 @@ amdgpu_vmid_had_gpu_reset
 
     check if reset occured since last use
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_vmid \*id:
+    :param id:
         VMID structure
+    :type id: struct amdgpu_vmid \*
 
 .. _`amdgpu_vmid_had_gpu_reset.description`:
 
@@ -90,17 +96,21 @@ amdgpu_vmid_grab_idle
 
     grab idle VMID
 
-    :param struct amdgpu_vm \*vm:
+    :param vm:
         vm to allocate id for
+    :type vm: struct amdgpu_vm \*
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring we want to submit job to
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         sync object where we add dependencies
+    :type sync: struct amdgpu_sync \*
 
-    :param struct amdgpu_vmid \*\*idle:
+    :param idle:
         resulting idle VMID
+    :type idle: struct amdgpu_vmid \*\*
 
 .. _`amdgpu_vmid_grab_idle.description`:
 
@@ -119,23 +129,29 @@ amdgpu_vmid_grab_reserved
 
     try to assign reserved VMID
 
-    :param struct amdgpu_vm \*vm:
+    :param vm:
         vm to allocate id for
+    :type vm: struct amdgpu_vm \*
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring we want to submit job to
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         sync object where we add dependencies
+    :type sync: struct amdgpu_sync \*
 
-    :param struct dma_fence \*fence:
+    :param fence:
         fence protecting ID from reuse
+    :type fence: struct dma_fence \*
 
-    :param struct amdgpu_job \*job:
+    :param job:
         job who wants to use the VMID
+    :type job: struct amdgpu_job \*
 
-    :param struct amdgpu_vmid \*\*id:
+    :param id:
         *undescribed*
+    :type id: struct amdgpu_vmid \*\*
 
 .. _`amdgpu_vmid_grab_reserved.description`:
 
@@ -153,23 +169,29 @@ amdgpu_vmid_grab_used
 
     try to reuse a VMID
 
-    :param struct amdgpu_vm \*vm:
+    :param vm:
         vm to allocate id for
+    :type vm: struct amdgpu_vm \*
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring we want to submit job to
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         sync object where we add dependencies
+    :type sync: struct amdgpu_sync \*
 
-    :param struct dma_fence \*fence:
+    :param fence:
         fence protecting ID from reuse
+    :type fence: struct dma_fence \*
 
-    :param struct amdgpu_job \*job:
+    :param job:
         job who wants to use the VMID
+    :type job: struct amdgpu_job \*
 
-    :param struct amdgpu_vmid \*\*id:
+    :param id:
         resulting VMID
+    :type id: struct amdgpu_vmid \*\*
 
 .. _`amdgpu_vmid_grab_used.description`:
 
@@ -187,20 +209,25 @@ amdgpu_vmid_grab
 
     allocate the next free VMID
 
-    :param struct amdgpu_vm \*vm:
+    :param vm:
         vm to allocate id for
+    :type vm: struct amdgpu_vm \*
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring we want to submit job to
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         sync object where we add dependencies
+    :type sync: struct amdgpu_sync \*
 
-    :param struct dma_fence \*fence:
+    :param fence:
         fence protecting ID from reuse
+    :type fence: struct dma_fence \*
 
-    :param struct amdgpu_job \*job:
+    :param job:
         job who wants to use the VMID
+    :type job: struct amdgpu_job \*
 
 .. _`amdgpu_vmid_grab.description`:
 
@@ -218,14 +245,17 @@ amdgpu_vmid_reset
 
     reset VMID to zero
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device structure
+    :type adev: struct amdgpu_device \*
 
-    :param unsigned vmhub:
+    :param vmhub:
         *undescribed*
+    :type vmhub: unsigned
 
-    :param unsigned vmid:
+    :param vmid:
         vmid number to use
+    :type vmid: unsigned
 
 .. _`amdgpu_vmid_reset.description`:
 
@@ -243,8 +273,9 @@ amdgpu_vmid_reset_all
 
     reset VMID to zero
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device structure
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_vmid_reset_all.description`:
 
@@ -262,8 +293,9 @@ amdgpu_vmid_mgr_init
 
     init the VMID manager
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_vmid_mgr_init.description`:
 
@@ -281,8 +313,9 @@ amdgpu_vmid_mgr_fini
 
     cleanup VM manager
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_vmid_mgr_fini.description`:
 

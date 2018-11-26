@@ -28,6 +28,7 @@ Definition
         int delay;
         int reset;
         int ext_fsync;
+        bool vflip_en;
     }
 
 .. _`xilinx_vdma_config.members`:
@@ -64,6 +65,9 @@ reset
 
 ext_fsync
     External Frame Sync source
+
+vflip_en
+    Vertical Flip enable
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ init_reserved
 
     stub for various unknown/unused single-byte opcodes
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_done`:
 
@@ -22,8 +23,9 @@ init_done
 
     opcode 0x71
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_io_restrict_prog`:
 
@@ -34,8 +36,9 @@ init_io_restrict_prog
 
     opcode 0x32
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_repeat`:
 
@@ -46,8 +49,9 @@ init_repeat
 
     opcode 0x33
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_io_restrict_pll`:
 
@@ -58,8 +62,9 @@ init_io_restrict_pll
 
     opcode 0x34
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_end_repeat`:
 
@@ -70,8 +75,9 @@ init_end_repeat
 
     opcode 0x36
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_copy`:
 
@@ -82,8 +88,9 @@ init_copy
 
     opcode 0x37
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_not`:
 
@@ -94,8 +101,9 @@ init_not
 
     opcode 0x38
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_io_flag_condition`:
 
@@ -106,8 +114,9 @@ init_io_flag_condition
 
     opcode 0x39
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_generic_condition`:
 
@@ -118,8 +127,9 @@ init_generic_condition
 
     opcode 0x3a
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_io_mask_or`:
 
@@ -130,8 +140,9 @@ init_io_mask_or
 
     opcode 0x3b
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_io_or`:
 
@@ -142,8 +153,9 @@ init_io_or
 
     opcode 0x3c
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_andn_reg`:
 
@@ -154,8 +166,9 @@ init_andn_reg
 
     opcode 0x47
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_or_reg`:
 
@@ -166,8 +179,9 @@ init_or_reg
 
     opcode 0x48
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_idx_addr_latched`:
 
@@ -178,8 +192,9 @@ init_idx_addr_latched
 
     opcode 0x49
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_io_restrict_pll2`:
 
@@ -190,8 +205,9 @@ init_io_restrict_pll2
 
     opcode 0x4a
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_pll2`:
 
@@ -202,8 +218,9 @@ init_pll2
 
     opcode 0x4b
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_i2c_byte`:
 
@@ -214,8 +231,9 @@ init_i2c_byte
 
     opcode 0x4c
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_i2c_byte`:
 
@@ -226,8 +244,9 @@ init_zm_i2c_byte
 
     opcode 0x4d
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_i2c`:
 
@@ -238,8 +257,9 @@ init_zm_i2c
 
     opcode 0x4e
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_tmds`:
 
@@ -250,8 +270,9 @@ init_tmds
 
     opcode 0x4f
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_tmds_group`:
 
@@ -262,8 +283,9 @@ init_zm_tmds_group
 
     opcode 0x50
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_cr_idx_adr_latch`:
 
@@ -274,8 +296,9 @@ init_cr_idx_adr_latch
 
     opcode 0x51
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_cr`:
 
@@ -286,8 +309,9 @@ init_cr
 
     opcode 0x52
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_cr`:
 
@@ -298,8 +322,9 @@ init_zm_cr
 
     opcode 0x53
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_cr_group`:
 
@@ -310,8 +335,9 @@ init_zm_cr_group
 
     opcode 0x54
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_condition_time`:
 
@@ -322,8 +348,9 @@ init_condition_time
 
     opcode 0x56
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_ltime`:
 
@@ -334,8 +361,9 @@ init_ltime
 
     opcode 0x57
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_reg_sequence`:
 
@@ -346,8 +374,9 @@ init_zm_reg_sequence
 
     opcode 0x58
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_pll_indirect`:
 
@@ -358,8 +387,9 @@ init_pll_indirect
 
     opcode 0x59
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_reg_indirect`:
 
@@ -370,8 +400,9 @@ init_zm_reg_indirect
 
     opcode 0x5a
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_sub_direct`:
 
@@ -382,8 +413,9 @@ init_sub_direct
 
     opcode 0x5b
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_jump`:
 
@@ -394,8 +426,9 @@ init_jump
 
     opcode 0x5c
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_i2c_if`:
 
@@ -406,8 +439,9 @@ init_i2c_if
 
     opcode 0x5e
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_copy_nv_reg`:
 
@@ -418,8 +452,9 @@ init_copy_nv_reg
 
     opcode 0x5f
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_index_io`:
 
@@ -430,8 +465,9 @@ init_zm_index_io
 
     opcode 0x62
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_compute_mem`:
 
@@ -442,8 +478,9 @@ init_compute_mem
 
     opcode 0x63
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_reset`:
 
@@ -454,8 +491,9 @@ init_reset
 
     opcode 0x65
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_configure_mem_clk`:
 
@@ -466,8 +504,9 @@ init_configure_mem_clk
 
     opcode 0x66
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_configure_clk`:
 
@@ -478,8 +517,9 @@ init_configure_clk
 
     opcode 0x67
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_configure_preinit`:
 
@@ -490,8 +530,9 @@ init_configure_preinit
 
     opcode 0x68
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_io`:
 
@@ -502,8 +543,9 @@ init_io
 
     opcode 0x69
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_sub`:
 
@@ -514,8 +556,9 @@ init_sub
 
     opcode 0x6b
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_ram_condition`:
 
@@ -526,8 +569,9 @@ init_ram_condition
 
     opcode 0x6d
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_nv_reg`:
 
@@ -538,8 +582,9 @@ init_nv_reg
 
     opcode 0x6e
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_macro`:
 
@@ -550,8 +595,9 @@ init_macro
 
     opcode 0x6f
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_resume`:
 
@@ -562,8 +608,9 @@ init_resume
 
     opcode 0x72
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_strap_condition`:
 
@@ -574,8 +621,9 @@ init_strap_condition
 
     opcode 0x73
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_time`:
 
@@ -586,8 +634,9 @@ init_time
 
     opcode 0x74
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_condition`:
 
@@ -598,8 +647,9 @@ init_condition
 
     opcode 0x75
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_io_condition`:
 
@@ -610,8 +660,9 @@ init_io_condition
 
     opcode 0x76
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_reg16`:
 
@@ -622,8 +673,9 @@ init_zm_reg16
 
     opcode 0x77
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_index_io`:
 
@@ -634,8 +686,9 @@ init_index_io
 
     opcode 0x78
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_pll`:
 
@@ -646,8 +699,9 @@ init_pll
 
     opcode 0x79
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_reg`:
 
@@ -658,8 +712,9 @@ init_zm_reg
 
     opcode 0x7a
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_ram_restrict_pll`:
 
@@ -670,8 +725,9 @@ init_ram_restrict_pll
 
     opcde 0x87
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_gpio`:
 
@@ -682,8 +738,9 @@ init_gpio
 
     opcode 0x8e
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_ram_restrict_zm_reg_group`:
 
@@ -694,8 +751,9 @@ init_ram_restrict_zm_reg_group
 
     opcode 0x8f
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_copy_zm_reg`:
 
@@ -706,8 +764,9 @@ init_copy_zm_reg
 
     opcode 0x90
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_reg_group`:
 
@@ -718,8 +777,9 @@ init_zm_reg_group
 
     opcode 0x91
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_xlat`:
 
@@ -730,8 +790,9 @@ init_xlat
 
     opcode 0x96
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_mask_add`:
 
@@ -742,8 +803,9 @@ init_zm_mask_add
 
     opcode 0x97
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_auxch`:
 
@@ -754,8 +816,9 @@ init_auxch
 
     opcode 0x98
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_zm_auxch`:
 
@@ -766,8 +829,9 @@ init_zm_auxch
 
     opcode 0x99
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_i2c_long_if`:
 
@@ -778,8 +842,9 @@ init_i2c_long_if
 
     opcode 0x9a
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. _`init_gpio_ne`:
 
@@ -790,8 +855,9 @@ init_gpio_ne
 
     opcode 0xa9
 
-    :param struct nvbios_init \*init:
+    :param init:
         *undescribed*
+    :type init: struct nvbios_init \*
 
 .. This file was automatic generated / don't edit.
 

@@ -295,7 +295,7 @@ g_tuner
     callback for \ :c:func:`VIDIOC_G_TUNER`\  ioctl handler code.
 
 s_tuner
-    callback for \ :c:func:`VIDIOC_S_TUNER`\  ioctl handler code. \ ``vt``\ ->type must be
+    callback for \ :c:func:`VIDIOC_S_TUNER`\  ioctl handler code. \ ``vt->type``\  must be
     filled in. Normally done by video_ioctl2 or the
     bridge driver.
 
@@ -1244,7 +1244,7 @@ owner
     The owner is the same as the driver's \ :c:type:`struct device <device>`\  owner.
 
 owner_v4l2_dev
-    true if the \ :c:type:`sd->owner <sd>`\  matches the owner of \ ``v4l2_dev``\ ->dev
+    true if the \ :c:type:`sd->owner <sd>`\  matches the owner of \ ``v4l2_dev->dev``\ 
     owner. Initialized by \ :c:func:`v4l2_device_register_subdev`\ .
 
 flags
@@ -1293,7 +1293,7 @@ fwnode
     either dev->of_node->fwnode or dev->fwnode (whichever is non-NULL).
 
 async_list
-    Links this subdev to a global subdev_list or \ ``notifier``\ ->done
+    Links this subdev to a global subdev_list or \ ``notifier->done``\ 
     list.
 
 asd
@@ -1329,8 +1329,9 @@ media_entity_to_v4l2_subdev
 
     Returns a \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  from the \ :c:type:`struct media_entity <media_entity>`\  embedded in it.
 
-    :param  ent:
+    :param ent:
         pointer to \ :c:type:`struct media_entity <media_entity>`\ .
+    :type ent: 
 
 .. _`vdev_to_v4l2_subdev`:
 
@@ -1341,8 +1342,9 @@ vdev_to_v4l2_subdev
 
     Returns a \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  from the \ :c:type:`struct video_device <video_device>`\  embedded on it.
 
-    :param  vdev:
+    :param vdev:
         pointer to \ :c:type:`struct video_device <video_device>`\ 
+    :type vdev: 
 
 .. _`v4l2_subdev_fh`:
 
@@ -1387,8 +1389,9 @@ to_v4l2_subdev_fh
 
     Returns a \ :c:type:`struct v4l2_subdev_fh <v4l2_subdev_fh>`\  from the \ :c:type:`struct v4l2_fh <v4l2_fh>`\  embedded on it.
 
-    :param  fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: 
 
 .. _`v4l2_subdev_get_try_format`:
 
@@ -1399,14 +1402,17 @@ v4l2_subdev_get_try_format
 
     ancillary routine to call \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\ ->try_fmt
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         pointer to \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\  array.
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param unsigned int pad:
+    :param pad:
         index of the pad in the \ ``cfg``\  array.
+    :type pad: unsigned int
 
 .. _`v4l2_subdev_get_try_crop`:
 
@@ -1417,14 +1423,17 @@ v4l2_subdev_get_try_crop
 
     ancillary routine to call \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\ ->try_crop
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         pointer to \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\  array.
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param unsigned int pad:
+    :param pad:
         index of the pad in the \ ``cfg``\  array.
+    :type pad: unsigned int
 
 .. _`v4l2_subdev_get_try_compose`:
 
@@ -1435,14 +1444,17 @@ v4l2_subdev_get_try_compose
 
     ancillary routine to call \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\ ->try_compose
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         pointer to \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\  array.
+    :type cfg: struct v4l2_subdev_pad_config \*
 
-    :param unsigned int pad:
+    :param pad:
         index of the pad in the \ ``cfg``\  array.
+    :type pad: unsigned int
 
 .. _`v4l2_set_subdevdata`:
 
@@ -1453,11 +1465,13 @@ v4l2_set_subdevdata
 
     Sets V4L2 dev private device data
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param void \*p:
+    :param p:
         pointer to the private device data to be stored.
+    :type p: void \*
 
 .. _`v4l2_get_subdevdata`:
 
@@ -1468,8 +1482,9 @@ v4l2_get_subdevdata
 
     Gets V4L2 dev private device data
 
-    :param const struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: const struct v4l2_subdev \*
 
 .. _`v4l2_get_subdevdata.description`:
 
@@ -1487,11 +1502,13 @@ v4l2_set_subdev_hostdata
 
     Sets V4L2 dev private host data
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param void \*p:
+    :param p:
         pointer to the private data to be stored.
+    :type p: void \*
 
 .. _`v4l2_get_subdev_hostdata`:
 
@@ -1502,8 +1519,9 @@ v4l2_get_subdev_hostdata
 
     Gets V4L2 dev private data
 
-    :param const struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: const struct v4l2_subdev \*
 
 .. _`v4l2_get_subdev_hostdata.description`:
 
@@ -1521,17 +1539,21 @@ v4l2_subdev_link_validate_default
 
     validates a media link
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param struct media_link \*link:
+    :param link:
         pointer to \ :c:type:`struct media_link <media_link>`\ 
+    :type link: struct media_link \*
 
-    :param struct v4l2_subdev_format \*source_fmt:
+    :param source_fmt:
         pointer to \ :c:type:`struct v4l2_subdev_format <v4l2_subdev_format>`\ 
+    :type source_fmt: struct v4l2_subdev_format \*
 
-    :param struct v4l2_subdev_format \*sink_fmt:
+    :param sink_fmt:
         pointer to \ :c:type:`struct v4l2_subdev_format <v4l2_subdev_format>`\ 
+    :type sink_fmt: struct v4l2_subdev_format \*
 
 .. _`v4l2_subdev_link_validate_default.description`:
 
@@ -1550,8 +1572,9 @@ v4l2_subdev_link_validate
 
     validates a media link
 
-    :param struct media_link \*link:
+    :param link:
         pointer to \ :c:type:`struct media_link <media_link>`\ 
+    :type link: struct media_link \*
 
 .. _`v4l2_subdev_link_validate.description`:
 
@@ -1573,8 +1596,9 @@ v4l2_subdev_alloc_pad_config
 
     Allocates memory for pad config
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to struct v4l2_subdev
+    :type sd: struct v4l2_subdev \*
 
 .. _`v4l2_subdev_free_pad_config`:
 
@@ -1585,8 +1609,9 @@ v4l2_subdev_free_pad_config
 
     Frees memory allocated by \ :c:func:`v4l2_subdev_alloc_pad_config`\ .
 
-    :param struct v4l2_subdev_pad_config \*cfg:
+    :param cfg:
         pointer to \ :c:type:`struct v4l2_subdev_pad_config <v4l2_subdev_pad_config>`\ 
+    :type cfg: struct v4l2_subdev_pad_config \*
 
 .. _`v4l2_subdev_init`:
 
@@ -1597,11 +1622,13 @@ v4l2_subdev_init
 
     initializes the sub-device struct
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to the \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  to be initialized
+    :type sd: struct v4l2_subdev \*
 
-    :param const struct v4l2_subdev_ops \*ops:
+    :param ops:
         pointer to \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type ops: const struct v4l2_subdev_ops \*
 
 .. _`v4l2_subdev_call`:
 
@@ -1612,17 +1639,20 @@ v4l2_subdev_call
 
     call an operation of a v4l2_subdev.
 
-    :param  sd:
+    :param sd:
         pointer to the \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of callbacks functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         callback function that will be called if \ ``cond``\  matches.
         The callback functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. _`v4l2_subdev_call.example`:
 
@@ -1643,15 +1673,18 @@ v4l2_subdev_has_op
 
     Checks if a subdev defines a certain operation.
 
-    :param  sd:
+    :param sd:
         pointer to the \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: 
 
-    :param  o:
+    :param o:
         The group of callback functions in \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ 
         which \ ``f``\  is a part of.
+    :type o: 
 
-    :param  f:
+    :param f:
         callback function to be checked for its existence.
+    :type f: 
 
 .. _`v4l2_subdev_notify_event`:
 
@@ -1662,11 +1695,13 @@ v4l2_subdev_notify_event
 
     Delivers event notification for subdevice
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         The subdev for which to deliver the event
+    :type sd: struct v4l2_subdev \*
 
-    :param const struct v4l2_event \*ev:
+    :param ev:
         The event to deliver
+    :type ev: const struct v4l2_event \*
 
 .. _`v4l2_subdev_notify_event.description`:
 

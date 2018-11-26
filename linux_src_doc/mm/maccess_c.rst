@@ -10,14 +10,17 @@ probe_kernel_read
 
     safely attempt to read from a location
 
-    :param void \*dst:
+    :param dst:
         pointer to the buffer that shall take the data
+    :type dst: void \*
 
-    :param const void \*src:
+    :param src:
         address to read from
+    :type src: const void \*
 
-    :param size_t size:
+    :param size:
         size of the data chunk
+    :type size: size_t
 
 .. _`probe_kernel_read.description`:
 
@@ -41,14 +44,17 @@ probe_kernel_write
 
     safely attempt to write to a location
 
-    :param void \*dst:
+    :param dst:
         address to write to
+    :type dst: void \*
 
-    :param const void \*src:
+    :param src:
         pointer to the data that shall be written
+    :type src: const void \*
 
-    :param size_t size:
+    :param size:
         size of the data chunk
+    :type size: size_t
 
 .. _`probe_kernel_write.description`:
 
@@ -67,15 +73,18 @@ strncpy_from_unsafe
 
     - Copy a NUL terminated string from unsafe address.
 
-    :param char \*dst:
+    :param dst:
         Destination address, in kernel space.  This buffer must be at
         least \ ``count``\  bytes long.
+    :type dst: char \*
 
-    :param const void \*unsafe_addr:
+    :param unsafe_addr:
         Unsafe address.
+    :type unsafe_addr: const void \*
 
-    :param long count:
+    :param count:
         Maximum number of bytes to copy, including the trailing NUL.
+    :type count: long
 
 .. _`strncpy_from_unsafe.description`:
 

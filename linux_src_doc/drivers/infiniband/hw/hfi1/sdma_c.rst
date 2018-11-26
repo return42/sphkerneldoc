@@ -10,8 +10,9 @@ sdma_state_name
 
     return state string from enum
 
-    :param enum sdma_states state:
+    :param state:
         state
+    :type state: enum sdma_states
 
 .. _`sdma_get_descq_cnt`:
 
@@ -22,8 +23,9 @@ sdma_get_descq_cnt
 
     called when device probed
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sdma_get_descq_cnt.description`:
 
@@ -47,8 +49,9 @@ sdma_engine_get_vl
 
     return vl for a given sdma engine
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         sdma engine
+    :type sde: struct sdma_engine \*
 
 .. _`sdma_engine_get_vl.description`:
 
@@ -67,14 +70,17 @@ sdma_select_engine_vl
 
     select sdma engine
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         devdata
+    :type dd: struct hfi1_devdata \*
 
-    :param u32 selector:
+    :param selector:
         a spreading factor
+    :type selector: u32
 
-    :param u8 vl:
+    :param vl:
         this vl
+    :type vl: u8
 
 .. _`sdma_select_engine_vl.description`:
 
@@ -94,14 +100,17 @@ sdma_select_engine_sc
 
     select sdma engine
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         devdata
+    :type dd: struct hfi1_devdata \*
 
-    :param u32 selector:
+    :param selector:
         a spreading factor
+    :type selector: u32
 
-    :param u8 sc5:
+    :param sc5:
         the 5 bit sc
+    :type sc5: u8
 
 .. _`sdma_select_engine_sc.description`:
 
@@ -120,14 +129,17 @@ sdma_seqfile_dump_cpu_list
 
     debugfs dump the cpu to sdma mappings
 
-    :param struct seq_file \*s:
+    :param s:
         seq file
+    :type s: struct seq_file \*
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         hfi1_devdata
+    :type dd: struct hfi1_devdata \*
 
-    :param unsigned long cpuid:
+    :param cpuid:
         cpu id
+    :type cpuid: unsigned long
 
 .. _`sdma_seqfile_dump_cpu_list.description`:
 
@@ -145,17 +157,21 @@ sdma_map_init
 
     called when # vls change
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         hfi1_devdata
+    :type dd: struct hfi1_devdata \*
 
-    :param u8 port:
+    :param port:
         port number
+    :type port: u8
 
-    :param u8 num_vls:
+    :param num_vls:
         number of vls
+    :type num_vls: u8
 
-    :param u8 \*vl_engines:
+    :param vl_engines:
         per vl engine mapping (optional)
+    :type vl_engines: u8 \*
 
 .. _`sdma_map_init.description`:
 
@@ -188,11 +204,13 @@ sdma_clean
 
 .. c:function:: void sdma_clean(struct hfi1_devdata *dd, size_t num_engines)
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         struct hfi1_devdata
+    :type dd: struct hfi1_devdata \*
 
-    :param size_t num_engines:
+    :param num_engines:
         num sdma engines
+    :type num_engines: size_t
 
 .. _`sdma_clean.description`:
 
@@ -211,11 +229,13 @@ sdma_init
 
     called when device probed
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         hfi1_devdata
+    :type dd: struct hfi1_devdata \*
 
-    :param u8 port:
+    :param port:
         port number (currently only zero)
+    :type port: u8
 
 .. _`sdma_init.description`:
 
@@ -241,8 +261,9 @@ sdma_all_running
 
     called when the link goes up
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         hfi1_devdata
+    :type dd: struct hfi1_devdata \*
 
 .. _`sdma_all_running.description`:
 
@@ -260,8 +281,9 @@ sdma_all_idle
 
     called when the link goes down
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         hfi1_devdata
+    :type dd: struct hfi1_devdata \*
 
 .. _`sdma_all_idle.description`:
 
@@ -279,8 +301,9 @@ sdma_start
 
     called to kick off state processing for all engines
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         hfi1_devdata
+    :type dd: struct hfi1_devdata \*
 
 .. _`sdma_start.description`:
 
@@ -299,8 +322,9 @@ sdma_exit
 
     used when module is removed
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         hfi1_devdata
+    :type dd: struct hfi1_devdata \*
 
 .. _`__sdma_txclean`:
 
@@ -311,11 +335,13 @@ sdma_exit
 
     clean tx of mappings, descp \*kmalloc's
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         hfi1_devdata for unmapping
+    :type dd: struct hfi1_devdata \*
 
-    :param struct sdma_txreq \*tx:
+    :param tx:
         tx request to clean
+    :type tx: struct sdma_txreq \*
 
 .. _`__sdma_txclean.description`:
 
@@ -336,11 +362,13 @@ sdma_engine_error
 
     error handler for engine
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         sdma engine
+    :type sde: struct sdma_engine \*
 
-    :param u64 status:
+    :param status:
         sdma interrupt reason
+    :type status: u64
 
 .. _`sdma_seqfile_dump_sde`:
 
@@ -351,11 +379,13 @@ sdma_seqfile_dump_sde
 
     debugfs dump of sde
 
-    :param struct seq_file \*s:
+    :param s:
         seq file
+    :type s: struct seq_file \*
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         send dma engine to dump
+    :type sde: struct sdma_engine \*
 
 .. _`sdma_seqfile_dump_sde.description`:
 
@@ -369,21 +399,25 @@ This routine dumps the sde to the indicated seq file.
 sdma_send_txreq
 ===============
 
-.. c:function:: int sdma_send_txreq(struct sdma_engine *sde, struct iowait *wait, struct sdma_txreq *tx, bool pkts_sent)
+.. c:function:: int sdma_send_txreq(struct sdma_engine *sde, struct iowait_work *wait, struct sdma_txreq *tx, bool pkts_sent)
 
     submit a tx req to ring
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         sdma engine to use
+    :type sde: struct sdma_engine \*
 
-    :param struct iowait \*wait:
-        wait structure to use when full (may be NULL)
+    :param wait:
+        SE wait structure to use when full (may be NULL)
+    :type wait: struct iowait_work \*
 
-    :param struct sdma_txreq \*tx:
+    :param tx:
         sdma_txreq to submit
+    :type tx: struct sdma_txreq \*
 
-    :param bool pkts_sent:
+    :param pkts_sent:
         has any packet been sent yet?
+    :type pkts_sent: bool
 
 .. _`sdma_send_txreq.description`:
 
@@ -407,21 +441,25 @@ ring (wait == NULL)
 sdma_send_txlist
 ================
 
-.. c:function:: int sdma_send_txlist(struct sdma_engine *sde, struct iowait *wait, struct list_head *tx_list, u32 *count_out)
+.. c:function:: int sdma_send_txlist(struct sdma_engine *sde, struct iowait_work *wait, struct list_head *tx_list, u16 *count_out)
 
     submit a list of tx req to ring
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         sdma engine to use
+    :type sde: struct sdma_engine \*
 
-    :param struct iowait \*wait:
-        wait structure to use when full (may be NULL)
+    :param wait:
+        SE wait structure to use when full (may be NULL)
+    :type wait: struct iowait_work \*
 
-    :param struct list_head \*tx_list:
+    :param tx_list:
         list of sdma_txreqs to submit
+    :type tx_list: struct list_head \*
 
-    :param u32 \*count_out:
+    :param count_out:
         *undescribed*
+    :type count_out: u16 \*
 
 .. _`sdma_send_txlist.description`:
 
@@ -458,8 +496,9 @@ sdma_ahg_alloc
 
     allocate an AHG entry
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         engine to allocate from
+    :type sde: struct sdma_engine \*
 
 .. _`sdma_ahg_alloc.return`:
 
@@ -478,11 +517,13 @@ sdma_ahg_free
 
     free an AHG entry
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         engine to return AHG entry
+    :type sde: struct sdma_engine \*
 
-    :param int ahg_index:
+    :param ahg_index:
         index to free
+    :type ahg_index: int
 
 .. _`sdma_ahg_free.description`:
 
@@ -500,8 +541,9 @@ This routine frees the indicate AHG entry.
 
     schedule progress on engine
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         sdma_engine to schedule progress
+    :type sde: struct sdma_engine \*
 
 .. This file was automatic generated / don't edit.
 

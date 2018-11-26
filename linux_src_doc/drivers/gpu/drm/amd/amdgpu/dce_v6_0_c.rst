@@ -10,17 +10,21 @@ dce_v6_0_page_flip
 
     pageflip callback.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param int crtc_id:
+    :param crtc_id:
         crtc to cleanup pageflip on
+    :type crtc_id: int
 
-    :param u64 crtc_base:
+    :param crtc_base:
         new address of the crtc (GPU MC address)
+    :type crtc_base: u64
 
-    :param bool async:
+    :param async:
         *undescribed*
+    :type async: bool
 
 .. _`dce_v6_0_page_flip.description`:
 
@@ -42,11 +46,13 @@ dce_v6_0_hpd_sense
 
     hpd sense callback.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param enum amdgpu_hpd_id hpd:
+    :param hpd:
         hpd (hotplug detect) pin
+    :type hpd: enum amdgpu_hpd_id
 
 .. _`dce_v6_0_hpd_sense.description`:
 
@@ -65,11 +71,13 @@ dce_v6_0_hpd_set_polarity
 
     hpd set polarity callback.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param enum amdgpu_hpd_id hpd:
+    :param hpd:
         hpd (hotplug detect) pin
+    :type hpd: enum amdgpu_hpd_id
 
 .. _`dce_v6_0_hpd_set_polarity.description`:
 
@@ -87,8 +95,9 @@ dce_v6_0_hpd_init
 
     hpd setup callback.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`dce_v6_0_hpd_init.description`:
 
@@ -107,8 +116,9 @@ dce_v6_0_hpd_fini
 
     hpd tear down callback.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`dce_v6_0_hpd_fini.description`:
 
@@ -127,8 +137,9 @@ si_get_number_of_dram_channels
 
     get the number of dram channels
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`si_get_number_of_dram_channels.description`:
 
@@ -148,8 +159,9 @@ dce_v6_0_dram_bandwidth
 
     get the dram bandwidth
 
-    :param struct dce6_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce6_wm_params \*
 
 .. _`dce_v6_0_dram_bandwidth.description`:
 
@@ -169,8 +181,9 @@ dce_v6_0_dram_bandwidth_for_display
 
     get the dram bandwidth for display
 
-    :param struct dce6_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce6_wm_params \*
 
 .. _`dce_v6_0_dram_bandwidth_for_display.description`:
 
@@ -190,8 +203,9 @@ dce_v6_0_data_return_bandwidth
 
     get the data return bandwidth
 
-    :param struct dce6_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce6_wm_params \*
 
 .. _`dce_v6_0_data_return_bandwidth.description`:
 
@@ -211,8 +225,9 @@ dce_v6_0_dmif_request_bandwidth
 
     get the dmif bandwidth
 
-    :param struct dce6_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce6_wm_params \*
 
 .. _`dce_v6_0_dmif_request_bandwidth.description`:
 
@@ -232,8 +247,9 @@ dce_v6_0_available_bandwidth
 
     get the min available bandwidth
 
-    :param struct dce6_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce6_wm_params \*
 
 .. _`dce_v6_0_available_bandwidth.description`:
 
@@ -253,8 +269,9 @@ dce_v6_0_average_bandwidth
 
     get the average available bandwidth
 
-    :param struct dce6_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce6_wm_params \*
 
 .. _`dce_v6_0_average_bandwidth.description`:
 
@@ -274,8 +291,9 @@ dce_v6_0_latency_watermark
 
     get the latency watermark
 
-    :param struct dce6_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce6_wm_params \*
 
 .. _`dce_v6_0_latency_watermark.description`:
 
@@ -295,8 +313,9 @@ dce_v6_0_average_bandwidth_vs_dram_bandwidth_for_display
 
     check average and available dram bandwidth
 
-    :param struct dce6_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce6_wm_params \*
 
 .. _`dce_v6_0_average_bandwidth_vs_dram_bandwidth_for_display.description`:
 
@@ -317,8 +336,9 @@ dce_v6_0_average_bandwidth_vs_available_bandwidth
 
     check average and available bandwidth
 
-    :param struct dce6_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce6_wm_params \*
 
 .. _`dce_v6_0_average_bandwidth_vs_available_bandwidth.description`:
 
@@ -339,8 +359,9 @@ dce_v6_0_check_latency_hiding
 
     check latency hiding
 
-    :param struct dce6_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce6_wm_params \*
 
 .. _`dce_v6_0_check_latency_hiding.description`:
 
@@ -360,17 +381,21 @@ dce_v6_0_program_watermarks
 
     program display watermarks
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_crtc \*amdgpu_crtc:
+    :param amdgpu_crtc:
         the selected display controller
+    :type amdgpu_crtc: struct amdgpu_crtc \*
 
-    :param u32 lb_size:
+    :param lb_size:
         line buffer size
+    :type lb_size: u32
 
-    :param u32 num_heads:
+    :param num_heads:
         number of display controllers in use
+    :type num_heads: u32
 
 .. _`dce_v6_0_program_watermarks.description`:
 
@@ -389,8 +414,9 @@ dce_v6_0_pick_pll
 
     Allocate a PPLL for use by the crtc.
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`dce_v6_0_pick_pll.description`:
 

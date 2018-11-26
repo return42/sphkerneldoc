@@ -10,17 +10,21 @@ legacy_probe_add
 
     Add interface to probe list
 
-    :param unsigned long port:
+    :param port:
         Controller port
+    :type port: unsigned long
 
-    :param unsigned int irq:
+    :param irq:
         IRQ number
+    :type irq: unsigned int
 
-    :param enum controller type:
+    :param type:
         Controller type
+    :type type: enum controller
 
-    :param unsigned long private:
+    :param private:
         Controller specific info
+    :type private: unsigned long
 
 .. _`legacy_probe_add.description`:
 
@@ -43,11 +47,13 @@ legacy_set_mode
 
     mode setting
 
-    :param struct ata_link \*link:
+    :param link:
         IDE link
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*unused:
+    :param unused:
         Device that failed when error is returned
+    :type unused: struct ata_device \*\*
 
 .. _`legacy_set_mode.description`:
 
@@ -70,8 +76,9 @@ opti_syscfg
 
     read OPTI chipset configuration
 
-    :param u8 reg:
+    :param reg:
         Configuration register to read
+    :type reg: u8
 
 .. _`opti_syscfg.description`:
 
@@ -89,8 +96,9 @@ opti82c46x_qc_issue
 
     command issue
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command pending
+    :type qc: struct ata_queued_cmd \*
 
 .. _`opti82c46x_qc_issue.description`:
 
@@ -121,11 +129,13 @@ qdi65x0_set_piomode
 
     PIO setup for QDI65x0
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device
+    :type adev: struct ata_device \*
 
 .. _`qdi65x0_set_piomode.description`:
 
@@ -148,8 +158,9 @@ qdi_qc_issue
 
     command issue
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command pending
+    :type qc: struct ata_queued_cmd \*
 
 .. _`qdi_qc_issue.description`:
 
@@ -168,8 +179,9 @@ probe_chip_type
 
     Discover controller
 
-    :param struct legacy_probe \*probe:
+    :param probe:
         Probe entry to check
+    :type probe: struct legacy_probe \*
 
 .. _`probe_chip_type.description`:
 
@@ -188,8 +200,9 @@ legacy_init_one
 
     attach a legacy interface
 
-    :param struct legacy_probe \*probe:
+    :param probe:
         *undescribed*
+    :type probe: struct legacy_probe \*
 
 .. _`legacy_init_one.description`:
 
@@ -208,14 +221,17 @@ legacy_check_special_cases
 
     ATA special cases
 
-    :param struct pci_dev \*p:
+    :param p:
         PCI device to check
+    :type p: struct pci_dev \*
 
-    :param int \*primary:
+    :param primary:
         *undescribed*
+    :type primary: int \*
 
-    :param int \*secondary:
+    :param secondary:
         *undescribed*
+    :type secondary: int \*
 
 .. _`legacy_check_special_cases.description`:
 
@@ -237,8 +253,9 @@ legacy_init
 
     attach legacy interfaces
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`legacy_init.description`:
 

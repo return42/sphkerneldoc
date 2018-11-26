@@ -10,11 +10,13 @@ pci_find_bus
 
     locate PCI bus from a given domain and bus number
 
-    :param int domain:
+    :param domain:
         number of PCI domain to search
+    :type domain: int
 
-    :param int busnr:
+    :param busnr:
         number of desired PCI bus
+    :type busnr: int
 
 .. _`pci_find_bus.description`:
 
@@ -34,8 +36,9 @@ pci_find_next_bus
 
     begin or continue searching for a PCI bus
 
-    :param const struct pci_bus \*from:
+    :param from:
         Previous PCI bus found, or \ ``NULL``\  for new search.
+    :type from: const struct pci_bus \*
 
 .. _`pci_find_next_bus.description`:
 
@@ -56,13 +59,15 @@ pci_get_slot
 
     locate PCI device for a given PCI slot
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus on which desired PCI device resides
+    :type bus: struct pci_bus \*
 
-    :param unsigned int devfn:
+    :param devfn:
         encodes number of PCI slot in which the desired PCI
         device resides and the logical device number within that slot
         in case of multi-function devices.
+    :type devfn: unsigned int
 
 .. _`pci_get_slot.description`:
 
@@ -85,16 +90,19 @@ pci_get_domain_bus_and_slot
 
     locate PCI device for a given PCI domain (segment), bus, and slot
 
-    :param int domain:
+    :param domain:
         PCI domain/segment on which the PCI device resides.
+    :type domain: int
 
-    :param unsigned int bus:
+    :param bus:
         PCI bus on which desired PCI device resides
+    :type bus: unsigned int
 
-    :param unsigned int devfn:
+    :param devfn:
         encodes number of PCI slot in which the desired PCI device
         resides and the logical device number within that slot in case of
         multi-function devices.
+    :type devfn: unsigned int
 
 .. _`pci_get_domain_bus_and_slot.description`:
 
@@ -117,20 +125,25 @@ pci_get_subsys
 
     begin or continue searching for a PCI device by vendor/subvendor/device/subdevice id
 
-    :param unsigned int vendor:
+    :param vendor:
         PCI vendor id to match, or \ ``PCI_ANY_ID``\  to match all vendor ids
+    :type vendor: unsigned int
 
-    :param unsigned int device:
+    :param device:
         PCI device id to match, or \ ``PCI_ANY_ID``\  to match all device ids
+    :type device: unsigned int
 
-    :param unsigned int ss_vendor:
+    :param ss_vendor:
         PCI subsystem vendor id to match, or \ ``PCI_ANY_ID``\  to match all vendor ids
+    :type ss_vendor: unsigned int
 
-    :param unsigned int ss_device:
+    :param ss_device:
         PCI subsystem device id to match, or \ ``PCI_ANY_ID``\  to match all device ids
+    :type ss_device: unsigned int
 
-    :param struct pci_dev \*from:
+    :param from:
         Previous PCI device found in search, or \ ``NULL``\  for new search.
+    :type from: struct pci_dev \*
 
 .. _`pci_get_subsys.description`:
 
@@ -154,14 +167,17 @@ pci_get_device
 
     begin or continue searching for a PCI device by vendor/device id
 
-    :param unsigned int vendor:
+    :param vendor:
         PCI vendor id to match, or \ ``PCI_ANY_ID``\  to match all vendor ids
+    :type vendor: unsigned int
 
-    :param unsigned int device:
+    :param device:
         PCI device id to match, or \ ``PCI_ANY_ID``\  to match all device ids
+    :type device: unsigned int
 
-    :param struct pci_dev \*from:
+    :param from:
         Previous PCI device found in search, or \ ``NULL``\  for new search.
+    :type from: struct pci_dev \*
 
 .. _`pci_get_device.description`:
 
@@ -185,11 +201,13 @@ pci_get_class
 
     begin or continue searching for a PCI device by class
 
-    :param unsigned int class:
+    :param class:
         search for a PCI device with this class designation
+    :type class: unsigned int
 
-    :param struct pci_dev \*from:
+    :param from:
         Previous PCI device found in search, or \ ``NULL``\  for new search.
+    :type from: struct pci_dev \*
 
 .. _`pci_get_class.description`:
 
@@ -214,9 +232,10 @@ pci_dev_present
 
     Returns 1 if device matching the device list is present, 0 if not.
 
-    :param const struct pci_device_id \*ids:
+    :param ids:
         A pointer to a null terminated list of struct pci_device_id structures
         that describe the type of PCI device the caller is trying to find.
+    :type ids: const struct pci_device_id \*
 
 .. _`pci_dev_present.description`:
 

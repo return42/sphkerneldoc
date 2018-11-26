@@ -18,8 +18,9 @@ drm_helper_move_panel_connectors_to_head
 
     move panels to the front in the connector list
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device to operate on
+    :type dev: struct drm_device \*
 
 .. _`drm_helper_move_panel_connectors_to_head.description`:
 
@@ -41,14 +42,17 @@ drm_helper_mode_fill_fb_struct
 
     fill out framebuffer metadata
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         drm_framebuffer object to fill out
+    :type fb: struct drm_framebuffer \*
 
-    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
+    :param mode_cmd:
         metadata from the userspace fb creation request
+    :type mode_cmd: const struct drm_mode_fb_cmd2 \*
 
 .. _`drm_helper_mode_fill_fb_struct.description`:
 
@@ -67,14 +71,17 @@ drm_crtc_init
 
     Legacy CRTC initialization function
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC object to init
+    :type crtc: struct drm_crtc \*
 
-    :param const struct drm_crtc_funcs \*funcs:
+    :param funcs:
         callbacks for the new CRTC
+    :type funcs: const struct drm_crtc_funcs \*
 
 .. _`drm_crtc_init.description`:
 
@@ -100,8 +107,9 @@ drm_mode_config_helper_suspend
 
     Modeset suspend helper
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_mode_config_helper_suspend.description`:
 
@@ -136,8 +144,9 @@ drm_mode_config_helper_resume
 
     Modeset resume helper
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_mode_config_helper_resume.description`:
 

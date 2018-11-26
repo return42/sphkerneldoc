@@ -10,11 +10,13 @@ denormal_to_double
 
     Given denormalized float number, store double float
 
-    :param struct sh_fpu_soft_struct \*fpu:
+    :param fpu:
         Pointer to sh_fpu_soft structure
+    :type fpu: struct sh_fpu_soft_struct \*
 
-    :param int n:
+    :param n:
         Index to FP register
+    :type n: int
 
 .. _`ieee_fpe_handler`:
 
@@ -25,8 +27,9 @@ ieee_fpe_handler
 
     Handle denormalized number exception
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Pointer to register structure
+    :type regs: struct pt_regs \*
 
 .. _`ieee_fpe_handler.description`:
 
@@ -44,8 +47,9 @@ fpu_init
 
     Initialize FPU registers
 
-    :param struct sh_fpu_soft_struct \*fpu:
+    :param fpu:
         Pointer to software emulated FPU registers.
+    :type fpu: struct sh_fpu_soft_struct \*
 
 .. _`do_fpu_inst`:
 
@@ -56,11 +60,13 @@ do_fpu_inst
 
     Handle reserved instructions for FPU emulation
 
-    :param unsigned short inst:
+    :param inst:
         instruction code.
+    :type inst: unsigned short
 
-    :param struct pt_regs \*regs:
+    :param regs:
         registers on stack.
+    :type regs: struct pt_regs \*
 
 .. This file was automatic generated / don't edit.
 

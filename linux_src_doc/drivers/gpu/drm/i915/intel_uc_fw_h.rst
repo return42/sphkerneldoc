@@ -10,8 +10,9 @@ intel_uc_fw_get_upload_size
 
     Get size of firmware needed to be uploaded.
 
-    :param struct intel_uc_fw \*uc_fw:
+    :param uc_fw:
         uC firmware.
+    :type uc_fw: struct intel_uc_fw \*
 
 .. _`intel_uc_fw_get_upload_size.description`:
 

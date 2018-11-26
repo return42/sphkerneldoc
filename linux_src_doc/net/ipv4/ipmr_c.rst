@@ -10,17 +10,21 @@ vif_delete
 
     Delete a VIF entry
 
-    :param struct mr_table \*mrt:
+    :param mrt:
         *undescribed*
+    :type mrt: struct mr_table \*
 
-    :param int vifi:
+    :param vifi:
         *undescribed*
+    :type vifi: int
 
-    :param int notify:
+    :param notify:
         Set to 1, if the caller is a notifier_call
+    :type notify: int
 
-    :param struct list_head \*head:
+    :param head:
         *undescribed*
+    :type head: struct list_head \*
 
 .. This file was automatic generated / don't edit.
 

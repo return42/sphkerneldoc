@@ -151,8 +151,9 @@ uint8p_to_uint32_be
 
     4\*uint8 to uint32 big endian
 
-    :param u8 \*in:
+    :param in:
         Data to convert.
+    :type in: u8 \*
 
 .. _`swap_bits_in_byte`:
 
@@ -163,8 +164,9 @@ swap_bits_in_byte
 
     mirror the bits in a byte
 
-    :param u8 b:
+    :param b:
         the byte to be mirrored
+    :type b: u8
 
 .. _`swap_bits_in_byte.the-bits-are-swapped-the-following-way`:
 
@@ -194,8 +196,9 @@ cryp_algs_register_all
 
 .. c:function:: int cryp_algs_register_all( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cryp_algs_unregister_all`:
 
@@ -204,8 +207,9 @@ cryp_algs_unregister_all
 
 .. c:function:: void cryp_algs_unregister_all( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

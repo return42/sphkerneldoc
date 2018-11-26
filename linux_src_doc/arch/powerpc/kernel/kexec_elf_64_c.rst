@@ -10,11 +10,13 @@ elf_is_ehdr_sane
 
     check that it is safe to use the ELF header
 
-    :param const struct elfhdr \*ehdr:
+    :param ehdr:
         *undescribed*
+    :type ehdr: const struct elfhdr \*
 
-    :param size_t buf_len:
+    :param buf_len:
         size of the buffer in which the ELF file is loaded.
+    :type buf_len: size_t
 
 .. _`elf_is_phdr_sane`:
 
@@ -25,11 +27,13 @@ elf_is_phdr_sane
 
     check that it is safe to use the program header
 
-    :param const struct elf_phdr \*phdr:
+    :param phdr:
         *undescribed*
+    :type phdr: const struct elf_phdr \*
 
-    :param size_t buf_len:
+    :param buf_len:
         size of the buffer in which the ELF file is loaded.
+    :type buf_len: size_t
 
 .. _`elf_read_phdrs`:
 
@@ -40,14 +44,17 @@ elf_read_phdrs
 
     read the program headers from the buffer
 
-    :param const char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param struct elf_info \*elf_info:
+    :param elf_info:
         *undescribed*
+    :type elf_info: struct elf_info \*
 
 .. _`elf_read_phdrs.description`:
 
@@ -66,11 +73,13 @@ elf_is_shdr_sane
 
     check that it is safe to use the section header
 
-    :param const struct elf_shdr \*shdr:
+    :param shdr:
         *undescribed*
+    :type shdr: const struct elf_shdr \*
 
-    :param size_t buf_len:
+    :param buf_len:
         size of the buffer in which the ELF file is loaded.
+    :type buf_len: size_t
 
 .. _`elf_read_shdrs`:
 
@@ -81,14 +90,17 @@ elf_read_shdrs
 
     read the section headers from the buffer
 
-    :param const char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param struct elf_info \*elf_info:
+    :param elf_info:
         *undescribed*
+    :type elf_info: struct elf_info \*
 
 .. _`elf_read_shdrs.description`:
 
@@ -107,17 +119,21 @@ elf_read_from_buffer
 
     read ELF file and sets up ELF header and ELF info
 
-    :param const char \*buf:
+    :param buf:
         Buffer to read ELF file from.
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         Size of \ ``buf``\ .
+    :type len: size_t
 
-    :param struct elfhdr \*ehdr:
+    :param ehdr:
         Pointer to existing struct which will be populated.
+    :type ehdr: struct elfhdr \*
 
-    :param struct elf_info \*elf_info:
+    :param elf_info:
         Pointer to existing struct which will be populated.
+    :type elf_info: struct elf_info \*
 
 .. _`elf_read_from_buffer.description`:
 
@@ -144,8 +160,9 @@ elf_free_info
 
     free memory allocated by elf_read_from_buffer
 
-    :param struct elf_info \*elf_info:
+    :param elf_info:
         *undescribed*
+    :type elf_info: struct elf_info \*
 
 .. _`build_elf_exec_info`:
 
@@ -156,17 +173,21 @@ build_elf_exec_info
 
     read ELF executable and check that we can use it
 
-    :param const char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param struct elfhdr \*ehdr:
+    :param ehdr:
         *undescribed*
+    :type ehdr: struct elfhdr \*
 
-    :param struct elf_info \*elf_info:
+    :param elf_info:
         *undescribed*
+    :type elf_info: struct elf_info \*
 
 .. _`elf_exec_load`:
 
@@ -177,18 +198,22 @@ elf_exec_load
 
     load ELF executable image
 
-    :param struct kimage \*image:
+    :param image:
         *undescribed*
+    :type image: struct kimage \*
 
-    :param struct elfhdr \*ehdr:
+    :param ehdr:
         *undescribed*
+    :type ehdr: struct elfhdr \*
 
-    :param struct elf_info \*elf_info:
+    :param elf_info:
         *undescribed*
+    :type elf_info: struct elf_info \*
 
-    :param unsigned long \*lowest_load_addr:
+    :param lowest_load_addr:
         On return, will be the address where the first PT_LOAD
         section will be loaded in memory.
+    :type lowest_load_addr: unsigned long \*
 
 .. _`elf_exec_load.return`:
 

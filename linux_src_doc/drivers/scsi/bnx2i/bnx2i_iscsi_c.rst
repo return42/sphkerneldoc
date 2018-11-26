@@ -10,18 +10,22 @@ bnx2i_get_write_cmd_bd_idx
 
     identifies various BD bookmarks
 
-    :param struct bnx2i_cmd \*cmd:
+    :param cmd:
         iscsi cmd struct pointer
+    :type cmd: struct bnx2i_cmd \*
 
-    :param u32 buf_off:
+    :param buf_off:
         absolute buffer offset
+    :type buf_off: u32
 
-    :param u32 \*start_bd_off:
+    :param start_bd_off:
         u32 pointer to return the offset within the BD
         indicated by 'start_bd_idx' on which 'buf_off' falls
+    :type start_bd_off: u32 \*
 
-    :param u32 \*start_bd_idx:
+    :param start_bd_idx:
         index of the BD on which 'buf_off' falls
+    :type start_bd_idx: u32 \*
 
 .. _`bnx2i_get_write_cmd_bd_idx.description`:
 
@@ -40,8 +44,9 @@ bnx2i_setup_write_cmd_bd_info
 
     sets up BD various information
 
-    :param struct iscsi_task \*task:
+    :param task:
         transport layer's cmd struct pointer
+    :type task: struct iscsi_task \*
 
 .. _`bnx2i_setup_write_cmd_bd_info.description`:
 
@@ -62,11 +67,13 @@ bnx2i_map_scsi_sg
 
     maps IO buffer and prepares the BD table
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_cmd \*cmd:
+    :param cmd:
         iscsi cmd struct pointer
+    :type cmd: struct bnx2i_cmd \*
 
 .. _`bnx2i_map_scsi_sg.description`:
 
@@ -84,8 +91,9 @@ bnx2i_iscsi_map_sg_list
 
     maps SG list
 
-    :param struct bnx2i_cmd \*cmd:
+    :param cmd:
         iscsi cmd struct pointer
+    :type cmd: struct bnx2i_cmd \*
 
 .. _`bnx2i_iscsi_map_sg_list.description`:
 
@@ -103,8 +111,9 @@ bnx2i_iscsi_unmap_sg_list
 
     unmaps SG list
 
-    :param struct bnx2i_cmd \*cmd:
+    :param cmd:
         iscsi cmd struct pointer
+    :type cmd: struct bnx2i_cmd \*
 
 .. _`bnx2i_iscsi_unmap_sg_list.description`:
 
@@ -122,14 +131,17 @@ bnx2i_bind_conn_to_iscsi_cid
 
     bind conn structure to 'iscsi_cid'
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param u32 iscsi_cid:
+    :param iscsi_cid:
         iscsi context ID, range 0 - (MAX_CONN - 1)
+    :type iscsi_cid: u32
 
 .. _`bnx2i_bind_conn_to_iscsi_cid.description`:
 
@@ -149,11 +161,13 @@ bnx2i_get_conn_from_id
 
     maps an iscsi cid to corresponding conn ptr
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param u16 iscsi_cid:
+    :param iscsi_cid:
         iscsi context ID, range 0 - (MAX_CONN - 1)
+    :type iscsi_cid: u16
 
 .. _`bnx2i_alloc_iscsi_cid`:
 
@@ -164,8 +178,9 @@ bnx2i_alloc_iscsi_cid
 
     allocates a iscsi_cid from free pool
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_free_iscsi_cid`:
 
@@ -176,11 +191,13 @@ bnx2i_free_iscsi_cid
 
     returns tcp port to free list
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param u16 iscsi_cid:
+    :param iscsi_cid:
         iscsi context ID to free
+    :type iscsi_cid: u16
 
 .. _`bnx2i_setup_free_cid_que`:
 
@@ -191,8 +208,9 @@ bnx2i_setup_free_cid_que
 
     sets up free iscsi cid queue
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_setup_free_cid_que.description`:
 
@@ -211,8 +229,9 @@ bnx2i_release_free_cid_que
 
     releases 'iscsi_cid' queue resources
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_alloc_ep`:
 
@@ -223,8 +242,9 @@ bnx2i_alloc_ep
 
     allocates ep structure from global pool
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_alloc_ep.description`:
 
@@ -244,8 +264,9 @@ bnx2i_free_ep
 
     free endpoint
 
-    :param struct iscsi_endpoint \*ep:
+    :param ep:
         pointer to iscsi endpoint structure
+    :type ep: struct iscsi_endpoint \*
 
 .. _`bnx2i_alloc_bdt`:
 
@@ -256,14 +277,17 @@ bnx2i_alloc_bdt
 
     allocates buffer descriptor (BD) table for the command
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter instance pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_cmd \*cmd:
+    :param cmd:
         iscsi command structure
+    :type cmd: struct bnx2i_cmd \*
 
 .. _`bnx2i_destroy_cmd_pool`:
 
@@ -274,11 +298,13 @@ bnx2i_destroy_cmd_pool
 
     destroys iscsi command pool and release BD table
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter instance pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
 .. _`bnx2i_setup_cmd_pool`:
 
@@ -289,11 +315,13 @@ bnx2i_setup_cmd_pool
 
     sets up iscsi command pool for the session
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter instance pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
 .. _`bnx2i_setup_mp_bdt`:
 
@@ -304,8 +332,9 @@ bnx2i_setup_mp_bdt
 
     allocate BD table resources
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter structure
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_setup_mp_bdt.description`:
 
@@ -324,8 +353,9 @@ bnx2i_free_mp_bdt
 
     releases ITT back to free pool
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_free_mp_bdt.description`:
 
@@ -343,8 +373,9 @@ bnx2i_drop_session
 
     notifies iscsid of connection error.
 
-    :param struct iscsi_cls_session \*cls_session:
+    :param cls_session:
         *undescribed*
+    :type cls_session: struct iscsi_cls_session \*
 
 .. _`bnx2i_drop_session.description`:
 
@@ -366,11 +397,13 @@ bnx2i_ep_destroy_list_add
 
     add an entry to EP destroy list
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         pointer to endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_ep_destroy_list_add.description`:
 
@@ -388,11 +421,13 @@ bnx2i_ep_destroy_list_del
 
     add an entry to EP destroy list
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         pointer to endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_ep_destroy_list_del.description`:
 
@@ -410,11 +445,13 @@ bnx2i_ep_ofld_list_add
 
     add an entry to ep offload pending list
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         pointer to endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_ep_ofld_list_add.description`:
 
@@ -432,11 +469,13 @@ bnx2i_ep_ofld_list_del
 
     add an entry to ep offload pending list
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         pointer to endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_ep_ofld_list_del.description`:
 
@@ -454,11 +493,13 @@ bnx2i_find_ep_in_ofld_list
 
     find iscsi_cid in pending list of endpoints
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param u32 iscsi_cid:
+    :param iscsi_cid:
         iscsi context ID to find
+    :type iscsi_cid: u32
 
 .. _`bnx2i_find_ep_in_destroy_list`:
 
@@ -469,11 +510,13 @@ bnx2i_find_ep_in_destroy_list
 
     find iscsi_cid in destroy list
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param u32 iscsi_cid:
+    :param iscsi_cid:
         iscsi context ID to find
+    :type iscsi_cid: u32
 
 .. _`bnx2i_ep_active_list_add`:
 
@@ -484,11 +527,13 @@ bnx2i_ep_active_list_add
 
     add an entry to ep active list
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         pointer to endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_ep_active_list_add.description`:
 
@@ -506,11 +551,13 @@ bnx2i_ep_active_list_del
 
     deletes an entry to ep active list
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         pointer to endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_ep_active_list_del.description`:
 
@@ -528,11 +575,13 @@ bnx2i_setup_host_queue_size
 
     assigns shost->can_queue param
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host pointer
+    :type shost: struct Scsi_Host \*
 
 .. _`bnx2i_setup_host_queue_size.description`:
 
@@ -552,8 +601,9 @@ bnx2i_alloc_hba
 
     allocate and init adapter instance
 
-    :param struct cnic_dev \*cnic:
+    :param cnic:
         cnic device pointer
+    :type cnic: struct cnic_dev \*
 
 .. _`bnx2i_alloc_hba.description`:
 
@@ -572,8 +622,9 @@ bnx2i_free_hba
 
     releases hba structure and resources held by the adapter
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_free_hba.description`:
 
@@ -591,11 +642,13 @@ bnx2i_conn_free_login_resources
 
     free DMA resources used for login process
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
 .. _`bnx2i_conn_free_login_resources.description`:
 
@@ -613,11 +666,13 @@ bnx2i_conn_alloc_login_resources
 
     alloc DMA resources for login/nop.
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
 .. _`bnx2i_conn_alloc_login_resources.description`:
 
@@ -635,8 +690,9 @@ bnx2i_iscsi_prep_generic_pdu_bd
 
     prepares BD table.
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
 .. _`bnx2i_iscsi_prep_generic_pdu_bd.description`:
 
@@ -655,8 +711,9 @@ bnx2i_iscsi_send_generic_request
 
     called to send mgmt tasks.
 
-    :param struct iscsi_task \*task:
+    :param task:
         transport layer task pointer
+    :type task: struct iscsi_task \*
 
 .. _`bnx2i_iscsi_send_generic_request.description`:
 
@@ -675,11 +732,13 @@ bnx2i_cpy_scsi_cdb
 
     copies LUN & CDB fields in required format to sq wqe
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         SCSI-ML command pointer
+    :type sc: struct scsi_cmnd \*
 
-    :param struct bnx2i_cmd \*cmd:
+    :param cmd:
         iscsi cmd pointer
+    :type cmd: struct bnx2i_cmd \*
 
 .. _`bnx2i_mtask_xmit`:
 
@@ -690,11 +749,13 @@ bnx2i_mtask_xmit
 
     transmit mtask to chip for further processing
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         transport layer conn structure pointer
+    :type conn: struct iscsi_conn \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         transport layer command structure pointer
+    :type task: struct iscsi_task \*
 
 .. _`bnx2i_task_xmit`:
 
@@ -705,8 +766,9 @@ bnx2i_task_xmit
 
     transmit iscsi command to chip for further processing
 
-    :param struct iscsi_task \*task:
+    :param task:
         transport layer command structure pointer
+    :type task: struct iscsi_task \*
 
 .. _`bnx2i_task_xmit.description`:
 
@@ -724,17 +786,21 @@ bnx2i_session_create
 
     create a new iscsi session
 
-    :param struct iscsi_endpoint \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct iscsi_endpoint \*
 
-    :param uint16_t cmds_max:
+    :param cmds_max:
         max commands supported
+    :type cmds_max: uint16_t
 
-    :param uint16_t qdepth:
+    :param qdepth:
         scsi queue depth to support
+    :type qdepth: uint16_t
 
-    :param uint32_t initial_cmdsn:
+    :param initial_cmdsn:
         initial iscsi CMDSN to be used for this session
+    :type initial_cmdsn: uint32_t
 
 .. _`bnx2i_session_create.description`:
 
@@ -752,8 +818,9 @@ bnx2i_session_destroy
 
     destroys iscsi session
 
-    :param struct iscsi_cls_session \*cls_session:
+    :param cls_session:
         pointer to iscsi cls session
+    :type cls_session: struct iscsi_cls_session \*
 
 .. _`bnx2i_session_destroy.description`:
 
@@ -772,11 +839,13 @@ bnx2i_conn_create
 
     create iscsi connection instance
 
-    :param struct iscsi_cls_session \*cls_session:
+    :param cls_session:
         pointer to iscsi cls session
+    :type cls_session: struct iscsi_cls_session \*
 
-    :param uint32_t cid:
+    :param cid:
         iscsi cid as per rfc (not NX2's CID terminology)
+    :type cid: uint32_t
 
 .. _`bnx2i_conn_create.description`:
 
@@ -794,17 +863,21 @@ bnx2i_conn_bind
 
     binds iscsi sess, conn and ep objects together
 
-    :param struct iscsi_cls_session \*cls_session:
+    :param cls_session:
         pointer to iscsi cls session
+    :type cls_session: struct iscsi_cls_session \*
 
-    :param struct iscsi_cls_conn \*cls_conn:
+    :param cls_conn:
         pointer to iscsi cls conn
+    :type cls_conn: struct iscsi_cls_conn \*
 
-    :param uint64_t transport_fd:
+    :param transport_fd:
         64-bit EP handle
+    :type transport_fd: uint64_t
 
-    :param int is_leading:
+    :param is_leading:
         leading connection on this session?
+    :type is_leading: int
 
 .. _`bnx2i_conn_bind.description`:
 
@@ -825,8 +898,9 @@ bnx2i_conn_destroy
 
     destroy iscsi connection instance & release resources
 
-    :param struct iscsi_cls_conn \*cls_conn:
+    :param cls_conn:
         pointer to iscsi cls conn
+    :type cls_conn: struct iscsi_cls_conn \*
 
 .. _`bnx2i_conn_destroy.description`:
 
@@ -845,14 +919,17 @@ bnx2i_ep_get_param
 
     return iscsi ep parameter to caller
 
-    :param struct iscsi_endpoint \*ep:
+    :param ep:
         pointer to iscsi endpoint
+    :type ep: struct iscsi_endpoint \*
 
-    :param enum iscsi_param param:
+    :param param:
         parameter type identifier
+    :type param: enum iscsi_param
 
-    :param char \*buf:
+    :param buf:
         buffer pointer
+    :type buf: char \*
 
 .. _`bnx2i_ep_get_param.description`:
 
@@ -870,14 +947,17 @@ bnx2i_host_get_param
 
     returns host (adapter) related parameters
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host pointer
+    :type shost: struct Scsi_Host \*
 
-    :param enum iscsi_host_param param:
+    :param param:
         parameter type identifier
+    :type param: enum iscsi_host_param
 
-    :param char \*buf:
+    :param buf:
         buffer pointer
+    :type buf: char \*
 
 .. _`bnx2i_conn_start`:
 
@@ -888,8 +968,9 @@ bnx2i_conn_start
 
     completes iscsi connection migration to FFP
 
-    :param struct iscsi_cls_conn \*cls_conn:
+    :param cls_conn:
         pointer to iscsi cls conn
+    :type cls_conn: struct iscsi_cls_conn \*
 
 .. _`bnx2i_conn_start.description`:
 
@@ -907,11 +988,13 @@ bnx2i_conn_get_stats
 
     returns iSCSI stats
 
-    :param struct iscsi_cls_conn \*cls_conn:
+    :param cls_conn:
         pointer to iscsi cls conn
+    :type cls_conn: struct iscsi_cls_conn \*
 
-    :param struct iscsi_stats \*stats:
+    :param stats:
         pointer to iscsi statistic struct
+    :type stats: struct iscsi_stats \*
 
 .. _`bnx2i_check_route`:
 
@@ -922,8 +1005,9 @@ bnx2i_check_route
 
     checks if target IP route belongs to one of NX2 devices
 
-    :param struct sockaddr \*dst_addr:
+    :param dst_addr:
         target IP address
+    :type dst_addr: struct sockaddr \*
 
 .. _`bnx2i_check_route.description`:
 
@@ -941,11 +1025,13 @@ bnx2i_tear_down_conn
 
     tear down iscsi/tcp connection and free resources
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         pointer to adapter instance
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_tear_down_conn.description`:
 
@@ -963,14 +1049,17 @@ bnx2i_ep_connect
 
     establish TCP connection to target portal
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host
+    :type shost: struct Scsi_Host \*
 
-    :param struct sockaddr \*dst_addr:
+    :param dst_addr:
         target IP address
+    :type dst_addr: struct sockaddr \*
 
-    :param int non_blocking:
+    :param non_blocking:
         blocking or non-blocking call
+    :type non_blocking: int
 
 .. _`bnx2i_ep_connect.description`:
 
@@ -992,11 +1081,13 @@ bnx2i_ep_poll
 
     polls for TCP connection establishement
 
-    :param struct iscsi_endpoint \*ep:
+    :param ep:
         TCP connection (endpoint) handle
+    :type ep: struct iscsi_endpoint \*
 
-    :param int timeout_ms:
+    :param timeout_ms:
         timeout value in milli secs
+    :type timeout_ms: int
 
 .. _`bnx2i_ep_poll.description`:
 
@@ -1014,8 +1105,9 @@ bnx2i_ep_tcp_conn_active
 
     check EP state transition
 
-    :param struct bnx2i_endpoint \*bnx2i_ep:
+    :param bnx2i_ep:
         *undescribed*
+    :type bnx2i_ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_ep_tcp_conn_active.description`:
 
@@ -1033,8 +1125,9 @@ bnx2i_ep_disconnect
 
     executes TCP connection teardown process
 
-    :param struct iscsi_endpoint \*ep:
+    :param ep:
         TCP connection (iscsi endpoint) handle
+    :type ep: struct iscsi_endpoint \*
 
 .. _`bnx2i_ep_disconnect.description`:
 
@@ -1052,11 +1145,13 @@ bnx2i_nl_set_path
 
     ISCSI_UEVENT_PATH_UPDATE user message handler
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         *undescribed*
+    :type shost: struct Scsi_Host \*
 
-    :param struct iscsi_path \*params:
+    :param params:
         *undescribed*
+    :type params: struct iscsi_path \*
 
 .. This file was automatic generated / don't edit.
 

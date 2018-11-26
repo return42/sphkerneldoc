@@ -10,17 +10,21 @@ ecryptfs_write_lower
 
     Linux filesystem encryption layer
 
-    :param struct inode \*ecryptfs_inode:
+    :param ecryptfs_inode:
         *undescribed*
+    :type ecryptfs_inode: struct inode \*
 
-    :param char \*data:
+    :param data:
         *undescribed*
+    :type data: char \*
 
-    :param loff_t offset:
+    :param offset:
         *undescribed*
+    :type offset: loff_t
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`ecryptfs_write_lower.description`:
 
@@ -52,20 +56,24 @@ ecryptfs_write_lower_page_segment
 
 .. c:function:: int ecryptfs_write_lower_page_segment(struct inode *ecryptfs_inode, struct page *page_for_lower, size_t offset_in_page, size_t size)
 
-    :param struct inode \*ecryptfs_inode:
+    :param ecryptfs_inode:
         The eCryptfs inode
+    :type ecryptfs_inode: struct inode \*
 
-    :param struct page \*page_for_lower:
+    :param page_for_lower:
         The page containing the data to be written to the
         lower file
+    :type page_for_lower: struct page \*
 
-    :param size_t offset_in_page:
+    :param offset_in_page:
         The offset in the \ ``page_for_lower``\  from which to
         start writing the data
+    :type offset_in_page: size_t
 
-    :param size_t size:
+    :param size:
         The amount of data from \ ``page_for_lower``\  to write to the
         lower file
+    :type size: size_t
 
 .. _`ecryptfs_write_lower_page_segment.description`:
 
@@ -85,18 +93,22 @@ ecryptfs_write
 
 .. c:function:: int ecryptfs_write(struct inode *ecryptfs_inode, char *data, loff_t offset, size_t size)
 
-    :param struct inode \*ecryptfs_inode:
+    :param ecryptfs_inode:
         The eCryptfs file into which to write
+    :type ecryptfs_inode: struct inode \*
 
-    :param char \*data:
+    :param data:
         Virtual address where data to write is located
+    :type data: char \*
 
-    :param loff_t offset:
+    :param offset:
         Offset in the eCryptfs file at which to begin writing the
         data from \ ``data``\ 
+    :type offset: loff_t
 
-    :param size_t size:
+    :param size:
         The number of bytes to write from \ ``data``\ 
+    :type size: size_t
 
 .. _`ecryptfs_write.description`:
 
@@ -120,18 +132,22 @@ ecryptfs_read_lower
 
 .. c:function:: int ecryptfs_read_lower(char *data, loff_t offset, size_t size, struct inode *ecryptfs_inode)
 
-    :param char \*data:
+    :param data:
         The read data is stored here by this function
+    :type data: char \*
 
-    :param loff_t offset:
+    :param offset:
         Byte offset in the lower file from which to read the data
+    :type offset: loff_t
 
-    :param size_t size:
+    :param size:
         Number of bytes to read from \ ``offset``\  of the lower file and
         store into \ ``data``\ 
+    :type size: size_t
 
-    :param struct inode \*ecryptfs_inode:
+    :param ecryptfs_inode:
         The eCryptfs inode
+    :type ecryptfs_inode: struct inode \*
 
 .. _`ecryptfs_read_lower.description`:
 
@@ -150,22 +166,27 @@ ecryptfs_read_lower_page_segment
 
 .. c:function:: int ecryptfs_read_lower_page_segment(struct page *page_for_ecryptfs, pgoff_t page_index, size_t offset_in_page, size_t size, struct inode *ecryptfs_inode)
 
-    :param struct page \*page_for_ecryptfs:
+    :param page_for_ecryptfs:
         The page into which data for eCryptfs will be
         written
+    :type page_for_ecryptfs: struct page \*
 
-    :param pgoff_t page_index:
+    :param page_index:
         *undescribed*
+    :type page_index: pgoff_t
 
-    :param size_t offset_in_page:
+    :param offset_in_page:
         Offset in \ ``page_for_ecryptfs``\  from which to start
         writing
+    :type offset_in_page: size_t
 
-    :param size_t size:
+    :param size:
         The number of bytes to write into \ ``page_for_ecryptfs``\ 
+    :type size: size_t
 
-    :param struct inode \*ecryptfs_inode:
+    :param ecryptfs_inode:
         The eCryptfs inode
+    :type ecryptfs_inode: struct inode \*
 
 .. _`ecryptfs_read_lower_page_segment.description`:
 

@@ -10,11 +10,13 @@ numa_emulation
 
     Emulate NUMA nodes
 
-    :param struct numa_meminfo \*numa_meminfo:
+    :param numa_meminfo:
         NUMA configuration to massage
+    :type numa_meminfo: struct numa_meminfo \*
 
-    :param int numa_dist_cnt:
+    :param numa_dist_cnt:
         The size of the physical NUMA distance table
+    :type numa_dist_cnt: int
 
 .. _`numa_emulation.description`:
 

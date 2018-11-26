@@ -10,8 +10,9 @@ isl38xx_disable_interrupts
 
     disable all interrupts
 
-    :param void __iomem \*device:
+    :param device:
         pci memory base address
+    :type device: void __iomem \*
 
 .. _`isl38xx_disable_interrupts.description`:
 

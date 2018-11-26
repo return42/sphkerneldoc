@@ -10,14 +10,17 @@ snd_ac97_set_rate
 
     change the rate of the given input/output.
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the ac97 instance
+    :type ac97: struct snd_ac97 \*
 
-    :param int reg:
+    :param reg:
         the register to change
+    :type reg: int
 
-    :param unsigned int rate:
+    :param rate:
         the sample rate to set
+    :type rate: unsigned int
 
 .. _`snd_ac97_set_rate.description`:
 
@@ -51,14 +54,17 @@ snd_ac97_pcm_assign
 
     assign AC97 slots to given PCM streams
 
-    :param struct snd_ac97_bus \*bus:
+    :param bus:
         the ac97 bus instance
+    :type bus: struct snd_ac97_bus \*
 
-    :param unsigned short pcms_count:
+    :param pcms_count:
         count of PCMs to be assigned
+    :type pcms_count: unsigned short
 
-    :param const struct ac97_pcm \*pcms:
+    :param pcms:
         PCMs to be assigned
+    :type pcms: const struct ac97_pcm \*
 
 .. _`snd_ac97_pcm_assign.description`:
 
@@ -85,17 +91,21 @@ snd_ac97_pcm_open
 
     opens the given AC97 pcm
 
-    :param struct ac97_pcm \*pcm:
+    :param pcm:
         the ac97 pcm instance
+    :type pcm: struct ac97_pcm \*
 
-    :param unsigned int rate:
+    :param rate:
         rate in Hz, if codec does not support VRA, this value must be 48000Hz
+    :type rate: unsigned int
 
-    :param enum ac97_pcm_cfg cfg:
+    :param cfg:
         output stream characteristics
+    :type cfg: enum ac97_pcm_cfg
 
-    :param unsigned short slots:
+    :param slots:
         a subset of allocated slots (snd_ac97_pcm_assign) for this pcm
+    :type slots: unsigned short
 
 .. _`snd_ac97_pcm_open.description`:
 
@@ -120,8 +130,9 @@ snd_ac97_pcm_close
 
     closes the given AC97 pcm
 
-    :param struct ac97_pcm \*pcm:
+    :param pcm:
         the ac97 pcm instance
+    :type pcm: struct ac97_pcm \*
 
 .. _`snd_ac97_pcm_close.description`:
 
@@ -146,8 +157,9 @@ snd_ac97_pcm_double_rate_rules
 
     set double rate constraints
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         the runtime of the ac97 front playback pcm
+    :type runtime: struct snd_pcm_runtime \*
 
 .. _`snd_ac97_pcm_double_rate_rules.description`:
 

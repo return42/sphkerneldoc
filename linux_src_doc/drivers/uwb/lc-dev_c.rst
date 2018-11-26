@@ -8,11 +8,13 @@
 
 .. c:function:: int __uwb_dev_sys_add(struct uwb_dev *uwb_dev, struct device *parent_dev)
 
-    :param struct uwb_dev \*uwb_dev:
+    :param uwb_dev:
         *undescribed*
+    :type uwb_dev: struct uwb_dev \*
 
-    :param struct device \*parent_dev:
+    :param parent_dev:
         *undescribed*
+    :type parent_dev: struct device \*
 
 .. _`uwb_dev_add`:
 
@@ -21,16 +23,19 @@ uwb_dev_add
 
 .. c:function:: int uwb_dev_add(struct uwb_dev *uwb_dev, struct device *parent_dev, struct uwb_rc *parent_rc)
 
-    :param struct uwb_dev \*uwb_dev:
+    :param uwb_dev:
         *undescribed*
+    :type uwb_dev: struct uwb_dev \*
 
-    :param struct device \*parent_dev:
+    :param parent_dev:
         *undescribed*
+    :type parent_dev: struct device \*
 
-    :param struct uwb_rc \*parent_rc:
+    :param parent_rc:
         is the parent radio controller who has the link to the
         device. When registering the UWB device that is a UWB
         Radio Controller, we point back to it.
+    :type parent_rc: struct uwb_rc \*
 
 .. _`uwb_dev_add.description`:
 
@@ -50,11 +55,13 @@ uwb_dev_try_get
 
 .. c:function:: struct uwb_dev *uwb_dev_try_get(struct uwb_rc *rc, struct uwb_dev *uwb_dev)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_dev \*uwb_dev:
+    :param uwb_dev:
         *undescribed*
+    :type uwb_dev: struct uwb_dev \*
 
 .. _`uwb_dev_try_get.description`:
 
@@ -71,11 +78,13 @@ it otherwise.
 
 .. c:function:: int __uwb_dev_offair(struct uwb_dev *uwb_dev, struct uwb_rc *rc)
 
-    :param struct uwb_dev \*uwb_dev:
+    :param uwb_dev:
         *undescribed*
+    :type uwb_dev: struct uwb_dev \*
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
 .. _`uwbd_dev_offair`:
 
@@ -84,8 +93,9 @@ uwbd_dev_offair
 
 .. c:function:: void uwbd_dev_offair(struct uwb_beca_e *bce)
 
-    :param struct uwb_beca_e \*bce:
+    :param bce:
         *undescribed*
+    :type bce: struct uwb_beca_e \*
 
 .. _`uwbd_dev_offair.description`:
 
@@ -113,11 +123,13 @@ uwbd_dev_onair
 
 .. c:function:: void uwbd_dev_onair(struct uwb_rc *rc, struct uwb_beca_e *bce)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_beca_e \*bce:
+    :param bce:
         *undescribed*
+    :type bce: struct uwb_beca_e \*
 
 .. _`uwbd_dev_onair.description`:
 
@@ -144,14 +156,17 @@ uwb_dev_for_each
 
 .. c:function:: int uwb_dev_for_each(struct uwb_rc *rc, uwb_dev_for_each_f function, void *priv)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         radio controller for the devices.
+    :type rc: struct uwb_rc \*
 
-    :param uwb_dev_for_each_f function:
+    :param function:
         function to call.
+    :type function: uwb_dev_for_each_f
 
-    :param void \*priv:
+    :param priv:
         data to pass to \ ``function``\ .
+    :type priv: void \*
 
 .. _`uwb_dev_for_each.description`:
 

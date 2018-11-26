@@ -10,8 +10,9 @@ clk_rate_exclusive_put
 
     release exclusivity over clock rate control
 
-    :param struct clk \*clk:
+    :param clk:
         the clk over which the exclusivity is released
+    :type clk: struct clk \*
 
 .. _`clk_rate_exclusive_put.description`:
 
@@ -41,8 +42,9 @@ clk_rate_exclusive_get
 
     get exclusivity over the clk rate control
 
-    :param struct clk \*clk:
+    :param clk:
         the clk over which the exclusity of rate control is requested
+    :type clk: struct clk \*
 
 .. _`clk_rate_exclusive_get.description`:
 
@@ -72,8 +74,9 @@ clk_unprepare
 
     undo preparation of a clock source
 
-    :param struct clk \*clk:
+    :param clk:
         the clk being unprepared
+    :type clk: struct clk \*
 
 .. _`clk_unprepare.description`:
 
@@ -96,8 +99,9 @@ clk_prepare
 
     prepare a clock source
 
-    :param struct clk \*clk:
+    :param clk:
         the clk being prepared
+    :type clk: struct clk \*
 
 .. _`clk_prepare.description`:
 
@@ -121,8 +125,9 @@ clk_disable
 
     gate a clock
 
-    :param struct clk \*clk:
+    :param clk:
         the clk being gated
+    :type clk: struct clk \*
 
 .. _`clk_disable.description`:
 
@@ -137,6 +142,72 @@ complex case a clk gate operation may require a fast and a slow part.  It is
 this reason that clk_unprepare and clk_disable are not mutually exclusive.
 In fact clk_disable must be called before clk_unprepare.
 
+.. _`clk_gate_restore_context`:
+
+clk_gate_restore_context
+========================
+
+.. c:function:: void clk_gate_restore_context(struct clk_hw *hw)
+
+    restore context for poweroff
+
+    :param hw:
+        the clk_hw pointer of clock whose state is to be restored
+    :type hw: struct clk_hw \*
+
+.. _`clk_gate_restore_context.description`:
+
+Description
+-----------
+
+The clock gate restore context function enables or disables
+the gate clocks based on the enable_count. This is done in cases
+where the clock context is lost and based on the enable_count
+the clock either needs to be enabled/disabled. This
+helps restore the state of gate clocks.
+
+.. _`clk_save_context`:
+
+clk_save_context
+================
+
+.. c:function:: int clk_save_context( void)
+
+    save clock context for poweroff
+
+    :param void:
+        no arguments
+    :type void: 
+
+.. _`clk_save_context.description`:
+
+Description
+-----------
+
+Saves the context of the clock register for powerstates in which the
+contents of the registers will be lost. Occurs deep within the suspend
+code.  Returns 0 on success.
+
+.. _`clk_restore_context`:
+
+clk_restore_context
+===================
+
+.. c:function:: void clk_restore_context( void)
+
+    restore clock context after poweroff
+
+    :param void:
+        no arguments
+    :type void: 
+
+.. _`clk_restore_context.description`:
+
+Description
+-----------
+
+Restore the saved clock context upon resume.
+
 .. _`clk_enable`:
 
 clk_enable
@@ -146,8 +217,9 @@ clk_enable
 
     ungate a clock
 
-    :param struct clk \*clk:
+    :param clk:
         the clk being ungated
+    :type clk: struct clk \*
 
 .. _`clk_enable.description`:
 
@@ -172,11 +244,13 @@ otherwise.
 
     get the closest rate actually supported by a clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         determine the rate of this clock
+    :type hw: struct clk_hw \*
 
-    :param struct clk_rate_request \*req:
+    :param req:
         target rate request
+    :type req: struct clk_rate_request \*
 
 .. _`__clk_determine_rate.description`:
 
@@ -194,11 +268,13 @@ clk_round_rate
 
     round the given rate for a clk
 
-    :param struct clk \*clk:
+    :param clk:
         the clk for which we are rounding a rate
+    :type clk: struct clk \*
 
-    :param unsigned long rate:
+    :param rate:
         the rate which is to be rounded
+    :type rate: unsigned long
 
 .. _`clk_round_rate.description`:
 
@@ -218,17 +294,21 @@ then the parent rate is returned.
 
     call clk notifier chain
 
-    :param struct clk_core \*core:
+    :param core:
         clk that is changing rate
+    :type core: struct clk_core \*
 
-    :param unsigned long msg:
+    :param msg:
         clk notifier type (see include/linux/clk.h)
+    :type msg: unsigned long
 
-    :param unsigned long old_rate:
+    :param old_rate:
         old clk rate
+    :type old_rate: unsigned long
 
-    :param unsigned long new_rate:
+    :param new_rate:
         new clk rate
+    :type new_rate: unsigned long
 
 .. _`__clk_notify.description`:
 
@@ -249,8 +329,9 @@ a driver returns that.
 
 .. c:function:: void __clk_recalc_accuracies(struct clk_core *core)
 
-    :param struct clk_core \*core:
+    :param core:
         first clk in the subtree
+    :type core: struct clk_core \*
 
 .. _`__clk_recalc_accuracies.description`:
 
@@ -271,8 +352,9 @@ clk_get_accuracy
 
     return the accuracy of clk
 
-    :param struct clk \*clk:
+    :param clk:
         the clk whose accuracy is being returned
+    :type clk: struct clk \*
 
 .. _`clk_get_accuracy.description`:
 
@@ -291,11 +373,13 @@ If clk is NULL then returns 0.
 
 .. c:function:: void __clk_recalc_rates(struct clk_core *core, unsigned long msg)
 
-    :param struct clk_core \*core:
+    :param core:
         first clk in the subtree
+    :type core: struct clk_core \*
 
-    :param unsigned long msg:
+    :param msg:
         notification type (see include/linux/clk.h)
+    :type msg: unsigned long
 
 .. _`__clk_recalc_rates.description`:
 
@@ -318,8 +402,9 @@ clk_get_rate
 
     return the rate of clk
 
-    :param struct clk \*clk:
+    :param clk:
         the clk whose rate is being returned
+    :type clk: struct clk \*
 
 .. _`clk_get_rate.description`:
 
@@ -337,11 +422,13 @@ If clk is NULL then returns 0.
 
 .. c:function:: int __clk_speculate_rates(struct clk_core *core, unsigned long parent_rate)
 
-    :param struct clk_core \*core:
+    :param core:
         first clk in the subtree
+    :type core: struct clk_core \*
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         the "future" rate of clk's parent
+    :type parent_rate: unsigned long
 
 .. _`__clk_speculate_rates.description`:
 
@@ -366,11 +453,13 @@ clk_set_rate
 
     specify a new rate for clk
 
-    :param struct clk \*clk:
+    :param clk:
         the clk whose rate is being changed
+    :type clk: struct clk \*
 
-    :param unsigned long rate:
+    :param rate:
         the new rate for clk
+    :type rate: unsigned long
 
 .. _`clk_set_rate.description`:
 
@@ -402,11 +491,13 @@ clk_set_rate_exclusive
 
     specify a new rate get exclusive control
 
-    :param struct clk \*clk:
+    :param clk:
         the clk whose rate is being changed
+    :type clk: struct clk \*
 
-    :param unsigned long rate:
+    :param rate:
         the new rate for clk
+    :type rate: unsigned long
 
 .. _`clk_set_rate_exclusive.description`:
 
@@ -436,14 +527,17 @@ clk_set_rate_range
 
     set a rate range for a clock source
 
-    :param struct clk \*clk:
+    :param clk:
         clock source
+    :type clk: struct clk \*
 
-    :param unsigned long min:
+    :param min:
         desired minimum clock rate in Hz, inclusive
+    :type min: unsigned long
 
-    :param unsigned long max:
+    :param max:
         desired maximum clock rate in Hz, inclusive
+    :type max: unsigned long
 
 .. _`clk_set_rate_range.description`:
 
@@ -461,11 +555,13 @@ clk_set_min_rate
 
     set a minimum clock rate for a clock source
 
-    :param struct clk \*clk:
+    :param clk:
         clock source
+    :type clk: struct clk \*
 
-    :param unsigned long rate:
+    :param rate:
         desired minimum clock rate in Hz, inclusive
+    :type rate: unsigned long
 
 .. _`clk_set_min_rate.description`:
 
@@ -483,11 +579,13 @@ clk_set_max_rate
 
     set a maximum clock rate for a clock source
 
-    :param struct clk \*clk:
+    :param clk:
         clock source
+    :type clk: struct clk \*
 
-    :param unsigned long rate:
+    :param rate:
         desired maximum clock rate in Hz, inclusive
+    :type rate: unsigned long
 
 .. _`clk_set_max_rate.description`:
 
@@ -505,8 +603,9 @@ clk_get_parent
 
     return the parent of a clk
 
-    :param struct clk \*clk:
+    :param clk:
         the clk whose parent gets returned
+    :type clk: struct clk \*
 
 .. _`clk_get_parent.description`:
 
@@ -524,11 +623,13 @@ clk_has_parent
 
     check if a clock is a possible parent for another
 
-    :param struct clk \*clk:
+    :param clk:
         clock source
+    :type clk: struct clk \*
 
-    :param struct clk \*parent:
+    :param parent:
         parent clock source
+    :type parent: struct clk \*
 
 .. _`clk_has_parent.description`:
 
@@ -549,11 +650,13 @@ clk_set_parent
 
     switch the parent of a mux clk
 
-    :param struct clk \*clk:
+    :param clk:
         the mux clk whose input we are switching
+    :type clk: struct clk \*
 
-    :param struct clk \*parent:
+    :param parent:
         the new input to clk
+    :type parent: struct clk \*
 
 .. _`clk_set_parent.description`:
 
@@ -581,11 +684,13 @@ clk_set_phase
 
     adjust the phase shift of a clock signal
 
-    :param struct clk \*clk:
+    :param clk:
         clock signal source
+    :type clk: struct clk \*
 
-    :param int degrees:
+    :param degrees:
         number of degrees the signal is shifted
+    :type degrees: int
 
 .. _`clk_set_phase.description`:
 
@@ -616,8 +721,9 @@ clk_get_phase
 
     return the phase shift of a clock signal
 
-    :param struct clk \*clk:
+    :param clk:
         clock signal source
+    :type clk: struct clk \*
 
 .. _`clk_get_phase.description`:
 
@@ -626,6 +732,62 @@ Description
 
 Returns the phase shift of a clock node in degrees, otherwise returns
 -EERROR.
+
+.. _`clk_set_duty_cycle`:
+
+clk_set_duty_cycle
+==================
+
+.. c:function:: int clk_set_duty_cycle(struct clk *clk, unsigned int num, unsigned int den)
+
+    adjust the duty cycle ratio of a clock signal
+
+    :param clk:
+        clock signal source
+    :type clk: struct clk \*
+
+    :param num:
+        numerator of the duty cycle ratio to be applied
+    :type num: unsigned int
+
+    :param den:
+        denominator of the duty cycle ratio to be applied
+    :type den: unsigned int
+
+.. _`clk_set_duty_cycle.description`:
+
+Description
+-----------
+
+Apply the duty cycle ratio if the ratio is valid and the clock can
+perform this operation
+
+Returns (0) on success, a negative errno otherwise.
+
+.. _`clk_get_scaled_duty_cycle`:
+
+clk_get_scaled_duty_cycle
+=========================
+
+.. c:function:: int clk_get_scaled_duty_cycle(struct clk *clk, unsigned int scale)
+
+    return the duty cycle ratio of a clock signal
+
+    :param clk:
+        clock signal source
+    :type clk: struct clk \*
+
+    :param scale:
+        scaling factor to be applied to represent the ratio as an integer
+    :type scale: unsigned int
+
+.. _`clk_get_scaled_duty_cycle.description`:
+
+Description
+-----------
+
+Returns the duty cycle ratio of a clock node multiplied by the provided
+scaling factor, or negative errno on error.
 
 .. _`clk_is_match`:
 
@@ -636,11 +798,13 @@ clk_is_match
 
     check if two clk's point to the same hardware clock
 
-    :param const struct clk \*p:
+    :param p:
         clk compared against q
+    :type p: const struct clk \*
 
-    :param const struct clk \*q:
+    :param q:
         clk compared against p
+    :type q: const struct clk \*
 
 .. _`clk_is_match.description`:
 
@@ -662,8 +826,9 @@ clk_debug_register
 
     add a clk node to the debugfs clk directory
 
-    :param struct clk_core \*core:
+    :param core:
         the clk being added to the debugfs clk directory
+    :type core: struct clk_core \*
 
 .. _`clk_debug_register.description`:
 
@@ -683,8 +848,9 @@ clk_debug_init
 
     lazily populate the debugfs clk directory
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`clk_debug_init.description`:
 
@@ -706,8 +872,9 @@ added dynamically will be done so with clk_debug_register.
 
     initialize the data structures in a struct clk_core
 
-    :param struct clk_core \*core:
+    :param core:
         clk_core being initialized
+    :type core: struct clk_core \*
 
 .. _`__clk_core_init.description`:
 
@@ -726,11 +893,13 @@ clk_register
 
     allocate a new clock, register it and return an opaque cookie
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param struct clk_hw \*hw:
+    :param hw:
         link to hardware-specific clock data
+    :type hw: struct clk_hw \*
 
 .. _`clk_register.description`:
 
@@ -752,11 +921,13 @@ clk_hw_register
 
     register a clk_hw and return an error code
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param struct clk_hw \*hw:
+    :param hw:
         link to hardware-specific clock data
+    :type hw: struct clk_hw \*
 
 .. _`clk_hw_register.description`:
 
@@ -777,8 +948,9 @@ clk_unregister
 
     unregister a currently registered clock
 
-    :param struct clk \*clk:
+    :param clk:
         clock to unregister
+    :type clk: struct clk \*
 
 .. _`clk_hw_unregister`:
 
@@ -789,8 +961,9 @@ clk_hw_unregister
 
     unregister a currently registered clk_hw
 
-    :param struct clk_hw \*hw:
+    :param hw:
         hardware-specific clock data to unregister
+    :type hw: struct clk_hw \*
 
 .. _`devm_clk_register`:
 
@@ -801,11 +974,13 @@ devm_clk_register
 
     resource managed \ :c:func:`clk_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param struct clk_hw \*hw:
+    :param hw:
         link to hardware-specific clock data
+    :type hw: struct clk_hw \*
 
 .. _`devm_clk_register.description`:
 
@@ -825,11 +1000,13 @@ devm_clk_hw_register
 
     resource managed \ :c:func:`clk_hw_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param struct clk_hw \*hw:
+    :param hw:
         link to hardware-specific clock data
+    :type hw: struct clk_hw \*
 
 .. _`devm_clk_hw_register.description`:
 
@@ -849,11 +1026,13 @@ devm_clk_unregister
 
     resource managed \ :c:func:`clk_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct clk \*clk:
+    :param clk:
         clock to unregister
+    :type clk: struct clk \*
 
 .. _`devm_clk_unregister.description`:
 
@@ -873,11 +1052,13 @@ devm_clk_hw_unregister
 
     resource managed \ :c:func:`clk_hw_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device that is unregistering the hardware-specific clock data
+    :type dev: struct device \*
 
-    :param struct clk_hw \*hw:
+    :param hw:
         link to hardware-specific clock data
+    :type hw: struct clk_hw \*
 
 .. _`devm_clk_hw_unregister.description`:
 
@@ -897,11 +1078,13 @@ clk_notifier_register
 
     add a clk rate change notifier
 
-    :param struct clk \*clk:
+    :param clk:
         struct clk \* to watch
+    :type clk: struct clk \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         struct notifier_block \* with callback info
+    :type nb: struct notifier_block \*
 
 .. _`clk_notifier_register.description`:
 
@@ -932,11 +1115,13 @@ clk_notifier_unregister
 
     remove a clk rate change notifier
 
-    :param struct clk \*clk:
+    :param clk:
         struct clk \*
+    :type clk: struct clk \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         struct notifier_block \* with callback info
+    :type nb: struct notifier_block \*
 
 .. _`clk_notifier_unregister.description`:
 
@@ -1003,14 +1188,16 @@ of_clk_add_provider
 
     Register a clock provider for a node
 
-    :param struct device_node \*np:
+    :param np:
         Device node pointer associated with clock provider
+    :type np: struct device_node \*
 
     :param struct clk \*(\*clk_src_get)(struct of_phandle_args \*clkspec, void \*data):
         callback for decoding clock
 
-    :param void \*data:
+    :param data:
         context pointer for \ ``clk_src_get``\  callback.
+    :type data: void \*
 
 .. _`of_clk_add_hw_provider`:
 
@@ -1021,14 +1208,16 @@ of_clk_add_hw_provider
 
     Register a clock provider for a node
 
-    :param struct device_node \*np:
+    :param np:
         Device node pointer associated with clock provider
+    :type np: struct device_node \*
 
     :param struct clk_hw \*(\*get)(struct of_phandle_args \*clkspec, void \*data):
         callback for decoding clk_hw
 
-    :param void \*data:
+    :param data:
         context pointer for \ ``get``\  callback.
+    :type data: void \*
 
 .. _`of_clk_del_provider`:
 
@@ -1039,8 +1228,9 @@ of_clk_del_provider
 
     Remove a previously registered clock provider
 
-    :param struct device_node \*np:
+    :param np:
         Device node pointer associated with clock provider
+    :type np: struct device_node \*
 
 .. _`of_clk_get_from_provider`:
 
@@ -1051,8 +1241,9 @@ of_clk_get_from_provider
 
     Lookup a clock from a clock provider
 
-    :param struct of_phandle_args \*clkspec:
+    :param clkspec:
         pointer to a clock specifier data structure
+    :type clkspec: struct of_phandle_args \*
 
 .. _`of_clk_get_from_provider.description`:
 
@@ -1072,8 +1263,9 @@ of_clk_get_parent_count
 
     Count the number of clocks a device node has
 
-    :param struct device_node \*np:
+    :param np:
         device node to count
+    :type np: struct device_node \*
 
 .. _`of_clk_get_parent_count.return`:
 
@@ -1091,14 +1283,17 @@ of_clk_parent_fill
 
     Fill \ ``parents``\  with names of \ ``np``\ 's parents and return number of parents
 
-    :param struct device_node \*np:
+    :param np:
         Device node pointer associated with clock provider
+    :type np: struct device_node \*
 
-    :param const char \*\*parents:
+    :param parents:
         pointer to char array that hold the parents' names
+    :type parents: const char \*\*
 
-    :param unsigned int size:
+    :param size:
         size of the \ ``parents``\  array
+    :type size: unsigned int
 
 .. _`of_clk_parent_fill.return`:
 
@@ -1116,14 +1311,17 @@ of_clk_detect_critical
 
     set CLK_IS_CRITICAL flag from Device Tree
 
-    :param struct device_node \*np:
+    :param np:
         Device node pointer associated with clock provider
+    :type np: struct device_node \*
 
-    :param int index:
+    :param index:
         clock index
+    :type index: int
 
-    :param unsigned long \*flags:
+    :param flags:
         pointer to top-level framework flags
+    :type flags: unsigned long \*
 
 .. _`of_clk_detect_critical.description`:
 
@@ -1156,8 +1354,9 @@ of_clk_init
 
     Scan and init clock providers from the DT
 
-    :param const struct of_device_id \*matches:
+    :param matches:
         array of compatible values and init functions for providers.
+    :type matches: const struct of_device_id \*
 
 .. _`of_clk_init.description`:
 

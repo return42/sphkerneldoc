@@ -10,14 +10,17 @@ rl6231_get_pre_div
 
     Return the value of pre divider.
 
-    :param struct regmap \*map:
+    :param map:
         map for setting.
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         register.
+    :type reg: unsigned int
 
-    :param int sft:
+    :param sft:
         shift.
+    :type sft: int
 
 .. _`rl6231_get_pre_div.description`:
 
@@ -36,8 +39,9 @@ rl6231_calc_dmic_clk
 
     Calculate the frequency divider parameter of dmic.
 
-    :param int rate:
+    :param rate:
         base clock rate.
+    :type rate: int
 
 .. _`rl6231_calc_dmic_clk.description`:
 
@@ -56,14 +60,17 @@ rl6231_pll_calc
 
     Calcualte PLL M/N/K code.
 
-    :param const unsigned int freq_in:
+    :param freq_in:
         external clock provided to codec.
+    :type freq_in: const unsigned int
 
-    :param const unsigned int freq_out:
+    :param freq_out:
         target clock which codec works on.
+    :type freq_out: const unsigned int
 
-    :param struct rl6231_pll_code \*pll_code:
+    :param pll_code:
         Pointer to structure with M, N, K and bypass flag.
+    :type pll_code: struct rl6231_pll_code \*
 
 .. _`rl6231_pll_calc.description`:
 

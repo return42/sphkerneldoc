@@ -10,20 +10,25 @@ radeon_ib_get
 
     request an IB (Indirect Buffer)
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring index the IB is associated with
+    :type ring: int
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         IB object returned
+    :type ib: struct radeon_ib \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         *undescribed*
+    :type vm: struct radeon_vm \*
 
-    :param unsigned size:
+    :param size:
         requested IB size
+    :type size: unsigned
 
 .. _`radeon_ib_get.description`:
 
@@ -43,11 +48,13 @@ radeon_ib_free
 
     free an IB (Indirect Buffer)
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         IB object to free
+    :type ib: struct radeon_ib \*
 
 .. _`radeon_ib_free.description`:
 
@@ -65,17 +72,21 @@ radeon_ib_schedule
 
     schedule an IB (Indirect Buffer) on the ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         IB object to schedule
+    :type ib: struct radeon_ib \*
 
-    :param struct radeon_ib \*const_ib:
+    :param const_ib:
         Const IB to schedule (SI only)
+    :type const_ib: struct radeon_ib \*
 
-    :param bool hdp_flush:
+    :param hdp_flush:
         Whether or not to perform an HDP cache flush
+    :type hdp_flush: bool
 
 .. _`radeon_ib_schedule.description`:
 
@@ -104,8 +115,9 @@ radeon_ib_pool_init
 
     Init the IB (Indirect Buffer) pool
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_ib_pool_init.description`:
 
@@ -125,8 +137,9 @@ radeon_ib_pool_fini
 
     Free the IB (Indirect Buffer) pool
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_ib_pool_fini.description`:
 
@@ -145,8 +158,9 @@ radeon_ib_ring_tests
 
     test IBs on the rings
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_ib_ring_tests.description`:
 

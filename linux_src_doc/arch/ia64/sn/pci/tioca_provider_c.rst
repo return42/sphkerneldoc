@@ -10,8 +10,9 @@ tioca_gart_init
 
     Initialize SGI TIOCA GART
 
-    :param struct tioca_kernel \*tioca_kern:
+    :param tioca_kern:
         *undescribed*
+    :type tioca_kern: struct tioca_kernel \*
 
 .. _`tioca_gart_init.description`:
 
@@ -30,8 +31,9 @@ tioca_fastwrite_enable
 
     enable AGP FW for a tioca and its functions
 
-    :param struct tioca_kernel \*tioca_kern:
+    :param tioca_kern:
         *undescribed*
+    :type tioca_kern: struct tioca_kernel \*
 
 .. _`tioca_fastwrite_enable.description`:
 
@@ -50,8 +52,9 @@ tioca_dma_d64
 
     create a DMA mapping using 64-bit direct mode
 
-    :param unsigned long paddr:
+    :param paddr:
         system physical address
+    :type paddr: unsigned long
 
 .. _`tioca_dma_d64.description`:
 
@@ -76,11 +79,13 @@ tioca_dma_d48
 
     create a DMA mapping using 48-bit direct mode
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         linux pci_dev representing the function
+    :type pdev: struct pci_dev \*
 
-    :param u64 paddr:
+    :param paddr:
         system physical address
+    :type paddr: u64
 
 .. _`tioca_dma_d48.description`:
 
@@ -126,14 +131,17 @@ tioca_dma_mapped
 
     create a DMA mapping using a CA GART
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         linux pci_dev representing the function
+    :type pdev: struct pci_dev \*
 
-    :param unsigned long paddr:
+    :param paddr:
         host physical address to map
+    :type paddr: unsigned long
 
-    :param size_t req_size:
+    :param req_size:
         len (bytes) to map
+    :type req_size: size_t
 
 .. _`tioca_dma_mapped.description`:
 
@@ -152,14 +160,17 @@ tioca_dma_unmap
 
     release CA mapping resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         linux pci_dev representing the function
+    :type pdev: struct pci_dev \*
 
-    :param dma_addr_t bus_addr:
+    :param bus_addr:
         bus address returned by an earlier tioca_dma_map
+    :type bus_addr: dma_addr_t
 
-    :param int dir:
+    :param dir:
         mapping direction (unused)
+    :type dir: int
 
 .. _`tioca_dma_unmap.description`:
 
@@ -179,17 +190,21 @@ tioca_dma_map
 
     map pages for PCI DMA
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         linux pci_dev representing the function
+    :type pdev: struct pci_dev \*
 
-    :param unsigned long paddr:
+    :param paddr:
         host physical address to map
+    :type paddr: unsigned long
 
-    :param size_t byte_count:
+    :param byte_count:
         bytes to map
+    :type byte_count: size_t
 
-    :param int dma_flags:
+    :param dma_flags:
         *undescribed*
+    :type dma_flags: int
 
 .. _`tioca_dma_map.description`:
 
@@ -209,11 +224,13 @@ tioca_error_intr_handler
 
     SGI TIO CA error interrupt handler
 
-    :param int irq:
+    :param irq:
         unused
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         pointer to tioca_common struct for the given CA
+    :type arg: void \*
 
 .. _`tioca_error_intr_handler.description`:
 
@@ -232,11 +249,13 @@ tioca_bus_fixup
 
     perform final PCI fixup for a TIO CA bus
 
-    :param struct pcibus_bussoft \*prom_bussoft:
+    :param prom_bussoft:
         Common prom/kernel struct representing the bus
+    :type prom_bussoft: struct pcibus_bussoft \*
 
-    :param struct pci_controller \*controller:
+    :param controller:
         *undescribed*
+    :type controller: struct pci_controller \*
 
 .. _`tioca_bus_fixup.description`:
 
@@ -259,8 +278,9 @@ tioca_init_provider
 
     init SN PCI provider ops for TIO CA
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

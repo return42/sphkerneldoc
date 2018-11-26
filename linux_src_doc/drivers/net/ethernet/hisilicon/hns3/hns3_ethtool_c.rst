@@ -10,11 +10,13 @@ hns3_lp_run_test
 
     run loopback test
 
-    :param struct net_device \*ndev:
+    :param ndev:
         net device
+    :type ndev: struct net_device \*
 
-    :param enum hnae3_loop mode:
+    :param mode:
         loopback type
+    :type mode: enum hnae3_loop
 
 .. _`hns3_self_test`:
 
@@ -25,14 +27,17 @@ hns3_self_test
 
     self test
 
-    :param struct net_device \*ndev:
+    :param ndev:
         net device
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_test \*eth_test:
+    :param eth_test:
         test cmd
+    :type eth_test: struct ethtool_test \*
 
-    :param u64 \*data:
+    :param data:
         test result
+    :type data: u64 \*
 
 .. This file was automatic generated / don't edit.
 

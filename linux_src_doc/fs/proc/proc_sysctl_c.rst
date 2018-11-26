@@ -10,14 +10,17 @@ get_subdir
 
     find or create a subdir with the specified name.
 
-    :param struct ctl_dir \*dir:
+    :param dir:
         Directory to create the subdirectory in
+    :type dir: struct ctl_dir \*
 
-    :param const char \*name:
+    :param name:
         The name of the subdirectory to find or create
+    :type name: const char \*
 
-    :param int namelen:
+    :param namelen:
         The length of name
+    :type namelen: int
 
 .. _`get_subdir.description`:
 
@@ -39,14 +42,17 @@ simply dropped.
 
     register a leaf sysctl table
 
-    :param struct ctl_table_set \*set:
+    :param set:
         Sysctl tree to register on
+    :type set: struct ctl_table_set \*
 
-    :param const char \*path:
+    :param path:
         The path to the directory the sysctl table is in.
+    :type path: const char \*
 
-    :param struct ctl_table \*table:
+    :param table:
         the top-level table structure
+    :type table: struct ctl_table \*
 
 .. _`__register_sysctl_table.description`:
 
@@ -98,11 +104,13 @@ register_sysctl
 
     register a sysctl table
 
-    :param const char \*path:
+    :param path:
         The path to the directory the sysctl table is in.
+    :type path: const char \*
 
-    :param struct ctl_table \*table:
+    :param table:
         the table structure
+    :type table: struct ctl_table \*
 
 .. _`register_sysctl.description`:
 
@@ -123,14 +131,17 @@ See \__register_sysctl_table for more details.
 
     register a sysctl table hierarchy
 
-    :param struct ctl_table_set \*set:
+    :param set:
         Sysctl tree to register on
+    :type set: struct ctl_table_set \*
 
-    :param const struct ctl_path \*path:
+    :param path:
         The path to the directory the sysctl table is in.
+    :type path: const struct ctl_path \*
 
-    :param struct ctl_table \*table:
+    :param table:
         the top-level table structure
+    :type table: struct ctl_table \*
 
 .. _`__register_sysctl_paths.description`:
 
@@ -151,11 +162,13 @@ register_sysctl_paths
 
     register a sysctl table hierarchy
 
-    :param const struct ctl_path \*path:
+    :param path:
         The path to the directory the sysctl table is in.
+    :type path: const struct ctl_path \*
 
-    :param struct ctl_table \*table:
+    :param table:
         the top-level table structure
+    :type table: struct ctl_table \*
 
 .. _`register_sysctl_paths.description`:
 
@@ -176,8 +189,9 @@ register_sysctl_table
 
     register a sysctl table hierarchy
 
-    :param struct ctl_table \*table:
+    :param table:
         the top-level table structure
+    :type table: struct ctl_table \*
 
 .. _`register_sysctl_table.description`:
 
@@ -198,8 +212,9 @@ unregister_sysctl_table
 
     unregister a sysctl table hierarchy
 
-    :param struct ctl_table_header \*header:
+    :param header:
         the header returned from register_sysctl_table
+    :type header: struct ctl_table_header \*
 
 .. _`unregister_sysctl_table.description`:
 

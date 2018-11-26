@@ -10,14 +10,17 @@ tty_port_link_device
 
     link tty and tty_port
 
-    :param struct tty_port \*port:
+    :param port:
         tty_port of the device
+    :type port: struct tty_port \*
 
-    :param struct tty_driver \*driver:
+    :param driver:
         tty_driver for this device
+    :type driver: struct tty_driver \*
 
-    :param unsigned index:
+    :param index:
         index of the tty
+    :type index: unsigned
 
 .. _`tty_port_link_device.description`:
 
@@ -38,17 +41,21 @@ tty_port_register_device
 
     register tty device
 
-    :param struct tty_port \*port:
+    :param port:
         tty_port of the device
+    :type port: struct tty_port \*
 
-    :param struct tty_driver \*driver:
+    :param driver:
         tty_driver for this device
+    :type driver: struct tty_driver \*
 
-    :param unsigned index:
+    :param index:
         index of the tty
+    :type index: unsigned
 
-    :param struct device \*device:
+    :param device:
         parent if exists, otherwise NULL
+    :type device: struct device \*
 
 .. _`tty_port_register_device.description`:
 
@@ -68,23 +75,29 @@ tty_port_register_device_attr
 
     register tty device
 
-    :param struct tty_port \*port:
+    :param port:
         tty_port of the device
+    :type port: struct tty_port \*
 
-    :param struct tty_driver \*driver:
+    :param driver:
         tty_driver for this device
+    :type driver: struct tty_driver \*
 
-    :param unsigned index:
+    :param index:
         index of the tty
+    :type index: unsigned
 
-    :param struct device \*device:
+    :param device:
         parent if exists, otherwise NULL
+    :type device: struct device \*
 
-    :param void \*drvdata:
+    :param drvdata:
         Driver data to be set to device.
+    :type drvdata: void \*
 
-    :param const struct attribute_group \*\*attr_grp:
+    :param attr_grp:
         Attribute group to be set on device.
+    :type attr_grp: const struct attribute_group \*\*
 
 .. _`tty_port_register_device_attr.description`:
 
@@ -104,23 +117,29 @@ tty_port_register_device_attr_serdev
 
     register tty or serdev device
 
-    :param struct tty_port \*port:
+    :param port:
         tty_port of the device
+    :type port: struct tty_port \*
 
-    :param struct tty_driver \*driver:
+    :param driver:
         tty_driver for this device
+    :type driver: struct tty_driver \*
 
-    :param unsigned index:
+    :param index:
         index of the tty
+    :type index: unsigned
 
-    :param struct device \*device:
+    :param device:
         parent if exists, otherwise NULL
+    :type device: struct device \*
 
-    :param void \*drvdata:
+    :param drvdata:
         driver data for the device
+    :type drvdata: void \*
 
-    :param const struct attribute_group \*\*attr_grp:
+    :param attr_grp:
         attribute group for the device
+    :type attr_grp: const struct attribute_group \*\*
 
 .. _`tty_port_register_device_attr_serdev.description`:
 
@@ -139,17 +158,21 @@ tty_port_register_device_serdev
 
     register tty or serdev device
 
-    :param struct tty_port \*port:
+    :param port:
         tty_port of the device
+    :type port: struct tty_port \*
 
-    :param struct tty_driver \*driver:
+    :param driver:
         tty_driver for this device
+    :type driver: struct tty_driver \*
 
-    :param unsigned index:
+    :param index:
         index of the tty
+    :type index: unsigned
 
-    :param struct device \*device:
+    :param device:
         parent if exists, otherwise NULL
+    :type device: struct device \*
 
 .. _`tty_port_register_device_serdev.description`:
 
@@ -168,14 +191,17 @@ tty_port_unregister_device
 
     deregister a tty or serdev device
 
-    :param struct tty_port \*port:
+    :param port:
         tty_port of the device
+    :type port: struct tty_port \*
 
-    :param struct tty_driver \*driver:
+    :param driver:
         tty_driver for this device
+    :type driver: struct tty_driver \*
 
-    :param unsigned index:
+    :param index:
         index of the tty
+    :type index: unsigned
 
 .. _`tty_port_unregister_device.description`:
 
@@ -195,8 +221,9 @@ tty_port_destroy
 
     - destroy inited port
 
-    :param struct tty_port \*port:
+    :param port:
         tty port to be destroyed
+    :type port: struct tty_port \*
 
 .. _`tty_port_destroy.description`:
 
@@ -216,8 +243,9 @@ tty_port_tty_get
 
     get a tty reference
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
 .. _`tty_port_tty_get.description`:
 
@@ -236,11 +264,13 @@ tty_port_tty_set
 
     set the tty of a port
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty
+    :type tty: struct tty_struct \*
 
 .. _`tty_port_tty_set.description`:
 
@@ -259,8 +289,9 @@ tty_port_hangup
 
     hangup helper
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
 .. _`tty_port_hangup.description`:
 
@@ -281,11 +312,13 @@ tty_port_tty_hangup
 
     helper to hang up a tty
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
-    :param bool check_clocal:
+    :param check_clocal:
         hang only ttys with CLOCAL unset?
+    :type check_clocal: bool
 
 .. _`tty_port_tty_wakeup`:
 
@@ -296,8 +329,9 @@ tty_port_tty_wakeup
 
     helper to wake up a tty
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
 .. _`tty_port_carrier_raised`:
 
@@ -308,8 +342,9 @@ tty_port_carrier_raised
 
     carrier raised check
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
 .. _`tty_port_carrier_raised.description`:
 
@@ -329,8 +364,9 @@ tty_port_raise_dtr_rts
 
     Raise DTR/RTS
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
 .. _`tty_port_raise_dtr_rts.description`:
 
@@ -350,8 +386,9 @@ tty_port_lower_dtr_rts
 
     Lower DTR/RTS
 
-    :param struct tty_port \*port:
+    :param port:
         tty port
+    :type port: struct tty_port \*
 
 .. _`tty_port_lower_dtr_rts.description`:
 
@@ -371,14 +408,17 @@ tty_port_block_til_ready
 
     Waiting logic for tty open
 
-    :param struct tty_port \*port:
+    :param port:
         the tty port being opened
+    :type port: struct tty_port \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty device being bound
+    :type tty: struct tty_struct \*
 
-    :param struct file \*filp:
+    :param filp:
         the file pointer of the opener or NULL
+    :type filp: struct file \*
 
 .. _`tty_port_block_til_ready.description`:
 
@@ -415,14 +455,17 @@ tty_port_close
 
 .. c:function:: void tty_port_close(struct tty_port *port, struct tty_struct *tty, struct file *filp)
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
 .. _`tty_port_close.description`:
 
@@ -440,14 +483,17 @@ tty_port_install
 
     generic tty->ops->install handler
 
-    :param struct tty_port \*port:
+    :param port:
         tty_port of the device
+    :type port: struct tty_port \*
 
-    :param struct tty_driver \*driver:
+    :param driver:
         tty_driver for this device
+    :type driver: struct tty_driver \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to be installed
+    :type tty: struct tty_struct \*
 
 .. _`tty_port_install.description`:
 
@@ -465,14 +511,17 @@ tty_port_open
 
 .. c:function:: int tty_port_open(struct tty_port *port, struct tty_struct *tty, struct file *filp)
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
 .. _`tty_port_open.description`:
 

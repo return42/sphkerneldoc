@@ -10,11 +10,13 @@ snd_soc_dapm_init_bias_level
 
     Initialize DAPM bias level
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         The DAPM context to initialize
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param enum snd_soc_bias_level level:
+    :param level:
         The DAPM level to initialize to
+    :type level: enum snd_soc_bias_level
 
 .. _`snd_soc_dapm_init_bias_level.description`:
 
@@ -38,8 +40,9 @@ snd_soc_dapm_get_bias_level
 
     Get current DAPM bias level
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         The context for which to get the bias level
+    :type dapm: struct snd_soc_dapm_context \*
 
 .. _`snd_soc_dapm_get_bias_level.return`:
 
@@ -57,15 +60,18 @@ snd_soc_dapm_widget_for_each_path
 
     Iterates over all paths in the specified direction of a widget
 
-    :param  w:
+    :param w:
         The widget
+    :type w: 
 
-    :param  dir:
+    :param dir:
         Whether to iterate over the paths where the specified widget is the
         incoming or outgoing widgets
+    :type dir: 
 
-    :param  p:
+    :param p:
         The path iterator variable
+    :type p: 
 
 .. _`snd_soc_dapm_widget_for_each_path_safe`:
 
@@ -76,18 +82,22 @@ snd_soc_dapm_widget_for_each_path_safe
 
     Iterates over all paths in the specified direction of a widget
 
-    :param  w:
+    :param w:
         The widget
+    :type w: 
 
-    :param  dir:
+    :param dir:
         Whether to iterate over the paths where the specified widget is the
         incoming or outgoing widgets
+    :type dir: 
 
-    :param  p:
+    :param p:
         The path iterator variable
+    :type p: 
 
-    :param  next_p:
+    :param next_p:
         Temporary storage for the next path
+    :type next_p: 
 
 .. _`snd_soc_dapm_widget_for_each_path_safe.description`:
 
@@ -106,11 +116,13 @@ snd_soc_dapm_widget_for_each_sink_path
 
     Iterates over all paths leaving a widget
 
-    :param  w:
+    :param w:
         The widget
+    :type w: 
 
-    :param  p:
+    :param p:
         The path iterator variable
+    :type p: 
 
 .. _`snd_soc_dapm_widget_for_each_source_path`:
 
@@ -121,11 +133,13 @@ snd_soc_dapm_widget_for_each_source_path
 
     Iterates over all paths leading to a widget
 
-    :param  w:
+    :param w:
         The widget
+    :type w: 
 
-    :param  p:
+    :param p:
         The path iterator variable
+    :type p: 
 
 .. This file was automatic generated / don't edit.
 

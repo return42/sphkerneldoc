@@ -10,29 +10,37 @@ ef4_fill_test
 
     fill in an individual self-test entry
 
-    :param unsigned int test_index:
+    :param test_index:
         Index of the test
+    :type test_index: unsigned int
 
-    :param u8 \*strings:
+    :param strings:
         Ethtool strings, or \ ``NULL``\ 
+    :type strings: u8 \*
 
-    :param u64 \*data:
+    :param data:
         Ethtool test results, or \ ``NULL``\ 
+    :type data: u64 \*
 
-    :param int \*test:
+    :param test:
         Pointer to test result (used only if data != \ ``NULL``\ )
+    :type test: int \*
 
-    :param const char \*unit_format:
+    :param unit_format:
         Unit name format (e.g. "chan%d")
+    :type unit_format: const char \*
 
-    :param int unit_id:
+    :param unit_id:
         Unit id (e.g. 0 for "chan0")
+    :type unit_id: int
 
-    :param const char \*test_format:
+    :param test_format:
         Test name format (e.g. "loopback.%s.tx.sent")
+    :type test_format: const char \*
 
-    :param const char \*test_id:
+    :param test_id:
         Test id (e.g. "PHYXS" for "loopback.PHYXS.tx_sent")
+    :type test_id: const char \*
 
 .. _`ef4_fill_test.description`:
 
@@ -50,23 +58,29 @@ ef4_fill_loopback_test
 
     fill in a block of loopback self-test entries
 
-    :param struct ef4_nic \*efx:
+    :param efx:
         Efx NIC
+    :type efx: struct ef4_nic \*
 
-    :param struct ef4_loopback_self_tests \*lb_tests:
+    :param lb_tests:
         Efx loopback self-test results structure
+    :type lb_tests: struct ef4_loopback_self_tests \*
 
-    :param enum ef4_loopback_mode mode:
+    :param mode:
         Loopback test mode
+    :type mode: enum ef4_loopback_mode
 
-    :param unsigned int test_index:
+    :param test_index:
         Starting index of the test
+    :type test_index: unsigned int
 
-    :param u8 \*strings:
+    :param strings:
         Ethtool strings, or \ ``NULL``\ 
+    :type strings: u8 \*
 
-    :param u64 \*data:
+    :param data:
         Ethtool test results, or \ ``NULL``\ 
+    :type data: u64 \*
 
 .. _`ef4_fill_loopback_test.description`:
 
@@ -85,17 +99,21 @@ ef4_ethtool_fill_self_tests
 
     get self-test details
 
-    :param struct ef4_nic \*efx:
+    :param efx:
         Efx NIC
+    :type efx: struct ef4_nic \*
 
-    :param struct ef4_self_tests \*tests:
+    :param tests:
         Efx self-test results structure, or \ ``NULL``\ 
+    :type tests: struct ef4_self_tests \*
 
-    :param u8 \*strings:
+    :param strings:
         Ethtool strings, or \ ``NULL``\ 
+    :type strings: u8 \*
 
-    :param u64 \*data:
+    :param data:
         Ethtool test results, or \ ``NULL``\ 
+    :type data: u64 \*
 
 .. _`ef4_ethtool_fill_self_tests.description`:
 

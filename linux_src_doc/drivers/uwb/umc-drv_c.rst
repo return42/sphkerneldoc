@@ -10,8 +10,9 @@ umc_driver_unregister
 
     unregister a UMC capabiltity driver.
 
-    :param struct umc_driver \*umc_drv:
+    :param umc_drv:
         pointer to the driver.
+    :type umc_drv: struct umc_driver \*
 
 .. This file was automatic generated / don't edit.
 

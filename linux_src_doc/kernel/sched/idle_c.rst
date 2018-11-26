@@ -10,8 +10,9 @@ sched_idle_set_state
 
     Record idle state for the current CPU.
 
-    :param struct cpuidle_state \*idle_state:
+    :param idle_state:
         State to record.
+    :type idle_state: struct cpuidle_state \*
 
 .. _`default_idle_call`:
 
@@ -22,8 +23,9 @@ default_idle_call
 
     Default CPU idle routine.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`default_idle_call.description`:
 
@@ -41,8 +43,9 @@ cpuidle_idle_call
 
     the main idle function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuidle_idle_call.note`:
 

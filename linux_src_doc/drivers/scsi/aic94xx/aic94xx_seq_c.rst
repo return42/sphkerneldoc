@@ -10,8 +10,9 @@ asd_pause_cseq
 
     pause the central sequencer
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_pause_cseq.description`:
 
@@ -29,8 +30,9 @@ asd_unpause_cseq
 
     unpause the central sequencer.
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure.
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_unpause_cseq.description`:
 
@@ -48,11 +50,13 @@ asd_seq_pause_lseq
 
     pause a link sequencer
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to a host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param int lseq:
+    :param lseq:
         link sequencer of interest
+    :type lseq: int
 
 .. _`asd_seq_pause_lseq.description`:
 
@@ -70,11 +74,13 @@ asd_pause_lseq
 
     pause the link sequencer(s)
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param u8 lseq_mask:
+    :param lseq_mask:
         mask of link sequencers of interest
+    :type lseq_mask: u8
 
 .. _`asd_pause_lseq.description`:
 
@@ -92,11 +98,13 @@ asd_seq_unpause_lseq
 
     unpause a link sequencer
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param int lseq:
+    :param lseq:
         link sequencer of interest
+    :type lseq: int
 
 .. _`asd_seq_unpause_lseq.description`:
 
@@ -114,17 +122,21 @@ asd_verify_lseq
 
     verify the microcode of a link sequencer
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param const u8 \*_prog:
+    :param _prog:
         pointer to the microcode
+    :type _prog: const u8 \*
 
-    :param u32 size:
+    :param size:
         size of the microcode in bytes
+    :type size: u32
 
-    :param int lseq:
+    :param lseq:
         link sequencer of interest
+    :type lseq: int
 
 .. _`asd_verify_lseq.description`:
 
@@ -145,17 +157,21 @@ asd_verify_seq
 
     - verify CSEQ/LSEQ microcode
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param const u8 \*prog:
+    :param prog:
         pointer to microcode
+    :type prog: const u8 \*
 
-    :param u32 size:
+    :param size:
         size of the microcode
+    :type size: u32
 
-    :param u8 lseq_mask:
+    :param lseq_mask:
         if 0, verify CSEQ microcode, else mask of LSEQs of interest
+    :type lseq_mask: u8
 
 .. _`asd_verify_seq.description`:
 
@@ -173,8 +189,9 @@ asd_seq_download_seqs
 
     download the sequencer microcode
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_seq_download_seqs.description`:
 
@@ -192,8 +209,9 @@ asd_init_cseq_mip
 
     initialize CSEQ mode independent pages 4-7
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_cseq_mdp`:
 
@@ -204,8 +222,9 @@ asd_init_cseq_mdp
 
     initialize CSEQ Mode dependent pages
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_cseq_scratch`:
 
@@ -216,8 +235,9 @@ asd_init_cseq_scratch
 
     - setup and init CSEQ
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_cseq_scratch.description`:
 
@@ -236,11 +256,13 @@ asd_init_lseq_mip
 
     - initialize LSEQ Mode independent pages 0-3
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param u8 lseq:
+    :param lseq:
         *undescribed*
+    :type lseq: u8
 
 .. _`asd_init_lseq_mdp`:
 
@@ -251,11 +273,13 @@ asd_init_lseq_mdp
 
     - initialize LSEQ mode dependent pages.
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param int lseq:
+    :param lseq:
         *undescribed*
+    :type lseq: int
 
 .. _`asd_init_lseq_scratch`:
 
@@ -266,8 +290,9 @@ asd_init_lseq_scratch
 
     - setup and init link sequencers
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter struct
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_scb_sites`:
 
@@ -278,8 +303,9 @@ asd_init_scb_sites
 
     - initialize sequencer SCB sites (memory).
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_scb_sites.description`:
 
@@ -299,8 +325,9 @@ asd_init_cseq_cio
 
     initialize CSEQ CIO registers
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_lseq_cio`:
 
@@ -311,11 +338,13 @@ asd_init_lseq_cio
 
     - initialize LmSEQ CIO registers
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param int lseq:
+    :param lseq:
         *undescribed*
+    :type lseq: int
 
 .. _`asd_post_init_cseq`:
 
@@ -326,8 +355,9 @@ asd_post_init_cseq
 
     - clear CSEQ Mode n Int. status and Response mailbox
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter struct
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_ddb_0`:
 
@@ -338,8 +368,9 @@ asd_init_ddb_0
 
     - initialize DDB 0
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_ddb_0.description`:
 
@@ -357,8 +388,9 @@ asd_seq_setup_seqs
 
     - setup and initialize central and link sequencers
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_seq_start_cseq`:
 
@@ -369,8 +401,9 @@ asd_seq_start_cseq
 
     - start the central sequencer, CSEQ
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_seq_start_lseq`:
 
@@ -381,11 +414,13 @@ asd_seq_start_lseq
 
     - start a link sequencer
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param int lseq:
+    :param lseq:
         the link sequencer of interest
+    :type lseq: int
 
 .. _`asd_update_port_links`:
 
@@ -396,11 +431,13 @@ asd_update_port_links
 
     - update port_map_by_links and phy_is_up
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         *undescribed*
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param struct asd_phy \*phy:
+    :param phy:
         *undescribed*
+    :type phy: struct asd_phy \*
 
 .. _`asd_update_port_links.description`:
 

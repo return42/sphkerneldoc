@@ -10,14 +10,17 @@ rpr0521_set_power_state
 
     handles runtime PM state and sensors enabled status
 
-    :param struct rpr0521_data \*data:
+    :param data:
         rpr0521 device private data
+    :type data: struct rpr0521_data \*
 
-    :param bool on:
+    :param on:
         state to be set for devices in \ ``device_mask``\ 
+    :type on: bool
 
-    :param u8 device_mask:
+    :param device_mask:
         bitmask specifying for which device we need to update \ ``on``\  state
+    :type device_mask: u8
 
 .. _`rpr0521_set_power_state.description`:
 

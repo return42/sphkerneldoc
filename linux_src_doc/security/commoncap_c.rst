@@ -10,17 +10,21 @@ cap_capable
 
     Determine whether a task has a particular effective capability
 
-    :param const struct cred \*cred:
+    :param cred:
         The credentials to use
+    :type cred: const struct cred \*
 
-    :param struct user_namespace \*targ_ns:
+    :param targ_ns:
         *undescribed*
+    :type targ_ns: struct user_namespace \*
 
-    :param int cap:
+    :param cap:
         The capability to check for
+    :type cap: int
 
-    :param int audit:
+    :param audit:
         Whether to write an audit message or not
+    :type audit: int
 
 .. _`cap_capable.description`:
 
@@ -49,11 +53,13 @@ cap_settime
 
     Determine whether the current process may set the system clock
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         The time to set
+    :type ts: const struct timespec64 \*
 
-    :param const struct timezone \*tz:
+    :param tz:
         The timezone to set
+    :type tz: const struct timezone \*
 
 .. _`cap_settime.description`:
 
@@ -72,11 +78,13 @@ cap_ptrace_access_check
 
     Determine whether the current process may access another
 
-    :param struct task_struct \*child:
+    :param child:
         The process to be accessed
+    :type child: struct task_struct \*
 
-    :param unsigned int mode:
+    :param mode:
         The mode of attachment.
+    :type mode: unsigned int
 
 .. _`cap_ptrace_access_check.description`:
 
@@ -101,8 +109,9 @@ cap_ptrace_traceme
 
     Determine whether another process may trace the current
 
-    :param struct task_struct \*parent:
+    :param parent:
         The task proposed to be the tracer
+    :type parent: struct task_struct \*
 
 .. _`cap_ptrace_traceme.description`:
 
@@ -127,17 +136,21 @@ cap_capget
 
     Retrieve a task's capability sets
 
-    :param struct task_struct \*target:
+    :param target:
         The task from which to retrieve the capability sets
+    :type target: struct task_struct \*
 
-    :param kernel_cap_t \*effective:
+    :param effective:
         The place to record the effective set
+    :type effective: kernel_cap_t \*
 
-    :param kernel_cap_t \*inheritable:
+    :param inheritable:
         The place to record the inheritable set
+    :type inheritable: kernel_cap_t \*
 
-    :param kernel_cap_t \*permitted:
+    :param permitted:
         The place to record the permitted set
+    :type permitted: kernel_cap_t \*
 
 .. _`cap_capget.description`:
 
@@ -156,20 +169,25 @@ cap_capset
 
     Validate and apply proposed changes to current's capabilities
 
-    :param struct cred \*new:
+    :param new:
         The proposed new credentials; alterations should be made here
+    :type new: struct cred \*
 
-    :param const struct cred \*old:
+    :param old:
         The current task's current credentials
+    :type old: const struct cred \*
 
-    :param const kernel_cap_t \*effective:
+    :param effective:
         A pointer to the proposed new effective capabilities set
+    :type effective: const kernel_cap_t \*
 
-    :param const kernel_cap_t \*inheritable:
+    :param inheritable:
         A pointer to the proposed new inheritable capabilities set
+    :type inheritable: const kernel_cap_t \*
 
-    :param const kernel_cap_t \*permitted:
+    :param permitted:
         A pointer to the proposed new permitted capabilities set
+    :type permitted: const kernel_cap_t \*
 
 .. _`cap_capset.description`:
 
@@ -189,8 +207,9 @@ cap_inode_need_killpriv
 
     Determine if inode change affects privileges
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The inode/dentry in being changed with change marked ATTR_KILL_PRIV
+    :type dentry: struct dentry \*
 
 .. _`cap_inode_need_killpriv.description`:
 
@@ -213,8 +232,9 @@ cap_inode_killpriv
 
     Erase the security markings on an inode
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The inode/dentry to alter
+    :type dentry: struct dentry \*
 
 .. _`cap_inode_killpriv.description`:
 
@@ -234,8 +254,9 @@ cap_bprm_set_creds
 
     Set up the proposed credentials for \ :c:func:`execve`\ .
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         The execution parameters, including the proposed creds
+    :type bprm: struct linux_binprm \*
 
 .. _`cap_bprm_set_creds.description`:
 
@@ -243,7 +264,7 @@ Description
 -----------
 
 Set up the proposed credentials for a new execution context being
-constructed by \ :c:func:`execve`\ .  The proposed creds in \ ``bprm``\ ->cred is altered,
+constructed by \ :c:func:`execve`\ .  The proposed creds in \ ``bprm->cred``\  is altered,
 which won't take effect immediately.  Returns 0 if successful, -ve on error.
 
 .. _`cap_inode_setxattr`:
@@ -255,20 +276,25 @@ cap_inode_setxattr
 
     Determine whether an xattr may be altered
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The inode/dentry being altered
+    :type dentry: struct dentry \*
 
-    :param const char \*name:
+    :param name:
         The name of the xattr to be changed
+    :type name: const char \*
 
-    :param const void \*value:
+    :param value:
         The value that the xattr will be changed to
+    :type value: const void \*
 
-    :param size_t size:
+    :param size:
         The size of value
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         The replacement flag
+    :type flags: int
 
 .. _`cap_inode_setxattr.description`:
 
@@ -290,11 +316,13 @@ cap_inode_removexattr
 
     Determine whether an xattr may be removed
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The inode/dentry being altered
+    :type dentry: struct dentry \*
 
-    :param const char \*name:
+    :param name:
         The name of the xattr to be changed
+    :type name: const char \*
 
 .. _`cap_inode_removexattr.description`:
 
@@ -316,14 +344,17 @@ cap_task_fix_setuid
 
     Fix up the results of \ :c:func:`setuid`\  call
 
-    :param struct cred \*new:
+    :param new:
         The proposed credentials
+    :type new: struct cred \*
 
-    :param const struct cred \*old:
+    :param old:
         The current task's current credentials
+    :type old: const struct cred \*
 
-    :param int flags:
+    :param flags:
         Indications of what has changed
+    :type flags: int
 
 .. _`cap_task_fix_setuid.description`:
 
@@ -342,8 +373,9 @@ cap_task_setscheduler
 
     Detemine if scheduler policy change is permitted
 
-    :param struct task_struct \*p:
+    :param p:
         The task to affect
+    :type p: struct task_struct \*
 
 .. _`cap_task_setscheduler.description`:
 
@@ -362,11 +394,13 @@ cap_task_setioprio
 
     Detemine if I/O priority change is permitted
 
-    :param struct task_struct \*p:
+    :param p:
         The task to affect
+    :type p: struct task_struct \*
 
-    :param int ioprio:
+    :param ioprio:
         The I/O priority to set
+    :type ioprio: int
 
 .. _`cap_task_setioprio.description`:
 
@@ -385,11 +419,13 @@ cap_task_setnice
 
     Detemine if task priority change is permitted
 
-    :param struct task_struct \*p:
+    :param p:
         The task to affect
+    :type p: struct task_struct \*
 
-    :param int nice:
+    :param nice:
         The nice value to set
+    :type nice: int
 
 .. _`cap_task_setnice.description`:
 
@@ -408,20 +444,25 @@ cap_task_prctl
 
     Implement process control functions for this security module
 
-    :param int option:
+    :param option:
         The process control function requested
+    :type option: int
 
-    :param unsigned long arg2:
+    :param arg2:
         The argument data for this function
+    :type arg2: unsigned long
 
-    :param unsigned long arg3:
+    :param arg3:
         *undescribed*
+    :type arg3: unsigned long
 
-    :param unsigned long arg4:
+    :param arg4:
         *undescribed*
+    :type arg4: unsigned long
 
-    :param unsigned long arg5:
+    :param arg5:
         *undescribed*
+    :type arg5: unsigned long
 
 .. _`cap_task_prctl.description`:
 
@@ -444,11 +485,13 @@ cap_vm_enough_memory
 
     Determine whether a new virtual mapping is permitted
 
-    :param struct mm_struct \*mm:
+    :param mm:
         The VM space in which the new mapping is to be made
+    :type mm: struct mm_struct \*
 
-    :param long pages:
+    :param pages:
         The size of the mapping
+    :type pages: long
 
 .. _`cap_vm_enough_memory.description`:
 

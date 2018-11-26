@@ -8,8 +8,9 @@ usbhc_dev_to_wusbhc
 
 .. c:function:: struct wusbhc *usbhc_dev_to_wusbhc(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`usbhc_dev_to_wusbhc.description`:
 
@@ -28,14 +29,17 @@ wusbhc_giveback_urb
 
     return an URB to the USB core
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         the host controller the URB is from.
+    :type wusbhc: struct wusbhc \*
 
-    :param struct urb \*urb:
+    :param urb:
         the URB.
+    :type urb: struct urb \*
 
-    :param int status:
+    :param status:
         the URB's status.
+    :type status: int
 
 .. _`wusbhc_giveback_urb.description`:
 
@@ -61,8 +65,9 @@ wusbhc_reset_all
 
     reset the HC hardware
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         the host controller to reset.
+    :type wusbhc: struct wusbhc \*
 
 .. _`wusbhc_reset_all.description`:
 

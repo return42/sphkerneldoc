@@ -10,14 +10,17 @@ ntfs_check_restart_page_header
 
     check the page header for consistency
 
-    :param struct inode \*vi:
+    :param vi:
         \ ``$LogFile``\  inode to which the restart page header belongs
+    :type vi: struct inode \*
 
-    :param RESTART_PAGE_HEADER \*rp:
+    :param rp:
         restart page header to check
+    :type rp: RESTART_PAGE_HEADER \*
 
-    :param s64 pos:
+    :param pos:
         position in \ ``vi``\  at which the restart page header resides
+    :type pos: s64
 
 .. _`ntfs_check_restart_page_header.description`:
 
@@ -39,11 +42,13 @@ ntfs_check_restart_area
 
     check the restart area for consistency
 
-    :param struct inode \*vi:
+    :param vi:
         \ ``$LogFile``\  inode to which the restart page belongs
+    :type vi: struct inode \*
 
-    :param RESTART_PAGE_HEADER \*rp:
+    :param rp:
         restart page whose restart area to check
+    :type rp: RESTART_PAGE_HEADER \*
 
 .. _`ntfs_check_restart_area.description`:
 
@@ -68,11 +73,13 @@ ntfs_check_log_client_array
 
     check the log client array for consistency
 
-    :param struct inode \*vi:
+    :param vi:
         \ ``$LogFile``\  inode to which the restart page belongs
+    :type vi: struct inode \*
 
-    :param RESTART_PAGE_HEADER \*rp:
+    :param rp:
         restart page whose log client array to check
+    :type rp: RESTART_PAGE_HEADER \*
 
 .. _`ntfs_check_log_client_array.description`:
 
@@ -86,7 +93,7 @@ This function assumes that the restart page header and the restart area have
 already been consistency checked.
 
 Unlike \ :c:func:`ntfs_check_restart_page_header`\  and \ :c:func:`ntfs_check_restart_area`\ , this
-function needs \ ``rp``\ ->system_page_size bytes in \ ``rp``\ , i.e. it requires the full
+function needs \ ``rp->system_page_size``\  bytes in \ ``rp``\ , i.e. it requires the full
 restart page and the page must be multi sector transfer deprotected.
 
 .. _`ntfs_check_and_load_restart_page`:
@@ -98,20 +105,25 @@ ntfs_check_and_load_restart_page
 
     check the restart page for consistency
 
-    :param struct inode \*vi:
+    :param vi:
         \ ``$LogFile``\  inode to which the restart page belongs
+    :type vi: struct inode \*
 
-    :param RESTART_PAGE_HEADER \*rp:
+    :param rp:
         restart page to check
+    :type rp: RESTART_PAGE_HEADER \*
 
-    :param s64 pos:
+    :param pos:
         position in \ ``vi``\  at which the restart page resides
+    :type pos: s64
 
-    :param RESTART_PAGE_HEADER \*\*wrp:
+    :param wrp:
         [OUT] copy of the multi sector transfer deprotected restart page
+    :type wrp: RESTART_PAGE_HEADER \*\*
 
-    :param LSN \*lsn:
+    :param lsn:
         [OUT] set to the current logfile lsn on success
+    :type lsn: LSN \*
 
 .. _`ntfs_check_and_load_restart_page.description`:
 
@@ -150,11 +162,13 @@ ntfs_check_logfile
 
     check the journal for consistency
 
-    :param struct inode \*log_vi:
+    :param log_vi:
         struct inode of loaded journal \ ``$LogFile``\  to check
+    :type log_vi: struct inode \*
 
-    :param RESTART_PAGE_HEADER \*\*rp:
+    :param rp:
         [OUT] on success this is a copy of the current restart page
+    :type rp: RESTART_PAGE_HEADER \*\*
 
 .. _`ntfs_check_logfile.description`:
 
@@ -182,11 +196,13 @@ ntfs_is_logfile_clean
 
     check in the journal if the volume is clean
 
-    :param struct inode \*log_vi:
+    :param log_vi:
         struct inode of loaded journal \ ``$LogFile``\  to check
+    :type log_vi: struct inode \*
 
-    :param const RESTART_PAGE_HEADER \*rp:
+    :param rp:
         copy of the current restart page
+    :type rp: const RESTART_PAGE_HEADER \*
 
 .. _`ntfs_is_logfile_clean.description`:
 
@@ -217,8 +233,9 @@ ntfs_empty_logfile
 
     empty the contents of the \ ``$LogFile``\  journal
 
-    :param struct inode \*log_vi:
+    :param log_vi:
         struct inode of loaded journal \ ``$LogFile``\  to empty
+    :type log_vi: struct inode \*
 
 .. _`ntfs_empty_logfile.description`:
 

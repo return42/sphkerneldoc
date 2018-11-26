@@ -8,11 +8,13 @@ nes_read_eeprom_values
 
 .. c:function:: int nes_read_eeprom_values(struct nes_device *nesdev, struct nes_adapter *nesadapter)
 
-    :param struct nes_device \*nesdev:
+    :param nesdev:
         *undescribed*
+    :type nesdev: struct nes_device \*
 
-    :param struct nes_adapter \*nesadapter:
+    :param nesadapter:
         *undescribed*
+    :type nesadapter: struct nes_adapter \*
 
 .. _`nes_read16_eeprom`:
 
@@ -21,11 +23,13 @@ nes_read16_eeprom
 
 .. c:function:: u16 nes_read16_eeprom(void __iomem *addr, u16 offset)
 
-    :param void __iomem \*addr:
+    :param addr:
         *undescribed*
+    :type addr: void __iomem \*
 
-    :param u16 offset:
+    :param offset:
         *undescribed*
+    :type offset: u16
 
 .. _`nes_write_1g_phy_reg`:
 
@@ -34,17 +38,21 @@ nes_write_1G_phy_reg
 
 .. c:function:: void nes_write_1G_phy_reg(struct nes_device *nesdev, u8 phy_reg, u8 phy_addr, u16 data)
 
-    :param struct nes_device \*nesdev:
+    :param nesdev:
         *undescribed*
+    :type nesdev: struct nes_device \*
 
-    :param u8 phy_reg:
+    :param phy_reg:
         *undescribed*
+    :type phy_reg: u8
 
-    :param u8 phy_addr:
+    :param phy_addr:
         *undescribed*
+    :type phy_addr: u8
 
-    :param u16 data:
+    :param data:
         *undescribed*
+    :type data: u16
 
 .. _`nes_read_1g_phy_reg`:
 
@@ -55,17 +63,21 @@ nes_read_1G_phy_reg
 
     This routine only issues the read, the data must be read separately.
 
-    :param struct nes_device \*nesdev:
+    :param nesdev:
         *undescribed*
+    :type nesdev: struct nes_device \*
 
-    :param u8 phy_reg:
+    :param phy_reg:
         *undescribed*
+    :type phy_reg: u8
 
-    :param u8 phy_addr:
+    :param phy_addr:
         *undescribed*
+    :type phy_addr: u8
 
-    :param u16 \*data:
+    :param data:
         *undescribed*
+    :type data: u16 \*
 
 .. _`nes_write_10g_phy_reg`:
 
@@ -74,20 +86,25 @@ nes_write_10G_phy_reg
 
 .. c:function:: void nes_write_10G_phy_reg(struct nes_device *nesdev, u16 phy_addr, u8 dev_addr, u16 phy_reg, u16 data)
 
-    :param struct nes_device \*nesdev:
+    :param nesdev:
         *undescribed*
+    :type nesdev: struct nes_device \*
 
-    :param u16 phy_addr:
+    :param phy_addr:
         *undescribed*
+    :type phy_addr: u16
 
-    :param u8 dev_addr:
+    :param dev_addr:
         *undescribed*
+    :type dev_addr: u8
 
-    :param u16 phy_reg:
+    :param phy_reg:
         *undescribed*
+    :type phy_reg: u16
 
-    :param u16 data:
+    :param data:
         *undescribed*
+    :type data: u16
 
 .. _`nes_read_10g_phy_reg`:
 
@@ -98,17 +115,21 @@ nes_read_10G_phy_reg
 
     This routine only issues the read, the data must be read separately.
 
-    :param struct nes_device \*nesdev:
+    :param nesdev:
         *undescribed*
+    :type nesdev: struct nes_device \*
 
-    :param u8 phy_addr:
+    :param phy_addr:
         *undescribed*
+    :type phy_addr: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         *undescribed*
+    :type dev_addr: u8
 
-    :param u16 phy_reg:
+    :param phy_reg:
         *undescribed*
+    :type phy_reg: u16
 
 .. _`nes_get_cqp_request`:
 
@@ -117,8 +138,9 @@ nes_get_cqp_request
 
 .. c:function:: struct nes_cqp_request *nes_get_cqp_request(struct nes_device *nesdev)
 
-    :param struct nes_device \*nesdev:
+    :param nesdev:
         *undescribed*
+    :type nesdev: struct nes_device \*
 
 .. _`nes_post_cqp_request`:
 
@@ -127,11 +149,13 @@ nes_post_cqp_request
 
 .. c:function:: void nes_post_cqp_request(struct nes_device *nesdev, struct nes_cqp_request *cqp_request)
 
-    :param struct nes_device \*nesdev:
+    :param nesdev:
         *undescribed*
+    :type nesdev: struct nes_device \*
 
-    :param struct nes_cqp_request \*cqp_request:
+    :param cqp_request:
         *undescribed*
+    :type cqp_request: struct nes_cqp_request \*
 
 .. _`nes_arp_table`:
 
@@ -140,17 +164,21 @@ nes_arp_table
 
 .. c:function:: int nes_arp_table(struct nes_device *nesdev, u32 ip_addr, u8 *mac_addr, u32 action)
 
-    :param struct nes_device \*nesdev:
+    :param nesdev:
         *undescribed*
+    :type nesdev: struct nes_device \*
 
-    :param u32 ip_addr:
+    :param ip_addr:
         *undescribed*
+    :type ip_addr: u32
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         *undescribed*
+    :type mac_addr: u8 \*
 
-    :param u32 action:
+    :param action:
         *undescribed*
+    :type action: u32
 
 .. _`nes_mh_fix`:
 
@@ -159,8 +187,9 @@ nes_mh_fix
 
 .. c:function:: void nes_mh_fix(struct timer_list *t)
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`nes_clc`:
 
@@ -169,8 +198,9 @@ nes_clc
 
 .. c:function:: void nes_clc(struct timer_list *t)
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`nes_dump_mem`:
 
@@ -179,14 +209,17 @@ nes_dump_mem
 
 .. c:function:: void nes_dump_mem(unsigned int dump_debug_level, void *addr, int length)
 
-    :param unsigned int dump_debug_level:
+    :param dump_debug_level:
         *undescribed*
+    :type dump_debug_level: unsigned int
 
-    :param void \*addr:
+    :param addr:
         *undescribed*
+    :type addr: void \*
 
-    :param int length:
+    :param length:
         *undescribed*
+    :type length: int
 
 .. This file was automatic generated / don't edit.
 

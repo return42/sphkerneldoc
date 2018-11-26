@@ -10,17 +10,21 @@ snd_dma_program
 
     program an ISA DMA transfer
 
-    :param unsigned long dma:
+    :param dma:
         the dma number
+    :type dma: unsigned long
 
-    :param unsigned long addr:
+    :param addr:
         the physical address of the buffer
+    :type addr: unsigned long
 
-    :param unsigned int size:
+    :param size:
         the DMA transfer size
+    :type size: unsigned int
 
-    :param unsigned short mode:
+    :param mode:
         the DMA transfer mode, DMA_MODE_XXX
+    :type mode: unsigned short
 
 .. _`snd_dma_program.description`:
 
@@ -38,8 +42,9 @@ snd_dma_disable
 
     stop the ISA DMA transfer
 
-    :param unsigned long dma:
+    :param dma:
         the dma number
+    :type dma: unsigned long
 
 .. _`snd_dma_disable.description`:
 
@@ -57,11 +62,13 @@ snd_dma_pointer
 
     return the current pointer to DMA transfer buffer in bytes
 
-    :param unsigned long dma:
+    :param dma:
         the dma number
+    :type dma: unsigned long
 
-    :param unsigned int size:
+    :param size:
         the dma transfer size
+    :type size: unsigned int
 
 .. _`snd_dma_pointer.return`:
 

@@ -10,8 +10,9 @@ klp_disable_patch
 
     disables a registered patch
 
-    :param struct klp_patch \*patch:
+    :param patch:
         The registered, enabled patch to be disabled
+    :type patch: struct klp_patch \*
 
 .. _`klp_disable_patch.description`:
 
@@ -36,8 +37,9 @@ klp_enable_patch
 
     enables a registered patch
 
-    :param struct klp_patch \*patch:
+    :param patch:
         The registered, disabled patch to be enabled
+    :type patch: struct klp_patch \*
 
 .. _`klp_enable_patch.description`:
 
@@ -63,8 +65,9 @@ klp_unregister_patch
 
     unregisters a patch
 
-    :param struct klp_patch \*patch:
+    :param patch:
         Disabled patch to be unregistered
+    :type patch: struct klp_patch \*
 
 .. _`klp_unregister_patch.description`:
 
@@ -89,8 +92,9 @@ klp_register_patch
 
     registers a patch
 
-    :param struct klp_patch \*patch:
+    :param patch:
         Patch to be registered
+    :type patch: struct klp_patch \*
 
 .. _`klp_register_patch.description`:
 

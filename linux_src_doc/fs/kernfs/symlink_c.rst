@@ -10,14 +10,17 @@ kernfs_create_link
 
     create a symlink
 
-    :param struct kernfs_node \*parent:
+    :param parent:
         directory to create the symlink in
+    :type parent: struct kernfs_node \*
 
-    :param const char \*name:
+    :param name:
         name of the symlink
+    :type name: const char \*
 
-    :param struct kernfs_node \*target:
+    :param target:
         target node for the symlink to point to
+    :type target: struct kernfs_node \*
 
 .. _`kernfs_create_link.description`:
 
@@ -25,6 +28,7 @@ Description
 -----------
 
 Returns the created node on success, \ :c:func:`ERR_PTR`\  value on error.
+Ownership of the link matches ownership of the target.
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ knav_queue_notify
 
     qmss queue notfier call
 
-    :param struct knav_queue_inst \*inst:
+    :param inst:
         qmss queue instance like accumulator
+    :type inst: struct knav_queue_inst \*
 
 .. _`knav_queue_open`:
 
@@ -22,17 +23,20 @@ knav_queue_open
 
     open a hardware queue \ ``name``\                 - name to give the queue handle \ ``id``\                   - desired queue number if any or specifes the type of queue
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param unsigned id:
+    :param id:
         *undescribed*
+    :type id: unsigned
 
-    :param unsigned flags:
+    :param flags:
         KNAV_QUEUE_SHARED - allow the queue to be shared. Queues are
         exclusive by default.
         Subsequent attempts to open a shared queue should
         also have this flag.
+    :type flags: unsigned
 
 .. _`knav_queue_open.description`:
 
@@ -51,8 +55,9 @@ knav_queue_close
 
     close a hardware queue handle \ ``qh``\                   - handle to close
 
-    :param void \*qhandle:
+    :param qhandle:
         *undescribed*
+    :type qhandle: void \*
 
 .. _`knav_queue_device_control`:
 
@@ -63,14 +68,17 @@ knav_queue_device_control
 
     Perform control operations on a queue \ ``qh``\                           - queue handle \ ``cmd``\                          - control commands \ ``arg``\                          - command argument
 
-    :param void \*qhandle:
+    :param qhandle:
         *undescribed*
+    :type qhandle: void \*
 
-    :param enum knav_queue_ctrl_cmd cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: enum knav_queue_ctrl_cmd
 
-    :param unsigned long arg:
+    :param arg:
         *undescribed*
+    :type arg: unsigned long
 
 .. _`knav_queue_device_control.description`:
 
@@ -88,17 +96,21 @@ knav_queue_push
 
     push data (or descriptor) to the tail of a queue \ ``qh``\                   - hardware queue handle \ ``data``\                 - data to push \ ``size``\                 - size of data to push \ ``flags``\                - can be used to pass additional information
 
-    :param void \*qhandle:
+    :param qhandle:
         *undescribed*
+    :type qhandle: void \*
 
-    :param dma_addr_t dma:
+    :param dma:
         *undescribed*
+    :type dma: dma_addr_t
 
-    :param unsigned size:
+    :param size:
         *undescribed*
+    :type size: unsigned
 
-    :param unsigned flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned
 
 .. _`knav_queue_push.description`:
 
@@ -116,11 +128,13 @@ knav_queue_pop
 
     pop data (or descriptor) from the head of a queue \ ``qh``\                   - hardware queue handle \ ``size``\                 - (optional) size of the data pop'ed.
 
-    :param void \*qhandle:
+    :param qhandle:
         *undescribed*
+    :type qhandle: void \*
 
-    :param unsigned \*size:
+    :param size:
         *undescribed*
+    :type size: unsigned \*
 
 .. _`knav_queue_pop.description`:
 
@@ -138,14 +152,17 @@ knav_pool_create
 
     Create a pool of descriptors \ ``name``\                 - name to give the pool handle \ ``num_desc``\             - numbers of descriptors in the pool \ ``region_id``\            - QMSS region id from which the descriptors are to be allocated.
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param int num_desc:
+    :param num_desc:
         *undescribed*
+    :type num_desc: int
 
-    :param int region_id:
+    :param region_id:
         *undescribed*
+    :type region_id: int
 
 .. _`knav_pool_create.description`:
 
@@ -164,8 +181,9 @@ knav_pool_destroy
 
     Free a pool of descriptors \ ``pool``\                 - pool handle
 
-    :param void \*ph:
+    :param ph:
         *undescribed*
+    :type ph: void \*
 
 .. _`knav_pool_desc_get`:
 
@@ -176,8 +194,9 @@ knav_pool_desc_get
 
     Get a descriptor from the pool \ ``pool``\                         - pool handle
 
-    :param void \*ph:
+    :param ph:
         *undescribed*
+    :type ph: void \*
 
 .. _`knav_pool_desc_get.description`:
 
@@ -195,11 +214,13 @@ knav_pool_desc_put
 
     return a descriptor to the pool \ ``pool``\                         - pool handle
 
-    :param void \*ph:
+    :param ph:
         *undescribed*
+    :type ph: void \*
 
-    :param void \*desc:
+    :param desc:
         *undescribed*
+    :type desc: void \*
 
 .. _`knav_pool_desc_map`:
 
@@ -210,20 +231,25 @@ knav_pool_desc_map
 
     Map descriptor for DMA transfer \ ``pool``\                         - pool handle \ ``desc``\                         - address of descriptor to map \ ``size``\                         - size of descriptor to map \ ``dma``\                          - DMA address return pointer \ ``dma_sz``\                       - adjusted return pointer
 
-    :param void \*ph:
+    :param ph:
         *undescribed*
+    :type ph: void \*
 
-    :param void \*desc:
+    :param desc:
         *undescribed*
+    :type desc: void \*
 
-    :param unsigned size:
+    :param size:
         *undescribed*
+    :type size: unsigned
 
-    :param dma_addr_t \*dma:
+    :param dma:
         *undescribed*
+    :type dma: dma_addr_t \*
 
-    :param unsigned \*dma_sz:
+    :param dma_sz:
         *undescribed*
+    :type dma_sz: unsigned \*
 
 .. _`knav_pool_desc_map.description`:
 
@@ -241,14 +267,17 @@ knav_pool_desc_unmap
 
     Unmap descriptor after DMA transfer \ ``pool``\                         - pool handle \ ``dma``\                          - DMA address of descriptor to unmap \ ``dma_sz``\                       - size of descriptor to unmap
 
-    :param void \*ph:
+    :param ph:
         *undescribed*
+    :type ph: void \*
 
-    :param dma_addr_t dma:
+    :param dma:
         *undescribed*
+    :type dma: dma_addr_t
 
-    :param unsigned dma_sz:
+    :param dma_sz:
         *undescribed*
+    :type dma_sz: unsigned
 
 .. _`knav_pool_desc_unmap.description`:
 
@@ -267,8 +296,9 @@ knav_pool_count
 
     Get the number of descriptors in pool. \ ``pool``\                 - pool handle Returns number of elements in the pool.
 
-    :param void \*ph:
+    :param ph:
         *undescribed*
+    :type ph: void \*
 
 .. This file was automatic generated / don't edit.
 

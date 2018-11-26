@@ -10,14 +10,17 @@ nfs_fattr_init_names
 
     initialise the nfs_fattr owner_name/group_name fields
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         fully initialised struct nfs_fattr
+    :type fattr: struct nfs_fattr \*
 
-    :param struct nfs4_string \*owner_name:
+    :param owner_name:
         owner name string cache
+    :type owner_name: struct nfs4_string \*
 
-    :param struct nfs4_string \*group_name:
+    :param group_name:
         group name string cache
+    :type group_name: struct nfs4_string \*
 
 .. _`nfs_fattr_free_names`:
 
@@ -28,8 +31,9 @@ nfs_fattr_free_names
 
     free up the NFSv4 owner and group strings
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         a fully initialised nfs_fattr structure
+    :type fattr: struct nfs_fattr \*
 
 .. _`nfs_fattr_map_and_free_names`:
 
@@ -40,11 +44,13 @@ nfs_fattr_map_and_free_names
 
     map owner/group strings into uid/gid and free
 
-    :param struct nfs_server \*server:
+    :param server:
         pointer to the filesystem nfs_server structure
+    :type server: struct nfs_server \*
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         a fully initialised nfs_fattr structure
+    :type fattr: struct nfs_fattr \*
 
 .. _`nfs_fattr_map_and_free_names.description`:
 

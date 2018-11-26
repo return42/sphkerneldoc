@@ -10,14 +10,17 @@
 
     Allocate a zeroed HIGHMEM page for a VMA with caller-specified movable GFP flags
 
-    :param gfp_t movableflags:
+    :param movableflags:
         The GFP flags related to the pages future ability to move like \__GFP_MOVABLE
+    :type movableflags: gfp_t
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         The VMA the page is to be allocated for
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long vaddr:
+    :param vaddr:
         The virtual address the page will be inserted into
+    :type vaddr: unsigned long
 
 .. _`__alloc_zeroed_user_highpage.description`:
 
@@ -41,11 +44,13 @@ alloc_zeroed_user_highpage_movable
 
     Allocate a zeroed HIGHMEM page for a VMA that the caller knows can move
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         The VMA the page is to be allocated for
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long vaddr:
+    :param vaddr:
         The virtual address the page will be inserted into
+    :type vaddr: unsigned long
 
 .. _`alloc_zeroed_user_highpage_movable.description`:
 

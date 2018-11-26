@@ -10,14 +10,17 @@ skl_get_pvt_id
 
     generate a private id for use as module id
 
-    :param struct skl_sst \*ctx:
+    :param ctx:
         driver context
+    :type ctx: struct skl_sst \*
 
-    :param uuid_le \*uuid_mod:
+    :param uuid_mod:
         module's uuid
+    :type uuid_mod: uuid_le \*
 
-    :param int instance_id:
+    :param instance_id:
         module's instance id
+    :type instance_id: int
 
 .. _`skl_get_pvt_id.description`:
 
@@ -36,14 +39,17 @@ skl_put_pvt_id
 
     free up the private id allocated
 
-    :param struct skl_sst \*ctx:
+    :param ctx:
         driver context
+    :type ctx: struct skl_sst \*
 
-    :param uuid_le \*uuid_mod:
+    :param uuid_mod:
         module's uuid
+    :type uuid_mod: uuid_le \*
 
-    :param int \*pvt_id:
+    :param pvt_id:
         module pvt id
+    :type pvt_id: int \*
 
 .. _`skl_put_pvt_id.description`:
 

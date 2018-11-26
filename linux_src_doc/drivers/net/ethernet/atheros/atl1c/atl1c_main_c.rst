@@ -10,8 +10,9 @@ atl1c_irq_enable
 
     Enable default interrupt generation settings
 
-    :param struct atl1c_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1c_adapter \*
 
 .. _`atl1c_irq_disable`:
 
@@ -22,8 +23,9 @@ atl1c_irq_disable
 
     Mask off interrupt generation on the NIC
 
-    :param struct atl1c_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1c_adapter \*
 
 .. _`atl1c_irq_reset`:
 
@@ -34,8 +36,9 @@ atl1c_irq_reset
 
     reset interrupt confiure on the NIC
 
-    :param struct atl1c_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1c_adapter \*
 
 .. _`atl1c_phy_config`:
 
@@ -46,8 +49,9 @@ atl1c_phy_config
 
     Timer Call-back
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`atl1c_tx_timeout`:
 
@@ -58,8 +62,9 @@ atl1c_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl1c_set_multi`:
 
@@ -70,8 +75,9 @@ atl1c_set_multi
 
     Multicast and Promiscuous mode set
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl1c_set_multi.description`:
 
@@ -92,11 +98,13 @@ atl1c_set_mac_addr
 
     Change the Ethernet Address of the NIC
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         pointer to an address structure
+    :type p: void \*
 
 .. _`atl1c_set_mac_addr.description`:
 
@@ -114,11 +122,13 @@ atl1c_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`atl1c_change_mtu.description`:
 
@@ -136,8 +146,9 @@ atl1c_alloc_queues
 
     Allocate memory for all rings
 
-    :param struct atl1c_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct atl1c_adapter \*
 
 .. _`atl1c_sw_init`:
 
@@ -148,8 +159,9 @@ atl1c_sw_init
 
     Initialize general software structures (struct atl1c_adapter)
 
-    :param struct atl1c_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct atl1c_adapter \*
 
 .. _`atl1c_sw_init.description`:
 
@@ -169,11 +181,13 @@ atl1c_clean_tx_ring
 
     Free Tx-skb
 
-    :param struct atl1c_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1c_adapter \*
 
-    :param enum atl1c_trans_queue type:
+    :param type:
         *undescribed*
+    :type type: enum atl1c_trans_queue
 
 .. _`atl1c_clean_rx_ring`:
 
@@ -184,8 +198,9 @@ atl1c_clean_rx_ring
 
     Free rx-reservation skbs
 
-    :param struct atl1c_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1c_adapter \*
 
 .. _`atl1c_free_ring_resources`:
 
@@ -196,8 +211,9 @@ atl1c_free_ring_resources
 
     Free Tx / RX descriptor Resources
 
-    :param struct atl1c_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1c_adapter \*
 
 .. _`atl1c_free_ring_resources.description`:
 
@@ -215,8 +231,9 @@ atl1c_setup_ring_resources
 
     allocate Tx / RX descriptor resources
 
-    :param struct atl1c_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1c_adapter \*
 
 .. _`atl1c_setup_ring_resources.description`:
 
@@ -234,8 +251,9 @@ atl1c_configure_mac
 
     Configure Transmit&Receive Unit after Reset
 
-    :param struct atl1c_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1c_adapter \*
 
 .. _`atl1c_configure_mac.description`:
 
@@ -253,8 +271,9 @@ atl1c_get_stats
 
     Get System Network Statistics
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl1c_get_stats.description`:
 
@@ -273,11 +292,13 @@ atl1c_intr
 
     Interrupt Handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a network interface device structure
+    :type data: void \*
 
 .. _`atl1c_clean`:
 
@@ -288,11 +309,13 @@ atl1c_clean
 
     NAPI Rx polling callback
 
-    :param struct napi_struct \*napi:
+    :param napi:
         *undescribed*
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         *undescribed*
+    :type budget: int
 
 .. _`atl1c_open`:
 
@@ -303,8 +326,9 @@ atl1c_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl1c_open.description`:
 
@@ -328,8 +352,9 @@ atl1c_close
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl1c_close.description`:
 
@@ -352,11 +377,13 @@ atl1c_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in atl1c_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`atl1c_probe.description`:
 
@@ -378,8 +405,9 @@ atl1c_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`atl1c_remove.description`:
 
@@ -400,11 +428,13 @@ atl1c_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`atl1c_io_error_detected.description`:
 
@@ -423,8 +453,9 @@ atl1c_io_slot_reset
 
     called after the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`atl1c_io_slot_reset.description`:
 
@@ -443,8 +474,9 @@ atl1c_io_resume
 
     called when traffic can start flowing again.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`atl1c_io_resume.description`:
 

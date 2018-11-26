@@ -10,11 +10,13 @@ hdac_get_device_id
 
     gets the hdac device id entry
 
-    :param struct hdac_device \*hdev:
+    :param hdev:
         HD-audio core device
+    :type hdev: struct hdac_device \*
 
-    :param struct hdac_driver \*drv:
+    :param drv:
         HD-audio codec driver
+    :type drv: struct hdac_driver \*
 
 .. _`hdac_get_device_id.description`:
 

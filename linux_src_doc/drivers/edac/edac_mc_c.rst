@@ -10,15 +10,18 @@ edac_align_ptr
 
     Prepares the pointer offsets for a single-shot allocation
 
-    :param void \*\*p:
+    :param p:
         pointer to a pointer with the memory offset to be used. At
         return, this will be incremented to point to the next offset
+    :type p: void \*\*
 
-    :param unsigned size:
+    :param size:
         Size of the data structure to be reserved
+    :type size: unsigned
 
-    :param int n_elems:
+    :param n_elems:
         Number of elements that should be reserved
+    :type n_elems: int
 
 .. _`edac_align_ptr.description`:
 
@@ -43,8 +46,9 @@ find_mci_by_dev
 
 .. c:function:: struct mem_ctl_info *find_mci_by_dev(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         pointer to a struct device related with the MCI
+    :type dev: struct device \*
 
 .. _`find_mci_by_dev.description`:
 

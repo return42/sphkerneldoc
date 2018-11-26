@@ -10,8 +10,9 @@ ide_xfer_verbose
 
     return IDE mode names
 
-    :param u8 mode:
+    :param mode:
         transfer mode
+    :type mode: u8
 
 .. _`ide_xfer_verbose.description`:
 
@@ -30,14 +31,17 @@ ide_get_best_pio_mode
 
     get PIO mode from drive
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to consider
+    :type drive: ide_drive_t \*
 
-    :param u8 mode_wanted:
+    :param mode_wanted:
         preferred mode
+    :type mode_wanted: u8
 
-    :param u8 max_mode:
+    :param max_mode:
         highest allowed mode
+    :type max_mode: u8
 
 .. _`ide_get_best_pio_mode.description`:
 
@@ -59,11 +63,13 @@ ide_rate_filter
 
     filter transfer mode
 
-    :param ide_drive_t \*drive:
+    :param drive:
         IDE device
+    :type drive: ide_drive_t \*
 
-    :param u8 speed:
+    :param speed:
         desired speed
+    :type speed: u8
 
 .. _`ide_rate_filter.description`:
 
@@ -89,11 +95,13 @@ ide_set_xfer_rate
 
     set transfer rate
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to set
+    :type drive: ide_drive_t \*
 
-    :param u8 rate:
+    :param rate:
         speed to attempt to set
+    :type rate: u8
 
 .. _`ide_set_xfer_rate.description`:
 

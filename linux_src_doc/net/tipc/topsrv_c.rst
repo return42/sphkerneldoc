@@ -48,7 +48,7 @@ net
     network namspace instance
 
 awork
-    *undescribed*
+    accept work item
 
 rcv_wq
     receive workqueue
@@ -60,7 +60,7 @@ max_rcvbuf_size
     maximum permitted receive message length
 
 listener
-    *undescribed*
+    topsrv listener socket
 
 name
     server name

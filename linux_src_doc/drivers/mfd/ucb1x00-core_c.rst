@@ -10,14 +10,17 @@ ucb1x00_io_set_dir
 
     set IO direction
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
-    :param unsigned int in:
+    :param in:
         bitfield of IO pins to be set as inputs
+    :type in: unsigned int
 
-    :param unsigned int out:
+    :param out:
         bitfield of IO pins to be set as outputs
+    :type out: unsigned int
 
 .. _`ucb1x00_io_set_dir.description`:
 
@@ -43,14 +46,17 @@ ucb1x00_io_write
 
     set or clear IO outputs
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
-    :param unsigned int set:
+    :param set:
         bitfield of IO pins to set to logic '1'
+    :type set: unsigned int
 
-    :param unsigned int clear:
+    :param clear:
         bitfield of IO pins to set to logic '0'
+    :type clear: unsigned int
 
 .. _`ucb1x00_io_write.description`:
 
@@ -76,8 +82,9 @@ ucb1x00_io_read
 
     read the current state of the IO pins
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
 .. _`ucb1x00_io_read.description`:
 
@@ -101,8 +108,9 @@ ucb1x00_adc_enable
 
     enable the ADC converter
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
 .. _`ucb1x00_adc_enable.description`:
 
@@ -130,14 +138,17 @@ ucb1x00_adc_read
 
     read the specified ADC channel
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
-    :param int adc_channel:
+    :param adc_channel:
         ADC channel mask
+    :type adc_channel: int
 
-    :param int sync:
+    :param sync:
         wait for syncronisation pulse.
+    :type sync: int
 
 .. _`ucb1x00_adc_read.description`:
 
@@ -163,8 +174,9 @@ ucb1x00_adc_disable
 
     disable the ADC converter
 
-    :param struct ucb1x00 \*ucb:
+    :param ucb:
         UCB1x00 structure describing chip
+    :type ucb: struct ucb1x00 \*
 
 .. _`ucb1x00_adc_disable.description`:
 

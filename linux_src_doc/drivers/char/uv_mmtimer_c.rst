@@ -10,14 +10,17 @@ uv_mmtimer_ioctl
 
     ioctl interface for /dev/uv_mmtimer
 
-    :param struct file \*file:
+    :param file:
         file structure for the device
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         command to execute
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         optional argument to command
+    :type arg: unsigned long
 
 .. _`uv_mmtimer_ioctl.description`:
 
@@ -58,11 +61,13 @@ uv_mmtimer_mmap
 
     maps the clock's registers into userspace
 
-    :param struct file \*file:
+    :param file:
         file structure for the device
+    :type file: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMA to map the registers into
+    :type vma: struct vm_area_struct \*
 
 .. _`uv_mmtimer_mmap.description`:
 
@@ -81,8 +86,9 @@ uv_mmtimer_init
 
     device initialization routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`uv_mmtimer_init.description`:
 

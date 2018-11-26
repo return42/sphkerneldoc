@@ -10,14 +10,17 @@ i915_memcpy_from_wc
 
     perform an accelerated \*aligned\* read from WC
 
-    :param void \*dst:
+    :param dst:
         destination pointer
+    :type dst: void \*
 
-    :param const void \*src:
+    :param src:
         source pointer
+    :type src: const void \*
 
-    :param unsigned long len:
+    :param len:
         how many bytes to copy
+    :type len: unsigned long
 
 .. _`i915_memcpy_from_wc.description`:
 

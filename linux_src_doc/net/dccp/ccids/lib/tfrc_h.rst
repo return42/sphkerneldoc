@@ -10,14 +10,17 @@ tfrc_ewma
 
     Exponentially weighted moving average
 
-    :param const u32 avg:
+    :param avg:
         *undescribed*
+    :type avg: const u32
 
-    :param const u32 newval:
+    :param newval:
         *undescribed*
+    :type newval: const u32
 
-    :param const u8 weight:
+    :param weight:
         Weight to be used as damping factor, in units of 1/10
+    :type weight: const u8
 
 .. This file was automatic generated / don't edit.
 

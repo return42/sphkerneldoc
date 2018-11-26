@@ -10,8 +10,9 @@ sync_timeline_create
 
     creates a sync object
 
-    :param const char \*name:
+    :param name:
         sync_timeline name
+    :type name: const char \*
 
 .. _`sync_timeline_create.description`:
 
@@ -30,11 +31,13 @@ sync_timeline_signal
 
     signal a status change on a sync_timeline
 
-    :param struct sync_timeline \*obj:
+    :param obj:
         sync_timeline to signal
+    :type obj: struct sync_timeline \*
 
-    :param unsigned int inc:
+    :param inc:
         num to increment on timeline->value
+    :type inc: unsigned int
 
 .. _`sync_timeline_signal.description`:
 
@@ -53,11 +56,13 @@ sync_pt_create
 
     creates a sync pt
 
-    :param struct sync_timeline \*obj:
+    :param obj:
         parent sync_timeline
+    :type obj: struct sync_timeline \*
 
-    :param unsigned int value:
+    :param value:
         value of the fence
+    :type value: unsigned int
 
 .. _`sync_pt_create.description`:
 

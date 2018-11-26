@@ -10,11 +10,13 @@ generic_permission
 
     check for access rights on a Posix-like filesystem
 
-    :param struct inode \*inode:
+    :param inode:
         inode to check access rights for
+    :type inode: struct inode \*
 
-    :param int mask:
+    :param mask:
         right to check for (%MAY_READ, \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ , ...)
+    :type mask: int
 
 .. _`generic_permission.description`:
 
@@ -39,14 +41,17 @@ sb_permission
 
     Check superblock-level permissions
 
-    :param struct super_block \*sb:
+    :param sb:
         Superblock of inode to check permission on
+    :type sb: struct super_block \*
 
-    :param struct inode \*inode:
+    :param inode:
         Inode to check permission on
+    :type inode: struct inode \*
 
-    :param int mask:
+    :param mask:
         Right to check for (%MAY_READ, \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ )
+    :type mask: int
 
 .. _`sb_permission.description`:
 
@@ -64,11 +69,13 @@ inode_permission
 
     Check for access rights to a given inode
 
-    :param struct inode \*inode:
+    :param inode:
         Inode to check permission on
+    :type inode: struct inode \*
 
-    :param int mask:
+    :param mask:
         Right to check for (%MAY_READ, \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ )
+    :type mask: int
 
 .. _`inode_permission.description`:
 
@@ -90,8 +97,9 @@ path_get
 
     get a reference to a path
 
-    :param const struct path \*path:
+    :param path:
         path to get the reference to
+    :type path: const struct path \*
 
 .. _`path_get.description`:
 
@@ -109,8 +117,9 @@ path_put
 
     put a reference to a path
 
-    :param const struct path \*path:
+    :param path:
         path to put the reference to
+    :type path: const struct path \*
 
 .. _`path_put.description`:
 
@@ -128,8 +137,9 @@ path_connected
 
     Verify that a path->dentry is below path->mnt.mnt_root
 
-    :param const struct path \*path:
+    :param path:
         nameidate to verify
+    :type path: const struct path \*
 
 .. _`path_connected.description`:
 
@@ -148,8 +158,9 @@ unlazy_walk
 
     try to switch to ref-walk mode.
 
-    :param struct nameidata \*nd:
+    :param nd:
         nameidata pathwalk data
+    :type nd: struct nameidata \*
 
 .. _`unlazy_walk.return`:
 
@@ -173,14 +184,17 @@ unlazy_child
 
     try to switch to ref-walk mode.
 
-    :param struct nameidata \*nd:
+    :param nd:
         nameidata pathwalk data
+    :type nd: struct nameidata \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         child of nd->path.dentry
+    :type dentry: struct dentry \*
 
-    :param unsigned seq:
+    :param seq:
         seq number to check dentry against
+    :type seq: unsigned
 
 .. _`unlazy_child.return`:
 
@@ -204,8 +218,9 @@ complete_walk
 
     successful completion of path walk
 
-    :param struct nameidata \*nd:
+    :param nd:
         pointer nameidata
+    :type nd: struct nameidata \*
 
 .. _`complete_walk.description`:
 
@@ -227,8 +242,9 @@ may_follow_link
 
     Check symlink following for unsafe situations
 
-    :param struct nameidata \*nd:
+    :param nd:
         nameidata pathwalk data
+    :type nd: struct nameidata \*
 
 .. _`may_follow_link.description`:
 
@@ -255,8 +271,9 @@ safe_hardlink_source
 
     Check for safe hardlink conditions
 
-    :param struct inode \*inode:
+    :param inode:
         the source inode to hardlink from
+    :type inode: struct inode \*
 
 .. _`safe_hardlink_source.return-false-if-at-least-one-of-the-following-conditions`:
 
@@ -279,8 +296,9 @@ may_linkat
 
     Check permissions for creating a hardlink
 
-    :param struct path \*link:
+    :param link:
         the source to hardlink from
+    :type link: struct path \*
 
 .. _`may_linkat.block-hardlink-when-all-of`:
 
@@ -294,6 +312,41 @@ Block hardlink when all of
 
 Returns 0 if successful, -ve on error.
 
+.. _`may_create_in_sticky`:
+
+may_create_in_sticky
+====================
+
+.. c:function:: int may_create_in_sticky(struct dentry * const dir, struct inode * const inode)
+
+    Check whether an O_CREAT open in a sticky directory should be allowed, or not, on files that already exist.
+
+    :param dir:
+        the sticky parent directory
+    :type dir: struct dentry \* const
+
+    :param inode:
+        the inode of the file to open
+    :type inode: struct inode \* const
+
+.. _`may_create_in_sticky.description`:
+
+Description
+-----------
+
+Block an O_CREAT open of a FIFO (or a regular file) when:
+  - sysctl_protected_fifos (or sysctl_protected_regular) is enabled
+  - the file already exists
+  - we are in a sticky directory
+  - we don't own the file
+  - the owner of the directory doesn't own the file
+  - the directory is world writable
+If the sysctl_protected_fifos (or sysctl_protected_regular) is set to 2
+the directory doesn't have to be world writable: being group writable will
+be enough.
+
+Returns 0 if the open is allowed, -ve on error.
+
 .. _`vfs_path_lookup`:
 
 vfs_path_lookup
@@ -303,20 +356,25 @@ vfs_path_lookup
 
     lookup a file path relative to a dentry-vfsmount pair
 
-    :param struct dentry \*dentry:
+    :param dentry:
         pointer to dentry of the base directory
+    :type dentry: struct dentry \*
 
-    :param struct vfsmount \*mnt:
+    :param mnt:
         pointer to vfs mount of the base directory
+    :type mnt: struct vfsmount \*
 
-    :param const char \*name:
+    :param name:
         pointer to file name
+    :type name: const char \*
 
-    :param unsigned int flags:
+    :param flags:
         lookup flags
+    :type flags: unsigned int
 
-    :param struct path \*path:
+    :param path:
         pointer to struct path to fill
+    :type path: struct path \*
 
 .. _`try_lookup_one_len`:
 
@@ -327,14 +385,17 @@ try_lookup_one_len
 
     filesystem helper to lookup single pathname component
 
-    :param const char \*name:
+    :param name:
         pathname component to lookup
+    :type name: const char \*
 
-    :param struct dentry \*base:
+    :param base:
         base directory to lookup from
+    :type base: struct dentry \*
 
-    :param int len:
+    :param len:
         maximum length \ ``len``\  should be interpreted to
+    :type len: int
 
 .. _`try_lookup_one_len.description`:
 
@@ -358,14 +419,17 @@ lookup_one_len
 
     filesystem helper to lookup single pathname component
 
-    :param const char \*name:
+    :param name:
         pathname component to lookup
+    :type name: const char \*
 
-    :param struct dentry \*base:
+    :param base:
         base directory to lookup from
+    :type base: struct dentry \*
 
-    :param int len:
+    :param len:
         maximum length \ ``len``\  should be interpreted to
+    :type len: int
 
 .. _`lookup_one_len.description`:
 
@@ -386,14 +450,17 @@ lookup_one_len_unlocked
 
     filesystem helper to lookup single pathname component
 
-    :param const char \*name:
+    :param name:
         pathname component to lookup
+    :type name: const char \*
 
-    :param struct dentry \*base:
+    :param base:
         base directory to lookup from
+    :type base: struct dentry \*
 
-    :param int len:
+    :param len:
         maximum length \ ``len``\  should be interpreted to
+    :type len: int
 
 .. _`lookup_one_len_unlocked.description`:
 
@@ -415,8 +482,9 @@ mountpoint_last
 
     look up last component for umount
 
-    :param struct nameidata \*nd:
+    :param nd:
         pathwalk nameidata - currently pointing at parent directory of "last"
+    :type nd: struct nameidata \*
 
 .. _`mountpoint_last.description`:
 
@@ -455,14 +523,17 @@ path_mountpoint
 
     look up a path to be umounted
 
-    :param struct nameidata \*nd:
+    :param nd:
         lookup context
+    :type nd: struct nameidata \*
 
-    :param unsigned flags:
+    :param flags:
         lookup flags
+    :type flags: unsigned
 
-    :param struct path \*path:
+    :param path:
         pointer to container for result
+    :type path: struct path \*
 
 .. _`path_mountpoint.description`:
 
@@ -481,17 +552,21 @@ user_path_mountpoint_at
 
     lookup a path from userland in order to umount it
 
-    :param int dfd:
+    :param dfd:
         directory file descriptor
+    :type dfd: int
 
-    :param const char __user \*name:
+    :param name:
         pathname from userland
+    :type name: const char __user \*
 
-    :param unsigned int flags:
+    :param flags:
         lookup flags
+    :type flags: unsigned int
 
-    :param struct path \*path:
+    :param path:
         pointer to container to hold result
+    :type path: struct path \*
 
 .. _`user_path_mountpoint_at.description`:
 
@@ -514,14 +589,17 @@ vfs_unlink
 
     unlink a filesystem object
 
-    :param struct inode \*dir:
+    :param dir:
         parent directory
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         victim
+    :type dentry: struct dentry \*
 
-    :param struct inode \*\*delegated_inode:
+    :param delegated_inode:
         returns victim inode, if the inode is delegated.
+    :type delegated_inode: struct inode \*\*
 
 .. _`vfs_unlink.description`:
 
@@ -549,17 +627,21 @@ vfs_link
 
     create a new link
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         object to be linked
+    :type old_dentry: struct dentry \*
 
-    :param struct inode \*dir:
+    :param dir:
         new parent
+    :type dir: struct inode \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         where to create the new link
+    :type new_dentry: struct dentry \*
 
-    :param struct inode \*\*delegated_inode:
+    :param delegated_inode:
         returns inode needing a delegation break
+    :type delegated_inode: struct inode \*\*
 
 .. _`vfs_link.description`:
 
@@ -587,23 +669,29 @@ vfs_rename
 
     rename a filesystem object
 
-    :param struct inode \*old_dir:
+    :param old_dir:
         parent of source
+    :type old_dir: struct inode \*
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         source
+    :type old_dentry: struct dentry \*
 
-    :param struct inode \*new_dir:
+    :param new_dir:
         parent of destination
+    :type new_dir: struct inode \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         destination
+    :type new_dentry: struct dentry \*
 
-    :param struct inode \*\*delegated_inode:
+    :param delegated_inode:
         returns an inode needing a delegation break
+    :type delegated_inode: struct inode \*\*
 
-    :param unsigned int flags:
+    :param flags:
         rename flags
+    :type flags: unsigned int
 
 .. _`vfs_rename.description`:
 
@@ -665,14 +753,17 @@ vfs_readlink
 
     copy symlink body into userspace buffer
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry on which to get symbolic link
+    :type dentry: struct dentry \*
 
-    :param char __user \*buffer:
+    :param buffer:
         user memory pointer
+    :type buffer: char __user \*
 
-    :param int buflen:
+    :param buflen:
         size of buffer
+    :type buflen: int
 
 .. _`vfs_readlink.description`:
 
@@ -692,11 +783,13 @@ vfs_get_link
 
     get symlink body
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry on which to get symbolic link
+    :type dentry: struct dentry \*
 
-    :param struct delayed_call \*done:
+    :param done:
         caller needs to free returned data with this
+    :type done: struct delayed_call \*
 
 .. _`vfs_get_link.description`:
 

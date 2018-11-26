@@ -10,8 +10,9 @@ tioca_paddr_to_gart
 
     Convert an SGI coretalk address to a CA GART entry
 
-    :param unsigned long paddr:
+    :param paddr:
         page address to convert
+    :type paddr: unsigned long
 
 .. _`tioca_paddr_to_gart.description`:
 
@@ -49,8 +50,9 @@ tioca_physpage_to_gart
 
     Map a host physical page for SGI CA based DMA
 
-    :param u64 page_addr:
+    :param page_addr:
         system page address to map
+    :type page_addr: u64
 
 .. _`tioca_tlbflush`:
 
@@ -61,8 +63,9 @@ tioca_tlbflush
 
     invalidate cached SGI CA GART TLB entries
 
-    :param struct tioca_kernel \*tioca_kernel:
+    :param tioca_kernel:
         CA context
+    :type tioca_kernel: struct tioca_kernel \*
 
 .. _`tioca_tlbflush.description`:
 

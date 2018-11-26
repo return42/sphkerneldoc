@@ -10,14 +10,17 @@ prepend_name
 
     prepend a pathname in front of current buffer pointer
 
-    :param char \*\*buffer:
+    :param buffer:
         buffer pointer
+    :type buffer: char \*\*
 
-    :param int \*buflen:
+    :param buflen:
         allocated length of the buffer
+    :type buflen: int \*
 
-    :param const struct qstr \*name:
+    :param name:
         name string and length qstr structure
+    :type name: const struct qstr \*
 
 .. _`prepend_name.description`:
 
@@ -44,17 +47,21 @@ prepend_path
 
     Prepend path string to a buffer
 
-    :param const struct path \*path:
+    :param path:
         the dentry/vfsmount to report
+    :type path: const struct path \*
 
-    :param const struct path \*root:
+    :param root:
         root vfsmnt/dentry
+    :type root: const struct path \*
 
-    :param char \*\*buffer:
+    :param buffer:
         pointer to the end of the buffer
+    :type buffer: char \*\*
 
-    :param int \*buflen:
+    :param buflen:
         pointer to buffer length
+    :type buflen: int \*
 
 .. _`prepend_path.description`:
 
@@ -73,24 +80,28 @@ rename operation is performed.
 
 .. _`__d_path`:
 
-\__d_path
-=========
+__d_path
+========
 
 .. c:function:: char *__d_path(const struct path *path, const struct path *root, char *buf, int buflen)
 
     return the path of a dentry
 
-    :param const struct path \*path:
+    :param path:
         the dentry/vfsmount to report
+    :type path: const struct path \*
 
-    :param const struct path \*root:
+    :param root:
         root vfsmnt/dentry
+    :type root: const struct path \*
 
-    :param char \*buf:
+    :param buf:
         buffer to return value in
+    :type buf: char \*
 
-    :param int buflen:
+    :param buflen:
         buffer length
+    :type buflen: int
 
 .. _`__d_path.description`:
 
@@ -115,14 +126,17 @@ d_path
 
     return the path of a dentry
 
-    :param const struct path \*path:
+    :param path:
         path to report
+    :type path: const struct path \*
 
-    :param char \*buf:
+    :param buf:
         buffer to return value in
+    :type buf: char \*
 
-    :param int buflen:
+    :param buflen:
         buffer length
+    :type buflen: int
 
 .. _`d_path.description`:
 

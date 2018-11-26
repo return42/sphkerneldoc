@@ -10,17 +10,21 @@ devm_sigmadsp_init_regmap
 
     Initialize SigmaDSP instance
 
-    :param struct device \*dev:
+    :param dev:
         The parent device
+    :type dev: struct device \*
 
-    :param struct regmap \*regmap:
+    :param regmap:
         Regmap instance to use
+    :type regmap: struct regmap \*
 
-    :param const struct sigmadsp_ops \*ops:
+    :param ops:
         The sigmadsp_ops to use for this instance
+    :type ops: const struct sigmadsp_ops \*
 
-    :param const char \*firmware_name:
+    :param firmware_name:
         Name of the firmware file to load
+    :type firmware_name: const char \*
 
 .. _`devm_sigmadsp_init_regmap.description`:
 

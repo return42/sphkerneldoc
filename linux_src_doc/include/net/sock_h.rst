@@ -63,7 +63,10 @@ Definition
             struct hlist_node skc_node;
             struct hlist_nulls_node skc_nulls_node;
         } ;
-        int skc_tx_queue_mapping;
+        unsigned short skc_tx_queue_mapping;
+    #ifdef CONFIG_XPS
+        unsigned short skc_rx_queue_mapping;
+    #endif
         union {
             int skc_incoming_cpu;
             u32 skc_rcv_wnd;
@@ -187,6 +190,9 @@ skc_nulls_node
 skc_tx_queue_mapping
     tx queue number for this connection
 
+skc_rx_queue_mapping
+    rx queue number for this connection
+
 {unnamed_union}
     anonymous
 
@@ -232,6 +238,9 @@ Definition
     #define sk_nulls_node __sk_common.skc_nulls_node
     #define sk_refcnt __sk_common.skc_refcnt
     #define sk_tx_queue_mapping __sk_common.skc_tx_queue_mapping
+    #ifdef CONFIG_XPS
+    #define sk_rx_queue_mapping __sk_common.skc_rx_queue_mapping
+    #endif
     #define sk_dontcopy_begin __sk_common.skc_dontcopy_begin
     #define sk_dontcopy_end __sk_common.skc_dontcopy_end
     #define sk_hash __sk_common.skc_hash
@@ -303,8 +312,8 @@ Definition
         struct timer_list sk_timer;
         __u32 sk_priority;
         __u32 sk_mark;
-        u32 sk_pacing_rate;
-        u32 sk_max_pacing_rate;
+        unsigned long sk_pacing_rate;
+        unsigned long sk_max_pacing_rate;
         struct page_frag sk_frag;
         netdev_features_t sk_route_caps;
         netdev_features_t sk_route_nocaps;
@@ -344,6 +353,8 @@ Definition
         u8 sk_shutdown;
         u32 sk_tskey;
         atomic_t sk_zckey;
+        u8 sk_clockid;
+        u8 sk_txtime_deadline_mode : 1,sk_txtime_report_errors : 1, sk_txtime_unused : 6;
         struct socket *sk_socket;
         void *sk_user_data;
     #ifdef CONFIG_SECURITY
@@ -584,6 +595,18 @@ sk_tskey
 sk_zckey
     counter to order MSG_ZEROCOPY notifications
 
+sk_clockid
+    clockid used by time-based scheduling (SO_TXTIME)
+
+sk_txtime_deadline_mode
+    set deadline mode for SO_TXTIME
+
+sk_txtime_report_errors
+    *undescribed*
+
+sk_txtime_unused
+    unused txtime flags
+
 sk_socket
     Identd and reporting IO signals
 
@@ -635,17 +658,21 @@ sk_for_each_entry_offset_rcu
 
     iterate over a list at a given struct offset
 
-    :param  tpos:
+    :param tpos:
         the type * to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct hlist_node <hlist_node>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  offset:
+    :param offset:
         offset of hlist_node within the struct.
+    :type offset: 
 
 .. _`unlock_sock_fast`:
 
@@ -656,11 +683,13 @@ unlock_sock_fast
 
     complement of lock_sock_fast
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param bool slow:
+    :param slow:
         slow mode
+    :type slow: bool
 
 .. _`unlock_sock_fast.description`:
 
@@ -679,8 +708,9 @@ sk_wmem_alloc_get
 
     returns write allocations
 
-    :param const struct sock \*sk:
+    :param sk:
         socket
+    :type sk: const struct sock \*
 
 .. _`sk_wmem_alloc_get.description`:
 
@@ -698,8 +728,9 @@ sk_rmem_alloc_get
 
     returns read allocations
 
-    :param const struct sock \*sk:
+    :param sk:
         socket
+    :type sk: const struct sock \*
 
 .. _`sk_rmem_alloc_get.description`:
 
@@ -717,8 +748,9 @@ sk_has_allocations
 
     check if allocations are outstanding
 
-    :param const struct sock \*sk:
+    :param sk:
         socket
+    :type sk: const struct sock \*
 
 .. _`sk_has_allocations.description`:
 
@@ -736,8 +768,9 @@ skwq_has_sleeper
 
     check if there are any waiting processes
 
-    :param struct socket_wq \*wq:
+    :param wq:
         struct socket_wq
+    :type wq: struct socket_wq \*
 
 .. _`skwq_has_sleeper.description`:
 
@@ -775,18 +808,21 @@ data on the socket.
 sock_poll_wait
 ==============
 
-.. c:function:: void sock_poll_wait(struct file *filp, wait_queue_head_t *wait_address, poll_table *p)
+.. c:function:: void sock_poll_wait(struct file *filp, struct socket *sock, poll_table *p)
 
     place memory barrier behind the poll_wait call.
 
-    :param struct file \*filp:
+    :param filp:
         file
+    :type filp: struct file \*
 
-    :param wait_queue_head_t \*wait_address:
-        socket wait queue
+    :param sock:
+        socket to wait on
+    :type sock: struct socket \*
 
-    :param poll_table \*p:
+    :param p:
         poll_table
+    :type p: poll_table \*
 
 .. _`sock_poll_wait.description`:
 
@@ -794,6 +830,12 @@ Description
 -----------
 
 See the comments in the wq_has_sleeper function.
+
+Do not derive sock from filp->private_data here. An SMC socket establishes
+an internal TCP socket that is used in the fallback case. All socket
+operations on the SMC socket are then forwarded to the TCP socket. In case of
+poll, the filp->private_data pointer references the SMC socket because the
+TCP socket has no file assigned.
 
 .. _`sk_page_frag`:
 
@@ -804,8 +846,9 @@ sk_page_frag
 
     return an appropriate page_frag
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`sk_page_frag.description`:
 
@@ -824,14 +867,17 @@ sock_tx_timestamp
 
     checks whether the outgoing packet is to be time stamped
 
-    :param const struct sock \*sk:
+    :param sk:
         socket sending this packet
+    :type sk: const struct sock \*
 
-    :param __u16 tsflags:
+    :param tsflags:
         timestamping flags to use
+    :type tsflags: __u16
 
-    :param __u8 \*tx_flags:
+    :param tx_flags:
         completed with instructions for time stamping
+    :type tx_flags: __u8 \*
 
 .. _`sock_tx_timestamp.note`:
 
@@ -849,11 +895,13 @@ sk_eat_skb
 
     Release a skb if it is no longer needed
 
-    :param struct sock \*sk:
+    :param sk:
         socket to eat this skb from
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to eat
+    :type skb: struct sk_buff \*
 
 .. _`sk_eat_skb.description`:
 

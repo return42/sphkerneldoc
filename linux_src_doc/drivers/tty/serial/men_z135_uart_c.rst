@@ -10,14 +10,17 @@ men_z135_reg_set
 
     Set value in register
 
-    :param struct men_z135_port \*uart:
+    :param uart:
         The UART port
+    :type uart: struct men_z135_port \*
 
-    :param u32 addr:
+    :param addr:
         Register address
+    :type addr: u32
 
-    :param u32 val:
+    :param val:
         value to set
+    :type val: u32
 
 .. _`men_z135_reg_clr`:
 
@@ -28,14 +31,17 @@ men_z135_reg_clr
 
     Unset value in register
 
-    :param struct men_z135_port \*uart:
+    :param uart:
         The UART port
+    :type uart: struct men_z135_port \*
 
-    :param u32 addr:
+    :param addr:
         Register address
+    :type addr: u32
 
-    :param u32 val:
+    :param val:
         value to clear
+    :type val: u32
 
 .. _`men_z135_handle_modem_status`:
 
@@ -46,8 +52,9 @@ men_z135_handle_modem_status
 
     Handle change of modem status
 
-    :param struct men_z135_port \*uart:
+    :param uart:
         *undescribed*
+    :type uart: struct men_z135_port \*
 
 .. _`men_z135_handle_modem_status.description`:
 
@@ -66,8 +73,9 @@ get_rx_fifo_content
 
     Get the number of bytes in RX FIFO
 
-    :param struct men_z135_port \*uart:
+    :param uart:
         The UART port
+    :type uart: struct men_z135_port \*
 
 .. _`get_rx_fifo_content.description`:
 
@@ -85,8 +93,9 @@ men_z135_handle_rx
 
     RX tasklet routine
 
-    :param struct men_z135_port \*uart:
+    :param uart:
         *undescribed*
+    :type uart: struct men_z135_port \*
 
 .. _`men_z135_handle_rx.description`:
 
@@ -104,8 +113,9 @@ men_z135_handle_tx
 
     TX tasklet routine
 
-    :param struct men_z135_port \*uart:
+    :param uart:
         *undescribed*
+    :type uart: struct men_z135_port \*
 
 .. _`men_z135_intr`:
 
@@ -116,11 +126,13 @@ men_z135_intr
 
     Handle legacy IRQs
 
-    :param int irq:
+    :param irq:
         The IRQ number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Pointer to UART port
+    :type data: void \*
 
 .. _`men_z135_intr.description`:
 
@@ -141,8 +153,9 @@ men_z135_request_irq
 
     Request IRQ for 16z135 core
 
-    :param struct men_z135_port \*uart:
+    :param uart:
         z135 private uart port structure
+    :type uart: struct men_z135_port \*
 
 .. _`men_z135_request_irq.description`:
 
@@ -161,8 +174,9 @@ men_z135_tx_empty
 
     Handle tx_empty call
 
-    :param struct uart_port \*port:
+    :param port:
         The UART port
+    :type port: struct uart_port \*
 
 .. _`men_z135_tx_empty.description`:
 
@@ -181,11 +195,13 @@ men_z135_set_mctrl
 
     Set modem control lines
 
-    :param struct uart_port \*port:
+    :param port:
         The UART port
+    :type port: struct uart_port \*
 
-    :param unsigned int mctrl:
+    :param mctrl:
         The modem control lines
+    :type mctrl: unsigned int
 
 .. _`men_z135_set_mctrl.description`:
 
@@ -204,8 +220,9 @@ men_z135_get_mctrl
 
     Get modem control lines
 
-    :param struct uart_port \*port:
+    :param port:
         The UART port
+    :type port: struct uart_port \*
 
 .. _`men_z135_get_mctrl.description`:
 
@@ -223,8 +240,9 @@ men_z135_stop_tx
 
     Stop transmitting characters
 
-    :param struct uart_port \*port:
+    :param port:
         The UART port
+    :type port: struct uart_port \*
 
 .. _`men_z135_stop_tx.description`:
 
@@ -244,8 +262,9 @@ men_z135_start_tx
 
     Start transmitting characters
 
-    :param struct uart_port \*port:
+    :param port:
         The UART port
+    :type port: struct uart_port \*
 
 .. _`men_z135_start_tx.description`:
 
@@ -264,8 +283,9 @@ men_z135_stop_rx
 
     Stop receiving characters
 
-    :param struct uart_port \*port:
+    :param port:
         The UART port
+    :type port: struct uart_port \*
 
 .. _`men_z135_stop_rx.description`:
 
@@ -283,8 +303,9 @@ men_z135_enable_ms
 
     Enable Modem Status
 
-    :param struct uart_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct uart_port \*
 
 .. _`men_z135_enable_ms.port`:
 
@@ -303,11 +324,13 @@ men_z135_probe
 
     Probe a z135 instance
 
-    :param struct mcb_device \*mdev:
+    :param mdev:
         The MCB device
+    :type mdev: struct mcb_device \*
 
-    :param const struct mcb_device_id \*id:
+    :param id:
         The MCB device ID
+    :type id: const struct mcb_device_id \*
 
 .. _`men_z135_probe.description`:
 
@@ -326,8 +349,9 @@ men_z135_remove
 
     Remove a z135 instance from the system
 
-    :param struct mcb_device \*mdev:
+    :param mdev:
         The MCB device
+    :type mdev: struct mcb_device \*
 
 .. _`men_z135_init`:
 
@@ -338,8 +362,9 @@ men_z135_init
 
     Driver Registration Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`men_z135_init.description`:
 
@@ -358,8 +383,9 @@ men_z135_exit
 
     Driver Exit Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`men_z135_exit.description`:
 

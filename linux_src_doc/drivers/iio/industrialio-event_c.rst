@@ -58,14 +58,17 @@ iio_push_event
 
     try to add event to the list for userspace reading
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure
+    :type indio_dev: struct iio_dev \*
 
-    :param u64 ev_code:
+    :param ev_code:
         What event
+    :type ev_code: u64
 
-    :param s64 timestamp:
+    :param timestamp:
         When the event occurred
+    :type timestamp: s64
 
 .. _`iio_push_event.note`:
 
@@ -89,11 +92,13 @@ iio_event_poll
 
     poll the event queue to find out if it has data
 
-    :param struct file \*filep:
+    :param filep:
         File structure pointer to identify the device
+    :type filep: struct file \*
 
-    :param struct poll_table_struct \*wait:
+    :param wait:
         Poll table pointer to add the wait queue on
+    :type wait: struct poll_table_struct \*
 
 .. _`iio_event_poll.return`:
 
@@ -112,8 +117,9 @@ iio_device_wakeup_eventset
 
     Wakes up the event waitqueue
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_device_wakeup_eventset.description`:
 

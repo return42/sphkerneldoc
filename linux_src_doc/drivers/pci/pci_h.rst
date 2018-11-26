@@ -18,6 +18,7 @@ Definition
 .. code-block:: c
 
     struct pci_platform_pm_ops {
+        bool (*bridge_d3)(struct pci_dev *dev);
         bool (*is_manageable)(struct pci_dev *dev);
         int (*set_state)(struct pci_dev *dev, pci_power_t state);
         pci_power_t (*get_state)(struct pci_dev *dev);
@@ -30,6 +31,9 @@ Definition
 
 Members
 -------
+
+bridge_d3
+    Does the bridge allow entering into D3
 
 is_manageable
     returns 'true' if given device is power manageable by the
@@ -71,11 +75,13 @@ pci_match_one_device
 
     Tell if a PCI device structure has a matching PCI device id structure
 
-    :param const struct pci_device_id \*id:
+    :param id:
         single PCI device id structure to match
+    :type id: const struct pci_device_id \*
 
-    :param const struct pci_dev \*dev:
+    :param dev:
         the PCI device structure to match against
+    :type dev: const struct pci_dev \*
 
 .. _`pci_match_one_device.description`:
 
@@ -83,6 +89,35 @@ Description
 -----------
 
 Returns the matching pci_device_id structure or \ ``NULL``\  if there is no match.
+
+.. _`pci_dev_set_io_state`:
+
+pci_dev_set_io_state
+====================
+
+.. c:function:: bool pci_dev_set_io_state(struct pci_dev *dev, pci_channel_state_t new)
+
+    Set the new error state if possible.
+
+    :param dev:
+        *undescribed*
+    :type dev: struct pci_dev \*
+
+    :param new:
+        *undescribed*
+    :type new: pci_channel_state_t
+
+.. _`pci_dev_set_io_state.description`:
+
+Description
+-----------
+
+\ ``dev``\  - pci device to set new error_state
+\ ``new``\  - the state we want dev to be in
+
+Must be called with device_lock held.
+
+Returns true if state has been changed to the requested state.
 
 .. This file was automatic generated / don't edit.
 

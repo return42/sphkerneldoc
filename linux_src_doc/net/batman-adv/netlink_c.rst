@@ -10,11 +10,13 @@ batadv_netlink_get_ifindex
 
     Extract an interface index from a message
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         Message header
+    :type nlh: const struct nlmsghdr \*
 
-    :param int attrtype:
+    :param attrtype:
         Attribute which holds an interface index
+    :type attrtype: int
 
 .. _`batadv_netlink_get_ifindex.return`:
 
@@ -32,11 +34,13 @@ batadv_netlink_mesh_info_put
 
     fill in generic information about mesh interface
 
-    :param struct sk_buff \*msg:
+    :param msg:
         netlink message to be sent back
+    :type msg: struct sk_buff \*
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         interface for which the data should be taken
+    :type soft_iface: struct net_device \*
 
 .. _`batadv_netlink_mesh_info_put.return`:
 
@@ -54,11 +58,13 @@ batadv_netlink_get_mesh_info
 
     handle incoming BATADV_CMD_GET_MESH_INFO netlink request
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received netlink message
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         receiver information
+    :type info: struct genl_info \*
 
 .. _`batadv_netlink_get_mesh_info.return`:
 
@@ -76,11 +82,13 @@ batadv_netlink_tp_meter_put
 
     Fill information of started tp_meter session
 
-    :param struct sk_buff \*msg:
+    :param msg:
         netlink message to be sent back
+    :type msg: struct sk_buff \*
 
-    :param u32 cookie:
+    :param cookie:
         tp meter session cookie
+    :type cookie: u32
 
 .. _`batadv_netlink_tp_meter_put.return`:
 
@@ -98,23 +106,29 @@ batadv_netlink_tpmeter_notify
 
     send tp_meter result via netlink to client
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*dst:
+    :param dst:
         destination of tp_meter session
+    :type dst: const u8 \*
 
-    :param u8 result:
+    :param result:
         reason for tp meter session stop
+    :type result: u8
 
-    :param u32 test_time:
+    :param test_time:
         total time ot the tp_meter session
+    :type test_time: u32
 
-    :param u64 total_bytes:
+    :param total_bytes:
         bytes acked to the receiver
+    :type total_bytes: u64
 
-    :param u32 cookie:
+    :param cookie:
         cookie of tp_meter session
+    :type cookie: u32
 
 .. _`batadv_netlink_tpmeter_notify.return`:
 
@@ -132,11 +146,13 @@ batadv_netlink_tp_meter_start
 
     Start a new tp_meter session
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received netlink message
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         receiver information
+    :type info: struct genl_info \*
 
 .. _`batadv_netlink_tp_meter_start.return`:
 
@@ -154,11 +170,13 @@ batadv_netlink_tp_meter_cancel
 
     Cancel a running tp_meter session
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received netlink message
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         receiver information
+    :type info: struct genl_info \*
 
 .. _`batadv_netlink_tp_meter_cancel.return`:
 
@@ -176,17 +194,21 @@ batadv_netlink_dump_hardif_entry
 
     Dump one hard interface into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         Hard interface to dump
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_netlink_dump_hardif_entry.return`:
 
@@ -204,11 +226,13 @@ batadv_netlink_dump_hardifs
 
     Dump all hard interface into a messages
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Parameters from query
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_netlink_dump_hardifs.return`:
 
@@ -226,8 +250,9 @@ batadv_netlink_register
 
     register batadv genl netlink family
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_netlink_unregister`:
 
@@ -238,8 +263,9 @@ batadv_netlink_unregister
 
     unregister batadv genl netlink family
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

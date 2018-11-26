@@ -10,8 +10,9 @@
 
     get write access to a mount without freeze protection
 
-    :param struct vfsmount \*m:
+    :param m:
         the mount on which to take a write
+    :type m: struct vfsmount \*
 
 .. _`__mnt_want_write.description`:
 
@@ -33,8 +34,9 @@ mnt_want_write
 
     get write access to a mount
 
-    :param struct vfsmount \*m:
+    :param m:
         the mount on which to take a write
+    :type m: struct vfsmount \*
 
 .. _`mnt_want_write.description`:
 
@@ -55,8 +57,9 @@ mnt_clone_write
 
     get write access to a mount
 
-    :param struct vfsmount \*mnt:
+    :param mnt:
         the mount on which to take a write
+    :type mnt: struct vfsmount \*
 
 .. _`mnt_clone_write.description`:
 
@@ -80,8 +83,9 @@ drop the reference.
 
     get write access to a file's mount
 
-    :param struct file \*file:
+    :param file:
         the file who's mount on which to take a write
+    :type file: struct file \*
 
 .. _`__mnt_want_write_file.description`:
 
@@ -90,31 +94,6 @@ Description
 
 This is like \__mnt_want_write, but it takes a file and can
 do some optimisations if the file is open for write already
-
-.. _`mnt_want_write_file_path`:
-
-mnt_want_write_file_path
-========================
-
-.. c:function:: int mnt_want_write_file_path(struct file *file)
-
-    get write access to a file's mount
-
-    :param struct file \*file:
-        the file who's mount on which to take a write
-
-.. _`mnt_want_write_file_path.description`:
-
-Description
------------
-
-This is like mnt_want_write, but it takes a file and can
-do some optimisations if the file is open for write already
-
-Called by the vfs for cases when we have an open file at hand, but will do an
-inode operation on it (important distinction for files opened on overlayfs,
-since the file operations will come from the real underlying file, while
-inode operations come from the overlay).
 
 .. _`mnt_want_write_file`:
 
@@ -125,8 +104,9 @@ mnt_want_write_file
 
     get write access to a file's mount
 
-    :param struct file \*file:
+    :param file:
         the file who's mount on which to take a write
+    :type file: struct file \*
 
 .. _`mnt_want_write_file.description`:
 
@@ -135,10 +115,6 @@ Description
 
 This is like mnt_want_write, but it takes a file and can
 do some optimisations if the file is open for write already
-
-Mostly called by filesystems from their ioctl operation before performing
-modification.  On overlayfs this needs to check if the file is on a read-only
-lower layer and deny access in that case.
 
 .. _`__mnt_drop_write`:
 
@@ -149,8 +125,9 @@ lower layer and deny access in that case.
 
     give up write access to a mount
 
-    :param struct vfsmount \*mnt:
+    :param mnt:
         the mount on which to give up write access
+    :type mnt: struct vfsmount \*
 
 .. _`__mnt_drop_write.description`:
 
@@ -170,8 +147,9 @@ mnt_drop_write
 
     give up write access to a mount
 
-    :param struct vfsmount \*mnt:
+    :param mnt:
         the mount on which to give up write access
+    :type mnt: struct vfsmount \*
 
 .. _`mnt_drop_write.description`:
 
@@ -191,8 +169,9 @@ may_umount_tree
 
     check if a mount tree is busy
 
-    :param struct vfsmount \*m:
+    :param m:
         *undescribed*
+    :type m: struct vfsmount \*
 
 .. _`may_umount_tree.description`:
 
@@ -212,8 +191,9 @@ may_umount
 
     check if a mount point is busy
 
-    :param struct vfsmount \*mnt:
+    :param mnt:
         root of mount
+    :type mnt: struct vfsmount \*
 
 .. _`may_umount.description`:
 
@@ -238,8 +218,9 @@ clone_private_mount
 
     create a private clone of a path
 
-    :param const struct path \*path:
+    :param path:
         *undescribed*
+    :type path: const struct path \*
 
 .. _`clone_private_mount.description`:
 
@@ -261,11 +242,13 @@ mnt_set_expiry
 
     Put a mount on an expiration list
 
-    :param struct vfsmount \*mnt:
+    :param mnt:
         The mount to list.
+    :type mnt: struct vfsmount \*
 
-    :param struct list_head \*expiry_list:
+    :param expiry_list:
         The list to add the mount to.
+    :type expiry_list: struct list_head \*
 
 .. _`create_mnt_ns`:
 
@@ -276,8 +259,9 @@ create_mnt_ns
 
     creates a private namespace and adds a root filesystem
 
-    :param struct vfsmount \*m:
+    :param m:
         *undescribed*
+    :type m: struct vfsmount \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,11 +8,13 @@ vga_set_legacy_decoding
 
 .. c:function:: void vga_set_legacy_decoding(struct pci_dev *pdev, unsigned int decodes)
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device of the VGA card
+    :type pdev: struct pci_dev \*
 
-    :param unsigned int decodes:
+    :param decodes:
         bit mask of what legacy regions the card decodes
+    :type decodes: unsigned int
 
 .. _`vga_set_legacy_decoding.description`:
 
@@ -33,11 +35,13 @@ vga_get_interruptible
 
 .. c:function:: int vga_get_interruptible(struct pci_dev *pdev, unsigned int rsrc)
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device of the VGA card or NULL for the system default
+    :type pdev: struct pci_dev \*
 
-    :param unsigned int rsrc:
+    :param rsrc:
         bit mask of resources to acquire and lock
+    :type rsrc: unsigned int
 
 .. _`vga_get_interruptible.description`:
 
@@ -57,11 +61,13 @@ vga_get_uninterruptible
 
     shortcut to \ :c:func:`vga_get`\ 
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device of the VGA card or NULL for the system default
+    :type pdev: struct pci_dev \*
 
-    :param unsigned int rsrc:
+    :param rsrc:
         bit mask of resources to acquire and lock
+    :type rsrc: unsigned int
 
 .. _`vga_get_uninterruptible.description`:
 

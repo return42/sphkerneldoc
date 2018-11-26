@@ -10,20 +10,25 @@ rv770_copy_dma
 
     copy pages using the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint64_t src_offset:
+    :param src_offset:
         src GPU address
+    :type src_offset: uint64_t
 
-    :param uint64_t dst_offset:
+    :param dst_offset:
         dst GPU address
+    :type dst_offset: uint64_t
 
-    :param unsigned num_gpu_pages:
+    :param num_gpu_pages:
         number of GPU pages to xfer
+    :type num_gpu_pages: unsigned
 
-    :param struct reservation_object \*resv:
+    :param resv:
         reservation object to sync to
+    :type resv: struct reservation_object \*
 
 .. _`rv770_copy_dma.description`:
 

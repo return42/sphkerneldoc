@@ -132,8 +132,9 @@ drm_panel_unprepare
 
     power off a panel
 
-    :param struct drm_panel \*panel:
+    :param panel:
         DRM panel
+    :type panel: struct drm_panel \*
 
 .. _`drm_panel_unprepare.description`:
 
@@ -161,8 +162,9 @@ drm_panel_disable
 
     disable a panel
 
-    :param struct drm_panel \*panel:
+    :param panel:
         DRM panel
+    :type panel: struct drm_panel \*
 
 .. _`drm_panel_disable.description`:
 
@@ -189,8 +191,9 @@ drm_panel_prepare
 
     power on a panel
 
-    :param struct drm_panel \*panel:
+    :param panel:
         DRM panel
+    :type panel: struct drm_panel \*
 
 .. _`drm_panel_prepare.description`:
 
@@ -217,8 +220,9 @@ drm_panel_enable
 
     enable a panel
 
-    :param struct drm_panel \*panel:
+    :param panel:
         DRM panel
+    :type panel: struct drm_panel \*
 
 .. _`drm_panel_enable.description`:
 
@@ -245,8 +249,9 @@ drm_panel_get_modes
 
     probe the available display modes of a panel
 
-    :param struct drm_panel \*panel:
+    :param panel:
         DRM panel
+    :type panel: struct drm_panel \*
 
 .. _`drm_panel_get_modes.description`:
 

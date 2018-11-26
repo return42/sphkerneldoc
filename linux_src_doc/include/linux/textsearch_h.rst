@@ -150,11 +150,13 @@ textsearch_next
 
     continue searching for a pattern
 
-    :param struct ts_config \*conf:
+    :param conf:
         search configuration
+    :type conf: struct ts_config \*
 
-    :param struct ts_state \*state:
+    :param state:
         search state
+    :type state: struct ts_state \*
 
 .. _`textsearch_next.description`:
 
@@ -177,11 +179,13 @@ textsearch_find
 
     start searching for a pattern
 
-    :param struct ts_config \*conf:
+    :param conf:
         search configuration
+    :type conf: struct ts_config \*
 
-    :param struct ts_state \*state:
+    :param state:
         search state
+    :type state: struct ts_state \*
 
 .. _`textsearch_find.description`:
 
@@ -200,8 +204,9 @@ textsearch_get_pattern
 
     return head of the pattern
 
-    :param struct ts_config \*conf:
+    :param conf:
         search configuration
+    :type conf: struct ts_config \*
 
 .. _`textsearch_get_pattern_len`:
 
@@ -212,8 +217,9 @@ textsearch_get_pattern_len
 
     return length of the pattern
 
-    :param struct ts_config \*conf:
+    :param conf:
         search configuration
+    :type conf: struct ts_config \*
 
 .. This file was automatic generated / don't edit.
 

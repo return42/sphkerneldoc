@@ -215,8 +215,9 @@ __sg_next
 
     return the next scatterlist entry in a list
 
-    :param struct scatterlist \*sg:
+    :param sg:
         The current sg entry
+    :type sg: struct scatterlist \*
 
 .. _`__sg_next.description`:
 
@@ -236,14 +237,17 @@ for_each_sgt_dma
 
     iterate over the DMA addresses of the given sg_table
 
-    :param  __dmap:
+    :param __dmap:
         DMA address (output)
+    :type __dmap: 
 
-    :param  __iter:
+    :param __iter:
         'struct sgt_iter' (iterator state, internal)
+    :type __iter: 
 
-    :param  __sgt:
+    :param __sgt:
         sg_table to iterate over (input)
+    :type __sgt: 
 
 .. _`for_each_sgt_page`:
 
@@ -254,14 +258,17 @@ for_each_sgt_page
 
     iterate over the pages of the given sg_table
 
-    :param  __pp:
+    :param __pp:
         page pointer (output)
+    :type __pp: 
 
-    :param  __iter:
+    :param __iter:
         'struct sgt_iter' (iterator state, internal)
+    :type __iter: 
 
-    :param  __sgt:
+    :param __sgt:
         sg_table to iterate over (input)
+    :type __sgt: 
 
 .. _`i915_gem_object_pin_map`:
 
@@ -272,11 +279,13 @@ i915_gem_object_pin_map
 
     return a contiguous mapping of the entire object
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         the object to map into kernel address space
+    :type obj: struct drm_i915_gem_object \*
 
-    :param enum i915_map_type type:
+    :param type:
         the type of mapping, used to select pgprot_t
+    :type type: enum i915_map_type
 
 .. _`i915_gem_object_pin_map.description`:
 
@@ -303,8 +312,9 @@ i915_gem_object_unpin_map
 
     releases an earlier mapping
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         the object to unmap
+    :type obj: struct drm_i915_gem_object \*
 
 .. _`i915_gem_object_unpin_map.description`:
 

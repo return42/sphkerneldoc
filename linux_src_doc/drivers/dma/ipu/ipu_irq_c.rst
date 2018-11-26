@@ -10,8 +10,9 @@ ipu_irq_status
 
     returns the current interrupt status of the specified IRQ.
 
-    :param unsigned int irq:
+    :param irq:
         interrupt line to get status for.
+    :type irq: unsigned int
 
 .. _`ipu_irq_map`:
 
@@ -22,8 +23,9 @@ ipu_irq_map
 
     map an IPU interrupt source to an IRQ number
 
-    :param unsigned int source:
+    :param source:
         interrupt source bit position (see below)
+    :type source: unsigned int
 
 .. _`ipu_irq_map.description`:
 
@@ -47,8 +49,9 @@ ipu_irq_unmap
 
     map an IPU interrupt source to an IRQ number
 
-    :param unsigned int source:
+    :param source:
         interrupt source bit position (see \ :c:func:`ipu_irq_map`\ )
+    :type source: unsigned int
 
 .. This file was automatic generated / don't edit.
 

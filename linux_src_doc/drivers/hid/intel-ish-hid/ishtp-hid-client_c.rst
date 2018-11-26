@@ -10,17 +10,21 @@ report_bad_packet
 
     Report bad packets
 
-    :param struct ishtp_cl \*hid_ishtp_cl:
+    :param hid_ishtp_cl:
         Client instance to get stats
+    :type hid_ishtp_cl: struct ishtp_cl \*
 
-    :param void \*recv_buf:
+    :param recv_buf:
         Raw received host interface message
+    :type recv_buf: void \*
 
-    :param size_t cur_pos:
+    :param cur_pos:
         Current position index in payload
+    :type cur_pos: size_t
 
-    :param size_t payload_len:
+    :param payload_len:
         Length of payload expected
+    :type payload_len: size_t
 
 .. _`report_bad_packet.description`:
 
@@ -38,14 +42,17 @@ process_recv
 
     Received and parse incoming packet
 
-    :param struct ishtp_cl \*hid_ishtp_cl:
+    :param hid_ishtp_cl:
         Client instance to get stats
+    :type hid_ishtp_cl: struct ishtp_cl \*
 
-    :param void \*recv_buf:
+    :param recv_buf:
         Raw received host interface message
+    :type recv_buf: void \*
 
-    :param size_t data_len:
+    :param data_len:
         length of the message
+    :type data_len: size_t
 
 .. _`process_recv.description`:
 
@@ -64,9 +71,10 @@ ish_cl_event_cb
 
     bus driver callback for incoming message/packet
 
-    :param struct ishtp_cl_device \*device:
+    :param device:
         Pointer to the the ishtp client device for which this message
         is targeted
+    :type device: struct ishtp_cl_device \*
 
 .. _`ish_cl_event_cb.description`:
 
@@ -85,17 +93,21 @@ hid_ishtp_set_feature
 
     send request to ISH FW to set a feature request
 
-    :param struct hid_device \*hid:
+    :param hid:
         hid device instance for this request
+    :type hid: struct hid_device \*
 
-    :param char \*buf:
+    :param buf:
         feature buffer
+    :type buf: char \*
 
-    :param unsigned int len:
+    :param len:
         Length of feature buffer
+    :type len: unsigned int
 
-    :param int report_id:
+    :param report_id:
         Report id for the feature set request
+    :type report_id: int
 
 .. _`hid_ishtp_set_feature.description`:
 
@@ -114,14 +126,17 @@ hid_ishtp_get_report
 
     request to get feature/input report
 
-    :param struct hid_device \*hid:
+    :param hid:
         hid device instance for this request
+    :type hid: struct hid_device \*
 
-    :param int report_id:
+    :param report_id:
         Report id for the get request
+    :type report_id: int
 
-    :param int report_type:
+    :param report_type:
         Report type for the this request
+    :type report_type: int
 
 .. _`hid_ishtp_get_report.description`:
 
@@ -140,8 +155,9 @@ ishtp_hid_link_ready_wait
 
     Wait for link ready
 
-    :param struct ishtp_cl_data \*client_data:
+    :param client_data:
         client data instance
+    :type client_data: struct ishtp_cl_data \*
 
 .. _`ishtp_hid_link_ready_wait.description`:
 
@@ -167,8 +183,9 @@ ishtp_enum_enum_devices
 
     Enumerate hid devices
 
-    :param struct ishtp_cl \*hid_ishtp_cl:
+    :param hid_ishtp_cl:
         client instance
+    :type hid_ishtp_cl: struct ishtp_cl \*
 
 .. _`ishtp_enum_enum_devices.description`:
 
@@ -193,11 +210,13 @@ ishtp_get_hid_descriptor
 
     Get hid descriptor
 
-    :param struct ishtp_cl \*hid_ishtp_cl:
+    :param hid_ishtp_cl:
         client instance
+    :type hid_ishtp_cl: struct ishtp_cl \*
 
-    :param int index:
+    :param index:
         Index into the hid_descr array
+    :type index: int
 
 .. _`ishtp_get_hid_descriptor.description`:
 
@@ -222,11 +241,13 @@ ishtp_get_report_descriptor
 
     Get report descriptor
 
-    :param struct ishtp_cl \*hid_ishtp_cl:
+    :param hid_ishtp_cl:
         client instance
+    :type hid_ishtp_cl: struct ishtp_cl \*
 
-    :param int index:
+    :param index:
         Index into the hid_descr array
+    :type index: int
 
 .. _`ishtp_get_report_descriptor.description`:
 
@@ -252,11 +273,13 @@ hid_ishtp_cl_init
 
     Init function for ISHTP client
 
-    :param struct ishtp_cl \*hid_ishtp_cl:
+    :param hid_ishtp_cl:
         ISHTP client instance
+    :type hid_ishtp_cl: struct ishtp_cl \*
 
-    :param int reset:
+    :param reset:
         true if called for init after reset
+    :type reset: int
 
 .. _`hid_ishtp_cl_init.description`:
 
@@ -291,8 +314,9 @@ hid_ishtp_cl_deinit
 
     Deinit function for ISHTP client
 
-    :param struct ishtp_cl \*hid_ishtp_cl:
+    :param hid_ishtp_cl:
         ISHTP client instance
+    :type hid_ishtp_cl: struct ishtp_cl \*
 
 .. _`hid_ishtp_cl_deinit.description`:
 
@@ -310,8 +334,9 @@ hid_ishtp_cl_probe
 
     ISHTP client driver probe
 
-    :param struct ishtp_cl_device \*cl_device:
+    :param cl_device:
         ISHTP client device instance
+    :type cl_device: struct ishtp_cl_device \*
 
 .. _`hid_ishtp_cl_probe.description`:
 
@@ -336,8 +361,9 @@ hid_ishtp_cl_remove
 
     ISHTP client driver remove
 
-    :param struct ishtp_cl_device \*cl_device:
+    :param cl_device:
         ISHTP client device instance
+    :type cl_device: struct ishtp_cl_device \*
 
 .. _`hid_ishtp_cl_remove.description`:
 
@@ -362,8 +388,9 @@ hid_ishtp_cl_reset
 
     ISHTP client driver reset
 
-    :param struct ishtp_cl_device \*cl_device:
+    :param cl_device:
         ISHTP client device instance
+    :type cl_device: struct ishtp_cl_device \*
 
 .. _`hid_ishtp_cl_reset.description`:
 
@@ -388,8 +415,9 @@ hid_ishtp_cl_suspend
 
     ISHTP client driver suspend
 
-    :param struct device \*device:
+    :param device:
         device instance
+    :type device: struct device \*
 
 .. _`hid_ishtp_cl_suspend.description`:
 
@@ -414,8 +442,9 @@ hid_ishtp_cl_resume
 
     ISHTP client driver resume
 
-    :param struct device \*device:
+    :param device:
         device instance
+    :type device: struct device \*
 
 .. _`hid_ishtp_cl_resume.description`:
 

@@ -8,14 +8,17 @@ efi_pstore_scan_sysfs_enter
 
 .. c:function:: void efi_pstore_scan_sysfs_enter(struct efivar_entry *pos, struct efivar_entry *next, struct list_head *head)
 
-    :param struct efivar_entry \*pos:
+    :param pos:
         scanning entry
+    :type pos: struct efivar_entry \*
 
-    :param struct efivar_entry \*next:
+    :param next:
         next entry
+    :type next: struct efivar_entry \*
 
-    :param struct list_head \*head:
+    :param head:
         list head
+    :type head: struct list_head \*
 
 .. _`__efi_pstore_scan_sysfs_exit`:
 
@@ -24,11 +27,13 @@ efi_pstore_scan_sysfs_enter
 
 .. c:function:: int __efi_pstore_scan_sysfs_exit(struct efivar_entry *entry, bool turn_off_scanning)
 
-    :param struct efivar_entry \*entry:
+    :param entry:
         deleting entry
+    :type entry: struct efivar_entry \*
 
-    :param bool turn_off_scanning:
+    :param turn_off_scanning:
         Check if a scanning flag should be turned off
+    :type turn_off_scanning: bool
 
 .. _`efi_pstore_scan_sysfs_exit`:
 
@@ -37,17 +42,21 @@ efi_pstore_scan_sysfs_exit
 
 .. c:function:: int efi_pstore_scan_sysfs_exit(struct efivar_entry *pos, struct efivar_entry *next, struct list_head *head, bool stop)
 
-    :param struct efivar_entry \*pos:
+    :param pos:
         scanning entry
+    :type pos: struct efivar_entry \*
 
-    :param struct efivar_entry \*next:
+    :param next:
         next entry
+    :type next: struct efivar_entry \*
 
-    :param struct list_head \*head:
+    :param head:
         list head
+    :type head: struct list_head \*
 
-    :param bool stop:
+    :param stop:
         a flag checking if scanning will stop
+    :type stop: bool
 
 .. _`efi_pstore_sysfs_entry_iter`:
 
@@ -56,8 +65,9 @@ efi_pstore_sysfs_entry_iter
 
 .. c:function:: int efi_pstore_sysfs_entry_iter(struct pstore_record *record)
 
-    :param struct pstore_record \*record:
+    :param record:
         pstore record to pass to callback
+    :type record: struct pstore_record \*
 
 .. _`efi_pstore_sysfs_entry_iter.description`:
 
@@ -74,8 +84,9 @@ efi_pstore_read
 
 .. c:function:: ssize_t efi_pstore_read(struct pstore_record *record)
 
-    :param struct pstore_record \*record:
+    :param record:
         *undescribed*
+    :type record: struct pstore_record \*
 
 .. _`efi_pstore_read.description`:
 

@@ -8,8 +8,9 @@ STACK_SP
 
 .. c:function::  STACK_SP( STACK)
 
-    :param  STACK:
+    :param STACK:
         *undescribed*
+    :type STACK: 
 
 .. _`stack_sp.description`:
 

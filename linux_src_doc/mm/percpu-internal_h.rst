@@ -10,8 +10,9 @@ pcpu_chunk_nr_blocks
 
     converts nr_pages to # of md_blocks
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
 .. _`pcpu_chunk_nr_blocks.description`:
 
@@ -30,8 +31,9 @@ pcpu_nr_pages_to_map_bits
 
     converts the pages to size of bitmap
 
-    :param int pages:
+    :param pages:
         number of physical pages
+    :type pages: int
 
 .. _`pcpu_nr_pages_to_map_bits.description`:
 
@@ -50,8 +52,9 @@ pcpu_chunk_map_bits
 
     helper to convert nr_pages to size of bitmap
 
-    :param struct pcpu_chunk \*chunk:
+    :param chunk:
         chunk of interest
+    :type chunk: struct pcpu_chunk \*
 
 .. _`pcpu_chunk_map_bits.description`:
 

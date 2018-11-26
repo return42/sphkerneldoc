@@ -10,14 +10,17 @@ ntfs_lookup
 
     find the inode represented by a dentry in a directory inode
 
-    :param struct inode \*dir_ino:
+    :param dir_ino:
         directory inode in which to look for the inode
+    :type dir_ino: struct inode \*
 
-    :param struct dentry \*dent:
+    :param dent:
         dentry representing the inode to look for
+    :type dent: struct dentry \*
 
-    :param unsigned int flags:
+    :param flags:
         lookup flags
+    :type flags: unsigned int
 
 .. _`ntfs_lookup.description`:
 
@@ -29,7 +32,7 @@ in the directory inode \ ``dir_ino``\  and if found attaches the inode to the
 dentry \ ``dent``\ .
 
 In more detail, the dentry \ ``dent``\  specifies which inode to look for by
-supplying the name of the inode in \ ``dent``\ ->d_name.name. \ :c:func:`ntfs_lookup`\ 
+supplying the name of the inode in \ ``dent->d_name.name``\ . \ :c:func:`ntfs_lookup`\ 
 converts the name to Unicode and walks the contents of the directory inode
 \ ``dir_ino``\  looking for the converted Unicode name. If the name is found in the
 directory, the corresponding inode is loaded by calling \ :c:func:`ntfs_iget`\  on its
@@ -105,8 +108,9 @@ ntfs_get_parent
 
     find the dentry of the parent of a given directory dentry
 
-    :param struct dentry \*child_dent:
+    :param child_dent:
         dentry of the directory whose parent directory to find
+    :type child_dent: struct dentry \*
 
 .. _`ntfs_get_parent.description`:
 

@@ -10,11 +10,13 @@ snd_hda_sequence_write
 
     sequence writes
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct hda_verb \*seq:
+    :param seq:
         VERB array to send
+    :type seq: const struct hda_verb \*
 
 .. _`snd_hda_sequence_write.description`:
 
@@ -33,14 +35,17 @@ snd_hda_get_conn_list
 
     get connection list
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to parse
+    :type nid: hda_nid_t
 
-    :param const hda_nid_t \*\*listp:
+    :param listp:
         the pointer to store NID list
+    :type listp: const hda_nid_t \*\*
 
 .. _`snd_hda_get_conn_list.description`:
 
@@ -65,17 +70,21 @@ snd_hda_get_connections
 
     copy connection list
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to parse
+    :type nid: hda_nid_t
 
-    :param hda_nid_t \*conn_list:
+    :param conn_list:
         connection list array; when NULL, checks only the size
+    :type conn_list: hda_nid_t \*
 
-    :param int max_conns:
+    :param max_conns:
         max. number of connections to store
+    :type max_conns: int
 
 .. _`snd_hda_get_connections.description`:
 
@@ -96,17 +105,21 @@ snd_hda_override_conn_list
 
     add/modify the connection-list to cache
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to parse
+    :type nid: hda_nid_t
 
-    :param int len:
+    :param len:
         number of connection list entries
+    :type len: int
 
-    :param const hda_nid_t \*list:
+    :param list:
         the list of connection entries
+    :type list: const hda_nid_t \*
 
 .. _`snd_hda_override_conn_list.description`:
 
@@ -127,17 +140,21 @@ snd_hda_get_conn_index
 
     get the connection index of the given NID
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t mux:
+    :param mux:
         NID containing the list
+    :type mux: hda_nid_t
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to select
+    :type nid: hda_nid_t
 
-    :param int recursive:
+    :param recursive:
         1 when searching NID recursively, otherwise 0
+    :type recursive: int
 
 .. _`snd_hda_get_conn_index.description`:
 
@@ -157,11 +174,13 @@ snd_hda_get_num_devices
 
     get DEVLIST_LEN parameter of the given widget
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID of the pin to parse
+    :type nid: hda_nid_t
 
 .. _`snd_hda_get_num_devices.description`:
 
@@ -180,17 +199,21 @@ snd_hda_get_devices
 
     copy device list without cache
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID of the pin to parse
+    :type nid: hda_nid_t
 
-    :param u8 \*dev_list:
+    :param dev_list:
         device list array
+    :type dev_list: u8 \*
 
-    :param int max_devices:
+    :param max_devices:
         max. number of devices to store
+    :type max_devices: int
 
 .. _`snd_hda_get_devices.description`:
 
@@ -209,11 +232,13 @@ snd_hda_get_dev_select
 
     get device entry select on the pin
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID of the pin to get device entry select
+    :type nid: hda_nid_t
 
 .. _`snd_hda_get_dev_select.description`:
 
@@ -233,14 +258,17 @@ snd_hda_set_dev_select
 
     set device entry select on the pin
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID of the pin to set device entry select
+    :type nid: hda_nid_t
 
-    :param int dev_id:
+    :param dev_id:
         device entry id to be set
+    :type dev_id: int
 
 .. _`snd_hda_set_dev_select.description`:
 
@@ -258,14 +286,17 @@ snd_hda_codec_set_pincfg
 
     Override a pin default configuration
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to set the pin config
+    :type nid: hda_nid_t
 
-    :param unsigned int cfg:
+    :param cfg:
         the pin default config value
+    :type cfg: unsigned int
 
 .. _`snd_hda_codec_set_pincfg.description`:
 
@@ -285,11 +316,13 @@ snd_hda_codec_get_pincfg
 
     Obtain a pin-default configuration
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to get the pin config
+    :type nid: hda_nid_t
 
 .. _`snd_hda_codec_get_pincfg.description`:
 
@@ -309,14 +342,17 @@ snd_hda_codec_set_pin_target
 
     remember the current pinctl target value
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         pin NID
+    :type nid: hda_nid_t
 
-    :param unsigned int val:
+    :param val:
         assigned pinctl value
+    :type val: unsigned int
 
 .. _`snd_hda_codec_set_pin_target.description`:
 
@@ -336,11 +372,13 @@ snd_hda_codec_get_pin_target
 
     return the current pinctl target value
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         pin NID
+    :type nid: hda_nid_t
 
 .. _`snd_hda_shutup_pins`:
 
@@ -351,8 +389,9 @@ snd_hda_shutup_pins
 
     Shut up all pins
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_shutup_pins.description`:
 
@@ -371,17 +410,21 @@ snd_hda_codec_new
 
     create a HDA codec
 
-    :param struct hda_bus \*bus:
+    :param bus:
         the bus to assign
+    :type bus: struct hda_bus \*
 
-    :param struct snd_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct snd_card \*
 
-    :param unsigned int codec_addr:
+    :param codec_addr:
         the codec address
+    :type codec_addr: unsigned int
 
-    :param struct hda_codec \*\*codecp:
+    :param codecp:
         the pointer to store the generated codec
+    :type codecp: struct hda_codec \*\*
 
 .. _`snd_hda_codec_new.description`:
 
@@ -399,8 +442,9 @@ snd_hda_codec_update_widgets
 
     Refresh widget caps and pin defaults
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_codec_update_widgets.description`:
 
@@ -419,20 +463,25 @@ snd_hda_codec_setup_stream
 
     set up the codec for streaming
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the CODEC to set up
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         the NID to set up
+    :type nid: hda_nid_t
 
-    :param u32 stream_tag:
+    :param stream_tag:
         stream tag to pass, it's between 0x1 and 0xf.
+    :type stream_tag: u32
 
-    :param int channel_id:
+    :param channel_id:
         channel id to pass, zero based.
+    :type channel_id: int
 
-    :param int format:
+    :param format:
         stream format.
+    :type format: int
 
 .. _`__snd_hda_codec_cleanup_stream`:
 
@@ -443,14 +492,17 @@ snd_hda_codec_setup_stream
 
     clean up the codec for closing
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the CODEC to clean up
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         the NID to clean up
+    :type nid: hda_nid_t
 
-    :param int do_now:
+    :param do_now:
         really clean up the stream instead of clearing the active flag
+    :type do_now: int
 
 .. _`query_amp_caps`:
 
@@ -461,14 +513,17 @@ query_amp_caps
 
     query AMP capabilities
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HD-auio codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         the NID to query
+    :type nid: hda_nid_t
 
-    :param int direction:
+    :param direction:
         either #HDA_INPUT or #HDA_OUTPUT
+    :type direction: int
 
 .. _`query_amp_caps.description`:
 
@@ -490,17 +545,21 @@ snd_hda_check_amp_caps
 
     query AMP capabilities
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HD-audio codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         the NID to query
+    :type nid: hda_nid_t
 
-    :param int dir:
+    :param dir:
         either #HDA_INPUT or #HDA_OUTPUT
+    :type dir: int
 
-    :param unsigned int bits:
+    :param bits:
         bit mask to check the result
+    :type bits: unsigned int
 
 .. _`snd_hda_check_amp_caps.description`:
 
@@ -518,17 +577,21 @@ snd_hda_override_amp_caps
 
     Override the AMP capabilities
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the CODEC to clean up
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         the NID to clean up
+    :type nid: hda_nid_t
 
-    :param int dir:
+    :param dir:
         either #HDA_INPUT or #HDA_OUTPUT
+    :type dir: int
 
-    :param unsigned int caps:
+    :param caps:
         the capability bits to set
+    :type caps: unsigned int
 
 .. _`snd_hda_override_amp_caps.description`:
 
@@ -550,26 +613,33 @@ snd_hda_codec_amp_update
 
     update the AMP mono value
 
-    :param struct hda_codec \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to read the AMP value
+    :type nid: hda_nid_t
 
-    :param int ch:
+    :param ch:
         channel to update (0 or 1)
+    :type ch: int
 
-    :param int dir:
+    :param dir:
         #HDA_INPUT or #HDA_OUTPUT
+    :type dir: int
 
-    :param int idx:
+    :param idx:
         the index value (only for input direction)
+    :type idx: int
 
-    :param int mask:
+    :param mask:
         bit mask to set
+    :type mask: int
 
-    :param int val:
+    :param val:
         the bits value to set
+    :type val: int
 
 .. _`snd_hda_codec_amp_update.description`:
 
@@ -587,23 +657,29 @@ snd_hda_codec_amp_stereo
 
     update the AMP stereo values
 
-    :param struct hda_codec \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to read the AMP value
+    :type nid: hda_nid_t
 
-    :param int direction:
+    :param direction:
         #HDA_INPUT or #HDA_OUTPUT
+    :type direction: int
 
-    :param int idx:
+    :param idx:
         the index value (only for input direction)
+    :type idx: int
 
-    :param int mask:
+    :param mask:
         bit mask to set
+    :type mask: int
 
-    :param int val:
+    :param val:
         the bits value to set
+    :type val: int
 
 .. _`snd_hda_codec_amp_stereo.description`:
 
@@ -622,26 +698,33 @@ snd_hda_codec_amp_init
 
     initialize the AMP value
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to read the AMP value
+    :type nid: hda_nid_t
 
-    :param int ch:
+    :param ch:
         channel (left=0 or right=1)
+    :type ch: int
 
-    :param int dir:
+    :param dir:
         #HDA_INPUT or #HDA_OUTPUT
+    :type dir: int
 
-    :param int idx:
+    :param idx:
         the index value (only for input direction)
+    :type idx: int
 
-    :param int mask:
+    :param mask:
         bit mask to set
+    :type mask: int
 
-    :param int val:
+    :param val:
         the bits value to set
+    :type val: int
 
 .. _`snd_hda_codec_amp_init.description`:
 
@@ -661,23 +744,29 @@ snd_hda_codec_amp_init_stereo
 
     initialize the stereo AMP value
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to read the AMP value
+    :type nid: hda_nid_t
 
-    :param int dir:
+    :param dir:
         #HDA_INPUT or #HDA_OUTPUT
+    :type dir: int
 
-    :param int idx:
+    :param idx:
         the index value (only for input direction)
+    :type idx: int
 
-    :param int mask:
+    :param mask:
         bit mask to set
+    :type mask: int
 
-    :param int val:
+    :param val:
         the bits value to set
+    :type val: int
 
 .. _`snd_hda_codec_amp_init_stereo.description`:
 
@@ -695,11 +784,13 @@ snd_hda_mixer_amp_volume_info
 
     Info callback for a standard AMP mixer
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         referred ctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         pointer to get/store the data
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_hda_mixer_amp_volume_info.description`:
 
@@ -718,11 +809,13 @@ snd_hda_mixer_amp_volume_get
 
     Get callback for a standard AMP mixer volume
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         ctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         pointer to get/store the data
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_hda_mixer_amp_volume_get.description`:
 
@@ -741,11 +834,13 @@ snd_hda_mixer_amp_volume_put
 
     Put callback for a standard AMP mixer volume
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         ctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         pointer to get/store the data
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_hda_mixer_amp_volume_put.description`:
 
@@ -764,17 +859,21 @@ snd_hda_mixer_amp_tlv
 
     TLV callback for a standard AMP mixer volume
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         ctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param int op_flag:
+    :param op_flag:
         operation flag
+    :type op_flag: int
 
-    :param unsigned int size:
+    :param size:
         byte size of input TLV
+    :type size: unsigned int
 
-    :param unsigned int __user \*_tlv:
+    :param _tlv:
         TLV data
+    :type _tlv: unsigned int __user \*
 
 .. _`snd_hda_mixer_amp_tlv.description`:
 
@@ -793,17 +892,21 @@ snd_hda_set_vmaster_tlv
 
     Set TLV for a virtual master control
 
-    :param struct hda_codec \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID of a reference widget
+    :type nid: hda_nid_t
 
-    :param int dir:
+    :param dir:
         #HDA_INPUT or #HDA_OUTPUT
+    :type dir: int
 
-    :param unsigned int \*tlv:
+    :param tlv:
         TLV data to be stored, at least 4 elements
+    :type tlv: unsigned int \*
 
 .. _`snd_hda_set_vmaster_tlv.description`:
 
@@ -823,11 +926,13 @@ snd_hda_find_mixer_ctl
 
     Find a mixer control element with the given name
 
-    :param struct hda_codec \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hda_codec \*
 
-    :param const char \*name:
+    :param name:
         ctl id name string
+    :type name: const char \*
 
 .. _`snd_hda_find_mixer_ctl.description`:
 
@@ -845,14 +950,17 @@ snd_hda_ctl_add
 
     Add a control element and assign to the codec
 
-    :param struct hda_codec \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         corresponding NID (optional)
+    :type nid: hda_nid_t
 
-    :param struct snd_kcontrol \*kctl:
+    :param kctl:
         the control element to assign
+    :type kctl: struct snd_kcontrol \*
 
 .. _`snd_hda_ctl_add.description`:
 
@@ -881,17 +989,21 @@ snd_hda_add_nid
 
     Assign a NID to a control element
 
-    :param struct hda_codec \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hda_codec \*
 
-    :param struct snd_kcontrol \*kctl:
+    :param kctl:
         the control element to assign
+    :type kctl: struct snd_kcontrol \*
 
-    :param unsigned int index:
+    :param index:
         index to kctl
+    :type index: unsigned int
 
-    :param hda_nid_t nid:
+    :param nid:
         corresponding NID (optional)
+    :type nid: hda_nid_t
 
 .. _`snd_hda_add_nid.description`:
 
@@ -911,8 +1023,9 @@ snd_hda_ctls_clear
 
     Clear all controls assigned to the given codec
 
-    :param struct hda_codec \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_lock_devices`:
 
@@ -923,8 +1036,9 @@ snd_hda_lock_devices
 
     pseudo device locking
 
-    :param struct hda_bus \*bus:
+    :param bus:
         the BUS
+    :type bus: struct hda_bus \*
 
 .. _`snd_hda_lock_devices.description`:
 
@@ -942,8 +1056,9 @@ snd_hda_unlock_devices
 
     pseudo device unlocking
 
-    :param struct hda_bus \*bus:
+    :param bus:
         the BUS
+    :type bus: struct hda_bus \*
 
 .. _`snd_hda_codec_reset`:
 
@@ -954,8 +1069,9 @@ snd_hda_codec_reset
 
     Clear all objects assigned to the codec
 
-    :param struct hda_codec \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_codec_reset.description`:
 
@@ -977,26 +1093,33 @@ returns zero.
 
     create a virtual master control and add slaves
 
-    :param struct hda_codec \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hda_codec \*
 
-    :param char \*name:
+    :param name:
         vmaster control name
+    :type name: char \*
 
-    :param unsigned int \*tlv:
+    :param tlv:
         TLV data (optional)
+    :type tlv: unsigned int \*
 
-    :param const char \* const \*slaves:
+    :param slaves:
         slave control names (optional)
+    :type slaves: const char \* const \*
 
-    :param const char \*suffix:
+    :param suffix:
         suffix string to each slave name (optional)
+    :type suffix: const char \*
 
-    :param bool init_slave_vol:
+    :param init_slave_vol:
         initialize slaves to unmute/0dB
+    :type init_slave_vol: bool
 
-    :param struct snd_kcontrol \*\*ctl_ret:
+    :param ctl_ret:
         store the vmaster kcontrol in return
+    :type ctl_ret: struct snd_kcontrol \*\*
 
 .. _`__snd_hda_add_vmaster.description`:
 
@@ -1021,14 +1144,17 @@ snd_hda_add_vmaster_hook
 
     Add a vmaster hook for mute-LED
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_vmaster_mute_hook \*hook:
+    :param hook:
         the vmaster hook object
+    :type hook: struct hda_vmaster_mute_hook \*
 
-    :param bool expose_enum_ctl:
+    :param expose_enum_ctl:
         flag to create an enum ctl
+    :type expose_enum_ctl: bool
 
 .. _`snd_hda_add_vmaster_hook.description`:
 
@@ -1048,8 +1174,9 @@ snd_hda_sync_vmaster_hook
 
     Sync vmaster hook
 
-    :param struct hda_vmaster_mute_hook \*hook:
+    :param hook:
         the vmaster hook
+    :type hook: struct hda_vmaster_mute_hook \*
 
 .. _`snd_hda_sync_vmaster_hook.description`:
 
@@ -1068,11 +1195,13 @@ snd_hda_mixer_amp_switch_info
 
     Info callback for a standard AMP mixer switch
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         referred ctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         pointer to get/store the data
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_hda_mixer_amp_switch_info.description`:
 
@@ -1091,11 +1220,13 @@ snd_hda_mixer_amp_switch_get
 
     Get callback for a standard AMP mixer switch
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         ctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         pointer to get/store the data
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_hda_mixer_amp_switch_get.description`:
 
@@ -1114,11 +1245,13 @@ snd_hda_mixer_amp_switch_put
 
     Put callback for a standard AMP mixer switch
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         ctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         pointer to get/store the data
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_hda_mixer_amp_switch_put.description`:
 
@@ -1137,19 +1270,23 @@ snd_hda_create_dig_out_ctls
 
     create Output SPDIF-related controls
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t associated_nid:
+    :param associated_nid:
         NID that new ctls associated with
+    :type associated_nid: hda_nid_t
 
-    :param hda_nid_t cvt_nid:
+    :param cvt_nid:
         converter NID
+    :type cvt_nid: hda_nid_t
 
-    :param int type:
+    :param type:
         HDA_PCM_TYPE\_\*
         Creates controls related with the digital output.
         Called from each patch supporting the digital out.
+    :type type: int
 
 .. _`snd_hda_create_dig_out_ctls.description`:
 
@@ -1167,11 +1304,13 @@ snd_hda_spdif_out_of_nid
 
     get the hda_spdif_out entry from the given NID
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         widget NID
+    :type nid: hda_nid_t
 
 .. _`snd_hda_spdif_out_of_nid.description`:
 
@@ -1189,11 +1328,13 @@ snd_hda_spdif_ctls_unassign
 
     Unassign the given SPDIF ctl
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param int idx:
+    :param idx:
         the SPDIF ctl index
+    :type idx: int
 
 .. _`snd_hda_spdif_ctls_unassign.description`:
 
@@ -1211,14 +1352,17 @@ snd_hda_spdif_ctls_assign
 
     Assign the SPDIF controls to the given NID
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param int idx:
+    :param idx:
         the SPDIF ctl idx
+    :type idx: int
 
-    :param hda_nid_t nid:
+    :param nid:
         widget NID
+    :type nid: hda_nid_t
 
 .. _`snd_hda_spdif_ctls_assign.description`:
 
@@ -1236,11 +1380,13 @@ snd_hda_create_spdif_share_sw
 
     create Default PCM switch
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_multi_out \*mout:
+    :param mout:
         multi-out instance
+    :type mout: struct hda_multi_out \*
 
 .. _`snd_hda_create_spdif_in_ctls`:
 
@@ -1251,11 +1397,13 @@ snd_hda_create_spdif_in_ctls
 
     create Input SPDIF-related controls
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         audio in widget NID
+    :type nid: hda_nid_t
 
 .. _`snd_hda_create_spdif_in_ctls.description`:
 
@@ -1276,14 +1424,17 @@ snd_hda_codec_set_power_to_all
 
     Set the power state to all widgets
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t fg:
+    :param fg:
         function group (not used now)
+    :type fg: hda_nid_t
 
-    :param unsigned int power_state:
+    :param power_state:
         the power state to set (AC_PWRST\_\*)
+    :type power_state: unsigned int
 
 .. _`snd_hda_codec_set_power_to_all.description`:
 
@@ -1303,14 +1454,17 @@ snd_hda_codec_eapd_power_filter
 
     A power filter callback for EAPD
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         widget NID
+    :type nid: hda_nid_t
 
-    :param unsigned int power_state:
+    :param power_state:
         power state to evalue
+    :type power_state: unsigned int
 
 .. _`snd_hda_codec_eapd_power_filter.description`:
 
@@ -1329,20 +1483,25 @@ snd_hda_codec_prepare
 
     Prepare a stream
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_pcm_stream \*hinfo:
+    :param hinfo:
         PCM information
+    :type hinfo: struct hda_pcm_stream \*
 
-    :param unsigned int stream:
+    :param stream:
         stream tag to assign
+    :type stream: unsigned int
 
-    :param unsigned int format:
+    :param format:
         format id to assign
+    :type format: unsigned int
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream to assign
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_hda_codec_prepare.description`:
 
@@ -1361,14 +1520,17 @@ snd_hda_codec_cleanup
 
     Prepare a stream
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_pcm_stream \*hinfo:
+    :param hinfo:
         PCM information
+    :type hinfo: struct hda_pcm_stream \*
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_hda_codec_cleanup.description`:
 
@@ -1386,11 +1548,13 @@ snd_hda_add_new_ctls
 
     create controls from the array
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct snd_kcontrol_new \*knew:
+    :param knew:
         the array of struct snd_kcontrol_new
+    :type knew: const struct snd_kcontrol_new \*
 
 .. _`snd_hda_add_new_ctls.description`:
 
@@ -1411,11 +1575,13 @@ snd_hda_set_power_save
 
     reprogram autosuspend for the given delay
 
-    :param struct hda_bus \*bus:
+    :param bus:
         HD-audio bus
+    :type bus: struct hda_bus \*
 
-    :param int delay:
+    :param delay:
         autosuspend delay in msec, 0 = off
+    :type delay: int
 
 .. _`snd_hda_set_power_save.description`:
 
@@ -1433,14 +1599,17 @@ snd_hda_check_amp_list_power
 
     Check the amp list and update the power
 
-    :param struct hda_codec \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_loopback_check \*check:
+    :param check:
         the object containing an AMP list and the status
+    :type check: struct hda_loopback_check \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to check / update
+    :type nid: hda_nid_t
 
 .. _`snd_hda_check_amp_list_power.description`:
 
@@ -1463,11 +1632,13 @@ snd_hda_input_mux_info
 
     Info callback helper for the input-mux enum
 
-    :param const struct hda_input_mux \*imux:
+    :param imux:
         imux helper object
+    :type imux: const struct hda_input_mux \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         pointer to get/store the data
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_hda_input_mux_put`:
 
@@ -1478,20 +1649,25 @@ snd_hda_input_mux_put
 
     Put callback helper for the input-mux enum
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct hda_input_mux \*imux:
+    :param imux:
         imux helper object
+    :type imux: const struct hda_input_mux \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         pointer to get/store the data
+    :type ucontrol: struct snd_ctl_elem_value \*
 
-    :param hda_nid_t nid:
+    :param nid:
         input mux NID
+    :type nid: hda_nid_t
 
-    :param unsigned int \*cur_val:
+    :param cur_val:
         pointer to get/store the current imux value
+    :type cur_val: unsigned int \*
 
 .. _`snd_hda_enum_helper_info`:
 
@@ -1502,17 +1678,21 @@ snd_hda_enum_helper_info
 
     Helper for simple enum ctls
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         ctl element
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         pointer to get/store the data
+    :type uinfo: struct snd_ctl_elem_info \*
 
-    :param int num_items:
+    :param num_items:
         number of enum items
+    :type num_items: int
 
-    :param const char \* const \*texts:
+    :param texts:
         enum item string array
+    :type texts: const char \* const \*
 
 .. _`snd_hda_enum_helper_info.description`:
 
@@ -1531,11 +1711,13 @@ snd_hda_multi_out_dig_open
 
     open the digital out in the exclusive mode
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_multi_out \*mout:
+    :param mout:
         hda_multi_out object
+    :type mout: struct hda_multi_out \*
 
 .. _`snd_hda_multi_out_dig_prepare`:
 
@@ -1546,20 +1728,25 @@ snd_hda_multi_out_dig_prepare
 
     prepare the digital out stream
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_multi_out \*mout:
+    :param mout:
         hda_multi_out object
+    :type mout: struct hda_multi_out \*
 
-    :param unsigned int stream_tag:
+    :param stream_tag:
         stream tag to assign
+    :type stream_tag: unsigned int
 
-    :param unsigned int format:
+    :param format:
         format id to assign
+    :type format: unsigned int
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream to assign
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_hda_multi_out_dig_cleanup`:
 
@@ -1570,11 +1757,13 @@ snd_hda_multi_out_dig_cleanup
 
     clean-up the digital out stream
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_multi_out \*mout:
+    :param mout:
         hda_multi_out object
+    :type mout: struct hda_multi_out \*
 
 .. _`snd_hda_multi_out_dig_close`:
 
@@ -1585,11 +1774,13 @@ snd_hda_multi_out_dig_close
 
     release the digital out stream
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_multi_out \*mout:
+    :param mout:
         hda_multi_out object
+    :type mout: struct hda_multi_out \*
 
 .. _`snd_hda_multi_out_analog_open`:
 
@@ -1600,17 +1791,21 @@ snd_hda_multi_out_analog_open
 
     open analog outputs
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_multi_out \*mout:
+    :param mout:
         hda_multi_out object
+    :type mout: struct hda_multi_out \*
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream to assign
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct hda_pcm_stream \*hinfo:
+    :param hinfo:
         PCM information to assign
+    :type hinfo: struct hda_pcm_stream \*
 
 .. _`snd_hda_multi_out_analog_open.description`:
 
@@ -1630,20 +1825,25 @@ snd_hda_multi_out_analog_prepare
 
     Preapre the analog outputs.
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_multi_out \*mout:
+    :param mout:
         hda_multi_out object
+    :type mout: struct hda_multi_out \*
 
-    :param unsigned int stream_tag:
+    :param stream_tag:
         stream tag to assign
+    :type stream_tag: unsigned int
 
-    :param unsigned int format:
+    :param format:
         format id to assign
+    :type format: unsigned int
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream to assign
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_hda_multi_out_analog_prepare.description`:
 
@@ -1662,11 +1862,13 @@ snd_hda_multi_out_analog_cleanup
 
     clean up the setting for analog out
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_multi_out \*mout:
+    :param mout:
         hda_multi_out object
+    :type mout: struct hda_multi_out \*
 
 .. _`snd_hda_get_default_vref`:
 
@@ -1677,11 +1879,13 @@ snd_hda_get_default_vref
 
     Get the default (mic) VREF pin bits
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t pin:
+    :param pin:
         referred pin NID
+    :type pin: hda_nid_t
 
 .. _`snd_hda_get_default_vref.description`:
 
@@ -1706,14 +1910,17 @@ snd_hda_correct_pin_ctl
 
     correct the pin ctl value for matching with the pin cap
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t pin:
+    :param pin:
         referred pin NID
+    :type pin: hda_nid_t
 
-    :param unsigned int val:
+    :param val:
         pin ctl value to audit
+    :type val: unsigned int
 
 .. _`_snd_hda_set_pin_ctl`:
 
@@ -1724,17 +1931,21 @@ snd_hda_correct_pin_ctl
 
     Helper to set pin ctl value
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t pin:
+    :param pin:
         referred pin NID
+    :type pin: hda_nid_t
 
-    :param unsigned int val:
+    :param val:
         pin control value to set
+    :type val: unsigned int
 
-    :param bool cached:
+    :param cached:
         access over codec pinctl cache or direct write
+    :type cached: bool
 
 .. _`_snd_hda_set_pin_ctl.description`:
 
@@ -1744,7 +1955,7 @@ Description
 This function is a helper to set a pin ctl value more safely.
 It corrects the pin ctl value via \ :c:func:`snd_hda_correct_pin_ctl`\ , stores the
 value in pin target array via \ :c:func:`snd_hda_codec_set_pin_target`\ , then
-actually writes the value via either \ :c:func:`snd_hda_codec_update_cache`\  or
+actually writes the value via either \ :c:func:`snd_hda_codec_write_cache`\  or
 \ :c:func:`snd_hda_codec_write`\  depending on \ ``cached``\  flag.
 
 .. _`snd_hda_add_imux_item`:
@@ -1756,20 +1967,25 @@ snd_hda_add_imux_item
 
     Add an item to input_mux
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_input_mux \*imux:
+    :param imux:
         imux helper object
+    :type imux: struct hda_input_mux \*
 
-    :param const char \*label:
+    :param label:
         the name of imux item to assign
+    :type label: const char \*
 
-    :param int index:
+    :param index:
         index number of imux item to assign
+    :type index: int
 
-    :param int \*type_idx:
+    :param type_idx:
         pointer to store the resultant label index
+    :type type_idx: int \*
 
 .. _`snd_hda_add_imux_item.description`:
 
@@ -1789,8 +2005,9 @@ snd_hda_bus_reset_codecs
 
     Reset the bus
 
-    :param struct hda_bus \*bus:
+    :param bus:
         HD-audio bus
+    :type bus: struct hda_bus \*
 
 .. _`snd_print_pcm_bits`:
 
@@ -1801,14 +2018,17 @@ snd_print_pcm_bits
 
     Print the supported PCM fmt bits to the string buffer
 
-    :param int pcm:
+    :param pcm:
         PCM caps bits
+    :type pcm: int
 
-    :param char \*buf:
+    :param buf:
         the string buffer to write
+    :type buf: char \*
 
-    :param int buflen:
+    :param buflen:
         the max buffer length
+    :type buflen: int
 
 .. _`snd_print_pcm_bits.description`:
 

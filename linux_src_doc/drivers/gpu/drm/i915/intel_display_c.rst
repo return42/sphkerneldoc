@@ -10,8 +10,9 @@ skl_update_scaler_crtc
 
     Stages update to scaler state for a given crtc.
 
-    :param struct intel_crtc_state \*state:
+    :param state:
         crtc's scaler state
+    :type state: struct intel_crtc_state \*
 
 .. _`skl_update_scaler_crtc.description`:
 
@@ -31,11 +32,13 @@ skl_update_scaler_plane
 
     Stages update to scaler state for a given plane.
 
-    :param struct intel_crtc_state \*crtc_state:
+    :param crtc_state:
         crtc's scaler state
+    :type crtc_state: struct intel_crtc_state \*
 
-    :param struct intel_plane_state \*plane_state:
+    :param plane_state:
         atomic plane state to update
+    :type plane_state: struct intel_plane_state \*
 
 .. _`skl_update_scaler_plane.description`:
 
@@ -55,11 +58,13 @@ intel_post_enable_primary
 
     Perform operations after enabling primary plane
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         the CRTC whose primary plane was just enabled
+    :type crtc: struct drm_crtc \*
 
-    :param const struct intel_crtc_state \*new_crtc_state:
+    :param new_crtc_state:
         the enabling state
+    :type new_crtc_state: const struct intel_crtc_state \*
 
 .. _`intel_post_enable_primary.description`:
 
@@ -81,14 +86,17 @@ vlv_force_pll_on
 
     forcibly enable just the PLL
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 private structure
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum pipe pipe:
+    :param pipe:
         pipe PLL to enable
+    :type pipe: enum pipe
 
-    :param const struct dpll \*dpll:
+    :param dpll:
         PLL configuration
+    :type dpll: const struct dpll \*
 
 .. _`vlv_force_pll_on.description`:
 
@@ -108,11 +116,13 @@ vlv_force_pll_off
 
     forcibly disable just the PLL
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 private structure
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum pipe pipe:
+    :param pipe:
         pipe PLL to disable
+    :type pipe: enum pipe
 
 .. _`vlv_force_pll_off.description`:
 
@@ -131,11 +141,13 @@ intel_wm_need_update
 
     Check whether watermarks need updating
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*state:
+    :param state:
         new plane state
+    :type state: struct drm_plane_state \*
 
 .. _`intel_wm_need_update.description`:
 
@@ -156,11 +168,13 @@ intel_atomic_check
 
     validate state object
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         state to validate
+    :type state: struct drm_atomic_state \*
 
 .. _`intel_atomic_commit`:
 
@@ -171,14 +185,17 @@ intel_atomic_commit
 
     commit validated state object
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         the top-level driver state object
+    :type state: struct drm_atomic_state \*
 
-    :param bool nonblock:
+    :param nonblock:
         nonblocking commit
+    :type nonblock: bool
 
 .. _`intel_atomic_commit.description`:
 
@@ -200,11 +217,13 @@ intel_prepare_plane_fb
 
     Prepare fb for usage on plane
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane to prepare for
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*new_state:
+    :param new_state:
         the plane state being prepared
+    :type new_state: struct drm_plane_state \*
 
 .. _`intel_prepare_plane_fb.description`:
 
@@ -229,11 +248,13 @@ intel_cleanup_plane_fb
 
     Cleans up an fb after plane use
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane to clean up for
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*old_state:
+    :param old_state:
         the state from the previous modeset
+    :type old_state: struct drm_plane_state \*
 
 .. _`intel_cleanup_plane_fb.description`:
 
@@ -253,8 +274,9 @@ intel_plane_destroy
 
     destroy a plane
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to destroy
+    :type plane: struct drm_plane \*
 
 .. _`intel_plane_destroy.description`:
 
@@ -273,8 +295,9 @@ intel_init_display_hooks
 
     initialize the display modesetting hooks
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. This file was automatic generated / don't edit.
 

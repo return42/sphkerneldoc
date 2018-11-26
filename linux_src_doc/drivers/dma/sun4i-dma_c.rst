@@ -8,11 +8,13 @@
 
 .. c:function:: int __execute_vchan_pending(struct sun4i_dma_dev *priv, struct sun4i_dma_vchan *vchan)
 
-    :param struct sun4i_dma_dev \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct sun4i_dma_dev \*
 
-    :param struct sun4i_dma_vchan \*vchan:
+    :param vchan:
         *undescribed*
+    :type vchan: struct sun4i_dma_vchan \*
 
 .. _`__execute_vchan_pending.description`:
 
@@ -32,23 +34,29 @@ generate_ndma_promise
 
 .. c:function:: struct sun4i_dma_promise *generate_ndma_promise(struct dma_chan *chan, dma_addr_t src, dma_addr_t dest, size_t len, struct dma_slave_config *sconfig, enum dma_transfer_direction direction)
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t src:
+    :param src:
         *undescribed*
+    :type src: dma_addr_t
 
-    :param dma_addr_t dest:
+    :param dest:
         *undescribed*
+    :type dest: dma_addr_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param struct dma_slave_config \*sconfig:
+    :param sconfig:
         *undescribed*
+    :type sconfig: struct dma_slave_config \*
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         *undescribed*
+    :type direction: enum dma_transfer_direction
 
 .. _`generate_ndma_promise.description`:
 
@@ -68,20 +76,25 @@ generate_ddma_promise
 
 .. c:function:: struct sun4i_dma_promise *generate_ddma_promise(struct dma_chan *chan, dma_addr_t src, dma_addr_t dest, size_t len, struct dma_slave_config *sconfig)
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t src:
+    :param src:
         *undescribed*
+    :type src: dma_addr_t
 
-    :param dma_addr_t dest:
+    :param dest:
         *undescribed*
+    :type dest: dma_addr_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param struct dma_slave_config \*sconfig:
+    :param sconfig:
         *undescribed*
+    :type sconfig: struct dma_slave_config \*
 
 .. _`generate_ddma_promise.description`:
 
@@ -101,8 +114,9 @@ generate_dma_contract
 
 .. c:function:: struct sun4i_dma_contract *generate_dma_contract( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`generate_dma_contract.description`:
 
@@ -121,8 +135,9 @@ get_next_cyclic_promise
 
 .. c:function:: struct sun4i_dma_promise *get_next_cyclic_promise(struct sun4i_dma_contract *contract)
 
-    :param struct sun4i_dma_contract \*contract:
+    :param contract:
         *undescribed*
+    :type contract: struct sun4i_dma_contract \*
 
 .. _`get_next_cyclic_promise.description`:
 
@@ -140,8 +155,9 @@ sun4i_dma_free_contract
 
 .. c:function:: void sun4i_dma_free_contract(struct virt_dma_desc *vd)
 
-    :param struct virt_dma_desc \*vd:
+    :param vd:
         *undescribed*
+    :type vd: struct virt_dma_desc \*
 
 .. This file was automatic generated / don't edit.
 

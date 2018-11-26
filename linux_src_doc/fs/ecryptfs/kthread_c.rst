@@ -8,8 +8,9 @@ ecryptfs_threadfn
 
 .. c:function:: int ecryptfs_threadfn(void *ignored)
 
-    :param void \*ignored:
+    :param ignored:
         ignored
+    :type ignored: void \*
 
 .. _`ecryptfs_threadfn.description`:
 
@@ -28,17 +29,21 @@ ecryptfs_privileged_open
 
 .. c:function:: int ecryptfs_privileged_open(struct file **lower_file, struct dentry *lower_dentry, struct vfsmount *lower_mnt, const struct cred *cred)
 
-    :param struct file \*\*lower_file:
+    :param lower_file:
         Result of dentry_open by root on lower dentry
+    :type lower_file: struct file \*\*
 
-    :param struct dentry \*lower_dentry:
+    :param lower_dentry:
         Lower dentry for file to open
+    :type lower_dentry: struct dentry \*
 
-    :param struct vfsmount \*lower_mnt:
+    :param lower_mnt:
         Lower vfsmount for file to open
+    :type lower_mnt: struct vfsmount \*
 
-    :param const struct cred \*cred:
+    :param cred:
         *undescribed*
+    :type cred: const struct cred \*
 
 .. _`ecryptfs_privileged_open.description`:
 

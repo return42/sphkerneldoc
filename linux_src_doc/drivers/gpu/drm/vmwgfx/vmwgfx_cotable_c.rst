@@ -99,8 +99,9 @@ vmw_cotable
 
     Convert a struct vmw_resource pointer to a struct vmw_cotable pointer
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_cotable_destroy`:
 
@@ -111,8 +112,9 @@ vmw_cotable_destroy
 
     Cotable resource destroy callback
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the cotable resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_cotable_destroy.description`:
 
@@ -131,8 +133,9 @@ vmw_cotable_unscrub
 
     Undo a cotable unscrub operation
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the cotable resource
+    :type res: struct vmw_resource \*
 
 .. _`vmw_cotable_unscrub.description`:
 
@@ -152,12 +155,14 @@ vmw_cotable_bind
 
     Undo a cotable unscrub operation
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the cotable resource
+    :type res: struct vmw_resource \*
 
-    :param struct ttm_validate_buffer \*val_buf:
+    :param val_buf:
         Pointer to a struct ttm_validate_buffer prepared by the caller
         for convenience / fencing.
+    :type val_buf: struct ttm_validate_buffer \*
 
 .. _`vmw_cotable_bind.description`:
 
@@ -176,12 +181,14 @@ vmw_cotable_scrub
 
     Scrub the cotable from the device.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the cotable resource.
+    :type res: struct vmw_resource \*
 
-    :param bool readback:
+    :param readback:
         Whether initiate a readback of the cotable data to the backup
         buffer.
+    :type readback: bool
 
 .. _`vmw_cotable_scrub.description`:
 
@@ -208,14 +215,17 @@ vmw_cotable_unbind
 
     Cotable resource unbind callback
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the cotable resource.
+    :type res: struct vmw_resource \*
 
-    :param bool readback:
+    :param readback:
         Whether to read back cotable data to the backup buffer.
+    :type readback: bool
 
-    :param struct ttm_validate_buffer \*val_buf:
+    :param val_buf:
         *undescribed*
+    :type val_buf: struct ttm_validate_buffer \*
 
 .. _`vmw_cotable_unbind.val_buf`:
 
@@ -236,8 +246,9 @@ vmw_cotable_readback
 
     Read back a cotable without unbinding.
 
-    :param struct vmw_resource \*res:
+    :param res:
         The cotable resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_cotable_readback.description`:
 
@@ -256,11 +267,13 @@ vmw_cotable_resize
 
     Resize a cotable.
 
-    :param struct vmw_resource \*res:
+    :param res:
         The cotable resource.
+    :type res: struct vmw_resource \*
 
-    :param size_t new_size:
+    :param new_size:
         The new size.
+    :type new_size: size_t
 
 .. _`vmw_cotable_resize.description`:
 
@@ -282,8 +295,9 @@ vmw_cotable_create
 
     Cotable resource create callback
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a cotable resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_cotable_create.description`:
 
@@ -294,7 +308,7 @@ There is no separate create command for cotables, so this callback, which
 is called before \ :c:func:`bind`\  in the validation sequence is instead used for two
 things.
 1) Unscrub the cotable if it is scrubbed and still attached to a backup
-buffer, that is, if \ ``res``\ ->mob_head is non-empty.
+buffer, that is, if \ ``res->mob_head``\  is non-empty.
 2) Resize the cotable if needed.
 
 .. _`vmw_hw_cotable_destroy`:
@@ -306,8 +320,9 @@ vmw_hw_cotable_destroy
 
     Cotable hw_destroy callback
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a cotable resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_hw_cotable_destroy.description`:
 
@@ -325,8 +340,9 @@ vmw_cotable_free
 
     Cotable resource destructor
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a cotable resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_cotable_alloc`:
 
@@ -337,15 +353,18 @@ vmw_cotable_alloc
 
     Create a cotable resource
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_resource \*ctx:
+    :param ctx:
         Pointer to the context resource.
         The cotable resource will not add a refcount.
+    :type ctx: struct vmw_resource \*
 
-    :param u32 type:
+    :param type:
         The cotable type.
+    :type type: u32
 
 .. _`vmw_cotable_notify`:
 
@@ -356,11 +375,13 @@ vmw_cotable_notify
 
     Notify the cotable about an item creation
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a cotable resource.
+    :type res: struct vmw_resource \*
 
-    :param int id:
+    :param id:
         Item id.
+    :type id: int
 
 .. _`vmw_cotable_add_resource`:
 
@@ -371,12 +392,14 @@ vmw_cotable_add_resource
 
     add a view to the cotable's list of active views.
 
-    :param struct vmw_resource \*res:
+    :param res:
         pointer struct vmw_resource representing the cotable.
+    :type res: struct vmw_resource \*
 
-    :param struct list_head \*head:
+    :param head:
         pointer to the struct list_head member of the resource, dedicated
         to the cotable active resource list.
+    :type head: struct list_head \*
 
 .. This file was automatic generated / don't edit.
 

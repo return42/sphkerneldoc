@@ -10,11 +10,13 @@ drbd_bm_mark_for_writeout
 
     mark a page with a "hint" to be considered for writeout
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param int page_nr:
+    :param page_nr:
         the bitmap page to mark with the "hint" flag
+    :type page_nr: int
 
 .. _`drbd_bm_mark_for_writeout.description`:
 
@@ -34,8 +36,9 @@ drbd_bm_read
 
     Read the whole bitmap from its on disk location.
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_bm_write`:
 
@@ -46,8 +49,9 @@ drbd_bm_write
 
     Write the whole bitmap to its on disk location.
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_bm_write.description`:
 
@@ -65,8 +69,9 @@ drbd_bm_write_all
 
     Write the whole bitmap to its on disk location.
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_bm_write_all.description`:
 
@@ -84,11 +89,13 @@ drbd_bm_write_lazy
 
     Write bitmap pages 0 to \ ``upper_idx``\ -1, if they have changed.
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param unsigned upper_idx:
+    :param upper_idx:
         0: write all changed pages; +ve: page index to stop scanning for changed pages
+    :type upper_idx: unsigned
 
 .. _`drbd_bm_write_copy_pages`:
 
@@ -99,8 +106,9 @@ drbd_bm_write_copy_pages
 
     Write the whole bitmap to its on disk location.
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_bm_write_copy_pages.description`:
 
@@ -123,8 +131,9 @@ drbd_bm_write_hinted
 
     Write bitmap pages with "hint" marks, if they have changed.
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. This file was automatic generated / don't edit.
 

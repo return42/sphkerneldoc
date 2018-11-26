@@ -69,7 +69,6 @@ Definition
         void (*detach_dev)(struct iommu_domain *domain, struct device *dev);
         int (*map)(struct iommu_domain *domain, unsigned long iova, phys_addr_t paddr, size_t size, int prot);
         size_t (*unmap)(struct iommu_domain *domain, unsigned long iova, size_t size);
-        size_t (*map_sg)(struct iommu_domain *domain, unsigned long iova, struct scatterlist *sg, unsigned int nents, int prot);
         void (*flush_iotlb_all)(struct iommu_domain *domain);
         void (*iotlb_range_add)(struct iommu_domain *domain, unsigned long iova, size_t size);
         void (*iotlb_sync)(struct iommu_domain *domain);
@@ -84,8 +83,6 @@ Definition
         void (*apply_resv_region)(struct device *dev,struct iommu_domain *domain, struct iommu_resv_region *region);
         int (*domain_window_enable)(struct iommu_domain *domain, u32 wnd_nr, phys_addr_t paddr, u64 size, int prot);
         void (*domain_window_disable)(struct iommu_domain *domain, u32 wnd_nr);
-        int (*domain_set_windows)(struct iommu_domain *domain, u32 w_count);
-        u32 (*domain_get_windows)(struct iommu_domain *domain);
         int (*of_xlate)(struct device *dev, struct of_phandle_args *args);
         bool (*is_attach_deferred)(struct iommu_domain *domain, struct device *dev);
         unsigned long pgsize_bitmap;
@@ -116,10 +113,6 @@ map
 
 unmap
     unmap a physically contiguous memory region from an iommu domain
-
-map_sg
-    map a scatter-gather list of physically contiguous memory chunks
-    to an iommu domain
 
 flush_iotlb_all
     *undescribed*
@@ -162,12 +155,6 @@ domain_window_enable
 
 domain_window_disable
     Disable a particular window for a domain
-
-domain_set_windows
-    Set the number of windows for a domain
-
-domain_get_windows
-    Return the number of windows for a domain
 
 of_xlate
     add OF master IDs to iommu grouping

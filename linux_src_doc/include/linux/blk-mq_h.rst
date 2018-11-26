@@ -34,8 +34,10 @@ Definition
         void *driver_data;
         struct sbitmap ctx_map;
         struct blk_mq_ctx *dispatch_from;
-        struct blk_mq_ctx **ctxs;
+        unsigned int dispatch_busy;
         unsigned int nr_ctx;
+        struct blk_mq_ctx **ctxs;
+        spinlock_t dispatch_wait_lock;
         wait_queue_entry_t dispatch_wait;
         atomic_t wait_index;
         struct blk_mq_tags *tags;
@@ -101,10 +103,16 @@ ctx_map
 dispatch_from
     *undescribed*
 
-ctxs
+dispatch_busy
     *undescribed*
 
 nr_ctx
+    *undescribed*
+
+ctxs
+    *undescribed*
+
+dispatch_wait_lock
     *undescribed*
 
 dispatch_wait
@@ -173,8 +181,9 @@ blk_mq_mark_complete
 
     Set request state to complete
 
-    :param struct request \*rq:
+    :param rq:
         request to set to complete state
+    :type rq: struct request \*
 
 .. _`blk_mq_mark_complete.description`:
 

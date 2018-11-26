@@ -192,11 +192,13 @@ scmi_dump_header_dbg
 
     Helper to dump a message header.
 
-    :param struct device \*dev:
+    :param dev:
         Device pointer corresponding to the SCMI entity
+    :type dev: struct device \*
 
-    :param struct scmi_msg_hdr \*hdr:
+    :param hdr:
         pointer to header.
+    :type hdr: struct scmi_msg_hdr \*
 
 .. _`scmi_rx_callback`:
 
@@ -207,11 +209,13 @@ scmi_rx_callback
 
     mailbox client callback for receive messages
 
-    :param struct mbox_client \*cl:
+    :param cl:
         client pointer
+    :type cl: struct mbox_client \*
 
-    :param void \*m:
+    :param m:
         mailbox message
+    :type m: void \*
 
 .. _`scmi_rx_callback.description`:
 
@@ -238,9 +242,10 @@ pack_scmi_header
 
     packs and returns 32-bit header
 
-    :param struct scmi_msg_hdr \*hdr:
+    :param hdr:
         pointer to header containing all the information on message id,
         protocol id and sequence id.
+    :type hdr: struct scmi_msg_hdr \*
 
 .. _`pack_scmi_header.return`:
 
@@ -258,11 +263,13 @@ scmi_tx_prepare
 
     mailbox client callback to prepare for the transfer
 
-    :param struct mbox_client \*cl:
+    :param cl:
         client pointer
+    :type cl: struct mbox_client \*
 
-    :param void \*m:
+    :param m:
         mailbox message
+    :type m: void \*
 
 .. _`scmi_tx_prepare.description`:
 
@@ -281,8 +288,9 @@ scmi_xfer_get
 
     Allocate one message
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         Pointer to SCMI entity handle
+    :type handle: const struct scmi_handle \*
 
 .. _`scmi_xfer_get.description`:
 
@@ -312,11 +320,13 @@ scmi_xfer_put
 
     Release a message
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         Pointer to SCMI entity handle
+    :type handle: const struct scmi_handle \*
 
-    :param struct scmi_xfer \*xfer:
+    :param xfer:
         message that was reserved by scmi_xfer_get
+    :type xfer: struct scmi_xfer \*
 
 .. _`scmi_xfer_put.description`:
 
@@ -334,11 +344,13 @@ scmi_do_xfer
 
     Do one transfer
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         Pointer to SCMI entity handle
+    :type handle: const struct scmi_handle \*
 
-    :param struct scmi_xfer \*xfer:
+    :param xfer:
         Transfer to initiate and wait for response
+    :type xfer: struct scmi_xfer \*
 
 .. _`scmi_do_xfer.return`:
 
@@ -358,23 +370,29 @@ scmi_xfer_get_init
 
     Allocate and initialise one message
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         Pointer to SCMI entity handle
+    :type handle: const struct scmi_handle \*
 
-    :param u8 msg_id:
+    :param msg_id:
         Message identifier
+    :type msg_id: u8
 
-    :param u8 prot_id:
+    :param prot_id:
         Protocol identifier for the message
+    :type prot_id: u8
 
-    :param size_t tx_size:
+    :param tx_size:
         transmit message size
+    :type tx_size: size_t
 
-    :param size_t rx_size:
+    :param rx_size:
         receive message size
+    :type rx_size: size_t
 
-    :param struct scmi_xfer \*\*p:
+    :param p:
         pointer to the allocated and initialised message
+    :type p: struct scmi_xfer \*\*
 
 .. _`scmi_xfer_get_init.description`:
 
@@ -401,14 +419,17 @@ scmi_version_get
 
     command to get the revision of the SCMI entity
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         Pointer to SCMI entity handle
+    :type handle: const struct scmi_handle \*
 
-    :param u8 protocol:
+    :param protocol:
         Protocol identifier for the message
+    :type protocol: u8
 
-    :param u32 \*version:
+    :param version:
         Holds returned version of protocol.
+    :type version: u32 \*
 
 .. _`scmi_version_get.description`:
 
@@ -433,8 +454,9 @@ scmi_handle_get
 
     Get the SCMI handle for a device
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device for which we want SCMI handle
+    :type dev: struct device \*
 
 .. _`scmi_handle_get.note`:
 
@@ -461,8 +483,9 @@ scmi_handle_put
 
     Release the handle acquired by scmi_handle_get
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         handle acquired by scmi_handle_get
+    :type handle: const struct scmi_handle \*
 
 .. _`scmi_handle_put.note`:
 

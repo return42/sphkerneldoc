@@ -10,11 +10,13 @@ notify_user_space
 
     Notifies user space about thermal events \ ``tz``\  - thermal_zone_device \ ``trip``\  - trip point index
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         *undescribed*
+    :type tz: struct thermal_zone_device \*
 
-    :param int trip:
+    :param trip:
         *undescribed*
+    :type trip: int
 
 .. _`notify_user_space.description`:
 

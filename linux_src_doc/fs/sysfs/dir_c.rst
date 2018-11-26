@@ -10,11 +10,13 @@ sysfs_create_dir_ns
 
     create a directory for an object with a namespace tag
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object we're creating directory for
+    :type kobj: struct kobject \*
 
-    :param const void \*ns:
+    :param ns:
         the namespace tag to use
+    :type ns: const void \*
 
 .. _`sysfs_remove_dir`:
 
@@ -25,8 +27,9 @@ sysfs_remove_dir
 
     remove an object's directory.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object.
+    :type kobj: struct kobject \*
 
 .. _`sysfs_remove_dir.description`:
 
@@ -46,11 +49,13 @@ sysfs_create_mount_point
 
     create an always empty directory
 
-    :param struct kobject \*parent_kobj:
+    :param parent_kobj:
         kobject that will contain this always empty directory
+    :type parent_kobj: struct kobject \*
 
-    :param const char \*name:
+    :param name:
         The name of the always empty directory to add
+    :type name: const char \*
 
 .. _`sysfs_remove_mount_point`:
 
@@ -61,11 +66,13 @@ sysfs_remove_mount_point
 
     remove an always empty directory.
 
-    :param struct kobject \*parent_kobj:
+    :param parent_kobj:
         kobject that will contain this always empty directory
+    :type parent_kobj: struct kobject \*
 
-    :param const char \*name:
+    :param name:
         The name of the always empty directory to remove
+    :type name: const char \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ fixed_bar_cap
 
     return the offset of the fixed BAR cap if found
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus
+    :type bus: struct pci_bus \*
 
-    :param unsigned int devfn:
+    :param devfn:
         device in question
+    :type devfn: unsigned int
 
 .. _`fixed_bar_cap.description`:
 
@@ -33,14 +35,17 @@ type1_access_ok
 
     check whether to use type 1
 
-    :param unsigned int bus:
+    :param bus:
         bus number
+    :type bus: unsigned int
 
-    :param unsigned int devfn:
+    :param devfn:
         device & function in question
+    :type devfn: unsigned int
 
-    :param int reg:
+    :param reg:
         *undescribed*
+    :type reg: int
 
 .. _`type1_access_ok.description`:
 
@@ -61,8 +66,9 @@ intel_mid_pci_init
 
     installs intel_mid_pci_ops
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`intel_mid_pci_init.description`:
 

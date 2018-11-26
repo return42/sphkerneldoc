@@ -10,11 +10,13 @@ svia_tf_load
 
     send taskfile registers to host controller
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to which output is sent
+    :type ap: struct ata_port \*
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         ATA taskfile register set
+    :type tf: const struct ata_taskfile \*
 
 .. _`svia_tf_load.description`:
 
@@ -36,11 +38,13 @@ vt6420_prereset
 
     prereset for vt6420
 
-    :param struct ata_link \*link:
+    :param link:
         target ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`vt6420_prereset.description`:
 

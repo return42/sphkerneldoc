@@ -167,7 +167,6 @@ Definition
         int status;
         u32 internal:1;
         u32 blocking:1;
-        u32 completed:1;
     }
 
 .. _`mei_cl_cb.members`:
@@ -201,9 +200,6 @@ internal
 
 blocking
     transmission blocking mode
-
-completed
-    the transfer or reception has completed
 
 .. _`mei_cl`:
 
@@ -349,8 +345,8 @@ Definition
         void (*synchronize_irq)(struct mei_device *dev);
         int (*hbuf_free_slots)(struct mei_device *dev);
         bool (*hbuf_is_ready)(struct mei_device *dev);
-        size_t (*hbuf_max_len)(const struct mei_device *dev);
-        int (*write)(struct mei_device *dev,struct mei_msg_hdr *hdr, const unsigned char *buf);
+        u32 (*hbuf_depth)(const struct mei_device *dev);
+        int (*write)(struct mei_device *dev,const void *hdr, size_t hdr_len, const void *data, size_t data_len);
         int (*rdbuf_full_slots)(struct mei_device *dev);
         u32 (*read_hdr)(const struct mei_device *dev);
         int (*read)(struct mei_device *dev, unsigned char *buf, unsigned long len);
@@ -406,8 +402,8 @@ hbuf_free_slots
 hbuf_is_ready
     query if write buffer is empty
 
-hbuf_max_len
-    query for write buffer max len
+hbuf_depth
+    query for write buffer depth
 
 write
     write a message to FW
@@ -497,6 +493,50 @@ MEI_PG_OFF
 MEI_PG_ON
     device is power gated - it is in lower power state
 
+.. _`mei_fw_version`:
+
+struct mei_fw_version
+=====================
+
+.. c:type:: struct mei_fw_version
+
+    MEI FW version struct
+
+.. _`mei_fw_version.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mei_fw_version {
+        u8 platform;
+        u8 major;
+        u16 minor;
+        u16 buildno;
+        u16 hotfix;
+    }
+
+.. _`mei_fw_version.members`:
+
+Members
+-------
+
+platform
+    platform identifier
+
+major
+    major version field
+
+minor
+    minor version field
+
+buildno
+    build number version field
+
+hotfix
+    hotfix number version field
+
 .. _`mei_device`:
 
 struct mei_device
@@ -540,7 +580,6 @@ Definition
     #endif
         unsigned char rd_msg_buf[MEI_RD_MSG_BUF_SIZE];
         u32 rd_msg_hdr;
-        u8 hbuf_depth;
         bool hbuf_is_ready;
         struct hbm_version version;
         unsigned int hbm_f_pg_supported:1;
@@ -550,6 +589,8 @@ Definition
         unsigned int hbm_f_fa_supported:1;
         unsigned int hbm_f_ie_supported:1;
         unsigned int hbm_f_os_supported:1;
+        unsigned int hbm_f_dr_supported:1;
+        struct mei_fw_version fw_ver[MEI_MAX_FW_VER_BLOCKS];
         struct rw_semaphore me_clients_rwsem;
         struct list_head me_clients;
         DECLARE_BITMAP(me_clients_map, MEI_CLIENTS_MAX);
@@ -644,9 +685,6 @@ rd_msg_buf
 rd_msg_hdr
     read message header storage
 
-hbuf_depth
-    depth of hardware host/write buffer is slots
-
 hbuf_is_ready
     query if the host host/write buffer is ready
 
@@ -673,6 +711,12 @@ hbm_f_ie_supported
 
 hbm_f_os_supported
     hbm feature support OS ver message
+
+hbm_f_dr_supported
+    hbm feature dma ring supported
+
+fw_ver
+    FW versions
 
 me_clients_rwsem
     rw lock over me_clients list
@@ -720,12 +764,33 @@ mei_data2slots
 
 .. c:function:: u32 mei_data2slots(size_t length)
 
-    get slots - number of (dwords) from a message length + size of the mei header
+    get slots number from a message length
 
-    :param size_t length:
+    :param length:
         size of the messages in bytes
+    :type length: size_t
 
 .. _`mei_data2slots.return`:
+
+Return
+------
+
+number of slots
+
+.. _`mei_hbm2slots`:
+
+mei_hbm2slots
+=============
+
+.. c:function:: u32 mei_hbm2slots(size_t length)
+
+    get slots number from a hbm message length length + size of the mei message header
+
+    :param length:
+        size of the messages in bytes
+    :type length: size_t
+
+.. _`mei_hbm2slots.return`:
 
 Return
 ------
@@ -741,8 +806,9 @@ mei_slots2data
 
     get data in slots - bytes from slots
 
-    :param int slots:
+    :param slots:
         number of available slots
+    :type slots: int
 
 .. _`mei_slots2data.return`:
 
@@ -760,14 +826,17 @@ mei_fw_status_str
 
     fetch and convert fw status registers to printable string
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param char \*buf:
+    :param buf:
         string buffer at minimal size MEI_FW_STATUS_STR_SZ
+    :type buf: char \*
 
-    :param size_t len:
+    :param len:
         buffer len must be >= MEI_FW_STATUS_STR_SZ
+    :type len: size_t
 
 .. _`mei_fw_status_str.return`:
 

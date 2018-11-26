@@ -10,8 +10,9 @@ iwpm_init
 
     Allocate resources for the iwarp port mapper
 
-    :param  u8:
+    :param u8:
         *undescribed*
+    :type u8: 
 
 .. _`iwpm_init.description`:
 
@@ -29,8 +30,9 @@ iwpm_exit
 
     Deallocate resources for the iwarp port mapper
 
-    :param  u8:
+    :param u8:
         *undescribed*
+    :type u8: 
 
 .. _`iwpm_exit.description`:
 
@@ -48,8 +50,9 @@ iwpm_valid_pid
 
     Check if the userspace iwarp port mapper pid is valid
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iwpm_valid_pid.description`:
 
@@ -67,11 +70,13 @@ iwpm_register_pid
 
     Send a netlink query to userspace to get the iwarp port mapper pid
 
-    :param struct iwpm_dev_data \*pm_msg:
+    :param pm_msg:
         Contains driver info to send to the userspace port mapper
+    :type pm_msg: struct iwpm_dev_data \*
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
 .. _`iwpm_add_mapping`:
 
@@ -82,11 +87,13 @@ iwpm_add_mapping
 
     Send a netlink add mapping request to the userspace port mapper
 
-    :param struct iwpm_sa_data \*pm_msg:
+    :param pm_msg:
         Contains the local ip/tcp address info to send
+    :type pm_msg: struct iwpm_sa_data \*
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
 .. _`iwpm_add_mapping.description`:
 
@@ -105,11 +112,13 @@ iwpm_add_and_query_mapping
 
     Send a netlink add and query mapping request to the userspace port mapper
 
-    :param struct iwpm_sa_data \*pm_msg:
+    :param pm_msg:
         Contains the local and remote ip/tcp address info to send
+    :type pm_msg: struct iwpm_sa_data \*
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
 .. _`iwpm_add_and_query_mapping.description`:
 
@@ -128,11 +137,13 @@ iwpm_remove_mapping
 
     Send a netlink remove mapping request to the userspace port mapper
 
-    :param struct sockaddr_storage \*local_addr:
+    :param local_addr:
         Local ip/tcp address to remove
+    :type local_addr: struct sockaddr_storage \*
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
 .. _`iwpm_register_pid_cb`:
 
@@ -143,11 +154,13 @@ iwpm_register_pid_cb
 
     Process the port mapper response to iwpm_register_pid query
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
 .. _`iwpm_register_pid_cb.description`:
 
@@ -166,11 +179,13 @@ iwpm_add_mapping_cb
 
     Process the port mapper response to iwpm_add_mapping request
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
 .. _`iwpm_add_and_query_mapping_cb`:
 
@@ -181,11 +196,13 @@ iwpm_add_and_query_mapping_cb
 
     Process the port mapper response to iwpm_add_and_query_mapping request
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
 .. _`iwpm_remote_info_cb`:
 
@@ -196,11 +213,13 @@ iwpm_remote_info_cb
 
     Process remote connecting peer address info, which the port mapper has received from the connecting peer
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
 .. _`iwpm_remote_info_cb.description`:
 
@@ -218,11 +237,13 @@ iwpm_mapping_error_cb
 
     Process port mapper notification for error
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
 .. _`iwpm_mapping_info_cb`:
 
@@ -233,11 +254,13 @@ iwpm_mapping_info_cb
 
     Process a notification that the userspace port mapper daemon is started
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
 .. _`iwpm_mapping_info_cb.description`:
 
@@ -256,11 +279,13 @@ iwpm_ack_mapping_info_cb
 
     Process the port mapper ack for the provided local mapping info records
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
-    :param struct netlink_callback \*:
+    :param :
         *undescribed*
+    :type : struct netlink_callback \*
 
 .. _`iwpm_get_remote_info`:
 
@@ -271,17 +296,21 @@ iwpm_get_remote_info
 
     Get the remote connecting peer address info
 
-    :param struct sockaddr_storage \*mapped_loc_addr:
+    :param mapped_loc_addr:
         Mapped local address of the listening peer
+    :type mapped_loc_addr: struct sockaddr_storage \*
 
-    :param struct sockaddr_storage \*mapped_rem_addr:
+    :param mapped_rem_addr:
         Mapped remote address of the connecting peer
+    :type mapped_rem_addr: struct sockaddr_storage \*
 
-    :param struct sockaddr_storage \*remote_addr:
+    :param remote_addr:
         To store the remote address of the connecting peer
+    :type remote_addr: struct sockaddr_storage \*
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
 .. _`iwpm_get_remote_info.description`:
 
@@ -300,14 +329,17 @@ iwpm_create_mapinfo
 
     Store local and mapped IPv4/IPv6 address info in a hash table
 
-    :param struct sockaddr_storage \*local_addr:
+    :param local_addr:
         Local ip/tcp address
+    :type local_addr: struct sockaddr_storage \*
 
-    :param struct sockaddr_storage \*mapped_addr:
+    :param mapped_addr:
         Mapped local ip/tcp address
+    :type mapped_addr: struct sockaddr_storage \*
 
-    :param u8 nl_client:
+    :param nl_client:
         The index of the netlink client
+    :type nl_client: u8
 
 .. _`iwpm_remove_mapinfo`:
 
@@ -318,11 +350,13 @@ iwpm_remove_mapinfo
 
     Remove local and mapped IPv4/IPv6 address info from the hash table
 
-    :param struct sockaddr_storage \*local_addr:
+    :param local_addr:
         Local ip/tcp address
+    :type local_addr: struct sockaddr_storage \*
 
-    :param struct sockaddr_storage \*mapped_addr:
+    :param mapped_addr:
         Mapped local ip/tcp address
+    :type mapped_addr: struct sockaddr_storage \*
 
 .. _`iwpm_remove_mapinfo.description`:
 

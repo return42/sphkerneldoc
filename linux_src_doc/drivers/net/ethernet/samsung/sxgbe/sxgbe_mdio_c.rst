@@ -8,14 +8,17 @@ sxgbe_mdio_read
 
 .. c:function:: int sxgbe_mdio_read(struct mii_bus *bus, int phyaddr, int phyreg)
 
-    :param struct mii_bus \*bus:
+    :param bus:
         points to the mii_bus structure
+    :type bus: struct mii_bus \*
 
-    :param int phyaddr:
+    :param phyaddr:
         address of phy port
+    :type phyaddr: int
 
-    :param int phyreg:
+    :param phyreg:
         address of register with in phy register
+    :type phyreg: int
 
 .. _`sxgbe_mdio_read.description`:
 
@@ -31,17 +34,21 @@ sxgbe_mdio_write
 
 .. c:function:: int sxgbe_mdio_write(struct mii_bus *bus, int phyaddr, int phyreg, u16 phydata)
 
-    :param struct mii_bus \*bus:
+    :param bus:
         points to the mii_bus structure
+    :type bus: struct mii_bus \*
 
-    :param int phyaddr:
+    :param phyaddr:
         address of phy port
+    :type phyaddr: int
 
-    :param int phyreg:
+    :param phyreg:
         address of phy registers
+    :type phyreg: int
 
-    :param u16 phydata:
+    :param phydata:
         data to be written into phy register
+    :type phydata: u16
 
 .. _`sxgbe_mdio_write.description`:
 

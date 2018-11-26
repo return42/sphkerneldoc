@@ -10,8 +10,9 @@ tcp_release_cb
 
     tcp \ :c:func:`release_sock`\  callback
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`tcp_release_cb.description`:
 
@@ -30,20 +31,25 @@ tcp_make_synack
 
     Prepare a SYN-ACK. sk: listener socket
 
-    :param const struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: const struct sock \*
 
-    :param struct dst_entry \*dst:
+    :param dst:
         Caller should not use it again.
+    :type dst: struct dst_entry \*
 
-    :param struct request_sock \*req:
+    :param req:
         *undescribed*
+    :type req: struct request_sock \*
 
-    :param struct tcp_fastopen_cookie \*foc:
+    :param foc:
         *undescribed*
+    :type foc: struct tcp_fastopen_cookie \*
 
-    :param enum tcp_synack_type synack_type:
+    :param synack_type:
         *undescribed*
+    :type synack_type: enum tcp_synack_type
 
 .. _`tcp_make_synack.dst`:
 

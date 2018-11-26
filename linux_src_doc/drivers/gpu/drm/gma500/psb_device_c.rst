@@ -10,8 +10,9 @@ psb_save_display_registers
 
     save registers lost on suspend
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
 .. _`psb_save_display_registers.description`:
 
@@ -30,8 +31,9 @@ psb_restore_display_registers
 
     restore lost register state
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
 .. _`psb_restore_display_registers.description`:
 

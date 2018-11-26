@@ -10,14 +10,17 @@ omap_iommu_translate
 
     va to pa translation
 
-    :param u32 d:
+    :param d:
         omap iommu descriptor
+    :type d: u32
 
-    :param u32 va:
+    :param va:
         virtual address
+    :type va: u32
 
-    :param u32 mask:
+    :param mask:
         omap iommu descriptor mask
+    :type mask: u32
 
 .. _`omap_iommu_translate.description`:
 

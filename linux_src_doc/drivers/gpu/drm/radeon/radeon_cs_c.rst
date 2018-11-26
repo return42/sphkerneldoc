@@ -10,14 +10,17 @@ radeon_cs_parser_fini
 
     clean parser states
 
-    :param struct radeon_cs_parser \*parser:
+    :param parser:
         parser structure holding parsing context.
+    :type parser: struct radeon_cs_parser \*
 
-    :param int error:
+    :param error:
         error number
+    :type error: int
 
-    :param bool backoff:
+    :param backoff:
         *undescribed*
+    :type backoff: bool
 
 .. _`radeon_cs_parser_fini.description`:
 
@@ -36,14 +39,17 @@ radeon_cs_packet_parse
 
     parse cp packet and point ib index to next packet
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         *undescribed*
+    :type p: struct radeon_cs_parser \*
 
-    :param struct radeon_cs_packet \*pkt:
+    :param pkt:
         where to store packet information
+    :type pkt: struct radeon_cs_packet \*
 
-    :param unsigned idx:
+    :param idx:
         *undescribed*
+    :type idx: unsigned
 
 .. _`radeon_cs_packet_parse.description`:
 
@@ -62,8 +68,9 @@ radeon_cs_packet_next_is_pkt3_nop
 
     test if the next packet is P3 NOP
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         structure holding the parser context.
+    :type p: struct radeon_cs_parser \*
 
 .. _`radeon_cs_packet_next_is_pkt3_nop.description`:
 
@@ -81,11 +88,13 @@ radeon_cs_dump_packet
 
     dump raw packet context
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         structure holding the parser context.
+    :type p: struct radeon_cs_parser \*
 
-    :param struct radeon_cs_packet \*pkt:
+    :param pkt:
         structure holding the packet.
+    :type pkt: struct radeon_cs_packet \*
 
 .. _`radeon_cs_dump_packet.description`:
 
@@ -103,14 +112,17 @@ radeon_cs_packet_next_reloc
 
     parse next (should be reloc) packet
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         *undescribed*
+    :type p: struct radeon_cs_parser \*
 
-    :param struct radeon_bo_list \*\*cs_reloc:
+    :param cs_reloc:
         *undescribed*
+    :type cs_reloc: struct radeon_bo_list \*\*
 
-    :param int nomm:
+    :param nomm:
         *undescribed*
+    :type nomm: int
 
 .. _`radeon_cs_packet_next_reloc.description`:
 

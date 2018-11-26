@@ -10,14 +10,17 @@ pci_process_bridge_OF_ranges
 
     Parse PCI bridge resources from device tree
 
-    :param struct pci_controller \*hose:
+    :param hose:
         newly allocated pci_controller to be setup
+    :type hose: struct pci_controller \*
 
-    :param struct device_node \*dev:
+    :param dev:
         device node of the host bridge
+    :type dev: struct device_node \*
 
-    :param int primary:
+    :param primary:
         set if primary bus (32 bits only, soon to be deprecated)
+    :type primary: int
 
 .. _`pci_process_bridge_of_ranges.description`:
 
@@ -56,8 +59,9 @@ pcibios_scan_phb
 
     Given a pci_controller, setup and scan the PCI bus
 
-    :param struct pci_controller \*hose:
+    :param hose:
         Pointer to the PCI host controller instance structure
+    :type hose: struct pci_controller \*
 
 .. This file was automatic generated / don't edit.
 

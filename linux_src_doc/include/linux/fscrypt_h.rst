@@ -10,8 +10,9 @@ fscrypt_require_key
 
     require an inode's encryption key
 
-    :param struct inode \*inode:
+    :param inode:
         the inode we need the key for
+    :type inode: struct inode \*
 
 .. _`fscrypt_require_key.description`:
 
@@ -41,14 +42,17 @@ fscrypt_prepare_link
 
     prepare to link an inode into a possibly-encrypted directory
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         an existing dentry for the inode being linked
+    :type old_dentry: struct dentry \*
 
-    :param struct inode \*dir:
+    :param dir:
         the target directory
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         negative dentry for the target filename
+    :type dentry: struct dentry \*
 
 .. _`fscrypt_prepare_link.description`:
 
@@ -81,20 +85,25 @@ fscrypt_prepare_rename
 
     prepare for a rename between possibly-encrypted directories
 
-    :param struct inode \*old_dir:
+    :param old_dir:
         source directory
+    :type old_dir: struct inode \*
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         dentry for source file
+    :type old_dentry: struct dentry \*
 
-    :param struct inode \*new_dir:
+    :param new_dir:
         target directory
+    :type new_dir: struct inode \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         dentry for target location (may be negative unless exchanging)
+    :type new_dentry: struct dentry \*
 
-    :param unsigned int flags:
+    :param flags:
         rename flags (we care at least about \ ``RENAME_EXCHANGE``\ )
+    :type flags: unsigned int
 
 .. _`fscrypt_prepare_rename.description`:
 
@@ -128,14 +137,17 @@ fscrypt_prepare_lookup
 
     prepare to lookup a name in a possibly-encrypted directory
 
-    :param struct inode \*dir:
+    :param dir:
         directory being searched
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         filename being looked up
+    :type dentry: struct dentry \*
 
-    :param unsigned int flags:
+    :param flags:
         lookup flags
+    :type flags: unsigned int
 
 .. _`fscrypt_prepare_lookup.description`:
 
@@ -169,11 +181,13 @@ fscrypt_prepare_setattr
 
     prepare to change a possibly-encrypted inode's attributes
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry through which the inode is being changed
+    :type dentry: struct dentry \*
 
-    :param struct iattr \*attr:
+    :param attr:
         attributes to change
+    :type attr: struct iattr \*
 
 .. _`fscrypt_prepare_setattr.description`:
 
@@ -206,20 +220,25 @@ fscrypt_prepare_symlink
 
     prepare to create a possibly-encrypted symlink
 
-    :param struct inode \*dir:
+    :param dir:
         directory in which the symlink is being created
+    :type dir: struct inode \*
 
-    :param const char \*target:
+    :param target:
         plaintext symlink target
+    :type target: const char \*
 
-    :param unsigned int len:
+    :param len:
         length of \ ``target``\  excluding null terminator
+    :type len: unsigned int
 
-    :param unsigned int max_len:
+    :param max_len:
         space the filesystem has available to store the symlink target
+    :type max_len: unsigned int
 
-    :param struct fscrypt_str \*disk_link:
+    :param disk_link:
         (out) the on-disk symlink target being prepared
+    :type disk_link: struct fscrypt_str \*
 
 .. _`fscrypt_prepare_symlink.description`:
 
@@ -227,10 +246,10 @@ Description
 -----------
 
 This function computes the size the symlink target will require on-disk,
-stores it in \ ``disk_link``\ ->len, and validates it against \ ``max_len``\ .  An
+stores it in \ ``disk_link->len``\ , and validates it against \ ``max_len``\ .  An
 encrypted symlink may be longer than the original.
 
-Additionally, \ ``disk_link``\ ->name is set to \ ``target``\  if the symlink will be
+Additionally, \ ``disk_link->name``\  is set to \ ``target``\  if the symlink will be
 unencrypted, but left NULL if the symlink will be encrypted.  For encrypted
 symlinks, the filesystem must call \ :c:func:`fscrypt_encrypt_symlink`\  to create the
 on-disk target later.  (The reason for the two-step process is that some
@@ -255,17 +274,21 @@ fscrypt_encrypt_symlink
 
     encrypt the symlink target if needed
 
-    :param struct inode \*inode:
+    :param inode:
         symlink inode
+    :type inode: struct inode \*
 
-    :param const char \*target:
+    :param target:
         plaintext symlink target
+    :type target: const char \*
 
-    :param unsigned int len:
+    :param len:
         length of \ ``target``\  excluding null terminator
+    :type len: unsigned int
 
-    :param struct fscrypt_str \*disk_link:
+    :param disk_link:
         (in/out) the on-disk symlink target being prepared
+    :type disk_link: struct fscrypt_str \*
 
 .. _`fscrypt_encrypt_symlink.description`:
 
@@ -273,9 +296,9 @@ Description
 -----------
 
 If the symlink target needs to be encrypted, then this function encrypts it
-into \ ``disk_link``\ ->name.  \ :c:func:`fscrypt_prepare_symlink`\  must have been called
-previously to compute \ ``disk_link``\ ->len.  If the filesystem did not allocate a
-buffer for \ ``disk_link``\ ->name after calling \ :c:func:`fscrypt_prepare_link`\ , then one
+into \ ``disk_link->name``\ .  \ :c:func:`fscrypt_prepare_symlink`\  must have been called
+previously to compute \ ``disk_link->len``\ .  If the filesystem did not allocate a
+buffer for \ ``disk_link->name``\  after calling \ :c:func:`fscrypt_prepare_link`\ , then one
 will be \ :c:func:`kmalloc`\ 'ed and the filesystem will be responsible for freeing it.
 
 .. _`fscrypt_encrypt_symlink.return`:

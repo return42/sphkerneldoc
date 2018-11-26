@@ -145,8 +145,9 @@ dfll_is_running
 
     is the DFLL currently generating a clock?
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_is_running.description`:
 
@@ -165,8 +166,9 @@ tegra_dfll_runtime_resume
 
     enable all clocks needed by the DFLL
 
-    :param struct device \*dev:
+    :param dev:
         DFLL device \*
+    :type dev: struct device \*
 
 .. _`tegra_dfll_runtime_resume.description`:
 
@@ -187,8 +189,9 @@ tegra_dfll_runtime_suspend
 
     disable all clocks needed by the DFLL
 
-    :param struct device \*dev:
+    :param dev:
         DFLL device \*
+    :type dev: struct device \*
 
 .. _`tegra_dfll_runtime_suspend.description`:
 
@@ -207,8 +210,9 @@ dfll_tune_low
 
     tune to DFLL and CPU settings valid for any voltage
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_tune_low.description`:
 
@@ -228,11 +232,13 @@ dfll_scale_dvco_rate
 
     calculate scaled rate from the DVCO rate
 
-    :param int scale_bits:
+    :param scale_bits:
         clock scaler value (bits in the DFLL_FREQ_REQ_SCALE field)
+    :type scale_bits: int
 
-    :param unsigned long dvco_rate:
+    :param dvco_rate:
         the DVCO rate
+    :type dvco_rate: unsigned long
 
 .. _`dfll_scale_dvco_rate.description`:
 
@@ -251,11 +257,13 @@ dfll_set_mode
 
     change the DFLL control mode
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
-    :param enum dfll_ctrl_mode mode:
+    :param mode:
         DFLL control mode (see enum dfll_ctrl_mode)
+    :type mode: enum dfll_ctrl_mode
 
 .. _`dfll_set_mode.description`:
 
@@ -274,11 +282,13 @@ dfll_i2c_set_output_enabled
 
     enable/disable I2C PMIC voltage requests
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
-    :param bool enable:
+    :param enable:
         whether to enable or disable the I2C voltage requests
+    :type enable: bool
 
 .. _`dfll_i2c_set_output_enabled.description`:
 
@@ -297,8 +307,9 @@ dfll_load_i2c_lut
 
     load the voltage lookup table
 
-    :param struct tegra_dfll \*td:
+    :param td:
         struct tegra_dfll \*
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_load_i2c_lut.description`:
 
@@ -317,8 +328,9 @@ dfll_init_i2c_if
 
     set up the DFLL's DFLL-I2C interface
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_init_i2c_if.description`:
 
@@ -340,8 +352,9 @@ dfll_init_out_if
 
     prepare DFLL-to-PMIC interface
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_init_out_if.description`:
 
@@ -361,11 +374,13 @@ find_lut_index_for_rate
 
     determine I2C LUT index for given DFLL rate
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
-    :param unsigned long rate:
+    :param rate:
         clock rate
+    :type rate: unsigned long
 
 .. _`find_lut_index_for_rate.description`:
 
@@ -386,14 +401,17 @@ dfll_calculate_rate_request
 
     calculate DFLL parameters for a given rate
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
-    :param struct dfll_rate_req \*req:
+    :param req:
         DFLL-rate-request structure
+    :type req: struct dfll_rate_req \*
 
-    :param unsigned long rate:
+    :param rate:
         the desired DFLL rate
+    :type rate: unsigned long
 
 .. _`dfll_calculate_rate_request.description`:
 
@@ -414,11 +432,13 @@ dfll_set_frequency_request
 
     start the frequency change operation
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
-    :param struct dfll_rate_req \*req:
+    :param req:
         rate request structure
+    :type req: struct dfll_rate_req \*
 
 .. _`dfll_set_frequency_request.description`:
 
@@ -437,11 +457,13 @@ dfll_request_rate
 
     set the next rate for the DFLL to tune to
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
-    :param unsigned long rate:
+    :param rate:
         clock rate to target
+    :type rate: unsigned long
 
 .. _`dfll_request_rate.description`:
 
@@ -464,8 +486,9 @@ dfll_disable
 
     switch from open-loop mode to disabled mode
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_disable.description`:
 
@@ -484,8 +507,9 @@ dfll_enable
 
     switch a disabled DFLL to open-loop mode
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_enable.description`:
 
@@ -504,8 +528,9 @@ dfll_set_open_loop_config
 
     prepare to switch to open-loop mode
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_set_open_loop_config.description`:
 
@@ -528,8 +553,9 @@ dfll_lock
 
     switch from open-loop to closed-loop mode
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_lock.description`:
 
@@ -549,8 +575,9 @@ dfll_unlock
 
     switch from closed-loop to open-loop mode
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_unlock.description`:
 
@@ -569,8 +596,9 @@ dfll_register_clk
 
     register the DFLL output clock with the clock framework
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_register_clk.description`:
 
@@ -590,8 +618,9 @@ dfll_unregister_clk
 
     unregister the DFLL output clock
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_unregister_clk.description`:
 
@@ -610,11 +639,13 @@ dfll_calc_monitored_rate
 
     convert DFLL_MONITOR_DATA_VAL rate into real freq
 
-    :param u32 monitor_data:
+    :param monitor_data:
         value read from the DFLL_MONITOR_DATA_VAL bitfield
+    :type monitor_data: u32
 
-    :param unsigned long ref_rate:
+    :param ref_rate:
         DFLL reference clock rate
+    :type ref_rate: unsigned long
 
 .. _`dfll_calc_monitored_rate.description`:
 
@@ -633,8 +664,9 @@ dfll_read_monitor_rate
 
     return the DFLL's output rate from internal monitor
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_read_monitor_rate.description`:
 
@@ -659,8 +691,9 @@ dfll_set_default_params
 
     program non-output related DFLL parameters
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_set_default_params.description`:
 
@@ -680,8 +713,9 @@ dfll_init_clks
 
     \ :c:func:`clk_get`\  the DFLL source clocks
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_init_clks.description`:
 
@@ -701,8 +735,9 @@ dfll_init
 
     Prepare the DFLL IP block for use
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_init.description`:
 
@@ -723,8 +758,9 @@ dfll_build_i2c_lut
 
     build the I2C voltage register lookup table
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_build_i2c_lut.description`:
 
@@ -748,14 +784,17 @@ read_dt_param
 
     helper function for reading required parameters from the DT
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
-    :param const char \*param:
+    :param param:
         DT property name
+    :type param: const char \*
 
-    :param u32 \*dest:
+    :param dest:
         output pointer for the value read
+    :type dest: u32 \*
 
 .. _`read_dt_param.description`:
 
@@ -775,8 +814,9 @@ dfll_fetch_i2c_params
 
     query PMIC I2C params from DT & regulator subsystem
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_fetch_i2c_params.description`:
 
@@ -796,8 +836,9 @@ dfll_fetch_common_params
 
     read DFLL parameters from the device tree
 
-    :param struct tegra_dfll \*td:
+    :param td:
         DFLL instance
+    :type td: struct tegra_dfll \*
 
 .. _`dfll_fetch_common_params.description`:
 
@@ -816,11 +857,13 @@ tegra_dfll_register
 
     probe a Tegra DFLL device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         DFLL platform_device \*
+    :type pdev: struct platform_device \*
 
-    :param struct tegra_dfll_soc_data \*soc:
+    :param soc:
         Per-SoC integration and characterization data for this DFLL instance
+    :type soc: struct tegra_dfll_soc_data \*
 
 .. _`tegra_dfll_register.description`:
 
@@ -840,8 +883,9 @@ tegra_dfll_unregister
 
     release all of the DFLL driver resources for a device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         DFLL platform_device \*
+    :type pdev: struct platform_device \*
 
 .. _`tegra_dfll_unregister.description`:
 

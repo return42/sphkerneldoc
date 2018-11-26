@@ -50,17 +50,21 @@ nilfs_get_block
 
     get a file block on the filesystem (callback function) \ ``inode``\  - inode struct of the target file \ ``blkoff``\  - file block number \ ``bh_result``\  - buffer head to be mapped on \ ``create``\  - indicate whether allocating the block or not when it has not been allocated yet.
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param sector_t blkoff:
+    :param blkoff:
         *undescribed*
+    :type blkoff: sector_t
 
-    :param struct buffer_head \*bh_result:
+    :param bh_result:
         *undescribed*
+    :type bh_result: struct buffer_head \*
 
-    :param int create:
+    :param create:
         *undescribed*
+    :type create: int
 
 .. _`nilfs_get_block.description`:
 
@@ -79,11 +83,13 @@ nilfs_readpage
 
     implement \ :c:func:`readpage`\  method of nilfs_aops {} address_space_operations. \ ``file``\  - file struct of the file to be read \ ``page``\  - the page to be read
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
 .. _`nilfs_readpages`:
 
@@ -94,17 +100,21 @@ nilfs_readpages
 
     implement \ :c:func:`readpages`\  method of nilfs_aops {} address_space_operations. \ ``file``\  - file struct of the file to be read \ ``mapping``\  - address_space struct used for reading multiple pages \ ``pages``\  - the pages to be read \ ``nr_pages``\  - number of pages to be read
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         *undescribed*
+    :type mapping: struct address_space \*
 
-    :param struct list_head \*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct list_head \*
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         *undescribed*
+    :type nr_pages: unsigned int
 
 .. _`nilfs_dirty_inode`:
 
@@ -115,11 +125,13 @@ nilfs_dirty_inode
 
     reflect changes on given inode to an inode block.
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the file to be registered.
+    :type inode: struct inode \*
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`nilfs_dirty_inode.description`:
 

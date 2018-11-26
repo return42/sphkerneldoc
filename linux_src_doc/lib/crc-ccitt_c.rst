@@ -10,14 +10,17 @@ crc_ccitt
 
     recompute the CRC (CRC-CCITT variant) for the data buffer
 
-    :param u16 crc:
+    :param crc:
         previous CRC value
+    :type crc: u16
 
-    :param u8 const \*buffer:
+    :param buffer:
         data pointer
+    :type buffer: u8 const \*
 
-    :param size_t len:
+    :param len:
         number of bytes in the buffer
+    :type len: size_t
 
 .. _`crc_ccitt_false`:
 
@@ -28,14 +31,17 @@ crc_ccitt_false
 
     recompute the CRC (CRC-CCITT-FALSE variant) for the data buffer
 
-    :param u16 crc:
+    :param crc:
         previous CRC value
+    :type crc: u16
 
-    :param u8 const \*buffer:
+    :param buffer:
         data pointer
+    :type buffer: u8 const \*
 
-    :param size_t len:
+    :param len:
         number of bytes in the buffer
+    :type len: size_t
 
 .. This file was automatic generated / don't edit.
 

@@ -159,11 +159,13 @@ get_level
 
     Find the level for a particular frequency
 
-    :param struct cpufreq_cooling_device \*cpufreq_cdev:
+    :param cpufreq_cdev:
         cpufreq_cdev for which the property is required
+    :type cpufreq_cdev: struct cpufreq_cooling_device \*
 
-    :param unsigned int freq:
+    :param freq:
         Frequency
+    :type freq: unsigned int
 
 .. _`get_level.return`:
 
@@ -181,14 +183,17 @@ cpufreq_thermal_notifier
 
     notifier callback for cpufreq policy change.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         struct notifier_block \* with callback info.
+    :type nb: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         value showing cpufreq event for which this function invoked.
+    :type event: unsigned long
 
-    :param void \*data:
+    :param data:
         callback-specific data
+    :type data: void \*
 
 .. _`cpufreq_thermal_notifier.description`:
 
@@ -215,11 +220,13 @@ update_freq_table
 
     Update the freq table with power numbers
 
-    :param struct cpufreq_cooling_device \*cpufreq_cdev:
+    :param cpufreq_cdev:
         the cpufreq cooling device in which to update the table
+    :type cpufreq_cdev: struct cpufreq_cooling_device \*
 
-    :param u32 capacitance:
+    :param capacitance:
         dynamic power coefficient for these cpus
+    :type capacitance: u32
 
 .. _`update_freq_table.description`:
 
@@ -248,14 +255,17 @@ get_load
 
     get load for a cpu since last updated
 
-    :param struct cpufreq_cooling_device \*cpufreq_cdev:
+    :param cpufreq_cdev:
         \ :c:type:`struct cpufreq_cooling_device <cpufreq_cooling_device>`\  for this cpu
+    :type cpufreq_cdev: struct cpufreq_cooling_device \*
 
-    :param int cpu:
+    :param cpu:
         cpu number
+    :type cpu: int
 
-    :param int cpu_idx:
+    :param cpu_idx:
         index of the cpu in time_in_idle\*
+    :type cpu_idx: int
 
 .. _`get_load.return`:
 
@@ -274,11 +284,13 @@ get_dynamic_power
 
     calculate the dynamic power
 
-    :param struct cpufreq_cooling_device \*cpufreq_cdev:
+    :param cpufreq_cdev:
         \ :c:type:`struct cpufreq_cooling_device <cpufreq_cooling_device>`\  for this cdev
+    :type cpufreq_cdev: struct cpufreq_cooling_device \*
 
-    :param unsigned long freq:
+    :param freq:
         current frequency
+    :type freq: unsigned long
 
 .. _`get_dynamic_power.return`:
 
@@ -297,11 +309,13 @@ cpufreq_get_max_state
 
     callback function to get the max cooling state.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         thermal cooling device pointer.
+    :type cdev: struct thermal_cooling_device \*
 
-    :param unsigned long \*state:
+    :param state:
         fill this variable with the max cooling state.
+    :type state: unsigned long \*
 
 .. _`cpufreq_get_max_state.description`:
 
@@ -327,11 +341,13 @@ cpufreq_get_cur_state
 
     callback function to get the current cooling state.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         thermal cooling device pointer.
+    :type cdev: struct thermal_cooling_device \*
 
-    :param unsigned long \*state:
+    :param state:
         fill this variable with the current cooling state.
+    :type state: unsigned long \*
 
 .. _`cpufreq_get_cur_state.description`:
 
@@ -357,11 +373,13 @@ cpufreq_set_cur_state
 
     callback function to set the current cooling state.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         thermal cooling device pointer.
+    :type cdev: struct thermal_cooling_device \*
 
-    :param unsigned long state:
+    :param state:
         set this variable to the current cooling state.
+    :type state: unsigned long
 
 .. _`cpufreq_set_cur_state.description`:
 
@@ -387,14 +405,17 @@ cpufreq_get_requested_power
 
     get the current power
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\  pointer
+    :type cdev: struct thermal_cooling_device \*
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         a valid thermal zone device pointer
+    :type tz: struct thermal_zone_device \*
 
-    :param u32 \*power:
+    :param power:
         pointer in which to store the resulting power
+    :type power: u32 \*
 
 .. _`cpufreq_get_requested_power.description`:
 
@@ -432,17 +453,21 @@ cpufreq_state2power
 
     convert a cpu cdev state to power consumed
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\  pointer
+    :type cdev: struct thermal_cooling_device \*
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         a valid thermal zone device pointer
+    :type tz: struct thermal_zone_device \*
 
-    :param unsigned long state:
+    :param state:
         cooling device state to be converted
+    :type state: unsigned long
 
-    :param u32 \*power:
+    :param power:
         pointer in which to store the resulting power
+    :type power: u32 \*
 
 .. _`cpufreq_state2power.description`:
 
@@ -471,17 +496,21 @@ cpufreq_power2state
 
     convert power to a cooling device state
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\  pointer
+    :type cdev: struct thermal_cooling_device \*
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         a valid thermal zone device pointer
+    :type tz: struct thermal_zone_device \*
 
-    :param u32 power:
+    :param power:
         power in milliwatts to be converted
+    :type power: u32
 
-    :param unsigned long \*state:
+    :param state:
         pointer in which to store the resulting state
+    :type state: unsigned long \*
 
 .. _`cpufreq_power2state.description`:
 
@@ -515,15 +544,18 @@ device.
 
     helper function to create cpufreq cooling device
 
-    :param struct device_node \*np:
+    :param np:
         a valid struct device_node to the cooling device device tree node
+    :type np: struct device_node \*
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         cpufreq policy
         Normally this should be same as cpufreq policy->related_cpus.
+    :type policy: struct cpufreq_policy \*
 
-    :param u32 capacitance:
+    :param capacitance:
         dynamic power coefficient for these cpus
+    :type capacitance: u32
 
 .. _`__cpufreq_cooling_register.description`:
 
@@ -552,8 +584,9 @@ cpufreq_cooling_register
 
     function to create cpufreq cooling device.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         cpufreq policy
+    :type policy: struct cpufreq_policy \*
 
 .. _`cpufreq_cooling_register.description`:
 
@@ -581,8 +614,9 @@ of_cpufreq_cooling_register
 
     function to create cpufreq cooling device.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         cpufreq policy
+    :type policy: struct cpufreq_policy \*
 
 .. _`of_cpufreq_cooling_register.description`:
 
@@ -618,8 +652,9 @@ cpufreq_cooling_unregister
 
     function to remove cpufreq cooling device.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         thermal cooling device pointer.
+    :type cdev: struct thermal_cooling_device \*
 
 .. _`cpufreq_cooling_unregister.description`:
 

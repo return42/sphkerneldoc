@@ -10,11 +10,13 @@ acpi_scan_drop_device
 
     Drop an ACPI device object.
 
-    :param acpi_handle handle:
+    :param handle:
         Handle of an ACPI namespace node, not used.
+    :type handle: acpi_handle
 
-    :param void \*context:
+    :param context:
         Address of the ACPI device object to drop.
+    :type context: void \*
 
 .. _`acpi_scan_drop_device.description`:
 
@@ -38,8 +40,9 @@ acpi_dma_supported
 
     Check DMA support for the specified device.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         The pointer to acpi device
+    :type adev: struct acpi_device \*
 
 .. _`acpi_dma_supported.description`:
 
@@ -57,8 +60,9 @@ acpi_get_dma_attr
 
     Check the supported DMA attr for the specified device.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         The pointer to acpi device
+    :type adev: struct acpi_device \*
 
 .. _`acpi_get_dma_attr.description`:
 
@@ -76,17 +80,21 @@ acpi_dma_get_range
 
     Get device DMA parameters.
 
-    :param struct device \*dev:
+    :param dev:
         device to configure
+    :type dev: struct device \*
 
-    :param u64 \*dma_addr:
+    :param dma_addr:
         pointer device DMA address result
+    :type dma_addr: u64 \*
 
-    :param u64 \*offset:
+    :param offset:
         pointer to the DMA offset result
+    :type offset: u64 \*
 
-    :param u64 \*size:
+    :param size:
         pointer to DMA range size result
+    :type size: u64 \*
 
 .. _`acpi_dma_get_range.description`:
 
@@ -108,23 +116,13 @@ acpi_dma_configure
 
     Set-up DMA configuration for the device.
 
-    :param struct device \*dev:
+    :param dev:
         The pointer to the device
+    :type dev: struct device \*
 
-    :param enum dev_dma_attr attr:
+    :param attr:
         device dma attributes
-
-.. _`acpi_dma_deconfigure`:
-
-acpi_dma_deconfigure
-====================
-
-.. c:function:: void acpi_dma_deconfigure(struct device *dev)
-
-    Tear-down DMA configuration for the device.
-
-    :param struct device \*dev:
-        The pointer to the device
+    :type attr: enum dev_dma_attr
 
 .. _`acpi_bus_scan`:
 
@@ -135,8 +133,9 @@ acpi_bus_scan
 
     Add ACPI device node objects in a given namespace scope.
 
-    :param acpi_handle handle:
+    :param handle:
         Root of the namespace scope to scan.
+    :type handle: acpi_handle
 
 .. _`acpi_bus_scan.description`:
 
@@ -162,8 +161,9 @@ acpi_bus_trim
 
     Detach scan handlers and drivers from ACPI device objects.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         Root of the ACPI namespace scope to walk.
+    :type adev: struct acpi_device \*
 
 .. _`acpi_bus_trim.description`:
 

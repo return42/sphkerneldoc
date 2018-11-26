@@ -10,11 +10,13 @@ scif_cnctreq
 
     Respond to SCIF_CNCT_REQ interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_cnctreq.description`:
 
@@ -40,11 +42,13 @@ scif_cnctgnt
 
     Respond to SCIF_CNCT_GNT interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_cnctgnt.description`:
 
@@ -65,11 +69,13 @@ scif_cnctgnt_ack
 
     Respond to SCIF_CNCT_GNTACK interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_cnctgnt_ack.description`:
 
@@ -89,11 +95,13 @@ scif_cnctgnt_nack
 
     Respond to SCIF_CNCT_GNTNACK interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_cnctgnt_nack.description`:
 
@@ -113,11 +121,13 @@ scif_cnctrej
 
     Respond to SCIF_CNCT_REJ interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_cnctrej.description`:
 
@@ -136,11 +146,13 @@ scif_discnct
 
     Respond to SCIF_DISCNCT interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_discnct.description`:
 
@@ -165,11 +177,13 @@ scif_discnt_ack
 
     Respond to SCIF_DISCNT_ACK interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_discnt_ack.description`:
 
@@ -187,11 +201,13 @@ scif_clientsend
 
     Respond to SCIF_CLIENT_SEND interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_clientsend.description`:
 
@@ -209,11 +225,13 @@ scif_clientrcvd
 
     Respond to SCIF_CLIENT_RCVD interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_clientrcvd.description`:
 

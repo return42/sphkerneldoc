@@ -10,18 +10,20 @@ task_set_jobctl_pending
 
     set jobctl pending bits
 
-    :param struct task_struct \*task:
+    :param task:
         target task
+    :type task: struct task_struct \*
 
-    :param unsigned long mask:
+    :param mask:
         pending bits to set
+    :type mask: unsigned long
 
 .. _`task_set_jobctl_pending.description`:
 
 Description
 -----------
 
-Clear \ ``mask``\  from \ ``task``\ ->jobctl.  \ ``mask``\  must be subset of
+Clear \ ``mask``\  from \ ``task->jobctl``\ .  \ ``mask``\  must be subset of
 \ ``JOBCTL_PENDING_MASK``\  | \ ``JOBCTL_STOP_CONSUME``\  | \ ``JOBCTL_STOP_SIGMASK``\  |
 \ ``JOBCTL_TRAPPING``\ .  If stop signo is being set, the existing signo is
 cleared.  If \ ``task``\  is already being killed or exiting, this function
@@ -32,7 +34,7 @@ becomes noop.
 Context
 -------
 
-Must be called with \ ``task``\ ->sighand->siglock held.
+Must be called with \ ``task->sighand->siglock``\  held.
 
 .. _`task_set_jobctl_pending.return`:
 
@@ -50,8 +52,9 @@ task_clear_jobctl_trapping
 
     clear jobctl trapping bit
 
-    :param struct task_struct \*task:
+    :param task:
         target task
+    :type task: struct task_struct \*
 
 .. _`task_clear_jobctl_trapping.description`:
 
@@ -60,7 +63,7 @@ Description
 
 If JOBCTL_TRAPPING is set, a ptracer is waiting for us to enter TRACED.
 Clear it and wake up the ptracer.  Note that we don't need any further
-locking.  \ ``task``\ ->siglock guarantees that \ ``task``\ ->parent points to the
+locking.  \ ``task->siglock``\  guarantees that \ ``task->parent``\  points to the
 ptracer.
 
 .. _`task_clear_jobctl_trapping.context`:
@@ -68,7 +71,7 @@ ptracer.
 Context
 -------
 
-Must be called with \ ``task``\ ->sighand->siglock held.
+Must be called with \ ``task->sighand->siglock``\  held.
 
 .. _`task_clear_jobctl_pending`:
 
@@ -79,18 +82,20 @@ task_clear_jobctl_pending
 
     clear jobctl pending bits
 
-    :param struct task_struct \*task:
+    :param task:
         target task
+    :type task: struct task_struct \*
 
-    :param unsigned long mask:
+    :param mask:
         pending bits to clear
+    :type mask: unsigned long
 
 .. _`task_clear_jobctl_pending.description`:
 
 Description
 -----------
 
-Clear \ ``mask``\  from \ ``task``\ ->jobctl.  \ ``mask``\  must be subset of
+Clear \ ``mask``\  from \ ``task->jobctl``\ .  \ ``mask``\  must be subset of
 \ ``JOBCTL_PENDING_MASK``\ .  If \ ``JOBCTL_STOP_PENDING``\  is being cleared, other
 STOP bits are cleared together.
 
@@ -102,7 +107,7 @@ If clearing of \ ``mask``\  leaves no stop or trap pending, this function calls
 Context
 -------
 
-Must be called with \ ``task``\ ->sighand->siglock held.
+Must be called with \ ``task->sighand->siglock``\  held.
 
 .. _`task_participate_group_stop`:
 
@@ -113,8 +118,9 @@ task_participate_group_stop
 
     participate in a group stop
 
-    :param struct task_struct \*task:
+    :param task:
         task participating in a group stop
+    :type task: struct task_struct \*
 
 .. _`task_participate_group_stop.description`:
 
@@ -131,7 +137,7 @@ stop, the appropriate \ ``SIGNAL_``\ * flags are set.
 Context
 -------
 
-Must be called with \ ``task``\ ->sighand->siglock held.
+Must be called with \ ``task->sighand->siglock``\  held.
 
 .. _`task_participate_group_stop.return`:
 
@@ -150,8 +156,9 @@ ptrace_trap_notify
 
     schedule trap to notify ptracer
 
-    :param struct task_struct \*t:
+    :param t:
         tracee wanting to notify tracer
+    :type t: struct task_struct \*
 
 .. _`ptrace_trap_notify.description`:
 
@@ -173,7 +180,7 @@ are finished by PTRACE_CONT.
 Context
 -------
 
-Must be called with \ ``task``\ ->sighand->siglock held.
+Must be called with \ ``task->sighand->siglock``\  held.
 
 .. _`do_notify_parent_cldstop`:
 
@@ -184,14 +191,17 @@ do_notify_parent_cldstop
 
     notify parent of stopped/continued state change
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         task reporting the state change
+    :type tsk: struct task_struct \*
 
-    :param bool for_ptracer:
+    :param for_ptracer:
         the notification is for ptracer
+    :type for_ptracer: bool
 
-    :param int why:
+    :param why:
         CLD_{CONTINUED|STOPPED|TRAPPED} to report
+    :type why: int
 
 .. _`do_notify_parent_cldstop.description`:
 
@@ -200,7 +210,7 @@ Description
 
 Notify \ ``tsk``\ 's parent that the stopped/continued state has changed.  If
 \ ``for_ptracer``\  is \ ``false``\ , \ ``tsk``\ 's group leader notifies to its real parent.
-If \ ``true``\ , \ ``tsk``\  reports to \ ``tsk``\ ->parent which should be the ptracer.
+If \ ``true``\ , \ ``tsk``\  reports to \ ``tsk->parent``\  which should be the ptracer.
 
 .. _`do_notify_parent_cldstop.context`:
 
@@ -218,8 +228,9 @@ do_signal_stop
 
     handle group stop for SIGSTOP and other stop signals
 
-    :param int signr:
+    :param signr:
         signr causing group stop if initiating
+    :type signr: int
 
 .. _`do_signal_stop.description`:
 
@@ -241,7 +252,7 @@ places afterwards.
 Context
 -------
 
-Must be called with \ ``current``\ ->sighand->siglock held, which is released
+Must be called with \ ``current->sighand->siglock``\  held, which is released
 on \ ``true``\  return.
 
 .. _`do_signal_stop.return`:
@@ -261,8 +272,9 @@ do_jobctl_trap
 
     take care of ptrace jobctl traps
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`do_jobctl_trap.description`:
 
@@ -282,7 +294,7 @@ number as exit_code and no siginfo.
 Context
 -------
 
-Must be called with \ ``current``\ ->sighand->siglock held, which may be
+Must be called with \ ``current->sighand->siglock``\  held, which may be
 released and re-acquired before returning with intervening sleep.
 
 .. _`signal_delivered`:
@@ -292,11 +304,13 @@ signal_delivered
 
 .. c:function:: void signal_delivered(struct ksignal *ksig, int stepping)
 
-    :param struct ksignal \*ksig:
+    :param ksig:
         kernel signal struct
+    :type ksig: struct ksignal \*
 
-    :param int stepping:
+    :param stepping:
         nonzero if debugger single-step or block-step in use
+    :type stepping: int
 
 .. _`signal_delivered.description`:
 
@@ -306,7 +320,7 @@ Description
 This function should be called when a signal has successfully been
 delivered. It updates the blocked signals accordingly (@ksig->ka.sa.sa_mask
 is always blocked, and the signal itself is blocked unless \ ``SA_NODEFER``\ 
-is set in \ ``ksig``\ ->ka.sa.sa_flags.  Tracing is notified.
+is set in \ ``ksig->ka.sa.sa_flags``\ .  Tracing is notified.
 
 .. _`sys_restart_syscall`:
 
@@ -317,8 +331,9 @@ sys_restart_syscall
 
     restart a system call
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`set_current_blocked`:
 
@@ -329,8 +344,9 @@ set_current_blocked
 
     change current->blocked mask
 
-    :param sigset_t \*newset:
+    :param newset:
         new mask
+    :type newset: sigset_t \*
 
 .. _`set_current_blocked.description`:
 
@@ -349,17 +365,21 @@ sys_rt_sigprocmask
 
     change the list of currently blocked signals
 
-    :param int how:
+    :param how:
         whether to add, remove, or set signals
+    :type how: int
 
-    :param sigset_t __user \*nset:
+    :param nset:
         stores pending signals
+    :type nset: sigset_t __user \*
 
-    :param sigset_t __user \*oset:
+    :param oset:
         previous value of signal mask if non-null
+    :type oset: sigset_t __user \*
 
-    :param size_t sigsetsize:
+    :param sigsetsize:
         size of sigset_t type
+    :type sigsetsize: size_t
 
 .. _`sys_rt_sigpending`:
 
@@ -370,50 +390,59 @@ sys_rt_sigpending
 
     examine a pending signal that has been raised while blocked
 
-    :param sigset_t __user \*uset:
+    :param uset:
         stores pending signals
+    :type uset: sigset_t __user \*
 
-    :param size_t sigsetsize:
+    :param sigsetsize:
         size of sigset_t type or larger
+    :type sigsetsize: size_t
 
 .. _`do_sigtimedwait`:
 
 do_sigtimedwait
 ===============
 
-.. c:function:: int do_sigtimedwait(const sigset_t *which, siginfo_t *info, const struct timespec *ts)
+.. c:function:: int do_sigtimedwait(const sigset_t *which, kernel_siginfo_t *info, const struct timespec64 *ts)
 
     wait for queued signals specified in \ ``which``\ 
 
-    :param const sigset_t \*which:
+    :param which:
         queued signals to wait for
+    :type which: const sigset_t \*
 
-    :param siginfo_t \*info:
+    :param info:
         if non-null, the signal's siginfo is returned here
+    :type info: kernel_siginfo_t \*
 
-    :param const struct timespec \*ts:
+    :param ts:
         upper bound on process time suspension
+    :type ts: const struct timespec64 \*
 
 .. _`sys_rt_sigtimedwait`:
 
 sys_rt_sigtimedwait
 ===================
 
-.. c:function:: long sys_rt_sigtimedwait(const sigset_t __user *uthese, siginfo_t __user *uinfo, const struct timespec __user *uts, size_t sigsetsize)
+.. c:function:: long sys_rt_sigtimedwait(const sigset_t __user *uthese, siginfo_t __user *uinfo, const struct __kernel_timespec __user *uts, size_t sigsetsize)
 
     synchronously wait for queued signals specified in \ ``uthese``\ 
 
-    :param const sigset_t __user \*uthese:
+    :param uthese:
         queued signals to wait for
+    :type uthese: const sigset_t __user \*
 
-    :param siginfo_t __user \*uinfo:
+    :param uinfo:
         if non-null, the signal's siginfo is returned here
+    :type uinfo: siginfo_t __user \*
 
-    :param const struct timespec __user \*uts:
+    :param uts:
         upper bound on process time suspension
+    :type uts: const struct __kernel_timespec __user \*
 
-    :param size_t sigsetsize:
+    :param sigsetsize:
         size of sigset_t type
+    :type sigsetsize: size_t
 
 .. _`sys_kill`:
 
@@ -424,11 +453,13 @@ sys_kill
 
     send a signal to a process
 
-    :param pid_t pid:
+    :param pid:
         the PID of the process
+    :type pid: pid_t
 
-    :param int sig:
+    :param sig:
         signal to be sent
+    :type sig: int
 
 .. _`sys_tgkill`:
 
@@ -439,14 +470,17 @@ sys_tgkill
 
     send signal to one specific thread
 
-    :param pid_t tgid:
+    :param tgid:
         the thread group ID of the thread
+    :type tgid: pid_t
 
-    :param pid_t pid:
+    :param pid:
         the PID of the thread
+    :type pid: pid_t
 
-    :param int sig:
+    :param sig:
         signal to be sent
+    :type sig: int
 
 .. _`sys_tgkill.description`:
 
@@ -466,11 +500,13 @@ sys_tkill
 
     send signal to one specific task
 
-    :param pid_t pid:
+    :param pid:
         the PID of the task
+    :type pid: pid_t
 
-    :param int sig:
+    :param sig:
         signal to be sent
+    :type sig: int
 
 .. _`sys_tkill.description`:
 
@@ -488,14 +524,17 @@ sys_rt_sigqueueinfo
 
     send signal information to a signal
 
-    :param pid_t pid:
+    :param pid:
         the PID of the thread
+    :type pid: pid_t
 
-    :param int sig:
+    :param sig:
         signal to be sent
+    :type sig: int
 
-    :param siginfo_t __user \*uinfo:
+    :param uinfo:
         signal info to be sent
+    :type uinfo: siginfo_t __user \*
 
 .. _`sys_sigpending`:
 
@@ -506,8 +545,9 @@ sys_sigpending
 
     examine pending signals
 
-    :param old_sigset_t __user \*uset:
+    :param uset:
         where mask of pending signal is returned
+    :type uset: old_sigset_t __user \*
 
 .. _`sys_sigprocmask`:
 
@@ -518,14 +558,17 @@ sys_sigprocmask
 
     examine and change blocked signals
 
-    :param int how:
+    :param how:
         whether to add, remove, or set signals
+    :type how: int
 
-    :param old_sigset_t __user \*nset:
+    :param nset:
         signals to add or remove (if non-null)
+    :type nset: old_sigset_t __user \*
 
-    :param old_sigset_t __user \*oset:
+    :param oset:
         previous value of signal mask if non-null
+    :type oset: old_sigset_t __user \*
 
 .. _`sys_sigprocmask.description`:
 
@@ -544,17 +587,21 @@ sys_rt_sigaction
 
     alter an action taken by a process
 
-    :param int sig:
+    :param sig:
         signal to be sent
+    :type sig: int
 
-    :param const struct sigaction __user \*act:
+    :param act:
         new sigaction
+    :type act: const struct sigaction __user \*
 
-    :param struct sigaction __user \*oact:
+    :param oact:
         used to save the previous sigaction
+    :type oact: struct sigaction __user \*
 
-    :param size_t sigsetsize:
+    :param sigsetsize:
         size of sigset_t type
+    :type sigsetsize: size_t
 
 .. _`sys_rt_sigsuspend`:
 
@@ -565,11 +612,13 @@ sys_rt_sigsuspend
 
     replace the signal mask for a value with the \ ``unewset``\  value until a signal is received
 
-    :param sigset_t __user \*unewset:
+    :param unewset:
         new signal mask value
+    :type unewset: sigset_t __user \*
 
-    :param size_t sigsetsize:
+    :param sigsetsize:
         size of sigset_t type
+    :type sigsetsize: size_t
 
 .. This file was automatic generated / don't edit.
 

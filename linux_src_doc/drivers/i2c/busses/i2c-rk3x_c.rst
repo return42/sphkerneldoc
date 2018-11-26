@@ -229,8 +229,9 @@ rk3x_i2c_start
 
 .. c:function:: void rk3x_i2c_start(struct rk3x_i2c *i2c)
 
-    :param struct rk3x_i2c \*i2c:
+    :param i2c:
         *undescribed*
+    :type i2c: struct rk3x_i2c \*
 
 .. _`rk3x_i2c_stop`:
 
@@ -239,11 +240,13 @@ rk3x_i2c_stop
 
 .. c:function:: void rk3x_i2c_stop(struct rk3x_i2c *i2c, int error)
 
-    :param struct rk3x_i2c \*i2c:
+    :param i2c:
         *undescribed*
+    :type i2c: struct rk3x_i2c \*
 
-    :param int error:
+    :param error:
         Error code to return in rk3x_i2c_xfer
+    :type error: int
 
 .. _`rk3x_i2c_prepare_read`:
 
@@ -254,8 +257,9 @@ rk3x_i2c_prepare_read
 
     >msg
 
-    :param struct rk3x_i2c \*i2c:
+    :param i2c:
         *undescribed*
+    :type i2c: struct rk3x_i2c \*
 
 .. _`rk3x_i2c_fill_transmit_buf`:
 
@@ -266,8 +270,9 @@ rk3x_i2c_fill_transmit_buf
 
     >msg
 
-    :param struct rk3x_i2c \*i2c:
+    :param i2c:
         *undescribed*
+    :type i2c: struct rk3x_i2c \*
 
 .. _`rk3x_i2c_get_spec`:
 
@@ -276,8 +281,9 @@ rk3x_i2c_get_spec
 
 .. c:function:: const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
 
-    :param unsigned int speed:
+    :param speed:
         Desired SCL frequency
+    :type speed: unsigned int
 
 .. _`rk3x_i2c_get_spec.return`:
 
@@ -293,14 +299,17 @@ rk3x_i2c_v0_calc_timings
 
 .. c:function:: int rk3x_i2c_v0_calc_timings(unsigned long clk_rate, struct i2c_timings *t, struct rk3x_i2c_calced_timings *t_calc)
 
-    :param unsigned long clk_rate:
+    :param clk_rate:
         I2C input clock rate
+    :type clk_rate: unsigned long
 
-    :param struct i2c_timings \*t:
+    :param t:
         Known I2C timing information
+    :type t: struct i2c_timings \*
 
-    :param struct rk3x_i2c_calced_timings \*t_calc:
+    :param t_calc:
         Caculated rk3x private timings that would be written into regs
+    :type t_calc: struct rk3x_i2c_calced_timings \*
 
 .. _`rk3x_i2c_v0_calc_timings.return`:
 
@@ -318,14 +327,17 @@ rk3x_i2c_v1_calc_timings
 
 .. c:function:: int rk3x_i2c_v1_calc_timings(unsigned long clk_rate, struct i2c_timings *t, struct rk3x_i2c_calced_timings *t_calc)
 
-    :param unsigned long clk_rate:
+    :param clk_rate:
         I2C input clock rate
+    :type clk_rate: unsigned long
 
-    :param struct i2c_timings \*t:
+    :param t:
         Known I2C timing information
+    :type t: struct i2c_timings \*
 
-    :param struct rk3x_i2c_calced_timings \*t_calc:
+    :param t_calc:
         Caculated rk3x private timings that would be written into regs
+    :type t_calc: struct rk3x_i2c_calced_timings \*
 
 .. _`rk3x_i2c_v1_calc_timings.return`:
 
@@ -364,14 +376,17 @@ rk3x_i2c_clk_notifier_cb
 
     Clock rate change callback
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Pointer to notifier block
+    :type nb: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         Notification reason
+    :type event: unsigned long
 
-    :param void \*data:
+    :param data:
         Pointer to notification data object
+    :type data: void \*
 
 .. _`rk3x_i2c_clk_notifier_cb.description`:
 
@@ -401,14 +416,17 @@ rk3x_i2c_setup
 
 .. c:function:: int rk3x_i2c_setup(struct rk3x_i2c *i2c, struct i2c_msg *msgs, int num)
 
-    :param struct rk3x_i2c \*i2c:
+    :param i2c:
         *undescribed*
+    :type i2c: struct rk3x_i2c \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         I2C msgs to process
+    :type msgs: struct i2c_msg \*
 
-    :param int num:
+    :param num:
         Number of msgs
+    :type num: int
 
 .. _`rk3x_i2c_setup.description`:
 

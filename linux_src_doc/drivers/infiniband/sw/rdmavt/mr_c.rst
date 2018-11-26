@@ -10,8 +10,9 @@ rvt_driver_mr_init
 
     Init MR resources per driver
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev struct
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_driver_mr_init.description`:
 
@@ -36,8 +37,9 @@ rvt_mr_exit
 
     clean up MR \ ``rdi``\ : rvt dev structure
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         *undescribed*
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_mr_exit.description`:
 
@@ -55,11 +57,13 @@ rvt_alloc_lkey
 
     allocate an lkey
 
-    :param struct rvt_mregion \*mr:
+    :param mr:
         memory region that this lkey protects
+    :type mr: struct rvt_mregion \*
 
-    :param int dma_region:
+    :param dma_region:
         0->normal key, 1->restricted DMA key
+    :type dma_region: int
 
 .. _`rvt_alloc_lkey.description`:
 
@@ -81,8 +85,9 @@ rvt_free_lkey
 
     free an lkey
 
-    :param struct rvt_mregion \*mr:
+    :param mr:
         mr to free from tables
+    :type mr: struct rvt_mregion \*
 
 .. _`rvt_get_dma_mr`:
 
@@ -93,11 +98,13 @@ rvt_get_dma_mr
 
     get a DMA memory region
 
-    :param struct ib_pd \*pd:
+    :param pd:
         protection domain for this memory region
+    :type pd: struct ib_pd \*
 
-    :param int acc:
+    :param acc:
         access flags
+    :type acc: int
 
 .. _`rvt_get_dma_mr.return`:
 
@@ -117,23 +124,29 @@ rvt_reg_user_mr
 
     register a userspace memory region
 
-    :param struct ib_pd \*pd:
+    :param pd:
         protection domain for this memory region
+    :type pd: struct ib_pd \*
 
-    :param u64 start:
+    :param start:
         starting userspace address
+    :type start: u64
 
-    :param u64 length:
+    :param length:
         length of region to register
+    :type length: u64
 
-    :param u64 virt_addr:
+    :param virt_addr:
         *undescribed*
+    :type virt_addr: u64
 
-    :param int mr_access_flags:
+    :param mr_access_flags:
         access flags for this memory region
+    :type mr_access_flags: int
 
-    :param struct ib_udata \*udata:
+    :param udata:
         unused by the driver
+    :type udata: struct ib_udata \*
 
 .. _`rvt_reg_user_mr.return`:
 
@@ -151,11 +164,13 @@ rvt_dereg_clean_qp_cb
 
     callback from iterator \ ``qp``\  - the qp \ ``v``\  - the mregion (as u64)
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param u64 v:
+    :param v:
         *undescribed*
+    :type v: u64
 
 .. _`rvt_dereg_clean_qp_cb.description`:
 
@@ -175,8 +190,9 @@ rvt_dereg_clean_qps
 
     find QPs for reference cleanup \ ``mr``\  - the MR that is being deregistered
 
-    :param struct rvt_mregion \*mr:
+    :param mr:
         *undescribed*
+    :type mr: struct rvt_mregion \*
 
 .. _`rvt_dereg_clean_qps.description`:
 
@@ -195,11 +211,13 @@ rvt_check_refs
 
     check references \ ``mr``\  - the megion \ ``t``\  - the caller identification
 
-    :param struct rvt_mregion \*mr:
+    :param mr:
         *undescribed*
+    :type mr: struct rvt_mregion \*
 
-    :param const char \*t:
+    :param t:
         *undescribed*
+    :type t: const char \*
 
 .. _`rvt_check_refs.description`:
 
@@ -221,11 +239,13 @@ rvt_mr_has_lkey
 
     is MR \ ``mr``\  - the mregion \ ``lkey``\  - the lkey
 
-    :param struct rvt_mregion \*mr:
+    :param mr:
         *undescribed*
+    :type mr: struct rvt_mregion \*
 
-    :param u32 lkey:
+    :param lkey:
         *undescribed*
+    :type lkey: u32
 
 .. _`rvt_ss_has_lkey`:
 
@@ -236,11 +256,13 @@ rvt_ss_has_lkey
 
     is mr in sge tests \ ``ss``\  - the sge state \ ``lkey``\ 
 
-    :param struct rvt_sge_state \*ss:
+    :param ss:
         *undescribed*
+    :type ss: struct rvt_sge_state \*
 
-    :param u32 lkey:
+    :param lkey:
         *undescribed*
+    :type lkey: u32
 
 .. _`rvt_ss_has_lkey.description`:
 
@@ -259,8 +281,9 @@ rvt_dereg_mr
 
     unregister and free a memory region
 
-    :param struct ib_mr \*ibmr:
+    :param ibmr:
         the memory region to free
+    :type ibmr: struct ib_mr \*
 
 .. _`rvt_dereg_mr.description`:
 
@@ -282,14 +305,17 @@ rvt_alloc_mr
 
     Allocate a memory region usable with the
 
-    :param struct ib_pd \*pd:
+    :param pd:
         protection domain for this memory region
+    :type pd: struct ib_pd \*
 
-    :param enum ib_mr_type mr_type:
+    :param mr_type:
         mem region type
+    :type mr_type: enum ib_mr_type
 
-    :param u32 max_num_sg:
+    :param max_num_sg:
         Max number of segments allowed
+    :type max_num_sg: u32
 
 .. _`rvt_alloc_mr.return`:
 
@@ -307,11 +333,13 @@ rvt_set_page
 
     page assignment function called by ib_sg_to_pages
 
-    :param struct ib_mr \*ibmr:
+    :param ibmr:
         memory region
+    :type ibmr: struct ib_mr \*
 
-    :param u64 addr:
+    :param addr:
         dma address of mapped page
+    :type addr: u64
 
 .. _`rvt_set_page.return`:
 
@@ -329,17 +357,21 @@ rvt_map_mr_sg
 
     map sg list and set it the memory region
 
-    :param struct ib_mr \*ibmr:
+    :param ibmr:
         memory region
+    :type ibmr: struct ib_mr \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         dma mapped scatterlist
+    :type sg: struct scatterlist \*
 
-    :param int sg_nents:
+    :param sg_nents:
         number of entries in sg
+    :type sg_nents: int
 
-    :param unsigned int \*sg_offset:
+    :param sg_offset:
         offset in bytes into sg
+    :type sg_offset: unsigned int \*
 
 .. _`rvt_map_mr_sg.return`:
 
@@ -357,17 +389,21 @@ rvt_fast_reg_mr
 
     fast register physical MR
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the queue pair where the work request comes from
+    :type qp: struct rvt_qp \*
 
-    :param struct ib_mr \*ibmr:
+    :param ibmr:
         the memory region to be registered
+    :type ibmr: struct ib_mr \*
 
-    :param u32 key:
+    :param key:
         updated key for this memory region
+    :type key: u32
 
-    :param int access:
+    :param access:
         access flags for this memory region
+    :type access: int
 
 .. _`rvt_fast_reg_mr.description`:
 
@@ -385,11 +421,13 @@ rvt_invalidate_rkey
 
     invalidate an MR rkey
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         queue pair associated with the invalidate op
+    :type qp: struct rvt_qp \*
 
-    :param u32 rkey:
+    :param rkey:
         rkey to invalidate
+    :type rkey: u32
 
 .. _`rvt_invalidate_rkey.description`:
 
@@ -407,14 +445,17 @@ rvt_alloc_fmr
 
     allocate a fast memory region
 
-    :param struct ib_pd \*pd:
+    :param pd:
         the protection domain for this memory region
+    :type pd: struct ib_pd \*
 
-    :param int mr_access_flags:
+    :param mr_access_flags:
         access flags for this memory region
+    :type mr_access_flags: int
 
-    :param struct ib_fmr_attr \*fmr_attr:
+    :param fmr_attr:
         fast memory region attributes
+    :type fmr_attr: struct ib_fmr_attr \*
 
 .. _`rvt_alloc_fmr.return`:
 
@@ -432,17 +473,21 @@ rvt_map_phys_fmr
 
     set up a fast memory region
 
-    :param struct ib_fmr \*ibfmr:
+    :param ibfmr:
         the fast memory region to set up
+    :type ibfmr: struct ib_fmr \*
 
-    :param u64 \*page_list:
+    :param page_list:
         the list of pages to associate with the fast memory region
+    :type page_list: u64 \*
 
-    :param int list_len:
+    :param list_len:
         the number of pages to associate with the fast memory region
+    :type list_len: int
 
-    :param u64 iova:
+    :param iova:
         the virtual address of the start of the fast memory region
+    :type iova: u64
 
 .. _`rvt_map_phys_fmr.description`:
 
@@ -467,8 +512,9 @@ rvt_unmap_fmr
 
     unmap fast memory regions
 
-    :param struct list_head \*fmr_list:
+    :param fmr_list:
         the list of fast memory regions to unmap
+    :type fmr_list: struct list_head \*
 
 .. _`rvt_unmap_fmr.return`:
 
@@ -486,8 +532,9 @@ rvt_dealloc_fmr
 
     deallocate a fast memory region
 
-    :param struct ib_fmr \*ibfmr:
+    :param ibfmr:
         the fast memory region to deallocate
+    :type ibfmr: struct ib_fmr \*
 
 .. _`rvt_dealloc_fmr.return`:
 
@@ -505,11 +552,13 @@ rvt_sge_adjacent
 
     is isge compressible
 
-    :param struct rvt_sge \*last_sge:
+    :param last_sge:
         last outgoing SGE written
+    :type last_sge: struct rvt_sge \*
 
-    :param struct ib_sge \*sge:
+    :param sge:
         SGE to check
+    :type sge: struct ib_sge \*
 
 .. _`rvt_sge_adjacent.description`:
 
@@ -534,23 +583,29 @@ rvt_lkey_ok
 
     check IB SGE for validity and initialize
 
-    :param struct rvt_lkey_table \*rkt:
+    :param rkt:
         table containing lkey to check SGE against
+    :type rkt: struct rvt_lkey_table \*
 
-    :param struct rvt_pd \*pd:
+    :param pd:
         protection domain
+    :type pd: struct rvt_pd \*
 
-    :param struct rvt_sge \*isge:
+    :param isge:
         outgoing internal SGE
+    :type isge: struct rvt_sge \*
 
-    :param struct rvt_sge \*last_sge:
+    :param last_sge:
         last outgoing SGE written
+    :type last_sge: struct rvt_sge \*
 
-    :param struct ib_sge \*sge:
+    :param sge:
         SGE to check
+    :type sge: struct ib_sge \*
 
-    :param int acc:
+    :param acc:
         access flags
+    :type acc: int
 
 .. _`rvt_lkey_ok.description`:
 
@@ -578,23 +633,29 @@ rvt_rkey_ok
 
     check the IB virtual address, length, and RKEY
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         qp for validation
+    :type qp: struct rvt_qp \*
 
-    :param struct rvt_sge \*sge:
+    :param sge:
         SGE state
+    :type sge: struct rvt_sge \*
 
-    :param u32 len:
+    :param len:
         length of data
+    :type len: u32
 
-    :param u64 vaddr:
+    :param vaddr:
         virtual address to place data
+    :type vaddr: u64
 
-    :param u32 rkey:
+    :param rkey:
         rkey to check
+    :type rkey: u32
 
-    :param int acc:
+    :param acc:
         access flags
+    :type acc: int
 
 .. _`rvt_rkey_ok.return`:
 

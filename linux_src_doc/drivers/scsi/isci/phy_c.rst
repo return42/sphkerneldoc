@@ -10,8 +10,9 @@ phy_get_non_dummy_port
 
     currently contained by the dummy port, then the phy is considered to not be part of a port.
 
-    :param struct isci_phy \*iphy:
+    :param iphy:
         *undescribed*
+    :type iphy: struct isci_phy \*
 
 .. _`phy_get_non_dummy_port.description`:
 
@@ -30,11 +31,13 @@ sci_phy_set_port
 
 .. c:function:: void sci_phy_set_port(struct isci_phy *iphy, struct isci_port *iport)
 
-    :param struct isci_phy \*iphy:
+    :param iphy:
         *undescribed*
+    :type iphy: struct isci_phy \*
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
 .. _`sci_phy_set_port.description`:
 
@@ -50,11 +53,13 @@ sci_phy_setup_transport
 
 .. c:function:: void sci_phy_setup_transport(struct isci_phy *iphy, u32 device_id)
 
-    :param struct isci_phy \*iphy:
+    :param iphy:
         *undescribed*
+    :type iphy: struct isci_phy \*
 
-    :param u32 device_id:
+    :param device_id:
         *undescribed*
+    :type device_id: u32
 
 .. _`sci_phy_setup_transport.description`:
 
@@ -76,16 +81,19 @@ sci_phy_complete_link_training
 
     perform processing common to all protocols upon completion of link training.
 
-    :param struct isci_phy \*iphy:
+    :param iphy:
         *undescribed*
+    :type iphy: struct isci_phy \*
 
-    :param enum sas_linkrate max_link_rate:
+    :param max_link_rate:
         This parameter specifies the maximum link rate to be
         associated with this phy.
+    :type max_link_rate: enum sas_linkrate
 
-    :param u32 next_state:
+    :param next_state:
         This parameter specifies the next state for the phy's starting
         sub-state machine.
+    :type next_state: u32
 
 .. _`isci_phy_control`:
 
@@ -96,14 +104,17 @@ isci_phy_control
 
     This function is one of the SAS Domain Template functions. This is a phy management function.
 
-    :param struct asd_sas_phy \*sas_phy:
+    :param sas_phy:
         *undescribed*
+    :type sas_phy: struct asd_sas_phy \*
 
-    :param enum phy_func func:
+    :param func:
         This parameter specifies the phy control function being invoked.
+    :type func: enum phy_func
 
-    :param void \*buf:
+    :param buf:
         This parameter is specific to the phy function being invoked.
+    :type buf: void \*
 
 .. _`isci_phy_control.description`:
 

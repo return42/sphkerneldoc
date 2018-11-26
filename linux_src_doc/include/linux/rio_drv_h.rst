@@ -10,14 +10,17 @@ rio_local_read_config_32
 
     Read 32 bits from local configuration space
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port
+    :type port: struct rio_mport \*
 
-    :param u32 offset:
+    :param offset:
         Offset into local configuration space
+    :type offset: u32
 
-    :param u32 \*data:
+    :param data:
         Pointer to read data into
+    :type data: u32 \*
 
 .. _`rio_local_read_config_32.description`:
 
@@ -36,14 +39,17 @@ rio_local_write_config_32
 
     Write 32 bits to local configuration space
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port
+    :type port: struct rio_mport \*
 
-    :param u32 offset:
+    :param offset:
         Offset into local configuration space
+    :type offset: u32
 
-    :param u32 data:
+    :param data:
         Data to be written
+    :type data: u32
 
 .. _`rio_local_write_config_32.description`:
 
@@ -62,14 +68,17 @@ rio_local_read_config_16
 
     Read 16 bits from local configuration space
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port
+    :type port: struct rio_mport \*
 
-    :param u32 offset:
+    :param offset:
         Offset into local configuration space
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         Pointer to read data into
+    :type data: u16 \*
 
 .. _`rio_local_read_config_16.description`:
 
@@ -88,14 +97,17 @@ rio_local_write_config_16
 
     Write 16 bits to local configuration space
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port
+    :type port: struct rio_mport \*
 
-    :param u32 offset:
+    :param offset:
         Offset into local configuration space
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         Data to be written
+    :type data: u16
 
 .. _`rio_local_write_config_16.description`:
 
@@ -114,14 +126,17 @@ rio_local_read_config_8
 
     Read 8 bits from local configuration space
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port
+    :type port: struct rio_mport \*
 
-    :param u32 offset:
+    :param offset:
         Offset into local configuration space
+    :type offset: u32
 
-    :param u8 \*data:
+    :param data:
         Pointer to read data into
+    :type data: u8 \*
 
 .. _`rio_local_read_config_8.description`:
 
@@ -140,14 +155,17 @@ rio_local_write_config_8
 
     Write 8 bits to local configuration space
 
-    :param struct rio_mport \*port:
+    :param port:
         Master port
+    :type port: struct rio_mport \*
 
-    :param u32 offset:
+    :param offset:
         Offset into local configuration space
+    :type offset: u32
 
-    :param u8 data:
+    :param data:
         Data to be written
+    :type data: u8
 
 .. _`rio_local_write_config_8.description`:
 
@@ -166,14 +184,17 @@ rio_read_config_32
 
     Read 32 bits from configuration space
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param u32 offset:
+    :param offset:
         Offset into device configuration space
+    :type offset: u32
 
-    :param u32 \*data:
+    :param data:
         Pointer to read data into
+    :type data: u32 \*
 
 .. _`rio_read_config_32.description`:
 
@@ -192,14 +213,17 @@ rio_write_config_32
 
     Write 32 bits to configuration space
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param u32 offset:
+    :param offset:
         Offset into device configuration space
+    :type offset: u32
 
-    :param u32 data:
+    :param data:
         Data to be written
+    :type data: u32
 
 .. _`rio_write_config_32.description`:
 
@@ -218,14 +242,17 @@ rio_read_config_16
 
     Read 16 bits from configuration space
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param u32 offset:
+    :param offset:
         Offset into device configuration space
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         Pointer to read data into
+    :type data: u16 \*
 
 .. _`rio_read_config_16.description`:
 
@@ -244,14 +271,17 @@ rio_write_config_16
 
     Write 16 bits to configuration space
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param u32 offset:
+    :param offset:
         Offset into device configuration space
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         Data to be written
+    :type data: u16
 
 .. _`rio_write_config_16.description`:
 
@@ -270,14 +300,17 @@ rio_read_config_8
 
     Read 8 bits from configuration space
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param u32 offset:
+    :param offset:
         Offset into device configuration space
+    :type offset: u32
 
-    :param u8 \*data:
+    :param data:
         Pointer to read data into
+    :type data: u8 \*
 
 .. _`rio_read_config_8.description`:
 
@@ -296,14 +329,17 @@ rio_write_config_8
 
     Write 8 bits to configuration space
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param u32 offset:
+    :param offset:
         Offset into device configuration space
+    :type offset: u32
 
-    :param u8 data:
+    :param data:
         Data to be written
+    :type data: u8
 
 .. _`rio_write_config_8.description`:
 
@@ -322,11 +358,13 @@ rio_send_doorbell
 
     Send a doorbell message to a device
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param u16 data:
+    :param data:
         Doorbell message data
+    :type data: u16
 
 .. _`rio_send_doorbell.description`:
 
@@ -345,14 +383,17 @@ rio_init_mbox_res
 
     Initialize a RIO mailbox resource
 
-    :param struct resource \*res:
+    :param res:
         resource struct
+    :type res: struct resource \*
 
-    :param int start:
+    :param start:
         start of mailbox range
+    :type start: int
 
-    :param int end:
+    :param end:
         end of mailbox range
+    :type end: int
 
 .. _`rio_init_mbox_res.description`:
 
@@ -372,14 +413,17 @@ rio_init_dbell_res
 
     Initialize a RIO doorbell resource
 
-    :param struct resource \*res:
+    :param res:
         resource struct
+    :type res: struct resource \*
 
-    :param u16 start:
+    :param start:
         start of doorbell range
+    :type start: u16
 
-    :param u16 end:
+    :param end:
         end of doorbell range
+    :type end: u16
 
 .. _`rio_init_dbell_res.description`:
 
@@ -399,11 +443,13 @@ RIO_DEVICE
 
     macro used to describe a specific RIO device
 
-    :param  dev:
+    :param dev:
         the 16 bit RIO device ID
+    :type dev: 
 
-    :param  ven:
+    :param ven:
         the 16 bit RIO vendor ID
+    :type ven: 
 
 .. _`rio_device.description`:
 
@@ -423,20 +469,25 @@ rio_add_outb_message
 
     Add RIO message to an outbound mailbox queue
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port containing the outbound queue
+    :type mport: struct rio_mport \*
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device the message is be sent to
+    :type rdev: struct rio_dev \*
 
-    :param int mbox:
+    :param mbox:
         The outbound mailbox queue
+    :type mbox: int
 
-    :param void \*buffer:
+    :param buffer:
         Pointer to the message buffer
+    :type buffer: void \*
 
-    :param size_t len:
+    :param len:
         Length of the message buffer
+    :type len: size_t
 
 .. _`rio_add_outb_message.description`:
 
@@ -455,14 +506,17 @@ rio_add_inb_buffer
 
     Add buffer to an inbound mailbox queue
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port containing the inbound mailbox
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         The inbound mailbox number
+    :type mbox: int
 
-    :param void \*buffer:
+    :param buffer:
         Pointer to the message buffer
+    :type buffer: void \*
 
 .. _`rio_add_inb_buffer.description`:
 
@@ -481,11 +535,13 @@ rio_get_inb_message
 
     Get A RIO message from an inbound mailbox queue
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port containing the inbound mailbox
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         The inbound mailbox number
+    :type mbox: int
 
 .. _`rio_get_inb_message.description`:
 
@@ -503,8 +559,9 @@ rio_name
 
     Get the unique RIO device identifier
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
 .. _`rio_name.description`:
 
@@ -523,8 +580,9 @@ rio_get_drvdata
 
     Get RIO driver specific data
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
 .. _`rio_get_drvdata.description`:
 
@@ -543,11 +601,13 @@ rio_set_drvdata
 
     Set RIO driver specific data
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         RIO device
+    :type rdev: struct rio_dev \*
 
-    :param void \*data:
+    :param data:
         Pointer to driver specific data
+    :type data: void \*
 
 .. _`rio_set_drvdata.description`:
 

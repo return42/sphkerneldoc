@@ -10,8 +10,9 @@ if_usb_write_bulk_callback
 
     callback function to handle the status of the URB
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to \ :c:type:`struct urb <urb>`\  structure
+    :type urb: struct urb \*
 
 .. _`if_usb_write_bulk_callback.return`:
 
@@ -29,8 +30,9 @@ if_usb_free
 
     free tx/rx urb, skb and rx buffer
 
-    :param struct if_usb_card \*cardp:
+    :param cardp:
         pointer to \ :c:type:`struct if_usb_card <if_usb_card>`\ 
+    :type cardp: struct if_usb_card \*
 
 .. _`if_usb_free.return`:
 
@@ -48,11 +50,13 @@ if_usb_probe
 
     sets the configuration values
 
-    :param struct usb_interface \*intf:
+    :param intf:
         \ :c:type:`struct usb_interface <usb_interface>`\  pointer
+    :type intf: struct usb_interface \*
 
-    :param const struct usb_device_id \*id:
+    :param id:
         pointer to usb_device_id
+    :type id: const struct usb_device_id \*
 
 .. _`if_usb_probe.return`:
 
@@ -70,8 +74,9 @@ if_usb_disconnect
 
     free resource and cleanup
 
-    :param struct usb_interface \*intf:
+    :param intf:
         USB interface structure
+    :type intf: struct usb_interface \*
 
 .. _`if_usb_disconnect.return`:
 
@@ -89,8 +94,9 @@ if_usb_send_fw_pkt
 
     download FW
 
-    :param struct if_usb_card \*cardp:
+    :param cardp:
         pointer to \ :c:type:`struct if_usb_card <if_usb_card>`\ 
+    :type cardp: struct if_usb_card \*
 
 .. _`if_usb_send_fw_pkt.return`:
 
@@ -108,14 +114,17 @@ usb_tx_block
 
     transfer the data to the device
 
-    :param struct if_usb_card \*cardp:
+    :param cardp:
         pointer to \ :c:type:`struct if_usb_card <if_usb_card>`\ 
+    :type cardp: struct if_usb_card \*
 
-    :param uint8_t \*payload:
+    :param payload:
         pointer to payload data
+    :type payload: uint8_t \*
 
-    :param uint16_t nb:
+    :param nb:
         data length
+    :type nb: uint16_t
 
 .. _`usb_tx_block.return`:
 
@@ -133,8 +142,9 @@ if_usb_receive
 
     read the packet into the upload buffer, wake up the main thread and initialise the Rx callack
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to \ :c:type:`struct urb <urb>`\ 
+    :type urb: struct urb \*
 
 .. _`if_usb_receive.return`:
 
@@ -152,17 +162,21 @@ if_usb_host_to_card
 
     downloads data to FW
 
-    :param struct lbs_private \*priv:
+    :param priv:
         pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param uint8_t type:
+    :param type:
         type of data
+    :type type: uint8_t
 
-    :param uint8_t \*payload:
+    :param payload:
         pointer to data buffer
+    :type payload: uint8_t \*
 
-    :param uint16_t nb:
+    :param nb:
         number of bytes
+    :type nb: uint16_t
 
 .. _`if_usb_host_to_card.return`:
 
@@ -180,12 +194,14 @@ if_usb_issue_boot_command
 
     issues Boot command to the Boot2 code
 
-    :param struct if_usb_card \*cardp:
+    :param cardp:
         pointer to \ :c:type:`struct if_usb_card <if_usb_card>`\ 
+    :type cardp: struct if_usb_card \*
 
-    :param int ivalue:
+    :param ivalue:
         1:Boot from FW by USB-Download
         2:Boot from FW in EEPROM
+    :type ivalue: int
 
 .. _`if_usb_issue_boot_command.return`:
 
@@ -203,11 +219,13 @@ check_fwfile_format
 
     check the validity of Boot2/FW image
 
-    :param const uint8_t \*data:
+    :param data:
         pointer to image
+    :type data: const uint8_t \*
 
-    :param uint32_t totlen:
+    :param totlen:
         image length
+    :type totlen: uint32_t
 
 .. _`check_fwfile_format.return`:
 

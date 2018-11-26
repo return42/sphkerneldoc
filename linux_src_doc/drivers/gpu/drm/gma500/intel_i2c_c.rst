@@ -10,14 +10,17 @@ psb_intel_i2c_create
 
     instantiate an Intel i2c bus using the specified GPIO reg
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param const u32 reg:
+    :param reg:
         GPIO reg to use
+    :type reg: const u32
 
-    :param const char \*name:
+    :param name:
         name for this bus
+    :type name: const char \*
 
 .. _`psb_intel_i2c_create.description`:
 
@@ -47,8 +50,9 @@ psb_intel_i2c_destroy
 
     unregister and free i2c bus resources
 
-    :param struct psb_intel_i2c_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct psb_intel_i2c_chan \*
 
 .. _`psb_intel_i2c_destroy.description`:
 

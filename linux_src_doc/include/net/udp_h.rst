@@ -127,12 +127,14 @@ udp_csum_outgoing
 
     compute UDPv4/v6 checksum over fragments
 
-    :param struct sock \*sk:
+    :param sk:
         socket we are writing to
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff containing the filled-in UDP header
         (checksum field must be zeroed out)
+    :type skb: struct sk_buff \*
 
 .. This file was automatic generated / don't edit.
 

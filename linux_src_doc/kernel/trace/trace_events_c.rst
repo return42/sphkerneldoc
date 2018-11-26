@@ -10,14 +10,17 @@ trace_set_clr_event
 
     enable or disable an event
 
-    :param const char \*system:
+    :param system:
         system name to match (NULL for any system)
+    :type system: const char \*
 
-    :param const char \*event:
+    :param event:
         event name to match (NULL for all events, within system)
+    :type event: const char \*
 
-    :param int set:
+    :param set:
         1 to enable, 0 to disable
+    :type set: int
 
 .. _`trace_set_clr_event.description`:
 
@@ -39,11 +42,13 @@ event_trace_add_tracer
 
     add a instance of a trace_array to events
 
-    :param struct dentry \*parent:
+    :param parent:
         The parent dentry to place the files/directories for events in
+    :type parent: struct dentry \*
 
-    :param struct trace_array \*tr:
+    :param tr:
         The trace array associated with these events
+    :type tr: struct trace_array \*
 
 .. _`event_trace_add_tracer.description`:
 

@@ -69,14 +69,17 @@ drm_noop
 
     DRM no-op ioctl implemntation
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device for the ioctl
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data pointer for the ioctl
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file for the ioctl call
+    :type file_priv: struct drm_file \*
 
 .. _`drm_noop.description`:
 
@@ -98,14 +101,17 @@ drm_invalid_op
 
     DRM invalid ioctl implemntation
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device for the ioctl
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data pointer for the ioctl
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file for the ioctl call
+    :type file_priv: struct drm_file \*
 
 .. _`drm_invalid_op.description`:
 
@@ -130,11 +136,13 @@ drm_ioctl_permit
 
     Check ioctl permissions against caller
 
-    :param u32 flags:
+    :param flags:
         ioctl permission flags.
+    :type flags: u32
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to struct drm_file identifying the caller.
+    :type file_priv: struct drm_file \*
 
 .. _`drm_ioctl_permit.description`:
 
@@ -209,14 +217,17 @@ drm_ioctl
 
     ioctl callback implementation for DRM drivers
 
-    :param struct file \*filp:
+    :param filp:
         file this ioctl is called on
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl cmd number
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         user argument
+    :type arg: unsigned long
 
 .. _`drm_ioctl.description`:
 
@@ -243,11 +254,13 @@ drm_ioctl_flags
 
     Check for core ioctl and return ioctl permission flags
 
-    :param unsigned int nr:
+    :param nr:
         ioctl number
+    :type nr: unsigned int
 
-    :param unsigned int \*flags:
+    :param flags:
         where to return the ioctl permission flags
+    :type flags: unsigned int \*
 
 .. _`drm_ioctl_flags.description`:
 

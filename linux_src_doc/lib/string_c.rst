@@ -10,14 +10,17 @@ strncasecmp
 
     Case insensitive, length-limited string comparison
 
-    :param const char \*s1:
+    :param s1:
         One string
+    :type s1: const char \*
 
-    :param const char \*s2:
+    :param s2:
         The other string
+    :type s2: const char \*
 
-    :param size_t len:
+    :param len:
         the maximum number of characters to compare
+    :type len: size_t
 
 .. _`strcpy`:
 
@@ -28,11 +31,13 @@ strcpy
 
     Copy a \ ``NUL``\  terminated string
 
-    :param char \*dest:
+    :param dest:
         Where to copy the string to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         Where to copy the string from
+    :type src: const char \*
 
 .. _`strncpy`:
 
@@ -43,14 +48,17 @@ strncpy
 
     Copy a length-limited, C-string
 
-    :param char \*dest:
+    :param dest:
         Where to copy the string to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         Where to copy the string from
+    :type src: const char \*
 
-    :param size_t count:
+    :param count:
         The maximum number of bytes to copy
+    :type count: size_t
 
 .. _`strncpy.description`:
 
@@ -72,14 +80,17 @@ strlcpy
 
     Copy a C-string into a sized buffer
 
-    :param char \*dest:
+    :param dest:
         Where to copy the string to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         Where to copy the string from
+    :type src: const char \*
 
-    :param size_t size:
+    :param size:
         size of destination buffer
+    :type size: size_t
 
 .. _`strlcpy.description`:
 
@@ -100,14 +111,17 @@ strscpy
 
     Copy a C-string into a sized buffer
 
-    :param char \*dest:
+    :param dest:
         Where to copy the string to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         Where to copy the string from
+    :type src: const char \*
 
-    :param size_t count:
+    :param count:
         Size of destination buffer
+    :type count: size_t
 
 .. _`strscpy.description`:
 
@@ -140,11 +154,13 @@ strcat
 
     Append one \ ``NUL-terminated``\  string to another
 
-    :param char \*dest:
+    :param dest:
         The string to be appended to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         The string to append to it
+    :type src: const char \*
 
 .. _`strncat`:
 
@@ -155,14 +171,17 @@ strncat
 
     Append a length-limited, C-string to another
 
-    :param char \*dest:
+    :param dest:
         The string to be appended to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         The string to append to it
+    :type src: const char \*
 
-    :param size_t count:
+    :param count:
         The maximum numbers of bytes to copy
+    :type count: size_t
 
 .. _`strncat.description`:
 
@@ -181,14 +200,17 @@ strlcat
 
     Append a length-limited, C-string to another
 
-    :param char \*dest:
+    :param dest:
         The string to be appended to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         The string to append to it
+    :type src: const char \*
 
-    :param size_t count:
+    :param count:
         The size of the destination buffer.
+    :type count: size_t
 
 .. _`strcmp`:
 
@@ -199,11 +221,13 @@ strcmp
 
     Compare two strings
 
-    :param const char \*cs:
+    :param cs:
         One string
+    :type cs: const char \*
 
-    :param const char \*ct:
+    :param ct:
         Another string
+    :type ct: const char \*
 
 .. _`strncmp`:
 
@@ -214,14 +238,17 @@ strncmp
 
     Compare two length-limited strings
 
-    :param const char \*cs:
+    :param cs:
         One string
+    :type cs: const char \*
 
-    :param const char \*ct:
+    :param ct:
         Another string
+    :type ct: const char \*
 
-    :param size_t count:
+    :param count:
         The maximum number of bytes to compare
+    :type count: size_t
 
 .. _`strchr`:
 
@@ -232,11 +259,13 @@ strchr
 
     Find the first occurrence of a character in a string
 
-    :param const char \*s:
+    :param s:
         The string to be searched
+    :type s: const char \*
 
-    :param int c:
+    :param c:
         The character to search for
+    :type c: int
 
 .. _`strchrnul`:
 
@@ -247,11 +276,13 @@ strchrnul
 
     Find and return a character in a string, or end of string
 
-    :param const char \*s:
+    :param s:
         The string to be searched
+    :type s: const char \*
 
-    :param int c:
+    :param c:
         The character to search for
+    :type c: int
 
 .. _`strchrnul.description`:
 
@@ -270,11 +301,13 @@ strrchr
 
     Find the last occurrence of a character in a string
 
-    :param const char \*s:
+    :param s:
         The string to be searched
+    :type s: const char \*
 
-    :param int c:
+    :param c:
         The character to search for
+    :type c: int
 
 .. _`strnchr`:
 
@@ -285,14 +318,17 @@ strnchr
 
     Find a character in a length limited string
 
-    :param const char \*s:
+    :param s:
         The string to be searched
+    :type s: const char \*
 
-    :param size_t count:
+    :param count:
         The number of characters to be searched
+    :type count: size_t
 
-    :param int c:
+    :param c:
         The character to search for
+    :type c: int
 
 .. _`skip_spaces`:
 
@@ -303,8 +339,9 @@ skip_spaces
 
     Removes leading whitespace from \ ``str``\ .
 
-    :param const char \*str:
+    :param str:
         The string to be stripped.
+    :type str: const char \*
 
 .. _`skip_spaces.description`:
 
@@ -322,8 +359,9 @@ strim
 
     Removes leading and trailing whitespace from \ ``s``\ .
 
-    :param char \*s:
+    :param s:
         The string to be stripped.
+    :type s: char \*
 
 .. _`strim.description`:
 
@@ -343,8 +381,9 @@ strlen
 
     Find the length of a string
 
-    :param const char \*s:
+    :param s:
         The string to be sized
+    :type s: const char \*
 
 .. _`strnlen`:
 
@@ -355,11 +394,13 @@ strnlen
 
     Find the length of a length-limited string
 
-    :param const char \*s:
+    :param s:
         The string to be sized
+    :type s: const char \*
 
-    :param size_t count:
+    :param count:
         The maximum number of bytes to search
+    :type count: size_t
 
 .. _`strspn`:
 
@@ -370,11 +411,13 @@ strspn
 
     Calculate the length of the initial substring of \ ``s``\  which only contain letters in \ ``accept``\ 
 
-    :param const char \*s:
+    :param s:
         The string to be searched
+    :type s: const char \*
 
-    :param const char \*accept:
+    :param accept:
         The string to search for
+    :type accept: const char \*
 
 .. _`strcspn`:
 
@@ -385,11 +428,13 @@ strcspn
 
     Calculate the length of the initial substring of \ ``s``\  which does not contain letters in \ ``reject``\ 
 
-    :param const char \*s:
+    :param s:
         The string to be searched
+    :type s: const char \*
 
-    :param const char \*reject:
+    :param reject:
         The string to avoid
+    :type reject: const char \*
 
 .. _`strpbrk`:
 
@@ -400,11 +445,13 @@ strpbrk
 
     Find the first occurrence of a set of characters
 
-    :param const char \*cs:
+    :param cs:
         The string to be searched
+    :type cs: const char \*
 
-    :param const char \*ct:
+    :param ct:
         The characters to search for
+    :type ct: const char \*
 
 .. _`strsep`:
 
@@ -415,11 +462,13 @@ strsep
 
     Split a string into tokens
 
-    :param char \*\*s:
+    :param s:
         The string to be searched
+    :type s: char \*\*
 
-    :param const char \*ct:
+    :param ct:
         The characters to search for
+    :type ct: const char \*
 
 .. _`strsep.description`:
 
@@ -441,11 +490,13 @@ sysfs_streq
 
     return true if strings are equal, modulo trailing newline
 
-    :param const char \*s1:
+    :param s1:
         one string
+    :type s1: const char \*
 
-    :param const char \*s2:
+    :param s2:
         another string
+    :type s2: const char \*
 
 .. _`sysfs_streq.description`:
 
@@ -466,14 +517,17 @@ match_string
 
     matches given string in an array
 
-    :param const char \* const \*array:
+    :param array:
         array of strings
+    :type array: const char \* const \*
 
-    :param size_t n:
+    :param n:
         number of strings in the array or -1 for NULL terminated arrays
+    :type n: size_t
 
-    :param const char \*string:
+    :param string:
         string to match with
+    :type string: const char \*
 
 .. _`match_string.return`:
 
@@ -491,14 +545,17 @@ __sysfs_match_string
 
     matches given string in an array
 
-    :param const char \* const \*array:
+    :param array:
         array of strings
+    :type array: const char \* const \*
 
-    :param size_t n:
+    :param n:
         number of strings in the array or -1 for NULL terminated arrays
+    :type n: size_t
 
-    :param const char \*str:
+    :param str:
         string to match with
+    :type str: const char \*
 
 .. _`__sysfs_match_string.description`:
 
@@ -517,14 +574,17 @@ memset
 
     Fill a region of memory with the given value
 
-    :param void \*s:
+    :param s:
         Pointer to the start of the area.
+    :type s: void \*
 
-    :param int c:
+    :param c:
         The byte to fill the area with
+    :type c: int
 
-    :param size_t count:
+    :param count:
         The size of the area.
+    :type count: size_t
 
 .. _`memset.description`:
 
@@ -542,11 +602,13 @@ memzero_explicit
 
     Fill a region of memory (e.g. sensitive keying data) with 0s.
 
-    :param void \*s:
+    :param s:
         Pointer to the start of the area.
+    :type s: void \*
 
-    :param size_t count:
+    :param count:
         The size of the area.
+    :type count: size_t
 
 .. _`memzero_explicit.note`:
 
@@ -570,14 +632,17 @@ memset16
 
     Fill a memory area with a uint16_t
 
-    :param uint16_t \*s:
+    :param s:
         Pointer to the start of the area.
+    :type s: uint16_t \*
 
-    :param uint16_t v:
+    :param v:
         The value to fill the area with
+    :type v: uint16_t
 
-    :param size_t count:
+    :param count:
         The number of values to store
+    :type count: size_t
 
 .. _`memset16.description`:
 
@@ -597,14 +662,17 @@ memset32
 
     Fill a memory area with a uint32_t
 
-    :param uint32_t \*s:
+    :param s:
         Pointer to the start of the area.
+    :type s: uint32_t \*
 
-    :param uint32_t v:
+    :param v:
         The value to fill the area with
+    :type v: uint32_t
 
-    :param size_t count:
+    :param count:
         The number of values to store
+    :type count: size_t
 
 .. _`memset32.description`:
 
@@ -624,14 +692,17 @@ memset64
 
     Fill a memory area with a uint64_t
 
-    :param uint64_t \*s:
+    :param s:
         Pointer to the start of the area.
+    :type s: uint64_t \*
 
-    :param uint64_t v:
+    :param v:
         The value to fill the area with
+    :type v: uint64_t
 
-    :param size_t count:
+    :param count:
         The number of values to store
+    :type count: size_t
 
 .. _`memset64.description`:
 
@@ -651,14 +722,17 @@ memcpy
 
     Copy one area of memory to another
 
-    :param void \*dest:
+    :param dest:
         Where to copy to
+    :type dest: void \*
 
-    :param const void \*src:
+    :param src:
         Where to copy from
+    :type src: const void \*
 
-    :param size_t count:
+    :param count:
         The size of the area.
+    :type count: size_t
 
 .. _`memcpy.description`:
 
@@ -677,14 +751,17 @@ memmove
 
     Copy one area of memory to another
 
-    :param void \*dest:
+    :param dest:
         Where to copy to
+    :type dest: void \*
 
-    :param const void \*src:
+    :param src:
         Where to copy from
+    :type src: const void \*
 
-    :param size_t count:
+    :param count:
         The size of the area.
+    :type count: size_t
 
 .. _`memmove.description`:
 
@@ -702,14 +779,17 @@ memcmp
 
     Compare two areas of memory
 
-    :param const void \*cs:
+    :param cs:
         One area of memory
+    :type cs: const void \*
 
-    :param const void \*ct:
+    :param ct:
         Another area of memory
+    :type ct: const void \*
 
-    :param size_t count:
+    :param count:
         The size of the area.
+    :type count: size_t
 
 .. _`memscan`:
 
@@ -720,14 +800,17 @@ memscan
 
     Find a character in an area of memory.
 
-    :param void \*addr:
+    :param addr:
         The memory area
+    :type addr: void \*
 
-    :param int c:
+    :param c:
         The byte to search for
+    :type c: int
 
-    :param size_t size:
+    :param size:
         The size of the area.
+    :type size: size_t
 
 .. _`memscan.description`:
 
@@ -746,11 +829,13 @@ strstr
 
     Find the first substring in a \ ``NUL``\  terminated string
 
-    :param const char \*s1:
+    :param s1:
         The string to be searched
+    :type s1: const char \*
 
-    :param const char \*s2:
+    :param s2:
         The string to search for
+    :type s2: const char \*
 
 .. _`strnstr`:
 
@@ -761,14 +846,17 @@ strnstr
 
     Find the first substring in a length-limited string
 
-    :param const char \*s1:
+    :param s1:
         The string to be searched
+    :type s1: const char \*
 
-    :param const char \*s2:
+    :param s2:
         The string to search for
+    :type s2: const char \*
 
-    :param size_t len:
+    :param len:
         the maximum number of characters to search
+    :type len: size_t
 
 .. _`memchr`:
 
@@ -779,14 +867,17 @@ memchr
 
     Find a character in an area of memory.
 
-    :param const void \*s:
+    :param s:
         The memory area
+    :type s: const void \*
 
-    :param int c:
+    :param c:
         The byte to search for
+    :type c: int
 
-    :param size_t n:
+    :param n:
         The size of the area.
+    :type n: size_t
 
 .. _`memchr.description`:
 
@@ -805,14 +896,17 @@ memchr_inv
 
     Find an unmatching character in an area of memory.
 
-    :param const void \*start:
+    :param start:
         The memory area
+    :type start: const void \*
 
-    :param int c:
+    :param c:
         Find a character other than c
+    :type c: int
 
-    :param size_t bytes:
+    :param bytes:
         The size of the area.
+    :type bytes: size_t
 
 .. _`memchr_inv.description`:
 
@@ -831,14 +925,17 @@ strreplace
 
     Replace all occurrences of character in string.
 
-    :param char \*s:
+    :param s:
         The string to operate on.
+    :type s: char \*
 
-    :param char old:
+    :param old:
         The character being replaced.
+    :type old: char
 
-    :param char new:
+    :param new:
         The character \ ``old``\  is replaced with.
+    :type new: char
 
 .. _`strreplace.description`:
 

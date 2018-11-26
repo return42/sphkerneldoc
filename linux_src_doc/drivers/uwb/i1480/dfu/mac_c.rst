@@ -10,19 +10,23 @@ fw_hdrs_load
 
     chain of headers linking them together.
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         *undescribed*
+    :type i1480: struct i1480 \*
 
-    :param struct fw_hdr \*\*phdr:
+    :param phdr:
         where to place the pointer to the first header (headers link
-        to the next via the \ ``hdr``\ ->next ptr); need to free the whole
+        to the next via the \ ``hdr->next``\  ptr); need to free the whole
         chain when done.
+    :type phdr: struct fw_hdr \*\*
 
-    :param const char \*_data:
+    :param _data:
         Pointer to the data buffer.
+    :type _data: const char \*
 
-    :param size_t data_size:
+    :param data_size:
         *undescribed*
+    :type data_size: size_t
 
 .. _`fw_hdrs_load.description`:
 
@@ -41,11 +45,13 @@ i1480_fw_cmp
 
 .. c:function:: ssize_t i1480_fw_cmp(struct i1480 *i1480, struct fw_hdr *hdr)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         Device instance
+    :type i1480: struct i1480 \*
 
-    :param struct fw_hdr \*hdr:
+    :param hdr:
         Pointer to the firmware chunk
+    :type hdr: struct fw_hdr \*
 
 .. _`i1480_fw_cmp.description`:
 
@@ -63,17 +69,21 @@ mac_fw_hdrs_push
 
 .. c:function:: int mac_fw_hdrs_push(struct i1480 *i1480, struct fw_hdr *hdr, const char *fw_name, const char *fw_tag)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         *undescribed*
+    :type i1480: struct i1480 \*
 
-    :param struct fw_hdr \*hdr:
+    :param hdr:
         Processed firmware
+    :type hdr: struct fw_hdr \*
 
-    :param const char \*fw_name:
+    :param fw_name:
         *undescribed*
+    :type fw_name: const char \*
 
-    :param const char \*fw_tag:
+    :param fw_tag:
         *undescribed*
+    :type fw_tag: const char \*
 
 .. _`__mac_fw_upload`:
 
@@ -82,15 +92,18 @@ mac_fw_hdrs_push
 
 .. c:function:: int __mac_fw_upload(struct i1480 *i1480, const char *fw_name, const char *fw_tag)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         Device instance
+    :type i1480: struct i1480 \*
 
-    :param const char \*fw_name:
+    :param fw_name:
         Name of firmware file to upload.
+    :type fw_name: const char \*
 
-    :param const char \*fw_tag:
+    :param fw_tag:
         Name of the firmware type (for messages)
         [eg: MAC, PRE]
+    :type fw_tag: const char \*
 
 .. _`i1480_pre_fw_upload`:
 
@@ -101,8 +114,9 @@ i1480_pre_fw_upload
 
     PHY firmware
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         *undescribed*
+    :type i1480: struct i1480 \*
 
 .. _`i1480_cmd_reset`:
 
@@ -111,8 +125,9 @@ i1480_cmd_reset
 
 .. c:function:: int i1480_cmd_reset(struct i1480 *i1480)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         Device's instance
+    :type i1480: struct i1480 \*
 
 .. _`i1480_cmd_reset.description`:
 
@@ -133,8 +148,9 @@ i1480_mac_fw_upload
 
 .. c:function:: int i1480_mac_fw_upload(struct i1480 *i1480)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         Device instance
+    :type i1480: struct i1480 \*
 
 .. _`i1480_mac_fw_upload.description`:
 

@@ -10,23 +10,29 @@ ufs_inode_getfrag
 
     allocate new fragment(s)
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to inode
+    :type inode: struct inode \*
 
-    :param unsigned index:
+    :param index:
         number of block pointer within the inode's array.
+    :type index: unsigned
 
-    :param sector_t new_fragment:
+    :param new_fragment:
         number of new allocated fragment(s)
+    :type new_fragment: sector_t
 
-    :param int \*err:
+    :param err:
         we set it if something wrong
+    :type err: int \*
 
-    :param int \*new:
+    :param new:
         we set it if we allocate new block
+    :type new: int \*
 
-    :param struct page \*locked_page:
+    :param locked_page:
         for \ :c:func:`ufs_new_fragments`\ 
+    :type locked_page: struct page \*
 
 .. _`ufs_inode_getblock`:
 
@@ -37,27 +43,34 @@ ufs_inode_getblock
 
     allocate new block
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to inode
+    :type inode: struct inode \*
 
-    :param u64 ind_block:
+    :param ind_block:
         block number of the indirect block
+    :type ind_block: u64
 
-    :param unsigned index:
+    :param index:
         number of pointer within the indirect block
+    :type index: unsigned
 
-    :param sector_t new_fragment:
+    :param new_fragment:
         number of new allocated fragment
         (block will hold this fragment and also uspi->s_fpb-1)
+    :type new_fragment: sector_t
 
-    :param int \*err:
+    :param err:
         see \ :c:func:`ufs_inode_getfrag`\ 
+    :type err: int \*
 
-    :param int \*new:
+    :param new:
         see \ :c:func:`ufs_inode_getfrag`\ 
+    :type new: int \*
 
-    :param struct page \*locked_page:
+    :param locked_page:
         see \ :c:func:`ufs_inode_getfrag`\ 
+    :type locked_page: struct page \*
 
 .. _`ufs_getfrag_block`:
 
@@ -68,17 +81,21 @@ ufs_getfrag_block
 
     \`get_block_t' function, interface between UFS and readpage, writepage and so on
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param sector_t fragment:
+    :param fragment:
         *undescribed*
+    :type fragment: sector_t
 
-    :param struct buffer_head \*bh_result:
+    :param bh_result:
         *undescribed*
+    :type bh_result: struct buffer_head \*
 
-    :param int create:
+    :param create:
         *undescribed*
+    :type create: int
 
 .. This file was automatic generated / don't edit.
 

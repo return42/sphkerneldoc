@@ -66,8 +66,9 @@ vema_get_vport_num
 
     - Get the vnic from the mad
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         Received mad
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_get_vport_num.return`:
 
@@ -85,11 +86,13 @@ vema_get_vport_adapter
 
     - Get vnic port adapter from recvd mad
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         received mad
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         ptr to port struct on which MAD was recvd
+    :type port: struct opa_vnic_vema_port \*
 
 .. _`vema_get_vport_adapter.return`:
 
@@ -107,8 +110,9 @@ vema_mac_tbl_req_ok
 
     - Check if mac request has correct values
 
-    :param struct opa_veswport_mactable \*mac_tbl:
+    :param mac_tbl:
         mac table
+    :type mac_tbl: struct opa_veswport_mactable \*
 
 .. _`vema_mac_tbl_req_ok.description`:
 
@@ -134,11 +138,13 @@ vema_add_vport
 
     - Add a new vnic port
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         ptr to opa_vnic_vema_port struct
+    :type port: struct opa_vnic_vema_port \*
 
-    :param u8 vport_num:
+    :param vport_num:
         vnic port number (to be added)
+    :type vport_num: u8
 
 .. _`vema_add_vport.description`:
 
@@ -156,14 +162,17 @@ vema_get_class_port_info
 
     - Get class info for port
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         Port on whic MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         pointer to the received mad
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         pointer to respose mad
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_get_class_port_info.description`:
 
@@ -182,14 +191,17 @@ vema_set_class_port_info
 
     - Get class info for port
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         Port on whic MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         pointer to the received mad
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         pointer to respose mad
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_set_class_port_info.description`:
 
@@ -208,14 +220,17 @@ vema_get_veswport_info
 
     - Get veswport info
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         source port on which MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         pointer to the received mad
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         pointer to respose mad
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_set_veswport_info`:
 
@@ -226,14 +241,17 @@ vema_set_veswport_info
 
     - Set veswport info
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         source port on which MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         pointer to the received mad
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         pointer to respose mad
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_set_veswport_info.description`:
 
@@ -251,14 +269,17 @@ vema_get_mac_entries
 
     - Get MAC entries in VNIC MAC table
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         source port on which MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         pointer to the received mad
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         pointer to respose mad
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_get_mac_entries.description`:
 
@@ -279,14 +300,17 @@ vema_set_mac_entries
 
     - Set MAC entries in VNIC MAC table
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         source port on which MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         pointer to the received mad
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         pointer to respose mad
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_set_mac_entries.description`:
 
@@ -306,14 +330,17 @@ vema_set_delete_vesw
 
     - Reset VESW info to POD values
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         source port on which MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         pointer to the received mad
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         pointer to respose mad
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_set_delete_vesw.description`:
 
@@ -333,17 +360,21 @@ vema_get_mac_list
 
     - Get the unicast/multicast macs.
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         source port on which MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         Received mad contains fields to set vnic parameters
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         Response mad to be built
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
-    :param u16 attr_id:
+    :param attr_id:
         Attribute ID indicating multicast or unicast mac list
+    :type attr_id: u16
 
 .. _`vema_get_summary_counters`:
 
@@ -354,14 +385,17 @@ vema_get_summary_counters
 
     - Gets summary counters.
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         source port on which MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         Received mad contains fields to set vnic parameters
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         Response mad to be built
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_get_error_counters`:
 
@@ -372,14 +406,17 @@ vema_get_error_counters
 
     - Gets summary counters.
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         source port on which MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         Received mad contains fields to set vnic parameters
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         Response mad to be built
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_get`:
 
@@ -390,14 +427,17 @@ vema_get
 
     - Process received get MAD
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         source port on which MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         Received mad
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         Response mad to be built
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_set`:
 
@@ -408,14 +448,17 @@ vema_set
 
     - Process received set MAD
 
-    :param struct opa_vnic_vema_port \*port:
+    :param port:
         source port on which MAD was received
+    :type port: struct opa_vnic_vema_port \*
 
-    :param struct opa_vnic_vema_mad \*recvd_mad:
+    :param recvd_mad:
         Received mad contains fields to set vnic parameters
+    :type recvd_mad: struct opa_vnic_vema_mad \*
 
-    :param struct opa_vnic_vema_mad \*rsp_mad:
+    :param rsp_mad:
         Response mad to be built
+    :type rsp_mad: struct opa_vnic_vema_mad \*
 
 .. _`vema_send`:
 
@@ -426,11 +469,13 @@ vema_send
 
     - Send handler for VEMA MAD agent
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         pointer to the mad agent
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param struct ib_mad_send_wc \*mad_wc:
+    :param mad_wc:
         pointer to mad send work completion information
+    :type mad_wc: struct ib_mad_send_wc \*
 
 .. _`vema_send.description`:
 
@@ -448,14 +493,17 @@ vema_recv
 
     - Recv handler for VEMA MAD agent
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         pointer to the mad agent
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param struct ib_mad_send_buf \*send_buf:
+    :param send_buf:
         Send buffer if found, else NULL
+    :type send_buf: struct ib_mad_send_buf \*
 
-    :param struct ib_mad_recv_wc \*mad_wc:
+    :param mad_wc:
         pointer to mad send work completion information
+    :type mad_wc: struct ib_mad_recv_wc \*
 
 .. _`vema_recv.description`:
 
@@ -475,11 +523,13 @@ vema_get_port
 
     - Gets the opa_vnic_vema_port
 
-    :param struct opa_vnic_ctrl_port \*cport:
+    :param cport:
         pointer to control dev
+    :type cport: struct opa_vnic_ctrl_port \*
 
-    :param u8 port_num:
+    :param port_num:
         Port number
+    :type port_num: u8
 
 .. _`vema_get_port.description`:
 
@@ -507,14 +557,17 @@ opa_vnic_vema_send_trap
 
     - This function sends a trap to the EM
 
-    :param struct opa_vnic_adapter \*adapter:
+    :param adapter:
         pointer to vnic adapter
+    :type adapter: struct opa_vnic_adapter \*
 
-    :param struct __opa_veswport_trap \*data:
+    :param data:
         pointer to trap data filled by calling function
+    :type data: struct __opa_veswport_trap \*
 
-    :param u32 lid:
+    :param lid:
         issuers lid (encap_slid from vesw_port_info)
+    :type lid: u32
 
 .. _`opa_vnic_vema_send_trap.description`:
 
@@ -539,8 +592,9 @@ vema_unregister
 
     - Unregisters agent
 
-    :param struct opa_vnic_ctrl_port \*cport:
+    :param cport:
         pointer to control port
+    :type cport: struct opa_vnic_ctrl_port \*
 
 .. _`vema_unregister.description`:
 
@@ -558,8 +612,9 @@ vema_register
 
     - Registers agent
 
-    :param struct opa_vnic_ctrl_port \*cport:
+    :param cport:
         pointer to control port
+    :type cport: struct opa_vnic_ctrl_port \*
 
 .. _`vema_register.description`:
 
@@ -584,11 +639,13 @@ opa_vnic_ctrl_config_dev
 
     - This function sends a trap to the EM by way of ib_modify_port to indicate support for ethernet on the fabric.
 
-    :param struct opa_vnic_ctrl_port \*cport:
+    :param cport:
         pointer to control port
+    :type cport: struct opa_vnic_ctrl_port \*
 
-    :param bool en:
+    :param en:
         enable or disable ethernet on fabric support
+    :type en: bool
 
 .. _`opa_vnic_vema_add_one`:
 
@@ -599,8 +656,9 @@ opa_vnic_vema_add_one
 
     - Handle new ib device
 
-    :param struct ib_device \*device:
+    :param device:
         ib device pointer
+    :type device: struct ib_device \*
 
 .. _`opa_vnic_vema_add_one.description`:
 
@@ -618,11 +676,13 @@ opa_vnic_vema_rem_one
 
     - Handle ib device removal
 
-    :param struct ib_device \*device:
+    :param device:
         ib device pointer
+    :type device: struct ib_device \*
 
-    :param void \*client_data:
+    :param client_data:
         ib client data
+    :type client_data: void \*
 
 .. _`opa_vnic_vema_rem_one.description`:
 

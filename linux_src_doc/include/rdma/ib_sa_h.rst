@@ -20,8 +20,6 @@ Definition
     struct sa_path_rec_roce {
         bool route_resolved;
         u8 dmac[ETH_ALEN];
-        int ifindex;
-        struct net *net;
     }
 
 .. _`sa_path_rec_roce.members`:
@@ -37,12 +35,6 @@ dmac
     Destination mac address for the given DGID entry
     of the path record entry.
 
-ifindex
-    *undescribed*
-
-net
-    *undescribed*
-
 .. _`ib_sa_register_client`:
 
 ib_sa_register_client
@@ -52,8 +44,9 @@ ib_sa_register_client
 
     Register an SA client.
 
-    :param struct ib_sa_client \*client:
+    :param client:
         *undescribed*
+    :type client: struct ib_sa_client \*
 
 .. _`ib_sa_unregister_client`:
 
@@ -64,8 +57,9 @@ ib_sa_unregister_client
 
     Deregister an SA client.
 
-    :param struct ib_sa_client \*client:
+    :param client:
         Client object to deregister.
+    :type client: struct ib_sa_client \*
 
 .. _`ib_sa_join_multicast`:
 
@@ -76,31 +70,38 @@ ib_sa_join_multicast
 
     Initiates a join request to the specified multicast group.
 
-    :param struct ib_sa_client \*client:
+    :param client:
         SA client
+    :type client: struct ib_sa_client \*
 
-    :param struct ib_device \*device:
+    :param device:
         Device associated with the multicast group.
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         Port on the specified device to associate with the multicast
         group.
+    :type port_num: u8
 
-    :param struct ib_sa_mcmember_rec \*rec:
+    :param rec:
         SA multicast member record specifying group attributes.
+    :type rec: struct ib_sa_mcmember_rec \*
 
-    :param ib_sa_comp_mask comp_mask:
+    :param comp_mask:
         Component mask indicating which group attributes of \ ``rec``\  are
         valid.
+    :type comp_mask: ib_sa_comp_mask
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         GFP mask for memory allocations.
+    :type gfp_mask: gfp_t
 
     :param int (\*callback)(int status, struct ib_sa_multicast \*multicast):
         User callback invoked once the join operation completes.
 
-    :param void \*context:
+    :param context:
         User specified context stored with the ib_sa_multicast structure.
+    :type context: void \*
 
 .. _`ib_sa_join_multicast.description`:
 
@@ -135,8 +136,9 @@ ib_sa_free_multicast
 
     Frees the multicast tracking structure, and releases any reference on the multicast group.
 
-    :param struct ib_sa_multicast \*multicast:
+    :param multicast:
         Multicast tracking structure allocated by ib_join_multicast.
+    :type multicast: struct ib_sa_multicast \*
 
 .. _`ib_sa_free_multicast.description`:
 
@@ -157,18 +159,22 @@ ib_sa_get_mcmember_rec
 
     Looks up a multicast member record by its MGID and returns it if found.
 
-    :param struct ib_device \*device:
+    :param device:
         Device associated with the multicast group.
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         Port on the specified device to associate with the multicast
         group.
+    :type port_num: u8
 
-    :param union ib_gid \*mgid:
+    :param mgid:
         MGID of multicast group.
+    :type mgid: union ib_gid \*
 
-    :param struct ib_sa_mcmember_rec \*rec:
+    :param rec:
         Location to copy SA multicast member record.
+    :type rec: struct ib_sa_mcmember_rec \*
 
 .. _`ib_init_ah_from_mcmember`:
 
@@ -179,44 +185,29 @@ ib_init_ah_from_mcmember
 
     Initialize address handle attributes based on an SA multicast member record.
 
-    :param struct ib_device \*device:
+    :param device:
         *undescribed*
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         *undescribed*
+    :type port_num: u8
 
-    :param struct ib_sa_mcmember_rec \*rec:
+    :param rec:
         *undescribed*
+    :type rec: struct ib_sa_mcmember_rec \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
-    :param enum ib_gid_type gid_type:
+    :param gid_type:
         *undescribed*
+    :type gid_type: enum ib_gid_type
 
-    :param struct rdma_ah_attr \*ah_attr:
+    :param ah_attr:
         *undescribed*
-
-.. _`ib_init_ah_attr_from_path`:
-
-ib_init_ah_attr_from_path
-=========================
-
-.. c:function:: int ib_init_ah_attr_from_path(struct ib_device *device, u8 port_num, struct sa_path_rec *rec, struct rdma_ah_attr *ah_attr)
-
-    Initialize address handle attributes based on an SA path record.
-
-    :param struct ib_device \*device:
-        *undescribed*
-
-    :param u8 port_num:
-        *undescribed*
-
-    :param struct sa_path_rec \*rec:
-        *undescribed*
-
-    :param struct rdma_ah_attr \*ah_attr:
-        *undescribed*
+    :type ah_attr: struct rdma_ah_attr \*
 
 .. _`ib_sa_pack_path`:
 
@@ -227,11 +218,13 @@ ib_sa_pack_path
 
     Conert a path record from struct ib_sa_path_rec to IB MAD wire format.
 
-    :param struct sa_path_rec \*rec:
+    :param rec:
         *undescribed*
+    :type rec: struct sa_path_rec \*
 
-    :param void \*attribute:
+    :param attribute:
         *undescribed*
+    :type attribute: void \*
 
 .. _`ib_sa_unpack_path`:
 
@@ -242,11 +235,13 @@ ib_sa_unpack_path
 
     Convert a path record from MAD format to struct ib_sa_path_rec.
 
-    :param void \*attribute:
+    :param attribute:
         *undescribed*
+    :type attribute: void \*
 
-    :param struct sa_path_rec \*rec:
+    :param rec:
         *undescribed*
+    :type rec: struct sa_path_rec \*
 
 .. This file was automatic generated / don't edit.
 

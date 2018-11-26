@@ -10,11 +10,13 @@ libfc_vport_create
 
     Create a new NPIV vport instance
 
-    :param struct fc_vport \*vport:
+    :param vport:
         fc_vport structure from scsi_transport_fc
+    :type vport: struct fc_vport \*
 
-    :param int privsize:
+    :param privsize:
         driver private data size to allocate along with the Scsi_Host
+    :type privsize: int
 
 .. _`fc_vport_id_lookup`:
 
@@ -25,11 +27,13 @@ fc_vport_id_lookup
 
     find NPIV lport that matches a given fabric ID
 
-    :param struct fc_lport \*n_port:
+    :param n_port:
         Top level N_Port which may have multiple NPIV VN_Ports
+    :type n_port: struct fc_lport \*
 
-    :param u32 port_id:
+    :param port_id:
         Fabric ID to find a match for
+    :type port_id: u32
 
 .. _`fc_vport_id_lookup.return`:
 
@@ -47,11 +51,13 @@ matching lport pointer or NULL if there is no match
 
     update link and status on a VN_Port
 
-    :param struct fc_lport \*n_port:
+    :param n_port:
         parent N_Port
+    :type n_port: struct fc_lport \*
 
-    :param struct fc_lport \*vn_port:
+    :param vn_port:
         VN_Port to update
+    :type vn_port: struct fc_lport \*
 
 .. _`__fc_vport_setlink.locking`:
 
@@ -69,8 +75,9 @@ fc_vport_setlink
 
     update link and status on a VN_Port
 
-    :param struct fc_lport \*vn_port:
+    :param vn_port:
         virtual port to update
+    :type vn_port: struct fc_lport \*
 
 .. _`fc_vports_linkchange`:
 
@@ -81,8 +88,9 @@ fc_vports_linkchange
 
     change the link state of all vports
 
-    :param struct fc_lport \*n_port:
+    :param n_port:
         Parent N_Port that has changed state
+    :type n_port: struct fc_lport \*
 
 .. _`fc_vports_linkchange.locking`:
 

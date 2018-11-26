@@ -167,6 +167,7 @@ Definition
 
     struct rave_sp_variant_cmds {
         int (*translate)(enum rave_sp_command);
+        int (*get_status)(struct rave_sp *sp, struct rave_sp_status *);
     }
 
 .. _`rave_sp_variant_cmds.members`:
@@ -176,6 +177,9 @@ Members
 
 translate
     Generic to variant specific command mapping routine
+
+get_status
+    Variant specific implementation of CMD_GET_STATUS
 
 .. _`rave_sp_variant`:
 

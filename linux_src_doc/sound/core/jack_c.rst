@@ -10,15 +10,18 @@ snd_jack_add_new_kctl
 
     Create a new snd_jack_kctl and add it to jack
 
-    :param struct snd_jack \*jack:
+    :param jack:
         the jack instance which the kctl will attaching to
+    :type jack: struct snd_jack \*
 
-    :param const char \*name:
+    :param name:
         the name for the snd_kcontrol object
+    :type name: const char \*
 
-    :param int mask:
+    :param mask:
         a bitmask of enum snd_jack_type values that can be detected
         by this snd_jack_kctl object.
+    :type mask: int
 
 .. _`snd_jack_add_new_kctl.description`:
 
@@ -43,24 +46,30 @@ snd_jack_new
 
     Create a new jack
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param const char \*id:
+    :param id:
         an identifying string for this jack
+    :type id: const char \*
 
-    :param int type:
+    :param type:
         a bitmask of enum snd_jack_type values that can be detected by
         this jack
+    :type type: int
 
-    :param struct snd_jack \*\*jjack:
+    :param jjack:
         Used to provide the allocated jack object to the caller.
+    :type jjack: struct snd_jack \*\*
 
-    :param bool initial_kctl:
+    :param initial_kctl:
         if true, create a kcontrol and add it to the jack list.
+    :type initial_kctl: bool
 
-    :param bool phantom_jack:
+    :param phantom_jack:
         Don't create a input device for phantom jacks.
+    :type phantom_jack: bool
 
 .. _`snd_jack_new.description`:
 
@@ -86,11 +95,13 @@ snd_jack_set_parent
 
     Set the parent device for a jack
 
-    :param struct snd_jack \*jack:
+    :param jack:
         The jack to configure
+    :type jack: struct snd_jack \*
 
-    :param struct device \*parent:
+    :param parent:
         The device to set as parent for the jack.
+    :type parent: struct device \*
 
 .. _`snd_jack_set_parent.description`:
 
@@ -110,14 +121,17 @@ snd_jack_set_key
 
     Set a key mapping on a jack
 
-    :param struct snd_jack \*jack:
+    :param jack:
         The jack to configure
+    :type jack: struct snd_jack \*
 
-    :param enum snd_jack_types type:
+    :param type:
         Jack report type for this key
+    :type type: enum snd_jack_types
 
-    :param int keytype:
+    :param keytype:
         Input layer key type to be reported
+    :type keytype: int
 
 .. _`snd_jack_set_key.description`:
 
@@ -156,11 +170,13 @@ snd_jack_report
 
     Report the current status of a jack
 
-    :param struct snd_jack \*jack:
+    :param jack:
         The jack to report status for
+    :type jack: struct snd_jack \*
 
-    :param int status:
+    :param status:
         The current status of the jack
+    :type status: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,15 +10,16 @@ comedi_to_pcmcia_dev
 
     Return PCMCIA device attached to COMEDI device
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
 .. _`comedi_to_pcmcia_dev.description`:
 
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
+Assuming \ ``dev->hw_dev``\  is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pcmcia_device <pcmcia_device>`\ .
 
 .. _`comedi_to_pcmcia_dev.return`:
@@ -26,8 +27,8 @@ a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pcmcia_de
 Return
 ------
 
-Attached PCMCIA device if \ ``dev``\ ->hw_dev is non-%NULL.
-Return \ ``NULL``\  if \ ``dev``\ ->hw_dev is \ ``NULL``\ .
+Attached PCMCIA device if \ ``dev->hw_dev``\  is non-%NULL.
+Return \ ``NULL``\  if \ ``dev->hw_dev``\  is \ ``NULL``\ .
 
 .. _`comedi_pcmcia_enable`:
 
@@ -38,8 +39,9 @@ comedi_pcmcia_enable
 
     Request the regions and enable the PCMCIA device
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
     :param int (\*conf_check)(struct pcmcia_device \*p_dev, void \*priv_data):
         Optional callback to check each configuration option of the
@@ -50,7 +52,7 @@ comedi_pcmcia_enable
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a a
+Assuming \ ``dev->hw_dev``\  is non-%NULL, it is assumed to be pointing to a a
 \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pcmcia_device <pcmcia_device>`\ .  The comedi PCMCIA
 driver needs to set the 'config_flags' member in the \ :c:type:`struct pcmcia_device <pcmcia_device>`\ ,
 as appropriate for that driver, before calling this function in order to
@@ -75,7 +77,7 @@ Return
 ------
 
 0 on success,
--%ENODEV id \ ``dev``\ ->hw_dev is \ ``NULL``\ ,
+-%ENODEV id \ ``dev->hw_dev``\  is \ ``NULL``\ ,
 a negative error number from \ :c:func:`pcmcia_loop_config`\  if it fails,
 or a negative error number from \ :c:func:`pcmcia_enable_device`\  if it fails.
 
@@ -88,15 +90,16 @@ comedi_pcmcia_disable
 
     Disable the PCMCIA device and release the regions
 
-    :param struct comedi_device \*dev:
+    :param dev:
         COMEDI device.
+    :type dev: struct comedi_device \*
 
 .. _`comedi_pcmcia_disable.description`:
 
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
+Assuming \ ``dev->hw_dev``\  is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pcmcia_device <pcmcia_device>`\ .  Call
 \ :c:func:`pcmcia_disable_device`\  to disable and clean up the PCMCIA device.
 
@@ -109,11 +112,13 @@ comedi_pcmcia_auto_config
 
     Configure/probe a PCMCIA COMEDI device
 
-    :param struct pcmcia_device \*link:
+    :param link:
         PCMCIA device.
+    :type link: struct pcmcia_device \*
 
-    :param struct comedi_driver \*driver:
+    :param driver:
         Registered COMEDI driver.
+    :type driver: struct comedi_driver \*
 
 .. _`comedi_pcmcia_auto_config.description`:
 
@@ -142,8 +147,9 @@ comedi_pcmcia_auto_unconfig
 
     Unconfigure/remove a PCMCIA COMEDI device
 
-    :param struct pcmcia_device \*link:
+    :param link:
         PCMCIA device.
+    :type link: struct pcmcia_device \*
 
 .. _`comedi_pcmcia_auto_unconfig.description`:
 
@@ -169,11 +175,13 @@ comedi_pcmcia_driver_register
 
     Register a PCMCIA COMEDI driver
 
-    :param struct comedi_driver \*comedi_driver:
+    :param comedi_driver:
         COMEDI driver to be registered.
+    :type comedi_driver: struct comedi_driver \*
 
-    :param struct pcmcia_driver \*pcmcia_driver:
+    :param pcmcia_driver:
         PCMCIA driver to be registered.
+    :type pcmcia_driver: struct pcmcia_driver \*
 
 .. _`comedi_pcmcia_driver_register.description`:
 
@@ -200,11 +208,13 @@ comedi_pcmcia_driver_unregister
 
     Unregister a PCMCIA COMEDI driver
 
-    :param struct comedi_driver \*comedi_driver:
+    :param comedi_driver:
         COMEDI driver to be registered.
+    :type comedi_driver: struct comedi_driver \*
 
-    :param struct pcmcia_driver \*pcmcia_driver:
+    :param pcmcia_driver:
         PCMCIA driver to be registered.
+    :type pcmcia_driver: struct pcmcia_driver \*
 
 .. _`comedi_pcmcia_driver_unregister.description`:
 

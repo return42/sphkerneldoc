@@ -10,8 +10,9 @@ pinctrl_provide_dummies
 
     indicate if pinctrl provides dummy state support
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pinctrl_provide_dummies.description`:
 
@@ -32,8 +33,9 @@ get_pinctrl_dev_from_devname
 
     look up pin controller device
 
-    :param const char \*devname:
+    :param devname:
         the name of a device instance, as returned by \ :c:func:`dev_name`\ 
+    :type devname: const char \*
 
 .. _`get_pinctrl_dev_from_devname.description`:
 
@@ -52,11 +54,13 @@ pin_get_from_name
 
     look up a pin number from a name
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         the pin control device to lookup the pin on
+    :type pctldev: struct pinctrl_dev \*
 
-    :param const char \*name:
+    :param name:
         the name of the pin to look up
+    :type name: const char \*
 
 .. _`pin_get_name`:
 
@@ -67,11 +71,13 @@ pin_get_name
 
     look up a pin name from a pin id
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         the pin control device to lookup the pin on
+    :type pctldev: struct pinctrl_dev \*
 
-    :param const unsigned pin:
+    :param pin:
         *undescribed*
+    :type pin: const unsigned
 
 .. _`pin_is_valid`:
 
@@ -82,11 +88,13 @@ pin_is_valid
 
     check if pin exists on controller
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         the pin control device to check the pin on
+    :type pctldev: struct pinctrl_dev \*
 
-    :param int pin:
+    :param pin:
         pin to check, use the local pin controller index number
+    :type pin: int
 
 .. _`pin_is_valid.description`:
 
@@ -105,11 +113,13 @@ gpio_to_pin
 
     GPIO range GPIO number to pin number translation
 
-    :param struct pinctrl_gpio_range \*range:
+    :param range:
         GPIO range used for the translation
+    :type range: struct pinctrl_gpio_range \*
 
-    :param unsigned int gpio:
+    :param gpio:
         gpio pin to translate to a pin number
+    :type gpio: unsigned int
 
 .. _`gpio_to_pin.description`:
 
@@ -133,11 +143,13 @@ pinctrl_match_gpio_range
 
     check if a certain GPIO pin is in range
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device to check
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned gpio:
+    :param gpio:
         gpio pin to check taken from the global GPIO pin space
+    :type gpio: unsigned
 
 .. _`pinctrl_match_gpio_range.description`:
 
@@ -156,8 +168,9 @@ pinctrl_ready_for_gpio_range
 
     check if other GPIO pins of the same GPIO chip are in range
 
-    :param unsigned gpio:
+    :param gpio:
         gpio pin to check taken from the global GPIO pin space
+    :type gpio: unsigned
 
 .. _`pinctrl_ready_for_gpio_range.description`:
 
@@ -181,14 +194,17 @@ pinctrl_get_device_gpio_range
 
     find device for GPIO range
 
-    :param unsigned gpio:
+    :param gpio:
         the pin to locate the pin controller for
+    :type gpio: unsigned
 
-    :param struct pinctrl_dev \*\*outdev:
+    :param outdev:
         the pin control device if found
+    :type outdev: struct pinctrl_dev \*\*
 
-    :param struct pinctrl_gpio_range \*\*outrange:
+    :param outrange:
         the GPIO range if found
+    :type outrange: struct pinctrl_gpio_range \*\*
 
 .. _`pinctrl_get_device_gpio_range.description`:
 
@@ -209,11 +225,13 @@ pinctrl_add_gpio_range
 
     register a GPIO range for a controller
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device to add the range to
+    :type pctldev: struct pinctrl_dev \*
 
-    :param struct pinctrl_gpio_range \*range:
+    :param range:
         the GPIO range to add
+    :type range: struct pinctrl_gpio_range \*
 
 .. _`pinctrl_add_gpio_range.description`:
 
@@ -232,11 +250,13 @@ pinctrl_find_gpio_range_from_pin
 
     locate the GPIO range for a pin
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         the pin controller device to look in
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int pin:
+    :param pin:
         a controller-local number to find the range for
+    :type pin: unsigned int
 
 .. _`pinctrl_remove_gpio_range`:
 
@@ -247,11 +267,13 @@ pinctrl_remove_gpio_range
 
     remove a range of GPIOs from a pin controller
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device to remove the range from
+    :type pctldev: struct pinctrl_dev \*
 
-    :param struct pinctrl_gpio_range \*range:
+    :param range:
         the GPIO range to remove
+    :type range: struct pinctrl_gpio_range \*
 
 .. _`pinctrl_generic_get_group_count`:
 
@@ -262,8 +284,9 @@ pinctrl_generic_get_group_count
 
     returns the number of pin groups
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
 .. _`pinctrl_generic_get_group_name`:
 
@@ -274,11 +297,13 @@ pinctrl_generic_get_group_name
 
     returns the name of a pin group
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         group number
+    :type selector: unsigned int
 
 .. _`pinctrl_generic_get_group_pins`:
 
@@ -289,17 +314,21 @@ pinctrl_generic_get_group_pins
 
     gets the pin group pins
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         group number
+    :type selector: unsigned int
 
-    :param const unsigned int \*\*pins:
+    :param pins:
         pins in the group
+    :type pins: const unsigned int \*\*
 
-    :param unsigned int \*num_pins:
+    :param num_pins:
         number of pins in the group
+    :type num_pins: unsigned int \*
 
 .. _`pinctrl_generic_get_group`:
 
@@ -310,11 +339,13 @@ pinctrl_generic_get_group
 
     returns a pin group based on the number
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         *undescribed*
+    :type selector: unsigned int
 
 .. _`pinctrl_generic_add_group`:
 
@@ -325,20 +356,25 @@ pinctrl_generic_add_group
 
     adds a new pin group
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param const char \*name:
+    :param name:
         name of the pin group
+    :type name: const char \*
 
-    :param int \*pins:
+    :param pins:
         pins in the pin group
+    :type pins: int \*
 
-    :param int num_pins:
+    :param num_pins:
         number of pins in the pin group
+    :type num_pins: int
 
-    :param void \*data:
+    :param data:
         pin controller driver specific data
+    :type data: void \*
 
 .. _`pinctrl_generic_add_group.description`:
 
@@ -356,11 +392,13 @@ pinctrl_generic_remove_group
 
     removes a numbered pin group
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         group number
+    :type selector: unsigned int
 
 .. _`pinctrl_generic_remove_group.description`:
 
@@ -378,8 +416,9 @@ pinctrl_generic_free_groups
 
     removes all pin groups
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
 .. _`pinctrl_generic_free_groups.description`:
 
@@ -398,11 +437,13 @@ pinctrl_get_group_selector
 
     returns the group selector for a group
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         the pin controller handling the group
+    :type pctldev: struct pinctrl_dev \*
 
-    :param const char \*pin_group:
+    :param pin_group:
         the pin group to look up
+    :type pin_group: const char \*
 
 .. _`pinctrl_gpio_request`:
 
@@ -413,8 +454,9 @@ pinctrl_gpio_request
 
     request a single pin to be used as GPIO
 
-    :param unsigned gpio:
+    :param gpio:
         the GPIO pin number from the GPIO subsystem number space
+    :type gpio: unsigned
 
 .. _`pinctrl_gpio_request.description`:
 
@@ -434,8 +476,9 @@ pinctrl_gpio_free
 
     free control on a single pin, currently used as GPIO
 
-    :param unsigned gpio:
+    :param gpio:
         the GPIO pin number from the GPIO subsystem number space
+    :type gpio: unsigned
 
 .. _`pinctrl_gpio_free.description`:
 
@@ -455,8 +498,9 @@ pinctrl_gpio_direction_input
 
     request a GPIO pin to go into input mode
 
-    :param unsigned gpio:
+    :param gpio:
         the GPIO pin number from the GPIO subsystem number space
+    :type gpio: unsigned
 
 .. _`pinctrl_gpio_direction_input.description`:
 
@@ -476,8 +520,9 @@ pinctrl_gpio_direction_output
 
     request a GPIO pin to go into output mode
 
-    :param unsigned gpio:
+    :param gpio:
         the GPIO pin number from the GPIO subsystem number space
+    :type gpio: unsigned
 
 .. _`pinctrl_gpio_direction_output.description`:
 
@@ -497,11 +542,13 @@ pinctrl_gpio_set_config
 
     Apply config to given GPIO pin
 
-    :param unsigned gpio:
+    :param gpio:
         the GPIO pin number from the GPIO subsystem number space
+    :type gpio: unsigned
 
-    :param unsigned long config:
+    :param config:
         the configuration to apply to the GPIO
+    :type config: unsigned long
 
 .. _`pinctrl_gpio_set_config.description`:
 
@@ -521,8 +568,9 @@ pinctrl_get
 
     retrieves the pinctrl handle for a device
 
-    :param struct device \*dev:
+    :param dev:
         the device to obtain the handle for
+    :type dev: struct device \*
 
 .. _`pinctrl_release`:
 
@@ -533,8 +581,9 @@ pinctrl_release
 
     release the pinctrl handle
 
-    :param struct kref \*kref:
+    :param kref:
         the kref in the pinctrl being released
+    :type kref: struct kref \*
 
 .. _`pinctrl_put`:
 
@@ -545,8 +594,9 @@ pinctrl_put
 
     decrease use count on a previously claimed pinctrl handle
 
-    :param struct pinctrl \*p:
+    :param p:
         the pinctrl handle to release
+    :type p: struct pinctrl \*
 
 .. _`pinctrl_lookup_state`:
 
@@ -557,11 +607,13 @@ pinctrl_lookup_state
 
     retrieves a state handle from a pinctrl handle
 
-    :param struct pinctrl \*p:
+    :param p:
         the pinctrl handle to retrieve the state from
+    :type p: struct pinctrl \*
 
-    :param const char \*name:
+    :param name:
         the state name to retrieve
+    :type name: const char \*
 
 .. _`pinctrl_commit_state`:
 
@@ -572,11 +624,13 @@ pinctrl_commit_state
 
     select/activate/program a pinctrl state to HW
 
-    :param struct pinctrl \*p:
+    :param p:
         the pinctrl handle for the device that requests configuration
+    :type p: struct pinctrl \*
 
-    :param struct pinctrl_state \*state:
+    :param state:
         the state handle to select/activate/program
+    :type state: struct pinctrl_state \*
 
 .. _`pinctrl_select_state`:
 
@@ -587,11 +641,13 @@ pinctrl_select_state
 
     select/activate/program a pinctrl state to HW
 
-    :param struct pinctrl \*p:
+    :param p:
         the pinctrl handle for the device that requests configuration
+    :type p: struct pinctrl \*
 
-    :param struct pinctrl_state \*state:
+    :param state:
         the state handle to select/activate/program
+    :type state: struct pinctrl_state \*
 
 .. _`devm_pinctrl_put`:
 
@@ -602,8 +658,9 @@ devm_pinctrl_put
 
     Resource managed \ :c:func:`pinctrl_put`\ 
 
-    :param struct pinctrl \*p:
+    :param p:
         the pinctrl handle to release
+    :type p: struct pinctrl \*
 
 .. _`devm_pinctrl_put.description`:
 
@@ -623,13 +680,15 @@ pinctrl_register_mappings
 
     register a set of pin controller mappings
 
-    :param const struct pinctrl_map \*maps:
+    :param maps:
         the pincontrol mappings table to register. This should probably be
         marked with \__initdata so it can be discarded after boot. This
         function will perform a shallow copy for the mapping entries.
+    :type maps: const struct pinctrl_map \*
 
-    :param unsigned num_maps:
+    :param num_maps:
         the number of maps in the mapping table
+    :type num_maps: unsigned
 
 .. _`pinctrl_force_sleep`:
 
@@ -640,8 +699,9 @@ pinctrl_force_sleep
 
     turn a given controller device into sleep state
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
 .. _`pinctrl_force_default`:
 
@@ -652,8 +712,9 @@ pinctrl_force_default
 
     turn a given controller device into default state
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
 .. _`pinctrl_init_done`:
 
@@ -664,8 +725,9 @@ pinctrl_init_done
 
     tell pinctrl probe is done
 
-    :param struct device \*dev:
+    :param dev:
         device to that's done probing
+    :type dev: struct device \*
 
 .. _`pinctrl_init_done.description`:
 
@@ -684,11 +746,13 @@ pinctrl_pm_select_state
 
     select pinctrl state for PM
 
-    :param struct device \*dev:
+    :param dev:
         device to select default state for
+    :type dev: struct device \*
 
-    :param struct pinctrl_state \*state:
+    :param state:
         state to set
+    :type state: struct pinctrl_state \*
 
 .. _`pinctrl_pm_select_default_state`:
 
@@ -699,8 +763,9 @@ pinctrl_pm_select_default_state
 
     select default pinctrl state for PM
 
-    :param struct device \*dev:
+    :param dev:
         device to select default state for
+    :type dev: struct device \*
 
 .. _`pinctrl_pm_select_sleep_state`:
 
@@ -711,8 +776,9 @@ pinctrl_pm_select_sleep_state
 
     select sleep pinctrl state for PM
 
-    :param struct device \*dev:
+    :param dev:
         device to select sleep state for
+    :type dev: struct device \*
 
 .. _`pinctrl_pm_select_idle_state`:
 
@@ -723,8 +789,9 @@ pinctrl_pm_select_idle_state
 
     select idle pinctrl state for PM
 
-    :param struct device \*dev:
+    :param dev:
         device to select idle state for
+    :type dev: struct device \*
 
 .. _`pinctrl_init_controller`:
 
@@ -735,14 +802,17 @@ pinctrl_init_controller
 
     init a pin controller device
 
-    :param struct pinctrl_desc \*pctldesc:
+    :param pctldesc:
         descriptor for this pin controller
+    :type pctldesc: struct pinctrl_desc \*
 
-    :param struct device \*dev:
+    :param dev:
         parent device for this pin controller
+    :type dev: struct device \*
 
-    :param void \*driver_data:
+    :param driver_data:
         private pin controller data for this pin controller
+    :type driver_data: void \*
 
 .. _`pinctrl_register`:
 
@@ -753,14 +823,17 @@ pinctrl_register
 
     register a pin controller device
 
-    :param struct pinctrl_desc \*pctldesc:
+    :param pctldesc:
         descriptor for this pin controller
+    :type pctldesc: struct pinctrl_desc \*
 
-    :param struct device \*dev:
+    :param dev:
         parent device for this pin controller
+    :type dev: struct device \*
 
-    :param void \*driver_data:
+    :param driver_data:
         private pin controller data for this pin controller
+    :type driver_data: void \*
 
 .. _`pinctrl_register.description`:
 
@@ -781,17 +854,21 @@ pinctrl_register_and_init
 
     register and init pin controller device
 
-    :param struct pinctrl_desc \*pctldesc:
+    :param pctldesc:
         descriptor for this pin controller
+    :type pctldesc: struct pinctrl_desc \*
 
-    :param struct device \*dev:
+    :param dev:
         parent device for this pin controller
+    :type dev: struct device \*
 
-    :param void \*driver_data:
+    :param driver_data:
         private pin controller data for this pin controller
+    :type driver_data: void \*
 
-    :param struct pinctrl_dev \*\*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*\*
 
 .. _`pinctrl_register_and_init.description`:
 
@@ -810,8 +887,9 @@ pinctrl_unregister
 
     unregister pinmux
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller to unregister
+    :type pctldev: struct pinctrl_dev \*
 
 .. _`pinctrl_unregister.description`:
 
@@ -829,14 +907,17 @@ devm_pinctrl_register
 
     Resource managed version of \ :c:func:`pinctrl_register`\ .
 
-    :param struct device \*dev:
+    :param dev:
         parent device for this pin controller
+    :type dev: struct device \*
 
-    :param struct pinctrl_desc \*pctldesc:
+    :param pctldesc:
         descriptor for this pin controller
+    :type pctldesc: struct pinctrl_desc \*
 
-    :param void \*driver_data:
+    :param driver_data:
         private pin controller data for this pin controller
+    :type driver_data: void \*
 
 .. _`devm_pinctrl_register.description`:
 
@@ -857,17 +938,21 @@ devm_pinctrl_register_and_init
 
     Resource managed pinctrl register and init
 
-    :param struct device \*dev:
+    :param dev:
         parent device for this pin controller
+    :type dev: struct device \*
 
-    :param struct pinctrl_desc \*pctldesc:
+    :param pctldesc:
         descriptor for this pin controller
+    :type pctldesc: struct pinctrl_desc \*
 
-    :param void \*driver_data:
+    :param driver_data:
         private pin controller data for this pin controller
+    :type driver_data: void \*
 
-    :param struct pinctrl_dev \*\*pctldev:
+    :param pctldev:
         *undescribed*
+    :type pctldev: struct pinctrl_dev \*\*
 
 .. _`devm_pinctrl_register_and_init.description`:
 
@@ -888,11 +973,13 @@ devm_pinctrl_unregister
 
     Resource managed version of \ :c:func:`pinctrl_unregister`\ .
 
-    :param struct device \*dev:
+    :param dev:
         device for which which resource was allocated
+    :type dev: struct device \*
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         the pinctrl device to unregister.
+    :type pctldev: struct pinctrl_dev \*
 
 .. This file was automatic generated / don't edit.
 

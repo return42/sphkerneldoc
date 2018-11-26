@@ -108,14 +108,14 @@ lock
 
 work
     worklist element for node work
-    (protected by \ ``proc``\ ->inner_lock)
+    (protected by \ ``proc->inner_lock``\ )
 
 {unnamed_union}
     anonymous
 
 rb_node
     element for proc->nodes tree
-    (protected by \ ``proc``\ ->inner_lock)
+    (protected by \ ``proc->inner_lock``\ )
 
 dead_node
     element for binder_dead_nodes list
@@ -132,22 +132,22 @@ refs
 internal_strong_refs
     used to take strong references when
     initiating a transaction
-    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    (protected by \ ``proc->inner_lock``\  if \ ``proc``\ 
     and by \ ``lock``\ )
 
 local_weak_refs
     weak user refs from local process
-    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    (protected by \ ``proc->inner_lock``\  if \ ``proc``\ 
     and by \ ``lock``\ )
 
 local_strong_refs
     strong user refs from local process
-    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    (protected by \ ``proc->inner_lock``\  if \ ``proc``\ 
     and by \ ``lock``\ )
 
 tmp_refs
     temporary kernel refs
-    (protected by \ ``proc``\ ->inner_lock while \ ``proc``\ 
+    (protected by \ ``proc->inner_lock``\  while \ ``proc``\ 
     is valid, and by binder_dead_nodes_lock
     if \ ``proc``\  is NULL. During inc/dec and node release
     it is also protected by \ ``lock``\  to provide safety
@@ -166,22 +166,22 @@ cookie
 
 has_strong_ref
     userspace notified of strong ref
-    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    (protected by \ ``proc->inner_lock``\  if \ ``proc``\ 
     and by \ ``lock``\ )
 
 pending_strong_ref
     userspace has acked notification of strong ref
-    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    (protected by \ ``proc->inner_lock``\  if \ ``proc``\ 
     and by \ ``lock``\ )
 
 has_weak_ref
     userspace notified of weak ref
-    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    (protected by \ ``proc->inner_lock``\  if \ ``proc``\ 
     and by \ ``lock``\ )
 
 pending_weak_ref
     userspace has acked notification of weak ref
-    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    (protected by \ ``proc->inner_lock``\  if \ ``proc``\ 
     and by \ ``lock``\ )
 
 {unnamed_struct}
@@ -201,7 +201,7 @@ has_async_transaction
 
 async_todo
     list of async work items
-    (protected by \ ``proc``\ ->inner_lock)
+    (protected by \ ``proc->inner_lock``\ )
 
 .. _`binder_node.description`:
 
@@ -302,7 +302,7 @@ rb_node_node
 
 node_entry
     list entry for node->refs list in target node
-    (protected by \ ``node``\ ->lock)
+    (protected by \ ``node->lock``\ )
 
 proc
     binder_proc containing ref
@@ -314,7 +314,7 @@ node
 
 death
     pointer to death notification (ref_death) if requested
-    (protected by \ ``node``\ ->lock)
+    (protected by \ ``node->lock``\ )
 
 .. _`binder_ref.description`:
 
@@ -322,7 +322,7 @@ Description
 -----------
 
 Structure to track references from procA to target node (on procB). This
-structure is unsafe to access without holding \ ``proc``\ ->outer_lock.
+structure is unsafe to access without holding \ ``proc->outer_lock``\ .
 
 .. _`binder_proc`:
 
@@ -349,8 +349,6 @@ Definition
         struct list_head waiting_threads;
         int pid;
         struct task_struct *tsk;
-        struct files_struct *files;
-        struct mutex files_lock;
         struct hlist_node deferred_work_node;
         int deferred_work;
         bool is_dead;
@@ -401,20 +399,11 @@ waiting_threads
     (invariant after initialized)
     \ ``tsk``\                    task_struct for group_leader of process
     (invariant after initialized)
-    \ ``files``\                  files_struct for process
-    (protected by \ ``files_lock``\ )
-    \ ``files_lock``\             mutex to protect \ ``files``\ 
 
 pid
     *undescribed*
 
 tsk
-    *undescribed*
-
-files
-    *undescribed*
-
-files_lock
     *undescribed*
 
 deferred_work_node
@@ -533,11 +522,11 @@ proc
 
 rb_node
     element for proc->threads rbtree
-    (protected by \ ``proc``\ ->inner_lock)
+    (protected by \ ``proc->inner_lock``\ )
 
 waiting_thread_node
-    element for \ ``proc``\ ->waiting_threads list
-    (protected by \ ``proc``\ ->inner_lock)
+    element for \ ``proc->waiting_threads``\  list
+    (protected by \ ``proc->inner_lock``\ )
 
 pid
     PID for this thread
@@ -552,15 +541,15 @@ looper_need_return
 
 transaction_stack
     stack of in-progress transactions for this thread
-    (protected by \ ``proc``\ ->inner_lock)
+    (protected by \ ``proc->inner_lock``\ )
 
 todo
     list of work to do for this thread
-    (protected by \ ``proc``\ ->inner_lock)
+    (protected by \ ``proc->inner_lock``\ )
 
 process_todo
     whether work in \ ``todo``\  should be processed
-    (protected by \ ``proc``\ ->inner_lock)
+    (protected by \ ``proc->inner_lock``\ )
 
 return_error
     transaction errors reported by this thread
@@ -568,7 +557,7 @@ return_error
 
 reply_error
     transaction errors reported by target thread
-    (protected by \ ``proc``\ ->inner_lock)
+    (protected by \ ``proc->inner_lock``\ )
 
 wait
     wait queue for thread work
@@ -579,13 +568,13 @@ stats
 
 tmp_ref
     temporary reference to indicate thread is in use
-    (atomic since \ ``proc``\ ->inner_lock cannot
+    (atomic since \ ``proc->inner_lock``\  cannot
     always be acquired)
 
 is_dead
     thread is dead and awaiting free
     when outstanding transactions are cleaned up
-    (protected by \ ``proc``\ ->inner_lock)
+    (protected by \ ``proc->inner_lock``\ )
 
 .. _`binder_thread.description`:
 
@@ -593,6 +582,52 @@ Description
 -----------
 
 Bookkeeping structure for binder threads.
+
+.. _`binder_txn_fd_fixup`:
+
+struct binder_txn_fd_fixup
+==========================
+
+.. c:type:: struct binder_txn_fd_fixup
+
+    transaction fd fixup list element
+
+.. _`binder_txn_fd_fixup.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct binder_txn_fd_fixup {
+        struct list_head fixup_entry;
+        struct file *file;
+        size_t offset;
+    }
+
+.. _`binder_txn_fd_fixup.members`:
+
+Members
+-------
+
+fixup_entry
+    list entry
+
+file
+    struct file to be associated with new fd
+
+offset
+    offset in buffer data to this fixup
+
+.. _`binder_txn_fd_fixup.description`:
+
+Description
+-----------
+
+List element for fd fixups in a transaction. Since file
+descriptors need to be allocated in the context of the
+target process, we pass each fd to be processed in this
+struct.
 
 .. _`binder_proc_lock`:
 
@@ -603,8 +638,9 @@ binder_proc_lock
 
     Acquire outer lock for given binder_proc
 
-    :param  proc:
+    :param proc:
         struct binder_proc to acquire
+    :type proc: 
 
 .. _`binder_proc_lock.description`:
 
@@ -623,8 +659,9 @@ binder_proc_unlock
 
     Release spinlock for given binder_proc
 
-    :param  _proc:
+    :param _proc:
         *undescribed*
+    :type _proc: 
 
 .. _`binder_proc_unlock.description`:
 
@@ -642,8 +679,9 @@ binder_inner_proc_lock
 
     Acquire inner lock for given binder_proc
 
-    :param  proc:
+    :param proc:
         struct binder_proc to acquire
+    :type proc: 
 
 .. _`binder_inner_proc_lock.description`:
 
@@ -661,8 +699,9 @@ binder_inner_proc_unlock
 
     Release inner lock for given binder_proc
 
-    :param  proc:
+    :param proc:
         struct binder_proc to acquire
+    :type proc: 
 
 .. _`binder_inner_proc_unlock.description`:
 
@@ -680,8 +719,9 @@ binder_node_lock
 
     Acquire spinlock for given binder_node
 
-    :param  node:
+    :param node:
         struct binder_node to acquire
+    :type node: 
 
 .. _`binder_node_lock.description`:
 
@@ -699,8 +739,9 @@ binder_node_unlock
 
     Release spinlock for given binder_proc
 
-    :param  node:
+    :param node:
         struct binder_node to acquire
+    :type node: 
 
 .. _`binder_node_unlock.description`:
 
@@ -718,8 +759,9 @@ binder_node_inner_lock
 
     Acquire node and inner locks
 
-    :param  node:
+    :param node:
         struct binder_node to acquire
+    :type node: 
 
 .. _`binder_node_inner_lock.description`:
 
@@ -738,8 +780,9 @@ binder_node_inner_unlock
 
     Release node and inner locks
 
-    :param  node:
+    :param node:
         struct binder_node to acquire
+    :type node: 
 
 .. _`binder_node_inner_unlock.description`:
 
@@ -757,11 +800,13 @@ binder_worklist_empty
 
     Check if no items on the work list
 
-    :param struct binder_proc \*proc:
+    :param proc:
         binder_proc associated with list
+    :type proc: struct binder_proc \*
 
-    :param struct list_head \*list:
+    :param list:
         list to check
+    :type list: struct list_head \*
 
 .. _`binder_worklist_empty.return`:
 
@@ -779,11 +824,13 @@ binder_enqueue_work_ilocked
 
     Add an item to the work list
 
-    :param struct binder_work \*work:
+    :param work:
         struct binder_work to add to list
+    :type work: struct binder_work \*
 
-    :param struct list_head \*target_list:
+    :param target_list:
         list to add work to
+    :type target_list: struct list_head \*
 
 .. _`binder_enqueue_work_ilocked.description`:
 
@@ -804,11 +851,13 @@ binder_enqueue_deferred_thread_work_ilocked
 
     Add deferred thread work
 
-    :param struct binder_thread \*thread:
+    :param thread:
         thread to queue work to
+    :type thread: struct binder_thread \*
 
-    :param struct binder_work \*work:
+    :param work:
         struct binder_work to add to list
+    :type work: struct binder_work \*
 
 .. _`binder_enqueue_deferred_thread_work_ilocked.description`:
 
@@ -830,11 +879,13 @@ binder_enqueue_thread_work_ilocked
 
     Add an item to the thread work list
 
-    :param struct binder_thread \*thread:
+    :param thread:
         thread to queue work to
+    :type thread: struct binder_thread \*
 
-    :param struct binder_work \*work:
+    :param work:
         struct binder_work to add to list
+    :type work: struct binder_work \*
 
 .. _`binder_enqueue_thread_work_ilocked.description`:
 
@@ -855,11 +906,13 @@ binder_enqueue_thread_work
 
     Add an item to the thread work list
 
-    :param struct binder_thread \*thread:
+    :param thread:
         thread to queue work to
+    :type thread: struct binder_thread \*
 
-    :param struct binder_work \*work:
+    :param work:
         struct binder_work to add to list
+    :type work: struct binder_work \*
 
 .. _`binder_enqueue_thread_work.description`:
 
@@ -878,11 +931,13 @@ binder_dequeue_work
 
     Removes an item from the work list
 
-    :param struct binder_proc \*proc:
+    :param proc:
         binder_proc associated with list
+    :type proc: struct binder_proc \*
 
-    :param struct binder_work \*work:
+    :param work:
         struct binder_work to remove from list
+    :type work: struct binder_work \*
 
 .. _`binder_dequeue_work.description`:
 
@@ -901,11 +956,13 @@ binder_dequeue_work_head
 
     Dequeues the item at head of list
 
-    :param struct binder_proc \*proc:
+    :param proc:
         binder_proc associated with list
+    :type proc: struct binder_proc \*
 
-    :param struct list_head \*list:
+    :param list:
         list to dequeue head
+    :type list: struct list_head \*
 
 .. _`binder_dequeue_work_head.description`:
 
@@ -930,8 +987,9 @@ binder_select_thread_ilocked
 
     selects a thread for doing proc work.
 
-    :param struct binder_proc \*proc:
+    :param proc:
         process to select a thread from
+    :type proc: struct binder_proc \*
 
 .. _`binder_select_thread_ilocked.description`:
 
@@ -960,14 +1018,17 @@ binder_wakeup_thread_ilocked
 
     wakes up a thread for doing proc work.
 
-    :param struct binder_proc \*proc:
+    :param proc:
         process to wake up a thread in
+    :type proc: struct binder_proc \*
 
-    :param struct binder_thread \*thread:
+    :param thread:
         specific thread to wake-up (may be NULL)
+    :type thread: struct binder_thread \*
 
-    :param bool sync:
+    :param sync:
         whether to do a synchronous wake-up
+    :type sync: bool
 
 .. _`binder_wakeup_thread_ilocked.description`:
 
@@ -993,8 +1054,9 @@ binder_inc_node_tmpref
 
     take a temporary reference on node
 
-    :param struct binder_node \*node:
+    :param node:
         node to reference
+    :type node: struct binder_node \*
 
 .. _`binder_inc_node_tmpref.description`:
 
@@ -1019,8 +1081,9 @@ binder_dec_node_tmpref
 
     remove a temporary reference on node
 
-    :param struct binder_node \*node:
+    :param node:
         node to reference
+    :type node: struct binder_node \*
 
 .. _`binder_dec_node_tmpref.description`:
 
@@ -1038,14 +1101,17 @@ binder_get_ref_for_node_olocked
 
     get the ref associated with given node
 
-    :param struct binder_proc \*proc:
+    :param proc:
         binder_proc that owns the ref
+    :type proc: struct binder_proc \*
 
-    :param struct binder_node \*node:
+    :param node:
         binder_node of target
+    :type node: struct binder_node \*
 
-    :param struct binder_ref \*new_ref:
+    :param new_ref:
         newly allocated binder_ref to be initialized or \ ``NULL``\ 
+    :type new_ref: struct binder_ref \*
 
 .. _`binder_get_ref_for_node_olocked.description`:
 
@@ -1078,21 +1144,24 @@ binder_inc_ref_olocked
 
     increment the ref for given handle
 
-    :param struct binder_ref \*ref:
+    :param ref:
         ref to be incremented
+    :type ref: struct binder_ref \*
 
-    :param int strong:
+    :param strong:
         if true, strong increment, else weak
+    :type strong: int
 
-    :param struct list_head \*target_list:
+    :param target_list:
         list to queue node work on
+    :type target_list: struct list_head \*
 
 .. _`binder_inc_ref_olocked.description`:
 
 Description
 -----------
 
-Increment the ref. \ ``ref``\ ->proc->outer_lock must be held on entry
+Increment the ref. \ ``ref->proc->outer_lock``\  must be held on entry
 
 .. _`binder_inc_ref_olocked.return`:
 
@@ -1110,11 +1179,13 @@ binder_dec_ref_olocked
 
     dec the ref for given handle
 
-    :param struct binder_ref \*ref:
+    :param ref:
         ref to be decremented
+    :type ref: struct binder_ref \*
 
-    :param int strong:
+    :param strong:
         if true, strong decrement, else weak
+    :type strong: int
 
 .. _`binder_dec_ref_olocked.description`:
 
@@ -1139,17 +1210,21 @@ binder_get_node_from_ref
 
     get the node from the given proc/desc
 
-    :param struct binder_proc \*proc:
+    :param proc:
         proc containing the ref
+    :type proc: struct binder_proc \*
 
-    :param u32 desc:
+    :param desc:
         the handle associated with the ref
+    :type desc: u32
 
-    :param bool need_strong_ref:
+    :param need_strong_ref:
         if true, only return node if ref is strong
+    :type need_strong_ref: bool
 
-    :param struct binder_ref_data \*rdata:
+    :param rdata:
         the id/refcount data for the ref
+    :type rdata: struct binder_ref_data \*
 
 .. _`binder_get_node_from_ref.description`:
 
@@ -1174,8 +1249,9 @@ binder_free_ref
 
     free the binder_ref
 
-    :param struct binder_ref \*ref:
+    :param ref:
         ref to free
+    :type ref: struct binder_ref \*
 
 .. _`binder_free_ref.description`:
 
@@ -1194,20 +1270,25 @@ binder_update_ref_for_handle
 
     inc/dec the ref for given handle
 
-    :param struct binder_proc \*proc:
+    :param proc:
         proc containing the ref
+    :type proc: struct binder_proc \*
 
-    :param uint32_t desc:
+    :param desc:
         the handle associated with the ref
+    :type desc: uint32_t
 
-    :param bool increment:
+    :param increment:
         true=inc reference, false=dec reference
+    :type increment: bool
 
-    :param bool strong:
+    :param strong:
         true=strong reference, false=weak reference
+    :type strong: bool
 
-    :param struct binder_ref_data \*rdata:
+    :param rdata:
         the id/refcount data for the ref
+    :type rdata: struct binder_ref_data \*
 
 .. _`binder_update_ref_for_handle.description`:
 
@@ -1233,17 +1314,21 @@ binder_dec_ref_for_handle
 
     dec the ref for given handle
 
-    :param struct binder_proc \*proc:
+    :param proc:
         proc containing the ref
+    :type proc: struct binder_proc \*
 
-    :param uint32_t desc:
+    :param desc:
         the handle associated with the ref
+    :type desc: uint32_t
 
-    :param bool strong:
+    :param strong:
         true=strong reference, false=weak reference
+    :type strong: bool
 
-    :param struct binder_ref_data \*rdata:
+    :param rdata:
         the id/refcount data for the ref
+    :type rdata: struct binder_ref_data \*
 
 .. _`binder_dec_ref_for_handle.description`:
 
@@ -1268,20 +1353,25 @@ binder_inc_ref_for_node
 
     increment the ref for given proc/node
 
-    :param struct binder_proc \*proc:
+    :param proc:
         proc containing the ref
+    :type proc: struct binder_proc \*
 
-    :param struct binder_node \*node:
+    :param node:
         target node
+    :type node: struct binder_node \*
 
-    :param bool strong:
+    :param strong:
         true=strong reference, false=weak reference
+    :type strong: bool
 
-    :param struct list_head \*target_list:
+    :param target_list:
         worklist to use if node is incremented
+    :type target_list: struct list_head \*
 
-    :param struct binder_ref_data \*rdata:
+    :param rdata:
         the id/refcount data for the ref
+    :type rdata: struct binder_ref_data \*
 
 .. _`binder_inc_ref_for_node.description`:
 
@@ -1307,8 +1397,9 @@ binder_thread_dec_tmpref
 
     decrement thread->tmp_ref
 
-    :param struct binder_thread \*thread:
+    :param thread:
         thread to decrement
+    :type thread: struct binder_thread \*
 
 .. _`binder_thread_dec_tmpref.description`:
 
@@ -1332,8 +1423,9 @@ binder_proc_dec_tmpref
 
     decrement proc->tmp_ref
 
-    :param struct binder_proc \*proc:
+    :param proc:
         proc to decrement
+    :type proc: struct binder_proc \*
 
 .. _`binder_proc_dec_tmpref.description`:
 
@@ -1357,8 +1449,9 @@ binder_get_txn_from
 
     safely extract the "from" thread in transaction
 
-    :param struct binder_transaction \*t:
+    :param t:
         binder transaction for t->from
+    :type t: struct binder_transaction \*
 
 .. _`binder_get_txn_from.description`:
 
@@ -1385,8 +1478,9 @@ binder_get_txn_from_and_acq_inner
 
     get t->from and acquire inner lock
 
-    :param struct binder_transaction \*t:
+    :param t:
         binder transaction for t->from
+    :type t: struct binder_transaction \*
 
 .. _`binder_get_txn_from_and_acq_inner.description`:
 
@@ -1405,6 +1499,30 @@ Return
 
 the value of t->from
 
+.. _`binder_free_txn_fixups`:
+
+binder_free_txn_fixups
+======================
+
+.. c:function:: void binder_free_txn_fixups(struct binder_transaction *t)
+
+    free unprocessed fd fixups
+
+    :param t:
+        binder transaction for t->from
+    :type t: struct binder_transaction \*
+
+.. _`binder_free_txn_fixups.description`:
+
+Description
+-----------
+
+If the transaction is being torn down prior to being
+processed by the target process, free all of the
+fd fixups and fput the file structs. It is safe to
+call this function after the fixups have been
+processed -- in that case, the list will be empty.
+
 .. _`binder_cleanup_transaction`:
 
 binder_cleanup_transaction
@@ -1414,14 +1532,17 @@ binder_cleanup_transaction
 
     cleans up undelivered transaction
 
-    :param struct binder_transaction \*t:
+    :param t:
         transaction that needs to be cleaned up
+    :type t: struct binder_transaction \*
 
-    :param const char \*reason:
+    :param reason:
         reason the transaction wasn't delivered
+    :type reason: const char \*
 
-    :param uint32_t error_code:
+    :param error_code:
         error to return to caller (if synchronous call)
+    :type error_code: uint32_t
 
 .. _`binder_validate_object`:
 
@@ -1432,11 +1553,13 @@ binder_validate_object
 
     checks for a valid metadata object in a buffer.
 
-    :param struct binder_buffer \*buffer:
+    :param buffer:
         binder_buffer that we're parsing.
+    :type buffer: struct binder_buffer \*
 
-    :param u64 offset:
+    :param offset:
         offset in the buffer at which to validate an object.
+    :type offset: u64
 
 .. _`binder_validate_object.return`:
 
@@ -1455,18 +1578,22 @@ binder_validate_ptr
 
     validates binder_buffer_object in a binder_buffer.
 
-    :param struct binder_buffer \*b:
+    :param b:
         binder_buffer containing the object
+    :type b: struct binder_buffer \*
 
-    :param binder_size_t index:
+    :param index:
         index in offset array at which the binder_buffer_object is
         located
+    :type index: binder_size_t
 
-    :param binder_size_t \*start:
+    :param start:
         points to the start of the offset array
+    :type start: binder_size_t \*
 
-    :param binder_size_t num_valid:
+    :param num_valid:
         the number of valid offsets in the offset array
+    :type num_valid: binder_size_t
 
 .. _`binder_validate_ptr.return`:
 
@@ -1491,24 +1618,30 @@ binder_validate_fixup
 
     validates pointer/fd fixups happen in order.
 
-    :param struct binder_buffer \*b:
+    :param b:
         transaction buffer
         \ ``objects_start``\        start of objects buffer
+    :type b: struct binder_buffer \*
 
-    :param binder_size_t \*objects_start:
+    :param objects_start:
         *undescribed*
+    :type objects_start: binder_size_t \*
 
-    :param struct binder_buffer_object \*buffer:
+    :param buffer:
         binder_buffer_object in which to fix up
+    :type buffer: struct binder_buffer_object \*
 
-    :param binder_size_t fixup_offset:
+    :param fixup_offset:
         *undescribed*
+    :type fixup_offset: binder_size_t
 
-    :param struct binder_buffer_object \*last_obj:
+    :param last_obj:
         last binder_buffer_object that we fixed up in
+    :type last_obj: struct binder_buffer_object \*
 
-    :param binder_size_t last_min_offset:
+    :param last_min_offset:
         minimum fixup offset in \ ``last_obj``\ 
+    :type last_min_offset: binder_size_t
 
 .. _`binder_validate_fixup.return`:
 
@@ -1560,14 +1693,17 @@ binder_proc_transaction
 
     sends a transaction to a process and wakes it up
 
-    :param struct binder_transaction \*t:
+    :param t:
         transaction to send
+    :type t: struct binder_transaction \*
 
-    :param struct binder_proc \*proc:
+    :param proc:
         process to send the transaction to
+    :type proc: struct binder_proc \*
 
-    :param struct binder_thread \*thread:
+    :param thread:
         thread in \ ``proc``\  to send the transaction to (may be NULL)
+    :type thread: struct binder_thread \*
 
 .. _`binder_proc_transaction.description`:
 
@@ -1599,14 +1735,17 @@ binder_get_node_refs_for_txn
 
     Get required refs on node for txn
 
-    :param struct binder_node \*node:
+    :param node:
         struct binder_node for which to get refs
+    :type node: struct binder_node \*
 
-    :param struct binder_proc \*\*procp:
+    :param procp:
         *undescribed*
+    :type procp: struct binder_proc \*\*
 
-    :param uint32_t \*error:
+    :param error:
         if no \ ``proc``\  then returns BR_DEAD_REPLY
+    :type error: uint32_t \*
 
 .. _`binder_get_node_refs_for_txn.description`:
 
@@ -1629,9 +1768,63 @@ constructing the transaction, so we take that here as well.
 Return
 ------
 
-The target_node with refs taken or NULL if no \ ``node``\ ->proc is NULL.
-Also sets \ ``proc``\  if valid. If the \ ``node``\ ->proc is NULL indicating that the
+The target_node with refs taken or NULL if no \ ``node->proc``\  is NULL.
+Also sets \ ``proc``\  if valid. If the \ ``node->proc``\  is NULL indicating that the
 target proc has died, \ ``error``\  is set to BR_DEAD_REPLY
+
+.. _`binder_free_buf`:
+
+binder_free_buf
+===============
+
+.. c:function:: void binder_free_buf(struct binder_proc *proc, struct binder_buffer *buffer)
+
+    free the specified buffer
+
+    :param proc:
+        binder proc that owns buffer
+    :type proc: struct binder_proc \*
+
+    :param buffer:
+        buffer to be freed
+    :type buffer: struct binder_buffer \*
+
+.. _`binder_free_buf.description`:
+
+Description
+-----------
+
+If buffer for an async transaction, enqueue the next async
+transaction from the node.
+
+Cleanup buffer and free it.
+
+.. _`binder_apply_fd_fixups`:
+
+binder_apply_fd_fixups
+======================
+
+.. c:function:: int binder_apply_fd_fixups(struct binder_transaction *t)
+
+    finish fd translation
+
+    :param t:
+        binder transaction with list of fd fixups
+    :type t: struct binder_transaction \*
+
+.. _`binder_apply_fd_fixups.description`:
+
+Description
+-----------
+
+Now that we are in the context of the transaction target
+process, we can allocate and install fds. Process the
+list of fds to translate and fixup the buffer with the
+new fds.
+
+If we fail to allocate an fd, then free the resources by
+fput'ing files that have not been processed and ksys_close'ing
+any fds that have already been allocated.
 
 .. This file was automatic generated / don't edit.
 

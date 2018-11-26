@@ -10,8 +10,9 @@ next_prime_number
 
     return the next prime number
 
-    :param unsigned long x:
+    :param x:
         the starting point for searching to test
+    :type x: unsigned long
 
 .. _`next_prime_number.description`:
 
@@ -42,8 +43,9 @@ is_prime_number
 
     test whether the given number is prime
 
-    :param unsigned long x:
+    :param x:
         the number to test
+    :type x: unsigned long
 
 .. _`is_prime_number.description`:
 

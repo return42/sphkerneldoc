@@ -10,8 +10,9 @@ sd_setup_write_same_cmnd
 
     write the same data to multiple blocks
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         command to prepare
+    :type cmd: struct scsi_cmnd \*
 
 .. _`sd_setup_write_same_cmnd.description`:
 
@@ -30,11 +31,13 @@ sd_open
 
     open a scsi disk device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         Block device of the scsi disk to open
+    :type bdev: struct block_device \*
 
-    :param fmode_t mode:
+    :param mode:
         FMODE\_\* mask
+    :type mode: fmode_t
 
 .. _`sd_open.description`:
 
@@ -70,11 +73,13 @@ sd_release
 
     invoked when the (last) close(2) is called on this scsi disk.
 
-    :param struct gendisk \*disk:
+    :param disk:
         disk to release
+    :type disk: struct gendisk \*
 
-    :param fmode_t mode:
+    :param mode:
         FMODE\_\* mask
+    :type mode: fmode_t
 
 .. _`sd_release.description`:
 
@@ -107,18 +112,22 @@ sd_ioctl
 
     process an ioctl
 
-    :param struct block_device \*bdev:
+    :param bdev:
         target block device
+    :type bdev: struct block_device \*
 
-    :param fmode_t mode:
+    :param mode:
         FMODE\_\* mask
+    :type mode: fmode_t
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command number
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         this is third argument given to ioctl(2) system call.
         Often contains a pointer.
+    :type arg: unsigned long
 
 .. _`sd_ioctl.description`:
 
@@ -145,11 +154,13 @@ sd_check_events
 
     check media events
 
-    :param struct gendisk \*disk:
+    :param disk:
         kernel device descriptor
+    :type disk: struct gendisk \*
 
-    :param unsigned int clearing:
+    :param clearing:
         disk events currently being cleared
+    :type clearing: unsigned int
 
 .. _`sd_check_events.description`:
 
@@ -174,8 +185,9 @@ sd_eh_reset
 
     reset error handling callback
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         sd-issued command that has failed
+    :type scmd: struct scsi_cmnd \*
 
 .. _`sd_eh_reset.description`:
 
@@ -199,11 +211,13 @@ sd_eh_action
 
     error handling callback
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         sd-issued command that has failed
+    :type scmd: struct scsi_cmnd \*
 
-    :param int eh_disp:
+    :param eh_disp:
         The recovery disposition suggested by the midlayer
+    :type eh_disp: int
 
 .. _`sd_eh_action.description`:
 
@@ -226,8 +240,9 @@ sd_done
 
     bottom half handler: called when the lower level driver has completed (successfully or otherwise) a scsi command.
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         mid-level's per command structure.
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`sd_done.note`:
 
@@ -245,8 +260,9 @@ sd_read_block_limits
 
     Query disk device for preferred I/O sizes.
 
-    :param struct scsi_disk \*sdkp:
+    :param sdkp:
         disk to query
+    :type sdkp: struct scsi_disk \*
 
 .. _`sd_read_block_characteristics`:
 
@@ -257,8 +273,9 @@ sd_read_block_characteristics
 
     Query block dev. characteristics
 
-    :param struct scsi_disk \*sdkp:
+    :param sdkp:
         disk to query
+    :type sdkp: struct scsi_disk \*
 
 .. _`sd_read_block_provisioning`:
 
@@ -269,8 +286,9 @@ sd_read_block_provisioning
 
     Query provisioning VPD page
 
-    :param struct scsi_disk \*sdkp:
+    :param sdkp:
         disk to query
+    :type sdkp: struct scsi_disk \*
 
 .. _`sd_revalidate_disk`:
 
@@ -281,8 +299,9 @@ sd_revalidate_disk
 
     called the first time a new disk is seen, performs disk spin up, read_capacity, etc.
 
-    :param struct gendisk \*disk:
+    :param disk:
         struct gendisk we care about
+    :type disk: struct gendisk \*
 
 .. _`sd_unlock_native_capacity`:
 
@@ -293,8 +312,9 @@ sd_unlock_native_capacity
 
     unlock native capacity
 
-    :param struct gendisk \*disk:
+    :param disk:
         struct gendisk to set capacity for
+    :type disk: struct gendisk \*
 
 .. _`sd_unlock_native_capacity.description`:
 
@@ -322,17 +342,21 @@ sd_format_disk_name
 
     format disk name
 
-    :param char \*prefix:
+    :param prefix:
         name prefix - ie. "sd" for SCSI disks
+    :type prefix: char \*
 
-    :param int index:
+    :param index:
         index of the disk to format name for
+    :type index: int
 
-    :param char \*buf:
+    :param buf:
         output buffer
+    :type buf: char \*
 
-    :param int buflen:
+    :param buflen:
         length of the output buffer
+    :type buflen: int
 
 .. _`sd_format_disk_name.description`:
 
@@ -371,8 +395,9 @@ sd_probe
 
     called during driver initialization and whenever a new scsi device is attached to the system. It is called once for each scsi device (not just disks) present.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device object
+    :type dev: struct device \*
 
 .. _`sd_probe.description`:
 
@@ -405,8 +430,9 @@ sd_remove
 
     called whenever a scsi disk (previously recognized by sd_probe) is detached from the system. It is called (potentially multiple times) during sd module unload.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device object
+    :type dev: struct device \*
 
 .. _`sd_remove.note`:
 
@@ -427,8 +453,9 @@ scsi_disk_release
 
     Called to free the scsi_disk structure
 
-    :param struct device \*dev:
+    :param dev:
         pointer to embedded class device
+    :type dev: struct device \*
 
 .. _`scsi_disk_release.description`:
 
@@ -449,8 +476,9 @@ init_sd
 
     entry point for this driver (both when built in or when a module).
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`init_sd.note`:
 
@@ -468,8 +496,9 @@ exit_sd
 
     exit point for this driver (when it is a module).
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`exit_sd.note`:
 

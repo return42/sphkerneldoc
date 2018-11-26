@@ -10,13 +10,15 @@ i8259_init
 
     Initialize the legacy controller
 
-    :param struct device_node \*node:
+    :param node:
         device node of the legacy PIC (can be NULL, but then, it will match
         all interrupts, so beware)
+    :type node: struct device_node \*
 
-    :param unsigned long intack_addr:
+    :param intack_addr:
         PCI interrupt acknowledge (real) address which will return
         the active irq from the 8259
+    :type intack_addr: unsigned long
 
 .. This file was automatic generated / don't edit.
 

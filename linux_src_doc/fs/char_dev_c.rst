@@ -10,15 +10,18 @@ register_chrdev_region
 
     register a range of device numbers
 
-    :param dev_t from:
+    :param from:
         the first in the desired range of device numbers; must include
         the major number.
+    :type from: dev_t
 
-    :param unsigned count:
+    :param count:
         the number of consecutive device numbers required
+    :type count: unsigned
 
-    :param const char \*name:
+    :param name:
         the name of the device or driver.
+    :type name: const char \*
 
 .. _`register_chrdev_region.description`:
 
@@ -36,17 +39,21 @@ alloc_chrdev_region
 
     register a range of char device numbers
 
-    :param dev_t \*dev:
+    :param dev:
         output parameter for first assigned number
+    :type dev: dev_t \*
 
-    :param unsigned baseminor:
+    :param baseminor:
         first of the requested range of minor numbers
+    :type baseminor: unsigned
 
-    :param unsigned count:
+    :param count:
         the number of minor numbers required
+    :type count: unsigned
 
-    :param const char \*name:
+    :param name:
         the name of the associated device or driver
+    :type name: const char \*
 
 .. _`alloc_chrdev_region.description`:
 
@@ -66,20 +73,25 @@ __register_chrdev
 
     create and register a cdev occupying a range of minors
 
-    :param unsigned int major:
+    :param major:
         major device number or 0 for dynamic allocation
+    :type major: unsigned int
 
-    :param unsigned int baseminor:
+    :param baseminor:
         first of the requested range of minor numbers
+    :type baseminor: unsigned int
 
-    :param unsigned int count:
+    :param count:
         the number of minor numbers required
+    :type count: unsigned int
 
-    :param const char \*name:
+    :param name:
         name of this range of devices
+    :type name: const char \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         file operations associated with this devices
+    :type fops: const struct file_operations \*
 
 .. _`__register_chrdev.description`:
 
@@ -108,11 +120,13 @@ unregister_chrdev_region
 
     unregister a range of device numbers
 
-    :param dev_t from:
+    :param from:
         the first in the range of numbers to unregister
+    :type from: dev_t
 
-    :param unsigned count:
+    :param count:
         the number of device numbers to unregister
+    :type count: unsigned
 
 .. _`unregister_chrdev_region.description`:
 
@@ -132,17 +146,21 @@ __unregister_chrdev
 
     unregister and destroy a cdev
 
-    :param unsigned int major:
+    :param major:
         major device number
+    :type major: unsigned int
 
-    :param unsigned int baseminor:
+    :param baseminor:
         first of the range of minor numbers
+    :type baseminor: unsigned int
 
-    :param unsigned int count:
+    :param count:
         the number of minor numbers this cdev is occupying
+    :type count: unsigned int
 
-    :param const char \*name:
+    :param name:
         name of this range of devices
+    :type name: const char \*
 
 .. _`__unregister_chrdev.description`:
 
@@ -162,15 +180,18 @@ cdev_add
 
     add a char device to the system
 
-    :param struct cdev \*p:
+    :param p:
         the cdev structure for the device
+    :type p: struct cdev \*
 
-    :param dev_t dev:
+    :param dev:
         the first device number for which this device is responsible
+    :type dev: dev_t
 
-    :param unsigned count:
+    :param count:
         the number of consecutive minor numbers corresponding to this
         device
+    :type count: unsigned
 
 .. _`cdev_add.description`:
 
@@ -189,11 +210,13 @@ cdev_set_parent
 
     set the parent kobject for a char device
 
-    :param struct cdev \*p:
+    :param p:
         the cdev structure
+    :type p: struct cdev \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         the kobject to take a reference to
+    :type kobj: struct kobject \*
 
 .. _`cdev_set_parent.description`:
 
@@ -213,11 +236,13 @@ cdev_device_add
 
     add a char device and it's corresponding struct device, linkink
 
-    :param struct cdev \*cdev:
+    :param cdev:
         the cdev structure
+    :type cdev: struct cdev \*
 
-    :param struct device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct device \*
 
 .. _`cdev_device_add.description`:
 
@@ -255,11 +280,13 @@ cdev_device_del
 
     inverse of cdev_device_add
 
-    :param struct cdev \*cdev:
+    :param cdev:
         the cdev structure
+    :type cdev: struct cdev \*
 
-    :param struct device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct device \*
 
 .. _`cdev_device_del.description`:
 
@@ -290,8 +317,9 @@ cdev_del
 
     remove a cdev from the system
 
-    :param struct cdev \*p:
+    :param p:
         the cdev structure to be removed
+    :type p: struct cdev \*
 
 .. _`cdev_del.description`:
 
@@ -319,8 +347,9 @@ cdev_alloc
 
     allocate a cdev structure
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cdev_alloc.description`:
 
@@ -338,11 +367,13 @@ cdev_init
 
     initialize a cdev structure
 
-    :param struct cdev \*cdev:
+    :param cdev:
         the structure to initialize
+    :type cdev: struct cdev \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         the file_operations for this device
+    :type fops: const struct file_operations \*
 
 .. _`cdev_init.description`:
 

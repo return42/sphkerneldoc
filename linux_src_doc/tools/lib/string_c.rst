@@ -10,11 +10,13 @@ memdup
 
     duplicate region of memory
 
-    :param const void \*src:
+    :param src:
         memory region to duplicate
+    :type src: const void \*
 
-    :param size_t len:
+    :param len:
         memory region length
+    :type len: size_t
 
 .. _`strtobool`:
 
@@ -25,11 +27,13 @@ strtobool
 
     convert common user inputs into boolean values
 
-    :param const char \*s:
+    :param s:
         input string
+    :type s: const char \*
 
-    :param bool \*res:
+    :param res:
         result
+    :type res: bool \*
 
 .. _`strtobool.description`:
 
@@ -49,14 +53,17 @@ strlcpy
 
     Copy a C-string into a sized buffer
 
-    :param char \*dest:
+    :param dest:
         Where to copy the string to
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         Where to copy the string from
+    :type src: const char \*
 
-    :param size_t size:
+    :param size:
         size of destination buffer
+    :type size: size_t
 
 .. _`strlcpy.description`:
 

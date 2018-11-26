@@ -10,11 +10,13 @@ hsi_register_board_info
 
     Register HSI clients information
 
-    :param struct hsi_board_info const \*info:
+    :param info:
         Array of HSI clients on the board
+    :type info: struct hsi_board_info const \*
 
-    :param unsigned int len:
+    :param len:
         Length of the array
+    :type len: unsigned int
 
 .. _`hsi_register_board_info.description`:
 

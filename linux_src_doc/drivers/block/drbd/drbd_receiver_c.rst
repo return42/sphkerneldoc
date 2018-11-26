@@ -10,14 +10,17 @@ drbd_alloc_pages
 
     Returns \ ``number``\  pages, retries forever (or until signalled)
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         *undescribed*
+    :type peer_device: struct drbd_peer_device \*
 
-    :param unsigned int number:
+    :param number:
         number of pages requested
+    :type number: unsigned int
 
-    :param bool retry:
+    :param retry:
         whether to retry, if not enough pages are available right now
+    :type retry: bool
 
 .. _`drbd_alloc_pages.description`:
 
@@ -47,8 +50,9 @@ drbd_socket_okay
 
     Free the socket if its connection is not okay
 
-    :param struct socket \*\*sock:
+    :param sock:
         pointer to the pointer to the socket.
+    :type sock: struct socket \*\*
 
 .. _`drbd_may_finish_epoch`:
 
@@ -59,14 +63,17 @@ drbd_may_finish_epoch
 
     Applies an epoch_event to the epoch's state, eventually finishes it.
 
-    :param struct drbd_connection \*connection:
+    :param connection:
         *undescribed*
+    :type connection: struct drbd_connection \*
 
-    :param struct drbd_epoch \*epoch:
+    :param epoch:
         Epoch object.
+    :type epoch: struct drbd_epoch \*
 
-    :param enum epoch_event ev:
+    :param ev:
         Epoch event.
+    :type ev: enum epoch_event
 
 .. _`drbd_bump_write_ordering`:
 
@@ -77,14 +84,17 @@ drbd_bump_write_ordering
 
     Fall back to an other write ordering method
 
-    :param struct drbd_resource \*resource:
+    :param resource:
         *undescribed*
+    :type resource: struct drbd_resource \*
 
-    :param struct drbd_backing_dev \*bdev:
+    :param bdev:
         *undescribed*
+    :type bdev: struct drbd_backing_dev \*
 
-    :param enum write_ordering_e wo:
+    :param wo:
         Write ordering method to try.
+    :type wo: enum write_ordering_e
 
 .. _`drbd_submit_peer_request`:
 
@@ -93,20 +103,25 @@ drbd_submit_peer_request
 
 .. c:function:: int drbd_submit_peer_request(struct drbd_device *device, struct drbd_peer_request *peer_req, const unsigned op, const unsigned op_flags, const int fault_type)
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param struct drbd_peer_request \*peer_req:
+    :param peer_req:
         peer request
+    :type peer_req: struct drbd_peer_request \*
 
-    :param const unsigned op:
+    :param op:
         *undescribed*
+    :type op: const unsigned
 
-    :param const unsigned op_flags:
+    :param op_flags:
         *undescribed*
+    :type op_flags: const unsigned
 
-    :param const int fault_type:
+    :param fault_type:
         *undescribed*
+    :type fault_type: const int
 
 .. _`drbd_submit_peer_request.description`:
 
@@ -132,8 +147,9 @@ drbd_asb_recover_0p
 
     Recover after split-brain with no remaining primaries
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         *undescribed*
+    :type peer_device: struct drbd_peer_device \*
 
 .. _`drbd_asb_recover_1p`:
 
@@ -144,8 +160,9 @@ drbd_asb_recover_1p
 
     Recover after split-brain with one remaining primary
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         *undescribed*
+    :type peer_device: struct drbd_peer_device \*
 
 .. _`drbd_asb_recover_2p`:
 
@@ -156,8 +173,9 @@ drbd_asb_recover_2p
 
     Recover after split-brain with two remaining primaries
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         *undescribed*
+    :type peer_device: struct drbd_peer_device \*
 
 .. _`convert_state`:
 
@@ -168,8 +186,9 @@ convert_state
 
     Converts the peer's view of the cluster state to our point of view
 
-    :param union drbd_state ps:
+    :param ps:
         The state as seen by the peer.
+    :type ps: union drbd_state
 
 .. _`receive_bitmap_plain`:
 
@@ -178,17 +197,21 @@ receive_bitmap_plain
 
 .. c:function:: int receive_bitmap_plain(struct drbd_peer_device *peer_device, unsigned int size, unsigned long *p, struct bm_xfer_ctx *c)
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         *undescribed*
+    :type peer_device: struct drbd_peer_device \*
 
-    :param unsigned int size:
+    :param size:
         *undescribed*
+    :type size: unsigned int
 
-    :param unsigned long \*p:
+    :param p:
         *undescribed*
+    :type p: unsigned long \*
 
-    :param struct bm_xfer_ctx \*c:
+    :param c:
         *undescribed*
+    :type c: struct bm_xfer_ctx \*
 
 .. _`receive_bitmap_plain.description`:
 
@@ -205,17 +228,21 @@ recv_bm_rle_bits
 
 .. c:function:: int recv_bm_rle_bits(struct drbd_peer_device *peer_device, struct p_compressed_bm *p, struct bm_xfer_ctx *c, unsigned int len)
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         *undescribed*
+    :type peer_device: struct drbd_peer_device \*
 
-    :param struct p_compressed_bm \*p:
+    :param p:
         *undescribed*
+    :type p: struct p_compressed_bm \*
 
-    :param struct bm_xfer_ctx \*c:
+    :param c:
         *undescribed*
+    :type c: struct bm_xfer_ctx \*
 
-    :param unsigned int len:
+    :param len:
         *undescribed*
+    :type len: unsigned int
 
 .. _`recv_bm_rle_bits.description`:
 
@@ -232,17 +259,21 @@ decode_bitmap_c
 
 .. c:function:: int decode_bitmap_c(struct drbd_peer_device *peer_device, struct p_compressed_bm *p, struct bm_xfer_ctx *c, unsigned int len)
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         *undescribed*
+    :type peer_device: struct drbd_peer_device \*
 
-    :param struct p_compressed_bm \*p:
+    :param p:
         *undescribed*
+    :type p: struct p_compressed_bm \*
 
-    :param struct bm_xfer_ctx \*c:
+    :param c:
         *undescribed*
+    :type c: struct bm_xfer_ctx \*
 
-    :param unsigned int len:
+    :param len:
         *undescribed*
+    :type len: unsigned int
 
 .. _`decode_bitmap_c.description`:
 

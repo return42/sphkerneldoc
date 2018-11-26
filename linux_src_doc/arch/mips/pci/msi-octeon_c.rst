@@ -10,11 +10,13 @@ arch_setup_msi_irq
 
     legacy INT A-D. This routine will allocate multiple interrupts for MSI devices that support them. A device can override this by programming the MSI control bits [6:4] before calling \ :c:func:`pci_enable_msi`\ .
 
-    :param struct pci_dev \*dev:
+    :param dev:
         Device requesting MSI interrupts
+    :type dev: struct pci_dev \*
 
-    :param struct msi_desc \*desc:
+    :param desc:
         MSI descriptor
+    :type desc: struct msi_desc \*
 
 .. _`arch_setup_msi_irq.description`:
 
@@ -32,8 +34,9 @@ arch_teardown_msi_irq
 
     MSI interrupts for the device are freed.
 
-    :param unsigned int irq:
+    :param irq:
         The devices first irq number. There may be multple in sequence.
+    :type irq: unsigned int
 
 .. This file was automatic generated / don't edit.
 

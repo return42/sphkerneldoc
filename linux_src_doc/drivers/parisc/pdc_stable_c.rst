@@ -10,8 +10,9 @@ pdcspath_fetch
 
     This function populates the path entry structs.
 
-    :param struct pdcspath_entry \*entry:
+    :param entry:
         A pointer to an allocated pdcspath_entry.
+    :type entry: struct pdcspath_entry \*
 
 .. _`pdcspath_fetch.description`:
 
@@ -24,7 +25,7 @@ content of the stable storage WRT various paths in these structs. We read
 these structs when reading the files, and we will write to these structs when
 writing to the files, and only then write them back to the Stable Storage.
 
-This function expects to be called with \ ``entry``\ ->rw_lock write-hold.
+This function expects to be called with \ ``entry->rw_lock``\  write-hold.
 
 .. _`pdcspath_store`:
 
@@ -35,8 +36,9 @@ pdcspath_store
 
     This function writes a path to stable storage.
 
-    :param struct pdcspath_entry \*entry:
+    :param entry:
         A pointer to an allocated pdcspath_entry.
+    :type entry: struct pdcspath_entry \*
 
 .. _`pdcspath_store.it-can-be-used-in-two-ways`:
 
@@ -49,7 +51,7 @@ pointer, from which it'll find out the corresponding hardware path.
 For now we do not handle the case where there's an error in writing to the
 Stable Storage area, so you'd better not mess up the data :P
 
-This function expects to be called with \ ``entry``\ ->rw_lock write-hold.
+This function expects to be called with \ ``entry->rw_lock``\  write-hold.
 
 .. _`pdcspath_hwpath_read`:
 
@@ -60,11 +62,13 @@ pdcspath_hwpath_read
 
     This function handles hardware path pretty printing.
 
-    :param struct pdcspath_entry \*entry:
+    :param entry:
         An allocated and populated pdscpath_entry struct.
+    :type entry: struct pdcspath_entry \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcspath_hwpath_read.description`:
 
@@ -82,14 +86,17 @@ pdcspath_hwpath_write
 
     This function handles hardware path modifying.
 
-    :param struct pdcspath_entry \*entry:
+    :param entry:
         An allocated and populated pdscpath_entry struct.
+    :type entry: struct pdcspath_entry \*
 
-    :param const char \*buf:
+    :param buf:
         The input buffer to read from.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         The number of bytes to be read.
+    :type count: size_t
 
 .. _`pdcspath_hwpath_write.description`:
 
@@ -114,11 +121,13 @@ pdcspath_layer_read
 
     Extended layer (eg. SCSI ids) pretty printing.
 
-    :param struct pdcspath_entry \*entry:
+    :param entry:
         An allocated and populated pdscpath_entry struct.
+    :type entry: struct pdcspath_entry \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcspath_layer_read.description`:
 
@@ -136,14 +145,17 @@ pdcspath_layer_write
 
     This function handles extended layer modifying.
 
-    :param struct pdcspath_entry \*entry:
+    :param entry:
         An allocated and populated pdscpath_entry struct.
+    :type entry: struct pdcspath_entry \*
 
-    :param const char \*buf:
+    :param buf:
         The input buffer to read from.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         The number of bytes to be read.
+    :type count: size_t
 
 .. _`pdcspath_layer_write.description`:
 
@@ -165,14 +177,17 @@ pdcspath_attr_show
 
     Generic read function call wrapper.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject to get info from.
+    :type kobj: struct kobject \*
 
-    :param struct attribute \*attr:
+    :param attr:
         The attribute looked upon.
+    :type attr: struct attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer.
+    :type buf: char \*
 
 .. _`pdcspath_attr_store`:
 
@@ -183,17 +198,21 @@ pdcspath_attr_store
 
     Generic write function call wrapper.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         The kobject to write info to.
+    :type kobj: struct kobject \*
 
-    :param struct attribute \*attr:
+    :param attr:
         The attribute to be modified.
+    :type attr: struct attribute \*
 
-    :param const char \*buf:
+    :param buf:
         The input buffer.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         The size of the buffer.
+    :type count: size_t
 
 .. _`pdcs_size_read`:
 
@@ -204,14 +223,17 @@ pdcs_size_read
 
     Stable Storage size output.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcs_auto_read`:
 
@@ -222,17 +244,21 @@ pdcs_auto_read
 
     Stable Storage autoboot/search flag output.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
-    :param int knob:
+    :param knob:
         The PF_AUTOBOOT or PF_AUTOSEARCH flag
+    :type knob: int
 
 .. _`pdcs_autoboot_read`:
 
@@ -243,14 +269,17 @@ pdcs_autoboot_read
 
     Stable Storage autoboot flag output.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcs_autosearch_read`:
 
@@ -261,14 +290,17 @@ pdcs_autosearch_read
 
     Stable Storage autoboot flag output.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcs_timer_read`:
 
@@ -279,14 +311,17 @@ pdcs_timer_read
 
     Stable Storage timer count output (in seconds).
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcs_timer_read.description`:
 
@@ -304,14 +339,17 @@ pdcs_osid_read
 
     Stable Storage OS ID register output.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcs_osdep1_read`:
 
@@ -322,14 +360,17 @@ pdcs_osdep1_read
 
     Stable Storage OS-Dependent data area 1 output.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcs_osdep1_read.description`:
 
@@ -347,14 +388,17 @@ pdcs_diagnostic_read
 
     Stable Storage Diagnostic register output.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcs_diagnostic_read.description`:
 
@@ -372,14 +416,17 @@ pdcs_fastsize_read
 
     Stable Storage FastSize register output.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcs_fastsize_read.description`:
 
@@ -397,14 +444,17 @@ pdcs_osdep2_read
 
     Stable Storage OS-Dependent data area 2 output.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         The output buffer to write to.
+    :type buf: char \*
 
 .. _`pdcs_osdep2_read.description`:
 
@@ -422,20 +472,25 @@ pdcs_auto_write
 
     This function handles autoboot/search flag modifying.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         The input buffer to read from.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         The number of bytes to be read.
+    :type count: size_t
 
-    :param int knob:
+    :param knob:
         The PF_AUTOBOOT or PF_AUTOSEARCH flag
+    :type knob: int
 
 .. _`pdcs_auto_write.description`:
 
@@ -460,17 +515,21 @@ pdcs_autoboot_write
 
     This function handles autoboot flag modifying.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         The input buffer to read from.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         The number of bytes to be read.
+    :type count: size_t
 
 .. _`pdcs_autoboot_write.description`:
 
@@ -495,17 +554,21 @@ pdcs_autosearch_write
 
     This function handles autosearch flag modifying.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         The input buffer to read from.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         The number of bytes to be read.
+    :type count: size_t
 
 .. _`pdcs_autosearch_write.description`:
 
@@ -530,17 +593,21 @@ pdcs_osdep1_write
 
     Stable Storage OS-Dependent data area 1 input.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         The input buffer to read from.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         The number of bytes to be read.
+    :type count: size_t
 
 .. _`pdcs_osdep1_write.description`:
 
@@ -560,17 +627,21 @@ pdcs_osdep2_write
 
     Stable Storage OS-Dependent data area 2 input.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         The input buffer to read from.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         The number of bytes to be read.
+    :type count: size_t
 
 .. _`pdcs_osdep2_write.description`:
 
@@ -590,8 +661,9 @@ pdcs_register_pathentries
 
     Prepares path entries kobjects for sysfs usage.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pdcs_register_pathentries.description`:
 
@@ -613,8 +685,9 @@ pdcs_unregister_pathentries
 
     Routine called when unregistering the module.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

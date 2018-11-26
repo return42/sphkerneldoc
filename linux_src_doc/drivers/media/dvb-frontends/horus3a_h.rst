@@ -49,14 +49,17 @@ horus3a_attach
 
 .. c:function:: struct dvb_frontend *horus3a_attach(struct dvb_frontend *fe, const struct horus3a_config *config, struct i2c_adapter *i2c)
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         frontend to be attached
+    :type fe: struct dvb_frontend \*
 
-    :param const struct horus3a_config \*config:
+    :param config:
         pointer to \ :c:type:`struct helene_config <helene_config>`\  with tuner configuration.
+    :type config: const struct horus3a_config \*
 
-    :param struct i2c_adapter \*i2c:
+    :param i2c:
         i2c adapter to use.
+    :type i2c: struct i2c_adapter \*
 
 .. _`horus3a_attach.return`:
 

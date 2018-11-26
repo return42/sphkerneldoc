@@ -10,17 +10,21 @@ devm_snd_soc_register_component
 
     resource managed component registration
 
-    :param struct device \*dev:
+    :param dev:
         Device used to manage component
+    :type dev: struct device \*
 
-    :param const struct snd_soc_component_driver \*cmpnt_drv:
+    :param cmpnt_drv:
         Component driver
+    :type cmpnt_drv: const struct snd_soc_component_driver \*
 
-    :param struct snd_soc_dai_driver \*dai_drv:
+    :param dai_drv:
         DAI driver
+    :type dai_drv: struct snd_soc_dai_driver \*
 
-    :param int num_dai:
+    :param num_dai:
         Number of DAIs to register
+    :type num_dai: int
 
 .. _`devm_snd_soc_register_component.description`:
 
@@ -39,11 +43,13 @@ devm_snd_soc_register_card
 
     resource managed card registration
 
-    :param struct device \*dev:
+    :param dev:
         Device used to manage card
+    :type dev: struct device \*
 
-    :param struct snd_soc_card \*card:
+    :param card:
         Card to register
+    :type card: struct snd_soc_card \*
 
 .. _`devm_snd_soc_register_card.description`:
 
@@ -62,14 +68,17 @@ devm_snd_dmaengine_pcm_register
 
     resource managed dmaengine PCM registration
 
-    :param struct device \*dev:
+    :param dev:
         The parent device for the PCM device
+    :type dev: struct device \*
 
-    :param const struct snd_dmaengine_pcm_config \*config:
+    :param config:
         Platform specific PCM configuration
+    :type config: const struct snd_dmaengine_pcm_config \*
 
-    :param unsigned int flags:
+    :param flags:
         Platform specific quirks
+    :type flags: unsigned int
 
 .. _`devm_snd_dmaengine_pcm_register.description`:
 

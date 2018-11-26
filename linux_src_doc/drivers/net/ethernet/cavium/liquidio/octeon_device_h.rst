@@ -8,8 +8,9 @@ octeon_mem_access_ok
 
 .. c:function:: int octeon_mem_access_ok(struct octeon_device *oct)
 
-    :param struct octeon_device \*oct:
+    :param oct:
         *undescribed*
+    :type oct: struct octeon_device \*
 
 .. _`octeon_mem_access_ok.description`:
 
@@ -26,11 +27,13 @@ octeon_wait_for_ddr_init
 
 .. c:function:: int octeon_wait_for_ddr_init(struct octeon_device *oct, u32 *timeout_in_ms)
 
-    :param struct octeon_device \*oct:
+    :param oct:
         *undescribed*
+    :type oct: struct octeon_device \*
 
-    :param u32 \*timeout_in_ms:
+    :param timeout_in_ms:
         *undescribed*
+    :type timeout_in_ms: u32 \*
 
 .. _`octeon_wait_for_ddr_init.description`:
 
@@ -53,11 +56,13 @@ octeon_wait_for_bootloader
 
     boot to boot and be waiting for a command.
 
-    :param struct octeon_device \*oct:
+    :param oct:
         *undescribed*
+    :type oct: struct octeon_device \*
 
-    :param u32 wait_time_hundredths:
+    :param wait_time_hundredths:
         *undescribed*
+    :type wait_time_hundredths: u32
 
 .. _`octeon_wait_for_bootloader.description`:
 
@@ -76,8 +81,9 @@ octeon_init_consoles
 
 .. c:function:: int octeon_init_consoles(struct octeon_device *oct)
 
-    :param struct octeon_device \*oct:
+    :param oct:
         *undescribed*
+    :type oct: struct octeon_device \*
 
 .. _`octeon_init_consoles.description`:
 
@@ -94,14 +100,17 @@ octeon_add_console
 
 .. c:function:: int octeon_add_console(struct octeon_device *oct, u32 console_num, char *dbg_enb)
 
-    :param struct octeon_device \*oct:
+    :param oct:
         *undescribed*
+    :type oct: struct octeon_device \*
 
-    :param u32 console_num:
+    :param console_num:
         *undescribed*
+    :type console_num: u32
 
-    :param char \*dbg_enb:
+    :param dbg_enb:
         *undescribed*
+    :type dbg_enb: char \*
 
 .. _`octeon_add_console.description`:
 
@@ -119,14 +128,17 @@ octeon_console_send_cmd
 
     boot on console 0 as a command.
 
-    :param struct octeon_device \*oct:
+    :param oct:
         *undescribed*
+    :type oct: struct octeon_device \*
 
-    :param char \*cmd_str:
+    :param cmd_str:
         *undescribed*
+    :type cmd_str: char \*
 
-    :param u32 wait_hundredths:
+    :param wait_hundredths:
         *undescribed*
+    :type wait_hundredths: u32
 
 .. _`octeon_console_send_cmd.description`:
 

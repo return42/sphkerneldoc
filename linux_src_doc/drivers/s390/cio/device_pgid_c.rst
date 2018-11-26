@@ -10,8 +10,9 @@ ccw_device_verify_start
 
     perform path verification
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_verify_start.description`:
 
@@ -33,8 +34,9 @@ ccw_device_disband_start
 
     disband pathgroup
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_disband_start.description`:
 
@@ -54,17 +56,21 @@ ccw_device_stlck_start
 
     perform unconditional release
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
-    :param void \*data:
+    :param data:
         data pointer to be passed to ccw_device_stlck_done
+    :type data: void \*
 
-    :param void \*buf1:
+    :param buf1:
         data pointer used in channel program
+    :type buf1: void \*
 
-    :param void \*buf2:
+    :param buf2:
         data pointer used in channel program
+    :type buf2: void \*
 
 .. _`ccw_device_stlck_start.description`:
 

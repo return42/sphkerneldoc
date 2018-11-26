@@ -10,8 +10,9 @@ i915_timelines_park
 
     called when the driver idles
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         the drm_i915_private device
+    :type i915: struct drm_i915_private \*
 
 .. _`i915_timelines_park.description`:
 

@@ -10,11 +10,13 @@ mii_ethtool_gset
 
     get settings that are specified in \ ``ecmd``\ 
 
-    :param struct mii_if_info \*mii:
+    :param mii:
         MII interface
+    :type mii: struct mii_if_info \*
 
-    :param struct ethtool_cmd \*ecmd:
+    :param ecmd:
         requested ethtool_cmd
+    :type ecmd: struct ethtool_cmd \*
 
 .. _`mii_ethtool_gset.description`:
 
@@ -35,11 +37,13 @@ mii_ethtool_get_link_ksettings
 
     get settings that are specified in \ ``cmd``\ 
 
-    :param struct mii_if_info \*mii:
+    :param mii:
         MII interface
+    :type mii: struct mii_if_info \*
 
-    :param struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         requested ethtool_link_ksettings
+    :type cmd: struct ethtool_link_ksettings \*
 
 .. _`mii_ethtool_get_link_ksettings.description`:
 
@@ -58,11 +62,13 @@ mii_ethtool_sset
 
     set settings that are specified in \ ``ecmd``\ 
 
-    :param struct mii_if_info \*mii:
+    :param mii:
         MII interface
+    :type mii: struct mii_if_info \*
 
-    :param struct ethtool_cmd \*ecmd:
+    :param ecmd:
         requested ethtool_cmd
+    :type ecmd: struct ethtool_cmd \*
 
 .. _`mii_ethtool_sset.description`:
 
@@ -80,11 +86,13 @@ mii_ethtool_set_link_ksettings
 
     set settings that are specified in \ ``cmd``\ 
 
-    :param struct mii_if_info \*mii:
+    :param mii:
         MII interfaces
+    :type mii: struct mii_if_info \*
 
-    :param const struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         requested ethtool_link_ksettings
+    :type cmd: const struct ethtool_link_ksettings \*
 
 .. _`mii_ethtool_set_link_ksettings.description`:
 
@@ -102,8 +110,9 @@ mii_check_gmii_support
 
     check if the MII supports Gb interfaces
 
-    :param struct mii_if_info \*mii:
+    :param mii:
         the MII interface
+    :type mii: struct mii_if_info \*
 
 .. _`mii_link_ok`:
 
@@ -114,8 +123,9 @@ mii_link_ok
 
     is link status up/ok
 
-    :param struct mii_if_info \*mii:
+    :param mii:
         the MII interface
+    :type mii: struct mii_if_info \*
 
 .. _`mii_link_ok.description`:
 
@@ -133,8 +143,9 @@ mii_nway_restart
 
     restart NWay (autonegotiation) for this interface
 
-    :param struct mii_if_info \*mii:
+    :param mii:
         the MII interface
+    :type mii: struct mii_if_info \*
 
 .. _`mii_nway_restart.description`:
 
@@ -152,8 +163,9 @@ mii_check_link
 
     check MII link status
 
-    :param struct mii_if_info \*mii:
+    :param mii:
         MII interface
+    :type mii: struct mii_if_info \*
 
 .. _`mii_check_link.description`:
 
@@ -173,14 +185,17 @@ mii_check_media
 
     check the MII interface for a carrier/speed/duplex change
 
-    :param struct mii_if_info \*mii:
+    :param mii:
         the MII interface
+    :type mii: struct mii_if_info \*
 
-    :param unsigned int ok_to_print:
+    :param ok_to_print:
         OK to print link up/down messages
+    :type ok_to_print: unsigned int
 
-    :param unsigned int init_media:
+    :param init_media:
         OK to save duplex mode in \ ``mii``\ 
+    :type init_media: unsigned int
 
 .. _`mii_check_media.description`:
 
@@ -199,18 +214,22 @@ generic_mii_ioctl
 
     main MII ioctl interface
 
-    :param struct mii_if_info \*mii_if:
+    :param mii_if:
         the MII interface
+    :type mii_if: struct mii_if_info \*
 
-    :param struct mii_ioctl_data \*mii_data:
+    :param mii_data:
         MII ioctl data structure
+    :type mii_data: struct mii_ioctl_data \*
 
-    :param int cmd:
+    :param cmd:
         MII ioctl command
+    :type cmd: int
 
-    :param unsigned int \*duplex_chg_out:
+    :param duplex_chg_out:
         pointer to \ ``duplex_changed``\  status if there was no
         ioctl error
+    :type duplex_chg_out: unsigned int \*
 
 .. _`generic_mii_ioctl.description`:
 

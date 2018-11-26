@@ -76,11 +76,12 @@ Definition
                 unsigned short address;
             } i2c;
             struct {
-                bool (*match)(struct device *, struct v4l2_async_subdev *);
+                bool (*match)(struct device *dev, struct v4l2_async_subdev *sd);
                 void *priv;
             } custom;
         } match;
         struct list_head list;
+        struct list_head asd_list;
     }
 
 .. _`v4l2_async_subdev.members`:
@@ -131,6 +132,10 @@ match.custom.priv
 list
     used to link struct v4l2_async_subdev objects, waiting to be
     probed, to a notifier->waiting list
+
+asd_list
+    used to add struct v4l2_async_subdev objects to the
+    master notifier \ ``asd_list``\ 
 
 .. _`v4l2_async_subdev.description`:
 
@@ -196,12 +201,10 @@ Definition
 
     struct v4l2_async_notifier {
         const struct v4l2_async_notifier_operations *ops;
-        unsigned int num_subdevs;
-        unsigned int max_subdevs;
-        struct v4l2_async_subdev **subdevs;
         struct v4l2_device *v4l2_dev;
         struct v4l2_subdev *sd;
         struct v4l2_async_notifier *parent;
+        struct list_head asd_list;
         struct list_head waiting;
         struct list_head done;
         struct list_head list;
@@ -215,15 +218,6 @@ Members
 ops
     notifier operations
 
-num_subdevs
-    number of subdevices used in the subdevs array
-
-max_subdevs
-    number of subdevices allocated in the subdevs array
-
-subdevs
-    array of pointers to subdevice descriptors
-
 v4l2_dev
     v4l2_device of the root notifier, NULL otherwise
 
@@ -232,6 +226,9 @@ sd
 
 parent
     parent notifier
+
+asd_list
+    master list of struct v4l2_async_subdev
 
 waiting
     list of struct v4l2_async_subdev, waiting for their drivers
@@ -242,6 +239,153 @@ done
 list
     member in a global list of notifiers
 
+.. _`v4l2_async_notifier_init`:
+
+v4l2_async_notifier_init
+========================
+
+.. c:function:: void v4l2_async_notifier_init(struct v4l2_async_notifier *notifier)
+
+    Initialize a notifier.
+
+    :param notifier:
+        pointer to \ :c:type:`struct v4l2_async_notifier <v4l2_async_notifier>`\ 
+    :type notifier: struct v4l2_async_notifier \*
+
+.. _`v4l2_async_notifier_init.description`:
+
+Description
+-----------
+
+This function initializes the notifier \ ``asd_list``\ . It must be called
+before the first call to \ ``v4l2_async_notifier_add_subdev``\ .
+
+.. _`v4l2_async_notifier_add_subdev`:
+
+v4l2_async_notifier_add_subdev
+==============================
+
+.. c:function:: int v4l2_async_notifier_add_subdev(struct v4l2_async_notifier *notifier, struct v4l2_async_subdev *asd)
+
+    Add an async subdev to the notifier's master asd list.
+
+    :param notifier:
+        pointer to \ :c:type:`struct v4l2_async_notifier <v4l2_async_notifier>`\ 
+    :type notifier: struct v4l2_async_notifier \*
+
+    :param asd:
+        pointer to \ :c:type:`struct v4l2_async_subdev <v4l2_async_subdev>`\ 
+    :type asd: struct v4l2_async_subdev \*
+
+.. _`v4l2_async_notifier_add_subdev.description`:
+
+Description
+-----------
+
+Call this function before registering a notifier to link the
+provided asd to the notifiers master \ ``asd_list``\ .
+
+.. _`v4l2_async_notifier_add_fwnode_subdev`:
+
+v4l2_async_notifier_add_fwnode_subdev
+=====================================
+
+.. c:function:: struct v4l2_async_subdev *v4l2_async_notifier_add_fwnode_subdev(struct v4l2_async_notifier *notifier, struct fwnode_handle *fwnode, unsigned int asd_struct_size)
+
+    Allocate and add a fwnode async subdev to the notifier's master asd_list.
+
+    :param notifier:
+        pointer to \ :c:type:`struct v4l2_async_notifier <v4l2_async_notifier>`\ 
+    :type notifier: struct v4l2_async_notifier \*
+
+    :param fwnode:
+        fwnode handle of the sub-device to be matched
+    :type fwnode: struct fwnode_handle \*
+
+    :param asd_struct_size:
+        size of the driver's async sub-device struct, including
+        sizeof(struct v4l2_async_subdev). The \ :c:type:`struct struct <struct>`\ 
+        v4l2_async_subdev shall be the first member of
+        the driver's async sub-device struct, i.e. both
+        begin at the same memory address.
+    :type asd_struct_size: unsigned int
+
+.. _`v4l2_async_notifier_add_fwnode_subdev.description`:
+
+Description
+-----------
+
+Allocate a fwnode-matched asd of size asd_struct_size, and add it
+to the notifiers \ ``asd_list``\ .
+
+.. _`v4l2_async_notifier_add_i2c_subdev`:
+
+v4l2_async_notifier_add_i2c_subdev
+==================================
+
+.. c:function:: struct v4l2_async_subdev *v4l2_async_notifier_add_i2c_subdev(struct v4l2_async_notifier *notifier, int adapter_id, unsigned short address, unsigned int asd_struct_size)
+
+    Allocate and add an i2c async subdev to the notifier's master asd_list.
+
+    :param notifier:
+        pointer to \ :c:type:`struct v4l2_async_notifier <v4l2_async_notifier>`\ 
+    :type notifier: struct v4l2_async_notifier \*
+
+    :param adapter_id:
+        I2C adapter ID to be matched
+    :type adapter_id: int
+
+    :param address:
+        I2C address of sub-device to be matched
+    :type address: unsigned short
+
+    :param asd_struct_size:
+        size of the driver's async sub-device struct, including
+        sizeof(struct v4l2_async_subdev). The \ :c:type:`struct struct <struct>`\ 
+        v4l2_async_subdev shall be the first member of
+        the driver's async sub-device struct, i.e. both
+        begin at the same memory address.
+    :type asd_struct_size: unsigned int
+
+.. _`v4l2_async_notifier_add_i2c_subdev.description`:
+
+Description
+-----------
+
+Same as above but for I2C matched sub-devices.
+
+.. _`v4l2_async_notifier_add_devname_subdev`:
+
+v4l2_async_notifier_add_devname_subdev
+======================================
+
+.. c:function:: struct v4l2_async_subdev *v4l2_async_notifier_add_devname_subdev(struct v4l2_async_notifier *notifier, const char *device_name, unsigned int asd_struct_size)
+
+    Allocate and add a device-name async subdev to the notifier's master asd_list.
+
+    :param notifier:
+        pointer to \ :c:type:`struct v4l2_async_notifier <v4l2_async_notifier>`\ 
+    :type notifier: struct v4l2_async_notifier \*
+
+    :param device_name:
+        device name string to be matched
+    :type device_name: const char \*
+
+    :param asd_struct_size:
+        size of the driver's async sub-device struct, including
+        sizeof(struct v4l2_async_subdev). The \ :c:type:`struct struct <struct>`\ 
+        v4l2_async_subdev shall be the first member of
+        the driver's async sub-device struct, i.e. both
+        begin at the same memory address.
+    :type asd_struct_size: unsigned int
+
+.. _`v4l2_async_notifier_add_devname_subdev.description`:
+
+Description
+-----------
+
+Same as above but for device-name matched sub-devices.
+
 .. _`v4l2_async_notifier_register`:
 
 v4l2_async_notifier_register
@@ -251,11 +395,13 @@ v4l2_async_notifier_register
 
     registers a subdevice asynchronous notifier
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to \ :c:type:`struct v4l2_device <v4l2_device>`\ 
+    :type v4l2_dev: struct v4l2_device \*
 
-    :param struct v4l2_async_notifier \*notifier:
+    :param notifier:
         pointer to \ :c:type:`struct v4l2_async_notifier <v4l2_async_notifier>`\ 
+    :type notifier: struct v4l2_async_notifier \*
 
 .. _`v4l2_async_subdev_notifier_register`:
 
@@ -266,11 +412,13 @@ v4l2_async_subdev_notifier_register
 
     registers a subdevice asynchronous notifier for a sub-device
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_async_notifier \*notifier:
+    :param notifier:
         pointer to \ :c:type:`struct v4l2_async_notifier <v4l2_async_notifier>`\ 
+    :type notifier: struct v4l2_async_notifier \*
 
 .. _`v4l2_async_notifier_unregister`:
 
@@ -281,8 +429,9 @@ v4l2_async_notifier_unregister
 
     unregisters a subdevice asynchronous notifier
 
-    :param struct v4l2_async_notifier \*notifier:
+    :param notifier:
         pointer to \ :c:type:`struct v4l2_async_notifier <v4l2_async_notifier>`\ 
+    :type notifier: struct v4l2_async_notifier \*
 
 .. _`v4l2_async_notifier_cleanup`:
 
@@ -293,8 +442,9 @@ v4l2_async_notifier_cleanup
 
     clean up notifier resources
 
-    :param struct v4l2_async_notifier \*notifier:
+    :param notifier:
         the notifier the resources of which are to be cleaned up
+    :type notifier: struct v4l2_async_notifier \*
 
 .. _`v4l2_async_notifier_cleanup.description`:
 
@@ -304,7 +454,9 @@ Description
 Release memory resources related to a notifier, including the async
 sub-devices allocated for the purposes of the notifier but not the notifier
 itself. The user is responsible for calling this function to clean up the
-notifier after calling \ ``v4l2_async_notifier_parse_fwnode_endpoints``\  or
+notifier after calling
+\ ``v4l2_async_notifier_add_subdev``\ ,
+\ ``v4l2_async_notifier_parse_fwnode_endpoints``\  or
 \ ``v4l2_fwnode_reference_parse_sensor_common``\ .
 
 There is no harm from calling v4l2_async_notifier_cleanup in other
@@ -320,8 +472,9 @@ v4l2_async_register_subdev
 
     registers a sub-device to the asynchronous subdevice framework
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
 .. _`v4l2_async_register_subdev_sensor_common`:
 
@@ -332,8 +485,9 @@ v4l2_async_register_subdev_sensor_common
 
     registers a sensor sub-device to the asynchronous sub-device framework and parse set up common sensor related devices
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to struct \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
 .. _`v4l2_async_register_subdev_sensor_common.description`:
 
@@ -360,8 +514,9 @@ v4l2_async_unregister_subdev
 
     unregisters a sub-device to the asynchronous subdevice framework
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
 .. This file was automatic generated / don't edit.
 

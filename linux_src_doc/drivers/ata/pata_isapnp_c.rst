@@ -10,11 +10,13 @@ isapnp_init_one
 
     attach an isapnp interface
 
-    :param struct pnp_dev \*idev:
+    :param idev:
         PnP device
+    :type idev: struct pnp_dev \*
 
-    :param const struct pnp_device_id \*dev_id:
+    :param dev_id:
         matching detect line
+    :type dev_id: const struct pnp_device_id \*
 
 .. _`isapnp_init_one.description`:
 
@@ -33,8 +35,9 @@ isapnp_remove_one
 
     unplug an isapnp interface
 
-    :param struct pnp_dev \*idev:
+    :param idev:
         PnP device
+    :type idev: struct pnp_dev \*
 
 .. _`isapnp_remove_one.description`:
 

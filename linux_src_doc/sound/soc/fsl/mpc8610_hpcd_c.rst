@@ -10,8 +10,9 @@ mpc8610_hpcd_machine_probe
 
     initialize the board
 
-    :param struct snd_soc_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct snd_soc_card \*
 
 .. _`mpc8610_hpcd_machine_probe.description`:
 
@@ -31,8 +32,9 @@ mpc8610_hpcd_startup
 
     program the board with various hardware parameters
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
 .. _`mpc8610_hpcd_startup.description`:
 
@@ -52,8 +54,9 @@ mpc8610_hpcd_machine_remove
 
     Remove the sound device
 
-    :param struct snd_soc_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct snd_soc_card \*
 
 .. _`mpc8610_hpcd_machine_remove.description`:
 
@@ -72,8 +75,9 @@ mpc8610_hpcd_probe
 
     platform probe function for the machine driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`mpc8610_hpcd_probe.description`:
 
@@ -93,8 +97,9 @@ mpc8610_hpcd_remove
 
     remove the platform device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`mpc8610_hpcd_remove.description`:
 
@@ -112,8 +117,9 @@ mpc8610_hpcd_init
 
     machine driver initialization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mpc8610_hpcd_init.description`:
 
@@ -131,8 +137,9 @@ mpc8610_hpcd_exit
 
     machine driver exit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mpc8610_hpcd_exit.description`:
 

@@ -10,17 +10,21 @@ drm_debugfs_create_files
 
     Initialize a given set of debugfs files for DRM minor
 
-    :param const struct drm_info_list \*files:
+    :param files:
         The array of files to create
+    :type files: const struct drm_info_list \*
 
-    :param int count:
+    :param count:
         The number of files given
+    :type count: int
 
-    :param struct dentry \*root:
+    :param root:
         DRI debugfs dir entry.
+    :type root: struct dentry \*
 
-    :param struct drm_minor \*minor:
+    :param minor:
         device minor number
+    :type minor: struct drm_minor \*
 
 .. _`drm_debugfs_create_files.description`:
 

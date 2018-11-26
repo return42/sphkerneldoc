@@ -10,20 +10,25 @@ zpa2326_probe
 
     Instantiate and register core ZPA2326 IIO device
 
-    :param struct device \*parent:
+    :param parent:
         Hardware sampling device the created IIO device will be a child of.
+    :type parent: struct device \*
 
-    :param const char \*name:
+    :param name:
         Arbitrary name to identify the device.
+    :type name: const char \*
 
-    :param int irq:
+    :param irq:
         Interrupt line, negative if none.
+    :type irq: int
 
-    :param unsigned int hwid:
+    :param hwid:
         Expected device hardware id.
+    :type hwid: unsigned int
 
-    :param struct regmap \*regmap:
+    :param regmap:
         Registers map used to abstract underlying bus accesses.
+    :type regmap: struct regmap \*
 
 .. _`zpa2326_probe.return`:
 
@@ -41,8 +46,9 @@ zpa2326_remove
 
     Unregister and destroy core ZPA2326 IIO device.
 
-    :param const struct device \*parent:
+    :param parent:
         Hardware sampling device the IIO device to remove is a child of.
+    :type parent: const struct device \*
 
 .. This file was automatic generated / don't edit.
 

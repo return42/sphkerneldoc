@@ -10,11 +10,13 @@ userio_device_write
 
     Write data from serio to a userio device in userspace
 
-    :param struct serio \*id:
+    :param id:
         The serio port for the userio device
+    :type id: struct serio \*
 
-    :param unsigned char val:
+    :param val:
         The data to write to the device
+    :type val: unsigned char
 
 .. This file was automatic generated / don't edit.
 

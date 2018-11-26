@@ -46,21 +46,26 @@ iio_dummy_read_raw
 
     data read function.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         the struct iio_dev associated with this device instance
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_chan_spec const \*chan:
+    :param chan:
         the channel whose data is to be read
+    :type chan: struct iio_chan_spec const \*
 
-    :param int \*val:
+    :param val:
         first element of returned value (typically INT)
+    :type val: int \*
 
-    :param int \*val2:
+    :param val2:
         second element of returned value (typically MICRO)
+    :type val2: int \*
 
-    :param long mask:
+    :param mask:
         what we actually want to read as per the info_mask\_\*
         in iio_chan_spec.
+    :type mask: long
 
 .. _`iio_dummy_write_raw`:
 
@@ -71,21 +76,26 @@ iio_dummy_write_raw
 
     data write function.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         the struct iio_dev associated with this device instance
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_chan_spec const \*chan:
+    :param chan:
         the channel whose data is to be written
+    :type chan: struct iio_chan_spec const \*
 
-    :param int val:
+    :param val:
         first element of value to set (typically INT)
+    :type val: int
 
-    :param int val2:
+    :param val2:
         second element of value to set (typically MICRO)
+    :type val2: int
 
-    :param long mask:
+    :param mask:
         what we actually want to write as per the info_mask\_\*
         in iio_chan_spec.
+    :type mask: long
 
 .. _`iio_dummy_write_raw.description`:
 
@@ -105,8 +115,9 @@ iio_dummy_init_device
 
     device instance specific init
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         the iio device structure
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_dummy_init_device.description`:
 
@@ -125,8 +136,9 @@ iio_dummy_probe
 
     device instance probe
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
 .. _`iio_dummy_probe.description`:
 
@@ -159,8 +171,9 @@ iio_dummy_remove
 
     device instance removal function
 
-    :param struct iio_sw_device \*swd:
+    :param swd:
         pointer to software IIO device abstraction
+    :type swd: struct iio_sw_device \*
 
 .. _`iio_dummy_remove.description`:
 

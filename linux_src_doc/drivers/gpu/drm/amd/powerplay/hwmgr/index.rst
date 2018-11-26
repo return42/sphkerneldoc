@@ -18,3 +18,5 @@ hwmgr
     vega10_thermal_c
     vega12_hwmgr_c
     vega12_thermal_c
+    vega20_hwmgr_c
+    vega20_thermal_c

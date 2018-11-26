@@ -10,8 +10,9 @@ gs_start_io
 
     start USB I/O streams
 
-    :param struct gs_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct gs_port \*
 
 .. _`gs_start_io.context`:
 
@@ -38,11 +39,13 @@ gserial_connect
 
     notify TTY I/O glue that USB link is active
 
-    :param struct gserial \*gser:
+    :param gser:
         the function, set up with endpoints and descriptors
+    :type gser: struct gserial \*
 
-    :param u8 port_num:
+    :param port_num:
         which port is active
+    :type port_num: u8
 
 .. _`gserial_connect.context`:
 
@@ -80,8 +83,9 @@ gserial_disconnect
 
     notify TTY I/O glue that USB link is inactive
 
-    :param struct gserial \*gser:
+    :param gser:
         the function, on which \ :c:func:`gserial_connect`\  was called
+    :type gser: struct gserial \*
 
 .. _`gserial_disconnect.context`:
 

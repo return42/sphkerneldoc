@@ -8,11 +8,13 @@ ovl_statfs
 
 .. c:function:: int ovl_statfs(struct dentry *dentry, struct kstatfs *buf)
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
-    :param struct kstatfs \*buf:
+    :param buf:
         The struct kstatfs to fill in with stats
+    :type buf: struct kstatfs \*
 
 .. _`ovl_statfs.description`:
 
@@ -29,11 +31,13 @@ ovl_show_options
 
 .. c:function:: int ovl_show_options(struct seq_file *m, struct dentry *dentry)
 
-    :param struct seq_file \*m:
+    :param m:
         *undescribed*
+    :type m: struct seq_file \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
 .. _`ovl_show_options.description`:
 

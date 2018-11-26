@@ -10,8 +10,9 @@ fc_get_event_number
 
     Obtain the next sequential FC event number
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fc_get_event_number.notes`:
 
@@ -31,17 +32,21 @@ fc_host_post_event
 
     called to post an even on an fc_host.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         host the event occurred on
+    :type shost: struct Scsi_Host \*
 
-    :param u32 event_number:
+    :param event_number:
         fc event number obtained from \ :c:func:`get_fc_event_number`\ 
+    :type event_number: u32
 
-    :param enum fc_host_event_code event_code:
+    :param event_code:
         fc_host event being posted
+    :type event_code: enum fc_host_event_code
 
-    :param u32 event_data:
+    :param event_data:
         32bits of data for the event being posted
+    :type event_data: u32
 
 .. _`fc_host_post_event.notes`:
 
@@ -59,20 +64,25 @@ fc_host_post_vendor_event
 
     called to post a vendor unique event on an fc_host
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         host the event occurred on
+    :type shost: struct Scsi_Host \*
 
-    :param u32 event_number:
+    :param event_number:
         fc event number obtained from \ :c:func:`get_fc_event_number`\ 
+    :type event_number: u32
 
-    :param u32 data_len:
+    :param data_len:
         amount, in bytes, of vendor unique data
+    :type data_len: u32
 
-    :param char \*data_buf:
+    :param data_buf:
         pointer to vendor unique data
+    :type data_buf: char \*
 
-    :param u64 vendor_id:
+    :param vendor_id:
         Vendor id
+    :type vendor_id: u64
 
 .. _`fc_host_post_vendor_event.notes`:
 
@@ -90,8 +100,9 @@ fc_eh_timed_out
 
     FC Transport I/O timeout intercept handler
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         The SCSI command which timed out
+    :type scmd: struct scsi_cmnd \*
 
 .. _`fc_eh_timed_out.description`:
 
@@ -129,11 +140,13 @@ fc_queue_work
 
     Queue work to the fc_host workqueue.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to Scsi_Host bound to fc_host.
+    :type shost: struct Scsi_Host \*
 
-    :param struct work_struct \*work:
+    :param work:
         Work to queue for execution.
+    :type work: struct work_struct \*
 
 .. _`fc_queue_work.return-value`:
 
@@ -153,8 +166,9 @@ fc_flush_work
 
     Flush a fc_host's workqueue.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to Scsi_Host bound to fc_host.
+    :type shost: struct Scsi_Host \*
 
 .. _`fc_queue_devloss_work`:
 
@@ -165,14 +179,17 @@ fc_queue_devloss_work
 
     Schedule work for the fc_host devloss workqueue.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to Scsi_Host bound to fc_host.
+    :type shost: struct Scsi_Host \*
 
-    :param struct delayed_work \*work:
+    :param work:
         Work to queue for execution.
+    :type work: struct delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         jiffies to delay the work queuing
+    :type delay: unsigned long
 
 .. _`fc_queue_devloss_work.return-value`:
 
@@ -190,8 +207,9 @@ fc_flush_devloss
 
     Flush a fc_host's devloss workqueue.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to Scsi_Host bound to fc_host.
+    :type shost: struct Scsi_Host \*
 
 .. _`fc_remove_host`:
 
@@ -202,8 +220,9 @@ fc_remove_host
 
     called to terminate any fc_transport-related elements for a scsi host.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Which \ :c:type:`struct Scsi_Host <Scsi_Host>`\ 
+    :type shost: struct Scsi_Host \*
 
 .. _`fc_remove_host.description`:
 
@@ -234,8 +253,9 @@ fc_starget_delete
 
     called to delete the scsi descendants of an rport
 
-    :param struct work_struct \*work:
+    :param work:
         remote port to be operated on.
+    :type work: struct work_struct \*
 
 .. _`fc_starget_delete.description`:
 
@@ -253,8 +273,9 @@ fc_rport_final_delete
 
     finish rport termination and delete it.
 
-    :param struct work_struct \*work:
+    :param work:
         remote port to be deleted.
+    :type work: struct work_struct \*
 
 .. _`fc_remote_port_create`:
 
@@ -265,15 +286,18 @@ fc_remote_port_create
 
     allocates and creates a remote FC port.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host the remote port is connected to.
+    :type shost: struct Scsi_Host \*
 
-    :param int channel:
+    :param channel:
         Channel on shost port connected to.
+    :type channel: int
 
-    :param struct fc_rport_identifiers \*ids:
+    :param ids:
         The world wide names, fc address, and FC4 port
         roles for the remote port.
+    :type ids: struct fc_rport_identifiers \*
 
 .. _`fc_remote_port_create.description`:
 
@@ -299,15 +323,18 @@ fc_remote_port_add
 
     notify fc transport of the existence of a remote FC port.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host the remote port is connected to.
+    :type shost: struct Scsi_Host \*
 
-    :param int channel:
+    :param channel:
         Channel on shost port connected to.
+    :type channel: int
 
-    :param struct fc_rport_identifiers \*ids:
+    :param ids:
         The world wide names, fc address, and FC4 port
         roles for the remote port.
+    :type ids: struct fc_rport_identifiers \*
 
 .. _`fc_remote_port_add.description`:
 
@@ -358,8 +385,9 @@ fc_remote_port_delete
 
     notifies the fc transport that a remote port is no longer in existence.
 
-    :param struct fc_rport \*rport:
+    :param rport:
         The remote port that no longer exists
+    :type rport: struct fc_rport \*
 
 .. _`fc_remote_port_delete.description`:
 
@@ -427,11 +455,13 @@ fc_remote_port_rolechg
 
     notifies the fc transport that the roles on a remote may have changed.
 
-    :param struct fc_rport \*rport:
+    :param rport:
         The remote port that changed.
+    :type rport: struct fc_rport \*
 
-    :param u32 roles:
+    :param roles:
         New roles for this port.
+    :type roles: u32
 
 .. _`fc_remote_port_rolechg.description`:
 
@@ -466,8 +496,9 @@ fc_timeout_deleted_rport
 
     Timeout handler for a deleted remote port.
 
-    :param struct work_struct \*work:
+    :param work:
         rport target that failed to reappear in the allotted time.
+    :type work: struct work_struct \*
 
 .. _`fc_timeout_deleted_rport.description`:
 
@@ -486,8 +517,9 @@ fc_timeout_fail_rport_io
 
     Timeout handler for a fast io failing on a disconnected SCSI target.
 
-    :param struct work_struct \*work:
+    :param work:
         rport to terminate io on.
+    :type work: struct work_struct \*
 
 .. _`fc_timeout_fail_rport_io.notes`:
 
@@ -506,8 +538,9 @@ fc_scsi_scan_rport
 
     called to perform a scsi scan on a remote port.
 
-    :param struct work_struct \*work:
+    :param work:
         remote port to be scanned.
+    :type work: struct work_struct \*
 
 .. _`fc_block_rport`:
 
@@ -518,8 +551,9 @@ fc_block_rport
 
     Block SCSI eh thread for blocked fc_rport.
 
-    :param struct fc_rport \*rport:
+    :param rport:
         Remote port that scsi_eh is trying to recover.
+    :type rport: struct fc_rport \*
 
 .. _`fc_block_rport.description`:
 
@@ -550,8 +584,9 @@ fc_block_scsi_eh
 
     Block SCSI eh thread for blocked fc_rport
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         SCSI command that scsi_eh is trying to recover
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`fc_block_scsi_eh.description`:
 
@@ -582,21 +617,26 @@ fc_vport_setup
 
     allocates and creates a FC virtual port.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host the virtual port is connected to.
+    :type shost: struct Scsi_Host \*
 
-    :param int channel:
+    :param channel:
         Channel on shost port connected to.
+    :type channel: int
 
-    :param struct device \*pdev:
+    :param pdev:
         parent device for vport
+    :type pdev: struct device \*
 
-    :param struct fc_vport_identifiers \*ids:
+    :param ids:
         The world wide names, FC4 port roles, etc for
         the virtual port.
+    :type ids: struct fc_vport_identifiers \*
 
-    :param struct fc_vport \*\*ret_vport:
+    :param ret_vport:
         The pointer to the created vport.
+    :type ret_vport: struct fc_vport \*\*
 
 .. _`fc_vport_setup.description`:
 
@@ -622,15 +662,18 @@ fc_vport_create
 
     Admin App or LLDD requests creation of a vport
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host the virtual port is connected to.
+    :type shost: struct Scsi_Host \*
 
-    :param int channel:
+    :param channel:
         channel on shost port connected to.
+    :type channel: int
 
-    :param struct fc_vport_identifiers \*ids:
+    :param ids:
         The world wide names, FC4 port roles, etc for
         the virtual port.
+    :type ids: struct fc_vport_identifiers \*
 
 .. _`fc_vport_create.notes`:
 
@@ -648,8 +691,9 @@ fc_vport_terminate
 
     Admin App or LLDD requests termination of a vport
 
-    :param struct fc_vport \*vport:
+    :param vport:
         fc_vport to be terminated
+    :type vport: struct fc_vport \*
 
 .. _`fc_vport_terminate.description`:
 
@@ -675,8 +719,9 @@ fc_vport_sched_delete
 
     workq-based delete request for a vport
 
-    :param struct work_struct \*work:
+    :param work:
         vport to be deleted.
+    :type work: struct work_struct \*
 
 .. _`fc_bsg_job_timeout`:
 
@@ -687,8 +732,9 @@ fc_bsg_job_timeout
 
     handler for when a bsg request timesout
 
-    :param struct request \*req:
+    :param req:
         request that timed out
+    :type req: struct request \*
 
 .. _`fc_bsg_host_dispatch`:
 
@@ -699,11 +745,13 @@ fc_bsg_host_dispatch
 
     process fc host bsg requests and dispatch to LLDD
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host rport attached to
+    :type shost: struct Scsi_Host \*
 
-    :param struct bsg_job \*job:
+    :param job:
         bsg job to be processed
+    :type job: struct bsg_job \*
 
 .. _`fc_bsg_rport_dispatch`:
 
@@ -714,11 +762,13 @@ fc_bsg_rport_dispatch
 
     process rport bsg requests and dispatch to LLDD
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host rport attached to
+    :type shost: struct Scsi_Host \*
 
-    :param struct bsg_job \*job:
+    :param job:
         bsg job to be processed
+    :type job: struct bsg_job \*
 
 .. _`fc_bsg_hostadd`:
 
@@ -729,11 +779,13 @@ fc_bsg_hostadd
 
     Create and add the bsg hooks so we can receive requests
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         shost for fc_host
+    :type shost: struct Scsi_Host \*
 
-    :param struct fc_host_attrs \*fc_host:
+    :param fc_host:
         fc_host adding the structures to
+    :type fc_host: struct fc_host_attrs \*
 
 .. _`fc_bsg_rportadd`:
 
@@ -744,11 +796,13 @@ fc_bsg_rportadd
 
     Create and add the bsg hooks so we can receive requests
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         shost that rport is attached to
+    :type shost: struct Scsi_Host \*
 
-    :param struct fc_rport \*rport:
+    :param rport:
         rport that the bsg hooks are being attached to
+    :type rport: struct fc_rport \*
 
 .. _`fc_bsg_remove`:
 
@@ -759,8 +813,9 @@ fc_bsg_remove
 
     Deletes the bsg hooks on fchosts/rports
 
-    :param struct request_queue \*q:
+    :param q:
         the request_queue that is to be torn down.
+    :type q: struct request_queue \*
 
 .. _`fc_bsg_remove.notes`:
 

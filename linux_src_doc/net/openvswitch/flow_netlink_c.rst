@@ -10,22 +10,27 @@ ovs_nla_get_match
 
     parses Netlink attributes into a flow key and mask. In case the 'mask' is NULL, the flow is treated as exact match flow. Otherwise, it is treated as a wildcarded flow, except the mask does not include any don't care bit.
 
-    :param struct net \*net:
+    :param net:
         Used to determine per-namespace field support.
+    :type net: struct net \*
 
-    :param struct sw_flow_match \*match:
+    :param match:
         receives the extracted flow match information.
+    :type match: struct sw_flow_match \*
 
-    :param const struct nlattr \*nla_key:
+    :param nla_key:
         *undescribed*
+    :type nla_key: const struct nlattr \*
 
-    :param const struct nlattr \*nla_mask:
+    :param nla_mask:
         *undescribed*
+    :type nla_mask: const struct nlattr \*
 
-    :param bool log:
+    :param log:
         Boolean to allow kernel error logging.  Normally true, but when
         probing for feature compatibility this should be passed in as false to
         suppress unnecessary error logging.
+    :type log: bool
 
 .. _`ovs_nla_get_flow_metadata`:
 
@@ -36,24 +41,29 @@ ovs_nla_get_flow_metadata
 
     parses Netlink attributes into a flow key.
 
-    :param struct net \*net:
+    :param net:
         Network namespace.
+    :type net: struct net \*
 
-    :param const struct nlattr  \*a:
+    :param a:
         Array of netlink attributes holding parsed \ ``OVS_KEY_ATTR``\ \_\* Netlink
         attributes.
+    :type a: const struct nlattr  \*
 
-    :param u64 attrs:
+    :param attrs:
         Bit mask for the netlink attributes included in \ ``a``\ .
+    :type attrs: u64
 
-    :param struct sw_flow_key \*key:
+    :param key:
         Receives extracted in_port, priority, tun_key, skb_mark and conntrack
         metadata.
+    :type key: struct sw_flow_key \*
 
-    :param bool log:
+    :param log:
         Boolean to allow kernel error logging.  Normally true, but when
         probing for feature compatibility this should be passed in as false to
         suppress unnecessary error logging.
+    :type log: bool
 
 .. _`ovs_nla_get_flow_metadata.description`:
 

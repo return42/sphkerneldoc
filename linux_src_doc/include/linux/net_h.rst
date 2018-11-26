@@ -83,7 +83,7 @@ Definition
         socket_state state;
         short type;
         unsigned long flags;
-        struct socket_wq __rcu *wq;
+        struct socket_wq *wq;
         struct file *file;
         struct sock *sk;
         const struct proto_ops *ops;

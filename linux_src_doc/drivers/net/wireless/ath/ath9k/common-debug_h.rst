@@ -35,6 +35,8 @@ Definition
         u32 rx_beacons;
         u32 rx_frags;
         u32 rx_spectral;
+        u32 rx_spectral_sample_good;
+        u32 rx_spectral_sample_err;
     }
 
 .. _`ath_rx_stats.members`:
@@ -92,6 +94,12 @@ rx_frags
 
 rx_spectral
     No of spectral packets received.
+
+rx_spectral_sample_good
+    No. of good spectral samples
+
+rx_spectral_sample_err
+    No. of good spectral samples
 
 .. This file was automatic generated / don't edit.
 

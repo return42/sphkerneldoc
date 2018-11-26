@@ -276,16 +276,19 @@ hrtimer_start
 
     (re)start an hrtimer
 
-    :param struct hrtimer \*timer:
+    :param timer:
         the timer to be added
+    :type timer: struct hrtimer \*
 
-    :param ktime_t tim:
+    :param tim:
         expiry time
+    :type tim: ktime_t
 
-    :param const enum hrtimer_mode mode:
+    :param mode:
         timer mode: absolute (HRTIMER_MODE_ABS) or
         relative (HRTIMER_MODE_REL), and pinned (HRTIMER_MODE_PINNED);
         softirq based mode is considered for debug purpose only!
+    :type mode: const enum hrtimer_mode
 
 .. _`hrtimer_forward_now`:
 
@@ -296,11 +299,13 @@ hrtimer_forward_now
 
     forward the timer expiry so it expires after now
 
-    :param struct hrtimer \*timer:
+    :param timer:
         hrtimer to forward
+    :type timer: struct hrtimer \*
 
-    :param ktime_t interval:
+    :param interval:
         the interval to forward
+    :type interval: ktime_t
 
 .. _`hrtimer_forward_now.description`:
 

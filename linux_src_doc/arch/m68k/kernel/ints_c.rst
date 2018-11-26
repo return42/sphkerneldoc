@@ -27,11 +27,13 @@ m68k_setup_user_interrupt
 
 .. c:function:: void m68k_setup_user_interrupt(unsigned int vec, unsigned int cnt)
 
-    :param unsigned int vec:
+    :param vec:
         first user vector interrupt to handle
+    :type vec: unsigned int
 
-    :param unsigned int cnt:
+    :param cnt:
         number of active user vector interrupts
+    :type cnt: unsigned int
 
 .. _`m68k_setup_user_interrupt.description`:
 
@@ -49,17 +51,21 @@ m68k_setup_irq_controller
 
 .. c:function:: void m68k_setup_irq_controller(struct irq_chip *chip, irq_flow_handler_t handle, unsigned int irq, unsigned int cnt)
 
-    :param struct irq_chip \*chip:
+    :param chip:
         irq chip which controls specified irq
+    :type chip: struct irq_chip \*
 
-    :param irq_flow_handler_t handle:
+    :param handle:
         flow handler which handles specified irq
+    :type handle: irq_flow_handler_t
 
-    :param unsigned int irq:
+    :param irq:
         first irq to be managed by the controller
+    :type irq: unsigned int
 
-    :param unsigned int cnt:
+    :param cnt:
         number of irqs to be managed by the controller
+    :type cnt: unsigned int
 
 .. _`m68k_setup_irq_controller.description`:
 

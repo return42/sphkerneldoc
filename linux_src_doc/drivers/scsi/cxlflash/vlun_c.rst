@@ -10,11 +10,13 @@ marshal_virt_to_resize
 
     translate uvirtual to resize structure
 
-    :param struct dk_cxlflash_uvirtual \*virt:
+    :param virt:
         Source structure from which to translate/copy.
+    :type virt: struct dk_cxlflash_uvirtual \*
 
-    :param struct dk_cxlflash_resize \*resize:
+    :param resize:
         Destination structure for the translate/copy.
+    :type resize: struct dk_cxlflash_resize \*
 
 .. _`marshal_clone_to_rele`:
 
@@ -25,11 +27,13 @@ marshal_clone_to_rele
 
     translate clone to release structure
 
-    :param struct dk_cxlflash_clone \*clone:
+    :param clone:
         Source structure from which to translate/copy.
+    :type clone: struct dk_cxlflash_clone \*
 
-    :param struct dk_cxlflash_release \*release:
+    :param release:
         *undescribed*
+    :type release: struct dk_cxlflash_release \*
 
 .. _`ba_init`:
 
@@ -40,8 +44,9 @@ ba_init
 
     initializes a block allocator
 
-    :param struct ba_lun \*ba_lun:
+    :param ba_lun:
         Block allocator to initialize.
+    :type ba_lun: struct ba_lun \*
 
 .. _`ba_init.return`:
 
@@ -59,17 +64,21 @@ find_free_range
 
     locates a free bit within the block allocator
 
-    :param u32 low:
+    :param low:
         First word in block allocator to start search.
+    :type low: u32
 
-    :param u32 high:
+    :param high:
         Last word in block allocator to search.
+    :type high: u32
 
-    :param struct ba_lun_info \*bali:
+    :param bali:
         LUN information structure owning the block allocator to search.
+    :type bali: struct ba_lun_info \*
 
-    :param int \*bit_word:
+    :param bit_word:
         Passes back the word in the block allocator owning the free bit.
+    :type bit_word: int \*
 
 .. _`find_free_range.return`:
 
@@ -87,8 +96,9 @@ ba_alloc
 
     allocates a block from the block allocator
 
-    :param struct ba_lun \*ba_lun:
+    :param ba_lun:
         Block allocator from which to allocate a block.
+    :type ba_lun: struct ba_lun \*
 
 .. _`ba_alloc.return`:
 
@@ -106,11 +116,13 @@ validate_alloc
 
     validates the specified block has been allocated
 
-    :param struct ba_lun_info \*bali:
+    :param bali:
         *undescribed*
+    :type bali: struct ba_lun_info \*
 
-    :param u64 aun:
+    :param aun:
         Block to validate.
+    :type aun: u64
 
 .. _`validate_alloc.return`:
 
@@ -128,11 +140,13 @@ ba_free
 
     frees a block from the block allocator
 
-    :param struct ba_lun \*ba_lun:
+    :param ba_lun:
         Block allocator from which to allocate a block.
+    :type ba_lun: struct ba_lun \*
 
-    :param u64 to_free:
+    :param to_free:
         Block to free.
+    :type to_free: u64
 
 .. _`ba_free.return`:
 
@@ -150,11 +164,13 @@ ba_clone
 
     Clone a chunk of the block allocation table
 
-    :param struct ba_lun \*ba_lun:
+    :param ba_lun:
         Block allocator from which to allocate a block.
+    :type ba_lun: struct ba_lun \*
 
-    :param u64 to_clone:
+    :param to_clone:
         *undescribed*
+    :type to_clone: u64
 
 .. _`ba_clone.return`:
 
@@ -172,8 +188,9 @@ ba_space
 
     returns the amount of free space left in the block allocator
 
-    :param struct ba_lun \*ba_lun:
+    :param ba_lun:
         Block allocator.
+    :type ba_lun: struct ba_lun \*
 
 .. _`ba_space.return`:
 
@@ -191,8 +208,9 @@ cxlflash_ba_terminate
 
     frees resources associated with the block allocator
 
-    :param struct ba_lun \*ba_lun:
+    :param ba_lun:
         Block allocator.
+    :type ba_lun: struct ba_lun \*
 
 .. _`cxlflash_ba_terminate.description`:
 
@@ -210,8 +228,9 @@ init_vlun
 
     initializes a LUN for virtual use
 
-    :param struct llun_info \*lli:
+    :param lli:
         *undescribed*
+    :type lli: struct llun_info \*
 
 .. _`init_vlun.return`:
 
@@ -229,14 +248,17 @@ write_same16
 
     sends a SCSI WRITE_SAME16 (0) command to specified LUN
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param u64 lba:
+    :param lba:
         Logical block address to start write same.
+    :type lba: u64
 
-    :param u32 nblks:
+    :param nblks:
         Number of logical blocks to write same.
+    :type nblks: u32
 
 .. _`write_same16.description`:
 
@@ -277,23 +299,29 @@ grow_lxt
 
     expands the translation table associated with the specified RHTE
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct afu \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param ctx_hndl_t ctxid:
+    :param ctxid:
         Context ID of context owning the RHTE.
+    :type ctxid: ctx_hndl_t
 
-    :param res_hndl_t rhndl:
+    :param rhndl:
         Resource handle associated with the RHTE.
+    :type rhndl: res_hndl_t
 
-    :param struct sisl_rht_entry \*rhte:
+    :param rhte:
         Resource handle entry (RHTE).
+    :type rhte: struct sisl_rht_entry \*
 
-    :param u64 \*new_size:
+    :param new_size:
         Number of translation entries associated with RHTE.
+    :type new_size: u64 \*
 
 .. _`grow_lxt.description`:
 
@@ -322,23 +350,29 @@ shrink_lxt
 
     reduces translation table associated with the specified RHTE
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct afu \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param res_hndl_t rhndl:
+    :param rhndl:
         Resource handle associated with the RHTE.
+    :type rhndl: res_hndl_t
 
-    :param struct sisl_rht_entry \*rhte:
+    :param rhte:
         Resource handle entry (RHTE).
+    :type rhte: struct sisl_rht_entry \*
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context owning resources.
+    :type ctxi: struct ctx_info \*
 
-    :param u64 \*new_size:
+    :param new_size:
         Number of translation entries associated with RHTE.
+    :type new_size: u64 \*
 
 .. _`shrink_lxt.return`:
 
@@ -356,14 +390,17 @@ Return
 
     changes the size of a virtual LUN
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN owning virtual LUN.
+    :type sdev: struct scsi_device \*
 
-    :param struct ctx_info \*ctxi:
+    :param ctxi:
         Context owning resources.
+    :type ctxi: struct ctx_info \*
 
-    :param struct dk_cxlflash_resize \*resize:
+    :param resize:
         Resize ioctl data structure.
+    :type resize: struct dk_cxlflash_resize \*
 
 .. _`_cxlflash_vlun_resize.description`:
 
@@ -392,8 +429,9 @@ cxlflash_restore_luntable
 
     Restore LUN table to prior state
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`get_num_ports`:
 
@@ -404,8 +442,9 @@ get_num_ports
 
     compute number of ports from port selection mask
 
-    :param u32 psm:
+    :param psm:
         Port selection mask.
+    :type psm: u32
 
 .. _`get_num_ports.return`:
 
@@ -423,11 +462,13 @@ init_luntable
 
     write an entry in the LUN table
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param struct llun_info \*lli:
+    :param lli:
         Per adapter LUN information structure.
+    :type lli: struct llun_info \*
 
 .. _`init_luntable.description`:
 
@@ -454,11 +495,13 @@ cxlflash_disk_virtual_open
 
     open a virtual disk of specified size
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN owning virtual LUN.
+    :type sdev: struct scsi_device \*
 
-    :param void \*arg:
+    :param arg:
         UVirtual ioctl data structure.
+    :type arg: void \*
 
 .. _`cxlflash_disk_virtual_open.description`:
 
@@ -486,23 +529,29 @@ clone_lxt
 
     copies translation tables from source to destination RHTE
 
-    :param struct afu \*afu:
+    :param afu:
         AFU associated with the host.
+    :type afu: struct afu \*
 
-    :param struct blka \*blka:
+    :param blka:
         Block allocator associated with LUN.
+    :type blka: struct blka \*
 
-    :param ctx_hndl_t ctxid:
+    :param ctxid:
         Context ID of context owning the RHTE.
+    :type ctxid: ctx_hndl_t
 
-    :param res_hndl_t rhndl:
+    :param rhndl:
         Resource handle associated with the RHTE.
+    :type rhndl: res_hndl_t
 
-    :param struct sisl_rht_entry \*rhte:
+    :param rhte:
         Destination resource handle entry (RHTE).
+    :type rhte: struct sisl_rht_entry \*
 
-    :param struct sisl_rht_entry \*rhte_src:
+    :param rhte_src:
         Source resource handle entry (RHTE).
+    :type rhte_src: struct sisl_rht_entry \*
 
 .. _`clone_lxt.return`:
 
@@ -520,11 +569,13 @@ cxlflash_disk_clone
 
     clone a context by making snapshot of another
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN owning virtual LUN.
+    :type sdev: struct scsi_device \*
 
-    :param struct dk_cxlflash_clone \*clone:
+    :param clone:
         Clone ioctl data structure.
+    :type clone: struct dk_cxlflash_clone \*
 
 .. _`cxlflash_disk_clone.description`:
 

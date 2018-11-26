@@ -53,8 +53,9 @@ get_cfcnfg
 
     Get the CAIF configuration object given network.
 
-    :param struct net \*net:
+    :param net:
         Network for the CAIF configuration object.
+    :type net: struct net \*
 
 .. _`cfcnfg_create`:
 
@@ -65,8 +66,9 @@ cfcnfg_create
 
     Create the CAIF configuration object.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cfcnfg_remove`:
 
@@ -77,8 +79,9 @@ cfcnfg_remove
 
     Remove the CFCNFG object
 
-    :param struct cfcnfg \*cfg:
+    :param cfg:
         config object
+    :type cfg: struct cfcnfg \*
 
 .. _`cfcnfg_add_phy_layer`:
 
@@ -89,28 +92,35 @@ cfcnfg_add_phy_layer
 
     Adds a physical layer to the CAIF stack.
 
-    :param struct cfcnfg \*cnfg:
+    :param cnfg:
         Pointer to a CAIF configuration object, created by
         \ :c:func:`cfcnfg_create`\ .
+    :type cnfg: struct cfcnfg \*
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to link layer device
+    :type dev: struct net_device \*
 
-    :param struct cflayer \*phy_layer:
+    :param phy_layer:
         Specify the physical layer. The transmit function
         MUST be set in the structure.
+    :type phy_layer: struct cflayer \*
 
-    :param enum cfcnfg_phy_preference pref:
+    :param pref:
         The phy (link layer) preference.
+    :type pref: enum cfcnfg_phy_preference
 
-    :param struct cflayer \*link_support:
+    :param link_support:
         Protocol implementation for link layer specific protocol.
+    :type link_support: struct cflayer \*
 
-    :param bool fcs:
+    :param fcs:
         Specify if checksum is used in CAIF Framing Layer.
+    :type fcs: bool
 
-    :param int head_room:
+    :param head_room:
         Head space needed by link specific protocol.
+    :type head_room: int
 
 .. _`cfcnfg_del_phy_layer`:
 
@@ -121,12 +131,14 @@ cfcnfg_del_phy_layer
 
     Deletes an phy layer from the CAIF stack.
 
-    :param struct cfcnfg \*cnfg:
+    :param cnfg:
         Pointer to a CAIF configuration object, created by
         \ :c:func:`cfcnfg_create`\ .
+    :type cnfg: struct cfcnfg \*
 
-    :param struct cflayer \*phy_layer:
+    :param phy_layer:
         Adaptation layer to be removed.
+    :type phy_layer: struct cflayer \*
 
 .. _`cfcnfg_set_phy_state`:
 
@@ -137,14 +149,17 @@ cfcnfg_set_phy_state
 
     Set the state of the physical interface device.
 
-    :param struct cfcnfg \*cnfg:
+    :param cnfg:
         Configuration object
+    :type cnfg: struct cfcnfg \*
 
-    :param struct cflayer \*phy_layer:
+    :param phy_layer:
         Physical Layer representation
+    :type phy_layer: struct cflayer \*
 
-    :param bool up:
+    :param up:
         State of device
+    :type up: bool
 
 .. This file was automatic generated / don't edit.
 

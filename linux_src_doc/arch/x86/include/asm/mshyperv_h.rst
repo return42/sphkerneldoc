@@ -10,8 +10,9 @@ hv_cpu_number_to_vp_number
 
     Map CPU to VP.
 
-    :param int cpu_number:
+    :param cpu_number:
         CPU number in Linux terms
+    :type cpu_number: int
 
 .. _`hv_cpu_number_to_vp_number.description`:
 

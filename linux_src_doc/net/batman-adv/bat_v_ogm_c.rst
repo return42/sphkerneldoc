@@ -10,11 +10,13 @@ batadv_v_ogm_orig_get
 
     retrieve and possibly create an originator node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         the address of the originator
+    :type addr: const u8 \*
 
 .. _`batadv_v_ogm_orig_get.return`:
 
@@ -34,8 +36,9 @@ batadv_v_ogm_start_timer
 
     restart the OGM sending timer
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_v_ogm_send_to_if`:
 
@@ -46,11 +49,13 @@ batadv_v_ogm_send_to_if
 
     send a batman ogm using a given interface
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the OGM to send
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface to use to send the OGM
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_v_ogm_send`:
 
@@ -61,8 +66,9 @@ batadv_v_ogm_send
 
     periodic worker broadcasting the own OGM
 
-    :param struct work_struct \*work:
+    :param work:
         work queue item
+    :type work: struct work_struct \*
 
 .. _`batadv_v_ogm_iface_enable`:
 
@@ -73,8 +79,9 @@ batadv_v_ogm_iface_enable
 
     prepare an interface for B.A.T.M.A.N. V
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface to prepare
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_v_ogm_iface_enable.description`:
 
@@ -99,8 +106,9 @@ batadv_v_ogm_primary_iface_set
 
     set a new primary interface
 
-    :param struct batadv_hard_iface \*primary_iface:
+    :param primary_iface:
         the new primary interface
+    :type primary_iface: struct batadv_hard_iface \*
 
 .. _`batadv_v_forward_penalty`:
 
@@ -111,17 +119,21 @@ batadv_v_forward_penalty
 
     apply a penalty to the throughput metric forwarded with B.A.T.M.A.N. V OGMs
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface where the OGM has been received
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface where the OGM has to be forwarded to
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param u32 throughput:
+    :param throughput:
         the current throughput
+    :type throughput: u32
 
 .. _`batadv_v_forward_penalty.description`:
 
@@ -160,23 +172,29 @@ batadv_v_ogm_forward
 
     check conditions and forward an OGM to the given outgoing interface
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const struct batadv_ogm2_packet \*ogm_received:
+    :param ogm_received:
         previously received OGM to be forwarded
+    :type ogm_received: const struct batadv_ogm2_packet \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator which has been updated
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         the neigh_node through with the OGM has been received
+    :type neigh_node: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface on which this OGM was received on
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface to which the OGM has to be forwarded to
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_v_ogm_forward.description`:
 
@@ -195,23 +213,29 @@ batadv_v_ogm_metric_update
 
     update route metric based on OGM
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const struct batadv_ogm2_packet \*ogm2:
+    :param ogm2:
         OGM2 structure
+    :type ogm2: const struct batadv_ogm2_packet \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         Originator structure for which the OGM has been received
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         the neigh_node through with the OGM has been received
+    :type neigh_node: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface where this packet was received
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface for which the packet should be considered
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_v_ogm_metric_update.return`:
 
@@ -231,26 +255,33 @@ batadv_v_ogm_route_update
 
     update routes based on OGM
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const struct ethhdr \*ethhdr:
+    :param ethhdr:
         the Ethernet header of the OGM2
+    :type ethhdr: const struct ethhdr \*
 
-    :param const struct batadv_ogm2_packet \*ogm2:
+    :param ogm2:
         OGM2 structure
+    :type ogm2: const struct batadv_ogm2_packet \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         Originator structure for which the OGM has been received
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         the neigh_node through with the OGM has been received
+    :type neigh_node: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface where this packet was received
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface for which the packet should be considered
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_v_ogm_route_update.return`:
 
@@ -268,26 +299,33 @@ batadv_v_ogm_process_per_outif
 
     process a batman v OGM for an outgoing if
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const struct ethhdr \*ethhdr:
+    :param ethhdr:
         the Ethernet header of the OGM2
+    :type ethhdr: const struct ethhdr \*
 
-    :param const struct batadv_ogm2_packet \*ogm2:
+    :param ogm2:
         OGM2 structure
+    :type ogm2: const struct batadv_ogm2_packet \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         Originator structure for which the OGM has been received
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         the neigh_node through with the OGM has been received
+    :type neigh_node: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface where this packet was received
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface for which the packet should be considered
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_v_ogm_aggr_packet`:
 
@@ -298,14 +336,17 @@ batadv_v_ogm_aggr_packet
 
     checks if there is another OGM aggregated
 
-    :param int buff_pos:
+    :param buff_pos:
         current position in the skb
+    :type buff_pos: int
 
-    :param int packet_len:
+    :param packet_len:
         total length of the skb
+    :type packet_len: int
 
-    :param __be16 tvlv_len:
+    :param tvlv_len:
         tvlv length of the previously considered OGM
+    :type tvlv_len: __be16
 
 .. _`batadv_v_ogm_aggr_packet.return`:
 
@@ -323,14 +364,17 @@ batadv_v_ogm_process
 
     process an incoming batman v OGM
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the skb containing the OGM
+    :type skb: const struct sk_buff \*
 
-    :param int ogm_offset:
+    :param ogm_offset:
         offset to the OGM which should be processed (for aggregates)
+    :type ogm_offset: int
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface where this packet was receved
+    :type if_incoming: struct batadv_hard_iface \*
 
 .. _`batadv_v_ogm_packet_recv`:
 
@@ -341,11 +385,13 @@ batadv_v_ogm_packet_recv
 
     OGM2 receiving handler
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the received OGM
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface where this OGM has been received
+    :type if_incoming: struct batadv_hard_iface \*
 
 .. _`batadv_v_ogm_packet_recv.return`:
 
@@ -364,8 +410,9 @@ batadv_v_ogm_init
 
     initialise the OGM2 engine
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_v_ogm_init.return`:
 
@@ -383,8 +430,9 @@ batadv_v_ogm_free
 
     free OGM private resources
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. This file was automatic generated / don't edit.
 

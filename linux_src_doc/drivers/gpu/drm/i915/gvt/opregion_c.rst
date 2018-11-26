@@ -10,8 +10,9 @@ intel_vgpu_init_opregion
 
     initialize the stuff used to emulate opregion
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_init_opregion.return`:
 
@@ -29,11 +30,13 @@ intel_vgpu_opregion_base_write_handler
 
     Opregion base register write handler
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param u32 gpa:
+    :param gpa:
         guest physical address of opregion
+    :type gpa: u32
 
 .. _`intel_vgpu_opregion_base_write_handler.return`:
 
@@ -51,8 +54,9 @@ intel_vgpu_clean_opregion
 
     clean the stuff used to emulate opregion
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_emulate_opregion_request`:
 
@@ -63,11 +67,13 @@ intel_vgpu_emulate_opregion_request
 
     emulating OpRegion request
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param u32 swsci:
+    :param swsci:
         SWSCI request
+    :type swsci: u32
 
 .. _`intel_vgpu_emulate_opregion_request.return`:
 

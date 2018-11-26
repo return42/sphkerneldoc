@@ -10,11 +10,13 @@ iproc_pcie_apb_err_disable
 
     registers of the endpoint device, to prevent unsupported requests (typically seen during enumeration with multi-function devices) from triggering a system exception.
 
-    :param struct pci_bus \*bus:
+    :param bus:
         *undescribed*
+    :type bus: struct pci_bus \*
 
-    :param bool disable:
+    :param disable:
         *undescribed*
+    :type disable: bool
 
 .. _`iproc_pcie_map_cfg_bus`:
 
@@ -25,17 +27,21 @@ iproc_pcie_map_cfg_bus
 
     by 'pci_lock' in drivers/pci/access.c
 
-    :param struct iproc_pcie \*pcie:
+    :param pcie:
         *undescribed*
+    :type pcie: struct iproc_pcie \*
 
-    :param int busno:
+    :param busno:
         *undescribed*
+    :type busno: int
 
-    :param unsigned int devfn:
+    :param devfn:
         *undescribed*
+    :type devfn: unsigned int
 
-    :param int where:
+    :param where:
         *undescribed*
+    :type where: int
 
 .. _`iproc_pcie_setup_ob`:
 
@@ -44,17 +50,21 @@ iproc_pcie_setup_ob
 
 .. c:function:: int iproc_pcie_setup_ob(struct iproc_pcie *pcie, u64 axi_addr, u64 pci_addr, resource_size_t size)
 
-    :param struct iproc_pcie \*pcie:
+    :param pcie:
         *undescribed*
+    :type pcie: struct iproc_pcie \*
 
-    :param u64 axi_addr:
+    :param axi_addr:
         *undescribed*
+    :type axi_addr: u64
 
-    :param u64 pci_addr:
+    :param pci_addr:
         *undescribed*
+    :type pci_addr: u64
 
-    :param resource_size_t size:
+    :param size:
         *undescribed*
+    :type size: resource_size_t
 
 .. _`iproc_pcie_setup_ob.outbound-address-translation`:
 

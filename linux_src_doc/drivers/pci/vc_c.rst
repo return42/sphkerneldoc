@@ -10,20 +10,25 @@ pci_vc_save_restore_dwords
 
     Save or restore a series of dwords
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device
+    :type dev: struct pci_dev \*
 
-    :param int pos:
+    :param pos:
         starting config space position
+    :type pos: int
 
-    :param u32 \*buf:
+    :param buf:
         buffer to save to or restore from
+    :type buf: u32 \*
 
-    :param int dwords:
+    :param dwords:
         number of dwords to save/restore
+    :type dwords: int
 
-    :param bool save:
+    :param save:
         whether to save or restore
+    :type save: bool
 
 .. _`pci_vc_load_arb_table`:
 
@@ -34,11 +39,13 @@ pci_vc_load_arb_table
 
     load and wait for VC arbitration table
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device
+    :type dev: struct pci_dev \*
 
-    :param int pos:
+    :param pos:
         starting position of VC capability (VC/VC9/MFVC)
+    :type pos: int
 
 .. _`pci_vc_load_arb_table.description`:
 
@@ -58,14 +65,17 @@ pci_vc_load_port_arb_table
 
     Load and wait for VC port arbitration table
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device
+    :type dev: struct pci_dev \*
 
-    :param int pos:
+    :param pos:
         starting position of VC capability (VC/VC9/MFVC)
+    :type pos: int
 
-    :param int res:
+    :param res:
         VC resource number, ie. VCn (0-7)
+    :type res: int
 
 .. _`pci_vc_load_port_arb_table.description`:
 
@@ -85,14 +95,17 @@ pci_vc_enable
 
     Enable virtual channel
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device
+    :type dev: struct pci_dev \*
 
-    :param int pos:
+    :param pos:
         starting position of VC capability (VC/VC9/MFVC)
+    :type pos: int
 
-    :param int res:
+    :param res:
         VC res number, ie. VCn (0-7)
+    :type res: int
 
 .. _`pci_vc_enable.description`:
 
@@ -115,17 +128,21 @@ pci_vc_do_save_buffer
 
     Size, save, or restore VC state
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device
+    :type dev: struct pci_dev \*
 
-    :param int pos:
+    :param pos:
         starting position of VC capability (VC/VC9/MFVC)
+    :type pos: int
 
-    :param struct pci_cap_saved_state \*save_state:
+    :param save_state:
         buffer for save/restore
+    :type save_state: struct pci_cap_saved_state \*
 
-    :param bool save:
+    :param save:
         if provided a buffer, this indicates what to do with it
+    :type save: bool
 
 .. _`pci_vc_do_save_buffer.description`:
 
@@ -148,8 +165,9 @@ pci_save_vc_state
 
     Save VC state to pre-allocate save buffer
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device
+    :type dev: struct pci_dev \*
 
 .. _`pci_save_vc_state.description`:
 
@@ -168,8 +186,9 @@ pci_restore_vc_state
 
     Restore VC state from save buffer
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device
+    :type dev: struct pci_dev \*
 
 .. _`pci_restore_vc_state.description`:
 
@@ -188,8 +207,9 @@ pci_allocate_vc_save_buffers
 
     Allocate save buffers for VC caps
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device
+    :type dev: struct pci_dev \*
 
 .. _`pci_allocate_vc_save_buffers.description`:
 

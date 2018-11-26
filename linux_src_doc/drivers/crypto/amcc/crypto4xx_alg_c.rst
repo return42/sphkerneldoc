@@ -8,41 +8,53 @@ set_dynamic_sa_command_0
 
 .. c:function:: void set_dynamic_sa_command_0(struct dynamic_sa_ctl *sa, u32 save_h, u32 save_iv, u32 ld_h, u32 ld_iv, u32 hdr_proc, u32 h, u32 c, u32 pad_type, u32 op_grp, u32 op, u32 dir)
 
-    :param struct dynamic_sa_ctl \*sa:
+    :param sa:
         *undescribed*
+    :type sa: struct dynamic_sa_ctl \*
 
-    :param u32 save_h:
+    :param save_h:
         *undescribed*
+    :type save_h: u32
 
-    :param u32 save_iv:
+    :param save_iv:
         *undescribed*
+    :type save_iv: u32
 
-    :param u32 ld_h:
+    :param ld_h:
         *undescribed*
+    :type ld_h: u32
 
-    :param u32 ld_iv:
+    :param ld_iv:
         *undescribed*
+    :type ld_iv: u32
 
-    :param u32 hdr_proc:
+    :param hdr_proc:
         *undescribed*
+    :type hdr_proc: u32
 
-    :param u32 h:
+    :param h:
         *undescribed*
+    :type h: u32
 
-    :param u32 c:
+    :param c:
         *undescribed*
+    :type c: u32
 
-    :param u32 pad_type:
+    :param pad_type:
         *undescribed*
+    :type pad_type: u32
 
-    :param u32 op_grp:
+    :param op_grp:
         *undescribed*
+    :type op_grp: u32
 
-    :param u32 op:
+    :param op:
         *undescribed*
+    :type op: u32
 
-    :param u32 dir:
+    :param dir:
         *undescribed*
+    :type dir: u32
 
 .. _`set_dynamic_sa_command_0.description`:
 
@@ -71,20 +83,25 @@ crypto4xx_setkey_aes
 
 .. c:function:: int crypto4xx_setkey_aes(struct crypto_skcipher *cipher, const u8 *key, unsigned int keylen, unsigned char cm, u8 fb)
 
-    :param struct crypto_skcipher \*cipher:
+    :param cipher:
         *undescribed*
+    :type cipher: struct crypto_skcipher \*
 
-    :param const u8 \*key:
+    :param key:
         *undescribed*
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         *undescribed*
+    :type keylen: unsigned int
 
-    :param unsigned char cm:
+    :param cm:
         *undescribed*
+    :type cm: unsigned char
 
-    :param u8 fb:
+    :param fb:
         *undescribed*
+    :type fb: u8
 
 .. _`crypto4xx_setkey_aes_ccm`:
 
@@ -95,14 +112,17 @@ crypto4xx_setkey_aes_ccm
 
     CCM Functions
 
-    :param struct crypto_aead \*cipher:
+    :param cipher:
         *undescribed*
+    :type cipher: struct crypto_aead \*
 
-    :param const u8 \*key:
+    :param key:
         *undescribed*
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         *undescribed*
+    :type keylen: unsigned int
 
 .. _`crypto4xx_aes_gcm_validate_keylen`:
 
@@ -113,8 +133,9 @@ crypto4xx_aes_gcm_validate_keylen
 
     GCM Functions
 
-    :param unsigned int keylen:
+    :param keylen:
         *undescribed*
+    :type keylen: unsigned int
 
 .. _`crypto4xx_hash_alg_init`:
 
@@ -123,17 +144,21 @@ crypto4xx_hash_alg_init
 
 .. c:function:: int crypto4xx_hash_alg_init(struct crypto_tfm *tfm, unsigned int sa_len, unsigned char ha, unsigned char hm)
 
-    :param struct crypto_tfm \*tfm:
+    :param tfm:
         *undescribed*
+    :type tfm: struct crypto_tfm \*
 
-    :param unsigned int sa_len:
+    :param sa_len:
         *undescribed*
+    :type sa_len: unsigned int
 
-    :param unsigned char ha:
+    :param ha:
         *undescribed*
+    :type ha: unsigned char
 
-    :param unsigned char hm:
+    :param hm:
         *undescribed*
+    :type hm: unsigned char
 
 .. _`crypto4xx_sha1_alg_init`:
 
@@ -142,8 +167,9 @@ crypto4xx_sha1_alg_init
 
 .. c:function:: int crypto4xx_sha1_alg_init(struct crypto_tfm *tfm)
 
-    :param struct crypto_tfm \*tfm:
+    :param tfm:
         *undescribed*
+    :type tfm: struct crypto_tfm \*
 
 .. This file was automatic generated / don't edit.
 

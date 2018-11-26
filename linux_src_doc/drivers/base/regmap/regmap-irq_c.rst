@@ -10,23 +10,29 @@ regmap_add_irq_chip
 
     Use standard regmap IRQ controller handling
 
-    :param struct regmap \*map:
+    :param map:
         The regmap for the device.
+    :type map: struct regmap \*
 
-    :param int irq:
+    :param irq:
         The IRQ the device uses to signal interrupts.
+    :type irq: int
 
-    :param int irq_flags:
+    :param irq_flags:
         The IRQF\_ flags to use for the primary interrupt.
+    :type irq_flags: int
 
-    :param int irq_base:
+    :param irq_base:
         Allocate at specific IRQ number if irq_base > 0.
+    :type irq_base: int
 
-    :param const struct regmap_irq_chip \*chip:
+    :param chip:
         Configuration for the interrupt controller.
+    :type chip: const struct regmap_irq_chip \*
 
-    :param struct regmap_irq_chip_data \*\*data:
+    :param data:
         Runtime data structure for the controller, allocated on success.
+    :type data: struct regmap_irq_chip_data \*\*
 
 .. _`regmap_add_irq_chip.description`:
 
@@ -48,11 +54,13 @@ regmap_del_irq_chip
 
     Stop interrupt handling for a regmap IRQ chip
 
-    :param int irq:
+    :param irq:
         Primary IRQ for the device
+    :type irq: int
 
-    :param struct regmap_irq_chip_data \*d:
+    :param d:
         \ :c:type:`struct regmap_irq_chip_data <regmap_irq_chip_data>`\  allocated by \ :c:func:`regmap_add_irq_chip`\ 
+    :type d: struct regmap_irq_chip_data \*
 
 .. _`regmap_del_irq_chip.description`:
 
@@ -70,26 +78,33 @@ devm_regmap_add_irq_chip
 
     Resource manager \ :c:func:`regmap_add_irq_chip`\ 
 
-    :param struct device \*dev:
+    :param dev:
         The device pointer on which irq_chip belongs to.
+    :type dev: struct device \*
 
-    :param struct regmap \*map:
+    :param map:
         The regmap for the device.
+    :type map: struct regmap \*
 
-    :param int irq:
+    :param irq:
         The IRQ the device uses to signal interrupts
+    :type irq: int
 
-    :param int irq_flags:
+    :param irq_flags:
         The IRQF\_ flags to use for the primary interrupt.
+    :type irq_flags: int
 
-    :param int irq_base:
+    :param irq_base:
         Allocate at specific IRQ number if irq_base > 0.
+    :type irq_base: int
 
-    :param const struct regmap_irq_chip \*chip:
+    :param chip:
         Configuration for the interrupt controller.
+    :type chip: const struct regmap_irq_chip \*
 
-    :param struct regmap_irq_chip_data \*\*data:
+    :param data:
         Runtime data structure for the controller, allocated on success
+    :type data: struct regmap_irq_chip_data \*\*
 
 .. _`devm_regmap_add_irq_chip.description`:
 
@@ -110,14 +125,17 @@ devm_regmap_del_irq_chip
 
     Resource managed \ :c:func:`regmap_del_irq_chip`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device for which which resource was allocated.
+    :type dev: struct device \*
 
-    :param int irq:
+    :param irq:
         Primary IRQ for the device.
+    :type irq: int
 
-    :param struct regmap_irq_chip_data \*data:
+    :param data:
         \ :c:type:`struct regmap_irq_chip_data <regmap_irq_chip_data>`\  allocated by \ :c:func:`regmap_add_irq_chip`\ .
+    :type data: struct regmap_irq_chip_data \*
 
 .. _`devm_regmap_del_irq_chip.description`:
 
@@ -135,8 +153,9 @@ regmap_irq_chip_get_base
 
     Retrieve interrupt base for a regmap IRQ chip
 
-    :param struct regmap_irq_chip_data \*data:
+    :param data:
         regmap irq controller to operate on.
+    :type data: struct regmap_irq_chip_data \*
 
 .. _`regmap_irq_chip_get_base.description`:
 
@@ -154,11 +173,13 @@ regmap_irq_get_virq
 
     Map an interrupt on a chip to a virtual IRQ
 
-    :param struct regmap_irq_chip_data \*data:
+    :param data:
         regmap irq controller to operate on.
+    :type data: struct regmap_irq_chip_data \*
 
-    :param int irq:
+    :param irq:
         index of the interrupt requested in the chip IRQs.
+    :type irq: int
 
 .. _`regmap_irq_get_virq.description`:
 
@@ -176,8 +197,9 @@ regmap_irq_get_domain
 
     Retrieve the irq_domain for the chip
 
-    :param struct regmap_irq_chip_data \*data:
+    :param data:
         regmap_irq controller to operate on.
+    :type data: struct regmap_irq_chip_data \*
 
 .. _`regmap_irq_get_domain.description`:
 

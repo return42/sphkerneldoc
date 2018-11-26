@@ -10,11 +10,13 @@ aac_queuecommand
 
     queue a SCSI command
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         *undescribed*
+    :type shost: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command to queue
+    :type cmd: struct scsi_cmnd \*
 
 .. _`aac_queuecommand.description`:
 
@@ -39,8 +41,9 @@ aac_info
 
     Returns the host adapter name
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Scsi host to report on
+    :type shost: struct Scsi_Host \*
 
 .. _`aac_info.description`:
 
@@ -54,10 +57,11 @@ Returns a static string describing the device in question
 aac_get_driver_ident
 ====================
 
-.. c:function:: struct aac_driver_ident*aac_get_driver_ident(int devtype)
+.. c:function:: struct aac_driver_ident* aac_get_driver_ident(int devtype)
 
-    :param int devtype:
+    :param devtype:
         index into lookup table
+    :type devtype: int
 
 .. _`aac_get_driver_ident.description`:
 
@@ -75,17 +79,21 @@ aac_biosparm
 
     return BIOS parameters for disk
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         The scsi device corresponding to the disk
+    :type sdev: struct scsi_device \*
 
-    :param struct block_device \*bdev:
+    :param bdev:
         the block device corresponding to the disk
+    :type bdev: struct block_device \*
 
-    :param sector_t capacity:
+    :param capacity:
         the sector capacity of the disk
+    :type capacity: sector_t
 
-    :param int \*geom:
+    :param geom:
         geometry block to fill in
+    :type geom: int \*
 
 .. _`aac_biosparm.description`:
 
@@ -115,8 +123,9 @@ aac_slave_configure
 
     compute queue depths
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device we are considering
+    :type sdev: struct scsi_device \*
 
 .. _`aac_slave_configure.description`:
 
@@ -136,11 +145,13 @@ aac_change_queue_depth
 
     alter queue depths
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device we are considering
+    :type sdev: struct scsi_device \*
 
-    :param int depth:
+    :param depth:
         desired queue depth
+    :type depth: int
 
 .. _`aac_change_queue_depth.description`:
 
@@ -159,11 +170,13 @@ aac_cfg_open
 
     open a configuration file
 
-    :param struct inode \*inode:
+    :param inode:
         inode being opened
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle attached
+    :type file: struct file \*
 
 .. _`aac_cfg_open.description`:
 
@@ -190,14 +203,17 @@ aac_cfg_ioctl
 
     AAC configuration request
 
-    :param struct file \*file:
+    :param file:
         file handle
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command code
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         argument
+    :type arg: unsigned long
 
 .. _`aac_cfg_ioctl.description`:
 

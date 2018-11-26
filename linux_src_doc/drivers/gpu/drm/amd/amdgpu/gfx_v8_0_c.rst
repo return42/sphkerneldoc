@@ -26,8 +26,9 @@ gfx_v8_0_get_gpu_clock_counter
 
     return GPU clock counter snapshot
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gfx_v8_0_get_gpu_clock_counter.description`:
 

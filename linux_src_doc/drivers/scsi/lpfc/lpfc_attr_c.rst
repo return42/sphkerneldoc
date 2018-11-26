@@ -10,11 +10,13 @@ lpfc_jedec_to_ascii
 
     Hex to ascii convertor according to JEDEC rules
 
-    :param int incr:
+    :param incr:
         integer to convert.
+    :type incr: int
 
-    :param char hdw:
+    :param hdw:
         ascii string holding converted integer plus a string terminator.
+    :type hdw: char
 
 .. _`lpfc_jedec_to_ascii.description`:
 
@@ -43,14 +45,17 @@ lpfc_drvr_version_show
 
     Return the Emulex driver string with version number
 
-    :param struct device \*dev:
+    :param dev:
         class unused variable.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the module description text.
+    :type buf: char \*
 
 .. _`lpfc_drvr_version_show.return`:
 
@@ -68,14 +73,17 @@ lpfc_enable_fip_show
 
     Return the fip mode of the HBA
 
-    :param struct device \*dev:
+    :param dev:
         class unused variable.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the module description text.
+    :type buf: char \*
 
 .. _`lpfc_enable_fip_show.return`:
 
@@ -93,14 +101,17 @@ lpfc_info_show
 
     Return some pci info about the host in ascii
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the formatted text from \ :c:func:`lpfc_info`\ .
+    :type buf: char \*
 
 .. _`lpfc_info_show.return`:
 
@@ -118,14 +129,17 @@ lpfc_serialnum_show
 
     Return the hba serial number in ascii
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the formatted text serial number.
+    :type buf: char \*
 
 .. _`lpfc_serialnum_show.return`:
 
@@ -143,14 +157,17 @@ lpfc_temp_sensor_show
 
     Return the temperature sensor level
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the formatted support level.
+    :type buf: char \*
 
 .. _`lpfc_temp_sensor_show.description`:
 
@@ -176,14 +193,17 @@ lpfc_modeldesc_show
 
     Return the model description of the hba
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the scsi vpd model description.
+    :type buf: char \*
 
 .. _`lpfc_modeldesc_show.return`:
 
@@ -201,14 +221,17 @@ lpfc_modelname_show
 
     Return the model name of the hba
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the scsi vpd model name.
+    :type buf: char \*
 
 .. _`lpfc_modelname_show.return`:
 
@@ -226,14 +249,17 @@ lpfc_programtype_show
 
     Return the program type of the hba
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the scsi vpd program type.
+    :type buf: char \*
 
 .. _`lpfc_programtype_show.return`:
 
@@ -251,14 +277,17 @@ lpfc_mlomgmt_show
 
     Return the Menlo Maintenance sli flag
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the Menlo Maintenance sli flag.
+    :type buf: char \*
 
 .. _`lpfc_mlomgmt_show.return`:
 
@@ -276,14 +305,17 @@ lpfc_vportnum_show
 
     Return the port number in ascii of the hba
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains scsi vpd program type.
+    :type buf: char \*
 
 .. _`lpfc_vportnum_show.return`:
 
@@ -301,14 +333,17 @@ lpfc_fwrev_show
 
     Return the firmware rev running in the hba
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the scsi vpd program type.
+    :type buf: char \*
 
 .. _`lpfc_fwrev_show.return`:
 
@@ -326,14 +361,17 @@ lpfc_hdw_show
 
     Return the jedec information about the hba
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the scsi vpd program type.
+    :type buf: char \*
 
 .. _`lpfc_hdw_show.return`:
 
@@ -351,14 +389,17 @@ lpfc_option_rom_version_show
 
     Return the adapter ROM FCode version
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the ROM and FCode ascii strings.
+    :type buf: char \*
 
 .. _`lpfc_option_rom_version_show.return`:
 
@@ -376,14 +417,17 @@ lpfc_link_state_show
 
     Return the link state of the port
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains text describing the state of the link.
+    :type buf: char \*
 
 .. _`lpfc_link_state_show.notes`:
 
@@ -408,14 +452,17 @@ lpfc_sli4_protocol_show
 
     Return the fip mode of the HBA
 
-    :param struct device \*dev:
+    :param dev:
         class unused variable.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the module description text.
+    :type buf: char \*
 
 .. _`lpfc_sli4_protocol_show.return`:
 
@@ -433,14 +480,17 @@ lpfc_oas_supported_show
 
     Return whether or not Optimized Access Storage (OAS) is supported.
 
-    :param struct device \*dev:
+    :param dev:
         class unused variable.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the module description text.
+    :type buf: char \*
 
 .. _`lpfc_oas_supported_show.return`:
 
@@ -458,17 +508,21 @@ lpfc_link_state_store
 
     Transition the link_state on an HBA port
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         one or more lpfc_polling_flags values.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         not used.
+    :type count: size_t
 
 .. _`lpfc_link_state_store.return`:
 
@@ -488,14 +542,17 @@ lpfc_num_discovered_ports_show
 
     Return sum of mapped and unmapped vports
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the sum of fc mapped and unmapped.
+    :type buf: char \*
 
 .. _`lpfc_num_discovered_ports_show.description`:
 
@@ -521,8 +578,9 @@ lpfc_issue_lip
 
     Misnomer, name carried over from long ago
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Scsi_Host pointer.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_issue_lip.description`:
 
@@ -551,11 +609,13 @@ lpfc_do_offline
 
     Issues a mailbox command to bring the link down
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t type:
+    :param type:
         LPFC_EVT_OFFLINE, LPFC_EVT_WARM_START, LPFC_EVT_KILL.
+    :type type: uint32_t
 
 .. _`lpfc_do_offline.notes`:
 
@@ -584,8 +644,9 @@ lpfc_selective_reset
 
     Offline then onlines the port
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_selective_reset.description`:
 
@@ -621,17 +682,21 @@ lpfc_issue_reset
 
     Selectively resets an adapter
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         containing the string "selective".
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         unused variable.
+    :type count: size_t
 
 .. _`lpfc_issue_reset.description`:
 
@@ -668,8 +733,9 @@ lpfc_sli4_pdev_status_reg_wait
 
     Wait for pdev status register for readyness
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_pdev_status_reg_wait.description`:
 
@@ -704,11 +770,13 @@ lpfc_sli4_pdev_reg_request
 
     Request physical dev to perform a register acc
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t opcode:
+    :param opcode:
         *undescribed*
+    :type opcode: uint32_t
 
 .. _`lpfc_sli4_pdev_reg_request.description`:
 
@@ -734,14 +802,17 @@ lpfc_nport_evt_cnt_show
 
     Return the number of nport events
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the ascii number of nport events.
+    :type buf: char \*
 
 .. _`lpfc_nport_evt_cnt_show.return`:
 
@@ -759,14 +830,17 @@ lpfc_board_mode_show
 
     Return the state of the board
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the state of the adapter.
+    :type buf: char \*
 
 .. _`lpfc_board_mode_show.return`:
 
@@ -784,17 +858,21 @@ lpfc_board_mode_store
 
     Puts the hba in online, offline, warm or error state
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         containing one of the strings "online", "offline", "warm" or "error".
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         unused variable.
+    :type count: size_t
 
 .. _`lpfc_board_mode_store.return`:
 
@@ -815,26 +893,33 @@ lpfc_get_hba_info
 
     Return various bits of informaton about the adapter
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to the adapter structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t \*mxri:
+    :param mxri:
         max xri count.
+    :type mxri: uint32_t \*
 
-    :param uint32_t \*axri:
+    :param axri:
         available xri count.
+    :type axri: uint32_t \*
 
-    :param uint32_t \*mrpi:
+    :param mrpi:
         max rpi count.
+    :type mrpi: uint32_t \*
 
-    :param uint32_t \*arpi:
+    :param arpi:
         available rpi count.
+    :type arpi: uint32_t \*
 
-    :param uint32_t \*mvpi:
+    :param mvpi:
         max vpi count.
+    :type mvpi: uint32_t \*
 
-    :param uint32_t \*avpi:
+    :param avpi:
         available vpi count.
+    :type avpi: uint32_t \*
 
 .. _`lpfc_get_hba_info.description`:
 
@@ -861,14 +946,17 @@ lpfc_max_rpi_show
 
     Return maximum rpi
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the maximum rpi count in decimal or "Unknown".
+    :type buf: char \*
 
 .. _`lpfc_max_rpi_show.description`:
 
@@ -896,14 +984,17 @@ lpfc_used_rpi_show
 
     Return maximum rpi minus available rpi
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         containing the used rpi count in decimal or "Unknown".
+    :type buf: char \*
 
 .. _`lpfc_used_rpi_show.description`:
 
@@ -931,14 +1022,17 @@ lpfc_max_xri_show
 
     Return maximum xri
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the maximum xri count in decimal or "Unknown".
+    :type buf: char \*
 
 .. _`lpfc_max_xri_show.description`:
 
@@ -966,14 +1060,17 @@ lpfc_used_xri_show
 
     Return maximum xpi minus the available xpi
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the used xri count in decimal or "Unknown".
+    :type buf: char \*
 
 .. _`lpfc_used_xri_show.description`:
 
@@ -1001,14 +1098,17 @@ lpfc_max_vpi_show
 
     Return maximum vpi
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the maximum vpi count in decimal or "Unknown".
+    :type buf: char \*
 
 .. _`lpfc_max_vpi_show.description`:
 
@@ -1036,14 +1136,17 @@ lpfc_used_vpi_show
 
     Return maximum vpi minus the available vpi
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the used vpi count in decimal or "Unknown".
+    :type buf: char \*
 
 .. _`lpfc_used_vpi_show.description`:
 
@@ -1071,14 +1174,17 @@ lpfc_npiv_info_show
 
     Return text about NPIV support for the adapter
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         text that must be interpreted to determine if npiv is supported.
+    :type buf: char \*
 
 .. _`lpfc_npiv_info_show.description`:
 
@@ -1105,14 +1211,17 @@ lpfc_poll_show
 
     Return text about poll support for the adapter
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the cfg_poll in hex.
+    :type buf: char \*
 
 .. _`lpfc_poll_show.notes`:
 
@@ -1137,17 +1246,21 @@ lpfc_poll_store
 
     Set the value of cfg_poll for the adapter
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         one or more lpfc_polling_flags values.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         not used.
+    :type count: size_t
 
 .. _`lpfc_poll_store.notes`:
 
@@ -1173,14 +1286,17 @@ lpfc_fips_level_show
 
     Return the current FIPS level for the HBA
 
-    :param struct device \*dev:
+    :param dev:
         class unused variable.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the module description text.
+    :type buf: char \*
 
 .. _`lpfc_fips_level_show.return`:
 
@@ -1198,14 +1314,17 @@ lpfc_fips_rev_show
 
     Return the FIPS Spec revision for the HBA
 
-    :param struct device \*dev:
+    :param dev:
         class unused variable.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the module description text.
+    :type buf: char \*
 
 .. _`lpfc_fips_rev_show.return`:
 
@@ -1223,14 +1342,17 @@ lpfc_dss_show
 
     Return the current state of dss and the configured state
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the formatted text.
+    :type buf: char \*
 
 .. _`lpfc_dss_show.return`:
 
@@ -1248,14 +1370,17 @@ lpfc_sriov_hw_max_virtfn_show
 
     Return maximum number of virtual functions
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the formatted support level.
+    :type buf: char \*
 
 .. _`lpfc_sriov_hw_max_virtfn_show.description`:
 
@@ -1281,11 +1406,13 @@ lpfc_enable_bbcr_set
 
     Sets an attribute value.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer the the adapter structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint val:
+    :param val:
         integer attribute value.
+    :type val: uint
 
 .. _`lpfc_enable_bbcr_set.description`:
 
@@ -1313,8 +1440,9 @@ lpfc_param_show
 
     Return a cfg attribute value in decimal
 
-    :param  attr:
+    :param attr:
         device attribute, not used.
+    :type attr: 
 
 .. _`lpfc_param_show.description`:
 
@@ -1342,8 +1470,9 @@ lpfc_param_hex_show
 
     Return a cfg attribute value in hex
 
-    :param  attr:
+    :param attr:
         device attribute, not used.
+    :type attr: 
 
 .. _`lpfc_param_hex_show.description`:
 
@@ -1371,17 +1500,21 @@ lpfc_param_init
 
     Initializes a cfg attribute
 
-    :param  attr:
+    :param attr:
         *undescribed*
+    :type attr: 
 
-    :param  default:
+    :param default:
         *undescribed*
+    :type default: 
 
-    :param  minval:
+    :param minval:
         *undescribed*
+    :type minval: 
 
-    :param  maxval:
+    :param maxval:
         *undescribed*
+    :type maxval: 
 
 .. _`lpfc_param_init.description`:
 
@@ -1414,17 +1547,21 @@ lpfc_param_set
 
     Set a cfg attribute value
 
-    :param  attr:
+    :param attr:
         *undescribed*
+    :type attr: 
 
-    :param  default:
+    :param default:
         *undescribed*
+    :type default: 
 
-    :param  minval:
+    :param minval:
         *undescribed*
+    :type minval: 
 
-    :param  maxval:
+    :param maxval:
         *undescribed*
+    :type maxval: 
 
 .. _`lpfc_param_set.description`:
 
@@ -1457,8 +1594,9 @@ lpfc_param_store
 
     Set a vport attribute value
 
-    :param  attr:
+    :param attr:
         device attribute, not used.
+    :type attr: 
 
 .. _`lpfc_param_store.description`:
 
@@ -1490,8 +1628,9 @@ lpfc_vport_param_show
 
     Return decimal formatted cfg attribute value
 
-    :param  attr:
+    :param attr:
         device attribute, not used.
+    :type attr: 
 
 .. _`lpfc_vport_param_show.description`:
 
@@ -1519,8 +1658,9 @@ lpfc_vport_param_hex_show
 
     Return hex formatted attribute value
 
-    :param  attr:
+    :param attr:
         device attribute, not used.
+    :type attr: 
 
 .. _`lpfc_vport_param_hex_show.description`:
 
@@ -1549,17 +1689,21 @@ lpfc_vport_param_init
 
     Initialize a vport cfg attribute
 
-    :param  attr:
+    :param attr:
         *undescribed*
+    :type attr: 
 
-    :param  default:
+    :param default:
         *undescribed*
+    :type default: 
 
-    :param  minval:
+    :param minval:
         *undescribed*
+    :type minval: 
 
-    :param  maxval:
+    :param maxval:
         *undescribed*
+    :type maxval: 
 
 .. _`lpfc_vport_param_init.description`:
 
@@ -1591,17 +1735,21 @@ lpfc_vport_param_set
 
     Set a vport cfg attribute
 
-    :param  attr:
+    :param attr:
         *undescribed*
+    :type attr: 
 
-    :param  default:
+    :param default:
         *undescribed*
+    :type default: 
 
-    :param  minval:
+    :param minval:
         *undescribed*
+    :type minval: 
 
-    :param  maxval:
+    :param maxval:
         *undescribed*
+    :type maxval: 
 
 .. _`lpfc_vport_param_set.description`:
 
@@ -1632,8 +1780,9 @@ lpfc_vport_param_store
 
     Set a vport attribute
 
-    :param  attr:
+    :param attr:
         *undescribed*
+    :type attr: 
 
 .. _`lpfc_vport_param_store.description`:
 
@@ -1663,14 +1812,17 @@ lpfc_wwn_set
 
     Convert string to the 8 byte WWN value.
 
-    :param const char \*buf:
+    :param buf:
         WWN string.
+    :type buf: const char \*
 
-    :param size_t cnt:
+    :param cnt:
         Length of string.
+    :type cnt: size_t
 
-    :param char wwn:
+    :param wwn:
         Array to receive converted wwn value.
+    :type wwn: char
 
 .. _`lpfc_wwn_set.return`:
 
@@ -1689,17 +1841,21 @@ lpfc_soft_wwn_enable_store
 
     Allows setting of the wwn if the key is valid
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         containing the string lpfc_soft_wwn_key.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         must be size of lpfc_soft_wwn_key.
+    :type count: size_t
 
 .. _`lpfc_soft_wwn_enable_store.return`:
 
@@ -1718,14 +1874,17 @@ lpfc_soft_wwpn_show
 
     Return the cfg soft ww port name of the adapter
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the wwpn in hexadecimal.
+    :type buf: char \*
 
 .. _`lpfc_soft_wwpn_show.return`:
 
@@ -1743,17 +1902,21 @@ lpfc_soft_wwpn_store
 
     Set the ww port name of the adapter \ ``dev``\  class device that is converted into a Scsi_host.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         contains the wwpn in hexadecimal.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         number of wwpn bytes in buf
+    :type count: size_t
 
 .. _`lpfc_soft_wwpn_store.return`:
 
@@ -1774,14 +1937,17 @@ lpfc_soft_wwnn_show
 
     Return the cfg soft ww node name for the adapter
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the wwnn in hexadecimal.
+    :type buf: char \*
 
 .. _`lpfc_soft_wwnn_show.return`:
 
@@ -1799,17 +1965,21 @@ lpfc_soft_wwnn_store
 
     sets the ww node name of the adapter
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         contains the ww node name in hexadecimal.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         number of wwnn bytes in buf.
+    :type count: size_t
 
 .. _`lpfc_soft_wwnn_store.return`:
 
@@ -1828,14 +1998,17 @@ lpfc_oas_tgt_show
 
     Return wwpn of target whose luns maybe enabled for Optimized Access Storage (OAS) operations.
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: char \*
 
 .. _`lpfc_oas_tgt_show.return`:
 
@@ -1853,17 +2026,21 @@ lpfc_oas_tgt_store
 
     Store wwpn of target whose luns maybe enabled for Optimized Access Storage (OAS) operations.
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         Size of the data buffer.
+    :type count: size_t
 
 .. _`lpfc_oas_tgt_store.return`:
 
@@ -1883,14 +2060,17 @@ lpfc_oas_priority_show
 
     Return wwpn of target whose luns maybe enabled for Optimized Access Storage (OAS) operations.
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: char \*
 
 .. _`lpfc_oas_priority_show.return`:
 
@@ -1908,17 +2088,21 @@ lpfc_oas_priority_store
 
     Store wwpn of target whose luns maybe enabled for Optimized Access Storage (OAS) operations.
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         Size of the data buffer.
+    :type count: size_t
 
 .. _`lpfc_oas_priority_store.return`:
 
@@ -1938,14 +2122,17 @@ lpfc_oas_vpt_show
 
     Return wwpn of vport whose targets maybe enabled for Optimized Access Storage (OAS) operations.
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: char \*
 
 .. _`lpfc_oas_vpt_show.return`:
 
@@ -1963,17 +2150,21 @@ lpfc_oas_vpt_store
 
     Store wwpn of vport whose targets maybe enabled for Optimized Access Storage (OAS) operations.
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         Size of the data buffer.
+    :type count: size_t
 
 .. _`lpfc_oas_vpt_store.return`:
 
@@ -1993,14 +2184,17 @@ lpfc_oas_lun_state_show
 
     Return the current state (enabled or disabled) of whether luns will be enabled or disabled for Optimized Access Storage (OAS) operations.
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: char \*
 
 .. _`lpfc_oas_lun_state_show.return`:
 
@@ -2018,17 +2212,21 @@ lpfc_oas_lun_state_store
 
     Store the state (enabled or disabled) of whether luns will be enabled or disabled for Optimized Access Storage (OAS) operations.
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         Size of the data buffer.
+    :type count: size_t
 
 .. _`lpfc_oas_lun_state_store.return`:
 
@@ -2048,14 +2246,17 @@ lpfc_oas_lun_status_show
 
     Return the status of the Optimized Access Storage (OAS) lun returned by the lpfc_oas_lun_show function.
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: char \*
 
 .. _`lpfc_oas_lun_status_show.return`:
 
@@ -2073,23 +2274,29 @@ lpfc_oas_lun_state_set
 
     enable or disable a lun for Optimized Access Storage (OAS) operations.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t vpt_wwpn:
+    :param vpt_wwpn:
         *undescribed*
+    :type vpt_wwpn: uint8_t
 
-    :param uint8_t tgt_wwpn:
+    :param tgt_wwpn:
         *undescribed*
+    :type tgt_wwpn: uint8_t
 
-    :param uint64_t lun:
+    :param lun:
         the fc lun for setting oas state.
+    :type lun: uint64_t
 
-    :param uint32_t oas_state:
+    :param oas_state:
         the oas state to be set to the lun.
+    :type oas_state: uint32_t
 
-    :param uint8_t pri:
+    :param pri:
         *undescribed*
+    :type pri: uint8_t
 
 .. _`lpfc_oas_lun_state_set.return`:
 
@@ -2108,20 +2315,25 @@ lpfc_oas_lun_get_next
 
     get the next lun that has been enabled for Optimized Access Storage (OAS) operations.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t vpt_wwpn:
+    :param vpt_wwpn:
         wwpn of the vport associated with the returned lun
+    :type vpt_wwpn: uint8_t
 
-    :param uint8_t tgt_wwpn:
+    :param tgt_wwpn:
         wwpn of the target associated with the returned lun
+    :type tgt_wwpn: uint8_t
 
-    :param uint32_t \*lun_status:
+    :param lun_status:
         status of the lun returned lun
+    :type lun_status: uint32_t \*
 
-    :param uint32_t \*lun_pri:
+    :param lun_pri:
         *undescribed*
+    :type lun_pri: uint32_t \*
 
 .. _`lpfc_oas_lun_get_next.description`:
 
@@ -2149,23 +2361,29 @@ lpfc_oas_lun_state_change
 
     enable/disable a lun for OAS operations
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t vpt_wwpn:
+    :param vpt_wwpn:
         vport wwpn by reference.
+    :type vpt_wwpn: uint8_t
 
-    :param uint8_t tgt_wwpn:
+    :param tgt_wwpn:
         target wwpn by reference.
+    :type tgt_wwpn: uint8_t
 
-    :param uint64_t lun:
+    :param lun:
         the fc lun for setting oas state.
+    :type lun: uint64_t
 
-    :param uint32_t oas_state:
+    :param oas_state:
         the oas state to be set to the oas_lun.
+    :type oas_state: uint32_t
 
-    :param uint8_t pri:
+    :param pri:
         *undescribed*
+    :type pri: uint8_t
 
 .. _`lpfc_oas_lun_state_change.description`:
 
@@ -2193,14 +2411,17 @@ lpfc_oas_lun_show
 
     Return oas enabled luns from a chosen target
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: char \*
 
 .. _`lpfc_oas_lun_show.description`:
 
@@ -2228,17 +2449,21 @@ lpfc_oas_lun_store
 
     Sets the OAS state for lun
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer for passing information.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`lpfc_oas_lun_store.description`:
 
@@ -2267,14 +2492,17 @@ lpfc_nodev_tmo_show
 
     Return the hba dev loss timeout value
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains the dev loss timeout in decimal.
+    :type buf: char \*
 
 .. _`lpfc_nodev_tmo_show.return`:
 
@@ -2292,11 +2520,13 @@ lpfc_nodev_tmo_init
 
     Set the hba nodev timeout value
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         lpfc vport structure pointer.
+    :type vport: struct lpfc_vport \*
 
-    :param int val:
+    :param val:
         contains the nodev timeout value.
+    :type val: int
 
 .. _`lpfc_nodev_tmo_init.description`:
 
@@ -2325,8 +2555,9 @@ lpfc_update_rport_devloss_tmo
 
     Update dev loss tmo value
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         lpfc vport structure pointer.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_update_rport_devloss_tmo.description`:
 
@@ -2344,11 +2575,13 @@ lpfc_nodev_tmo_set
 
     Set the vport nodev tmo and devloss tmo values
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         lpfc vport structure pointer.
+    :type vport: struct lpfc_vport \*
 
-    :param int val:
+    :param val:
         contains the tmo value.
+    :type val: int
 
 .. _`lpfc_nodev_tmo_set.description`:
 
@@ -2377,11 +2610,13 @@ lpfc_devloss_tmo_set
 
     Sets vport nodev tmo, devloss tmo values, changed bit
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         lpfc vport structure pointer.
+    :type vport: struct lpfc_vport \*
 
-    :param int val:
+    :param val:
         contains the tmo value.
+    :type val: int
 
 .. _`lpfc_devloss_tmo_set.description`:
 
@@ -2409,11 +2644,13 @@ lpfc_tgt_queue_depth_set
 
     Sets an attribute value.
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         *undescribed*
+    :type vport: struct lpfc_vport \*
 
-    :param uint val:
+    :param val:
         integer attribute value.
+    :type val: uint
 
 .. _`lpfc_tgt_queue_depth_set.description`:
 
@@ -2439,11 +2676,13 @@ lpfc_restrict_login_init
 
     Set the vport restrict login flag
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         lpfc vport structure pointer.
+    :type vport: struct lpfc_vport \*
 
-    :param int val:
+    :param val:
         contains the restrict login value.
+    :type val: int
 
 .. _`lpfc_restrict_login_init.description`:
 
@@ -2472,11 +2711,13 @@ lpfc_restrict_login_set
 
     Set the vport restrict login flag
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         lpfc vport structure pointer.
+    :type vport: struct lpfc_vport \*
 
-    :param int val:
+    :param val:
         contains the restrict login value.
+    :type val: int
 
 .. _`lpfc_restrict_login_set.description`:
 
@@ -2506,17 +2747,21 @@ lpfc_topology_store
 
     Set the adapters topology field
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`lpfc_topology_store.description`:
 
@@ -2546,14 +2791,17 @@ lpfc_static_vport_show
 
     Read callback function for lpfc_static_vport sysfs file.
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to class device object.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute structure.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Data buffer.
+    :type buf: char \*
 
 .. _`lpfc_static_vport_show.description`:
 
@@ -2573,17 +2821,21 @@ lpfc_stat_data_ctrl_store
 
     write call back for lpfc_stat_data_ctrl sysfs file
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to class device.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         Data buffer.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         Size of the data buffer.
+    :type count: size_t
 
 .. _`lpfc_stat_data_ctrl_store.description`:
 
@@ -2612,14 +2864,17 @@ lpfc_stat_data_ctrl_show
 
     Read function for lpfc_stat_data_ctrl sysfs file
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to class device object.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         Data buffer.
+    :type buf: char \*
 
 .. _`lpfc_stat_data_ctrl_show.description`:
 
@@ -2639,23 +2894,29 @@ sysfs_drvr_stat_data_read
 
     Read function for lpfc_drvr_stat_data attribute
 
-    :param struct file \*filp:
+    :param filp:
         sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         Pointer to the kernel object
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         Attribute object
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         File offset
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         Buffer size
+    :type count: size_t
 
 .. _`sysfs_drvr_stat_data_read.description`:
 
@@ -2675,17 +2936,21 @@ lpfc_link_speed_store
 
     Set the adapters link speed
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`lpfc_link_speed_store.description`:
 
@@ -2720,11 +2985,13 @@ lpfc_link_speed_init
 
     Set the adapters link speed
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
-    :param int val:
+    :param val:
         link speed value.
+    :type val: int
 
 .. _`lpfc_link_speed_init.description`:
 
@@ -2758,17 +3025,21 @@ lpfc_aer_support_store
 
     Set the adapter for aer support
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         containing enable or disable aer flag.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         unused variable.
+    :type count: size_t
 
 .. _`lpfc_aer_support_store.description`:
 
@@ -2806,17 +3077,21 @@ lpfc_aer_cleanup_state
 
     Clean up aer state to the aer enabled device
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         containing flag 1 for aer cleanup state.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         unused variable.
+    :type count: size_t
 
 .. _`lpfc_aer_cleanup_state.description`:
 
@@ -2846,17 +3121,21 @@ lpfc_sriov_nr_virtfn_store
 
     Enable the adapter for sr-iov virtual functions
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         containing the string the number of vfs to be enabled.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         unused variable.
+    :type count: size_t
 
 .. _`lpfc_sriov_nr_virtfn_store.description`:
 
@@ -2911,17 +3190,21 @@ lpfc_request_firmware_upgrade_store
 
     Request for Linux generic firmware upgrade
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         containing the string the number of vfs to be enabled.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         unused variable.
+    :type count: size_t
 
 .. _`lpfc_request_firmware_upgrade_store.return`:
 
@@ -2942,11 +3225,13 @@ lpfc_request_firmware_upgrade_init
 
     Enable initial linux generic fw upgrade
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
-    :param int val:
+    :param val:
         0 or 1.
+    :type val: int
 
 .. _`lpfc_request_firmware_upgrade_init.description`:
 
@@ -2970,17 +3255,21 @@ lpfc_fcp_imax_store
 
 .. c:function:: ssize_t lpfc_fcp_imax_store(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         string with the number of fast-path FCP interrupts per second.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         unused variable.
+    :type count: size_t
 
 .. _`lpfc_fcp_imax_store.description`:
 
@@ -3008,11 +3297,13 @@ lpfc_fcp_imax_init
 
     Set the initial sr-iov virtual function enable
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
-    :param int val:
+    :param val:
         link speed value.
+    :type val: int
 
 .. _`lpfc_fcp_imax_init.description`:
 
@@ -3039,14 +3330,17 @@ lpfc_fcp_cpu_map_show
 
     Display current driver CPU affinity
 
-    :param struct device \*dev:
+    :param dev:
         class converted to a Scsi_host structure.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         on return contains text describing the state of the link.
+    :type buf: char \*
 
 .. _`lpfc_fcp_cpu_map_show.return`:
 
@@ -3064,17 +3358,21 @@ lpfc_fcp_cpu_map_store
 
     Change CPU affinity of driver vectors
 
-    :param struct device \*dev:
+    :param dev:
         class device that is converted into a Scsi_host.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute, not used.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         one or more lpfc_polling_flags values.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         not used.
+    :type count: size_t
 
 .. _`lpfc_fcp_cpu_map_store.return`:
 
@@ -3092,11 +3390,13 @@ lpfc_fcp_cpu_map_init
 
     Set the initial sr-iov virtual function enable
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
-    :param int val:
+    :param val:
         link speed value.
+    :type val: int
 
 .. _`lpfc_fcp_cpu_map_init.description`:
 
@@ -3114,6 +3414,68 @@ Return
 zero if val saved.
 -EINVAL val out of range
 
+.. _`lpfc_sg_seg_cnt_show`:
+
+lpfc_sg_seg_cnt_show
+====================
+
+.. c:function:: ssize_t lpfc_sg_seg_cnt_show(struct device *dev, struct device_attribute *attr, char *buf)
+
+    Display the scatter/gather list sizes configured for the adapter
+
+    :param dev:
+        class converted to a Scsi_host structure.
+    :type dev: struct device \*
+
+    :param attr:
+        device attribute, not used.
+    :type attr: struct device_attribute \*
+
+    :param buf:
+        on return contains a string with the list sizes
+    :type buf: char \*
+
+.. _`lpfc_sg_seg_cnt_show.return`:
+
+Return
+------
+
+size of formatted string.
+
+.. _`lpfc_sg_seg_cnt_init`:
+
+lpfc_sg_seg_cnt_init
+====================
+
+.. c:function:: int lpfc_sg_seg_cnt_init(struct lpfc_hba *phba, int val)
+
+    Set the hba sg_seg_cnt initial value
+
+    :param phba:
+        lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
+
+    :param val:
+        contains the initial value
+    :type val: int
+
+.. _`lpfc_sg_seg_cnt_init.description`:
+
+Description
+-----------
+
+Validates the initial value is within range and assigns it to the
+adapter. If not in range, an error message is posted and the
+default value is assigned.
+
+.. _`lpfc_sg_seg_cnt_init.return`:
+
+Return
+------
+
+zero if value is in range and is set
+-EINVAL if value was out of range
+
 .. _`sysfs_ctlreg_write`:
 
 sysfs_ctlreg_write
@@ -3123,23 +3485,29 @@ sysfs_ctlreg_write
 
     Write method for writing to ctlreg
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kernel kobject that contains the kernel class device.
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         kernel attributes passed to us.
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         contains the data to be written to the adapter IOREG space.
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         offset into buffer to beginning of data.
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         bytes to transfer.
+    :type count: size_t
 
 .. _`sysfs_ctlreg_write.description`:
 
@@ -3168,23 +3536,29 @@ sysfs_ctlreg_read
 
     Read method for reading from ctlreg
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kernel kobject that contains the kernel class device.
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         kernel attributes passed to us.
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         if successful contains the data from the adapter IOREG space.
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         offset into buffer to beginning of data.
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         bytes to transfer.
+    :type count: size_t
 
 .. _`sysfs_ctlreg_read.description`:
 
@@ -3212,23 +3586,29 @@ sysfs_mbox_write
 
     Write method for writing information via mbox
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kernel kobject that contains the kernel class device.
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         kernel attributes passed to us.
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         contains the data to be written to sysfs mbox.
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         offset into buffer to beginning of data.
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         bytes to transfer.
+    :type count: size_t
 
 .. _`sysfs_mbox_write.description`:
 
@@ -3254,23 +3634,29 @@ sysfs_mbox_read
 
     Read method for reading information via mbox
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kernel kobject that contains the kernel class device.
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         kernel attributes passed to us.
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         contains the data to be read from sysfs mbox.
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         offset into buffer to beginning of data.
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         bytes to transfer.
+    :type count: size_t
 
 .. _`sysfs_mbox_read.description`:
 
@@ -3296,8 +3682,9 @@ lpfc_alloc_sysfs_attr
 
     Creates the ctlreg and mbox entries
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         address of lpfc vport structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_alloc_sysfs_attr.return-codes`:
 
@@ -3316,8 +3703,9 @@ lpfc_free_sysfs_attr
 
     Removes the ctlreg and mbox entries
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         address of lpfc vport structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_get_host_symbolic_name`:
 
@@ -3328,8 +3716,9 @@ lpfc_get_host_symbolic_name
 
     Copy symbolic name into the scsi host
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         kernel scsi host pointer.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_get_host_port_id`:
 
@@ -3340,8 +3729,9 @@ lpfc_get_host_port_id
 
     Copy the vport DID into the scsi host port id
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         kernel scsi host pointer.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_get_host_port_type`:
 
@@ -3352,8 +3742,9 @@ lpfc_get_host_port_type
 
     Set the value of the scsi host port type
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         kernel scsi host pointer.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_get_host_port_state`:
 
@@ -3364,8 +3755,9 @@ lpfc_get_host_port_state
 
     Set the value of the scsi host port state
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         kernel scsi host pointer.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_get_host_speed`:
 
@@ -3376,8 +3768,9 @@ lpfc_get_host_speed
 
     Set the value of the scsi host speed
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         kernel scsi host pointer.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_get_host_fabric_name`:
 
@@ -3388,8 +3781,9 @@ lpfc_get_host_fabric_name
 
     Set the value of the scsi host fabric name
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         kernel scsi host pointer.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_get_stats`:
 
@@ -3400,8 +3794,9 @@ lpfc_get_stats
 
     Return statistical information about the adapter
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         kernel scsi host pointer.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_get_stats.notes`:
 
@@ -3428,8 +3823,9 @@ lpfc_reset_stats
 
     Copy the adapter link stats information
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         kernel scsi host pointer.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_get_node_by_target`:
 
@@ -3440,8 +3836,9 @@ lpfc_get_node_by_target
 
     Return the nodelist for a target
 
-    :param struct scsi_target \*starget:
+    :param starget:
         kernel scsi target pointer.
+    :type starget: struct scsi_target \*
 
 .. _`lpfc_get_node_by_target.return`:
 
@@ -3460,8 +3857,9 @@ lpfc_get_starget_port_id
 
     Set the target port id to the ndlp DID or -1
 
-    :param struct scsi_target \*starget:
+    :param starget:
         kernel scsi target pointer.
+    :type starget: struct scsi_target \*
 
 .. _`lpfc_get_starget_node_name`:
 
@@ -3472,8 +3870,9 @@ lpfc_get_starget_node_name
 
     Set the target node name
 
-    :param struct scsi_target \*starget:
+    :param starget:
         kernel scsi target pointer.
+    :type starget: struct scsi_target \*
 
 .. _`lpfc_get_starget_node_name.description`:
 
@@ -3491,8 +3890,9 @@ lpfc_get_starget_port_name
 
     Set the target port name
 
-    :param struct scsi_target \*starget:
+    :param starget:
         kernel scsi target pointer.
+    :type starget: struct scsi_target \*
 
 .. _`lpfc_get_starget_port_name.description`:
 
@@ -3510,11 +3910,13 @@ lpfc_set_rport_loss_tmo
 
     Set the rport dev loss tmo
 
-    :param struct fc_rport \*rport:
+    :param rport:
         fc rport address.
+    :type rport: struct fc_rport \*
 
-    :param uint32_t timeout:
+    :param timeout:
         new value for dev loss tmo.
+    :type timeout: uint32_t
 
 .. _`lpfc_set_rport_loss_tmo.description`:
 
@@ -3533,17 +3935,21 @@ lpfc_rport_show_function
 
     Return rport target information
 
-    :param  field:
+    :param field:
         *undescribed*
+    :type field: 
 
-    :param  format_string:
+    :param format_string:
         *undescribed*
+    :type format_string: 
 
-    :param  sz:
+    :param sz:
         *undescribed*
+    :type sz: 
 
-    :param  cast:
+    :param cast:
         *undescribed*
+    :type cast: 
 
 .. _`lpfc_rport_show_function.description`:
 
@@ -3570,8 +3976,9 @@ lpfc_set_vport_symbolic_name
 
     Set the vport's symbolic name
 
-    :param struct fc_vport \*fc_vport:
+    :param fc_vport:
         The fc_vport who's symbolic name has been changed.
+    :type fc_vport: struct fc_vport \*
 
 .. _`lpfc_set_vport_symbolic_name.description`:
 
@@ -3591,11 +3998,13 @@ lpfc_hba_log_verbose_init
 
     Set hba's log verbose level
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to lpfc_hba struct.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t verbose:
+    :param verbose:
         *undescribed*
+    :type verbose: uint32_t
 
 .. _`lpfc_hba_log_verbose_init.description`:
 
@@ -3616,8 +4025,9 @@ lpfc_get_cfgparam
 
     Used during probe_one to init the adapter structure
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_nvme_mod_param_dep`:
 
@@ -3628,8 +4038,9 @@ lpfc_nvme_mod_param_dep
 
     Adjust module parameter value based on dependencies between protocols and roles.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         lpfc_hba pointer.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_get_vport_cfgparam`:
 
@@ -3640,8 +4051,9 @@ lpfc_get_vport_cfgparam
 
     Used during port create, init the vport structure
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         lpfc_vport pointer.
+    :type vport: struct lpfc_vport \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ ishtp_hbm_fw_cl_allocate
 
     Allocate FW clients
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_hbm_fw_cl_allocate.description`:
 
@@ -29,17 +30,21 @@ ishtp_hbm_cl_hdr
 
     construct client hbm header
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client
+    :type cl: struct ishtp_cl \*
 
-    :param uint8_t hbm_cmd:
+    :param hbm_cmd:
         host bus message command
+    :type hbm_cmd: uint8_t
 
-    :param void \*buf:
+    :param buf:
         buffer for cl header
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         buffer length
+    :type len: size_t
 
 .. _`ishtp_hbm_cl_hdr.description`:
 
@@ -57,11 +62,13 @@ ishtp_hbm_cl_addr_equal
 
     Compare client address
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client
+    :type cl: struct ishtp_cl \*
 
-    :param void \*buf:
+    :param buf:
         Client command buffer
+    :type buf: void \*
 
 .. _`ishtp_hbm_cl_addr_equal.description`:
 
@@ -86,8 +93,9 @@ ishtp_hbm_start_wait
 
     Wait for HBM start message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_hbm_start_wait.description`:
 
@@ -112,8 +120,9 @@ ishtp_hbm_start_req
 
     Send HBM start message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_hbm_start_req.description`:
 
@@ -138,8 +147,9 @@ ishtp_hbm_enum_clients_req
 
     Send client enum req
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_hbm_enum_clients_req.description`:
 
@@ -164,8 +174,9 @@ ishtp_hbm_prop_req
 
     Request property
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_hbm_prop_req.description`:
 
@@ -190,8 +201,9 @@ ishtp_hbm_stop_req
 
     Send HBM stop
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_hbm_stop_req.description`:
 
@@ -209,11 +221,13 @@ ishtp_hbm_cl_flow_control_req
 
     Send flow control request
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         ISHTP client instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_hbm_cl_flow_control_req.description`:
 
@@ -238,11 +252,13 @@ ishtp_hbm_cl_disconnect_req
 
     Send disconnect request
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         ISHTP client instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_hbm_cl_disconnect_req.description`:
 
@@ -267,11 +283,13 @@ ishtp_hbm_cl_disconnect_res
 
     Get disconnect response
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct hbm_client_connect_response \*rs:
+    :param rs:
         Response message
+    :type rs: struct hbm_client_connect_response \*
 
 .. _`ishtp_hbm_cl_disconnect_res.description`:
 
@@ -289,11 +307,13 @@ ishtp_hbm_cl_connect_req
 
     Send connect request
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_hbm_cl_connect_req.description`:
 
@@ -318,11 +338,13 @@ ishtp_hbm_cl_connect_res
 
     Get connect response
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct hbm_client_connect_response \*rs:
+    :param rs:
         Response message
+    :type rs: struct hbm_client_connect_response \*
 
 .. _`ishtp_hbm_cl_connect_res.description`:
 
@@ -340,11 +362,13 @@ ishtp_hbm_fw_disconnect_req
 
     Receive disconnect request
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct hbm_client_connect_request \*disconnect_req:
+    :param disconnect_req:
         disconnect request structure
+    :type disconnect_req: struct hbm_client_connect_request \*
 
 .. _`ishtp_hbm_fw_disconnect_req.description`:
 
@@ -362,11 +386,13 @@ ishtp_hbm_dma_xfer_ack
 
     Receive transfer ACK
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct dma_xfer_hbm \*dma_xfer:
+    :param dma_xfer:
         HBM transfer message
+    :type dma_xfer: struct dma_xfer_hbm \*
 
 .. _`ishtp_hbm_dma_xfer_ack.description`:
 
@@ -384,11 +410,13 @@ ishtp_hbm_dma_xfer
 
     Receive DMA transfer message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct dma_xfer_hbm \*dma_xfer:
+    :param dma_xfer:
         HBM transfer message
+    :type dma_xfer: struct dma_xfer_hbm \*
 
 .. _`ishtp_hbm_dma_xfer.description`:
 
@@ -406,11 +434,13 @@ ishtp_hbm_dispatch
 
     HBM dispatch function
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_bus_message \*hdr:
+    :param hdr:
         bus message
+    :type hdr: struct ishtp_bus_message \*
 
 .. _`ishtp_hbm_dispatch.description`:
 
@@ -429,8 +459,9 @@ bh_hbm_work_fn
 
     HBM work function
 
-    :param struct work_struct \*work:
+    :param work:
         work struct
+    :type work: struct work_struct \*
 
 .. _`bh_hbm_work_fn.description`:
 
@@ -449,11 +480,13 @@ recv_hbm
 
     Receive HBM message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_msg_hdr \*ishtp_hdr:
+    :param ishtp_hdr:
         received bus message
+    :type ishtp_hdr: struct ishtp_msg_hdr \*
 
 .. _`recv_hbm.description`:
 
@@ -472,11 +505,13 @@ recv_fixed_cl_msg
 
     Receive fixed client message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_msg_hdr \*ishtp_hdr:
+    :param ishtp_hdr:
         received bus message
+    :type ishtp_hdr: struct ishtp_msg_hdr \*
 
 .. _`recv_fixed_cl_msg.description`:
 
@@ -495,14 +530,17 @@ fix_cl_hdr
 
     Initialize fixed client header
 
-    :param struct ishtp_msg_hdr \*hdr:
+    :param hdr:
         message header
+    :type hdr: struct ishtp_msg_hdr \*
 
-    :param size_t length:
+    :param length:
         length of message
+    :type length: size_t
 
-    :param uint8_t cl_addr:
+    :param cl_addr:
         Client address
+    :type cl_addr: uint8_t
 
 .. _`fix_cl_hdr.description`:
 
@@ -520,8 +558,9 @@ ishtp_send_suspend
 
     Send suspend message to FW
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_send_suspend.description`:
 
@@ -539,8 +578,9 @@ ishtp_send_resume
 
     Send resume message to FW
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_send_resume.description`:
 
@@ -558,8 +598,9 @@ ishtp_query_subscribers
 
     Send query subscribers message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_query_subscribers.description`:
 

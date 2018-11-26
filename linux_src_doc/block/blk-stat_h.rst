@@ -87,11 +87,13 @@ blk_stat_alloc_callback
     :param int (\*bucket_fn)(const struct request \*):
         Bucket callback function.
 
-    :param unsigned int buckets:
+    :param buckets:
         Number of statistics buckets.
+    :type buckets: unsigned int
 
-    :param void \*data:
+    :param data:
         Value for the \ ``data``\  field of the \ :c:type:`struct blk_stat_callback <blk_stat_callback>`\ .
+    :type data: void \*
 
 .. _`blk_stat_alloc_callback.description`:
 
@@ -116,11 +118,13 @@ blk_stat_add_callback
 
     Add a block statistics callback to be run on a request queue.
 
-    :param struct request_queue \*q:
+    :param q:
         The request queue.
+    :type q: struct request_queue \*
 
-    :param struct blk_stat_callback \*cb:
+    :param cb:
         The callback.
+    :type cb: struct blk_stat_callback \*
 
 .. _`blk_stat_add_callback.description`:
 
@@ -139,11 +143,13 @@ blk_stat_remove_callback
 
     Remove a block statistics callback from a request queue.
 
-    :param struct request_queue \*q:
+    :param q:
         The request queue.
+    :type q: struct request_queue \*
 
-    :param struct blk_stat_callback \*cb:
+    :param cb:
         The callback.
+    :type cb: struct blk_stat_callback \*
 
 .. _`blk_stat_remove_callback.description`:
 
@@ -162,8 +168,9 @@ blk_stat_free_callback
 
     Free a block statistics callback.
 
-    :param struct blk_stat_callback \*cb:
+    :param cb:
         The callback.
+    :type cb: struct blk_stat_callback \*
 
 .. _`blk_stat_free_callback.description`:
 
@@ -184,8 +191,9 @@ blk_stat_is_active
 
     Check if a block statistics callback is currently gathering statistics.
 
-    :param struct blk_stat_callback \*cb:
+    :param cb:
         The callback.
+    :type cb: struct blk_stat_callback \*
 
 .. _`blk_stat_activate_nsecs`:
 
@@ -196,11 +204,13 @@ blk_stat_activate_nsecs
 
     Gather block statistics during a time window in nanoseconds.
 
-    :param struct blk_stat_callback \*cb:
+    :param cb:
         The callback.
+    :type cb: struct blk_stat_callback \*
 
-    :param u64 nsecs:
+    :param nsecs:
         Number of nanoseconds to gather statistics for.
+    :type nsecs: u64
 
 .. _`blk_stat_activate_nsecs.description`:
 
@@ -218,11 +228,13 @@ blk_stat_activate_msecs
 
     Gather block statistics during a time window in milliseconds.
 
-    :param struct blk_stat_callback \*cb:
+    :param cb:
         The callback.
+    :type cb: struct blk_stat_callback \*
 
-    :param unsigned int msecs:
+    :param msecs:
         Number of milliseconds to gather statistics for.
+    :type msecs: unsigned int
 
 .. _`blk_stat_activate_msecs.description`:
 

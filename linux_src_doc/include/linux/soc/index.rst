@@ -7,5 +7,6 @@ soc
 .. toctree::
     :maxdepth: 1
 
+    amlogic/index
     qcom/index
     ti/index

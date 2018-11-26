@@ -198,20 +198,25 @@ nvdimm_read_bytes
 
     synchronously read bytes from an nvdimm namespace
 
-    :param struct nd_namespace_common \*ndns:
+    :param ndns:
         device to read
+    :type ndns: struct nd_namespace_common \*
 
-    :param resource_size_t offset:
+    :param offset:
         namespace-relative starting offset
+    :type offset: resource_size_t
 
-    :param void \*buf:
+    :param buf:
         buffer to fill
+    :type buf: void \*
 
-    :param size_t size:
+    :param size:
         transfer length
+    :type size: size_t
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`nvdimm_read_bytes.description`:
 
@@ -229,20 +234,25 @@ nvdimm_write_bytes
 
     synchronously write bytes to an nvdimm namespace
 
-    :param struct nd_namespace_common \*ndns:
+    :param ndns:
         device to read
+    :type ndns: struct nd_namespace_common \*
 
-    :param resource_size_t offset:
+    :param offset:
         namespace-relative starting offset
+    :type offset: resource_size_t
 
-    :param void \*buf:
+    :param buf:
         buffer to drain
+    :type buf: void \*
 
-    :param size_t size:
+    :param size:
         transfer length
+    :type size: size_t
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`nvdimm_write_bytes.description`:
 

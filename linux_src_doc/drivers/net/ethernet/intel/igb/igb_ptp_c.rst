@@ -10,14 +10,17 @@ igb_ptp_systim_to_hwtstamp
 
     convert system time value to hw timestamp
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
-    :param struct skb_shared_hwtstamps \*hwtstamps:
+    :param hwtstamps:
         timestamp structure to update
+    :type hwtstamps: struct skb_shared_hwtstamps \*
 
-    :param u64 systim:
+    :param systim:
         unsigned 64bit system time value.
+    :type systim: u64
 
 .. _`igb_ptp_systim_to_hwtstamp.description`:
 
@@ -42,8 +45,9 @@ igb_ptp_tx_work
 
 .. c:function:: void igb_ptp_tx_work(struct work_struct *work)
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work struct
+    :type work: struct work_struct \*
 
 .. _`igb_ptp_tx_work.description`:
 
@@ -62,8 +66,9 @@ igb_ptp_rx_hang
 
     detect error case when Rx timestamp registers latched
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         private network adapter structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_ptp_rx_hang.description`:
 
@@ -84,8 +89,9 @@ igb_ptp_tx_hang
 
     detect error case where Tx timestamp never finishes
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         private network adapter structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_ptp_tx_hwtstamp`:
 
@@ -96,8 +102,9 @@ igb_ptp_tx_hwtstamp
 
     utility function which checks for TX time stamp
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         Board private structure.
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_ptp_tx_hwtstamp.description`:
 
@@ -117,14 +124,17 @@ igb_ptp_rx_pktstamp
 
     retrieve Rx per packet timestamp
 
-    :param struct igb_q_vector \*q_vector:
+    :param q_vector:
         Pointer to interrupt specific structure
+    :type q_vector: struct igb_q_vector \*
 
-    :param void \*va:
+    :param va:
         Pointer to address containing Rx buffer
+    :type va: void \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Buffer containing timestamp and packet
+    :type skb: struct sk_buff \*
 
 .. _`igb_ptp_rx_pktstamp.description`:
 
@@ -144,11 +154,13 @@ igb_ptp_rx_rgtstamp
 
     retrieve Rx timestamp stored in register
 
-    :param struct igb_q_vector \*q_vector:
+    :param q_vector:
         Pointer to interrupt specific structure
+    :type q_vector: struct igb_q_vector \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Buffer containing timestamp and packet
+    :type skb: struct sk_buff \*
 
 .. _`igb_ptp_rx_rgtstamp.description`:
 
@@ -167,11 +179,13 @@ igb_ptp_get_ts_config
 
     get hardware time stamping config
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         *undescribed*
+    :type ifr: struct ifreq \*
 
 .. _`igb_ptp_get_ts_config.description`:
 
@@ -191,11 +205,13 @@ igb_ptp_set_timestamp_mode
 
     setup hardware for timestamping
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         networking device structure
+    :type adapter: struct igb_adapter \*
 
-    :param struct hwtstamp_config \*config:
+    :param config:
         hwtstamp configuration
+    :type config: struct hwtstamp_config \*
 
 .. _`igb_ptp_set_timestamp_mode.description`:
 
@@ -223,11 +239,13 @@ igb_ptp_set_ts_config
 
     set hardware time stamping config
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         *undescribed*
+    :type ifr: struct ifreq \*
 
 .. _`igb_ptp_init`:
 
@@ -238,8 +256,9 @@ igb_ptp_init
 
     Initialize PTP functionality
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_ptp_init.description`:
 
@@ -258,8 +277,9 @@ igb_ptp_suspend
 
     Disable PTP work items and prepare for suspend
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_ptp_suspend.description`:
 
@@ -278,8 +298,9 @@ igb_ptp_stop
 
     Disable PTP device and stop the overflow check.
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         Board private structure.
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_ptp_stop.description`:
 
@@ -297,8 +318,9 @@ igb_ptp_reset
 
     Re-enable the adapter for PTP following a reset.
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         Board private structure.
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_ptp_reset.description`:
 

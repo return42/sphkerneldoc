@@ -10,11 +10,13 @@ gfs2_mount_args
 
     Parse mount options
 
-    :param struct gfs2_args \*args:
+    :param args:
         The structure into which the parsed options will be written
+    :type args: struct gfs2_args \*
 
-    :param char \*options:
+    :param options:
         The options to parse
+    :type options: char \*
 
 .. _`gfs2_mount_args.return`:
 
@@ -32,8 +34,9 @@ gfs2_jindex_free
 
     Clear all the journal index information
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_make_fs_rw`:
 
@@ -44,8 +47,9 @@ gfs2_make_fs_rw
 
     Turn a Read-Only FS into a Read-Write one
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_make_fs_rw.return`:
 
@@ -63,11 +67,13 @@ gfs2_lock_fs_check_clean
 
     Stop all writes to the FS and check that all journals are clean
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the file system
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_holder \*freeze_gh:
+    :param freeze_gh:
         *undescribed*
+    :type freeze_gh: struct gfs2_holder \*
 
 .. _`gfs2_lock_fs_check_clean.return`:
 
@@ -85,11 +91,13 @@ gfs2_write_inode
 
     Make sure the inode is stable on the disk
 
-    :param struct inode \*inode:
+    :param inode:
         The inode
+    :type inode: struct inode \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback control structure
+    :type wbc: struct writeback_control \*
 
 .. _`gfs2_write_inode.return`:
 
@@ -107,11 +115,13 @@ gfs2_dirty_inode
 
     check for atime updates
 
-    :param struct inode \*inode:
+    :param inode:
         The inode in question
+    :type inode: struct inode \*
 
-    :param int flags:
+    :param flags:
         The type of dirty
+    :type flags: int
 
 .. _`gfs2_dirty_inode.description`:
 
@@ -134,8 +144,9 @@ gfs2_make_fs_ro
 
     Turn a Read-Write FS into a Read-Only one
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_make_fs_ro.return`:
 
@@ -153,8 +164,9 @@ gfs2_put_super
 
     Unmount the filesystem
 
-    :param struct super_block \*sb:
+    :param sb:
         The VFS superblock
+    :type sb: struct super_block \*
 
 .. _`gfs2_sync_fs`:
 
@@ -165,11 +177,13 @@ gfs2_sync_fs
 
     sync the filesystem
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock
+    :type sb: struct super_block \*
 
-    :param int wait:
+    :param wait:
         *undescribed*
+    :type wait: int
 
 .. _`gfs2_sync_fs.description`:
 
@@ -187,8 +201,9 @@ gfs2_freeze
 
     prevent further writes to the filesystem
 
-    :param struct super_block \*sb:
+    :param sb:
         the VFS structure for the filesystem
+    :type sb: struct super_block \*
 
 .. _`gfs2_unfreeze`:
 
@@ -199,8 +214,9 @@ gfs2_unfreeze
 
     reallow writes to the filesystem
 
-    :param struct super_block \*sb:
+    :param sb:
         the VFS structure for the filesystem
+    :type sb: struct super_block \*
 
 .. _`statfs_slow_fill`:
 
@@ -211,11 +227,13 @@ statfs_slow_fill
 
     fill in the sg for a given RG
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         the RG
+    :type rgd: struct gfs2_rgrpd \*
 
-    :param struct gfs2_statfs_change_host \*sc:
+    :param sc:
         the sc structure
+    :type sc: struct gfs2_statfs_change_host \*
 
 .. _`statfs_slow_fill.return`:
 
@@ -233,11 +251,13 @@ gfs2_statfs_slow
 
     Stat a filesystem using asynchronous locking
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_statfs_change_host \*sc:
+    :param sc:
         the sc info that will be returned
+    :type sc: struct gfs2_statfs_change_host \*
 
 .. _`gfs2_statfs_slow.description`:
 
@@ -270,11 +290,13 @@ gfs2_statfs_i
 
     Do a statfs
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_statfs_change_host \*sc:
+    :param sc:
         *undescribed*
+    :type sc: struct gfs2_statfs_change_host \*
 
 .. _`gfs2_statfs_i.return`:
 
@@ -292,11 +314,13 @@ gfs2_statfs
 
     Gather and return stats about the filesystem
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
-    :param struct kstatfs \*buf:
+    :param buf:
         *undescribed*
+    :type buf: struct kstatfs \*
 
 .. _`gfs2_statfs.return`:
 
@@ -314,14 +338,17 @@ gfs2_remount_fs
 
     called when the FS is remounted
 
-    :param struct super_block \*sb:
+    :param sb:
         the filesystem
+    :type sb: struct super_block \*
 
-    :param int \*flags:
+    :param flags:
         the remount flags
+    :type flags: int \*
 
-    :param char \*data:
+    :param data:
         extra data passed in (not used right now)
+    :type data: char \*
 
 .. _`gfs2_remount_fs.return`:
 
@@ -339,8 +366,9 @@ gfs2_drop_inode
 
     Drop an inode (test for remote unlink)
 
-    :param struct inode \*inode:
+    :param inode:
         The inode to drop
+    :type inode: struct inode \*
 
 .. _`gfs2_drop_inode.description`:
 
@@ -366,11 +394,13 @@ gfs2_show_options
 
     Show mount options for /proc/mounts
 
-    :param struct seq_file \*s:
+    :param s:
         seq_file structure
+    :type s: struct seq_file \*
 
-    :param struct dentry \*root:
+    :param root:
         root of this (sub)tree
+    :type root: struct dentry \*
 
 .. _`gfs2_show_options.return`:
 
@@ -386,8 +416,9 @@ gfs2_glock_put_eventually
 
 .. c:function:: void gfs2_glock_put_eventually(struct gfs2_glock *gl)
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock to put
+    :type gl: struct gfs2_glock \*
 
 .. _`gfs2_glock_put_eventually.description`:
 
@@ -406,8 +437,9 @@ gfs2_evict_inode
 
     Remove an inode from cache
 
-    :param struct inode \*inode:
+    :param inode:
         The inode to evict
+    :type inode: struct inode \*
 
 .. _`gfs2_evict_inode.there-are-three-cases-to-consider`:
 

@@ -10,14 +10,17 @@ bus_for_each_dev
 
     device iterator.
 
-    :param struct bus_type \*bus:
+    :param bus:
         bus type.
+    :type bus: struct bus_type \*
 
-    :param struct device \*start:
+    :param start:
         device to start iterating from.
+    :type start: struct device \*
 
-    :param void \*data:
+    :param data:
         data for the callback.
+    :type data: void \*
 
     :param int (\*fn)(struct device \*, void \*):
         function to be called for each device.
@@ -53,14 +56,17 @@ bus_find_device
 
     device iterator for locating a particular device.
 
-    :param struct bus_type \*bus:
+    :param bus:
         bus type
+    :type bus: struct bus_type \*
 
-    :param struct device \*start:
+    :param start:
         Device to begin with
+    :type start: struct device \*
 
-    :param void \*data:
+    :param data:
         Data to pass to match function
+    :type data: void \*
 
     :param int (\*match)(struct device \*dev, void \*data):
         Callback function to check device
@@ -87,14 +93,17 @@ bus_find_device_by_name
 
     device iterator for locating a particular device of a specific name
 
-    :param struct bus_type \*bus:
+    :param bus:
         bus type
+    :type bus: struct bus_type \*
 
-    :param struct device \*start:
+    :param start:
         Device to begin with
+    :type start: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of the device to match
+    :type name: const char \*
 
 .. _`bus_find_device_by_name.description`:
 
@@ -114,14 +123,17 @@ subsys_find_device_by_id
 
     find a device with a specific enumeration number
 
-    :param struct bus_type \*subsys:
+    :param subsys:
         subsystem
+    :type subsys: struct bus_type \*
 
-    :param unsigned int id:
+    :param id:
         index 'id' in struct device
+    :type id: unsigned int
 
-    :param struct device \*hint:
+    :param hint:
         device to check first
+    :type hint: struct device \*
 
 .. _`subsys_find_device_by_id.description`:
 
@@ -141,14 +153,17 @@ bus_for_each_drv
 
     driver iterator
 
-    :param struct bus_type \*bus:
+    :param bus:
         bus we're dealing with.
+    :type bus: struct bus_type \*
 
-    :param struct device_driver \*start:
+    :param start:
         driver to start iterating on.
+    :type start: struct device_driver \*
 
-    :param void \*data:
+    :param data:
         data to pass to the callback.
+    :type data: void \*
 
     :param int (\*fn)(struct device_driver \*, void \*):
         function to call for each driver.
@@ -184,8 +199,9 @@ bus_add_device
 
     add device to bus
 
-    :param struct device \*dev:
+    :param dev:
         device being added
+    :type dev: struct device \*
 
 .. _`bus_add_device.description`:
 
@@ -205,8 +221,9 @@ bus_probe_device
 
     probe drivers for a new device
 
-    :param struct device \*dev:
+    :param dev:
         device to probe
+    :type dev: struct device \*
 
 .. _`bus_probe_device.description`:
 
@@ -224,8 +241,9 @@ bus_remove_device
 
     remove device from bus
 
-    :param struct device \*dev:
+    :param dev:
         device to be removed
+    :type dev: struct device \*
 
 .. _`bus_remove_device.description`:
 
@@ -247,8 +265,9 @@ bus_add_driver
 
     Add a driver to the bus.
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver.
+    :type drv: struct device_driver \*
 
 .. _`bus_remove_driver`:
 
@@ -259,8 +278,9 @@ bus_remove_driver
 
     delete driver from bus's knowledge.
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver.
+    :type drv: struct device_driver \*
 
 .. _`bus_remove_driver.description`:
 
@@ -280,8 +300,9 @@ bus_rescan_devices
 
     rescan devices on the bus for possible drivers
 
-    :param struct bus_type \*bus:
+    :param bus:
         the bus to scan.
+    :type bus: struct bus_type \*
 
 .. _`bus_rescan_devices.description`:
 
@@ -301,8 +322,9 @@ device_reprobe
 
     remove driver for a device and probe for a new driver
 
-    :param struct device \*dev:
+    :param dev:
         the device to reprobe
+    :type dev: struct device \*
 
 .. _`device_reprobe.description`:
 
@@ -323,8 +345,9 @@ find_bus
 
     locate bus by name.
 
-    :param char \*name:
+    :param name:
         name of bus.
+    :type name: char \*
 
 .. _`find_bus.description`:
 
@@ -345,8 +368,9 @@ bus_register
 
     register a driver-core subsystem
 
-    :param struct bus_type \*bus:
+    :param bus:
         bus to register
+    :type bus: struct bus_type \*
 
 .. _`bus_register.description`:
 
@@ -366,8 +390,9 @@ bus_unregister
 
     remove a bus from the system
 
-    :param struct bus_type \*bus:
+    :param bus:
         bus.
+    :type bus: struct bus_type \*
 
 .. _`bus_unregister.description`:
 
@@ -386,17 +411,21 @@ subsys_dev_iter_init
 
     initialize subsys device iterator
 
-    :param struct subsys_dev_iter \*iter:
+    :param iter:
         subsys iterator to initialize
+    :type iter: struct subsys_dev_iter \*
 
-    :param struct bus_type \*subsys:
+    :param subsys:
         the subsys we wanna iterate over
+    :type subsys: struct bus_type \*
 
-    :param struct device \*start:
+    :param start:
         the device to start iterating from, if any
+    :type start: struct device \*
 
-    :param const struct device_type \*type:
+    :param type:
         device_type of the devices to iterate over, NULL for all
+    :type type: const struct device_type \*
 
 .. _`subsys_dev_iter_init.description`:
 
@@ -417,8 +446,9 @@ subsys_dev_iter_next
 
     iterate to the next device
 
-    :param struct subsys_dev_iter \*iter:
+    :param iter:
         subsys iterator to proceed
+    :type iter: struct subsys_dev_iter \*
 
 .. _`subsys_dev_iter_next.description`:
 
@@ -442,8 +472,9 @@ subsys_dev_iter_exit
 
     finish iteration
 
-    :param struct subsys_dev_iter \*iter:
+    :param iter:
         subsys iterator to finish
+    :type iter: struct subsys_dev_iter \*
 
 .. _`subsys_dev_iter_exit.description`:
 
@@ -462,11 +493,13 @@ subsys_system_register
 
     register a subsystem at /sys/devices/system/
 
-    :param struct bus_type \*subsys:
+    :param subsys:
         system subsystem
+    :type subsys: struct bus_type \*
 
-    :param const struct attribute_group \*\*groups:
+    :param groups:
         default attributes for the root device
+    :type groups: const struct attribute_group \*\*
 
 .. _`subsys_system_register.description`:
 
@@ -495,11 +528,13 @@ subsys_virtual_register
 
     register a subsystem at /sys/devices/virtual/
 
-    :param struct bus_type \*subsys:
+    :param subsys:
         virtual subsystem
+    :type subsys: struct bus_type \*
 
-    :param const struct attribute_group \*\*groups:
+    :param groups:
         default attributes for the root device
+    :type groups: const struct attribute_group \*\*
 
 .. _`subsys_virtual_register.description`:
 

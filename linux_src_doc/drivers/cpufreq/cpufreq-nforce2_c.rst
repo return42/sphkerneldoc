@@ -10,8 +10,9 @@ nforce2_calc_fsb
 
     calculate FSB
 
-    :param int pll:
+    :param pll:
         PLL value
+    :type pll: int
 
 .. _`nforce2_calc_fsb.description`:
 
@@ -29,8 +30,9 @@ nforce2_calc_pll
 
     calculate PLL value
 
-    :param unsigned int fsb:
+    :param fsb:
         FSB
+    :type fsb: unsigned int
 
 .. _`nforce2_calc_pll.description`:
 
@@ -48,8 +50,9 @@ nforce2_write_pll
 
     write PLL value to chipset
 
-    :param int pll:
+    :param pll:
         PLL value
+    :type pll: int
 
 .. _`nforce2_write_pll.description`:
 
@@ -67,8 +70,9 @@ nforce2_fsb_read
 
     Read FSB
 
-    :param int bootfsb:
+    :param bootfsb:
         *undescribed*
+    :type bootfsb: int
 
 .. _`nforce2_fsb_read.description`:
 
@@ -87,8 +91,9 @@ nforce2_set_fsb
 
     set new FSB
 
-    :param unsigned int fsb:
+    :param fsb:
         New FSB
+    :type fsb: unsigned int
 
 .. _`nforce2_set_fsb.description`:
 
@@ -106,8 +111,9 @@ nforce2_get
 
     get the CPU frequency
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU number
+    :type cpu: unsigned int
 
 .. _`nforce2_get.description`:
 
@@ -125,15 +131,18 @@ nforce2_target
 
     set a new CPUFreq policy
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         new policy
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int target_freq:
+    :param target_freq:
         the target frequency
+    :type target_freq: unsigned int
 
-    :param unsigned int relation:
+    :param relation:
         how that frequency relates to achieved frequency
         (CPUFREQ_RELATION_L or CPUFREQ_RELATION_H)
+    :type relation: unsigned int
 
 .. _`nforce2_target.description`:
 
@@ -151,8 +160,9 @@ nforce2_verify
 
     verifies a new CPUFreq policy
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         new policy
+    :type policy: struct cpufreq_policy \*
 
 .. _`nforce2_detect_chipset`:
 
@@ -163,8 +173,9 @@ nforce2_detect_chipset
 
     detect the Southbridge which contains FSB PLL logic
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nforce2_detect_chipset.description`:
 
@@ -182,8 +193,9 @@ nforce2_init
 
     initializes the nForce2 CPUFreq driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nforce2_init.description`:
 
@@ -203,8 +215,9 @@ nforce2_exit
 
     unregisters cpufreq module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nforce2_exit.description`:
 

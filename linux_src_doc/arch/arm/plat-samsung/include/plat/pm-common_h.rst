@@ -106,8 +106,9 @@ s3c_pm_dbg
 
     low level debug function for use in suspend/resume.
 
-    :param const char \*msg:
+    :param msg:
         The message to print.
+    :type msg: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -130,8 +131,9 @@ s3c_pm_debug_init
 
     suspend/resume low level debug initialization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`s3c_pm_debug_init.description`:
 

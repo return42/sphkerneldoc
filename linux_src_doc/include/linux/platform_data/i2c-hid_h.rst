@@ -19,7 +19,7 @@ Definition
 
     struct i2c_hid_platform_data {
         u16 hid_descriptor_address;
-        struct regulator *supply;
+        struct regulator_bulk_data supplies[2];
         int post_power_delay_ms;
     }
 
@@ -31,8 +31,8 @@ Members
 hid_descriptor_address
     i2c register where the HID descriptor is stored.
 
-supply
-    regulator for powering on the device.
+supplies
+    regulators for powering on the device.
 
 post_power_delay_ms
     delay after powering on before device is usable.

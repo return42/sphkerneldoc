@@ -10,17 +10,21 @@ hw_breakpoint_slot_setup
 
     Find and setup a perf slot according to operations
 
-    :param struct perf_event \*\*slots:
+    :param slots:
         pointer to array of slots
+    :type slots: struct perf_event \*\*
 
-    :param int max_slots:
+    :param max_slots:
         max number of slots
+    :type max_slots: int
 
-    :param struct perf_event \*bp:
+    :param bp:
         perf_event to setup
+    :type bp: struct perf_event \*
 
-    :param enum hw_breakpoint_ops ops:
+    :param ops:
         operation to be carried out on the slot
+    :type ops: enum hw_breakpoint_ops
 
 .. _`hw_breakpoint_slot_setup.return`:
 

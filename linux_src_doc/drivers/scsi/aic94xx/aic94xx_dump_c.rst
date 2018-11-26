@@ -10,11 +10,13 @@ asd_dump_target_ddb
 
     - dump a CSEQ DDB site
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param u16 site_no:
+    :param site_no:
         site number of interest
+    :type site_no: u16
 
 .. _`asd_dump_scb_sites`:
 
@@ -25,8 +27,9 @@ asd_dump_scb_sites
 
     - dump currently used CSEQ SCB sites
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter struct
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_dump_seq_state`:
 
@@ -37,11 +40,13 @@ asd_dump_seq_state
 
     - dump CSEQ and LSEQ states
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param u8 lseq_mask:
+    :param lseq_mask:
         mask of LSEQs of interest
+    :type lseq_mask: u8
 
 .. This file was automatic generated / don't edit.
 

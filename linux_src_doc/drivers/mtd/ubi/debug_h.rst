@@ -10,8 +10,9 @@ ubi_dbg_is_bgt_disabled
 
     if the background thread is disabled.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
 .. _`ubi_dbg_is_bgt_disabled.description`:
 
@@ -30,8 +31,9 @@ ubi_dbg_is_bitflip
 
     if it is time to emulate a bit-flip.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
 .. _`ubi_dbg_is_bitflip.description`:
 
@@ -49,8 +51,9 @@ ubi_dbg_is_write_failure
 
     if it is time to emulate a write failure.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
 .. _`ubi_dbg_is_write_failure.description`:
 
@@ -69,8 +72,9 @@ ubi_dbg_is_erase_failure
 
     if its time to emulate an erase failure.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
 .. _`ubi_dbg_is_erase_failure.description`:
 

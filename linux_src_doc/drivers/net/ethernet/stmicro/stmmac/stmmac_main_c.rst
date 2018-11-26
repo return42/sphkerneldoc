@@ -10,8 +10,9 @@ stmmac_verify_args
 
     verify the driver parameters.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`stmmac_verify_args.description`:
 
@@ -30,8 +31,9 @@ stmmac_disable_all_queues
 
     Disable all queues
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_enable_all_queues`:
 
@@ -42,8 +44,9 @@ stmmac_enable_all_queues
 
     Enable all queues
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_stop_all_queues`:
 
@@ -54,8 +57,9 @@ stmmac_stop_all_queues
 
     Stop all queues
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_start_all_queues`:
 
@@ -66,8 +70,9 @@ stmmac_start_all_queues
 
     Start all queues
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_clk_csr_set`:
 
@@ -78,8 +83,9 @@ stmmac_clk_csr_set
 
     dynamically set the MDC clock
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_clk_csr_set.description`:
 
@@ -109,11 +115,13 @@ stmmac_rx_dirty
 
     Get RX queue dirty
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 queue:
+    :param queue:
         RX queue index
+    :type queue: u32
 
 .. _`stmmac_hw_fix_mac_speed`:
 
@@ -124,8 +132,9 @@ stmmac_hw_fix_mac_speed
 
     callback for speed selection
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_hw_fix_mac_speed.description`:
 
@@ -144,8 +153,9 @@ stmmac_enable_eee_mode
 
     check and enter in LPI mode
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_enable_eee_mode.description`:
 
@@ -164,8 +174,9 @@ stmmac_disable_eee_mode
 
     disable and exit from LPI mode
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_disable_eee_mode.description`:
 
@@ -184,8 +195,9 @@ stmmac_eee_ctrl_timer
 
     EEE TX SW timer.
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`stmmac_eee_ctrl_timer.description`:
 
@@ -204,8 +216,9 @@ stmmac_eee_init
 
     init EEE
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_eee_init.description`:
 
@@ -225,12 +238,14 @@ stmmac_hwtstamp_ioctl
 
     control hardware timestamping.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         An IOCTL specific structure, that can contain a pointer to
         a proprietary structure used to pass information to the driver.
+    :type ifr: struct ifreq \*
 
 .. _`stmmac_hwtstamp_ioctl.description`:
 
@@ -256,8 +271,9 @@ stmmac_init_ptp
 
     init PTP
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_init_ptp.description`:
 
@@ -277,11 +293,13 @@ stmmac_mac_flow_ctrl
 
     Configure flow control in all queues
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 duplex:
+    :param duplex:
         *undescribed*
+    :type duplex: u32
 
 .. _`stmmac_mac_flow_ctrl.description`:
 
@@ -299,8 +317,9 @@ stmmac_adjust_link
 
     adjusts the link parameters
 
-    :param struct net_device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct net_device \*
 
 .. _`stmmac_adjust_link.description`:
 
@@ -322,8 +341,9 @@ stmmac_check_pcs_mode
 
     verify if RGMII/SGMII is supported
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_check_pcs_mode.description`:
 
@@ -343,8 +363,9 @@ stmmac_init_phy
 
     PHY initialization
 
-    :param struct net_device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct net_device \*
 
 .. _`stmmac_init_phy.description`:
 
@@ -370,11 +391,13 @@ stmmac_clear_rx_descriptors
 
     clear RX descriptors
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 queue:
+    :param queue:
         RX queue index
+    :type queue: u32
 
 .. _`stmmac_clear_rx_descriptors.description`:
 
@@ -393,11 +416,13 @@ stmmac_clear_tx_descriptors
 
     clear tx descriptors
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 queue:
+    :param queue:
         TX queue index.
+    :type queue: u32
 
 .. _`stmmac_clear_tx_descriptors.description`:
 
@@ -416,8 +441,9 @@ stmmac_clear_descriptors
 
     clear descriptors
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_clear_descriptors.description`:
 
@@ -436,20 +462,25 @@ stmmac_init_rx_buffers
 
     init the RX descriptor buffer.
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param struct dma_desc \*p:
+    :param p:
         descriptor pointer
+    :type p: struct dma_desc \*
 
-    :param int i:
+    :param i:
         descriptor index
+    :type i: int
 
-    :param gfp_t flags:
+    :param flags:
         gfp flag
+    :type flags: gfp_t
 
-    :param u32 queue:
+    :param queue:
         RX queue index
+    :type queue: u32
 
 .. _`stmmac_init_rx_buffers.description`:
 
@@ -468,14 +499,17 @@ stmmac_free_rx_buffer
 
     free RX dma buffers
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 queue:
+    :param queue:
         RX queue index
+    :type queue: u32
 
-    :param int i:
+    :param i:
         buffer index.
+    :type i: int
 
 .. _`stmmac_free_tx_buffer`:
 
@@ -486,14 +520,17 @@ stmmac_free_tx_buffer
 
     free RX dma buffers
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 queue:
+    :param queue:
         RX queue index
+    :type queue: u32
 
-    :param int i:
+    :param i:
         buffer index.
+    :type i: int
 
 .. _`init_dma_rx_desc_rings`:
 
@@ -504,11 +541,13 @@ init_dma_rx_desc_rings
 
     init the RX descriptor rings
 
-    :param struct net_device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct net_device \*
 
-    :param gfp_t flags:
+    :param flags:
         gfp flag.
+    :type flags: gfp_t
 
 .. _`init_dma_rx_desc_rings.description`:
 
@@ -528,8 +567,9 @@ init_dma_tx_desc_rings
 
     init the TX descriptor rings
 
-    :param struct net_device \*dev:
+    :param dev:
         net device structure.
+    :type dev: struct net_device \*
 
 .. _`init_dma_tx_desc_rings.description`:
 
@@ -549,11 +589,13 @@ init_dma_desc_rings
 
     init the RX/TX descriptor rings
 
-    :param struct net_device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct net_device \*
 
-    :param gfp_t flags:
+    :param flags:
         gfp flag.
+    :type flags: gfp_t
 
 .. _`init_dma_desc_rings.description`:
 
@@ -573,11 +615,13 @@ dma_free_rx_skbufs
 
     free RX dma buffers
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 queue:
+    :param queue:
         RX queue index
+    :type queue: u32
 
 .. _`dma_free_tx_skbufs`:
 
@@ -588,11 +632,13 @@ dma_free_tx_skbufs
 
     free TX dma buffers
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 queue:
+    :param queue:
         TX queue index
+    :type queue: u32
 
 .. _`free_dma_rx_desc_resources`:
 
@@ -603,8 +649,9 @@ free_dma_rx_desc_resources
 
     free RX dma desc resources
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`free_dma_tx_desc_resources`:
 
@@ -615,8 +662,9 @@ free_dma_tx_desc_resources
 
     free TX dma desc resources
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`alloc_dma_rx_desc_resources`:
 
@@ -627,8 +675,9 @@ alloc_dma_rx_desc_resources
 
     alloc RX resources.
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`alloc_dma_rx_desc_resources.description`:
 
@@ -649,8 +698,9 @@ alloc_dma_tx_desc_resources
 
     alloc TX resources.
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`alloc_dma_tx_desc_resources.description`:
 
@@ -671,8 +721,9 @@ alloc_dma_desc_resources
 
     alloc TX/RX resources.
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`alloc_dma_desc_resources.description`:
 
@@ -693,8 +744,9 @@ free_dma_desc_resources
 
     free dma desc resources
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_mac_enable_rx_queues`:
 
@@ -705,8 +757,9 @@ stmmac_mac_enable_rx_queues
 
     Enable MAC rx queues
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_mac_enable_rx_queues.description`:
 
@@ -724,11 +777,13 @@ stmmac_start_rx_dma
 
     start RX DMA channel
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 chan:
+    :param chan:
         RX channel index
+    :type chan: u32
 
 .. _`stmmac_start_rx_dma.description`:
 
@@ -746,11 +801,13 @@ stmmac_start_tx_dma
 
     start TX DMA channel
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 chan:
+    :param chan:
         TX channel index
+    :type chan: u32
 
 .. _`stmmac_start_tx_dma.description`:
 
@@ -768,11 +825,13 @@ stmmac_stop_rx_dma
 
     stop RX DMA channel
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 chan:
+    :param chan:
         RX channel index
+    :type chan: u32
 
 .. _`stmmac_stop_rx_dma.description`:
 
@@ -790,11 +849,13 @@ stmmac_stop_tx_dma
 
     stop TX DMA channel
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 chan:
+    :param chan:
         TX channel index
+    :type chan: u32
 
 .. _`stmmac_stop_tx_dma.description`:
 
@@ -812,8 +873,9 @@ stmmac_start_all_dma
 
     start all RX and TX DMA channels
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_start_all_dma.description`:
 
@@ -831,8 +893,9 @@ stmmac_stop_all_dma
 
     stop all RX and TX DMA channels
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_stop_all_dma.description`:
 
@@ -850,8 +913,9 @@ stmmac_dma_operation_mode
 
     HW DMA operation mode
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_dma_operation_mode.description`:
 
@@ -866,15 +930,21 @@ order to program the tx/rx DMA thresholds or Store-And-Forward mode.
 stmmac_tx_clean
 ===============
 
-.. c:function:: void stmmac_tx_clean(struct stmmac_priv *priv, u32 queue)
+.. c:function:: int stmmac_tx_clean(struct stmmac_priv *priv, int budget, u32 queue)
 
     to manage the transmission completion
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 queue:
+    :param budget:
+        *undescribed*
+    :type budget: int
+
+    :param queue:
         TX queue index
+    :type queue: u32
 
 .. _`stmmac_tx_clean.description`:
 
@@ -892,11 +962,13 @@ stmmac_tx_err
 
     to manage the tx error
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 chan:
+    :param chan:
         channel index
+    :type chan: u32
 
 .. _`stmmac_tx_err.description`:
 
@@ -915,17 +987,21 @@ stmmac_set_dma_operation_mode
 
     Set DMA operation mode by channel
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 txmode:
+    :param txmode:
         TX operating mode
+    :type txmode: u32
 
-    :param u32 rxmode:
+    :param rxmode:
         RX operating mode
+    :type rxmode: u32
 
-    :param u32 chan:
+    :param chan:
         channel index
+    :type chan: u32
 
 .. _`stmmac_set_dma_operation_mode.description`:
 
@@ -945,8 +1021,9 @@ stmmac_dma_interrupt
 
     DMA ISR
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_dma_interrupt.description`:
 
@@ -966,8 +1043,9 @@ stmmac_mmc_setup
 
     setup the Mac Management Counters (MMC)
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_mmc_setup.description`:
 
@@ -985,8 +1063,9 @@ stmmac_get_hw_features
 
     get MAC capabilities from the HW cap. register.
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_get_hw_features.description`:
 
@@ -1007,8 +1086,9 @@ stmmac_check_ether_addr
 
     check if the MAC addr is valid
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_check_ether_addr.description`:
 
@@ -1027,8 +1107,9 @@ stmmac_init_dma_engine
 
     DMA init.
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_init_dma_engine.description`:
 
@@ -1048,8 +1129,9 @@ stmmac_tx_timer
 
     mitigation sw timer for tx.
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`stmmac_tx_timer.description`:
 
@@ -1067,8 +1149,9 @@ stmmac_init_tx_coalesce
 
     init tx mitigation options.
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_init_tx_coalesce.this-inits-the-transmit-coalesce-parameters`:
 
@@ -1088,8 +1171,9 @@ stmmac_set_tx_queue_weight
 
     Set TX queue weight
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_set_tx_queue_weight.description`:
 
@@ -1107,8 +1191,9 @@ stmmac_configure_cbs
 
     Configure CBS in TX queue
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_configure_cbs.description`:
 
@@ -1126,8 +1211,9 @@ stmmac_rx_queue_dma_chan_map
 
     Map RX queue to RX dma channel
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_rx_queue_dma_chan_map.description`:
 
@@ -1145,8 +1231,9 @@ stmmac_mac_config_rx_queues_prio
 
     Configure RX Queue priority
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_mac_config_rx_queues_prio.description`:
 
@@ -1164,8 +1251,9 @@ stmmac_mac_config_tx_queues_prio
 
     Configure TX Queue priority
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_mac_config_tx_queues_prio.description`:
 
@@ -1183,8 +1271,9 @@ stmmac_mac_config_rx_queues_routing
 
     Configure RX Queue Routing
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_mac_config_rx_queues_routing.description`:
 
@@ -1202,8 +1291,9 @@ stmmac_mtl_configuration
 
     Configure MTL
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_mtl_configuration.description`:
 
@@ -1221,11 +1311,13 @@ stmmac_hw_setup
 
     setup mac in a usable state.
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure.
+    :type dev: struct net_device \*
 
-    :param bool init_ptp:
+    :param init_ptp:
         *undescribed*
+    :type init_ptp: bool
 
 .. _`stmmac_hw_setup.description`:
 
@@ -1254,8 +1346,9 @@ stmmac_open
 
     open entry point of the driver
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure.
+    :type dev: struct net_device \*
 
 .. _`stmmac_open.description`:
 
@@ -1281,8 +1374,9 @@ stmmac_release
 
     close entry point of the driver
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
 .. _`stmmac_release.description`:
 
@@ -1300,20 +1394,25 @@ stmmac_tso_allocator
 
     close entry point of the driver
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param unsigned int des:
+    :param des:
         buffer start address
+    :type des: unsigned int
 
-    :param int total_len:
+    :param total_len:
         total length to fill in descriptors
+    :type total_len: int
 
-    :param bool last_segment:
+    :param last_segment:
         *undescribed*
+    :type last_segment: bool
 
-    :param u32 queue:
+    :param queue:
         TX queue index
+    :type queue: u32
 
 .. _`stmmac_tso_allocator.description`:
 
@@ -1332,11 +1431,13 @@ stmmac_tso_xmit
 
     Tx entry point of the driver for oversized frames (TSO)
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the socket buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct net_device \*
 
 .. _`stmmac_tso_xmit.description`:
 
@@ -1380,14 +1481,16 @@ stmmac_xmit
 
     Tx entry point of the driver
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the socket buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer
         Description : this is the tx entry point of the driver.
         It programs the chain or the ring and supports oversized frames
         and SG feature.
+    :type dev: struct net_device \*
 
 .. _`stmmac_rx_refill`:
 
@@ -1398,13 +1501,15 @@ stmmac_rx_refill
 
     refill used skb preallocated buffers
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param u32 queue:
+    :param queue:
         RX queue index
         Description : this is to reallocate the skb for the reception process
         that is based on zero-copy.
+    :type queue: u32
 
 .. _`stmmac_rx`:
 
@@ -1415,34 +1520,39 @@ stmmac_rx
 
     manage the receive process
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
-    :param int limit:
+    :param limit:
         napi bugget
+    :type limit: int
 
-    :param u32 queue:
+    :param queue:
         RX queue index.
         Description :  this the function called by the napi poll method.
         It gets all the frames inside the ring.
+    :type queue: u32
 
-.. _`stmmac_poll`:
+.. _`stmmac_napi_poll`:
 
-stmmac_poll
-===========
+stmmac_napi_poll
+================
 
-.. c:function:: int stmmac_poll(struct napi_struct *napi, int budget)
+.. c:function:: int stmmac_napi_poll(struct napi_struct *napi, int budget)
 
     stmmac poll method (NAPI)
 
-    :param struct napi_struct \*napi:
+    :param napi:
         pointer to the napi structure.
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         maximum number of packets that the current CPU can receive from
         all interfaces.
         Description :
         To look at the incoming frames and clear the tx resources.
+    :type budget: int
 
 .. _`stmmac_tx_timeout`:
 
@@ -1451,8 +1561,9 @@ stmmac_tx_timeout
 
 .. c:function:: void stmmac_tx_timeout(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to net device structure
+    :type dev: struct net_device \*
 
 .. _`stmmac_tx_timeout.description`:
 
@@ -1473,8 +1584,9 @@ stmmac_set_rx_mode
 
     entry point for multicast addressing
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct net_device \*
 
 .. _`stmmac_set_rx_mode.description`:
 
@@ -1500,11 +1612,13 @@ stmmac_change_mtu
 
     entry point to change MTU size for the device.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         the new MTU size for the device.
+    :type new_mtu: int
 
 .. _`stmmac_change_mtu.description`:
 
@@ -1532,11 +1646,13 @@ stmmac_interrupt
 
     main ISR
 
-    :param int irq:
+    :param irq:
         interrupt number.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         to pass the net device pointer.
+    :type dev_id: void \*
 
 .. _`stmmac_interrupt.description`:
 
@@ -1570,15 +1686,18 @@ stmmac_ioctl
 
     Entry point for the Ioctl
 
-    :param struct net_device \*dev:
+    :param dev:
         Device pointer.
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*rq:
+    :param rq:
         An IOCTL specefic structure, that can contain a pointer to
         a proprietary structure used to pass information to the driver.
+    :type rq: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         IOCTL command
+    :type cmd: int
 
 .. _`stmmac_ioctl.description`:
 
@@ -1596,8 +1715,9 @@ stmmac_hw_init
 
     Init the MAC device
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         driver private structure
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_hw_init.description`:
 
@@ -1616,14 +1736,17 @@ stmmac_dvr_probe
 
 .. c:function:: int stmmac_dvr_probe(struct device *device, struct plat_stmmacenet_data *plat_dat, struct stmmac_resources *res)
 
-    :param struct device \*device:
+    :param device:
         device pointer
+    :type device: struct device \*
 
-    :param struct plat_stmmacenet_data \*plat_dat:
+    :param plat_dat:
         platform data pointer
+    :type plat_dat: struct plat_stmmacenet_data \*
 
-    :param struct stmmac_resources \*res:
+    :param res:
         stmmac resource pointer
+    :type res: struct stmmac_resources \*
 
 .. _`stmmac_dvr_probe.description`:
 
@@ -1647,8 +1770,9 @@ stmmac_dvr_remove
 
 .. c:function:: int stmmac_dvr_remove(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
 .. _`stmmac_dvr_remove.description`:
 
@@ -1667,8 +1791,9 @@ stmmac_suspend
 
     suspend callback
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
 .. _`stmmac_suspend.description`:
 
@@ -1688,8 +1813,9 @@ stmmac_reset_queues_param
 
     reset queue parameters
 
-    :param struct stmmac_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct stmmac_priv \*
 
 .. _`stmmac_resume`:
 
@@ -1700,8 +1826,9 @@ stmmac_resume
 
     resume callback
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
 .. _`stmmac_resume.description`:
 

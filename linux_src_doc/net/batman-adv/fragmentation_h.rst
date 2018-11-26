@@ -10,8 +10,9 @@ batadv_frag_check_entry
 
     check if a list of fragments has timed out
 
-    :param struct batadv_frag_table_entry \*frags_entry:
+    :param frags_entry:
         table entry to check
+    :type frags_entry: struct batadv_frag_table_entry \*
 
 .. _`batadv_frag_check_entry.return`:
 

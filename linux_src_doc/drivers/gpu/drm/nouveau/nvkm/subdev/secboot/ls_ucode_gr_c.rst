@@ -8,17 +8,21 @@ ls_ucode_img_build
 
 .. c:function:: void *ls_ucode_img_build(const struct firmware *bl, const struct firmware *code, const struct firmware *data, struct ls_ucode_img_desc *desc)
 
-    :param const struct firmware \*bl:
+    :param bl:
         bootloader image, including 16-bytes descriptor
+    :type bl: const struct firmware \*
 
-    :param const struct firmware \*code:
+    :param code:
         LS firmware code segment
+    :type code: const struct firmware \*
 
-    :param const struct firmware \*data:
+    :param data:
         LS firmware data segment
+    :type data: const struct firmware \*
 
-    :param struct ls_ucode_img_desc \*desc:
+    :param desc:
         ucode descriptor to be written
+    :type desc: struct ls_ucode_img_desc \*
 
 .. _`ls_ucode_img_build.return`:
 
@@ -37,14 +41,17 @@ ls_ucode_img_load_gr
 
     load and prepare a LS GR ucode image
 
-    :param const struct nvkm_subdev \*subdev:
+    :param subdev:
         *undescribed*
+    :type subdev: const struct nvkm_subdev \*
 
-    :param struct ls_ucode_img \*img:
+    :param img:
         *undescribed*
+    :type img: struct ls_ucode_img \*
 
-    :param const char \*falcon_name:
+    :param falcon_name:
         *undescribed*
+    :type falcon_name: const char \*
 
 .. _`ls_ucode_img_load_gr.description`:
 

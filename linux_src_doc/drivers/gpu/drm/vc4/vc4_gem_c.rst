@@ -10,14 +10,17 @@ vc4_cl_lookup_bos
 
     Sets up exec->bo[] with the GEM objects referenced by the job.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file for this fd
+    :type file_priv: struct drm_file \*
 
-    :param struct vc4_exec_info \*exec:
+    :param exec:
         V3D job being set up
+    :type exec: struct vc4_exec_info \*
 
 .. _`vc4_cl_lookup_bos.description`:
 
@@ -37,14 +40,17 @@ vc4_submit_cl_ioctl
 
     Submits a job (frame) to the VC4.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl argument
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file for this fd
+    :type file_priv: struct drm_file \*
 
 .. _`vc4_submit_cl_ioctl.description`:
 

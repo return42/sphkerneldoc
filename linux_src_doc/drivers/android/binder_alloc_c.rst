@@ -10,11 +10,13 @@ binder_alloc_prepare_to_free
 
     get buffer given user ptr
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         binder_alloc for this proc
+    :type alloc: struct binder_alloc \*
 
-    :param uintptr_t user_ptr:
+    :param user_ptr:
         User pointer to buffer data
+    :type user_ptr: uintptr_t
 
 .. _`binder_alloc_prepare_to_free.description`:
 
@@ -41,20 +43,25 @@ binder_alloc_new_buf
 
     Allocate a new binder buffer
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         binder_alloc for this proc
+    :type alloc: struct binder_alloc \*
 
-    :param size_t data_size:
+    :param data_size:
         size of user data buffer
+    :type data_size: size_t
 
-    :param size_t offsets_size:
+    :param offsets_size:
         user specified buffer offset
+    :type offsets_size: size_t
 
-    :param size_t extra_buffers_size:
+    :param extra_buffers_size:
         size of extra space for meta-data (eg, security context)
+    :type extra_buffers_size: size_t
 
-    :param int is_async:
+    :param is_async:
         buffer for async transaction
+    :type is_async: int
 
 .. _`binder_alloc_new_buf.description`:
 
@@ -82,11 +89,13 @@ binder_alloc_free_buf
 
     free a binder buffer
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         binder_alloc for this proc
+    :type alloc: struct binder_alloc \*
 
-    :param struct binder_buffer \*buffer:
+    :param buffer:
         kernel pointer to buffer
+    :type buffer: struct binder_buffer \*
 
 .. _`binder_alloc_free_buf.description`:
 
@@ -104,11 +113,13 @@ binder_alloc_mmap_handler
 
     map virtual address space for proc
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         alloc structure for this proc
+    :type alloc: struct binder_alloc \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vma passed to \ :c:func:`mmap`\ 
+    :type vma: struct vm_area_struct \*
 
 .. _`binder_alloc_mmap_handler.description`:
 
@@ -136,11 +147,13 @@ binder_alloc_print_allocated
 
     print buffer info
 
-    :param struct seq_file \*m:
+    :param m:
         seq_file for output via \ :c:func:`seq_printf`\ 
+    :type m: struct seq_file \*
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         binder_alloc for this proc
+    :type alloc: struct binder_alloc \*
 
 .. _`binder_alloc_print_allocated.description`:
 
@@ -159,11 +172,13 @@ binder_alloc_print_pages
 
     print page usage
 
-    :param struct seq_file \*m:
+    :param m:
         seq_file for output via \ :c:func:`seq_printf`\ 
+    :type m: struct seq_file \*
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         binder_alloc for this proc
+    :type alloc: struct binder_alloc \*
 
 .. _`binder_alloc_get_allocated_count`:
 
@@ -174,8 +189,9 @@ binder_alloc_get_allocated_count
 
     return count of buffers
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         binder_alloc for this proc
+    :type alloc: struct binder_alloc \*
 
 .. _`binder_alloc_get_allocated_count.return`:
 
@@ -193,8 +209,9 @@ binder_alloc_vma_close
 
     invalidate address space
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         binder_alloc for this proc
+    :type alloc: struct binder_alloc \*
 
 .. _`binder_alloc_vma_close.description`:
 
@@ -214,17 +231,21 @@ binder_alloc_free_page
 
     shrinker callback to free pages
 
-    :param struct list_head \*item:
+    :param item:
         item to free
+    :type item: struct list_head \*
 
-    :param struct list_lru_one \*lru:
+    :param lru:
         *undescribed*
+    :type lru: struct list_lru_one \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         lock protecting the item
+    :type lock: spinlock_t \*
 
-    :param void \*cb_arg:
+    :param cb_arg:
         callback argument
+    :type cb_arg: void \*
 
 .. _`binder_alloc_free_page.description`:
 
@@ -243,8 +264,9 @@ binder_alloc_init
 
     called by \ :c:func:`binder_open`\  for per-proc initialization
 
-    :param struct binder_alloc \*alloc:
+    :param alloc:
         binder_alloc for this proc
+    :type alloc: struct binder_alloc \*
 
 .. _`binder_alloc_init.description`:
 

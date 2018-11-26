@@ -10,14 +10,17 @@ zfcp_qdio_sbals_from_sg
 
     fill SBALs from scatter-gather list
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         pointer to struct zfcp_qdio_req
+    :type q_req: struct zfcp_qdio_req \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatter-gather list
+    :type sg: struct scatterlist \*
 
 .. _`zfcp_qdio_sbals_from_sg.return`:
 
@@ -35,8 +38,9 @@ zfcp_qdio_sbal_get
 
     get free sbal in request queue, wait if necessary
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
 .. _`zfcp_qdio_sbal_get.description`:
 
@@ -63,11 +67,13 @@ zfcp_qdio_send
 
     set PCI flag in first SBALE and send req to QDIO
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
-    :param struct zfcp_qdio_req \*q_req:
+    :param q_req:
         pointer to struct zfcp_qdio_req
+    :type q_req: struct zfcp_qdio_req \*
 
 .. _`zfcp_qdio_send.return`:
 
@@ -85,8 +91,9 @@ zfcp_qdio_allocate
 
     allocate queue memory and initialize QDIO data
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         *undescribed*
+    :type qdio: struct zfcp_qdio \*
 
 .. _`zfcp_qdio_allocate.return`:
 
@@ -105,8 +112,9 @@ zfcp_qdio_close
 
     close qdio queues for an adapter
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to structure zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
 .. _`zfcp_qdio_open`:
 
@@ -117,8 +125,9 @@ zfcp_qdio_open
 
     prepare and initialize response queue
 
-    :param struct zfcp_qdio \*qdio:
+    :param qdio:
         pointer to struct zfcp_qdio
+    :type qdio: struct zfcp_qdio \*
 
 .. _`zfcp_qdio_open.return`:
 
@@ -136,8 +145,9 @@ zfcp_qdio_siosl
 
     Trigger logging in FCP channel
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         The zfcp_adapter where to trigger logging
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_qdio_siosl.description`:
 

@@ -10,8 +10,9 @@ ep93xx_chip_revision
 
     returns the EP93xx chip revision
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ep93xx_chip_revision.description`:
 
@@ -29,14 +30,17 @@ ep93xx_register_flash
 
     Register the external flash device.
 
-    :param unsigned int width:
+    :param width:
         bank width in octets
+    :type width: unsigned int
 
-    :param resource_size_t start:
+    :param start:
         resource start address
+    :type start: resource_size_t
 
-    :param resource_size_t size:
+    :param size:
         resource size
+    :type size: resource_size_t
 
 .. _`ep93xx_register_eth`:
 
@@ -47,12 +51,14 @@ ep93xx_register_eth
 
     Register the built-in ethernet platform device.
 
-    :param struct ep93xx_eth_data \*data:
+    :param data:
         platform specific ethernet configuration (__initdata)
+    :type data: struct ep93xx_eth_data \*
 
-    :param int copy_addr:
+    :param copy_addr:
         flag indicating that the MAC address should be copied
         from the IndAd registers (as programmed by the bootloader)
+    :type copy_addr: int
 
 .. _`ep93xx_register_i2c`:
 
@@ -63,11 +69,13 @@ ep93xx_register_i2c
 
     Register the i2c platform device.
 
-    :param struct i2c_board_info \*devices:
+    :param devices:
         platform specific i2c bus device information (__initdata)
+    :type devices: struct i2c_board_info \*
 
-    :param int num:
+    :param num:
         the number of devices on the i2c bus
+    :type num: int
 
 .. _`ep93xx_register_spi`:
 
@@ -78,14 +86,17 @@ ep93xx_register_spi
 
     registers spi platform device
 
-    :param struct ep93xx_spi_info \*info:
+    :param info:
         ep93xx board specific spi master info (__initdata)
+    :type info: struct ep93xx_spi_info \*
 
-    :param struct spi_board_info \*devices:
+    :param devices:
         SPI devices to register (__initdata)
+    :type devices: struct spi_board_info \*
 
-    :param int num:
+    :param num:
         number of SPI devices to register
+    :type num: int
 
 .. _`ep93xx_register_spi.description`:
 
@@ -104,8 +115,9 @@ ep93xx_register_fb
 
     Register the framebuffer platform device.
 
-    :param struct ep93xxfb_mach_info \*data:
+    :param data:
         platform specific framebuffer configuration (__initdata)
+    :type data: struct ep93xxfb_mach_info \*
 
 .. _`ep93xx_register_keypad`:
 
@@ -116,8 +128,9 @@ ep93xx_register_keypad
 
     Register the keypad platform device.
 
-    :param struct ep93xx_keypad_platform_data \*data:
+    :param data:
         platform specific keypad configuration (__initdata)
+    :type data: struct ep93xx_keypad_platform_data \*
 
 .. This file was automatic generated / don't edit.
 

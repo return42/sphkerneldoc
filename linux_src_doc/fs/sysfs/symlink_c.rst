@@ -10,14 +10,17 @@ sysfs_create_link_sd
 
     create symlink to a given object.
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         directory we're creating the link in.
+    :type kn: struct kernfs_node \*
 
-    :param struct kobject \*target:
+    :param target:
         object we're pointing to.
+    :type target: struct kobject \*
 
-    :param const char \*name:
+    :param name:
         name of the symlink.
+    :type name: const char \*
 
 .. _`sysfs_create_link`:
 
@@ -28,14 +31,17 @@ sysfs_create_link
 
     create symlink between two objects.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object whose directory we're creating the link in.
+    :type kobj: struct kobject \*
 
-    :param struct kobject \*target:
+    :param target:
         object we're pointing to.
+    :type target: struct kobject \*
 
-    :param const char \*name:
+    :param name:
         name of the symlink.
+    :type name: const char \*
 
 .. _`sysfs_create_link_nowarn`:
 
@@ -46,14 +52,17 @@ sysfs_create_link_nowarn
 
     create symlink between two objects.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object whose directory we're creating the link in.
+    :type kobj: struct kobject \*
 
-    :param struct kobject \*target:
+    :param target:
         object we're pointing to.
+    :type target: struct kobject \*
 
-    :param const char \*name:
+    :param name:
         name of the symlink.
+    :type name: const char \*
 
 .. _`sysfs_create_link_nowarn.description`:
 
@@ -72,14 +81,17 @@ sysfs_delete_link
 
     remove symlink in object's directory.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object we're acting for.
+    :type kobj: struct kobject \*
 
-    :param struct kobject \*targ:
+    :param targ:
         object we're pointing to.
+    :type targ: struct kobject \*
 
-    :param const char \*name:
+    :param name:
         name of the symlink to remove.
+    :type name: const char \*
 
 .. _`sysfs_delete_link.description`:
 
@@ -98,11 +110,13 @@ sysfs_remove_link
 
     remove symlink in object's directory.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object we're acting for.
+    :type kobj: struct kobject \*
 
-    :param const char \*name:
+    :param name:
         name of the symlink to remove.
+    :type name: const char \*
 
 .. _`sysfs_rename_link_ns`:
 
@@ -113,20 +127,25 @@ sysfs_rename_link_ns
 
     rename symlink in object's directory.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         object we're acting for.
+    :type kobj: struct kobject \*
 
-    :param struct kobject \*targ:
+    :param targ:
         object we're pointing to.
+    :type targ: struct kobject \*
 
-    :param const char \*old:
+    :param old:
         previous name of the symlink.
+    :type old: const char \*
 
-    :param const char \*new:
+    :param new:
         new name of the symlink.
+    :type new: const char \*
 
-    :param const void \*new_ns:
+    :param new_ns:
         new namespace of the symlink.
+    :type new_ns: const void \*
 
 .. _`sysfs_rename_link_ns.description`:
 

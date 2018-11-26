@@ -10,11 +10,13 @@ ntfs_end_buffer_async_read
 
     NTFS kernel address space operations and page cache handling.
 
-    :param struct buffer_head \*bh:
+    :param bh:
         *undescribed*
+    :type bh: struct buffer_head \*
 
-    :param int uptodate:
+    :param uptodate:
         *undescribed*
+    :type uptodate: int
 
 .. _`ntfs_end_buffer_async_read.description`:
 
@@ -48,15 +50,16 @@ ntfs_read_block
 
     fill a \ ``page``\  of an address space with data
 
-    :param struct page \*page:
+    :param page:
         page cache page to fill with data
+    :type page: struct page \*
 
 .. _`ntfs_read_block.description`:
 
 Description
 -----------
 
-Fill the page \ ``page``\  of the address space belonging to the \ ``page``\ ->host inode.
+Fill the page \ ``page``\  of the address space belonging to the \ ``page->host``\  inode.
 We read each buffer asynchronously and when all buffers are read in, our io
 completion handler \ :c:func:`ntfs_end_buffer_read_async`\ , if required, automatically
 applies the mst fixups to the page before finally marking it uptodate and
@@ -78,11 +81,13 @@ ntfs_readpage
 
     fill a \ ``page``\  of a \ ``file``\  with data from the device
 
-    :param struct file \*file:
+    :param file:
         open file to which the page \ ``page``\  belongs or NULL
+    :type file: struct file \*
 
-    :param struct page \*page:
+    :param page:
         page cache page to fill with data
+    :type page: struct page \*
 
 .. _`ntfs_readpage.description`:
 
@@ -111,11 +116,13 @@ ntfs_write_block
 
     write a \ ``page``\  to the backing store
 
-    :param struct page \*page:
+    :param page:
         page cache page to write out
+    :type page: struct page \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         writeback control structure
+    :type wbc: struct writeback_control \*
 
 .. _`ntfs_write_block.description`:
 
@@ -148,11 +155,13 @@ ntfs_write_mst_block
 
     write a \ ``page``\  to the backing store
 
-    :param struct page \*page:
+    :param page:
         page cache page to write out
+    :type page: struct page \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         writeback control structure
+    :type wbc: struct writeback_control \*
 
 .. _`ntfs_write_mst_block.description`:
 
@@ -187,11 +196,13 @@ ntfs_writepage
 
     write a \ ``page``\  to the backing store
 
-    :param struct page \*page:
+    :param page:
         page cache page to write out
+    :type page: struct page \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         writeback control structure
+    :type wbc: struct writeback_control \*
 
 .. _`ntfs_writepage.description`:
 
@@ -225,11 +236,13 @@ ntfs_bmap
 
     map logical file block to physical device block
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space mapping to which the block to be mapped belongs
+    :type mapping: struct address_space \*
 
-    :param sector_t block:
+    :param block:
         logical block to map to its physical device block
+    :type block: sector_t
 
 .. _`ntfs_bmap.description`:
 
@@ -268,11 +281,13 @@ mark_ntfs_record_dirty
 
     mark an ntfs record dirty
 
-    :param struct page \*page:
+    :param page:
         page containing the ntfs record to mark dirty
+    :type page: struct page \*
 
-    :param const unsigned int ofs:
+    :param ofs:
         byte offset within \ ``page``\  at which the ntfs record begins
+    :type ofs: const unsigned int
 
 .. _`mark_ntfs_record_dirty.description`:
 

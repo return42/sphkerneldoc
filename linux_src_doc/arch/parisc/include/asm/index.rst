@@ -7,5 +7,4 @@ asm
 .. toctree::
     :maxdepth: 1
 
-    atomic_h
     bitops_h

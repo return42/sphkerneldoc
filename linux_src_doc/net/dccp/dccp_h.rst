@@ -10,14 +10,17 @@ dccp_loss_count
 
     Approximate the number of lost data packets in a burst loss
 
-    :param const u64 s1:
+    :param s1:
         last known sequence number before the loss ('hole')
+    :type s1: const u64
 
-    :param const u64 s2:
+    :param s2:
         first sequence number seen after the 'hole'
+    :type s2: const u64
 
-    :param const u64 ndp:
+    :param ndp:
         NDP count on packet with sequence number \ ``s2``\ 
+    :type ndp: const u64
 
 .. _`dccp_loss_free`:
 
@@ -28,14 +31,17 @@ dccp_loss_free
 
     Evaluate condition for data loss from RFC 4340, 7.7.1
 
-    :param const u64 s1:
+    :param s1:
         *undescribed*
+    :type s1: const u64
 
-    :param const u64 s2:
+    :param s2:
         *undescribed*
+    :type s2: const u64
 
-    :param const u64 ndp:
+    :param ndp:
         *undescribed*
+    :type ndp: const u64
 
 .. This file was automatic generated / don't edit.
 

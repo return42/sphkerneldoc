@@ -10,11 +10,13 @@ llc_build_and_send_pkt
 
     Connection data sending for upper layers.
 
-    :param struct sock \*sk:
+    :param sk:
         connection
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send
+    :type skb: struct sk_buff \*
 
 .. _`llc_build_and_send_pkt.description`:
 
@@ -38,17 +40,21 @@ llc_establish_connection
 
     Called by upper layer to establish a conn
 
-    :param struct sock \*sk:
+    :param sk:
         connection
+    :type sk: struct sock \*
 
-    :param u8 \*lmac:
+    :param lmac:
         local mac address
+    :type lmac: u8 \*
 
-    :param u8 \*dmac:
+    :param dmac:
         destination mac address
+    :type dmac: u8 \*
 
-    :param u8 dsap:
+    :param dsap:
         destination sap
+    :type dsap: u8
 
 .. _`llc_establish_connection.description`:
 
@@ -70,8 +76,9 @@ llc_send_disc
 
     Called by upper layer to close a connection
 
-    :param struct sock \*sk:
+    :param sk:
         connection to be closed
+    :type sk: struct sock \*
 
 .. _`llc_send_disc.description`:
 

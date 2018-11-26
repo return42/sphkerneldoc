@@ -10,17 +10,21 @@ acpi_parse_trt
 
     Thermal Relationship Table \_TRT for passive cooling
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI handle of the device contains \_TRT
+    :type handle: acpi_handle
 
-    :param int \*trt_count:
+    :param trt_count:
         the number of valid entries resulted from parsing \_TRT
+    :type trt_count: int \*
 
-    :param struct trt \*\*trtp:
+    :param trtp:
         pointer to pointer of array of \_TRT entries in parsing result
+    :type trtp: struct trt \*\*
 
-    :param bool create_dev:
+    :param create_dev:
         whether to create platform devices for target and source
+    :type create_dev: bool
 
 .. _`acpi_parse_art`:
 
@@ -31,17 +35,21 @@ acpi_parse_art
 
     Parse Active Relationship Table \_ART
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI handle of the device contains \_ART
+    :type handle: acpi_handle
 
-    :param int \*art_count:
+    :param art_count:
         the number of valid entries resulted from parsing \_ART
+    :type art_count: int \*
 
-    :param struct art \*\*artp:
+    :param artp:
         pointer to pointer of array of art entries in parsing result
+    :type artp: struct art \*\*
 
-    :param bool create_dev:
+    :param create_dev:
         whether to create platform devices for target and source
+    :type create_dev: bool
 
 .. This file was automatic generated / don't edit.
 

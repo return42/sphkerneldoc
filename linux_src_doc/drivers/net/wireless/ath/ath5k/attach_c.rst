@@ -10,8 +10,9 @@ ath5k_hw_post
 
     Power On Self Test helper function
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_init`:
 
@@ -22,8 +23,9 @@ ath5k_hw_init
 
     Check if hw is supported and init the needed structs
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\  associated with the device
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_init.description`:
 
@@ -44,8 +46,9 @@ ath5k_hw_deinit
 
     Free the \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. This file was automatic generated / don't edit.
 

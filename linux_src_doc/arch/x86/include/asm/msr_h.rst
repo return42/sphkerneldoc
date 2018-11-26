@@ -10,8 +10,9 @@ rdtsc
 
     returns the current TSC without ordering constraints
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rdtsc.description`:
 
@@ -33,8 +34,9 @@ rdtsc_ordered
 
     read the current TSC in program order
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rdtsc_ordered.description`:
 

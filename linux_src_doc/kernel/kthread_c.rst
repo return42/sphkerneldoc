@@ -10,8 +10,9 @@ kthread_should_stop
 
     should this kthread return now?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kthread_should_stop.description`:
 
@@ -31,8 +32,9 @@ kthread_should_park
 
     should this kthread park now?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kthread_should_park.description`:
 
@@ -56,8 +58,9 @@ kthread_freezable_should_stop
 
     should this freezable kthread return now?
 
-    :param bool \*was_frozen:
+    :param was_frozen:
         optional out parameter, indicates whether \ ``current``\  was frozen
+    :type was_frozen: bool \*
 
 .. _`kthread_freezable_should_stop.description`:
 
@@ -78,8 +81,9 @@ kthread_data
 
     return data value specified on kthread creation
 
-    :param struct task_struct \*task:
+    :param task:
         kthread task in question
+    :type task: struct task_struct \*
 
 .. _`kthread_data.description`:
 
@@ -99,8 +103,9 @@ kthread_probe_data
 
     speculative version of \ :c:func:`kthread_data`\ 
 
-    :param struct task_struct \*task:
+    :param task:
         possible kthread task in question
+    :type task: struct task_struct \*
 
 .. _`kthread_probe_data.description`:
 
@@ -124,14 +129,17 @@ kthread_create_on_node
     :param int (\*threadfn)(void \*data):
         the function to run until signal_pending(current).
 
-    :param void \*data:
+    :param data:
         data ptr for \ ``threadfn``\ .
+    :type data: void \*
 
-    :param int node:
+    :param node:
         task and thread structures for the thread are allocated on this node
+    :type node: int
 
-    :param const char namefmt:
+    :param namefmt:
         printf-style name for the thread.
+    :type namefmt: const char
 
     :param ellipsis ellipsis:
         variable arguments
@@ -166,11 +174,13 @@ kthread_bind
 
     bind a just-created kthread to a cpu.
 
-    :param struct task_struct \*p:
+    :param p:
         thread created by \ :c:func:`kthread_create`\ .
+    :type p: struct task_struct \*
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu (might not be online, must be possible) for \ ``k``\  to run on.
+    :type cpu: unsigned int
 
 .. _`kthread_bind.description`:
 
@@ -193,15 +203,18 @@ kthread_create_on_cpu
     :param int (\*threadfn)(void \*data):
         the function to run until signal_pending(current).
 
-    :param void \*data:
+    :param data:
         data ptr for \ ``threadfn``\ .
+    :type data: void \*
 
-    :param unsigned int cpu:
+    :param cpu:
         The cpu on which the thread should be bound,
+    :type cpu: unsigned int
 
-    :param const char \*namefmt:
+    :param namefmt:
         printf-style name for the thread. Format is restricted
         to "name.*%u". Code fills in cpu number.
+    :type namefmt: const char \*
 
 .. _`kthread_create_on_cpu.description`:
 
@@ -220,8 +233,9 @@ kthread_unpark
 
     unpark a thread created by \ :c:func:`kthread_create`\ .
 
-    :param struct task_struct \*k:
+    :param k:
         thread created by \ :c:func:`kthread_create`\ .
+    :type k: struct task_struct \*
 
 .. _`kthread_unpark.description`:
 
@@ -241,8 +255,9 @@ kthread_park
 
     park a thread created by \ :c:func:`kthread_create`\ .
 
-    :param struct task_struct \*k:
+    :param k:
         thread created by \ :c:func:`kthread_create`\ .
+    :type k: struct task_struct \*
 
 .. _`kthread_park.description`:
 
@@ -266,8 +281,9 @@ kthread_stop
 
     stop a thread created by \ :c:func:`kthread_create`\ .
 
-    :param struct task_struct \*k:
+    :param k:
         thread created by \ :c:func:`kthread_create`\ .
+    :type k: struct task_struct \*
 
 .. _`kthread_stop.description`:
 
@@ -294,8 +310,9 @@ kthread_worker_fn
 
     kthread function to process kthread_worker
 
-    :param void \*worker_ptr:
+    :param worker_ptr:
         pointer to initialized kthread_worker
+    :type worker_ptr: void \*
 
 .. _`kthread_worker_fn.description`:
 
@@ -322,11 +339,13 @@ kthread_create_worker
 
     create a kthread worker
 
-    :param unsigned int flags:
+    :param flags:
         flags modifying the default behavior of the worker
+    :type flags: unsigned int
 
-    :param const char namefmt:
+    :param namefmt:
         printf-style name for the kthread worker (task).
+    :type namefmt: const char
 
     :param ellipsis ellipsis:
         variable arguments
@@ -349,14 +368,17 @@ kthread_create_worker_on_cpu
 
     create a kthread worker and bind it it to a given CPU and the associated NUMA node.
 
-    :param int cpu:
+    :param cpu:
         CPU number
+    :type cpu: int
 
-    :param unsigned int flags:
+    :param flags:
         flags modifying the default behavior of the worker
+    :type flags: unsigned int
 
-    :param const char namefmt:
+    :param namefmt:
         printf-style name for the kthread worker (task).
+    :type namefmt: const char
 
     :param ellipsis ellipsis:
         variable arguments
@@ -385,11 +407,13 @@ kthread_queue_work
 
     queue a kthread_work
 
-    :param struct kthread_worker \*worker:
+    :param worker:
         target kthread_worker
+    :type worker: struct kthread_worker \*
 
-    :param struct kthread_work \*work:
+    :param work:
         kthread_work to queue
+    :type work: struct kthread_work \*
 
 .. _`kthread_queue_work.description`:
 
@@ -412,8 +436,9 @@ kthread_delayed_work_timer_fn
 
     callback that queues the associated kthread delayed work when the timer expires.
 
-    :param struct timer_list \*t:
+    :param t:
         pointer to the expired timer
+    :type t: struct timer_list \*
 
 .. _`kthread_delayed_work_timer_fn.description`:
 
@@ -432,14 +457,17 @@ kthread_queue_delayed_work
 
     queue the associated kthread work after a delay.
 
-    :param struct kthread_worker \*worker:
+    :param worker:
         target kthread_worker
+    :type worker: struct kthread_worker \*
 
-    :param struct kthread_delayed_work \*dwork:
+    :param dwork:
         kthread_delayed_work to queue
+    :type dwork: struct kthread_delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait before queuing
+    :type delay: unsigned long
 
 .. _`kthread_queue_delayed_work.description`:
 
@@ -468,8 +496,9 @@ kthread_flush_work
 
     flush a kthread_work
 
-    :param struct kthread_work \*work:
+    :param work:
         work to flush
+    :type work: struct kthread_work \*
 
 .. _`kthread_flush_work.description`:
 
@@ -487,14 +516,17 @@ kthread_mod_delayed_work
 
     modify delay of or queue a kthread delayed work
 
-    :param struct kthread_worker \*worker:
+    :param worker:
         kthread worker to use
+    :type worker: struct kthread_worker \*
 
-    :param struct kthread_delayed_work \*dwork:
+    :param dwork:
         kthread delayed work to queue
+    :type dwork: struct kthread_delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait before queuing
+    :type delay: unsigned long
 
 .. _`kthread_mod_delayed_work.description`:
 
@@ -532,8 +564,9 @@ kthread_cancel_work_sync
 
     cancel a kthread work and wait for it to finish
 
-    :param struct kthread_work \*work:
+    :param work:
         the kthread work to cancel
+    :type work: struct kthread_work \*
 
 .. _`kthread_cancel_work_sync.description`:
 
@@ -566,8 +599,9 @@ kthread_cancel_delayed_work_sync
 
     cancel a kthread delayed work and wait for it to finish.
 
-    :param struct kthread_delayed_work \*dwork:
+    :param dwork:
         the kthread delayed work to cancel
+    :type dwork: struct kthread_delayed_work \*
 
 .. _`kthread_cancel_delayed_work_sync.description`:
 
@@ -592,8 +626,9 @@ kthread_flush_worker
 
     flush all current works on a kthread_worker
 
-    :param struct kthread_worker \*worker:
+    :param worker:
         worker to flush
+    :type worker: struct kthread_worker \*
 
 .. _`kthread_flush_worker.description`:
 
@@ -612,8 +647,9 @@ kthread_destroy_worker
 
     destroy a kthread worker
 
-    :param struct kthread_worker \*worker:
+    :param worker:
         worker to be destroyed
+    :type worker: struct kthread_worker \*
 
 .. _`kthread_destroy_worker.description`:
 
@@ -633,8 +669,9 @@ kthread_associate_blkcg
 
     associate blkcg to current kthread
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         the cgroup info
+    :type css: struct cgroup_subsys_state \*
 
 .. _`kthread_associate_blkcg.description`:
 
@@ -656,8 +693,9 @@ kthread_blkcg
 
     get associated blkcg css of current kthread
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kthread_blkcg.description`:
 

@@ -54,11 +54,13 @@ xgpio_get
 
     Read the specified signal of the GPIO device.
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
 
-    :param unsigned int gpio:
+    :param gpio:
         GPIO signal number.
+    :type gpio: unsigned int
 
 .. _`xgpio_get.description`:
 
@@ -84,14 +86,17 @@ xgpio_set
 
     Write the specified signal of the GPIO device.
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
 
-    :param unsigned int gpio:
+    :param gpio:
         GPIO signal number.
+    :type gpio: unsigned int
 
-    :param int val:
+    :param val:
         Value to be written to specified signal.
+    :type val: int
 
 .. _`xgpio_set.description`:
 
@@ -110,14 +115,17 @@ xgpio_set_multiple
 
     Write the specified signals of the GPIO device.
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
 
-    :param unsigned long \*mask:
+    :param mask:
         Mask of the GPIOS to modify.
+    :type mask: unsigned long \*
 
-    :param unsigned long \*bits:
+    :param bits:
         Value to be wrote on each GPIO
+    :type bits: unsigned long \*
 
 .. _`xgpio_set_multiple.description`:
 
@@ -136,11 +144,13 @@ xgpio_dir_in
 
     Set the direction of the specified GPIO signal as input.
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
 
-    :param unsigned int gpio:
+    :param gpio:
         GPIO signal number.
+    :type gpio: unsigned int
 
 .. _`xgpio_dir_in.return`:
 
@@ -159,14 +169,17 @@ xgpio_dir_out
 
     Set the direction of the specified GPIO signal as output.
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
 
-    :param unsigned int gpio:
+    :param gpio:
         GPIO signal number.
+    :type gpio: unsigned int
 
-    :param int val:
+    :param val:
         Value to be written to specified signal.
+    :type val: int
 
 .. _`xgpio_dir_out.description`:
 
@@ -192,8 +205,9 @@ xgpio_save_regs
 
     Set initial values of GPIO pins
 
-    :param struct of_mm_gpio_chip \*mm_gc:
+    :param mm_gc:
         Pointer to memory mapped GPIO chip structure
+    :type mm_gc: struct of_mm_gpio_chip \*
 
 .. _`xgpio_remove`:
 
@@ -204,8 +218,9 @@ xgpio_remove
 
     Remove method for the GPIO device.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to the platform device
+    :type pdev: struct platform_device \*
 
 .. _`xgpio_remove.description`:
 
@@ -230,8 +245,9 @@ xgpio_probe
 
     Probe method for the GPIO device.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to the platform device
+    :type pdev: struct platform_device \*
 
 .. _`xgpio_probe.return`:
 

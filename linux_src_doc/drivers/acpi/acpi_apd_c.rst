@@ -67,11 +67,13 @@ acpi_apd_create_device
 
     Return value > 0 on success of creating device.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct acpi_device \*
 
-    :param const struct acpi_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct acpi_device_id \*
 
 .. This file was automatic generated / don't edit.
 

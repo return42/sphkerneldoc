@@ -10,11 +10,13 @@ __spi_register_driver
 
     register a SPI driver
 
-    :param struct module \*owner:
+    :param owner:
         owner module of the driver to register
+    :type owner: struct module \*
 
-    :param struct spi_driver \*sdrv:
+    :param sdrv:
         the driver to register
+    :type sdrv: struct spi_driver \*
 
 .. _`__spi_register_driver.context`:
 
@@ -39,8 +41,9 @@ spi_alloc_device
 
     Allocate a new SPI device
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         Controller to which device is connected
+    :type ctlr: struct spi_controller \*
 
 .. _`spi_alloc_device.context`:
 
@@ -80,8 +83,9 @@ spi_add_device
 
     Add spi_device allocated with spi_alloc_device
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi_device to register
+    :type spi: struct spi_device \*
 
 .. _`spi_add_device.description`:
 
@@ -107,11 +111,13 @@ spi_new_device
 
     instantiate one new SPI device
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         Controller to which device is connected
+    :type ctlr: struct spi_controller \*
 
-    :param struct spi_board_info \*chip:
+    :param chip:
         Describes the SPI device
+    :type chip: struct spi_board_info \*
 
 .. _`spi_new_device.context`:
 
@@ -147,8 +153,9 @@ spi_unregister_device
 
     unregister a single SPI device
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi_device to unregister
+    :type spi: struct spi_device \*
 
 .. _`spi_unregister_device.description`:
 
@@ -167,11 +174,13 @@ spi_register_board_info
 
     register SPI devices for a given board
 
-    :param struct spi_board_info const \*info:
+    :param info:
         array of chip descriptors
+    :type info: struct spi_board_info const \*
 
-    :param unsigned n:
+    :param n:
         how many descriptors are provided
+    :type n: unsigned
 
 .. _`spi_register_board_info.context`:
 
@@ -215,8 +224,9 @@ spi_finalize_current_transfer
 
     report completion of a transfer
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         the controller reporting completion
+    :type ctlr: struct spi_controller \*
 
 .. _`spi_finalize_current_transfer.description`:
 
@@ -236,11 +246,13 @@ __spi_pump_messages
 
     function which processes spi message queue
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         controller to process queue for
+    :type ctlr: struct spi_controller \*
 
-    :param bool in_kthread:
+    :param in_kthread:
         true if we are in the context of the message pump thread
+    :type in_kthread: bool
 
 .. _`__spi_pump_messages.description`:
 
@@ -264,8 +276,9 @@ spi_pump_messages
 
     kthread work function which processes spi message queue
 
-    :param struct kthread_work \*work:
+    :param work:
         pointer to kthread work struct contained in the controller struct
+    :type work: struct kthread_work \*
 
 .. _`spi_get_next_queued_message`:
 
@@ -276,8 +289,9 @@ spi_get_next_queued_message
 
     called by driver to check for queued messages
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         the controller to check for queued messages
+    :type ctlr: struct spi_controller \*
 
 .. _`spi_get_next_queued_message.description`:
 
@@ -303,8 +317,9 @@ spi_finalize_current_message
 
     the current message is complete
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         the controller to return the message to
+    :type ctlr: struct spi_controller \*
 
 .. _`spi_finalize_current_message.description`:
 
@@ -323,11 +338,13 @@ spi_queued_transfer
 
     transfer function for queued transfers
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device which is requesting transfer
+    :type spi: struct spi_device \*
 
-    :param struct spi_message \*msg:
+    :param msg:
         spi message which is to handled is queued to driver queue
+    :type msg: struct spi_message \*
 
 .. _`spi_queued_transfer.return`:
 
@@ -345,8 +362,9 @@ spi_flush_queue
 
     Send all pending messages in the queue from the callers' context
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         controller to process queue for
+    :type ctlr: struct spi_controller \*
 
 .. _`spi_flush_queue.description`:
 
@@ -367,8 +385,9 @@ of_register_spi_devices
 
     Register child devices onto the SPI bus
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         Pointer to spi_controller device
+    :type ctlr: struct spi_controller \*
 
 .. _`of_register_spi_devices.description`:
 
@@ -387,8 +406,9 @@ spi_slave_abort
 
     abort the ongoing transfer request on an SPI slave controller
 
-    :param struct spi_device \*spi:
+    :param spi:
         device used for the current transfer
+    :type spi: struct spi_device \*
 
 .. _`__spi_alloc_controller`:
 
@@ -399,17 +419,20 @@ __spi_alloc_controller
 
     allocate an SPI master or slave controller
 
-    :param struct device \*dev:
+    :param dev:
         the controller, possibly using the platform_bus
+    :type dev: struct device \*
 
-    :param unsigned int size:
+    :param size:
         how much zeroed driver-private data to allocate; the pointer to this
         memory is in the driver_data field of the returned device,
         accessible with \ :c:func:`spi_controller_get_devdata`\ .
+    :type size: unsigned int
 
-    :param bool slave:
+    :param slave:
         flag indicating whether to allocate an SPI master (false) or SPI
         slave (true) controller
+    :type slave: bool
 
 .. _`__spi_alloc_controller.context`:
 
@@ -450,9 +473,10 @@ spi_register_controller
 
     register SPI master or slave controller
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         initialized master, originally from \ :c:func:`spi_alloc_master`\  or
         \ :c:func:`spi_alloc_slave`\ 
+    :type ctlr: struct spi_controller \*
 
 .. _`spi_register_controller.context`:
 
@@ -497,12 +521,14 @@ devm_spi_register_controller
 
     register managed SPI master or slave controller
 
-    :param struct device \*dev:
+    :param dev:
         device managing SPI controller
+    :type dev: struct device \*
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         initialized controller, originally from \ :c:func:`spi_alloc_master`\  or
         \ :c:func:`spi_alloc_slave`\ 
+    :type ctlr: struct spi_controller \*
 
 .. _`devm_spi_register_controller.context`:
 
@@ -535,8 +561,9 @@ spi_unregister_controller
 
     unregister SPI master or slave controller
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         the controller being unregistered
+    :type ctlr: struct spi_controller \*
 
 .. _`spi_unregister_controller.context`:
 
@@ -566,8 +593,9 @@ spi_busnum_to_master
 
     look up master associated with bus_num
 
-    :param u16 bus_num:
+    :param bus_num:
         the master's bus number
+    :type bus_num: u16
 
 .. _`spi_busnum_to_master.context`:
 
@@ -602,17 +630,21 @@ spi_res_alloc
 
     allocate a spi resource that is life-cycle managed during the processing of a spi_message while using spi_transfer_one
 
-    :param struct spi_device \*spi:
+    :param spi:
         the spi device for which we allocate memory
+    :type spi: struct spi_device \*
 
-    :param spi_res_release_t release:
+    :param release:
         the release code to execute for this resource
+    :type release: spi_res_release_t
 
-    :param size_t size:
+    :param size:
         size to alloc and return
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         GFP allocation flags
+    :type gfp: gfp_t
 
 .. _`spi_res_alloc.return`:
 
@@ -633,8 +665,9 @@ spi_res_free
 
     free an spi resource
 
-    :param void \*res:
+    :param res:
         pointer to the custom data of a resource
+    :type res: void \*
 
 .. _`spi_res_add`:
 
@@ -645,11 +678,13 @@ spi_res_add
 
     add a spi_res to the spi_message
 
-    :param struct spi_message \*message:
+    :param message:
         the spi message
+    :type message: struct spi_message \*
 
-    :param void \*res:
+    :param res:
         the spi_resource
+    :type res: void \*
 
 .. _`spi_res_release`:
 
@@ -660,11 +695,13 @@ spi_res_release
 
     release all spi resources for this message
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         the \ ``spi_controller``\ 
+    :type ctlr: struct spi_controller \*
 
-    :param struct spi_message \*message:
+    :param message:
         the \ ``spi_message``\ 
+    :type message: struct spi_message \*
 
 .. _`spi_replace_transfers`:
 
@@ -675,27 +712,34 @@ spi_replace_transfers
 
     replace transfers with several transfers and register change with spi_message.resources
 
-    :param struct spi_message \*msg:
+    :param msg:
         the spi_message we work upon
+    :type msg: struct spi_message \*
 
-    :param struct spi_transfer \*xfer_first:
+    :param xfer_first:
         the first spi_transfer we want to replace
+    :type xfer_first: struct spi_transfer \*
 
-    :param size_t remove:
+    :param remove:
         number of transfers to remove
+    :type remove: size_t
 
-    :param size_t insert:
+    :param insert:
         the number of transfers we want to insert instead
+    :type insert: size_t
 
-    :param spi_replaced_release_t release:
+    :param release:
         extra release code necessary in some circumstances
+    :type release: spi_replaced_release_t
 
-    :param size_t extradatasize:
+    :param extradatasize:
         extra data to allocate (with alignment guarantees
         of struct \ ``spi_transfer``\ )
+    :type extradatasize: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp flags
+    :type gfp: gfp_t
 
 .. _`spi_replace_transfers.return`:
 
@@ -714,17 +758,21 @@ spi_split_transfers_maxsize
 
     split spi transfers into multiple transfers when an individual transfer exceeds a certain size
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         the \ ``spi_controller``\  for this transfer
+    :type ctlr: struct spi_controller \*
 
-    :param struct spi_message \*msg:
+    :param msg:
         the \ ``spi_message``\  to transform
+    :type msg: struct spi_message \*
 
-    :param size_t maxsize:
+    :param maxsize:
         the maximum when to apply this
+    :type maxsize: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         GFP allocation flags
+    :type gfp: gfp_t
 
 .. _`spi_split_transfers_maxsize.return`:
 
@@ -742,8 +790,9 @@ spi_setup
 
     setup SPI mode and clock rate
 
-    :param struct spi_device \*spi:
+    :param spi:
         the device whose settings are being modified
+    :type spi: struct spi_device \*
 
 .. _`spi_setup.context`:
 
@@ -786,11 +835,13 @@ spi_async
 
     asynchronous SPI transfer
 
-    :param struct spi_device \*spi:
+    :param spi:
         device with which data will be exchanged
+    :type spi: struct spi_device \*
 
-    :param struct spi_message \*message:
+    :param message:
         describes the data transfers, including completion callback
+    :type message: struct spi_message \*
 
 .. _`spi_async.context`:
 
@@ -843,11 +894,13 @@ spi_async_locked
 
     version of spi_async with exclusive bus usage
 
-    :param struct spi_device \*spi:
+    :param spi:
         device with which data will be exchanged
+    :type spi: struct spi_device \*
 
-    :param struct spi_message \*message:
+    :param message:
         describes the data transfers, including completion callback
+    :type message: struct spi_message \*
 
 .. _`spi_async_locked.context`:
 
@@ -900,11 +953,13 @@ spi_sync
 
     blocking/synchronous SPI data transfers
 
-    :param struct spi_device \*spi:
+    :param spi:
         device with which data will be exchanged
+    :type spi: struct spi_device \*
 
-    :param struct spi_message \*message:
+    :param message:
         describes the data transfers
+    :type message: struct spi_message \*
 
 .. _`spi_sync.context`:
 
@@ -947,11 +1002,13 @@ spi_sync_locked
 
     version of spi_sync with exclusive bus usage
 
-    :param struct spi_device \*spi:
+    :param spi:
         device with which data will be exchanged
+    :type spi: struct spi_device \*
 
-    :param struct spi_message \*message:
+    :param message:
         describes the data transfers
+    :type message: struct spi_message \*
 
 .. _`spi_sync_locked.context`:
 
@@ -989,8 +1046,9 @@ spi_bus_lock
 
     obtain a lock for exclusive SPI bus usage
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         SPI bus master that should be locked for exclusive bus access
+    :type ctlr: struct spi_controller \*
 
 .. _`spi_bus_lock.context`:
 
@@ -1028,8 +1086,9 @@ spi_bus_unlock
 
     release the lock for exclusive SPI bus usage
 
-    :param struct spi_controller \*ctlr:
+    :param ctlr:
         SPI bus master that was locked for exclusive bus access
+    :type ctlr: struct spi_controller \*
 
 .. _`spi_bus_unlock.context`:
 
@@ -1065,20 +1124,25 @@ spi_write_then_read
 
     SPI synchronous write followed by read
 
-    :param struct spi_device \*spi:
+    :param spi:
         device with which data will be exchanged
+    :type spi: struct spi_device \*
 
-    :param const void \*txbuf:
+    :param txbuf:
         data to be written (need not be dma-safe)
+    :type txbuf: const void \*
 
-    :param unsigned n_tx:
+    :param n_tx:
         size of txbuf, in bytes
+    :type n_tx: unsigned
 
-    :param void \*rxbuf:
+    :param rxbuf:
         buffer into which data will be read (need not be dma-safe)
+    :type rxbuf: void \*
 
-    :param unsigned n_rx:
+    :param n_rx:
         size of rxbuf, in bytes
+    :type n_rx: unsigned
 
 .. _`spi_write_then_read.context`:
 

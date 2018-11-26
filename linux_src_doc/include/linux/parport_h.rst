@@ -10,8 +10,9 @@ parport_yield
 
     relinquish a parallel port temporarily
 
-    :param struct pardevice \*dev:
+    :param dev:
         a device on the parallel port
+    :type dev: struct pardevice \*
 
 .. _`parport_yield.description`:
 
@@ -43,8 +44,9 @@ parport_yield_blocking
 
     relinquish a parallel port temporarily
 
-    :param struct pardevice \*dev:
+    :param dev:
         a device on the parallel port
+    :type dev: struct pardevice \*
 
 .. _`parport_yield_blocking.description`:
 

@@ -10,8 +10,9 @@ tomoyo_memory_free
 
     Free memory for elements.
 
-    :param void \*ptr:
+    :param ptr:
         Pointer to allocated memory.
+    :type ptr: void \*
 
 .. _`tomoyo_memory_free.description`:
 
@@ -31,8 +32,9 @@ tomoyo_struct_used_by_io_buffer
 
     Check whether the list element is used by /sys/kernel/security/tomoyo/ users or not.
 
-    :param const struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: const struct list_head \*
 
 .. _`tomoyo_struct_used_by_io_buffer.description`:
 
@@ -51,8 +53,9 @@ tomoyo_name_used_by_io_buffer
 
     Check whether the string is used by /sys/kernel/security/tomoyo/ users or not.
 
-    :param const char \*string:
+    :param string:
         String to check.
+    :type string: const char \*
 
 .. _`tomoyo_name_used_by_io_buffer.description`:
 
@@ -71,8 +74,9 @@ tomoyo_del_transition_control
 
     Delete members in "struct tomoyo_transition_control".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_transition_control.description`:
 
@@ -90,8 +94,9 @@ tomoyo_del_aggregator
 
     Delete members in "struct tomoyo_aggregator".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_aggregator.description`:
 
@@ -109,8 +114,9 @@ tomoyo_del_manager
 
     Delete members in "struct tomoyo_manager".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_manager.description`:
 
@@ -128,8 +134,9 @@ tomoyo_del_acl
 
     Delete members in "struct tomoyo_acl_info".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_acl.description`:
 
@@ -147,8 +154,9 @@ tomoyo_del_domain
 
     Delete members in "struct tomoyo_domain_info".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_domain.description`:
 
@@ -168,8 +176,9 @@ tomoyo_del_condition
 
     Delete members in "struct tomoyo_condition".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_condition.description`:
 
@@ -187,8 +196,9 @@ tomoyo_del_name
 
     Delete members in "struct tomoyo_name".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_name.description`:
 
@@ -206,8 +216,9 @@ tomoyo_del_path_group
 
     Delete members in "struct tomoyo_path_group".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_path_group.description`:
 
@@ -225,8 +236,9 @@ tomoyo_del_group
 
     Delete "struct tomoyo_group".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_group.description`:
 
@@ -244,8 +256,9 @@ tomoyo_del_address_group
 
     Delete members in "struct tomoyo_address_group".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_address_group.description`:
 
@@ -263,8 +276,9 @@ tomoyo_del_number_group
 
     Delete members in "struct tomoyo_number_group".
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_del_number_group.description`:
 
@@ -282,11 +296,13 @@ tomoyo_try_to_gc
 
     Try to \ :c:func:`kfree`\  an entry.
 
-    :param const enum tomoyo_policy_id type:
+    :param type:
         One of values in "enum tomoyo_policy_id".
+    :type type: const enum tomoyo_policy_id
 
-    :param struct list_head \*element:
+    :param element:
         Pointer to "struct list_head".
+    :type element: struct list_head \*
 
 .. _`tomoyo_try_to_gc.description`:
 
@@ -306,11 +322,13 @@ tomoyo_collect_member
 
     Delete elements with "struct tomoyo_acl_head".
 
-    :param const enum tomoyo_policy_id id:
+    :param id:
         One of values in "enum tomoyo_policy_id".
+    :type id: const enum tomoyo_policy_id
 
-    :param struct list_head \*member_list:
+    :param member_list:
         Pointer to "struct list_head".
+    :type member_list: struct list_head \*
 
 .. _`tomoyo_collect_member.description`:
 
@@ -328,8 +346,9 @@ tomoyo_collect_acl
 
     Delete elements in "struct tomoyo_domain_info".
 
-    :param struct list_head \*list:
+    :param list:
         Pointer to "struct list_head".
+    :type list: struct list_head \*
 
 .. _`tomoyo_collect_acl.description`:
 
@@ -347,8 +366,9 @@ tomoyo_collect_entry
 
     Try to \ :c:func:`kfree`\  deleted elements.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_collect_entry.description`:
 
@@ -366,8 +386,9 @@ tomoyo_gc_thread
 
     Garbage collector thread function.
 
-    :param void \*unused:
+    :param unused:
         Unused.
+    :type unused: void \*
 
 .. _`tomoyo_gc_thread.description`:
 
@@ -385,11 +406,13 @@ tomoyo_notify_gc
 
     Register/unregister /sys/kernel/security/tomoyo/ users.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const bool is_register:
+    :param is_register:
         True if register, false if unregister.
+    :type is_register: const bool
 
 .. _`tomoyo_notify_gc.description`:
 

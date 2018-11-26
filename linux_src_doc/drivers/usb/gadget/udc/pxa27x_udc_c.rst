@@ -10,20 +10,25 @@ is_match_usb_pxa
 
     check if usb_ep and pxa_ep match
 
-    :param struct udc_usb_ep \*udc_usb_ep:
+    :param udc_usb_ep:
         usb endpoint
+    :type udc_usb_ep: struct udc_usb_ep \*
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         pxa endpoint
+    :type ep: struct pxa_ep \*
 
-    :param int config:
+    :param config:
         configuration required in pxa_ep
+    :type config: int
 
-    :param int interface:
+    :param interface:
         interface required in pxa_ep
+    :type interface: int
 
-    :param int altsetting:
+    :param altsetting:
         altsetting required in pxa_ep
+    :type altsetting: int
 
 .. _`is_match_usb_pxa.description`:
 
@@ -41,11 +46,13 @@ find_pxa_ep
 
     find pxa_ep structure matching udc_usb_ep
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         pxa udc
+    :type udc: struct pxa_udc \*
 
-    :param struct udc_usb_ep \*udc_usb_ep:
+    :param udc_usb_ep:
         udc_usb_ep structure
+    :type udc_usb_ep: struct udc_usb_ep \*
 
 .. _`find_pxa_ep.description`:
 
@@ -81,8 +88,9 @@ update_pxa_ep_matches
 
     update pxa_ep cached values in all udc_usb_ep
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         pxa udc
+    :type udc: struct pxa_udc \*
 
 .. _`update_pxa_ep_matches.context`:
 
@@ -109,8 +117,9 @@ pio_irq_enable
 
     Enables irq generation for one endpoint
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         udc endpoint
+    :type ep: struct pxa_ep \*
 
 .. _`pio_irq_disable`:
 
@@ -121,8 +130,9 @@ pio_irq_disable
 
     Disables irq generation for one endpoint
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         udc endpoint
+    :type ep: struct pxa_ep \*
 
 .. _`udc_set_mask_udccr`:
 
@@ -133,11 +143,13 @@ udc_set_mask_UDCCR
 
     set bits in UDCCR
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
-    :param int mask:
+    :param mask:
         bits to set in UDCCR
+    :type mask: int
 
 .. _`udc_set_mask_udccr.description`:
 
@@ -155,11 +167,13 @@ udc_clear_mask_UDCCR
 
     clears bits in UDCCR
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
-    :param int mask:
+    :param mask:
         bit to clear in UDCCR
+    :type mask: int
 
 .. _`udc_clear_mask_udccr.description`:
 
@@ -177,11 +191,13 @@ ep_write_UDCCSR
 
     set bits in UDCCSR
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct pxa_ep \*
 
-    :param int mask:
+    :param mask:
         bits to set in UDCCR
+    :type mask: int
 
 .. _`ep_write_udccsr.description`:
 
@@ -202,8 +218,9 @@ ep_count_bytes_remain
 
     get how many bytes in udc endpoint
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         udc endpoint
+    :type ep: struct pxa_ep \*
 
 .. _`ep_count_bytes_remain.description`:
 
@@ -221,8 +238,9 @@ ep_is_empty
 
     checks if ep has byte ready for reading
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         udc endpoint
+    :type ep: struct pxa_ep \*
 
 .. _`ep_is_empty.description`:
 
@@ -244,8 +262,9 @@ ep_is_full
 
     checks if ep has place to write bytes
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         udc endpoint
+    :type ep: struct pxa_ep \*
 
 .. _`ep_is_full.description`:
 
@@ -266,8 +285,9 @@ epout_has_pkt
 
     checks if OUT endpoint fifo has a packet available
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         pxa endpoint
+    :type ep: struct pxa_ep \*
 
 .. _`epout_has_pkt.description`:
 
@@ -285,11 +305,13 @@ set_ep0state
 
     Set ep0 automata state
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         *undescribed*
+    :type udc: struct pxa_udc \*
 
-    :param int state:
+    :param state:
         state
+    :type state: int
 
 .. _`ep0_idle`:
 
@@ -300,8 +322,9 @@ ep0_idle
 
     Put control endpoint into idle state
 
-    :param struct pxa_udc \*dev:
+    :param dev:
         udc device
+    :type dev: struct pxa_udc \*
 
 .. _`inc_ep_stats_reqs`:
 
@@ -312,11 +335,13 @@ inc_ep_stats_reqs
 
     Update ep stats counts
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param int is_in:
+    :param is_in:
         ep direction (USB_DIR_IN or 0)
+    :type is_in: int
 
 .. _`inc_ep_stats_bytes`:
 
@@ -327,14 +352,17 @@ inc_ep_stats_bytes
 
     Update ep stats counts
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param int count:
+    :param count:
         bytes transferred on endpoint
+    :type count: int
 
-    :param int is_in:
+    :param is_in:
         ep direction (USB_DIR_IN or 0)
+    :type is_in: int
 
 .. _`pxa_ep_setup`:
 
@@ -345,8 +373,9 @@ pxa_ep_setup
 
     Sets up an usb physical endpoint
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         pxa27x physical endpoint
+    :type ep: struct pxa_ep \*
 
 .. _`pxa_ep_setup.description`:
 
@@ -364,8 +393,9 @@ pxa_eps_setup
 
     Sets up all usb physical endpoints
 
-    :param struct pxa_udc \*dev:
+    :param dev:
         udc device
+    :type dev: struct pxa_udc \*
 
 .. _`pxa_eps_setup.description`:
 
@@ -383,11 +413,13 @@ pxa_ep_alloc_request
 
     Allocate usb request
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         usb endpoint
+    :type _ep: struct usb_ep \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         *undescribed*
+    :type gfp_flags: gfp_t
 
 .. _`pxa_ep_alloc_request.description`:
 
@@ -407,11 +439,13 @@ pxa_ep_free_request
 
     Free usb request
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         usb endpoint
+    :type _ep: struct usb_ep \*
 
-    :param struct usb_request \*_req:
+    :param _req:
         usb request
+    :type _req: struct usb_request \*
 
 .. _`pxa_ep_free_request.description`:
 
@@ -429,11 +463,13 @@ ep_add_request
 
     add a request to the endpoint's queue
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         usb endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         usb request
+    :type req: struct pxa27x_request \*
 
 .. _`ep_add_request.context`:
 
@@ -459,11 +495,13 @@ ep_del_request
 
     removes a request from the endpoint's queue
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         usb endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         usb request
+    :type req: struct pxa27x_request \*
 
 .. _`ep_del_request.context`:
 
@@ -490,17 +528,21 @@ req_done
 
     Complete an usb request
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         pxa physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         pxa request
+    :type req: struct pxa27x_request \*
 
-    :param int status:
+    :param status:
         usb request status sent to gadget API
+    :type status: int
 
-    :param unsigned long \*pflags:
+    :param pflags:
         flags of previous \ :c:func:`spinlock_irq_save`\  or NULL if no lock held
+    :type pflags: unsigned long \*
 
 .. _`req_done.context`:
 
@@ -525,14 +567,17 @@ ep_end_out_req
 
     Ends endpoint OUT request
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         pxa request
+    :type req: struct pxa27x_request \*
 
-    :param unsigned long \*pflags:
+    :param pflags:
         flags of previous \ :c:func:`spinlock_irq_save`\  or NULL if no lock held
+    :type pflags: unsigned long \*
 
 .. _`ep_end_out_req.context`:
 
@@ -557,14 +602,17 @@ ep0_end_out_req
 
     Ends control endpoint OUT request (ends data stage)
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         pxa request
+    :type req: struct pxa27x_request \*
 
-    :param unsigned long \*pflags:
+    :param pflags:
         flags of previous \ :c:func:`spinlock_irq_save`\  or NULL if no lock held
+    :type pflags: unsigned long \*
 
 .. _`ep0_end_out_req.context`:
 
@@ -590,14 +638,17 @@ ep_end_in_req
 
     Ends endpoint IN request
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         pxa request
+    :type req: struct pxa27x_request \*
 
-    :param unsigned long \*pflags:
+    :param pflags:
         flags of previous \ :c:func:`spinlock_irq_save`\  or NULL if no lock held
+    :type pflags: unsigned long \*
 
 .. _`ep_end_in_req.context`:
 
@@ -622,14 +673,17 @@ ep0_end_in_req
 
     Ends control endpoint IN request (ends data stage)
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         pxa request
+    :type req: struct pxa27x_request \*
 
-    :param unsigned long \*pflags:
+    :param pflags:
         flags of previous \ :c:func:`spinlock_irq_save`\  or NULL if no lock held
+    :type pflags: unsigned long \*
 
 .. _`ep0_end_in_req.context`:
 
@@ -655,11 +709,13 @@ nuke
 
     Dequeue all requests
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         pxa endpoint
+    :type ep: struct pxa_ep \*
 
-    :param int status:
+    :param status:
         usb request status
+    :type status: int
 
 .. _`nuke.context`:
 
@@ -685,11 +741,13 @@ read_packet
 
     transfer 1 packet from an OUT endpoint into request
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         pxa physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         usb request
+    :type req: struct pxa27x_request \*
 
 .. _`read_packet.description`:
 
@@ -711,14 +769,17 @@ write_packet
 
     transfer 1 packet from request into an IN endpoint
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         pxa physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         usb request
+    :type req: struct pxa27x_request \*
 
-    :param unsigned int max:
+    :param max:
         max bytes that fit into endpoint
+    :type max: unsigned int
 
 .. _`write_packet.description`:
 
@@ -740,11 +801,13 @@ read_fifo
 
     Transfer packets from OUT endpoint into usb request
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         pxa physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         usb request
+    :type req: struct pxa27x_request \*
 
 .. _`read_fifo.context`:
 
@@ -774,11 +837,13 @@ write_fifo
 
     transfer packets from usb request into an IN endpoint
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         pxa physical endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         pxa usb request
+    :type req: struct pxa27x_request \*
 
 .. _`write_fifo.description`:
 
@@ -801,11 +866,13 @@ read_ep0_fifo
 
     Transfer packets from control endpoint into usb request
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         control endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         pxa usb request
+    :type req: struct pxa27x_request \*
 
 .. _`read_ep0_fifo.description`:
 
@@ -827,11 +894,13 @@ write_ep0_fifo
 
     Send a request to control endpoint (ep0 in)
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         control endpoint
+    :type ep: struct pxa_ep \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         request
+    :type req: struct pxa27x_request \*
 
 .. _`write_ep0_fifo.context`:
 
@@ -862,14 +931,17 @@ pxa_ep_queue
 
     Queue a request into an IN endpoint
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         usb endpoint
+    :type _ep: struct usb_ep \*
 
-    :param struct usb_request \*_req:
+    :param _req:
         usb request
+    :type _req: struct usb_request \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         flags
+    :type gfp_flags: gfp_t
 
 .. _`pxa_ep_queue.context`:
 
@@ -896,11 +968,13 @@ pxa_ep_dequeue
 
     Dequeue one request
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         usb endpoint
+    :type _ep: struct usb_ep \*
 
-    :param struct usb_request \*_req:
+    :param _req:
         usb request
+    :type _req: struct usb_request \*
 
 .. _`pxa_ep_dequeue.description`:
 
@@ -918,11 +992,13 @@ pxa_ep_set_halt
 
     Halts operations on one endpoint
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         usb endpoint
+    :type _ep: struct usb_ep \*
 
-    :param int value:
+    :param value:
         *undescribed*
+    :type value: int
 
 .. _`pxa_ep_set_halt.description`:
 
@@ -940,8 +1016,9 @@ pxa_ep_fifo_status
 
     Get how many bytes in physical endpoint
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         usb endpoint
+    :type _ep: struct usb_ep \*
 
 .. _`pxa_ep_fifo_status.description`:
 
@@ -959,8 +1036,9 @@ pxa_ep_fifo_flush
 
     Flushes one endpoint
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         usb endpoint
+    :type _ep: struct usb_ep \*
 
 .. _`pxa_ep_fifo_flush.description`:
 
@@ -978,11 +1056,13 @@ pxa_ep_enable
 
     Enables usb endpoint
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         usb endpoint
+    :type _ep: struct usb_ep \*
 
-    :param const struct usb_endpoint_descriptor \*desc:
+    :param desc:
         usb endpoint descriptor
+    :type desc: const struct usb_endpoint_descriptor \*
 
 .. _`pxa_ep_enable.description`:
 
@@ -1003,8 +1083,9 @@ pxa_ep_disable
 
     Disable usb endpoint
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         usb endpoint
+    :type _ep: struct usb_ep \*
 
 .. _`pxa_ep_disable.description`:
 
@@ -1024,11 +1105,13 @@ dplus_pullup
 
     Connect or disconnect pullup resistor to D+ pin
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
-    :param int on:
+    :param on:
         0 if disconnect pullup resistor, 1 otherwise
+    :type on: int
 
 .. _`dplus_pullup.context`:
 
@@ -1054,8 +1137,9 @@ pxa_udc_get_frame
 
     Returns usb frame number
 
-    :param struct usb_gadget \*_gadget:
+    :param _gadget:
         usb gadget
+    :type _gadget: struct usb_gadget \*
 
 .. _`pxa_udc_wakeup`:
 
@@ -1066,8 +1150,9 @@ pxa_udc_wakeup
 
     Force udc device out of suspend
 
-    :param struct usb_gadget \*_gadget:
+    :param _gadget:
         usb gadget
+    :type _gadget: struct usb_gadget \*
 
 .. _`pxa_udc_wakeup.description`:
 
@@ -1085,8 +1170,9 @@ should_enable_udc
 
     Tells if UDC should be enabled
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
 .. _`should_enable_udc.context`:
 
@@ -1116,8 +1202,9 @@ should_disable_udc
 
     Tells if UDC should be disabled
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
 .. _`should_disable_udc.context`:
 
@@ -1147,11 +1234,13 @@ pxa_udc_pullup
 
     Offer manual D+ pullup control
 
-    :param struct usb_gadget \*_gadget:
+    :param _gadget:
         usb gadget using the control
+    :type _gadget: struct usb_gadget \*
 
-    :param int is_active:
+    :param is_active:
         0 if disconnect, else connect D+ pullup resistor
+    :type is_active: int
 
 .. _`pxa_udc_pullup.context`:
 
@@ -1176,11 +1265,13 @@ pxa_udc_vbus_session
 
     Called by external transceiver to enable/disable udc
 
-    :param struct usb_gadget \*_gadget:
+    :param _gadget:
         usb gadget
+    :type _gadget: struct usb_gadget \*
 
-    :param int is_active:
+    :param is_active:
         0 if should disable the udc, 1 if should enable
+    :type is_active: int
 
 .. _`pxa_udc_vbus_session.description`:
 
@@ -1201,11 +1292,13 @@ pxa_udc_vbus_draw
 
     Called by gadget driver after SET_CONFIGURATION completed
 
-    :param struct usb_gadget \*_gadget:
+    :param _gadget:
         usb gadget
+    :type _gadget: struct usb_gadget \*
 
-    :param unsigned mA:
+    :param mA:
         current drawn
+    :type mA: unsigned
 
 .. _`pxa_udc_vbus_draw.context`:
 
@@ -1233,14 +1326,17 @@ pxa_udc_phy_event
 
     Called by phy upon VBus event
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
-    :param unsigned long action:
+    :param action:
         phy action, is vbus connect or disconnect
+    :type action: unsigned long
 
-    :param void \*data:
+    :param data:
         the usb_gadget structure in pxa_udc
+    :type data: void \*
 
 .. _`pxa_udc_phy_event.description`:
 
@@ -1260,8 +1356,9 @@ udc_disable
 
     disable udc device controller
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
 .. _`udc_disable.context`:
 
@@ -1287,8 +1384,9 @@ udc_init_data
 
     Initialize udc device data structures
 
-    :param struct pxa_udc \*dev:
+    :param dev:
         udc device
+    :type dev: struct pxa_udc \*
 
 .. _`udc_init_data.description`:
 
@@ -1307,8 +1405,9 @@ udc_enable
 
     Enables the udc device
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         *undescribed*
+    :type udc: struct pxa_udc \*
 
 .. _`udc_enable.description`:
 
@@ -1327,11 +1426,13 @@ pxa27x_udc_start
 
     Register gadget driver
 
-    :param struct usb_gadget \*g:
+    :param g:
         *undescribed*
+    :type g: struct usb_gadget \*
 
-    :param struct usb_gadget_driver \*driver:
+    :param driver:
         gadget driver
+    :type driver: struct usb_gadget_driver \*
 
 .. _`pxa27x_udc_start.description`:
 
@@ -1357,8 +1458,9 @@ stop_activity
 
     Stops udc endpoints
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
 .. _`stop_activity.description`:
 
@@ -1377,8 +1479,9 @@ pxa27x_udc_stop
 
     Unregister the gadget driver
 
-    :param struct usb_gadget \*g:
+    :param g:
         *undescribed*
+    :type g: struct usb_gadget \*
 
 .. _`pxa27x_udc_stop.description`:
 
@@ -1396,11 +1499,13 @@ handle_ep0_ctrl_req
 
     handle control endpoint control request
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
-    :param struct pxa27x_request \*req:
+    :param req:
         control request
+    :type req: struct pxa27x_request \*
 
 .. _`handle_ep0`:
 
@@ -1411,14 +1516,17 @@ handle_ep0
 
     Handle control endpoint data transfers
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
-    :param int fifo_irq:
+    :param fifo_irq:
         1 if triggered by fifo service type irq
+    :type fifo_irq: int
 
-    :param int opc_irq:
+    :param opc_irq:
         1 if triggered by output packet complete type irq
+    :type opc_irq: int
 
 .. _`handle_ep0.description`:
 
@@ -1476,8 +1584,9 @@ handle_ep
 
     Handle endpoint data tranfers
 
-    :param struct pxa_ep \*ep:
+    :param ep:
         pxa physical endpoint
+    :type ep: struct pxa_ep \*
 
 .. _`handle_ep.description`:
 
@@ -1498,11 +1607,13 @@ pxa27x_change_configuration
 
     Handle SET_CONF usb request notification
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
-    :param int config:
+    :param config:
         usb configuration
+    :type config: int
 
 .. _`pxa27x_change_configuration.description`:
 
@@ -1521,14 +1632,17 @@ pxa27x_change_interface
 
     Handle SET_INTERF usb request notification
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
-    :param int iface:
+    :param iface:
         interface number
+    :type iface: int
 
-    :param int alt:
+    :param alt:
         alternate setting number
+    :type alt: int
 
 .. _`pxa27x_change_interface.description`:
 
@@ -1547,8 +1661,9 @@ irq_udc_suspend
 
     Handle IRQ "UDC Suspend"
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
 .. _`irq_udc_resume`:
 
@@ -1559,8 +1674,9 @@ irq_udc_resume
 
     Handle IRQ "UDC Resume"
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
 .. _`irq_udc_reconfig`:
 
@@ -1571,8 +1687,9 @@ irq_udc_reconfig
 
     Handle IRQ "UDC Change Configuration"
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
 .. _`irq_udc_reset`:
 
@@ -1583,8 +1700,9 @@ irq_udc_reset
 
     Handle IRQ "UDC Reset"
 
-    :param struct pxa_udc \*udc:
+    :param udc:
         udc device
+    :type udc: struct pxa_udc \*
 
 .. _`pxa_udc_irq`:
 
@@ -1595,11 +1713,13 @@ pxa_udc_irq
 
     Main irq handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*_dev:
+    :param _dev:
         udc device
+    :type _dev: void \*
 
 .. _`pxa_udc_irq.description`:
 
@@ -1617,8 +1737,9 @@ pxa_udc_probe
 
     probes the udc device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`pxa_udc_probe.description`:
 
@@ -1637,8 +1758,9 @@ pxa_udc_remove
 
     removes the udc device driver
 
-    :param struct platform_device \*_dev:
+    :param _dev:
         platform device
+    :type _dev: struct platform_device \*
 
 .. _`pxa_udc_suspend`:
 
@@ -1649,11 +1771,13 @@ pxa_udc_suspend
 
     Suspend udc device
 
-    :param struct platform_device \*_dev:
+    :param _dev:
         platform device
+    :type _dev: struct platform_device \*
 
-    :param pm_message_t state:
+    :param state:
         suspend state
+    :type state: pm_message_t
 
 .. _`pxa_udc_suspend.description`:
 
@@ -1672,8 +1796,9 @@ pxa_udc_resume
 
     Resume udc device
 
-    :param struct platform_device \*_dev:
+    :param _dev:
         platform device
+    :type _dev: struct platform_device \*
 
 .. _`pxa_udc_resume.description`:
 

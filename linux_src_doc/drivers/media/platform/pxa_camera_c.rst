@@ -248,20 +248,25 @@ pxa_init_dma_channel
 
     init dma descriptors
 
-    :param struct pxa_camera_dev \*pcdev:
+    :param pcdev:
         pxa camera device
+    :type pcdev: struct pxa_camera_dev \*
 
-    :param struct pxa_buffer \*buf:
+    :param buf:
         pxa camera buffer
+    :type buf: struct pxa_buffer \*
 
-    :param int channel:
+    :param channel:
         dma channel (0 => 'Y', 1 => 'U', 2 => 'V')
+    :type channel: int
 
-    :param struct scatterlist \*sg:
+    :param sg:
         dma scatter list
+    :type sg: struct scatterlist \*
 
-    :param int sglen:
+    :param sglen:
         dma scatter list length
+    :type sglen: int
 
 .. _`pxa_init_dma_channel.description`:
 
@@ -281,8 +286,9 @@ pxa_dma_start_channels
 
     start DMA channel for active buffer
 
-    :param struct pxa_camera_dev \*pcdev:
+    :param pcdev:
         pxa camera device
+    :type pcdev: struct pxa_camera_dev \*
 
 .. _`pxa_dma_start_channels.description`:
 
@@ -301,8 +307,9 @@ pxa_camera_start_capture
 
     start video capturing
 
-    :param struct pxa_camera_dev \*pcdev:
+    :param pcdev:
         camera device
+    :type pcdev: struct pxa_camera_dev \*
 
 .. _`pxa_camera_start_capture.description`:
 
@@ -322,14 +329,17 @@ pxa_camera_check_link_miss
 
     check missed DMA linking
 
-    :param struct pxa_camera_dev \*pcdev:
+    :param pcdev:
         camera device
+    :type pcdev: struct pxa_camera_dev \*
 
-    :param dma_cookie_t last_submitted:
+    :param last_submitted:
         an opaque DMA cookie for last submitted
+    :type last_submitted: dma_cookie_t
 
-    :param dma_cookie_t last_issued:
+    :param last_issued:
         an opaque DMA cookie for last issued
+    :type last_issued: dma_cookie_t
 
 .. _`pxa_camera_check_link_miss.description`:
 

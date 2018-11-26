@@ -29,6 +29,7 @@ Definition
         int sk_count;
         struct hlist_nulls_head sk_laddr_hash[LLC_SK_LADDR_HASH_ENTRIES];
         struct hlist_head sk_dev_hash[LLC_SK_DEV_HASH_ENTRIES];
+        struct rcu_head rcu;
     }
 
 .. _`llc_sap.members`:
@@ -67,6 +68,9 @@ sk_laddr_hash
     *undescribed*
 
 sk_dev_hash
+    *undescribed*
+
+rcu
     *undescribed*
 
 .. _`llc_sap.description`:

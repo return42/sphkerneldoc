@@ -10,14 +10,17 @@
 
     register a region or a namespace driver
 
-    :param struct nd_device_driver \*nd_drv:
+    :param nd_drv:
         driver to register
+    :type nd_drv: struct nd_device_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         automatically set by \ :c:func:`nd_driver_register`\  macro
+    :type owner: struct module \*
 
-    :param const char \*mod_name:
+    :param mod_name:
         automatically set by \ :c:func:`nd_driver_register`\  macro
+    :type mod_name: const char \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,12 +10,14 @@ sci_remote_device_stop
 
     This method will stop both transmission and reception of link activity for the supplied remote device.  This method disables normal IO requests from flowing through to the remote device.
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
-    :param u32 timeout:
+    :param timeout:
         This parameter specifies the number of milliseconds in which the
         stop operation should complete.
+    :type timeout: u32
 
 .. _`sci_remote_device_stop.description`:
 
@@ -35,8 +37,9 @@ sci_remote_device_reset
 
     This method will reset the device making it ready for operation. This method must be called anytime the device is reset either through a SMP phy control or a port hard reset request.
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
 .. _`sci_remote_device_reset.description`:
 
@@ -58,8 +61,9 @@ sci_remote_device_reset_complete
 
     This method informs the device object that the reset operation is complete and the device can resume operation again.
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
 .. _`sci_remote_device_reset_complete.description`:
 

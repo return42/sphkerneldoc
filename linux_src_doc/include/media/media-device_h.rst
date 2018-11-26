@@ -65,6 +65,10 @@ Definition
 
     struct media_device_ops {
         int (*link_notify)(struct media_link *link, u32 flags, unsigned int notification);
+        struct media_request *(*req_alloc)(struct media_device *mdev);
+        void (*req_free)(struct media_request *req);
+        int (*req_validate)(struct media_request *req);
+        void (*req_queue)(struct media_request *req);
     }
 
 .. _`media_device_ops.members`:
@@ -75,6 +79,32 @@ Members
 link_notify
     Link state change notification callback. This callback is
     called with the graph_mutex held.
+
+req_alloc
+    Allocate a request. Set this if you need to allocate a struct
+    larger then struct media_request. \ ``req_alloc``\  and \ ``req_free``\  must
+    either both be set or both be NULL.
+
+req_free
+    Free a request. Set this if \ ``req_alloc``\  was set as well, leave
+    to NULL otherwise.
+
+req_validate
+    Validate a request, but do not queue yet. The req_queue_mutex
+    lock is held when this op is called.
+
+req_queue
+    Queue a validated request, cannot fail. If something goes
+    wrong when queueing this request then it should be marked
+    as such internally in the driver and any related buffers
+    must eventually return to vb2 with state VB2_BUF_STATE_ERROR.
+    The req_queue_mutex lock is held when this op is called.
+    It is important that vb2 buffer objects are queued last after
+    all other object types are queued: queueing a buffer kickstarts
+    the request processing, so all other objects related to the
+    request (and thus the buffer) must be available to the driver.
+    And once a buffer is queued, then the driver can complete
+    or delete objects from the request before req_queue exits.
 
 .. _`media_device`:
 
@@ -115,6 +145,8 @@ Definition
         int (*enable_source)(struct media_entity *entity, struct media_pipeline *pipe);
         void (*disable_source)(struct media_entity *entity);
         const struct media_device_ops *ops;
+        struct mutex req_queue_mutex;
+        atomic_t request_id;
     }
 
 .. _`media_device.members`:
@@ -194,6 +226,13 @@ disable_source
 ops
     Operation handler callbacks
 
+req_queue_mutex
+    Serialise the MEDIA_REQUEST_IOC_QUEUE ioctl w.r.t.
+    other operations that stop or start streaming.
+
+request_id
+    Used to generate unique request IDs
+
 .. _`media_device.description`:
 
 Description
@@ -242,11 +281,13 @@ media_entity_enum_init
 
     Initialise an entity enumeration
 
-    :param struct media_entity_enum \*ent_enum:
+    :param ent_enum:
         Entity enumeration to be initialised
+    :type ent_enum: struct media_entity_enum \*
 
-    :param struct media_device \*mdev:
+    :param mdev:
         The related media device
+    :type mdev: struct media_device \*
 
 .. _`media_entity_enum_init.return`:
 
@@ -264,8 +305,9 @@ media_device_init
 
     Initializes a media device element
 
-    :param struct media_device \*mdev:
+    :param mdev:
         pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: struct media_device \*
 
 .. _`media_device_init.description`:
 
@@ -290,8 +332,9 @@ media_device_cleanup
 
     Cleanups a media device element
 
-    :param struct media_device \*mdev:
+    :param mdev:
         pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: struct media_device \*
 
 .. _`media_device_cleanup.description`:
 
@@ -310,11 +353,13 @@ __media_device_register
 
     Registers a media device element
 
-    :param struct media_device \*mdev:
+    :param mdev:
         pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: struct media_device \*
 
-    :param struct module \*owner:
+    :param owner:
         should be filled with \ ``THIS_MODULE``\ 
+    :type owner: struct module \*
 
 .. _`__media_device_register.description`:
 
@@ -377,8 +422,9 @@ media_device_register
 
     Registers a media device element
 
-    :param  mdev:
+    :param mdev:
         pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: 
 
 .. _`media_device_register.description`:
 
@@ -397,8 +443,9 @@ media_device_unregister
 
     Unregisters a media device element
 
-    :param struct media_device \*mdev:
+    :param mdev:
         pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: struct media_device \*
 
 .. _`media_device_unregister.description`:
 
@@ -417,11 +464,13 @@ media_device_register_entity
 
     registers a media entity inside a previously registered media device.
 
-    :param struct media_device \*mdev:
+    :param mdev:
         pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: struct media_device \*
 
-    :param struct media_entity \*entity:
+    :param entity:
         pointer to struct \ :c:type:`struct media_entity <media_entity>`\  to be registered
+    :type entity: struct media_entity \*
 
 .. _`media_device_register_entity.description`:
 
@@ -470,8 +519,9 @@ media_device_unregister_entity
 
     unregisters a media entity.
 
-    :param struct media_entity \*entity:
+    :param entity:
         pointer to struct \ :c:type:`struct media_entity <media_entity>`\  to be unregistered
+    :type entity: struct media_entity \*
 
 .. _`media_device_unregister_entity.description`:
 
@@ -501,11 +551,13 @@ media_device_register_entity_notify
 
     Registers a media entity_notify callback
 
-    :param struct media_device \*mdev:
+    :param mdev:
         The media device
+    :type mdev: struct media_device \*
 
-    :param struct media_entity_notify \*nptr:
+    :param nptr:
         The media_entity_notify
+    :type nptr: struct media_entity_notify \*
 
 .. _`media_device_register_entity_notify.description`:
 
@@ -526,11 +578,13 @@ media_device_unregister_entity_notify
 
     Unregister a media entity notify callback
 
-    :param struct media_device \*mdev:
+    :param mdev:
         The media device
+    :type mdev: struct media_device \*
 
-    :param struct media_entity_notify \*nptr:
+    :param nptr:
         The media_entity_notify
+    :type nptr: struct media_entity_notify \*
 
 .. _`media_device_pci_init`:
 
@@ -541,15 +595,18 @@ media_device_pci_init
 
     create and initialize a struct \ :c:type:`struct media_device <media_device>`\  from a PCI device.
 
-    :param struct media_device \*mdev:
+    :param mdev:
         pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: struct media_device \*
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         pointer to struct pci_dev
+    :type pci_dev: struct pci_dev \*
 
-    :param const char \*name:
+    :param name:
         media device name. If \ ``NULL``\ , the routine will use the default
         name for the pci device, given by \ :c:func:`pci_name`\  macro.
+    :type name: const char \*
 
 .. _`__media_device_usb_init`:
 
@@ -560,20 +617,24 @@ __media_device_usb_init
 
     create and initialize a struct \ :c:type:`struct media_device <media_device>`\  from a PCI device.
 
-    :param struct media_device \*mdev:
+    :param mdev:
         pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: struct media_device \*
 
-    :param struct usb_device \*udev:
+    :param udev:
         pointer to struct usb_device
+    :type udev: struct usb_device \*
 
-    :param const char \*board_name:
+    :param board_name:
         media device name. If \ ``NULL``\ , the routine will use the usb
         product name, if available.
+    :type board_name: const char \*
 
-    :param const char \*driver_name:
+    :param driver_name:
         name of the driver. if \ ``NULL``\ , the routine will use the name
         given by ``udev->dev->driver->name``, with is usually the wrong
         thing to do.
+    :type driver_name: const char \*
 
 .. _`__media_device_usb_init.description`:
 
@@ -594,15 +655,18 @@ media_device_usb_init
 
     create and initialize a struct \ :c:type:`struct media_device <media_device>`\  from a PCI device.
 
-    :param  mdev:
+    :param mdev:
         pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+    :type mdev: 
 
-    :param  udev:
+    :param udev:
         pointer to struct usb_device
+    :type udev: 
 
-    :param  name:
+    :param name:
         media device name. If \ ``NULL``\ , the routine will use the usb
         product name, if available.
+    :type name: 
 
 .. _`media_device_usb_init.description`:
 

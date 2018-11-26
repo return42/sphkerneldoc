@@ -10,14 +10,17 @@ ascii2desc
 
     Helper routine for producing UTF-16LE string descriptors
 
-    :param char const \*s:
+    :param s:
         Null-terminated ASCII (actually ISO-8859-1) string
+    :type s: char const \*
 
-    :param u8 \*buf:
+    :param buf:
         Buffer for USB string descriptor (header + UTF-16LE)
+    :type buf: u8 \*
 
-    :param unsigned len:
+    :param len:
         Length (in bytes; may be odd) of descriptor buffer.
+    :type len: unsigned
 
 .. _`ascii2desc.return`:
 
@@ -44,17 +47,21 @@ rh_string
 
     provides string descriptors for root hub
 
-    :param int id:
+    :param id:
         the string ID number (0: langids, 1: serial #, 2: product, 3: vendor)
+    :type id: int
 
-    :param struct usb_hcd const \*hcd:
+    :param hcd:
         the host controller for this root hub
+    :type hcd: struct usb_hcd const \*
 
-    :param u8 \*data:
+    :param data:
         buffer for output packet
+    :type data: u8 \*
 
-    :param unsigned len:
+    :param len:
         length of the provided buffer
+    :type len: unsigned
 
 .. _`rh_string.description`:
 
@@ -81,8 +88,9 @@ usb_bus_init
 
     shared initialization code
 
-    :param struct usb_bus \*bus:
+    :param bus:
         the bus structure being initialized
+    :type bus: struct usb_bus \*
 
 .. _`usb_bus_init.description`:
 
@@ -101,8 +109,9 @@ usb_register_bus
 
     registers the USB host controller with the usb core
 
-    :param struct usb_bus \*bus:
+    :param bus:
         pointer to the bus to register
+    :type bus: struct usb_bus \*
 
 .. _`usb_register_bus.context`:
 
@@ -135,8 +144,9 @@ usb_deregister_bus
 
     deregisters the USB host controller
 
-    :param struct usb_bus \*bus:
+    :param bus:
         pointer to the bus to deregister
+    :type bus: struct usb_bus \*
 
 .. _`usb_deregister_bus.context`:
 
@@ -162,8 +172,9 @@ register_root_hub
 
     called by \ :c:func:`usb_add_hcd`\  to register a root hub
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         host controller for this root hub
+    :type hcd: struct usb_hcd \*
 
 .. _`register_root_hub.description`:
 
@@ -191,17 +202,21 @@ usb_calc_bus_time
 
     approximate periodic transaction time in nanoseconds
 
-    :param int speed:
+    :param speed:
         from dev->speed; USB_SPEED_{LOW,FULL,HIGH}
+    :type speed: int
 
-    :param int is_input:
+    :param is_input:
         true iff the transaction sends data to the host
+    :type is_input: int
 
-    :param int isoc:
+    :param isoc:
         true for isochronous transactions, false for interrupt ones
+    :type isoc: int
 
-    :param int bytecount:
+    :param bytecount:
         how many bytes in the transaction.
+    :type bytecount: int
 
 .. _`usb_calc_bus_time.return`:
 
@@ -227,11 +242,13 @@ usb_hcd_link_urb_to_ep
 
     add an URB to its endpoint queue
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         host controller to which \ ``urb``\  was submitted
+    :type hcd: struct usb_hcd \*
 
-    :param struct urb \*urb:
+    :param urb:
         URB being submitted
+    :type urb: struct urb \*
 
 .. _`usb_hcd_link_urb_to_ep.description`:
 
@@ -262,14 +279,17 @@ usb_hcd_check_unlink_urb
 
     check whether an URB may be unlinked
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         host controller to which \ ``urb``\  was submitted
+    :type hcd: struct usb_hcd \*
 
-    :param struct urb \*urb:
+    :param urb:
         URB being checked for unlinkability
+    :type urb: struct urb \*
 
-    :param int status:
+    :param status:
         error code to store in \ ``urb``\  if the unlink succeeds
+    :type status: int
 
 .. _`usb_hcd_check_unlink_urb.description`:
 
@@ -303,11 +323,13 @@ usb_hcd_unlink_urb_from_ep
 
     remove an URB from its endpoint queue
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         host controller to which \ ``urb``\  was submitted
+    :type hcd: struct usb_hcd \*
 
-    :param struct urb \*urb:
+    :param urb:
         URB being unlinked
+    :type urb: struct urb \*
 
 .. _`usb_hcd_unlink_urb_from_ep.description`:
 
@@ -328,14 +350,17 @@ usb_hcd_giveback_urb
 
     return URB from HCD to device driver
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         host controller returning the URB
+    :type hcd: struct usb_hcd \*
 
-    :param struct urb \*urb:
+    :param urb:
         urb being returned to the USB device driver.
+    :type urb: struct urb \*
 
-    :param int status:
+    :param status:
         completion status code for the URB.
+    :type status: int
 
 .. _`usb_hcd_giveback_urb.context`:
 
@@ -356,7 +381,7 @@ the device driver won't cause problems if it frees, modifies,
 or resubmits this URB.
 
 If \ ``urb``\  was unlinked, the value of \ ``status``\  will be overridden by
-\ ``urb``\ ->unlinked.  Erroneous short transfers are detected in case
+\ ``urb->unlinked``\ .  Erroneous short transfers are detected in case
 the HCD hasn't checked for them.
 
 .. _`usb_hcd_alloc_bandwidth`:
@@ -368,17 +393,21 @@ usb_hcd_alloc_bandwidth
 
     check whether a new bandwidth setting exceeds the bus bandwidth
 
-    :param struct usb_device \*udev:
+    :param udev:
         target \ :c:type:`struct usb_device <usb_device>`\ 
+    :type udev: struct usb_device \*
 
-    :param struct usb_host_config \*new_config:
+    :param new_config:
         new configuration to install
+    :type new_config: struct usb_host_config \*
 
-    :param struct usb_host_interface \*cur_alt:
+    :param cur_alt:
         the current alternate interface setting
+    :type cur_alt: struct usb_host_interface \*
 
-    :param struct usb_host_interface \*new_alt:
+    :param new_alt:
         alternate interface setting that is being installed
+    :type new_alt: struct usb_host_interface \*
 
 .. _`usb_hcd_alloc_bandwidth.description`:
 
@@ -412,11 +441,13 @@ usb_hcd_reset_endpoint
 
     reset host endpoint state
 
-    :param struct usb_device \*udev:
+    :param udev:
         USB device.
+    :type udev: struct usb_device \*
 
-    :param struct usb_host_endpoint \*ep:
+    :param ep:
         the endpoint to reset.
+    :type ep: struct usb_host_endpoint \*
 
 .. _`usb_hcd_reset_endpoint.description`:
 
@@ -435,20 +466,25 @@ usb_alloc_streams
 
     allocate bulk endpoint stream IDs.
 
-    :param struct usb_interface \*interface:
+    :param interface:
         alternate setting that includes all endpoints.
+    :type interface: struct usb_interface \*
 
-    :param struct usb_host_endpoint \*\*eps:
+    :param eps:
         array of endpoints that need streams.
+    :type eps: struct usb_host_endpoint \*\*
 
-    :param unsigned int num_eps:
+    :param num_eps:
         number of endpoints in the array.
+    :type num_eps: unsigned int
 
-    :param unsigned int num_streams:
+    :param num_streams:
         number of streams to allocate.
+    :type num_streams: unsigned int
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         flags hcd should use to allocate memory.
+    :type mem_flags: gfp_t
 
 .. _`usb_alloc_streams.description`:
 
@@ -476,17 +512,21 @@ usb_free_streams
 
     free bulk endpoint stream IDs.
 
-    :param struct usb_interface \*interface:
+    :param interface:
         alternate setting that includes all endpoints.
+    :type interface: struct usb_interface \*
 
-    :param struct usb_host_endpoint \*\*eps:
+    :param eps:
         array of endpoints to remove streams from.
+    :type eps: struct usb_host_endpoint \*\*
 
-    :param unsigned int num_eps:
+    :param num_eps:
         number of endpoints in the array.
+    :type num_eps: unsigned int
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         flags hcd should use to allocate memory.
+    :type mem_flags: gfp_t
 
 .. _`usb_free_streams.description`:
 
@@ -512,8 +552,9 @@ usb_hcd_resume_root_hub
 
     called by HCD to resume its root hub
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         host controller for this root hub
+    :type hcd: struct usb_hcd \*
 
 .. _`usb_hcd_resume_root_hub.description`:
 
@@ -534,11 +575,13 @@ usb_bus_start_enum
 
     start immediate enumeration (for OTG)
 
-    :param struct usb_bus \*bus:
+    :param bus:
         the bus (must use hcd framework)
+    :type bus: struct usb_bus \*
 
-    :param unsigned port_num:
+    :param port_num:
         1-based number of port; usually bus->otg_port
+    :type port_num: unsigned
 
 .. _`usb_bus_start_enum.context`:
 
@@ -573,11 +616,13 @@ usb_hcd_irq
 
     hook IRQs to HCD framework (bus glue)
 
-    :param int irq:
+    :param irq:
         the IRQ being raised
+    :type irq: int
 
-    :param void \*__hcd:
+    :param __hcd:
         pointer to the HCD whose IRQ is being signaled
+    :type __hcd: void \*
 
 .. _`usb_hcd_irq.description`:
 
@@ -603,8 +648,9 @@ usb_hc_died
 
     report abnormal shutdown of a host controller (bus glue)
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         pointer to the HCD representing the controller
+    :type hcd: struct usb_hcd \*
 
 .. _`usb_hc_died.description`:
 
@@ -626,18 +672,22 @@ usb_create_shared_hcd
 
     create and initialize an HCD structure
 
-    :param const struct hc_driver \*driver:
+    :param driver:
         HC driver that will use this hcd
+    :type driver: const struct hc_driver \*
 
-    :param struct device \*dev:
+    :param dev:
         device for this HC, stored in hcd->self.controller
+    :type dev: struct device \*
 
-    :param const char \*bus_name:
+    :param bus_name:
         value to store in hcd->self.bus_name
+    :type bus_name: const char \*
 
-    :param struct usb_hcd \*primary_hcd:
+    :param primary_hcd:
         a pointer to the usb_hcd structure that is sharing the
         PCI device.  Only allocate certain resources for the primary HCD
+    :type primary_hcd: struct usb_hcd \*
 
 .. _`usb_create_shared_hcd.context`:
 
@@ -672,14 +722,17 @@ usb_create_hcd
 
     create and initialize an HCD structure
 
-    :param const struct hc_driver \*driver:
+    :param driver:
         HC driver that will use this hcd
+    :type driver: const struct hc_driver \*
 
-    :param struct device \*dev:
+    :param dev:
         device for this HC, stored in hcd->self.controller
+    :type dev: struct device \*
 
-    :param const char \*bus_name:
+    :param bus_name:
         value to store in hcd->self.bus_name
+    :type bus_name: const char \*
 
 .. _`usb_create_hcd.context`:
 
@@ -714,14 +767,17 @@ usb_add_hcd
 
     finish generic HCD structure initialization and register
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         the usb_hcd structure to initialize
+    :type hcd: struct usb_hcd \*
 
-    :param unsigned int irqnum:
+    :param irqnum:
         Interrupt line to allocate
+    :type irqnum: unsigned int
 
-    :param unsigned long irqflags:
+    :param irqflags:
         Interrupt type flags
+    :type irqflags: unsigned long
 
 .. _`usb_add_hcd.description`:
 
@@ -741,8 +797,9 @@ usb_remove_hcd
 
     shutdown processing for generic HCDs
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         the usb_hcd structure to remove
+    :type hcd: struct usb_hcd \*
 
 .. _`usb_remove_hcd.context`:
 

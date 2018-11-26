@@ -10,8 +10,9 @@ snd_ac97_codec_driver_register
 
     register an AC97 codec driver
 
-    :param struct ac97_codec_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct ac97_codec_driver \*
 
 .. _`snd_ac97_codec_driver_register.description`:
 
@@ -32,8 +33,9 @@ snd_ac97_codec_driver_unregister
 
     unregister an AC97 codec driver
 
-    :param struct ac97_codec_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct ac97_codec_driver \*
 
 .. _`snd_ac97_codec_driver_unregister.description`:
 
@@ -51,8 +53,9 @@ snd_ac97_codec_get_platdata
 
     get platform_data
 
-    :param const struct ac97_codec_device \*adev:
+    :param adev:
         the ac97 codec device
+    :type adev: const struct ac97_codec_device \*
 
 .. _`snd_ac97_codec_get_platdata.description`:
 
@@ -74,18 +77,22 @@ snd_ac97_controller_register
 
     register an ac97 controller
 
-    :param const struct ac97_controller_ops \*ops:
+    :param ops:
         the ac97 bus operations
+    :type ops: const struct ac97_controller_ops \*
 
-    :param struct device \*dev:
+    :param dev:
         the device providing the ac97 DC function
+    :type dev: struct device \*
 
-    :param unsigned short slots_available:
+    :param slots_available:
         mask of the ac97 codecs that can be scanned and probed
         bit0 => codec 0, bit1 => codec 1 ... bit 3 => codec 3
+    :type slots_available: unsigned short
 
-    :param void \*\*codecs_pdata:
+    :param codecs_pdata:
         *undescribed*
+    :type codecs_pdata: void \*\*
 
 .. _`snd_ac97_controller_register.description`:
 
@@ -106,8 +113,9 @@ snd_ac97_controller_unregister
 
     unregister an ac97 controller
 
-    :param struct ac97_controller \*ac97_ctrl:
+    :param ac97_ctrl:
         the device previously provided to \ :c:func:`ac97_controller_register`\ 
+    :type ac97_ctrl: struct ac97_controller \*
 
 .. This file was automatic generated / don't edit.
 

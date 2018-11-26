@@ -10,14 +10,17 @@ lookup_signaled_event_by_partial_id
 
     Lookup signaled event from partial ID
 
-    :param struct kfd_process \*p:
+    :param p:
         Pointer to struct kfd_process
+    :type p: struct kfd_process \*
 
-    :param uint32_t id:
+    :param id:
         ID to look up
+    :type id: uint32_t
 
-    :param uint32_t bits:
+    :param bits:
         Number of valid bits in \ ``id``\ 
+    :type bits: uint32_t
 
 .. _`lookup_signaled_event_by_partial_id.description`:
 

@@ -518,8 +518,9 @@ drm_dev_is_unplugged
 
     is a DRM device unplugged
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_dev_is_unplugged.description`:
 
@@ -530,6 +531,54 @@ This function can be called to check whether a hotpluggable is unplugged.
 Unplugging itself is singalled through \ :c:func:`drm_dev_unplug`\ . If a device is
 unplugged, these two functions guarantee that any store before calling
 \ :c:func:`drm_dev_unplug`\  is visible to callers of this function after it completes
+
+.. _`drm_core_check_feature`:
+
+drm_core_check_feature
+======================
+
+.. c:function:: bool drm_core_check_feature(struct drm_device *dev, u32 feature)
+
+    check driver feature flags
+
+    :param dev:
+        DRM device to check
+    :type dev: struct drm_device \*
+
+    :param feature:
+        feature flag
+    :type feature: u32
+
+.. _`drm_core_check_feature.description`:
+
+Description
+-----------
+
+This checks \ ``dev``\  for driver features, see \ :c:type:`drm_driver.driver_features <drm_driver>`\ ,
+\ :c:type:`drm_device.driver_features <drm_device>`\ , and the various DRIVER_\* flags.
+
+Returns true if the \ ``feature``\  is supported, false otherwise.
+
+.. _`drm_drv_uses_atomic_modeset`:
+
+drm_drv_uses_atomic_modeset
+===========================
+
+.. c:function:: bool drm_drv_uses_atomic_modeset(struct drm_device *dev)
+
+    check if the driver implements \ :c:func:`atomic_commit`\ 
+
+    :param dev:
+        DRM device
+    :type dev: struct drm_device \*
+
+.. _`drm_drv_uses_atomic_modeset.description`:
+
+Description
+-----------
+
+This check is useful if drivers do not have DRIVER_ATOMIC set but
+have atomic modesetting internally implemented.
 
 .. This file was automatic generated / don't edit.
 

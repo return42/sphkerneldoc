@@ -10,14 +10,17 @@ mtd_wunit_to_pairing_info
 
     get pairing information of a wunit
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         pointer to new MTD device info structure
+    :type mtd: struct mtd_info \*
 
-    :param int wunit:
+    :param wunit:
         *undescribed*
+    :type wunit: int
 
-    :param struct mtd_pairing_info \*info:
+    :param info:
         returned pairing information
+    :type info: struct mtd_pairing_info \*
 
 .. _`mtd_wunit_to_pairing_info.description`:
 
@@ -52,11 +55,13 @@ mtd_pairing_info_to_wunit
 
     get wunit from pairing information
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         pointer to new MTD device info structure
+    :type mtd: struct mtd_info \*
 
-    :param const struct mtd_pairing_info \*info:
+    :param info:
         pairing information struct
+    :type info: const struct mtd_pairing_info \*
 
 .. _`mtd_pairing_info_to_wunit.description`:
 
@@ -91,8 +96,9 @@ mtd_pairing_groups
 
     get the number of pairing groups
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         pointer to new MTD device info structure
+    :type mtd: struct mtd_info \*
 
 .. _`mtd_pairing_groups.description`:
 
@@ -114,8 +120,9 @@ add_mtd_device
 
     register an MTD device
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         pointer to new MTD device info structure
+    :type mtd: struct mtd_info \*
 
 .. _`add_mtd_device.description`:
 
@@ -135,8 +142,9 @@ del_mtd_device
 
     unregister an MTD device
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         pointer to MTD device info structure
+    :type mtd: struct mtd_info \*
 
 .. _`del_mtd_device.description`:
 
@@ -157,23 +165,28 @@ mtd_device_parse_register
 
     parse partitions and register an MTD device.
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         the MTD device to register
+    :type mtd: struct mtd_info \*
 
-    :param const char \* const \*types:
+    :param types:
         the list of MTD partition probes to try, see
         'parse_mtd_partitions()' for more information
+    :type types: const char \* const \*
 
-    :param struct mtd_part_parser_data \*parser_data:
+    :param parser_data:
         MTD partition parser-specific data
+    :type parser_data: struct mtd_part_parser_data \*
 
-    :param const struct mtd_partition \*parts:
+    :param parts:
         fallback partition information to register, if parsing fails;
         only valid if \ ``nr_parts``\  > \ ``0``\ 
+    :type parts: const struct mtd_partition \*
 
-    :param int nr_parts:
+    :param nr_parts:
         the number of partitions in parts, if zero then the full
         MTD device is registered if no partition info is found
+    :type nr_parts: int
 
 .. _`mtd_device_parse_register.description`:
 
@@ -210,9 +223,10 @@ mtd_device_unregister
 
     unregister an existing MTD device.
 
-    :param struct mtd_info \*master:
+    :param master:
         the MTD device to unregister.  This will unregister both the master
         and any partitions if registered.
+    :type master: struct mtd_info \*
 
 .. _`register_mtd_user`:
 
@@ -223,8 +237,9 @@ register_mtd_user
 
     register a 'user' of MTD devices.
 
-    :param struct mtd_notifier \*new:
+    :param new:
         pointer to notifier info structure
+    :type new: struct mtd_notifier \*
 
 .. _`register_mtd_user.description`:
 
@@ -244,8 +259,9 @@ unregister_mtd_user
 
     unregister a 'user' of MTD devices.
 
-    :param struct mtd_notifier \*old:
+    :param old:
         pointer to notifier info structure
+    :type old: struct mtd_notifier \*
 
 .. _`unregister_mtd_user.description`:
 
@@ -266,11 +282,13 @@ get_mtd_device
 
     obtain a validated handle for an MTD device
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         last known address of the required MTD device
+    :type mtd: struct mtd_info \*
 
-    :param int num:
+    :param num:
         internal device number of the required MTD device
+    :type num: int
 
 .. _`get_mtd_device.description`:
 
@@ -292,8 +310,9 @@ get_mtd_device_nm
 
     obtain a validated handle for an MTD device by device name
 
-    :param const char \*name:
+    :param name:
         MTD device name to open
+    :type name: const char \*
 
 .. _`get_mtd_device_nm.description`:
 
@@ -312,18 +331,21 @@ mtd_ooblayout_ecc
 
     Get the OOB region definition of a specific ECC section
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param int section:
+    :param section:
         ECC section. Depending on the layout you may have all the ECC
         bytes stored in a single contiguous section, or one section
         per ECC chunk (and sometime several sections for a single ECC
         ECC chunk)
+    :type section: int
 
-    :param struct mtd_oob_region \*oobecc:
+    :param oobecc:
         OOB region struct filled with the appropriate ECC position
         information
+    :type oobecc: struct mtd_oob_region \*
 
 .. _`mtd_ooblayout_ecc.description`:
 
@@ -345,18 +367,21 @@ mtd_ooblayout_free
 
     Get the OOB region definition of a specific free section
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param int section:
+    :param section:
         Free section you are interested in. Depending on the layout
         you may have all the free bytes stored in a single contiguous
         section, or one section per ECC chunk plus an extra section
         for the remaining bytes (or other funky layout).
+    :type section: int
 
-    :param struct mtd_oob_region \*oobfree:
+    :param oobfree:
         OOB region struct filled with the appropriate free position
         information
+    :type oobfree: struct mtd_oob_region \*
 
 .. _`mtd_ooblayout_free.description`:
 
@@ -378,17 +403,21 @@ mtd_ooblayout_find_region
 
     Find the region attached to a specific byte
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
-    :param int byte:
+    :param byte:
         the byte we are searching for
+    :type byte: int
 
-    :param int \*sectionp:
+    :param sectionp:
         pointer where the section id will be stored
+    :type sectionp: int \*
 
-    :param struct mtd_oob_region \*oobregion:
+    :param oobregion:
         used to retrieve the ECC position
+    :type oobregion: struct mtd_oob_region \*
 
     :param int (\*iter)(struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
         iterator function. Should be either mtd_ooblayout_free or
@@ -416,17 +445,21 @@ mtd_ooblayout_find_eccregion
 
     Find the ECC region attached to a specific ECC byte
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
-    :param int eccbyte:
+    :param eccbyte:
         the byte we are searching for
+    :type eccbyte: int
 
-    :param int \*section:
+    :param section:
         *undescribed*
+    :type section: int \*
 
-    :param struct mtd_oob_region \*oobregion:
+    :param oobregion:
         OOB region information
+    :type oobregion: struct mtd_oob_region \*
 
 .. _`mtd_ooblayout_find_eccregion.description`:
 
@@ -447,20 +480,25 @@ mtd_ooblayout_get_bytes
 
     Extract OOB bytes from the oob buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
-    :param u8 \*buf:
+    :param buf:
         destination buffer to store OOB bytes
+    :type buf: u8 \*
 
-    :param const u8 \*oobbuf:
+    :param oobbuf:
         OOB buffer
+    :type oobbuf: const u8 \*
 
-    :param int start:
+    :param start:
         first byte to retrieve
+    :type start: int
 
-    :param int nbytes:
+    :param nbytes:
         number of bytes to retrieve
+    :type nbytes: int
 
     :param int (\*iter)(struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
         section iterator
@@ -484,20 +522,25 @@ mtd_ooblayout_set_bytes
 
     put OOB bytes into the oob buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
-    :param const u8 \*buf:
+    :param buf:
         source buffer to get OOB bytes from
+    :type buf: const u8 \*
 
-    :param u8 \*oobbuf:
+    :param oobbuf:
         OOB buffer
+    :type oobbuf: u8 \*
 
-    :param int start:
+    :param start:
         first OOB byte to set
+    :type start: int
 
-    :param int nbytes:
+    :param nbytes:
         number of OOB bytes to set
+    :type nbytes: int
 
     :param int (\*iter)(struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
         section iterator
@@ -521,8 +564,9 @@ mtd_ooblayout_count_bytes
 
     count the number of bytes in a OOB category
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
     :param int (\*iter)(struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
         category iterator
@@ -545,20 +589,25 @@ mtd_ooblayout_get_eccbytes
 
     extract ECC bytes from the oob buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
-    :param u8 \*eccbuf:
+    :param eccbuf:
         destination buffer to store ECC bytes
+    :type eccbuf: u8 \*
 
-    :param const u8 \*oobbuf:
+    :param oobbuf:
         OOB buffer
+    :type oobbuf: const u8 \*
 
-    :param int start:
+    :param start:
         first ECC byte to retrieve
+    :type start: int
 
-    :param int nbytes:
+    :param nbytes:
         number of ECC bytes to retrieve
+    :type nbytes: int
 
 .. _`mtd_ooblayout_get_eccbytes.description`:
 
@@ -578,20 +627,25 @@ mtd_ooblayout_set_eccbytes
 
     set ECC bytes into the oob buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
-    :param const u8 \*eccbuf:
+    :param eccbuf:
         source buffer to get ECC bytes from
+    :type eccbuf: const u8 \*
 
-    :param u8 \*oobbuf:
+    :param oobbuf:
         OOB buffer
+    :type oobbuf: u8 \*
 
-    :param int start:
+    :param start:
         first ECC byte to set
+    :type start: int
 
-    :param int nbytes:
+    :param nbytes:
         number of ECC bytes to set
+    :type nbytes: int
 
 .. _`mtd_ooblayout_set_eccbytes.description`:
 
@@ -611,20 +665,25 @@ mtd_ooblayout_get_databytes
 
     extract data bytes from the oob buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
-    :param u8 \*databuf:
+    :param databuf:
         destination buffer to store ECC bytes
+    :type databuf: u8 \*
 
-    :param const u8 \*oobbuf:
+    :param oobbuf:
         OOB buffer
+    :type oobbuf: const u8 \*
 
-    :param int start:
+    :param start:
         first ECC byte to retrieve
+    :type start: int
 
-    :param int nbytes:
+    :param nbytes:
         number of ECC bytes to retrieve
+    :type nbytes: int
 
 .. _`mtd_ooblayout_get_databytes.description`:
 
@@ -644,20 +703,25 @@ mtd_ooblayout_set_databytes
 
     set data bytes into the oob buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
-    :param const u8 \*databuf:
+    :param databuf:
         source buffer to get data bytes from
+    :type databuf: const u8 \*
 
-    :param u8 \*oobbuf:
+    :param oobbuf:
         OOB buffer
+    :type oobbuf: u8 \*
 
-    :param int start:
+    :param start:
         first ECC byte to set
+    :type start: int
 
-    :param int nbytes:
+    :param nbytes:
         number of ECC bytes to set
+    :type nbytes: int
 
 .. _`mtd_ooblayout_set_databytes.description`:
 
@@ -677,8 +741,9 @@ mtd_ooblayout_count_freebytes
 
     count the number of free bytes in OOB
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
 .. _`mtd_ooblayout_count_freebytes.description`:
 
@@ -698,8 +763,9 @@ mtd_ooblayout_count_eccbytes
 
     count the number of ECC bytes in OOB
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
 .. _`mtd_ooblayout_count_eccbytes.description`:
 
@@ -719,12 +785,14 @@ mtd_kmalloc_up_to
 
     allocate a contiguous buffer up to the specified size
 
-    :param const struct mtd_info \*mtd:
+    :param mtd:
         mtd device description object pointer
+    :type mtd: const struct mtd_info \*
 
-    :param size_t \*size:
+    :param size:
         a pointer to the ideal or maximum size of the allocation, points
         to the actual allocation size on success.
+    :type size: size_t \*
 
 .. _`mtd_kmalloc_up_to.description`:
 

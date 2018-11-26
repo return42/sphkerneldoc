@@ -10,8 +10,9 @@ agp_free_memory
 
     free memory associated with an agp_memory pointer.
 
-    :param struct agp_memory \*curr:
+    :param curr:
         agp_memory pointer to be freed.
+    :type curr: struct agp_memory \*
 
 .. _`agp_free_memory.description`:
 
@@ -30,14 +31,17 @@ agp_allocate_memory
 
     allocate a group of pages of a certain type.
 
-    :param struct agp_bridge_data \*bridge:
+    :param bridge:
         *undescribed*
+    :type bridge: struct agp_bridge_data \*
 
-    :param size_t page_count:
+    :param page_count:
         size_t argument of the number of pages
+    :type page_count: size_t
 
-    :param u32 type:
+    :param type:
         u32 argument of the type of memory to be allocated.
+    :type type: u32
 
 .. _`agp_allocate_memory.description`:
 
@@ -58,11 +62,13 @@ agp_copy_info
 
     copy bridge state information
 
-    :param struct agp_bridge_data \*bridge:
+    :param bridge:
         *undescribed*
+    :type bridge: struct agp_bridge_data \*
 
-    :param struct agp_kern_info \*info:
+    :param info:
         agp_kern_info pointer.  The caller should insure that this pointer is valid.
+    :type info: struct agp_kern_info \*
 
 .. _`agp_copy_info.description`:
 
@@ -81,11 +87,13 @@ agp_bind_memory
 
     Bind an agp_memory structure into the GATT.
 
-    :param struct agp_memory \*curr:
+    :param curr:
         agp_memory pointer
+    :type curr: struct agp_memory \*
 
-    :param off_t pg_start:
+    :param pg_start:
         an offset into the graphics aperture translation table
+    :type pg_start: off_t
 
 .. _`agp_bind_memory.description`:
 
@@ -104,8 +112,9 @@ agp_unbind_memory
 
     Removes an agp_memory structure from the GATT
 
-    :param struct agp_memory \*curr:
+    :param curr:
         agp_memory pointer to be removed from the GATT.
+    :type curr: struct agp_memory \*
 
 .. _`agp_unbind_memory.description`:
 
@@ -124,14 +133,17 @@ agp_collect_device_status
 
     determine correct agp_cmd from various agp_stat's
 
-    :param struct agp_bridge_data \*bridge:
+    :param bridge:
         an agp_bridge_data struct allocated for the AGP host bridge.
+    :type bridge: struct agp_bridge_data \*
 
-    :param u32 requested_mode:
+    :param requested_mode:
         requested agp_stat from userspace (Typically from X)
+    :type requested_mode: u32
 
-    :param u32 bridge_agpstat:
+    :param bridge_agpstat:
         current agp_stat from AGP bridge.
+    :type bridge_agpstat: u32
 
 .. _`agp_collect_device_status.description`:
 
@@ -150,11 +162,13 @@ agp_enable
 
     initialise the agp point-to-point connection.
 
-    :param struct agp_bridge_data \*bridge:
+    :param bridge:
         *undescribed*
+    :type bridge: struct agp_bridge_data \*
 
-    :param u32 mode:
+    :param mode:
         agp mode register value to configure with.
+    :type mode: u32
 
 .. This file was automatic generated / don't edit.
 

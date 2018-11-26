@@ -264,8 +264,9 @@ OPTEE_MSG_GET_ARG_SIZE
 
     return size of struct optee_msg_arg
 
-    :param  num_params:
+    :param num_params:
         Number of parameters embedded in the struct optee_msg_arg
+    :type num_params: 
 
 .. _`optee_msg_get_arg_size.description`:
 

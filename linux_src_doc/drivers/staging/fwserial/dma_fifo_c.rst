@@ -10,8 +10,9 @@ dma_fifo_init
 
     initialize the fifo to a valid but inoperative state
 
-    :param struct dma_fifo \*fifo:
+    :param fifo:
         address of in-place "struct dma_fifo" object
+    :type fifo: struct dma_fifo \*
 
 .. _`dma_fifo_alloc`:
 
@@ -22,25 +23,31 @@ dma_fifo_alloc
 
     initialize and allocate dma_fifo
 
-    :param struct dma_fifo \*fifo:
+    :param fifo:
         address of in-place "struct dma_fifo" object
+    :type fifo: struct dma_fifo \*
 
-    :param int size:
+    :param size:
         'apparent' size, in bytes, of fifo
+    :type size: int
 
-    :param unsigned int align:
+    :param align:
         dma alignment to maintain (should be at least cpu cache alignment),
         must be power of 2
+    :type align: unsigned int
 
-    :param int tx_limit:
+    :param tx_limit:
         maximum # of bytes transmissible per dma (rounded down to
         multiple of alignment, but at least align size)
+    :type tx_limit: int
 
-    :param int open_limit:
+    :param open_limit:
         maximum # of outstanding dma transactions allowed
+    :type open_limit: int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         get_free_pages mask, passed to \ :c:func:`kmalloc`\ 
+    :type gfp_mask: gfp_t
 
 .. _`dma_fifo_alloc.description`:
 
@@ -59,8 +66,9 @@ dma_fifo_free
 
     frees the fifo
 
-    :param struct dma_fifo \*fifo:
+    :param fifo:
         address of in-place "struct dma_fifo" to free
+    :type fifo: struct dma_fifo \*
 
 .. _`dma_fifo_free.description`:
 
@@ -80,8 +88,9 @@ dma_fifo_reset
 
     dumps the fifo contents and reinits for reuse
 
-    :param struct dma_fifo \*fifo:
+    :param fifo:
         address of in-place "struct dma_fifo" to reset
+    :type fifo: struct dma_fifo \*
 
 .. _`dma_fifo_in`:
 
@@ -92,14 +101,17 @@ dma_fifo_in
 
     copies data into the fifo
 
-    :param struct dma_fifo \*fifo:
+    :param fifo:
         address of in-place "struct dma_fifo" to write to
+    :type fifo: struct dma_fifo \*
 
-    :param const void \*src:
+    :param src:
         buffer to copy from
+    :type src: const void \*
 
-    :param int n:
+    :param n:
         # of bytes to copy
+    :type n: int
 
 .. _`dma_fifo_in.description`:
 
@@ -118,12 +130,14 @@ dma_fifo_out_pend
 
     gets address/len of next avail read and marks as pended
 
-    :param struct dma_fifo \*fifo:
+    :param fifo:
         address of in-place "struct dma_fifo" to read from
+    :type fifo: struct dma_fifo \*
 
-    :param struct dma_pending \*pended:
+    :param pended:
         address of structure to fill with read address/len
         The data/len fields will be NULL/0 if no dma is pended.
+    :type pended: struct dma_pending \*
 
 .. _`dma_fifo_out_pend.description`:
 
@@ -142,11 +156,13 @@ dma_fifo_out_complete
 
     marks pended dma as completed
 
-    :param struct dma_fifo \*fifo:
+    :param fifo:
         address of in-place "struct dma_fifo" which was read from
+    :type fifo: struct dma_fifo \*
 
-    :param struct dma_pending \*complete:
+    :param complete:
         address of structure for previously pended dma to mark completed
+    :type complete: struct dma_pending \*
 
 .. This file was automatic generated / don't edit.
 

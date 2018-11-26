@@ -10,8 +10,9 @@ expect
 
     Make an assertion
 
-    :param  exp:
+    :param exp:
         *undescribed*
+    :type exp: 
 
 .. _`expect.description`:
 
@@ -29,14 +30,17 @@ drbd_chk_io_error
 
     Handle the on_io_error setting, should be called from all io completion handlers
 
-    :param  m:
+    :param m:
         *undescribed*
+    :type m: 
 
-    :param  e:
+    :param e:
         *undescribed*
+    :type e: 
 
-    :param  f:
+    :param f:
         *undescribed*
+    :type f: 
 
 .. _`drbd_chk_io_error.description`:
 
@@ -54,8 +58,9 @@ drbd_md_first_sector
 
     Returns the first sector number of the meta data area
 
-    :param struct drbd_backing_dev \*bdev:
+    :param bdev:
         Meta data block device.
+    :type bdev: struct drbd_backing_dev \*
 
 .. _`drbd_md_first_sector.description`:
 
@@ -74,8 +79,9 @@ drbd_md_last_sector
 
     Return the last sector number of the meta data area
 
-    :param struct drbd_backing_dev \*bdev:
+    :param bdev:
         Meta data block device.
+    :type bdev: struct drbd_backing_dev \*
 
 .. _`drbd_get_max_capacity`:
 
@@ -86,8 +92,9 @@ drbd_get_max_capacity
 
     Returns the capacity we announce to out peer
 
-    :param struct drbd_backing_dev \*bdev:
+    :param bdev:
         Meta data block device.
+    :type bdev: struct drbd_backing_dev \*
 
 .. _`drbd_get_max_capacity.description`:
 
@@ -107,8 +114,9 @@ drbd_md_ss
 
     Return the sector number of our meta data super block
 
-    :param struct drbd_backing_dev \*bdev:
+    :param bdev:
         Meta data block device.
+    :type bdev: struct drbd_backing_dev \*
 
 .. _`get_ldev_if_state`:
 
@@ -119,11 +127,13 @@ get_ldev_if_state
 
     Increase the ref count on device->ldev. Returns 0 if there is no ldev
 
-    :param  _device:
+    :param _device:
         DRBD device.
+    :type _device: 
 
-    :param  _min_state:
+    :param _min_state:
         Minimum device state required for success.
+    :type _min_state: 
 
 .. _`get_ldev_if_state.description`:
 

@@ -10,11 +10,13 @@ wl1273_fm_set_audio
 
     Set audio mode.
 
-    :param struct wl1273_core \*core:
+    :param core:
         A pointer to the device struct.
+    :type core: struct wl1273_core \*
 
-    :param unsigned int new_mode:
+    :param new_mode:
         The new audio mode.
+    :type new_mode: unsigned int
 
 .. _`wl1273_fm_set_audio.description`:
 
@@ -32,11 +34,13 @@ wl1273_fm_set_volume
 
     Set volume.
 
-    :param struct wl1273_core \*core:
+    :param core:
         A pointer to the device struct.
+    :type core: struct wl1273_core \*
 
-    :param unsigned int volume:
+    :param volume:
         The new volume value.
+    :type volume: unsigned int
 
 .. This file was automatic generated / don't edit.
 

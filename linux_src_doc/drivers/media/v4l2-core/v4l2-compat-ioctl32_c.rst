@@ -10,11 +10,13 @@ assign_in_user
 
     Copy from one \__user var to another one
 
-    :param  to:
+    :param to:
         \__user var where data will be stored
+    :type to: 
 
-    :param  from:
+    :param from:
         \__user var where data will be retrieved.
+    :type from: 
 
 .. _`assign_in_user.description`:
 
@@ -36,11 +38,13 @@ get_user_cast
 
     Stores at a kernelspace local var the contents from a pointer with userspace data that is not tagged with \__user.
 
-    :param  __x:
+    :param __x:
         var where data will be stored
+    :type __x: 
 
-    :param  __ptr:
+    :param __ptr:
         var where data will be retrieved.
+    :type __ptr: 
 
 .. _`get_user_cast.description`:
 
@@ -62,11 +66,13 @@ put_user_force
 
     Stores the contents of a kernelspace local var into a userspace pointer, removing any \__user cast.
 
-    :param  __x:
+    :param __x:
         var where data will be stored
+    :type __x: 
 
-    :param  __ptr:
+    :param __ptr:
         var where data will be retrieved.
+    :type __ptr: 
 
 .. _`put_user_force.description`:
 
@@ -87,11 +93,13 @@ assign_in_user_cast
 
     Copy from one \__user var to another one
 
-    :param  to:
+    :param to:
         \__user var where data will be stored
+    :type to: 
 
-    :param  from:
+    :param from:
         var where data will be retrieved that needs to be cast to \__user.
+    :type from: 
 
 .. _`assign_in_user_cast.description`:
 
@@ -116,14 +124,17 @@ native_ioctl
 
     Ancillary function that calls the native 64 bits ioctl handler.
 
-    :param struct file \*file:
+    :param file:
         pointer to \ :c:type:`struct file <file>`\  with the file handler
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl to be called
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         arguments passed from/to the ioctl handler
+    :type arg: unsigned long
 
 .. _`native_ioctl.description`:
 
@@ -153,7 +164,8 @@ Definition
         __u32 count;
         __u32 memory;
         struct v4l2_format32 format;
-        __u32 reserved[8];
+        __u32 capabilities;
+        __u32 reserved[7];
     }
 
 .. _`v4l2_create_buffers32.members`:
@@ -174,6 +186,9 @@ memory
 format
     frame format, for which buffers are requested
 
+capabilities
+    capabilities of this buffer type.
+
 reserved
     future extensions
 
@@ -186,16 +201,19 @@ alloc_userspace
 
     Allocates a 64-bits userspace pointer compatible for calling the native 64-bits version of an ioctl.
 
-    :param unsigned int size:
+    :param size:
         size of the structure itself to be allocated.
+    :type size: unsigned int
 
-    :param u32 aux_space:
+    :param aux_space:
         extra size needed to store "extra" data, e.g. space for
         other \__user data that is pointed to fields inside the
         structure.
+    :type aux_space: u32
 
-    :param void __user \*\*new_p64:
+    :param new_p64:
         pointer to a pointer to be filled with the allocated struct.
+    :type new_p64: void __user \*\*
 
 .. _`alloc_userspace.return`:
 
@@ -215,14 +233,17 @@ do_video_ioctl
 
     Ancillary function with handles a compat32 ioctl call
 
-    :param struct file \*file:
+    :param file:
         pointer to \ :c:type:`struct file <file>`\  with the file handler
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl to be called
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         arguments passed from/to the ioctl handler
+    :type arg: unsigned long
 
 .. _`do_video_ioctl.description`:
 
@@ -248,14 +269,17 @@ v4l2_compat_ioctl32
 
     Handles a compat32 ioctl call
 
-    :param struct file \*file:
+    :param file:
         pointer to \ :c:type:`struct file <file>`\  with the file handler
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl to be called
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         arguments passed from/to the ioctl handler
+    :type arg: unsigned long
 
 .. _`v4l2_compat_ioctl32.description`:
 

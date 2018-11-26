@@ -10,11 +10,13 @@ kmalloc
 
     allocate memory
 
-    :param size_t size:
+    :param size:
         how many bytes of memory are required.
+    :type size: size_t
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate.
+    :type flags: gfp_t
 
 .. _`kmalloc.description`:
 
@@ -76,14 +78,17 @@ kmalloc_array
 
     allocate memory for an array.
 
-    :param size_t n:
+    :param n:
         number of elements.
+    :type n: size_t
 
-    :param size_t size:
+    :param size:
         element size.
+    :type size: size_t
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate (see kmalloc).
+    :type flags: gfp_t
 
 .. _`kcalloc`:
 
@@ -94,14 +99,17 @@ kcalloc
 
     allocate memory for an array. The memory is set to zero.
 
-    :param size_t n:
+    :param n:
         number of elements.
+    :type n: size_t
 
-    :param size_t size:
+    :param size:
         element size.
+    :type size: size_t
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate (see kmalloc).
+    :type flags: gfp_t
 
 .. _`kzalloc`:
 
@@ -112,11 +120,13 @@ kzalloc
 
     allocate memory. The memory is set to zero.
 
-    :param size_t size:
+    :param size:
         how many bytes of memory are required.
+    :type size: size_t
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate (see kmalloc).
+    :type flags: gfp_t
 
 .. _`kzalloc_node`:
 
@@ -127,14 +137,17 @@ kzalloc_node
 
     allocate zeroed memory from a particular memory node.
 
-    :param size_t size:
+    :param size:
         how many bytes of memory are required.
+    :type size: size_t
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate (see kmalloc).
+    :type flags: gfp_t
 
-    :param int node:
+    :param node:
         memory node from which to allocate
+    :type node: int
 
 .. This file was automatic generated / don't edit.
 

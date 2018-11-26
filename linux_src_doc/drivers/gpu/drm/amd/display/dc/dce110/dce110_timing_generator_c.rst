@@ -10,8 +10,9 @@ dce110_timing_generator_enable_crtc
 
     Enable CRTC - call ASIC Control Object to enable Timing generator.
 
-    :param struct timing_generator \*tg:
+    :param tg:
         *undescribed*
+    :type tg: struct timing_generator \*
 
 .. _`dce110_timing_generator_disable_crtc`:
 
@@ -22,8 +23,9 @@ dce110_timing_generator_disable_crtc
 
     call ASIC Control Object to disable Timing generator.
 
-    :param struct timing_generator \*tg:
+    :param tg:
         *undescribed*
+    :type tg: struct timing_generator \*
 
 .. _`program_horz_count_by_2`:
 
@@ -34,11 +36,13 @@ program_horz_count_by_2
 
     Programs DxCRTC_HORZ_COUNT_BY2_EN - 1 for DVI 30bpp mode, 0 otherwise
 
-    :param struct timing_generator \*tg:
+    :param tg:
         *undescribed*
+    :type tg: struct timing_generator \*
 
-    :param const struct dc_crtc_timing \*timing:
+    :param timing:
         *undescribed*
+    :type timing: const struct dc_crtc_timing \*
 
 .. _`dce110_timing_generator_program_timing_generator`:
 
@@ -49,11 +53,13 @@ dce110_timing_generator_program_timing_generator
 
     Program CRTC Timing Registers - DxCRTC_H\_\*, DxCRTC_V\_\*, Pixel repetition. Call ASIC Control Object to program Timings.
 
-    :param struct timing_generator \*tg:
+    :param tg:
         *undescribed*
+    :type tg: struct timing_generator \*
 
-    :param const struct dc_crtc_timing \*dc_crtc_timing:
+    :param dc_crtc_timing:
         *undescribed*
+    :type dc_crtc_timing: const struct dc_crtc_timing \*
 
 .. _`dce110_timing_generator_validate_timing`:
 
@@ -64,14 +70,17 @@ dce110_timing_generator_validate_timing
 
     The timing generators support a maximum display size of is 8192 x 8192 pixels, including both active display and blanking periods. Check H Total and V Total.
 
-    :param struct timing_generator \*tg:
+    :param tg:
         *undescribed*
+    :type tg: struct timing_generator \*
 
-    :param const struct dc_crtc_timing \*timing:
+    :param timing:
         *undescribed*
+    :type timing: const struct dc_crtc_timing \*
 
-    :param enum signal_type signal:
+    :param signal:
         *undescribed*
+    :type signal: enum signal_type
 
 .. _`dce110_timing_generator_wait_for_vblank`:
 
@@ -80,8 +89,9 @@ dce110_timing_generator_wait_for_vblank
 
 .. c:function:: void dce110_timing_generator_wait_for_vblank(struct timing_generator *tg)
 
-    :param struct timing_generator \*tg:
+    :param tg:
         *undescribed*
+    :type tg: struct timing_generator \*
 
 .. _`dce110_timing_generator_wait_for_vactive`:
 
@@ -90,8 +100,9 @@ dce110_timing_generator_wait_for_vactive
 
 .. c:function:: void dce110_timing_generator_wait_for_vactive(struct timing_generator *tg)
 
-    :param struct timing_generator \*tg:
+    :param tg:
         *undescribed*
+    :type tg: struct timing_generator \*
 
 .. _`dce110_timing_generator_disable_vga`:
 
@@ -102,8 +113,9 @@ dce110_timing_generator_disable_vga
 
     Turn OFF VGA Mode and Timing  - DxVGA_CONTROL VGA Mode and VGA Timing is used by VBIOS on CRT Monitors;
 
-    :param struct timing_generator \*tg:
+    :param tg:
         *undescribed*
+    :type tg: struct timing_generator \*
 
 .. _`dce110_timing_generator_set_overscan_color_black`:
 
@@ -112,11 +124,13 @@ dce110_timing_generator_set_overscan_color_black
 
 .. c:function:: void dce110_timing_generator_set_overscan_color_black(struct timing_generator *tg, const struct tg_color *color)
 
-    :param struct timing_generator \*tg:
+    :param tg:
         *undescribed*
+    :type tg: struct timing_generator \*
 
-    :param const struct tg_color \*color:
+    :param color:
         *undescribed*
+    :type color: const struct tg_color \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ intel_vgpu_find_page_track
 
     find page track rcord of guest page
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
+    :param gfn:
         the gfn of guest page
+    :type gfn: unsigned long
 
 .. _`intel_vgpu_find_page_track.return`:
 
@@ -32,17 +34,21 @@ intel_vgpu_register_page_track
 
     register a guest page to be tacked
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
+    :param gfn:
         the gfn of guest page
+    :type gfn: unsigned long
 
-    :param gvt_page_track_handler_t handler:
-        *undescribed*
+    :param handler:
+        page track handler
+    :type handler: gvt_page_track_handler_t
 
-    :param void \*priv:
-        *undescribed*
+    :param priv:
+        tracker private
+    :type priv: void \*
 
 .. _`intel_vgpu_register_page_track.return`:
 
@@ -60,11 +66,13 @@ intel_vgpu_unregister_page_track
 
     unregister the tracked guest page
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
+    :param gfn:
         the gfn of guest page
+    :type gfn: unsigned long
 
 .. _`intel_vgpu_enable_page_track`:
 
@@ -75,11 +83,13 @@ intel_vgpu_enable_page_track
 
     set write-protection on guest page
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
+    :param gfn:
         the gfn of guest page
+    :type gfn: unsigned long
 
 .. _`intel_vgpu_enable_page_track.return`:
 
@@ -97,11 +107,13 @@ intel_vgpu_disable_page_track
 
     cancel write-protection on guest page
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
+    :param gfn:
         the gfn of guest page
+    :type gfn: unsigned long
 
 .. _`intel_vgpu_disable_page_track.return`:
 
@@ -119,17 +131,21 @@ intel_vgpu_page_track_handler
 
     called when write to write-protected page
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param u64 gpa:
+    :param gpa:
         the gpa of this write
+    :type gpa: u64
 
-    :param void \*data:
+    :param data:
         the writed data
+    :type data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         the length of this write
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_page_track_handler.return`:
 

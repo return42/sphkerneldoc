@@ -10,14 +10,17 @@ octeon_i2c_reg_write
 
     write an I2C core register
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
-    :param u64 eop_reg:
+    :param eop_reg:
         Register selector
+    :type eop_reg: u64
 
-    :param u8 data:
+    :param data:
         Value to be written
+    :type data: u8
 
 .. _`octeon_i2c_reg_write.description`:
 
@@ -35,14 +38,17 @@ octeon_i2c_reg_read
 
     read lower bits of an I2C core register
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
-    :param u64 eop_reg:
+    :param eop_reg:
         Register selector
+    :type eop_reg: u64
 
-    :param int \*error:
+    :param error:
         *undescribed*
+    :type error: int \*
 
 .. _`octeon_i2c_reg_read.description`:
 
@@ -62,8 +68,9 @@ octeon_i2c_read_int
 
     read the TWSI_INT register
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
 .. _`octeon_i2c_read_int.description`:
 
@@ -81,11 +88,13 @@ octeon_i2c_write_int
 
     write the TWSI_INT register
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
-    :param u64 data:
+    :param data:
         Value to be written
+    :type data: u64
 
 .. This file was automatic generated / don't edit.
 

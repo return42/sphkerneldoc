@@ -10,14 +10,17 @@ spum_ns2_ctx_max_payload
 
     Determine the max length of the payload for a SPU message for a given cipher and hash alg context.
 
-    :param enum spu_cipher_alg cipher_alg:
+    :param cipher_alg:
         The cipher algorithm
+    :type cipher_alg: enum spu_cipher_alg
 
-    :param enum spu_cipher_mode cipher_mode:
+    :param cipher_mode:
         The cipher mode
+    :type cipher_mode: enum spu_cipher_mode
 
-    :param unsigned int blocksize:
+    :param blocksize:
         The size of a block of data for this algo
+    :type blocksize: unsigned int
 
 .. _`spum_ns2_ctx_max_payload.description`:
 
@@ -44,14 +47,17 @@ spum_nsp_ctx_max_payload
 
     Determine the max length of the payload for a SPU message for a given cipher and hash alg context.
 
-    :param enum spu_cipher_alg cipher_alg:
+    :param cipher_alg:
         The cipher algorithm
+    :type cipher_alg: enum spu_cipher_alg
 
-    :param enum spu_cipher_mode cipher_mode:
+    :param cipher_mode:
         The cipher mode
+    :type cipher_mode: enum spu_cipher_mode
 
-    :param unsigned int blocksize:
+    :param blocksize:
         The size of a block of data for this algo
+    :type blocksize: unsigned int
 
 .. _`spum_nsp_ctx_max_payload.description`:
 
@@ -78,14 +84,17 @@ spum_response_hdr_len
 
     Given the length of the hash key and encryption key, determine the expected length of a SPU response header.
 
-    :param u16 auth_key_len:
+    :param auth_key_len:
         authentication key length (bytes)
+    :type auth_key_len: u16
 
-    :param u16 enc_key_len:
+    :param enc_key_len:
         encryption key length (bytes)
+    :type enc_key_len: u16
 
-    :param bool is_hash:
+    :param is_hash:
         true if response message is for a hash operation
+    :type is_hash: bool
 
 .. _`spum_response_hdr_len.return`:
 
@@ -103,17 +112,21 @@ spum_hash_pad_len
 
     Calculate the length of hash padding required to extend data to a full block size.
 
-    :param enum hash_alg hash_alg:
+    :param hash_alg:
         hash algorithm
+    :type hash_alg: enum hash_alg
 
-    :param enum hash_mode hash_mode:
+    :param hash_mode:
         hash mode
+    :type hash_mode: enum hash_mode
 
-    :param u32 chunksize:
+    :param chunksize:
         length of data, in bytes
+    :type chunksize: u32
 
-    :param u16 hash_block_size:
+    :param hash_block_size:
         size of a block of data for hash algorithm
+    :type hash_block_size: u16
 
 .. _`spum_hash_pad_len.description`:
 
@@ -138,11 +151,13 @@ spum_gcm_ccm_pad_len
 
     Determine the required length of GCM or CCM padding.
 
-    :param enum spu_cipher_mode cipher_mode:
+    :param cipher_mode:
         Algo type
+    :type cipher_mode: enum spu_cipher_mode
 
-    :param unsigned int data_size:
+    :param data_size:
         Length of plaintext (bytes)
+    :type data_size: unsigned int
 
 .. _`spum_assoc_resp_len`:
 
@@ -153,17 +168,21 @@ spum_assoc_resp_len
 
     Determine the size of the receive buffer required to catch associated data.
 
-    :param enum spu_cipher_mode cipher_mode:
+    :param cipher_mode:
         cipher mode
+    :type cipher_mode: enum spu_cipher_mode
 
-    :param unsigned int assoc_len:
+    :param assoc_len:
         length of associated data (bytes)
+    :type assoc_len: unsigned int
 
-    :param unsigned int iv_len:
+    :param iv_len:
         length of IV (bytes)
+    :type iv_len: unsigned int
 
-    :param bool is_encrypt:
+    :param is_encrypt:
         true if encrypting. false if decrypting.
+    :type is_encrypt: bool
 
 .. _`spum_assoc_resp_len.return`:
 
@@ -181,11 +200,13 @@ spum_aead_ivlen
 
     Calculate the length of the AEAD IV to be included in a SPU request after the AAD and before the payload.
 
-    :param enum spu_cipher_mode cipher_mode:
+    :param cipher_mode:
         cipher mode
+    :type cipher_mode: enum spu_cipher_mode
 
-    :param u16 iv_len:
+    :param iv_len:
         *undescribed*
+    :type iv_len: u16
 
 .. _`spum_aead_ivlen.description`:
 
@@ -211,9 +232,10 @@ spum_hash_type
 
     Determine the type of hash operation.
 
-    :param u32 src_sent:
+    :param src_sent:
         The number of bytes in the current request that have already
         been sent to the SPU to be hashed.
+    :type src_sent: u32
 
 .. _`spum_hash_type.description`:
 
@@ -234,14 +256,17 @@ spum_digest_size
 
     Determine the size of a hash digest to expect the SPU to return.
 
-    :param u32 alg_digest_size:
+    :param alg_digest_size:
         *undescribed*
+    :type alg_digest_size: u32
 
-    :param enum hash_alg alg:
+    :param alg:
         *undescribed*
+    :type alg: enum hash_alg
 
-    :param enum hash_type htype:
+    :param htype:
         *undescribed*
+    :type htype: enum hash_type
 
 .. _`spum_digest_size.alg_digest_size`:
 
@@ -277,24 +302,30 @@ spum_create_request
 
     Build a SPU request message header, up to and including the BD header. Construct the message starting at spu_hdr. Caller should allocate this buffer in DMA-able memory at least SPU_HEADER_ALLOC_LEN bytes long.
 
-    :param u8 \*spu_hdr:
+    :param spu_hdr:
         Start of buffer where SPU request header is to be written
+    :type spu_hdr: u8 \*
 
-    :param struct spu_request_opts \*req_opts:
+    :param req_opts:
         SPU request message options
+    :type req_opts: struct spu_request_opts \*
 
-    :param struct spu_cipher_parms \*cipher_parms:
+    :param cipher_parms:
         Parameters related to cipher algorithm
+    :type cipher_parms: struct spu_cipher_parms \*
 
-    :param struct spu_hash_parms \*hash_parms:
+    :param hash_parms:
         Parameters related to hash algorithm
+    :type hash_parms: struct spu_hash_parms \*
 
-    :param struct spu_aead_parms \*aead_parms:
+    :param aead_parms:
         Parameters related to AEAD operation
+    :type aead_parms: struct spu_aead_parms \*
 
-    :param unsigned int data_size:
+    :param data_size:
         Length of data to be encrypted or authenticated. If AEAD, does
         not include length of AAD.
+    :type data_size: unsigned int
 
 .. _`spum_create_request.return`:
 
@@ -312,11 +343,13 @@ spum_cipher_req_init
 
     Build a SPU request message header, up to and including the BD header.
 
-    :param u8 \*spu_hdr:
+    :param spu_hdr:
         Start of SPU request header (MH)
+    :type spu_hdr: u8 \*
 
-    :param struct spu_cipher_parms \*cipher_parms:
+    :param cipher_parms:
         Parameters that describe the cipher request
+    :type cipher_parms: struct spu_cipher_parms \*
 
 .. _`spum_cipher_req_init.description`:
 
@@ -342,23 +375,29 @@ spum_cipher_req_finish
 
     Finish building a SPU request message header for a block cipher request. Assumes much of the header was already filled in at \ :c:func:`setkey`\  time in \ :c:func:`spu_cipher_req_init`\ .
 
-    :param u8 \*spu_hdr:
+    :param spu_hdr:
         Start of the request message header (MH field)
+    :type spu_hdr: u8 \*
 
-    :param u16 spu_req_hdr_len:
+    :param spu_req_hdr_len:
         Length in bytes of the SPU request header
+    :type spu_req_hdr_len: u16
 
-    :param unsigned int is_inbound:
+    :param is_inbound:
         *undescribed*
+    :type is_inbound: unsigned int
 
-    :param struct spu_cipher_parms \*cipher_parms:
+    :param cipher_parms:
         Parameters describing cipher operation to be performed
+    :type cipher_parms: struct spu_cipher_parms \*
 
-    :param bool update_key:
+    :param update_key:
         If true, rewrite the cipher key in SCTX
+    :type update_key: bool
 
-    :param unsigned int data_size:
+    :param data_size:
         Length of the data in the BD field
+    :type data_size: unsigned int
 
 .. _`spum_cipher_req_finish.description`:
 
@@ -381,26 +420,33 @@ spum_request_pad
 
     Create pad bytes at the end of the data.
 
-    :param u8 \*pad_start:
+    :param pad_start:
         Start of buffer where pad bytes are to be written
+    :type pad_start: u8 \*
 
-    :param u32 gcm_ccm_padding:
+    :param gcm_ccm_padding:
         length of GCM/CCM padding, in bytes
+    :type gcm_ccm_padding: u32
 
-    :param u32 hash_pad_len:
+    :param hash_pad_len:
         Number of bytes of padding extend data to full block
+    :type hash_pad_len: u32
 
-    :param enum hash_alg auth_alg:
+    :param auth_alg:
         authentication algorithm
+    :type auth_alg: enum hash_alg
 
-    :param enum hash_mode auth_mode:
+    :param auth_mode:
         authentication mode
+    :type auth_mode: enum hash_mode
 
-    :param unsigned int total_sent:
+    :param total_sent:
         length inserted at end of hash pad
+    :type total_sent: unsigned int
 
-    :param u32 status_padding:
+    :param status_padding:
         Number of bytes of padding to align STATUS word
+    :type status_padding: u32
 
 .. _`spum_request_pad.there-may-be-three-forms-of-pad`:
 
@@ -421,8 +467,9 @@ spum_xts_tweak_in_payload
 
     Indicate that SPUM DOES place the XTS tweak field in the packet payload (rather than using IV)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`spum_xts_tweak_in_payload.return`:
 
@@ -440,8 +487,9 @@ spum_tx_status_len
 
     Return the length of the STATUS field in a SPU response message.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`spum_tx_status_len.return`:
 
@@ -459,8 +507,9 @@ spum_rx_status_len
 
     Return the length of the STATUS field in a SPU response message.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`spum_rx_status_len.return`:
 
@@ -478,8 +527,9 @@ spum_status_process
 
     Process the status from a SPU response message.
 
-    :param u8 \*statp:
+    :param statp:
         start of STATUS word
+    :type statp: u8 \*
 
 .. _`spum_status_process.return`:
 
@@ -498,23 +548,29 @@ spum_ccm_update_iv
 
     Update the IV as per the requirements for CCM mode.
 
-    :param unsigned int digestsize:
+    :param digestsize:
         Digest size of this request
+    :type digestsize: unsigned int
 
-    :param struct spu_cipher_parms \*cipher_parms:
+    :param cipher_parms:
         (pointer to) cipher parmaeters, includes IV buf & IV len
+    :type cipher_parms: struct spu_cipher_parms \*
 
-    :param unsigned int assoclen:
+    :param assoclen:
         Length of AAD data
+    :type assoclen: unsigned int
 
-    :param unsigned int chunksize:
+    :param chunksize:
         length of input data to be sent in this req
+    :type chunksize: unsigned int
 
-    :param bool is_encrypt:
+    :param is_encrypt:
         true if this is an output/encrypt operation
+    :type is_encrypt: bool
 
-    :param bool is_esp:
+    :param is_esp:
         true if this is an ESP / RFC4309 operation
+    :type is_esp: bool
 
 .. _`spum_wordalign_padlen`:
 
@@ -525,8 +581,9 @@ spum_wordalign_padlen
 
     Given the length of a data field, determine the padding required to align the data following this field on a 4-byte boundary.
 
-    :param u32 data_size:
+    :param data_size:
         length of data field in bytes
+    :type data_size: u32
 
 .. _`spum_wordalign_padlen.return`:
 

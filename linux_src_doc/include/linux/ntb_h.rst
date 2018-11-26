@@ -568,8 +568,9 @@ ntb_register_client
 
     register a client for interest in ntb devices
 
-    :param  client:
+    :param client:
         Client context.
+    :type client: 
 
 .. _`ntb_register_client.description`:
 
@@ -596,8 +597,9 @@ ntb_unregister_client
 
     unregister a client for interest in ntb devices
 
-    :param struct ntb_client \*client:
+    :param client:
         Client context.
+    :type client: struct ntb_client \*
 
 .. _`ntb_unregister_client.description`:
 
@@ -617,8 +619,9 @@ ntb_register_device
 
     register a ntb device
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_register_device.description`:
 
@@ -645,8 +648,9 @@ ntb_unregister_device
 
     unregister a ntb device
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_unregister_device.description`:
 
@@ -666,14 +670,17 @@ ntb_set_ctx
 
     associate a driver context with an ntb device
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param void \*ctx:
+    :param ctx:
         Driver context.
+    :type ctx: void \*
 
-    :param const struct ntb_ctx_ops \*ctx_ops:
+    :param ctx_ops:
         Driver context operations.
+    :type ctx_ops: const struct ntb_ctx_ops \*
 
 .. _`ntb_set_ctx.description`:
 
@@ -700,8 +707,9 @@ ntb_clear_ctx
 
     disassociate any driver context from an ntb device
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_clear_ctx.description`:
 
@@ -720,8 +728,9 @@ ntb_link_event
 
     notify driver context of a change in link status
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_link_event.description`:
 
@@ -740,11 +749,13 @@ ntb_db_event
 
     notify driver context of a doorbell event
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int vector:
+    :param vector:
         Interrupt vector number.
+    :type vector: int
 
 .. _`ntb_db_event.description`:
 
@@ -768,8 +779,9 @@ ntb_msg_event
 
     notify driver context of a message event
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_msg_event.description`:
 
@@ -791,8 +803,9 @@ ntb_default_port_number
 
     get the default local port number
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_default_port_number.description`:
 
@@ -822,8 +835,9 @@ ntb_default_peer_port_count
 
     get the default number of peer device ports
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_default_peer_port_count.description`:
 
@@ -851,11 +865,13 @@ ntb_default_peer_port_number
 
     get the default peer port by given index
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         *undescribed*
+    :type pidx: int
 
 .. _`ntb_default_peer_port_number.description`:
 
@@ -884,11 +900,13 @@ ntb_default_peer_port_idx
 
     get the default peer device port index by given port number
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int port:
+    :param port:
         Peer port number (should be one of enum ntb_default_port).
+    :type port: int
 
 .. _`ntb_default_peer_port_idx.description`:
 
@@ -918,8 +936,9 @@ ntb_port_number
 
     get the local port number
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_port_number.description`:
 
@@ -944,8 +963,9 @@ ntb_peer_port_count
 
     get the number of peer device ports
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_peer_port_count.description`:
 
@@ -972,11 +992,13 @@ ntb_peer_port_number
 
     get the peer port by given index
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Peer port index.
+    :type pidx: int
 
 .. _`ntb_peer_port_number.description`:
 
@@ -1002,11 +1024,13 @@ ntb_peer_port_idx
 
     get the peer device port index by given port number
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int port:
+    :param port:
         Peer port number.
+    :type port: int
 
 .. _`ntb_peer_port_idx.description`:
 
@@ -1032,14 +1056,17 @@ ntb_link_is_up
 
     get the current ntb link state
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param enum ntb_speed \*speed:
+    :param speed:
         OUT - The link speed expressed as PCIe generation number.
+    :type speed: enum ntb_speed \*
 
-    :param enum ntb_width \*width:
+    :param width:
         OUT - The link width expressed as the number of PCIe lanes.
+    :type width: enum ntb_width \*
 
 .. _`ntb_link_is_up.description`:
 
@@ -1067,14 +1094,17 @@ ntb_link_enable
 
     enable the local port ntb connection
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param enum ntb_speed max_speed:
+    :param max_speed:
         The maximum link speed expressed as PCIe generation number.
+    :type max_speed: enum ntb_speed
 
-    :param enum ntb_width max_width:
+    :param max_width:
         The maximum link width expressed as the number of PCIe lanes.
+    :type max_width: enum ntb_width
 
 .. _`ntb_link_enable.description`:
 
@@ -1103,8 +1133,9 @@ ntb_link_disable
 
     disable the local port ntb connection
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_link_disable.description`:
 
@@ -1133,11 +1164,13 @@ ntb_mw_count
 
     get the number of inbound memory windows, which could be created for a specified peer device
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Port index of peer device.
+    :type pidx: int
 
 .. _`ntb_mw_count.description`:
 
@@ -1166,23 +1199,29 @@ ntb_mw_get_align
 
     get the restriction parameters of inbound memory window
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Port index of peer device.
+    :type pidx: int
 
-    :param int widx:
+    :param widx:
         Memory window index.
+    :type widx: int
 
-    :param resource_size_t \*addr_align:
+    :param addr_align:
         OUT - the base alignment for translating the memory window
+    :type addr_align: resource_size_t \*
 
-    :param resource_size_t \*size_align:
+    :param size_align:
         OUT - the size alignment for translating the memory window
+    :type size_align: resource_size_t \*
 
-    :param resource_size_t \*size_max:
+    :param size_max:
         OUT - the maximum size of the memory window
+    :type size_max: resource_size_t \*
 
 .. _`ntb_mw_get_align.description`:
 
@@ -1210,20 +1249,25 @@ ntb_mw_set_trans
 
     set the translation of an inbound memory window
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Port index of peer device.
+    :type pidx: int
 
-    :param int widx:
+    :param widx:
         Memory window index.
+    :type widx: int
 
-    :param dma_addr_t addr:
+    :param addr:
         The dma address of local memory to expose to the peer.
+    :type addr: dma_addr_t
 
-    :param resource_size_t size:
+    :param size:
         The size of the local memory to expose to the peer.
+    :type size: resource_size_t
 
 .. _`ntb_mw_set_trans.description`:
 
@@ -1255,14 +1299,17 @@ ntb_mw_clear_trans
 
     clear the translation address of an inbound memory window
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Port index of peer device.
+    :type pidx: int
 
-    :param int widx:
+    :param widx:
         Memory window index.
+    :type widx: int
 
 .. _`ntb_mw_clear_trans.description`:
 
@@ -1288,8 +1335,9 @@ ntb_peer_mw_count
 
     get the number of outbound memory windows, which could be mapped to access a shared memory
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_peer_mw_count.description`:
 
@@ -1316,17 +1364,21 @@ ntb_peer_mw_get_addr
 
     get map address of an outbound memory window
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int widx:
+    :param widx:
         Memory window index (within \ :c:func:`ntb_peer_mw_count`\  return value).
+    :type widx: int
 
-    :param phys_addr_t \*base:
+    :param base:
         OUT - the base address of mapping region.
+    :type base: phys_addr_t \*
 
-    :param resource_size_t \*size:
+    :param size:
         OUT - the size of mapping region.
+    :type size: resource_size_t \*
 
 .. _`ntb_peer_mw_get_addr.description`:
 
@@ -1353,20 +1405,25 @@ ntb_peer_mw_set_trans
 
     set a translation address of a memory window retrieved from a peer device
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Port index of peer device the translation address received from.
+    :type pidx: int
 
-    :param int widx:
+    :param widx:
         Memory window index.
+    :type widx: int
 
-    :param u64 addr:
+    :param addr:
         The dma address of the shared memory to access.
+    :type addr: u64
 
-    :param resource_size_t size:
+    :param size:
         The size of the shared memory to access.
+    :type size: resource_size_t
 
 .. _`ntb_peer_mw_set_trans.description`:
 
@@ -1396,14 +1453,17 @@ ntb_peer_mw_clear_trans
 
     clear the translation address of an outbound memory window
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Port index of peer device.
+    :type pidx: int
 
-    :param int widx:
+    :param widx:
         Memory window index.
+    :type widx: int
 
 .. _`ntb_peer_mw_clear_trans.description`:
 
@@ -1432,8 +1492,9 @@ ntb_db_is_unsafe
 
     check if it is safe to use hardware doorbell
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_db_is_unsafe.description`:
 
@@ -1460,8 +1521,9 @@ ntb_db_valid_mask
 
     get a mask of doorbell bits supported by the ntb
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_db_valid_mask.description`:
 
@@ -1486,8 +1548,9 @@ ntb_db_vector_count
 
     get the number of doorbell interrupt vectors
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_db_vector_count.description`:
 
@@ -1512,11 +1575,13 @@ ntb_db_vector_mask
 
     get a mask of doorbell bits serviced by a vector
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int vector:
+    :param vector:
         Doorbell vector number.
+    :type vector: int
 
 .. _`ntb_db_vector_mask.description`:
 
@@ -1541,8 +1606,9 @@ ntb_db_read
 
     read the local doorbell register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_db_read.description`:
 
@@ -1567,11 +1633,13 @@ ntb_db_set
 
     set bits in the local doorbell register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 db_bits:
+    :param db_bits:
         Doorbell bits to set.
+    :type db_bits: u64
 
 .. _`ntb_db_set.description`:
 
@@ -1599,11 +1667,13 @@ ntb_db_clear
 
     clear bits in the local doorbell register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 db_bits:
+    :param db_bits:
         Doorbell bits to clear.
+    :type db_bits: u64
 
 .. _`ntb_db_clear.description`:
 
@@ -1629,8 +1699,9 @@ ntb_db_read_mask
 
     read the local doorbell mask
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_db_read_mask.description`:
 
@@ -1657,11 +1728,13 @@ ntb_db_set_mask
 
     set bits in the local doorbell mask
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 db_bits:
+    :param db_bits:
         Doorbell mask bits to set.
+    :type db_bits: u64
 
 .. _`ntb_db_set_mask.description`:
 
@@ -1688,11 +1761,13 @@ ntb_db_clear_mask
 
     clear bits in the local doorbell mask
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 db_bits:
+    :param db_bits:
         Doorbell bits to clear.
+    :type db_bits: u64
 
 .. _`ntb_db_clear_mask.description`:
 
@@ -1722,14 +1797,17 @@ ntb_peer_db_addr
 
     address and size of the peer doorbell register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param phys_addr_t \*db_addr:
+    :param db_addr:
         OUT - The address of the peer doorbell register.
+    :type db_addr: phys_addr_t \*
 
-    :param resource_size_t \*db_size:
+    :param db_size:
         OUT - The number of bytes to write the peer doorbell register.
+    :type db_size: resource_size_t \*
 
 .. _`ntb_peer_db_addr.description`:
 
@@ -1760,8 +1838,9 @@ ntb_peer_db_read
 
     read the peer doorbell register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_peer_db_read.description`:
 
@@ -1788,11 +1867,13 @@ ntb_peer_db_set
 
     set bits in the peer doorbell register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 db_bits:
+    :param db_bits:
         Doorbell bits to set.
+    :type db_bits: u64
 
 .. _`ntb_peer_db_set.description`:
 
@@ -1818,11 +1899,13 @@ ntb_peer_db_clear
 
     clear bits in the peer doorbell register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 db_bits:
+    :param db_bits:
         Doorbell bits to clear.
+    :type db_bits: u64
 
 .. _`ntb_peer_db_clear.description`:
 
@@ -1850,8 +1933,9 @@ ntb_peer_db_read_mask
 
     read the peer doorbell mask
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_peer_db_read_mask.description`:
 
@@ -1878,11 +1962,13 @@ ntb_peer_db_set_mask
 
     set bits in the peer doorbell mask
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 db_bits:
+    :param db_bits:
         Doorbell mask bits to set.
+    :type db_bits: u64
 
 .. _`ntb_peer_db_set_mask.description`:
 
@@ -1911,11 +1997,13 @@ ntb_peer_db_clear_mask
 
     clear bits in the peer doorbell mask
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 db_bits:
+    :param db_bits:
         Doorbell bits to clear.
+    :type db_bits: u64
 
 .. _`ntb_peer_db_clear_mask.description`:
 
@@ -1945,8 +2033,9 @@ ntb_spad_is_unsafe
 
     check if it is safe to use the hardware scratchpads
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_spad_is_unsafe.description`:
 
@@ -1973,8 +2062,9 @@ ntb_spad_count
 
     get the number of scratchpads
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_spad_count.description`:
 
@@ -2000,11 +2090,13 @@ ntb_spad_read
 
     read the local scratchpad register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int sidx:
+    :param sidx:
         Scratchpad index.
+    :type sidx: int
 
 .. _`ntb_spad_read.description`:
 
@@ -2029,14 +2121,17 @@ ntb_spad_write
 
     write the local scratchpad register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int sidx:
+    :param sidx:
         Scratchpad index.
+    :type sidx: int
 
-    :param u32 val:
+    :param val:
         Scratchpad value.
+    :type val: u32
 
 .. _`ntb_spad_write.description`:
 
@@ -2061,17 +2156,21 @@ ntb_peer_spad_addr
 
     address of the peer scratchpad register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Port index of peer device.
+    :type pidx: int
 
-    :param int sidx:
+    :param sidx:
         Scratchpad index.
+    :type sidx: int
 
-    :param phys_addr_t \*spad_addr:
+    :param spad_addr:
         OUT - The address of the peer scratchpad register.
+    :type spad_addr: phys_addr_t \*
 
 .. _`ntb_peer_spad_addr.description`:
 
@@ -2097,14 +2196,17 @@ ntb_peer_spad_read
 
     read the peer scratchpad register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Port index of peer device.
+    :type pidx: int
 
-    :param int sidx:
+    :param sidx:
         Scratchpad index.
+    :type sidx: int
 
 .. _`ntb_peer_spad_read.description`:
 
@@ -2129,17 +2231,21 @@ ntb_peer_spad_write
 
     write the peer scratchpad register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Port index of peer device.
+    :type pidx: int
 
-    :param int sidx:
+    :param sidx:
         Scratchpad index.
+    :type sidx: int
 
-    :param u32 val:
+    :param val:
         Scratchpad value.
+    :type val: u32
 
 .. _`ntb_peer_spad_write.description`:
 
@@ -2164,8 +2270,9 @@ ntb_msg_count
 
     get the number of message registers
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_msg_count.description`:
 
@@ -2190,8 +2297,9 @@ ntb_msg_inbits
 
     get a bitfield of inbound message registers status
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_msg_inbits.description`:
 
@@ -2217,8 +2325,9 @@ ntb_msg_outbits
 
     get a bitfield of outbound message registers status
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_msg_outbits.description`:
 
@@ -2244,8 +2353,9 @@ ntb_msg_read_sts
 
     read the message registers status
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
 .. _`ntb_msg_read_sts.description`:
 
@@ -2272,11 +2382,13 @@ ntb_msg_clear_sts
 
     clear status bits of message registers
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 sts_bits:
+    :param sts_bits:
         Status bits to clear.
+    :type sts_bits: u64
 
 .. _`ntb_msg_clear_sts.description`:
 
@@ -2301,11 +2413,13 @@ ntb_msg_set_mask
 
     set mask of message register status bits
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 mask_bits:
+    :param mask_bits:
         Mask bits.
+    :type mask_bits: u64
 
 .. _`ntb_msg_set_mask.description`:
 
@@ -2330,11 +2444,13 @@ ntb_msg_clear_mask
 
     clear message registers mask
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param u64 mask_bits:
+    :param mask_bits:
         Mask bits to clear.
+    :type mask_bits: u64
 
 .. _`ntb_msg_clear_mask.description`:
 
@@ -2359,14 +2475,17 @@ ntb_msg_read
 
     read inbound message register with specified index
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int \*pidx:
+    :param pidx:
         OUT - Port index of peer device a message retrieved from
+    :type pidx: int \*
 
-    :param int midx:
+    :param midx:
         Message register index
+    :type midx: int
 
 .. _`ntb_msg_read.description`:
 
@@ -2392,17 +2511,21 @@ ntb_peer_msg_write
 
     write data to the specified peer message register
 
-    :param struct ntb_dev \*ntb:
+    :param ntb:
         NTB device context.
+    :type ntb: struct ntb_dev \*
 
-    :param int pidx:
+    :param pidx:
         Port index of peer device a message being sent to
+    :type pidx: int
 
-    :param int midx:
+    :param midx:
         Message register index
+    :type midx: int
 
-    :param u32 msg:
+    :param msg:
         Data to send
+    :type msg: u32
 
 .. _`ntb_peer_msg_write.description`:
 

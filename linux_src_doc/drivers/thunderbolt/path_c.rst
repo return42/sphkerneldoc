@@ -10,11 +10,13 @@ tb_path_alloc
 
     allocate a thunderbolt path
 
-    :param struct tb \*tb:
+    :param tb:
         *undescribed*
+    :type tb: struct tb \*
 
-    :param int num_hops:
+    :param num_hops:
         *undescribed*
+    :type num_hops: int
 
 .. _`tb_path_alloc.return`:
 
@@ -32,8 +34,9 @@ tb_path_free
 
     free a deactivated path
 
-    :param struct tb_path \*path:
+    :param path:
         *undescribed*
+    :type path: struct tb_path \*
 
 .. _`tb_path_activate`:
 
@@ -44,8 +47,9 @@ tb_path_activate
 
     activate a path
 
-    :param struct tb_path \*path:
+    :param path:
         *undescribed*
+    :type path: struct tb_path \*
 
 .. _`tb_path_activate.description`:
 
@@ -71,8 +75,9 @@ tb_path_is_invalid
 
     check whether any ports on the path are invalid
 
-    :param struct tb_path \*path:
+    :param path:
         *undescribed*
+    :type path: struct tb_path \*
 
 .. _`tb_path_is_invalid.return`:
 

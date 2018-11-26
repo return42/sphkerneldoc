@@ -8,20 +8,25 @@
 
 .. c:function:: int __ffs_data_do_os_desc(enum ffs_os_desc_type type, struct usb_os_desc_header *h, void *data, unsigned len, void *priv)
 
-    :param enum ffs_os_desc_type type:
+    :param type:
         *undescribed*
+    :type type: enum ffs_os_desc_type
 
-    :param struct usb_os_desc_header \*h:
+    :param h:
         *undescribed*
+    :type h: struct usb_os_desc_header \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param unsigned len:
+    :param len:
         *undescribed*
+    :type len: unsigned
 
-    :param void \*priv:
+    :param priv:
         *undescribed*
+    :type priv: void \*
 
 .. This file was automatic generated / don't edit.
 

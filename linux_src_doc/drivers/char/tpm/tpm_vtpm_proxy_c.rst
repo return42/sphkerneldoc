@@ -10,17 +10,21 @@ vtpm_proxy_fops_read
 
     Read TPM commands on 'server side'
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         read buffer
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to read
+    :type count: size_t
 
-    :param loff_t \*off:
+    :param off:
         offset
+    :type off: loff_t \*
 
 .. _`vtpm_proxy_fops_read.return`:
 
@@ -38,17 +42,21 @@ vtpm_proxy_fops_write
 
     Write TPM responses on 'server side'
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         write buffer
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to write
+    :type count: size_t
 
-    :param loff_t \*off:
+    :param off:
         offset
+    :type off: loff_t \*
 
 .. _`vtpm_proxy_fops_write.return`:
 
@@ -66,8 +74,9 @@ vtpm_proxy_fops_undo_open
 
     counter-part to vtpm_fops_open Call to undo vtpm_proxy_fops_open
 
-    :param struct proxy_dev \*proxy_dev:
+    :param proxy_dev:
         *undescribed*
+    :type proxy_dev: struct proxy_dev \*
 
 .. _`vtpm_proxy_fops_undo_open.description`:
 
@@ -85,14 +94,17 @@ vtpmx_ioc_new_dev
 
     handler for the \ ``VTPM_PROXY_IOC_NEW_DEV``\  ioctl
 
-    :param struct file \*file:
+    :param file:
         /dev/vtpmx
+    :type file: struct file \*
 
-    :param unsigned int ioctl:
+    :param ioctl:
         the ioctl number
+    :type ioctl: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         pointer to the struct vtpmx_proxy_new_dev
+    :type arg: unsigned long
 
 .. _`vtpmx_ioc_new_dev.description`:
 

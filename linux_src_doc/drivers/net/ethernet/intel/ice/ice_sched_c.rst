@@ -10,11 +10,13 @@ ice_sched_add_root_node
 
     Insert the Tx scheduler root node in SW DB
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param struct ice_aqc_txsched_elem_data \*info:
+    :param info:
         Scheduler element information from firmware
+    :type info: struct ice_aqc_txsched_elem_data \*
 
 .. _`ice_sched_add_root_node.description`:
 
@@ -33,11 +35,13 @@ ice_sched_find_node_by_teid
 
     Find the Tx scheduler node in SW DB
 
-    :param struct ice_sched_node \*start_node:
+    :param start_node:
         pointer to the starting ice_sched_node struct in a sub-tree
+    :type start_node: struct ice_sched_node \*
 
-    :param u32 teid:
+    :param teid:
         node teid to search
+    :type teid: u32
 
 .. _`ice_sched_find_node_by_teid.description`:
 
@@ -50,6 +54,74 @@ layers it has searched through; stopping at the max supported layer.
 
 This function needs to be called when holding the port_info->sched_lock
 
+.. _`ice_aq_query_sched_elems`:
+
+ice_aq_query_sched_elems
+========================
+
+.. c:function:: enum ice_status ice_aq_query_sched_elems(struct ice_hw *hw, u16 elems_req, struct ice_aqc_get_elem *buf, u16 buf_size, u16 *elems_ret, struct ice_sq_cd *cd)
+
+    query scheduler elements
+
+    :param hw:
+        pointer to the hw struct
+    :type hw: struct ice_hw \*
+
+    :param elems_req:
+        number of elements to query
+    :type elems_req: u16
+
+    :param buf:
+        pointer to buffer
+    :type buf: struct ice_aqc_get_elem \*
+
+    :param buf_size:
+        buffer size in bytes
+    :type buf_size: u16
+
+    :param elems_ret:
+        returns total number of elements returned
+    :type elems_ret: u16 \*
+
+    :param cd:
+        pointer to command details structure or NULL
+    :type cd: struct ice_sq_cd \*
+
+.. _`ice_aq_query_sched_elems.description`:
+
+Description
+-----------
+
+Query scheduling elements (0x0404)
+
+.. _`ice_sched_query_elem`:
+
+ice_sched_query_elem
+====================
+
+.. c:function:: enum ice_status ice_sched_query_elem(struct ice_hw *hw, u32 node_teid, struct ice_aqc_get_elem *buf)
+
+    query element information from hw
+
+    :param hw:
+        pointer to the hw struct
+    :type hw: struct ice_hw \*
+
+    :param node_teid:
+        node teid to be queried
+    :type node_teid: u32
+
+    :param buf:
+        buffer to element information
+    :type buf: struct ice_aqc_get_elem \*
+
+.. _`ice_sched_query_elem.description`:
+
+Description
+-----------
+
+This function queries HW element information
+
 .. _`ice_sched_add_node`:
 
 ice_sched_add_node
@@ -59,14 +131,17 @@ ice_sched_add_node
 
     Insert the Tx scheduler node in SW DB
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param u8 layer:
+    :param layer:
         Scheduler layer of the node
+    :type layer: u8
 
-    :param struct ice_aqc_txsched_elem_data \*info:
+    :param info:
         Scheduler element information from firmware
+    :type info: struct ice_aqc_txsched_elem_data \*
 
 .. _`ice_sched_add_node.description`:
 
@@ -84,23 +159,29 @@ ice_aq_delete_sched_elems
 
     delete scheduler elements
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param u16 grps_req:
+    :param grps_req:
         number of groups to delete
+    :type grps_req: u16
 
-    :param struct ice_aqc_delete_elem \*buf:
+    :param buf:
         pointer to buffer
+    :type buf: struct ice_aqc_delete_elem \*
 
-    :param u16 buf_size:
+    :param buf_size:
         buffer size in bytes
+    :type buf_size: u16
 
-    :param u16 \*grps_del:
+    :param grps_del:
         returns total number of elements deleted
+    :type grps_del: u16 \*
 
-    :param struct ice_sq_cd \*cd:
+    :param cd:
         pointer to command details structure or NULL
+    :type cd: struct ice_sq_cd \*
 
 .. _`ice_aq_delete_sched_elems.description`:
 
@@ -118,17 +199,21 @@ ice_sched_remove_elems
 
     remove nodes from hw
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param struct ice_sched_node \*parent:
+    :param parent:
         pointer to the parent node
+    :type parent: struct ice_sched_node \*
 
-    :param u16 num_nodes:
+    :param num_nodes:
         number of nodes
+    :type num_nodes: u16
 
-    :param u32 \*node_teids:
+    :param node_teids:
         array of node teids to be deleted
+    :type node_teids: u32 \*
 
 .. _`ice_sched_remove_elems.description`:
 
@@ -146,14 +231,17 @@ ice_sched_get_first_node
 
     get the first node of the given layer
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param struct ice_sched_node \*parent:
+    :param parent:
         pointer the base node of the subtree
+    :type parent: struct ice_sched_node \*
 
-    :param u8 layer:
+    :param layer:
         layer number
+    :type layer: u8
 
 .. _`ice_sched_get_first_node.description`:
 
@@ -171,11 +259,13 @@ ice_sched_get_tc_node
 
     get pointer to TC node
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param u8 tc:
+    :param tc:
         TC number
+    :type tc: u8
 
 .. _`ice_sched_get_tc_node.description`:
 
@@ -193,11 +283,13 @@ ice_free_sched_node
 
     Free a Tx scheduler node from SW DB
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param struct ice_sched_node \*node:
+    :param node:
         pointer to the ice_sched_node struct
+    :type node: struct ice_sched_node \*
 
 .. _`ice_free_sched_node.description`:
 
@@ -217,23 +309,29 @@ ice_aq_get_dflt_topo
 
     gets default scheduler topology
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param u8 lport:
+    :param lport:
         logical port number
+    :type lport: u8
 
-    :param struct ice_aqc_get_topo_elem \*buf:
+    :param buf:
         pointer to buffer
+    :type buf: struct ice_aqc_get_topo_elem \*
 
-    :param u16 buf_size:
+    :param buf_size:
         buffer size in bytes
+    :type buf_size: u16
 
-    :param u8 \*num_branches:
+    :param num_branches:
         returns total number of queue to port branches
+    :type num_branches: u8 \*
 
-    :param struct ice_sq_cd \*cd:
+    :param cd:
         pointer to command details structure or NULL
+    :type cd: struct ice_sq_cd \*
 
 .. _`ice_aq_get_dflt_topo.description`:
 
@@ -251,23 +349,29 @@ ice_aq_add_sched_elems
 
     adds scheduling element
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param u16 grps_req:
+    :param grps_req:
         the number of groups that are requested to be added
+    :type grps_req: u16
 
-    :param struct ice_aqc_add_elem \*buf:
+    :param buf:
         pointer to buffer
+    :type buf: struct ice_aqc_add_elem \*
 
-    :param u16 buf_size:
+    :param buf_size:
         buffer size in bytes
+    :type buf_size: u16
 
-    :param u16 \*grps_added:
+    :param grps_added:
         returns total number of groups added
+    :type grps_added: u16 \*
 
-    :param struct ice_sq_cd \*cd:
+    :param cd:
         pointer to command details structure or NULL
+    :type cd: struct ice_sq_cd \*
 
 .. _`ice_aq_add_sched_elems.description`:
 
@@ -285,26 +389,33 @@ ice_suspend_resume_elems
 
     suspend/resume scheduler elements
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param u16 elems_req:
+    :param elems_req:
         number of elements to suspend
+    :type elems_req: u16
 
-    :param struct ice_aqc_suspend_resume_elem \*buf:
+    :param buf:
         pointer to buffer
+    :type buf: struct ice_aqc_suspend_resume_elem \*
 
-    :param u16 buf_size:
+    :param buf_size:
         buffer size in bytes
+    :type buf_size: u16
 
-    :param u16 \*elems_ret:
+    :param elems_ret:
         returns total number of elements suspended
+    :type elems_ret: u16 \*
 
-    :param struct ice_sq_cd \*cd:
+    :param cd:
         pointer to command details structure or NULL
+    :type cd: struct ice_sq_cd \*
 
-    :param enum ice_adminq_opc cmd_code:
+    :param cmd_code:
         command code for suspend or resume
+    :type cmd_code: enum ice_adminq_opc
 
 .. _`ice_suspend_resume_elems.description`:
 
@@ -322,23 +433,29 @@ ice_aq_suspend_sched_elems
 
     suspend scheduler elements
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param u16 elems_req:
+    :param elems_req:
         number of elements to suspend
+    :type elems_req: u16
 
-    :param struct ice_aqc_suspend_resume_elem \*buf:
+    :param buf:
         pointer to buffer
+    :type buf: struct ice_aqc_suspend_resume_elem \*
 
-    :param u16 buf_size:
+    :param buf_size:
         buffer size in bytes
+    :type buf_size: u16
 
-    :param u16 \*elems_ret:
+    :param elems_ret:
         returns total number of elements suspended
+    :type elems_ret: u16 \*
 
-    :param struct ice_sq_cd \*cd:
+    :param cd:
         pointer to command details structure or NULL
+    :type cd: struct ice_sq_cd \*
 
 .. _`ice_aq_suspend_sched_elems.description`:
 
@@ -356,23 +473,29 @@ ice_aq_resume_sched_elems
 
     resume scheduler elements
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param u16 elems_req:
+    :param elems_req:
         number of elements to resume
+    :type elems_req: u16
 
-    :param struct ice_aqc_suspend_resume_elem \*buf:
+    :param buf:
         pointer to buffer
+    :type buf: struct ice_aqc_suspend_resume_elem \*
 
-    :param u16 buf_size:
+    :param buf_size:
         buffer size in bytes
+    :type buf_size: u16
 
-    :param u16 \*elems_ret:
+    :param elems_ret:
         returns total number of elements resumed
+    :type elems_ret: u16 \*
 
-    :param struct ice_sq_cd \*cd:
+    :param cd:
         pointer to command details structure or NULL
+    :type cd: struct ice_sq_cd \*
 
 .. _`ice_aq_resume_sched_elems.description`:
 
@@ -390,17 +513,21 @@ ice_aq_query_sched_res
 
     query scheduler resource
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param u16 buf_size:
+    :param buf_size:
         buffer size in bytes
+    :type buf_size: u16
 
-    :param struct ice_aqc_query_txsched_res_resp \*buf:
+    :param buf:
         pointer to buffer
+    :type buf: struct ice_aqc_query_txsched_res_resp \*
 
-    :param struct ice_sq_cd \*cd:
+    :param cd:
         pointer to command details structure or NULL
+    :type cd: struct ice_sq_cd \*
 
 .. _`ice_aq_query_sched_res.description`:
 
@@ -418,17 +545,21 @@ ice_sched_suspend_resume_elems
 
     suspend or resume hw nodes
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param u8 num_nodes:
+    :param num_nodes:
         number of nodes
+    :type num_nodes: u8
 
-    :param u32 \*node_teids:
+    :param node_teids:
         array of node teids to be suspended or resumed
+    :type node_teids: u32 \*
 
-    :param bool suspend:
+    :param suspend:
         true means suspend / false means resume
+    :type suspend: bool
 
 .. _`ice_sched_suspend_resume_elems.description`:
 
@@ -446,8 +577,9 @@ ice_sched_clear_tx_topo
 
     clears the schduler tree nodes
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
 .. _`ice_sched_clear_tx_topo.description`:
 
@@ -465,8 +597,9 @@ ice_sched_clear_port
 
     clear the scheduler elements from SW DB for a port
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
 .. _`ice_sched_clear_port.description`:
 
@@ -484,8 +617,9 @@ ice_sched_cleanup_all
 
     cleanup scheduler elements from SW DB for all ports
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
 .. _`ice_sched_cleanup_all.description`:
 
@@ -493,28 +627,6 @@ Description
 -----------
 
 Cleanup scheduling elements from SW DB for all the ports
-
-.. _`ice_sched_create_vsi_info_entry`:
-
-ice_sched_create_vsi_info_entry
-===============================
-
-.. c:function:: struct ice_sched_vsi_info *ice_sched_create_vsi_info_entry(struct ice_port_info *pi, u16 vsi_id)
-
-    create an empty new VSI entry
-
-    :param struct ice_port_info \*pi:
-        port information structure
-
-    :param u16 vsi_id:
-        VSI Id
-
-.. _`ice_sched_create_vsi_info_entry.description`:
-
-Description
------------
-
-This function creates a new VSI entry and adds it to list
 
 .. _`ice_sched_add_elems`:
 
@@ -525,26 +637,33 @@ ice_sched_add_elems
 
     add nodes to hw and SW DB
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param struct ice_sched_node \*tc_node:
+    :param tc_node:
         pointer to the branch node
+    :type tc_node: struct ice_sched_node \*
 
-    :param struct ice_sched_node \*parent:
+    :param parent:
         pointer to the parent node
+    :type parent: struct ice_sched_node \*
 
-    :param u8 layer:
+    :param layer:
         layer number to add nodes
+    :type layer: u8
 
-    :param u16 num_nodes:
+    :param num_nodes:
         number of nodes
+    :type num_nodes: u16
 
-    :param u16 \*num_nodes_added:
+    :param num_nodes_added:
         pointer to num nodes added
+    :type num_nodes_added: u16 \*
 
-    :param u32 \*first_node_teid:
+    :param first_node_teid:
         if new nodes are added then return the teid of first node
+    :type first_node_teid: u32 \*
 
 .. _`ice_sched_add_elems.description`:
 
@@ -562,26 +681,33 @@ ice_sched_add_nodes_to_layer
 
     Add nodes to a given layer
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param struct ice_sched_node \*tc_node:
+    :param tc_node:
         pointer to TC node
+    :type tc_node: struct ice_sched_node \*
 
-    :param struct ice_sched_node \*parent:
+    :param parent:
         pointer to parent node
+    :type parent: struct ice_sched_node \*
 
-    :param u8 layer:
+    :param layer:
         layer number to add nodes
+    :type layer: u8
 
-    :param u16 num_nodes:
+    :param num_nodes:
         number of nodes to be added
+    :type num_nodes: u16
 
-    :param u32 \*first_node_teid:
+    :param first_node_teid:
         pointer to the first node teid
+    :type first_node_teid: u32 \*
 
-    :param u16 \*num_nodes_added:
+    :param num_nodes_added:
         pointer to number of nodes added
+    :type num_nodes_added: u16 \*
 
 .. _`ice_sched_add_nodes_to_layer.description`:
 
@@ -599,8 +725,9 @@ ice_sched_get_qgrp_layer
 
     get the current queue group layer number
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
 .. _`ice_sched_get_qgrp_layer.description`:
 
@@ -618,8 +745,9 @@ ice_sched_get_vsi_layer
 
     get the current VSI layer number
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
 .. _`ice_sched_get_vsi_layer.description`:
 
@@ -627,52 +755,6 @@ Description
 -----------
 
 This function returns the current VSI layer number
-
-.. _`ice_sched_get_num_nodes_per_layer`:
-
-ice_sched_get_num_nodes_per_layer
-=================================
-
-.. c:function:: u16 ice_sched_get_num_nodes_per_layer(struct ice_port_info *pi, u8 layer)
-
-    Get the total number of nodes per layer
-
-    :param struct ice_port_info \*pi:
-        pointer to the port info struct
-
-    :param u8 layer:
-        layer number
-
-.. _`ice_sched_get_num_nodes_per_layer.description`:
-
-Description
------------
-
-This function calculates the number of nodes present in the scheduler tree
-including all the branches for a given layer
-
-.. _`ice_sched_validate_for_max_nodes`:
-
-ice_sched_validate_for_max_nodes
-================================
-
-.. c:function:: enum ice_status ice_sched_validate_for_max_nodes(struct ice_port_info *pi, u16 *new_num_nodes_per_layer)
-
-    check max number of nodes reached or not
-
-    :param struct ice_port_info \*pi:
-        port information structure
-
-    :param u16 \*new_num_nodes_per_layer:
-        pointer to the new number of nodes array
-
-.. _`ice_sched_validate_for_max_nodes.description`:
-
-Description
------------
-
-This function checks whether the scheduler tree layers have enough space to
-add new nodes
 
 .. _`ice_rm_dflt_leaf_node`:
 
@@ -683,8 +765,9 @@ ice_rm_dflt_leaf_node
 
     remove the default leaf node in the tree
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
 .. _`ice_rm_dflt_leaf_node.description`:
 
@@ -703,8 +786,9 @@ ice_sched_rm_dflt_nodes
 
     free the default nodes in the tree
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
 .. _`ice_sched_rm_dflt_nodes.description`:
 
@@ -723,8 +807,9 @@ ice_sched_init_port
 
     Initialize scheduler by querying information from FW
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port info structure for the tree to cleanup
+    :type pi: struct ice_port_info \*
 
 .. _`ice_sched_init_port.description`:
 
@@ -744,8 +829,9 @@ ice_sched_query_res_alloc
 
     query the FW for num of logical sched layers
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the HW struct
+    :type hw: struct ice_hw \*
 
 .. _`ice_sched_query_res_alloc.description`:
 
@@ -753,28 +839,6 @@ Description
 -----------
 
 query FW for allocated scheduler resources and store in HW struct
-
-.. _`ice_sched_get_vsi_info_entry`:
-
-ice_sched_get_vsi_info_entry
-============================
-
-.. c:function:: struct ice_sched_vsi_info *ice_sched_get_vsi_info_entry(struct ice_port_info *pi, u16 vsi_id)
-
-    Get the vsi entry list for given vsi_id
-
-    :param struct ice_port_info \*pi:
-        port information structure
-
-    :param u16 vsi_id:
-        vsi id
-
-.. _`ice_sched_get_vsi_info_entry.description`:
-
-Description
------------
-
-This function retrieves the vsi list for the given vsi id
 
 .. _`ice_sched_find_node_in_subtree`:
 
@@ -785,14 +849,17 @@ ice_sched_find_node_in_subtree
 
     Find node in part of base node subtree
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param struct ice_sched_node \*base:
+    :param base:
         pointer to the base node
+    :type base: struct ice_sched_node \*
 
-    :param struct ice_sched_node \*node:
+    :param node:
         pointer to the node to search
+    :type node: struct ice_sched_node \*
 
 .. _`ice_sched_find_node_in_subtree.description`:
 
@@ -807,21 +874,25 @@ subtree or not
 ice_sched_get_free_qparent
 ==========================
 
-.. c:function:: struct ice_sched_node *ice_sched_get_free_qparent(struct ice_port_info *pi, u16 vsi_id, u8 tc, u8 owner)
+.. c:function:: struct ice_sched_node *ice_sched_get_free_qparent(struct ice_port_info *pi, u16 vsi_handle, u8 tc, u8 owner)
 
     Get a free lan or rdma q group node
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param u16 vsi_id:
-        vsi id
+    :param vsi_handle:
+        software VSI handle
+    :type vsi_handle: u16
 
-    :param u8 tc:
+    :param tc:
         branch number
+    :type tc: u8
 
-    :param u8 owner:
+    :param owner:
         lan or rdma
+    :type owner: u8
 
 .. _`ice_sched_get_free_qparent.description`:
 
@@ -835,18 +906,21 @@ This function retrieves a free lan or rdma q group node
 ice_sched_get_vsi_node
 ======================
 
-.. c:function:: struct ice_sched_node *ice_sched_get_vsi_node(struct ice_hw *hw, struct ice_sched_node *tc_node, u16 vsi_id)
+.. c:function:: struct ice_sched_node *ice_sched_get_vsi_node(struct ice_hw *hw, struct ice_sched_node *tc_node, u16 vsi_handle)
 
     Get a VSI node based on VSI id
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param struct ice_sched_node \*tc_node:
+    :param tc_node:
         pointer to the TC node
+    :type tc_node: struct ice_sched_node \*
 
-    :param u16 vsi_id:
-        VSI id
+    :param vsi_handle:
+        software VSI handle
+    :type vsi_handle: u16
 
 .. _`ice_sched_get_vsi_node.description`:
 
@@ -865,14 +939,17 @@ ice_sched_calc_vsi_child_nodes
 
     calculate number of VSI child nodes
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param u16 num_qs:
+    :param num_qs:
         number of queues
+    :type num_qs: u16
 
-    :param u16 \*num_nodes:
+    :param num_nodes:
         num nodes array
+    :type num_nodes: u16 \*
 
 .. _`ice_sched_calc_vsi_child_nodes.description`:
 
@@ -887,24 +964,29 @@ number of queues.
 ice_sched_add_vsi_child_nodes
 =============================
 
-.. c:function:: enum ice_status ice_sched_add_vsi_child_nodes(struct ice_port_info *pi, u16 vsi_id, struct ice_sched_node *tc_node, u16 *num_nodes, u8 owner)
+.. c:function:: enum ice_status ice_sched_add_vsi_child_nodes(struct ice_port_info *pi, u16 vsi_handle, struct ice_sched_node *tc_node, u16 *num_nodes, u8 owner)
 
     add VSI child nodes to tree
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param u16 vsi_id:
-        VSI id
+    :param vsi_handle:
+        software VSI handle
+    :type vsi_handle: u16
 
-    :param struct ice_sched_node \*tc_node:
+    :param tc_node:
         pointer to the TC node
+    :type tc_node: struct ice_sched_node \*
 
-    :param u16 \*num_nodes:
+    :param num_nodes:
         pointer to the num nodes that needs to be added per layer
+    :type num_nodes: u16 \*
 
-    :param u8 owner:
+    :param owner:
         node owner (lan or rdma)
+    :type owner: u8
 
 .. _`ice_sched_add_vsi_child_nodes.description`:
 
@@ -923,17 +1005,21 @@ ice_sched_rm_vsi_child_nodes
 
     remove VSI child nodes from the tree
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param struct ice_sched_node \*vsi_node:
+    :param vsi_node:
         pointer to the VSI node
+    :type vsi_node: struct ice_sched_node \*
 
-    :param u16 \*num_nodes:
+    :param num_nodes:
         pointer to the num nodes that needs to be removed per layer
+    :type num_nodes: u16 \*
 
-    :param u8 owner:
+    :param owner:
         node owner (lan or rdma)
+    :type owner: u8
 
 .. _`ice_sched_rm_vsi_child_nodes.description`:
 
@@ -952,14 +1038,17 @@ ice_sched_calc_vsi_support_nodes
 
     calculate number of VSI support nodes
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param struct ice_sched_node \*tc_node:
+    :param tc_node:
         pointer to TC node
+    :type tc_node: struct ice_sched_node \*
 
-    :param u16 \*num_nodes:
+    :param num_nodes:
         pointer to num nodes array
+    :type num_nodes: u16 \*
 
 .. _`ice_sched_calc_vsi_support_nodes.description`:
 
@@ -975,21 +1064,25 @@ layers
 ice_sched_add_vsi_support_nodes
 ===============================
 
-.. c:function:: enum ice_status ice_sched_add_vsi_support_nodes(struct ice_port_info *pi, u16 vsi_id, struct ice_sched_node *tc_node, u16 *num_nodes)
+.. c:function:: enum ice_status ice_sched_add_vsi_support_nodes(struct ice_port_info *pi, u16 vsi_handle, struct ice_sched_node *tc_node, u16 *num_nodes)
 
     add VSI supported nodes into tx tree
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param u16 vsi_id:
-        VSI Id
+    :param vsi_handle:
+        software VSI handle
+    :type vsi_handle: u16
 
-    :param struct ice_sched_node \*tc_node:
+    :param tc_node:
         pointer to TC node
+    :type tc_node: struct ice_sched_node \*
 
-    :param u16 \*num_nodes:
+    :param num_nodes:
         pointer to num nodes array
+    :type num_nodes: u16 \*
 
 .. _`ice_sched_add_vsi_support_nodes.description`:
 
@@ -1004,18 +1097,21 @@ VSI, its parent and intermediate nodes in below layers
 ice_sched_add_vsi_to_topo
 =========================
 
-.. c:function:: enum ice_status ice_sched_add_vsi_to_topo(struct ice_port_info *pi, u16 vsi_id, u8 tc)
+.. c:function:: enum ice_status ice_sched_add_vsi_to_topo(struct ice_port_info *pi, u16 vsi_handle, u8 tc)
 
     add a new VSI into tree
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param u16 vsi_id:
-        VSI Id
+    :param vsi_handle:
+        software VSI handle
+    :type vsi_handle: u16
 
-    :param u8 tc:
+    :param tc:
         TC number
+    :type tc: u8
 
 .. _`ice_sched_add_vsi_to_topo.description`:
 
@@ -1029,24 +1125,29 @@ This function adds a new VSI into scheduler tree
 ice_sched_update_vsi_child_nodes
 ================================
 
-.. c:function:: enum ice_status ice_sched_update_vsi_child_nodes(struct ice_port_info *pi, u16 vsi_id, u8 tc, u16 new_numqs, u8 owner)
+.. c:function:: enum ice_status ice_sched_update_vsi_child_nodes(struct ice_port_info *pi, u16 vsi_handle, u8 tc, u16 new_numqs, u8 owner)
 
     update VSI child nodes
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param u16 vsi_id:
-        VSI Id
+    :param vsi_handle:
+        software VSI handle
+    :type vsi_handle: u16
 
-    :param u8 tc:
+    :param tc:
         TC number
+    :type tc: u8
 
-    :param u16 new_numqs:
+    :param new_numqs:
         new number of max queues
+    :type new_numqs: u16
 
-    :param u8 owner:
+    :param owner:
         owner of this subtree
+    :type owner: u8
 
 .. _`ice_sched_update_vsi_child_nodes.description`:
 
@@ -1060,27 +1161,33 @@ This function updates the VSI child nodes based on the number of queues
 ice_sched_cfg_vsi
 =================
 
-.. c:function:: enum ice_status ice_sched_cfg_vsi(struct ice_port_info *pi, u16 vsi_id, u8 tc, u16 maxqs, u8 owner, bool enable)
+.. c:function:: enum ice_status ice_sched_cfg_vsi(struct ice_port_info *pi, u16 vsi_handle, u8 tc, u16 maxqs, u8 owner, bool enable)
 
     configure the new/exisiting VSI
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port information structure
+    :type pi: struct ice_port_info \*
 
-    :param u16 vsi_id:
-        VSI Id
+    :param vsi_handle:
+        software VSI handle
+    :type vsi_handle: u16
 
-    :param u8 tc:
+    :param tc:
         TC number
+    :type tc: u8
 
-    :param u16 maxqs:
+    :param maxqs:
         max number of queues
+    :type maxqs: u16
 
-    :param u8 owner:
+    :param owner:
         lan or rdma
+    :type owner: u8
 
-    :param bool enable:
+    :param enable:
         TC enabled or disabled
+    :type enable: bool
 
 .. _`ice_sched_cfg_vsi.description`:
 

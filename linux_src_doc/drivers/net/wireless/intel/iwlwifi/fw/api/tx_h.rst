@@ -506,6 +506,60 @@ rate_n_flags
 hdr
     802.11 header
 
+.. _`iwl_tx_cmd_gen3`:
+
+struct iwl_tx_cmd_gen3
+======================
+
+.. c:type:: struct iwl_tx_cmd_gen3
+
+    TX command struct to FW for 22560 devices ( TX_CMD = 0x1c )
+
+.. _`iwl_tx_cmd_gen3.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_tx_cmd_gen3 {
+        __le16 len;
+        __le16 flags;
+        __le32 offload_assist;
+        struct iwl_dram_sec_info dram_info;
+        __le32 rate_n_flags;
+        __le64 ttl;
+        struct ieee80211_hdr hdr[0];
+    }
+
+.. _`iwl_tx_cmd_gen3.members`:
+
+Members
+-------
+
+len
+    in bytes of the payload, see below for details
+
+flags
+    combination of \ :c:type:`enum iwl_tx_cmd_flags <iwl_tx_cmd_flags>`\ 
+
+offload_assist
+    TX offload configuration
+
+dram_info
+    FW internal DRAM storage
+
+rate_n_flags
+    rate for \*all\* Tx attempts, if TX_CMD_FLG_STA_RATE_MSK is
+    cleared. Combination of RATE_MCS\_\*
+
+ttl
+    time to live - packet lifetime limit. The FW should drop if
+    passed.
+
+hdr
+    802.11 header
+
 .. _`agg_tx_status`:
 
 struct agg_tx_status
@@ -972,7 +1026,7 @@ Definition
         __le32 tx_rate;
         __le16 tfd_cnt;
         __le16 ra_tid_cnt;
-        struct iwl_mvm_compressed_ba_tfd tfd[1];
+        struct iwl_mvm_compressed_ba_tfd tfd[0];
         struct iwl_mvm_compressed_ba_ratid ra_tid[0];
     }
 
@@ -1027,11 +1081,11 @@ ra_tid_cnt
 
 tfd
     array of TFD queue status updates. See \ :c:type:`struct iwl_mvm_compressed_ba_tfd <iwl_mvm_compressed_ba_tfd>`\ 
-    for details.
+    for details. Length in \ ``tfd_cnt``\ .
 
 ra_tid
     array of RA-TID queue status updates. For debug purposes only. See
-    \ :c:type:`struct iwl_mvm_compressed_ba_ratid <iwl_mvm_compressed_ba_ratid>`\  for more details.
+    \ :c:type:`struct iwl_mvm_compressed_ba_ratid <iwl_mvm_compressed_ba_ratid>`\  for more details. Length in \ ``ra_tid_cnt``\ .
 
 .. _`iwl_mac_beacon_cmd_v6`:
 

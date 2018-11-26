@@ -162,8 +162,9 @@ gcov_info_filename
 
     return info filename
 
-    :param struct gcov_info \*info:
+    :param info:
         profiling data set
+    :type info: struct gcov_info \*
 
 .. _`gcov_info_version`:
 
@@ -174,8 +175,9 @@ gcov_info_version
 
     return info version
 
-    :param struct gcov_info \*info:
+    :param info:
         profiling data set
+    :type info: struct gcov_info \*
 
 .. _`gcov_info_next`:
 
@@ -186,8 +188,9 @@ gcov_info_next
 
     return next profiling data set
 
-    :param struct gcov_info \*info:
+    :param info:
         profiling data set
+    :type info: struct gcov_info \*
 
 .. _`gcov_info_next.description`:
 
@@ -206,8 +209,9 @@ gcov_info_link
 
     link/add profiling data set to the list
 
-    :param struct gcov_info \*info:
+    :param info:
         profiling data set
+    :type info: struct gcov_info \*
 
 .. _`gcov_info_unlink`:
 
@@ -218,11 +222,13 @@ gcov_info_unlink
 
     unlink/remove profiling data set from the list
 
-    :param struct gcov_info \*prev:
+    :param prev:
         previous profiling data set
+    :type prev: struct gcov_info \*
 
-    :param struct gcov_info \*info:
+    :param info:
         profiling data set
+    :type info: struct gcov_info \*
 
 .. _`gcov_info_reset`:
 
@@ -233,8 +239,9 @@ gcov_info_reset
 
     reset profiling data to zero
 
-    :param struct gcov_info \*info:
+    :param info:
         profiling data set
+    :type info: struct gcov_info \*
 
 .. _`gcov_info_is_compatible`:
 
@@ -245,11 +252,13 @@ gcov_info_is_compatible
 
     check if profiling data can be added
 
-    :param struct gcov_info \*info1:
+    :param info1:
         first profiling data set
+    :type info1: struct gcov_info \*
 
-    :param struct gcov_info \*info2:
+    :param info2:
         second profiling data set
+    :type info2: struct gcov_info \*
 
 .. _`gcov_info_is_compatible.description`:
 
@@ -267,11 +276,13 @@ gcov_info_add
 
     add up profiling data
 
-    :param struct gcov_info \*dest:
+    :param dest:
         profiling data set to which data is added
+    :type dest: struct gcov_info \*
 
-    :param struct gcov_info \*source:
+    :param source:
         profiling data set which is added
+    :type source: struct gcov_info \*
 
 .. _`gcov_info_add.description`:
 
@@ -289,8 +300,9 @@ gcov_info_dup
 
     duplicate profiling data set
 
-    :param struct gcov_info \*info:
+    :param info:
         profiling data set to duplicate
+    :type info: struct gcov_info \*
 
 .. _`gcov_info_dup.description`:
 
@@ -308,8 +320,9 @@ gcov_info_free
 
     release memory for profiling data set duplicate
 
-    :param struct gcov_info \*info:
+    :param info:
         profiling data set duplicate to free
+    :type info: struct gcov_info \*
 
 .. _`type_info`:
 
@@ -429,8 +442,9 @@ gcov_iter_new
 
     allocate and initialize profiling data iterator
 
-    :param struct gcov_info \*info:
+    :param info:
         profiling data set to be iterated
+    :type info: struct gcov_info \*
 
 .. _`gcov_iter_new.description`:
 
@@ -448,8 +462,9 @@ gcov_iter_free
 
     release memory for iterator
 
-    :param struct gcov_iterator \*iter:
+    :param iter:
         file iterator to free
+    :type iter: struct gcov_iterator \*
 
 .. _`gcov_iter_get_info`:
 
@@ -460,8 +475,9 @@ gcov_iter_get_info
 
     return profiling data set for given file iterator
 
-    :param struct gcov_iterator \*iter:
+    :param iter:
         file iterator
+    :type iter: struct gcov_iterator \*
 
 .. _`gcov_iter_start`:
 
@@ -472,8 +488,9 @@ gcov_iter_start
 
     reset file iterator to starting position
 
-    :param struct gcov_iterator \*iter:
+    :param iter:
         file iterator
+    :type iter: struct gcov_iterator \*
 
 .. _`gcov_iter_next`:
 
@@ -484,8 +501,9 @@ gcov_iter_next
 
     advance file iterator to next logical record
 
-    :param struct gcov_iterator \*iter:
+    :param iter:
         file iterator
+    :type iter: struct gcov_iterator \*
 
 .. _`gcov_iter_next.description`:
 
@@ -503,11 +521,13 @@ seq_write_gcov_u32
 
     write 32 bit number in gcov format to seq_file
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq_file handle
+    :type seq: struct seq_file \*
 
-    :param u32 v:
+    :param v:
         value to be stored
+    :type v: u32
 
 .. _`seq_write_gcov_u32.number-format-defined-by-gcc`:
 
@@ -527,11 +547,13 @@ seq_write_gcov_u64
 
     write 64 bit number in gcov format to seq_file
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq_file handle
+    :type seq: struct seq_file \*
 
-    :param u64 v:
+    :param v:
         value to be stored
+    :type v: u64
 
 .. _`seq_write_gcov_u64.number-format-defined-by-gcc`:
 
@@ -552,11 +574,13 @@ gcov_iter_write
 
     write data for current pos to seq_file
 
-    :param struct gcov_iterator \*iter:
+    :param iter:
         file iterator
+    :type iter: struct gcov_iterator \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq_file handle
+    :type seq: struct seq_file \*
 
 .. _`gcov_iter_write.description`:
 

@@ -8,11 +8,13 @@ mptsas_find_portinfo_by_sas_address
 
 .. c:function:: struct mptsas_portinfo *mptsas_find_portinfo_by_sas_address(MPT_ADAPTER *ioc, u64 sas_address)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         *undescribed*
+    :type sas_address: u64
 
 .. _`mptsas_find_portinfo_by_sas_address.description`:
 
@@ -28,26 +30,33 @@ mptsas_add_device_component
 
 .. c:function:: void mptsas_add_device_component(MPT_ADAPTER *ioc, u8 channel, u8 id, u64 sas_address, u32 device_info, u16 slot, u64 enclosure_logical_id)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 channel:
+    :param channel:
         fw mapped id's
+    :type channel: u8
 
-    :param u8 id:
+    :param id:
         *undescribed*
+    :type id: u8
 
-    :param u64 sas_address:
+    :param sas_address:
         *undescribed*
+    :type sas_address: u64
 
-    :param u32 device_info:
+    :param device_info:
         *undescribed*
+    :type device_info: u32
 
-    :param u16 slot:
+    :param slot:
         *undescribed*
+    :type slot: u16
 
-    :param u64 enclosure_logical_id:
+    :param enclosure_logical_id:
         *undescribed*
+    :type enclosure_logical_id: u64
 
 .. _`mptsas_add_device_component_by_fw`:
 
@@ -56,14 +65,17 @@ mptsas_add_device_component_by_fw
 
 .. c:function:: void mptsas_add_device_component_by_fw(MPT_ADAPTER *ioc, u8 channel, u8 id)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 channel:
+    :param channel:
         fw mapped id's
+    :type channel: u8
 
-    :param u8 id:
+    :param id:
         *undescribed*
+    :type id: u8
 
 .. _`mptsas_add_device_component_starget_ir`:
 
@@ -74,11 +86,13 @@ mptsas_add_device_component_starget_ir
 
     Handle Integrated RAID, adding each individual device to list
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param struct scsi_target \*starget:
+    :param starget:
         *undescribed*
+    :type starget: struct scsi_target \*
 
 .. _`mptsas_add_device_component_starget`:
 
@@ -87,11 +101,13 @@ mptsas_add_device_component_starget
 
 .. c:function:: void mptsas_add_device_component_starget(MPT_ADAPTER *ioc, struct scsi_target *starget)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param struct scsi_target \*starget:
+    :param starget:
         *undescribed*
+    :type starget: struct scsi_target \*
 
 .. _`mptsas_del_device_component_by_os`:
 
@@ -102,14 +118,17 @@ mptsas_del_device_component_by_os
 
     Once a device has been removed, we mark the entry in the list as being cached
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 channel:
+    :param channel:
         os mapped id's
+    :type channel: u8
 
-    :param u8 id:
+    :param id:
         *undescribed*
+    :type id: u8
 
 .. _`mptsas_del_device_components`:
 
@@ -120,8 +139,9 @@ mptsas_del_device_components
 
     Cleaning the list
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mptsas_find_vtarget`:
 
@@ -130,14 +150,17 @@ mptsas_find_vtarget
 
 .. c:function:: VirtTarget *mptsas_find_vtarget(MPT_ADAPTER *ioc, u8 channel, u8 id)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         *undescribed*
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 channel:
+    :param channel:
         *undescribed*
+    :type channel: u8
 
-    :param u8 id:
+    :param id:
         *undescribed*
+    :type id: u8
 
 .. _`mptsas_find_vtarget.description`:
 
@@ -155,14 +178,17 @@ mptsas_target_reset
 
 .. c:function:: int mptsas_target_reset(MPT_ADAPTER *ioc, u8 channel, u8 id)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         *undescribed*
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 channel:
+    :param channel:
         *undescribed*
+    :type channel: u8
 
-    :param u8 id:
+    :param id:
         *undescribed*
+    :type id: u8
 
 .. _`mptsas_target_reset.description`:
 
@@ -185,11 +211,13 @@ mptsas_target_reset_queue
 
 .. c:function:: void mptsas_target_reset_queue(MPT_ADAPTER *ioc, EVENT_DATA_SAS_DEVICE_STATUS_CHANGE *sas_event_data)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         *undescribed*
+    :type ioc: MPT_ADAPTER \*
 
-    :param EVENT_DATA_SAS_DEVICE_STATUS_CHANGE \*sas_event_data:
+    :param sas_event_data:
         *undescribed*
+    :type sas_event_data: EVENT_DATA_SAS_DEVICE_STATUS_CHANGE \*
 
 .. _`mptsas_target_reset_queue.description`:
 
@@ -212,8 +240,9 @@ mptsas_schedule_target_reset
 
     send pending target reset
 
-    :param void \*iocp:
+    :param iocp:
         per adapter object
+    :type iocp: void \*
 
 .. _`mptsas_schedule_target_reset.description`:
 
@@ -233,14 +262,17 @@ mptsas_taskmgmt_complete
 
     complete SAS task management function
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param MPT_FRAME_HDR \*mf:
+    :param mf:
         *undescribed*
+    :type mf: MPT_FRAME_HDR \*
 
-    :param MPT_FRAME_HDR \*mr:
+    :param mr:
         *undescribed*
+    :type mr: MPT_FRAME_HDR \*
 
 .. _`mptsas_taskmgmt_complete.description`:
 
@@ -258,11 +290,13 @@ mptsas_ioc_reset
 
 .. c:function:: int mptsas_ioc_reset(MPT_ADAPTER *ioc, int reset_phase)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         *undescribed*
+    :type ioc: MPT_ADAPTER \*
 
-    :param int reset_phase:
+    :param reset_phase:
         *undescribed*
+    :type reset_phase: int
 
 .. _`mptsas_ioc_reset.description`:
 
@@ -316,11 +350,13 @@ mptsas_add_end_device
 
     report a new end device to sas transport layer
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param struct mptsas_phyinfo \*phy_info:
+    :param phy_info:
         describes attached device
+    :type phy_info: struct mptsas_phyinfo \*
 
 .. _`mptsas_add_end_device.description`:
 
@@ -338,11 +374,13 @@ mptsas_del_end_device
 
     report a deleted end device to sas transport layer
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param struct mptsas_phyinfo \*phy_info:
+    :param phy_info:
         describes attached device
+    :type phy_info: struct mptsas_phyinfo \*
 
 .. _`mptsas_firmware_event_work`:
 
@@ -353,8 +391,9 @@ mptsas_firmware_event_work
 
     work thread for processing fw events
 
-    :param struct work_struct \*work:
+    :param work:
         work queue payload containing info describing the event
+    :type work: struct work_struct \*
 
 .. _`mptsas_firmware_event_work.context`:
 
@@ -372,8 +411,9 @@ mptsas_eh_timed_out
 
     resets the scsi_cmnd timeout if the device under question is currently in the device removal delay.
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         scsi command that the midlayer is about to time out
+    :type sc: struct scsi_cmnd \*
 
 .. _`mptsas_exp_repmanufacture_info`:
 
@@ -382,14 +422,17 @@ mptsas_exp_repmanufacture_info
 
 .. c:function:: int mptsas_exp_repmanufacture_info(MPT_ADAPTER *ioc, u64 sas_address, struct sas_expander_device *edev)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: MPT_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         expander sas address
+    :type sas_address: u64
 
-    :param struct sas_expander_device \*edev:
+    :param edev:
         the sas_expander_device object
+    :type edev: struct sas_expander_device \*
 
 .. _`mptsas_exp_repmanufacture_info.description`:
 
@@ -409,14 +452,17 @@ mptsas_delete_expander_siblings
 
     remove siblings attached to expander
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param struct mptsas_portinfo \*parent:
+    :param parent:
         the parent port_info object
+    :type parent: struct mptsas_portinfo \*
 
-    :param struct mptsas_portinfo \*expander:
+    :param expander:
         the expander port_info object
+    :type expander: struct mptsas_portinfo \*
 
 .. _`mptsas_expander_delete`:
 
@@ -427,14 +473,17 @@ mptsas_expander_delete
 
     remove this expander
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param struct mptsas_portinfo \*port_info:
+    :param port_info:
         expander port_info struct
+    :type port_info: struct mptsas_portinfo \*
 
-    :param u8 force:
+    :param force:
         Flag to forcefully delete the expander
+    :type force: u8
 
 .. _`mptsas_send_expander_event`:
 
@@ -445,8 +494,9 @@ mptsas_send_expander_event
 
     expanders events
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         *undescribed*
+    :type fw_event: struct fw_event_work \*
 
 .. _`mptsas_send_expander_event.description`:
 
@@ -464,11 +514,13 @@ mptsas_expander_add
 
 .. c:function:: struct mptsas_portinfo *mptsas_expander_add(MPT_ADAPTER *ioc, u16 handle)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         *undescribed*
+    :type handle: u16
 
 .. _`mptsas_probe_expanders`:
 
@@ -479,8 +531,9 @@ mptsas_probe_expanders
 
     adding expanders
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mptsas_scan_sas_topology`:
 
@@ -489,8 +542,9 @@ mptsas_scan_sas_topology
 
 .. c:function:: void mptsas_scan_sas_topology(MPT_ADAPTER *ioc)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mptsas_find_phyinfo_by_phys_disk_num`:
 
@@ -499,17 +553,21 @@ mptsas_find_phyinfo_by_phys_disk_num
 
 .. c:function:: struct mptsas_phyinfo *mptsas_find_phyinfo_by_phys_disk_num(MPT_ADAPTER *ioc, u8 phys_disk_num, u8 channel, u8 id)
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 phys_disk_num:
+    :param phys_disk_num:
         *undescribed*
+    :type phys_disk_num: u8
 
-    :param u8 channel:
+    :param channel:
         *undescribed*
+    :type channel: u8
 
-    :param u8 id:
+    :param id:
         *undescribed*
+    :type id: u8
 
 .. _`mptsas_issue_tm`:
 
@@ -520,29 +578,37 @@ mptsas_issue_tm
 
     send mptsas internal tm request
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 type:
+    :param type:
         Task Management type
+    :type type: u8
 
-    :param u8 channel:
+    :param channel:
         channel number for task management
+    :type channel: u8
 
-    :param u8 id:
+    :param id:
         Logical Target ID for reset (if appropriate)
+    :type id: u8
 
-    :param u64 lun:
+    :param lun:
         Logical unit for reset (if appropriate)
+    :type lun: u64
 
-    :param int task_context:
+    :param task_context:
         Context for the task to be aborted
+    :type task_context: int
 
-    :param ulong timeout:
+    :param timeout:
         timeout for task management control
+    :type timeout: ulong
 
-    :param u8 \*issue_reset:
+    :param issue_reset:
         *undescribed*
+    :type issue_reset: u8 \*
 
 .. _`mptsas_issue_tm.description`:
 
@@ -551,19 +617,20 @@ Description
 
 return 0 on success and -1 on failure:
 
-.. _`mptsas_broadcast_primative_work`:
+.. _`mptsas_broadcast_primitive_work`:
 
-mptsas_broadcast_primative_work
+mptsas_broadcast_primitive_work
 ===============================
 
-.. c:function:: void mptsas_broadcast_primative_work(struct fw_event_work *fw_event)
+.. c:function:: void mptsas_broadcast_primitive_work(struct fw_event_work *fw_event)
 
     Handle broadcast primitives
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         *undescribed*
+    :type fw_event: struct fw_event_work \*
 
-.. _`mptsas_broadcast_primative_work.description`:
+.. _`mptsas_broadcast_primitive_work.description`:
 
 Description
 -----------

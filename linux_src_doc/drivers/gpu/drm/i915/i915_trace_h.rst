@@ -22,14 +22,5 @@ These tracepoints are used to track creation and deletion of contexts.
 If full ppgtt is enabled, they also print the address of the vm assigned to
 the context.
 
-.. _`switch_mm-tracepoint`:
-
-switch_mm tracepoint
-====================
-
-This tracepoint allows tracking of the mm switch, which is an important point
-in the lifetime of the vm in the legacy submission path. This tracepoint is
-called only if full ppgtt is enabled.
-
 .. This file was automatic generated / don't edit.
 

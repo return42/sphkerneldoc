@@ -27,6 +27,7 @@ Definition
         u16 clk_divisor_fast_plus_mode;
         bool has_multi_master_mode;
         bool has_slcg_override_reg;
+        bool has_mst_fifo;
     }
 
 .. _`tegra_i2c_hw_feature.members`:
@@ -65,6 +66,9 @@ has_multi_master_mode
     *undescribed*
 
 has_slcg_override_reg
+    *undescribed*
+
+has_mst_fifo
     *undescribed*
 
 .. _`tegra_i2c_dev`:

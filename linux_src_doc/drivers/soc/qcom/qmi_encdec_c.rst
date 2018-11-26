@@ -10,11 +10,13 @@ skip_to_next_elem
 
     Skip to next element in the structure to be encoded
 
-    :param struct qmi_elem_info \*ei_array:
+    :param ei_array:
         Struct info describing the element to be skipped.
+    :type ei_array: struct qmi_elem_info \*
 
-    :param int level:
+    :param level:
         Depth level of encoding/decoding to identify nested structures.
+    :type level: int
 
 .. _`skip_to_next_elem.description`:
 
@@ -42,11 +44,13 @@ qmi_calc_min_msg_len
 
     Calculate the minimum length of a QMI message
 
-    :param struct qmi_elem_info \*ei_array:
+    :param ei_array:
         Struct info array describing the structure.
+    :type ei_array: struct qmi_elem_info \*
 
-    :param int level:
+    :param level:
         Level to identify the depth of the nested structures.
+    :type level: int
 
 .. _`qmi_calc_min_msg_len.return`:
 
@@ -64,17 +68,21 @@ qmi_encode_basic_elem
 
     Encodes elements of basic/primary data type
 
-    :param void \*buf_dst:
+    :param buf_dst:
         Buffer to store the encoded information.
+    :type buf_dst: void \*
 
-    :param const void \*buf_src:
+    :param buf_src:
         Buffer containing the elements to be encoded.
+    :type buf_src: const void \*
 
-    :param u32 elem_len:
+    :param elem_len:
         Number of elements, in the buf_src, to be encoded.
+    :type elem_len: u32
 
-    :param u32 elem_size:
+    :param elem_size:
         Size of a single instance of the element to be encoded.
+    :type elem_size: u32
 
 .. _`qmi_encode_basic_elem.description`:
 
@@ -103,23 +111,29 @@ qmi_encode_struct_elem
 
     Encodes elements of struct data type
 
-    :param struct qmi_elem_info \*ei_array:
+    :param ei_array:
         Struct info array descibing the struct element.
+    :type ei_array: struct qmi_elem_info \*
 
-    :param void \*buf_dst:
+    :param buf_dst:
         Buffer to store the encoded information.
+    :type buf_dst: void \*
 
-    :param const void \*buf_src:
+    :param buf_src:
         Buffer containing the elements to be encoded.
+    :type buf_src: const void \*
 
-    :param u32 elem_len:
+    :param elem_len:
         Number of elements, in the buf_src, to be encoded.
+    :type elem_len: u32
 
-    :param u32 out_buf_len:
+    :param out_buf_len:
         Available space in the encode buffer.
+    :type out_buf_len: u32
 
-    :param int enc_level:
+    :param enc_level:
         Depth of the nested structure from the main structure.
+    :type enc_level: int
 
 .. _`qmi_encode_struct_elem.description`:
 
@@ -149,20 +163,25 @@ qmi_encode_string_elem
 
     Encodes elements of string data type
 
-    :param struct qmi_elem_info \*ei_array:
+    :param ei_array:
         Struct info array descibing the string element.
+    :type ei_array: struct qmi_elem_info \*
 
-    :param void \*buf_dst:
+    :param buf_dst:
         Buffer to store the encoded information.
+    :type buf_dst: void \*
 
-    :param const void \*buf_src:
+    :param buf_src:
         Buffer containing the elements to be encoded.
+    :type buf_src: const void \*
 
-    :param u32 out_buf_len:
+    :param out_buf_len:
         Available space in the encode buffer.
+    :type out_buf_len: u32
 
-    :param int enc_level:
+    :param enc_level:
         Depth of the string element from the main structure.
+    :type enc_level: int
 
 .. _`qmi_encode_string_elem.description`:
 
@@ -191,21 +210,26 @@ qmi_encode
 
     Core Encode Function
 
-    :param struct qmi_elem_info \*ei_array:
+    :param ei_array:
         Struct info array describing the structure to be encoded.
+    :type ei_array: struct qmi_elem_info \*
 
-    :param void \*out_buf:
+    :param out_buf:
         Buffer to hold the encoded QMI message.
+    :type out_buf: void \*
 
-    :param const void \*in_c_struct:
+    :param in_c_struct:
         Pointer to the C structure to be encoded.
+    :type in_c_struct: const void \*
 
-    :param u32 out_buf_len:
+    :param out_buf_len:
         Available space in the encode buffer.
+    :type out_buf_len: u32
 
-    :param int enc_level:
+    :param enc_level:
         Encode level to indicate the depth of the nested structure,
         within the main structure, being encoded.
+    :type enc_level: int
 
 .. _`qmi_encode.return`:
 
@@ -224,17 +248,21 @@ qmi_decode_basic_elem
 
     Decodes elements of basic/primary data type
 
-    :param void \*buf_dst:
+    :param buf_dst:
         Buffer to store the decoded element.
+    :type buf_dst: void \*
 
-    :param const void \*buf_src:
+    :param buf_src:
         Buffer containing the elements in QMI wire format.
+    :type buf_src: const void \*
 
-    :param u32 elem_len:
+    :param elem_len:
         Number of elements to be decoded.
+    :type elem_len: u32
 
-    :param u32 elem_size:
+    :param elem_size:
         Size of a single instance of the element to be decoded.
+    :type elem_size: u32
 
 .. _`qmi_decode_basic_elem.description`:
 
@@ -263,24 +291,30 @@ qmi_decode_struct_elem
 
     Decodes elements of struct data type
 
-    :param struct qmi_elem_info \*ei_array:
+    :param ei_array:
         Struct info array descibing the struct element.
+    :type ei_array: struct qmi_elem_info \*
 
-    :param void \*buf_dst:
+    :param buf_dst:
         Buffer to store the decoded element.
+    :type buf_dst: void \*
 
-    :param const void \*buf_src:
+    :param buf_src:
         Buffer containing the elements in QMI wire format.
+    :type buf_src: const void \*
 
-    :param u32 elem_len:
+    :param elem_len:
         Number of elements to be decoded.
+    :type elem_len: u32
 
-    :param u32 tlv_len:
+    :param tlv_len:
         Total size of the encoded inforation corresponding to
         this struct element.
+    :type tlv_len: u32
 
-    :param int dec_level:
+    :param dec_level:
         Depth of the nested structure from the main structure.
+    :type dec_level: int
 
 .. _`qmi_decode_struct_elem.description`:
 
@@ -310,21 +344,26 @@ qmi_decode_string_elem
 
     Decodes elements of string data type
 
-    :param struct qmi_elem_info \*ei_array:
+    :param ei_array:
         Struct info array descibing the string element.
+    :type ei_array: struct qmi_elem_info \*
 
-    :param void \*buf_dst:
+    :param buf_dst:
         Buffer to store the decoded element.
+    :type buf_dst: void \*
 
-    :param const void \*buf_src:
+    :param buf_src:
         Buffer containing the elements in QMI wire format.
+    :type buf_src: const void \*
 
-    :param u32 tlv_len:
+    :param tlv_len:
         Total size of the encoded inforation corresponding to
         this string element.
+    :type tlv_len: u32
 
-    :param int dec_level:
+    :param dec_level:
         Depth of the string element from the main structure.
+    :type dec_level: int
 
 .. _`qmi_decode_string_elem.description`:
 
@@ -353,11 +392,13 @@ find_ei
 
     Find element info corresponding to TLV Type
 
-    :param struct qmi_elem_info \*ei_array:
+    :param ei_array:
         Struct info array of the message being decoded.
+    :type ei_array: struct qmi_elem_info \*
 
-    :param u32 type:
+    :param type:
         TLV Type of the element being searched.
+    :type type: u32
 
 .. _`find_ei.description`:
 
@@ -385,21 +426,26 @@ qmi_decode
 
     Core Decode Function
 
-    :param struct qmi_elem_info \*ei_array:
+    :param ei_array:
         Struct info array describing the structure to be decoded.
+    :type ei_array: struct qmi_elem_info \*
 
-    :param void \*out_c_struct:
+    :param out_c_struct:
         Buffer to hold the decoded C struct
+    :type out_c_struct: void \*
 
-    :param const void \*in_buf:
+    :param in_buf:
         Buffer containing the QMI message to be decoded
+    :type in_buf: const void \*
 
-    :param u32 in_buf_len:
+    :param in_buf_len:
         Length of the QMI message to be decoded
+    :type in_buf_len: u32
 
-    :param int dec_level:
+    :param dec_level:
         Decode level to indicate the depth of the nested structure,
         within the main structure, being decoded
+    :type dec_level: int
 
 .. _`qmi_decode.return`:
 
@@ -418,23 +464,29 @@ qmi_encode_message
 
     Encode C structure as QMI encoded message
 
-    :param int type:
+    :param type:
         Type of QMI message
+    :type type: int
 
-    :param unsigned int msg_id:
+    :param msg_id:
         Message ID of the message
+    :type msg_id: unsigned int
 
-    :param size_t \*len:
+    :param len:
         Passed as max length of the message, updated to actual size
+    :type len: size_t \*
 
-    :param unsigned int txn_id:
+    :param txn_id:
         Transaction ID
+    :type txn_id: unsigned int
 
-    :param struct qmi_elem_info \*ei:
+    :param ei:
         QMI message descriptor
+    :type ei: struct qmi_elem_info \*
 
-    :param const void \*c_struct:
+    :param c_struct:
         Reference to structure to encode
+    :type c_struct: const void \*
 
 .. _`qmi_encode_message.return`:
 
@@ -452,17 +504,21 @@ qmi_decode_message
 
     Decode QMI encoded message to C structure
 
-    :param const void \*buf:
+    :param buf:
         Buffer with encoded message
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         Amount of data in \ ``buf``\ 
+    :type len: size_t
 
-    :param struct qmi_elem_info \*ei:
+    :param ei:
         QMI message descriptor
+    :type ei: struct qmi_elem_info \*
 
-    :param void \*c_struct:
+    :param c_struct:
         Reference to structure to decode into
+    :type c_struct: void \*
 
 .. _`qmi_decode_message.return`:
 

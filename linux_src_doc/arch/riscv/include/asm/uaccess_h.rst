@@ -10,16 +10,19 @@ access_ok
 
     - Checks if a user space pointer is valid
 
-    :param  type:
+    :param type:
         Type of access: \ ``VERIFY_READ``\  or \ ``VERIFY_WRITE``\ .  Note that
         \ ``VERIFY_WRITE``\  is a superset of \ ``VERIFY_READ``\  - if it is safe
         to write to a block, it is always safe to read from it.
+    :type type: 
 
-    :param  addr:
+    :param addr:
         User space pointer to start of block to check
+    :type addr: 
 
-    :param  size:
+    :param size:
         Size of block to check
+    :type size: 
 
 .. _`access_ok.context`:
 
@@ -51,11 +54,13 @@ this function, memory access functions may still return -EFAULT.
 
     - Get a simple variable from user space, with less checking.
 
-    :param  x:
+    :param x:
         Variable to store result.
+    :type x: 
 
-    :param  ptr:
+    :param ptr:
         Source address, in user space.
+    :type ptr: 
 
 .. _`__get_user.context`:
 
@@ -91,11 +96,13 @@ get_user
 
     - Get a simple variable from user space.
 
-    :param  x:
+    :param x:
         Variable to store result.
+    :type x: 
 
-    :param  ptr:
+    :param ptr:
         Source address, in user space.
+    :type ptr: 
 
 .. _`get_user.context`:
 
@@ -128,11 +135,13 @@ On error, the variable \ ``x``\  is set to zero.
 
     - Write a simple value into user space, with less checking.
 
-    :param  x:
+    :param x:
         Value to copy to user space.
+    :type x: 
 
-    :param  ptr:
+    :param ptr:
         Destination address, in user space.
+    :type ptr: 
 
 .. _`__put_user.context`:
 
@@ -167,11 +176,13 @@ put_user
 
     - Write a simple value into user space.
 
-    :param  x:
+    :param x:
         Value to copy to user space.
+    :type x: 
 
-    :param  ptr:
+    :param ptr:
         Destination address, in user space.
+    :type ptr: 
 
 .. _`put_user.context`:
 

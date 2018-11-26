@@ -10,8 +10,9 @@ omap2_set_globals_prcm_mpu
 
     set the MPU PRCM base address (for early use)
 
-    :param void __iomem \*prcm_mpu:
+    :param prcm_mpu:
         PRCM_MPU base virtual address
+    :type prcm_mpu: void __iomem \*
 
 .. _`omap2_set_globals_prcm_mpu.description`:
 

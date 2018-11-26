@@ -10,8 +10,9 @@ nfp_rtsym_count
 
     Get the number of RTSYM descriptors
 
-    :param struct nfp_rtsym_table \*rtbl:
+    :param rtbl:
         NFP RTsym table
+    :type rtbl: struct nfp_rtsym_table \*
 
 .. _`nfp_rtsym_count.return`:
 
@@ -29,11 +30,13 @@ nfp_rtsym_get
 
     Get the Nth RTSYM descriptor
 
-    :param struct nfp_rtsym_table \*rtbl:
+    :param rtbl:
         NFP RTsym table
+    :type rtbl: struct nfp_rtsym_table \*
 
-    :param int idx:
+    :param idx:
         Index (0-based) of the RTSYM descriptor
+    :type idx: int
 
 .. _`nfp_rtsym_get.return`:
 
@@ -51,11 +54,13 @@ nfp_rtsym_lookup
 
     Return the RTSYM descriptor for a symbol name
 
-    :param struct nfp_rtsym_table \*rtbl:
+    :param rtbl:
         NFP RTsym table
+    :type rtbl: struct nfp_rtsym_table \*
 
-    :param const char \*name:
+    :param name:
         Symbol name
+    :type name: const char \*
 
 .. _`nfp_rtsym_lookup.return`:
 
@@ -73,14 +78,17 @@ nfp_rtsym_read_le
 
     Read a simple unsigned scalar value from symbol
 
-    :param struct nfp_rtsym_table \*rtbl:
+    :param rtbl:
         NFP RTsym table
+    :type rtbl: struct nfp_rtsym_table \*
 
-    :param const char \*name:
+    :param name:
         Symbol name
+    :type name: const char \*
 
-    :param int \*error:
+    :param error:
         Poniter to error code (optional)
+    :type error: int \*
 
 .. _`nfp_rtsym_read_le.description`:
 
@@ -107,14 +115,17 @@ nfp_rtsym_write_le
 
     Write an unsigned scalar value to a symbol
 
-    :param struct nfp_rtsym_table \*rtbl:
+    :param rtbl:
         NFP RTsym table
+    :type rtbl: struct nfp_rtsym_table \*
 
-    :param const char \*name:
+    :param name:
         Symbol name
+    :type name: const char \*
 
-    :param u64 value:
+    :param value:
         Value to write
+    :type value: u64
 
 .. _`nfp_rtsym_write_le.description`:
 

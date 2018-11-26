@@ -22,6 +22,7 @@ Definition
         struct rhash_head tnode;
         u16 vid;
         u16 flags;
+        u16 priv_flags;
         struct br_vlan_stats __percpu *stats;
         union {
             struct net_bridge *br;
@@ -52,6 +53,9 @@ vid
 
 flags
     bridge vlan flags
+
+priv_flags
+    private (in-kernel) bridge vlan flags
 
 stats
     per-cpu VLAN statistics

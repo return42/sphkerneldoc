@@ -10,11 +10,13 @@ s3c2412_print_timing
 
     print timing information via printk.
 
-    :param const char \*pfx:
+    :param pfx:
         The prefix to print each line with.
+    :type pfx: const char \*
 
-    :param struct s3c_iotimings \*iot:
+    :param iot:
         The IO timing information
+    :type iot: struct s3c_iotimings \*
 
 .. _`to_div`:
 
@@ -25,11 +27,13 @@ to_div
 
     turn a cycle length into a divisor setting.
 
-    :param unsigned int cyc_tns:
+    :param cyc_tns:
         The cycle time in 10ths of nanoseconds.
+    :type cyc_tns: unsigned int
 
-    :param unsigned int clk_tns:
+    :param clk_tns:
         The clock period in 10ths of nanoseconds.
+    :type clk_tns: unsigned int
 
 .. _`calc_timing`:
 
@@ -40,14 +44,17 @@ calc_timing
 
     calculate timing divisor value and check in range.
 
-    :param unsigned int hwtm:
+    :param hwtm:
         The hardware timing in 10ths of nanoseconds.
+    :type hwtm: unsigned int
 
-    :param unsigned int clk_tns:
+    :param clk_tns:
         The clock period in 10ths of nanoseconds.
+    :type clk_tns: unsigned int
 
-    :param unsigned int \*err:
+    :param err:
         Pointer to err variable to update in event of failure.
+    :type err: unsigned int \*
 
 .. _`s3c2412_calc_bank`:
 
@@ -58,11 +65,13 @@ s3c2412_calc_bank
 
     calculate the bank divisor settings.
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The current frequency configuration.
+    :type cfg: struct s3c_cpufreq_config \*
 
-    :param struct s3c2412_iobank_timing \*bt:
+    :param bt:
         The bank timing.
+    :type bt: struct s3c2412_iobank_timing \*
 
 .. _`s3c2412_iotiming_debugfs`:
 
@@ -73,14 +82,17 @@ s3c2412_iotiming_debugfs
 
     debugfs show io bank timing information
 
-    :param struct seq_file \*seq:
+    :param seq:
         The seq_file to write output to using \ :c:func:`seq_printf`\ .
+    :type seq: struct seq_file \*
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The current configuration.
+    :type cfg: struct s3c_cpufreq_config \*
 
-    :param union s3c_iobank \*iob:
+    :param iob:
         The IO bank information to decode.
+    :type iob: union s3c_iobank \*
 
 .. _`s3c2412_iotiming_calc`:
 
@@ -91,11 +103,13 @@ s3c2412_iotiming_calc
 
     calculate all the bank divisor settings.
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The current frequency configuration.
+    :type cfg: struct s3c_cpufreq_config \*
 
-    :param struct s3c_iotimings \*iot:
+    :param iot:
         The bank timing information.
+    :type iot: struct s3c_iotimings \*
 
 .. _`s3c2412_iotiming_calc.description`:
 
@@ -114,11 +128,13 @@ s3c2412_iotiming_set
 
     set the timing information
 
-    :param struct s3c_cpufreq_config \*cfg:
+    :param cfg:
         The current frequency configuration.
+    :type cfg: struct s3c_cpufreq_config \*
 
-    :param struct s3c_iotimings \*iot:
+    :param iot:
         The bank timing information.
+    :type iot: struct s3c_iotimings \*
 
 .. _`s3c2412_iotiming_set.description`:
 
@@ -137,11 +153,13 @@ bank_is_io
 
     return true if bank is (possibly) IO.
 
-    :param unsigned int bank:
+    :param bank:
         The bank number.
+    :type bank: unsigned int
 
-    :param u32 bankcfg:
+    :param bankcfg:
         The value of S3C2412_EBI_BANKCFG.
+    :type bankcfg: u32
 
 .. This file was automatic generated / don't edit.
 

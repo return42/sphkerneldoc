@@ -33,17 +33,21 @@ drm_dp_dpcd_read
 
     read a series of bytes from the DPCD
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param unsigned int offset:
+    :param offset:
         address of the (first) register to read
+    :type offset: unsigned int
 
-    :param void \*buffer:
+    :param buffer:
         buffer to store the register values
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         number of bytes in \ ``buffer``\ 
+    :type size: size_t
 
 .. _`drm_dp_dpcd_read.description`:
 
@@ -66,17 +70,21 @@ drm_dp_dpcd_write
 
     write a series of bytes to the DPCD
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param unsigned int offset:
+    :param offset:
         address of the (first) register to write
+    :type offset: unsigned int
 
-    :param void \*buffer:
+    :param buffer:
         buffer containing the values to write
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         number of bytes in \ ``buffer``\ 
+    :type size: size_t
 
 .. _`drm_dp_dpcd_write.description`:
 
@@ -99,11 +107,13 @@ drm_dp_dpcd_read_link_status
 
     read DPCD link status (bytes 0x202-0x207)
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param u8 status:
+    :param status:
         buffer to store the link status in (must be at least 6 bytes)
+    :type status: u8
 
 .. _`drm_dp_dpcd_read_link_status.description`:
 
@@ -122,11 +132,13 @@ drm_dp_link_probe
 
     probe a DisplayPort link for capabilities
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param struct drm_dp_link \*link:
+    :param link:
         pointer to structure in which to return link capabilities
+    :type link: struct drm_dp_link \*
 
 .. _`drm_dp_link_probe.description`:
 
@@ -148,11 +160,13 @@ drm_dp_link_power_up
 
     power up a DisplayPort link
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param struct drm_dp_link \*link:
+    :param link:
         pointer to a structure containing the link configuration
+    :type link: struct drm_dp_link \*
 
 .. _`drm_dp_link_power_up.description`:
 
@@ -170,11 +184,13 @@ drm_dp_link_power_down
 
     power down a DisplayPort link
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param struct drm_dp_link \*link:
+    :param link:
         pointer to a structure containing the link configuration
+    :type link: struct drm_dp_link \*
 
 .. _`drm_dp_link_power_down.description`:
 
@@ -192,11 +208,13 @@ drm_dp_link_configure
 
     configure a DisplayPort link
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param struct drm_dp_link \*link:
+    :param link:
         pointer to a structure containing the link configuration
+    :type link: struct drm_dp_link \*
 
 .. _`drm_dp_link_configure.description`:
 
@@ -214,11 +232,13 @@ drm_dp_downstream_max_clock
 
     extract branch device max pixel rate for legacy VGA converter or max TMDS clock rate for others
 
-    :param const u8 dpcd:
+    :param dpcd:
         DisplayPort configuration data
+    :type dpcd: const u8
 
-    :param const u8 port_cap:
+    :param port_cap:
         port capabilities
+    :type port_cap: const u8
 
 .. _`drm_dp_downstream_max_clock.description`:
 
@@ -236,11 +256,13 @@ drm_dp_downstream_max_bpc
 
     extract branch device max bits per component
 
-    :param const u8 dpcd:
+    :param dpcd:
         DisplayPort configuration data
+    :type dpcd: const u8
 
-    :param const u8 port_cap:
+    :param port_cap:
         port capabilities
+    :type port_cap: const u8
 
 .. _`drm_dp_downstream_max_bpc.description`:
 
@@ -258,11 +280,13 @@ drm_dp_downstream_id
 
     identify branch device
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param char id:
+    :param id:
         DisplayPort branch device id
+    :type id: char
 
 .. _`drm_dp_downstream_id.description`:
 
@@ -280,17 +304,21 @@ drm_dp_downstream_debug
 
     debug DP branch devices
 
-    :param struct seq_file \*m:
+    :param m:
         pointer for debugfs file
+    :type m: struct seq_file \*
 
-    :param const u8 dpcd:
+    :param dpcd:
         DisplayPort configuration data
+    :type dpcd: const u8
 
-    :param const u8 port_cap:
+    :param port_cap:
         port capabilities
+    :type port_cap: const u8
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
 .. _`drm_dp_aux_init`:
 
@@ -301,8 +329,9 @@ drm_dp_aux_init
 
     minimally initialise an aux channel
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
 .. _`drm_dp_aux_init.description`:
 
@@ -323,8 +352,9 @@ drm_dp_aux_register
 
     initialise and register aux channel
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
 .. _`drm_dp_aux_register.description`:
 
@@ -344,8 +374,9 @@ drm_dp_aux_unregister
 
     unregister an AUX adapter
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
 .. _`drm_dp_psr_setup_time`:
 
@@ -356,8 +387,9 @@ drm_dp_psr_setup_time
 
     PSR setup in time usec
 
-    :param const u8 psr_cap:
+    :param psr_cap:
         PSR capabilities from DPCD
+    :type psr_cap: const u8
 
 .. _`drm_dp_psr_setup_time.return`:
 
@@ -376,11 +408,13 @@ drm_dp_start_crc
 
     start capture of frame CRCs
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC displaying the frames whose CRCs are to be captured
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_dp_start_crc.description`:
 
@@ -398,8 +432,9 @@ drm_dp_stop_crc
 
     stop capture of frame CRCs
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
 .. _`drm_dp_stop_crc.description`:
 
@@ -417,14 +452,17 @@ drm_dp_read_desc
 
     read sink/branch descriptor from DPCD
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param struct drm_dp_desc \*desc:
+    :param desc:
         Device decriptor to fill from DPCD
+    :type desc: struct drm_dp_desc \*
 
-    :param bool is_branch:
+    :param is_branch:
         true for branch devices, false for sink devices
+    :type is_branch: bool
 
 .. _`drm_dp_read_desc.description`:
 

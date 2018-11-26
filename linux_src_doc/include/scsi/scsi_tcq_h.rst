@@ -10,11 +10,13 @@ scsi_host_find_tag
 
     find the tagged command by host
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         pointer to scsi_host
+    :type shost: struct Scsi_Host \*
 
-    :param int tag:
+    :param tag:
         tag
+    :type tag: int
 
 .. _`scsi_host_find_tag.note`:
 

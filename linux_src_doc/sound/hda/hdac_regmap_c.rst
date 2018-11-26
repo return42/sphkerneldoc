@@ -10,8 +10,9 @@ snd_hdac_regmap_init
 
     Initialize regmap for HDA register accesses
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
 .. _`snd_hdac_regmap_init.description`:
 
@@ -29,8 +30,9 @@ snd_hdac_regmap_exit
 
     Release the regmap from HDA codec
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
 .. _`snd_hdac_regmap_add_vendor_verb`:
 
@@ -41,11 +43,13 @@ snd_hdac_regmap_add_vendor_verb
 
     add a vendor-specific verb to regmap
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param unsigned int verb:
+    :param verb:
         verb to allow accessing via regmap
+    :type verb: unsigned int
 
 .. _`snd_hdac_regmap_add_vendor_verb.description`:
 
@@ -63,14 +67,17 @@ snd_hdac_regmap_write_raw
 
     write a pseudo register with power mgmt
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param unsigned int reg:
+    :param reg:
         pseudo register
+    :type reg: unsigned int
 
-    :param unsigned int val:
+    :param val:
         value to write
+    :type val: unsigned int
 
 .. _`snd_hdac_regmap_write_raw.description`:
 
@@ -88,14 +95,17 @@ snd_hdac_regmap_read_raw
 
     read a pseudo register with power mgmt
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param unsigned int reg:
+    :param reg:
         pseudo register
+    :type reg: unsigned int
 
-    :param unsigned int \*val:
+    :param val:
         pointer to store the read value
+    :type val: unsigned int \*
 
 .. _`snd_hdac_regmap_read_raw.description`:
 
@@ -113,17 +123,21 @@ snd_hdac_regmap_update_raw
 
     update a pseudo register with power mgmt
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param unsigned int reg:
+    :param reg:
         pseudo register
+    :type reg: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         bit mask to udpate
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         value to update
+    :type val: unsigned int
 
 .. _`snd_hdac_regmap_update_raw.description`:
 

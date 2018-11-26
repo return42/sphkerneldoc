@@ -10,8 +10,9 @@ acpi_power_state_string
 
     String representation of ACPI device power state.
 
-    :param int state:
+    :param state:
         ACPI device power state to return the string representation of.
+    :type state: int
 
 .. _`acpi_device_get_power`:
 
@@ -22,11 +23,13 @@ acpi_device_get_power
 
     Get power state of an ACPI device.
 
-    :param struct acpi_device \*device:
+    :param device:
         Device to get the power state of.
+    :type device: struct acpi_device \*
 
-    :param int \*state:
+    :param state:
         Place to store the power state of the device.
+    :type state: int \*
 
 .. _`acpi_device_get_power.description`:
 
@@ -46,11 +49,13 @@ acpi_device_set_power
 
     Set power state of an ACPI device.
 
-    :param struct acpi_device \*device:
+    :param device:
         Device to set the power state of.
+    :type device: struct acpi_device \*
 
-    :param int state:
+    :param state:
         New power state to set.
+    :type state: int
 
 .. _`acpi_device_set_power.description`:
 
@@ -69,8 +74,9 @@ acpi_device_fix_up_power
 
     Force device with missing \_PSC into D0.
 
-    :param struct acpi_device \*device:
+    :param device:
         Device object whose power state is to be fixed up.
+    :type device: struct acpi_device \*
 
 .. _`acpi_device_fix_up_power.description`:
 
@@ -90,11 +96,13 @@ acpi_add_pm_notifier
 
     Register PM notify handler for given ACPI device.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device to add the notify handler for.
+    :type adev: struct acpi_device \*
 
-    :param struct device \*dev:
+    :param dev:
         Device to generate a wakeup event for while handling the notification.
+    :type dev: struct device \*
 
     :param void (\*func)(struct acpi_device_wakeup_context \*context):
         Work function to execute when handling the notification.
@@ -118,8 +126,9 @@ acpi_remove_pm_notifier
 
     Unregister PM notifier from given ACPI device.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device to remove the notifier from.
+    :type adev: struct acpi_device \*
 
 .. _`acpi_dev_pm_get_state`:
 
@@ -130,20 +139,25 @@ acpi_dev_pm_get_state
 
     Get preferred power state of ACPI device.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose preferred target power state to return.
+    :type dev: struct device \*
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device node corresponding to \ ``dev``\ .
+    :type adev: struct acpi_device \*
 
-    :param u32 target_state:
+    :param target_state:
         System state to match the resultant device state.
+    :type target_state: u32
 
-    :param int \*d_min_p:
+    :param d_min_p:
         Location to store the highest power state available to the device.
+    :type d_min_p: int \*
 
-    :param int \*d_max_p:
+    :param d_max_p:
         Location to store the lowest power state available to the device.
+    :type d_max_p: int \*
 
 .. _`acpi_dev_pm_get_state.description`:
 
@@ -172,14 +186,17 @@ acpi_pm_device_sleep_state
 
     Get preferred power state of ACPI device.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose preferred target power state to return.
+    :type dev: struct device \*
 
-    :param int \*d_min_p:
+    :param d_min_p:
         Location to store the upper limit of the allowed states range.
+    :type d_min_p: int \*
 
-    :param int d_max_in:
+    :param d_max_in:
         Deepest low-power state to take into consideration.
+    :type d_max_in: int
 
 .. _`acpi_pm_device_sleep_state.return-value`:
 
@@ -201,8 +218,9 @@ acpi_pm_notify_work_func
 
     ACPI devices wakeup notification work function.
 
-    :param struct acpi_device_wakeup_context \*context:
+    :param context:
         Device wakeup context.
+    :type context: struct acpi_device_wakeup_context \*
 
 .. _`acpi_device_wakeup_enable`:
 
@@ -213,11 +231,13 @@ acpi_device_wakeup_enable
 
     Enable wakeup functionality for device.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device to enable wakeup functionality for.
+    :type adev: struct acpi_device \*
 
-    :param u32 target_state:
+    :param target_state:
         State the system is transitioning into.
+    :type target_state: u32
 
 .. _`acpi_device_wakeup_enable.description`:
 
@@ -240,8 +260,9 @@ acpi_device_wakeup_disable
 
     Disable wakeup functionality for device.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device to disable wakeup functionality for.
+    :type adev: struct acpi_device \*
 
 .. _`acpi_device_wakeup_disable.description`:
 
@@ -262,11 +283,13 @@ acpi_pm_set_device_wakeup
 
     Enable/disable remote wakeup for given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to enable/disable to generate wakeup events.
+    :type dev: struct device \*
 
-    :param bool enable:
+    :param enable:
         Whether to enable or disable the wakeup functionality.
+    :type enable: bool
 
 .. _`acpi_pm_set_bridge_wakeup`:
 
@@ -277,11 +300,13 @@ acpi_pm_set_bridge_wakeup
 
     Enable/disable remote wakeup for given bridge.
 
-    :param struct device \*dev:
+    :param dev:
         Bridge device to enable/disable to generate wakeup events.
+    :type dev: struct device \*
 
-    :param bool enable:
+    :param enable:
         Whether to enable or disable the wakeup functionality.
+    :type enable: bool
 
 .. _`acpi_dev_pm_low_power`:
 
@@ -292,14 +317,17 @@ acpi_dev_pm_low_power
 
     Put ACPI device into a low-power state.
 
-    :param struct device \*dev:
+    :param dev:
         Device to put into a low-power state.
+    :type dev: struct device \*
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device node corresponding to \ ``dev``\ .
+    :type adev: struct acpi_device \*
 
-    :param u32 system_state:
+    :param system_state:
         System state to choose the device state for.
+    :type system_state: u32
 
 .. _`acpi_dev_pm_full_power`:
 
@@ -310,8 +338,9 @@ acpi_dev_pm_full_power
 
     Put ACPI device into the full-power state.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device node to put into the full-power state.
+    :type adev: struct acpi_device \*
 
 .. _`acpi_dev_suspend`:
 
@@ -322,11 +351,13 @@ acpi_dev_suspend
 
     Put device into a low-power state using ACPI.
 
-    :param struct device \*dev:
+    :param dev:
         Device to put into a low-power state.
+    :type dev: struct device \*
 
-    :param bool wakeup:
+    :param wakeup:
         Whether or not to enable wakeup for the device.
+    :type wakeup: bool
 
 .. _`acpi_dev_suspend.description`:
 
@@ -347,8 +378,9 @@ acpi_dev_resume
 
     Put device into the full-power state using ACPI.
 
-    :param struct device \*dev:
+    :param dev:
         Device to put into the full-power state.
+    :type dev: struct device \*
 
 .. _`acpi_dev_resume.description`:
 
@@ -367,8 +399,9 @@ acpi_subsys_runtime_suspend
 
     Suspend device using ACPI.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_runtime_suspend.description`:
 
@@ -387,8 +420,9 @@ acpi_subsys_runtime_resume
 
     Resume device using ACPI.
 
-    :param struct device \*dev:
+    :param dev:
         Device to Resume.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_runtime_resume.description`:
 
@@ -407,8 +441,9 @@ acpi_subsys_prepare
 
     Prepare device for system transition to a sleep state.
 
-    :param struct device \*dev:
+    :param dev:
         Device to prepare.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_complete`:
 
@@ -419,8 +454,9 @@ acpi_subsys_complete
 
     Finalize device's resume during system resume.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_suspend`:
 
@@ -431,8 +467,9 @@ acpi_subsys_suspend
 
     Run the device driver's suspend callback.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_suspend.description`:
 
@@ -453,8 +490,9 @@ acpi_subsys_suspend_late
 
     Suspend device using ACPI.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_suspend_late.description`:
 
@@ -473,8 +511,9 @@ acpi_subsys_suspend_noirq
 
     Run the device driver's "noirq" suspend callback.
 
-    :param struct device \*dev:
+    :param dev:
         Device to suspend.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_resume_noirq`:
 
@@ -485,8 +524,9 @@ acpi_subsys_resume_noirq
 
     Run the device driver's "noirq" resume callback.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_resume_early`:
 
@@ -497,8 +537,9 @@ acpi_subsys_resume_early
 
     Resume device using ACPI.
 
-    :param struct device \*dev:
+    :param dev:
         Device to Resume.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_resume_early.description`:
 
@@ -518,8 +559,9 @@ acpi_subsys_freeze
 
     Run the device driver's freeze callback.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_freeze_late`:
 
@@ -530,8 +572,9 @@ acpi_subsys_freeze_late
 
     Run the device driver's "late" freeze callback.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_freeze_noirq`:
 
@@ -542,8 +585,9 @@ acpi_subsys_freeze_noirq
 
     Run the device driver's "noirq" freeze callback.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`acpi_subsys_thaw_noirq`:
 
@@ -554,8 +598,9 @@ acpi_subsys_thaw_noirq
 
     Run the device driver's "noirq" thaw callback.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`acpi_dev_pm_detach`:
 
@@ -566,11 +611,13 @@ acpi_dev_pm_detach
 
     Remove ACPI power management from the device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to take care of.
+    :type dev: struct device \*
 
-    :param bool power_off:
+    :param power_off:
         Whether or not to try to remove power from the device.
+    :type power_off: bool
 
 .. _`acpi_dev_pm_detach.description`:
 
@@ -593,11 +640,13 @@ acpi_dev_pm_attach
 
     Prepare device for ACPI power management.
 
-    :param struct device \*dev:
+    :param dev:
         Device to prepare.
+    :type dev: struct device \*
 
-    :param bool power_on:
+    :param power_on:
         Whether or not to power on the device.
+    :type power_on: bool
 
 .. _`acpi_dev_pm_attach.description`:
 

@@ -10,8 +10,9 @@ acpi_pm_freeze
 
     Disable the GPEs and suspend EC transactions.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`acpi_pm_pre_suspend`:
 
@@ -22,8 +23,9 @@ acpi_pm_pre_suspend
 
     Enable wakeup devices, "freeze" EC and save NVS.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__acpi_pm_prepare`:
 
@@ -34,8 +36,9 @@ acpi_pm_pre_suspend
 
     Prepare the platform to enter the target state.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__acpi_pm_prepare.description`:
 
@@ -54,8 +57,9 @@ acpi_pm_prepare
 
     Prepare the platform to enter the target sleep state and disable the GPEs.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`acpi_pm_finish`:
 
@@ -66,8 +70,9 @@ acpi_pm_finish
 
     Instruct the platform to leave a sleep state.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`acpi_pm_finish.description`:
 
@@ -86,8 +91,9 @@ acpi_pm_start
 
     Start system PM transition.
 
-    :param u32 acpi_state:
+    :param acpi_state:
         *undescribed*
+    :type acpi_state: u32
 
 .. _`acpi_pm_end`:
 
@@ -98,8 +104,9 @@ acpi_pm_end
 
     Finish up system PM transition.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`acpi_suspend_begin`:
 
@@ -110,8 +117,9 @@ acpi_suspend_begin
 
     Set the target system sleep state to the state associated with given \ ``pm_state``\ , if supported.
 
-    :param suspend_state_t pm_state:
+    :param pm_state:
         *undescribed*
+    :type pm_state: suspend_state_t
 
 .. _`acpi_suspend_enter`:
 
@@ -122,8 +130,9 @@ acpi_suspend_enter
 
     Actually enter a sleep state.
 
-    :param suspend_state_t pm_state:
+    :param pm_state:
         ignored
+    :type pm_state: suspend_state_t
 
 .. _`acpi_suspend_enter.description`:
 
@@ -143,8 +152,9 @@ acpi_suspend_begin_old
 
     Set the target system sleep state to the state associated with given \ ``pm_state``\ , if supported, and execute the \_PTS control method.  This function is used if the pre-ACPI 2.0 suspend ordering has been requested.
 
-    :param suspend_state_t pm_state:
+    :param pm_state:
         *undescribed*
+    :type pm_state: suspend_state_t
 
 .. _`acpi_hibernation_begin_old`:
 
@@ -155,8 +165,9 @@ acpi_hibernation_begin_old
 
     Set the target system sleep state to ACPI_STATE_S4 and execute the \_PTS control method.  This function is used if the pre-ACPI 2.0 suspend ordering has been requested.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

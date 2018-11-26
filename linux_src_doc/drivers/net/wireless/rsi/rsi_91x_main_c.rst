@@ -8,8 +8,9 @@ pr_fmt
 
 .. c:function::  pr_fmt( fmt)
 
-    :param  fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: 
 
 .. _`pr_fmt.description`:
 
@@ -37,11 +38,13 @@ rsi_dbg
 
     This function outputs informational messages.
 
-    :param u32 zone:
+    :param zone:
         Zone of interest for output message.
+    :type zone: u32
 
-    :param const char \*fmt:
+    :param fmt:
         printf-style format for output message.
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -62,17 +65,21 @@ rsi_prepare_skb
 
     This function prepares the skb.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u8 \*buffer:
+    :param buffer:
         Pointer to the packet data.
+    :type buffer: u8 \*
 
-    :param u32 pkt_len:
+    :param pkt_len:
         Length of the packet.
+    :type pkt_len: u32
 
-    :param u8 extended_desc:
+    :param extended_desc:
         Extended descriptor.
+    :type extended_desc: u8
 
 .. _`rsi_prepare_skb.return`:
 
@@ -90,14 +97,17 @@ rsi_read_pkt
 
     This function reads frames from the card.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
-    :param u8 \*rx_pkt:
+    :param rx_pkt:
         *undescribed*
+    :type rx_pkt: u8 \*
 
-    :param s32 rcv_pkt_len:
+    :param rcv_pkt_len:
         Received pkt length. In case of USB it is 0.
+    :type rcv_pkt_len: s32
 
 .. _`rsi_read_pkt.return`:
 
@@ -115,8 +125,9 @@ rsi_tx_scheduler_thread
 
     This function is a kernel thread to send the packets to the device.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_tx_scheduler_thread.return`:
 
@@ -134,8 +145,9 @@ rsi_91x_init
 
     This function initializes os interface operations.
 
-    :param u16 oper_mode:
+    :param oper_mode:
         *undescribed*
+    :type oper_mode: u16
 
 .. _`rsi_91x_init.return`:
 
@@ -153,8 +165,9 @@ rsi_91x_deinit
 
     This function de-intializes os intf operations.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
 .. _`rsi_91x_deinit.return`:
 
@@ -172,8 +185,9 @@ rsi_91x_hal_module_init
 
     This function is invoked when the module is loaded into the kernel. It registers the client driver.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rsi_91x_hal_module_init.return`:
 
@@ -191,8 +205,9 @@ rsi_91x_hal_module_exit
 
     This function is called at the time of removing/unloading the module. It unregisters the client driver.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rsi_91x_hal_module_exit.return`:
 

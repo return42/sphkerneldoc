@@ -10,8 +10,9 @@ bcm47xxpart_bootpartition
 
     gets index of TRX partition used by bootloader
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bcm47xxpart_bootpartition.description`:
 

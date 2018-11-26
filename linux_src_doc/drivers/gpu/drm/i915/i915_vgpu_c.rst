@@ -37,8 +37,9 @@ i915_check_vgpu
 
     detect virtual GPU
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_check_vgpu.description`:
 
@@ -57,8 +58,9 @@ intel_vgt_deballoon
 
     deballoon reserved graphics address trunks
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private data
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_vgt_deballoon.description`:
 
@@ -77,8 +79,9 @@ intel_vgt_balloon
 
     balloon out reserved graphics address trunks
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private data
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_vgt_balloon.description`:
 

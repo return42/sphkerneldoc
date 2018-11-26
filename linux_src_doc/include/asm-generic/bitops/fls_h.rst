@@ -10,8 +10,9 @@ fls
 
     find last (most-significant) bit set
 
-    :param int x:
+    :param x:
         the word to search
+    :type x: int
 
 .. _`fls.description`:
 

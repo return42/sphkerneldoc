@@ -87,8 +87,9 @@ cvmx_pow_get_current_tag
 
     tag type, tag, group, and POW entry index associated with this core. Index is only valid if the tag type isn't NULL_NULL. If a tag switch is pending this routine returns the tag before the tag switch, not after.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_pow_get_current_tag.description`:
 
@@ -106,8 +107,9 @@ cvmx_pow_get_current_wqp
 
     entry currently associated with this core.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_pow_get_current_wqp.description`:
 
@@ -123,8 +125,9 @@ Returns WQE pointer
 
 .. c:function:: void __cvmx_pow_warn_if_pending_switch(const char *function)
 
-    :param const char \*function:
+    :param function:
         Function name checking for a pending tag switch
+    :type function: const char \*
 
 .. _`cvmx_pow_tag_sw_wait`:
 
@@ -135,8 +138,9 @@ cvmx_pow_tag_sw_wait
 
     Note that switches to NULL complete immediately and do not need to be waited for.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_pow_work_request_sync_nocheck`:
 
@@ -147,9 +151,10 @@ cvmx_pow_work_request_sync_nocheck
 
     This function does NOT wait for previous tag switches to complete, so the caller must ensure that there is not a pending tag switch.
 
-    :param cvmx_pow_wait_t wait:
+    :param wait:
         When set, call stalls until work becomes avaiable, or times out.
         If not set, returns immediately.
+    :type wait: cvmx_pow_wait_t
 
 .. _`cvmx_pow_work_request_sync_nocheck.description`:
 
@@ -168,9 +173,10 @@ cvmx_pow_work_request_sync
 
     This function waits for any previous tag switch to complete before requesting the new work.
 
-    :param cvmx_pow_wait_t wait:
+    :param wait:
         When set, call stalls until work becomes avaiable, or times out.
         If not set, returns immediately.
+    :type wait: cvmx_pow_wait_t
 
 .. _`cvmx_pow_work_request_sync.description`:
 
@@ -189,8 +195,9 @@ cvmx_pow_work_request_null_rd
 
     This function waits for any previous tag switch to complete before requesting the null_rd.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_pow_work_request_null_rd.description`:
 
@@ -208,14 +215,16 @@ cvmx_pow_work_request_async_nocheck
 
     and should later be checked with function cvmx_pow_work_response_async.  This function does NOT wait for previous tag switches to complete, so the caller must ensure that there is not a pending tag switch.
 
-    :param int scr_addr:
+    :param scr_addr:
         Scratch memory address that response will be returned
         to, which is either a valid WQE, or a response with the
         invalid bit set.  Byte address, must be 8 byte aligned.
+    :type scr_addr: int
 
-    :param cvmx_pow_wait_t wait:
+    :param wait:
         1 to cause response to wait for work to become available (or
         timeout), 0 to cause response to return immediately
+    :type wait: cvmx_pow_wait_t
 
 .. _`cvmx_pow_work_request_async`:
 
@@ -226,14 +235,16 @@ cvmx_pow_work_request_async
 
     and should later be checked with function cvmx_pow_work_response_async.  This function waits for any previous tag switch to complete before requesting the new work.
 
-    :param int scr_addr:
+    :param scr_addr:
         Scratch memory address that response will be returned
         to, which is either a valid WQE, or a response with the
         invalid bit set.  Byte address, must be 8 byte aligned.
+    :type scr_addr: int
 
-    :param cvmx_pow_wait_t wait:
+    :param wait:
         1 to cause response to wait for work to become available (or
         timeout), 0 to cause response to return immediately
+    :type wait: cvmx_pow_wait_t
 
 .. _`cvmx_pow_work_response_async`:
 
@@ -244,9 +255,10 @@ cvmx_pow_work_response_async
 
     to wait for the response.
 
-    :param int scr_addr:
+    :param scr_addr:
         Scratch memory address to get result from Byte address,
         must be 8 byte aligned.
+    :type scr_addr: int
 
 .. _`cvmx_pow_work_response_async.description`:
 
@@ -265,8 +277,9 @@ cvmx_pow_work_invalid
 
     request is valid.  It may be invalid due to no work being available or due to a timeout.
 
-    :param cvmx_wqe_t \*wqe_ptr:
+    :param wqe_ptr:
         pointer to a work queue entry returned by the POW
+    :type wqe_ptr: cvmx_wqe_t \*
 
 .. _`cvmx_pow_work_invalid.description`:
 
@@ -285,11 +298,13 @@ cvmx_pow_tag_sw_nocheck
 
     Completion for the tag switch must be checked for separately.  This function does NOT update the work queue entry in dram to match tag value and type, so the application must keep track of these if they are important to the application.  This tag switch command must not be used for switches to NULL, as the tag switch pending bit will be set by the switch request, but never cleared by the hardware.
 
-    :param uint32_t tag:
+    :param tag:
         new tag value
+    :type tag: uint32_t
 
-    :param enum cvmx_pow_tag_type tag_type:
+    :param tag_type:
         new tag type (ordered or atomic)
+    :type tag_type: enum cvmx_pow_tag_type
 
 .. _`cvmx_pow_tag_sw_nocheck.note`:
 
@@ -311,11 +326,13 @@ cvmx_pow_tag_sw
 
     Completion for the tag switch must be checked for separately.  This function does NOT update the work queue entry in dram to match tag value and type, so the application must keep track of these if they are important to the application.  This tag switch command must not be used for switches to NULL, as the tag switch pending bit will be set by the switch request, but never cleared by the hardware.
 
-    :param uint32_t tag:
+    :param tag:
         new tag value
+    :type tag: uint32_t
 
-    :param enum cvmx_pow_tag_type tag_type:
+    :param tag_type:
         new tag type (ordered or atomic)
+    :type tag_type: enum cvmx_pow_tag_type
 
 .. _`cvmx_pow_tag_sw.note`:
 
@@ -337,18 +354,22 @@ cvmx_pow_tag_sw_full_nocheck
 
     Completion for the tag switch must be checked for separately.  This function does NOT update the work queue entry in dram to match tag value and type, so the application must keep track of these if they are important to the application.  This tag switch command must not be used for switches to NULL, as the tag switch pending bit will be set by the switch request, but never cleared by the hardware.
 
-    :param cvmx_wqe_t \*wqp:
+    :param wqp:
         pointer to work queue entry to submit.  This entry is
         updated to match the other parameters
+    :type wqp: cvmx_wqe_t \*
 
-    :param uint32_t tag:
+    :param tag:
         tag value to be assigned to work queue entry
+    :type tag: uint32_t
 
-    :param enum cvmx_pow_tag_type tag_type:
+    :param tag_type:
         type of tag
+    :type tag_type: enum cvmx_pow_tag_type
 
-    :param uint64_t group:
+    :param group:
         group value for the work queue entry.
+    :type group: uint64_t
 
 .. _`cvmx_pow_tag_sw_full_nocheck.description`:
 
@@ -369,18 +390,22 @@ cvmx_pow_tag_sw_full
 
     Completion for the tag switch must be checked for separately.  This function does NOT update the work queue entry in dram to match tag value and type, so the application must keep track of these if they are important to the application.  This tag switch command must not be used for switches to NULL, as the tag switch pending bit will be set by the switch request, but never cleared by the hardware.
 
-    :param cvmx_wqe_t \*wqp:
+    :param wqp:
         pointer to work queue entry to submit.  This entry is updated
         to match the other parameters
+    :type wqp: cvmx_wqe_t \*
 
-    :param uint32_t tag:
+    :param tag:
         tag value to be assigned to work queue entry
+    :type tag: uint32_t
 
-    :param enum cvmx_pow_tag_type tag_type:
+    :param tag_type:
         type of tag
+    :type tag_type: enum cvmx_pow_tag_type
 
-    :param uint64_t group:
+    :param group:
         group value for the work queue entry.
+    :type group: uint64_t
 
 .. _`cvmx_pow_tag_sw_full.description`:
 
@@ -401,8 +426,9 @@ cvmx_pow_tag_sw_null_nocheck
 
     synchronization provided by the POW for the current work queue entry.  This operation completes immediately, so completion should not be waited for. This function does NOT wait for previous tag switches to complete, so the caller must ensure that any previous tag switches have completed.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_pow_tag_sw_null`:
 
@@ -413,8 +439,9 @@ cvmx_pow_tag_sw_null
 
     synchronization provided by the POW for the current work queue entry.  This operation completes immediately, so completion should not be waited for. This function waits for any pending tag switches to complete before requesting the switch to NULL.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_pow_work_submit`:
 
@@ -425,21 +452,26 @@ cvmx_pow_work_submit
 
     queue entry in DRAM to match the arguments given.  Note that the tag provided is for the work queue entry submitted, and is unrelated to the tag that the core currently holds.
 
-    :param cvmx_wqe_t \*wqp:
+    :param wqp:
         pointer to work queue entry to submit.  This entry is
         updated to match the other parameters
+    :type wqp: cvmx_wqe_t \*
 
-    :param uint32_t tag:
+    :param tag:
         tag value to be assigned to work queue entry
+    :type tag: uint32_t
 
-    :param enum cvmx_pow_tag_type tag_type:
+    :param tag_type:
         type of tag
+    :type tag_type: enum cvmx_pow_tag_type
 
-    :param uint64_t qos:
+    :param qos:
         Input queue to add to.
+    :type qos: uint64_t
 
-    :param uint64_t grp:
+    :param grp:
         group value for the work queue entry.
+    :type grp: uint64_t
 
 .. _`cvmx_pow_set_group_mask`:
 
@@ -450,14 +482,16 @@ cvmx_pow_set_group_mask
 
     indicates which groups each core will accept work from. There are 16 groups.
 
-    :param uint64_t core_num:
+    :param core_num:
         core to apply mask to
+    :type core_num: uint64_t
 
-    :param uint64_t mask:
+    :param mask:
         Group mask. There are 16 groups, so only bits 0-15 are valid,
         representing groups 0-15.
         Each 1 bit in the mask enables the core to accept work from
         the corresponding group.
+    :type mask: uint64_t
 
 .. _`cvmx_pow_set_priority`:
 
@@ -468,10 +502,11 @@ cvmx_pow_set_priority
 
     an associated priority value.
 
-    :param uint64_t core_num:
+    :param core_num:
         core to apply priorities to
+    :type core_num: uint64_t
 
-    :param const uint8_t priority:
+    :param priority:
         Vector of 8 priorities, one per POW Input Queue (0-7).
         Highest priority is 0 and lowest is 7. A priority value
         of 0xF instructs POW to skip the Input Queue when
@@ -479,6 +514,7 @@ cvmx_pow_set_priority
         NOTE: priorities should not have gaps in values, meaning
         {0,1,1,1,1,1,1,1} is a valid configuration while
         {0,2,2,2,2,2,2,2} is not.
+    :type priority: const uint8_t
 
 .. _`cvmx_pow_tag_sw_desched_nocheck`:
 
@@ -489,19 +525,23 @@ cvmx_pow_tag_sw_desched_nocheck
 
     immediately, so completion must not be waited for.  This function does NOT update the wqe in DRAM to match arguments.
 
-    :param uint32_t tag:
+    :param tag:
         New tag value
+    :type tag: uint32_t
 
-    :param enum cvmx_pow_tag_type tag_type:
+    :param tag_type:
         New tag type
+    :type tag_type: enum cvmx_pow_tag_type
 
-    :param uint64_t group:
+    :param group:
         New group value
+    :type group: uint64_t
 
-    :param uint64_t no_sched:
+    :param no_sched:
         Control whether this work queue entry will be rescheduled.
         - 1 : don't schedule this work
         - 0 : allow this work to be scheduled.
+    :type no_sched: uint64_t
 
 .. _`cvmx_pow_tag_sw_desched_nocheck.description`:
 
@@ -551,19 +591,23 @@ cvmx_pow_tag_sw_desched
 
     immediately, so completion must not be waited for.  This function does NOT update the wqe in DRAM to match arguments.
 
-    :param uint32_t tag:
+    :param tag:
         New tag value
+    :type tag: uint32_t
 
-    :param enum cvmx_pow_tag_type tag_type:
+    :param tag_type:
         New tag type
+    :type tag_type: enum cvmx_pow_tag_type
 
-    :param uint64_t group:
+    :param group:
         New group value
+    :type group: uint64_t
 
-    :param uint64_t no_sched:
+    :param no_sched:
         Control whether this work queue entry will be rescheduled.
         - 1 : don't schedule this work
         - 0 : allow this work to be scheduled.
+    :type no_sched: uint64_t
 
 .. _`cvmx_pow_tag_sw_desched.description`:
 
@@ -611,10 +655,11 @@ cvmx_pow_desched
 
 .. c:function:: void cvmx_pow_desched(uint64_t no_sched)
 
-    :param uint64_t no_sched:
+    :param no_sched:
         no schedule flag value to be set on the work queue
         entry.  If this is set the entry will not be
         rescheduled.
+    :type no_sched: uint64_t
 
 .. _`cvmx_pow_tag_compose`:
 
@@ -623,15 +668,17 @@ cvmx_pow_tag_compose
 
 .. c:function:: uint32_t cvmx_pow_tag_compose(uint64_t sw_bits, uint64_t hw_bits)
 
-    :param uint64_t sw_bits:
+    :param sw_bits:
         The upper bits (number depends on configuration) are set
         to this value.  The remainder of bits are set by the
         hw_bits parameter.
+    :type sw_bits: uint64_t
 
-    :param uint64_t hw_bits:
+    :param hw_bits:
         The lower bits (number depends on configuration) are set
         to this value.  The remainder of bits are set by the
         sw_bits parameter.
+    :type hw_bits: uint64_t
 
 .. _`cvmx_pow_tag_compose.description`:
 
@@ -647,8 +694,9 @@ cvmx_pow_tag_get_sw_bits
 
 .. c:function:: uint32_t cvmx_pow_tag_get_sw_bits(uint64_t tag)
 
-    :param uint64_t tag:
+    :param tag:
         32 bit tag value
+    :type tag: uint64_t
 
 .. _`cvmx_pow_tag_get_sw_bits.description`:
 
@@ -667,11 +715,13 @@ cvmx_pow_capture
 
     buffer. It is recommended that you pass a buffer of at least 128KB. The format of the capture may change based on SDK version and Octeon chip.
 
-    :param void \*buffer:
+    :param buffer:
         Buffer to store capture into
+    :type buffer: void \*
 
-    :param int buffer_size:
+    :param buffer_size:
         The size of the supplied buffer
+    :type buffer_size: int
 
 .. _`cvmx_pow_capture.description`:
 
@@ -687,11 +737,13 @@ cvmx_pow_display
 
 .. c:function:: void cvmx_pow_display(void *buffer, int buffer_size)
 
-    :param void \*buffer:
+    :param buffer:
         POW capture from \ :c:func:`cvmx_pow_capture`\ 
+    :type buffer: void \*
 
-    :param int buffer_size:
+    :param buffer_size:
         Size of the buffer
+    :type buffer_size: int
 
 .. _`cvmx_pow_get_num_entries`:
 
@@ -700,8 +752,9 @@ cvmx_pow_get_num_entries
 
 .. c:function:: int cvmx_pow_get_num_entries( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_pow_get_num_entries.description`:
 

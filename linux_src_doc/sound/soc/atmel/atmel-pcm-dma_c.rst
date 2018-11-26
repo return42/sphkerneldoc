@@ -10,11 +10,13 @@ atmel_pcm_dma_irq
 
     SSC interrupt handler for DMAENGINE enabled SSC
 
-    :param u32 ssc_sr:
+    :param ssc_sr:
         *undescribed*
+    :type ssc_sr: u32
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
 .. _`atmel_pcm_dma_irq.description`:
 

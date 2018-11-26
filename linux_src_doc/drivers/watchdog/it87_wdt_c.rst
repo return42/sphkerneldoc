@@ -10,11 +10,13 @@ wdt_set_timeout
 
     set a new timeout value with watchdog ioctl
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         *undescribed*
+    :type wdd: struct watchdog_device \*
 
-    :param unsigned int t:
+    :param t:
         timeout value in seconds
+    :type t: unsigned int
 
 .. _`wdt_set_timeout.description`:
 

@@ -10,11 +10,13 @@ newseg
 
     Create a new shared memory segment
 
-    :param struct ipc_namespace \*ns:
+    :param ns:
         namespace
+    :type ns: struct ipc_namespace \*
 
-    :param struct ipc_params \*params:
+    :param params:
         ptr to the structure that contains key, size and shmflg
+    :type params: struct ipc_params \*
 
 .. _`newseg.description`:
 

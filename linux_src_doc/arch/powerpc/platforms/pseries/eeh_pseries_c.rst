@@ -10,8 +10,9 @@ pseries_eeh_init
 
     EEH platform dependent initialization
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pseries_eeh_init.description`:
 
@@ -29,11 +30,13 @@ pseries_eeh_probe
 
     EEH probe on the given device
 
-    :param struct pci_dn \*pdn:
+    :param pdn:
         PCI device node
+    :type pdn: struct pci_dn \*
 
-    :param void \*data:
+    :param data:
         Unused
+    :type data: void \*
 
 .. _`pseries_eeh_probe.description`:
 
@@ -53,11 +56,13 @@ pseries_eeh_set_option
 
     Initialize EEH or MMIO/DMA reenable
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
-    :param int option:
+    :param option:
         operation to be issued
+    :type option: int
 
 .. _`pseries_eeh_set_option.description`:
 
@@ -77,8 +82,9 @@ pseries_eeh_get_pe_addr
 
     Retrieve PE address
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
 .. _`pseries_eeh_get_pe_addr.description`:
 
@@ -99,15 +105,17 @@ address.
 pseries_eeh_get_state
 =====================
 
-.. c:function:: int pseries_eeh_get_state(struct eeh_pe *pe, int *state)
+.. c:function:: int pseries_eeh_get_state(struct eeh_pe *pe, int *delay)
 
     Retrieve PE state
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
-    :param int \*state:
-        return value
+    :param delay:
+        suggested time to wait if state is unavailable
+    :type delay: int \*
 
 .. _`pseries_eeh_get_state.description`:
 
@@ -131,11 +139,13 @@ pseries_eeh_reset
 
     Reset the specified PE
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
-    :param int option:
+    :param option:
         reset option
+    :type option: int
 
 .. _`pseries_eeh_reset.description`:
 
@@ -143,29 +153,6 @@ Description
 -----------
 
 Reset the specified PE
-
-.. _`pseries_eeh_wait_state`:
-
-pseries_eeh_wait_state
-======================
-
-.. c:function:: int pseries_eeh_wait_state(struct eeh_pe *pe, int max_wait)
-
-    Wait for PE state
-
-    :param struct eeh_pe \*pe:
-        EEH PE
-
-    :param int max_wait:
-        maximal period in millisecond
-
-.. _`pseries_eeh_wait_state.description`:
-
-Description
------------
-
-Wait for the state of associated PE. It might take some time
-to retrieve the PE's state.
 
 .. _`pseries_eeh_get_log`:
 
@@ -176,17 +163,21 @@ pseries_eeh_get_log
 
     Retrieve error log
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
-    :param int severity:
+    :param severity:
         temporary or permanent error log
+    :type severity: int
 
-    :param char \*drv_log:
+    :param drv_log:
         driver log to be combined with retrieved error log
+    :type drv_log: char \*
 
-    :param unsigned long len:
+    :param len:
         length of driver log
+    :type len: unsigned long
 
 .. _`pseries_eeh_get_log.description`:
 
@@ -206,8 +197,9 @@ pseries_eeh_configure_bridge
 
     Configure PCI bridges in the indicated PE
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
 .. _`pseries_eeh_configure_bridge.description`:
 
@@ -227,17 +219,21 @@ pseries_eeh_read_config
 
     Read PCI config space
 
-    :param struct pci_dn \*pdn:
+    :param pdn:
         PCI device node
+    :type pdn: struct pci_dn \*
 
-    :param int where:
+    :param where:
         PCI address
+    :type where: int
 
-    :param int size:
+    :param size:
         size to read
+    :type size: int
 
-    :param u32 \*val:
+    :param val:
         return value
+    :type val: u32 \*
 
 .. _`pseries_eeh_read_config.description`:
 
@@ -255,17 +251,21 @@ pseries_eeh_write_config
 
     Write PCI config space
 
-    :param struct pci_dn \*pdn:
+    :param pdn:
         PCI device node
+    :type pdn: struct pci_dn \*
 
-    :param int where:
+    :param where:
         PCI address
+    :type where: int
 
-    :param int size:
+    :param size:
         size to write
+    :type size: int
 
-    :param u32 val:
+    :param val:
         value to be written
+    :type val: u32
 
 .. _`pseries_eeh_write_config.description`:
 
@@ -283,8 +283,9 @@ eeh_pseries_init
 
     Register platform dependent EEH operations
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`eeh_pseries_init.description`:
 

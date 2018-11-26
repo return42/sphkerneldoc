@@ -10,23 +10,29 @@ hfsplus_submit_bio
 
     Perform block I/O
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of volume for I/O
+    :type sb: struct super_block \*
 
-    :param sector_t sector:
+    :param sector:
         block to read or write, for blocks of HFSPLUS_SECTOR_SIZE bytes
+    :type sector: sector_t
 
-    :param void \*buf:
+    :param buf:
         buffer for I/O
+    :type buf: void \*
 
-    :param void \*\*data:
+    :param data:
         output pointer for location of requested data
+    :type data: void \*\*
 
-    :param int op:
+    :param op:
         direction of I/O
+    :type op: int
 
-    :param int op_flags:
+    :param op_flags:
         request op flags
+    :type op_flags: int
 
 .. _`hfsplus_submit_bio.description`:
 

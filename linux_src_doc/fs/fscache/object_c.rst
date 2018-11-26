@@ -10,14 +10,17 @@ fscache_object_init
 
     Initialise a cache object description
 
-    :param struct fscache_object \*object:
+    :param object:
         Object description
+    :type object: struct fscache_object \*
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         Cookie object will be attached to
+    :type cookie: struct fscache_cookie \*
 
-    :param struct fscache_cache \*cache:
+    :param cache:
         Cache in which backing object will be found
+    :type cache: struct fscache_cache \*
 
 .. _`fscache_object_init.description`:
 
@@ -38,8 +41,9 @@ fscache_object_lookup_negative
 
     Note negative cookie lookup
 
-    :param struct fscache_object \*object:
+    :param object:
         Object pointing to cookie to mark
+    :type object: struct fscache_object \*
 
 .. _`fscache_object_lookup_negative.description`:
 
@@ -58,8 +62,9 @@ fscache_obtained_object
 
     Note successful object lookup or creation
 
-    :param struct fscache_object \*object:
+    :param object:
         Object pointing to cookie to mark
+    :type object: struct fscache_object \*
 
 .. _`fscache_obtained_object.description`:
 
@@ -81,8 +86,9 @@ fscache_object_destroy
 
     Note that a cache object is about to be destroyed
 
-    :param struct fscache_object \*object:
+    :param object:
         The object to be destroyed
+    :type object: struct fscache_object \*
 
 .. _`fscache_object_destroy.description`:
 
@@ -100,8 +106,9 @@ fscache_object_sleep_till_congested
 
     Sleep until object wq is congested
 
-    :param signed long \*timeoutp:
+    :param timeoutp:
         Scheduler sleep timeout
+    :type timeoutp: signed long \*
 
 .. _`fscache_object_sleep_till_congested.description`:
 
@@ -125,17 +132,21 @@ fscache_check_aux
 
     Ask the netfs whether an object on disk is still valid
 
-    :param struct fscache_object \*object:
+    :param object:
         The object to ask about
+    :type object: struct fscache_object \*
 
-    :param const void \*data:
+    :param data:
         The auxiliary data for the object
+    :type data: const void \*
 
-    :param uint16_t datalen:
+    :param datalen:
         The size of the auxiliary data
+    :type datalen: uint16_t
 
-    :param loff_t object_size:
+    :param object_size:
         *undescribed*
+    :type object_size: loff_t
 
 .. _`fscache_check_aux.description`:
 
@@ -156,8 +167,9 @@ fscache_object_retrying_stale
 
     Note retrying stale object
 
-    :param struct fscache_object \*object:
+    :param object:
         The object that will be retried
+    :type object: struct fscache_object \*
 
 .. _`fscache_object_retrying_stale.description`:
 
@@ -176,11 +188,13 @@ fscache_object_mark_killed
 
     Note that an object was killed
 
-    :param struct fscache_object \*object:
+    :param object:
         The object that was culled
+    :type object: struct fscache_object \*
 
-    :param enum fscache_why_object_killed why:
+    :param why:
         The reason the object was killed.
+    :type why: enum fscache_why_object_killed
 
 .. _`fscache_object_mark_killed.description`:
 

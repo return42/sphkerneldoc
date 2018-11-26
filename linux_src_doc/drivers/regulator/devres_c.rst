@@ -10,11 +10,13 @@ devm_regulator_get
 
     Resource managed \ :c:func:`regulator_get`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device for regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         Supply name or regulator ID.
+    :type id: const char \*
 
 .. _`devm_regulator_get.description`:
 
@@ -34,11 +36,13 @@ devm_regulator_get_exclusive
 
     Resource managed \ :c:func:`regulator_get_exclusive`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device for regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         Supply name or regulator ID.
+    :type id: const char \*
 
 .. _`devm_regulator_get_exclusive.description`:
 
@@ -58,11 +62,13 @@ devm_regulator_get_optional
 
     Resource managed \ :c:func:`regulator_get_optional`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device for regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         Supply name or regulator ID.
+    :type id: const char \*
 
 .. _`devm_regulator_get_optional.description`:
 
@@ -82,8 +88,9 @@ devm_regulator_put
 
     Resource managed \ :c:func:`regulator_put`\ 
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator to free
+    :type regulator: struct regulator \*
 
 .. _`devm_regulator_put.description`:
 
@@ -103,14 +110,17 @@ devm_regulator_bulk_get
 
     managed get multiple regulator consumers
 
-    :param struct device \*dev:
+    :param dev:
         Device to supply
+    :type dev: struct device \*
 
-    :param int num_consumers:
+    :param num_consumers:
         Number of consumers to register
+    :type num_consumers: int
 
-    :param struct regulator_bulk_data \*consumers:
+    :param consumers:
         Configuration of consumers; clients are stored here.
+    :type consumers: struct regulator_bulk_data \*
 
 .. _`devm_regulator_bulk_get.description`:
 
@@ -134,14 +144,17 @@ devm_regulator_register
 
     Resource managed \ :c:func:`regulator_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param const struct regulator_desc \*regulator_desc:
+    :param regulator_desc:
         regulator to register
+    :type regulator_desc: const struct regulator_desc \*
 
-    :param const struct regulator_config \*config:
+    :param config:
         runtime configuration for regulator
+    :type config: const struct regulator_config \*
 
 .. _`devm_regulator_register.description`:
 
@@ -162,11 +175,13 @@ devm_regulator_unregister
 
     Resource managed \ :c:func:`regulator_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: struct regulator_dev \*
 
 .. _`devm_regulator_unregister.description`:
 
@@ -186,18 +201,22 @@ devm_regulator_register_supply_alias
 
     Resource managed \ :c:func:`regulator_register_supply_alias`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device that will be given as the regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         Supply name or regulator ID
+    :type id: const char \*
 
-    :param struct device \*alias_dev:
+    :param alias_dev:
         device that should be used to lookup the supply
+    :type alias_dev: struct device \*
 
-    :param const char \*alias_id:
+    :param alias_id:
         Supply name or regulator ID that should be used to lookup the
         supply
+    :type alias_id: const char \*
 
 .. _`devm_regulator_register_supply_alias.description`:
 
@@ -216,11 +235,13 @@ devm_regulator_unregister_supply_alias
 
     Resource managed \ :c:func:`regulator_unregister_supply_alias`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device that will be given as the regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         Supply name or regulator ID
+    :type id: const char \*
 
 .. _`devm_regulator_unregister_supply_alias.description`:
 
@@ -241,21 +262,26 @@ devm_regulator_bulk_register_supply_alias
 
     Managed register multiple aliases
 
-    :param struct device \*dev:
+    :param dev:
         device that will be given as the regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*const \*id:
+    :param id:
         List of supply names or regulator IDs
+    :type id: const char \*const \*
 
-    :param struct device \*alias_dev:
+    :param alias_dev:
         device that should be used to lookup the supply
+    :type alias_dev: struct device \*
 
-    :param const char \*const \*alias_id:
+    :param alias_id:
         List of supply names or regulator IDs that should be used to
         lookup the supply
+    :type alias_id: const char \*const \*
 
-    :param int num_id:
+    :param num_id:
         Number of aliases to register
+    :type num_id: int
 
 .. _`devm_regulator_bulk_register_supply_alias.description`:
 
@@ -279,14 +305,17 @@ devm_regulator_bulk_unregister_supply_alias
 
     Managed unregister multiple aliases
 
-    :param struct device \*dev:
+    :param dev:
         device that will be given as the regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*const \*id:
+    :param id:
         List of supply names or regulator IDs
+    :type id: const char \*const \*
 
-    :param int num_id:
+    :param num_id:
         Number of aliases to unregister
+    :type num_id: int
 
 .. _`devm_regulator_bulk_unregister_supply_alias.description`:
 
@@ -307,11 +336,13 @@ devm_regulator_register_notifier
 
     Resource managed regulator_register_notifier
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
 .. _`devm_regulator_register_notifier.description`:
 
@@ -330,11 +361,13 @@ devm_regulator_unregister_notifier
 
     Resource managed \ :c:func:`regulator_unregister_notifier`\ 
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
 .. _`devm_regulator_unregister_notifier.description`:
 

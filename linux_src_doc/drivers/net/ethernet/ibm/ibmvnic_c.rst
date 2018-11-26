@@ -10,17 +10,21 @@ build_hdr_data
 
     creates L2/L3/L4 header data buffer \ ``hdr_field``\  - bitfield determining needed headers \ ``skb``\  - socket buffer \ ``hdr_len``\  - array of header lengths \ ``tot_len``\  - total length of data
 
-    :param u8 hdr_field:
+    :param hdr_field:
         *undescribed*
+    :type hdr_field: u8
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param int \*hdr_len:
+    :param hdr_len:
         *undescribed*
+    :type hdr_len: int \*
 
-    :param u8 \*hdr_data:
+    :param hdr_data:
         *undescribed*
+    :type hdr_data: u8 \*
 
 .. _`build_hdr_data.description`:
 
@@ -40,20 +44,25 @@ create_hdr_descs
 
     create header and header extension descriptors \ ``hdr_field``\  - bitfield determining needed headers \ ``data``\  - buffer containing header data \ ``len``\  - length of data buffer \ ``hdr_len``\  - array of individual header lengths \ ``scrq_arr``\  - descriptor array
 
-    :param u8 hdr_field:
+    :param hdr_field:
         *undescribed*
+    :type hdr_field: u8
 
-    :param u8 \*hdr_data:
+    :param hdr_data:
         *undescribed*
+    :type hdr_data: u8 \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param int \*hdr_len:
+    :param hdr_len:
         *undescribed*
+    :type hdr_len: int \*
 
-    :param union sub_crq \*scrq_arr:
+    :param scrq_arr:
         *undescribed*
+    :type scrq_arr: union sub_crq \*
 
 .. _`create_hdr_descs.description`:
 
@@ -72,14 +81,17 @@ build_hdr_descs_arr
 
     build a header descriptor array \ ``skb``\  - socket buffer \ ``num_entries``\  - number of descriptors to be sent \ ``subcrq``\  - first TX descriptor \ ``hdr_field``\  - bit field determining which headers will be sent
 
-    :param struct ibmvnic_tx_buff \*txbuff:
+    :param txbuff:
         *undescribed*
+    :type txbuff: struct ibmvnic_tx_buff \*
 
-    :param int \*num_entries:
+    :param num_entries:
         *undescribed*
+    :type num_entries: int \*
 
-    :param u8 hdr_field:
+    :param hdr_field:
         *undescribed*
+    :type hdr_field: u8
 
 .. _`build_hdr_descs_arr.description`:
 
@@ -98,14 +110,17 @@ do_reset
 
     non-zero if we hit a fatal error and must halt.
 
-    :param struct ibmvnic_adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct ibmvnic_adapter \*
 
-    :param struct ibmvnic_rwi \*rwi:
+    :param rwi:
         *undescribed*
+    :type rwi: struct ibmvnic_rwi \*
 
-    :param u32 reset_state:
+    :param reset_state:
         *undescribed*
+    :type reset_state: u32
 
 .. This file was automatic generated / don't edit.
 

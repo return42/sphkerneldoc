@@ -10,8 +10,9 @@ aac_src_disable_interrupt
 
     Disable interrupts
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
 .. _`aac_src_enable_interrupt_message`:
 
@@ -22,8 +23,9 @@ aac_src_enable_interrupt_message
 
     Enable interrupts
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
 .. _`src_sync_cmd`:
 
@@ -34,44 +36,57 @@ src_sync_cmd
 
     send a command and wait
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
-    :param u32 command:
+    :param command:
         Command to execute
+    :type command: u32
 
-    :param u32 p1:
+    :param p1:
         first parameter
+    :type p1: u32
 
-    :param u32 p2:
+    :param p2:
         *undescribed*
+    :type p2: u32
 
-    :param u32 p3:
+    :param p3:
         *undescribed*
+    :type p3: u32
 
-    :param u32 p4:
+    :param p4:
         *undescribed*
+    :type p4: u32
 
-    :param u32 p5:
+    :param p5:
         *undescribed*
+    :type p5: u32
 
-    :param u32 p6:
+    :param p6:
         *undescribed*
+    :type p6: u32
 
-    :param u32 \*status:
+    :param status:
         *undescribed*
+    :type status: u32 \*
 
-    :param u32 \*r1:
+    :param r1:
         *undescribed*
+    :type r1: u32 \*
 
-    :param u32 \*r2:
+    :param r2:
         *undescribed*
+    :type r2: u32 \*
 
-    :param u32 \*r3:
+    :param r3:
         *undescribed*
+    :type r3: u32 \*
 
-    :param u32 \*r4:
+    :param r4:
         *undescribed*
+    :type r4: u32 \*
 
 .. _`src_sync_cmd.description`:
 
@@ -90,8 +105,9 @@ aac_src_interrupt_adapter
 
     interrupt adapter
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
 .. _`aac_src_interrupt_adapter.description`:
 
@@ -109,11 +125,13 @@ aac_src_notify_adapter
 
     send an event to the adapter
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
-    :param u32 event:
+    :param event:
         Event to send
+    :type event: u32
 
 .. _`aac_src_notify_adapter.description`:
 
@@ -132,8 +150,9 @@ aac_src_start_adapter
 
     activate adapter
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
 .. _`aac_src_start_adapter.description`:
 
@@ -149,8 +168,9 @@ aac_src_check_health
 
 .. c:function:: int aac_src_check_health(struct aac_dev *dev)
 
-    :param struct aac_dev \*dev:
+    :param dev:
         device to check if healthy
+    :type dev: struct aac_dev \*
 
 .. _`aac_src_check_health.description`:
 
@@ -167,8 +187,9 @@ aac_src_deliver_message
 
 .. c:function:: int aac_src_deliver_message(struct fib *fib)
 
-    :param struct fib \*fib:
+    :param fib:
         fib to issue
+    :type fib: struct fib \*
 
 .. _`aac_src_deliver_message.description`:
 
@@ -184,11 +205,13 @@ aac_src_ioremap
 
 .. c:function:: int aac_src_ioremap(struct aac_dev *dev, u32 size)
 
-    :param struct aac_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct aac_dev \*
 
-    :param u32 size:
+    :param size:
         mapping resize request
+    :type size: u32
 
 .. _`aac_srcv_ioremap`:
 
@@ -197,11 +220,13 @@ aac_srcv_ioremap
 
 .. c:function:: int aac_srcv_ioremap(struct aac_dev *dev, u32 size)
 
-    :param struct aac_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct aac_dev \*
 
-    :param u32 size:
+    :param size:
         mapping resize request
+    :type size: u32
 
 .. _`aac_src_select_comm`:
 
@@ -212,11 +237,13 @@ aac_src_select_comm
 
     Select communications method
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter
+    :type dev: struct aac_dev \*
 
-    :param int comm:
+    :param comm:
         communications method
+    :type comm: int
 
 .. _`aac_src_init`:
 
@@ -227,8 +254,9 @@ aac_src_init
 
     initialize an Cardinal Frey Bar card
 
-    :param struct aac_dev \*dev:
+    :param dev:
         device to configure
+    :type dev: struct aac_dev \*
 
 .. _`aac_src_soft_reset`:
 
@@ -239,8 +267,9 @@ aac_src_soft_reset
 
     perform soft reset to speed up access
 
-    :param struct aac_dev \*dev:
+    :param dev:
         device to configure
+    :type dev: struct aac_dev \*
 
 .. _`aac_src_soft_reset.assumptions`:
 
@@ -260,8 +289,9 @@ aac_srcv_init
 
     initialize an SRCv card
 
-    :param struct aac_dev \*dev:
+    :param dev:
         device to configure
+    :type dev: struct aac_dev \*
 
 .. This file was automatic generated / don't edit.
 

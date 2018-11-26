@@ -10,11 +10,13 @@ get_free_pending_entry
 
     get free entry from pending queue
 
-    :param struct pending_queue \*q:
+    :param q:
         *undescribed*
+    :type q: struct pending_queue \*
 
-    :param int qlen:
+    :param qlen:
         *undescribed*
+    :type qlen: int
 
 .. This file was automatic generated / don't edit.
 

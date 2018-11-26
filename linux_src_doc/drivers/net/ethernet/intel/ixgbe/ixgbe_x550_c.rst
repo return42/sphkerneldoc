@@ -10,14 +10,17 @@ ixgbe_read_cs4227
 
     Read CS4227 register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 reg:
+    :param reg:
         register number to write
+    :type reg: u16
 
-    :param u16 \*value:
+    :param value:
         pointer to receive value read
+    :type value: u16 \*
 
 .. _`ixgbe_read_cs4227.description`:
 
@@ -35,14 +38,17 @@ ixgbe_write_cs4227
 
     Write CS4227 register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 reg:
+    :param reg:
         register number to write
+    :type reg: u16
 
-    :param u16 value:
+    :param value:
         value to write to register
+    :type value: u16
 
 .. _`ixgbe_write_cs4227.description`:
 
@@ -60,14 +66,17 @@ ixgbe_read_pe
 
     Read register from port expander
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 reg:
+    :param reg:
         register number to read
+    :type reg: u8
 
-    :param u8 \*value:
+    :param value:
         pointer to receive read value
+    :type value: u8 \*
 
 .. _`ixgbe_read_pe.description`:
 
@@ -85,14 +94,17 @@ ixgbe_write_pe
 
     Write register to port expander
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 reg:
+    :param reg:
         register number to write
+    :type reg: u8
 
-    :param u8 value:
+    :param value:
         value to write
+    :type value: u8
 
 .. _`ixgbe_write_pe.description`:
 
@@ -110,8 +122,9 @@ ixgbe_reset_cs4227
 
     Reset CS4227 using port expander
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_reset_cs4227.description`:
 
@@ -130,8 +143,9 @@ ixgbe_check_cs4227
 
     Check CS4227 and reset as needed
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_read_i2c_combined_generic`:
 
@@ -142,17 +156,21 @@ ixgbe_read_i2c_combined_generic
 
     Perform I2C read combined operation
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 addr:
+    :param addr:
         I2C bus address to read from
+    :type addr: u8
 
-    :param u16 reg:
+    :param reg:
         I2C device register to read from
+    :type reg: u16
 
-    :param u16 \*val:
+    :param val:
         pointer to location to receive read value
+    :type val: u16 \*
 
 .. _`ixgbe_read_i2c_combined_generic.description`:
 
@@ -170,17 +188,21 @@ ixgbe_read_i2c_combined_generic_unlocked
 
     Do I2C read combined operation
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 addr:
+    :param addr:
         I2C bus address to read from
+    :type addr: u8
 
-    :param u16 reg:
+    :param reg:
         I2C device register to read from
+    :type reg: u16
 
-    :param u16 \*val:
+    :param val:
         pointer to location to receive read value
+    :type val: u16 \*
 
 .. _`ixgbe_read_i2c_combined_generic_unlocked.description`:
 
@@ -198,17 +220,21 @@ ixgbe_write_i2c_combined_generic
 
     Perform I2C write combined operation
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 addr:
+    :param addr:
         I2C bus address to write to
+    :type addr: u8
 
-    :param u16 reg:
+    :param reg:
         I2C device register to write to
+    :type reg: u16
 
-    :param u16 val:
+    :param val:
         value to write
+    :type val: u16
 
 .. _`ixgbe_write_i2c_combined_generic.description`:
 
@@ -226,17 +252,21 @@ ixgbe_write_i2c_combined_generic_unlocked
 
     Do I2C write combined operation
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 addr:
+    :param addr:
         I2C bus address to write to
+    :type addr: u8
 
-    :param u16 reg:
+    :param reg:
         I2C device register to write to
+    :type reg: u16
 
-    :param u16 val:
+    :param val:
         value to write
+    :type val: u16
 
 .. _`ixgbe_write_i2c_combined_generic_unlocked.description`:
 
@@ -254,14 +284,17 @@ ixgbe_fw_phy_activity
 
     Perform an activity on a PHY
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 activity:
+    :param activity:
         activity to perform
+    :type activity: u16
 
-    :param u32 data:
+    :param data:
         Pointer to 4 32-bit words of data
+    :type data: u32
 
 .. _`ixgbe_get_phy_id_fw`:
 
@@ -272,8 +305,9 @@ ixgbe_get_phy_id_fw
 
     Get the phy ID via firmware command
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_phy_id_fw.description`:
 
@@ -291,8 +325,9 @@ ixgbe_identify_phy_fw
 
     Get PHY type based on firmware command
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_identify_phy_fw.description`:
 
@@ -310,8 +345,9 @@ ixgbe_shutdown_fw_phy
 
     Shutdown a firmware-controlled PHY
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_shutdown_fw_phy.description`:
 
@@ -329,8 +365,9 @@ ixgbe_setup_fw_link
 
     Setup firmware-controlled PHYs
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_autoneg_fw`:
 
@@ -341,8 +378,9 @@ ixgbe_fc_autoneg_fw
 
     Set up flow control for FW-controlled PHYs
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_autoneg_fw.description`:
 
@@ -360,11 +398,13 @@ ixgbe_iosf_wait
 
     Wait for IOSF command completion
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*ctrl:
+    :param ctrl:
         pointer to location to receive final IOSF control value
+    :type ctrl: u32 \*
 
 .. _`ixgbe_iosf_wait.return`:
 
@@ -389,8 +429,9 @@ ixgbe_get_phy_token
 
     Get the token for shared PHY access
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         Pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_put_phy_token`:
 
@@ -401,8 +442,9 @@ ixgbe_put_phy_token
 
     Put the token for shared PHY access
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         Pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_write_iosf_sb_reg_x550a`:
 
@@ -413,17 +455,21 @@ ixgbe_write_iosf_sb_reg_x550a
 
     Write to IOSF PHY register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         32 bit PHY register to write
+    :type reg_addr: u32
 
-    :param __always_unused u32 device_type:
+    :param device_type:
         3 bit device type
+    :type device_type: __always_unused u32
 
-    :param u32 data:
+    :param data:
         Data to write to the register
+    :type data: u32
 
 .. _`ixgbe_read_iosf_sb_reg_x550a`:
 
@@ -434,17 +480,21 @@ ixgbe_read_iosf_sb_reg_x550a
 
     Read from IOSF PHY register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         32 bit PHY register to write
+    :type reg_addr: u32
 
-    :param __always_unused u32 device_type:
+    :param device_type:
         3 bit device type
+    :type device_type: __always_unused u32
 
-    :param u32 \*data:
+    :param data:
         Pointer to read data from the register
+    :type data: u32 \*
 
 .. _`ixgbe_get_bus_info_x550em`:
 
@@ -455,8 +505,9 @@ ixgbe_get_bus_info_X550em
 
     Set PCI bus info
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_bus_info_x550em.description`:
 
@@ -465,6 +516,26 @@ Description
 
 Sets bus link width and speed to unknown because X550em is
 not a PCI device.
+
+.. _`ixgbe_fw_recovery_mode_x550`:
+
+ixgbe_fw_recovery_mode_X550
+===========================
+
+.. c:function:: bool ixgbe_fw_recovery_mode_X550(struct ixgbe_hw *hw)
+
+    Check FW NVM recovery mode
+
+    :param hw:
+        pointer t hardware structure
+    :type hw: struct ixgbe_hw \*
+
+.. _`ixgbe_fw_recovery_mode_x550.description`:
+
+Description
+-----------
+
+Returns true if in FW NVM recovery mode.
 
 .. _`ixgbe_setup_ixfi_x550em_x`:
 
@@ -475,8 +546,9 @@ ixgbe_setup_ixfi_x550em_x
 
     MAC specific iXFI configuration
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_setup_ixfi_x550em_x.description`:
 
@@ -494,8 +566,9 @@ ixgbe_restart_an_internal_phy_x550em
 
     restart autonegotiation for the internal PHY
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_supported_sfp_modules_x550em`:
 
@@ -506,11 +579,13 @@ ixgbe_supported_sfp_modules_X550em
 
     Check if SFP module type is supported
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param bool \*linear:
+    :param linear:
         true if SFP module is linear
+    :type linear: bool \*
 
 .. _`ixgbe_setup_mac_link_sfp_x550em`:
 
@@ -521,14 +596,17 @@ ixgbe_setup_mac_link_sfp_x550em
 
     Configure the KR PHY for SFP.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         the link speed to force
+    :type speed: ixgbe_link_speed
 
-    :param __always_unused bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         unused
+    :type autoneg_wait_to_complete: __always_unused bool
 
 .. _`ixgbe_setup_mac_link_sfp_x550em.description`:
 
@@ -546,11 +624,13 @@ ixgbe_setup_sfi_x550a
 
     Configure the internal PHY for native SFI mode
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed \*speed:
+    :param speed:
         the link speed to force
+    :type speed: ixgbe_link_speed \*
 
 .. _`ixgbe_setup_sfi_x550a.description`:
 
@@ -569,14 +649,17 @@ ixgbe_setup_mac_link_sfp_n
 
     Setup internal PHY for native SFP
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         link speed
+    :type speed: ixgbe_link_speed
 
-    :param __always_unused bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         unused
+    :type autoneg_wait_to_complete: __always_unused bool
 
 .. _`ixgbe_setup_mac_link_sfp_n.description`:
 
@@ -594,14 +677,17 @@ ixgbe_setup_mac_link_sfp_x550a
 
     Setup internal PHY for SFP
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         link speed
+    :type speed: ixgbe_link_speed
 
-    :param __always_unused bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         unused
+    :type autoneg_wait_to_complete: __always_unused bool
 
 .. _`ixgbe_setup_mac_link_sfp_x550a.description`:
 
@@ -619,14 +705,17 @@ ixgbe_setup_mac_link_t_X550em
 
     Sets the auto advertised link speed
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         new link speed
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg_wait:
+    :param autoneg_wait:
         true when waiting for completion is needed
+    :type autoneg_wait: bool
 
 .. _`ixgbe_setup_mac_link_t_x550em.description`:
 
@@ -647,14 +736,17 @@ ixgbe_setup_sgmii
 
     Set up link for sgmii
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param __always_unused ixgbe_link_speed speed:
+    :param speed:
         unused
+    :type speed: __always_unused ixgbe_link_speed
 
-    :param __always_unused bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         unused
+    :type autoneg_wait_to_complete: __always_unused bool
 
 .. _`ixgbe_setup_sgmii_fw`:
 
@@ -665,14 +757,17 @@ ixgbe_setup_sgmii_fw
 
     Set up link for sgmii with firmware-controlled PHYs
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         the link speed to force
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg_wait:
+    :param autoneg_wait:
         true when waiting for completion is needed
+    :type autoneg_wait: bool
 
 .. _`ixgbe_fc_autoneg_sgmii_x550em_a`:
 
@@ -683,8 +778,9 @@ ixgbe_fc_autoneg_sgmii_x550em_a
 
     Enable flow control IEEE clause 37
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_autoneg_sgmii_x550em_a.description`:
 
@@ -702,12 +798,14 @@ ixgbe_get_lasi_ext_t_x550em
 
     Determime external Base T PHY interrupt cause
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param bool \*lsc:
+    :param lsc:
         pointer to boolean flag which indicates whether external Base T
         PHY interrupt is lsc
+    :type lsc: bool \*
 
 .. _`ixgbe_get_lasi_ext_t_x550em.description`:
 
@@ -729,8 +827,9 @@ ixgbe_enable_lasi_ext_t_x550em
 
     Enable external Base T PHY interrupts
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_enable_lasi_ext_t_x550em.description`:
 
@@ -751,8 +850,9 @@ ixgbe_handle_lasi_ext_t_x550em
 
     Handle external Base T PHY interrupt
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_handle_lasi_ext_t_x550em.description`:
 
@@ -775,11 +875,13 @@ ixgbe_setup_kr_speed_x550em
 
     Configure the KR PHY for link speed.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         link speed
+    :type speed: ixgbe_link_speed
 
 .. _`ixgbe_setup_kr_speed_x550em.description`:
 
@@ -797,8 +899,9 @@ ixgbe_setup_kr_x550em
 
     Configure the KR PHY
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_led_on_t_x550em`:
 
@@ -809,11 +912,13 @@ ixgbe_led_on_t_x550em
 
     Turns on the software controllable LEDs.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 led_idx:
+    :param led_idx:
         led number to turn on
+    :type led_idx: u32
 
 .. _`ixgbe_led_off_t_x550em`:
 
@@ -824,11 +929,13 @@ ixgbe_led_off_t_x550em
 
     Turns off the software controllable LEDs.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 led_idx:
+    :param led_idx:
         led number to turn off
+    :type led_idx: u32
 
 .. _`ixgbe_set_fw_drv_ver_x550`:
 
@@ -839,26 +946,33 @@ ixgbe_set_fw_drv_ver_x550
 
     Sends driver version to firmware
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 maj:
+    :param maj:
         driver version major number
+    :type maj: u8
 
-    :param u8 min:
+    :param min:
         driver version minor number
+    :type min: u8
 
-    :param u8 build:
+    :param build:
         driver version build number
+    :type build: u8
 
-    :param u8 sub:
+    :param sub:
         driver version sub build number
+    :type sub: u8
 
-    :param u16 len:
+    :param len:
         length of driver_ver string
+    :type len: u16
 
-    :param const char \*driver_ver:
+    :param driver_ver:
         driver string
+    :type driver_ver: const char \*
 
 .. _`ixgbe_set_fw_drv_ver_x550.description`:
 
@@ -879,8 +993,9 @@ ixgbe_setup_fc_x550em
 
     Set up flow control
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_autoneg_backplane_x550em_a`:
 
@@ -891,8 +1006,9 @@ ixgbe_fc_autoneg_backplane_x550em_a
 
     Enable flow control IEEE clause 37
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_autoneg_fiber_x550em_a`:
 
@@ -903,8 +1019,9 @@ ixgbe_fc_autoneg_fiber_x550em_a
 
     passthrough FC settings
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_reset_phy_fw`:
 
@@ -915,8 +1032,9 @@ ixgbe_reset_phy_fw
 
     Reset firmware-controlled PHYs
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_check_overtemp_fw`:
 
@@ -927,8 +1045,9 @@ ixgbe_check_overtemp_fw
 
     Check firmware-controlled PHYs for overtemp
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_read_mng_if_sel_x550em`:
 
@@ -939,8 +1058,9 @@ ixgbe_read_mng_if_sel_x550em
 
     Read NW_MNG_IF_SEL register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_read_mng_if_sel_x550em.description`:
 
@@ -958,8 +1078,9 @@ ixgbe_set_mdio_speed
 
     Set MDIO clock speed
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_setup_fc_backplane_x550em_a`:
 
@@ -970,8 +1091,9 @@ ixgbe_setup_fc_backplane_x550em_a
 
     Set up flow control
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_setup_fc_backplane_x550em_a.description`:
 
@@ -989,11 +1111,13 @@ ixgbe_set_mux
 
     Set mux for port 1 access with CS4227
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 state:
+    :param state:
         set mux if 1, clear if 0
+    :type state: u8
 
 .. _`ixgbe_acquire_swfw_sync_x550em`:
 
@@ -1004,11 +1128,13 @@ ixgbe_acquire_swfw_sync_X550em
 
     Acquire SWFW semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 mask:
+    :param mask:
         Mask to specify which semaphore to acquire
+    :type mask: u32
 
 .. _`ixgbe_acquire_swfw_sync_x550em.description`:
 
@@ -1026,11 +1152,13 @@ ixgbe_release_swfw_sync_X550em
 
     Release SWFW semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 mask:
+    :param mask:
         Mask to specify which semaphore to release
+    :type mask: u32
 
 .. _`ixgbe_release_swfw_sync_x550em.description`:
 
@@ -1048,11 +1176,13 @@ ixgbe_acquire_swfw_sync_x550em_a
 
     Acquire SWFW semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 mask:
+    :param mask:
         Mask to specify which semaphore to acquire
+    :type mask: u32
 
 .. _`ixgbe_acquire_swfw_sync_x550em_a.description`:
 
@@ -1070,11 +1200,13 @@ ixgbe_release_swfw_sync_x550em_a
 
     Release SWFW semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 mask:
+    :param mask:
         Mask to specify which semaphore to release
+    :type mask: u32
 
 .. _`ixgbe_release_swfw_sync_x550em_a.description`:
 
@@ -1092,17 +1224,21 @@ ixgbe_read_phy_reg_x550a
 
     Reads specified PHY register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         32 bit address of PHY register to read
+    :type reg_addr: u32
 
-    :param u32 device_type:
+    :param device_type:
         5 bit device type
+    :type device_type: u32
 
-    :param u16 \*phy_data:
+    :param phy_data:
         Pointer to read data from PHY register
+    :type phy_data: u16 \*
 
 .. _`ixgbe_read_phy_reg_x550a.description`:
 
@@ -1122,17 +1258,21 @@ ixgbe_write_phy_reg_x550a
 
     Writes specified PHY register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         32 bit PHY register to write
+    :type reg_addr: u32
 
-    :param u32 device_type:
+    :param device_type:
         5 bit device type
+    :type device_type: u32
 
-    :param u16 phy_data:
+    :param phy_data:
         Data to write to the PHY register
+    :type phy_data: u16
 
 .. _`ixgbe_write_phy_reg_x550a.description`:
 

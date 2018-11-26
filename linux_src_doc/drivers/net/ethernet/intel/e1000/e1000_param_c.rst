@@ -10,8 +10,9 @@ e1000_check_options
 
     Range Checking for Command Line Parameters
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_check_options.description`:
 
@@ -32,8 +33,9 @@ e1000_check_fiber_options
 
     Range Checking for Link Options, Fiber Version
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_check_fiber_options.description`:
 
@@ -51,8 +53,9 @@ e1000_check_copper_options
 
     Range Checking for Link Options, Copper Version
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000_check_copper_options.description`:
 

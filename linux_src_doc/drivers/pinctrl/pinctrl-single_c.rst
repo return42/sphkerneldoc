@@ -439,14 +439,17 @@ pcs_add_pin
 
     add a pin to the static per controller pin array
 
-    :param struct pcs_device \*pcs:
+    :param pcs:
         pcs driver instance
+    :type pcs: struct pcs_device \*
 
-    :param unsigned offset:
+    :param offset:
         register offset from base
+    :type offset: unsigned
 
-    :param unsigned pin_pos:
+    :param pin_pos:
         *undescribed*
+    :type pin_pos: unsigned
 
 .. _`pcs_allocate_pin_table`:
 
@@ -457,8 +460,9 @@ pcs_allocate_pin_table
 
     adds all the pins for the pinctrl driver
 
-    :param struct pcs_device \*pcs:
+    :param pcs:
         pcs driver instance
+    :type pcs: struct pcs_device \*
 
 .. _`pcs_allocate_pin_table.description`:
 
@@ -475,30 +479,44 @@ up multiple driver instances.
 pcs_add_function
 ================
 
-.. c:function:: struct pcs_function *pcs_add_function(struct pcs_device *pcs, struct device_node *np, const char *name, struct pcs_func_vals *vals, unsigned nvals, const char **pgnames, unsigned npgnames)
+.. c:function:: int pcs_add_function(struct pcs_device *pcs, struct pcs_function **fcn, const char *name, struct pcs_func_vals *vals, unsigned int nvals, const char **pgnames, unsigned int npgnames)
 
     adds a new function to the function list
 
-    :param struct pcs_device \*pcs:
+    :param pcs:
         pcs driver instance
+    :type pcs: struct pcs_device \*
 
-    :param struct device_node \*np:
-        device node of the mux entry
+    :param fcn:
+        new function allocated
+    :type fcn: struct pcs_function \*\*
 
-    :param const char \*name:
+    :param name:
         name of the function
+    :type name: const char \*
 
-    :param struct pcs_func_vals \*vals:
+    :param vals:
         array of mux register value pairs used by the function
+    :type vals: struct pcs_func_vals \*
 
-    :param unsigned nvals:
+    :param nvals:
         number of mux register value pairs
+    :type nvals: unsigned int
 
-    :param const char \*\*pgnames:
+    :param pgnames:
         array of pingroup names for the function
+    :type pgnames: const char \*\*
 
-    :param unsigned npgnames:
+    :param npgnames:
         number of pingroup names
+    :type npgnames: unsigned int
+
+.. _`pcs_add_function.description`:
+
+Description
+-----------
+
+Caller must take care of locking.
 
 .. _`pcs_get_pin_by_offset`:
 
@@ -509,11 +527,13 @@ pcs_get_pin_by_offset
 
     get a pin index based on the register offset
 
-    :param struct pcs_device \*pcs:
+    :param pcs:
         pcs driver instance
+    :type pcs: struct pcs_device \*
 
-    :param unsigned offset:
+    :param offset:
         register offset from the base
+    :type offset: unsigned
 
 .. _`pcs_get_pin_by_offset.description`:
 
@@ -531,20 +551,25 @@ pcs_parse_one_pinctrl_entry
 
     parses a device tree mux entry
 
-    :param struct pcs_device \*pcs:
+    :param pcs:
         pinctrl driver instance
+    :type pcs: struct pcs_device \*
 
-    :param struct device_node \*np:
+    :param np:
         device node of the mux entry
+    :type np: struct device_node \*
 
-    :param struct pinctrl_map \*\*map:
+    :param map:
         map entry
+    :type map: struct pinctrl_map \*\*
 
-    :param unsigned \*num_maps:
+    :param num_maps:
         number of map
+    :type num_maps: unsigned \*
 
-    :param const char \*\*pgnames:
+    :param pgnames:
         pingroup names
+    :type pgnames: const char \*\*
 
 .. _`pcs_parse_one_pinctrl_entry.description`:
 
@@ -571,17 +596,21 @@ pcs_dt_node_to_map
 
     allocates and parses pinctrl maps
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pinctrl instance
+    :type pctldev: struct pinctrl_dev \*
 
-    :param struct device_node \*np_config:
+    :param np_config:
         device tree pinmux entry
+    :type np_config: struct device_node \*
 
-    :param struct pinctrl_map \*\*map:
+    :param map:
         array of map entries
+    :type map: struct pinctrl_map \*\*
 
-    :param unsigned \*num_maps:
+    :param num_maps:
         number of maps
+    :type num_maps: unsigned \*
 
 .. _`pcs_irq_free`:
 
@@ -592,8 +621,9 @@ pcs_irq_free
 
     free interrupt
 
-    :param struct pcs_device \*pcs:
+    :param pcs:
         pcs driver instance
+    :type pcs: struct pcs_device \*
 
 .. _`pcs_free_resources`:
 
@@ -604,8 +634,9 @@ pcs_free_resources
 
     free memory used by this driver
 
-    :param struct pcs_device \*pcs:
+    :param pcs:
         pcs driver instance
+    :type pcs: struct pcs_device \*
 
 .. _`pcs_irq_set`:
 
@@ -616,14 +647,17 @@ pcs_irq_set
 
     enables or disables an interrupt
 
-    :param struct pcs_soc_data \*pcs_soc:
+    :param pcs_soc:
         *undescribed*
+    :type pcs_soc: struct pcs_soc_data \*
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param const bool enable:
+    :param enable:
         *undescribed*
+    :type enable: const bool
 
 .. _`pcs_irq_set.description`:
 
@@ -642,8 +676,9 @@ pcs_irq_mask
 
     mask pinctrl interrupt
 
-    :param struct irq_data \*d:
+    :param d:
         interrupt data
+    :type d: struct irq_data \*
 
 .. _`pcs_irq_unmask`:
 
@@ -654,8 +689,9 @@ pcs_irq_unmask
 
     unmask pinctrl interrupt
 
-    :param struct irq_data \*d:
+    :param d:
         interrupt data
+    :type d: struct irq_data \*
 
 .. _`pcs_irq_set_wake`:
 
@@ -666,11 +702,13 @@ pcs_irq_set_wake
 
     toggle the suspend and resume wake up
 
-    :param struct irq_data \*d:
+    :param d:
         interrupt data
+    :type d: struct irq_data \*
 
-    :param unsigned int state:
+    :param state:
         wake-up state
+    :type state: unsigned int
 
 .. _`pcs_irq_set_wake.description`:
 
@@ -689,8 +727,9 @@ pcs_irq_handle
 
     common interrupt handler
 
-    :param struct pcs_soc_data \*pcs_soc:
+    :param pcs_soc:
         *undescribed*
+    :type pcs_soc: struct pcs_soc_data \*
 
 .. _`pcs_irq_handle.description`:
 
@@ -710,11 +749,13 @@ pcs_irq_handler
 
     handler for the shared interrupt case
 
-    :param int irq:
+    :param irq:
         interrupt
+    :type irq: int
 
-    :param void \*d:
+    :param d:
         data
+    :type d: void \*
 
 .. _`pcs_irq_handler.description`:
 
@@ -733,8 +774,9 @@ pcs_irq_chain_handler
 
     handler for the dedicated chained interrupt case
 
-    :param struct irq_desc \*desc:
+    :param desc:
         interrupt descriptor
+    :type desc: struct irq_desc \*
 
 .. _`pcs_irq_chain_handler.description`:
 
@@ -753,11 +795,13 @@ pcs_irq_init_chained_handler
 
     set up a chained interrupt handler
 
-    :param struct pcs_device \*pcs:
+    :param pcs:
         pcs driver instance
+    :type pcs: struct pcs_device \*
 
-    :param struct device_node \*np:
+    :param np:
         device node pointer
+    :type np: struct device_node \*
 
 .. _`pcs_quirk_missing_pinctrl_cells`:
 
@@ -768,14 +812,17 @@ pcs_quirk_missing_pinctrl_cells
 
     handle legacy binding
 
-    :param struct pcs_device \*pcs:
+    :param pcs:
         pinctrl driver instance
+    :type pcs: struct pcs_device \*
 
-    :param struct device_node \*np:
+    :param np:
         device tree node
+    :type np: struct device_node \*
 
-    :param int cells:
+    :param cells:
         number of cells
+    :type cells: int
 
 .. _`pcs_quirk_missing_pinctrl_cells.description`:
 

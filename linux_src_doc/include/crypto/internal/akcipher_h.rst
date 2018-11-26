@@ -10,8 +10,9 @@ crypto_register_akcipher
 
     - Register public key algorithm
 
-    :param struct akcipher_alg \*alg:
+    :param alg:
         algorithm definition
+    :type alg: struct akcipher_alg \*
 
 .. _`crypto_register_akcipher.description`:
 
@@ -36,8 +37,9 @@ crypto_unregister_akcipher
 
     - Unregister public key algorithm
 
-    :param struct akcipher_alg \*alg:
+    :param alg:
         algorithm definition
+    :type alg: struct akcipher_alg \*
 
 .. _`crypto_unregister_akcipher.description`:
 
@@ -55,11 +57,13 @@ akcipher_register_instance
 
     - Unregister public key template instance
 
-    :param struct crypto_template \*tmpl:
+    :param tmpl:
         the template from which the algorithm was created
+    :type tmpl: struct crypto_template \*
 
-    :param struct akcipher_instance \*inst:
+    :param inst:
         the template instance
+    :type inst: struct akcipher_instance \*
 
 .. _`akcipher_register_instance.description`:
 

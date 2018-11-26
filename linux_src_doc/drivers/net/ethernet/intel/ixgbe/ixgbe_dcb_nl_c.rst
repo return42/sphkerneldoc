@@ -10,14 +10,17 @@ ixgbe_dcbnl_getapp
 
     retrieve the DCBX application user priority
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the corresponding netdev
+    :type netdev: struct net_device \*
 
-    :param u8 idtype:
+    :param idtype:
         identifies the id as ether type or TCP/UDP port number
+    :type idtype: u8
 
-    :param u16 id:
+    :param id:
         id is either ether type or TCP/UDP port number
+    :type id: u16
 
 .. _`ixgbe_dcbnl_getapp.description`:
 

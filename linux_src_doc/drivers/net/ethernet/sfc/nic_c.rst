@@ -10,18 +10,22 @@ efx_nic_describe_stats
 
     Describe supported statistics for ethtool
 
-    :param const struct efx_hw_stat_desc \*desc:
+    :param desc:
         Array of \ :c:type:`struct efx_hw_stat_desc <efx_hw_stat_desc>`\  describing the statistics
+    :type desc: const struct efx_hw_stat_desc \*
 
-    :param size_t count:
+    :param count:
         Length of the \ ``desc``\  array
+    :type count: size_t
 
-    :param const unsigned long \*mask:
+    :param mask:
         Bitmask of which elements of \ ``desc``\  are enabled
+    :type mask: const unsigned long \*
 
-    :param u8 \*names:
+    :param names:
         Buffer to copy names to, or \ ``NULL``\ .  The names are copied
         starting at intervals of \ ``ETH_GSTRING_LEN``\  bytes.
+    :type names: u8 \*
 
 .. _`efx_nic_describe_stats.description`:
 
@@ -40,28 +44,34 @@ efx_nic_update_stats
 
     Convert statistics DMA buffer to array of u64
 
-    :param const struct efx_hw_stat_desc \*desc:
+    :param desc:
         Array of \ :c:type:`struct efx_hw_stat_desc <efx_hw_stat_desc>`\  describing the DMA buffer
         layout.  DMA widths of 0, 16, 32 and 64 are supported; where
         the width is specified as 0 the corresponding element of
         \ ``stats``\  is not updated.
+    :type desc: const struct efx_hw_stat_desc \*
 
-    :param size_t count:
+    :param count:
         Length of the \ ``desc``\  array
+    :type count: size_t
 
-    :param const unsigned long \*mask:
+    :param mask:
         Bitmask of which elements of \ ``desc``\  are enabled
+    :type mask: const unsigned long \*
 
-    :param u64 \*stats:
+    :param stats:
         Buffer to update with the converted statistics.  The length
         of this array must be at least \ ``count``\ .
+    :type stats: u64 \*
 
-    :param const void \*dma_buf:
+    :param dma_buf:
         DMA buffer containing hardware statistics
+    :type dma_buf: const void \*
 
-    :param bool accumulate:
+    :param accumulate:
         If set, the converted values will be added rather than
         directly stored to the corresponding elements of \ ``stats``\ 
+    :type accumulate: bool
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ tpm2_pcr_read
 
     read a PCR value
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use.
+    :type chip: struct tpm_chip \*
 
-    :param int pcr_idx:
+    :param pcr_idx:
         index of the PCR to read.
+    :type pcr_idx: int
 
-    :param u8 \*res_buf:
+    :param res_buf:
         buffer to store the resulting hash.
+    :type res_buf: u8 \*
 
 .. _`tpm2_pcr_read.return`:
 
@@ -35,17 +38,21 @@ tpm2_pcr_extend
 
     extend a PCR value
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use.
+    :type chip: struct tpm_chip \*
 
-    :param int pcr_idx:
+    :param pcr_idx:
         index of the PCR.
+    :type pcr_idx: int
 
-    :param u32 count:
+    :param count:
         number of digests passed.
+    :type count: u32
 
-    :param struct tpm2_digest \*digests:
+    :param digests:
         list of pcr banks and corresponding digest values to extend.
+    :type digests: struct tpm2_digest \*
 
 .. _`tpm2_pcr_extend.return`:
 
@@ -59,25 +66,29 @@ Same as with tpm_transmit_cmd.
 tpm2_get_random
 ===============
 
-.. c:function:: int tpm2_get_random(struct tpm_chip *chip, u8 *out, size_t max)
+.. c:function:: int tpm2_get_random(struct tpm_chip *chip, u8 *dest, size_t max)
 
     get random bytes from the TPM RNG
 
-    :param struct tpm_chip \*chip:
-        TPM chip to use
+    :param chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance
+    :type chip: struct tpm_chip \*
 
-    :param u8 \*out:
-        destination buffer for the random bytes
+    :param dest:
+        destination buffer
+    :type dest: u8 \*
 
-    :param size_t max:
-        the max number of bytes to write to \ ``out``\ 
+    :param max:
+        the max number of random bytes to pull
+    :type max: size_t
 
 .. _`tpm2_get_random.return`:
 
 Return
 ------
 
-Size of the output buffer, or -EIO on error.
+size of the buffer on success,
+-errno otherwise
 
 .. _`tpm2_flush_context_cmd`:
 
@@ -88,14 +99,17 @@ tpm2_flush_context_cmd
 
     execute a TPM2_FlushContext command
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
-    :param u32 handle:
+    :param handle:
         *undescribed*
+    :type handle: u32
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`tpm2_flush_context_cmd.return`:
 
@@ -113,26 +127,33 @@ tpm2_buf_append_auth
 
     append TPMS_AUTH_COMMAND to the buffer.
 
-    :param struct tpm_buf \*buf:
+    :param buf:
         an allocated tpm_buf instance
+    :type buf: struct tpm_buf \*
 
-    :param u32 session_handle:
+    :param session_handle:
         session handle
+    :type session_handle: u32
 
-    :param const u8 \*nonce:
+    :param nonce:
         the session nonce, may be NULL if not used
+    :type nonce: const u8 \*
 
-    :param u16 nonce_len:
+    :param nonce_len:
         the session nonce length, may be 0 if not used
+    :type nonce_len: u16
 
-    :param u8 attributes:
+    :param attributes:
         the session attributes
+    :type attributes: u8
 
-    :param const u8 \*hmac:
+    :param hmac:
         the session HMAC or password, may be NULL if not used
+    :type hmac: const u8 \*
 
-    :param u16 hmac_len:
+    :param hmac_len:
         the session HMAC or password length, maybe 0 if not used
+    :type hmac_len: u16
 
 .. _`tpm2_seal_trusted`:
 
@@ -143,14 +164,17 @@ tpm2_seal_trusted
 
     seal the payload of a trusted key
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
-    :param struct trusted_key_payload \*payload:
+    :param payload:
         the key data in clear and encrypted form
+    :type payload: struct trusted_key_payload \*
 
-    :param struct trusted_key_options \*options:
+    :param options:
         authentication values and other options
+    :type options: struct trusted_key_options \*
 
 .. _`tpm2_seal_trusted.return`:
 
@@ -168,20 +192,25 @@ tpm2_load_cmd
 
     execute a TPM2_Load command
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
-    :param struct trusted_key_payload \*payload:
+    :param payload:
         the key data in clear and encrypted form
+    :type payload: struct trusted_key_payload \*
 
-    :param struct trusted_key_options \*options:
+    :param options:
         authentication values and other options
+    :type options: struct trusted_key_options \*
 
-    :param u32 \*blob_handle:
+    :param blob_handle:
         returned blob handle
+    :type blob_handle: u32 \*
 
-    :param unsigned int flags:
+    :param flags:
         tpm transmit flags
+    :type flags: unsigned int
 
 .. _`tpm2_load_cmd.return`:
 
@@ -202,20 +231,25 @@ tpm2_unseal_cmd
 
     execute a TPM2_Unload command
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
-    :param struct trusted_key_payload \*payload:
+    :param payload:
         the key data in clear and encrypted form
+    :type payload: struct trusted_key_payload \*
 
-    :param struct trusted_key_options \*options:
+    :param options:
         authentication values and other options
+    :type options: struct trusted_key_options \*
 
-    :param u32 blob_handle:
+    :param blob_handle:
         blob handle
+    :type blob_handle: u32
 
-    :param unsigned int flags:
+    :param flags:
         tpm_transmit_cmd flags
+    :type flags: unsigned int
 
 .. _`tpm2_unseal_cmd.return`:
 
@@ -235,14 +269,17 @@ tpm2_unseal_trusted
 
     unseal the payload of a trusted key
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
-    :param struct trusted_key_payload \*payload:
+    :param payload:
         the key data in clear and encrypted form
+    :type payload: struct trusted_key_payload \*
 
-    :param struct trusted_key_options \*options:
+    :param options:
         authentication values and other options
+    :type options: struct trusted_key_options \*
 
 .. _`tpm2_unseal_trusted.return`:
 
@@ -260,24 +297,29 @@ tpm2_get_tpm_pt
 
     get value of a TPM_CAP_TPM_PROPERTIES type property
 
-    :param struct tpm_chip \*chip:
-        TPM chip to use.
+    :param chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance
+    :type chip: struct tpm_chip \*
 
-    :param u32 property_id:
+    :param property_id:
         property ID.
+    :type property_id: u32
 
-    :param u32 \*value:
+    :param value:
         output variable.
+    :type value: u32 \*
 
-    :param const char \*desc:
+    :param desc:
         passed to \ :c:func:`tpm_transmit_cmd`\ 
+    :type desc: const char \*
 
 .. _`tpm2_get_tpm_pt.return`:
 
 Return
 ------
 
-Same as with tpm_transmit_cmd.
+0 on success,
+-errno or a TPM return code otherwise
 
 .. _`tpm2_shutdown`:
 
@@ -286,14 +328,24 @@ tpm2_shutdown
 
 .. c:function:: void tpm2_shutdown(struct tpm_chip *chip, u16 shutdown_type)
 
-    send shutdown command to the TPM chip
+    send a TPM shutdown command
 
-    :param struct tpm_chip \*chip:
-        TPM chip to use.
+    :param chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance
+    :type chip: struct tpm_chip \*
 
-    :param u16 shutdown_type:
-        shutdown type. The value is either
+    :param shutdown_type:
         TPM_SU_CLEAR or TPM_SU_STATE.
+    :type shutdown_type: u16
+
+.. _`tpm2_shutdown.description`:
+
+Description
+-----------
+
+Sends a TPM shutdown command. The shutdown command is used in call
+sites where the system is going down. If it fails, there is not much
+that can be done except print an error message.
 
 .. _`tpm2_do_selftest`:
 
@@ -304,8 +356,9 @@ tpm2_do_selftest
 
     ensure that all self tests have passed
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
 .. _`tpm2_do_selftest.return`:
 
@@ -327,20 +380,28 @@ tpm2_probe
 
 .. c:function:: int tpm2_probe(struct tpm_chip *chip)
 
-    probe TPM 2.0
+    probe for the TPM 2.0 protocol
 
-    :param struct tpm_chip \*chip:
-        TPM chip to use
+    :param chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance
+    :type chip: struct tpm_chip \*
+
+.. _`tpm2_probe.description`:
+
+Description
+-----------
+
+Send an idempotent TPM 2.0 command and see whether there is TPM2 chip in the
+other end based on the response tag. The flag TPM_CHIP_FLAG_TPM2 is set by
+this function if this is the case.
 
 .. _`tpm2_probe.return`:
 
 Return
 ------
 
-< 0 error and 0 on success.
-
-Send idempotent TPM 2.0 command and see whether TPM 2.0 chip replied based on
-the reply tag.
+0 on success,
+-errno otherwise
 
 .. _`tpm2_auto_startup`:
 
@@ -351,8 +412,9 @@ tpm2_auto_startup
 
     Perform the standard automatic TPM initialization sequence
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         TPM chip to use
+    :type chip: struct tpm_chip \*
 
 .. _`tpm2_auto_startup.description`:
 

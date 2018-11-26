@@ -10,11 +10,13 @@
 
     find a channel to carry out the operation or let the transaction execute synchronously
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         transaction dependency and submission modifiers
+    :type submit: struct async_submit_ctl \*
 
-    :param enum dma_transaction_type tx_type:
+    :param tx_type:
         transaction type
+    :type tx_type: enum dma_transaction_type
 
 .. _`async_tx_channel_switch`:
 
@@ -25,11 +27,13 @@ async_tx_channel_switch
 
     queue an interrupt descriptor with a dependency pre-attached.
 
-    :param struct dma_async_tx_descriptor \*depend_tx:
+    :param depend_tx:
         the operation that must finish before the new operation runs
+    :type depend_tx: struct dma_async_tx_descriptor \*
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         the new operation
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`async_trigger_callback`:
 
@@ -40,8 +44,9 @@ async_trigger_callback
 
     schedules the callback function to be run
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         submission and completion parameters
+    :type submit: struct async_submit_ctl \*
 
 .. _`async_trigger_callback.honored-flags`:
 
@@ -61,8 +66,9 @@ async_tx_quiesce
 
     ensure tx is complete and freeable upon return \ ``tx``\  - transaction to quiesce
 
-    :param struct dma_async_tx_descriptor \*\*tx:
+    :param tx:
         *undescribed*
+    :type tx: struct dma_async_tx_descriptor \*\*
 
 .. This file was automatic generated / don't edit.
 

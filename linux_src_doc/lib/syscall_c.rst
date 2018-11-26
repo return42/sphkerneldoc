@@ -10,23 +10,29 @@ task_current_syscall
 
     Discover what a blocked task is doing.
 
-    :param struct task_struct \*target:
+    :param target:
         thread to examine
+    :type target: struct task_struct \*
 
-    :param long \*callno:
+    :param callno:
         filled with system call number or -1
+    :type callno: long \*
 
-    :param unsigned long args:
+    :param args:
         filled with \ ``maxargs``\  system call arguments
+    :type args: unsigned long
 
-    :param unsigned int maxargs:
+    :param maxargs:
         number of elements in \ ``args``\  to fill
+    :type maxargs: unsigned int
 
-    :param unsigned long \*sp:
+    :param sp:
         filled with user stack pointer
+    :type sp: unsigned long \*
 
-    :param unsigned long \*pc:
+    :param pc:
         filled with user PC
+    :type pc: unsigned long \*
 
 .. _`task_current_syscall.description`:
 

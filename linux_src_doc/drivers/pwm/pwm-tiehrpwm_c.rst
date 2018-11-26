@@ -10,14 +10,17 @@ set_prescale_div
 
     Set up the prescaler divider function
 
-    :param unsigned long rqst_prescaler:
+    :param rqst_prescaler:
         prescaler value min
+    :type rqst_prescaler: unsigned long
 
-    :param u16 \*prescale_div:
+    :param prescale_div:
         prescaler value set
+    :type prescale_div: u16 \*
 
-    :param u16 \*tb_clk_div:
+    :param tb_clk_div:
         Time Base Control prescaler bits
+    :type tb_clk_div: u16 \*
 
 .. This file was automatic generated / don't edit.
 

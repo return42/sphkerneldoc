@@ -10,8 +10,9 @@ is_string_insn
 
     Determine if instruction is a string instruction
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction containing the opcode to inspect
+    :type insn: struct insn \*
 
 .. _`is_string_insn.return`:
 
@@ -32,8 +33,9 @@ get_seg_reg_override_idx
 
     obtain segment register override index
 
-    :param struct insn \*insn:
+    :param insn:
         Valid instruction with segment override prefixes
+    :type insn: struct insn \*
 
 .. _`get_seg_reg_override_idx.description`:
 
@@ -63,11 +65,13 @@ check_seg_overrides
 
     check if segment override prefixes are allowed
 
-    :param struct insn \*insn:
+    :param insn:
         Valid instruction with segment override prefixes
+    :type insn: struct insn \*
 
-    :param int regoff:
+    :param regoff:
         Operand offset, in pt_regs, for which the check is performed
+    :type regoff: int
 
 .. _`check_seg_overrides.description`:
 
@@ -96,14 +100,17 @@ resolve_default_seg
 
     resolve default segment register index for an operand
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction with opcode and address size. Must be valid.
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int off:
+    :param off:
         Operand offset, in pt_regs, for which resolution is needed
+    :type off: int
 
 .. _`resolve_default_seg.description`:
 
@@ -134,14 +141,17 @@ resolve_seg_reg
 
     obtain segment register index
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction with operands
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int regoff:
+    :param regoff:
         Operand offset, in pt_regs, used to deterimine segment register
+    :type regoff: int
 
 .. _`resolve_seg_reg.description`:
 
@@ -212,11 +222,13 @@ get_segment_selector
 
     obtain segment selector
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int seg_reg_idx:
+    :param seg_reg_idx:
         Segment register index to use
+    :type seg_reg_idx: int
 
 .. _`get_segment_selector.description`:
 
@@ -250,17 +262,21 @@ get_reg_offset_16
 
     Obtain offset of register indicated by instruction
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction containing ModRM byte
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int \*offs1:
+    :param offs1:
         Offset of the first operand register
+    :type offs1: int \*
 
-    :param int \*offs2:
+    :param offs2:
         Offset of the second opeand register, if applicable
+    :type offs2: int \*
 
 .. _`get_reg_offset_16.description`:
 
@@ -290,8 +306,9 @@ get_desc
 
     Obtain pointer to a segment descriptor
 
-    :param unsigned short sel:
+    :param sel:
         Segment selector
+    :type sel: unsigned short
 
 .. _`get_desc.description`:
 
@@ -320,11 +337,13 @@ insn_get_seg_base
 
     Obtain base address of segment descriptor.
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int seg_reg_idx:
+    :param seg_reg_idx:
         Index of the segment register pointing to seg descriptor
+    :type seg_reg_idx: int
 
 .. _`insn_get_seg_base.description`:
 
@@ -356,11 +375,13 @@ get_seg_limit
 
     Obtain the limit of a segment descriptor
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int seg_reg_idx:
+    :param seg_reg_idx:
         Index of the segment register pointing to seg descriptor
+    :type seg_reg_idx: int
 
 .. _`get_seg_limit.description`:
 
@@ -392,8 +413,9 @@ insn_get_code_seg_params
 
     Obtain code segment parameters
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Structure with register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
 .. _`insn_get_code_seg_params.description`:
 
@@ -425,11 +447,13 @@ insn_get_modrm_rm_off
 
     Obtain register in r/m part of the ModRM byte
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction containing the ModRM byte
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
 .. _`insn_get_modrm_rm_off.return`:
 
@@ -451,20 +475,25 @@ get_seg_base_limit
 
     obtain base address and limit of a segment
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction. Must be valid.
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int regoff:
+    :param regoff:
         Operand offset, in pt_regs, used to resolve segment descriptor
+    :type regoff: int
 
-    :param unsigned long \*base:
+    :param base:
         Obtained segment base
+    :type base: unsigned long \*
 
-    :param unsigned long \*limit:
+    :param limit:
         Obtained segment limit
+    :type limit: unsigned long \*
 
 .. _`get_seg_base_limit.description`:
 
@@ -497,17 +526,21 @@ get_eff_addr_reg
 
     Obtain effective address from register operand
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction. Must be valid.
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int \*regoff:
+    :param regoff:
         Obtained operand offset, in pt_regs, with the effective address
+    :type regoff: int \*
 
-    :param long \*eff_addr:
+    :param eff_addr:
         Obtained effective address
+    :type eff_addr: long \*
 
 .. _`get_eff_addr_reg.description`:
 
@@ -543,17 +576,21 @@ get_eff_addr_modrm
 
     Obtain referenced effective address via ModRM
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction. Must be valid.
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int \*regoff:
+    :param regoff:
         Obtained operand offset, in pt_regs, associated with segment
+    :type regoff: int \*
 
-    :param long \*eff_addr:
+    :param eff_addr:
         Obtained effective address
+    :type eff_addr: long \*
 
 .. _`get_eff_addr_modrm.description`:
 
@@ -588,17 +625,21 @@ get_eff_addr_modrm_16
 
     Obtain referenced effective address via ModRM
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction. Must be valid.
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int \*regoff:
+    :param regoff:
         Obtained operand offset, in pt_regs, associated with segment
+    :type regoff: int \*
 
-    :param short \*eff_addr:
+    :param eff_addr:
         Obtained effective address
+    :type eff_addr: short \*
 
 .. _`get_eff_addr_modrm_16.description`:
 
@@ -633,17 +674,21 @@ get_eff_addr_sib
 
     Obtain referenced effective address via SIB
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction. Must be valid.
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
-    :param int \*base_offset:
+    :param base_offset:
         *undescribed*
+    :type base_offset: int \*
 
-    :param long \*eff_addr:
+    :param eff_addr:
         Obtained effective address
+    :type eff_addr: long \*
 
 .. _`get_eff_addr_sib.description`:
 
@@ -678,11 +723,13 @@ get_addr_ref_16
 
     Obtain the 16-bit address referred by instruction
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction containing ModRM byte and displacement
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
 .. _`get_addr_ref_16.description`:
 
@@ -714,11 +761,13 @@ get_addr_ref_32
 
     Obtain a 32-bit linear address
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction with ModRM, SIB bytes and displacement
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
 .. _`get_addr_ref_32.description`:
 
@@ -749,11 +798,13 @@ get_addr_ref_64
 
     Obtain a 64-bit linear address
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction struct with ModRM and SIB bytes and displacement
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Structure with register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
 .. _`get_addr_ref_64.description`:
 
@@ -783,11 +834,13 @@ insn_get_addr_ref
 
     Obtain the linear address referred by instruction
 
-    :param struct insn \*insn:
+    :param insn:
         Instruction structure containing ModRM byte and displacement
+    :type insn: struct insn \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Structure with register values as seen when entering kernel mode
+    :type regs: struct pt_regs \*
 
 .. _`insn_get_addr_ref.description`:
 

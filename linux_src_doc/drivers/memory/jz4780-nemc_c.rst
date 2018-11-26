@@ -10,8 +10,9 @@ jz4780_nemc_num_banks
 
     count the number of banks referenced by a device
 
-    :param struct device \*dev:
+    :param dev:
         device to count banks for, must be a child of the NEMC.
+    :type dev: struct device \*
 
 .. _`jz4780_nemc_num_banks.return`:
 
@@ -31,14 +32,17 @@ jz4780_nemc_set_type
 
     set the type of device connected to a bank
 
-    :param struct device \*dev:
+    :param dev:
         child device of the NEMC.
+    :type dev: struct device \*
 
-    :param unsigned int bank:
+    :param bank:
         bank number to configure.
+    :type bank: unsigned int
 
-    :param enum jz4780_nemc_bank_type type:
+    :param type:
         type of device connected to the bank.
+    :type type: enum jz4780_nemc_bank_type
 
 .. _`jz4780_nemc_assert`:
 
@@ -49,14 +53,17 @@ jz4780_nemc_assert
 
     (de-)assert a NAND device's chip enable pin
 
-    :param struct device \*dev:
+    :param dev:
         child device of the NEMC.
+    :type dev: struct device \*
 
-    :param unsigned int bank:
+    :param bank:
         bank number of device.
+    :type bank: unsigned int
 
-    :param bool assert:
+    :param assert:
         whether the chip enable pin should be asserted.
+    :type assert: bool
 
 .. _`jz4780_nemc_assert.description`:
 

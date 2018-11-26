@@ -10,14 +10,17 @@
 
     Register a \ ``mcb_driver``\  at the system
 
-    :param struct mcb_driver \*drv:
+    :param drv:
         The \ ``mcb_driver``\ 
+    :type drv: struct mcb_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         The \ ``mcb_driver``\ 's module
+    :type owner: struct module \*
 
-    :param const char \*mod_name:
+    :param mod_name:
         The name of the \ ``mcb_driver``\ 's module
+    :type mod_name: const char \*
 
 .. _`__mcb_register_driver.description`:
 
@@ -36,8 +39,9 @@ mcb_unregister_driver
 
     Unregister a \ ``mcb_driver``\  from the system
 
-    :param struct mcb_driver \*drv:
+    :param drv:
         The \ ``mcb_driver``\ 
+    :type drv: struct mcb_driver \*
 
 .. _`mcb_unregister_driver.description`:
 
@@ -55,11 +59,13 @@ mcb_device_register
 
     Register a mcb_device
 
-    :param struct mcb_bus \*bus:
+    :param bus:
         The \ ``mcb_bus``\  of the device
+    :type bus: struct mcb_bus \*
 
-    :param struct mcb_device \*dev:
+    :param dev:
         The \ ``mcb_device``\ 
+    :type dev: struct mcb_device \*
 
 .. _`mcb_device_register.description`:
 
@@ -77,8 +83,9 @@ mcb_alloc_bus
 
     Allocate a new \ ``mcb_bus``\ 
 
-    :param struct device \*carrier:
+    :param carrier:
         *undescribed*
+    :type carrier: struct device \*
 
 .. _`mcb_alloc_bus.description`:
 
@@ -96,8 +103,9 @@ mcb_release_bus
 
     Free a \ ``mcb_bus``\ 
 
-    :param struct mcb_bus \*bus:
+    :param bus:
         The \ ``mcb_bus``\  to release
+    :type bus: struct mcb_bus \*
 
 .. _`mcb_release_bus.description`:
 
@@ -115,8 +123,9 @@ mcb_bus_get
 
     Increment refcnt
 
-    :param struct mcb_bus \*bus:
+    :param bus:
         The \ ``mcb_bus``\ 
+    :type bus: struct mcb_bus \*
 
 .. _`mcb_bus_get.description`:
 
@@ -134,8 +143,9 @@ mcb_bus_put
 
     Decrement refcnt
 
-    :param struct mcb_bus \*bus:
+    :param bus:
         The \ ``mcb_bus``\ 
+    :type bus: struct mcb_bus \*
 
 .. _`mcb_bus_put.description`:
 
@@ -153,8 +163,9 @@ mcb_alloc_dev
 
     Allocate a device
 
-    :param struct mcb_bus \*bus:
+    :param bus:
         The \ ``mcb_bus``\  the device is part of
+    :type bus: struct mcb_bus \*
 
 .. _`mcb_alloc_dev.description`:
 
@@ -172,8 +183,9 @@ mcb_free_dev
 
     Free \ ``mcb_device``\ 
 
-    :param struct mcb_device \*dev:
+    :param dev:
         The device to free
+    :type dev: struct mcb_device \*
 
 .. _`mcb_free_dev.description`:
 
@@ -191,8 +203,9 @@ mcb_bus_add_devices
 
     Add devices in the bus' internal device list
 
-    :param const struct mcb_bus \*bus:
+    :param bus:
         The \ ``mcb_bus``\  we add the devices
+    :type bus: const struct mcb_bus \*
 
 .. _`mcb_bus_add_devices.description`:
 
@@ -210,11 +223,13 @@ mcb_get_resource
 
     get a resource for a mcb device
 
-    :param struct mcb_device \*dev:
+    :param dev:
         the mcb device
+    :type dev: struct mcb_device \*
 
-    :param unsigned int type:
+    :param type:
         the type of resource
+    :type type: unsigned int
 
 .. _`mcb_request_mem`:
 
@@ -225,11 +240,13 @@ mcb_request_mem
 
     Request memory
 
-    :param struct mcb_device \*dev:
+    :param dev:
         The \ ``mcb_device``\  the memory is for
+    :type dev: struct mcb_device \*
 
-    :param const char \*name:
+    :param name:
         The name for the memory reference.
+    :type name: const char \*
 
 .. _`mcb_request_mem.description`:
 
@@ -248,8 +265,9 @@ mcb_release_mem
 
     Release memory requested by device
 
-    :param struct resource \*mem:
+    :param mem:
         *undescribed*
+    :type mem: struct resource \*
 
 .. _`mcb_release_mem.description`:
 
@@ -267,8 +285,9 @@ mcb_get_irq
 
     Get device's IRQ number
 
-    :param struct mcb_device \*dev:
+    :param dev:
         The \ ``mcb_device``\  the IRQ is for
+    :type dev: struct mcb_device \*
 
 .. _`mcb_get_irq.description`:
 

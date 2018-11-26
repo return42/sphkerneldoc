@@ -82,8 +82,9 @@ Other frames (e.g. control or management) are still pushed using \ :c:func:`drv_
 Drivers indicate that they use this model by implementing the .wake_tx_queue
 driver operation.
 
-Intermediate queues (struct ieee80211_txq) are kept per-sta per-tid, with a
-single per-vif queue for multicast data frames.
+Intermediate queues (struct ieee80211_txq) are kept per-sta per-tid, with
+another per-sta for non-data/non-mgmt and bufferable management frames, and
+a single per-vif queue for multicast data frames.
 
 The driver is expected to initialize its private per-queue data for stations
 and interfaces in the .add_interface and .sta_add ops.
@@ -196,6 +197,8 @@ Definition
         u8 aifs;
         bool acm;
         bool uapsd;
+        bool mu_edca;
+        struct ieee80211_he_mu_edca_param_ac_rec mu_edca_param_rec;
     }
 
 .. _`ieee80211_tx_queue_params.members`:
@@ -221,6 +224,12 @@ acm
 
 uapsd
     is U-APSD mode enabled for the queue
+
+mu_edca
+    is the MU EDCA configured
+
+mu_edca_param_rec
+    MU EDCA Parameter Record for HE
 
 .. _`ieee80211_tx_queue_params.description`:
 
@@ -463,7 +472,8 @@ Definition
         BSS_CHANGED_OCB,
         BSS_CHANGED_MU_GROUPS,
         BSS_CHANGED_KEEP_ALIVE,
-        BSS_CHANGED_MCAST_RATE
+        BSS_CHANGED_MCAST_RATE,
+        BSS_CHANGED_FTM_RESPONDER
     };
 
 .. _`ieee80211_bss_change.constants`:
@@ -558,6 +568,10 @@ BSS_CHANGED_KEEP_ALIVE
 
 BSS_CHANGED_MCAST_RATE
     Multicast Rate setting changed for this interface
+
+BSS_CHANGED_FTM_RESPONDER
+    fime timing reasurement request responder
+    functionality changed for this BSS (AP mode).
 
 .. _`ieee80211_bss_change.description`:
 
@@ -910,6 +924,14 @@ Definition
 
     struct ieee80211_bss_conf {
         const u8 *bssid;
+        u8 bss_color;
+        u8 htc_trig_based_pkt_ext;
+        bool multi_sta_back_32bit;
+        bool uora_exists;
+        bool ack_enabled;
+        u8 uora_ocw_range;
+        u16 frame_time_rts_th;
+        bool he_support;
         bool assoc, ibss_joined;
         bool ibss_creator;
         u16 aid;
@@ -947,6 +969,8 @@ Definition
         bool allow_p2p_go_ps;
         u16 max_idle_period;
         bool protected_keep_alive;
+        bool ftm_responder;
+        struct ieee80211_ftm_responder_params *ftmr_params;
     }
 
 .. _`ieee80211_bss_conf.members`:
@@ -956,6 +980,31 @@ Members
 
 bssid
     The BSSID for this BSS
+
+bss_color
+    6-bit value to mark inter-BSS frame, if BSS supports HE
+
+htc_trig_based_pkt_ext
+    default PE in 4us units, if BSS supports HE
+
+multi_sta_back_32bit
+    supports BA bitmap of 32-bits in Multi-STA BACK
+
+uora_exists
+    is the UORA element advertised by AP
+
+ack_enabled
+    indicates support to receive a multi-TID that solicits either
+    ACK, BACK or both
+
+uora_ocw_range
+    UORA element's OCW Range field
+
+frame_time_rts_th
+    HE duration RTS threshold, in units of 32us
+
+he_support
+    does this BSS support HE
 
 assoc
     association status
@@ -1115,6 +1164,13 @@ protected_keep_alive
     if set, indicates that the station should send an RSN
     protected frame to the AP to reset the idle timer at the AP for the
     station.
+
+ftm_responder
+    whether to enable or disable fine timing measurement FTM
+    responder functionality.
+
+ftmr_params
+    configurable lci/civic parameter when enabling FTM responder.
 
 .. _`ieee80211_bss_conf.description`:
 
@@ -1762,8 +1818,9 @@ ieee80211_tx_info_clear_status
 
     clear TX status
 
-    :param struct ieee80211_tx_info \*info:
+    :param info:
         The \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  to be cleared.
+    :type info: struct ieee80211_tx_info \*
 
 .. _`ieee80211_tx_info_clear_status.description`:
 
@@ -1826,7 +1883,11 @@ Definition
         RX_FLAG_ALLOW_SAME_PN,
         RX_FLAG_ICV_STRIPPED,
         RX_FLAG_AMPDU_EOF_BIT,
-        RX_FLAG_AMPDU_EOF_BIT_KNOWN
+        RX_FLAG_AMPDU_EOF_BIT_KNOWN,
+        RX_FLAG_RADIOTAP_HE,
+        RX_FLAG_RADIOTAP_HE_MU,
+        RX_FLAG_RADIOTAP_LSIG,
+        RX_FLAG_NO_PSDU
     };
 
 .. _`mac80211_rx_flags.constants`:
@@ -1955,6 +2016,31 @@ RX_FLAG_AMPDU_EOF_BIT
 RX_FLAG_AMPDU_EOF_BIT_KNOWN
     The EOF value is known
 
+RX_FLAG_RADIOTAP_HE
+    HE radiotap data is present
+    (&struct ieee80211_radiotap_he, mac80211 will fill in
+    - DATA3_DATA_MCS
+    - DATA3_DATA_DCM
+    - DATA3_CODING
+    - DATA5_GI
+    - DATA5_DATA_BW_RU_ALLOC
+    - DATA6_NSTS
+    - DATA3_STBC
+    from the RX info data, so leave those zeroed when building this data)
+
+RX_FLAG_RADIOTAP_HE_MU
+    HE MU radiotap data is present
+    (&struct ieee80211_radiotap_he_mu)
+
+RX_FLAG_RADIOTAP_LSIG
+    L-SIG radiotap data is present
+
+RX_FLAG_NO_PSDU
+    use the frame only for radiotap reporting, with
+    the "0-length PSDU" field included there.  The value for it is
+    in \ :c:type:`struct ieee80211_rx_status <ieee80211_rx_status>`\ .  Note that if this value isn't
+    known the frame shouldn't be reported.
+
 .. _`mac80211_rx_flags.description`:
 
 Description
@@ -2037,7 +2123,8 @@ Definition
         u32 flag;
         u16 freq;
         u8 enc_flags;
-        u8 encoding:2, bw:3;
+        u8 encoding:2, bw:3, he_ru:3;
+        u8 he_gi:2, he_dcm:1;
         u8 rate_idx;
         u8 nss;
         u8 rx_flags;
@@ -2047,6 +2134,7 @@ Definition
         u8 chains;
         s8 chain_signal[IEEE80211_MAX_CHAINS];
         u8 ampdu_delimiter_crc;
+        u8 zero_length_psdu_type;
     }
 
 .. _`ieee80211_rx_status.members`:
@@ -2087,6 +2175,15 @@ encoding
 bw
     \ :c:type:`enum rate_info_bw <rate_info_bw>`\ 
 
+he_ru
+    HE RU, from \ :c:type:`enum nl80211_he_ru_alloc <nl80211_he_ru_alloc>`\ 
+
+he_gi
+    HE GI, from \ :c:type:`enum nl80211_he_gi <nl80211_he_gi>`\ 
+
+he_dcm
+    HE DCM value
+
 rate_idx
     index of data rate into band's supported rates or MCS index if
     HT or VHT is used (%RX_FLAG_HT/%RX_FLAG_VHT)
@@ -2118,6 +2215,9 @@ chain_signal
 
 ampdu_delimiter_crc
     A-MPDU delimiter CRC
+
+zero_length_psdu_type
+    radiotap type of the 0-length PSDU
 
 .. _`ieee80211_rx_status.description`:
 
@@ -2580,6 +2680,7 @@ Definition
         struct dentry *debugfs_dir;
     #endif
         unsigned int probe_req_reg;
+        bool txqs_stopped[IEEE80211_NUM_ACS];
         u8 drv_priv[0] __aligned(sizeof(void *));
     }
 
@@ -2641,6 +2742,10 @@ probe_req_reg
     probe requests should be reported to mac80211 for this
     interface.
 
+txqs_stopped
+    per AC flag to indicate that intermediate TXQs are stopped,
+    protected by fq->lock.
+
 drv_priv
     data area for driver use, will always be aligned to
     sizeof(void \*).
@@ -2662,8 +2767,9 @@ wdev_to_ieee80211_vif
 
     return a vif struct from a wdev
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         the wdev to get the vif for
+    :type wdev: struct wireless_dev \*
 
 .. _`wdev_to_ieee80211_vif.description`:
 
@@ -2686,8 +2792,9 @@ ieee80211_vif_to_wdev
 
     return a wdev struct from a vif
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         the vif to get the wdev for
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_vif_to_wdev.description`:
 
@@ -3209,7 +3316,8 @@ Definition
         u16 aid;
         struct ieee80211_sta_ht_cap ht_cap;
         struct ieee80211_sta_vht_cap vht_cap;
-        u8 max_rx_aggregation_subframes;
+        struct ieee80211_sta_he_cap he_cap;
+        u16 max_rx_aggregation_subframes;
         bool wme;
         u8 uapsd_queues;
         u8 max_sp;
@@ -3224,7 +3332,8 @@ Definition
         u16 max_amsdu_len;
         bool support_p2p_ps;
         u16 max_rc_amsdu_len;
-        struct ieee80211_txq *txq[IEEE80211_NUM_TIDS];
+        u16 max_tid_amsdu_len[IEEE80211_NUM_TIDS];
+        struct ieee80211_txq *txq[IEEE80211_NUM_TIDS + 1];
         u8 drv_priv[0] __aligned(sizeof(void *));
     }
 
@@ -3247,6 +3356,9 @@ ht_cap
 
 vht_cap
     VHT capabilities of this STA; restricted to our own capabilities
+
+he_cap
+    HE capabilities of this STA
 
 max_rx_aggregation_subframes
     maximal amount of frames in a single AMPDU
@@ -3315,8 +3427,12 @@ support_p2p_ps
 max_rc_amsdu_len
     Maximum A-MSDU size in bytes recommended by rate control.
 
+max_tid_amsdu_len
+    Maximum A-MSDU size in bytes for this TID
+
 txq
-    per-TID data TX queues (if driver uses the TXQ abstraction)
+    per-TID data TX queues (if driver uses the TXQ abstraction); note that
+    the last entry (%IEEE80211_NUM_TIDS) is used for non-data frames
 
 drv_priv
     data area for driver use, will always be aligned to
@@ -3439,7 +3555,8 @@ sta
     station table entry, \ ``NULL``\  for per-vif queue
 
 tid
-    the TID for this queue (unused for per-vif queue)
+    the TID for this queue (unused for per-vif queue),
+    \ ``IEEE80211_NUM_TIDS``\  for non-data (if enabled)
 
 ac
     the AC for this queue
@@ -3514,6 +3631,9 @@ Definition
         IEEE80211_HW_SUPPORTS_TDLS_BUFFER_STA,
         IEEE80211_HW_DEAUTH_NEED_MGD_TX_PREP,
         IEEE80211_HW_DOESNT_SUPPORT_QOS_NDP,
+        IEEE80211_HW_BUFF_MMPDU_TXQ,
+        IEEE80211_HW_SUPPORTS_VHT_EXT_NSS_BW,
+        IEEE80211_HW_STA_MMPDU_TXQ,
         NUM_IEEE80211_HW_FLAGS
     };
 
@@ -3737,6 +3857,22 @@ IEEE80211_HW_DOESNT_SUPPORT_QOS_NDP
     The driver (or firmware) doesn't
     support QoS NDP for AP probing - that's most likely a driver bug.
 
+IEEE80211_HW_BUFF_MMPDU_TXQ
+    use the TXQ for bufferable MMPDUs, this of
+    course requires the driver to use TXQs to start with.
+
+IEEE80211_HW_SUPPORTS_VHT_EXT_NSS_BW
+    (Hardware) rate control supports VHT
+    extended NSS BW (dot11VHTExtendedNSSBWCapable). This flag will be set if
+    the selected rate control algorithm sets \ ``RATE_CTRL_CAPA_VHT_EXT_NSS_BW``\ 
+    but if the rate control is built-in then it must be set by the driver.
+    See also the documentation for that flag.
+
+IEEE80211_HW_STA_MMPDU_TXQ
+    use the extra non-TID per-station TXQ for all
+    MMPDUs on station interfaces. This of course requires the driver to use
+    TXQs to start with.
+
 NUM_IEEE80211_HW_FLAGS
     number of hardware flags, used for sizing arrays
 
@@ -3785,8 +3921,8 @@ Definition
         u8 max_rates;
         u8 max_report_rates;
         u8 max_rate_tries;
-        u8 max_rx_aggregation_subframes;
-        u8 max_tx_aggregation_subframes;
+        u16 max_rx_aggregation_subframes;
+        u16 max_tx_aggregation_subframes;
         u8 max_tx_fragments;
         u8 offchannel_tx_hw_queue;
         u8 radiotap_mcs_details;
@@ -3801,6 +3937,7 @@ Definition
         u8 n_cipher_schemes;
         const struct ieee80211_cipher_scheme *cipher_schemes;
         u8 max_nan_de_entries;
+        u8 tx_sk_pacing_shift;
     }
 
 .. _`ieee80211_hw.members`:
@@ -3888,10 +4025,11 @@ max_rx_aggregation_subframes
 
 max_tx_aggregation_subframes
     maximum number of subframes in an
-    aggregate an HT driver will transmit. Though ADDBA will advertise
-    a constant value of 64 as some older APs can crash if the window
-    size is smaller (an example is LinkSys WRT120N with FW v1.0.07
-    build 002 Jun 18 2012).
+    aggregate an HT/HE device will transmit. In HT AddBA we'll
+    advertise a constant value of 64 as some older APs crash if
+    the window size is smaller (an example is LinkSys WRT120N
+    with FW v1.0.07 build 002 Jun 18 2012).
+    For AddBA to HE capable peers this value will be used.
 
 max_tx_fragments
     maximum number of tx buffers per (A)-MSDU, sum
@@ -3949,6 +4087,11 @@ cipher_schemes
 max_nan_de_entries
     maximum number of NAN DE functions supported by the
     device.
+
+tx_sk_pacing_shift
+    Pacing shift to set on TCP sockets when frames from
+    them are encountered. The default should typically not be changed,
+    unless the driver has good reasons for needing more buffers.
 
 .. _`ieee80211_hw.description`:
 
@@ -4059,8 +4202,9 @@ wiphy_to_ieee80211_hw
 
     return a mac80211 driver hw struct from a wiphy
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the \ :c:type:`struct wiphy <wiphy>`\  which we want to query
+    :type wiphy: struct wiphy \*
 
 .. _`wiphy_to_ieee80211_hw.description`:
 
@@ -4089,11 +4233,13 @@ SET_IEEE80211_DEV
 
     set device for 802.11 hardware
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the \ :c:type:`struct ieee80211_hw <ieee80211_hw>`\  to set the device for
+    :type hw: struct ieee80211_hw \*
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\  of this 802.11 device
+    :type dev: struct device \*
 
 .. _`set_ieee80211_perm_addr`:
 
@@ -4104,11 +4250,13 @@ SET_IEEE80211_PERM_ADDR
 
     set the permanent MAC address for 802.11 hardware
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the \ :c:type:`struct ieee80211_hw <ieee80211_hw>`\  to set the MAC address for
+    :type hw: struct ieee80211_hw \*
 
-    :param const u8 \*addr:
+    :param addr:
         the address to set
+    :type addr: const u8 \*
 
 .. _`ieee80211_free_txskb`:
 
@@ -4119,11 +4267,13 @@ ieee80211_free_txskb
 
     free TX skb
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware
+    :type hw: struct ieee80211_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb
+    :type skb: struct sk_buff \*
 
 .. _`ieee80211_free_txskb.description`:
 
@@ -4188,6 +4338,11 @@ handler is software decryption with wrap around of iv16.
 The \ :c:func:`set_default_unicast_key`\  call updates the default WEP key index
 configured to the hardware for WEP encryption type. This is required
 for devices that support offload of data packets (e.g. ARP responses).
+
+Mac80211 drivers should set the \ ``NL80211_EXT_FEATURE_CAN_REPLACE_PTK0``\  flag
+when they are able to replace in-use PTK keys according to to following
+requirements:
+1) They do not hand over frames decrypted with the old key to
 
 .. _`powersave-support`:
 
@@ -4703,7 +4858,7 @@ Definition
         struct ieee80211_sta *sta;
         u16 tid;
         u16 ssn;
-        u8 buf_size;
+        u16 buf_size;
         bool amsdu;
         u16 timeout;
     }
@@ -5025,6 +5180,8 @@ Definition
         int (*nan_change_conf)(struct ieee80211_hw *hw,struct ieee80211_vif *vif, struct cfg80211_nan_conf *conf, u32 changes);
         int (*add_nan_func)(struct ieee80211_hw *hw,struct ieee80211_vif *vif, const struct cfg80211_nan_func *nan_func);
         void (*del_nan_func)(struct ieee80211_hw *hw,struct ieee80211_vif *vif, u8 instance_id);
+        bool (*can_aggregate_in_amsdu)(struct ieee80211_hw *hw,struct sk_buff *head, struct sk_buff *skb);
+        int (*get_ftm_responder_stats)(struct ieee80211_hw *hw,struct ieee80211_vif *vif, struct cfg80211_ftm_responder_stats *ftm_stats);
     }
 
 .. _`ieee80211_ops.members`:
@@ -5689,6 +5846,16 @@ del_nan_func
     \ :c:func:`ieee80211_nan_func_terminated`\  with
     NL80211_NAN_FUNC_TERM_REASON_USER_REQUEST reason code upon removal.
 
+can_aggregate_in_amsdu
+    Called in order to determine if HW supports
+    aggregating two specific frames in the same A-MSDU. The relation
+    between the skbs should be symmetric and transitive. Note that while
+    skb is always a real frame, head may or may not be an A-MSDU.
+
+get_ftm_responder_stats
+    Retrieve FTM responder statistics, if available.
+    Statistics should be cumulative, currently no way to reset is provided.
+
 .. _`ieee80211_ops.description`:
 
 Description
@@ -5707,15 +5874,18 @@ ieee80211_alloc_hw_nm
 
     Allocate a new hardware device
 
-    :param size_t priv_data_len:
+    :param priv_data_len:
         length of private data
+    :type priv_data_len: size_t
 
-    :param const struct ieee80211_ops \*ops:
+    :param ops:
         callbacks for this device
+    :type ops: const struct ieee80211_ops \*
 
-    :param const char \*requested_name:
+    :param requested_name:
         Requested name for this device.
         NULL is valid value, and means use the default naming (phy%d)
+    :type requested_name: const char \*
 
 .. _`ieee80211_alloc_hw_nm.description`:
 
@@ -5744,11 +5914,13 @@ ieee80211_alloc_hw
 
     Allocate a new hardware device
 
-    :param size_t priv_data_len:
+    :param priv_data_len:
         length of private data
+    :type priv_data_len: size_t
 
-    :param const struct ieee80211_ops \*ops:
+    :param ops:
         callbacks for this device
+    :type ops: const struct ieee80211_ops \*
 
 .. _`ieee80211_alloc_hw.description`:
 
@@ -5777,8 +5949,9 @@ ieee80211_register_hw
 
     Register hardware device
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the device to register as returned by \ :c:func:`ieee80211_alloc_hw`\ 
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_register_hw.description`:
 
@@ -5875,8 +6048,9 @@ ieee80211_get_tx_led_name
 
     get name of TX LED
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware to get the LED trigger name for
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_get_tx_led_name.description`:
 
@@ -5904,8 +6078,9 @@ ieee80211_get_rx_led_name
 
     get name of RX LED
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware to get the LED trigger name for
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_get_rx_led_name.description`:
 
@@ -5933,8 +6108,9 @@ ieee80211_get_assoc_led_name
 
     get name of association LED
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware to get the LED trigger name for
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_get_assoc_led_name.description`:
 
@@ -5962,8 +6138,9 @@ ieee80211_get_radio_led_name
 
     get name of radio LED
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware to get the LED trigger name for
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_get_radio_led_name.description`:
 
@@ -5991,17 +6168,21 @@ ieee80211_create_tpt_led_trigger
 
     create throughput LED trigger
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware to create the trigger for
+    :type hw: struct ieee80211_hw \*
 
-    :param unsigned int flags:
+    :param flags:
         trigger flags, see \ :c:type:`enum ieee80211_tpt_led_trigger_flags <ieee80211_tpt_led_trigger_flags>`\ 
+    :type flags: unsigned int
 
-    :param const struct ieee80211_tpt_blink \*blink_table:
+    :param blink_table:
         the blink table -- needs to be ordered by throughput
+    :type blink_table: const struct ieee80211_tpt_blink \*
 
-    :param unsigned int blink_table_len:
+    :param blink_table_len:
         size of the blink table
+    :type blink_table_len: unsigned int
 
 .. _`ieee80211_create_tpt_led_trigger.return`:
 
@@ -6027,8 +6208,9 @@ ieee80211_unregister_hw
 
     Unregister a hardware device
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware to unregister
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_unregister_hw.description`:
 
@@ -6047,8 +6229,9 @@ ieee80211_free_hw
 
     free hardware descriptor
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware to free
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_free_hw.description`:
 
@@ -6068,8 +6251,9 @@ ieee80211_restart_hw
 
     restart hardware completely
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware to restart
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_restart_hw.description`:
 
@@ -6092,17 +6276,21 @@ ieee80211_rx_napi
 
     receive frame from NAPI context
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware this frame came in on
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         the station the frame was received from, or \ ``NULL``\ 
+    :type sta: struct ieee80211_sta \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer to receive, owned by mac80211 after this call
+    :type skb: struct sk_buff \*
 
-    :param struct napi_struct \*napi:
+    :param napi:
         the NAPI context
+    :type napi: struct napi_struct \*
 
 .. _`ieee80211_rx_napi.description`:
 
@@ -6132,11 +6320,13 @@ ieee80211_rx
 
     receive frame
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware this frame came in on
+    :type hw: struct ieee80211_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer to receive, owned by mac80211 after this call
+    :type skb: struct sk_buff \*
 
 .. _`ieee80211_rx.description`:
 
@@ -6166,11 +6356,13 @@ ieee80211_rx_irqsafe
 
     receive frame
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware this frame came in on
+    :type hw: struct ieee80211_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer to receive, owned by mac80211 after this call
+    :type skb: struct sk_buff \*
 
 .. _`ieee80211_rx_irqsafe.description`:
 
@@ -6193,11 +6385,13 @@ ieee80211_rx_ni
 
     receive frame (in process context)
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware this frame came in on
+    :type hw: struct ieee80211_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer to receive, owned by mac80211 after this call
+    :type skb: struct sk_buff \*
 
 .. _`ieee80211_rx_ni.description`:
 
@@ -6220,11 +6414,13 @@ ieee80211_sta_ps_transition
 
     PS transition for connected sta
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         currently connected sta
+    :type sta: struct ieee80211_sta \*
 
-    :param bool start:
+    :param start:
         start or stop PS
+    :type start: bool
 
 .. _`ieee80211_sta_ps_transition.description`:
 
@@ -6256,11 +6452,13 @@ ieee80211_sta_ps_transition_ni
 
     PS transition for connected sta (in process context)
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         currently connected sta
+    :type sta: struct ieee80211_sta \*
 
-    :param bool start:
+    :param start:
         start or stop PS
+    :type start: bool
 
 .. _`ieee80211_sta_ps_transition_ni.description`:
 
@@ -6287,8 +6485,9 @@ ieee80211_sta_pspoll
 
     PS-Poll frame received
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         currently connected station
+    :type sta: struct ieee80211_sta \*
 
 .. _`ieee80211_sta_pspoll.description`:
 
@@ -6311,11 +6510,13 @@ ieee80211_sta_uapsd_trigger
 
     (potential) U-APSD trigger frame received
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         currently connected station
+    :type sta: struct ieee80211_sta \*
 
-    :param u8 tid:
+    :param tid:
         TID of the received (potential) trigger frame
+    :type tid: u8
 
 .. _`ieee80211_sta_uapsd_trigger.description`:
 
@@ -6342,14 +6543,17 @@ ieee80211_sta_set_buffered
 
     inform mac80211 about driver-buffered frames
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         \ :c:type:`struct ieee80211_sta <ieee80211_sta>`\  pointer for the sleeping station
+    :type sta: struct ieee80211_sta \*
 
-    :param u8 tid:
+    :param tid:
         the TID that has buffered frames
+    :type tid: u8
 
-    :param bool buffered:
+    :param buffered:
         indicates whether or not frames are buffered for this TID
+    :type buffered: bool
 
 .. _`ieee80211_sta_set_buffered.description`:
 
@@ -6387,20 +6591,25 @@ ieee80211_get_tx_rates
 
     get the selected transmit rates for a packet
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         the receiver station to which this packet is sent.
+    :type sta: struct ieee80211_sta \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the frame to be transmitted.
+    :type skb: struct sk_buff \*
 
-    :param struct ieee80211_tx_rate \*dest:
+    :param dest:
         buffer for extracted rate/retry information
+    :type dest: struct ieee80211_tx_rate \*
 
-    :param int max_rates:
+    :param max_rates:
         maximum number of rates to fetch
+    :type max_rates: int
 
 .. _`ieee80211_get_tx_rates.description`:
 
@@ -6420,11 +6629,13 @@ ieee80211_sta_set_expected_throughput
 
     set the expected tpt for a station
 
-    :param struct ieee80211_sta \*pubsta:
+    :param pubsta:
         the station to set throughput for.
+    :type pubsta: struct ieee80211_sta \*
 
-    :param u32 thr:
+    :param thr:
         the current expected throughput in kbps.
+    :type thr: u32
 
 .. _`ieee80211_sta_set_expected_throughput.description`:
 
@@ -6438,6 +6649,36 @@ changes. The information is used to tune the CoDel AQM applied to traffic
 going towards that station (which can otherwise be too aggressive and cause
 slow stations to starve).
 
+.. _`ieee80211_tx_rate_update`:
+
+ieee80211_tx_rate_update
+========================
+
+.. c:function:: void ieee80211_tx_rate_update(struct ieee80211_hw *hw, struct ieee80211_sta *pubsta, struct ieee80211_tx_info *info)
+
+    transmit rate update callback
+
+    :param hw:
+        the hardware the frame was transmitted by
+    :type hw: struct ieee80211_hw \*
+
+    :param pubsta:
+        the station to update the tx rate for.
+    :type pubsta: struct ieee80211_sta \*
+
+    :param info:
+        tx status information
+    :type info: struct ieee80211_tx_info \*
+
+.. _`ieee80211_tx_rate_update.description`:
+
+Description
+-----------
+
+Drivers should call this functions with a non-NULL pub sta
+This function can be used in drivers that does not have provision
+in updating the tx rate in data path.
+
 .. _`ieee80211_tx_status`:
 
 ieee80211_tx_status
@@ -6447,11 +6688,13 @@ ieee80211_tx_status
 
     transmit status callback
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware the frame was transmitted by
+    :type hw: struct ieee80211_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the frame that was transmitted, owned by mac80211 after this call
+    :type skb: struct sk_buff \*
 
 .. _`ieee80211_tx_status.description`:
 
@@ -6477,11 +6720,13 @@ ieee80211_tx_status_ext
 
     extended transmit status callback
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware the frame was transmitted by
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_tx_status \*status:
+    :param status:
         tx status information
+    :type status: struct ieee80211_tx_status \*
 
 .. _`ieee80211_tx_status_ext.description`:
 
@@ -6505,15 +6750,18 @@ ieee80211_tx_status_noskb
 
     transmit status callback without skb
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware the frame was transmitted by
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         the receiver station to which this packet is sent
         (NULL for multicast packets)
+    :type sta: struct ieee80211_sta \*
 
-    :param struct ieee80211_tx_info \*info:
+    :param info:
         tx status information
+    :type info: struct ieee80211_tx_info \*
 
 .. _`ieee80211_tx_status_noskb.description`:
 
@@ -6537,11 +6785,13 @@ ieee80211_tx_status_ni
 
     transmit status callback (in process context)
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware the frame was transmitted by
+    :type hw: struct ieee80211_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the frame that was transmitted, owned by mac80211 after this call
+    :type skb: struct sk_buff \*
 
 .. _`ieee80211_tx_status_ni.description`:
 
@@ -6563,11 +6813,13 @@ ieee80211_tx_status_irqsafe
 
     IRQ-safe transmit status callback
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware the frame was transmitted by
+    :type hw: struct ieee80211_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the frame that was transmitted, owned by mac80211 after this call
+    :type skb: struct sk_buff \*
 
 .. _`ieee80211_tx_status_irqsafe.description`:
 
@@ -6589,11 +6841,13 @@ ieee80211_report_low_ack
 
     report non-responding station
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         the non-responding connected sta
+    :type sta: struct ieee80211_sta \*
 
-    :param u32 num_packets:
+    :param num_packets:
         number of packets sent to \ ``sta``\  without a response
+    :type num_packets: u32
 
 .. _`ieee80211_report_low_ack.description`:
 
@@ -6650,15 +6904,18 @@ ieee80211_beacon_get_template
 
     beacon template generation function
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param struct ieee80211_mutable_offsets \*offs:
+    :param offs:
         \ :c:type:`struct ieee80211_mutable_offsets <ieee80211_mutable_offsets>`\  pointer to struct that will
         receive the offsets that may be updated by the driver.
+    :type offs: struct ieee80211_mutable_offsets \*
 
 .. _`ieee80211_beacon_get_template.description`:
 
@@ -6691,20 +6948,24 @@ ieee80211_beacon_get_tim
 
     beacon generation function
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param u16 \*tim_offset:
+    :param tim_offset:
         pointer to variable that will receive the TIM IE offset.
         Set to 0 if invalid (in non-AP modes).
+    :type tim_offset: u16 \*
 
-    :param u16 \*tim_length:
+    :param tim_length:
         pointer to variable that will receive the TIM IE length,
         (including the ID and length bytes!).
         Set to 0 if invalid (in non-AP modes).
+    :type tim_length: u16 \*
 
 .. _`ieee80211_beacon_get_tim.description`:
 
@@ -6737,11 +6998,13 @@ ieee80211_beacon_get
 
     beacon generation function
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_beacon_get.description`:
 
@@ -6766,8 +7029,9 @@ ieee80211_csa_update_counter
 
     request mac80211 to decrement the csa counter
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_csa_update_counter.description`:
 
@@ -6796,11 +7060,13 @@ ieee80211_csa_set_counter
 
     request mac80211 to set csa counter
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param u8 counter:
+    :param counter:
         the new value for the counter
+    :type counter: u8
 
 .. _`ieee80211_csa_set_counter.description`:
 
@@ -6822,8 +7088,9 @@ ieee80211_csa_finish
 
     notify mac80211 about channel switch
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_csa_finish.description`:
 
@@ -6843,8 +7110,9 @@ ieee80211_csa_is_complete
 
     find out if counters reached 1
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_csa_is_complete.description`:
 
@@ -6862,11 +7130,13 @@ ieee80211_proberesp_get
 
     retrieve a Probe Response template
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_proberesp_get.description`:
 
@@ -6894,11 +7164,13 @@ ieee80211_pspoll_get
 
     retrieve a PS Poll template
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_pspoll_get.description`:
 
@@ -6933,15 +7205,18 @@ ieee80211_nullfunc_get
 
     retrieve a nullfunc template
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param bool qos_ok:
+    :param qos_ok:
         QoS NDP is acceptable to the caller, this should be set
         if at all possible
+    :type qos_ok: bool
 
 .. _`ieee80211_nullfunc_get.description`:
 
@@ -6979,20 +7254,25 @@ ieee80211_probereq_get
 
     retrieve a Probe Request template
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param const u8 \*src_addr:
+    :param src_addr:
         source MAC address
+    :type src_addr: const u8 \*
 
-    :param const u8 \*ssid:
+    :param ssid:
         SSID buffer
+    :type ssid: const u8 \*
 
-    :param size_t ssid_len:
+    :param ssid_len:
         length of SSID
+    :type ssid_len: size_t
 
-    :param size_t tailroom:
+    :param tailroom:
         tailroom to reserve at end of SKB for IEs
+    :type tailroom: size_t
 
 .. _`ieee80211_probereq_get.description`:
 
@@ -7018,23 +7298,29 @@ ieee80211_rts_get
 
     RTS frame generation function
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param const void \*frame:
+    :param frame:
         pointer to the frame that is going to be protected by the RTS.
+    :type frame: const void \*
 
-    :param size_t frame_len:
+    :param frame_len:
         the frame length (in octets).
+    :type frame_len: size_t
 
-    :param const struct ieee80211_tx_info \*frame_txctl:
+    :param frame_txctl:
         \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
+    :type frame_txctl: const struct ieee80211_tx_info \*
 
-    :param struct ieee80211_rts \*rts:
+    :param rts:
         The buffer where to store the RTS frame.
+    :type rts: struct ieee80211_rts \*
 
 .. _`ieee80211_rts_get.description`:
 
@@ -7055,17 +7341,21 @@ ieee80211_rts_duration
 
     Get the duration field for an RTS frame
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param size_t frame_len:
+    :param frame_len:
         the length of the frame that is going to be protected by the RTS.
+    :type frame_len: size_t
 
-    :param const struct ieee80211_tx_info \*frame_txctl:
+    :param frame_txctl:
         \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
+    :type frame_txctl: const struct ieee80211_tx_info \*
 
 .. _`ieee80211_rts_duration.description`:
 
@@ -7092,23 +7382,29 @@ ieee80211_ctstoself_get
 
     CTS-to-self frame generation function
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param const void \*frame:
+    :param frame:
         pointer to the frame that is going to be protected by the CTS-to-self.
+    :type frame: const void \*
 
-    :param size_t frame_len:
+    :param frame_len:
         the frame length (in octets).
+    :type frame_len: size_t
 
-    :param const struct ieee80211_tx_info \*frame_txctl:
+    :param frame_txctl:
         \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
+    :type frame_txctl: const struct ieee80211_tx_info \*
 
-    :param struct ieee80211_cts \*cts:
+    :param cts:
         The buffer where to store the CTS-to-self frame.
+    :type cts: struct ieee80211_cts \*
 
 .. _`ieee80211_ctstoself_get.description`:
 
@@ -7129,17 +7425,21 @@ ieee80211_ctstoself_duration
 
     Get the duration field for a CTS-to-self frame
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param size_t frame_len:
+    :param frame_len:
         the length of the frame that is going to be protected by the CTS-to-self.
+    :type frame_len: size_t
 
-    :param const struct ieee80211_tx_info \*frame_txctl:
+    :param frame_txctl:
         \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
+    :type frame_txctl: const struct ieee80211_tx_info \*
 
 .. _`ieee80211_ctstoself_duration.description`:
 
@@ -7166,20 +7466,25 @@ ieee80211_generic_frame_duration
 
     Calculate the duration field for a frame
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param enum nl80211_band band:
+    :param band:
         the band to calculate the frame duration on
+    :type band: enum nl80211_band
 
-    :param size_t frame_len:
+    :param frame_len:
         the length of the frame.
+    :type frame_len: size_t
 
-    :param struct ieee80211_rate \*rate:
+    :param rate:
         the rate at which the frame is going to be transmitted.
+    :type rate: struct ieee80211_rate \*
 
 .. _`ieee80211_generic_frame_duration.description`:
 
@@ -7205,11 +7510,13 @@ ieee80211_get_buffered_bc
 
     accessing buffered broadcast and multicast frames
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_get_buffered_bc.description`:
 
@@ -7251,14 +7558,17 @@ ieee80211_get_tkip_p1k_iv
 
     get a TKIP phase 1 key for IV32
 
-    :param struct ieee80211_key_conf \*keyconf:
+    :param keyconf:
         the parameter passed with the set key
+    :type keyconf: struct ieee80211_key_conf \*
 
-    :param u32 iv32:
+    :param iv32:
         IV32 to get the P1K for
+    :type iv32: u32
 
-    :param u16 \*p1k:
+    :param p1k:
         a buffer to which the key will be written, as 5 u16 values
+    :type p1k: u16 \*
 
 .. _`ieee80211_get_tkip_p1k_iv.description`:
 
@@ -7276,15 +7586,18 @@ ieee80211_get_tkip_p1k
 
     get a TKIP phase 1 key
 
-    :param struct ieee80211_key_conf \*keyconf:
+    :param keyconf:
         the parameter passed with the set key
+    :type keyconf: struct ieee80211_key_conf \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet to take the IV32 value from that will be encrypted
         with this P1K
+    :type skb: struct sk_buff \*
 
-    :param u16 \*p1k:
+    :param p1k:
         a buffer to which the key will be written, as 5 u16 values
+    :type p1k: u16 \*
 
 .. _`ieee80211_get_tkip_p1k.description`:
 
@@ -7303,17 +7616,21 @@ ieee80211_get_tkip_rx_p1k
 
     get a TKIP phase 1 key for RX
 
-    :param struct ieee80211_key_conf \*keyconf:
+    :param keyconf:
         the parameter passed with the set key
+    :type keyconf: struct ieee80211_key_conf \*
 
-    :param const u8 \*ta:
+    :param ta:
         TA that will be used with the key
+    :type ta: const u8 \*
 
-    :param u32 iv32:
+    :param iv32:
         IV32 to get the P1K for
+    :type iv32: u32
 
-    :param u16 \*p1k:
+    :param p1k:
         a buffer to which the key will be written, as 5 u16 values
+    :type p1k: u16 \*
 
 .. _`ieee80211_get_tkip_rx_p1k.description`:
 
@@ -7332,15 +7649,18 @@ ieee80211_get_tkip_p2k
 
     get a TKIP phase 2 key
 
-    :param struct ieee80211_key_conf \*keyconf:
+    :param keyconf:
         the parameter passed with the set key
+    :type keyconf: struct ieee80211_key_conf \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet to take the IV32/IV16 values from that will be
         encrypted with this key
+    :type skb: struct sk_buff \*
 
-    :param u8 \*p2k:
+    :param p2k:
         a buffer to which the key will be written, 16 bytes
+    :type p2k: u8 \*
 
 .. _`ieee80211_get_tkip_p2k.description`:
 
@@ -7359,14 +7679,17 @@ ieee80211_tkip_add_iv
 
     write TKIP IV and Ext. IV to pos
 
-    :param u8 \*pos:
+    :param pos:
         start of crypto header
+    :type pos: u8 \*
 
-    :param struct ieee80211_key_conf \*keyconf:
+    :param keyconf:
         the parameter passed with the set key
+    :type keyconf: struct ieee80211_key_conf \*
 
-    :param u64 pn:
+    :param pn:
         PN to add
+    :type pn: u64
 
 .. _`ieee80211_tkip_add_iv.return`:
 
@@ -7388,16 +7711,19 @@ ieee80211_get_key_rx_seq
 
     get key RX sequence counter
 
-    :param struct ieee80211_key_conf \*keyconf:
+    :param keyconf:
         the parameter passed with the set key
+    :type keyconf: struct ieee80211_key_conf \*
 
-    :param int tid:
+    :param tid:
         The TID, or -1 for the management frame value (CCMP/GCMP only);
         the value on TID 0 is also used for non-QoS frames. For
         CMAC, only TID 0 is valid.
+    :type tid: int
 
-    :param struct ieee80211_key_seq \*seq:
+    :param seq:
         buffer to receive the sequence data
+    :type seq: struct ieee80211_key_seq \*
 
 .. _`ieee80211_get_key_rx_seq.description`:
 
@@ -7420,16 +7746,19 @@ ieee80211_set_key_rx_seq
 
     set key RX sequence counter
 
-    :param struct ieee80211_key_conf \*keyconf:
+    :param keyconf:
         the parameter passed with the set key
+    :type keyconf: struct ieee80211_key_conf \*
 
-    :param int tid:
+    :param tid:
         The TID, or -1 for the management frame value (CCMP/GCMP only);
         the value on TID 0 is also used for non-QoS frames. For
         CMAC, only TID 0 is valid.
+    :type tid: int
 
-    :param struct ieee80211_key_seq \*seq:
+    :param seq:
         new sequence data
+    :type seq: struct ieee80211_key_seq \*
 
 .. _`ieee80211_set_key_rx_seq.description`:
 
@@ -7453,8 +7782,9 @@ ieee80211_remove_key
 
     remove the given key
 
-    :param struct ieee80211_key_conf \*keyconf:
+    :param keyconf:
         the parameter passed with the set key
+    :type keyconf: struct ieee80211_key_conf \*
 
 .. _`ieee80211_remove_key.description`:
 
@@ -7477,11 +7807,13 @@ ieee80211_gtk_rekey_add
 
     add a GTK key from rekeying during WoWLAN
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         the virtual interface to add the key on
+    :type vif: struct ieee80211_vif \*
 
-    :param struct ieee80211_key_conf \*keyconf:
+    :param keyconf:
         new key data
+    :type keyconf: struct ieee80211_key_conf \*
 
 .. _`ieee80211_gtk_rekey_add.description`:
 
@@ -7521,17 +7853,21 @@ ieee80211_gtk_rekey_notify
 
     notify userspace supplicant of rekeying
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         virtual interface the rekeying was done on
+    :type vif: struct ieee80211_vif \*
 
-    :param const u8 \*bssid:
+    :param bssid:
         The BSSID of the AP, for checking association
+    :type bssid: const u8 \*
 
-    :param const u8 \*replay_ctr:
+    :param replay_ctr:
         the new replay counter after GTK rekeying
+    :type replay_ctr: const u8 \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`ieee80211_wake_queue`:
 
@@ -7542,11 +7878,13 @@ ieee80211_wake_queue
 
     wake specific queue
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param int queue:
+    :param queue:
         queue number (counted from zero).
+    :type queue: int
 
 .. _`ieee80211_wake_queue.description`:
 
@@ -7564,11 +7902,13 @@ ieee80211_stop_queue
 
     stop specific queue
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param int queue:
+    :param queue:
         queue number (counted from zero).
+    :type queue: int
 
 .. _`ieee80211_stop_queue.description`:
 
@@ -7586,11 +7926,13 @@ ieee80211_queue_stopped
 
     test status of the queue
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param int queue:
+    :param queue:
         queue number (counted from zero).
+    :type queue: int
 
 .. _`ieee80211_queue_stopped.description`:
 
@@ -7615,8 +7957,9 @@ ieee80211_stop_queues
 
     stop all queues
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_stop_queues.description`:
 
@@ -7634,8 +7977,9 @@ ieee80211_wake_queues
 
     wake all queues
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_wake_queues.description`:
 
@@ -7653,11 +7997,13 @@ ieee80211_scan_completed
 
     completed hardware scan
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware that finished the scan
+    :type hw: struct ieee80211_hw \*
 
-    :param struct cfg80211_scan_info \*info:
+    :param info:
         information about the completed scan
+    :type info: struct cfg80211_scan_info \*
 
 .. _`ieee80211_scan_completed.description`:
 
@@ -7678,8 +8024,9 @@ ieee80211_sched_scan_results
 
     got results from scheduled scan
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware that is performing scheduled scans
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_sched_scan_results.description`:
 
@@ -7698,8 +8045,9 @@ ieee80211_sched_scan_stopped
 
     inform that the scheduled scan has stopped
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware that is performing scheduled scans
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_sched_scan_stopped.description`:
 
@@ -7761,17 +8109,20 @@ ieee80211_iterate_interfaces
 
     iterate interfaces
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware struct of which the interfaces should be iterated over
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 iter_flags:
+    :param iter_flags:
         iteration flags, see \ :c:type:`enum ieee80211_interface_iteration_flags <ieee80211_interface_iteration_flags>`\ 
+    :type iter_flags: u32
 
     :param void (\*iterator)(void \*data, u8 \*mac, struct ieee80211_vif \*vif):
         the iterator function to call
 
-    :param void \*data:
+    :param data:
         first argument of the iterator function
+    :type data: void \*
 
 .. _`ieee80211_iterate_interfaces.description`:
 
@@ -7792,17 +8143,20 @@ ieee80211_iterate_active_interfaces
 
     iterate active interfaces
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware struct of which the interfaces should be iterated over
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 iter_flags:
+    :param iter_flags:
         iteration flags, see \ :c:type:`enum ieee80211_interface_iteration_flags <ieee80211_interface_iteration_flags>`\ 
+    :type iter_flags: u32
 
     :param void (\*iterator)(void \*data, u8 \*mac, struct ieee80211_vif \*vif):
         the iterator function to call
 
-    :param void \*data:
+    :param data:
         first argument of the iterator function
+    :type data: void \*
 
 .. _`ieee80211_iterate_active_interfaces.description`:
 
@@ -7825,17 +8179,20 @@ ieee80211_iterate_active_interfaces_atomic
 
     iterate active interfaces
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware struct of which the interfaces should be iterated over
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 iter_flags:
+    :param iter_flags:
         iteration flags, see \ :c:type:`enum ieee80211_interface_iteration_flags <ieee80211_interface_iteration_flags>`\ 
+    :type iter_flags: u32
 
     :param void (\*iterator)(void \*data, u8 \*mac, struct ieee80211_vif \*vif):
         the iterator function to call, cannot sleep
 
-    :param void \*data:
+    :param data:
         first argument of the iterator function
+    :type data: void \*
 
 .. _`ieee80211_iterate_active_interfaces_atomic.description`:
 
@@ -7857,17 +8214,20 @@ ieee80211_iterate_active_interfaces_rtnl
 
     iterate active interfaces
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware struct of which the interfaces should be iterated over
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 iter_flags:
+    :param iter_flags:
         iteration flags, see \ :c:type:`enum ieee80211_interface_iteration_flags <ieee80211_interface_iteration_flags>`\ 
+    :type iter_flags: u32
 
     :param void (\*iterator)(void \*data, u8 \*mac, struct ieee80211_vif \*vif):
         the iterator function to call, cannot sleep
 
-    :param void \*data:
+    :param data:
         first argument of the iterator function
+    :type data: void \*
 
 .. _`ieee80211_iterate_active_interfaces_rtnl.description`:
 
@@ -7887,14 +8247,16 @@ ieee80211_iterate_stations_atomic
 
     iterate stations
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware struct of which the interfaces should be iterated over
+    :type hw: struct ieee80211_hw \*
 
     :param void (\*iterator)(void \*data, struct ieee80211_sta \*sta):
         the iterator function to call, cannot sleep
 
-    :param void \*data:
+    :param data:
         first argument of the iterator function
+    :type data: void \*
 
 .. _`ieee80211_iterate_stations_atomic.description`:
 
@@ -7915,11 +8277,13 @@ ieee80211_queue_work
 
     add work onto the mac80211 workqueue
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware struct for the interface we are adding work for
+    :type hw: struct ieee80211_hw \*
 
-    :param struct work_struct \*work:
+    :param work:
         the work we want to add onto the mac80211 workqueue
+    :type work: struct work_struct \*
 
 .. _`ieee80211_queue_work.description`:
 
@@ -7938,14 +8302,17 @@ ieee80211_queue_delayed_work
 
     add work onto the mac80211 workqueue
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware struct for the interface we are adding work for
+    :type hw: struct ieee80211_hw \*
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         delayable work to queue onto the mac80211 workqueue
+    :type dwork: struct delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait before queueing
+    :type delay: unsigned long
 
 .. _`ieee80211_queue_delayed_work.description`:
 
@@ -7964,14 +8331,17 @@ ieee80211_start_tx_ba_session
 
     Start a tx Block Ack session.
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         the station for which to start a BA session
+    :type sta: struct ieee80211_sta \*
 
-    :param u16 tid:
+    :param tid:
         the TID to BA on.
+    :type tid: u16
 
-    :param u16 timeout:
+    :param timeout:
         session timeout value (in TUs)
+    :type timeout: u16
 
 .. _`ieee80211_start_tx_ba_session.return`:
 
@@ -7993,14 +8363,17 @@ ieee80211_start_tx_ba_cb_irqsafe
 
     low level driver ready to aggregate.
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
+    :type vif: struct ieee80211_vif \*
 
-    :param const u8 \*ra:
+    :param ra:
         receiver address of the BA session recipient.
+    :type ra: const u8 \*
 
-    :param u16 tid:
+    :param tid:
         the TID to BA on.
+    :type tid: u16
 
 .. _`ieee80211_start_tx_ba_cb_irqsafe.description`:
 
@@ -8020,11 +8393,13 @@ ieee80211_stop_tx_ba_session
 
     Stop a Block Ack session.
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         the station whose BA session to stop
+    :type sta: struct ieee80211_sta \*
 
-    :param u16 tid:
+    :param tid:
         the TID to stop BA.
+    :type tid: u16
 
 .. _`ieee80211_stop_tx_ba_session.return`:
 
@@ -8046,14 +8421,17 @@ ieee80211_stop_tx_ba_cb_irqsafe
 
     low level driver ready to stop aggregate.
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
+    :type vif: struct ieee80211_vif \*
 
-    :param const u8 \*ra:
+    :param ra:
         receiver address of the BA session recipient.
+    :type ra: const u8 \*
 
-    :param u16 tid:
+    :param tid:
         the desired TID to BA on.
+    :type tid: u16
 
 .. _`ieee80211_stop_tx_ba_cb_irqsafe.description`:
 
@@ -8073,11 +8451,13 @@ ieee80211_find_sta
 
     find a station
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         virtual interface to look for station on
+    :type vif: struct ieee80211_vif \*
 
-    :param const u8 \*addr:
+    :param addr:
         station's address
+    :type addr: const u8 \*
 
 .. _`ieee80211_find_sta.return`:
 
@@ -8103,14 +8483,17 @@ ieee80211_find_sta_by_ifaddr
 
     find a station on hardware
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ 
+    :type hw: struct ieee80211_hw \*
 
-    :param const u8 \*addr:
+    :param addr:
         remote station's address
+    :type addr: const u8 \*
 
-    :param const u8 \*localaddr:
+    :param localaddr:
         local address (vif->sdata->vif.addr). Use NULL for 'any'.
+    :type localaddr: const u8 \*
 
 .. _`ieee80211_find_sta_by_ifaddr.return`:
 
@@ -8151,14 +8534,17 @@ ieee80211_sta_block_awake
 
     block station from waking up
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         the hardware
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_sta \*pubsta:
+    :param pubsta:
         the station
+    :type pubsta: struct ieee80211_sta \*
 
-    :param bool block:
+    :param block:
         whether to block or unblock
+    :type block: bool
 
 .. _`ieee80211_sta_block_awake.description`:
 
@@ -8197,8 +8583,9 @@ ieee80211_sta_eosp
 
     notify mac80211 about end of SP
 
-    :param struct ieee80211_sta \*pubsta:
+    :param pubsta:
         the station
+    :type pubsta: struct ieee80211_sta \*
 
 .. _`ieee80211_sta_eosp.description`:
 
@@ -8229,11 +8616,13 @@ ieee80211_send_eosp_nullfunc
 
     ask mac80211 to send NDP with EOSP
 
-    :param struct ieee80211_sta \*pubsta:
+    :param pubsta:
         the station
+    :type pubsta: struct ieee80211_sta \*
 
-    :param int tid:
+    :param tid:
         the tid of the NDP
+    :type tid: int
 
 .. _`ieee80211_send_eosp_nullfunc.description`:
 
@@ -8264,17 +8653,20 @@ ieee80211_iter_keys
 
     iterate keys programmed into the device
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ 
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         virtual interface to iterate, may be \ ``NULL``\  for all
+    :type vif: struct ieee80211_vif \*
 
     :param void (\*iter)(struct ieee80211_hw \*hw, struct ieee80211_vif \*vif, struct ieee80211_sta \*sta, struct ieee80211_key_conf \*key, void \*data):
         iterator function that will be called for each key
 
-    :param void \*iter_data:
+    :param iter_data:
         custom data to pass to the iterator function
+    :type iter_data: void \*
 
 .. _`ieee80211_iter_keys.description`:
 
@@ -8301,17 +8693,20 @@ ieee80211_iter_keys_rcu
 
     iterate keys programmed into the device
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ 
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         virtual interface to iterate, may be \ ``NULL``\  for all
+    :type vif: struct ieee80211_vif \*
 
     :param void (\*iter)(struct ieee80211_hw \*hw, struct ieee80211_vif \*vif, struct ieee80211_sta \*sta, struct ieee80211_key_conf \*key, void \*data):
         iterator function that will be called for each key
 
-    :param void \*iter_data:
+    :param iter_data:
         custom data to pass to the iterator function
+    :type iter_data: void \*
 
 .. _`ieee80211_iter_keys_rcu.description`:
 
@@ -8335,14 +8730,16 @@ ieee80211_iter_chan_contexts_atomic
 
     iterate channel contexts
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointre obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
     :param void (\*iter)(struct ieee80211_hw \*hw, struct ieee80211_chanctx_conf \*chanctx_conf, void \*data):
         iterator function
 
-    :param void \*iter_data:
+    :param iter_data:
         data passed to iterator function
+    :type iter_data: void \*
 
 .. _`ieee80211_iter_chan_contexts_atomic.description`:
 
@@ -8371,11 +8768,13 @@ ieee80211_ap_probereq_get
 
     retrieve a Probe Request template
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_ap_probereq_get.description`:
 
@@ -8405,8 +8804,9 @@ ieee80211_beacon_loss
 
     inform hardware does not receive beacons
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_beacon_loss.description`:
 
@@ -8426,8 +8826,9 @@ ieee80211_connection_loss
 
     inform hardware has lost connection to the AP
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_connection_loss.description`:
 
@@ -8452,8 +8853,9 @@ ieee80211_resume_disconnect
 
     disconnect from AP after resume
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_resume_disconnect.description`:
 
@@ -8485,17 +8887,21 @@ ieee80211_cqm_rssi_notify
 
     inform a configured connection quality monitoring rssi threshold triggered
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param enum nl80211_cqm_rssi_threshold_event rssi_event:
+    :param rssi_event:
         the RSSI trigger event type
+    :type rssi_event: enum nl80211_cqm_rssi_threshold_event
 
-    :param s32 rssi_level:
+    :param rssi_level:
         new RSSI level value or 0 if not available
+    :type rssi_level: s32
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`ieee80211_cqm_rssi_notify.description`:
 
@@ -8515,11 +8921,13 @@ ieee80211_cqm_beacon_loss_notify
 
     inform CQM of beacon loss
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`ieee80211_radar_detected`:
 
@@ -8530,8 +8938,9 @@ ieee80211_radar_detected
 
     inform that a radar was detected
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ 
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_chswitch_done`:
 
@@ -8542,11 +8951,13 @@ ieee80211_chswitch_done
 
     Complete channel switch process
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param bool success:
+    :param success:
         make the channel switch successful or not
+    :type success: bool
 
 .. _`ieee80211_chswitch_done.description`:
 
@@ -8565,11 +8976,13 @@ ieee80211_request_smps
 
     request SM PS transition
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param enum ieee80211_smps_mode smps_mode:
+    :param smps_mode:
         new SM PS mode
+    :type smps_mode: enum ieee80211_smps_mode
 
 .. _`ieee80211_request_smps.description`:
 
@@ -8589,8 +9002,9 @@ ieee80211_ready_on_channel
 
     notification of remain-on-channel start
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ 
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_remain_on_channel_expired`:
 
@@ -8601,8 +9015,9 @@ ieee80211_remain_on_channel_expired
 
     remain_on_channel duration expired
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ 
+    :type hw: struct ieee80211_hw \*
 
 .. _`ieee80211_stop_rx_ba_session`:
 
@@ -8613,14 +9028,17 @@ ieee80211_stop_rx_ba_session
 
     callback to stop existing BA sessions
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param u16 ba_rx_bitmap:
+    :param ba_rx_bitmap:
         Bit map of open rx ba per tid
+    :type ba_rx_bitmap: u16
 
-    :param const u8 \*addr:
+    :param addr:
         & to bssid mac address
+    :type addr: const u8 \*
 
 .. _`ieee80211_stop_rx_ba_session.description`:
 
@@ -8643,21 +9061,26 @@ ieee80211_mark_rx_ba_filtered_frames
 
     move RX BA window and mark filtered
 
-    :param struct ieee80211_sta \*pubsta:
+    :param pubsta:
         station struct
+    :type pubsta: struct ieee80211_sta \*
 
-    :param u8 tid:
+    :param tid:
         the session's TID
+    :type tid: u8
 
-    :param u16 ssn:
+    :param ssn:
         starting sequence number of the bitmap, all frames before this are
         assumed to be out of the window after the call
+    :type ssn: u16
 
-    :param u64 filtered:
+    :param filtered:
         bitmap of filtered frames, BIT(0) is the \ ``ssn``\  entry etc.
+    :type filtered: u64
 
-    :param u16 received_mpdus:
+    :param received_mpdus:
         number of received mpdus in firmware
+    :type received_mpdus: u16
 
 .. _`ieee80211_mark_rx_ba_filtered_frames.description`:
 
@@ -8678,17 +9101,21 @@ ieee80211_send_bar
 
     send a BlockAckReq frame
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param u8 \*ra:
+    :param ra:
         the peer's destination address
+    :type ra: u8 \*
 
-    :param u16 tid:
+    :param tid:
         the TID of the aggregation session
+    :type tid: u16
 
-    :param u16 ssn:
+    :param ssn:
         the new starting sequence number for the receiver
+    :type ssn: u16
 
 .. _`ieee80211_send_bar.description`:
 
@@ -8707,14 +9134,17 @@ ieee80211_manage_rx_ba_offl
 
     helper to queue an RX BA work
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
+    :type vif: struct ieee80211_vif \*
 
-    :param const u8 \*addr:
+    :param addr:
         station mac address
+    :type addr: const u8 \*
 
-    :param unsigned int tid:
+    :param tid:
         the rx tid
+    :type tid: unsigned int
 
 .. _`ieee80211_start_rx_ba_session_offl`:
 
@@ -8725,14 +9155,17 @@ ieee80211_start_rx_ba_session_offl
 
     start a Rx BA session
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
+    :type vif: struct ieee80211_vif \*
 
-    :param const u8 \*addr:
+    :param addr:
         station mac address
+    :type addr: const u8 \*
 
-    :param u16 tid:
+    :param tid:
         the rx tid
+    :type tid: u16
 
 .. _`ieee80211_start_rx_ba_session_offl.description`:
 
@@ -8755,14 +9188,17 @@ ieee80211_stop_rx_ba_session_offl
 
     stop a Rx BA session
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
+    :type vif: struct ieee80211_vif \*
 
-    :param const u8 \*addr:
+    :param addr:
         station mac address
+    :type addr: const u8 \*
 
-    :param u16 tid:
+    :param tid:
         the rx tid
+    :type tid: u16
 
 .. _`ieee80211_stop_rx_ba_session_offl.description`:
 
@@ -8785,14 +9221,17 @@ ieee80211_rx_ba_timer_expired
 
     stop a Rx BA session due to timeout
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
+    :type vif: struct ieee80211_vif \*
 
-    :param const u8 \*addr:
+    :param addr:
         station mac address
+    :type addr: const u8 \*
 
-    :param unsigned int tid:
+    :param tid:
         the rx tid
+    :type tid: unsigned int
 
 .. _`ieee80211_rx_ba_timer_expired.description`:
 
@@ -8872,6 +9311,37 @@ rate_idx_mcs_mask
 bss
     whether this frame is sent out in AP or IBSS mode
 
+.. _`rate_control_capabilities`:
+
+enum rate_control_capabilities
+==============================
+
+.. c:type:: enum rate_control_capabilities
+
+    rate control capabilities
+
+.. _`rate_control_capabilities.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum rate_control_capabilities {
+        RATE_CTRL_CAPA_VHT_EXT_NSS_BW
+    };
+
+.. _`rate_control_capabilities.constants`:
+
+Constants
+---------
+
+RATE_CTRL_CAPA_VHT_EXT_NSS_BW
+    Support for extended NSS BW support (dot11VHTExtendedNSSCapable)
+    Note that this is only looked at if the minimum number of chains
+    that the AP uses is < the number of TX chains the hardware has,
+    otherwise the NSS difference doesn't bother us.
+
 .. _`rate_control_send_low`:
 
 rate_control_send_low
@@ -8881,15 +9351,18 @@ rate_control_send_low
 
     helper for drivers for management/no-ack frames
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         \ :c:type:`struct ieee80211_sta <ieee80211_sta>`\  pointer to the target destination. Note
         that this may be null.
+    :type sta: struct ieee80211_sta \*
 
-    :param void \*priv_sta:
+    :param priv_sta:
         private rate control structure. This may be null.
+    :type priv_sta: void \*
 
-    :param struct ieee80211_tx_rate_control \*txrc:
+    :param txrc:
         rate control information we sholud populate for mac80211.
+    :type txrc: struct ieee80211_tx_rate_control \*
 
 .. _`rate_control_send_low.description`:
 
@@ -8915,14 +9388,17 @@ rate_control_set_rates
 
     pass the sta rate selection to mac80211/driver
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ 
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_sta \*pubsta:
+    :param pubsta:
         \ :c:type:`struct ieee80211_sta <ieee80211_sta>`\  pointer to the target destination.
+    :type pubsta: struct ieee80211_sta \*
 
-    :param struct ieee80211_sta_rates \*rates:
+    :param rates:
         new tx rate set to be used for this station.
+    :type rates: struct ieee80211_sta_rates \*
 
 .. _`rate_control_set_rates.description`:
 
@@ -8943,14 +9419,17 @@ ieee80211_update_mu_groups
 
     set the VHT MU-MIMO groud data
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         the specified virtual interface
+    :type vif: struct ieee80211_vif \*
 
-    :param const u8 \*membership:
+    :param membership:
         64 bits array - a bit is set if station is member of the group
+    :type membership: const u8 \*
 
-    :param const u8 \*position:
+    :param position:
         2 bits per group id indicating the position in the group
+    :type position: const u8 \*
 
 .. _`ieee80211_update_mu_groups.note`:
 
@@ -8971,8 +9450,9 @@ ieee80211_ave_rssi
 
     report the average RSSI for the specified interface
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         the specified virtual interface
+    :type vif: struct ieee80211_vif \*
 
 .. _`ieee80211_ave_rssi.note`:
 
@@ -8998,14 +9478,17 @@ ieee80211_report_wowlan_wakeup
 
     report WoWLAN wakeup
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         virtual interface
+    :type vif: struct ieee80211_vif \*
 
-    :param struct cfg80211_wowlan_wakeup \*wakeup:
+    :param wakeup:
         wakeup reason(s)
+    :type wakeup: struct cfg80211_wowlan_wakeup \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`ieee80211_report_wowlan_wakeup.description`:
 
@@ -9023,20 +9506,25 @@ ieee80211_tx_prepare_skb
 
     prepare an 802.11 skb for transmission
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ 
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         virtual interface
+    :type vif: struct ieee80211_vif \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         frame to be sent from within the driver
+    :type skb: struct sk_buff \*
 
-    :param int band:
+    :param band:
         the band to transmit on
+    :type band: int
 
-    :param struct ieee80211_sta \*\*sta:
+    :param sta:
         optional pointer to get the station to send the frame to
+    :type sta: struct ieee80211_sta \*\*
 
 .. _`ieee80211_tx_prepare_skb.note`:
 
@@ -9102,14 +9590,17 @@ ieee80211_parse_p2p_noa
 
     initialize NoA tracking data from P2P IE
 
-    :param const struct ieee80211_p2p_noa_attr \*attr:
+    :param attr:
         P2P NoA IE
+    :type attr: const struct ieee80211_p2p_noa_attr \*
 
-    :param struct ieee80211_noa_data \*data:
+    :param data:
         NoA tracking data
+    :type data: struct ieee80211_noa_data \*
 
-    :param u32 tsf:
+    :param tsf:
         current TSF timestamp
+    :type tsf: u32
 
 .. _`ieee80211_parse_p2p_noa.return`:
 
@@ -9127,11 +9618,13 @@ ieee80211_update_p2p_noa
 
     get next pending P2P GO absent state change
 
-    :param struct ieee80211_noa_data \*data:
+    :param data:
         NoA tracking data
+    :type data: struct ieee80211_noa_data \*
 
-    :param u32 tsf:
+    :param tsf:
         current TSF timestamp
+    :type tsf: u32
 
 .. _`ieee80211_tdls_oper_request`:
 
@@ -9142,20 +9635,25 @@ ieee80211_tdls_oper_request
 
     request userspace to perform a TDLS operation
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         virtual interface
+    :type vif: struct ieee80211_vif \*
 
-    :param const u8 \*peer:
+    :param peer:
         the peer's destination address
+    :type peer: const u8 \*
 
-    :param enum nl80211_tdls_operation oper:
+    :param oper:
         the requested TDLS operation
+    :type oper: enum nl80211_tdls_operation
 
-    :param u16 reason_code:
+    :param reason_code:
         reason code for the operation, valid for TDLS teardown
+    :type reason_code: u16
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`ieee80211_tdls_oper_request.description`:
 
@@ -9173,11 +9671,13 @@ ieee80211_reserve_tid
 
     request to reserve a specific TID
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         the station to reserve the TID for
+    :type sta: struct ieee80211_sta \*
 
-    :param u8 tid:
+    :param tid:
         the TID to reserve
+    :type tid: u8
 
 .. _`ieee80211_reserve_tid.description`:
 
@@ -9211,11 +9711,13 @@ ieee80211_unreserve_tid
 
     request to unreserve a specific TID
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         the station
+    :type sta: struct ieee80211_sta \*
 
-    :param u8 tid:
+    :param tid:
         the TID to unreserve
+    :type tid: u8
 
 .. _`ieee80211_unreserve_tid.description`:
 
@@ -9239,11 +9741,13 @@ ieee80211_tx_dequeue
 
     dequeue a packet from a software tx queue
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ 
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_txq \*txq:
+    :param txq:
         pointer obtained from station or virtual interface
+    :type txq: struct ieee80211_txq \*
 
 .. _`ieee80211_tx_dequeue.description`:
 
@@ -9261,14 +9765,17 @@ ieee80211_txq_get_depth
 
     get pending frame/byte count of given txq
 
-    :param struct ieee80211_txq \*txq:
+    :param txq:
         pointer obtained from station or virtual interface
+    :type txq: struct ieee80211_txq \*
 
-    :param unsigned long \*frame_cnt:
+    :param frame_cnt:
         pointer to store frame count
+    :type frame_cnt: unsigned long \*
 
-    :param unsigned long \*byte_cnt:
+    :param byte_cnt:
         pointer to store byte count
+    :type byte_cnt: unsigned long \*
 
 .. _`ieee80211_txq_get_depth.description`:
 
@@ -9288,17 +9795,21 @@ ieee80211_nan_func_terminated
 
     notify about NAN function termination.
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param u8 inst_id:
+    :param inst_id:
         the local instance id
+    :type inst_id: u8
 
-    :param enum nl80211_nan_func_term_reason reason:
+    :param reason:
         termination reason (one of the NL80211_NAN_FUNC_TERM_REASON_*)
+    :type reason: enum nl80211_nan_func_term_reason
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`ieee80211_nan_func_terminated.description`:
 
@@ -9317,14 +9828,17 @@ ieee80211_nan_func_match
 
     notify about NAN function match event.
 
-    :param struct ieee80211_vif \*vif:
+    :param vif:
         \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    :type vif: struct ieee80211_vif \*
 
-    :param struct cfg80211_nan_match_params \*match:
+    :param match:
         match event information
+    :type match: struct cfg80211_nan_match_params \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`ieee80211_nan_func_match.description`:
 

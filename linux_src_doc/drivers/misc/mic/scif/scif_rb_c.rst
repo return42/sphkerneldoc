@@ -10,20 +10,25 @@ scif_rb_init
 
     Initializes the ring buffer
 
-    :param struct scif_rb \*rb:
+    :param rb:
         ring buffer
+    :type rb: struct scif_rb \*
 
-    :param u32 \*read_ptr:
+    :param read_ptr:
         A pointer to the read offset
+    :type read_ptr: u32 \*
 
-    :param u32 \*write_ptr:
+    :param write_ptr:
         A pointer to the write offset
+    :type write_ptr: u32 \*
 
-    :param void \*rb_base:
+    :param rb_base:
         A pointer to the base of the ring buffer
+    :type rb_base: void \*
 
-    :param u8 size:
+    :param size:
         The size of the ring buffer in powers of two
+    :type size: u8
 
 .. _`scif_rb_space`:
 
@@ -34,8 +39,9 @@ scif_rb_space
 
     Query space available for writing to the RB
 
-    :param struct scif_rb \*rb:
+    :param rb:
         ring buffer
+    :type rb: struct scif_rb \*
 
 .. _`scif_rb_space.return`:
 
@@ -53,14 +59,17 @@ scif_rb_write
 
     Write a message to the RB
 
-    :param struct scif_rb \*rb:
+    :param rb:
         ring buffer
+    :type rb: struct scif_rb \*
 
-    :param void \*msg:
+    :param msg:
         buffer to send the message.  Must be at least size bytes long
+    :type msg: void \*
 
-    :param u32 size:
+    :param size:
         the size (in bytes) to be copied to the RB
+    :type size: u32
 
 .. _`scif_rb_write.description`:
 
@@ -85,8 +94,9 @@ scif_rb_commit
 
     To submit the message to let the peer fetch it
 
-    :param struct scif_rb \*rb:
+    :param rb:
         ring buffer
+    :type rb: struct scif_rb \*
 
 .. _`scif_rb_get`:
 
@@ -97,11 +107,13 @@ scif_rb_get
 
     To get next message from the ring buffer
 
-    :param struct scif_rb \*rb:
+    :param rb:
         ring buffer
+    :type rb: struct scif_rb \*
 
-    :param u32 size:
+    :param size:
         Number of bytes to be read
+    :type size: u32
 
 .. _`scif_rb_get.return`:
 
@@ -118,8 +130,9 @@ scif_rb_update_read_ptr
 
 .. c:function:: void scif_rb_update_read_ptr(struct scif_rb *rb)
 
-    :param struct scif_rb \*rb:
+    :param rb:
         ring buffer
+    :type rb: struct scif_rb \*
 
 .. _`scif_rb_count`:
 
@@ -128,11 +141,13 @@ scif_rb_count
 
 .. c:function:: u32 scif_rb_count(struct scif_rb *rb, u32 size)
 
-    :param struct scif_rb \*rb:
+    :param rb:
         ring buffer
+    :type rb: struct scif_rb \*
 
-    :param u32 size:
+    :param size:
         Number of bytes expected to be read
+    :type size: u32
 
 .. _`scif_rb_count.return`:
 

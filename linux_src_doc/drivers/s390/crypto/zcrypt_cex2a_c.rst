@@ -10,8 +10,9 @@ zcrypt_cex2a_card_probe
 
     since the bus_match already checked the card type.
 
-    :param struct ap_device \*ap_dev:
+    :param ap_dev:
         pointer to the AP device.
+    :type ap_dev: struct ap_device \*
 
 .. _`zcrypt_cex2a_card_remove`:
 
@@ -22,8 +23,9 @@ zcrypt_cex2a_card_remove
 
     if an AP card device is removed.
 
-    :param struct ap_device \*ap_dev:
+    :param ap_dev:
         *undescribed*
+    :type ap_dev: struct ap_device \*
 
 .. _`zcrypt_cex2a_queue_probe`:
 
@@ -34,8 +36,9 @@ zcrypt_cex2a_queue_probe
 
     since the bus_match already checked the queue type.
 
-    :param struct ap_device \*ap_dev:
+    :param ap_dev:
         pointer to the AP device.
+    :type ap_dev: struct ap_device \*
 
 .. _`zcrypt_cex2a_queue_remove`:
 
@@ -46,8 +49,9 @@ zcrypt_cex2a_queue_remove
 
     if an AP queue device is removed.
 
-    :param struct ap_device \*ap_dev:
+    :param ap_dev:
         *undescribed*
+    :type ap_dev: struct ap_device \*
 
 .. This file was automatic generated / don't edit.
 

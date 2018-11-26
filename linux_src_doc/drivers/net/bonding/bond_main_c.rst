@@ -10,14 +10,17 @@ bond_dev_queue_xmit
 
     Prepare skb for xmit.
 
-    :param struct bonding \*bond:
+    :param bond:
         bond device that got this skb for tx.
+    :type bond: struct bonding \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         hw accel VLAN tagged skb to transmit
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*slave_dev:
+    :param slave_dev:
         slave that is supposed to xmit this skbuff
+    :type slave_dev: struct net_device \*
 
 .. _`bond_vlan_rx_add_vid`:
 
@@ -28,14 +31,17 @@ bond_vlan_rx_add_vid
 
     Propagates adding an id to slaves
 
-    :param struct net_device \*bond_dev:
+    :param bond_dev:
         bonding net device that got called
+    :type bond_dev: struct net_device \*
 
-    :param __be16 proto:
+    :param proto:
         *undescribed*
+    :type proto: __be16
 
-    :param u16 vid:
+    :param vid:
         vlan id being added
+    :type vid: u16
 
 .. _`bond_vlan_rx_kill_vid`:
 
@@ -46,14 +52,17 @@ bond_vlan_rx_kill_vid
 
     Propagates deleting an id to slaves
 
-    :param struct net_device \*bond_dev:
+    :param bond_dev:
         bonding net device that got called
+    :type bond_dev: struct net_device \*
 
-    :param __be16 proto:
+    :param proto:
         *undescribed*
+    :type proto: __be16
 
-    :param u16 vid:
+    :param vid:
         vlan id being removed
+    :type vid: u16
 
 .. _`bond_set_dev_addr`:
 
@@ -64,11 +73,13 @@ bond_set_dev_addr
 
     clone slave's address to bond
 
-    :param struct net_device \*bond_dev:
+    :param bond_dev:
         bond net device
+    :type bond_dev: struct net_device \*
 
-    :param struct net_device \*slave_dev:
+    :param slave_dev:
         slave net device
+    :type slave_dev: struct net_device \*
 
 .. _`bond_set_dev_addr.description`:
 
@@ -86,8 +97,9 @@ bond_find_best_slave
 
     select the best available slave to be the active one
 
-    :param struct bonding \*bond:
+    :param bond:
         our bonding struct
+    :type bond: struct bonding \*
 
 .. _`bond_change_active_slave`:
 
@@ -98,11 +110,13 @@ bond_change_active_slave
 
     change the active slave into the specified one
 
-    :param struct bonding \*bond:
+    :param bond:
         our bonding struct
+    :type bond: struct bonding \*
 
-    :param struct slave \*new_active:
+    :param new_active:
         *undescribed*
+    :type new_active: struct slave \*
 
 .. _`bond_change_active_slave.description`:
 
@@ -128,8 +142,9 @@ bond_select_active_slave
 
     select a new active slave, if needed
 
-    :param struct bonding \*bond:
+    :param bond:
         our bonding struct
+    :type bond: struct bonding \*
 
 .. _`bond_select_active_slave.this-functions-should-be-called-when-one-of-the-following-occurs`:
 
@@ -151,11 +166,13 @@ bond_xmit_hash
 
     generate a hash value based on the xmit policy
 
-    :param struct bonding \*bond:
+    :param bond:
         bonding device
+    :type bond: struct bonding \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to use for headers
+    :type skb: struct sk_buff \*
 
 .. _`bond_xmit_hash.description`:
 
@@ -174,14 +191,17 @@ bond_xmit_slave_id
 
     transmit skb through slave with slave_id
 
-    :param struct bonding \*bond:
+    :param bond:
         bonding device that is transmitting
+    :type bond: struct bonding \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to transmit
+    :type skb: struct sk_buff \*
 
-    :param int slave_id:
+    :param slave_id:
         slave id up to slave_cnt-1 through which to transmit
+    :type slave_id: int
 
 .. _`bond_xmit_slave_id.description`:
 
@@ -201,8 +221,9 @@ bond_rr_gen_slave_id
 
     generate slave id based on packets_per_slave
 
-    :param struct bonding \*bond:
+    :param bond:
         bonding device to use
+    :type bond: struct bonding \*
 
 .. _`bond_rr_gen_slave_id.description`:
 

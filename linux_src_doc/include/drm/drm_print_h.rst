@@ -75,14 +75,17 @@ drm_vprintf
 
     print to a \ :c:type:`struct drm_printer <drm_printer>`\  stream
 
-    :param struct drm_printer \*p:
+    :param p:
         the \ :c:type:`struct drm_printer <drm_printer>`\ 
+    :type p: struct drm_printer \*
 
-    :param const char \*fmt:
+    :param fmt:
         format string
+    :type fmt: const char \*
 
-    :param va_list \*va:
+    :param va:
         the va_list
+    :type va: va_list \*
 
 .. _`drm_printf_indent`:
 
@@ -93,17 +96,109 @@ drm_printf_indent
 
     Print to a \ :c:type:`struct drm_printer <drm_printer>`\  stream with indentation
 
-    :param  printer:
+    :param printer:
         DRM printer
+    :type printer: 
 
-    :param  indent:
+    :param indent:
         Tab indentation level (max 5)
+    :type indent: 
 
-    :param  fmt:
+    :param fmt:
         Format string
+    :type fmt: 
 
     :param ellipsis ellipsis:
         variable arguments
+
+.. _`drm_print_iterator`:
+
+struct drm_print_iterator
+=========================
+
+.. c:type:: struct drm_print_iterator
+
+    local struct used with drm_printer_coredump
+
+.. _`drm_print_iterator.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_print_iterator {
+        void *data;
+        ssize_t start;
+        ssize_t remain;
+    }
+
+.. _`drm_print_iterator.members`:
+
+Members
+-------
+
+data
+    Pointer to the devcoredump output buffer
+
+start
+    The offset within the buffer to start writing
+
+remain
+    The number of bytes to write for this iteration
+
+.. _`drm_coredump_printer`:
+
+drm_coredump_printer
+====================
+
+.. c:function:: struct drm_printer drm_coredump_printer(struct drm_print_iterator *iter)
+
+    construct a \ :c:type:`struct drm_printer <drm_printer>`\  that can output to a buffer from the read function for devcoredump
+
+    :param iter:
+        A pointer to a struct drm_print_iterator for the read instance
+    :type iter: struct drm_print_iterator \*
+
+.. _`drm_coredump_printer.description`:
+
+Description
+-----------
+
+This wrapper extends \ :c:func:`drm_printf`\  to work with a \ :c:func:`dev_coredumpm`\  callback
+function. The passed in drm_print_iterator struct contains the buffer
+pointer, size and offset as passed in from devcoredump.
+
+For example::
+
+     void coredump_read(char *buffer, loff_t offset, size_t count,
+             void *data, size_t datalen)
+     {
+             struct drm_print_iterator iter;
+             struct drm_printer p;
+
+             iter.data = buffer;
+             iter.start = offset;
+             iter.remain = count;
+
+             p = drm_coredump_printer(&iter);
+
+             drm_printf(p, "foo=%d\n", foo);
+     }
+
+     void makecoredump(...)
+     {
+             ...
+             dev_coredumpm(dev, THIS_MODULE, data, 0, GFP_KERNEL,
+                     coredump_read, ...)
+     }
+
+.. _`drm_coredump_printer.return`:
+
+Return
+------
+
+The \ :c:type:`struct drm_printer <drm_printer>`\  object
 
 .. _`drm_seq_file_printer`:
 
@@ -114,8 +209,9 @@ drm_seq_file_printer
 
     construct a \ :c:type:`struct drm_printer <drm_printer>`\  that outputs to \ :c:type:`struct seq_file <seq_file>`\ 
 
-    :param struct seq_file \*f:
+    :param f:
         the \ :c:type:`struct seq_file <seq_file>`\  to output to
+    :type f: struct seq_file \*
 
 .. _`drm_seq_file_printer.return`:
 
@@ -133,8 +229,9 @@ drm_info_printer
 
     construct a \ :c:type:`struct drm_printer <drm_printer>`\  that outputs to \ :c:func:`dev_printk`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\  pointer
+    :type dev: struct device \*
 
 .. _`drm_info_printer.return`:
 
@@ -152,8 +249,9 @@ drm_debug_printer
 
     construct a \ :c:type:`struct drm_printer <drm_printer>`\  that outputs to \ :c:func:`pr_debug`\ 
 
-    :param const char \*prefix:
+    :param prefix:
         debug output prefix
+    :type prefix: const char \*
 
 .. _`drm_debug_printer.return`:
 
@@ -169,11 +267,13 @@ DRM_DEV_ERROR
 
 .. c:function::  DRM_DEV_ERROR( dev,  fmt,  ...)
 
-    :param  dev:
+    :param dev:
         device pointer
+    :type dev: 
 
-    :param  fmt:
+    :param fmt:
         \ :c:func:`printf`\  like format string.
+    :type fmt: 
 
     :param ellipsis ellipsis:
         variable arguments
@@ -185,11 +285,13 @@ DRM_DEV_ERROR_RATELIMITED
 
 .. c:function::  DRM_DEV_ERROR_RATELIMITED( dev,  fmt,  ...)
 
-    :param  dev:
+    :param dev:
         device pointer
+    :type dev: 
 
-    :param  fmt:
+    :param fmt:
         \ :c:func:`printf`\  like format string.
+    :type fmt: 
 
     :param ellipsis ellipsis:
         variable arguments
@@ -201,11 +303,13 @@ DRM_DEV_DEBUG
 
 .. c:function::  DRM_DEV_DEBUG( dev,  fmt,  ...)
 
-    :param  dev:
+    :param dev:
         device pointer
+    :type dev: 
 
-    :param  fmt:
+    :param fmt:
         \ :c:func:`printf`\  like format string.
+    :type fmt: 
 
     :param ellipsis ellipsis:
         variable arguments
@@ -217,11 +321,13 @@ DRM_DEV_DEBUG_RATELIMITED
 
 .. c:function::  DRM_DEV_DEBUG_RATELIMITED( dev,  fmt,  ...)
 
-    :param  dev:
+    :param dev:
         device pointer
+    :type dev: 
 
-    :param  fmt:
+    :param fmt:
         \ :c:func:`printf`\  like format string.
+    :type fmt: 
 
     :param ellipsis ellipsis:
         variable arguments

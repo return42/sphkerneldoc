@@ -186,7 +186,7 @@ Definition
         u8 dialog_token;
         u8 stop_initiator;
         bool tx_stop;
-        u8 buf_size;
+        u16 buf_size;
         u16 failed_bar_ssn;
         bool bar_pending;
         bool amsdu;
@@ -948,11 +948,13 @@ __sta_info_flush
 
     flush matching STA entries from the STA table
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         sdata to remove all stations from
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param bool vlans:
+    :param vlans:
         if the given interface is an AP interface, also flush VLANs
+    :type vlans: bool
 
 .. _`__sta_info_flush.description`:
 

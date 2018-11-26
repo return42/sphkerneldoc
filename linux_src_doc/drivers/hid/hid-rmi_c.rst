@@ -90,11 +90,13 @@ rmi_set_page
 
     Set RMI page
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         The pointer to the hid_device struct
+    :type hdev: struct hid_device \*
 
-    :param u8 page:
+    :param page:
         The new page address.
+    :type page: u8
 
 .. _`rmi_set_page.description`:
 

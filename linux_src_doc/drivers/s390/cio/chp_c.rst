@@ -10,8 +10,9 @@ chp_get_sch_opm
 
     return opm for subchannel
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel
+    :type sch: struct subchannel \*
 
 .. _`chp_get_sch_opm.description`:
 
@@ -30,8 +31,9 @@ chp_is_registered
 
     check if a channel-path is registered
 
-    :param struct chp_id chpid:
+    :param chpid:
         channel-path ID
+    :type chpid: struct chp_id
 
 .. _`chp_is_registered.description`:
 
@@ -50,8 +52,9 @@ chp_update_desc
 
     update channel-path description
 
-    :param struct channel_path \*chp:
+    :param chp:
         channel-path
+    :type chp: struct channel_path \*
 
 .. _`chp_update_desc.description`:
 
@@ -71,8 +74,9 @@ chp_new
 
     register a new channel-path
 
-    :param struct chp_id chpid:
+    :param chpid:
         channel-path ID
+    :type chpid: struct chp_id
 
 .. _`chp_new.description`:
 
@@ -91,8 +95,9 @@ chp_get_chp_desc
 
     return newly allocated channel-path description
 
-    :param struct chp_id chpid:
+    :param chpid:
         channel-path ID
+    :type chpid: struct chp_id
 
 .. _`chp_get_chp_desc.description`:
 
@@ -111,14 +116,17 @@ chp_process_crw
 
     process channel-path status change
 
-    :param struct crw \*crw0:
+    :param crw0:
         channel report-word to handler
+    :type crw0: struct crw \*
 
-    :param struct crw \*crw1:
+    :param crw1:
         second channel-report word (always NULL)
+    :type crw1: struct crw \*
 
-    :param int overflow:
+    :param overflow:
         crw overflow indication
+    :type overflow: int
 
 .. _`chp_process_crw.description`:
 
@@ -137,8 +145,9 @@ chp_info_get_status
 
     retrieve configure status of a channel-path
 
-    :param struct chp_id chpid:
+    :param chpid:
         channel-path ID
+    :type chpid: struct chp_id
 
 .. _`chp_info_get_status.description`:
 
@@ -157,11 +166,13 @@ chp_cfg_schedule
 
     schedule chpid configuration request
 
-    :param struct chp_id chpid:
+    :param chpid:
         channel-path ID
+    :type chpid: struct chp_id
 
-    :param int configure:
+    :param configure:
         Non-zero for configure, zero for deconfigure
+    :type configure: int
 
 .. _`chp_cfg_schedule.description`:
 
@@ -179,8 +190,9 @@ chp_cfg_cancel_deconfigure
 
     cancel chpid deconfiguration request
 
-    :param struct chp_id chpid:
+    :param chpid:
         channel-path ID
+    :type chpid: struct chp_id
 
 .. _`chp_cfg_cancel_deconfigure.description`:
 

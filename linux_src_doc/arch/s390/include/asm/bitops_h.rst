@@ -10,8 +10,9 @@
 
     find leftmost one \ ``word``\  - The word to search
 
-    :param unsigned long word:
+    :param word:
         *undescribed*
+    :type word: unsigned long
 
 .. _`__flogr.description`:
 
@@ -31,8 +32,9 @@ If no bit is set this function returns 64.
 
     find first bit in word.
 
-    :param unsigned long word:
+    :param word:
         The word to search
+    :type word: unsigned long
 
 .. _`__ffs.description`:
 
@@ -50,8 +52,9 @@ ffs
 
     find first bit set
 
-    :param int word:
+    :param word:
         the word to search
+    :type word: int
 
 .. _`ffs.description`:
 
@@ -70,8 +73,9 @@ compiler builtin ffs routines (man ffs).
 
     find last (most-significant) set bit in a long word
 
-    :param unsigned long word:
+    :param word:
         the word to search
+    :type word: unsigned long
 
 .. _`__fls.description`:
 
@@ -89,8 +93,9 @@ fls64
 
     find last set bit in a 64-bit word
 
-    :param unsigned long word:
+    :param word:
         the word to search
+    :type word: unsigned long
 
 .. _`fls64.description`:
 
@@ -113,8 +118,9 @@ fls
 
     find last (most-significant) bit set
 
-    :param int word:
+    :param word:
         the word to search
+    :type word: int
 
 .. _`fls.description`:
 

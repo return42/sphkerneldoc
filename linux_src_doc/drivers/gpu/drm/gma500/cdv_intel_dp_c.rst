@@ -47,8 +47,9 @@ is_edp
 
     is the given port attached to an eDP panel (either CPU or PCH)
 
-    :param struct gma_encoder \*encoder:
+    :param encoder:
         *undescribed*
+    :type encoder: struct gma_encoder \*
 
 .. _`is_edp.description`:
 
@@ -65,11 +66,13 @@ cdv_intel_dp_detect
 
 .. c:function:: enum drm_connector_status cdv_intel_dp_detect(struct drm_connector *connector, bool force)
 
-    :param struct drm_connector \*connector:
+    :param connector:
         *undescribed*
+    :type connector: struct drm_connector \*
 
-    :param bool force:
+    :param force:
         *undescribed*
+    :type force: bool
 
 .. _`cdv_intel_dp_detect.description`:
 

@@ -10,8 +10,9 @@ handle_external_interrupt
 
     used for external interruption interceptions
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`handle_external_interrupt.description`:
 
@@ -30,8 +31,9 @@ handle_mvpg_pei
 
 .. c:function:: int handle_mvpg_pei(struct kvm_vcpu *vcpu)
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`handle_mvpg_pei.description`:
 

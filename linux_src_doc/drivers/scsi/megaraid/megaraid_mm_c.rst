@@ -10,11 +10,13 @@ mraid_mm_open
 
     open routine for char node interface
 
-    :param struct inode \*inode:
+    :param inode:
         unused
+    :type inode: struct inode \*
 
-    :param struct file \*filep:
+    :param filep:
         unused
+    :type filep: struct file \*
 
 .. _`mraid_mm_open.description`:
 
@@ -32,14 +34,17 @@ mraid_mm_ioctl
 
     module entry-point for ioctls
 
-    :param struct file \*filep:
+    :param filep:
         file operations pointer (ignored)
+    :type filep: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         user ioctl packet
+    :type arg: unsigned long
 
 .. _`mraid_mm_get_adapter`:
 
@@ -50,11 +55,13 @@ mraid_mm_get_adapter
 
     Returns corresponding adapters for the mimd packet
 
-    :param mimd_t __user \*umimd:
+    :param umimd:
         User space mimd_t ioctl packet
+    :type umimd: mimd_t __user \*
 
-    :param int \*rval:
+    :param rval:
         returned success/error status
+    :type rval: int \*
 
 .. _`mraid_mm_get_adapter.description`:
 
@@ -72,14 +79,17 @@ handle_drvrcmd
 
     Checks if the opcode is a driver cmd and if it is, handles it.
 
-    :param void __user \*arg:
+    :param arg:
         packet sent by the user app
+    :type arg: void __user \*
 
-    :param uint8_t old_ioctl:
+    :param old_ioctl:
         mimd if 1; uioc otherwise
+    :type old_ioctl: uint8_t
 
-    :param int \*rval:
+    :param rval:
         pointer for command's returned value (not function status)
+    :type rval: int \*
 
 .. _`mimd_to_kioc`:
 
@@ -90,14 +100,17 @@ mimd_to_kioc
 
     Converter from old to new ioctl format
 
-    :param mimd_t __user \*umimd:
+    :param umimd:
         user space old MIMD IOCTL
+    :type umimd: mimd_t __user \*
 
-    :param mraid_mmadp_t \*adp:
+    :param adp:
         adapter softstate
+    :type adp: mraid_mmadp_t \*
 
-    :param uioc_t \*kioc:
+    :param kioc:
         kernel space new format IOCTL
+    :type kioc: uioc_t \*
 
 .. _`mimd_to_kioc.description`:
 
@@ -117,14 +130,17 @@ mraid_mm_attach_buf
 
     Attach a free dma buffer for required size
 
-    :param mraid_mmadp_t \*adp:
+    :param adp:
         Adapter softstate
+    :type adp: mraid_mmadp_t \*
 
-    :param uioc_t \*kioc:
+    :param kioc:
         kioc that the buffer needs to be attached to
+    :type kioc: uioc_t \*
 
-    :param int xferlen:
+    :param xferlen:
         required length for buffer
+    :type xferlen: int
 
 .. _`mraid_mm_attach_buf.description`:
 
@@ -145,8 +161,9 @@ mraid_mm_alloc_kioc
 
     Returns a uioc_t from free list
 
-    :param mraid_mmadp_t \*adp:
+    :param adp:
         Adapter softstate for this module
+    :type adp: mraid_mmadp_t \*
 
 .. _`mraid_mm_alloc_kioc.description`:
 
@@ -166,11 +183,13 @@ mraid_mm_dealloc_kioc
 
     Return kioc to free pool
 
-    :param mraid_mmadp_t \*adp:
+    :param adp:
         Adapter softstate
+    :type adp: mraid_mmadp_t \*
 
-    :param uioc_t \*kioc:
+    :param kioc:
         uioc_t node to be returned to free pool
+    :type kioc: uioc_t \*
 
 .. _`lld_ioctl`:
 
@@ -181,11 +200,13 @@ lld_ioctl
 
     Routine to issue ioctl to low level drvr
 
-    :param mraid_mmadp_t \*adp:
+    :param adp:
         The adapter handle
+    :type adp: mraid_mmadp_t \*
 
-    :param uioc_t \*kioc:
+    :param kioc:
         The ioctl packet with kernel addresses
+    :type kioc: uioc_t \*
 
 .. _`ioctl_done`:
 
@@ -196,8 +217,9 @@ ioctl_done
 
     callback from the low level driver
 
-    :param uioc_t \*kioc:
+    :param kioc:
         completed ioctl packet
+    :type kioc: uioc_t \*
 
 .. _`lld_timedout`:
 
@@ -208,8 +230,9 @@ lld_timedout
 
     callback from the expired timer
 
-    :param struct timer_list \*t:
+    :param t:
         timer that timed out
+    :type t: struct timer_list \*
 
 .. _`kioc_to_mimd`:
 
@@ -220,11 +243,13 @@ kioc_to_mimd
 
     Converter from new back to old format
 
-    :param uioc_t \*kioc:
+    :param kioc:
         Kernel space IOCTL packet (successfully issued)
+    :type kioc: uioc_t \*
 
-    :param mimd_t __user \*mimd:
+    :param mimd:
         User space MIMD packet
+    :type mimd: mimd_t __user \*
 
 .. _`hinfo_to_cinfo`:
 
@@ -235,11 +260,13 @@ hinfo_to_cinfo
 
     Convert new format hba info into old format
 
-    :param mraid_hba_info_t \*hinfo:
+    :param hinfo:
         New format, more comprehensive adapter info
+    :type hinfo: mraid_hba_info_t \*
 
-    :param mcontroller_t \*cinfo:
+    :param cinfo:
         Old format adapter info to support mimd_t apps
+    :type cinfo: mcontroller_t \*
 
 .. _`mraid_mm_register_adp`:
 
@@ -250,8 +277,9 @@ mraid_mm_register_adp
 
     Registration routine for low level drivers
 
-    :param mraid_mmadp_t \*lld_adp:
+    :param lld_adp:
         Adapter object
+    :type lld_adp: mraid_mmadp_t \*
 
 .. _`mraid_mm_adapter_app_handle`:
 
@@ -262,8 +290,9 @@ mraid_mm_adapter_app_handle
 
     return the application handle for this adapter
 
-    :param uint32_t unique_id:
+    :param unique_id:
         adapter unique identifier
+    :type unique_id: uint32_t
 
 .. _`mraid_mm_adapter_app_handle.description`:
 
@@ -286,8 +315,9 @@ mraid_mm_setup_dma_pools
 
     Set up dma buffer pools per adapter
 
-    :param mraid_mmadp_t \*adp:
+    :param adp:
         Adapter softstate
+    :type adp: mraid_mmadp_t \*
 
 .. _`mraid_mm_setup_dma_pools.description`:
 
@@ -309,8 +339,9 @@ mraid_mm_unregister_adp
 
     Unregister routine for low level drivers
 
-    :param uint32_t unique_id:
+    :param unique_id:
         UID of the adpater
+    :type unique_id: uint32_t
 
 .. _`mraid_mm_unregister_adp.description`:
 
@@ -328,8 +359,9 @@ mraid_mm_free_adp_resources
 
     Free adapter softstate
 
-    :param mraid_mmadp_t \*adp:
+    :param adp:
         Adapter softstate
+    :type adp: mraid_mmadp_t \*
 
 .. _`mraid_mm_teardown_dma_pools`:
 
@@ -340,8 +372,9 @@ mraid_mm_teardown_dma_pools
 
     Free all per adapter dma buffers
 
-    :param mraid_mmadp_t \*adp:
+    :param adp:
         Adapter softstate
+    :type adp: mraid_mmadp_t \*
 
 .. _`mraid_mm_init`:
 
@@ -352,8 +385,9 @@ mraid_mm_init
 
     Module entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mraid_mm_compat_ioctl`:
 
@@ -364,14 +398,17 @@ mraid_mm_compat_ioctl
 
     32bit to 64bit ioctl conversion routine
 
-    :param struct file \*filep:
+    :param filep:
         file operations pointer (ignored)
+    :type filep: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         user ioctl packet
+    :type arg: unsigned long
 
 .. _`mraid_mm_exit`:
 
@@ -382,8 +419,9 @@ mraid_mm_exit
 
     Module exit point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ wdrtas_set_interval
 
     sets the watchdog interval
 
-    :param int interval:
+    :param interval:
         new interval
+    :type interval: int
 
 .. _`wdrtas_set_interval.description`:
 
@@ -33,8 +34,9 @@ wdrtas_get_interval
 
     returns the current watchdog interval
 
-    :param int fallback_value:
+    :param fallback_value:
         value (in seconds) to use, if the RTAS call fails
+    :type fallback_value: int
 
 .. _`wdrtas_get_interval.description`:
 
@@ -56,8 +58,9 @@ wdrtas_timer_start
 
     starts watchdog
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_timer_start.description`:
 
@@ -76,8 +79,9 @@ wdrtas_timer_stop
 
     stops watchdog
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_timer_stop.description`:
 
@@ -96,8 +100,9 @@ wdrtas_timer_keepalive
 
     resets watchdog timer to keep system alive
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_timer_keepalive.description`:
 
@@ -117,8 +122,9 @@ wdrtas_get_temperature
 
     returns current temperature
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_get_temperature.description`:
 
@@ -139,8 +145,9 @@ wdrtas_get_status
 
     returns the status of the watchdog
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_get_status.description`:
 
@@ -159,8 +166,9 @@ wdrtas_get_boot_status
 
     returns the reason for the last boot
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_get_boot_status.description`:
 
@@ -179,14 +187,17 @@ wdrtas_ioctl
 
     ioctl function for the watchdog device
 
-    :param struct file \*file:
+    :param file:
         file structure
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         command for ioctl
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         argument pointer
+    :type arg: unsigned long
 
 .. _`wdrtas_ioctl.description`:
 
@@ -206,11 +217,13 @@ wdrtas_open
 
     open function of watchdog device
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file structure
+    :type file: struct file \*
 
 .. _`wdrtas_open.description`:
 
@@ -231,11 +244,13 @@ wdrtas_close
 
     close function of watchdog device
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file structure
+    :type file: struct file \*
 
 .. _`wdrtas_close.description`:
 
@@ -255,17 +270,21 @@ wdrtas_temp_read
 
     gives back the temperature in fahrenheit
 
-    :param struct file \*file:
+    :param file:
         file structure
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         user buffer
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes to be read
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         position in file
+    :type ppos: loff_t \*
 
 .. _`wdrtas_temp_read.description`:
 
@@ -287,11 +306,13 @@ wdrtas_temp_open
 
     open function of temperature device
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file structure
+    :type file: struct file \*
 
 .. _`wdrtas_temp_open.description`:
 
@@ -311,11 +332,13 @@ wdrtas_temp_close
 
     close function of temperature device
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file structure
+    :type file: struct file \*
 
 .. _`wdrtas_temp_close.description`:
 
@@ -335,14 +358,17 @@ wdrtas_reboot
 
     reboot notifier function
 
-    :param struct notifier_block \*this:
+    :param this:
         *undescribed*
+    :type this: struct notifier_block \*
 
-    :param unsigned long code:
+    :param code:
         reboot code
+    :type code: unsigned long
 
-    :param void \*ptr:
+    :param ptr:
         unused
+    :type ptr: void \*
 
 .. _`wdrtas_reboot.description`:
 
@@ -362,8 +388,9 @@ wdrtas_get_tokens
 
     reads in RTAS tokens
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_get_tokens.description`:
 
@@ -385,8 +412,9 @@ wdrtas_unregister_devs
 
     unregisters the misc dev handlers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_unregister_devs.description`:
 
@@ -405,8 +433,9 @@ wdrtas_register_devs
 
     registers the misc dev handlers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_register_devs.description`:
 
@@ -427,8 +456,9 @@ wdrtas_init
 
     init function of the watchdog driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_init.description`:
 
@@ -448,8 +478,9 @@ wdrtas_exit
 
     exit function of the watchdog driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`wdrtas_exit.description`:
 

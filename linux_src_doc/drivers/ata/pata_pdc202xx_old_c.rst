@@ -10,14 +10,17 @@ pdc202xx_configure_piomode
 
     set chip PIO timing
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param int pio:
+    :param pio:
         PIO mode
+    :type pio: int
 
 .. _`pdc202xx_configure_piomode.description`:
 
@@ -37,11 +40,13 @@ pdc202xx_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`pdc202xx_set_piomode.description`:
 
@@ -60,11 +65,13 @@ pdc202xx_set_dmamode
 
     set DMA mode in chip
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`pdc202xx_set_dmamode.description`:
 
@@ -83,8 +90,9 @@ pdc2026x_bmdma_start
 
     DMA engine begin
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`pdc2026x_bmdma_start.description`:
 
@@ -111,8 +119,9 @@ pdc2026x_bmdma_stop
 
     DMA engine stop
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`pdc2026x_bmdma_stop.description`:
 
@@ -139,8 +148,9 @@ pdc2026x_dev_config
 
     device setup hook
 
-    :param struct ata_device \*adev:
+    :param adev:
         newly found device
+    :type adev: struct ata_device \*
 
 .. _`pdc2026x_dev_config.description`:
 
@@ -160,8 +170,9 @@ pdc2026x_check_atapi_dma
 
     Check whether ATAPI DMA can be supported for this command
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Metadata associated with taskfile to check
+    :type qc: struct ata_queued_cmd \*
 
 .. _`pdc2026x_check_atapi_dma.description`:
 

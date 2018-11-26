@@ -10,8 +10,9 @@ batadv_socket_init
 
     Initialize soft interface independent socket data
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_socket_setup`:
 
@@ -22,8 +23,9 @@ batadv_socket_setup
 
     Create debugfs "socket" file
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_socket_setup.return`:
 
@@ -41,14 +43,17 @@ batadv_socket_add_packet
 
     schedule an icmp packet to be sent to userspace on an icmp socket.
 
-    :param struct batadv_socket_client \*socket_client:
+    :param socket_client:
         the socket this packet belongs to
+    :type socket_client: struct batadv_socket_client \*
 
-    :param struct batadv_icmp_header \*icmph:
+    :param icmph:
         pointer to the header of the icmp packet
+    :type icmph: struct batadv_icmp_header \*
 
-    :param size_t icmp_len:
+    :param icmp_len:
         total length of the icmp packet
+    :type icmp_len: size_t
 
 .. _`batadv_socket_receive_packet`:
 
@@ -59,11 +64,13 @@ batadv_socket_receive_packet
 
     schedule an icmp packet to be received locally and sent to userspace.
 
-    :param struct batadv_icmp_header \*icmph:
+    :param icmph:
         pointer to the header of the icmp packet
+    :type icmph: struct batadv_icmp_header \*
 
-    :param size_t icmp_len:
+    :param icmp_len:
         total length of the icmp packet
+    :type icmp_len: size_t
 
 .. This file was automatic generated / don't edit.
 

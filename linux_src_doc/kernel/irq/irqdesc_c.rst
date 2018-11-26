@@ -10,8 +10,9 @@ generic_handle_irq
 
     Invoke the handler for a particular irq
 
-    :param unsigned int irq:
+    :param irq:
         The irq number to handle
+    :type irq: unsigned int
 
 .. _`__handle_domain_irq`:
 
@@ -22,17 +23,21 @@ __handle_domain_irq
 
     Invoke the handler for a HW irq belonging to a domain
 
-    :param struct irq_domain \*domain:
+    :param domain:
         The domain where to perform the lookup
+    :type domain: struct irq_domain \*
 
-    :param unsigned int hwirq:
+    :param hwirq:
         The HW irq number to convert to a logical one
+    :type hwirq: unsigned int
 
-    :param bool lookup:
+    :param lookup:
         Whether to perform the domain lookup or not
+    :type lookup: bool
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Register file coming from the low-level handling code
+    :type regs: struct pt_regs \*
 
 .. _`__handle_domain_irq.return`:
 
@@ -50,11 +55,13 @@ irq_free_descs
 
     free irq descriptors
 
-    :param unsigned int from:
+    :param from:
         Start of descriptor range
+    :type from: unsigned int
 
-    :param unsigned int cnt:
+    :param cnt:
         Number of consecutive irqs to free
+    :type cnt: unsigned int
 
 .. _`__irq_alloc_descs`:
 
@@ -65,25 +72,31 @@ __irq_alloc_descs
 
     allocate and initialize a range of irq descriptors
 
-    :param int irq:
+    :param irq:
         Allocate for specific irq number if irq >= 0
+    :type irq: int
 
-    :param unsigned int from:
+    :param from:
         Start the search from this irq number
+    :type from: unsigned int
 
-    :param unsigned int cnt:
+    :param cnt:
         Number of consecutive irqs to allocate.
+    :type cnt: unsigned int
 
-    :param int node:
+    :param node:
         Preferred node on which the irq descriptor should be allocated
+    :type node: int
 
-    :param struct module \*owner:
+    :param owner:
         Owning module (can be NULL)
+    :type owner: struct module \*
 
-    :param const struct cpumask \*affinity:
+    :param affinity:
         Optional pointer to an affinity mask array of size \ ``cnt``\  which
         hints where the irq descriptors should be allocated and which
         default affinities to use
+    :type affinity: const struct cpumask \*
 
 .. _`__irq_alloc_descs.description`:
 
@@ -101,11 +114,13 @@ irq_alloc_hwirqs
 
     Allocate an irq descriptor and initialize the hardware
 
-    :param int cnt:
+    :param cnt:
         number of interrupts to allocate
+    :type cnt: int
 
-    :param int node:
+    :param node:
         node on which to allocate
+    :type node: int
 
 .. _`irq_alloc_hwirqs.description`:
 
@@ -123,11 +138,13 @@ irq_free_hwirqs
 
     Free irq descriptor and cleanup the hardware
 
-    :param unsigned int from:
+    :param from:
         Free from irq number
+    :type from: unsigned int
 
-    :param int cnt:
+    :param cnt:
         number of interrupts to free
+    :type cnt: int
 
 .. _`irq_get_next_irq`:
 
@@ -138,8 +155,9 @@ irq_get_next_irq
 
     get next allocated irq number
 
-    :param unsigned int offset:
+    :param offset:
         where to start the search
+    :type offset: unsigned int
 
 .. _`irq_get_next_irq.description`:
 
@@ -157,11 +175,13 @@ kstat_irqs_cpu
 
     Get the statistics for an interrupt on a cpu
 
-    :param unsigned int irq:
+    :param irq:
         The interrupt number
+    :type irq: unsigned int
 
-    :param int cpu:
+    :param cpu:
         The cpu number
+    :type cpu: int
 
 .. _`kstat_irqs_cpu.description`:
 
@@ -181,8 +201,9 @@ kstat_irqs
 
     Get the statistics for an interrupt
 
-    :param unsigned int irq:
+    :param irq:
         The interrupt number
+    :type irq: unsigned int
 
 .. _`kstat_irqs.description`:
 
@@ -202,18 +223,19 @@ kstat_irqs_usr
 
     Get the statistics for an interrupt
 
-    :param unsigned int irq:
+    :param irq:
         The interrupt number
+    :type irq: unsigned int
 
 .. _`kstat_irqs_usr.description`:
 
 Description
 -----------
 
-Returns the sum of interrupt counts on all cpus since boot for
-\ ``irq``\ . Contrary to \ :c:func:`kstat_irqs`\  this can be called from any
-preemptible context. It's protected against concurrent removal of
-an interrupt descriptor when sparse irqs are enabled.
+Returns the sum of interrupt counts on all cpus since boot for \ ``irq``\ .
+Contrary to \ :c:func:`kstat_irqs`\  this can be called from any context.
+It uses rcu since a concurrent removal of an interrupt descriptor is
+observing an rcu grace period before \ :c:func:`delayed_free_desc`\ /irq_kobj_release().
 
 .. This file was automatic generated / don't edit.
 

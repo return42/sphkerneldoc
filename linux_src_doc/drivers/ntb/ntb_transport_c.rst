@@ -10,8 +10,9 @@ ntb_transport_unregister_client_dev
 
     Unregister NTB client device
 
-    :param char \*device_name:
+    :param device_name:
         Name of NTB client device
+    :type device_name: char \*
 
 .. _`ntb_transport_unregister_client_dev.description`:
 
@@ -29,8 +30,9 @@ ntb_transport_register_client_dev
 
     Register NTB client device
 
-    :param char \*device_name:
+    :param device_name:
         Name of NTB client device
+    :type device_name: char \*
 
 .. _`ntb_transport_register_client_dev.description`:
 
@@ -48,8 +50,9 @@ ntb_transport_register_client
 
     Register NTB client driver
 
-    :param struct ntb_transport_client \*drv:
+    :param drv:
         NTB client driver to be registered
+    :type drv: struct ntb_transport_client \*
 
 .. _`ntb_transport_register_client.description`:
 
@@ -74,8 +77,9 @@ ntb_transport_unregister_client
 
     Unregister NTB client driver
 
-    :param struct ntb_transport_client \*drv:
+    :param drv:
         NTB client driver to be unregistered
+    :type drv: struct ntb_transport_client \*
 
 .. _`ntb_transport_unregister_client.description`:
 
@@ -100,14 +104,17 @@ ntb_transport_create_queue
 
     Create a new NTB transport layer queue
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct device \*client_dev:
+    :param client_dev:
         *undescribed*
+    :type client_dev: struct device \*
 
-    :param const struct ntb_queue_handlers \*handlers:
+    :param handlers:
         *undescribed*
+    :type handlers: const struct ntb_queue_handlers \*
 
 .. _`ntb_transport_create_queue.description`:
 
@@ -136,8 +143,9 @@ ntb_transport_free_queue
 
     Frees NTB transport queue
 
-    :param struct ntb_transport_qp \*qp:
+    :param qp:
         NTB queue to be freed
+    :type qp: struct ntb_transport_qp \*
 
 .. _`ntb_transport_free_queue.description`:
 
@@ -155,11 +163,13 @@ ntb_transport_rx_remove
 
     Dequeues enqueued rx packet
 
-    :param struct ntb_transport_qp \*qp:
+    :param qp:
         NTB queue to be freed
+    :type qp: struct ntb_transport_qp \*
 
-    :param unsigned int \*len:
+    :param len:
         pointer to variable to write enqueued buffers length
+    :type len: unsigned int \*
 
 .. _`ntb_transport_rx_remove.description`:
 
@@ -185,17 +195,21 @@ ntb_transport_rx_enqueue
 
     Enqueue a new NTB queue entry
 
-    :param struct ntb_transport_qp \*qp:
+    :param qp:
         NTB transport layer queue the entry is to be enqueued on
+    :type qp: struct ntb_transport_qp \*
 
-    :param void \*cb:
+    :param cb:
         per buffer pointer for callback function to use
+    :type cb: void \*
 
-    :param void \*data:
+    :param data:
         pointer to data buffer that incoming packets will be copied into
+    :type data: void \*
 
-    :param unsigned int len:
+    :param len:
         length of the data buffer
+    :type len: unsigned int
 
 .. _`ntb_transport_rx_enqueue.description`:
 
@@ -221,17 +235,21 @@ ntb_transport_tx_enqueue
 
     Enqueue a new NTB queue entry
 
-    :param struct ntb_transport_qp \*qp:
+    :param qp:
         NTB transport layer queue the entry is to be enqueued on
+    :type qp: struct ntb_transport_qp \*
 
-    :param void \*cb:
+    :param cb:
         per buffer pointer for callback function to use
+    :type cb: void \*
 
-    :param void \*data:
+    :param data:
         pointer to data buffer that will be sent
+    :type data: void \*
 
-    :param unsigned int len:
+    :param len:
         length of the data buffer
+    :type len: unsigned int
 
 .. _`ntb_transport_tx_enqueue.description`:
 
@@ -258,8 +276,9 @@ ntb_transport_link_up
 
     Notify NTB transport of client readiness to use queue
 
-    :param struct ntb_transport_qp \*qp:
+    :param qp:
         NTB transport layer queue to be enabled
+    :type qp: struct ntb_transport_qp \*
 
 .. _`ntb_transport_link_up.description`:
 
@@ -277,8 +296,9 @@ ntb_transport_link_down
 
     Notify NTB transport to no longer enqueue data
 
-    :param struct ntb_transport_qp \*qp:
+    :param qp:
         NTB transport layer queue to be disabled
+    :type qp: struct ntb_transport_qp \*
 
 .. _`ntb_transport_link_down.description`:
 
@@ -298,8 +318,9 @@ ntb_transport_link_query
 
     Query transport link state
 
-    :param struct ntb_transport_qp \*qp:
+    :param qp:
         NTB transport layer queue to be queried
+    :type qp: struct ntb_transport_qp \*
 
 .. _`ntb_transport_link_query.description`:
 
@@ -324,8 +345,9 @@ ntb_transport_qp_num
 
     Query the qp number
 
-    :param struct ntb_transport_qp \*qp:
+    :param qp:
         NTB transport layer queue to be queried
+    :type qp: struct ntb_transport_qp \*
 
 .. _`ntb_transport_qp_num.description`:
 
@@ -350,8 +372,9 @@ ntb_transport_max_size
 
     Query the max payload size of a qp
 
-    :param struct ntb_transport_qp \*qp:
+    :param qp:
         NTB transport layer queue to be queried
+    :type qp: struct ntb_transport_qp \*
 
 .. _`ntb_transport_max_size.description`:
 

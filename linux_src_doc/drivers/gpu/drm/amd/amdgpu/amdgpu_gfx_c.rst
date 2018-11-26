@@ -10,11 +10,13 @@ amdgpu_gfx_scratch_get
 
     Allocate a scratch register
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t \*reg:
+    :param reg:
         scratch register mmio offset
+    :type reg: uint32_t \*
 
 .. _`amdgpu_gfx_scratch_get.description`:
 
@@ -33,11 +35,13 @@ amdgpu_gfx_scratch_free
 
     Free a scratch register
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t reg:
+    :param reg:
         scratch register mmio offset
+    :type reg: uint32_t
 
 .. _`amdgpu_gfx_scratch_free.description`:
 
@@ -55,14 +59,17 @@ amdgpu_gfx_parse_disable_cu
 
     Parse the disable_cu module parameter
 
-    :param unsigned \*mask:
+    :param mask:
         array in which the per-shader array disable masks will be stored
+    :type mask: unsigned \*
 
-    :param unsigned max_se:
+    :param max_se:
         number of SEs
+    :type max_se: unsigned
 
-    :param unsigned max_sh:
+    :param max_sh:
         number of SHs
+    :type max_sh: unsigned
 
 .. _`amdgpu_gfx_parse_disable_cu.description`:
 

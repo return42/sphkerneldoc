@@ -10,17 +10,21 @@ fb_try_mode
 
     test a video mode
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer user defined part of display
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
-    :param const struct fb_videomode \*mode:
+    :param mode:
         frame buffer video mode structure
+    :type mode: const struct fb_videomode \*
 
-    :param unsigned int bpp:
+    :param bpp:
         color depth in bits per pixel
+    :type bpp: unsigned int
 
 .. _`fb_try_mode.description`:
 
@@ -40,54 +44,64 @@ fb_find_mode
 
     finds a valid video mode
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer user defined part of display
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
-    :param const char \*mode_option:
+    :param mode_option:
         string video mode to find
+    :type mode_option: const char \*
 
-    :param const struct fb_videomode \*db:
+    :param db:
         video mode database
+    :type db: const struct fb_videomode \*
 
-    :param unsigned int dbsize:
+    :param dbsize:
         size of \ ``db``\ 
+    :type dbsize: unsigned int
 
-    :param const struct fb_videomode \*default_mode:
+    :param default_mode:
         default video mode to fall back to
+    :type default_mode: const struct fb_videomode \*
 
-    :param unsigned int default_bpp:
+    :param default_bpp:
         default color depth in bits per pixel
+    :type default_bpp: unsigned int
 
 .. _`fb_find_mode.description`:
 
 Description
 -----------
 
-    Finds a suitable video mode, starting with the specified mode
-    in \ ``mode_option``\  with fallback to \ ``default_mode``\ .  If
-    \ ``default_mode``\  fails, all modes in the video mode database will
-    be tried.
+Finds a suitable video mode, starting with the specified mode
+in \ ``mode_option``\  with fallback to \ ``default_mode``\ .  If
+\ ``default_mode``\  fails, all modes in the video mode database will
+be tried.
 
-    Valid mode specifiers for \ ``mode_option``\ :
+Valid mode specifiers for \ ``mode_option``\ ::
 
-    <xres>x<yres>[M][R][-<bpp>][@<refresh>][i][m] or
+    <xres>x<yres>[M][R][-<bpp>][@<refresh>][i][p][m]
+
+or ::
+
     <name>[-<bpp>][@<refresh>]
 
-    with <xres>, <yres>, <bpp> and <refresh> decimal numbers and
-    <name> a string.
+with <xres>, <yres>, <bpp> and <refresh> decimal numbers and
+<name> a string.
 
-     If 'M' is present after yres (and before refresh/bpp if present),
-     the function will compute the timings using VESA(tm) Coordinated
-     Video Timings (CVT).  If 'R' is present after 'M', will compute with
-     reduced blanking (for flatpanels).  If 'i' is present, compute
-     interlaced mode.  If 'm' is present, add margins equal to 1.8%
-     of xres rounded down to 8 pixels, and 1.8% of yres. The char
-     'i' and 'm' must be after 'M' and 'R'. Example:
+If 'M' is present after yres (and before refresh/bpp if present),
+the function will compute the timings using VESA(tm) Coordinated
+Video Timings (CVT).  If 'R' is present after 'M', will compute with
+reduced blanking (for flatpanels).  If 'i' or 'p' are present, compute
+interlaced or progressive mode.  If 'm' is present, add margins equal
+to 1.8% of xres rounded down to 8 pixels, and 1.8% of yres. The char
+'i', 'p' and 'm' must be after 'M' and 'R'. Example::
 
-     1024x768MR-8@60m - Reduced blank with margins at 60Hz.
+    1024x768MR-8@60m - Reduced blank with margins at 60Hz.
 
 .. _`fb_find_mode.note`:
 
@@ -95,11 +109,11 @@ NOTE
 ----
 
 The passed struct \ ``var``\  is _not_ cleared!  This allows you
-    to supply values for e.g. the grayscale and accel_flags fields.
+to supply values for e.g. the grayscale and accel_flags fields.
 
-    Returns zero for failure, 1 if using specified \ ``mode_option``\ ,
-    2 if using specified \ ``mode_option``\  with an ignored refresh rate,
-    3 if default mode is used, 4 if fall back to any valid mode.
+Returns zero for failure, 1 if using specified \ ``mode_option``\ ,
+2 if using specified \ ``mode_option``\  with an ignored refresh rate,
+3 if default mode is used, 4 if fall back to any valid mode.
 
 .. _`fb_var_to_videomode`:
 
@@ -110,11 +124,13 @@ fb_var_to_videomode
 
     convert fb_var_screeninfo to fb_videomode
 
-    :param struct fb_videomode \*mode:
+    :param mode:
         pointer to struct fb_videomode
+    :type mode: struct fb_videomode \*
 
-    :param const struct fb_var_screeninfo \*var:
+    :param var:
         pointer to struct fb_var_screeninfo
+    :type var: const struct fb_var_screeninfo \*
 
 .. _`fb_videomode_to_var`:
 
@@ -125,11 +141,13 @@ fb_videomode_to_var
 
     convert fb_videomode to fb_var_screeninfo
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         pointer to struct fb_var_screeninfo
+    :type var: struct fb_var_screeninfo \*
 
-    :param const struct fb_videomode \*mode:
+    :param mode:
         pointer to struct fb_videomode
+    :type mode: const struct fb_videomode \*
 
 .. _`fb_mode_is_equal`:
 
@@ -140,11 +158,13 @@ fb_mode_is_equal
 
     compare 2 videomodes
 
-    :param const struct fb_videomode \*mode1:
+    :param mode1:
         first videomode
+    :type mode1: const struct fb_videomode \*
 
-    :param const struct fb_videomode \*mode2:
+    :param mode2:
         second videomode
+    :type mode2: const struct fb_videomode \*
 
 .. _`fb_mode_is_equal.return`:
 
@@ -162,11 +182,13 @@ fb_find_best_mode
 
     find best matching videomode
 
-    :param const struct fb_var_screeninfo \*var:
+    :param var:
         pointer to struct fb_var_screeninfo
+    :type var: const struct fb_var_screeninfo \*
 
-    :param struct list_head \*head:
+    :param head:
         pointer to struct list_head of modelist
+    :type head: struct list_head \*
 
 .. _`fb_find_best_mode.return`:
 
@@ -201,11 +223,13 @@ fb_find_nearest_mode
 
     find closest videomode
 
-    :param const struct fb_videomode \*mode:
+    :param mode:
         pointer to struct fb_videomode
+    :type mode: const struct fb_videomode \*
 
-    :param struct list_head \*head:
+    :param head:
         pointer to modelist
+    :type head: struct list_head \*
 
 .. _`fb_find_nearest_mode.description`:
 
@@ -225,11 +249,13 @@ fb_match_mode
 
     find a videomode which exactly matches the timings in var
 
-    :param const struct fb_var_screeninfo \*var:
+    :param var:
         pointer to struct fb_var_screeninfo
+    :type var: const struct fb_var_screeninfo \*
 
-    :param struct list_head \*head:
+    :param head:
         pointer to struct list_head of modelist
+    :type head: struct list_head \*
 
 .. _`fb_match_mode.return`:
 
@@ -247,11 +273,13 @@ fb_add_videomode
 
     adds videomode entry to modelist
 
-    :param const struct fb_videomode \*mode:
+    :param mode:
         videomode to add
+    :type mode: const struct fb_videomode \*
 
-    :param struct list_head \*head:
+    :param head:
         struct list_head of modelist
+    :type head: struct list_head \*
 
 .. _`fb_add_videomode.notes`:
 
@@ -269,11 +297,13 @@ fb_delete_videomode
 
     removed videomode entry from modelist
 
-    :param const struct fb_videomode \*mode:
+    :param mode:
         videomode to remove
+    :type mode: const struct fb_videomode \*
 
-    :param struct list_head \*head:
+    :param head:
         struct list_head of modelist
+    :type head: struct list_head \*
 
 .. _`fb_delete_videomode.notes`:
 
@@ -291,8 +321,9 @@ fb_destroy_modelist
 
     destroy modelist
 
-    :param struct list_head \*head:
+    :param head:
         struct list_head of modelist
+    :type head: struct list_head \*
 
 .. _`fb_videomode_to_modelist`:
 
@@ -303,14 +334,17 @@ fb_videomode_to_modelist
 
     convert mode array to mode list
 
-    :param const struct fb_videomode \*modedb:
+    :param modedb:
         array of struct fb_videomode
+    :type modedb: const struct fb_videomode \*
 
-    :param int num:
+    :param num:
         number of entries in array
+    :type num: int
 
-    :param struct list_head \*head:
+    :param head:
         struct list_head of modelist
+    :type head: struct list_head \*
 
 .. This file was automatic generated / don't edit.
 

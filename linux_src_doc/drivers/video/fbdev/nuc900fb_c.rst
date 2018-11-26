@@ -8,11 +8,13 @@ nuc900fb_blank
 
 .. c:function:: int nuc900fb_blank(int blank_mode, struct fb_info *info)
 
-    :param int blank_mode:
+    :param blank_mode:
         *undescribed*
+    :type blank_mode: int
 
-    :param struct fb_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct fb_info \*
 
 .. This file was automatic generated / don't edit.
 

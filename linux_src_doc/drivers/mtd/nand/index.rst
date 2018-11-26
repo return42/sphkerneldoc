@@ -9,5 +9,6 @@ nand
 
     onenand/index
     raw/index
+    spi/index
     bbt_c
     core_c

@@ -10,8 +10,9 @@ ntfs_unmap_page
 
     release a page that was mapped using \ :c:func:`ntfs_map_page`\ 
 
-    :param struct page \*page:
+    :param page:
         the page to release
+    :type page: struct page \*
 
 .. _`ntfs_unmap_page.description`:
 
@@ -29,11 +30,13 @@ ntfs_map_page
 
     map a page into accessible memory, reading it if necessary
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space for which to obtain the page
+    :type mapping: struct address_space \*
 
-    :param unsigned long index:
+    :param index:
         index into the page cache for \ ``mapping``\  of the page to map
+    :type index: unsigned long
 
 .. _`ntfs_map_page.description`:
 

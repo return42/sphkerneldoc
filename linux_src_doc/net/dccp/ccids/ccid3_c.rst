@@ -10,8 +10,9 @@ ccid3_update_send_interval
 
     Calculate new t_ipi = s / X_inst This respects the granularity of X_inst (64 \* bytes/second).
 
-    :param struct ccid3_hc_tx_sock \*hc:
+    :param hc:
         *undescribed*
+    :type hc: struct ccid3_hc_tx_sock \*
 
 .. _`ccid3_hc_tx_update_x`:
 
@@ -22,11 +23,13 @@ ccid3_hc_tx_update_x
 
     Update allowed sending rate X
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param ktime_t \*stamp:
+    :param stamp:
         most recent time if available - can be left NULL.
+    :type stamp: ktime_t \*
 
 .. _`ccid3_hc_tx_update_x.description`:
 
@@ -53,11 +56,13 @@ ccid3_hc_tx_update_s
 
     Track the mean packet size \`s'
 
-    :param struct ccid3_hc_tx_sock \*hc:
+    :param hc:
         *undescribed*
+    :type hc: struct ccid3_hc_tx_sock \*
 
-    :param int len:
+    :param len:
         DCCP packet payload size in bytes
+    :type len: int
 
 .. _`ccid3_hc_tx_update_s.description`:
 
@@ -75,11 +80,13 @@ ccid3_hc_tx_send_packet
 
     Delay-based dequeueing of TX packets
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         next packet candidate to send on \ ``sk``\ 
+    :type skb: struct sk_buff \*
 
 .. _`ccid3_hc_tx_send_packet.description`:
 
@@ -98,8 +105,9 @@ ccid3_first_li
 
     Implements [RFC 5348, 6.3.1]
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`ccid3_first_li.description`:
 

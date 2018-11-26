@@ -10,14 +10,17 @@ zfcp_ccw_activate
 
     activate adapter and wait for it to finish
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         pointer to belonging ccw device
+    :type cdev: struct ccw_device \*
 
-    :param int clear:
+    :param clear:
         Status flags to clear.
+    :type clear: int
 
-    :param char \*tag:
+    :param tag:
         s390dbf trace record tag
+    :type tag: char \*
 
 .. _`zfcp_ccw_probe`:
 
@@ -28,8 +31,9 @@ zfcp_ccw_probe
 
     probe function of zfcp driver
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         pointer to belonging ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`zfcp_ccw_probe.description`:
 
@@ -56,8 +60,9 @@ zfcp_ccw_remove
 
     remove function of zfcp driver
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         pointer to belonging ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`zfcp_ccw_remove.description`:
 
@@ -78,8 +83,9 @@ zfcp_ccw_set_online
 
     set_online function of zfcp driver
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         pointer to belonging ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`zfcp_ccw_set_online.description`:
 
@@ -104,14 +110,17 @@ zfcp_ccw_offline_sync
 
     shut down adapter and wait for it to finish
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         pointer to belonging ccw device
+    :type cdev: struct ccw_device \*
 
-    :param int set:
+    :param set:
         Status flags to set.
+    :type set: int
 
-    :param char \*tag:
+    :param tag:
         s390dbf trace record tag
+    :type tag: char \*
 
 .. _`zfcp_ccw_offline_sync.description`:
 
@@ -130,8 +139,9 @@ zfcp_ccw_set_offline
 
     set_offline function of zfcp driver
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         pointer to belonging ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`zfcp_ccw_set_offline.description`:
 
@@ -150,11 +160,13 @@ zfcp_ccw_notify
 
     ccw notify function
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         pointer to belonging ccw device
+    :type cdev: struct ccw_device \*
 
-    :param int event:
+    :param event:
         indicates if adapter was detached or attached
+    :type event: int
 
 .. _`zfcp_ccw_notify.description`:
 
@@ -173,8 +185,9 @@ zfcp_ccw_shutdown
 
     handle shutdown from cio
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         device for adapter to shutdown.
+    :type cdev: struct ccw_device \*
 
 .. This file was automatic generated / don't edit.
 

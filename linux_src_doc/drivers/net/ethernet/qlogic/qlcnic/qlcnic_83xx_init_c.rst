@@ -8,8 +8,9 @@ qlcnic_83xx_idc_check_reset_ack_reg
 
 .. c:function:: int qlcnic_83xx_idc_check_reset_ack_reg(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_check_reset_ack_reg.description`:
 
@@ -27,8 +28,9 @@ qlcnic_83xx_idc_tx_soft_reset
 
 .. c:function:: int qlcnic_83xx_idc_tx_soft_reset(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_tx_soft_reset.description`:
 
@@ -46,9 +48,10 @@ qlcnic_83xx_idc_detach_driver
 
 .. c:function:: void qlcnic_83xx_idc_detach_driver(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
         Detach net interface, stop TX and cleanup resources before the HW reset.
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_detach_driver.return`:
 
@@ -64,8 +67,9 @@ qlcnic_83xx_idc_attach_driver
 
 .. c:function:: void qlcnic_83xx_idc_attach_driver(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_attach_driver.description`:
 
@@ -88,8 +92,9 @@ qlcnic_83xx_idc_find_reset_owner_id
 
 .. c:function:: int qlcnic_83xx_idc_find_reset_owner_id(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_find_reset_owner_id.description`:
 
@@ -113,8 +118,9 @@ qlcnic_83xx_idc_ready_state_entry
 
 .. c:function:: int qlcnic_83xx_idc_ready_state_entry(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_ready_state_entry.description`:
 
@@ -138,8 +144,9 @@ qlcnic_83xx_idc_vnic_pf_entry
 
 .. c:function:: int qlcnic_83xx_idc_vnic_pf_entry(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_vnic_pf_entry.description`:
 
@@ -164,8 +171,9 @@ qlcnic_83xx_idc_cold_state_handler
 
 .. c:function:: int qlcnic_83xx_idc_cold_state_handler(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_cold_state_handler.description`:
 
@@ -190,8 +198,9 @@ qlcnic_83xx_idc_init_state
 
 .. c:function:: int qlcnic_83xx_idc_init_state(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_init_state.description`:
 
@@ -216,8 +225,9 @@ qlcnic_83xx_idc_ready_state
 
 .. c:function:: int qlcnic_83xx_idc_ready_state(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_ready_state.description`:
 
@@ -241,8 +251,9 @@ qlcnic_83xx_idc_need_reset_state
 
 .. c:function:: int qlcnic_83xx_idc_need_reset_state(struct qlcnic_adapter *adapter)
 
-    :param struct qlcnic_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct qlcnic_adapter \*
 
 .. _`qlcnic_83xx_idc_need_reset_state.device-will-remain-in-this-state-until`:
 
@@ -266,8 +277,9 @@ qlcnic_83xx_idc_poll_dev_state
 
 .. c:function:: void qlcnic_83xx_idc_poll_dev_state(struct work_struct *work)
 
-    :param struct work_struct \*work:
+    :param work:
         kernel work queue structure used to schedule the function
+    :type work: struct work_struct \*
 
 .. _`qlcnic_83xx_idc_poll_dev_state.description`:
 
@@ -291,11 +303,13 @@ qlcnic_83xx_exec_template_cmd
 
 .. c:function:: void qlcnic_83xx_exec_template_cmd(struct qlcnic_adapter *p_dev, char *p_buff)
 
-    :param struct qlcnic_adapter \*p_dev:
+    :param p_dev:
         adapter structure
+    :type p_dev: struct qlcnic_adapter \*
 
-    :param char \*p_buff:
+    :param p_buff:
         Poiter to instruction template
+    :type p_buff: char \*
 
 .. _`qlcnic_83xx_exec_template_cmd.description`:
 

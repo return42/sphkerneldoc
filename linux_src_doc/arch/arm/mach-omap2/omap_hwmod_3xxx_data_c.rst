@@ -10,11 +10,13 @@ omap3xxx_hwmod_is_hs_ip_block_usable
 
     is a security IP block accessible?
 
-    :param struct device_node \*bus:
+    :param bus:
         struct device_node \* for the top-level OMAP DT data
+    :type bus: struct device_node \*
 
-    :param const char \*dev_name:
+    :param dev_name:
         device name used in the DT file
+    :type dev_name: const char \*
 
 .. _`omap3xxx_hwmod_is_hs_ip_block_usable.description`:
 

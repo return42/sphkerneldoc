@@ -8,8 +8,9 @@ snake_inventory
 
 .. c:function:: void snake_inventory( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`snake_inventory.description`:
 
@@ -31,14 +32,17 @@ add_system_map_addresses
 
     Add additional addresses to the parisc device.
 
-    :param struct parisc_device \*dev:
+    :param dev:
         The parisc device.
+    :type dev: struct parisc_device \*
 
-    :param int num_addrs:
+    :param num_addrs:
         Then number of addresses to add;
+    :type num_addrs: int
 
-    :param int module_instance:
+    :param module_instance:
         The system_map module instance.
+    :type module_instance: int
 
 .. _`add_system_map_addresses.description`:
 
@@ -57,8 +61,9 @@ system_map_inventory
 
     Retrieve firmware devices via SYSTEM_MAP.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`system_map_inventory.description`:
 

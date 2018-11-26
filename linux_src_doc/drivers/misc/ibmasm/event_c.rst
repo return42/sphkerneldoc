@@ -10,14 +10,17 @@ ibmasm_receive_event
 
     Called by the interrupt handler when a dot command of type sp_event is received. Store the event in the circular event buffer, wake up any sleeping event readers. There is no reader marker in the buffer, therefore readers are responsible for keeping up with the writer, or they will lose events.
 
-    :param struct service_processor \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct service_processor \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param unsigned int data_size:
+    :param data_size:
         *undescribed*
+    :type data_size: unsigned int
 
 .. _`ibmasm_get_next_event`:
 
@@ -28,11 +31,13 @@ ibmasm_get_next_event
 
     Called by event readers (initiated from user space through the file system). Sleeps until a new event is available.
 
-    :param struct service_processor \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct service_processor \*
 
-    :param struct event_reader \*reader:
+    :param reader:
         *undescribed*
+    :type reader: struct event_reader \*
 
 .. This file was automatic generated / don't edit.
 

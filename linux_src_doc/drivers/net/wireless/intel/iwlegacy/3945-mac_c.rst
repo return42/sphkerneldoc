@@ -10,8 +10,9 @@ il3945_get_antenna_flags
 
     Get antenna flags for RXON command
 
-    :param const struct il_priv \*il:
+    :param il:
         eeprom and antenna fields are used to determine antenna flags
+    :type il: const struct il_priv \*
 
 .. _`il3945_get_antenna_flags.description`:
 
@@ -34,8 +35,9 @@ il3945_setup_handlers
 
     Initialize Rx handler callbacks
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_setup_handlers.description`:
 
@@ -57,11 +59,13 @@ il3945_dma_addr2rbd_ptr
 
     convert a DMA address to a uCode read buffer ptr
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         *undescribed*
+    :type dma_addr: dma_addr_t
 
 .. _`il3945_rx_queue_restock`:
 
@@ -72,8 +76,9 @@ il3945_rx_queue_restock
 
     refill RX queue from pre-allocated pool
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_rx_queue_restock.description`:
 
@@ -97,11 +102,13 @@ il3945_rx_allocate
 
     Move all used packet from rx_used to rx_free
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param gfp_t priority:
+    :param priority:
         *undescribed*
+    :type priority: gfp_t
 
 .. _`il3945_rx_allocate.description`:
 
@@ -122,8 +129,9 @@ il3945_rx_handle
 
     Main entry function for receiving responses from uCode
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_rx_handle.description`:
 
@@ -143,14 +151,17 @@ il3945_verify_inst_full
 
     verify runtime uCode image in card vs. host, looking at all data.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param __le32 \*image:
+    :param image:
         *undescribed*
+    :type image: __le32 \*
 
-    :param u32 len:
+    :param len:
         *undescribed*
+    :type len: u32
 
 .. _`il3945_verify_inst_sparse`:
 
@@ -161,14 +172,17 @@ il3945_verify_inst_sparse
 
     verify runtime uCode image in card vs. host, using sample data 100 bytes apart.  If these sample points are good, it's a pretty good bet that everything between them is good, too.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param __le32 \*image:
+    :param image:
         *undescribed*
+    :type image: __le32 \*
 
-    :param u32 len:
+    :param len:
         *undescribed*
+    :type len: u32
 
 .. _`il3945_verify_ucode`:
 
@@ -179,8 +193,9 @@ il3945_verify_ucode
 
     determine which instruction image is in SRAM, and verify its contents
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_read_ucode`:
 
@@ -191,8 +206,9 @@ il3945_read_ucode
 
     Read uCode images from disk file.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_read_ucode.description`:
 
@@ -210,8 +226,9 @@ il3945_set_ucode_ptrs
 
     Set uCode address location
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_set_ucode_ptrs.description`:
 
@@ -233,8 +250,9 @@ il3945_init_alive_start
 
     Called after N_ALIVE notification received
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il3945_init_alive_start.description`:
 
@@ -254,8 +272,9 @@ il3945_alive_start
 
     called after N_ALIVE notification received from protocol/runtime uCode (initialization uCode's Alive gets handled by \ :c:func:`il3945_init_alive_start`\ ).
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. This file was automatic generated / don't edit.
 

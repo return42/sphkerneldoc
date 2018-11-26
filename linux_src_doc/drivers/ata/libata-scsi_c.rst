@@ -10,17 +10,21 @@ ata_std_bios_param
 
     generic bios head/sector/cylinder calculator used by sd.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device for which BIOS geometry is to be determined
+    :type sdev: struct scsi_device \*
 
-    :param struct block_device \*bdev:
+    :param bdev:
         block device associated with \ ``sdev``\ 
+    :type bdev: struct block_device \*
 
-    :param sector_t capacity:
+    :param capacity:
         capacity of SCSI device
+    :type capacity: sector_t
 
-    :param int geom:
+    :param geom:
         location to which geometry will be output
+    :type geom: int
 
 .. _`ata_std_bios_param.description`:
 
@@ -55,8 +59,9 @@ ata_scsi_unlock_native_capacity
 
     unlock native capacity
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to adjust device capacity for
+    :type sdev: struct scsi_device \*
 
 .. _`ata_scsi_unlock_native_capacity.description`:
 
@@ -82,14 +87,17 @@ ata_get_identity
 
     Handler for HDIO_GET_IDENTITY ioctl
 
-    :param struct ata_port \*ap:
+    :param ap:
         target port
+    :type ap: struct ata_port \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to get identify data for
+    :type sdev: struct scsi_device \*
 
-    :param void __user \*arg:
+    :param arg:
         User buffer area for identify data
+    :type arg: void __user \*
 
 .. _`ata_get_identity.locking`:
 
@@ -114,11 +122,13 @@ ata_cmd_ioctl
 
     Handler for HDIO_DRIVE_CMD ioctl
 
-    :param struct scsi_device \*scsidev:
+    :param scsidev:
         Device to which we are issuing command
+    :type scsidev: struct scsi_device \*
 
-    :param void __user \*arg:
+    :param arg:
         User provided data for issuing command
+    :type arg: void __user \*
 
 .. _`ata_cmd_ioctl.locking`:
 
@@ -143,11 +153,13 @@ ata_task_ioctl
 
     Handler for HDIO_DRIVE_TASK ioctl
 
-    :param struct scsi_device \*scsidev:
+    :param scsidev:
         Device to which we are issuing command
+    :type scsidev: struct scsi_device \*
 
-    :param void __user \*arg:
+    :param arg:
         User provided data for issuing command
+    :type arg: void __user \*
 
 .. _`ata_task_ioctl.locking`:
 
@@ -172,11 +184,13 @@ ata_scsi_qc_new
 
     acquire new ata_queued_cmd reference
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device to which the new command is attached
+    :type dev: struct ata_device \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command that originated this ATA command
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ata_scsi_qc_new.description`:
 
@@ -214,11 +228,13 @@ ata_dump_status
 
     user friendly display of error info
 
-    :param unsigned id:
+    :param id:
         id of the port in question
+    :type id: unsigned
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         ptr to filled out taskfile
+    :type tf: struct ata_taskfile \*
 
 .. _`ata_dump_status.description`:
 
@@ -245,26 +261,33 @@ ata_to_sense_error
 
     convert ATA error to SCSI error
 
-    :param unsigned id:
+    :param id:
         ATA device number
+    :type id: unsigned
 
-    :param u8 drv_stat:
+    :param drv_stat:
         value contained in ATA status register
+    :type drv_stat: u8
 
-    :param u8 drv_err:
+    :param drv_err:
         value contained in ATA error register
+    :type drv_err: u8
 
-    :param u8 \*sk:
+    :param sk:
         the sense key we'll fill out
+    :type sk: u8 \*
 
-    :param u8 \*asc:
+    :param asc:
         the additional sense code we'll fill out
+    :type asc: u8 \*
 
-    :param u8 \*ascq:
+    :param ascq:
         the additional sense code qualifier we'll fill out
+    :type ascq: u8 \*
 
-    :param int verbose:
+    :param verbose:
         be verbose
+    :type verbose: int
 
 .. _`ata_to_sense_error.description`:
 
@@ -291,8 +314,9 @@ ata_gen_ata_sense
 
     generate a SCSI fixed sense block
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command that we are erroring out
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_gen_ata_sense.description`:
 
@@ -318,8 +342,9 @@ atapi_drain_needed
 
     Check whether data transfer may overflow
 
-    :param struct request \*rq:
+    :param rq:
         request to be checked
+    :type rq: struct request \*
 
 .. _`atapi_drain_needed.description`:
 
@@ -354,8 +379,9 @@ ata_scsi_slave_config
 
     Set SCSI device attributes
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to examine
+    :type sdev: struct scsi_device \*
 
 .. _`ata_scsi_slave_config.description`:
 
@@ -382,8 +408,9 @@ ata_scsi_slave_destroy
 
     SCSI device is about to be destroyed
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to be destroyed
+    :type sdev: struct scsi_device \*
 
 .. _`ata_scsi_slave_destroy.description`:
 
@@ -413,14 +440,17 @@ __ata_change_queue_depth
 
     helper for ata_scsi_change_queue_depth
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to which the device change the queue depth
+    :type ap: struct ata_port \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to configure queue depth for
+    :type sdev: struct scsi_device \*
 
-    :param int queue_depth:
+    :param queue_depth:
         new queue depth
+    :type queue_depth: int
 
 .. _`__ata_change_queue_depth.description`:
 
@@ -439,11 +469,13 @@ ata_scsi_change_queue_depth
 
     SCSI callback for queue depth config
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to configure queue depth for
+    :type sdev: struct scsi_device \*
 
-    :param int queue_depth:
+    :param queue_depth:
         new queue depth
+    :type queue_depth: int
 
 .. _`ata_scsi_change_queue_depth.description`:
 
@@ -477,8 +509,9 @@ ata_scsi_start_stop_xlat
 
     Translate SCSI START STOP UNIT command
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Storage for translated ATA taskfile
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_scsi_start_stop_xlat.description`:
 
@@ -513,8 +546,9 @@ ata_scsi_flush_xlat
 
     Translate SCSI SYNCHRONIZE CACHE command
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Storage for translated ATA taskfile
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_scsi_flush_xlat.description`:
 
@@ -547,14 +581,17 @@ scsi_6_lba_len
 
     Get LBA and transfer length
 
-    :param const u8 \*cdb:
+    :param cdb:
         SCSI command to translate
+    :type cdb: const u8 \*
 
-    :param u64 \*plba:
+    :param plba:
         the LBA
+    :type plba: u64 \*
 
-    :param u32 \*plen:
+    :param plen:
         the transfer length
+    :type plen: u32 \*
 
 .. _`scsi_6_lba_len.description`:
 
@@ -572,14 +609,17 @@ scsi_10_lba_len
 
     Get LBA and transfer length
 
-    :param const u8 \*cdb:
+    :param cdb:
         SCSI command to translate
+    :type cdb: const u8 \*
 
-    :param u64 \*plba:
+    :param plba:
         the LBA
+    :type plba: u64 \*
 
-    :param u32 \*plen:
+    :param plen:
         the transfer length
+    :type plen: u32 \*
 
 .. _`scsi_10_lba_len.description`:
 
@@ -597,14 +637,17 @@ scsi_16_lba_len
 
     Get LBA and transfer length
 
-    :param const u8 \*cdb:
+    :param cdb:
         SCSI command to translate
+    :type cdb: const u8 \*
 
-    :param u64 \*plba:
+    :param plba:
         the LBA
+    :type plba: u64 \*
 
-    :param u32 \*plen:
+    :param plen:
         the transfer length
+    :type plen: u32 \*
 
 .. _`scsi_16_lba_len.description`:
 
@@ -622,8 +665,9 @@ ata_scsi_verify_xlat
 
     Translate SCSI VERIFY command into an ATA one
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Storage for translated ATA taskfile
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_scsi_verify_xlat.description`:
 
@@ -655,8 +699,9 @@ ata_scsi_rw_xlat
 
     Translate SCSI r/w command into an ATA one
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Storage for translated ATA taskfile
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_scsi_rw_xlat.description`:
 
@@ -694,14 +739,17 @@ ata_scsi_translate
 
     Translate then issue SCSI command to ATA device
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device to which the command is addressed
+    :type dev: struct ata_device \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command to execute
+    :type cmd: struct scsi_cmnd \*
 
-    :param ata_xlat_func_t xlat_func:
+    :param xlat_func:
         Actor which translates \ ``cmd``\  to an ATA taskfile
+    :type xlat_func: ata_xlat_func_t
 
 .. _`ata_scsi_translate.description`:
 
@@ -745,14 +793,17 @@ ata_scsi_rbuf_get
 
     Map response buffer.
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command containing buffer to be mapped.
+    :type cmd: struct scsi_cmnd \*
 
-    :param bool copy_in:
+    :param copy_in:
         copy in from user buffer
+    :type copy_in: bool
 
-    :param unsigned long \*flags:
+    :param flags:
         unsigned long variable to store irq enable status
+    :type flags: unsigned long \*
 
 .. _`ata_scsi_rbuf_get.description`:
 
@@ -784,14 +835,17 @@ ata_scsi_rbuf_put
 
     Unmap response buffer.
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command containing buffer to be unmapped.
+    :type cmd: struct scsi_cmnd \*
 
-    :param bool copy_out:
+    :param copy_out:
         copy out result
+    :type copy_out: bool
 
-    :param unsigned long \*flags:
+    :param flags:
         \ ``flags``\  passed to \ :c:func:`ata_scsi_rbuf_get`\ 
+    :type flags: unsigned long \*
 
 .. _`ata_scsi_rbuf_put.description`:
 
@@ -817,8 +871,9 @@ ata_scsi_rbuf_fill
 
     wrapper for SCSI command simulators
 
-    :param struct ata_scsi_args \*args:
+    :param args:
         device IDENTIFY data / SCSI command of interest.
+    :type args: struct ata_scsi_args \*
 
     :param unsigned int (\*actor)(struct ata_scsi_args \*args, u8 \*rbuf):
         Callback hook for desired SCSI command simulator
@@ -851,11 +906,13 @@ ata_scsiop_inq_std
 
     Simulate INQUIRY command
 
-    :param struct ata_scsi_args \*args:
+    :param args:
         device IDENTIFY data / SCSI command of interest.
+    :type args: struct ata_scsi_args \*
 
-    :param u8 \*rbuf:
+    :param rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
+    :type rbuf: u8 \*
 
 .. _`ata_scsiop_inq_std.description`:
 
@@ -881,11 +938,13 @@ ata_scsiop_inq_00
 
     Simulate INQUIRY VPD page 0, list of pages
 
-    :param struct ata_scsi_args \*args:
+    :param args:
         device IDENTIFY data / SCSI command of interest.
+    :type args: struct ata_scsi_args \*
 
-    :param u8 \*rbuf:
+    :param rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
+    :type rbuf: u8 \*
 
 .. _`ata_scsiop_inq_00.description`:
 
@@ -910,11 +969,13 @@ ata_scsiop_inq_80
 
     Simulate INQUIRY VPD page 80, device serial number
 
-    :param struct ata_scsi_args \*args:
+    :param args:
         device IDENTIFY data / SCSI command of interest.
+    :type args: struct ata_scsi_args \*
 
-    :param u8 \*rbuf:
+    :param rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
+    :type rbuf: u8 \*
 
 .. _`ata_scsiop_inq_80.description`:
 
@@ -939,11 +1000,13 @@ ata_scsiop_inq_83
 
     Simulate INQUIRY VPD page 83, device identity
 
-    :param struct ata_scsi_args \*args:
+    :param args:
         device IDENTIFY data / SCSI command of interest.
+    :type args: struct ata_scsi_args \*
 
-    :param u8 \*rbuf:
+    :param rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
+    :type rbuf: u8 \*
 
 .. _`ata_scsiop_inq_83.yields-two-logical-unit-device-identification-designators`:
 
@@ -970,11 +1033,13 @@ ata_scsiop_inq_89
 
     Simulate INQUIRY VPD page 89, ATA info
 
-    :param struct ata_scsi_args \*args:
+    :param args:
         device IDENTIFY data / SCSI command of interest.
+    :type args: struct ata_scsi_args \*
 
-    :param u8 \*rbuf:
+    :param rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
+    :type rbuf: u8 \*
 
 .. _`ata_scsiop_inq_89.description`:
 
@@ -999,17 +1064,21 @@ modecpy
 
     Prepare response for MODE SENSE
 
-    :param u8 \*dest:
+    :param dest:
         output buffer
+    :type dest: u8 \*
 
-    :param const u8 \*src:
+    :param src:
         data being copied
+    :type src: const u8 \*
 
-    :param int n:
+    :param n:
         length of mode page
+    :type n: int
 
-    :param bool changeable:
+    :param changeable:
         whether changeable parameters are requested
+    :type changeable: bool
 
 .. _`modecpy.description`:
 
@@ -1035,14 +1104,17 @@ ata_msense_caching
 
     Simulate MODE SENSE caching info page
 
-    :param u16 \*id:
+    :param id:
         device IDENTIFY data
+    :type id: u16 \*
 
-    :param u8 \*buf:
+    :param buf:
         output buffer
+    :type buf: u8 \*
 
-    :param bool changeable:
+    :param changeable:
         whether changeable parameters are requested
+    :type changeable: bool
 
 .. _`ata_msense_caching.description`:
 
@@ -1069,14 +1141,17 @@ ata_msense_control
 
     Simulate MODE SENSE control mode page
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device of interest
+    :type dev: struct ata_device \*
 
-    :param u8 \*buf:
+    :param buf:
         output buffer
+    :type buf: u8 \*
 
-    :param bool changeable:
+    :param changeable:
         whether changeable parameters are requested
+    :type changeable: bool
 
 .. _`ata_msense_control.description`:
 
@@ -1101,11 +1176,13 @@ ata_msense_rw_recovery
 
     Simulate MODE SENSE r/w error recovery page
 
-    :param u8 \*buf:
+    :param buf:
         output buffer
+    :type buf: u8 \*
 
-    :param bool changeable:
+    :param changeable:
         whether changeable parameters are requested
+    :type changeable: bool
 
 .. _`ata_msense_rw_recovery.description`:
 
@@ -1130,11 +1207,13 @@ ata_scsiop_mode_sense
 
     Simulate MODE SENSE 6, 10 commands
 
-    :param struct ata_scsi_args \*args:
+    :param args:
         device IDENTIFY data / SCSI command of interest.
+    :type args: struct ata_scsi_args \*
 
-    :param u8 \*rbuf:
+    :param rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
+    :type rbuf: u8 \*
 
 .. _`ata_scsiop_mode_sense.description`:
 
@@ -1161,11 +1240,13 @@ ata_scsiop_read_cap
 
     Simulate READ CAPACITY[ 16] commands
 
-    :param struct ata_scsi_args \*args:
+    :param args:
         device IDENTIFY data / SCSI command of interest.
+    :type args: struct ata_scsi_args \*
 
-    :param u8 \*rbuf:
+    :param rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
+    :type rbuf: u8 \*
 
 .. _`ata_scsiop_read_cap.description`:
 
@@ -1190,11 +1271,13 @@ ata_scsiop_report_luns
 
     Simulate REPORT LUNS command
 
-    :param struct ata_scsi_args \*args:
+    :param args:
         device IDENTIFY data / SCSI command of interest.
+    :type args: struct ata_scsi_args \*
 
-    :param u8 \*rbuf:
+    :param rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
+    :type rbuf: u8 \*
 
 .. _`ata_scsiop_report_luns.description`:
 
@@ -1219,8 +1302,9 @@ atapi_xlat
 
     Initialize PACKET taskfile
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command structure to be initialized
+    :type qc: struct ata_queued_cmd \*
 
 .. _`atapi_xlat.locking`:
 
@@ -1245,11 +1329,13 @@ ata_scsi_find_dev
 
     lookup ata_device from scsi_cmnd
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to which the device is attached
+    :type ap: struct ata_port \*
 
-    :param const struct scsi_device \*scsidev:
+    :param scsidev:
         SCSI device from which we derive the ATA device
+    :type scsidev: const struct scsi_device \*
 
 .. _`ata_scsi_find_dev.description`:
 
@@ -1284,8 +1370,9 @@ ata_scsi_pass_thru
 
     convert ATA pass-thru CDB to taskfile
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command structure to be initialized
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_scsi_pass_thru.description`:
 
@@ -1310,17 +1397,21 @@ ata_format_dsm_trim_descr
 
     SATL Write Same to DSM Trim
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command being translated
+    :type cmd: struct scsi_cmnd \*
 
-    :param u32 trmax:
+    :param trmax:
         Maximum number of entries that will fit in sector_size bytes.
+    :type trmax: u32
 
-    :param u64 sector:
+    :param sector:
         Starting sector
+    :type sector: u64
 
-    :param u32 count:
+    :param count:
         Total Range of request in logical sectors
+    :type count: u32
 
 .. _`ata_format_dsm_trim_descr.description`:
 
@@ -1364,8 +1455,9 @@ ata_scsi_write_same_xlat
 
     SATL Write Same to ATA SCT Write Same
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command to be translated
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_scsi_write_same_xlat.description`:
 
@@ -1393,11 +1485,13 @@ ata_scsiop_maint_in
 
     Simulate a subset of MAINTENANCE_IN
 
-    :param struct ata_scsi_args \*args:
+    :param args:
         device MAINTENANCE_IN data / SCSI command of interest.
+    :type args: struct ata_scsi_args \*
 
-    :param u8 \*rbuf:
+    :param rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
+    :type rbuf: u8 \*
 
 .. _`ata_scsiop_maint_in.description`:
 
@@ -1422,8 +1516,9 @@ ata_scsi_report_zones_complete
 
     convert ATA output
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command structure returning the data
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_scsi_report_zones_complete.description`:
 
@@ -1443,17 +1538,21 @@ ata_mselect_caching
 
     Simulate MODE SELECT for caching info page
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Storage for translated ATA taskfile
+    :type qc: struct ata_queued_cmd \*
 
-    :param const u8 \*buf:
+    :param buf:
         input buffer
+    :type buf: const u8 \*
 
-    :param int len:
+    :param len:
         number of valid bytes in the input buffer
+    :type len: int
 
-    :param u16 \*fp:
+    :param fp:
         out parameter for the failed field on error
+    :type fp: u16 \*
 
 .. _`ata_mselect_caching.description`:
 
@@ -1478,17 +1577,21 @@ ata_mselect_control
 
     Simulate MODE SELECT for control page
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Storage for translated ATA taskfile
+    :type qc: struct ata_queued_cmd \*
 
-    :param const u8 \*buf:
+    :param buf:
         input buffer
+    :type buf: const u8 \*
 
-    :param int len:
+    :param len:
         number of valid bytes in the input buffer
+    :type len: int
 
-    :param u16 \*fp:
+    :param fp:
         out parameter for the failed field on error
+    :type fp: u16 \*
 
 .. _`ata_mselect_control.description`:
 
@@ -1513,8 +1616,9 @@ ata_scsi_mode_select_xlat
 
     Simulate MODE SELECT 6, 10 commands
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Storage for translated ATA taskfile
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_scsi_mode_select_xlat.description`:
 
@@ -1541,8 +1645,9 @@ ata_scsi_var_len_cdb_xlat
 
     SATL variable length CDB to Handler
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command to be translated
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_scsi_var_len_cdb_xlat.description`:
 
@@ -1568,11 +1673,13 @@ ata_get_xlat_func
 
     check if SCSI to ATA translation is possible
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device
+    :type dev: struct ata_device \*
 
-    :param u8 cmd:
+    :param cmd:
         SCSI command opcode to consider
+    :type cmd: u8
 
 .. _`ata_get_xlat_func.description`:
 
@@ -1598,11 +1705,13 @@ ata_scsi_dump_cdb
 
     dump SCSI command contents to dmesg
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to which the command was being sent
+    :type ap: struct ata_port \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command to dump
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ata_scsi_dump_cdb.description`:
 
@@ -1620,11 +1729,13 @@ ata_scsi_queuecmd
 
     Issue SCSI cdb to libata-managed device
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         SCSI host of command to be sent
+    :type shost: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command to be sent
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ata_scsi_queuecmd.description`:
 
@@ -1662,11 +1773,13 @@ ata_scsi_simulate
 
     simulate SCSI command on ATA device
 
-    :param struct ata_device \*dev:
+    :param dev:
         the target device
+    :type dev: struct ata_device \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command being sent to device.
+    :type cmd: struct scsi_cmnd \*
 
 .. _`ata_scsi_simulate.description`:
 
@@ -1692,8 +1805,9 @@ ata_scsi_offline_dev
 
     offline attached SCSI device
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device to offline attached SCSI device for
+    :type dev: struct ata_device \*
 
 .. _`ata_scsi_offline_dev.description`:
 
@@ -1728,8 +1842,9 @@ ata_scsi_remove_dev
 
     remove attached SCSI device
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device to remove attached SCSI device for
+    :type dev: struct ata_device \*
 
 .. _`ata_scsi_remove_dev.description`:
 
@@ -1755,8 +1870,9 @@ ata_scsi_media_change_notify
 
     send media change event
 
-    :param struct ata_device \*dev:
+    :param dev:
         Pointer to the disk device with media change event
+    :type dev: struct ata_device \*
 
 .. _`ata_scsi_media_change_notify.description`:
 
@@ -1782,8 +1898,9 @@ ata_scsi_hotplug
 
     SCSI part of hotplug
 
-    :param struct work_struct \*work:
+    :param work:
         Pointer to ATA port to perform SCSI hotplug on
+    :type work: struct work_struct \*
 
 .. _`ata_scsi_hotplug.description`:
 
@@ -1811,17 +1928,21 @@ ata_scsi_user_scan
 
     indication for user-initiated bus scan
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         SCSI host to scan
+    :type shost: struct Scsi_Host \*
 
-    :param unsigned int channel:
+    :param channel:
         Channel to scan
+    :type channel: unsigned int
 
-    :param unsigned int id:
+    :param id:
         ID to scan
+    :type id: unsigned int
 
-    :param u64 lun:
+    :param lun:
         LUN to scan
+    :type lun: u64
 
 .. _`ata_scsi_user_scan.description`:
 
@@ -1854,8 +1975,9 @@ ata_scsi_dev_rescan
 
     initiate \ :c:func:`scsi_rescan_device`\ 
 
-    :param struct work_struct \*work:
+    :param work:
         Pointer to ATA port to perform \ :c:func:`scsi_rescan_device`\ 
+    :type work: struct work_struct \*
 
 .. _`ata_scsi_dev_rescan.description`:
 
@@ -1881,14 +2003,17 @@ ata_sas_port_alloc
 
     Allocate port for a SAS attached SATA device
 
-    :param struct ata_host \*host:
+    :param host:
         ATA host container for all SAS ports
+    :type host: struct ata_host \*
 
-    :param struct ata_port_info \*port_info:
+    :param port_info:
         Information from low-level host driver
+    :type port_info: struct ata_port_info \*
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         SCSI host that the scsi device is attached to
+    :type shost: struct Scsi_Host \*
 
 .. _`ata_sas_port_alloc.locking`:
 
@@ -1913,8 +2038,9 @@ ata_sas_port_start
 
     Set port up for dma.
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to initialize
+    :type ap: struct ata_port \*
 
 .. _`ata_sas_port_start.description`:
 
@@ -1942,8 +2068,9 @@ ata_sas_port_stop
 
     Undo \ :c:func:`ata_sas_port_start`\ 
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to shut down
+    :type ap: struct ata_port \*
 
 .. _`ata_sas_port_stop.description`:
 
@@ -1968,8 +2095,9 @@ ata_sas_async_probe
 
     simply schedule probing and return
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to probe
+    :type ap: struct ata_port \*
 
 .. _`ata_sas_async_probe.description`:
 
@@ -1988,8 +2116,9 @@ ata_sas_port_init
 
     Initialize a SATA device
 
-    :param struct ata_port \*ap:
+    :param ap:
         SATA port to initialize
+    :type ap: struct ata_port \*
 
 .. _`ata_sas_port_init.locking`:
 
@@ -2014,8 +2143,9 @@ ata_sas_port_destroy
 
     Destroy a SATA port allocated by ata_sas_port_alloc
 
-    :param struct ata_port \*ap:
+    :param ap:
         SATA port to destroy
+    :type ap: struct ata_port \*
 
 .. _`ata_sas_slave_configure`:
 
@@ -2026,11 +2156,13 @@ ata_sas_slave_configure
 
     Default slave_config routine for libata devices
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to configure
+    :type sdev: struct scsi_device \*
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to which SCSI device is attached
+    :type ap: struct ata_port \*
 
 .. _`ata_sas_slave_configure.return`:
 
@@ -2048,11 +2180,13 @@ ata_sas_queuecmd
 
     Issue SCSI cdb to libata-managed device
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command to be sent
+    :type cmd: struct scsi_cmnd \*
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to which the command is being sent
+    :type ap: struct ata_port \*
 
 .. _`ata_sas_queuecmd.return`:
 

@@ -10,14 +10,17 @@ cayman_get_allowed_info_register
 
     fetch the register for the info ioctl
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 reg:
+    :param reg:
         register offset in bytes
+    :type reg: u32
 
-    :param u32 \*val:
+    :param val:
         register value
+    :type val: u32 \*
 
 .. _`cayman_get_allowed_info_register.description`:
 
@@ -35,11 +38,13 @@ cayman_gfx_is_lockup
 
     Check if the GFX engine is locked up
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`cayman_gfx_is_lockup.description`:
 
@@ -58,14 +63,17 @@ cayman_vm_decode_fault
 
     print human readable fault info
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 status:
+    :param status:
         VM_CONTEXT1_PROTECTION_FAULT_STATUS register value
+    :type status: u32
 
-    :param u32 addr:
+    :param addr:
         VM_CONTEXT1_PROTECTION_FAULT_ADDR register value
+    :type addr: u32
 
 .. _`cayman_vm_decode_fault.description`:
 
@@ -83,17 +91,21 @@ cayman_vm_flush
 
     vm flush using the CP
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct radeon_ring \*
 
-    :param unsigned vm_id:
+    :param vm_id:
         *undescribed*
+    :type vm_id: unsigned
 
-    :param uint64_t pd_addr:
+    :param pd_addr:
         *undescribed*
+    :type pd_addr: uint64_t
 
 .. _`cayman_vm_flush.description`:
 

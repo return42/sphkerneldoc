@@ -10,8 +10,9 @@ kvm_vgic_get_max_vcpus
 
     Get the maximum number of VCPUs allowed by HW
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kvm_vgic_get_max_vcpus.description`:
 
@@ -30,8 +31,9 @@ kvm_vgic_setup_default_irq_routing
 
     Setup a default flat gsi routing table mapping all SPIs
 
-    :param struct kvm \*kvm:
+    :param kvm:
         *undescribed*
+    :type kvm: struct kvm \*
 
 .. This file was automatic generated / don't edit.
 

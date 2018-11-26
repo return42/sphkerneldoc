@@ -142,8 +142,9 @@ rmi_reset
 
     reset a RMI4 device
 
-    :param struct rmi_device \*d:
+    :param d:
         Pointer to an RMI device
+    :type d: struct rmi_device \*
 
 .. _`rmi_reset.description`:
 
@@ -162,14 +163,17 @@ rmi_read
 
     read a single byte
 
-    :param struct rmi_device \*d:
+    :param d:
         Pointer to an RMI device
+    :type d: struct rmi_device \*
 
-    :param u16 addr:
+    :param addr:
         The address to read from
+    :type addr: u16
 
-    :param u8 \*buf:
+    :param buf:
         The read buffer
+    :type buf: u8 \*
 
 .. _`rmi_read.description`:
 
@@ -189,17 +193,21 @@ rmi_read_block
 
     read a block of bytes
 
-    :param struct rmi_device \*d:
+    :param d:
         Pointer to an RMI device
+    :type d: struct rmi_device \*
 
-    :param u16 addr:
+    :param addr:
         The start address to read from
+    :type addr: u16
 
-    :param void \*buf:
+    :param buf:
         The read buffer
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         Length of the read buffer
+    :type len: size_t
 
 .. _`rmi_read_block.description`:
 
@@ -219,14 +227,17 @@ rmi_write
 
     write a single byte
 
-    :param struct rmi_device \*d:
+    :param d:
         Pointer to an RMI device
+    :type d: struct rmi_device \*
 
-    :param u16 addr:
+    :param addr:
         The address to write to
+    :type addr: u16
 
-    :param u8 data:
+    :param data:
         The data to write
+    :type data: u8
 
 .. _`rmi_write.description`:
 
@@ -245,17 +256,21 @@ rmi_write_block
 
     write a block of bytes
 
-    :param struct rmi_device \*d:
+    :param d:
         Pointer to an RMI device
+    :type d: struct rmi_device \*
 
-    :param u16 addr:
+    :param addr:
         The start address to write to
+    :type addr: u16
 
-    :param const void \*buf:
+    :param buf:
         The write buffer
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         Length of the write buffer
+    :type len: size_t
 
 .. _`rmi_write_block.description`:
 

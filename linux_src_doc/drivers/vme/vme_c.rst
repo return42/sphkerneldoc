@@ -10,14 +10,17 @@ vme_alloc_consistent
 
     Allocate contiguous memory.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME resource.
+    :type resource: struct vme_resource \*
 
-    :param size_t size:
+    :param size:
         Size of allocation required.
+    :type size: size_t
 
-    :param dma_addr_t \*dma:
+    :param dma:
         Pointer to variable to store physical address of allocation.
+    :type dma: dma_addr_t \*
 
 .. _`vme_alloc_consistent.description`:
 
@@ -43,17 +46,21 @@ vme_free_consistent
 
     Free previously allocated memory.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME resource.
+    :type resource: struct vme_resource \*
 
-    :param size_t size:
+    :param size:
         Size of allocation to free.
+    :type size: size_t
 
-    :param void \*vaddr:
+    :param vaddr:
         Virtual address of allocation.
+    :type vaddr: void \*
 
-    :param dma_addr_t dma:
+    :param dma:
         Physical address of allocation.
+    :type dma: dma_addr_t
 
 .. _`vme_free_consistent.description`:
 
@@ -71,8 +78,9 @@ vme_get_size
 
     Helper function returning size of a VME window
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME slave or master resource.
+    :type resource: struct vme_resource \*
 
 .. _`vme_get_size.description`:
 
@@ -99,14 +107,17 @@ vme_slave_request
 
     Request a VME slave window resource.
 
-    :param struct vme_dev \*vdev:
+    :param vdev:
         Pointer to VME device struct vme_dev assigned to driver instance.
+    :type vdev: struct vme_dev \*
 
-    :param u32 address:
+    :param address:
         Required VME address space.
+    :type address: u32
 
-    :param u32 cycle:
+    :param cycle:
         Required VME data transfer cycle type.
+    :type cycle: u32
 
 .. _`vme_slave_request.description`:
 
@@ -132,26 +143,33 @@ vme_slave_set
 
     Set VME slave window configuration.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME slave resource.
+    :type resource: struct vme_resource \*
 
-    :param int enabled:
+    :param enabled:
         State to which the window should be configured.
+    :type enabled: int
 
-    :param unsigned long long vme_base:
+    :param vme_base:
         Base address for the window.
+    :type vme_base: unsigned long long
 
-    :param unsigned long long size:
+    :param size:
         Size of the VME window.
+    :type size: unsigned long long
 
-    :param dma_addr_t buf_base:
+    :param buf_base:
         Based address of buffer used to provide VME slave window storage.
+    :type buf_base: dma_addr_t
 
-    :param u32 aspace:
+    :param aspace:
         VME address space for the VME window.
+    :type aspace: u32
 
-    :param u32 cycle:
+    :param cycle:
         VME data transfer cycle type for the VME window.
+    :type cycle: u32
 
 .. _`vme_slave_set.description`:
 
@@ -179,26 +197,33 @@ vme_slave_get
 
     Retrieve VME slave window configuration.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME slave resource.
+    :type resource: struct vme_resource \*
 
-    :param int \*enabled:
+    :param enabled:
         Pointer to variable for storing state.
+    :type enabled: int \*
 
-    :param unsigned long long \*vme_base:
+    :param vme_base:
         Pointer to variable for storing window base address.
+    :type vme_base: unsigned long long \*
 
-    :param unsigned long long \*size:
+    :param size:
         Pointer to variable for storing window size.
+    :type size: unsigned long long \*
 
-    :param dma_addr_t \*buf_base:
+    :param buf_base:
         Pointer to variable for storing slave buffer base address.
+    :type buf_base: dma_addr_t \*
 
-    :param u32 \*aspace:
+    :param aspace:
         Pointer to variable for storing VME address space.
+    :type aspace: u32 \*
 
-    :param u32 \*cycle:
+    :param cycle:
         Pointer to variable for storing VME data transfer cycle type.
+    :type cycle: u32 \*
 
 .. _`vme_slave_get.description`:
 
@@ -224,8 +249,9 @@ vme_slave_free
 
     Free VME slave window
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME slave resource.
+    :type resource: struct vme_resource \*
 
 .. _`vme_slave_free.description`:
 
@@ -243,17 +269,21 @@ vme_master_request
 
     Request a VME master window resource.
 
-    :param struct vme_dev \*vdev:
+    :param vdev:
         Pointer to VME device struct vme_dev assigned to driver instance.
+    :type vdev: struct vme_dev \*
 
-    :param u32 address:
+    :param address:
         Required VME address space.
+    :type address: u32
 
-    :param u32 cycle:
+    :param cycle:
         Required VME data transfer cycle type.
+    :type cycle: u32
 
-    :param u32 dwidth:
+    :param dwidth:
         Required VME data transfer width.
+    :type dwidth: u32
 
 .. _`vme_master_request.description`:
 
@@ -279,26 +309,33 @@ vme_master_set
 
     Set VME master window configuration.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME master resource.
+    :type resource: struct vme_resource \*
 
-    :param int enabled:
+    :param enabled:
         State to which the window should be configured.
+    :type enabled: int
 
-    :param unsigned long long vme_base:
+    :param vme_base:
         Base address for the window.
+    :type vme_base: unsigned long long
 
-    :param unsigned long long size:
+    :param size:
         Size of the VME window.
+    :type size: unsigned long long
 
-    :param u32 aspace:
+    :param aspace:
         VME address space for the VME window.
+    :type aspace: u32
 
-    :param u32 cycle:
+    :param cycle:
         VME data transfer cycle type for the VME window.
+    :type cycle: u32
 
-    :param u32 dwidth:
+    :param dwidth:
         VME data transfer width for the VME window.
+    :type dwidth: u32
 
 .. _`vme_master_set.description`:
 
@@ -326,26 +363,33 @@ vme_master_get
 
     Retrieve VME master window configuration.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME master resource.
+    :type resource: struct vme_resource \*
 
-    :param int \*enabled:
+    :param enabled:
         Pointer to variable for storing state.
+    :type enabled: int \*
 
-    :param unsigned long long \*vme_base:
+    :param vme_base:
         Pointer to variable for storing window base address.
+    :type vme_base: unsigned long long \*
 
-    :param unsigned long long \*size:
+    :param size:
         Pointer to variable for storing window size.
+    :type size: unsigned long long \*
 
-    :param u32 \*aspace:
+    :param aspace:
         Pointer to variable for storing VME address space.
+    :type aspace: u32 \*
 
-    :param u32 \*cycle:
+    :param cycle:
         Pointer to variable for storing VME data transfer cycle type.
+    :type cycle: u32 \*
 
-    :param u32 \*dwidth:
+    :param dwidth:
         Pointer to variable for storing VME data transfer width.
+    :type dwidth: u32 \*
 
 .. _`vme_master_get.description`:
 
@@ -371,17 +415,21 @@ vme_master_read
 
     Read data from VME space into a buffer.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME master resource.
+    :type resource: struct vme_resource \*
 
-    :param void \*buf:
+    :param buf:
         Pointer to buffer where data should be transferred.
+    :type buf: void \*
 
-    :param size_t count:
+    :param count:
         Number of bytes to transfer.
+    :type count: size_t
 
-    :param loff_t offset:
+    :param offset:
         Offset into VME master window at which to start transfer.
+    :type offset: loff_t
 
 .. _`vme_master_read.description`:
 
@@ -410,17 +458,21 @@ vme_master_write
 
     Write data out to VME space from a buffer.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME master resource.
+    :type resource: struct vme_resource \*
 
-    :param void \*buf:
+    :param buf:
         Pointer to buffer holding data to transfer.
+    :type buf: void \*
 
-    :param size_t count:
+    :param count:
         Number of bytes to transfer.
+    :type count: size_t
 
-    :param loff_t offset:
+    :param offset:
         Offset into VME master window at which to start transfer.
+    :type offset: loff_t
 
 .. _`vme_master_write.description`:
 
@@ -449,20 +501,25 @@ vme_master_rmw
 
     Perform read-modify-write cycle.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME master resource.
+    :type resource: struct vme_resource \*
 
-    :param unsigned int mask:
+    :param mask:
         Bits to be compared and swapped in operation.
+    :type mask: unsigned int
 
-    :param unsigned int compare:
+    :param compare:
         Bits to be compared with data read from offset.
+    :type compare: unsigned int
 
-    :param unsigned int swap:
+    :param swap:
         Bits to be swapped in data read from offset.
+    :type swap: unsigned int
 
-    :param loff_t offset:
+    :param offset:
         Offset into VME master window at which to perform operation.
+    :type offset: loff_t
 
 .. _`vme_master_rmw.description`:
 
@@ -494,11 +551,13 @@ vme_master_mmap
 
     Mmap region of VME master window.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME master resource.
+    :type resource: struct vme_resource \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         Pointer to definition of user mapping.
+    :type vma: struct vm_area_struct \*
 
 .. _`vme_master_mmap.description`:
 
@@ -525,8 +584,9 @@ vme_master_free
 
     Free VME master window
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME master resource.
+    :type resource: struct vme_resource \*
 
 .. _`vme_master_free.description`:
 
@@ -544,11 +604,13 @@ vme_dma_request
 
     Request a DMA controller.
 
-    :param struct vme_dev \*vdev:
+    :param vdev:
         Pointer to VME device struct vme_dev assigned to driver instance.
+    :type vdev: struct vme_dev \*
 
-    :param u32 route:
+    :param route:
         Required src/destination combination.
+    :type route: u32
 
 .. _`vme_dma_request.description`:
 
@@ -574,8 +636,9 @@ vme_new_dma_list
 
     Create new VME DMA list.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME DMA resource.
+    :type resource: struct vme_resource \*
 
 .. _`vme_new_dma_list.description`:
 
@@ -602,11 +665,13 @@ vme_dma_pattern_attribute
 
     Create "Pattern" type VME DMA list attribute.
 
-    :param u32 pattern:
+    :param pattern:
         Value to use used as pattern
+    :type pattern: u32
 
-    :param u32 type:
+    :param type:
         Type of pattern to be written.
+    :type type: u32
 
 .. _`vme_dma_pattern_attribute.description`:
 
@@ -633,8 +698,9 @@ vme_dma_pci_attribute
 
     Create "PCI" type VME DMA list attribute.
 
-    :param dma_addr_t address:
+    :param address:
         PCI base address for DMA transfer.
+    :type address: dma_addr_t
 
 .. _`vme_dma_pci_attribute.description`:
 
@@ -661,17 +727,21 @@ vme_dma_vme_attribute
 
     Create "VME" type VME DMA list attribute.
 
-    :param unsigned long long address:
+    :param address:
         VME base address for DMA transfer.
+    :type address: unsigned long long
 
-    :param u32 aspace:
+    :param aspace:
         VME address space to use for DMA transfer.
+    :type aspace: u32
 
-    :param u32 cycle:
+    :param cycle:
         VME bus cycle to use for DMA transfer.
+    :type cycle: u32
 
-    :param u32 dwidth:
+    :param dwidth:
         VME data width to use for DMA transfer.
+    :type dwidth: u32
 
 .. _`vme_dma_vme_attribute.description`:
 
@@ -698,8 +768,9 @@ vme_dma_free_attribute
 
     Free DMA list attribute.
 
-    :param struct vme_dma_attr \*attributes:
+    :param attributes:
         Pointer to DMA list attribute.
+    :type attributes: struct vme_dma_attr \*
 
 .. _`vme_dma_free_attribute.description`:
 
@@ -718,17 +789,21 @@ vme_dma_list_add
 
     Add enty to a VME DMA list.
 
-    :param struct vme_dma_list \*list:
+    :param list:
         Pointer to VME list.
+    :type list: struct vme_dma_list \*
 
-    :param struct vme_dma_attr \*src:
+    :param src:
         Pointer to DMA list attribute to use as source.
+    :type src: struct vme_dma_attr \*
 
-    :param struct vme_dma_attr \*dest:
+    :param dest:
         Pointer to DMA list attribute to use as destination.
+    :type dest: struct vme_dma_attr \*
 
-    :param size_t count:
+    :param count:
         Number of bytes to transfer.
+    :type count: size_t
 
 .. _`vme_dma_list_add.description`:
 
@@ -759,8 +834,9 @@ vme_dma_list_exec
 
     Queue a VME DMA list for execution.
 
-    :param struct vme_dma_list \*list:
+    :param list:
         Pointer to VME list.
+    :type list: struct vme_dma_list \*
 
 .. _`vme_dma_list_exec.description`:
 
@@ -787,8 +863,9 @@ vme_dma_list_free
 
     Free a VME DMA list.
 
-    :param struct vme_dma_list \*list:
+    :param list:
         Pointer to VME list.
+    :type list: struct vme_dma_list \*
 
 .. _`vme_dma_list_free.description`:
 
@@ -814,8 +891,9 @@ vme_dma_free
 
     Free a VME DMA resource.
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME DMA resource.
+    :type resource: struct vme_resource \*
 
 .. _`vme_dma_free.description`:
 
@@ -841,21 +919,25 @@ vme_irq_request
 
     Request a specific VME interrupt.
 
-    :param struct vme_dev \*vdev:
+    :param vdev:
         Pointer to VME device struct vme_dev assigned to driver instance.
+    :type vdev: struct vme_dev \*
 
-    :param int level:
+    :param level:
         Interrupt priority being requested.
+    :type level: int
 
-    :param int statid:
+    :param statid:
         Interrupt vector being requested.
+    :type statid: int
 
     :param void (\*callback)(int, int, void \*):
         Pointer to callback function called when VME interrupt/vector
         received.
 
-    :param void \*priv_data:
+    :param priv_data:
         Generic pointer that will be passed to the callback function.
+    :type priv_data: void \*
 
 .. _`vme_irq_request.description`:
 
@@ -883,14 +965,17 @@ vme_irq_free
 
     Free a VME interrupt.
 
-    :param struct vme_dev \*vdev:
+    :param vdev:
         Pointer to VME device struct vme_dev assigned to driver instance.
+    :type vdev: struct vme_dev \*
 
-    :param int level:
+    :param level:
         Interrupt priority of interrupt being freed.
+    :type level: int
 
-    :param int statid:
+    :param statid:
         Interrupt vector of interrupt being freed.
+    :type statid: int
 
 .. _`vme_irq_free.description`:
 
@@ -908,14 +993,17 @@ vme_irq_generate
 
     Generate VME interrupt.
 
-    :param struct vme_dev \*vdev:
+    :param vdev:
         Pointer to VME device struct vme_dev assigned to driver instance.
+    :type vdev: struct vme_dev \*
 
-    :param int level:
+    :param level:
         Interrupt priority at which to assert the interrupt.
+    :type level: int
 
-    :param int statid:
+    :param statid:
         Interrupt vector to associate with the interrupt.
+    :type statid: int
 
 .. _`vme_irq_generate.description`:
 
@@ -942,8 +1030,9 @@ vme_lm_request
 
     Request a VME location monitor
 
-    :param struct vme_dev \*vdev:
+    :param vdev:
         Pointer to VME device struct vme_dev assigned to driver instance.
+    :type vdev: struct vme_dev \*
 
 .. _`vme_lm_request.description`:
 
@@ -970,8 +1059,9 @@ vme_lm_count
 
     Determine number of VME Addresses monitored
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME location monitor resource.
+    :type resource: struct vme_resource \*
 
 .. _`vme_lm_count.description`:
 
@@ -999,17 +1089,21 @@ vme_lm_set
 
     Configure location monitor
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME location monitor resource.
+    :type resource: struct vme_resource \*
 
-    :param unsigned long long lm_base:
+    :param lm_base:
         Base address to monitor.
+    :type lm_base: unsigned long long
 
-    :param u32 aspace:
+    :param aspace:
         VME address space to monitor.
+    :type aspace: u32
 
-    :param u32 cycle:
+    :param cycle:
         VME bus cycle type to monitor.
+    :type cycle: u32
 
 .. _`vme_lm_set.description`:
 
@@ -1037,17 +1131,21 @@ vme_lm_get
 
     Retrieve location monitor settings
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME location monitor resource.
+    :type resource: struct vme_resource \*
 
-    :param unsigned long long \*lm_base:
+    :param lm_base:
         Pointer used to output the base address monitored.
+    :type lm_base: unsigned long long \*
 
-    :param u32 \*aspace:
+    :param aspace:
         Pointer used to output the address space monitored.
+    :type aspace: u32 \*
 
-    :param u32 \*cycle:
+    :param cycle:
         Pointer used to output the VME bus cycle type monitored.
+    :type cycle: u32 \*
 
 .. _`vme_lm_get.description`:
 
@@ -1075,17 +1173,20 @@ vme_lm_attach
 
     Provide callback for location monitor address
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME location monitor resource.
+    :type resource: struct vme_resource \*
 
-    :param int monitor:
+    :param monitor:
         Offset to which callback should be attached.
+    :type monitor: int
 
     :param void (\*callback)(void \*):
         Pointer to callback function called when triggered.
 
-    :param void \*data:
+    :param data:
         Generic pointer that will be passed to the callback function.
+    :type data: void \*
 
 .. _`vme_lm_attach.description`:
 
@@ -1114,11 +1215,13 @@ vme_lm_detach
 
     Remove callback for location monitor address
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME location monitor resource.
+    :type resource: struct vme_resource \*
 
-    :param int monitor:
+    :param monitor:
         Offset to which callback should be removed.
+    :type monitor: int
 
 .. _`vme_lm_detach.description`:
 
@@ -1146,8 +1249,9 @@ vme_lm_free
 
     Free allocated VME location monitor
 
-    :param struct vme_resource \*resource:
+    :param resource:
         Pointer to VME location monitor resource.
+    :type resource: struct vme_resource \*
 
 .. _`vme_lm_free.description`:
 
@@ -1176,8 +1280,9 @@ vme_slot_num
 
     Retrieve slot ID
 
-    :param struct vme_dev \*vdev:
+    :param vdev:
         Pointer to VME device struct vme_dev assigned to driver instance.
+    :type vdev: struct vme_dev \*
 
 .. _`vme_slot_num.description`:
 
@@ -1204,8 +1309,9 @@ vme_bus_num
 
     Retrieve bus number
 
-    :param struct vme_dev \*vdev:
+    :param vdev:
         Pointer to VME device struct vme_dev assigned to driver instance.
+    :type vdev: struct vme_dev \*
 
 .. _`vme_bus_num.description`:
 
@@ -1231,11 +1337,13 @@ vme_register_driver
 
     Register a VME driver
 
-    :param struct vme_driver \*drv:
+    :param drv:
         Pointer to VME driver structure to register.
+    :type drv: struct vme_driver \*
 
-    :param unsigned int ndevs:
+    :param ndevs:
         Maximum number of devices to allow to be enumerated.
+    :type ndevs: unsigned int
 
 .. _`vme_register_driver.description`:
 
@@ -1260,8 +1368,9 @@ vme_unregister_driver
 
     Unregister a VME driver
 
-    :param struct vme_driver \*drv:
+    :param drv:
         Pointer to VME driver structure to unregister.
+    :type drv: struct vme_driver \*
 
 .. _`vme_unregister_driver.description`:
 

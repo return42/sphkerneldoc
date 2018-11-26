@@ -10,8 +10,9 @@ scmi_base_attributes_get
 
     gets the implementation details that are associated with the base protocol.
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         SCMI entity handle
+    :type handle: const struct scmi_handle \*
 
 .. _`scmi_base_attributes_get.return`:
 
@@ -29,11 +30,13 @@ scmi_base_vendor_id_get
 
     gets vendor/subvendor identifier ASCII string.
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         SCMI entity handle
+    :type handle: const struct scmi_handle \*
 
-    :param bool sub_vendor:
+    :param sub_vendor:
         specify true if sub-vendor ID is needed
+    :type sub_vendor: bool
 
 .. _`scmi_base_vendor_id_get.return`:
 
@@ -51,8 +54,9 @@ scmi_base_implementation_version_get
 
     gets a vendor-specific implementation 32-bit version. The format of the version number is vendor-specific
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         SCMI entity handle
+    :type handle: const struct scmi_handle \*
 
 .. _`scmi_base_implementation_version_get.return`:
 
@@ -70,11 +74,13 @@ scmi_base_implementation_list_get
 
     gets the list of protocols it is OSPM is allowed to access
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         SCMI entity handle
+    :type handle: const struct scmi_handle \*
 
-    :param u8 \*protocols_imp:
+    :param protocols_imp:
         pointer to hold the list of protocol identifiers
+    :type protocols_imp: u8 \*
 
 .. _`scmi_base_implementation_list_get.return`:
 
@@ -92,14 +98,17 @@ scmi_base_discover_agent_get
 
     discover the name of an agent
 
-    :param const struct scmi_handle \*handle:
+    :param handle:
         SCMI entity handle
+    :type handle: const struct scmi_handle \*
 
-    :param int id:
+    :param id:
         Agent identifier
+    :type id: int
 
-    :param char \*name:
+    :param name:
         Agent identifier ASCII string
+    :type name: char \*
 
 .. _`scmi_base_discover_agent_get.description`:
 

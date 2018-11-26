@@ -10,17 +10,21 @@ gigaset_dbg_buffer
 
     dump data in ASCII and hex for debugging
 
-    :param enum debuglevel level:
+    :param level:
         debugging level.
+    :type level: enum debuglevel
 
-    :param const unsigned char \*msg:
+    :param msg:
         message prefix.
+    :type msg: const unsigned char \*
 
-    :param size_t len:
+    :param len:
         number of bytes to dump.
+    :type len: size_t
 
-    :param const unsigned char \*buf:
+    :param buf:
         data to dump.
+    :type buf: const unsigned char \*
 
 .. _`gigaset_dbg_buffer.description`:
 
@@ -40,23 +44,29 @@ gigaset_add_event
 
     add event to device event queue
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
-    :param struct at_state_t \*at_state:
+    :param at_state:
         connection state structure.
+    :type at_state: struct at_state_t \*
 
-    :param int type:
+    :param type:
         event type.
+    :type type: int
 
-    :param void \*ptr:
+    :param ptr:
         pointer parameter for event.
+    :type ptr: void \*
 
-    :param int parameter:
+    :param parameter:
         integer parameter for event.
+    :type parameter: int
 
-    :param void \*arg:
+    :param arg:
         pointer parameter for event.
+    :type arg: void \*
 
 .. _`gigaset_add_event.description`:
 
@@ -82,8 +92,9 @@ gigaset_freecs
 
     free all associated ressources of a device
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
 .. _`gigaset_freecs.description`:
 
@@ -104,14 +115,17 @@ gigaset_fill_inbuf
 
     append received data to input buffer
 
-    :param struct inbuf_t \*inbuf:
+    :param inbuf:
         buffer structure.
+    :type inbuf: struct inbuf_t \*
 
-    :param const unsigned char \*src:
+    :param src:
         received data.
+    :type src: const unsigned char \*
 
-    :param unsigned numbytes:
+    :param numbytes:
         number of bytes received.
+    :type numbytes: unsigned
 
 .. _`gigaset_fill_inbuf.return-value`:
 
@@ -129,25 +143,31 @@ gigaset_initcs
 
     initialize device structure
 
-    :param struct gigaset_driver \*drv:
+    :param drv:
         hardware driver the device belongs to
+    :type drv: struct gigaset_driver \*
 
-    :param int channels:
+    :param channels:
         number of B channels supported by device
+    :type channels: int
 
-    :param int onechannel:
+    :param onechannel:
         !=0 if B channel data and AT commands share one
         communication channel (M10x),
         ==0 if B channels have separate communication channels (base)
+    :type onechannel: int
 
-    :param int ignoreframes:
+    :param ignoreframes:
         number of frames to ignore after setting up B channel
+    :type ignoreframes: int
 
-    :param int cidmode:
+    :param cidmode:
         !=0: start in CallID mode
+    :type cidmode: int
 
-    :param const char \*modulename:
+    :param modulename:
         name of driver module for LL registration
+    :type modulename: const char \*
 
 .. _`gigaset_initcs.description`:
 
@@ -174,8 +194,9 @@ gigaset_start
 
     start device operations
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
 .. _`gigaset_start.description`:
 
@@ -202,8 +223,9 @@ gigaset_shutdown
 
     shut down device operations
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
 .. _`gigaset_shutdown.description`:
 
@@ -229,8 +251,9 @@ gigaset_stop
 
     stop device operations
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
 .. _`gigaset_stop.description`:
 
@@ -249,8 +272,9 @@ gigaset_freedriver
 
     free all associated ressources of a driver
 
-    :param struct gigaset_driver \*drv:
+    :param drv:
         driver descriptor structure.
+    :type drv: struct gigaset_driver \*
 
 .. _`gigaset_freedriver.description`:
 
@@ -270,23 +294,29 @@ gigaset_initdriver
 
     initialize driver structure
 
-    :param unsigned minor:
+    :param minor:
         First minor number
+    :type minor: unsigned
 
-    :param unsigned minors:
+    :param minors:
         Number of minors this driver can handle
+    :type minors: unsigned
 
-    :param const char \*procname:
+    :param procname:
         Name of the driver
+    :type procname: const char \*
 
-    :param const char \*devname:
+    :param devname:
         Name of the device files (prefix without minor number)
+    :type devname: const char \*
 
-    :param const struct gigaset_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: const struct gigaset_ops \*
 
-    :param struct module \*owner:
+    :param owner:
         *undescribed*
+    :type owner: struct module \*
 
 .. _`gigaset_initdriver.description`:
 
@@ -311,8 +341,9 @@ gigaset_blockdriver
 
     block driver
 
-    :param struct gigaset_driver \*drv:
+    :param drv:
         driver descriptor structure.
+    :type drv: struct gigaset_driver \*
 
 .. _`gigaset_blockdriver.description`:
 

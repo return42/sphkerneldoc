@@ -6,21 +6,25 @@
 \__ioremap_at
 =============
 
-.. c:function:: void __iomem *__ioremap_at(phys_addr_t pa, void *ea, unsigned long size, unsigned long flags)
+.. c:function:: void __iomem *__ioremap_at(phys_addr_t pa, void *ea, unsigned long size, pgprot_t prot)
 
     Low level function to establish the page tables for an IO mapping
 
-    :param phys_addr_t pa:
+    :param pa:
         *undescribed*
+    :type pa: phys_addr_t
 
-    :param void \*ea:
+    :param ea:
         *undescribed*
+    :type ea: void \*
 
-    :param unsigned long size:
+    :param size:
         *undescribed*
+    :type size: unsigned long
 
-    :param unsigned long flags:
+    :param prot:
         *undescribed*
+    :type prot: pgprot_t
 
 .. _`__iounmap_at`:
 
@@ -31,11 +35,13 @@
 
     Low level function to tear down the page tables for an IO mapping. This is used for mappings that are manipulated manually, like partial unmapping of PCI IOs or ISA space.
 
-    :param void \*ea:
+    :param ea:
         *undescribed*
+    :type ea: void \*
 
-    :param unsigned long size:
+    :param size:
         *undescribed*
+    :type size: unsigned long
 
 .. This file was automatic generated / don't edit.
 

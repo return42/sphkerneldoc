@@ -10,11 +10,13 @@ register_gifconf
 
     register a SIOCGIF handler
 
-    :param unsigned int family:
+    :param family:
         Address family
+    :type family: unsigned int
 
-    :param gifconf_func_t \*gifconf:
+    :param gifconf:
         Function handler
+    :type gifconf: gifconf_func_t \*
 
 .. _`register_gifconf.description`:
 
@@ -34,11 +36,13 @@ dev_load
 
     load a network module
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param const char \*name:
+    :param name:
         name of interface
+    :type name: const char \*
 
 .. _`dev_load.description`:
 
@@ -58,17 +62,21 @@ dev_ioctl
 
     network device ioctl
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param unsigned int cmd:
+    :param cmd:
         command to issue
+    :type cmd: unsigned int
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         *undescribed*
+    :type ifr: struct ifreq \*
 
-    :param bool \*need_copyout:
+    :param need_copyout:
         *undescribed*
+    :type need_copyout: bool \*
 
 .. _`dev_ioctl.description`:
 

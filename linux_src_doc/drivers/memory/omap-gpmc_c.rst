@@ -10,11 +10,13 @@ gpmc_get_clk_period
 
     get period of selected clock domain in ps \ ``cs``\  Chip Select Region. \ ``cd``\  Clock Domain.
 
-    :param int cs:
+    :param cs:
         *undescribed*
+    :type cs: int
 
-    :param enum gpmc_clk_domain cd:
+    :param cd:
         *undescribed*
+    :type cd: enum gpmc_clk_domain
 
 .. _`gpmc_get_clk_period.description`:
 
@@ -33,39 +35,49 @@ get_gpmc_timing_reg
 
     read a timing parameter and print DTS settings for it.
 
-    :param int cs:
+    :param cs:
         Chip Select Region
+    :type cs: int
 
-    :param int reg:
+    :param reg:
         GPMC_CS_CONFIGn register offset.
+    :type reg: int
 
-    :param int st_bit:
+    :param st_bit:
         Start Bit
+    :type st_bit: int
 
-    :param int end_bit:
+    :param end_bit:
         End Bit. Must be >= \ ``st_bit``\ .
+    :type end_bit: int
 
-    :param int max:
+    :param max:
         *undescribed*
+    :type max: int
 
-    :param const char \*name:
+    :param name:
         DTS node name, w/o "gpmc,"
+    :type name: const char \*
 
-    :param const enum gpmc_clk_domain cd:
+    :param cd:
         Clock Domain of timing parameter.
+    :type cd: const enum gpmc_clk_domain
 
-    :param int shift:
+    :param shift:
         Parameter value left shifts \ ``shift``\ , which is then printed instead of value.
+    :type shift: int
 
-    :param bool raw:
+    :param raw:
         Raw Format Option.
         raw format:  gpmc,name = <value>
         tick format: gpmc,name = <value> /&zwj;\* x ns -- y ns; x ticks \*&zwj;/
         Where x ns -- y ns result in the same tick value.
         When \ ``max``\  is exceeded, "invalid" is printed inside comment.
+    :type raw: bool
 
-    :param bool noval:
+    :param noval:
         Parameter values equal to 0 are not printed.
+    :type noval: bool
 
 .. _`set_gpmc_timing_reg`:
 
@@ -76,30 +88,38 @@ set_gpmc_timing_reg
 
     set a single timing parameter for Chip Select Region. Caller is expected to have initialized CONFIG1 GPMCFCLKDIVIDER prior to calling this function with \ ``cd``\  equal to GPMC_CD_CLK.
 
-    :param int cs:
+    :param cs:
         Chip Select Region.
+    :type cs: int
 
-    :param int reg:
+    :param reg:
         GPMC_CS_CONFIGn register offset.
+    :type reg: int
 
-    :param int st_bit:
+    :param st_bit:
         Start Bit
+    :type st_bit: int
 
-    :param int end_bit:
+    :param end_bit:
         End Bit. Must be >= \ ``st_bit``\ .
+    :type end_bit: int
 
-    :param int max:
+    :param max:
         Maximum parameter value.
         If 0, maximum is as high as \ ``st_bit``\  and \ ``end_bit``\  allow.
+    :type max: int
 
-    :param int time:
+    :param time:
         Timing parameter in ns.
+    :type time: int
 
-    :param enum gpmc_clk_domain cd:
+    :param cd:
         Timing parameter clock domain.
+    :type cd: enum gpmc_clk_domain
 
-    :param const char \*name:
+    :param name:
         Timing parameter name.
+    :type name: const char \*
 
 .. _`gpmc_calc_waitmonitoring_divider`:
 
@@ -110,8 +130,9 @@ gpmc_calc_waitmonitoring_divider
 
     calculate proper GPMCFCLKDIVIDER based on WAITMONITORINGTIME WAITMONITORINGTIME will be \_at least\_ as long as desired, i.e. read  --> don't sample bus too early write --> data is longer on bus
 
-    :param unsigned int wait_monitoring:
+    :param wait_monitoring:
         WAITMONITORINGTIME in ns.
+    :type wait_monitoring: unsigned int
 
 .. _`gpmc_calc_waitmonitoring_divider.formula`:
 
@@ -132,8 +153,9 @@ gpmc_calc_divider
 
     calculate GPMC_FCLK divider for sync_clk GPMC_CLK period.
 
-    :param unsigned int sync_clk:
+    :param sync_clk:
         GPMC_CLK period in ps.
+    :type sync_clk: unsigned int
 
 .. _`gpmc_cs_set_timings`:
 
@@ -144,14 +166,17 @@ gpmc_cs_set_timings
 
     program timing parameters for Chip Select Region.
 
-    :param int cs:
+    :param cs:
         Chip Select Region.
+    :type cs: int
 
-    :param const struct gpmc_timings \*t:
+    :param t:
         GPMC timing parameters.
+    :type t: const struct gpmc_timings \*
 
-    :param const struct gpmc_settings \*s:
+    :param s:
         GPMC timing settings.
+    :type s: const struct gpmc_settings \*
 
 .. _`gpmc_cs_remap`:
 
@@ -162,11 +187,13 @@ gpmc_cs_remap
 
     remaps a chip-select physical base address
 
-    :param int cs:
+    :param cs:
         chip-select to remap
+    :type cs: int
 
-    :param u32 base:
+    :param base:
         physical base address to re-map chip-select to
+    :type base: u32
 
 .. _`gpmc_cs_remap.description`:
 
@@ -186,12 +213,14 @@ gpmc_configure
 
     write request to configure gpmc
 
-    :param int cmd:
+    :param cmd:
         command type
+    :type cmd: int
 
-    :param int wval:
+    :param wval:
         value to write
         \ ``return``\  status of the operation
+    :type wval: int
 
 .. _`gpmc_omap_get_nand_ops`:
 
@@ -202,12 +231,14 @@ gpmc_omap_get_nand_ops
 
     Get the GPMC NAND interface
 
-    :param struct gpmc_nand_regs \*reg:
+    :param reg:
         *undescribed*
+    :type reg: struct gpmc_nand_regs \*
 
-    :param int cs:
+    :param cs:
         GPMC chip select number on which the NAND sits. The
         register map returned will be specific to this chip select.
+    :type cs: int
 
 .. _`gpmc_omap_get_nand_ops.description`:
 
@@ -225,11 +256,13 @@ gpmc_cs_program_settings
 
     programs non-timing related settings
 
-    :param int cs:
+    :param cs:
         GPMC chip-select to program
+    :type cs: int
 
-    :param struct gpmc_settings \*p:
+    :param p:
         pointer to GPMC settings structure
+    :type p: struct gpmc_settings \*
 
 .. _`gpmc_cs_program_settings.description`:
 
@@ -252,11 +285,13 @@ gpmc_read_settings_dt
 
     read gpmc settings from device-tree
 
-    :param struct device_node \*np:
+    :param np:
         pointer to device-tree node for a gpmc child device
+    :type np: struct device_node \*
 
-    :param struct gpmc_settings \*p:
+    :param p:
         pointer to gpmc settings structure
+    :type p: struct gpmc_settings \*
 
 .. _`gpmc_read_settings_dt.description`:
 
@@ -277,11 +312,13 @@ gpmc_probe_generic_child
 
     configures the gpmc for a child device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to gpmc platform device
+    :type pdev: struct platform_device \*
 
-    :param struct device_node \*child:
+    :param child:
         pointer to device-tree node for child device
+    :type child: struct device_node \*
 
 .. _`gpmc_probe_generic_child.description`:
 

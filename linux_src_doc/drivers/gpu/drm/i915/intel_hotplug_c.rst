@@ -49,29 +49,6 @@ this is specific to DP sinks handled by this routine and any other display
 such as HDMI or DVI enabled on the same port will have proper logic since
 it will use i915_hotplug_work_func where this logic is handled.
 
-.. _`intel_hpd_pin_to_port`:
-
-intel_hpd_pin_to_port
-=====================
-
-.. c:function:: enum port intel_hpd_pin_to_port(struct drm_i915_private *dev_priv, enum hpd_pin pin)
-
-    return port hard associated with certain pin.
-
-    :param struct drm_i915_private \*dev_priv:
-        private driver data pointer
-
-    :param enum hpd_pin pin:
-        the hpd pin to get associated port
-
-.. _`intel_hpd_pin_to_port.description`:
-
-Description
------------
-
-Return port that is associatade with \ ``pin``\  and PORT_NONE if no port is
-hard associated with that \ ``pin``\ .
-
 .. _`intel_hpd_pin_default`:
 
 intel_hpd_pin_default
@@ -81,11 +58,13 @@ intel_hpd_pin_default
 
     return default pin associated with certain port.
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         private driver data pointer
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum port port:
+    :param port:
         the hpd port to get associated pin
+    :type port: enum port
 
 .. _`intel_hpd_pin_default.description`:
 
@@ -106,11 +85,13 @@ intel_hpd_irq_storm_detect
 
     gather stats and detect HPD irq storm on a pin
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         private driver data pointer
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum hpd_pin pin:
+    :param pin:
         the pin to gather stats on
+    :type pin: enum hpd_pin
 
 .. _`intel_hpd_irq_storm_detect.description`:
 
@@ -122,7 +103,7 @@ storms. Only the pin specific stats and state are changed, the caller is
 responsible for further action.
 
 The number of irqs that are allowed within \ ``HPD_STORM_DETECT_PERIOD``\  is
-stored in \ ``dev_priv``\ ->hotplug.hpd_storm_threshold which defaults to
+stored in \ ``dev_priv->hotplug.hpd_storm_threshold``\  which defaults to
 \ ``HPD_STORM_DEFAULT_THRESHOLD``\ . If this threshold is exceeded, it's
 considered an irq storm and the irq state is set to \ ``HPD_MARK_DISABLED``\ .
 
@@ -140,14 +121,17 @@ intel_hpd_irq_handler
 
     main hotplug irq handler
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         drm_i915_private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param u32 pin_mask:
+    :param pin_mask:
         a mask of hpd pins that have triggered the irq
+    :type pin_mask: u32
 
-    :param u32 long_mask:
+    :param long_mask:
         a mask of hpd pins that may be long hpd pulses
+    :type long_mask: u32
 
 .. _`intel_hpd_irq_handler.description`:
 
@@ -173,8 +157,9 @@ intel_hpd_init
 
     initializes and enables hpd support
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_hpd_init.description`:
 
@@ -200,8 +185,9 @@ intel_hpd_poll_init
 
     enables/disables polling for connectors with hpd
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_hpd_poll_init.description`:
 

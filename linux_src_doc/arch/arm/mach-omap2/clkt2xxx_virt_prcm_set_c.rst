@@ -10,11 +10,13 @@ omap2_table_mpu_recalc
 
     just return the MPU speed
 
-    :param struct clk_hw \*clk:
+    :param clk:
         virt_prcm_set struct clk
+    :type clk: struct clk_hw \*
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         *undescribed*
+    :type parent_rate: unsigned long
 
 .. _`omap2_table_mpu_recalc.description`:
 
@@ -32,8 +34,9 @@ omap2xxx_clkt_vps_check_bootloader_rates
 
     determine which of the rate table sets matches the current CORE DPLL hardware rate
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2xxx_clkt_vps_check_bootloader_rates.description`:
 
@@ -53,8 +56,9 @@ omap2xxx_clkt_vps_late_init
 
     store a copy of the sys_ck rate
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2xxx_clkt_vps_late_init.description`:
 
@@ -76,8 +80,9 @@ omap2xxx_clkt_vps_init
 
     initialize virt_prcm_set clock
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2xxx_clkt_vps_init.description`:
 

@@ -8,11 +8,13 @@ cryp_enable_irq_src
 
 .. c:function:: void cryp_enable_irq_src(struct cryp_device_data *device_data, u32 irq_src)
 
-    :param struct cryp_device_data \*device_data:
+    :param device_data:
         *undescribed*
+    :type device_data: struct cryp_device_data \*
 
-    :param u32 irq_src:
+    :param irq_src:
         *undescribed*
+    :type irq_src: u32
 
 .. This file was automatic generated / don't edit.
 

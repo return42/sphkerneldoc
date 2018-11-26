@@ -10,11 +10,13 @@
 
     Print a suspend debug message to the kernel log.
 
-    :param bool defer:
+    :param defer:
         Whether or not to use \ :c:func:`printk_deferred`\  to print the message.
+    :type defer: bool
 
-    :param const char \*fmt:
+    :param fmt:
         Message format.
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -36,14 +38,17 @@ state_show
 
     control system sleep states.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`state_show.description`:
 

@@ -10,8 +10,9 @@ snd_pcm_substream_to_dma_direction
 
     Get dma_transfer_direction for a PCM substream
 
-    :param const struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: const struct snd_pcm_substream \*
 
 .. _`snd_dmaengine_dai_dma_data`:
 

@@ -10,26 +10,33 @@ i915_gem_evict_something
 
     Evict vmas to make room for binding a new one
 
-    :param struct i915_address_space \*vm:
+    :param vm:
         address space to evict from
+    :type vm: struct i915_address_space \*
 
-    :param u64 min_size:
+    :param min_size:
         size of the desired free space
+    :type min_size: u64
 
-    :param u64 alignment:
+    :param alignment:
         alignment constraint of the desired free space
+    :type alignment: u64
 
-    :param unsigned cache_level:
+    :param cache_level:
         cache_level for the desired space
+    :type cache_level: unsigned
 
-    :param u64 start:
+    :param start:
         start (inclusive) of the range from which to evict objects
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         end (exclusive) of the range from which to evict objects
+    :type end: u64
 
-    :param unsigned flags:
+    :param flags:
         additional flags to control the eviction algorithm
+    :type flags: unsigned
 
 .. _`i915_gem_evict_something.description`:
 
@@ -58,14 +65,17 @@ i915_gem_evict_for_node
 
     Evict vmas to make room for binding a new one
 
-    :param struct i915_address_space \*vm:
+    :param vm:
         address space to evict from
+    :type vm: struct i915_address_space \*
 
-    :param struct drm_mm_node \*target:
+    :param target:
         range (and color) to evict for
+    :type target: struct drm_mm_node \*
 
-    :param unsigned int flags:
+    :param flags:
         additional flags to control the eviction algorithm
+    :type flags: unsigned int
 
 .. _`i915_gem_evict_for_node.description`:
 
@@ -86,8 +96,9 @@ i915_gem_evict_vm
 
     Evict all idle vmas from a vm
 
-    :param struct i915_address_space \*vm:
+    :param vm:
         Address space to cleanse
+    :type vm: struct i915_address_space \*
 
 .. _`i915_gem_evict_vm.description`:
 

@@ -10,11 +10,13 @@ ubifs_add_orphan
 
     add an orphan.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param ino_t inum:
+    :param inum:
         orphan inode number
+    :type inum: ino_t
 
 .. _`ubifs_add_orphan.description`:
 
@@ -33,11 +35,13 @@ ubifs_delete_orphan
 
     delete an orphan.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param ino_t inum:
+    :param inum:
         orphan inode number
+    :type inum: ino_t
 
 .. _`ubifs_delete_orphan.description`:
 
@@ -55,8 +59,9 @@ ubifs_orphan_start_commit
 
     start commit of orphans.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_orphan_start_commit.description`:
 
@@ -74,8 +79,9 @@ avail_orphs
 
     calculate available space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`avail_orphs.description`:
 
@@ -94,8 +100,9 @@ tot_avail_orphs
 
     calculate total space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`tot_avail_orphs.description`:
 
@@ -114,14 +121,17 @@ do_write_orph_node
 
     write a node to the orphan head.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int len:
+    :param len:
         length of node
+    :type len: int
 
-    :param int atomic:
+    :param atomic:
         write atomically
+    :type atomic: int
 
 .. _`do_write_orph_node.description`:
 
@@ -141,11 +151,13 @@ write_orph_node
 
     write an orphan node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int atomic:
+    :param atomic:
         write atomically
+    :type atomic: int
 
 .. _`write_orph_node.description`:
 
@@ -165,11 +177,13 @@ write_orph_nodes
 
     write orphan nodes until there are no more to commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int atomic:
+    :param atomic:
         write atomically
+    :type atomic: int
 
 .. _`write_orph_nodes.description`:
 
@@ -188,8 +202,9 @@ consolidate
 
     consolidate the orphan area.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`consolidate.description`:
 
@@ -212,8 +227,9 @@ commit_orphans
 
     commit orphans.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`commit_orphans.description`:
 
@@ -232,8 +248,9 @@ erase_deleted
 
     erase the orphans marked for deletion.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`erase_deleted.description`:
 
@@ -254,8 +271,9 @@ ubifs_orphan_end_commit
 
     end commit of orphans.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_orphan_end_commit.description`:
 
@@ -273,8 +291,9 @@ ubifs_clear_orphans
 
     erase all LEBs used for orphans.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_clear_orphans.description`:
 
@@ -294,11 +313,13 @@ insert_dead_orphan
 
     insert an orphan.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param ino_t inum:
+    :param inum:
         orphan inode number
+    :type inum: ino_t
 
 .. _`insert_dead_orphan.description`:
 
@@ -318,20 +339,25 @@ do_kill_orphans
 
     remove orphan inodes from the index.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_scan_leb \*sleb:
+    :param sleb:
         scanned LEB
+    :type sleb: struct ubifs_scan_leb \*
 
-    :param unsigned long long \*last_cmt_no:
+    :param last_cmt_no:
         cmt_no of last orphan node read is passed and returned here
+    :type last_cmt_no: unsigned long long \*
 
-    :param int \*outofdate:
+    :param outofdate:
         whether the LEB is out of date is returned here
+    :type outofdate: int \*
 
-    :param int \*last_flagged:
+    :param last_flagged:
         whether the end orphan node is encountered
+    :type last_flagged: int \*
 
 .. _`do_kill_orphans.description`:
 
@@ -351,8 +377,9 @@ kill_orphans
 
     remove all orphan inodes from the index.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`kill_orphans.description`:
 
@@ -374,14 +401,17 @@ ubifs_mount_orphans
 
     delete orphan inodes and erase LEBs that recorded them.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int unclean:
+    :param unclean:
         indicates recovery from unclean unmount
+    :type unclean: int
 
-    :param int read_only:
+    :param read_only:
         indicates read only mount
+    :type read_only: int
 
 .. _`ubifs_mount_orphans.description`:
 

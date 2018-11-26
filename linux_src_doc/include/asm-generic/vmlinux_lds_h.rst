@@ -10,8 +10,9 @@ PERCPU_INPUT
 
     the percpu input sections
 
-    :param  cacheline:
+    :param cacheline:
         cacheline size
+    :type cacheline: 
 
 .. _`percpu_input.description`:
 
@@ -33,14 +34,17 @@ PERCPU_VADDR
 
     define output section for percpu area
 
-    :param  cacheline:
+    :param cacheline:
         cacheline size
+    :type cacheline: 
 
-    :param  vaddr:
+    :param vaddr:
         explicit base address (optional)
+    :type vaddr: 
 
-    :param  phdr:
+    :param phdr:
         destination PHDR (optional)
+    :type phdr: 
 
 .. _`percpu_vaddr.description`:
 
@@ -74,8 +78,9 @@ PERCPU_SECTION
 
     define output section for percpu area, simple version
 
-    :param  cacheline:
+    :param cacheline:
         cacheline size
+    :type cacheline: 
 
 .. _`percpu_section.description`:
 

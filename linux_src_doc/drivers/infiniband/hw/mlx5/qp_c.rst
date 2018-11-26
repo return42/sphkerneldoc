@@ -10,27 +10,33 @@ mlx5_ib_read_user_wqe
 
     Copy a user-space WQE to kernel space.
 
-    :param struct mlx5_ib_qp \*qp:
+    :param qp:
         QP to copy from.
+    :type qp: struct mlx5_ib_qp \*
 
-    :param int send:
+    :param send:
         copy from the send queue when non-zero, use the receive queue
         otherwise.
+    :type send: int
 
-    :param int wqe_index:
+    :param wqe_index:
         index to start copying from. For send work queues, the
         wqe_index is in units of MLX5_SEND_WQE_BB.
         For receive work queue, it is the number of work queue
         element in the queue.
+    :type wqe_index: int
 
-    :param void \*buffer:
+    :param buffer:
         destination buffer.
+    :type buffer: void \*
 
-    :param u32 length:
+    :param length:
         maximum number of bytes to copy.
+    :type length: u32
 
-    :param struct mlx5_ib_qp_base \*base:
+    :param base:
         *undescribed*
+    :type base: struct mlx5_ib_qp_base \*
 
 .. _`mlx5_ib_read_user_wqe.description`:
 

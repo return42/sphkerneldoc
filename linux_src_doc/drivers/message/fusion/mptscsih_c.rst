@@ -10,14 +10,17 @@ mptscsih_info_scsiio
 
     debug print info on reply frame
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         original scsi cmnd pointer
+    :type sc: struct scsi_cmnd \*
 
-    :param SCSIIOReply_t \*pScsiReply:
+    :param pScsiReply:
         Pointer to MPT reply frame
+    :type pScsiReply: SCSIIOReply_t \*
 
 .. _`mptscsih_info_scsiio.description`:
 
@@ -37,8 +40,9 @@ mptscsih_info
 
     Return information about MPT adapter
 
-    :param struct Scsi_Host \*SChost:
+    :param SChost:
         Pointer to Scsi_Host structure
+    :type SChost: struct Scsi_Host \*
 
 .. _`mptscsih_info.description`:
 
@@ -58,8 +62,9 @@ mptscsih_qcmd
 
     Primary Fusion MPT SCSI initiator IO start routine.
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         Pointer to scsi_cmnd structure
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`mptscsih_qcmd.description`:
 
@@ -81,26 +86,33 @@ mptscsih_IssueTaskMgmt
 
     Generic send Task Management function.
 
-    :param MPT_SCSI_HOST \*hd:
+    :param hd:
         Pointer to MPT_SCSI_HOST structure
+    :type hd: MPT_SCSI_HOST \*
 
-    :param u8 type:
+    :param type:
         Task Management type
+    :type type: u8
 
-    :param u8 channel:
+    :param channel:
         channel number for task management
+    :type channel: u8
 
-    :param u8 id:
+    :param id:
         Logical Target ID for reset (if appropriate)
+    :type id: u8
 
-    :param u64 lun:
+    :param lun:
         Logical Unit for reset (if appropriate)
+    :type lun: u64
 
-    :param int ctx2abort:
+    :param ctx2abort:
         Context for the task to be aborted (if appropriate)
+    :type ctx2abort: int
 
-    :param ulong timeout:
+    :param timeout:
         timeout for task management control
+    :type timeout: ulong
 
 .. _`mptscsih_issuetaskmgmt.description`:
 
@@ -123,8 +135,9 @@ mptscsih_abort
 
     Abort linux scsi_cmnd routine, new_eh variant
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         Pointer to scsi_cmnd structure, IO to be aborted
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`mptscsih_abort.description`:
 
@@ -144,8 +157,9 @@ mptscsih_dev_reset
 
     Perform a SCSI TARGET_RESET!  new_eh variant
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         Pointer to scsi_cmnd structure, IO which reset is due to
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`mptscsih_dev_reset.description`:
 
@@ -165,8 +179,9 @@ mptscsih_bus_reset
 
     Perform a SCSI BUS_RESET!  new_eh variant
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         Pointer to scsi_cmnd structure, IO which reset is due to
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`mptscsih_bus_reset.description`:
 
@@ -186,8 +201,9 @@ mptscsih_host_reset
 
     Perform a SCSI host adapter RESET (new_eh variant)
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         Pointer to scsi_cmnd structure, IO which reset is due to
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`mptscsih_host_reset.description`:
 
@@ -207,14 +223,17 @@ mptscsih_taskmgmt_complete
 
     Registered with Fusion MPT base driver
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param MPT_FRAME_HDR \*mf:
+    :param mf:
         Pointer to SCSI task mgmt request frame
+    :type mf: MPT_FRAME_HDR \*
 
-    :param MPT_FRAME_HDR \*mr:
+    :param mr:
         Pointer to SCSI task mgmt reply frame
+    :type mr: MPT_FRAME_HDR \*
 
 .. _`mptscsih_taskmgmt_complete.description`:
 
@@ -237,11 +256,13 @@ mptscsih_get_scsi_lookup
 
     retrieves scmd entry
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int i:
+    :param i:
         index into the array
+    :type i: int
 
 .. _`mptscsih_get_scsi_lookup.description`:
 
@@ -259,11 +280,13 @@ mptscsih_getclear_scsi_lookup
 
     retrieves and clears scmd entry from ScsiLookup[] array list
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int i:
+    :param i:
         index into the array
+    :type i: int
 
 .. _`mptscsih_getclear_scsi_lookup.description`:
 
@@ -281,14 +304,17 @@ mptscsih_set_scsi_lookup
 
     write a scmd entry into the ScsiLookup[] array list
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int i:
+    :param i:
         index into the array
+    :type i: int
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         scsi_cmnd pointer
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scpnt_to_lookup_idx`:
 
@@ -299,11 +325,13 @@ SCPNT_TO_LOOKUP_IDX
 
     searches for a given scmd in the ScsiLookup[] array list
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         scsi_cmnd pointer
+    :type sc: struct scsi_cmnd \*
 
 .. _`mptscsih_get_completion_code`:
 
@@ -314,14 +342,17 @@ mptscsih_get_completion_code
 
     get completion code from MPT request
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param MPT_FRAME_HDR \*req:
+    :param req:
         Pointer to original MPT request frame
+    :type req: MPT_FRAME_HDR \*
 
-    :param MPT_FRAME_HDR \*reply:
+    :param reply:
         Pointer to MPT reply frame (NULL if TurboReply)
+    :type reply: MPT_FRAME_HDR \*
 
 .. _`mptscsih_do_cmd`:
 
@@ -332,11 +363,13 @@ mptscsih_do_cmd
 
     Do internal command.
 
-    :param MPT_SCSI_HOST \*hd:
+    :param hd:
         MPT_SCSI_HOST pointer
+    :type hd: MPT_SCSI_HOST \*
 
-    :param INTERNAL_CMD \*io:
+    :param io:
         INTERNAL_CMD pointer.
+    :type io: INTERNAL_CMD \*
 
 .. _`mptscsih_do_cmd.description`:
 
@@ -376,11 +409,13 @@ mptscsih_synchronize_cache
 
     Send SYNCHRONIZE_CACHE to all disks.
 
-    :param MPT_SCSI_HOST \*hd:
+    :param hd:
         Pointer to a SCSI HOST structure
+    :type hd: MPT_SCSI_HOST \*
 
-    :param VirtDevice \*vdevice:
+    :param vdevice:
         virtual target device
+    :type vdevice: VirtDevice \*
 
 .. _`mptscsih_synchronize_cache.description`:
 

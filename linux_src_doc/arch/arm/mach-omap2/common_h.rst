@@ -10,14 +10,17 @@ omap_test_timeout
 
     busy-loop, testing a condition
 
-    :param  cond:
+    :param cond:
         condition to test until it evaluates to true
+    :type cond: 
 
-    :param  timeout:
+    :param timeout:
         maximum number of microseconds in the timeout
+    :type timeout: 
 
-    :param  index:
+    :param index:
         loop index (integer)
+    :type index: 
 
 .. _`omap_test_timeout.description`:
 

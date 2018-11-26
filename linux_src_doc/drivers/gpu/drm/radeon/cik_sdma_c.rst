@@ -10,11 +10,13 @@ cik_sdma_get_rptr
 
     get the current read pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`cik_sdma_get_rptr.description`:
 
@@ -32,11 +34,13 @@ cik_sdma_get_wptr
 
     get the current write pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`cik_sdma_get_wptr.description`:
 
@@ -54,11 +58,13 @@ cik_sdma_set_wptr
 
     commit the write pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`cik_sdma_set_wptr.description`:
 
@@ -76,11 +82,13 @@ cik_sdma_ring_ib_execute
 
     Schedule an IB on the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         IB object to schedule
+    :type ib: struct radeon_ib \*
 
 .. _`cik_sdma_ring_ib_execute.description`:
 
@@ -98,11 +106,13 @@ cik_sdma_hdp_flush_ring_emit
 
     emit an hdp flush on the DMA ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ridx:
+    :param ridx:
         radeon ring index
+    :type ridx: int
 
 .. _`cik_sdma_hdp_flush_ring_emit.description`:
 
@@ -120,11 +130,13 @@ cik_sdma_fence_ring_emit
 
     emit a fence on the DMA ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
 .. _`cik_sdma_fence_ring_emit.description`:
 
@@ -144,17 +156,21 @@ cik_sdma_semaphore_ring_emit
 
     emit a semaphore on the dma ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
-    :param struct radeon_semaphore \*semaphore:
+    :param semaphore:
         radeon semaphore object
+    :type semaphore: struct radeon_semaphore \*
 
-    :param bool emit_wait:
+    :param emit_wait:
         wait or signal semaphore
+    :type emit_wait: bool
 
 .. _`cik_sdma_semaphore_ring_emit.description`:
 
@@ -173,8 +189,9 @@ cik_sdma_gfx_stop
 
     stop the gfx async dma engines
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_sdma_gfx_stop.description`:
 
@@ -192,8 +209,9 @@ cik_sdma_rlc_stop
 
     stop the compute async dma engines
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_sdma_rlc_stop.description`:
 
@@ -211,11 +229,13 @@ cik_sdma_ctx_switch_enable
 
     enable/disable sdma engine preemption
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param bool enable:
+    :param enable:
         enable/disable preemption.
+    :type enable: bool
 
 .. _`cik_sdma_ctx_switch_enable.description`:
 
@@ -233,11 +253,13 @@ cik_sdma_enable
 
     stop the async dma engines
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param bool enable:
+    :param enable:
         enable/disable the DMA MEs.
+    :type enable: bool
 
 .. _`cik_sdma_enable.description`:
 
@@ -255,8 +277,9 @@ cik_sdma_gfx_resume
 
     setup and start the async dma engines
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_sdma_gfx_resume.description`:
 
@@ -275,8 +298,9 @@ cik_sdma_rlc_resume
 
     setup and start the async dma engines
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_sdma_rlc_resume.description`:
 
@@ -295,8 +319,9 @@ cik_sdma_load_microcode
 
     load the sDMA ME ucode
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_sdma_load_microcode.description`:
 
@@ -315,8 +340,9 @@ cik_sdma_resume
 
     setup and start the async dma engines
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_sdma_resume.description`:
 
@@ -335,8 +361,9 @@ cik_sdma_fini
 
     tear down the async dma engines
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_sdma_fini.description`:
 
@@ -354,20 +381,25 @@ cik_copy_dma
 
     copy pages using the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint64_t src_offset:
+    :param src_offset:
         src GPU address
+    :type src_offset: uint64_t
 
-    :param uint64_t dst_offset:
+    :param dst_offset:
         dst GPU address
+    :type dst_offset: uint64_t
 
-    :param unsigned num_gpu_pages:
+    :param num_gpu_pages:
         number of GPU pages to xfer
+    :type num_gpu_pages: unsigned
 
-    :param struct reservation_object \*resv:
+    :param resv:
         reservation object to sync to
+    :type resv: struct reservation_object \*
 
 .. _`cik_copy_dma.description`:
 
@@ -387,11 +419,13 @@ cik_sdma_ring_test
 
     simple async dma engine test
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`cik_sdma_ring_test.description`:
 
@@ -411,11 +445,13 @@ cik_sdma_ib_test
 
     test an IB on the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`cik_sdma_ib_test.description`:
 
@@ -434,11 +470,13 @@ cik_sdma_is_lockup
 
     Check if the DMA engine is locked up
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`cik_sdma_is_lockup.description`:
 
@@ -457,20 +495,25 @@ cik_sdma_vm_copy_pages
 
     update PTEs by copying them from the GART
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t src:
+    :param src:
         src addr to copy from
+    :type src: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
 .. _`cik_sdma_vm_copy_pages.description`:
 
@@ -488,26 +531,33 @@ cik_sdma_vm_write_pages
 
     update PTEs by writing them manually
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t addr:
+    :param addr:
         dst addr to write into pe
+    :type addr: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
-    :param uint32_t incr:
+    :param incr:
         increase next addr by incr bytes
+    :type incr: uint32_t
 
-    :param uint32_t flags:
+    :param flags:
         access flags
+    :type flags: uint32_t
 
 .. _`cik_sdma_vm_write_pages.description`:
 
@@ -525,26 +575,33 @@ cik_sdma_vm_set_pages
 
     update the page tables using sDMA
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t addr:
+    :param addr:
         dst addr to write into pe
+    :type addr: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
-    :param uint32_t incr:
+    :param incr:
         increase next addr by incr bytes
+    :type incr: uint32_t
 
-    :param uint32_t flags:
+    :param flags:
         access flags
+    :type flags: uint32_t
 
 .. _`cik_sdma_vm_set_pages.description`:
 
@@ -562,8 +619,9 @@ cik_sdma_vm_pad_ib
 
     pad the IB to the required number of dw
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with padding
+    :type ib: struct radeon_ib \*
 
 .. _`cik_dma_vm_flush`:
 
@@ -574,17 +632,21 @@ cik_dma_vm_flush
 
     cik vm flush using sDMA
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct radeon_ring \*
 
-    :param unsigned vm_id:
+    :param vm_id:
         *undescribed*
+    :type vm_id: unsigned
 
-    :param uint64_t pd_addr:
+    :param pd_addr:
         *undescribed*
+    :type pd_addr: uint64_t
 
 .. _`cik_dma_vm_flush.description`:
 

@@ -10,14 +10,17 @@ inet_csk_clone_lock
 
     clone an inet socket, and lock its clone
 
-    :param const struct sock \*sk:
+    :param sk:
         the socket to clone
+    :type sk: const struct sock \*
 
-    :param const struct request_sock \*req:
+    :param req:
         request_sock
+    :type req: const struct request_sock \*
 
-    :param const gfp_t priority:
+    :param priority:
         for allocation (%GFP_KERNEL, \ ``GFP_ATOMIC``\ , etc)
+    :type priority: const gfp_t
 
 .. _`inet_csk_clone_lock.description`:
 

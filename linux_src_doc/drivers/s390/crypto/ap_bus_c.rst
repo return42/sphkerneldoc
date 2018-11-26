@@ -10,8 +10,9 @@ ap_using_interrupts
 
     Returns non-zero if interrupt support is available.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ap_airq_ptr`:
 
@@ -22,8 +23,9 @@ ap_airq_ptr
 
     Get the address of the adapter interrupt indicator
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ap_airq_ptr.description`:
 
@@ -43,8 +45,9 @@ ap_interrupts_available
 
     Test if AP interrupts are available.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ap_interrupts_available.description`:
 
@@ -62,8 +65,9 @@ ap_configuration_available
 
     Test if AP configuration information is available.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ap_configuration_available.description`:
 
@@ -81,8 +85,9 @@ ap_apft_available
 
     Test if AP facilities test (APFT) facility is available.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ap_apft_available.description`:
 
@@ -90,31 +95,6 @@ Description
 -----------
 
 Returns 1 if APFT is is available.
-
-.. _`ap_test_queue`:
-
-ap_test_queue
-=============
-
-.. c:function:: struct ap_queue_status ap_test_queue(ap_qid_t qid, int tbit, unsigned long *info)
-
-    Test adjunct processor queue.
-
-    :param ap_qid_t qid:
-        The AP queue number
-
-    :param int tbit:
-        Test facilities bit
-
-    :param unsigned long \*info:
-        Pointer to queue descriptor
-
-.. _`ap_test_queue.description`:
-
-Description
------------
-
-Returns AP queue status structure.
 
 .. _`ap_init_configuration`:
 
@@ -125,8 +105,9 @@ ap_init_configuration
 
     Allocate and query configuration array.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ap_query_queue`:
 
@@ -137,17 +118,21 @@ ap_query_queue
 
     Check if an AP queue is available.
 
-    :param ap_qid_t qid:
+    :param qid:
         The AP queue number
+    :type qid: ap_qid_t
 
-    :param int \*queue_depth:
+    :param queue_depth:
         Pointer to queue depth value
+    :type queue_depth: int \*
 
-    :param int \*device_type:
+    :param device_type:
         Pointer to device type value
+    :type device_type: int \*
 
-    :param unsigned int \*facilities:
+    :param facilities:
         Pointer to facility indicator
+    :type facilities: unsigned int \*
 
 .. _`ap_request_timeout`:
 
@@ -158,8 +143,9 @@ ap_request_timeout
 
     Handling of request timeouts
 
-    :param struct timer_list \*t:
+    :param t:
         timer making this callback
+    :type t: struct timer_list \*
 
 .. _`ap_request_timeout.description`:
 
@@ -177,8 +163,9 @@ ap_poll_timeout
 
     AP receive polling for finished AP requests.
 
-    :param struct hrtimer \*unused:
+    :param unused:
         Unused pointer.
+    :type unused: struct hrtimer \*
 
 .. _`ap_poll_timeout.description`:
 
@@ -196,8 +183,9 @@ ap_interrupt_handler
 
     Schedule ap_tasklet on interrupt
 
-    :param struct airq_struct \*airq:
+    :param airq:
         pointer to adapter interrupt descriptor
+    :type airq: struct airq_struct \*
 
 .. _`ap_tasklet_fn`:
 
@@ -208,8 +196,9 @@ ap_tasklet_fn
 
     Tasklet to poll all AP devices.
 
-    :param unsigned long dummy:
+    :param dummy:
         Unused variable
+    :type dummy: unsigned long
 
 .. _`ap_tasklet_fn.description`:
 
@@ -227,8 +216,9 @@ ap_poll_thread
 
     Thread that polls for finished requests.
 
-    :param void \*data:
+    :param data:
         Unused pointer
+    :type data: void \*
 
 .. _`ap_poll_thread.description`:
 
@@ -248,11 +238,13 @@ ap_bus_match
 
 .. c:function:: int ap_bus_match(struct device *dev, struct device_driver *drv)
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to device
+    :type dev: struct device \*
 
-    :param struct device_driver \*drv:
+    :param drv:
         Pointer to device_driver
+    :type drv: struct device_driver \*
 
 .. _`ap_bus_match.description`:
 
@@ -270,11 +262,13 @@ ap_uevent
 
     Uevent function for AP devices.
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to device
+    :type dev: struct device \*
 
-    :param struct kobj_uevent_env \*env:
+    :param env:
         Pointer to kobj_uevent_env
+    :type env: struct kobj_uevent_env \*
 
 .. _`ap_uevent.description`:
 
@@ -289,19 +283,13 @@ hardware device type.
 ap_select_domain
 ================
 
-.. c:function:: int ap_select_domain( void)
+.. c:function:: void ap_select_domain( void)
 
-    Select an AP domain.
+    Select an AP domain if possible and we haven't already done so before.
 
-    :param  void:
+    :param void:
         no arguments
-
-.. _`ap_select_domain.description`:
-
-Description
------------
-
-Pick one of the 16 AP domains.
+    :type void: 
 
 .. _`ap_scan_bus`:
 
@@ -312,8 +300,9 @@ ap_scan_bus
 
     Scan the AP bus for new devices Runs periodically, workqueue timer (ap_config_time)
 
-    :param struct work_struct \*unused:
+    :param unused:
         *undescribed*
+    :type unused: struct work_struct \*
 
 .. _`ap_module_init`:
 
@@ -324,8 +313,9 @@ ap_module_init
 
     The module initialization code.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ap_module_init.description`:
 

@@ -10,8 +10,9 @@ e1000e_check_options
 
     Range Checking for Command Line Parameters
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000e_check_options.description`:
 

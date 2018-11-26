@@ -10,14 +10,17 @@ container_of
 
     cast a member of a structure out to the containing structure
 
-    :param  ptr:
+    :param ptr:
         the pointer to the member.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the container struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the member within the struct.
+    :type member: 
 
 .. _`list_entry`:
 
@@ -28,14 +31,17 @@ list_entry
 
     get the struct for this entry
 
-    :param  ptr:
+    :param ptr:
         the \ :c:type:`struct list_head <list_head>`\  pointer.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry`:
 
@@ -46,14 +52,17 @@ list_for_each_entry
 
     iterate over list of given type
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_safe`:
 
@@ -64,17 +73,21 @@ list_for_each_entry_safe
 
     iterate over list of given type safe against removal of list entry
 
-    :param  pos:
+    :param pos:
         the type \* to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another type \* to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_empty`:
 
@@ -85,8 +98,9 @@ list_empty
 
     tests whether a list is empty
 
-    :param const struct list_head \*head:
+    :param head:
         the list to test.
+    :type head: const struct list_head \*
 
 .. _`list_add_tail`:
 
@@ -97,11 +111,13 @@ list_add_tail
 
     add a new entry
 
-    :param struct list_head \*_new:
+    :param _new:
         *undescribed*
+    :type _new: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         list head to add it before
+    :type head: struct list_head \*
 
 .. _`list_add_tail.description`:
 
@@ -120,8 +136,9 @@ list_del
 
     deletes entry from list.
 
-    :param struct list_head \*entry:
+    :param entry:
         the element to delete from the list.
+    :type entry: struct list_head \*
 
 .. _`list_del.note`:
 

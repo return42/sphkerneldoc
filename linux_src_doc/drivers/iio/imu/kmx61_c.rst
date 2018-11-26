@@ -10,17 +10,21 @@ kmx61_set_mode
 
     set KMX61 device operating mode \ ``data``\  - kmx61 device private data pointer \ ``mode``\  - bitmask, indicating operating mode for \ ``device``\  \ ``device``\  - bitmask, indicating device for which \ ``mode``\  needs to be set \ ``update``\  - update stby bits stored in device's private  \ ``data``\ 
 
-    :param struct kmx61_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct kmx61_data \*
 
-    :param u8 mode:
+    :param mode:
         *undescribed*
+    :type mode: u8
 
-    :param u8 device:
+    :param device:
         *undescribed*
+    :type device: u8
 
-    :param bool update:
+    :param update:
         *undescribed*
+    :type update: bool
 
 .. _`kmx61_set_mode.description`:
 
@@ -41,14 +45,17 @@ kmx61_set_power_state
 
     set power state for kmx61 \ ``device``\  \ ``data``\  - kmx61 device private pointer \ ``on``\  - power state to be set for \ ``device``\  \ ``device``\  - bitmask indicating device for which \ ``on``\  state needs to be set
 
-    :param struct kmx61_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct kmx61_data \*
 
-    :param bool on:
+    :param on:
         *undescribed*
+    :type on: bool
 
-    :param u8 device:
+    :param device:
         *undescribed*
+    :type device: u8
 
 .. _`kmx61_set_power_state.description`:
 

@@ -23,7 +23,7 @@ Definition
         struct module *t_owner;
         unsigned int t_prefer_loopback:1, t_mp_capable:1;
         unsigned int t_type;
-        int (*laddr_check)(struct net *net, __be32 addr);
+        int (*laddr_check)(struct net *net, const struct in6_addr *addr, __u32 scope_id);
         int (*conn_alloc)(struct rds_connection *conn, gfp_t gfp);
         void (*conn_free)(void *data);
         int (*conn_path_connect)(struct rds_conn_path *cp);
@@ -36,8 +36,8 @@ Definition
         int (*recv_path)(struct rds_conn_path *cp);
         int (*inc_copy_to_user)(struct rds_incoming *inc, struct iov_iter *to);
         void (*inc_free)(struct rds_incoming *inc);
-        int (*cm_handle_connect)(struct rdma_cm_id *cm_id, struct rdma_cm_event *event);
-        int (*cm_initiate_connect)(struct rdma_cm_id *cm_id);
+        int (*cm_handle_connect)(struct rdma_cm_id *cm_id, struct rdma_cm_event *event, bool isv6);
+        int (*cm_initiate_connect)(struct rdma_cm_id *cm_id, bool isv6);
         void (*cm_connect_complete)(struct rds_connection *conn, struct rdma_cm_event *event);
         unsigned int (*stats_info_copy)(struct rds_info_iterator *iter, unsigned int avail);
         void (*exit)(void);

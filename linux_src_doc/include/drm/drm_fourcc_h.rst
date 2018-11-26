@@ -25,6 +25,7 @@ Definition
         u8 hsub;
         u8 vsub;
         bool has_alpha;
+        bool is_yuv;
     }
 
 .. _`drm_format_info.members`:
@@ -54,6 +55,9 @@ vsub
 
 has_alpha
     Does the format embeds an alpha component?
+
+is_yuv
+    Is it a YUV format?
 
 .. _`drm_format_name_buf`:
 

@@ -10,14 +10,17 @@ nfs_find_best_sec
 
     Find a security mechanism supported locally
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         *undescribed*
+    :type clnt: struct rpc_clnt \*
 
-    :param struct nfs_server \*server:
+    :param server:
         NFS server struct
+    :type server: struct nfs_server \*
 
-    :param struct nfs4_secinfo_flavors \*flavors:
+    :param flavors:
         List of security tuples returned by SECINFO procedure
+    :type flavors: struct nfs4_secinfo_flavors \*
 
 .. _`nfs_find_best_sec.description`:
 
@@ -43,14 +46,17 @@ nfs4_negotiate_security
 
     in response to an NFS4ERR_WRONGSEC on lookup, return an rpc_clnt that uses the best available security flavor with respect to the secinfo flavor list and the sec= mount options.
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         RPC client to clone
+    :type clnt: struct rpc_clnt \*
 
-    :param struct inode \*inode:
+    :param inode:
         directory inode
+    :type inode: struct inode \*
 
-    :param const struct qstr \*name:
+    :param name:
         lookup name
+    :type name: const struct qstr \*
 
 .. _`nfs4_negotiate_security.description`:
 
@@ -68,11 +74,13 @@ nfs_follow_referral
 
     set up mountpoint when hitting a referral on moved error \ ``dentry``\  - parent directory \ ``locations``\  - array of NFSv4 server location information
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
-    :param const struct nfs4_fs_locations \*locations:
+    :param locations:
         *undescribed*
+    :type locations: const struct nfs4_fs_locations \*
 
 .. _`nfs4_replace_transport`:
 
@@ -83,11 +91,13 @@ nfs4_replace_transport
 
     set up transport to destination server
 
-    :param struct nfs_server \*server:
+    :param server:
         export being migrated
+    :type server: struct nfs_server \*
 
-    :param const struct nfs4_fs_locations \*locations:
+    :param locations:
         fs_locations array
+    :type locations: const struct nfs4_fs_locations \*
 
 .. _`nfs4_replace_transport.description`:
 

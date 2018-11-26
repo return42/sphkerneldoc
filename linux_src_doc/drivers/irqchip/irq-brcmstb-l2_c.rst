@@ -10,8 +10,9 @@ brcmstb_l2_mask_and_ack
 
     Mask and ack pending interrupt
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
 .. _`brcmstb_l2_mask_and_ack.description`:
 

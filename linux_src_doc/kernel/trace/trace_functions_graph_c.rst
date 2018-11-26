@@ -10,8 +10,9 @@ ftrace_graph_is_dead
 
     returns true if \ :c:func:`ftrace_graph_stop`\  was called
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ftrace_graph_is_dead.description`:
 
@@ -31,8 +32,9 @@ ftrace_graph_stop
 
     set to permanently disable function graph tracincg
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ftrace_graph_stop.description`:
 
@@ -53,17 +55,21 @@ ftrace_graph_ret_addr
 
     convert a potentially modified stack return address to its original value
 
-    :param struct task_struct \*task:
+    :param task:
         *undescribed*
+    :type task: struct task_struct \*
 
-    :param int \*idx:
+    :param idx:
         *undescribed*
+    :type idx: int \*
 
-    :param unsigned long ret:
+    :param ret:
         *undescribed*
+    :type ret: unsigned long
 
-    :param unsigned long \*retp:
+    :param retp:
         *undescribed*
+    :type retp: unsigned long \*
 
 .. _`ftrace_graph_ret_addr.description`:
 

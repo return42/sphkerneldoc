@@ -46,8 +46,9 @@ yamon_dt_append_cmdline
 
     Append YAMON-provided command line to /chosen
 
-    :param void \*fdt:
+    :param fdt:
         the FDT blob
+    :type fdt: void \*
 
 .. _`yamon_dt_append_cmdline.description`:
 
@@ -73,11 +74,13 @@ yamon_dt_append_memory
 
     Append YAMON-provided memory info to /memory
 
-    :param void \*fdt:
+    :param fdt:
         the FDT blob
+    :type fdt: void \*
 
-    :param const struct yamon_mem_region \*regions:
+    :param regions:
         zero size terminated array of physical memory regions
+    :type regions: const struct yamon_mem_region \*
 
 .. _`yamon_dt_append_memory.description`:
 
@@ -103,8 +106,9 @@ yamon_dt_serial_config
 
     Append YAMON-provided serial config to /chosen
 
-    :param void \*fdt:
+    :param fdt:
         the FDT blob
+    :type fdt: void \*
 
 .. _`yamon_dt_serial_config.description`:
 

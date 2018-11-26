@@ -10,8 +10,9 @@ driver_init
 
     initialize driver model.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`driver_init.description`:
 

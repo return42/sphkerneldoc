@@ -10,14 +10,17 @@ read_i2c_reg
 
     reads an internal i2c register
 
-    :param void __iomem \*addr:
+    :param addr:
         dt3155 mmio base address
+    :type addr: void __iomem \*
 
-    :param u8 index:
+    :param index:
         index (internal address) of register to read
+    :type index: u8
 
-    :param u8 \*data:
+    :param data:
         pointer to byte the read data will be placed in
+    :type data: u8 \*
 
 .. _`read_i2c_reg.return`:
 
@@ -39,14 +42,17 @@ write_i2c_reg
 
     writes to an internal i2c register
 
-    :param void __iomem \*addr:
+    :param addr:
         dt3155 mmio base address
+    :type addr: void __iomem \*
 
-    :param u8 index:
+    :param index:
         index (internal address) of register to read
+    :type index: u8
 
-    :param u8 data:
+    :param data:
         data to be written
+    :type data: u8
 
 .. _`write_i2c_reg.return`:
 
@@ -67,14 +73,17 @@ write_i2c_reg_nowait
 
     writes to an internal i2c register
 
-    :param void __iomem \*addr:
+    :param addr:
         dt3155 mmio base address
+    :type addr: void __iomem \*
 
-    :param u8 index:
+    :param index:
         index (internal address) of register to read
+    :type index: u8
 
-    :param u8 data:
+    :param data:
         data to be written
+    :type data: u8
 
 .. _`write_i2c_reg_nowait.description`:
 
@@ -93,8 +102,9 @@ wait_i2c_reg
 
     waits the read/write to finish
 
-    :param void __iomem \*addr:
+    :param addr:
         dt3155 mmio base address
+    :type addr: void __iomem \*
 
 .. _`wait_i2c_reg.return`:
 

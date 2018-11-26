@@ -10,11 +10,13 @@ iw_cm_handler
 
     Function to be called by the IW CM when delivering events to the client.
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         The IW CM identifier associated with the event.
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct iw_cm_event \*event:
+    :param event:
         Pointer to the event structure.
+    :type event: struct iw_cm_event \*
 
 .. _`iw_event_handler`:
 
@@ -25,11 +27,13 @@ iw_event_handler
 
     Function called by the provider when delivering provider events to the IW CM.  Returns either 0 indicating the event was processed or -errno if the event could not be processed.
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         The IW CM identifier associated with the event.
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct iw_cm_event \*event:
+    :param event:
         Pointer to the event structure.
+    :type event: struct iw_cm_event \*
 
 .. _`iw_create_cm_id`:
 
@@ -40,14 +44,17 @@ iw_create_cm_id
 
     Create an IW CM identifier.
 
-    :param struct ib_device \*device:
+    :param device:
         The IB device on which to create the IW CM identier.
+    :type device: struct ib_device \*
 
-    :param iw_cm_handler cm_handler:
+    :param cm_handler:
         *undescribed*
+    :type cm_handler: iw_cm_handler
 
-    :param void \*context:
+    :param context:
         User specified context associated with the id.
+    :type context: void \*
 
 .. _`iw_destroy_cm_id`:
 
@@ -58,8 +65,9 @@ iw_destroy_cm_id
 
     Destroy an IW CM identifier.
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         The previously created IW CM identifier to destroy.
+    :type cm_id: struct iw_cm_id \*
 
 .. _`iw_destroy_cm_id.description`:
 
@@ -78,11 +86,13 @@ iw_cm_unbind_qp
 
     Unbind the specified IW CM identifier and QP
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         The IW CM idenfier to unbind from the QP.
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct ib_qp \*qp:
+    :param qp:
         The QP
+    :type qp: struct ib_qp \*
 
 .. _`iw_cm_unbind_qp.description`:
 
@@ -103,11 +113,13 @@ iw_cm_get_qp
 
     Return the ib_qp associated with a QPN
 
-    :param struct ib_device \*device:
+    :param device:
         *undescribed*
+    :type device: struct ib_device \*
 
-    :param int qpn:
+    :param qpn:
         The queue pair number
+    :type qpn: int
 
 .. _`iw_cm_listen`:
 
@@ -118,12 +130,14 @@ iw_cm_listen
 
     Listen for incoming connection requests on the specified IW CM id.
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         The IW CM identifier.
+    :type cm_id: struct iw_cm_id \*
 
-    :param int backlog:
+    :param backlog:
         The maximum number of outstanding un-accepted inbound listen
         requests to queue.
+    :type backlog: int
 
 .. _`iw_cm_listen.description`:
 
@@ -142,12 +156,14 @@ iw_cm_accept
 
     Called to accept an incoming connect request.
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         The IW CM identifier associated with the connection request.
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct iw_cm_conn_param \*iw_param:
+    :param iw_param:
         Pointer to a structure containing connection establishment
         parameters.
+    :type iw_param: struct iw_cm_conn_param \*
 
 .. _`iw_cm_accept.description`:
 
@@ -170,14 +186,17 @@ iw_cm_reject
 
     Reject an incoming connection request.
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         Connection identifier associated with the request.
+    :type cm_id: struct iw_cm_id \*
 
-    :param const void \*private_data:
+    :param private_data:
         *undescribed*
+    :type private_data: const void \*
 
-    :param u8 private_data_len:
+    :param private_data_len:
         The number of bytes in the private_data parameter.
+    :type private_data_len: u8
 
 .. _`iw_cm_reject.description`:
 
@@ -197,12 +216,14 @@ iw_cm_connect
 
     Called to request a connection to a remote peer.
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         The IW CM identifier for the connection.
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct iw_cm_conn_param \*iw_param:
+    :param iw_param:
         Pointer to a structure containing connection  establishment
         parameters.
+    :type iw_param: struct iw_cm_conn_param \*
 
 .. _`iw_cm_connect.description`:
 
@@ -223,12 +244,14 @@ iw_cm_disconnect
 
     Close the specified connection.
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         The IW CM identifier to close.
+    :type cm_id: struct iw_cm_id \*
 
-    :param int abrupt:
+    :param abrupt:
         If 0, the connection will be closed gracefully, otherwise, the
         connection will be reset.
+    :type abrupt: int
 
 .. _`iw_cm_disconnect.description`:
 
@@ -247,15 +270,18 @@ iw_cm_init_qp_attr
 
     Called to initialize the attributes of the QP associated with a IW CM identifier.
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         The IW CM identifier associated with the QP
+    :type cm_id: struct iw_cm_id \*
 
-    :param struct ib_qp_attr \*qp_attr:
+    :param qp_attr:
         Pointer to the QP attributes structure.
+    :type qp_attr: struct ib_qp_attr \*
 
-    :param int \*qp_attr_mask:
+    :param qp_attr_mask:
         Pointer to a bit vector specifying which QP attributes are
         valid.
+    :type qp_attr_mask: int \*
 
 .. This file was automatic generated / don't edit.
 

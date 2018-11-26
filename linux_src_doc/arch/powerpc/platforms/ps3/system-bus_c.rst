@@ -10,8 +10,9 @@ ps3_system_bus_release_device
 
     remove a device from the system bus
 
-    :param struct device \*_dev:
+    :param _dev:
         *undescribed*
+    :type _dev: struct device \*
 
 .. _`ps3_system_bus_device_register`:
 
@@ -22,8 +23,9 @@ ps3_system_bus_device_register
 
     add a device to the system bus
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_system_bus_device_register.description`:
 

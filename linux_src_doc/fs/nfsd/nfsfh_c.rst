@@ -10,17 +10,21 @@ fh_verify
 
     filehandle lookup and access checking
 
-    :param struct svc_rqst \*rqstp:
+    :param rqstp:
         pointer to current rpc request
+    :type rqstp: struct svc_rqst \*
 
-    :param struct svc_fh \*fhp:
+    :param fhp:
         filehandle to be verified
+    :type fhp: struct svc_fh \*
 
-    :param umode_t type:
+    :param type:
         expected type of object pointed to by filehandle
+    :type type: umode_t
 
-    :param int access:
+    :param access:
         type of access needed to object
+    :type access: int
 
 .. _`fh_verify.description`:
 

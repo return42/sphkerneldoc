@@ -64,14 +64,17 @@ zfcp_erp_adapter_reopen
 
     Reopen adapter.
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         Adapter to reopen.
+    :type adapter: struct zfcp_adapter \*
 
-    :param int clear:
+    :param clear:
         Status flags to clear.
+    :type clear: int
 
-    :param char \*id:
+    :param id:
         Id for debug trace event.
+    :type id: char \*
 
 .. _`zfcp_erp_adapter_shutdown`:
 
@@ -82,14 +85,17 @@ zfcp_erp_adapter_shutdown
 
     Shutdown adapter.
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         Adapter to shut down.
+    :type adapter: struct zfcp_adapter \*
 
-    :param int clear:
+    :param clear:
         Status flags to clear.
+    :type clear: int
 
-    :param char \*id:
+    :param id:
         Id for debug trace event.
+    :type id: char \*
 
 .. _`zfcp_erp_port_shutdown`:
 
@@ -100,14 +106,17 @@ zfcp_erp_port_shutdown
 
     Shutdown port
 
-    :param struct zfcp_port \*port:
+    :param port:
         Port to shut down.
+    :type port: struct zfcp_port \*
 
-    :param int clear:
+    :param clear:
         Status flags to clear.
+    :type clear: int
 
-    :param char \*id:
+    :param id:
         Id for debug trace event.
+    :type id: char \*
 
 .. _`zfcp_erp_port_forced_reopen`:
 
@@ -118,14 +127,17 @@ zfcp_erp_port_forced_reopen
 
     Forced close of port and open again
 
-    :param struct zfcp_port \*port:
+    :param port:
         Port to force close and to reopen.
+    :type port: struct zfcp_port \*
 
-    :param int clear:
+    :param clear:
         Status flags to clear.
+    :type clear: int
 
-    :param char \*id:
+    :param id:
         Id for debug trace event.
+    :type id: char \*
 
 .. _`zfcp_erp_port_reopen`:
 
@@ -136,14 +148,17 @@ zfcp_erp_port_reopen
 
     trigger remote port recovery
 
-    :param struct zfcp_port \*port:
+    :param port:
         port to recover
+    :type port: struct zfcp_port \*
 
-    :param int clear:
+    :param clear:
         *undescribed*
+    :type clear: int
 
-    :param char \*id:
+    :param id:
         Id for debug trace event.
+    :type id: char \*
 
 .. _`zfcp_erp_lun_reopen`:
 
@@ -154,14 +169,17 @@ zfcp_erp_lun_reopen
 
     initiate reopen of a LUN
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device / LUN to be reopened
+    :type sdev: struct scsi_device \*
 
-    :param int clear:
+    :param clear:
         *undescribed*
+    :type clear: int
 
-    :param char \*id:
+    :param id:
         Id for debug trace event.
+    :type id: char \*
 
 .. _`zfcp_erp_lun_reopen.return`:
 
@@ -179,14 +197,17 @@ zfcp_erp_lun_shutdown
 
     Shutdown LUN
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device / LUN to shut down.
+    :type sdev: struct scsi_device \*
 
-    :param int clear:
+    :param clear:
         Status flags to clear.
+    :type clear: int
 
-    :param char \*id:
+    :param id:
         Id for debug trace event.
+    :type id: char \*
 
 .. _`zfcp_erp_lun_shutdown_wait`:
 
@@ -197,11 +218,13 @@ zfcp_erp_lun_shutdown_wait
 
     Shutdown LUN and wait for erp completion
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device / LUN to shut down.
+    :type sdev: struct scsi_device \*
 
-    :param char \*id:
+    :param id:
         Id for debug trace event.
+    :type id: char \*
 
 .. _`zfcp_erp_lun_shutdown_wait.description`:
 
@@ -222,11 +245,13 @@ zfcp_erp_notify
 
     Trigger ERP action.
 
-    :param struct zfcp_erp_action \*erp_action:
+    :param erp_action:
         ERP action to continue.
+    :type erp_action: struct zfcp_erp_action \*
 
-    :param unsigned long set_mask:
+    :param set_mask:
         ERP action status flags to set.
+    :type set_mask: unsigned long
 
 .. _`zfcp_erp_timeout_handler`:
 
@@ -237,8 +262,9 @@ zfcp_erp_timeout_handler
 
     Trigger ERP action from timed out ERP request
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`zfcp_erp_try_rport_unblock`:
 
@@ -249,8 +275,9 @@ zfcp_erp_try_rport_unblock
 
     unblock rport if no more/new recovery
 
-    :param struct zfcp_port \*port:
+    :param port:
         zfcp_port whose fc_rport we should try to unblock
+    :type port: struct zfcp_port \*
 
 .. _`zfcp_erp_thread_setup`:
 
@@ -261,8 +288,9 @@ zfcp_erp_thread_setup
 
     Start ERP thread for adapter
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         Adapter to start the ERP thread for
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_erp_thread_setup.description`:
 
@@ -280,8 +308,9 @@ zfcp_erp_thread_kill
 
     Stop ERP thread.
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         Adapter where the ERP thread should be stopped.
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_erp_thread_kill.description`:
 
@@ -302,8 +331,9 @@ zfcp_erp_wait
 
     wait for completion of error recovery on an adapter
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         adapter for which to wait for completion of its error recovery
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_erp_set_adapter_status`:
 
@@ -314,11 +344,13 @@ zfcp_erp_set_adapter_status
 
     set adapter status bits
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         adapter to change the status
+    :type adapter: struct zfcp_adapter \*
 
-    :param u32 mask:
+    :param mask:
         status bits to change
+    :type mask: u32
 
 .. _`zfcp_erp_set_adapter_status.description`:
 
@@ -336,11 +368,13 @@ zfcp_erp_clear_adapter_status
 
     clear adapter status bits
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         adapter to change the status
+    :type adapter: struct zfcp_adapter \*
 
-    :param u32 mask:
+    :param mask:
         status bits to change
+    :type mask: u32
 
 .. _`zfcp_erp_clear_adapter_status.description`:
 
@@ -358,11 +392,13 @@ zfcp_erp_set_port_status
 
     set port status bits
 
-    :param struct zfcp_port \*port:
+    :param port:
         port to change the status
+    :type port: struct zfcp_port \*
 
-    :param u32 mask:
+    :param mask:
         status bits to change
+    :type mask: u32
 
 .. _`zfcp_erp_set_port_status.description`:
 
@@ -380,11 +416,13 @@ zfcp_erp_clear_port_status
 
     clear port status bits
 
-    :param struct zfcp_port \*port:
+    :param port:
         adapter to change the status
+    :type port: struct zfcp_port \*
 
-    :param u32 mask:
+    :param mask:
         status bits to change
+    :type mask: u32
 
 .. _`zfcp_erp_clear_port_status.description`:
 
@@ -402,11 +440,13 @@ zfcp_erp_set_lun_status
 
     set lun status bits
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device / lun to set the status bits
+    :type sdev: struct scsi_device \*
 
-    :param u32 mask:
+    :param mask:
         status bits to change
+    :type mask: u32
 
 .. _`zfcp_erp_clear_lun_status`:
 
@@ -417,11 +457,13 @@ zfcp_erp_clear_lun_status
 
     clear lun status bits
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSi device / lun to clear the status bits
+    :type sdev: struct scsi_device \*
 
-    :param u32 mask:
+    :param mask:
         status bits to change
+    :type mask: u32
 
 .. _`zfcp_erp_adapter_reset_sync`:
 
@@ -432,11 +474,13 @@ zfcp_erp_adapter_reset_sync
 
     Really reopen adapter and wait.
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         Pointer to zfcp_adapter to reopen.
+    :type adapter: struct zfcp_adapter \*
 
-    :param char \*id:
+    :param id:
         Trace tag string of length \ ``ZFCP_DBF_TAG_LEN``\ .
+    :type id: char \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ radeon_uvd_count_handles
 
     count number of open streams
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param unsigned \*sd:
+    :param sd:
         number of SD streams
+    :type sd: unsigned \*
 
-    :param unsigned \*hd:
+    :param hd:
         number of HD streams
+    :type hd: unsigned \*
 
 .. _`radeon_uvd_count_handles.description`:
 
@@ -35,44 +38,57 @@ radeon_uvd_calc_upll_dividers
 
     calc UPLL clock dividers
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param unsigned vclk:
+    :param vclk:
         wanted VCLK
+    :type vclk: unsigned
 
-    :param unsigned dclk:
+    :param dclk:
         wanted DCLK
+    :type dclk: unsigned
 
-    :param unsigned vco_min:
+    :param vco_min:
         minimum VCO frequency
+    :type vco_min: unsigned
 
-    :param unsigned vco_max:
+    :param vco_max:
         maximum VCO frequency
+    :type vco_max: unsigned
 
-    :param unsigned fb_factor:
+    :param fb_factor:
         factor to multiply vco freq with
+    :type fb_factor: unsigned
 
-    :param unsigned fb_mask:
+    :param fb_mask:
         limit and bitmask for feedback divider
+    :type fb_mask: unsigned
 
-    :param unsigned pd_min:
+    :param pd_min:
         post divider minimum
+    :type pd_min: unsigned
 
-    :param unsigned pd_max:
+    :param pd_max:
         post divider maximum
+    :type pd_max: unsigned
 
-    :param unsigned pd_even:
+    :param pd_even:
         post divider must be even above this value
+    :type pd_even: unsigned
 
-    :param unsigned \*optimal_fb_div:
+    :param optimal_fb_div:
         resulting feedback divider
+    :type optimal_fb_div: unsigned \*
 
-    :param unsigned \*optimal_vclk_div:
+    :param optimal_vclk_div:
         resulting vclk post divider
+    :type optimal_vclk_div: unsigned \*
 
-    :param unsigned \*optimal_dclk_div:
+    :param optimal_dclk_div:
         resulting dclk post divider
+    :type optimal_dclk_div: unsigned \*
 
 .. _`radeon_uvd_calc_upll_dividers.description`:
 

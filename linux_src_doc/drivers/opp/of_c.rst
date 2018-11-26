@@ -10,8 +10,9 @@ dev_pm_opp_of_remove_table
 
     Free OPP table entries created from static DT entries
 
-    :param struct device \*dev:
+    :param dev:
         device pointer used to lookup OPP table.
+    :type dev: struct device \*
 
 .. _`dev_pm_opp_of_remove_table.description`:
 
@@ -25,18 +26,21 @@ Free OPPs created using static entries present in DT.
 \_opp_add_static_v2
 ===================
 
-.. c:function:: int _opp_add_static_v2(struct opp_table *opp_table, struct device *dev, struct device_node *np)
+.. c:function:: struct dev_pm_opp *_opp_add_static_v2(struct opp_table *opp_table, struct device *dev, struct device_node *np)
 
     Allocate static OPPs (As per 'v2' DT bindings)
 
-    :param struct opp_table \*opp_table:
+    :param opp_table:
         OPP table
+    :type opp_table: struct opp_table \*
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param struct device_node \*np:
+    :param np:
         device node
+    :type np: struct device_node \*
 
 .. _`_opp_add_static_v2.description`:
 
@@ -47,17 +51,27 @@ This function adds an opp definition to the opp table and returns status. The
 opp can be controlled using dev_pm_opp_enable/disable functions and may be
 removed by dev_pm_opp_remove.
 
-.. _`_opp_add_static_v2.return`:
+.. _`_opp_add_static_v2.valid-opp-pointer`:
 
-Return
-------
+Valid OPP pointer
+-----------------
 
-0            On success OR
+On success
+
+.. _`_opp_add_static_v2.null`:
+
+NULL
+----
+
 Duplicate OPPs (both freq and volt are same) and opp->available
--EEXIST      Freq are same and volt are different OR
+OR if the OPP is not supported by hardware.
+ERR_PTR(-EEXIST):
+Freq are same and volt are different OR
 Duplicate OPPs (both freq and volt are same) and !opp->available
--ENOMEM      Memory allocation failure
--EINVAL      Failed parsing the OPP node
+ERR_PTR(-ENOMEM):
+Memory allocation failure
+ERR_PTR(-EINVAL):
+Failed parsing the OPP node
 
 .. _`dev_pm_opp_of_add_table`:
 
@@ -68,8 +82,9 @@ dev_pm_opp_of_add_table
 
     Initialize opp table from device tree
 
-    :param struct device \*dev:
+    :param dev:
         device pointer used to lookup OPP table.
+    :type dev: struct device \*
 
 .. _`dev_pm_opp_of_add_table.description`:
 
@@ -102,11 +117,13 @@ dev_pm_opp_of_add_table_indexed
 
     Initialize indexed opp table from device tree
 
-    :param struct device \*dev:
+    :param dev:
         device pointer used to lookup OPP table.
+    :type dev: struct device \*
 
-    :param int index:
+    :param index:
         Index number.
+    :type index: int
 
 .. _`dev_pm_opp_of_add_table_indexed.description`:
 
@@ -140,8 +157,9 @@ dev_pm_opp_of_cpumask_remove_table
 
     Removes OPP table for \ ``cpumask``\ 
 
-    :param const struct cpumask \*cpumask:
+    :param cpumask:
         cpumask for which OPP table needs to be removed
+    :type cpumask: const struct cpumask \*
 
 .. _`dev_pm_opp_of_cpumask_remove_table.description`:
 
@@ -160,8 +178,9 @@ dev_pm_opp_of_cpumask_add_table
 
     Adds OPP table for \ ``cpumask``\ 
 
-    :param const struct cpumask \*cpumask:
+    :param cpumask:
         cpumask for which OPP table needs to be added.
+    :type cpumask: const struct cpumask \*
 
 .. _`dev_pm_opp_of_cpumask_add_table.description`:
 
@@ -179,11 +198,13 @@ dev_pm_opp_of_get_sharing_cpus
 
     Get cpumask of CPUs sharing OPPs with \ ``cpu_dev``\  using operating-points-v2 bindings.
 
-    :param struct device \*cpu_dev:
+    :param cpu_dev:
         CPU device for which we do this operation
+    :type cpu_dev: struct device \*
 
-    :param struct cpumask \*cpumask:
+    :param cpumask:
         cpumask to update with information of sharing CPUs
+    :type cpumask: struct cpumask \*
 
 .. _`dev_pm_opp_of_get_sharing_cpus.description`:
 
@@ -203,11 +224,13 @@ of_dev_pm_opp_find_required_opp
 
     Search for required OPP.
 
-    :param struct device \*dev:
+    :param dev:
         The device whose OPP node is referenced by the 'np' DT node.
+    :type dev: struct device \*
 
-    :param struct device_node \*np:
+    :param np:
         Node that contains the "required-opps" property.
+    :type np: struct device_node \*
 
 .. _`of_dev_pm_opp_find_required_opp.description`:
 
@@ -238,8 +261,9 @@ dev_pm_opp_get_of_node
 
     Gets the DT node corresponding to an opp
 
-    :param struct dev_pm_opp \*opp:
+    :param opp:
         opp for which DT node has to be returned for
+    :type opp: struct dev_pm_opp \*
 
 .. _`dev_pm_opp_get_of_node.return`:
 

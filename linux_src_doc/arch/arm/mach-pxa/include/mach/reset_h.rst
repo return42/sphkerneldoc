@@ -10,14 +10,17 @@ init_gpio_reset
 
     register GPIO as reset generator
 
-    :param int gpio:
+    :param gpio:
         gpio nr
+    :type gpio: int
 
-    :param int output:
+    :param output:
         set gpio as output instead of input during normal work
+    :type output: int
 
-    :param int level:
+    :param level:
         output level
+    :type level: int
 
 .. This file was automatic generated / don't edit.
 

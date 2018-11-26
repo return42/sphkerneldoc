@@ -23,6 +23,7 @@ Definition
         struct v4l2_ctrl_handler *ctrl_handler;
         enum v4l2_priority prio;
         wait_queue_head_t wait;
+        struct mutex subscribe_lock;
         struct list_head subscribed;
         struct list_head available;
         unsigned int navailable;
@@ -52,6 +53,10 @@ prio
 wait
     event' s wait queue
 
+subscribe_lock
+    serialise changes to the subscribed list; guarantee that
+    the add and del event callbacks are orderly called
+
 subscribed
     list of subscribed events
 
@@ -76,11 +81,13 @@ v4l2_fh_init
 
     Initialise the file handle.
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to \ :c:type:`struct video_device <video_device>`\ 
+    :type vdev: struct video_device \*
 
 .. _`v4l2_fh_init.description`:
 
@@ -101,8 +108,9 @@ v4l2_fh_add
 
     Add the fh to the list of file handles on a video_device.
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
 .. _`v4l2_fh_add.description`:
 
@@ -121,8 +129,9 @@ v4l2_fh_open
 
     Ancillary routine that can be used as the open(\) op of v4l2_file_operations.
 
-    :param struct file \*filp:
+    :param filp:
         pointer to struct file
+    :type filp: struct file \*
 
 .. _`v4l2_fh_open.description`:
 
@@ -141,8 +150,9 @@ v4l2_fh_del
 
     Remove file handle from the list of file handles.
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
 .. _`v4l2_fh_del.description`:
 
@@ -165,8 +175,9 @@ v4l2_fh_exit
 
     Release resources related to a file handle.
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
 .. _`v4l2_fh_exit.description`:
 
@@ -189,8 +200,9 @@ v4l2_fh_release
 
     Ancillary routine that can be used as the release(\) op of v4l2_file_operations.
 
-    :param struct file \*filp:
+    :param filp:
         pointer to struct file
+    :type filp: struct file \*
 
 .. _`v4l2_fh_release.description`:
 
@@ -212,8 +224,9 @@ v4l2_fh_is_singular
 
     Returns 1 if this filehandle is the only filehandle opened for the associated video_device.
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
 .. _`v4l2_fh_is_singular.description`:
 
@@ -231,8 +244,9 @@ v4l2_fh_is_singular_file
 
     Returns 1 if this filehandle is the only filehandle opened for the associated video_device.
 
-    :param struct file \*filp:
+    :param filp:
         pointer to struct file
+    :type filp: struct file \*
 
 .. _`v4l2_fh_is_singular_file.description`:
 

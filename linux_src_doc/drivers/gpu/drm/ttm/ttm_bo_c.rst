@@ -10,8 +10,9 @@ ttm_bo_cleanup_memtype_use
 
     :reserved. Will release GPU memory type usage on destruction. This is the place to put in driver specific hooks to release driver private resources. Will release the bo::reserved lock.
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_bo_cleanup_refs`:
 
@@ -22,17 +23,21 @@ ttm_bo_cleanup_refs
 
     If bo idle, remove from delayed- and lru lists, and unref. If not idle, do nothing.
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool interruptible:
+    :param interruptible:
         *undescribed*
+    :type interruptible: bool
 
-    :param bool no_wait_gpu:
+    :param no_wait_gpu:
         *undescribed*
+    :type no_wait_gpu: bool
 
-    :param bool unlock_resv:
+    :param unlock_resv:
         *undescribed*
+    :type unlock_resv: bool
 
 .. _`ttm_bo_cleanup_refs.description`:
 
@@ -55,11 +60,13 @@ ttm_bo_delayed_delete
 
     encountered buffers.
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         *undescribed*
+    :type bdev: struct ttm_bo_device \*
 
-    :param bool remove_all:
+    :param remove_all:
         *undescribed*
+    :type remove_all: bool
 
 .. _`ttm_bo_evict_swapout_allowable`:
 
@@ -68,14 +75,17 @@ ttm_bo_evict_swapout_allowable
 
 .. c:function:: bool ttm_bo_evict_swapout_allowable(struct ttm_buffer_object *bo, struct ttm_operation_ctx *ctx, bool *locked)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
-    :param bool \*locked:
+    :param locked:
         *undescribed*
+    :type locked: bool \*
 
 .. _`ttm_bo_evict_swapout_allowable.description`:
 
@@ -96,14 +106,17 @@ ttm_bo_add_move_fence
 
 .. c:function:: int ttm_bo_add_move_fence(struct ttm_buffer_object *bo, struct ttm_mem_type_manager *man, struct ttm_mem_reg *mem)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         *undescribed*
+    :type man: struct ttm_mem_type_manager \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         *undescribed*
+    :type mem: struct ttm_mem_reg \*
 
 .. _`ttm_bo_mem_force_space`:
 
@@ -114,20 +127,25 @@ ttm_bo_mem_force_space
 
     space, or we've evicted everything and there isn't enough space.
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
-    :param uint32_t mem_type:
+    :param mem_type:
         *undescribed*
+    :type mem_type: uint32_t
 
-    :param const struct ttm_place \*place:
+    :param place:
         *undescribed*
+    :type place: const struct ttm_place \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         *undescribed*
+    :type mem: struct ttm_mem_reg \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
 .. _`ttm_bo_mem_space`:
 
@@ -136,17 +154,21 @@ ttm_bo_mem_space
 
 .. c:function:: int ttm_bo_mem_space(struct ttm_buffer_object *bo, struct ttm_placement *placement, struct ttm_mem_reg *mem, struct ttm_operation_ctx *ctx)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct ttm_placement \*placement:
+    :param placement:
         *undescribed*
+    :type placement: struct ttm_placement \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         *undescribed*
+    :type mem: struct ttm_mem_reg \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
 .. _`ttm_bo_mem_space.description`:
 
@@ -167,11 +189,13 @@ ttm_bo_swapout
 
     buffer object on the bo_global::swap_lru list.
 
-    :param struct ttm_bo_global \*glob:
+    :param glob:
         *undescribed*
+    :type glob: struct ttm_bo_global \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
 .. _`ttm_bo_wait_unreserved`:
 
@@ -182,8 +206,9 @@ ttm_bo_wait_unreserved
 
     interruptible wait for a buffer object to become unreserved
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         Pointer to buffer
+    :type bo: struct ttm_buffer_object \*
 
 .. This file was automatic generated / don't edit.
 

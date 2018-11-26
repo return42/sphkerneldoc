@@ -10,11 +10,13 @@ vmw_fops_poll
 
     wrapper around the drm_poll function
 
-    :param struct file \*filp:
+    :param filp:
         See the linux fops poll documentation.
+    :type filp: struct file \*
 
-    :param struct poll_table_struct \*wait:
+    :param wait:
         See the linux fops poll documentation.
+    :type wait: struct poll_table_struct \*
 
 .. _`vmw_fops_poll.description`:
 
@@ -33,17 +35,21 @@ vmw_fops_read
 
     wrapper around the drm_read function
 
-    :param struct file \*filp:
+    :param filp:
         See the linux fops read documentation.
+    :type filp: struct file \*
 
-    :param char __user \*buffer:
+    :param buffer:
         See the linux fops read documentation.
+    :type buffer: char __user \*
 
-    :param size_t count:
+    :param count:
         See the linux fops read documentation.
+    :type count: size_t
 
-    :param loff_t \*offset:
+    :param offset:
         *undescribed*
+    :type offset: loff_t \*
 
 .. _`vmw_fops_read.offset`:
 

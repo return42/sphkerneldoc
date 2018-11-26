@@ -10,14 +10,17 @@ atomic_cmpxchg
 
     Atomic compare and exchange
 
-    :param atomic_t \*addr:
+    :param addr:
         *undescribed*
+    :type addr: atomic_t \*
 
-    :param int oldval:
+    :param oldval:
         The expected value of the futex
+    :type oldval: int
 
-    :param int newval:
+    :param newval:
         The new value to try and assign the futex
+    :type newval: int
 
 .. _`atomic_cmpxchg.description`:
 
@@ -35,8 +38,9 @@ atomic_inc
 
     Atomic incrememnt
 
-    :param atomic_t \*addr:
+    :param addr:
         Address of the variable to increment
+    :type addr: atomic_t \*
 
 .. _`atomic_inc.description`:
 
@@ -54,8 +58,9 @@ atomic_dec
 
     Atomic decrement
 
-    :param atomic_t \*addr:
+    :param addr:
         Address of the variable to decrement
+    :type addr: atomic_t \*
 
 .. _`atomic_dec.description`:
 
@@ -73,11 +78,13 @@ atomic_set
 
     Atomic set
 
-    :param atomic_t \*addr:
+    :param addr:
         Address of the variable to set
+    :type addr: atomic_t \*
 
-    :param int newval:
+    :param newval:
         New value for the atomic_t
+    :type newval: int
 
 .. _`atomic_set.description`:
 

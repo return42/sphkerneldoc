@@ -17,8 +17,9 @@ kvm_arm_num_regs
 
     how many registers do we present via KVM_GET_ONE_REG
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_arm_num_regs.description`:
 
@@ -36,11 +37,13 @@ kvm_arm_copy_reg_indices
 
     get indices of all registers.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u64 __user \*uindices:
+    :param uindices:
         *undescribed*
+    :type uindices: u64 __user \*
 
 .. _`kvm_arm_copy_reg_indices.description`:
 
@@ -58,11 +61,13 @@ kvm_arch_vcpu_ioctl_set_guest_debug
 
     set up guest debugging
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_guest_debug \*dbg:
+    :param dbg:
         *undescribed*
+    :type dbg: struct kvm_guest_debug \*
 
 .. _`kvm_arch_vcpu_ioctl_set_guest_debug.description`:
 

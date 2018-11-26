@@ -10,8 +10,9 @@ optee_shm_pool_alloc_pages
 
     create page-based allocator pool
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`optee_shm_pool_alloc_pages.description`:
 

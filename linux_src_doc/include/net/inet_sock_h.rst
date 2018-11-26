@@ -10,8 +10,9 @@ sk_to_full_sk
 
     Access to a full socket
 
-    :param struct sock \*sk:
+    :param sk:
         pointer to a socket
+    :type sk: struct sock \*
 
 .. _`sk_to_full_sk.description`:
 
@@ -30,8 +31,9 @@ inet_sk_state_load
 
     read sk->sk_state for lockless contexts
 
-    :param const struct sock \*sk:
+    :param sk:
         socket pointer
+    :type sk: const struct sock \*
 
 .. _`inet_sk_state_load.description`:
 
@@ -50,11 +52,13 @@ inet_sk_state_store
 
     update sk->sk_state
 
-    :param struct sock \*sk:
+    :param sk:
         socket pointer
+    :type sk: struct sock \*
 
-    :param int newstate:
+    :param newstate:
         new state
+    :type newstate: int
 
 .. _`inet_sk_state_store.description`:
 

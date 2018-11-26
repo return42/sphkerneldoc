@@ -10,14 +10,17 @@ posix_lock_file
 
     Apply a POSIX-style lock to a file
 
-    :param struct file \*filp:
+    :param filp:
         The file to apply the lock to
+    :type filp: struct file \*
 
-    :param struct file_lock \*fl:
+    :param fl:
         The lock to be applied
+    :type fl: struct file_lock \*
 
-    :param struct file_lock \*conflock:
+    :param conflock:
         Place to return a copy of the conflicting lock, if found.
+    :type conflock: struct file_lock \*
 
 .. _`posix_lock_file.description`:
 
@@ -41,11 +44,13 @@ posix_lock_inode_wait
 
     Apply a POSIX-style lock to a file
 
-    :param struct inode \*inode:
+    :param inode:
         inode of file to which lock request should be applied
+    :type inode: struct inode \*
 
-    :param struct file_lock \*fl:
+    :param fl:
         The lock to be applied
+    :type fl: struct file_lock \*
 
 .. _`posix_lock_inode_wait.description`:
 
@@ -63,8 +68,9 @@ locks_mandatory_locked
 
     Check for an active lock
 
-    :param struct file \*file:
+    :param file:
         the file to check
+    :type file: struct file \*
 
 .. _`locks_mandatory_locked.description`:
 
@@ -83,20 +89,25 @@ locks_mandatory_area
 
     Check for a conflicting lock
 
-    :param struct inode \*inode:
+    :param inode:
         the file to check
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         how the file was opened (if it was)
+    :type filp: struct file \*
 
-    :param loff_t start:
+    :param start:
         first byte in the file to check
+    :type start: loff_t
 
-    :param loff_t end:
+    :param end:
         lastbyte in the file to check
+    :type end: loff_t
 
-    :param unsigned char type:
+    :param type:
         \ ``F_WRLCK``\  for a write lock, else \ ``F_RDLCK``\ 
+    :type type: unsigned char
 
 .. _`locks_mandatory_area.description`:
 
@@ -114,16 +125,19 @@ __break_lease
 
     revoke all outstanding leases on file
 
-    :param struct inode \*inode:
+    :param inode:
         the inode of the file to return
+    :type inode: struct inode \*
 
-    :param unsigned int mode:
+    :param mode:
         O_RDONLY: break only write leases; O_WRONLY or O_RDWR:
         break all leases
+    :type mode: unsigned int
 
-    :param unsigned int type:
+    :param type:
         FL_LEASE: break leases and delegations; FL_DELEG: break
         only delegations
+    :type type: unsigned int
 
 .. _`__break_lease.description`:
 
@@ -144,11 +158,13 @@ lease_get_mtime
 
     update modified time of an inode with exclusive lease
 
-    :param struct inode \*inode:
+    :param inode:
         the inode
+    :type inode: struct inode \*
 
-    :param struct timespec64 \*time:
+    :param time:
         pointer to a timespec which contains the last modified time
+    :type time: struct timespec64 \*
 
 .. _`lease_get_mtime.description`:
 
@@ -168,8 +184,9 @@ fcntl_getlease
 
     Enquire what lease is currently active
 
-    :param struct file \*filp:
+    :param filp:
         the file
+    :type filp: struct file \*
 
 .. _`fcntl_getlease.description`:
 
@@ -204,14 +221,17 @@ check_conflicting_open
 
     see if the given dentry points to a file that has an existing open that would conflict with the desired lease.
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         dentry to check
+    :type dentry: const struct dentry \*
 
-    :param const long arg:
+    :param arg:
         type of lease that we're trying to acquire
+    :type arg: const long
 
-    :param int flags:
+    :param flags:
         current lock flags
+    :type flags: int
 
 .. _`check_conflicting_open.description`:
 
@@ -230,18 +250,22 @@ generic_setlease
 
     sets a lease on an open file
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param long arg:
+    :param arg:
         type of lease to obtain
+    :type arg: long
 
-    :param struct file_lock \*\*flp:
+    :param flp:
         input - file_lock to use, output - file_lock inserted
+    :type flp: struct file_lock \*\*
 
-    :param void \*\*priv:
+    :param priv:
         private data for lm_setup (may be NULL if lm_setup
         doesn't require it)
+    :type priv: void \*\*
 
 .. _`generic_setlease.description`:
 
@@ -260,18 +284,22 @@ vfs_setlease
 
     sets a lease on an open file
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param long arg:
+    :param arg:
         type of lease to obtain
+    :type arg: long
 
-    :param struct file_lock \*\*lease:
+    :param lease:
         file_lock to use when adding a lease
+    :type lease: struct file_lock \*\*
 
-    :param void \*\*priv:
+    :param priv:
         private info for lm_setup when adding a lease (may be
         NULL if lm_setup doesn't require it)
+    :type priv: void \*\*
 
 .. _`vfs_setlease.description`:
 
@@ -296,14 +324,17 @@ fcntl_setlease
 
     sets a lease on an open file
 
-    :param unsigned int fd:
+    :param fd:
         open file descriptor
+    :type fd: unsigned int
 
-    :param struct file \*filp:
+    :param filp:
         file pointer
+    :type filp: struct file \*
 
-    :param long arg:
+    :param arg:
         type of lease to obtain
+    :type arg: long
 
 .. _`fcntl_setlease.description`:
 
@@ -323,11 +354,13 @@ flock_lock_inode_wait
 
     Apply a FLOCK-style lock to a file
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the file to apply to
+    :type inode: struct inode \*
 
-    :param struct file_lock \*fl:
+    :param fl:
         The lock to be applied
+    :type fl: struct file_lock \*
 
 .. _`flock_lock_inode_wait.description`:
 
@@ -345,11 +378,13 @@ locks_lock_inode_wait
 
     Apply a lock to an inode
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the file to apply to
+    :type inode: struct inode \*
 
-    :param struct file_lock \*fl:
+    :param fl:
         The lock to be applied
+    :type fl: struct file_lock \*
 
 .. _`locks_lock_inode_wait.description`:
 
@@ -367,11 +402,13 @@ sys_flock
 
     - \ :c:func:`flock`\  system call.
 
-    :param unsigned int fd:
+    :param fd:
         the file descriptor to lock.
+    :type fd: unsigned int
 
-    :param unsigned int cmd:
+    :param cmd:
         the type of lock to apply.
+    :type cmd: unsigned int
 
 .. _`sys_flock.description`:
 
@@ -399,11 +436,13 @@ vfs_test_lock
 
     test file byte range lock
 
-    :param struct file \*filp:
+    :param filp:
         The file to test lock for
+    :type filp: struct file \*
 
-    :param struct file_lock \*fl:
+    :param fl:
         The lock to test; also used to hold result
+    :type fl: struct file_lock \*
 
 .. _`vfs_test_lock.description`:
 
@@ -422,11 +461,13 @@ locks_translate_pid
 
     translate a file_lock's fl_pid number into a namespace
 
-    :param struct file_lock \*fl:
+    :param fl:
         The file_lock who's fl_pid should be translated
+    :type fl: struct file_lock \*
 
-    :param struct pid_namespace \*ns:
+    :param ns:
         The namespace into which the pid should be translated
+    :type ns: struct pid_namespace \*
 
 .. _`locks_translate_pid.description`:
 
@@ -444,17 +485,21 @@ vfs_lock_file
 
     file byte range lock
 
-    :param struct file \*filp:
+    :param filp:
         The file to apply the lock to
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         type of locking operation (F_SETLK, F_GETLK, etc.)
+    :type cmd: unsigned int
 
-    :param struct file_lock \*fl:
+    :param fl:
         The lock to be applied
+    :type fl: struct file_lock \*
 
-    :param struct file_lock \*conf:
+    :param conf:
         Place to return a copy of the conflicting lock, if found.
+    :type conf: struct file_lock \*
 
 .. _`vfs_lock_file.description`:
 
@@ -496,8 +541,9 @@ posix_unblock_lock
 
     stop waiting for a file lock
 
-    :param struct file_lock \*waiter:
+    :param waiter:
         the lock which was waiting
+    :type waiter: struct file_lock \*
 
 .. _`posix_unblock_lock.description`:
 
@@ -515,11 +561,13 @@ vfs_cancel_lock
 
     file byte range unblock lock
 
-    :param struct file \*filp:
+    :param filp:
         The file to apply the unblock to
+    :type filp: struct file \*
 
-    :param struct file_lock \*fl:
+    :param fl:
         The lock to be unblocked
+    :type fl: struct file_lock \*
 
 .. _`vfs_cancel_lock.description`:
 

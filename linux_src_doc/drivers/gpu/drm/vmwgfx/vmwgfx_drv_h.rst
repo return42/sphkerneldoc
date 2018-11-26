@@ -45,6 +45,98 @@ Description
 This structure contains also driver private validation info
 on top of the info needed by TTM.
 
+.. _`vmw_resource`:
+
+struct vmw_resource
+===================
+
+.. c:type:: struct vmw_resource
+
+    resource - base class for hardware resources
+
+.. _`vmw_resource.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vmw_resource {
+        struct kref kref;
+        struct vmw_private *dev_priv;
+        int id;
+        unsigned long backup_size;
+        bool res_dirty;
+        bool backup_dirty;
+        struct vmw_buffer_object *backup;
+        unsigned long backup_offset;
+        unsigned long pin_count;
+        const struct vmw_res_func *func;
+        struct list_head lru_head;
+        struct list_head mob_head;
+        struct list_head binding_head;
+        void (*res_free) (struct vmw_resource *res);
+        void (*hw_destroy) (struct vmw_resource *res);
+    }
+
+.. _`vmw_resource.members`:
+
+Members
+-------
+
+kref
+    For refcounting.
+
+dev_priv
+    Pointer to the device private for this resource. Immutable.
+
+id
+    Device id. Protected by \ ``dev_priv``\ ::resource_lock.
+
+backup_size
+    Backup buffer size. Immutable.
+
+res_dirty
+    Resource contains data not yet in the backup buffer. Protected
+    by resource reserved.
+
+backup_dirty
+    Backup buffer contains data not yet in the HW resource.
+    Protecte by resource reserved.
+
+backup
+    The backup buffer if any. Protected by resource reserved.
+
+backup_offset
+    Offset into the backup buffer if any. Protected by resource
+    reserved. Note that only a few resource types can have a \ ``backup_offset``\ 
+    different from zero.
+
+pin_count
+    The pin count for this resource. A pinned resource has a
+    pin-count greater than zero. It is not on the resource LRU lists and its
+    backup buffer is pinned. Hence it can't be evicted.
+
+func
+    Method vtable for this resource. Immutable.
+
+lru_head
+    List head for the LRU list. Protected by \ ``dev_priv``\ ::resource_lock.
+
+mob_head
+    List head for the MOB backup list. Protected by \ ``backup``\  reserved.
+
+binding_head
+    List head for the context binding list. Protected by
+    the \ ``dev_priv``\ ::binding_mutex
+
+res_free
+    The resource destructor.
+
+hw_destroy
+    Callback to destroy the resource on the device, as part of
+    resource destruction.
+
 .. _`vmw_res_cache_entry`:
 
 struct vmw_res_cache_entry
@@ -62,10 +154,11 @@ Definition
 .. code-block:: c
 
     struct vmw_res_cache_entry {
-        bool valid;
         uint32_t handle;
         struct vmw_resource *res;
-        struct vmw_resource_val_node *node;
+        void *private;
+        unsigned short valid_handle;
+        unsigned short valid;
     }
 
 .. _`vmw_res_cache_entry.members`:
@@ -73,19 +166,22 @@ Definition
 Members
 -------
 
-valid
-    Whether the entry is valid, which also implies that the execbuf
-    code holds a reference to the resource, and it's placed on the
-    validation list.
-
 handle
     User-space handle of a resource.
 
 res
     Non-ref-counted pointer to the resource.
 
-node
+private
     *undescribed*
+
+valid_handle
+    Whether the \ ``handle``\  member is valid.
+
+valid
+    Whether the entry is valid, which also implies that the execbuf
+    code holds a reference to the resource, and it's placed on the
+    validation list.
 
 .. _`vmw_res_cache_entry.description`:
 
@@ -244,6 +340,125 @@ dma_address
 page
     *undescribed*
 
+.. _`vmw_sw_context`:
+
+struct vmw_sw_context
+=====================
+
+.. c:type:: struct vmw_sw_context
+
+    Command submission context
+
+.. _`vmw_sw_context.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vmw_sw_context {
+        struct drm_open_hash res_ht;
+        bool res_ht_initialized;
+        bool kernel;
+        struct vmw_fpriv *fp;
+        uint32_t *cmd_bounce;
+        uint32_t cmd_bounce_size;
+        struct vmw_buffer_object *cur_query_bo;
+        struct list_head bo_relocations;
+        struct list_head res_relocations;
+        uint32_t *buf_start;
+        struct vmw_res_cache_entry res_cache[vmw_res_max];
+        struct vmw_resource *last_query_ctx;
+        bool needs_post_query_barrier;
+        struct vmw_ctx_binding_state *staged_bindings;
+        bool staged_bindings_inuse;
+        struct list_head staged_cmd_res;
+        struct list_head ctx_list;
+        struct vmw_ctx_validation_info *dx_ctx_node;
+        struct vmw_buffer_object *dx_query_mob;
+        struct vmw_resource *dx_query_ctx;
+        struct vmw_cmdbuf_res_manager *man;
+        struct vmw_validation_context *ctx;
+    }
+
+.. _`vmw_sw_context.members`:
+
+Members
+-------
+
+res_ht
+    Pointer hash table used to find validation duplicates
+
+res_ht_initialized
+    *undescribed*
+
+kernel
+    Whether the command buffer originates from kernel code rather
+    than from user-space
+
+fp
+    If \ ``kernel``\  is false, points to the file of the client. Otherwise
+    NULL
+
+cmd_bounce
+    Command bounce buffer used for command validation before
+    copying to fifo space
+
+cmd_bounce_size
+    Current command bounce buffer size
+
+cur_query_bo
+    Current buffer object used as query result buffer
+
+bo_relocations
+    List of buffer object relocations
+
+res_relocations
+    List of resource relocations
+
+buf_start
+    Pointer to start of memory where command validation takes
+    place
+
+res_cache
+    Cache of recently looked up resources
+
+last_query_ctx
+    Last context that submitted a query
+
+needs_post_query_barrier
+    Whether a query barrier is needed after
+    command submission
+
+staged_bindings
+    Cached per-context binding tracker
+
+staged_bindings_inuse
+    Whether the cached per-context binding tracker
+    is in use
+
+staged_cmd_res
+    List of staged command buffer managed resources in this
+    command buffer
+
+ctx_list
+    List of context resources referenced in this command buffer
+
+dx_ctx_node
+    Validation metadata of the current DX context
+
+dx_query_mob
+    The MOB used for DX queries
+
+dx_query_ctx
+    The DX context used for the last DX query
+
+man
+    Pointer to the command buffer managed resource manager
+
+ctx
+    The validation context
+
 .. _`vmw_gmr_bind`:
 
 vmw_gmr_bind
@@ -253,38 +468,72 @@ vmw_gmr_bind
 
     vmwgfx_gmr.c
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param const struct vmw_sg_table \*vsgt:
+    :param vsgt:
         *undescribed*
+    :type vsgt: const struct vmw_sg_table \*
 
-    :param unsigned long num_pages:
+    :param num_pages:
         *undescribed*
+    :type num_pages: unsigned long
 
-    :param int gmr_id:
+    :param gmr_id:
         *undescribed*
+    :type gmr_id: int
 
-.. _`vmw_dmabuf_pin_in_placement`:
+.. _`vmw_user_resource_noref_release`:
 
-vmw_dmabuf_pin_in_placement
-===========================
+vmw_user_resource_noref_release
+===============================
 
-.. c:function:: int vmw_dmabuf_pin_in_placement(struct vmw_private *vmw_priv, struct vmw_dma_buffer *bo, struct ttm_placement *placement, bool interruptible)
+.. c:function:: void vmw_user_resource_noref_release( void)
 
-    vmwgfx_dmabuf.c
+    release a user resource pointer looked up without reference
 
-    :param struct vmw_private \*vmw_priv:
+    :param void:
+        no arguments
+    :type void: 
+
+.. _`vmw_bo_pin_in_placement`:
+
+vmw_bo_pin_in_placement
+=======================
+
+.. c:function:: int vmw_bo_pin_in_placement(struct vmw_private *vmw_priv, struct vmw_buffer_object *bo, struct ttm_placement *placement, bool interruptible)
+
+    vmwgfx_bo.c
+
+    :param vmw_priv:
         *undescribed*
+    :type vmw_priv: struct vmw_private \*
 
-    :param struct vmw_dma_buffer \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct vmw_buffer_object \*
 
-    :param struct ttm_placement \*placement:
+    :param placement:
         *undescribed*
+    :type placement: struct ttm_placement \*
 
-    :param bool interruptible:
+    :param interruptible:
         *undescribed*
+    :type interruptible: bool
+
+.. _`vmw_user_bo_noref_release`:
+
+vmw_user_bo_noref_release
+=========================
+
+.. c:function:: void vmw_user_bo_noref_release( void)
+
+    release a buffer object pointer looked up without reference
+
+    :param void:
+        no arguments
+    :type void: 
 
 .. _`vmw_getparam_ioctl`:
 
@@ -295,14 +544,17 @@ vmw_getparam_ioctl
 
     vmwgfx_ioctl.c
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`vmw_fifo_init`:
 
@@ -313,11 +565,13 @@ vmw_fifo_init
 
     vmwgfx_fifo.c
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_fifo_state \*fifo:
+    :param fifo:
         *undescribed*
+    :type fifo: struct vmw_fifo_state \*
 
 .. _`vmw_ttm_global_init`:
 
@@ -328,8 +582,9 @@ vmw_ttm_global_init
 
     vmwgfx_ttm_glue.c
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_piter_next`:
 
@@ -340,8 +595,9 @@ vmw_piter_next
 
     Advance the iterator one page.
 
-    :param struct vmw_piter \*viter:
+    :param viter:
         Pointer to the iterator to advance.
+    :type viter: struct vmw_piter \*
 
 .. _`vmw_piter_next.description`:
 
@@ -359,8 +615,9 @@ vmw_piter_dma_addr
 
     Return the DMA address of the current page.
 
-    :param struct vmw_piter \*viter:
+    :param viter:
         Pointer to the iterator
+    :type viter: struct vmw_piter \*
 
 .. _`vmw_piter_dma_addr.description`:
 
@@ -378,8 +635,9 @@ vmw_piter_page
 
     Return a pointer to the current page.
 
-    :param struct vmw_piter \*viter:
+    :param viter:
         Pointer to the iterator
+    :type viter: struct vmw_piter \*
 
 .. _`vmw_piter_page.description`:
 
@@ -397,17 +655,21 @@ vmw_execbuf_ioctl
 
     vmwgfx_execbuf.c
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param unsigned long data:
+    :param data:
         *undescribed*
+    :type data: unsigned long
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`vmw_wait_seqno`:
 
@@ -418,20 +680,25 @@ vmw_wait_seqno
 
     vmwgfx_irq.c
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param bool lazy:
+    :param lazy:
         *undescribed*
+    :type lazy: bool
 
-    :param uint32_t seqno:
+    :param seqno:
         *undescribed*
+    :type seqno: uint32_t
 
-    :param bool interruptible:
+    :param interruptible:
         *undescribed*
+    :type interruptible: bool
 
-    :param unsigned long timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: unsigned long
 
 .. _`vmw_marker_queue_init`:
 
@@ -442,8 +709,9 @@ vmw_marker_queue_init
 
     like objects currently used only for throttling - vmwgfx_marker.c
 
-    :param struct vmw_marker_queue \*queue:
+    :param queue:
         *undescribed*
+    :type queue: struct vmw_marker_queue \*
 
 .. _`vmw_fb_init`:
 
@@ -454,8 +722,9 @@ vmw_fb_init
 
     vmwgfx_fb.c
 
-    :param struct vmw_private \*vmw_priv:
+    :param vmw_priv:
         *undescribed*
+    :type vmw_priv: struct vmw_private \*
 
 .. _`vmw_kms_init`:
 
@@ -466,8 +735,9 @@ vmw_kms_init
 
     vmwgfx_kms.c
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_overlay_init`:
 
@@ -478,8 +748,9 @@ vmw_overlay_init
 
     vmwgfx_overlay.c
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_diff_cpy`:
 
@@ -532,8 +803,9 @@ vmw_surface_unreference
 
 .. c:function:: void vmw_surface_unreference(struct vmw_surface **srf)
 
-    :param struct vmw_surface \*\*srf:
+    :param srf:
         *undescribed*
+    :type srf: struct vmw_surface \*\*
 
 .. _`vmw_mmio_read`:
 
@@ -544,8 +816,9 @@ vmw_mmio_read
 
     Perform a MMIO read from volatile memory
 
-    :param u32 \*addr:
+    :param addr:
         The address to read from
+    :type addr: u32 \*
 
 .. _`vmw_mmio_read.description`:
 
@@ -564,11 +837,13 @@ vmw_mmio_write
 
     Perform a MMIO write to volatile memory
 
-    :param u32 value:
+    :param value:
         *undescribed*
+    :type value: u32
 
-    :param u32 \*addr:
+    :param addr:
         The address to write to
+    :type addr: u32 \*
 
 .. _`vmw_mmio_write.description`:
 
@@ -577,16 +852,6 @@ Description
 
 This function is intended to be equivalent to iowrite32 on
 memremap'd memory, but without byteswapping.
-
-.. _`vmw_host_log`:
-
-vmw_host_log
-============
-
-.. c:function:: int vmw_host_log(const char *log)
-
-    :param const char \*log:
-        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

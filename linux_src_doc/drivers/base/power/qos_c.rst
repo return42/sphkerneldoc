@@ -10,11 +10,13 @@
 
     Check PM QoS flags for a given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to check the PM QoS flags for.
+    :type dev: struct device \*
 
-    :param s32 mask:
+    :param mask:
         Flags to check against.
+    :type mask: s32
 
 .. _`__dev_pm_qos_flags.description`:
 
@@ -32,11 +34,13 @@ dev_pm_qos_flags
 
     Check PM QoS flags for a given device (locked).
 
-    :param struct device \*dev:
+    :param dev:
         Device to check the PM QoS flags for.
+    :type dev: struct device \*
 
-    :param s32 mask:
+    :param mask:
         Flags to check against.
+    :type mask: s32
 
 .. _`__dev_pm_qos_read_value`:
 
@@ -47,8 +51,9 @@ dev_pm_qos_flags
 
     Get PM QoS constraint for a given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to get the PM QoS constraint value for.
+    :type dev: struct device \*
 
 .. _`__dev_pm_qos_read_value.description`:
 
@@ -66,8 +71,9 @@ dev_pm_qos_read_value
 
     Get PM QoS constraint for a given device (locked).
 
-    :param struct device \*dev:
+    :param dev:
         Device to get the PM QoS constraint value for.
+    :type dev: struct device \*
 
 .. _`apply_constraint`:
 
@@ -78,14 +84,17 @@ apply_constraint
 
     Add/modify/remove device PM QoS request.
 
-    :param struct dev_pm_qos_request \*req:
+    :param req:
         Constraint request to apply
+    :type req: struct dev_pm_qos_request \*
 
-    :param enum pm_qos_req_action action:
+    :param action:
         Action to perform (add/update/remove).
+    :type action: enum pm_qos_req_action
 
-    :param s32 value:
+    :param value:
         Value to assign to the QoS request.
+    :type value: s32
 
 .. _`apply_constraint.description`:
 
@@ -102,8 +111,9 @@ dev_pm_qos_constraints_destroy
 
 .. c:function:: void dev_pm_qos_constraints_destroy(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         target device
+    :type dev: struct device \*
 
 .. _`dev_pm_qos_constraints_destroy.description`:
 
@@ -121,17 +131,21 @@ dev_pm_qos_add_request
 
     inserts new qos request into the list
 
-    :param struct device \*dev:
+    :param dev:
         target device for the constraint
+    :type dev: struct device \*
 
-    :param struct dev_pm_qos_request \*req:
+    :param req:
         pointer to a preallocated handle
+    :type req: struct dev_pm_qos_request \*
 
-    :param enum dev_pm_qos_req_type type:
+    :param type:
         type of the request
+    :type type: enum dev_pm_qos_req_type
 
-    :param s32 value:
+    :param value:
         defines the qos request
+    :type value: s32
 
 .. _`dev_pm_qos_add_request.description`:
 
@@ -162,11 +176,13 @@ using this function for requests of type DEV_PM_QOS_FLAGS.
 
     Modify an existing device PM QoS request.
 
-    :param struct dev_pm_qos_request \*req:
+    :param req:
         PM QoS request to modify.
+    :type req: struct dev_pm_qos_request \*
 
-    :param s32 new_value:
+    :param new_value:
         New value to request.
+    :type new_value: s32
 
 .. _`dev_pm_qos_update_request`:
 
@@ -177,11 +193,13 @@ dev_pm_qos_update_request
 
     modifies an existing qos request
 
-    :param struct dev_pm_qos_request \*req:
+    :param req:
         handle to list element holding a dev_pm_qos request to use
+    :type req: struct dev_pm_qos_request \*
 
-    :param s32 new_value:
+    :param new_value:
         defines the qos request
+    :type new_value: s32
 
 .. _`dev_pm_qos_update_request.description`:
 
@@ -210,8 +228,9 @@ dev_pm_qos_remove_request
 
     modifies an existing qos request
 
-    :param struct dev_pm_qos_request \*req:
+    :param req:
         handle to request list element
+    :type req: struct dev_pm_qos_request \*
 
 .. _`dev_pm_qos_remove_request.description`:
 
@@ -238,11 +257,13 @@ dev_pm_qos_add_notifier
 
     sets notification entry for changes to target value of per-device PM QoS constraints
 
-    :param struct device \*dev:
+    :param dev:
         target device for the constraint
+    :type dev: struct device \*
 
-    :param struct notifier_block \*notifier:
+    :param notifier:
         notifier block managed by caller.
+    :type notifier: struct notifier_block \*
 
 .. _`dev_pm_qos_add_notifier.description`:
 
@@ -264,11 +285,13 @@ dev_pm_qos_remove_notifier
 
     deletes notification for changes to target value of per-device PM QoS constraints
 
-    :param struct device \*dev:
+    :param dev:
         target device for the constraint
+    :type dev: struct device \*
 
-    :param struct notifier_block \*notifier:
+    :param notifier:
         notifier block to be removed.
+    :type notifier: struct notifier_block \*
 
 .. _`dev_pm_qos_remove_notifier.description`:
 
@@ -287,17 +310,21 @@ dev_pm_qos_add_ancestor_request
 
     Add PM QoS request for device's ancestor.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose ancestor to add the request for.
+    :type dev: struct device \*
 
-    :param struct dev_pm_qos_request \*req:
+    :param req:
         Pointer to the preallocated handle.
+    :type req: struct dev_pm_qos_request \*
 
-    :param enum dev_pm_qos_req_type type:
+    :param type:
         Type of the request.
+    :type type: enum dev_pm_qos_req_type
 
-    :param s32 value:
+    :param value:
         Constraint latency value.
+    :type value: s32
 
 .. _`dev_pm_qos_expose_latency_limit`:
 
@@ -308,11 +335,13 @@ dev_pm_qos_expose_latency_limit
 
     Expose PM QoS latency limit to user space.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose PM QoS latency limit is to be exposed to user space.
+    :type dev: struct device \*
 
-    :param s32 value:
+    :param value:
         Initial value of the latency limit.
+    :type value: s32
 
 .. _`dev_pm_qos_hide_latency_limit`:
 
@@ -323,8 +352,9 @@ dev_pm_qos_hide_latency_limit
 
     Hide PM QoS latency limit from user space.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose PM QoS latency limit is to be hidden from user space.
+    :type dev: struct device \*
 
 .. _`dev_pm_qos_expose_flags`:
 
@@ -335,11 +365,13 @@ dev_pm_qos_expose_flags
 
     Expose PM QoS flags of a device to user space.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose PM QoS flags are to be exposed to user space.
+    :type dev: struct device \*
 
-    :param s32 val:
+    :param val:
         Initial values of the flags.
+    :type val: s32
 
 .. _`dev_pm_qos_hide_flags`:
 
@@ -350,8 +382,9 @@ dev_pm_qos_hide_flags
 
     Hide PM QoS flags of a device from user space.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose PM QoS flags are to be hidden from user space.
+    :type dev: struct device \*
 
 .. _`dev_pm_qos_update_flags`:
 
@@ -362,14 +395,17 @@ dev_pm_qos_update_flags
 
     Update PM QoS flags request owned by user space.
 
-    :param struct device \*dev:
+    :param dev:
         Device to update the PM QoS flags request for.
+    :type dev: struct device \*
 
-    :param s32 mask:
+    :param mask:
         Flags to set/clear.
+    :type mask: s32
 
-    :param bool set:
+    :param set:
         Whether to set or clear the flags (true means set).
+    :type set: bool
 
 .. _`dev_pm_qos_get_user_latency_tolerance`:
 
@@ -380,8 +416,9 @@ dev_pm_qos_get_user_latency_tolerance
 
     Get user space latency tolerance.
 
-    :param struct device \*dev:
+    :param dev:
         Device to obtain the user space latency tolerance for.
+    :type dev: struct device \*
 
 .. _`dev_pm_qos_update_user_latency_tolerance`:
 
@@ -392,11 +429,13 @@ dev_pm_qos_update_user_latency_tolerance
 
     Update user space latency tolerance.
 
-    :param struct device \*dev:
+    :param dev:
         Device to update the user space latency tolerance for.
+    :type dev: struct device \*
 
-    :param s32 val:
+    :param val:
         New user space latency tolerance for \ ``dev``\  (negative values disable).
+    :type val: s32
 
 .. _`dev_pm_qos_expose_latency_tolerance`:
 
@@ -407,8 +446,9 @@ dev_pm_qos_expose_latency_tolerance
 
     Expose latency tolerance to userspace
 
-    :param struct device \*dev:
+    :param dev:
         Device whose latency tolerance to expose
+    :type dev: struct device \*
 
 .. _`dev_pm_qos_hide_latency_tolerance`:
 
@@ -419,8 +459,9 @@ dev_pm_qos_hide_latency_tolerance
 
     Hide latency tolerance from userspace
 
-    :param struct device \*dev:
+    :param dev:
         Device whose latency tolerance to hide
+    :type dev: struct device \*
 
 .. This file was automatic generated / don't edit.
 

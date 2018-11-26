@@ -58,8 +58,9 @@ ps3_chip_mask
 
     Set an interrupt mask bit in ps3_bmp.
 
-    :param struct irq_data \*d:
+    :param d:
         *undescribed*
+    :type d: struct irq_data \*
 
 .. _`ps3_chip_mask.description`:
 
@@ -77,8 +78,9 @@ ps3_chip_unmask
 
     Clear an interrupt mask bit in ps3_bmp.
 
-    :param struct irq_data \*d:
+    :param d:
         *undescribed*
+    :type d: struct irq_data \*
 
 .. _`ps3_chip_unmask.description`:
 
@@ -96,8 +98,9 @@ ps3_chip_eoi
 
     HV end-of-interrupt.
 
-    :param struct irq_data \*d:
+    :param d:
         *undescribed*
+    :type d: struct irq_data \*
 
 .. _`ps3_chip_eoi.description`:
 
@@ -115,15 +118,18 @@ ps3_virq_setup
 
     virq related setup.
 
-    :param enum ps3_cpu_binding cpu:
+    :param cpu:
         enum ps3_cpu_binding indicating the cpu the interrupt should be
         serviced on.
+    :type cpu: enum ps3_cpu_binding
 
-    :param unsigned long outlet:
+    :param outlet:
         The HV outlet from the various create outlet routines.
+    :type outlet: unsigned long
 
-    :param unsigned int \*virq:
+    :param virq:
         The assigned Linux virq.
+    :type virq: unsigned int \*
 
 .. _`ps3_virq_setup.description`:
 
@@ -142,8 +148,9 @@ ps3_virq_destroy
 
     virq related teardown.
 
-    :param unsigned int virq:
+    :param virq:
         The assigned Linux virq.
+    :type virq: unsigned int
 
 .. _`ps3_virq_destroy.description`:
 
@@ -161,15 +168,18 @@ ps3_irq_plug_setup
 
     Generic outlet and virq related setup.
 
-    :param enum ps3_cpu_binding cpu:
+    :param cpu:
         enum ps3_cpu_binding indicating the cpu the interrupt should be
         serviced on.
+    :type cpu: enum ps3_cpu_binding
 
-    :param unsigned long outlet:
+    :param outlet:
         The HV outlet from the various create outlet routines.
+    :type outlet: unsigned long
 
-    :param unsigned int \*virq:
+    :param virq:
         The assigned Linux virq.
+    :type virq: unsigned int \*
 
 .. _`ps3_irq_plug_setup.description`:
 
@@ -187,8 +197,9 @@ ps3_irq_plug_destroy
 
     Generic outlet and virq related teardown.
 
-    :param unsigned int virq:
+    :param virq:
         The assigned Linux virq.
+    :type virq: unsigned int
 
 .. _`ps3_irq_plug_destroy.description`:
 
@@ -208,12 +219,14 @@ ps3_event_receive_port_setup
 
     Setup an event receive port.
 
-    :param enum ps3_cpu_binding cpu:
+    :param cpu:
         enum ps3_cpu_binding indicating the cpu the interrupt should be
         serviced on.
+    :type cpu: enum ps3_cpu_binding
 
-    :param unsigned int \*virq:
+    :param virq:
         The assigned Linux virq.
+    :type virq: unsigned int \*
 
 .. _`ps3_event_receive_port_setup.description`:
 
@@ -233,8 +246,9 @@ ps3_event_receive_port_destroy
 
     Destroy an event receive port.
 
-    :param unsigned int virq:
+    :param virq:
         The assigned Linux virq.
+    :type virq: unsigned int
 
 .. _`ps3_event_receive_port_destroy.description`:
 
@@ -254,15 +268,18 @@ ps3_sb_event_receive_port_setup
 
     Setup a system bus event receive port.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         The system bus device instance.
+    :type dev: struct ps3_system_bus_device \*
 
-    :param enum ps3_cpu_binding cpu:
+    :param cpu:
         enum ps3_cpu_binding indicating the cpu the interrupt should be
         serviced on.
+    :type cpu: enum ps3_cpu_binding
 
-    :param unsigned int \*virq:
+    :param virq:
         The assigned Linux virq.
+    :type virq: unsigned int \*
 
 .. _`ps3_sb_event_receive_port_setup.description`:
 
@@ -281,15 +298,18 @@ ps3_io_irq_setup
 
     Setup a system bus io irq.
 
-    :param enum ps3_cpu_binding cpu:
+    :param cpu:
         enum ps3_cpu_binding indicating the cpu the interrupt should be
         serviced on.
+    :type cpu: enum ps3_cpu_binding
 
-    :param unsigned int interrupt_id:
+    :param interrupt_id:
         The device interrupt id read from the system repository.
+    :type interrupt_id: unsigned int
 
-    :param unsigned int \*virq:
+    :param virq:
         The assigned Linux virq.
+    :type virq: unsigned int \*
 
 .. _`ps3_io_irq_setup.description`:
 
@@ -304,19 +324,22 @@ coresponds to the interrupt number of the interrupt controller.
 ps3_vuart_irq_setup
 ===================
 
-.. c:function:: int ps3_vuart_irq_setup(enum ps3_cpu_binding cpu, void*virt_addr_bmp, unsigned int *virq)
+.. c:function:: int ps3_vuart_irq_setup(enum ps3_cpu_binding cpu, void* virt_addr_bmp, unsigned int *virq)
 
     Setup the system virtual uart virq.
 
-    :param enum ps3_cpu_binding cpu:
+    :param cpu:
         enum ps3_cpu_binding indicating the cpu the interrupt should be
         serviced on.
+    :type cpu: enum ps3_cpu_binding
 
-    :param void\*virt_addr_bmp:
+    :param virt_addr_bmp:
         The caller supplied virtual uart interrupt bitmap.
+    :type virt_addr_bmp: void\*
 
-    :param unsigned int \*virq:
+    :param virq:
         The assigned Linux virq.
+    :type virq: unsigned int \*
 
 .. _`ps3_vuart_irq_setup.description`:
 
@@ -335,18 +358,22 @@ ps3_spe_irq_setup
 
     Setup an spe virq.
 
-    :param enum ps3_cpu_binding cpu:
+    :param cpu:
         enum ps3_cpu_binding indicating the cpu the interrupt should be
         serviced on.
+    :type cpu: enum ps3_cpu_binding
 
-    :param unsigned long spe_id:
+    :param spe_id:
         The spe_id returned from \ :c:func:`lv1_construct_logical_spe`\ .
+    :type spe_id: unsigned long
 
-    :param unsigned int class:
+    :param class:
         The spe interrupt class {0,1,2}.
+    :type class: unsigned int
 
-    :param unsigned int \*virq:
+    :param virq:
         The assigned Linux virq.
+    :type virq: unsigned int \*
 
 .. This file was automatic generated / don't edit.
 

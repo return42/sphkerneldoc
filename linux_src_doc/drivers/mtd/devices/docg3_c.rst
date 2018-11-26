@@ -10,11 +10,13 @@ doc_delay
 
     delay docg3 operations
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int nbNOPs:
+    :param nbNOPs:
         the number of NOPs to issue
+    :type nbNOPs: int
 
 .. _`doc_delay.description`:
 
@@ -36,17 +38,21 @@ doc_read_data_area
 
     Read data from data area
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param void \*buf:
+    :param buf:
         the buffer to fill in (might be NULL is dummy reads)
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         the length to read
+    :type len: int
 
-    :param int first:
+    :param first:
         first time read, DOC_READADDRESS should be set
+    :type first: int
 
 .. _`doc_read_data_area.description`:
 
@@ -64,14 +70,17 @@ doc_write_data_area
 
     Write data into data area
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param const void \*buf:
+    :param buf:
         the buffer to get input bytes from
+    :type buf: const void \*
 
-    :param int len:
+    :param len:
         the length to write
+    :type len: int
 
 .. _`doc_write_data_area.description`:
 
@@ -89,8 +98,9 @@ doc_set_reliable_mode
 
     Sets the flash to normal or reliable data mode
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
 .. _`doc_set_reliable_mode.description`:
 
@@ -117,11 +127,13 @@ doc_set_asic_mode
 
     Set the ASIC mode
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param u8 mode:
+    :param mode:
         the mode
+    :type mode: u8
 
 .. _`doc_set_asic_mode.description`:
 
@@ -142,11 +154,13 @@ doc_set_device_id
 
     Sets the devices id for cascaded G3 chips
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int id:
+    :param id:
         the chip to select (amongst 0, 1, 2, 3)
+    :type id: int
 
 .. _`doc_set_device_id.description`:
 
@@ -165,8 +179,9 @@ doc_set_extra_page_mode
 
     Change flash page layout
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
 .. _`doc_set_extra_page_mode.description`:
 
@@ -189,11 +204,13 @@ doc_setup_addr_sector
 
     Setup blocks/page/ofs address for one plane
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int sector:
+    :param sector:
         the sector
+    :type sector: int
 
 .. _`doc_setup_writeaddr_sector`:
 
@@ -204,14 +221,17 @@ doc_setup_writeaddr_sector
 
     Setup blocks/page/ofs address for one plane
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int sector:
+    :param sector:
         the sector
+    :type sector: int
 
-    :param int ofs:
+    :param ofs:
         the offset in the page, between 0 and (512 + 16 + 512)
+    :type ofs: int
 
 .. _`doc_read_seek`:
 
@@ -222,23 +242,29 @@ doc_read_seek
 
     Set both flash planes to the specified block, page for reading
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int block0:
+    :param block0:
         the first plane block index
+    :type block0: int
 
-    :param int block1:
+    :param block1:
         the second plane block index
+    :type block1: int
 
-    :param int page:
+    :param page:
         the page index within the block
+    :type page: int
 
-    :param int wear:
+    :param wear:
         if true, read will occur on the 4 extra bytes of the wear area
+    :type wear: int
 
-    :param int ofs:
+    :param ofs:
         offset in page to read
+    :type ofs: int
 
 .. _`doc_read_seek.description`:
 
@@ -257,20 +283,25 @@ doc_write_seek
 
     Set both flash planes to the specified block, page for writing
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int block0:
+    :param block0:
         the first plane block index
+    :type block0: int
 
-    :param int block1:
+    :param block1:
         the second plane block index
+    :type block1: int
 
-    :param int page:
+    :param page:
         the page index within the block
+    :type page: int
 
-    :param int ofs:
+    :param ofs:
         offset in page to write
+    :type ofs: int
 
 .. _`doc_write_seek.description`:
 
@@ -289,11 +320,13 @@ doc_read_page_ecc_init
 
     Initialize hardware ECC engine
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int len:
+    :param len:
         the number of bytes covered by the ECC (BCH covered)
+    :type len: int
 
 .. _`doc_read_page_ecc_init.description`:
 
@@ -314,11 +347,13 @@ doc_write_page_ecc_init
 
     Initialize hardware BCH ECC engine
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int len:
+    :param len:
         the number of bytes covered by the ECC (BCH covered)
+    :type len: int
 
 .. _`doc_write_page_ecc_init.description`:
 
@@ -339,8 +374,9 @@ doc_ecc_disable
 
     Disable Hamming and BCH ECC hardware calculator
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
 .. _`doc_ecc_disable.description`:
 
@@ -359,11 +395,13 @@ doc_hamming_ecc_init
 
     Initialize hardware Hamming ECC engine
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int nb_bytes:
+    :param nb_bytes:
         the number of bytes covered by the ECC (Hamming covered)
+    :type nb_bytes: int
 
 .. _`doc_hamming_ecc_init.description`:
 
@@ -382,16 +420,19 @@ doc_ecc_bch_fix_data
 
     Fix if need be read data from flash
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param void \*buf:
+    :param buf:
         the buffer of read data (512 + 7 + 1 bytes)
+    :type buf: void \*
 
-    :param u8 \*hwecc:
+    :param hwecc:
         the hardware calculated ECC.
         It's in fact recv_ecc ^ calc_ecc, where recv_ecc was read from OOB
         area data, and calc_ecc the ECC calculated by the hardware generator.
+    :type hwecc: u8 \*
 
 .. _`doc_ecc_bch_fix_data.description`:
 
@@ -422,20 +463,25 @@ doc_read_page_prepare
 
     Prepares reading data from a flash page
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int block0:
+    :param block0:
         the first plane block index on flash memory
+    :type block0: int
 
-    :param int block1:
+    :param block1:
         the second plane block index on flash memory
+    :type block1: int
 
-    :param int page:
+    :param page:
         the page index in the block
+    :type page: int
 
-    :param int offset:
+    :param offset:
         the offset in the page (must be a multiple of 4)
+    :type offset: int
 
 .. _`doc_read_page_prepare.description`:
 
@@ -474,20 +520,25 @@ doc_read_page_getbytes
 
     Reads bytes from a prepared page
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int len:
+    :param len:
         the number of bytes to be read (must be a multiple of 4)
+    :type len: int
 
-    :param u_char \*buf:
+    :param buf:
         the buffer to be filled in (or NULL is forget bytes)
+    :type buf: u_char \*
 
-    :param int first:
+    :param first:
         1 if first time read, DOC_READADDRESS should be set
+    :type first: int
 
-    :param int last_odd:
+    :param last_odd:
         1 if last read ended up on an odd byte
+    :type last_odd: int
 
 .. _`doc_read_page_getbytes.description`:
 
@@ -509,14 +560,17 @@ doc_write_page_putbytes
 
     Writes bytes into a prepared page
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int len:
+    :param len:
         the number of bytes to be written
+    :type len: int
 
-    :param const u_char \*buf:
+    :param buf:
         the buffer of input bytes
+    :type buf: const u_char \*
 
 .. _`doc_get_bch_hw_ecc`:
 
@@ -527,11 +581,13 @@ doc_get_bch_hw_ecc
 
     Get hardware calculated BCH ECC
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param u8 \*hwecc:
+    :param hwecc:
         the array of 7 integers where the hardware ecc will be stored
+    :type hwecc: u8 \*
 
 .. _`doc_page_finish`:
 
@@ -542,8 +598,9 @@ doc_page_finish
 
     Ends reading/writing of a flash page
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
 .. _`doc_read_page_finish`:
 
@@ -554,8 +611,9 @@ doc_read_page_finish
 
     Ends reading of a flash page
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
 .. _`doc_read_page_finish.description`:
 
@@ -575,24 +633,30 @@ calc_block_sector
 
     Calculate blocks, pages and ofs.
 
-    :param loff_t from:
+    :param from:
         offset in flash
+    :type from: loff_t
 
-    :param int \*block0:
+    :param block0:
         first plane block index calculated
+    :type block0: int \*
 
-    :param int \*block1:
+    :param block1:
         second plane block index calculated
+    :type block1: int \*
 
-    :param int \*page:
+    :param page:
         page calculated
+    :type page: int \*
 
-    :param int \*ofs:
+    :param ofs:
         offset in page
+    :type ofs: int \*
 
-    :param int reliable:
+    :param reliable:
         0 if docg3 in normal mode, 1 if docg3 in fast mode, 2 if docg3 in
         reliable mode.
+    :type reliable: int
 
 .. _`calc_block_sector.description`:
 
@@ -612,15 +676,18 @@ doc_read_oob
 
     Read out of band bytes from flash
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         the device
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         the offset from first block and first page, in bytes, aligned on page
         size
+    :type from: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         the mtd oob structure
+    :type ops: struct mtd_oob_ops \*
 
 .. _`doc_read_oob.description`:
 
@@ -640,11 +707,13 @@ doc_block_isbad
 
     Checks whether a block is good or not
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         the device
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         the offset to find the correct block
+    :type from: loff_t
 
 .. _`doc_block_isbad.description`:
 
@@ -662,11 +731,13 @@ doc_get_erase_count
 
     Get block erase count
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param loff_t from:
+    :param from:
         the offset in which the block is.
+    :type from: loff_t
 
 .. _`doc_get_erase_count.description`:
 
@@ -687,8 +758,9 @@ doc_get_op_status
 
     get erase/write operation status
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
 .. _`doc_get_op_status.description`:
 
@@ -708,8 +780,9 @@ doc_write_erase_wait_status
 
     wait for write or erase completion
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
 .. _`doc_write_erase_wait_status.description`:
 
@@ -731,14 +804,17 @@ doc_erase_block
 
     Erase a couple of blocks
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param int block0:
+    :param block0:
         the first block to erase (leftmost plane)
+    :type block0: int
 
-    :param int block1:
+    :param block1:
         the second block to erase (rightmost plane)
+    :type block1: int
 
 .. _`doc_erase_block.description`:
 
@@ -759,11 +835,13 @@ doc_erase
 
     Erase a portion of the chip
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         the device
+    :type mtd: struct mtd_info \*
 
-    :param struct erase_info \*info:
+    :param info:
         the erase info
+    :type info: struct erase_info \*
 
 .. _`doc_erase.description`:
 
@@ -785,25 +863,30 @@ doc_write_page
 
     Write a single page to the chip
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param loff_t to:
+    :param to:
         the offset from first block and first page, in bytes, aligned on page
         size
+    :type to: loff_t
 
-    :param const u_char \*buf:
+    :param buf:
         buffer to get bytes from
+    :type buf: const u_char \*
 
-    :param const u_char \*oob:
+    :param oob:
         buffer to get out of band bytes from (can be NULL if no OOB should be
         written)
+    :type oob: const u_char \*
 
-    :param int autoecc:
+    :param autoecc:
         if 0, all 16 bytes from OOB are taken, regardless of HW Hamming or
         BCH computations. If 1, only bytes 0-7 and byte 15 are taken,
         remaining ones are filled with hardware Hamming and BCH
         computations. Its value is not meaningfull is oob == NULL.
+    :type autoecc: int
 
 .. _`doc_write_page.description`:
 
@@ -825,8 +908,9 @@ doc_guess_autoecc
 
     Guess autoecc mode from mbd_oob_ops
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         the oob operations
+    :type ops: struct mtd_oob_ops \*
 
 .. _`doc_guess_autoecc.description`:
 
@@ -844,11 +928,13 @@ doc_fill_autooob
 
     Fill a 16 bytes OOB from 8 non-ECC bytes
 
-    :param u8 \*dst:
+    :param dst:
         the target 16 bytes OOB buffer
+    :type dst: u8 \*
 
-    :param u8 \*oobsrc:
+    :param oobsrc:
         the source 8 bytes non-ECC OOB buffer
+    :type oobsrc: u8 \*
 
 .. _`doc_backup_oob`:
 
@@ -859,14 +945,17 @@ doc_backup_oob
 
     Backup OOB into docg3 structure
 
-    :param struct docg3 \*docg3:
+    :param docg3:
         the device
+    :type docg3: struct docg3 \*
 
-    :param loff_t to:
+    :param to:
         the page offset in the chip
+    :type to: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         the OOB size and buffer
+    :type ops: struct mtd_oob_ops \*
 
 .. _`doc_backup_oob.description`:
 
@@ -893,15 +982,18 @@ doc_write_oob
 
     Write out of band bytes to flash
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         the device
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         the offset from first block and first page, in bytes, aligned on page
         size
+    :type ofs: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         the mtd oob structure
+    :type ops: struct mtd_oob_ops \*
 
 .. _`doc_write_oob.description`:
 
@@ -925,11 +1017,13 @@ doc_set_driver_info
 
     Fill the mtd_info structure and docg3 structure
 
-    :param int chip_id:
+    :param chip_id:
         The chip ID of the supported chip
+    :type chip_id: int
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         The structure to fill
+    :type mtd: struct mtd_info \*
 
 .. _`doc_probe_device`:
 
@@ -940,14 +1034,17 @@ doc_probe_device
 
     Check if a device is available
 
-    :param struct docg3_cascade \*cascade:
+    :param cascade:
         the cascade of chips this devices will belong to
+    :type cascade: struct docg3_cascade \*
 
-    :param int floor:
+    :param floor:
         the floor of the probed device
+    :type floor: int
 
-    :param struct device \*dev:
+    :param dev:
         the device
+    :type dev: struct device \*
 
 .. _`doc_probe_device.description`:
 
@@ -969,8 +1066,9 @@ doc_release_device
 
     Release a docg3 floor
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         the device
+    :type mtd: struct mtd_info \*
 
 .. _`docg3_resume`:
 
@@ -981,8 +1079,9 @@ docg3_resume
 
     Awakens docg3 floor
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platfrom device
+    :type pdev: struct platform_device \*
 
 .. _`docg3_resume.description`:
 
@@ -1000,11 +1099,13 @@ docg3_suspend
 
     Put in low power mode the docg3 floor
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
-    :param pm_message_t state:
+    :param state:
         power state
+    :type state: pm_message_t
 
 .. _`docg3_suspend.description`:
 
@@ -1024,8 +1125,9 @@ docg3_probe
 
     Probe the IO space for a DiskOnChip G3 chip
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
 .. _`docg3_probe.description`:
 
@@ -1046,8 +1148,9 @@ docg3_release
 
     Release the driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         the platform device
+    :type pdev: struct platform_device \*
 
 .. _`docg3_release.description`:
 

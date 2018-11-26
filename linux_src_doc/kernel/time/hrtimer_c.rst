@@ -10,14 +10,17 @@ hrtimer_forward
 
     forward the timer expiry
 
-    :param struct hrtimer \*timer:
+    :param timer:
         hrtimer to forward
+    :type timer: struct hrtimer \*
 
-    :param ktime_t now:
+    :param now:
         forward past this time
+    :type now: ktime_t
 
-    :param ktime_t interval:
+    :param interval:
         the interval to forward
+    :type interval: ktime_t
 
 .. _`hrtimer_forward.description`:
 
@@ -49,19 +52,23 @@ hrtimer_start_range_ns
 
     (re)start an hrtimer
 
-    :param struct hrtimer \*timer:
+    :param timer:
         the timer to be added
+    :type timer: struct hrtimer \*
 
-    :param ktime_t tim:
+    :param tim:
         expiry time
+    :type tim: ktime_t
 
-    :param u64 delta_ns:
+    :param delta_ns:
         "slack" range for the timer
+    :type delta_ns: u64
 
-    :param const enum hrtimer_mode mode:
+    :param mode:
         timer mode: absolute (HRTIMER_MODE_ABS) or
         relative (HRTIMER_MODE_REL), and pinned (HRTIMER_MODE_PINNED);
         softirq based mode is considered for debug purpose only!
+    :type mode: const enum hrtimer_mode
 
 .. _`hrtimer_try_to_cancel`:
 
@@ -72,8 +79,9 @@ hrtimer_try_to_cancel
 
     try to deactivate a timer
 
-    :param struct hrtimer \*timer:
+    :param timer:
         hrtimer to stop
+    :type timer: struct hrtimer \*
 
 .. _`hrtimer_try_to_cancel.return`:
 
@@ -94,8 +102,9 @@ hrtimer_cancel
 
     cancel a timer and wait for the handler to finish.
 
-    :param struct hrtimer \*timer:
+    :param timer:
         the timer to be cancelled
+    :type timer: struct hrtimer \*
 
 .. _`hrtimer_cancel.return`:
 
@@ -114,11 +123,13 @@ __hrtimer_get_remaining
 
     get remaining time for the timer
 
-    :param const struct hrtimer \*timer:
+    :param timer:
         the timer to read
+    :type timer: const struct hrtimer \*
 
-    :param bool adjust:
+    :param adjust:
         adjust relative timers when CONFIG_TIME_LOW_RES=y
+    :type adjust: bool
 
 .. _`hrtimer_get_next_event`:
 
@@ -129,8 +140,9 @@ hrtimer_get_next_event
 
     get the time until next expiry event
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hrtimer_get_next_event.description`:
 
@@ -148,8 +160,9 @@ hrtimer_next_event_without
 
     time until next expiry event w/o one timer
 
-    :param const struct hrtimer \*exclude:
+    :param exclude:
         timer to exclude
+    :type exclude: const struct hrtimer \*
 
 .. _`hrtimer_next_event_without.description`:
 
@@ -168,16 +181,19 @@ hrtimer_init
 
     initialize a timer to the given clock
 
-    :param struct hrtimer \*timer:
+    :param timer:
         the timer to be initialized
+    :type timer: struct hrtimer \*
 
-    :param clockid_t clock_id:
+    :param clock_id:
         the clock to be used
+    :type clock_id: clockid_t
 
-    :param enum hrtimer_mode mode:
+    :param mode:
         The modes which are relevant for intitialization:
         HRTIMER_MODE_ABS, HRTIMER_MODE_REL, HRTIMER_MODE_ABS_SOFT,
         HRTIMER_MODE_REL_SOFT
+    :type mode: enum hrtimer_mode
 
 .. _`hrtimer_init.description`:
 
@@ -197,17 +213,21 @@ schedule_hrtimeout_range_clock
 
     sleep until timeout
 
-    :param ktime_t \*expires:
+    :param expires:
         timeout value (ktime_t)
+    :type expires: ktime_t \*
 
-    :param u64 delta:
+    :param delta:
         slack in expires timeout (ktime_t)
+    :type delta: u64
 
-    :param const enum hrtimer_mode mode:
+    :param mode:
         timer mode
+    :type mode: const enum hrtimer_mode
 
-    :param clockid_t clock_id:
+    :param clock_id:
         timer clock to be used
+    :type clock_id: clockid_t
 
 .. _`schedule_hrtimeout_range`:
 
@@ -218,14 +238,17 @@ schedule_hrtimeout_range
 
     sleep until timeout
 
-    :param ktime_t \*expires:
+    :param expires:
         timeout value (ktime_t)
+    :type expires: ktime_t \*
 
-    :param u64 delta:
+    :param delta:
         slack in expires timeout (ktime_t)
+    :type delta: u64
 
-    :param const enum hrtimer_mode mode:
+    :param mode:
         timer mode
+    :type mode: const enum hrtimer_mode
 
 .. _`schedule_hrtimeout_range.description`:
 
@@ -267,11 +290,13 @@ schedule_hrtimeout
 
     sleep until timeout
 
-    :param ktime_t \*expires:
+    :param expires:
         timeout value (ktime_t)
+    :type expires: ktime_t \*
 
-    :param const enum hrtimer_mode mode:
+    :param mode:
         timer mode
+    :type mode: const enum hrtimer_mode
 
 .. _`schedule_hrtimeout.description`:
 

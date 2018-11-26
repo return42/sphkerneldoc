@@ -10,8 +10,9 @@ ata_dev_acpi_handle
 
     provide the acpi_handle for an ata_device
 
-    :param struct ata_device \*dev:
+    :param dev:
         the acpi_handle returned will correspond to this device
+    :type dev: struct ata_device \*
 
 .. _`ata_dev_acpi_handle.description`:
 
@@ -31,14 +32,17 @@ ata_acpi_handle_hotplug
 
     ACPI event handler backend
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port ACPI event occurred
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device ACPI event occurred (can be NULL)
+    :type dev: struct ata_device \*
 
-    :param u32 event:
+    :param event:
         ACPI event which occurred
+    :type event: u32
 
 .. _`ata_acpi_handle_hotplug.description`:
 
@@ -69,8 +73,9 @@ ata_acpi_dissociate
 
     dissociate ATA host from ACPI objects
 
-    :param struct ata_host \*host:
+    :param host:
         target ATA host
+    :type host: struct ata_host \*
 
 .. _`ata_acpi_dissociate.description`:
 
@@ -96,11 +101,13 @@ ata_acpi_gtm
 
     execute \_GTM
 
-    :param struct ata_port \*ap:
+    :param ap:
         target ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_acpi_gtm \*gtm:
+    :param gtm:
         out parameter for \_GTM result
+    :type gtm: struct ata_acpi_gtm \*
 
 .. _`ata_acpi_gtm.description`:
 
@@ -132,11 +139,13 @@ ata_acpi_stm
 
     execute \_STM
 
-    :param struct ata_port \*ap:
+    :param ap:
         target ATA port
+    :type ap: struct ata_port \*
 
-    :param const struct ata_acpi_gtm \*stm:
+    :param stm:
         timing parameter to \_STM
+    :type stm: const struct ata_acpi_gtm \*
 
 .. _`ata_acpi_stm.description`:
 
@@ -168,11 +177,13 @@ ata_dev_get_GTF
 
     get the drive bootup default taskfile settings
 
-    :param struct ata_device \*dev:
+    :param dev:
         target ATA device
+    :type dev: struct ata_device \*
 
-    :param struct ata_acpi_gtf \*\*gtf:
+    :param gtf:
         output parameter for buffer containing \_GTF taskfile arrays
+    :type gtf: struct ata_acpi_gtf \*\*
 
 .. _`ata_dev_get_gtf.description`:
 
@@ -211,11 +222,13 @@ ata_acpi_gtm_xfermask
 
     determine xfermode from GTM parameter
 
-    :param struct ata_device \*dev:
+    :param dev:
         target device
+    :type dev: struct ata_device \*
 
-    :param const struct ata_acpi_gtm \*gtm:
+    :param gtm:
         GTM parameter to use
+    :type gtm: const struct ata_acpi_gtm \*
 
 .. _`ata_acpi_gtm_xfermask.description`:
 
@@ -247,11 +260,13 @@ ata_acpi_cbl_80wire
 
     Check for 80 wire cable
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to check
+    :type ap: struct ata_port \*
 
-    :param const struct ata_acpi_gtm \*gtm:
+    :param gtm:
         GTM data to use
+    :type gtm: const struct ata_acpi_gtm \*
 
 .. _`ata_acpi_cbl_80wire.description`:
 
@@ -269,14 +284,17 @@ ata_acpi_run_tf
 
     send taskfile registers to host controller
 
-    :param struct ata_device \*dev:
+    :param dev:
         target ATA device
+    :type dev: struct ata_device \*
 
-    :param const struct ata_acpi_gtf \*gtf:
+    :param gtf:
         raw ATA taskfile register set (0x1f1 - 0x1f7)
+    :type gtf: const struct ata_acpi_gtf \*
 
-    :param const struct ata_acpi_gtf \*prev_gtf:
+    :param prev_gtf:
         *undescribed*
+    :type prev_gtf: const struct ata_acpi_gtf \*
 
 .. _`ata_acpi_run_tf.description`:
 
@@ -317,11 +335,13 @@ ata_acpi_exec_tfs
 
     get then write drive taskfile settings
 
-    :param struct ata_device \*dev:
+    :param dev:
         target ATA device
+    :type dev: struct ata_device \*
 
-    :param int \*nr_executed:
+    :param nr_executed:
         out parameter for the number of executed commands
+    :type nr_executed: int \*
 
 .. _`ata_acpi_exec_tfs.description`:
 
@@ -354,8 +374,9 @@ ata_acpi_push_id
 
     send Identify data to drive
 
-    :param struct ata_device \*dev:
+    :param dev:
         target ATA device
+    :type dev: struct ata_device \*
 
 .. _`ata_acpi_push_id._sdd-acpi-object`:
 
@@ -391,8 +412,9 @@ ata_acpi_on_suspend
 
     ATA ACPI hook called on suspend
 
-    :param struct ata_port \*ap:
+    :param ap:
         target ATA port
+    :type ap: struct ata_port \*
 
 .. _`ata_acpi_on_suspend.description`:
 
@@ -427,8 +449,9 @@ ata_acpi_on_resume
 
     ATA ACPI hook called on resume
 
-    :param struct ata_port \*ap:
+    :param ap:
         target ATA port
+    :type ap: struct ata_port \*
 
 .. _`ata_acpi_on_resume.description`:
 
@@ -454,11 +477,13 @@ ata_acpi_set_state
 
     set the port power state
 
-    :param struct ata_port \*ap:
+    :param ap:
         target ATA port
+    :type ap: struct ata_port \*
 
-    :param pm_message_t state:
+    :param state:
         state, on/off
+    :type state: pm_message_t
 
 .. _`ata_acpi_set_state.description`:
 
@@ -477,8 +502,9 @@ ata_acpi_on_devcfg
 
     ATA ACPI hook called on device donfiguration
 
-    :param struct ata_device \*dev:
+    :param dev:
         target ATA device
+    :type dev: struct ata_device \*
 
 .. _`ata_acpi_on_devcfg.description`:
 
@@ -512,8 +538,9 @@ ata_acpi_on_disable
 
     ATA ACPI hook called when a device is disabled
 
-    :param struct ata_device \*dev:
+    :param dev:
         target ATA device
+    :type dev: struct ata_device \*
 
 .. _`ata_acpi_on_disable.description`:
 

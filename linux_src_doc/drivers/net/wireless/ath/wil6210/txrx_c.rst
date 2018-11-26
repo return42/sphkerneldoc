@@ -6,19 +6,23 @@
 wil_vring_alloc_skb
 ===================
 
-.. c:function:: int wil_vring_alloc_skb(struct wil6210_priv *wil, struct vring *vring, u32 i, int headroom)
+.. c:function:: int wil_vring_alloc_skb(struct wil6210_priv *wil, struct wil_ring *vring, u32 i, int headroom)
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param struct vring \*vring:
+    :param vring:
         *undescribed*
+    :type vring: struct wil_ring \*
 
-    :param u32 i:
+    :param i:
         *undescribed*
+    :type i: u32
 
-    :param int headroom:
+    :param headroom:
         *undescribed*
+    :type headroom: int
 
 .. _`wil_vring_alloc_skb.description`:
 
@@ -34,11 +38,13 @@ wil_rx_add_radiotap_header
 
 .. c:function:: void wil_rx_add_radiotap_header(struct wil6210_priv *wil, struct sk_buff *skb)
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`wil_rx_add_radiotap_header.description`:
 
@@ -56,13 +62,15 @@ Vendor data for 04:ce:14-1 (Wilocity-1) consists of:
 wil_vring_reap_rx
 =================
 
-.. c:function:: struct sk_buff *wil_vring_reap_rx(struct wil6210_priv *wil, struct vring *vring)
+.. c:function:: struct sk_buff *wil_vring_reap_rx(struct wil6210_priv *wil, struct wil_ring *vring)
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param struct vring \*vring:
+    :param vring:
         *undescribed*
+    :type vring: struct wil_ring \*
 
 .. _`wil_vring_reap_rx.description`:
 
@@ -82,11 +90,13 @@ wil_rx_refill
 
     buffers posted at \ ``swtail``\ 
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
 .. _`wil_rx_refill.note`:
 
@@ -108,14 +118,17 @@ reverse_memcmp
 
     Compare two areas of memory, in reverse order
 
-    :param const void \*cs:
+    :param cs:
         One area of memory
+    :type cs: const void \*
 
-    :param const void \*ct:
+    :param ct:
         Another area of memory
+    :type ct: const void \*
 
-    :param size_t count:
+    :param count:
         The size of the area.
+    :type count: size_t
 
 .. _`reverse_memcmp.description`:
 
@@ -132,11 +145,13 @@ wil_rx_handle
 
 .. c:function:: void wil_rx_handle(struct wil6210_priv *wil, int *quota)
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param int \*quota:
+    :param quota:
         *undescribed*
+    :type quota: int \*
 
 .. _`wil_rx_handle.description`:
 
@@ -154,24 +169,30 @@ wil_tx_desc_offload_setup_tso
 
     \ ``skb``\  is used to obtain the protocol and headers length.
 
-    :param struct vring_tx_desc \*d:
+    :param d:
         *undescribed*
+    :type d: struct vring_tx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param int tso_desc_type:
+    :param tso_desc_type:
         0 - a header, 1 - first data,
         2 - middle, 3 - last descriptor.
+    :type tso_desc_type: int
 
-    :param bool is_ipv4:
+    :param is_ipv4:
         *undescribed*
+    :type is_ipv4: bool
 
-    :param int tcp_hdr_len:
+    :param tcp_hdr_len:
         *undescribed*
+    :type tcp_hdr_len: int
 
-    :param int skb_net_hdr_len:
+    :param skb_net_hdr_len:
         *undescribed*
+    :type skb_net_hdr_len: int
 
 .. _`wil_tx_desc_offload_setup`:
 
@@ -182,11 +203,13 @@ wil_tx_desc_offload_setup
 
     \ ``skb``\  is used to obtain the protocol and headers length.
 
-    :param struct vring_tx_desc \*d:
+    :param d:
         *undescribed*
+    :type d: struct vring_tx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`wil_tx_desc_offload_setup.returns-the-protocol`:
 
@@ -204,21 +227,25 @@ is "if unrolling" to optimize the critical path.
 \__wil_update_net_queues
 ========================
 
-.. c:function:: void __wil_update_net_queues(struct wil6210_priv *wil, struct wil6210_vif *vif, struct vring *vring, bool check_stop)
+.. c:function:: void __wil_update_net_queues(struct wil6210_priv *wil, struct wil6210_vif *vif, struct wil_ring *ring, bool check_stop)
 
     It will start/stop net queues of a specific VIF net_device.
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param struct wil6210_vif \*vif:
+    :param vif:
         *undescribed*
+    :type vif: struct wil6210_vif \*
 
-    :param struct vring \*vring:
+    :param ring:
         *undescribed*
+    :type ring: struct wil_ring \*
 
-    :param bool check_stop:
+    :param check_stop:
         *undescribed*
+    :type check_stop: bool
 
 .. _`__wil_update_net_queues.this-function-does-one-of-two-checks`:
 
@@ -244,11 +271,13 @@ wil_tx_complete
 
 .. c:function:: int wil_tx_complete(struct wil6210_vif *vif, int ringid)
 
-    :param struct wil6210_vif \*vif:
+    :param vif:
         *undescribed*
+    :type vif: struct wil6210_vif \*
 
-    :param int ringid:
+    :param ringid:
         *undescribed*
+    :type ringid: int
 
 .. _`wil_tx_complete.description`:
 

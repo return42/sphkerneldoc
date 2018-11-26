@@ -6,15 +6,17 @@
 g2d_remove_runqueue_nodes
 =========================
 
-.. c:function:: void g2d_remove_runqueue_nodes(struct g2d_data *g2d, struct drm_file*file)
+.. c:function:: void g2d_remove_runqueue_nodes(struct g2d_data *g2d, struct drm_file* file)
 
     remove items from the list of runqueue nodes
 
-    :param struct g2d_data \*g2d:
+    :param g2d:
         G2D state object
+    :type g2d: struct g2d_data \*
 
-    :param struct drm_file\*file:
+    :param file:
         if not zero, only remove items with this DRM file
+    :type file: struct drm_file\*
 
 .. _`g2d_remove_runqueue_nodes.description`:
 
@@ -32,12 +34,14 @@ g2d_wait_finish
 
     wait for the G2D engine to finish the current runqueue node
 
-    :param struct g2d_data \*g2d:
+    :param g2d:
         G2D state object
+    :type g2d: struct g2d_data \*
 
-    :param struct drm_file \*file:
+    :param file:
         if not zero, only wait if the current runqueue node belongs
         to the DRM file
+    :type file: struct drm_file \*
 
 .. _`g2d_wait_finish.description`:
 

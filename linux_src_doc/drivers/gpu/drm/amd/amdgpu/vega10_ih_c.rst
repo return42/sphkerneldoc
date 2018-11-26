@@ -10,8 +10,9 @@ vega10_ih_enable_interrupts
 
     Enable the interrupt ring buffer
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`vega10_ih_enable_interrupts.description`:
 
@@ -29,8 +30,9 @@ vega10_ih_disable_interrupts
 
     Disable the interrupt ring buffer
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`vega10_ih_disable_interrupts.description`:
 
@@ -48,8 +50,9 @@ vega10_ih_irq_init
 
     init and enable the interrupt ring
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`vega10_ih_irq_init.description`:
 
@@ -71,8 +74,9 @@ vega10_ih_irq_disable
 
     disable interrupts
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`vega10_ih_irq_disable.description`:
 
@@ -90,8 +94,9 @@ vega10_ih_get_wptr
 
     get the IH ring buffer wptr
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`vega10_ih_get_wptr.description`:
 
@@ -112,8 +117,9 @@ vega10_ih_prescreen_iv
 
     prescreen an interrupt vector
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`vega10_ih_prescreen_iv.description`:
 
@@ -131,11 +137,13 @@ vega10_ih_decode_iv
 
     decode an interrupt vector
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_iv_entry \*entry:
+    :param entry:
         *undescribed*
+    :type entry: struct amdgpu_iv_entry \*
 
 .. _`vega10_ih_decode_iv.description`:
 
@@ -154,8 +162,9 @@ vega10_ih_set_rptr
 
     set the IH ring buffer rptr
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`vega10_ih_set_rptr.description`:
 

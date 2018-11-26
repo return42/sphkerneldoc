@@ -10,11 +10,13 @@ ntfs_test_inode
 
     NTFS kernel inode handling.
 
-    :param struct inode \*vi:
+    :param vi:
         *undescribed*
+    :type vi: struct inode \*
 
-    :param ntfs_attr \*na:
+    :param na:
         *undescribed*
+    :type na: ntfs_attr \*
 
 .. _`ntfs_test_inode.description`:
 
@@ -47,11 +49,13 @@ ntfs_init_locked_inode
 
     initialize an inode
 
-    :param struct inode \*vi:
+    :param vi:
         vfs inode to initialize
+    :type vi: struct inode \*
 
-    :param ntfs_attr \*na:
+    :param na:
         ntfs attribute which to initialize \ ``vi``\  to
+    :type na: ntfs_attr \*
 
 .. _`ntfs_init_locked_inode.description`:
 
@@ -61,8 +65,8 @@ Description
 Initialize the vfs inode \ ``vi``\  with the values from the ntfs attribute \ ``na``\  in
 order to enable \ :c:func:`ntfs_test_inode`\  to do its work.
 
-If initializing the normal file/directory inode, set \ ``na``\ ->type to AT_UNUSED.
-In that case, \ ``na``\ ->name and \ ``na``\ ->name_len should be set to NULL and 0,
+If initializing the normal file/directory inode, set \ ``na->type``\  to AT_UNUSED.
+In that case, \ ``na->name``\  and \ ``na->name_len``\  should be set to NULL and 0,
 respectively. Although that is not strictly necessary as
 \ :c:func:`ntfs_read_locked_inode`\  will fill them in later.
 
@@ -85,11 +89,13 @@ ntfs_iget
 
     obtain a struct inode corresponding to a specific normal inode
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of mounted volume
+    :type sb: struct super_block \*
 
-    :param unsigned long mft_no:
+    :param mft_no:
         mft record number / inode number to obtain
+    :type mft_no: unsigned long
 
 .. _`ntfs_iget.description`:
 
@@ -116,17 +122,21 @@ ntfs_attr_iget
 
     obtain a struct inode corresponding to an attribute
 
-    :param struct inode \*base_vi:
+    :param base_vi:
         vfs base inode containing the attribute
+    :type base_vi: struct inode \*
 
-    :param ATTR_TYPE type:
+    :param type:
         attribute type
+    :type type: ATTR_TYPE
 
-    :param ntfschar \*name:
+    :param name:
         Unicode name of the attribute (NULL if unnamed)
+    :type name: ntfschar \*
 
-    :param u32 name_len:
+    :param name_len:
         length of \ ``name``\  in Unicode characters (0 if unnamed)
+    :type name_len: u32
 
 .. _`ntfs_attr_iget.description`:
 
@@ -158,14 +168,17 @@ ntfs_index_iget
 
     obtain a struct inode corresponding to an index
 
-    :param struct inode \*base_vi:
+    :param base_vi:
         vfs base inode containing the index related attributes
+    :type base_vi: struct inode \*
 
-    :param ntfschar \*name:
+    :param name:
         Unicode name of the index
+    :type name: ntfschar \*
 
-    :param u32 name_len:
+    :param name_len:
         length of \ ``name``\  in Unicode characters
+    :type name_len: u32
 
 .. _`ntfs_index_iget.description`:
 
@@ -194,11 +207,13 @@ obtained from \ :c:func:`PTR_ERR`\ .
 
     initialize ntfs specific part of an inode
 
-    :param struct super_block \*sb:
+    :param sb:
         super block of mounted volume
+    :type sb: struct super_block \*
 
-    :param ntfs_inode \*ni:
+    :param ni:
         freshly allocated ntfs inode which to initialize
+    :type ni: ntfs_inode \*
 
 .. _`__ntfs_init_inode.description`:
 
@@ -226,8 +241,9 @@ ntfs_is_extended_system_file
 
     check if a file is in the \ ``$Extend``\  directory
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         initialized attribute search context
+    :type ctx: ntfs_attr_search_ctx \*
 
 .. _`ntfs_is_extended_system_file.description`:
 
@@ -256,8 +272,9 @@ ntfs_read_locked_inode
 
     read an inode from its device
 
-    :param struct inode \*vi:
+    :param vi:
         inode to read
+    :type vi: struct inode \*
 
 .. _`ntfs_read_locked_inode.description`:
 
@@ -295,11 +312,13 @@ ntfs_read_locked_attr_inode
 
     read an attribute inode from its base inode
 
-    :param struct inode \*base_vi:
+    :param base_vi:
         base inode
+    :type base_vi: struct inode \*
 
-    :param struct inode \*vi:
+    :param vi:
         attribute inode to read
+    :type vi: struct inode \*
 
 .. _`ntfs_read_locked_attr_inode.description`:
 
@@ -332,11 +351,13 @@ ntfs_read_locked_index_inode
 
     read an index inode from its base inode
 
-    :param struct inode \*base_vi:
+    :param base_vi:
         base inode
+    :type base_vi: struct inode \*
 
-    :param struct inode \*vi:
+    :param vi:
         index inode to read
+    :type vi: struct inode \*
 
 .. _`ntfs_read_locked_index_inode.description`:
 
@@ -380,8 +401,9 @@ ntfs_read_inode_mount
 
     special read_inode for mount time use only
 
-    :param struct inode \*vi:
+    :param vi:
         inode to read
+    :type vi: struct inode \*
 
 .. _`ntfs_read_inode_mount.description`:
 
@@ -419,8 +441,9 @@ ntfs_evict_big_inode
 
     clean up the ntfs specific part of an inode
 
-    :param struct inode \*vi:
+    :param vi:
         vfs inode pending annihilation
+    :type vi: struct inode \*
 
 .. _`ntfs_evict_big_inode.description`:
 
@@ -442,11 +465,13 @@ ntfs_show_options
 
     show mount options in /proc/mounts
 
-    :param struct seq_file \*sf:
+    :param sf:
         seq_file in which to write our mount options
+    :type sf: struct seq_file \*
 
-    :param struct dentry \*root:
+    :param root:
         root of the mounted tree whose mount options to display
+    :type root: struct dentry \*
 
 .. _`ntfs_show_options.description`:
 
@@ -467,8 +492,9 @@ ntfs_truncate
 
     called when the i_size of an ntfs inode is changed
 
-    :param struct inode \*vi:
+    :param vi:
         inode for which the i_size was changed
+    :type vi: struct inode \*
 
 .. _`ntfs_truncate.description`:
 
@@ -498,8 +524,9 @@ ntfs_truncate_vfs
 
     wrapper for \ :c:func:`ntfs_truncate`\  that has no return value
 
-    :param struct inode \*vi:
+    :param vi:
         inode for which the i_size was changed
+    :type vi: struct inode \*
 
 .. _`ntfs_truncate_vfs.description`:
 
@@ -519,11 +546,13 @@ ntfs_setattr
 
     called from \ :c:func:`notify_change`\  when an attribute is being changed
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry whose attributes to change
+    :type dentry: struct dentry \*
 
-    :param struct iattr \*attr:
+    :param attr:
         structure describing the attributes and the changes
+    :type attr: struct iattr \*
 
 .. _`ntfs_setattr.description`:
 
@@ -548,11 +577,13 @@ Called with ->i_mutex held.
 
     write out a dirty inode
 
-    :param struct inode \*vi:
+    :param vi:
         inode to write out
+    :type vi: struct inode \*
 
-    :param int sync:
+    :param sync:
         if true, write out synchronously
+    :type sync: int
 
 .. _`__ntfs_write_inode.description`:
 

@@ -10,11 +10,13 @@ audit_pre
 
     core AppArmor function.
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         audit buffer to fill (NOT NULL)
+    :type ab: struct audit_buffer \*
 
-    :param void \*ca:
+    :param ca:
         audit structure containing data to audit (NOT NULL)
+    :type ca: void \*
 
 .. _`audit_pre.description`:
 
@@ -32,11 +34,13 @@ aa_audit_msg
 
     Log a message to the audit subsystem
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
-    :param struct common_audit_data \*sa:
+    :param sa:
         audit event structure (NOT NULL)
+    :type sa: struct common_audit_data \*
 
     :param void (\*cb)(struct audit_buffer \*, void \*):
         optional callback fn for type specific fields (MAYBE NULL)
@@ -50,14 +54,17 @@ aa_audit
 
     Log a profile based audit event to the audit subsystem
 
-    :param int type:
+    :param type:
         audit type for the message
+    :type type: int
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to check against (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param struct common_audit_data \*sa:
+    :param sa:
         audit event (NOT NULL)
+    :type sa: struct common_audit_data \*
 
     :param void (\*cb)(struct audit_buffer \*, void \*):
         optional callback fn for type specific fields (MAYBE NULL)

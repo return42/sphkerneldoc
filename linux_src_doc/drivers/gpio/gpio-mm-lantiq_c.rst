@@ -10,8 +10,9 @@ ltq_mm_apply
 
     write the shadow value to the ebu address.
 
-    :param struct ltq_mm \*chip:
+    :param chip:
         Pointer to our private data structure.
+    :type chip: struct ltq_mm \*
 
 .. _`ltq_mm_apply.description`:
 
@@ -30,14 +31,17 @@ ltq_mm_set
 
     gpio_chip->set - set gpios.
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
 
-    :param unsigned offset:
+    :param offset:
         *undescribed*
+    :type offset: unsigned
 
-    :param int value:
+    :param value:
         *undescribed*
+    :type value: int
 
 .. _`ltq_mm_set.description`:
 
@@ -55,14 +59,17 @@ ltq_mm_dir_out
 
     gpio_chip->dir_out - set gpio direction.
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
 
-    :param unsigned offset:
+    :param offset:
         *undescribed*
+    :type offset: unsigned
 
-    :param int value:
+    :param value:
         *undescribed*
+    :type value: int
 
 .. _`ltq_mm_dir_out.description`:
 
@@ -80,8 +87,9 @@ ltq_mm_save_regs
 
     Set initial values of GPIO pins
 
-    :param struct of_mm_gpio_chip \*mm_gc:
+    :param mm_gc:
         pointer to memory mapped GPIO chip structure
+    :type mm_gc: struct of_mm_gpio_chip \*
 
 .. This file was automatic generated / don't edit.
 

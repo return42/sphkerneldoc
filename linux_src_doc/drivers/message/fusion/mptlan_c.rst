@@ -10,14 +10,17 @@ lan_reply
 
     Handle all data sent from the hardware.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param MPT_FRAME_HDR \*mf:
+    :param mf:
         Pointer to original MPT request frame (NULL if TurboReply)
+    :type mf: MPT_FRAME_HDR \*
 
-    :param MPT_FRAME_HDR \*reply:
+    :param reply:
         Pointer to MPT reply frame
+    :type reply: MPT_FRAME_HDR \*
 
 .. _`lan_reply.description`:
 

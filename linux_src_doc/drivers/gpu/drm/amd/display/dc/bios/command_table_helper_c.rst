@@ -8,8 +8,9 @@ dal_cmd_table_helper_transmitter_bp_to_atom
 
 .. c:function:: uint8_t dal_cmd_table_helper_transmitter_bp_to_atom(enum transmitter t)
 
-    :param enum transmitter t:
+    :param t:
         *undescribed*
+    :type t: enum transmitter
 
 .. _`dal_cmd_table_helper_transmitter_bp_to_atom.description`:
 

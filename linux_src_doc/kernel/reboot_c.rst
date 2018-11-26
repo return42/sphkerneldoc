@@ -10,8 +10,9 @@ emergency_restart
 
     reboot the system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`emergency_restart.description`:
 
@@ -32,8 +33,9 @@ register_reboot_notifier
 
     Register function to be called at reboot time
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Info about notifier function to be called
+    :type nb: struct notifier_block \*
 
 .. _`register_reboot_notifier.description`:
 
@@ -55,8 +57,9 @@ unregister_reboot_notifier
 
     Unregister previously registered reboot notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Hook to be unregistered
+    :type nb: struct notifier_block \*
 
 .. _`unregister_reboot_notifier.description`:
 
@@ -77,7 +80,7 @@ register_restart_handler
 
     Register function to be called to reset the system
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Handler priority. Handlers should follow the
         following guidelines for setting priorities.
         0:      Restart handler of last resort,
@@ -88,6 +91,7 @@ register_restart_handler
         sufficient to restart the entire system
         255:    Highest priority restart handler, will
         preempt all other restart handlers
+    :type nb: struct notifier_block \*
 
 .. _`register_restart_handler.description`:
 
@@ -126,8 +130,9 @@ unregister_restart_handler
 
     Unregister previously registered restart handler
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Hook to be unregistered
+    :type nb: struct notifier_block \*
 
 .. _`unregister_restart_handler.description`:
 
@@ -147,8 +152,9 @@ do_kernel_restart
 
     Execute kernel restart handler call chain
 
-    :param char \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: char \*
 
 .. _`do_kernel_restart.description`:
 
@@ -172,9 +178,10 @@ kernel_restart
 
     reboot the system
 
-    :param char \*cmd:
+    :param cmd:
         pointer to buffer containing command to execute for restart
         or \ ``NULL``\ 
+    :type cmd: char \*
 
 .. _`kernel_restart.description`:
 
@@ -193,8 +200,9 @@ kernel_halt
 
     halt the system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kernel_halt.description`:
 
@@ -212,8 +220,9 @@ kernel_power_off
 
     power_off the system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kernel_power_off.description`:
 
@@ -231,8 +240,9 @@ orderly_poweroff
 
     Trigger an orderly system poweroff
 
-    :param bool force:
+    :param force:
         force poweroff if command execution fails
+    :type force: bool
 
 .. _`orderly_poweroff.description`:
 
@@ -251,8 +261,9 @@ orderly_reboot
 
     Trigger an orderly system reboot
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`orderly_reboot.description`:
 

@@ -10,17 +10,21 @@ ntfs_cluster_free
 
     free clusters on an ntfs volume
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode whose runlist describes the clusters to free
+    :type ni: ntfs_inode \*
 
-    :param const VCN start_vcn:
+    :param start_vcn:
         vcn in the runlist of \ ``ni``\  at which to start freeing clusters
+    :type start_vcn: const VCN
 
-    :param s64 count:
+    :param count:
         number of clusters to free or -1 for all clusters
+    :type count: s64
 
-    :param ntfs_attr_search_ctx \*ctx:
+    :param ctx:
         active attribute search context if present or NULL if not
+    :type ctx: ntfs_attr_search_ctx \*
 
 .. _`ntfs_cluster_free.description`:
 
@@ -100,11 +104,13 @@ ntfs_cluster_free_from_rl
 
     free clusters from runlist
 
-    :param ntfs_volume \*vol:
+    :param vol:
         mounted ntfs volume on which to free the clusters
+    :type vol: ntfs_volume \*
 
-    :param const runlist_element \*rl:
+    :param rl:
         runlist describing the clusters to free
+    :type rl: const runlist_element \*
 
 .. _`ntfs_cluster_free_from_rl.description`:
 

@@ -10,11 +10,13 @@ evergreen_dma_fence_ring_emit
 
     emit a fence on the DMA ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
 .. _`evergreen_dma_fence_ring_emit.description`:
 
@@ -34,11 +36,13 @@ evergreen_dma_ring_ib_execute
 
     schedule an IB on the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         IB object to schedule
+    :type ib: struct radeon_ib \*
 
 .. _`evergreen_dma_ring_ib_execute.description`:
 
@@ -56,20 +60,25 @@ evergreen_copy_dma
 
     copy pages using the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint64_t src_offset:
+    :param src_offset:
         src GPU address
+    :type src_offset: uint64_t
 
-    :param uint64_t dst_offset:
+    :param dst_offset:
         dst GPU address
+    :type dst_offset: uint64_t
 
-    :param unsigned num_gpu_pages:
+    :param num_gpu_pages:
         number of GPU pages to xfer
+    :type num_gpu_pages: unsigned
 
-    :param struct reservation_object \*resv:
+    :param resv:
         *undescribed*
+    :type resv: struct reservation_object \*
 
 .. _`evergreen_copy_dma.description`:
 
@@ -89,11 +98,13 @@ evergreen_dma_is_lockup
 
     Check if the DMA engine is locked up
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`evergreen_dma_is_lockup.description`:
 

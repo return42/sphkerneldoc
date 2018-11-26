@@ -74,8 +74,9 @@ cdns_spi_init_hw
 
     Initialize the hardware and configure the SPI controller
 
-    :param struct cdns_spi \*xspi:
+    :param xspi:
         Pointer to the cdns_spi structure
+    :type xspi: struct cdns_spi \*
 
 .. _`cdns_spi_init_hw.description`:
 
@@ -98,11 +99,13 @@ cdns_spi_chipselect
 
     Select or deselect the chip select line
 
-    :param struct spi_device \*spi:
+    :param spi:
         Pointer to the spi_device structure
+    :type spi: struct spi_device \*
 
-    :param bool is_high:
+    :param is_high:
         Select(0) or deselect (1) the chip select line
+    :type is_high: bool
 
 .. _`cdns_spi_config_clock_mode`:
 
@@ -113,8 +116,9 @@ cdns_spi_config_clock_mode
 
     Sets clock polarity and phase
 
-    :param struct spi_device \*spi:
+    :param spi:
         Pointer to the spi_device structure
+    :type spi: struct spi_device \*
 
 .. _`cdns_spi_config_clock_mode.description`:
 
@@ -132,12 +136,14 @@ cdns_spi_config_clock_freq
 
     Sets clock frequency
 
-    :param struct spi_device \*spi:
+    :param spi:
         Pointer to the spi_device structure
+    :type spi: struct spi_device \*
 
-    :param struct spi_transfer \*transfer:
+    :param transfer:
         Pointer to the spi_transfer structure which provides
         information about next transfer setup parameters
+    :type transfer: struct spi_transfer \*
 
 .. _`cdns_spi_config_clock_freq.description`:
 
@@ -167,12 +173,14 @@ cdns_spi_setup_transfer
 
     Configure SPI controller for specified transfer
 
-    :param struct spi_device \*spi:
+    :param spi:
         Pointer to the spi_device structure
+    :type spi: struct spi_device \*
 
-    :param struct spi_transfer \*transfer:
+    :param transfer:
         Pointer to the spi_transfer structure which provides
         information about next transfer setup parameters
+    :type transfer: struct spi_transfer \*
 
 .. _`cdns_spi_setup_transfer.description`:
 
@@ -198,8 +206,9 @@ cdns_spi_fill_tx_fifo
 
     Fills the TX FIFO with as many bytes as possible
 
-    :param struct cdns_spi \*xspi:
+    :param xspi:
         Pointer to the cdns_spi structure
+    :type xspi: struct cdns_spi \*
 
 .. _`cdns_spi_irq`:
 
@@ -210,11 +219,13 @@ cdns_spi_irq
 
     Interrupt service routine of the SPI controller
 
-    :param int irq:
+    :param irq:
         IRQ number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to the xspi structure
+    :type dev_id: void \*
 
 .. _`cdns_spi_irq.description`:
 
@@ -244,15 +255,18 @@ cdns_transfer_one
 
     Initiates the SPI transfer
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to spi_master structure
+    :type master: struct spi_master \*
 
-    :param struct spi_device \*spi:
+    :param spi:
         Pointer to the spi_device structure
+    :type spi: struct spi_device \*
 
-    :param struct spi_transfer \*transfer:
+    :param transfer:
         Pointer to the spi_transfer structure which provides
         information about next transfer parameters
+    :type transfer: struct spi_transfer \*
 
 .. _`cdns_transfer_one.description`:
 
@@ -278,9 +292,10 @@ cdns_prepare_transfer_hardware
 
     Prepares hardware for transfer.
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to the spi_master structure which provides
         information about the controller.
+    :type master: struct spi_master \*
 
 .. _`cdns_prepare_transfer_hardware.description`:
 
@@ -305,9 +320,10 @@ cdns_unprepare_transfer_hardware
 
     Relaxes hardware after transfer
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to the spi_master structure which provides
         information about the controller.
+    :type master: struct spi_master \*
 
 .. _`cdns_unprepare_transfer_hardware.description`:
 
@@ -332,8 +348,9 @@ cdns_spi_probe
 
     Probe method for the SPI driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`cdns_spi_probe.description`:
 
@@ -358,8 +375,9 @@ cdns_spi_remove
 
     Remove method for the SPI driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`cdns_spi_remove.description`:
 
@@ -386,8 +404,9 @@ cdns_spi_suspend
 
     Suspend method for the SPI driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the platform_device structure
+    :type dev: struct device \*
 
 .. _`cdns_spi_suspend.description`:
 
@@ -413,8 +432,9 @@ cdns_spi_resume
 
     Resume method for the SPI driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the platform_device structure
+    :type dev: struct device \*
 
 .. _`cdns_spi_resume.description`:
 
@@ -439,8 +459,9 @@ cnds_runtime_resume
 
     Runtime resume method for the SPI driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the platform_device structure
+    :type dev: struct device \*
 
 .. _`cnds_runtime_resume.description`:
 
@@ -465,8 +486,9 @@ cnds_runtime_suspend
 
     Runtime suspend method for the SPI driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the platform_device structure
+    :type dev: struct device \*
 
 .. _`cnds_runtime_suspend.description`:
 

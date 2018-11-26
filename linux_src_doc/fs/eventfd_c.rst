@@ -10,12 +10,14 @@ eventfd_signal
 
     Adds \ ``n``\  to the eventfd counter.
 
-    :param struct eventfd_ctx \*ctx:
+    :param ctx:
         [in] Pointer to the eventfd context.
+    :type ctx: struct eventfd_ctx \*
 
-    :param __u64 n:
+    :param n:
         [in] Value of the counter to be added to the eventfd internal counter.
         The value cannot be negative.
+    :type n: __u64
 
 .. _`eventfd_signal.description`:
 
@@ -39,8 +41,9 @@ eventfd_ctx_put
 
     Releases a reference to the internal eventfd context.
 
-    :param struct eventfd_ctx \*ctx:
+    :param ctx:
         [in] Pointer to eventfd context.
+    :type ctx: struct eventfd_ctx \*
 
 .. _`eventfd_ctx_put.description`:
 
@@ -59,14 +62,17 @@ eventfd_ctx_remove_wait_queue
 
     Read the current counter and removes wait queue.
 
-    :param struct eventfd_ctx \*ctx:
+    :param ctx:
         [in] Pointer to eventfd context.
+    :type ctx: struct eventfd_ctx \*
 
-    :param wait_queue_entry_t \*wait:
+    :param wait:
         [in] Wait queue to be removed.
+    :type wait: wait_queue_entry_t \*
 
-    :param __u64 \*cnt:
+    :param cnt:
         [out] Pointer to the 64-bit counter value.
+    :type cnt: __u64 \*
 
 .. _`eventfd_ctx_remove_wait_queue.description`:
 
@@ -89,8 +95,9 @@ eventfd_fget
 
     Acquire a reference of an eventfd file descriptor.
 
-    :param int fd:
+    :param fd:
         [in] Eventfd file descriptor.
+    :type fd: int
 
 .. _`eventfd_fget.description`:
 
@@ -117,8 +124,9 @@ eventfd_ctx_fdget
 
     Acquires a reference to the internal eventfd context.
 
-    :param int fd:
+    :param fd:
         [in] Eventfd file descriptor.
+    :type fd: int
 
 .. _`eventfd_ctx_fdget.description`:
 
@@ -144,8 +152,9 @@ eventfd_ctx_fileget
 
     Acquires a reference to the internal eventfd context.
 
-    :param struct file \*file:
+    :param file:
         [in] Eventfd file pointer.
+    :type file: struct file \*
 
 .. _`eventfd_ctx_fileget.description`:
 

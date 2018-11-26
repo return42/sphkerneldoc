@@ -10,11 +10,13 @@ dcb_getapp
 
     retrieve the DCBX application user priority
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct dcb_app \*app:
+    :param app:
         *undescribed*
+    :type app: struct dcb_app \*
 
 .. _`dcb_getapp.description`:
 
@@ -34,11 +36,13 @@ dcb_setapp
 
     add CEE dcb application data to app list
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct dcb_app \*new:
+    :param new:
         *undescribed*
+    :type new: struct dcb_app \*
 
 .. _`dcb_setapp.description`:
 
@@ -58,11 +62,13 @@ dcb_ieee_getapp_mask
 
     retrieve the IEEE DCB application priority
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct dcb_app \*app:
+    :param app:
         *undescribed*
+    :type app: struct dcb_app \*
 
 .. _`dcb_ieee_getapp_mask.description`:
 
@@ -82,11 +88,13 @@ dcb_ieee_setapp
 
     add IEEE dcb application data to app list
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct dcb_app \*new:
+    :param new:
         *undescribed*
+    :type new: struct dcb_app \*
 
 .. _`dcb_ieee_setapp.description`:
 
@@ -107,11 +115,13 @@ dcb_ieee_delapp
 
     delete IEEE dcb application data from list
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct dcb_app \*del:
+    :param del:
         *undescribed*
+    :type del: struct dcb_app \*
 
 .. _`dcb_ieee_delapp.description`:
 
@@ -119,6 +129,65 @@ Description
 -----------
 
 This removes a matching APP data from the APP list
+
+.. _`dcb_ieee_getapp_prio_dscp_mask_map`:
+
+dcb_ieee_getapp_prio_dscp_mask_map
+==================================
+
+.. c:function:: void dcb_ieee_getapp_prio_dscp_mask_map(const struct net_device *dev, struct dcb_ieee_app_prio_map *p_map)
+
+    For a given device, find mapping from priorities to the DSCP values assigned to that priority. Initialize p_map such that each map element holds a bit mask of DSCP values configured for that priority by APP entries.
+
+    :param dev:
+        *undescribed*
+    :type dev: const struct net_device \*
+
+    :param p_map:
+        *undescribed*
+    :type p_map: struct dcb_ieee_app_prio_map \*
+
+.. _`dcb_ieee_getapp_dscp_prio_mask_map`:
+
+dcb_ieee_getapp_dscp_prio_mask_map
+==================================
+
+.. c:function:: void dcb_ieee_getapp_dscp_prio_mask_map(const struct net_device *dev, struct dcb_ieee_app_dscp_map *p_map)
+
+    For a given device, find mapping from DSCP values to the priorities assigned to that DSCP value. Initialize p_map such that each map element holds a bit mask of priorities configured for a given DSCP value by APP entries.
+
+    :param dev:
+        *undescribed*
+    :type dev: const struct net_device \*
+
+    :param p_map:
+        *undescribed*
+    :type p_map: struct dcb_ieee_app_dscp_map \*
+
+.. _`dcb_ieee_getapp_default_prio_mask`:
+
+dcb_ieee_getapp_default_prio_mask
+=================================
+
+.. c:function:: u8 dcb_ieee_getapp_default_prio_mask(const struct net_device *dev)
+
+    2014, the selector value of 1 is used for matching on Ethernet type, with valid PID values >= 1536. A special meaning is then assigned to
+
+    :param dev:
+        *undescribed*
+    :type dev: const struct net_device \*
+
+.. _`dcb_ieee_getapp_default_prio_mask.protocol-value-of-0`:
+
+protocol value of 0
+-------------------
+
+"default priority. For use when priority is not
+otherwise specified".
+
+dcb_ieee_getapp_default_prio_mask - For a given device, find all APP entries
+of the form {$PRIO, ETHERTYPE, 0} and construct a bit mask of all default
+priorities set by these entries.
 
 .. This file was automatic generated / don't edit.
 

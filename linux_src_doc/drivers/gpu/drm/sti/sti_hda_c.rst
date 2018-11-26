@@ -8,11 +8,13 @@ hda_get_mode_idx
 
 .. c:function:: bool hda_get_mode_idx(struct drm_display_mode mode, int *idx)
 
-    :param struct drm_display_mode mode:
+    :param mode:
         mode being searched
+    :type mode: struct drm_display_mode
 
-    :param int \*idx:
+    :param idx:
         index of the found mode
+    :type idx: int \*
 
 .. _`hda_get_mode_idx.description`:
 
@@ -28,11 +30,13 @@ hda_enable_hd_dacs
 
 .. c:function:: void hda_enable_hd_dacs(struct sti_hda *hda, bool enable)
 
-    :param struct sti_hda \*hda:
+    :param hda:
         pointer to HD analog structure
+    :type hda: struct sti_hda \*
 
-    :param bool enable:
+    :param enable:
         true if HD DACS need to be enabled, else false
+    :type enable: bool
 
 .. _`sti_hda_configure_awg`:
 
@@ -41,14 +45,17 @@ sti_hda_configure_awg
 
 .. c:function:: void sti_hda_configure_awg(struct sti_hda *hda, u32 *awg_instr, int nb)
 
-    :param struct sti_hda \*hda:
+    :param hda:
         pointer to HD analog structure
+    :type hda: struct sti_hda \*
 
-    :param u32 \*awg_instr:
+    :param awg_instr:
         pointer to AWG instructions table
+    :type awg_instr: u32 \*
 
-    :param int nb:
+    :param nb:
         nb of AWG instructions
+    :type nb: int
 
 .. This file was automatic generated / don't edit.
 

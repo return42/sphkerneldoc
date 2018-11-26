@@ -10,8 +10,9 @@ bnx2fc_send_fw_fcoe_init_msg
 
     initiates initial handshake with FCoE f/w
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2fc_hba \*
 
 .. _`bnx2fc_send_fw_fcoe_init_msg.description`:
 
@@ -30,11 +31,13 @@ bnx2fc_send_session_ofld_req
 
     initiates FCoE Session offload process
 
-    :param struct fcoe_port \*port:
+    :param port:
         port structure pointer
+    :type port: struct fcoe_port \*
 
-    :param struct bnx2fc_rport \*tgt:
+    :param tgt:
         bnx2fc_rport structure pointer
+    :type tgt: struct bnx2fc_rport \*
 
 .. _`bnx2fc_send_session_enable_req`:
 
@@ -45,11 +48,13 @@ bnx2fc_send_session_enable_req
 
     initiates FCoE Session enablement
 
-    :param struct fcoe_port \*port:
+    :param port:
         port structure pointer
+    :type port: struct fcoe_port \*
 
-    :param struct bnx2fc_rport \*tgt:
+    :param tgt:
         bnx2fc_rport structure pointer
+    :type tgt: struct bnx2fc_rport \*
 
 .. _`bnx2fc_send_session_disable_req`:
 
@@ -60,11 +65,13 @@ bnx2fc_send_session_disable_req
 
     initiates FCoE Session disable
 
-    :param struct fcoe_port \*port:
+    :param port:
         port structure pointer
+    :type port: struct fcoe_port \*
 
-    :param struct bnx2fc_rport \*tgt:
+    :param tgt:
         bnx2fc_rport structure pointer
+    :type tgt: struct bnx2fc_rport \*
 
 .. _`bnx2fc_send_session_destroy_req`:
 
@@ -75,11 +82,13 @@ bnx2fc_send_session_destroy_req
 
     initiates FCoE Session destroy
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         *undescribed*
+    :type hba: struct bnx2fc_hba \*
 
-    :param struct bnx2fc_rport \*tgt:
+    :param tgt:
         bnx2fc_rport structure pointer
+    :type tgt: struct bnx2fc_rport \*
 
 .. _`bnx2fc_fastpath_notification`:
 
@@ -90,11 +99,13 @@ bnx2fc_fastpath_notification
 
     process global event queue (KCQ)
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2fc_hba \*
 
-    :param struct fcoe_kcqe \*new_cqe_kcqe:
+    :param new_cqe_kcqe:
         pointer to newly DMA'd KCQ entry
+    :type new_cqe_kcqe: struct fcoe_kcqe \*
 
 .. _`bnx2fc_fastpath_notification.description`:
 
@@ -112,11 +123,13 @@ bnx2fc_process_ofld_cmpl
 
     process FCoE session offload completion
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2fc_hba \*
 
-    :param struct fcoe_kcqe \*ofld_kcqe:
+    :param ofld_kcqe:
         connection offload kcqe pointer
+    :type ofld_kcqe: struct fcoe_kcqe \*
 
 .. _`bnx2fc_process_ofld_cmpl.description`:
 
@@ -135,11 +148,13 @@ bnx2fc_process_enable_conn_cmpl
 
     process FCoE session enable completion
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2fc_hba \*
 
-    :param struct fcoe_kcqe \*ofld_kcqe:
+    :param ofld_kcqe:
         connection offload kcqe pointer
+    :type ofld_kcqe: struct fcoe_kcqe \*
 
 .. _`bnx2fc_process_enable_conn_cmpl.description`:
 
@@ -157,14 +172,17 @@ bnx2fc_indicate_kcqe
 
     process KCQE
 
-    :param void \*context:
+    :param context:
         *undescribed*
+    :type context: void \*
 
-    :param struct kcqe  \*kcq:
+    :param kcq:
         *undescribed*
+    :type kcq: struct kcqe  \*
 
-    :param u32 num_cqe:
+    :param num_cqe:
         Number of completion queue elements
+    :type num_cqe: u32
 
 .. _`bnx2fc_indicate_kcqe.description`:
 
@@ -182,8 +200,9 @@ bnx2fc_setup_task_ctx
 
     allocate and map task context
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         pointer to adapter structure
+    :type hba: struct bnx2fc_hba \*
 
 .. _`bnx2fc_setup_task_ctx.description`:
 
@@ -202,8 +221,9 @@ bnx2fc_setup_fw_resc
 
     Allocate and map hash table and dummy buffer
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         Pointer to adapter structure
+    :type hba: struct bnx2fc_hba \*
 
 .. This file was automatic generated / don't edit.
 

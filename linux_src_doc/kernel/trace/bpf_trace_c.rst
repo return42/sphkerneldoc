@@ -10,11 +10,13 @@ trace_call_bpf
 
     invoke BPF program
 
-    :param struct trace_event_call \*call:
+    :param call:
         tracepoint event
+    :type call: struct trace_event_call \*
 
-    :param void \*ctx:
+    :param ctx:
         opaque context pointer
+    :type ctx: void \*
 
 .. _`trace_call_bpf.description`:
 

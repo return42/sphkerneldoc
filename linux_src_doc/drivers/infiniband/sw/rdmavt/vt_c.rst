@@ -10,11 +10,13 @@ rvt_alloc_device
 
     allocate rdi
 
-    :param size_t size:
+    :param size:
         how big of a structure to allocate
+    :type size: size_t
 
-    :param int nports:
+    :param nports:
         number of ports to allocate array slots for
+    :type nports: int
 
 .. _`rvt_alloc_device.description`:
 
@@ -43,8 +45,9 @@ rvt_dealloc_device
 
     deallocate rdi
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         structure to free
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_dealloc_device.description`:
 
@@ -62,14 +65,17 @@ rvt_query_port
 
     Passes the query port call to the driver
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         Verbs IB dev
+    :type ibdev: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         port number, 1 based from ib core
+    :type port_num: u8
 
-    :param struct ib_port_attr \*props:
+    :param props:
         structure to hold returned properties
+    :type props: struct ib_port_attr \*
 
 .. _`rvt_query_port.return`:
 
@@ -85,17 +91,21 @@ rvt_modify_port
 
 .. c:function:: int rvt_modify_port(struct ib_device *ibdev, u8 port_num, int port_modify_mask, struct ib_port_modify *props)
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         Verbs IB dev
+    :type ibdev: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         Port number, 1 based from ib core
+    :type port_num: u8
 
-    :param int port_modify_mask:
+    :param port_modify_mask:
         How to change the port
+    :type port_modify_mask: int
 
-    :param struct ib_port_modify \*props:
+    :param props:
         Structure to fill in
+    :type props: struct ib_port_modify \*
 
 .. _`rvt_modify_port.return`:
 
@@ -113,17 +123,21 @@ rvt_query_pkey
 
     Return a pkey from the table at a given index
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         Verbs IB dev
+    :type ibdev: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         Port number, 1 based from ib core
+    :type port_num: u8
 
-    :param u16 index:
+    :param index:
         Index into pkey table
+    :type index: u16
 
-    :param u16 \*pkey:
+    :param pkey:
         returned pkey from the port pkey table
+    :type pkey: u16 \*
 
 .. _`rvt_query_pkey.return`:
 
@@ -141,17 +155,21 @@ rvt_query_gid
 
     Return a gid from the table
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         Verbs IB dev
+    :type ibdev: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         Port number, 1 based from ib core
+    :type port_num: u8
 
-    :param int guid_index:
+    :param guid_index:
         Index in table
+    :type guid_index: int
 
-    :param union ib_gid \*gid:
+    :param gid:
         Gid to return
+    :type gid: union ib_gid \*
 
 .. _`rvt_query_gid.return`:
 
@@ -169,11 +187,13 @@ rvt_alloc_ucontext
 
     Allocate a user context
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         Verbs IB dev
+    :type ibdev: struct ib_device \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         User data allocated
+    :type udata: struct ib_udata \*
 
 .. _`rvt_dealloc_ucontext`:
 
@@ -184,8 +204,9 @@ rvt_dealloc_ucontext
 
     Free a user context \ ``context``\  - Free this
 
-    :param struct ib_ucontext \*context:
+    :param context:
         *undescribed*
+    :type context: struct ib_ucontext \*
 
 .. _`rvt_register_device`:
 
@@ -196,11 +217,13 @@ rvt_register_device
 
     register a driver
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         main dev structure for all of rdmavt operations
+    :type rdi: struct rvt_dev_info \*
 
-    :param u32 driver_id:
+    :param driver_id:
         *undescribed*
+    :type driver_id: u32
 
 .. _`rvt_register_device.description`:
 
@@ -226,8 +249,9 @@ rvt_unregister_device
 
     remove a driver
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev struct
+    :type rdi: struct rvt_dev_info \*
 
 .. _`rvt_init_port`:
 
@@ -238,17 +262,21 @@ rvt_init_port
 
     init internal data for driver port
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         rvt dev strut
+    :type rdi: struct rvt_dev_info \*
 
-    :param struct rvt_ibport \*port:
+    :param port:
         rvt port
+    :type port: struct rvt_ibport \*
 
-    :param int port_index:
+    :param port_index:
         0 based index of ports, different from IB core port num
+    :type port_index: int
 
-    :param u16 \*pkey_table:
+    :param pkey_table:
         *undescribed*
+    :type pkey_table: u16 \*
 
 .. _`rvt_init_port.description`:
 

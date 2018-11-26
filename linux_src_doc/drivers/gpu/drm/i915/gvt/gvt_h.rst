@@ -10,11 +10,13 @@ intel_gvt_mmio_set_accessed
 
     mark a MMIO has been accessed
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset
+    :type offset: unsigned int
 
 .. _`intel_gvt_mmio_is_cmd_access`:
 
@@ -25,11 +27,13 @@ intel_gvt_mmio_is_cmd_access
 
     mark a MMIO could be accessed by command
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset
+    :type offset: unsigned int
 
 .. _`intel_gvt_mmio_is_unalign`:
 
@@ -40,11 +44,13 @@ intel_gvt_mmio_is_unalign
 
     mark a MMIO could be accessed unaligned
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset
+    :type offset: unsigned int
 
 .. _`intel_gvt_mmio_set_cmd_accessed`:
 
@@ -55,11 +61,13 @@ intel_gvt_mmio_set_cmd_accessed
 
     mark a MMIO has been accessed by command
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset
+    :type offset: unsigned int
 
 .. _`intel_gvt_mmio_has_mode_mask`:
 
@@ -70,11 +78,13 @@ intel_gvt_mmio_has_mode_mask
 
     if a MMIO has a mode mask
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset
+    :type offset: unsigned int
 
 .. _`intel_gvt_mmio_has_mode_mask.return`:
 
@@ -92,11 +102,13 @@ intel_gvt_mmio_is_in_ctx
 
     check if a MMIO has in-ctx mask
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset
+    :type offset: unsigned int
 
 .. _`intel_gvt_mmio_is_in_ctx.return`:
 
@@ -114,11 +126,13 @@ intel_gvt_mmio_set_in_ctx
 
     mask a MMIO in logical context
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset
+    :type offset: unsigned int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ efi_memmap_alloc
 
     Allocate memory for the EFI memory map
 
-    :param unsigned int num_entries:
+    :param num_entries:
         Number of entries in the allocated map.
+    :type num_entries: unsigned int
 
 .. _`efi_memmap_alloc.description`:
 
@@ -33,11 +34,13 @@ success, zero on failure.
 
     Common code for mapping the EFI memory map
 
-    :param struct efi_memory_map_data \*data:
+    :param data:
         EFI memory map data
+    :type data: struct efi_memory_map_data \*
 
-    :param bool late:
+    :param late:
         Use early or late mapping function?
+    :type late: bool
 
 .. _`__efi_memmap_init.description`:
 
@@ -64,8 +67,9 @@ efi_memmap_init_early
 
     Map the EFI memory map data structure
 
-    :param struct efi_memory_map_data \*data:
+    :param data:
         EFI memory map data
+    :type data: struct efi_memory_map_data \*
 
 .. _`efi_memmap_init_early.description`:
 
@@ -84,11 +88,13 @@ efi_memmap_init_late
 
     Map efi.memmap with \ :c:func:`memremap`\ 
 
-    :param phys_addr_t addr:
+    :param addr:
         *undescribed*
+    :type addr: phys_addr_t
 
-    :param unsigned long size:
+    :param size:
         Size in bytes of the new EFI memory map
+    :type size: unsigned long
 
 .. _`efi_memmap_init_late.description`:
 
@@ -122,11 +128,13 @@ efi_memmap_install
 
     Install a new EFI memory map in efi.memmap
 
-    :param phys_addr_t addr:
+    :param addr:
         Physical address of the memory map
+    :type addr: phys_addr_t
 
-    :param unsigned int nr_map:
+    :param nr_map:
         Number of entries in the memory map
+    :type nr_map: unsigned int
 
 .. _`efi_memmap_install.description`:
 
@@ -148,11 +156,13 @@ efi_memmap_split_count
 
     Count number of additional EFI memmap entries
 
-    :param efi_memory_desc_t \*md:
+    :param md:
         EFI memory descriptor to split
+    :type md: efi_memory_desc_t \*
 
-    :param struct range \*range:
+    :param range:
         Address range (start, end) to split around
+    :type range: struct range \*
 
 .. _`efi_memmap_split_count.description`:
 
@@ -171,14 +181,17 @@ efi_memmap_insert
 
     Insert a memory region in an EFI memmap
 
-    :param struct efi_memory_map \*old_memmap:
+    :param old_memmap:
         The existing EFI memory map structure
+    :type old_memmap: struct efi_memory_map \*
 
-    :param void \*buf:
+    :param buf:
         Address of buffer to store new map
+    :type buf: void \*
 
-    :param struct efi_mem_range \*mem:
+    :param mem:
         Memory map entry to insert
+    :type mem: struct efi_mem_range \*
 
 .. _`efi_memmap_insert.description`:
 

@@ -10,11 +10,13 @@ dio_match_device
 
     Tell if a DIO device structure has a matching DIO device id structure
 
-    :param const struct dio_device_id \*ids:
+    :param ids:
         array of DIO device id structures to search in
+    :type ids: const struct dio_device_id \*
 
-    :param const struct dio_dev \*d:
+    :param d:
         the DIO device structure to match against
+    :type d: const struct dio_dev \*
 
 .. _`dio_match_device.description`:
 
@@ -34,8 +36,9 @@ dio_register_driver
 
     register a new DIO driver
 
-    :param struct dio_driver \*drv:
+    :param drv:
         the driver structure to register
+    :type drv: struct dio_driver \*
 
 .. _`dio_register_driver.description`:
 
@@ -54,8 +57,9 @@ dio_unregister_driver
 
     unregister a DIO driver
 
-    :param struct dio_driver \*drv:
+    :param drv:
         the driver structure to unregister
+    :type drv: struct dio_driver \*
 
 .. _`dio_unregister_driver.description`:
 
@@ -76,11 +80,13 @@ dio_bus_match
 
     Tell if a DIO device structure has a matching DIO device id structure
 
-    :param struct device \*dev:
+    :param dev:
         the DIO device structure to match against
+    :type dev: struct device \*
 
-    :param struct device_driver \*drv:
+    :param drv:
         the \ :c:type:`struct device_driver <device_driver>`\  that points to the array of DIO device id structures to search
+    :type drv: struct device_driver \*
 
 .. _`dio_bus_match.description`:
 

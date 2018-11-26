@@ -10,11 +10,13 @@ snd_hda_codec_set_name
 
     set the codec name
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const char \*name:
+    :param name:
         name string to set
+    :type name: const char \*
 
 .. _`snd_hda_codec_configure`:
 
@@ -25,8 +27,9 @@ snd_hda_codec_configure
 
     (Re-)configure the HD-audio codec
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_codec_configure.description`:
 

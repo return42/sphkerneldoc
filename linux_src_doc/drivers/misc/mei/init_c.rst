@@ -10,14 +10,17 @@ mei_fw_status2str
 
     convert fw status registers to printable string
 
-    :param struct mei_fw_status \*fw_status:
+    :param fw_status:
         firmware status
+    :type fw_status: struct mei_fw_status \*
 
-    :param char \*buf:
+    :param buf:
         string buffer at minimal size MEI_FW_STATUS_STR_SZ
+    :type buf: char \*
 
-    :param size_t len:
+    :param len:
         buffer len must be >= MEI_FW_STATUS_STR_SZ
+    :type len: size_t
 
 .. _`mei_fw_status2str.return`:
 
@@ -35,8 +38,9 @@ mei_cancel_work
 
     Cancel mei background jobs
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_reset`:
 
@@ -47,8 +51,9 @@ mei_reset
 
     resets host and fw.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_reset.return`:
 
@@ -66,8 +71,9 @@ mei_start
 
     initializes host and fw to start work.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_start.return`:
 
@@ -85,8 +91,9 @@ mei_restart
 
     restart device after suspend
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_restart.return`:
 
@@ -104,8 +111,9 @@ mei_write_is_idle
 
     check if the write queues are idle
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_write_is_idle.return`:
 
@@ -123,14 +131,17 @@ mei_device_init
 
     - initialize mei_device structure
 
-    :param struct mei_device \*dev:
+    :param dev:
         the mei device
+    :type dev: struct mei_device \*
 
-    :param struct device \*device:
+    :param device:
         the device structure
+    :type device: struct device \*
 
-    :param const struct mei_hw_ops \*hw_ops:
+    :param hw_ops:
         hw operations
+    :type hw_ops: const struct mei_hw_ops \*
 
 .. This file was automatic generated / don't edit.
 

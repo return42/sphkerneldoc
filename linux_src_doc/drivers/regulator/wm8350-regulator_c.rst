@@ -10,20 +10,25 @@ wm8350_register_led
 
     Register a WM8350 LED output
 
-    :param struct wm8350 \*wm8350:
+    :param wm8350:
         *undescribed*
+    :type wm8350: struct wm8350 \*
 
-    :param int lednum:
+    :param lednum:
         *undescribed*
+    :type lednum: int
 
-    :param int dcdc:
+    :param dcdc:
         *undescribed*
+    :type dcdc: int
 
-    :param int isink:
+    :param isink:
         *undescribed*
+    :type isink: int
 
-    :param struct wm8350_led_platform_data \*pdata:
+    :param pdata:
         *undescribed*
+    :type pdata: struct wm8350_led_platform_data \*
 
 .. _`wm8350_register_led.description`:
 

@@ -119,8 +119,9 @@ umc_driver_register
 
     register a UMC capabiltity driver.
 
-    :param  umc_drv:
+    :param umc_drv:
         pointer to the driver.
+    :type umc_drv: 
 
 .. _`umc_parent_pci_dev`:
 
@@ -131,8 +132,9 @@ umc_parent_pci_dev
 
     return the UMC's parent PCI device or NULL if none
 
-    :param struct umc_dev \*umc_dev:
+    :param umc_dev:
         UMC device whose parent PCI device we are looking for
+    :type umc_dev: struct umc_dev \*
 
 .. _`umc_parent_pci_dev.description`:
 
@@ -166,8 +168,9 @@ umc_dev_get
 
     reference a UMC device.
 
-    :param struct umc_dev \*umc_dev:
+    :param umc_dev:
         Pointer to UMC device.
+    :type umc_dev: struct umc_dev \*
 
 .. _`umc_dev_get.note`:
 
@@ -187,8 +190,9 @@ umc_dev_put
 
     unreference a UMC device.
 
-    :param struct umc_dev \*umc_dev:
+    :param umc_dev:
         Pointer to UMC device.
+    :type umc_dev: struct umc_dev \*
 
 .. _`umc_set_drvdata`:
 
@@ -199,11 +203,13 @@ umc_set_drvdata
 
     set UMC device's driver data.
 
-    :param struct umc_dev \*umc_dev:
+    :param umc_dev:
         Pointer to UMC device.
+    :type umc_dev: struct umc_dev \*
 
-    :param void \*data:
+    :param data:
         Data to set.
+    :type data: void \*
 
 .. _`umc_get_drvdata`:
 
@@ -214,8 +220,9 @@ umc_get_drvdata
 
     recover UMC device's driver data.
 
-    :param struct umc_dev \*umc_dev:
+    :param umc_dev:
         Pointer to UMC device.
+    :type umc_dev: struct umc_dev \*
 
 .. This file was automatic generated / don't edit.
 

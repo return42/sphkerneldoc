@@ -1,19 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/crypto/cavium/nitrox/nitrox_reqmgr.c
 
-.. _`softreq_unmap_sgbufs`:
+.. _`incr_index`:
 
-softreq_unmap_sgbufs
-====================
+incr_index
+==========
 
-.. c:function:: void softreq_unmap_sgbufs(struct nitrox_softreq *sr)
+.. c:function:: int incr_index(int index, int count, int max)
 
     0x00 - Success Completion with no error 0x43 - ERR_GC_DATA_LEN_INVALID Invalid Data length if Encryption Data length is less than 16 bytes for AES-XTS and AES-CTS. 0x45 - ERR_GC_CTX_LEN_INVALID
 
-    :param struct nitrox_softreq \*sr:
+    :param index:
         *undescribed*
+    :type index: int
 
-.. _`softreq_unmap_sgbufs.invalid-context-length`:
+    :param count:
+        *undescribed*
+    :type count: int
+
+    :param max:
+        *undescribed*
+    :type max: int
+
+.. _`incr_index.invalid-context-length`:
 
 Invalid context length
 ----------------------
@@ -32,6 +41,19 @@ CRC32 is enabled for other than DOCSIS encryption.
 0x52 - ERR_GC_AES_CCM_FLAG_INVALID
 Invalid flag options in AES-CCM IV.
 
+.. _`softreq_unmap_sgbufs`:
+
+softreq_unmap_sgbufs
+====================
+
+.. c:function:: void softreq_unmap_sgbufs(struct nitrox_softreq *sr)
+
+    unmap and free the sg lists.
+
+    :param sr:
+        *undescribed*
+    :type sr: struct nitrox_softreq \*
+
 .. _`create_sg_component`:
 
 create_sg_component
@@ -41,14 +63,17 @@ create_sg_component
 
     create SG componets for N5 device.
 
-    :param struct nitrox_softreq \*sr:
+    :param sr:
         Request structure
+    :type sr: struct nitrox_softreq \*
 
-    :param struct nitrox_sgtable \*sgtbl:
+    :param sgtbl:
         SG table
+    :type sgtbl: struct nitrox_sgtable \*
 
-    :param int map_nents:
+    :param map_nents:
         *undescribed*
+    :type map_nents: int
 
 .. _`create_sg_component.description`:
 
@@ -81,11 +106,13 @@ dma_map_inbufs
 
     DMA map input sglist and creates sglist component for N5 device.
 
-    :param struct nitrox_softreq \*sr:
+    :param sr:
         Request structure
+    :type sr: struct nitrox_softreq \*
 
-    :param struct se_crypto_request \*req:
+    :param req:
         Crypto request structre
+    :type req: struct se_crypto_request \*
 
 .. _`dma_map_inbufs.description`:
 
@@ -103,11 +130,13 @@ post_se_instr
 
     Post SE instruction to Packet Input ring
 
-    :param struct nitrox_softreq \*sr:
+    :param sr:
         Request structure
+    :type sr: struct nitrox_softreq \*
 
-    :param struct nitrox_cmdq \*cmdq:
+    :param cmdq:
         *undescribed*
+    :type cmdq: struct nitrox_cmdq \*
 
 .. _`post_se_instr.description`:
 
@@ -126,17 +155,21 @@ nitrox_process_se_request
 
     Send request to SE core
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         NITROX device
+    :type ndev: struct nitrox_device \*
 
-    :param struct se_crypto_request \*req:
+    :param req:
         Crypto request
+    :type req: struct se_crypto_request \*
 
-    :param completion_t callback:
+    :param callback:
         *undescribed*
+    :type callback: completion_t
 
-    :param struct skcipher_request \*skreq:
+    :param skreq:
         *undescribed*
+    :type skreq: struct skcipher_request \*
 
 .. _`nitrox_process_se_request.description`:
 
@@ -154,8 +187,9 @@ process_response_list
 
     process completed requests
 
-    :param struct nitrox_cmdq \*cmdq:
+    :param cmdq:
         *undescribed*
+    :type cmdq: struct nitrox_cmdq \*
 
 .. _`process_response_list.description`:
 
@@ -164,17 +198,18 @@ Description
 
 Returns the number of responses processed.
 
-.. _`pkt_slc_resp_handler`:
+.. _`pkt_slc_resp_tasklet`:
 
-pkt_slc_resp_handler
+pkt_slc_resp_tasklet
 ====================
 
-.. c:function:: void pkt_slc_resp_handler(unsigned long data)
+.. c:function:: void pkt_slc_resp_tasklet(unsigned long data)
 
     post processing of SE responses
 
-    :param unsigned long data:
+    :param data:
         *undescribed*
+    :type data: unsigned long
 
 .. This file was automatic generated / don't edit.
 

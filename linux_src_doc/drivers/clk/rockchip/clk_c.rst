@@ -10,56 +10,73 @@ rockchip_clk_register_branch
 
     Most clock branches have a form like
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param const char \*const \*parent_names:
+    :param parent_names:
         *undescribed*
+    :type parent_names: const char \*const \*
 
-    :param u8 num_parents:
+    :param num_parents:
         *undescribed*
+    :type num_parents: u8
 
-    :param void __iomem \*base:
+    :param base:
         *undescribed*
+    :type base: void __iomem \*
 
-    :param int muxdiv_offset:
+    :param muxdiv_offset:
         *undescribed*
+    :type muxdiv_offset: int
 
-    :param u8 mux_shift:
+    :param mux_shift:
         *undescribed*
+    :type mux_shift: u8
 
-    :param u8 mux_width:
+    :param mux_width:
         *undescribed*
+    :type mux_width: u8
 
-    :param u8 mux_flags:
+    :param mux_flags:
         *undescribed*
+    :type mux_flags: u8
 
-    :param u8 div_shift:
+    :param div_shift:
         *undescribed*
+    :type div_shift: u8
 
-    :param u8 div_width:
+    :param div_width:
         *undescribed*
+    :type div_width: u8
 
-    :param u8 div_flags:
+    :param div_flags:
         *undescribed*
+    :type div_flags: u8
 
-    :param struct clk_div_table \*div_table:
+    :param div_table:
         *undescribed*
+    :type div_table: struct clk_div_table \*
 
-    :param int gate_offset:
+    :param gate_offset:
         *undescribed*
+    :type gate_offset: int
 
-    :param u8 gate_shift:
+    :param gate_shift:
         *undescribed*
+    :type gate_shift: u8
 
-    :param u8 gate_flags:
+    :param gate_flags:
         *undescribed*
+    :type gate_flags: u8
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
-    :param spinlock_t \*lock:
+    :param lock:
         *undescribed*
+    :type lock: spinlock_t \*
 
 .. _`rockchip_clk_register_branch.description`:
 
@@ -81,20 +98,25 @@ rockchip_fractional_approximation
 
     numerator to generate precise clock frequency.
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
-    :param unsigned long rate:
+    :param rate:
         *undescribed*
+    :type rate: unsigned long
 
-    :param unsigned long \*parent_rate:
+    :param parent_rate:
         *undescribed*
+    :type parent_rate: unsigned long \*
 
-    :param unsigned long \*m:
+    :param m:
         *undescribed*
+    :type m: unsigned long \*
 
-    :param unsigned long \*n:
+    :param n:
         *undescribed*
+    :type n: unsigned long \*
 
 .. This file was automatic generated / don't edit.
 

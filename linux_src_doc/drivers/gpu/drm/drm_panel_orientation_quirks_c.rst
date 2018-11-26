@@ -10,11 +10,13 @@ drm_get_panel_orientation_quirk
 
     Check for panel orientation quirks
 
-    :param int width:
+    :param width:
         width in pixels of the panel
+    :type width: int
 
-    :param int height:
+    :param height:
         height in pixels of the panel
+    :type height: int
 
 .. _`drm_get_panel_orientation_quirk.description`:
 

@@ -10,8 +10,9 @@ isa_bridge_find_early
 
     Find and map the ISA IO space early before main PCI discovery. This is optionally called by the arch code when adding PCI PHBs to get early access to ISA IO ports
 
-    :param struct pci_controller \*hose:
+    :param hose:
         *undescribed*
+    :type hose: struct pci_controller \*
 
 .. _`isa_bridge_init_non_pci`:
 
@@ -22,8 +23,9 @@ isa_bridge_init_non_pci
 
     Find and map the ISA IO space early before main PCI discovery. This is optionally called by the arch code when adding PCI PHBs to get early access to ISA IO ports
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
 .. _`isa_bridge_find_late`:
 
@@ -34,11 +36,13 @@ isa_bridge_find_late
 
     Find and map the ISA IO space upon discovery of a new ISA bridge
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param struct device_node \*devnode:
+    :param devnode:
         *undescribed*
+    :type devnode: struct device_node \*
 
 .. _`isa_bridge_remove`:
 
@@ -49,8 +53,9 @@ isa_bridge_remove
 
     Remove/unmap an ISA bridge
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`isa_bridge_notify`:
 
@@ -61,14 +66,17 @@ isa_bridge_notify
 
     Get notified of PCI devices addition/removal
 
-    :param struct notifier_block \*nb:
+    :param nb:
         *undescribed*
+    :type nb: struct notifier_block \*
 
-    :param unsigned long action:
+    :param action:
         *undescribed*
+    :type action: unsigned long
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`isa_bridge_init`:
 
@@ -79,8 +87,9 @@ isa_bridge_init
 
     register to be notified of ISA bridge addition/removal
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

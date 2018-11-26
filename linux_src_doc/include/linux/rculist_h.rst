@@ -10,11 +10,13 @@ list_add_rcu
 
     add a new entry to rcu-protected list
 
-    :param struct list_head \*new:
+    :param new:
         new entry to be added
+    :type new: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         list head to add it after
+    :type head: struct list_head \*
 
 .. _`list_add_rcu.description`:
 
@@ -41,11 +43,13 @@ list_add_tail_rcu
 
     add a new entry to rcu-protected list
 
-    :param struct list_head \*new:
+    :param new:
         new entry to be added
+    :type new: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         list head to add it before
+    :type head: struct list_head \*
 
 .. _`list_add_tail_rcu.description`:
 
@@ -72,8 +76,9 @@ list_del_rcu
 
     deletes entry from list without re-initialization
 
-    :param struct list_head \*entry:
+    :param entry:
         the element to delete from the list.
+    :type entry: struct list_head \*
 
 .. _`list_del_rcu.note`:
 
@@ -109,8 +114,9 @@ hlist_del_init_rcu
 
     deletes entry from hash list with re-initialization
 
-    :param struct hlist_node \*n:
+    :param n:
         the element to delete from the hash list.
+    :type n: struct hlist_node \*
 
 .. _`hlist_del_init_rcu.note`:
 
@@ -142,11 +148,13 @@ list_replace_rcu
 
     replace old entry by new one
 
-    :param struct list_head \*old:
+    :param old:
         the element to be replaced
+    :type old: struct list_head \*
 
-    :param struct list_head \*new:
+    :param new:
         the new element to insert
+    :type new: struct list_head \*
 
 .. _`list_replace_rcu.description`:
 
@@ -171,17 +179,20 @@ __list_splice_init_rcu
 
     join an RCU-protected list into an existing list.
 
-    :param struct list_head \*list:
+    :param list:
         the RCU-protected list to splice
+    :type list: struct list_head \*
 
-    :param struct list_head \*prev:
+    :param prev:
         points to the last element of the existing list
+    :type prev: struct list_head \*
 
-    :param struct list_head \*next:
+    :param next:
         points to the first element of the existing list
+    :type next: struct list_head \*
 
     :param void (\*sync)(void):
-        function to sync: \ :c:func:`synchronize_rcu`\ , \ :c:func:`synchronize_sched`\ , ...
+        synchronize_rcu, synchronize_rcu_expedited, ...
 
 .. _`__list_splice_init_rcu.description`:
 
@@ -209,14 +220,16 @@ list_splice_init_rcu
 
     splice an RCU-protected list into an existing list, designed for stacks.
 
-    :param struct list_head \*list:
+    :param list:
         the RCU-protected list to splice
+    :type list: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         the place in the existing list to splice the first list into
+    :type head: struct list_head \*
 
     :param void (\*sync)(void):
-        function to sync: \ :c:func:`synchronize_rcu`\ , \ :c:func:`synchronize_sched`\ , ...
+        synchronize_rcu, synchronize_rcu_expedited, ...
 
 .. _`list_splice_tail_init_rcu`:
 
@@ -227,14 +240,16 @@ list_splice_tail_init_rcu
 
     splice an RCU-protected list into an existing list, designed for queues.
 
-    :param struct list_head \*list:
+    :param list:
         the RCU-protected list to splice
+    :type list: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         the place in the existing list to splice the first list into
+    :type head: struct list_head \*
 
     :param void (\*sync)(void):
-        function to sync: \ :c:func:`synchronize_rcu`\ , \ :c:func:`synchronize_sched`\ , ...
+        synchronize_rcu, synchronize_rcu_expedited, ...
 
 .. _`list_entry_rcu`:
 
@@ -245,14 +260,17 @@ list_entry_rcu
 
     get the struct for this entry
 
-    :param  ptr:
+    :param ptr:
         the \ :c:type:`struct list_head <list_head>`\  pointer.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_entry_rcu.description`:
 
@@ -271,14 +289,17 @@ list_first_or_null_rcu
 
     get the first element from a list
 
-    :param  ptr:
+    :param ptr:
         the list head to take the element from.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_first_or_null_rcu.description`:
 
@@ -299,17 +320,21 @@ list_next_or_null_rcu
 
     get the first element from a list
 
-    :param  head:
+    :param head:
         the head for the list.
+    :type head: 
 
-    :param  ptr:
+    :param ptr:
         the list head to take the next element from.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_next_or_null_rcu.description`:
 
@@ -330,14 +355,17 @@ list_for_each_entry_rcu
 
     iterate over rcu list of given type
 
-    :param  pos:
+    :param pos:
         the type * to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_rcu.description`:
 
@@ -357,27 +385,29 @@ list_entry_lockless
 
     get the struct for this entry
 
-    :param  ptr:
+    :param ptr:
         the \ :c:type:`struct list_head <list_head>`\  pointer.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_entry_lockless.description`:
 
 Description
 -----------
 
-This primitive may safely run concurrently with the _rcu list-mutation
-primitives such as \ :c:func:`list_add_rcu`\ , but requires some implicit RCU
-read-side guarding.  One example is running within a special
-exception-time environment where preemption is disabled and where
-lockdep cannot be invoked (in which case updaters must use RCU-sched,
-as in \ :c:func:`synchronize_sched`\ , \ :c:func:`call_rcu_sched`\ , and friends).  Another
-example is when items are added to the list, but never deleted.
+This primitive may safely run concurrently with the _rcu
+list-mutation primitives such as \ :c:func:`list_add_rcu`\ , but requires some
+implicit RCU read-side guarding.  One example is running within a special
+exception-time environment where preemption is disabled and where lockdep
+cannot be invoked.  Another example is when items are added to the list,
+but never deleted.
 
 .. _`list_for_each_entry_lockless`:
 
@@ -388,27 +418,29 @@ list_for_each_entry_lockless
 
     iterate over rcu list of given type
 
-    :param  pos:
+    :param pos:
         the type * to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_struct within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_lockless.description`:
 
 Description
 -----------
 
-This primitive may safely run concurrently with the _rcu list-mutation
-primitives such as \ :c:func:`list_add_rcu`\ , but requires some implicit RCU
-read-side guarding.  One example is running within a special
-exception-time environment where preemption is disabled and where
-lockdep cannot be invoked (in which case updaters must use RCU-sched,
-as in \ :c:func:`synchronize_sched`\ , \ :c:func:`call_rcu_sched`\ , and friends).  Another
-example is when items are added to the list, but never deleted.
+This primitive may safely run concurrently with the _rcu
+list-mutation primitives such as \ :c:func:`list_add_rcu`\ , but requires some
+implicit RCU read-side guarding.  One example is running within a special
+exception-time environment where preemption is disabled and where lockdep
+cannot be invoked.  Another example is when items are added to the list,
+but never deleted.
 
 .. _`list_for_each_entry_continue_rcu`:
 
@@ -419,14 +451,17 @@ list_for_each_entry_continue_rcu
 
     continue iteration over list of given type
 
-    :param  pos:
+    :param pos:
         the type * to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_continue_rcu.description`:
 
@@ -434,7 +469,16 @@ Description
 -----------
 
 Continue to iterate over list of given type, continuing after
-the current position.
+the current position which must have been in the list when the RCU read
+lock was taken.
+This would typically require either that you obtained the node from a
+previous walk of the list in the same RCU read-side critical section, or
+that you held some sort of non-RCU reference (such as a reference count)
+to keep the node alive *and* in the list.
+
+This iterator is similar to \ :c:func:`list_for_each_entry_from_rcu`\  except
+this starts after the given position and that one starts at the given
+position.
 
 .. _`list_for_each_entry_from_rcu`:
 
@@ -445,14 +489,17 @@ list_for_each_entry_from_rcu
 
     iterate over a list from current point
 
-    :param  pos:
+    :param pos:
         the type * to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_node within the struct.
+    :type member: 
 
 .. _`list_for_each_entry_from_rcu.description`:
 
@@ -461,6 +508,14 @@ Description
 
 Iterate over the tail of a list starting from a given position,
 which must have been in the list when the RCU read lock was taken.
+This would typically require either that you obtained the node from a
+previous walk of the list in the same RCU read-side critical section, or
+that you held some sort of non-RCU reference (such as a reference count)
+to keep the node alive *and* in the list.
+
+This iterator is similar to \ :c:func:`list_for_each_entry_continue_rcu`\  except
+this starts from the given position and that one starts from the position
+after the given position.
 
 .. _`hlist_del_rcu`:
 
@@ -471,8 +526,9 @@ hlist_del_rcu
 
     deletes entry from hash list without re-initialization
 
-    :param struct hlist_node \*n:
+    :param n:
         the element to delete from the hash list.
+    :type n: struct hlist_node \*
 
 .. _`hlist_del_rcu.note`:
 
@@ -503,11 +559,13 @@ hlist_replace_rcu
 
     replace old entry by new one
 
-    :param struct hlist_node \*old:
+    :param old:
         the element to be replaced
+    :type old: struct hlist_node \*
 
-    :param struct hlist_node \*new:
+    :param new:
         the new element to insert
+    :type new: struct hlist_node \*
 
 .. _`hlist_replace_rcu.description`:
 
@@ -523,11 +581,13 @@ hlist_add_head_rcu
 
 .. c:function:: void hlist_add_head_rcu(struct hlist_node *n, struct hlist_head *h)
 
-    :param struct hlist_node \*n:
+    :param n:
         the element to add to the hash list.
+    :type n: struct hlist_node \*
 
-    :param struct hlist_head \*h:
+    :param h:
         the list to add to.
+    :type h: struct hlist_head \*
 
 .. _`hlist_add_head_rcu.description`:
 
@@ -554,11 +614,13 @@ hlist_add_tail_rcu
 
 .. c:function:: void hlist_add_tail_rcu(struct hlist_node *n, struct hlist_head *h)
 
-    :param struct hlist_node \*n:
+    :param n:
         the element to add to the hash list.
+    :type n: struct hlist_node \*
 
-    :param struct hlist_head \*h:
+    :param h:
         the list to add to.
+    :type h: struct hlist_head \*
 
 .. _`hlist_add_tail_rcu.description`:
 
@@ -585,11 +647,13 @@ hlist_add_before_rcu
 
 .. c:function:: void hlist_add_before_rcu(struct hlist_node *n, struct hlist_node *next)
 
-    :param struct hlist_node \*n:
+    :param n:
         the new element to add to the hash list.
+    :type n: struct hlist_node \*
 
-    :param struct hlist_node \*next:
+    :param next:
         the existing element to add the new element before.
+    :type next: struct hlist_node \*
 
 .. _`hlist_add_before_rcu.description`:
 
@@ -615,11 +679,13 @@ hlist_add_behind_rcu
 
 .. c:function:: void hlist_add_behind_rcu(struct hlist_node *n, struct hlist_node *prev)
 
-    :param struct hlist_node \*n:
+    :param n:
         the new element to add to the hash list.
+    :type n: struct hlist_node \*
 
-    :param struct hlist_node \*prev:
+    :param prev:
         the existing element to add the new element after.
+    :type prev: struct hlist_node \*
 
 .. _`hlist_add_behind_rcu.description`:
 
@@ -647,14 +713,17 @@ hlist_for_each_entry_rcu
 
     iterate over rcu list of given type
 
-    :param  pos:
+    :param pos:
         the type * to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. _`hlist_for_each_entry_rcu.description`:
 
@@ -674,14 +743,17 @@ hlist_for_each_entry_rcu_notrace
 
     iterate over rcu list of given type (for tracing)
 
-    :param  pos:
+    :param pos:
         the type * to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. _`hlist_for_each_entry_rcu_notrace.description`:
 
@@ -704,14 +776,17 @@ hlist_for_each_entry_rcu_bh
 
     iterate over rcu list of given type
 
-    :param  pos:
+    :param pos:
         the type * to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. _`hlist_for_each_entry_rcu_bh.description`:
 
@@ -731,11 +806,13 @@ hlist_for_each_entry_continue_rcu
 
     iterate over a hlist continuing after current point
 
-    :param  pos:
+    :param pos:
         the type * to use as a loop cursor.
+    :type pos: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. _`hlist_for_each_entry_continue_rcu_bh`:
 
@@ -746,11 +823,13 @@ hlist_for_each_entry_continue_rcu_bh
 
     iterate over a hlist continuing after current point
 
-    :param  pos:
+    :param pos:
         the type * to use as a loop cursor.
+    :type pos: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. _`hlist_for_each_entry_from_rcu`:
 
@@ -761,11 +840,13 @@ hlist_for_each_entry_from_rcu
 
     iterate over a hlist continuing from current point
 
-    :param  pos:
+    :param pos:
         the type * to use as a loop cursor.
+    :type pos: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. This file was automatic generated / don't edit.
 

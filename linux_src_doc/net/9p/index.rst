@@ -14,4 +14,3 @@
     trans_fd_c
     trans_rdma_c
     trans_virtio_c
-    util_c

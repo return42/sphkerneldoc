@@ -50,17 +50,21 @@ from firmware, so they probably require sleep.
 
     debug routine
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param char \*calling_function_name:
+    :param calling_function_name:
         string pass from calling function
+    :type calling_function_name: char \*
 
-    :param MPI2DefaultReply_t \*mpi_reply:
+    :param mpi_reply:
         reply message frame
+    :type mpi_reply: MPI2DefaultReply_t \*
 
 .. _`_ctl_display_some_debug.context`:
 
@@ -86,17 +90,21 @@ mpt3sas_ctl_done
 
     ctl module completion routine
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`mpt3sas_ctl_done.context`:
 
@@ -112,7 +120,12 @@ Description
 
 The callback handler when using ioc->ctl_cb_idx.
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`mpt3sas_ctl_done.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_ctl_check_event_type`:
@@ -124,11 +137,13 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     determines when an event needs logging
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 event:
+    :param event:
         firmware event
+    :type event: u16
 
 .. _`_ctl_check_event_type.description`:
 
@@ -138,7 +153,12 @@ Description
 The bitmask in ioc->event_type[] indicates which events should be
 be saved in the driver event_log.  This bitmask is set by application.
 
-Returns 1 when event should be captured, or zero means no match.
+.. _`_ctl_check_event_type.return`:
+
+Return
+------
+
+1 when event should be captured, or zero means no match.
 
 .. _`mpt3sas_ctl_add_to_event_log`:
 
@@ -149,18 +169,13 @@ mpt3sas_ctl_add_to_event_log
 
     add event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventNotificationReply_t \*mpi_reply:
+    :param mpi_reply:
         reply message frame
-
-.. _`mpt3sas_ctl_add_to_event_log.description`:
-
-Description
------------
-
-Return nothing.
+    :type mpi_reply: Mpi2EventNotificationReply_t \*
 
 .. _`mpt3sas_ctl_event_callback`:
 
@@ -171,14 +186,17 @@ mpt3sas_ctl_event_callback
 
     firmware event handler (called at ISR time)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`mpt3sas_ctl_event_callback.context`:
 
@@ -195,7 +213,12 @@ Description
 This function merely adds a new work task into ioc->firmware_event_thread.
 The tasks are worked from \_firmware_event_work in user context.
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`mpt3sas_ctl_event_callback.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_ctl_verify_adapter`:
@@ -207,47 +230,85 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     validates ioc_number passed from application
 
-    :param int ioc_number:
-        *undescribed*
+    :param ioc_number:
+        ?
+    :type ioc_number: int
 
-    :param struct MPT3SAS_ADAPTER \*\*iocpp:
+    :param iocpp:
         The ioc pointer is returned in this.
+    :type iocpp: struct MPT3SAS_ADAPTER \*\*
 
-    :param int mpi_version:
+    :param mpi_version:
         will be MPI2_VERSION for mpt2ctl ioctl device &
         MPI25_VERSION \| MPI26_VERSION for mpt3ctl ioctl device.
+    :type mpi_version: int
 
-.. _`_ctl_verify_adapter.description`:
+.. _`_ctl_verify_adapter.return`:
 
-Description
------------
+Return
+------
 
-Return (-1) means error, else ioc_number.
+(-1) means error, else ioc_number.
 
-.. _`mpt3sas_ctl_reset_handler`:
+.. _`mpt3sas_ctl_pre_reset_handler`:
 
-mpt3sas_ctl_reset_handler
-=========================
+mpt3sas_ctl_pre_reset_handler
+=============================
 
-.. c:function:: void mpt3sas_ctl_reset_handler(struct MPT3SAS_ADAPTER *ioc, int reset_phase)
+.. c:function:: void mpt3sas_ctl_pre_reset_handler(struct MPT3SAS_ADAPTER *ioc)
 
     reset callback handler (for ctl)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param int reset_phase:
-        phase
-
-.. _`mpt3sas_ctl_reset_handler.description`:
+.. _`mpt3sas_ctl_pre_reset_handler.description`:
 
 Description
 -----------
 
 The handler for doing any required cleanup or initialization.
 
-The reset phase can be MPT3_IOC_PRE_RESET, MPT3_IOC_AFTER_RESET,
-MPT3_IOC_DONE_RESET
+.. _`mpt3sas_ctl_after_reset_handler`:
+
+mpt3sas_ctl_after_reset_handler
+===============================
+
+.. c:function:: void mpt3sas_ctl_after_reset_handler(struct MPT3SAS_ADAPTER *ioc)
+
+    reset callback handler (for ctl)
+
+    :param ioc:
+        per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
+
+.. _`mpt3sas_ctl_after_reset_handler.description`:
+
+Description
+-----------
+
+The handler for doing any required cleanup or initialization.
+
+.. _`mpt3sas_ctl_reset_done_handler`:
+
+mpt3sas_ctl_reset_done_handler
+==============================
+
+.. c:function:: void mpt3sas_ctl_reset_done_handler(struct MPT3SAS_ADAPTER *ioc)
+
+    reset callback handler (for ctl)
+
+    :param ioc:
+        per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
+
+.. _`mpt3sas_ctl_reset_done_handler.description`:
+
+Description
+-----------
+
+The handler for doing any required cleanup or initialization.
 
 .. _`_ctl_fasync`:
 
@@ -256,16 +317,17 @@ MPT3_IOC_DONE_RESET
 
 .. c:function:: int _ctl_fasync(int fd, struct file *filep, int mode)
 
-    \ ``fd``\  - \ ``filep``\  - \ ``mode``\  -
+    :param fd:
+        ?
+    :type fd: int
 
-    :param int fd:
-        *undescribed*
+    :param filep:
+        ?
+    :type filep: struct file \*
 
-    :param struct file \*filep:
-        *undescribed*
-
-    :param int mode:
-        *undescribed*
+    :param mode:
+        ?
+    :type mode: int
 
 .. _`_ctl_fasync.description`:
 
@@ -281,13 +343,13 @@ Called when application request fasyn callback handler.
 
 .. c:function:: __poll_t _ctl_poll(struct file *filep, poll_table *wait)
 
-    \ ``file``\  - \ ``wait``\  -
+    :param filep:
+        ?
+    :type filep: struct file \*
 
-    :param struct file \*filep:
-        *undescribed*
-
-    :param poll_table \*wait:
-        *undescribed*
+    :param wait:
+        ?
+    :type wait: poll_table \*
 
 .. _`_ctl_set_task_mid`:
 
@@ -298,23 +360,24 @@ Called when application request fasyn callback handler.
 
     assign an active smid to tm request
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``karg``\  - (struct mpt3_ioctl_command)
-        \ ``tm_request``\  - pointer to mf from user space
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct mpt3_ioctl_command \*karg:
-        *undescribed*
+    :param karg:
+        (struct mpt3_ioctl_command)
+    :type karg: struct mpt3_ioctl_command \*
 
-    :param Mpi2SCSITaskManagementRequest_t \*tm_request:
-        *undescribed*
+    :param tm_request:
+        pointer to mf from user space
+    :type tm_request: Mpi2SCSITaskManagementRequest_t \*
 
-.. _`_ctl_set_task_mid.description`:
+.. _`_ctl_set_task_mid.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 when an smid if found, else fail.
+0 when an smid if found, else fail.
 during failure, the reply frame is filled.
 
 .. _`_ctl_do_mpt_command`:
@@ -326,16 +389,17 @@ during failure, the reply frame is filled.
 
     main handler for MPT3COMMAND opcode
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``karg``\  - (struct mpt3_ioctl_command)
-        \ ``mf``\  - pointer to mf in user space
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct mpt3_ioctl_command karg:
-        *undescribed*
+    :param karg:
+        (struct mpt3_ioctl_command)
+    :type karg: struct mpt3_ioctl_command
 
-    :param void __user \*mf:
-        *undescribed*
+    :param mf:
+        pointer to mf in user space
+    :type mf: void __user \*
 
 .. _`_ctl_getiocinfo`:
 
@@ -346,12 +410,13 @@ during failure, the reply frame is filled.
 
     main handler for MPT3IOCINFO opcode
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``arg``\  - user space buffer containing ioctl content
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_eventquery`:
 
@@ -362,12 +427,13 @@ during failure, the reply frame is filled.
 
     main handler for MPT3EVENTQUERY opcode
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``arg``\  - user space buffer containing ioctl content
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_eventenable`:
 
@@ -378,12 +444,13 @@ during failure, the reply frame is filled.
 
     main handler for MPT3EVENTENABLE opcode
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``arg``\  - user space buffer containing ioctl content
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_eventreport`:
 
@@ -394,12 +461,13 @@ during failure, the reply frame is filled.
 
     main handler for MPT3EVENTREPORT opcode
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``arg``\  - user space buffer containing ioctl content
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_do_reset`:
 
@@ -410,12 +478,13 @@ during failure, the reply frame is filled.
 
     main handler for MPT3HARDRESET opcode
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``arg``\  - user space buffer containing ioctl content
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_btdh_search_sas_device`:
 
@@ -426,11 +495,13 @@ during failure, the reply frame is filled.
 
     searching for sas device
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct mpt3_ioctl_btdh_mapping \*btdh:
+    :param btdh:
         btdh ioctl payload
+    :type btdh: struct mpt3_ioctl_btdh_mapping \*
 
 .. _`_ctl_btdh_search_pcie_device`:
 
@@ -441,11 +512,13 @@ during failure, the reply frame is filled.
 
     searching for pcie device
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct mpt3_ioctl_btdh_mapping \*btdh:
+    :param btdh:
         btdh ioctl payload
+    :type btdh: struct mpt3_ioctl_btdh_mapping \*
 
 .. _`_ctl_btdh_search_raid_device`:
 
@@ -456,11 +529,13 @@ during failure, the reply frame is filled.
 
     searching for raid device
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct mpt3_ioctl_btdh_mapping \*btdh:
+    :param btdh:
         btdh ioctl payload
+    :type btdh: struct mpt3_ioctl_btdh_mapping \*
 
 .. _`_ctl_btdh_mapping`:
 
@@ -471,12 +546,13 @@ during failure, the reply frame is filled.
 
     main handler for MPT3BTDHMAPPING opcode
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``arg``\  - user space buffer containing ioctl content
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_diag_capability`:
 
@@ -487,11 +563,13 @@ during failure, the reply frame is filled.
 
     return diag buffer capability
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u8 buffer_type:
+    :param buffer_type:
         specifies either TRACE, SNAPSHOT, or EXTENDED
+    :type buffer_type: u8
 
 .. _`_ctl_diag_capability.description`:
 
@@ -509,11 +587,13 @@ returns 1 when diag buffer support is enabled in firmware
 
     wrapper for registering diag buffer support
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct mpt3_diag_register \*diag_register:
+    :param diag_register:
         the diag_register struct passed in from user space
+    :type diag_register: struct mpt3_diag_register \*
 
 .. _`mpt3sas_enable_diag_buffer`:
 
@@ -524,11 +604,13 @@ mpt3sas_enable_diag_buffer
 
     enabling diag_buffers support driver load time
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u8 bits_to_register:
+    :param bits_to_register:
         bitwise field where trace is bit 0, and snapshot is bit 1
+    :type bits_to_register: u8
 
 .. _`mpt3sas_enable_diag_buffer.description`:
 
@@ -547,12 +629,13 @@ at driver load time.
 
     application register with driver
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``arg``\  - user space buffer containing ioctl content
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_diag_register.description`:
 
@@ -571,12 +654,13 @@ needed by firmware to communicate with the driver.
 
     application unregister with driver
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``arg``\  - user space buffer containing ioctl content
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_diag_unregister.description`:
 
@@ -595,12 +679,13 @@ messages and to free up any resources.
 
     query relevant info associated with diag buffers
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``arg``\  - user space buffer containing ioctl content
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_diag_query.description`:
 
@@ -620,16 +705,17 @@ mpt3sas_send_diag_release
 
     Diag Release Message
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``buffer_type``\  - specifies either TRACE, SNAPSHOT, or EXTENDED
-        \ ``issue_reset``\  - specifies whether host reset is required.
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u8 buffer_type:
-        *undescribed*
+    :param buffer_type:
+        specifies either TRACE, SNAPSHOT, or EXTENDED
+    :type buffer_type: u8
 
-    :param u8 \*issue_reset:
-        *undescribed*
+    :param issue_reset:
+        specifies whether host reset is required.
+    :type issue_reset: u8 \*
 
 .. _`_ctl_diag_release`:
 
@@ -638,13 +724,15 @@ mpt3sas_send_diag_release
 
 .. c:function:: long _ctl_diag_release(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
-    request to send Diag Release Message to firmware \ ``arg``\  - user space buffer containing ioctl content
+    request to send Diag Release Message to firmware
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        *undescribed*
+    :param ioc:
+        ?
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_diag_release.description`:
 
@@ -664,12 +752,13 @@ overwriting information in the buffer.
 
     request for copy of the diag buffer
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``arg``\  - user space buffer containing ioctl content
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space buffer containing ioctl content
+    :type arg: void __user \*
 
 .. _`_ctl_compat_mpt_command`:
 
@@ -680,16 +769,17 @@ overwriting information in the buffer.
 
     convert 32bit pointers to 64bit.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-        \ ``cmd``\  - ioctl opcode
-        \ ``arg``\  - (struct mpt3_ioctl_command32)
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param unsigned cmd:
-        *undescribed*
+    :param cmd:
+        ioctl opcode
+    :type cmd: unsigned
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        (struct mpt3_ioctl_command32)
+    :type arg: void __user \*
 
 .. _`_ctl_compat_mpt_command.description`:
 
@@ -705,23 +795,28 @@ MPT3COMMAND32 - Handle 32bit applications running on 64bit os.
 
 .. c:function:: long _ctl_ioctl_main(struct file *file, unsigned int cmd, void __user *arg, u8 compat, u16 mpi_version)
 
-    main ioctl entry point \ ``file``\  - (struct file) \ ``cmd``\  - ioctl opcode \ ``arg``\  - user space data buffer \ ``compat``\  - handles 32 bit applications in 64bit os
+    main ioctl entry point
 
-    :param struct file \*file:
-        *undescribed*
+    :param file:
+        (struct file)
+    :type file: struct file \*
 
-    :param unsigned int cmd:
-        *undescribed*
+    :param cmd:
+        ioctl opcode
+    :type cmd: unsigned int
 
-    :param void __user \*arg:
-        *undescribed*
+    :param arg:
+        user space data buffer
+    :type arg: void __user \*
 
-    :param u8 compat:
-        *undescribed*
+    :param compat:
+        handles 32 bit applications in 64bit os
+    :type compat: u8
 
-    :param u16 mpi_version:
+    :param mpi_version:
         will be MPI2_VERSION for mpt2ctl ioctl device &
         MPI25_VERSION \| MPI26_VERSION for mpt3ctl ioctl device.
+    :type mpi_version: u16
 
 .. _`_ctl_ioctl`:
 
@@ -730,16 +825,19 @@ MPT3COMMAND32 - Handle 32bit applications running on 64bit os.
 
 .. c:function:: long _ctl_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
-    mpt3ctl main ioctl entry point (unlocked) \ ``file``\  - (struct file) \ ``cmd``\  - ioctl opcode \ ``arg``\  -
+    mpt3ctl main ioctl entry point (unlocked)
 
-    :param struct file \*file:
-        *undescribed*
+    :param file:
+        (struct file)
+    :type file: struct file \*
 
-    :param unsigned int cmd:
-        *undescribed*
+    :param cmd:
+        ioctl opcode
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
-        *undescribed*
+    :param arg:
+        ?
+    :type arg: unsigned long
 
 .. _`_ctl_mpt2_ioctl`:
 
@@ -748,16 +846,19 @@ MPT3COMMAND32 - Handle 32bit applications running on 64bit os.
 
 .. c:function:: long _ctl_mpt2_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
-    mpt2ctl main ioctl entry point (unlocked) \ ``file``\  - (struct file) \ ``cmd``\  - ioctl opcode \ ``arg``\  -
+    mpt2ctl main ioctl entry point (unlocked)
 
-    :param struct file \*file:
-        *undescribed*
+    :param file:
+        (struct file)
+    :type file: struct file \*
 
-    :param unsigned int cmd:
-        *undescribed*
+    :param cmd:
+        ioctl opcode
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
-        *undescribed*
+    :param arg:
+        ?
+    :type arg: unsigned long
 
 .. _`_ctl_ioctl_compat`:
 
@@ -766,16 +867,19 @@ MPT3COMMAND32 - Handle 32bit applications running on 64bit os.
 
 .. c:function:: long _ctl_ioctl_compat(struct file *file, unsigned cmd, unsigned long arg)
 
-    main ioctl entry point (compat) \ ``file``\  - \ ``cmd``\  - \ ``arg``\  -
+    main ioctl entry point (compat)
 
-    :param struct file \*file:
-        *undescribed*
+    :param file:
+        ?
+    :type file: struct file \*
 
-    :param unsigned cmd:
-        *undescribed*
+    :param cmd:
+        ?
+    :type cmd: unsigned
 
-    :param unsigned long arg:
-        *undescribed*
+    :param arg:
+        ?
+    :type arg: unsigned long
 
 .. _`_ctl_ioctl_compat.description`:
 
@@ -791,16 +895,19 @@ This routine handles 32 bit applications in 64bit os.
 
 .. c:function:: long _ctl_mpt2_ioctl_compat(struct file *file, unsigned cmd, unsigned long arg)
 
-    main ioctl entry point (compat) \ ``file``\  - \ ``cmd``\  - \ ``arg``\  -
+    main ioctl entry point (compat)
 
-    :param struct file \*file:
-        *undescribed*
+    :param file:
+        ?
+    :type file: struct file \*
 
-    :param unsigned cmd:
-        *undescribed*
+    :param cmd:
+        ?
+    :type cmd: unsigned
 
-    :param unsigned long arg:
-        *undescribed*
+    :param arg:
+        ?
+    :type arg: unsigned long
 
 .. _`_ctl_mpt2_ioctl_compat.description`:
 
@@ -816,16 +923,19 @@ This routine handles 32 bit applications in 64bit os.
 
 .. c:function:: ssize_t _ctl_version_fw_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    firmware version \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    firmware version
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_version_fw_show.description`:
 
@@ -841,16 +951,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_version_bios_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    bios version \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    bios version
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_version_bios_show.description`:
 
@@ -866,16 +979,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_version_mpi_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    MPI (message passing interface) version \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    MPI (message passing interface) version
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_version_mpi_show.description`:
 
@@ -891,16 +1007,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_version_product_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    product name \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    product name
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_version_product_show.description`:
 
@@ -916,16 +1035,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_version_nvdata_persistent_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    ndvata persistent version \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    ndvata persistent version
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_version_nvdata_persistent_show.description`:
 
@@ -941,16 +1063,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_version_nvdata_default_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    nvdata default version \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    nvdata default version
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_version_nvdata_default_show.description`:
 
@@ -966,16 +1091,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_board_name_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    board name \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    board name
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_board_name_show.description`:
 
@@ -991,16 +1119,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_board_assembly_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    board assembly name \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    board assembly name
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_board_assembly_show.description`:
 
@@ -1016,16 +1147,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_board_tracer_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    board tracer number \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    board tracer number
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_board_tracer_show.description`:
 
@@ -1041,16 +1175,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_io_delay_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    io missing delay \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    io missing delay
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_io_delay_show.description`:
 
@@ -1069,16 +1206,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_device_delay_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    device missing delay \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    device missing delay
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_device_delay_show.description`:
 
@@ -1097,16 +1237,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_fw_queue_depth_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    global credits \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    global credits
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_fw_queue_depth_show.description`:
 
@@ -1124,16 +1267,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_host_sas_address_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    sas address \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    sas address
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_host_sas_address_show.description`:
 
@@ -1151,16 +1297,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_logging_level_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    logging level \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    logging level
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_logging_level_show.description`:
 
@@ -1176,16 +1325,19 @@ A sysfs 'read/write' shost attribute.
 
 .. c:function:: ssize_t _ctl_fwfault_debug_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    show/store fwfault_debug \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    show/store fwfault_debug
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_fwfault_debug_show.description`:
 
@@ -1202,16 +1354,19 @@ A sysfs 'read/write' shost attribute.
 
 .. c:function:: ssize_t _ctl_ioc_reset_count_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    ioc reset count \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    ioc reset count
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_ioc_reset_count_show.description`:
 
@@ -1229,16 +1384,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_ioc_reply_queue_count_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    number of reply queues \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    number of reply queues
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_ioc_reply_queue_count_show.description`:
 
@@ -1256,16 +1414,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_BRM_status_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    Backup Rail Monitor Status \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    Backup Rail Monitor Status
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_brm_status_show.description`:
 
@@ -1283,16 +1444,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_host_trace_buffer_size_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    host buffer size (trace only) \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    host buffer size (trace only)
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_host_trace_buffer_size_show.description`:
 
@@ -1308,16 +1472,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_host_trace_buffer_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    firmware ring buffer (trace only) \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    firmware ring buffer (trace only)
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_host_trace_buffer_show.description`:
 
@@ -1337,16 +1504,19 @@ offset to the same attribute, it will move the pointer.
 
 .. c:function:: ssize_t _ctl_host_trace_buffer_enable_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    firmware ring buffer (trace only) \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    firmware ring buffer (trace only)
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_host_trace_buffer_enable_show.description`:
 
@@ -1364,16 +1534,19 @@ This is a mechnism to post/release host_trace_buffers
 
 .. c:function:: ssize_t _ctl_diag_trigger_master_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    show the diag_trigger_master attribute \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    show the diag_trigger_master attribute
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_diag_trigger_master_show.description`:
 
@@ -1389,19 +1562,23 @@ A sysfs 'read/write' shost attribute.
 
 .. c:function:: ssize_t _ctl_diag_trigger_master_store(struct device *cdev, struct device_attribute *attr, const char *buf, size_t count)
 
-    store the diag_trigger_master attribute \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    store the diag_trigger_master attribute
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: const char \*
 
-    :param size_t count:
-        *undescribed*
+    :param count:
+        ?
+    :type count: size_t
 
 .. _`_ctl_diag_trigger_master_store.description`:
 
@@ -1417,16 +1594,19 @@ A sysfs 'read/write' shost attribute.
 
 .. c:function:: ssize_t _ctl_diag_trigger_event_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    show the diag_trigger_event attribute \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    show the diag_trigger_event attribute
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_diag_trigger_event_show.description`:
 
@@ -1442,19 +1622,23 @@ A sysfs 'read/write' shost attribute.
 
 .. c:function:: ssize_t _ctl_diag_trigger_event_store(struct device *cdev, struct device_attribute *attr, const char *buf, size_t count)
 
-    store the diag_trigger_event attribute \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    store the diag_trigger_event attribute
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: const char \*
 
-    :param size_t count:
-        *undescribed*
+    :param count:
+        ?
+    :type count: size_t
 
 .. _`_ctl_diag_trigger_event_store.description`:
 
@@ -1470,16 +1654,19 @@ A sysfs 'read/write' shost attribute.
 
 .. c:function:: ssize_t _ctl_diag_trigger_scsi_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    show the diag_trigger_scsi attribute \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    show the diag_trigger_scsi attribute
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_diag_trigger_scsi_show.description`:
 
@@ -1495,19 +1682,23 @@ A sysfs 'read/write' shost attribute.
 
 .. c:function:: ssize_t _ctl_diag_trigger_scsi_store(struct device *cdev, struct device_attribute *attr, const char *buf, size_t count)
 
-    store the diag_trigger_scsi attribute \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    store the diag_trigger_scsi attribute
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: const char \*
 
-    :param size_t count:
-        *undescribed*
+    :param count:
+        ?
+    :type count: size_t
 
 .. _`_ctl_diag_trigger_scsi_store.description`:
 
@@ -1523,16 +1714,19 @@ A sysfs 'read/write' shost attribute.
 
 .. c:function:: ssize_t _ctl_diag_trigger_mpi_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
-    show the diag_trigger_mpi attribute \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    show the diag_trigger_mpi attribute
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_diag_trigger_mpi_show.description`:
 
@@ -1548,19 +1742,23 @@ A sysfs 'read/write' shost attribute.
 
 .. c:function:: ssize_t _ctl_diag_trigger_mpi_store(struct device *cdev, struct device_attribute *attr, const char *buf, size_t count)
 
-    store the diag_trigger_mpi attribute \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    store the diag_trigger_mpi attribute
 
-    :param struct device \*cdev:
-        *undescribed*
+    :param cdev:
+        pointer to embedded class device
+    :type cdev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: const char \*
 
-    :param size_t count:
-        *undescribed*
+    :param count:
+        ?
+    :type count: size_t
 
 .. _`_ctl_diag_trigger_mpi_store.description`:
 
@@ -1576,16 +1774,19 @@ A sysfs 'read/write' shost attribute.
 
 .. c:function:: ssize_t _ctl_device_sas_address_show(struct device *dev, struct device_attribute *attr, char *buf)
 
-    sas address \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    sas address
 
-    :param struct device \*dev:
-        *undescribed*
+    :param dev:
+        pointer to embedded class device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_device_sas_address_show.description`:
 
@@ -1603,16 +1804,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_device_handle_show(struct device *dev, struct device_attribute *attr, char *buf)
 
-    device handle \ ``cdev``\  - pointer to embedded class device \ ``buf``\  - the buffer returned
+    device handle
 
-    :param struct device \*dev:
-        *undescribed*
+    :param dev:
+        pointer to embedded class device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_device_handle_show.description`:
 
@@ -1630,16 +1834,19 @@ A sysfs 'read-only' shost attribute.
 
 .. c:function:: ssize_t _ctl_device_ncq_prio_enable_show(struct device *dev, struct device_attribute *attr, char *buf)
 
-    send prioritized io commands to device \ ``dev``\  - pointer to embedded device \ ``buf``\  - the buffer returned
+    send prioritized io commands to device
 
-    :param struct device \*dev:
-        *undescribed*
+    :param dev:
+        pointer to embedded device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
-        *undescribed*
+    :param attr:
+        ?
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
-        *undescribed*
+    :param buf:
+        the buffer returned
+    :type buf: char \*
 
 .. _`_ctl_device_ncq_prio_enable_show.description`:
 
@@ -1657,8 +1864,9 @@ mpt3sas_ctl_init
 
     main entry point for ctl.
 
-    :param ushort hbas_to_enumerate:
-        *undescribed*
+    :param hbas_to_enumerate:
+        ?
+    :type hbas_to_enumerate: ushort
 
 .. _`mpt3sas_ctl_exit`:
 
@@ -1669,8 +1877,9 @@ mpt3sas_ctl_exit
 
     exit point for ctl
 
-    :param ushort hbas_to_enumerate:
-        *undescribed*
+    :param hbas_to_enumerate:
+        ?
+    :type hbas_to_enumerate: ushort
 
 .. This file was automatic generated / don't edit.
 

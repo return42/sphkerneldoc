@@ -10,8 +10,9 @@ cfg80211_wext_freq
 
     get wext frequency for non-"auto"
 
-    :param struct iw_freq \*freq:
+    :param freq:
         the wext freq encoding
+    :type freq: struct iw_freq \*
 
 .. _`cfg80211_wext_freq.description`:
 

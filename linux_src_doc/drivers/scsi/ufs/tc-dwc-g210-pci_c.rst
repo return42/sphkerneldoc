@@ -10,8 +10,9 @@ tc_dwc_g210_pci_shutdown
 
     main function to put the controller in reset state
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device handle
+    :type pdev: struct pci_dev \*
 
 .. _`tc_dwc_g210_pci_remove`:
 
@@ -22,8 +23,9 @@ tc_dwc_g210_pci_remove
 
     de-allocate PCI/SCSI host and host memory space data structure memory
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI handle
+    :type pdev: struct pci_dev \*
 
 .. _`tc_dwc_g210_pci_probe`:
 
@@ -34,11 +36,13 @@ tc_dwc_g210_pci_probe
 
     probe routine of the driver
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device handle
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         PCI device id
+    :type id: const struct pci_device_id \*
 
 .. _`tc_dwc_g210_pci_probe.description`:
 

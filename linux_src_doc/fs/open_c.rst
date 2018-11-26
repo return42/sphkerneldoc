@@ -6,21 +6,20 @@
 finish_open
 ===========
 
-.. c:function:: int finish_open(struct file *file, struct dentry *dentry, int (*open)(struct inode *, struct file *), int *opened)
+.. c:function:: int finish_open(struct file *file, struct dentry *dentry, int (*open)(struct inode *, struct file *))
 
     finish opening a file
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         pointer to dentry
+    :type dentry: struct dentry \*
 
     :param int (\*open)(struct inode \*, struct file \*):
         open callback
-
-    :param int \*opened:
-        state of open
 
 .. _`finish_open.description`:
 
@@ -50,11 +49,13 @@ finish_no_open
 
     finish ->atomic_open() without opening the file
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry or NULL (as returned from ->lookup())
+    :type dentry: struct dentry \*
 
 .. _`finish_no_open.description`:
 
@@ -66,7 +67,7 @@ This can be used to set the result of a successful lookup in ->atomic_open().
 NB: unlike \ :c:func:`finish_open`\  this function does consume the dentry reference and
 the caller need not \ :c:func:`dput`\  it.
 
-Returns "1" which must be the return value of ->atomic_open() after having
+Returns "0" which must be the return value of ->atomic_open() after having
 called this function.
 
 .. _`vfs_open`:
@@ -74,18 +75,17 @@ called this function.
 vfs_open
 ========
 
-.. c:function:: int vfs_open(const struct path *path, struct file *file, const struct cred *cred)
+.. c:function:: int vfs_open(const struct path *path, struct file *file)
 
     open the file at the given path
 
-    :param const struct path \*path:
+    :param path:
         path to open
+    :type path: const struct path \*
 
-    :param struct file \*file:
+    :param file:
         newly allocated file with f_flag initialized
-
-    :param const struct cred \*cred:
-        credentials to use
+    :type file: struct file \*
 
 .. _`file_open_name`:
 
@@ -96,14 +96,17 @@ file_open_name
 
     open file and return file pointer
 
-    :param struct filename \*name:
+    :param name:
         struct filename containing path to open
+    :type name: struct filename \*
 
-    :param int flags:
+    :param flags:
         open flags as per the open(2) second argument
+    :type flags: int
 
-    :param umode_t mode:
+    :param mode:
         mode for the new file if O_CREAT is set, else ignored
+    :type mode: umode_t
 
 .. _`file_open_name.description`:
 
@@ -123,14 +126,17 @@ filp_open
 
     open file and return file pointer
 
-    :param const char \*filename:
+    :param filename:
         path to open
+    :type filename: const char \*
 
-    :param int flags:
+    :param flags:
         open flags as per the open(2) second argument
+    :type flags: int
 
-    :param umode_t mode:
+    :param mode:
         mode for the new file if O_CREAT is set, else ignored
+    :type mode: umode_t
 
 .. _`filp_open.description`:
 

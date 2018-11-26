@@ -26,6 +26,7 @@ media
     media-device_h
     media-devnode_h
     media-entity_h
+    media-request_h
     rc-core_h
     rc-map_h
     soc_camera_h

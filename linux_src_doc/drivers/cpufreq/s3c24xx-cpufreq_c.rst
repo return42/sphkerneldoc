@@ -10,14 +10,17 @@ s3c_cpufreq_freq_min
 
     find the minimum settings for the given freq.
 
-    :param struct s3c_freq \*dst:
+    :param dst:
         The destination structure
+    :type dst: struct s3c_freq \*
 
-    :param struct s3c_freq \*a:
+    :param a:
         One argument.
+    :type a: struct s3c_freq \*
 
-    :param struct s3c_freq \*b:
+    :param b:
         The other argument.
+    :type b: struct s3c_freq \*
 
 .. _`s3c_cpufreq_freq_min.description`:
 
@@ -37,11 +40,13 @@ s3c_plltab_register
 
     register CPU PLL table.
 
-    :param struct cpufreq_frequency_table \*plls:
+    :param plls:
         The list of PLL entries.
+    :type plls: struct cpufreq_frequency_table \*
 
-    :param unsigned int plls_no:
+    :param plls_no:
         The size of the PLL entries \ ``plls``\ .
+    :type plls_no: unsigned int
 
 .. _`s3c_plltab_register.description`:
 

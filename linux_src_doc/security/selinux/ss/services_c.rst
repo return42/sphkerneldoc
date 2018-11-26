@@ -10,23 +10,29 @@ security_compute_av
 
     Compute access vector decisions.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 ssid:
+    :param ssid:
         source security identifier
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         target security identifier
+    :type tsid: u32
 
-    :param u16 orig_tclass:
+    :param orig_tclass:
         *undescribed*
+    :type orig_tclass: u16
 
-    :param struct av_decision \*avd:
+    :param avd:
         access vector decisions
+    :type avd: struct av_decision \*
 
-    :param struct extended_perms \*xperms:
+    :param xperms:
         extended permissions
+    :type xperms: struct extended_perms \*
 
 .. _`security_compute_av.description`:
 
@@ -45,17 +51,21 @@ security_sid_to_context
 
     Obtain a context for a given SID.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 sid:
+    :param sid:
         security identifier, SID
+    :type sid: u32
 
-    :param char \*\*scontext:
+    :param scontext:
         security context
+    :type scontext: char \*\*
 
-    :param u32 \*scontext_len:
+    :param scontext_len:
         length in bytes
+    :type scontext_len: u32 \*
 
 .. _`security_sid_to_context.description`:
 
@@ -75,20 +85,25 @@ security_context_to_sid
 
     Obtain a SID for a given security context.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param const char \*scontext:
+    :param scontext:
         security context
+    :type scontext: const char \*
 
-    :param u32 scontext_len:
+    :param scontext_len:
         length in bytes
+    :type scontext_len: u32
 
-    :param u32 \*sid:
+    :param sid:
         security identifier, SID
+    :type sid: u32 \*
 
-    :param gfp_t gfp:
+    :param gfp:
         context for the allocation
+    :type gfp: gfp_t
 
 .. _`security_context_to_sid.description`:
 
@@ -109,23 +124,29 @@ security_context_to_sid_default
 
     Obtain a SID for a given security context, falling back to specified default if needed.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param const char \*scontext:
+    :param scontext:
         security context
+    :type scontext: const char \*
 
-    :param u32 scontext_len:
+    :param scontext_len:
         length in bytes
+    :type scontext_len: u32
 
-    :param u32 \*sid:
+    :param sid:
         security identifier, SID
+    :type sid: u32 \*
 
-    :param u32 def_sid:
+    :param def_sid:
         default SID to assign on error
+    :type def_sid: u32
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         *undescribed*
+    :type gfp_flags: gfp_t
 
 .. _`security_context_to_sid_default.description`:
 
@@ -150,23 +171,29 @@ security_transition_sid
 
     Compute the SID for a new subject/object.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 ssid:
+    :param ssid:
         source security identifier
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         target security identifier
+    :type tsid: u32
 
-    :param u16 tclass:
+    :param tclass:
         target security class
+    :type tclass: u16
 
-    :param const struct qstr \*qstr:
+    :param qstr:
         *undescribed*
+    :type qstr: const struct qstr \*
 
-    :param u32 \*out_sid:
+    :param out_sid:
         security identifier for new subject/object
+    :type out_sid: u32 \*
 
 .. _`security_transition_sid.description`:
 
@@ -188,20 +215,25 @@ security_member_sid
 
     Compute the SID for member selection.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 ssid:
+    :param ssid:
         source security identifier
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         target security identifier
+    :type tsid: u32
 
-    :param u16 tclass:
+    :param tclass:
         target security class
+    :type tclass: u16
 
-    :param u32 \*out_sid:
+    :param out_sid:
         security identifier for selected member
+    :type out_sid: u32 \*
 
 .. _`security_member_sid.description`:
 
@@ -223,20 +255,25 @@ security_change_sid
 
     Compute the SID for object relabeling.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 ssid:
+    :param ssid:
         source security identifier
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         target security identifier
+    :type tsid: u32
 
-    :param u16 tclass:
+    :param tclass:
         target security class
+    :type tclass: u16
 
-    :param u32 \*out_sid:
+    :param out_sid:
         security identifier for selected member
+    :type out_sid: u32 \*
 
 .. _`security_change_sid.description`:
 
@@ -258,14 +295,17 @@ security_load_policy
 
     Load a security policy configuration.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param void \*data:
+    :param data:
         binary policy data
+    :type data: void \*
 
-    :param size_t len:
+    :param len:
         length of data in bytes
+    :type len: size_t
 
 .. _`security_load_policy.description`:
 
@@ -286,17 +326,21 @@ security_port_sid
 
     Obtain the SID for a port.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u8 protocol:
+    :param protocol:
         protocol number
+    :type protocol: u8
 
-    :param u16 port:
+    :param port:
         port number
+    :type port: u16
 
-    :param u32 \*out_sid:
+    :param out_sid:
         security identifier
+    :type out_sid: u32 \*
 
 .. _`security_ib_pkey_sid`:
 
@@ -307,17 +351,21 @@ security_ib_pkey_sid
 
     Obtain the SID for a pkey.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u64 subnet_prefix:
+    :param subnet_prefix:
         Subnet Prefix
+    :type subnet_prefix: u64
 
-    :param u16 pkey_num:
+    :param pkey_num:
         pkey number
+    :type pkey_num: u16
 
-    :param u32 \*out_sid:
+    :param out_sid:
         security identifier
+    :type out_sid: u32 \*
 
 .. _`security_ib_endport_sid`:
 
@@ -328,17 +376,21 @@ security_ib_endport_sid
 
     Obtain the SID for a subnet management interface.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param const char \*dev_name:
+    :param dev_name:
         device name
+    :type dev_name: const char \*
 
-    :param u8 port_num:
+    :param port_num:
         *undescribed*
+    :type port_num: u8
 
-    :param u32 \*out_sid:
+    :param out_sid:
         security identifier
+    :type out_sid: u32 \*
 
 .. _`security_netif_sid`:
 
@@ -349,14 +401,17 @@ security_netif_sid
 
     Obtain the SID for a network interface.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param char \*name:
+    :param name:
         interface name
+    :type name: char \*
 
-    :param u32 \*if_sid:
+    :param if_sid:
         interface SID
+    :type if_sid: u32 \*
 
 .. _`security_node_sid`:
 
@@ -367,20 +422,25 @@ security_node_sid
 
     Obtain the SID for a node (host).
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u16 domain:
+    :param domain:
         communication domain aka address family
+    :type domain: u16
 
-    :param void \*addrp:
+    :param addrp:
         address
+    :type addrp: void \*
 
-    :param u32 addrlen:
+    :param addrlen:
         address length in bytes
+    :type addrlen: u32
 
-    :param u32 \*out_sid:
+    :param out_sid:
         security identifier
+    :type out_sid: u32 \*
 
 .. _`security_get_user_sids`:
 
@@ -391,20 +451,25 @@ security_get_user_sids
 
     Obtain reachable SIDs for a user.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 fromsid:
+    :param fromsid:
         starting SID
+    :type fromsid: u32
 
-    :param char \*username:
+    :param username:
         username
+    :type username: char \*
 
-    :param u32 \*\*sids:
+    :param sids:
         array of reachable SIDs for user
+    :type sids: u32 \*\*
 
-    :param u32 \*nel:
+    :param nel:
         number of elements in \ ``sids``\ 
+    :type nel: u32 \*
 
 .. _`security_get_user_sids.description`:
 
@@ -426,20 +491,25 @@ number of elements in the array.
 
     Helper to obtain a SID for a file in a filesystem
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param const char \*fstype:
+    :param fstype:
         filesystem type
+    :type fstype: const char \*
 
-    :param char \*path:
+    :param path:
         path from root of mount
+    :type path: char \*
 
-    :param u16 orig_sclass:
+    :param orig_sclass:
         *undescribed*
+    :type orig_sclass: u16
 
-    :param u32 \*sid:
+    :param sid:
         SID for path
+    :type sid: u32 \*
 
 .. _`__security_genfs_sid.description`:
 
@@ -461,20 +531,25 @@ security_genfs_sid
 
     Obtain a SID for a file in a filesystem
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param const char \*fstype:
+    :param fstype:
         filesystem type
+    :type fstype: const char \*
 
-    :param char \*path:
+    :param path:
         path from root of mount
+    :type path: char \*
 
-    :param u16 orig_sclass:
+    :param orig_sclass:
         *undescribed*
+    :type orig_sclass: u16
 
-    :param u32 \*sid:
+    :param sid:
         SID for path
+    :type sid: u32 \*
 
 .. _`security_genfs_sid.description`:
 
@@ -493,11 +568,13 @@ security_fs_use
 
     Determine how to handle labeling for a filesystem.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock in question
+    :type sb: struct super_block \*
 
 .. _`security_net_peersid_resolve`:
 
@@ -508,20 +585,25 @@ security_net_peersid_resolve
 
     Compare and resolve two network peer SIDs
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 nlbl_sid:
+    :param nlbl_sid:
         NetLabel SID
+    :type nlbl_sid: u32
 
-    :param u32 nlbl_type:
+    :param nlbl_type:
         NetLabel labeling protocol type
+    :type nlbl_type: u32
 
-    :param u32 xfrm_sid:
+    :param xfrm_sid:
         XFRM SID
+    :type xfrm_sid: u32
 
-    :param u32 \*peer_sid:
+    :param peer_sid:
         *undescribed*
+    :type peer_sid: u32 \*
 
 .. _`security_net_peersid_resolve.description`:
 
@@ -549,11 +631,13 @@ security_policycap_supported
 
     Check for a specific policy capability
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param unsigned int req_cap:
+    :param req_cap:
         capability
+    :type req_cap: unsigned int
 
 .. _`security_policycap_supported.description`:
 
@@ -573,11 +657,13 @@ security_netlbl_cache_add
 
     Add an entry to the NetLabel cache
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the NetLabel packet security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
-    :param u32 sid:
+    :param sid:
         the SELinux SID
+    :type sid: u32
 
 .. _`security_netlbl_cache_add.description`:
 
@@ -597,14 +683,17 @@ security_netlbl_secattr_to_sid
 
     Convert a NetLabel secattr to a SELinux SID
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the NetLabel packet security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
-    :param u32 \*sid:
+    :param sid:
         the SELinux SID
+    :type sid: u32 \*
 
 .. _`security_netlbl_secattr_to_sid.description`:
 
@@ -628,14 +717,17 @@ security_netlbl_sid_to_secattr
 
     Convert a SELinux SID to a NetLabel secattr
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 sid:
+    :param sid:
         the SELinux SID
+    :type sid: u32
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the NetLabel packet security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`security_netlbl_sid_to_secattr.description`:
 
@@ -654,14 +746,17 @@ security_read_policy
 
     read the policy.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param void \*\*data:
+    :param data:
         binary policy data
+    :type data: void \*\*
 
-    :param size_t \*len:
+    :param len:
         length of data in bytes
+    :type len: size_t \*
 
 .. This file was automatic generated / don't edit.
 

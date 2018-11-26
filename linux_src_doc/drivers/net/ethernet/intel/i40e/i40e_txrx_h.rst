@@ -10,8 +10,9 @@ i40e_intrl_usec_to_reg
 
     convert interrupt rate limit to register
 
-    :param int intrl:
+    :param intrl:
         interrupt rate limit to convert
+    :type intrl: int
 
 .. _`i40e_intrl_usec_to_reg.description`:
 
@@ -30,11 +31,13 @@ i40e_test_staterr
 
     tests bits in Rx descriptor status and error fields
 
-    :param union i40e_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to receive descriptor (in le64 format)
+    :type rx_desc: union i40e_rx_desc \*
 
-    :param const u64 stat_err_bits:
+    :param stat_err_bits:
         value to mask
+    :type stat_err_bits: const u64
 
 .. _`i40e_test_staterr.description`:
 
@@ -55,8 +58,9 @@ i40e_txd_use_count
 
     estimate the number of descriptors needed for Tx
 
-    :param unsigned int size:
+    :param size:
         transmit request size in bytes
+    :type size: unsigned int
 
 .. _`i40e_txd_use_count.description`:
 
@@ -105,8 +109,9 @@ i40e_get_head
 
     Retrieve head from head writeback
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         tx ring to fetch head of
+    :type tx_ring: struct i40e_ring \*
 
 .. _`i40e_get_head.description`:
 
@@ -125,8 +130,9 @@ i40e_xmit_descriptor_count
 
     calculate number of Tx descriptors needed
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
 .. _`i40e_xmit_descriptor_count.description`:
 
@@ -146,11 +152,13 @@ i40e_maybe_stop_tx
 
     1st level check for Tx stop conditions
 
-    :param struct i40e_ring \*tx_ring:
+    :param tx_ring:
         the ring to be checked
+    :type tx_ring: struct i40e_ring \*
 
-    :param int size:
+    :param size:
         the size buffer we want to assure is available
+    :type size: int
 
 .. _`i40e_maybe_stop_tx.description`:
 
@@ -168,11 +176,13 @@ i40e_chk_linearize
 
     Check if there are more than 8 fragments per packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
-    :param int count:
+    :param count:
         number of buffers used
+    :type count: int
 
 .. _`i40e_chk_linearize.note`:
 
@@ -192,8 +202,9 @@ txring_txq
 
     Find the netdev Tx ring based on the i40e Tx ring
 
-    :param const struct i40e_ring \*ring:
+    :param ring:
         Tx ring to find the netdev equivalent of
+    :type ring: const struct i40e_ring \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ cio_cancel_halt_clear
 
     Cancel running I/O by performing cancel, halt and clear ordinally if subchannel is valid.
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel on which to perform the cancel_halt_clear operation
+    :type sch: struct subchannel \*
 
-    :param int \*iretry:
+    :param iretry:
         the number of the times remained to retry the next operation
+    :type iretry: int \*
 
 .. _`cio_cancel_halt_clear.description`:
 
@@ -40,9 +42,10 @@ cio_update_schib
 
     Perform stsch and update schib if subchannel is valid.
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel on which to perform stsch
         Return zero on success, -ENODEV otherwise.
+    :type sch: struct subchannel \*
 
 .. _`cio_enable_subchannel`:
 
@@ -53,11 +56,13 @@ cio_enable_subchannel
 
     enable a subchannel.
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel to be enabled
+    :type sch: struct subchannel \*
 
-    :param u32 intparm:
+    :param intparm:
         interruption parameter to set
+    :type intparm: u32
 
 .. _`cio_disable_subchannel`:
 
@@ -68,40 +73,9 @@ cio_disable_subchannel
 
     disable a subchannel.
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel to disable
-
-.. _`cio_validate_subchannel`:
-
-cio_validate_subchannel
-=======================
-
-.. c:function:: int cio_validate_subchannel(struct subchannel *sch, struct subchannel_id schid)
-
-    basic validation of subchannel
-
-    :param struct subchannel \*sch:
-        subchannel structure to be filled out
-
-    :param struct subchannel_id schid:
-        subchannel id
-
-.. _`cio_validate_subchannel.description`:
-
-Description
------------
-
-Find out subchannel type and initialize struct subchannel.
-
-.. _`cio_validate_subchannel.return-codes`:
-
-Return codes
-------------
-
-0 on success
--ENXIO for non-defined subchannels
--ENODEV for invalid subchannels or blacklisted devices
--EIO for subchannels in an invalid subchannel set
+    :type sch: struct subchannel \*
 
 .. _`cio_tm_start_key`:
 
@@ -112,17 +86,21 @@ cio_tm_start_key
 
     perform start function
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel on which to perform the start function
+    :type sch: struct subchannel \*
 
-    :param struct tcw \*tcw:
+    :param tcw:
         transport-command word to be started
+    :type tcw: struct tcw \*
 
-    :param u8 lpm:
+    :param lpm:
         mask of paths to use
+    :type lpm: u8
 
-    :param u8 key:
+    :param key:
         storage key to use for storage access
+    :type key: u8
 
 .. _`cio_tm_start_key.description`:
 
@@ -141,8 +119,9 @@ cio_tm_intrg
 
     perform interrogate function
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel on which to perform the interrogate function
+    :type sch: struct subchannel \*
 
 .. _`cio_tm_intrg.description`:
 

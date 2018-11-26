@@ -43,17 +43,21 @@ drm_crtc_add_crc_entry
 
     Add entry with CRC information for a frame
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC to which the frame belongs
+    :type crtc: struct drm_crtc \*
 
-    :param bool has_frame:
+    :param has_frame:
         whether this entry has a frame number to go with
+    :type has_frame: bool
 
-    :param uint32_t frame:
+    :param frame:
         number of the frame these CRCs are about
+    :type frame: uint32_t
 
-    :param uint32_t \*crcs:
+    :param crcs:
         array of CRC values, with length matching #drm_crtc_crc.values_cnt
+    :type crcs: uint32_t \*
 
 .. _`drm_crtc_add_crc_entry.description`:
 

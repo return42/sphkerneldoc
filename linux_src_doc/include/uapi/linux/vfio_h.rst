@@ -201,6 +201,111 @@ Availability
 
 When attached to container
 
+.. _`vfio_region_gfx_edid`:
+
+struct vfio_region_gfx_edid
+===========================
+
+.. c:type:: struct vfio_region_gfx_edid
+
+    EDID region layout.
+
+.. _`vfio_region_gfx_edid.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vfio_region_gfx_edid {
+        __u32 edid_offset;
+        __u32 edid_max_size;
+        __u32 edid_size;
+        __u32 max_xres;
+        __u32 max_yres;
+        __u32 link_state;
+    #define VFIO_DEVICE_GFX_LINK_STATE_UP 1
+    #define VFIO_DEVICE_GFX_LINK_STATE_DOWN 2
+    }
+
+.. _`vfio_region_gfx_edid.members`:
+
+Members
+-------
+
+edid_offset
+    location of the edid blob, relative to the
+    start of the region (readonly).
+
+edid_max_size
+    max size of the edid blob (readonly).
+
+edid_size
+    actual edid size (read/write).
+
+max_xres
+    max display width (0 == no limitation, readonly).
+
+max_yres
+    max display height (0 == no limitation, readonly).
+
+link_state
+    display link state (read/write).
+
+.. _`vfio_region_gfx_edid.description`:
+
+Description
+-----------
+
+Set display link state and EDID blob.
+
+The EDID blob has monitor information such as brand, name, serial
+number, physical size, supported video modes and more.
+
+This special region allows userspace (typically qemu) set a virtual
+EDID for the virtual monitor, which allows a flexible display
+configuration.
+
+.. _`vfio_region_gfx_edid.for-the-edid-blob-spec-look-here`:
+
+For the edid blob spec look here
+--------------------------------
+
+https://en.wikipedia.org/wiki/Extended_Display_Identification_Data
+
+.. _`vfio_region_gfx_edid.on-linux-systems-you-can-find-the-edid-blob-in-sysfs`:
+
+On linux systems you can find the EDID blob in sysfs
+----------------------------------------------------
+
+/sys/class/drm/${card}/${connector}/edid
+
+You can use the edid-decode ulility (comes with xorg-x11-utils) to
+decode the EDID blob.
+
+.. _`vfio_region_gfx_edid.vfio_device_gfx_link_state_up`:
+
+VFIO_DEVICE_GFX_LINK_STATE_UP
+-----------------------------
+
+Monitor is turned on.
+
+.. _`vfio_region_gfx_edid.vfio_device_gfx_link_state_down`:
+
+VFIO_DEVICE_GFX_LINK_STATE_DOWN
+-------------------------------
+
+Monitor is turned off.
+
+.. _`vfio_region_gfx_edid.edid-update-protocol`:
+
+EDID update protocol
+--------------------
+
+(1) set link-state to down.
+(2) update edid blob and size.
+(3) set link-state to up.
+
 .. _`vfio_device_reset`:
 
 VFIO_DEVICE_RESET

@@ -10,8 +10,9 @@ ath5k_drain_tx_buffs
 
     Empty tx buffers
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         *undescribed*
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_drain_tx_buffs.description`:
 
@@ -35,12 +36,14 @@ ath5k_beacon_update_timers
 
     update beacon timers
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         struct ath5k_hw pointer we are operating on
+    :type ah: struct ath5k_hw \*
 
-    :param u64 bc_tsf:
+    :param bc_tsf:
         the timestamp of the beacon. 0 to reset the TSF. -1 to perform a
         beacon timer update based on the current HW TSF.
+    :type bc_tsf: u64
 
 .. _`ath5k_beacon_update_timers.description`:
 
@@ -65,8 +68,9 @@ ath5k_beacon_config
 
     Configure the beacon queues and interrupts
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         struct ath5k_hw pointer we are operating on
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_beacon_config.description`:
 

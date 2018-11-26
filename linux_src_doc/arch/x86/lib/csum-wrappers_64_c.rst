@@ -10,20 +10,25 @@ csum_partial_copy_from_user
 
     Copy and checksum from user space.
 
-    :param const void __user \*src:
+    :param src:
         source address (user space)
+    :type src: const void __user \*
 
-    :param void \*dst:
+    :param dst:
         destination address
+    :type dst: void \*
 
-    :param int len:
+    :param len:
         number of bytes to be copied.
+    :type len: int
 
-    :param __wsum isum:
+    :param isum:
         initial sum that is added into the result (32bit unfolded)
+    :type isum: __wsum
 
-    :param int \*errp:
+    :param errp:
         set to -EFAULT for an bad source address.
+    :type errp: int \*
 
 .. _`csum_partial_copy_from_user.description`:
 
@@ -42,20 +47,25 @@ csum_partial_copy_to_user
 
     Copy and checksum to user space.
 
-    :param const void \*src:
+    :param src:
         source address
+    :type src: const void \*
 
-    :param void __user \*dst:
+    :param dst:
         destination address (user space)
+    :type dst: void __user \*
 
-    :param int len:
+    :param len:
         number of bytes to be copied.
+    :type len: int
 
-    :param __wsum isum:
+    :param isum:
         initial sum that is added into the result (32bit unfolded)
+    :type isum: __wsum
 
-    :param int \*errp:
+    :param errp:
         set to -EFAULT for an bad destination address.
+    :type errp: int \*
 
 .. _`csum_partial_copy_to_user.description`:
 
@@ -74,17 +84,21 @@ csum_partial_copy_nocheck
 
     Copy and checksum.
 
-    :param const void \*src:
+    :param src:
         source address
+    :type src: const void \*
 
-    :param void \*dst:
+    :param dst:
         destination address
+    :type dst: void \*
 
-    :param int len:
+    :param len:
         number of bytes to be copied.
+    :type len: int
 
-    :param __wsum sum:
+    :param sum:
         initial sum that is added into the result (32bit unfolded)
+    :type sum: __wsum
 
 .. _`csum_partial_copy_nocheck.description`:
 

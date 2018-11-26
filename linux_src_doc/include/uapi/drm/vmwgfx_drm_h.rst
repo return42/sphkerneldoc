@@ -25,6 +25,9 @@ DRM_VMW_PARAM_OVERLAY_IOCTL
 
 Does the driver support the overlay ioctl.
 
+DRM_VMW_PARAM_SM4_1
+SM4_1 support is enabled.
+
 .. _`drm_vmw_handle_type`:
 
 enum drm_vmw_handle_type
@@ -315,22 +318,22 @@ Use the fence_seq member.
 
 Input / Output data to the DRM_VMW_EXECBUF Ioctl.
 
-.. _`drm_vmw_dmabuf_rep`:
+.. _`drm_vmw_bo_rep`:
 
-struct drm_vmw_dmabuf_rep
-=========================
+struct drm_vmw_bo_rep
+=====================
 
-.. c:type:: struct drm_vmw_dmabuf_rep
+.. c:type:: struct drm_vmw_bo_rep
 
 
-.. _`drm_vmw_dmabuf_rep.definition`:
+.. _`drm_vmw_bo_rep.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct drm_vmw_dmabuf_rep {
+    struct drm_vmw_bo_rep {
         __u64 map_handle;
         __u32 handle;
         __u32 cur_gmr_id;
@@ -338,7 +341,7 @@ Definition
         __u32 pad64;
     }
 
-.. _`drm_vmw_dmabuf_rep.members`:
+.. _`drm_vmw_bo_rep.members`:
 
 Members
 -------
@@ -360,34 +363,34 @@ cur_gmr_offset
 pad64
     *undescribed*
 
-.. _`drm_vmw_dmabuf_rep.description`:
+.. _`drm_vmw_bo_rep.description`:
 
 Description
 -----------
 
-Output data from the DRM_VMW_ALLOC_DMABUF Ioctl.
+Output data from the DRM_VMW_ALLOC_BO Ioctl.
 
-.. _`drm_vmw_alloc_dmabuf_arg`:
+.. _`drm_vmw_alloc_bo_arg`:
 
-union drm_vmw_alloc_dmabuf_arg
-==============================
+union drm_vmw_alloc_bo_arg
+==========================
 
-.. c:type:: struct drm_vmw_alloc_dmabuf_arg
+.. c:type:: struct drm_vmw_alloc_bo_arg
 
 
-.. _`drm_vmw_alloc_dmabuf_arg.definition`:
+.. _`drm_vmw_alloc_bo_arg.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    union drm_vmw_alloc_dmabuf_arg {
-        struct drm_vmw_alloc_dmabuf_req req;
-        struct drm_vmw_dmabuf_rep rep;
+    union drm_vmw_alloc_bo_arg {
+        struct drm_vmw_alloc_bo_req req;
+        struct drm_vmw_bo_rep rep;
     }
 
-.. _`drm_vmw_alloc_dmabuf_arg.members`:
+.. _`drm_vmw_alloc_bo_arg.members`:
 
 Members
 -------
@@ -398,12 +401,12 @@ req
 rep
     Output data as described above.
 
-.. _`drm_vmw_alloc_dmabuf_arg.description`:
+.. _`drm_vmw_alloc_bo_arg.description`:
 
 Description
 -----------
 
-Argument to the DRM_VMW_ALLOC_DMABUF Ioctl.
+Argument to the DRM_VMW_ALLOC_BO Ioctl.
 
 .. _`drm_vmw_control_stream_arg`:
 
@@ -1118,6 +1121,138 @@ Description
 -----------
 
 Argument to the DRM_VMW_HANDLE_CLOSE Ioctl.
+
+.. _`drm_vmw_gb_surface_create_ext_req`:
+
+struct drm_vmw_gb_surface_create_ext_req
+========================================
+
+.. c:type:: struct drm_vmw_gb_surface_create_ext_req
+
+
+.. _`drm_vmw_gb_surface_create_ext_req.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_vmw_gb_surface_create_ext_req {
+        struct drm_vmw_gb_surface_create_req base;
+        enum drm_vmw_surface_version version;
+        uint32_t svga3d_flags_upper_32_bits;
+        SVGA3dMSPattern multisample_pattern;
+        SVGA3dMSQualityLevel quality_level;
+        uint64_t must_be_zero;
+    }
+
+.. _`drm_vmw_gb_surface_create_ext_req.members`:
+
+Members
+-------
+
+base
+    Surface create parameters.
+
+version
+    Version of surface create ioctl.
+
+svga3d_flags_upper_32_bits
+    Upper 32 bits of svga3d flags.
+
+multisample_pattern
+    Multisampling pattern when msaa is supported.
+
+quality_level
+    Precision settings for each sample.
+
+must_be_zero
+    Reserved for future usage.
+
+.. _`drm_vmw_gb_surface_create_ext_req.description`:
+
+Description
+-----------
+
+Input argument to the  DRM_VMW_GB_SURFACE_CREATE_EXT Ioctl.
+Part of output argument for the DRM_VMW_GB_SURFACE_REF_EXT Ioctl.
+
+.. _`drm_vmw_gb_surface_create_ext_arg`:
+
+union drm_vmw_gb_surface_create_ext_arg
+=======================================
+
+.. c:type:: struct drm_vmw_gb_surface_create_ext_arg
+
+
+.. _`drm_vmw_gb_surface_create_ext_arg.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    union drm_vmw_gb_surface_create_ext_arg {
+        struct drm_vmw_gb_surface_create_rep rep;
+        struct drm_vmw_gb_surface_create_ext_req req;
+    }
+
+.. _`drm_vmw_gb_surface_create_ext_arg.members`:
+
+Members
+-------
+
+rep
+    Output argument as described above.
+
+req
+    Input argument as described above.
+
+.. _`drm_vmw_gb_surface_create_ext_arg.description`:
+
+Description
+-----------
+
+Argument to the DRM_VMW_GB_SURFACE_CREATE_EXT ioctl.
+
+.. _`drm_vmw_gb_surface_reference_ext_arg`:
+
+union drm_vmw_gb_surface_reference_ext_arg
+==========================================
+
+.. c:type:: struct drm_vmw_gb_surface_reference_ext_arg
+
+
+.. _`drm_vmw_gb_surface_reference_ext_arg.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    union drm_vmw_gb_surface_reference_ext_arg {
+        struct drm_vmw_gb_surface_ref_ext_rep rep;
+        struct drm_vmw_surface_arg req;
+    }
+
+.. _`drm_vmw_gb_surface_reference_ext_arg.members`:
+
+Members
+-------
+
+rep
+    Output data as described above at
+    "struct drm_vmw_gb_surface_ref_ext_rep"
+
+req
+    Input data as described above at "struct drm_vmw_surface_arg"
+
+.. _`drm_vmw_gb_surface_reference_ext_arg.description`:
+
+Description
+-----------
+
+Argument to the DRM_VMW_GB_SURFACE_REF Ioctl.
 
 .. This file was automatic generated / don't edit.
 

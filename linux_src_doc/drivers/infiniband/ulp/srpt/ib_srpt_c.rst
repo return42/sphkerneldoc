@@ -10,11 +10,13 @@ srpt_event_handler
 
     asynchronous IB event callback function
 
-    :param struct ib_event_handler \*handler:
+    :param handler:
         IB event handler registered by \ :c:func:`ib_register_event_handler`\ .
+    :type handler: struct ib_event_handler \*
 
-    :param struct ib_event \*event:
+    :param event:
         Description of the event that occurred.
+    :type event: struct ib_event \*
 
 .. _`srpt_event_handler.description`:
 
@@ -35,11 +37,13 @@ srpt_srq_event
 
     SRQ event callback function
 
-    :param struct ib_event \*event:
+    :param event:
         Description of the event that occurred.
+    :type event: struct ib_event \*
 
-    :param void \*ctx:
+    :param ctx:
         Context pointer specified at SRQ creation time.
+    :type ctx: void \*
 
 .. _`srpt_qp_event`:
 
@@ -50,11 +54,13 @@ srpt_qp_event
 
     QP event callback function
 
-    :param struct ib_event \*event:
+    :param event:
         Description of the event that occurred.
+    :type event: struct ib_event \*
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
 .. _`srpt_set_ioc`:
 
@@ -65,14 +71,17 @@ srpt_set_ioc
 
     initialize a IOUnitInfo structure
 
-    :param u8 \*c_list:
+    :param c_list:
         controller list.
+    :type c_list: u8 \*
 
-    :param u32 slot:
+    :param slot:
         one-based slot number.
+    :type slot: u32
 
-    :param u8 value:
+    :param value:
         four-bit value.
+    :type value: u8
 
 .. _`srpt_set_ioc.description`:
 
@@ -91,8 +100,9 @@ srpt_get_class_port_info
 
     copy ClassPortInfo to a management datagram
 
-    :param struct ib_dm_mad \*mad:
+    :param mad:
         Datagram that will be sent as response to DM_ATTR_CLASS_PORT_INFO.
+    :type mad: struct ib_dm_mad \*
 
 .. _`srpt_get_class_port_info.description`:
 
@@ -111,8 +121,9 @@ srpt_get_iou
 
     write IOUnitInfo to a management datagram
 
-    :param struct ib_dm_mad \*mad:
+    :param mad:
         Datagram that will be sent as response to DM_ATTR_IOU_INFO.
+    :type mad: struct ib_dm_mad \*
 
 .. _`srpt_get_iou.description`:
 
@@ -131,14 +142,17 @@ srpt_get_ioc
 
     write IOControllerprofile to a management datagram
 
-    :param struct srpt_port \*sport:
+    :param sport:
         HCA port through which the MAD has been received.
+    :type sport: struct srpt_port \*
 
-    :param u32 slot:
+    :param slot:
         Slot number specified in DM_ATTR_IOC_PROFILE query.
+    :type slot: u32
 
-    :param struct ib_dm_mad \*mad:
+    :param mad:
         Datagram that will be sent as response to DM_ATTR_IOC_PROFILE.
+    :type mad: struct ib_dm_mad \*
 
 .. _`srpt_get_ioc.description`:
 
@@ -158,20 +172,25 @@ srpt_get_svc_entries
 
     write ServiceEntries to a management datagram
 
-    :param u64 ioc_guid:
+    :param ioc_guid:
         I/O controller GUID to use in reply.
+    :type ioc_guid: u64
 
-    :param u16 slot:
+    :param slot:
         I/O controller number.
+    :type slot: u16
 
-    :param u8 hi:
+    :param hi:
         End of the range of service entries to be specified in the reply.
+    :type hi: u8
 
-    :param u8 lo:
+    :param lo:
         Start of the range of service entries to be specified in the reply..
+    :type lo: u8
 
-    :param struct ib_dm_mad \*mad:
+    :param mad:
         Datagram that will be sent as response to DM_ATTR_SVC_ENTRIES.
+    :type mad: struct ib_dm_mad \*
 
 .. _`srpt_get_svc_entries.description`:
 
@@ -190,14 +209,17 @@ srpt_mgmt_method_get
 
     process a received management datagram
 
-    :param struct srpt_port \*sp:
+    :param sp:
         HCA port through which the MAD has been received.
+    :type sp: struct srpt_port \*
 
-    :param struct ib_mad \*rq_mad:
+    :param rq_mad:
         received MAD.
+    :type rq_mad: struct ib_mad \*
 
-    :param struct ib_dm_mad \*rsp_mad:
+    :param rsp_mad:
         response MAD.
+    :type rsp_mad: struct ib_dm_mad \*
 
 .. _`srpt_mad_send_handler`:
 
@@ -208,11 +230,13 @@ srpt_mad_send_handler
 
     MAD send completion callback
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         Return value of \ :c:func:`ib_register_mad_agent`\ .
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param struct ib_mad_send_wc \*mad_wc:
+    :param mad_wc:
         Work completion reporting that the MAD has been sent.
+    :type mad_wc: struct ib_mad_send_wc \*
 
 .. _`srpt_mad_recv_handler`:
 
@@ -223,14 +247,17 @@ srpt_mad_recv_handler
 
     MAD reception callback function
 
-    :param struct ib_mad_agent \*mad_agent:
+    :param mad_agent:
         Return value of \ :c:func:`ib_register_mad_agent`\ .
+    :type mad_agent: struct ib_mad_agent \*
 
-    :param struct ib_mad_send_buf \*send_buf:
+    :param send_buf:
         Not used.
+    :type send_buf: struct ib_mad_send_buf \*
 
-    :param struct ib_mad_recv_wc \*mad_wc:
+    :param mad_wc:
         Work completion reporting that a MAD has been received.
+    :type mad_wc: struct ib_mad_recv_wc \*
 
 .. _`srpt_refresh_port`:
 
@@ -241,8 +268,9 @@ srpt_refresh_port
 
     configure a HCA port
 
-    :param struct srpt_port \*sport:
+    :param sport:
         SRPT HCA port.
+    :type sport: struct srpt_port \*
 
 .. _`srpt_refresh_port.description`:
 
@@ -269,8 +297,9 @@ srpt_unregister_mad_agent
 
     unregister MAD callback functions
 
-    :param struct srpt_device \*sdev:
+    :param sdev:
         SRPT HCA pointer.
+    :type sdev: struct srpt_device \*
 
 .. _`srpt_unregister_mad_agent.note`:
 
@@ -288,17 +317,21 @@ srpt_alloc_ioctx
 
     allocate a SRPT I/O context structure
 
-    :param struct srpt_device \*sdev:
+    :param sdev:
         SRPT HCA pointer.
+    :type sdev: struct srpt_device \*
 
-    :param int ioctx_size:
+    :param ioctx_size:
         I/O context size.
+    :type ioctx_size: int
 
-    :param int dma_size:
+    :param dma_size:
         Size of I/O context DMA buffer.
+    :type dma_size: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA data direction.
+    :type dir: enum dma_data_direction
 
 .. _`srpt_free_ioctx`:
 
@@ -309,17 +342,21 @@ srpt_free_ioctx
 
     free a SRPT I/O context structure
 
-    :param struct srpt_device \*sdev:
+    :param sdev:
         SRPT HCA pointer.
+    :type sdev: struct srpt_device \*
 
-    :param struct srpt_ioctx \*ioctx:
+    :param ioctx:
         I/O context pointer.
+    :type ioctx: struct srpt_ioctx \*
 
-    :param int dma_size:
+    :param dma_size:
         Size of I/O context DMA buffer.
+    :type dma_size: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA data direction.
+    :type dir: enum dma_data_direction
 
 .. _`srpt_alloc_ioctx_ring`:
 
@@ -330,20 +367,25 @@ srpt_alloc_ioctx_ring
 
     allocate a ring of SRPT I/O context structures
 
-    :param struct srpt_device \*sdev:
+    :param sdev:
         Device to allocate the I/O context ring for.
+    :type sdev: struct srpt_device \*
 
-    :param int ring_size:
+    :param ring_size:
         Number of elements in the I/O context ring.
+    :type ring_size: int
 
-    :param int ioctx_size:
+    :param ioctx_size:
         I/O context size.
+    :type ioctx_size: int
 
-    :param int dma_size:
+    :param dma_size:
         DMA buffer size.
+    :type dma_size: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA data direction.
+    :type dir: enum dma_data_direction
 
 .. _`srpt_free_ioctx_ring`:
 
@@ -354,20 +396,25 @@ srpt_free_ioctx_ring
 
     free the ring of SRPT I/O context structures
 
-    :param struct srpt_ioctx \*\*ioctx_ring:
+    :param ioctx_ring:
         I/O context ring to be freed.
+    :type ioctx_ring: struct srpt_ioctx \*\*
 
-    :param struct srpt_device \*sdev:
+    :param sdev:
         SRPT HCA pointer.
+    :type sdev: struct srpt_device \*
 
-    :param int ring_size:
+    :param ring_size:
         Number of ring elements.
+    :type ring_size: int
 
-    :param int dma_size:
+    :param dma_size:
         Size of I/O context DMA buffer.
+    :type dma_size: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA data direction.
+    :type dir: enum dma_data_direction
 
 .. _`srpt_set_cmd_state`:
 
@@ -378,11 +425,13 @@ srpt_set_cmd_state
 
     set the state of a SCSI command
 
-    :param struct srpt_send_ioctx \*ioctx:
+    :param ioctx:
         Send I/O context.
+    :type ioctx: struct srpt_send_ioctx \*
 
-    :param enum srpt_command_state new:
+    :param new:
         New I/O context state.
+    :type new: enum srpt_command_state
 
 .. _`srpt_set_cmd_state.description`:
 
@@ -401,14 +450,17 @@ srpt_test_and_set_cmd_state
 
     test and set the state of a command
 
-    :param struct srpt_send_ioctx \*ioctx:
+    :param ioctx:
         Send I/O context.
+    :type ioctx: struct srpt_send_ioctx \*
 
-    :param enum srpt_command_state old:
+    :param old:
         Current I/O context state.
+    :type old: enum srpt_command_state
 
-    :param enum srpt_command_state new:
+    :param new:
         New I/O context state.
+    :type new: enum srpt_command_state
 
 .. _`srpt_test_and_set_cmd_state.description`:
 
@@ -426,14 +478,17 @@ srpt_post_recv
 
     post an IB receive request
 
-    :param struct srpt_device \*sdev:
+    :param sdev:
         SRPT HCA pointer.
+    :type sdev: struct srpt_device \*
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
-    :param struct srpt_recv_ioctx \*ioctx:
+    :param ioctx:
         Receive I/O context pointer.
+    :type ioctx: struct srpt_recv_ioctx \*
 
 .. _`srpt_zerolength_write`:
 
@@ -444,8 +499,9 @@ srpt_zerolength_write
 
     perform a zero-length RDMA write
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
 .. _`srpt_zerolength_write.a-quote-from-the-infiniband-specification`:
 
@@ -466,25 +522,31 @@ srpt_get_desc_tbl
 
     parse the data descriptors of a SRP_CMD request
 
-    :param struct srpt_send_ioctx \*ioctx:
+    :param ioctx:
         Pointer to the I/O context associated with the request.
+    :type ioctx: struct srpt_send_ioctx \*
 
-    :param struct srp_cmd \*srp_cmd:
+    :param srp_cmd:
         Pointer to the SRP_CMD request data.
+    :type srp_cmd: struct srp_cmd \*
 
-    :param enum dma_data_direction \*dir:
+    :param dir:
         Pointer to the variable to which the transfer direction will be
         written.
+    :type dir: enum dma_data_direction \*
 
-    :param struct scatterlist \*\*sg:
+    :param sg:
         [out] scatterlist allocated for the parsed SRP_CMD.
+    :type sg: struct scatterlist \*\*
 
-    :param unsigned \*sg_cnt:
+    :param sg_cnt:
         [out] length of \ ``sg``\ .
+    :type sg_cnt: unsigned \*
 
-    :param u64 \*data_len:
+    :param data_len:
         Pointer to the variable to which the total data length of all
         descriptors in the SRP_CMD request will be written.
+    :type data_len: u64 \*
 
 .. _`srpt_get_desc_tbl.description`:
 
@@ -505,11 +567,13 @@ srpt_init_ch_qp
 
     initialize queue pair attributes
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
-    :param struct ib_qp \*qp:
+    :param qp:
         Queue pair pointer.
+    :type qp: struct ib_qp \*
 
 .. _`srpt_init_ch_qp.description`:
 
@@ -528,11 +592,13 @@ srpt_ch_qp_rtr
 
     change the state of a channel to 'ready to receive' (RTR)
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         channel of the queue pair.
+    :type ch: struct srpt_rdma_ch \*
 
-    :param struct ib_qp \*qp:
+    :param qp:
         queue pair to change the state of.
+    :type qp: struct ib_qp \*
 
 .. _`srpt_ch_qp_rtr.description`:
 
@@ -559,11 +625,13 @@ srpt_ch_qp_rts
 
     change the state of a channel to 'ready to send' (RTS)
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         channel of the queue pair.
+    :type ch: struct srpt_rdma_ch \*
 
-    :param struct ib_qp \*qp:
+    :param qp:
         queue pair to change the state of.
+    :type qp: struct ib_qp \*
 
 .. _`srpt_ch_qp_rts.description`:
 
@@ -590,8 +658,9 @@ srpt_ch_qp_err
 
     set the channel queue pair state to 'error'
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
 .. _`srpt_get_send_ioctx`:
 
@@ -602,8 +671,9 @@ srpt_get_send_ioctx
 
     obtain an I/O context for sending to the initiator
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
 .. _`srpt_abort_cmd`:
 
@@ -614,8 +684,9 @@ srpt_abort_cmd
 
     abort a SCSI command
 
-    :param struct srpt_send_ioctx \*ioctx:
+    :param ioctx:
         I/O context associated with the SCSI command.
+    :type ioctx: struct srpt_send_ioctx \*
 
 .. _`srpt_rdma_read_done`:
 
@@ -626,11 +697,13 @@ srpt_rdma_read_done
 
     RDMA read completion callback
 
-    :param struct ib_cq \*cq:
+    :param cq:
         Completion queue.
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         Work completion.
+    :type wc: struct ib_wc \*
 
 .. _`srpt_rdma_read_done.xxx`:
 
@@ -651,19 +724,23 @@ srpt_build_cmd_rsp
 
     build a SRP_RSP response
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         RDMA channel through which the request has been received.
+    :type ch: struct srpt_rdma_ch \*
 
-    :param struct srpt_send_ioctx \*ioctx:
+    :param ioctx:
         I/O context associated with the SRP_CMD request. The response will
         be built in the buffer ioctx->buf points at and hence this function will
         overwrite the request data.
+    :type ioctx: struct srpt_send_ioctx \*
 
-    :param u64 tag:
+    :param tag:
         tag of the request for which this response is being generated.
+    :type tag: u64
 
-    :param int status:
+    :param status:
         value for the STATUS field of the SRP_RSP information unit.
+    :type status: int
 
 .. _`srpt_build_cmd_rsp.description`:
 
@@ -685,17 +762,21 @@ srpt_build_tskmgmt_rsp
 
     build a task management response
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         RDMA channel through which the request has been received.
+    :type ch: struct srpt_rdma_ch \*
 
-    :param struct srpt_send_ioctx \*ioctx:
+    :param ioctx:
         I/O context in which the SRP_RSP response will be built.
+    :type ioctx: struct srpt_send_ioctx \*
 
-    :param u8 rsp_code:
+    :param rsp_code:
         RSP_CODE that will be stored in the response.
+    :type rsp_code: u8
 
-    :param u64 tag:
+    :param tag:
         Tag of the request for which this response is being generated.
+    :type tag: u64
 
 .. _`srpt_build_tskmgmt_rsp.description`:
 
@@ -717,14 +798,17 @@ srpt_handle_cmd
 
     process a SRP_CMD information unit
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
-    :param struct srpt_recv_ioctx \*recv_ioctx:
+    :param recv_ioctx:
         Receive I/O context.
+    :type recv_ioctx: struct srpt_recv_ioctx \*
 
-    :param struct srpt_send_ioctx \*send_ioctx:
+    :param send_ioctx:
         Send I/O context.
+    :type send_ioctx: struct srpt_send_ioctx \*
 
 .. _`srpt_handle_tsk_mgmt`:
 
@@ -735,14 +819,17 @@ srpt_handle_tsk_mgmt
 
     process a SRP_TSK_MGMT information unit
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
-    :param struct srpt_recv_ioctx \*recv_ioctx:
+    :param recv_ioctx:
         Receive I/O context.
+    :type recv_ioctx: struct srpt_recv_ioctx \*
 
-    :param struct srpt_send_ioctx \*send_ioctx:
+    :param send_ioctx:
         Send I/O context.
+    :type send_ioctx: struct srpt_send_ioctx \*
 
 .. _`srpt_handle_tsk_mgmt.description`:
 
@@ -763,11 +850,13 @@ srpt_handle_new_iu
 
     process a newly received information unit
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         RDMA channel through which the information unit has been received.
+    :type ch: struct srpt_rdma_ch \*
 
-    :param struct srpt_recv_ioctx \*recv_ioctx:
+    :param recv_ioctx:
         Receive I/O context associated with the information unit.
+    :type recv_ioctx: struct srpt_recv_ioctx \*
 
 .. _`srpt_send_done`:
 
@@ -778,11 +867,13 @@ srpt_send_done
 
     send completion callback
 
-    :param struct ib_cq \*cq:
+    :param cq:
         Completion queue.
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         Work completion.
+    :type wc: struct ib_wc \*
 
 .. _`srpt_send_done.note`:
 
@@ -810,8 +901,9 @@ srpt_create_ch_ib
 
     create receive and send completion queues
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
 .. _`srpt_close_ch`:
 
@@ -822,8 +914,9 @@ srpt_close_ch
 
     close a RDMA channel
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
 .. _`srpt_close_ch.description`:
 
@@ -845,27 +938,34 @@ srpt_cm_req_recv
 
     process the event IB_CM_REQ_RECEIVED
 
-    :param struct srpt_device \*const sdev:
+    :param sdev:
         HCA through which the login request was received.
+    :type sdev: struct srpt_device \*const
 
-    :param struct ib_cm_id \*ib_cm_id:
+    :param ib_cm_id:
         IB/CM connection identifier in case of IB/CM.
+    :type ib_cm_id: struct ib_cm_id \*
 
-    :param struct rdma_cm_id \*rdma_cm_id:
+    :param rdma_cm_id:
         RDMA/CM connection identifier in case of RDMA/CM.
+    :type rdma_cm_id: struct rdma_cm_id \*
 
-    :param u8 port_num:
+    :param port_num:
         Port through which the REQ message was received.
+    :type port_num: u8
 
-    :param __be16 pkey:
+    :param pkey:
         P_Key of the incoming connection.
+    :type pkey: __be16
 
-    :param const struct srp_login_req \*req:
+    :param req:
         SRP login request.
+    :type req: const struct srp_login_req \*
 
-    :param const char \*src_addr:
+    :param src_addr:
         GID (IB/CM) or IP address (RDMA/CM) of the port that submitted
         the login request.
+    :type src_addr: const char \*
 
 .. _`srpt_cm_req_recv.description`:
 
@@ -884,8 +984,9 @@ srpt_cm_rtu_recv
 
     process an IB_CM_RTU_RECEIVED or USER_ESTABLISHED event
 
-    :param struct srpt_rdma_ch \*ch:
+    :param ch:
         SRPT RDMA channel.
+    :type ch: struct srpt_rdma_ch \*
 
 .. _`srpt_cm_rtu_recv.description`:
 
@@ -900,15 +1001,17 @@ established and that the recipient may begin transmitting.
 srpt_cm_handler
 ===============
 
-.. c:function:: int srpt_cm_handler(struct ib_cm_id *cm_id, struct ib_cm_event *event)
+.. c:function:: int srpt_cm_handler(struct ib_cm_id *cm_id, const struct ib_cm_event *event)
 
     IB connection manager callback function
 
-    :param struct ib_cm_id \*cm_id:
+    :param cm_id:
         IB/CM connection identifier.
+    :type cm_id: struct ib_cm_id \*
 
-    :param struct ib_cm_event \*event:
+    :param event:
         IB/CM event.
+    :type event: const struct ib_cm_event \*
 
 .. _`srpt_cm_handler.description`:
 
@@ -936,8 +1039,9 @@ srpt_queue_response
 
     transmit the response to a SCSI command
 
-    :param struct se_cmd \*cmd:
+    :param cmd:
         SCSI target command.
+    :type cmd: struct se_cmd \*
 
 .. _`srpt_queue_response.description`:
 
@@ -956,8 +1060,9 @@ srpt_release_sport
 
     disable login and wait for associated channels
 
-    :param struct srpt_port \*sport:
+    :param sport:
         SRPT HCA port.
+    :type sport: struct srpt_port \*
 
 .. _`srpt_add_one`:
 
@@ -968,8 +1073,9 @@ srpt_add_one
 
     InfiniBand device addition callback function
 
-    :param struct ib_device \*device:
+    :param device:
         Describes a HCA.
+    :type device: struct ib_device \*
 
 .. _`srpt_remove_one`:
 
@@ -980,11 +1086,13 @@ srpt_remove_one
 
     InfiniBand device removal callback function
 
-    :param struct ib_device \*device:
+    :param device:
         Describes a HCA.
+    :type device: struct ib_device \*
 
-    :param void \*client_data:
+    :param client_data:
         The value passed as the third argument to \ :c:func:`ib_set_client_data`\ .
+    :type client_data: void \*
 
 .. _`srpt_close_session`:
 
@@ -995,8 +1103,9 @@ srpt_close_session
 
     forcibly close a session
 
-    :param struct se_session \*se_sess:
+    :param se_sess:
         SCSI target session.
+    :type se_sess: struct se_session \*
 
 .. _`srpt_close_session.description`:
 
@@ -1016,8 +1125,9 @@ srpt_sess_get_index
 
     return the value of scsiAttIntrPortIndex (SCSI-MIB)
 
-    :param struct se_session \*se_sess:
+    :param se_sess:
         SCSI target session.
+    :type se_sess: struct se_session \*
 
 .. _`srpt_sess_get_index.description`:
 
@@ -1038,29 +1148,30 @@ srpt_parse_i_port_id
 
     parse an initiator port ID
 
-    :param u8 i_port_id:
+    :param i_port_id:
         Binary 128-bit port ID.
+    :type i_port_id: u8
 
-    :param const char \*name:
+    :param name:
         ASCII representation of a 128-bit initiator port ID.
+    :type name: const char \*
 
 .. _`srpt_make_tpg`:
 
 srpt_make_tpg
 =============
 
-.. c:function:: struct se_portal_group *srpt_make_tpg(struct se_wwn *wwn, struct config_group *group, const char *name)
+.. c:function:: struct se_portal_group *srpt_make_tpg(struct se_wwn *wwn, const char *name)
 
     configfs callback invoked for mkdir /sys/kernel/config/target/$driver/$port/$tpg
 
-    :param struct se_wwn \*wwn:
+    :param wwn:
         Corresponds to \ ``$driver``\ /$port.
+    :type wwn: struct se_wwn \*
 
-    :param struct config_group \*group:
-        Not used.
-
-    :param const char \*name:
+    :param name:
         \ ``$tpg``\ .
+    :type name: const char \*
 
 .. _`srpt_drop_tpg`:
 
@@ -1071,8 +1182,9 @@ srpt_drop_tpg
 
     configfs callback invoked for rmdir /sys/kernel/config/target/$driver/$port/$tpg
 
-    :param struct se_portal_group \*tpg:
+    :param tpg:
         Target portal group to deregister.
+    :type tpg: struct se_portal_group \*
 
 .. _`srpt_make_tport`:
 
@@ -1083,14 +1195,17 @@ srpt_make_tport
 
     configfs callback invoked for mkdir /sys/kernel/config/target/$driver/$port
 
-    :param struct target_fabric_configfs \*tf:
+    :param tf:
         Not used.
+    :type tf: struct target_fabric_configfs \*
 
-    :param struct config_group \*group:
+    :param group:
         Not used.
+    :type group: struct config_group \*
 
-    :param const char \*name:
+    :param name:
         \ ``$port``\ .
+    :type name: const char \*
 
 .. _`srpt_drop_tport`:
 
@@ -1101,8 +1216,9 @@ srpt_drop_tport
 
     configfs callback invoked for rmdir /sys/kernel/config/target/$driver/$port
 
-    :param struct se_wwn \*wwn:
+    :param wwn:
         \ ``$port``\ .
+    :type wwn: struct se_wwn \*
 
 .. _`srpt_init_module`:
 
@@ -1113,8 +1229,9 @@ srpt_init_module
 
     kernel module initialization
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`srpt_init_module.note`:
 

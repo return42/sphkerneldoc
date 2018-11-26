@@ -10,8 +10,9 @@ isc_register
 
     register an I/O interruption subclass.
 
-    :param unsigned int isc:
+    :param isc:
         I/O interruption subclass to register
+    :type isc: unsigned int
 
 .. _`isc_register.description`:
 
@@ -37,8 +38,9 @@ isc_unregister
 
     unregister an I/O interruption subclass.
 
-    :param unsigned int isc:
+    :param isc:
         I/O interruption subclass to unregister
+    :type isc: unsigned int
 
 .. _`isc_unregister.description`:
 

@@ -1,32 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/core/cache.c
 
-.. _`add_modify_gid`:
+.. _`free_gid_work`:
 
-add_modify_gid
-==============
+free_gid_work
+=============
 
-.. c:function:: int add_modify_gid(struct ib_gid_table *table, const union ib_gid *gid, const struct ib_gid_attr *attr)
+.. c:function:: void free_gid_work(struct work_struct *work)
 
-    Add or modify GID table entry
+    Release reference to the GID entry
 
-    :param struct ib_gid_table \*table:
-        GID table in which GID to be added or modified
+    :param work:
+        Work structure to refer to GID entry which needs to be
+        deleted.
+    :type work: struct work_struct \*
 
-    :param const union ib_gid \*gid:
-        GID content
-
-    :param const struct ib_gid_attr \*attr:
-        Attributes of the GID
-
-.. _`add_modify_gid.description`:
+.. _`free_gid_work.description`:
 
 Description
 -----------
 
-Returns 0 on success or appropriate error code. It accepts zero
-GID addition for non RoCE ports for HCA's who report them as valid
-GID. However such zero GIDs are not added to the cache.
+\ :c:func:`free_gid_work`\  frees the entry from the HCA's hardware table
+if provider supports it. It releases reference to netdevice.
 
 .. _`del_gid`:
 
@@ -37,122 +32,301 @@ del_gid
 
     Delete GID table entry
 
-    :param struct ib_device \*ib_dev:
+    :param ib_dev:
         IB device whose GID entry to be deleted
+    :type ib_dev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         Port number of the IB device
+    :type port: u8
 
-    :param struct ib_gid_table \*table:
+    :param table:
         GID table of the IB device for a port
+    :type table: struct ib_gid_table \*
 
-    :param int ix:
+    :param ix:
         GID entry index to delete
+    :type ix: int
 
-.. _`ib_find_cached_gid_by_port`:
+.. _`add_modify_gid`:
 
-ib_find_cached_gid_by_port
-==========================
+add_modify_gid
+==============
 
-.. c:function:: int ib_find_cached_gid_by_port(struct ib_device *ib_dev, const union ib_gid *gid, enum ib_gid_type gid_type, u8 port, struct net_device *ndev, u16 *index)
+.. c:function:: int add_modify_gid(struct ib_gid_table *table, const struct ib_gid_attr *attr)
 
-    Returns the GID table index where a specified GID value occurs. It searches for the specified GID value in the local software cache.
+    Add or modify GID table entry
 
-    :param struct ib_device \*ib_dev:
+    :param table:
+        GID table in which GID to be added or modified
+    :type table: struct ib_gid_table \*
+
+    :param attr:
+        Attributes of the GID
+    :type attr: const struct ib_gid_attr \*
+
+.. _`add_modify_gid.description`:
+
+Description
+-----------
+
+Returns 0 on success or appropriate error code. It accepts zero
+GID addition for non RoCE ports for HCA's who report them as valid
+GID. However such zero GIDs are not added to the cache.
+
+.. _`rdma_find_gid_by_port`:
+
+rdma_find_gid_by_port
+=====================
+
+.. c:function:: const struct ib_gid_attr *rdma_find_gid_by_port(struct ib_device *ib_dev, const union ib_gid *gid, enum ib_gid_type gid_type, u8 port, struct net_device *ndev)
+
+    Returns the GID entry attributes when it finds a valid GID entry for given search parameters. It searches for the specified GID value in the local software cache.
+
+    :param ib_dev:
         *undescribed*
+    :type ib_dev: struct ib_device \*
 
-    :param const union ib_gid \*gid:
+    :param gid:
         The GID value to search for.
+    :type gid: const union ib_gid \*
 
-    :param enum ib_gid_type gid_type:
+    :param gid_type:
         The GID type to search for.
+    :type gid_type: enum ib_gid_type
 
-    :param u8 port:
+    :param port:
         *undescribed*
+    :type port: u8
 
-    :param struct net_device \*ndev:
-        In RoCE, the net device of the device. Null means ignore.
+    :param ndev:
+        In RoCE, the net device of the device. NULL means ignore.
+    :type ndev: struct net_device \*
 
-    :param u16 \*index:
-        The index into the cached GID table where the GID was found. This
-        parameter may be NULL.
+.. _`rdma_find_gid_by_port.description`:
 
-.. _`ib_cache_gid_find_by_filter`:
+Description
+-----------
 
-ib_cache_gid_find_by_filter
-===========================
+Returns sgid attributes if the GID is found with valid reference or
+returns ERR_PTR for the error.
+The caller must invoke \ :c:func:`rdma_put_gid_attr`\  to release the reference.
 
-.. c:function:: int ib_cache_gid_find_by_filter(struct ib_device *ib_dev, const union ib_gid *gid, u8 port, bool (*filter)(const union ib_gid *, const struct ib_gid_attr *, void *), void *context, u16 *index)
+.. _`rdma_find_gid_by_filter`:
 
-    Returns the GID table index where a specified GID value occurs
+rdma_find_gid_by_filter
+=======================
 
-    :param struct ib_device \*ib_dev:
+.. c:function:: const struct ib_gid_attr *rdma_find_gid_by_filter(struct ib_device *ib_dev, const union ib_gid *gid, u8 port, bool (*filter)(const union ib_gid *gid, const struct ib_gid_attr *, void *), void *context)
+
+    Returns the GID table attribute where a specified GID value occurs
+
+    :param ib_dev:
         *undescribed*
+    :type ib_dev: struct ib_device \*
 
-    :param const union ib_gid \*gid:
+    :param gid:
         The GID value to search for.
+    :type gid: const union ib_gid \*
 
-    :param u8 port:
-        *undescribed*
+    :param port:
+        The port number of the device where the GID value could be
+        searched.
+    :type port: u8
 
-    :param bool (\*filter)(const union ib_gid \*, const struct ib_gid_attr \*, void \*):
+    :param bool (\*filter)(const union ib_gid \*gid, const struct ib_gid_attr \*, void \*):
         The filter function is executed on any matching GID in the table.
         If the filter function returns true, the corresponding index is returned,
         otherwise, we continue searching the GID table. It's guaranteed that
         while filter is executed, ndev field is valid and the structure won't
         change. filter is executed in an atomic context. filter must not be NULL.
 
-    :param void \*context:
+    :param context:
         *undescribed*
+    :type context: void \*
 
-    :param u16 \*index:
-        The index into the cached GID table where the GID was found. This
-        parameter may be NULL.
-
-.. _`ib_cache_gid_find_by_filter.description`:
+.. _`rdma_find_gid_by_filter.description`:
 
 Description
 -----------
 
-\ :c:func:`ib_cache_gid_find_by_filter`\  searches for the specified GID value
+\ :c:func:`rdma_find_gid_by_filter`\  searches for the specified GID value
 of which the filter function returns true in the port's GID table.
-This function is only supported on RoCE ports.
 
-.. _`ib_find_cached_gid`:
+.. _`rdma_query_gid`:
 
-ib_find_cached_gid
+rdma_query_gid
+==============
+
+.. c:function:: int rdma_query_gid(struct ib_device *device, u8 port_num, int index, union ib_gid *gid)
+
+    Read the GID content from the GID software cache
+
+    :param device:
+        Device to query the GID
+    :type device: struct ib_device \*
+
+    :param port_num:
+        Port number of the device
+    :type port_num: u8
+
+    :param index:
+        Index of the GID table entry to read
+    :type index: int
+
+    :param gid:
+        Pointer to GID where to store the entry's GID
+    :type gid: union ib_gid \*
+
+.. _`rdma_query_gid.description`:
+
+Description
+-----------
+
+\ :c:func:`rdma_query_gid`\  only reads the GID entry content for requested device,
+port and index. It reads for IB, RoCE and iWarp link layers.  It doesn't
+hold any reference to the GID table entry in the HCA or software cache.
+
+Returns 0 on success or appropriate error code.
+
+.. _`rdma_find_gid`:
+
+rdma_find_gid
+=============
+
+.. c:function:: const struct ib_gid_attr *rdma_find_gid(struct ib_device *device, const union ib_gid *gid, enum ib_gid_type gid_type, struct net_device *ndev)
+
+    Returns SGID attributes if the matching GID is found.
+
+    :param device:
+        The device to query.
+    :type device: struct ib_device \*
+
+    :param gid:
+        The GID value to search for.
+    :type gid: const union ib_gid \*
+
+    :param gid_type:
+        The GID type to search for.
+    :type gid_type: enum ib_gid_type
+
+    :param ndev:
+        In RoCE, the net device of the device. NULL means ignore.
+    :type ndev: struct net_device \*
+
+.. _`rdma_find_gid.description`:
+
+Description
+-----------
+
+\ :c:func:`rdma_find_gid`\  searches for the specified GID value in the software cache.
+
+Returns GID attributes if a valid GID is found or returns ERR_PTR for the
+error. The caller must invoke \ :c:func:`rdma_put_gid_attr`\  to release the reference.
+
+.. _`rdma_get_gid_attr`:
+
+rdma_get_gid_attr
+=================
+
+.. c:function:: const struct ib_gid_attr *rdma_get_gid_attr(struct ib_device *device, u8 port_num, int index)
+
+    Returns GID attributes for a port of a device at a requested gid_index, if a valid GID entry exists.
+
+    :param device:
+        The device to query.
+    :type device: struct ib_device \*
+
+    :param port_num:
+        The port number on the device where the GID value
+        is to be queried.
+    :type port_num: u8
+
+    :param index:
+        Index of the GID table entry whose attributes are to
+        be queried.
+    :type index: int
+
+.. _`rdma_get_gid_attr.description`:
+
+Description
+-----------
+
+\ :c:func:`rdma_get_gid_attr`\  acquires reference count of gid attributes from the
+cached GID table. Caller must invoke \ :c:func:`rdma_put_gid_attr`\  to release
+reference to gid attribute regardless of link layer.
+
+Returns pointer to valid gid attribute or ERR_PTR for the appropriate error
+code.
+
+.. _`rdma_put_gid_attr`:
+
+rdma_put_gid_attr
+=================
+
+.. c:function:: void rdma_put_gid_attr(const struct ib_gid_attr *attr)
+
+    Release reference to the GID attribute
+
+    :param attr:
+        Pointer to the GID attribute whose reference
+        needs to be released.
+    :type attr: const struct ib_gid_attr \*
+
+.. _`rdma_put_gid_attr.description`:
+
+Description
+-----------
+
+\ :c:func:`rdma_put_gid_attr`\  must be used to release reference whose
+reference is acquired using \ :c:func:`rdma_get_gid_attr`\  or any APIs
+which returns a pointer to the ib_gid_attr regardless of link layer
+of IB or RoCE.
+
+.. _`rdma_hold_gid_attr`:
+
+rdma_hold_gid_attr
 ==================
 
-.. c:function:: int ib_find_cached_gid(struct ib_device *device, const union ib_gid *gid, enum ib_gid_type gid_type, struct net_device *ndev, u8 *port_num, u16 *index)
+.. c:function:: void rdma_hold_gid_attr(const struct ib_gid_attr *attr)
 
-    Returns the port number and GID table index where a specified GID value occurs.
+    Get reference to existing GID attribute
 
-    :param struct ib_device \*device:
-        The device to query.
+    :param attr:
+        Pointer to the GID attribute whose reference
+        needs to be taken.
+    :type attr: const struct ib_gid_attr \*
 
-    :param const union ib_gid \*gid:
-        The GID value to search for.
-
-    :param enum ib_gid_type gid_type:
-        The GID type to search for.
-
-    :param struct net_device \*ndev:
-        In RoCE, the net device of the device. NULL means ignore.
-
-    :param u8 \*port_num:
-        The port number of the device where the GID value was found.
-
-    :param u16 \*index:
-        The index into the cached GID table where the GID was found.  This
-        parameter may be NULL.
-
-.. _`ib_find_cached_gid.description`:
+.. _`rdma_hold_gid_attr.description`:
 
 Description
 -----------
 
-\ :c:func:`ib_find_cached_gid`\  searches for the specified GID value in
-the local software cache.
+Increase the reference count to a GID attribute to keep it from being
+freed. Callers are required to already be holding a reference to attribute.
+
+.. _`rdma_read_gid_attr_ndev_rcu`:
+
+rdma_read_gid_attr_ndev_rcu
+===========================
+
+.. c:function:: struct net_device *rdma_read_gid_attr_ndev_rcu(const struct ib_gid_attr *attr)
+
+    Read GID attribute netdevice which must be in UP state.
+
+    :param attr:
+        Pointer to the GID attribute
+    :type attr: const struct ib_gid_attr \*
+
+.. _`rdma_read_gid_attr_ndev_rcu.description`:
+
+Description
+-----------
+
+Returns pointer to netdevice if the netdevice was attached to GID and
+netdevice is in UP state. Caller must hold RCU lock as this API
+reads the netdev flags which can change while netdevice migrates to
+different net namespace. Returns ERR_PTR with error code otherwise.
 
 .. This file was automatic generated / don't edit.
 

@@ -38,14 +38,17 @@ intel_audio_codec_enable
 
     Enable the audio codec for HD audio
 
-    :param struct intel_encoder \*encoder:
+    :param encoder:
         encoder on which to enable audio
+    :type encoder: struct intel_encoder \*
 
-    :param const struct intel_crtc_state \*crtc_state:
+    :param crtc_state:
         pointer to the current crtc state.
+    :type crtc_state: const struct intel_crtc_state \*
 
-    :param const struct drm_connector_state \*conn_state:
+    :param conn_state:
         pointer to the current connector state.
+    :type conn_state: const struct drm_connector_state \*
 
 .. _`intel_audio_codec_enable.description`:
 
@@ -64,14 +67,17 @@ intel_audio_codec_disable
 
     Disable the audio codec for HD audio
 
-    :param struct intel_encoder \*encoder:
+    :param encoder:
         encoder on which to disable audio
+    :type encoder: struct intel_encoder \*
 
-    :param const struct intel_crtc_state \*old_crtc_state:
+    :param old_crtc_state:
         pointer to the old crtc state.
+    :type old_crtc_state: const struct intel_crtc_state \*
 
-    :param const struct drm_connector_state \*old_conn_state:
+    :param old_conn_state:
         pointer to the old connector state.
+    :type old_conn_state: const struct drm_connector_state \*
 
 .. _`intel_audio_codec_disable.description`:
 
@@ -90,8 +96,9 @@ intel_init_audio_hooks
 
     Set up chip specific audio hooks
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_audio_component_init`:
 
@@ -102,8 +109,9 @@ i915_audio_component_init
 
     initialize and register the audio component
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_audio_component_init.description`:
 
@@ -131,8 +139,9 @@ i915_audio_component_cleanup
 
     deregister the audio component
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_audio_component_cleanup.description`:
 
@@ -151,8 +160,9 @@ intel_audio_init
 
     Initialize the audio driver either using component framework or using lpe audio bridge
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         the i915 drm device private data
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_audio_deinit`:
 
@@ -163,8 +173,9 @@ intel_audio_deinit
 
     deinitialize the audio driver
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         the i915 drm device private data
+    :type dev_priv: struct drm_i915_private \*
 
 .. This file was automatic generated / don't edit.
 

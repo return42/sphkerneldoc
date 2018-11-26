@@ -10,8 +10,9 @@ scsi_proc_hostdir_add
 
     Create directory in /proc for a scsi host
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         owner of this directory
+    :type sht: struct scsi_host_template \*
 
 .. _`scsi_proc_hostdir_add.description`:
 
@@ -29,8 +30,9 @@ scsi_proc_hostdir_rm
 
     remove directory in /proc for a scsi host
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         owner of directory
+    :type sht: struct scsi_host_template \*
 
 .. _`scsi_proc_host_add`:
 
@@ -41,8 +43,9 @@ scsi_proc_host_add
 
     Add entry for this host to appropriate /proc dir
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         host to add
+    :type shost: struct Scsi_Host \*
 
 .. _`scsi_proc_host_rm`:
 
@@ -53,8 +56,9 @@ scsi_proc_host_rm
 
     remove this host's entry from /proc
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         which host
+    :type shost: struct Scsi_Host \*
 
 .. _`proc_print_scsidevice`:
 
@@ -65,11 +69,13 @@ proc_print_scsidevice
 
     return data about this host
 
-    :param struct device \*dev:
+    :param dev:
         A scsi device
+    :type dev: struct device \*
 
-    :param void \*data:
+    :param data:
         \ :c:type:`struct seq_file <seq_file>`\  to output to.
+    :type data: void \*
 
 .. _`proc_print_scsidevice.description`:
 
@@ -88,17 +94,21 @@ scsi_add_single_device
 
     Respond to user request to probe for/add device
 
-    :param uint host:
+    :param host:
         user-supplied decimal integer
+    :type host: uint
 
-    :param uint channel:
+    :param channel:
         user-supplied decimal integer
+    :type channel: uint
 
-    :param uint id:
+    :param id:
         user-supplied decimal integer
+    :type id: uint
 
-    :param uint lun:
+    :param lun:
         user-supplied decimal integer
+    :type lun: uint
 
 .. _`scsi_add_single_device.description`:
 
@@ -126,17 +136,21 @@ scsi_remove_single_device
 
     Respond to user request to remove a device
 
-    :param uint host:
+    :param host:
         user-supplied decimal integer
+    :type host: uint
 
-    :param uint channel:
+    :param channel:
         user-supplied decimal integer
+    :type channel: uint
 
-    :param uint id:
+    :param id:
         user-supplied decimal integer
+    :type id: uint
 
-    :param uint lun:
+    :param lun:
         user-supplied decimal integer
+    :type lun: uint
 
 .. _`scsi_remove_single_device.description`:
 
@@ -155,17 +169,21 @@ proc_scsi_write
 
     handle writes to /proc/scsi/scsi
 
-    :param struct file \*file:
+    :param file:
         not used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         buffer to write
+    :type buf: const char __user \*
 
-    :param size_t length:
+    :param length:
         length of buf, at most PAGE_SIZE
+    :type length: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         not used
+    :type ppos: loff_t \*
 
 .. _`proc_scsi_write.description`:
 
@@ -196,11 +214,13 @@ proc_scsi_open
 
     glue function
 
-    :param struct inode \*inode:
+    :param inode:
         not used
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         passed to \ :c:func:`single_open`\ 
+    :type file: struct file \*
 
 .. _`proc_scsi_open.description`:
 
@@ -218,8 +238,9 @@ scsi_init_procfs
 
     create scsi and scsi/scsi in procfs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`scsi_exit_procfs`:
 
@@ -230,8 +251,9 @@ scsi_exit_procfs
 
     Remove scsi/scsi and scsi from procfs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

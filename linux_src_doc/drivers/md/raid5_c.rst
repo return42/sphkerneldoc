@@ -10,14 +10,17 @@ scribble_alloc
 
     return the required size of the scribble region \ ``num``\  - total number of disks in the array
 
-    :param int num:
+    :param num:
         *undescribed*
+    :type num: int
 
-    :param int cnt:
+    :param cnt:
         *undescribed*
+    :type cnt: int
 
-    :param gfp_t flags:
+    :param flags:
         *undescribed*
+    :type flags: gfp_t
 
 .. _`scribble_alloc.the-size-must-be-enough-to-contain`:
 
@@ -46,14 +49,17 @@ handle_stripe_fill
 
     read or compute data to satisfy pending requests.
 
-    :param struct stripe_head \*sh:
+    :param sh:
         *undescribed*
+    :type sh: struct stripe_head \*
 
-    :param struct stripe_head_state \*s:
+    :param s:
         *undescribed*
+    :type s: struct stripe_head_state \*
 
-    :param int disks:
+    :param disks:
         *undescribed*
+    :type disks: int
 
 .. This file was automatic generated / don't edit.
 

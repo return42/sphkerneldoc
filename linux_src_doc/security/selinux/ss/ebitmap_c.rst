@@ -10,11 +10,13 @@ ebitmap_netlbl_export
 
     Export an ebitmap into a NetLabel category bitmap
 
-    :param struct ebitmap \*ebmap:
+    :param ebmap:
         the ebitmap to export
+    :type ebmap: struct ebitmap \*
 
-    :param struct netlbl_lsm_catmap \*\*catmap:
+    :param catmap:
         the NetLabel category bitmap
+    :type catmap: struct netlbl_lsm_catmap \*\*
 
 .. _`ebitmap_netlbl_export.description`:
 
@@ -33,11 +35,13 @@ ebitmap_netlbl_import
 
     Import a NetLabel category bitmap into an ebitmap
 
-    :param struct ebitmap \*ebmap:
+    :param ebmap:
         the ebitmap to import
+    :type ebmap: struct ebitmap \*
 
-    :param struct netlbl_lsm_catmap \*catmap:
+    :param catmap:
         the NetLabel category bitmap
+    :type catmap: struct netlbl_lsm_catmap \*
 
 .. _`ebitmap_netlbl_import.description`:
 

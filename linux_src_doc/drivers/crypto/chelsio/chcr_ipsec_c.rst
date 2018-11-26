@@ -10,8 +10,9 @@ flits_to_desc
 
     returns the num of Tx descriptors for the given flits
 
-    :param unsigned int n:
+    :param n:
         the number of flits
+    :type n: unsigned int
 
 .. _`flits_to_desc.description`:
 

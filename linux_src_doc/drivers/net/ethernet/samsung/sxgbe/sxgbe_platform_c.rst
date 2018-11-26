@@ -8,8 +8,9 @@ sxgbe_platform_probe
 
 .. c:function:: int sxgbe_platform_probe(struct platform_device *pdev)
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer
+    :type pdev: struct platform_device \*
 
 .. _`sxgbe_platform_probe.description`:
 
@@ -27,8 +28,9 @@ sxgbe_platform_remove
 
 .. c:function:: int sxgbe_platform_remove(struct platform_device *pdev)
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer
+    :type pdev: struct platform_device \*
 
 .. _`sxgbe_platform_remove.description`:
 

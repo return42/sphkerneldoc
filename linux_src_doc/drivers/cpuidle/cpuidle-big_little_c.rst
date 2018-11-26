@@ -10,14 +10,17 @@ bl_enter_powerdown
 
     Programs CPU to enter the specified state
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle device
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         The target state to be programmed
+    :type drv: struct cpuidle_driver \*
 
-    :param int idx:
+    :param idx:
         state index
+    :type idx: int
 
 .. _`bl_enter_powerdown.description`:
 

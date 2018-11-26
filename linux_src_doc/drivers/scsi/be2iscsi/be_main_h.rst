@@ -19,11 +19,13 @@ HWI_GET_ASYNC_PDU_CTX
 
     So have atleast 8 of them by default
 
-    :param  phwi:
+    :param phwi:
         *undescribed*
+    :type phwi: 
 
-    :param  ulp_num:
+    :param ulp_num:
         *undescribed*
+    :type ulp_num: 
 
 .. _`membar_ctrl_int_ctrl_hostintr_mask`:
 

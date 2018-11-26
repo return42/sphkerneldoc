@@ -107,9 +107,12 @@ Definition
         IWL_UCODE_TLV_API_OCE,
         IWL_UCODE_TLV_API_NEW_BEACON_TEMPLATE,
         IWL_UCODE_TLV_API_NEW_RX_STATS,
+        IWL_UCODE_TLV_API_WOWLAN_KEY_MATERIAL,
         IWL_UCODE_TLV_API_QUOTA_LOW_LATENCY,
         IWL_UCODE_TLV_API_DEPRECATE_TTAK,
         IWL_UCODE_TLV_API_ADAPTIVE_DWELL_V2,
+        IWL_UCODE_TLV_API_FRAG_EBS,
+        IWL_UCODE_TLV_API_REDUCE_TX_POWER,
         NUM_IWL_UCODE_TLV_API
     };
 
@@ -159,6 +162,9 @@ IWL_UCODE_TLV_API_NEW_BEACON_TEMPLATE
 IWL_UCODE_TLV_API_NEW_RX_STATS
     should new RX STATISTICS API be used
 
+IWL_UCODE_TLV_API_WOWLAN_KEY_MATERIAL
+    *undescribed*
+
 IWL_UCODE_TLV_API_QUOTA_LOW_LATENCY
     Quota command includes a field
     indicating low latency direction.
@@ -169,6 +175,13 @@ IWL_UCODE_TLV_API_DEPRECATE_TTAK
 
 IWL_UCODE_TLV_API_ADAPTIVE_DWELL_V2
     This ucode supports version 8
+
+IWL_UCODE_TLV_API_FRAG_EBS
+    This ucode supports fragmented EBS
+
+IWL_UCODE_TLV_API_REDUCE_TX_POWER
+    This ucode supports v5 of
+    the REDUCE_TX_POWER_CMD.
 
 NUM_IWL_UCODE_TLV_API
     number of bits used
@@ -225,6 +238,7 @@ Definition
         IWL_UCODE_TLV_CAPA_D0I3_END_FIRST,
         IWL_UCODE_TLV_CAPA_TLC_OFFLOAD,
         IWL_UCODE_TLV_CAPA_DYNAMIC_QUOTA,
+        IWL_UCODE_TLV_CAPA_COEX_SCHEMA_2,
         IWL_UCODE_TLV_CAPA_EXTENDED_DTS_MEASURE,
         IWL_UCODE_TLV_CAPA_SHORT_PM_TIMEOUTS,
         IWL_UCODE_TLV_CAPA_BT_MPLUT_SUPPORT,
@@ -232,7 +246,7 @@ Definition
         IWL_UCODE_TLV_CAPA_CSA_AND_TBTT_OFFLOAD,
         IWL_UCODE_TLV_CAPA_BEACON_ANT_SELECTION,
         IWL_UCODE_TLV_CAPA_BEACON_STORING,
-        IWL_UCODE_TLV_CAPA_LAR_SUPPORT_V2,
+        IWL_UCODE_TLV_CAPA_LAR_SUPPORT_V3,
         IWL_UCODE_TLV_CAPA_CT_KILL_BY_FW,
         IWL_UCODE_TLV_CAPA_TEMP_THS_REPORT_SUPPORT,
         IWL_UCODE_TLV_CAPA_CTDP_SUPPORT,
@@ -240,7 +254,9 @@ Definition
         IWL_UCODE_TLV_CAPA_EXTEND_SHARED_MEM_CFG,
         IWL_UCODE_TLV_CAPA_LQM_SUPPORT,
         IWL_UCODE_TLV_CAPA_TX_POWER_ACK,
+        IWL_UCODE_TLV_CAPA_D3_DEBUG,
         IWL_UCODE_TLV_CAPA_LED_CMD_SUPPORT,
+        IWL_UCODE_TLV_CAPA_MCC_UPDATE_11AX_SUPPORT,
         IWL_UCODE_TLV_CAPA_MLME_OFFLOAD,
         NUM_IWL_UCODE_TLV_CAPA
     };
@@ -323,7 +339,7 @@ IWL_UCODE_TLV_CAPA_BT_COEX_RRC
     supports BT Coex RRC
 
 IWL_UCODE_TLV_CAPA_GSCAN_SUPPORT
-    supports gscan
+    supports gscan (no longer used)
 
 IWL_UCODE_TLV_CAPA_STA_PM_NOTIF
     firmware will send STA PM notification
@@ -342,6 +358,9 @@ IWL_UCODE_TLV_CAPA_TLC_OFFLOAD
 
 IWL_UCODE_TLV_CAPA_DYNAMIC_QUOTA
     firmware implements quota related
+
+IWL_UCODE_TLV_CAPA_COEX_SCHEMA_2
+    firmware implements Coex Schema 2
 
 IWL_UCODE_TLV_CAPA_EXTENDED_DTS_MEASURE
     extended DTS measurement
@@ -368,8 +387,8 @@ IWL_UCODE_TLV_CAPA_BEACON_STORING
     firmware will store the latest beacon
     from AP and will send it upon d0i3 exit.
 
-IWL_UCODE_TLV_CAPA_LAR_SUPPORT_V2
-    support LAR API V2
+IWL_UCODE_TLV_CAPA_LAR_SUPPORT_V3
+    support LAR API V3
 
 IWL_UCODE_TLV_CAPA_CT_KILL_BY_FW
     firmware responsible for CT-kill
@@ -397,8 +416,15 @@ IWL_UCODE_TLV_CAPA_TX_POWER_ACK
     command size (command version 4) that supports toggling ACK TX
     power reduction.
 
+IWL_UCODE_TLV_CAPA_D3_DEBUG
+    supports debug recording during D3
+
 IWL_UCODE_TLV_CAPA_LED_CMD_SUPPORT
     *undescribed*
+
+IWL_UCODE_TLV_CAPA_MCC_UPDATE_11AX_SUPPORT
+    MCC response support 11ax
+    capability.
 
 IWL_UCODE_TLV_CAPA_MLME_OFFLOAD
     supports MLME offload
@@ -584,42 +610,6 @@ MARBH_MODE
 MIPI_MODE
     monitor outputs the data through the MIPI interface
 
-.. _`iwl_fw_mem_seg_type`:
-
-enum iwl_fw_mem_seg_type
-========================
-
-.. c:type:: enum iwl_fw_mem_seg_type
-
-    memory segment type
-
-.. _`iwl_fw_mem_seg_type.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum iwl_fw_mem_seg_type {
-        FW_DBG_MEM_TYPE_MASK,
-        FW_DBG_MEM_TYPE_REGULAR,
-        FW_DBG_MEM_TYPE_PRPH
-    };
-
-.. _`iwl_fw_mem_seg_type.constants`:
-
-Constants
----------
-
-FW_DBG_MEM_TYPE_MASK
-    mask for the type indication
-
-FW_DBG_MEM_TYPE_REGULAR
-    regular memory
-
-FW_DBG_MEM_TYPE_PRPH
-    periphery memory (requires special reading)
-
 .. _`iwl_fw_dbg_mem_seg_tlv`:
 
 struct iwl_fw_dbg_mem_seg_tlv
@@ -648,8 +638,7 @@ Members
 -------
 
 data_type
-    the memory segment type to record, see \ :c:type:`enum iwl_fw_mem_seg_type <iwl_fw_mem_seg_type>`\ 
-    for what we care about
+    the memory segment type to record
 
 ofs
     the memory segment offset
@@ -1464,85 +1453,6 @@ hcmd
     other and be sent in the order that they appear in.
     This parses IWL_UCODE_TLV_FW_DBG_CONF. The user can add up-to
     \ ``FW_DBG_CONF_MAX``\  configuration per run.
-
-.. _`iwl_fw_gscan_capabilities`:
-
-struct iwl_fw_gscan_capabilities
-================================
-
-.. c:type:: struct iwl_fw_gscan_capabilities
-
-    gscan capabilities supported by FW
-
-.. _`iwl_fw_gscan_capabilities.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_fw_gscan_capabilities {
-        __le32 max_scan_cache_size;
-        __le32 max_scan_buckets;
-        __le32 max_ap_cache_per_scan;
-        __le32 max_rssi_sample_size;
-        __le32 max_scan_reporting_threshold;
-        __le32 max_hotlist_aps;
-        __le32 max_significant_change_aps;
-        __le32 max_bssid_history_entries;
-        __le32 max_hotlist_ssids;
-        __le32 max_number_epno_networks;
-        __le32 max_number_epno_networks_by_ssid;
-        __le32 max_number_of_white_listed_ssid;
-        __le32 max_number_of_black_listed_ssid;
-    }
-
-.. _`iwl_fw_gscan_capabilities.members`:
-
-Members
--------
-
-max_scan_cache_size
-    total space allocated for scan results (in bytes).
-
-max_scan_buckets
-    maximum number of channel buckets.
-
-max_ap_cache_per_scan
-    maximum number of APs that can be stored per scan.
-
-max_rssi_sample_size
-    number of RSSI samples used for averaging RSSI.
-
-max_scan_reporting_threshold
-    max possible report threshold. in percentage.
-
-max_hotlist_aps
-    maximum number of entries for hotlist APs.
-
-max_significant_change_aps
-    maximum number of entries for significant
-    change APs.
-
-max_bssid_history_entries
-    number of BSSID/RSSI entries that the device can
-    hold.
-
-max_hotlist_ssids
-    maximum number of entries for hotlist SSIDs.
-
-max_number_epno_networks
-    max number of epno entries.
-
-max_number_epno_networks_by_ssid
-    max number of epno entries if ssid is
-    specified.
-
-max_number_of_white_listed_ssid
-    max number of white listed SSIDs.
-
-max_number_of_black_listed_ssid
-    max number of black listed SSIDs.
 
 .. This file was automatic generated / don't edit.
 

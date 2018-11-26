@@ -10,11 +10,13 @@ qdio_free_buffers
 
     free qdio buffers
 
-    :param struct qdio_buffer \*\*buf:
+    :param buf:
         array of pointers to qdio buffers
+    :type buf: struct qdio_buffer \*\*
 
-    :param unsigned int count:
+    :param count:
         number of qdio buffers to free
+    :type count: unsigned int
 
 .. _`qdio_alloc_buffers`:
 
@@ -25,11 +27,13 @@ qdio_alloc_buffers
 
     allocate qdio buffers
 
-    :param struct qdio_buffer \*\*buf:
+    :param buf:
         array of pointers to qdio buffers
+    :type buf: struct qdio_buffer \*\*
 
-    :param unsigned int count:
+    :param count:
         number of qdio buffers to allocate
+    :type count: unsigned int
 
 .. _`qdio_reset_buffers`:
 
@@ -40,11 +44,13 @@ qdio_reset_buffers
 
     reset qdio buffers
 
-    :param struct qdio_buffer \*\*buf:
+    :param buf:
         array of pointers to qdio buffers
+    :type buf: struct qdio_buffer \*\*
 
-    :param unsigned int count:
+    :param count:
         number of qdio buffers that will be zeroed
+    :type count: unsigned int
 
 .. This file was automatic generated / don't edit.
 

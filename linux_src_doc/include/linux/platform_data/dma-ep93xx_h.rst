@@ -132,8 +132,9 @@ ep93xx_dma_chan_direction
 
     returns direction the channel can be used
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel
+    :type chan: struct dma_chan \*
 
 .. _`ep93xx_dma_chan_direction.description`:
 

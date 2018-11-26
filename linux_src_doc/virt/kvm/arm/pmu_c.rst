@@ -10,11 +10,13 @@ kvm_pmu_get_counter_value
 
     get PMU counter value
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u64 select_idx:
+    :param select_idx:
         The counter index
+    :type select_idx: u64
 
 .. _`kvm_pmu_set_counter_value`:
 
@@ -25,14 +27,17 @@ kvm_pmu_set_counter_value
 
     set PMU counter value
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u64 select_idx:
+    :param select_idx:
         The counter index
+    :type select_idx: u64
 
-    :param u64 val:
+    :param val:
         The counter value
+    :type val: u64
 
 .. _`kvm_pmu_stop_counter`:
 
@@ -43,11 +48,13 @@ kvm_pmu_stop_counter
 
     stop PMU counter
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_pmc \*pmc:
+    :param pmc:
         The PMU counter pointer
+    :type pmc: struct kvm_pmc \*
 
 .. _`kvm_pmu_stop_counter.description`:
 
@@ -65,8 +72,9 @@ kvm_pmu_vcpu_reset
 
     reset pmu state for cpu
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_pmu_vcpu_destroy`:
 
@@ -77,8 +85,9 @@ kvm_pmu_vcpu_destroy
 
     free perf event of PMU for cpu
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_pmu_enable_counter`:
 
@@ -89,11 +98,13 @@ kvm_pmu_enable_counter
 
     enable selected PMU counter
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u64 val:
+    :param val:
         the value guest writes to PMCNTENSET register
+    :type val: u64
 
 .. _`kvm_pmu_enable_counter.description`:
 
@@ -111,11 +122,13 @@ kvm_pmu_disable_counter
 
     disable selected PMU counter
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u64 val:
+    :param val:
         the value guest writes to PMCNTENCLR register
+    :type val: u64
 
 .. _`kvm_pmu_disable_counter.description`:
 
@@ -133,8 +146,9 @@ kvm_pmu_flush_hwstate
 
     flush pmu state to cpu
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_pmu_flush_hwstate.description`:
 
@@ -153,8 +167,9 @@ kvm_pmu_sync_hwstate
 
     sync pmu state from cpu
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_pmu_sync_hwstate.description`:
 
@@ -171,14 +186,17 @@ kvm_pmu_perf_overflow
 
 .. c:function:: void kvm_pmu_perf_overflow(struct perf_event *perf_event, struct perf_sample_data *data, struct pt_regs *regs)
 
-    :param struct perf_event \*perf_event:
+    :param perf_event:
         *undescribed*
+    :type perf_event: struct perf_event \*
 
-    :param struct perf_sample_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct perf_sample_data \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         *undescribed*
+    :type regs: struct pt_regs \*
 
 .. _`kvm_pmu_software_increment`:
 
@@ -189,11 +207,13 @@ kvm_pmu_software_increment
 
     do software increment
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u64 val:
+    :param val:
         the value guest writes to PMSWINC register
+    :type val: u64
 
 .. _`kvm_pmu_handle_pmcr`:
 
@@ -204,11 +224,13 @@ kvm_pmu_handle_pmcr
 
     handle PMCR register
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u64 val:
+    :param val:
         the value guest writes to PMCR register
+    :type val: u64
 
 .. _`kvm_pmu_set_counter_event_type`:
 
@@ -219,14 +241,17 @@ kvm_pmu_set_counter_event_type
 
     set selected counter to monitor some event
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u64 data:
+    :param data:
         The data guest writes to PMXEVTYPER_EL0
+    :type data: u64
 
-    :param u64 select_idx:
+    :param select_idx:
         The number of selected counter
+    :type select_idx: u64
 
 .. _`kvm_pmu_set_counter_event_type.description`:
 

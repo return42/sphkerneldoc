@@ -10,11 +10,13 @@ csio_queuecommand
 
     Entry point to kickstart an I/O request.
 
-    :param struct Scsi_Host \*host:
+    :param host:
         The scsi_host pointer.
+    :type host: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         The I/O request from ML.
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`csio_queuecommand.this-routine-does-the-following`:
 
@@ -38,11 +40,13 @@ csio_scsim_init
 
     Initialize SCSI Module
 
-    :param struct csio_scsim \*scm:
+    :param scm:
         SCSI Module
+    :type scm: struct csio_scsim \*
 
-    :param struct csio_hw \*hw:
+    :param hw:
         HW module
+    :type hw: struct csio_hw \*
 
 .. _`csio_scsim_exit`:
 
@@ -53,8 +57,9 @@ csio_scsim_exit
 
     Uninitialize SCSI Module
 
-    :param struct csio_scsim \*scm:
+    :param scm:
         SCSI Module
+    :type scm: struct csio_scsim \*
 
 .. This file was automatic generated / don't edit.
 

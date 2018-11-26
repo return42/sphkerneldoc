@@ -10,8 +10,9 @@ sn_io_addr
 
     convert an in/out port to an i/o address
 
-    :param unsigned long port:
+    :param port:
         port to convert
+    :type port: unsigned long
 
 .. _`sn_io_addr.description`:
 
@@ -31,8 +32,9 @@ SN i/o address.  Used by sn_in\*() and sn_out\*().
 
     I/O space memory barrier
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__sn_mmiowb.description`:
 

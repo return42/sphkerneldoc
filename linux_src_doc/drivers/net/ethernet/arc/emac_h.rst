@@ -190,14 +190,17 @@ arc_reg_set
 
     Sets EMAC register with provided value.
 
-    :param struct arc_emac_priv \*priv:
+    :param priv:
         Pointer to ARC EMAC private data structure.
+    :type priv: struct arc_emac_priv \*
 
-    :param int reg:
+    :param reg:
         Register offset from base address.
+    :type reg: int
 
-    :param int value:
+    :param value:
         Value to set in register.
+    :type value: int
 
 .. _`arc_reg_get`:
 
@@ -208,11 +211,13 @@ arc_reg_get
 
     Gets value of specified EMAC register.
 
-    :param struct arc_emac_priv \*priv:
+    :param priv:
         Pointer to ARC EMAC private data structure.
+    :type priv: struct arc_emac_priv \*
 
-    :param int reg:
+    :param reg:
         Register offset from base address.
+    :type reg: int
 
 .. _`arc_reg_get.return`:
 
@@ -230,14 +235,17 @@ arc_reg_or
 
     Applies mask to specified EMAC register - ("reg" \| "mask").
 
-    :param struct arc_emac_priv \*priv:
+    :param priv:
         Pointer to ARC EMAC private data structure.
+    :type priv: struct arc_emac_priv \*
 
-    :param int reg:
+    :param reg:
         Register offset from base address.
+    :type reg: int
 
-    :param int mask:
+    :param mask:
         Mask to apply to specified register.
+    :type mask: int
 
 .. _`arc_reg_or.description`:
 
@@ -256,14 +264,17 @@ arc_reg_clr
 
     Applies mask to specified EMAC register - ("reg" & ~"mask").
 
-    :param struct arc_emac_priv \*priv:
+    :param priv:
         Pointer to ARC EMAC private data structure.
+    :type priv: struct arc_emac_priv \*
 
-    :param int reg:
+    :param reg:
         Register offset from base address.
+    :type reg: int
 
-    :param int mask:
+    :param mask:
         Mask to apply to specified register.
+    :type mask: int
 
 .. _`arc_reg_clr.description`:
 

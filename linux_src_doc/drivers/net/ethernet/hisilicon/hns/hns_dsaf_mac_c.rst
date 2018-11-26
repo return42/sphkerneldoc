@@ -1,6 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/hisilicon/hns/hns_dsaf_mac.c
 
+.. _`hns_mac_need_adjust_link`:
+
+hns_mac_need_adjust_link
+========================
+
+.. c:function:: bool hns_mac_need_adjust_link(struct hns_mac_cb *mac_cb, int speed, int duplex)
+
+    check is need change mac speed and duplex register \ ``mac_cb``\ : mac device \ ``speed``\ : phy device speed \ ``duplex``\ :phy device duplex
+
+    :param mac_cb:
+        *undescribed*
+    :type mac_cb: struct hns_mac_cb \*
+
+    :param speed:
+        *undescribed*
+    :type speed: int
+
+    :param duplex:
+        *undescribed*
+    :type duplex: int
+
 .. _`hns_mac_get_inner_port_num`:
 
 hns_mac_get_inner_port_num
@@ -10,14 +31,17 @@ hns_mac_get_inner_port_num
 
     get mac table inner port number \ ``mac_cb``\ : mac device \ ``vmid``\ : vm id \ ``port_num``\ :port number
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         *undescribed*
+    :type mac_cb: struct hns_mac_cb \*
 
-    :param u8 vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: u8
 
-    :param u8 \*port_num:
+    :param port_num:
         *undescribed*
+    :type port_num: u8 \*
 
 .. _`hns_mac_change_vf_addr`:
 
@@ -28,14 +52,17 @@ hns_mac_change_vf_addr
 
     change vf mac address \ ``mac_cb``\ : mac device \ ``vmid``\ : vmid \ ``addr``\ :mac address
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         *undescribed*
+    :type mac_cb: struct hns_mac_cb \*
 
-    :param u32 vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: u32
 
-    :param char \*addr:
+    :param addr:
         *undescribed*
+    :type addr: char \*
 
 .. _`hns_mac_port_config_bc_en`:
 
@@ -46,17 +73,21 @@ hns_mac_port_config_bc_en
 
     set broadcast rx&tx enable \ ``mac_cb``\ : mac device \ ``queue``\ : queue number \ ``en``\ :enable retuen 0 - success , negative --fail
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         *undescribed*
+    :type mac_cb: struct hns_mac_cb \*
 
-    :param u32 port_num:
+    :param port_num:
         *undescribed*
+    :type port_num: u32
 
-    :param u16 vlan_id:
+    :param vlan_id:
         *undescribed*
+    :type vlan_id: u16
 
-    :param bool enable:
+    :param enable:
         *undescribed*
+    :type enable: bool
 
 .. _`hns_mac_vm_config_bc_en`:
 
@@ -67,14 +98,17 @@ hns_mac_vm_config_bc_en
 
     set broadcast rx&tx enable \ ``mac_cb``\ : mac device \ ``vmid``\ : vm id \ ``en``\ :enable retuen 0 - success , negative --fail
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         *undescribed*
+    :type mac_cb: struct hns_mac_cb \*
 
-    :param u32 vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: u32
 
-    :param bool enable:
+    :param enable:
         *undescribed*
+    :type enable: bool
 
 .. _`hns_mac_get_autoneg`:
 
@@ -85,11 +119,13 @@ hns_mac_get_autoneg
 
     get auto autonegotiation
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         mac control block
+    :type mac_cb: struct hns_mac_cb \*
 
-    :param u32 \*auto_neg:
+    :param auto_neg:
         *undescribed*
+    :type auto_neg: u32 \*
 
 .. _`hns_mac_get_pauseparam`:
 
@@ -100,15 +136,18 @@ hns_mac_get_pauseparam
 
     set rx & tx pause parameter
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         mac control block
+    :type mac_cb: struct hns_mac_cb \*
 
-    :param u32 \*rx_en:
+    :param rx_en:
         rx enable status
+    :type rx_en: u32 \*
 
-    :param u32 \*tx_en:
+    :param tx_en:
         tx enable status
         retuen 0 - success , negative --fail
+    :type tx_en: u32 \*
 
 .. _`hns_mac_set_autoneg`:
 
@@ -119,12 +158,14 @@ hns_mac_set_autoneg
 
     set auto autonegotiation
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         mac control block
+    :type mac_cb: struct hns_mac_cb \*
 
-    :param u8 enable:
+    :param enable:
         enable or not
         retuen 0 - success , negative --fail
+    :type enable: u8
 
 .. _`hns_mac_set_pauseparam`:
 
@@ -135,15 +176,18 @@ hns_mac_set_pauseparam
 
     set rx & tx pause parameter
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         mac control block
+    :type mac_cb: struct hns_mac_cb \*
 
-    :param u32 rx_en:
+    :param rx_en:
         rx enable or not
+    :type rx_en: u32
 
-    :param u32 tx_en:
+    :param tx_en:
         tx enable or not
         return 0 - success , negative --fail
+    :type tx_en: u32
 
 .. _`hns_mac_init_ex`:
 
@@ -154,9 +198,10 @@ hns_mac_init_ex
 
     mac init
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         mac control block
         retuen 0 - success , negative --fail
+    :type mac_cb: struct hns_mac_cb \*
 
 .. _`hns_mac_get_info`:
 
@@ -167,8 +212,9 @@ hns_mac_get_info
 
     get mac information from device node \ ``mac_cb``\ : mac device \ ``np``\ :device node
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         *undescribed*
+    :type mac_cb: struct hns_mac_cb \*
 
 .. _`hns_mac_get_info.return`:
 
@@ -186,9 +232,10 @@ hns_mac_get_mode
 
     get mac mode
 
-    :param phy_interface_t phy_if:
+    :param phy_if:
         phy interface
         retuen 0 - gmac, 1 - xgmac , negative --fail
+    :type phy_if: phy_interface_t
 
 .. _`hns_mac_get_cfg`:
 
@@ -199,12 +246,14 @@ hns_mac_get_cfg
 
     get mac cfg from dtb or acpi table
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         mac control block
         return 0 - success , negative --fail
+    :type mac_cb: struct hns_mac_cb \*
 
 .. _`hns_mac_init`:
 
@@ -215,9 +264,10 @@ hns_mac_init
 
     init mac
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsa fabric device struct pointer
         return 0 - success , negative --fail
+    :type dsaf_dev: struct dsaf_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ ist_begin_non_atomic
 
     begin a non-atomic section in an IST exception
 
-    :param struct pt_regs \*regs:
+    :param regs:
         regs passed to the IST exception handler
+    :type regs: struct pt_regs \*
 
 .. _`ist_begin_non_atomic.description`:
 
@@ -36,8 +37,9 @@ ist_end_non_atomic
 
     begin a non-atomic section in an IST exception
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ist_end_non_atomic.description`:
 

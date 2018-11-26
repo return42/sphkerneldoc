@@ -10,8 +10,9 @@ ti_thermal_get_trip_value
 
     returns trip temperature based on index
 
-    :param  i:
+    :param i:
         trip index
+    :type i: 
 
 .. _`ti_thermal_is_valid_trip`:
 
@@ -22,8 +23,9 @@ ti_thermal_is_valid_trip
 
     check for trip index
 
-    :param  trip:
+    :param trip:
         *undescribed*
+    :type trip: 
 
 .. This file was automatic generated / don't edit.
 

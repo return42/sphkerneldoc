@@ -10,8 +10,9 @@ complete
 
     - signals a single thread waiting on this completion
 
-    :param struct completion \*x:
+    :param x:
         holds the state of this particular completion
+    :type x: struct completion \*
 
 .. _`complete.description`:
 
@@ -23,8 +24,8 @@ awakened in the same order in which they were queued.
 
 See also \ :c:func:`complete_all`\ , \ :c:func:`wait_for_completion`\  and related routines.
 
-It may be assumed that this function implies a write memory barrier before
-changing the task state if and only if any tasks are woken up.
+If this function wakes up a task, it executes a full memory barrier before
+accessing the task state.
 
 .. _`complete_all`:
 
@@ -35,8 +36,9 @@ complete_all
 
     - signals all threads waiting on this completion
 
-    :param struct completion \*x:
+    :param x:
         holds the state of this particular completion
+    :type x: struct completion \*
 
 .. _`complete_all.description`:
 
@@ -45,8 +47,8 @@ Description
 
 This will wake up all threads waiting on this particular completion event.
 
-It may be assumed that this function implies a write memory barrier before
-changing the task state if and only if any tasks are woken up.
+If this function wakes up a task, it executes a full memory barrier before
+accessing the task state.
 
 Since \ :c:func:`complete_all`\  sets the completion of \ ``x``\  permanently to done
 to allow multiple waiters to finish, a call to \ :c:func:`reinit_completion`\ 
@@ -64,8 +66,9 @@ wait_for_completion
 
     - waits for completion of a task
 
-    :param struct completion \*x:
+    :param x:
         holds the state of this particular completion
+    :type x: struct completion \*
 
 .. _`wait_for_completion.description`:
 
@@ -87,11 +90,13 @@ wait_for_completion_timeout
 
     - waits for completion of a task (w/timeout)
 
-    :param struct completion \*x:
+    :param x:
         holds the state of this particular completion
+    :type x: struct completion \*
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout value in jiffies
+    :type timeout: unsigned long
 
 .. _`wait_for_completion_timeout.description`:
 
@@ -119,8 +124,9 @@ wait_for_completion_io
 
     - waits for completion of a task
 
-    :param struct completion \*x:
+    :param x:
         holds the state of this particular completion
+    :type x: struct completion \*
 
 .. _`wait_for_completion_io.description`:
 
@@ -140,11 +146,13 @@ wait_for_completion_io_timeout
 
     - waits for completion of a task (w/timeout)
 
-    :param struct completion \*x:
+    :param x:
         holds the state of this particular completion
+    :type x: struct completion \*
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout value in jiffies
+    :type timeout: unsigned long
 
 .. _`wait_for_completion_io_timeout.description`:
 
@@ -173,8 +181,9 @@ wait_for_completion_interruptible
 
     - waits for completion of a task (w/intr)
 
-    :param struct completion \*x:
+    :param x:
         holds the state of this particular completion
+    :type x: struct completion \*
 
 .. _`wait_for_completion_interruptible.description`:
 
@@ -200,11 +209,13 @@ wait_for_completion_interruptible_timeout
 
     - waits for completion (w/(to,intr))
 
-    :param struct completion \*x:
+    :param x:
         holds the state of this particular completion
+    :type x: struct completion \*
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout value in jiffies
+    :type timeout: unsigned long
 
 .. _`wait_for_completion_interruptible_timeout.description`:
 
@@ -231,8 +242,9 @@ wait_for_completion_killable
 
     - waits for completion of a task (killable)
 
-    :param struct completion \*x:
+    :param x:
         holds the state of this particular completion
+    :type x: struct completion \*
 
 .. _`wait_for_completion_killable.description`:
 
@@ -258,11 +270,13 @@ wait_for_completion_killable_timeout
 
     - waits for completion of a task (w/(to,killable))
 
-    :param struct completion \*x:
+    :param x:
         holds the state of this particular completion
+    :type x: struct completion \*
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout value in jiffies
+    :type timeout: unsigned long
 
 .. _`wait_for_completion_killable_timeout.description`:
 
@@ -290,8 +304,9 @@ try_wait_for_completion
 
     try to decrement a completion without blocking
 
-    :param struct completion \*x:
+    :param x:
         completion structure
+    :type x: struct completion \*
 
 .. _`try_wait_for_completion.return`:
 
@@ -315,8 +330,9 @@ completion_done
 
     Test to see if a completion has any waiters
 
-    :param struct completion \*x:
+    :param x:
         completion structure
+    :type x: struct completion \*
 
 .. _`completion_done.return`:
 

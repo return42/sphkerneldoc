@@ -10,14 +10,17 @@ qib_disarm_piobufs
 
     cancel a range of PIO buffers
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param unsigned first:
+    :param first:
         the first PIO buffer to cancel
+    :type first: unsigned
 
-    :param unsigned cnt:
+    :param cnt:
         the number of PIO buffers to cancel
+    :type cnt: unsigned
 
 .. _`qib_disarm_piobufs.description`:
 
@@ -36,8 +39,9 @@ update_send_bufs
 
     update shadow copy of the PIO availability map
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`update_send_bufs.description`:
 
@@ -55,20 +59,25 @@ qib_chg_pioavailkernel
 
     change which send buffers are available for kernel
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param unsigned start:
+    :param start:
         the starting send buffer number
+    :type start: unsigned
 
-    :param unsigned len:
+    :param len:
         the number of send buffers
+    :type len: unsigned
 
-    :param u32 avail:
+    :param avail:
         true if the buffers are available for kernel use, false otherwise
+    :type avail: u32
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct qib_ctxtdata \*
 
 .. This file was automatic generated / don't edit.
 

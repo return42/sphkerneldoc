@@ -10,11 +10,13 @@ lpfc_mbx_cmpl_resume_rpi
 
     Resume RPI completion routine
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         pointer to mailbox object
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_mbx_cmpl_resume_rpi.description`:
 
@@ -33,14 +35,17 @@ lpfc_release_rpi
 
     Release a RPI by issuing unreg_login mailbox cmd.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to lpfc_hba structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Pointer to lpfc_vport structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint16_t rpi:
+    :param rpi:
         rpi to be release.
+    :type rpi: uint16_t
 
 .. _`lpfc_release_rpi.description`:
 

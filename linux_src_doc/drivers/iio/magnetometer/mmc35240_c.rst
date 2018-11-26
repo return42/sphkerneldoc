@@ -10,17 +10,21 @@ mmc35240_raw_to_mgauss
 
     convert raw readings to milli gauss. Also apply
 
-    :param struct mmc35240_data \*data:
+    :param data:
         device private data
+    :type data: struct mmc35240_data \*
 
-    :param int index:
+    :param index:
         axis index for which we want the conversion
+    :type index: int
 
-    :param __le16 buf:
+    :param buf:
         raw data to be converted, 2 bytes in little endian format
+    :type buf: __le16
 
-    :param int \*val:
+    :param val:
         compensated output reading (unit is milli gauss)
+    :type val: int \*
 
 .. _`mmc35240_raw_to_mgauss.return`:
 

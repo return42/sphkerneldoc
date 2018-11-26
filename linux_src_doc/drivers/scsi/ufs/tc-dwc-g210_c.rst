@@ -10,8 +10,9 @@ tc_dwc_g210_setup_40bit_rmmi
 
     This function configures Synopsys TC specific atributes (40-bit RMMI)
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to drivers structure
+    :type hba: struct ufs_hba \*
 
 .. _`tc_dwc_g210_setup_40bit_rmmi.description`:
 
@@ -29,8 +30,9 @@ tc_dwc_g210_setup_20bit_rmmi_lane0
 
     This function configures Synopsys TC 20-bit RMMI Lane 0
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to drivers structure
+    :type hba: struct ufs_hba \*
 
 .. _`tc_dwc_g210_setup_20bit_rmmi_lane0.description`:
 
@@ -48,8 +50,9 @@ tc_dwc_g210_setup_20bit_rmmi_lane1
 
     This function configures Synopsys TC 20-bit RMMI Lane 1
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to drivers structure
+    :type hba: struct ufs_hba \*
 
 .. _`tc_dwc_g210_setup_20bit_rmmi_lane1.description`:
 
@@ -67,8 +70,9 @@ tc_dwc_g210_setup_20bit_rmmi
 
     This function configures Synopsys TC specific atributes (20-bit RMMI)
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to drivers structure
+    :type hba: struct ufs_hba \*
 
 .. _`tc_dwc_g210_setup_20bit_rmmi.description`:
 
@@ -86,8 +90,9 @@ tc_dwc_g210_config_40_bit
 
     This function configures Local (host) Synopsys 40-bit TC specific attributes
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to drivers structure
+    :type hba: struct ufs_hba \*
 
 .. _`tc_dwc_g210_config_40_bit.description`:
 
@@ -105,8 +110,9 @@ tc_dwc_g210_config_20_bit
 
     This function configures Local (host) Synopsys 20-bit TC specific attributes
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Pointer to drivers structure
+    :type hba: struct ufs_hba \*
 
 .. _`tc_dwc_g210_config_20_bit.description`:
 

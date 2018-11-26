@@ -10,8 +10,9 @@
 
     720, the 2nd order CDR circuit on CN52XX pass 1 doesn't work properly. The following code disables 2nd order CDR for the specified QLM.
 
-    :param int qlm:
+    :param qlm:
         QLM to disable 2nd order CDR for.
+    :type qlm: int
 
 .. This file was automatic generated / don't edit.
 

@@ -63,9 +63,11 @@ oobbuf
 Description
 -----------
 
-Note, it is allowed to read more than one OOB area at one go, but not write.
-The interface assumes that the OOB write requests program only one page's
-OOB area.
+Note, some MTD drivers do not allow you to write more than one OOB area at
+one go. If you try to do that on such an MTD device, -EINVAL will be
+returned. If you want to make your implementation portable on all kind of MTD
+devices you should split the write request into several sub-requests when the
+request crosses a page boundary.
 
 .. _`mtd_oob_region`:
 
@@ -287,19 +289,21 @@ mtd_align_erase_req
 
     Adjust an erase request to align things on eraseblock boundaries.
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         the MTD device this erase request applies on
+    :type mtd: struct mtd_info \*
 
-    :param struct erase_info \*req:
+    :param req:
         the erase request to adjust
+    :type req: struct erase_info \*
 
 .. _`mtd_align_erase_req.description`:
 
 Description
 -----------
 
-This function will adjust \ ``req``\ ->addr and \ ``req``\ ->len to align them on
-\ ``mtd``\ ->erasesize. Of course we expect \ ``mtd``\ ->erasesize to be != 0.
+This function will adjust \ ``req->addr``\  and \ ``req->len``\  to align them on
+\ ``mtd->erasesize``\ . Of course we expect \ ``mtd->erasesize``\  to be != 0.
 
 .. This file was automatic generated / don't edit.
 

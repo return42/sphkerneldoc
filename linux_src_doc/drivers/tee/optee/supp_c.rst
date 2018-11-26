@@ -10,17 +10,21 @@ optee_supp_thrd_req
 
     request service from supplicant
 
-    :param struct tee_context \*ctx:
+    :param ctx:
         context doing the request
+    :type ctx: struct tee_context \*
 
-    :param u32 func:
+    :param func:
         function requested
+    :type func: u32
 
-    :param size_t num_params:
+    :param num_params:
         number of elements in \ ``param``\  array
+    :type num_params: size_t
 
-    :param struct tee_param \*param:
+    :param param:
         parameters for function
+    :type param: struct tee_param \*
 
 .. _`optee_supp_thrd_req.description`:
 
@@ -38,18 +42,22 @@ optee_supp_recv
 
     receive request for supplicant
 
-    :param struct tee_context \*ctx:
+    :param ctx:
         context receiving the request
+    :type ctx: struct tee_context \*
 
-    :param u32 \*func:
+    :param func:
         requested function in supplicant
+    :type func: u32 \*
 
-    :param u32 \*num_params:
+    :param num_params:
         number of elements allocated in \ ``param``\ , updated with number
         used elements
+    :type num_params: u32 \*
 
-    :param struct tee_param \*param:
+    :param param:
         space for parameters for \ ``func``\ 
+    :type param: struct tee_param \*
 
 .. _`optee_supp_recv.description`:
 
@@ -67,17 +75,21 @@ optee_supp_send
 
     send result of request from supplicant
 
-    :param struct tee_context \*ctx:
+    :param ctx:
         context sending result
+    :type ctx: struct tee_context \*
 
-    :param u32 ret:
+    :param ret:
         return value of request
+    :type ret: u32
 
-    :param u32 num_params:
+    :param num_params:
         number of parameters returned
+    :type num_params: u32
 
-    :param struct tee_param \*param:
+    :param param:
         returned parameters
+    :type param: struct tee_param \*
 
 .. _`optee_supp_send.description`:
 

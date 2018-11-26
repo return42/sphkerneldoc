@@ -1,6 +1,42 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/hwmon/ina3221.c
 
+.. _`ina3221_input`:
+
+struct ina3221_input
+====================
+
+.. c:type:: struct ina3221_input
+
+    channel input source specific information
+
+.. _`ina3221_input.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ina3221_input {
+        const char *label;
+        int shunt_resistor;
+        bool disconnected;
+    }
+
+.. _`ina3221_input.members`:
+
+Members
+-------
+
+label
+    label of channel input source
+
+shunt_resistor
+    shunt resistor value of channel input source
+
+disconnected
+    connection status of channel input source
+
 .. _`ina3221_data`:
 
 struct ina3221_data
@@ -20,7 +56,8 @@ Definition
     struct ina3221_data {
         struct regmap *regmap;
         struct regmap_field *fields[F_MAX_FIELDS];
-        int shunt_resistors[INA3221_NUM_CHANNELS];
+        struct ina3221_input inputs[INA3221_NUM_CHANNELS];
+        u32 reg_config;
     }
 
 .. _`ina3221_data.members`:
@@ -34,8 +71,11 @@ regmap
 fields
     Register fields of the device
 
-shunt_resistors
-    Array of resistor values per channel
+inputs
+    Array of channel input source specific structures
+
+reg_config
+    Register value of INA3221_CONFIG
 
 .. This file was automatic generated / don't edit.
 

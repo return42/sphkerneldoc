@@ -10,11 +10,13 @@ ipv6_rearrange_destopt
 
     rearrange IPv6 destination options header
 
-    :param struct ipv6hdr \*iph:
+    :param iph:
         IPv6 header
+    :type iph: struct ipv6hdr \*
 
-    :param struct ipv6_opt_hdr \*destopt:
+    :param destopt:
         destionation options header
+    :type destopt: struct ipv6_opt_hdr \*
 
 .. _`ipv6_rearrange_rthdr`:
 
@@ -25,11 +27,13 @@ ipv6_rearrange_rthdr
 
     rearrange IPv6 routing header
 
-    :param struct ipv6hdr \*iph:
+    :param iph:
         IPv6 header
+    :type iph: struct ipv6hdr \*
 
-    :param struct ipv6_rt_hdr \*rthdr:
+    :param rthdr:
         routing header
+    :type rthdr: struct ipv6_rt_hdr \*
 
 .. _`ipv6_rearrange_rthdr.description`:
 

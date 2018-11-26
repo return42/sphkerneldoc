@@ -10,8 +10,9 @@ acpi_map_pxm_to_online_node
 
     Map proximity ID to online node
 
-    :param int pxm:
+    :param pxm:
         ACPI proximity ID
+    :type pxm: int
 
 .. _`acpi_map_pxm_to_online_node.description`:
 

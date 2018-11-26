@@ -8,8 +8,9 @@ octeon_flash_probe
 
 .. c:function:: int octeon_flash_probe(struct platform_device *pdev)
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`octeon_flash_probe.description`:
 

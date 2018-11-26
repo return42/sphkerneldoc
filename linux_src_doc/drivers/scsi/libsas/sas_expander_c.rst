@@ -10,11 +10,13 @@ sas_ex_discover_devices
 
     discover devices attached to this expander
 
-    :param struct domain_device \*dev:
+    :param dev:
         pointer to the expander domain device
+    :type dev: struct domain_device \*
 
-    :param int single:
+    :param single:
         if you want to do a single phy, else set to -1;
+    :type single: int
 
 .. _`sas_ex_discover_devices.description`:
 
@@ -33,17 +35,21 @@ sas_configure_parent
 
     configure routing table of parent
 
-    :param struct domain_device \*parent:
+    :param parent:
         parent expander
+    :type parent: struct domain_device \*
 
-    :param struct domain_device \*child:
+    :param child:
         child expander
+    :type child: struct domain_device \*
 
-    :param u8 \*sas_addr:
+    :param sas_addr:
         SAS port identifier of device directly attached to child
+    :type sas_addr: u8 \*
 
-    :param int include:
+    :param include:
         whether or not to include \ ``child``\  in the expander routing table
+    :type include: int
 
 .. _`sas_configure_routing`:
 
@@ -54,11 +60,13 @@ sas_configure_routing
 
     configure routing
 
-    :param struct domain_device \*dev:
+    :param dev:
         expander device
+    :type dev: struct domain_device \*
 
-    :param u8 \*sas_addr:
+    :param sas_addr:
         port identifier of device directly attached to the expander device
+    :type sas_addr: u8 \*
 
 .. _`sas_discover_expander`:
 
@@ -69,8 +77,9 @@ sas_discover_expander
 
     expander discovery
 
-    :param struct domain_device \*dev:
+    :param dev:
         pointer to expander domain device
+    :type dev: struct domain_device \*
 
 .. _`sas_discover_expander.description`:
 
@@ -88,11 +97,13 @@ sas_find_bcast_dev
 
     find the device issue BROADCAST(CHANGE).
 
-    :param struct domain_device \*dev:
+    :param dev:
         domain device to be detect.
+    :type dev: struct domain_device \*
 
-    :param struct domain_device \*\*src_dev:
+    :param src_dev:
         the device which originated BROADCAST(CHANGE).
+    :type src_dev: struct domain_device \*\*
 
 .. _`sas_find_bcast_dev.description`:
 
@@ -117,11 +128,13 @@ sas_rediscover
 
     revalidate the domain.
 
-    :param struct domain_device \*dev:
+    :param dev:
         domain device to be detect.
+    :type dev: struct domain_device \*
 
-    :param const int phy_id:
+    :param phy_id:
         the phy id will be detected.
+    :type phy_id: const int
 
 .. _`sas_rediscover.note`:
 
@@ -146,8 +159,9 @@ sas_ex_revalidate_domain
 
     revalidate the domain
 
-    :param struct domain_device \*port_dev:
+    :param port_dev:
         port domain device.
+    :type port_dev: struct domain_device \*
 
 .. _`sas_ex_revalidate_domain.note`:
 

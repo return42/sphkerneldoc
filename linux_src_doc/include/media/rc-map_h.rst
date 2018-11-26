@@ -127,8 +127,9 @@ rc_map_register
 
     Registers a Remote Controler scancode map
 
-    :param struct rc_map_list \*map:
+    :param map:
         pointer to struct rc_map_list
+    :type map: struct rc_map_list \*
 
 .. _`rc_map_unregister`:
 
@@ -139,8 +140,9 @@ rc_map_unregister
 
     Unregisters a Remote Controler scancode map
 
-    :param struct rc_map_list \*map:
+    :param map:
         pointer to struct rc_map_list
+    :type map: struct rc_map_list \*
 
 .. _`rc_map_get`:
 
@@ -151,8 +153,9 @@ rc_map_get
 
     gets an RC map from its name
 
-    :param const char \*name:
+    :param name:
         name of the RC scancode map
+    :type name: const char \*
 
 .. This file was automatic generated / don't edit.
 

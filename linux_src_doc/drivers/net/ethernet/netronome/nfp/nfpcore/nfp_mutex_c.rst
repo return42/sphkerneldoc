@@ -10,17 +10,21 @@ nfp_cpp_mutex_init
 
     Initialize a mutex location
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param int target:
+    :param target:
         NFP CPP target ID (ie NFP_CPP_TARGET_CLS or NFP_CPP_TARGET_MU)
+    :type target: int
 
-    :param unsigned long long address:
+    :param address:
         Offset into the address space of the NFP CPP target ID
+    :type address: unsigned long long
 
-    :param u32 key:
+    :param key:
         Unique 32-bit value for this mutex
+    :type key: u32
 
 .. _`nfp_cpp_mutex_init.description`:
 
@@ -52,17 +56,21 @@ nfp_cpp_mutex_alloc
 
     Create a mutex handle
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param int target:
+    :param target:
         NFP CPP target ID (ie NFP_CPP_TARGET_CLS or NFP_CPP_TARGET_MU)
+    :type target: int
 
-    :param unsigned long long address:
+    :param address:
         Offset into the address space of the NFP CPP target ID
+    :type address: unsigned long long
 
-    :param u32 key:
+    :param key:
         32-bit unique key (must match the key at this location)
+    :type key: u32
 
 .. _`nfp_cpp_mutex_alloc.description`:
 
@@ -91,8 +99,9 @@ nfp_cpp_mutex_free
 
     Free a mutex handle - does not alter the lock state
 
-    :param struct nfp_cpp_mutex \*mutex:
+    :param mutex:
         NFP CPP Mutex handle
+    :type mutex: struct nfp_cpp_mutex \*
 
 .. _`nfp_cpp_mutex_lock`:
 
@@ -103,8 +112,9 @@ nfp_cpp_mutex_lock
 
     Lock a mutex handle, using the NFP MU Atomic Engine
 
-    :param struct nfp_cpp_mutex \*mutex:
+    :param mutex:
         NFP CPP Mutex handle
+    :type mutex: struct nfp_cpp_mutex \*
 
 .. _`nfp_cpp_mutex_lock.return`:
 
@@ -122,8 +132,9 @@ nfp_cpp_mutex_unlock
 
     Unlock a mutex handle, using the MU Atomic Engine
 
-    :param struct nfp_cpp_mutex \*mutex:
+    :param mutex:
         NFP CPP Mutex handle
+    :type mutex: struct nfp_cpp_mutex \*
 
 .. _`nfp_cpp_mutex_unlock.return`:
 
@@ -141,8 +152,9 @@ nfp_cpp_mutex_trylock
 
     Attempt to lock a mutex handle
 
-    :param struct nfp_cpp_mutex \*mutex:
+    :param mutex:
         NFP CPP Mutex handle
+    :type mutex: struct nfp_cpp_mutex \*
 
 .. _`nfp_cpp_mutex_trylock.return`:
 
@@ -160,14 +172,17 @@ nfp_cpp_mutex_reclaim
 
     Unlock mutex if held by local endpoint
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param int target:
+    :param target:
         NFP CPP target ID (ie NFP_CPP_TARGET_CLS or NFP_CPP_TARGET_MU)
+    :type target: int
 
-    :param unsigned long long address:
+    :param address:
         Offset into the address space of the NFP CPP target ID
+    :type address: unsigned long long
 
 .. _`nfp_cpp_mutex_reclaim.description`:
 

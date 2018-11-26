@@ -10,8 +10,9 @@ tegra124_clock_apply_init_table
 
     initialize clocks on Tegra124 SoCs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra124_clock_apply_init_table.description`:
 
@@ -32,8 +33,9 @@ tegra124_car_barrier
 
     wait for pending writes to the CAR to complete
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra124_car_barrier.description`:
 
@@ -52,8 +54,9 @@ tegra124_clock_assert_dfll_dvco_reset
 
     assert the DFLL's DVCO reset
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra124_clock_assert_dfll_dvco_reset.description`:
 
@@ -71,8 +74,9 @@ tegra124_clock_deassert_dfll_dvco_reset
 
     deassert the DFLL's DVCO reset
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra124_clock_deassert_dfll_dvco_reset.description`:
 
@@ -91,8 +95,9 @@ tegra132_clock_apply_init_table
 
     initialize clocks on Tegra132 SoCs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tegra132_clock_apply_init_table.description`:
 
@@ -113,8 +118,9 @@ tegra124_132_clock_init_pre
 
     clock initialization preamble for T124/T132
 
-    :param struct device_node \*np:
+    :param np:
         struct device_node \* of the DT node for the SoC CAR IP block
+    :type np: struct device_node \*
 
 .. _`tegra124_132_clock_init_pre.description`:
 
@@ -136,8 +142,9 @@ tegra124_132_clock_init_post
 
     clock initialization postamble for T124/T132
 
-    :param struct device_node \*np:
+    :param np:
         struct device_node \* of the DT node for the SoC CAR IP block
+    :type np: struct device_node \*
 
 .. _`tegra124_132_clock_init_post.description`:
 
@@ -159,8 +166,9 @@ tegra124_clock_init
 
     Tegra124-specific clock initialization
 
-    :param struct device_node \*np:
+    :param np:
         struct device_node \* of the DT node for the SoC CAR IP block
+    :type np: struct device_node \*
 
 .. _`tegra124_clock_init.description`:
 
@@ -183,8 +191,9 @@ tegra132_clock_init
 
     Tegra132-specific clock initialization
 
-    :param struct device_node \*np:
+    :param np:
         struct device_node \* of the DT node for the SoC CAR IP block
+    :type np: struct device_node \*
 
 .. _`tegra132_clock_init.description`:
 

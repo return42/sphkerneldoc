@@ -10,19 +10,23 @@ pin_request
 
     request a single pin to be muxed in, typically for GPIO
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         *undescribed*
+    :type pctldev: struct pinctrl_dev \*
 
-    :param int pin:
+    :param pin:
         the pin number in the global pin space
+    :type pin: int
 
-    :param const char \*owner:
+    :param owner:
         a representation of the owner of this pin; typically the device
         name that controls its mux function, or the requested GPIO name
+    :type owner: const char \*
 
-    :param struct pinctrl_gpio_range \*gpio_range:
+    :param gpio_range:
         the range matching the GPIO pin if this is a request for a
         single GPIO pin
+    :type gpio_range: struct pinctrl_gpio_range \*
 
 .. _`pin_free`:
 
@@ -33,15 +37,18 @@ pin_free
 
     release a single muxed in pin so something else can be muxed
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device handling this pin
+    :type pctldev: struct pinctrl_dev \*
 
-    :param int pin:
+    :param pin:
         the pin to free
+    :type pin: int
 
-    :param struct pinctrl_gpio_range \*gpio_range:
+    :param gpio_range:
         the range matching the GPIO pin if this is a request for a
         single GPIO pin
+    :type gpio_range: struct pinctrl_gpio_range \*
 
 .. _`pin_free.description`:
 
@@ -61,17 +68,21 @@ pinmux_request_gpio
 
     request pinmuxing for a GPIO pin
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device affected
+    :type pctldev: struct pinctrl_dev \*
 
-    :param struct pinctrl_gpio_range \*range:
+    :param range:
         the applicable GPIO range
+    :type range: struct pinctrl_gpio_range \*
 
-    :param unsigned pin:
+    :param pin:
         the pin to mux in for GPIO
+    :type pin: unsigned
 
-    :param unsigned gpio:
+    :param gpio:
         *undescribed*
+    :type gpio: unsigned
 
 .. _`pinmux_free_gpio`:
 
@@ -82,14 +93,17 @@ pinmux_free_gpio
 
     release a pin from GPIO muxing
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         the pin controller device for the pin
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned pin:
+    :param pin:
         the affected currently GPIO-muxed in pin
+    :type pin: unsigned
 
-    :param struct pinctrl_gpio_range \*range:
+    :param range:
         applicable GPIO range
+    :type range: struct pinctrl_gpio_range \*
 
 .. _`pinmux_gpio_direction`:
 
@@ -100,17 +114,21 @@ pinmux_gpio_direction
 
     set the direction of a single muxed-in GPIO pin
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         the pin controller handling this pin
+    :type pctldev: struct pinctrl_dev \*
 
-    :param struct pinctrl_gpio_range \*range:
+    :param range:
         applicable GPIO range
+    :type range: struct pinctrl_gpio_range \*
 
-    :param unsigned pin:
+    :param pin:
         the affected GPIO pin in this controller
+    :type pin: unsigned
 
-    :param bool input:
+    :param input:
         true if we set the pin as input, false for output
+    :type input: bool
 
 .. _`pinmux_generic_get_function_count`:
 
@@ -121,8 +139,9 @@ pinmux_generic_get_function_count
 
     returns number of functions
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
 .. _`pinmux_generic_get_function_name`:
 
@@ -133,11 +152,13 @@ pinmux_generic_get_function_name
 
     returns the function name
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         function number
+    :type selector: unsigned int
 
 .. _`pinmux_generic_get_function_groups`:
 
@@ -148,17 +169,21 @@ pinmux_generic_get_function_groups
 
     gets the function groups
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         function number
+    :type selector: unsigned int
 
-    :param const char \* const \*\*groups:
+    :param groups:
         array of pin groups
+    :type groups: const char \* const \*\*
 
-    :param unsigned \* const num_groups:
+    :param num_groups:
         number of pin groups
+    :type num_groups: unsigned \* const
 
 .. _`pinmux_generic_get_function`:
 
@@ -169,11 +194,13 @@ pinmux_generic_get_function
 
     returns a function based on the number
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         *undescribed*
+    :type selector: unsigned int
 
 .. _`pinmux_generic_add_function`:
 
@@ -184,20 +211,25 @@ pinmux_generic_add_function
 
     adds a function group
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param const char \*name:
+    :param name:
         name of the function
+    :type name: const char \*
 
-    :param const char \*\*groups:
+    :param groups:
         array of pin groups
+    :type groups: const char \*\*
 
-    :param const unsigned int num_groups:
+    :param num_groups:
         number of pin groups
+    :type num_groups: const unsigned int
 
-    :param void \*data:
+    :param data:
         pin controller driver specific data
+    :type data: void \*
 
 .. _`pinmux_generic_remove_function`:
 
@@ -208,11 +240,13 @@ pinmux_generic_remove_function
 
     removes a numbered function
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         function number
+    :type selector: unsigned int
 
 .. _`pinmux_generic_remove_function.description`:
 
@@ -230,8 +264,9 @@ pinmux_generic_free_functions
 
     removes all functions
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pin controller device
+    :type pctldev: struct pinctrl_dev \*
 
 .. _`pinmux_generic_free_functions.description`:
 

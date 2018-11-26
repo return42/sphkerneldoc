@@ -10,11 +10,13 @@ con_log
 
     console log routine
 
-    :param  level:
+    :param level:
         indicates the severity of the message.
+    :type level: 
 
-    :param  fmt:
+    :param fmt:
         format string
+    :type fmt: 
 
 .. _`con_log.description`:
 

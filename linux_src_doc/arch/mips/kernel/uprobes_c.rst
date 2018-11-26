@@ -10,15 +10,18 @@ arch_uprobe_analyze_insn
 
     instruction analysis including validity and fixups.
 
-    :param struct arch_uprobe \*aup:
+    :param aup:
         *undescribed*
+    :type aup: struct arch_uprobe \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         the probed address space.
+    :type mm: struct mm_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         virtual address at which to install the probepoint
         Return 0 on success or a -ve number on error.
+    :type addr: unsigned long
 
 .. _`is_trap_insn`:
 
@@ -29,9 +32,10 @@ is_trap_insn
 
     check if the instruction is a trap variant
 
-    :param uprobe_opcode_t \*insn:
+    :param insn:
         instruction to be checked.
         Returns true if \ ``insn``\  is a trap variant.
+    :type insn: uprobe_opcode_t \*
 
 .. _`is_trap_insn.description`:
 
@@ -52,14 +56,17 @@ set_swbp
 
     store breakpoint at a given address.
 
-    :param struct arch_uprobe \*auprobe:
+    :param auprobe:
         arch specific probepoint information.
+    :type auprobe: struct arch_uprobe \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         the probed process address space.
+    :type mm: struct mm_struct \*
 
-    :param unsigned long vaddr:
+    :param vaddr:
         the virtual address to insert the opcode.
+    :type vaddr: unsigned long
 
 .. _`set_swbp.description`:
 
@@ -81,10 +88,11 @@ uprobe_get_swbp_addr
 
     compute address of swbp given post-swbp regs
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Reflects the saved state of the task after it has hit a breakpoint
         instruction.
         Return the address of the breakpoint instruction.
+    :type regs: struct pt_regs \*
 
 .. _`uprobe_get_swbp_addr.description`:
 

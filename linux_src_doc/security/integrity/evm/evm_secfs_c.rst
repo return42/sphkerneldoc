@@ -10,17 +10,21 @@ evm_read_key
 
     \ :c:func:`read`\  for <securityfs>/evm
 
-    :param struct file \*filp:
+    :param filp:
         file pointer, not actually used
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         where to put the result
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         maximum to send along
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`evm_read_key.description`:
 
@@ -38,17 +42,21 @@ evm_write_key
 
     \ :c:func:`write`\  for <securityfs>/evm
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`evm_write_key.description`:
 
@@ -69,17 +77,21 @@ evm_read_xattrs
 
     \ :c:func:`read`\  for <securityfs>/evm_xattrs
 
-    :param struct file \*filp:
+    :param filp:
         file pointer, not actually used
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         where to put the result
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         maximum to send along
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`evm_read_xattrs.description`:
 
@@ -97,17 +109,21 @@ evm_write_xattrs
 
     \ :c:func:`write`\  for <securityfs>/evm_xattrs
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`evm_write_xattrs.description`:
 

@@ -10,11 +10,13 @@ isci_remote_device_ready
 
     This function is called by the ihost when the remote device is ready. We mark the isci device as ready and signal the waiting proccess.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         our valid isci_host
+    :type ihost: struct isci_host \*
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         remote device
+    :type idev: struct isci_remote_device \*
 
 .. _`isci_remote_device_not_ready`:
 
@@ -25,14 +27,17 @@ isci_remote_device_not_ready
 
     This function is called by the ihost when the remote device is not ready. We mark the isci device as ready (not "ready_for_io") and signal the waiting proccess.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
-    :param u32 reason:
+    :param reason:
         *undescribed*
+    :type reason: u32
 
 .. _`isci_remote_device_not_ready.description`:
 
@@ -50,8 +55,9 @@ sci_remote_device_destruct
 
     free remote node context and destruct
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
 .. _`sci_remote_device_destruct.description`:
 
@@ -76,11 +82,13 @@ isci_remote_device_deconstruct
 
     This function frees an isci_remote_device.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         This parameter specifies the isci host object.
+    :type ihost: struct isci_host \*
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         This parameter specifies the remote device to be freed.
+    :type idev: struct isci_remote_device \*
 
 .. _`sci_remote_device_construct`:
 
@@ -91,11 +99,13 @@ sci_remote_device_construct
 
     common construction
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
 .. _`sci_remote_device_construct.description`:
 
@@ -116,11 +126,13 @@ sci_remote_device_da_construct
 
     construct direct attached device.
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
 .. _`sci_remote_device_da_construct.description`:
 
@@ -151,11 +163,13 @@ sci_remote_device_ea_construct
 
     construct expander attached device
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
 .. _`sci_remote_device_ea_construct.description`:
 
@@ -184,12 +198,14 @@ sci_remote_device_start
 
     This method will start the supplied remote device.  This method enables normal IO requests to flow through to the remote device.
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
-    :param u32 timeout:
+    :param timeout:
         This parameter specifies the number of milliseconds in which the
         start operation should complete.
+    :type timeout: u32
 
 .. _`sci_remote_device_start.description`:
 
@@ -210,11 +226,13 @@ isci_remote_device_alloc
 
     is received.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
 .. _`isci_remote_device_alloc.description`:
 
@@ -232,11 +250,13 @@ isci_remote_device_stop
 
     This function is called internally to stop the remote device.
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
-    :param struct isci_remote_device \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct isci_remote_device \*
 
 .. _`isci_remote_device_stop.description`:
 
@@ -254,8 +274,9 @@ isci_remote_device_gone
 
     This function is called by libsas when a domain device is removed.
 
-    :param struct domain_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct domain_device \*
 
 .. _`isci_remote_device_found`:
 
@@ -266,8 +287,9 @@ isci_remote_device_found
 
     This function is called by libsas when a remote device is discovered. A remote device object is created and started. the function then sleeps until the sci core device started message is received.
 
-    :param struct domain_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct domain_device \*
 
 .. _`isci_remote_device_found.description`:
 

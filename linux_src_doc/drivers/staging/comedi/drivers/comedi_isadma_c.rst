@@ -10,8 +10,9 @@ comedi_isadma_program
 
     program and enable an ISA DMA transfer
 
-    :param struct comedi_isadma_desc \*desc:
+    :param desc:
         the ISA DMA cookie to program and enable
+    :type desc: struct comedi_isadma_desc \*
 
 .. _`comedi_isadma_disable`:
 
@@ -22,8 +23,9 @@ comedi_isadma_disable
 
     disable the ISA DMA channel
 
-    :param unsigned int dma_chan:
+    :param dma_chan:
         the DMA channel to disable
+    :type dma_chan: unsigned int
 
 .. _`comedi_isadma_disable.description`:
 
@@ -41,11 +43,13 @@ comedi_isadma_disable_on_sample
 
     disable the ISA DMA channel
 
-    :param unsigned int dma_chan:
+    :param dma_chan:
         the DMA channel to disable
+    :type dma_chan: unsigned int
 
-    :param unsigned int size:
+    :param size:
         the sample size (in bytes)
+    :type size: unsigned int
 
 .. _`comedi_isadma_disable_on_sample.description`:
 
@@ -63,8 +67,9 @@ comedi_isadma_poll
 
     poll the current DMA transfer
 
-    :param struct comedi_isadma \*dma:
+    :param dma:
         the ISA DMA to poll
+    :type dma: struct comedi_isadma \*
 
 .. _`comedi_isadma_poll.description`:
 
@@ -82,11 +87,13 @@ comedi_isadma_set_mode
 
     set the ISA DMA transfer direction
 
-    :param struct comedi_isadma_desc \*desc:
+    :param desc:
         the ISA DMA cookie to set
+    :type desc: struct comedi_isadma_desc \*
 
-    :param char dma_dir:
+    :param dma_dir:
         the DMA direction
+    :type dma_dir: char
 
 .. _`comedi_isadma_alloc`:
 
@@ -97,23 +104,29 @@ comedi_isadma_alloc
 
     allocate and initialize the ISA DMA
 
-    :param struct comedi_device \*dev:
+    :param dev:
         comedi_device struct
+    :type dev: struct comedi_device \*
 
-    :param int n_desc:
+    :param n_desc:
         the number of cookies to allocate
+    :type n_desc: int
 
-    :param unsigned int dma_chan1:
+    :param dma_chan1:
         *undescribed*
+    :type dma_chan1: unsigned int
 
-    :param unsigned int dma_chan2:
+    :param dma_chan2:
         DMA channel for the second cookie
+    :type dma_chan2: unsigned int
 
-    :param unsigned int maxsize:
+    :param maxsize:
         the size of the buffer to allocate for each cookie
+    :type maxsize: unsigned int
 
-    :param char dma_dir:
+    :param dma_dir:
         the DMA direction
+    :type dma_dir: char
 
 .. _`comedi_isadma_alloc.description`:
 
@@ -131,8 +144,9 @@ comedi_isadma_free
 
     free the ISA DMA
 
-    :param struct comedi_isadma \*dma:
+    :param dma:
         the ISA DMA to free
+    :type dma: struct comedi_isadma \*
 
 .. This file was automatic generated / don't edit.
 

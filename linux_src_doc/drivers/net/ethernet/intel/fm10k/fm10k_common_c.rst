@@ -10,8 +10,9 @@ fm10k_get_bus_info_generic
 
     Generic set PCI bus info
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
 .. _`fm10k_get_bus_info_generic.description`:
 
@@ -30,8 +31,9 @@ fm10k_get_invariants_generic
 
     Inits constant values
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct fm10k_hw \*
 
 .. _`fm10k_get_invariants_generic.description`:
 
@@ -49,8 +51,9 @@ fm10k_start_hw_generic
 
     Prepare hardware for Tx/Rx
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
 .. _`fm10k_start_hw_generic.description`:
 
@@ -69,11 +72,13 @@ fm10k_disable_queues_generic
 
     Stop Tx/Rx queues
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param u16 q_cnt:
+    :param q_cnt:
         number of queues to be disabled
+    :type q_cnt: u16
 
 .. _`fm10k_stop_hw_generic`:
 
@@ -84,8 +89,9 @@ fm10k_stop_hw_generic
 
     Stop Tx/Rx units
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
 .. _`fm10k_read_hw_stats_32b`:
 
@@ -96,14 +102,17 @@ fm10k_read_hw_stats_32b
 
     Reads value of 32-bit registers
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param u32 addr:
+    :param addr:
         address of register containing a 32-bit value
+    :type addr: u32
 
-    :param struct fm10k_hw_stat \*stat:
+    :param stat:
         pointer to structure holding hw stat information
+    :type stat: struct fm10k_hw_stat \*
 
 .. _`fm10k_read_hw_stats_32b.description`:
 
@@ -122,14 +131,17 @@ fm10k_read_hw_stats_48b
 
     Reads value of 48-bit registers
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param u32 addr:
+    :param addr:
         address of register containing the lower 32-bit value
+    :type addr: u32
 
-    :param struct fm10k_hw_stat \*stat:
+    :param stat:
         pointer to structure holding hw stat information
+    :type stat: struct fm10k_hw_stat \*
 
 .. _`fm10k_read_hw_stats_48b.description`:
 
@@ -150,11 +162,13 @@ fm10k_update_hw_base_48b
 
     Updates 48-bit statistic base value
 
-    :param struct fm10k_hw_stat \*stat:
+    :param stat:
         pointer to the hardware statistic structure
+    :type stat: struct fm10k_hw_stat \*
 
-    :param u64 delta:
+    :param delta:
         value to be updated into the hardware statistic structure
+    :type delta: u64
 
 .. _`fm10k_update_hw_base_48b.description`:
 
@@ -173,14 +187,17 @@ fm10k_update_hw_stats_tx_q
 
     Updates TX queue statistics counters
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_hw_stats_q \*q:
+    :param q:
         pointer to the ring of hardware statistics queue
+    :type q: struct fm10k_hw_stats_q \*
 
-    :param u32 idx:
+    :param idx:
         index pointing to the start of the ring iteration
+    :type idx: u32
 
 .. _`fm10k_update_hw_stats_tx_q.description`:
 
@@ -199,14 +216,17 @@ fm10k_update_hw_stats_rx_q
 
     Updates RX queue statistics counters
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_hw_stats_q \*q:
+    :param q:
         pointer to the ring of hardware statistics queue
+    :type q: struct fm10k_hw_stats_q \*
 
-    :param u32 idx:
+    :param idx:
         index pointing to the start of the ring iteration
+    :type idx: u32
 
 .. _`fm10k_update_hw_stats_rx_q.description`:
 
@@ -225,17 +245,21 @@ fm10k_update_hw_stats_q
 
     Updates queue statistics counters
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_hw_stats_q \*q:
+    :param q:
         pointer to the ring of hardware statistics queue
+    :type q: struct fm10k_hw_stats_q \*
 
-    :param u32 idx:
+    :param idx:
         index pointing to the start of the ring iteration
+    :type idx: u32
 
-    :param u32 count:
+    :param count:
         number of queues to iterate over
+    :type count: u32
 
 .. _`fm10k_update_hw_stats_q.description`:
 
@@ -254,14 +278,17 @@ fm10k_unbind_hw_stats_q
 
     Unbind the queue counters from their queues
 
-    :param struct fm10k_hw_stats_q \*q:
+    :param q:
         pointer to the ring of hardware statistics queue
+    :type q: struct fm10k_hw_stats_q \*
 
-    :param u32 idx:
+    :param idx:
         index pointing to the start of the ring iteration
+    :type idx: u32
 
-    :param u32 count:
+    :param count:
         number of queues to iterate over
+    :type count: u32
 
 .. _`fm10k_unbind_hw_stats_q.description`:
 
@@ -280,11 +307,13 @@ fm10k_get_host_state_generic
 
     Returns the state of the host
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param bool \*host_ready:
+    :param host_ready:
         pointer to boolean value that will record host state
+    :type host_ready: bool \*
 
 .. _`fm10k_get_host_state_generic.description`:
 

@@ -10,14 +10,17 @@ mls_export_netlbl_lvl
 
     Export the MLS sensitivity levels to NetLabel
 
-    :param struct policydb \*p:
+    :param p:
         *undescribed*
+    :type p: struct policydb \*
 
-    :param struct context \*context:
+    :param context:
         the security context
+    :type context: struct context \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the NetLabel security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`mls_export_netlbl_lvl.description`:
 
@@ -36,14 +39,17 @@ mls_import_netlbl_lvl
 
     Import the NetLabel MLS sensitivity levels
 
-    :param struct policydb \*p:
+    :param p:
         *undescribed*
+    :type p: struct policydb \*
 
-    :param struct context \*context:
+    :param context:
         the security context
+    :type context: struct context \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the NetLabel security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`mls_import_netlbl_lvl.description`:
 
@@ -62,14 +68,17 @@ mls_export_netlbl_cat
 
     Export the MLS categories to NetLabel
 
-    :param struct policydb \*p:
+    :param p:
         *undescribed*
+    :type p: struct policydb \*
 
-    :param struct context \*context:
+    :param context:
         the security context
+    :type context: struct context \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the NetLabel security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`mls_export_netlbl_cat.description`:
 
@@ -88,14 +97,17 @@ mls_import_netlbl_cat
 
     Import the MLS categories from NetLabel
 
-    :param struct policydb \*p:
+    :param p:
         *undescribed*
+    :type p: struct policydb \*
 
-    :param struct context \*context:
+    :param context:
         the security context
+    :type context: struct context \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the NetLabel security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`mls_import_netlbl_cat.description`:
 

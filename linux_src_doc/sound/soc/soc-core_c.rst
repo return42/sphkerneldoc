@@ -10,8 +10,9 @@ snd_soc_find_dai
 
     Find a registered DAI
 
-    :param const struct snd_soc_dai_link_component \*dlc:
+    :param dlc:
         name of the DAI or the DAI driver and optional component info to match
+    :type dlc: const struct snd_soc_dai_link_component \*
 
 .. _`snd_soc_find_dai.description`:
 
@@ -38,17 +39,21 @@ snd_soc_find_dai_link
 
     Find a DAI link
 
-    :param struct snd_soc_card \*card:
+    :param card:
         soc card
+    :type card: struct snd_soc_card \*
 
-    :param int id:
+    :param id:
         DAI link ID to match
+    :type id: int
 
-    :param const char \*name:
+    :param name:
         DAI link name to match, optional
+    :type name: const char \*
 
-    :param const char \*stream_name:
+    :param stream_name:
         DAI link stream name to match, optional
+    :type stream_name: const char \*
 
 .. _`snd_soc_find_dai_link.description`:
 
@@ -76,11 +81,13 @@ snd_soc_add_dai_link
 
     Add a DAI link dynamically
 
-    :param struct snd_soc_card \*card:
+    :param card:
         The ASoC card to which the DAI link is added
+    :type card: struct snd_soc_card \*
 
-    :param struct snd_soc_dai_link \*dai_link:
+    :param dai_link:
         The new DAI link to add
+    :type dai_link: struct snd_soc_dai_link \*
 
 .. _`snd_soc_add_dai_link.description`:
 
@@ -107,11 +114,13 @@ snd_soc_remove_dai_link
 
     Remove a DAI link from the list
 
-    :param struct snd_soc_card \*card:
+    :param card:
         The ASoC card that owns the link
+    :type card: struct snd_soc_card \*
 
-    :param struct snd_soc_dai_link \*dai_link:
+    :param dai_link:
         The DAI link to remove
+    :type dai_link: struct snd_soc_dai_link \*
 
 .. _`snd_soc_remove_dai_link.description`:
 
@@ -132,11 +141,13 @@ snd_soc_runtime_set_dai_fmt
 
     Change DAI link format for a ASoC runtime
 
-    :param struct snd_soc_pcm_runtime \*rtd:
+    :param rtd:
         The runtime for which the DAI link format should be changed
+    :type rtd: struct snd_soc_pcm_runtime \*
 
-    :param unsigned int dai_fmt:
+    :param dai_fmt:
         The new DAI link format
+    :type dai_fmt: unsigned int
 
 .. _`snd_soc_runtime_set_dai_fmt.description`:
 
@@ -165,11 +176,13 @@ snd_soc_set_dmi_name
 
     Register DMI names to card
 
-    :param struct snd_soc_card \*card:
+    :param card:
         The card to register DMI names
+    :type card: struct snd_soc_card \*
 
-    :param const char \*flavour:
+    :param flavour:
         The flavour "differentiator" for the card amongst its peers.
+    :type flavour: const char \*
 
 .. _`snd_soc_set_dmi_name.description`:
 
@@ -215,17 +228,21 @@ snd_soc_cnew
 
     create new control
 
-    :param const struct snd_kcontrol_new \*_template:
+    :param _template:
         control template
+    :type _template: const struct snd_kcontrol_new \*
 
-    :param void \*data:
+    :param data:
         control private data
+    :type data: void \*
 
-    :param const char \*long_name:
+    :param long_name:
         control long name
+    :type long_name: const char \*
 
-    :param const char \*prefix:
+    :param prefix:
         control name prefix
+    :type prefix: const char \*
 
 .. _`snd_soc_cnew.description`:
 
@@ -245,14 +262,17 @@ snd_soc_add_component_controls
 
     Add an array of controls to a component.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         Component to add controls to
+    :type component: struct snd_soc_component \*
 
-    :param const struct snd_kcontrol_new \*controls:
+    :param controls:
         Array of controls to add
+    :type controls: const struct snd_kcontrol_new \*
 
-    :param unsigned int num_controls:
+    :param num_controls:
         Number of elements in the array
+    :type num_controls: unsigned int
 
 .. _`snd_soc_add_component_controls.return`:
 
@@ -270,14 +290,17 @@ snd_soc_add_card_controls
 
     add an array of controls to a SoC card. Convenience function to add a list of controls.
 
-    :param struct snd_soc_card \*soc_card:
+    :param soc_card:
         SoC card to add controls to
+    :type soc_card: struct snd_soc_card \*
 
-    :param const struct snd_kcontrol_new \*controls:
+    :param controls:
         array of controls to add
+    :type controls: const struct snd_kcontrol_new \*
 
-    :param int num_controls:
+    :param num_controls:
         number of elements in the array
+    :type num_controls: int
 
 .. _`snd_soc_add_card_controls.description`:
 
@@ -295,14 +318,17 @@ snd_soc_add_dai_controls
 
     add an array of controls to a DAI. Convienience function to add a list of controls.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI to add controls to
+    :type dai: struct snd_soc_dai \*
 
-    :param const struct snd_kcontrol_new \*controls:
+    :param controls:
         array of controls to add
+    :type controls: const struct snd_kcontrol_new \*
 
-    :param int num_controls:
+    :param num_controls:
         number of elements in the array
+    :type num_controls: int
 
 .. _`snd_soc_add_dai_controls.description`:
 
@@ -320,17 +346,21 @@ snd_soc_dai_set_sysclk
 
     configure DAI system or master clock.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param int clk_id:
+    :param clk_id:
         DAI specific clock ID
+    :type clk_id: int
 
-    :param unsigned int freq:
+    :param freq:
         new clock frequency in Hz
+    :type freq: unsigned int
 
-    :param int dir:
+    :param dir:
         new clock direction - input/output.
+    :type dir: int
 
 .. _`snd_soc_dai_set_sysclk.description`:
 
@@ -348,20 +378,25 @@ snd_soc_component_set_sysclk
 
     configure COMPONENT system or master clock.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         COMPONENT
+    :type component: struct snd_soc_component \*
 
-    :param int clk_id:
+    :param clk_id:
         DAI specific clock ID
+    :type clk_id: int
 
-    :param int source:
+    :param source:
         Source for the clock
+    :type source: int
 
-    :param unsigned int freq:
+    :param freq:
         new clock frequency in Hz
+    :type freq: unsigned int
 
-    :param int dir:
+    :param dir:
         new clock direction - input/output.
+    :type dir: int
 
 .. _`snd_soc_component_set_sysclk.description`:
 
@@ -379,14 +414,17 @@ snd_soc_dai_set_clkdiv
 
     configure DAI clock dividers.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param int div_id:
+    :param div_id:
         DAI specific clock divider ID
+    :type div_id: int
 
-    :param int div:
+    :param div:
         new clock divisor.
+    :type div: int
 
 .. _`snd_soc_dai_set_clkdiv.description`:
 
@@ -406,20 +444,25 @@ snd_soc_dai_set_pll
 
     configure DAI PLL.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param int pll_id:
+    :param pll_id:
         DAI specific PLL ID
+    :type pll_id: int
 
-    :param int source:
+    :param source:
         DAI specific source for the PLL
+    :type source: int
 
-    :param unsigned int freq_in:
+    :param freq_in:
         PLL input clock frequency in Hz
+    :type freq_in: unsigned int
 
-    :param unsigned int freq_out:
+    :param freq_out:
         requested PLL output clock frequency in Hz
+    :type freq_out: unsigned int
 
 .. _`snd_soc_dai_set_pll.description`:
 
@@ -437,11 +480,13 @@ snd_soc_dai_set_bclk_ratio
 
     configure BCLK to sample rate ratio.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param unsigned int ratio:
+    :param ratio:
         Ratio of BCLK to Sample rate.
+    :type ratio: unsigned int
 
 .. _`snd_soc_dai_set_bclk_ratio.description`:
 
@@ -459,11 +504,13 @@ snd_soc_dai_set_fmt
 
     configure DAI hardware audio format.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param unsigned int fmt:
+    :param fmt:
         SND_SOC_DAIFMT_* format value.
+    :type fmt: unsigned int
 
 .. _`snd_soc_dai_set_fmt.description`:
 
@@ -481,14 +528,17 @@ snd_soc_xlate_tdm_slot_mask
 
     generate tx/rx slot mask.
 
-    :param unsigned int slots:
+    :param slots:
         Number of slots in use.
+    :type slots: unsigned int
 
-    :param unsigned int \*tx_mask:
+    :param tx_mask:
         bitmask representing active TX slots.
+    :type tx_mask: unsigned int \*
 
-    :param unsigned int \*rx_mask:
+    :param rx_mask:
         bitmask representing active RX slots.
+    :type rx_mask: unsigned int \*
 
 .. _`snd_soc_xlate_tdm_slot_mask.description`:
 
@@ -506,20 +556,25 @@ snd_soc_dai_set_tdm_slot
 
     Configures a DAI for TDM operation
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         The DAI to configure
+    :type dai: struct snd_soc_dai \*
 
-    :param unsigned int tx_mask:
+    :param tx_mask:
         bitmask representing active TX slots.
+    :type tx_mask: unsigned int
 
-    :param unsigned int rx_mask:
+    :param rx_mask:
         bitmask representing active RX slots.
+    :type rx_mask: unsigned int
 
-    :param int slots:
+    :param slots:
         Number of slots in use.
+    :type slots: int
 
-    :param int slot_width:
+    :param slot_width:
         Width in bits for each slot.
+    :type slot_width: int
 
 .. _`snd_soc_dai_set_tdm_slot.description`:
 
@@ -550,22 +605,27 @@ snd_soc_dai_set_channel_map
 
     configure DAI audio channel map
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param unsigned int tx_num:
+    :param tx_num:
         how many TX channels
+    :type tx_num: unsigned int
 
-    :param unsigned int \*tx_slot:
+    :param tx_slot:
         pointer to an array which imply the TX slot number channel
         0~num-1 uses
+    :type tx_slot: unsigned int \*
 
-    :param unsigned int rx_num:
+    :param rx_num:
         how many RX channels
+    :type rx_num: unsigned int
 
-    :param unsigned int \*rx_slot:
+    :param rx_slot:
         pointer to an array which imply the RX slot number channel
         0~num-1 uses
+    :type rx_slot: unsigned int \*
 
 .. _`snd_soc_dai_set_channel_map.description`:
 
@@ -573,6 +633,37 @@ Description
 -----------
 
 configure the relationship between channel number and TDM slot number.
+
+.. _`snd_soc_dai_get_channel_map`:
+
+snd_soc_dai_get_channel_map
+===========================
+
+.. c:function:: int snd_soc_dai_get_channel_map(struct snd_soc_dai *dai, unsigned int *tx_num, unsigned int *tx_slot, unsigned int *rx_num, unsigned int *rx_slot)
+
+    Get DAI audio channel map
+
+    :param dai:
+        DAI
+    :type dai: struct snd_soc_dai \*
+
+    :param tx_num:
+        how many TX channels
+    :type tx_num: unsigned int \*
+
+    :param tx_slot:
+        pointer to an array which imply the TX slot number channel
+        0~num-1 uses
+    :type tx_slot: unsigned int \*
+
+    :param rx_num:
+        how many RX channels
+    :type rx_num: unsigned int \*
+
+    :param rx_slot:
+        pointer to an array which imply the RX slot number channel
+        0~num-1 uses
+    :type rx_slot: unsigned int \*
 
 .. _`snd_soc_dai_set_tristate`:
 
@@ -583,11 +674,13 @@ snd_soc_dai_set_tristate
 
     configure DAI system or master clock.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param int tristate:
+    :param tristate:
         tristate enable
+    :type tristate: int
 
 .. _`snd_soc_dai_set_tristate.description`:
 
@@ -605,14 +698,17 @@ snd_soc_dai_digital_mute
 
     configure DAI system or master clock.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param int mute:
+    :param mute:
         mute enable
+    :type mute: int
 
-    :param int direction:
+    :param direction:
         stream to mute
+    :type direction: int
 
 .. _`snd_soc_dai_digital_mute.description`:
 
@@ -630,8 +726,9 @@ snd_soc_register_card
 
     Register a card with the ASoC core
 
-    :param struct snd_soc_card \*card:
+    :param card:
         Card to register
+    :type card: struct snd_soc_card \*
 
 .. _`snd_soc_unregister_card`:
 
@@ -642,8 +739,9 @@ snd_soc_unregister_card
 
     Unregister a card with the ASoC core
 
-    :param struct snd_soc_card \*card:
+    :param card:
         Card to unregister
+    :type card: struct snd_soc_card \*
 
 .. _`snd_soc_unregister_dais`:
 
@@ -654,8 +752,9 @@ snd_soc_unregister_dais
 
     Unregister DAIs from the ASoC core
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The component for which the DAIs should be unregistered
+    :type component: struct snd_soc_component \*
 
 .. _`snd_soc_register_dais`:
 
@@ -666,14 +765,17 @@ snd_soc_register_dais
 
     Register a DAI with the ASoC core
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The component the DAIs are registered for
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_dai_driver \*dai_drv:
+    :param dai_drv:
         DAI driver to use for the DAIs
+    :type dai_drv: struct snd_soc_dai_driver \*
 
-    :param size_t count:
+    :param count:
         Number of DAIs
+    :type count: size_t
 
 .. _`snd_soc_register_dai`:
 
@@ -684,11 +786,13 @@ snd_soc_register_dai
 
     Register a DAI dynamically & create its widgets
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The component the DAIs are registered for
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_dai_driver \*dai_drv:
+    :param dai_drv:
         DAI driver to use for the DAI
+    :type dai_drv: struct snd_soc_dai_driver \*
 
 .. _`snd_soc_register_dai.description`:
 
@@ -708,11 +812,13 @@ snd_soc_component_init_regmap
 
     Initialize regmap instance for the component
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The component for which to initialize the regmap instance
+    :type component: struct snd_soc_component \*
 
-    :param struct regmap \*regmap:
+    :param regmap:
         The regmap instance that should be used by the component
+    :type regmap: struct regmap \*
 
 .. _`snd_soc_component_init_regmap.description`:
 
@@ -733,8 +839,9 @@ snd_soc_component_exit_regmap
 
     De-initialize regmap instance for the component
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The component for which to de-initialize the regmap instance
+    :type component: struct snd_soc_component \*
 
 .. _`snd_soc_component_exit_regmap.description`:
 
@@ -756,8 +863,9 @@ __snd_soc_unregister_component
 
     Unregister all related component from the ASoC core
 
-    :param struct device \*dev:
+    :param dev:
         The device to unregister
+    :type dev: struct device \*
 
 .. This file was automatic generated / don't edit.
 

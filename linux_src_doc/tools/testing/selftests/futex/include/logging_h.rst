@@ -10,8 +10,9 @@ log_color
 
     Use colored output for PASS, ERROR, and FAIL strings
 
-    :param int use_color:
+    :param use_color:
         use color (1) or not (0)
+    :type use_color: int
 
 .. _`log_verbosity`:
 
@@ -22,8 +23,9 @@ log_verbosity
 
     Set verbosity of test output
 
-    :param int level:
+    :param level:
         *undescribed*
+    :type level: int
 
 .. _`log_verbosity.description`:
 
@@ -42,11 +44,13 @@ print_result
 
     Print standard PASS \| ERROR \| FAIL results
 
-    :param const char \*test_name:
+    :param test_name:
         *undescribed*
+    :type test_name: const char \*
 
-    :param int ret:
+    :param ret:
         the return value to be considered: 0 \| RET_ERROR \| RET_FAIL
+    :type ret: int
 
 .. _`print_result.description`:
 

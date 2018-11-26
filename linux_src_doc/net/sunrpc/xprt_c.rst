@@ -10,8 +10,9 @@ xprt_register_transport
 
     register a transport implementation
 
-    :param struct xprt_class \*transport:
+    :param transport:
         transport to register
+    :type transport: struct xprt_class \*
 
 .. _`xprt_register_transport.description`:
 
@@ -39,8 +40,9 @@ xprt_unregister_transport
 
     unregister a transport implementation
 
-    :param struct xprt_class \*transport:
+    :param transport:
         transport to unregister
+    :type transport: struct xprt_class \*
 
 .. _`xprt_unregister_transport.return`:
 
@@ -59,8 +61,9 @@ xprt_load_transport
 
     load a transport implementation
 
-    :param const char \*transport_name:
+    :param transport_name:
         transport to load
+    :type transport_name: const char \*
 
 .. _`xprt_load_transport.return`:
 
@@ -79,11 +82,13 @@ xprt_reserve_xprt
 
     serialize write access to transports
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         pointer to the target transport
+    :type xprt: struct rpc_xprt \*
 
-    :param struct rpc_task \*task:
+    :param task:
         task that is requesting access to the transport
+    :type task: struct rpc_task \*
 
 .. _`xprt_reserve_xprt.description`:
 
@@ -103,11 +108,13 @@ xprt_release_xprt
 
     allow other requests to use a transport
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport with other tasks potentially waiting
+    :type xprt: struct rpc_xprt \*
 
-    :param struct rpc_task \*task:
+    :param task:
         task that is releasing access to the transport
+    :type task: struct rpc_task \*
 
 .. _`xprt_release_xprt.description`:
 
@@ -125,11 +132,13 @@ xprt_release_xprt_cong
 
     allow other requests to use a transport
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport with other tasks potentially waiting
+    :type xprt: struct rpc_xprt \*
 
-    :param struct rpc_task \*task:
+    :param task:
         task that is releasing access to the transport
+    :type task: struct rpc_task \*
 
 .. _`xprt_release_xprt_cong.description`:
 
@@ -138,6 +147,30 @@ Description
 
 Note that "task" can be NULL.  Another task is awoken to use the
 transport if the transport's congestion window allows it.
+
+.. _`xprt_request_get_cong`:
+
+xprt_request_get_cong
+=====================
+
+.. c:function:: bool xprt_request_get_cong(struct rpc_xprt *xprt, struct rpc_rqst *req)
+
+    Request congestion control credits
+
+    :param xprt:
+        pointer to transport
+    :type xprt: struct rpc_xprt \*
+
+    :param req:
+        pointer to RPC request
+    :type req: struct rpc_rqst \*
+
+.. _`xprt_request_get_cong.description`:
+
+Description
+-----------
+
+Useful for transports that require congestion control.
 
 .. _`xprt_release_rqst_cong`:
 
@@ -148,8 +181,9 @@ xprt_release_rqst_cong
 
     housekeeping when request is complete
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC request that recently completed
+    :type task: struct rpc_task \*
 
 .. _`xprt_release_rqst_cong.description`:
 
@@ -167,14 +201,17 @@ xprt_adjust_cwnd
 
     adjust transport congestion window
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         pointer to xprt
+    :type xprt: struct rpc_xprt \*
 
-    :param struct rpc_task \*task:
+    :param task:
         recently completed RPC request used to adjust window
+    :type task: struct rpc_task \*
 
-    :param int result:
+    :param result:
         result code of completed RPC request
+    :type result: int
 
 .. _`xprt_adjust_cwnd.description`:
 
@@ -200,26 +237,26 @@ xprt_wake_pending_tasks
 
     wake all tasks on a transport's pending queue
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport with waiting tasks
+    :type xprt: struct rpc_xprt \*
 
-    :param int status:
+    :param status:
         result code to plant in each task before waking it
+    :type status: int
 
 .. _`xprt_wait_for_buffer_space`:
 
 xprt_wait_for_buffer_space
 ==========================
 
-.. c:function:: void xprt_wait_for_buffer_space(struct rpc_task *task, rpc_action action)
+.. c:function:: void xprt_wait_for_buffer_space(struct rpc_xprt *xprt)
 
     wait for transport output buffer to clear
 
-    :param struct rpc_task \*task:
-        task to be put to sleep
-
-    :param rpc_action action:
-        function pointer to be executed after wait
+    :param xprt:
+        transport
+    :type xprt: struct rpc_xprt \*
 
 .. _`xprt_wait_for_buffer_space.description`:
 
@@ -235,12 +272,13 @@ an incomplete RPC call transmission.
 xprt_write_space
 ================
 
-.. c:function:: void xprt_write_space(struct rpc_xprt *xprt)
+.. c:function:: bool xprt_write_space(struct rpc_xprt *xprt)
 
     wake the task waiting for transport output buffer space
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport with waiting tasks
+    :type xprt: struct rpc_xprt \*
 
 .. _`xprt_write_space.description`:
 
@@ -258,8 +296,9 @@ xprt_set_retrans_timeout_def
 
     set a request's retransmit timeout
 
-    :param struct rpc_task \*task:
+    :param task:
         task whose timeout is to be set
+    :type task: struct rpc_task \*
 
 .. _`xprt_set_retrans_timeout_def.description`:
 
@@ -279,8 +318,9 @@ xprt_set_retrans_timeout_rtt
 
     set a request's retransmit timeout
 
-    :param struct rpc_task \*task:
+    :param task:
         task whose timeout is to be set
+    :type task: struct rpc_task \*
 
 .. _`xprt_set_retrans_timeout_rtt.description`:
 
@@ -298,8 +338,9 @@ xprt_adjust_timeout
 
     adjust timeout values for next retransmit
 
-    :param struct rpc_rqst \*req:
+    :param req:
         RPC request containing parameters to use for the adjustment
+    :type req: struct rpc_rqst \*
 
 .. _`xprt_disconnect_done`:
 
@@ -310,8 +351,9 @@ xprt_disconnect_done
 
     mark a transport as disconnected
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport to flag for disconnect
+    :type xprt: struct rpc_xprt \*
 
 .. _`xprt_force_disconnect`:
 
@@ -322,8 +364,9 @@ xprt_force_disconnect
 
     force a transport to disconnect
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport to disconnect
+    :type xprt: struct rpc_xprt \*
 
 .. _`xprt_conditional_disconnect`:
 
@@ -334,11 +377,13 @@ xprt_conditional_disconnect
 
     force a transport to disconnect
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport to disconnect
+    :type xprt: struct rpc_xprt \*
 
-    :param unsigned int cookie:
+    :param cookie:
         'connection cookie'
+    :type cookie: unsigned int
 
 .. _`xprt_conditional_disconnect.description`:
 
@@ -359,8 +404,9 @@ xprt_connect
 
     schedule a transport connect operation
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC task that is requesting the connect
+    :type task: struct rpc_task \*
 
 .. _`xprt_lookup_rqst`:
 
@@ -371,18 +417,20 @@ xprt_lookup_rqst
 
     find an RPC request corresponding to an XID
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport on which the original request was transmitted
+    :type xprt: struct rpc_xprt \*
 
-    :param __be32 xid:
+    :param xid:
         RPC XID of incoming reply
+    :type xid: __be32
 
 .. _`xprt_lookup_rqst.description`:
 
 Description
 -----------
 
-Caller holds xprt->recv_lock.
+Caller holds xprt->queue_lock.
 
 .. _`xprt_pin_rqst`:
 
@@ -393,8 +441,9 @@ xprt_pin_rqst
 
     Pin a request on the transport receive list
 
-    :param struct rpc_rqst \*req:
+    :param req:
         Request to pin
+    :type req: struct rpc_rqst \*
 
 .. _`xprt_pin_rqst.description`:
 
@@ -402,7 +451,7 @@ Description
 -----------
 
 Caller must ensure this is atomic with the call to \ :c:func:`xprt_lookup_rqst`\ 
-so should be holding the xprt transport lock.
+so should be holding the xprt receive lock.
 
 .. _`xprt_unpin_rqst`:
 
@@ -413,15 +462,49 @@ xprt_unpin_rqst
 
     Unpin a request on the transport receive list
 
-    :param struct rpc_rqst \*req:
+    :param req:
         Request to pin
+    :type req: struct rpc_rqst \*
 
 .. _`xprt_unpin_rqst.description`:
 
 Description
 -----------
 
-Caller should be holding the xprt transport lock.
+Caller should be holding the xprt receive lock.
+
+.. _`xprt_request_enqueue_receive`:
+
+xprt_request_enqueue_receive
+============================
+
+.. c:function:: void xprt_request_enqueue_receive(struct rpc_task *task)
+
+    Add an request to the receive queue
+
+    :param task:
+        RPC task
+    :type task: struct rpc_task \*
+
+.. _`xprt_request_dequeue_receive_locked`:
+
+xprt_request_dequeue_receive_locked
+===================================
+
+.. c:function:: void xprt_request_dequeue_receive_locked(struct rpc_task *task)
+
+    Remove a request from the receive queue
+
+    :param task:
+        RPC task
+    :type task: struct rpc_task \*
+
+.. _`xprt_request_dequeue_receive_locked.description`:
+
+Description
+-----------
+
+Caller must hold xprt->queue_lock.
 
 .. _`xprt_update_rtt`:
 
@@ -432,15 +515,16 @@ xprt_update_rtt
 
     Update RPC RTT statistics
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC request that recently completed
+    :type task: struct rpc_task \*
 
 .. _`xprt_update_rtt.description`:
 
 Description
 -----------
 
-Caller holds xprt->recv_lock.
+Caller holds xprt->queue_lock.
 
 .. _`xprt_complete_rqst`:
 
@@ -451,18 +535,135 @@ xprt_complete_rqst
 
     called when reply processing is complete
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC request that recently completed
+    :type task: struct rpc_task \*
 
-    :param int copied:
+    :param copied:
         actual number of bytes received from the transport
+    :type copied: int
 
 .. _`xprt_complete_rqst.description`:
 
 Description
 -----------
 
-Caller holds xprt->recv_lock.
+Caller holds xprt->queue_lock.
+
+.. _`xprt_request_wait_receive`:
+
+xprt_request_wait_receive
+=========================
+
+.. c:function:: void xprt_request_wait_receive(struct rpc_task *task)
+
+    wait for the reply to an RPC request
+
+    :param task:
+        RPC task about to send a request
+    :type task: struct rpc_task \*
+
+.. _`xprt_request_enqueue_transmit`:
+
+xprt_request_enqueue_transmit
+=============================
+
+.. c:function:: void xprt_request_enqueue_transmit(struct rpc_task *task)
+
+    queue a task for transmission
+
+    :param task:
+        pointer to rpc_task
+    :type task: struct rpc_task \*
+
+.. _`xprt_request_enqueue_transmit.description`:
+
+Description
+-----------
+
+Add a task to the transmission queue.
+
+.. _`xprt_request_dequeue_transmit_locked`:
+
+xprt_request_dequeue_transmit_locked
+====================================
+
+.. c:function:: void xprt_request_dequeue_transmit_locked(struct rpc_task *task)
+
+    remove a task from the transmission queue
+
+    :param task:
+        pointer to rpc_task
+    :type task: struct rpc_task \*
+
+.. _`xprt_request_dequeue_transmit_locked.description`:
+
+Description
+-----------
+
+Remove a task from the transmission queue
+Caller must hold xprt->queue_lock
+
+.. _`xprt_request_dequeue_transmit`:
+
+xprt_request_dequeue_transmit
+=============================
+
+.. c:function:: void xprt_request_dequeue_transmit(struct rpc_task *task)
+
+    remove a task from the transmission queue
+
+    :param task:
+        pointer to rpc_task
+    :type task: struct rpc_task \*
+
+.. _`xprt_request_dequeue_transmit.description`:
+
+Description
+-----------
+
+Remove a task from the transmission queue
+
+.. _`xprt_request_prepare`:
+
+xprt_request_prepare
+====================
+
+.. c:function:: void xprt_request_prepare(struct rpc_rqst *req)
+
+    prepare an encoded request for transport
+
+    :param req:
+        pointer to rpc_rqst
+    :type req: struct rpc_rqst \*
+
+.. _`xprt_request_prepare.description`:
+
+Description
+-----------
+
+Calls into the transport layer to do whatever is needed to prepare
+the request for transmission or receive.
+
+.. _`xprt_request_need_retransmit`:
+
+xprt_request_need_retransmit
+============================
+
+.. c:function:: bool xprt_request_need_retransmit(struct rpc_task *task)
+
+    Test if a task needs retransmission
+
+    :param task:
+        pointer to rpc_task
+    :type task: struct rpc_task \*
+
+.. _`xprt_request_need_retransmit.description`:
+
+Description
+-----------
+
+Test for whether a connection breakage requires the task to retransmit
 
 .. _`xprt_prepare_transmit`:
 
@@ -473,8 +674,36 @@ xprt_prepare_transmit
 
     reserve the transport before sending a request
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC task about to send a request
+    :type task: struct rpc_task \*
+
+.. _`xprt_request_transmit`:
+
+xprt_request_transmit
+=====================
+
+.. c:function:: int xprt_request_transmit(struct rpc_rqst *req, struct rpc_task *snd_task)
+
+    send an RPC request on a transport
+
+    :param req:
+        pointer to request to transmit
+    :type req: struct rpc_rqst \*
+
+    :param snd_task:
+        RPC task that owns the transport lock
+    :type snd_task: struct rpc_task \*
+
+.. _`xprt_request_transmit.description`:
+
+Description
+-----------
+
+This performs the transmission of a single request.
+Note that if the request is not the same as snd_task, then it
+does need to be pinned.
+Returns '0' on success.
 
 .. _`xprt_transmit`:
 
@@ -485,15 +714,19 @@ xprt_transmit
 
     send an RPC request on a transport
 
-    :param struct rpc_task \*task:
+    :param task:
         controlling RPC task
+    :type task: struct rpc_task \*
 
 .. _`xprt_transmit.description`:
 
 Description
 -----------
 
-We have to copy the iovec because sendmsg fiddles with its contents.
+Attempts to drain the transmit queue. On exit, either the transport
+signalled an error that needs to be handled before transmission can
+resume, or \ ``task``\  finished transmitting, and detected that it already
+received a reply.
 
 .. _`xprt_reserve`:
 
@@ -504,8 +737,9 @@ xprt_reserve
 
     allocate an RPC request slot
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC task requesting a slot allocation
+    :type task: struct rpc_task \*
 
 .. _`xprt_reserve.description`:
 
@@ -525,8 +759,9 @@ xprt_retry_reserve
 
     allocate an RPC request slot
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC task requesting a slot allocation
+    :type task: struct rpc_task \*
 
 .. _`xprt_retry_reserve.description`:
 
@@ -547,8 +782,9 @@ xprt_release
 
     release an RPC request slot
 
-    :param struct rpc_task \*task:
+    :param task:
         task which is finished with the slot
+    :type task: struct rpc_task \*
 
 .. _`xprt_create_transport`:
 
@@ -559,8 +795,9 @@ xprt_create_transport
 
     create an RPC transport
 
-    :param struct xprt_create \*args:
+    :param args:
         rpc transport creation arguments
+    :type args: struct xprt_create \*
 
 .. _`xprt_destroy`:
 
@@ -571,8 +808,9 @@ xprt_destroy
 
     destroy an RPC transport, killing off all requests.
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         transport to destroy
+    :type xprt: struct rpc_xprt \*
 
 .. _`xprt_get`:
 
@@ -583,8 +821,9 @@ xprt_get
 
     return a reference to an RPC transport.
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         pointer to the transport
+    :type xprt: struct rpc_xprt \*
 
 .. _`xprt_put`:
 
@@ -595,8 +834,9 @@ xprt_put
 
     release a reference to an RPC transport.
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         pointer to the transport
+    :type xprt: struct rpc_xprt \*
 
 .. This file was automatic generated / don't edit.
 

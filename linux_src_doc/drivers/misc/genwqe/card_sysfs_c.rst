@@ -10,14 +10,17 @@ curr_bitstream_show
 
     Show the current bitstream id
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`curr_bitstream_show.description`:
 
@@ -46,14 +49,17 @@ next_bitstream_show
 
     Show the next activated bitstream
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`next_bitstream_show.io_slc_cfgreg_softreset`:
 
@@ -71,14 +77,17 @@ genwqe_is_visible
 
     Determine if sysfs attribute should be visible or not
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct attribute \*
 
-    :param int n:
+    :param n:
         *undescribed*
+    :type n: int
 
 .. _`genwqe_is_visible.description`:
 

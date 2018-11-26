@@ -10,21 +10,26 @@ crc32_le_generic
 
     Calculate bitwise little-endian Ethernet AUTODIN II CRC32/CRC32C
 
-    :param u32 crc:
+    :param crc:
         seed value for computation.  ~0 for Ethernet, sometimes 0 for other
         uses, or the previous crc32/crc32c value if computing incrementally.
+    :type crc: u32
 
-    :param unsigned char const \*p:
+    :param p:
         pointer to buffer over which CRC32/CRC32C is run
+    :type p: unsigned char const \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``p``\ 
+    :type len: size_t
 
-    :param const u32 tab:
+    :param tab:
         little-endian Ethernet table
+    :type tab: const u32
 
-    :param u32 polynomial:
+    :param polynomial:
         CRC32/CRC32c LE polynomial
+    :type polynomial: u32
 
 .. _`crc32_generic_shift`:
 
@@ -35,14 +40,17 @@ crc32_generic_shift
 
     Append \ ``len``\  0 bytes to crc, in logarithmic time
 
-    :param u32 crc:
+    :param crc:
         The original little-endian CRC (i.e. lsbit is x^31 coefficient)
+    :type crc: u32
 
-    :param size_t len:
+    :param len:
         The number of bytes. \ ``crc``\  is multiplied by x^(8*@len)
+    :type len: size_t
 
-    :param u32 polynomial:
+    :param polynomial:
         The modulus used to reduce the result to 32 bits.
+    :type polynomial: u32
 
 .. _`crc32_generic_shift.description`:
 
@@ -64,21 +72,26 @@ crc32_be_generic
 
     Calculate bitwise big-endian Ethernet AUTODIN II CRC32
 
-    :param u32 crc:
+    :param crc:
         seed value for computation.  ~0 for Ethernet, sometimes 0 for
         other uses, or the previous crc32 value if computing incrementally.
+    :type crc: u32
 
-    :param unsigned char const \*p:
+    :param p:
         pointer to buffer over which CRC32 is run
+    :type p: unsigned char const \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``p``\ 
+    :type len: size_t
 
-    :param const u32 tab:
+    :param tab:
         big-endian Ethernet table
+    :type tab: const u32
 
-    :param u32 polynomial:
+    :param polynomial:
         CRC32 BE polynomial
+    :type polynomial: u32
 
 .. This file was automatic generated / don't edit.
 

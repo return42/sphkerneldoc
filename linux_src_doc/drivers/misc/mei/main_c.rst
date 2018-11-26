@@ -10,11 +10,13 @@ mei_open
 
     the open function
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to inode structure
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         pointer to file structure
+    :type file: struct file \*
 
 .. _`mei_open.return`:
 
@@ -32,11 +34,13 @@ mei_release
 
     the release function
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to inode structure
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         pointer to file structure
+    :type file: struct file \*
 
 .. _`mei_release.return`:
 
@@ -54,17 +58,21 @@ mei_read
 
     the read function.
 
-    :param struct file \*file:
+    :param file:
         pointer to file structure
+    :type file: struct file \*
 
-    :param char __user \*ubuf:
+    :param ubuf:
         pointer to user buffer
+    :type ubuf: char __user \*
 
-    :param size_t length:
+    :param length:
         buffer length
+    :type length: size_t
 
-    :param loff_t \*offset:
+    :param offset:
         data offset in buffer
+    :type offset: loff_t \*
 
 .. _`mei_read.return`:
 
@@ -82,17 +90,21 @@ mei_write
 
     the write function.
 
-    :param struct file \*file:
+    :param file:
         pointer to file structure
+    :type file: struct file \*
 
-    :param const char __user \*ubuf:
+    :param ubuf:
         pointer to user buffer
+    :type ubuf: const char __user \*
 
-    :param size_t length:
+    :param length:
         buffer length
+    :type length: size_t
 
-    :param loff_t \*offset:
+    :param offset:
         data offset in buffer
+    :type offset: loff_t \*
 
 .. _`mei_write.return`:
 
@@ -110,11 +122,13 @@ mei_ioctl_connect_client
 
     the connect to fw client IOCTL function
 
-    :param struct file \*file:
+    :param file:
         private data of the file object
+    :type file: struct file \*
 
-    :param struct mei_connect_client_data \*data:
+    :param data:
         IOCTL connect data, input and output parameters
+    :type data: struct mei_connect_client_data \*
 
 .. _`mei_ioctl_connect_client.locking`:
 
@@ -139,11 +153,13 @@ mei_ioctl_client_notify_request
 
     propagate event notification request to client
 
-    :param const struct file \*file:
+    :param file:
         pointer to file structure
+    :type file: const struct file \*
 
-    :param u32 request:
+    :param request:
         0 - disable, 1 - enable
+    :type request: u32
 
 .. _`mei_ioctl_client_notify_request.return`:
 
@@ -161,11 +177,13 @@ mei_ioctl_client_notify_get
 
     wait for notification request
 
-    :param const struct file \*file:
+    :param file:
         pointer to file structure
+    :type file: const struct file \*
 
-    :param u32 \*notify_get:
+    :param notify_get:
         0 - disable, 1 - enable
+    :type notify_get: u32 \*
 
 .. _`mei_ioctl_client_notify_get.return`:
 
@@ -183,14 +201,17 @@ mei_ioctl
 
     the IOCTL function
 
-    :param struct file \*file:
+    :param file:
         pointer to file structure
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command
+    :type cmd: unsigned int
 
-    :param unsigned long data:
+    :param data:
         pointer to mei message structure
+    :type data: unsigned long
 
 .. _`mei_ioctl.return`:
 
@@ -208,14 +229,17 @@ mei_compat_ioctl
 
     the compat IOCTL function
 
-    :param struct file \*file:
+    :param file:
         pointer to file structure
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command
+    :type cmd: unsigned int
 
-    :param unsigned long data:
+    :param data:
         pointer to mei message structure
+    :type data: unsigned long
 
 .. _`mei_compat_ioctl.return`:
 
@@ -233,11 +257,13 @@ mei_poll
 
     the poll function
 
-    :param struct file \*file:
+    :param file:
         pointer to file structure
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         pointer to poll_table structure
+    :type wait: poll_table \*
 
 .. _`mei_poll.return`:
 
@@ -255,8 +281,9 @@ mei_cl_is_write_queued
 
     check if the client has pending writes.
 
-    :param struct mei_cl \*cl:
+    :param cl:
         writing host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_is_write_queued.return`:
 
@@ -274,17 +301,21 @@ mei_fsync
 
     the fsync handler
 
-    :param struct file \*fp:
+    :param fp:
         pointer to file structure
+    :type fp: struct file \*
 
-    :param loff_t start:
+    :param start:
         unused
+    :type start: loff_t
 
-    :param loff_t end:
+    :param end:
         unused
+    :type end: loff_t
 
-    :param int datasync:
+    :param datasync:
         unused
+    :type datasync: int
 
 .. _`mei_fsync.return`:
 
@@ -302,14 +333,17 @@ mei_fasync
 
     asynchronous io support
 
-    :param int fd:
+    :param fd:
         file descriptor
+    :type fd: int
 
-    :param struct file \*file:
+    :param file:
         pointer to file structure
+    :type file: struct file \*
 
-    :param int band:
+    :param band:
         band bitmap
+    :type band: int
 
 .. _`mei_fasync.return`:
 
@@ -329,14 +363,17 @@ fw_status_show
 
     mei device fw_status attribute show method
 
-    :param struct device \*device:
+    :param device:
         device pointer
+    :type device: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         attribute pointer
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         char out buffer
+    :type buf: char \*
 
 .. _`fw_status_show.return`:
 
@@ -354,14 +391,17 @@ hbm_ver_show
 
     display HBM protocol version negotiated with FW
 
-    :param struct device \*device:
+    :param device:
         device pointer
+    :type device: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         attribute pointer
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         char out buffer
+    :type buf: char \*
 
 .. _`hbm_ver_show.return`:
 
@@ -379,16 +419,47 @@ hbm_ver_drv_show
 
     display HBM protocol version advertised by driver
 
-    :param struct device \*device:
+    :param device:
         device pointer
+    :type device: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         attribute pointer
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         char out buffer
+    :type buf: char \*
 
 .. _`hbm_ver_drv_show.return`:
+
+Return
+------
+
+number of the bytes printed into buf or error
+
+.. _`fw_ver_show`:
+
+fw_ver_show
+===========
+
+.. c:function:: ssize_t fw_ver_show(struct device *device, struct device_attribute *attr, char *buf)
+
+    display ME FW version
+
+    :param device:
+        device pointer
+    :type device: struct device \*
+
+    :param attr:
+        attribute pointer
+    :type attr: struct device_attribute \*
+
+    :param buf:
+        char out buffer
+    :type buf: char \*
+
+.. _`fw_ver_show.return`:
 
 Return
 ------
@@ -404,8 +475,9 @@ mei_minor_get
 
     obtain next free device minor number
 
-    :param struct mei_device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct mei_device \*
 
 .. _`mei_minor_get.return`:
 
@@ -423,8 +495,9 @@ mei_minor_free
 
     mark device minor number as free
 
-    :param struct mei_device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct mei_device \*
 
 .. This file was automatic generated / don't edit.
 

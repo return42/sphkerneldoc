@@ -10,17 +10,20 @@ touchscreen_parse_properties
 
     parse common touchscreen DT properties
 
-    :param struct input_dev \*input:
+    :param input:
         input device that should be parsed
+    :type input: struct input_dev \*
 
-    :param bool multitouch:
+    :param multitouch:
         specifies whether parsed properties should be applied to
         single-touch or multi-touch axes
+    :type multitouch: bool
 
-    :param struct touchscreen_properties \*prop:
+    :param prop:
         pointer to a struct touchscreen_properties into which to store
         axis swap and invert info for use with \ :c:func:`touchscreen_report_x_y`\ ;
         or \ ``NULL``\ 
+    :type prop: struct touchscreen_properties \*
 
 .. _`touchscreen_parse_properties.description`:
 
@@ -40,17 +43,21 @@ touchscreen_set_mt_pos
 
     Set input_mt_pos coordinates
 
-    :param struct input_mt_pos \*pos:
+    :param pos:
         input_mt_pos to set coordinates of
+    :type pos: struct input_mt_pos \*
 
-    :param const struct touchscreen_properties \*prop:
+    :param prop:
         pointer to a struct touchscreen_properties
+    :type prop: const struct touchscreen_properties \*
 
-    :param unsigned int x:
+    :param x:
         X coordinate to store in pos
+    :type x: unsigned int
 
-    :param unsigned int y:
+    :param y:
         Y coordinate to store in pos
+    :type y: unsigned int
 
 .. _`touchscreen_set_mt_pos.description`:
 
@@ -70,20 +77,25 @@ touchscreen_report_pos
 
     Report touchscreen coordinates
 
-    :param struct input_dev \*input:
+    :param input:
         input_device to report coordinates for
+    :type input: struct input_dev \*
 
-    :param const struct touchscreen_properties \*prop:
+    :param prop:
         pointer to a struct touchscreen_properties
+    :type prop: const struct touchscreen_properties \*
 
-    :param unsigned int x:
+    :param x:
         X coordinate to report
+    :type x: unsigned int
 
-    :param unsigned int y:
+    :param y:
         Y coordinate to report
+    :type y: unsigned int
 
-    :param bool multitouch:
+    :param multitouch:
         Report coordinates on single-touch or multi-touch axes
+    :type multitouch: bool
 
 .. _`touchscreen_report_pos.description`:
 

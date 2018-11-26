@@ -10,8 +10,9 @@ adu_abort_transfers
 
     aborts transfers and frees associated data structures
 
-    :param struct adu_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct adu_device \*
 
 .. _`adu_probe`:
 
@@ -20,11 +21,13 @@ adu_probe
 
 .. c:function:: int adu_probe(struct usb_interface *interface, const struct usb_device_id *id)
 
-    :param struct usb_interface \*interface:
+    :param interface:
         *undescribed*
+    :type interface: struct usb_interface \*
 
-    :param const struct usb_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct usb_device_id \*
 
 .. _`adu_probe.description`:
 
@@ -41,8 +44,9 @@ adu_disconnect
 
 .. c:function:: void adu_disconnect(struct usb_interface *interface)
 
-    :param struct usb_interface \*interface:
+    :param interface:
         *undescribed*
+    :type interface: struct usb_interface \*
 
 .. _`adu_disconnect.description`:
 

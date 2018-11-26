@@ -10,8 +10,9 @@
 
     enable DPLL autoidle bits
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* of the DPLL to operate on
+    :type clk: struct clk_hw_omap \*
 
 .. _`_allow_idle.description`:
 
@@ -38,8 +39,9 @@ instead.  Add some mechanism to optionally enter this mode.
 
     prevent DPLL from automatically idling
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* of the DPLL to operate on
+    :type clk: struct clk_hw_omap \*
 
 .. _`_deny_idle.description`:
 

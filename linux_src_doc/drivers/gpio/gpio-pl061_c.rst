@@ -10,8 +10,9 @@ pl061_irq_ack
 
     ACK an edge IRQ
 
-    :param struct irq_data \*d:
+    :param d:
         IRQ data for this IRQ
+    :type d: struct irq_data \*
 
 .. _`pl061_irq_ack.description`:
 

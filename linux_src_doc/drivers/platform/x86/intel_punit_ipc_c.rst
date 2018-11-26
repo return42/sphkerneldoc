@@ -10,14 +10,17 @@ intel_punit_ipc_simple_command
 
     Simple IPC command
 
-    :param int cmd:
+    :param cmd:
         IPC command code.
+    :type cmd: int
 
-    :param int para1:
+    :param para1:
         First 8bit parameter, set 0 if not used.
+    :type para1: int
 
-    :param int para2:
+    :param para2:
         Second 8bit parameter, set 0 if not used.
+    :type para2: int
 
 .. _`intel_punit_ipc_simple_command.description`:
 
@@ -42,20 +45,25 @@ intel_punit_ipc_command
 
     IPC command with data and pointers
 
-    :param u32 cmd:
+    :param cmd:
         IPC command code.
+    :type cmd: u32
 
-    :param u32 para1:
+    :param para1:
         First 8bit parameter, set 0 if not used.
+    :type para1: u32
 
-    :param u32 para2:
+    :param para2:
         Second 8bit parameter, set 0 if not used.
+    :type para2: u32
 
-    :param u32 \*in:
+    :param in:
         Input data, 32bit for BIOS cmd, two 32bit for GTD and ISPD.
+    :type in: u32 \*
 
-    :param u32 \*out:
+    :param out:
         Output data.
+    :type out: u32 \*
 
 .. _`intel_punit_ipc_command.description`:
 

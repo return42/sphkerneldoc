@@ -71,8 +71,9 @@ i915_ggtt_cleanup_hw
 
     Clean up GGTT hardware initialization
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_ppat_get`:
 
@@ -83,11 +84,13 @@ intel_ppat_get
 
     get a usable PPAT entry
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         i915 device instance
+    :type i915: struct drm_i915_private \*
 
-    :param u8 value:
+    :param value:
         the PPAT value required by the caller
+    :type value: u8
 
 .. _`intel_ppat_get.description`:
 
@@ -110,8 +113,9 @@ intel_ppat_put
 
     put back the PPAT entry got from \ :c:func:`intel_ppat_get`\ 
 
-    :param const struct intel_ppat_entry \*entry:
+    :param entry:
         an intel PPAT entry
+    :type entry: const struct intel_ppat_entry \*
 
 .. _`intel_ppat_put.description`:
 
@@ -131,8 +135,9 @@ i915_ggtt_probe_hw
 
     Probe GGTT hardware location
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_ggtt_init_hw`:
 
@@ -143,8 +148,9 @@ i915_ggtt_init_hw
 
     Initialize GGTT hardware
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_gem_gtt_reserve`:
 
@@ -155,27 +161,33 @@ i915_gem_gtt_reserve
 
     reserve a node in an address_space (GTT)
 
-    :param struct i915_address_space \*vm:
+    :param vm:
         the \ :c:type:`struct i915_address_space <i915_address_space>`\ 
+    :type vm: struct i915_address_space \*
 
-    :param struct drm_mm_node \*node:
+    :param node:
         the \ :c:type:`struct drm_mm_node <drm_mm_node>`\  (typically i915_vma.mode)
+    :type node: struct drm_mm_node \*
 
-    :param u64 size:
+    :param size:
         how much space to allocate inside the GTT,
         must be #I915_GTT_PAGE_SIZE aligned
+    :type size: u64
 
-    :param u64 offset:
+    :param offset:
         where to insert inside the GTT,
         must be #I915_GTT_MIN_ALIGNMENT aligned, and the node
         (@offset + \ ``size``\ ) must fit within the address space
+    :type offset: u64
 
-    :param unsigned long color:
+    :param color:
         color to apply to node, if this node is not from a VMA,
         color must be #I915_COLOR_UNEVICTABLE
+    :type color: unsigned long
 
-    :param unsigned int flags:
+    :param flags:
         control search and eviction behaviour
+    :type flags: unsigned int
 
 .. _`i915_gem_gtt_reserve.description`:
 
@@ -208,34 +220,42 @@ i915_gem_gtt_insert
 
     insert a node into an address_space (GTT)
 
-    :param struct i915_address_space \*vm:
+    :param vm:
         the \ :c:type:`struct i915_address_space <i915_address_space>`\ 
+    :type vm: struct i915_address_space \*
 
-    :param struct drm_mm_node \*node:
+    :param node:
         the \ :c:type:`struct drm_mm_node <drm_mm_node>`\  (typically i915_vma.node)
+    :type node: struct drm_mm_node \*
 
-    :param u64 size:
+    :param size:
         how much space to allocate inside the GTT,
         must be #I915_GTT_PAGE_SIZE aligned
+    :type size: u64
 
-    :param u64 alignment:
+    :param alignment:
         required alignment of starting offset, may be 0 but
         if specified, this must be a power-of-two and at least
         #I915_GTT_MIN_ALIGNMENT
+    :type alignment: u64
 
-    :param unsigned long color:
+    :param color:
         color to apply to node
+    :type color: unsigned long
 
-    :param u64 start:
+    :param start:
         start of any range restriction inside GTT (0 for all),
         must be #I915_GTT_PAGE_SIZE aligned
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         end of any range restriction inside GTT (U64_MAX for all),
         must be #I915_GTT_PAGE_SIZE aligned if not U64_MAX
+    :type end: u64
 
-    :param unsigned int flags:
+    :param flags:
         control search and eviction behaviour
+    :type flags: unsigned int
 
 .. _`i915_gem_gtt_insert.description`:
 

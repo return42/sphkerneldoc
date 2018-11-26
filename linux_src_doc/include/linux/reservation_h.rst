@@ -93,8 +93,9 @@ reservation_object_init
 
     initialize a reservation object
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
 .. _`reservation_object_fini`:
 
@@ -105,8 +106,9 @@ reservation_object_fini
 
     destroys a reservation object
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
 .. _`reservation_object_get_list`:
 
@@ -117,8 +119,9 @@ reservation_object_get_list
 
     get the reservation object's shared fence list, with update-side lock held
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
 .. _`reservation_object_get_list.description`:
 
@@ -137,11 +140,13 @@ reservation_object_lock
 
     lock the reservation object
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
-    :param struct ww_acquire_ctx \*ctx:
+    :param ctx:
         the locking context
+    :type ctx: struct ww_acquire_ctx \*
 
 .. _`reservation_object_lock.description`:
 
@@ -167,11 +172,13 @@ reservation_object_lock_interruptible
 
     lock the reservation object
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
-    :param struct ww_acquire_ctx \*ctx:
+    :param ctx:
         the locking context
+    :type ctx: struct ww_acquire_ctx \*
 
 .. _`reservation_object_lock_interruptible.description`:
 
@@ -197,8 +204,9 @@ reservation_object_trylock
 
     trylock the reservation object
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
 .. _`reservation_object_trylock.description`:
 
@@ -224,8 +232,9 @@ reservation_object_unlock
 
     unlock the reservation object
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
 .. _`reservation_object_unlock.description`:
 
@@ -243,8 +252,9 @@ reservation_object_get_excl
 
     get the reservation object's exclusive fence, with update-side lock held
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
 .. _`reservation_object_get_excl.description`:
 
@@ -266,8 +276,9 @@ reservation_object_get_excl_rcu
 
     get the reservation object's exclusive fence, without lock held.
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
 .. _`reservation_object_get_excl_rcu.description`:
 

@@ -10,17 +10,21 @@ tb_xdomain_response
 
     Send a XDomain response message
 
-    :param struct tb_xdomain \*xd:
+    :param xd:
         XDomain to send the message
+    :type xd: struct tb_xdomain \*
 
-    :param const void \*response:
+    :param response:
         Response to send
+    :type response: const void \*
 
-    :param size_t size:
+    :param size:
         Size of the response
+    :type size: size_t
 
-    :param enum tb_cfg_pkg_type type:
+    :param type:
         PDF type of the response
+    :type type: enum tb_cfg_pkg_type
 
 .. _`tb_xdomain_response.description`:
 
@@ -46,29 +50,37 @@ tb_xdomain_request
 
     Send a XDomain request
 
-    :param struct tb_xdomain \*xd:
+    :param xd:
         XDomain to send the request
+    :type xd: struct tb_xdomain \*
 
-    :param const void \*request:
+    :param request:
         Request to send
+    :type request: const void \*
 
-    :param size_t request_size:
+    :param request_size:
         Size of the request in bytes
+    :type request_size: size_t
 
-    :param enum tb_cfg_pkg_type request_type:
+    :param request_type:
         PDF type of the request
+    :type request_type: enum tb_cfg_pkg_type
 
-    :param void \*response:
+    :param response:
         Response is copied here
+    :type response: void \*
 
-    :param size_t response_size:
+    :param response_size:
         Expected size of the response in bytes
+    :type response_size: size_t
 
-    :param enum tb_cfg_pkg_type response_type:
+    :param response_type:
         Expected PDF type of the response
+    :type response_type: enum tb_cfg_pkg_type
 
-    :param unsigned int timeout_msec:
+    :param timeout_msec:
         Timeout in milliseconds to wait for the response
+    :type timeout_msec: unsigned int
 
 .. _`tb_xdomain_request.description`:
 
@@ -95,8 +107,9 @@ tb_register_protocol_handler
 
     Register protocol handler
 
-    :param struct tb_protocol_handler \*handler:
+    :param handler:
         Handler to register
+    :type handler: struct tb_protocol_handler \*
 
 .. _`tb_register_protocol_handler.description`:
 
@@ -117,8 +130,9 @@ tb_unregister_protocol_handler
 
     Unregister protocol handler
 
-    :param struct tb_protocol_handler \*handler:
+    :param handler:
         Handler to unregister
+    :type handler: struct tb_protocol_handler \*
 
 .. _`tb_unregister_protocol_handler.description`:
 
@@ -136,8 +150,9 @@ tb_register_service_driver
 
     Register XDomain service driver
 
-    :param struct tb_service_driver \*drv:
+    :param drv:
         Driver to register
+    :type drv: struct tb_service_driver \*
 
 .. _`tb_register_service_driver.description`:
 
@@ -155,8 +170,9 @@ tb_unregister_service_driver
 
     Unregister XDomain service driver
 
-    :param struct tb_service_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct tb_service_driver \*
 
 .. _`tb_unregister_service_driver.description`:
 
@@ -174,21 +190,26 @@ tb_xdomain_alloc
 
     Allocate new XDomain object
 
-    :param struct tb \*tb:
+    :param tb:
         Domain where the XDomain belongs
+    :type tb: struct tb \*
 
-    :param struct device \*parent:
+    :param parent:
         Parent device (the switch through the connection to the
         other domain is reached).
+    :type parent: struct device \*
 
-    :param u64 route:
+    :param route:
         Route string used to reach the other domain
+    :type route: u64
 
-    :param const uuid_t \*local_uuid:
+    :param local_uuid:
         Our local domain UUID
+    :type local_uuid: const uuid_t \*
 
-    :param const uuid_t \*remote_uuid:
+    :param remote_uuid:
         UUID of the other domain
+    :type remote_uuid: const uuid_t \*
 
 .. _`tb_xdomain_alloc.description`:
 
@@ -207,8 +228,9 @@ tb_xdomain_add
 
     Add XDomain to the bus
 
-    :param struct tb_xdomain \*xd:
+    :param xd:
         XDomain to add
+    :type xd: struct tb_xdomain \*
 
 .. _`tb_xdomain_add.description`:
 
@@ -229,8 +251,9 @@ tb_xdomain_remove
 
     Remove XDomain from the bus
 
-    :param struct tb_xdomain \*xd:
+    :param xd:
         XDomain to remove
+    :type xd: struct tb_xdomain \*
 
 .. _`tb_xdomain_remove.description`:
 
@@ -250,22 +273,27 @@ tb_xdomain_enable_paths
 
     Enable DMA paths for XDomain connection
 
-    :param struct tb_xdomain \*xd:
+    :param xd:
         XDomain connection
+    :type xd: struct tb_xdomain \*
 
-    :param u16 transmit_path:
+    :param transmit_path:
         HopID of the transmit path the other end is using to
         send packets
+    :type transmit_path: u16
 
-    :param u16 transmit_ring:
+    :param transmit_ring:
         DMA ring used to receive packets from the other end
+    :type transmit_ring: u16
 
-    :param u16 receive_path:
+    :param receive_path:
         HopID of the receive path the other end is using to
         receive packets
+    :type receive_path: u16
 
-    :param u16 receive_ring:
+    :param receive_ring:
         DMA ring used to send packets to the other end
+    :type receive_ring: u16
 
 .. _`tb_xdomain_enable_paths.description`:
 
@@ -292,8 +320,9 @@ tb_xdomain_disable_paths
 
     Disable DMA paths for XDomain connection
 
-    :param struct tb_xdomain \*xd:
+    :param xd:
         XDomain connection
+    :type xd: struct tb_xdomain \*
 
 .. _`tb_xdomain_disable_paths.description`:
 
@@ -319,11 +348,13 @@ tb_xdomain_find_by_uuid
 
     Find an XDomain by UUID
 
-    :param struct tb \*tb:
+    :param tb:
         Domain where the XDomain belongs to
+    :type tb: struct tb \*
 
-    :param const uuid_t \*uuid:
+    :param uuid:
         UUID to look for
+    :type uuid: const uuid_t \*
 
 .. _`tb_xdomain_find_by_uuid.description`:
 
@@ -338,7 +369,7 @@ object.
 This will find all XDomains including the ones that are not yet added
 to the bus (handshake is still in progress).
 
-The caller needs to hold \ ``tb``\ ->lock.
+The caller needs to hold \ ``tb->lock``\ .
 
 .. _`tb_xdomain_find_by_link_depth`:
 
@@ -349,14 +380,17 @@ tb_xdomain_find_by_link_depth
 
     Find an XDomain by link and depth
 
-    :param struct tb \*tb:
+    :param tb:
         Domain where the XDomain belongs to
+    :type tb: struct tb \*
 
-    :param u8 link:
+    :param link:
         Root switch link number
+    :type link: u8
 
-    :param u8 depth:
+    :param depth:
         Depth in the link
+    :type depth: u8
 
 .. _`tb_xdomain_find_by_link_depth.description`:
 
@@ -371,7 +405,7 @@ object.
 This will find all XDomains including the ones that are not yet added
 to the bus (handshake is still in progress).
 
-The caller needs to hold \ ``tb``\ ->lock.
+The caller needs to hold \ ``tb->lock``\ .
 
 .. _`tb_xdomain_find_by_route`:
 
@@ -382,11 +416,13 @@ tb_xdomain_find_by_route
 
     Find an XDomain by route string
 
-    :param struct tb \*tb:
+    :param tb:
         Domain where the XDomain belongs to
+    :type tb: struct tb \*
 
-    :param u64 route:
+    :param route:
         XDomain route string
+    :type route: u64
 
 .. _`tb_xdomain_find_by_route.description`:
 
@@ -401,7 +437,7 @@ object.
 This will find all XDomains including the ones that are not yet added
 to the bus (handshake is still in progress).
 
-The caller needs to hold \ ``tb``\ ->lock.
+The caller needs to hold \ ``tb->lock``\ .
 
 .. _`tb_register_property_dir`:
 
@@ -412,11 +448,13 @@ tb_register_property_dir
 
     Register property directory to the host
 
-    :param const char \*key:
+    :param key:
         Key (name) of the directory to add
+    :type key: const char \*
 
-    :param struct tb_property_dir \*dir:
+    :param dir:
         Directory to add
+    :type dir: struct tb_property_dir \*
 
 .. _`tb_register_property_dir.description`:
 
@@ -444,11 +482,13 @@ tb_unregister_property_dir
 
     Removes property directory from host
 
-    :param const char \*key:
+    :param key:
         Key (name) of the directory
+    :type key: const char \*
 
-    :param struct tb_property_dir \*dir:
+    :param dir:
         Directory to remove
+    :type dir: struct tb_property_dir \*
 
 .. _`tb_unregister_property_dir.description`:
 

@@ -10,8 +10,9 @@ vce_v2_0_ring_get_rptr
 
     get read pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`vce_v2_0_ring_get_rptr.description`:
 
@@ -29,8 +30,9 @@ vce_v2_0_ring_get_wptr
 
     get write pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`vce_v2_0_ring_get_wptr.description`:
 
@@ -48,8 +50,9 @@ vce_v2_0_ring_set_wptr
 
     set write pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`vce_v2_0_ring_set_wptr.description`:
 
@@ -67,8 +70,9 @@ vce_v2_0_start
 
     start VCE block
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`vce_v2_0_start.description`:
 

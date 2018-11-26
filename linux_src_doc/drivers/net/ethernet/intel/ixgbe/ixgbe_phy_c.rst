@@ -10,11 +10,13 @@ ixgbe_out_i2c_byte_ack
 
     Send I2C byte with ack
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte:
+    :param byte:
         byte to send
+    :type byte: u8
 
 .. _`ixgbe_out_i2c_byte_ack.description`:
 
@@ -32,11 +34,13 @@ ixgbe_in_i2c_byte_ack
 
     Receive an I2C byte and send ack
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 \*byte:
+    :param byte:
         pointer to a u8 to receive the byte
+    :type byte: u8 \*
 
 .. _`ixgbe_in_i2c_byte_ack.description`:
 
@@ -54,11 +58,13 @@ ixgbe_ones_comp_byte_add
 
     Perform one's complement addition
 
-    :param u8 add1:
+    :param add1:
         addend 1
+    :type add1: u8
 
-    :param u8 add2:
+    :param add2:
         addend 2
+    :type add2: u8
 
 .. _`ixgbe_ones_comp_byte_add.description`:
 
@@ -76,20 +82,25 @@ ixgbe_read_i2c_combined_generic_int
 
     Perform I2C read combined operation
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 addr:
+    :param addr:
         I2C bus address to read from
+    :type addr: u8
 
-    :param u16 reg:
+    :param reg:
         I2C device register to read from
+    :type reg: u16
 
-    :param u16 \*val:
+    :param val:
         pointer to location to receive read value
+    :type val: u16 \*
 
-    :param bool lock:
+    :param lock:
         true if to take and release semaphore
+    :type lock: bool
 
 .. _`ixgbe_read_i2c_combined_generic_int.description`:
 
@@ -107,20 +118,25 @@ ixgbe_write_i2c_combined_generic_int
 
     Perform I2C write combined operation
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 addr:
+    :param addr:
         I2C bus address to write to
+    :type addr: u8
 
-    :param u16 reg:
+    :param reg:
         I2C device register to write to
+    :type reg: u16
 
-    :param u16 val:
+    :param val:
         value to write
+    :type val: u16
 
-    :param bool lock:
+    :param lock:
         true if to take and release semaphore
+    :type lock: bool
 
 .. _`ixgbe_write_i2c_combined_generic_int.description`:
 
@@ -138,11 +154,13 @@ ixgbe_probe_phy
 
     Probe a single address for a PHY
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 phy_addr:
+    :param phy_addr:
         PHY address to probe
+    :type phy_addr: u16
 
 .. _`ixgbe_probe_phy.description`:
 
@@ -160,8 +178,9 @@ ixgbe_identify_phy_generic
 
     Get physical layer module
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_identify_phy_generic.description`:
 
@@ -179,8 +198,9 @@ ixgbe_check_reset_blocked
 
     check status of MNG FW veto bit
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_check_reset_blocked.description`:
 
@@ -201,8 +221,9 @@ ixgbe_get_phy_id
 
     Get the phy type
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_phy_type_from_id`:
 
@@ -213,8 +234,9 @@ ixgbe_get_phy_type_from_id
 
     Get the phy type
 
-    :param u32 phy_id:
+    :param phy_id:
         hardware phy id
+    :type phy_id: u32
 
 .. _`ixgbe_reset_phy_generic`:
 
@@ -225,8 +247,9 @@ ixgbe_reset_phy_generic
 
     Performs a PHY reset
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_read_phy_reg_mdi`:
 
@@ -237,17 +260,21 @@ ixgbe_read_phy_reg_mdi
 
     Reads a value from a specified PHY register without the SWFW lock
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         32 bit address of PHY register to read
+    :type reg_addr: u32
 
-    :param u32 device_type:
+    :param device_type:
         5 bit device type
+    :type device_type: u32
 
-    :param u16 \*phy_data:
+    :param phy_data:
         Pointer to read data from PHY register
+    :type phy_data: u16 \*
 
 .. _`ixgbe_read_phy_reg_generic`:
 
@@ -258,17 +285,21 @@ ixgbe_read_phy_reg_generic
 
     Reads a value from a specified PHY register using the SWFW lock - this function is needed in most cases
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         32 bit address of PHY register to read
+    :type reg_addr: u32
 
-    :param u32 device_type:
+    :param device_type:
         5 bit device type
+    :type device_type: u32
 
-    :param u16 \*phy_data:
+    :param phy_data:
         Pointer to read data from PHY register
+    :type phy_data: u16 \*
 
 .. _`ixgbe_write_phy_reg_mdi`:
 
@@ -279,17 +310,21 @@ ixgbe_write_phy_reg_mdi
 
     Writes a value to specified PHY register without SWFW lock
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         32 bit PHY register to write
+    :type reg_addr: u32
 
-    :param u32 device_type:
+    :param device_type:
         5 bit device type
+    :type device_type: u32
 
-    :param u16 phy_data:
+    :param phy_data:
         Data to write to the PHY register
+    :type phy_data: u16
 
 .. _`ixgbe_write_phy_reg_generic`:
 
@@ -300,17 +335,21 @@ ixgbe_write_phy_reg_generic
 
     Writes a value to specified PHY register using SWFW lock- this function is needed in most cases
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         32 bit PHY register to write
+    :type reg_addr: u32
 
-    :param u32 device_type:
+    :param device_type:
         5 bit device type
+    :type device_type: u32
 
-    :param u16 phy_data:
+    :param phy_data:
         Data to write to the PHY register
+    :type phy_data: u16
 
 .. _`ixgbe_setup_phy_link_generic`:
 
@@ -321,8 +360,9 @@ ixgbe_setup_phy_link_generic
 
     Set and restart autoneg
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_setup_phy_link_generic.description`:
 
@@ -340,14 +380,17 @@ ixgbe_setup_phy_link_speed_generic
 
     Sets the auto advertised capabilities
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         new link speed
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         unused
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbe_get_copper_speeds_supported`:
 
@@ -358,8 +401,9 @@ ixgbe_get_copper_speeds_supported
 
     Get copper link speed from phy
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_copper_speeds_supported.description`:
 
@@ -378,14 +422,17 @@ ixgbe_get_copper_link_capabilities_generic
 
     Determines link capabilities
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed \*speed:
+    :param speed:
         pointer to link speed
+    :type speed: ixgbe_link_speed \*
 
-    :param bool \*autoneg:
+    :param autoneg:
         boolean auto-negotiation value
+    :type autoneg: bool \*
 
 .. _`ixgbe_check_phy_link_tnx`:
 
@@ -396,14 +443,17 @@ ixgbe_check_phy_link_tnx
 
     Determine link and speed status
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed \*speed:
+    :param speed:
         link speed
+    :type speed: ixgbe_link_speed \*
 
-    :param bool \*link_up:
+    :param link_up:
         status of link
+    :type link_up: bool \*
 
 .. _`ixgbe_check_phy_link_tnx.description`:
 
@@ -422,8 +472,9 @@ ixgbe_setup_phy_link_tnx
 
     Set and restart autoneg
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_setup_phy_link_tnx.description`:
 
@@ -444,8 +495,9 @@ ixgbe_reset_phy_nl
 
     Performs a PHY reset
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_identify_module_generic`:
 
@@ -456,8 +508,9 @@ ixgbe_identify_module_generic
 
     Identifies module type
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_identify_module_generic.description`:
 
@@ -475,8 +528,9 @@ ixgbe_identify_sfp_module_generic
 
     Identifies SFP modules
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_identify_sfp_module_generic.description`:
 
@@ -494,8 +548,9 @@ ixgbe_identify_qsfp_module_generic
 
     Identifies QSFP modules
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_identify_qsfp_module_generic.description`:
 
@@ -513,14 +568,17 @@ ixgbe_get_sfp_init_sequence_offsets
 
     Provides offset of PHY init sequence
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*list_offset:
+    :param list_offset:
         offset to the SFP ID list
+    :type list_offset: u16 \*
 
-    :param u16 \*data_offset:
+    :param data_offset:
         offset to the SFP data block
+    :type data_offset: u16 \*
 
 .. _`ixgbe_get_sfp_init_sequence_offsets.description`:
 
@@ -539,14 +597,17 @@ ixgbe_read_i2c_eeprom_generic
 
     Reads 8 bit EEPROM word over I2C interface
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         EEPROM byte offset to read
+    :type byte_offset: u8
 
-    :param u8 \*eeprom_data:
+    :param eeprom_data:
         value read
+    :type eeprom_data: u8 \*
 
 .. _`ixgbe_read_i2c_eeprom_generic.description`:
 
@@ -564,14 +625,17 @@ ixgbe_read_i2c_sff8472_generic
 
     Reads 8 bit word over I2C interface
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset at address 0xA2
+    :type byte_offset: u8
 
-    :param u8 \*sff8472_data:
+    :param sff8472_data:
         value read
+    :type sff8472_data: u8 \*
 
 .. _`ixgbe_read_i2c_sff8472_generic.description`:
 
@@ -589,14 +653,17 @@ ixgbe_write_i2c_eeprom_generic
 
     Writes 8 bit EEPROM word over I2C interface
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         EEPROM byte offset to write
+    :type byte_offset: u8
 
-    :param u8 eeprom_data:
+    :param eeprom_data:
         value to write
+    :type eeprom_data: u8
 
 .. _`ixgbe_write_i2c_eeprom_generic.description`:
 
@@ -614,14 +681,17 @@ ixgbe_is_sfp_probe
 
     Returns true if SFP is being detected
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 offset:
+    :param offset:
         eeprom offset to be read
+    :type offset: u8
 
-    :param u8 addr:
+    :param addr:
         I2C address to be read
+    :type addr: u8
 
 .. _`ixgbe_read_i2c_byte_generic_int`:
 
@@ -632,20 +702,25 @@ ixgbe_read_i2c_byte_generic_int
 
     Reads 8 bit word over I2C
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to read
+    :type byte_offset: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address
+    :type dev_addr: u8
 
-    :param u8 \*data:
+    :param data:
         value read
+    :type data: u8 \*
 
-    :param bool lock:
+    :param lock:
         true if to take and release semaphore
+    :type lock: bool
 
 .. _`ixgbe_read_i2c_byte_generic_int.description`:
 
@@ -664,17 +739,21 @@ ixgbe_read_i2c_byte_generic
 
     Reads 8 bit word over I2C
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to read
+    :type byte_offset: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address
+    :type dev_addr: u8
 
-    :param u8 \*data:
+    :param data:
         value read
+    :type data: u8 \*
 
 .. _`ixgbe_read_i2c_byte_generic.description`:
 
@@ -693,17 +772,21 @@ ixgbe_read_i2c_byte_generic_unlocked
 
     Reads 8 bit word over I2C
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to read
+    :type byte_offset: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address
+    :type dev_addr: u8
 
-    :param u8 \*data:
+    :param data:
         value read
+    :type data: u8 \*
 
 .. _`ixgbe_read_i2c_byte_generic_unlocked.description`:
 
@@ -722,20 +805,25 @@ ixgbe_write_i2c_byte_generic_int
 
     Writes 8 bit word over I2C
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to write
+    :type byte_offset: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address
+    :type dev_addr: u8
 
-    :param u8 data:
+    :param data:
         value to write
+    :type data: u8
 
-    :param bool lock:
+    :param lock:
         true if to take and release semaphore
+    :type lock: bool
 
 .. _`ixgbe_write_i2c_byte_generic_int.description`:
 
@@ -754,17 +842,21 @@ ixgbe_write_i2c_byte_generic
 
     Writes 8 bit word over I2C
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to write
+    :type byte_offset: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address
+    :type dev_addr: u8
 
-    :param u8 data:
+    :param data:
         value to write
+    :type data: u8
 
 .. _`ixgbe_write_i2c_byte_generic.description`:
 
@@ -783,17 +875,21 @@ ixgbe_write_i2c_byte_generic_unlocked
 
     Writes 8 bit word over I2C
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to write
+    :type byte_offset: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address
+    :type dev_addr: u8
 
-    :param u8 data:
+    :param data:
         value to write
+    :type data: u8
 
 .. _`ixgbe_write_i2c_byte_generic_unlocked.description`:
 
@@ -812,8 +908,9 @@ ixgbe_i2c_start
 
     Sets I2C start condition
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_i2c_start.description`:
 
@@ -832,8 +929,9 @@ ixgbe_i2c_stop
 
     Sets I2C stop condition
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_i2c_stop.description`:
 
@@ -853,11 +951,13 @@ ixgbe_clock_in_i2c_byte
 
     Clocks in one byte via I2C
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 \*data:
+    :param data:
         data byte to clock in
+    :type data: u8 \*
 
 .. _`ixgbe_clock_in_i2c_byte.description`:
 
@@ -875,11 +975,13 @@ ixgbe_clock_out_i2c_byte
 
     Clocks out one byte via I2C
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 data:
+    :param data:
         data byte clocked out
+    :type data: u8
 
 .. _`ixgbe_clock_out_i2c_byte.description`:
 
@@ -897,8 +999,9 @@ ixgbe_get_i2c_ack
 
     Polls for I2C ACK
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_i2c_ack.description`:
 
@@ -916,11 +1019,13 @@ ixgbe_clock_in_i2c_bit
 
     Clocks in one bit via I2C data/clock
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param bool \*data:
+    :param data:
         read data value
+    :type data: bool \*
 
 .. _`ixgbe_clock_in_i2c_bit.description`:
 
@@ -938,11 +1043,13 @@ ixgbe_clock_out_i2c_bit
 
     Clocks in/out one bit via I2C data/clock
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param bool data:
+    :param data:
         data value to write
+    :type data: bool
 
 .. _`ixgbe_clock_out_i2c_bit.description`:
 
@@ -960,11 +1067,13 @@ ixgbe_raise_i2c_clk
 
     Raises the I2C SCL clock
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*i2cctl:
+    :param i2cctl:
         Current value of I2CCTL register
+    :type i2cctl: u32 \*
 
 .. _`ixgbe_raise_i2c_clk.description`:
 
@@ -983,11 +1092,13 @@ ixgbe_lower_i2c_clk
 
     Lowers the I2C SCL clock
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*i2cctl:
+    :param i2cctl:
         Current value of I2CCTL register
+    :type i2cctl: u32 \*
 
 .. _`ixgbe_lower_i2c_clk.description`:
 
@@ -1006,14 +1117,17 @@ ixgbe_set_i2c_data
 
     Sets the I2C data bit
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*i2cctl:
+    :param i2cctl:
         Current value of I2CCTL register
+    :type i2cctl: u32 \*
 
-    :param bool data:
+    :param data:
         I2C data value (0 or 1) to set
+    :type data: bool
 
 .. _`ixgbe_set_i2c_data.description`:
 
@@ -1032,11 +1146,13 @@ ixgbe_get_i2c_data
 
     Reads the I2C SDA data bit
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 \*i2cctl:
+    :param i2cctl:
         Current value of I2CCTL register
+    :type i2cctl: u32 \*
 
 .. _`ixgbe_get_i2c_data.description`:
 
@@ -1055,8 +1171,9 @@ ixgbe_i2c_bus_clear
 
     Clears the I2C bus
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_i2c_bus_clear.description`:
 
@@ -1075,8 +1192,9 @@ ixgbe_tn_check_overtemp
 
     Checks if an overtemp occurred.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_tn_check_overtemp.description`:
 

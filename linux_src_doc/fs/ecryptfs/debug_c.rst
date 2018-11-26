@@ -10,8 +10,9 @@ ecryptfs_dump_auth_tok
 
     Linux filesystem encryption layer Functions only useful for debugging.
 
-    :param struct ecryptfs_auth_tok \*auth_tok:
+    :param auth_tok:
         *undescribed*
+    :type auth_tok: struct ecryptfs_auth_tok \*
 
 .. _`ecryptfs_dump_auth_tok.description`:
 
@@ -45,11 +46,13 @@ ecryptfs_dump_hex
 
     debug hex printer
 
-    :param char \*data:
+    :param data:
         string of bytes to be printed
+    :type data: char \*
 
-    :param int bytes:
+    :param bytes:
         number of bytes to print
+    :type bytes: int
 
 .. _`ecryptfs_dump_hex.description`:
 

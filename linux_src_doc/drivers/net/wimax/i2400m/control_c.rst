@@ -10,17 +10,20 @@ i2400m_msg_to_dev
 
     Send a control message to the device and get a response
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
-    :param const void \*buf:
+    :param buf:
         pointer to the buffer containing the message to be sent; it
         has to start with a \ :c:type:`struct i2400M_l3l4_hdr <i2400M_l3l4_hdr>`\  and then
         followed by the payload. Once this function returns, the
         buffer can be reused.
+    :type buf: const void \*
 
-    :param size_t buf_len:
+    :param buf_len:
         buffer size
+    :type buf_len: size_t
 
 .. _`i2400m_msg_to_dev.return`:
 
@@ -83,8 +86,9 @@ i2400m_get_device_info
 
     Query the device for detailed device information
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
 .. _`i2400m_get_device_info.return`:
 
@@ -107,8 +111,9 @@ i2400m_firmware_check
 
     check firmware versions are compatible with the driver
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
 .. _`i2400m_firmware_check.return`:
 
@@ -133,17 +138,20 @@ i2400m_set_init_config
 
 .. c:function:: int i2400m_set_init_config(struct i2400m *i2400m, const struct i2400m_tlv_hdr **arg, size_t args)
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
-    :param const struct i2400m_tlv_hdr \*\*arg:
+    :param arg:
         *undescribed*
+    :type arg: const struct i2400m_tlv_hdr \*\*
 
-    :param size_t args:
+    :param args:
         array of pointers to the TLV headers to send for
         configuration (each followed by its payload).
         TLV headers and payloads must be properly initialized, with the
         right endianess (LE).
+    :type args: size_t
 
 .. _`i2400m_set_idle_timeout`:
 
@@ -154,12 +162,14 @@ i2400m_set_idle_timeout
 
     Set the device's idle mode timeout
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         i2400m device descriptor
+    :type i2400m: struct i2400m \*
 
-    :param unsigned msecs:
+    :param msecs:
         milliseconds for the timeout to enter idle mode. Between
         100 to 300000 (5m); 0 to disable. In increments of 100.
+    :type msecs: unsigned
 
 .. _`i2400m_set_idle_timeout.description`:
 
@@ -190,8 +200,9 @@ i2400m_dev_initialize
 
     Initialize the device once communications are ready
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
 .. _`i2400m_dev_initialize.return`:
 
@@ -215,8 +226,9 @@ i2400m_dev_shutdown
 
     Shutdown a running device
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
 .. _`i2400m_dev_shutdown.description`:
 

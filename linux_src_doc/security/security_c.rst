@@ -10,8 +10,9 @@ security_init
 
     initializes the security framework
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`security_init.description`:
 
@@ -29,8 +30,9 @@ security_module_enable
 
     Load given security module on boot ?
 
-    :param const char \*module:
+    :param module:
         the name of the module
+    :type module: const char \*
 
 .. _`security_module_enable.description`:
 
@@ -63,14 +65,17 @@ security_add_hooks
 
     Add a modules hooks to the hook lists.
 
-    :param struct security_hook_list \*hooks:
+    :param hooks:
         the hooks to add
+    :type hooks: struct security_hook_list \*
 
-    :param int count:
+    :param count:
         the number of hooks to add
+    :type count: int
 
-    :param char \*lsm:
+    :param lsm:
         the name of the security module
+    :type lsm: char \*
 
 .. _`security_add_hooks.description`:
 

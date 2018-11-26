@@ -10,8 +10,9 @@ dwmac1000_validate_mcast_bins
 
     validates the number of Multicast filter bins
 
-    :param int mcast_bins:
+    :param mcast_bins:
         Multicast filtering bins
+    :type mcast_bins: int
 
 .. _`dwmac1000_validate_mcast_bins.description`:
 
@@ -35,8 +36,9 @@ dwmac1000_validate_ucast_entries
 
     validate the Unicast address entries
 
-    :param int ucast_entries:
+    :param ucast_entries:
         number of Unicast address entries
+    :type ucast_entries: int
 
 .. _`dwmac1000_validate_ucast_entries.description`:
 
@@ -45,7 +47,7 @@ Description
 
 This function validates the number of Unicast address entries supported
 by a particular Synopsys 10/100/1000 controller. The Synopsys controller
-supports 1, 32, 64, or 128 Unicast filter entries for it's Unicast filter
+supports 1..32, 64, or 128 Unicast filter entries for it's Unicast filter
 logic. This function validates a valid, supported configuration is
 selected, and defaults to 1 Unicast address if an unsupported
 configuration is selected.
@@ -59,8 +61,9 @@ stmmac_axi_setup
 
     parse DT parameters for programming the AXI register
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
 .. _`stmmac_axi_setup.description`:
 
@@ -79,11 +82,13 @@ stmmac_mtl_setup
 
     parse DT parameters for multiple queues configuration
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
-    :param struct plat_stmmacenet_data \*plat:
+    :param plat:
         *undescribed*
+    :type plat: struct plat_stmmacenet_data \*
 
 .. _`stmmac_dt_phy`:
 
@@ -94,14 +99,17 @@ stmmac_dt_phy
 
     parse device-tree driver parameters to allocate PHY resources
 
-    :param struct plat_stmmacenet_data \*plat:
+    :param plat:
         driver data platform structure
+    :type plat: struct plat_stmmacenet_data \*
 
-    :param struct device_node \*np:
+    :param np:
         device tree node
+    :type np: struct device_node \*
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
 .. _`stmmac_dt_phy.description`:
 
@@ -141,11 +149,13 @@ stmmac_probe_config_dt
 
     parse device-tree driver parameters
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform_device structure
+    :type pdev: struct platform_device \*
 
-    :param const char \*\*mac:
+    :param mac:
         MAC address to use
+    :type mac: const char \*\*
 
 .. _`stmmac_probe_config_dt.description`:
 
@@ -164,11 +174,13 @@ stmmac_remove_config_dt
 
     undo the effects of \ :c:func:`stmmac_probe_config_dt`\ 
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform_device structure
+    :type pdev: struct platform_device \*
 
-    :param struct plat_stmmacenet_data \*plat:
+    :param plat:
         driver data platform structure
+    :type plat: struct plat_stmmacenet_data \*
 
 .. _`stmmac_remove_config_dt.description`:
 
@@ -184,8 +196,9 @@ stmmac_pltfr_remove
 
 .. c:function:: int stmmac_pltfr_remove(struct platform_device *pdev)
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer
+    :type pdev: struct platform_device \*
 
 .. _`stmmac_pltfr_remove.description`:
 
@@ -202,8 +215,9 @@ stmmac_pltfr_suspend
 
 .. c:function:: int stmmac_pltfr_suspend(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
 .. _`stmmac_pltfr_suspend.description`:
 
@@ -221,8 +235,9 @@ stmmac_pltfr_resume
 
 .. c:function:: int stmmac_pltfr_resume(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
 .. _`stmmac_pltfr_resume.description`:
 

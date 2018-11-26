@@ -10,8 +10,9 @@ sp_alloc_struct
 
     allocate and initialize the sp_device struct
 
-    :param struct device \*dev:
+    :param dev:
         device struct of the SP
+    :type dev: struct device \*
 
 .. This file was automatic generated / don't edit.
 

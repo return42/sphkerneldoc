@@ -224,8 +224,9 @@ eth_type_vlan
 
     check for valid vlan ether type.
 
-    :param __be16 ethertype:
+    :param ethertype:
         ether type to check
+    :type ethertype: __be16
 
 .. _`eth_type_vlan.description`:
 
@@ -243,17 +244,21 @@ Returns true if the ether type is a vlan ether type.
 
     inner VLAN tag inserting
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff to tag
+    :type skb: struct sk_buff \*
 
-    :param __be16 vlan_proto:
+    :param vlan_proto:
         VLAN encapsulation protocol
+    :type vlan_proto: __be16
 
-    :param u16 vlan_tci:
+    :param vlan_tci:
         VLAN TCI to insert
+    :type vlan_tci: u16
 
-    :param unsigned int mac_len:
+    :param mac_len:
         MAC header length including outer vlan headers
+    :type mac_len: unsigned int
 
 .. _`__vlan_insert_inner_tag.description`:
 
@@ -274,14 +279,17 @@ Does not change skb->protocol so this function can be used during receive.
 
     regular VLAN tag inserting
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff to tag
+    :type skb: struct sk_buff \*
 
-    :param __be16 vlan_proto:
+    :param vlan_proto:
         VLAN encapsulation protocol
+    :type vlan_proto: __be16
 
-    :param u16 vlan_tci:
+    :param vlan_tci:
         VLAN TCI to insert
+    :type vlan_tci: u16
 
 .. _`__vlan_insert_tag.description`:
 
@@ -302,17 +310,21 @@ vlan_insert_inner_tag
 
     inner VLAN tag inserting
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff to tag
+    :type skb: struct sk_buff \*
 
-    :param __be16 vlan_proto:
+    :param vlan_proto:
         VLAN encapsulation protocol
+    :type vlan_proto: __be16
 
-    :param u16 vlan_tci:
+    :param vlan_tci:
         VLAN TCI to insert
+    :type vlan_tci: u16
 
-    :param unsigned int mac_len:
+    :param mac_len:
         MAC header length including outer vlan headers
+    :type mac_len: unsigned int
 
 .. _`vlan_insert_inner_tag.description`:
 
@@ -336,14 +348,17 @@ vlan_insert_tag
 
     regular VLAN tag inserting
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff to tag
+    :type skb: struct sk_buff \*
 
-    :param __be16 vlan_proto:
+    :param vlan_proto:
         VLAN encapsulation protocol
+    :type vlan_proto: __be16
 
-    :param u16 vlan_tci:
+    :param vlan_tci:
         VLAN TCI to insert
+    :type vlan_tci: u16
 
 .. _`vlan_insert_tag.description`:
 
@@ -367,14 +382,17 @@ vlan_insert_tag_set_proto
 
     regular VLAN tag inserting
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff to tag
+    :type skb: struct sk_buff \*
 
-    :param __be16 vlan_proto:
+    :param vlan_proto:
         VLAN encapsulation protocol
+    :type vlan_proto: __be16
 
-    :param u16 vlan_tci:
+    :param vlan_tci:
         VLAN TCI to insert
+    :type vlan_tci: u16
 
 .. _`vlan_insert_tag_set_proto.description`:
 
@@ -396,21 +414,24 @@ doesn't have to worry about freeing the original skb.
 
     hardware accelerated VLAN inserting
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff to tag
+    :type skb: struct sk_buff \*
 
-    :param __be16 vlan_proto:
+    :param vlan_proto:
         VLAN encapsulation protocol
+    :type vlan_proto: __be16
 
-    :param u16 vlan_tci:
+    :param vlan_tci:
         VLAN TCI to insert
+    :type vlan_tci: u16
 
 .. _`__vlan_hwaccel_put_tag.description`:
 
 Description
 -----------
 
-Puts the VLAN TCI in \ ``skb``\ ->vlan_tci and lets the device do the rest
+Puts the VLAN TCI in \ ``skb->vlan_tci``\  and lets the device do the rest
 
 .. _`__vlan_get_tag`:
 
@@ -421,11 +442,13 @@ Puts the VLAN TCI in \ ``skb``\ ->vlan_tci and lets the device do the rest
 
     get the VLAN ID that is part of the payload
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skbuff to query
+    :type skb: const struct sk_buff \*
 
-    :param u16 \*vlan_tci:
+    :param vlan_tci:
         buffer to store value
+    :type vlan_tci: u16 \*
 
 .. _`__vlan_get_tag.description`:
 
@@ -441,20 +464,22 @@ Returns error if the skb is not of VLAN type
 
 .. c:function:: int __vlan_hwaccel_get_tag(const struct sk_buff *skb, u16 *vlan_tci)
 
-    get the VLAN ID that is in \ ``skb``\ ->cb[]
+    get the VLAN ID that is in \ ``skb->cb``\ []
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skbuff to query
+    :type skb: const struct sk_buff \*
 
-    :param u16 \*vlan_tci:
+    :param vlan_tci:
         buffer to store value
+    :type vlan_tci: u16 \*
 
 .. _`__vlan_hwaccel_get_tag.description`:
 
 Description
 -----------
 
-Returns error if \ ``skb``\ ->vlan_tci is not set correctly
+Returns error if \ ``skb->vlan_tci``\  is not set correctly
 
 .. _`vlan_get_tag`:
 
@@ -465,11 +490,13 @@ vlan_get_tag
 
     get the VLAN ID from the skb
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skbuff to query
+    :type skb: const struct sk_buff \*
 
-    :param u16 \*vlan_tci:
+    :param vlan_tci:
         buffer to store value
+    :type vlan_tci: u16 \*
 
 .. _`vlan_get_tag.description`:
 
@@ -487,14 +514,17 @@ Returns error if the skb is not VLAN tagged
 
     get protocol EtherType.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff to query
+    :type skb: struct sk_buff \*
 
-    :param __be16 type:
+    :param type:
         first vlan protocol
+    :type type: __be16
 
-    :param int \*depth:
+    :param depth:
         buffer to store length of eth and vlan tags in bytes
+    :type depth: int \*
 
 .. _`__vlan_get_protocol.description`:
 
@@ -513,8 +543,9 @@ vlan_get_protocol
 
     get protocol EtherType.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff to query
+    :type skb: struct sk_buff \*
 
 .. _`vlan_get_protocol.description`:
 
@@ -533,8 +564,9 @@ skb_vlan_tagged
 
     check if skb is vlan tagged.
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skbuff to query
+    :type skb: const struct sk_buff \*
 
 .. _`skb_vlan_tagged.description`:
 
@@ -553,8 +585,9 @@ skb_vlan_tagged_multi
 
     check if skb is vlan tagged with multiple headers.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff to query
+    :type skb: struct sk_buff \*
 
 .. _`skb_vlan_tagged_multi.description`:
 
@@ -573,11 +606,13 @@ vlan_features_check
 
     drop unsafe features for skb with multiple tags.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skbuff to query
+    :type skb: struct sk_buff \*
 
-    :param netdev_features_t features:
+    :param features:
         features to be checked
+    :type features: netdev_features_t
 
 .. _`vlan_features_check.description`:
 
@@ -595,11 +630,13 @@ compare_vlan_header
 
     Compare two vlan headers
 
-    :param const struct vlan_hdr \*h1:
+    :param h1:
         Pointer to vlan header
+    :type h1: const struct vlan_hdr \*
 
-    :param const struct vlan_hdr \*h2:
+    :param h2:
         Pointer to vlan header
+    :type h2: const struct vlan_hdr \*
 
 .. _`compare_vlan_header.description`:
 

@@ -10,17 +10,21 @@ __pci_read_base
 
     Read a PCI BAR
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param enum pci_bar_type type:
+    :param type:
         type of the BAR
+    :type type: enum pci_bar_type
 
-    :param struct resource \*res:
+    :param res:
         resource buffer to be filled in
+    :type res: struct resource \*
 
-    :param unsigned int pos:
+    :param pos:
         BAR position in the config space
+    :type pos: unsigned int
 
 .. _`__pci_read_base.description`:
 
@@ -38,8 +42,9 @@ pci_ext_cfg_is_aliased
 
     Is ext config space just an alias of std config?
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_ext_cfg_is_aliased.description`:
 
@@ -72,8 +77,9 @@ pci_cfg_space_size_ext
 
     Get the configuration space size of the PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_cfg_space_size_ext.description`:
 
@@ -96,8 +102,9 @@ pci_intx_mask_broken
 
     Test PCI_COMMAND_INTX_DISABLE writability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_intx_mask_broken.description`:
 
@@ -116,8 +123,9 @@ pci_setup_device
 
     Fill in class and map information of a device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the device structure to fill
+    :type dev: struct pci_dev \*
 
 .. _`pci_setup_device.description`:
 
@@ -139,8 +147,9 @@ pcie_relaxed_ordering_enabled
 
     Probe for PCIe relaxed ordering enable
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
 .. _`pcie_relaxed_ordering_enabled.description`:
 
@@ -158,8 +167,9 @@ pci_release_dev
 
     Free a PCI device structure when all users of it are finished
 
-    :param struct device \*dev:
+    :param dev:
         device that's been disconnected
+    :type dev: struct device \*
 
 .. _`pci_release_dev.description`:
 
@@ -178,11 +188,13 @@ pci_scan_slot
 
     Scan a PCI slot on a bus for devices
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus to scan
+    :type bus: struct pci_bus \*
 
-    :param int devfn:
+    :param devfn:
         slot number to scan (must have zero function)
+    :type devfn: int
 
 .. _`pci_scan_slot.description`:
 
@@ -190,7 +202,7 @@ Description
 -----------
 
 Scan a PCI slot on the specified PCI bus for devices, adding
-discovered devices to the \ ``bus``\ ->devices list.  New devices
+discovered devices to the \ ``bus->devices``\  list.  New devices
 will not have is_added set.
 
 Returns the number of new devices found.
@@ -204,12 +216,14 @@ pci_scan_child_bus_extend
 
     Scan devices below a bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         Bus to scan for devices
+    :type bus: struct pci_bus \*
 
-    :param unsigned int available_buses:
+    :param available_buses:
         Total number of buses available (%0 does not try to
         extend beyond the minimal)
+    :type available_buses: unsigned int
 
 .. _`pci_scan_child_bus_extend.description`:
 
@@ -231,8 +245,9 @@ pci_scan_child_bus
 
     Scan devices below a bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         Bus to scan for devices
+    :type bus: struct pci_bus \*
 
 .. _`pci_scan_child_bus.description`:
 
@@ -251,8 +266,9 @@ pcibios_root_bridge_prepare
 
     Platform-specific host bridge setup
 
-    :param struct pci_host_bridge \*bridge:
+    :param bridge:
         Host bridge to set up
+    :type bridge: struct pci_host_bridge \*
 
 .. _`pcibios_root_bridge_prepare.description`:
 
@@ -271,8 +287,9 @@ pci_rescan_bus_bridge_resize
 
     Scan a PCI bus for devices
 
-    :param struct pci_dev \*bridge:
+    :param bridge:
         PCI bridge for the bus to scan
+    :type bridge: struct pci_dev \*
 
 .. _`pci_rescan_bus_bridge_resize.description`:
 
@@ -295,8 +312,9 @@ pci_rescan_bus
 
     Scan a PCI bus for devices
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus to scan
+    :type bus: struct pci_bus \*
 
 .. _`pci_rescan_bus.description`:
 

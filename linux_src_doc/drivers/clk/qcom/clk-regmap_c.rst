@@ -10,8 +10,9 @@ clk_is_enabled_regmap
 
     standard \ :c:func:`is_enabled`\  for regmap users
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clk to operate on
+    :type hw: struct clk_hw \*
 
 .. _`clk_is_enabled_regmap.description`:
 
@@ -31,8 +32,9 @@ clk_enable_regmap
 
     standard \ :c:func:`enable`\  for regmap users
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clk to operate on
+    :type hw: struct clk_hw \*
 
 .. _`clk_enable_regmap.description`:
 
@@ -52,8 +54,9 @@ clk_disable_regmap
 
     standard \ :c:func:`disable`\  for regmap users
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clk to operate on
+    :type hw: struct clk_hw \*
 
 .. _`clk_disable_regmap.description`:
 
@@ -73,11 +76,13 @@ devm_clk_register_regmap
 
     register a clk_regmap clock
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct clk_regmap \*rclk:
+    :param rclk:
         clk to operate on
+    :type rclk: struct clk_regmap \*
 
 .. _`devm_clk_register_regmap.description`:
 

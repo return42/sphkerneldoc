@@ -10,14 +10,17 @@ acpi_bus_notify
 
     --------------- Callback for all 'system-level' device notifications (values 0x00-0x7F).
 
-    :param acpi_handle handle:
+    :param handle:
         *undescribed*
+    :type handle: acpi_handle
 
-    :param u32 type:
+    :param type:
         *undescribed*
+    :type type: u32
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`acpi_get_first_physical_node`:
 
@@ -28,8 +31,9 @@ acpi_get_first_physical_node
 
     Get first physical node of an ACPI device
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device in question
+    :type adev: struct acpi_device \*
 
 .. _`acpi_get_first_physical_node.return`:
 
@@ -47,11 +51,13 @@ acpi_device_is_first_physical_node
 
     Is given dev first physical node
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI companion device
+    :type adev: struct acpi_device \*
 
-    :param const struct device \*dev:
+    :param dev:
         Physical device to check
+    :type dev: const struct device \*
 
 .. _`acpi_device_is_first_physical_node.description`:
 
@@ -73,14 +79,17 @@ acpi_of_match_device
 
     Match device object using the "compatible" property.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device object to match.
+    :type adev: struct acpi_device \*
 
-    :param const struct of_device_id \*of_match_table:
+    :param of_match_table:
         List of device IDs to match against.
+    :type of_match_table: const struct of_device_id \*
 
-    :param const struct of_device_id \*\*of_id:
+    :param of_id:
         OF ID if matched
+    :type of_id: const struct of_device_id \*\*
 
 .. _`acpi_of_match_device.description`:
 
@@ -100,17 +109,21 @@ acpi_set_modalias
 
     Set modalias using "compatible" property or supplied ID
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device object to match
+    :type adev: struct acpi_device \*
 
-    :param const char \*default_id:
+    :param default_id:
         ID string to use as default if no compatible string found
+    :type default_id: const char \*
 
-    :param char \*modalias:
+    :param modalias:
         Pointer to buffer that modalias value will be copied into
+    :type modalias: char \*
 
-    :param size_t len:
+    :param len:
         Length of modalias buffer
+    :type len: size_t
 
 .. _`acpi_set_modalias.description`:
 
@@ -130,11 +143,13 @@ acpi_match_device
 
     Match a struct device against a given list of ACPI IDs
 
-    :param const struct acpi_device_id \*ids:
+    :param ids:
         Array of struct acpi_device_id object to match against.
+    :type ids: const struct acpi_device_id \*
 
-    :param const struct device \*dev:
+    :param dev:
         The device structure to match.
+    :type dev: const struct device \*
 
 .. _`acpi_match_device.description`:
 
@@ -156,8 +171,9 @@ acpi_bus_register_driver
 
     register a driver with the ACPI bus
 
-    :param struct acpi_driver \*driver:
+    :param driver:
         driver being registered
+    :type driver: struct acpi_driver \*
 
 .. _`acpi_bus_register_driver.description`:
 
@@ -177,8 +193,9 @@ acpi_bus_unregister_driver
 
     unregisters a driver with the ACPI bus
 
-    :param struct acpi_driver \*driver:
+    :param driver:
         driver to unregister
+    :type driver: struct acpi_driver \*
 
 .. _`acpi_bus_unregister_driver.description`:
 
@@ -197,8 +214,9 @@ acpi_early_init
 
     Initialize ACPICA and populate the ACPI namespace.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`acpi_early_init.description`:
 
@@ -221,8 +239,9 @@ acpi_subsystem_init
 
     Finalize the early initialization of ACPI.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`acpi_subsystem_init.description`:
 

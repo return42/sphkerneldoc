@@ -10,14 +10,17 @@
 
     Free Prism2 command queue entry (private)
 
-    :param local_info_t \*local:
+    :param local:
         pointer to private Host AP driver data
+    :type local: local_info_t \*
 
-    :param struct hostap_cmd_queue \*entry:
+    :param entry:
         Prism2 command queue entry to be freed
+    :type entry: struct hostap_cmd_queue \*
 
-    :param int del_req:
+    :param del_req:
         request the entry to be removed
+    :type del_req: int
 
 .. _`__hostap_cmd_queue_free.description`:
 
@@ -36,14 +39,17 @@ hostap_cmd_queue_free
 
     Free Prism2 command queue entry
 
-    :param local_info_t \*local:
+    :param local:
         pointer to private Host AP driver data
+    :type local: local_info_t \*
 
-    :param struct hostap_cmd_queue \*entry:
+    :param entry:
         Prism2 command queue entry to be freed
+    :type entry: struct hostap_cmd_queue \*
 
-    :param int del_req:
+    :param del_req:
         request the entry to be removed
+    :type del_req: int
 
 .. _`hostap_cmd_queue_free.description`:
 
@@ -61,8 +67,9 @@ prism2_clear_cmd_queue
 
     Free all pending Prism2 command queue entries
 
-    :param local_info_t \*local:
+    :param local:
         pointer to private Host AP driver data
+    :type local: local_info_t \*
 
 .. _`hfa384x_cmd_issue`:
 
@@ -73,11 +80,13 @@ hfa384x_cmd_issue
 
     Issue a Prism2 command to the hardware
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device
+    :type dev: struct net_device \*
 
-    :param struct hostap_cmd_queue \*entry:
+    :param entry:
         Prism2 command queue entry to be issued
+    :type entry: struct hostap_cmd_queue \*
 
 .. _`hfa384x_cmd`:
 
@@ -88,20 +97,25 @@ hfa384x_cmd
 
     Issue a Prism2 command and wait (sleep) for completion
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device
+    :type dev: struct net_device \*
 
-    :param u16 cmd:
+    :param cmd:
         Prism2 command code (HFA384X_CMD_CODE\_\*)
+    :type cmd: u16
 
-    :param u16 param0:
+    :param param0:
         value for Param0 register
+    :type param0: u16
 
-    :param u16 \*param1:
+    :param param1:
         value for Param1 register (pointer; \ ``NULL``\  if not used)
+    :type param1: u16 \*
 
-    :param u16 \*resp0:
+    :param resp0:
         pointer for Resp0 data or \ ``NULL``\  if Resp0 is not needed
+    :type resp0: u16 \*
 
 .. _`hfa384x_cmd.description`:
 
@@ -121,20 +135,24 @@ hfa384x_cmd_callback
 
     Issue a Prism2 command; callback when completed
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device
+    :type dev: struct net_device \*
 
-    :param u16 cmd:
+    :param cmd:
         Prism2 command code (HFA384X_CMD_CODE\_\*)
+    :type cmd: u16
 
-    :param u16 param0:
+    :param param0:
         value for Param0 register
+    :type param0: u16
 
     :param void (\*callback)(struct net_device \*dev, long context, u16 resp0, u16 status):
         command completion callback function (%NULL = no callback)
 
-    :param long context:
+    :param context:
         context data to be given to the callback function
+    :type context: long
 
 .. _`hfa384x_cmd_callback.description`:
 
@@ -156,17 +174,21 @@ command is completed.
 
     Issue a Prism2 command (private)
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device
+    :type dev: struct net_device \*
 
-    :param u16 cmd:
+    :param cmd:
         Prism2 command code (HFA384X_CMD_CODE\_\*)
+    :type cmd: u16
 
-    :param u16 param0:
+    :param param0:
         value for Param0 register
+    :type param0: u16
 
-    :param int io_debug_num:
+    :param io_debug_num:
         I/O debug error number
+    :type io_debug_num: int
 
 .. _`__hfa384x_cmd_no_wait.description`:
 
@@ -184,14 +206,17 @@ hfa384x_cmd_wait
 
     Issue a Prism2 command and busy wait for completion
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device
+    :type dev: struct net_device \*
 
-    :param u16 cmd:
+    :param cmd:
         Prism2 command code (HFA384X_CMD_CODE\_\*)
+    :type cmd: u16
 
-    :param u16 param0:
+    :param param0:
         value for Param0 register
+    :type param0: u16
 
 .. _`hfa384x_cmd_no_wait`:
 
@@ -202,14 +227,17 @@ hfa384x_cmd_no_wait
 
     Issue a Prism2 command; do not wait for completion
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device
+    :type dev: struct net_device \*
 
-    :param u16 cmd:
+    :param cmd:
         Prism2 command code (HFA384X_CMD_CODE\_\*)
+    :type cmd: u16
 
-    :param u16 param0:
+    :param param0:
         value for Param0 register
+    :type param0: u16
 
 .. _`prism2_cmd_ev`:
 
@@ -220,8 +248,9 @@ prism2_cmd_ev
 
     Prism2 command completion event handler
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device
+    :type dev: struct net_device \*
 
 .. _`prism2_cmd_ev.description`:
 

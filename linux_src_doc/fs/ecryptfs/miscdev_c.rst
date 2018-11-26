@@ -8,11 +8,13 @@ ecryptfs_miscdev_poll
 
 .. c:function:: __poll_t ecryptfs_miscdev_poll(struct file *file, poll_table *pt)
 
-    :param struct file \*file:
+    :param file:
         dev file
+    :type file: struct file \*
 
-    :param poll_table \*pt:
+    :param pt:
         dev poll table (ignored)
+    :type pt: poll_table \*
 
 .. _`ecryptfs_miscdev_poll.description`:
 
@@ -28,11 +30,13 @@ ecryptfs_miscdev_open
 
 .. c:function:: int ecryptfs_miscdev_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode of miscdev handle (ignored)
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file for miscdev handle
+    :type file: struct file \*
 
 .. _`ecryptfs_miscdev_open.description`:
 
@@ -48,11 +52,13 @@ ecryptfs_miscdev_release
 
 .. c:function:: int ecryptfs_miscdev_release(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         inode of fs/ecryptfs/euid handle (ignored)
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file for fs/ecryptfs/euid handle
+    :type file: struct file \*
 
 .. _`ecryptfs_miscdev_release.description`:
 
@@ -71,24 +77,30 @@ ecryptfs_send_miscdev
 
 .. c:function:: int ecryptfs_send_miscdev(char *data, size_t data_size, struct ecryptfs_msg_ctx *msg_ctx, u8 msg_type, u16 msg_flags, struct ecryptfs_daemon *daemon)
 
-    :param char \*data:
+    :param data:
         Data to send to daemon; may be NULL
+    :type data: char \*
 
-    :param size_t data_size:
+    :param data_size:
         Amount of data to send to daemon
+    :type data_size: size_t
 
-    :param struct ecryptfs_msg_ctx \*msg_ctx:
+    :param msg_ctx:
         Message context, which is used to handle the reply. If
         this is NULL, then we do not expect a reply.
+    :type msg_ctx: struct ecryptfs_msg_ctx \*
 
-    :param u8 msg_type:
+    :param msg_type:
         Type of message
+    :type msg_type: u8
 
-    :param u16 msg_flags:
+    :param msg_flags:
         Flags for message
+    :type msg_flags: u16
 
-    :param struct ecryptfs_daemon \*daemon:
+    :param daemon:
         eCryptfs daemon object
+    :type daemon: struct ecryptfs_daemon \*
 
 .. _`ecryptfs_send_miscdev.description`:
 
@@ -110,17 +122,21 @@ ecryptfs_miscdev_read
 
     format and send message from queue
 
-    :param struct file \*file:
+    :param file:
         miscdevfs handle
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         User buffer into which to copy the next message on the daemon queue
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         Amount of space available in \ ``buf``\ 
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Offset in file (ignored)
+    :type ppos: loff_t \*
 
 .. _`ecryptfs_miscdev_read.description`:
 
@@ -141,17 +157,21 @@ ecryptfs_miscdev_response
 
     miscdevess response to message previously sent to daemon
 
-    :param struct ecryptfs_daemon \*daemon:
+    :param daemon:
         *undescribed*
+    :type daemon: struct ecryptfs_daemon \*
 
-    :param char \*data:
+    :param data:
         Bytes comprising struct ecryptfs_message
+    :type data: char \*
 
-    :param size_t data_size:
+    :param data_size:
         sizeof(struct ecryptfs_message) + data len
+    :type data_size: size_t
 
-    :param u32 seq:
+    :param seq:
         Sequence number for miscdev response packet
+    :type seq: u32
 
 .. _`ecryptfs_miscdev_response.description`:
 
@@ -169,17 +189,21 @@ ecryptfs_miscdev_write
 
     handle write to daemon miscdev handle
 
-    :param struct file \*file:
+    :param file:
         File for misc dev handle
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         Buffer containing user data
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         Amount of data in \ ``buf``\ 
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Pointer to offset in file (ignored)
+    :type ppos: loff_t \*
 
 .. _`ecryptfs_miscdev_write.description`:
 
@@ -195,8 +219,9 @@ ecryptfs_init_ecryptfs_miscdev
 
 .. c:function:: int ecryptfs_init_ecryptfs_miscdev( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ecryptfs_init_ecryptfs_miscdev.description`:
 
@@ -217,8 +242,9 @@ ecryptfs_destroy_ecryptfs_miscdev
 
 .. c:function:: void ecryptfs_destroy_ecryptfs_miscdev( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ecryptfs_destroy_ecryptfs_miscdev.description`:
 

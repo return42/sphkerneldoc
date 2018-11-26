@@ -10,14 +10,17 @@ cvm_oct_ioctl
 
     IOCTL support for PHY control
 
-    :param struct net_device \*dev:
+    :param dev:
         Device to change
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*rq:
+    :param rq:
         the request
+    :type rq: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         the command
+    :type cmd: int
 
 .. _`cvm_oct_ioctl.description`:
 
@@ -35,8 +38,9 @@ cvm_oct_phy_setup_device
 
     setup the PHY
 
-    :param struct net_device \*dev:
+    :param dev:
         Device to setup
+    :type dev: struct net_device \*
 
 .. _`cvm_oct_phy_setup_device.description`:
 

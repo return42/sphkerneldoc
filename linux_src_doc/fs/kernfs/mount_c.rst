@@ -10,8 +10,9 @@ kernfs_root_from_sb
 
     determine kernfs_root associated with a super_block
 
-    :param struct super_block \*sb:
+    :param sb:
         the super_block in question
+    :type sb: struct super_block \*
 
 .. _`kernfs_root_from_sb.description`:
 
@@ -30,11 +31,13 @@ kernfs_node_dentry
 
     get a dentry for the given kernfs_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node for which a dentry is needed
+    :type kn: struct kernfs_node \*
 
-    :param struct super_block \*sb:
+    :param sb:
         the kernfs super_block
+    :type sb: struct super_block \*
 
 .. _`kernfs_super_ns`:
 
@@ -45,8 +48,9 @@ kernfs_super_ns
 
     determine the namespace tag of a kernfs super_block
 
-    :param struct super_block \*sb:
+    :param sb:
         super_block of interest
+    :type sb: struct super_block \*
 
 .. _`kernfs_super_ns.description`:
 
@@ -64,23 +68,29 @@ kernfs_mount_ns
 
     kernfs mount helper
 
-    :param struct file_system_type \*fs_type:
+    :param fs_type:
         file_system_type of the fs being mounted
+    :type fs_type: struct file_system_type \*
 
-    :param int flags:
+    :param flags:
         mount flags specified for the mount
+    :type flags: int
 
-    :param struct kernfs_root \*root:
+    :param root:
         kernfs_root of the hierarchy being mounted
+    :type root: struct kernfs_root \*
 
-    :param unsigned long magic:
+    :param magic:
         file system specific magic number
+    :type magic: unsigned long
 
-    :param bool \*new_sb_created:
+    :param new_sb_created:
         tell the caller if we allocated a new superblock
+    :type new_sb_created: bool \*
 
-    :param const void \*ns:
+    :param ns:
         optional namespace tag of the mount
+    :type ns: const void \*
 
 .. _`kernfs_mount_ns.description`:
 
@@ -103,8 +113,9 @@ kernfs_kill_sb
 
     kill_sb for kernfs
 
-    :param struct super_block \*sb:
+    :param sb:
         super_block being killed
+    :type sb: struct super_block \*
 
 .. _`kernfs_kill_sb.description`:
 
@@ -124,11 +135,13 @@ kernfs_pin_sb
 
     try to pin the superblock associated with a kernfs_root
 
-    :param struct kernfs_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct kernfs_root \*
 
-    :param const void \*ns:
+    :param ns:
         the namespace tag
+    :type ns: const void \*
 
 .. _`kernfs_pin_sb.description`:
 

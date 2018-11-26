@@ -10,8 +10,9 @@ ixgb_check_options
 
     Range Checking for Command Line Parameters
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_check_options.description`:
 

@@ -298,11 +298,13 @@ atlas7_gpio_to_bank
 
 .. c:function:: struct atlas7_gpio_bank *atlas7_gpio_to_bank(struct atlas7_gpio_chip *a7gc, u32 gpio)
 
-    :param struct atlas7_gpio_chip \*a7gc:
+    :param a7gc:
         *undescribed*
+    :type a7gc: struct atlas7_gpio_chip \*
 
-    :param u32 gpio:
+    :param gpio:
         *undescribed*
+    :type gpio: u32
 
 .. This file was automatic generated / don't edit.
 

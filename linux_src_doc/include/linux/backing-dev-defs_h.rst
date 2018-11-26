@@ -10,8 +10,9 @@ wb_tryget
 
     try to increment a wb's refcount
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         bdi_writeback to get
+    :type wb: struct bdi_writeback \*
 
 .. _`wb_get`:
 
@@ -22,8 +23,9 @@ wb_get
 
     increment a wb's refcount
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         bdi_writeback to get
+    :type wb: struct bdi_writeback \*
 
 .. _`wb_put`:
 
@@ -34,8 +36,9 @@ wb_put
 
     decrement a wb's refcount
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         bdi_writeback to put
+    :type wb: struct bdi_writeback \*
 
 .. _`wb_dying`:
 
@@ -46,8 +49,9 @@ wb_dying
 
     is a wb dying?
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         bdi_writeback of interest
+    :type wb: struct bdi_writeback \*
 
 .. _`wb_dying.description`:
 

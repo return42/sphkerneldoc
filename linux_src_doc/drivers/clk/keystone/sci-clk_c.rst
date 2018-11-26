@@ -102,8 +102,9 @@ sci_clk_prepare
 
     Prepare (enable) a TI SCI clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to prepare
+    :type hw: struct clk_hw \*
 
 .. _`sci_clk_prepare.description`:
 
@@ -121,8 +122,9 @@ sci_clk_unprepare
 
     Un-prepares (disables) a TI SCI clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to unprepare
+    :type hw: struct clk_hw \*
 
 .. _`sci_clk_unprepare.description`:
 
@@ -140,8 +142,9 @@ sci_clk_is_prepared
 
     Check if a TI SCI clock is prepared or not
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to check status for
+    :type hw: struct clk_hw \*
 
 .. _`sci_clk_is_prepared.description`:
 
@@ -160,11 +163,13 @@ sci_clk_recalc_rate
 
     Get clock rate for a TI SCI clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to get rate for
+    :type hw: struct clk_hw \*
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         parent rate provided by common clock framework, not used
+    :type parent_rate: unsigned long
 
 .. _`sci_clk_recalc_rate.description`:
 
@@ -183,11 +188,13 @@ sci_clk_determine_rate
 
     Determines a clock rate a clock can be set to
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to change rate for
+    :type hw: struct clk_hw \*
 
-    :param struct clk_rate_request \*req:
+    :param req:
         requested rate configuration for the clock
+    :type req: struct clk_rate_request \*
 
 .. _`sci_clk_determine_rate.description`:
 
@@ -208,14 +215,17 @@ sci_clk_set_rate
 
     Set rate for a TI SCI clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to change rate for
+    :type hw: struct clk_hw \*
 
-    :param unsigned long rate:
+    :param rate:
         target rate for the clock
+    :type rate: unsigned long
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         rate of the clock parent, not used for TI SCI clocks
+    :type parent_rate: unsigned long
 
 .. _`sci_clk_set_rate.description`:
 
@@ -234,8 +244,9 @@ sci_clk_get_parent
 
     Get the current parent of a TI SCI clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to get parent for
+    :type hw: struct clk_hw \*
 
 .. _`sci_clk_get_parent.description`:
 
@@ -253,11 +264,13 @@ sci_clk_set_parent
 
     Set the parent of a TI SCI clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to set parent for
+    :type hw: struct clk_hw \*
 
-    :param u8 index:
+    :param index:
         new parent index for the clock
+    :type index: u8
 
 .. _`sci_clk_set_parent.description`:
 
@@ -275,11 +288,13 @@ Sets the parent of a TI SCI clock. Return TI SCI protocol status.
 
     Gets a handle for an SCI clock
 
-    :param struct sci_clk_provider \*provider:
+    :param provider:
         Handle to SCI clock provider
+    :type provider: struct sci_clk_provider \*
 
-    :param struct sci_clk \*sci_clk:
+    :param sci_clk:
         Handle to the SCI clock to populate
+    :type sci_clk: struct sci_clk \*
 
 .. _`_sci_clk_build.description`:
 
@@ -301,11 +316,13 @@ sci_clk_get
 
     Xlate function for getting clock handles
 
-    :param struct of_phandle_args \*clkspec:
+    :param clkspec:
         device tree clock specifier
+    :type clkspec: struct of_phandle_args \*
 
-    :param void \*data:
+    :param data:
         pointer to the clock provider
+    :type data: void \*
 
 .. _`sci_clk_get.description`:
 
@@ -326,8 +343,9 @@ ti_sci_clk_probe
 
     Probe function for the TI SCI clock driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer to be probed
+    :type pdev: struct platform_device \*
 
 .. _`ti_sci_clk_probe.description`:
 
@@ -349,8 +367,9 @@ ti_sci_clk_remove
 
     Remove TI SCI clock device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer for the device to be removed
+    :type pdev: struct platform_device \*
 
 .. _`ti_sci_clk_remove.description`:
 

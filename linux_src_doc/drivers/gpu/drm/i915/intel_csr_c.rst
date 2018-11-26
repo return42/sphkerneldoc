@@ -20,8 +20,9 @@ intel_csr_load_program
 
     write the firmware from memory to register.
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 drm device.
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_csr_load_program.description`:
 
@@ -41,8 +42,9 @@ intel_csr_ucode_init
 
     initialize the firmware loading.
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 drm device.
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_csr_ucode_init.description`:
 
@@ -61,8 +63,9 @@ intel_csr_ucode_suspend
 
     prepare CSR firmware before system suspend
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 drm device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_csr_ucode_suspend.description`:
 
@@ -82,8 +85,9 @@ intel_csr_ucode_resume
 
     init CSR firmware during system resume
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 drm device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_csr_ucode_resume.description`:
 
@@ -102,8 +106,9 @@ intel_csr_ucode_fini
 
     unload the CSR firmware.
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 drm device.
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_csr_ucode_fini.description`:
 

@@ -10,11 +10,13 @@ i2c_pnx_start
 
     start a device
 
-    :param unsigned char slave_addr:
+    :param slave_addr:
         slave address
+    :type slave_addr: unsigned char
 
-    :param struct i2c_pnx_algo_data \*alg_data:
+    :param alg_data:
         *undescribed*
+    :type alg_data: struct i2c_pnx_algo_data \*
 
 .. _`i2c_pnx_start.description`:
 
@@ -32,8 +34,9 @@ i2c_pnx_stop
 
     stop a device
 
-    :param struct i2c_pnx_algo_data \*alg_data:
+    :param alg_data:
         *undescribed*
+    :type alg_data: struct i2c_pnx_algo_data \*
 
 .. _`i2c_pnx_stop.description`:
 
@@ -51,8 +54,9 @@ i2c_pnx_master_xmit
 
     transmit data to slave
 
-    :param struct i2c_pnx_algo_data \*alg_data:
+    :param alg_data:
         *undescribed*
+    :type alg_data: struct i2c_pnx_algo_data \*
 
 .. _`i2c_pnx_master_xmit.description`:
 
@@ -70,8 +74,9 @@ i2c_pnx_master_rcv
 
     receive data from slave
 
-    :param struct i2c_pnx_algo_data \*alg_data:
+    :param alg_data:
         *undescribed*
+    :type alg_data: struct i2c_pnx_algo_data \*
 
 .. _`i2c_pnx_master_rcv.description`:
 
@@ -89,14 +94,17 @@ i2c_pnx_xfer
 
     generic transfer entry point
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         pointer to I2C adapter structure
+    :type adap: struct i2c_adapter \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         array of messages
+    :type msgs: struct i2c_msg \*
 
-    :param int num:
+    :param num:
         number of messages
+    :type num: int
 
 .. _`i2c_pnx_xfer.description`:
 

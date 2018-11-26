@@ -449,15 +449,18 @@ ingenic_cgu_new
 
     create a new CGU instance
 
-    :param const struct ingenic_cgu_clk_info \*clock_info:
+    :param clock_info:
         an array of clock information structures describing the clocks
         which are implemented by the CGU
+    :type clock_info: const struct ingenic_cgu_clk_info \*
 
-    :param unsigned num_clocks:
+    :param num_clocks:
         the number of entries in clock_info
+    :type num_clocks: unsigned
 
-    :param struct device_node \*np:
+    :param np:
         the device tree node which causes this CGU to be probed
+    :type np: struct device_node \*
 
 .. _`ingenic_cgu_new.return`:
 
@@ -476,8 +479,9 @@ ingenic_cgu_register_clocks
 
     Registers the clocks
 
-    :param struct ingenic_cgu \*cgu:
+    :param cgu:
         pointer to cgu data
+    :type cgu: struct ingenic_cgu \*
 
 .. _`ingenic_cgu_register_clocks.description`:
 

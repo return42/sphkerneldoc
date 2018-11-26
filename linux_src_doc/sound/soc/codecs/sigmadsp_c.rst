@@ -10,14 +10,17 @@ devm_sigmadsp_init
 
     Initialize SigmaDSP instance
 
-    :param struct device \*dev:
+    :param dev:
         The parent device
+    :type dev: struct device \*
 
-    :param const struct sigmadsp_ops \*ops:
+    :param ops:
         The sigmadsp_ops to use for this instance
+    :type ops: const struct sigmadsp_ops \*
 
-    :param const char \*firmware_name:
+    :param firmware_name:
         Name of the firmware file to load
+    :type firmware_name: const char \*
 
 .. _`devm_sigmadsp_init.description`:
 
@@ -37,11 +40,13 @@ sigmadsp_attach
 
     Attach a sigmadsp instance to a ASoC component
 
-    :param struct sigmadsp \*sigmadsp:
+    :param sigmadsp:
         The sigmadsp instance to attach
+    :type sigmadsp: struct sigmadsp \*
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The component to attach to
+    :type component: struct snd_soc_component \*
 
 .. _`sigmadsp_attach.description`:
 
@@ -63,11 +68,13 @@ sigmadsp_setup
 
     Setup the DSP for the specified samplerate
 
-    :param struct sigmadsp \*sigmadsp:
+    :param sigmadsp:
         The sigmadsp instance to configure
+    :type sigmadsp: struct sigmadsp \*
 
-    :param unsigned int samplerate:
+    :param samplerate:
         The samplerate the DSP should be configured for
+    :type samplerate: unsigned int
 
 .. _`sigmadsp_setup.description`:
 
@@ -89,8 +96,9 @@ sigmadsp_reset
 
     Notify the sigmadsp instance that the DSP has been reset
 
-    :param struct sigmadsp \*sigmadsp:
+    :param sigmadsp:
         The sigmadsp instance to reset
+    :type sigmadsp: struct sigmadsp \*
 
 .. _`sigmadsp_reset.description`:
 
@@ -109,11 +117,13 @@ sigmadsp_restrict_params
 
     Applies DSP firmware specific constraints
 
-    :param struct sigmadsp \*sigmadsp:
+    :param sigmadsp:
         The sigmadsp instance
+    :type sigmadsp: struct sigmadsp \*
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         The substream to restrict
+    :type substream: struct snd_pcm_substream \*
 
 .. _`sigmadsp_restrict_params.description`:
 

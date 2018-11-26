@@ -10,11 +10,13 @@ davinci_spi_get_prescale
 
     Calculates the correct prescale value
 
-    :param struct davinci_spi \*dspi:
+    :param dspi:
         *undescribed*
+    :type dspi: struct davinci_spi \*
 
-    :param u32 max_speed_hz:
+    :param max_speed_hz:
         *undescribed*
+    :type max_speed_hz: u32
 
 .. _`davinci_spi_get_prescale.description`:
 
@@ -41,11 +43,13 @@ davinci_spi_setup_transfer
 
     This functions will determine transfer method
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device on which data transfer to be done
+    :type spi: struct spi_device \*
 
-    :param struct spi_transfer \*t:
+    :param t:
         spi transfer in which transfer info is filled
+    :type t: struct spi_transfer \*
 
 .. _`davinci_spi_setup_transfer.description`:
 
@@ -65,8 +69,9 @@ davinci_spi_setup
 
     This functions will set default transfer method
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device on which data transfer to be done
+    :type spi: struct spi_device \*
 
 .. _`davinci_spi_setup.description`:
 
@@ -84,8 +89,9 @@ davinci_spi_process_events
 
     check for and handle any SPI controller events
 
-    :param struct davinci_spi \*dspi:
+    :param dspi:
         the controller data
+    :type dspi: struct davinci_spi \*
 
 .. _`davinci_spi_process_events.description`:
 
@@ -104,11 +110,13 @@ davinci_spi_bufs
 
     functions which will handle transfer data
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device on which data transfer to be done
+    :type spi: struct spi_device \*
 
-    :param struct spi_transfer \*t:
+    :param t:
         spi transfer in which transfer info is filled
+    :type t: struct spi_transfer \*
 
 .. _`davinci_spi_bufs.description`:
 
@@ -128,11 +136,13 @@ dummy_thread_fn
 
     dummy thread function
 
-    :param s32 irq:
+    :param irq:
         IRQ number for this SPI Master
+    :type irq: s32
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`dummy_thread_fn.description`:
 
@@ -151,11 +161,13 @@ davinci_spi_irq
 
     Interrupt handler for SPI Master Controller
 
-    :param s32 irq:
+    :param irq:
         IRQ number for this SPI Master
+    :type irq: s32
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`davinci_spi_irq.description`:
 
@@ -177,11 +189,13 @@ spi_davinci_get_pdata
 
     Get platform data from DTS binding
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         ptr to platform data
+    :type pdev: struct platform_device \*
 
-    :param struct davinci_spi \*dspi:
+    :param dspi:
         ptr to driver data
+    :type dspi: struct davinci_spi \*
 
 .. _`spi_davinci_get_pdata.description`:
 
@@ -206,8 +220,9 @@ davinci_spi_probe
 
     probe function for SPI Master Controller
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform_device structure which contains plateform specific data
+    :type pdev: struct platform_device \*
 
 .. _`davinci_spi_probe.description`:
 
@@ -230,8 +245,9 @@ davinci_spi_remove
 
     remove function for SPI Master Controller
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform_device structure which contains plateform specific data
+    :type pdev: struct platform_device \*
 
 .. _`davinci_spi_remove.description`:
 

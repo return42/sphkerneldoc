@@ -10,11 +10,13 @@ cmp_map_id
 
     Function to be passed to \ :c:func:`bsearch`\  to find the requested idmapping. Expects struct idmap_key to be passed via \ ``k``\ .
 
-    :param const void \*k:
+    :param k:
         *undescribed*
+    :type k: const void \*
 
-    :param const void \*e:
+    :param e:
         *undescribed*
+    :type e: const void \*
 
 .. _`map_id_range_down_max`:
 
@@ -25,17 +27,21 @@ map_id_range_down_max
 
     Find idmap via binary search in ordered idmap array. Can only be called if number of mappings exceeds UID_GID_MAP_MAX_BASE_EXTENTS.
 
-    :param unsigned extents:
+    :param extents:
         *undescribed*
+    :type extents: unsigned
 
-    :param struct uid_gid_map \*map:
+    :param map:
         *undescribed*
+    :type map: struct uid_gid_map \*
 
-    :param u32 id:
+    :param id:
         *undescribed*
+    :type id: u32
 
-    :param u32 count:
+    :param count:
         *undescribed*
+    :type count: u32
 
 .. _`map_id_range_down_base`:
 
@@ -46,17 +52,21 @@ map_id_range_down_base
 
     Find idmap via binary search in static extent array. Can only be called if number of mappings is equal or less than UID_GID_MAP_MAX_BASE_EXTENTS.
 
-    :param unsigned extents:
+    :param extents:
         *undescribed*
+    :type extents: unsigned
 
-    :param struct uid_gid_map \*map:
+    :param map:
         *undescribed*
+    :type map: struct uid_gid_map \*
 
-    :param u32 id:
+    :param id:
         *undescribed*
+    :type id: u32
 
-    :param u32 count:
+    :param count:
         *undescribed*
+    :type count: u32
 
 .. _`map_id_up_base`:
 
@@ -67,14 +77,17 @@ map_id_up_base
 
     Find idmap via binary search in static extent array. Can only be called if number of mappings is equal or less than UID_GID_MAP_MAX_BASE_EXTENTS.
 
-    :param unsigned extents:
+    :param extents:
         *undescribed*
+    :type extents: unsigned
 
-    :param struct uid_gid_map \*map:
+    :param map:
         *undescribed*
+    :type map: struct uid_gid_map \*
 
-    :param u32 id:
+    :param id:
         *undescribed*
+    :type id: u32
 
 .. _`map_id_up_max`:
 
@@ -85,14 +98,17 @@ map_id_up_max
 
     Find idmap via binary search in ordered idmap array. Can only be called if number of mappings exceeds UID_GID_MAP_MAX_BASE_EXTENTS.
 
-    :param unsigned extents:
+    :param extents:
         *undescribed*
+    :type extents: unsigned
 
-    :param struct uid_gid_map \*map:
+    :param map:
         *undescribed*
+    :type map: struct uid_gid_map \*
 
-    :param u32 id:
+    :param id:
         *undescribed*
+    :type id: u32
 
 .. _`make_kuid`:
 
@@ -103,11 +119,13 @@ make_kuid
 
     Map a user-namespace uid pair into a kuid.
 
-    :param struct user_namespace \*ns:
+    :param ns:
         User namespace that the uid is in
+    :type ns: struct user_namespace \*
 
-    :param uid_t uid:
+    :param uid:
         User identifier
+    :type uid: uid_t
 
 .. _`make_kuid.description`:
 
@@ -131,11 +149,13 @@ from_kuid
 
     Create a uid from a kuid user-namespace pair.
 
-    :param struct user_namespace \*targ:
+    :param targ:
         The user namespace we want a uid in.
+    :type targ: struct user_namespace \*
 
-    :param kuid_t kuid:
+    :param kuid:
         The kernel internal uid to start with.
+    :type kuid: kuid_t
 
 .. _`from_kuid.description`:
 
@@ -158,11 +178,13 @@ from_kuid_munged
 
     Create a uid from a kuid user-namespace pair.
 
-    :param struct user_namespace \*targ:
+    :param targ:
         The user namespace we want a uid in.
+    :type targ: struct user_namespace \*
 
-    :param kuid_t kuid:
+    :param kuid:
         The kernel internal uid to start with.
+    :type kuid: kuid_t
 
 .. _`from_kuid_munged.description`:
 
@@ -191,11 +213,13 @@ make_kgid
 
     Map a user-namespace gid pair into a kgid.
 
-    :param struct user_namespace \*ns:
+    :param ns:
         User namespace that the gid is in
+    :type ns: struct user_namespace \*
 
-    :param gid_t gid:
+    :param gid:
         group identifier
+    :type gid: gid_t
 
 .. _`make_kgid.description`:
 
@@ -219,11 +243,13 @@ from_kgid
 
     Create a gid from a kgid user-namespace pair.
 
-    :param struct user_namespace \*targ:
+    :param targ:
         The user namespace we want a gid in.
+    :type targ: struct user_namespace \*
 
-    :param kgid_t kgid:
+    :param kgid:
         The kernel internal gid to start with.
+    :type kgid: kgid_t
 
 .. _`from_kgid.description`:
 
@@ -246,11 +272,13 @@ from_kgid_munged
 
     Create a gid from a kgid user-namespace pair.
 
-    :param struct user_namespace \*targ:
+    :param targ:
         The user namespace we want a gid in.
+    :type targ: struct user_namespace \*
 
-    :param kgid_t kgid:
+    :param kgid:
         The kernel internal gid to start with.
+    :type kgid: kgid_t
 
 .. _`from_kgid_munged.description`:
 
@@ -278,11 +306,13 @@ make_kprojid
 
     Map a user-namespace projid pair into a kprojid.
 
-    :param struct user_namespace \*ns:
+    :param ns:
         User namespace that the projid is in
+    :type ns: struct user_namespace \*
 
-    :param projid_t projid:
+    :param projid:
         Project identifier
+    :type projid: projid_t
 
 .. _`make_kprojid.description`:
 
@@ -306,11 +336,13 @@ from_kprojid
 
     Create a projid from a kprojid user-namespace pair.
 
-    :param struct user_namespace \*targ:
+    :param targ:
         The user namespace we want a projid in.
+    :type targ: struct user_namespace \*
 
-    :param kprojid_t kprojid:
+    :param kprojid:
         The kernel internal project identifier to start with.
+    :type kprojid: kprojid_t
 
 .. _`from_kprojid.description`:
 
@@ -333,11 +365,13 @@ from_kprojid_munged
 
     Create a projiid from a kprojid user-namespace pair.
 
-    :param struct user_namespace \*targ:
+    :param targ:
         The user namespace we want a projid in.
+    :type targ: struct user_namespace \*
 
-    :param kprojid_t kprojid:
+    :param kprojid:
         The kernel internal projid to start with.
+    :type kprojid: kprojid_t
 
 .. _`from_kprojid_munged.description`:
 
@@ -366,11 +400,13 @@ insert_extent
 
     Safely insert a new idmap extent into struct uid_gid_map. Takes care to allocate a 4K block of memory if the number of mappings exceeds UID_GID_MAP_MAX_BASE_EXTENTS.
 
-    :param struct uid_gid_map \*map:
+    :param map:
         *undescribed*
+    :type map: struct uid_gid_map \*
 
-    :param struct uid_gid_extent \*extent:
+    :param extent:
         *undescribed*
+    :type extent: struct uid_gid_extent \*
 
 .. _`sort_idmaps`:
 
@@ -381,8 +417,9 @@ sort_idmaps
 
     Sorts an array of idmap entries. Can only be called if number of mappings exceeds UID_GID_MAP_MAX_BASE_EXTENTS.
 
-    :param struct uid_gid_map \*map:
+    :param map:
         *undescribed*
+    :type map: struct uid_gid_map \*
 
 .. This file was automatic generated / don't edit.
 

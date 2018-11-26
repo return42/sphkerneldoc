@@ -8,8 +8,9 @@ zcrypt_process_rescan
 
 .. c:function:: int zcrypt_process_rescan( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zcrypt_process_rescan.description`:
 
@@ -27,17 +28,21 @@ zcrypt_read
 
     Not supported beyond zcrypt 1.3.1.
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*f_pos:
+    :param f_pos:
         *undescribed*
+    :type f_pos: loff_t \*
 
 .. _`zcrypt_read.description`:
 
@@ -55,17 +60,21 @@ zcrypt_write
 
     Not allowed.
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*f_pos:
+    :param f_pos:
         *undescribed*
+    :type f_pos: loff_t \*
 
 .. _`zcrypt_write.description`:
 
@@ -83,11 +92,13 @@ zcrypt_open
 
     Count number of users.
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
 .. _`zcrypt_open.description`:
 
@@ -105,11 +116,13 @@ zcrypt_release
 
     Count number of users.
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
 .. _`zcrypt_release.description`:
 
@@ -127,8 +140,9 @@ zcrypt_api_init
 
     Module initialization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zcrypt_api_init.description`:
 
@@ -146,8 +160,9 @@ zcrypt_api_exit
 
     Module termination.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zcrypt_api_exit.description`:
 

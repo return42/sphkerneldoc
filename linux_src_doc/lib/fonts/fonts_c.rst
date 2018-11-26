@@ -10,8 +10,9 @@ find_font
 
     find a font
 
-    :param const char \*name:
+    :param name:
         string name of a font
+    :type name: const char \*
 
 .. _`find_font.description`:
 
@@ -32,17 +33,21 @@ get_default_font
 
     get default font
 
-    :param int xres:
+    :param xres:
         screen size of X
+    :type xres: int
 
-    :param int yres:
+    :param yres:
         screen size of Y
+    :type yres: int
 
-    :param u32 font_w:
+    :param font_w:
         bit array of supported widths (1 - 32)
+    :type font_w: u32
 
-    :param u32 font_h:
+    :param font_h:
         bit array of supported heights (1 - 32)
+    :type font_h: u32
 
 .. _`get_default_font.description`:
 

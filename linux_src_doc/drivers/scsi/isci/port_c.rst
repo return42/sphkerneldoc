@@ -10,11 +10,13 @@ sci_port_get_properties
 
     This method simply returns the properties regarding the port, such as: physical index, protocols, sas address, etc.
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
-    :param struct sci_port_properties \*prop:
+    :param prop:
         *undescribed*
+    :type prop: struct sci_port_properties \*
 
 .. _`sci_port_get_properties.description`:
 
@@ -35,14 +37,17 @@ isci_port_link_down
 
     This function is called by the sci core when a link becomes inactive.
 
-    :param struct isci_host \*isci_host:
+    :param isci_host:
         This parameter specifies the isci host object.
+    :type isci_host: struct isci_host \*
 
-    :param struct isci_phy \*isci_phy:
+    :param isci_phy:
         *undescribed*
+    :type isci_phy: struct isci_phy \*
 
-    :param struct isci_port \*isci_port:
+    :param isci_port:
         *undescribed*
+    :type isci_port: struct isci_port \*
 
 .. _`isci_port_hard_reset_complete`:
 
@@ -53,12 +58,14 @@ isci_port_hard_reset_complete
 
     This function is called by the sci core when the hard reset complete notification has been received.
 
-    :param struct isci_port \*isci_port:
+    :param isci_port:
         *undescribed*
+    :type isci_port: struct isci_port \*
 
-    :param enum sci_status completion_status:
+    :param completion_status:
         This parameter specifies the core status for the reset
         process.
+    :type completion_status: enum sci_status
 
 .. _`sci_port_construct_dummy_rnc`:
 
@@ -69,11 +76,13 @@ sci_port_construct_dummy_rnc
 
     create dummy rnc for si workaround
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
-    :param u16 rni:
+    :param rni:
         remote node index for this remote node context.
+    :type rni: u16
 
 .. _`sci_port_construct_dummy_rnc.description`:
 
@@ -93,14 +102,17 @@ sci_port_general_link_up_handler
 
     phy can be assigned to port?
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
-    :param struct isci_phy \*iphy:
+    :param iphy:
         *undescribed*
+    :type iphy: struct isci_phy \*
 
-    :param u8 flags:
+    :param flags:
         PF_RESUME, PF_NOTIFY to sci_port_activate_phy
+    :type flags: u8
 
 .. _`sci_port_general_link_up_handler.description`:
 
@@ -121,8 +133,9 @@ sci_port_is_wide
 
     If there are no phys or more than one phy then the method will return true.
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
 .. _`sci_port_is_wide.description`:
 
@@ -141,11 +154,13 @@ sci_port_link_detected
 
     port wants the PHY to continue on to the link up state then the port layer must return true.  If the port object returns false the phy object must halt its attempt to go link up.
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
-    :param struct isci_phy \*iphy:
+    :param iphy:
         *undescribed*
+    :type iphy: struct isci_phy \*
 
 .. _`sci_port_link_detected.description`:
 
@@ -165,8 +180,9 @@ sci_port_update_viit_entry
 
 .. c:function:: void sci_port_update_viit_entry(struct isci_port *iport)
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
 .. _`sci_port_update_viit_entry.description`:
 
@@ -184,8 +200,9 @@ sci_port_post_dummy_request
 
     post dummy/workaround request
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
 .. _`sci_port_post_dummy_request.description`:
 
@@ -205,8 +222,9 @@ sci_port_abort_dummy_request
 
     power down parts of the silicon to save power.
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
 .. _`sci_port_add_phy`:
 
@@ -215,11 +233,13 @@ sci_port_add_phy
 
 .. c:function:: enum sci_status sci_port_add_phy(struct isci_port *iport, struct isci_phy *iphy)
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
-    :param struct isci_phy \*iphy:
+    :param iphy:
         *undescribed*
+    :type iphy: struct isci_phy \*
 
 .. _`sci_port_add_phy.description`:
 
@@ -237,11 +257,13 @@ sci_port_remove_phy
 
 .. c:function:: enum sci_status sci_port_remove_phy(struct isci_port *iport, struct isci_phy *iphy)
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
-    :param struct isci_phy \*iphy:
+    :param iphy:
         *undescribed*
+    :type iphy: struct isci_phy \*
 
 .. _`sci_port_remove_phy.description`:
 

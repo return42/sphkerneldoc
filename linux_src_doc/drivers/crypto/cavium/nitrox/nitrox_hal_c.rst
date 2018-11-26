@@ -10,8 +10,9 @@ emu_enable_cores
 
     Enable EMU cluster cores.
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         N5 device
+    :type ndev: struct nitrox_device \*
 
 .. _`nitrox_config_emu_unit`:
 
@@ -22,8 +23,9 @@ nitrox_config_emu_unit
 
     configure EMU unit.
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         N5 device
+    :type ndev: struct nitrox_device \*
 
 .. _`nitrox_config_pkt_input_rings`:
 
@@ -34,8 +36,9 @@ nitrox_config_pkt_input_rings
 
     configure Packet Input Rings
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         N5 device
+    :type ndev: struct nitrox_device \*
 
 .. _`enable_nps_interrupts`:
 
@@ -46,8 +49,9 @@ enable_nps_interrupts
 
     enable NPS interrutps
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         N5 device.
+    :type ndev: struct nitrox_device \*
 
 .. _`enable_nps_interrupts.description`:
 
@@ -65,8 +69,9 @@ nitrox_config_rand_unit
 
     enable N5 random number unit
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         N5 device
+    :type ndev: struct nitrox_device \*
 
 .. This file was automatic generated / don't edit.
 

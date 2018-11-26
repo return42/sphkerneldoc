@@ -8,11 +8,13 @@
 
 .. c:function:: int __cvmx_helper_sgmii_hardware_init_one_time(int interface, int index)
 
-    :param int interface:
+    :param interface:
         Interface to init
+    :type interface: int
 
-    :param int index:
+    :param index:
         Index of prot on the interface
+    :type index: int
 
 .. _`__cvmx_helper_sgmii_hardware_init_one_time.description`:
 
@@ -30,11 +32,13 @@ Returns Zero on success, negative on failure
 
     of link.
 
-    :param int interface:
+    :param interface:
         Interface to init
+    :type interface: int
 
-    :param int index:
+    :param index:
         Index of prot on the interface
+    :type index: int
 
 .. _`__cvmx_helper_sgmii_hardware_init_link.description`:
 
@@ -52,14 +56,17 @@ Returns Zero on success, negative on failure
 
     link is up.
 
-    :param int interface:
+    :param interface:
         Interface to init
+    :type interface: int
 
-    :param int index:
+    :param index:
         Index of prot on the interface
+    :type index: int
 
-    :param cvmx_helper_link_info_t link_info:
+    :param link_info:
         Link state to configure
+    :type link_info: cvmx_helper_link_info_t
 
 .. _`__cvmx_helper_sgmii_hardware_init_link_speed.description`:
 
@@ -77,11 +84,13 @@ Returns Zero on success, negative on failure
 
     leave I/O disabled using the GMX override. This function follows the bringup documented in 10.6.3 of the manual.
 
-    :param int interface:
+    :param interface:
         Interface to bringup
+    :type interface: int
 
-    :param int num_ports:
+    :param num_ports:
         Number of ports on the interface
+    :type num_ports: int
 
 .. _`__cvmx_helper_sgmii_hardware_init.description`:
 
@@ -99,8 +108,9 @@ Returns Zero on success, negative on failure
 
     connected to it. The SGMII interface should still be down after this call.
 
-    :param int interface:
+    :param interface:
         Interface to probe
+    :type interface: int
 
 .. _`__cvmx_helper_sgmii_probe.description`:
 
@@ -118,8 +128,9 @@ Returns Number of ports on the interface. Zero to disable.
 
     I/O should be fully functional. This is called with IPD enabled but PKO disabled.
 
-    :param int interface:
+    :param interface:
         Interface to bring up
+    :type interface: int
 
 .. _`__cvmx_helper_sgmii_enable.description`:
 
@@ -137,8 +148,9 @@ Returns Zero on success, negative on failure
 
     auto negotiation. The result of this function may not match Octeon's link config if auto negotiation has changed since the last call to \ :c:func:`cvmx_helper_link_set`\ .
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port to query
+    :type ipd_port: int
 
 .. _`__cvmx_helper_sgmii_link_get.description`:
 
@@ -156,11 +168,13 @@ Returns Link state
 
     function does not influence auto negotiation at the PHY level. The passed link state must always match the link state returned by \ :c:func:`cvmx_helper_link_get`\ .
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port to configure
+    :type ipd_port: int
 
-    :param cvmx_helper_link_info_t link_info:
+    :param link_info:
         The new link state
+    :type link_info: cvmx_helper_link_info_t
 
 .. _`__cvmx_helper_sgmii_link_set.description`:
 
@@ -178,14 +192,17 @@ Returns Zero on success, negative on failure
 
     loopback causes packets sent by the port to be received by Octeon. External loopback causes packets received from the wire to sent out again.
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD/PKO port to loopback.
+    :type ipd_port: int
 
-    :param int enable_internal:
+    :param enable_internal:
         Non zero if you want internal loopback
+    :type enable_internal: int
 
-    :param int enable_external:
+    :param enable_external:
         Non zero if you want external loopback
+    :type enable_external: int
 
 .. _`__cvmx_helper_sgmii_configure_loopback.description`:
 

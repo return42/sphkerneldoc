@@ -10,14 +10,17 @@ rvt_alloc_pd
 
     allocate a protection domain
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         ib device
+    :type ibdev: struct ib_device \*
 
-    :param struct ib_ucontext \*context:
+    :param context:
         optional user context
+    :type context: struct ib_ucontext \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         optional user data
+    :type udata: struct ib_udata \*
 
 .. _`rvt_alloc_pd.description`:
 
@@ -42,8 +45,9 @@ rvt_dealloc_pd
 
     Free PD
 
-    :param struct ib_pd \*ibpd:
+    :param ibpd:
         Free up PD
+    :type ibpd: struct ib_pd \*
 
 .. _`rvt_dealloc_pd.return`:
 

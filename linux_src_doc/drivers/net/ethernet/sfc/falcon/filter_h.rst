@@ -294,17 +294,21 @@ ef4_filter_set_ipv4_local
 
     specify IPv4 host, transport protocol and port
 
-    :param struct ef4_filter_spec \*spec:
+    :param spec:
         Specification to initialise
+    :type spec: struct ef4_filter_spec \*
 
-    :param u8 proto:
+    :param proto:
         Transport layer protocol number
+    :type proto: u8
 
-    :param __be32 host:
+    :param host:
         Local host address (network byte order)
+    :type host: __be32
 
-    :param __be16 port:
+    :param port:
         Local port (network byte order)
+    :type port: __be16
 
 .. _`ef4_filter_set_ipv4_full`:
 
@@ -315,23 +319,29 @@ ef4_filter_set_ipv4_full
 
     specify IPv4 hosts, transport protocol and ports
 
-    :param struct ef4_filter_spec \*spec:
+    :param spec:
         Specification to initialise
+    :type spec: struct ef4_filter_spec \*
 
-    :param u8 proto:
+    :param proto:
         Transport layer protocol number
+    :type proto: u8
 
-    :param __be32 lhost:
+    :param lhost:
         Local host address (network byte order)
+    :type lhost: __be32
 
-    :param __be16 lport:
+    :param lport:
         Local port (network byte order)
+    :type lport: __be16
 
-    :param __be32 rhost:
+    :param rhost:
         Remote host address (network byte order)
+    :type rhost: __be32
 
-    :param __be16 rport:
+    :param rport:
         Remote port (network byte order)
+    :type rport: __be16
 
 .. _`ef4_filter_set_eth_local`:
 
@@ -342,14 +352,17 @@ ef4_filter_set_eth_local
 
     specify local Ethernet address and/or VID
 
-    :param struct ef4_filter_spec \*spec:
+    :param spec:
         Specification to initialise
+    :type spec: struct ef4_filter_spec \*
 
-    :param u16 vid:
+    :param vid:
         Outer VLAN ID to match, or \ ``EF4_FILTER_VID_UNSPEC``\ 
+    :type vid: u16
 
-    :param const u8 \*addr:
+    :param addr:
         Local Ethernet MAC address, or \ ``NULL``\ 
+    :type addr: const u8 \*
 
 .. _`ef4_filter_set_uc_def`:
 
@@ -360,8 +373,9 @@ ef4_filter_set_uc_def
 
     specify matching otherwise-unmatched unicast
 
-    :param struct ef4_filter_spec \*spec:
+    :param spec:
         Specification to initialise
+    :type spec: struct ef4_filter_spec \*
 
 .. _`ef4_filter_set_mc_def`:
 
@@ -372,8 +386,9 @@ ef4_filter_set_mc_def
 
     specify matching otherwise-unmatched multicast
 
-    :param struct ef4_filter_spec \*spec:
+    :param spec:
         Specification to initialise
+    :type spec: struct ef4_filter_spec \*
 
 .. This file was automatic generated / don't edit.
 

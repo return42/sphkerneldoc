@@ -10,24 +10,30 @@ ima_get_action
 
     appraise & measure decision based on policy.
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to inode to measure
+    :type inode: struct inode \*
 
-    :param const struct cred \*cred:
+    :param cred:
         pointer to credentials structure to validate
+    :type cred: const struct cred \*
 
-    :param u32 secid:
+    :param secid:
         secid of the task being validated
+    :type secid: u32
 
-    :param int mask:
+    :param mask:
         contains the permission mask (MAY_READ, MAY_WRITE, MAY_EXEC,
         MAY_APPEND)
+    :type mask: int
 
-    :param enum ima_hooks func:
+    :param func:
         caller identifier
+    :type func: enum ima_hooks
 
-    :param int \*pcr:
+    :param pcr:
         pointer filled in if matched measure policy sets pcr=
+    :type pcr: int \*
 
 .. _`ima_get_action.the-policy-is-defined-in-terms-of-keypairs`:
 

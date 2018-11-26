@@ -10,11 +10,13 @@ intel_xpower_pmic_get_raw_temp
 
     Get raw temperature reading from the PMIC
 
-    :param struct regmap \*regmap:
+    :param regmap:
         regmap of the PMIC device
+    :type regmap: struct regmap \*
 
-    :param int reg:
+    :param reg:
         register to get the reading
+    :type reg: int
 
 .. _`intel_xpower_pmic_get_raw_temp.description`:
 

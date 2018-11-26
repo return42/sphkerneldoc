@@ -72,11 +72,79 @@ rotation:
      Without this property the rectangle is only scaled, but not rotated or
      reflected.
 
+     Possbile values:
+
+     "rotate-<degrees>":
+             Signals that a drm plane is rotated <degrees> degrees in counter
+             clockwise direction.
+
+     "reflect-<axis>":
+             Signals that the contents of a drm plane is reflected along the
+             <axis> axis, in the same way as mirroring.
+
+     reflect-x::
+
+                     |o |    | o|
+                     |  | -> |  |
+                     | v|    |v |
+
+     reflect-y::
+
+                     |o |    | ^|
+                     |  | -> |  |
+                     | v|    |o |
+
 zpos:
      Z position is set up with \ :c:func:`drm_plane_create_zpos_immutable_property`\  and
      \ :c:func:`drm_plane_create_zpos_property`\ . It controls the visibility of overlapping
      planes. Without this property the primary plane is always below the cursor
      plane, and ordering between all other planes is undefined.
+
+pixel blend mode:
+     Pixel blend mode is set up with \ :c:func:`drm_plane_create_blend_mode_property`\ .
+     It adds a blend mode for alpha blending equation selection, describing
+     how the pixels from the current plane are composited with the
+     background.
+
+      Three alpha blending equations are defined:
+
+      "None":
+              Blend formula that ignores the pixel alpha::
+
+                      out.rgb = plane_alpha * fg.rgb +
+                              (1 - plane_alpha) * bg.rgb
+
+      "Pre-multiplied":
+              Blend formula that assumes the pixel color values
+              have been already pre-multiplied with the alpha
+              channel values::
+
+                      out.rgb = plane_alpha * fg.rgb +
+                              (1 - (plane_alpha * fg.alpha)) * bg.rgb
+
+      "Coverage":
+              Blend formula that assumes the pixel color values have not
+              been pre-multiplied and will do so when blending them to the
+              background color values::
+
+                      out.rgb = plane_alpha * fg.alpha * fg.rgb +
+                              (1 - (plane_alpha * fg.alpha)) * bg.rgb
+
+      Using the following symbols:
+
+      "fg.rgb":
+              Each of the RGB component values from the plane's pixel
+      "fg.alpha":
+              Alpha component value from the plane's pixel. If the plane's
+              pixel format has no alpha component, then this is assumed to be
+              1.0. In these cases, this property has no effect, as all three
+              equations become equivalent.
+      "bg.rgb":
+              Each of the RGB component values from the background
+      "plane_alpha":
+              Plane alpha value set by the plane "alpha" property. If the
+              plane does not expose the "alpha" property, then this is
+              assumed to be 1.0
 
 Note that all the property extensions described here apply either to the
 plane or the CRTC (e.g. for the background color, which currently is not
@@ -91,8 +159,9 @@ drm_plane_create_alpha_property
 
     create a new alpha property
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
 .. _`drm_plane_create_alpha_property.description`:
 
@@ -121,14 +190,17 @@ drm_plane_create_rotation_property
 
     create a new rotation property
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
-    :param unsigned int rotation:
+    :param rotation:
         initial value of the rotation property
+    :type rotation: unsigned int
 
-    :param unsigned int supported_rotations:
+    :param supported_rotations:
         bitmask of supported rotations and reflections
+    :type supported_rotations: unsigned int
 
 .. _`drm_plane_create_rotation_property.description`:
 
@@ -201,11 +273,13 @@ drm_rotation_simplify
 
     Try to simplify the rotation
 
-    :param unsigned int rotation:
+    :param rotation:
         Rotation to be simplified
+    :type rotation: unsigned int
 
-    :param unsigned int supported_rotations:
+    :param supported_rotations:
         Supported rotations
+    :type supported_rotations: unsigned int
 
 .. _`drm_rotation_simplify.description`:
 
@@ -239,17 +313,21 @@ drm_plane_create_zpos_property
 
     create mutable zpos property
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
-    :param unsigned int zpos:
+    :param zpos:
         initial value of zpos property
+    :type zpos: unsigned int
 
-    :param unsigned int min:
+    :param min:
         minimal possible value of zpos property
+    :type min: unsigned int
 
-    :param unsigned int max:
+    :param max:
         maximal possible value of zpos property
+    :type max: unsigned int
 
 .. _`drm_plane_create_zpos_property.description`:
 
@@ -292,11 +370,13 @@ drm_plane_create_zpos_immutable_property
 
     create immuttable zpos property
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
-    :param unsigned int zpos:
+    :param zpos:
         value of zpos property
+    :type zpos: unsigned int
 
 .. _`drm_plane_create_zpos_immutable_property.description`:
 
@@ -327,11 +407,13 @@ drm_atomic_normalize_zpos
 
     calculate normalized zpos values for all crtcs
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state of DRM device
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_normalize_zpos.description`:
 
@@ -349,6 +431,61 @@ is then filled with unique values from 0 to number of active planes in crtc
 minus one.
 
 RETURNS
+Zero for success or -errno
+
+.. _`drm_plane_create_blend_mode_property`:
+
+drm_plane_create_blend_mode_property
+====================================
+
+.. c:function:: int drm_plane_create_blend_mode_property(struct drm_plane *plane, unsigned int supported_modes)
+
+    create a new blend mode property
+
+    :param plane:
+        drm plane
+    :type plane: struct drm_plane \*
+
+    :param supported_modes:
+        bitmask of supported modes, must include
+        BIT(DRM_MODE_BLEND_PREMULTI). Current DRM assumption is
+        that alpha is premultiplied, and old userspace can break if
+        the property defaults to anything else.
+    :type supported_modes: unsigned int
+
+.. _`drm_plane_create_blend_mode_property.description`:
+
+Description
+-----------
+
+This creates a new property describing the blend mode.
+
+The property exposed to userspace is an enumeration property (see
+\ :c:func:`drm_property_create_enum`\ ) called "pixel blend mode" and has the
+
+.. _`drm_plane_create_blend_mode_property.following-enumeration-values`:
+
+following enumeration values
+----------------------------
+
+
+"None":
+     Blend formula that ignores the pixel alpha.
+
+"Pre-multiplied":
+     Blend formula that assumes the pixel color values have been already
+     pre-multiplied with the alpha channel values.
+
+"Coverage":
+     Blend formula that assumes the pixel color values have not been
+     pre-multiplied and will do so when blending them to the background color
+     values.
+
+.. _`drm_plane_create_blend_mode_property.return`:
+
+Return
+------
+
 Zero for success or -errno
 
 .. This file was automatic generated / don't edit.

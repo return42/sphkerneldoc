@@ -10,8 +10,9 @@ uwb_drp_ie_update
 
     update a reservation's DRP IE
 
-    :param struct uwb_rsv \*rsv:
+    :param rsv:
         the reservation
+    :type rsv: struct uwb_rsv \*
 
 .. _`uwb_drp_ie_to_bm`:
 
@@ -22,11 +23,13 @@ uwb_drp_ie_to_bm
 
     convert DRP allocation fields to a bitmap
 
-    :param struct uwb_mas_bm \*bm:
+    :param bm:
         *undescribed*
+    :type bm: struct uwb_mas_bm \*
 
-    :param const struct uwb_ie_drp \*drp_ie:
+    :param drp_ie:
         the DRP IE that contains the allocation fields.
+    :type drp_ie: const struct uwb_ie_drp \*
 
 .. _`uwb_drp_ie_to_bm.description`:
 

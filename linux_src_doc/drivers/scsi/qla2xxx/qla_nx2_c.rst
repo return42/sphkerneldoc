@@ -10,8 +10,9 @@ qla8044_lock_recovery
 
     Recovers the idc_lock.
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         Pointer to adapter structure
+    :type vha: struct scsi_qla_host \*
 
 .. _`qla8044_lock_recovery.description`:
 
@@ -48,8 +49,9 @@ qla8044_need_reset_handler
 
     Code to start reset sequence
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         pointer to adapter structure
+    :type vha: struct scsi_qla_host \*
 
 .. _`qla8044_need_reset_handler.note`:
 
@@ -67,8 +69,9 @@ qla8044_need_qsnt_handler
 
     Code to start qsnt
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         pointer to adapter structure
+    :type vha: struct scsi_qla_host \*
 
 .. _`qla8044_check_temp`:
 
@@ -79,8 +82,9 @@ qla8044_check_temp
 
     Check the ISP82XX temperature.
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         adapter block pointer.
+    :type vha: struct scsi_qla_host \*
 
 .. _`qla8044_check_temp.note`:
 
@@ -98,8 +102,9 @@ qla8044_check_fw_alive
 
     Check firmware health
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         Pointer to host adapter structure.
+    :type vha: struct scsi_qla_host \*
 
 .. _`qla8044_check_fw_alive.context`:
 
@@ -117,11 +122,13 @@ qla8044_intr_handler
 
     Process interrupts for the ISP8044
 
-    :param int irq:
-        *undescribed*
+    :param irq:
+        interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         SCSI driver HA context
+    :type dev_id: void \*
 
 .. _`qla8044_intr_handler.description`:
 

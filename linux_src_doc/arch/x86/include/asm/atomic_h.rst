@@ -10,8 +10,9 @@ arch_atomic_read
 
     read atomic variable
 
-    :param const atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: const atomic_t \*
 
 .. _`arch_atomic_read.description`:
 
@@ -29,11 +30,13 @@ arch_atomic_set
 
     set atomic variable
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
-    :param int i:
+    :param i:
         required value
+    :type i: int
 
 .. _`arch_atomic_set.description`:
 
@@ -51,11 +54,13 @@ arch_atomic_add
 
     add integer to atomic variable
 
-    :param int i:
+    :param i:
         integer value to add
+    :type i: int
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`arch_atomic_add.description`:
 
@@ -73,11 +78,13 @@ arch_atomic_sub
 
     subtract integer from atomic variable
 
-    :param int i:
+    :param i:
         integer value to subtract
+    :type i: int
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`arch_atomic_sub.description`:
 
@@ -95,11 +102,13 @@ arch_atomic_sub_and_test
 
     subtract value from variable and test result
 
-    :param int i:
+    :param i:
         integer value to subtract
+    :type i: int
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`arch_atomic_sub_and_test.description`:
 
@@ -119,8 +128,9 @@ arch_atomic_inc
 
     increment atomic variable
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`arch_atomic_inc.description`:
 
@@ -138,8 +148,9 @@ arch_atomic_dec
 
     decrement atomic variable
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`arch_atomic_dec.description`:
 
@@ -157,8 +168,9 @@ arch_atomic_dec_and_test
 
     decrement and test
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`arch_atomic_dec_and_test.description`:
 
@@ -178,8 +190,9 @@ arch_atomic_inc_and_test
 
     increment and test
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`arch_atomic_inc_and_test.description`:
 
@@ -199,11 +212,13 @@ arch_atomic_add_negative
 
     add and test if negative
 
-    :param int i:
+    :param i:
         integer value to add
+    :type i: int
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`arch_atomic_add_negative.description`:
 
@@ -223,11 +238,13 @@ arch_atomic_add_return
 
     add integer and return
 
-    :param int i:
+    :param i:
         integer value to add
+    :type i: int
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`arch_atomic_add_return.description`:
 
@@ -245,11 +262,13 @@ arch_atomic_sub_return
 
     subtract integer and return
 
-    :param int i:
+    :param i:
         integer value to subtract
+    :type i: int
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`arch_atomic_sub_return.description`:
 
@@ -257,32 +276,6 @@ Description
 -----------
 
 Atomically subtracts \ ``i``\  from \ ``v``\  and returns \ ``v``\  - \ ``i``\ 
-
-.. _`__arch_atomic_add_unless`:
-
-__arch_atomic_add_unless
-========================
-
-.. c:function:: int __arch_atomic_add_unless(atomic_t *v, int a, int u)
-
-    add unless the number is already a given value
-
-    :param atomic_t \*v:
-        pointer of type atomic_t
-
-    :param int a:
-        the amount to add to v...
-
-    :param int u:
-        ...unless v is equal to u.
-
-.. _`__arch_atomic_add_unless.description`:
-
-Description
------------
-
-Atomically adds \ ``a``\  to \ ``v``\ , so long as \ ``v``\  was not already \ ``u``\ .
-Returns the old value of \ ``v``\ .
 
 .. This file was automatic generated / don't edit.
 

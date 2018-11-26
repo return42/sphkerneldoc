@@ -10,14 +10,17 @@ smb311_update_preauth_hash
 
     update \ ``ses``\  hash with the packet data in \ ``iov``\ 
 
-    :param struct cifs_ses \*ses:
+    :param ses:
         *undescribed*
+    :type ses: struct cifs_ses \*
 
-    :param struct kvec \*iov:
+    :param iov:
         *undescribed*
+    :type iov: struct kvec \*
 
-    :param int nvec:
+    :param nvec:
         *undescribed*
+    :type nvec: int
 
 .. _`smb311_update_preauth_hash.description`:
 

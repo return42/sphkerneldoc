@@ -8,8 +8,9 @@
 
 .. c:function:: void _rtl_tx_desc_checksum(u8 *txdesc)
 
-    :param u8 \*txdesc:
+    :param txdesc:
         *undescribed*
+    :type txdesc: u8 \*
 
 .. This file was automatic generated / don't edit.
 

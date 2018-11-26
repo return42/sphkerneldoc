@@ -10,11 +10,13 @@ qib_make_uc_req
 
     construct a request packet (SEND, RDMA write)
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         a pointer to the QP
+    :type qp: struct rvt_qp \*
 
-    :param unsigned long \*flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long \*
 
 .. _`qib_make_uc_req.description`:
 
@@ -34,23 +36,29 @@ qib_uc_rcv
 
     handle an incoming UC packet
 
-    :param struct qib_ibport \*ibp:
+    :param ibp:
         the port the packet came in on
+    :type ibp: struct qib_ibport \*
 
-    :param struct ib_header \*hdr:
+    :param hdr:
         the header of the packet
+    :type hdr: struct ib_header \*
 
-    :param int has_grh:
+    :param has_grh:
         true if the packet has a GRH
+    :type has_grh: int
 
-    :param void \*data:
+    :param data:
         the packet data
+    :type data: void \*
 
-    :param u32 tlen:
+    :param tlen:
         the length of the packet
+    :type tlen: u32
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP for this packet.
+    :type qp: struct rvt_qp \*
 
 .. _`qib_uc_rcv.description`:
 

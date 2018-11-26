@@ -10,14 +10,17 @@ snd_pci_quirk_lookup_id
 
     look up a PCI SSID quirk list
 
-    :param u16 vendor:
+    :param vendor:
         PCI SSV id
+    :type vendor: u16
 
-    :param u16 device:
+    :param device:
         PCI SSD id
+    :type device: u16
 
-    :param const struct snd_pci_quirk \*list:
+    :param list:
         quirk list, terminated by a null entry
+    :type list: const struct snd_pci_quirk \*
 
 .. _`snd_pci_quirk_lookup_id.description`:
 
@@ -39,11 +42,13 @@ snd_pci_quirk_lookup
 
     look up a PCI SSID quirk list
 
-    :param struct pci_dev \*pci:
+    :param pci:
         pci_dev handle
+    :type pci: struct pci_dev \*
 
-    :param const struct snd_pci_quirk \*list:
+    :param list:
         quirk list, terminated by a null entry
+    :type list: const struct snd_pci_quirk \*
 
 .. _`snd_pci_quirk_lookup.description`:
 

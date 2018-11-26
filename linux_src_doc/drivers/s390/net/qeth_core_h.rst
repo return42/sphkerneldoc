@@ -24,11 +24,13 @@ qeth_get_elements_for_range
 
     find number of SBALEs to cover range.
 
-    :param addr_t start:
+    :param start:
         Start of the address range.
+    :type start: addr_t
 
-    :param addr_t end:
+    :param end:
         Address after the end of the range.
+    :type end: addr_t
 
 .. _`qeth_get_elements_for_range.description`:
 

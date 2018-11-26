@@ -10,8 +10,9 @@ sas_discover_sata
 
     discover an STP/SATA domain device
 
-    :param struct domain_device \*dev:
+    :param dev:
         pointer to struct domain_device of interest
+    :type dev: struct domain_device \*
 
 .. _`sas_discover_sata.description`:
 

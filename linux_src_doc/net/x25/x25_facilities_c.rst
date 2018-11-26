@@ -10,17 +10,21 @@ x25_parse_facilities
 
     Parse facilities from skb into the facilities structs
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff to parse
+    :type skb: struct sk_buff \*
 
-    :param struct x25_facilities \*facilities:
+    :param facilities:
         Regular facilities, updated as facilities are found
+    :type facilities: struct x25_facilities \*
 
-    :param struct x25_dte_facilities \*dte_facs:
+    :param dte_facs:
         ITU DTE facilities, updated as DTE facilities are found
+    :type dte_facs: struct x25_dte_facilities \*
 
-    :param unsigned long \*vc_fac_mask:
+    :param vc_fac_mask:
         mask is updated with all facilities found
+    :type vc_fac_mask: unsigned long \*
 
 .. _`x25_parse_facilities.return-codes`:
 

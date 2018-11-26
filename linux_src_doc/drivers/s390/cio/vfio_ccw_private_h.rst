@@ -23,7 +23,7 @@ Definition
         atomic_t avail;
         struct mdev_device *mdev;
         struct notifier_block nb;
-        struct ccw_io_region io_region;
+        struct ccw_io_region *io_region;
         struct channel_program cp;
         struct irb irb;
         union scsw scsw;

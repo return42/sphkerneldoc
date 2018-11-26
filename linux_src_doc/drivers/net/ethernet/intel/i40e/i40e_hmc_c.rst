@@ -10,20 +10,25 @@ i40e_add_sd_table_entry
 
     Adds a segment descriptor to the table
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to our hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information struct
+    :type hmc_info: struct i40e_hmc_info \*
 
-    :param u32 sd_index:
+    :param sd_index:
         segment descriptor index to manipulate
+    :type sd_index: u32
 
-    :param enum i40e_sd_entry_type type:
+    :param type:
         what type of segment descriptor we're manipulating
+    :type type: enum i40e_sd_entry_type
 
-    :param u64 direct_mode_sz:
+    :param direct_mode_sz:
         size to alloc in direct mode
+    :type direct_mode_sz: u64
 
 .. _`i40e_add_pd_table_entry`:
 
@@ -34,17 +39,21 @@ i40e_add_pd_table_entry
 
     Adds page descriptor to the specified table
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to our HW structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40e_hmc_info \*
 
-    :param u32 pd_index:
+    :param pd_index:
         which page descriptor index to manipulate
+    :type pd_index: u32
 
-    :param struct i40e_dma_mem \*rsrc_pg:
+    :param rsrc_pg:
         if not NULL, use preallocated page instead of allocating new one.
+    :type rsrc_pg: struct i40e_dma_mem \*
 
 .. _`i40e_add_pd_table_entry.this-function`:
 
@@ -74,14 +83,17 @@ i40e_remove_pd_bp
 
     remove a backing page from a page descriptor
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to our HW structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40e_hmc_info \*
 
-    :param u32 idx:
+    :param idx:
         the page index
+    :type idx: u32
 
 .. _`i40e_remove_pd_bp.this-function`:
 
@@ -110,11 +122,13 @@ i40e_prep_remove_sd_bp
 
     Prepares to remove a backing page from a sd entry
 
-    :param struct i40e_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40e_hmc_info \*
 
-    :param u32 idx:
+    :param idx:
         the page index
+    :type idx: u32
 
 .. _`i40e_remove_sd_bp_new`:
 
@@ -125,17 +139,21 @@ i40e_remove_sd_bp_new
 
     Removes a backing page from a segment descriptor
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to our hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40e_hmc_info \*
 
-    :param u32 idx:
+    :param idx:
         the page index
+    :type idx: u32
 
-    :param bool is_pf:
+    :param is_pf:
         used to distinguish between VF and PF
+    :type is_pf: bool
 
 .. _`i40e_prep_remove_pd_page`:
 
@@ -146,11 +164,13 @@ i40e_prep_remove_pd_page
 
     Prepares to remove a PD page from sd entry.
 
-    :param struct i40e_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40e_hmc_info \*
 
-    :param u32 idx:
+    :param idx:
         segment descriptor index to find the relevant page descriptor
+    :type idx: u32
 
 .. _`i40e_remove_pd_page_new`:
 
@@ -161,17 +181,21 @@ i40e_remove_pd_page_new
 
     Removes a PD page from sd entry.
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to our hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40e_hmc_info \*
 
-    :param u32 idx:
+    :param idx:
         segment descriptor index to find the relevant page descriptor
+    :type idx: u32
 
-    :param bool is_pf:
+    :param is_pf:
         used to distinguish between VF and PF
+    :type is_pf: bool
 
 .. This file was automatic generated / don't edit.
 

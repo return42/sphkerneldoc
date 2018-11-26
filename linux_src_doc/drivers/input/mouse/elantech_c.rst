@@ -10,14 +10,17 @@ elantech_setup_smbus
 
     called once the PS/2 devices are enumerated and decides to instantiate a SMBus InterTouch device.
 
-    :param struct psmouse \*psmouse:
+    :param psmouse:
         *undescribed*
+    :type psmouse: struct psmouse \*
 
-    :param struct elantech_device_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct elantech_device_info \*
 
-    :param bool leave_breadcrumbs:
+    :param leave_breadcrumbs:
         *undescribed*
+    :type leave_breadcrumbs: bool
 
 .. This file was automatic generated / don't edit.
 

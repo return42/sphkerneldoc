@@ -10,8 +10,9 @@ fm10k_stop_hw_vf
 
     Stop Tx/Rx units
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
 .. _`fm10k_reset_hw_vf`:
 
@@ -22,8 +23,9 @@ fm10k_reset_hw_vf
 
     VF hardware reset
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
 .. _`fm10k_reset_hw_vf.description`:
 
@@ -42,8 +44,9 @@ fm10k_init_hw_vf
 
     VF hardware initialization
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
 .. _`fm10k_update_vlan_vf`:
 
@@ -54,17 +57,21 @@ fm10k_update_vlan_vf
 
     Update status of VLAN ID in VLAN filter table
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param u32 vid:
+    :param vid:
         VLAN ID to add to table
+    :type vid: u32
 
-    :param u8 vsi:
+    :param vsi:
         Reserved, should always be 0
+    :type vsi: u8
 
-    :param bool set:
+    :param set:
         Indicates if this is a set or clear operation
+    :type set: bool
 
 .. _`fm10k_update_vlan_vf.description`:
 
@@ -83,14 +90,17 @@ fm10k_msg_mac_vlan_vf
 
     Read device MAC address from mailbox message
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct fm10k_hw \*
 
-    :param u32 \*\*results:
+    :param results:
         Attributes for message
+    :type results: u32 \*\*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         unused mailbox data
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_msg_mac_vlan_vf.description`:
 
@@ -108,8 +118,9 @@ fm10k_read_mac_addr_vf
 
     Read device MAC address
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct fm10k_hw \*
 
 .. _`fm10k_read_mac_addr_vf.description`:
 
@@ -127,23 +138,29 @@ fm10k_update_uc_addr_vf
 
     Update device unicast addresses
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct fm10k_hw \*
 
-    :param u16 glort:
+    :param glort:
         unused
+    :type glort: u16
 
-    :param const u8 \*mac:
+    :param mac:
         MAC address to add/remove from table
+    :type mac: const u8 \*
 
-    :param u16 vid:
+    :param vid:
         VLAN ID to add/remove from table
+    :type vid: u16
 
-    :param bool add:
+    :param add:
         Indicates if this is an add or remove operation
+    :type add: bool
 
-    :param u8 flags:
+    :param flags:
         flags field to indicate add and secure - unused
+    :type flags: u8
 
 .. _`fm10k_update_uc_addr_vf.description`:
 
@@ -162,20 +179,25 @@ fm10k_update_mc_addr_vf
 
     Update device multicast addresses
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct fm10k_hw \*
 
-    :param u16 glort:
+    :param glort:
         unused
+    :type glort: u16
 
-    :param const u8 \*mac:
+    :param mac:
         MAC address to add/remove from table
+    :type mac: const u8 \*
 
-    :param u16 vid:
+    :param vid:
         VLAN ID to add/remove from table
+    :type vid: u16
 
-    :param bool add:
+    :param add:
         Indicates if this is an add or remove operation
+    :type add: bool
 
 .. _`fm10k_update_mc_addr_vf.description`:
 
@@ -194,8 +216,9 @@ fm10k_update_int_moderator_vf
 
     Request update of interrupt moderator list
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
 .. _`fm10k_update_int_moderator_vf.description`:
 
@@ -214,14 +237,17 @@ fm10k_msg_lport_state_vf
 
     Message handler for lport_state message from PF
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         Pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param u32 \*\*results:
+    :param results:
         pointer array containing parsed data
+    :type results: u32 \*\*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         Pointer to mailbox information structure
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_msg_lport_state_vf.description`:
 
@@ -240,17 +266,21 @@ fm10k_update_lport_state_vf
 
     Update device state in lower device
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct fm10k_hw \*
 
-    :param u16 glort:
+    :param glort:
         unused
+    :type glort: u16
 
-    :param u16 count:
+    :param count:
         number of logical ports to enable - unused (always 1)
+    :type count: u16
 
-    :param bool enable:
+    :param enable:
         boolean value indicating if this is an enable or disable request
+    :type enable: bool
 
 .. _`fm10k_update_lport_state_vf.description`:
 
@@ -270,14 +300,17 @@ fm10k_update_xcast_mode_vf
 
     Request update of multicast mode
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param u16 glort:
+    :param glort:
         unused
+    :type glort: u16
 
-    :param u8 mode:
+    :param mode:
         integer value indicating mode being requested
+    :type mode: u8
 
 .. _`fm10k_update_xcast_mode_vf.description`:
 
@@ -297,11 +330,13 @@ fm10k_update_hw_stats_vf
 
     Updates hardware related statistics of VF
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_hw_stats \*stats:
+    :param stats:
         pointer to statistics structure
+    :type stats: struct fm10k_hw_stats \*
 
 .. _`fm10k_update_hw_stats_vf.description`:
 
@@ -319,11 +354,13 @@ fm10k_rebind_hw_stats_vf
 
     Resets base for hardware statistics of VF
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_hw_stats \*stats:
+    :param stats:
         pointer to the stats structure to update
+    :type stats: struct fm10k_hw_stats \*
 
 .. _`fm10k_rebind_hw_stats_vf.description`:
 
@@ -341,11 +378,13 @@ fm10k_configure_dglort_map_vf
 
     Configures GLORT entry and queues
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_dglort_cfg \*dglort:
+    :param dglort:
         pointer to dglort configuration structure
+    :type dglort: struct fm10k_dglort_cfg \*
 
 .. _`fm10k_configure_dglort_map_vf.description`:
 

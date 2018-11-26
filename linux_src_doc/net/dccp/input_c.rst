@@ -10,11 +10,13 @@ dccp_sample_rtt
 
     Validate and finalise computation of RTT sample
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param long delta:
+    :param delta:
         number of microseconds between packet and acknowledgment
+    :type delta: long
 
 .. _`dccp_sample_rtt.description`:
 

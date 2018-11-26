@@ -10,8 +10,9 @@ get_io_context
 
     increment reference count to io_context
 
-    :param struct io_context \*ioc:
+    :param ioc:
         io_context to get
+    :type ioc: struct io_context \*
 
 .. _`get_io_context.description`:
 
@@ -29,8 +30,9 @@ put_io_context
 
     put a reference of io_context
 
-    :param struct io_context \*ioc:
+    :param ioc:
         io_context to put
+    :type ioc: struct io_context \*
 
 .. _`put_io_context.description`:
 
@@ -49,8 +51,9 @@ put_io_context_active
 
     put active reference on ioc
 
-    :param struct io_context \*ioc:
+    :param ioc:
         ioc of interest
+    :type ioc: struct io_context \*
 
 .. _`put_io_context_active.description`:
 
@@ -69,15 +72,16 @@ ioc_clear_queue
 
     break any ioc association with the specified queue
 
-    :param struct request_queue \*q:
+    :param q:
         request_queue being cleared
+    :type q: struct request_queue \*
 
 .. _`ioc_clear_queue.description`:
 
 Description
 -----------
 
-Walk \ ``q``\ ->icq_list and exit all io_cq's.
+Walk \ ``q->icq_list``\  and exit all io_cq's.
 
 .. _`get_task_io_context`:
 
@@ -88,14 +92,17 @@ get_task_io_context
 
     get io_context of a task
 
-    :param struct task_struct \*task:
+    :param task:
         task of interest
+    :type task: struct task_struct \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         allocation flags, used if allocation is necessary
+    :type gfp_flags: gfp_t
 
-    :param int node:
+    :param node:
         allocation node, used if allocation is necessary
+    :type node: int
 
 .. _`get_task_io_context.description`:
 
@@ -118,11 +125,13 @@ ioc_lookup_icq
 
     lookup io_cq from ioc
 
-    :param struct io_context \*ioc:
+    :param ioc:
         the associated io_context
+    :type ioc: struct io_context \*
 
-    :param struct request_queue \*q:
+    :param q:
         the associated request_queue
+    :type q: struct request_queue \*
 
 .. _`ioc_lookup_icq.description`:
 
@@ -130,7 +139,7 @@ Description
 -----------
 
 Look up io_cq associated with \ ``ioc``\  - \ ``q``\  pair from \ ``ioc``\ .  Must be called
-with \ ``q``\ ->queue_lock held.
+with \ ``q->queue_lock``\  held.
 
 .. _`ioc_create_icq`:
 
@@ -141,14 +150,17 @@ ioc_create_icq
 
     create and link io_cq
 
-    :param struct io_context \*ioc:
+    :param ioc:
         io_context of interest
+    :type ioc: struct io_context \*
 
-    :param struct request_queue \*q:
+    :param q:
         request_queue of interest
+    :type q: struct request_queue \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation mask
+    :type gfp_mask: gfp_t
 
 .. _`ioc_create_icq.description`:
 

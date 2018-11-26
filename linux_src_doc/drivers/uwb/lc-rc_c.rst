@@ -8,8 +8,9 @@ uwb_rc_sys_release
 
 .. c:function:: void uwb_rc_sys_release(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`uwb_rc_mac_addr_setup`:
 
@@ -20,8 +21,9 @@ uwb_rc_mac_addr_setup
 
     get an RC's EUI-48 address or set it
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller.
+    :type rc: struct uwb_rc \*
 
 .. _`uwb_rc_mac_addr_setup.description`:
 
@@ -40,14 +42,17 @@ uwb_rc_add
 
 .. c:function:: int uwb_rc_add(struct uwb_rc *rc, struct device *parent_dev, void *priv)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct device \*parent_dev:
+    :param parent_dev:
         *undescribed*
+    :type parent_dev: struct device \*
 
-    :param void \*priv:
+    :param priv:
         *undescribed*
+    :type priv: void \*
 
 .. _`uwb_rc_add.description`:
 
@@ -68,8 +73,9 @@ it [through ops->{get\|put}_device(). We'll take our own, though.
 
 .. c:function:: struct uwb_rc *__uwb_rc_try_get(struct uwb_rc *target_rc)
 
-    :param struct uwb_rc \*target_rc:
+    :param target_rc:
         *undescribed*
+    :type target_rc: struct uwb_rc \*
 
 .. _`__uwb_rc_try_get.description`:
 
@@ -88,8 +94,9 @@ uwb_rc_get_by_grandpa
 
     parent
 
-    :param const struct device \*grandpa_dev:
+    :param grandpa_dev:
         *undescribed*
+    :type grandpa_dev: const struct device \*
 
 .. _`uwb_rc_get_by_grandpa.description`:
 
@@ -116,11 +123,13 @@ find_rc_dev
 
 .. c:function:: int find_rc_dev(struct device *dev, const void *data)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param const void \*data:
+    :param data:
         *undescribed*
+    :type data: const void \*
 
 .. _`find_rc_dev.description`:
 
@@ -136,8 +145,9 @@ uwb_rc_put
 
 .. c:function:: void uwb_rc_put(struct uwb_rc *rc)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
 .. _`uwb_rc_put.description`:
 

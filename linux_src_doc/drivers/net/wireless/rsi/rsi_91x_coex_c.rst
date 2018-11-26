@@ -8,8 +8,9 @@ rsi_coex_determine_coex_q
 
 .. c:function:: enum rsi_coex_queues rsi_coex_determine_coex_q(struct rsi_coex_ctrl_block *coex_cb)
 
-    :param struct rsi_coex_ctrl_block \*coex_cb:
+    :param coex_cb:
         *undescribed*
+    :type coex_cb: struct rsi_coex_ctrl_block \*
 
 .. _`rsi_coex_determine_coex_q.description`:
 

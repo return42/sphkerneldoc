@@ -10,8 +10,9 @@ mdio_device_register
 
     Register the mdio device on the MDIO bus
 
-    :param struct mdio_device \*mdiodev:
+    :param mdiodev:
         mdio_device structure to be added to the MDIO bus
+    :type mdiodev: struct mdio_device \*
 
 .. _`mdio_device_remove`:
 
@@ -22,8 +23,9 @@ mdio_device_remove
 
     Remove a previously registered mdio device from the MDIO bus
 
-    :param struct mdio_device \*mdiodev:
+    :param mdiodev:
         mdio_device structure to remove
+    :type mdiodev: struct mdio_device \*
 
 .. _`mdio_device_remove.description`:
 
@@ -43,8 +45,9 @@ mdio_probe
 
     probe an MDIO device
 
-    :param struct device \*dev:
+    :param dev:
         device to probe
+    :type dev: struct device \*
 
 .. _`mdio_probe.description`:
 
@@ -63,8 +66,9 @@ mdio_driver_register
 
     register an mdio_driver with the MDIO layer
 
-    :param struct mdio_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct mdio_driver \*
 
 .. This file was automatic generated / don't edit.
 

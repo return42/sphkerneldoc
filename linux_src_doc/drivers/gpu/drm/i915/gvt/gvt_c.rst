@@ -10,8 +10,9 @@ intel_gvt_init_host
 
     Load MPT modules and detect if we're running in host
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`intel_gvt_init_host.description`:
 
@@ -38,8 +39,9 @@ intel_gvt_clean_device
 
     clean a GVT device
 
-    :param struct drm_i915_private \*dev_priv:
-        *undescribed*
+    :param dev_priv:
+        i915 private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_gvt_clean_device.description`:
 
@@ -58,8 +60,9 @@ intel_gvt_init_device
 
     initialize a GVT device
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         drm i915 private data
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_gvt_init_device.description`:
 

@@ -645,20 +645,25 @@ abx500_mask_and_set_register_interruptible
 
     Modifies selected bits of a target register
 
-    :param struct device \*dev:
+    :param dev:
         The AB sub device.
+    :type dev: struct device \*
 
-    :param u8 bank:
+    :param bank:
         The i2c bank number.
+    :type bank: u8
 
-    :param u8 reg:
+    :param reg:
         *undescribed*
+    :type reg: u8
 
-    :param u8 bitmask:
+    :param bitmask:
         The bit mask to use.
+    :type bitmask: u8
 
-    :param u8 bitvalues:
+    :param bitvalues:
         The new bit values.
+    :type bitvalues: u8
 
 .. _`abx500_mask_and_set_register_interruptible.updates-the-value-of-an-ab-register`:
 

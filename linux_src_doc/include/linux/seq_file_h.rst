@@ -10,8 +10,9 @@ seq_has_overflowed
 
     check if the buffer has overflowed
 
-    :param struct seq_file \*m:
+    :param m:
         the seq_file handle
+    :type m: struct seq_file \*
 
 .. _`seq_has_overflowed.description`:
 
@@ -33,11 +34,13 @@ seq_get_buf
 
     get buffer to write arbitrary data to
 
-    :param struct seq_file \*m:
+    :param m:
         the seq_file handle
+    :type m: struct seq_file \*
 
-    :param char \*\*bufp:
+    :param bufp:
         the beginning of the buffer is stored here
+    :type bufp: char \*\*
 
 .. _`seq_get_buf.description`:
 
@@ -56,11 +59,13 @@ seq_commit
 
     commit data to the buffer
 
-    :param struct seq_file \*m:
+    :param m:
         the seq_file handle
+    :type m: struct seq_file \*
 
-    :param int num:
+    :param num:
         the number of bytes to commit
+    :type num: int
 
 .. _`seq_commit.description`:
 
@@ -80,11 +85,13 @@ seq_setwidth
 
     set padding width
 
-    :param struct seq_file \*m:
+    :param m:
         the seq_file handle
+    :type m: struct seq_file \*
 
-    :param size_t size:
+    :param size:
         the max number of bytes to pad.
+    :type size: size_t
 
 .. _`seq_setwidth.description`:
 
@@ -103,14 +110,17 @@ seq_show_option
 
     display mount options with appropriate escapes.
 
-    :param struct seq_file \*m:
+    :param m:
         the seq_file handle
+    :type m: struct seq_file \*
 
-    :param const char \*name:
+    :param name:
         the mount option name
+    :type name: const char \*
 
-    :param const char \*value:
+    :param value:
         the mount option name's value, can be NULL
+    :type value: const char \*
 
 .. _`seq_show_option_n`:
 
@@ -121,17 +131,21 @@ seq_show_option_n
 
     display mount options with appropriate escapes where \ ``value``\  must be a specific length.
 
-    :param  m:
+    :param m:
         the seq_file handle
+    :type m: 
 
-    :param  name:
+    :param name:
         the mount option name
+    :type name: 
 
-    :param  value:
+    :param value:
         the mount option name's value, cannot be NULL
+    :type value: 
 
-    :param  length:
+    :param length:
         the length of \ ``value``\  to display
+    :type length: 
 
 .. _`seq_show_option_n.description`:
 

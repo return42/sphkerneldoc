@@ -10,11 +10,13 @@ recycle_fl_buf
 
     recycle a free list buffer
 
-    :param struct freelQ \*fl:
+    :param fl:
         the free list
+    :type fl: struct freelQ \*
 
-    :param int idx:
+    :param idx:
         index of buffer to recycle
+    :type idx: int
 
 .. _`recycle_fl_buf.description`:
 
@@ -33,14 +35,17 @@ get_packet
 
     return the next ingress packet buffer
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter that received the packet
+    :type adapter: struct adapter \*
 
-    :param struct freelQ \*fl:
+    :param fl:
         the SGE free list holding the packet
+    :type fl: struct freelQ \*
 
-    :param unsigned int len:
+    :param len:
         the actual packet length, excluding any SGE padding
+    :type len: unsigned int
 
 .. _`get_packet.description`:
 
@@ -64,11 +69,13 @@ unexpected_offload
 
     handle an unexpected offload packet
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct freelQ \*fl:
+    :param fl:
         the free list that received the packet
+    :type fl: struct freelQ \*
 
 .. _`unexpected_offload.description`:
 
@@ -88,14 +95,17 @@ sge_rx
 
     process an ingress ethernet packet
 
-    :param struct sge \*sge:
+    :param sge:
         the sge structure
+    :type sge: struct sge \*
 
-    :param struct freelQ \*fl:
+    :param fl:
         the free list that contains the packet buffer
+    :type fl: struct freelQ \*
 
-    :param unsigned int len:
+    :param len:
         the packet length
+    :type len: unsigned int
 
 .. _`sge_rx.description`:
 

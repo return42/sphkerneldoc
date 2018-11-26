@@ -10,17 +10,21 @@ ieee80211_build_hdr
 
     build 802.11 header in the given frame
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         virtual interface to build the header for
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb to build the header in
+    :type skb: struct sk_buff \*
 
-    :param u32 info_flags:
+    :param info_flags:
         skb flags to set
+    :type info_flags: u32
 
-    :param struct sta_info \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct sta_info \*
 
 .. _`ieee80211_build_hdr.description`:
 
@@ -53,11 +57,13 @@ ieee80211_subif_start_xmit
 
     netif start_xmit function for 802.3 vifs
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to be sent
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         incoming interface
+    :type dev: struct net_device \*
 
 .. _`ieee80211_subif_start_xmit.description`:
 

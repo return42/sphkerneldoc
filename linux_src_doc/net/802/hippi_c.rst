@@ -10,9 +10,10 @@ alloc_hippi_dev
 
     Register HIPPI device
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         Size of additional driver-private structure to be allocated
         for this HIPPI device
+    :type sizeof_priv: int
 
 .. _`alloc_hippi_dev.description`:
 

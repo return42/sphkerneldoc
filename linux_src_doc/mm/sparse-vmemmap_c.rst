@@ -10,11 +10,13 @@ altmap_alloc_block_buf
 
     allocate pages from the device page map
 
-    :param unsigned long size:
+    :param size:
         size (in bytes) of the allocation
+    :type size: unsigned long
 
-    :param struct vmem_altmap \*altmap:
+    :param altmap:
         device page map
+    :type altmap: struct vmem_altmap \*
 
 .. _`altmap_alloc_block_buf.description`:
 

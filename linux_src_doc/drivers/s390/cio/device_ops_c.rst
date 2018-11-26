@@ -10,11 +10,13 @@ ccw_device_set_options_mask
 
     set some options and unset the rest
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         device for which the options are to be set
+    :type cdev: struct ccw_device \*
 
-    :param unsigned long flags:
+    :param flags:
         options to be set
+    :type flags: unsigned long
 
 .. _`ccw_device_set_options_mask.description`:
 
@@ -40,11 +42,13 @@ ccw_device_set_options
 
     set some options
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         device for which the options are to be set
+    :type cdev: struct ccw_device \*
 
-    :param unsigned long flags:
+    :param flags:
         options to be set
+    :type flags: unsigned long
 
 .. _`ccw_device_set_options.description`:
 
@@ -69,11 +73,13 @@ ccw_device_clear_options
 
     clear some options
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         device for which the options are to be cleared
+    :type cdev: struct ccw_device \*
 
-    :param unsigned long flags:
+    :param flags:
         options to be cleared
+    :type flags: unsigned long
 
 .. _`ccw_device_clear_options.description`:
 
@@ -91,8 +97,9 @@ ccw_device_is_pathgroup
 
     determine if paths to this device are grouped
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_is_pathgroup.description`:
 
@@ -110,8 +117,9 @@ ccw_device_is_multipath
 
     determine if device is operating in multipath mode
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_is_multipath.description`:
 
@@ -129,13 +137,15 @@ ccw_device_clear
 
     terminate I/O request processing
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         target ccw device
+    :type cdev: struct ccw_device \*
 
-    :param unsigned long intparm:
+    :param intparm:
         interruption parameter; value is only used if no I/O is
         outstanding, otherwise the intparm associated with the I/O request
         is returned
+    :type intparm: unsigned long
 
 .. _`ccw_device_clear.description`:
 
@@ -169,30 +179,37 @@ ccw_device_start_timeout_key
 
     start a s390 channel program with timeout and key
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         target ccw device
+    :type cdev: struct ccw_device \*
 
-    :param struct ccw1 \*cpa:
+    :param cpa:
         logical start address of channel program
+    :type cpa: struct ccw1 \*
 
-    :param unsigned long intparm:
+    :param intparm:
         user specific interruption parameter; will be presented back to
         \ ``cdev``\ 's interrupt handler. Allows a device driver to associate
         the interrupt with a particular I/O request.
+    :type intparm: unsigned long
 
-    :param __u8 lpm:
+    :param lpm:
         defines the channel path to be used for a specific I/O request. A
         value of 0 will make cio use the opm.
+    :type lpm: __u8
 
-    :param __u8 key:
+    :param key:
         storage key to be used for the I/O
+    :type key: __u8
 
-    :param unsigned long flags:
+    :param flags:
         additional flags; defines the action to be performed for I/O
         processing.
+    :type flags: unsigned long
 
-    :param int expires:
+    :param expires:
         timeout value in jiffies
+    :type expires: int
 
 .. _`ccw_device_start_timeout_key.description`:
 
@@ -233,27 +250,33 @@ ccw_device_start_key
 
     start a s390 channel program with key
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         target ccw device
+    :type cdev: struct ccw_device \*
 
-    :param struct ccw1 \*cpa:
+    :param cpa:
         logical start address of channel program
+    :type cpa: struct ccw1 \*
 
-    :param unsigned long intparm:
+    :param intparm:
         user specific interruption parameter; will be presented back to
         \ ``cdev``\ 's interrupt handler. Allows a device driver to associate
         the interrupt with a particular I/O request.
+    :type intparm: unsigned long
 
-    :param __u8 lpm:
+    :param lpm:
         defines the channel path to be used for a specific I/O request. A
         value of 0 will make cio use the opm.
+    :type lpm: __u8
 
-    :param __u8 key:
+    :param key:
         storage key to be used for the I/O
+    :type key: __u8
 
-    :param unsigned long flags:
+    :param flags:
         additional flags; defines the action to be performed for I/O
         processing.
+    :type flags: unsigned long
 
 .. _`ccw_device_start_key.description`:
 
@@ -290,24 +313,29 @@ ccw_device_start
 
     start a s390 channel program
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         target ccw device
+    :type cdev: struct ccw_device \*
 
-    :param struct ccw1 \*cpa:
+    :param cpa:
         logical start address of channel program
+    :type cpa: struct ccw1 \*
 
-    :param unsigned long intparm:
+    :param intparm:
         user specific interruption parameter; will be presented back to
         \ ``cdev``\ 's interrupt handler. Allows a device driver to associate
         the interrupt with a particular I/O request.
+    :type intparm: unsigned long
 
-    :param __u8 lpm:
+    :param lpm:
         defines the channel path to be used for a specific I/O request. A
         value of 0 will make cio use the opm.
+    :type lpm: __u8
 
-    :param unsigned long flags:
+    :param flags:
         additional flags; defines the action to be performed for I/O
         processing.
+    :type flags: unsigned long
 
 .. _`ccw_device_start.description`:
 
@@ -344,27 +372,33 @@ ccw_device_start_timeout
 
     start a s390 channel program with timeout
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         target ccw device
+    :type cdev: struct ccw_device \*
 
-    :param struct ccw1 \*cpa:
+    :param cpa:
         logical start address of channel program
+    :type cpa: struct ccw1 \*
 
-    :param unsigned long intparm:
+    :param intparm:
         user specific interruption parameter; will be presented back to
         \ ``cdev``\ 's interrupt handler. Allows a device driver to associate
         the interrupt with a particular I/O request.
+    :type intparm: unsigned long
 
-    :param __u8 lpm:
+    :param lpm:
         defines the channel path to be used for a specific I/O request. A
         value of 0 will make cio use the opm.
+    :type lpm: __u8
 
-    :param unsigned long flags:
+    :param flags:
         additional flags; defines the action to be performed for I/O
         processing.
+    :type flags: unsigned long
 
-    :param int expires:
+    :param expires:
         timeout value in jiffies
+    :type expires: int
 
 .. _`ccw_device_start_timeout.description`:
 
@@ -405,13 +439,15 @@ ccw_device_halt
 
     halt I/O request processing
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         target ccw device
+    :type cdev: struct ccw_device \*
 
-    :param unsigned long intparm:
+    :param intparm:
         interruption parameter; value is only used if no I/O is
         outstanding, otherwise the intparm associated with the I/O request
         is returned
+    :type intparm: unsigned long
 
 .. _`ccw_device_halt.description`:
 
@@ -446,8 +482,9 @@ ccw_device_resume
 
     resume channel program execution
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         target ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_resume.description`:
 
@@ -482,11 +519,13 @@ ccw_device_get_ciw
 
     Search for CIW command in extended sense data.
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device to inspect
+    :type cdev: struct ccw_device \*
 
-    :param __u32 ct:
+    :param ct:
         command type to look for
+    :type ct: __u32
 
 .. _`ccw_device_get_ciw.description`:
 
@@ -516,8 +555,9 @@ ccw_device_get_path_mask
 
     get currently available paths
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device to be queried
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_get_path_mask.return`:
 
@@ -536,11 +576,13 @@ ccw_device_get_chp_desc
 
     return newly allocated channel-path descriptor
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         device to obtain the descriptor for
+    :type cdev: struct ccw_device \*
 
-    :param int chp_idx:
+    :param chp_idx:
         index of the channel path
+    :type chp_idx: int
 
 .. _`ccw_device_get_chp_desc.description`:
 
@@ -559,11 +601,13 @@ ccw_device_get_util_str
 
     return newly allocated utility strings
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         device to obtain the utility strings for
+    :type cdev: struct ccw_device \*
 
-    :param int chp_idx:
+    :param chp_idx:
         index of the channel path
+    :type chp_idx: int
 
 .. _`ccw_device_get_util_str.description`:
 
@@ -582,11 +626,13 @@ ccw_device_get_id
 
     obtain a ccw device id
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         device to obtain the id for
+    :type cdev: struct ccw_device \*
 
-    :param struct ccw_dev_id \*dev_id:
+    :param dev_id:
         where to fill in the values
+    :type dev_id: struct ccw_dev_id \*
 
 .. _`ccw_device_tm_start_timeout_key`:
 
@@ -597,23 +643,29 @@ ccw_device_tm_start_timeout_key
 
     perform start function
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device on which to perform the start function
+    :type cdev: struct ccw_device \*
 
-    :param struct tcw \*tcw:
+    :param tcw:
         transport-command word to be started
+    :type tcw: struct tcw \*
 
-    :param unsigned long intparm:
+    :param intparm:
         user defined parameter to be passed to the interrupt handler
+    :type intparm: unsigned long
 
-    :param u8 lpm:
+    :param lpm:
         mask of paths to use
+    :type lpm: u8
 
-    :param u8 key:
+    :param key:
         storage key to use for storage access
+    :type key: u8
 
-    :param int expires:
+    :param expires:
         time span in jiffies after which to abort request
+    :type expires: int
 
 .. _`ccw_device_tm_start_timeout_key.description`:
 
@@ -632,20 +684,25 @@ ccw_device_tm_start_key
 
     perform start function
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device on which to perform the start function
+    :type cdev: struct ccw_device \*
 
-    :param struct tcw \*tcw:
+    :param tcw:
         transport-command word to be started
+    :type tcw: struct tcw \*
 
-    :param unsigned long intparm:
+    :param intparm:
         user defined parameter to be passed to the interrupt handler
+    :type intparm: unsigned long
 
-    :param u8 lpm:
+    :param lpm:
         mask of paths to use
+    :type lpm: u8
 
-    :param u8 key:
+    :param key:
         storage key to use for storage access
+    :type key: u8
 
 .. _`ccw_device_tm_start_key.description`:
 
@@ -664,17 +721,21 @@ ccw_device_tm_start
 
     perform start function
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device on which to perform the start function
+    :type cdev: struct ccw_device \*
 
-    :param struct tcw \*tcw:
+    :param tcw:
         transport-command word to be started
+    :type tcw: struct tcw \*
 
-    :param unsigned long intparm:
+    :param intparm:
         user defined parameter to be passed to the interrupt handler
+    :type intparm: unsigned long
 
-    :param u8 lpm:
+    :param lpm:
         mask of paths to use
+    :type lpm: u8
 
 .. _`ccw_device_tm_start.description`:
 
@@ -693,20 +754,25 @@ ccw_device_tm_start_timeout
 
     perform start function
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device on which to perform the start function
+    :type cdev: struct ccw_device \*
 
-    :param struct tcw \*tcw:
+    :param tcw:
         transport-command word to be started
+    :type tcw: struct tcw \*
 
-    :param unsigned long intparm:
+    :param intparm:
         user defined parameter to be passed to the interrupt handler
+    :type intparm: unsigned long
 
-    :param u8 lpm:
+    :param lpm:
         mask of paths to use
+    :type lpm: u8
 
-    :param int expires:
+    :param expires:
         time span in jiffies after which to abort request
+    :type expires: int
 
 .. _`ccw_device_tm_start_timeout.description`:
 
@@ -725,11 +791,13 @@ ccw_device_get_mdc
 
     accumulate max data count
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device for which the max data count is accumulated
+    :type cdev: struct ccw_device \*
 
-    :param u8 mask:
+    :param mask:
         mask of paths to use
+    :type mask: u8
 
 .. _`ccw_device_get_mdc.description`:
 
@@ -748,8 +816,9 @@ ccw_device_tm_intrg
 
     perform interrogate function
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device on which to perform the interrogate function
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_tm_intrg.description`:
 
@@ -768,11 +837,13 @@ ccw_device_get_schid
 
     obtain a subchannel id
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         device to obtain the id for
+    :type cdev: struct ccw_device \*
 
-    :param struct subchannel_id \*schid:
+    :param schid:
         where to fill in the values
+    :type schid: struct subchannel_id \*
 
 .. This file was automatic generated / don't edit.
 

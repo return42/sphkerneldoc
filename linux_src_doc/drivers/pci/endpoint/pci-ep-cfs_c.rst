@@ -8,8 +8,9 @@ DEFINE_IDR
 
 .. c:function::  DEFINE_IDR( functions_idr)
 
-    :param  functions_idr:
+    :param functions_idr:
         *undescribed*
+    :type functions_idr: 
 
 .. _`define_idr.description`:
 

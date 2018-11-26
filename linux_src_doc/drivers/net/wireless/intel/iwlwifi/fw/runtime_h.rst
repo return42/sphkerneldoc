@@ -35,6 +35,7 @@ Definition
             struct delayed_work wk;
             u8 conf;
             unsigned long non_collect_ts_start[FW_DBG_TRIGGER_MAX - 1];
+            u32 *d3_debug_data;
         } dump;
     #ifdef CONFIG_IWLWIFI_DEBUGFS
         struct {

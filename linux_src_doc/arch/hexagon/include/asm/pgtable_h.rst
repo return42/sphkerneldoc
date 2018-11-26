@@ -10,8 +10,9 @@ pmd_index
 
     returns the index of the entry in the PMD page which would control the given virtual address
 
-    :param  address:
+    :param address:
         *undescribed*
+    :type address: 
 
 .. _`pgd_index`:
 
@@ -22,8 +23,9 @@ pgd_index
 
     returns the index of the entry in the PGD page which would control the given virtual address
 
-    :param  address:
+    :param address:
         *undescribed*
+    :type address: 
 
 .. _`pgd_index.description`:
 
@@ -41,8 +43,9 @@ pmd_none
 
     check if pmd_entry is mapped
 
-    :param pmd_t pmd:
+    :param pmd:
         *undescribed*
+    :type pmd: pmd_t
 
 .. _`pmd_none.description`:
 
@@ -60,8 +63,9 @@ pmd_present
 
     is there a page table behind this? Essentially the inverse of pmd_none.  We maybe save an inline instruction by defining it this way, instead of simply "!pmd_none".
 
-    :param pmd_t pmd:
+    :param pmd:
         *undescribed*
+    :type pmd: pmd_t
 
 .. _`pmd_bad`:
 
@@ -72,8 +76,9 @@ pmd_bad
 
     check if a PMD entry is "bad". That might mean swapped out. As we have no known cause of badness, it's null, as it is for many architectures.
 
-    :param pmd_t pmd:
+    :param pmd:
         *undescribed*
+    :type pmd: pmd_t
 
 .. _`pte_none`:
 
@@ -84,8 +89,9 @@ pte_none
 
     check if pte is mapped
 
-    :param pte_t pte:
+    :param pte:
         pte_t entry
+    :type pte: pte_t
 
 .. This file was automatic generated / don't edit.
 

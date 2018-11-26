@@ -10,11 +10,13 @@ publ_to_item
 
     add publication info to a publication message
 
-    :param struct distr_item \*i:
+    :param i:
         *undescribed*
+    :type i: struct distr_item \*
 
-    :param struct publication \*p:
+    :param p:
         *undescribed*
+    :type p: struct publication \*
 
 .. _`named_prepare_buf`:
 
@@ -25,17 +27,21 @@ named_prepare_buf
 
     allocate & initialize a publication message
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param u32 type:
+    :param type:
         *undescribed*
+    :type type: u32
 
-    :param u32 size:
+    :param size:
         *undescribed*
+    :type size: u32
 
-    :param u32 dest:
+    :param dest:
         *undescribed*
+    :type dest: u32
 
 .. _`named_prepare_buf.description`:
 
@@ -53,11 +59,13 @@ tipc_named_publish
 
     tell other nodes about a new publication by this node
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct publication \*publ:
+    :param publ:
         *undescribed*
+    :type publ: struct publication \*
 
 .. _`tipc_named_withdraw`:
 
@@ -68,11 +76,13 @@ tipc_named_withdraw
 
     tell other nodes about a withdrawn publication by this node
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct publication \*publ:
+    :param publ:
         *undescribed*
+    :type publ: struct publication \*
 
 .. _`named_distribute`:
 
@@ -83,17 +93,21 @@ named_distribute
 
     prepare name info for bulk distribution to another node
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list of messages (buffers) to be returned from this function
+    :type list: struct sk_buff_head \*
 
-    :param u32 dnode:
+    :param dnode:
         node to be updated
+    :type dnode: u32
 
-    :param struct list_head \*pls:
+    :param pls:
         linked list of publication items to be packed into buffer chain
+    :type pls: struct list_head \*
 
 .. _`tipc_named_node_up`:
 
@@ -104,11 +118,13 @@ tipc_named_node_up
 
     tell specified node about all publications by this node
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param u32 dnode:
+    :param dnode:
         *undescribed*
+    :type dnode: u32
 
 .. _`tipc_publ_purge`:
 
@@ -119,14 +135,17 @@ tipc_publ_purge
 
     remove publication associated with a failed node
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct publication \*publ:
+    :param publ:
         *undescribed*
+    :type publ: struct publication \*
 
-    :param u32 addr:
+    :param addr:
         *undescribed*
+    :type addr: u32
 
 .. _`tipc_publ_purge.description`:
 
@@ -145,11 +164,13 @@ tipc_dist_queue_purge
 
     remove deferred updates from a node that went down
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param u32 addr:
+    :param addr:
         *undescribed*
+    :type addr: u32
 
 .. _`tipc_update_nametbl`:
 
@@ -160,17 +181,21 @@ tipc_update_nametbl
 
     try to process a nametable update and notify subscribers
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct distr_item \*i:
+    :param i:
         *undescribed*
+    :type i: struct distr_item \*
 
-    :param u32 node:
+    :param node:
         *undescribed*
+    :type node: u32
 
-    :param u32 dtype:
+    :param dtype:
         *undescribed*
+    :type dtype: u32
 
 .. _`tipc_update_nametbl.description`:
 
@@ -189,11 +214,13 @@ tipc_named_rcv
 
     process name table update messages sent by another node
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sk_buff_head \*inputq:
+    :param inputq:
         *undescribed*
+    :type inputq: struct sk_buff_head \*
 
 .. _`tipc_named_reinit`:
 
@@ -204,8 +231,9 @@ tipc_named_reinit
 
     re-initialize local publications
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
 .. _`tipc_named_reinit.description`:
 

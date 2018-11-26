@@ -10,8 +10,9 @@ intel_gvt_check_vblank_emulation
 
     check if vblank emulation timer should be turned on/off when a virtual pipe is enabled/disabled.
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_check_vblank_emulation.description`:
 
@@ -30,8 +31,9 @@ intel_gvt_emulate_vblank
 
     trigger vblank events for vGPUs on GVT device
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         a GVT device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_emulate_vblank.description`:
 
@@ -49,8 +51,9 @@ intel_vgpu_clean_display
 
     clean vGPU virtual display emulation
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_clean_display.description`:
 
@@ -68,11 +71,13 @@ intel_vgpu_init_display
 
     initialize vGPU virtual display emulation
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param u64 resolution:
-        *undescribed*
+    :param resolution:
+        resolution index for intel_vgpu_edid
+    :type resolution: u64
 
 .. _`intel_vgpu_init_display.description`:
 
@@ -97,8 +102,9 @@ intel_vgpu_reset_display
 
     reset vGPU virtual display emulation
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_reset_display.description`:
 

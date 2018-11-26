@@ -8,14 +8,17 @@ intel_idle
 
 .. c:function:: __cpuidle int intel_idle(struct cpuidle_device *dev, struct cpuidle_driver *drv, int index)
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle_device
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver
+    :type drv: struct cpuidle_driver \*
 
-    :param int index:
+    :param index:
         index of cpuidle state
+    :type index: int
 
 .. _`intel_idle.description`:
 
@@ -33,14 +36,17 @@ intel_idle_s2idle
 
     simplified "enter" callback routine for suspend-to-idle
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle_device
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver
+    :type drv: struct cpuidle_driver \*
 
-    :param int index:
+    :param index:
         state index
+    :type index: int
 
 .. This file was automatic generated / don't edit.
 

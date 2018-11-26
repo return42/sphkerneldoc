@@ -10,8 +10,9 @@ sn_migrate
 
     SN-specific task migration actions
 
-    :param struct task_struct \*task:
+    :param task:
         Task being migrated to new CPU
+    :type task: struct task_struct \*
 
 .. _`sn_migrate.description`:
 
@@ -32,17 +33,21 @@ sn2_global_tlb_purge
 
     globally purge translation cache of virtual address range
 
-    :param struct mm_struct \*mm:
+    :param mm:
         mm_struct containing virtual address range
+    :type mm: struct mm_struct \*
 
-    :param unsigned long start:
+    :param start:
         start of virtual address range
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         end of virtual address range
+    :type end: unsigned long
 
-    :param unsigned long nbits:
+    :param nbits:
         specifies number of bytes to purge per instruction (num = 1<<(nbits & 0xfc))
+    :type nbits: unsigned long
 
 .. _`sn2_global_tlb_purge.description`:
 
@@ -76,17 +81,21 @@ sn_send_IPI_phys
 
     send an IPI to a Nasid and slice
 
-    :param int nasid:
+    :param nasid:
         nasid to receive the interrupt (may be outside partition)
+    :type nasid: int
 
-    :param long physid:
+    :param physid:
         physical cpuid to receive the interrupt.
+    :type physid: long
 
-    :param int vector:
+    :param vector:
         command to send
+    :type vector: int
 
-    :param int delivery_mode:
+    :param delivery_mode:
         delivery mechanism
+    :type delivery_mode: int
 
 .. _`sn_send_ipi_phys.description`:
 
@@ -112,17 +121,21 @@ sn2_send_IPI
 
     send an IPI to a processor
 
-    :param int cpuid:
+    :param cpuid:
         target of the IPI
+    :type cpuid: int
 
-    :param int vector:
+    :param vector:
         command to send
+    :type vector: int
 
-    :param int delivery_mode:
+    :param delivery_mode:
         delivery mechanism
+    :type delivery_mode: int
 
-    :param int redirect:
+    :param redirect:
         redirect the IPI?
+    :type redirect: int
 
 .. _`sn2_send_ipi.description`:
 
@@ -147,8 +160,9 @@ sn_cpu_disable_allowed
 
     Determine if a CPU can be disabled. \ ``cpu``\  - CPU that is requested to be disabled.
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. _`sn_cpu_disable_allowed.description`:
 

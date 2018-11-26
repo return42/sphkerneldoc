@@ -10,8 +10,9 @@ mmc_register_driver
 
     register a media driver
 
-    :param struct mmc_driver \*drv:
+    :param drv:
         MMC media driver
+    :type drv: struct mmc_driver \*
 
 .. _`mmc_unregister_driver`:
 
@@ -22,8 +23,9 @@ mmc_unregister_driver
 
     unregister a media driver
 
-    :param struct mmc_driver \*drv:
+    :param drv:
         MMC media driver
+    :type drv: struct mmc_driver \*
 
 .. This file was automatic generated / don't edit.
 

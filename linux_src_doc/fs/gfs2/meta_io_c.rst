@@ -10,14 +10,17 @@ gfs2_getbuf
 
     Get a buffer with a given address space
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param u64 blkno:
+    :param blkno:
         the block number (filesystem scope)
+    :type blkno: u64
 
-    :param int create:
+    :param create:
         1 if the buffer should be created
+    :type create: int
 
 .. _`gfs2_getbuf.return`:
 
@@ -35,11 +38,13 @@ gfs2_meta_new
 
     Get a block
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock associated with this block
+    :type gl: struct gfs2_glock \*
 
-    :param u64 blkno:
+    :param blkno:
         The block number
+    :type blkno: u64
 
 .. _`gfs2_meta_new.return`:
 
@@ -57,20 +62,25 @@ gfs2_meta_read
 
     Read a block from disk
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock covering the block
+    :type gl: struct gfs2_glock \*
 
-    :param u64 blkno:
+    :param blkno:
         The block number
+    :type blkno: u64
 
-    :param int flags:
+    :param flags:
         flags
+    :type flags: int
 
-    :param int rahead:
+    :param rahead:
         *undescribed*
+    :type rahead: int
 
-    :param struct buffer_head \*\*bhp:
+    :param bhp:
         the place where the buffer is returned (NULL on failure)
+    :type bhp: struct buffer_head \*\*
 
 .. _`gfs2_meta_read.return`:
 
@@ -88,11 +98,13 @@ gfs2_meta_wait
 
     Reread a block from disk
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         The block to wait for
+    :type bh: struct buffer_head \*
 
 .. _`gfs2_meta_wait.return`:
 
@@ -110,14 +122,17 @@ gfs2_meta_wipe
 
     make inode's buffers so they aren't dirty/pinned anymore
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode who owns the buffers
+    :type ip: struct gfs2_inode \*
 
-    :param u64 bstart:
+    :param bstart:
         the first buffer in the run
+    :type bstart: u64
 
-    :param u32 blen:
+    :param blen:
         the number of buffers in the run
+    :type blen: u32
 
 .. _`gfs2_meta_indirect_buffer`:
 
@@ -128,17 +143,21 @@ gfs2_meta_indirect_buffer
 
     Get a metadata buffer
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The GFS2 inode
+    :type ip: struct gfs2_inode \*
 
-    :param int height:
+    :param height:
         The level of this buf in the metadata (indir addr) tree (if any)
+    :type height: int
 
-    :param u64 num:
+    :param num:
         The block number (device relative) of the buffer
+    :type num: u64
 
-    :param struct buffer_head \*\*bhp:
+    :param bhp:
         the buffer is returned here
+    :type bhp: struct buffer_head \*\*
 
 .. _`gfs2_meta_indirect_buffer.return`:
 
@@ -156,14 +175,17 @@ gfs2_meta_ra
 
     start readahead on an extent of a file
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock the blocks belong to
+    :type gl: struct gfs2_glock \*
 
-    :param u64 dblock:
+    :param dblock:
         the starting disk block
+    :type dblock: u64
 
-    :param u32 extlen:
+    :param extlen:
         the number of blocks in the extent
+    :type extlen: u32
 
 .. _`gfs2_meta_ra.return`:
 

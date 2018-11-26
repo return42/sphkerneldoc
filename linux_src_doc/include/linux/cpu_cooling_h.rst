@@ -10,8 +10,9 @@ cpufreq_cooling_register
 
     function to create cpufreq cooling device.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         cpufreq policy.
+    :type policy: struct cpufreq_policy \*
 
 .. _`cpufreq_cooling_unregister`:
 
@@ -22,8 +23,9 @@ cpufreq_cooling_unregister
 
     function to remove cpufreq cooling device.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         thermal cooling device pointer.
+    :type cdev: struct thermal_cooling_device \*
 
 .. _`of_cpufreq_cooling_register`:
 
@@ -34,8 +36,9 @@ of_cpufreq_cooling_register
 
     create cpufreq cooling device based on DT.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         cpufreq policy.
+    :type policy: struct cpufreq_policy \*
 
 .. This file was automatic generated / don't edit.
 

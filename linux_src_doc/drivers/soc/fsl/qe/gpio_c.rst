@@ -10,11 +10,13 @@ qe_pin_request
 
     Request a QE pin
 
-    :param struct device_node \*np:
+    :param np:
         device node to get a pin from
+    :type np: struct device_node \*
 
-    :param int index:
+    :param index:
         index of a pin in the device tree
+    :type index: int
 
 .. _`qe_pin_request.context`:
 
@@ -40,8 +42,9 @@ qe_pin_free
 
     Free a pin
 
-    :param struct qe_pin \*qe_pin:
+    :param qe_pin:
         pointer to the qe_pin structure
+    :type qe_pin: struct qe_pin \*
 
 .. _`qe_pin_free.context`:
 
@@ -67,8 +70,9 @@ qe_pin_set_dedicated
 
     Revert a pin to a dedicated peripheral function mode
 
-    :param struct qe_pin \*qe_pin:
+    :param qe_pin:
         pointer to the qe_pin structure
+    :type qe_pin: struct qe_pin \*
 
 .. _`qe_pin_set_dedicated.context`:
 
@@ -94,8 +98,9 @@ qe_pin_set_gpio
 
     Set a pin to the GPIO mode
 
-    :param struct qe_pin \*qe_pin:
+    :param qe_pin:
         pointer to the qe_pin structure
+    :type qe_pin: struct qe_pin \*
 
 .. _`qe_pin_set_gpio.context`:
 

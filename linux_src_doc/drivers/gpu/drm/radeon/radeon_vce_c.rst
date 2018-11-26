@@ -10,8 +10,9 @@ radeon_vce_init
 
     allocate memory, load vce firmware
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_vce_init.description`:
 
@@ -29,8 +30,9 @@ radeon_vce_fini
 
     free memory
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_vce_fini.description`:
 
@@ -48,8 +50,9 @@ radeon_vce_suspend
 
     unpin VCE fw memory
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_vce_resume`:
 
@@ -60,8 +63,9 @@ radeon_vce_resume
 
     pin VCE fw memory
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_vce_idle_work_handler`:
 
@@ -72,8 +76,9 @@ radeon_vce_idle_work_handler
 
     power off VCE
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work structure
+    :type work: struct work_struct \*
 
 .. _`radeon_vce_idle_work_handler.description`:
 
@@ -91,8 +96,9 @@ radeon_vce_note_usage
 
     power up VCE
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_vce_note_usage.description`:
 
@@ -110,11 +116,13 @@ radeon_vce_free_handles
 
     free still open VCE handles
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct drm_file \*filp:
+    :param filp:
         drm file pointer
+    :type filp: struct drm_file \*
 
 .. _`radeon_vce_free_handles.description`:
 
@@ -132,17 +140,21 @@ radeon_vce_get_create_msg
 
     generate a VCE create msg
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring we should submit the msg to
+    :type ring: int
 
-    :param uint32_t handle:
+    :param handle:
         VCE session handle to use
+    :type handle: uint32_t
 
-    :param struct radeon_fence \*\*fence:
+    :param fence:
         optional fence to return
+    :type fence: struct radeon_fence \*\*
 
 .. _`radeon_vce_get_create_msg.description`:
 
@@ -160,17 +172,21 @@ radeon_vce_get_destroy_msg
 
     generate a VCE destroy msg
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ring:
+    :param ring:
         ring we should submit the msg to
+    :type ring: int
 
-    :param uint32_t handle:
+    :param handle:
         VCE session handle to use
+    :type handle: uint32_t
 
-    :param struct radeon_fence \*\*fence:
+    :param fence:
         optional fence to return
+    :type fence: struct radeon_fence \*\*
 
 .. _`radeon_vce_get_destroy_msg.description`:
 
@@ -188,17 +204,21 @@ radeon_vce_cs_reloc
 
     command submission relocation
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         parser context
+    :type p: struct radeon_cs_parser \*
 
-    :param int lo:
+    :param lo:
         address of lower dword
+    :type lo: int
 
-    :param int hi:
+    :param hi:
         address of higher dword
+    :type hi: int
 
-    :param unsigned size:
+    :param size:
         size of checker for relocation buffer
+    :type size: unsigned
 
 .. _`radeon_vce_cs_reloc.description`:
 
@@ -216,14 +236,17 @@ radeon_vce_validate_handle
 
     validate stream handle
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         parser context
+    :type p: struct radeon_cs_parser \*
 
-    :param uint32_t handle:
+    :param handle:
         handle to validate
+    :type handle: uint32_t
 
-    :param bool \*allocated:
+    :param allocated:
         allocated a new handle?
+    :type allocated: bool \*
 
 .. _`radeon_vce_validate_handle.description`:
 
@@ -242,8 +265,9 @@ radeon_vce_cs_parse
 
     parse and validate the command stream
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         parser context
+    :type p: struct radeon_cs_parser \*
 
 .. _`radeon_vce_semaphore_emit`:
 
@@ -254,17 +278,21 @@ radeon_vce_semaphore_emit
 
     emit a semaphore command
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         engine to use
+    :type ring: struct radeon_ring \*
 
-    :param struct radeon_semaphore \*semaphore:
+    :param semaphore:
         address of semaphore
+    :type semaphore: struct radeon_semaphore \*
 
-    :param bool emit_wait:
+    :param emit_wait:
         true=emit wait, false=emit signal
+    :type emit_wait: bool
 
 .. _`radeon_vce_ib_execute`:
 
@@ -275,11 +303,13 @@ radeon_vce_ib_execute
 
     execute indirect buffer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         the IB to execute
+    :type ib: struct radeon_ib \*
 
 .. _`radeon_vce_fence_emit`:
 
@@ -290,11 +320,13 @@ radeon_vce_fence_emit
 
     add a fence command to the ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         the fence
+    :type fence: struct radeon_fence \*
 
 .. _`radeon_vce_ring_test`:
 
@@ -305,11 +337,13 @@ radeon_vce_ring_test
 
     test if VCE ring is working
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         the engine to test on
+    :type ring: struct radeon_ring \*
 
 .. _`radeon_vce_ib_test`:
 
@@ -320,11 +354,13 @@ radeon_vce_ib_test
 
     test if VCE IBs are working
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         the engine to test on
+    :type ring: struct radeon_ring \*
 
 .. This file was automatic generated / don't edit.
 

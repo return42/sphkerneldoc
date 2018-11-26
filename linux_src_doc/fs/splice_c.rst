@@ -10,11 +10,13 @@ splice_to_pipe
 
     fill passed data into a pipe
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         pipe to fill
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct splice_pipe_desc \*spd:
+    :param spd:
         data to fill
+    :type spd: struct splice_pipe_desc \*
 
 .. _`splice_to_pipe.description`:
 
@@ -34,20 +36,25 @@ generic_file_splice_read
 
     splice data from file to a pipe
 
-    :param struct file \*in:
+    :param in:
         file to splice from
+    :type in: struct file \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         position in \ ``in``\ 
+    :type ppos: loff_t \*
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         pipe to splice to
+    :type pipe: struct pipe_inode_info \*
 
-    :param size_t len:
+    :param len:
         number of bytes to splice
+    :type len: size_t
 
-    :param unsigned int flags:
+    :param flags:
         splice modifier flags
+    :type flags: unsigned int
 
 .. _`generic_file_splice_read.description`:
 
@@ -66,14 +73,17 @@ splice_from_pipe_feed
 
     feed available data from a pipe to a file
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         pipe to splice from
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct splice_desc \*sd:
+    :param sd:
         information to \ ``actor``\ 
+    :type sd: struct splice_desc \*
 
-    :param splice_actor \*actor:
+    :param actor:
         handler that splices the data
+    :type actor: splice_actor \*
 
 .. _`splice_from_pipe_feed.description`:
 
@@ -102,11 +112,13 @@ splice_from_pipe_next
 
     wait for some data to splice from
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         pipe to splice from
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct splice_desc \*sd:
+    :param sd:
         information about the splice operation
+    :type sd: struct splice_desc \*
 
 .. _`splice_from_pipe_next.description`:
 
@@ -126,8 +138,9 @@ splice_from_pipe_begin
 
     start splicing from pipe
 
-    :param struct splice_desc \*sd:
+    :param sd:
         information about the splice operation
+    :type sd: struct splice_desc \*
 
 .. _`splice_from_pipe_begin.description`:
 
@@ -147,11 +160,13 @@ splice_from_pipe_end
 
     finish splicing from pipe
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         pipe to splice from
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct splice_desc \*sd:
+    :param sd:
         information about the splice operation
+    :type sd: struct splice_desc \*
 
 .. _`splice_from_pipe_end.description`:
 
@@ -171,14 +186,17 @@ __splice_from_pipe
 
     splice data from a pipe to given actor
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         pipe to splice from
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct splice_desc \*sd:
+    :param sd:
         information to \ ``actor``\ 
+    :type sd: struct splice_desc \*
 
-    :param splice_actor \*actor:
+    :param actor:
         handler that splices the data
+    :type actor: splice_actor \*
 
 .. _`__splice_from_pipe.description`:
 
@@ -199,23 +217,29 @@ splice_from_pipe
 
     splice data from a pipe to a file
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         pipe to splice from
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct file \*out:
+    :param out:
         file to splice to
+    :type out: struct file \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         position in \ ``out``\ 
+    :type ppos: loff_t \*
 
-    :param size_t len:
+    :param len:
         how many bytes to splice
+    :type len: size_t
 
-    :param unsigned int flags:
+    :param flags:
         splice modifier flags
+    :type flags: unsigned int
 
-    :param splice_actor \*actor:
+    :param actor:
         handler that splices the data
+    :type actor: splice_actor \*
 
 .. _`splice_from_pipe.description`:
 
@@ -234,20 +258,25 @@ iter_file_splice_write
 
     splice data from a pipe to a file
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         pipe info
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct file \*out:
+    :param out:
         file to write to
+    :type out: struct file \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         position in \ ``out``\ 
+    :type ppos: loff_t \*
 
-    :param size_t len:
+    :param len:
         number of bytes to splice
+    :type len: size_t
 
-    :param unsigned int flags:
+    :param flags:
         splice modifier flags
+    :type flags: unsigned int
 
 .. _`iter_file_splice_write.description`:
 
@@ -267,20 +296,25 @@ generic_splice_sendpage
 
     splice data from a pipe to a socket
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         pipe to splice from
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct file \*out:
+    :param out:
         socket to write to
+    :type out: struct file \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         position in \ ``out``\ 
+    :type ppos: loff_t \*
 
-    :param size_t len:
+    :param len:
         number of bytes to splice
+    :type len: size_t
 
-    :param unsigned int flags:
+    :param flags:
         splice modifier flags
+    :type flags: unsigned int
 
 .. _`generic_splice_sendpage.description`:
 
@@ -299,14 +333,17 @@ splice_direct_to_actor
 
     splices data directly between two non-pipes
 
-    :param struct file \*in:
+    :param in:
         file to splice from
+    :type in: struct file \*
 
-    :param struct splice_desc \*sd:
+    :param sd:
         actor information on where to splice to
+    :type sd: struct splice_desc \*
 
-    :param splice_direct_actor \*actor:
+    :param actor:
         handles the data splicing
+    :type actor: splice_direct_actor \*
 
 .. _`splice_direct_to_actor.description`:
 
@@ -327,23 +364,29 @@ do_splice_direct
 
     splices data directly between two files
 
-    :param struct file \*in:
+    :param in:
         file to splice from
+    :type in: struct file \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         input file offset
+    :type ppos: loff_t \*
 
-    :param struct file \*out:
+    :param out:
         file to splice to
+    :type out: struct file \*
 
-    :param loff_t \*opos:
+    :param opos:
         output file offset
+    :type opos: loff_t \*
 
-    :param size_t len:
+    :param len:
         number of bytes to splice
+    :type len: size_t
 
-    :param unsigned int flags:
+    :param flags:
         splice modifier flags
+    :type flags: unsigned int
 
 .. _`do_splice_direct.description`:
 

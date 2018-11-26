@@ -10,11 +10,13 @@ blk_queue_flag_set
 
     atomically set a queue flag
 
-    :param unsigned int flag:
+    :param flag:
         flag to be set
+    :type flag: unsigned int
 
-    :param struct request_queue \*q:
+    :param q:
         request queue
+    :type q: struct request_queue \*
 
 .. _`blk_queue_flag_clear`:
 
@@ -25,11 +27,13 @@ blk_queue_flag_clear
 
     atomically clear a queue flag
 
-    :param unsigned int flag:
+    :param flag:
         flag to be cleared
+    :type flag: unsigned int
 
-    :param struct request_queue \*q:
+    :param q:
         request queue
+    :type q: struct request_queue \*
 
 .. _`blk_queue_flag_test_and_set`:
 
@@ -40,11 +44,13 @@ blk_queue_flag_test_and_set
 
     atomically test and set a queue flag
 
-    :param unsigned int flag:
+    :param flag:
         flag to be set
+    :type flag: unsigned int
 
-    :param struct request_queue \*q:
+    :param q:
         request queue
+    :type q: struct request_queue \*
 
 .. _`blk_queue_flag_test_and_set.description`:
 
@@ -63,11 +69,13 @@ blk_queue_flag_test_and_clear
 
     atomically test and clear a queue flag
 
-    :param unsigned int flag:
+    :param flag:
         flag to be cleared
+    :type flag: unsigned int
 
-    :param struct request_queue \*q:
+    :param q:
         request queue
+    :type q: struct request_queue \*
 
 .. _`blk_queue_flag_test_and_clear.description`:
 
@@ -86,11 +94,13 @@ blk_delay_queue
 
     restart queueing after defined interval
 
-    :param struct request_queue \*q:
+    :param q:
         The \ :c:type:`struct request_queue <request_queue>`\  in question
+    :type q: struct request_queue \*
 
-    :param unsigned long msecs:
+    :param msecs:
         Delay in msecs
+    :type msecs: unsigned long
 
 .. _`blk_delay_queue.description`:
 
@@ -110,8 +120,9 @@ blk_start_queue_async
 
     asynchronously restart a previously stopped queue
 
-    :param struct request_queue \*q:
+    :param q:
         The \ :c:type:`struct request_queue <request_queue>`\  in question
+    :type q: struct request_queue \*
 
 .. _`blk_start_queue_async.description`:
 
@@ -131,8 +142,9 @@ blk_start_queue
 
     restart a previously stopped queue
 
-    :param struct request_queue \*q:
+    :param q:
         The \ :c:type:`struct request_queue <request_queue>`\  in question
+    :type q: struct request_queue \*
 
 .. _`blk_start_queue.description`:
 
@@ -152,8 +164,9 @@ blk_stop_queue
 
     stop a queue
 
-    :param struct request_queue \*q:
+    :param q:
         The \ :c:type:`struct request_queue <request_queue>`\  in question
+    :type q: struct request_queue \*
 
 .. _`blk_stop_queue.description`:
 
@@ -178,8 +191,9 @@ blk_sync_queue
 
     cancel any pending callbacks on a queue
 
-    :param struct request_queue \*q:
+    :param q:
         the queue
+    :type q: struct request_queue \*
 
 .. _`blk_sync_queue.description`:
 
@@ -198,25 +212,18 @@ Description
     out of elevator or throttling code. That would require \ :c:func:`elevator_exit`\ 
     and \ :c:func:`blkcg_exit_queue`\  to be called with queue lock initialized.
 
-.. _`blk_set_preempt_only`:
+.. _`blk_set_pm_only`:
 
-blk_set_preempt_only
-====================
+blk_set_pm_only
+===============
 
-.. c:function:: int blk_set_preempt_only(struct request_queue *q)
+.. c:function:: void blk_set_pm_only(struct request_queue *q)
 
-    set QUEUE_FLAG_PREEMPT_ONLY
+    increment pm_only counter
 
-    :param struct request_queue \*q:
+    :param q:
         request queue pointer
-
-.. _`blk_set_preempt_only.description`:
-
-Description
------------
-
-Returns the previous value of the PREEMPT_ONLY flag - 0 if the flag was not
-set and 1 if the flag was already set.
+    :type q: struct request_queue \*
 
 .. _`__blk_run_queue_uncond`:
 
@@ -227,8 +234,9 @@ __blk_run_queue_uncond
 
     run a queue whether or not it has been stopped
 
-    :param struct request_queue \*q:
+    :param q:
         The queue to run
+    :type q: struct request_queue \*
 
 .. _`__blk_run_queue_uncond.description`:
 
@@ -250,8 +258,9 @@ __blk_run_queue
 
     run a single device queue
 
-    :param struct request_queue \*q:
+    :param q:
         The queue to run
+    :type q: struct request_queue \*
 
 .. _`__blk_run_queue.description`:
 
@@ -269,8 +278,9 @@ blk_run_queue_async
 
     run a single device queue in workqueue context
 
-    :param struct request_queue \*q:
+    :param q:
         The queue to run
+    :type q: struct request_queue \*
 
 .. _`blk_run_queue_async.description`:
 
@@ -298,8 +308,9 @@ blk_run_queue
 
     run a single device queue
 
-    :param struct request_queue \*q:
+    :param q:
         The queue to run
+    :type q: struct request_queue \*
 
 .. _`blk_run_queue.description`:
 
@@ -318,11 +329,13 @@ __blk_drain_queue
 
     drain requests from request_queue
 
-    :param struct request_queue \*q:
+    :param q:
         queue to drain
+    :type q: struct request_queue \*
 
-    :param bool drain_all:
+    :param drain_all:
         whether to drain all requests or only the ones w/ ELVPRIV
+    :type drain_all: bool
 
 .. _`__blk_drain_queue.description`:
 
@@ -342,8 +355,9 @@ blk_queue_bypass_start
 
     enter queue bypass mode
 
-    :param struct request_queue \*q:
+    :param q:
         queue of interest
+    :type q: struct request_queue \*
 
 .. _`blk_queue_bypass_start.description`:
 
@@ -365,8 +379,9 @@ blk_queue_bypass_end
 
     leave queue bypass mode
 
-    :param struct request_queue \*q:
+    :param q:
         queue of interest
+    :type q: struct request_queue \*
 
 .. _`blk_queue_bypass_end.description`:
 
@@ -392,8 +407,9 @@ blk_cleanup_queue
 
     shutdown a request queue
 
-    :param struct request_queue \*q:
+    :param q:
         request queue to shutdown
+    :type q: struct request_queue \*
 
 .. _`blk_cleanup_queue.description`:
 
@@ -412,11 +428,13 @@ blk_queue_enter
 
     try to increase q->q_usage_counter
 
-    :param struct request_queue \*q:
+    :param q:
         request queue pointer
+    :type q: struct request_queue \*
 
-    :param blk_mq_req_flags_t flags:
+    :param flags:
         BLK_MQ_REQ_NOWAIT and/or BLK_MQ_REQ_PREEMPT
+    :type flags: blk_mq_req_flags_t
 
 .. _`blk_alloc_queue_node`:
 
@@ -427,16 +445,19 @@ blk_alloc_queue_node
 
     allocate a request queue
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags
+    :type gfp_mask: gfp_t
 
-    :param int node_id:
+    :param node_id:
         NUMA node to allocate memory from
+    :type node_id: int
 
-    :param spinlock_t \*lock:
+    :param lock:
         For legacy queues, pointer to a spinlock that will be used to e.g.
         serialize calls to the legacy .request_fn() callback. Ignored for
         blk-mq request queues.
+    :type lock: spinlock_t \*
 
 .. _`blk_alloc_queue_node.note`:
 
@@ -457,12 +478,14 @@ blk_init_queue
 
     prepare a request queue for use with a block device
 
-    :param request_fn_proc \*rfn:
+    :param rfn:
         The function to be called to process requests that have been
         placed on the queue.
+    :type rfn: request_fn_proc \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         Request queue spin lock
+    :type lock: spinlock_t \*
 
 .. _`blk_init_queue.description`:
 
@@ -507,20 +530,25 @@ __get_request
 
     get a free request
 
-    :param struct request_list \*rl:
+    :param rl:
         request list to allocate from
+    :type rl: struct request_list \*
 
-    :param unsigned int op:
+    :param op:
         operation and flags
+    :type op: unsigned int
 
-    :param struct bio \*bio:
+    :param bio:
         bio to allocate request for (can be \ ``NULL``\ )
+    :type bio: struct bio \*
 
-    :param blk_mq_req_flags_t flags:
+    :param flags:
         BLQ_MQ_REQ_* flags
+    :type flags: blk_mq_req_flags_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocator flags
+    :type gfp_mask: gfp_t
 
 .. _`__get_request.description`:
 
@@ -530,9 +558,9 @@ Description
 Get a free request from \ ``q``\ .  This function may fail under memory
 pressure or if \ ``q``\  is dead.
 
-Must be called with \ ``q``\ ->queue_lock held and,
-Returns ERR_PTR on failure, with \ ``q``\ ->queue_lock held.
-Returns request pointer on success, with \ ``q``\ ->queue_lock *not held*.
+Must be called with \ ``q->queue_lock``\  held and,
+Returns ERR_PTR on failure, with \ ``q->queue_lock``\  held.
+Returns request pointer on success, with \ ``q->queue_lock``\  *not held*.
 
 .. _`get_request`:
 
@@ -543,20 +571,25 @@ get_request
 
     get a free request
 
-    :param struct request_queue \*q:
+    :param q:
         request_queue to allocate request from
+    :type q: struct request_queue \*
 
-    :param unsigned int op:
+    :param op:
         operation and flags
+    :type op: unsigned int
 
-    :param struct bio \*bio:
+    :param bio:
         bio to allocate request for (can be \ ``NULL``\ )
+    :type bio: struct bio \*
 
-    :param blk_mq_req_flags_t flags:
+    :param flags:
         BLK_MQ_REQ_* flags.
+    :type flags: blk_mq_req_flags_t
 
-    :param gfp_t gfp:
+    :param gfp:
         allocator flags
+    :type gfp: gfp_t
 
 .. _`get_request.description`:
 
@@ -566,9 +599,9 @@ Description
 Get a free request from \ ``q``\ .  If \ ``BLK_MQ_REQ_NOWAIT``\  is set in \ ``flags``\ ,
 this function keeps retrying under memory pressure and fails iff \ ``q``\  is dead.
 
-Must be called with \ ``q``\ ->queue_lock held and,
-Returns ERR_PTR on failure, with \ ``q``\ ->queue_lock held.
-Returns request pointer on success, with \ ``q``\ ->queue_lock *not held*.
+Must be called with \ ``q->queue_lock``\  held and,
+Returns ERR_PTR on failure, with \ ``q->queue_lock``\  held.
+Returns request pointer on success, with \ ``q->queue_lock``\  *not held*.
 
 .. _`blk_get_request`:
 
@@ -579,14 +612,17 @@ blk_get_request
 
     allocate a request
 
-    :param struct request_queue \*q:
+    :param q:
         request queue to allocate a request for
+    :type q: struct request_queue \*
 
-    :param unsigned int op:
+    :param op:
         operation (REQ_OP_*) and REQ_* flags, e.g. REQ_SYNC.
+    :type op: unsigned int
 
-    :param blk_mq_req_flags_t flags:
+    :param flags:
         BLK_MQ_REQ_* flags, e.g. BLK_MQ_REQ_NOWAIT.
+    :type flags: blk_mq_req_flags_t
 
 .. _`blk_requeue_request`:
 
@@ -597,11 +633,13 @@ blk_requeue_request
 
     put a request back on queue
 
-    :param struct request_queue \*q:
+    :param q:
         request queue where request should be inserted
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         request to be inserted
+    :type rq: struct request \*
 
 .. _`blk_requeue_request.description`:
 
@@ -621,14 +659,17 @@ part_round_stats
 
     Round off the performance stats on a struct disk_stats.
 
-    :param struct request_queue \*q:
+    :param q:
         target block queue
+    :type q: struct request_queue \*
 
-    :param int cpu:
+    :param cpu:
         cpu number for stats access
+    :type cpu: int
 
-    :param struct hd_struct \*part:
+    :param part:
         target partition
+    :type part: struct hd_struct \*
 
 .. _`part_round_stats.description`:
 
@@ -655,19 +696,23 @@ blk_attempt_plug_merge
 
     try to merge with \ ``current``\ 's plugged list
 
-    :param struct request_queue \*q:
+    :param q:
         request_queue new bio is being queued at
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         new bio being queued
+    :type bio: struct bio \*
 
-    :param unsigned int \*request_count:
+    :param request_count:
         out parameter for number of traversed plugged requests
+    :type request_count: unsigned int \*
 
-    :param struct request \*\*same_queue_rq:
+    :param same_queue_rq:
         pointer to \ :c:type:`struct request <request>`\  that gets filled in when
         another request associated with \ ``q``\  is found on the plug list
         (optional, may be \ ``NULL``\ )
+    :type same_queue_rq: struct request \*\*
 
 .. _`blk_attempt_plug_merge.description`:
 
@@ -679,7 +724,7 @@ on \ ``current``\ 's plugged list.  Returns \ ``true``\  if merge was successful
 otherwise \ ``false``\ .
 
 Plugging coalesces IOs from the same issuer for the same purpose without
-going through \ ``q``\ ->queue_lock.  As such it's more of an issuing mechanism
+going through \ ``q->queue_lock``\ .  As such it's more of an issuing mechanism
 than scheduling, and the request, while may have elvpriv data, is not
 added on the elevator at this point.  In addition, we don't have
 reliable access to the elevator outside queue lock.  Only check basic
@@ -696,8 +741,9 @@ generic_make_request
 
     hand a buffer to its device driver for I/O
 
-    :param struct bio \*bio:
+    :param bio:
         The bio describing the location in memory and on the device.
+    :type bio: struct bio \*
 
 .. _`generic_make_request.description`:
 
@@ -733,8 +779,9 @@ direct_make_request
 
     hand a buffer directly to its device driver for I/O
 
-    :param struct bio \*bio:
+    :param bio:
         The bio describing the location in memory and on the device.
+    :type bio: struct bio \*
 
 .. _`direct_make_request.description`:
 
@@ -756,8 +803,9 @@ submit_bio
 
     submit a bio to the block device layer for I/O
 
-    :param struct bio \*bio:
+    :param bio:
         The \ :c:type:`struct bio <bio>`\  which describes the I/O
+    :type bio: struct bio \*
 
 .. _`submit_bio.description`:
 
@@ -777,11 +825,13 @@ blk_cloned_rq_check_limits
 
     Helper function to check a cloned request for new the queue limits
 
-    :param struct request_queue \*q:
+    :param q:
         the queue
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         the request being checked
+    :type rq: struct request \*
 
 .. _`blk_cloned_rq_check_limits.description`:
 
@@ -807,11 +857,13 @@ blk_insert_cloned_request
 
     Helper for stacking drivers to submit a request
 
-    :param struct request_queue \*q:
+    :param q:
         the queue to submit the request
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         the request being queued
+    :type rq: struct request \*
 
 .. _`blk_rq_err_bytes`:
 
@@ -822,8 +874,9 @@ blk_rq_err_bytes
 
     determine number of bytes till the next failure boundary
 
-    :param const struct request \*rq:
+    :param rq:
         request to examine
+    :type rq: const struct request \*
 
 .. _`blk_rq_err_bytes.description`:
 
@@ -851,8 +904,9 @@ blk_peek_request
 
     peek at the top of a request queue
 
-    :param struct request_queue \*q:
+    :param q:
         request queue to peek at
+    :type q: struct request_queue \*
 
 .. _`blk_peek_request.description`:
 
@@ -880,8 +934,9 @@ blk_start_request
 
     start request processing on the driver
 
-    :param struct request \*req:
+    :param req:
         request to dequeue
+    :type req: struct request \*
 
 .. _`blk_start_request.description`:
 
@@ -900,8 +955,9 @@ blk_fetch_request
 
     fetch a request from a request queue
 
-    :param struct request_queue \*q:
+    :param q:
         request queue to fetch a request from
+    :type q: struct request_queue \*
 
 .. _`blk_fetch_request.description`:
 
@@ -928,14 +984,17 @@ blk_update_request
 
     Special helper function for request stacking drivers
 
-    :param struct request \*req:
+    :param req:
         the request being processed
+    :type req: struct request \*
 
-    :param blk_status_t error:
+    :param error:
         block status code
+    :type error: blk_status_t
 
-    :param unsigned int nr_bytes:
+    :param nr_bytes:
         number of bytes to complete \ ``req``\ 
+    :type nr_bytes: unsigned int
 
 .. _`blk_update_request.description`:
 
@@ -952,6 +1011,14 @@ Description
 
     Passing the result of \ :c:func:`blk_rq_bytes`\  as \ ``nr_bytes``\  guarantees
     \ ``false``\  return from this function.
+
+.. _`blk_update_request.note`:
+
+Note
+----
+
+     The RQF_SPECIAL_PAYLOAD flag is ignored on purpose in both
+     \ :c:func:`blk_rq_bytes`\  and in \ :c:func:`blk_update_request`\ .
 
 .. _`blk_update_request.return`:
 
@@ -970,8 +1037,9 @@ blk_unprep_request
 
     unprepare a request
 
-    :param struct request \*req:
+    :param req:
         the request
+    :type req: struct request \*
 
 .. _`blk_unprep_request.description`:
 
@@ -993,24 +1061,28 @@ blk_end_bidi_request
 
     Complete a bidi request
 
-    :param struct request \*rq:
+    :param rq:
         the request to complete
+    :type rq: struct request \*
 
-    :param blk_status_t error:
+    :param error:
         block status code
+    :type error: blk_status_t
 
-    :param unsigned int nr_bytes:
+    :param nr_bytes:
         number of bytes to complete \ ``rq``\ 
+    :type nr_bytes: unsigned int
 
-    :param unsigned int bidi_bytes:
-        number of bytes to complete \ ``rq``\ ->next_rq
+    :param bidi_bytes:
+        number of bytes to complete \ ``rq->next_rq``\ 
+    :type bidi_bytes: unsigned int
 
 .. _`blk_end_bidi_request.description`:
 
 Description
 -----------
 
-    Ends I/O on a number of bytes attached to \ ``rq``\  and \ ``rq``\ ->next_rq.
+    Ends I/O on a number of bytes attached to \ ``rq``\  and \ ``rq->next_rq``\ .
     Drivers that supports bidi can safely call this member for any
     type of request, bidi or uni.  In the later case \ ``bidi_bytes``\  is
     just ignored.
@@ -1032,17 +1104,21 @@ __blk_end_bidi_request
 
     Complete a bidi request with queue lock held
 
-    :param struct request \*rq:
+    :param rq:
         the request to complete
+    :type rq: struct request \*
 
-    :param blk_status_t error:
+    :param error:
         block status code
+    :type error: blk_status_t
 
-    :param unsigned int nr_bytes:
+    :param nr_bytes:
         number of bytes to complete \ ``rq``\ 
+    :type nr_bytes: unsigned int
 
-    :param unsigned int bidi_bytes:
-        number of bytes to complete \ ``rq``\ ->next_rq
+    :param bidi_bytes:
+        number of bytes to complete \ ``rq->next_rq``\ 
+    :type bidi_bytes: unsigned int
 
 .. _`__blk_end_bidi_request.description`:
 
@@ -1069,14 +1145,17 @@ blk_end_request
 
     Helper function for drivers to complete the request.
 
-    :param struct request \*rq:
+    :param rq:
         the request being processed
+    :type rq: struct request \*
 
-    :param blk_status_t error:
+    :param error:
         block status code
+    :type error: blk_status_t
 
-    :param unsigned int nr_bytes:
+    :param nr_bytes:
         number of bytes to complete
+    :type nr_bytes: unsigned int
 
 .. _`blk_end_request.description`:
 
@@ -1103,11 +1182,13 @@ blk_end_request_all
 
     Helper function for drives to finish the request.
 
-    :param struct request \*rq:
+    :param rq:
         the request to finish
+    :type rq: struct request \*
 
-    :param blk_status_t error:
+    :param error:
         block status code
+    :type error: blk_status_t
 
 .. _`blk_end_request_all.description`:
 
@@ -1125,14 +1206,17 @@ __blk_end_request
 
     Helper function for drivers to complete the request.
 
-    :param struct request \*rq:
+    :param rq:
         the request being processed
+    :type rq: struct request \*
 
-    :param blk_status_t error:
+    :param error:
         block status code
+    :type error: blk_status_t
 
-    :param unsigned int nr_bytes:
+    :param nr_bytes:
         number of bytes to complete
+    :type nr_bytes: unsigned int
 
 .. _`__blk_end_request.description`:
 
@@ -1158,11 +1242,13 @@ __blk_end_request_all
 
     Helper function for drives to finish the request.
 
-    :param struct request \*rq:
+    :param rq:
         the request to finish
+    :type rq: struct request \*
 
-    :param blk_status_t error:
+    :param error:
         block status code
+    :type error: blk_status_t
 
 .. _`__blk_end_request_all.description`:
 
@@ -1180,11 +1266,13 @@ __blk_end_request_cur
 
     Helper function to finish the current request chunk.
 
-    :param struct request \*rq:
+    :param rq:
         the request to finish the current chunk for
+    :type rq: struct request \*
 
-    :param blk_status_t error:
+    :param error:
         block status code
+    :type error: blk_status_t
 
 .. _`__blk_end_request_cur.description`:
 
@@ -1211,8 +1299,9 @@ rq_flush_dcache_pages
 
     Helper function to flush all pages in a request
 
-    :param struct request \*rq:
+    :param rq:
         the request to be flushed
+    :type rq: struct request \*
 
 .. _`rq_flush_dcache_pages.description`:
 
@@ -1230,8 +1319,9 @@ blk_lld_busy
 
     Check if underlying low-level drivers of a device are busy
 
-    :param struct request_queue \*q:
+    :param q:
         the queue of the device being checked
+    :type q: struct request_queue \*
 
 .. _`blk_lld_busy.description`:
 
@@ -1265,8 +1355,9 @@ blk_rq_unprep_clone
 
     Helper function to free all bios in a cloned request
 
-    :param struct request \*rq:
+    :param rq:
         the clone request to be cleaned up
+    :type rq: struct request \*
 
 .. _`blk_rq_unprep_clone.description`:
 
@@ -1284,24 +1375,29 @@ blk_rq_prep_clone
 
     Helper function to setup clone request
 
-    :param struct request \*rq:
+    :param rq:
         the request to be setup
+    :type rq: struct request \*
 
-    :param struct request \*rq_src:
+    :param rq_src:
         original request to be cloned
+    :type rq_src: struct request \*
 
-    :param struct bio_set \*bs:
+    :param bs:
         bio_set that bios for clone are allocated from
+    :type bs: struct bio_set \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation mask for bio
+    :type gfp_mask: gfp_t
 
     :param int (\*bio_ctr)(struct bio \*, struct bio \*, void \*):
         setup function to be called for each clone bio.
         Returns \ ``0``\  for success, non \ ``0``\  for failure.
 
-    :param void \*data:
+    :param data:
         private data to be passed to \ ``bio_ctr``\ 
+    :type data: void \*
 
 .. _`blk_rq_prep_clone.description`:
 
@@ -1325,8 +1421,9 @@ blk_start_plug
 
     initialize blk_plug and track it inside the task_struct
 
-    :param struct blk_plug \*plug:
+    :param plug:
         The \ :c:type:`struct blk_plug <blk_plug>`\  that needs to be initialized
+    :type plug: struct blk_plug \*
 
 .. _`blk_start_plug.description`:
 
@@ -1341,183 +1438,6 @@ Description
   page belonging to that request that is currently residing in our private
   plug. By flushing the pending I/O when the process goes to sleep, we avoid
   this kind of deadlock.
-
-.. _`blk_pm_runtime_init`:
-
-blk_pm_runtime_init
-===================
-
-.. c:function:: void blk_pm_runtime_init(struct request_queue *q, struct device *dev)
-
-    Block layer runtime PM initialization routine
-
-    :param struct request_queue \*q:
-        the queue of the device
-
-    :param struct device \*dev:
-        the device the queue belongs to
-
-.. _`blk_pm_runtime_init.description`:
-
-Description
------------
-
-   Initialize runtime-PM-related fields for \ ``q``\  and start auto suspend for
-   \ ``dev``\ . Drivers that want to take advantage of request-based runtime PM
-   should call this function after \ ``dev``\  has been initialized, and its
-   request queue \ ``q``\  has been allocated, and runtime PM for it can not happen
-   yet(either due to disabled/forbidden or its usage_count > 0). In most
-   cases, driver should call this function before any I/O has taken place.
-
-   This function takes care of setting up using auto suspend for the device,
-   the autosuspend delay is set to -1 to make runtime suspend impossible
-   until an updated value is either set by user or by driver. Drivers do
-   not need to touch other autosuspend settings.
-
-   The block layer runtime PM is request based, so only works for drivers
-   that use request as their IO unit instead of those directly use bio's.
-
-.. _`blk_pre_runtime_suspend`:
-
-blk_pre_runtime_suspend
-=======================
-
-.. c:function:: int blk_pre_runtime_suspend(struct request_queue *q)
-
-    Pre runtime suspend check
-
-    :param struct request_queue \*q:
-        the queue of the device
-
-.. _`blk_pre_runtime_suspend.description`:
-
-Description
------------
-
-   This function will check if runtime suspend is allowed for the device
-   by examining if there are any requests pending in the queue. If there
-   are requests pending, the device can not be runtime suspended; otherwise,
-   the queue's status will be updated to SUSPENDING and the driver can
-   proceed to suspend the device.
-
-   For the not allowed case, we mark last busy for the device so that
-   runtime PM core will try to autosuspend it some time later.
-
-   This function should be called near the start of the device's
-   runtime_suspend callback.
-
-.. _`blk_pre_runtime_suspend.return`:
-
-Return
-------
-
-   0         - OK to runtime suspend the device
-   -EBUSY    - Device should not be runtime suspended
-
-.. _`blk_post_runtime_suspend`:
-
-blk_post_runtime_suspend
-========================
-
-.. c:function:: void blk_post_runtime_suspend(struct request_queue *q, int err)
-
-    Post runtime suspend processing
-
-    :param struct request_queue \*q:
-        the queue of the device
-
-    :param int err:
-        return value of the device's runtime_suspend function
-
-.. _`blk_post_runtime_suspend.description`:
-
-Description
------------
-
-   Update the queue's runtime status according to the return value of the
-   device's runtime suspend function and mark last busy for the device so
-   that PM core will try to auto suspend the device at a later time.
-
-   This function should be called near the end of the device's
-   runtime_suspend callback.
-
-.. _`blk_pre_runtime_resume`:
-
-blk_pre_runtime_resume
-======================
-
-.. c:function:: void blk_pre_runtime_resume(struct request_queue *q)
-
-    Pre runtime resume processing
-
-    :param struct request_queue \*q:
-        the queue of the device
-
-.. _`blk_pre_runtime_resume.description`:
-
-Description
------------
-
-   Update the queue's runtime status to RESUMING in preparation for the
-   runtime resume of the device.
-
-   This function should be called near the start of the device's
-   runtime_resume callback.
-
-.. _`blk_post_runtime_resume`:
-
-blk_post_runtime_resume
-=======================
-
-.. c:function:: void blk_post_runtime_resume(struct request_queue *q, int err)
-
-    Post runtime resume processing
-
-    :param struct request_queue \*q:
-        the queue of the device
-
-    :param int err:
-        return value of the device's runtime_resume function
-
-.. _`blk_post_runtime_resume.description`:
-
-Description
------------
-
-   Update the queue's runtime status according to the return value of the
-   device's runtime_resume function. If it is successfully resumed, process
-   the requests that are queued into the device's queue when it is resuming
-   and then mark last busy and initiate autosuspend for it.
-
-   This function should be called near the end of the device's
-   runtime_resume callback.
-
-.. _`blk_set_runtime_active`:
-
-blk_set_runtime_active
-======================
-
-.. c:function:: void blk_set_runtime_active(struct request_queue *q)
-
-    Force runtime status of the queue to be active
-
-    :param struct request_queue \*q:
-        the queue of the device
-
-.. _`blk_set_runtime_active.description`:
-
-Description
------------
-
-If the device is left runtime suspended during system suspend the resume
-hook typically resumes the device and corrects runtime status
-accordingly. However, that does not affect the queue runtime PM status
-which is still "suspended". This prevents processing requests from the
-queue.
-
-This function can be used in driver's resume hook to correct queue
-runtime PM status and re-enable peeking requests from the queue. It
-should be called before first request is added to the queue.
 
 .. This file was automatic generated / don't edit.
 

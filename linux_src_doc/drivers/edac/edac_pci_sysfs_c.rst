@@ -10,8 +10,9 @@ edac_pci_main_kobj_setup
 
     Setup the sysfs for EDAC PCI attributes.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

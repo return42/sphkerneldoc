@@ -36,8 +36,9 @@ crypto4xx_hw_init
 
 .. c:function:: void crypto4xx_hw_init(struct crypto4xx_device *dev)
 
-    :param struct crypto4xx_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct crypto4xx_device \*
 
 .. _`crypto4xx_build_pdr`:
 
@@ -48,8 +49,9 @@ crypto4xx_build_pdr
 
     no need to alloc buf for the ring gdr_tail, gdr_head and gdr_count are initialized by this function
 
-    :param struct crypto4xx_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct crypto4xx_device \*
 
 .. _`crypto4xx_build_gdr`:
 
@@ -60,8 +62,9 @@ crypto4xx_build_gdr
 
     no need to alloc buf for the ring gdr_tail, gdr_head and gdr_count are initialized by this function
 
-    :param struct crypto4xx_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct crypto4xx_device \*
 
 .. _`crypto4xx_build_sdr`:
 
@@ -72,8 +75,9 @@ crypto4xx_build_sdr
 
     need to alloc buf for the ring sdr_tail, sdr_head and sdr_count are initialized by this function
 
-    :param struct crypto4xx_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct crypto4xx_device \*
 
 .. _`crypto4xx_ctx_init`:
 
@@ -82,11 +86,13 @@ crypto4xx_ctx_init
 
 .. c:function:: void crypto4xx_ctx_init(struct crypto4xx_alg *amcc_alg, struct crypto4xx_ctx *ctx)
 
-    :param struct crypto4xx_alg \*amcc_alg:
+    :param amcc_alg:
         *undescribed*
+    :type amcc_alg: struct crypto4xx_alg \*
 
-    :param struct crypto4xx_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct crypto4xx_ctx \*
 
 .. _`crypto4xx_interrupt_handler`:
 
@@ -95,14 +101,17 @@ crypto4xx_interrupt_handler
 
 .. c:function:: irqreturn_t crypto4xx_interrupt_handler(int irq, void *data, u32 clr_val)
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param u32 clr_val:
+    :param clr_val:
         *undescribed*
+    :type clr_val: u32
 
 .. _`crypto4xx_probe`:
 
@@ -111,8 +120,9 @@ crypto4xx_probe
 
 .. c:function:: int crypto4xx_probe(struct platform_device *ofdev)
 
-    :param struct platform_device \*ofdev:
+    :param ofdev:
         *undescribed*
+    :type ofdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

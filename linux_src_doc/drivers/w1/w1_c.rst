@@ -10,15 +10,18 @@ w1_search
 
     Performs a ROM Search & registers any devices found.
 
-    :param struct w1_master \*dev:
+    :param dev:
         The master device to search
+    :type dev: struct w1_master \*
 
-    :param u8 search_type:
+    :param search_type:
         W1_SEARCH to search all devices, or W1_ALARM_SEARCH
         to return only devices in the alarmed state
+    :type search_type: u8
 
-    :param w1_slave_found_callback cb:
+    :param cb:
         Function to call when a device is found
+    :type cb: w1_slave_found_callback
 
 .. _`w1_search.description`:
 
@@ -43,8 +46,9 @@ w1_process_callbacks
 
     execute each dev->async_list callback entry
 
-    :param struct w1_master \*dev:
+    :param dev:
         w1_master device
+    :type dev: struct w1_master \*
 
 .. _`w1_process_callbacks.description`:
 

@@ -8,14 +8,17 @@ i1480_mpi_write
 
 .. c:function:: int i1480_mpi_write(struct i1480 *i1480, const void *data, size_t size)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         Device descriptor
+    :type i1480: struct i1480 \*
 
-    :param const void \*data:
+    :param data:
         Data array to write
+    :type data: const void \*
 
-    :param size_t size:
+    :param size:
         Size of the data array
+    :type size: size_t
 
 .. _`i1480_mpi_write.the-data-array-is-organized-into-pairs`:
 
@@ -35,17 +38,21 @@ i1480_mpi_read
 
 .. c:function:: int i1480_mpi_read(struct i1480 *i1480, u8 *data, u16 srcaddr, size_t size)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         Device descriptor
+    :type i1480: struct i1480 \*
 
-    :param u8 \*data:
+    :param data:
         where to place the read array
+    :type data: u8 \*
 
-    :param u16 srcaddr:
+    :param srcaddr:
         Where to read from
+    :type srcaddr: u16
 
-    :param size_t size:
+    :param size:
         Size of the data read array
+    :type size: size_t
 
 .. _`i1480_mpi_read.description`:
 
@@ -70,8 +77,9 @@ i1480_phy_fw_upload
 
 .. c:function:: int i1480_phy_fw_upload(struct i1480 *i1480)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         Device instance
+    :type i1480: struct i1480 \*
 
 .. _`i1480_phy_fw_upload.description`:
 

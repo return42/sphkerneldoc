@@ -10,17 +10,21 @@ dn_check_idf
 
     Check an image data field format is correct.
 
-    :param unsigned char \*\*pptr:
+    :param pptr:
         Pointer to pointer to image data
+    :type pptr: unsigned char \*\*
 
-    :param int \*len:
+    :param len:
         Pointer to length of image data
+    :type len: int \*
 
-    :param unsigned char max:
+    :param max:
         The maximum allowed length of the data in the image data field
+    :type max: unsigned char
 
-    :param unsigned char follow_on:
+    :param follow_on:
         Check that this many bytes exist beyond the end of the image data
+    :type follow_on: unsigned char
 
 .. _`dn_check_idf.return`:
 

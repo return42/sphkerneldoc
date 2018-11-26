@@ -10,14 +10,17 @@ hns_rcb_wait_fbd_clean
 
     clean fbd \ ``qs``\ : ring struct pointer array \ ``qnum``\ : num of array \ ``flag``\ : tx or rx flag
 
-    :param struct hnae_queue \*\*qs:
+    :param qs:
         *undescribed*
+    :type qs: struct hnae_queue \*\*
 
-    :param int q_num:
+    :param q_num:
         *undescribed*
+    :type q_num: int
 
-    :param u32 flag:
+    :param flag:
         *undescribed*
+    :type flag: u32
 
 .. _`hns_rcb_reset_ring_hw`:
 
@@ -28,8 +31,9 @@ hns_rcb_reset_ring_hw
 
     ring reset \ ``q``\ : ring struct pointer
 
-    :param struct hnae_queue \*q:
+    :param q:
         *undescribed*
+    :type q: struct hnae_queue \*
 
 .. _`hns_rcb_int_ctrl_hw`:
 
@@ -40,14 +44,17 @@ hns_rcb_int_ctrl_hw
 
     rcb irq enable control \ ``q``\ : hnae queue struct pointer \ ``flag``\ :ring flag tx or rx \ ``mask``\ :mask
 
-    :param struct hnae_queue \*q:
+    :param q:
         *undescribed*
+    :type q: struct hnae_queue \*
 
-    :param u32 flag:
+    :param flag:
         *undescribed*
+    :type flag: u32
 
-    :param u32 mask:
+    :param mask:
         *undescribed*
+    :type mask: u32
 
 .. _`hns_rcb_ring_enable_hw`:
 
@@ -58,11 +65,13 @@ hns_rcb_ring_enable_hw
 
     enable ring \ ``ring``\ : rcb ring
 
-    :param struct hnae_queue \*q:
+    :param q:
         *undescribed*
+    :type q: struct hnae_queue \*
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
 .. _`hns_rcb_common_init_commit_hw`:
 
@@ -73,8 +82,9 @@ hns_rcb_common_init_commit_hw
 
     make rcb common init completed \ ``rcb_common``\ : rcb common device
 
-    :param struct rcb_common_cb \*rcb_common:
+    :param rcb_common:
         *undescribed*
+    :type rcb_common: struct rcb_common_cb \*
 
 .. _`hns_rcb_ring_init`:
 
@@ -85,11 +95,13 @@ hns_rcb_ring_init
 
     init rcb ring \ ``ring_pair``\ : ring pair control block \ ``ring_type``\ : ring type, RX_RING or TX_RING
 
-    :param struct ring_pair_cb \*ring_pair:
+    :param ring_pair:
         *undescribed*
+    :type ring_pair: struct ring_pair_cb \*
 
-    :param int ring_type:
+    :param ring_type:
         *undescribed*
+    :type ring_type: int
 
 .. _`hns_rcb_init_hw`:
 
@@ -100,8 +112,9 @@ hns_rcb_init_hw
 
     init rcb hardware \ ``ring``\ : rcb ring
 
-    :param struct ring_pair_cb \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct ring_pair_cb \*
 
 .. _`hns_rcb_set_port_desc_cnt`:
 
@@ -112,14 +125,17 @@ hns_rcb_set_port_desc_cnt
 
     set rcb port description num \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port index \ ``desc_cnt``\ :BD num
 
-    :param struct rcb_common_cb \*rcb_common:
+    :param rcb_common:
         *undescribed*
+    :type rcb_common: struct rcb_common_cb \*
 
-    :param u32 port_idx:
+    :param port_idx:
         *undescribed*
+    :type port_idx: u32
 
-    :param u32 desc_cnt:
+    :param desc_cnt:
         *undescribed*
+    :type desc_cnt: u32
 
 .. _`hns_rcb_common_init_hw`:
 
@@ -130,8 +146,9 @@ hns_rcb_common_init_hw
 
     init rcb common hardware \ ``rcb_common``\ : rcb_common device retuen 0 - success , negative --fail
 
-    :param struct rcb_common_cb \*rcb_common:
+    :param rcb_common:
         *undescribed*
+    :type rcb_common: struct rcb_common_cb \*
 
 .. _`hns_rcb_get_cfg`:
 
@@ -142,8 +159,9 @@ hns_rcb_get_cfg
 
     get rcb config \ ``rcb_common``\ : rcb common device
 
-    :param struct rcb_common_cb \*rcb_common:
+    :param rcb_common:
         *undescribed*
+    :type rcb_common: struct rcb_common_cb \*
 
 .. _`hns_rcb_get_rx_coalesced_frames`:
 
@@ -154,11 +172,13 @@ hns_rcb_get_rx_coalesced_frames
 
     get rcb port rx coalesced frames \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm
 
-    :param struct rcb_common_cb \*rcb_common:
+    :param rcb_common:
         *undescribed*
+    :type rcb_common: struct rcb_common_cb \*
 
-    :param u32 port_idx:
+    :param port_idx:
         *undescribed*
+    :type port_idx: u32
 
 .. _`hns_rcb_get_rx_coalesced_frames.description`:
 
@@ -176,11 +196,13 @@ hns_rcb_get_tx_coalesced_frames
 
     get rcb port tx coalesced frames \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm
 
-    :param struct rcb_common_cb \*rcb_common:
+    :param rcb_common:
         *undescribed*
+    :type rcb_common: struct rcb_common_cb \*
 
-    :param u32 port_idx:
+    :param port_idx:
         *undescribed*
+    :type port_idx: u32
 
 .. _`hns_rcb_get_tx_coalesced_frames.description`:
 
@@ -198,11 +220,13 @@ hns_rcb_get_coalesce_usecs
 
     get rcb port coalesced time_out \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm
 
-    :param struct rcb_common_cb \*rcb_common:
+    :param rcb_common:
         *undescribed*
+    :type rcb_common: struct rcb_common_cb \*
 
-    :param u32 port_idx:
+    :param port_idx:
         *undescribed*
+    :type port_idx: u32
 
 .. _`hns_rcb_get_coalesce_usecs.description`:
 
@@ -220,14 +244,17 @@ hns_rcb_set_coalesce_usecs
 
     set rcb port coalesced time_out \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm \ ``timeout``\ :tx/rx time for coalesced time_out
 
-    :param struct rcb_common_cb \*rcb_common:
+    :param rcb_common:
         *undescribed*
+    :type rcb_common: struct rcb_common_cb \*
 
-    :param u32 port_idx:
+    :param port_idx:
         *undescribed*
+    :type port_idx: u32
 
-    :param u32 timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: u32
 
 .. _`hns_rcb_set_coalesce_usecs.return`:
 
@@ -245,14 +272,17 @@ hns_rcb_set_tx_coalesced_frames
 
     set rcb coalesced frames \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm \ ``coalesced_frames``\ :tx/rx BD num for coalesced frames
 
-    :param struct rcb_common_cb \*rcb_common:
+    :param rcb_common:
         *undescribed*
+    :type rcb_common: struct rcb_common_cb \*
 
-    :param u32 port_idx:
+    :param port_idx:
         *undescribed*
+    :type port_idx: u32
 
-    :param u32 coalesced_frames:
+    :param coalesced_frames:
         *undescribed*
+    :type coalesced_frames: u32
 
 .. _`hns_rcb_set_tx_coalesced_frames.return`:
 
@@ -270,14 +300,17 @@ hns_rcb_set_rx_coalesced_frames
 
     set rcb rx coalesced frames \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm \ ``coalesced_frames``\ :tx/rx BD num for coalesced frames
 
-    :param struct rcb_common_cb \*rcb_common:
+    :param rcb_common:
         *undescribed*
+    :type rcb_common: struct rcb_common_cb \*
 
-    :param u32 port_idx:
+    :param port_idx:
         *undescribed*
+    :type port_idx: u32
 
-    :param u32 coalesced_frames:
+    :param coalesced_frames:
         *undescribed*
+    :type coalesced_frames: u32
 
 .. _`hns_rcb_set_rx_coalesced_frames.return`:
 
@@ -295,14 +328,17 @@ hns_rcb_get_queue_mode
 
     get max VM number and max ring number per VM accordding to dsaf mode \ ``dsaf_mode``\ : dsaf mode \ ``max_vfn``\  : max vfn number \ ``max_q_per_vf``\ :max ring number per vm
 
-    :param enum dsaf_mode dsaf_mode:
+    :param dsaf_mode:
         *undescribed*
+    :type dsaf_mode: enum dsaf_mode
 
-    :param u16 \*max_vfn:
+    :param max_vfn:
         *undescribed*
+    :type max_vfn: u16 \*
 
-    :param u16 \*max_q_per_vf:
+    :param max_q_per_vf:
         *undescribed*
+    :type max_q_per_vf: u16 \*
 
 .. _`hns_rcb_get_stats`:
 
@@ -313,11 +349,13 @@ hns_rcb_get_stats
 
     get rcb statistic \ ``ring``\ : rcb ring \ ``data``\ :statistic value
 
-    :param struct hnae_queue \*queue:
+    :param queue:
         *undescribed*
+    :type queue: struct hnae_queue \*
 
-    :param u64 \*data:
+    :param data:
         *undescribed*
+    :type data: u64 \*
 
 .. _`hns_rcb_get_ring_sset_count`:
 
@@ -328,8 +366,9 @@ hns_rcb_get_ring_sset_count
 
     rcb string set count \ ``stringset``\ :ethtool cmd return rcb ring string set count
 
-    :param int stringset:
+    :param stringset:
         *undescribed*
+    :type stringset: int
 
 .. _`hns_rcb_get_common_regs_count`:
 
@@ -340,8 +379,9 @@ hns_rcb_get_common_regs_count
 
     rcb common regs count return regs count
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hns_rcb_get_ring_regs_count`:
 
@@ -352,8 +392,9 @@ hns_rcb_get_ring_regs_count
 
     rcb ring regs count return regs count
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hns_rcb_get_strings`:
 
@@ -364,14 +405,17 @@ hns_rcb_get_strings
 
     get rcb string set \ ``stringset``\ :string set index \ ``data``\ :strings name value \ ``index``\ :queue index
 
-    :param int stringset:
+    :param stringset:
         *undescribed*
+    :type stringset: int
 
-    :param u8 \*data:
+    :param data:
         *undescribed*
+    :type data: u8 \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. This file was automatic generated / don't edit.
 

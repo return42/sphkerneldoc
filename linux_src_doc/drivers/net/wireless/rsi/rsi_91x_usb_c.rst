@@ -10,17 +10,21 @@ rsi_usb_card_write
 
     This function writes to the USB Card.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u8 \*buf:
+    :param buf:
         Pointer to the buffer from where the data has to be taken.
+    :type buf: u8 \*
 
-    :param u16 len:
+    :param len:
         Length to be written.
+    :type len: u16
 
-    :param u8 endpoint:
+    :param endpoint:
         Type of endpoint.
+    :type endpoint: u8
 
 .. _`rsi_usb_card_write.return`:
 
@@ -38,17 +42,21 @@ rsi_write_multiple
 
     This function writes multiple bytes of information to the USB card.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u8 endpoint:
+    :param endpoint:
         *undescribed*
+    :type endpoint: u8
 
-    :param u8 \*data:
+    :param data:
         Pointer to the data that has to be written.
+    :type data: u8 \*
 
-    :param u32 count:
+    :param count:
         Number of multiple bytes to be written.
+    :type count: u32
 
 .. _`rsi_write_multiple.return`:
 
@@ -66,11 +74,13 @@ rsi_find_bulk_in_and_out_endpoints
 
     This function initializes the bulk endpoints to the device.
 
-    :param struct usb_interface \*interface:
+    :param interface:
         Pointer to the USB interface structure.
+    :type interface: struct usb_interface \*
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
 .. _`rsi_find_bulk_in_and_out_endpoints.return`:
 
@@ -88,17 +98,21 @@ rsi_usb_reg_write
 
     This function writes the given data into the given register address.
 
-    :param struct usb_device \*usbdev:
+    :param usbdev:
         Pointer to the usb_device structure.
+    :type usbdev: struct usb_device \*
 
-    :param u32 reg:
+    :param reg:
         Address of the register.
+    :type reg: u32
 
-    :param u16 value:
+    :param value:
         Value to write.
+    :type value: u16
 
-    :param u16 len:
+    :param len:
         Length of data to be written.
+    :type len: u16
 
 .. _`rsi_usb_reg_write.return`:
 
@@ -116,8 +130,9 @@ rsi_rx_done_handler
 
     This function is called when a packet is received from USB stack. This is callback to recieve done.
 
-    :param struct urb \*urb:
+    :param urb:
         Received URB.
+    :type urb: struct urb \*
 
 .. _`rsi_rx_done_handler.return`:
 
@@ -135,11 +150,13 @@ rsi_rx_urb_submit
 
     This function submits the given URB to the USB stack.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u8 ep_num:
+    :param ep_num:
         *undescribed*
+    :type ep_num: u8
 
 .. _`rsi_rx_urb_submit.return`:
 
@@ -157,17 +174,21 @@ rsi_usb_write_register_multiple
 
     This function writes multiple bytes of information to multiple registers.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u32 addr:
+    :param addr:
         Address of the register.
+    :type addr: u32
 
-    :param u8 \*data:
+    :param data:
         Pointer to the data that has to be written.
+    :type data: u8 \*
 
-    :param u16 count:
+    :param count:
         Number of multiple bytes to be written on to the registers.
+    :type count: u16
 
 .. _`rsi_usb_write_register_multiple.return`:
 
@@ -185,14 +206,17 @@ rsi_usb_host_intf_write_pkt
 
     This function writes the packet to the USB card.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param u8 \*pkt:
+    :param pkt:
         Pointer to the data to be written on to the card.
+    :type pkt: u8 \*
 
-    :param u32 len:
+    :param len:
         Length of the data to be written on to the card.
+    :type len: u32
 
 .. _`rsi_usb_host_intf_write_pkt.return`:
 
@@ -210,8 +234,9 @@ rsi_deinit_usb_interface
 
     This function deinitializes the usb interface.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
 .. _`rsi_deinit_usb_interface.return`:
 
@@ -229,11 +254,13 @@ rsi_init_usb_interface
 
     This function initializes the usb interface.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
-    :param struct usb_interface \*pfunction:
+    :param pfunction:
         Pointer to USB interface structure.
+    :type pfunction: struct usb_interface \*
 
 .. _`rsi_init_usb_interface.return`:
 
@@ -251,11 +278,13 @@ rsi_probe
 
     This function is called by kernel when the driver provided Vendor and device IDs are matched. All the initialization work is done here.
 
-    :param struct usb_interface \*pfunction:
+    :param pfunction:
         Pointer to the USB interface structure.
+    :type pfunction: struct usb_interface \*
 
-    :param const struct usb_device_id \*id:
+    :param id:
         Pointer to the usb_device_id structure.
+    :type id: const struct usb_device_id \*
 
 .. _`rsi_probe.return`:
 
@@ -273,8 +302,9 @@ rsi_disconnect
 
     This function performs the reverse of the probe function, it deinitialize the driver structure.
 
-    :param struct usb_interface \*pfunction:
+    :param pfunction:
         Pointer to the USB interface structure.
+    :type pfunction: struct usb_interface \*
 
 .. _`rsi_disconnect.return`:
 

@@ -10,8 +10,9 @@ ilsel_enable
 
     Enable an ILSEL set.
 
-    :param ilsel_source_t set:
+    :param set:
         ILSEL source (see ilsel_source_t enum in include/asm-sh/ilsel.h).
+    :type set: ilsel_source_t
 
 .. _`ilsel_enable.description`:
 
@@ -35,11 +36,13 @@ ilsel_enable_fixed
 
     Enable an ILSEL set at a fixed interrupt level
 
-    :param ilsel_source_t set:
+    :param set:
         ILSEL source (see ilsel_source_t enum in include/asm-sh/ilsel.h).
+    :type set: ilsel_source_t
 
-    :param unsigned int level:
+    :param level:
         Interrupt level (1 - 15)
+    :type level: unsigned int
 
 .. _`ilsel_enable_fixed.description`:
 
@@ -61,8 +64,9 @@ ilsel_disable
 
     Disable an ILSEL set
 
-    :param unsigned int irq:
+    :param irq:
         Bit position for ILSEL set value (retval from enable routines)
+    :type irq: unsigned int
 
 .. _`ilsel_disable.description`:
 

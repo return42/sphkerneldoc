@@ -10,8 +10,9 @@ s3cmci_host_usedma
 
     return whether the host is using dma or pio
 
-    :param struct s3cmci_host \*host:
+    :param host:
         The host state
+    :type host: struct s3cmci_host \*
 
 .. _`s3cmci_host_usedma.description`:
 
@@ -31,8 +32,9 @@ s3cmci_check_sdio_irq
 
     test whether the SDIO IRQ is being signalled
 
-    :param struct s3cmci_host \*host:
+    :param host:
         The host to check.
+    :type host: struct s3cmci_host \*
 
 .. _`s3cmci_check_sdio_irq.description`:
 
@@ -56,11 +58,13 @@ s3cmci_enable_irq
 
     enable IRQ, after having disabled it.
 
-    :param struct s3cmci_host \*host:
+    :param host:
         The device state.
+    :type host: struct s3cmci_host \*
 
-    :param bool more:
+    :param more:
         True if more IRQs are expected from transfer.
+    :type more: bool
 
 .. _`s3cmci_enable_irq.description`:
 

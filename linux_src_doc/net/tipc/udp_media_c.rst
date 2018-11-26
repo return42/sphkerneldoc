@@ -107,14 +107,17 @@ tipc_parse_udp_addr
 
     build udp media address from netlink data
 
-    :param struct nlattr \*nla:
+    :param nla:
         *undescribed*
+    :type nla: struct nlattr \*
 
-    :param struct udp_media_addr \*addr:
+    :param addr:
         tipc media address to fill with address, port and protocol type
+    :type addr: struct udp_media_addr \*
 
-    :param u32 \*scope_id:
+    :param scope_id:
         IPv6 scope id pointer, not NULL indicates it's required
+    :type scope_id: u32 \*
 
 .. _`tipc_udp_enable`:
 
@@ -125,14 +128,17 @@ tipc_udp_enable
 
     callback to create a new udp bearer instance
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param struct tipc_bearer \*b:
+    :param b:
         pointer to generic tipc_bearer
+    :type b: struct tipc_bearer \*
 
-    :param struct nlattr  \*attrs:
+    :param attrs:
         netlink bearer configuration
+    :type attrs: struct nlattr  \*
 
 .. _`tipc_udp_enable.description`:
 

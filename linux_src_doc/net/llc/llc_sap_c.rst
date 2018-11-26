@@ -10,17 +10,21 @@ llc_alloc_frame
 
     allocates sk_buff for frame
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct net_device \*dev:
+    :param dev:
         network device this skb will be sent over
+    :type dev: struct net_device \*
 
-    :param u8 type:
+    :param type:
         pdu type to allocate
+    :type type: u8
 
-    :param u32 data_size:
+    :param data_size:
         data size to allocate
+    :type data_size: u32
 
 .. _`llc_alloc_frame.description`:
 
@@ -39,11 +43,13 @@ llc_sap_rtn_pdu
 
     Informs upper layer on rx of an UI, XID or TEST pdu.
 
-    :param struct llc_sap \*sap:
+    :param sap:
         pointer to SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received pdu
+    :type skb: struct sk_buff \*
 
 .. _`llc_find_sap_trans`:
 
@@ -54,11 +60,13 @@ llc_find_sap_trans
 
     finds transition for event
 
-    :param struct llc_sap \*sap:
+    :param sap:
         pointer to SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         happened event
+    :type skb: struct sk_buff \*
 
 .. _`llc_find_sap_trans.description`:
 
@@ -78,14 +86,17 @@ llc_exec_sap_trans_actions
 
     execute actions related to event
 
-    :param struct llc_sap \*sap:
+    :param sap:
         pointer to SAP
+    :type sap: struct llc_sap \*
 
-    :param struct llc_sap_state_trans \*trans:
+    :param trans:
         pointer to transition that it's actions must be performed
+    :type trans: struct llc_sap_state_trans \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         happened event.
+    :type skb: struct sk_buff \*
 
 .. _`llc_exec_sap_trans_actions.description`:
 
@@ -104,11 +115,13 @@ llc_sap_next_state
 
     finds transition, execs actions & change SAP state
 
-    :param struct llc_sap \*sap:
+    :param sap:
         pointer to SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         happened event
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_next_state.description`:
 
@@ -128,11 +141,13 @@ llc_sap_state_process
 
     sends event to SAP state machine
 
-    :param struct llc_sap \*sap:
+    :param sap:
         sap to use
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to occurred event
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_state_process.description`:
 
@@ -152,17 +167,21 @@ llc_build_and_send_test_pkt
 
     TEST interface for upper layers.
 
-    :param struct llc_sap \*sap:
+    :param sap:
         sap to use
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send
+    :type skb: struct sk_buff \*
 
-    :param u8 \*dmac:
+    :param dmac:
         destination mac address
+    :type dmac: u8 \*
 
-    :param u8 dsap:
+    :param dsap:
         destination sap
+    :type dsap: u8
 
 .. _`llc_build_and_send_test_pkt.description`:
 
@@ -181,17 +200,21 @@ llc_build_and_send_xid_pkt
 
     XID interface for upper layers
 
-    :param struct llc_sap \*sap:
+    :param sap:
         sap to use
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send
+    :type skb: struct sk_buff \*
 
-    :param u8 \*dmac:
+    :param dmac:
         destination mac address
+    :type dmac: u8 \*
 
-    :param u8 dsap:
+    :param dsap:
         destination sap
+    :type dsap: u8
 
 .. _`llc_build_and_send_xid_pkt.description`:
 
@@ -210,14 +233,17 @@ llc_sap_rcv
 
     sends received pdus to the sap state machine
 
-    :param struct llc_sap \*sap:
+    :param sap:
         current sap component structure.
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received frame.
+    :type skb: struct sk_buff \*
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`llc_sap_rcv.description`:
 
@@ -235,11 +261,13 @@ llc_lookup_dgram
 
     Finds dgram socket for the local sap/mac
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param const struct llc_addr \*laddr:
+    :param laddr:
         address of local LLC (MAC + SAP)
+    :type laddr: const struct llc_addr \*
 
 .. _`llc_lookup_dgram.description`:
 
@@ -258,14 +286,17 @@ llc_sap_mcast
 
     Deliver multicast PDU's to all matching datagram sockets.
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param const struct llc_addr \*laddr:
+    :param laddr:
         address of local LLC (MAC + SAP)
+    :type laddr: const struct llc_addr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_mcast.description`:
 

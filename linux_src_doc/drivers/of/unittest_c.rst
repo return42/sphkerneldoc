@@ -10,11 +10,13 @@ update_node_properties
 
     adds the properties of np into dup node (present in live tree) and updates parent of children of np to dup.
 
-    :param struct device_node \*np:
+    :param np:
         node already present in live tree
+    :type np: struct device_node \*
 
-    :param struct device_node \*dup:
+    :param dup:
         node present in live tree to be updated
+    :type dup: struct device_node \*
 
 .. _`attach_node_and_children`:
 
@@ -25,8 +27,9 @@ attach_node_and_children
 
     attaches nodes and its children to live tree
 
-    :param struct device_node \*np:
+    :param np:
         Node to attach to live tree
+    :type np: struct device_node \*
 
 .. _`unittest_data_add`:
 
@@ -37,8 +40,9 @@ unittest_data_add
 
     Reads, copies data from linked tree and attaches it to the live tree
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ host1x_subdev_add
 
     add a new subdevice with an associated device node
 
-    :param struct host1x_device \*device:
+    :param device:
         host1x device to add the subdevice to
+    :type device: struct host1x_device \*
 
-    :param struct host1x_driver \*driver:
+    :param driver:
         *undescribed*
+    :type driver: struct host1x_driver \*
 
-    :param struct device_node \*np:
+    :param np:
         device node
+    :type np: struct device_node \*
 
 .. _`host1x_subdev_del`:
 
@@ -28,8 +31,9 @@ host1x_subdev_del
 
     remove subdevice
 
-    :param struct host1x_subdev \*subdev:
+    :param subdev:
         subdevice to remove
+    :type subdev: struct host1x_subdev \*
 
 .. _`host1x_device_parse_dt`:
 
@@ -40,11 +44,13 @@ host1x_device_parse_dt
 
     scan device tree and add matching subdevices
 
-    :param struct host1x_device \*device:
+    :param device:
         host1x logical device
+    :type device: struct host1x_device \*
 
-    :param struct host1x_driver \*driver:
+    :param driver:
         host1x driver
+    :type driver: struct host1x_driver \*
 
 .. _`host1x_device_init`:
 
@@ -55,8 +61,9 @@ host1x_device_init
 
     initialize a host1x logical device
 
-    :param struct host1x_device \*device:
+    :param device:
         host1x logical device
+    :type device: struct host1x_device \*
 
 .. _`host1x_device_init.description`:
 
@@ -78,8 +85,9 @@ host1x_device_exit
 
     uninitialize host1x logical device
 
-    :param struct host1x_device \*device:
+    :param device:
         host1x logical device
+    :type device: struct host1x_device \*
 
 .. _`host1x_device_exit.description`:
 
@@ -100,8 +108,9 @@ host1x_register
 
     register a host1x controller
 
-    :param struct host1x \*host1x:
+    :param host1x:
         host1x controller
+    :type host1x: struct host1x \*
 
 .. _`host1x_register.description`:
 
@@ -121,8 +130,9 @@ host1x_unregister
 
     unregister a host1x controller
 
-    :param struct host1x \*host1x:
+    :param host1x:
         host1x controller
+    :type host1x: struct host1x \*
 
 .. _`host1x_unregister.description`:
 
@@ -141,11 +151,13 @@ host1x_driver_register_full
 
     register a host1x driver
 
-    :param struct host1x_driver \*driver:
+    :param driver:
         host1x driver
+    :type driver: struct host1x_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         owner module
+    :type owner: struct module \*
 
 .. _`host1x_driver_register_full.description`:
 
@@ -166,8 +178,9 @@ host1x_driver_unregister
 
     unregister a host1x driver
 
-    :param struct host1x_driver \*driver:
+    :param driver:
         host1x driver
+    :type driver: struct host1x_driver \*
 
 .. _`host1x_driver_unregister.description`:
 
@@ -186,8 +199,9 @@ host1x_client_register
 
     register a host1x client
 
-    :param struct host1x_client \*client:
+    :param client:
         host1x client
+    :type client: struct host1x_client \*
 
 .. _`host1x_client_register.description`:
 
@@ -210,8 +224,9 @@ host1x_client_unregister
 
     unregister a host1x client
 
-    :param struct host1x_client \*client:
+    :param client:
         host1x client
+    :type client: struct host1x_client \*
 
 .. _`host1x_client_unregister.description`:
 

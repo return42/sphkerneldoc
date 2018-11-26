@@ -8,8 +8,9 @@ gx_detect_chipset
 
 .. c:function:: struct pci_dev *gx_detect_chipset( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`gx_get_cpuspeed`:
 
@@ -18,8 +19,9 @@ gx_get_cpuspeed
 
 .. c:function:: unsigned int gx_get_cpuspeed(unsigned int cpu)
 
-    :param unsigned int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: unsigned int
 
 .. _`gx_get_cpuspeed.description`:
 
@@ -38,14 +40,17 @@ gx_validate_speed
 
     determine current cpu speed
 
-    :param unsigned int khz:
+    :param khz:
         *undescribed*
+    :type khz: unsigned int
 
-    :param u8 \*on_duration:
+    :param on_duration:
         *undescribed*
+    :type on_duration: u8 \*
 
-    :param u8 \*off_duration:
+    :param off_duration:
         *undescribed*
+    :type off_duration: u8 \*
 
 .. _`gx_set_cpuspeed`:
 
@@ -56,11 +61,13 @@ gx_set_cpuspeed
 
     set cpu speed in khz.
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int khz:
+    :param khz:
         *undescribed*
+    :type khz: unsigned int
 
 .. This file was automatic generated / don't edit.
 

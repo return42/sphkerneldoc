@@ -10,11 +10,13 @@ edma_alloc_slot
 
     allocate DMA parameter RAM
 
-    :param struct edma_cc \*ecc:
+    :param ecc:
         pointer to edma_cc struct
+    :type ecc: struct edma_cc \*
 
-    :param int slot:
+    :param slot:
         specific slot to allocate; negative for "any unused slot"
+    :type slot: int
 
 .. _`edma_alloc_slot.description`:
 
@@ -40,14 +42,17 @@ edma_link
 
     link one parameter RAM slot to another
 
-    :param struct edma_cc \*ecc:
+    :param ecc:
         pointer to edma_cc struct
+    :type ecc: struct edma_cc \*
 
-    :param unsigned from:
+    :param from:
         parameter RAM slot originating the link
+    :type from: unsigned
 
-    :param unsigned to:
+    :param to:
         parameter RAM slot which is the link target
+    :type to: unsigned
 
 .. _`edma_link.description`:
 
@@ -65,14 +70,17 @@ edma_get_position
 
     returns the current transfer point
 
-    :param struct edma_cc \*ecc:
+    :param ecc:
         pointer to edma_cc struct
+    :type ecc: struct edma_cc \*
 
-    :param unsigned slot:
+    :param slot:
         parameter RAM slot being examined
+    :type slot: unsigned
 
-    :param bool dst:
+    :param dst:
         true selects the dest position, false the source
+    :type dst: bool
 
 .. _`edma_get_position.description`:
 

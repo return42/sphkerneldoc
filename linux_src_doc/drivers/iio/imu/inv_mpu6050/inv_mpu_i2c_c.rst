@@ -10,11 +10,13 @@ inv_mpu_probe
 
     probe function.
 
-    :param struct i2c_client \*client:
+    :param client:
         i2c client.
+    :type client: struct i2c_client \*
 
-    :param const struct i2c_device_id \*id:
+    :param id:
         i2c device id.
+    :type id: const struct i2c_device_id \*
 
 .. _`inv_mpu_probe.description`:
 

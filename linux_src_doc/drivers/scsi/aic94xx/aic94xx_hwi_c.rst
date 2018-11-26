@@ -10,8 +10,9 @@ asd_init_scbs
 
     manually allocate the first SCB.
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_scbs.description`:
 
@@ -34,8 +35,9 @@ asd_init_escbs
 
     - allocate and initialize empty scbs
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_escbs.description`:
 
@@ -54,8 +56,9 @@ asd_chip_hardrst
 
     - hard reset the chip
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_chip_hardrst.description`:
 
@@ -74,8 +77,9 @@ asd_init_chip
 
     - initialize the chip
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_chip.description`:
 
@@ -95,8 +99,9 @@ asd_init_ctxmem
 
     - initialize context memory
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         *undescribed*
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_init_ctxmem.asd_ha`:
 
@@ -122,8 +127,9 @@ asd_chip_reset
 
     - reset the host adapter, etc
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure of interest
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_chip_reset.description`:
 
@@ -145,8 +151,9 @@ asd_process_donelist_isr
 
     - schedule processing of done list entries
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_com_sas_isr`:
 
@@ -157,8 +164,9 @@ asd_com_sas_isr
 
     - process device communication interrupt (COMINT)
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_dch_sas_isr`:
 
@@ -169,8 +177,9 @@ asd_dch_sas_isr
 
     - process device channel interrupt (DEVINT)
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_rbi_exsi_isr`:
 
@@ -181,8 +190,9 @@ asd_rbi_exsi_isr
 
     - process external system interface interrupt (INITERR)
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_hst_pcix_isr`:
 
@@ -193,8 +203,9 @@ asd_hst_pcix_isr
 
     - process host interface interrupts
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_hst_pcix_isr.asserted-on-pcix-errors`:
 
@@ -212,11 +223,13 @@ asd_hw_isr
 
     - host adapter interrupt service routine
 
-    :param int irq:
+    :param irq:
         ignored
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         pointer to host adapter structure
+    :type dev_id: void \*
 
 .. _`asd_hw_isr.description`:
 
@@ -234,14 +247,17 @@ asd_ascb_alloc_list
 
     - allocate a list of aSCBs
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param int \*num:
+    :param num:
         pointer to integer number of aSCBs
+    :type num: int \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         GFP\_ flags.
+    :type gfp_flags: gfp_t
 
 .. _`asd_ascb_alloc_list.description`:
 
@@ -273,11 +289,13 @@ asd_swap_head_scb
 
     - swap the head scb
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param struct asd_ascb \*ascb:
+    :param ascb:
         pointer to the head of an ascb list
+    :type ascb: struct asd_ascb \*
 
 .. _`asd_swap_head_scb.description`:
 
@@ -311,8 +329,9 @@ asd_start_scb_timers
 
     - (add and) start timers of SCBs
 
-    :param struct list_head \*list:
+    :param list:
         pointer to struct list_head of the scbs
+    :type list: struct list_head \*
 
 .. _`asd_start_scb_timers.description`:
 
@@ -333,14 +352,17 @@ asd_post_ascb_list
 
     - post a list of 1 or more aSCBs to the host adapter
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to a host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param struct asd_ascb \*ascb:
+    :param ascb:
         pointer to the first aSCB in the list
+    :type ascb: struct asd_ascb \*
 
-    :param int num:
+    :param num:
         number of aSCBs in the list (to be posted)
+    :type num: int
 
 .. _`asd_post_ascb_list.description`:
 
@@ -391,14 +413,17 @@ asd_post_escb_list
 
     - post a list of 1 or more empty scb
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to a host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param struct asd_ascb \*ascb:
+    :param ascb:
         pointer to the first empty SCB in the list
+    :type ascb: struct asd_ascb \*
 
-    :param int num:
+    :param num:
         number of aSCBs in the list (to be posted)
+    :type num: int
 
 .. _`asd_post_escb_list.description`:
 
@@ -426,14 +451,17 @@ asd_turn_led
 
     - turn on/off an LED
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param int phy_id:
+    :param phy_id:
         the PHY id whose LED we want to manupulate
+    :type phy_id: int
 
-    :param int op:
+    :param op:
         1 to turn on, 0 to turn off
+    :type op: int
 
 .. _`asd_control_led`:
 
@@ -444,14 +472,17 @@ asd_control_led
 
     - enable/disable an LED on the board
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param int phy_id:
+    :param phy_id:
         integer, the phy id
+    :type phy_id: int
 
-    :param int op:
+    :param op:
         integer, 1 to enable, 0 to disable the LED
+    :type op: int
 
 .. _`asd_control_led.description`:
 

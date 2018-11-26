@@ -10,8 +10,9 @@ init_percpu_prof
 
     enable/setup per cpu profiling hooks.
 
-    :param unsigned long cpunum:
+    :param cpunum:
         The processor instance.
+    :type cpunum: unsigned long
 
 .. _`init_percpu_prof.fixme`:
 
@@ -29,8 +30,9 @@ processor_probe
 
     Determine if processor driver should claim this device.
 
-    :param struct parisc_device \*dev:
+    :param dev:
         The device which has been found.
+    :type dev: struct parisc_device \*
 
 .. _`processor_probe.description`:
 
@@ -50,8 +52,9 @@ collect_boot_cpu_data
 
     Fill the boot_cpu_data structure.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`collect_boot_cpu_data.description`:
 
@@ -70,8 +73,9 @@ init_per_cpu
 
     Handle individual processor initializations.
 
-    :param int cpunum:
+    :param cpunum:
         logical processor number.
+    :type cpunum: int
 
 .. _`init_per_cpu.description`:
 
@@ -118,8 +122,9 @@ processor_init
 
     Processor initialization procedure.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`processor_init.description`:
 

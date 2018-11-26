@@ -10,8 +10,9 @@ nfs_compat_user_ino64
 
     returns the user-visible inode number
 
-    :param u64 fileid:
+    :param fileid:
         64-bit fileid
+    :type fileid: u64
 
 .. _`nfs_compat_user_ino64.description`:
 
@@ -30,8 +31,9 @@ nfs_sync_mapping
 
     helper to flush all mmapped dirty data to disk
 
-    :param struct address_space \*mapping:
+    :param mapping:
         *undescribed*
+    :type mapping: struct address_space \*
 
 .. _`nfs_vmtruncate`:
 
@@ -42,11 +44,13 @@ nfs_vmtruncate
 
     unmap mappings "freed" by \ :c:func:`truncate`\  syscall
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the file used
+    :type inode: struct inode \*
 
-    :param loff_t offset:
+    :param offset:
         file offset to start truncating
+    :type offset: loff_t
 
 .. _`nfs_vmtruncate.description`:
 
@@ -73,14 +77,17 @@ nfs_setattr_update_inode
 
     Update inode metadata after a setattr call.
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to struct inode
+    :type inode: struct inode \*
 
-    :param struct iattr \*attr:
+    :param attr:
         pointer to struct iattr
+    :type attr: struct iattr \*
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         pointer to struct nfs_fattr
+    :type fattr: struct nfs_fattr \*
 
 .. _`nfs_setattr_update_inode.note`:
 
@@ -99,11 +106,13 @@ nfs_close_context
 
     Common \ :c:func:`close_context`\  routine NFSv2/v3
 
-    :param struct nfs_open_context \*ctx:
+    :param ctx:
         pointer to context
+    :type ctx: struct nfs_open_context \*
 
-    :param int is_sync:
+    :param is_sync:
         is this a synchronous close
+    :type is_sync: int
 
 .. _`nfs_close_context.description`:
 
@@ -123,11 +132,13 @@ nfs_revalidate_inode
 
     Revalidate the inode attributes \ ``server``\  - pointer to nfs_server struct \ ``inode``\  - pointer to inode struct
 
-    :param struct nfs_server \*server:
+    :param server:
         *undescribed*
+    :type server: struct nfs_server \*
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`nfs_revalidate_inode.description`:
 
@@ -145,11 +156,13 @@ nfs_revalidate_mapping
 
     Revalidate the pagecache \ ``inode``\  - pointer to host inode \ ``mapping``\  - pointer to mapping
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         *undescribed*
+    :type mapping: struct address_space \*
 
 .. _`nfs_check_inode_attributes`:
 
@@ -160,11 +173,13 @@ nfs_check_inode_attributes
 
     verify consistency of the inode attribute cache \ ``inode``\  - pointer to inode \ ``fattr``\  - updated attributes
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         *undescribed*
+    :type fattr: struct nfs_fattr \*
 
 .. _`nfs_check_inode_attributes.description`:
 
@@ -182,8 +197,9 @@ nfs_fattr_set_barrier
 
 .. c:function:: void nfs_fattr_set_barrier(struct nfs_fattr *fattr)
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         attributes
+    :type fattr: struct nfs_fattr \*
 
 .. _`nfs_fattr_set_barrier.description`:
 
@@ -206,11 +222,13 @@ nfs_inode_attrs_need_update
 
     check if the inode attributes need updating \ ``inode``\  - pointer to inode \ ``fattr``\  - attributes
 
-    :param const struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: const struct inode \*
 
-    :param const struct nfs_fattr \*fattr:
+    :param fattr:
         *undescribed*
+    :type fattr: const struct nfs_fattr \*
 
 .. _`nfs_inode_attrs_need_update.description`:
 
@@ -239,11 +257,13 @@ nfs_refresh_inode
 
     try to update the inode attribute cache \ ``inode``\  - pointer to inode \ ``fattr``\  - updated attributes
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         *undescribed*
+    :type fattr: struct nfs_fattr \*
 
 .. _`nfs_refresh_inode.description`:
 
@@ -264,11 +284,13 @@ nfs_post_op_update_inode
 
     try to update the inode attribute cache \ ``inode``\  - pointer to inode \ ``fattr``\  - updated attributes
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         *undescribed*
+    :type fattr: struct nfs_fattr \*
 
 .. _`nfs_post_op_update_inode.description`:
 
@@ -293,11 +315,13 @@ nfs_post_op_update_inode_force_wcc_locked
 
     update the inode attribute cache \ ``inode``\  - pointer to inode \ ``fattr``\  - updated attributes
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         *undescribed*
+    :type fattr: struct nfs_fattr \*
 
 .. _`nfs_post_op_update_inode_force_wcc_locked.description`:
 
@@ -319,11 +343,13 @@ nfs_post_op_update_inode_force_wcc
 
     try to update the inode attribute cache \ ``inode``\  - pointer to inode \ ``fattr``\  - updated attributes
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct nfs_fattr \*fattr:
+    :param fattr:
         *undescribed*
+    :type fattr: struct nfs_fattr \*
 
 .. _`nfs_post_op_update_inode_force_wcc.description`:
 

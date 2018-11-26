@@ -78,8 +78,9 @@ drv260x_calculate_voltage
 
     Calculated using the formula r = v \* 255 / 5.6 where r is what will be written to the register and v is the rated or overdriver voltage of the actuator
 
-    :param unsigned int voltage:
+    :param voltage:
         *undescribed*
+    :type voltage: unsigned int
 
 .. This file was automatic generated / don't edit.
 

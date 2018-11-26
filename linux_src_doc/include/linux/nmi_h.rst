@@ -10,8 +10,9 @@ touch_nmi_watchdog
 
     restart NMI watchdog timeout.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`touch_nmi_watchdog.description`:
 

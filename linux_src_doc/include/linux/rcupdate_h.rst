@@ -10,19 +10,19 @@ RCU_NONIDLE
 
     Indicate idle-loop code that needs RCU readers
 
-    :param  a:
+    :param a:
         Code that RCU needs to pay attention to.
+    :type a: 
 
 .. _`rcu_nonidle.description`:
 
 Description
 -----------
 
-RCU, RCU-bh, and RCU-sched read-side critical sections are forbidden
-in the inner idle loop, that is, between the \ :c:func:`rcu_idle_enter`\  and
-the \ :c:func:`rcu_idle_exit`\  -- RCU will happily ignore any such read-side
-critical sections.  However, things like powertop need tracepoints
-in the inner idle loop.
+RCU read-side critical sections are forbidden in the inner idle loop,
+that is, between the \ :c:func:`rcu_idle_enter`\  and the \ :c:func:`rcu_idle_exit`\  -- RCU
+will happily ignore any such read-side critical sections.  However,
+things like powertop need tracepoints in the inner idle loop.
 
 This macro provides the way out:  RCU_NONIDLE(do_something_with_RCU())
 will tell RCU that it needs to pay attention, invoke its argument
@@ -42,8 +42,9 @@ cond_resched_tasks_rcu_qs
 
     Report potential quiescent states to RCU
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cond_resched_tasks_rcu_qs.description`:
 
@@ -63,11 +64,13 @@ RCU_LOCKDEP_WARN
 
     emit lockdep splat if specified condition is met
 
-    :param  c:
+    :param c:
         condition to check
+    :type c: 
 
-    :param  s:
+    :param s:
         informative message
+    :type s: 
 
 .. _`rcu_initializer`:
 
@@ -78,8 +81,9 @@ RCU_INITIALIZER
 
     statically initialize an RCU-protected global variable
 
-    :param  v:
+    :param v:
         The value to statically initialize with.
+    :type v: 
 
 .. _`rcu_assign_pointer`:
 
@@ -90,11 +94,13 @@ rcu_assign_pointer
 
     assign to RCU-protected pointer
 
-    :param  p:
+    :param p:
         pointer to assign to
+    :type p: 
 
-    :param  v:
+    :param v:
         value to assign (publish)
+    :type v: 
 
 .. _`rcu_assign_pointer.description`:
 
@@ -136,14 +142,17 @@ rcu_swap_protected
 
     swap an RCU and a regular pointer
 
-    :param  rcu_ptr:
+    :param rcu_ptr:
         RCU pointer
+    :type rcu_ptr: 
 
-    :param  ptr:
+    :param ptr:
         regular pointer
+    :type ptr: 
 
-    :param  c:
+    :param c:
         the conditions under which the dereference will take place
+    :type c: 
 
 .. _`rcu_swap_protected.description`:
 
@@ -163,8 +172,9 @@ rcu_access_pointer
 
     fetch RCU pointer with no dereferencing
 
-    :param  p:
+    :param p:
         The pointer to read
+    :type p: 
 
 .. _`rcu_access_pointer.description`:
 
@@ -195,11 +205,13 @@ rcu_dereference_check
 
     rcu_dereference with debug checking
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
-    :param  c:
+    :param c:
         The conditions under which the dereference will take place
+    :type c: 
 
 .. _`rcu_dereference_check.description`:
 
@@ -252,11 +264,13 @@ rcu_dereference_bh_check
 
     rcu_dereference_bh with debug checking
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
-    :param  c:
+    :param c:
         The conditions under which the dereference will take place
+    :type c: 
 
 .. _`rcu_dereference_bh_check.description`:
 
@@ -274,11 +288,13 @@ rcu_dereference_sched_check
 
     rcu_dereference_sched with debug checking
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
-    :param  c:
+    :param c:
         The conditions under which the dereference will take place
+    :type c: 
 
 .. _`rcu_dereference_sched_check.description`:
 
@@ -296,11 +312,13 @@ rcu_dereference_protected
 
     fetch RCU pointer when updates prevented
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
-    :param  c:
+    :param c:
         The conditions under which the dereference will take place
+    :type c: 
 
 .. _`rcu_dereference_protected.description`:
 
@@ -327,8 +345,9 @@ rcu_dereference
 
     fetch RCU-protected pointer for dereferencing
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
 .. _`rcu_dereference.description`:
 
@@ -346,8 +365,9 @@ rcu_dereference_bh
 
     fetch an RCU-bh-protected pointer for dereferencing
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
 .. _`rcu_dereference_bh.description`:
 
@@ -365,8 +385,9 @@ rcu_dereference_sched
 
     fetch RCU-sched-protected pointer for dereferencing
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
 .. _`rcu_dereference_sched.description`:
 
@@ -384,8 +405,9 @@ rcu_pointer_handoff
 
     Hand off a pointer from RCU to other mechanism
 
-    :param  p:
+    :param p:
         The pointer to hand off
+    :type p: 
 
 .. _`rcu_pointer_handoff.description`:
 
@@ -395,9 +417,9 @@ Description
 This is simply an identity function, but it documents where a pointer
 is handed off from RCU to some other synchronization mechanism, for
 example, reference counting or locking.  In C11, it would map to
-\ :c:func:`kill_dependency`\ .  It could be used as follows:
-``
-     \ :c:func:`rcu_read_lock`\ ;
+\ :c:func:`kill_dependency`\ .  It could be used as follows::
+
+     rcu_read_lock();
      p = rcu_dereference(gp);
      long_lived = is_long_lived(p);
      if (long_lived) {
@@ -406,8 +428,7 @@ example, reference counting or locking.  In C11, it would map to
              else
                      p = rcu_pointer_handoff(p);
      }
-     \ :c:func:`rcu_read_unlock`\ ;
-``
+     rcu_read_unlock();
 
 .. _`rcu_read_lock`:
 
@@ -418,8 +439,9 @@ rcu_read_lock
 
     mark the beginning of an RCU read-side critical section
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_read_lock.description`:
 
@@ -473,8 +495,9 @@ rcu_read_unlock
 
     marks the end of an RCU read-side critical section.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_read_unlock.description`:
 
@@ -520,22 +543,18 @@ rcu_read_lock_bh
 
     mark the beginning of an RCU-bh critical section
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_read_lock_bh.description`:
 
 Description
 -----------
 
-This is equivalent of \ :c:func:`rcu_read_lock`\ , but to be used when updates
-are being done using \ :c:func:`call_rcu_bh`\  or \ :c:func:`synchronize_rcu_bh`\ . Since
-both \ :c:func:`call_rcu_bh`\  and \ :c:func:`synchronize_rcu_bh`\  consider completion of a
-softirq handler to be a quiescent state, a process in RCU read-side
-critical section must be protected by disabling softirqs. Read-side
-critical sections in interrupt context can use just \ :c:func:`rcu_read_lock`\ ,
-though this should at least be commented to avoid confusing people
-reading the code.
+This is equivalent of \ :c:func:`rcu_read_lock`\ , but also disables softirqs.
+Note that anything else that disables softirqs can also serve as
+an RCU read-side critical section.
 
 Note that \ :c:func:`rcu_read_lock_bh`\  and the matching \ :c:func:`rcu_read_unlock_bh`\ 
 must occur in the same context, for example, it is illegal to invoke
@@ -551,18 +570,18 @@ rcu_read_lock_sched
 
     mark the beginning of a RCU-sched critical section
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_read_lock_sched.description`:
 
 Description
 -----------
 
-This is equivalent of \ :c:func:`rcu_read_lock`\ , but to be used when updates
-are being done using \ :c:func:`call_rcu_sched`\  or \ :c:func:`synchronize_rcu_sched`\ .
-Read-side critical sections can also be introduced by anything that
-disables preemption, including \ :c:func:`local_irq_disable`\  and friends.
+This is equivalent of \ :c:func:`rcu_read_lock`\ , but disables preemption.
+Read-side critical sections can also be introduced by anything else
+that disables preemption, including \ :c:func:`local_irq_disable`\  and friends.
 
 Note that \ :c:func:`rcu_read_lock_sched`\  and the matching \ :c:func:`rcu_read_unlock_sched`\ 
 must occur in the same context, for example, it is illegal to invoke
@@ -578,11 +597,13 @@ RCU_INIT_POINTER
 
     initialize an RCU protected pointer
 
-    :param  p:
+    :param p:
         The pointer to be initialized.
+    :type p: 
 
-    :param  v:
+    :param v:
         The value to initialized the pointer to.
+    :type v: 
 
 .. _`rcu_init_pointer.description`:
 
@@ -636,11 +657,13 @@ RCU_POINTER_INITIALIZER
 
     statically initialize an RCU protected pointer
 
-    :param  p:
+    :param p:
         The pointer to be initialized.
+    :type p: 
 
-    :param  v:
+    :param v:
         The value to initialized the pointer to.
+    :type v: 
 
 .. _`rcu_pointer_initializer.description`:
 
@@ -658,11 +681,13 @@ kfree_rcu
 
     kfree an object after a grace period.
 
-    :param  ptr:
+    :param ptr:
         pointer to kfree
+    :type ptr: 
 
-    :param  rcu_head:
+    :param rcu_head:
         the name of the struct rcu_head within the type of \ ``ptr``\ .
+    :type rcu_head: 
 
 .. _`kfree_rcu.description`:
 

@@ -20,7 +20,6 @@ Definition
     struct exar8250_board {
         unsigned int num_ports;
         unsigned int reg_shift;
-        bool has_slave;
         int (*setup)(struct exar8250 *, struct pci_dev *, struct uart_8250_port *, int);
         void (*exit)(struct pci_dev *pcidev);
     }
@@ -36,14 +35,11 @@ num_ports
 reg_shift
     describes UART register mapping in PCI memory
 
-has_slave
-    *undescribed*
-
 setup
-    *undescribed*
+    quirk run at ->probe() stage
 
 exit
-    *undescribed*
+    quirk run at ->remove() stage
 
 .. This file was automatic generated / don't edit.
 

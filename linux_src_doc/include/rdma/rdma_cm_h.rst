@@ -10,11 +10,13 @@ rdma_cm_event_handler
 
     Callback used to report user events.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         *undescribed*
+    :type id: struct rdma_cm_id \*
 
-    :param struct rdma_cm_event \*event:
+    :param event:
         *undescribed*
+    :type event: struct rdma_cm_event \*
 
 .. _`rdma_cm_event_handler.notes`:
 
@@ -34,28 +36,37 @@ rdma_create_id
 
     Create an RDMA identifier.
 
-    :param  net:
+    :param net:
         The network namespace in which to create the new id.
+    :type net: 
 
-    :param  event_handler:
+    :param event_handler:
         User callback invoked to report events associated with the
         returned rdma_id.
+    :type event_handler: 
 
-    :param  context:
+    :param context:
         User specified context associated with the id.
+    :type context: 
 
-    :param  ps:
+    :param ps:
         RDMA port space.
+    :type ps: 
 
-    :param  qp_type:
+    :param qp_type:
         type of queue pair associated with the id.
+    :type qp_type: 
 
 .. _`rdma_create_id.description`:
 
 Description
 -----------
 
-The id holds a reference on the network namespace until it is destroyed.
+Returns a new rdma_cm_id. The id holds a reference on the network
+namespace until it is destroyed.
+
+The event handler callback serializes on the id's mutex and is
+allowed to sleep.
 
 .. _`rdma_destroy_id`:
 
@@ -66,8 +77,9 @@ rdma_destroy_id
 
     Destroys an RDMA identifier.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         RDMA identifier.
+    :type id: struct rdma_cm_id \*
 
 .. _`rdma_destroy_id.note`:
 
@@ -86,11 +98,13 @@ rdma_bind_addr
 
     Bind an RDMA identifier to a source address and associated RDMA device, if needed.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         RDMA identifier.
+    :type id: struct rdma_cm_id \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         Local address information.  Wildcard values are permitted.
+    :type addr: struct sockaddr \*
 
 .. _`rdma_bind_addr.description`:
 
@@ -106,36 +120,42 @@ be bound to a local RDMA device.
 rdma_resolve_addr
 =================
 
-.. c:function:: int rdma_resolve_addr(struct rdma_cm_id *id, struct sockaddr *src_addr, struct sockaddr *dst_addr, int timeout_ms)
+.. c:function:: int rdma_resolve_addr(struct rdma_cm_id *id, struct sockaddr *src_addr, const struct sockaddr *dst_addr, unsigned long timeout_ms)
 
     Resolve destination and optional source addresses from IP addresses to an RDMA address.  If successful, the specified rdma_cm_id will be bound to a local device.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         RDMA identifier.
+    :type id: struct rdma_cm_id \*
 
-    :param struct sockaddr \*src_addr:
+    :param src_addr:
         Source address information.  This parameter may be NULL.
+    :type src_addr: struct sockaddr \*
 
-    :param struct sockaddr \*dst_addr:
+    :param dst_addr:
         Destination address information.
+    :type dst_addr: const struct sockaddr \*
 
-    :param int timeout_ms:
+    :param timeout_ms:
         Time to wait for resolution to complete.
+    :type timeout_ms: unsigned long
 
 .. _`rdma_resolve_route`:
 
 rdma_resolve_route
 ==================
 
-.. c:function:: int rdma_resolve_route(struct rdma_cm_id *id, int timeout_ms)
+.. c:function:: int rdma_resolve_route(struct rdma_cm_id *id, unsigned long timeout_ms)
 
     Resolve the RDMA address bound to the RDMA identifier into route information needed to establish a connection.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         *undescribed*
+    :type id: struct rdma_cm_id \*
 
-    :param int timeout_ms:
+    :param timeout_ms:
         *undescribed*
+    :type timeout_ms: unsigned long
 
 .. _`rdma_resolve_route.description`:
 
@@ -155,14 +175,17 @@ rdma_create_qp
 
     Allocate a QP and associate it with the specified RDMA identifier.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         *undescribed*
+    :type id: struct rdma_cm_id \*
 
-    :param struct ib_pd \*pd:
+    :param pd:
         *undescribed*
+    :type pd: struct ib_pd \*
 
-    :param struct ib_qp_init_attr \*qp_init_attr:
+    :param qp_init_attr:
         *undescribed*
+    :type qp_init_attr: struct ib_qp_init_attr \*
 
 .. _`rdma_create_qp.description`:
 
@@ -181,8 +204,9 @@ rdma_destroy_qp
 
     Deallocate the QP associated with the specified RDMA identifier.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         *undescribed*
+    :type id: struct rdma_cm_id \*
 
 .. _`rdma_destroy_qp.description`:
 
@@ -201,25 +225,28 @@ rdma_init_qp_attr
 
     Initializes the QP attributes for use in transitioning to a specified QP state.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         Communication identifier associated with the QP attributes to
         initialize.
+    :type id: struct rdma_cm_id \*
 
-    :param struct ib_qp_attr \*qp_attr:
+    :param qp_attr:
         On input, specifies the desired QP state.  On output, the
         mandatory and desired optional attributes will be set in order to
         modify the QP to the specified state.
+    :type qp_attr: struct ib_qp_attr \*
 
-    :param int \*qp_attr_mask:
+    :param qp_attr_mask:
         The QP attribute mask that may be used to transition the
         QP to the specified state.
+    :type qp_attr_mask: int \*
 
 .. _`rdma_init_qp_attr.description`:
 
 Description
 -----------
 
-Users must set the \ ``qp_attr``\ ->qp_state to the desired QP state.  This call
+Users must set the \ ``qp_attr->qp_state``\  to the desired QP state.  This call
 will set all required attributes for the given transition, along with
 known optional attributes.  Users may override the attributes returned from
 this call before calling ib_modify_qp.
@@ -236,11 +263,13 @@ rdma_connect
 
     Initiate an active connection request.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         Connection identifier to connect.
+    :type id: struct rdma_cm_id \*
 
-    :param struct rdma_conn_param \*conn_param:
+    :param conn_param:
         Connection information used for connected QPs.
+    :type conn_param: struct rdma_conn_param \*
 
 .. _`rdma_connect.description`:
 
@@ -263,11 +292,13 @@ rdma_listen
 
     This function is called by the passive side to listen for incoming connection requests.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         *undescribed*
+    :type id: struct rdma_cm_id \*
 
-    :param int backlog:
+    :param backlog:
         *undescribed*
+    :type backlog: int
 
 .. _`rdma_listen.description`:
 
@@ -286,13 +317,15 @@ rdma_accept
 
     Called to accept a connection request or response.
 
-    :param  id:
+    :param id:
         Connection identifier associated with the request.
+    :type id: 
 
-    :param  conn_param:
+    :param conn_param:
         Information needed to establish the connection.  This must be
         provided if accepting a connection request.  If accepting a connection
         response, this parameter must be NULL.
+    :type conn_param: 
 
 .. _`rdma_accept.description`:
 
@@ -316,11 +349,13 @@ rdma_notify
 
     Notifies the RDMA CM of an asynchronous event that has occurred on the connection.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         Connection identifier to transition to established.
+    :type id: struct rdma_cm_id \*
 
-    :param enum ib_event_type event:
+    :param event:
         Asynchronous event.
+    :type event: enum ib_event_type
 
 .. _`rdma_notify.description`:
 
@@ -348,14 +383,17 @@ rdma_reject
 
     Called to reject a connection request or response.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         *undescribed*
+    :type id: struct rdma_cm_id \*
 
-    :param const void \*private_data:
+    :param private_data:
         *undescribed*
+    :type private_data: const void \*
 
-    :param u8 private_data_len:
+    :param private_data_len:
         *undescribed*
+    :type private_data_len: u8
 
 .. _`rdma_disconnect`:
 
@@ -366,8 +404,9 @@ rdma_disconnect
 
     This function disconnects the associated QP and transitions it into the error state.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         *undescribed*
+    :type id: struct rdma_cm_id \*
 
 .. _`rdma_join_multicast`:
 
@@ -378,19 +417,23 @@ rdma_join_multicast
 
     Join the multicast group specified by the given address.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         Communication identifier associated with the request.
+    :type id: struct rdma_cm_id \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         Multicast address identifying the group to join.
+    :type addr: struct sockaddr \*
 
-    :param u8 join_state:
+    :param join_state:
         Multicast JoinState bitmap requested by port.
         Bitmap is based on IB_SA_MCMEMBER_REC_JOIN_STATE bits.
+    :type join_state: u8
 
-    :param void \*context:
+    :param context:
         User-defined context associated with the join request, returned
         to the user through the private_data pointer in multicast events.
+    :type context: void \*
 
 .. _`rdma_leave_multicast`:
 
@@ -401,11 +444,13 @@ rdma_leave_multicast
 
     Leave the multicast group specified by the given address.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         *undescribed*
+    :type id: struct rdma_cm_id \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         *undescribed*
+    :type addr: struct sockaddr \*
 
 .. _`rdma_set_service_type`:
 
@@ -416,11 +461,13 @@ rdma_set_service_type
 
     Set the type of service associated with a connection identifier.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         Communication identifier to associated with service type.
+    :type id: struct rdma_cm_id \*
 
-    :param int tos:
+    :param tos:
         Type of service.
+    :type tos: int
 
 .. _`rdma_set_service_type.description`:
 
@@ -442,11 +489,13 @@ rdma_set_reuseaddr
 
     Allow the reuse of local addresses when binding the rdma_cm_id.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         Communication identifier to configure.
+    :type id: struct rdma_cm_id \*
 
-    :param int reuse:
+    :param reuse:
         Value indicating if the bound address is reusable.
+    :type reuse: int
 
 .. _`rdma_set_reuseaddr.description`:
 
@@ -464,11 +513,13 @@ rdma_set_afonly
 
     Specify that listens are restricted to the bound address family only.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         Communication identifer to configure.
+    :type id: struct rdma_cm_id \*
 
-    :param int afonly:
+    :param afonly:
         Value indicating if listens are restricted.
+    :type afonly: int
 
 .. _`rdma_set_afonly.description`:
 
@@ -486,11 +537,13 @@ rdma_is_consumer_reject
 
     return true if the consumer rejected the connect request.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         Communication identifier that received the REJECT event.
+    :type id: struct rdma_cm_id \*
 
-    :param int reason:
+    :param reason:
         Value returned in the REJECT event status field.
+    :type reason: int
 
 .. _`rdma_consumer_reject_data`:
 
@@ -501,14 +554,17 @@ rdma_consumer_reject_data
 
     return the consumer reject private data and length, if any.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         Communication identifier that received the REJECT event.
+    :type id: struct rdma_cm_id \*
 
-    :param struct rdma_cm_event \*ev:
+    :param ev:
         RDMA CM reject event.
+    :type ev: struct rdma_cm_event \*
 
-    :param u8 \*data_len:
+    :param data_len:
         Pointer to the resulting length of the consumer data.
+    :type data_len: u8 \*
 
 .. _`rdma_read_gids`:
 
@@ -519,14 +575,17 @@ rdma_read_gids
 
     Return the SGID and DGID used for establishing connection. This can be used after \ :c:func:`rdma_resolve_addr`\  on client side. This can be use on new connection on server side. This is applicable to IB, RoCE, iWarp. If cm_id is not bound yet to the RDMA device, it doesn't copy and SGID or DGID to the given pointers.
 
-    :param struct rdma_cm_id \*cm_id:
+    :param cm_id:
         *undescribed*
+    :type cm_id: struct rdma_cm_id \*
 
-    :param union ib_gid \*sgid:
+    :param sgid:
         Pointer to SGID where SGID will be returned. It is optional.
+    :type sgid: union ib_gid \*
 
-    :param union ib_gid \*dgid:
+    :param dgid:
         Pointer to DGID where DGID will be returned. It is optional.
+    :type dgid: union ib_gid \*
 
 .. _`rdma_read_gids.note`:
 

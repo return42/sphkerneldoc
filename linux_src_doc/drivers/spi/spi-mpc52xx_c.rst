@@ -10,11 +10,13 @@ mpc52xx_spi_fsm_process
 
     Finite State Machine iteration function
 
-    :param int irq:
+    :param irq:
         irq number that triggered the FSM or 0 for polling
+    :type irq: int
 
-    :param struct mpc52xx_spi \*ms:
+    :param ms:
         pointer to mpc52xx_spi driver data
+    :type ms: struct mpc52xx_spi \*
 
 .. _`mpc52xx_spi_irq`:
 
@@ -25,11 +27,13 @@ mpc52xx_spi_irq
 
     IRQ handler
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*_ms:
+    :param _ms:
         *undescribed*
+    :type _ms: void \*
 
 .. _`mpc52xx_spi_wq`:
 
@@ -40,8 +44,9 @@ mpc52xx_spi_wq
 
     Workqueue function for polling the state machine
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,11 +8,13 @@ ac100_rtc_get_time
 
 .. c:function:: int ac100_rtc_get_time(struct device *dev, struct rtc_time *rtc_tm)
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct rtc_time \*rtc_tm:
+    :param rtc_tm:
         *undescribed*
+    :type rtc_tm: struct rtc_time \*
 
 .. This file was automatic generated / don't edit.
 

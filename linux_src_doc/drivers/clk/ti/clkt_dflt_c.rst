@@ -10,20 +10,25 @@
 
     wait for a module to leave the idle state
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         module clock to wait for (needed for register offsets)
+    :type clk: struct clk_hw_omap \*
 
-    :param struct clk_omap_reg \*reg:
+    :param reg:
         virtual address of module IDLEST register
+    :type reg: struct clk_omap_reg \*
 
-    :param u32 mask:
+    :param mask:
         value to mask against to determine if the module is active
+    :type mask: u32
 
-    :param u8 idlest:
+    :param idlest:
         idle state indicator (0 or 1) for the clock
+    :type idlest: u8
 
-    :param const char \*name:
+    :param name:
         name of the clock (for printk)
+    :type name: const char \*
 
 .. _`_wait_idlest_generic.description`:
 
@@ -45,8 +50,9 @@ individual IP block that the IDLEST register exists in.
 
     wait for an OMAP module to leave IDLE
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* belonging to the module
+    :type clk: struct clk_hw_omap \*
 
 .. _`_omap2_module_wait_ready.description`:
 
@@ -68,14 +74,17 @@ omap2_clk_dflt_find_companion
 
     find companion clock to \ ``clk``\ 
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* to find the companion clock of
+    :type clk: struct clk_hw_omap \*
 
-    :param struct clk_omap_reg \*other_reg:
+    :param other_reg:
         void \__iomem \*\* to return the companion clock CM\_\*CLKEN va in
+    :type other_reg: struct clk_omap_reg \*
 
-    :param u8 \*other_bit:
+    :param other_bit:
         u8 \*\* to return the companion clock bit shift in
+    :type other_bit: u8 \*
 
 .. _`omap2_clk_dflt_find_companion.note`:
 
@@ -106,17 +115,21 @@ omap2_clk_dflt_find_idlest
 
     find CM_IDLEST reg va, bit shift for \ ``clk``\ 
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* to find IDLEST info for
+    :type clk: struct clk_hw_omap \*
 
-    :param struct clk_omap_reg \*idlest_reg:
+    :param idlest_reg:
         void \__iomem \*\* to return the CM_IDLEST va in
+    :type idlest_reg: struct clk_omap_reg \*
 
-    :param u8 \*idlest_bit:
+    :param idlest_bit:
         u8 \* to return the CM_IDLEST bit shift in
+    :type idlest_bit: u8 \*
 
-    :param u8 \*idlest_val:
+    :param idlest_val:
         u8 \* to return the idle status indicator
+    :type idlest_val: u8 \*
 
 .. _`omap2_clk_dflt_find_idlest.description`:
 
@@ -139,8 +152,9 @@ omap2_dflt_clk_enable
 
     enable a clock in the hardware
 
-    :param struct clk_hw \*hw:
+    :param hw:
         struct clk_hw \* of the clock to enable
+    :type hw: struct clk_hw \*
 
 .. _`omap2_dflt_clk_enable.description`:
 
@@ -164,8 +178,9 @@ omap2_dflt_clk_disable
 
     disable a clock in the hardware
 
-    :param struct clk_hw \*hw:
+    :param hw:
         struct clk_hw \* of the clock to disable
+    :type hw: struct clk_hw \*
 
 .. _`omap2_dflt_clk_disable.description`:
 
@@ -186,8 +201,9 @@ omap2_dflt_clk_is_enabled
 
     is clock enabled in the hardware?
 
-    :param struct clk_hw \*hw:
+    :param hw:
         struct clk_hw \* to check
+    :type hw: struct clk_hw \*
 
 .. _`omap2_dflt_clk_is_enabled.description`:
 

@@ -192,14 +192,17 @@ s3c_hsudc_complete_request
 
     Complete a transfer request.
 
-    :param struct s3c_hsudc_ep \*hsep:
+    :param hsep:
         Endpoint to which the request belongs.
+    :type hsep: struct s3c_hsudc_ep \*
 
-    :param struct s3c_hsudc_req \*hsreq:
+    :param hsreq:
         Transfer request to be completed.
+    :type hsreq: struct s3c_hsudc_req \*
 
-    :param int status:
+    :param status:
         Transfer completion status for the transfer request.
+    :type status: int
 
 .. _`s3c_hsudc_nuke_ep`:
 
@@ -210,11 +213,13 @@ s3c_hsudc_nuke_ep
 
     Terminate all requests queued for a endpoint.
 
-    :param struct s3c_hsudc_ep \*hsep:
+    :param hsep:
         Endpoint for which queued requests have to be terminated.
+    :type hsep: struct s3c_hsudc_ep \*
 
-    :param int status:
+    :param status:
         Transfer completion status for the transfer request.
+    :type status: int
 
 .. _`s3c_hsudc_stop_activity`:
 
@@ -225,8 +230,9 @@ s3c_hsudc_stop_activity
 
     Stop activity on all endpoints.
 
-    :param struct s3c_hsudc \*hsudc:
+    :param hsudc:
         Device controller for which EP activity is to be stopped.
+    :type hsudc: struct s3c_hsudc \*
 
 .. _`s3c_hsudc_stop_activity.description`:
 
@@ -245,11 +251,13 @@ s3c_hsudc_read_setup_pkt
 
     Read the received setup packet from EP0 fifo.
 
-    :param struct s3c_hsudc \*hsudc:
+    :param hsudc:
         Device controller from which setup packet is to be read.
+    :type hsudc: struct s3c_hsudc \*
 
-    :param u16 \*buf:
+    :param buf:
         The buffer into which the setup packet is read.
+    :type buf: u16 \*
 
 .. _`s3c_hsudc_read_setup_pkt.description`:
 
@@ -268,11 +276,13 @@ s3c_hsudc_write_fifo
 
     Write next chunk of transfer data to EP fifo.
 
-    :param struct s3c_hsudc_ep \*hsep:
+    :param hsep:
         Endpoint to which the data is to be written.
+    :type hsep: struct s3c_hsudc_ep \*
 
-    :param struct s3c_hsudc_req \*hsreq:
+    :param hsreq:
         Transfer request from which the next chunk of data is written.
+    :type hsreq: struct s3c_hsudc_req \*
 
 .. _`s3c_hsudc_write_fifo.description`:
 
@@ -291,11 +301,13 @@ s3c_hsudc_read_fifo
 
     Read the next chunk of data from EP fifo.
 
-    :param struct s3c_hsudc_ep \*hsep:
+    :param hsep:
         Endpoint from which the data is to be read.
+    :type hsep: struct s3c_hsudc_ep \*
 
-    :param struct s3c_hsudc_req \*hsreq:
+    :param hsreq:
         Transfer request to which the next chunk of data read is written.
+    :type hsreq: struct s3c_hsudc_req \*
 
 .. _`s3c_hsudc_read_fifo.description`:
 
@@ -315,11 +327,13 @@ s3c_hsudc_epin_intr
 
     Handle in-endpoint interrupt. \ ``hsudc``\  - Device controller for which the interrupt is to be handled. \ ``ep_idx``\  - Endpoint number on which an interrupt is pending.
 
-    :param struct s3c_hsudc \*hsudc:
+    :param hsudc:
         *undescribed*
+    :type hsudc: struct s3c_hsudc \*
 
-    :param u32 ep_idx:
+    :param ep_idx:
         *undescribed*
+    :type ep_idx: u32
 
 .. _`s3c_hsudc_epin_intr.description`:
 
@@ -338,11 +352,13 @@ s3c_hsudc_epout_intr
 
     Handle out-endpoint interrupt. \ ``hsudc``\  - Device controller for which the interrupt is to be handled. \ ``ep_idx``\  - Endpoint number on which an interrupt is pending.
 
-    :param struct s3c_hsudc \*hsudc:
+    :param hsudc:
         *undescribed*
+    :type hsudc: struct s3c_hsudc \*
 
-    :param u32 ep_idx:
+    :param ep_idx:
         *undescribed*
+    :type ep_idx: u32
 
 .. _`s3c_hsudc_epout_intr.description`:
 
@@ -361,11 +377,13 @@ s3c_hsudc_process_req_status
 
     Handle get status control request.
 
-    :param struct s3c_hsudc \*hsudc:
+    :param hsudc:
         Device controller on which get status request has be handled.
+    :type hsudc: struct s3c_hsudc \*
 
-    :param struct usb_ctrlrequest \*ctrl:
+    :param ctrl:
         Control request as received on the endpoint 0.
+    :type ctrl: struct usb_ctrlrequest \*
 
 .. _`s3c_hsudc_process_req_status.description`:
 
@@ -383,8 +401,9 @@ s3c_hsudc_process_setup
 
     Process control request received on endpoint 0.
 
-    :param struct s3c_hsudc \*hsudc:
+    :param hsudc:
         Device controller on which control request has been received.
+    :type hsudc: struct s3c_hsudc \*
 
 .. _`s3c_hsudc_process_setup.description`:
 
@@ -403,11 +422,13 @@ s3c_hsudc_ep_enable
 
     Enable a endpoint.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         The endpoint to be enabled.
+    :type _ep: struct usb_ep \*
 
-    :param const struct usb_endpoint_descriptor \*desc:
+    :param desc:
         Endpoint descriptor.
+    :type desc: const struct usb_endpoint_descriptor \*
 
 .. _`s3c_hsudc_ep_enable.description`:
 
@@ -427,8 +448,9 @@ s3c_hsudc_ep_disable
 
     Disable a endpoint.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         The endpoint to be disabled.
+    :type _ep: struct usb_ep \*
 
 .. _`s3c_hsudc_ep_disable.description`:
 
@@ -446,11 +468,13 @@ s3c_hsudc_alloc_request
 
     Allocate a new request.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         Endpoint for which request is allocated (not used).
+    :type _ep: struct usb_ep \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         Flags used for the allocation.
+    :type gfp_flags: gfp_t
 
 .. _`s3c_hsudc_alloc_request.description`:
 
@@ -468,11 +492,13 @@ s3c_hsudc_free_request
 
     Deallocate a request.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         Endpoint for which request is deallocated (not used).
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*_req:
+    :param _req:
         Request to be deallocated.
+    :type _req: struct usb_request \*
 
 .. _`s3c_hsudc_free_request.description`:
 
@@ -490,14 +516,17 @@ s3c_hsudc_queue
 
     Queue a transfer request for the endpoint.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         Endpoint for which the request is queued.
+    :type _ep: struct usb_ep \*
 
-    :param struct usb_request \*_req:
+    :param _req:
         Request to be queued.
+    :type _req: struct usb_request \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         Not used.
+    :type gfp_flags: gfp_t
 
 .. _`s3c_hsudc_queue.description`:
 
@@ -515,11 +544,13 @@ s3c_hsudc_dequeue
 
     Dequeue a transfer request from an endpoint.
 
-    :param struct usb_ep \*_ep:
+    :param _ep:
         Endpoint from which the request is dequeued.
+    :type _ep: struct usb_ep \*
 
-    :param struct usb_request \*_req:
+    :param _req:
         Request to be dequeued.
+    :type _req: struct usb_request \*
 
 .. _`s3c_hsudc_dequeue.description`:
 
@@ -537,14 +568,17 @@ s3c_hsudc_initep
 
     Initialize a endpoint to default state. \ ``hsudc``\  - Reference to the device controller. \ ``hsep``\  - Endpoint to be initialized. \ ``epnum``\  - Address to be assigned to the endpoint.
 
-    :param struct s3c_hsudc \*hsudc:
+    :param hsudc:
         *undescribed*
+    :type hsudc: struct s3c_hsudc \*
 
-    :param struct s3c_hsudc_ep \*hsep:
+    :param hsep:
         *undescribed*
+    :type hsep: struct s3c_hsudc_ep \*
 
-    :param int epnum:
+    :param epnum:
         *undescribed*
+    :type epnum: int
 
 .. _`s3c_hsudc_initep.description`:
 
@@ -562,8 +596,9 @@ s3c_hsudc_setup_ep
 
     Configure all endpoints to default state.
 
-    :param struct s3c_hsudc \*hsudc:
+    :param hsudc:
         Reference to device controller.
+    :type hsudc: struct s3c_hsudc \*
 
 .. _`s3c_hsudc_setup_ep.description`:
 
@@ -581,8 +616,9 @@ s3c_hsudc_reconfig
 
     Reconfigure the device controller to default state.
 
-    :param struct s3c_hsudc \*hsudc:
+    :param hsudc:
         Reference to device controller.
+    :type hsudc: struct s3c_hsudc \*
 
 .. _`s3c_hsudc_reconfig.description`:
 
@@ -600,11 +636,13 @@ s3c_hsudc_irq
 
     Interrupt handler for device controller.
 
-    :param int irq:
+    :param irq:
         Not used.
+    :type irq: int
 
-    :param void \*_dev:
+    :param _dev:
         Reference to the device controller.
+    :type _dev: void \*
 
 .. _`s3c_hsudc_irq.description`:
 

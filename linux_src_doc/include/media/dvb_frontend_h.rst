@@ -62,9 +62,9 @@ Definition
 
     struct dvb_tuner_info {
         char name[128];
-        u32 frequency_min;
-        u32 frequency_max;
-        u32 frequency_step;
+        u32 frequency_min_hz;
+        u32 frequency_max_hz;
+        u32 frequency_step_hz;
         u32 bandwidth_min;
         u32 bandwidth_max;
         u32 bandwidth_step;
@@ -78,14 +78,14 @@ Members
 name
     name of the Frontend
 
-frequency_min
-    minimal frequency supported
+frequency_min_hz
+    minimal frequency supported in Hz
 
-frequency_max
-    maximum frequency supported
+frequency_max_hz
+    maximum frequency supported in Hz
 
-frequency_step
-    frequency step
+frequency_step_hz
+    frequency step in Hz
 
 bandwidth_min
     minimal frontend bandwidth supported
@@ -95,14 +95,6 @@ bandwidth_max
 
 bandwidth_step
     frontend bandwidth step
-
-.. _`dvb_tuner_info.note`:
-
-NOTE
-----
-
-frequency parameters are in Hz, for terrestrial/cable or kHz for
-satellite.
 
 .. _`analog_parameters`:
 
@@ -476,6 +468,70 @@ set_config
     callback function used to send some tuner-specific
     parameters.
 
+.. _`dvb_frontend_internal_info`:
+
+struct dvb_frontend_internal_info
+=================================
+
+.. c:type:: struct dvb_frontend_internal_info
+
+    Frontend properties and capabilities
+
+.. _`dvb_frontend_internal_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dvb_frontend_internal_info {
+        char name[128];
+        u32 frequency_min_hz;
+        u32 frequency_max_hz;
+        u32 frequency_stepsize_hz;
+        u32 frequency_tolerance_hz;
+        u32 symbol_rate_min;
+        u32 symbol_rate_max;
+        u32 symbol_rate_tolerance;
+        enum fe_caps caps;
+    }
+
+.. _`dvb_frontend_internal_info.members`:
+
+Members
+-------
+
+name
+    Name of the frontend
+
+frequency_min_hz
+    Minimal frequency supported by the frontend.
+
+frequency_max_hz
+    Minimal frequency supported by the frontend.
+
+frequency_stepsize_hz
+    All frequencies are multiple of this value.
+
+frequency_tolerance_hz
+    Frequency tolerance.
+
+symbol_rate_min
+    Minimal symbol rate, in bauds
+    (for Cable/Satellite systems).
+
+symbol_rate_max
+    Maximal symbol rate, in bauds
+    (for Cable/Satellite systems).
+
+symbol_rate_tolerance
+    Maximal symbol rate tolerance, in ppm
+    (for Cable/Satellite systems).
+
+caps
+    Capabilities supported by the frontend,
+    as specified in \ :c:type:`enum fe_caps <fe_caps>`\ .
+
 .. _`dvb_frontend_ops`:
 
 struct dvb_frontend_ops
@@ -493,7 +549,7 @@ Definition
 .. code-block:: c
 
     struct dvb_frontend_ops {
-        struct dvb_frontend_info info;
+        struct dvb_frontend_internal_info info;
         u8 delsys[MAX_DELSYS];
         void (*detach)(struct dvb_frontend *fe);
         void (*release)(struct dvb_frontend* fe);
@@ -1026,11 +1082,13 @@ dvb_register_frontend
 
     Registers a DVB frontend at the adapter
 
-    :param struct dvb_adapter \*dvb:
+    :param dvb:
         pointer to \ :c:type:`struct dvb_adapter <dvb_adapter>`\ 
+    :type dvb: struct dvb_adapter \*
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         pointer to \ :c:type:`struct dvb_frontend <dvb_frontend>`\ 
+    :type fe: struct dvb_frontend \*
 
 .. _`dvb_register_frontend.description`:
 
@@ -1051,8 +1109,9 @@ dvb_unregister_frontend
 
     Unregisters a DVB frontend
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         pointer to \ :c:type:`struct dvb_frontend <dvb_frontend>`\ 
+    :type fe: struct dvb_frontend \*
 
 .. _`dvb_unregister_frontend.description`:
 
@@ -1080,8 +1139,9 @@ dvb_frontend_detach
 
     Detaches and frees frontend specific data
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         pointer to \ :c:type:`struct dvb_frontend <dvb_frontend>`\ 
+    :type fe: struct dvb_frontend \*
 
 .. _`dvb_frontend_detach.description`:
 
@@ -1106,8 +1166,9 @@ dvb_frontend_suspend
 
     Suspends a Digital TV frontend
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         pointer to \ :c:type:`struct dvb_frontend <dvb_frontend>`\ 
+    :type fe: struct dvb_frontend \*
 
 .. _`dvb_frontend_suspend.description`:
 
@@ -1134,8 +1195,9 @@ dvb_frontend_resume
 
     Resumes a Digital TV frontend
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         pointer to \ :c:type:`struct dvb_frontend <dvb_frontend>`\ 
+    :type fe: struct dvb_frontend \*
 
 .. _`dvb_frontend_resume.description`:
 
@@ -1165,8 +1227,9 @@ dvb_frontend_reinitialise
 
     forces a reinitialisation at the frontend
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         pointer to \ :c:type:`struct dvb_frontend <dvb_frontend>`\ 
+    :type fe: struct dvb_frontend \*
 
 .. _`dvb_frontend_reinitialise.description`:
 
@@ -1194,11 +1257,13 @@ dvb_frontend_sleep_until
 
     Sleep for the amount of time given by add_usec parameter
 
-    :param ktime_t \*waketime:
+    :param waketime:
         pointer to \ :c:type:`struct ktime_t <ktime_t>`\ 
+    :type waketime: ktime_t \*
 
-    :param u32 add_usec:
+    :param add_usec:
         time to sleep, in microseconds
+    :type add_usec: u32
 
 .. _`dvb_frontend_sleep_until.description`:
 

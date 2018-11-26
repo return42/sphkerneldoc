@@ -8,8 +8,9 @@ nx_debugfs_init
 
 .. c:function:: int nx_debugfs_init(struct nx_crypto_driver *drv)
 
-    :param struct nx_crypto_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct nx_crypto_driver \*
 
 .. _`nx_debugfs_init.description`:
 

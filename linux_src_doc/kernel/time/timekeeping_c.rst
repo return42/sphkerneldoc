@@ -51,11 +51,13 @@ tk_setup_internals
 
     Set up internals to use clocksource clock.
 
-    :param struct timekeeper \*tk:
+    :param tk:
         The target timekeeper to setup.
+    :type tk: struct timekeeper \*
 
-    :param struct clocksource \*clock:
+    :param clock:
         Pointer to clocksource.
+    :type clock: struct clocksource \*
 
 .. _`tk_setup_internals.description`:
 
@@ -72,15 +74,17 @@ Unless you're the timekeeping code, you should not be using this!
 update_fast_timekeeper
 ======================
 
-.. c:function:: void update_fast_timekeeper(struct tk_read_base *tkr, struct tk_fast *tkf)
+.. c:function:: void update_fast_timekeeper(const struct tk_read_base *tkr, struct tk_fast *tkf)
 
     Update the fast and NMI safe monotonic timekeeper.
 
-    :param struct tk_read_base \*tkr:
+    :param tkr:
         Timekeeping readout base from which we take the update
+    :type tkr: const struct tk_read_base \*
 
-    :param struct tk_fast \*tkf:
+    :param tkf:
         *undescribed*
+    :type tkf: struct tk_fast \*
 
 .. _`update_fast_timekeeper.description`:
 
@@ -106,8 +110,9 @@ slightly wrong timestamp (a few nanoseconds). See
 
     Fast NMI safe access to clock monotonic
 
-    :param struct tk_fast \*tkf:
+    :param tkf:
         *undescribed*
+    :type tkf: struct tk_fast \*
 
 .. _`__ktime_get_fast_ns.description`:
 
@@ -157,8 +162,9 @@ ktime_get_boot_fast_ns
 
     NMI safe and fast access to boot clock.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ktime_get_boot_fast_ns.description`:
 
@@ -197,20 +203,22 @@ ktime_get_real_fast_ns
 
     - NMI safe and fast access to clock realtime.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`halt_fast_timekeeper`:
 
 halt_fast_timekeeper
 ====================
 
-.. c:function:: void halt_fast_timekeeper(struct timekeeper *tk)
+.. c:function:: void halt_fast_timekeeper(const struct timekeeper *tk)
 
     Prevent fast timekeeper from accessing clocksource.
 
-    :param struct timekeeper \*tk:
+    :param tk:
         Timekeeper to snapshot.
+    :type tk: const struct timekeeper \*
 
 .. _`halt_fast_timekeeper.description`:
 
@@ -232,8 +240,9 @@ pvclock_gtod_register_notifier
 
     register a pvclock timedata update listener
 
-    :param struct notifier_block \*nb:
+    :param nb:
         *undescribed*
+    :type nb: struct notifier_block \*
 
 .. _`pvclock_gtod_unregister_notifier`:
 
@@ -244,8 +253,9 @@ pvclock_gtod_unregister_notifier
 
     unregister a pvclock timedata update listener
 
-    :param struct notifier_block \*nb:
+    :param nb:
         *undescribed*
+    :type nb: struct notifier_block \*
 
 .. _`timekeeping_forward_now`:
 
@@ -256,8 +266,9 @@ timekeeping_forward_now
 
     update clock to the current time
 
-    :param struct timekeeper \*tk:
+    :param tk:
         *undescribed*
+    :type tk: struct timekeeper \*
 
 .. _`timekeeping_forward_now.description`:
 
@@ -277,8 +288,9 @@ ktime_get_real_ts64
 
     Returns the time of day in a timespec64.
 
-    :param struct timespec64 \*ts:
+    :param ts:
         pointer to the timespec to be set
+    :type ts: struct timespec64 \*
 
 .. _`ktime_get_real_ts64.description`:
 
@@ -296,11 +308,13 @@ ktime_mono_to_any
 
     convert mononotic time to any other time
 
-    :param ktime_t tmono:
+    :param tmono:
         time to convert.
+    :type tmono: ktime_t
 
-    :param enum tk_offsets offs:
+    :param offs:
         which offset to use
+    :type offs: enum tk_offsets
 
 .. _`ktime_get_raw`:
 
@@ -311,8 +325,9 @@ ktime_get_raw
 
     Returns the raw monotonic time in ktime_t format
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ktime_get_ts64`:
 
@@ -323,8 +338,9 @@ ktime_get_ts64
 
     get the monotonic clock in timespec64 format
 
-    :param struct timespec64 \*ts:
+    :param ts:
         pointer to timespec variable
+    :type ts: struct timespec64 \*
 
 .. _`ktime_get_ts64.description`:
 
@@ -344,8 +360,9 @@ ktime_get_seconds
 
     Get the seconds portion of CLOCK_MONOTONIC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ktime_get_seconds.description`:
 
@@ -367,8 +384,9 @@ ktime_get_real_seconds
 
     Get the seconds portion of CLOCK_REALTIME
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ktime_get_real_seconds.description`:
 
@@ -392,8 +410,9 @@ value.
 
     The same as ktime_get_real_seconds but without the sequence counter protect. This internal function is called just when timekeeping lock is already held.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ktime_get_snapshot`:
 
@@ -404,8 +423,9 @@ ktime_get_snapshot
 
     snapshots the realtime/monotonic raw clocks with counter
 
-    :param struct system_time_snapshot \*systime_snapshot:
+    :param systime_snapshot:
         pointer to struct receiving the system time snapshot
+    :type systime_snapshot: struct system_time_snapshot \*
 
 .. _`adjust_historical_crosststamp`:
 
@@ -416,21 +436,26 @@ adjust_historical_crosststamp
 
     adjust crosstimestamp previous to current interval
 
-    :param struct system_time_snapshot \*history:
+    :param history:
         Snapshot representing start of history
+    :type history: struct system_time_snapshot \*
 
-    :param u64 partial_history_cycles:
+    :param partial_history_cycles:
         Cycle offset into history (fractional part)
+    :type partial_history_cycles: u64
 
-    :param u64 total_history_cycles:
+    :param total_history_cycles:
         Total history length in cycles
+    :type total_history_cycles: u64
 
-    :param bool discontinuity:
+    :param discontinuity:
         True indicates clock was set on history period
+    :type discontinuity: bool
 
-    :param struct system_device_crosststamp \*ts:
+    :param ts:
         Cross timestamp that should be adjusted using
         partial/total ratio
+    :type ts: struct system_device_crosststamp \*
 
 .. _`adjust_historical_crosststamp.description`:
 
@@ -458,15 +483,18 @@ get_device_system_crosststamp
         Callback to get simultaneous device time and
         system counter from the device driver
 
-    :param void \*ctx:
+    :param ctx:
         Context passed to \ :c:func:`get_time_fn`\ 
+    :type ctx: void \*
 
-    :param struct system_time_snapshot \*history_begin:
+    :param history_begin:
         Historical reference point used to interpolate system
         time when counter provided by the driver is before the current interval
+    :type history_begin: struct system_time_snapshot \*
 
-    :param struct system_device_crosststamp \*xtstamp:
+    :param xtstamp:
         Receives simultaneously captured system and device time
+    :type xtstamp: struct system_device_crosststamp \*
 
 .. _`get_device_system_crosststamp.description`:
 
@@ -474,25 +502,6 @@ Description
 -----------
 
 Reads a timestamp from a device and correlates it to system time
-
-.. _`do_gettimeofday`:
-
-do_gettimeofday
-===============
-
-.. c:function:: void do_gettimeofday(struct timeval *tv)
-
-    Returns the time of day in a timeval
-
-    :param struct timeval \*tv:
-        pointer to the timeval to be set
-
-.. _`do_gettimeofday.note`:
-
-NOTE
-----
-
-Users should be converted to using \ :c:func:`getnstimeofday`\ 
 
 .. _`do_settimeofday64`:
 
@@ -503,8 +512,9 @@ do_settimeofday64
 
     Sets the time of day.
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         pointer to the timespec64 variable containing the new time
+    :type ts: const struct timespec64 \*
 
 .. _`do_settimeofday64.description`:
 
@@ -518,12 +528,13 @@ Sets the time of day to the new time and update NTP and notify hrtimers
 timekeeping_inject_offset
 =========================
 
-.. c:function:: int timekeeping_inject_offset(struct timespec64 *ts)
+.. c:function:: int timekeeping_inject_offset(const struct timespec64 *ts)
 
     Adds or subtracts from the current time.
 
-    :param struct timespec64 \*ts:
+    :param ts:
         *undescribed*
+    :type ts: const struct timespec64 \*
 
 .. _`timekeeping_inject_offset.description`:
 
@@ -541,11 +552,13 @@ Adds or subtracts an offset value from the current time.
 
     Sets the TAI offset from UTC and monotonic
 
-    :param struct timekeeper \*tk:
+    :param tk:
         *undescribed*
+    :type tk: struct timekeeper \*
 
-    :param s32 tai_offset:
+    :param tai_offset:
         *undescribed*
+    :type tai_offset: s32
 
 .. _`change_clocksource`:
 
@@ -556,8 +569,9 @@ change_clocksource
 
     Swaps clocksources if a new one is available
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`change_clocksource.description`:
 
@@ -575,8 +589,9 @@ timekeeping_notify
 
     Install a new clock source
 
-    :param struct clocksource \*clock:
+    :param clock:
         pointer to the clock source
+    :type clock: struct clocksource \*
 
 .. _`timekeeping_notify.description`:
 
@@ -595,8 +610,9 @@ ktime_get_raw_ts64
 
     Returns the raw monotonic time in a timespec
 
-    :param struct timespec64 \*ts:
+    :param ts:
         pointer to the timespec64 to be set
+    :type ts: struct timespec64 \*
 
 .. _`ktime_get_raw_ts64.description`:
 
@@ -614,8 +630,9 @@ timekeeping_valid_for_hres
 
     Check if timekeeping is suitable for hres
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`timekeeping_max_deferment`:
 
@@ -626,8 +643,9 @@ timekeeping_max_deferment
 
     Returns max time the clocksource can be deferred
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`read_persistent_clock`:
 
@@ -638,8 +656,9 @@ read_persistent_clock
 
     Return time from the persistent clock.
 
-    :param struct timespec \*ts:
+    :param ts:
         *undescribed*
+    :type ts: struct timespec \*
 
 .. _`read_persistent_clock.description`:
 
@@ -652,43 +671,52 @@ Returns a timespec with tv_sec=0 and tv_nsec=0 if unsupported.
 
 XXX - Do be sure to remove it once all arches implement it.
 
-.. _`read_boot_clock64`:
+.. _`read_persistent_wall_and_boot_offset`:
 
-read_boot_clock64
-=================
+read_persistent_wall_and_boot_offset
+====================================
 
-.. c:function:: void read_boot_clock64(struct timespec64 *ts)
+.. c:function:: void read_persistent_wall_and_boot_offset(struct timespec64 *wall_time, struct timespec64 *boot_offset)
 
-    Return time of the system start.
+    Read persistent clock, and also offset from the boot.
 
-    :param struct timespec64 \*ts:
+    :param wall_time:
         *undescribed*
+    :type wall_time: struct timespec64 \*
 
-.. _`read_boot_clock64.description`:
+    :param boot_offset:
+        *undescribed*
+    :type boot_offset: struct timespec64 \*
+
+.. _`read_persistent_wall_and_boot_offset.description`:
 
 Description
 -----------
 
 Weak dummy function for arches that do not yet support it.
-Function to read the exact time the system has been started.
-Returns a timespec64 with tv_sec=0 and tv_nsec=0 if unsupported.
-
-XXX - Do be sure to remove it once all arches implement it.
+wall_time    - current time as returned by persistent clock
+boot_offset  - offset that is defined as wall_time - boot_time
+The default function calculates offset based on the current value of
+\ :c:func:`local_clock`\ . This way architectures that support \ :c:func:`sched_clock`\  but don't
+support dedicated boot time clock will provide the best estimate of the
+boot time.
 
 .. _`__timekeeping_inject_sleeptime`:
 
 \__timekeeping_inject_sleeptime
 ===============================
 
-.. c:function:: void __timekeeping_inject_sleeptime(struct timekeeper *tk, struct timespec64 *delta)
+.. c:function:: void __timekeeping_inject_sleeptime(struct timekeeper *tk, const struct timespec64 *delta)
 
     Internal function to add sleep interval
 
-    :param struct timekeeper \*tk:
+    :param tk:
         *undescribed*
+    :type tk: struct timekeeper \*
 
-    :param struct timespec64 \*delta:
+    :param delta:
         pointer to a timespec delta value
+    :type delta: const struct timespec64 \*
 
 .. _`__timekeeping_inject_sleeptime.description`:
 
@@ -707,8 +735,9 @@ timekeeping_rtc_skipresume
 
     injection, the preference order is: 1) non-stop clocksource 2) persistent clock (ie: RTC accessible when irqs are off) 3) RTC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`timekeeping_rtc_skipresume.description`:
 
@@ -733,8 +762,9 @@ timekeeping_rtc_skipsuspend
 
     \ :c:func:`timekeeping_resume`\  which is invoked after \ :c:func:`rtc_suspend`\ , so we can't skip \ :c:func:`rtc_suspend`\  surely if system has 1).
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`timekeeping_rtc_skipsuspend.description`:
 
@@ -750,12 +780,13 @@ case we don't need to call \ :c:func:`rtc_suspend`\ , and this is what
 timekeeping_inject_sleeptime64
 ==============================
 
-.. c:function:: void timekeeping_inject_sleeptime64(struct timespec64 *delta)
+.. c:function:: void timekeeping_inject_sleeptime64(const struct timespec64 *delta)
 
     Adds suspend interval to timeekeeping values
 
-    :param struct timespec64 \*delta:
+    :param delta:
         pointer to a timespec64 delta value
+    :type delta: const struct timespec64 \*
 
 .. _`timekeeping_inject_sleeptime64.description`:
 
@@ -778,8 +809,9 @@ timekeeping_resume
 
     Resumes the generic timekeeping subsystem.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`accumulate_nsecs_to_secs`:
 
@@ -790,8 +822,9 @@ accumulate_nsecs_to_secs
 
     Accumulates nsecs into secs
 
-    :param struct timekeeper \*tk:
+    :param tk:
         *undescribed*
+    :type tk: struct timekeeper \*
 
 .. _`accumulate_nsecs_to_secs.description`:
 
@@ -811,17 +844,21 @@ logarithmic_accumulation
 
     shifted accumulation of cycles
 
-    :param struct timekeeper \*tk:
+    :param tk:
         *undescribed*
+    :type tk: struct timekeeper \*
 
-    :param u64 offset:
+    :param offset:
         *undescribed*
+    :type offset: u64
 
-    :param u32 shift:
+    :param shift:
         *undescribed*
+    :type shift: u32
 
-    :param unsigned int \*clock_set:
+    :param clock_set:
         *undescribed*
+    :type clock_set: unsigned int \*
 
 .. _`logarithmic_accumulation.description`:
 
@@ -843,8 +880,9 @@ update_wall_time
 
     Uses the current clocksource to increment the wall time
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`getboottime64`:
 
@@ -855,8 +893,9 @@ getboottime64
 
     Return the real time of system boot.
 
-    :param struct timespec64 \*ts:
+    :param ts:
         pointer to the timespec64 to be set
+    :type ts: struct timespec64 \*
 
 .. _`getboottime64.description`:
 
@@ -879,17 +918,21 @@ ktime_get_update_offsets_now
 
     hrtimer helper
 
-    :param unsigned int \*cwsseq:
+    :param cwsseq:
         pointer to check and store the clock was set sequence number
+    :type cwsseq: unsigned int \*
 
-    :param ktime_t \*offs_real:
+    :param offs_real:
         pointer to storage for monotonic -> realtime offset
+    :type offs_real: ktime_t \*
 
-    :param ktime_t \*offs_boot:
+    :param offs_boot:
         pointer to storage for monotonic -> boottime offset
+    :type offs_boot: ktime_t \*
 
-    :param ktime_t \*offs_tai:
+    :param offs_tai:
         pointer to storage for monotonic -> clock tai offset
+    :type offs_tai: ktime_t \*
 
 .. _`ktime_get_update_offsets_now.description`:
 
@@ -907,12 +950,13 @@ Called from \ :c:func:`hrtimer_interrupt`\  or \ :c:func:`retrigger_next_event`\
 timekeeping_validate_timex
 ==========================
 
-.. c:function:: int timekeeping_validate_timex(struct timex *txc)
+.. c:function:: int timekeeping_validate_timex(const struct timex *txc)
 
     Ensures the timex is ok for use in do_adjtimex
 
-    :param struct timex \*txc:
+    :param txc:
         *undescribed*
+    :type txc: const struct timex \*
 
 .. _`do_adjtimex`:
 
@@ -923,8 +967,9 @@ do_adjtimex
 
     Accessor function to NTP \__do_adjtimex function
 
-    :param struct timex \*txc:
+    :param txc:
         *undescribed*
+    :type txc: struct timex \*
 
 .. _`hardpps`:
 
@@ -935,11 +980,13 @@ hardpps
 
     Accessor function to NTP \__hardpps function
 
-    :param const struct timespec64 \*phase_ts:
+    :param phase_ts:
         *undescribed*
+    :type phase_ts: const struct timespec64 \*
 
-    :param const struct timespec64 \*raw_ts:
+    :param raw_ts:
         *undescribed*
+    :type raw_ts: const struct timespec64 \*
 
 .. _`xtime_update`:
 
@@ -950,8 +997,9 @@ xtime_update
 
     advances the timekeeping infrastructure
 
-    :param unsigned long ticks:
+    :param ticks:
         number of ticks, that have elapsed since the last call.
+    :type ticks: unsigned long
 
 .. _`xtime_update.description`:
 

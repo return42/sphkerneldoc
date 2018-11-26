@@ -201,6 +201,7 @@ Definition
         atomic_t cache_resolve_queue_len;
         bool mroute_do_assert;
         bool mroute_do_pim;
+        bool mroute_do_wrvifwhole;
         int mroute_reg_vif_num;
     }
 
@@ -250,6 +251,9 @@ mroute_do_assert
 
 mroute_do_pim
     Whether to receive IGMP PIMv1
+
+mroute_do_wrvifwhole
+    *undescribed*
 
 mroute_reg_vif_num
     PIM-device vif index

@@ -10,14 +10,17 @@
 
     output a warning to the syslog
 
-    :param const char \*function:
+    :param function:
         name of function outputting the warning
+    :type function: const char \*
 
-    :param const struct super_block \*sb:
+    :param sb:
         super block of mounted ntfs filesystem
+    :type sb: const struct super_block \*
 
-    :param const char \*fmt:
+    :param fmt:
         warning string containing format specifications
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         a variable number of arguments specified in \ ``fmt``\ 
@@ -48,14 +51,17 @@ as this provides the \ ``function``\  parameter automatically.
 
     output an error to the syslog
 
-    :param const char \*function:
+    :param function:
         name of function outputting the error
+    :type function: const char \*
 
-    :param const struct super_block \*sb:
+    :param sb:
         super block of mounted ntfs filesystem
+    :type sb: const struct super_block \*
 
-    :param const char \*fmt:
+    :param fmt:
         error string containing format specifications
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         a variable number of arguments specified in \ ``fmt``\ 

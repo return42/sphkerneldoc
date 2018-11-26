@@ -29,6 +29,7 @@ codecs
     rt5668_c
     rt5670_c
     rt5677_c
+    rt5682_c
     sigmadsp-i2c_c
     sigmadsp-regmap_c
     sigmadsp_c

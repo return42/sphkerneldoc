@@ -10,11 +10,13 @@ ice_unmap_and_free_tx_buf
 
     Release a Tx buffer
 
-    :param struct ice_ring \*ring:
+    :param ring:
         the ring that owns the buffer
+    :type ring: struct ice_ring \*
 
-    :param struct ice_tx_buf \*tx_buf:
+    :param tx_buf:
         the buffer to free
+    :type tx_buf: struct ice_tx_buf \*
 
 .. _`ice_clean_tx_ring`:
 
@@ -25,8 +27,9 @@ ice_clean_tx_ring
 
     Free any empty Tx buffers
 
-    :param struct ice_ring \*tx_ring:
+    :param tx_ring:
         ring to be cleaned
+    :type tx_ring: struct ice_ring \*
 
 .. _`ice_free_tx_ring`:
 
@@ -37,8 +40,9 @@ ice_free_tx_ring
 
     Free Tx resources per queue
 
-    :param struct ice_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring for a specific queue
+    :type tx_ring: struct ice_ring \*
 
 .. _`ice_free_tx_ring.description`:
 
@@ -56,14 +60,17 @@ ice_clean_tx_irq
 
     Reclaim resources after transmit completes
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI we care about
+    :type vsi: struct ice_vsi \*
 
-    :param struct ice_ring \*tx_ring:
+    :param tx_ring:
         Tx ring to clean
+    :type tx_ring: struct ice_ring \*
 
-    :param int napi_budget:
+    :param napi_budget:
         Used to determine if we are in netpoll
+    :type napi_budget: int
 
 .. _`ice_clean_tx_irq.description`:
 
@@ -81,8 +88,9 @@ ice_setup_tx_ring
 
     Allocate the Tx descriptors
 
-    :param struct ice_ring \*tx_ring:
+    :param tx_ring:
         the tx ring to set up
+    :type tx_ring: struct ice_ring \*
 
 .. _`ice_setup_tx_ring.description`:
 
@@ -100,8 +108,9 @@ ice_clean_rx_ring
 
     Free Rx buffers
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         ring to be cleaned
+    :type rx_ring: struct ice_ring \*
 
 .. _`ice_free_rx_ring`:
 
@@ -112,8 +121,9 @@ ice_free_rx_ring
 
     Free Rx resources
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         ring to clean the resources from
+    :type rx_ring: struct ice_ring \*
 
 .. _`ice_free_rx_ring.description`:
 
@@ -131,8 +141,9 @@ ice_setup_rx_ring
 
     Allocate the Rx descriptors
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         the rx ring to set up
+    :type rx_ring: struct ice_ring \*
 
 .. _`ice_setup_rx_ring.description`:
 
@@ -150,11 +161,13 @@ ice_release_rx_desc
 
     Store the new tail and head values
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         ring to bump
+    :type rx_ring: struct ice_ring \*
 
-    :param u32 val:
+    :param val:
         new head index
+    :type val: u32
 
 .. _`ice_alloc_mapped_page`:
 
@@ -165,11 +178,13 @@ ice_alloc_mapped_page
 
     recycle or make a new page
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         ring to use
+    :type rx_ring: struct ice_ring \*
 
-    :param struct ice_rx_buf \*bi:
+    :param bi:
         rx_buf struct to modify
+    :type bi: struct ice_rx_buf \*
 
 .. _`ice_alloc_mapped_page.description`:
 
@@ -188,11 +203,13 @@ ice_alloc_rx_bufs
 
     Replace used receive buffers
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         ring to place buffers on
+    :type rx_ring: struct ice_ring \*
 
-    :param u16 cleaned_count:
+    :param cleaned_count:
         number of buffers to replace
+    :type cleaned_count: u16
 
 .. _`ice_alloc_rx_bufs.description`:
 
@@ -210,8 +227,9 @@ ice_page_is_reserved
 
     check if reuse is possible
 
-    :param struct page \*page:
+    :param page:
         page struct to check
+    :type page: struct page \*
 
 .. _`ice_add_rx_frag`:
 
@@ -222,14 +240,17 @@ ice_add_rx_frag
 
     Add contents of Rx buffer to sk_buff
 
-    :param struct ice_rx_buf \*rx_buf:
+    :param rx_buf:
         buffer containing page to add
+    :type rx_buf: struct ice_rx_buf \*
 
-    :param union ice_32b_rx_flex_desc \*rx_desc:
+    :param rx_desc:
         descriptor containing length of buffer written by hardware
+    :type rx_desc: union ice_32b_rx_flex_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buf to place the data into
+    :type skb: struct sk_buff \*
 
 .. _`ice_add_rx_frag.description`:
 
@@ -253,11 +274,13 @@ ice_reuse_rx_page
 
     page flip buffer and store it back on the ring
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to store buffers on
+    :type rx_ring: struct ice_ring \*
 
-    :param struct ice_rx_buf \*old_buf:
+    :param old_buf:
         donor buffer to have page reused
+    :type old_buf: struct ice_rx_buf \*
 
 .. _`ice_reuse_rx_page.description`:
 
@@ -275,11 +298,13 @@ ice_fetch_rx_buf
 
     Allocate skb and populate it
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct ice_ring \*
 
-    :param union ice_32b_rx_flex_desc \*rx_desc:
+    :param rx_desc:
         descriptor containing info written by hardware
+    :type rx_desc: union ice_32b_rx_flex_desc \*
 
 .. _`ice_fetch_rx_buf.description`:
 
@@ -300,8 +325,9 @@ ice_pull_tail
 
     ice specific version of skb_pull_tail
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being adjusted
+    :type skb: struct sk_buff \*
 
 .. _`ice_pull_tail.description`:
 
@@ -324,8 +350,9 @@ ice_cleanup_headers
 
     Correct empty headers
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being fixed
+    :type skb: struct sk_buff \*
 
 .. _`ice_cleanup_headers.description`:
 
@@ -349,11 +376,13 @@ ice_test_staterr
 
     tests bits in Rx descriptor status and error fields
 
-    :param union ice_32b_rx_flex_desc \*rx_desc:
+    :param rx_desc:
         pointer to receive descriptor (in le64 format)
+    :type rx_desc: union ice_32b_rx_flex_desc \*
 
-    :param const u16 stat_err_bits:
+    :param stat_err_bits:
         value to mask
+    :type stat_err_bits: const u16
 
 .. _`ice_test_staterr.description`:
 
@@ -374,14 +403,17 @@ ice_is_non_eop
 
     process handling of non-EOP buffers
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         Rx ring being processed
+    :type rx_ring: struct ice_ring \*
 
-    :param union ice_32b_rx_flex_desc \*rx_desc:
+    :param rx_desc:
         Rx descriptor for current buffer
+    :type rx_desc: union ice_32b_rx_flex_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Current socket buffer containing buffer in progress
+    :type skb: struct sk_buff \*
 
 .. _`ice_is_non_eop.description`:
 
@@ -402,8 +434,9 @@ ice_ptype_to_htype
 
     get a hash type
 
-    :param u8 __always_unused ptype:
+    :param ptype:
         the ptype value from the descriptor
+    :type ptype: u8 __always_unused
 
 .. _`ice_ptype_to_htype.description`:
 
@@ -421,17 +454,21 @@ ice_rx_hash
 
     set the hash value in the skb
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         descriptor ring
+    :type rx_ring: struct ice_ring \*
 
-    :param union ice_32b_rx_flex_desc \*rx_desc:
+    :param rx_desc:
         specific descriptor
+    :type rx_desc: union ice_32b_rx_flex_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb
+    :type skb: struct sk_buff \*
 
-    :param u8 rx_ptype:
+    :param rx_ptype:
         the ptype value from the descriptor
+    :type rx_ptype: u8
 
 .. _`ice_rx_csum`:
 
@@ -442,17 +479,21 @@ ice_rx_csum
 
     Indicate in skb if checksum is good
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI we care about
+    :type vsi: struct ice_vsi \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb currently being received and modified
+    :type skb: struct sk_buff \*
 
-    :param union ice_32b_rx_flex_desc \*rx_desc:
+    :param rx_desc:
         the receive descriptor
+    :type rx_desc: union ice_32b_rx_flex_desc \*
 
-    :param u8 ptype:
+    :param ptype:
         the packet type decoded by hardware
+    :type ptype: u8
 
 .. _`ice_rx_csum.description`:
 
@@ -470,17 +511,21 @@ ice_process_skb_fields
 
     Populate skb header fields from Rx descriptor
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct ice_ring \*
 
-    :param union ice_32b_rx_flex_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union ice_32b_rx_flex_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being populated
+    :type skb: struct sk_buff \*
 
-    :param u8 ptype:
+    :param ptype:
         the packet type decoded by hardware
+    :type ptype: u8
 
 .. _`ice_process_skb_fields.description`:
 
@@ -500,14 +545,17 @@ ice_receive_skb
 
     Send a completed packet up the stack
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         rx ring in play
+    :type rx_ring: struct ice_ring \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send up
+    :type skb: struct sk_buff \*
 
-    :param u16 vlan_tag:
+    :param vlan_tag:
         vlan tag for packet
+    :type vlan_tag: u16
 
 .. _`ice_receive_skb.description`:
 
@@ -526,11 +574,13 @@ ice_clean_rx_irq
 
     Clean completed descriptors from Rx ring - bounce buf
 
-    :param struct ice_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct ice_ring \*
 
-    :param int budget:
+    :param budget:
         Total limit on number of packets to process
+    :type budget: int
 
 .. _`ice_clean_rx_irq.description`:
 
@@ -553,11 +603,13 @@ ice_napi_poll
 
     NAPI polling Rx/Tx cleanup routine
 
-    :param struct napi_struct \*napi:
+    :param napi:
         napi struct with our devices info in it
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         amount of work driver is allowed to do this pass, in packets
+    :type budget: int
 
 .. _`ice_napi_poll.description`:
 
@@ -577,11 +629,13 @@ Returns the amount of work done
 
     2nd level check for tx stop conditions
 
-    :param struct ice_ring \*tx_ring:
+    :param tx_ring:
         the ring to be checked
+    :type tx_ring: struct ice_ring \*
 
-    :param unsigned int size:
+    :param size:
         the size buffer we want to assure is available
+    :type size: unsigned int
 
 .. _`__ice_maybe_stop_tx.description`:
 
@@ -599,11 +653,13 @@ ice_maybe_stop_tx
 
     1st level check for tx stop conditions
 
-    :param struct ice_ring \*tx_ring:
+    :param tx_ring:
         the ring to be checked
+    :type tx_ring: struct ice_ring \*
 
-    :param unsigned int size:
+    :param size:
         the size buffer we want to assure is available
+    :type size: unsigned int
 
 .. _`ice_maybe_stop_tx.description`:
 
@@ -621,14 +677,17 @@ ice_tx_map
 
     Build the Tx descriptor
 
-    :param struct ice_ring \*tx_ring:
+    :param tx_ring:
         ring to send buffer on
+    :type tx_ring: struct ice_ring \*
 
-    :param struct ice_tx_buf \*first:
+    :param first:
         first buffer info buffer to use
+    :type first: struct ice_tx_buf \*
 
-    :param struct ice_tx_offload_params \*off:
+    :param off:
         pointer to struct that holds offload parameters
+    :type off: struct ice_tx_offload_params \*
 
 .. _`ice_tx_map.description`:
 
@@ -648,11 +707,13 @@ ice_tx_csum
 
     Enable Tx checksum offloads
 
-    :param struct ice_tx_buf \*first:
+    :param first:
         pointer to the first descriptor
+    :type first: struct ice_tx_buf \*
 
-    :param struct ice_tx_offload_params \*off:
+    :param off:
         pointer to struct that holds offload parameters
+    :type off: struct ice_tx_offload_params \*
 
 .. _`ice_tx_csum.description`:
 
@@ -670,11 +731,13 @@ ice_tx_prepare_vlan_flags
 
     prepare generic TX VLAN tagging flags for HW
 
-    :param struct ice_ring \*tx_ring:
+    :param tx_ring:
         ring to send buffer on
+    :type tx_ring: struct ice_ring \*
 
-    :param struct ice_tx_buf \*first:
+    :param first:
         pointer to struct ice_tx_buf
+    :type first: struct ice_tx_buf \*
 
 .. _`ice_tx_prepare_vlan_flags.description`:
 
@@ -696,11 +759,13 @@ ice_tso
 
     computes mss and TSO length to prepare for TSO
 
-    :param struct ice_tx_buf \*first:
+    :param first:
         pointer to struct ice_tx_buf
+    :type first: struct ice_tx_buf \*
 
-    :param struct ice_tx_offload_params \*off:
+    :param off:
         pointer to struct that holds offload parameters
+    :type off: struct ice_tx_offload_params \*
 
 .. _`ice_tso.description`:
 
@@ -718,8 +783,9 @@ ice_txd_use_count
 
     estimate the number of descriptors needed for Tx
 
-    :param unsigned int size:
+    :param size:
         transmit request size in bytes
+    :type size: unsigned int
 
 .. _`ice_txd_use_count.description`:
 
@@ -748,7 +814,7 @@ magnitude greater than our largest possible GSO size.
 This would then be implemented as
 ---------------------------------
 
-return (((size >> 12) \* 85) >> 8) + 1;
+return (((size >> 12) \* 85) >> 8) + ICE_DESCS_FOR_SKB_DATA_PTR;
 
 Since multiplication and division are commutative, we can reorder
 
@@ -757,7 +823,7 @@ Since multiplication and division are commutative, we can reorder
 operations into
 ---------------
 
-return ((size \* 85) >> 20) + 1;
+return ((size \* 85) >> 20) + ICE_DESCS_FOR_SKB_DATA_PTR;
 
 .. _`ice_xmit_desc_count`:
 
@@ -768,8 +834,9 @@ ice_xmit_desc_count
 
     calculate number of tx descriptors needed
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
 .. _`ice_xmit_desc_count.description`:
 
@@ -787,8 +854,9 @@ Returns number of data descriptors needed for this skb.
 
     Check if there are more than 8 buffers per packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
 .. _`__ice_chk_linearize.note`:
 
@@ -813,11 +881,13 @@ ice_chk_linearize
 
     Check if there are more than 8 fragments per packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
-    :param unsigned int count:
+    :param count:
         number of buffers used
+    :type count: unsigned int
 
 .. _`ice_chk_linearize.note`:
 
@@ -837,11 +907,13 @@ ice_xmit_frame_ring
 
     Sends buffer on Tx ring
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
-    :param struct ice_ring \*tx_ring:
+    :param tx_ring:
         ring to send buffer on
+    :type tx_ring: struct ice_ring \*
 
 .. _`ice_xmit_frame_ring.description`:
 
@@ -859,11 +931,13 @@ ice_start_xmit
 
     Selects the correct VSI and Tx queue to send buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         send buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ice_start_xmit.description`:
 

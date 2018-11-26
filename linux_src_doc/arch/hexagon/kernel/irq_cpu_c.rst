@@ -10,8 +10,9 @@ init_IRQ
 
     level interrupt controller with 32 total possible interrupts.  When the core is embedded into different systems/platforms, it is typically wrapped by macro cells that provide one or more second-level interrupt controllers that are cascaded into one or more of the first-level interrupts handled here. The precise wiring of these other irqs varies from platform to platform, and are set up & configured in the platform-specific files.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`init_irq.description`:
 

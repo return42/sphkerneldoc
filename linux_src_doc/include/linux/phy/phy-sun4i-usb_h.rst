@@ -10,11 +10,13 @@ sun4i_usb_phy_set_squelch_detect
 
     Enable/disable squelch detect
 
-    :param struct phy \*phy:
+    :param phy:
         reference to a sun4i usb phy
+    :type phy: struct phy \*
 
-    :param bool enabled:
+    :param enabled:
         wether to enable or disable squelch detect
+    :type enabled: bool
 
 .. This file was automatic generated / don't edit.
 

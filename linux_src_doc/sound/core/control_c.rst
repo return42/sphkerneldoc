@@ -10,14 +10,17 @@ snd_ctl_notify
 
     Send notification to user-space for a control change
 
-    :param struct snd_card \*card:
+    :param card:
         the card to send notification
+    :type card: struct snd_card \*
 
-    :param unsigned int mask:
+    :param mask:
         the event mask, SNDRV_CTL_EVENT_*
+    :type mask: unsigned int
 
-    :param struct snd_ctl_elem_id \*id:
+    :param id:
         the ctl element id to send notification
+    :type id: struct snd_ctl_elem_id \*
 
 .. _`snd_ctl_notify.description`:
 
@@ -37,17 +40,21 @@ snd_ctl_new
 
     create a new control instance with some elements
 
-    :param struct snd_kcontrol \*\*kctl:
+    :param kctl:
         the pointer to store new control instance
+    :type kctl: struct snd_kcontrol \*\*
 
-    :param unsigned int count:
+    :param count:
         the number of elements in this control
+    :type count: unsigned int
 
-    :param unsigned int access:
+    :param access:
         the default access flags for elements in this control
+    :type access: unsigned int
 
-    :param struct snd_ctl_file \*file:
+    :param file:
         given when locking these elements
+    :type file: struct snd_ctl_file \*
 
 .. _`snd_ctl_new.description`:
 
@@ -74,11 +81,13 @@ snd_ctl_new1
 
     create a control instance from the template
 
-    :param const struct snd_kcontrol_new \*ncontrol:
+    :param ncontrol:
         the initialization record
+    :type ncontrol: const struct snd_kcontrol_new \*
 
-    :param void \*private_data:
+    :param private_data:
         the private data to set
+    :type private_data: void \*
 
 .. _`snd_ctl_new1.description`:
 
@@ -105,8 +114,9 @@ snd_ctl_free_one
 
     release the control instance
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         the control instance
+    :type kcontrol: struct snd_kcontrol \*
 
 .. _`snd_ctl_free_one.description`:
 
@@ -126,11 +136,13 @@ snd_ctl_add
 
     add the control instance to the card
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         the control instance to add
+    :type kcontrol: struct snd_kcontrol \*
 
 .. _`snd_ctl_add.description`:
 
@@ -159,14 +171,17 @@ snd_ctl_replace
 
     replace the control instance of the card
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         the control instance to replace
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param bool add_on_replace:
+    :param add_on_replace:
         add the control if not already added
+    :type add_on_replace: bool
 
 .. _`snd_ctl_replace.description`:
 
@@ -195,11 +210,13 @@ snd_ctl_remove
 
     remove the control from the card and release it
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         the control instance to remove
+    :type kcontrol: struct snd_kcontrol \*
 
 .. _`snd_ctl_remove.description`:
 
@@ -226,11 +243,13 @@ snd_ctl_remove_id
 
     remove the control of the given id and release it
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param struct snd_ctl_elem_id \*id:
+    :param id:
         the control id to remove
+    :type id: struct snd_ctl_elem_id \*
 
 .. _`snd_ctl_remove_id.description`:
 
@@ -256,11 +275,13 @@ snd_ctl_remove_user_ctl
 
     remove and release the unlocked user control
 
-    :param struct snd_ctl_file \*file:
+    :param file:
         active control handle
+    :type file: struct snd_ctl_file \*
 
-    :param struct snd_ctl_elem_id \*id:
+    :param id:
         the control id to remove
+    :type id: struct snd_ctl_elem_id \*
 
 .. _`snd_ctl_remove_user_ctl.description`:
 
@@ -286,14 +307,17 @@ snd_ctl_activate_id
 
     activate/inactivate the control of the given id
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param struct snd_ctl_elem_id \*id:
+    :param id:
         the control id to activate/inactivate
+    :type id: struct snd_ctl_elem_id \*
 
-    :param int active:
+    :param active:
         non-zero to activate
+    :type active: int
 
 .. _`snd_ctl_activate_id.description`:
 
@@ -320,14 +344,17 @@ snd_ctl_rename_id
 
     replace the id of a control on the card
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param struct snd_ctl_elem_id \*src_id:
+    :param src_id:
         the old id
+    :type src_id: struct snd_ctl_elem_id \*
 
-    :param struct snd_ctl_elem_id \*dst_id:
+    :param dst_id:
         the new id
+    :type dst_id: struct snd_ctl_elem_id \*
 
 .. _`snd_ctl_rename_id.description`:
 
@@ -353,11 +380,13 @@ snd_ctl_find_numid
 
     find the control instance with the given number-id
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param unsigned int numid:
+    :param numid:
         the number-id to search
+    :type numid: unsigned int
 
 .. _`snd_ctl_find_numid.description`:
 
@@ -385,11 +414,13 @@ snd_ctl_find_id
 
     find the control instance with the given id
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param struct snd_ctl_elem_id \*id:
+    :param id:
         the id to search
+    :type id: struct snd_ctl_elem_id \*
 
 .. _`snd_ctl_find_id.description`:
 
@@ -417,8 +448,9 @@ snd_ctl_register_ioctl
 
     register the device-specific control-ioctls
 
-    :param snd_kctl_ioctl_func_t fcn:
+    :param fcn:
         ioctl callback function
+    :type fcn: snd_kctl_ioctl_func_t
 
 .. _`snd_ctl_register_ioctl.description`:
 
@@ -436,8 +468,9 @@ snd_ctl_register_ioctl_compat
 
     register the device-specific 32bit compat control-ioctls
 
-    :param snd_kctl_ioctl_func_t fcn:
+    :param fcn:
         ioctl callback function
+    :type fcn: snd_kctl_ioctl_func_t
 
 .. _`snd_ctl_unregister_ioctl`:
 
@@ -448,8 +481,9 @@ snd_ctl_unregister_ioctl
 
     de-register the device-specific control-ioctls
 
-    :param snd_kctl_ioctl_func_t fcn:
+    :param fcn:
         ioctl callback function to unregister
+    :type fcn: snd_kctl_ioctl_func_t
 
 .. _`snd_ctl_unregister_ioctl_compat`:
 
@@ -460,8 +494,9 @@ snd_ctl_unregister_ioctl_compat
 
     de-register the device-specific compat 32bit control-ioctls
 
-    :param snd_kctl_ioctl_func_t fcn:
+    :param fcn:
         ioctl callback function to unregister
+    :type fcn: snd_kctl_ioctl_func_t
 
 .. _`snd_ctl_boolean_mono_info`:
 
@@ -472,11 +507,13 @@ snd_ctl_boolean_mono_info
 
     Helper function for a standard boolean info callback with a mono channel
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         the kcontrol instance
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         info to store
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_ctl_boolean_mono_info.description`:
 
@@ -495,11 +532,13 @@ snd_ctl_boolean_stereo_info
 
     Helper function for a standard boolean info callback with stereo two channels
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         the kcontrol instance
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         info to store
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_ctl_boolean_stereo_info.description`:
 
@@ -518,17 +557,21 @@ snd_ctl_enum_info
 
     fills the info structure for an enumerated control
 
-    :param struct snd_ctl_elem_info \*info:
+    :param info:
         the structure to be filled
+    :type info: struct snd_ctl_elem_info \*
 
-    :param unsigned int channels:
+    :param channels:
         the number of the control's channels; often one
+    :type channels: unsigned int
 
-    :param unsigned int items:
+    :param items:
         the number of control values; also the size of \ ``names``\ 
+    :type items: unsigned int
 
-    :param const char \*const names:
+    :param names:
         an array containing the names of all control values
+    :type names: const char \*const
 
 .. _`snd_ctl_enum_info.description`:
 
@@ -537,7 +580,7 @@ Description
 
 Sets all required fields in \ ``info``\  to their appropriate values.
 If the control's accessibility is not the default (readable and writable),
-the caller has to fill \ ``info``\ ->access.
+the caller has to fill \ ``info->access``\ .
 
 .. _`snd_ctl_enum_info.return`:
 

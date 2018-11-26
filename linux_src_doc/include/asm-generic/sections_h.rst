@@ -10,17 +10,21 @@ memory_contains
 
     checks if an object is contained within a memory region
 
-    :param void \*begin:
+    :param begin:
         virtual address of the beginning of the memory region
+    :type begin: void \*
 
-    :param void \*end:
+    :param end:
         virtual address of the end of the memory region
+    :type end: void \*
 
-    :param void \*virt:
+    :param virt:
         virtual address of the memory object
+    :type virt: void \*
 
-    :param size_t size:
+    :param size:
         size of the memory object
+    :type size: size_t
 
 .. _`memory_contains.return`:
 
@@ -40,17 +44,21 @@ memory_intersects
 
     checks if the region occupied by an object intersects with another memory region
 
-    :param void \*begin:
+    :param begin:
         virtual address of the beginning of the memory regien
+    :type begin: void \*
 
-    :param void \*end:
+    :param end:
         virtual address of the end of the memory region
+    :type end: void \*
 
-    :param void \*virt:
+    :param virt:
         virtual address of the memory object
+    :type virt: void \*
 
-    :param size_t size:
+    :param size:
         size of the memory object
+    :type size: size_t
 
 .. _`memory_intersects.return`:
 
@@ -69,11 +77,13 @@ init_section_contains
 
     checks if an object is contained within the init section
 
-    :param void \*virt:
+    :param virt:
         virtual address of the memory object
+    :type virt: void \*
 
-    :param size_t size:
+    :param size:
         size of the memory object
+    :type size: size_t
 
 .. _`init_section_contains.return`:
 
@@ -92,11 +102,13 @@ init_section_intersects
 
     checks if the region occupied by an object intersects with the init section
 
-    :param void \*virt:
+    :param virt:
         virtual address of the memory object
+    :type virt: void \*
 
-    :param size_t size:
+    :param size:
         size of the memory object
+    :type size: size_t
 
 .. _`init_section_intersects.return`:
 
@@ -105,6 +117,26 @@ Return
 
 true if an object's memory region, specified by \ ``virt``\  and \ ``size``\ ,
 intersects with the init section, false otherwise.
+
+.. _`is_kernel_rodata`:
+
+is_kernel_rodata
+================
+
+.. c:function:: bool is_kernel_rodata(unsigned long addr)
+
+    checks if the pointer address is located in the .rodata section
+
+    :param addr:
+        address to check
+    :type addr: unsigned long
+
+.. _`is_kernel_rodata.return`:
+
+Return
+------
+
+true if the address is located in .rodata, false otherwise.
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ using_dma
 
     return the DMA status of the driver.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state.
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`using_dma.description`:
 
@@ -42,8 +43,9 @@ dwc2_gadget_incr_frame_num
 
     Increments the targeted frame number.
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`dwc2_gadget_incr_frame_num.description`:
 
@@ -52,6 +54,28 @@ Description
 
 This function will also check if the frame number overruns DSTS_SOFFN_LIMIT.
 If an overrun occurs it will wrap the value and set the frame_overrun flag.
+
+.. _`dwc2_gadget_dec_frame_num_by_one`:
+
+dwc2_gadget_dec_frame_num_by_one
+================================
+
+.. c:function:: void dwc2_gadget_dec_frame_num_by_one(struct dwc2_hsotg_ep *hs_ep)
+
+    Decrements the targeted frame number by one.
+
+    :param hs_ep:
+        The endpoint.
+    :type hs_ep: struct dwc2_hsotg_ep \*
+
+.. _`dwc2_gadget_dec_frame_num_by_one.description`:
+
+Description
+-----------
+
+This function used in service interval based scheduling flow to calculate
+descriptor frame number filed value. For service interval mode frame
+number in descriptor should point to last (u)frame in the interval.
 
 .. _`dwc2_hsotg_en_gsint`:
 
@@ -62,11 +86,13 @@ dwc2_hsotg_en_gsint
 
     enable one or more of the general interrupt
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param u32 ints:
+    :param ints:
         A bitmask of the interrupts to enable
+    :type ints: u32
 
 .. _`dwc2_hsotg_disable_gsint`:
 
@@ -77,11 +103,13 @@ dwc2_hsotg_disable_gsint
 
     disable one or more of the general interrupt
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param u32 ints:
+    :param ints:
         A bitmask of the interrupts to enable
+    :type ints: u32
 
 .. _`dwc2_hsotg_ctrl_epint`:
 
@@ -92,17 +120,21 @@ dwc2_hsotg_ctrl_epint
 
     enable/disable an endpoint irq
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param unsigned int ep:
+    :param ep:
         The endpoint index
+    :type ep: unsigned int
 
-    :param unsigned int dir_in:
+    :param dir_in:
         True if direction is in.
+    :type dir_in: unsigned int
 
-    :param unsigned int en:
+    :param en:
         The enable value, true to enable
+    :type en: unsigned int
 
 .. _`dwc2_hsotg_ctrl_epint.description`:
 
@@ -121,8 +153,9 @@ dwc2_hsotg_tx_fifo_count
 
     return count of TX FIFOs in device mode
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_tx_fifo_total_depth`:
 
@@ -133,8 +166,22 @@ dwc2_hsotg_tx_fifo_total_depth
 
     return total FIFO depth available for device mode TX FIFOs
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
+
+.. _`dwc2_gadget_wkup_alert_handler`:
+
+dwc2_gadget_wkup_alert_handler
+==============================
+
+.. c:function:: void dwc2_gadget_wkup_alert_handler(struct dwc2_hsotg *hsotg)
+
+    Handler for WKUP_ALERT interrupt
+
+    :param hsotg:
+        Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_tx_fifo_average_depth`:
 
@@ -145,8 +192,9 @@ dwc2_hsotg_tx_fifo_average_depth
 
     returns average depth of device mode TX FIFOs
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_init_fifo`:
 
@@ -157,8 +205,9 @@ dwc2_hsotg_init_fifo
 
     initialise non-periodic FIFOs
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device instance.
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_ep_alloc_request`:
 
@@ -169,11 +218,13 @@ dwc2_hsotg_ep_alloc_request
 
     allocate USB rerequest structure
 
-    :param struct usb_ep \*ep:
+    :param ep:
         USB endpoint to allocate request for.
+    :type ep: struct usb_ep \*
 
-    :param gfp_t flags:
+    :param flags:
         Allocation flags
+    :type flags: gfp_t
 
 .. _`dwc2_hsotg_ep_alloc_request.description`:
 
@@ -191,8 +242,9 @@ is_ep_periodic
 
     return true if the endpoint is in periodic mode.
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint to query.
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`is_ep_periodic.description`:
 
@@ -211,14 +263,17 @@ dwc2_hsotg_unmap_dma
 
     unmap the DMA memory being used for the request
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint for the request
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
-    :param struct dwc2_hsotg_req \*hs_req:
+    :param hs_req:
         The request being processed.
+    :type hs_req: struct dwc2_hsotg_req \*
 
 .. _`dwc2_hsotg_unmap_dma.description`:
 
@@ -237,14 +292,17 @@ dwc2_hsotg_write_fifo
 
     write packet Data to the TxFIFO
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The controller state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint we're going to write for.
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
-    :param struct dwc2_hsotg_req \*hs_req:
+    :param hs_req:
         The request to write data for.
+    :type hs_req: struct dwc2_hsotg_req \*
 
 .. _`dwc2_hsotg_write_fifo.description`:
 
@@ -270,8 +328,9 @@ get_ep_limit
 
     get the maximum data legnth for this endpoint
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`get_ep_limit.description`:
 
@@ -290,8 +349,9 @@ dwc2_hsotg_read_frameno
 
     read current frame number
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device instance
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_read_frameno.description`:
 
@@ -309,8 +369,9 @@ dwc2_gadget_get_chain_limit
 
     get the maximum data payload value of the DMA descriptor chain prepared for specific endpoint
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`dwc2_gadget_get_chain_limit.description`:
 
@@ -330,17 +391,21 @@ dwc2_hsotg_start_req
 
     start a USB request from an endpoint's queue
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The controller state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint to process a request for
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
-    :param struct dwc2_hsotg_req \*hs_req:
+    :param hs_req:
         The request to start.
+    :type hs_req: struct dwc2_hsotg_req \*
 
-    :param bool continuing:
+    :param continuing:
         True if we are doing more for the current request.
+    :type continuing: bool
 
 .. _`dwc2_hsotg_start_req.description`:
 
@@ -359,14 +424,17 @@ dwc2_hsotg_map_dma
 
     map the DMA memory being used for the request
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint the request is on.
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         The request being processed.
+    :type req: struct usb_request \*
 
 .. _`dwc2_hsotg_map_dma.description`:
 
@@ -388,8 +456,9 @@ dwc2_gadget_target_frame_elapsed
 
     Checks target frame
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The driver endpoint to check
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`dwc2_gadget_target_frame_elapsed.description`:
 
@@ -408,11 +477,13 @@ dwc2_hsotg_complete_oursetup
 
     setup completion callback
 
-    :param struct usb_ep \*ep:
+    :param ep:
         The endpoint the request was on.
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         The request completed.
+    :type req: struct usb_request \*
 
 .. _`dwc2_hsotg_complete_oursetup.description`:
 
@@ -431,11 +502,13 @@ ep_from_windex
 
     convert control wIndex value to endpoint
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param u32 windex:
+    :param windex:
         The control request wIndex field (in host order).
+    :type windex: u32
 
 .. _`ep_from_windex.description`:
 
@@ -454,12 +527,14 @@ dwc2_hsotg_set_test_mode
 
     Enable usb Test Modes
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param int testmode:
+    :param testmode:
         requested usb test mode
         Enable usb Test Mode requested by the Host.
+    :type testmode: int
 
 .. _`dwc2_hsotg_send_reply`:
 
@@ -470,17 +545,21 @@ dwc2_hsotg_send_reply
 
     send reply to control request
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hsotg_ep \*ep:
+    :param ep:
         Endpoint 0
+    :type ep: struct dwc2_hsotg_ep \*
 
-    :param void \*buff:
+    :param buff:
         Buffer for request
+    :type buff: void \*
 
-    :param int length:
+    :param length:
         Length of reply.
+    :type length: int
 
 .. _`dwc2_hsotg_send_reply.description`:
 
@@ -499,11 +578,13 @@ dwc2_hsotg_process_req_status
 
     process request GET_STATUS
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct usb_ctrlrequest \*ctrl:
+    :param ctrl:
         USB control request
+    :type ctrl: struct usb_ctrlrequest \*
 
 .. _`get_ep_head`:
 
@@ -514,8 +595,9 @@ get_ep_head
 
     return the first request on the endpoint
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The controller endpoint to get
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`get_ep_head.description`:
 
@@ -533,8 +615,9 @@ dwc2_gadget_start_next_request
 
     Starts next request from ep queue
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         Endpoint structure
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`dwc2_gadget_start_next_request.description`:
 
@@ -554,11 +637,13 @@ dwc2_hsotg_process_req_feature
 
     process request {SET,CLEAR}_FEATURE
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct usb_ctrlrequest \*ctrl:
+    :param ctrl:
         USB control request
+    :type ctrl: struct usb_ctrlrequest \*
 
 .. _`dwc2_hsotg_stall_ep0`:
 
@@ -569,8 +654,9 @@ dwc2_hsotg_stall_ep0
 
     stall ep0
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_stall_ep0.description`:
 
@@ -588,11 +674,13 @@ dwc2_hsotg_process_control
 
     process a control request
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct usb_ctrlrequest \*ctrl:
+    :param ctrl:
         The control request received
+    :type ctrl: struct usb_ctrlrequest \*
 
 .. _`dwc2_hsotg_process_control.description`:
 
@@ -612,11 +700,13 @@ dwc2_hsotg_complete_setup
 
     completion of a setup transfer
 
-    :param struct usb_ep \*ep:
+    :param ep:
         The endpoint the request was on.
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         The request completed.
+    :type req: struct usb_request \*
 
 .. _`dwc2_hsotg_complete_setup.description`:
 
@@ -635,8 +725,9 @@ dwc2_hsotg_enqueue_setup
 
     start a request for EP0 packets
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_enqueue_setup.description`:
 
@@ -655,17 +746,21 @@ dwc2_hsotg_complete_request
 
     complete a request given to us
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint the request was on.
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
-    :param struct dwc2_hsotg_req \*hs_req:
+    :param hs_req:
         The request to complete.
+    :type hs_req: struct dwc2_hsotg_req \*
 
-    :param int result:
+    :param result:
         The result code (0 => Ok, otherwise errno)
+    :type result: int
 
 .. _`dwc2_hsotg_complete_request.description`:
 
@@ -687,14 +782,17 @@ dwc2_hsotg_rx_data
 
     receive data from the FIFO for an endpoint
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param int ep_idx:
+    :param ep_idx:
         The endpoint index for the data
+    :type ep_idx: int
 
-    :param int size:
+    :param size:
         The size of data in the fifo, in bytes
+    :type size: int
 
 .. _`dwc2_hsotg_rx_data.description`:
 
@@ -714,11 +812,13 @@ dwc2_hsotg_ep0_zlp
 
     send/receive zero-length packet on control endpoint
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device instance
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param bool dir_in:
+    :param dir_in:
         If IN zlp
+    :type dir_in: bool
 
 .. _`dwc2_hsotg_ep0_zlp.description`:
 
@@ -741,11 +841,13 @@ dwc2_hsotg_handle_outdone
 
     handle receiving OutDone/SetupDone from RXFIFO
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device instance
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param int epnum:
+    :param epnum:
         The endpoint received from
+    :type epnum: int
 
 .. _`dwc2_hsotg_handle_outdone.description`:
 
@@ -765,8 +867,9 @@ dwc2_hsotg_handle_rx
 
     RX FIFO has data
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device instance
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_handle_rx.description`:
 
@@ -794,8 +897,9 @@ dwc2_hsotg_ep0_mps
 
     turn max packet size into register setting
 
-    :param unsigned int mps:
+    :param mps:
         The maximum packet size in bytes.
+    :type mps: unsigned int
 
 .. _`dwc2_hsotg_set_ep_maxpacket`:
 
@@ -806,20 +910,25 @@ dwc2_hsotg_set_ep_maxpacket
 
     set endpoint's max-packet field
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param unsigned int ep:
+    :param ep:
         The index number of the endpoint
+    :type ep: unsigned int
 
-    :param unsigned int mps:
+    :param mps:
         The maximum packet size in bytes
+    :type mps: unsigned int
 
-    :param unsigned int mc:
+    :param mc:
         The multicount value
+    :type mc: unsigned int
 
-    :param unsigned int dir_in:
+    :param dir_in:
         True if direction is in.
+    :type dir_in: unsigned int
 
 .. _`dwc2_hsotg_set_ep_maxpacket.description`:
 
@@ -838,11 +947,13 @@ dwc2_hsotg_txfifo_flush
 
     flush Tx FIFO
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param unsigned int idx:
+    :param idx:
         The index for the endpoint (0..15)
+    :type idx: unsigned int
 
 .. _`dwc2_hsotg_trytx`:
 
@@ -853,11 +964,13 @@ dwc2_hsotg_trytx
 
     check to see if anything needs transmitting
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The driver endpoint to check.
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`dwc2_hsotg_trytx.description`:
 
@@ -876,11 +989,13 @@ dwc2_hsotg_complete_in
 
     complete IN transfer
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint that has just completed.
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`dwc2_hsotg_complete_in.description`:
 
@@ -899,14 +1014,17 @@ dwc2_gadget_read_ep_interrupts
 
     reads interrupts for given ep
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param unsigned int idx:
+    :param idx:
         Index of ep.
+    :type idx: unsigned int
 
-    :param int dir_in:
+    :param dir_in:
         Endpoint direction 1-in 0-out.
+    :type dir_in: int
 
 .. _`dwc2_gadget_read_ep_interrupts.description`:
 
@@ -925,8 +1043,9 @@ dwc2_gadget_handle_ep_disabled
 
     handle DXEPINT_EPDISBLD
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint on which interrupt is asserted.
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`dwc2_gadget_handle_ep_disabled.description`:
 
@@ -951,8 +1070,9 @@ dwc2_gadget_handle_out_token_ep_disabled
 
     handle DXEPINT_OUTTKNEPDIS
 
-    :param struct dwc2_hsotg_ep \*ep:
+    :param ep:
         The endpoint on which interrupt is asserted.
+    :type ep: struct dwc2_hsotg_ep \*
 
 .. _`dwc2_gadget_handle_out_token_ep_disabled.description`:
 
@@ -975,8 +1095,9 @@ dwc2_gadget_handle_nak
 
     handle NAK interrupt
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint on which interrupt is asserted.
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
 .. _`dwc2_gadget_handle_nak.description`:
 
@@ -1008,14 +1129,17 @@ dwc2_hsotg_epint
 
     handle an in/out endpoint interrupt
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param unsigned int idx:
+    :param idx:
         The index for the endpoint (0..15)
+    :type idx: unsigned int
 
-    :param int dir_in:
+    :param dir_in:
         Set if this is an IN endpoint
+    :type dir_in: int
 
 .. _`dwc2_hsotg_epint.description`:
 
@@ -1033,8 +1157,9 @@ dwc2_hsotg_irq_enumdone
 
     Handle EnumDone interrupt (enumeration done)
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_irq_enumdone.description`:
 
@@ -1053,14 +1178,17 @@ kill_all_requests
 
     remove all requests from the endpoint's queue
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hsotg_ep \*ep:
+    :param ep:
         The endpoint the requests may be on.
+    :type ep: struct dwc2_hsotg_ep \*
 
-    :param int result:
+    :param result:
         The result code to use.
+    :type result: int
 
 .. _`kill_all_requests.description`:
 
@@ -1079,8 +1207,9 @@ dwc2_hsotg_disconnect
 
     disconnect service
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_disconnect.description`:
 
@@ -1100,11 +1229,13 @@ dwc2_hsotg_irq_fifoempty
 
     TX FIFO empty interrupt handler
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state:
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param bool periodic:
+    :param periodic:
         True if this is a periodic FIFO interrupt
+    :type periodic: bool
 
 .. _`dwc2_hsotg_core_init_disconnected`:
 
@@ -1115,11 +1246,13 @@ dwc2_hsotg_core_init_disconnected
 
     issue softreset to the core
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param bool is_usb_reset:
+    :param is_usb_reset:
         Usb resetting flag
+    :type is_usb_reset: bool
 
 .. _`dwc2_hsotg_core_init_disconnected.description`:
 
@@ -1137,8 +1270,9 @@ dwc2_gadget_handle_incomplete_isoc_in
 
     handle incomplete ISO IN Interrupt.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state:
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_gadget_handle_incomplete_isoc_in.description`:
 
@@ -1167,8 +1301,9 @@ dwc2_gadget_handle_incomplete_isoc_out
 
     handle incomplete ISO OUT Interrupt
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state:
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_gadget_handle_incomplete_isoc_out.description`:
 
@@ -1197,11 +1332,13 @@ dwc2_hsotg_irq
 
     handle device interrupt
 
-    :param int irq:
+    :param irq:
         The IRQ number triggered
+    :type irq: int
 
-    :param void \*pw:
+    :param pw:
         The pw value when registered the handler.
+    :type pw: void \*
 
 .. _`dwc2_hsotg_ep_enable`:
 
@@ -1212,11 +1349,13 @@ dwc2_hsotg_ep_enable
 
     enable the given endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         The USB endpint to configure
+    :type ep: struct usb_ep \*
 
-    :param const struct usb_endpoint_descriptor \*desc:
+    :param desc:
         The USB endpoint descriptor to configure with.
+    :type desc: const struct usb_endpoint_descriptor \*
 
 .. _`dwc2_hsotg_ep_enable.description`:
 
@@ -1234,8 +1373,9 @@ dwc2_hsotg_ep_disable
 
     disable given endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         The endpoint to disable.
+    :type ep: struct usb_ep \*
 
 .. _`on_list`:
 
@@ -1246,11 +1386,13 @@ on_list
 
     check request is on the given endpoint
 
-    :param struct dwc2_hsotg_ep \*ep:
+    :param ep:
         The endpoint to check.
+    :type ep: struct dwc2_hsotg_ep \*
 
-    :param struct dwc2_hsotg_req \*test:
+    :param test:
         The request to test if it is on the endpoint.
+    :type test: struct dwc2_hsotg_req \*
 
 .. _`dwc2_hsotg_ep_dequeue`:
 
@@ -1261,11 +1403,13 @@ dwc2_hsotg_ep_dequeue
 
     dequeue given endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         The endpoint to dequeue.
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         The request to be removed from a queue.
+    :type req: struct usb_request \*
 
 .. _`dwc2_hsotg_ep_sethalt`:
 
@@ -1276,15 +1420,18 @@ dwc2_hsotg_ep_sethalt
 
     set halt on a given endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         The endpoint to set halt.
+    :type ep: struct usb_ep \*
 
-    :param int value:
+    :param value:
         Set or unset the halt.
+    :type value: int
 
-    :param bool now:
+    :param now:
         If true, stall the endpoint now. Otherwise return -EAGAIN if
         the endpoint is busy processing requests.
+    :type now: bool
 
 .. _`dwc2_hsotg_ep_sethalt.description`:
 
@@ -1303,11 +1450,13 @@ dwc2_hsotg_ep_sethalt_lock
 
     set halt on a given endpoint with lock held
 
-    :param struct usb_ep \*ep:
+    :param ep:
         The endpoint to set halt.
+    :type ep: struct usb_ep \*
 
-    :param int value:
+    :param value:
         Set or unset the halt.
+    :type value: int
 
 .. _`dwc2_hsotg_init`:
 
@@ -1318,8 +1467,9 @@ dwc2_hsotg_init
 
     initialize the usb core
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_udc_start`:
 
@@ -1330,11 +1480,13 @@ dwc2_hsotg_udc_start
 
     prepare the udc for work
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The usb gadget state
+    :type gadget: struct usb_gadget \*
 
-    :param struct usb_gadget_driver \*driver:
+    :param driver:
         The usb gadget driver
+    :type driver: struct usb_gadget_driver \*
 
 .. _`dwc2_hsotg_udc_start.description`:
 
@@ -1353,8 +1505,9 @@ dwc2_hsotg_udc_stop
 
     stop the udc
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The usb gadget state
+    :type gadget: struct usb_gadget \*
 
 .. _`dwc2_hsotg_udc_stop.description`:
 
@@ -1372,8 +1525,9 @@ dwc2_hsotg_gadget_getframe
 
     read the frame number
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The usb gadget state
+    :type gadget: struct usb_gadget \*
 
 .. _`dwc2_hsotg_gadget_getframe.description`:
 
@@ -1391,11 +1545,13 @@ dwc2_hsotg_pullup
 
     connect/disconnect the USB PHY
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The usb gadget state
+    :type gadget: struct usb_gadget \*
 
-    :param int is_on:
+    :param is_on:
         Current state of the USB PHY
+    :type is_on: int
 
 .. _`dwc2_hsotg_pullup.description`:
 
@@ -1413,11 +1569,13 @@ dwc2_hsotg_vbus_draw
 
     report bMaxPower field
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         The usb gadget state
+    :type gadget: struct usb_gadget \*
 
-    :param unsigned int mA:
+    :param mA:
         Amount of current
+    :type mA: unsigned int
 
 .. _`dwc2_hsotg_vbus_draw.description`:
 
@@ -1435,17 +1593,21 @@ dwc2_hsotg_initep
 
     initialise a single endpoint
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The device state.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hsotg_ep \*hs_ep:
+    :param hs_ep:
         The endpoint to be initialised.
+    :type hs_ep: struct dwc2_hsotg_ep \*
 
-    :param int epnum:
+    :param epnum:
         The endpoint number
+    :type epnum: int
 
-    :param bool dir_in:
+    :param dir_in:
         True if direction is in.
+    :type dir_in: bool
 
 .. _`dwc2_hsotg_initep.description`:
 
@@ -1465,8 +1627,9 @@ dwc2_hsotg_hw_cfg
 
     read HW configuration registers
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_hw_cfg.description`:
 
@@ -1484,8 +1647,9 @@ dwc2_hsotg_dump
 
     dump state of the udc
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_gadget_init`:
 
@@ -1496,8 +1660,9 @@ dwc2_gadget_init
 
     init function for gadget
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hsotg_remove`:
 
@@ -1508,8 +1673,9 @@ dwc2_hsotg_remove
 
     remove function for hsotg driver
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_backup_device_registers`:
 
@@ -1520,8 +1686,9 @@ dwc2_backup_device_registers
 
     Backup controller device registers. When suspending usb bus, registers needs to be backuped if controller power is disabled once suspended.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_restore_device_registers`:
 
@@ -1532,11 +1699,13 @@ dwc2_restore_device_registers
 
     Restore controller device registers. When resuming usb bus, device registers needs to be restored if controller power were disabled.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param int remote_wakeup:
+    :param remote_wakeup:
         Indicates whether resume is initiated by Device or Host.
+    :type remote_wakeup: int
 
 .. _`dwc2_restore_device_registers.return`:
 
@@ -1554,8 +1723,22 @@ dwc2_gadget_init_lpm
 
     Configure the core to support LPM in device mode
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
+
+.. _`dwc2_gadget_program_ref_clk`:
+
+dwc2_gadget_program_ref_clk
+===========================
+
+.. c:function:: void dwc2_gadget_program_ref_clk(struct dwc2_hsotg *hsotg)
+
+    Program GREFCLK register in device mode
+
+    :param hsotg:
+        Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_gadget_enter_hibernation`:
 
@@ -1566,8 +1749,9 @@ dwc2_gadget_enter_hibernation
 
     Put controller in Hibernation.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_gadget_enter_hibernation.description`:
 
@@ -1585,14 +1769,17 @@ dwc2_gadget_exit_hibernation
 
     This function is for exiting from Device mode hibernation by host initiated resume/reset and device initiated remote-wakeup.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param int rem_wakeup:
+    :param rem_wakeup:
         indicates whether resume is initiated by Device or Host.
+    :type rem_wakeup: int
 
-    :param int reset:
+    :param reset:
         indicates whether resume is initiated by Reset.
+    :type reset: int
 
 .. _`dwc2_gadget_exit_hibernation.description`:
 

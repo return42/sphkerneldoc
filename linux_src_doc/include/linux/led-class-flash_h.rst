@@ -10,11 +10,13 @@ led_classdev_flash_register
 
     register a new object of led_classdev class with support for flash LEDs
 
-    :param struct device \*parent:
+    :param parent:
         the flash LED to register
+    :type parent: struct device \*
 
-    :param struct led_classdev_flash \*fled_cdev:
+    :param fled_cdev:
         the led_classdev_flash structure for this device
+    :type fled_cdev: struct led_classdev_flash \*
 
 .. _`led_classdev_flash_register.return`:
 
@@ -32,8 +34,9 @@ led_classdev_flash_unregister
 
     unregisters an object of led_classdev class with support for flash LEDs
 
-    :param struct led_classdev_flash \*fled_cdev:
+    :param fled_cdev:
         the flash LED to unregister
+    :type fled_cdev: struct led_classdev_flash \*
 
 .. _`led_classdev_flash_unregister.description`:
 
@@ -51,11 +54,13 @@ led_set_flash_strobe
 
     setup flash strobe
 
-    :param struct led_classdev_flash \*fled_cdev:
+    :param fled_cdev:
         the flash LED to set strobe on
+    :type fled_cdev: struct led_classdev_flash \*
 
-    :param bool state:
+    :param state:
         1 - strobe flash, 0 - stop flash strobe
+    :type state: bool
 
 .. _`led_set_flash_strobe.description`:
 
@@ -80,11 +85,13 @@ led_get_flash_strobe
 
     get flash strobe status
 
-    :param struct led_classdev_flash \*fled_cdev:
+    :param fled_cdev:
         the flash LED to query
+    :type fled_cdev: struct led_classdev_flash \*
 
-    :param bool \*state:
+    :param state:
         1 - flash is strobing, 0 - flash is off
+    :type state: bool \*
 
 .. _`led_get_flash_strobe.description`:
 
@@ -109,11 +116,13 @@ led_set_flash_brightness
 
     set flash LED brightness
 
-    :param struct led_classdev_flash \*fled_cdev:
+    :param fled_cdev:
         the flash LED to set
+    :type fled_cdev: struct led_classdev_flash \*
 
-    :param u32 brightness:
+    :param brightness:
         the brightness to set it to
+    :type brightness: u32
 
 .. _`led_set_flash_brightness.description`:
 
@@ -138,8 +147,9 @@ led_update_flash_brightness
 
     update flash LED brightness
 
-    :param struct led_classdev_flash \*fled_cdev:
+    :param fled_cdev:
         the flash LED to query
+    :type fled_cdev: struct led_classdev_flash \*
 
 .. _`led_update_flash_brightness.description`:
 
@@ -165,11 +175,13 @@ led_set_flash_timeout
 
     set flash LED timeout
 
-    :param struct led_classdev_flash \*fled_cdev:
+    :param fled_cdev:
         the flash LED to set
+    :type fled_cdev: struct led_classdev_flash \*
 
-    :param u32 timeout:
+    :param timeout:
         the flash timeout to set it to
+    :type timeout: u32
 
 .. _`led_set_flash_timeout.description`:
 
@@ -194,11 +206,13 @@ led_get_flash_fault
 
     get the flash LED fault
 
-    :param struct led_classdev_flash \*fled_cdev:
+    :param fled_cdev:
         the flash LED to query
+    :type fled_cdev: struct led_classdev_flash \*
 
-    :param u32 \*fault:
+    :param fault:
         bitmask containing flash faults
+    :type fault: u32 \*
 
 .. _`led_get_flash_fault.description`:
 

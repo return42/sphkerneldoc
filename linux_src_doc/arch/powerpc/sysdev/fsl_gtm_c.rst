@@ -10,8 +10,9 @@ gtm_get_timer16
 
     request GTM timer to use it with the rest of GTM API
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`gtm_get_timer16.context`:
 
@@ -38,11 +39,13 @@ gtm_get_specific_timer16
 
     request specific GTM timer
 
-    :param struct gtm \*gtm:
+    :param gtm:
         specific GTM, pass here GTM's device_node->data
+    :type gtm: struct gtm \*
 
-    :param unsigned int timer:
+    :param timer:
         specific timer number, Timer1 is 0.
+    :type timer: unsigned int
 
 .. _`gtm_get_specific_timer16.context`:
 
@@ -69,8 +72,9 @@ gtm_put_timer16
 
     release 16 bits GTM timer
 
-    :param struct gtm_timer \*tmr:
+    :param tmr:
         pointer to the gtm_timer structure obtained from gtm_get_timer
+    :type tmr: struct gtm_timer \*
 
 .. _`gtm_put_timer16.context`:
 
@@ -95,15 +99,18 @@ gtm_set_timer16
 
     (re)set 16 bit timer with arbitrary precision
 
-    :param struct gtm_timer \*tmr:
+    :param tmr:
         pointer to the gtm_timer structure obtained from gtm_get_timer
+    :type tmr: struct gtm_timer \*
 
-    :param unsigned long usec:
+    :param usec:
         timer interval in microseconds
+    :type usec: unsigned long
 
-    :param bool reload:
+    :param reload:
         if set, the timer will reset upon expiry rather than
         continue running free.
+    :type reload: bool
 
 .. _`gtm_set_timer16.context`:
 
@@ -131,15 +138,18 @@ gtm_set_exact_timer16
 
     (re)set 16 bits timer
 
-    :param struct gtm_timer \*tmr:
+    :param tmr:
         pointer to the gtm_timer structure obtained from gtm_get_timer
+    :type tmr: struct gtm_timer \*
 
-    :param u16 usec:
+    :param usec:
         timer interval in microseconds
+    :type usec: u16
 
-    :param bool reload:
+    :param reload:
         if set, the timer will reset upon expiry rather than
         continue running free.
+    :type reload: bool
 
 .. _`gtm_set_exact_timer16.context`:
 
@@ -171,8 +181,9 @@ gtm_stop_timer16
 
     stop single timer
 
-    :param struct gtm_timer \*tmr:
+    :param tmr:
         pointer to the gtm_timer structure obtained from gtm_get_timer
+    :type tmr: struct gtm_timer \*
 
 .. _`gtm_stop_timer16.context`:
 
@@ -197,11 +208,13 @@ gtm_ack_timer16
 
     acknowledge timer event (free-run timers only)
 
-    :param struct gtm_timer \*tmr:
+    :param tmr:
         pointer to the gtm_timer structure obtained from gtm_get_timer
+    :type tmr: struct gtm_timer \*
 
-    :param u16 events:
+    :param events:
         events mask to ack
+    :type events: u16
 
 .. _`gtm_ack_timer16.context`:
 

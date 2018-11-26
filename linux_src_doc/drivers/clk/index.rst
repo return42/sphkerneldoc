@@ -28,6 +28,7 @@ clk
     ti/index
     versatile/index
     zynq/index
+    zynqmp/index
     clk-aspeed_c
     clk-axm5516_c
     clk-bulk_c

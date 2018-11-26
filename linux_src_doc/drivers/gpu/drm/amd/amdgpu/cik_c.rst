@@ -10,8 +10,9 @@ cik_get_xclk
 
     get the xclk
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`cik_get_xclk.description`:
 
@@ -30,20 +31,25 @@ cik_srbm_select
 
     select specific register instances
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 me:
+    :param me:
         selected ME (micro engine)
+    :type me: u32
 
-    :param u32 pipe:
+    :param pipe:
         pipe
+    :type pipe: u32
 
-    :param u32 queue:
+    :param queue:
         queue
+    :type queue: u32
 
-    :param u32 vmid:
+    :param vmid:
         VMID
+    :type vmid: u32
 
 .. _`cik_srbm_select.description`:
 
@@ -63,8 +69,9 @@ cik_asic_reset
 
     soft reset GPU
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`cik_asic_reset.description`:
 

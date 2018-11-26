@@ -10,8 +10,9 @@ devm_iio_kfifo_allocate
 
     Resource-managed \ :c:func:`iio_kfifo_allocate`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate kfifo buffer for
+    :type dev: struct device \*
 
 .. _`devm_iio_kfifo_allocate.return`:
 
@@ -29,11 +30,13 @@ devm_iio_kfifo_free
 
     Resource-managed \ :c:func:`iio_kfifo_free`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device the buffer belongs to
+    :type dev: struct device \*
 
-    :param struct iio_buffer \*r:
+    :param r:
         The buffer associated with the device
+    :type r: struct iio_buffer \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ crush_find_rule
 
     find a crush_rule id for a given ruleset, type, and size.
 
-    :param const struct crush_map \*map:
+    :param map:
         the crush_map
+    :type map: const struct crush_map \*
 
-    :param int ruleset:
+    :param ruleset:
         the storage ruleset id (user defined)
+    :type ruleset: int
 
-    :param int type:
+    :param type:
         storage ruleset type (user defined)
+    :type type: int
 
-    :param int size:
+    :param size:
         output set size
+    :type size: int
 
 .. _`crush_choose_firstn`:
 
@@ -31,68 +35,89 @@ crush_choose_firstn
 
     choose numrep distinct items of given type
 
-    :param const struct crush_map \*map:
+    :param map:
         the crush_map
+    :type map: const struct crush_map \*
 
-    :param struct crush_work \*work:
+    :param work:
         *undescribed*
+    :type work: struct crush_work \*
 
-    :param const struct crush_bucket \*bucket:
+    :param bucket:
         the bucket we are choose an item from
+    :type bucket: const struct crush_bucket \*
 
-    :param const __u32 \*weight:
+    :param weight:
         *undescribed*
+    :type weight: const __u32 \*
 
-    :param int weight_max:
+    :param weight_max:
         *undescribed*
+    :type weight_max: int
 
-    :param int x:
+    :param x:
         crush input value
+    :type x: int
 
-    :param int numrep:
+    :param numrep:
         the number of items to choose
+    :type numrep: int
 
-    :param int type:
+    :param type:
         the type of item to choose
+    :type type: int
 
-    :param int \*out:
+    :param out:
         pointer to output vector
+    :type out: int \*
 
-    :param int outpos:
+    :param outpos:
         our position in that vector
+    :type outpos: int
 
-    :param int out_size:
+    :param out_size:
         size of the out vector
+    :type out_size: int
 
-    :param unsigned int tries:
+    :param tries:
         number of attempts to make
+    :type tries: unsigned int
 
-    :param unsigned int recurse_tries:
+    :param recurse_tries:
         number of attempts to have recursive chooseleaf make
+    :type recurse_tries: unsigned int
 
-    :param unsigned int local_retries:
+    :param local_retries:
         localized retries
+    :type local_retries: unsigned int
 
-    :param unsigned int local_fallback_retries:
+    :param local_fallback_retries:
         localized fallback retries
+    :type local_fallback_retries: unsigned int
 
-    :param int recurse_to_leaf:
+    :param recurse_to_leaf:
         true if we want one device under each item of given type (chooseleaf instead of choose)
+    :type recurse_to_leaf: int
 
-    :param unsigned int vary_r:
+    :param vary_r:
         pass r to recursive calls
+    :type vary_r: unsigned int
 
-    :param unsigned int stable:
+    :param stable:
         stable mode starts rep=0 in the recursive call for all replicas
+    :type stable: unsigned int
 
-    :param int \*out2:
+    :param out2:
         second output vector for leaf items (if \ ``recurse_to_leaf``\ )
+    :type out2: int \*
 
-    :param int parent_r:
+    :param parent_r:
         r value passed from the parent
+    :type parent_r: int
 
-    :param const struct crush_choose_arg \*choose_args:
+    :param choose_args:
         *undescribed*
+    :type choose_args: const struct crush_choose_arg \*
 
 .. _`crush_choose_indep`:
 
@@ -103,56 +128,73 @@ crush_choose_indep
 
     alternative breadth-first positionally stable mapping
 
-    :param const struct crush_map \*map:
+    :param map:
         *undescribed*
+    :type map: const struct crush_map \*
 
-    :param struct crush_work \*work:
+    :param work:
         *undescribed*
+    :type work: struct crush_work \*
 
-    :param const struct crush_bucket \*bucket:
+    :param bucket:
         *undescribed*
+    :type bucket: const struct crush_bucket \*
 
-    :param const __u32 \*weight:
+    :param weight:
         *undescribed*
+    :type weight: const __u32 \*
 
-    :param int weight_max:
+    :param weight_max:
         *undescribed*
+    :type weight_max: int
 
-    :param int x:
+    :param x:
         *undescribed*
+    :type x: int
 
-    :param int left:
+    :param left:
         *undescribed*
+    :type left: int
 
-    :param int numrep:
+    :param numrep:
         *undescribed*
+    :type numrep: int
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
-    :param int \*out:
+    :param out:
         *undescribed*
+    :type out: int \*
 
-    :param int outpos:
+    :param outpos:
         *undescribed*
+    :type outpos: int
 
-    :param unsigned int tries:
+    :param tries:
         *undescribed*
+    :type tries: unsigned int
 
-    :param unsigned int recurse_tries:
+    :param recurse_tries:
         *undescribed*
+    :type recurse_tries: unsigned int
 
-    :param int recurse_to_leaf:
+    :param recurse_to_leaf:
         *undescribed*
+    :type recurse_to_leaf: int
 
-    :param int \*out2:
+    :param out2:
         *undescribed*
+    :type out2: int \*
 
-    :param int parent_r:
+    :param parent_r:
         *undescribed*
+    :type parent_r: int
 
-    :param const struct crush_choose_arg \*choose_args:
+    :param choose_args:
         *undescribed*
+    :type choose_args: const struct crush_choose_arg \*
 
 .. _`crush_do_rule`:
 
@@ -163,32 +205,41 @@ crush_do_rule
 
     calculate a mapping with the given input and rule
 
-    :param const struct crush_map \*map:
+    :param map:
         the crush_map
+    :type map: const struct crush_map \*
 
-    :param int ruleno:
+    :param ruleno:
         the rule id
+    :type ruleno: int
 
-    :param int x:
+    :param x:
         hash input
+    :type x: int
 
-    :param int \*result:
+    :param result:
         pointer to result vector
+    :type result: int \*
 
-    :param int result_max:
+    :param result_max:
         maximum result size
+    :type result_max: int
 
-    :param const __u32 \*weight:
+    :param weight:
         weight vector (for map leaves)
+    :type weight: const __u32 \*
 
-    :param int weight_max:
+    :param weight_max:
         size of weight vector
+    :type weight_max: int
 
-    :param void \*cwin:
+    :param cwin:
         pointer to at least \ :c:func:`crush_work_size`\  bytes of memory
+    :type cwin: void \*
 
-    :param const struct crush_choose_arg \*choose_args:
+    :param choose_args:
         weights and ids for each known bucket
+    :type choose_args: const struct crush_choose_arg \*
 
 .. This file was automatic generated / don't edit.
 

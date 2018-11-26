@@ -10,8 +10,9 @@ default_suspend_ok
 
     Default PM domain governor routine to suspend devices.
 
-    :param struct device \*dev:
+    :param dev:
         Device to check.
+    :type dev: struct device \*
 
 .. _`default_power_down_ok`:
 
@@ -22,8 +23,9 @@ default_power_down_ok
 
     Default generic PM domain power off governor routine.
 
-    :param struct dev_pm_domain \*pd:
+    :param pd:
         PM domain to check.
+    :type pd: struct dev_pm_domain \*
 
 .. _`default_power_down_ok.description`:
 

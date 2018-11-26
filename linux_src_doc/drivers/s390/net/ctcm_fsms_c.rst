@@ -8,14 +8,17 @@ ctcm_ccw_check_rc
 
 .. c:function:: void ctcm_ccw_check_rc(struct channel *ch, int rc, char *msg)
 
-    :param struct channel \*ch:
+    :param ch:
         *undescribed*
+    :type ch: struct channel \*
 
-    :param int rc:
+    :param rc:
         *undescribed*
+    :type rc: int
 
-    :param char \*msg:
+    :param msg:
         *undescribed*
+    :type msg: char \*
 
 .. _`ctcm_ccw_check_rc.description`:
 
@@ -32,14 +35,17 @@ ctcm_action_nop
 
 .. c:function:: void ctcm_action_nop(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`chx_txdone`:
 
@@ -50,14 +56,17 @@ chx_txdone
 
     skb (it's in io_queue), reset dev->tbusy and revert to idle state.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`chx_txdone.description`:
 
@@ -77,14 +86,17 @@ ctcm_chx_txidle
 
     Notify device statemachine that we are up and running.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_txidle.description`:
 
@@ -104,14 +116,17 @@ chx_rx
 
     trigger bottom half, and initiate next read.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`chx_rx.description`:
 
@@ -129,14 +144,17 @@ chx_firstio
 
 .. c:function:: void chx_firstio(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`chx_firstio.description`:
 
@@ -156,14 +174,17 @@ chx_rxidle
 
     notify device statemachine that we are up and running.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`chx_rxidle.description`:
 
@@ -181,14 +202,17 @@ ctcm_chx_setmode
 
 .. c:function:: void ctcm_chx_setmode(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_setmode.description`:
 
@@ -206,14 +230,17 @@ ctcm_chx_start
 
 .. c:function:: void ctcm_chx_start(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_start.description`:
 
@@ -231,14 +258,17 @@ ctcm_chx_haltio
 
 .. c:function:: void ctcm_chx_haltio(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_haltio.description`:
 
@@ -258,14 +288,17 @@ ctcm_chx_cleanup
 
     cleanup channels queue and notify interface statemachine.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int state:
+    :param state:
         *undescribed*
+    :type state: int
 
-    :param struct channel \*ch:
+    :param ch:
         *undescribed*
+    :type ch: struct channel \*
 
 .. _`ctcm_chx_cleanup.description`:
 
@@ -285,14 +318,17 @@ ctcm_chx_stopped
 
     Cleanup it's queue and notify interface statemachine.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_stopped.description`:
 
@@ -312,14 +348,17 @@ ctcm_chx_stop
 
     not operational mode. Set state to stopped.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_stop.description`:
 
@@ -339,14 +378,17 @@ ctcm_chx_fail
 
     happened. Cleanup queue and notify interface statemachine.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_fail.description`:
 
@@ -364,14 +406,17 @@ ctcm_chx_setuperr
 
 .. c:function:: void ctcm_chx_setuperr(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_setuperr.description`:
 
@@ -389,14 +434,17 @@ ctcm_chx_restart
 
 .. c:function:: void ctcm_chx_restart(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_restart.description`:
 
@@ -416,14 +464,17 @@ ctcm_chx_rxiniterr
 
     0-length block header)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_rxiniterr.description`:
 
@@ -443,14 +494,17 @@ ctcm_chx_rxinitfail
 
     of RX channel.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_rxinitfail.description`:
 
@@ -468,14 +522,17 @@ ctcm_chx_rxdisc
 
 .. c:function:: void ctcm_chx_rxdisc(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_rxdisc.description`:
 
@@ -493,14 +550,17 @@ ctcm_chx_txiniterr
 
 .. c:function:: void ctcm_chx_txiniterr(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_txiniterr.description`:
 
@@ -518,14 +578,17 @@ ctcm_chx_txretry
 
 .. c:function:: void ctcm_chx_txretry(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_txretry.description`:
 
@@ -543,14 +606,17 @@ ctcm_chx_iofatal
 
 .. c:function:: void ctcm_chx_iofatal(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcm_chx_iofatal.description`:
 
@@ -570,14 +636,17 @@ ctcmpc_chx_txdone
 
     skb (it's in io_queue), reset dev->tbusy and revert to idle state.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcmpc_chx_txdone.description`:
 
@@ -597,14 +666,17 @@ ctcmpc_chx_rx
 
     trigger bottom half, and initiate next read.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcmpc_chx_rx.description`:
 
@@ -622,14 +694,17 @@ ctcmpc_chx_firstio
 
 .. c:function:: void ctcmpc_chx_firstio(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcmpc_chx_firstio.description`:
 
@@ -649,14 +724,17 @@ ctcmpc_chx_rxidle
 
     notify device statemachine that we are up and running.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`ctcmpc_chx_rxidle.description`:
 
@@ -674,14 +752,17 @@ dev_action_start
 
 .. c:function:: void dev_action_start(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`dev_action_start.description`:
 
@@ -699,14 +780,17 @@ dev_action_stop
 
 .. c:function:: void dev_action_stop(fsm_instance *fi, int event, void *arg)
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`dev_action_stop.description`:
 
@@ -726,14 +810,17 @@ dev_action_chup
 
     when a channel is up and running.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`dev_action_chup.description`:
 
@@ -753,14 +840,17 @@ dev_action_chdown
 
     when a channel has been shutdown.
 
-    :param fsm_instance \*fi:
+    :param fi:
         *undescribed*
+    :type fi: fsm_instance \*
 
-    :param int event:
+    :param event:
         *undescribed*
+    :type event: int
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`dev_action_chdown.description`:
 

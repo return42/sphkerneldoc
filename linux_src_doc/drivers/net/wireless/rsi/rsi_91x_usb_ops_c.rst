@@ -8,8 +8,9 @@ rsi_usb_rx_thread
 
 .. c:function:: void rsi_usb_rx_thread(struct rsi_common *common)
 
-    :param struct rsi_common \*common:
+    :param common:
         *undescribed*
+    :type common: struct rsi_common \*
 
 .. _`rsi_usb_rx_thread.description`:
 

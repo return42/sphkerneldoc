@@ -10,8 +10,9 @@ omap2xxx_clk_get_core_rate
 
     return the CORE_CLK rate
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2xxx_clk_get_core_rate.description`:
 
@@ -39,8 +40,9 @@ omap2xxx_clkt_dpllcore_init
 
     clk init function for dpll_ck
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
 .. _`omap2xxx_clkt_dpllcore_init.description`:
 

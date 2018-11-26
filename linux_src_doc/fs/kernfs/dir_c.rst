@@ -10,17 +10,21 @@ kernfs_path_from_node_locked
 
     find a pseudo-absolute path to \ ``kn_to``\ , where kn_from is treated as root of the path.
 
-    :param struct kernfs_node \*kn_to:
+    :param kn_to:
         kernfs node to which path is needed
+    :type kn_to: struct kernfs_node \*
 
-    :param struct kernfs_node \*kn_from:
+    :param kn_from:
         kernfs node which should be treated as root for the path
+    :type kn_from: struct kernfs_node \*
 
-    :param char \*buf:
+    :param buf:
         buffer to copy the path into
+    :type buf: char \*
 
-    :param size_t buflen:
+    :param buflen:
         size of \ ``buf``\ 
+    :type buflen: size_t
 
 .. _`kernfs_path_from_node_locked.we-need-to-handle-couple-of-scenarios-here`:
 
@@ -81,14 +85,17 @@ kernfs_name
 
     obtain the name of a given node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node of interest
+    :type kn: struct kernfs_node \*
 
-    :param char \*buf:
+    :param buf:
         buffer to copy \ ``kn``\ 's name into
+    :type buf: char \*
 
-    :param size_t buflen:
+    :param buflen:
         size of \ ``buf``\ 
+    :type buflen: size_t
 
 .. _`kernfs_name.description`:
 
@@ -112,17 +119,21 @@ kernfs_path_from_node
 
     build path of node \ ``to``\  relative to \ ``from``\ .
 
-    :param struct kernfs_node \*to:
+    :param to:
         kernfs_node of interest
+    :type to: struct kernfs_node \*
 
-    :param struct kernfs_node \*from:
+    :param from:
         parent kernfs_node relative to which we need to build the path
+    :type from: struct kernfs_node \*
 
-    :param char \*buf:
+    :param buf:
         buffer to copy \ ``to``\ 's path into
+    :type buf: char \*
 
-    :param size_t buflen:
+    :param buflen:
         size of \ ``buf``\ 
+    :type buflen: size_t
 
 .. _`kernfs_path_from_node.description`:
 
@@ -147,8 +158,9 @@ pr_cont_kernfs_name
 
     pr_cont name of a kernfs_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node of interest
+    :type kn: struct kernfs_node \*
 
 .. _`pr_cont_kernfs_name.description`:
 
@@ -166,8 +178,9 @@ pr_cont_kernfs_path
 
     pr_cont path of a kernfs_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node of interest
+    :type kn: struct kernfs_node \*
 
 .. _`pr_cont_kernfs_path.description`:
 
@@ -185,8 +198,9 @@ kernfs_get_parent
 
     determine the parent node and pin it
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node of interest
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_get_parent.description`:
 
@@ -203,11 +217,13 @@ kernfs_name_hash
 
 .. c:function:: unsigned int kernfs_name_hash(const char *name, const void *ns)
 
-    :param const char \*name:
+    :param name:
         Null terminated string to hash
+    :type name: const char \*
 
-    :param const void \*ns:
+    :param ns:
         Namespace tag to hash
+    :type ns: const void \*
 
 .. _`kernfs_name_hash.description`:
 
@@ -225,8 +241,9 @@ kernfs_link_sibling
 
     link kernfs_node into sibling rbtree
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node of interest
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_link_sibling.description`:
 
@@ -234,7 +251,7 @@ Description
 -----------
 
 Link \ ``kn``\  into its sibling rbtree which starts from
-\ ``kn``\ ->parent->dir.children.
+\ ``kn->parent->dir.children``\ .
 
 .. _`kernfs_link_sibling.locking`:
 
@@ -259,8 +276,9 @@ kernfs_unlink_sibling
 
     unlink kernfs_node from sibling rbtree
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node of interest
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_unlink_sibling.description`:
 
@@ -287,8 +305,9 @@ kernfs_get_active
 
     get an active reference to kernfs_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node to get an active reference to
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_get_active.description`:
 
@@ -314,8 +333,9 @@ kernfs_put_active
 
     put an active reference to kernfs_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node to put an active reference to
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_put_active.description`:
 
@@ -334,8 +354,9 @@ kernfs_drain
 
     drain kernfs_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node to drain
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_drain.description`:
 
@@ -355,8 +376,9 @@ kernfs_get
 
     get a reference count on a kernfs_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         the target kernfs_node
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_put`:
 
@@ -367,8 +389,9 @@ kernfs_put
 
     put a reference count on a kernfs_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         the target kernfs_node
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_put.description`:
 
@@ -386,8 +409,9 @@ kernfs_node_from_dentry
 
     determine kernfs_node associated with a dentry
 
-    :param struct dentry \*dentry:
+    :param dentry:
         the dentry in question
+    :type dentry: struct dentry \*
 
 .. _`kernfs_node_from_dentry.description`:
 
@@ -410,15 +434,16 @@ kernfs_add_one
 
     add kernfs_node to parent without warning
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node to be added
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_add_one.description`:
 
 Description
 -----------
 
-The caller must already have initialized \ ``kn``\ ->parent.  This
+The caller must already have initialized \ ``kn->parent``\ .  This
 function increments nlink of the parent's inode if \ ``kn``\  is a
 directory and link into the children list of the parent.
 
@@ -439,14 +464,17 @@ kernfs_find_ns
 
     find kernfs_node with the given name
 
-    :param struct kernfs_node \*parent:
+    :param parent:
         kernfs_node to search under
+    :type parent: struct kernfs_node \*
 
-    :param const unsigned char \*name:
+    :param name:
         name to look for
+    :type name: const unsigned char \*
 
-    :param const void \*ns:
+    :param ns:
         the namespace tag to use
+    :type ns: const void \*
 
 .. _`kernfs_find_ns.description`:
 
@@ -465,14 +493,17 @@ kernfs_find_and_get_ns
 
     find and get kernfs_node with the given name
 
-    :param struct kernfs_node \*parent:
+    :param parent:
         kernfs_node to search under
+    :type parent: struct kernfs_node \*
 
-    :param const char \*name:
+    :param name:
         name to look for
+    :type name: const char \*
 
-    :param const void \*ns:
+    :param ns:
         the namespace tag to use
+    :type ns: const void \*
 
 .. _`kernfs_find_and_get_ns.description`:
 
@@ -492,14 +523,17 @@ kernfs_walk_and_get_ns
 
     find and get kernfs_node with the given path
 
-    :param struct kernfs_node \*parent:
+    :param parent:
         kernfs_node to search under
+    :type parent: struct kernfs_node \*
 
-    :param const char \*path:
+    :param path:
         path to look for
+    :type path: const char \*
 
-    :param const void \*ns:
+    :param ns:
         the namespace tag to use
+    :type ns: const void \*
 
 .. _`kernfs_walk_and_get_ns.description`:
 
@@ -519,14 +553,17 @@ kernfs_create_root
 
     create a new kernfs hierarchy
 
-    :param struct kernfs_syscall_ops \*scops:
+    :param scops:
         optional syscall operations for the hierarchy
+    :type scops: struct kernfs_syscall_ops \*
 
-    :param unsigned int flags:
+    :param flags:
         KERNFS_ROOT\_\* flags
+    :type flags: unsigned int
 
-    :param void \*priv:
+    :param priv:
         opaque data associated with the new directory
+    :type priv: void \*
 
 .. _`kernfs_create_root.description`:
 
@@ -545,8 +582,9 @@ kernfs_destroy_root
 
     destroy a kernfs hierarchy
 
-    :param struct kernfs_root \*root:
+    :param root:
         root of the hierarchy to destroy
+    :type root: struct kernfs_root \*
 
 .. _`kernfs_destroy_root.description`:
 
@@ -561,24 +599,37 @@ directories and destroying \ ``root``\ .
 kernfs_create_dir_ns
 ====================
 
-.. c:function:: struct kernfs_node *kernfs_create_dir_ns(struct kernfs_node *parent, const char *name, umode_t mode, void *priv, const void *ns)
+.. c:function:: struct kernfs_node *kernfs_create_dir_ns(struct kernfs_node *parent, const char *name, umode_t mode, kuid_t uid, kgid_t gid, void *priv, const void *ns)
 
     create a directory
 
-    :param struct kernfs_node \*parent:
+    :param parent:
         parent in which to create a new directory
+    :type parent: struct kernfs_node \*
 
-    :param const char \*name:
+    :param name:
         name of the new directory
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         mode of the new directory
+    :type mode: umode_t
 
-    :param void \*priv:
+    :param uid:
+        uid of the new directory
+    :type uid: kuid_t
+
+    :param gid:
+        gid of the new directory
+    :type gid: kgid_t
+
+    :param priv:
         opaque data associated with the new directory
+    :type priv: void \*
 
-    :param const void \*ns:
+    :param ns:
         optional namespace tag of the directory
+    :type ns: const void \*
 
 .. _`kernfs_create_dir_ns.description`:
 
@@ -596,11 +647,13 @@ kernfs_create_empty_dir
 
     create an always empty directory
 
-    :param struct kernfs_node \*parent:
+    :param parent:
         parent in which to create a new directory
+    :type parent: struct kernfs_node \*
 
-    :param const char \*name:
+    :param name:
         name of the new directory
+    :type name: const char \*
 
 .. _`kernfs_create_empty_dir.description`:
 
@@ -618,11 +671,13 @@ kernfs_next_descendant_post
 
     find the next descendant for post-order walk
 
-    :param struct kernfs_node \*pos:
+    :param pos:
         the current position (%NULL to initiate traversal)
+    :type pos: struct kernfs_node \*
 
-    :param struct kernfs_node \*root:
+    :param root:
         kernfs_node whose descendants to walk
+    :type root: struct kernfs_node \*
 
 .. _`kernfs_next_descendant_post.description`:
 
@@ -642,8 +697,9 @@ kernfs_activate
 
     activate a node which started deactivated
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node whose subtree is to be activated
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_activate.description`:
 
@@ -668,8 +724,9 @@ kernfs_remove
 
     remove a kernfs_node recursively
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         the kernfs_node to remove
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_remove.description`:
 
@@ -687,8 +744,9 @@ kernfs_break_active_protection
 
     break out of active protection
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         the self kernfs_node
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_break_active_protection.description`:
 
@@ -714,8 +772,9 @@ kernfs_unbreak_active_protection
 
     undo \ :c:func:`kernfs_break_active_protection`\ 
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         the self kernfs_node
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_unbreak_active_protection.description`:
 
@@ -742,8 +801,9 @@ kernfs_remove_self
 
     remove a kernfs_node from its own method
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         the self kernfs_node to remove
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_remove_self.description`:
 
@@ -781,14 +841,17 @@ kernfs_remove_by_name_ns
 
     find a kernfs_node by name and remove it
 
-    :param struct kernfs_node \*parent:
+    :param parent:
         parent of the target
+    :type parent: struct kernfs_node \*
 
-    :param const char \*name:
+    :param name:
         name of the kernfs_node to remove
+    :type name: const char \*
 
-    :param const void \*ns:
+    :param ns:
         namespace tag of the kernfs_node to remove
+    :type ns: const void \*
 
 .. _`kernfs_remove_by_name_ns.description`:
 
@@ -807,17 +870,21 @@ kernfs_rename_ns
 
     move and rename a kernfs_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         target node
+    :type kn: struct kernfs_node \*
 
-    :param struct kernfs_node \*new_parent:
+    :param new_parent:
         new parent to put \ ``sd``\  under
+    :type new_parent: struct kernfs_node \*
 
-    :param const char \*new_name:
+    :param new_name:
         new name
+    :type new_name: const char \*
 
-    :param const void \*new_ns:
+    :param new_ns:
         new namespace tag
+    :type new_ns: const void \*
 
 .. This file was automatic generated / don't edit.
 

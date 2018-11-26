@@ -10,14 +10,17 @@ simple_strtoull
 
     convert a string to an unsigned long long
 
-    :param const char \*cp:
+    :param cp:
         The start of the string
+    :type cp: const char \*
 
-    :param char \*\*endp:
+    :param endp:
         A pointer to the end of the parsed string will be placed here
+    :type endp: char \*\*
 
-    :param unsigned int base:
+    :param base:
         The number base to use
+    :type base: unsigned int
 
 .. _`strlen`:
 
@@ -28,8 +31,9 @@ strlen
 
     Find the length of a string
 
-    :param const char \*s:
+    :param s:
         The string to be sized
+    :type s: const char \*
 
 .. _`strstr`:
 
@@ -40,11 +44,13 @@ strstr
 
     Find the first substring in a \ ``NUL``\  terminated string
 
-    :param const char \*s1:
+    :param s1:
         The string to be searched
+    :type s1: const char \*
 
-    :param const char \*s2:
+    :param s2:
         The string to search for
+    :type s2: const char \*
 
 .. _`strchr`:
 
@@ -55,11 +61,13 @@ strchr
 
     Find the first occurrence of the character c in the string s.
 
-    :param const char \*s:
+    :param s:
         the string to be searched
+    :type s: const char \*
 
-    :param int c:
+    :param c:
         the character to search for
+    :type c: int
 
 .. This file was automatic generated / don't edit.
 

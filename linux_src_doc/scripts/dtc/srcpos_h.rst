@@ -8,11 +8,13 @@ srcfile_relative_open
 
 .. c:function:: FILE *srcfile_relative_open(const char *fname, char **fullnamep)
 
-    :param const char \*fname:
+    :param fname:
         *undescribed*
+    :type fname: const char \*
 
-    :param char \*\*fullnamep:
+    :param fullnamep:
         *undescribed*
+    :type fullnamep: char \*\*
 
 .. _`srcfile_relative_open.description`:
 
@@ -42,8 +44,9 @@ srcfile_add_search_path
 
 .. c:function:: void srcfile_add_search_path(const char *dirname)
 
-    :param const char \*dirname:
+    :param dirname:
         *undescribed*
+    :type dirname: const char \*
 
 .. _`srcfile_add_search_path.description`:
 

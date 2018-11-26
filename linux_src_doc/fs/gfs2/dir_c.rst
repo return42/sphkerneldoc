@@ -10,17 +10,21 @@ gfs2_dir_write_data
 
     Write directory information to the inode
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The GFS2 inode
+    :type ip: struct gfs2_inode \*
 
-    :param const char \*buf:
+    :param buf:
         The buffer containing information to be written
+    :type buf: const char \*
 
-    :param u64 offset:
+    :param offset:
         The file offset to start writing at
+    :type offset: u64
 
-    :param unsigned int size:
+    :param size:
         The amount of data to write
+    :type size: unsigned int
 
 .. _`gfs2_dir_write_data.return`:
 
@@ -38,14 +42,17 @@ gfs2_dir_read_data
 
     Read a data from a directory inode
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The GFS2 Inode
+    :type ip: struct gfs2_inode \*
 
-    :param __be64 \*buf:
+    :param buf:
         The buffer to place result into
+    :type buf: __be64 \*
 
-    :param unsigned int size:
+    :param size:
         Amount of data to transfer
+    :type size: unsigned int
 
 .. _`gfs2_dir_read_data.return`:
 
@@ -63,8 +70,9 @@ gfs2_dir_get_hash_table
 
     Get pointer to the dir hash table
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The inode in question
+    :type ip: struct gfs2_inode \*
 
 .. _`gfs2_dir_get_hash_table.return`:
 
@@ -82,8 +90,9 @@ gfs2_dir_hash_inval
 
     Invalidate dir hash
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The directory inode
+    :type ip: struct gfs2_inode \*
 
 .. _`gfs2_dir_hash_inval.description`:
 
@@ -101,14 +110,17 @@ dirent_next
 
     Next dirent
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         the directory
+    :type dip: struct gfs2_inode \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         The buffer
+    :type bh: struct buffer_head \*
 
-    :param struct gfs2_dirent \*\*dent:
+    :param dent:
         Pointer to list of dirents
+    :type dent: struct gfs2_dirent \*\*
 
 .. _`dirent_next.return`:
 
@@ -126,17 +138,21 @@ dirent_del
 
     Delete a dirent
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         The GFS2 inode
+    :type dip: struct gfs2_inode \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         The buffer
+    :type bh: struct buffer_head \*
 
-    :param struct gfs2_dirent \*prev:
+    :param prev:
         The previous dirent
+    :type prev: struct gfs2_dirent \*
 
-    :param struct gfs2_dirent \*cur:
+    :param cur:
         The current dirent
+    :type cur: struct gfs2_dirent \*
 
 .. _`get_leaf_nr`:
 
@@ -147,14 +163,17 @@ get_leaf_nr
 
     Get a leaf number associated with the index
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         The GFS2 inode
+    :type dip: struct gfs2_inode \*
 
-    :param u32 index:
+    :param index:
         *undescribed*
+    :type index: u32
 
-    :param u64 \*leaf_out:
+    :param leaf_out:
         *undescribed*
+    :type leaf_out: u64 \*
 
 .. _`get_leaf_nr.return`:
 
@@ -172,8 +191,9 @@ dir_make_exhash
 
     Convert a stuffed directory into an ExHash directory
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. _`dir_make_exhash.return`:
 
@@ -191,11 +211,13 @@ dir_split_leaf
 
     Split a leaf block into two
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param const struct qstr \*name:
+    :param name:
         *undescribed*
+    :type name: const struct qstr \*
 
 .. _`dir_split_leaf.return`:
 
@@ -213,8 +235,9 @@ dir_double_exhash
 
     Double size of ExHash table
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         The GFS2 dinode
+    :type dip: struct gfs2_inode \*
 
 .. _`dir_double_exhash.return`:
 
@@ -232,11 +255,13 @@ compare_dents
 
     compare directory entries by hash value
 
-    :param const void \*a:
+    :param a:
         first dent
+    :type a: const void \*
 
-    :param const void \*b:
+    :param b:
         second dent
+    :type b: const void \*
 
 .. _`compare_dents.description`:
 
@@ -257,23 +282,29 @@ do_filldir_main
 
     read out directory entries
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         The GFS2 inode
+    :type dip: struct gfs2_inode \*
 
-    :param struct dir_context \*ctx:
+    :param ctx:
         what to feed the entries to
+    :type ctx: struct dir_context \*
 
-    :param struct gfs2_dirent \*\*darr:
+    :param darr:
         an array of struct gfs2_dirent pointers to read
+    :type darr: struct gfs2_dirent \*\*
 
-    :param u32 entries:
+    :param entries:
         the number of entries in darr
+    :type entries: u32
 
-    :param u32 sort_start:
+    :param sort_start:
         *undescribed*
+    :type sort_start: u32
 
-    :param int \*copied:
+    :param copied:
         pointer to int that's non-zero if a entry has been copied out
+    :type copied: int \*
 
 .. _`do_filldir_main.description`:
 
@@ -301,17 +332,21 @@ gfs2_dir_readahead
 
     Issue read-ahead requests for leaf blocks.
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param unsigned hsize:
+    :param hsize:
         *undescribed*
+    :type hsize: unsigned
 
-    :param u32 index:
+    :param index:
         *undescribed*
+    :type index: u32
 
-    :param struct file_ra_state \*f_ra:
+    :param f_ra:
         *undescribed*
+    :type f_ra: struct file_ra_state \*
 
 .. _`gfs2_dir_readahead.note`:
 
@@ -332,14 +367,17 @@ dir_e_read
 
     Reads the entries from a directory into a filldir buffer
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct dir_context \*ctx:
+    :param ctx:
         actor to feed the entries to
+    :type ctx: struct dir_context \*
 
-    :param struct file_ra_state \*f_ra:
+    :param f_ra:
         *undescribed*
+    :type f_ra: struct file_ra_state \*
 
 .. _`dir_e_read.return`:
 
@@ -357,14 +395,17 @@ gfs2_dir_search
 
     Search a directory
 
-    :param struct inode \*dir:
+    :param dir:
         *undescribed*
+    :type dir: struct inode \*
 
-    :param const struct qstr \*name:
+    :param name:
         The name we are looking up
+    :type name: const struct qstr \*
 
-    :param bool fail_on_exist:
+    :param fail_on_exist:
         Fail if the name exists rather than looking it up
+    :type fail_on_exist: bool
 
 .. _`gfs2_dir_search.description`:
 
@@ -390,11 +431,13 @@ dir_new_leaf
 
     Add a new leaf onto hash chain
 
-    :param struct inode \*inode:
+    :param inode:
         The directory
+    :type inode: struct inode \*
 
-    :param const struct qstr \*name:
+    :param name:
         The name we are adding
+    :type name: const struct qstr \*
 
 .. _`dir_new_leaf.description`:
 
@@ -428,17 +471,21 @@ gfs2_dir_add
 
     Add new filename into directory
 
-    :param struct inode \*inode:
+    :param inode:
         The directory inode
+    :type inode: struct inode \*
 
-    :param const struct qstr \*name:
+    :param name:
         The new name
+    :type name: const struct qstr \*
 
-    :param const struct gfs2_inode \*nip:
+    :param nip:
         The GFS2 inode to be linked in to the directory
+    :type nip: const struct gfs2_inode \*
 
-    :param struct gfs2_diradd \*da:
+    :param da:
         The directory addition info
+    :type da: struct gfs2_diradd \*
 
 .. _`gfs2_dir_add.description`:
 
@@ -467,11 +514,13 @@ gfs2_dir_del
 
     Delete a directory entry
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         The GFS2 inode
+    :type dip: struct gfs2_inode \*
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: const struct dentry \*
 
 .. _`gfs2_dir_del.return`:
 
@@ -489,17 +538,21 @@ gfs2_dir_mvino
 
     Change inode number of directory entry
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         The GFS2 inode
+    :type dip: struct gfs2_inode \*
 
-    :param const struct qstr \*filename:
+    :param filename:
         *undescribed*
+    :type filename: const struct qstr \*
 
-    :param const struct gfs2_inode \*nip:
+    :param nip:
         *undescribed*
+    :type nip: const struct gfs2_inode \*
 
-    :param unsigned int new_type:
+    :param new_type:
         *undescribed*
+    :type new_type: unsigned int
 
 .. _`gfs2_dir_mvino.description`:
 
@@ -526,23 +579,29 @@ leaf_dealloc
 
     Deallocate a directory leaf
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         the directory
+    :type dip: struct gfs2_inode \*
 
-    :param u32 index:
+    :param index:
         the hash table offset in the directory
+    :type index: u32
 
-    :param u32 len:
+    :param len:
         the number of pointers to this leaf
+    :type len: u32
 
-    :param u64 leaf_no:
+    :param leaf_no:
         the leaf number
+    :type leaf_no: u64
 
-    :param struct buffer_head \*leaf_bh:
+    :param leaf_bh:
         buffer_head for the starting leaf
+    :type leaf_bh: struct buffer_head \*
 
-    :param int last_dealloc:
+    :param last_dealloc:
         *undescribed*
+    :type last_dealloc: int
 
 .. _`leaf_dealloc.last_dealloc`:
 
@@ -567,8 +626,9 @@ gfs2_dir_exhash_dealloc
 
     free all the leaf blocks in a directory
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         the directory
+    :type dip: struct gfs2_inode \*
 
 .. _`gfs2_dir_exhash_dealloc.description`:
 
@@ -594,14 +654,17 @@ gfs2_diradd_alloc_required
 
     find if adding entry will require an allocation
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param const struct qstr \*name:
+    :param name:
         *undescribed*
+    :type name: const struct qstr \*
 
-    :param struct gfs2_diradd \*da:
+    :param da:
         The structure to return dir alloc info
+    :type da: struct gfs2_diradd \*
 
 .. _`gfs2_diradd_alloc_required.return`:
 

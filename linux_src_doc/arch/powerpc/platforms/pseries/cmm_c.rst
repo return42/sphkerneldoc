@@ -10,8 +10,9 @@ cmm_alloc_pages
 
     Allocate pages and mark them as loaned
 
-    :param long nr:
+    :param nr:
         number of pages to allocate
+    :type nr: long
 
 .. _`cmm_alloc_pages.return-value`:
 
@@ -29,8 +30,9 @@ cmm_free_pages
 
     Free pages and mark them as active
 
-    :param long nr:
+    :param nr:
         number of pages to free
+    :type nr: long
 
 .. _`cmm_free_pages.return-value`:
 
@@ -48,14 +50,17 @@ cmm_oom_notify
 
     OOM notifier
 
-    :param struct notifier_block \*self:
+    :param self:
         notifier block struct
+    :type self: struct notifier_block \*
 
-    :param unsigned long dummy:
+    :param dummy:
         not used
+    :type dummy: unsigned long
 
-    :param void \*parm:
+    :param parm:
         returned - number of pages freed
+    :type parm: void \*
 
 .. _`cmm_oom_notify.return-value`:
 
@@ -73,8 +78,9 @@ cmm_get_mpp
 
     Read memory performance parameters
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cmm_get_mpp.description`:
 
@@ -99,8 +105,9 @@ cmm_thread
 
     CMM task thread
 
-    :param void \*dummy:
+    :param dummy:
         not used
+    :type dummy: void \*
 
 .. _`cmm_thread.return-value`:
 
@@ -118,8 +125,9 @@ cmm_sysfs_register
 
     Register with sysfs
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`cmm_sysfs_register.return-value`:
 
@@ -137,8 +145,9 @@ cmm_unregister_sysfs
 
     Unregister from sysfs
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`cmm_reboot_notifier`:
 
@@ -149,14 +158,17 @@ cmm_reboot_notifier
 
     Make sure pages are not still marked as "loaned"
 
-    :param struct notifier_block \*nb:
+    :param nb:
         *undescribed*
+    :type nb: struct notifier_block \*
 
-    :param unsigned long action:
+    :param action:
         *undescribed*
+    :type action: unsigned long
 
-    :param void \*unused:
+    :param unused:
         *undescribed*
+    :type unused: void \*
 
 .. _`cmm_count_pages`:
 
@@ -167,8 +179,9 @@ cmm_count_pages
 
     Count the number of pages loaned in a particular range.
 
-    :param void \*arg:
+    :param arg:
         memory_isolate_notify structure with address range and count
+    :type arg: void \*
 
 .. _`cmm_count_pages.return-value`:
 
@@ -186,14 +199,17 @@ cmm_memory_isolate_cb
 
     Handle memory isolation notifier calls
 
-    :param struct notifier_block \*self:
+    :param self:
         notifier block struct
+    :type self: struct notifier_block \*
 
-    :param unsigned long action:
+    :param action:
         action to take
+    :type action: unsigned long
 
-    :param void \*arg:
+    :param arg:
         struct memory_isolate_notify data for handler
+    :type arg: void \*
 
 .. _`cmm_memory_isolate_cb.return-value`:
 
@@ -211,8 +227,9 @@ cmm_mem_going_offline
 
     Unloan pages where memory is to be removed
 
-    :param void \*arg:
+    :param arg:
         memory_notify structure with page range to be offlined
+    :type arg: void \*
 
 .. _`cmm_mem_going_offline.return-value`:
 
@@ -230,14 +247,17 @@ cmm_memory_cb
 
     Handle memory hotplug notifier calls
 
-    :param struct notifier_block \*self:
+    :param self:
         notifier block struct
+    :type self: struct notifier_block \*
 
-    :param unsigned long action:
+    :param action:
         action to take
+    :type action: unsigned long
 
-    :param void \*arg:
+    :param arg:
         struct memory_notify data for handler
+    :type arg: void \*
 
 .. _`cmm_memory_cb.return-value`:
 
@@ -255,8 +275,9 @@ cmm_init
 
     Module initialization
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cmm_init.return-value`:
 
@@ -274,8 +295,9 @@ cmm_exit
 
     Module exit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cmm_exit.return-value`:
 
@@ -293,11 +315,13 @@ cmm_set_disable
 
     Disable/Enable CMM
 
-    :param const char \*val:
+    :param val:
         *undescribed*
+    :type val: const char \*
 
-    :param const struct kernel_param \*kp:
+    :param kp:
         *undescribed*
+    :type kp: const struct kernel_param \*
 
 .. _`cmm_set_disable.return-value`:
 

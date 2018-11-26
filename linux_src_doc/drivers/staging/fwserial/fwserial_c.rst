@@ -10,8 +10,9 @@ LIST_HEAD
 
     list of every fw_serial created for each fw_card See discussion in fwserial_probe.
 
-    :param  fwserial_list:
+    :param fwserial_list:
         *undescribed*
+    :type fwserial_list: 
 
 .. _`fwtty_update_port_status`:
 
@@ -22,11 +23,13 @@ fwtty_update_port_status
 
     decodes & dispatches line status changes
 
-    :param struct fwtty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fwtty_port \*
 
-    :param unsigned int status:
+    :param status:
         *undescribed*
+    :type status: unsigned int
 
 .. _`fwtty_update_port_status.note`:
 
@@ -45,8 +48,9 @@ don't attempt to reclaim the port->lock.
 
     generate 'line status' for indicated port
 
-    :param struct fwtty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fwtty_port \*
 
 .. _`__fwtty_port_line_status.description`:
 
@@ -73,8 +77,9 @@ caller must be holding port lock
 
     send the port line status to peer
 
-    :param struct fwtty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fwtty_port \*
 
 .. _`__fwtty_write_port_status.note`:
 
@@ -92,8 +97,9 @@ fwtty_write_port_status
 
     same as above but locked by port lock
 
-    :param struct fwtty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fwtty_port \*
 
 .. _`fwtty_do_hangup`:
 
@@ -104,8 +110,9 @@ fwtty_do_hangup
 
     wait for ldisc to deliver all pending rx; only then hangup
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`fwtty_do_hangup.description`:
 
@@ -136,35 +143,45 @@ fwtty_port_handler
 
     bus address handler for port reads/writes
 
-    :param struct fw_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct fw_card \*
 
-    :param struct fw_request \*request:
+    :param request:
         *undescribed*
+    :type request: struct fw_request \*
 
-    :param int tcode:
+    :param tcode:
         *undescribed*
+    :type tcode: int
 
-    :param int destination:
+    :param destination:
         *undescribed*
+    :type destination: int
 
-    :param int source:
+    :param source:
         *undescribed*
+    :type source: int
 
-    :param int generation:
+    :param generation:
         *undescribed*
+    :type generation: int
 
-    :param unsigned long long addr:
+    :param addr:
         *undescribed*
+    :type addr: unsigned long long
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param void \*callback_data:
+    :param callback_data:
         *undescribed*
+    :type callback_data: void \*
 
 .. _`fwtty_port_handler.description`:
 
@@ -182,20 +199,25 @@ fwtty_tx_complete
 
     callback for tx dma
 
-    :param struct fw_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct fw_card \*
 
-    :param int rcode:
+    :param rcode:
         *undescribed*
+    :type rcode: int
 
-    :param void \*data:
+    :param data:
         ignored, has no meaning for write txns
+    :type data: void \*
 
-    :param size_t length:
+    :param length:
         ignored, has no meaning for write txns
+    :type length: size_t
 
-    :param struct fwtty_transaction \*txn:
+    :param txn:
         *undescribed*
+    :type txn: struct fwtty_transaction \*
 
 .. _`fwtty_tx_complete.description`:
 
@@ -214,8 +236,9 @@ fwtty_port_carrier_raised
 
     required tty_port operation
 
-    :param struct tty_port \*tty_port:
+    :param tty_port:
         *undescribed*
+    :type tty_port: struct tty_port \*
 
 .. _`fwtty_port_carrier_raised.description`:
 
@@ -232,8 +255,9 @@ fwtty_port_shutdown
 
 .. c:function:: void fwtty_port_shutdown(struct tty_port *tty_port)
 
-    :param struct tty_port \*tty_port:
+    :param tty_port:
         *undescribed*
+    :type tty_port: struct tty_port \*
 
 .. _`fwtty_port_shutdown.note`:
 
@@ -252,11 +276,13 @@ fwtty_break_ctl
 
     start/stop sending breaks
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param int state:
+    :param state:
         *undescribed*
+    :type state: int
 
 .. _`fwtty_break_ctl.description`:
 
@@ -279,11 +305,13 @@ fwserial_claim_port
 
     attempt to claim port \ ````\  index for peer
 
-    :param struct fwtty_peer \*peer:
+    :param peer:
         *undescribed*
+    :type peer: struct fwtty_peer \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. _`fwserial_claim_port.description`:
 
@@ -302,8 +330,9 @@ fwserial_find_port
 
     find avail port and claim for peer
 
-    :param struct fwtty_peer \*peer:
+    :param peer:
         *undescribed*
+    :type peer: struct fwtty_peer \*
 
 .. _`fwserial_find_port.description`:
 
@@ -322,8 +351,9 @@ fwserial_connect_peer
 
     initiate virtual cable with peer
 
-    :param struct fwtty_peer \*peer:
+    :param peer:
         *undescribed*
+    :type peer: struct fwtty_peer \*
 
 .. _`fwserial_connect_peer.description`:
 
@@ -342,11 +372,13 @@ fwserial_close_port
 
     HUP the tty (if the tty exists) and unregister the tty device. Only used by the unit driver upon unit removal to disconnect and cleanup all attached ports
 
-    :param struct tty_driver \*driver:
+    :param driver:
         *undescribed*
+    :type driver: struct tty_driver \*
 
-    :param struct fwtty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct fwtty_port \*
 
 .. _`fwserial_close_port.description`:
 
@@ -365,8 +397,9 @@ fwserial_lookup
 
     finds first fw_serial associated with card
 
-    :param struct fw_card \*card:
+    :param card:
         fw_card to match
+    :type card: struct fw_card \*
 
 .. _`fwserial_lookup.description`:
 
@@ -384,8 +417,9 @@ NB: caller must be holding fwserial_list_mutex
 
     finds first fw_serial associated with card
 
-    :param struct fw_card \*card:
+    :param card:
         fw_card to match
+    :type card: struct fw_card \*
 
 .. _`__fwserial_lookup_rcu.description`:
 
@@ -403,14 +437,17 @@ NB: caller must be inside \ :c:func:`rcu_read_lock`\  section
 
     finds a peer matching the given generation + id
 
-    :param struct fw_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct fw_card \*
 
-    :param int generation:
+    :param generation:
         *undescribed*
+    :type generation: int
 
-    :param int id:
+    :param id:
         *undescribed*
+    :type id: int
 
 .. _`__fwserial_peer_by_node_id.description`:
 
@@ -445,11 +482,13 @@ fwserial_add_peer
 
     add a newly probed 'serial' unit device as a 'peer'
 
-    :param struct fw_serial \*serial:
+    :param serial:
         aggregate representing the specific fw_card to add the peer to
+    :type serial: struct fw_serial \*
 
-    :param struct fw_unit \*unit:
+    :param unit:
         'peer' to create and add to peer_list of serial
+    :type unit: struct fw_unit \*
 
 .. _`fwserial_add_peer.description`:
 
@@ -481,8 +520,9 @@ fwserial_remove_peer
 
     remove a 'serial' unit device as a 'peer'
 
-    :param struct fwtty_peer \*peer:
+    :param peer:
         *undescribed*
+    :type peer: struct fwtty_peer \*
 
 .. _`fwserial_remove_peer.description`:
 
@@ -509,8 +549,9 @@ fwserial_create
 
     init everything to create TTYs for a specific fw_card
 
-    :param struct fw_unit \*unit:
+    :param unit:
         fw_unit for first 'serial' unit device probed for this fw_card
+    :type unit: struct fw_unit \*
 
 .. _`fwserial_create.description`:
 
@@ -537,11 +578,13 @@ fwserial_probe
 
     bus probe function for firewire 'serial' unit devices
 
-    :param struct fw_unit \*unit:
+    :param unit:
         *undescribed*
+    :type unit: struct fw_unit \*
 
-    :param const struct ieee1394_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct ieee1394_device_id \*
 
 .. _`fwserial_probe.description`:
 
@@ -594,8 +637,9 @@ fwserial_remove
 
     bus removal function for firewire 'serial' unit devices
 
-    :param struct fw_unit \*unit:
+    :param unit:
         *undescribed*
+    :type unit: struct fw_unit \*
 
 .. _`fwserial_remove.description`:
 
@@ -616,8 +660,9 @@ fwserial_update
 
     bus update function for 'firewire' serial unit devices
 
-    :param struct fw_unit \*unit:
+    :param unit:
         *undescribed*
+    :type unit: struct fw_unit \*
 
 .. _`fwserial_update.description`:
 
@@ -644,8 +689,9 @@ fwserial_handle_plug_req
 
     handle VIRT_CABLE_PLUG request work
 
-    :param struct work_struct \*work:
+    :param work:
         ptr to peer->work
+    :type work: struct work_struct \*
 
 .. _`fwserial_handle_plug_req.description`:
 
@@ -675,35 +721,45 @@ fwserial_mgmt_handler
 
     bus address handler for mgmt requests
 
-    :param struct fw_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct fw_card \*
 
-    :param struct fw_request \*request:
+    :param request:
         *undescribed*
+    :type request: struct fw_request \*
 
-    :param int tcode:
+    :param tcode:
         *undescribed*
+    :type tcode: int
 
-    :param int destination:
+    :param destination:
         *undescribed*
+    :type destination: int
 
-    :param int source:
+    :param source:
         *undescribed*
+    :type source: int
 
-    :param int generation:
+    :param generation:
         *undescribed*
+    :type generation: int
 
-    :param unsigned long long addr:
+    :param addr:
         *undescribed*
+    :type addr: unsigned long long
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param void \*callback_data:
+    :param callback_data:
         *undescribed*
+    :type callback_data: void \*
 
 .. _`fwserial_mgmt_handler.description`:
 

@@ -10,17 +10,21 @@ gfs2_glock_nq_init
 
     initialize a holder and enqueue it on a glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param unsigned int state:
+    :param state:
         the state we're requesting
+    :type state: unsigned int
 
-    :param u16 flags:
+    :param flags:
         the modifier flags
+    :type flags: u16
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         the holder structure
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_glock_nq_init.return`:
 
@@ -38,11 +42,13 @@ glock_set_object
 
     set the gl_object field of a glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param void \*object:
+    :param object:
         the object
+    :type object: void \*
 
 .. _`glock_clear_object`:
 
@@ -53,11 +59,13 @@ glock_clear_object
 
     clear the gl_object field of a glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param void \*object:
+    :param object:
         the object
+    :type object: void \*
 
 .. _`glock_clear_object.description`:
 

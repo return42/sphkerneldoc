@@ -10,11 +10,13 @@ for_each_subsys
 
     iterate all enabled cgroup subsystems
 
-    :param  ss:
+    :param ss:
         the iteration cursor
+    :type ss: 
 
-    :param  ssid:
+    :param ssid:
         the index of \ ``ss``\ , CGROUP_SUBSYS_COUNT after reaching the end
+    :type ssid: 
 
 .. This file was automatic generated / don't edit.
 

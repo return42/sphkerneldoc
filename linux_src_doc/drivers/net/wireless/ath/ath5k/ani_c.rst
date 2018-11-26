@@ -42,11 +42,13 @@ ath5k_ani_set_noise_immunity_level
 
     Set noise immunity level
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param int level:
+    :param level:
         level between 0 and \ ``ATH5K_ANI_MAX_NOISE_IMM_LVL``\ 
+    :type level: int
 
 .. _`ath5k_ani_set_spur_immunity_level`:
 
@@ -57,12 +59,14 @@ ath5k_ani_set_spur_immunity_level
 
     Set spur immunity level
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param int level:
+    :param level:
         level between 0 and \ ``max_spur_level``\  (the maximum level is dependent
         on the chip revision).
+    :type level: int
 
 .. _`ath5k_ani_set_firstep_level`:
 
@@ -73,11 +77,13 @@ ath5k_ani_set_firstep_level
 
     Set "firstep" level
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param int level:
+    :param level:
         level between 0 and \ ``ATH5K_ANI_MAX_FIRSTEP_LVL``\ 
+    :type level: int
 
 .. _`ath5k_ani_set_ofdm_weak_signal_detection`:
 
@@ -88,11 +94,13 @@ ath5k_ani_set_ofdm_weak_signal_detection
 
     Set OFDM weak signal detection
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param bool on:
+    :param on:
         turn on or off
+    :type on: bool
 
 .. _`ath5k_ani_set_cck_weak_signal_detection`:
 
@@ -103,11 +111,13 @@ ath5k_ani_set_cck_weak_signal_detection
 
     Set CCK weak signal detection
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param bool on:
+    :param on:
         turn on or off
+    :type on: bool
 
 .. _`ath5k_ani_raise_immunity`:
 
@@ -118,15 +128,18 @@ ath5k_ani_raise_immunity
 
     Increase noise immunity
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_ani_state \*as:
+    :param as:
         The \ :c:type:`struct ath5k_ani_state <ath5k_ani_state>`\ 
+    :type as: struct ath5k_ani_state \*
 
-    :param bool ofdm_trigger:
+    :param ofdm_trigger:
         If this is true we are called because of too many OFDM errors,
         the algorithm will tune more parameters then.
+    :type ofdm_trigger: bool
 
 .. _`ath5k_ani_raise_immunity.description`:
 
@@ -145,11 +158,13 @@ ath5k_ani_lower_immunity
 
     Decrease noise immunity
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_ani_state \*as:
+    :param as:
         The \ :c:type:`struct ath5k_ani_state <ath5k_ani_state>`\ 
+    :type as: struct ath5k_ani_state \*
 
 .. _`ath5k_ani_lower_immunity.description`:
 
@@ -168,11 +183,13 @@ ath5k_hw_ani_get_listen_time
 
     Update counters and return listening time
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_ani_state \*as:
+    :param as:
         The \ :c:type:`struct ath5k_ani_state <ath5k_ani_state>`\ 
+    :type as: struct ath5k_ani_state \*
 
 .. _`ath5k_hw_ani_get_listen_time.description`:
 
@@ -192,11 +209,13 @@ ath5k_ani_save_and_clear_phy_errors
 
     Clear and save PHY error counters
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ath5k_ani_state \*as:
+    :param as:
         The \ :c:type:`struct ath5k_ani_state <ath5k_ani_state>`\ 
+    :type as: struct ath5k_ani_state \*
 
 .. _`ath5k_ani_save_and_clear_phy_errors.description`:
 
@@ -220,8 +239,9 @@ ath5k_ani_period_restart
 
     Restart ANI period
 
-    :param struct ath5k_ani_state \*as:
+    :param as:
         The \ :c:type:`struct ath5k_ani_state <ath5k_ani_state>`\ 
+    :type as: struct ath5k_ani_state \*
 
 .. _`ath5k_ani_period_restart.description`:
 
@@ -239,8 +259,9 @@ ath5k_ani_calibration
 
     The main ANI calibration function
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_ani_calibration.description`:
 
@@ -264,8 +285,9 @@ ath5k_ani_mib_intr
 
     Interrupt handler for ANI MIB counters
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_ani_mib_intr.description`:
 
@@ -288,11 +310,13 @@ ath5k_ani_phy_error_report
 
     Used by older HW to report PHY errors
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum ath5k_phy_error_code phyerr:
+    :param phyerr:
         One of enum ath5k_phy_error_code
+    :type phyerr: enum ath5k_phy_error_code
 
 .. _`ath5k_ani_phy_error_report.description`:
 
@@ -311,8 +335,9 @@ ath5k_enable_phy_err_counters
 
     Enable PHY error counters
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_enable_phy_err_counters.description`:
 
@@ -330,8 +355,9 @@ ath5k_disable_phy_err_counters
 
     Disable PHY error counters
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_disable_phy_err_counters.description`:
 
@@ -349,11 +375,13 @@ ath5k_ani_init
 
     Initialize ANI
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum ath5k_ani_mode mode:
+    :param mode:
         One of enum ath5k_ani_mode
+    :type mode: enum ath5k_ani_mode
 
 .. _`ath5k_ani_init.description`:
 
@@ -371,8 +399,9 @@ ath5k_ani_print_counters
 
     Print ANI counters
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_ani_print_counters.description`:
 

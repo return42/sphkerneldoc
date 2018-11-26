@@ -10,8 +10,9 @@ alloc_dbr
 
     \ ``param``\  size Allocating memory size. \ ``return``\  Offset in DBR memory by success or DBR_SIZE if out of memory.
 
-    :param u16 size:
+    :param size:
         *undescribed*
+    :type size: u16
 
 .. _`dim_norm_isoc_buffer_size`:
 
@@ -22,11 +23,13 @@ dim_norm_isoc_buffer_size
 
     conform to given packet length and not bigger than given buffer size.
 
-    :param u16 buf_size:
+    :param buf_size:
         *undescribed*
+    :type buf_size: u16
 
-    :param u16 packet_length:
+    :param packet_length:
         *undescribed*
+    :type packet_length: u16
 
 .. _`dim_norm_isoc_buffer_size.description`:
 
@@ -44,11 +47,13 @@ dim_norm_sync_buffer_size
 
     conform to given bytes per frame and not bigger than given buffer size.
 
-    :param u16 buf_size:
+    :param buf_size:
         *undescribed*
+    :type buf_size: u16
 
-    :param u16 bytes_per_frame:
+    :param bytes_per_frame:
         *undescribed*
+    :type bytes_per_frame: u16
 
 .. _`dim_norm_sync_buffer_size.description`:
 

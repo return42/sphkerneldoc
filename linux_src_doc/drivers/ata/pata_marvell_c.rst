@@ -10,8 +10,9 @@ marvell_pata_active
 
     check if PATA is active
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`marvell_pata_active.description`:
 
@@ -30,11 +31,13 @@ marvell_pre_reset
 
     probe begin
 
-    :param struct ata_link \*link:
+    :param link:
         link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`marvell_pre_reset.description`:
 
@@ -52,11 +55,13 @@ marvell_init_one
 
     Register Marvell ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct pci_device_id \*
 
 .. _`marvell_init_one.description`:
 

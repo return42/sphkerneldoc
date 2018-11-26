@@ -10,8 +10,9 @@ dsu_pmu_set_event_period
 
     Set the period for the counter.
 
-    :param struct perf_event \*event:
+    :param event:
         *undescribed*
+    :type event: struct perf_event \*
 
 .. _`dsu_pmu_set_event_period.description`:
 
@@ -31,11 +32,13 @@ dsu_pmu_dt_get_cpus
 
     Get the list of CPUs in the cluster.
 
-    :param struct device_node \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device_node \*
 
-    :param cpumask_t \*mask:
+    :param mask:
         *undescribed*
+    :type mask: cpumask_t \*
 
 .. This file was automatic generated / don't edit.
 

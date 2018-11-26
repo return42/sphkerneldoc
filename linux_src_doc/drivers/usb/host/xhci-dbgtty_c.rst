@@ -10,14 +10,17 @@ dbc_send_packet
 
     dbgtty.c - tty glue for xHCI debug capability
 
-    :param struct dbc_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct dbc_port \*
 
-    :param char \*packet:
+    :param packet:
         *undescribed*
+    :type packet: char \*
 
-    :param unsigned int size:
+    :param size:
         *undescribed*
+    :type size: unsigned int
 
 .. _`dbc_send_packet.description`:
 

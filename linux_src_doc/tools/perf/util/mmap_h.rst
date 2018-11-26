@@ -21,6 +21,7 @@ Definition
         void *base;
         int mask;
         int fd;
+        int cpu;
         refcount_t refcnt;
         u64 prev;
         u64 start;
@@ -42,6 +43,9 @@ mask
     *undescribed*
 
 fd
+    *undescribed*
+
+cpu
     *undescribed*
 
 refcnt

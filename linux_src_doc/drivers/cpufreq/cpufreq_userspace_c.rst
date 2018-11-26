@@ -10,11 +10,13 @@ cpufreq_set
 
     set the CPU frequency
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         pointer to policy struct where freq is being set
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int freq:
+    :param freq:
         target frequency in kHz
+    :type freq: unsigned int
 
 .. _`cpufreq_set.description`:
 

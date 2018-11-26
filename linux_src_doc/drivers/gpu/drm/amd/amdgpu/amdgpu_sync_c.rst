@@ -10,8 +10,9 @@ amdgpu_sync_create
 
     zero init sync object
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         sync object to initialize
+    :type sync: struct amdgpu_sync \*
 
 .. _`amdgpu_sync_create.description`:
 
@@ -29,11 +30,13 @@ amdgpu_sync_same_dev
 
     test if fence belong to us
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device to use for the test
+    :type adev: struct amdgpu_device \*
 
-    :param struct dma_fence \*f:
+    :param f:
         fence to test
+    :type f: struct dma_fence \*
 
 .. _`amdgpu_sync_same_dev.description`:
 
@@ -51,8 +54,9 @@ amdgpu_sync_get_owner
 
     extract the owner of a fence
 
-    :param struct dma_fence \*f:
+    :param f:
         *undescribed*
+    :type f: struct dma_fence \*
 
 .. _`amdgpu_sync_get_owner.description`:
 
@@ -70,11 +74,13 @@ amdgpu_sync_keep_later
 
     Keep the later fence
 
-    :param struct dma_fence \*\*keep:
+    :param keep:
         existing fence to test
+    :type keep: struct dma_fence \*\*
 
-    :param struct dma_fence \*fence:
+    :param fence:
         new fence
+    :type fence: struct dma_fence \*
 
 .. _`amdgpu_sync_keep_later.description`:
 
@@ -92,14 +98,17 @@ amdgpu_sync_add_later
 
     add the fence to the hash
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         sync object to add the fence to
+    :type sync: struct amdgpu_sync \*
 
-    :param struct dma_fence \*f:
+    :param f:
         fence to add
+    :type f: struct dma_fence \*
 
-    :param bool explicit:
+    :param explicit:
         *undescribed*
+    :type explicit: bool
 
 .. _`amdgpu_sync_add_later.description`:
 
@@ -118,17 +127,21 @@ amdgpu_sync_fence
 
     remember to sync to this fence
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         sync object to add fence to
+    :type sync: struct amdgpu_sync \*
 
-    :param struct dma_fence \*f:
+    :param f:
         *undescribed*
+    :type f: struct dma_fence \*
 
-    :param bool explicit:
+    :param explicit:
         *undescribed*
+    :type explicit: bool
 
 .. _`amdgpu_sync_resv`:
 
@@ -139,20 +152,25 @@ amdgpu_sync_resv
 
     sync to a reservation object
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         sync object to add fences from reservation object to
+    :type sync: struct amdgpu_sync \*
 
-    :param struct reservation_object \*resv:
+    :param resv:
         reservation object with embedded fence
+    :type resv: struct reservation_object \*
 
-    :param void \*owner:
+    :param owner:
         *undescribed*
+    :type owner: void \*
 
-    :param bool explicit_sync:
+    :param explicit_sync:
         true if we should only sync to the exclusive fence
+    :type explicit_sync: bool
 
 .. _`amdgpu_sync_resv.description`:
 
@@ -170,11 +188,13 @@ amdgpu_sync_peek_fence
 
     get the next fence not signaled yet
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         the sync object
+    :type sync: struct amdgpu_sync \*
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         optional ring to use for test
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_sync_peek_fence.description`:
 
@@ -193,11 +213,13 @@ amdgpu_sync_get_fence
 
     get the next fence from the sync object
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         sync object to use
+    :type sync: struct amdgpu_sync \*
 
-    :param bool \*explicit:
+    :param explicit:
         true if the next fence is explicit
+    :type explicit: bool \*
 
 .. _`amdgpu_sync_get_fence.description`:
 
@@ -215,11 +237,13 @@ amdgpu_sync_clone
 
     clone a sync object
 
-    :param struct amdgpu_sync \*source:
+    :param source:
         sync object to clone
+    :type source: struct amdgpu_sync \*
 
-    :param struct amdgpu_sync \*clone:
+    :param clone:
         pointer to destination sync object
+    :type clone: struct amdgpu_sync \*
 
 .. _`amdgpu_sync_clone.description`:
 
@@ -238,8 +262,9 @@ amdgpu_sync_free
 
     free the sync object
 
-    :param struct amdgpu_sync \*sync:
+    :param sync:
         sync object to use
+    :type sync: struct amdgpu_sync \*
 
 .. _`amdgpu_sync_free.description`:
 
@@ -257,8 +282,9 @@ amdgpu_sync_init
 
     init sync object subsystem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`amdgpu_sync_init.description`:
 
@@ -276,8 +302,9 @@ amdgpu_sync_fini
 
     fini sync object subsystem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`amdgpu_sync_fini.description`:
 

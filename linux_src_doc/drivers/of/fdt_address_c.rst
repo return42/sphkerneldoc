@@ -10,8 +10,9 @@ of_flat_dt_translate_address
 
     translate DT addr into CPU phys addr
 
-    :param unsigned long node:
+    :param node:
         node in the flat blob
+    :type node: unsigned long
 
 .. This file was automatic generated / don't edit.
 

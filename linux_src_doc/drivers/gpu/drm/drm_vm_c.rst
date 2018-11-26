@@ -8,11 +8,13 @@ drm_mmap_dma
 
 .. c:function:: int drm_mmap_dma(struct file *filp, struct vm_area_struct *vma)
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         *undescribed*
+    :type vma: struct vm_area_struct \*
 
 .. _`drm_mmap_dma.description`:
 
@@ -33,11 +35,13 @@ drm_mmap_locked
 
 .. c:function:: int drm_mmap_locked(struct file *filp, struct vm_area_struct *vma)
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         *undescribed*
+    :type vma: struct vm_area_struct \*
 
 .. _`drm_mmap_locked.description`:
 

@@ -10,8 +10,9 @@ nft_register_expr
 
     register nf_tables expr type
 
-    :param struct nft_expr_type \*type:
+    :param type:
         *undescribed*
+    :type type: struct nft_expr_type \*
 
 .. _`nft_register_expr.description`:
 
@@ -30,8 +31,9 @@ nft_unregister_expr
 
     unregister nf_tables expr type
 
-    :param struct nft_expr_type \*type:
+    :param type:
         *undescribed*
+    :type type: struct nft_expr_type \*
 
 .. _`nft_unregister_expr.description`:
 
@@ -49,11 +51,13 @@ nft_data_hold
 
     hold a nft_data item
 
-    :param const struct nft_data \*data:
+    :param data:
         struct nft_data to release
+    :type data: const struct nft_data \*
 
-    :param enum nft_data_types type:
+    :param type:
         type of data
+    :type type: enum nft_data_types
 
 .. _`nft_data_hold.description`:
 
@@ -74,8 +78,9 @@ nft_register_obj
 
     register nf_tables stateful object type
 
-    :param struct nft_object_type \*obj_type:
+    :param obj_type:
         *undescribed*
+    :type obj_type: struct nft_object_type \*
 
 .. _`nft_register_obj.description`:
 
@@ -94,8 +99,9 @@ nft_unregister_obj
 
     unregister nf_tables object type
 
-    :param struct nft_object_type \*obj_type:
+    :param obj_type:
         *undescribed*
+    :type obj_type: struct nft_object_type \*
 
 .. _`nft_unregister_obj.description`:
 
@@ -113,14 +119,17 @@ nft_parse_u32_check
 
     fetch u32 attribute and check for maximum value
 
-    :param const struct nlattr \*attr:
+    :param attr:
         netlink attribute to fetch value from
+    :type attr: const struct nlattr \*
 
-    :param int max:
+    :param max:
         maximum value to be stored in dest
+    :type max: int
 
-    :param u32 \*dest:
+    :param dest:
         pointer to the variable
+    :type dest: u32 \*
 
 .. _`nft_parse_u32_check.description`:
 
@@ -141,8 +150,9 @@ nft_parse_register
 
     parse a register value from a netlink attribute
 
-    :param const struct nlattr \*attr:
+    :param attr:
         netlink attribute
+    :type attr: const struct nlattr \*
 
 .. _`nft_parse_register.description`:
 
@@ -162,14 +172,17 @@ nft_dump_register
 
     dump a register value to a netlink attribute
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer
+    :type skb: struct sk_buff \*
 
-    :param unsigned int attr:
+    :param attr:
         attribute number
+    :type attr: unsigned int
 
-    :param unsigned int reg:
+    :param reg:
         register number
+    :type reg: unsigned int
 
 .. _`nft_dump_register.description`:
 
@@ -189,11 +202,13 @@ nft_validate_register_load
 
     validate a load from a register
 
-    :param enum nft_registers reg:
+    :param reg:
         the register number
+    :type reg: enum nft_registers
 
-    :param unsigned int len:
+    :param len:
         the length of the data
+    :type len: unsigned int
 
 .. _`nft_validate_register_load.description`:
 
@@ -212,20 +227,25 @@ nft_validate_register_store
 
     validate an expressions' register store
 
-    :param const struct nft_ctx \*ctx:
+    :param ctx:
         context of the expression performing the load
+    :type ctx: const struct nft_ctx \*
 
-    :param enum nft_registers reg:
+    :param reg:
         the destination register number
+    :type reg: enum nft_registers
 
-    :param const struct nft_data \*data:
+    :param data:
         the data to load
+    :type data: const struct nft_data \*
 
-    :param enum nft_data_types type:
+    :param type:
         the data type
+    :type type: enum nft_data_types
 
-    :param unsigned int len:
+    :param len:
         the length of the data
+    :type len: unsigned int
 
 .. _`nft_validate_register_store.description`:
 
@@ -246,20 +266,25 @@ nft_data_init
 
     parse nf_tables data netlink attributes
 
-    :param const struct nft_ctx \*ctx:
+    :param ctx:
         context of the expression using the data
+    :type ctx: const struct nft_ctx \*
 
-    :param struct nft_data \*data:
+    :param data:
         destination struct nft_data
+    :type data: struct nft_data \*
 
-    :param unsigned int size:
+    :param size:
         maximum data length
+    :type size: unsigned int
 
-    :param struct nft_data_desc \*desc:
+    :param desc:
         data description
+    :type desc: struct nft_data_desc \*
 
-    :param const struct nlattr \*nla:
+    :param nla:
         netlink attribute containing data
+    :type nla: const struct nlattr \*
 
 .. _`nft_data_init.description`:
 
@@ -281,11 +306,13 @@ nft_data_release
 
     release a nft_data item
 
-    :param const struct nft_data \*data:
+    :param data:
         struct nft_data to release
+    :type data: const struct nft_data \*
 
-    :param enum nft_data_types type:
+    :param type:
         type of data
+    :type type: enum nft_data_types
 
 .. _`nft_data_release.description`:
 

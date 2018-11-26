@@ -10,14 +10,17 @@ crypto_sm4_expand_key
 
     Expands the SM4 key as described in GB/T 32907-2016
 
-    :param struct crypto_sm4_ctx \*ctx:
+    :param ctx:
         The location where the computed key will be stored.
+    :type ctx: struct crypto_sm4_ctx \*
 
-    :param const u8 \*in_key:
+    :param in_key:
         The supplied key.
+    :type in_key: const u8 \*
 
-    :param unsigned int key_len:
+    :param key_len:
         The length of the supplied key.
+    :type key_len: unsigned int
 
 .. _`crypto_sm4_expand_key.description`:
 
@@ -36,14 +39,17 @@ crypto_sm4_set_key
 
     Set the AES key.
 
-    :param struct crypto_tfm \*tfm:
+    :param tfm:
         The \ ``crypto_tfm``\  that is used in the context.
+    :type tfm: struct crypto_tfm \*
 
-    :param const u8 \*in_key:
+    :param in_key:
         The input key.
+    :type in_key: const u8 \*
 
-    :param unsigned int key_len:
+    :param key_len:
         The size of the key.
+    :type key_len: unsigned int
 
 .. _`crypto_sm4_set_key.description`:
 

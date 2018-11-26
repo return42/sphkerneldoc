@@ -8,8 +8,9 @@ vmw_context_cotables_unref
 
 .. c:function:: void vmw_context_cotables_unref(struct vmw_user_context *uctx)
 
-    :param struct vmw_user_context \*uctx:
+    :param uctx:
         *undescribed*
+    :type uctx: struct vmw_user_context \*
 
 .. _`vmw_dx_context_scrub_cotables`:
 
@@ -20,11 +21,13 @@ vmw_dx_context_scrub_cotables
 
     Scrub all bindings and cotables from a context
 
-    :param struct vmw_resource \*ctx:
+    :param ctx:
         Pointer to the context resource
+    :type ctx: struct vmw_resource \*
 
-    :param bool readback:
+    :param readback:
         Whether to save the otable contents on scrubbing.
+    :type readback: bool
 
 .. _`vmw_dx_context_scrub_cotables.description`:
 
@@ -47,8 +50,9 @@ vmw_user_context_base_to_res
 
     space context management:
 
-    :param struct ttm_base_object \*base:
+    :param base:
         *undescribed*
+    :type base: struct ttm_base_object \*
 
 .. _`vmw_user_context_base_release`:
 
@@ -59,8 +63,9 @@ vmw_user_context_base_release
 
     base object. It releases the base-object's reference on the resource object.
 
-    :param struct ttm_base_object \*\*p_base:
+    :param p_base:
         *undescribed*
+    :type p_base: struct ttm_base_object \*\*
 
 .. _`vmw_context_binding_list`:
 
@@ -71,8 +76,9 @@ vmw_context_binding_list
 
     Return a list of context bindings
 
-    :param struct vmw_resource \*ctx:
+    :param ctx:
         The context resource
+    :type ctx: struct vmw_resource \*
 
 .. _`vmw_context_binding_list.description`:
 
@@ -91,8 +97,9 @@ vmw_context_binding_state
 
     Return a pointer to a context binding state structure
 
-    :param struct vmw_resource \*ctx:
+    :param ctx:
         The context resource
+    :type ctx: struct vmw_resource \*
 
 .. _`vmw_context_binding_state.description`:
 
@@ -107,15 +114,17 @@ this state becomes stale as soon as the dev_priv::binding_mutex is unlocked.
 vmw_context_bind_dx_query
 =========================
 
-.. c:function:: int vmw_context_bind_dx_query(struct vmw_resource *ctx_res, struct vmw_dma_buffer *mob)
+.. c:function:: int vmw_context_bind_dx_query(struct vmw_resource *ctx_res, struct vmw_buffer_object *mob)
 
     Sets query MOB for the context.  If \ ``mob``\  is NULL, then this function will remove the association between the MOB and the context.  This function assumes the binding_mutex is held.
 
-    :param struct vmw_resource \*ctx_res:
+    :param ctx_res:
         The context resource
+    :type ctx_res: struct vmw_resource \*
 
-    :param struct vmw_dma_buffer \*mob:
+    :param mob:
         a reference to the query MOB
+    :type mob: struct vmw_buffer_object \*
 
 .. _`vmw_context_bind_dx_query.description`:
 
@@ -130,12 +139,13 @@ specified in the parameter.  0 otherwise.
 vmw_context_get_dx_query_mob
 ============================
 
-.. c:function:: struct vmw_dma_buffer *vmw_context_get_dx_query_mob(struct vmw_resource *ctx_res)
+.. c:function:: struct vmw_buffer_object *vmw_context_get_dx_query_mob(struct vmw_resource *ctx_res)
 
     Returns non-counted reference to DX query mob
 
-    :param struct vmw_resource \*ctx_res:
+    :param ctx_res:
         The context resource
+    :type ctx_res: struct vmw_resource \*
 
 .. This file was automatic generated / don't edit.
 

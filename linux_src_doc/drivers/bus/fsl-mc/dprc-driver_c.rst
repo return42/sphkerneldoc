@@ -10,15 +10,18 @@ dprc_remove_devices
 
     Removes devices for objects removed from a DPRC
 
-    :param struct fsl_mc_device \*mc_bus_dev:
+    :param mc_bus_dev:
         pointer to the fsl-mc device that represents a DPRC object
+    :type mc_bus_dev: struct fsl_mc_device \*
 
-    :param struct fsl_mc_obj_desc \*obj_desc_array:
+    :param obj_desc_array:
         array of object descriptors for child objects currently
         present in the DPRC in the MC.
+    :type obj_desc_array: struct fsl_mc_obj_desc \*
 
-    :param int num_child_objects_in_mc:
+    :param num_child_objects_in_mc:
         number of entries in obj_desc_array
+    :type num_child_objects_in_mc: int
 
 .. _`dprc_remove_devices.description`:
 
@@ -38,11 +41,13 @@ check_plugged_state_change
 
     Check change in an MC object's plugged state
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         pointer to the fsl-mc device for a given MC object
+    :type mc_dev: struct fsl_mc_device \*
 
-    :param struct fsl_mc_obj_desc \*obj_desc:
+    :param obj_desc:
         pointer to the MC object's descriptor in the MC
+    :type obj_desc: struct fsl_mc_obj_desc \*
 
 .. _`check_plugged_state_change.description`:
 
@@ -63,15 +68,18 @@ dprc_add_new_devices
 
     Adds devices to the logical bus for a DPRC
 
-    :param struct fsl_mc_device \*mc_bus_dev:
+    :param mc_bus_dev:
         pointer to the fsl-mc device that represents a DPRC object
+    :type mc_bus_dev: struct fsl_mc_device \*
 
-    :param struct fsl_mc_obj_desc \*obj_desc_array:
+    :param obj_desc_array:
         array of device descriptors for child devices currently
         present in the physical DPRC.
+    :type obj_desc_array: struct fsl_mc_obj_desc \*
 
-    :param int num_child_objects_in_mc:
+    :param num_child_objects_in_mc:
         number of entries in obj_desc_array
+    :type num_child_objects_in_mc: int
 
 .. _`dprc_add_new_devices.description`:
 
@@ -91,12 +99,14 @@ dprc_scan_objects
 
     Discover objects in a DPRC
 
-    :param struct fsl_mc_device \*mc_bus_dev:
+    :param mc_bus_dev:
         pointer to the fsl-mc device that represents a DPRC object
+    :type mc_bus_dev: struct fsl_mc_device \*
 
-    :param unsigned int \*total_irq_count:
+    :param total_irq_count:
         If argument is provided the function populates the
         total number of IRQs created by objects in the DPRC.
+    :type total_irq_count: unsigned int \*
 
 .. _`dprc_scan_objects.description`:
 
@@ -130,8 +140,9 @@ dprc_scan_container
 
     Scans a physical DPRC and synchronizes Linux bus state
 
-    :param struct fsl_mc_device \*mc_bus_dev:
+    :param mc_bus_dev:
         pointer to the fsl-mc device that represents a DPRC object
+    :type mc_bus_dev: struct fsl_mc_device \*
 
 .. _`dprc_scan_container.description`:
 
@@ -151,11 +162,13 @@ dprc_irq0_handler
 
     Regular ISR for DPRC interrupt 0
 
-    :param int irq_num:
+    :param irq_num:
         *undescribed*
+    :type irq_num: int
 
-    :param void \*arg:
+    :param arg:
         Pointer to device structure
+    :type arg: void \*
 
 .. _`dprc_irq0_handler_thread`:
 
@@ -166,11 +179,13 @@ dprc_irq0_handler_thread
 
     Handler thread function for DPRC interrupt 0
 
-    :param int irq_num:
+    :param irq_num:
         *undescribed*
+    :type irq_num: int
 
-    :param void \*arg:
+    :param arg:
         Pointer to device structure
+    :type arg: void \*
 
 .. _`dprc_probe`:
 
@@ -181,8 +196,9 @@ dprc_probe
 
     callback invoked when a DPRC is being bound to this driver
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         Pointer to fsl-mc device representing a DPRC
+    :type mc_dev: struct fsl_mc_device \*
 
 .. _`dprc_probe.description`:
 
@@ -203,8 +219,9 @@ dprc_remove
 
     callback invoked when a DPRC is being unbound from this driver
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         Pointer to fsl-mc device representing the DPRC
+    :type mc_dev: struct fsl_mc_device \*
 
 .. _`dprc_remove.description`:
 

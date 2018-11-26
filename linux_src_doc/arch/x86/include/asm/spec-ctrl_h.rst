@@ -10,12 +10,14 @@ x86_spec_ctrl_set_guest
 
     Set speculation control registers for the guest
 
-    :param u64 guest_spec_ctrl:
+    :param guest_spec_ctrl:
         The guest content of MSR_SPEC_CTRL
+    :type guest_spec_ctrl: u64
 
-    :param u64 guest_virt_spec_ctrl:
+    :param guest_virt_spec_ctrl:
         The guest controlled bits of MSR_VIRT_SPEC_CTRL
         (may get translated to MSR_AMD64_LS_CFG bits)
+    :type guest_virt_spec_ctrl: u64
 
 .. _`x86_spec_ctrl_set_guest.description`:
 
@@ -33,12 +35,14 @@ x86_spec_ctrl_restore_host
 
     Restore host speculation control registers
 
-    :param u64 guest_spec_ctrl:
+    :param guest_spec_ctrl:
         The guest content of MSR_SPEC_CTRL
+    :type guest_spec_ctrl: u64
 
-    :param u64 guest_virt_spec_ctrl:
+    :param guest_virt_spec_ctrl:
         The guest controlled bits of MSR_VIRT_SPEC_CTRL
         (may get translated to MSR_AMD64_LS_CFG bits)
+    :type guest_virt_spec_ctrl: u64
 
 .. _`x86_spec_ctrl_restore_host.description`:
 

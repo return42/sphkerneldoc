@@ -10,11 +10,13 @@ sl82c105_pre_reset
 
     probe begin
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`sl82c105_pre_reset.description`:
 
@@ -32,14 +34,17 @@ sl82c105_configure_piomode
 
     set chip PIO timing
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param int pio:
+    :param pio:
         PIO mode
+    :type pio: int
 
 .. _`sl82c105_configure_piomode.description`:
 
@@ -59,11 +64,13 @@ sl82c105_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`sl82c105_set_piomode.description`:
 
@@ -82,11 +89,13 @@ sl82c105_configure_dmamode
 
     set DMA mode in chip
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`sl82c105_configure_dmamode.description`:
 
@@ -105,8 +114,9 @@ sl82c105_reset_engine
 
     Reset the DMA engine
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
 .. _`sl82c105_reset_engine.description`:
 
@@ -127,8 +137,9 @@ sl82c105_bmdma_start
 
     DMA engine begin
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`sl82c105_bmdma_start.description`:
 
@@ -155,8 +166,9 @@ sl82c105_bmdma_stop
 
     DMA engine stop
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`sl82c105_bmdma_stop.description`:
 
@@ -182,8 +194,9 @@ sl82c105_qc_defer
 
     implement serialization
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`sl82c105_qc_defer.description`:
 
@@ -204,8 +217,9 @@ sl82c105_bridge_revision
 
     find bridge version
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device for the ATA function
+    :type pdev: struct pci_dev \*
 
 .. _`sl82c105_bridge_revision.description`:
 

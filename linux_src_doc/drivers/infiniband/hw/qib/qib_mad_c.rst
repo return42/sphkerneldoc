@@ -10,11 +10,13 @@ set_overrunthreshold
 
     set the overrun threshold
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         the physical port data
+    :type ppd: struct qib_pportdata \*
 
-    :param unsigned n:
+    :param n:
         the new threshold
+    :type n: unsigned
 
 .. _`set_overrunthreshold.description`:
 
@@ -32,11 +34,13 @@ set_phyerrthreshold
 
     set the physical error threshold
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         the physical port data
+    :type ppd: struct qib_pportdata \*
 
-    :param unsigned n:
+    :param n:
         the new threshold
+    :type n: unsigned
 
 .. _`set_phyerrthreshold.description`:
 
@@ -54,8 +58,9 @@ get_linkdowndefaultstate
 
     get the default linkdown state
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         the physical port data
+    :type ppd: struct qib_pportdata \*
 
 .. _`get_linkdowndefaultstate.description`:
 
@@ -73,14 +78,17 @@ get_pkeys
 
     return the PKEY table
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param u8 port:
+    :param port:
         the IB port number
+    :type port: u8
 
-    :param u16 \*pkeys:
+    :param pkeys:
         the pkey table is placed here
+    :type pkeys: u16 \*
 
 .. _`subn_set_portinfo`:
 
@@ -91,14 +99,17 @@ subn_set_portinfo
 
     set port information
 
-    :param struct ib_smp \*smp:
+    :param smp:
         the incoming SM packet
+    :type smp: struct ib_smp \*
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the infiniband device
+    :type ibdev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         the port on the device
+    :type port: u8
 
 .. _`subn_set_portinfo.description`:
 
@@ -116,11 +127,13 @@ rm_pkey
 
     decrecment the reference count for the given PKEY
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         *undescribed*
+    :type ppd: struct qib_pportdata \*
 
-    :param u16 key:
+    :param key:
         the PKEY index
+    :type key: u16
 
 .. _`rm_pkey.description`:
 
@@ -139,11 +152,13 @@ add_pkey
 
     add the given PKEY to the hardware table
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         *undescribed*
+    :type ppd: struct qib_pportdata \*
 
-    :param u16 key:
+    :param key:
         the PKEY
+    :type key: u16
 
 .. _`add_pkey.description`:
 
@@ -162,14 +177,17 @@ set_pkeys
 
     set the PKEY table for ctxt 0
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param u8 port:
+    :param port:
         the IB port number
+    :type port: u8
 
-    :param u16 \*pkeys:
+    :param pkeys:
         the PKEY table
+    :type pkeys: u16 \*
 
 .. _`qib_process_mad`:
 
@@ -180,35 +198,45 @@ qib_process_mad
 
     process an incoming MAD packet
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the infiniband device this packet came in on
+    :type ibdev: struct ib_device \*
 
-    :param int mad_flags:
+    :param mad_flags:
         MAD flags
+    :type mad_flags: int
 
-    :param u8 port:
+    :param port:
         the port number this packet came in on
+    :type port: u8
 
-    :param const struct ib_wc \*in_wc:
+    :param in_wc:
         the work completion entry for this packet
+    :type in_wc: const struct ib_wc \*
 
-    :param const struct ib_grh \*in_grh:
+    :param in_grh:
         the global route header for this packet
+    :type in_grh: const struct ib_grh \*
 
-    :param const struct ib_mad_hdr \*in:
+    :param in:
         *undescribed*
+    :type in: const struct ib_mad_hdr \*
 
-    :param size_t in_mad_size:
+    :param in_mad_size:
         *undescribed*
+    :type in_mad_size: size_t
 
-    :param struct ib_mad_hdr \*out:
+    :param out:
         *undescribed*
+    :type out: struct ib_mad_hdr \*
 
-    :param size_t \*out_mad_size:
+    :param out_mad_size:
         *undescribed*
+    :type out_mad_size: size_t \*
 
-    :param u16 \*out_mad_pkey_index:
+    :param out_mad_pkey_index:
         *undescribed*
+    :type out_mad_pkey_index: u16 \*
 
 .. _`qib_process_mad.description`:
 

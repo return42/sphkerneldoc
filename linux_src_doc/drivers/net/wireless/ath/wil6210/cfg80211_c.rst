@@ -10,17 +10,21 @@
 
     return a pointer to the beginning of IE in the list or NULL if not found
 
-    :param const u8 \*ies:
+    :param ies:
         *undescribed*
+    :type ies: const u8 \*
 
-    :param u16 ies_len:
+    :param ies_len:
         *undescribed*
+    :type ies_len: u16
 
-    :param const u8 \*ie:
+    :param ie:
         *undescribed*
+    :type ie: const u8 \*
 
-    :param u16 ie_len:
+    :param ie_len:
         *undescribed*
+    :type ie_len: u16
 
 .. _`_wil_cfg80211_merge_extra_ies`:
 
@@ -31,23 +35,29 @@
 
     do not include IEs from the second list which exist in the first list. add only vendor specific IEs from second list to keep the merged list sorted (since vendor-specific IE has the highest tag number) caller must free the allocated memory for merged IEs
 
-    :param const u8 \*ies1:
+    :param ies1:
         *undescribed*
+    :type ies1: const u8 \*
 
-    :param u16 ies1_len:
+    :param ies1_len:
         *undescribed*
+    :type ies1_len: u16
 
-    :param const u8 \*ies2:
+    :param ies2:
         *undescribed*
+    :type ies2: const u8 \*
 
-    :param u16 ies2_len:
+    :param ies2_len:
         *undescribed*
+    :type ies2_len: u16
 
-    :param u8 \*\*merged_ies:
+    :param merged_ies:
         *undescribed*
+    :type merged_ies: u8 \*\*
 
-    :param u16 \*merged_len:
+    :param merged_len:
         *undescribed*
+    :type merged_len: u16 \*
 
 .. This file was automatic generated / don't edit.
 

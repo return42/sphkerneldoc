@@ -10,11 +10,13 @@ map__rip_2objdump
 
     convert symbol start address to objdump address.
 
-    :param struct map \*map:
+    :param map:
         memory map
+    :type map: struct map \*
 
-    :param u64 rip:
+    :param rip:
         symbol start address
+    :type rip: u64
 
 .. _`map__rip_2objdump.description`:
 
@@ -41,11 +43,13 @@ map__objdump_2mem
 
     convert objdump address to a memory address.
 
-    :param struct map \*map:
+    :param map:
         memory map
+    :type map: struct map \*
 
-    :param u64 ip:
+    :param ip:
         objdump address
+    :type ip: u64
 
 .. _`map__objdump_2mem.description`:
 

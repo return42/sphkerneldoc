@@ -10,14 +10,17 @@ lpfc_dump_static_vport
 
     Dump HBA's static vport information.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
-    :param uint16_t offset:
+    :param offset:
         offset for dumping vport info.
+    :type offset: uint16_t
 
 .. _`lpfc_dump_static_vport.description`:
 
@@ -39,11 +42,13 @@ lpfc_down_link
 
     Bring down HBAs link.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_down_link.description`:
 
@@ -61,17 +66,21 @@ lpfc_dump_mem
 
     Prepare a mailbox command for reading a region.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
-    :param uint16_t offset:
+    :param offset:
         offset into the region.
+    :type offset: uint16_t
 
-    :param uint16_t region_id:
+    :param region_id:
         config region id.
+    :type region_id: uint16_t
 
 .. _`lpfc_dump_mem.description`:
 
@@ -92,11 +101,13 @@ lpfc_dump_wakeup_param
 
     Prepare mailbox command for retrieving wakeup params
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_dump_wakeup_param.description`:
 
@@ -115,11 +126,13 @@ lpfc_read_nv
 
     Prepare a mailbox command for reading HBA's NVRAM param
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_read_nv.description`:
 
@@ -141,14 +154,17 @@ lpfc_config_async
 
     Prepare a mailbox command for enabling HBA async event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
-    :param uint32_t ring:
+    :param ring:
         ring number for the asynchronous event to be configured.
+    :type ring: uint32_t
 
 .. _`lpfc_config_async.description`:
 
@@ -171,11 +187,13 @@ lpfc_heart_beat
 
     Prepare a mailbox command for heart beat
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_heart_beat.description`:
 
@@ -199,14 +217,17 @@ lpfc_read_topology
 
     Prepare a mailbox command for reading HBA topology
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
-    :param struct lpfc_dmabuf \*mp:
+    :param mp:
         DMA buffer memory for reading the link attention information into.
+    :type mp: struct lpfc_dmabuf \*
 
 .. _`lpfc_read_topology.description`:
 
@@ -237,11 +258,13 @@ lpfc_clear_la
 
     Prepare a mailbox command for clearing HBA link attention
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_clear_la.description`:
 
@@ -267,11 +290,13 @@ lpfc_config_link
 
     Prepare a mailbox command for configuring link on a HBA
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_config_link.description`:
 
@@ -296,11 +321,13 @@ lpfc_config_msi
 
     Prepare a mailbox command for configuring msi-x
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_config_msi.description`:
 
@@ -324,17 +351,21 @@ lpfc_init_link
 
     Prepare a mailbox command for initialize link on a HBA
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
-    :param uint32_t topology:
+    :param topology:
         the link topology for the link to be initialized to.
+    :type topology: uint32_t
 
-    :param uint32_t linkspeed:
+    :param linkspeed:
         the link speed for the link to be initialized to.
+    :type linkspeed: uint32_t
 
 .. _`lpfc_init_link.description`:
 
@@ -357,14 +388,17 @@ lpfc_read_sparam
 
     Prepare a mailbox command for reading HBA parameters
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
-    :param int vpi:
+    :param vpi:
         virtual N_Port identifier.
+    :type vpi: int
 
 .. _`lpfc_read_sparam.description`:
 
@@ -395,17 +429,21 @@ lpfc_unreg_did
 
     Prepare a mailbox command for unregistering DID
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t vpi:
+    :param vpi:
         virtual N_Port identifier.
+    :type vpi: uint16_t
 
-    :param uint32_t did:
+    :param did:
         remote port identifier.
+    :type did: uint32_t
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_unreg_did.description`:
 
@@ -429,11 +467,13 @@ lpfc_read_config
 
     Prepare a mailbox command for reading HBA configuration
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_read_config.description`:
 
@@ -457,11 +497,13 @@ lpfc_read_lnk_stat
 
     Prepare a mailbox command for reading HBA link stats
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_read_lnk_stat.description`:
 
@@ -484,23 +526,29 @@ lpfc_reg_rpi
 
     Prepare a mailbox command for registering remote login
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t vpi:
+    :param vpi:
         virtual N_Port identifier.
+    :type vpi: uint16_t
 
-    :param uint32_t did:
+    :param did:
         remote port identifier.
+    :type did: uint32_t
 
-    :param uint8_t \*param:
+    :param param:
         pointer to memory holding the server parameters.
+    :type param: uint8_t \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
-    :param uint16_t rpi:
+    :param rpi:
         the rpi to use in the registration (usually only used for SLI4.
+    :type rpi: uint16_t
 
 .. _`lpfc_reg_rpi.description`:
 
@@ -531,17 +579,21 @@ lpfc_unreg_login
 
     Prepare a mailbox command for unregistering remote login
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t vpi:
+    :param vpi:
         virtual N_Port identifier.
+    :type vpi: uint16_t
 
-    :param uint32_t rpi:
+    :param rpi:
         remote port identifier
+    :type rpi: uint32_t
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_unreg_login.description`:
 
@@ -567,8 +619,9 @@ lpfc_sli4_unreg_all_rpis
 
     unregister all RPIs for a vport on SLI4 HBA.
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a vport object.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_sli4_unreg_all_rpis.description`:
 
@@ -587,11 +640,13 @@ lpfc_reg_vpi
 
     Prepare a mailbox command for registering vport identifier
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         *undescribed*
+    :type vport: struct lpfc_vport \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_reg_vpi.description`:
 
@@ -615,14 +670,17 @@ lpfc_unreg_vpi
 
     Prepare a mailbox command for unregistering vport id
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t vpi:
+    :param vpi:
         virtual N_Port identifier.
+    :type vpi: uint16_t
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_unreg_vpi.description`:
 
@@ -648,8 +706,9 @@ lpfc_config_pcb_setup
 
     Set up IOCB rings in the Port Control Block (PCB)
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_config_pcb_setup.description`:
 
@@ -668,11 +727,13 @@ lpfc_read_rev
 
     Prepare a mailbox command for reading HBA revision
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_read_rev.description`:
 
@@ -697,11 +758,13 @@ lpfc_build_hbq_profile2
 
     Set up the HBQ Selection Profile 2
 
-    :param struct config_hbq_var \*hbqmb:
+    :param hbqmb:
         pointer to the HBQ configuration data structure in mailbox command.
+    :type hbqmb: struct config_hbq_var \*
 
-    :param struct lpfc_hbq_init \*hbq_desc:
+    :param hbq_desc:
         pointer to the HBQ selection profile descriptor.
+    :type hbq_desc: struct lpfc_hbq_init \*
 
 .. _`lpfc_build_hbq_profile2.description`:
 
@@ -722,11 +785,13 @@ lpfc_build_hbq_profile3
 
     Set up the HBQ Selection Profile 3
 
-    :param struct config_hbq_var \*hbqmb:
+    :param hbqmb:
         pointer to the HBQ configuration data structure in mailbox command.
+    :type hbqmb: struct config_hbq_var \*
 
-    :param struct lpfc_hbq_init \*hbq_desc:
+    :param hbq_desc:
         pointer to the HBQ selection profile descriptor.
+    :type hbq_desc: struct lpfc_hbq_init \*
 
 .. _`lpfc_build_hbq_profile3.description`:
 
@@ -747,11 +812,13 @@ lpfc_build_hbq_profile5
 
     Set up the HBQ Selection Profile 5
 
-    :param struct config_hbq_var \*hbqmb:
+    :param hbqmb:
         pointer to the HBQ configuration data structure in mailbox command.
+    :type hbqmb: struct config_hbq_var \*
 
-    :param struct lpfc_hbq_init \*hbq_desc:
+    :param hbq_desc:
         pointer to the HBQ selection profile descriptor.
+    :type hbq_desc: struct lpfc_hbq_init \*
 
 .. _`lpfc_build_hbq_profile5.description`:
 
@@ -773,20 +840,25 @@ lpfc_config_hbq
 
     Prepare a mailbox command for configuring an HBQ
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t id:
+    :param id:
         HBQ identifier.
+    :type id: uint32_t
 
-    :param struct lpfc_hbq_init \*hbq_desc:
+    :param hbq_desc:
         pointer to the HBA descriptor data structure.
+    :type hbq_desc: struct lpfc_hbq_init \*
 
-    :param uint32_t hbq_entry_index:
+    :param hbq_entry_index:
         index of the HBQ entry data structures.
+    :type hbq_entry_index: uint32_t
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_config_hbq.description`:
 
@@ -808,14 +880,17 @@ lpfc_config_ring
 
     Prepare a mailbox command for configuring an IOCB ring
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param int ring:
+    :param ring:
         *undescribed*
+    :type ring: int
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_config_ring.description`:
 
@@ -842,11 +917,13 @@ lpfc_config_port
 
     Prepare a mailbox command for configuring port
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_config_port.description`:
 
@@ -871,11 +948,13 @@ lpfc_kill_board
 
     Prepare a mailbox command for killing board
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_kill_board.description`:
 
@@ -901,11 +980,13 @@ lpfc_mbox_put
 
     Put a mailbox cmd into the tail of driver's mailbox queue
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mbq:
+    :param mbq:
         pointer to the driver internal queue element for mailbox command.
+    :type mbq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_mbox_put.description`:
 
@@ -926,8 +1007,9 @@ lpfc_mbox_get
 
     Remove a mailbox cmd from the head of driver's mailbox queue
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_mbox_get.description`:
 
@@ -953,11 +1035,13 @@ pointer to the driver internal queue element for mailbox command.
 
     Put mailbox cmd into mailbox cmd complete list
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mbq:
+    :param mbq:
         pointer to the driver internal queue element for mailbox command.
+    :type mbq: LPFC_MBOXQ_t \*
 
 .. _`__lpfc_mbox_cmpl_put.description`:
 
@@ -978,11 +1062,13 @@ lpfc_mbox_cmpl_put
 
     Put mailbox command into mailbox command complete list
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mbq:
+    :param mbq:
         pointer to the driver internal queue element for mailbox command.
+    :type mbq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_mbox_cmpl_put.description`:
 
@@ -1003,11 +1089,13 @@ lpfc_mbox_cmd_check
 
     Check the validality of a mailbox command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         pointer to the driver internal queue element for mailbox command.
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_mbox_cmd_check.description`:
 
@@ -1029,8 +1117,9 @@ lpfc_mbox_dev_check
 
     Check the device state for issuing a mailbox command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_mbox_dev_check.description`:
 
@@ -1052,11 +1141,13 @@ lpfc_mbox_tmo_val
 
     Retrieve mailbox command timeout value
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         *undescribed*
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_mbox_tmo_val.description`:
 
@@ -1078,17 +1169,21 @@ lpfc_sli4_mbx_sge_set
 
     Set a sge entry in non-embedded mailbox command
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command.
+    :type mbox: struct lpfcMboxq \*
 
-    :param uint32_t sgentry:
+    :param sgentry:
         sge entry index.
+    :type sgentry: uint32_t
 
-    :param dma_addr_t phyaddr:
+    :param phyaddr:
         physical address for the sge
+    :type phyaddr: dma_addr_t
 
-    :param uint32_t length:
+    :param length:
         Length of the sge.
+    :type length: uint32_t
 
 .. _`lpfc_sli4_mbx_sge_set.description`:
 
@@ -1107,14 +1202,17 @@ lpfc_sli4_mbx_sge_get
 
     Get a sge entry from non-embedded mailbox command
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command.
+    :type mbox: struct lpfcMboxq \*
 
-    :param uint32_t sgentry:
+    :param sgentry:
         sge entry index.
+    :type sgentry: uint32_t
 
-    :param struct lpfc_mbx_sge \*sge:
+    :param sge:
         *undescribed*
+    :type sge: struct lpfc_mbx_sge \*
 
 .. _`lpfc_sli4_mbx_sge_get.description`:
 
@@ -1133,11 +1231,13 @@ lpfc_sli4_mbox_cmd_free
 
     Free a sli4 mailbox command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command.
+    :type mbox: struct lpfcMboxq \*
 
 .. _`lpfc_sli4_mbox_cmd_free.description`:
 
@@ -1155,23 +1255,29 @@ lpfc_sli4_config
 
     Initialize the  SLI4 Config Mailbox command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command.
+    :type mbox: struct lpfcMboxq \*
 
-    :param uint8_t subsystem:
+    :param subsystem:
         The sli4 config sub mailbox subsystem.
+    :type subsystem: uint8_t
 
-    :param uint8_t opcode:
+    :param opcode:
         The sli4 config sub mailbox command opcode.
+    :type opcode: uint8_t
 
-    :param uint32_t length:
+    :param length:
         Length of the sli4 config mailbox command (including sub-header).
+    :type length: uint32_t
 
-    :param bool emb:
+    :param emb:
         *undescribed*
+    :type emb: bool
 
 .. _`lpfc_sli4_config.description`:
 
@@ -1198,20 +1304,25 @@ lpfc_sli4_mbox_rsrc_extent
 
     Initialize the opcode resource extent.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to an allocated lpfc mbox resource.
+    :type mbox: struct lpfcMboxq \*
 
-    :param uint16_t exts_count:
+    :param exts_count:
         the number of extents, if required, to allocate.
+    :type exts_count: uint16_t
 
-    :param uint16_t rsrc_type:
+    :param rsrc_type:
         the resource extent type.
+    :type rsrc_type: uint16_t
 
-    :param bool emb:
+    :param emb:
         true if LPFC_SLI4_MBX_EMBED. false if LPFC_SLI4_MBX_NEMBED.
+    :type emb: bool
 
 .. _`lpfc_sli4_mbox_rsrc_extent.description`:
 
@@ -1239,11 +1350,13 @@ lpfc_sli_config_mbox_subsys_get
 
     Get subsystem from a sli_config mbox cmd
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mbox:
+    :param mbox:
         pointer to lpfc mbox command queue entry.
+    :type mbox: LPFC_MBOXQ_t \*
 
 .. _`lpfc_sli_config_mbox_subsys_get.description`:
 
@@ -1264,11 +1377,13 @@ lpfc_sli_config_mbox_opcode_get
 
     Get opcode from a sli_config mbox cmd
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mbox:
+    :param mbox:
         pointer to lpfc mbox command queue entry.
+    :type mbox: LPFC_MBOXQ_t \*
 
 .. _`lpfc_sli_config_mbox_opcode_get.description`:
 
@@ -1289,14 +1404,17 @@ lpfc_sli4_mbx_read_fcf_rec
 
     Allocate and construct read fcf mbox cmd
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfcMboxq \*mboxq:
+    :param mboxq:
         *undescribed*
+    :type mboxq: struct lpfcMboxq \*
 
-    :param uint16_t fcf_index:
+    :param fcf_index:
         index to fcf table.
+    :type fcf_index: uint16_t
 
 .. _`lpfc_sli4_mbx_read_fcf_rec.description`:
 
@@ -1323,11 +1441,13 @@ lpfc_request_features
 
     Configure SLI4 REQUEST_FEATURES mailbox
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfcMboxq \*mboxq:
+    :param mboxq:
         pointer to lpfc mbox command.
+    :type mboxq: struct lpfcMboxq \*
 
 .. _`lpfc_request_features.description`:
 
@@ -1346,11 +1466,13 @@ lpfc_init_vfi
 
     Initialize the INIT_VFI mailbox command
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Vport associated with the VF.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_init_vfi.description`:
 
@@ -1372,14 +1494,17 @@ lpfc_reg_vfi
 
     Initialize the REG_VFI mailbox command
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         vport associated with the VF.
+    :type vport: struct lpfc_vport \*
 
-    :param dma_addr_t phys:
+    :param phys:
         BDE DMA bus address used to send the service parameters to the HBA.
+    :type phys: dma_addr_t
 
 .. _`lpfc_reg_vfi.description`:
 
@@ -1400,14 +1525,17 @@ lpfc_init_vpi
 
     Initialize the INIT_VPI mailbox command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to the hba structure to init the VPI for.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
-    :param uint16_t vpi:
+    :param vpi:
         VPI to be initialized.
+    :type vpi: uint16_t
 
 .. _`lpfc_init_vpi.description`:
 
@@ -1429,11 +1557,13 @@ lpfc_unreg_vfi
 
     Initialize the UNREG_VFI mailbox command
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         vport associated with the VF.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_unreg_vfi.description`:
 
@@ -1455,11 +1585,13 @@ lpfc_sli4_dump_cfg_rg23
 
     Dump sli4 port config region 23
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to the hba structure containing.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
 .. _`lpfc_sli4_dump_cfg_rg23.description`:
 
@@ -1478,11 +1610,13 @@ lpfc_reg_fcfi
 
     Initialize the REG_FCFI mailbox command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to the hba structure containing the FCF index and RQ ID.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
 .. _`lpfc_reg_fcfi.description`:
 
@@ -1506,14 +1640,17 @@ lpfc_reg_fcfi_mrq
 
     Initialize the REG_FCFI_MRQ mailbox command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to the hba structure containing the FCF index and RQ ID.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
-    :param int mode:
+    :param mode:
         0 to register FCFI, 1 to register MRQs
+    :type mode: int
 
 .. _`lpfc_reg_fcfi_mrq.description`:
 
@@ -1537,11 +1674,13 @@ lpfc_unreg_fcfi
 
     Initialize the UNREG_FCFI mailbox command
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
-    :param uint16_t fcfi:
+    :param fcfi:
         FCFI to be unregistered.
+    :type fcfi: uint16_t
 
 .. _`lpfc_unreg_fcfi.description`:
 
@@ -1560,11 +1699,13 @@ lpfc_resume_rpi
 
     Initialize the RESUME_RPI mailbox command
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         The nodelist structure that describes the RPI to resume.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_resume_rpi.description`:
 
@@ -1583,8 +1724,9 @@ lpfc_supported_pages
 
     Initialize the PORT_CAPABILITIES supported pages mailbox command.
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
 .. _`lpfc_supported_pages.description`:
 
@@ -1603,8 +1745,9 @@ lpfc_pc_sli4_params
 
     Initialize the PORT_CAPABILITIES SLI4 Params mbox cmd.
 
-    :param struct lpfcMboxq \*mbox:
+    :param mbox:
         pointer to lpfc mbox command to initialize.
+    :type mbox: struct lpfcMboxq \*
 
 .. _`lpfc_pc_sli4_params.description`:
 

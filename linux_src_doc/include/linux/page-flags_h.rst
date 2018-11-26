@@ -10,8 +10,9 @@ page_has_private
 
     Determine if page has private stuff
 
-    :param struct page \*page:
+    :param page:
         The page to be checked
+    :type page: struct page \*
 
 .. _`page_has_private.description`:
 

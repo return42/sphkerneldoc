@@ -10,26 +10,33 @@ vringh_init_user
 
     initialize a vringh for a userspace vring.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vringh to initialize.
+    :type vrh: struct vringh \*
 
-    :param u64 features:
+    :param features:
         the feature bits for this ring.
+    :type features: u64
 
-    :param unsigned int num:
+    :param num:
         the number of elements.
+    :type num: unsigned int
 
-    :param bool weak_barriers:
+    :param weak_barriers:
         true if we only need memory barriers, not I/O.
+    :type weak_barriers: bool
 
-    :param struct vring_desc __user \*desc:
+    :param desc:
         the userpace descriptor pointer.
+    :type desc: struct vring_desc __user \*
 
-    :param struct vring_avail __user \*avail:
+    :param avail:
         the userpace avail pointer.
+    :type avail: struct vring_avail __user \*
 
-    :param struct vring_used __user \*used:
+    :param used:
         the userpace used pointer.
+    :type used: struct vring_used __user \*
 
 .. _`vringh_init_user.returns-an-error-if-num-is-invalid`:
 
@@ -48,20 +55,24 @@ vringh_getdesc_user
 
     get next available descriptor from userspace ring.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the userspace vring.
+    :type vrh: struct vringh \*
 
-    :param struct vringh_iov \*riov:
+    :param riov:
         where to put the readable descriptors (or NULL)
+    :type riov: struct vringh_iov \*
 
-    :param struct vringh_iov \*wiov:
+    :param wiov:
         where to put the writable descriptors (or NULL)
+    :type wiov: struct vringh_iov \*
 
     :param bool (\*getrange)(struct vringh \*vrh, u64 addr, struct vringh_range \*r):
         function to call to check ranges.
 
-    :param u16 \*head:
+    :param head:
         head index we received, for passing to \ :c:func:`vringh_complete_user`\ .
+    :type head: u16 \*
 
 .. _`vringh_getdesc_user.description`:
 
@@ -92,14 +103,17 @@ vringh_iov_pull_user
 
     copy bytes from vring_iov.
 
-    :param struct vringh_iov \*riov:
+    :param riov:
         the riov as passed to \ :c:func:`vringh_getdesc_user`\  (updated as we consume)
+    :type riov: struct vringh_iov \*
 
-    :param void \*dst:
+    :param dst:
         the place to copy.
+    :type dst: void \*
 
-    :param size_t len:
+    :param len:
         the maximum length to copy.
+    :type len: size_t
 
 .. _`vringh_iov_pull_user.description`:
 
@@ -117,14 +131,17 @@ vringh_iov_push_user
 
     copy bytes into vring_iov.
 
-    :param struct vringh_iov \*wiov:
+    :param wiov:
         the wiov as passed to \ :c:func:`vringh_getdesc_user`\  (updated as we consume)
+    :type wiov: struct vringh_iov \*
 
-    :param const void \*src:
+    :param src:
         *undescribed*
+    :type src: const void \*
 
-    :param size_t len:
+    :param len:
         the maximum length to copy.
+    :type len: size_t
 
 .. _`vringh_iov_push_user.description`:
 
@@ -142,12 +159,14 @@ vringh_abandon_user
 
     we've decided not to handle the descriptor(s).
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring.
+    :type vrh: struct vringh \*
 
-    :param unsigned int num:
+    :param num:
         the number of descriptors to put back (ie. num
         \ :c:func:`vringh_get_user`\  to undo).
+    :type num: unsigned int
 
 .. _`vringh_abandon_user.description`:
 
@@ -165,14 +184,17 @@ vringh_complete_user
 
     we've finished with descriptor, publish it.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring.
+    :type vrh: struct vringh \*
 
-    :param u16 head:
+    :param head:
         the head as filled in by vringh_getdesc_user.
+    :type head: u16
 
-    :param u32 len:
+    :param len:
         the length of data we have written.
+    :type len: u32
 
 .. _`vringh_complete_user.description`:
 
@@ -191,14 +213,17 @@ vringh_complete_multi_user
 
     we've finished with many descriptors.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring.
+    :type vrh: struct vringh \*
 
-    :param const struct vring_used_elem used:
+    :param used:
         the head, length pairs.
+    :type used: const struct vring_used_elem
 
-    :param unsigned num_used:
+    :param num_used:
         the number of used elements.
+    :type num_used: unsigned
 
 .. _`vringh_complete_multi_user.description`:
 
@@ -217,8 +242,9 @@ vringh_notify_enable_user
 
     we want to know if something changes.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring.
+    :type vrh: struct vringh \*
 
 .. _`vringh_notify_enable_user.description`:
 
@@ -237,8 +263,9 @@ vringh_notify_disable_user
 
     don't tell us if something changes.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring.
+    :type vrh: struct vringh \*
 
 .. _`vringh_notify_disable_user.this-is-our-normal-running-state`:
 
@@ -257,8 +284,9 @@ vringh_need_notify_user
 
     must we tell the other side about used buffers?
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring we've called \ :c:func:`vringh_complete_user`\  on.
+    :type vrh: struct vringh \*
 
 .. _`vringh_need_notify_user.description`:
 
@@ -276,26 +304,33 @@ vringh_init_kern
 
     initialize a vringh for a kernelspace vring.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vringh to initialize.
+    :type vrh: struct vringh \*
 
-    :param u64 features:
+    :param features:
         the feature bits for this ring.
+    :type features: u64
 
-    :param unsigned int num:
+    :param num:
         the number of elements.
+    :type num: unsigned int
 
-    :param bool weak_barriers:
+    :param weak_barriers:
         true if we only need memory barriers, not I/O.
+    :type weak_barriers: bool
 
-    :param struct vring_desc \*desc:
+    :param desc:
         the userpace descriptor pointer.
+    :type desc: struct vring_desc \*
 
-    :param struct vring_avail \*avail:
+    :param avail:
         the userpace avail pointer.
+    :type avail: struct vring_avail \*
 
-    :param struct vring_used \*used:
+    :param used:
         the userpace used pointer.
+    :type used: struct vring_used \*
 
 .. _`vringh_init_kern.description`:
 
@@ -313,20 +348,25 @@ vringh_getdesc_kern
 
     get next available descriptor from kernelspace ring.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the kernelspace vring.
+    :type vrh: struct vringh \*
 
-    :param struct vringh_kiov \*riov:
+    :param riov:
         where to put the readable descriptors (or NULL)
+    :type riov: struct vringh_kiov \*
 
-    :param struct vringh_kiov \*wiov:
+    :param wiov:
         where to put the writable descriptors (or NULL)
+    :type wiov: struct vringh_kiov \*
 
-    :param u16 \*head:
+    :param head:
         head index we received, for passing to \ :c:func:`vringh_complete_kern`\ .
+    :type head: u16 \*
 
-    :param gfp_t gfp:
+    :param gfp:
         flags for allocating larger riov/wiov.
+    :type gfp: gfp_t
 
 .. _`vringh_getdesc_kern.description`:
 
@@ -357,14 +397,17 @@ vringh_iov_pull_kern
 
     copy bytes from vring_iov.
 
-    :param struct vringh_kiov \*riov:
+    :param riov:
         the riov as passed to \ :c:func:`vringh_getdesc_kern`\  (updated as we consume)
+    :type riov: struct vringh_kiov \*
 
-    :param void \*dst:
+    :param dst:
         the place to copy.
+    :type dst: void \*
 
-    :param size_t len:
+    :param len:
         the maximum length to copy.
+    :type len: size_t
 
 .. _`vringh_iov_pull_kern.description`:
 
@@ -382,14 +425,17 @@ vringh_iov_push_kern
 
     copy bytes into vring_iov.
 
-    :param struct vringh_kiov \*wiov:
+    :param wiov:
         the wiov as passed to \ :c:func:`vringh_getdesc_kern`\  (updated as we consume)
+    :type wiov: struct vringh_kiov \*
 
-    :param const void \*src:
+    :param src:
         *undescribed*
+    :type src: const void \*
 
-    :param size_t len:
+    :param len:
         the maximum length to copy.
+    :type len: size_t
 
 .. _`vringh_iov_push_kern.description`:
 
@@ -407,12 +453,14 @@ vringh_abandon_kern
 
     we've decided not to handle the descriptor(s).
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring.
+    :type vrh: struct vringh \*
 
-    :param unsigned int num:
+    :param num:
         the number of descriptors to put back (ie. num
         \ :c:func:`vringh_get_kern`\  to undo).
+    :type num: unsigned int
 
 .. _`vringh_abandon_kern.description`:
 
@@ -430,14 +478,17 @@ vringh_complete_kern
 
     we've finished with descriptor, publish it.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring.
+    :type vrh: struct vringh \*
 
-    :param u16 head:
+    :param head:
         the head as filled in by vringh_getdesc_kern.
+    :type head: u16
 
-    :param u32 len:
+    :param len:
         the length of data we have written.
+    :type len: u32
 
 .. _`vringh_complete_kern.description`:
 
@@ -456,8 +507,9 @@ vringh_notify_enable_kern
 
     we want to know if something changes.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring.
+    :type vrh: struct vringh \*
 
 .. _`vringh_notify_enable_kern.description`:
 
@@ -476,8 +528,9 @@ vringh_notify_disable_kern
 
     don't tell us if something changes.
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring.
+    :type vrh: struct vringh \*
 
 .. _`vringh_notify_disable_kern.this-is-our-normal-running-state`:
 
@@ -496,8 +549,9 @@ vringh_need_notify_kern
 
     must we tell the other side about used buffers?
 
-    :param struct vringh \*vrh:
+    :param vrh:
         the vring we've called \ :c:func:`vringh_complete_kern`\  on.
+    :type vrh: struct vringh \*
 
 .. _`vringh_need_notify_kern.description`:
 

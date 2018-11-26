@@ -29,23 +29,14 @@ Members
 -------
 
 current_bd_ptr
-    *undescribed*
+    current buffer descriptor processed
 
 base_bd_ptr
-    *undescribed*
+    first element of buffer descriptor array
 
 unused
-    *undescribed*
-
-.. _`sdma_channel_control.description`:
-
-Description
------------
-
-\ ``current_bd_ptr``\       current buffer descriptor processed
-\ ``base_bd_ptr``\          first element of buffer descriptor array
-\ ``unused``\               padding. The SDMA engine expects an array of 128 byte
-control blocks
+    padding. The SDMA engine expects an array of 128 byte
+    control blocks
 
 .. _`sdma_state_registers`:
 
@@ -86,7 +77,7 @@ pc
     program counter
 
 unused1
-    *undescribed*
+    unused
 
 t
     test bit: status of arithmetic & test instruction
@@ -95,7 +86,7 @@ rpc
     return program counter
 
 unused0
-    *undescribed*
+    unused
 
 sf
     source fault while loading data
@@ -104,7 +95,7 @@ spc
     loop start program counter
 
 unused2
-    *undescribed*
+    unused
 
 df
     destination fault while storing data
@@ -212,28 +203,92 @@ dd
     dedicated core data register
 
 scratch0
-    *undescribed*
+    1st word of dedicated ram for context switch
 
 scratch1
-    *undescribed*
+    2nd word of dedicated ram for context switch
 
 scratch2
-    *undescribed*
+    3rd word of dedicated ram for context switch
 
 scratch3
-    *undescribed*
+    4th word of dedicated ram for context switch
 
 scratch4
-    *undescribed*
+    5th word of dedicated ram for context switch
 
 scratch5
-    *undescribed*
+    6th word of dedicated ram for context switch
 
 scratch6
-    *undescribed*
+    7th word of dedicated ram for context switch
 
 scratch7
-    *undescribed*
+    8th word of dedicated ram for context switch
+
+.. _`sdma_desc`:
+
+struct sdma_desc
+================
+
+.. c:type:: struct sdma_desc
+
+    descriptor structor for one transfer
+
+.. _`sdma_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct sdma_desc {
+        struct virt_dma_desc vd;
+        unsigned int num_bd;
+        dma_addr_t bd_phys;
+        unsigned int buf_tail;
+        unsigned int buf_ptail;
+        unsigned int period_len;
+        unsigned int chn_real_count;
+        unsigned int chn_count;
+        struct sdma_channel *sdmac;
+        struct sdma_buffer_descriptor *bd;
+    }
+
+.. _`sdma_desc.members`:
+
+Members
+-------
+
+vd
+    descriptor for virt dma
+
+num_bd
+    number of descriptors currently handling
+
+bd_phys
+    physical address of bd
+
+buf_tail
+    ID of the buffer that was processed
+
+buf_ptail
+    ID of the previous buffer that was processed
+
+period_len
+    period length, used in cyclic.
+
+chn_real_count
+    the real count updated from bd->mode.count
+
+chn_count
+    the transfer count set
+
+sdmac
+    sdma_channel pointer
+
+bd
+    pointer of allocate bd
 
 .. _`sdma_channel`:
 
@@ -252,6 +307,8 @@ Definition
 .. code-block:: c
 
     struct sdma_channel {
+        struct virt_dma_chan vc;
+        struct sdma_desc *desc;
         struct sdma_engine *sdma;
         unsigned int channel;
         enum dma_transfer_direction direction;
@@ -259,28 +316,17 @@ Definition
         unsigned int event_id0;
         unsigned int event_id1;
         enum dma_slave_buswidth word_size;
-        unsigned int buf_tail;
-        unsigned int buf_ptail;
-        unsigned int num_bd;
-        unsigned int period_len;
-        struct sdma_buffer_descriptor *bd;
-        dma_addr_t bd_phys;
         unsigned int pc_from_device, pc_to_device;
         unsigned int device_to_device;
+        unsigned int pc_to_pc;
         unsigned long flags;
         dma_addr_t per_address, per_address2;
         unsigned long event_mask[2];
         unsigned long watermark_level;
         u32 shp_addr, per_addr;
-        struct dma_chan chan;
-        spinlock_t lock;
-        struct dma_async_tx_descriptor desc;
         enum dma_status status;
-        unsigned int chn_count;
-        unsigned int chn_real_count;
-        struct tasklet_struct tasklet;
         struct imx_dma_data data;
-        bool enabled;
+        struct dma_pool *bd_pool;
     }
 
 .. _`sdma_channel.members`:
@@ -288,117 +334,76 @@ Definition
 Members
 -------
 
-sdma
-    *undescribed*
-
-channel
-    *undescribed*
-
-direction
-    *undescribed*
-
-peripheral_type
-    *undescribed*
-
-event_id0
-    *undescribed*
-
-event_id1
-    *undescribed*
-
-word_size
-    *undescribed*
-
-buf_tail
-    *undescribed*
-
-buf_ptail
-    *undescribed*
-
-num_bd
-    *undescribed*
-
-period_len
-    *undescribed*
-
-bd
-    *undescribed*
-
-bd_phys
-    *undescribed*
-
-pc_from_device
-    *undescribed*
-
-pc_to_device
-    *undescribed*
-
-device_to_device
-    *undescribed*
-
-flags
-    *undescribed*
-
-per_address
-    *undescribed*
-
-per_address2
-    *undescribed*
-
-event_mask
-    *undescribed*
-
-watermark_level
-    *undescribed*
-
-shp_addr
-    *undescribed*
-
-per_addr
-    *undescribed*
-
-chan
-    *undescribed*
-
-lock
-    *undescribed*
+vc
+    virt_dma base structure
 
 desc
-    *undescribed*
+    sdma description including vd and other special member
+
+sdma
+    pointer to the SDMA engine for this channel
+
+channel
+    the channel number, matches dmaengine chan_id + 1
+
+direction
+    transfer type. Needed for setting SDMA script
+
+peripheral_type
+    Peripheral type. Needed for setting SDMA script
+
+event_id0
+    aka dma request line
+
+event_id1
+    for channels that use 2 events
+
+word_size
+    peripheral access size
+
+pc_from_device
+    script address for those device_2_memory
+
+pc_to_device
+    script address for those memory_2_device
+
+device_to_device
+    script address for those device_2_device
+
+pc_to_pc
+    script address for those memory_2_memory
+
+flags
+    loop mode or not
+
+per_address
+    peripheral source or destination address in common case
+    destination address in p_2_p case
+
+per_address2
+    peripheral source address in p_2_p case
+
+event_mask
+    event mask used in p_2_p script
+
+watermark_level
+    value for gReg[7], some script will extend it from
+    basic watermark such as p_2_p
+
+shp_addr
+    value for gReg[6]
+
+per_addr
+    value for gReg[2]
 
 status
-    *undescribed*
-
-chn_count
-    *undescribed*
-
-chn_real_count
-    *undescribed*
-
-tasklet
-    *undescribed*
+    status of dma channel
 
 data
-    *undescribed*
+    specific sdma interface structure
 
-enabled
-    *undescribed*
-
-.. _`sdma_channel.description`:
-
-Description
------------
-
-\ ``sdma``\                 pointer to the SDMA engine for this channel
-\ ``channel``\              the channel number, matches dmaengine chan_id + 1
-\ ``direction``\            transfer type. Needed for setting SDMA script
-\ ``peripheral_type``\      Peripheral type. Needed for setting SDMA script
-\ ``event_id0``\            aka dma request line
-\ ``event_id1``\            for channels that use 2 events
-\ ``word_size``\            peripheral access size
-\ ``buf_tail``\             ID of the buffer that was processed
-\ ``buf_ptail``\            ID of the previous buffer that was processed
-\ ``num_bd``\               max NUM_BD. number of descriptors currently handling
+bd_pool
+    dma_pool for bd
 
 .. _`sdma_firmware_header`:
 
@@ -432,41 +437,26 @@ Members
 -------
 
 magic
-    *undescribed*
+    "SDMA"
 
 version_major
-    *undescribed*
+    increased whenever layout of struct
+    sdma_script_start_addrs changes.
 
 version_minor
-    *undescribed*
+    firmware minor version (for binary compatible changes)
 
 script_addrs_start
-    *undescribed*
+    offset of struct sdma_script_start_addrs in this image
 
 num_script_addrs
-    *undescribed*
+    Number of script addresses in this image
 
 ram_code_start
-    *undescribed*
+    offset of SDMA ram image in this firmware image
 
 ram_code_size
-    *undescribed*
-
-.. _`sdma_firmware_header.description`:
-
-Description
------------
-
-\ ``magic``\                "SDMA"
-\ ``version_major``\        increased whenever layout of struct sdma_script_start_addrs
-changes.
-\ ``version_minor``\        firmware minor version (for binary compatible changes)
-\ ``script_addrs_start``\   offset of struct sdma_script_start_addrs in this image
-\ ``num_script_addrs``\     Number of script addresses in this image
-\ ``ram_code_start``\       offset of SDMA ram image in this firmware image
-\ ``ram_code_size``\        size of SDMA ram image
-\ ``script_addrs``\         Stores the start address of the SDMA scripts
-(in SDMA memory space)
+    size of SDMA ram image
 
 .. This file was automatic generated / don't edit.
 

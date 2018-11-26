@@ -10,14 +10,17 @@ acr_ls_ucode_load_msgqueue
 
     load and prepare a ucode img for a msgqueue fw
 
-    :param const struct nvkm_subdev \*subdev:
+    :param subdev:
         *undescribed*
+    :type subdev: const struct nvkm_subdev \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param struct ls_ucode_img \*img:
+    :param img:
         *undescribed*
+    :type img: struct ls_ucode_img \*
 
 .. _`acr_ls_ucode_load_msgqueue.description`:
 

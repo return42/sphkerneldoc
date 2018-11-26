@@ -10,11 +10,13 @@ mmc_gpio_request_ro
 
     request a gpio for write-protection
 
-    :param struct mmc_host \*host:
+    :param host:
         mmc host
+    :type host: struct mmc_host \*
 
-    :param unsigned int gpio:
+    :param gpio:
         gpio number requested
+    :type gpio: unsigned int
 
 .. _`mmc_gpio_request_ro.description`:
 
@@ -35,14 +37,17 @@ mmc_gpio_request_cd
 
     request a gpio for card-detection
 
-    :param struct mmc_host \*host:
+    :param host:
         mmc host
+    :type host: struct mmc_host \*
 
-    :param unsigned int gpio:
+    :param gpio:
         gpio number requested
+    :type gpio: unsigned int
 
-    :param unsigned int debounce:
+    :param debounce:
         debounce time in microseconds
+    :type debounce: unsigned int
 
 .. _`mmc_gpio_request_cd.description`:
 
@@ -67,24 +72,30 @@ mmc_gpiod_request_cd
 
     request a gpio descriptor for card-detection
 
-    :param struct mmc_host \*host:
+    :param host:
         mmc host
+    :type host: struct mmc_host \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
-    :param unsigned int idx:
+    :param idx:
         index of the GPIO to obtain in the consumer
+    :type idx: unsigned int
 
-    :param bool override_active_level:
+    :param override_active_level:
         ignore \ ``GPIO_ACTIVE_LOW``\  flag
+    :type override_active_level: bool
 
-    :param unsigned int debounce:
+    :param debounce:
         debounce time in microseconds
+    :type debounce: unsigned int
 
-    :param bool \*gpio_invert:
+    :param gpio_invert:
         will return whether the GPIO line is inverted or not, set
         to NULL to ignore
+    :type gpio_invert: bool \*
 
 .. _`mmc_gpiod_request_cd.description`:
 
@@ -106,24 +117,30 @@ mmc_gpiod_request_ro
 
     request a gpio descriptor for write protection
 
-    :param struct mmc_host \*host:
+    :param host:
         mmc host
+    :type host: struct mmc_host \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
-    :param unsigned int idx:
+    :param idx:
         index of the GPIO to obtain in the consumer
+    :type idx: unsigned int
 
-    :param bool override_active_level:
+    :param override_active_level:
         ignore \ ``GPIO_ACTIVE_LOW``\  flag
+    :type override_active_level: bool
 
-    :param unsigned int debounce:
+    :param debounce:
         debounce time in microseconds
+    :type debounce: unsigned int
 
-    :param bool \*gpio_invert:
+    :param gpio_invert:
         will return whether the GPIO line is inverted or not,
         set to NULL to ignore
+    :type gpio_invert: bool \*
 
 .. _`mmc_gpiod_request_ro.description`:
 

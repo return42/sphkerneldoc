@@ -10,8 +10,9 @@ rvt_compute_aeth
 
     compute the AETH (syndrome + MSN)
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the queue pair to compute the AETH for
+    :type qp: struct rvt_qp \*
 
 .. _`rvt_compute_aeth.description`:
 
@@ -29,11 +30,13 @@ rvt_get_credit
 
     flush the send work queue of a QP
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the qp who's send work queue to flush
+    :type qp: struct rvt_qp \*
 
-    :param u32 aeth:
+    :param aeth:
         the Acknowledge Extended Transport Header
+    :type aeth: u32
 
 .. _`rvt_get_credit.description`:
 

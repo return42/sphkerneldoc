@@ -10,8 +10,9 @@ rcu_dereference_genl
 
     rcu_dereference with debug checking
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
 .. _`rcu_dereference_genl.description`:
 
@@ -30,8 +31,9 @@ genl_dereference
 
     fetch RCU pointer when updates are prevented by genl mutex
 
-    :param  p:
+    :param p:
         The pointer to read, prior to dereferencing
+    :type p: 
 
 .. _`genl_dereference.description`:
 

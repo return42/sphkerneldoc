@@ -10,8 +10,9 @@ current_wq_worker
 
     return struct worker if \ ``current``\  is a workqueue worker
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

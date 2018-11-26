@@ -10,14 +10,17 @@ usb_cdc_wdm_register
 
     register a WDM subdriver
 
-    :param struct usb_interface \*intf:
+    :param intf:
         usb interface the subdriver will associate with
+    :type intf: struct usb_interface \*
 
-    :param struct usb_endpoint_descriptor \*ep:
+    :param ep:
         interrupt endpoint to monitor for notifications
+    :type ep: struct usb_endpoint_descriptor \*
 
-    :param int bufsize:
+    :param bufsize:
         maximum message size to support for read/write
+    :type bufsize: int
 
     :param int (\*manage_power)(struct usb_interface \*, int):
         *undescribed*

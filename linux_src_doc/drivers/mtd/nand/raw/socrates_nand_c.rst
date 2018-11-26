@@ -6,60 +6,55 @@
 socrates_nand_write_buf
 =======================
 
-.. c:function:: void socrates_nand_write_buf(struct mtd_info *mtd, const uint8_t *buf, int len)
+.. c:function:: void socrates_nand_write_buf(struct nand_chip *this, const uint8_t *buf, int len)
 
     write buffer to chip
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param const uint8_t \*buf:
+    :param buf:
         data buffer
+    :type buf: const uint8_t \*
 
-    :param int len:
+    :param len:
         number of bytes to write
+    :type len: int
 
 .. _`socrates_nand_read_buf`:
 
 socrates_nand_read_buf
 ======================
 
-.. c:function:: void socrates_nand_read_buf(struct mtd_info *mtd, uint8_t *buf, int len)
+.. c:function:: void socrates_nand_read_buf(struct nand_chip *this, uint8_t *buf, int len)
 
     read chip data into buffer
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        NAND chip object
+    :type this: struct nand_chip \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer to store date
+    :type buf: uint8_t \*
 
-    :param int len:
+    :param len:
         number of bytes to read
+    :type len: int
 
 .. _`socrates_nand_read_byte`:
 
 socrates_nand_read_byte
 =======================
 
-.. c:function:: uint8_t socrates_nand_read_byte(struct mtd_info *mtd)
+.. c:function:: uint8_t socrates_nand_read_byte(struct nand_chip *this)
 
     read one byte from the chip
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-.. _`socrates_nand_read_word`:
-
-socrates_nand_read_word
-=======================
-
-.. c:function:: uint16_t socrates_nand_read_word(struct mtd_info *mtd)
-
-    read one word from the chip
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param this:
+        *undescribed*
+    :type this: struct nand_chip \*
 
 .. This file was automatic generated / don't edit.
 

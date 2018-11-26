@@ -10,14 +10,17 @@ pcpu_alloc_bootmem
 
     NUMA friendly alloc_bootmem wrapper for percpu
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu to allocate for
+    :type cpu: unsigned int
 
-    :param size_t size:
+    :param size:
         size allocation in bytes
+    :type size: size_t
 
-    :param size_t align:
+    :param align:
         alignment
+    :type align: size_t
 
 .. _`pcpu_alloc_bootmem.description`:
 

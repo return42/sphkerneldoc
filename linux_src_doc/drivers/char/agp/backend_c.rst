@@ -10,8 +10,9 @@ agp_backend_acquire
 
     attempt to acquire an agp backend.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`agp_backend_release`:
 
@@ -22,8 +23,9 @@ agp_backend_release
 
     release the lock on the agp backend.
 
-    :param struct agp_bridge_data \*bridge:
+    :param bridge:
         *undescribed*
+    :type bridge: struct agp_bridge_data \*
 
 .. _`agp_backend_release.description`:
 

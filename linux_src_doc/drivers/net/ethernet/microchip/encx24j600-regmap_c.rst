@@ -10,11 +10,13 @@ is_bits_set
 
     ENCX24J600 support
 
-    :param int value:
+    :param value:
         *undescribed*
+    :type value: int
 
-    :param int mask:
+    :param mask:
         *undescribed*
+    :type mask: int
 
 .. _`is_bits_set.description`:
 

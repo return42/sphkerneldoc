@@ -10,17 +10,21 @@
 
     internal client send (write)
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param u8 \*buf:
+    :param buf:
         buffer to send
+    :type buf: u8 \*
 
-    :param size_t length:
+    :param length:
         buffer length
+    :type length: size_t
 
-    :param unsigned int mode:
+    :param mode:
         sending mode
+    :type mode: unsigned int
 
 .. _`__mei_cl_send.return`:
 
@@ -34,21 +38,29 @@ written size bytes or < 0 on error
 \__mei_cl_recv
 ==============
 
-.. c:function:: ssize_t __mei_cl_recv(struct mei_cl *cl, u8 *buf, size_t length, unsigned int mode)
+.. c:function:: ssize_t __mei_cl_recv(struct mei_cl *cl, u8 *buf, size_t length, unsigned int mode, unsigned long timeout)
 
     internal client receive (read)
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
-    :param u8 \*buf:
+    :param buf:
         buffer to receive
+    :type buf: u8 \*
 
-    :param size_t length:
+    :param length:
         buffer length
+    :type length: size_t
 
-    :param unsigned int mode:
+    :param mode:
         io mode
+    :type mode: unsigned int
+
+    :param timeout:
+        recv timeout, 0 for infinite timeout
+    :type timeout: unsigned long
 
 .. _`__mei_cl_recv.return`:
 
@@ -66,14 +78,17 @@ mei_cldev_send
 
     me device send  (write)
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
-    :param u8 \*buf:
+    :param buf:
         buffer to send
+    :type buf: u8 \*
 
-    :param size_t length:
+    :param length:
         buffer length
+    :type length: size_t
 
 .. _`mei_cldev_send.return`:
 
@@ -91,14 +106,17 @@ mei_cldev_recv_nonblock
 
     non block client receive (read)
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
-    :param u8 \*buf:
+    :param buf:
         buffer to receive
+    :type buf: u8 \*
 
-    :param size_t length:
+    :param length:
         buffer length
+    :type length: size_t
 
 .. _`mei_cldev_recv_nonblock.return`:
 
@@ -117,14 +135,17 @@ mei_cldev_recv
 
     client receive (read)
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
-    :param u8 \*buf:
+    :param buf:
         buffer to receive
+    :type buf: u8 \*
 
-    :param size_t length:
+    :param length:
         buffer length
+    :type length: size_t
 
 .. _`mei_cldev_recv.return`:
 
@@ -142,8 +163,9 @@ mei_cl_bus_rx_work
 
     dispatch rx event for a bus device
 
-    :param struct work_struct \*work:
+    :param work:
         work
+    :type work: struct work_struct \*
 
 .. _`mei_cl_bus_notif_work`:
 
@@ -154,8 +176,9 @@ mei_cl_bus_notif_work
 
     dispatch FW notif event for a bus device
 
-    :param struct work_struct \*work:
+    :param work:
         work
+    :type work: struct work_struct \*
 
 .. _`mei_cl_bus_notify_event`:
 
@@ -166,8 +189,9 @@ mei_cl_bus_notify_event
 
     schedule notify cb on bus client
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_bus_notify_event.return`:
 
@@ -186,8 +210,9 @@ mei_cl_bus_rx_event
 
     schedule rx event
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client
+    :type cl: struct mei_cl \*
 
 .. _`mei_cl_bus_rx_event.return`:
 
@@ -206,11 +231,13 @@ mei_cldev_register_rx_cb
 
     register Rx event callback
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client devices
+    :type cldev: struct mei_cl_device \*
 
-    :param mei_cldev_cb_t rx_cb:
+    :param rx_cb:
         callback function
+    :type rx_cb: mei_cldev_cb_t
 
 .. _`mei_cldev_register_rx_cb.return`:
 
@@ -230,11 +257,13 @@ mei_cldev_register_notif_cb
 
     register FW notification event callback
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client devices
+    :type cldev: struct mei_cl_device \*
 
-    :param mei_cldev_cb_t notif_cb:
+    :param notif_cb:
         callback function
+    :type notif_cb: mei_cldev_cb_t
 
 .. _`mei_cldev_register_notif_cb.return`:
 
@@ -254,8 +283,9 @@ mei_cldev_get_drvdata
 
     driver data getter
 
-    :param const struct mei_cl_device \*cldev:
+    :param cldev:
         mei client device
+    :type cldev: const struct mei_cl_device \*
 
 .. _`mei_cldev_get_drvdata.return`:
 
@@ -273,11 +303,13 @@ mei_cldev_set_drvdata
 
     driver data setter
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         mei client device
+    :type cldev: struct mei_cl_device \*
 
-    :param void \*data:
+    :param data:
         data to store
+    :type data: void \*
 
 .. _`mei_cldev_uuid`:
 
@@ -288,8 +320,9 @@ mei_cldev_uuid
 
     return uuid of the underlying me client
 
-    :param const struct mei_cl_device \*cldev:
+    :param cldev:
         mei client device
+    :type cldev: const struct mei_cl_device \*
 
 .. _`mei_cldev_uuid.return`:
 
@@ -307,8 +340,9 @@ mei_cldev_ver
 
     return protocol version of the underlying me client
 
-    :param const struct mei_cl_device \*cldev:
+    :param cldev:
         mei client device
+    :type cldev: const struct mei_cl_device \*
 
 .. _`mei_cldev_ver.return`:
 
@@ -326,8 +360,9 @@ mei_cldev_enabled
 
     check whether the device is enabled
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         mei client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cldev_enabled.return`:
 
@@ -345,8 +380,9 @@ mei_cl_bus_module_get
 
     acquire module of the underlying hw driver.
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         mei client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cl_bus_module_get.return`:
 
@@ -364,8 +400,9 @@ mei_cl_bus_module_put
 
     release the underlying hw module.
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         mei client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cldev_enable`:
 
@@ -376,8 +413,9 @@ mei_cldev_enable
 
     enable me client device create connection with me client
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cldev_enable.return`:
 
@@ -395,8 +433,9 @@ mei_cldev_unregister_callbacks
 
     internal wrapper for unregistering callbacks.
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cldev_disable`:
 
@@ -407,8 +446,9 @@ mei_cldev_disable
 
     disable me client device disconnect form the me client
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cldev_disable.return`:
 
@@ -426,11 +466,13 @@ mei_cl_device_find
 
     find matching entry in the driver id table
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
-    :param struct mei_cl_driver \*cldrv:
+    :param cldrv:
         me client driver
+    :type cldrv: struct mei_cl_driver \*
 
 .. _`mei_cl_device_find.return`:
 
@@ -448,11 +490,13 @@ mei_cl_device_match
 
     device match function
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver
+    :type drv: struct device_driver \*
 
 .. _`mei_cl_device_match.return`:
 
@@ -470,8 +514,9 @@ mei_cl_device_probe
 
     bus probe function
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
 .. _`mei_cl_device_probe.return`:
 
@@ -489,8 +534,9 @@ mei_cl_device_remove
 
     remove device from the bus
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
 .. _`mei_cl_device_remove.return`:
 
@@ -508,11 +554,13 @@ mei_cl_device_uevent
 
     me client bus uevent handler
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param struct kobj_uevent_env \*env:
+    :param env:
         uevent kobject
+    :type env: struct kobj_uevent_env \*
 
 .. _`mei_cl_device_uevent.return`:
 
@@ -530,8 +578,9 @@ mei_cl_bus_set_name
 
     set device name for me client device
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cl_bus_dev_alloc`:
 
@@ -542,11 +591,13 @@ mei_cl_bus_dev_alloc
 
     initialize and allocate mei client device
 
-    :param struct mei_device \*bus:
+    :param bus:
         mei device
+    :type bus: struct mei_device \*
 
-    :param struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: struct mei_me_client \*
 
 .. _`mei_cl_bus_dev_alloc.return`:
 
@@ -564,11 +615,13 @@ mei_cl_bus_dev_setup
 
     setup me client device run fix up routines and set the device name
 
-    :param struct mei_device \*bus:
+    :param bus:
         mei device
+    :type bus: struct mei_device \*
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cl_bus_dev_setup.return`:
 
@@ -586,8 +639,9 @@ mei_cl_bus_dev_add
 
     add me client devices
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cl_bus_dev_add.return`:
 
@@ -605,8 +659,9 @@ mei_cl_bus_dev_stop
 
     stop the driver
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cl_bus_dev_destroy`:
 
@@ -617,8 +672,9 @@ mei_cl_bus_dev_destroy
 
     destroy me client devices object
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cl_bus_dev_destroy.locking`:
 
@@ -636,8 +692,9 @@ mei_cl_bus_remove_device
 
     remove a devices form the bus
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cl_bus_remove_devices`:
 
@@ -648,8 +705,9 @@ mei_cl_bus_remove_devices
 
     remove all devices form the bus
 
-    :param struct mei_device \*bus:
+    :param bus:
         mei device
+    :type bus: struct mei_device \*
 
 .. _`mei_cl_bus_dev_init`:
 
@@ -660,11 +718,13 @@ mei_cl_bus_dev_init
 
     allocate and initializes an mei client devices based on me client
 
-    :param struct mei_device \*bus:
+    :param bus:
         mei device
+    :type bus: struct mei_device \*
 
-    :param struct mei_me_client \*me_cl:
+    :param me_cl:
         me client
+    :type me_cl: struct mei_me_client \*
 
 .. _`mei_cl_bus_dev_init.locking`:
 
@@ -682,8 +742,9 @@ mei_cl_bus_rescan
 
     scan me clients list and add create devices for eligible clients
 
-    :param struct mei_device \*bus:
+    :param bus:
         mei device
+    :type bus: struct mei_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ pps_clear
 
     Clears the PPS state variables
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ntp_synced`:
 
@@ -22,8 +23,9 @@ ntp_synced
 
     Returns 1 if the NTP status is not UNSYNC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ntp_clear`:
 
@@ -34,8 +36,9 @@ ntp_clear
 
     Clears the NTP state variables
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ntp_get_next_leap`:
 
@@ -46,8 +49,9 @@ ntp_get_next_leap
 
     Returns the next leapsecond in CLOCK_REALTIME ktime_t
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ntp_get_next_leap.description`:
 

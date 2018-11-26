@@ -10,17 +10,21 @@ gfs2_unstuffer_page
 
     unstuff a stuffed inode into a block cached by a page
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode
+    :type ip: struct gfs2_inode \*
 
-    :param struct buffer_head \*dibh:
+    :param dibh:
         the dinode buffer
+    :type dibh: struct buffer_head \*
 
-    :param u64 block:
+    :param block:
         the block number that was allocated
+    :type block: u64
 
-    :param struct page \*page:
+    :param page:
         The (optional) page. This is looked up if \ ``page``\  is NULL
+    :type page: struct page \*
 
 .. _`gfs2_unstuffer_page.return`:
 
@@ -38,11 +42,13 @@ gfs2_unstuff_dinode
 
     Unstuff a dinode when the data has grown too big
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The GFS2 inode to unstuff
+    :type ip: struct gfs2_inode \*
 
-    :param struct page \*page:
+    :param page:
         The (optional) page. This is looked up if the \ ``page``\  is NULL
+    :type page: struct page \*
 
 .. _`gfs2_unstuff_dinode.description`:
 
@@ -68,17 +74,21 @@ find_metapath
 
     Find path through the metadata tree
 
-    :param const struct gfs2_sbd \*sdp:
+    :param sdp:
         The superblock
+    :type sdp: const struct gfs2_sbd \*
 
-    :param u64 block:
+    :param block:
         The disk block to look up
+    :type block: u64
 
-    :param struct metapath \*mp:
+    :param mp:
         The metapath to return the result in
+    :type mp: struct metapath \*
 
-    :param unsigned int height:
+    :param height:
         The pre-calculated height of the metadata tree
+    :type height: unsigned int
 
 .. _`find_metapath.description`:
 
@@ -148,11 +158,13 @@ metaptr1
 
     Return the first possible metadata pointer in a metapath buffer
 
-    :param unsigned int height:
+    :param height:
         The metadata height (0 = dinode)
+    :type height: unsigned int
 
-    :param const struct metapath \*mp:
+    :param mp:
         The metapath
+    :type mp: const struct metapath \*
 
 .. _`metapointer`:
 
@@ -163,11 +175,13 @@ metapointer
 
     Return pointer to start of metadata in a buffer
 
-    :param unsigned int height:
+    :param height:
         The metadata height (0 = dinode)
+    :type height: unsigned int
 
-    :param const struct metapath \*mp:
+    :param mp:
         The metapath
+    :type mp: const struct metapath \*
 
 .. _`metapointer.description`:
 
@@ -187,11 +201,13 @@ lookup_metapath
 
     Walk the metadata tree to a specific point
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The inode
+    :type ip: struct gfs2_inode \*
 
-    :param struct metapath \*mp:
+    :param mp:
         The metapath
+    :type mp: struct metapath \*
 
 .. _`lookup_metapath.description`:
 
@@ -223,14 +239,17 @@ fillup_metapath
 
     fill up buffers for the metadata path to a specific height
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The inode
+    :type ip: struct gfs2_inode \*
 
-    :param struct metapath \*mp:
+    :param mp:
         The metapath
+    :type mp: struct metapath \*
 
-    :param int h:
+    :param h:
         The height to which it should be mapped
+    :type h: int
 
 .. _`fillup_metapath.description`:
 
@@ -251,33 +270,25 @@ error or the number of buffers filled
 gfs2_extent_length
 ==================
 
-.. c:function:: unsigned int gfs2_extent_length(void *start, unsigned int len, __be64 *ptr, size_t limit, int *eob)
+.. c:function:: unsigned int gfs2_extent_length(struct buffer_head *bh, __be64 *ptr, size_t limit, int *eob)
 
     Returns length of an extent of blocks
 
-    :param void \*start:
-        Start of the buffer
+    :param bh:
+        The metadata block
+    :type bh: struct buffer_head \*
 
-    :param unsigned int len:
-        Length of the buffer in bytes
+    :param ptr:
+        Current position in \ ``bh``\ 
+    :type ptr: __be64 \*
 
-    :param __be64 \*ptr:
-        Current position in the buffer
+    :param limit:
+        Max extent length to return
+    :type limit: size_t
 
-    :param size_t limit:
-        Max extent length to return (0 = unlimited)
-
-    :param int \*eob:
+    :param eob:
         Set to 1 if we hit "end of block"
-
-.. _`gfs2_extent_length.description`:
-
-Description
------------
-
-If the first block is zero (unallocated) it will return the number of
-unallocated blocks in the extent, otherwise it will return the number
-of contiguous blocks in the extent.
+    :type eob: int \*
 
 .. _`gfs2_extent_length.return`:
 
@@ -295,20 +306,25 @@ gfs2_hole_size
 
     figure out the size of a hole
 
-    :param struct inode \*inode:
+    :param inode:
         The inode
+    :type inode: struct inode \*
 
-    :param sector_t lblock:
+    :param lblock:
         The logical starting block number
+    :type lblock: sector_t
 
-    :param u64 len:
+    :param len:
         How far to look (in blocks)
+    :type len: u64
 
-    :param struct metapath \*mp:
+    :param mp:
         The metapath at lblock
+    :type mp: struct metapath \*
 
-    :param struct iomap \*iomap:
+    :param iomap:
         The iomap to store the hole size in
+    :type iomap: struct iomap \*
 
 .. _`gfs2_hole_size.description`:
 
@@ -333,17 +349,21 @@ gfs2_iomap_alloc
 
     Build a metadata tree of the requested height
 
-    :param struct inode \*inode:
+    :param inode:
         The GFS2 inode
+    :type inode: struct inode \*
 
-    :param struct iomap \*iomap:
+    :param iomap:
         The iomap structure
+    :type iomap: struct iomap \*
 
-    :param unsigned flags:
+    :param flags:
         iomap flags
+    :type flags: unsigned
 
-    :param struct metapath \*mp:
+    :param mp:
         The metapath, with proper height information calculated
+    :type mp: struct metapath \*
 
 .. _`gfs2_iomap_alloc.in-this-routine-we-may-have-to-alloc`:
 
@@ -354,11 +374,13 @@ i) Indirect blocks to grow the metadata tree height
 ii) Indirect blocks to fill in lower part of the metadata tree
 iii) Data blocks
 
-The function is in two parts. The first part works out the total
-number of blocks which we need. The second part does the actual
-allocation asking for an extent at a time (if enough contiguous free
-blocks are available, there will only be one request per bmap call)
-and uses the state machine to initialise the blocks in order.
+This function is called after gfs2_iomap_get, which works out the
+total number of blocks which we need via gfs2_alloc_size.
+
+We then do the actual allocation asking for an extent at a time (if
+enough contiguous free blocks are available, there will only be one
+allocation request per call) and uses the state machine to initialise
+the blocks in order.
 
 Right now, this function will allocate at most one indirect block
 worth of data -- with a default block size of 4K, that's slightly
@@ -374,6 +396,41 @@ Return
 
 errno on error
 
+.. _`gfs2_alloc_size`:
+
+gfs2_alloc_size
+===============
+
+.. c:function:: u64 gfs2_alloc_size(struct inode *inode, struct metapath *mp, u64 size)
+
+    Compute the maximum allocation size
+
+    :param inode:
+        The inode
+    :type inode: struct inode \*
+
+    :param mp:
+        The metapath
+    :type mp: struct metapath \*
+
+    :param size:
+        Requested size in blocks
+    :type size: u64
+
+.. _`gfs2_alloc_size.description`:
+
+Description
+-----------
+
+Compute the maximum size of the next allocation at \ ``mp``\ .
+
+.. _`gfs2_alloc_size.return`:
+
+Return
+------
+
+size in blocks
+
 .. _`gfs2_iomap_get`:
 
 gfs2_iomap_get
@@ -383,23 +440,29 @@ gfs2_iomap_get
 
     Map blocks from an inode to disk blocks
 
-    :param struct inode \*inode:
+    :param inode:
         The inode
+    :type inode: struct inode \*
 
-    :param loff_t pos:
+    :param pos:
         Starting position in bytes
+    :type pos: loff_t
 
-    :param loff_t length:
+    :param length:
         Length to map, in bytes
+    :type length: loff_t
 
-    :param unsigned flags:
+    :param flags:
         iomap flags
+    :type flags: unsigned
 
-    :param struct iomap \*iomap:
+    :param iomap:
         The iomap structure
+    :type iomap: struct iomap \*
 
-    :param struct metapath \*mp:
+    :param mp:
         The metapath
+    :type mp: struct metapath \*
 
 .. _`gfs2_iomap_get.return`:
 
@@ -417,17 +480,21 @@ gfs2_block_map
 
     Map one or more blocks of an inode to a disk block
 
-    :param struct inode \*inode:
+    :param inode:
         The inode
+    :type inode: struct inode \*
 
-    :param sector_t lblock:
+    :param lblock:
         The logical block number
+    :type lblock: sector_t
 
-    :param struct buffer_head \*bh_map:
+    :param bh_map:
         The bh to be mapped
+    :type bh_map: struct buffer_head \*
 
-    :param int create:
+    :param create:
         True if its ok to alloc blocks to satify the request
+    :type create: int
 
 .. _`gfs2_block_map.description`:
 
@@ -461,14 +528,17 @@ gfs2_block_zero_range
 
     Deal with zeroing out data
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param loff_t from:
+    :param from:
         *undescribed*
+    :type from: loff_t
 
-    :param unsigned int length:
+    :param length:
         *undescribed*
+    :type length: unsigned int
 
 .. _`gfs2_block_zero_range.description`:
 
@@ -486,14 +556,17 @@ gfs2_journaled_truncate
 
     Wrapper for truncate_pagecache for jdata files
 
-    :param struct inode \*inode:
+    :param inode:
         The inode being truncated
+    :type inode: struct inode \*
 
-    :param u64 oldsize:
+    :param oldsize:
         The original (larger) size
+    :type oldsize: u64
 
-    :param u64 newsize:
+    :param newsize:
         The new smaller size
+    :type newsize: u64
 
 .. _`gfs2_journaled_truncate.description`:
 
@@ -513,26 +586,33 @@ sweep_bh_for_rgrps
 
     find an rgrp in a meta buffer and free blocks therein
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         inode
+    :type ip: struct gfs2_inode \*
 
-    :param struct gfs2_holder \*rd_gh:
+    :param rd_gh:
         *undescribed*
+    :type rd_gh: struct gfs2_holder \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer head to sweep
+    :type bh: struct buffer_head \*
 
-    :param __be64 \*start:
+    :param start:
         starting point in bh
+    :type start: __be64 \*
 
-    :param __be64 \*end:
+    :param end:
         end point in bh
+    :type end: __be64 \*
 
-    :param bool meta:
+    :param meta:
         true if bh points to metadata (rather than data)
+    :type meta: bool
 
-    :param u32 \*btotal:
+    :param btotal:
         place to keep count of total blocks freed
+    :type btotal: u32 \*
 
 .. _`sweep_bh_for_rgrps.description`:
 
@@ -565,20 +645,25 @@ find_nonnull_ptr
 
     find a non-null pointer given a metapath and height
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         *undescribed*
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct metapath \*mp:
+    :param mp:
         starting metapath
+    :type mp: struct metapath \*
 
-    :param unsigned int h:
+    :param h:
         desired height to search
+    :type h: unsigned int
 
-    :param __u16 \*end_list:
+    :param end_list:
         *undescribed*
+    :type end_list: __u16 \*
 
-    :param unsigned int end_aligned:
+    :param end_aligned:
         *undescribed*
+    :type end_aligned: unsigned int
 
 .. _`find_nonnull_ptr.description`:
 
@@ -604,14 +689,17 @@ punch_hole
 
     deallocate blocks in a file
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         inode to truncate
+    :type ip: struct gfs2_inode \*
 
-    :param u64 offset:
+    :param offset:
         the start of the hole
+    :type offset: u64
 
-    :param u64 length:
+    :param length:
         the size of the hole (or 0 for truncate)
+    :type length: u64
 
 .. _`punch_hole.description`:
 
@@ -637,11 +725,13 @@ do_shrink
 
     make a file smaller
 
-    :param struct inode \*inode:
+    :param inode:
         the inode
+    :type inode: struct inode \*
 
-    :param u64 newsize:
+    :param newsize:
         the size to make the file
+    :type newsize: u64
 
 .. _`do_shrink.description`:
 
@@ -667,11 +757,13 @@ do_grow
 
     Touch and update inode size
 
-    :param struct inode \*inode:
+    :param inode:
         The inode
+    :type inode: struct inode \*
 
-    :param u64 size:
+    :param size:
         The new size
+    :type size: u64
 
 .. _`do_grow.description`:
 
@@ -706,11 +798,13 @@ gfs2_setattr_size
 
     make a file a given size
 
-    :param struct inode \*inode:
+    :param inode:
         the inode
+    :type inode: struct inode \*
 
-    :param u64 newsize:
+    :param newsize:
         the size to make the file
+    :type newsize: u64
 
 .. _`gfs2_setattr_size.description`:
 
@@ -737,8 +831,9 @@ gfs2_free_journal_extents
 
     Free cached journal bmap info
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         The journal
+    :type jd: struct gfs2_jdesc \*
 
 .. _`gfs2_add_jextent`:
 
@@ -749,17 +844,21 @@ gfs2_add_jextent
 
     Add or merge a new extent to extent cache
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         The journal descriptor
+    :type jd: struct gfs2_jdesc \*
 
-    :param u64 lblock:
+    :param lblock:
         The logical block at start of new extent
+    :type lblock: u64
 
-    :param u64 dblock:
+    :param dblock:
         The physical block at start of new extent
+    :type dblock: u64
 
-    :param u64 blocks:
+    :param blocks:
         Size of extent in fs blocks
+    :type blocks: u64
 
 .. _`gfs2_add_jextent.return`:
 
@@ -777,11 +876,13 @@ gfs2_map_journal_extents
 
     Cache journal bmap info
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The super block
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         The journal to map
+    :type jd: struct gfs2_jdesc \*
 
 .. _`gfs2_map_journal_extents.description`:
 
@@ -816,14 +917,17 @@ gfs2_write_alloc_required
 
     figure out if a write will require an allocation
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the file being written to
+    :type ip: struct gfs2_inode \*
 
-    :param u64 offset:
+    :param offset:
         the offset to write to
+    :type offset: u64
 
-    :param unsigned int len:
+    :param len:
         the number of bytes being written
+    :type len: unsigned int
 
 .. _`gfs2_write_alloc_required.return`:
 

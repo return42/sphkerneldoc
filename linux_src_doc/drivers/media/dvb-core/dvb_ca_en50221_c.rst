@@ -8,17 +8,21 @@ findstr
 
 .. c:function:: char *findstr(char *haystack, int hlen, char *needle, int nlen)
 
-    :param char \*haystack:
+    :param haystack:
         Buffer to look in.
+    :type haystack: char \*
 
-    :param int hlen:
+    :param hlen:
         Number of bytes in haystack.
+    :type hlen: int
 
-    :param char \*needle:
+    :param needle:
         Buffer to find.
+    :type needle: char \*
 
-    :param int nlen:
+    :param nlen:
         Number of bytes in needle.
+    :type nlen: int
 
 .. _`findstr.return`:
 
@@ -36,17 +40,21 @@ dvb_ca_en50221_wait_if_status
 
     Wait for flags to become set on the STATUS register on a CAM interface, checking for errors and timeout.
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
-    :param int slot:
+    :param slot:
         Slot on interface.
+    :type slot: int
 
-    :param u8 waitfor:
+    :param waitfor:
         Flags to wait for.
+    :type waitfor: u8
 
-    :param int timeout_hz:
+    :param timeout_hz:
         Timeout in milliseconds.
+    :type timeout_hz: int
 
 .. _`dvb_ca_en50221_wait_if_status.return`:
 
@@ -64,11 +72,13 @@ dvb_ca_en50221_link_init
 
     Initialise the link layer connection to a CAM.
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
-    :param int slot:
+    :param slot:
         Slot id.
+    :type slot: int
 
 .. _`dvb_ca_en50221_link_init.return`:
 
@@ -86,23 +96,29 @@ dvb_ca_en50221_read_tuple
 
     Read a tuple from attribute memory.
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
-    :param int slot:
+    :param slot:
         Slot id.
+    :type slot: int
 
-    :param int \*address:
+    :param address:
         Address to read from. Updated.
+    :type address: int \*
 
-    :param int \*tuple_type:
+    :param tuple_type:
         Tuple id byte. Updated.
+    :type tuple_type: int \*
 
-    :param int \*tuple_length:
+    :param tuple_length:
         Tuple length. Updated.
+    :type tuple_length: int \*
 
-    :param u8 \*tuple:
+    :param tuple:
         Dest buffer for tuple (must be 256 bytes). Updated.
+    :type tuple: u8 \*
 
 .. _`dvb_ca_en50221_read_tuple.return`:
 
@@ -120,11 +136,13 @@ dvb_ca_en50221_parse_attributes
 
     Parse attribute memory of a CAM module, extracting Config register, and checking it is a DVB CAM module.
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
-    :param int slot:
+    :param slot:
         Slot id.
+    :type slot: int
 
 .. _`dvb_ca_en50221_parse_attributes.return`:
 
@@ -142,11 +160,13 @@ dvb_ca_en50221_set_configoption
 
     Set CAM's configoption correctly.
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
-    :param int slot:
+    :param slot:
         Slot containing the CAM.
+    :type slot: int
 
 .. _`dvb_ca_en50221_read_data`:
 
@@ -157,19 +177,23 @@ dvb_ca_en50221_read_data
 
     This function talks to an EN50221 CAM control interface. It reads a buffer of data from the CAM. The data can either be stored in a supplied buffer, or automatically be added to the slot's rx_buffer.
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
-    :param int slot:
+    :param slot:
         Slot to read from.
+    :type slot: int
 
-    :param u8 \*ebuf:
+    :param ebuf:
         If non-NULL, the data will be written to this buffer. If NULL,
         the data will be added into the buffering system as a normal
         fragment.
+    :type ebuf: u8 \*
 
-    :param int ecount:
+    :param ecount:
         Size of ebuf. Ignored if ebuf is NULL.
+    :type ecount: int
 
 .. _`dvb_ca_en50221_read_data.return`:
 
@@ -187,18 +211,22 @@ dvb_ca_en50221_write_data
 
     This function talks to an EN50221 CAM control interface. It writes a buffer of data to a CAM.
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
-    :param int slot:
+    :param slot:
         Slot to write to.
+    :type slot: int
 
-    :param u8 \*buf:
+    :param buf:
         The data in this buffer is treated as a complete link-level packet to
         be written.
+    :type buf: u8 \*
 
-    :param int bytes_write:
+    :param bytes_write:
         Size of ebuf.
+    :type bytes_write: int
 
 .. _`dvb_ca_en50221_write_data.return`:
 
@@ -216,11 +244,13 @@ dvb_ca_en50221_slot_shutdown
 
     A CAM has been removed => shut it down.
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
-    :param int slot:
+    :param slot:
         Slot to shut down.
+    :type slot: int
 
 .. _`dvb_ca_en50221_camchange_irq`:
 
@@ -231,14 +261,17 @@ dvb_ca_en50221_camchange_irq
 
     A CAMCHANGE IRQ has occurred.
 
-    :param struct dvb_ca_en50221 \*pubca:
+    :param pubca:
         CA instance.
+    :type pubca: struct dvb_ca_en50221 \*
 
-    :param int slot:
+    :param slot:
         Slot concerned.
+    :type slot: int
 
-    :param int change_type:
+    :param change_type:
         One of the DVB_CA_CAMCHANGE\_\* values.
+    :type change_type: int
 
 .. _`dvb_ca_en50221_camready_irq`:
 
@@ -249,11 +282,13 @@ dvb_ca_en50221_camready_irq
 
     A CAMREADY IRQ has occurred.
 
-    :param struct dvb_ca_en50221 \*pubca:
+    :param pubca:
         CA instance.
+    :type pubca: struct dvb_ca_en50221 \*
 
-    :param int slot:
+    :param slot:
         Slot concerned.
+    :type slot: int
 
 .. _`dvb_ca_en50221_frda_irq`:
 
@@ -264,11 +299,13 @@ dvb_ca_en50221_frda_irq
 
     An FR or DA IRQ has occurred.
 
-    :param struct dvb_ca_en50221 \*pubca:
+    :param pubca:
         CA instance.
+    :type pubca: struct dvb_ca_en50221 \*
 
-    :param int slot:
+    :param slot:
         Slot concerned.
+    :type slot: int
 
 .. _`dvb_ca_en50221_thread_wakeup`:
 
@@ -277,8 +314,9 @@ dvb_ca_en50221_thread_wakeup
 
 .. c:function:: void dvb_ca_en50221_thread_wakeup(struct dvb_ca_private *ca)
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
 .. _`dvb_ca_en50221_thread_update_delay`:
 
@@ -287,8 +325,9 @@ dvb_ca_en50221_thread_update_delay
 
 .. c:function:: void dvb_ca_en50221_thread_update_delay(struct dvb_ca_private *ca)
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
 .. _`dvb_ca_en50221_poll_cam_gone`:
 
@@ -297,13 +336,15 @@ dvb_ca_en50221_poll_cam_gone
 
 .. c:function:: int dvb_ca_en50221_poll_cam_gone(struct dvb_ca_private *ca, int slot)
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
-    :param int slot:
+    :param slot:
         Slot to process.
         return:: 0 .. no change
         1 .. CAM state changed
+    :type slot: int
 
 .. _`dvb_ca_en50221_thread_state_machine`:
 
@@ -312,11 +353,13 @@ dvb_ca_en50221_thread_state_machine
 
 .. c:function:: void dvb_ca_en50221_thread_state_machine(struct dvb_ca_private *ca, int slot)
 
-    :param struct dvb_ca_private \*ca:
+    :param ca:
         CA instance.
+    :type ca: struct dvb_ca_private \*
 
-    :param int slot:
+    :param slot:
         Slot to process.
+    :type slot: int
 
 .. _`dvb_ca_en50221_io_do_ioctl`:
 
@@ -325,14 +368,17 @@ dvb_ca_en50221_io_do_ioctl
 
 .. c:function:: int dvb_ca_en50221_io_do_ioctl(struct file *file, unsigned int cmd, void *parg)
 
-    :param struct file \*file:
+    :param file:
         File concerned.
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         IOCTL command.
+    :type cmd: unsigned int
 
-    :param void \*parg:
+    :param parg:
         Associated argument.
+    :type parg: void \*
 
 .. _`dvb_ca_en50221_io_do_ioctl.note`:
 
@@ -355,14 +401,17 @@ dvb_ca_en50221_io_ioctl
 
 .. c:function:: long dvb_ca_en50221_io_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
-    :param struct file \*file:
+    :param file:
         File concerned.
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         IOCTL command.
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         Associated argument.
+    :type arg: unsigned long
 
 .. _`dvb_ca_en50221_io_ioctl.return`:
 
@@ -378,17 +427,21 @@ dvb_ca_en50221_io_write
 
 .. c:function:: ssize_t dvb_ca_en50221_io_write(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    :param struct file \*file:
+    :param file:
         File structure.
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         Source buffer.
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         Size of source buffer.
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Position in file (ignored).
+    :type ppos: loff_t \*
 
 .. _`dvb_ca_en50221_io_write.return`:
 
@@ -404,17 +457,21 @@ dvb_ca_en50221_io_read
 
 .. c:function:: ssize_t dvb_ca_en50221_io_read(struct file *file, char __user *buf, size_t count, loff_t *ppos)
 
-    :param struct file \*file:
+    :param file:
         File structure.
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         Destination buffer.
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         Size of destination buffer.
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         Position in file (ignored).
+    :type ppos: loff_t \*
 
 .. _`dvb_ca_en50221_io_read.return`:
 
@@ -430,11 +487,13 @@ dvb_ca_en50221_io_open
 
 .. c:function:: int dvb_ca_en50221_io_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         Inode concerned.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         File concerned.
+    :type file: struct file \*
 
 .. _`dvb_ca_en50221_io_open.return`:
 
@@ -450,11 +509,13 @@ dvb_ca_en50221_io_release
 
 .. c:function:: int dvb_ca_en50221_io_release(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         Inode concerned.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         File concerned.
+    :type file: struct file \*
 
 .. _`dvb_ca_en50221_io_release.return`:
 
@@ -470,11 +531,13 @@ dvb_ca_en50221_io_poll
 
 .. c:function:: __poll_t dvb_ca_en50221_io_poll(struct file *file, poll_table *wait)
 
-    :param struct file \*file:
+    :param file:
         File concerned.
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         poll wait table.
+    :type wait: poll_table \*
 
 .. _`dvb_ca_en50221_io_poll.return`:
 
@@ -490,17 +553,21 @@ dvb_ca_en50221_init
 
 .. c:function:: int dvb_ca_en50221_init(struct dvb_adapter *dvb_adapter, struct dvb_ca_en50221 *pubca, int flags, int slot_count)
 
-    :param struct dvb_adapter \*dvb_adapter:
+    :param dvb_adapter:
         DVB adapter to attach the new CA device to.
+    :type dvb_adapter: struct dvb_adapter \*
 
-    :param struct dvb_ca_en50221 \*pubca:
+    :param pubca:
         The dvb_ca instance.
+    :type pubca: struct dvb_ca_en50221 \*
 
-    :param int flags:
+    :param flags:
         Flags describing the CA device (DVB_CA_FLAG\_\*).
+    :type flags: int
 
-    :param int slot_count:
+    :param slot_count:
         Number of slots supported.
+    :type slot_count: int
 
 .. _`dvb_ca_en50221_init.return`:
 
@@ -516,8 +583,9 @@ dvb_ca_en50221_release
 
 .. c:function:: void dvb_ca_en50221_release(struct dvb_ca_en50221 *pubca)
 
-    :param struct dvb_ca_en50221 \*pubca:
+    :param pubca:
         The associated dvb_ca instance.
+    :type pubca: struct dvb_ca_en50221 \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ rxrpc_kernel_get_peer
 
     Get the peer address of a call
 
-    :param struct socket \*sock:
+    :param sock:
         The socket on which the call is in progress.
+    :type sock: struct socket \*
 
-    :param struct rxrpc_call \*call:
+    :param call:
         The call to query
+    :type call: struct rxrpc_call \*
 
-    :param struct sockaddr_rxrpc \*_srx:
+    :param _srx:
         Where to place the result
+    :type _srx: struct sockaddr_rxrpc \*
 
 .. _`rxrpc_kernel_get_peer.description`:
 
@@ -35,11 +38,13 @@ rxrpc_kernel_get_rtt
 
     Get a call's peer RTT
 
-    :param struct socket \*sock:
+    :param sock:
         The socket on which the call is in progress.
+    :type sock: struct socket \*
 
-    :param struct rxrpc_call \*call:
+    :param call:
         The call to query
+    :type call: struct rxrpc_call \*
 
 .. _`rxrpc_kernel_get_rtt.description`:
 

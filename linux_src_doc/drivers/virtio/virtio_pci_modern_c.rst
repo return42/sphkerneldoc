@@ -10,17 +10,21 @@ virtio_pci_find_capability
 
     walk capabilities to find device info.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the pci device
+    :type dev: struct pci_dev \*
 
-    :param u8 cfg_type:
+    :param cfg_type:
         the VIRTIO_PCI_CAP\_\* value we seek
+    :type cfg_type: u8
 
-    :param u32 ioresource_types:
+    :param ioresource_types:
         IORESOURCE_MEM and/or IORESOURCE_IO.
+    :type ioresource_types: u32
 
-    :param int \*bars:
+    :param bars:
         *undescribed*
+    :type bars: int \*
 
 .. _`virtio_pci_find_capability.description`:
 

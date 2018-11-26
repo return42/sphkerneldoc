@@ -72,8 +72,9 @@ scif_reserve_dma_chan
 
 .. c:function:: int scif_reserve_dma_chan(struct scif_endpt *ep)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         Endpoint Descriptor.
+    :type ep: struct scif_endpt \*
 
 .. _`scif_reserve_dma_chan.description`:
 
@@ -91,14 +92,17 @@ programmed on the same DMA channel.
 
 .. c:function:: void __scif_rma_destroy_tcw(struct scif_mmu_notif *mmn, u64 start, u64 len)
 
-    :param struct scif_mmu_notif \*mmn:
+    :param mmn:
         *undescribed*
+    :type mmn: struct scif_mmu_notif \*
 
-    :param u64 start:
+    :param start:
         *undescribed*
+    :type start: u64
 
-    :param u64 len:
+    :param len:
         *undescribed*
+    :type len: u64
 
 .. _`__scif_rma_destroy_tcw.description`:
 
@@ -114,23 +118,29 @@ scif_register_temp
 
 .. c:function:: int scif_register_temp(scif_epd_t epd, unsigned long addr, size_t len, int prot, off_t *out_offset, struct scif_window **out_window)
 
-    :param scif_epd_t epd:
+    :param epd:
         End Point Descriptor.
+    :type epd: scif_epd_t
 
-    :param unsigned long addr:
+    :param addr:
         virtual address to/from which to copy
+    :type addr: unsigned long
 
-    :param size_t len:
+    :param len:
         length of range to copy
+    :type len: size_t
 
-    :param int prot:
+    :param prot:
         *undescribed*
+    :type prot: int
 
-    :param off_t \*out_offset:
+    :param out_offset:
         computed offset returned by reference.
+    :type out_offset: off_t \*
 
-    :param struct scif_window \*\*out_window:
+    :param out_window:
         allocated registered window returned by reference.
+    :type out_window: struct scif_window \*\*
 
 .. _`scif_register_temp.description`:
 
@@ -147,8 +157,9 @@ scif_rma_destroy_windows
 
 .. c:function:: void scif_rma_destroy_windows( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`scif_rma_destroy_windows.description`:
 
@@ -164,8 +175,9 @@ scif_rma_destroy_tcw_invalid
 
 .. c:function:: void scif_rma_destroy_tcw_invalid( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`scif_rma_destroy_tcw_invalid.description`:
 
@@ -182,8 +194,9 @@ scif_rma_completion_cb
 
 .. c:function:: void scif_rma_completion_cb(void *data)
 
-    :param void \*data:
+    :param data:
         RMA cookie
+    :type data: void \*
 
 .. _`scif_rma_completion_cb.description`:
 
@@ -199,29 +212,37 @@ scif_rma_copy
 
 .. c:function:: int scif_rma_copy(scif_epd_t epd, off_t loffset, unsigned long addr, size_t len, off_t roffset, int flags, enum scif_rma_dir dir, bool last_chunk)
 
-    :param scif_epd_t epd:
+    :param epd:
         end point descriptor.
+    :type epd: scif_epd_t
 
-    :param off_t loffset:
+    :param loffset:
         offset in local registered address space to/from which to copy
+    :type loffset: off_t
 
-    :param unsigned long addr:
+    :param addr:
         user virtual address to/from which to copy
+    :type addr: unsigned long
 
-    :param size_t len:
+    :param len:
         length of range to copy
+    :type len: size_t
 
-    :param off_t roffset:
+    :param roffset:
         offset in remote registered address space to/from which to copy
+    :type roffset: off_t
 
-    :param int flags:
+    :param flags:
         flags
+    :type flags: int
 
-    :param enum scif_rma_dir dir:
+    :param dir:
         LOCAL->REMOTE or vice versa.
+    :type dir: enum scif_rma_dir
 
-    :param bool last_chunk:
+    :param last_chunk:
         true if this is the last chunk of a larger transfer
+    :type last_chunk: bool
 
 .. _`scif_rma_copy.description`:
 

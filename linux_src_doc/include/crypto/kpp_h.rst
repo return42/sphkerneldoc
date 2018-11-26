@@ -165,14 +165,17 @@ crypto_alloc_kpp
 
     allocate KPP tfm handle
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the name of the kpp algorithm (e.g. "dh", "ecdh")
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the algorithm
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the algorithm
+    :type mask: u32
 
 .. _`crypto_alloc_kpp.description`:
 
@@ -199,8 +202,9 @@ crypto_free_kpp
 
     free KPP tfm handle
 
-    :param struct crypto_kpp \*tfm:
+    :param tfm:
         KPP tfm handle allocated with \ :c:func:`crypto_alloc_kpp`\ 
+    :type tfm: struct crypto_kpp \*
 
 .. _`kpp_request_alloc`:
 
@@ -211,11 +215,13 @@ kpp_request_alloc
 
     allocates kpp request
 
-    :param struct crypto_kpp \*tfm:
+    :param tfm:
         KPP tfm handle allocated with \ :c:func:`crypto_alloc_kpp`\ 
+    :type tfm: struct crypto_kpp \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`kpp_request_alloc.return`:
 
@@ -233,8 +239,9 @@ kpp_request_free
 
     zeroize and free kpp request
 
-    :param struct kpp_request \*req:
+    :param req:
         request to free
+    :type req: struct kpp_request \*
 
 .. _`kpp_request_set_callback`:
 
@@ -245,17 +252,21 @@ kpp_request_set_callback
 
     Sets an asynchronous callback.
 
-    :param struct kpp_request \*req:
+    :param req:
         request that the callback will be set for
+    :type req: struct kpp_request \*
 
-    :param u32 flgs:
+    :param flgs:
         specify for instance if the operation may backlog
+    :type flgs: u32
 
-    :param crypto_completion_t cmpl:
+    :param cmpl:
         callback which will be called
+    :type cmpl: crypto_completion_t
 
-    :param void \*data:
+    :param data:
         private data used by the caller
+    :type data: void \*
 
 .. _`kpp_request_set_callback.description`:
 
@@ -274,14 +285,17 @@ kpp_request_set_input
 
     Sets input buffer
 
-    :param struct kpp_request \*req:
+    :param req:
         kpp request
+    :type req: struct kpp_request \*
 
-    :param struct scatterlist \*input:
+    :param input:
         ptr to input scatter list
+    :type input: struct scatterlist \*
 
-    :param unsigned int input_len:
+    :param input_len:
         size of the input scatter list
+    :type input_len: unsigned int
 
 .. _`kpp_request_set_input.description`:
 
@@ -299,14 +313,17 @@ kpp_request_set_output
 
     Sets output buffer
 
-    :param struct kpp_request \*req:
+    :param req:
         kpp request
+    :type req: struct kpp_request \*
 
-    :param struct scatterlist \*output:
+    :param output:
         ptr to output scatter list
+    :type output: struct scatterlist \*
 
-    :param unsigned int output_len:
+    :param output_len:
         size of the output scatter list
+    :type output_len: unsigned int
 
 .. _`kpp_request_set_output.description`:
 
@@ -357,18 +374,21 @@ crypto_kpp_set_secret
 
     Invoke kpp operation
 
-    :param struct crypto_kpp \*tfm:
+    :param tfm:
         tfm handle
+    :type tfm: struct crypto_kpp \*
 
-    :param const void \*buffer:
+    :param buffer:
         Buffer holding the packet representation of the private
         key. The structure of the packet key depends on the particular
         KPP implementation. Packing and unpacking helpers are provided
         for ECDH and DH (see the respective header files for those
         implementations).
+    :type buffer: const void \*
 
-    :param unsigned int len:
+    :param len:
         Length of the packet private key buffer.
+    :type len: unsigned int
 
 .. _`crypto_kpp_set_secret.description`:
 
@@ -393,8 +413,9 @@ crypto_kpp_generate_public_key
 
     Invoke kpp operation
 
-    :param struct kpp_request \*req:
+    :param req:
         kpp key request
+    :type req: struct kpp_request \*
 
 .. _`crypto_kpp_generate_public_key.description`:
 
@@ -423,8 +444,9 @@ crypto_kpp_compute_shared_secret
 
     Invoke kpp operation
 
-    :param struct kpp_request \*req:
+    :param req:
         kpp key request
+    :type req: struct kpp_request \*
 
 .. _`crypto_kpp_compute_shared_secret.description`:
 
@@ -450,8 +472,9 @@ crypto_kpp_maxsize
 
     Get len for output buffer
 
-    :param struct crypto_kpp \*tfm:
+    :param tfm:
         KPP tfm handle allocated with \ :c:func:`crypto_alloc_kpp`\ 
+    :type tfm: struct crypto_kpp \*
 
 .. _`crypto_kpp_maxsize.description`:
 

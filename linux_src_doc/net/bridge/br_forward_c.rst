@@ -10,17 +10,21 @@ br_forward
 
     forward a packet to a specific port
 
-    :param const struct net_bridge_port \*to:
+    :param to:
         destination port
+    :type to: const struct net_bridge_port \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet being forwarded
+    :type skb: struct sk_buff \*
 
-    :param bool local_rcv:
+    :param local_rcv:
         packet will be received locally after forwarding
+    :type local_rcv: bool
 
-    :param bool local_orig:
+    :param local_orig:
         packet is locally originated
+    :type local_orig: bool
 
 .. _`br_forward.description`:
 

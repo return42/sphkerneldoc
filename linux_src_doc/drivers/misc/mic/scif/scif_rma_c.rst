@@ -8,8 +8,9 @@ scif_rma_ep_init
 
 .. c:function:: void scif_rma_ep_init(struct scif_endpt *ep)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         end point
+    :type ep: struct scif_endpt \*
 
 .. _`scif_rma_ep_init.description`:
 
@@ -25,8 +26,9 @@ scif_rma_ep_can_uninit
 
 .. c:function:: int scif_rma_ep_can_uninit(struct scif_endpt *ep)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         end point
+    :type ep: struct scif_endpt \*
 
 .. _`scif_rma_ep_can_uninit.description`:
 
@@ -42,11 +44,13 @@ scif_create_pinned_pages
 
 .. c:function:: struct scif_pinned_pages *scif_create_pinned_pages(int nr_pages, int prot)
 
-    :param int nr_pages:
+    :param nr_pages:
         number of pages in window
+    :type nr_pages: int
 
-    :param int prot:
+    :param prot:
         read/write protection
+    :type prot: int
 
 .. _`scif_create_pinned_pages.description`:
 
@@ -62,8 +66,9 @@ scif_destroy_pinned_pages
 
 .. c:function:: int scif_destroy_pinned_pages(struct scif_pinned_pages *pin)
 
-    :param struct scif_pinned_pages \*pin:
+    :param pin:
         A set of pinned pages.
+    :type pin: struct scif_pinned_pages \*
 
 .. _`scif_destroy_pinned_pages.description`:
 
@@ -79,11 +84,13 @@ scif_destroy_incomplete_window
 
 .. c:function:: void scif_destroy_incomplete_window(struct scif_endpt *ep, struct scif_window *window)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         end point
+    :type ep: struct scif_endpt \*
 
-    :param struct scif_window \*window:
+    :param window:
         registration window
+    :type window: struct scif_window \*
 
 .. _`scif_destroy_incomplete_window.description`:
 
@@ -99,11 +106,13 @@ scif_unmap_window
 
 .. c:function:: void scif_unmap_window(struct scif_dev *remote_dev, struct scif_window *window)
 
-    :param struct scif_dev \*remote_dev:
+    :param remote_dev:
         SCIF remote device
+    :type remote_dev: struct scif_dev \*
 
-    :param struct scif_window \*window:
+    :param window:
         registration window
+    :type window: struct scif_window \*
 
 .. _`scif_unmap_window.description`:
 
@@ -119,11 +128,13 @@ scif_destroy_window
 
 .. c:function:: int scif_destroy_window(struct scif_endpt *ep, struct scif_window *window)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         end point
+    :type ep: struct scif_endpt \*
 
-    :param struct scif_window \*window:
+    :param window:
         registration window
+    :type window: struct scif_window \*
 
 .. _`scif_destroy_window.description`:
 
@@ -139,11 +150,13 @@ scif_create_remote_lookup
 
 .. c:function:: int scif_create_remote_lookup(struct scif_dev *remote_dev, struct scif_window *window)
 
-    :param struct scif_dev \*remote_dev:
+    :param remote_dev:
         SCIF remote device
+    :type remote_dev: struct scif_dev \*
 
-    :param struct scif_window \*window:
+    :param window:
         remote window
+    :type window: struct scif_window \*
 
 .. _`scif_create_remote_lookup.description`:
 
@@ -161,11 +174,13 @@ scif_destroy_remote_lookup
 
 .. c:function:: void scif_destroy_remote_lookup(struct scif_dev *remote_dev, struct scif_window *window)
 
-    :param struct scif_dev \*remote_dev:
+    :param remote_dev:
         SCIF remote device
+    :type remote_dev: struct scif_dev \*
 
-    :param struct scif_window \*window:
+    :param window:
         remote window
+    :type window: struct scif_window \*
 
 .. _`scif_destroy_remote_lookup.description`:
 
@@ -182,11 +197,13 @@ scif_create_remote_window
 
 .. c:function:: struct scif_window *scif_create_remote_window(struct scif_dev *scifdev, int nr_pages)
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param int nr_pages:
+    :param nr_pages:
         number of pages in window
+    :type nr_pages: int
 
 .. _`scif_create_remote_window.description`:
 
@@ -202,8 +219,9 @@ scif_destroy_remote_window
 
 .. c:function:: void scif_destroy_remote_window(struct scif_window *window)
 
-    :param struct scif_window \*window:
+    :param window:
         remote registration window
+    :type window: struct scif_window \*
 
 .. _`scif_destroy_remote_window.description`:
 
@@ -221,11 +239,13 @@ scif_iommu_map
 
     create DMA mappings if the IOMMU is enabled
 
-    :param struct scif_dev \*remote_dev:
+    :param remote_dev:
         SCIF remote device
+    :type remote_dev: struct scif_dev \*
 
-    :param struct scif_window \*window:
+    :param window:
         remote registration window
+    :type window: struct scif_window \*
 
 .. _`scif_iommu_map.description`:
 
@@ -242,11 +262,13 @@ scif_map_window
 
 .. c:function:: int scif_map_window(struct scif_dev *remote_dev, struct scif_window *window)
 
-    :param struct scif_dev \*remote_dev:
+    :param remote_dev:
         SCIF remote device
+    :type remote_dev: struct scif_dev \*
 
-    :param struct scif_window \*window:
+    :param window:
         self registration window
+    :type window: struct scif_window \*
 
 .. _`scif_map_window.description`:
 
@@ -263,11 +285,13 @@ scif_send_scif_unregister
 
 .. c:function:: int scif_send_scif_unregister(struct scif_endpt *ep, struct scif_window *window)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         end point
+    :type ep: struct scif_endpt \*
 
-    :param struct scif_window \*window:
+    :param window:
         self registration window
+    :type window: struct scif_window \*
 
 .. _`scif_send_scif_unregister.description`:
 
@@ -283,8 +307,9 @@ scif_unregister_window
 
 .. c:function:: int scif_unregister_window(struct scif_window *window)
 
-    :param struct scif_window \*window:
+    :param window:
         self registration window
+    :type window: struct scif_window \*
 
 .. _`scif_unregister_window.description`:
 
@@ -300,11 +325,13 @@ scif_send_alloc_request
 
 .. c:function:: int scif_send_alloc_request(struct scif_endpt *ep, struct scif_window *window)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         end point
+    :type ep: struct scif_endpt \*
 
-    :param struct scif_window \*window:
+    :param window:
         self registration window
+    :type window: struct scif_window \*
 
 .. _`scif_send_alloc_request.description`:
 
@@ -320,11 +347,13 @@ scif_prep_remote_window
 
 .. c:function:: int scif_prep_remote_window(struct scif_endpt *ep, struct scif_window *window)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         end point
+    :type ep: struct scif_endpt \*
 
-    :param struct scif_window \*window:
+    :param window:
         self registration window
+    :type window: struct scif_window \*
 
 .. _`scif_prep_remote_window.description`:
 
@@ -341,11 +370,13 @@ scif_send_scif_register
 
 .. c:function:: int scif_send_scif_register(struct scif_endpt *ep, struct scif_window *window)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         end point
+    :type ep: struct scif_endpt \*
 
-    :param struct scif_window \*window:
+    :param window:
         self registration window
+    :type window: struct scif_window \*
 
 .. _`scif_send_scif_register.description`:
 
@@ -363,20 +394,25 @@ scif_get_window_offset
 
 .. c:function:: int scif_get_window_offset(struct scif_endpt *ep, int flags, s64 offset, int num_pages, s64 *out_offset)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         end point descriptor
+    :type ep: struct scif_endpt \*
 
-    :param int flags:
+    :param flags:
         flags
+    :type flags: int
 
-    :param s64 offset:
+    :param offset:
         offset hint
+    :type offset: s64
 
-    :param int num_pages:
+    :param num_pages:
         number of pages
+    :type num_pages: int
 
-    :param s64 \*out_offset:
+    :param out_offset:
         computed offset returned by reference.
+    :type out_offset: s64 \*
 
 .. _`scif_get_window_offset.description`:
 
@@ -392,14 +428,17 @@ scif_free_window_offset
 
 .. c:function:: void scif_free_window_offset(struct scif_endpt *ep, struct scif_window *window, s64 offset)
 
-    :param struct scif_endpt \*ep:
+    :param ep:
         end point descriptor
+    :type ep: struct scif_endpt \*
 
-    :param struct scif_window \*window:
+    :param window:
         registration window
+    :type window: struct scif_window \*
 
-    :param s64 offset:
+    :param offset:
         Offset to be freed
+    :type offset: s64
 
 .. _`scif_free_window_offset.description`:
 
@@ -418,11 +457,13 @@ scif_alloc_req
 
     Respond to SCIF_ALLOC_REQ interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_alloc_req.description`:
 
@@ -440,11 +481,13 @@ scif_alloc_gnt_rej
 
     Respond to SCIF_ALLOC_GNT/REJ interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_alloc_gnt_rej.description`:
 
@@ -462,11 +505,13 @@ scif_free_virt
 
     Respond to SCIF_FREE_VIRT interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_free_virt.description`:
 
@@ -484,11 +529,13 @@ scif_recv_reg
 
     Respond to SCIF_REGISTER interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_reg.description`:
 
@@ -506,11 +553,13 @@ scif_recv_unreg
 
     Respond to SCIF_UNREGISTER interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_unreg.description`:
 
@@ -528,11 +577,13 @@ scif_recv_reg_ack
 
     Respond to SCIF_REGISTER_ACK interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_reg_ack.description`:
 
@@ -550,11 +601,13 @@ scif_recv_reg_nack
 
     Respond to SCIF_REGISTER_NACK interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_reg_nack.description`:
 
@@ -573,11 +626,13 @@ scif_recv_unreg_ack
 
     Respond to SCIF_UNREGISTER_ACK interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_unreg_ack.description`:
 
@@ -595,11 +650,13 @@ scif_recv_unreg_nack
 
     Respond to SCIF_UNREGISTER_NACK interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_recv_unreg_nack.description`:
 

@@ -10,11 +10,13 @@ regulator_lock_nested
 
     lock a single regulator
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator source
+    :type rdev: struct regulator_dev \*
 
-    :param unsigned int subclass:
+    :param subclass:
         mutex subclass used for lockdep
+    :type subclass: unsigned int
 
 .. _`regulator_lock_nested.description`:
 
@@ -36,8 +38,9 @@ regulator_unlock
 
     unlock a single regulator
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator_source
+    :type rdev: struct regulator_dev \*
 
 .. _`regulator_unlock.description`:
 
@@ -56,8 +59,9 @@ regulator_lock_supply
 
     lock a regulator and its supplies
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator source
+    :type rdev: struct regulator_dev \*
 
 .. _`regulator_unlock_supply`:
 
@@ -68,8 +72,9 @@ regulator_unlock_supply
 
     unlock a regulator and its supplies
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator source
+    :type rdev: struct regulator_dev \*
 
 .. _`of_get_regulator`:
 
@@ -80,11 +85,13 @@ of_get_regulator
 
     get a regulator device node based on supply name
 
-    :param struct device \*dev:
+    :param dev:
         Device pointer for the consumer (of regulator) device
+    :type dev: struct device \*
 
-    :param const char \*supply:
+    :param supply:
         regulator supply name
+    :type supply: const char \*
 
 .. _`of_get_regulator.description`:
 
@@ -104,11 +111,13 @@ set_machine_constraints
 
     sets regulator constraints
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator source
+    :type rdev: struct regulator_dev \*
 
-    :param const struct regulation_constraints \*constraints:
+    :param constraints:
         constraints to apply
+    :type constraints: const struct regulation_constraints \*
 
 .. _`set_machine_constraints.description`:
 
@@ -130,11 +139,13 @@ set_supply
 
     set regulator supply regulator
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator name
+    :type rdev: struct regulator_dev \*
 
-    :param struct regulator_dev \*supply_rdev:
+    :param supply_rdev:
         supply regulator name
+    :type supply_rdev: struct regulator_dev \*
 
 .. _`set_supply.description`:
 
@@ -154,14 +165,17 @@ set_consumer_device_supply
 
     Bind a regulator to a symbolic supply
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator source
+    :type rdev: struct regulator_dev \*
 
-    :param const char \*consumer_dev_name:
+    :param consumer_dev_name:
         \ :c:func:`dev_name`\  string for device supply applies to
+    :type consumer_dev_name: const char \*
 
-    :param const char \*supply:
+    :param supply:
         symbolic name for supply
+    :type supply: const char \*
 
 .. _`set_consumer_device_supply.description`:
 
@@ -182,11 +196,13 @@ regulator_dev_lookup
 
     lookup a regulator device.
 
-    :param struct device \*dev:
+    :param dev:
         device for regulator "consumer".
+    :type dev: struct device \*
 
-    :param const char \*supply:
+    :param supply:
         Supply name or regulator ID.
+    :type supply: const char \*
 
 .. _`regulator_dev_lookup.description`:
 
@@ -209,11 +225,13 @@ regulator_get
 
     lookup and obtain a reference to a regulator.
 
-    :param struct device \*dev:
+    :param dev:
         device for regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         Supply name or regulator ID.
+    :type id: const char \*
 
 .. _`regulator_get.description`:
 
@@ -237,11 +255,13 @@ regulator_get_exclusive
 
     obtain exclusive access to a regulator.
 
-    :param struct device \*dev:
+    :param dev:
         device for regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         Supply name or regulator ID.
+    :type id: const char \*
 
 .. _`regulator_get_exclusive.description`:
 
@@ -273,11 +293,13 @@ regulator_get_optional
 
     obtain optional access to a regulator.
 
-    :param struct device \*dev:
+    :param dev:
         device for regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         Supply name or regulator ID.
+    :type id: const char \*
 
 .. _`regulator_get_optional.description`:
 
@@ -308,8 +330,9 @@ regulator_put
 
     "free" the regulator source
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_put.note`:
 
@@ -329,18 +352,22 @@ regulator_register_supply_alias
 
     Provide device alias for supply lookup
 
-    :param struct device \*dev:
+    :param dev:
         device that will be given as the regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         Supply name or regulator ID
+    :type id: const char \*
 
-    :param struct device \*alias_dev:
+    :param alias_dev:
         device that should be used to lookup the supply
+    :type alias_dev: struct device \*
 
-    :param const char \*alias_id:
+    :param alias_id:
         Supply name or regulator ID that should be used to lookup the
         supply
+    :type alias_id: const char \*
 
 .. _`regulator_register_supply_alias.description`:
 
@@ -359,11 +386,13 @@ regulator_unregister_supply_alias
 
     Remove device alias
 
-    :param struct device \*dev:
+    :param dev:
         device that will be given as the regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*id:
+    :param id:
         Supply name or regulator ID
+    :type id: const char \*
 
 .. _`regulator_unregister_supply_alias.description`:
 
@@ -381,21 +410,26 @@ regulator_bulk_register_supply_alias
 
     register multiple aliases
 
-    :param struct device \*dev:
+    :param dev:
         device that will be given as the regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*const \*id:
+    :param id:
         List of supply names or regulator IDs
+    :type id: const char \*const \*
 
-    :param struct device \*alias_dev:
+    :param alias_dev:
         device that should be used to lookup the supply
+    :type alias_dev: struct device \*
 
-    :param const char \*const \*alias_id:
+    :param alias_id:
         List of supply names or regulator IDs that should be used to
         lookup the supply
+    :type alias_id: const char \*const \*
 
-    :param int num_id:
+    :param num_id:
         Number of aliases to register
+    :type num_id: int
 
 .. _`regulator_bulk_register_supply_alias.description`:
 
@@ -418,14 +452,17 @@ regulator_bulk_unregister_supply_alias
 
     unregister multiple aliases
 
-    :param struct device \*dev:
+    :param dev:
         device that will be given as the regulator "consumer"
+    :type dev: struct device \*
 
-    :param const char \*const \*id:
+    :param id:
         List of supply names or regulator IDs
+    :type id: const char \*const \*
 
-    :param int num_id:
+    :param num_id:
         Number of aliases to unregister
+    :type num_id: int
 
 .. _`regulator_bulk_unregister_supply_alias.description`:
 
@@ -444,11 +481,13 @@ regulator_ena_gpio_ctrl
 
     balance enable_count of each GPIO and actual GPIO pin control
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator_dev structure
+    :type rdev: struct regulator_dev \*
 
-    :param bool enable:
+    :param enable:
         enable GPIO at initial use?
+    :type enable: bool
 
 .. _`regulator_ena_gpio_ctrl.description`:
 
@@ -467,8 +506,9 @@ _regulator_enable_delay
 
     a delay helper function
 
-    :param unsigned int delay:
+    :param delay:
         time to delay in microseconds
+    :type delay: unsigned int
 
 .. _`_regulator_enable_delay.delay-for-the-requested-amount-of-time-as-per-the-guidelines-in`:
 
@@ -490,8 +530,9 @@ regulator_enable
 
     enable regulator output
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_enable.description`:
 
@@ -519,8 +560,9 @@ regulator_disable
 
     disable regulator output
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_disable.description`:
 
@@ -549,8 +591,9 @@ regulator_force_disable
 
     force disable regulator output
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_force_disable.description`:
 
@@ -577,11 +620,13 @@ regulator_disable_deferred
 
     disable regulator output with delay
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param int ms:
+    :param ms:
         miliseconds until the regulator is disabled
+    :type ms: int
 
 .. _`regulator_disable_deferred.description`:
 
@@ -609,8 +654,9 @@ regulator_is_enabled
 
     is the regulator output enabled
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_is_enabled.description`:
 
@@ -634,8 +680,9 @@ regulator_count_voltages
 
     count \ :c:func:`regulator_list_voltage`\  selectors
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_count_voltages.description`:
 
@@ -655,11 +702,13 @@ regulator_list_voltage
 
     enumerate supported voltages
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param unsigned selector:
+    :param selector:
         identify voltage to list
+    :type selector: unsigned
 
 .. _`regulator_list_voltage.context`:
 
@@ -686,8 +735,9 @@ regulator_get_regmap
 
     get the regulator's register map
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_get_regmap.description`:
 
@@ -706,14 +756,17 @@ regulator_get_hardware_vsel_register
 
     get the HW voltage selector register
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param unsigned \*vsel_reg:
+    :param vsel_reg:
         voltage selector register, output parameter
+    :type vsel_reg: unsigned \*
 
-    :param unsigned \*vsel_mask:
+    :param vsel_mask:
         mask for voltage selector bitfield, output parameter
+    :type vsel_mask: unsigned \*
 
 .. _`regulator_get_hardware_vsel_register.description`:
 
@@ -737,11 +790,13 @@ regulator_list_hardware_vsel
 
     get the HW-specific register value for a selector
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param unsigned selector:
+    :param selector:
         identify voltage to list
+    :type selector: unsigned
 
 .. _`regulator_list_hardware_vsel.description`:
 
@@ -763,8 +818,9 @@ regulator_get_linear_step
 
     return the voltage step size between VSEL values
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_get_linear_step.description`:
 
@@ -783,14 +839,17 @@ regulator_is_supported_voltage
 
     check if a voltage range can be supported
 
-    :param struct regulator \*regulator:
+    :param regulator:
         Regulator to check.
+    :type regulator: struct regulator \*
 
-    :param int min_uV:
+    :param min_uV:
         Minimum required voltage in uV.
+    :type min_uV: int
 
-    :param int max_uV:
+    :param max_uV:
         Maximum required voltage in uV.
+    :type max_uV: int
 
 .. _`regulator_is_supported_voltage.description`:
 
@@ -808,14 +867,17 @@ regulator_set_voltage
 
     set regulator output voltage
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param int min_uV:
+    :param min_uV:
         Minimum required voltage in uV
+    :type min_uV: int
 
-    :param int max_uV:
+    :param max_uV:
         Maximum acceptable voltage in uV
+    :type max_uV: int
 
 .. _`regulator_set_voltage.description`:
 
@@ -848,14 +910,17 @@ regulator_set_voltage_time
 
     get raise/fall time
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param int old_uV:
+    :param old_uV:
         starting voltage in microvolts
+    :type old_uV: int
 
-    :param int new_uV:
+    :param new_uV:
         target voltage in microvolts
+    :type new_uV: int
 
 .. _`regulator_set_voltage_time.description`:
 
@@ -875,14 +940,17 @@ regulator_set_voltage_time_sel
 
     get raise/fall time
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator source device
+    :type rdev: struct regulator_dev \*
 
-    :param unsigned int old_selector:
+    :param old_selector:
         selector for starting voltage
+    :type old_selector: unsigned int
 
-    :param unsigned int new_selector:
+    :param new_selector:
         selector for target voltage
+    :type new_selector: unsigned int
 
 .. _`regulator_set_voltage_time_sel.description`:
 
@@ -904,8 +972,9 @@ regulator_sync_voltage
 
     re-apply last regulator output voltage
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_sync_voltage.description`:
 
@@ -925,8 +994,9 @@ regulator_get_voltage
 
     get regulator output voltage
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_get_voltage.description`:
 
@@ -952,14 +1022,17 @@ regulator_set_current_limit
 
     set regulator output current limit
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param int min_uA:
+    :param min_uA:
         Minimum supported current in uA
+    :type min_uA: int
 
-    :param int max_uA:
+    :param max_uA:
         Maximum supported current in uA
+    :type max_uA: int
 
 .. _`regulator_set_current_limit.description`:
 
@@ -990,8 +1063,9 @@ regulator_get_current_limit
 
     get regulator output current
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_get_current_limit.description`:
 
@@ -1017,11 +1091,13 @@ regulator_set_mode
 
     set regulator operating mode
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param unsigned int mode:
+    :param mode:
         operating mode - one of the REGULATOR_MODE constants
+    :type mode: unsigned int
 
 .. _`regulator_set_mode.description`:
 
@@ -1048,8 +1124,9 @@ regulator_get_mode
 
     get regulator operating mode
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
 .. _`regulator_get_mode.description`:
 
@@ -1067,11 +1144,13 @@ regulator_get_error_flags
 
     get regulator error information
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param unsigned int \*flags:
+    :param flags:
         pointer to store error flags
+    :type flags: unsigned int \*
 
 .. _`regulator_get_error_flags.description`:
 
@@ -1089,11 +1168,13 @@ regulator_set_load
 
     set regulator load
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param int uA_load:
+    :param uA_load:
         load current
+    :type uA_load: int
 
 .. _`regulator_set_load.description`:
 
@@ -1130,11 +1211,13 @@ regulator_allow_bypass
 
     allow the regulator to go into bypass mode
 
-    :param struct regulator \*regulator:
+    :param regulator:
         Regulator to configure
+    :type regulator: struct regulator \*
 
-    :param bool enable:
+    :param enable:
         enable or disable bypass mode
+    :type enable: bool
 
 .. _`regulator_allow_bypass.description`:
 
@@ -1155,11 +1238,13 @@ regulator_register_notifier
 
     register regulator event notifier
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
 .. _`regulator_register_notifier.description`:
 
@@ -1177,11 +1262,13 @@ regulator_unregister_notifier
 
     unregister regulator event notifier
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator source
+    :type regulator: struct regulator \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
 .. _`regulator_unregister_notifier.description`:
 
@@ -1199,14 +1286,17 @@ regulator_bulk_get
 
     get multiple regulator consumers
 
-    :param struct device \*dev:
+    :param dev:
         Device to supply
+    :type dev: struct device \*
 
-    :param int num_consumers:
+    :param num_consumers:
         Number of consumers to register
+    :type num_consumers: int
 
-    :param struct regulator_bulk_data \*consumers:
+    :param consumers:
         Configuration of consumers; clients are stored here.
+    :type consumers: struct regulator_bulk_data \*
 
 .. _`regulator_bulk_get.description`:
 
@@ -1229,12 +1319,14 @@ regulator_bulk_enable
 
     enable multiple regulator consumers
 
-    :param int num_consumers:
+    :param num_consumers:
         Number of consumers
+    :type num_consumers: int
 
-    :param struct regulator_bulk_data \*consumers:
+    :param consumers:
         Consumer data; clients are stored here.
         \ ``return``\          0 on success, an errno on failure
+    :type consumers: struct regulator_bulk_data \*
 
 .. _`regulator_bulk_enable.description`:
 
@@ -1255,12 +1347,14 @@ regulator_bulk_disable
 
     disable multiple regulator consumers
 
-    :param int num_consumers:
+    :param num_consumers:
         Number of consumers
+    :type num_consumers: int
 
-    :param struct regulator_bulk_data \*consumers:
+    :param consumers:
         Consumer data; clients are stored here.
         \ ``return``\          0 on success, an errno on failure
+    :type consumers: struct regulator_bulk_data \*
 
 .. _`regulator_bulk_disable.description`:
 
@@ -1281,12 +1375,14 @@ regulator_bulk_force_disable
 
     force disable multiple regulator consumers
 
-    :param int num_consumers:
+    :param num_consumers:
         Number of consumers
+    :type num_consumers: int
 
-    :param struct regulator_bulk_data \*consumers:
+    :param consumers:
         Consumer data; clients are stored here.
         \ ``return``\          0 on success, an errno on failure
+    :type consumers: struct regulator_bulk_data \*
 
 .. _`regulator_bulk_force_disable.description`:
 
@@ -1315,11 +1411,13 @@ regulator_bulk_free
 
     free multiple regulator consumers
 
-    :param int num_consumers:
+    :param num_consumers:
         Number of consumers
+    :type num_consumers: int
 
-    :param struct regulator_bulk_data \*consumers:
+    :param consumers:
         Consumer data; clients are stored here.
+    :type consumers: struct regulator_bulk_data \*
 
 .. _`regulator_bulk_free.description`:
 
@@ -1338,14 +1436,17 @@ regulator_notifier_call_chain
 
     call regulator event notifier
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator source
+    :type rdev: struct regulator_dev \*
 
-    :param unsigned long event:
+    :param event:
         notifier block
+    :type event: unsigned long
 
-    :param void \*data:
+    :param data:
         callback-specific data.
+    :type data: void \*
 
 .. _`regulator_notifier_call_chain.description`:
 
@@ -1365,8 +1466,9 @@ regulator_mode_to_status
 
     convert a regulator mode into a status
 
-    :param unsigned int mode:
+    :param mode:
         Mode to convert
+    :type mode: unsigned int
 
 .. _`regulator_mode_to_status.description`:
 
@@ -1384,11 +1486,13 @@ regulator_register
 
     register regulator
 
-    :param const struct regulator_desc \*regulator_desc:
+    :param regulator_desc:
         regulator to register
+    :type regulator_desc: const struct regulator_desc \*
 
-    :param const struct regulator_config \*cfg:
+    :param cfg:
         runtime configuration for regulator
+    :type cfg: const struct regulator_config \*
 
 .. _`regulator_register.description`:
 
@@ -1408,8 +1512,9 @@ regulator_unregister
 
     unregister regulator
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator to unregister
+    :type rdev: struct regulator_dev \*
 
 .. _`regulator_unregister.description`:
 
@@ -1418,19 +1523,20 @@ Description
 
 Called by regulator drivers to unregister a regulator.
 
-.. _`regulator_suspend_late`:
+.. _`regulator_suspend`:
 
-regulator_suspend_late
-======================
+regulator_suspend
+=================
 
-.. c:function:: int regulator_suspend_late(struct device *dev)
+.. c:function:: int regulator_suspend(struct device *dev)
 
     prepare regulators for system wide suspend
 
-    :param struct device \*dev:
-        *undescribed*
+    :param dev:
+        ``&struct device`` pointer that is passed to \ :c:func:`_regulator_suspend`\ 
+    :type dev: struct device \*
 
-.. _`regulator_suspend_late.description`:
+.. _`regulator_suspend.description`:
 
 Description
 -----------
@@ -1446,8 +1552,9 @@ regulator_has_full_constraints
 
     the system has fully specified constraints
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`regulator_has_full_constraints.description`:
 
@@ -1471,8 +1578,9 @@ rdev_get_drvdata
 
     get rdev regulator driver data
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator
+    :type rdev: struct regulator_dev \*
 
 .. _`rdev_get_drvdata.description`:
 
@@ -1491,8 +1599,9 @@ regulator_get_drvdata
 
     get regulator driver data
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator
+    :type regulator: struct regulator \*
 
 .. _`regulator_get_drvdata.description`:
 
@@ -1511,11 +1620,13 @@ regulator_set_drvdata
 
     set regulator driver data
 
-    :param struct regulator \*regulator:
+    :param regulator:
         regulator
+    :type regulator: struct regulator \*
 
-    :param void \*data:
+    :param data:
         data
+    :type data: void \*
 
 .. _`rdev_get_id`:
 
@@ -1526,8 +1637,9 @@ rdev_get_id
 
     get regulator ID
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator
+    :type rdev: struct regulator_dev \*
 
 .. This file was automatic generated / don't edit.
 

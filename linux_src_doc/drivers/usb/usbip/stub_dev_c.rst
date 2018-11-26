@@ -10,8 +10,9 @@ stub_device_alloc
 
     allocate a new stub_device struct
 
-    :param struct usb_device \*udev:
+    :param udev:
         usb_device of a new device
+    :type udev: struct usb_device \*
 
 .. _`stub_device_alloc.description`:
 

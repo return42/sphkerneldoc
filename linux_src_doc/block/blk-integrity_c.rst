@@ -10,11 +10,13 @@ blk_rq_count_integrity_sg
 
     Count number of integrity scatterlist elements
 
-    :param struct request_queue \*q:
+    :param q:
         request queue
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         bio with integrity metadata attached
+    :type bio: struct bio \*
 
 .. _`blk_rq_count_integrity_sg.description`:
 
@@ -33,14 +35,17 @@ blk_rq_map_integrity_sg
 
     Map integrity metadata into a scatterlist
 
-    :param struct request_queue \*q:
+    :param q:
         request queue
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         bio with integrity metadata attached
+    :type bio: struct bio \*
 
-    :param struct scatterlist \*sglist:
+    :param sglist:
         target scatterlist
+    :type sglist: struct scatterlist \*
 
 .. _`blk_rq_map_integrity_sg.description`:
 
@@ -60,11 +65,13 @@ blk_integrity_compare
 
     Compare integrity profile of two disks
 
-    :param struct gendisk \*gd1:
+    :param gd1:
         Disk to compare
+    :type gd1: struct gendisk \*
 
-    :param struct gendisk \*gd2:
+    :param gd2:
         Disk to compare
+    :type gd2: struct gendisk \*
 
 .. _`blk_integrity_compare.description`:
 
@@ -86,11 +93,13 @@ blk_integrity_register
 
     Register a gendisk as being integrity-capable
 
-    :param struct gendisk \*disk:
+    :param disk:
         struct gendisk pointer to make integrity-aware
+    :type disk: struct gendisk \*
 
-    :param struct blk_integrity \*template:
+    :param template:
         block integrity profile to register
+    :type template: struct blk_integrity \*
 
 .. _`blk_integrity_register.description`:
 
@@ -112,8 +121,9 @@ blk_integrity_unregister
 
     Unregister block integrity profile
 
-    :param struct gendisk \*disk:
+    :param disk:
         disk whose integrity profile to unregister
+    :type disk: struct gendisk \*
 
 .. _`blk_integrity_unregister.description`:
 

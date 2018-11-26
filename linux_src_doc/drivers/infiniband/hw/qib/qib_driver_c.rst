@@ -10,14 +10,17 @@ qib_wait_linkstate
 
     wait for an IB link state change to occur
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         *undescribed*
+    :type ppd: struct qib_pportdata \*
 
-    :param u32 state:
+    :param state:
         the state to wait for
+    :type state: u32
 
-    :param int msecs:
+    :param msecs:
         the number of milliseconds to wait
+    :type msecs: int
 
 .. _`qib_wait_linkstate.description`:
 
@@ -39,11 +42,13 @@ qib_set_mtu
 
     set the MTU
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         the perport data
+    :type ppd: struct qib_pportdata \*
 
-    :param u16 arg:
+    :param arg:
         the new MTU
+    :type arg: u16
 
 .. _`qib_set_mtu.description`:
 
@@ -72,8 +77,9 @@ qib_reset_device
 
     reset the chip if possible
 
-    :param int unit:
+    :param unit:
         the device to reset
+    :type unit: int
 
 .. _`qib_reset_device.description`:
 

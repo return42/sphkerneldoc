@@ -10,8 +10,9 @@ serial8250_em485_init
 
     put uart_8250_port into rs485 emulating
 
-    :param struct uart_8250_port \*p:
+    :param p:
         uart_8250_port port instance
+    :type p: struct uart_8250_port \*
 
 .. _`serial8250_em485_init.description`:
 
@@ -43,8 +44,9 @@ serial8250_em485_destroy
 
     put uart_8250_port into normal state
 
-    :param struct uart_8250_port \*p:
+    :param p:
         uart_8250_port port instance
+    :type p: struct uart_8250_port \*
 
 .. _`serial8250_em485_destroy.description`:
 

@@ -10,8 +10,9 @@ kvm_vcpu_load_sysregs
 
     Load guest system registers to the physical CPU
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_vcpu_load_sysregs.description`:
 
@@ -33,8 +34,9 @@ kvm_vcpu_put_sysregs
 
     Restore host system registers to the physical CPU
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_vcpu_put_sysregs.description`:
 

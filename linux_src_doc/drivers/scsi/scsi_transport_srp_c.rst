@@ -10,14 +10,17 @@ srp_tmo_valid
 
     check timeout combination validity
 
-    :param int reconnect_delay:
+    :param reconnect_delay:
         Reconnect delay in seconds.
+    :type reconnect_delay: int
 
-    :param int fast_io_fail_tmo:
+    :param fast_io_fail_tmo:
         Fast I/O fail timeout in seconds.
+    :type fast_io_fail_tmo: int
 
-    :param long dev_loss_tmo:
+    :param dev_loss_tmo:
         Device loss timeout in seconds.
+    :type dev_loss_tmo: long
 
 .. _`srp_tmo_valid.description`:
 
@@ -40,8 +43,9 @@ srp_reconnect_work
 
     reconnect and schedule a new attempt if necessary
 
-    :param struct work_struct \*work:
+    :param work:
         Work structure used for scheduling this operation.
+    :type work: struct work_struct \*
 
 .. _`rport_fast_io_fail_timedout`:
 
@@ -52,8 +56,9 @@ rport_fast_io_fail_timedout
 
     fast I/O failure timeout handler
 
-    :param struct work_struct \*work:
+    :param work:
         Work structure used for scheduling this operation.
+    :type work: struct work_struct \*
 
 .. _`rport_dev_loss_timedout`:
 
@@ -64,8 +69,9 @@ rport_dev_loss_timedout
 
     device loss timeout handler
 
-    :param struct work_struct \*work:
+    :param work:
         Work structure used for scheduling this operation.
+    :type work: struct work_struct \*
 
 .. _`srp_start_tl_fail_timers`:
 
@@ -76,8 +82,9 @@ srp_start_tl_fail_timers
 
     start the transport layer failure timers
 
-    :param struct srp_rport \*rport:
+    :param rport:
         SRP target port.
+    :type rport: struct srp_rport \*
 
 .. _`srp_start_tl_fail_timers.description`:
 
@@ -96,8 +103,9 @@ srp_reconnect_rport
 
     reconnect to an SRP target port
 
-    :param struct srp_rport \*rport:
+    :param rport:
         SRP target port.
+    :type rport: struct srp_rport \*
 
 .. _`srp_reconnect_rport.description`:
 
@@ -135,8 +143,9 @@ srp_timed_out
 
     SRP transport intercept of the SCSI timeout EH
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`srp_timed_out.description`:
 
@@ -164,8 +173,9 @@ srp_rport_get
 
     increment rport reference count
 
-    :param struct srp_rport \*rport:
+    :param rport:
         SRP target port.
+    :type rport: struct srp_rport \*
 
 .. _`srp_rport_put`:
 
@@ -176,8 +186,9 @@ srp_rport_put
 
     decrement rport reference count
 
-    :param struct srp_rport \*rport:
+    :param rport:
         SRP target port.
+    :type rport: struct srp_rport \*
 
 .. _`srp_rport_add`:
 
@@ -188,11 +199,13 @@ srp_rport_add
 
     add a SRP remote port to the device hierarchy
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host the remote port is connected to.
+    :type shost: struct Scsi_Host \*
 
-    :param struct srp_rport_identifiers \*ids:
+    :param ids:
         The port id for the remote port.
+    :type ids: struct srp_rport_identifiers \*
 
 .. _`srp_rport_add.description`:
 
@@ -210,8 +223,9 @@ srp_rport_del
 
     remove a SRP remote port
 
-    :param struct srp_rport \*rport:
+    :param rport:
         SRP remote port to remove
+    :type rport: struct srp_rport \*
 
 .. _`srp_rport_del.description`:
 
@@ -229,8 +243,9 @@ srp_remove_host
 
     tear down a Scsi_Host's SRP data structures
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Scsi Host that is torn down
+    :type shost: struct Scsi_Host \*
 
 .. _`srp_remove_host.description`:
 
@@ -249,8 +264,9 @@ srp_stop_rport_timers
 
     stop the transport layer recovery timers
 
-    :param struct srp_rport \*rport:
+    :param rport:
         SRP remote port for which to stop the timers.
+    :type rport: struct srp_rport \*
 
 .. _`srp_stop_rport_timers.description`:
 
@@ -270,8 +286,9 @@ srp_attach_transport
 
     instantiate SRP transport template
 
-    :param struct srp_function_template \*ft:
+    :param ft:
         SRP transport class function template
+    :type ft: struct srp_function_template \*
 
 .. _`srp_release_transport`:
 
@@ -282,8 +299,9 @@ srp_release_transport
 
     release SRP transport template instance
 
-    :param struct scsi_transport_template \*t:
+    :param t:
         transport template instance
+    :type t: struct scsi_transport_template \*
 
 .. This file was automatic generated / don't edit.
 

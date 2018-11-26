@@ -400,14 +400,17 @@ sci_swab32_cpy
 
     convert between scsi and scu-hardware byte format
 
-    :param void \*_dest:
+    :param _dest:
         *undescribed*
+    :type _dest: void \*
 
-    :param void \*_src:
+    :param _src:
         *undescribed*
+    :type _src: void \*
 
-    :param ssize_t word_cnt:
+    :param word_cnt:
         *undescribed*
+    :type word_cnt: ssize_t
 
 .. _`sci_swab32_cpy.description`:
 

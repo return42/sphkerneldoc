@@ -10,20 +10,25 @@ copy_oldmem_page
 
     copy one page from old kernel memory
 
-    :param unsigned long pfn:
+    :param pfn:
         page frame number to be copied
+    :type pfn: unsigned long
 
-    :param char \*buf:
+    :param buf:
         buffer where the copied page is placed
+    :type buf: char \*
 
-    :param size_t csize:
+    :param csize:
         number of bytes to copy
+    :type csize: size_t
 
-    :param unsigned long offset:
+    :param offset:
         offset in bytes into the page
+    :type offset: unsigned long
 
-    :param int userbuf:
+    :param userbuf:
         if set, \ ``buf``\  is int he user address space
+    :type userbuf: int
 
 .. _`copy_oldmem_page.description`:
 

@@ -10,14 +10,17 @@ arch_atomic64_cmpxchg
 
     cmpxchg atomic64 variable
 
-    :param atomic64_t \*v:
+    :param v:
         pointer to type atomic64_t
+    :type v: atomic64_t \*
 
-    :param long long o:
+    :param o:
         expected value
+    :type o: long long
 
-    :param long long n:
+    :param n:
         new value
+    :type n: long long
 
 .. _`arch_atomic64_cmpxchg.description`:
 
@@ -36,11 +39,13 @@ arch_atomic64_xchg
 
     xchg atomic64 variable
 
-    :param atomic64_t \*v:
+    :param v:
         pointer to type atomic64_t
+    :type v: atomic64_t \*
 
-    :param long long n:
+    :param n:
         value to assign
+    :type n: long long
 
 .. _`arch_atomic64_xchg.description`:
 
@@ -59,11 +64,13 @@ arch_atomic64_set
 
     set atomic64 variable
 
-    :param atomic64_t \*v:
+    :param v:
         pointer to type atomic64_t
+    :type v: atomic64_t \*
 
-    :param long long i:
+    :param i:
         value to assign
+    :type i: long long
 
 .. _`arch_atomic64_set.description`:
 
@@ -81,8 +88,9 @@ arch_atomic64_read
 
     read atomic64 variable
 
-    :param const atomic64_t \*v:
+    :param v:
         pointer to type atomic64_t
+    :type v: const atomic64_t \*
 
 .. _`arch_atomic64_read.description`:
 
@@ -100,11 +108,13 @@ arch_atomic64_add_return
 
     add and return
 
-    :param long long i:
+    :param i:
         integer value to add
+    :type i: long long
 
-    :param atomic64_t \*v:
+    :param v:
         pointer to type atomic64_t
+    :type v: atomic64_t \*
 
 .. _`arch_atomic64_add_return.description`:
 
@@ -122,11 +132,13 @@ arch_atomic64_add
 
     add integer to atomic64 variable
 
-    :param long long i:
+    :param i:
         integer value to add
+    :type i: long long
 
-    :param atomic64_t \*v:
+    :param v:
         pointer to type atomic64_t
+    :type v: atomic64_t \*
 
 .. _`arch_atomic64_add.description`:
 
@@ -144,11 +156,13 @@ arch_atomic64_sub
 
     subtract the atomic64 variable
 
-    :param long long i:
+    :param i:
         integer value to subtract
+    :type i: long long
 
-    :param atomic64_t \*v:
+    :param v:
         pointer to type atomic64_t
+    :type v: atomic64_t \*
 
 .. _`arch_atomic64_sub.description`:
 
@@ -156,30 +170,6 @@ Description
 -----------
 
 Atomically subtracts \ ``i``\  from \ ``v``\ .
-
-.. _`arch_atomic64_sub_and_test`:
-
-arch_atomic64_sub_and_test
-==========================
-
-.. c:function:: int arch_atomic64_sub_and_test(long long i, atomic64_t *v)
-
-    subtract value from variable and test result
-
-    :param long long i:
-        integer value to subtract
-
-    :param atomic64_t \*v:
-        pointer to type atomic64_t
-
-.. _`arch_atomic64_sub_and_test.description`:
-
-Description
------------
-
-Atomically subtracts \ ``i``\  from \ ``v``\  and returns
-true if the result is zero, or false for all
-other cases.
 
 .. _`arch_atomic64_inc`:
 
@@ -190,8 +180,9 @@ arch_atomic64_inc
 
     increment atomic64 variable
 
-    :param atomic64_t \*v:
+    :param v:
         pointer to type atomic64_t
+    :type v: atomic64_t \*
 
 .. _`arch_atomic64_inc.description`:
 
@@ -209,8 +200,9 @@ arch_atomic64_dec
 
     decrement atomic64 variable
 
-    :param atomic64_t \*v:
+    :param v:
         pointer to type atomic64_t
+    :type v: atomic64_t \*
 
 .. _`arch_atomic64_dec.description`:
 
@@ -218,72 +210,6 @@ Description
 -----------
 
 Atomically decrements \ ``v``\  by 1.
-
-.. _`arch_atomic64_dec_and_test`:
-
-arch_atomic64_dec_and_test
-==========================
-
-.. c:function:: int arch_atomic64_dec_and_test(atomic64_t *v)
-
-    decrement and test
-
-    :param atomic64_t \*v:
-        pointer to type atomic64_t
-
-.. _`arch_atomic64_dec_and_test.description`:
-
-Description
------------
-
-Atomically decrements \ ``v``\  by 1 and
-returns true if the result is 0, or false for all other
-cases.
-
-.. _`arch_atomic64_inc_and_test`:
-
-arch_atomic64_inc_and_test
-==========================
-
-.. c:function:: int arch_atomic64_inc_and_test(atomic64_t *v)
-
-    increment and test
-
-    :param atomic64_t \*v:
-        pointer to type atomic64_t
-
-.. _`arch_atomic64_inc_and_test.description`:
-
-Description
------------
-
-Atomically increments \ ``v``\  by 1
-and returns true if the result is zero, or false for all
-other cases.
-
-.. _`arch_atomic64_add_negative`:
-
-arch_atomic64_add_negative
-==========================
-
-.. c:function:: int arch_atomic64_add_negative(long long i, atomic64_t *v)
-
-    add and test if negative
-
-    :param long long i:
-        integer value to add
-
-    :param atomic64_t \*v:
-        pointer to type atomic64_t
-
-.. _`arch_atomic64_add_negative.description`:
-
-Description
------------
-
-Atomically adds \ ``i``\  to \ ``v``\  and returns true
-if the result is negative, or false when
-result is greater than or equal to zero.
 
 .. _`arch_atomic64_add_unless`:
 
@@ -294,14 +220,17 @@ arch_atomic64_add_unless
 
     add unless the number is a given value
 
-    :param atomic64_t \*v:
+    :param v:
         pointer of type atomic64_t
+    :type v: atomic64_t \*
 
-    :param long long a:
+    :param a:
         the amount to add to v...
+    :type a: long long
 
-    :param long long u:
+    :param u:
         ...unless v is equal to u.
+    :type u: long long
 
 .. _`arch_atomic64_add_unless.description`:
 

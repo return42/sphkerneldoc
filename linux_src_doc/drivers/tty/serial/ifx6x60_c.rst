@@ -10,8 +10,9 @@ mrdy_set_high
 
     set MRDY GPIO
 
-    :param struct ifx_spi_device \*ifx:
+    :param ifx:
         device we are controlling
+    :type ifx: struct ifx_spi_device \*
 
 .. _`mrdy_set_low`:
 
@@ -22,8 +23,9 @@ mrdy_set_low
 
     clear MRDY GPIO
 
-    :param struct ifx_spi_device \*ifx:
+    :param ifx:
         device we are controlling
+    :type ifx: struct ifx_spi_device \*
 
 .. _`ifx_spi_power_state_set`:
 
@@ -32,11 +34,13 @@ ifx_spi_power_state_set
 
 .. c:function:: void ifx_spi_power_state_set(struct ifx_spi_device *ifx_dev, unsigned char val)
 
-    :param struct ifx_spi_device \*ifx_dev:
+    :param ifx_dev:
         our SPI device
+    :type ifx_dev: struct ifx_spi_device \*
 
-    :param unsigned char val:
+    :param val:
         bits to set
+    :type val: unsigned char
 
 .. _`ifx_spi_power_state_set.description`:
 
@@ -54,11 +58,13 @@ ifx_spi_power_state_clear
 
     clear power bit
 
-    :param struct ifx_spi_device \*ifx_dev:
+    :param ifx_dev:
         our SPI device
+    :type ifx_dev: struct ifx_spi_device \*
 
-    :param unsigned char val:
+    :param val:
         bits to clear
+    :type val: unsigned char
 
 .. _`ifx_spi_power_state_clear.description`:
 
@@ -74,14 +80,17 @@ swap_buf_8
 
 .. c:function:: void swap_buf_8(unsigned char *buf, int len, void *end)
 
-    :param unsigned char \*buf:
+    :param buf:
         our buffer
+    :type buf: unsigned char \*
 
-    :param int len:
+    :param len:
         number of bytes (not words) in the buffer
+    :type len: int
 
-    :param void \*end:
+    :param end:
         end of buffer
+    :type end: void \*
 
 .. _`swap_buf_8.description`:
 
@@ -97,14 +106,17 @@ swap_buf_16
 
 .. c:function:: void swap_buf_16(unsigned char *buf, int len, void *end)
 
-    :param unsigned char \*buf:
+    :param buf:
         our buffer
+    :type buf: unsigned char \*
 
-    :param int len:
+    :param len:
         number of bytes (not words) in the buffer
+    :type len: int
 
-    :param void \*end:
+    :param end:
         end of buffer
+    :type end: void \*
 
 .. _`swap_buf_16.description`:
 
@@ -120,14 +132,17 @@ swap_buf_32
 
 .. c:function:: void swap_buf_32(unsigned char *buf, int len, void *end)
 
-    :param unsigned char \*buf:
+    :param buf:
         our buffer
+    :type buf: unsigned char \*
 
-    :param int len:
+    :param len:
         number of bytes (not words) in the buffer
+    :type len: int
 
-    :param void \*end:
+    :param end:
         end of buffer
+    :type end: void \*
 
 .. _`swap_buf_32.description`:
 
@@ -145,8 +160,9 @@ mrdy_assert
 
     assert MRDY line
 
-    :param struct ifx_spi_device \*ifx_dev:
+    :param ifx_dev:
         our SPI device
+    :type ifx_dev: struct ifx_spi_device \*
 
 .. _`mrdy_assert.description`:
 
@@ -172,8 +188,9 @@ ifx_spi_timeout
 
     SPI timeout
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`ifx_spi_timeout.the-spi-has-timed-out`:
 
@@ -192,8 +209,9 @@ ifx_spi_tiocmget
 
     get modem lines
 
-    :param struct tty_struct \*tty:
+    :param tty:
         our tty device
+    :type tty: struct tty_struct \*
 
 .. _`ifx_spi_tiocmget.description`:
 
@@ -212,14 +230,17 @@ ifx_spi_tiocmset
 
     set modem bits
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty structure
+    :type tty: struct tty_struct \*
 
-    :param unsigned int set:
+    :param set:
         bits to set
+    :type set: unsigned int
 
-    :param unsigned int clear:
+    :param clear:
         bits to clear
+    :type clear: unsigned int
 
 .. _`ifx_spi_tiocmset.description`:
 
@@ -245,11 +266,13 @@ ifx_spi_open
 
     called on tty open
 
-    :param struct tty_struct \*tty:
+    :param tty:
         our tty device
+    :type tty: struct tty_struct \*
 
-    :param struct file \*filp:
+    :param filp:
         file handle being associated with the tty
+    :type filp: struct file \*
 
 .. _`ifx_spi_open.description`:
 
@@ -275,11 +298,13 @@ ifx_spi_close
 
     called when our tty closes
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty being closed
+    :type tty: struct tty_struct \*
 
-    :param struct file \*filp:
+    :param filp:
         the file handle being closed
+    :type filp: struct file \*
 
 .. _`ifx_spi_close.description`:
 
@@ -298,17 +323,21 @@ ifx_spi_decode_spi_header
 
     decode received header
 
-    :param unsigned char \*buffer:
+    :param buffer:
         the received data
+    :type buffer: unsigned char \*
 
-    :param int \*length:
+    :param length:
         decoded length
+    :type length: int \*
 
-    :param unsigned char \*more:
+    :param more:
         decoded more flag
+    :type more: unsigned char \*
 
-    :param unsigned char \*received_cts:
+    :param received_cts:
         status of cts we received
+    :type received_cts: unsigned char \*
 
 .. _`ifx_spi_decode_spi_header.description`:
 
@@ -335,14 +364,17 @@ ifx_spi_setup_spi_header
 
     set header fields
 
-    :param unsigned char \*txbuffer:
+    :param txbuffer:
         pointer to start of SPI buffer
+    :type txbuffer: unsigned char \*
 
-    :param int tx_count:
+    :param tx_count:
         bytes
+    :type tx_count: int
 
-    :param unsigned char more:
+    :param more:
         indicate if more to follow
+    :type more: unsigned char
 
 .. _`ifx_spi_setup_spi_header.description`:
 
@@ -367,8 +399,9 @@ ifx_spi_prepare_tx_buffer
 
     prepare transmit frame
 
-    :param struct ifx_spi_device \*ifx_dev:
+    :param ifx_dev:
         our SPI device
+    :type ifx_dev: struct ifx_spi_device \*
 
 .. _`ifx_spi_prepare_tx_buffer.description`:
 
@@ -397,14 +430,17 @@ ifx_spi_write
 
     line discipline write
 
-    :param struct tty_struct \*tty:
+    :param tty:
         our tty device
+    :type tty: struct tty_struct \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         pointer to buffer to write (kernel space)
+    :type buf: const unsigned char \*
 
-    :param int count:
+    :param count:
         size of buffer
+    :type count: int
 
 .. _`ifx_spi_write.description`:
 
@@ -424,8 +460,9 @@ ifx_spi_write_room
 
     line discipline helper
 
-    :param struct tty_struct \*tty:
+    :param tty:
         our tty device
+    :type tty: struct tty_struct \*
 
 .. _`ifx_spi_write_room.description`:
 
@@ -444,8 +481,9 @@ ifx_spi_chars_in_buffer
 
     line discipline helper
 
-    :param struct tty_struct \*tty:
+    :param tty:
         our tty device
+    :type tty: struct tty_struct \*
 
 .. _`ifx_spi_chars_in_buffer.description`:
 
@@ -462,8 +500,9 @@ ifx_spi_hangup
 
 .. c:function:: void ifx_spi_hangup(struct tty_struct *tty)
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`ifx_spi_hangup.description`:
 
@@ -481,11 +520,13 @@ ifx_port_activate
 
 .. c:function:: int ifx_port_activate(struct tty_port *port, struct tty_struct *tty)
 
-    :param struct tty_port \*port:
+    :param port:
         our tty port
+    :type port: struct tty_port \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`ifx_port_activate.description`:
 
@@ -502,8 +543,9 @@ ifx_port_shutdown
 
 .. c:function:: void ifx_port_shutdown(struct tty_port *port)
 
-    :param struct tty_port \*port:
+    :param port:
         our tty port
+    :type port: struct tty_port \*
 
 .. _`ifx_port_shutdown.description`:
 
@@ -522,14 +564,17 @@ ifx_spi_insert_flip_string
 
     queue received data
 
-    :param struct ifx_spi_device \*ifx_dev:
+    :param ifx_dev:
         *undescribed*
+    :type ifx_dev: struct ifx_spi_device \*
 
-    :param unsigned char \*chars:
+    :param chars:
         buffer we have received
+    :type chars: unsigned char \*
 
-    :param size_t size:
+    :param size:
         number of chars reeived
+    :type size: size_t
 
 .. _`ifx_spi_insert_flip_string.description`:
 
@@ -548,8 +593,9 @@ ifx_spi_complete
 
     SPI transfer completed
 
-    :param void \*ctx:
+    :param ctx:
         our SPI device
+    :type ctx: void \*
 
 .. _`ifx_spi_complete.description`:
 
@@ -568,8 +614,9 @@ ifx_spi_io
 
     I/O tasklet
 
-    :param unsigned long data:
+    :param data:
         our SPI device
+    :type data: unsigned long
 
 .. _`ifx_spi_io.description`:
 
@@ -588,8 +635,9 @@ ifx_spi_free_port
 
     free up the tty side
 
-    :param struct ifx_spi_device \*ifx_dev:
+    :param ifx_dev:
         IFX device going away
+    :type ifx_dev: struct ifx_spi_device \*
 
 .. _`ifx_spi_free_port.description`:
 
@@ -607,8 +655,9 @@ ifx_spi_create_port
 
     create a new port
 
-    :param struct ifx_spi_device \*ifx_dev:
+    :param ifx_dev:
         our spi device
+    :type ifx_dev: struct ifx_spi_device \*
 
 .. _`ifx_spi_create_port.description`:
 
@@ -627,8 +676,9 @@ ifx_spi_handle_srdy
 
     handle SRDY
 
-    :param struct ifx_spi_device \*ifx_dev:
+    :param ifx_dev:
         device asserting SRDY
+    :type ifx_dev: struct ifx_spi_device \*
 
 .. _`ifx_spi_handle_srdy.description`:
 
@@ -648,11 +698,13 @@ ifx_spi_srdy_interrupt
 
     SRDY asserted
 
-    :param int irq:
+    :param irq:
         our IRQ number
+    :type irq: int
 
-    :param void \*dev:
+    :param dev:
         our ifx device
+    :type dev: void \*
 
 .. _`ifx_spi_srdy_interrupt.description`:
 
@@ -670,11 +722,13 @@ ifx_spi_reset_interrupt
 
     Modem has changed reset state
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*dev:
+    :param dev:
         our device pointer
+    :type dev: void \*
 
 .. _`ifx_spi_reset_interrupt.description`:
 
@@ -701,8 +755,9 @@ ifx_spi_free_device
 
     free device
 
-    :param struct ifx_spi_device \*ifx_dev:
+    :param ifx_dev:
         device to free
+    :type ifx_dev: struct ifx_spi_device \*
 
 .. _`ifx_spi_free_device.description`:
 
@@ -720,8 +775,9 @@ ifx_spi_reset
 
     reset modem
 
-    :param struct ifx_spi_device \*ifx_dev:
+    :param ifx_dev:
         modem to reset
+    :type ifx_dev: struct ifx_spi_device \*
 
 .. _`ifx_spi_reset.description`:
 
@@ -739,8 +795,9 @@ ifx_spi_spi_probe
 
     probe callback
 
-    :param struct spi_device \*spi:
+    :param spi:
         our possible matching SPI device
+    :type spi: struct spi_device \*
 
 .. _`ifx_spi_spi_probe.description`:
 
@@ -767,8 +824,9 @@ ifx_spi_spi_remove
 
     SPI device was removed
 
-    :param struct spi_device \*spi:
+    :param spi:
         SPI device
+    :type spi: struct spi_device \*
 
 .. _`ifx_spi_spi_remove.fixme`:
 
@@ -787,8 +845,9 @@ ifx_spi_spi_shutdown
 
     called on SPI shutdown
 
-    :param struct spi_device \*spi:
+    :param spi:
         SPI device
+    :type spi: struct spi_device \*
 
 .. _`ifx_spi_spi_shutdown.description`:
 
@@ -806,8 +865,9 @@ ifx_spi_pm_suspend
 
     suspend modem on system suspend
 
-    :param struct device \*dev:
+    :param dev:
         device being suspended
+    :type dev: struct device \*
 
 .. _`ifx_spi_pm_suspend.description`:
 
@@ -826,8 +886,9 @@ ifx_spi_pm_resume
 
     resume modem on system resume
 
-    :param struct device \*dev:
+    :param dev:
         device being suspended
+    :type dev: struct device \*
 
 .. _`ifx_spi_pm_resume.description`:
 
@@ -852,8 +913,9 @@ ifx_spi_pm_runtime_resume
 
     suspend modem
 
-    :param struct device \*dev:
+    :param dev:
         device being suspended
+    :type dev: struct device \*
 
 .. _`ifx_spi_pm_runtime_resume.description`:
 
@@ -871,8 +933,9 @@ ifx_spi_pm_runtime_suspend
 
     suspend modem
 
-    :param struct device \*dev:
+    :param dev:
         device being suspended
+    :type dev: struct device \*
 
 .. _`ifx_spi_pm_runtime_suspend.description`:
 
@@ -891,8 +954,9 @@ ifx_spi_pm_runtime_idle
 
     check if modem idle
 
-    :param struct device \*dev:
+    :param dev:
         our device
+    :type dev: struct device \*
 
 .. _`ifx_spi_pm_runtime_idle.description`:
 
@@ -910,8 +974,9 @@ ifx_spi_exit
 
     module exit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ifx_spi_exit.description`:
 
@@ -929,8 +994,9 @@ ifx_spi_init
 
     module entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ifx_spi_init.description`:
 

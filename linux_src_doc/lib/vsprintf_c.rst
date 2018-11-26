@@ -10,14 +10,17 @@ simple_strtoull
 
     convert a string to an unsigned long long
 
-    :param const char \*cp:
+    :param cp:
         The start of the string
+    :type cp: const char \*
 
-    :param char \*\*endp:
+    :param endp:
         A pointer to the end of the parsed string will be placed here
+    :type endp: char \*\*
 
-    :param unsigned int base:
+    :param base:
         The number base to use
+    :type base: unsigned int
 
 .. _`simple_strtoull.description`:
 
@@ -35,14 +38,17 @@ simple_strtoul
 
     convert a string to an unsigned long
 
-    :param const char \*cp:
+    :param cp:
         The start of the string
+    :type cp: const char \*
 
-    :param char \*\*endp:
+    :param endp:
         A pointer to the end of the parsed string will be placed here
+    :type endp: char \*\*
 
-    :param unsigned int base:
+    :param base:
         The number base to use
+    :type base: unsigned int
 
 .. _`simple_strtoul.description`:
 
@@ -60,14 +66,17 @@ simple_strtol
 
     convert a string to a signed long
 
-    :param const char \*cp:
+    :param cp:
         The start of the string
+    :type cp: const char \*
 
-    :param char \*\*endp:
+    :param endp:
         A pointer to the end of the parsed string will be placed here
+    :type endp: char \*\*
 
-    :param unsigned int base:
+    :param base:
         The number base to use
+    :type base: unsigned int
 
 .. _`simple_strtol.description`:
 
@@ -85,14 +94,17 @@ simple_strtoll
 
     convert a string to a signed long long
 
-    :param const char \*cp:
+    :param cp:
         The start of the string
+    :type cp: const char \*
 
-    :param char \*\*endp:
+    :param endp:
         A pointer to the end of the parsed string will be placed here
+    :type endp: char \*\*
 
-    :param unsigned int base:
+    :param base:
         The number base to use
+    :type base: unsigned int
 
 .. _`simple_strtoll.description`:
 
@@ -110,17 +122,21 @@ vsnprintf
 
     Format a string and place it in a buffer
 
-    :param char \*buf:
+    :param buf:
         The buffer to place the result into
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         The size of the buffer, including the trailing null space
+    :type size: size_t
 
-    :param const char \*fmt:
+    :param fmt:
         The format string to use
+    :type fmt: const char \*
 
-    :param va_list args:
+    :param args:
         Arguments for the format string
+    :type args: va_list
 
 .. _`vsnprintf.description`:
 
@@ -162,17 +178,21 @@ vscnprintf
 
     Format a string and place it in a buffer
 
-    :param char \*buf:
+    :param buf:
         The buffer to place the result into
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         The size of the buffer, including the trailing null space
+    :type size: size_t
 
-    :param const char \*fmt:
+    :param fmt:
         The format string to use
+    :type fmt: const char \*
 
-    :param va_list args:
+    :param args:
         Arguments for the format string
+    :type args: va_list
 
 .. _`vscnprintf.description`:
 
@@ -196,14 +216,17 @@ snprintf
 
     Format a string and place it in a buffer
 
-    :param char \*buf:
+    :param buf:
         The buffer to place the result into
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         The size of the buffer, including the trailing null space
+    :type size: size_t
 
-    :param const char \*fmt:
+    :param fmt:
         The format string to use
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         Arguments for the format string
@@ -229,14 +252,17 @@ scnprintf
 
     Format a string and place it in a buffer
 
-    :param char \*buf:
+    :param buf:
         The buffer to place the result into
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         The size of the buffer, including the trailing null space
+    :type size: size_t
 
-    :param const char \*fmt:
+    :param fmt:
         The format string to use
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         Arguments for the format string
@@ -258,14 +284,17 @@ vsprintf
 
     Format a string and place it in a buffer
 
-    :param char \*buf:
+    :param buf:
         The buffer to place the result into
+    :type buf: char \*
 
-    :param const char \*fmt:
+    :param fmt:
         The format string to use
+    :type fmt: const char \*
 
-    :param va_list args:
+    :param args:
         Arguments for the format string
+    :type args: va_list
 
 .. _`vsprintf.description`:
 
@@ -289,11 +318,13 @@ sprintf
 
     Format a string and place it in a buffer
 
-    :param char \*buf:
+    :param buf:
         The buffer to place the result into
+    :type buf: char \*
 
-    :param const char \*fmt:
+    :param fmt:
         The format string to use
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         Arguments for the format string
@@ -318,17 +349,21 @@ vbin_printf
 
     Parse a format string and place args' binary value in a buffer
 
-    :param u32 \*bin_buf:
+    :param bin_buf:
         The buffer to place args' binary value
+    :type bin_buf: u32 \*
 
-    :param size_t size:
+    :param size:
         The size of the buffer(by words(32bits), not characters)
+    :type size: size_t
 
-    :param const char \*fmt:
+    :param fmt:
         The format string to use
+    :type fmt: const char \*
 
-    :param va_list args:
+    :param args:
         Arguments for the format string
+    :type args: va_list
 
 .. _`vbin_printf.description`:
 
@@ -358,17 +393,21 @@ bstr_printf
 
     Format a string from binary arguments and place it in a buffer
 
-    :param char \*buf:
+    :param buf:
         The buffer to place the result into
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         The size of the buffer, including the trailing null space
+    :type size: size_t
 
-    :param const char \*fmt:
+    :param fmt:
         The format string to use
+    :type fmt: const char \*
 
-    :param const u32 \*bin_buf:
+    :param bin_buf:
         Binary arguments for the format string
+    :type bin_buf: const u32 \*
 
 .. _`bstr_printf.description`:
 
@@ -399,14 +438,17 @@ bprintf
 
     Parse a format string and place args' binary value in a buffer
 
-    :param u32 \*bin_buf:
+    :param bin_buf:
         The buffer to place args' binary value
+    :type bin_buf: u32 \*
 
-    :param size_t size:
+    :param size:
         The size of the buffer(by words(32bits), not characters)
+    :type size: size_t
 
-    :param const char \*fmt:
+    :param fmt:
         The format string to use
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         Arguments for the format string
@@ -428,14 +470,17 @@ vsscanf
 
     Unformat a buffer into a list of arguments
 
-    :param const char \*buf:
+    :param buf:
         input buffer
+    :type buf: const char \*
 
-    :param const char \*fmt:
+    :param fmt:
         format of buffer
+    :type fmt: const char \*
 
-    :param va_list args:
+    :param args:
         arguments
+    :type args: va_list
 
 .. _`sscanf`:
 
@@ -446,11 +491,13 @@ sscanf
 
     Unformat a buffer into a list of arguments
 
-    :param const char \*buf:
+    :param buf:
         input buffer
+    :type buf: const char \*
 
-    :param const char \*fmt:
+    :param fmt:
         formatting of buffer
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         resulting arguments

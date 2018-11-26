@@ -10,11 +10,13 @@ ppc440spe_desc_init_interrupt
 
     initialize the descriptor for INTERRUPT pseudo operation
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_desc_init_null_xor`:
 
@@ -25,8 +27,9 @@ ppc440spe_desc_init_null_xor
 
     initialize the descriptor for NULL XOR pseudo operation
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
 .. _`ppc440spe_desc_init_xor`:
 
@@ -37,14 +40,17 @@ ppc440spe_desc_init_xor
 
     initialize the descriptor for XOR operation
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_desc_init_dma2pq`:
 
@@ -55,17 +61,21 @@ ppc440spe_desc_init_dma2pq
 
     initialize the descriptor for PQ operation in DMA2 controller
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param int dst_cnt:
+    :param dst_cnt:
         *undescribed*
+    :type dst_cnt: int
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_desc_init_dma01pq`:
 
@@ -76,20 +86,25 @@ ppc440spe_desc_init_dma01pq
 
     initialize the descriptors for PQ operation with DMA0/1
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param int dst_cnt:
+    :param dst_cnt:
         *undescribed*
+    :type dst_cnt: int
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
-    :param unsigned long op:
+    :param op:
         *undescribed*
+    :type op: unsigned long
 
 .. _`ppc440spe_desc_init_dma01pqzero_sum`:
 
@@ -100,14 +115,17 @@ ppc440spe_desc_init_dma01pqzero_sum
 
     initialize the descriptor for PQ_ZERO_SUM operation
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param int dst_cnt:
+    :param dst_cnt:
         *undescribed*
+    :type dst_cnt: int
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
 .. _`ppc440spe_desc_init_memcpy`:
 
@@ -118,11 +136,13 @@ ppc440spe_desc_init_memcpy
 
     initialize the descriptor for MEMCPY operation
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_desc_set_src_addr`:
 
@@ -133,20 +153,25 @@ ppc440spe_desc_set_src_addr
 
     set source address into the descriptor
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
-    :param int src_idx:
+    :param src_idx:
         *undescribed*
+    :type src_idx: int
 
-    :param dma_addr_t addrh:
+    :param addrh:
         *undescribed*
+    :type addrh: dma_addr_t
 
-    :param dma_addr_t addrl:
+    :param addrl:
         *undescribed*
+    :type addrl: dma_addr_t
 
 .. _`ppc440spe_desc_set_src_mult`:
 
@@ -157,20 +182,25 @@ ppc440spe_desc_set_src_mult
 
     set source address mult into the descriptor
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
-    :param u32 mult_index:
+    :param mult_index:
         *undescribed*
+    :type mult_index: u32
 
-    :param int sg_index:
+    :param sg_index:
         *undescribed*
+    :type sg_index: int
 
-    :param unsigned char mult_value:
+    :param mult_value:
         *undescribed*
+    :type mult_value: unsigned char
 
 .. _`ppc440spe_desc_set_dest_addr`:
 
@@ -181,20 +211,25 @@ ppc440spe_desc_set_dest_addr
 
     set destination address into the descriptor
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
-    :param dma_addr_t addrh:
+    :param addrh:
         *undescribed*
+    :type addrh: dma_addr_t
 
-    :param dma_addr_t addrl:
+    :param addrl:
         *undescribed*
+    :type addrl: dma_addr_t
 
-    :param u32 dst_idx:
+    :param dst_idx:
         *undescribed*
+    :type dst_idx: u32
 
 .. _`ppc440spe_desc_set_byte_count`:
 
@@ -205,14 +240,17 @@ ppc440spe_desc_set_byte_count
 
     set number of data bytes involved into the operation
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
-    :param u32 byte_count:
+    :param byte_count:
         *undescribed*
+    :type byte_count: u32
 
 .. _`ppc440spe_desc_set_rxor_block_size`:
 
@@ -223,8 +261,9 @@ ppc440spe_desc_set_rxor_block_size
 
     set RXOR block size
 
-    :param u32 byte_count:
+    :param byte_count:
         *undescribed*
+    :type byte_count: u32
 
 .. _`ppc440spe_desc_set_dcheck`:
 
@@ -235,14 +274,17 @@ ppc440spe_desc_set_dcheck
 
     set CHECK pattern
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
-    :param u8 \*qword:
+    :param qword:
         *undescribed*
+    :type qword: u8 \*
 
 .. _`ppc440spe_xor_set_link`:
 
@@ -253,11 +295,13 @@ ppc440spe_xor_set_link
 
     set link address in xor CB
 
-    :param struct ppc440spe_adma_desc_slot \*prev_desc:
+    :param prev_desc:
         *undescribed*
+    :type prev_desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_desc_slot \*next_desc:
+    :param next_desc:
         *undescribed*
+    :type next_desc: struct ppc440spe_adma_desc_slot \*
 
 .. _`ppc440spe_desc_set_link`:
 
@@ -268,14 +312,17 @@ ppc440spe_desc_set_link
 
     set the address of descriptor following this descriptor in chain
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
-    :param struct ppc440spe_adma_desc_slot \*prev_desc:
+    :param prev_desc:
         *undescribed*
+    :type prev_desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_desc_slot \*next_desc:
+    :param next_desc:
         *undescribed*
+    :type next_desc: struct ppc440spe_adma_desc_slot \*
 
 .. _`ppc440spe_desc_get_link`:
 
@@ -286,11 +333,13 @@ ppc440spe_desc_get_link
 
     get the address of the descriptor that follows this one
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_desc_is_aligned`:
 
@@ -301,11 +350,13 @@ ppc440spe_desc_is_aligned
 
     check alignment
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param int num_slots:
+    :param num_slots:
         *undescribed*
+    :type num_slots: int
 
 .. _`ppc440spe_chan_xor_slot_count`:
 
@@ -316,14 +367,17 @@ ppc440spe_chan_xor_slot_count
 
     get the number of slots necessary for XOR operation
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
-    :param int \*slots_per_op:
+    :param slots_per_op:
         *undescribed*
+    :type slots_per_op: int \*
 
 .. _`ppc440spe_dma2_pq_slot_count`:
 
@@ -334,14 +388,17 @@ ppc440spe_dma2_pq_slot_count
 
     get the number of slots necessary for DMA2 PQ operation
 
-    :param dma_addr_t \*srcs:
+    :param srcs:
         *undescribed*
+    :type srcs: dma_addr_t \*
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`ppc440spe_adma_device_clear_eot_status`:
 
@@ -352,8 +409,9 @@ ppc440spe_adma_device_clear_eot_status
 
     interrupt ack to XOR or DMA engine
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_chan_is_busy`:
 
@@ -364,8 +422,9 @@ ppc440spe_chan_is_busy
 
     get the channel status
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_chan_set_first_xor_descriptor`:
 
@@ -376,11 +435,13 @@ ppc440spe_chan_set_first_xor_descriptor
 
     init XORcore chain
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
-    :param struct ppc440spe_adma_desc_slot \*next_desc:
+    :param next_desc:
         *undescribed*
+    :type next_desc: struct ppc440spe_adma_desc_slot \*
 
 .. _`ppc440spe_dma_put_desc`:
 
@@ -391,11 +452,13 @@ ppc440spe_dma_put_desc
 
     put DMA0,1 descriptor to FIFO. called with irqs disabled
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
 .. _`ppc440spe_chan_append`:
 
@@ -406,8 +469,9 @@ ppc440spe_chan_append
 
     update the h/w chain in the channel
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_chan_get_current_descriptor`:
 
@@ -418,8 +482,9 @@ ppc440spe_chan_get_current_descriptor
 
     get the currently executed descriptor
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_chan_run`:
 
@@ -430,8 +495,9 @@ ppc440spe_chan_run
 
     enable the channel
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_can_rxor`:
 
@@ -442,14 +508,17 @@ ppc440spe_can_rxor
 
     check if the operands may be processed with RXOR
 
-    :param struct page \*\*srcs:
+    :param srcs:
         *undescribed*
+    :type srcs: struct page \*\*
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`ppc440spe_adma_estimate`:
 
@@ -460,26 +529,33 @@ ppc440spe_adma_estimate
 
     estimate the efficiency of processing the operation given on this channel. It's assumed that 'chan' is capable to process 'cap' type of operation.
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel to use
+    :type chan: struct dma_chan \*
 
-    :param enum dma_transaction_type cap:
+    :param cap:
         type of transaction
+    :type cap: enum dma_transaction_type
 
-    :param struct page \*\*dst_lst:
+    :param dst_lst:
         array of destination pointers
+    :type dst_lst: struct page \*\*
 
-    :param int dst_cnt:
+    :param dst_cnt:
         number of destination operands
+    :type dst_cnt: int
 
-    :param struct page \*\*src_lst:
+    :param src_lst:
         array of source pointers
+    :type src_lst: struct page \*\*
 
-    :param int src_cnt:
+    :param src_cnt:
         number of source operands
+    :type src_cnt: int
 
-    :param size_t src_sz:
+    :param src_sz:
         size of each source operand
+    :type src_sz: size_t
 
 .. _`ppc440spe_get_group_entry`:
 
@@ -490,11 +566,13 @@ ppc440spe_get_group_entry
 
     get group entry with index idx
 
-    :param struct ppc440spe_adma_desc_slot \*tdesc:
+    :param tdesc:
         is the last allocated slot in the group.
+    :type tdesc: struct ppc440spe_adma_desc_slot \*
 
-    :param u32 entry_idx:
+    :param entry_idx:
         *undescribed*
+    :type entry_idx: u32
 
 .. _`ppc440spe_adma_free_slots`:
 
@@ -505,12 +583,14 @@ ppc440spe_adma_free_slots
 
     flags descriptor slots for reuse
 
-    :param struct ppc440spe_adma_desc_slot \*slot:
+    :param slot:
         Slot to free
         Caller must hold \ :c:type:`ppc440spe_chan->lock <ppc440spe_chan>`\  while calling this function
+    :type slot: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_adma_run_tx_complete_actions`:
 
@@ -521,14 +601,17 @@ ppc440spe_adma_run_tx_complete_actions
 
     call functions to be called upon completion
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         *undescribed*
+    :type cookie: dma_cookie_t
 
 .. _`ppc440spe_adma_clean_slot`:
 
@@ -539,11 +622,13 @@ ppc440spe_adma_clean_slot
 
     clean up CDB slot (if ack is set)
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`__ppc440spe_adma_slot_cleanup`:
 
@@ -554,8 +639,9 @@ ppc440spe_adma_clean_slot
 
     this is the common clean-up routine which runs through the channel CDBs list until reach the descriptor currently processed. When routine determines that all CDBs of group are completed then corresponding callbacks (if any) are called and slots are freed.
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_adma_tasklet`:
 
@@ -566,8 +652,9 @@ ppc440spe_adma_tasklet
 
     clean up watch-dog initiator
 
-    :param unsigned long data:
+    :param data:
         *undescribed*
+    :type data: unsigned long
 
 .. _`ppc440spe_adma_slot_cleanup`:
 
@@ -578,8 +665,9 @@ ppc440spe_adma_slot_cleanup
 
     clean up scheduled initiator
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_adma_alloc_slots`:
 
@@ -590,14 +678,17 @@ ppc440spe_adma_alloc_slots
 
     allocate free slots (if any)
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
-    :param int num_slots:
+    :param num_slots:
         *undescribed*
+    :type num_slots: int
 
-    :param int slots_per_op:
+    :param slots_per_op:
         *undescribed*
+    :type slots_per_op: int
 
 .. _`ppc440spe_adma_alloc_chan_resources`:
 
@@ -608,8 +699,9 @@ ppc440spe_adma_alloc_chan_resources
 
     allocate pools for CDB slots
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
 .. _`ppc440spe_rxor_set_region`:
 
@@ -618,14 +710,17 @@ ppc440spe_rxor_set_region
 
 .. c:function:: void ppc440spe_rxor_set_region(struct ppc440spe_adma_desc_slot *desc, u8 xor_arg_no, u32 mask)
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param u8 xor_arg_no:
+    :param xor_arg_no:
         *undescribed*
+    :type xor_arg_no: u8
 
-    :param u32 mask:
+    :param mask:
         *undescribed*
+    :type mask: u32
 
 .. _`ppc440spe_rxor_set_src`:
 
@@ -634,14 +729,17 @@ ppc440spe_rxor_set_src
 
 .. c:function:: void ppc440spe_rxor_set_src(struct ppc440spe_adma_desc_slot *desc, u8 xor_arg_no, dma_addr_t addr)
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param u8 xor_arg_no:
+    :param xor_arg_no:
         *undescribed*
+    :type xor_arg_no: u8
 
-    :param dma_addr_t addr:
+    :param addr:
         *undescribed*
+    :type addr: dma_addr_t
 
 .. _`ppc440spe_rxor_set_mult`:
 
@@ -650,17 +748,21 @@ ppc440spe_rxor_set_mult
 
 .. c:function:: void ppc440spe_rxor_set_mult(struct ppc440spe_adma_desc_slot *desc, u8 xor_arg_no, u8 idx, u8 mult)
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param u8 xor_arg_no:
+    :param xor_arg_no:
         *undescribed*
+    :type xor_arg_no: u8
 
-    :param u8 idx:
+    :param idx:
         *undescribed*
+    :type idx: u8
 
-    :param u8 mult:
+    :param mult:
         *undescribed*
+    :type mult: u8
 
 .. _`ppc440spe_adma_check_threshold`:
 
@@ -671,8 +773,9 @@ ppc440spe_adma_check_threshold
 
     append CDBs to h/w chain if threshold has been achieved
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_adma_tx_submit`:
 
@@ -683,8 +786,9 @@ ppc440spe_adma_tx_submit
 
     submit new descriptor group to the channel (it's not necessary that descriptors will be submitted to the h/w chains too right now)
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         *undescribed*
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`ppc440spe_adma_prep_dma_interrupt`:
 
@@ -695,11 +799,13 @@ ppc440spe_adma_prep_dma_interrupt
 
     prepare CDB for a pseudo DMA operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_adma_prep_dma_memcpy`:
 
@@ -710,20 +816,25 @@ ppc440spe_adma_prep_dma_memcpy
 
     prepare CDB for a MEMCPY operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t dma_dest:
+    :param dma_dest:
         *undescribed*
+    :type dma_dest: dma_addr_t
 
-    :param dma_addr_t dma_src:
+    :param dma_src:
         *undescribed*
+    :type dma_src: dma_addr_t
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_adma_prep_dma_xor`:
 
@@ -734,23 +845,29 @@ ppc440spe_adma_prep_dma_xor
 
     prepare CDB for a XOR operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t dma_dest:
+    :param dma_dest:
         *undescribed*
+    :type dma_dest: dma_addr_t
 
-    :param dma_addr_t \*dma_src:
+    :param dma_src:
         *undescribed*
+    :type dma_src: dma_addr_t \*
 
-    :param u32 src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: u32
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_adma_init_dma2rxor_slot`:
 
@@ -759,14 +876,17 @@ ppc440spe_adma_init_dma2rxor_slot
 
 .. c:function:: void ppc440spe_adma_init_dma2rxor_slot(struct ppc440spe_adma_desc_slot *desc, dma_addr_t *src, int src_cnt)
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param dma_addr_t \*src:
+    :param src:
         *undescribed*
+    :type src: dma_addr_t \*
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
 .. _`ppc440spe_dma01_prep_mult`:
 
@@ -777,29 +897,37 @@ ppc440spe_dma01_prep_mult
 
     for Q operation where destination is also the source
 
-    :param struct ppc440spe_adma_chan \*ppc440spe_chan:
+    :param ppc440spe_chan:
         *undescribed*
+    :type ppc440spe_chan: struct ppc440spe_adma_chan \*
 
-    :param dma_addr_t \*dst:
+    :param dst:
         *undescribed*
+    :type dst: dma_addr_t \*
 
-    :param int dst_cnt:
+    :param dst_cnt:
         *undescribed*
+    :type dst_cnt: int
 
-    :param dma_addr_t \*src:
+    :param src:
         *undescribed*
+    :type src: dma_addr_t \*
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
-    :param const unsigned char \*scf:
+    :param scf:
         *undescribed*
+    :type scf: const unsigned char \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_dma01_prep_sum_product`:
 
@@ -810,26 +938,33 @@ ppc440spe_dma01_prep_sum_product
 
     Dx = A\*(P+Pxy) + B\*(Q+Qxy) operation where destination is also the source.
 
-    :param struct ppc440spe_adma_chan \*ppc440spe_chan:
+    :param ppc440spe_chan:
         *undescribed*
+    :type ppc440spe_chan: struct ppc440spe_adma_chan \*
 
-    :param dma_addr_t \*dst:
+    :param dst:
         *undescribed*
+    :type dst: dma_addr_t \*
 
-    :param dma_addr_t \*src:
+    :param src:
         *undescribed*
+    :type src: dma_addr_t \*
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
-    :param const unsigned char \*scf:
+    :param scf:
         *undescribed*
+    :type scf: const unsigned char \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_adma_prep_dma_pq`:
 
@@ -840,26 +975,33 @@ ppc440spe_adma_prep_dma_pq
 
     prepare CDB (group) for a GF-XOR operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t \*dst:
+    :param dst:
         *undescribed*
+    :type dst: dma_addr_t \*
 
-    :param dma_addr_t \*src:
+    :param src:
         *undescribed*
+    :type src: dma_addr_t \*
 
-    :param unsigned int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: unsigned int
 
-    :param const unsigned char \*scf:
+    :param scf:
         *undescribed*
+    :type scf: const unsigned char \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_adma_prep_dma_pqzero_sum`:
 
@@ -870,29 +1012,37 @@ ppc440spe_adma_prep_dma_pqzero_sum
 
     prepare CDB group for a PQ_ZERO_SUM operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t \*pq:
+    :param pq:
         *undescribed*
+    :type pq: dma_addr_t \*
 
-    :param dma_addr_t \*src:
+    :param src:
         *undescribed*
+    :type src: dma_addr_t \*
 
-    :param unsigned int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: unsigned int
 
-    :param const unsigned char \*scf:
+    :param scf:
         *undescribed*
+    :type scf: const unsigned char \*
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param enum sum_check_flags \*pqres:
+    :param pqres:
         *undescribed*
+    :type pqres: enum sum_check_flags \*
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_adma_prep_dma_xor_zero_sum`:
 
@@ -903,23 +1053,29 @@ ppc440spe_adma_prep_dma_xor_zero_sum
 
     prepare CDB group for XOR ZERO_SUM operation
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t \*src:
+    :param src:
         *undescribed*
+    :type src: dma_addr_t \*
 
-    :param unsigned int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: unsigned int
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
-    :param enum sum_check_flags \*result:
+    :param result:
         *undescribed*
+    :type result: enum sum_check_flags \*
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_adma_set_dest`:
 
@@ -930,14 +1086,17 @@ ppc440spe_adma_set_dest
 
     set destination address into descriptor
 
-    :param struct ppc440spe_adma_desc_slot \*sw_desc:
+    :param sw_desc:
         *undescribed*
+    :type sw_desc: struct ppc440spe_adma_desc_slot \*
 
-    :param dma_addr_t addr:
+    :param addr:
         *undescribed*
+    :type addr: dma_addr_t
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. _`ppc440spe_adma_pq_set_dest`:
 
@@ -948,14 +1107,17 @@ ppc440spe_adma_pq_set_dest
 
     set destination address into descriptor for the PQXOR operation
 
-    :param struct ppc440spe_adma_desc_slot \*sw_desc:
+    :param sw_desc:
         *undescribed*
+    :type sw_desc: struct ppc440spe_adma_desc_slot \*
 
-    :param dma_addr_t \*addrs:
+    :param addrs:
         *undescribed*
+    :type addrs: dma_addr_t \*
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`ppc440spe_adma_pqzero_sum_set_dest`:
 
@@ -966,14 +1128,17 @@ ppc440spe_adma_pqzero_sum_set_dest
 
     set destination address into descriptor for the PQ_ZERO_SUM operation
 
-    :param struct ppc440spe_adma_desc_slot \*sw_desc:
+    :param sw_desc:
         *undescribed*
+    :type sw_desc: struct ppc440spe_adma_desc_slot \*
 
-    :param dma_addr_t paddr:
+    :param paddr:
         *undescribed*
+    :type paddr: dma_addr_t
 
-    :param dma_addr_t qaddr:
+    :param qaddr:
         *undescribed*
+    :type qaddr: dma_addr_t
 
 .. _`ppc440spe_desc_set_xor_src_cnt`:
 
@@ -984,11 +1149,13 @@ ppc440spe_desc_set_xor_src_cnt
 
     set source count into descriptor
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
 .. _`ppc440spe_adma_pq_set_src`:
 
@@ -999,14 +1166,17 @@ ppc440spe_adma_pq_set_src
 
     set source address into descriptor
 
-    :param struct ppc440spe_adma_desc_slot \*sw_desc:
+    :param sw_desc:
         *undescribed*
+    :type sw_desc: struct ppc440spe_adma_desc_slot \*
 
-    :param dma_addr_t addr:
+    :param addr:
         *undescribed*
+    :type addr: dma_addr_t
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. _`ppc440spe_adma_memcpy_xor_set_src`:
 
@@ -1017,14 +1187,17 @@ ppc440spe_adma_memcpy_xor_set_src
 
     set source address into descriptor
 
-    :param struct ppc440spe_adma_desc_slot \*sw_desc:
+    :param sw_desc:
         *undescribed*
+    :type sw_desc: struct ppc440spe_adma_desc_slot \*
 
-    :param dma_addr_t addr:
+    :param addr:
         *undescribed*
+    :type addr: dma_addr_t
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. _`ppc440spe_adma_dma2rxor_inc_addr`:
 
@@ -1033,17 +1206,21 @@ ppc440spe_adma_dma2rxor_inc_addr
 
 .. c:function:: void ppc440spe_adma_dma2rxor_inc_addr(struct ppc440spe_adma_desc_slot *desc, struct ppc440spe_rxor *cursor, int index, int src_cnt)
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_rxor \*cursor:
+    :param cursor:
         *undescribed*
+    :type cursor: struct ppc440spe_rxor \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
 .. _`ppc440spe_adma_dma2rxor_prep_src`:
 
@@ -1054,20 +1231,25 @@ ppc440spe_adma_dma2rxor_prep_src
 
     setup RXOR types in DMA2 CDB
 
-    :param struct ppc440spe_adma_desc_slot \*hdesc:
+    :param hdesc:
         *undescribed*
+    :type hdesc: struct ppc440spe_adma_desc_slot \*
 
-    :param struct ppc440spe_rxor \*cursor:
+    :param cursor:
         *undescribed*
+    :type cursor: struct ppc440spe_rxor \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
-    :param int src_cnt:
+    :param src_cnt:
         *undescribed*
+    :type src_cnt: int
 
-    :param u32 addr:
+    :param addr:
         *undescribed*
+    :type addr: u32
 
 .. _`ppc440spe_adma_dma2rxor_set_src`:
 
@@ -1078,14 +1260,17 @@ ppc440spe_adma_dma2rxor_set_src
 
     set RXOR source address; it's assumed that \ :c:func:`ppc440spe_adma_dma2rxor_prep_src`\  has already done prior this call
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
-    :param dma_addr_t addr:
+    :param addr:
         *undescribed*
+    :type addr: dma_addr_t
 
 .. _`ppc440spe_adma_dma2rxor_set_mult`:
 
@@ -1096,14 +1281,17 @@ ppc440spe_adma_dma2rxor_set_mult
 
     set RXOR multipliers; it's assumed that \ :c:func:`ppc440spe_adma_dma2rxor_prep_src`\  has already done prior this call
 
-    :param struct ppc440spe_adma_desc_slot \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct ppc440spe_adma_desc_slot \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
-    :param u8 mult:
+    :param mult:
         *undescribed*
+    :type mult: u8
 
 .. _`ppc440spe_init_rxor_cursor`:
 
@@ -1112,8 +1300,9 @@ ppc440spe_init_rxor_cursor
 
 .. c:function:: void ppc440spe_init_rxor_cursor(struct ppc440spe_rxor *cursor)
 
-    :param struct ppc440spe_rxor \*cursor:
+    :param cursor:
         *undescribed*
+    :type cursor: struct ppc440spe_rxor \*
 
 .. _`ppc440spe_adma_pq_set_src_mult`:
 
@@ -1124,17 +1313,21 @@ ppc440spe_adma_pq_set_src_mult
 
     set multiplication coefficient into descriptor for the PQXOR operation
 
-    :param struct ppc440spe_adma_desc_slot \*sw_desc:
+    :param sw_desc:
         *undescribed*
+    :type sw_desc: struct ppc440spe_adma_desc_slot \*
 
-    :param unsigned char mult:
+    :param mult:
         *undescribed*
+    :type mult: unsigned char
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
-    :param int dst_pos:
+    :param dst_pos:
         *undescribed*
+    :type dst_pos: int
 
 .. _`ppc440spe_adma_free_chan_resources`:
 
@@ -1145,8 +1338,9 @@ ppc440spe_adma_free_chan_resources
 
     free the resources allocated
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
 .. _`ppc440spe_adma_tx_status`:
 
@@ -1157,14 +1351,17 @@ ppc440spe_adma_tx_status
 
     poll the status of an ADMA transaction
 
-    :param struct dma_chan \*chan:
+    :param chan:
         ADMA channel handle
+    :type chan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         ADMA transaction identifier
+    :type cookie: dma_cookie_t
 
-    :param struct dma_tx_state \*txstate:
+    :param txstate:
         a holder for the current state of the channel
+    :type txstate: struct dma_tx_state \*
 
 .. _`ppc440spe_adma_eot_handler`:
 
@@ -1175,11 +1372,13 @@ ppc440spe_adma_eot_handler
 
     end of transfer interrupt handler
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`ppc440spe_adma_err_handler`:
 
@@ -1190,11 +1389,13 @@ ppc440spe_adma_err_handler
 
     DMA error interrupt handler; do the same things as a eot handler
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`ppc440spe_test_callback`:
 
@@ -1205,8 +1406,9 @@ ppc440spe_test_callback
 
     called when test operation has been done
 
-    :param void \*unused:
+    :param unused:
         *undescribed*
+    :type unused: void \*
 
 .. _`ppc440spe_adma_issue_pending`:
 
@@ -1217,8 +1419,9 @@ ppc440spe_adma_issue_pending
 
     flush all pending descriptors to h/w
 
-    :param struct dma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct dma_chan \*
 
 .. _`ppc440spe_chan_start_null_xor`:
 
@@ -1229,8 +1432,9 @@ ppc440spe_chan_start_null_xor
 
     initiate the first XOR operation (DMA engines use FIFOs (as opposite to chains used in XOR) so this is a XOR specific operation)
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_test_raid6`:
 
@@ -1241,8 +1445,9 @@ ppc440spe_test_raid6
 
     test are RAID-6 capabilities enabled successfully. For this we just perform one WXOR operation with the same source and destination addresses, the GF-multiplier is 1; so if RAID-6 capabilities are enabled then we'll get src/dst filled with zero.
 
-    :param struct ppc440spe_adma_chan \*chan:
+    :param chan:
         *undescribed*
+    :type chan: struct ppc440spe_adma_chan \*
 
 .. _`ppc440spe_adma_probe`:
 
@@ -1253,8 +1458,9 @@ ppc440spe_adma_probe
 
     probe the asynch device
 
-    :param struct platform_device \*ofdev:
+    :param ofdev:
         *undescribed*
+    :type ofdev: struct platform_device \*
 
 .. _`ppc440spe_adma_remove`:
 
@@ -1265,8 +1471,9 @@ ppc440spe_adma_remove
 
     remove the asynch device
 
-    :param struct platform_device \*ofdev:
+    :param ofdev:
         *undescribed*
+    :type ofdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

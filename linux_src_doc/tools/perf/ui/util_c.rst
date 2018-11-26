@@ -10,8 +10,9 @@ perf_error__register
 
     Register error logging functions
 
-    :param struct perf_error_ops \*eops:
+    :param eops:
         The pointer to error logging function struct
+    :type eops: struct perf_error_ops \*
 
 .. _`perf_error__register.description`:
 
@@ -30,8 +31,9 @@ perf_error__unregister
 
     Unregister error logging functions
 
-    :param struct perf_error_ops \*eops:
+    :param eops:
         The pointer to error logging function struct
+    :type eops: struct perf_error_ops \*
 
 .. _`perf_error__unregister.description`:
 

@@ -10,17 +10,21 @@ omap3430es2_clk_ssi_find_idlest
 
     return CM_IDLEST info for SSI
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* being enabled
+    :type clk: struct clk_hw_omap \*
 
-    :param struct clk_omap_reg \*idlest_reg:
+    :param idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
+    :type idlest_reg: struct clk_omap_reg \*
 
-    :param u8 \*idlest_bit:
+    :param idlest_bit:
         pointer to a u8 to store the CM_IDLEST bit shift into
+    :type idlest_bit: u8 \*
 
-    :param u8 \*idlest_val:
+    :param idlest_val:
         pointer to a u8 to store the CM_IDLEST indicator
+    :type idlest_val: u8 \*
 
 .. _`omap3430es2_clk_ssi_find_idlest.description`:
 
@@ -40,17 +44,21 @@ omap3430es2_clk_dss_usbhost_find_idlest
 
     CM_IDLEST info for DSS, USBHOST
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* being enabled
+    :type clk: struct clk_hw_omap \*
 
-    :param struct clk_omap_reg \*idlest_reg:
+    :param idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
+    :type idlest_reg: struct clk_omap_reg \*
 
-    :param u8 \*idlest_bit:
+    :param idlest_bit:
         pointer to a u8 to store the CM_IDLEST bit shift into
+    :type idlest_bit: u8 \*
 
-    :param u8 \*idlest_val:
+    :param idlest_val:
         pointer to a u8 to store the CM_IDLEST indicator
+    :type idlest_val: u8 \*
 
 .. _`omap3430es2_clk_dss_usbhost_find_idlest.description`:
 
@@ -73,17 +81,21 @@ omap3430es2_clk_hsotgusb_find_idlest
 
     return CM_IDLEST info for HSOTGUSB
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* being enabled
+    :type clk: struct clk_hw_omap \*
 
-    :param struct clk_omap_reg \*idlest_reg:
+    :param idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
+    :type idlest_reg: struct clk_omap_reg \*
 
-    :param u8 \*idlest_bit:
+    :param idlest_bit:
         pointer to a u8 to store the CM_IDLEST bit shift into
+    :type idlest_bit: u8 \*
 
-    :param u8 \*idlest_val:
+    :param idlest_val:
         pointer to a u8 to store the CM_IDLEST indicator
+    :type idlest_val: u8 \*
 
 .. _`omap3430es2_clk_hsotgusb_find_idlest.description`:
 
@@ -103,17 +115,21 @@ am35xx_clk_find_idlest
 
     return clock ACK info for AM35XX IPSS
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* being enabled
+    :type clk: struct clk_hw_omap \*
 
-    :param struct clk_omap_reg \*idlest_reg:
+    :param idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
+    :type idlest_reg: struct clk_omap_reg \*
 
-    :param u8 \*idlest_bit:
+    :param idlest_bit:
         pointer to a u8 to store the CM_IDLEST bit shift into
+    :type idlest_bit: u8 \*
 
-    :param u8 \*idlest_val:
+    :param idlest_val:
         pointer to a u8 to store the CM_IDLEST indicator
+    :type idlest_val: u8 \*
 
 .. _`am35xx_clk_find_idlest.description`:
 
@@ -133,14 +149,17 @@ am35xx_clk_find_companion
 
     find companion clock to \ ``clk``\ 
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* to find the companion clock of
+    :type clk: struct clk_hw_omap \*
 
-    :param struct clk_omap_reg \*other_reg:
+    :param other_reg:
         void \__iomem \*\* to return the companion clock CM\_\*CLKEN va in
+    :type other_reg: struct clk_omap_reg \*
 
-    :param u8 \*other_bit:
+    :param other_bit:
         u8 \*\* to return the companion clock bit shift in
+    :type other_bit: u8 \*
 
 .. _`am35xx_clk_find_companion.description`:
 
@@ -164,17 +183,21 @@ am35xx_clk_ipss_find_idlest
 
     return CM_IDLEST info for IPSS
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* being enabled
+    :type clk: struct clk_hw_omap \*
 
-    :param struct clk_omap_reg \*idlest_reg:
+    :param idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
+    :type idlest_reg: struct clk_omap_reg \*
 
-    :param u8 \*idlest_bit:
+    :param idlest_bit:
         pointer to a u8 to store the CM_IDLEST bit shift into
+    :type idlest_bit: u8 \*
 
-    :param u8 \*idlest_val:
+    :param idlest_val:
         pointer to a u8 to store the CM_IDLEST indicator
+    :type idlest_val: u8 \*
 
 .. _`am35xx_clk_ipss_find_idlest.description`:
 
@@ -194,8 +217,9 @@ omap3_clk_lock_dpll5
 
     locks DPLL5
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3_clk_lock_dpll5.description`:
 

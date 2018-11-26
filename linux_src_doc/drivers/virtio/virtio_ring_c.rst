@@ -10,23 +10,29 @@ virtqueue_add_sgs
 
     expose buffers to other end
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
-    :param struct scatterlist  \*sgs:
+    :param sgs:
         array of terminated scatterlists.
+    :type sgs: struct scatterlist  \*
 
-    :param unsigned int out_sgs:
+    :param out_sgs:
         *undescribed*
+    :type out_sgs: unsigned int
 
-    :param unsigned int in_sgs:
+    :param in_sgs:
         *undescribed*
+    :type in_sgs: unsigned int
 
-    :param void \*data:
+    :param data:
         the token identifying the buffer.
+    :type data: void \*
 
-    :param gfp_t gfp:
+    :param gfp:
         how to do memory allocations (if necessary).
+    :type gfp: gfp_t
 
 .. _`virtqueue_add_sgs.description`:
 
@@ -47,20 +53,25 @@ virtqueue_add_outbuf
 
     expose output buffers to other end
 
-    :param struct virtqueue \*vq:
+    :param vq:
         the struct virtqueue we're talking about.
+    :type vq: struct virtqueue \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatterlist (must be well-formed and terminated!)
+    :type sg: struct scatterlist \*
 
-    :param unsigned int num:
+    :param num:
         the number of entries in \ ``sg``\  readable by other side
+    :type num: unsigned int
 
-    :param void \*data:
+    :param data:
         the token identifying the buffer.
+    :type data: void \*
 
-    :param gfp_t gfp:
+    :param gfp:
         how to do memory allocations (if necessary).
+    :type gfp: gfp_t
 
 .. _`virtqueue_add_outbuf.description`:
 
@@ -81,20 +92,25 @@ virtqueue_add_inbuf
 
     expose input buffers to other end
 
-    :param struct virtqueue \*vq:
+    :param vq:
         the struct virtqueue we're talking about.
+    :type vq: struct virtqueue \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatterlist (must be well-formed and terminated!)
+    :type sg: struct scatterlist \*
 
-    :param unsigned int num:
+    :param num:
         the number of entries in \ ``sg``\  writable by other side
+    :type num: unsigned int
 
-    :param void \*data:
+    :param data:
         the token identifying the buffer.
+    :type data: void \*
 
-    :param gfp_t gfp:
+    :param gfp:
         how to do memory allocations (if necessary).
+    :type gfp: gfp_t
 
 .. _`virtqueue_add_inbuf.description`:
 
@@ -115,23 +131,29 @@ virtqueue_add_inbuf_ctx
 
     expose input buffers to other end
 
-    :param struct virtqueue \*vq:
+    :param vq:
         the struct virtqueue we're talking about.
+    :type vq: struct virtqueue \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatterlist (must be well-formed and terminated!)
+    :type sg: struct scatterlist \*
 
-    :param unsigned int num:
+    :param num:
         the number of entries in \ ``sg``\  writable by other side
+    :type num: unsigned int
 
-    :param void \*data:
+    :param data:
         the token identifying the buffer.
+    :type data: void \*
 
-    :param void \*ctx:
+    :param ctx:
         extra context for the token
+    :type ctx: void \*
 
-    :param gfp_t gfp:
+    :param gfp:
         how to do memory allocations (if necessary).
+    :type gfp: gfp_t
 
 .. _`virtqueue_add_inbuf_ctx.description`:
 
@@ -152,8 +174,9 @@ virtqueue_kick_prepare
 
     first half of split virtqueue_kick call.
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
 .. _`virtqueue_kick_prepare.description`:
 
@@ -176,8 +199,9 @@ virtqueue_notify
 
     second half of split virtqueue_kick call.
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
 .. _`virtqueue_notify.description`:
 
@@ -197,8 +221,9 @@ virtqueue_kick
 
     update after add_buf
 
-    :param struct virtqueue \*vq:
+    :param vq:
         the struct virtqueue
+    :type vq: struct virtqueue \*
 
 .. _`virtqueue_kick.description`:
 
@@ -222,14 +247,17 @@ virtqueue_get_buf_ctx
 
     get the next used buffer
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
-    :param unsigned int \*len:
+    :param len:
         the length written into the buffer
+    :type len: unsigned int \*
 
-    :param void \*\*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: void \*\*
 
 .. _`virtqueue_get_buf_ctx.description`:
 
@@ -256,8 +284,9 @@ virtqueue_disable_cb
 
     disable callbacks
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
 .. _`virtqueue_disable_cb.description`:
 
@@ -278,8 +307,9 @@ virtqueue_enable_cb_prepare
 
     restart callbacks after disable_cb
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
 .. _`virtqueue_enable_cb_prepare.description`:
 
@@ -303,11 +333,13 @@ virtqueue_poll
 
     query pending used buffers
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
-    :param unsigned last_used_idx:
+    :param last_used_idx:
         virtqueue state (from call to virtqueue_enable_cb_prepare).
+    :type last_used_idx: unsigned
 
 .. _`virtqueue_poll.description`:
 
@@ -327,8 +359,9 @@ virtqueue_enable_cb
 
     restart callbacks after disable_cb.
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
 .. _`virtqueue_enable_cb.description`:
 
@@ -351,8 +384,9 @@ virtqueue_enable_cb_delayed
 
     restart callbacks after disable_cb.
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
 .. _`virtqueue_enable_cb_delayed.description`:
 
@@ -377,8 +411,9 @@ virtqueue_detach_unused_buf
 
     detach first unused buffer
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
 .. _`virtqueue_detach_unused_buf.description`:
 
@@ -398,8 +433,9 @@ virtqueue_get_vring_size
 
     return the size of the virtqueue's vring
 
-    :param struct virtqueue \*_vq:
+    :param _vq:
         *undescribed*
+    :type _vq: struct virtqueue \*
 
 .. _`virtqueue_get_vring_size.description`:
 

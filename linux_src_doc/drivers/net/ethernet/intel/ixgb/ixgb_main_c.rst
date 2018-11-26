@@ -10,8 +10,9 @@ ixgb_init_module
 
     Driver Registration Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ixgb_init_module.description`:
 
@@ -30,8 +31,9 @@ ixgb_exit_module
 
     Driver Exit Cleanup Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ixgb_exit_module.description`:
 
@@ -50,8 +52,9 @@ ixgb_irq_disable
 
     Mask off interrupt generation on the NIC
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_irq_enable`:
 
@@ -62,8 +65,9 @@ ixgb_irq_enable
 
     Enable default interrupt generation settings
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_probe`:
 
@@ -74,11 +78,13 @@ ixgb_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in ixgb_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`ixgb_probe.description`:
 
@@ -100,8 +106,9 @@ ixgb_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`ixgb_remove.description`:
 
@@ -122,8 +129,9 @@ ixgb_sw_init
 
     Initialize general software structures (struct ixgb_adapter)
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_sw_init.description`:
 
@@ -143,8 +151,9 @@ ixgb_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgb_open.description`:
 
@@ -168,8 +177,9 @@ ixgb_close
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgb_close.description`:
 
@@ -192,8 +202,9 @@ ixgb_setup_tx_resources
 
     allocate Tx resources (Descriptors)
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_setup_tx_resources.description`:
 
@@ -211,8 +222,9 @@ ixgb_configure_tx
 
     Configure 82597 Transmit Unit after Reset.
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_configure_tx.description`:
 
@@ -230,8 +242,9 @@ ixgb_setup_rx_resources
 
     allocate Rx resources (Descriptors)
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_setup_rx_resources.description`:
 
@@ -249,8 +262,9 @@ ixgb_setup_rctl
 
     configure the receive control register
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_configure_rx`:
 
@@ -261,8 +275,9 @@ ixgb_configure_rx
 
     Configure 82597 Receive Unit after Reset.
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_configure_rx.description`:
 
@@ -280,8 +295,9 @@ ixgb_free_tx_resources
 
     Free Tx Resources
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_free_tx_resources.description`:
 
@@ -299,8 +315,9 @@ ixgb_clean_tx_ring
 
     Free Tx Buffers
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_free_rx_resources`:
 
@@ -311,8 +328,9 @@ ixgb_free_rx_resources
 
     Free Rx Resources
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_free_rx_resources.description`:
 
@@ -330,8 +348,9 @@ ixgb_clean_rx_ring
 
     Free Rx Buffers
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_set_mac`:
 
@@ -342,11 +361,13 @@ ixgb_set_mac
 
     Change the Ethernet Address of the NIC
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         pointer to an address structure
+    :type p: void \*
 
 .. _`ixgb_set_mac.description`:
 
@@ -364,8 +385,9 @@ ixgb_set_multi
 
     Multicast and Promiscuous mode set
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgb_set_multi.description`:
 
@@ -386,8 +408,9 @@ ixgb_watchdog
 
     Timer Call-back
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`ixgb_tx_timeout`:
 
@@ -398,8 +421,9 @@ ixgb_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgb_change_mtu`:
 
@@ -410,11 +434,13 @@ ixgb_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`ixgb_change_mtu.description`:
 
@@ -432,8 +458,9 @@ ixgb_update_stats
 
     Update the board statistics counters.
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_intr`:
 
@@ -444,11 +471,13 @@ ixgb_intr
 
     Interrupt Handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a network interface device structure
+    :type data: void \*
 
 .. _`ixgb_clean`:
 
@@ -459,11 +488,13 @@ ixgb_clean
 
     NAPI Rx polling callback
 
-    :param struct napi_struct \*napi:
+    :param napi:
         *undescribed*
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         *undescribed*
+    :type budget: int
 
 .. _`ixgb_clean_tx_irq`:
 
@@ -474,8 +505,9 @@ ixgb_clean_tx_irq
 
     Reclaim resources after transmit completes
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
 .. _`ixgb_rx_checksum`:
 
@@ -486,14 +518,17 @@ ixgb_rx_checksum
 
     Receive Checksum Offload for 82597.
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
-    :param struct ixgb_rx_desc \*rx_desc:
+    :param rx_desc:
         receive descriptor
+    :type rx_desc: struct ixgb_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`ixgb_clean_rx_irq`:
 
@@ -504,14 +539,17 @@ ixgb_clean_rx_irq
 
     Send received data up the network stack,
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgb_adapter \*
 
-    :param int \*work_done:
+    :param work_done:
         *undescribed*
+    :type work_done: int \*
 
-    :param int work_to_do:
+    :param work_to_do:
         *undescribed*
+    :type work_to_do: int
 
 .. _`ixgb_alloc_rx_buffers`:
 
@@ -522,11 +560,13 @@ ixgb_alloc_rx_buffers
 
     Replace used receive buffers
 
-    :param struct ixgb_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct ixgb_adapter \*
 
-    :param int cleaned_count:
+    :param cleaned_count:
         *undescribed*
+    :type cleaned_count: int
 
 .. _`ixgb_io_error_detected`:
 
@@ -537,11 +577,13 @@ ixgb_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to pci device with error
+    :type pdev: struct pci_dev \*
 
-    :param enum pci_channel_state state:
+    :param state:
         pci channel state after error
+    :type state: enum pci_channel_state
 
 .. _`ixgb_io_error_detected.description`:
 
@@ -560,8 +602,9 @@ ixgb_io_slot_reset
 
     called after the pci bus has been reset. \ ``pdev``\     pointer to pci device with error
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`ixgb_io_slot_reset.description`:
 
@@ -582,8 +625,9 @@ ixgb_io_resume
 
     called when its OK to resume normal operations \ ``pdev``\     pointer to pci device with error
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`ixgb_io_resume.description`:
 

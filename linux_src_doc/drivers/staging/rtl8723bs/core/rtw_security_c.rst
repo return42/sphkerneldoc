@@ -8,11 +8,13 @@ rijndaelKeySetupEnc
 
 .. c:function:: void rijndaelKeySetupEnc(u32 rk, const u8 cipherKey)
 
-    :param u32 rk:
+    :param rk:
         *undescribed*
+    :type rk: u32
 
-    :param const u8 cipherKey:
+    :param cipherKey:
         *undescribed*
+    :type cipherKey: const u8
 
 .. _`rijndaelkeysetupenc.description`:
 
@@ -30,20 +32,25 @@ omac1_aes_128_vector
 
     One-Key CBC MAC (OMAC1) hash with AES-128
 
-    :param u8 \*key:
+    :param key:
         128-bit key for the hash operation
+    :type key: u8 \*
 
-    :param size_t num_elem:
+    :param num_elem:
         Number of elements in the data vector
+    :type num_elem: size_t
 
-    :param u8  \*addr:
+    :param addr:
         Pointers to the data areas
+    :type addr: u8  \*
 
-    :param size_t \*len:
+    :param len:
         Lengths of the data blocks
+    :type len: size_t \*
 
-    :param u8 \*mac:
+    :param mac:
         Buffer for MAC (128 bits, i.e., 16 bytes)
+    :type mac: u8 \*
 
 .. _`omac1_aes_128_vector.return`:
 
@@ -65,17 +72,21 @@ omac1_aes_128
 
     One-Key CBC MAC (OMAC1) hash with AES-128 (aka AES-CMAC)
 
-    :param u8 \*key:
+    :param key:
         128-bit key for the hash operation
+    :type key: u8 \*
 
-    :param u8 \*data:
+    :param data:
         Data buffer for which a MAC is determined
+    :type data: u8 \*
 
-    :param size_t data_len:
+    :param data_len:
         Length of data buffer in bytes
+    :type data_len: size_t
 
-    :param u8 \*mac:
+    :param mac:
         Buffer for MAC (128 bits, i.e., 16 bytes)
+    :type mac: u8 \*
 
 .. _`omac1_aes_128.return`:
 

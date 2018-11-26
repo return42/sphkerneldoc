@@ -10,14 +10,17 @@ menu_select
 
     selects the next idle state to enter
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver containing state data
+    :type drv: struct cpuidle_driver \*
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the CPU
+    :type dev: struct cpuidle_device \*
 
-    :param bool \*stop_tick:
+    :param stop_tick:
         indication on whether or not to stop the tick
+    :type stop_tick: bool \*
 
 .. _`menu_reflect`:
 
@@ -28,11 +31,13 @@ menu_reflect
 
     records that data structures need update
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the CPU
+    :type dev: struct cpuidle_device \*
 
-    :param int index:
+    :param index:
         the index of actual entered state
+    :type index: int
 
 .. _`menu_reflect.note`:
 
@@ -51,11 +56,13 @@ menu_update
 
     attempts to guess what happened after entry
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver containing state data
+    :type drv: struct cpuidle_driver \*
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the CPU
+    :type dev: struct cpuidle_device \*
 
 .. _`menu_enable_device`:
 
@@ -66,11 +73,13 @@ menu_enable_device
 
     scans a CPU's states and does setup
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver
+    :type drv: struct cpuidle_driver \*
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the CPU
+    :type dev: struct cpuidle_device \*
 
 .. _`init_menu`:
 
@@ -81,8 +90,9 @@ init_menu
 
     initializes the governor
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

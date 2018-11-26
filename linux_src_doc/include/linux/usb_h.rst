@@ -640,14 +640,17 @@ usb_hub_for_each_child
 
     iterate over all child devices on the hub
 
-    :param  hdev:
+    :param hdev:
         USB device belonging to the usb hub
+    :type hdev: 
 
-    :param  port1:
+    :param port1:
         portnum associated with child device
+    :type port1: 
 
-    :param  child:
+    :param child:
         child device pointer
+    :type child: 
 
 .. _`usb_interface_claimed`:
 
@@ -658,8 +661,9 @@ usb_interface_claimed
 
     returns true iff an interface is claimed
 
-    :param struct usb_interface \*iface:
+    :param iface:
         the interface being checked
+    :type iface: struct usb_interface \*
 
 .. _`usb_interface_claimed.return`:
 
@@ -687,14 +691,17 @@ usb_make_path
 
     returns stable device path in the usb tree
 
-    :param struct usb_device \*dev:
+    :param dev:
         the device whose path is being constructed
+    :type dev: struct usb_device \*
 
-    :param char \*buf:
+    :param buf:
         where to put the string
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         how big is "buf"?
+    :type size: size_t
 
 .. _`usb_make_path.return`:
 
@@ -733,11 +740,13 @@ USB_DEVICE
 
     macro used to describe a specific usb device
 
-    :param  vend:
+    :param vend:
         the 16 bit USB Vendor ID
+    :type vend: 
 
-    :param  prod:
+    :param prod:
         the 16 bit USB Product ID
+    :type prod: 
 
 .. _`usb_device.description`:
 
@@ -756,17 +765,21 @@ USB_DEVICE_VER
 
     describe a specific usb device with a version range
 
-    :param  vend:
+    :param vend:
         the 16 bit USB Vendor ID
+    :type vend: 
 
-    :param  prod:
+    :param prod:
         the 16 bit USB Product ID
+    :type prod: 
 
-    :param  lo:
+    :param lo:
         the bcdDevice_lo value
+    :type lo: 
 
-    :param  hi:
+    :param hi:
         the bcdDevice_hi value
+    :type hi: 
 
 .. _`usb_device_ver.description`:
 
@@ -785,14 +798,17 @@ USB_DEVICE_INTERFACE_CLASS
 
     describe a usb device with a specific interface class
 
-    :param  vend:
+    :param vend:
         the 16 bit USB Vendor ID
+    :type vend: 
 
-    :param  prod:
+    :param prod:
         the 16 bit USB Product ID
+    :type prod: 
 
-    :param  cl:
+    :param cl:
         bInterfaceClass value
+    :type cl: 
 
 .. _`usb_device_interface_class.description`:
 
@@ -811,14 +827,17 @@ USB_DEVICE_INTERFACE_PROTOCOL
 
     describe a usb device with a specific interface protocol
 
-    :param  vend:
+    :param vend:
         the 16 bit USB Vendor ID
+    :type vend: 
 
-    :param  prod:
+    :param prod:
         the 16 bit USB Product ID
+    :type prod: 
 
-    :param  pr:
+    :param pr:
         bInterfaceProtocol value
+    :type pr: 
 
 .. _`usb_device_interface_protocol.description`:
 
@@ -837,14 +856,17 @@ USB_DEVICE_INTERFACE_NUMBER
 
     describe a usb device with a specific interface number
 
-    :param  vend:
+    :param vend:
         the 16 bit USB Vendor ID
+    :type vend: 
 
-    :param  prod:
+    :param prod:
         the 16 bit USB Product ID
+    :type prod: 
 
-    :param  num:
+    :param num:
         bInterfaceNumber value
+    :type num: 
 
 .. _`usb_device_interface_number.description`:
 
@@ -863,14 +885,17 @@ USB_DEVICE_INFO
 
     macro used to describe a class of usb devices
 
-    :param  cl:
+    :param cl:
         bDeviceClass value
+    :type cl: 
 
-    :param  sc:
+    :param sc:
         bDeviceSubClass value
+    :type sc: 
 
-    :param  pr:
+    :param pr:
         bDeviceProtocol value
+    :type pr: 
 
 .. _`usb_device_info.description`:
 
@@ -889,14 +914,17 @@ USB_INTERFACE_INFO
 
     macro used to describe a class of usb interfaces
 
-    :param  cl:
+    :param cl:
         bInterfaceClass value
+    :type cl: 
 
-    :param  sc:
+    :param sc:
         bInterfaceSubClass value
+    :type sc: 
 
-    :param  pr:
+    :param pr:
         bInterfaceProtocol value
+    :type pr: 
 
 .. _`usb_interface_info.description`:
 
@@ -915,20 +943,25 @@ USB_DEVICE_AND_INTERFACE_INFO
 
     describe a specific usb device with a class of usb interfaces
 
-    :param  vend:
+    :param vend:
         the 16 bit USB Vendor ID
+    :type vend: 
 
-    :param  prod:
+    :param prod:
         the 16 bit USB Product ID
+    :type prod: 
 
-    :param  cl:
+    :param cl:
         bInterfaceClass value
+    :type cl: 
 
-    :param  sc:
+    :param sc:
         bInterfaceSubClass value
+    :type sc: 
 
-    :param  pr:
+    :param pr:
         bInterfaceProtocol value
+    :type pr: 
 
 .. _`usb_device_and_interface_info.description`:
 
@@ -950,17 +983,21 @@ USB_VENDOR_AND_INTERFACE_INFO
 
     describe a specific usb vendor with a class of usb interfaces
 
-    :param  vend:
+    :param vend:
         the 16 bit USB Vendor ID
+    :type vend: 
 
-    :param  cl:
+    :param cl:
         bInterfaceClass value
+    :type cl: 
 
-    :param  sc:
+    :param sc:
         bInterfaceSubClass value
+    :type sc: 
 
-    :param  pr:
+    :param pr:
         bInterfaceProtocol value
+    :type pr: 
 
 .. _`usb_vendor_and_interface_info.description`:
 
@@ -1268,8 +1305,9 @@ module_usb_driver
 
     Helper macro for registering a USB driver
 
-    :param  __usb_driver:
+    :param __usb_driver:
         usb_driver struct
+    :type __usb_driver: 
 
 .. _`module_usb_driver.description`:
 
@@ -1585,29 +1623,37 @@ usb_fill_control_urb
 
     initializes a control urb
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to the urb to initialize.
+    :type urb: struct urb \*
 
-    :param struct usb_device \*dev:
+    :param dev:
         pointer to the struct usb_device for this urb.
+    :type dev: struct usb_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         the endpoint pipe
+    :type pipe: unsigned int
 
-    :param unsigned char \*setup_packet:
+    :param setup_packet:
         pointer to the setup_packet buffer
+    :type setup_packet: unsigned char \*
 
-    :param void \*transfer_buffer:
+    :param transfer_buffer:
         pointer to the transfer buffer
+    :type transfer_buffer: void \*
 
-    :param int buffer_length:
+    :param buffer_length:
         length of the transfer buffer
+    :type buffer_length: int
 
-    :param usb_complete_t complete_fn:
+    :param complete_fn:
         pointer to the usb_complete_t function
+    :type complete_fn: usb_complete_t
 
-    :param void \*context:
+    :param context:
         what to set the urb context to.
+    :type context: void \*
 
 .. _`usb_fill_control_urb.description`:
 
@@ -1626,26 +1672,33 @@ usb_fill_bulk_urb
 
     macro to help initialize a bulk urb
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to the urb to initialize.
+    :type urb: struct urb \*
 
-    :param struct usb_device \*dev:
+    :param dev:
         pointer to the struct usb_device for this urb.
+    :type dev: struct usb_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         the endpoint pipe
+    :type pipe: unsigned int
 
-    :param void \*transfer_buffer:
+    :param transfer_buffer:
         pointer to the transfer buffer
+    :type transfer_buffer: void \*
 
-    :param int buffer_length:
+    :param buffer_length:
         length of the transfer buffer
+    :type buffer_length: int
 
-    :param usb_complete_t complete_fn:
+    :param complete_fn:
         pointer to the usb_complete_t function
+    :type complete_fn: usb_complete_t
 
-    :param void \*context:
+    :param context:
         what to set the urb context to.
+    :type context: void \*
 
 .. _`usb_fill_bulk_urb.description`:
 
@@ -1664,30 +1717,38 @@ usb_fill_int_urb
 
     macro to help initialize a interrupt urb
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to the urb to initialize.
+    :type urb: struct urb \*
 
-    :param struct usb_device \*dev:
+    :param dev:
         pointer to the struct usb_device for this urb.
+    :type dev: struct usb_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         the endpoint pipe
+    :type pipe: unsigned int
 
-    :param void \*transfer_buffer:
+    :param transfer_buffer:
         pointer to the transfer buffer
+    :type transfer_buffer: void \*
 
-    :param int buffer_length:
+    :param buffer_length:
         length of the transfer buffer
+    :type buffer_length: int
 
-    :param usb_complete_t complete_fn:
+    :param complete_fn:
         pointer to the usb_complete_t function
+    :type complete_fn: usb_complete_t
 
-    :param void \*context:
+    :param context:
         what to set the urb context to.
+    :type context: void \*
 
-    :param int interval:
+    :param interval:
         what to set the urb interval to, encoded like
         the endpoint descriptor's bInterval value.
+    :type interval: int
 
 .. _`usb_fill_int_urb.description`:
 
@@ -1716,8 +1777,9 @@ usb_urb_dir_in
 
     check if an URB describes an IN transfer
 
-    :param struct urb \*urb:
+    :param urb:
         URB to be checked
+    :type urb: struct urb \*
 
 .. _`usb_urb_dir_in.return`:
 
@@ -1736,8 +1798,9 @@ usb_urb_dir_out
 
     check if an URB describes an OUT transfer
 
-    :param struct urb \*urb:
+    :param urb:
         URB to be checked
+    :type urb: struct urb \*
 
 .. _`usb_urb_dir_out.return`:
 

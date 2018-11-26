@@ -10,11 +10,13 @@ post_read_mst_fixup
 
     deprotect multi sector transfer protected data
 
-    :param NTFS_RECORD \*b:
+    :param b:
         pointer to the data to deprotect
+    :type b: NTFS_RECORD \*
 
-    :param const u32 size:
+    :param size:
         size in bytes of \ ``b``\ 
+    :type size: const u32
 
 .. _`post_read_mst_fixup.description`:
 
@@ -47,11 +49,13 @@ pre_write_mst_fixup
 
     apply multi sector transfer protection
 
-    :param NTFS_RECORD \*b:
+    :param b:
         pointer to the data to protect
+    :type b: NTFS_RECORD \*
 
-    :param const u32 size:
+    :param size:
         size in bytes of \ ``b``\ 
+    :type size: const u32
 
 .. _`pre_write_mst_fixup.description`:
 
@@ -88,8 +92,9 @@ post_write_mst_fixup
 
     fast deprotect multi sector transfer protected data
 
-    :param NTFS_RECORD \*b:
+    :param b:
         pointer to the data to deprotect
+    :type b: NTFS_RECORD \*
 
 .. _`post_write_mst_fixup.description`:
 

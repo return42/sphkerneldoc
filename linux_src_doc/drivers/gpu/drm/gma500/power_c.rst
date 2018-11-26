@@ -10,8 +10,9 @@ gma_power_init
 
     initialise power manager
 
-    :param struct drm_device \*dev:
+    :param dev:
         our device
+    :type dev: struct drm_device \*
 
 .. _`gma_power_init.description`:
 
@@ -29,8 +30,9 @@ gma_power_uninit
 
     end power manager
 
-    :param struct drm_device \*dev:
+    :param dev:
         device to end for
+    :type dev: struct drm_device \*
 
 .. _`gma_power_uninit.description`:
 
@@ -48,8 +50,9 @@ gma_suspend_display
 
     suspend the display logic
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
 .. _`gma_suspend_display.description`:
 
@@ -67,8 +70,9 @@ gma_resume_display
 
     resume display side logic
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`gma_resume_display.description`:
 
@@ -87,8 +91,9 @@ gma_suspend_pci
 
     suspend PCI side
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`gma_suspend_pci.description`:
 
@@ -106,8 +111,9 @@ gma_resume_pci
 
     resume helper
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`gma_resume_pci.description`:
 
@@ -126,8 +132,9 @@ gma_power_suspend
 
     bus callback for suspend
 
-    :param struct device \*_dev:
+    :param _dev:
         *undescribed*
+    :type _dev: struct device \*
 
 .. _`gma_power_suspend.description`:
 
@@ -147,8 +154,9 @@ gma_power_resume
 
     resume power
 
-    :param struct device \*_dev:
+    :param _dev:
         *undescribed*
+    :type _dev: struct device \*
 
 .. _`gma_power_resume.description`:
 
@@ -166,8 +174,9 @@ gma_power_is_on
 
     returne true if power is on
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
 .. _`gma_power_is_on.description`:
 
@@ -185,11 +194,13 @@ gma_power_begin
 
     begin requiring power
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
-    :param bool force_on:
+    :param force_on:
         true to force power on
+    :type force_on: bool
 
 .. _`gma_power_begin.description`:
 
@@ -208,8 +219,9 @@ gma_power_end
 
     end use of power
 
-    :param struct drm_device \*dev:
+    :param dev:
         Our DRM device
+    :type dev: struct drm_device \*
 
 .. _`gma_power_end.description`:
 

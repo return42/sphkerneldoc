@@ -1,18 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mtd/nand/raw/nand_timings.c
 
-.. _`onfi_async_timing_mode_to_sdr_timings`:
-
-onfi_async_timing_mode_to_sdr_timings
-=====================================
-
-.. c:function:: const struct nand_sdr_timings *onfi_async_timing_mode_to_sdr_timings(int mode)
-
-    [NAND Interface] Retrieve NAND timings according to the given ONFI timing mode
-
-    :param int mode:
-        ONFI timing mode
-
 .. _`onfi_fill_data_interface`:
 
 onfi_fill_data_interface
@@ -22,14 +10,17 @@ onfi_fill_data_interface
 
     [NAND Interface] Initialize a data interface from given ONFI mode
 
-    :param struct nand_chip \*chip:
+    :param chip:
         *undescribed*
+    :type chip: struct nand_chip \*
 
-    :param enum nand_data_interface_type type:
+    :param type:
         *undescribed*
+    :type type: enum nand_data_interface_type
 
-    :param int timing_mode:
+    :param timing_mode:
         *undescribed*
+    :type timing_mode: int
 
 .. This file was automatic generated / don't edit.
 

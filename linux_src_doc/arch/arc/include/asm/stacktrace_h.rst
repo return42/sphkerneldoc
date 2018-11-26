@@ -10,20 +10,23 @@ arc_unwind_core
 
     Unwind the kernel mode stack for an execution context
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         NULL for current task, specific task otherwise
+    :type tsk: struct task_struct \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         pt_regs used to seed the unwinder {SP, FP, BLINK, PC}
         If NULL, use pt_regs of \ ``tsk``\  (if !NULL) otherwise
         use the current values of {SP, FP, BLINK, PC}
+    :type regs: struct pt_regs \*
 
     :param int (\*consumer_fn)(unsigned int, void \*):
         Callback invoked for each frame unwound
         Returns 0 to continue unwinding, -1 to stop
 
-    :param void \*arg:
+    :param arg:
         Arg to callback
+    :type arg: void \*
 
 .. _`arc_unwind_core.description`:
 

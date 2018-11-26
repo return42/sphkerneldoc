@@ -10,8 +10,9 @@ zero_ino_node_unused
 
     zero out unused fields of an on-flash inode node.
 
-    :param struct ubifs_ino_node \*ino:
+    :param ino:
         the inode to zero out
+    :type ino: struct ubifs_ino_node \*
 
 .. _`zero_dent_node_unused`:
 
@@ -22,8 +23,9 @@ zero_dent_node_unused
 
     zero out unused fields of an on-flash directory entry node.
 
-    :param struct ubifs_dent_node \*dent:
+    :param dent:
         the directory entry to zero out
+    :type dent: struct ubifs_dent_node \*
 
 .. _`zero_trun_node_unused`:
 
@@ -34,8 +36,9 @@ zero_trun_node_unused
 
     zero out unused fields of an on-flash truncation node.
 
-    :param struct ubifs_trun_node \*trun:
+    :param trun:
         the truncation node to zero out
+    :type trun: struct ubifs_trun_node \*
 
 .. _`reserve_space`:
 
@@ -46,14 +49,17 @@ reserve_space
 
     reserve space in the journal.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int jhead:
+    :param jhead:
         journal head number
+    :type jhead: int
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
 
 .. _`reserve_space.description`:
 
@@ -65,42 +71,6 @@ succeeded, the journal head stays locked and later has to be unlocked using
 'release_head()'. Returns zero in case of success, \ ``-EAGAIN``\  if commit has to
 be done, and other negative error codes in case of other failures.
 
-.. _`write_node`:
-
-write_node
-==========
-
-.. c:function:: int write_node(struct ubifs_info *c, int jhead, void *node, int len, int *lnum, int *offs)
-
-    write node to a journal head.
-
-    :param struct ubifs_info \*c:
-        UBIFS file-system description object
-
-    :param int jhead:
-        journal head
-
-    :param void \*node:
-        node to write
-
-    :param int len:
-        node length
-
-    :param int \*lnum:
-        LEB number written is returned here
-
-    :param int \*offs:
-        offset written is returned here
-
-.. _`write_node.description`:
-
-Description
------------
-
-This function writes a node to reserved space of journal head \ ``jhead``\ .
-Returns zero in case of success and a negative error code in case of
-failure.
-
 .. _`write_head`:
 
 write_head
@@ -110,35 +80,42 @@ write_head
 
     write data to a journal head.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int jhead:
+    :param jhead:
         journal head
+    :type jhead: int
 
-    :param void \*buf:
+    :param buf:
         buffer to write
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         length to write
+    :type len: int
 
-    :param int \*lnum:
+    :param lnum:
         LEB number written is returned here
+    :type lnum: int \*
 
-    :param int \*offs:
+    :param offs:
         offset written is returned here
+    :type offs: int \*
 
-    :param int sync:
+    :param sync:
         non-zero if the write-buffer has to by synchronized
+    :type sync: int
 
 .. _`write_head.description`:
 
 Description
 -----------
 
-This function is the same as 'write_node()' but it does not assume the
-buffer it is writing is a node, so it does not prepare it (which means
-initializing common header and calculating CRC).
+This function writes data to the reserved space of journal head \ ``jhead``\ .
+Returns zero in case of success and a negative error code in case of
+failure.
 
 .. _`make_reservation`:
 
@@ -149,14 +126,17 @@ make_reservation
 
     reserve journal space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int jhead:
+    :param jhead:
         journal head
+    :type jhead: int
 
-    :param int len:
+    :param len:
         how many bytes to reserve
+    :type len: int
 
 .. _`make_reservation.description`:
 
@@ -182,11 +162,13 @@ release_head
 
     release a journal head.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int jhead:
+    :param jhead:
         journal head
+    :type jhead: int
 
 .. _`release_head.description`:
 
@@ -206,8 +188,9 @@ finish_reservation
 
     finish a reservation.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`finish_reservation.description`:
 
@@ -226,8 +209,9 @@ get_dent_type
 
     translate VFS inode mode to UBIFS directory entry type.
 
-    :param int mode:
+    :param mode:
         inode mode
+    :type mode: int
 
 .. _`pack_inode`:
 
@@ -238,17 +222,21 @@ pack_inode
 
     pack an inode node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_ino_node \*ino:
+    :param ino:
         buffer in which to pack inode node
+    :type ino: struct ubifs_ino_node \*
 
-    :param const struct inode \*inode:
+    :param inode:
         inode to pack
+    :type inode: const struct inode \*
 
-    :param int last:
+    :param last:
         indicates the last node of the group
+    :type last: int
 
 .. _`mark_inode_clean`:
 
@@ -259,11 +247,13 @@ mark_inode_clean
 
     mark UBIFS inode as clean.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_inode \*ui:
+    :param ui:
         UBIFS inode to mark as clean
+    :type ui: struct ubifs_inode \*
 
 .. _`mark_inode_clean.description`:
 
@@ -271,7 +261,7 @@ Description
 -----------
 
 This helper function marks UBIFS inode \ ``ui``\  as clean by cleaning the
-\ ``ui``\ ->dirty flag and releasing its budget. Note, VFS may still treat the
+\ ``ui->dirty``\  flag and releasing its budget. Note, VFS may still treat the
 inode as dirty and try to write it back, but 'ubifs_write_inode()' would
 just do nothing.
 
@@ -284,23 +274,29 @@ ubifs_jnl_update
 
     update inode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*dir:
+    :param dir:
         parent inode or host inode in case of extended attributes
+    :type dir: const struct inode \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         directory entry name
+    :type nm: const struct fscrypt_name \*
 
-    :param const struct inode \*inode:
+    :param inode:
         inode to update
+    :type inode: const struct inode \*
 
-    :param int deletion:
+    :param deletion:
         indicates a directory entry deletion i.e unlink or rmdir
+    :type deletion: int
 
-    :param int xent:
+    :param xent:
         non-zero if the directory entry is an extended attribute entry
+    :type xent: int
 
 .. _`ubifs_jnl_update.description`:
 
@@ -334,20 +330,25 @@ ubifs_jnl_write_data
 
     write a data node to the journal.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*inode:
+    :param inode:
         inode the data node belongs to
+    :type inode: const struct inode \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         node key
+    :type key: const union ubifs_key \*
 
-    :param const void \*buf:
+    :param buf:
         buffer to write
+    :type buf: const void \*
 
-    :param int len:
+    :param len:
         data length (must not exceed \ ``UBIFS_BLOCK_SIZE``\ )
+    :type len: int
 
 .. _`ubifs_jnl_write_data.description`:
 
@@ -366,11 +367,13 @@ ubifs_jnl_write_inode
 
     flush inode to the journal.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*inode:
+    :param inode:
         inode to flush
+    :type inode: const struct inode \*
 
 .. _`ubifs_jnl_write_inode.description`:
 
@@ -390,11 +393,13 @@ ubifs_jnl_delete_inode
 
     delete an inode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*inode:
+    :param inode:
         inode to delete
+    :type inode: const struct inode \*
 
 .. _`ubifs_jnl_delete_inode.description`:
 
@@ -434,29 +439,37 @@ ubifs_jnl_xrename
 
     cross rename two directory entries.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*fst_dir:
+    :param fst_dir:
         parent inode of 1st directory entry to exchange
+    :type fst_dir: const struct inode \*
 
-    :param const struct inode \*fst_inode:
+    :param fst_inode:
         1st inode to exchange
+    :type fst_inode: const struct inode \*
 
-    :param const struct fscrypt_name \*fst_nm:
+    :param fst_nm:
         name of 1st inode to exchange
+    :type fst_nm: const struct fscrypt_name \*
 
-    :param const struct inode \*snd_dir:
+    :param snd_dir:
         parent inode of 2nd directory entry to exchange
+    :type snd_dir: const struct inode \*
 
-    :param const struct inode \*snd_inode:
+    :param snd_inode:
         2nd inode to exchange
+    :type snd_inode: const struct inode \*
 
-    :param const struct fscrypt_name \*snd_nm:
+    :param snd_nm:
         name of 2nd inode to exchange
+    :type snd_nm: const struct fscrypt_name \*
 
-    :param int sync:
+    :param sync:
         non-zero if the write-buffer has to be synchronized
+    :type sync: int
 
 .. _`ubifs_jnl_xrename.description`:
 
@@ -477,32 +490,41 @@ ubifs_jnl_rename
 
     rename a directory entry.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*old_dir:
+    :param old_dir:
         parent inode of directory entry to rename
+    :type old_dir: const struct inode \*
 
-    :param const struct inode \*old_inode:
+    :param old_inode:
         *undescribed*
+    :type old_inode: const struct inode \*
 
-    :param const struct fscrypt_name \*old_nm:
+    :param old_nm:
         *undescribed*
+    :type old_nm: const struct fscrypt_name \*
 
-    :param const struct inode \*new_dir:
+    :param new_dir:
         parent inode of directory entry to rename
+    :type new_dir: const struct inode \*
 
-    :param const struct inode \*new_inode:
+    :param new_inode:
         *undescribed*
+    :type new_inode: const struct inode \*
 
-    :param const struct fscrypt_name \*new_nm:
+    :param new_nm:
         *undescribed*
+    :type new_nm: const struct fscrypt_name \*
 
-    :param const struct inode \*whiteout:
+    :param whiteout:
         *undescribed*
+    :type whiteout: const struct inode \*
 
-    :param int sync:
+    :param sync:
         non-zero if the write-buffer has to be synchronized
+    :type sync: int
 
 .. _`ubifs_jnl_rename.description`:
 
@@ -523,20 +545,25 @@ truncate_data_node
 
     re-compress/encrypt a truncated data node.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const struct inode \*inode:
+    :param inode:
         inode which referes to the data node
+    :type inode: const struct inode \*
 
-    :param unsigned int block:
+    :param block:
         data block number
+    :type block: unsigned int
 
-    :param struct ubifs_data_node \*dn:
+    :param dn:
         data node to re-compress
+    :type dn: struct ubifs_data_node \*
 
-    :param int \*new_len:
+    :param new_len:
         new length
+    :type new_len: int \*
 
 .. _`truncate_data_node.description`:
 
@@ -555,17 +582,21 @@ ubifs_jnl_truncate
 
     update the journal for a truncation.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*inode:
+    :param inode:
         inode to truncate
+    :type inode: const struct inode \*
 
-    :param loff_t old_size:
+    :param old_size:
         old size
+    :type old_size: loff_t
 
-    :param loff_t new_size:
+    :param new_size:
         new size
+    :type new_size: loff_t
 
 .. _`ubifs_jnl_truncate.description`:
 
@@ -589,17 +620,21 @@ ubifs_jnl_delete_xattr
 
     delete an extended attribute.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*host:
+    :param host:
         host inode
+    :type host: const struct inode \*
 
-    :param const struct inode \*inode:
+    :param inode:
         extended attribute inode
+    :type inode: const struct inode \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         extended attribute entry name
+    :type nm: const struct fscrypt_name \*
 
 .. _`ubifs_jnl_delete_xattr.description`:
 
@@ -620,14 +655,17 @@ ubifs_jnl_change_xattr
 
     change an extended attribute.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*inode:
+    :param inode:
         extended attribute inode
+    :type inode: const struct inode \*
 
-    :param const struct inode \*host:
+    :param host:
         host inode
+    :type host: const struct inode \*
 
 .. _`ubifs_jnl_change_xattr.description`:
 

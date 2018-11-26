@@ -10,8 +10,9 @@ alloc_swapdev_block
 
     allocate a swap page and register that it has been allocated, so that it can be freed in case of an error.
 
-    :param int swap:
+    :param swap:
         *undescribed*
+    :type swap: int
 
 .. _`free_all_swap_pages`:
 
@@ -22,8 +23,9 @@ free_all_swap_pages
 
     free swap pages allocated for saving image data. It also frees the extents used to register which swap entries had been allocated.
 
-    :param int swap:
+    :param swap:
         *undescribed*
+    :type swap: int
 
 .. _`swsusp_swap_check`:
 
@@ -34,8 +36,9 @@ swsusp_swap_check
 
     check if the resume device is a swap device and get its index (if so)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`swsusp_swap_check.description`:
 
@@ -53,14 +56,17 @@ write_page
 
     Write one page to given swap location.
 
-    :param void \*buf:
+    :param buf:
         Address we're writing.
+    :type buf: void \*
 
-    :param sector_t offset:
+    :param offset:
         Offset of the swap page we're writing to.
+    :type offset: sector_t
 
-    :param struct hib_bio_batch \*hb:
+    :param hb:
         bio completion batch
+    :type hb: struct hib_bio_batch \*
 
 .. _`save_image`:
 
@@ -71,14 +77,17 @@ save_image
 
     save the suspend image data
 
-    :param struct swap_map_handle \*handle:
+    :param handle:
         *undescribed*
+    :type handle: struct swap_map_handle \*
 
-    :param struct snapshot_handle \*snapshot:
+    :param snapshot:
         *undescribed*
+    :type snapshot: struct snapshot_handle \*
 
-    :param unsigned int nr_to_write:
+    :param nr_to_write:
         *undescribed*
+    :type nr_to_write: unsigned int
 
 .. _`crc32_threadfn`:
 
@@ -87,8 +96,9 @@ crc32_threadfn
 
 .. c:function:: int crc32_threadfn(void *data)
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`lzo_compress_threadfn`:
 
@@ -97,8 +107,9 @@ lzo_compress_threadfn
 
 .. c:function:: int lzo_compress_threadfn(void *data)
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`save_image_lzo`:
 
@@ -109,14 +120,17 @@ save_image_lzo
 
     Save the suspend image data compressed with LZO.
 
-    :param struct swap_map_handle \*handle:
+    :param handle:
         Swap map handle to use for saving the image.
+    :type handle: struct swap_map_handle \*
 
-    :param struct snapshot_handle \*snapshot:
+    :param snapshot:
         Image to read data from.
+    :type snapshot: struct snapshot_handle \*
 
-    :param unsigned int nr_to_write:
+    :param nr_to_write:
         Number of pages to save.
+    :type nr_to_write: unsigned int
 
 .. _`enough_swap`:
 
@@ -127,8 +141,9 @@ enough_swap
 
     Make sure we have enough swap to save the image.
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         *undescribed*
+    :type nr_pages: unsigned int
 
 .. _`enough_swap.description`:
 
@@ -147,8 +162,9 @@ swsusp_write
 
     Write entire image and metadata.
 
-    :param unsigned int flags:
+    :param flags:
         flags to pass to the "boot" kernel in the image header
+    :type flags: unsigned int
 
 .. _`swsusp_write.description`:
 
@@ -175,8 +191,9 @@ release_swap_reader
 
     in a file-alike way
 
-    :param struct swap_map_handle \*handle:
+    :param handle:
         *undescribed*
+    :type handle: struct swap_map_handle \*
 
 .. _`load_image`:
 
@@ -187,14 +204,17 @@ load_image
 
     load the image using the swap map handle \ ``handle``\  and the snapshot handle \ ``snapshot``\  (assume there are \ ``nr_pages``\  pages to load)
 
-    :param struct swap_map_handle \*handle:
+    :param handle:
         *undescribed*
+    :type handle: struct swap_map_handle \*
 
-    :param struct snapshot_handle \*snapshot:
+    :param snapshot:
         *undescribed*
+    :type snapshot: struct snapshot_handle \*
 
-    :param unsigned int nr_to_read:
+    :param nr_to_read:
         *undescribed*
+    :type nr_to_read: unsigned int
 
 .. _`lzo_decompress_threadfn`:
 
@@ -203,8 +223,9 @@ lzo_decompress_threadfn
 
 .. c:function:: int lzo_decompress_threadfn(void *data)
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`load_image_lzo`:
 
@@ -215,14 +236,17 @@ load_image_lzo
 
     Load compressed image data and decompress them with LZO.
 
-    :param struct swap_map_handle \*handle:
+    :param handle:
         Swap map handle to use for loading data.
+    :type handle: struct swap_map_handle \*
 
-    :param struct snapshot_handle \*snapshot:
+    :param snapshot:
         Image to copy uncompressed data into.
+    :type snapshot: struct snapshot_handle \*
 
-    :param unsigned int nr_to_read:
+    :param nr_to_read:
         Number of pages to load.
+    :type nr_to_read: unsigned int
 
 .. _`swsusp_read`:
 
@@ -233,9 +257,10 @@ swsusp_read
 
     read the hibernation image.
 
-    :param unsigned int \*flags_p:
+    :param flags_p:
         flags passed by the "frozen" kernel in the image header should
         be written into this memory location
+    :type flags_p: unsigned int \*
 
 .. _`swsusp_check`:
 
@@ -246,8 +271,9 @@ swsusp_check
 
     Check for swsusp signature in the resume device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`swsusp_close`:
 
@@ -258,8 +284,9 @@ swsusp_close
 
     close swap device.
 
-    :param fmode_t mode:
+    :param mode:
         *undescribed*
+    :type mode: fmode_t
 
 .. _`swsusp_unmark`:
 
@@ -270,8 +297,9 @@ swsusp_unmark
 
     Unmark swsusp signature in the resume device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

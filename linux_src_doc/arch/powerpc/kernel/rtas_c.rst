@@ -8,11 +8,13 @@ get_pseries_errorlog
 
 .. c:function:: struct pseries_errorlog *get_pseries_errorlog(struct rtas_error_log *log, uint16_t section_id)
 
-    :param struct rtas_error_log \*log:
+    :param log:
         RTAS error/event log
+    :type log: struct rtas_error_log \*
 
-    :param uint16_t section_id:
+    :param section_id:
         two character section identifier
+    :type section_id: uint16_t
 
 .. _`get_pseries_errorlog.description`:
 

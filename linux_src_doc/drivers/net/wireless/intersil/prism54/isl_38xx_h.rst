@@ -10,14 +10,17 @@ isl38xx_w32_flush
 
     PCI iomem write helper
 
-    :param void __iomem \*base:
+    :param base:
         (host) memory base address of the device
+    :type base: void __iomem \*
 
-    :param u32 val:
+    :param val:
         32bit value (host order) to write
+    :type val: u32
 
-    :param unsigned long offset:
+    :param offset:
         byte offset into \ ``base``\  to write value to
+    :type offset: unsigned long
 
 .. _`isl38xx_w32_flush.description`:
 

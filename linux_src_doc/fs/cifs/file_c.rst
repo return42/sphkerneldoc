@@ -10,11 +10,13 @@ cifs_readdata_to_iov
 
     copy data from pages in response to an iovec
 
-    :param struct cifs_readdata \*rdata:
+    :param rdata:
         the readdata response with list of pages holding data
+    :type rdata: struct cifs_readdata \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         destination for our data
+    :type iter: struct iov_iter \*
 
 .. _`cifs_readdata_to_iov.description`:
 

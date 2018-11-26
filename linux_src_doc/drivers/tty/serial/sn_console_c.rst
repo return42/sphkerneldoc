@@ -10,8 +10,9 @@ snt_poll_getc
 
     Get a character from the console in polling mode
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`snt_poll_input_pending`:
 
@@ -22,8 +23,9 @@ snt_poll_input_pending
 
     Check if any input is waiting - polling mode.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`snt_intr_getc`:
 
@@ -34,8 +36,9 @@ snt_intr_getc
 
     Get a character from the console, interrupt mode
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`snt_intr_input_pending`:
 
@@ -46,8 +49,9 @@ snt_intr_input_pending
 
     Check if input is pending, interrupt mode
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`snt_hw_puts_raw`:
 
@@ -58,11 +62,13 @@ snt_hw_puts_raw
 
     Send raw string to the console, polled or interrupt mode
 
-    :param const char \*s:
+    :param s:
         String
+    :type s: const char \*
 
-    :param int len:
+    :param len:
         Length
+    :type len: int
 
 .. _`snt_hw_puts_buffered`:
 
@@ -73,11 +79,13 @@ snt_hw_puts_buffered
 
     Send string to console, polled or interrupt mode
 
-    :param const char \*s:
+    :param s:
         String
+    :type s: const char \*
 
-    :param int len:
+    :param len:
         Length
+    :type len: int
 
 .. _`snp_type`:
 
@@ -88,8 +96,9 @@ snp_type
 
     What type of console are we?
 
-    :param struct uart_port \*port:
+    :param port:
         Port to operate with (we ignore since we only have one port)
+    :type port: struct uart_port \*
 
 .. _`snp_tx_empty`:
 
@@ -100,8 +109,9 @@ snp_tx_empty
 
     Is the transmitter empty?  We pretend we're always empty
 
-    :param struct uart_port \*port:
+    :param port:
         Port to operate on (we ignore since we only have one port)
+    :type port: struct uart_port \*
 
 .. _`snp_stop_tx`:
 
@@ -112,8 +122,9 @@ snp_stop_tx
 
     stop the transmitter - no-op for us
 
-    :param struct uart_port \*port:
+    :param port:
         Port to operat eon - we ignore - no-op function
+    :type port: struct uart_port \*
 
 .. _`snp_release_port`:
 
@@ -124,8 +135,9 @@ snp_release_port
 
     Free i/o and resources for port - no-op for us
 
-    :param struct uart_port \*port:
+    :param port:
         Port to operate on - we ignore - no-op function
+    :type port: struct uart_port \*
 
 .. _`snp_shutdown`:
 
@@ -136,8 +148,9 @@ snp_shutdown
 
     shut down the port - free irq and disable - no-op for us
 
-    :param struct uart_port \*port:
+    :param port:
         Port to shut down - we ignore
+    :type port: struct uart_port \*
 
 .. _`snp_set_mctrl`:
 
@@ -148,11 +161,13 @@ snp_set_mctrl
 
     set control lines (dtr, rts, etc) - no-op for our console
 
-    :param struct uart_port \*port:
+    :param port:
         Port to operate on - we ignore
+    :type port: struct uart_port \*
 
-    :param unsigned int mctrl:
+    :param mctrl:
         Lines to set/unset - we ignore
+    :type mctrl: unsigned int
 
 .. _`snp_get_mctrl`:
 
@@ -163,8 +178,9 @@ snp_get_mctrl
 
     get contorl line info, we just return a static value
 
-    :param struct uart_port \*port:
+    :param port:
         port to operate on - we only have one port so we ignore this
+    :type port: struct uart_port \*
 
 .. _`snp_stop_rx`:
 
@@ -175,8 +191,9 @@ snp_stop_rx
 
     Stop the receiver - we ignor ethis
 
-    :param struct uart_port \*port:
+    :param port:
         Port to operate on - we ignore
+    :type port: struct uart_port \*
 
 .. _`snp_start_tx`:
 
@@ -187,8 +204,9 @@ snp_start_tx
 
     Start transmitter
 
-    :param struct uart_port \*port:
+    :param port:
         Port to operate on
+    :type port: struct uart_port \*
 
 .. _`snp_break_ctl`:
 
@@ -199,11 +217,13 @@ snp_break_ctl
 
     handle breaks - ignored by us
 
-    :param struct uart_port \*port:
+    :param port:
         Port to operate on
+    :type port: struct uart_port \*
 
-    :param int break_state:
+    :param break_state:
         Break state
+    :type break_state: int
 
 .. _`snp_startup`:
 
@@ -214,8 +234,9 @@ snp_startup
 
     Start up the serial port - always return 0 (We're always on)
 
-    :param struct uart_port \*port:
+    :param port:
         Port to operate on
+    :type port: struct uart_port \*
 
 .. _`snp_set_termios`:
 
@@ -226,14 +247,17 @@ snp_set_termios
 
     set termios stuff - we ignore these
 
-    :param struct uart_port \*port:
+    :param port:
         port to operate on
+    :type port: struct uart_port \*
 
-    :param struct ktermios \*termios:
+    :param termios:
         Old
+    :type termios: struct ktermios \*
 
-    :param struct ktermios \*old:
+    :param old:
         *undescribed*
+    :type old: struct ktermios \*
 
 .. _`snp_request_port`:
 
@@ -244,8 +268,9 @@ snp_request_port
 
     allocate resources for port - ignored by us
 
-    :param struct uart_port \*port:
+    :param port:
         port to operate on
+    :type port: struct uart_port \*
 
 .. _`snp_config_port`:
 
@@ -256,11 +281,13 @@ snp_config_port
 
     allocate resources, set up - we ignore,  we're always on
 
-    :param struct uart_port \*port:
+    :param port:
         Port to operate on
+    :type port: struct uart_port \*
 
-    :param int flags:
+    :param flags:
         flags used for port setup
+    :type flags: int
 
 .. _`sn_debug_printf`:
 
@@ -271,8 +298,9 @@ sn_debug_printf
 
     close to hardware debugging printf
 
-    :param const char \*fmt:
+    :param fmt:
         printf format
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -294,11 +322,13 @@ sn_receive_chars
 
     Grab characters, pass them to tty layer
 
-    :param struct sn_cons_port \*port:
+    :param port:
         Port to operate on
+    :type port: struct sn_cons_port \*
 
-    :param unsigned long flags:
+    :param flags:
         irq flags
+    :type flags: unsigned long
 
 .. _`sn_receive_chars.note`:
 
@@ -317,11 +347,13 @@ sn_transmit_chars
 
     grab characters from serial core, send off
 
-    :param struct sn_cons_port \*port:
+    :param port:
         Port to operate on
+    :type port: struct sn_cons_port \*
 
-    :param int raw:
+    :param raw:
         Transmit raw or buffered
+    :type raw: int
 
 .. _`sn_transmit_chars.note`:
 
@@ -343,11 +375,13 @@ sn_sal_interrupt
 
     Handle console interrupts
 
-    :param int irq:
+    :param irq:
         irq #, useful for debug statements
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         our pointer to our port (sn_cons_port which contains the uart port)
+    :type dev_id: void \*
 
 .. _`sn_sal_timer_poll`:
 
@@ -358,8 +392,9 @@ sn_sal_timer_poll
 
     this function handles polled console mode
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`sn_sal_timer_poll.description`:
 
@@ -379,8 +414,9 @@ sn_sal_switch_to_asynch
 
     Switch to async mode (as opposed to synch)
 
-    :param struct sn_cons_port \*port:
+    :param port:
         Our sn_cons_port (which contains the uart port)
+    :type port: struct sn_cons_port \*
 
 .. _`sn_sal_switch_to_asynch.description`:
 
@@ -401,8 +437,9 @@ sn_sal_switch_to_interrupts
 
     Switch to interrupt driven mode
 
-    :param struct sn_cons_port \*port:
+    :param port:
         Our sn_cons_port (which contains the uart port)
+    :type port: struct sn_cons_port \*
 
 .. _`sn_sal_switch_to_interrupts.description`:
 
@@ -425,8 +462,9 @@ sn_sal_init
 
     When the kernel loads us, get us rolling w/ serial core
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sn_sal_init.description`:
 
@@ -450,11 +488,13 @@ puts_raw_fixed
     :param int (\*puts_raw)(const char \*s, int len):
         puts function to do the writing
 
-    :param const char \*s:
+    :param s:
         input string
+    :type s: const char \*
 
-    :param int count:
+    :param count:
         length
+    :type count: int
 
 .. _`puts_raw_fixed.description`:
 
@@ -473,14 +513,17 @@ sn_sal_console_write
 
     Print statements before serial core available
 
-    :param struct console \*co:
+    :param co:
         *undescribed*
+    :type co: struct console \*
 
-    :param const char \*s:
+    :param s:
         String to send
+    :type s: const char \*
 
-    :param unsigned count:
+    :param count:
         length
+    :type count: unsigned
 
 .. _`sn_sal_console_write.description`:
 
@@ -507,11 +550,13 @@ sn_sal_console_setup
 
     Set up console for early printing
 
-    :param struct console \*co:
+    :param co:
         Console to work with
+    :type co: struct console \*
 
-    :param char \*options:
+    :param options:
         Options to set
+    :type options: char \*
 
 .. _`sn_sal_console_setup.description`:
 
@@ -533,14 +578,17 @@ sn_sal_console_write_early
 
     simple early output routine \ ``co``\  - console struct \ ``s``\  - string to print \ ``count``\  - count
 
-    :param struct console \*co:
+    :param co:
         *undescribed*
+    :type co: struct console \*
 
-    :param const char \*s:
+    :param s:
         *undescribed*
+    :type s: const char \*
 
-    :param unsigned count:
+    :param count:
         *undescribed*
+    :type count: unsigned
 
 .. _`sn_sal_console_write_early.description`:
 
@@ -560,8 +608,9 @@ sn_serial_console_early_setup
 
     Sets up early console output support
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sn_serial_console_early_setup.description`:
 
@@ -583,8 +632,9 @@ sn_sal_serial_console_init
 
     Early console output - set up for register
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sn_sal_serial_console_init.description`:
 

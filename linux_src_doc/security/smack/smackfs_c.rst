@@ -10,8 +10,9 @@ smk_netlabel_audit_set
 
     fill a netlbl_audit struct
 
-    :param struct netlbl_audit \*nap:
+    :param nap:
         structure to fill
+    :type nap: struct netlbl_audit \*
 
 .. _`smk_set_access`:
 
@@ -22,17 +23,21 @@ smk_set_access
 
     add a rule to the rule list or replace an old rule
 
-    :param struct smack_parsed_rule \*srp:
+    :param srp:
         the rule to add or replace
+    :type srp: struct smack_parsed_rule \*
 
-    :param struct list_head \*rule_list:
+    :param rule_list:
         the list of rules
+    :type rule_list: struct list_head \*
 
-    :param struct mutex \*rule_lock:
+    :param rule_lock:
         the rule list lock
+    :type rule_lock: struct mutex \*
 
-    :param int global:
+    :param global:
         if non-zero, indicates a global rule
+    :type global: int
 
 .. _`smk_set_access.description`:
 
@@ -56,8 +61,9 @@ smk_perm_from_str
 
     parse smack accesses from a text string
 
-    :param const char \*string:
+    :param string:
         a text string that contains a Smack accesses code
+    :type string: const char \*
 
 .. _`smk_perm_from_str.description`:
 
@@ -75,26 +81,33 @@ smk_fill_rule
 
     Fill Smack rule from strings
 
-    :param const char \*subject:
+    :param subject:
         subject label string
+    :type subject: const char \*
 
-    :param const char \*object:
+    :param object:
         object label string
+    :type object: const char \*
 
-    :param const char \*access1:
+    :param access1:
         access string
+    :type access1: const char \*
 
-    :param const char \*access2:
+    :param access2:
         string with permissions to be removed
+    :type access2: const char \*
 
-    :param struct smack_parsed_rule \*rule:
+    :param rule:
         Smack rule
+    :type rule: struct smack_parsed_rule \*
 
-    :param int import:
+    :param import:
         if non-zero, import labels
+    :type import: int
 
-    :param int len:
+    :param len:
         label length limit
+    :type len: int
 
 .. _`smk_fill_rule.description`:
 
@@ -112,14 +125,17 @@ smk_parse_rule
 
     parse Smack rule from load string
 
-    :param const char \*data:
+    :param data:
         string to be parsed whose size is SMK_LOADLEN
+    :type data: const char \*
 
-    :param struct smack_parsed_rule \*rule:
+    :param rule:
         Smack rule
+    :type rule: struct smack_parsed_rule \*
 
-    :param int import:
+    :param import:
         if non-zero, import labels
+    :type import: int
 
 .. _`smk_parse_rule.description`:
 
@@ -137,17 +153,21 @@ smk_parse_long_rule
 
     parse Smack rule from rule string
 
-    :param char \*data:
+    :param data:
         string to be parsed, null terminated
+    :type data: char \*
 
-    :param struct smack_parsed_rule \*rule:
+    :param rule:
         Will be filled with Smack parsed rule
+    :type rule: struct smack_parsed_rule \*
 
-    :param int import:
+    :param import:
         if non-zero, import labels
+    :type import: int
 
-    :param int tokens:
+    :param tokens:
         numer of substrings expected in data
+    :type tokens: int
 
 .. _`smk_parse_long_rule.description`:
 
@@ -165,26 +185,33 @@ smk_write_rules_list
 
     \ :c:func:`write`\  for any /smack rule file
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
-    :param struct list_head \*rule_list:
+    :param rule_list:
         the list of rules to write to
+    :type rule_list: struct list_head \*
 
-    :param struct mutex \*rule_lock:
+    :param rule_lock:
         lock for the rule list
+    :type rule_lock: struct mutex \*
 
-    :param int format:
+    :param format:
         /smack/load or /smack/load2 or /smack/change-rule format.
+    :type format: int
 
 .. _`smk_write_rules_list.description`:
 
@@ -224,11 +251,13 @@ smk_open_load
 
     \ :c:func:`open`\  for /smack/load
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure representing file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         "load" file pointer
+    :type file: struct file \*
 
 .. _`smk_open_load.description`:
 
@@ -246,17 +275,21 @@ smk_write_load
 
     \ :c:func:`write`\  for /smack/load
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
 .. _`smk_cipso_doi`:
 
@@ -267,8 +300,9 @@ smk_cipso_doi
 
     initialize the CIPSO domain
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`smk_unlbl_ambient`:
 
@@ -279,8 +313,9 @@ smk_unlbl_ambient
 
     initialize the unlabeled domain
 
-    :param char \*oldambient:
+    :param oldambient:
         previous domain string
+    :type oldambient: char \*
 
 .. _`smk_open_cipso`:
 
@@ -291,11 +326,13 @@ smk_open_cipso
 
     \ :c:func:`open`\  for /smack/cipso
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure representing file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         "cipso" file pointer
+    :type file: struct file \*
 
 .. _`smk_open_cipso.description`:
 
@@ -314,20 +351,25 @@ smk_set_cipso
 
     do the work for \ :c:func:`write`\  for cipso and cipso2
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
-    :param int format:
+    :param format:
         /smack/cipso or /smack/cipso2
+    :type format: int
 
 .. _`smk_set_cipso.description`:
 
@@ -346,17 +388,21 @@ smk_write_cipso
 
     \ :c:func:`write`\  for /smack/cipso
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_cipso.description`:
 
@@ -375,11 +421,13 @@ smk_open_cipso2
 
     \ :c:func:`open`\  for /smack/cipso2
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure representing file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         "cipso2" file pointer
+    :type file: struct file \*
 
 .. _`smk_open_cipso2.description`:
 
@@ -398,17 +446,21 @@ smk_write_cipso2
 
     \ :c:func:`write`\  for /smack/cipso2
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_cipso2.description`:
 
@@ -427,11 +479,13 @@ smk_open_net4addr
 
     \ :c:func:`open`\  for /smack/netlabel
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure representing file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         "netlabel" file pointer
+    :type file: struct file \*
 
 .. _`smk_open_net4addr.description`:
 
@@ -448,8 +502,9 @@ smk_net4addr_insert
 
 .. c:function:: void smk_net4addr_insert(struct smk_net4addr *new)
 
-    :param struct smk_net4addr \*new:
+    :param new:
         netlabel to insert
+    :type new: struct smk_net4addr \*
 
 .. _`smk_net4addr_insert.description`:
 
@@ -469,17 +524,21 @@ smk_write_net4addr
 
     \ :c:func:`write`\  for /smack/netlabel
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_net4addr.description`:
 
@@ -498,11 +557,13 @@ smk_open_net6addr
 
     \ :c:func:`open`\  for /smack/netlabel
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure representing file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         "netlabel" file pointer
+    :type file: struct file \*
 
 .. _`smk_open_net6addr.description`:
 
@@ -519,8 +580,9 @@ smk_net6addr_insert
 
 .. c:function:: void smk_net6addr_insert(struct smk_net6addr *new)
 
-    :param struct smk_net6addr \*new:
+    :param new:
         entry to insert
+    :type new: struct smk_net6addr \*
 
 .. _`smk_net6addr_insert.description`:
 
@@ -540,17 +602,21 @@ smk_write_net6addr
 
     \ :c:func:`write`\  for /smack/netlabel
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_net6addr.description`:
 
@@ -569,17 +635,21 @@ smk_read_doi
 
     \ :c:func:`read`\  for /smack/doi
 
-    :param struct file \*filp:
+    :param filp:
         file pointer, not actually used
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         where to put the result
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         maximum to send along
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_read_doi.description`:
 
@@ -597,17 +667,21 @@ smk_write_doi
 
     \ :c:func:`write`\  for /smack/doi
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_doi.description`:
 
@@ -625,17 +699,21 @@ smk_read_direct
 
     \ :c:func:`read`\  for /smack/direct
 
-    :param struct file \*filp:
+    :param filp:
         file pointer, not actually used
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         where to put the result
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         maximum to send along
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_read_direct.description`:
 
@@ -653,17 +731,21 @@ smk_write_direct
 
     \ :c:func:`write`\  for /smack/direct
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_direct.description`:
 
@@ -681,17 +763,21 @@ smk_read_mapped
 
     \ :c:func:`read`\  for /smack/mapped
 
-    :param struct file \*filp:
+    :param filp:
         file pointer, not actually used
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         where to put the result
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         maximum to send along
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_read_mapped.description`:
 
@@ -709,17 +795,21 @@ smk_write_mapped
 
     \ :c:func:`write`\  for /smack/mapped
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_mapped.description`:
 
@@ -737,17 +827,21 @@ smk_read_ambient
 
     \ :c:func:`read`\  for /smack/ambient
 
-    :param struct file \*filp:
+    :param filp:
         file pointer, not actually used
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         where to put the result
+    :type buf: char __user \*
 
-    :param size_t cn:
+    :param cn:
         maximum to send along
+    :type cn: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_read_ambient.description`:
 
@@ -765,17 +859,21 @@ smk_write_ambient
 
     \ :c:func:`write`\  for /smack/ambient
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_ambient.description`:
 
@@ -793,11 +891,13 @@ smk_list_swap_rcu
 
     swap public list with a private one in RCU-safe way The caller must hold appropriate mutex to prevent concurrent modifications to the public list. Private list is assumed to be not accessible to other threads yet.
 
-    :param struct list_head \*public:
+    :param public:
         public list
+    :type public: struct list_head \*
 
-    :param struct list_head \*private:
+    :param private:
         private list
+    :type private: struct list_head \*
 
 .. _`smk_parse_label_list`:
 
@@ -808,11 +908,13 @@ smk_parse_label_list
 
     parse list of Smack labels, separated by spaces
 
-    :param char \*data:
+    :param data:
         the string to parse
+    :type data: char \*
 
-    :param struct list_head \*list:
+    :param list:
         *undescribed*
+    :type list: struct list_head \*
 
 .. _`smk_parse_label_list.description`:
 
@@ -830,8 +932,9 @@ smk_destroy_label_list
 
     destroy a list of smack_known_list_elem
 
-    :param struct list_head \*list:
+    :param list:
         *undescribed*
+    :type list: struct list_head \*
 
 .. _`smk_write_onlycap`:
 
@@ -842,17 +945,21 @@ smk_write_onlycap
 
     \ :c:func:`write`\  for smackfs/onlycap
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_onlycap.description`:
 
@@ -870,17 +977,21 @@ smk_read_unconfined
 
     \ :c:func:`read`\  for smackfs/unconfined
 
-    :param struct file \*filp:
+    :param filp:
         file pointer, not actually used
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         where to put the result
+    :type buf: char __user \*
 
-    :param size_t cn:
+    :param cn:
         maximum to send along
+    :type cn: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_read_unconfined.description`:
 
@@ -898,17 +1009,21 @@ smk_write_unconfined
 
     \ :c:func:`write`\  for smackfs/unconfined
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_unconfined.description`:
 
@@ -926,17 +1041,21 @@ smk_read_logging
 
     \ :c:func:`read`\  for /smack/logging
 
-    :param struct file \*filp:
+    :param filp:
         file pointer, not actually used
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         where to put the result
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_read_logging.description`:
 
@@ -954,17 +1073,21 @@ smk_write_logging
 
     \ :c:func:`write`\  for /smack/logging
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_logging.description`:
 
@@ -982,11 +1105,13 @@ smk_open_load_self
 
     \ :c:func:`open`\  for /smack/load-self2
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure representing file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         "load" file pointer
+    :type file: struct file \*
 
 .. _`smk_open_load_self.description`:
 
@@ -1004,17 +1129,21 @@ smk_write_load_self
 
     \ :c:func:`write`\  for /smack/load-self
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
 .. _`smk_user_access`:
 
@@ -1025,20 +1154,25 @@ smk_user_access
 
     handle access check transaction
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         data from user space
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
-    :param int format:
+    :param format:
         *undescribed*
+    :type format: int
 
 .. _`smk_write_access`:
 
@@ -1049,17 +1183,21 @@ smk_write_access
 
     handle access check transaction
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         data from user space
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
 .. _`smk_open_load2`:
 
@@ -1070,11 +1208,13 @@ smk_open_load2
 
     \ :c:func:`open`\  for /smack/load2
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure representing file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         "load2" file pointer
+    :type file: struct file \*
 
 .. _`smk_open_load2.description`:
 
@@ -1092,17 +1232,21 @@ smk_write_load2
 
     \ :c:func:`write`\  for /smack/load2
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
 .. _`smk_open_load_self2`:
 
@@ -1113,11 +1257,13 @@ smk_open_load_self2
 
     \ :c:func:`open`\  for /smack/load-self2
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure representing file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         "load" file pointer
+    :type file: struct file \*
 
 .. _`smk_open_load_self2.description`:
 
@@ -1135,17 +1281,21 @@ smk_write_load_self2
 
     \ :c:func:`write`\  for /smack/load-self2
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
 .. _`smk_write_access2`:
 
@@ -1156,17 +1306,21 @@ smk_write_access2
 
     handle access check transaction
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         data from user space
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
 .. _`smk_write_revoke_subj`:
 
@@ -1177,17 +1331,21 @@ smk_write_revoke_subj
 
     \ :c:func:`write`\  for /smack/revoke-subject
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         data from user space
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
 .. _`smk_init_sysfs`:
 
@@ -1198,8 +1356,9 @@ smk_init_sysfs
 
     initialize /sys/fs/smackfs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`smk_write_change_rule`:
 
@@ -1210,17 +1369,21 @@ smk_write_change_rule
 
     \ :c:func:`write`\  for /smack/change-rule
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         data from user space
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
 .. _`smk_read_syslog`:
 
@@ -1231,17 +1394,21 @@ smk_read_syslog
 
     \ :c:func:`read`\  for smackfs/syslog
 
-    :param struct file \*filp:
+    :param filp:
         file pointer, not actually used
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         where to put the result
+    :type buf: char __user \*
 
-    :param size_t cn:
+    :param cn:
         maximum to send along
+    :type cn: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_read_syslog.description`:
 
@@ -1259,17 +1426,21 @@ smk_write_syslog
 
     \ :c:func:`write`\  for smackfs/syslog
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_write_syslog.description`:
 
@@ -1287,11 +1458,13 @@ smk_open_relabel_self
 
     \ :c:func:`open`\  for /smack/relabel-self
 
-    :param struct inode \*inode:
+    :param inode:
         inode structure representing file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         "relabel-self" file pointer
+    :type file: struct file \*
 
 .. _`smk_open_relabel_self.description`:
 
@@ -1310,17 +1483,21 @@ smk_write_relabel_self
 
     \ :c:func:`write`\  for /smack/relabel-self
 
-    :param struct file \*file:
+    :param file:
         file pointer, not actually used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         where to get the data from
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
 .. _`smk_read_ptrace`:
 
@@ -1331,17 +1508,21 @@ smk_read_ptrace
 
     \ :c:func:`read`\  for /smack/ptrace
 
-    :param struct file \*filp:
+    :param filp:
         file pointer, not actually used
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         where to put the result
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         maximum to send along
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start
+    :type ppos: loff_t \*
 
 .. _`smk_read_ptrace.description`:
 
@@ -1359,17 +1540,21 @@ smk_write_ptrace
 
     \ :c:func:`write`\  for /smack/ptrace
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         data from user space
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes sent
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         where to start - must be 0
+    :type ppos: loff_t \*
 
 .. _`smk_fill_super`:
 
@@ -1380,14 +1565,17 @@ smk_fill_super
 
     fill the smackfs superblock
 
-    :param struct super_block \*sb:
+    :param sb:
         the empty superblock
+    :type sb: struct super_block \*
 
-    :param void \*data:
+    :param data:
         unused
+    :type data: void \*
 
-    :param int silent:
+    :param silent:
         unused
+    :type silent: int
 
 .. _`smk_fill_super.description`:
 
@@ -1407,17 +1595,21 @@ smk_mount
 
     get the smackfs superblock
 
-    :param struct file_system_type \*fs_type:
+    :param fs_type:
         passed along without comment
+    :type fs_type: struct file_system_type \*
 
-    :param int flags:
+    :param flags:
         passed along without comment
+    :type flags: int
 
-    :param const char \*dev_name:
+    :param dev_name:
         passed along without comment
+    :type dev_name: const char \*
 
-    :param void \*data:
+    :param data:
         passed along without comment
+    :type data: void \*
 
 .. _`smk_mount.description`:
 
@@ -1437,8 +1629,9 @@ init_smk_fs
 
     get the smackfs superblock
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`init_smk_fs.description`:
 

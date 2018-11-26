@@ -10,8 +10,9 @@ sdw_program_port_params
 
     Programs transport parameters of Master(s) and Slave(s)
 
-    :param struct sdw_master_runtime \*m_rt:
+    :param m_rt:
         Master stream runtime
+    :type m_rt: struct sdw_master_runtime \*
 
 .. _`sdw_enable_disable_slave_ports`:
 
@@ -22,17 +23,21 @@ sdw_enable_disable_slave_ports
 
     Enable/disable slave data port
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         bus instance
+    :type bus: struct sdw_bus \*
 
-    :param struct sdw_slave_runtime \*s_rt:
+    :param s_rt:
         slave runtime
+    :type s_rt: struct sdw_slave_runtime \*
 
-    :param struct sdw_port_runtime \*p_rt:
+    :param p_rt:
         port runtime
+    :type p_rt: struct sdw_port_runtime \*
 
-    :param bool en:
+    :param en:
         enable or disable operation
+    :type en: bool
 
 .. _`sdw_enable_disable_slave_ports.description`:
 
@@ -51,11 +56,13 @@ sdw_enable_disable_ports
 
     Enable/disable port(s) for Master and Slave(s)
 
-    :param struct sdw_master_runtime \*m_rt:
+    :param m_rt:
         Master stream runtime
+    :type m_rt: struct sdw_master_runtime \*
 
-    :param bool en:
+    :param en:
         mode (enable/disable)
+    :type en: bool
 
 .. _`sdw_prep_deprep_ports`:
 
@@ -66,11 +73,13 @@ sdw_prep_deprep_ports
 
     Prepare/De-prepare port(s) for Master(s) and Slave(s)
 
-    :param struct sdw_master_runtime \*m_rt:
+    :param m_rt:
         Master runtime handle
+    :type m_rt: struct sdw_master_runtime \*
 
-    :param bool prep:
+    :param prep:
         Prepare or De-prepare
+    :type prep: bool
 
 .. _`sdw_notify_config`:
 
@@ -81,8 +90,9 @@ sdw_notify_config
 
     Notify bus configuration
 
-    :param struct sdw_master_runtime \*m_rt:
+    :param m_rt:
         Master runtime handle
+    :type m_rt: struct sdw_master_runtime \*
 
 .. _`sdw_notify_config.description`:
 
@@ -101,8 +111,29 @@ sdw_program_params
 
     Program transport and port parameters for Master(s) and Slave(s)
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         SDW bus instance
+    :type bus: struct sdw_bus \*
+
+.. _`sdw_ml_sync_bank_switch`:
+
+sdw_ml_sync_bank_switch
+=======================
+
+.. c:function:: int sdw_ml_sync_bank_switch(struct sdw_bus *bus)
+
+    Multilink register bank switch
+
+    :param bus:
+        SDW bus instance
+    :type bus: struct sdw_bus \*
+
+.. _`sdw_ml_sync_bank_switch.description`:
+
+Description
+-----------
+
+Caller function should free the buffers on error
 
 .. _`sdw_release_stream`:
 
@@ -113,8 +144,9 @@ sdw_release_stream
 
     Free the assigned stream runtime
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         SoundWire stream runtime
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_release_stream.description`:
 
@@ -132,8 +164,9 @@ sdw_alloc_stream
 
     Allocate and return stream runtime
 
-    :param char \*stream_name:
+    :param stream_name:
         SoundWire stream name
+    :type stream_name: char \*
 
 .. _`sdw_alloc_stream.description`:
 
@@ -153,14 +186,17 @@ sdw_alloc_master_rt
 
     Allocates and initialize Master runtime handle
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         SDW bus instance
+    :type bus: struct sdw_bus \*
 
-    :param struct sdw_stream_config \*stream_config:
+    :param stream_config:
         Stream configuration
+    :type stream_config: struct sdw_stream_config \*
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         Stream runtime handle.
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_alloc_master_rt.description`:
 
@@ -178,14 +214,17 @@ sdw_alloc_slave_rt
 
     Allocate and initialize Slave runtime handle.
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         Slave handle
+    :type slave: struct sdw_slave \*
 
-    :param struct sdw_stream_config \*stream_config:
+    :param stream_config:
         Stream configuration
+    :type stream_config: struct sdw_stream_config \*
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         Stream runtime handle
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_alloc_slave_rt.description`:
 
@@ -203,11 +242,13 @@ sdw_release_slave_stream
 
     Free Slave(s) runtime handle
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         Slave handle.
+    :type slave: struct sdw_slave \*
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         Stream runtime handle.
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_release_slave_stream.description`:
 
@@ -221,12 +262,17 @@ This function is to be called with bus_lock held.
 sdw_release_master_stream
 =========================
 
-.. c:function:: void sdw_release_master_stream(struct sdw_stream_runtime *stream)
+.. c:function:: void sdw_release_master_stream(struct sdw_master_runtime *m_rt, struct sdw_stream_runtime *stream)
 
     Free Master runtime handle
 
-    :param struct sdw_stream_runtime \*stream:
+    :param m_rt:
+        Master runtime node
+    :type m_rt: struct sdw_master_runtime \*
+
+    :param stream:
         Stream runtime handle.
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_release_master_stream.description`:
 
@@ -247,11 +293,13 @@ sdw_stream_remove_master
 
     Remove master from sdw_stream
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         SDW Bus instance
+    :type bus: struct sdw_bus \*
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         SoundWire stream
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_stream_remove_master.description`:
 
@@ -269,11 +317,13 @@ sdw_stream_remove_slave
 
     Remove slave from sdw_stream
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         SDW Slave instance
+    :type slave: struct sdw_slave \*
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         SoundWire stream
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_stream_remove_slave.description`:
 
@@ -291,17 +341,21 @@ sdw_config_stream
 
     Configure the allocated stream
 
-    :param struct device \*dev:
+    :param dev:
         SDW device
+    :type dev: struct device \*
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         SoundWire stream
+    :type stream: struct sdw_stream_runtime \*
 
-    :param struct sdw_stream_config \*stream_config:
+    :param stream_config:
         Stream configuration for audio stream
+    :type stream_config: struct sdw_stream_config \*
 
-    :param bool is_slave:
+    :param is_slave:
         is API called from Slave or Master
+    :type is_slave: bool
 
 .. _`sdw_config_stream.description`:
 
@@ -319,20 +373,25 @@ sdw_stream_add_master
 
     Allocate and add master runtime to a stream
 
-    :param struct sdw_bus \*bus:
+    :param bus:
         SDW Bus instance
+    :type bus: struct sdw_bus \*
 
-    :param struct sdw_stream_config \*stream_config:
+    :param stream_config:
         Stream configuration for audio stream
+    :type stream_config: struct sdw_stream_config \*
 
-    :param struct sdw_port_config \*port_config:
+    :param port_config:
         Port configuration for audio stream
+    :type port_config: struct sdw_port_config \*
 
-    :param unsigned int num_ports:
+    :param num_ports:
         Number of ports
+    :type num_ports: unsigned int
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         SoundWire stream
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_stream_add_slave`:
 
@@ -343,20 +402,33 @@ sdw_stream_add_slave
 
     Allocate and add master/slave runtime to a stream
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         SDW Slave instance
+    :type slave: struct sdw_slave \*
 
-    :param struct sdw_stream_config \*stream_config:
+    :param stream_config:
         Stream configuration for audio stream
+    :type stream_config: struct sdw_stream_config \*
 
-    :param struct sdw_port_config \*port_config:
+    :param port_config:
         Port configuration for audio stream
+    :type port_config: struct sdw_port_config \*
 
-    :param unsigned int num_ports:
+    :param num_ports:
         Number of ports
+    :type num_ports: unsigned int
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         SoundWire stream
+    :type stream: struct sdw_stream_runtime \*
+
+.. _`sdw_stream_add_slave.description`:
+
+Description
+-----------
+
+It is expected that Slave is added before adding Master
+to the Stream.
 
 .. _`sdw_get_slave_dpn_prop`:
 
@@ -367,14 +439,74 @@ sdw_get_slave_dpn_prop
 
     Get Slave port capabilities
 
-    :param struct sdw_slave \*slave:
+    :param slave:
         Slave handle
+    :type slave: struct sdw_slave \*
 
-    :param enum sdw_data_direction direction:
+    :param direction:
         Data direction.
+    :type direction: enum sdw_data_direction
 
-    :param unsigned int port_num:
+    :param port_num:
         Port number
+    :type port_num: unsigned int
+
+.. _`sdw_acquire_bus_lock`:
+
+sdw_acquire_bus_lock
+====================
+
+.. c:function:: void sdw_acquire_bus_lock(struct sdw_stream_runtime *stream)
+
+    Acquire bus lock for all Master runtime(s)
+
+    :param stream:
+        SoundWire stream
+    :type stream: struct sdw_stream_runtime \*
+
+.. _`sdw_acquire_bus_lock.description`:
+
+Description
+-----------
+
+Acquire bus_lock for each of the master runtime(m_rt) part of this
+stream to reconfigure the bus.
+
+.. _`sdw_acquire_bus_lock.note`:
+
+NOTE
+----
+
+This function is called from SoundWire stream ops and is
+expected that a global lock is held before acquiring bus_lock.
+
+.. _`sdw_release_bus_lock`:
+
+sdw_release_bus_lock
+====================
+
+.. c:function:: void sdw_release_bus_lock(struct sdw_stream_runtime *stream)
+
+    Release bus lock for all Master runtime(s)
+
+    :param stream:
+        SoundWire stream
+    :type stream: struct sdw_stream_runtime \*
+
+.. _`sdw_release_bus_lock.description`:
+
+Description
+-----------
+
+Release the previously held bus_lock after reconfiguring the bus.
+
+.. _`sdw_release_bus_lock.note`:
+
+NOTE
+----
+
+This function is called from SoundWire stream ops and is
+expected that a global lock is held before releasing bus_lock.
 
 .. _`sdw_prepare_stream`:
 
@@ -385,8 +517,9 @@ sdw_prepare_stream
 
     Prepare SoundWire stream
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         Soundwire stream
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_prepare_stream.description`:
 
@@ -404,8 +537,9 @@ sdw_enable_stream
 
     Enable SoundWire stream
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         Soundwire stream
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_enable_stream.description`:
 
@@ -423,8 +557,9 @@ sdw_disable_stream
 
     Disable SoundWire stream
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         Soundwire stream
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_disable_stream.description`:
 
@@ -442,8 +577,9 @@ sdw_deprepare_stream
 
     Deprepare SoundWire stream
 
-    :param struct sdw_stream_runtime \*stream:
+    :param stream:
         Soundwire stream
+    :type stream: struct sdw_stream_runtime \*
 
 .. _`sdw_deprepare_stream.description`:
 

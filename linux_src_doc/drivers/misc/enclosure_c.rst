@@ -10,11 +10,13 @@ enclosure_find
 
     find an enclosure given a parent device
 
-    :param struct device \*dev:
+    :param dev:
         the parent to match against
+    :type dev: struct device \*
 
-    :param struct enclosure_device \*start:
+    :param start:
         Optional enclosure device to start from (NULL if none)
+    :type start: struct enclosure_device \*
 
 .. _`enclosure_find.description`:
 
@@ -46,8 +48,9 @@ enclosure_for_each_device
     :param int (\*fn)(struct enclosure_device \*, void \*):
         the function to call
 
-    :param void \*data:
+    :param data:
         the data to pass to each call
+    :type data: void \*
 
 .. _`enclosure_for_each_device.description`:
 
@@ -70,17 +73,21 @@ enclosure_register
 
     register device as an enclosure
 
-    :param struct device \*dev:
+    :param dev:
         device containing the enclosure
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param int components:
+    :param components:
         number of components in the enclosure
+    :type components: int
 
-    :param struct enclosure_component_callbacks \*cb:
+    :param cb:
         *undescribed*
+    :type cb: struct enclosure_component_callbacks \*
 
 .. _`enclosure_register.description`:
 
@@ -100,8 +107,9 @@ enclosure_unregister
 
     remove an enclosure
 
-    :param struct enclosure_device \*edev:
+    :param edev:
         the registered enclosure to remove;
+    :type edev: struct enclosure_device \*
 
 .. _`enclosure_component_alloc`:
 
@@ -112,17 +120,21 @@ enclosure_component_alloc
 
     prepare a new enclosure component
 
-    :param struct enclosure_device \*edev:
+    :param edev:
         the enclosure to add the component
+    :type edev: struct enclosure_device \*
 
-    :param unsigned int number:
+    :param number:
         *undescribed*
+    :type number: unsigned int
 
-    :param enum enclosure_component_type type:
+    :param type:
         the type of component being added
+    :type type: enum enclosure_component_type
 
-    :param const char \*name:
+    :param name:
         an optional name to appear in sysfs (leave NULL if none)
+    :type name: const char \*
 
 .. _`enclosure_component_alloc.description`:
 
@@ -143,8 +155,9 @@ enclosure_component_register
 
     publishes an initialized enclosure component
 
-    :param struct enclosure_component \*ecomp:
+    :param ecomp:
         component to add
+    :type ecomp: struct enclosure_component \*
 
 .. _`enclosure_component_register.description`:
 
@@ -162,14 +175,17 @@ enclosure_add_device
 
     add a device as being part of an enclosure
 
-    :param struct enclosure_device \*edev:
+    :param edev:
         the enclosure device being added to.
+    :type edev: struct enclosure_device \*
 
-    :param int component:
+    :param component:
         *undescribed*
+    :type component: int
 
-    :param struct device \*dev:
+    :param dev:
         the device being added
+    :type dev: struct device \*
 
 .. _`enclosure_add_device.description`:
 
@@ -193,11 +209,13 @@ enclosure_remove_device
 
     remove a device from an enclosure
 
-    :param struct enclosure_device \*edev:
+    :param edev:
         the enclosure device
+    :type edev: struct enclosure_device \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`enclosure_remove_device.description`:
 

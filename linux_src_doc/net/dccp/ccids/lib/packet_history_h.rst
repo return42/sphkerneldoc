@@ -10,11 +10,13 @@ tfrc_rx_hist_index
 
     index to reach n-th entry after loss_start
 
-    :param const struct tfrc_rx_hist \*h:
+    :param h:
         *undescribed*
+    :type h: const struct tfrc_rx_hist \*
 
-    :param const u8 n:
+    :param n:
         *undescribed*
+    :type n: const u8
 
 .. _`tfrc_rx_hist_last_rcv`:
 
@@ -25,8 +27,9 @@ tfrc_rx_hist_last_rcv
 
     entry with highest-received-seqno so far
 
-    :param const struct tfrc_rx_hist \*h:
+    :param h:
         *undescribed*
+    :type h: const struct tfrc_rx_hist \*
 
 .. _`tfrc_rx_hist_entry`:
 
@@ -37,11 +40,13 @@ tfrc_rx_hist_entry
 
     return the n-th history entry after loss_start
 
-    :param const struct tfrc_rx_hist \*h:
+    :param h:
         *undescribed*
+    :type h: const struct tfrc_rx_hist \*
 
-    :param const u8 n:
+    :param n:
         *undescribed*
+    :type n: const u8
 
 .. _`tfrc_rx_hist_loss_prev`:
 
@@ -52,8 +57,9 @@ tfrc_rx_hist_loss_prev
 
     entry with highest-received-seqno before loss was detected
 
-    :param const struct tfrc_rx_hist \*h:
+    :param h:
         *undescribed*
+    :type h: const struct tfrc_rx_hist \*
 
 .. This file was automatic generated / don't edit.
 

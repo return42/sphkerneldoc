@@ -10,11 +10,13 @@ sn_dma_supported
 
     test a DMA mask
 
-    :param struct device \*dev:
+    :param dev:
         device to test
+    :type dev: struct device \*
 
-    :param u64 mask:
+    :param mask:
         DMA mask to test
+    :type mask: u64
 
 .. _`sn_dma_supported.description`:
 
@@ -36,11 +38,13 @@ sn_dma_set_mask
 
     set the DMA mask
 
-    :param struct device \*dev:
+    :param dev:
         device to set
+    :type dev: struct device \*
 
-    :param u64 dma_mask:
+    :param dma_mask:
         new mask
+    :type dma_mask: u64
 
 .. _`sn_dma_set_mask.description`:
 
@@ -58,20 +62,25 @@ sn_dma_alloc_coherent
 
     allocate memory for coherent DMA
 
-    :param struct device \*dev:
+    :param dev:
         device to allocate for
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         size of the region
+    :type size: size_t
 
-    :param dma_addr_t \*dma_handle:
+    :param dma_handle:
         DMA (bus) address
+    :type dma_handle: dma_addr_t \*
 
-    :param gfp_t flags:
+    :param flags:
         memory allocation flags
+    :type flags: gfp_t
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`sn_dma_alloc_coherent.description`:
 
@@ -95,20 +104,25 @@ sn_dma_free_coherent
 
     free memory associated with coherent DMAable region
 
-    :param struct device \*dev:
+    :param dev:
         device to free for
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         size to free
+    :type size: size_t
 
-    :param void \*cpu_addr:
+    :param cpu_addr:
         kernel virtual address to free
+    :type cpu_addr: void \*
 
-    :param dma_addr_t dma_handle:
+    :param dma_handle:
         DMA address associated with this region
+    :type dma_handle: dma_addr_t
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`sn_dma_free_coherent.description`:
 
@@ -127,23 +141,29 @@ sn_dma_map_page
 
     map a single page for DMA
 
-    :param struct device \*dev:
+    :param dev:
         device to map for
+    :type dev: struct device \*
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
-    :param unsigned long offset:
+    :param offset:
         *undescribed*
+    :type offset: unsigned long
 
-    :param size_t size:
+    :param size:
         size of the region
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         *undescribed*
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         optional dma attributes
+    :type attrs: unsigned long
 
 .. _`sn_dma_map_page.description`:
 
@@ -186,20 +206,25 @@ sn_dma_unmap_page
 
     unamp a DMA mapped page
 
-    :param struct device \*dev:
+    :param dev:
         device to sync
+    :type dev: struct device \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         DMA address to sync
+    :type dma_addr: dma_addr_t
 
-    :param size_t size:
+    :param size:
         size of region
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         *undescribed*
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         optional dma attributes
+    :type attrs: unsigned long
 
 .. _`sn_dma_unmap_page.description`:
 
@@ -219,20 +244,25 @@ sn_dma_unmap_sg
 
     unmap a DMA scatterlist
 
-    :param struct device \*dev:
+    :param dev:
         device to unmap
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         *undescribed*
+    :type sgl: struct scatterlist \*
 
-    :param int nhwentries:
+    :param nhwentries:
         number of scatterlist entries
+    :type nhwentries: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         *undescribed*
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         optional dma attributes
+    :type attrs: unsigned long
 
 .. _`sn_dma_unmap_sg.description`:
 
@@ -250,20 +280,25 @@ sn_dma_map_sg
 
     map a scatterlist for DMA
 
-    :param struct device \*dev:
+    :param dev:
         device to map for
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         *undescribed*
+    :type sgl: struct scatterlist \*
 
-    :param int nhwentries:
+    :param nhwentries:
         number of entries
+    :type nhwentries: int
 
-    :param enum dma_data_direction dir:
+    :param dir:
         *undescribed*
+    :type dir: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         optional dma attributes
+    :type attrs: unsigned long
 
 .. _`sn_dma_map_sg.description`:
 

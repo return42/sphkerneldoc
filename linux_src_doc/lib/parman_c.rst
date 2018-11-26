@@ -10,11 +10,13 @@ parman_create
 
     creates a new parman instance
 
-    :param const struct parman_ops \*ops:
+    :param ops:
         caller-specific callbacks
+    :type ops: const struct parman_ops \*
 
-    :param void \*priv:
+    :param priv:
         pointer to a private data passed to the ops
+    :type priv: void \*
 
 .. _`parman_create.note`:
 
@@ -64,8 +66,9 @@ parman_destroy
 
     destroys existing parman instance
 
-    :param struct parman \*parman:
+    :param parman:
         parman instance
+    :type parman: struct parman \*
 
 .. _`parman_destroy.note`:
 
@@ -83,14 +86,17 @@ parman_prio_init
 
     initializes a parman priority chunk
 
-    :param struct parman \*parman:
+    :param parman:
         parman instance
+    :type parman: struct parman \*
 
-    :param struct parman_prio \*prio:
+    :param prio:
         parman prio structure to be initialized
+    :type prio: struct parman_prio \*
 
-    :param unsigned long priority:
+    :param priority:
         *undescribed*
+    :type priority: unsigned long
 
 .. _`parman_prio_init.note`:
 
@@ -111,8 +117,9 @@ parman_prio_fini
 
     finalizes use of parman priority chunk
 
-    :param struct parman_prio \*prio:
+    :param prio:
         parman prio structure
+    :type prio: struct parman_prio \*
 
 .. _`parman_prio_fini.note`:
 
@@ -130,14 +137,17 @@ parman_item_add
 
     adds a parman item under defined priority
 
-    :param struct parman \*parman:
+    :param parman:
         parman instance
+    :type parman: struct parman \*
 
-    :param struct parman_prio \*prio:
+    :param prio:
         parman prio instance to add the item to
+    :type prio: struct parman_prio \*
 
-    :param struct parman_item \*item:
+    :param item:
         parman item instance
+    :type item: struct parman_item \*
 
 .. _`parman_item_add.note`:
 
@@ -159,14 +169,17 @@ parman_item_remove
 
     deletes parman item
 
-    :param struct parman \*parman:
+    :param parman:
         parman instance
+    :type parman: struct parman \*
 
-    :param struct parman_prio \*prio:
+    :param prio:
         parman prio instance to delete the item from
+    :type prio: struct parman_prio \*
 
-    :param struct parman_item \*item:
+    :param item:
         parman item instance
+    :type item: struct parman_item \*
 
 .. _`parman_item_remove.note`:
 

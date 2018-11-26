@@ -10,15 +10,18 @@
 
     attempt to lock a specific hwspinlock
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         an hwspinlock which we want to trylock
+    :type hwlock: struct hwspinlock \*
 
-    :param int mode:
+    :param mode:
         controls whether local interrupts are disabled or not
+    :type mode: int
 
-    :param unsigned long \*flags:
+    :param flags:
         a pointer where the caller's interrupt state will be saved at (if
         requested)
+    :type flags: unsigned long \*
 
 .. _`__hwspin_trylock.description`:
 
@@ -63,18 +66,22 @@ This function will never sleep.
 
     lock an hwspinlock with timeout limit
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         the hwspinlock to be locked
+    :type hwlock: struct hwspinlock \*
 
-    :param unsigned int to:
+    :param to:
         *undescribed*
+    :type to: unsigned int
 
-    :param int mode:
+    :param mode:
         mode which controls whether local interrupts are disabled or not
+    :type mode: int
 
-    :param unsigned long \*flags:
+    :param flags:
         a pointer to where the caller's interrupt state will be saved at (if
         requested)
+    :type flags: unsigned long \*
 
 .. _`__hwspin_lock_timeout.description`:
 
@@ -119,15 +126,18 @@ busy after \ ``timeout``\  msecs). The function will never sleep.
 
     unlock a specific hwspinlock
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         it is a bug
         to call unlock on a \ ``hwlock``\  that is already unlocked.
+    :type hwlock: struct hwspinlock \*
 
-    :param int mode:
+    :param mode:
         controls whether local interrupts needs to be restored or not
+    :type mode: int
 
-    :param unsigned long \*flags:
+    :param flags:
         previous caller's interrupt state to restore (if requested)
+    :type flags: unsigned long \*
 
 .. _`__hwspin_unlock.description`:
 
@@ -154,8 +164,9 @@ of_hwspin_lock_simple_xlate
 
     translate hwlock_spec to return a lock id
 
-    :param const struct of_phandle_args \*hwlock_spec:
+    :param hwlock_spec:
         hwlock specifier as found in the device tree
+    :type hwlock_spec: const struct of_phandle_args \*
 
 .. _`of_hwspin_lock_simple_xlate.description`:
 
@@ -177,11 +188,13 @@ of_hwspin_lock_get_id
 
     get lock id for an OF phandle-based specific lock
 
-    :param struct device_node \*np:
+    :param np:
         device node from which to request the specific hwlock
+    :type np: struct device_node \*
 
-    :param int index:
+    :param index:
         index of the hwlock in the list of values
+    :type index: int
 
 .. _`of_hwspin_lock_get_id.description`:
 
@@ -197,6 +210,37 @@ Returns the global lock id number on success, -EPROBE_DEFER if the hwspinlock
 device is not yet registered, -EINVAL on invalid args specifier value or an
 appropriate error as returned from the OF parsing of the DT client node.
 
+.. _`of_hwspin_lock_get_id_byname`:
+
+of_hwspin_lock_get_id_byname
+============================
+
+.. c:function:: int of_hwspin_lock_get_id_byname(struct device_node *np, const char *name)
+
+    get lock id for an specified hwlock name
+
+    :param np:
+        device node from which to request the specific hwlock
+    :type np: struct device_node \*
+
+    :param name:
+        hwlock name
+    :type name: const char \*
+
+.. _`of_hwspin_lock_get_id_byname.description`:
+
+Description
+-----------
+
+This function provides a means for DT users of the hwspinlock module to
+get the global lock id of a specific hwspinlock using the specified name of
+the hwspinlock device, so that it can be requested using the normal
+\ :c:func:`hwspin_lock_request_specific`\  API.
+
+Returns the global lock id number on success, -EPROBE_DEFER if the hwspinlock
+device is not yet registered, -EINVAL on invalid args specifier value or an
+appropriate error as returned from the OF parsing of the DT client node.
+
 .. _`hwspin_lock_register`:
 
 hwspin_lock_register
@@ -206,20 +250,25 @@ hwspin_lock_register
 
     register a new hw spinlock device
 
-    :param struct hwspinlock_device \*bank:
+    :param bank:
         the hwspinlock device, which usually provides numerous hw locks
+    :type bank: struct hwspinlock_device \*
 
-    :param struct device \*dev:
+    :param dev:
         the backing device
+    :type dev: struct device \*
 
-    :param const struct hwspinlock_ops \*ops:
+    :param ops:
         hwspinlock handlers for this device
+    :type ops: const struct hwspinlock_ops \*
 
-    :param int base_id:
+    :param base_id:
         id of the first hardware spinlock in this bank
+    :type base_id: int
 
-    :param int num_locks:
+    :param num_locks:
         number of hwspinlocks provided by this device
+    :type num_locks: int
 
 .. _`hwspin_lock_register.description`:
 
@@ -242,8 +291,9 @@ hwspin_lock_unregister
 
     unregister an hw spinlock device
 
-    :param struct hwspinlock_device \*bank:
+    :param bank:
         the hwspinlock device, which usually provides numerous hw locks
+    :type bank: struct hwspinlock_device \*
 
 .. _`hwspin_lock_unregister.description`:
 
@@ -252,6 +302,76 @@ Description
 
 This function should be called from the underlying platform-specific
 implementation, to unregister an existing (and unused) hwspinlock.
+
+Should be called from a process context (might sleep)
+
+Returns 0 on success, or an appropriate error code on failure
+
+.. _`devm_hwspin_lock_unregister`:
+
+devm_hwspin_lock_unregister
+===========================
+
+.. c:function:: int devm_hwspin_lock_unregister(struct device *dev, struct hwspinlock_device *bank)
+
+    unregister an hw spinlock device for a managed device
+
+    :param dev:
+        the backing device
+    :type dev: struct device \*
+
+    :param bank:
+        the hwspinlock device, which usually provides numerous hw locks
+    :type bank: struct hwspinlock_device \*
+
+.. _`devm_hwspin_lock_unregister.description`:
+
+Description
+-----------
+
+This function should be called from the underlying platform-specific
+implementation, to unregister an existing (and unused) hwspinlock.
+
+Should be called from a process context (might sleep)
+
+Returns 0 on success, or an appropriate error code on failure
+
+.. _`devm_hwspin_lock_register`:
+
+devm_hwspin_lock_register
+=========================
+
+.. c:function:: int devm_hwspin_lock_register(struct device *dev, struct hwspinlock_device *bank, const struct hwspinlock_ops *ops, int base_id, int num_locks)
+
+    register a new hw spinlock device for a managed device
+
+    :param dev:
+        the backing device
+    :type dev: struct device \*
+
+    :param bank:
+        the hwspinlock device, which usually provides numerous hw locks
+    :type bank: struct hwspinlock_device \*
+
+    :param ops:
+        hwspinlock handlers for this device
+    :type ops: const struct hwspinlock_ops \*
+
+    :param base_id:
+        id of the first hardware spinlock in this bank
+    :type base_id: int
+
+    :param num_locks:
+        number of hwspinlocks provided by this device
+    :type num_locks: int
+
+.. _`devm_hwspin_lock_register.description`:
+
+Description
+-----------
+
+This function should be called from the underlying platform-specific
+implementation, to register a new hwspinlock device instance.
 
 Should be called from a process context (might sleep)
 
@@ -266,8 +386,9 @@ Returns 0 on success, or an appropriate error code on failure
 
     tag an hwspinlock as used and power it up
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         *undescribed*
+    :type hwlock: struct hwspinlock \*
 
 .. _`__hwspin_lock_request.description`:
 
@@ -290,8 +411,9 @@ hwspin_lock_get_id
 
     retrieve id number of a given hwspinlock
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         a valid hwspinlock instance
+    :type hwlock: struct hwspinlock \*
 
 .. _`hwspin_lock_get_id.description`:
 
@@ -309,8 +431,9 @@ hwspin_lock_request
 
     request an hwspinlock
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hwspin_lock_request.description`:
 
@@ -336,8 +459,9 @@ hwspin_lock_request_specific
 
     request for a specific hwspinlock
 
-    :param unsigned int id:
+    :param id:
         index of the specific hwspinlock that is requested
+    :type id: unsigned int
 
 .. _`hwspin_lock_request_specific.description`:
 
@@ -362,8 +486,9 @@ hwspin_lock_free
 
     free a specific hwspinlock
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         the specific hwspinlock to free
+    :type hwlock: struct hwspinlock \*
 
 .. _`hwspin_lock_free.description`:
 
@@ -372,11 +497,100 @@ Description
 
 This function mark \ ``hwlock``\  as free again.
 Should only be called with an \ ``hwlock``\  that was retrieved from
-an earlier call to omap_hwspin_lock_request{_specific}.
+an earlier call to hwspin_lock_request{_specific}.
 
 Should be called from a process context (might sleep)
 
 Returns 0 on success, or an appropriate error code on failure
+
+.. _`devm_hwspin_lock_free`:
+
+devm_hwspin_lock_free
+=====================
+
+.. c:function:: int devm_hwspin_lock_free(struct device *dev, struct hwspinlock *hwlock)
+
+    free a specific hwspinlock for a managed device
+
+    :param dev:
+        the device to free the specific hwspinlock
+    :type dev: struct device \*
+
+    :param hwlock:
+        the specific hwspinlock to free
+    :type hwlock: struct hwspinlock \*
+
+.. _`devm_hwspin_lock_free.description`:
+
+Description
+-----------
+
+This function mark \ ``hwlock``\  as free again.
+Should only be called with an \ ``hwlock``\  that was retrieved from
+an earlier call to hwspin_lock_request{_specific}.
+
+Should be called from a process context (might sleep)
+
+Returns 0 on success, or an appropriate error code on failure
+
+.. _`devm_hwspin_lock_request`:
+
+devm_hwspin_lock_request
+========================
+
+.. c:function:: struct hwspinlock *devm_hwspin_lock_request(struct device *dev)
+
+    request an hwspinlock for a managed device
+
+    :param dev:
+        the device to request an hwspinlock
+    :type dev: struct device \*
+
+.. _`devm_hwspin_lock_request.description`:
+
+Description
+-----------
+
+This function should be called by users of the hwspinlock device,
+in order to dynamically assign them an unused hwspinlock.
+Usually the user of this lock will then have to communicate the lock's id
+to the remote core before it can be used for synchronization (to get the
+id of a given hwlock, use \ :c:func:`hwspin_lock_get_id`\ ).
+
+Should be called from a process context (might sleep)
+
+Returns the address of the assigned hwspinlock, or NULL on error
+
+.. _`devm_hwspin_lock_request_specific`:
+
+devm_hwspin_lock_request_specific
+=================================
+
+.. c:function:: struct hwspinlock *devm_hwspin_lock_request_specific(struct device *dev, unsigned int id)
+
+    request for a specific hwspinlock for a managed device
+
+    :param dev:
+        the device to request the specific hwspinlock
+    :type dev: struct device \*
+
+    :param id:
+        index of the specific hwspinlock that is requested
+    :type id: unsigned int
+
+.. _`devm_hwspin_lock_request_specific.description`:
+
+Description
+-----------
+
+This function should be called by users of the hwspinlock module,
+in order to assign them a specific hwspinlock.
+Usually early board code will be calling this function in order to
+reserve specific hwspinlock ids for predefined purposes.
+
+Should be called from a process context (might sleep)
+
+Returns the address of the assigned hwspinlock, or NULL on error
 
 .. This file was automatic generated / don't edit.
 

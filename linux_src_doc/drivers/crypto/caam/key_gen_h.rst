@@ -10,9 +10,10 @@ split_key_len
 
     Compute MDHA split key length for a given algorithm
 
-    :param u32 hash:
+    :param hash:
         Hashing algorithm selection, one of OP_ALG_ALGSEL\_\* - MD5, SHA1,
         SHA224, SHA384, SHA512.
+    :type hash: u32
 
 .. _`split_key_len.return`:
 
@@ -30,9 +31,10 @@ split_key_pad_len
 
     Compute MDHA split key pad length for a given algorithm
 
-    :param u32 hash:
+    :param hash:
         Hashing algorithm selection, one of OP_ALG_ALGSEL\_\* - MD5, SHA1,
         SHA224, SHA384, SHA512.
+    :type hash: u32
 
 .. _`split_key_pad_len.return`:
 

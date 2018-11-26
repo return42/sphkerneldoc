@@ -10,11 +10,13 @@ ti_bandgap_readl
 
     simple read helper function
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to ti_bandgap structure
+    :type bgp: struct ti_bandgap \*
 
-    :param u32 reg:
+    :param reg:
         desired register (offset) to be read
+    :type reg: u32
 
 .. _`ti_bandgap_readl.description`:
 
@@ -39,14 +41,17 @@ ti_bandgap_writel
 
     simple write helper function
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to ti_bandgap structure
+    :type bgp: struct ti_bandgap \*
 
-    :param u32 val:
+    :param val:
         desired register value to be written
+    :type val: u32
 
-    :param u32 reg:
+    :param reg:
         desired register (offset) to be written
+    :type reg: u32
 
 .. _`ti_bandgap_writel.description`:
 
@@ -72,11 +77,13 @@ ti_bandgap_power
 
     controls the power state of a bandgap device
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to ti_bandgap structure
+    :type bgp: struct ti_bandgap \*
 
-    :param bool on:
+    :param on:
         desired power state (1 - on, 0 - off)
+    :type on: bool
 
 .. _`ti_bandgap_power.description`:
 
@@ -102,11 +109,13 @@ ti_errata814_bandgap_read_temp
 
     helper function to read dra7 sensor temperature
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to ti_bandgap structure
+    :type bgp: struct ti_bandgap \*
 
-    :param u32 reg:
+    :param reg:
         desired register (offset) to be read
+    :type reg: u32
 
 .. _`ti_errata814_bandgap_read_temp.description`:
 
@@ -138,11 +147,13 @@ ti_bandgap_read_temp
 
     helper function to read sensor temperature
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to ti_bandgap structure
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         bandgap sensor id
+    :type id: int
 
 .. _`ti_bandgap_read_temp.description`:
 
@@ -170,11 +181,13 @@ ti_bandgap_talert_irq_handler
 
     handles Temperature alert IRQs
 
-    :param int irq:
+    :param irq:
         IRQ number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         private data (struct ti_bandgap \*)
+    :type data: void \*
 
 .. _`ti_bandgap_talert_irq_handler.description`:
 
@@ -203,11 +216,13 @@ ti_bandgap_tshut_irq_handler
 
     handles Temperature shutdown signal
 
-    :param int irq:
+    :param irq:
         IRQ number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         private data (unused)
+    :type data: void \*
 
 .. _`ti_bandgap_tshut_irq_handler.description`:
 
@@ -234,14 +249,17 @@ ti_bandgap_adc_to_mcelsius
 
     converts an ADC value to mCelsius scale
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         struct ti_bandgap pointer
+    :type bgp: struct ti_bandgap \*
 
-    :param int adc_val:
+    :param adc_val:
         value in ADC representation
+    :type adc_val: int
 
-    :param int \*t:
+    :param t:
         address where to write the resulting temperature in mCelsius
+    :type t: int \*
 
 .. _`ti_bandgap_adc_to_mcelsius.description`:
 
@@ -260,145 +278,6 @@ Return
 0 if conversion was successful, else -ERANGE in case the \ ``adc_val``\ 
 argument is out of the ADC conv table range.
 
-.. _`ti_bandgap_mcelsius_to_adc`:
-
-ti_bandgap_mcelsius_to_adc
-==========================
-
-.. c:function:: int ti_bandgap_mcelsius_to_adc(struct ti_bandgap *bgp, long temp, int *adc)
-
-    converts a mCelsius value to ADC scale
-
-    :param struct ti_bandgap \*bgp:
-        struct ti_bandgap pointer
-
-    :param long temp:
-        value in mCelsius
-
-    :param int \*adc:
-        address where to write the resulting temperature in ADC representation
-
-.. _`ti_bandgap_mcelsius_to_adc.description`:
-
-Description
------------
-
-Simple conversion from mCelsius to ADC values. In case the temp value
-is out of the ADC conv table range, it returns -ERANGE, 0 on success.
-The conversion table is indexed by the ADC values.
-
-.. _`ti_bandgap_mcelsius_to_adc.return`:
-
-Return
-------
-
-0 if conversion was successful, else -ERANGE in case the \ ``temp``\ 
-argument is out of the ADC conv table range.
-
-.. _`ti_bandgap_add_hyst`:
-
-ti_bandgap_add_hyst
-===================
-
-.. c:function:: int ti_bandgap_add_hyst(struct ti_bandgap *bgp, int adc_val, int hyst_val, u32 *sum)
-
-    add hysteresis (in mCelsius) to an ADC value
-
-    :param struct ti_bandgap \*bgp:
-        struct ti_bandgap pointer
-
-    :param int adc_val:
-        temperature value in ADC representation
-
-    :param int hyst_val:
-        hysteresis value in mCelsius
-
-    :param u32 \*sum:
-        address where to write the resulting temperature (in ADC scale)
-
-.. _`ti_bandgap_add_hyst.description`:
-
-Description
------------
-
-Adds an hysteresis value (in mCelsius) to a ADC temperature value.
-
-.. _`ti_bandgap_add_hyst.return`:
-
-Return
-------
-
-0 on success, -ERANGE otherwise.
-
-.. _`ti_bandgap_unmask_interrupts`:
-
-ti_bandgap_unmask_interrupts
-============================
-
-.. c:function:: void ti_bandgap_unmask_interrupts(struct ti_bandgap *bgp, int id, u32 t_hot, u32 t_cold)
-
-    unmasks the events of thot & tcold
-
-    :param struct ti_bandgap \*bgp:
-        struct ti_bandgap pointer
-
-    :param int id:
-        bandgap sensor id
-
-    :param u32 t_hot:
-        hot temperature value to trigger alert signal
-
-    :param u32 t_cold:
-        cold temperature value to trigger alert signal
-
-.. _`ti_bandgap_unmask_interrupts.description`:
-
-Description
------------
-
-Checks the requested t_hot and t_cold values and configures the IRQ event
-masks accordingly. Call this function only if bandgap features HAS(TALERT).
-
-.. _`ti_bandgap_update_alert_threshold`:
-
-ti_bandgap_update_alert_threshold
-=================================
-
-.. c:function:: int ti_bandgap_update_alert_threshold(struct ti_bandgap *bgp, int id, int val, bool hot)
-
-    sequence to update thresholds
-
-    :param struct ti_bandgap \*bgp:
-        struct ti_bandgap pointer
-
-    :param int id:
-        bandgap sensor id
-
-    :param int val:
-        value (ADC) of a new threshold
-
-    :param bool hot:
-        desired threshold to be updated. true if threshold hot, false if
-        threshold cold
-
-.. _`ti_bandgap_update_alert_threshold.description`:
-
-Description
------------
-
-It will program the required thresholds (hot and cold) for TALERT signal.
-This function can be used to update t_hot or t_cold, depending on \ ``hot``\  value.
-It checks the resulting t_hot and t_cold values, based on the new passed \ ``val``\ 
-and configures the thresholds so that t_hot is always greater than t_cold.
-Call this function only if bandgap features HAS(TALERT).
-
-.. _`ti_bandgap_update_alert_threshold.return`:
-
-Return
-------
-
-0 if no error, else corresponding error
-
 .. _`ti_bandgap_validate`:
 
 ti_bandgap_validate
@@ -408,11 +287,13 @@ ti_bandgap_validate
 
     helper to check the sanity of a struct ti_bandgap
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         struct ti_bandgap pointer
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         bandgap sensor id
+    :type id: int
 
 .. _`ti_bandgap_validate.description`:
 
@@ -430,184 +311,6 @@ Return
 0 if no errors, -EINVAL for invalid \ ``bgp``\  pointer or -ERANGE if
 \ ``id``\  cannot index \ ``bgp``\  sensors.
 
-.. _`_ti_bandgap_write_threshold`:
-
-\_ti_bandgap_write_threshold
-============================
-
-.. c:function:: int _ti_bandgap_write_threshold(struct ti_bandgap *bgp, int id, int val, bool hot)
-
-    helper to update TALERT t_cold or t_hot
-
-    :param struct ti_bandgap \*bgp:
-        struct ti_bandgap pointer
-
-    :param int id:
-        bandgap sensor id
-
-    :param int val:
-        value (mCelsius) of a new threshold
-
-    :param bool hot:
-        desired threshold to be updated. true if threshold hot, false if
-        threshold cold
-
-.. _`_ti_bandgap_write_threshold.description`:
-
-Description
------------
-
-It will update the required thresholds (hot and cold) for TALERT signal.
-This function can be used to update t_hot or t_cold, depending on \ ``hot``\  value.
-Validates the mCelsius range and update the requested threshold.
-Call this function only if bandgap features HAS(TALERT).
-
-.. _`_ti_bandgap_write_threshold.return`:
-
-Return
-------
-
-0 if no error, else corresponding error value.
-
-.. _`_ti_bandgap_read_threshold`:
-
-\_ti_bandgap_read_threshold
-===========================
-
-.. c:function:: int _ti_bandgap_read_threshold(struct ti_bandgap *bgp, int id, int *val, bool hot)
-
-    helper to read TALERT t_cold or t_hot
-
-    :param struct ti_bandgap \*bgp:
-        struct ti_bandgap pointer
-
-    :param int id:
-        bandgap sensor id
-
-    :param int \*val:
-        value (mCelsius) of a threshold
-
-    :param bool hot:
-        desired threshold to be read. true if threshold hot, false if
-        threshold cold
-
-.. _`_ti_bandgap_read_threshold.description`:
-
-Description
------------
-
-It will fetch the required thresholds (hot and cold) for TALERT signal.
-This function can be used to read t_hot or t_cold, depending on \ ``hot``\  value.
-Call this function only if bandgap features HAS(TALERT).
-
-.. _`_ti_bandgap_read_threshold.return`:
-
-Return
-------
-
-0 if no error, -ENOTSUPP if it has no TALERT support, or the
-corresponding error value if some operation fails.
-
-.. _`ti_bandgap_read_thot`:
-
-ti_bandgap_read_thot
-====================
-
-.. c:function:: int ti_bandgap_read_thot(struct ti_bandgap *bgp, int id, int *thot)
-
-    reads sensor current thot
-
-    :param struct ti_bandgap \*bgp:
-        pointer to bandgap instance
-
-    :param int id:
-        sensor id
-
-    :param int \*thot:
-        resulting current thot value
-
-.. _`ti_bandgap_read_thot.return`:
-
-Return
-------
-
-0 on success or the proper error code
-
-.. _`ti_bandgap_write_thot`:
-
-ti_bandgap_write_thot
-=====================
-
-.. c:function:: int ti_bandgap_write_thot(struct ti_bandgap *bgp, int id, int val)
-
-    sets sensor current thot
-
-    :param struct ti_bandgap \*bgp:
-        pointer to bandgap instance
-
-    :param int id:
-        sensor id
-
-    :param int val:
-        desired thot value
-
-.. _`ti_bandgap_write_thot.return`:
-
-Return
-------
-
-0 on success or the proper error code
-
-.. _`ti_bandgap_read_tcold`:
-
-ti_bandgap_read_tcold
-=====================
-
-.. c:function:: int ti_bandgap_read_tcold(struct ti_bandgap *bgp, int id, int *tcold)
-
-    reads sensor current tcold
-
-    :param struct ti_bandgap \*bgp:
-        pointer to bandgap instance
-
-    :param int id:
-        sensor id
-
-    :param int \*tcold:
-        resulting current tcold value
-
-.. _`ti_bandgap_read_tcold.return`:
-
-Return
-------
-
-0 on success or the proper error code
-
-.. _`ti_bandgap_write_tcold`:
-
-ti_bandgap_write_tcold
-======================
-
-.. c:function:: int ti_bandgap_write_tcold(struct ti_bandgap *bgp, int id, int val)
-
-    sets the sensor tcold
-
-    :param struct ti_bandgap \*bgp:
-        pointer to bandgap instance
-
-    :param int id:
-        sensor id
-
-    :param int val:
-        desired tcold value
-
-.. _`ti_bandgap_write_tcold.return`:
-
-Return
-------
-
-0 on success or the proper error code
-
 .. _`ti_bandgap_read_counter`:
 
 ti_bandgap_read_counter
@@ -617,14 +320,17 @@ ti_bandgap_read_counter
 
     read the sensor counter
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to bandgap instance
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         sensor id
+    :type id: int
 
-    :param int \*interval:
+    :param interval:
         resulting update interval in miliseconds
+    :type interval: int \*
 
 .. _`ti_bandgap_read_counter_delay`:
 
@@ -635,14 +341,17 @@ ti_bandgap_read_counter_delay
 
     read the sensor counter delay
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to bandgap instance
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         sensor id
+    :type id: int
 
-    :param int \*interval:
+    :param interval:
         resulting update interval in miliseconds
+    :type interval: int \*
 
 .. _`ti_bandgap_read_update_interval`:
 
@@ -653,14 +362,17 @@ ti_bandgap_read_update_interval
 
     read the sensor update interval
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to bandgap instance
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         sensor id
+    :type id: int
 
-    :param int \*interval:
+    :param interval:
         resulting update interval in miliseconds
+    :type interval: int \*
 
 .. _`ti_bandgap_read_update_interval.return`:
 
@@ -678,14 +390,17 @@ ti_bandgap_write_counter_delay
 
     set the counter_delay
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to bandgap instance
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         sensor id
+    :type id: int
 
-    :param u32 interval:
+    :param interval:
         desired update interval in miliseconds
+    :type interval: u32
 
 .. _`ti_bandgap_write_counter_delay.return`:
 
@@ -703,14 +418,17 @@ ti_bandgap_write_counter
 
     set the bandgap sensor counter
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to bandgap instance
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         sensor id
+    :type id: int
 
-    :param u32 interval:
+    :param interval:
         desired update interval in miliseconds
+    :type interval: u32
 
 .. _`ti_bandgap_write_update_interval`:
 
@@ -721,14 +439,17 @@ ti_bandgap_write_update_interval
 
     set the update interval
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to bandgap instance
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         sensor id
+    :type id: int
 
-    :param u32 interval:
+    :param interval:
         desired update interval in miliseconds
+    :type interval: u32
 
 .. _`ti_bandgap_write_update_interval.return`:
 
@@ -746,14 +467,17 @@ ti_bandgap_read_temperature
 
     report current temperature
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to bandgap instance
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         sensor id
+    :type id: int
 
-    :param int \*temperature:
+    :param temperature:
         resulting temperature
+    :type temperature: int \*
 
 .. _`ti_bandgap_read_temperature.return`:
 
@@ -771,14 +495,17 @@ ti_bandgap_set_sensor_data
 
     helper function to store thermal framework related data.
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to bandgap instance
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         sensor id
+    :type id: int
 
-    :param void \*data:
+    :param data:
         thermal framework related data to be stored
+    :type data: void \*
 
 .. _`ti_bandgap_set_sensor_data.return`:
 
@@ -796,11 +523,13 @@ ti_bandgap_get_sensor_data
 
     helper function to get thermal framework related data.
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to bandgap instance
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         sensor id
+    :type id: int
 
 .. _`ti_bandgap_get_sensor_data.return`:
 
@@ -818,11 +547,13 @@ ti_bandgap_force_single_read
 
     executes 1 single ADC conversion
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to struct ti_bandgap
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         sensor id which it is desired to read 1 temperature
+    :type id: int
 
 .. _`ti_bandgap_force_single_read.description`:
 
@@ -848,8 +579,9 @@ ti_bandgap_set_continuous_mode
 
     One time enabling of continuous mode
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to struct ti_bandgap
+    :type bgp: struct ti_bandgap \*
 
 .. _`ti_bandgap_set_continuous_mode.description`:
 
@@ -877,14 +609,17 @@ ti_bandgap_get_trend
 
     To fetch the temperature trend of a sensor
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to struct ti_bandgap
+    :type bgp: struct ti_bandgap \*
 
-    :param int id:
+    :param id:
         id of the individual sensor
+    :type id: int
 
-    :param int \*trend:
+    :param trend:
         Pointer to trend.
+    :type trend: int \*
 
 .. _`ti_bandgap_get_trend.description`:
 
@@ -914,11 +649,13 @@ ti_bandgap_tshut_init
 
     setup and initialize tshut handling
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to struct ti_bandgap
+    :type bgp: struct ti_bandgap \*
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to device struct platform_device
+    :type pdev: struct platform_device \*
 
 .. _`ti_bandgap_tshut_init.description`:
 
@@ -948,11 +685,13 @@ ti_bandgap_talert_init
 
     setup and initialize talert handling
 
-    :param struct ti_bandgap \*bgp:
+    :param bgp:
         pointer to struct ti_bandgap
+    :type bgp: struct ti_bandgap \*
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to device struct platform_device
+    :type pdev: struct platform_device \*
 
 .. _`ti_bandgap_talert_init.description`:
 
@@ -981,8 +720,9 @@ ti_bandgap_build
 
     parse DT and setup a struct ti_bandgap
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to device struct platform_device
+    :type pdev: struct platform_device \*
 
 .. _`ti_bandgap_build.description`:
 

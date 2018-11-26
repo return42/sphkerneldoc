@@ -42,13 +42,15 @@ geth_fill_freeq
 
     Fill the freeq with empty fragments to use
 
-    :param struct gemini_ethernet \*geth:
+    :param geth:
         the ethernet adapter
+    :type geth: struct gemini_ethernet \*
 
-    :param bool refill:
+    :param refill:
         whether to reset the queue by filling in all freeq entries or
         just refill it, usually the interrupt to refill the queue happens when
         the queue is half empty.
+    :type refill: bool
 
 .. _`geth_cleanup_freeq`:
 
@@ -59,8 +61,9 @@ geth_cleanup_freeq
 
     cleanup the DMA mappings and free the queue
 
-    :param struct gemini_ethernet \*geth:
+    :param geth:
         the Gemini global ethernet state
+    :type geth: struct gemini_ethernet \*
 
 .. _`geth_resize_freeq`:
 
@@ -71,8 +74,9 @@ geth_resize_freeq
 
     resize the software queue depth
 
-    :param struct gemini_ethernet_port \*port:
+    :param port:
         the port requesting the change
+    :type port: struct gemini_ethernet_port \*
 
 .. _`geth_resize_freeq.description`:
 
@@ -93,11 +97,13 @@ gmac_get_intr_flags
 
     get interrupt status flags for a port from
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the net device for the port to get flags from
+    :type netdev: struct net_device \*
 
-    :param int i:
+    :param i:
         the interrupt status register 0..4
+    :type i: int
 
 .. This file was automatic generated / don't edit.
 

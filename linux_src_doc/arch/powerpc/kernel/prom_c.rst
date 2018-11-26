@@ -10,8 +10,9 @@ move_device_tree
 
     move tree to an unused area, if needed.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`move_device_tree.description`:
 
@@ -31,8 +32,9 @@ of_get_ibm_chip_id
 
     Returns the IBM "chip-id" of a device
 
-    :param struct device_node \*np:
+    :param np:
         device node of the device
+    :type np: struct device_node \*
 
 .. _`of_get_ibm_chip_id.description`:
 
@@ -52,8 +54,9 @@ cpu_to_chip_id
 
     Return the cpus chip-id
 
-    :param int cpu:
+    :param cpu:
         The logical cpu number.
+    :type cpu: int
 
 .. _`cpu_to_chip_id.description`:
 

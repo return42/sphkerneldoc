@@ -10,8 +10,9 @@ acpi_get_psd_map
 
     Map the CPUs in a common freq domain.
 
-    :param struct cppc_cpudata \*\*all_cpu_data:
+    :param all_cpu_data:
         Ptrs to CPU specific CPPC data including PSD info.
+    :type all_cpu_data: struct cppc_cpudata \*\*
 
 .. _`acpi_get_psd_map.return`:
 
@@ -29,8 +30,9 @@ cpc_ffh_supported
 
     check if FFH reading supported
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpc_ffh_supported.description`:
 
@@ -56,8 +58,9 @@ pcc_data_alloc
 
     Allocate the pcc_data memory for pcc subspace
 
-    :param int pcc_ss_id:
+    :param pcc_ss_id:
         *undescribed*
+    :type pcc_ss_id: int
 
 .. _`pcc_data_alloc.description`:
 
@@ -85,8 +88,9 @@ acpi_cppc_processor_probe
 
     Search for per CPU \_CPC objects.
 
-    :param struct acpi_processor \*pr:
+    :param pr:
         Ptr to acpi_processor containing this CPUs logical Id.
+    :type pr: struct acpi_processor \*
 
 .. _`acpi_cppc_processor_probe.return`:
 
@@ -104,8 +108,9 @@ acpi_cppc_processor_exit
 
     Cleanup CPC structs.
 
-    :param struct acpi_processor \*pr:
+    :param pr:
         Ptr to acpi_processor containing this CPUs logical Id.
+    :type pr: struct acpi_processor \*
 
 .. _`acpi_cppc_processor_exit.return`:
 
@@ -123,14 +128,17 @@ cpc_read_ffh
 
     Read FFH register
 
-    :param int cpunum:
+    :param cpunum:
         cpu number to read
+    :type cpunum: int
 
-    :param struct cpc_reg \*reg:
+    :param reg:
         cppc register information
+    :type reg: struct cpc_reg \*
 
-    :param u64 \*val:
+    :param val:
         place holder for return value
+    :type val: u64 \*
 
 .. _`cpc_read_ffh.description`:
 
@@ -155,14 +163,17 @@ cpc_write_ffh
 
     Write FFH register
 
-    :param int cpunum:
+    :param cpunum:
         cpu number to write
+    :type cpunum: int
 
-    :param struct cpc_reg \*reg:
+    :param reg:
         cppc register information
+    :type reg: struct cpc_reg \*
 
-    :param u64 val:
+    :param val:
         value to write
+    :type val: u64
 
 .. _`cpc_write_ffh.description`:
 
@@ -187,11 +198,13 @@ cppc_get_perf_caps
 
     Get a CPUs performance capabilities.
 
-    :param int cpunum:
+    :param cpunum:
         CPU from which to get capabilities info.
+    :type cpunum: int
 
-    :param struct cppc_perf_caps \*perf_caps:
+    :param perf_caps:
         ptr to cppc_perf_caps. See cppc_acpi.h
+    :type perf_caps: struct cppc_perf_caps \*
 
 .. _`cppc_get_perf_caps.return`:
 
@@ -209,11 +222,13 @@ cppc_get_perf_ctrs
 
     Read a CPUs performance feedback counters.
 
-    :param int cpunum:
+    :param cpunum:
         CPU from which to read counters.
+    :type cpunum: int
 
-    :param struct cppc_perf_fb_ctrs \*perf_fb_ctrs:
+    :param perf_fb_ctrs:
         ptr to cppc_perf_fb_ctrs. See cppc_acpi.h
+    :type perf_fb_ctrs: struct cppc_perf_fb_ctrs \*
 
 .. _`cppc_get_perf_ctrs.return`:
 
@@ -231,11 +246,13 @@ cppc_set_perf
 
     Set a CPUs performance controls.
 
-    :param int cpu:
+    :param cpu:
         CPU for which to set performance controls.
+    :type cpu: int
 
-    :param struct cppc_perf_ctrls \*perf_ctrls:
+    :param perf_ctrls:
         ptr to cppc_perf_ctrls. See cppc_acpi.h
+    :type perf_ctrls: struct cppc_perf_ctrls \*
 
 .. _`cppc_set_perf.return`:
 
@@ -253,8 +270,9 @@ cppc_get_transition_latency
 
     returns frequency transition latency in ns
 
-    :param int cpu_num:
+    :param cpu_num:
         *undescribed*
+    :type cpu_num: int
 
 .. _`cppc_get_transition_latency.description`:
 

@@ -10,8 +10,9 @@ probe_irq_on
 
     begin an interrupt autodetect
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`probe_irq_on.description`:
 
@@ -30,8 +31,9 @@ probe_irq_mask
 
     scan a bitmap of interrupt lines
 
-    :param unsigned long val:
+    :param val:
         mask of interrupts to consider
+    :type val: unsigned long
 
 .. _`probe_irq_mask.description`:
 
@@ -60,8 +62,9 @@ probe_irq_off
 
     end an interrupt autodetect
 
-    :param unsigned long val:
+    :param val:
         mask of potential interrupts (unused)
+    :type val: unsigned long
 
 .. _`probe_irq_off.description`:
 

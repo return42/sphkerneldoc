@@ -10,11 +10,13 @@ debug_object_init
 
     debug checks when an object is initialized
 
-    :param void \*addr:
+    :param addr:
         address of the object
+    :type addr: void \*
 
-    :param struct debug_obj_descr \*descr:
+    :param descr:
         pointer to an object specific debug description structure
+    :type descr: struct debug_obj_descr \*
 
 .. _`debug_object_init_on_stack`:
 
@@ -25,11 +27,13 @@ debug_object_init_on_stack
 
     debug checks when an object on stack is initialized
 
-    :param void \*addr:
+    :param addr:
         address of the object
+    :type addr: void \*
 
-    :param struct debug_obj_descr \*descr:
+    :param descr:
         pointer to an object specific debug description structure
+    :type descr: struct debug_obj_descr \*
 
 .. _`debug_object_activate`:
 
@@ -40,12 +44,14 @@ debug_object_activate
 
     debug checks when an object is activated
 
-    :param void \*addr:
+    :param addr:
         address of the object
+    :type addr: void \*
 
-    :param struct debug_obj_descr \*descr:
+    :param descr:
         pointer to an object specific debug description structure
         Returns 0 for success, -EINVAL for check failed.
+    :type descr: struct debug_obj_descr \*
 
 .. _`debug_object_deactivate`:
 
@@ -56,11 +62,13 @@ debug_object_deactivate
 
     debug checks when an object is deactivated
 
-    :param void \*addr:
+    :param addr:
         address of the object
+    :type addr: void \*
 
-    :param struct debug_obj_descr \*descr:
+    :param descr:
         pointer to an object specific debug description structure
+    :type descr: struct debug_obj_descr \*
 
 .. _`debug_object_destroy`:
 
@@ -71,11 +79,13 @@ debug_object_destroy
 
     debug checks when an object is destroyed
 
-    :param void \*addr:
+    :param addr:
         address of the object
+    :type addr: void \*
 
-    :param struct debug_obj_descr \*descr:
+    :param descr:
         pointer to an object specific debug description structure
+    :type descr: struct debug_obj_descr \*
 
 .. _`debug_object_free`:
 
@@ -86,11 +96,13 @@ debug_object_free
 
     debug checks when an object is freed
 
-    :param void \*addr:
+    :param addr:
         address of the object
+    :type addr: void \*
 
-    :param struct debug_obj_descr \*descr:
+    :param descr:
         pointer to an object specific debug description structure
+    :type descr: struct debug_obj_descr \*
 
 .. _`debug_object_assert_init`:
 
@@ -101,11 +113,13 @@ debug_object_assert_init
 
     debug checks when object should be init-ed
 
-    :param void \*addr:
+    :param addr:
         address of the object
+    :type addr: void \*
 
-    :param struct debug_obj_descr \*descr:
+    :param descr:
         pointer to an object specific debug description structure
+    :type descr: struct debug_obj_descr \*
 
 .. _`debug_object_active_state`:
 
@@ -116,17 +130,21 @@ debug_object_active_state
 
     debug checks object usage state machine
 
-    :param void \*addr:
+    :param addr:
         address of the object
+    :type addr: void \*
 
-    :param struct debug_obj_descr \*descr:
+    :param descr:
         pointer to an object specific debug description structure
+    :type descr: struct debug_obj_descr \*
 
-    :param unsigned int expect:
+    :param expect:
         expected state
+    :type expect: unsigned int
 
-    :param unsigned int next:
+    :param next:
         state to move to if expected state is found
+    :type next: unsigned int
 
 .. This file was automatic generated / don't edit.
 

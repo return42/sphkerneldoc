@@ -10,16 +10,19 @@ hvc_get_chars
 
     retrieve characters from firmware for denoted vterm adapter
 
-    :param uint32_t vtermno:
+    :param vtermno:
         The vtermno or unit_address of the adapter from which to fetch the
         data.
+    :type vtermno: uint32_t
 
-    :param char \*buf:
+    :param buf:
         The character buffer into which to put the character data fetched from
         firmware.
+    :type buf: char \*
 
-    :param int count:
+    :param count:
         not used?
+    :type count: int
 
 .. _`hvc_put_chars`:
 
@@ -30,16 +33,19 @@ hvc_put_chars
 
     send characters to firmware for denoted vterm adapter
 
-    :param uint32_t vtermno:
+    :param vtermno:
         The vtermno or unit_address of the adapter from which the data
         originated.
+    :type vtermno: uint32_t
 
-    :param const char \*buf:
+    :param buf:
         The character buffer that contains the character data to send to
         firmware.
+    :type buf: const char \*
 
-    :param int count:
+    :param count:
         Send this number of characters.
+    :type count: int
 
 .. This file was automatic generated / don't edit.
 

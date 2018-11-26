@@ -17,11 +17,13 @@ dac
     ad5624r_h
     ad5686_h
     ad5755_c
+    ad5758_c
     ad5761_c
     ad5764_c
     ad5791_c
     ad7303_c
     cio-dac_c
+    ltc2632_c
     stm32-dac-core_c
     stm32-dac-core_h
     stm32-dac_c

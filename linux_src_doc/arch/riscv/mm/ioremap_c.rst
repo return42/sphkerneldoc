@@ -10,8 +10,9 @@ iounmap
 
     Free a IO remapping
 
-    :param volatile void __iomem \*addr:
+    :param addr:
         virtual address from ioremap\_\*
+    :type addr: volatile void __iomem \*
 
 .. _`iounmap.description`:
 

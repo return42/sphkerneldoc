@@ -8,6 +8,7 @@ i2c
     :maxdepth: 1
 
     adv748x/index
+    cx25840/index
     m5mols/index
     smiapp/index
     imx274_c

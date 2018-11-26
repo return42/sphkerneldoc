@@ -10,11 +10,13 @@ nfs_init_client
 
     Initialise an NFS2 or NFS3 client
 
-    :param struct nfs_client \*clp:
+    :param clp:
         nfs_client to initialise
+    :type clp: struct nfs_client \*
 
-    :param const struct nfs_client_initdata \*cl_init:
+    :param cl_init:
         Initialisation parameters
+    :type cl_init: const struct nfs_client_initdata \*
 
 .. _`nfs_init_client.description`:
 

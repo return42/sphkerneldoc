@@ -10,8 +10,9 @@ s3c_hwmon_set_platdata
 
     Set platform data for S3C HWMON device
 
-    :param struct s3c_hwmon_pdata \*pd:
+    :param pd:
         Platform data to register to device.
+    :type pd: struct s3c_hwmon_pdata \*
 
 .. _`s3c_hwmon_set_platdata.description`:
 

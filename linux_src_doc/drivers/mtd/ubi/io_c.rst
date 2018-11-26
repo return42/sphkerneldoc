@@ -10,20 +10,25 @@ ubi_io_read
 
     read data from a physical eraseblock.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param void \*buf:
+    :param buf:
         buffer where to store the read data
+    :type buf: void \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number to read from
+    :type pnum: int
 
-    :param int offset:
+    :param offset:
         offset within the physical eraseblock from where to read
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes to read
+    :type len: int
 
 .. _`ubi_io_read.description`:
 
@@ -58,20 +63,25 @@ ubi_io_write
 
     write data to a physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param const void \*buf:
+    :param buf:
         buffer with the data to write
+    :type buf: const void \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number to write to
+    :type pnum: int
 
-    :param int offset:
+    :param offset:
         offset within the physical eraseblock where to write
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes to write
+    :type len: int
 
 .. _`ubi_io_write.description`:
 
@@ -96,11 +106,13 @@ do_sync_erase
 
     synchronously erase a physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to erase
+    :type pnum: int
 
 .. _`do_sync_erase.description`:
 
@@ -120,11 +132,13 @@ torture_peb
 
     test a supposedly bad physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to test
+    :type pnum: int
 
 .. _`torture_peb.description`:
 
@@ -144,11 +158,13 @@ nor_erase_prepare
 
     prepare a NOR flash PEB for erasure.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number to prepare
+    :type pnum: int
 
 .. _`nor_erase_prepare.description`:
 
@@ -185,14 +201,17 @@ ubi_io_sync_erase
 
     synchronously erase a physical eraseblock.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number to erase
+    :type pnum: int
 
-    :param int torture:
+    :param torture:
         if this physical eraseblock has to be tortured
+    :type torture: int
 
 .. _`ubi_io_sync_erase.description`:
 
@@ -218,11 +237,13 @@ ubi_io_is_bad
 
     check if a physical eraseblock is bad.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to check
+    :type pnum: int
 
 .. _`ubi_io_is_bad.description`:
 
@@ -241,11 +262,13 @@ ubi_io_mark_bad
 
     mark a physical eraseblock as bad.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to mark
+    :type pnum: int
 
 .. _`ubi_io_mark_bad.description`:
 
@@ -264,11 +287,13 @@ validate_ec_hdr
 
     validate an erase counter header.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param const struct ubi_ec_hdr \*ec_hdr:
+    :param ec_hdr:
         the erase counter header to check
+    :type ec_hdr: const struct ubi_ec_hdr \*
 
 .. _`validate_ec_hdr.description`:
 
@@ -287,18 +312,22 @@ ubi_io_read_ec_hdr
 
     read and check an erase counter header.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock to read from
+    :type pnum: int
 
-    :param struct ubi_ec_hdr \*ec_hdr:
+    :param ec_hdr:
         a \ :c:type:`struct ubi_ec_hdr <ubi_ec_hdr>`\  object where to store the read erase counter
         header
+    :type ec_hdr: struct ubi_ec_hdr \*
 
-    :param int verbose:
+    :param verbose:
         be verbose if the header is corrupted or was not found
+    :type verbose: int
 
 .. _`ubi_io_read_ec_hdr.description`:
 
@@ -328,14 +357,17 @@ ubi_io_write_ec_hdr
 
     write an erase counter header.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock to write to
+    :type pnum: int
 
-    :param struct ubi_ec_hdr \*ec_hdr:
+    :param ec_hdr:
         the erase counter header to write
+    :type ec_hdr: struct ubi_ec_hdr \*
 
 .. _`ubi_io_write_ec_hdr.description`:
 
@@ -344,7 +376,7 @@ Description
 
 This function writes erase counter header described by \ ``ec_hdr``\  to physical
 eraseblock \ ``pnum``\ . It also fills most fields of \ ``ec_hdr``\  before writing, so
-the caller do not have to fill them. Callers must only fill the \ ``ec_hdr``\ ->ec
+the caller do not have to fill them. Callers must only fill the \ ``ec_hdr->ec``\ 
 field.
 
 This function returns zero in case of success and a negative error code in
@@ -360,11 +392,13 @@ validate_vid_hdr
 
     validate a volume identifier header.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param const struct ubi_vid_hdr \*vid_hdr:
+    :param vid_hdr:
         the volume identifier header to check
+    :type vid_hdr: const struct ubi_vid_hdr \*
 
 .. _`validate_vid_hdr.description`:
 
@@ -383,17 +417,21 @@ ubi_io_read_vid_hdr
 
     read and check a volume identifier header.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number to read from
+    :type pnum: int
 
-    :param struct ubi_vid_io_buf \*vidb:
+    :param vidb:
         the volume identifier buffer to store data in
+    :type vidb: struct ubi_vid_io_buf \*
 
-    :param int verbose:
+    :param verbose:
         be verbose if the header is corrupted or wasn't found
+    :type verbose: int
 
 .. _`ubi_io_read_vid_hdr.description`:
 
@@ -417,14 +455,17 @@ ubi_io_write_vid_hdr
 
     write a volume identifier header.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to write to
+    :type pnum: int
 
-    :param struct ubi_vid_io_buf \*vidb:
+    :param vidb:
         the volume identifier buffer to write
+    :type vidb: struct ubi_vid_io_buf \*
 
 .. _`ubi_io_write_vid_hdr.description`:
 
@@ -433,7 +474,7 @@ Description
 
 This function writes the volume identifier header described by \ ``vid_hdr``\  to
 physical eraseblock \ ``pnum``\ . This function automatically fills the
-\ ``vidb``\ ->hdr->magic and the \ ``vidb``\ ->hdr->version fields, as well as calculates
+\ ``vidb->hdr->magic``\  and the \ ``vidb->hdr->version``\  fields, as well as calculates
 header CRC checksum and stores it at vidb->hdr->hdr_crc.
 
 This function returns zero in case of success and a negative error code in
@@ -449,11 +490,13 @@ self_check_not_bad
 
     ensure that a physical eraseblock is not bad.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number to check
+    :type pnum: int
 
 .. _`self_check_not_bad.description`:
 
@@ -472,14 +515,17 @@ self_check_ec_hdr
 
     check if an erase counter header is all right.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number the erase counter header belongs to
+    :type pnum: int
 
-    :param const struct ubi_ec_hdr \*ec_hdr:
+    :param ec_hdr:
         the erase counter header to check
+    :type ec_hdr: const struct ubi_ec_hdr \*
 
 .. _`self_check_ec_hdr.description`:
 
@@ -498,11 +544,13 @@ self_check_peb_ec_hdr
 
     check erase counter header.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to check
+    :type pnum: int
 
 .. _`self_check_peb_ec_hdr.description`:
 
@@ -521,14 +569,17 @@ self_check_vid_hdr
 
     check that a volume identifier header is all right.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number the volume identifier header belongs to
+    :type pnum: int
 
-    :param const struct ubi_vid_hdr \*vid_hdr:
+    :param vid_hdr:
         the volume identifier header to check
+    :type vid_hdr: const struct ubi_vid_hdr \*
 
 .. _`self_check_vid_hdr.description`:
 
@@ -547,11 +598,13 @@ self_check_peb_vid_hdr
 
     check volume identifier header.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to check
+    :type pnum: int
 
 .. _`self_check_peb_vid_hdr.description`:
 
@@ -570,20 +623,25 @@ self_check_write
 
     make sure write succeeded.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param const void \*buf:
+    :param buf:
         buffer with data which were written
+    :type buf: const void \*
 
-    :param int pnum:
+    :param pnum:
         physical eraseblock number the data were written to
+    :type pnum: int
 
-    :param int offset:
+    :param offset:
         offset within the physical eraseblock the data were written to
+    :type offset: int
 
-    :param int len:
+    :param len:
         how many bytes were written
+    :type len: int
 
 .. _`self_check_write.description`:
 
@@ -603,17 +661,21 @@ ubi_self_check_all_ff
 
     check that a region of flash is empty.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to check
+    :type pnum: int
 
-    :param int offset:
+    :param offset:
         the starting offset within the physical eraseblock to check
+    :type offset: int
 
-    :param int len:
+    :param len:
         the length of the region to check
+    :type len: int
 
 .. _`ubi_self_check_all_ff.description`:
 

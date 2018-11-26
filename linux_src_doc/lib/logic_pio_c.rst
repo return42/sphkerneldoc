@@ -10,8 +10,9 @@ logic_pio_register_range
 
     register logical PIO range for a host
 
-    :param struct logic_pio_hwaddr \*new_range:
+    :param new_range:
         pointer to the IO range to be registered.
+    :type new_range: struct logic_pio_hwaddr \*
 
 .. _`logic_pio_register_range.description`:
 
@@ -31,8 +32,9 @@ find_io_range_by_fwnode
 
     find logical PIO range for given FW node
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         FW node handle associated with logical PIO range
+    :type fwnode: struct fwnode_handle \*
 
 .. _`find_io_range_by_fwnode.description`:
 
@@ -52,8 +54,9 @@ logic_pio_to_hwaddr
 
     translate logical PIO to HW address
 
-    :param unsigned long pio:
+    :param pio:
         logical PIO value
+    :type pio: unsigned long
 
 .. _`logic_pio_to_hwaddr.description`:
 
@@ -74,14 +77,17 @@ logic_pio_trans_hwaddr
 
     translate HW address to logical PIO
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         FW node reference for the host
+    :type fwnode: struct fwnode_handle \*
 
-    :param resource_size_t addr:
+    :param addr:
         Host-relative HW address
+    :type addr: resource_size_t
 
-    :param resource_size_t size:
+    :param size:
         size to translate
+    :type size: resource_size_t
 
 .. _`logic_pio_trans_hwaddr.description`:
 

@@ -10,8 +10,9 @@ fec_poll_controller
 
     FEC Poll controller function
 
-    :param struct net_device \*dev:
+    :param dev:
         The FEC network adapter
+    :type dev: struct net_device \*
 
 .. _`fec_poll_controller.description`:
 

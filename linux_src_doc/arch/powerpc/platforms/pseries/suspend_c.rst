@@ -10,8 +10,9 @@ pseries_suspend_begin
 
     First phase of hibernation
 
-    :param suspend_state_t state:
+    :param state:
         *undescribed*
+    :type state: suspend_state_t
 
 .. _`pseries_suspend_begin.description`:
 
@@ -36,8 +37,9 @@ pseries_suspend_cpu
 
     Suspend a single CPU
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pseries_suspend_cpu.description`:
 
@@ -53,8 +55,9 @@ pseries_suspend_enable_irqs
 
 .. c:function:: void pseries_suspend_enable_irqs( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pseries_suspend_enable_irqs.description`:
 
@@ -72,8 +75,9 @@ pseries_suspend_enter
 
     Final phase of hibernation
 
-    :param suspend_state_t state:
+    :param state:
         *undescribed*
+    :type state: suspend_state_t
 
 .. _`pseries_suspend_enter.return-value`:
 
@@ -91,8 +95,9 @@ pseries_prepare_late
 
     Prepare to suspend all other CPUs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pseries_prepare_late.return-value`:
 
@@ -110,17 +115,21 @@ store_hibernate
 
     Initiate partition hibernation
 
-    :param struct device \*dev:
+    :param dev:
         subsys root device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute struct
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`store_hibernate.description`:
 
@@ -146,14 +155,17 @@ show_hibernate
 
     Report device tree update responsibilty
 
-    :param struct device \*dev:
+    :param dev:
         subsys root device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute struct
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`show_hibernate.description`:
 
@@ -179,8 +191,9 @@ pseries_suspend_sysfs_register
 
     Register with sysfs
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`pseries_suspend_sysfs_register.return-value`:
 
@@ -198,8 +211,9 @@ pseries_suspend_init
 
     initcall for pSeries suspend
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pseries_suspend_init.return-value`:
 

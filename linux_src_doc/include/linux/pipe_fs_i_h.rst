@@ -143,11 +143,13 @@ pipe_buf_get
 
     get a reference to a pipe_buffer
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         the pipe that the buffer belongs to
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct pipe_buffer \*buf:
+    :param buf:
         the buffer to get a reference to
+    :type buf: struct pipe_buffer \*
 
 .. _`pipe_buf_release`:
 
@@ -158,11 +160,13 @@ pipe_buf_release
 
     put a reference to a pipe_buffer
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         the pipe that the buffer belongs to
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct pipe_buffer \*buf:
+    :param buf:
         the buffer to put a reference to
+    :type buf: struct pipe_buffer \*
 
 .. _`pipe_buf_confirm`:
 
@@ -173,11 +177,13 @@ pipe_buf_confirm
 
     verify contents of the pipe buffer
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         the pipe that the buffer belongs to
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct pipe_buffer \*buf:
+    :param buf:
         the buffer to confirm
+    :type buf: struct pipe_buffer \*
 
 .. _`pipe_buf_steal`:
 
@@ -188,11 +194,13 @@ pipe_buf_steal
 
     attempt to take ownership of a pipe_buffer
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         the pipe that the buffer belongs to
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct pipe_buffer \*buf:
+    :param buf:
         the buffer to attempt to steal
+    :type buf: struct pipe_buffer \*
 
 .. This file was automatic generated / don't edit.
 

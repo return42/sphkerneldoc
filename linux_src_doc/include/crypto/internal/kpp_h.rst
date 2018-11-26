@@ -10,8 +10,9 @@ crypto_register_kpp
 
     - Register key-agreement protocol primitives algorithm
 
-    :param struct kpp_alg \*alg:
+    :param alg:
         algorithm definition
+    :type alg: struct kpp_alg \*
 
 .. _`crypto_register_kpp.description`:
 
@@ -37,8 +38,9 @@ crypto_unregister_kpp
 
     - Unregister key-agreement protocol primitive algorithm
 
-    :param struct kpp_alg \*alg:
+    :param alg:
         algorithm definition
+    :type alg: struct kpp_alg \*
 
 .. _`crypto_unregister_kpp.description`:
 

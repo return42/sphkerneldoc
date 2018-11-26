@@ -10,8 +10,9 @@ ci_dpm_init_microcode
 
     load ucode images from disk
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`ci_dpm_init_microcode.description`:
 

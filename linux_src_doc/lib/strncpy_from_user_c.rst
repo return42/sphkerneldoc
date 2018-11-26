@@ -10,15 +10,18 @@ strncpy_from_user
 
     - Copy a NUL terminated string from userspace.
 
-    :param char \*dst:
+    :param dst:
         Destination address, in kernel space.  This buffer must be at
         least \ ``count``\  bytes long.
+    :type dst: char \*
 
-    :param const char __user \*src:
+    :param src:
         Source address, in user space.
+    :type src: const char __user \*
 
-    :param long count:
+    :param count:
         Maximum number of bytes to copy, including the trailing NUL.
+    :type count: long
 
 .. _`strncpy_from_user.description`:
 

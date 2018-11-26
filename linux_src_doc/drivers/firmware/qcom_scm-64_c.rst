@@ -41,20 +41,25 @@ qcom_scm_call
 
     Invoke a syscall in the secure world
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param u32 svc_id:
+    :param svc_id:
         service identifier
+    :type svc_id: u32
 
-    :param u32 cmd_id:
+    :param cmd_id:
         command identifier
+    :type cmd_id: u32
 
-    :param const struct qcom_scm_desc \*desc:
+    :param desc:
         Descriptor structure containing arguments and return values
+    :type desc: const struct qcom_scm_desc \*
 
-    :param struct arm_smccc_res \*res:
+    :param res:
         *undescribed*
+    :type res: struct arm_smccc_res \*
 
 .. _`qcom_scm_call.description`:
 
@@ -73,11 +78,13 @@ This should \*only\* be called in pre-emptible context.
 
     Set the cold boot address for cpus
 
-    :param void \*entry:
+    :param entry:
         Entry point function for the cpus
+    :type entry: void \*
 
-    :param const cpumask_t \*cpus:
+    :param cpus:
         The cpumask of cpus that will use the entry point
+    :type cpus: const cpumask_t \*
 
 .. _`__qcom_scm_set_cold_boot_addr.description`:
 
@@ -96,14 +103,17 @@ range would be removed from the cpu present mask.
 
     Set the warm boot address for cpus
 
-    :param struct device \*dev:
+    :param dev:
         Device pointer
+    :type dev: struct device \*
 
-    :param void \*entry:
+    :param entry:
         Entry point function for the cpus
+    :type entry: void \*
 
-    :param const cpumask_t \*cpus:
+    :param cpus:
         The cpumask of cpus that will use the entry point
+    :type cpus: const cpumask_t \*
 
 .. _`__qcom_scm_set_warm_boot_addr.description`:
 
@@ -122,8 +132,9 @@ out of a power down. CPU power down may be executed on cpuidle or hotplug.
 
     Power down the cpu \ ``flags``\  - Flags to flush cache
 
-    :param u32 flags:
+    :param flags:
         *undescribed*
+    :type flags: u32
 
 .. _`__qcom_scm_cpu_power_down.description`:
 

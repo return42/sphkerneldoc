@@ -8,8 +8,9 @@ cqhci_host_alloc_tdl
 
 .. c:function:: int cqhci_host_alloc_tdl(struct cqhci_host *cq_host)
 
-    :param struct cqhci_host \*cq_host:
+    :param cq_host:
         *undescribed*
+    :type cq_host: struct cqhci_host \*
 
 .. _`cqhci_host_alloc_tdl.looks-like`:
 

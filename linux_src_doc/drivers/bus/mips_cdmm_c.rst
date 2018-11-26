@@ -42,8 +42,9 @@ mips_cdmm_void_work
 
     Call a void returning CDMM driver callback.
 
-    :param void \*data:
+    :param data:
         struct mips_cdmm_work_dev pointer.
+    :type data: void \*
 
 .. _`mips_cdmm_void_work.description`:
 
@@ -62,8 +63,9 @@ mips_cdmm_int_work
 
     Call an int returning CDMM driver callback.
 
-    :param void \*data:
+    :param data:
         struct mips_cdmm_work_dev pointer.
+    :type data: void \*
 
 .. _`mips_cdmm_int_work.description`:
 
@@ -82,11 +84,13 @@ BUILD_PERCPU_HELPER
 
     Helper to call a CDMM driver callback on right CPU.
 
-    :param  _ret:
+    :param _ret:
         Return type (void or int).
+    :type _ret: 
 
-    :param  _name:
+    :param _name:
         Name of CDMM driver callback function.
+    :type _name: 
 
 .. _`build_percpu_helper.description`:
 
@@ -106,8 +110,9 @@ mips_cdmm_driver_register
 
     Register a CDMM driver.
 
-    :param struct mips_cdmm_driver \*drv:
+    :param drv:
         CDMM driver information.
+    :type drv: struct mips_cdmm_driver \*
 
 .. _`mips_cdmm_driver_register.description`:
 
@@ -133,8 +138,9 @@ mips_cdmm_driver_unregister
 
     Unregister a CDMM driver.
 
-    :param struct mips_cdmm_driver \*drv:
+    :param drv:
         CDMM driver information.
+    :type drv: struct mips_cdmm_driver \*
 
 .. _`mips_cdmm_driver_unregister.description`:
 
@@ -202,8 +208,9 @@ mips_cdmm_get_bus
 
     Get the per-CPU CDMM bus information.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cdmm_get_bus.description`:
 
@@ -233,8 +240,9 @@ mips_cdmm_cur_base
 
     Find current physical base address of CDMM region.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cdmm_cur_base.return`:
 
@@ -253,8 +261,9 @@ mips_cdmm_phys_base
 
     Choose a physical base address for CDMM region.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cdmm_phys_base.description`:
 
@@ -274,9 +283,10 @@ mips_cdmm_setup
 
     Ensure the CDMM bus is initialised and usable.
 
-    :param struct mips_cdmm_bus \*bus:
+    :param bus:
         Pointer to bus information for current CPU.
         IS_ERR(bus) is checked, so no need for caller to check.
+    :type bus: struct mips_cdmm_bus \*
 
 .. _`mips_cdmm_setup.description`:
 
@@ -297,8 +307,9 @@ mips_cdmm_early_probe
 
     Minimally probe for a specific device on CDMM.
 
-    :param unsigned int dev_type:
+    :param dev_type:
         CDMM type code to look for.
+    :type dev_type: unsigned int
 
 .. _`mips_cdmm_early_probe.description`:
 
@@ -332,8 +343,9 @@ mips_cdmm_release
 
     Release a removed CDMM device.
 
-    :param struct device \*dev:
+    :param dev:
         Device object
+    :type dev: struct device \*
 
 .. _`mips_cdmm_release.description`:
 
@@ -352,8 +364,9 @@ mips_cdmm_bus_discover
 
     Discover the devices on the CDMM bus.
 
-    :param struct mips_cdmm_bus \*bus:
+    :param bus:
         CDMM bus information, must already be set up.
+    :type bus: struct mips_cdmm_bus \*
 
 .. _`build_perdev_helper`:
 
@@ -364,8 +377,9 @@ BUILD_PERDEV_HELPER
 
     Helper to call a CDMM driver callback if CPU matches.
 
-    :param  _name:
+    :param _name:
         Name of CDMM driver callback function.
+    :type _name: 
 
 .. _`build_perdev_helper.description`:
 
@@ -390,8 +404,9 @@ mips_cdmm_cpu_down_prep
 
     Callback for CPUHP DOWN_PREP: Tear down the CDMM bus.
 
-    :param unsigned int cpu:
+    :param cpu:
         unsigned int CPU number.
+    :type cpu: unsigned int
 
 .. _`mips_cdmm_cpu_down_prep.description`:
 
@@ -410,8 +425,9 @@ mips_cdmm_cpu_online
 
     Callback for CPUHP ONLINE: Bring up the CDMM bus.
 
-    :param unsigned int cpu:
+    :param cpu:
         unsigned int CPU number.
+    :type cpu: unsigned int
 
 .. _`mips_cdmm_cpu_online.description`:
 
@@ -435,8 +451,9 @@ mips_cdmm_init
 
     Initialise CDMM bus.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cdmm_init.description`:
 

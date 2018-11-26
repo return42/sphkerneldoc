@@ -10,8 +10,9 @@ igb_check_reset_block
 
     Check if PHY reset is blocked
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_check_reset_block.description`:
 
@@ -31,8 +32,9 @@ igb_get_phy_id
 
     Retrieve the PHY ID and revision
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_phy_id.description`:
 
@@ -51,8 +53,9 @@ igb_phy_reset_dsp
 
     Reset PHY DSP
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_phy_reset_dsp.description`:
 
@@ -70,14 +73,17 @@ igb_read_phy_reg_mdic
 
     Read MDI control register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`igb_read_phy_reg_mdic.description`:
 
@@ -96,14 +102,17 @@ igb_write_phy_reg_mdic
 
     Write MDI control register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write to register at offset
+    :type data: u16
 
 .. _`igb_write_phy_reg_mdic.description`:
 
@@ -121,14 +130,17 @@ igb_read_phy_reg_i2c
 
     Read PHY register using i2c
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`igb_read_phy_reg_i2c.description`:
 
@@ -147,14 +159,17 @@ igb_write_phy_reg_i2c
 
     Write PHY register using i2c
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`igb_write_phy_reg_i2c.description`:
 
@@ -172,14 +187,17 @@ igb_read_sfp_data_byte
 
     Reads SFP module data.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         byte location offset to be read
+    :type offset: u16
 
-    :param u8 \*data:
+    :param data:
         read data buffer pointer
+    :type data: u8 \*
 
 .. _`igb_read_sfp_data_byte.description`:
 
@@ -202,14 +220,17 @@ igb_read_phy_reg_igp
 
     Read igp PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to be read
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the read data
+    :type data: u16 \*
 
 .. _`igb_read_phy_reg_igp.description`:
 
@@ -229,14 +250,17 @@ igb_write_phy_reg_igp
 
     Write igp PHY register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         register offset to write to
+    :type offset: u32
 
-    :param u16 data:
+    :param data:
         data to write at register offset
+    :type data: u16
 
 .. _`igb_write_phy_reg_igp.description`:
 
@@ -255,8 +279,9 @@ igb_copper_link_setup_82580
 
     Setup 82580 PHY for copper link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_copper_link_setup_82580.description`:
 
@@ -274,8 +299,9 @@ igb_copper_link_setup_m88
 
     Setup m88 PHY's for copper link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_copper_link_setup_m88.description`:
 
@@ -294,8 +320,9 @@ igb_copper_link_setup_m88_gen2
 
     Setup m88 PHY's for copper link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_copper_link_setup_m88_gen2.description`:
 
@@ -314,8 +341,9 @@ igb_copper_link_setup_igp
 
     Setup igp PHY's for copper link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_copper_link_setup_igp.description`:
 
@@ -334,8 +362,9 @@ igb_copper_link_autoneg
 
     Setup/Enable autoneg for copper link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_copper_link_autoneg.description`:
 
@@ -356,8 +385,9 @@ igb_phy_setup_autoneg
 
     Configure PHY for auto-negotiation
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_phy_setup_autoneg.description`:
 
@@ -378,8 +408,9 @@ igb_setup_copper_link
 
     Configure copper link settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_setup_copper_link.description`:
 
@@ -400,8 +431,9 @@ igb_phy_force_speed_duplex_igp
 
     Force speed/duplex for igp PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_phy_force_speed_duplex_igp.description`:
 
@@ -421,8 +453,9 @@ igb_phy_force_speed_duplex_m88
 
     Force speed/duplex for m88 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_phy_force_speed_duplex_m88.description`:
 
@@ -444,11 +477,13 @@ igb_phy_force_speed_duplex_setup
 
     Configure forced PHY speed/duplex
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*phy_ctrl:
+    :param phy_ctrl:
         pointer to current value of PHY_CONTROL
+    :type phy_ctrl: u16 \*
 
 .. _`igb_phy_force_speed_duplex_setup.forces-speed-and-duplex-on-the-phy-by-doing-the-following`:
 
@@ -471,11 +506,13 @@ igb_set_d3_lplu_state
 
     Sets low power link up state for D3
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         boolean used to enable/disable lplu
+    :type active: bool
 
 .. _`igb_set_d3_lplu_state.description`:
 
@@ -500,8 +537,9 @@ igb_check_downshift
 
     Checks whether a downshift in speed occurred
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_check_downshift.description`:
 
@@ -521,8 +559,9 @@ igb_check_polarity_m88
 
     Checks the polarity.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_check_polarity_m88.description`:
 
@@ -542,8 +581,9 @@ igb_check_polarity_igp
 
     Checks the polarity.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_check_polarity_igp.description`:
 
@@ -564,8 +604,9 @@ igb_wait_autoneg
 
     Wait for auto-neg completion
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_wait_autoneg.description`:
 
@@ -584,17 +625,21 @@ igb_phy_has_link
 
     Polls PHY for link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 iterations:
+    :param iterations:
         number of times to poll for link
+    :type iterations: u32
 
-    :param u32 usec_interval:
+    :param usec_interval:
         delay between polling attempts
+    :type usec_interval: u32
 
-    :param bool \*success:
+    :param success:
         pointer to whether polling was successful or not
+    :type success: bool \*
 
 .. _`igb_phy_has_link.description`:
 
@@ -612,8 +657,9 @@ igb_get_cable_length_m88
 
     Determine cable length for m88 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_cable_length_m88.description`:
 
@@ -640,8 +686,9 @@ igb_get_cable_length_igp_2
 
     Determine cable length for igp2 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_cable_length_igp_2.description`:
 
@@ -664,8 +711,9 @@ igb_get_phy_info_m88
 
     Retrieve PHY information
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_phy_info_m88.description`:
 
@@ -687,8 +735,9 @@ igb_get_phy_info_igp
 
     Retrieve igp PHY information
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_phy_info_igp.description`:
 
@@ -709,8 +758,9 @@ igb_phy_sw_reset
 
     PHY software reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_phy_sw_reset.description`:
 
@@ -729,8 +779,9 @@ igb_phy_hw_reset
 
     PHY hardware reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_phy_hw_reset.description`:
 
@@ -751,8 +802,9 @@ igb_phy_init_script_igp3
 
     Inits the IGP3 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_phy_init_script_igp3.description`:
 
@@ -770,8 +822,9 @@ igb_initialize_M88E1512_phy
 
     Initialize M88E1512 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_initialize_m88e1512_phy.description`:
 
@@ -789,8 +842,9 @@ igb_initialize_M88E1543_phy
 
     Initialize M88E1512 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_initialize_m88e1543_phy.description`:
 
@@ -808,8 +862,9 @@ igb_power_up_phy_copper
 
     Restore copper link in case of PHY power down
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_power_up_phy_copper.description`:
 
@@ -828,8 +883,9 @@ igb_power_down_phy_copper
 
     Power down copper PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_power_down_phy_copper.description`:
 
@@ -848,8 +904,9 @@ igb_check_polarity_82580
 
     Checks the polarity.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_check_polarity_82580.description`:
 
@@ -869,8 +926,9 @@ igb_phy_force_speed_duplex_82580
 
     Force speed/duplex for I82580 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_phy_force_speed_duplex_82580.description`:
 
@@ -890,8 +948,9 @@ igb_get_phy_info_82580
 
     Retrieve I82580 PHY information
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_phy_info_82580.description`:
 
@@ -912,8 +971,9 @@ igb_get_cable_length_82580
 
     Determine cable length for 82580 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_cable_length_82580.description`:
 
@@ -932,8 +992,9 @@ igb_set_master_slave_mode
 
     Setup PHY for Master/slave mode
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_set_master_slave_mode.description`:
 

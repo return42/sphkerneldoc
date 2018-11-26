@@ -10,8 +10,9 @@ nand_release_device
 
     [GENERIC] release chip
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
 .. _`nand_release_device.description`:
 
@@ -20,243 +21,22 @@ Description
 
 Release chip lock and wake up anyone waiting on the device.
 
-.. _`nand_read_byte`:
-
-nand_read_byte
-==============
-
-.. c:function:: uint8_t nand_read_byte(struct mtd_info *mtd)
-
-    [DEFAULT] read one byte from the chip
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-.. _`nand_read_byte.description`:
-
-Description
------------
-
-Default read function for 8bit buswidth
-
-.. _`nand_read_byte16`:
-
-nand_read_byte16
-================
-
-.. c:function:: uint8_t nand_read_byte16(struct mtd_info *mtd)
-
-    [DEFAULT] read one byte endianness aware from the chip
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-.. _`nand_read_byte16.description`:
-
-Description
------------
-
-Default read function for 16bit buswidth with endianness conversion.
-
-.. _`nand_read_word`:
-
-nand_read_word
-==============
-
-.. c:function:: u16 nand_read_word(struct mtd_info *mtd)
-
-    [DEFAULT] read one word from the chip
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-.. _`nand_read_word.description`:
-
-Description
------------
-
-Default read function for 16bit buswidth without endianness conversion.
-
-.. _`nand_select_chip`:
-
-nand_select_chip
-================
-
-.. c:function:: void nand_select_chip(struct mtd_info *mtd, int chipnr)
-
-    [DEFAULT] control CE line
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param int chipnr:
-        chipnumber to select, -1 for deselect
-
-.. _`nand_select_chip.description`:
-
-Description
------------
-
-Default select function for 1 chip devices.
-
-.. _`nand_write_byte`:
-
-nand_write_byte
-===============
-
-.. c:function:: void nand_write_byte(struct mtd_info *mtd, uint8_t byte)
-
-    [DEFAULT] write single byte to chip
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param uint8_t byte:
-        value to write
-
-.. _`nand_write_byte.description`:
-
-Description
------------
-
-Default function to write a byte to I/O[7:0]
-
-.. _`nand_write_byte16`:
-
-nand_write_byte16
-=================
-
-.. c:function:: void nand_write_byte16(struct mtd_info *mtd, uint8_t byte)
-
-    [DEFAULT] write single byte to a chip with width 16
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param uint8_t byte:
-        value to write
-
-.. _`nand_write_byte16.description`:
-
-Description
------------
-
-Default function to write a byte to I/O[7:0] on a 16-bit wide chip.
-
-.. _`nand_write_buf`:
-
-nand_write_buf
-==============
-
-.. c:function:: void nand_write_buf(struct mtd_info *mtd, const uint8_t *buf, int len)
-
-    [DEFAULT] write buffer to chip
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param const uint8_t \*buf:
-        data buffer
-
-    :param int len:
-        number of bytes to write
-
-.. _`nand_write_buf.description`:
-
-Description
------------
-
-Default write function for 8bit buswidth.
-
-.. _`nand_read_buf`:
-
-nand_read_buf
-=============
-
-.. c:function:: void nand_read_buf(struct mtd_info *mtd, uint8_t *buf, int len)
-
-    [DEFAULT] read chip data into buffer
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param uint8_t \*buf:
-        buffer to store date
-
-    :param int len:
-        number of bytes to read
-
-.. _`nand_read_buf.description`:
-
-Description
------------
-
-Default read function for 8bit buswidth.
-
-.. _`nand_write_buf16`:
-
-nand_write_buf16
-================
-
-.. c:function:: void nand_write_buf16(struct mtd_info *mtd, const uint8_t *buf, int len)
-
-    [DEFAULT] write buffer to chip
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param const uint8_t \*buf:
-        data buffer
-
-    :param int len:
-        number of bytes to write
-
-.. _`nand_write_buf16.description`:
-
-Description
------------
-
-Default write function for 16bit buswidth.
-
-.. _`nand_read_buf16`:
-
-nand_read_buf16
-===============
-
-.. c:function:: void nand_read_buf16(struct mtd_info *mtd, uint8_t *buf, int len)
-
-    [DEFAULT] read chip data into buffer
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param uint8_t \*buf:
-        buffer to store date
-
-    :param int len:
-        number of bytes to read
-
-.. _`nand_read_buf16.description`:
-
-Description
------------
-
-Default read function for 16bit buswidth.
-
 .. _`nand_block_bad`:
 
 nand_block_bad
 ==============
 
-.. c:function:: int nand_block_bad(struct mtd_info *mtd, loff_t ofs)
+.. c:function:: int nand_block_bad(struct nand_chip *chip, loff_t ofs)
 
     [DEFAULT] Read bad block marker from the chip
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param loff_t ofs:
+    :param ofs:
         offset from device start
+    :type ofs: loff_t
 
 .. _`nand_block_bad.description`:
 
@@ -270,15 +50,17 @@ Check, if the block is bad.
 nand_default_block_markbad
 ==========================
 
-.. c:function:: int nand_default_block_markbad(struct mtd_info *mtd, loff_t ofs)
+.. c:function:: int nand_default_block_markbad(struct nand_chip *chip, loff_t ofs)
 
     [DEFAULT] mark a block bad via bad block marker
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param loff_t ofs:
+    :param ofs:
         offset from device start
+    :type ofs: loff_t
 
 .. _`nand_default_block_markbad.description`:
 
@@ -289,6 +71,23 @@ This is the default implementation, which can be overridden by a hardware
 specific driver. It provides the details for writing a bad block marker to a
 block.
 
+.. _`nand_markbad_bbm`:
+
+nand_markbad_bbm
+================
+
+.. c:function:: int nand_markbad_bbm(struct nand_chip *chip, loff_t ofs)
+
+    mark a block by updating the BBM
+
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
+
+    :param ofs:
+        offset of the block to mark bad
+    :type ofs: loff_t
+
 .. _`nand_block_markbad_lowlevel`:
 
 nand_block_markbad_lowlevel
@@ -298,11 +97,13 @@ nand_block_markbad_lowlevel
 
     mark a block bad
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         offset from device start
+    :type ofs: loff_t
 
 .. _`nand_block_markbad_lowlevel.description`:
 
@@ -311,7 +112,7 @@ Description
 
 This function performs the generic NAND bad block marking steps (i.e., bad
 block table(s) and/or marker(s)). We only allow the hardware driver to
-specify how to write bad block markers to OOB (chip->block_markbad).
+specify how to write bad block markers to OOB (chip->legacy.block_markbad).
 
 .. _`nand_block_markbad_lowlevel.we-try-operations-in-the-following-order`:
 
@@ -336,8 +137,9 @@ nand_check_wp
 
     [GENERIC] check if the chip is write protected
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
 .. _`nand_check_wp.description`:
 
@@ -356,11 +158,13 @@ nand_block_isreserved
 
     [GENERIC] Check if a block is marked reserved.
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         offset from device start
+    :type ofs: loff_t
 
 .. _`nand_block_isreserved.description`:
 
@@ -378,14 +182,17 @@ nand_block_checkbad
 
     [GENERIC] Check if a block is marked bad
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         offset from device start
+    :type ofs: loff_t
 
-    :param int allowbbt:
+    :param allowbbt:
         1, if its allowed to access the bbt area
+    :type allowbbt: int
 
 .. _`nand_block_checkbad.description`:
 
@@ -394,70 +201,6 @@ Description
 
 Check, if the block is bad. Either by reading the bad block table or
 calling of the scan function.
-
-.. _`panic_nand_wait_ready`:
-
-panic_nand_wait_ready
-=====================
-
-.. c:function:: void panic_nand_wait_ready(struct mtd_info *mtd, unsigned long timeo)
-
-    [GENERIC] Wait for the ready pin after commands.
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param unsigned long timeo:
-        Timeout
-
-.. _`panic_nand_wait_ready.description`:
-
-Description
------------
-
-Helper function for nand_wait_ready used when needing to wait in interrupt
-context.
-
-.. _`nand_wait_ready`:
-
-nand_wait_ready
-===============
-
-.. c:function:: void nand_wait_ready(struct mtd_info *mtd)
-
-    [GENERIC] Wait for the ready pin after commands.
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-.. _`nand_wait_ready.description`:
-
-Description
------------
-
-Wait for the ready pin after a command, and warn if a timeout occurs.
-
-.. _`nand_wait_status_ready`:
-
-nand_wait_status_ready
-======================
-
-.. c:function:: void nand_wait_status_ready(struct mtd_info *mtd, unsigned long timeo)
-
-    [GENERIC] Wait for the ready status after commands.
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param unsigned long timeo:
-        Timeout in ms
-
-.. _`nand_wait_status_ready.description`:
-
-Description
------------
-
-Wait for status ready (i.e. command done) or timeout.
 
 .. _`nand_soft_waitrdy`:
 
@@ -468,11 +211,13 @@ nand_soft_waitrdy
 
     Poll STATUS reg until RDY bit is set to 1
 
-    :param struct nand_chip \*chip:
+    :param chip:
         NAND chip structure
+    :type chip: struct nand_chip \*
 
-    :param unsigned long timeout_ms:
+    :param timeout_ms:
         Timeout in ms
+    :type timeout_ms: unsigned long
 
 .. _`nand_soft_waitrdy.description`:
 
@@ -491,65 +236,6 @@ Be aware that calling this helper from an ->exec_op() implementation means
 
 Return 0 if the NAND chip is ready, a negative error otherwise.
 
-.. _`nand_command`:
-
-nand_command
-============
-
-.. c:function:: void nand_command(struct mtd_info *mtd, unsigned int command, int column, int page_addr)
-
-    [DEFAULT] Send command to NAND device
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param unsigned int command:
-        the command to be sent
-
-    :param int column:
-        the column address for this command, -1 if none
-
-    :param int page_addr:
-        the page address for this command, -1 if none
-
-.. _`nand_command.description`:
-
-Description
------------
-
-Send command to NAND device. This function is used for small page devices
-(512 Bytes per page).
-
-.. _`nand_command_lp`:
-
-nand_command_lp
-===============
-
-.. c:function:: void nand_command_lp(struct mtd_info *mtd, unsigned int command, int column, int page_addr)
-
-    [DEFAULT] Send command to NAND large page device
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param unsigned int command:
-        the command to be sent
-
-    :param int column:
-        the column address for this command, -1 if none
-
-    :param int page_addr:
-        the page address for this command, -1 if none
-
-.. _`nand_command_lp.description`:
-
-Description
------------
-
-Send command to NAND device. This is the version for the new large page
-devices. We don't have the separate regions as we have in the small page
-devices. We must emulate NAND_CMD_READOOB to keep the code compatible.
-
 .. _`panic_nand_get_device`:
 
 panic_nand_get_device
@@ -559,14 +245,17 @@ panic_nand_get_device
 
     [GENERIC] Get chip for selected access
 
-    :param struct nand_chip \*chip:
+    :param chip:
         the nand chip descriptor
+    :type chip: struct nand_chip \*
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param int new_state:
+    :param new_state:
         the state which is requested
+    :type new_state: int
 
 .. _`panic_nand_get_device.description`:
 
@@ -584,11 +273,13 @@ nand_get_device
 
     [GENERIC] Get chip for selected access
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param int new_state:
+    :param new_state:
         the state which is requested
+    :type new_state: int
 
 .. _`nand_get_device.description`:
 
@@ -602,18 +293,17 @@ Get the device and lock it for exclusive access
 panic_nand_wait
 ===============
 
-.. c:function:: void panic_nand_wait(struct mtd_info *mtd, struct nand_chip *chip, unsigned long timeo)
+.. c:function:: void panic_nand_wait(struct nand_chip *chip, unsigned long timeo)
 
     [GENERIC] wait until the command is done
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         NAND chip structure
+    :type chip: struct nand_chip \*
 
-    :param unsigned long timeo:
+    :param timeo:
         timeout
+    :type timeo: unsigned long
 
 .. _`panic_nand_wait.description`:
 
@@ -624,80 +314,6 @@ Wait for command done. This is a helper function for nand_wait used when
 we are in interrupt context. May happen when in panic and trying to write
 an oops through mtdoops.
 
-.. _`nand_wait`:
-
-nand_wait
-=========
-
-.. c:function:: int nand_wait(struct mtd_info *mtd, struct nand_chip *chip)
-
-    [DEFAULT] wait until the command is done
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param struct nand_chip \*chip:
-        NAND chip structure
-
-.. _`nand_wait.description`:
-
-Description
------------
-
-Wait for command done. This applies to erase and program only.
-
-.. _`nand_get_features`:
-
-nand_get_features
-=================
-
-.. c:function:: int nand_get_features(struct nand_chip *chip, int addr, u8 *subfeature_param)
-
-    wrapper to perform a GET_FEATURE
-
-    :param struct nand_chip \*chip:
-        NAND chip info structure
-
-    :param int addr:
-        feature address
-
-    :param u8 \*subfeature_param:
-        the subfeature parameters, a four bytes array
-
-.. _`nand_get_features.description`:
-
-Description
------------
-
-Returns 0 for success, a negative error otherwise. Returns -ENOTSUPP if the
-operation cannot be handled.
-
-.. _`nand_set_features`:
-
-nand_set_features
-=================
-
-.. c:function:: int nand_set_features(struct nand_chip *chip, int addr, u8 *subfeature_param)
-
-    wrapper to perform a SET_FEATURE
-
-    :param struct nand_chip \*chip:
-        NAND chip info structure
-
-    :param int addr:
-        feature address
-
-    :param u8 \*subfeature_param:
-        the subfeature parameters, a four bytes array
-
-.. _`nand_set_features.description`:
-
-Description
------------
-
-Returns 0 for success, a negative error otherwise. Returns -ENOTSUPP if the
-operation cannot be handled.
-
 .. _`nand_reset_data_interface`:
 
 nand_reset_data_interface
@@ -707,11 +323,13 @@ nand_reset_data_interface
 
     Reset data interface and timings
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param int chipnr:
+    :param chipnr:
         Internal die id
+    :type chipnr: int
 
 .. _`nand_reset_data_interface.description`:
 
@@ -731,11 +349,13 @@ nand_setup_data_interface
 
     Setup the best data interface and timings
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param int chipnr:
+    :param chipnr:
         Internal die id
+    :type chipnr: int
 
 .. _`nand_setup_data_interface.description`:
 
@@ -759,8 +379,9 @@ nand_init_data_interface
 
     find the best data interface and timings
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
 .. _`nand_init_data_interface.description`:
 
@@ -786,14 +407,17 @@ nand_fill_column_cycles
 
     fill the column cycles of an address
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param u8 \*addrs:
+    :param addrs:
         Array of address cycles to fill
+    :type addrs: u8 \*
 
-    :param unsigned int offset_in_page:
+    :param offset_in_page:
         The offset in the page
+    :type offset_in_page: unsigned int
 
 .. _`nand_fill_column_cycles.description`:
 
@@ -815,20 +439,25 @@ nand_read_page_op
 
     Do a READ PAGE operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param unsigned int page:
+    :param page:
         page to read
+    :type page: unsigned int
 
-    :param unsigned int offset_in_page:
+    :param offset_in_page:
         offset within the page
+    :type offset_in_page: unsigned int
 
-    :param void \*buf:
+    :param buf:
         buffer used to store the data
+    :type buf: void \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer
+    :type len: unsigned int
 
 .. _`nand_read_page_op.description`:
 
@@ -849,17 +478,21 @@ nand_read_param_page_op
 
     Do a READ PARAMETER PAGE operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param u8 page:
+    :param page:
         parameter page to read
+    :type page: u8
 
-    :param void \*buf:
+    :param buf:
         buffer used to store the data
+    :type buf: void \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer
+    :type len: unsigned int
 
 .. _`nand_read_param_page_op.description`:
 
@@ -880,20 +513,25 @@ nand_change_read_column_op
 
     Do a CHANGE READ COLUMN operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param unsigned int offset_in_page:
+    :param offset_in_page:
         offset within the page
+    :type offset_in_page: unsigned int
 
-    :param void \*buf:
+    :param buf:
         buffer used to store the data
+    :type buf: void \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer
+    :type len: unsigned int
 
-    :param bool force_8bit:
+    :param force_8bit:
         force 8-bit bus access
+    :type force_8bit: bool
 
 .. _`nand_change_read_column_op.description`:
 
@@ -914,20 +552,25 @@ nand_read_oob_op
 
     Do a READ OOB operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param unsigned int page:
+    :param page:
         page to read
+    :type page: unsigned int
 
-    :param unsigned int offset_in_oob:
+    :param offset_in_oob:
         offset within the OOB area
+    :type offset_in_oob: unsigned int
 
-    :param void \*buf:
+    :param buf:
         buffer used to store the data
+    :type buf: void \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer
+    :type len: unsigned int
 
 .. _`nand_read_oob_op.description`:
 
@@ -948,20 +591,25 @@ nand_prog_page_begin_op
 
     starts a PROG PAGE operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param unsigned int page:
+    :param page:
         page to write
+    :type page: unsigned int
 
-    :param unsigned int offset_in_page:
+    :param offset_in_page:
         offset within the page
+    :type offset_in_page: unsigned int
 
-    :param const void \*buf:
+    :param buf:
         buffer containing the data to write to the page
+    :type buf: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer
+    :type len: unsigned int
 
 .. _`nand_prog_page_begin_op.description`:
 
@@ -982,8 +630,9 @@ nand_prog_page_end_op
 
     ends a PROG PAGE operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
 .. _`nand_prog_page_end_op.description`:
 
@@ -1004,20 +653,25 @@ nand_prog_page_op
 
     Do a full PROG PAGE operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param unsigned int page:
+    :param page:
         page to write
+    :type page: unsigned int
 
-    :param unsigned int offset_in_page:
+    :param offset_in_page:
         offset within the page
+    :type offset_in_page: unsigned int
 
-    :param const void \*buf:
+    :param buf:
         buffer containing the data to write to the page
+    :type buf: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer
+    :type len: unsigned int
 
 .. _`nand_prog_page_op.description`:
 
@@ -1038,20 +692,25 @@ nand_change_write_column_op
 
     Do a CHANGE WRITE COLUMN operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param unsigned int offset_in_page:
+    :param offset_in_page:
         offset within the page
+    :type offset_in_page: unsigned int
 
-    :param const void \*buf:
+    :param buf:
         buffer containing the data to send to the NAND
+    :type buf: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer
+    :type len: unsigned int
 
-    :param bool force_8bit:
+    :param force_8bit:
         force 8-bit bus access
+    :type force_8bit: bool
 
 .. _`nand_change_write_column_op.description`:
 
@@ -1072,17 +731,21 @@ nand_readid_op
 
     Do a READID operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param u8 addr:
+    :param addr:
         address cycle to pass after the READID command
+    :type addr: u8
 
-    :param void \*buf:
+    :param buf:
         buffer used to store the ID
+    :type buf: void \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer
+    :type len: unsigned int
 
 .. _`nand_readid_op.description`:
 
@@ -1104,11 +767,13 @@ nand_status_op
 
     Do a STATUS operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param u8 \*status:
+    :param status:
         out variable to store the NAND status
+    :type status: u8 \*
 
 .. _`nand_status_op.description`:
 
@@ -1130,8 +795,9 @@ nand_exit_status_op
 
     Exit a STATUS operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
 .. _`nand_exit_status_op.description`:
 
@@ -1154,11 +820,13 @@ nand_erase_op
 
     Do an erase operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param unsigned int eraseblock:
+    :param eraseblock:
         block to erase
+    :type eraseblock: unsigned int
 
 .. _`nand_erase_op.description`:
 
@@ -1180,14 +848,17 @@ nand_set_features_op
 
     Do a SET FEATURES operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param u8 feature:
+    :param feature:
         feature id
+    :type feature: u8
 
-    :param const void \*data:
+    :param data:
         4 bytes of data
+    :type data: const void \*
 
 .. _`nand_set_features_op.description`:
 
@@ -1209,14 +880,17 @@ nand_get_features_op
 
     Do a GET FEATURES operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param u8 feature:
+    :param feature:
         feature id
+    :type feature: u8
 
-    :param void \*data:
+    :param data:
         4 bytes of data
+    :type data: void \*
 
 .. _`nand_get_features_op.description`:
 
@@ -1238,8 +912,9 @@ nand_reset_op
 
     Do a reset operation
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
 .. _`nand_reset_op.description`:
 
@@ -1261,17 +936,21 @@ nand_read_data_op
 
     Read data from the NAND
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param void \*buf:
+    :param buf:
         buffer used to store the data
+    :type buf: void \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer
+    :type len: unsigned int
 
-    :param bool force_8bit:
+    :param force_8bit:
         force 8-bit bus access
+    :type force_8bit: bool
 
 .. _`nand_read_data_op.description`:
 
@@ -1293,17 +972,21 @@ nand_write_data_op
 
     Write data from the NAND
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param const void \*buf:
+    :param buf:
         buffer containing the data to send on the bus
+    :type buf: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer
+    :type len: unsigned int
 
-    :param bool force_8bit:
+    :param force_8bit:
         force 8-bit bus access
+    :type force_8bit: bool
 
 .. _`nand_write_data_op.description`:
 
@@ -1369,19 +1052,22 @@ nand_op_parser_must_split_instr
 
     Checks if an instruction must be split
 
-    :param const struct nand_op_parser_pattern_elem \*pat:
+    :param pat:
         the parser pattern element that matches \ ``instr``\ 
+    :type pat: const struct nand_op_parser_pattern_elem \*
 
-    :param const struct nand_op_instr \*instr:
+    :param instr:
         pointer to the instruction to check
+    :type instr: const struct nand_op_instr \*
 
-    :param unsigned int \*start_offset:
+    :param start_offset:
         this is an in/out parameter. If \ ``instr``\  has already been
         split, then \ ``start_offset``\  is the offset from which to start
         (either an address cycle or an offset in the data buffer).
         Conversely, if the function returns true (ie. instr must be
         split), this parameter is updated to point to the first
         data/address cycle that has not been taken care of.
+    :type start_offset: unsigned int \*
 
 .. _`nand_op_parser_must_split_instr.description`:
 
@@ -1406,11 +1092,13 @@ nand_op_parser_match_pat
 
     Checks if a pattern matches the instructions remaining in the parser context
 
-    :param const struct nand_op_parser_pattern \*pat:
+    :param pat:
         the pattern to test
+    :type pat: const struct nand_op_parser_pattern \*
 
-    :param struct nand_op_parser_ctx \*ctx:
+    :param ctx:
         the parser context structure to match with the pattern \ ``pat``\ 
+    :type ctx: struct nand_op_parser_ctx \*
 
 .. _`nand_op_parser_match_pat.description`:
 
@@ -1419,7 +1107,7 @@ Description
 
 Check if \ ``pat``\  matches the set or a sub-set of instructions remaining in \ ``ctx``\ .
 Returns true if this is the case, false ortherwise. When true is returned,
-\ ``ctx``\ ->subop is updated with the set of instructions to be passed to the
+\ ``ctx->subop``\  is updated with the set of instructions to be passed to the
 controller driver.
 
 .. _`nand_op_parser_exec_op`:
@@ -1431,18 +1119,22 @@ nand_op_parser_exec_op
 
     exec_op parser
 
-    :param struct nand_chip \*chip:
+    :param chip:
         the NAND chip
+    :type chip: struct nand_chip \*
 
-    :param const struct nand_op_parser \*parser:
+    :param parser:
         patterns description provided by the controller driver
+    :type parser: const struct nand_op_parser \*
 
-    :param const struct nand_operation \*op:
+    :param op:
         the NAND operation to address
+    :type op: const struct nand_operation \*
 
-    :param bool check_only:
+    :param check_only:
         when true, the function only checks if \ ``op``\  can be handled but
         does not execute the operation
+    :type check_only: bool
 
 .. _`nand_op_parser_exec_op.description`:
 
@@ -1468,15 +1160,17 @@ matching pattern->exec() hook.
 nand_subop_get_addr_start_off
 =============================
 
-.. c:function:: int nand_subop_get_addr_start_off(const struct nand_subop *subop, unsigned int instr_idx)
+.. c:function:: unsigned int nand_subop_get_addr_start_off(const struct nand_subop *subop, unsigned int instr_idx)
 
     Get the start offset in an address array
 
-    :param const struct nand_subop \*subop:
+    :param subop:
         The entire sub-operation
+    :type subop: const struct nand_subop \*
 
-    :param unsigned int instr_idx:
+    :param instr_idx:
         Index of the instruction inside the sub-operation
+    :type instr_idx: unsigned int
 
 .. _`nand_subop_get_addr_start_off.description`:
 
@@ -1494,15 +1188,17 @@ Given an address instruction, returns the offset of the first cycle to issue.
 nand_subop_get_num_addr_cyc
 ===========================
 
-.. c:function:: int nand_subop_get_num_addr_cyc(const struct nand_subop *subop, unsigned int instr_idx)
+.. c:function:: unsigned int nand_subop_get_num_addr_cyc(const struct nand_subop *subop, unsigned int instr_idx)
 
     Get the remaining address cycles to assert
 
-    :param const struct nand_subop \*subop:
+    :param subop:
         The entire sub-operation
+    :type subop: const struct nand_subop \*
 
-    :param unsigned int instr_idx:
+    :param instr_idx:
         Index of the instruction inside the sub-operation
+    :type instr_idx: unsigned int
 
 .. _`nand_subop_get_num_addr_cyc.description`:
 
@@ -1520,15 +1216,17 @@ Given an address instruction, returns the number of address cycle to issue.
 nand_subop_get_data_start_off
 =============================
 
-.. c:function:: int nand_subop_get_data_start_off(const struct nand_subop *subop, unsigned int instr_idx)
+.. c:function:: unsigned int nand_subop_get_data_start_off(const struct nand_subop *subop, unsigned int instr_idx)
 
     Get the start offset in a data array
 
-    :param const struct nand_subop \*subop:
+    :param subop:
         The entire sub-operation
+    :type subop: const struct nand_subop \*
 
-    :param unsigned int instr_idx:
+    :param instr_idx:
         Index of the instruction inside the sub-operation
+    :type instr_idx: unsigned int
 
 .. _`nand_subop_get_data_start_off.description`:
 
@@ -1546,15 +1244,17 @@ Given a data instruction, returns the offset to start from.
 nand_subop_get_data_len
 =======================
 
-.. c:function:: int nand_subop_get_data_len(const struct nand_subop *subop, unsigned int instr_idx)
+.. c:function:: unsigned int nand_subop_get_data_len(const struct nand_subop *subop, unsigned int instr_idx)
 
     Get the number of bytes to retrieve
 
-    :param const struct nand_subop \*subop:
+    :param subop:
         The entire sub-operation
+    :type subop: const struct nand_subop \*
 
-    :param unsigned int instr_idx:
+    :param instr_idx:
         Index of the instruction inside the sub-operation
+    :type instr_idx: unsigned int
 
 .. _`nand_subop_get_data_len.description`:
 
@@ -1576,11 +1276,13 @@ nand_reset
 
     Reset and initialize a NAND device
 
-    :param struct nand_chip \*chip:
+    :param chip:
         The NAND chip
+    :type chip: struct nand_chip \*
 
-    :param int chipnr:
+    :param chipnr:
         Internal die id
+    :type chipnr: int
 
 .. _`nand_reset.description`:
 
@@ -1593,6 +1295,64 @@ apply back the previous timings.
 
 Returns 0 on success, a negative error code otherwise.
 
+.. _`nand_get_features`:
+
+nand_get_features
+=================
+
+.. c:function:: int nand_get_features(struct nand_chip *chip, int addr, u8 *subfeature_param)
+
+    wrapper to perform a GET_FEATURE
+
+    :param chip:
+        NAND chip info structure
+    :type chip: struct nand_chip \*
+
+    :param addr:
+        feature address
+    :type addr: int
+
+    :param subfeature_param:
+        the subfeature parameters, a four bytes array
+    :type subfeature_param: u8 \*
+
+.. _`nand_get_features.description`:
+
+Description
+-----------
+
+Returns 0 for success, a negative error otherwise. Returns -ENOTSUPP if the
+operation cannot be handled.
+
+.. _`nand_set_features`:
+
+nand_set_features
+=================
+
+.. c:function:: int nand_set_features(struct nand_chip *chip, int addr, u8 *subfeature_param)
+
+    wrapper to perform a SET_FEATURE
+
+    :param chip:
+        NAND chip info structure
+    :type chip: struct nand_chip \*
+
+    :param addr:
+        feature address
+    :type addr: int
+
+    :param subfeature_param:
+        the subfeature parameters, a four bytes array
+    :type subfeature_param: u8 \*
+
+.. _`nand_set_features.description`:
+
+Description
+-----------
+
+Returns 0 for success, a negative error otherwise. Returns -ENOTSUPP if the
+operation cannot be handled.
+
 .. _`nand_check_erased_buf`:
 
 nand_check_erased_buf
@@ -1602,14 +1362,17 @@ nand_check_erased_buf
 
     check if a buffer contains (almost) only 0xff data
 
-    :param void \*buf:
+    :param buf:
         buffer to test
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         buffer length
+    :type len: int
 
-    :param int bitflips_threshold:
+    :param bitflips_threshold:
         maximum number of bitflips
+    :type bitflips_threshold: int
 
 .. _`nand_check_erased_buf.description`:
 
@@ -1644,26 +1407,33 @@ nand_check_erased_ecc_chunk
 
     check if an ECC chunk contains (almost) only 0xff data
 
-    :param void \*data:
+    :param data:
         data buffer to test
+    :type data: void \*
 
-    :param int datalen:
+    :param datalen:
         data length
+    :type datalen: int
 
-    :param void \*ecc:
+    :param ecc:
         ECC buffer
+    :type ecc: void \*
 
-    :param int ecclen:
+    :param ecclen:
         ECC length
+    :type ecclen: int
 
-    :param void \*extraoob:
+    :param extraoob:
         extra OOB buffer
+    :type extraoob: void \*
 
-    :param int extraooblen:
+    :param extraooblen:
         extra OOB length
+    :type extraooblen: int
 
-    :param int bitflips_threshold:
+    :param bitflips_threshold:
         maximum number of bitflips
+    :type bitflips_threshold: int
 
 .. _`nand_check_erased_ecc_chunk.description`:
 
@@ -1702,29 +1472,62 @@ Returns a positive number of bitflips less than or equal to
 bitflips_threshold, or -ERROR_CODE for bitflips in excess of the
 threshold. In case of success, the passed buffers are filled with 0xff.
 
+.. _`nand_read_page_raw_notsupp`:
+
+nand_read_page_raw_notsupp
+==========================
+
+.. c:function:: int nand_read_page_raw_notsupp(struct nand_chip *chip, u8 *buf, int oob_required, int page)
+
+    dummy read raw page function
+
+    :param chip:
+        nand chip info structure
+    :type chip: struct nand_chip \*
+
+    :param buf:
+        buffer to store read data
+    :type buf: u8 \*
+
+    :param oob_required:
+        caller requires OOB data read to chip->oob_poi
+    :type oob_required: int
+
+    :param page:
+        page number to read
+    :type page: int
+
+.. _`nand_read_page_raw_notsupp.description`:
+
+Description
+-----------
+
+Returns -ENOTSUPP unconditionally.
+
 .. _`nand_read_page_raw`:
 
 nand_read_page_raw
 ==================
 
-.. c:function:: int nand_read_page_raw(struct mtd_info *mtd, struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_read_page_raw(struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
 
     [INTERN] read raw page data without ecc
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         caller requires OOB data read to chip->oob_poi
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to read
+    :type page: int
 
 .. _`nand_read_page_raw.description`:
 
@@ -1738,24 +1541,25 @@ Not for syndrome calculating ECC controllers, which use a special oob layout.
 nand_read_page_raw_syndrome
 ===========================
 
-.. c:function:: int nand_read_page_raw_syndrome(struct mtd_info *mtd, struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_read_page_raw_syndrome(struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
 
     [INTERN] read raw page data without ecc
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         caller requires OOB data read to chip->oob_poi
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to read
+    :type page: int
 
 .. _`nand_read_page_raw_syndrome.description`:
 
@@ -1769,75 +1573,79 @@ We need a special oob layout and handling even when OOB isn't used.
 nand_read_page_swecc
 ====================
 
-.. c:function:: int nand_read_page_swecc(struct mtd_info *mtd, struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_read_page_swecc(struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
 
     [REPLACEABLE] software ECC based page read function
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         caller requires OOB data read to chip->oob_poi
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to read
+    :type page: int
 
 .. _`nand_read_subpage`:
 
 nand_read_subpage
 =================
 
-.. c:function:: int nand_read_subpage(struct mtd_info *mtd, struct nand_chip *chip, uint32_t data_offs, uint32_t readlen, uint8_t *bufpoi, int page)
+.. c:function:: int nand_read_subpage(struct nand_chip *chip, uint32_t data_offs, uint32_t readlen, uint8_t *bufpoi, int page)
 
     [REPLACEABLE] ECC based sub-page read function
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param uint32_t data_offs:
+    :param data_offs:
         offset of requested data within the page
+    :type data_offs: uint32_t
 
-    :param uint32_t readlen:
+    :param readlen:
         data length
+    :type readlen: uint32_t
 
-    :param uint8_t \*bufpoi:
+    :param bufpoi:
         buffer to store read data
+    :type bufpoi: uint8_t \*
 
-    :param int page:
+    :param page:
         page number to read
+    :type page: int
 
 .. _`nand_read_page_hwecc`:
 
 nand_read_page_hwecc
 ====================
 
-.. c:function:: int nand_read_page_hwecc(struct mtd_info *mtd, struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_read_page_hwecc(struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
 
     [REPLACEABLE] hardware ECC based page read function
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         caller requires OOB data read to chip->oob_poi
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to read
+    :type page: int
 
 .. _`nand_read_page_hwecc.description`:
 
@@ -1851,24 +1659,25 @@ Not for syndrome calculating ECC controllers which need a special oob layout.
 nand_read_page_hwecc_oob_first
 ==============================
 
-.. c:function:: int nand_read_page_hwecc_oob_first(struct mtd_info *mtd, struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_read_page_hwecc_oob_first(struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
 
     [REPLACEABLE] hw ecc, read oob first
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         caller requires OOB data read to chip->oob_poi
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to read
+    :type page: int
 
 .. _`nand_read_page_hwecc_oob_first.description`:
 
@@ -1886,24 +1695,25 @@ the data area, by overwriting the NAND manufacturer bad block markings.
 nand_read_page_syndrome
 =======================
 
-.. c:function:: int nand_read_page_syndrome(struct mtd_info *mtd, struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_read_page_syndrome(struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
 
     [REPLACEABLE] hardware ECC syndrome based page read
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         caller requires OOB data read to chip->oob_poi
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to read
+    :type page: int
 
 .. _`nand_read_page_syndrome.description`:
 
@@ -1922,32 +1732,38 @@ nand_transfer_oob
 
     [INTERN] Transfer oob to client buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         mtd info structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*oob:
+    :param oob:
         oob destination address
+    :type oob: uint8_t \*
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         oob ops structure
+    :type ops: struct mtd_oob_ops \*
 
-    :param size_t len:
+    :param len:
         size of oob to transfer
+    :type len: size_t
 
 .. _`nand_setup_read_retry`:
 
 nand_setup_read_retry
 =====================
 
-.. c:function:: int nand_setup_read_retry(struct mtd_info *mtd, int retry_mode)
+.. c:function:: int nand_setup_read_retry(struct nand_chip *chip, int retry_mode)
 
     [INTERN] Set the READ RETRY mode
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param int retry_mode:
+    :param retry_mode:
         the retry mode to use
+    :type retry_mode: int
 
 .. _`nand_setup_read_retry.description`:
 
@@ -1967,14 +1783,17 @@ nand_do_read_ops
 
     [INTERN] Read data with ECC
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         offset to read from
+    :type from: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         oob ops structure
+    :type ops: struct mtd_oob_ops \*
 
 .. _`nand_do_read_ops.description`:
 
@@ -1988,72 +1807,68 @@ Internal function. Called with chip held.
 nand_read_oob_std
 =================
 
-.. c:function:: int nand_read_oob_std(struct mtd_info *mtd, struct nand_chip *chip, int page)
+.. c:function:: int nand_read_oob_std(struct nand_chip *chip, int page)
 
     [REPLACEABLE] the most common OOB data read function
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param int page:
+    :param page:
         page number to read
+    :type page: int
 
 .. _`nand_read_oob_syndrome`:
 
 nand_read_oob_syndrome
 ======================
 
-.. c:function:: int nand_read_oob_syndrome(struct mtd_info *mtd, struct nand_chip *chip, int page)
+.. c:function:: int nand_read_oob_syndrome(struct nand_chip *chip, int page)
 
     [REPLACEABLE] OOB data read function for HW ECC with syndromes
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param int page:
+    :param page:
         page number to read
+    :type page: int
 
 .. _`nand_write_oob_std`:
 
 nand_write_oob_std
 ==================
 
-.. c:function:: int nand_write_oob_std(struct mtd_info *mtd, struct nand_chip *chip, int page)
+.. c:function:: int nand_write_oob_std(struct nand_chip *chip, int page)
 
     [REPLACEABLE] the most common OOB data write function
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param int page:
+    :param page:
         page number to write
+    :type page: int
 
 .. _`nand_write_oob_syndrome`:
 
 nand_write_oob_syndrome
 =======================
 
-.. c:function:: int nand_write_oob_syndrome(struct mtd_info *mtd, struct nand_chip *chip, int page)
+.. c:function:: int nand_write_oob_syndrome(struct nand_chip *chip, int page)
 
     [REPLACEABLE] OOB data write function for HW ECC with syndrome - only for large page flash
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param int page:
+    :param page:
         page number to write
+    :type page: int
 
 .. _`nand_do_read_oob`:
 
@@ -2064,14 +1879,17 @@ nand_do_read_oob
 
     [INTERN] NAND read out-of-band
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         offset to read from
+    :type from: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         oob operations description structure
+    :type ops: struct mtd_oob_ops \*
 
 .. _`nand_do_read_oob.description`:
 
@@ -2089,14 +1907,17 @@ nand_read_oob
 
     [MTD Interface] NAND read data and/or out-of-band
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         offset to read from
+    :type from: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         oob operation description structure
+    :type ops: struct mtd_oob_ops \*
 
 .. _`nand_read_oob.description`:
 
@@ -2105,29 +1926,62 @@ Description
 
 NAND read data and/or out-of-band data.
 
+.. _`nand_write_page_raw_notsupp`:
+
+nand_write_page_raw_notsupp
+===========================
+
+.. c:function:: int nand_write_page_raw_notsupp(struct nand_chip *chip, const u8 *buf, int oob_required, int page)
+
+    dummy raw page write function
+
+    :param chip:
+        nand chip info structure
+    :type chip: struct nand_chip \*
+
+    :param buf:
+        data buffer
+    :type buf: const u8 \*
+
+    :param oob_required:
+        must write chip->oob_poi to OOB
+    :type oob_required: int
+
+    :param page:
+        page number to write
+    :type page: int
+
+.. _`nand_write_page_raw_notsupp.description`:
+
+Description
+-----------
+
+Returns -ENOTSUPP unconditionally.
+
 .. _`nand_write_page_raw`:
 
 nand_write_page_raw
 ===================
 
-.. c:function:: int nand_write_page_raw(struct mtd_info *mtd, struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_write_page_raw(struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
 
     [INTERN] raw page write function
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param const uint8_t \*buf:
+    :param buf:
         data buffer
+    :type buf: const uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         must write chip->oob_poi to OOB
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to write
+    :type page: int
 
 .. _`nand_write_page_raw.description`:
 
@@ -2141,24 +1995,25 @@ Not for syndrome calculating ECC controllers, which use a special oob layout.
 nand_write_page_raw_syndrome
 ============================
 
-.. c:function:: int nand_write_page_raw_syndrome(struct mtd_info *mtd, struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_write_page_raw_syndrome(struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
 
     [INTERN] raw page write function
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param const uint8_t \*buf:
+    :param buf:
         data buffer
+    :type buf: const uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         must write chip->oob_poi to OOB
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to write
+    :type page: int
 
 .. _`nand_write_page_raw_syndrome.description`:
 
@@ -2172,102 +2027,108 @@ We need a special oob layout and handling even when ECC isn't checked.
 nand_write_page_swecc
 =====================
 
-.. c:function:: int nand_write_page_swecc(struct mtd_info *mtd, struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_write_page_swecc(struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
 
     [REPLACEABLE] software ECC based page write function
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param const uint8_t \*buf:
+    :param buf:
         data buffer
+    :type buf: const uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         must write chip->oob_poi to OOB
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to write
+    :type page: int
 
 .. _`nand_write_page_hwecc`:
 
 nand_write_page_hwecc
 =====================
 
-.. c:function:: int nand_write_page_hwecc(struct mtd_info *mtd, struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_write_page_hwecc(struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
 
     [REPLACEABLE] hardware ECC based page write function
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param const uint8_t \*buf:
+    :param buf:
         data buffer
+    :type buf: const uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         must write chip->oob_poi to OOB
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to write
+    :type page: int
 
 .. _`nand_write_subpage_hwecc`:
 
 nand_write_subpage_hwecc
 ========================
 
-.. c:function:: int nand_write_subpage_hwecc(struct mtd_info *mtd, struct nand_chip *chip, uint32_t offset, uint32_t data_len, const uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_write_subpage_hwecc(struct nand_chip *chip, uint32_t offset, uint32_t data_len, const uint8_t *buf, int oob_required, int page)
 
     [REPLACEABLE] hardware ECC based subpage write
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param uint32_t offset:
+    :param offset:
         column address of subpage within the page
+    :type offset: uint32_t
 
-    :param uint32_t data_len:
+    :param data_len:
         data length
+    :type data_len: uint32_t
 
-    :param const uint8_t \*buf:
+    :param buf:
         data buffer
+    :type buf: const uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         must write chip->oob_poi to OOB
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to write
+    :type page: int
 
 .. _`nand_write_page_syndrome`:
 
 nand_write_page_syndrome
 ========================
 
-.. c:function:: int nand_write_page_syndrome(struct mtd_info *mtd, struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
+.. c:function:: int nand_write_page_syndrome(struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
 
     [REPLACEABLE] hardware ECC syndrome based page write
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param const uint8_t \*buf:
+    :param buf:
         data buffer
+    :type buf: const uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         must write chip->oob_poi to OOB
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to write
+    :type page: int
 
 .. _`nand_write_page_syndrome.description`:
 
@@ -2286,29 +2147,37 @@ nand_write_page
 
     write one page
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param struct nand_chip \*chip:
+    :param chip:
         NAND chip descriptor
+    :type chip: struct nand_chip \*
 
-    :param uint32_t offset:
+    :param offset:
         address offset within the page
+    :type offset: uint32_t
 
-    :param int data_len:
+    :param data_len:
         length of actual data to be written
+    :type data_len: int
 
-    :param const uint8_t \*buf:
+    :param buf:
         the data to write
+    :type buf: const uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         must write chip->oob_poi to OOB
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to write
+    :type page: int
 
-    :param int raw:
+    :param raw:
         use _raw version of write_page
+    :type raw: int
 
 .. _`nand_fill_oob`:
 
@@ -2319,17 +2188,21 @@ nand_fill_oob
 
     [INTERN] Transfer client buffer to oob
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param uint8_t \*oob:
+    :param oob:
         oob data buffer
+    :type oob: uint8_t \*
 
-    :param size_t len:
+    :param len:
         oob data write length
+    :type len: size_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         oob ops structure
+    :type ops: struct mtd_oob_ops \*
 
 .. _`nand_do_write_ops`:
 
@@ -2340,14 +2213,17 @@ nand_do_write_ops
 
     [INTERN] NAND write with ECC
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         offset to write to
+    :type to: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         oob operations description structure
+    :type ops: struct mtd_oob_ops \*
 
 .. _`nand_do_write_ops.description`:
 
@@ -2365,20 +2241,25 @@ panic_nand_write
 
     [MTD Interface] NAND write with ECC
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         offset to write to
+    :type to: loff_t
 
-    :param size_t len:
+    :param len:
         number of bytes to write
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         pointer to variable to store the number of written bytes
+    :type retlen: size_t \*
 
-    :param const uint8_t \*buf:
+    :param buf:
         the data to write
+    :type buf: const uint8_t \*
 
 .. _`panic_nand_write.description`:
 
@@ -2397,14 +2278,17 @@ nand_do_write_oob
 
     [MTD Interface] NAND write out-of-band
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         offset to write to
+    :type to: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         oob operation description structure
+    :type ops: struct mtd_oob_ops \*
 
 .. _`nand_do_write_oob.description`:
 
@@ -2422,29 +2306,34 @@ nand_write_oob
 
     [MTD Interface] NAND write data and/or out-of-band
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         offset to write to
+    :type to: loff_t
 
-    :param struct mtd_oob_ops \*ops:
+    :param ops:
         oob operation description structure
+    :type ops: struct mtd_oob_ops \*
 
 .. _`single_erase`:
 
 single_erase
 ============
 
-.. c:function:: int single_erase(struct mtd_info *mtd, int page)
+.. c:function:: int single_erase(struct nand_chip *chip, int page)
 
     [GENERIC] NAND standard block erase command function
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param int page:
+    :param page:
         the page address of the block which will be erased
+    :type page: int
 
 .. _`single_erase.description`:
 
@@ -2462,11 +2351,13 @@ nand_erase
 
     [MTD Interface] erase block(s)
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param struct erase_info \*instr:
+    :param instr:
         erase instruction
+    :type instr: struct erase_info \*
 
 .. _`nand_erase.description`:
 
@@ -2480,18 +2371,21 @@ Erase one ore more blocks.
 nand_erase_nand
 ===============
 
-.. c:function:: int nand_erase_nand(struct mtd_info *mtd, struct erase_info *instr, int allowbbt)
+.. c:function:: int nand_erase_nand(struct nand_chip *chip, struct erase_info *instr, int allowbbt)
 
     [INTERN] erase block(s)
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param struct erase_info \*instr:
+    :param instr:
         erase instruction
+    :type instr: struct erase_info \*
 
-    :param int allowbbt:
+    :param allowbbt:
         allow erasing the bbt area
+    :type allowbbt: int
 
 .. _`nand_erase_nand.description`:
 
@@ -2509,8 +2403,9 @@ nand_sync
 
     [MTD Interface] sync
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
 .. _`nand_sync.description`:
 
@@ -2528,11 +2423,13 @@ nand_block_isbad
 
     [MTD Interface] Check if block at offset is bad
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t offs:
+    :param offs:
         offset relative to mtd start
+    :type offs: loff_t
 
 .. _`nand_block_markbad`:
 
@@ -2543,11 +2440,13 @@ nand_block_markbad
 
     [MTD Interface] Mark block at the given offset as bad
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         offset relative to mtd start
+    :type ofs: loff_t
 
 .. _`nand_max_bad_blocks`:
 
@@ -2558,85 +2457,17 @@ nand_max_bad_blocks
 
     [MTD Interface] Max number of bad blocks for an mtd
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param loff_t ofs:
+    :param ofs:
         offset relative to mtd start
+    :type ofs: loff_t
 
-    :param size_t len:
+    :param len:
         length of mtd
-
-.. _`nand_default_set_features`:
-
-nand_default_set_features
-=========================
-
-.. c:function:: int nand_default_set_features(struct mtd_info *mtd, struct nand_chip *chip, int addr, uint8_t *subfeature_param)
-
-    [REPLACEABLE] set NAND chip features
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param struct nand_chip \*chip:
-        nand chip info structure
-
-    :param int addr:
-        feature address.
-
-    :param uint8_t \*subfeature_param:
-        the subfeature parameters, a four bytes array.
-
-.. _`nand_default_get_features`:
-
-nand_default_get_features
-=========================
-
-.. c:function:: int nand_default_get_features(struct mtd_info *mtd, struct nand_chip *chip, int addr, uint8_t *subfeature_param)
-
-    [REPLACEABLE] get NAND chip features
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param struct nand_chip \*chip:
-        nand chip info structure
-
-    :param int addr:
-        feature address.
-
-    :param uint8_t \*subfeature_param:
-        the subfeature parameters, a four bytes array.
-
-.. _`nand_get_set_features_notsupp`:
-
-nand_get_set_features_notsupp
-=============================
-
-.. c:function:: int nand_get_set_features_notsupp(struct mtd_info *mtd, struct nand_chip *chip, int addr, u8 *subfeature_param)
-
-    set/get features stub returning -ENOTSUPP
-
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param struct nand_chip \*chip:
-        nand chip info structure
-
-    :param int addr:
-        feature address.
-
-    :param u8 \*subfeature_param:
-        the subfeature parameters, a four bytes array.
-
-.. _`nand_get_set_features_notsupp.description`:
-
-Description
------------
-
-Should be used by NAND controller drivers that do not support the SET/GET
-FEATURES operations.
+    :type len: size_t
 
 .. _`nand_suspend`:
 
@@ -2647,8 +2478,9 @@ nand_suspend
 
     [MTD Interface] Suspend the NAND flash
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
 .. _`nand_resume`:
 
@@ -2659,8 +2491,9 @@ nand_resume
 
     [MTD Interface] Resume the NAND flash
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
 .. _`nand_shutdown`:
 
@@ -2671,26 +2504,30 @@ nand_shutdown
 
     [MTD Interface] Finish the current NAND operation and prevent further operations
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
 .. _`nand_scan_ident`:
 
 nand_scan_ident
 ===============
 
-.. c:function:: int nand_scan_ident(struct mtd_info *mtd, int maxchips, struct nand_flash_dev *table)
+.. c:function:: int nand_scan_ident(struct nand_chip *chip, unsigned int maxchips, struct nand_flash_dev *table)
 
-    [NAND Interface] Scan for the NAND device
+    Scan for the NAND device
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param int maxchips:
+    :param maxchips:
         number of chips to scan for
+    :type maxchips: unsigned int
 
-    :param struct nand_flash_dev \*table:
+    :param table:
         alternative NAND ID table
+    :type table: struct nand_flash_dev \*
 
 .. _`nand_scan_ident.description`:
 
@@ -2699,6 +2536,11 @@ Description
 
 This is the first phase of the normal \ :c:func:`nand_scan`\  function. It reads the
 flash ID and sets up MTD fields accordingly.
+
+This helper used to be called directly from controller drivers that needed
+to tweak some ECC-related parameters before \ :c:func:`nand_scan_tail`\ . This separation
+prevented dynamic allocations during this phase which was unconvenient and
+as been banned for the benefit of the ->init_ecc()/cleanup_ecc() hooks.
 
 .. _`nand_check_ecc_caps`:
 
@@ -2709,14 +2551,17 @@ nand_check_ecc_caps
 
     check the sanity of preset ECC settings
 
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param const struct nand_ecc_caps \*caps:
+    :param caps:
         ECC caps info structure
+    :type caps: const struct nand_ecc_caps \*
 
-    :param int oobavail:
+    :param oobavail:
         OOB size that the ECC engine can use
+    :type oobavail: int
 
 .. _`nand_check_ecc_caps.description`:
 
@@ -2736,14 +2581,17 @@ nand_match_ecc_req
 
     meet the chip's requirement with least ECC bytes
 
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param const struct nand_ecc_caps \*caps:
+    :param caps:
         ECC engine caps info structure
+    :type caps: const struct nand_ecc_caps \*
 
-    :param int oobavail:
+    :param oobavail:
         OOB size that the ECC engine can use
+    :type oobavail: int
 
 .. _`nand_match_ecc_req.description`:
 
@@ -2763,14 +2611,17 @@ nand_maximize_ecc
 
     choose the max ECC strength available
 
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param const struct nand_ecc_caps \*caps:
+    :param caps:
         ECC engine caps info structure
+    :type caps: const struct nand_ecc_caps \*
 
-    :param int oobavail:
+    :param oobavail:
         OOB size that the ECC engine can use
+    :type oobavail: int
 
 .. _`nand_maximize_ecc.description`:
 
@@ -2780,17 +2631,55 @@ Description
 Choose the max ECC strength that is supported on the controller, and can fit
 within the chip's OOB.  On success, the chosen ECC settings are set.
 
+.. _`nand_ecc_choose_conf`:
+
+nand_ecc_choose_conf
+====================
+
+.. c:function:: int nand_ecc_choose_conf(struct nand_chip *chip, const struct nand_ecc_caps *caps, int oobavail)
+
+    Set the ECC strength and ECC step size
+
+    :param chip:
+        nand chip info structure
+    :type chip: struct nand_chip \*
+
+    :param caps:
+        ECC engine caps info structure
+    :type caps: const struct nand_ecc_caps \*
+
+    :param oobavail:
+        OOB size that the ECC engine can use
+    :type oobavail: int
+
+.. _`nand_ecc_choose_conf.description`:
+
+Description
+-----------
+
+Choose the ECC configuration according to following logic
+
+1. If both ECC step size and ECC strength are already set (usually by DT)
+   then check if it is supported by this controller.
+2. If NAND_ECC_MAXIMIZE is set, then select maximum ECC strength.
+3. Otherwise, try to match the ECC step size and ECC strength closest
+   to the chip's requirement. If available OOB size can't fit the chip
+   requirement then fallback to the maximum ECC step size and ECC strength.
+
+On success, the chosen ECC settings are set.
+
 .. _`nand_scan_tail`:
 
 nand_scan_tail
 ==============
 
-.. c:function:: int nand_scan_tail(struct mtd_info *mtd)
+.. c:function:: int nand_scan_tail(struct nand_chip *chip)
 
-    [NAND Interface] Scan for the NAND device
+    Scan for the NAND device
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
 .. _`nand_scan_tail.description`:
 
@@ -2806,18 +2695,21 @@ bad block table if appropriate.
 nand_scan_with_ids
 ==================
 
-.. c:function:: int nand_scan_with_ids(struct mtd_info *mtd, int maxchips, struct nand_flash_dev *ids)
+.. c:function:: int nand_scan_with_ids(struct nand_chip *chip, unsigned int maxchips, struct nand_flash_dev *ids)
 
     [NAND Interface] Scan for the NAND device
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param int maxchips:
-        number of chips to scan for
+    :param maxchips:
+        number of chips to scan for.
+    :type maxchips: unsigned int
 
-    :param struct nand_flash_dev \*ids:
+    :param ids:
         optional flash IDs table
+    :type ids: struct nand_flash_dev \*
 
 .. _`nand_scan_with_ids.description`:
 
@@ -2837,20 +2729,22 @@ nand_cleanup
 
     [NAND Interface] Free resources held by the NAND device
 
-    :param struct nand_chip \*chip:
+    :param chip:
         NAND chip object
+    :type chip: struct nand_chip \*
 
 .. _`nand_release`:
 
 nand_release
 ============
 
-.. c:function:: void nand_release(struct mtd_info *mtd)
+.. c:function:: void nand_release(struct nand_chip *chip)
 
     [NAND Interface] Unregister the MTD device and free resources held by the NAND device
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
 .. This file was automatic generated / don't edit.
 

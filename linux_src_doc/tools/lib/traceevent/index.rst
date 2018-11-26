@@ -7,6 +7,7 @@ traceevent
 .. toctree::
     :maxdepth: 1
 
+    event-parse-api_c
     event-parse_c
     event-plugin_c
     kbuffer-parse_c

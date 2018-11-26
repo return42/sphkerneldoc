@@ -10,26 +10,30 @@ timeout_store
 
     set number of seconds to wait for firmware
 
-    :param struct class \*class:
+    :param class:
         device class pointer
+    :type class: struct class \*
 
-    :param struct class_attribute \*attr:
+    :param attr:
         device attribute pointer
+    :type attr: struct class_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer to scan for timeout value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         number of bytes in \ ``buf``\ 
+    :type count: size_t
 
 .. _`timeout_store.description`:
 
 Description
 -----------
 
-Sets the number of seconds to wait for the firmware.  Once
-this expires an error will be returned to the driver and no
-firmware will be provided.
+     Sets the number of seconds to wait for the firmware.  Once
+     this expires an error will be returned to the driver and no
+     firmware will be provided.
 
 .. _`timeout_store.note`:
 
@@ -47,17 +51,21 @@ firmware_loading_store
 
     set value in the 'loading' control file
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute pointer
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer to scan for loading control value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         number of bytes in \ ``buf``\ 
+    :type count: size_t
 
 .. _`firmware_loading_store.the-relevant-values-are`:
 
@@ -65,9 +73,9 @@ The relevant values are
 -----------------------
 
 
-1: Start a load, discarding any previous partial load.
-0: Conclude the load and hand the data to the driver code.
--1: Conclude the load with an error and discard any written data.
+      1: Start a load, discarding any previous partial load.
+      0: Conclude the load and hand the data to the driver code.
+     -1: Conclude the load with an error and discard any written data.
 
 .. _`firmware_data_write`:
 
@@ -78,31 +86,37 @@ firmware_data_write
 
     write method for firmware
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject for the device
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         bin_attr structure
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buffer:
+    :param buffer:
         buffer being written
+    :type buffer: char \*
 
-    :param loff_t offset:
+    :param offset:
         buffer offset for write in total data store area
+    :type offset: loff_t
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`firmware_data_write.description`:
 
 Description
 -----------
 
-Data written to the 'data' attribute will be later handed to
-the driver as a firmware image.
+     Data written to the 'data' attribute will be later handed to
+     the driver as a firmware image.
 
 .. _`fw_load_sysfs_fallback`:
 
@@ -113,14 +127,17 @@ fw_load_sysfs_fallback
 
     load a firmware via the sysfs fallback mechanism
 
-    :param struct fw_sysfs \*fw_sysfs:
+    :param fw_sysfs:
         firmware sysfs information for the firmware to load
+    :type fw_sysfs: struct fw_sysfs \*
 
-    :param enum fw_opt opt_flags:
-        flags of options, FW_OPT\_\*
+    :param opt_flags:
+        flags of options, FW_OPT_*
+    :type opt_flags: enum fw_opt
 
-    :param long timeout:
+    :param timeout:
         timeout to wait for the load
+    :type timeout: long
 
 .. _`fw_load_sysfs_fallback.description`:
 
@@ -138,20 +155,25 @@ firmware_fallback_sysfs
 
     use the fallback mechanism to find firmware
 
-    :param struct firmware \*fw:
+    :param fw:
         pointer to firmware image
+    :type fw: struct firmware \*
 
-    :param const char \*name:
+    :param name:
         name of firmware file to look for
+    :type name: const char \*
 
-    :param struct device \*device:
+    :param device:
         device for which firmware is being loaded
+    :type device: struct device \*
 
-    :param enum fw_opt opt_flags:
+    :param opt_flags:
         options to control firmware loading behaviour
+    :type opt_flags: enum fw_opt
 
-    :param int ret:
+    :param ret:
         return value from direct lookup which triggered the fallback mechanism
+    :type ret: int
 
 .. _`firmware_fallback_sysfs.description`:
 

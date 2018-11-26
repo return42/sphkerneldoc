@@ -10,14 +10,17 @@ flex_array_alloc
 
     allocate a new flexible array
 
-    :param int element_size:
+    :param element_size:
         the size of individual elements in the array
+    :type element_size: int
 
-    :param unsigned int total:
+    :param total:
         total number of elements that this should hold
+    :type total: unsigned int
 
-    :param gfp_t flags:
+    :param flags:
         page allocation flags to use for base array
+    :type flags: gfp_t
 
 .. _`flex_array_alloc.note`:
 
@@ -73,8 +76,9 @@ flex_array_free_parts
 
     just free the second-level pages
 
-    :param struct flex_array \*fa:
+    :param fa:
         the flex array from which to free parts
+    :type fa: struct flex_array \*
 
 .. _`flex_array_free_parts.description`:
 
@@ -93,18 +97,22 @@ flex_array_put
 
     copy data into the array at \ ``element_nr``\ 
 
-    :param struct flex_array \*fa:
+    :param fa:
         the flex array to copy data into
+    :type fa: struct flex_array \*
 
-    :param unsigned int element_nr:
+    :param element_nr:
         index of the position in which to insert
         the new element.
+    :type element_nr: unsigned int
 
-    :param void \*src:
+    :param src:
         address of data to copy into the array
+    :type src: void \*
 
-    :param gfp_t flags:
+    :param flags:
         page allocation flags to use for array expansion
+    :type flags: gfp_t
 
 .. _`flex_array_put.description`:
 
@@ -129,11 +137,13 @@ flex_array_clear
 
     clear element in array at \ ``element_nr``\ 
 
-    :param struct flex_array \*fa:
+    :param fa:
         the flex array of the element.
+    :type fa: struct flex_array \*
 
-    :param unsigned int element_nr:
+    :param element_nr:
         index of the position to clear.
+    :type element_nr: unsigned int
 
 .. _`flex_array_clear.description`:
 
@@ -151,17 +161,21 @@ flex_array_prealloc
 
     guarantee that array space exists
 
-    :param struct flex_array \*fa:
+    :param fa:
         the flex array for which to preallocate parts
+    :type fa: struct flex_array \*
 
-    :param unsigned int start:
+    :param start:
         index of first array element for which space is allocated
+    :type start: unsigned int
 
-    :param unsigned int nr_elements:
+    :param nr_elements:
         number of elements for which space is allocated
+    :type nr_elements: unsigned int
 
-    :param gfp_t flags:
+    :param flags:
         page allocation flags
+    :type flags: gfp_t
 
 .. _`flex_array_prealloc.description`:
 
@@ -184,11 +198,13 @@ flex_array_get
 
     pull data back out of the array
 
-    :param struct flex_array \*fa:
+    :param fa:
         the flex array from which to extract data
+    :type fa: struct flex_array \*
 
-    :param unsigned int element_nr:
+    :param element_nr:
         index of the element to fetch from the array
+    :type element_nr: unsigned int
 
 .. _`flex_array_get.description`:
 
@@ -211,11 +227,13 @@ flex_array_get_ptr
 
     pull a ptr back out of the array
 
-    :param struct flex_array \*fa:
+    :param fa:
         the flex array from which to extract data
+    :type fa: struct flex_array \*
 
-    :param unsigned int element_nr:
+    :param element_nr:
         index of the element to fetch from the array
+    :type element_nr: unsigned int
 
 .. _`flex_array_get_ptr.description`:
 
@@ -235,8 +253,9 @@ flex_array_shrink
 
     free unused second-level pages
 
-    :param struct flex_array \*fa:
+    :param fa:
         the flex array to shrink
+    :type fa: struct flex_array \*
 
 .. _`flex_array_shrink.description`:
 

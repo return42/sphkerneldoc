@@ -10,14 +10,17 @@ cifs_alloc_hash
 
     allocate hash and hash context together
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param struct crypto_shash \*\*shash:
+    :param shash:
         *undescribed*
+    :type shash: struct crypto_shash \*\*
 
-    :param struct sdesc \*\*sdesc:
+    :param sdesc:
         *undescribed*
+    :type sdesc: struct sdesc \*\*
 
 .. _`cifs_alloc_hash.description`:
 
@@ -36,11 +39,13 @@ cifs_free_hash
 
     free hash and hash context together
 
-    :param struct crypto_shash \*\*shash:
+    :param shash:
         *undescribed*
+    :type shash: struct crypto_shash \*\*
 
-    :param struct sdesc \*\*sdesc:
+    :param sdesc:
         *undescribed*
+    :type sdesc: struct sdesc \*\*
 
 .. _`cifs_free_hash.description`:
 
@@ -58,17 +63,21 @@ rqst_page_get_length
 
     obtain the length and offset for a page in smb_rqst
 
-    :param struct smb_rqst \*rqst:
+    :param rqst:
         *undescribed*
+    :type rqst: struct smb_rqst \*
 
-    :param unsigned int page:
+    :param page:
         *undescribed*
+    :type page: unsigned int
 
-    :param unsigned int \*len:
+    :param len:
         *undescribed*
+    :type len: unsigned int \*
 
-    :param unsigned int \*offset:
+    :param offset:
         *undescribed*
+    :type offset: unsigned int \*
 
 .. _`rqst_page_get_length.input`:
 

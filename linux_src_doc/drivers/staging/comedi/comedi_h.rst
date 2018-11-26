@@ -176,7 +176,8 @@ Definition
         INSN_CONFIG_PWM_GET_PERIOD,
         INSN_CONFIG_GET_PWM_STATUS,
         INSN_CONFIG_PWM_SET_H_BRIDGE,
-        INSN_CONFIG_PWM_GET_H_BRIDGE
+        INSN_CONFIG_PWM_GET_H_BRIDGE,
+        INSN_CONFIG_GET_CMD_TIMING_CONSTRAINTS
     };
 
 .. _`configuration_ids.constants`:
@@ -307,6 +308,52 @@ INSN_CONFIG_PWM_SET_H_BRIDGE
 
 INSN_CONFIG_PWM_GET_H_BRIDGE
     Get PWM H bridge duty cycle and polarity.
+
+INSN_CONFIG_GET_CMD_TIMING_CONSTRAINTS
+    Get the hardware timing restraints,
+    regardless of trigger sources.
+
+.. _`device_config_route_ids`:
+
+enum device_config_route_ids
+============================
+
+.. c:type:: enum device_config_route_ids
+
+    COMEDI configuration instruction codes global to an entire device.
+
+.. _`device_config_route_ids.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum device_config_route_ids {
+        INSN_DEVICE_CONFIG_TEST_ROUTE,
+        INSN_DEVICE_CONFIG_CONNECT_ROUTE,
+        INSN_DEVICE_CONFIG_DISCONNECT_ROUTE,
+        INSN_DEVICE_CONFIG_GET_ROUTES
+    };
+
+.. _`device_config_route_ids.constants`:
+
+Constants
+---------
+
+INSN_DEVICE_CONFIG_TEST_ROUTE
+    Validate the possibility of a
+    globally-named route
+
+INSN_DEVICE_CONFIG_CONNECT_ROUTE
+    Connect a globally-named route
+
+INSN_DEVICE_CONFIG_DISCONNECT_ROUTE
+    Disconnect a globally-named route
+
+INSN_DEVICE_CONFIG_GET_ROUTES
+    Get a list of all globally-named routes
+    that are valid for a particular device.
 
 .. _`comedi_digital_trig_op`:
 

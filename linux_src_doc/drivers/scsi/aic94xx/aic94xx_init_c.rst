@@ -10,8 +10,9 @@ asd_free_edbs
 
     - free empty data buffers
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         *undescribed*
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_free_edbs.asd_ha`:
 

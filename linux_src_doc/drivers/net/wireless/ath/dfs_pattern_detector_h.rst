@@ -234,11 +234,13 @@ dfs_pattern_detector_init
 
     constructor for pattern detector class
 
-    :param struct ath_common \*common:
+    :param common:
         *undescribed*
+    :type common: struct ath_common \*
 
-    :param enum nl80211_dfs_regions region:
+    :param region:
         *undescribed*
+    :type region: enum nl80211_dfs_regions
 
 .. This file was automatic generated / don't edit.
 

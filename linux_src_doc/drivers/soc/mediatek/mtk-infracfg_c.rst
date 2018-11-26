@@ -10,16 +10,19 @@ mtk_infracfg_set_bus_protection
 
     enable bus protection
 
-    :param struct regmap \*infracfg:
+    :param infracfg:
         *undescribed*
+    :type infracfg: struct regmap \*
 
-    :param u32 mask:
+    :param mask:
         The mask containing the protection bits to be enabled.
+    :type mask: u32
 
-    :param bool reg_update:
+    :param reg_update:
         The boolean flag determines to set the protection bits
         by regmap_update_bits with enable register(PROTECTEN) or
         by regmap_write with set register(PROTECTEN_SET).
+    :type reg_update: bool
 
 .. _`mtk_infracfg_set_bus_protection.description`:
 
@@ -39,16 +42,19 @@ mtk_infracfg_clear_bus_protection
 
     disable bus protection
 
-    :param struct regmap \*infracfg:
+    :param infracfg:
         *undescribed*
+    :type infracfg: struct regmap \*
 
-    :param u32 mask:
+    :param mask:
         The mask containing the protection bits to be disabled.
+    :type mask: u32
 
-    :param bool reg_update:
+    :param reg_update:
         The boolean flag determines to clear the protection bits
         by regmap_update_bits with enable register(PROTECTEN) or
         by regmap_write with clear register(PROTECTEN_CLR).
+    :type reg_update: bool
 
 .. _`mtk_infracfg_clear_bus_protection.description`:
 

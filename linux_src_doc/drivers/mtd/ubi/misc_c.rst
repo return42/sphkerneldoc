@@ -10,14 +10,17 @@ ubi_calc_data_len
 
     calculate how much real data is stored in a buffer.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param const void \*buf:
+    :param buf:
         a buffer with the contents of the physical eraseblock
+    :type buf: const void \*
 
-    :param int length:
+    :param length:
         the buffer length
+    :type length: int
 
 .. _`ubi_calc_data_len.description`:
 
@@ -37,11 +40,13 @@ ubi_check_volume
 
     check the contents of a static volume.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         ID of the volume to check
+    :type vol_id: int
 
 .. _`ubi_check_volume.description`:
 
@@ -62,8 +67,9 @@ ubi_update_reserved
 
     update bad eraseblock handling accounting data.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_update_reserved.description`:
 
@@ -84,8 +90,9 @@ ubi_calculate_reserved
 
     calculate how many PEBs must be reserved for bad eraseblock handling.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_check_pattern`:
 
@@ -96,14 +103,17 @@ ubi_check_pattern
 
     check if buffer contains only a certain byte pattern.
 
-    :param const void \*buf:
+    :param buf:
         buffer to check
+    :type buf: const void \*
 
-    :param uint8_t patt:
+    :param patt:
         the pattern to check
+    :type patt: uint8_t
 
-    :param int size:
+    :param size:
         buffer size in bytes
+    :type size: int
 
 .. _`ubi_check_pattern.description`:
 

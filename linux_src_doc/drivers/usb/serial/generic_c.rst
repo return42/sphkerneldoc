@@ -10,11 +10,13 @@ usb_serial_generic_write_start
 
     start writing buffered data
 
-    :param struct usb_serial_port \*port:
+    :param port:
         usb-serial port
+    :type port: struct usb_serial_port \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         flags to use for memory allocations
+    :type mem_flags: gfp_t
 
 .. _`usb_serial_generic_write_start.description`:
 
@@ -39,17 +41,21 @@ usb_serial_generic_write
 
     generic write function
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty for the port
+    :type tty: struct tty_struct \*
 
-    :param struct usb_serial_port \*port:
+    :param port:
         usb-serial port
+    :type port: struct usb_serial_port \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         data to write
+    :type buf: const unsigned char \*
 
-    :param int count:
+    :param count:
         number of bytes to write
+    :type count: int
 
 .. _`usb_serial_generic_write.return`:
 
@@ -68,14 +74,17 @@ usb_serial_handle_dcd_change
 
     handle a change of carrier detect state
 
-    :param struct usb_serial_port \*usb_port:
+    :param usb_port:
         *undescribed*
+    :type usb_port: struct usb_serial_port \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty for the port
+    :type tty: struct tty_struct \*
 
-    :param unsigned int status:
+    :param status:
         new carrier detect status, nonzero if active
+    :type status: unsigned int
 
 .. This file was automatic generated / don't edit.
 

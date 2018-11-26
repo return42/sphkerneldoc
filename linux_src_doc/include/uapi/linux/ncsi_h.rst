@@ -22,6 +22,7 @@ Definition
         NCSI_CMD_PKG_INFO,
         NCSI_CMD_SET_INTERFACE,
         NCSI_CMD_CLEAR_INTERFACE,
+        NCSI_CMD_SEND_CMD,
         __NCSI_CMD_AFTER_LAST,
         NCSI_CMD_MAX
     };
@@ -48,6 +49,11 @@ NCSI_CMD_SET_INTERFACE
 NCSI_CMD_CLEAR_INTERFACE
     clear any preferred package/channel combination.
     Requires NCSI_ATTR_IFINDEX.
+
+NCSI_CMD_SEND_CMD
+    send NC-SI command to network card.
+    Requires NCSI_ATTR_IFINDEX, NCSI_ATTR_PACKAGE_ID
+    and NCSI_ATTR_CHANNEL_ID.
 
 \__NCSI_CMD_AFTER_LAST
     *undescribed*
@@ -77,6 +83,7 @@ Definition
         NCSI_ATTR_PACKAGE_LIST,
         NCSI_ATTR_PACKAGE_ID,
         NCSI_ATTR_CHANNEL_ID,
+        NCSI_ATTR_DATA,
         __NCSI_ATTR_AFTER_LAST,
         NCSI_ATTR_MAX
     };
@@ -100,6 +107,9 @@ NCSI_ATTR_PACKAGE_ID
 
 NCSI_ATTR_CHANNEL_ID
     channel ID
+
+NCSI_ATTR_DATA
+    command payload
 
 \__NCSI_ATTR_AFTER_LAST
     *undescribed*

@@ -73,11 +73,13 @@ bu21013_read_block_data
 
     read the touch co-ordinates
 
-    :param struct bu21013_ts_data \*data:
+    :param data:
         bu21013_ts_data structure pointer
+    :type data: struct bu21013_ts_data \*
 
-    :param u8 \*buf:
+    :param buf:
         byte pointer
+    :type buf: u8 \*
 
 .. _`bu21013_read_block_data.description`:
 
@@ -96,8 +98,9 @@ bu21013_do_touch_report
 
     Get the touch co-ordinates
 
-    :param struct bu21013_ts_data \*data:
+    :param data:
         bu21013_ts_data structure pointer
+    :type data: struct bu21013_ts_data \*
 
 .. _`bu21013_do_touch_report.description`:
 
@@ -116,11 +119,13 @@ bu21013_gpio_irq
 
     gpio thread function for touch interrupt
 
-    :param int irq:
+    :param irq:
         irq value
+    :type irq: int
 
-    :param void \*device_data:
+    :param device_data:
         void pointer
+    :type device_data: void \*
 
 .. _`bu21013_gpio_irq.description`:
 
@@ -139,8 +144,9 @@ bu21013_init_chip
 
     power on sequence for the bu21013 controller
 
-    :param struct bu21013_ts_data \*data:
+    :param data:
         device structure pointer
+    :type data: struct bu21013_ts_data \*
 
 .. _`bu21013_init_chip.description`:
 
@@ -159,8 +165,9 @@ bu21013_free_irq
 
     frees IRQ registered for touchscreen
 
-    :param struct bu21013_ts_data \*bu21013_data:
+    :param bu21013_data:
         device structure pointer
+    :type bu21013_data: struct bu21013_ts_data \*
 
 .. _`bu21013_free_irq.description`:
 
@@ -179,8 +186,9 @@ bu21013_cs_disable
 
     deconfigures the touch panel controller
 
-    :param struct bu21013_ts_data \*bu21013_data:
+    :param bu21013_data:
         device structure pointer
+    :type bu21013_data: struct bu21013_ts_data \*
 
 .. _`bu21013_cs_disable.description`:
 
@@ -199,11 +207,13 @@ bu21013_probe
 
     initializes the i2c-client touchscreen driver
 
-    :param struct i2c_client \*client:
+    :param client:
         i2c client structure pointer
+    :type client: struct i2c_client \*
 
-    :param const struct i2c_device_id \*id:
+    :param id:
         i2c device id pointer
+    :type id: const struct i2c_device_id \*
 
 .. _`bu21013_probe.description`:
 
@@ -222,8 +232,9 @@ bu21013_remove
 
     removes the i2c-client touchscreen driver
 
-    :param struct i2c_client \*client:
+    :param client:
         i2c client structure pointer
+    :type client: struct i2c_client \*
 
 .. _`bu21013_remove.description`:
 
@@ -242,8 +253,9 @@ bu21013_suspend
 
     suspend the touch screen controller
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure
+    :type dev: struct device \*
 
 .. _`bu21013_suspend.description`:
 
@@ -262,8 +274,9 @@ bu21013_resume
 
     resume the touch screen controller
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device structure
+    :type dev: struct device \*
 
 .. _`bu21013_resume.description`:
 

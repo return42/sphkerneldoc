@@ -10,11 +10,13 @@ pci_enable_ats
 
     enable the ATS capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param int ps:
+    :param ps:
         the IOMMU page shift
+    :type ps: int
 
 .. _`pci_enable_ats.description`:
 
@@ -32,8 +34,9 @@ pci_disable_ats
 
     disable the ATS capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_ats_queue_depth`:
 
@@ -44,8 +47,9 @@ pci_ats_queue_depth
 
     query the ATS Invalidate Queue Depth
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_ats_queue_depth.description`:
 
@@ -69,11 +73,13 @@ pci_enable_pri
 
     Enable PRI capability \ ````\  pdev: PCI device structure
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param u32 reqs:
+    :param reqs:
         *undescribed*
+    :type reqs: u32
 
 .. _`pci_enable_pri.description`:
 
@@ -91,8 +97,9 @@ pci_disable_pri
 
     Disable PRI capability
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`pci_disable_pri.description`:
 
@@ -110,8 +117,9 @@ pci_restore_pri_state
 
     Restore PRI
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`pci_reset_pri`:
 
@@ -122,8 +130,9 @@ pci_reset_pri
 
     Resets device's PRI state
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`pci_reset_pri.description`:
 
@@ -142,11 +151,13 @@ pci_enable_pasid
 
     Enable the PASID capability
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
-    :param int features:
+    :param features:
         Features to enable
+    :type features: int
 
 .. _`pci_enable_pasid.description`:
 
@@ -166,8 +177,9 @@ pci_disable_pasid
 
     Disable the PASID capability
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`pci_restore_pasid_state`:
 
@@ -178,8 +190,9 @@ pci_restore_pasid_state
 
     Restore PASID capabilities
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`pci_pasid_features`:
 
@@ -190,8 +203,9 @@ pci_pasid_features
 
     Check which PASID features are supported
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`pci_pasid_features.description`:
 
@@ -218,8 +232,9 @@ pci_max_pasids
 
     Get maximum number of PASIDs supported by device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`pci_max_pasids.description`:
 

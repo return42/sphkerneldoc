@@ -10,8 +10,9 @@ mmc_of_parse
 
     parse host's device-tree node
 
-    :param struct mmc_host \*host:
+    :param host:
         host whose node should be parsed.
+    :type host: struct mmc_host \*
 
 .. _`mmc_of_parse.description`:
 
@@ -32,11 +33,13 @@ mmc_alloc_host
 
     initialise the per-host structure.
 
-    :param int extra:
+    :param extra:
         sizeof private data structure
+    :type extra: int
 
-    :param struct device \*dev:
+    :param dev:
         pointer to host device model structure
+    :type dev: struct device \*
 
 .. _`mmc_alloc_host.description`:
 
@@ -54,8 +57,9 @@ mmc_add_host
 
     initialise host hardware
 
-    :param struct mmc_host \*host:
+    :param host:
         mmc host
+    :type host: struct mmc_host \*
 
 .. _`mmc_add_host.description`:
 
@@ -75,8 +79,9 @@ mmc_remove_host
 
     remove host hardware
 
-    :param struct mmc_host \*host:
+    :param host:
         mmc host
+    :type host: struct mmc_host \*
 
 .. _`mmc_remove_host.description`:
 
@@ -96,8 +101,9 @@ mmc_free_host
 
     free the host structure
 
-    :param struct mmc_host \*host:
+    :param host:
         mmc host
+    :type host: struct mmc_host \*
 
 .. _`mmc_free_host.description`:
 

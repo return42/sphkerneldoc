@@ -10,8 +10,9 @@ get_frame_size
 
     Extract the stack adjustment from an "addik r1, r1, adjust" instruction
 
-    :param unsigned long instr:
+    :param instr:
         Microblaze instruction
+    :type instr: unsigned long
 
 .. _`get_frame_size.description`:
 
@@ -29,8 +30,9 @@ find_frame_creation
 
     Search backward to find the instruction that creates the stack frame (hopefully, for the same function the initial PC is in).
 
-    :param unsigned long \*pc:
+    :param pc:
         Program counter at which to begin the search
+    :type pc: unsigned long \*
 
 .. _`find_frame_creation.description`:
 
@@ -49,21 +51,26 @@ lookup_prev_stack_frame
 
     Find the stack frame of the previous function.
 
-    :param unsigned long fp:
+    :param fp:
         Frame (stack) pointer for current function
+    :type fp: unsigned long
 
-    :param unsigned long pc:
+    :param pc:
         Program counter within current function
+    :type pc: unsigned long
 
-    :param unsigned long leaf_return:
+    :param leaf_return:
         r15 value within current function. If the current function
         is a leaf, this is the caller's return address.
+    :type leaf_return: unsigned long
 
-    :param unsigned long \*pprev_fp:
+    :param pprev_fp:
         On exit, set to frame (stack) pointer for previous function
+    :type pprev_fp: unsigned long \*
 
-    :param unsigned long \*pprev_pc:
+    :param pprev_pc:
         On exit, set to current function caller's return address
+    :type pprev_pc: unsigned long \*
 
 .. _`lookup_prev_stack_frame.description`:
 
@@ -81,17 +88,21 @@ unwind_trap
 
     Unwind through a system trap, that stored previous state on the stack.
 
-    :param struct task_struct \*task:
+    :param task:
         *undescribed*
+    :type task: struct task_struct \*
 
-    :param unsigned long pc:
+    :param pc:
         *undescribed*
+    :type pc: unsigned long
 
-    :param unsigned long fp:
+    :param fp:
         *undescribed*
+    :type fp: unsigned long
 
-    :param struct stack_trace \*trace:
+    :param trace:
         *undescribed*
+    :type trace: struct stack_trace \*
 
 .. _`microblaze_unwind_inner`:
 
@@ -102,22 +113,27 @@ microblaze_unwind_inner
 
     Unwind the stack from the specified point
 
-    :param struct task_struct \*task:
+    :param task:
         Task whose stack we are to unwind (may be NULL)
+    :type task: struct task_struct \*
 
-    :param unsigned long pc:
+    :param pc:
         Program counter from which we start unwinding
+    :type pc: unsigned long
 
-    :param unsigned long fp:
+    :param fp:
         Frame (stack) pointer from which we start unwinding
+    :type fp: unsigned long
 
-    :param unsigned long leaf_return:
+    :param leaf_return:
         Value of r15 at pc. If the function is a leaf, this is
         the caller's return address.
+    :type leaf_return: unsigned long
 
-    :param struct stack_trace \*trace:
+    :param trace:
         Where to store stack backtrace (PC values).
         NULL == print backtrace to kernel log
+    :type trace: struct stack_trace \*
 
 .. _`microblaze_unwind`:
 
@@ -128,12 +144,14 @@ microblaze_unwind
 
     Stack unwinder for Microblaze (external entry point)
 
-    :param struct task_struct \*task:
+    :param task:
         Task whose stack we are to unwind (NULL == current)
+    :type task: struct task_struct \*
 
-    :param struct stack_trace \*trace:
+    :param trace:
         Where to store stack backtrace (PC values).
         NULL == print backtrace to kernel log
+    :type trace: struct stack_trace \*
 
 .. This file was automatic generated / don't edit.
 

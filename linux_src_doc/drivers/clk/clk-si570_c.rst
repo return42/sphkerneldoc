@@ -73,18 +73,22 @@ si570_get_divs
 
     Read clock dividers from HW
 
-    :param struct clk_si570 \*data:
+    :param data:
         Pointer to struct clk_si570
+    :type data: struct clk_si570 \*
 
-    :param u64 \*rfreq:
+    :param rfreq:
         Fractional multiplier (output)
+    :type rfreq: u64 \*
 
-    :param unsigned int \*n1:
+    :param n1:
         Divider N1 (output)
+    :type n1: unsigned int \*
 
-    :param unsigned int \*hs_div:
+    :param hs_div:
         Divider HSDIV (output)
         Returns 0 on success, negative errno otherwise.
+    :type hs_div: unsigned int \*
 
 .. _`si570_get_divs.description`:
 
@@ -102,12 +106,14 @@ si570_get_defaults
 
     Get default values
 
-    :param struct clk_si570 \*data:
+    :param data:
         Driver data structure
+    :type data: struct clk_si570 \*
 
-    :param u64 fout:
+    :param fout:
         Factory frequency output
         Returns 0 on success, negative errno otherwise.
+    :type fout: u64
 
 .. _`si570_update_rfreq`:
 
@@ -118,9 +124,10 @@ si570_update_rfreq
 
     Update clock multiplier
 
-    :param struct clk_si570 \*data:
+    :param data:
         Driver data structure
         Passes on \ :c:func:`regmap_bulk_write`\  return value.
+    :type data: struct clk_si570 \*
 
 .. _`si570_calc_divs`:
 
@@ -131,21 +138,26 @@ si570_calc_divs
 
     Caluclate clock dividers
 
-    :param unsigned long frequency:
+    :param frequency:
         Target frequency
+    :type frequency: unsigned long
 
-    :param struct clk_si570 \*data:
+    :param data:
         Driver data structure
+    :type data: struct clk_si570 \*
 
-    :param u64 \*out_rfreq:
+    :param out_rfreq:
         RFREG fractional multiplier (output)
+    :type out_rfreq: u64 \*
 
-    :param unsigned int \*out_n1:
+    :param out_n1:
         Clock divider N1 (output)
+    :type out_n1: unsigned int \*
 
-    :param unsigned int \*out_hs_div:
+    :param out_hs_div:
         Clock divider HSDIV (output)
         Returns 0 on success, negative errno otherwise.
+    :type out_hs_div: unsigned int \*
 
 .. _`si570_calc_divs.description`:
 
@@ -164,12 +176,14 @@ si570_set_frequency
 
     Adjust output frequency
 
-    :param struct clk_si570 \*data:
+    :param data:
         Driver data structure
+    :type data: struct clk_si570 \*
 
-    :param unsigned long frequency:
+    :param frequency:
         Target frequency
         Returns 0 on success.
+    :type frequency: unsigned long
 
 .. _`si570_set_frequency.description`:
 
@@ -187,12 +201,14 @@ si570_set_frequency_small
 
     Adjust output frequency
 
-    :param struct clk_si570 \*data:
+    :param data:
         Driver data structure
+    :type data: struct clk_si570 \*
 
-    :param unsigned long frequency:
+    :param frequency:
         Target frequency
         Returns 0 on success.
+    :type frequency: unsigned long
 
 .. _`si570_set_frequency_small.description`:
 

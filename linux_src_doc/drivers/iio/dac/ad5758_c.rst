@@ -1,0 +1,41 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/dac/ad5758.c
+
+.. _`ad5758_range`:
+
+struct ad5758_range
+===================
+
+.. c:type:: struct ad5758_range
+
+    driver instance specific data
+
+.. _`ad5758_range.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5758_range {
+        int reg;
+        int min;
+        int max;
+    }
+
+.. _`ad5758_range.members`:
+
+Members
+-------
+
+reg
+    *undescribed*
+
+min
+    *undescribed*
+
+max
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

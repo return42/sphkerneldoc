@@ -10,17 +10,21 @@ ieee80211_calculate_rx_timestamp
 
     calculate timestamp in frame
 
-    :param struct ieee80211_local \*local:
+    :param local:
         mac80211 hw info struct
+    :type local: struct ieee80211_local \*
 
-    :param struct ieee80211_rx_status \*status:
+    :param status:
         RX status
+    :type status: struct ieee80211_rx_status \*
 
-    :param unsigned int mpdu_len:
+    :param mpdu_len:
         total MPDU length (including FCS)
+    :type mpdu_len: unsigned int
 
-    :param unsigned int mpdu_offset:
+    :param mpdu_offset:
         offset into MPDU to calculate timestamp at
+    :type mpdu_offset: unsigned int
 
 .. _`ieee80211_calculate_rx_timestamp.description`:
 

@@ -2079,6 +2079,7 @@ Definition
         NFT_RT_NEXTHOP4,
         NFT_RT_NEXTHOP6,
         NFT_RT_TCPMSS,
+        NFT_RT_XFRM,
         __NFT_RT_MAX
     };
 
@@ -2098,6 +2099,9 @@ NFT_RT_NEXTHOP6
 
 NFT_RT_TCPMSS
     fetch current path tcp mss
+
+NFT_RT_XFRM
+    boolean, skb->dst->xfrm != NULL
 
 \__NFT_RT_MAX
     *undescribed*
@@ -2366,6 +2370,7 @@ Definition
         NFT_CT_DST_IP,
         NFT_CT_SRC_IP6,
         NFT_CT_DST_IP6,
+        NFT_CT_TIMEOUT,
         __NFT_CT_MAX
     };
 
@@ -2442,6 +2447,9 @@ NFT_CT_SRC_IP6
 
 NFT_CT_DST_IP6
     conntrack layer 3 protocol destination (IPv6 address)
+
+NFT_CT_TIMEOUT
+    connection tracking timeout policy assigned to conntrack
 
 \__NFT_CT_MAX
     *undescribed*
@@ -2886,6 +2894,42 @@ NFTA_QUOTA_CONSUMED
 \__NFTA_QUOTA_MAX
     *undescribed*
 
+.. _`nft_secmark_attributes`:
+
+enum nft_secmark_attributes
+===========================
+
+.. c:type:: enum nft_secmark_attributes
+
+    nf_tables secmark object netlink attributes
+
+.. _`nft_secmark_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_secmark_attributes {
+        NFTA_SECMARK_UNSPEC,
+        NFTA_SECMARK_CTX,
+        __NFTA_SECMARK_MAX
+    };
+
+.. _`nft_secmark_attributes.constants`:
+
+Constants
+---------
+
+NFTA_SECMARK_UNSPEC
+    *undescribed*
+
+NFTA_SECMARK_CTX
+    security context (NLA_STRING)
+
+\__NFTA_SECMARK_MAX
+    *undescribed*
+
 .. _`nft_reject_types`:
 
 enum nft_reject_types
@@ -3104,6 +3148,71 @@ NFTA_NAT_FLAGS
 
 \__NFTA_NAT_MAX
     *undescribed*
+
+.. _`nft_tproxy_attributes`:
+
+enum nft_tproxy_attributes
+==========================
+
+.. c:type:: enum nft_tproxy_attributes
+
+    nf_tables tproxy expression netlink attributes
+
+.. _`nft_tproxy_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_tproxy_attributes {
+        NFTA_TPROXY_UNSPEC,
+        NFTA_TPROXY_FAMILY,
+        NFTA_TPROXY_REG_ADDR,
+        NFTA_TPROXY_REG_PORT,
+        __NFTA_TPROXY_MAX
+    };
+
+.. _`nft_tproxy_attributes.constants`:
+
+Constants
+---------
+
+NFTA_TPROXY_UNSPEC
+    *undescribed*
+
+NFTA_TPROXY_FAMILY
+    *undescribed*
+
+NFTA_TPROXY_REG_ADDR
+    *undescribed*
+
+NFTA_TPROXY_REG_PORT
+    *undescribed*
+
+\__NFTA_TPROXY_MAX
+    *undescribed*
+
+.. _`nft_tproxy_attributes.nfta_tproxy_family`:
+
+NFTA_TPROXY_FAMILY
+------------------
+
+Target address family (NLA_U32: nft_registers)
+
+.. _`nft_tproxy_attributes.nfta_tproxy_reg_addr`:
+
+NFTA_TPROXY_REG_ADDR
+--------------------
+
+Target address register (NLA_U32: nft_registers)
+
+.. _`nft_tproxy_attributes.nfta_tproxy_reg_port`:
+
+NFTA_TPROXY_REG_PORT
+--------------------
+
+Target port register (NLA_U32: nft_registers)
 
 .. _`nft_masq_attributes`:
 
@@ -3531,6 +3640,46 @@ NFTA_FLOWTABLE_HOOK_DEVS
     input devices this flow table is bound to (NLA_NESTED)
 
 \__NFTA_FLOWTABLE_HOOK_MAX
+    *undescribed*
+
+.. _`nft_osf_attributes`:
+
+enum nft_osf_attributes
+=======================
+
+.. c:type:: enum nft_osf_attributes
+
+    nftables osf expression netlink attributes
+
+.. _`nft_osf_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_osf_attributes {
+        NFTA_OSF_UNSPEC,
+        NFTA_OSF_DREG,
+        NFTA_OSF_TTL,
+        __NFTA_OSF_MAX
+    };
+
+.. _`nft_osf_attributes.constants`:
+
+Constants
+---------
+
+NFTA_OSF_UNSPEC
+    *undescribed*
+
+NFTA_OSF_DREG
+    destination register (NLA_U32: nft_registers)
+
+NFTA_OSF_TTL
+    Value of the TTL osf option (NLA_U8)
+
+\__NFTA_OSF_MAX
     *undescribed*
 
 .. _`nft_devices_attributes`:

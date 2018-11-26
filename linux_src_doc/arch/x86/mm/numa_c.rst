@@ -10,19 +10,21 @@ numa_remove_memblk_from
 
     Remove one numa_memblk from a numa_meminfo
 
-    :param int idx:
+    :param idx:
         Index of memblk to remove
+    :type idx: int
 
-    :param struct numa_meminfo \*mi:
+    :param mi:
         numa_meminfo to remove memblk from
+    :type mi: struct numa_meminfo \*
 
 .. _`numa_remove_memblk_from.description`:
 
 Description
 -----------
 
-Remove \ ``idx``\ 'th numa_memblk from \ ``mi``\  by shifting \ ``mi``\ ->blk[] and
-decrementing \ ``mi``\ ->nr_blks.
+Remove \ ``idx``\ 'th numa_memblk from \ ``mi``\  by shifting \ ``mi->blk``\ [] and
+decrementing \ ``mi->nr_blks``\ .
 
 .. _`numa_add_memblk`:
 
@@ -33,14 +35,17 @@ numa_add_memblk
 
     Add one numa_memblk to numa_meminfo
 
-    :param int nid:
+    :param nid:
         NUMA node ID of the new memblk
+    :type nid: int
 
-    :param u64 start:
+    :param start:
         Start address of the new memblk
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         End address of the new memblk
+    :type end: u64
 
 .. _`numa_add_memblk.description`:
 
@@ -65,8 +70,9 @@ numa_cleanup_meminfo
 
     Cleanup a numa_meminfo
 
-    :param struct numa_meminfo \*mi:
+    :param mi:
         numa_meminfo to clean up
+    :type mi: struct numa_meminfo \*
 
 .. _`numa_cleanup_meminfo.description`:
 
@@ -92,8 +98,9 @@ numa_reset_distance
 
     Reset NUMA distance table
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`numa_reset_distance.description`:
 
@@ -112,14 +119,17 @@ numa_set_distance
 
     Set NUMA distance from one NUMA to another
 
-    :param int from:
+    :param from:
         the 'from' node to set distance
+    :type from: int
 
-    :param int to:
+    :param to:
         the 'to'  node to set distance
+    :type to: int
 
-    :param int distance:
+    :param distance:
         NUMA distance
+    :type distance: int
 
 .. _`numa_set_distance.description`:
 
@@ -148,8 +158,9 @@ dummy_numa_init
 
     Fallback dummy NUMA init
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dummy_numa_init.description`:
 
@@ -171,8 +182,9 @@ x86_numa_init
 
     Initialize NUMA
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`x86_numa_init.description`:
 

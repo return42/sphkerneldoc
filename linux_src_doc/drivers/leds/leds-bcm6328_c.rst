@@ -62,8 +62,9 @@ bcm6328_pin2shift
 
     bits [31:0] -> LEDs 8-23 bits [47:32] -> LEDs 0-7 bits [63:48] -> unused
 
-    :param unsigned long pin:
+    :param pin:
         *undescribed*
+    :type pin: unsigned long
 
 .. This file was automatic generated / don't edit.
 

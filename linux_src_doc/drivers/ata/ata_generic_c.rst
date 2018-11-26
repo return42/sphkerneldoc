@@ -10,11 +10,13 @@ generic_set_mode
 
     mode setting
 
-    :param struct ata_link \*link:
+    :param link:
         link to set up
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*unused:
+    :param unused:
         returned device on error
+    :type unused: struct ata_device \*\*
 
 .. _`generic_set_mode.description`:
 
@@ -35,8 +37,9 @@ is_intel_ider
 
     identify intel IDE-R devices
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`is_intel_ider.description`:
 
@@ -61,11 +64,13 @@ ata_generic_init_one
 
     attach generic IDE
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device found
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         match entry
+    :type id: const struct pci_device_id \*
 
 .. _`ata_generic_init_one.description`:
 

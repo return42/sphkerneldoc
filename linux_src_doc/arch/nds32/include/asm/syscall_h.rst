@@ -10,11 +10,13 @@ syscall_get_nr
 
     find what system call a task is executing
 
-    :param struct task_struct \*task:
+    :param task:
         task of interest, must be blocked
+    :type task: struct task_struct \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+    :type regs: struct pt_regs \*
 
 .. _`syscall_get_nr.description`:
 
@@ -41,11 +43,13 @@ syscall_rollback
 
     roll back registers after an aborted system call
 
-    :param struct task_struct \*task:
+    :param task:
         task of interest, must be in system call exit tracing
+    :type task: struct task_struct \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+    :type regs: struct pt_regs \*
 
 .. _`syscall_rollback.description`:
 
@@ -72,11 +76,13 @@ syscall_get_error
 
     check result of traced system call
 
-    :param struct task_struct \*task:
+    :param task:
         task of interest, must be blocked
+    :type task: struct task_struct \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+    :type regs: struct pt_regs \*
 
 .. _`syscall_get_error.description`:
 
@@ -97,11 +103,13 @@ syscall_get_return_value
 
     get the return value of a traced system call
 
-    :param struct task_struct \*task:
+    :param task:
         task of interest, must be blocked
+    :type task: struct task_struct \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+    :type regs: struct pt_regs \*
 
 .. _`syscall_get_return_value.description`:
 
@@ -123,17 +131,21 @@ syscall_set_return_value
 
     change the return value of a traced system call
 
-    :param struct task_struct \*task:
+    :param task:
         task of interest, must be blocked
+    :type task: struct task_struct \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+    :type regs: struct pt_regs \*
 
-    :param int error:
+    :param error:
         negative error code, or zero to indicate success
+    :type error: int
 
-    :param long val:
+    :param val:
         user return value if \ ``error``\  is zero
+    :type val: long
 
 .. _`syscall_set_return_value.description`:
 
@@ -180,20 +192,25 @@ syscall_set_arguments
 
     change system call parameter value
 
-    :param struct task_struct \*task:
+    :param task:
         task of interest, must be in system call entry tracing
+    :type task: struct task_struct \*
 
-    :param struct pt_regs \*regs:
+    :param regs:
         \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+    :type regs: struct pt_regs \*
 
-    :param unsigned int i:
+    :param i:
         argument index [0,5]
+    :type i: unsigned int
 
-    :param unsigned int n:
+    :param n:
         number of arguments; n+i must be [1,6].
+    :type n: unsigned int
 
-    :param const unsigned long \*args:
+    :param args:
         array of argument values to store
+    :type args: const unsigned long \*
 
 .. _`syscall_set_arguments.description`:
 

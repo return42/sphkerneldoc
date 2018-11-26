@@ -10,8 +10,9 @@ timecounter_read_delta
 
     get nanoseconds since last call of this function
 
-    :param struct timecounter \*tc:
+    :param tc:
         Pointer to time counter
+    :type tc: struct timecounter \*
 
 .. _`timecounter_read_delta.description`:
 

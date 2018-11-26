@@ -8,11 +8,13 @@ dc_stream_set_cursor_attributes
 
 .. c:function:: bool dc_stream_set_cursor_attributes(struct dc_stream_state *stream, const struct dc_cursor_attributes *attributes)
 
-    :param struct dc_stream_state \*stream:
+    :param stream:
         *undescribed*
+    :type stream: struct dc_stream_state \*
 
-    :param const struct dc_cursor_attributes \*attributes:
+    :param attributes:
         *undescribed*
+    :type attributes: const struct dc_cursor_attributes \*
 
 .. This file was automatic generated / don't edit.
 

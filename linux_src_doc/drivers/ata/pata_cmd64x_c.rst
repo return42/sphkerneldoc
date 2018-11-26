@@ -10,14 +10,17 @@ cmd64x_set_timing
 
     set PIO and MWDMA timing
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param u8 mode:
+    :param mode:
         mode
+    :type mode: u8
 
 .. _`cmd64x_set_timing.description`:
 
@@ -35,11 +38,13 @@ cmd64x_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`cmd64x_set_piomode.description`:
 
@@ -58,11 +63,13 @@ cmd64x_set_dmamode
 
     set initial DMA mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`cmd64x_set_dmamode.description`:
 
@@ -80,8 +87,9 @@ cmd64x_sff_irq_check
 
     check IDE interrupt
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
 .. _`cmd64x_sff_irq_check.description`:
 
@@ -99,8 +107,9 @@ cmd64x_sff_irq_clear
 
     clear IDE interrupt
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
 .. _`cmd64x_sff_irq_clear.description`:
 
@@ -118,8 +127,9 @@ cmd648_sff_irq_check
 
     check IDE interrupt
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
 .. _`cmd648_sff_irq_check.description`:
 
@@ -137,8 +147,9 @@ cmd648_sff_irq_clear
 
     clear IDE interrupt
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
 .. _`cmd648_sff_irq_clear.description`:
 
@@ -156,8 +167,9 @@ cmd646r1_bmdma_stop
 
     DMA stop callback
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command in progress
+    :type qc: struct ata_queued_cmd \*
 
 .. _`cmd646r1_bmdma_stop.description`:
 

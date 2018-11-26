@@ -20,17 +20,21 @@ drm_scdc_read
 
     read a block of data from SCDC
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C controller
+    :type adapter: struct i2c_adapter \*
 
-    :param u8 offset:
+    :param offset:
         start offset of block to read
+    :type offset: u8
 
-    :param void \*buffer:
+    :param buffer:
         return location for the block to read
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         size of the block to read
+    :type size: size_t
 
 .. _`drm_scdc_read.description`:
 
@@ -55,17 +59,21 @@ drm_scdc_write
 
     write a block of data to SCDC
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C controller
+    :type adapter: struct i2c_adapter \*
 
-    :param u8 offset:
+    :param offset:
         start offset of block to write
+    :type offset: u8
 
-    :param const void \*buffer:
+    :param buffer:
         block of data to write
+    :type buffer: const void \*
 
-    :param size_t size:
+    :param size:
         size of the block to write
+    :type size: size_t
 
 .. _`drm_scdc_write.description`:
 
@@ -90,8 +98,9 @@ drm_scdc_get_scrambling_status
 
     what is status of scrambling?
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter for DDC channel
+    :type adapter: struct i2c_adapter \*
 
 .. _`drm_scdc_get_scrambling_status.description`:
 
@@ -117,11 +126,13 @@ drm_scdc_set_scrambling
 
     enable scrambling
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter for DDC channel
+    :type adapter: struct i2c_adapter \*
 
-    :param bool enable:
+    :param enable:
         bool to indicate if scrambling is to be enabled/disabled
+    :type enable: bool
 
 .. _`drm_scdc_set_scrambling.description`:
 
@@ -148,11 +159,13 @@ drm_scdc_set_high_tmds_clock_ratio
 
     set TMDS clock ratio
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter for DDC channel
+    :type adapter: struct i2c_adapter \*
 
-    :param bool set:
+    :param set:
         ret or reset the high clock ratio
+    :type set: bool
 
 .. _`drm_scdc_set_high_tmds_clock_ratio.tmds-clock-ratio-calculations-go-like-this`:
 

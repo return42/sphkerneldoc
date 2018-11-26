@@ -25,11 +25,13 @@ i915_gem_batch_pool_init
 
     initialize a batch buffer pool
 
-    :param struct i915_gem_batch_pool \*pool:
+    :param pool:
         the batch buffer pool
+    :type pool: struct i915_gem_batch_pool \*
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         the associated request submission engine
+    :type engine: struct intel_engine_cs \*
 
 .. _`i915_gem_batch_pool_fini`:
 
@@ -40,8 +42,9 @@ i915_gem_batch_pool_fini
 
     clean up a batch buffer pool
 
-    :param struct i915_gem_batch_pool \*pool:
+    :param pool:
         the pool to clean up
+    :type pool: struct i915_gem_batch_pool \*
 
 .. _`i915_gem_batch_pool_fini.note`:
 
@@ -59,11 +62,13 @@ i915_gem_batch_pool_get
 
     allocate a buffer from the pool
 
-    :param struct i915_gem_batch_pool \*pool:
+    :param pool:
         the batch buffer pool
+    :type pool: struct i915_gem_batch_pool \*
 
-    :param size_t size:
+    :param size:
         the minimum desired size of the returned buffer
+    :type size: size_t
 
 .. _`i915_gem_batch_pool_get.description`:
 

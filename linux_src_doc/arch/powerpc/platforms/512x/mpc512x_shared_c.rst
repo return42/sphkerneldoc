@@ -10,11 +10,13 @@ mpc512x_cs_config
 
     Setup chip select configuration
 
-    :param unsigned int cs:
+    :param cs:
         chip select number
+    :type cs: unsigned int
 
-    :param u32 val:
+    :param val:
         chip select configuration value
+    :type val: u32
 
 .. _`mpc512x_cs_config.description`:
 

@@ -10,11 +10,13 @@ nfs_revalidate_file_size
 
     Revalidate the file size \ ``inode``\  - pointer to inode struct \ ``file``\  - pointer to struct file
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
 .. _`nfs_revalidate_file_size.description`:
 

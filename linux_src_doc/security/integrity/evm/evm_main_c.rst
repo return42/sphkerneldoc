@@ -10,20 +10,25 @@ evm_verifyxattr
 
     verify the integrity of the requested xattr
 
-    :param struct dentry \*dentry:
+    :param dentry:
         object of the verify xattr
+    :type dentry: struct dentry \*
 
-    :param const char \*xattr_name:
+    :param xattr_name:
         requested xattr
+    :type xattr_name: const char \*
 
-    :param void \*xattr_value:
+    :param xattr_value:
         requested xattr value
+    :type xattr_value: void \*
 
-    :param size_t xattr_value_len:
+    :param xattr_value_len:
         requested xattr value length
+    :type xattr_value_len: size_t
 
-    :param struct integrity_iint_cache \*iint:
+    :param iint:
         *undescribed*
+    :type iint: struct integrity_iint_cache \*
 
 .. _`evm_verifyxattr.description`:
 
@@ -48,17 +53,21 @@ evm_inode_setxattr
 
     protect the EVM extended attribute
 
-    :param struct dentry \*dentry:
+    :param dentry:
         pointer to the affected dentry
+    :type dentry: struct dentry \*
 
-    :param const char \*xattr_name:
+    :param xattr_name:
         pointer to the affected extended attribute name
+    :type xattr_name: const char \*
 
-    :param const void \*xattr_value:
+    :param xattr_value:
         pointer to the new extended attribute value
+    :type xattr_value: const void \*
 
-    :param size_t xattr_value_len:
+    :param xattr_value_len:
         pointer to the new extended attribute value length
+    :type xattr_value_len: size_t
 
 .. _`evm_inode_setxattr.description`:
 
@@ -80,11 +89,13 @@ evm_inode_removexattr
 
     protect the EVM extended attribute
 
-    :param struct dentry \*dentry:
+    :param dentry:
         pointer to the affected dentry
+    :type dentry: struct dentry \*
 
-    :param const char \*xattr_name:
+    :param xattr_name:
         pointer to the affected extended attribute name
+    :type xattr_name: const char \*
 
 .. _`evm_inode_removexattr.description`:
 
@@ -103,17 +114,21 @@ evm_inode_post_setxattr
 
     update 'security.evm' to reflect the changes
 
-    :param struct dentry \*dentry:
+    :param dentry:
         pointer to the affected dentry
+    :type dentry: struct dentry \*
 
-    :param const char \*xattr_name:
+    :param xattr_name:
         pointer to the affected extended attribute name
+    :type xattr_name: const char \*
 
-    :param const void \*xattr_value:
+    :param xattr_value:
         pointer to the new extended attribute value
+    :type xattr_value: const void \*
 
-    :param size_t xattr_value_len:
+    :param xattr_value_len:
         pointer to the new extended attribute value length
+    :type xattr_value_len: size_t
 
 .. _`evm_inode_post_setxattr.description`:
 
@@ -135,11 +150,13 @@ evm_inode_post_removexattr
 
     update 'security.evm' after removing the xattr
 
-    :param struct dentry \*dentry:
+    :param dentry:
         pointer to the affected dentry
+    :type dentry: struct dentry \*
 
-    :param const char \*xattr_name:
+    :param xattr_name:
         pointer to the affected extended attribute name
+    :type xattr_name: const char \*
 
 .. _`evm_inode_post_removexattr.description`:
 
@@ -160,11 +177,13 @@ evm_inode_setattr
 
     prevent updating an invalid EVM extended attribute
 
-    :param struct dentry \*dentry:
+    :param dentry:
         pointer to the affected dentry
+    :type dentry: struct dentry \*
 
-    :param struct iattr \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct iattr \*
 
 .. _`evm_inode_setattr.description`:
 
@@ -183,11 +202,13 @@ evm_inode_post_setattr
 
     update 'security.evm' after modifying metadata
 
-    :param struct dentry \*dentry:
+    :param dentry:
         pointer to the affected dentry
+    :type dentry: struct dentry \*
 
-    :param int ia_valid:
+    :param ia_valid:
         for the UID and GID status
+    :type ia_valid: int
 
 .. _`evm_inode_post_setattr.description`:
 

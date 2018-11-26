@@ -10,11 +10,13 @@ gpiod_export
 
     export a GPIO through sysfs
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         GPIO to make available, already requested
+    :type desc: struct gpio_desc \*
 
-    :param bool direction_may_change:
+    :param direction_may_change:
         true if userspace may change GPIO direction
+    :type direction_may_change: bool
 
 .. _`gpiod_export.context`:
 
@@ -46,14 +48,17 @@ gpiod_export_link
 
     create a sysfs link to an exported GPIO node
 
-    :param struct device \*dev:
+    :param dev:
         device under which to create symlink
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of the symlink
+    :type name: const char \*
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         GPIO to create symlink to, already exported
+    :type desc: struct gpio_desc \*
 
 .. _`gpiod_export_link.description`:
 
@@ -74,8 +79,9 @@ gpiod_unexport
 
     reverse effect of \ :c:func:`gpiod_export`\ 
 
-    :param struct gpio_desc \*desc:
+    :param desc:
         GPIO to make unavailable
+    :type desc: struct gpio_desc \*
 
 .. _`gpiod_unexport.description`:
 

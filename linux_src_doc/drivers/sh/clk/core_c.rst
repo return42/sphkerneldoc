@@ -10,8 +10,9 @@ recalculate_root_clocks
 
     recalculate and propagate all root clocks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`recalculate_root_clocks.description`:
 

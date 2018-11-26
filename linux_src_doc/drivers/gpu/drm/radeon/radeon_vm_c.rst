@@ -10,8 +10,9 @@ radeon_vm_num_pdes
 
     return the number of page directory entries
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_vm_num_pdes.description`:
 
@@ -29,8 +30,9 @@ radeon_vm_directory_size
 
     returns the size of the page directory in bytes
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_vm_directory_size.description`:
 
@@ -48,8 +50,9 @@ radeon_vm_manager_init
 
     init the vm manager
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_vm_manager_init.description`:
 
@@ -68,8 +71,9 @@ radeon_vm_manager_fini
 
     tear down the vm manager
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_vm_manager_fini.description`:
 
@@ -87,14 +91,17 @@ radeon_vm_get_bos
 
     add the vm BOs to a validation list
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         vm providing the BOs
+    :type vm: struct radeon_vm \*
 
-    :param struct list_head \*head:
+    :param head:
         head of validation list
+    :type head: struct list_head \*
 
 .. _`radeon_vm_get_bos.description`:
 
@@ -113,14 +120,17 @@ radeon_vm_grab_id
 
     allocate the next free VMID
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         vm to allocate id for
+    :type vm: struct radeon_vm \*
 
-    :param int ring:
+    :param ring:
         ring we want to submit job to
+    :type ring: int
 
 .. _`radeon_vm_grab_id.description`:
 
@@ -141,17 +151,21 @@ radeon_vm_flush
 
     hardware flush the vm
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         vm we want to flush
+    :type vm: struct radeon_vm \*
 
-    :param int ring:
+    :param ring:
         ring to use for flush
+    :type ring: int
 
-    :param struct radeon_fence \*updates:
+    :param updates:
         last vm update that is waited for
+    :type updates: struct radeon_fence \*
 
 .. _`radeon_vm_flush.description`:
 
@@ -171,14 +185,17 @@ radeon_vm_fence
 
     remember fence for vm
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         vm we want to fence
+    :type vm: struct radeon_vm \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         fence to remember
+    :type fence: struct radeon_fence \*
 
 .. _`radeon_vm_fence.description`:
 
@@ -199,11 +216,13 @@ radeon_vm_bo_find
 
     find the bo_va for a specific vm & bo
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         requested vm
+    :type vm: struct radeon_vm \*
 
-    :param struct radeon_bo \*bo:
+    :param bo:
         requested buffer object
+    :type bo: struct radeon_bo \*
 
 .. _`radeon_vm_bo_find.description`:
 
@@ -225,14 +244,17 @@ radeon_vm_bo_add
 
     add a bo to a specific vm
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         requested vm
+    :type vm: struct radeon_vm \*
 
-    :param struct radeon_bo \*bo:
+    :param bo:
         radeon buffer object
+    :type bo: struct radeon_bo \*
 
 .. _`radeon_vm_bo_add.description`:
 
@@ -254,26 +276,33 @@ radeon_vm_set_pages
 
     helper to call the right asic function
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t addr:
+    :param addr:
         dst addr to write into pe
+    :type addr: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
-    :param uint32_t incr:
+    :param incr:
         increase next addr by incr bytes
+    :type incr: uint32_t
 
-    :param uint32_t flags:
+    :param flags:
         hw access flags
+    :type flags: uint32_t
 
 .. _`radeon_vm_set_pages.description`:
 
@@ -292,11 +321,13 @@ radeon_vm_clear_bo
 
     initially clear the page dir/table
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_bo \*bo:
+    :param bo:
         bo to clear
+    :type bo: struct radeon_bo \*
 
 .. _`radeon_vm_bo_set_addr`:
 
@@ -307,17 +338,21 @@ radeon_vm_bo_set_addr
 
     set bos virtual address inside a vm
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_bo_va \*bo_va:
+    :param bo_va:
         bo_va to store the address
+    :type bo_va: struct radeon_bo_va \*
 
-    :param uint64_t soffset:
+    :param soffset:
         requested offset of the buffer in the VM address space
+    :type soffset: uint64_t
 
-    :param uint32_t flags:
+    :param flags:
         attributes of pages (read/write/valid/etc.)
+    :type flags: uint32_t
 
 .. _`radeon_vm_bo_set_addr.description`:
 
@@ -339,11 +374,13 @@ radeon_vm_map_gart
 
     get the physical address of a gart page
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint64_t addr:
+    :param addr:
         the unmapped addr
+    :type addr: uint64_t
 
 .. _`radeon_vm_map_gart.description`:
 
@@ -363,8 +400,9 @@ radeon_vm_page_flags
 
     translate page flags to what the hw uses
 
-    :param uint32_t flags:
+    :param flags:
         flags comming from userspace
+    :type flags: uint32_t
 
 .. _`radeon_vm_page_flags.description`:
 
@@ -382,11 +420,13 @@ radeon_vm_update_page_directory
 
     make sure that page directory is valid
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         requested vm
+    :type vm: struct radeon_vm \*
 
 .. _`radeon_vm_update_page_directory.description`:
 
@@ -408,23 +448,29 @@ radeon_vm_frag_ptes
 
     add fragment information to PTEs
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         IB for the update
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe_start:
+    :param pe_start:
         first PTE to handle
+    :type pe_start: uint64_t
 
-    :param uint64_t pe_end:
+    :param pe_end:
         last PTE to handle
+    :type pe_end: uint64_t
 
-    :param uint64_t addr:
+    :param addr:
         addr those PTEs should point to
+    :type addr: uint64_t
 
-    :param uint32_t flags:
+    :param flags:
         hw mapping flags
+    :type flags: uint32_t
 
 .. _`radeon_vm_frag_ptes.description`:
 
@@ -442,26 +488,33 @@ radeon_vm_update_ptes
 
     make sure that page tables are valid
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         requested vm
+    :type vm: struct radeon_vm \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         *undescribed*
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t start:
+    :param start:
         start of GPU address range
+    :type start: uint64_t
 
-    :param uint64_t end:
+    :param end:
         end of GPU address range
+    :type end: uint64_t
 
-    :param uint64_t dst:
+    :param dst:
         destination address to map to
+    :type dst: uint64_t
 
-    :param uint32_t flags:
+    :param flags:
         mapping flags
+    :type flags: uint32_t
 
 .. _`radeon_vm_update_ptes.description`:
 
@@ -481,17 +534,21 @@ radeon_vm_fence_pts
 
     fence page tables after an update
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         requested vm
+    :type vm: struct radeon_vm \*
 
-    :param uint64_t start:
+    :param start:
         start of GPU address range
+    :type start: uint64_t
 
-    :param uint64_t end:
+    :param end:
         end of GPU address range
+    :type end: uint64_t
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         fence to use
+    :type fence: struct radeon_fence \*
 
 .. _`radeon_vm_fence_pts.description`:
 
@@ -511,14 +568,17 @@ radeon_vm_bo_update
 
     map a bo into the vm page table
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_bo_va \*bo_va:
+    :param bo_va:
         *undescribed*
+    :type bo_va: struct radeon_bo_va \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         ttm mem
+    :type mem: struct ttm_mem_reg \*
 
 .. _`radeon_vm_bo_update.description`:
 
@@ -539,11 +599,13 @@ radeon_vm_clear_freed
 
     clear freed BOs in the PT
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         requested vm
+    :type vm: struct radeon_vm \*
 
 .. _`radeon_vm_clear_freed.description`:
 
@@ -564,11 +626,13 @@ radeon_vm_clear_invalids
 
     clear invalidated BOs in the PT
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         requested vm
+    :type vm: struct radeon_vm \*
 
 .. _`radeon_vm_clear_invalids.description`:
 
@@ -589,18 +653,20 @@ radeon_vm_bo_rmv
 
     remove a bo to a specific vm
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_bo_va \*bo_va:
+    :param bo_va:
         requested bo_va
+    :type bo_va: struct radeon_bo_va \*
 
 .. _`radeon_vm_bo_rmv.description`:
 
 Description
 -----------
 
-Remove \ ``bo_va``\ ->bo from the requested vm (cayman+).
+Remove \ ``bo_va->bo``\  from the requested vm (cayman+).
 
 Object have to be reserved!
 
@@ -613,11 +679,13 @@ radeon_vm_bo_invalidate
 
     mark the bo as invalid
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_bo \*bo:
+    :param bo:
         radeon buffer object
+    :type bo: struct radeon_bo \*
 
 .. _`radeon_vm_bo_invalidate.description`:
 
@@ -635,11 +703,13 @@ radeon_vm_init
 
     initialize a vm instance
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         requested vm
+    :type vm: struct radeon_vm \*
 
 .. _`radeon_vm_init.description`:
 
@@ -657,11 +727,13 @@ radeon_vm_fini
 
     tear down a vm instance
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_vm \*vm:
+    :param vm:
         requested vm
+    :type vm: struct radeon_vm \*
 
 .. _`radeon_vm_fini.description`:
 

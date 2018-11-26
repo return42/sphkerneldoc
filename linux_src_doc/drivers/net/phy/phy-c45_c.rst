@@ -10,8 +10,9 @@ genphy_c45_pma_setup_forced
 
     configures a forced speed
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_c45_an_disable_aneg`:
 
@@ -22,8 +23,9 @@ genphy_c45_an_disable_aneg
 
     disable auto-negotiation
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_c45_an_disable_aneg.description`:
 
@@ -44,8 +46,9 @@ genphy_c45_restart_aneg
 
     Enable and restart auto-negotiation
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_c45_restart_aneg.description`:
 
@@ -65,8 +68,9 @@ genphy_c45_aneg_done
 
     return auto-negotiation complete status
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_c45_aneg_done.description`:
 
@@ -89,11 +93,13 @@ genphy_c45_read_link
 
     read the overall link status from the MMDs
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 mmd_mask:
+    :param mmd_mask:
         MMDs to read status from
+    :type mmd_mask: u32
 
 .. _`genphy_c45_read_link.description`:
 
@@ -113,8 +119,9 @@ genphy_c45_read_lpa
 
     read the link partner advertisement and pause
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_c45_read_lpa.description`:
 
@@ -136,8 +143,9 @@ genphy_c45_read_pma
 
     read link speed etc from PMA
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`genphy_c45_read_mdix`:
 
@@ -148,8 +156,9 @@ genphy_c45_read_mdix
 
     read mdix status from PMA
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. This file was automatic generated / don't edit.
 

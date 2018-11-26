@@ -179,8 +179,9 @@ v4l2_prio_init
 
     initializes a struct v4l2_prio_state
 
-    :param struct v4l2_prio_state \*global:
+    :param global:
         pointer to \ :c:type:`struct v4l2_prio_state <v4l2_prio_state>`\ 
+    :type global: struct v4l2_prio_state \*
 
 .. _`v4l2_prio_change`:
 
@@ -191,14 +192,17 @@ v4l2_prio_change
 
     changes the v4l2 file handler priority
 
-    :param struct v4l2_prio_state \*global:
+    :param global:
         pointer to the \ :c:type:`struct v4l2_prio_state <v4l2_prio_state>`\  of the device node.
+    :type global: struct v4l2_prio_state \*
 
-    :param enum v4l2_priority \*local:
+    :param local:
         pointer to the desired priority, as defined by enum \ :c:type:`struct v4l2_priority <v4l2_priority>`\ 
+    :type local: enum v4l2_priority \*
 
-    :param enum v4l2_priority new:
+    :param new:
         Priority type requested, as defined by enum \ :c:type:`struct v4l2_priority <v4l2_priority>`\ .
+    :type new: enum v4l2_priority
 
 .. _`v4l2_prio_change.description`:
 
@@ -217,11 +221,13 @@ v4l2_prio_open
 
     Implements the priority logic for a file handler open
 
-    :param struct v4l2_prio_state \*global:
+    :param global:
         pointer to the \ :c:type:`struct v4l2_prio_state <v4l2_prio_state>`\  of the device node.
+    :type global: struct v4l2_prio_state \*
 
-    :param enum v4l2_priority \*local:
+    :param local:
         pointer to the desired priority, as defined by enum \ :c:type:`struct v4l2_priority <v4l2_priority>`\ 
+    :type local: enum v4l2_priority \*
 
 .. _`v4l2_prio_open.description`:
 
@@ -240,11 +246,13 @@ v4l2_prio_close
 
     Implements the priority logic for a file handler close
 
-    :param struct v4l2_prio_state \*global:
+    :param global:
         pointer to the \ :c:type:`struct v4l2_prio_state <v4l2_prio_state>`\  of the device node.
+    :type global: struct v4l2_prio_state \*
 
-    :param enum v4l2_priority local:
+    :param local:
         priority to be released, as defined by enum \ :c:type:`struct v4l2_priority <v4l2_priority>`\ 
+    :type local: enum v4l2_priority
 
 .. _`v4l2_prio_close.description`:
 
@@ -263,8 +271,9 @@ v4l2_prio_max
 
     Return the maximum priority, as stored at the \ ``global``\  array.
 
-    :param struct v4l2_prio_state \*global:
+    :param global:
         pointer to the \ :c:type:`struct v4l2_prio_state <v4l2_prio_state>`\  of the device node.
+    :type global: struct v4l2_prio_state \*
 
 .. _`v4l2_prio_max.description`:
 
@@ -283,11 +292,13 @@ v4l2_prio_check
 
     Implements the priority logic for a file handler close
 
-    :param struct v4l2_prio_state \*global:
+    :param global:
         pointer to the \ :c:type:`struct v4l2_prio_state <v4l2_prio_state>`\  of the device node.
+    :type global: struct v4l2_prio_state \*
 
-    :param enum v4l2_priority local:
+    :param local:
         desired priority, as defined by enum \ :c:type:`struct v4l2_priority <v4l2_priority>`\  local
+    :type local: enum v4l2_priority
 
 .. _`v4l2_prio_check.description`:
 
@@ -530,8 +541,9 @@ media_entity_to_video_device
 
     Returns a \ :c:type:`struct video_device <video_device>`\  from the \ :c:type:`struct media_entity <media_entity>`\  embedded on it.
 
-    :param  __entity:
+    :param __entity:
         pointer to \ :c:type:`struct media_entity <media_entity>`\ 
+    :type __entity: 
 
 .. _`to_video_device`:
 
@@ -542,8 +554,9 @@ to_video_device
 
     Returns a \ :c:type:`struct video_device <video_device>`\  from the \ :c:type:`struct device <device>`\  embedded on it.
 
-    :param  cd:
+    :param cd:
         pointer to \ :c:type:`struct device <device>`\ 
+    :type cd: 
 
 .. _`__video_register_device`:
 
@@ -554,22 +567,27 @@ __video_register_device
 
     register video4linux devices
 
-    :param struct video_device \*vdev:
+    :param vdev:
         struct video_device to register
+    :type vdev: struct video_device \*
 
-    :param enum vfl_devnode_type type:
+    :param type:
         type of device to register, as defined by \ :c:type:`enum vfl_devnode_type <vfl_devnode_type>`\ 
+    :type type: enum vfl_devnode_type
 
-    :param int nr:
+    :param nr:
         which device node number is desired:
         (0 == /dev/video0, 1 == /dev/video1, ..., -1 == first free)
+    :type nr: int
 
-    :param int warn_if_nr_in_use:
+    :param warn_if_nr_in_use:
         warn if the desired device node number
         was already in use and another number was chosen instead.
+    :type warn_if_nr_in_use: int
 
-    :param struct module \*owner:
+    :param owner:
         module that owns the video device node
+    :type owner: struct module \*
 
 .. _`__video_register_device.description`:
 
@@ -603,15 +621,18 @@ video_register_device
 
     register video4linux devices
 
-    :param struct video_device \*vdev:
+    :param vdev:
         struct video_device to register
+    :type vdev: struct video_device \*
 
-    :param enum vfl_devnode_type type:
+    :param type:
         type of device to register, as defined by \ :c:type:`enum vfl_devnode_type <vfl_devnode_type>`\ 
+    :type type: enum vfl_devnode_type
 
-    :param int nr:
+    :param nr:
         which device node number is desired:
         (0 == /dev/video0, 1 == /dev/video1, ..., -1 == first free)
+    :type nr: int
 
 .. _`video_register_device.description`:
 
@@ -636,15 +657,18 @@ video_register_device_no_warn
 
     register video4linux devices
 
-    :param struct video_device \*vdev:
+    :param vdev:
         struct video_device to register
+    :type vdev: struct video_device \*
 
-    :param enum vfl_devnode_type type:
+    :param type:
         type of device to register, as defined by \ :c:type:`enum vfl_devnode_type <vfl_devnode_type>`\ 
+    :type type: enum vfl_devnode_type
 
-    :param int nr:
+    :param nr:
         which device node number is desired:
         (0 == /dev/video0, 1 == /dev/video1, ..., -1 == first free)
+    :type nr: int
 
 .. _`video_register_device_no_warn.description`:
 
@@ -672,8 +696,9 @@ video_unregister_device
 
     Unregister video devices.
 
-    :param struct video_device \*vdev:
+    :param vdev:
         \ :c:type:`struct video_device <video_device>`\  to register
+    :type vdev: struct video_device \*
 
 .. _`video_unregister_device.description`:
 
@@ -691,8 +716,9 @@ video_device_alloc
 
     helper function to alloc \ :c:type:`struct video_device <video_device>`\ 
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`video_device_alloc.description`:
 
@@ -710,8 +736,9 @@ video_device_release
 
     helper function to release \ :c:type:`struct video_device <video_device>`\ 
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to \ :c:type:`struct video_device <video_device>`\ 
+    :type vdev: struct video_device \*
 
 .. _`video_device_release.description`:
 
@@ -729,8 +756,9 @@ video_device_release_empty
 
     helper function to implement the video_device->release(\) callback.
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to \ :c:type:`struct video_device <video_device>`\ 
+    :type vdev: struct video_device \*
 
 .. _`video_device_release_empty.description`:
 
@@ -753,11 +781,13 @@ v4l2_disable_ioctl
 
     mark that a given command isn't implemented. shouldn't use core locking
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to \ :c:type:`struct video_device <video_device>`\ 
+    :type vdev: struct video_device \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command
+    :type cmd: unsigned int
 
 .. _`v4l2_disable_ioctl.description`:
 
@@ -781,8 +811,9 @@ video_get_drvdata
 
     gets private data from \ :c:type:`struct video_device <video_device>`\ .
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to \ :c:type:`struct video_device <video_device>`\ 
+    :type vdev: struct video_device \*
 
 .. _`video_get_drvdata.description`:
 
@@ -800,11 +831,13 @@ video_set_drvdata
 
     sets private data from \ :c:type:`struct video_device <video_device>`\ .
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to \ :c:type:`struct video_device <video_device>`\ 
+    :type vdev: struct video_device \*
 
-    :param void \*data:
+    :param data:
         private data pointer
+    :type data: void \*
 
 .. _`video_devdata`:
 
@@ -815,8 +848,9 @@ video_devdata
 
     gets \ :c:type:`struct video_device <video_device>`\  from struct file.
 
-    :param struct file \*file:
+    :param file:
         pointer to struct file
+    :type file: struct file \*
 
 .. _`video_drvdata`:
 
@@ -827,8 +861,9 @@ video_drvdata
 
     gets private data from \ :c:type:`struct video_device <video_device>`\  using the struct file.
 
-    :param struct file \*file:
+    :param file:
         pointer to struct file
+    :type file: struct file \*
 
 .. _`video_drvdata.description`:
 
@@ -847,8 +882,9 @@ video_device_node_name
 
     returns the video device name
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to \ :c:type:`struct video_device <video_device>`\ 
+    :type vdev: struct video_device \*
 
 .. _`video_device_node_name.description`:
 
@@ -866,8 +902,9 @@ video_is_registered
 
     returns true if the \ :c:type:`struct video_device <video_device>`\  is registered.
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to \ :c:type:`struct video_device <video_device>`\ 
+    :type vdev: struct video_device \*
 
 .. This file was automatic generated / don't edit.
 

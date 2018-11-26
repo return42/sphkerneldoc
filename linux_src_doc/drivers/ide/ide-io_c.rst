@@ -10,8 +10,9 @@ do_special
 
     issue some special commands
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive the command is for
+    :type drive: ide_drive_t \*
 
 .. _`do_special.description`:
 
@@ -30,11 +31,13 @@ execute_drive_cmd
 
     issue special drive command
 
-    :param ide_drive_t \*drive:
+    :param drive:
         the drive to issue the command on
+    :type drive: ide_drive_t \*
 
-    :param struct request \*rq:
+    :param rq:
         the request structure holding the command
+    :type rq: struct request \*
 
 .. _`execute_drive_cmd.description`:
 
@@ -56,11 +59,13 @@ start_request
 
     start of I/O and command issuing for IDE
 
-    :param ide_drive_t \*drive:
+    :param drive:
         *undescribed*
+    :type drive: ide_drive_t \*
 
-    :param struct request \*rq:
+    :param rq:
         *undescribed*
+    :type rq: struct request \*
 
 .. _`start_request.description`:
 
@@ -86,11 +91,13 @@ ide_stall_queue
 
     pause an IDE device
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to stall
+    :type drive: ide_drive_t \*
 
-    :param unsigned long timeout:
+    :param timeout:
         time to stall for (jiffies)
+    :type timeout: unsigned long
 
 .. _`ide_stall_queue.description`:
 
@@ -109,8 +116,9 @@ ide_timer_expiry
 
     handle lack of an IDE interrupt
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`ide_timer_expiry.description`:
 
@@ -135,11 +143,13 @@ unexpected_intr
 
     handle an unexpected IDE interrupt
 
-    :param int irq:
+    :param irq:
         interrupt line
+    :type irq: int
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port being processed
+    :type hwif: ide_hwif_t \*
 
 .. _`unexpected_intr.description`:
 
@@ -178,11 +188,13 @@ ide_intr
 
     default IDE interrupt handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         hwif
+    :type dev_id: void \*
 
 .. _`ide_intr.description`:
 

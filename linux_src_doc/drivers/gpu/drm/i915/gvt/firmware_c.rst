@@ -10,8 +10,9 @@ intel_gvt_free_firmware
 
     free GVT firmware
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         intel gvt device
+    :type gvt: struct intel_gvt \*
 
 .. _`intel_gvt_load_firmware`:
 
@@ -22,8 +23,9 @@ intel_gvt_load_firmware
 
     load GVT firmware
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         intel gvt device
+    :type gvt: struct intel_gvt \*
 
 .. This file was automatic generated / don't edit.
 

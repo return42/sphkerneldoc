@@ -10,11 +10,13 @@ ns_to_clk
 
     Convert time (ns) to clock cycles for the given clock frequency.
 
-    :param u64 ns:
+    :param ns:
         *undescribed*
+    :type ns: u64
 
-    :param u32 clk_mhz:
+    :param clk_mhz:
         *undescribed*
+    :type clk_mhz: u32
 
 .. _`axxia_i2c_empty_rx_fifo`:
 
@@ -25,8 +27,9 @@ axxia_i2c_empty_rx_fifo
 
     Fetch data from RX FIFO and update SMBus block transfer length if this is the first byte of such a transfer.
 
-    :param struct axxia_i2c_dev \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct axxia_i2c_dev \*
 
 .. _`axxia_i2c_fill_tx_fifo`:
 
@@ -37,8 +40,9 @@ axxia_i2c_fill_tx_fifo
 
     Fill TX FIFO from current message buffer.
 
-    :param struct axxia_i2c_dev \*idev:
+    :param idev:
         *undescribed*
+    :type idev: struct axxia_i2c_dev \*
 
 .. This file was automatic generated / don't edit.
 

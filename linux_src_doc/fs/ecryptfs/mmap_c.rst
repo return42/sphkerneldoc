@@ -10,11 +10,13 @@ ecryptfs_get_locked_page
 
     Linux filesystem encryption layer This is where eCryptfs coordinates the symmetric encryption and decryption of the file data as it passes between the lower encrypted file and the upper decrypted file.
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param loff_t index:
+    :param index:
         *undescribed*
+    :type index: loff_t
 
 .. _`ecryptfs_get_locked_page.description`:
 
@@ -48,11 +50,13 @@ ecryptfs_writepage
 
 .. c:function:: int ecryptfs_writepage(struct page *page, struct writeback_control *wbc)
 
-    :param struct page \*page:
+    :param page:
         Page that is locked before this call is made
+    :type page: struct page \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         *undescribed*
+    :type wbc: struct writeback_control \*
 
 .. _`ecryptfs_writepage.description`:
 
@@ -74,11 +78,13 @@ ecryptfs_copy_up_encrypted_with_header
 
     Octets 0-7:        Unencrypted file size (big-endian) Octets 8-15:       eCryptfs special marker Octets 16-19:      Flags
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
-    :param struct ecryptfs_crypt_stat \*crypt_stat:
+    :param crypt_stat:
         *undescribed*
+    :type crypt_stat: struct ecryptfs_crypt_stat \*
 
 .. _`ecryptfs_copy_up_encrypted_with_header.octet-16`:
 
@@ -114,11 +120,13 @@ ecryptfs_readpage
 
 .. c:function:: int ecryptfs_readpage(struct file *file, struct page *page)
 
-    :param struct file \*file:
+    :param file:
         An eCryptfs file
+    :type file: struct file \*
 
-    :param struct page \*page:
+    :param page:
         Page from eCryptfs inode mapping into which to stick the read data
+    :type page: struct page \*
 
 .. _`ecryptfs_readpage.description`:
 
@@ -136,11 +144,13 @@ fill_zeros_to_end_of_page
 
 .. c:function:: int fill_zeros_to_end_of_page(struct page *page, unsigned int to)
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
-    :param unsigned int to:
+    :param to:
         *undescribed*
+    :type to: unsigned int
 
 .. _`ecryptfs_write_begin`:
 
@@ -149,26 +159,33 @@ ecryptfs_write_begin
 
 .. c:function:: int ecryptfs_write_begin(struct file *file, struct address_space *mapping, loff_t pos, unsigned len, unsigned flags, struct page **pagep, void **fsdata)
 
-    :param struct file \*file:
+    :param file:
         The eCryptfs file
+    :type file: struct file \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The eCryptfs object
+    :type mapping: struct address_space \*
 
-    :param loff_t pos:
+    :param pos:
         The file offset at which to start writing
+    :type pos: loff_t
 
-    :param unsigned len:
+    :param len:
         Length of the write
+    :type len: unsigned
 
-    :param unsigned flags:
+    :param flags:
         Various flags
+    :type flags: unsigned
 
-    :param struct page \*\*pagep:
+    :param pagep:
         Pointer to return the page
+    :type pagep: struct page \*\*
 
-    :param void \*\*fsdata:
+    :param fsdata:
         Pointer to return fs data (unused)
+    :type fsdata: void \*\*
 
 .. _`ecryptfs_write_begin.description`:
 
@@ -186,8 +203,9 @@ ecryptfs_write_inode_size_to_header
 
 .. c:function:: int ecryptfs_write_inode_size_to_header(struct inode *ecryptfs_inode)
 
-    :param struct inode \*ecryptfs_inode:
+    :param ecryptfs_inode:
         *undescribed*
+    :type ecryptfs_inode: struct inode \*
 
 .. _`ecryptfs_write_inode_size_to_header.description`:
 
@@ -205,26 +223,33 @@ ecryptfs_write_end
 
 .. c:function:: int ecryptfs_write_end(struct file *file, struct address_space *mapping, loff_t pos, unsigned len, unsigned copied, struct page *page, void *fsdata)
 
-    :param struct file \*file:
+    :param file:
         The eCryptfs file object
+    :type file: struct file \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The eCryptfs object
+    :type mapping: struct address_space \*
 
-    :param loff_t pos:
+    :param pos:
         The file position
+    :type pos: loff_t
 
-    :param unsigned len:
+    :param len:
         The length of the data (unused)
+    :type len: unsigned
 
-    :param unsigned copied:
+    :param copied:
         The amount of data copied
+    :type copied: unsigned
 
-    :param struct page \*page:
+    :param page:
         The eCryptfs page
+    :type page: struct page \*
 
-    :param void \*fsdata:
+    :param fsdata:
         The fsdata (unused)
+    :type fsdata: void \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,14 +8,17 @@ stmmac_mdio_read
 
 .. c:function:: int stmmac_mdio_read(struct mii_bus *bus, int phyaddr, int phyreg)
 
-    :param struct mii_bus \*bus:
+    :param bus:
         points to the mii_bus structure
+    :type bus: struct mii_bus \*
 
-    :param int phyaddr:
+    :param phyaddr:
         MII addr
+    :type phyaddr: int
 
-    :param int phyreg:
+    :param phyreg:
         MII reg
+    :type phyreg: int
 
 .. _`stmmac_mdio_read.description`:
 
@@ -34,17 +37,21 @@ stmmac_mdio_write
 
 .. c:function:: int stmmac_mdio_write(struct mii_bus *bus, int phyaddr, int phyreg, u16 phydata)
 
-    :param struct mii_bus \*bus:
+    :param bus:
         points to the mii_bus structure
+    :type bus: struct mii_bus \*
 
-    :param int phyaddr:
+    :param phyaddr:
         MII addr
+    :type phyaddr: int
 
-    :param int phyreg:
+    :param phyreg:
         MII reg
+    :type phyreg: int
 
-    :param u16 phydata:
+    :param phydata:
         phy data
+    :type phydata: u16
 
 .. _`stmmac_mdio_write.description`:
 
@@ -60,8 +67,9 @@ stmmac_mdio_reset
 
 .. c:function:: int stmmac_mdio_reset(struct mii_bus *bus)
 
-    :param struct mii_bus \*bus:
+    :param bus:
         points to the mii_bus structure
+    :type bus: struct mii_bus \*
 
 .. _`stmmac_mdio_reset.description`:
 
@@ -77,8 +85,9 @@ stmmac_mdio_register
 
 .. c:function:: int stmmac_mdio_register(struct net_device *ndev)
 
-    :param struct net_device \*ndev:
+    :param ndev:
         net device structure
+    :type ndev: struct net_device \*
 
 .. _`stmmac_mdio_register.description`:
 
@@ -94,8 +103,9 @@ stmmac_mdio_unregister
 
 .. c:function:: int stmmac_mdio_unregister(struct net_device *ndev)
 
-    :param struct net_device \*ndev:
+    :param ndev:
         net device structure
+    :type ndev: struct net_device \*
 
 .. _`stmmac_mdio_unregister.description`:
 

@@ -10,14 +10,17 @@ evergreen_get_allowed_info_register
 
     fetch the register for the info ioctl
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 reg:
+    :param reg:
         register offset in bytes
+    :type reg: u32
 
-    :param u32 \*val:
+    :param val:
         register value
+    :type val: u32 \*
 
 .. _`evergreen_get_allowed_info_register.description`:
 
@@ -35,11 +38,13 @@ dce4_wait_for_vblank
 
     vblank wait asic callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int crtc:
+    :param crtc:
         crtc to wait for vblank on
+    :type crtc: int
 
 .. _`dce4_wait_for_vblank.description`:
 
@@ -57,17 +62,21 @@ evergreen_page_flip
 
     pageflip callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int crtc_id:
+    :param crtc_id:
         crtc to cleanup pageflip on
+    :type crtc_id: int
 
-    :param u64 crtc_base:
+    :param crtc_base:
         new address of the crtc (GPU MC address)
+    :type crtc_base: u64
 
-    :param bool async:
+    :param async:
         *undescribed*
+    :type async: bool
 
 .. _`evergreen_page_flip.description`:
 
@@ -86,11 +95,13 @@ evergreen_page_flip_pending
 
     check if page flip is still pending
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int crtc_id:
+    :param crtc_id:
         crtc to check
+    :type crtc_id: int
 
 .. _`evergreen_page_flip_pending.description`:
 
@@ -108,8 +119,9 @@ sumo_pm_init_profile
 
     Initialize power profiles callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`sumo_pm_init_profile.description`:
 
@@ -129,8 +141,9 @@ btc_pm_init_profile
 
     Initialize power profiles callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`btc_pm_init_profile.description`:
 
@@ -150,8 +163,9 @@ evergreen_pm_misc
 
     set additional pm hw parameters callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`evergreen_pm_misc.description`:
 
@@ -170,8 +184,9 @@ evergreen_pm_prepare
 
     pre-power state change callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`evergreen_pm_prepare.description`:
 
@@ -189,8 +204,9 @@ evergreen_pm_finish
 
     post-power state change callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`evergreen_pm_finish.description`:
 
@@ -208,11 +224,13 @@ evergreen_hpd_sense
 
     hpd sense callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param enum radeon_hpd_id hpd:
+    :param hpd:
         hpd (hotplug detect) pin
+    :type hpd: enum radeon_hpd_id
 
 .. _`evergreen_hpd_sense.description`:
 
@@ -231,11 +249,13 @@ evergreen_hpd_set_polarity
 
     hpd set polarity callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param enum radeon_hpd_id hpd:
+    :param hpd:
         hpd (hotplug detect) pin
+    :type hpd: enum radeon_hpd_id
 
 .. _`evergreen_hpd_set_polarity.description`:
 
@@ -253,8 +273,9 @@ evergreen_hpd_init
 
     hpd setup callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`evergreen_hpd_init.description`:
 
@@ -273,8 +294,9 @@ evergreen_hpd_fini
 
     hpd tear down callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`evergreen_hpd_fini.description`:
 
@@ -293,8 +315,9 @@ evergreen_bandwidth_update
 
     update display watermarks callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`evergreen_bandwidth_update.description`:
 
@@ -313,8 +336,9 @@ evergreen_mc_wait_for_idle
 
     wait for MC idle callback.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`evergreen_mc_wait_for_idle.description`:
 
@@ -334,11 +358,13 @@ evergreen_gfx_is_lockup
 
     Check if the GFX engine is locked up
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`evergreen_gfx_is_lockup.description`:
 

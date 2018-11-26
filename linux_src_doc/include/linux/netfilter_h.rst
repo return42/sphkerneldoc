@@ -10,26 +10,33 @@ nf_hook
 
     call a netfilter hook
 
-    :param u_int8_t pf:
+    :param pf:
         *undescribed*
+    :type pf: u_int8_t
 
-    :param unsigned int hook:
+    :param hook:
         *undescribed*
+    :type hook: unsigned int
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*indev:
+    :param indev:
         *undescribed*
+    :type indev: struct net_device \*
 
-    :param struct net_device \*outdev:
+    :param outdev:
         *undescribed*
+    :type outdev: struct net_device \*
 
     :param int (\*okfn)(struct net \*, struct sock \*, struct sk_buff \*):
         *undescribed*
@@ -52,11 +59,13 @@ DECLARE_PER_CPU
 
     TEE target has sent a packet
 
-    :param  bool:
+    :param bool:
         *undescribed*
+    :type bool: 
 
-    :param  nf_skb_duplicated:
+    :param nf_skb_duplicated:
         *undescribed*
+    :type nf_skb_duplicated: 
 
 .. _`declare_per_cpu.description`:
 

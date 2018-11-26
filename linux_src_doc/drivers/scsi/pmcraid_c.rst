@@ -10,8 +10,9 @@ pmcraid_slave_alloc
 
     Prepare for commands to a device
 
-    :param struct scsi_device \*scsi_dev:
+    :param scsi_dev:
         scsi device struct
+    :type scsi_dev: struct scsi_device \*
 
 .. _`pmcraid_slave_alloc.description`:
 
@@ -39,8 +40,9 @@ pmcraid_slave_configure
 
     Configures a SCSI device
 
-    :param struct scsi_device \*scsi_dev:
+    :param scsi_dev:
         scsi device struct
+    :type scsi_dev: struct scsi_device \*
 
 .. _`pmcraid_slave_configure.description`:
 
@@ -69,8 +71,9 @@ pmcraid_slave_destroy
 
     Unconfigure a SCSI device before removing it
 
-    :param struct scsi_device \*scsi_dev:
+    :param scsi_dev:
         scsi device struct
+    :type scsi_dev: struct scsi_device \*
 
 .. _`pmcraid_slave_destroy.description`:
 
@@ -92,11 +95,13 @@ pmcraid_change_queue_depth
 
     Change the device's queue depth
 
-    :param struct scsi_device \*scsi_dev:
+    :param scsi_dev:
         scsi device struct
+    :type scsi_dev: struct scsi_device \*
 
-    :param int depth:
+    :param depth:
         depth to set
+    :type depth: int
 
 .. _`pmcraid_change_queue_depth.description`:
 
@@ -115,11 +120,13 @@ pmcraid_init_cmdblk
 
     initializes a command block
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to struct pmcraid_cmd to be initialized
+    :type cmd: struct pmcraid_cmd \*
 
-    :param int index:
+    :param index:
         if >=0 first time initialization; otherwise reinitialization
+    :type index: int
 
 .. _`pmcraid_init_cmdblk.description`:
 
@@ -138,8 +145,9 @@ pmcraid_reinit_cmdblk
 
     reinitialize a command block
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to struct pmcraid_cmd to be reinitialized
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_reinit_cmdblk.description`:
 
@@ -158,8 +166,9 @@ pmcraid_get_free_cmd
 
     get a free cmd block from command block pool
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_get_free_cmd.return-value`:
 
@@ -177,8 +186,9 @@ pmcraid_return_cmd
 
     return a completed command block back into free pool
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to the command block
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_return_cmd.return-value`:
 
@@ -196,8 +206,9 @@ pmcraid_read_interrupts
 
     reads IOA interrupts
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_read_interrupts.description`:
 
@@ -216,11 +227,13 @@ pmcraid_disable_interrupts
 
     Masks and clears all specified interrupts
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param u32 intrs:
+    :param intrs:
         interrupts to disable
+    :type intrs: u32
 
 .. _`pmcraid_disable_interrupts.description`:
 
@@ -239,11 +252,13 @@ pmcraid_enable_interrupts
 
     Enables specified interrupts
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param u32 intrs:
+    :param intrs:
         *undescribed*
+    :type intrs: u32
 
 .. _`pmcraid_enable_interrupts.description`:
 
@@ -262,8 +277,9 @@ pmcraid_clr_trans_op
 
     clear trans to op interrupt
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_clr_trans_op.description`:
 
@@ -282,8 +298,9 @@ pmcraid_reset_type
 
     Determine the required reset type
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_reset_type.description`:
 
@@ -304,8 +321,9 @@ pmcraid_ioa_reset
 
     completion function for PCI BIST
 
-    :param struct pmcraid_cmd \*:
+    :param :
         *undescribed*
+    :type : struct pmcraid_cmd \*
 
 .. _`pmcraid_start_bist`:
 
@@ -316,10 +334,11 @@ pmcraid_start_bist
 
     starts BIST
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to reset cmd
         Return Value
         none
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_reset_alert_done`:
 
@@ -330,8 +349,9 @@ pmcraid_reset_alert_done
 
     completion routine for reset_alert
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`pmcraid_notify_ioastate`:
 
@@ -342,11 +362,13 @@ pmcraid_notify_ioastate
 
     alerts IOA for a possible reset
 
-    :param struct pmcraid_instance \*:
+    :param :
         *undescribed*
+    :type : struct pmcraid_instance \*
 
-    :param  u32:
+    :param u32:
         *undescribed*
+    :type u32: 
 
 .. _`pmcraid_notify_ioastate.description`:
 
@@ -367,8 +389,9 @@ pmcraid_timeout_handler
 
     Timeout handler for internally generated ops
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`pmcraid_timeout_handler.description`:
 
@@ -393,8 +416,9 @@ pmcraid_internal_done
 
     completion routine for internally generated cmds
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         command that got response from IOA
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_internal_done.return-value`:
 
@@ -412,8 +436,9 @@ pmcraid_reinit_cfgtable_done
 
     done function for cfg table reinitialization
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         command that got response from IOA
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_reinit_cfgtable_done.description`:
 
@@ -440,8 +465,9 @@ pmcraid_erp_done
 
     Process completion of SCSI error response from device
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pmcraid_command
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_erp_done.description`:
 
@@ -467,8 +493,9 @@ none
 
     sends an IOA command to adapter
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         command to be sent to the device
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`_pmcraid_fire_command.description`:
 
@@ -490,14 +517,16 @@ pmcraid_send_cmd
 
     fires a command to IOA
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to the command block to be fired to IOA
+    :type cmd: struct pmcraid_cmd \*
 
     :param void (\*cmd_done)(struct pmcraid_cmd \*):
         command completion function, called once IOA responds
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout to wait for this command completion
+    :type timeout: unsigned long
 
     :param void (\*timeout_func)(struct timer_list \*):
         timeout handler
@@ -522,8 +551,9 @@ pmcraid_ioa_shutdown_done
 
     completion function for IOA shutdown command
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to the command block used for sending IOA shutdown command
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_ioa_shutdown_done.description`:
 
@@ -542,8 +572,9 @@ pmcraid_ioa_shutdown
 
     sends SHUTDOWN command to ioa
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to the command block used as part of reset sequence
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_ioa_shutdown.description`:
 
@@ -562,8 +593,9 @@ pmcraid_querycfg
 
     completion function for get_fwversion
 
-    :param struct pmcraid_cmd \*:
+    :param :
         *undescribed*
+    :type : struct pmcraid_cmd \*
 
 .. _`pmcraid_querycfg.description`:
 
@@ -582,8 +614,9 @@ pmcraid_get_fwversion
 
     reads firmware version information
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to command block used to send INQUIRY command
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_get_fwversion.description`:
 
@@ -602,8 +635,9 @@ pmcraid_identify_hrrq
 
     registers host rrq buffers with IOA
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to command block to be used for identify hrrq
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_identify_hrrq.description`:
 
@@ -622,8 +656,9 @@ pmcraid_send_hcam_cmd
 
     send an initialized command block(HCAM) to IOA
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         initialized command block pointer
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_send_hcam_cmd.description`:
 
@@ -642,11 +677,13 @@ pmcraid_init_hcam
 
     send an initialized command block(HCAM) to IOA
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param u8 type:
+    :param type:
         HCAM type
+    :type type: u8
 
 .. _`pmcraid_init_hcam.description`:
 
@@ -665,11 +702,13 @@ pmcraid_send_hcam
 
     Send an HCAM to IOA
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         ioa config struct
+    :type pinstance: struct pmcraid_instance \*
 
-    :param u8 type:
+    :param type:
         HCAM type
+    :type type: u8
 
 .. _`pmcraid_send_hcam.description`:
 
@@ -694,11 +733,13 @@ pmcraid_prepare_cancel_cmd
 
     prepares a command block to abort another
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to cmd that is used as cancelling command
+    :type cmd: struct pmcraid_cmd \*
 
-    :param struct pmcraid_cmd \*cmd_to_cancel:
+    :param cmd_to_cancel:
         pointer to the command that needs to be cancelled
+    :type cmd_to_cancel: struct pmcraid_cmd \*
 
 .. _`pmcraid_cancel_hcam`:
 
@@ -709,11 +750,13 @@ pmcraid_cancel_hcam
 
     sends ABORT task to abort a given HCAM
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         command to be used as cancelling command
+    :type cmd: struct pmcraid_cmd \*
 
-    :param u8 type:
+    :param type:
         HCAM type
+    :type type: u8
 
     :param void (\*cmd_done)(struct pmcraid_cmd \*):
         op done function for the cancelling command
@@ -727,8 +770,9 @@ pmcraid_cancel_ccn
 
     cancel CCN HCAM already registered with IOA
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         command block to be used for cancelling the HCAM
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_cancel_ldn`:
 
@@ -739,8 +783,9 @@ pmcraid_cancel_ldn
 
     cancel LDN HCAM already registered with IOA
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         command block to be used for cancelling the HCAM
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_expose_resource`:
 
@@ -751,11 +796,13 @@ pmcraid_expose_resource
 
     check if the resource can be exposed to OS
 
-    :param u16 fw_version:
+    :param fw_version:
         firmware version code
+    :type fw_version: u16
 
-    :param struct pmcraid_config_table_entry \*cfgte:
+    :param cfgte:
         pointer to configuration table entry of the resource
+    :type cfgte: struct pmcraid_config_table_entry \*
 
 .. _`pmcraid_expose_resource.return-value`:
 
@@ -773,8 +820,9 @@ pmcraid_netlink_init
 
     registers pmcraid_event_family
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pmcraid_netlink_init.return-value`:
 
@@ -793,8 +841,9 @@ pmcraid_netlink_release
 
     unregisters pmcraid_event_family
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pmcraid_netlink_release.return-value`:
 
@@ -812,14 +861,17 @@ pmcraid_notify_aen
 
     sends event msg to user space application
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param struct pmcraid_aen_msg \*aen_msg:
+    :param aen_msg:
         *undescribed*
+    :type aen_msg: struct pmcraid_aen_msg \*
 
-    :param u32 data_size:
+    :param data_size:
         *undescribed*
+    :type data_size: u32
 
 .. _`pmcraid_notify_aen.return-value`:
 
@@ -837,8 +889,9 @@ pmcraid_notify_ccn
 
     notifies about CCN event msg to user space
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_notify_ccn.return-value`:
 
@@ -856,8 +909,9 @@ pmcraid_notify_ldn
 
     notifies about CCN event msg to user space
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_notify_ldn.return-value`:
 
@@ -875,11 +929,13 @@ pmcraid_notify_ioastate
 
     sends IOA state event msg to user space
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param u32 evt:
+    :param evt:
         controller state event to be sent
+    :type evt: u32
 
 .. _`pmcraid_notify_ioastate.return-value`:
 
@@ -897,8 +953,9 @@ pmcraid_handle_config_change
 
     Handle a config change from the adapter
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_handle_config_change.return-value`:
 
@@ -916,10 +973,11 @@ pmcraid_get_error_info
 
     return error string for an ioasc
 
-    :param u32 ioasc:
+    :param ioasc:
         ioasc code
         Return Value
         none
+    :type ioasc: u32
 
 .. _`pmcraid_ioasc_logger`:
 
@@ -930,11 +988,13 @@ pmcraid_ioasc_logger
 
     log IOASC information based user-settings
 
-    :param u32 ioasc:
+    :param ioasc:
         ioasc code
+    :type ioasc: u32
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to command that resulted in 'ioasc'
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_handle_error_log`:
 
@@ -945,8 +1005,9 @@ pmcraid_handle_error_log
 
     Handle a config change (error log) from the IOA
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_handle_error_log.return-value`:
 
@@ -964,8 +1025,9 @@ pmcraid_process_ccn
 
     Op done function for a CCN.
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to command struct
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_process_ccn.description`:
 
@@ -991,8 +1053,9 @@ pmcraid_initiate_reset
 
     op done function for an LDN
 
-    :param struct pmcraid_instance \*:
+    :param :
         *undescribed*
+    :type : struct pmcraid_instance \*
 
 .. _`pmcraid_initiate_reset.description`:
 
@@ -1011,8 +1074,9 @@ pmcraid_register_hcams
 
     register HCAMs for CCN and LDN
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_register_hcams.description`:
 
@@ -1031,8 +1095,9 @@ pmcraid_unregister_hcams
 
     cancel HCAMs registered already
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to command used as part of reset sequence
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_reinit_buffers`:
 
@@ -1043,8 +1108,9 @@ pmcraid_reinit_buffers
 
     re-enable IOA after a hard reset
 
-    :param struct pmcraid_instance \*:
+    :param :
         *undescribed*
+    :type : struct pmcraid_instance \*
 
 .. _`pmcraid_soft_reset`:
 
@@ -1055,8 +1121,9 @@ pmcraid_soft_reset
 
     performs a soft reset and makes IOA become ready
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to reset command block
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_soft_reset.description`:
 
@@ -1075,8 +1142,9 @@ pmcraid_get_dump
 
     retrieves IOA dump in case of Unit Check interrupt
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_get_dump.description`:
 
@@ -1095,8 +1163,9 @@ pmcraid_fail_outstanding_cmds
 
     Fails all outstanding ops.
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_fail_outstanding_cmds.description`:
 
@@ -1124,8 +1193,9 @@ pmcraid_ioa_reset
 
     Implementation of IOA reset logic
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to the cmd block to be used for entire reset process
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_ioa_reset.description`:
 
@@ -1151,8 +1221,9 @@ pmcraid_initiate_reset
 
     initiates reset sequence. This is called from ISR/tasklet during error interrupts including IOA unit check. If reset is already in progress, it just returns, otherwise initiates IOA reset to bring IOA up to operational state.
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_initiate_reset.description`:
 
@@ -1171,14 +1242,17 @@ pmcraid_reset_reload
 
     utility routine for doing IOA reset either to bringup or bringdown IOA
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param u8 shutdown_type:
+    :param shutdown_type:
         shutdown type to be used NONE, NORMAL or ABRREV
+    :type shutdown_type: u8
 
-    :param u8 target_state:
+    :param target_state:
         expected target state after reset
+    :type target_state: u8
 
 .. _`pmcraid_reset_reload.note`:
 
@@ -1201,8 +1275,9 @@ pmcraid_reset_bringdown
 
     wrapper over pmcraid_reset_reload to bringdown IOA
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_reset_bringdown.description`:
 
@@ -1221,8 +1296,9 @@ pmcraid_reset_bringup
 
     wrapper over pmcraid_reset_reload to bring up IOA
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_reset_bringup.description`:
 
@@ -1241,8 +1317,9 @@ pmcraid_request_sense
 
     Send request sense to a device
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pmcraid command struct
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_request_sense.description`:
 
@@ -1261,11 +1338,13 @@ pmcraid_cancel_all
 
     cancel all outstanding IOARCBs as part of error recovery
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         command that failed
+    :type cmd: struct pmcraid_cmd \*
 
-    :param u32 sense:
+    :param sense:
         true if request_sense is required after cancel all
+    :type sense: u32
 
 .. _`pmcraid_cancel_all.description`:
 
@@ -1283,8 +1362,9 @@ pmcraid_frame_auto_sense
 
     frame fixed format sense information
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to failing command block
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_frame_auto_sense.description`:
 
@@ -1303,8 +1383,9 @@ pmcraid_error_handler
 
     Error response handlers for a SCSI op
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to pmcraid_cmd that has failed
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_error_handler.description`:
 
@@ -1332,14 +1413,17 @@ pmcraid_reset_device
 
     device reset handler functions
 
-    :param struct scsi_cmnd \*scsi_cmd:
+    :param scsi_cmd:
         scsi command struct
+    :type scsi_cmd: struct scsi_cmnd \*
 
-    :param unsigned long timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: unsigned long
 
-    :param u8 modifier:
+    :param modifier:
         reset modifier indicating the reset sequence to be performed
+    :type modifier: u8
 
 .. _`pmcraid_reset_device.description`:
 
@@ -1366,14 +1450,17 @@ SUCCESS / FAILED
 
     helper for pmcraid_io_done function
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to pmcraid command struct
+    :type cmd: struct pmcraid_cmd \*
 
-    :param int reslen:
+    :param reslen:
         residual data length to be set in the ioasa
+    :type reslen: int
 
-    :param int ioasc:
+    :param ioasc:
         ioasc either returned by IOA or set by driver itself.
+    :type ioasc: int
 
 .. _`_pmcraid_io_done.description`:
 
@@ -1401,8 +1488,9 @@ pmcraid_io_done
 
     SCSI completion function
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to pmcraid command struct
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_io_done.description`:
 
@@ -1424,8 +1512,9 @@ pmcraid_abort_cmd
 
     Aborts a single IOARCB already submitted to IOA
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         command block of the command to be aborted
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_abort_cmd.return-value`:
 
@@ -1443,8 +1532,9 @@ pmcraid_abort_complete
 
     Waits for ABORT TASK completion
 
-    :param struct pmcraid_cmd \*cancel_cmd:
+    :param cancel_cmd:
         command block use as cancelling command
+    :type cancel_cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_abort_complete.return-value`:
 
@@ -1463,10 +1553,11 @@ pmcraid_eh_abort_handler
 
     entry point for aborting a single task on errors
 
-    :param struct scsi_cmnd \*scsi_cmd:
+    :param scsi_cmd:
         scsi command struct given by mid-layer. When this is called
         mid-layer ensures that no other commands are queued. This
         never gets called under interrupt, but a separate eh thread.
+    :type scsi_cmd: struct scsi_cmnd \*
 
 .. _`pmcraid_eh_abort_handler.return-value`:
 
@@ -1484,8 +1575,9 @@ pmcraid_eh_device_reset_handler
 
     bus/target/device reset handler callbacks
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi_cmd that was sent to the resource to be reset.
+    :type scmd: struct scsi_cmnd \*
 
 .. _`pmcraid_eh_device_reset_handler.description`:
 
@@ -1510,8 +1602,9 @@ pmcraid_eh_host_reset_handler
 
     adapter reset handler callback
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi_cmd that was sent to a resource of adapter
+    :type scmd: struct scsi_cmnd \*
 
 .. _`pmcraid_eh_host_reset_handler.description`:
 
@@ -1532,11 +1625,13 @@ pmcraid_init_ioadls
 
     initializes IOADL related fields in IOARCB
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pmcraid command struct
+    :type cmd: struct pmcraid_cmd \*
 
-    :param int sgcount:
+    :param sgcount:
         count of scatter-gather elements
+    :type sgcount: int
 
 .. _`pmcraid_init_ioadls.description`:
 
@@ -1556,11 +1651,13 @@ pmcraid_build_ioadl
 
     Build a scatter/gather list and map the buffer
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pmcraid command struct
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_build_ioadl.description`:
 
@@ -1586,8 +1683,9 @@ pmcraid_free_sglist
 
     Frees an allocated SG buffer list
 
-    :param struct pmcraid_sglist \*sglist:
+    :param sglist:
         scatter/gather list pointer
+    :type sglist: struct pmcraid_sglist \*
 
 .. _`pmcraid_free_sglist.description`:
 
@@ -1612,8 +1710,9 @@ pmcraid_alloc_sglist
 
     Allocates memory for a SG list
 
-    :param int buflen:
+    :param buflen:
         buffer length
+    :type buflen: int
 
 .. _`pmcraid_alloc_sglist.description`:
 
@@ -1635,17 +1734,21 @@ pmcraid_copy_sglist
 
     Copy user buffer to kernel buffer's SG list
 
-    :param struct pmcraid_sglist \*sglist:
+    :param sglist:
         scatter/gather list pointer
+    :type sglist: struct pmcraid_sglist \*
 
-    :param void __user \*buffer:
+    :param buffer:
         buffer pointer
+    :type buffer: void __user \*
 
-    :param u32 len:
+    :param len:
         buffer length
+    :type len: u32
 
-    :param int direction:
+    :param direction:
         data transfer direction
+    :type direction: int
 
 .. _`pmcraid_copy_sglist.description`:
 
@@ -1670,8 +1773,9 @@ pmcraid_queuecommand_lck
 
     Queue a mid-layer request
 
-    :param struct scsi_cmnd \*scsi_cmd:
+    :param scsi_cmd:
         scsi command struct
+    :type scsi_cmd: struct scsi_cmnd \*
 
     :param void (\*done)(struct scsi_cmnd \*):
         done function
@@ -1703,11 +1807,13 @@ pmcraid_chr_open
 
     char node "open" entry, allowed only users with admin access
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*filep:
+    :param filep:
         *undescribed*
+    :type filep: struct file \*
 
 .. _`pmcraid_chr_fasync`:
 
@@ -1718,14 +1824,17 @@ pmcraid_chr_fasync
 
     Async notifier registration from applications
 
-    :param int fd:
+    :param fd:
         *undescribed*
+    :type fd: int
 
-    :param struct file \*filep:
+    :param filep:
         *undescribed*
+    :type filep: struct file \*
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
 .. _`pmcraid_chr_fasync.description`:
 
@@ -1744,14 +1853,17 @@ pmcraid_build_passthrough_ioadls
 
     builds SG elements for passthrough commands sent over IOCTL interface
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to struct pmcraid_cmd
+    :type cmd: struct pmcraid_cmd \*
 
-    :param int buflen:
+    :param buflen:
         length of the request buffer
+    :type buflen: int
 
-    :param int direction:
+    :param direction:
         data transfer direction
+    :type direction: int
 
 .. _`pmcraid_build_passthrough_ioadls.description`:
 
@@ -1770,14 +1882,17 @@ pmcraid_release_passthrough_ioadls
 
     release passthrough ioadls
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to struct pmcraid_cmd for which ioadls were allocated
+    :type cmd: struct pmcraid_cmd \*
 
-    :param int buflen:
+    :param buflen:
         size of the request buffer
+    :type buflen: int
 
-    :param int direction:
+    :param direction:
         data transfer direction
+    :type direction: int
 
 .. _`pmcraid_release_passthrough_ioadls.description`:
 
@@ -1796,17 +1911,21 @@ pmcraid_ioctl_passthrough
 
     handling passthrough IOCTL commands
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param unsigned int ioctl_cmd:
+    :param ioctl_cmd:
         *undescribed*
+    :type ioctl_cmd: unsigned int
 
-    :param unsigned int buflen:
+    :param buflen:
         *undescribed*
+    :type buflen: unsigned int
 
-    :param void __user \*arg:
+    :param arg:
         pointer to pmcraid_passthrough_buffer user buffer
+    :type arg: void __user \*
 
 .. _`pmcraid_ioctl_passthrough.description`:
 
@@ -1825,17 +1944,21 @@ pmcraid_ioctl_driver
 
     ioctl handler for commands handled by driver itself
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl command passed in
+    :type cmd: unsigned int
 
-    :param unsigned int buflen:
+    :param buflen:
         length of user_buffer
+    :type buflen: unsigned int
 
-    :param void __user \*user_buffer:
+    :param user_buffer:
         user buffer pointer
+    :type user_buffer: void __user \*
 
 .. _`pmcraid_ioctl_driver.description`:
 
@@ -1854,14 +1977,17 @@ pmcraid_check_ioctl_buffer
 
     check for proper access to user buffer
 
-    :param int cmd:
+    :param cmd:
         ioctl command
+    :type cmd: int
 
-    :param void __user \*arg:
+    :param arg:
         user buffer
+    :type arg: void __user \*
 
-    :param struct pmcraid_ioctl_header \*hdr:
+    :param hdr:
         pointer to kernel memory for pmcraid_ioctl_header
+    :type hdr: struct pmcraid_ioctl_header \*
 
 .. _`pmcraid_check_ioctl_buffer.description`:
 
@@ -1881,14 +2007,17 @@ pmcraid_chr_ioctl
 
     char node ioctl entry point
 
-    :param struct file \*filep:
+    :param filep:
         *undescribed*
+    :type filep: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         *undescribed*
+    :type arg: unsigned long
 
 .. _`pmcraid_show_log_level`:
 
@@ -1899,14 +2028,17 @@ pmcraid_show_log_level
 
     Display adapter's error logging level
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`pmcraid_show_log_level.return-value`:
 
@@ -1924,17 +2056,21 @@ pmcraid_store_log_level
 
     Change the adapter's error logging level
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         not used
+    :type count: size_t
 
 .. _`pmcraid_store_log_level.return-value`:
 
@@ -1952,14 +2088,17 @@ pmcraid_show_drv_version
 
     Display driver version
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`pmcraid_show_drv_version.return-value`:
 
@@ -1977,14 +2116,17 @@ pmcraid_show_adapter_id
 
     Display driver assigned adapter id
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`pmcraid_show_adapter_id.return-value`:
 
@@ -2002,11 +2144,13 @@ pmcraid_isr
 
     implements legacy interrupt handling routine
 
-    :param int irq:
+    :param irq:
         interrupt vector number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         pointer hrrq_vector
+    :type dev_id: void \*
 
 .. _`pmcraid_isr.description`:
 
@@ -2025,8 +2169,9 @@ pmcraid_worker_function
 
     worker thread function
 
-    :param struct work_struct \*workp:
+    :param workp:
         pointer to struct work queue
+    :type workp: struct work_struct \*
 
 .. _`pmcraid_worker_function.description`:
 
@@ -2045,8 +2190,9 @@ pmcraid_tasklet_function
 
     Tasklet function
 
-    :param unsigned long instance:
+    :param instance:
         pointer to msix param structure
+    :type instance: unsigned long
 
 .. _`pmcraid_tasklet_function.description`:
 
@@ -2065,8 +2211,9 @@ pmcraid_unregister_interrupt_handler
 
     de-register interrupts handlers
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_unregister_interrupt_handler.description`:
 
@@ -2088,8 +2235,9 @@ pmcraid_register_interrupt_handler
 
     registers interrupt handler
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per-adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_register_interrupt_handler.description`:
 
@@ -2108,11 +2256,13 @@ pmcraid_release_cmd_blocks
 
     release buufers allocated for command blocks
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         per adapter instance structure pointer
+    :type pinstance: struct pmcraid_instance \*
 
-    :param int max_index:
+    :param max_index:
         number of buffer blocks to release
+    :type max_index: int
 
 .. _`pmcraid_release_cmd_blocks.description`:
 
@@ -2131,11 +2281,13 @@ pmcraid_release_control_blocks
 
     releases buffers alloced for control blocks
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param int max_index:
+    :param max_index:
         number of buffers (from 0 onwards) to release
+    :type max_index: int
 
 .. _`pmcraid_release_control_blocks.description`:
 
@@ -2157,8 +2309,9 @@ pmcraid_allocate_cmd_blocks
 
     allocate memory for cmd block structures \ ``pinstance``\  - pointer to per adapter instance structure
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         *undescribed*
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_allocate_cmd_blocks.description`:
 
@@ -2179,8 +2332,9 @@ pmcraid_allocate_control_blocks
 
     allocates memory control blocks
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_allocate_control_blocks.description`:
 
@@ -2202,11 +2356,13 @@ pmcraid_release_host_rrqs
 
     release memory allocated for hrrq buffer(s)
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
-    :param int maxindex:
+    :param maxindex:
         size of hrrq buffer pointer array
+    :type maxindex: int
 
 .. _`pmcraid_release_host_rrqs.description`:
 
@@ -2225,8 +2381,9 @@ pmcraid_allocate_host_rrqs
 
     Allocate and initialize host RRQ buffers
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_allocate_host_rrqs.description`:
 
@@ -2245,8 +2402,9 @@ pmcraid_release_hcams
 
     release HCAM buffers
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_release_hcams.description`:
 
@@ -2265,8 +2423,9 @@ pmcraid_allocate_hcams
 
     allocates HCAM buffers
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_allocate_hcams.return-value`:
 
@@ -2284,8 +2443,9 @@ pmcraid_release_config_buffers
 
     release config.table buffers
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_release_config_buffers.description`:
 
@@ -2304,8 +2464,9 @@ pmcraid_allocate_config_buffers
 
     allocates DMAable memory for config table
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_allocate_config_buffers.description`:
 
@@ -2324,8 +2485,9 @@ pmcraid_init_tasklets
 
     registers tasklets for response handling
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_init_tasklets.description`:
 
@@ -2344,8 +2506,9 @@ pmcraid_kill_tasklets
 
     destroys tasklets registered for response handling
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_kill_tasklets.description`:
 
@@ -2364,8 +2527,9 @@ pmcraid_release_buffers
 
     release per-adapter buffers allocated
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter soft state
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_release_buffers.description`:
 
@@ -2384,8 +2548,9 @@ pmcraid_init_buffers
 
     allocates memory and initializes various structures
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to per adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_init_buffers.description`:
 
@@ -2410,10 +2575,11 @@ pmcraid_reinit_buffers
 
     resets various buffer pointers
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance
         Return value
         none
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_init_instance`:
 
@@ -2424,14 +2590,17 @@ pmcraid_init_instance
 
     initialize per instance data structure
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to pci device structure
+    :type pdev: struct pci_dev \*
 
-    :param struct Scsi_Host \*host:
+    :param host:
         pointer to Scsi_Host structure
+    :type host: struct Scsi_Host \*
 
-    :param void __iomem \*mapped_pci_addr:
+    :param mapped_pci_addr:
         memory mapped IOA configuration registers
+    :type mapped_pci_addr: void __iomem \*
 
 .. _`pmcraid_init_instance.description`:
 
@@ -2450,8 +2619,9 @@ pmcraid_shutdown
 
     shutdown adapter controller.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device struct
+    :type pdev: struct pci_dev \*
 
 .. _`pmcraid_shutdown.description`:
 
@@ -2472,8 +2642,9 @@ pmcraid_get_minor
 
     returns unused minor number from minor number bitmap
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pmcraid_release_minor`:
 
@@ -2484,8 +2655,9 @@ pmcraid_release_minor
 
     releases given minor back to minor number bitmap
 
-    :param unsigned short minor:
+    :param minor:
         *undescribed*
+    :type minor: unsigned short
 
 .. _`pmcraid_setup_chrdev`:
 
@@ -2496,8 +2668,9 @@ pmcraid_setup_chrdev
 
     allocates a minor number and registers a char device
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance for which to register device
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_setup_chrdev.description`:
 
@@ -2516,8 +2689,9 @@ pmcraid_release_chrdev
 
     unregisters per-adapter management interface
 
-    :param struct pmcraid_instance \*pinstance:
+    :param pinstance:
         pointer to adapter instance structure
+    :type pinstance: struct pmcraid_instance \*
 
 .. _`pmcraid_release_chrdev.description`:
 
@@ -2536,8 +2710,9 @@ pmcraid_remove
 
     IOA hot plug remove entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device struct
+    :type pdev: struct pci_dev \*
 
 .. _`pmcraid_remove.description`:
 
@@ -2556,11 +2731,13 @@ pmcraid_suspend
 
     driver suspend entry point for power management
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t state:
+    :param state:
         PCI power state to suspend routine
+    :type state: pm_message_t
 
 .. _`pmcraid_suspend.description`:
 
@@ -2578,8 +2755,9 @@ pmcraid_resume
 
     driver resume entry point PCI power management
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`pmcraid_resume.description`:
 
@@ -2597,8 +2775,9 @@ pmcraid_complete_ioa_reset
 
     Called by either timer or tasklet during completion of the ioa reset
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to reset command block
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_set_supported_devs`:
 
@@ -2609,8 +2788,9 @@ pmcraid_set_supported_devs
 
     sends SET SUPPORTED DEVICES to IOAFP
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to pmcraid_cmd structure
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_set_supported_devs.description`:
 
@@ -2629,8 +2809,9 @@ pmcraid_set_timestamp
 
     set the timestamp to IOAFP
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to pmcraid_cmd structure
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_set_timestamp.description`:
 
@@ -2649,8 +2830,9 @@ pmcraid_init_res_table
 
     Initialize the resource table
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer to pmcraid command struct
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_init_res_table.description`:
 
@@ -2674,8 +2856,9 @@ pmcraid_querycfg
 
     Send a Query IOA Config to the adapter.
 
-    :param struct pmcraid_cmd \*cmd:
+    :param cmd:
         pointer pmcraid_cmd struct
+    :type cmd: struct pmcraid_cmd \*
 
 .. _`pmcraid_querycfg.description`:
 
@@ -2701,11 +2884,13 @@ pmcraid_probe
 
     PCI probe entry pointer for PMC MaxRAID controller driver
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to pci device structure
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*dev_id:
+    :param dev_id:
         pointer to device ids structure
+    :type dev_id: const struct pci_device_id \*
 
 .. _`pmcraid_probe.description`:
 
@@ -2725,8 +2910,9 @@ pmcraid_init
 
     module load entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pmcraid_exit`:
 
@@ -2737,8 +2923,9 @@ pmcraid_exit
 
     module unload entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

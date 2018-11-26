@@ -26,14 +26,17 @@ wusb_key_index
 
     the host or the device.
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
-    :param int originator:
+    :param originator:
         *undescribed*
+    :type originator: int
 
 .. This file was automatic generated / don't edit.
 

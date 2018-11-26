@@ -10,17 +10,21 @@ dmam_alloc_coherent
 
     Managed \ :c:func:`dma_alloc_coherent`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate coherent memory for
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         Size of allocation
+    :type size: size_t
 
-    :param dma_addr_t \*dma_handle:
+    :param dma_handle:
         Out argument for allocated DMA handle
+    :type dma_handle: dma_addr_t \*
 
-    :param gfp_t gfp:
+    :param gfp:
         Allocation flags
+    :type gfp: gfp_t
 
 .. _`dmam_alloc_coherent.description`:
 
@@ -46,17 +50,21 @@ dmam_free_coherent
 
     Managed \ :c:func:`dma_free_coherent`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device to free coherent memory for
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         Size of allocation
+    :type size: size_t
 
-    :param void \*vaddr:
+    :param vaddr:
         Virtual address of the memory to free
+    :type vaddr: void \*
 
-    :param dma_addr_t dma_handle:
+    :param dma_handle:
         DMA handle of the memory to free
+    :type dma_handle: dma_addr_t
 
 .. _`dmam_free_coherent.description`:
 
@@ -74,20 +82,25 @@ dmam_alloc_attrs
 
     Managed \ :c:func:`dma_alloc_attrs`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate non_coherent memory for
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         Size of allocation
+    :type size: size_t
 
-    :param dma_addr_t \*dma_handle:
+    :param dma_handle:
         Out argument for allocated DMA handle
+    :type dma_handle: dma_addr_t \*
 
-    :param gfp_t gfp:
+    :param gfp:
         Allocation flags
+    :type gfp: gfp_t
 
-    :param unsigned long attrs:
+    :param attrs:
         Flags in the DMA_ATTR_* namespace.
+    :type attrs: unsigned long
 
 .. _`dmam_alloc_attrs.description`:
 
@@ -113,20 +126,25 @@ dmam_declare_coherent_memory
 
     Managed \ :c:func:`dma_declare_coherent_memory`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device to declare coherent memory for
+    :type dev: struct device \*
 
-    :param phys_addr_t phys_addr:
+    :param phys_addr:
         Physical address of coherent memory to be declared
+    :type phys_addr: phys_addr_t
 
-    :param dma_addr_t device_addr:
+    :param device_addr:
         Device address of coherent memory to be declared
+    :type device_addr: dma_addr_t
 
-    :param size_t size:
+    :param size:
         Size of coherent memory to be declared
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         Flags
+    :type flags: int
 
 .. _`dmam_declare_coherent_memory.description`:
 
@@ -151,8 +169,9 @@ dmam_release_declared_memory
 
     Managed \ :c:func:`dma_release_declared_memory`\ .
 
-    :param struct device \*dev:
+    :param dev:
         Device to release declared coherent memory for
+    :type dev: struct device \*
 
 .. _`dmam_release_declared_memory.description`:
 

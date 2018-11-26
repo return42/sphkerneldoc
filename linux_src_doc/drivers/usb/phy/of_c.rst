@@ -10,8 +10,9 @@ of_usb_get_phy_mode
 
     Get phy mode for given device_node
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to the given device_node
+    :type np: struct device_node \*
 
 .. _`of_usb_get_phy_mode.description`:
 

@@ -10,11 +10,13 @@ fm10k_dcbnl_ieee_getets
 
     get the ETS configuration for the device
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev interface for the device
+    :type dev: struct net_device \*
 
-    :param struct ieee_ets \*ets:
+    :param ets:
         ETS structure to push configuration to
+    :type ets: struct ieee_ets \*
 
 .. _`fm10k_dcbnl_ieee_setets`:
 
@@ -25,11 +27,13 @@ fm10k_dcbnl_ieee_setets
 
     set the ETS configuration for the device
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev interface for the device
+    :type dev: struct net_device \*
 
-    :param struct ieee_ets \*ets:
+    :param ets:
         ETS structure to pull configuration from
+    :type ets: struct ieee_ets \*
 
 .. _`fm10k_dcbnl_ieee_getpfc`:
 
@@ -40,11 +44,13 @@ fm10k_dcbnl_ieee_getpfc
 
     get the PFC configuration for the device
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev interface for the device
+    :type dev: struct net_device \*
 
-    :param struct ieee_pfc \*pfc:
+    :param pfc:
         PFC structure to push configuration to
+    :type pfc: struct ieee_pfc \*
 
 .. _`fm10k_dcbnl_ieee_setpfc`:
 
@@ -55,11 +61,13 @@ fm10k_dcbnl_ieee_setpfc
 
     set the PFC configuration for the device
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev interface for the device
+    :type dev: struct net_device \*
 
-    :param struct ieee_pfc \*pfc:
+    :param pfc:
         PFC structure to pull configuration from
+    :type pfc: struct ieee_pfc \*
 
 .. _`fm10k_dcbnl_getdcbx`:
 
@@ -70,8 +78,9 @@ fm10k_dcbnl_getdcbx
 
     get the DCBX configuration for the device
 
-    :param struct net_device __always_unused \*dev:
+    :param dev:
         netdev interface for the device
+    :type dev: struct net_device __always_unused \*
 
 .. _`fm10k_dcbnl_getdcbx.description`:
 
@@ -89,11 +98,13 @@ fm10k_dcbnl_setdcbx
 
     get the DCBX configuration for the device
 
-    :param struct net_device __always_unused \*dev:
+    :param dev:
         netdev interface for the device
+    :type dev: struct net_device __always_unused \*
 
-    :param u8 mode:
+    :param mode:
         new mode for this device
+    :type mode: u8
 
 .. _`fm10k_dcbnl_setdcbx.description`:
 
@@ -111,8 +122,9 @@ fm10k_dcbnl_set_ops
 
     Configures dcbnl ops pointer for netdev
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev interface for the device
+    :type dev: struct net_device \*
 
 .. _`fm10k_dcbnl_set_ops.description`:
 

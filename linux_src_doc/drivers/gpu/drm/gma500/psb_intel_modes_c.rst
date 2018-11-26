@@ -8,8 +8,9 @@ psb_intel_ddc_probe
 
 .. c:function:: bool psb_intel_ddc_probe(struct i2c_adapter *adapter)
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct i2c_adapter \*
 
 .. _`psb_intel_ddc_get_modes`:
 
@@ -20,11 +21,13 @@ psb_intel_ddc_get_modes
 
     get modelist from monitor
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector device to use
+    :type connector: struct drm_connector \*
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct i2c_adapter \*
 
 .. _`psb_intel_ddc_get_modes.description`:
 

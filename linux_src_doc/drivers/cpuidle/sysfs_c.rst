@@ -10,8 +10,9 @@ cpuidle_add_interface
 
     add CPU global sysfs attributes
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`cpuidle_remove_interface`:
 
@@ -22,8 +23,9 @@ cpuidle_remove_interface
 
     remove CPU global sysfs attributes
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`cpuidle_add_state_sysfs`:
 
@@ -34,8 +36,9 @@ cpuidle_add_state_sysfs
 
     adds cpuidle states sysfs attributes
 
-    :param struct cpuidle_device \*device:
+    :param device:
         the target device
+    :type device: struct cpuidle_device \*
 
 .. _`cpuidle_remove_state_sysfs`:
 
@@ -46,8 +49,9 @@ cpuidle_remove_state_sysfs
 
     removes the cpuidle states sysfs attributes
 
-    :param struct cpuidle_device \*device:
+    :param device:
         the target device
+    :type device: struct cpuidle_device \*
 
 .. _`cpuidle_add_driver_sysfs`:
 
@@ -58,8 +62,9 @@ cpuidle_add_driver_sysfs
 
     adds the driver name sysfs attribute
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_remove_driver_sysfs`:
 
@@ -70,8 +75,9 @@ cpuidle_remove_driver_sysfs
 
     removes the driver name sysfs attribute
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_add_device_sysfs`:
 
@@ -82,8 +88,9 @@ cpuidle_add_device_sysfs
 
     adds device specific sysfs attributes
 
-    :param struct cpuidle_device \*device:
+    :param device:
         the target device
+    :type device: struct cpuidle_device \*
 
 .. _`cpuidle_remove_device_sysfs`:
 
@@ -94,8 +101,9 @@ cpuidle_remove_device_sysfs
 
     removes device specific sysfs attributes
 
-    :param struct cpuidle_device \*device:
+    :param device:
         the target device
+    :type device: struct cpuidle_device \*
 
 .. _`cpuidle_add_sysfs`:
 
@@ -106,8 +114,9 @@ cpuidle_add_sysfs
 
     creates a sysfs instance for the target device
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the target device
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_remove_sysfs`:
 
@@ -118,8 +127,9 @@ cpuidle_remove_sysfs
 
     deletes a sysfs instance on the target device
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the target device
+    :type dev: struct cpuidle_device \*
 
 .. This file was automatic generated / don't edit.
 

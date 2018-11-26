@@ -167,8 +167,9 @@ module_rpmsg_driver
 
     Helper macro for registering an rpmsg driver
 
-    :param  __rpmsg_driver:
+    :param __rpmsg_driver:
         rpmsg_driver struct
+    :type __rpmsg_driver: 
 
 .. _`module_rpmsg_driver.description`:
 

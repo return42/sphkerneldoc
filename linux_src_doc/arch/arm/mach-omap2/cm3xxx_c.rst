@@ -10,17 +10,21 @@ omap3xxx_cm_wait_module_ready
 
     wait for a module to leave idle or standby
 
-    :param u8 part:
+    :param part:
         PRCM partition, ignored for OMAP3
+    :type part: u8
 
-    :param s16 prcm_mod:
+    :param prcm_mod:
         PRCM module offset
+    :type prcm_mod: s16
 
-    :param u16 idlest_id:
+    :param idlest_id:
         CM_IDLESTx register ID (i.e., x = 1, 2, 3)
+    :type idlest_id: u16
 
-    :param u8 idlest_shift:
+    :param idlest_shift:
         shift of the bit in the CM_IDLEST\* register to check
+    :type idlest_shift: u8
 
 .. _`omap3xxx_cm_wait_module_ready.description`:
 
@@ -40,14 +44,17 @@ omap3xxx_cm_split_idlest_reg
 
     split CM_IDLEST reg addr into its components
 
-    :param struct clk_omap_reg \*idlest_reg:
+    :param idlest_reg:
         CM_IDLEST\* virtual address
+    :type idlest_reg: struct clk_omap_reg \*
 
-    :param s16 \*prcm_inst:
+    :param prcm_inst:
         pointer to an s16 to return the PRCM instance offset
+    :type prcm_inst: s16 \*
 
-    :param u8 \*idlest_reg_id:
+    :param idlest_reg_id:
         pointer to a u8 to return the CM_IDLESTx register ID
+    :type idlest_reg_id: u8 \*
 
 .. _`omap3xxx_cm_split_idlest_reg.description`:
 

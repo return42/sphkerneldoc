@@ -10,14 +10,17 @@ snd_soc_component_set_jack
 
     configure component jack.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         COMPONENTs
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         structure to use for the jack
+    :type jack: struct snd_soc_jack \*
 
-    :param void \*data:
+    :param data:
         can be used if codec driver need extra data for configuring jack
+    :type data: void \*
 
 .. _`snd_soc_component_set_jack.description`:
 
@@ -35,24 +38,30 @@ snd_soc_card_jack_new
 
     Create a new jack
 
-    :param struct snd_soc_card \*card:
+    :param card:
         ASoC card
+    :type card: struct snd_soc_card \*
 
-    :param const char \*id:
+    :param id:
         an identifying string for this jack
+    :type id: const char \*
 
-    :param int type:
+    :param type:
         a bitmask of enum snd_jack_type values that can be detected by
         this jack
+    :type type: int
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         structure to use for the jack
+    :type jack: struct snd_soc_jack \*
 
-    :param struct snd_soc_jack_pin \*pins:
+    :param pins:
         Array of jack pins to be added to the jack or NULL
+    :type pins: struct snd_soc_jack_pin \*
 
-    :param unsigned int num_pins:
+    :param num_pins:
         Number of elements in the \ ``pins``\  array
+    :type num_pins: unsigned int
 
 .. _`snd_soc_card_jack_new.description`:
 
@@ -73,14 +82,17 @@ snd_soc_jack_report
 
     Report the current status for a jack
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         the jack
+    :type jack: struct snd_soc_jack \*
 
-    :param int status:
+    :param status:
         a bitmask of enum snd_jack_type values that are currently detected.
+    :type status: int
 
-    :param int mask:
+    :param mask:
         a bitmask of enum snd_jack_type values that being reported.
+    :type mask: int
 
 .. _`snd_soc_jack_report.description`:
 
@@ -108,14 +120,17 @@ snd_soc_jack_add_zones
 
     Associate voltage zones with jack
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         ASoC jack
+    :type jack: struct snd_soc_jack \*
 
-    :param int count:
+    :param count:
         Number of zones
+    :type count: int
 
-    :param struct snd_soc_jack_zone \*zones:
+    :param zones:
         Array of zones
+    :type zones: struct snd_soc_jack_zone \*
 
 .. _`snd_soc_jack_add_zones.description`:
 
@@ -134,11 +149,13 @@ snd_soc_jack_get_type
 
     Based on the mic bias value, this function returns the type of jack from the zones declared in the jack type
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         ASoC jack
+    :type jack: struct snd_soc_jack \*
 
-    :param int micbias_voltage:
+    :param micbias_voltage:
         mic bias voltage at adc channel when jack is plugged in
+    :type micbias_voltage: int
 
 .. _`snd_soc_jack_get_type.description`:
 
@@ -157,14 +174,17 @@ snd_soc_jack_add_pins
 
     Associate DAPM pins with an ASoC jack
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         ASoC jack
+    :type jack: struct snd_soc_jack \*
 
-    :param int count:
+    :param count:
         Number of pins
+    :type count: int
 
-    :param struct snd_soc_jack_pin \*pins:
+    :param pins:
         Array of pins
+    :type pins: struct snd_soc_jack_pin \*
 
 .. _`snd_soc_jack_add_pins.description`:
 
@@ -184,11 +204,13 @@ snd_soc_jack_notifier_register
 
     Register a notifier for jack status
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         ASoC jack
+    :type jack: struct snd_soc_jack \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Notifier block to register
+    :type nb: struct notifier_block \*
 
 .. _`snd_soc_jack_notifier_register.description`:
 
@@ -210,11 +232,13 @@ snd_soc_jack_notifier_unregister
 
     Unregister a notifier for jack status
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         ASoC jack
+    :type jack: struct snd_soc_jack \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Notifier block to unregister
+    :type nb: struct notifier_block \*
 
 .. _`snd_soc_jack_notifier_unregister.description`:
 
@@ -232,14 +256,17 @@ snd_soc_jack_add_gpios
 
     Associate GPIO pins with an ASoC jack
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         ASoC jack
+    :type jack: struct snd_soc_jack \*
 
-    :param int count:
+    :param count:
         number of pins
+    :type count: int
 
-    :param struct snd_soc_jack_gpio \*gpios:
+    :param gpios:
         array of gpio pins
+    :type gpios: struct snd_soc_jack_gpio \*
 
 .. _`snd_soc_jack_add_gpios.description`:
 
@@ -258,17 +285,21 @@ snd_soc_jack_add_gpiods
 
     Associate GPIO descriptor pins with an ASoC jack
 
-    :param struct device \*gpiod_dev:
+    :param gpiod_dev:
         GPIO consumer device
+    :type gpiod_dev: struct device \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         ASoC jack
+    :type jack: struct snd_soc_jack \*
 
-    :param int count:
+    :param count:
         number of pins
+    :type count: int
 
-    :param struct snd_soc_jack_gpio \*gpios:
+    :param gpios:
         array of gpio pins
+    :type gpios: struct snd_soc_jack_gpio \*
 
 .. _`snd_soc_jack_add_gpiods.description`:
 
@@ -287,14 +318,17 @@ snd_soc_jack_free_gpios
 
     Release GPIO pins' resources of an ASoC jack
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         ASoC jack
+    :type jack: struct snd_soc_jack \*
 
-    :param int count:
+    :param count:
         number of pins
+    :type count: int
 
-    :param struct snd_soc_jack_gpio \*gpios:
+    :param gpios:
         array of gpio pins
+    :type gpios: struct snd_soc_jack_gpio \*
 
 .. _`snd_soc_jack_free_gpios.description`:
 

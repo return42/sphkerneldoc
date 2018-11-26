@@ -8,11 +8,13 @@ CRYP_SET_BITS
 
 .. c:function::  CRYP_SET_BITS( reg_name,  mask)
 
-    :param  reg_name:
+    :param reg_name:
         *undescribed*
+    :type reg_name: 
 
-    :param  mask:
+    :param mask:
         *undescribed*
+    :type mask: 
 
 .. _`cryp_peripheral_id0`:
 

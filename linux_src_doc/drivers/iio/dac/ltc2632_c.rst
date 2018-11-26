@@ -1,0 +1,80 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/dac/ltc2632.c
+
+.. _`ltc2632_chip_info`:
+
+struct ltc2632_chip_info
+========================
+
+.. c:type:: struct ltc2632_chip_info
+
+    chip specific information
+
+.. _`ltc2632_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ltc2632_chip_info {
+        const struct iio_chan_spec *channels;
+        const int vref_mv;
+    }
+
+.. _`ltc2632_chip_info.members`:
+
+Members
+-------
+
+channels
+    channel spec for the DAC
+
+vref_mv
+    internal reference voltage
+
+.. _`ltc2632_state`:
+
+struct ltc2632_state
+====================
+
+.. c:type:: struct ltc2632_state
+
+    driver instance specific data
+
+.. _`ltc2632_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ltc2632_state {
+        struct spi_device *spi_dev;
+        unsigned int powerdown_cache_mask;
+        int vref_mv;
+        struct regulator *vref_reg;
+    }
+
+.. _`ltc2632_state.members`:
+
+Members
+-------
+
+spi_dev
+    pointer to the spi_device struct
+    \ ``powerdown_cache_mask``\         used to show current channel powerdown state
+    \ ``vref_mv``\                      used reference voltage (internal or external)
+    \ ``vref_reg``\             regulator for the reference voltage
+
+powerdown_cache_mask
+    *undescribed*
+
+vref_mv
+    *undescribed*
+
+vref_reg
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

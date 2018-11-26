@@ -10,11 +10,13 @@ wakeup_source_prepare
 
     Prepare a new wakeup source for initialization.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source to prepare.
+    :type ws: struct wakeup_source \*
 
-    :param const char \*name:
+    :param name:
         Pointer to the name of the new wakeup source.
+    :type name: const char \*
 
 .. _`wakeup_source_prepare.description`:
 
@@ -33,8 +35,9 @@ wakeup_source_create
 
     Create a struct wakeup_source object.
 
-    :param const char \*name:
+    :param name:
         Name of the new wakeup source.
+    :type name: const char \*
 
 .. _`wakeup_source_drop`:
 
@@ -45,8 +48,9 @@ wakeup_source_drop
 
     Prepare a struct wakeup_source object for destruction.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source to prepare for destruction.
+    :type ws: struct wakeup_source \*
 
 .. _`wakeup_source_drop.description`:
 
@@ -65,8 +69,9 @@ wakeup_source_destroy
 
     Destroy a struct wakeup_source object.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source to destroy.
+    :type ws: struct wakeup_source \*
 
 .. _`wakeup_source_destroy.description`:
 
@@ -84,8 +89,9 @@ wakeup_source_add
 
     Add given object to the list of wakeup sources.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source object to add to the list.
+    :type ws: struct wakeup_source \*
 
 .. _`wakeup_source_remove`:
 
@@ -96,8 +102,9 @@ wakeup_source_remove
 
     Remove given object from the wakeup sources list.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source object to remove from the list.
+    :type ws: struct wakeup_source \*
 
 .. _`wakeup_source_register`:
 
@@ -108,8 +115,9 @@ wakeup_source_register
 
     Create wakeup source and add it to the list.
 
-    :param const char \*name:
+    :param name:
         Name of the wakeup source to register.
+    :type name: const char \*
 
 .. _`wakeup_source_unregister`:
 
@@ -120,8 +128,9 @@ wakeup_source_unregister
 
     Remove wakeup source from the list and remove it.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source object to unregister.
+    :type ws: struct wakeup_source \*
 
 .. _`device_wakeup_attach`:
 
@@ -132,11 +141,13 @@ device_wakeup_attach
 
     Attach a wakeup source object to a device object.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source object to attach to \ ``dev``\ .
+    :type ws: struct wakeup_source \*
 
 .. _`device_wakeup_attach.description`:
 
@@ -154,8 +165,9 @@ device_wakeup_enable
 
     Enable given device to be a wakeup source.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`device_wakeup_enable.description`:
 
@@ -173,11 +185,13 @@ device_wakeup_attach_irq
 
     Attach a wakeirq to a wakeup source
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle
+    :type dev: struct device \*
 
-    :param struct wake_irq \*wakeirq:
+    :param wakeirq:
         Device specific wakeirq entry
+    :type wakeirq: struct wake_irq \*
 
 .. _`device_wakeup_attach_irq.description`:
 
@@ -199,8 +213,9 @@ device_wakeup_detach_irq
 
     Detach a wakeirq from a wakeup source
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle
+    :type dev: struct device \*
 
 .. _`device_wakeup_detach_irq.description`:
 
@@ -218,8 +233,9 @@ device_wakeup_arm_wake_irqs
 
 .. c:function:: void device_wakeup_arm_wake_irqs( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`device_wakeup_arm_wake_irqs.description`:
 
@@ -235,8 +251,9 @@ device_wakeup_disarm_wake_irqs
 
 .. c:function:: void device_wakeup_disarm_wake_irqs( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`device_wakeup_disarm_wake_irqs.description`:
 
@@ -254,8 +271,9 @@ device_wakeup_detach
 
     Detach a device's wakeup source object from it.
 
-    :param struct device \*dev:
+    :param dev:
         Device to detach the wakeup source object from.
+    :type dev: struct device \*
 
 .. _`device_wakeup_detach.description`:
 
@@ -273,8 +291,9 @@ device_wakeup_disable
 
     Do not regard a device as a wakeup source any more.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
 .. _`device_wakeup_disable.description`:
 
@@ -293,11 +312,13 @@ device_set_wakeup_capable
 
     Set/reset device wakeup capability flag.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param bool capable:
+    :param capable:
         Whether or not \ ``dev``\  is capable of waking up the system from sleep.
+    :type capable: bool
 
 .. _`device_set_wakeup_capable.description`:
 
@@ -320,11 +341,13 @@ device_init_wakeup
 
     Device wakeup initialization.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param bool enable:
+    :param enable:
         Whether or not to enable \ ``dev``\  as a wakeup device.
+    :type enable: bool
 
 .. _`device_init_wakeup.description`:
 
@@ -352,11 +375,13 @@ device_set_wakeup_enable
 
     Enable or disable a device to wake up the system.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param bool enable:
+    :param enable:
         *undescribed*
+    :type enable: bool
 
 .. _`wakeup_source_not_registered`:
 
@@ -367,8 +392,9 @@ wakeup_source_not_registered
 
     validate the given wakeup source.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source to be validated.
+    :type ws: struct wakeup_source \*
 
 .. _`wakeup_source_activate`:
 
@@ -379,8 +405,9 @@ wakeup_source_activate
 
     Mark given wakeup source as active.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source to handle.
+    :type ws: struct wakeup_source \*
 
 .. _`wakeup_source_activate.description`:
 
@@ -400,11 +427,13 @@ wakeup_source_report_event
 
     Report wakeup event using the given source.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source to report the event for.
+    :type ws: struct wakeup_source \*
 
-    :param bool hard:
+    :param hard:
         If set, abort suspends in progress and wake up from suspend-to-idle.
+    :type hard: bool
 
 .. _`__pm_stay_awake`:
 
@@ -415,8 +444,9 @@ wakeup_source_report_event
 
     Notify the PM core of a wakeup event.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source object associated with the source of the event.
+    :type ws: struct wakeup_source \*
 
 .. _`__pm_stay_awake.description`:
 
@@ -434,8 +464,9 @@ pm_stay_awake
 
     Notify the PM core that a wakeup event is being processed.
 
-    :param struct device \*dev:
+    :param dev:
         Device the wakeup event is related to.
+    :type dev: struct device \*
 
 .. _`pm_stay_awake.description`:
 
@@ -458,8 +489,9 @@ wakeup_source_deactivate
 
     Mark given wakeup source as inactive.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source to handle.
+    :type ws: struct wakeup_source \*
 
 .. _`wakeup_source_deactivate.description`:
 
@@ -479,8 +511,9 @@ and incrementing the counter of registered wakeup events.
 
     Notify the PM core that processing of a wakeup event has ended.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source object associated with the source of the event.
+    :type ws: struct wakeup_source \*
 
 .. _`__pm_relax.description`:
 
@@ -501,8 +534,9 @@ pm_relax
 
     Notify the PM core that processing of a wakeup event has ended.
 
-    :param struct device \*dev:
+    :param dev:
         Device that signaled the event.
+    :type dev: struct device \*
 
 .. _`pm_relax.description`:
 
@@ -520,8 +554,9 @@ pm_wakeup_timer_fn
 
     Delayed finalization of a wakeup event.
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`pm_wakeup_timer_fn.description`:
 
@@ -541,14 +576,17 @@ pm_wakeup_ws_event
 
     Notify the PM core of a wakeup event.
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source object associated with the event source.
+    :type ws: struct wakeup_source \*
 
-    :param unsigned int msec:
+    :param msec:
         Anticipated event processing time (in milliseconds).
+    :type msec: unsigned int
 
-    :param bool hard:
+    :param hard:
         If set, abort suspends in progress and wake up from suspend-to-idle.
+    :type hard: bool
 
 .. _`pm_wakeup_ws_event.description`:
 
@@ -571,14 +609,17 @@ pm_wakeup_dev_event
 
     Notify the PM core of a wakeup event.
 
-    :param struct device \*dev:
+    :param dev:
         Device the wakeup event is related to.
+    :type dev: struct device \*
 
-    :param unsigned int msec:
+    :param msec:
         Anticipated event processing time (in milliseconds).
+    :type msec: unsigned int
 
-    :param bool hard:
+    :param hard:
         If set, abort suspends in progress and wake up from suspend-to-idle.
+    :type hard: bool
 
 .. _`pm_wakeup_dev_event.description`:
 
@@ -596,8 +637,9 @@ pm_wakeup_pending
 
     Check if power transition in progress should be aborted.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pm_wakeup_pending.description`:
 
@@ -618,11 +660,13 @@ pm_get_wakeup_count
 
     Read the number of registered wakeup events.
 
-    :param unsigned int \*count:
+    :param count:
         Address to store the value at.
+    :type count: unsigned int \*
 
-    :param bool block:
+    :param block:
         Whether or not to block.
+    :type block: bool
 
 .. _`pm_get_wakeup_count.description`:
 
@@ -645,8 +689,9 @@ pm_save_wakeup_count
 
     Save the current number of registered wakeup events.
 
-    :param unsigned int count:
+    :param count:
         Value to compare with the current number of registered wakeup events.
+    :type count: unsigned int
 
 .. _`pm_save_wakeup_count.description`:
 
@@ -668,8 +713,9 @@ pm_wakep_autosleep_enabled
 
     Modify autosleep_enabled for all wakeup sources.
 
-    :param bool set:
+    :param set:
         *undescribed*
+    :type set: bool
 
 .. _`print_wakeup_source_stats`:
 
@@ -680,11 +726,13 @@ print_wakeup_source_stats
 
     Print wakeup source statistics information.
 
-    :param struct seq_file \*m:
+    :param m:
         seq_file to print the statistics into.
+    :type m: struct seq_file \*
 
-    :param struct wakeup_source \*ws:
+    :param ws:
         Wakeup source object to print the statistics for.
+    :type ws: struct wakeup_source \*
 
 .. _`wakeup_sources_stats_seq_show`:
 
@@ -695,11 +743,13 @@ wakeup_sources_stats_seq_show
 
     Print wakeup sources statistics information.
 
-    :param struct seq_file \*m:
+    :param m:
         seq_file to print the statistics into.
+    :type m: struct seq_file \*
 
-    :param void \*v:
+    :param v:
         wakeup_source of each iteration
+    :type v: void \*
 
 .. This file was automatic generated / don't edit.
 

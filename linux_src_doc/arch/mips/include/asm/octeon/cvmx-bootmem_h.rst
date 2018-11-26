@@ -10,8 +10,9 @@ cvmx_bootmem_init
 
     normally called inside of \ :c:func:`cvmx_user_app_init`\ 
 
-    :param void \*mem_desc_ptr:
+    :param mem_desc_ptr:
         Address of the free memory list
+    :type mem_desc_ptr: void \*
 
 .. _`cvmx_bootmem_alloc`:
 
@@ -22,11 +23,13 @@ cvmx_bootmem_alloc
 
     to the application by the bootloader. This is an allocate-only algorithm, so freeing memory is not possible.
 
-    :param uint64_t size:
+    :param size:
         Size in bytes of block to allocate
+    :type size: uint64_t
 
-    :param uint64_t alignment:
+    :param alignment:
         Alignment required - must be power of 2
+    :type alignment: uint64_t
 
 .. _`cvmx_bootmem_alloc.description`:
 
@@ -44,16 +47,19 @@ cvmx_bootmem_alloc_address
 
     passed to the application by the bootloader at a specific address. This is an allocate-only algorithm, so freeing memory is not possible. Allocation will fail if memory cannot be allocated at the specified address.
 
-    :param uint64_t size:
+    :param size:
         Size in bytes of block to allocate
+    :type size: uint64_t
 
-    :param uint64_t address:
+    :param address:
         Physical address to allocate memory at.  If this memory is not
         available, the allocation fails.
+    :type address: uint64_t
 
-    :param uint64_t alignment:
+    :param alignment:
         Alignment required - must be power of 2
         Returns pointer to block of memory, NULL on error
+    :type alignment: uint64_t
 
 .. _`cvmx_bootmem_alloc_range`:
 
@@ -64,18 +70,22 @@ cvmx_bootmem_alloc_range
 
     passed to the application by the bootloader within a specified address range. This is an allocate-only algorithm, so freeing memory is not possible. Allocation will fail if memory cannot be allocated in the requested range.
 
-    :param uint64_t size:
+    :param size:
         Size in bytes of block to allocate
+    :type size: uint64_t
 
-    :param uint64_t alignment:
+    :param alignment:
         Alignment required - must be power of 2
         Returns pointer to block of memory, NULL on error
+    :type alignment: uint64_t
 
-    :param uint64_t min_addr:
+    :param min_addr:
         defines the minimum address of the range
+    :type min_addr: uint64_t
 
-    :param uint64_t max_addr:
+    :param max_addr:
         defines the maximum address of the range
+    :type max_addr: uint64_t
 
 .. _`cvmx_bootmem_alloc_named`:
 
@@ -84,14 +94,17 @@ cvmx_bootmem_alloc_named
 
 .. c:function:: void *cvmx_bootmem_alloc_named(uint64_t size, uint64_t alignment, char *name)
 
-    :param uint64_t size:
+    :param size:
         *undescribed*
+    :type size: uint64_t
 
-    :param uint64_t alignment:
+    :param alignment:
         *undescribed*
+    :type alignment: uint64_t
 
-    :param char \*name:
+    :param name:
         name of block to free
+    :type name: char \*
 
 .. _`cvmx_bootmem_alloc_named.description`:
 
@@ -110,16 +123,19 @@ cvmx_bootmem_alloc_named_address
 
     to the application by the bootloader, and assign it a name in the global named block table.  (part of the cvmx_bootmem_descriptor_t structure) Named blocks can later be freed.
 
-    :param uint64_t size:
+    :param size:
         Size in bytes of block to allocate
+    :type size: uint64_t
 
-    :param uint64_t address:
+    :param address:
         Physical address to allocate memory at.  If this
         memory is not available, the allocation fails.
+    :type address: uint64_t
 
-    :param char \*name:
+    :param name:
         name of block - must be less than CVMX_BOOTMEM_NAME_LEN
         bytes
+    :type name: char \*
 
 .. _`cvmx_bootmem_alloc_named_address.description`:
 
@@ -137,20 +153,25 @@ cvmx_bootmem_alloc_named_range
 
     that was passed to the application by the bootloader, and assign it a name in the global named block table.  (part of the cvmx_bootmem_descriptor_t structure) Named blocks can later be freed.  If request cannot be satisfied within the address range specified, NULL is returned
 
-    :param uint64_t size:
+    :param size:
         Size in bytes of block to allocate
+    :type size: uint64_t
 
-    :param uint64_t min_addr:
+    :param min_addr:
         minimum address of range
+    :type min_addr: uint64_t
 
-    :param uint64_t max_addr:
+    :param max_addr:
         maximum address of range
+    :type max_addr: uint64_t
 
-    :param uint64_t align:
+    :param align:
         Alignment of memory to be allocated. (must be a power of 2)
+    :type align: uint64_t
 
-    :param char \*name:
+    :param name:
         name of block - must be less than CVMX_BOOTMEM_NAME_LEN bytes
+    :type name: char \*
 
 .. _`cvmx_bootmem_alloc_named_range.description`:
 
@@ -168,20 +189,25 @@ cvmx_bootmem_alloc_named_range_once
 
     free list that was passed to the application by the bootloader, and assign it a name in the global named block table.  (part of the cvmx_bootmem_descriptor_t structure) Named blocks can later be freed.  If the requested name block is already allocated, return the pointer to block of memory.  If request cannot be satisfied within the address range specified, NULL is returned
 
-    :param uint64_t size:
+    :param size:
         *undescribed*
+    :type size: uint64_t
 
-    :param uint64_t min_addr:
+    :param min_addr:
         *undescribed*
+    :type min_addr: uint64_t
 
-    :param uint64_t max_addr:
+    :param max_addr:
         *undescribed*
+    :type max_addr: uint64_t
 
-    :param uint64_t align:
+    :param align:
         *undescribed*
+    :type align: uint64_t
 
-    :param char \*name:
+    :param name:
         *undescribed*
+    :type name: char \*
 
     :param void (\*init)(void \*):
         *undescribed*
@@ -210,8 +236,9 @@ cvmx_bootmem_find_named_block
 
 .. c:function:: struct cvmx_bootmem_named_block_desc *cvmx_bootmem_find_named_block(char *name)
 
-    :param char \*name:
+    :param name:
         name of block to free
+    :type name: char \*
 
 .. _`cvmx_bootmem_find_named_block.description`:
 
@@ -230,18 +257,21 @@ cvmx_bootmem_phy_alloc
 
     (optional) requested address and alignment.
 
-    :param uint64_t req_size:
+    :param req_size:
         size of region to allocate.  All requests are rounded up
         to be a multiple CVMX_BOOTMEM_ALIGNMENT_SIZE bytes size
+    :type req_size: uint64_t
 
-    :param uint64_t address_min:
+    :param address_min:
         Minimum address that block can occupy.
+    :type address_min: uint64_t
 
-    :param uint64_t address_max:
+    :param address_max:
         Specifies the maximum address_min (inclusive) that
         the allocation can use.
+    :type address_max: uint64_t
 
-    :param uint64_t alignment:
+    :param alignment:
         Requested alignment of the block.  If this alignment
         cannot be met, the allocation fails.  This must be a
         power of 2.  (Note: Alignment of
@@ -249,9 +279,11 @@ cvmx_bootmem_phy_alloc
         internally enforced.  Requested alignments of less than
         CVMX_BOOTMEM_ALIGNMENT_SIZE are set to
         CVMX_BOOTMEM_ALIGNMENT_SIZE.)
+    :type alignment: uint64_t
 
-    :param uint32_t flags:
+    :param flags:
         Flags to control options for the allocation.
+    :type flags: uint32_t
 
 .. _`cvmx_bootmem_phy_alloc.description`:
 
@@ -269,23 +301,29 @@ cvmx_bootmem_phy_named_block_alloc
 
     (optional) requested address and alignment.
 
-    :param uint64_t size:
+    :param size:
         *undescribed*
+    :type size: uint64_t
 
-    :param uint64_t min_addr:
+    :param min_addr:
         *undescribed*
+    :type min_addr: uint64_t
 
-    :param uint64_t max_addr:
+    :param max_addr:
         *undescribed*
+    :type max_addr: uint64_t
 
-    :param uint64_t alignment:
+    :param alignment:
         *undescribed*
+    :type alignment: uint64_t
 
-    :param char \*name:
+    :param name:
         *undescribed*
+    :type name: char \*
 
-    :param uint32_t flags:
+    :param flags:
         *undescribed*
+    :type flags: uint32_t
 
 .. _`cvmx_bootmem_phy_named_block_alloc.description`:
 
@@ -319,12 +357,14 @@ cvmx_bootmem_phy_named_block_find
 
     Also used for finding an unused entry in the named block table.
 
-    :param char \*name:
+    :param name:
         Name of memory block to find.  If NULL pointer given, then
         finds unused descriptor, if available.
+    :type name: char \*
 
-    :param uint32_t flags:
+    :param flags:
         Flags to control options for the allocation.
+    :type flags: uint32_t
 
 .. _`cvmx_bootmem_phy_named_block_find.description`:
 
@@ -342,11 +382,13 @@ cvmx_bootmem_phy_named_block_free
 
 .. c:function:: int cvmx_bootmem_phy_named_block_free(char *name, uint32_t flags)
 
-    :param char \*name:
+    :param name:
         name of block to free
+    :type name: char \*
 
-    :param uint32_t flags:
+    :param flags:
         flags for passing options
+    :type flags: uint32_t
 
 .. _`cvmx_bootmem_phy_named_block_free.description`:
 
@@ -365,14 +407,17 @@ Returns 0 on failure
 
     be used with care, as the size provided must match the size of the block that was allocated, or the list will become corrupted.
 
-    :param uint64_t phy_addr:
+    :param phy_addr:
         physical address of block
+    :type phy_addr: uint64_t
 
-    :param uint64_t size:
+    :param size:
         size of block in bytes.
+    :type size: uint64_t
 
-    :param uint32_t flags:
+    :param flags:
         flags for passing options
+    :type flags: uint32_t
 
 .. _`__cvmx_bootmem_phy_free.important`:
 
@@ -400,8 +445,9 @@ cvmx_bootmem_lock
 
     where multiple allocations must be made without being interrupted. This should be used with the CVMX_BOOTMEM_FLAG_NO_LOCKING flag.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_bootmem_unlock`:
 
@@ -412,8 +458,9 @@ cvmx_bootmem_unlock
 
     where multiple allocations must be made without being interrupted. This should be used with the CVMX_BOOTMEM_FLAG_NO_LOCKING flag.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

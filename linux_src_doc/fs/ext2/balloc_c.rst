@@ -10,14 +10,17 @@
 
     - Dump the filesystem block allocation reservation map
 
-    :param struct rb_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct rb_root \*
 
-    :param int verbose:
+    :param verbose:
         verbose mode
+    :type verbose: int
 
-    :param const char \*fn:
+    :param fn:
         function which wishes to dump the reservation map
+    :type fn: const char \*
 
 .. _`__rsv_window_dump.description`:
 
@@ -35,17 +38,21 @@ goal_in_my_reservation
 
 .. c:function:: int goal_in_my_reservation(struct ext2_reserve_window *rsv, ext2_grpblk_t grp_goal, unsigned int group, struct super_block *sb)
 
-    :param struct ext2_reserve_window \*rsv:
+    :param rsv:
         inode's reservation window
+    :type rsv: struct ext2_reserve_window \*
 
-    :param ext2_grpblk_t grp_goal:
+    :param grp_goal:
         given goal block relative to the allocation block group
+    :type grp_goal: ext2_grpblk_t
 
-    :param unsigned int group:
+    :param group:
         the current allocation block group
+    :type group: unsigned int
 
-    :param struct super_block \*sb:
+    :param sb:
         filesystem super block
+    :type sb: struct super_block \*
 
 .. _`goal_in_my_reservation.description`:
 
@@ -68,11 +75,13 @@ search_reserve_window
 
 .. c:function:: struct ext2_reserve_window_node *search_reserve_window(struct rb_root *root, ext2_fsblk_t goal)
 
-    :param struct rb_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct rb_root \*
 
-    :param ext2_fsblk_t goal:
+    :param goal:
         target allocation block
+    :type goal: ext2_fsblk_t
 
 .. _`search_reserve_window.description`:
 
@@ -92,11 +101,13 @@ rsv_window_remove
 
     - unlink a window from the reservation rb tree
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
-    :param struct ext2_reserve_window_node \*rsv:
+    :param rsv:
         reservation window to remove
+    :type rsv: struct ext2_reserve_window_node \*
 
 .. _`rsv_window_remove.description`:
 
@@ -114,8 +125,9 @@ ext2_init_block_alloc_info
 
 .. c:function:: void ext2_init_block_alloc_info(struct inode *inode)
 
-    :param struct inode \*inode:
+    :param inode:
         file inode structure
+    :type inode: struct inode \*
 
 .. _`ext2_init_block_alloc_info.description`:
 
@@ -146,8 +158,9 @@ ext2_discard_reservation
 
 .. c:function:: void ext2_discard_reservation(struct inode *inode)
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
 .. _`ext2_discard_reservation.description`:
 
@@ -175,14 +188,17 @@ ext2_free_blocks
 
     - Free given blocks and update quota and i_blocks
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
-    :param unsigned long block:
+    :param block:
         start physical block to free
+    :type block: unsigned long
 
-    :param unsigned long count:
+    :param count:
         number of blocks to free
+    :type count: unsigned long
 
 .. _`bitmap_search_next_usable_block`:
 
@@ -191,14 +207,17 @@ bitmap_search_next_usable_block
 
 .. c:function:: ext2_grpblk_t bitmap_search_next_usable_block(ext2_grpblk_t start, struct buffer_head *bh, ext2_grpblk_t maxblocks)
 
-    :param ext2_grpblk_t start:
+    :param start:
         the starting block (group relative) of the search
+    :type start: ext2_grpblk_t
 
-    :param struct buffer_head \*bh:
+    :param bh:
         bufferhead contains the block group bitmap
+    :type bh: struct buffer_head \*
 
-    :param ext2_grpblk_t maxblocks:
+    :param maxblocks:
         the ending block (group relative) of the reservation
+    :type maxblocks: ext2_grpblk_t
 
 .. _`bitmap_search_next_usable_block.description`:
 
@@ -215,15 +234,18 @@ find_next_usable_block
 
 .. c:function:: ext2_grpblk_t find_next_usable_block(int start, struct buffer_head *bh, int maxblocks)
 
-    :param int start:
+    :param start:
         the starting block (group relative) to find next
         allocatable block in bitmap.
+    :type start: int
 
-    :param struct buffer_head \*bh:
+    :param bh:
         bufferhead contains the block group bitmap
+    :type bh: struct buffer_head \*
 
-    :param int maxblocks:
+    :param maxblocks:
         the ending block (group relative) for the search
+    :type maxblocks: int
 
 .. _`find_next_usable_block.description`:
 
@@ -242,23 +264,29 @@ ext2_try_to_allocate
 
 .. c:function:: int ext2_try_to_allocate(struct super_block *sb, int group, struct buffer_head *bitmap_bh, ext2_grpblk_t grp_goal, unsigned long *count, struct ext2_reserve_window *my_rsv)
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
-    :param int group:
+    :param group:
         given allocation block group
+    :type group: int
 
-    :param struct buffer_head \*bitmap_bh:
+    :param bitmap_bh:
         bufferhead holds the block bitmap
+    :type bitmap_bh: struct buffer_head \*
 
-    :param ext2_grpblk_t grp_goal:
+    :param grp_goal:
         given target block within the group
+    :type grp_goal: ext2_grpblk_t
 
-    :param unsigned long \*count:
+    :param count:
         target number of blocks to allocate
+    :type count: unsigned long \*
 
-    :param struct ext2_reserve_window \*my_rsv:
+    :param my_rsv:
         reservation window
+    :type my_rsv: struct ext2_reserve_window \*
 
 .. _`ext2_try_to_allocate.description`:
 
@@ -291,26 +319,31 @@ find_next_reservable_window
 
     find a reservable space within the given range. It does not allocate the reservation window for now: \ :c:func:`alloc_new_reservation`\  will do the work later.
 
-    :param struct ext2_reserve_window_node \*search_head:
+    :param search_head:
         the head of the searching list;
         This is not necessarily the list head of the whole filesystem
+    :type search_head: struct ext2_reserve_window_node \*
 
-    :param struct ext2_reserve_window_node \*my_rsv:
+    :param my_rsv:
         *undescribed*
+    :type my_rsv: struct ext2_reserve_window_node \*
 
-    :param struct super_block \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct super_block \*
 
-    :param ext2_fsblk_t start_block:
+    :param start_block:
         *undescribed*
+    :type start_block: ext2_fsblk_t
 
-    :param ext2_fsblk_t last_block:
+    :param last_block:
         the maximum block number that our goal reservable space
         could start from. This is normally the last block in this
         group. The search will end when we found the start of next
         possible reservable space is out of this boundary.
         This could handle the cross boundary reservation window
         request.
+    :type last_block: ext2_fsblk_t
 
 .. _`find_next_reservable_window.description`:
 
@@ -336,24 +369,29 @@ alloc_new_reservation
 
     -allocate a new reservation window
 
-    :param struct ext2_reserve_window_node \*my_rsv:
+    :param my_rsv:
         *undescribed*
+    :type my_rsv: struct ext2_reserve_window_node \*
 
-    :param ext2_grpblk_t grp_goal:
+    :param grp_goal:
         The goal (group-relative).  It is where the search for a
         free reservable space should start from.
         if we have a goal(goal >0 ), then start from there,
         no goal(goal = -1), we start from the first block
         of the group.
+    :type grp_goal: ext2_grpblk_t
 
-    :param struct super_block \*sb:
+    :param sb:
         the super block
+    :type sb: struct super_block \*
 
-    :param unsigned int group:
+    :param group:
         the group we are trying to allocate in
+    :type group: unsigned int
 
-    :param struct buffer_head \*bitmap_bh:
+    :param bitmap_bh:
         the block group block bitmap
+    :type bitmap_bh: struct buffer_head \*
 
 .. _`alloc_new_reservation.description`:
 
@@ -393,14 +431,17 @@ try_to_extend_reservation
 
 .. c:function:: void try_to_extend_reservation(struct ext2_reserve_window_node *my_rsv, struct super_block *sb, int size)
 
-    :param struct ext2_reserve_window_node \*my_rsv:
+    :param my_rsv:
         given reservation window
+    :type my_rsv: struct ext2_reserve_window_node \*
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
-    :param int size:
+    :param size:
         the delta to extend
+    :type size: int
 
 .. _`try_to_extend_reservation.description`:
 
@@ -425,23 +466,29 @@ ext2_try_to_allocate_with_rsv
 
 .. c:function:: ext2_grpblk_t ext2_try_to_allocate_with_rsv(struct super_block *sb, unsigned int group, struct buffer_head *bitmap_bh, ext2_grpblk_t grp_goal, struct ext2_reserve_window_node *my_rsv, unsigned long *count)
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
-    :param unsigned int group:
+    :param group:
         given allocation block group
+    :type group: unsigned int
 
-    :param struct buffer_head \*bitmap_bh:
+    :param bitmap_bh:
         bufferhead holds the block bitmap
+    :type bitmap_bh: struct buffer_head \*
 
-    :param ext2_grpblk_t grp_goal:
+    :param grp_goal:
         given target block within the group
+    :type grp_goal: ext2_grpblk_t
 
-    :param struct ext2_reserve_window_node \*my_rsv:
+    :param my_rsv:
         reservation window
+    :type my_rsv: struct ext2_reserve_window_node \*
 
-    :param unsigned long \*count:
+    :param count:
         target number of blocks to allocate
+    :type count: unsigned long \*
 
 .. _`ext2_try_to_allocate_with_rsv.description`:
 
@@ -472,8 +519,9 @@ ext2_has_free_blocks
 
 .. c:function:: int ext2_has_free_blocks(struct ext2_sb_info *sbi)
 
-    :param struct ext2_sb_info \*sbi:
+    :param sbi:
         in-core super block structure.
+    :type sbi: struct ext2_sb_info \*
 
 .. _`ext2_has_free_blocks.description`:
 
@@ -491,11 +539,13 @@ ext2_bg_has_super
 
     number of blocks used by the superblock in group
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock for filesystem
+    :type sb: struct super_block \*
 
-    :param int group:
+    :param group:
         group number to check
+    :type group: int
 
 .. _`ext2_bg_has_super.description`:
 
@@ -514,11 +564,13 @@ ext2_bg_num_gdb
 
     number of blocks used by the group table in group
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock for filesystem
+    :type sb: struct super_block \*
 
-    :param int group:
+    :param group:
         group number to check
+    :type group: int
 
 .. _`ext2_bg_num_gdb.description`:
 

@@ -10,18 +10,20 @@ zcrypt_type6_mex_key_en
 
     strips leading zeroes from the b_key. Note that all numerics in the key token are big-endian, while the entries in the key block header are little-endian.
 
-    :param struct ica_rsa_modexpo \*mex:
+    :param mex:
         pointer to user input data
+    :type mex: struct ica_rsa_modexpo \*
 
-    :param void \*p:
+    :param p:
         pointer to memory area for the key
+    :type p: void \*
 
 .. _`zcrypt_type6_mex_key_en.description`:
 
 Description
 -----------
 
-Returns the size of the key area or -EFAULT
+Returns the size of the key area or negative errno value.
 
 .. _`zcrypt_type6_crt_key`:
 
@@ -32,11 +34,13 @@ zcrypt_type6_crt_key
 
     Note that all numerics in the key token are big-endian, while the entries in the key block header are little-endian.
 
-    :param struct ica_rsa_modexpo_crt \*crt:
+    :param crt:
         *undescribed*
+    :type crt: struct ica_rsa_modexpo_crt \*
 
-    :param void \*p:
+    :param p:
         pointer to memory area for the key
+    :type p: void \*
 
 .. _`zcrypt_type6_crt_key.description`:
 

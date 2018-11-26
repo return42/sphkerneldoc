@@ -10,11 +10,13 @@ step_wise_throttle
 
     throttles devices associated with the given zone \ ``tz``\  - thermal_zone_device \ ``trip``\  - trip point index
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         *undescribed*
+    :type tz: struct thermal_zone_device \*
 
-    :param int trip:
+    :param trip:
         *undescribed*
+    :type trip: int
 
 .. _`step_wise_throttle.throttling-logic`:
 

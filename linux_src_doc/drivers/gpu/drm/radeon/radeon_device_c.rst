@@ -10,14 +10,17 @@ radeon_program_register_sequence
 
     program an array of registers.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param const u32 \*registers:
+    :param registers:
         pointer to the register array
+    :type registers: const u32 \*
 
-    :param const u32 array_size:
+    :param array_size:
         size of the register array
+    :type array_size: const u32
 
 .. _`radeon_program_register_sequence.description`:
 
@@ -36,8 +39,9 @@ radeon_surface_init
 
     Clear GPU surface registers.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_surface_init.description`:
 
@@ -55,8 +59,9 @@ radeon_scratch_init
 
     Init scratch register driver information.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_scratch_init.description`:
 
@@ -74,11 +79,13 @@ radeon_scratch_get
 
     Allocate a scratch register
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint32_t \*reg:
+    :param reg:
         scratch register mmio offset
+    :type reg: uint32_t \*
 
 .. _`radeon_scratch_get.description`:
 
@@ -97,11 +104,13 @@ radeon_scratch_free
 
     Free a scratch register
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint32_t reg:
+    :param reg:
         scratch register mmio offset
+    :type reg: uint32_t
 
 .. _`radeon_scratch_free.description`:
 
@@ -119,8 +128,9 @@ radeon_doorbell_init
 
     Init doorbell driver information.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_doorbell_init.description`:
 
@@ -139,8 +149,9 @@ radeon_doorbell_fini
 
     Tear down doorbell driver information.
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_doorbell_fini.description`:
 
@@ -158,11 +169,13 @@ radeon_doorbell_get
 
     Allocate a doorbell entry
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 \*doorbell:
+    :param doorbell:
         doorbell index
+    :type doorbell: u32 \*
 
 .. _`radeon_doorbell_get.description`:
 
@@ -181,11 +194,13 @@ radeon_doorbell_free
 
     Free a doorbell entry
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 doorbell:
+    :param doorbell:
         doorbell index
+    :type doorbell: u32
 
 .. _`radeon_doorbell_free.description`:
 
@@ -203,8 +218,9 @@ radeon_wb_disable
 
     Disable Writeback
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_wb_disable.description`:
 
@@ -222,8 +238,9 @@ radeon_wb_fini
 
     Disable Writeback and free memory
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_wb_fini.description`:
 
@@ -242,8 +259,9 @@ radeon_wb_init
 
     Init Writeback driver info and allocate memory
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_wb_init.description`:
 
@@ -263,14 +281,17 @@ radeon_vram_location
 
     try to find VRAM location
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device structure holding all necessary informations
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_mc \*mc:
+    :param mc:
         memory controller structure holding memory informations
+    :type mc: struct radeon_mc \*
 
-    :param u64 base:
+    :param base:
         base address at which to put VRAM
+    :type base: u64
 
 .. _`radeon_vram_location.description`:
 
@@ -331,11 +352,13 @@ radeon_gtt_location
 
     try to find GTT location
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device structure holding all necessary informations
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_mc \*mc:
+    :param mc:
         memory controller structure holding memory informations
+    :type mc: struct radeon_mc \*
 
 .. _`radeon_gtt_location.description`:
 
@@ -363,8 +386,9 @@ radeon_device_is_virtual
 
     check if we are running is a virtual environment
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`radeon_device_is_virtual.description`:
 
@@ -384,8 +408,9 @@ radeon_card_posted
 
     check if the hw has already been initialized
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_card_posted.description`:
 
@@ -405,8 +430,9 @@ radeon_update_bandwidth_info
 
     update display bandwidth params
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_update_bandwidth_info.description`:
 
@@ -425,8 +451,9 @@ radeon_boot_test_post_card
 
     check and possibly initialize the hw
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_boot_test_post_card.description`:
 
@@ -446,8 +473,9 @@ radeon_dummy_page_init
 
     init dummy page used by the driver
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_dummy_page_init.description`:
 
@@ -468,8 +496,9 @@ radeon_dummy_page_fini
 
     free dummy page used by the driver
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_dummy_page_fini.description`:
 
@@ -487,11 +516,13 @@ cail_pll_read
 
     read PLL register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         PLL register offset
+    :type reg: uint32_t
 
 .. _`cail_pll_read.description`:
 
@@ -510,14 +541,17 @@ cail_pll_write
 
     write PLL register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         PLL register offset
+    :type reg: uint32_t
 
-    :param uint32_t val:
+    :param val:
         value to write to the pll register
+    :type val: uint32_t
 
 .. _`cail_pll_write.description`:
 
@@ -535,11 +569,13 @@ cail_mc_read
 
     read MC (Memory Controller) register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         MC register offset
+    :type reg: uint32_t
 
 .. _`cail_mc_read.description`:
 
@@ -558,14 +594,17 @@ cail_mc_write
 
     write MC (Memory Controller) register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         MC register offset
+    :type reg: uint32_t
 
-    :param uint32_t val:
+    :param val:
         value to write to the pll register
+    :type val: uint32_t
 
 .. _`cail_mc_write.description`:
 
@@ -583,14 +622,17 @@ cail_reg_write
 
     write MMIO register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         MMIO register offset
+    :type reg: uint32_t
 
-    :param uint32_t val:
+    :param val:
         value to write to the pll register
+    :type val: uint32_t
 
 .. _`cail_reg_write.description`:
 
@@ -608,11 +650,13 @@ cail_reg_read
 
     read MMIO register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         MMIO register offset
+    :type reg: uint32_t
 
 .. _`cail_reg_read.description`:
 
@@ -631,14 +675,17 @@ cail_ioreg_write
 
     write IO register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         IO register offset
+    :type reg: uint32_t
 
-    :param uint32_t val:
+    :param val:
         value to write to the pll register
+    :type val: uint32_t
 
 .. _`cail_ioreg_write.description`:
 
@@ -656,11 +703,13 @@ cail_ioreg_read
 
     read IO register
 
-    :param struct card_info \*info:
+    :param info:
         atom card_info pointer
+    :type info: struct card_info \*
 
-    :param uint32_t reg:
+    :param reg:
         IO register offset
+    :type reg: uint32_t
 
 .. _`cail_ioreg_read.description`:
 
@@ -679,8 +728,9 @@ radeon_atombios_init
 
     init the driver info and callbacks for atombios
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_atombios_init.description`:
 
@@ -701,8 +751,9 @@ radeon_atombios_fini
 
     free the driver info and callbacks for atombios
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_atombios_fini.description`:
 
@@ -722,8 +773,9 @@ radeon_combios_init
 
     init the driver info for combios
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_combios_init.description`:
 
@@ -743,8 +795,9 @@ radeon_combios_fini
 
     free the driver info for combios
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_combios_fini.description`:
 
@@ -763,11 +816,13 @@ radeon_vga_set_decode
 
     enable/disable vga decode
 
-    :param void \*cookie:
+    :param cookie:
         radeon_device pointer
+    :type cookie: void \*
 
-    :param bool state:
+    :param state:
         enable/disable vga decode
+    :type state: bool
 
 .. _`radeon_vga_set_decode.description`:
 
@@ -786,8 +841,9 @@ radeon_check_pot_argument
 
     check that argument is a power of two
 
-    :param int arg:
+    :param arg:
         value to check
+    :type arg: int
 
 .. _`radeon_check_pot_argument.description`:
 
@@ -804,8 +860,9 @@ radeon_gart_size_auto
 
 .. c:function:: int radeon_gart_size_auto(enum radeon_family family)
 
-    :param enum radeon_family family:
+    :param family:
         *undescribed*
+    :type family: enum radeon_family
 
 .. _`radeon_gart_size_auto.description`:
 
@@ -823,8 +880,9 @@ radeon_check_arguments
 
     validate module params
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_check_arguments.description`:
 
@@ -843,11 +901,13 @@ radeon_switcheroo_set_state
 
     set switcheroo state
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci dev pointer
+    :type pdev: struct pci_dev \*
 
-    :param enum vga_switcheroo_state state:
+    :param state:
         vga_switcheroo state
+    :type state: enum vga_switcheroo_state
 
 .. _`radeon_switcheroo_set_state.description`:
 
@@ -866,8 +926,9 @@ radeon_switcheroo_can_switch
 
     see if switcheroo state can change
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci dev pointer
+    :type pdev: struct pci_dev \*
 
 .. _`radeon_switcheroo_can_switch.description`:
 
@@ -887,17 +948,21 @@ radeon_device_init
 
     initialize the driver
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct drm_device \*ddev:
+    :param ddev:
         *undescribed*
+    :type ddev: struct drm_device \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci dev pointer
+    :type pdev: struct pci_dev \*
 
-    :param uint32_t flags:
+    :param flags:
         driver flags
+    :type flags: uint32_t
 
 .. _`radeon_device_init.description`:
 
@@ -917,8 +982,9 @@ radeon_device_fini
 
     tear down the driver
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_device_fini.description`:
 
@@ -937,17 +1003,21 @@ radeon_suspend_kms
 
     initiate device suspend
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param bool suspend:
+    :param suspend:
         *undescribed*
+    :type suspend: bool
 
-    :param bool fbcon:
+    :param fbcon:
         *undescribed*
+    :type fbcon: bool
 
-    :param bool freeze:
+    :param freeze:
         *undescribed*
+    :type freeze: bool
 
 .. _`radeon_suspend_kms.description`:
 
@@ -967,14 +1037,17 @@ radeon_resume_kms
 
     initiate device resume
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param bool resume:
+    :param resume:
         *undescribed*
+    :type resume: bool
 
-    :param bool fbcon:
+    :param fbcon:
         *undescribed*
+    :type fbcon: bool
 
 .. _`radeon_resume_kms.description`:
 
@@ -994,8 +1067,9 @@ radeon_gpu_reset
 
     reset the asic
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_gpu_reset.description`:
 

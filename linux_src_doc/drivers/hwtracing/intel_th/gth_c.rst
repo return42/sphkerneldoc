@@ -106,11 +106,13 @@ intel_th_gth_disable
 
     disable tracing to an output device
 
-    :param struct intel_th_device \*thdev:
+    :param thdev:
         GTH device
+    :type thdev: struct intel_th_device \*
 
-    :param struct intel_th_output \*output:
+    :param output:
         output device's descriptor
+    :type output: struct intel_th_output \*
 
 .. _`intel_th_gth_disable.description`:
 
@@ -130,11 +132,13 @@ intel_th_gth_enable
 
     enable tracing to an output device
 
-    :param struct intel_th_device \*thdev:
+    :param thdev:
         GTH device
+    :type thdev: struct intel_th_device \*
 
-    :param struct intel_th_output \*output:
+    :param output:
         output device's descriptor
+    :type output: struct intel_th_output \*
 
 .. _`intel_th_gth_enable.description`:
 
@@ -153,11 +157,13 @@ intel_th_gth_assign
 
     assign output device to a GTH output port
 
-    :param struct intel_th_device \*thdev:
+    :param thdev:
         GTH device
+    :type thdev: struct intel_th_device \*
 
-    :param struct intel_th_device \*othdev:
+    :param othdev:
         output device
+    :type othdev: struct intel_th_device \*
 
 .. _`intel_th_gth_assign.description`:
 
@@ -184,11 +190,13 @@ intel_th_gth_unassign
 
     deassociate an output device from its output port
 
-    :param struct intel_th_device \*thdev:
+    :param thdev:
         GTH device
+    :type thdev: struct intel_th_device \*
 
-    :param struct intel_th_device \*othdev:
+    :param othdev:
         output device
+    :type othdev: struct intel_th_device \*
 
 .. This file was automatic generated / don't edit.
 

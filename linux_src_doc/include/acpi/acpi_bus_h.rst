@@ -10,8 +10,9 @@ module_acpi_driver
 
     Helper macro for registering an ACPI driver
 
-    :param  __acpi_driver:
+    :param __acpi_driver:
         acpi_driver struct
+    :type __acpi_driver: 
 
 .. _`module_acpi_driver.description`:
 

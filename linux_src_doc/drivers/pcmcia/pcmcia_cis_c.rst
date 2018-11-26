@@ -10,17 +10,21 @@ pccard_read_tuple
 
     internal CIS tuple access
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         the struct pcmcia_socket where the card is inserted
+    :type s: struct pcmcia_socket \*
 
-    :param unsigned int function:
+    :param function:
         the device function we loop for
+    :type function: unsigned int
 
-    :param cisdata_t code:
+    :param code:
         which CIS code shall we look for?
+    :type code: cisdata_t
 
-    :param void \*parse:
+    :param parse:
         buffer where the tuple shall be parsed (or NULL, if no parse)
+    :type parse: void \*
 
 .. _`pccard_read_tuple.description`:
 
@@ -38,20 +42,25 @@ pccard_loop_tuple
 
     loop over tuples in the CIS
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         the struct pcmcia_socket where the card is inserted
+    :type s: struct pcmcia_socket \*
 
-    :param unsigned int function:
+    :param function:
         the device function we loop for
+    :type function: unsigned int
 
-    :param cisdata_t code:
+    :param code:
         which CIS code shall we look for?
+    :type code: cisdata_t
 
-    :param cisparse_t \*parse:
+    :param parse:
         buffer where the tuple shall be parsed (or NULL, if no parse)
+    :type parse: cisparse_t \*
 
-    :param void \*priv_data:
+    :param priv_data:
         private data to be passed to the loop_tuple function.
+    :type priv_data: void \*
 
     :param int (\*loop_tuple)(tuple_t \*tuple, cisparse_t \*parse, void \*priv_data):
         function to call for each CIS entry of type \ ``function``\ . IT
@@ -76,8 +85,9 @@ pcmcia_io_cfg_data_width
 
     convert cfgtable to data path width parameter
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`pcmcia_do_loop_config`:
 
@@ -88,14 +98,17 @@ pcmcia_do_loop_config
 
     internal helper for \ :c:func:`pcmcia_loop_config`\ 
 
-    :param tuple_t \*tuple:
+    :param tuple:
         *undescribed*
+    :type tuple: tuple_t \*
 
-    :param cisparse_t \*parse:
+    :param parse:
         *undescribed*
+    :type parse: cisparse_t \*
 
-    :param void \*priv:
+    :param priv:
         *undescribed*
+    :type priv: void \*
 
 .. _`pcmcia_do_loop_config.description`:
 
@@ -115,16 +128,18 @@ pcmcia_loop_config
 
     loop over configuration options
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         the struct pcmcia_device which we need to loop for.
+    :type p_dev: struct pcmcia_device \*
 
     :param int (\*conf_check)(struct pcmcia_device \*p_dev, void \*priv_data):
         function to call for each configuration option.
         It gets passed the struct pcmcia_device and private data
         being passed to \ :c:func:`pcmcia_loop_config`\ 
 
-    :param void \*priv_data:
+    :param priv_data:
         private data to be passed to the conf_check function.
+    :type priv_data: void \*
 
 .. _`pcmcia_loop_config.description`:
 
@@ -144,14 +159,17 @@ pcmcia_do_loop_tuple
 
     internal helper for \ :c:func:`pcmcia_loop_config`\ 
 
-    :param tuple_t \*tuple:
+    :param tuple:
         *undescribed*
+    :type tuple: tuple_t \*
 
-    :param cisparse_t \*parse:
+    :param parse:
         *undescribed*
+    :type parse: cisparse_t \*
 
-    :param void \*priv:
+    :param priv:
         *undescribed*
+    :type priv: void \*
 
 .. _`pcmcia_do_loop_tuple.description`:
 
@@ -171,18 +189,21 @@ pcmcia_loop_tuple
 
     loop over tuples in the CIS
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         the struct pcmcia_device which we need to loop for.
+    :type p_dev: struct pcmcia_device \*
 
-    :param cisdata_t code:
+    :param code:
         which CIS code shall we look for?
+    :type code: cisdata_t
 
     :param int (\*loop_tuple)(struct pcmcia_device \*p_dev, tuple_t \*tuple, void \*priv_data):
         function to call for each CIS entry of type \ ``function``\ . IT
         gets passed the raw tuple and \ ``priv_data``\ .
 
-    :param void \*priv_data:
+    :param priv_data:
         private data to be passed to the loop_tuple function.
+    :type priv_data: void \*
 
 .. _`pcmcia_loop_tuple.description`:
 
@@ -202,14 +223,17 @@ pcmcia_do_get_tuple
 
     internal helper for \ :c:func:`pcmcia_get_tuple`\ 
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         *undescribed*
+    :type p_dev: struct pcmcia_device \*
 
-    :param tuple_t \*tuple:
+    :param tuple:
         *undescribed*
+    :type tuple: tuple_t \*
 
-    :param void \*priv:
+    :param priv:
         *undescribed*
+    :type priv: void \*
 
 .. _`pcmcia_do_get_tuple.description`:
 
@@ -231,14 +255,17 @@ pcmcia_get_tuple
 
     get first tuple from CIS
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         the struct pcmcia_device which we need to loop for.
+    :type p_dev: struct pcmcia_device \*
 
-    :param cisdata_t code:
+    :param code:
         which CIS code shall we look for?
+    :type code: cisdata_t
 
-    :param unsigned char \*\*buf:
+    :param buf:
         pointer to store the buffer to.
+    :type buf: unsigned char \*\*
 
 .. _`pcmcia_get_tuple.description`:
 
@@ -258,14 +285,17 @@ pcmcia_do_get_mac
 
     internal helper for \ :c:func:`pcmcia_get_mac_from_cis`\ 
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         *undescribed*
+    :type p_dev: struct pcmcia_device \*
 
-    :param tuple_t \*tuple:
+    :param tuple:
         *undescribed*
+    :type tuple: tuple_t \*
 
-    :param void \*priv:
+    :param priv:
         *undescribed*
+    :type priv: void \*
 
 .. _`pcmcia_do_get_mac.description`:
 
@@ -286,11 +316,13 @@ pcmcia_get_mac_from_cis
 
     read out MAC address from CISTPL_FUNCE
 
-    :param struct pcmcia_device \*p_dev:
+    :param p_dev:
         the struct pcmcia_device for which we want the address.
+    :type p_dev: struct pcmcia_device \*
 
-    :param struct net_device \*dev:
+    :param dev:
         a properly prepared struct net_device to store the info to.
+    :type dev: struct net_device \*
 
 .. _`pcmcia_get_mac_from_cis.description`:
 

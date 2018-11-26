@@ -10,8 +10,9 @@ elanfreq_get_cpu_frequency
 
     determine current cpu speed
 
-    :param unsigned int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: unsigned int
 
 .. _`elanfreq_get_cpu_frequency.description`:
 
@@ -32,8 +33,9 @@ elanfreq_setup
 
     elanfreq command line parameter parsing
 
-    :param char \*str:
+    :param str:
         *undescribed*
+    :type str: char \*
 
 .. _`elanfreq_setup.description`:
 

@@ -10,8 +10,9 @@ w1_register_family
 
     register a device family driver
 
-    :param struct w1_family \*newf:
+    :param newf:
         family to register
+    :type newf: struct w1_family \*
 
 .. _`w1_unregister_family`:
 
@@ -22,8 +23,9 @@ w1_unregister_family
 
     unregister a device family driver
 
-    :param struct w1_family \*fent:
+    :param fent:
         family to unregister
+    :type fent: struct w1_family \*
 
 .. This file was automatic generated / don't edit.
 

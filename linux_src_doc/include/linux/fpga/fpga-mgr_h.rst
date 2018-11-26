@@ -77,6 +77,23 @@ FPGA_MGR_STATE_WRITE_COMPLETE_ERR
 FPGA_MGR_STATE_OPERATING
     FPGA is programmed and operating
 
+.. _`fpga-manager-flags`:
+
+FPGA Manager flags
+==================
+
+Flags used in the \ :c:type:`fpga_image_info->flags <fpga_image_info>`\  field
+
+\ ``FPGA_MGR_PARTIAL_RECONFIG``\ : do partial reconfiguration if supported
+
+\ ``FPGA_MGR_EXTERNAL_CONFIG``\ : FPGA has been configured prior to Linux booting
+
+\ ``FPGA_MGR_ENCRYPTED_BITSTREAM``\ : indicates bitstream is encrypted
+
+\ ``FPGA_MGR_BITSTREAM_LSB_FIRST``\ : SPI bitstream bit order is LSB first
+
+\ ``FPGA_MGR_COMPRESSED_BITSTREAM``\ : FPGA bitstream is compressed
+
 .. _`fpga_image_info`:
 
 struct fpga_image_info
@@ -102,6 +119,7 @@ Definition
         struct sg_table *sgt;
         const char *buf;
         size_t count;
+        int region_id;
         struct device *dev;
     #ifdef CONFIG_OF
         struct device_node *overlay;
@@ -138,6 +156,9 @@ buf
 count
     size of buf
 
+region_id
+    id of target region
+
 dev
     device that owns this
 
@@ -163,6 +184,7 @@ Definition
     struct fpga_manager_ops {
         size_t initial_header_size;
         enum fpga_mgr_states (*state)(struct fpga_manager *mgr);
+        u64 (*status)(struct fpga_manager *mgr);
         int (*write_init)(struct fpga_manager *mgr,struct fpga_image_info *info, const char *buf, size_t count);
         int (*write)(struct fpga_manager *mgr, const char *buf, size_t count);
         int (*write_sg)(struct fpga_manager *mgr, struct sg_table *sgt);
@@ -181,6 +203,9 @@ initial_header_size
 
 state
     returns an enum value of the FPGA's state
+
+status
+    returns status of the FPGA, including reconfiguration error code
 
 write_init
     prepare the FPGA to receive confuration data
@@ -209,6 +234,38 @@ fpga_manager_ops are the low level functions implemented by a specific
 fpga manager driver.  The optional ones are tested for NULL before being
 called, so leaving them out is fine.
 
+.. _`fpga_compat_id`:
+
+struct fpga_compat_id
+=====================
+
+.. c:type:: struct fpga_compat_id
+
+    id for compatibility check
+
+.. _`fpga_compat_id.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct fpga_compat_id {
+        u64 id_h;
+        u64 id_l;
+    }
+
+.. _`fpga_compat_id.members`:
+
+Members
+-------
+
+id_h
+    high 64bit of the compat_id
+
+id_l
+    low 64bit of the compat_id
+
 .. _`fpga_manager`:
 
 struct fpga_manager
@@ -230,6 +287,7 @@ Definition
         struct device dev;
         struct mutex ref_mutex;
         enum fpga_mgr_states state;
+        struct fpga_compat_id *compat_id;
         const struct fpga_manager_ops *mops;
         void *priv;
     }
@@ -250,6 +308,9 @@ ref_mutex
 
 state
     state of fpga manager
+
+compat_id
+    FPGA manager id for compatibility check.
 
 mops
     pointer to struct of fpga manager ops

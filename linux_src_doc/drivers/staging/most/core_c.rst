@@ -10,8 +10,9 @@ list_pop_mbo
 
     retrieves the first MBO of the list and removes it
 
-    :param  ptr:
+    :param ptr:
         the list head to grab the MBO from.
+    :type ptr: 
 
 .. _`most_free_mbo_coherent`:
 
@@ -22,8 +23,9 @@ most_free_mbo_coherent
 
     free an MBO and its coherent buffer
 
-    :param struct mbo \*mbo:
+    :param mbo:
         most buffer
+    :type mbo: struct mbo \*
 
 .. _`flush_channel_fifos`:
 
@@ -34,8 +36,9 @@ flush_channel_fifos
 
     clear the channel fifos
 
-    :param struct most_channel \*c:
+    :param c:
         pointer to channel object
+    :type c: struct most_channel \*
 
 .. _`flush_trash_fifo`:
 
@@ -46,8 +49,9 @@ flush_trash_fifo
 
     clear the trash fifo
 
-    :param struct most_channel \*c:
+    :param c:
         pointer to channel object
+    :type c: struct most_channel \*
 
 .. _`split_string`:
 
@@ -58,20 +62,25 @@ split_string
 
     parses buf and extracts ':' separated substrings.
 
-    :param char \*buf:
+    :param buf:
         complete string from attribute 'add_channel'
+    :type buf: char \*
 
-    :param char \*\*a:
+    :param a:
         storage for 1st substring (=interface name)
+    :type a: char \*\*
 
-    :param char \*\*b:
+    :param b:
         storage for 2nd substring (=channel name)
+    :type b: char \*\*
 
-    :param char \*\*c:
+    :param c:
         storage for 3rd substring (=component name)
+    :type c: char \*\*
 
-    :param char \*\*d:
+    :param d:
         storage optional 4th substring (=user defined name)
+    :type d: char \*\*
 
 .. _`split_string.examples`:
 
@@ -106,11 +115,13 @@ get_channel
 
     get pointer to channel
 
-    :param char \*mdev:
+    :param mdev:
         name of the device interface
+    :type mdev: char \*
 
-    :param char \*mdev_ch:
+    :param mdev_ch:
         name of channel
+    :type mdev_ch: char \*
 
 .. _`add_link_store`:
 
@@ -121,14 +132,17 @@ add_link_store
 
     store function for add_link attribute
 
-    :param struct device_driver \*drv:
+    :param drv:
         device driver
+    :type drv: struct device_driver \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         buffer length
+    :type len: size_t
 
 .. _`add_link_store.description`:
 
@@ -166,14 +180,17 @@ remove_link_store
 
     store function for remove_link attribute
 
-    :param struct device_driver \*drv:
+    :param drv:
         device driver
+    :type drv: struct device_driver \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         buffer length
+    :type len: size_t
 
 .. _`remove_link_store.example`:
 
@@ -194,8 +211,9 @@ arm_mbo
 
     recycle MBO for further usage
 
-    :param struct mbo \*mbo:
+    :param mbo:
         most buffer
+    :type mbo: struct mbo \*
 
 .. _`arm_mbo.description`:
 
@@ -218,11 +236,13 @@ arm_mbo_chain
 
     helper function that arms an MBO chain for the HDM
 
-    :param struct most_channel \*c:
+    :param c:
         pointer to interface channel
+    :type c: struct most_channel \*
 
-    :param int dir:
+    :param dir:
         direction of the channel
+    :type dir: int
 
     :param void (\*compl)(struct mbo \*):
         pointer to completion function
@@ -248,8 +268,9 @@ most_submit_mbo
 
     submits an MBO to fifo
 
-    :param struct mbo \*mbo:
+    :param mbo:
         most buffer
+    :type mbo: struct mbo \*
 
 .. _`most_write_completion`:
 
@@ -260,8 +281,9 @@ most_write_completion
 
     write completion handler
 
-    :param struct mbo \*mbo:
+    :param mbo:
         most buffer
+    :type mbo: struct mbo \*
 
 .. _`most_write_completion.description`:
 
@@ -280,14 +302,17 @@ most_get_mbo
 
     get pointer to an MBO of pool
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface instance
+    :type iface: struct most_interface \*
 
-    :param int id:
+    :param id:
         channel ID
+    :type id: int
 
-    :param struct core_component \*comp:
+    :param comp:
         driver component
+    :type comp: struct core_component \*
 
 .. _`most_get_mbo.description`:
 
@@ -306,8 +331,9 @@ most_put_mbo
 
     return buffer to pool
 
-    :param struct mbo \*mbo:
+    :param mbo:
         most buffer
+    :type mbo: struct mbo \*
 
 .. _`most_read_completion`:
 
@@ -318,8 +344,9 @@ most_read_completion
 
     read completion handler
 
-    :param struct mbo \*mbo:
+    :param mbo:
         most buffer
+    :type mbo: struct mbo \*
 
 .. _`most_read_completion.description`:
 
@@ -341,14 +368,17 @@ most_start_channel
 
     prepares a channel for communication
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface instance
+    :type iface: struct most_interface \*
 
-    :param int id:
+    :param id:
         channel ID
+    :type id: int
 
-    :param struct core_component \*comp:
+    :param comp:
         driver component
+    :type comp: struct core_component \*
 
 .. _`most_start_channel.description`:
 
@@ -369,14 +399,17 @@ most_stop_channel
 
     stops a running channel
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface instance
+    :type iface: struct most_interface \*
 
-    :param int id:
+    :param id:
         channel ID
+    :type id: int
 
-    :param struct core_component \*comp:
+    :param comp:
         driver component
+    :type comp: struct core_component \*
 
 .. _`most_register_component`:
 
@@ -387,8 +420,9 @@ most_register_component
 
     registers a driver component with the core
 
-    :param struct core_component \*comp:
+    :param comp:
         driver component
+    :type comp: struct core_component \*
 
 .. _`most_deregister_component`:
 
@@ -399,8 +433,9 @@ most_deregister_component
 
     deregisters a driver component with the core
 
-    :param struct core_component \*comp:
+    :param comp:
         driver component
+    :type comp: struct core_component \*
 
 .. _`most_register_interface`:
 
@@ -411,8 +446,9 @@ most_register_interface
 
     registers an interface with core
 
-    :param struct most_interface \*iface:
+    :param iface:
         device interface
+    :type iface: struct most_interface \*
 
 .. _`most_register_interface.description`:
 
@@ -431,8 +467,9 @@ most_deregister_interface
 
     deregisters an interface with core
 
-    :param struct most_interface \*iface:
+    :param iface:
         device interface
+    :type iface: struct most_interface \*
 
 .. _`most_deregister_interface.description`:
 
@@ -451,11 +488,13 @@ most_stop_enqueue
 
     prevents core from enqueueing MBOs
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface
+    :type iface: struct most_interface \*
 
-    :param int id:
+    :param id:
         channel id
+    :type id: int
 
 .. _`most_stop_enqueue.description`:
 
@@ -476,11 +515,13 @@ most_resume_enqueue
 
     allow core to enqueue MBOs again
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface
+    :type iface: struct most_interface \*
 
-    :param int id:
+    :param id:
         channel id
+    :type id: int
 
 .. _`most_resume_enqueue.description`:
 

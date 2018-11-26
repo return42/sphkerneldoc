@@ -10,17 +10,21 @@ asd_read_ocm_seg
 
     read an on chip memory (OCM) segment
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param void \*buffer:
+    :param buffer:
         where to write the read data
+    :type buffer: void \*
 
-    :param u32 offs:
+    :param offs:
         offset into OCM where to read from
+    :type offs: u32
 
-    :param int size:
+    :param size:
         how many bytes to read
+    :type size: int
 
 .. _`asd_read_ocm_seg.description`:
 
@@ -38,17 +42,21 @@ asd_write_ocm_seg
 
     write an on chip memory (OCM) segment
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param void \*buffer:
+    :param buffer:
         where to read the write data
+    :type buffer: void \*
 
-    :param u32 offs:
+    :param offs:
         offset into OCM to write to
+    :type offs: u32
 
-    :param int size:
+    :param size:
         how many bytes to write
+    :type size: int
 
 .. _`asd_write_ocm_seg.description`:
 
@@ -66,8 +74,9 @@ asd_read_ocm
 
     read on chip memory (OCM)
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_find_flash_dir`:
 
@@ -78,11 +87,13 @@ asd_find_flash_dir
 
     finds and reads the flash directory
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param struct asd_flash_dir \*flash_dir:
+    :param flash_dir:
         pointer to flash directory structure
+    :type flash_dir: struct asd_flash_dir \*
 
 .. _`asd_find_flash_dir.description`:
 
@@ -101,14 +112,17 @@ asd_find_ll_by_id
 
     find a linked list entry by its id
 
-    :param void \* const start:
+    :param start:
         void pointer to the first element in the linked list
+    :type start: void \* const
 
-    :param const u8 id0:
+    :param id0:
         the first byte of the id  (offs 0)
+    :type id0: const u8
 
-    :param const u8 id1:
+    :param id1:
         the second byte of the id (offs 1)
+    :type id1: const u8
 
 .. _`asd_find_ll_by_id.description`:
 
@@ -129,11 +143,13 @@ asd_ms_get_phy_params
 
     get phy parameters from the manufacturing sector
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param struct asd_manuf_sec \*manuf_sec:
+    :param manuf_sec:
         pointer to the manufacturing sector
+    :type manuf_sec: struct asd_manuf_sec \*
 
 .. _`asd_ms_get_phy_params.description`:
 
@@ -164,11 +180,13 @@ asd_process_ms
 
     find and extract information from the manufacturing sector
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param struct asd_flash_dir \*flash_dir:
+    :param flash_dir:
         pointer to the flash directory
+    :type flash_dir: struct asd_flash_dir \*
 
 .. _`asd_process_ctrl_a_user`:
 
@@ -179,11 +197,13 @@ asd_process_ctrl_a_user
 
     process CTRL-A user settings
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param struct asd_flash_dir \*flash_dir:
+    :param flash_dir:
         pointer to the flash directory
+    :type flash_dir: struct asd_flash_dir \*
 
 .. _`asd_read_flash`:
 
@@ -194,8 +214,9 @@ asd_read_flash
 
     read flash memory
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
 .. _`asd_verify_flash_seg`:
 
@@ -206,17 +227,21 @@ asd_verify_flash_seg
 
     verify data with flash memory
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param const void \*src:
+    :param src:
         pointer to the source data to be verified
+    :type src: const void \*
 
-    :param u32 dest_offset:
+    :param dest_offset:
         offset from flash memory
+    :type dest_offset: u32
 
-    :param u32 bytes_to_verify:
+    :param bytes_to_verify:
         total bytes to verify
+    :type bytes_to_verify: u32
 
 .. _`asd_write_flash_seg`:
 
@@ -227,17 +252,21 @@ asd_write_flash_seg
 
     write data into flash memory
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param const void \*src:
+    :param src:
         pointer to the source data to be written
+    :type src: const void \*
 
-    :param u32 dest_offset:
+    :param dest_offset:
         offset from flash memory
+    :type dest_offset: u32
 
-    :param u32 bytes_to_write:
+    :param bytes_to_write:
         total bytes to write
+    :type bytes_to_write: u32
 
 .. _`asd_erase_nv_sector`:
 
@@ -248,14 +277,17 @@ asd_erase_nv_sector
 
     Erase the flash memory sectors.
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to the host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param u32 flash_addr:
+    :param flash_addr:
         pointer to offset from flash memory
+    :type flash_addr: u32
 
-    :param u32 size:
+    :param size:
         total bytes to erase.
+    :type size: u32
 
 .. This file was automatic generated / don't edit.
 

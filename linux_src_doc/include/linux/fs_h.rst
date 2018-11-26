@@ -56,6 +56,90 @@ special semantics to the caller.  These are much larger than the bytes in a
 page to allow for functions that return the number of bytes operated on in a
 given page.
 
+.. _`address_space`:
+
+struct address_space
+====================
+
+.. c:type:: struct address_space
+
+    Contents of a cacheable, mappable object.
+
+.. _`address_space.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct address_space {
+        struct inode *host;
+        struct xarray i_pages;
+        gfp_t gfp_mask;
+        atomic_t i_mmap_writable;
+        struct rb_root_cached i_mmap;
+        struct rw_semaphore i_mmap_rwsem;
+        unsigned long nrpages;
+        unsigned long nrexceptional;
+        pgoff_t writeback_index;
+        const struct address_space_operations *a_ops;
+        unsigned long flags;
+        errseq_t wb_err;
+        spinlock_t private_lock;
+        struct list_head private_list;
+        void *private_data;
+    }
+
+.. _`address_space.members`:
+
+Members
+-------
+
+host
+    Owner, either the inode or the block_device.
+
+i_pages
+    Cached pages.
+
+gfp_mask
+    Memory allocation flags to use for allocating pages.
+
+i_mmap_writable
+    Number of VM_SHARED mappings.
+
+i_mmap
+    Tree of private and shared mappings.
+
+i_mmap_rwsem
+    Protects \ ``i_mmap``\  and \ ``i_mmap_writable``\ .
+
+nrpages
+    Number of page entries, protected by the i_pages lock.
+
+nrexceptional
+    Shadow or DAX entries, protected by the i_pages lock.
+
+writeback_index
+    Writeback starts here.
+
+a_ops
+    Methods.
+
+flags
+    Error bits and flags (AS_*).
+
+wb_err
+    The most recent error which has occurred.
+
+private_lock
+    For use by the owner of the address_space.
+
+private_list
+    For use by the owner of the address_space.
+
+private_data
+    For use by the owner of the address_space.
+
 .. _`sb_end_write`:
 
 sb_end_write
@@ -65,8 +149,9 @@ sb_end_write
 
     drop write access to a superblock
 
-    :param struct super_block \*sb:
+    :param sb:
         the super we wrote to
+    :type sb: struct super_block \*
 
 .. _`sb_end_write.description`:
 
@@ -85,8 +170,9 @@ sb_end_pagefault
 
     drop write access to a superblock from a page fault
 
-    :param struct super_block \*sb:
+    :param sb:
         the super we wrote to
+    :type sb: struct super_block \*
 
 .. _`sb_end_pagefault.description`:
 
@@ -105,8 +191,9 @@ sb_end_intwrite
 
     drop write access to a superblock for internal fs purposes
 
-    :param struct super_block \*sb:
+    :param sb:
         the super we wrote to
+    :type sb: struct super_block \*
 
 .. _`sb_end_intwrite.description`:
 
@@ -125,8 +212,9 @@ sb_start_write
 
     get write access to a superblock
 
-    :param struct super_block \*sb:
+    :param sb:
         the super we write to
+    :type sb: struct super_block \*
 
 .. _`sb_start_write.description`:
 
@@ -157,8 +245,9 @@ sb_start_pagefault
 
     get write access to a superblock from a page fault
 
-    :param struct super_block \*sb:
+    :param sb:
         the super we write to
+    :type sb: struct super_block \*
 
 .. _`sb_start_pagefault.description`:
 
@@ -194,11 +283,13 @@ filemap_set_wb_err
 
     set a writeback error on an address_space
 
-    :param struct address_space \*mapping:
+    :param mapping:
         mapping in which to set writeback error
+    :type mapping: struct address_space \*
 
-    :param int err:
+    :param err:
         error to be set in mapping
+    :type err: int
 
 .. _`filemap_set_wb_err.description`:
 
@@ -223,11 +314,13 @@ filemap_check_wb_err
 
     has an error occurred since the mark was sampled?
 
-    :param struct address_space \*mapping:
+    :param mapping:
         mapping to check for writeback errors
+    :type mapping: struct address_space \*
 
-    :param errseq_t since:
+    :param since:
         previously-sampled errseq_t
+    :type since: errseq_t
 
 .. _`filemap_check_wb_err.description`:
 
@@ -248,8 +341,9 @@ filemap_sample_wb_err
 
     sample the current errseq_t to test for later errors
 
-    :param struct address_space \*mapping:
+    :param mapping:
         mapping to be sampled
+    :type mapping: struct address_space \*
 
 .. _`filemap_sample_wb_err.description`:
 

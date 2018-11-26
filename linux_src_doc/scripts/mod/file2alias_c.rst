@@ -10,20 +10,25 @@ device_id_check
 
     in .o file. If in-consistent then userspace and kernel does not agree on actual size which is a bug. Also verify that the final entry in the table is all zeros. Ignore both checks if build host differ from target host and size differs.
 
-    :param const char \*modname:
+    :param modname:
         *undescribed*
+    :type modname: const char \*
 
-    :param const char \*device_id:
+    :param device_id:
         *undescribed*
+    :type device_id: const char \*
 
-    :param unsigned long size:
+    :param size:
         *undescribed*
+    :type size: unsigned long
 
-    :param unsigned long id_size:
+    :param id_size:
         *undescribed*
+    :type id_size: unsigned long
 
-    :param void \*symval:
+    :param symval:
         *undescribed*
+    :type symval: void \*
 
 .. This file was automatic generated / don't edit.
 

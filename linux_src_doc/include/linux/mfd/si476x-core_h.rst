@@ -192,8 +192,9 @@ si476x_core_lock
 
     lock the core device to get an exclusive access to it.
 
-    :param struct si476x_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct si476x_core \*
 
 .. _`si476x_core_unlock`:
 
@@ -204,8 +205,9 @@ si476x_core_unlock
 
     unlock the core device to relinquish an exclusive access to it.
 
-    :param struct si476x_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct si476x_core \*
 
 .. _`si476x_func_info`:
 

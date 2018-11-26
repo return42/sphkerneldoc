@@ -10,11 +10,13 @@ uvd_v1_0_get_rptr
 
     get read pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`uvd_v1_0_get_rptr.description`:
 
@@ -32,11 +34,13 @@ uvd_v1_0_get_wptr
 
     get write pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`uvd_v1_0_get_wptr.description`:
 
@@ -54,11 +58,13 @@ uvd_v1_0_set_wptr
 
     set write pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`uvd_v1_0_set_wptr.description`:
 
@@ -76,11 +82,13 @@ uvd_v1_0_fence_emit
 
     emit an fence & trap command
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         fence to emit
+    :type fence: struct radeon_fence \*
 
 .. _`uvd_v1_0_fence_emit.description`:
 
@@ -98,8 +106,9 @@ uvd_v1_0_resume
 
     memory controller programming
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`uvd_v1_0_resume.description`:
 
@@ -117,8 +126,9 @@ uvd_v1_0_init
 
     start and test UVD block
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`uvd_v1_0_init.description`:
 
@@ -136,8 +146,9 @@ uvd_v1_0_fini
 
     stop the hardware block
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`uvd_v1_0_fini.description`:
 
@@ -155,8 +166,9 @@ uvd_v1_0_start
 
     start UVD block
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`uvd_v1_0_start.description`:
 
@@ -174,8 +186,9 @@ uvd_v1_0_stop
 
     stop UVD block
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`uvd_v1_0_stop.description`:
 
@@ -193,11 +206,13 @@ uvd_v1_0_ring_test
 
     register write test
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`uvd_v1_0_ring_test.description`:
 
@@ -215,17 +230,21 @@ uvd_v1_0_semaphore_emit
 
     emit semaphore command
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring pointer
+    :type ring: struct radeon_ring \*
 
-    :param struct radeon_semaphore \*semaphore:
+    :param semaphore:
         semaphore to emit commands for
+    :type semaphore: struct radeon_semaphore \*
 
-    :param bool emit_wait:
+    :param emit_wait:
         true if we should emit a wait command
+    :type emit_wait: bool
 
 .. _`uvd_v1_0_semaphore_emit.description`:
 
@@ -243,11 +262,13 @@ uvd_v1_0_ib_execute
 
     execute indirect buffer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to execute
+    :type ib: struct radeon_ib \*
 
 .. _`uvd_v1_0_ib_execute.description`:
 
@@ -265,11 +286,13 @@ uvd_v1_0_ib_test
 
     test ib execution
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`uvd_v1_0_ib_test.description`:
 

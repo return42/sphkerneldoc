@@ -10,8 +10,9 @@ cxgb3_register_client
 
     register an offload client
 
-    :param struct cxgb3_client \*client:
+    :param client:
         the client
+    :type client: struct cxgb3_client \*
 
 .. _`cxgb3_register_client.description`:
 
@@ -30,8 +31,9 @@ cxgb3_unregister_client
 
     unregister an offload client
 
-    :param struct cxgb3_client \*client:
+    :param client:
         the client
+    :type client: struct cxgb3_client \*
 
 .. _`cxgb3_unregister_client.description`:
 
@@ -50,8 +52,9 @@ cxgb3_add_clients
 
     activate registered clients for an offload device
 
-    :param struct t3cdev \*tdev:
+    :param tdev:
         the offload device
+    :type tdev: struct t3cdev \*
 
 .. _`cxgb3_add_clients.description`:
 
@@ -69,8 +72,9 @@ cxgb3_remove_clients
 
     deactivates registered clients for an offload device
 
-    :param struct t3cdev \*tdev:
+    :param tdev:
         the offload device
+    :type tdev: struct t3cdev \*
 
 .. _`cxgb3_remove_clients.description`:
 

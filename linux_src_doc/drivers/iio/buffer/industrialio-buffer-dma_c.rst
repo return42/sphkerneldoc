@@ -10,8 +10,9 @@ iio_dma_buffer_block_done
 
     Indicate that a block has been completed
 
-    :param struct iio_dma_buffer_block \*block:
+    :param block:
         The completed block
+    :type block: struct iio_dma_buffer_block \*
 
 .. _`iio_dma_buffer_block_done.description`:
 
@@ -30,11 +31,13 @@ iio_dma_buffer_block_list_abort
 
     Indicate that a list block has been aborted
 
-    :param struct iio_dma_buffer_queue \*queue:
+    :param queue:
         Queue for which to complete blocks.
+    :type queue: struct iio_dma_buffer_queue \*
 
-    :param struct list_head \*list:
+    :param list:
         List of aborted blocks. All blocks in this list must be from \ ``queue``\ .
+    :type list: struct list_head \*
 
 .. _`iio_dma_buffer_block_list_abort.description`:
 
@@ -54,8 +57,9 @@ iio_dma_buffer_request_update
 
     DMA buffer request_update callback
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         The buffer which to request an update
+    :type buffer: struct iio_buffer \*
 
 .. _`iio_dma_buffer_request_update.description`:
 
@@ -74,11 +78,13 @@ iio_dma_buffer_enable
 
     Enable DMA buffer
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         IIO buffer to enable
+    :type buffer: struct iio_buffer \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device the buffer is attached to
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_dma_buffer_enable.description`:
 
@@ -99,11 +105,13 @@ iio_dma_buffer_disable
 
     Disable DMA buffer
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         IIO DMA buffer to disable
+    :type buffer: struct iio_buffer \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device the buffer is attached to
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_dma_buffer_disable.description`:
 
@@ -122,14 +130,17 @@ iio_dma_buffer_read
 
     DMA buffer read callback
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         Buffer to read form
+    :type buffer: struct iio_buffer \*
 
-    :param size_t n:
+    :param n:
         Number of bytes to read
+    :type n: size_t
 
-    :param char __user \*user_buffer:
+    :param user_buffer:
         Userspace buffer to copy the data to
+    :type user_buffer: char __user \*
 
 .. _`iio_dma_buffer_read.description`:
 
@@ -148,8 +159,9 @@ iio_dma_buffer_data_available
 
     DMA buffer data_available callback
 
-    :param struct iio_buffer \*buf:
+    :param buf:
         Buffer to check for data availability
+    :type buf: struct iio_buffer \*
 
 .. _`iio_dma_buffer_data_available.description`:
 
@@ -168,11 +180,13 @@ iio_dma_buffer_set_bytes_per_datum
 
     DMA buffer set_bytes_per_datum callback
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         Buffer to set the bytes-per-datum for
+    :type buffer: struct iio_buffer \*
 
-    :param size_t bpd:
+    :param bpd:
         The new bytes-per-datum value
+    :type bpd: size_t
 
 .. _`iio_dma_buffer_set_bytes_per_datum.description`:
 
@@ -191,11 +205,13 @@ iio_dma_buffer_set_length
 
     DMA buffer set_length callback
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         Buffer to set the length for
+    :type buffer: struct iio_buffer \*
 
-    :param unsigned int length:
+    :param length:
         The new buffer length
+    :type length: unsigned int
 
 .. _`iio_dma_buffer_set_length.description`:
 
@@ -214,14 +230,17 @@ iio_dma_buffer_init
 
     Initialize DMA buffer queue
 
-    :param struct iio_dma_buffer_queue \*queue:
+    :param queue:
         Buffer to initialize
+    :type queue: struct iio_dma_buffer_queue \*
 
-    :param struct device \*dev:
+    :param dev:
         DMA device
+    :type dev: struct device \*
 
-    :param const struct iio_dma_buffer_ops \*ops:
+    :param ops:
         DMA buffer queue callback operations
+    :type ops: const struct iio_dma_buffer_ops \*
 
 .. _`iio_dma_buffer_init.description`:
 
@@ -241,8 +260,9 @@ iio_dma_buffer_exit
 
     Cleanup DMA buffer queue
 
-    :param struct iio_dma_buffer_queue \*queue:
+    :param queue:
         Buffer to cleanup
+    :type queue: struct iio_dma_buffer_queue \*
 
 .. _`iio_dma_buffer_exit.description`:
 
@@ -261,8 +281,9 @@ iio_dma_buffer_release
 
     Release final buffer resources
 
-    :param struct iio_dma_buffer_queue \*queue:
+    :param queue:
         Buffer to release
+    :type queue: struct iio_dma_buffer_queue \*
 
 .. _`iio_dma_buffer_release.description`:
 

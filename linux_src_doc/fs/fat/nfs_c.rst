@@ -8,11 +8,13 @@ fat_dget
 
 .. c:function:: struct inode *fat_dget(struct super_block *sb, int i_logstart)
 
-    :param struct super_block \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct super_block \*
 
-    :param int i_logstart:
+    :param i_logstart:
         *undescribed*
+    :type i_logstart: int
 
 .. _`fat_fh_to_dentry`:
 
@@ -23,17 +25,21 @@ fat_fh_to_dentry
 
     The dentry may or may not be connected to the filesystem root.
 
-    :param struct super_block \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct super_block \*
 
-    :param struct fid \*fid:
+    :param fid:
         *undescribed*
+    :type fid: struct fid \*
 
-    :param int fh_len:
+    :param fh_len:
         *undescribed*
+    :type fh_len: int
 
-    :param int fh_type:
+    :param fh_type:
         *undescribed*
+    :type fh_type: int
 
 .. This file was automatic generated / don't edit.
 

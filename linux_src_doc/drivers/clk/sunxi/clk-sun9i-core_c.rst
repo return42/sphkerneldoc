@@ -10,8 +10,9 @@ sun9i_a80_get_pll4_factors
 
     calculates n, p, m factors for PLL4 PLL4 rate is calculated as follows rate = (parent_rate \* n >> p) / (m + 1); parent_rate is always 24MHz
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun9i_a80_get_pll4_factors.description`:
 
@@ -29,8 +30,9 @@ sun9i_a80_get_gt_factors
 
     calculates m factor for GT GT rate is calculated as follows rate = parent_rate / (m + 1);
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun9i_a80_get_ahb_factors`:
 
@@ -41,8 +43,9 @@ sun9i_a80_get_ahb_factors
 
     calculates p factor for AHB0/1/2 AHB rate is calculated as follows rate = parent_rate >> p;
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun9i_a80_get_apb1_factors`:
 
@@ -53,8 +56,9 @@ sun9i_a80_get_apb1_factors
 
     calculates m, p factors for APB1 APB1 rate is calculated as follows rate = (parent_rate >> p) / (m + 1);
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. This file was automatic generated / don't edit.
 

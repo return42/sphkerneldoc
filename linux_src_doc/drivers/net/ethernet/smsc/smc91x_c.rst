@@ -10,11 +10,13 @@ smc_phy_reset
 
     reset the phy
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param int phy:
+    :param phy:
         phy address
+    :type phy: int
 
 .. _`smc_phy_reset.description`:
 
@@ -38,8 +40,9 @@ smc_phy_powerdown
 
     powerdown phy
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
 .. _`smc_phy_powerdown.description`:
 
@@ -57,11 +60,13 @@ smc_phy_check_media
 
     check the media status and adjust TCR
 
-    :param struct net_device \*dev:
+    :param dev:
         net device
+    :type dev: struct net_device \*
 
-    :param int init:
+    :param init:
         set true for initialisation
+    :type init: int
 
 .. _`smc_phy_check_media.description`:
 
@@ -80,23 +85,29 @@ try_toggle_control_gpio
 
     configure a gpio if it exists
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct gpio_desc \*\*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct gpio_desc \*\*
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
-    :param int value:
+    :param value:
         *undescribed*
+    :type value: int
 
-    :param unsigned int nsdelay:
+    :param nsdelay:
         *undescribed*
+    :type nsdelay: unsigned int
 
 .. This file was automatic generated / don't edit.
 

@@ -302,7 +302,7 @@ Definition
 .. code-block:: c
 
     struct nft_set_estimate {
-        unsigned int size;
+        u64 size;
         enum nft_set_class lookup;
         enum nft_set_class space;
     }
@@ -347,7 +347,7 @@ Definition
         void (*remove)(const struct net *net,const struct nft_set *set, const struct nft_set_elem *elem);
         void (*walk)(const struct nft_ctx *ctx,struct nft_set *set, struct nft_set_iter *iter);
         void * (*get)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem, unsigned int flags);
-        unsigned int (*privsize)(const struct nlattr * const nla[], const struct nft_set_desc *desc);
+        u64 (*privsize)(const struct nlattr * const nla[], const struct nft_set_desc *desc);
         bool (*estimate)(const struct nft_set_desc *desc,u32 features, struct nft_set_estimate *est);
         int (*init)(const struct nft_set *set,const struct nft_set_desc *desc, const struct nlattr * const nla[]);
         void (*destroy)(const struct nft_set *set);
@@ -1519,6 +1519,7 @@ Definition
     struct nft_trans {
         struct list_head list;
         int msg_type;
+        bool put_net;
         struct nft_ctx ctx;
         char data[0];
     }
@@ -1533,6 +1534,9 @@ list
 
 msg_type
     message type
+
+put_net
+    ctx->net needs to be put
 
 ctx
     transaction context

@@ -10,8 +10,9 @@ ovl_inuse_trylock
 
     it is marked inuse.
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
 .. This file was automatic generated / don't edit.
 

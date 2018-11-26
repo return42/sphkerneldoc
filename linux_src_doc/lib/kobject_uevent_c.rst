@@ -10,14 +10,17 @@ kobject_synth_uevent
 
     send synthetic uevent with arguments
 
-    :param struct kobject \*kobj:
+    :param kobj:
         struct kobject for which synthetic uevent is to be generated
+    :type kobj: struct kobject \*
 
-    :param const char \*buf:
+    :param buf:
         buffer containing action type and action args, newline is ignored
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         length of buffer
+    :type count: size_t
 
 .. _`kobject_synth_uevent.description`:
 
@@ -36,14 +39,17 @@ kobject_uevent_env
 
     send an uevent with environmental data
 
-    :param struct kobject \*kobj:
+    :param kobj:
         struct kobject that the action is happening to
+    :type kobj: struct kobject \*
 
-    :param enum kobject_action action:
+    :param action:
         action that is happening
+    :type action: enum kobject_action
 
-    :param char  \*envp_ext:
+    :param envp_ext:
         pointer to environmental data
+    :type envp_ext: char  \*
 
 .. _`kobject_uevent_env.description`:
 
@@ -62,11 +68,13 @@ kobject_uevent
 
     notify userspace by sending an uevent
 
-    :param struct kobject \*kobj:
+    :param kobj:
         struct kobject that the action is happening to
+    :type kobj: struct kobject \*
 
-    :param enum kobject_action action:
+    :param action:
         action that is happening
+    :type action: enum kobject_action
 
 .. _`kobject_uevent.description`:
 
@@ -85,11 +93,13 @@ add_uevent_var
 
     add key value string to the environment buffer
 
-    :param struct kobj_uevent_env \*env:
+    :param env:
         environment buffer structure
+    :type env: struct kobj_uevent_env \*
 
-    :param const char \*format:
+    :param format:
         printf format for the key=value pair
+    :type format: const char \*
 
     :param ellipsis ellipsis:
         variable arguments

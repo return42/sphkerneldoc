@@ -10,8 +10,9 @@ lio_list_delete_head
 
     the end of this call if there are no more nodes in the list.
 
-    :param struct list_head \*root:
+    :param root:
         *undescribed*
+    :type root: struct list_head \*
 
 .. This file was automatic generated / don't edit.
 

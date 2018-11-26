@@ -10,8 +10,9 @@ batadv_mesh_init
 
     Initialize soft interface
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         netdev struct of the soft interface
+    :type soft_iface: struct net_device \*
 
 .. _`batadv_mesh_init.return`:
 
@@ -29,8 +30,9 @@ batadv_mesh_free
 
     Deinitialize soft interface
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         netdev struct of the soft interface
+    :type soft_iface: struct net_device \*
 
 .. _`batadv_is_my_mac`:
 
@@ -41,11 +43,13 @@ batadv_is_my_mac
 
     check if the given mac address belongs to any of the real interfaces in the current mesh
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         the address to check
+    :type addr: const u8 \*
 
 .. _`batadv_is_my_mac.return`:
 
@@ -63,8 +67,9 @@ batadv_seq_print_text_primary_if_get
 
     called from debugfs table printing function that requires the primary interface
 
-    :param struct seq_file \*seq:
+    :param seq:
         debugfs table seq_file struct
+    :type seq: struct seq_file \*
 
 .. _`batadv_seq_print_text_primary_if_get.return`:
 
@@ -82,8 +87,9 @@ batadv_max_header_len
 
     calculate maximum encapsulation overhead for a payload packet
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_max_header_len.return`:
 
@@ -101,11 +107,13 @@ batadv_skb_set_priority
 
     sets skb priority according to packet content
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet to be sent
+    :type skb: struct sk_buff \*
 
-    :param int offset:
+    :param offset:
         offset to the packet content
+    :type offset: int
 
 .. _`batadv_skb_set_priority.description`:
 
@@ -124,17 +132,21 @@ batadv_batman_skb_recv
 
     Handle incoming message from an hard interface
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the received packet
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the net device that the packet was received on
+    :type dev: struct net_device \*
 
-    :param struct packet_type \*ptype:
+    :param ptype:
         packet type of incoming packet (ETH_P_BATMAN)
+    :type ptype: struct packet_type \*
 
-    :param struct net_device \*orig_dev:
+    :param orig_dev:
         the original receive net device (e.g. bonded device)
+    :type orig_dev: struct net_device \*
 
 .. _`batadv_batman_skb_recv.return`:
 
@@ -152,8 +164,9 @@ batadv_recv_handler_register
 
     Register handler for batman-adv packet type
 
-    :param u8 packet_type:
+    :param packet_type:
         batadv_packettype which should be handled
+    :type packet_type: u8
 
     :param int (\*recv_handler)(struct sk_buff \*, struct batadv_hard_iface \*):
         receive handler for the packet type
@@ -174,8 +187,9 @@ batadv_recv_handler_unregister
 
     Unregister handler for packet type
 
-    :param u8 packet_type:
+    :param packet_type:
         batadv_packettype which should no longer be handled
+    :type packet_type: u8
 
 .. _`batadv_skb_crc32`:
 
@@ -186,12 +200,14 @@ batadv_skb_crc32
 
     calculate CRC32 of the whole packet and skip bytes in the header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb pointing to fragmented socket buffers
+    :type skb: struct sk_buff \*
 
-    :param u8 \*payload_ptr:
+    :param payload_ptr:
         Pointer to position inside the head buffer of the skb
         marking the start of the data to be CRC'ed
+    :type payload_ptr: u8 \*
 
 .. _`batadv_skb_crc32.description`:
 
@@ -217,11 +233,13 @@ batadv_get_vid
 
     extract the VLAN identifier from skb if any
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer containing the packet
+    :type skb: struct sk_buff \*
 
-    :param size_t header_len:
+    :param header_len:
         length of the batman header preceding the ethernet header
+    :type header_len: size_t
 
 .. _`batadv_get_vid.return`:
 
@@ -240,12 +258,14 @@ batadv_vlan_ap_isola_get
 
     return AP isolation status for the given vlan
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN identifier for which the AP isolation attributed as to be
         looked up
+    :type vid: unsigned short
 
 .. _`batadv_vlan_ap_isola_get.return`:
 

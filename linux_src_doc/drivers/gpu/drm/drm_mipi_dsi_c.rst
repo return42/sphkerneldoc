@@ -21,8 +21,9 @@ of_find_mipi_dsi_device_by_node
 
     find the MIPI DSI device matching a device tree node
 
-    :param struct device_node \*np:
+    :param np:
         device tree node
+    :type np: struct device_node \*
 
 .. _`of_find_mipi_dsi_device_by_node.return`:
 
@@ -41,11 +42,13 @@ mipi_dsi_device_register_full
 
     create a MIPI DSI device
 
-    :param struct mipi_dsi_host \*host:
+    :param host:
         DSI host to which this device is connected
+    :type host: struct mipi_dsi_host \*
 
-    :param const struct mipi_dsi_device_info \*info:
+    :param info:
         pointer to template containing DSI device information
+    :type info: const struct mipi_dsi_device_info \*
 
 .. _`mipi_dsi_device_register_full.description`:
 
@@ -72,8 +75,9 @@ mipi_dsi_device_unregister
 
     unregister MIPI DSI device
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`of_find_mipi_dsi_host_by_node`:
 
@@ -84,8 +88,9 @@ of_find_mipi_dsi_host_by_node
 
     find the MIPI DSI host matching a device tree node
 
-    :param struct device_node \*node:
+    :param node:
         device tree node
+    :type node: struct device_node \*
 
 .. _`of_find_mipi_dsi_host_by_node.return`:
 
@@ -104,8 +109,9 @@ mipi_dsi_attach
 
     attach a DSI device to its DSI host
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_detach`:
 
@@ -116,8 +122,9 @@ mipi_dsi_detach
 
     detach a DSI device from its DSI host
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_packet_format_is_short`:
 
@@ -128,8 +135,9 @@ mipi_dsi_packet_format_is_short
 
     check if a packet is of the short format
 
-    :param u8 type:
+    :param type:
         MIPI DSI data type of the packet
+    :type type: u8
 
 .. _`mipi_dsi_packet_format_is_short.return`:
 
@@ -148,8 +156,9 @@ mipi_dsi_packet_format_is_long
 
     check if a packet is of the long format
 
-    :param u8 type:
+    :param type:
         MIPI DSI data type of the packet
+    :type type: u8
 
 .. _`mipi_dsi_packet_format_is_long.return`:
 
@@ -168,11 +177,13 @@ mipi_dsi_create_packet
 
     create a packet from a message according to the DSI protocol
 
-    :param struct mipi_dsi_packet \*packet:
+    :param packet:
         pointer to a DSI packet structure
+    :type packet: struct mipi_dsi_packet \*
 
-    :param const struct mipi_dsi_msg \*msg:
+    :param msg:
         message to translate into a packet
+    :type msg: const struct mipi_dsi_msg \*
 
 .. _`mipi_dsi_create_packet.return`:
 
@@ -190,8 +201,9 @@ mipi_dsi_shutdown_peripheral
 
     sends a Shutdown Peripheral command
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_shutdown_peripheral.return`:
 
@@ -209,8 +221,9 @@ mipi_dsi_turn_on_peripheral
 
     sends a Turn On Peripheral command
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_turn_on_peripheral.return`:
 
@@ -228,14 +241,17 @@ mipi_dsi_generic_write
 
     transmit data using a generic write packet
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param const void \*payload:
+    :param payload:
         buffer containing the payload
+    :type payload: const void \*
 
-    :param size_t size:
+    :param size:
         size of payload buffer
+    :type size: size_t
 
 .. _`mipi_dsi_generic_write.description`:
 
@@ -262,20 +278,25 @@ mipi_dsi_generic_read
 
     receive data using a generic read packet
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param const void \*params:
+    :param params:
         buffer containing the request parameters
+    :type params: const void \*
 
-    :param size_t num_params:
+    :param num_params:
         number of request parameters
+    :type num_params: size_t
 
-    :param void \*data:
+    :param data:
         buffer in which to return the received data
+    :type data: void \*
 
-    :param size_t size:
+    :param size:
         size of receive buffer
+    :type size: size_t
 
 .. _`mipi_dsi_generic_read.description`:
 
@@ -302,14 +323,17 @@ mipi_dsi_dcs_write_buffer
 
     transmit a DCS command with payload
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param const void \*data:
+    :param data:
         buffer containing data to be transmitted
+    :type data: const void \*
 
-    :param size_t len:
+    :param len:
         size of transmission buffer
+    :type len: size_t
 
 .. _`mipi_dsi_dcs_write_buffer.description`:
 
@@ -336,17 +360,21 @@ mipi_dsi_dcs_write
 
     send DCS write command
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param u8 cmd:
+    :param cmd:
         DCS command
+    :type cmd: u8
 
-    :param const void \*data:
+    :param data:
         buffer containing the command payload
+    :type data: const void \*
 
-    :param size_t len:
+    :param len:
         command payload length
+    :type len: size_t
 
 .. _`mipi_dsi_dcs_write.description`:
 
@@ -373,17 +401,21 @@ mipi_dsi_dcs_read
 
     send DCS read request command
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param u8 cmd:
+    :param cmd:
         DCS command
+    :type cmd: u8
 
-    :param void \*data:
+    :param data:
         buffer in which to receive data
+    :type data: void \*
 
-    :param size_t len:
+    :param len:
         size of receive buffer
+    :type len: size_t
 
 .. _`mipi_dsi_dcs_read.return`:
 
@@ -401,8 +433,9 @@ mipi_dsi_dcs_nop
 
     send DCS nop packet
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_dcs_nop.return`:
 
@@ -420,8 +453,9 @@ mipi_dsi_dcs_soft_reset
 
     perform a software reset of the display module
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_dcs_soft_reset.return`:
 
@@ -439,11 +473,13 @@ mipi_dsi_dcs_get_power_mode
 
     query the display module's current power mode
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param u8 \*mode:
+    :param mode:
         return location for the current power mode
+    :type mode: u8 \*
 
 .. _`mipi_dsi_dcs_get_power_mode.return`:
 
@@ -461,11 +497,13 @@ mipi_dsi_dcs_get_pixel_format
 
     gets the pixel format for the RGB image data used by the interface
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param u8 \*format:
+    :param format:
         return location for the pixel format
+    :type format: u8 \*
 
 .. _`mipi_dsi_dcs_get_pixel_format.return`:
 
@@ -483,8 +521,9 @@ mipi_dsi_dcs_enter_sleep_mode
 
     disable all unnecessary blocks inside the display module except interface communication
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_dcs_enter_sleep_mode.return`:
 
@@ -502,8 +541,9 @@ mipi_dsi_dcs_exit_sleep_mode
 
     enable all blocks inside the display module
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_dcs_exit_sleep_mode.return`:
 
@@ -521,8 +561,9 @@ mipi_dsi_dcs_set_display_off
 
     stop displaying the image data on the display device
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_dcs_set_display_off.return`:
 
@@ -540,8 +581,9 @@ mipi_dsi_dcs_set_display_on
 
     start displaying the image data on the display device
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_dcs_set_display_on.return`:
 
@@ -559,14 +601,17 @@ mipi_dsi_dcs_set_column_address
 
     define the column extent of the frame memory accessed by the host processor
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param u16 start:
+    :param start:
         first column of frame memory
+    :type start: u16
 
-    :param u16 end:
+    :param end:
         last column of frame memory
+    :type end: u16
 
 .. _`mipi_dsi_dcs_set_column_address.return`:
 
@@ -584,14 +629,17 @@ mipi_dsi_dcs_set_page_address
 
     define the page extent of the frame memory accessed by the host processor
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param u16 start:
+    :param start:
         first page of frame memory
+    :type start: u16
 
-    :param u16 end:
+    :param end:
         last page of frame memory
+    :type end: u16
 
 .. _`mipi_dsi_dcs_set_page_address.return`:
 
@@ -609,8 +657,9 @@ mipi_dsi_dcs_set_tear_off
 
     turn off the display module's Tearing Effect output signal on the TE signal line
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
 .. _`mipi_dsi_dcs_set_tear_off.return`:
 
@@ -628,11 +677,13 @@ mipi_dsi_dcs_set_tear_on
 
     turn on the display module's Tearing Effect output signal on the TE signal line.
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param enum mipi_dsi_dcs_tear_mode mode:
+    :param mode:
         the Tearing Effect Output Line mode
+    :type mode: enum mipi_dsi_dcs_tear_mode
 
 .. _`mipi_dsi_dcs_set_tear_on.return`:
 
@@ -650,11 +701,13 @@ mipi_dsi_dcs_set_pixel_format
 
     sets the pixel format for the RGB image data used by the interface
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param u8 format:
+    :param format:
         pixel format
+    :type format: u8
 
 .. _`mipi_dsi_dcs_set_pixel_format.return`:
 
@@ -672,11 +725,13 @@ mipi_dsi_dcs_set_tear_scanline
 
     set the scanline to use as trigger for the Tearing Effect output signal of the display module
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param u16 scanline:
+    :param scanline:
         scanline to use as trigger
+    :type scanline: u16
 
 .. _`mipi_dsi_dcs_set_tear_scanline.return`:
 
@@ -694,11 +749,13 @@ mipi_dsi_dcs_set_display_brightness
 
     sets the brightness value of the display
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param u16 brightness:
+    :param brightness:
         brightness value
+    :type brightness: u16
 
 .. _`mipi_dsi_dcs_set_display_brightness.return`:
 
@@ -716,11 +773,13 @@ mipi_dsi_dcs_get_display_brightness
 
     gets the current brightness value of the display
 
-    :param struct mipi_dsi_device \*dsi:
+    :param dsi:
         DSI peripheral device
+    :type dsi: struct mipi_dsi_device \*
 
-    :param u16 \*brightness:
+    :param brightness:
         brightness value
+    :type brightness: u16 \*
 
 .. _`mipi_dsi_dcs_get_display_brightness.return`:
 
@@ -738,11 +797,13 @@ mipi_dsi_driver_register_full
 
     register a driver for DSI devices
 
-    :param struct mipi_dsi_driver \*drv:
+    :param drv:
         DSI driver structure
+    :type drv: struct mipi_dsi_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         owner module
+    :type owner: struct module \*
 
 .. _`mipi_dsi_driver_register_full.return`:
 
@@ -760,8 +821,9 @@ mipi_dsi_driver_unregister
 
     unregister a driver for DSI devices
 
-    :param struct mipi_dsi_driver \*drv:
+    :param drv:
         DSI driver structure
+    :type drv: struct mipi_dsi_driver \*
 
 .. _`mipi_dsi_driver_unregister.return`:
 

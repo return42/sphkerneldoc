@@ -10,11 +10,13 @@ amd76x_get_error_info
 
     fetch error information
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         Memory controller
+    :type mci: struct mem_ctl_info \*
 
-    :param struct amd76x_error_info \*info:
+    :param info:
         Info to fill in
+    :type info: struct amd76x_error_info \*
 
 .. _`amd76x_get_error_info.description`:
 
@@ -33,14 +35,17 @@ amd76x_process_error_info
 
     Error check
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         Memory controller
+    :type mci: struct mem_ctl_info \*
 
-    :param struct amd76x_error_info \*info:
+    :param info:
         Previously fetched information from chip
+    :type info: struct amd76x_error_info \*
 
-    :param int handle_errors:
+    :param handle_errors:
         1 if we should do recovery
+    :type handle_errors: int
 
 .. _`amd76x_process_error_info.description`:
 
@@ -60,8 +65,9 @@ amd76x_check
 
     Poll the controller
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         Memory controller
+    :type mci: struct mem_ctl_info \*
 
 .. _`amd76x_check.description`:
 
@@ -80,11 +86,13 @@ amd76x_probe1
 
     Perform set up for detected device \ ``pdev``\ ; PCI device detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param int dev_idx:
+    :param dev_idx:
         Device type index
+    :type dev_idx: int
 
 .. _`amd76x_probe1.description`:
 
@@ -104,8 +112,9 @@ amd76x_remove_one
 
     driver shutdown
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device being handed back
+    :type pdev: struct pci_dev \*
 
 .. _`amd76x_remove_one.description`:
 

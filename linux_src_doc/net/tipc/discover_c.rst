@@ -70,17 +70,21 @@ tipc_disc_init_msg
 
     initialize a link setup message
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param u32 mtyp:
+    :param mtyp:
         *undescribed*
+    :type mtyp: u32
 
-    :param struct tipc_bearer \*b:
+    :param b:
         ptr to bearer issuing message
+    :type b: struct tipc_bearer \*
 
 .. _`disc_dupl_alert`:
 
@@ -91,14 +95,17 @@ disc_dupl_alert
 
     issue node address duplication alert
 
-    :param struct tipc_bearer \*b:
+    :param b:
         pointer to bearer detecting duplication
+    :type b: struct tipc_bearer \*
 
-    :param u32 node_addr:
+    :param node_addr:
         duplicated node address
+    :type node_addr: u32
 
-    :param struct tipc_media_addr \*media_addr:
+    :param media_addr:
         media address advertised by duplicated node
+    :type media_addr: struct tipc_media_addr \*
 
 .. _`tipc_disc_rcv`:
 
@@ -109,14 +116,17 @@ tipc_disc_rcv
 
     handle incoming discovery message (request or response)
 
-    :param struct net \*net:
+    :param net:
         applicable net namespace
+    :type net: struct net \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer containing message
+    :type skb: struct sk_buff \*
 
-    :param struct tipc_bearer \*b:
+    :param b:
         bearer that message arrived on
+    :type b: struct tipc_bearer \*
 
 .. _`tipc_disc_create`:
 
@@ -127,17 +137,21 @@ tipc_disc_create
 
     create object to send periodic link setup requests
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param struct tipc_bearer \*b:
+    :param b:
         ptr to bearer issuing requests
+    :type b: struct tipc_bearer \*
 
-    :param struct tipc_media_addr \*dest:
+    :param dest:
         destination address for request messages
+    :type dest: struct tipc_media_addr \*
 
-    :param struct sk_buff \*\*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*\*
 
 .. _`tipc_disc_create.description`:
 
@@ -155,8 +169,9 @@ tipc_disc_delete
 
     destroy object sending periodic link setup requests
 
-    :param struct tipc_discoverer \*d:
+    :param d:
         ptr to link duest structure
+    :type d: struct tipc_discoverer \*
 
 .. _`tipc_disc_reset`:
 
@@ -167,11 +182,13 @@ tipc_disc_reset
 
     reset object to send periodic link setup requests
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param struct tipc_bearer \*b:
+    :param b:
         ptr to bearer issuing requests
+    :type b: struct tipc_bearer \*
 
 .. This file was automatic generated / don't edit.
 

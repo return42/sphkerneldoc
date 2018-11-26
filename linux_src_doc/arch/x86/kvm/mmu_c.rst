@@ -10,17 +10,21 @@ kvm_mmu_write_protect_pt_masked
 
     write protect selected PT level pages
 
-    :param struct kvm \*kvm:
+    :param kvm:
         kvm instance
+    :type kvm: struct kvm \*
 
-    :param struct kvm_memory_slot \*slot:
+    :param slot:
         slot to protect
+    :type slot: struct kvm_memory_slot \*
 
-    :param gfn_t gfn_offset:
+    :param gfn_offset:
         start of the BITS_PER_LONG pages we care about
+    :type gfn_offset: gfn_t
 
-    :param unsigned long mask:
+    :param mask:
         indicates which pages we should protect
+    :type mask: unsigned long
 
 .. _`kvm_mmu_write_protect_pt_masked.used-when-we-do-not-need-to-care-about-huge-page-mappings`:
 
@@ -39,17 +43,21 @@ kvm_mmu_clear_dirty_pt_masked
 
     clear MMU D-bit for PT level pages, or write protect the page if the D-bit isn't supported.
 
-    :param struct kvm \*kvm:
+    :param kvm:
         kvm instance
+    :type kvm: struct kvm \*
 
-    :param struct kvm_memory_slot \*slot:
+    :param slot:
         slot to clear D-bit
+    :type slot: struct kvm_memory_slot \*
 
-    :param gfn_t gfn_offset:
+    :param gfn_offset:
         start of the BITS_PER_LONG pages we care about
+    :type gfn_offset: gfn_t
 
-    :param unsigned long mask:
+    :param mask:
         indicates which pages we should clear D-bit
+    :type mask: unsigned long
 
 .. _`kvm_mmu_clear_dirty_pt_masked.description`:
 
@@ -67,17 +75,21 @@ kvm_arch_mmu_enable_log_dirty_pt_masked
 
     enable dirty logging for selected PT level pages.
 
-    :param struct kvm \*kvm:
+    :param kvm:
         *undescribed*
+    :type kvm: struct kvm \*
 
-    :param struct kvm_memory_slot \*slot:
+    :param slot:
         *undescribed*
+    :type slot: struct kvm_memory_slot \*
 
-    :param gfn_t gfn_offset:
+    :param gfn_offset:
         *undescribed*
+    :type gfn_offset: gfn_t
 
-    :param unsigned long mask:
+    :param mask:
         *undescribed*
+    :type mask: unsigned long
 
 .. _`kvm_arch_mmu_enable_log_dirty_pt_masked.description`:
 
@@ -104,8 +116,9 @@ kvm_arch_write_log_dirty
 
     emulate dirty page logging
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Guest mode vcpu
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_arch_write_log_dirty.description`:
 

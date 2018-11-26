@@ -10,8 +10,9 @@ da8xx_get_cfgchip
 
     Lazy gets CFGCHIP as regmap
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`da8xx_get_cfgchip.description`:
 

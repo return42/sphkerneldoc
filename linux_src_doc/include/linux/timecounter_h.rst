@@ -97,17 +97,21 @@ cyclecounter_cyc2ns
 
     converts cycle counter cycles to nanoseconds
 
-    :param const struct cyclecounter \*cc:
+    :param cc:
         Pointer to cycle counter.
+    :type cc: const struct cyclecounter \*
 
-    :param u64 cycles:
+    :param cycles:
         Cycles
+    :type cycles: u64
 
-    :param u64 mask:
+    :param mask:
         bit mask for maintaining the 'frac' field
+    :type mask: u64
 
-    :param u64 \*frac:
+    :param frac:
         pointer to storage for the fractional nanoseconds.
+    :type frac: u64 \*
 
 .. _`timecounter_adjtime`:
 
@@ -118,11 +122,13 @@ timecounter_adjtime
 
     Shifts the time of the clock.
 
-    :param struct timecounter \*tc:
+    :param tc:
         *undescribed*
+    :type tc: struct timecounter \*
 
-    :param s64 delta:
+    :param delta:
         Desired change in nanoseconds.
+    :type delta: s64
 
 .. _`timecounter_init`:
 
@@ -133,14 +139,17 @@ timecounter_init
 
     initialize a time counter
 
-    :param struct timecounter \*tc:
+    :param tc:
         Pointer to time counter which is to be initialized/reset
+    :type tc: struct timecounter \*
 
-    :param const struct cyclecounter \*cc:
+    :param cc:
         A cycle counter, ready to be used.
+    :type cc: const struct cyclecounter \*
 
-    :param u64 start_tstamp:
+    :param start_tstamp:
         Arbitrary initial time stamp.
+    :type start_tstamp: u64
 
 .. _`timecounter_init.description`:
 
@@ -160,8 +169,9 @@ timecounter_read
 
     return nanoseconds elapsed since \ :c:func:`timecounter_init`\  plus the initial time stamp
 
-    :param struct timecounter \*tc:
+    :param tc:
         Pointer to time counter.
+    :type tc: struct timecounter \*
 
 .. _`timecounter_read.description`:
 
@@ -180,11 +190,13 @@ timecounter_cyc2time
 
     convert a cycle counter to same time base as values returned by \ :c:func:`timecounter_read`\ 
 
-    :param struct timecounter \*tc:
+    :param tc:
         Pointer to time counter.
+    :type tc: struct timecounter \*
 
-    :param u64 cycle_tstamp:
+    :param cycle_tstamp:
         a value returned by tc->cc->read()
+    :type cycle_tstamp: u64
 
 .. _`timecounter_cyc2time.description`:
 

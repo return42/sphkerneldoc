@@ -27,7 +27,9 @@ Definition
         spinlock_t lock;
         refcount_t refcnt;
         struct sk_buff *fragments;
+        struct rb_root rb_fragments;
         struct sk_buff *fragments_tail;
+        struct sk_buff *last_run_head;
         ktime_t stamp;
         int len;
         int meat;
@@ -60,8 +62,14 @@ refcnt
 fragments
     received fragments head
 
+rb_fragments
+    received fragments rb-tree root
+
 fragments_tail
     received fragments tail
+
+last_run_head
+    the head of the last "run". see ip_fragment.c
 
 stamp
     timestamp of the last received fragment

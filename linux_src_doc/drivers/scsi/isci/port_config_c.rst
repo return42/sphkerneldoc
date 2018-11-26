@@ -10,17 +10,21 @@ sci_apc_agent_link_up
 
     handle apc link up events
 
-    :param struct isci_host \*ihost:
+    :param ihost:
         *undescribed*
+    :type ihost: struct isci_host \*
 
-    :param struct sci_port_configuration_agent \*port_agent:
+    :param port_agent:
         *undescribed*
+    :type port_agent: struct sci_port_configuration_agent \*
 
-    :param struct isci_port \*iport:
+    :param iport:
         *undescribed*
+    :type iport: struct isci_port \*
 
-    :param struct isci_phy \*iphy:
+    :param iphy:
         *undescribed*
+    :type iphy: struct isci_phy \*
 
 .. _`sci_apc_agent_link_up.description`:
 

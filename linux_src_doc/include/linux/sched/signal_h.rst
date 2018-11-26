@@ -56,8 +56,9 @@ set_restore_sigmask
 
     make sure saved_sigmask processing gets done
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`set_restore_sigmask.description`:
 

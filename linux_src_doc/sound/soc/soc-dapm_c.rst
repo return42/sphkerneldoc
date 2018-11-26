@@ -10,8 +10,9 @@ snd_soc_dapm_kcontrol_widget
 
     Returns the widget associated to a kcontrol
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The kcontrol
+    :type kcontrol: struct snd_kcontrol \*
 
 .. _`snd_soc_dapm_kcontrol_dapm`:
 
@@ -22,8 +23,9 @@ snd_soc_dapm_kcontrol_dapm
 
     Returns the dapm context associated to a kcontrol
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The kcontrol
+    :type kcontrol: struct snd_kcontrol \*
 
 .. _`snd_soc_dapm_kcontrol_dapm.note`:
 
@@ -42,11 +44,13 @@ snd_soc_dapm_force_bias_level
 
     Sets the DAPM bias level
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         The DAPM context for which to set the level
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param enum snd_soc_bias_level level:
+    :param level:
         The level to set
+    :type level: enum snd_soc_bias_level
 
 .. _`snd_soc_dapm_force_bias_level.description`:
 
@@ -74,11 +78,13 @@ snd_soc_dapm_set_bias_level
 
     set the bias level for the system
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param enum snd_soc_bias_level level:
+    :param level:
         level to configure
+    :type level: enum snd_soc_bias_level
 
 .. _`snd_soc_dapm_set_bias_level.description`:
 
@@ -98,14 +104,17 @@ snd_soc_dapm_dai_get_connected_widgets
 
     query audio path and it's widgets.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         the soc DAI.
+    :type dai: struct snd_soc_dai \*
 
-    :param int stream:
+    :param stream:
         stream direction.
+    :type stream: int
 
-    :param struct snd_soc_dapm_widget_list \*\*list:
+    :param list:
         list of active widgets for this stream.
+    :type list: struct snd_soc_dapm_widget_list \*\*
 
     :param bool (\*custom_stop_condition)(struct snd_soc_dapm_widget \*, enum snd_soc_dapm_direction):
         (optional) a function meant to stop the widget graph
@@ -136,8 +145,9 @@ snd_soc_dapm_sync_unlocked
 
     scan and power dapm paths
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
 .. _`snd_soc_dapm_sync_unlocked.description`:
 
@@ -160,8 +170,9 @@ snd_soc_dapm_sync
 
     scan and power dapm paths
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
 .. _`snd_soc_dapm_sync.description`:
 
@@ -182,14 +193,17 @@ snd_soc_dapm_add_routes
 
     Add routes between DAPM widgets
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const struct snd_soc_dapm_route \*route:
+    :param route:
         audio routes
+    :type route: const struct snd_soc_dapm_route \*
 
-    :param int num:
+    :param num:
         number of routes
+    :type num: int
 
 .. _`snd_soc_dapm_add_routes.description`:
 
@@ -212,14 +226,17 @@ snd_soc_dapm_del_routes
 
     Remove routes between DAPM widgets
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const struct snd_soc_dapm_route \*route:
+    :param route:
         audio routes
+    :type route: const struct snd_soc_dapm_route \*
 
-    :param int num:
+    :param num:
         number of routes
+    :type num: int
 
 .. _`snd_soc_dapm_del_routes.description`:
 
@@ -237,14 +254,17 @@ snd_soc_dapm_weak_routes
 
     Mark routes between DAPM widgets as weak
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const struct snd_soc_dapm_route \*route:
+    :param route:
         audio routes
+    :type route: const struct snd_soc_dapm_route \*
 
-    :param int num:
+    :param num:
         number of routes
+    :type num: int
 
 .. _`snd_soc_dapm_weak_routes.description`:
 
@@ -270,8 +290,9 @@ snd_soc_dapm_new_widgets
 
     add new dapm widgets
 
-    :param struct snd_soc_card \*card:
+    :param card:
         card to be checked for new dapm widgets
+    :type card: struct snd_soc_card \*
 
 .. _`snd_soc_dapm_new_widgets.description`:
 
@@ -291,11 +312,13 @@ snd_soc_dapm_get_volsw
 
     dapm mixer get callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_dapm_get_volsw.description`:
 
@@ -315,11 +338,13 @@ snd_soc_dapm_put_volsw
 
     dapm mixer set callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_dapm_put_volsw.description`:
 
@@ -339,11 +364,13 @@ snd_soc_dapm_get_enum_double
 
     dapm enumerated double mixer get callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_dapm_get_enum_double.description`:
 
@@ -363,11 +390,13 @@ snd_soc_dapm_put_enum_double
 
     dapm enumerated double mixer set callback
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         control element information
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_dapm_put_enum_double.description`:
 
@@ -387,11 +416,13 @@ snd_soc_dapm_info_pin_switch
 
     Info for a pin switch
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_info \*uinfo:
+    :param uinfo:
         control element information
+    :type uinfo: struct snd_ctl_elem_info \*
 
 .. _`snd_soc_dapm_info_pin_switch.description`:
 
@@ -409,11 +440,13 @@ snd_soc_dapm_get_pin_switch
 
     Get information for a pin switch
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         Value
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`snd_soc_dapm_put_pin_switch`:
 
@@ -424,11 +457,39 @@ snd_soc_dapm_put_pin_switch
 
     Set information for a pin switch
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         mixer control
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         Value
+    :type ucontrol: struct snd_ctl_elem_value \*
+
+.. _`snd_soc_dapm_new_control`:
+
+snd_soc_dapm_new_control
+========================
+
+.. c:function:: struct snd_soc_dapm_widget *snd_soc_dapm_new_control(struct snd_soc_dapm_context *dapm, const struct snd_soc_dapm_widget *widget)
+
+    create new dapm control
+
+    :param dapm:
+        DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
+
+    :param widget:
+        widget template
+    :type widget: const struct snd_soc_dapm_widget \*
+
+.. _`snd_soc_dapm_new_control.description`:
+
+Description
+-----------
+
+Creates new DAPM control based upon a template.
+
+Returns a widget pointer on success or an error pointer on failure
 
 .. _`snd_soc_dapm_new_controls`:
 
@@ -439,14 +500,17 @@ snd_soc_dapm_new_controls
 
     create new dapm controls
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const struct snd_soc_dapm_widget \*widget:
+    :param widget:
         widget array
+    :type widget: const struct snd_soc_dapm_widget \*
 
-    :param int num:
+    :param num:
         number of widgets
+    :type num: int
 
 .. _`snd_soc_dapm_new_controls.description`:
 
@@ -466,14 +530,17 @@ snd_soc_dapm_stream_event
 
     send a stream event to the dapm core
 
-    :param struct snd_soc_pcm_runtime \*rtd:
+    :param rtd:
         PCM runtime data
+    :type rtd: struct snd_soc_pcm_runtime \*
 
-    :param int stream:
+    :param stream:
         stream name
+    :type stream: int
 
-    :param int event:
+    :param event:
         stream event
+    :type event: int
 
 .. _`snd_soc_dapm_stream_event.description`:
 
@@ -494,11 +561,13 @@ snd_soc_dapm_enable_pin_unlocked
 
     enable pin.
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const char \*pin:
+    :param pin:
         pin name
+    :type pin: const char \*
 
 .. _`snd_soc_dapm_enable_pin_unlocked.description`:
 
@@ -527,11 +596,13 @@ snd_soc_dapm_enable_pin
 
     enable pin.
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const char \*pin:
+    :param pin:
         pin name
+    :type pin: const char \*
 
 .. _`snd_soc_dapm_enable_pin.description`:
 
@@ -558,11 +629,13 @@ snd_soc_dapm_force_enable_pin_unlocked
 
     force a pin to be enabled
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const char \*pin:
+    :param pin:
         pin name
+    :type pin: const char \*
 
 .. _`snd_soc_dapm_force_enable_pin_unlocked.description`:
 
@@ -592,11 +665,13 @@ snd_soc_dapm_force_enable_pin
 
     force a pin to be enabled
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const char \*pin:
+    :param pin:
         pin name
+    :type pin: const char \*
 
 .. _`snd_soc_dapm_force_enable_pin.description`:
 
@@ -624,11 +699,13 @@ snd_soc_dapm_disable_pin_unlocked
 
     disable pin.
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const char \*pin:
+    :param pin:
         pin name
+    :type pin: const char \*
 
 .. _`snd_soc_dapm_disable_pin_unlocked.description`:
 
@@ -656,11 +733,13 @@ snd_soc_dapm_disable_pin
 
     disable pin.
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const char \*pin:
+    :param pin:
         pin name
+    :type pin: const char \*
 
 .. _`snd_soc_dapm_disable_pin.description`:
 
@@ -686,11 +765,13 @@ snd_soc_dapm_nc_pin_unlocked
 
     permanently disable pin.
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const char \*pin:
+    :param pin:
         pin name
+    :type pin: const char \*
 
 .. _`snd_soc_dapm_nc_pin_unlocked.description`:
 
@@ -722,11 +803,13 @@ snd_soc_dapm_nc_pin
 
     permanently disable pin.
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const char \*pin:
+    :param pin:
         pin name
+    :type pin: const char \*
 
 .. _`snd_soc_dapm_nc_pin.description`:
 
@@ -756,11 +839,13 @@ snd_soc_dapm_get_pin_status
 
     get audio pin status
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const char \*pin:
+    :param pin:
         audio signal pin endpoint (or start point)
+    :type pin: const char \*
 
 .. _`snd_soc_dapm_get_pin_status.description`:
 
@@ -780,11 +865,13 @@ snd_soc_dapm_ignore_suspend
 
     ignore suspend status for DAPM endpoint
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
-    :param const char \*pin:
+    :param pin:
         audio signal pin endpoint (or start point)
+    :type pin: const char \*
 
 .. _`snd_soc_dapm_ignore_suspend.description`:
 
@@ -806,8 +893,9 @@ snd_soc_dapm_free
 
     free dapm resources
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         DAPM context
+    :type dapm: struct snd_soc_dapm_context \*
 
 .. _`snd_soc_dapm_free.description`:
 

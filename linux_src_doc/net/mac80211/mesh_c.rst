@@ -10,11 +10,13 @@ mesh_matches_local
 
     check if the config of a mesh point matches ours
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local mesh subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct ieee802_11_elems \*ie:
+    :param ie:
         information elements of a management frame from the mesh peer
+    :type ie: struct ieee802_11_elems \*
 
 .. _`mesh_matches_local.description`:
 
@@ -33,8 +35,9 @@ mesh_peer_accepts_plinks
 
     check if an mp is willing to establish peer links
 
-    :param struct ieee802_11_elems \*ie:
+    :param ie:
         information elements of a management frame from the mesh peer
+    :type ie: struct ieee802_11_elems \*
 
 .. _`mesh_accept_plinks_update`:
 
@@ -45,8 +48,9 @@ mesh_accept_plinks_update
 
     update accepting_plink in local mesh beacons
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         mesh interface in which mesh beacons are going to be updated
+    :type sdata: struct ieee80211_sub_if_data \*
 
 .. _`mesh_accept_plinks_update.return`:
 
@@ -64,14 +68,17 @@ mesh_rmc_check
 
     Check frame in recent multicast cache and add if absent.
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         interface
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param const u8 \*sa:
+    :param sa:
         source address
+    :type sa: const u8 \*
 
-    :param struct ieee80211s_hdr \*mesh_hdr:
+    :param mesh_hdr:
         mesh_header
+    :type mesh_hdr: struct ieee80211s_hdr \*
 
 .. _`mesh_rmc_check.return`:
 
@@ -93,18 +100,22 @@ ieee80211_fill_mesh_addresses
 
     fill addresses of a locally originated mesh frame
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         802.11 frame header
+    :type hdr: struct ieee80211_hdr \*
 
-    :param __le16 \*fc:
+    :param fc:
         frame control field
+    :type fc: __le16 \*
 
-    :param const u8 \*meshda:
+    :param meshda:
         destination address in the mesh
+    :type meshda: const u8 \*
 
-    :param const u8 \*meshsa:
+    :param meshsa:
         source address address in the mesh.  Same as TA, as frame is
         locally originated.
+    :type meshsa: const u8 \*
 
 .. _`ieee80211_fill_mesh_addresses.description`:
 
@@ -122,20 +133,24 @@ ieee80211_new_mesh_header
 
     create a new mesh header
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         mesh interface to be used
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct ieee80211s_hdr \*meshhdr:
+    :param meshhdr:
         uninitialized mesh header
+    :type meshhdr: struct ieee80211s_hdr \*
 
-    :param const char \*addr4or5:
+    :param addr4or5:
         1st address in the ae header, which may correspond to address 4
         (if addr6 is NULL) or address 5 (if addr6 is present). It may
         be NULL.
+    :type addr4or5: const char \*
 
-    :param const char \*addr6:
+    :param addr6:
         2nd address in the ae header, which corresponds to addr6 of the
         mesh frame
+    :type addr6: const char \*
 
 .. _`ieee80211_new_mesh_header.description`:
 

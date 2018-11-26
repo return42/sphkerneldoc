@@ -43,8 +43,9 @@ intel_lpe_audio_irq_handler
 
     forwards the LPE audio irq
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         the i915 drm device private data
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_lpe_audio_irq_handler.description`:
 
@@ -63,8 +64,9 @@ intel_lpe_audio_init
 
     detect and setup the bridge between HDMI LPE Audio driver and i915
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         the i915 drm device private data
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_lpe_audio_init.return`:
 
@@ -83,8 +85,9 @@ intel_lpe_audio_teardown
 
     destroy the bridge between HDMI LPE audio driver and i915
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         the i915 drm device private data
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_lpe_audio_teardown.description`:
 
@@ -102,23 +105,29 @@ intel_lpe_audio_notify
 
     notify lpe audio event audio driver and i915
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         the i915 drm device private data
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum pipe pipe:
+    :param pipe:
         pipe
+    :type pipe: enum pipe
 
-    :param enum port port:
+    :param port:
         port
+    :type port: enum port
 
-    :param const void \*eld:
+    :param eld:
         ELD data
+    :type eld: const void \*
 
-    :param int ls_clock:
+    :param ls_clock:
         Link symbol clock in kHz
+    :type ls_clock: int
 
-    :param bool dp_output:
+    :param dp_output:
         Driving a DP output?
+    :type dp_output: bool
 
 .. _`intel_lpe_audio_notify.description`:
 

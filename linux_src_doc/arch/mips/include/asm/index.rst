@@ -13,7 +13,6 @@ asm
     mach-malta/index
     octeon/index
     txx9/index
-    atomic_h
     bootinfo_h
     cdmm_h
     clocksource_h

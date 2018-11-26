@@ -8,11 +8,13 @@ cdv_intel_crt_detect_hotplug
 
 .. c:function:: bool cdv_intel_crt_detect_hotplug(struct drm_connector *connector, bool force)
 
-    :param struct drm_connector \*connector:
+    :param connector:
         *undescribed*
+    :type connector: struct drm_connector \*
 
-    :param bool force:
+    :param force:
         *undescribed*
+    :type force: bool
 
 .. _`cdv_intel_crt_detect_hotplug.description`:
 

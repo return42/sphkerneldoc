@@ -10,14 +10,17 @@ pvrdma_query_device
 
     query device
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the device to query
+    :type ibdev: struct ib_device \*
 
-    :param struct ib_device_attr \*props:
+    :param props:
         the device properties
+    :type props: struct ib_device_attr \*
 
-    :param struct ib_udata \*uhw:
+    :param uhw:
         user data
+    :type uhw: struct ib_udata \*
 
 .. _`pvrdma_query_port`:
 
@@ -28,14 +31,17 @@ pvrdma_query_port
 
     query device port attributes
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the device to query
+    :type ibdev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         the port number
+    :type port: u8
 
-    :param struct ib_port_attr \*props:
+    :param props:
         the device properties
+    :type props: struct ib_port_attr \*
 
 .. _`pvrdma_query_gid`:
 
@@ -46,17 +52,21 @@ pvrdma_query_gid
 
     query device gid
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the device to query
+    :type ibdev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         the port number
+    :type port: u8
 
-    :param int index:
+    :param index:
         the index
+    :type index: int
 
-    :param union ib_gid \*gid:
+    :param gid:
         the device gid value
+    :type gid: union ib_gid \*
 
 .. _`pvrdma_query_pkey`:
 
@@ -67,17 +77,21 @@ pvrdma_query_pkey
 
     query device port's P_Key table
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the device to query
+    :type ibdev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         the port number
+    :type port: u8
 
-    :param u16 index:
+    :param index:
         the index
+    :type index: u16
 
-    :param u16 \*pkey:
+    :param pkey:
         the device P_Key value
+    :type pkey: u16 \*
 
 .. _`pvrdma_modify_port`:
 
@@ -88,17 +102,21 @@ pvrdma_modify_port
 
     modify device port attributes
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the device to modify
+    :type ibdev: struct ib_device \*
 
-    :param u8 port:
+    :param port:
         the port number
+    :type port: u8
 
-    :param int mask:
+    :param mask:
         attributes to modify
+    :type mask: int
 
-    :param struct ib_port_modify \*props:
+    :param props:
         the device properties
+    :type props: struct ib_port_modify \*
 
 .. _`pvrdma_alloc_ucontext`:
 
@@ -109,11 +127,13 @@ pvrdma_alloc_ucontext
 
     allocate ucontext
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the IB device
+    :type ibdev: struct ib_device \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`pvrdma_dealloc_ucontext`:
 
@@ -124,8 +144,9 @@ pvrdma_dealloc_ucontext
 
     deallocate ucontext
 
-    :param struct ib_ucontext \*ibcontext:
+    :param ibcontext:
         the ucontext
+    :type ibcontext: struct ib_ucontext \*
 
 .. _`pvrdma_mmap`:
 
@@ -136,11 +157,13 @@ pvrdma_mmap
 
     create mmap region
 
-    :param struct ib_ucontext \*ibcontext:
+    :param ibcontext:
         the user context
+    :type ibcontext: struct ib_ucontext \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the VMA
+    :type vma: struct vm_area_struct \*
 
 .. _`pvrdma_alloc_pd`:
 
@@ -151,14 +174,17 @@ pvrdma_alloc_pd
 
     allocate protection domain
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         the IB device
+    :type ibdev: struct ib_device \*
 
-    :param struct ib_ucontext \*context:
+    :param context:
         user context
+    :type context: struct ib_ucontext \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data
+    :type udata: struct ib_udata \*
 
 .. _`pvrdma_dealloc_pd`:
 
@@ -169,8 +195,9 @@ pvrdma_dealloc_pd
 
     deallocate protection domain
 
-    :param struct ib_pd \*pd:
+    :param pd:
         the protection domain to be released
+    :type pd: struct ib_pd \*
 
 .. _`pvrdma_create_ah`:
 
@@ -181,14 +208,17 @@ pvrdma_create_ah
 
     create an address handle
 
-    :param struct ib_pd \*pd:
+    :param pd:
         the protection domain
+    :type pd: struct ib_pd \*
 
-    :param struct rdma_ah_attr \*ah_attr:
+    :param ah_attr:
         the attributes of the AH
+    :type ah_attr: struct rdma_ah_attr \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data blob
+    :type udata: struct ib_udata \*
 
 .. _`pvrdma_destroy_ah`:
 
@@ -199,8 +229,9 @@ pvrdma_destroy_ah
 
     destroy an address handle
 
-    :param struct ib_ah \*ah:
+    :param ah:
         the address handle to destroyed
+    :type ah: struct ib_ah \*
 
 .. This file was automatic generated / don't edit.
 

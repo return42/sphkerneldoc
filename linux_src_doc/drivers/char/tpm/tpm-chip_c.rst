@@ -10,8 +10,9 @@ tpm_try_get_ops
 
     Get a ref to the tpm_chip
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         Chip to ref
+    :type chip: struct tpm_chip \*
 
 .. _`tpm_try_get_ops.description`:
 
@@ -34,8 +35,9 @@ tpm_put_ops
 
     Release a ref to the tpm_chip
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         Chip to put
+    :type chip: struct tpm_chip \*
 
 .. _`tpm_put_ops.description`:
 
@@ -45,27 +47,44 @@ Description
 This is the opposite pair to \ :c:func:`tpm_try_get_ops`\ . After this returns chip may
 be kfree'd.
 
-.. _`tpm_chip_find_get`:
+.. _`tpm_default_chip`:
 
-tpm_chip_find_get
-=================
+tpm_default_chip
+================
 
-.. c:function:: struct tpm_chip *tpm_chip_find_get(struct tpm_chip *chip)
+.. c:function:: struct tpm_chip *tpm_default_chip( void)
+
+    find a TPM chip and get a reference to it
+
+    :param void:
+        no arguments
+    :type void: 
+
+.. _`tpm_find_get_ops`:
+
+tpm_find_get_ops
+================
+
+.. c:function:: struct tpm_chip *tpm_find_get_ops(struct tpm_chip *chip)
 
     find and reserve a TPM chip
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
+    :type chip: struct tpm_chip \*
 
-.. _`tpm_chip_find_get.description`:
+.. _`tpm_find_get_ops.description`:
 
 Description
 -----------
 
 Finds a TPM chip and reserves its class device and operations. The chip must
-be released with \ :c:func:`tpm_chip_put_ops`\  after use.
+be released with \ :c:func:`tpm_put_ops`\  after use.
+This function is for internal use only. It supports existing TPM callers
+by accepting NULL, but those callers should be converted to pass in a chip
+directly.
 
-.. _`tpm_chip_find_get.return`:
+.. _`tpm_find_get_ops.return`:
 
 Return
 ------
@@ -83,8 +102,9 @@ tpm_dev_release
 
     free chip memory and the device number
 
-    :param struct device \*dev:
+    :param dev:
         the character device for the TPM chip
+    :type dev: struct device \*
 
 .. _`tpm_dev_release.description`:
 
@@ -102,8 +122,9 @@ tpm_class_shutdown
 
     prepare the TPM device for loss of power.
 
-    :param struct device \*dev:
+    :param dev:
         device to which the chip is associated.
+    :type dev: struct device \*
 
 .. _`tpm_class_shutdown.description`:
 
@@ -138,13 +159,15 @@ tpm_chip_alloc
 
     allocate a new struct tpm_chip instance
 
-    :param struct device \*pdev:
+    :param pdev:
         device to which the chip is associated
         At this point pdev mst be initialized, but does not have to
         be registered
+    :type pdev: struct device \*
 
-    :param const struct tpm_class_ops \*ops:
+    :param ops:
         struct tpm_class_ops instance
+    :type ops: const struct tpm_class_ops \*
 
 .. _`tpm_chip_alloc.description`:
 
@@ -163,11 +186,13 @@ tpmm_chip_alloc
 
     allocate a new struct tpm_chip instance
 
-    :param struct device \*pdev:
+    :param pdev:
         parent device to which the chip is associated
+    :type pdev: struct device \*
 
-    :param const struct tpm_class_ops \*ops:
+    :param ops:
         struct tpm_class_ops instance
+    :type ops: const struct tpm_class_ops \*
 
 .. _`tpmm_chip_alloc.description`:
 

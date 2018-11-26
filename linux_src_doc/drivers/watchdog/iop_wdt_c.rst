@@ -10,8 +10,9 @@ wdt_supports_disable
 
     determine if we are accessing a iop13xx watchdog or iop3xx by whether it has a disable command
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,23 +10,29 @@ ext4_free_blocks
 
     - Free given blocks and update quota
 
-    :param handle_t \*handle:
+    :param handle:
         handle for this transaction
+    :type handle: handle_t \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         *undescribed*
+    :type bh: struct buffer_head \*
 
-    :param ext4_fsblk_t block:
+    :param block:
         start physical block to free
+    :type block: ext4_fsblk_t
 
-    :param unsigned long count:
+    :param count:
         number of blocks to count
+    :type count: unsigned long
 
-    :param int flags:
+    :param flags:
         flags used by ext4_free_blocks
+    :type flags: int
 
 .. _`ext4_group_add_blocks`:
 
@@ -37,17 +43,21 @@ ext4_group_add_blocks
 
     - Add given blocks to an existing group
 
-    :param handle_t \*handle:
+    :param handle:
         handle to this transaction
+    :type handle: handle_t \*
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
-    :param ext4_fsblk_t block:
+    :param block:
         start physical block to add to the block group
+    :type block: ext4_fsblk_t
 
-    :param unsigned long count:
+    :param count:
         number of blocks to free
+    :type count: unsigned long
 
 .. _`ext4_group_add_blocks.description`:
 
@@ -65,20 +75,25 @@ ext4_trim_extent
 
     - function to TRIM one single free extent in the group
 
-    :param struct super_block \*sb:
+    :param sb:
         super block for the file system
+    :type sb: struct super_block \*
 
-    :param int start:
+    :param start:
         starting block of the free extent in the alloc. group
+    :type start: int
 
-    :param int count:
+    :param count:
         number of blocks to TRIM
+    :type count: int
 
-    :param ext4_group_t group:
+    :param group:
         alloc. group we are working with
+    :type group: ext4_group_t
 
-    :param struct ext4_buddy \*e4b:
+    :param e4b:
         ext4 buddy for the group
+    :type e4b: struct ext4_buddy \*
 
 .. _`ext4_trim_extent.description`:
 
@@ -98,20 +113,25 @@ ext4_trim_all_free
 
     - function to trim all free space in alloc. group
 
-    :param struct super_block \*sb:
+    :param sb:
         super block for file system
+    :type sb: struct super_block \*
 
-    :param ext4_group_t group:
+    :param group:
         group to be trimmed
+    :type group: ext4_group_t
 
-    :param ext4_grpblk_t start:
+    :param start:
         first group block to examine
+    :type start: ext4_grpblk_t
 
-    :param ext4_grpblk_t max:
+    :param max:
         last group block to examine
+    :type max: ext4_grpblk_t
 
-    :param ext4_grpblk_t minblocks:
+    :param minblocks:
         minimum extent block count
+    :type minblocks: ext4_grpblk_t
 
 .. _`ext4_trim_all_free.description`:
 
@@ -137,11 +157,13 @@ ext4_trim_fs
 
     - trim ioctl handle function
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock for filesystem
+    :type sb: struct super_block \*
 
-    :param struct fstrim_range \*range:
+    :param range:
         fstrim_range structure
+    :type range: struct fstrim_range \*
 
 .. _`ext4_trim_fs.start`:
 

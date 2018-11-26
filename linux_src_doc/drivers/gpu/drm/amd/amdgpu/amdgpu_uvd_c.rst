@@ -1,6 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/amdgpu_uvd.c
 
+.. _`amdgpu_uvd_entity_init`:
+
+amdgpu_uvd_entity_init
+======================
+
+.. c:function:: int amdgpu_uvd_entity_init(struct amdgpu_device *adev)
+
+    init entity
+
+    :param adev:
+        amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
+
 .. _`amdgpu_uvd_cs_pass1`:
 
 amdgpu_uvd_cs_pass1
@@ -10,8 +23,9 @@ amdgpu_uvd_cs_pass1
 
     first parsing round
 
-    :param struct amdgpu_uvd_cs_ctx \*ctx:
+    :param ctx:
         UVD parser context
+    :type ctx: struct amdgpu_uvd_cs_ctx \*
 
 .. _`amdgpu_uvd_cs_pass1.description`:
 
@@ -30,14 +44,17 @@ amdgpu_uvd_cs_msg_decode
 
     handle UVD decode message
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t \*msg:
+    :param msg:
         pointer to message structure
+    :type msg: uint32_t \*
 
-    :param unsigned buf_sizes:
+    :param buf_sizes:
         returned buffer sizes
+    :type buf_sizes: unsigned
 
 .. _`amdgpu_uvd_cs_msg_decode.description`:
 
@@ -55,14 +72,17 @@ amdgpu_uvd_cs_msg
 
     handle UVD message
 
-    :param struct amdgpu_uvd_cs_ctx \*ctx:
+    :param ctx:
         UVD parser context
+    :type ctx: struct amdgpu_uvd_cs_ctx \*
 
-    :param struct amdgpu_bo \*bo:
+    :param bo:
         buffer object containing the message
+    :type bo: struct amdgpu_bo \*
 
-    :param unsigned offset:
+    :param offset:
         offset into the buffer object
+    :type offset: unsigned
 
 .. _`amdgpu_uvd_cs_msg.description`:
 
@@ -81,8 +101,9 @@ amdgpu_uvd_cs_pass2
 
     second parsing round
 
-    :param struct amdgpu_uvd_cs_ctx \*ctx:
+    :param ctx:
         UVD parser context
+    :type ctx: struct amdgpu_uvd_cs_ctx \*
 
 .. _`amdgpu_uvd_cs_pass2.description`:
 
@@ -100,8 +121,9 @@ amdgpu_uvd_cs_reg
 
     parse register writes
 
-    :param struct amdgpu_uvd_cs_ctx \*ctx:
+    :param ctx:
         UVD parser context
+    :type ctx: struct amdgpu_uvd_cs_ctx \*
 
     :param int (\*cb)(struct amdgpu_uvd_cs_ctx \*ctx):
         callback function
@@ -122,8 +144,9 @@ amdgpu_uvd_cs_packets
 
     parse UVD packets
 
-    :param struct amdgpu_uvd_cs_ctx \*ctx:
+    :param ctx:
         UVD parser context
+    :type ctx: struct amdgpu_uvd_cs_ctx \*
 
     :param int (\*cb)(struct amdgpu_uvd_cs_ctx \*ctx):
         callback function
@@ -144,11 +167,13 @@ amdgpu_uvd_ring_parse_cs
 
     UVD command submission parser
 
-    :param struct amdgpu_cs_parser \*parser:
+    :param parser:
         Command submission parser context
+    :type parser: struct amdgpu_cs_parser \*
 
-    :param uint32_t ib_idx:
+    :param ib_idx:
         *undescribed*
+    :type ib_idx: uint32_t
 
 .. _`amdgpu_uvd_ring_parse_cs.description`:
 
@@ -166,11 +191,13 @@ amdgpu_uvd_ring_test_ib
 
     test ib execution
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
-    :param long timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: long
 
 .. _`amdgpu_uvd_ring_test_ib.description`:
 
@@ -188,8 +215,9 @@ amdgpu_uvd_used_handles
 
     returns used UVD handles
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_uvd_used_handles.description`:
 

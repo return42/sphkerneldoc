@@ -10,11 +10,13 @@ ci_hdrc_pci_probe
 
     PCI probe
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         USB device controller being probed
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         PCI hotplug ID connecting controller to UDC framework
+    :type id: const struct pci_device_id \*
 
 .. _`ci_hdrc_pci_probe.description`:
 
@@ -34,8 +36,9 @@ ci_hdrc_pci_remove
 
     PCI remove
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         USB Device Controller being removed
+    :type pdev: struct pci_dev \*
 
 .. _`ci_hdrc_pci_remove.description`:
 

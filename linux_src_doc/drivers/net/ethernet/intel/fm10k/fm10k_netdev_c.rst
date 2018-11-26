@@ -10,8 +10,9 @@ fm10k_setup_tx_resources
 
     allocate Tx resources (Descriptors)
 
-    :param struct fm10k_ring \*tx_ring:
+    :param tx_ring:
         tx descriptor ring (for a specific queue) to setup
+    :type tx_ring: struct fm10k_ring \*
 
 .. _`fm10k_setup_tx_resources.description`:
 
@@ -29,8 +30,9 @@ fm10k_setup_all_tx_resources
 
     allocate all queues Tx resources
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_setup_all_tx_resources.description`:
 
@@ -52,8 +54,9 @@ fm10k_setup_rx_resources
 
     allocate Rx resources (Descriptors)
 
-    :param struct fm10k_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring (for a specific queue) to setup
+    :type rx_ring: struct fm10k_ring \*
 
 .. _`fm10k_setup_rx_resources.description`:
 
@@ -71,8 +74,9 @@ fm10k_setup_all_rx_resources
 
     allocate all queues Rx resources
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_setup_all_rx_resources.description`:
 
@@ -94,8 +98,9 @@ fm10k_clean_tx_ring
 
     Free Tx Buffers
 
-    :param struct fm10k_ring \*tx_ring:
+    :param tx_ring:
         ring to be cleaned
+    :type tx_ring: struct fm10k_ring \*
 
 .. _`fm10k_free_tx_resources`:
 
@@ -106,8 +111,9 @@ fm10k_free_tx_resources
 
     Free Tx Resources per Queue
 
-    :param struct fm10k_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring for a specific queue
+    :type tx_ring: struct fm10k_ring \*
 
 .. _`fm10k_free_tx_resources.description`:
 
@@ -125,8 +131,9 @@ fm10k_clean_all_tx_rings
 
     Free Tx Buffers for all queues
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_free_all_tx_resources`:
 
@@ -137,8 +144,9 @@ fm10k_free_all_tx_resources
 
     Free Tx Resources for All Queues
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_free_all_tx_resources.description`:
 
@@ -156,8 +164,9 @@ fm10k_clean_rx_ring
 
     Free Rx Buffers per Queue
 
-    :param struct fm10k_ring \*rx_ring:
+    :param rx_ring:
         ring to free buffers from
+    :type rx_ring: struct fm10k_ring \*
 
 .. _`fm10k_free_rx_resources`:
 
@@ -168,8 +177,9 @@ fm10k_free_rx_resources
 
     Free Rx Resources
 
-    :param struct fm10k_ring \*rx_ring:
+    :param rx_ring:
         ring to clean the resources from
+    :type rx_ring: struct fm10k_ring \*
 
 .. _`fm10k_free_rx_resources.description`:
 
@@ -187,8 +197,9 @@ fm10k_clean_all_rx_rings
 
     Free Rx Buffers for all queues
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_free_all_rx_resources`:
 
@@ -199,8 +210,9 @@ fm10k_free_all_rx_resources
 
     Free Rx Resources for All Queues
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_free_all_rx_resources.description`:
 
@@ -218,8 +230,9 @@ fm10k_request_glort_range
 
     Request GLORTs for use in configuring rules
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_request_glort_range.description`:
 
@@ -235,8 +248,9 @@ fm10k_free_udp_port_info
 
 .. c:function:: void fm10k_free_udp_port_info(struct fm10k_intfc *interface)
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_free_udp_port_info.description`:
 
@@ -252,8 +266,9 @@ fm10k_restore_udp_port_info
 
 .. c:function:: void fm10k_restore_udp_port_info(struct fm10k_intfc *interface)
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_restore_udp_port_info.description`:
 
@@ -269,11 +284,13 @@ fm10k_udp_tunnel_add
 
 .. c:function:: void fm10k_udp_tunnel_add(struct net_device *dev, struct udp_tunnel_info *ti)
 
-    :param struct net_device \*dev:
+    :param dev:
         network interface device structure
+    :type dev: struct net_device \*
 
-    :param struct udp_tunnel_info \*ti:
+    :param ti:
         Tunnel endpoint information
+    :type ti: struct udp_tunnel_info \*
 
 .. _`fm10k_udp_tunnel_add.description`:
 
@@ -291,11 +308,13 @@ fm10k_udp_tunnel_del
 
 .. c:function:: void fm10k_udp_tunnel_del(struct net_device *dev, struct udp_tunnel_info *ti)
 
-    :param struct net_device \*dev:
+    :param dev:
         network interface device structure
+    :type dev: struct net_device \*
 
-    :param struct udp_tunnel_info \*ti:
+    :param ti:
         Tunnel end point information
+    :type ti: struct udp_tunnel_info \*
 
 .. _`fm10k_udp_tunnel_del.description`:
 
@@ -315,8 +334,9 @@ fm10k_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`fm10k_open.description`:
 
@@ -340,8 +360,9 @@ fm10k_close
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`fm10k_close.description`:
 
@@ -364,8 +385,9 @@ fm10k_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`fm10k_host_mbx_ready`:
 
@@ -376,8 +398,9 @@ fm10k_host_mbx_ready
 
     Check PF interface's mailbox readiness
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_host_mbx_ready.description`:
 
@@ -399,17 +422,21 @@ fm10k_queue_vlan_request
 
     Queue a VLAN update request
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         the fm10k interface structure
+    :type interface: struct fm10k_intfc \*
 
-    :param u32 vid:
+    :param vid:
         the VLAN vid
+    :type vid: u32
 
-    :param u8 vsi:
+    :param vsi:
         VSI index number
+    :type vsi: u8
 
-    :param bool set:
+    :param set:
         whether to set or clear
+    :type set: bool
 
 .. _`fm10k_queue_vlan_request.description`:
 
@@ -430,20 +457,25 @@ fm10k_queue_mac_request
 
     Queue a MAC update request
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         the fm10k interface structure
+    :type interface: struct fm10k_intfc \*
 
-    :param u16 glort:
+    :param glort:
         the target glort for this update
+    :type glort: u16
 
-    :param const unsigned char \*addr:
+    :param addr:
         the address to update
+    :type addr: const unsigned char \*
 
-    :param u16 vid:
+    :param vid:
         the vid to update
+    :type vid: u16
 
-    :param bool set:
+    :param set:
         whether to add or remove
+    :type set: bool
 
 .. _`fm10k_queue_mac_request.description`:
 
@@ -463,14 +495,17 @@ fm10k_clear_macvlan_queue
 
     Cancel pending updates for a given glort
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         the fm10k interface structure
+    :type interface: struct fm10k_intfc \*
 
-    :param u16 glort:
+    :param glort:
         the target glort to clear
+    :type glort: u16
 
-    :param bool vlans:
+    :param vlans:
         true to clear VLAN messages, false to ignore them
+    :type vlans: bool
 
 .. _`fm10k_clear_macvlan_queue.description`:
 
@@ -489,11 +524,13 @@ fm10k_get_stats64
 
     Get System Network Statistics
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct rtnl_link_stats64 \*stats:
+    :param stats:
         storage space for 64bit statistics
+    :type stats: struct rtnl_link_stats64 \*
 
 .. _`fm10k_get_stats64.description`:
 

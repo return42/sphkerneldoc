@@ -8,8 +8,9 @@ sti_hqvdp_get_free_cmd
 
 .. c:function:: int sti_hqvdp_get_free_cmd(struct sti_hqvdp *hqvdp)
 
-    :param struct sti_hqvdp \*hqvdp:
+    :param hqvdp:
         hqvdp structure
+    :type hqvdp: struct sti_hqvdp \*
 
 .. _`sti_hqvdp_get_free_cmd.description`:
 
@@ -33,8 +34,9 @@ sti_hqvdp_get_curr_cmd
 
 .. c:function:: int sti_hqvdp_get_curr_cmd(struct sti_hqvdp *hqvdp)
 
-    :param struct sti_hqvdp \*hqvdp:
+    :param hqvdp:
         hqvdp structure
+    :type hqvdp: struct sti_hqvdp \*
 
 .. _`sti_hqvdp_get_curr_cmd.description`:
 
@@ -58,8 +60,9 @@ sti_hqvdp_get_next_cmd
 
 .. c:function:: int sti_hqvdp_get_next_cmd(struct sti_hqvdp *hqvdp)
 
-    :param struct sti_hqvdp \*hqvdp:
+    :param hqvdp:
         hqvdp structure
+    :type hqvdp: struct sti_hqvdp \*
 
 .. _`sti_hqvdp_get_next_cmd.description`:
 
@@ -83,14 +86,17 @@ sti_hqvdp_update_hvsrc
 
 .. c:function:: void sti_hqvdp_update_hvsrc(enum sti_hvsrc_orient orient, int scale, struct sti_hqvdp_hvsrc *hvsrc)
 
-    :param enum sti_hvsrc_orient orient:
+    :param orient:
         horizontal or vertical
+    :type orient: enum sti_hvsrc_orient
 
-    :param int scale:
+    :param scale:
         scaling/zoom factor
+    :type scale: int
 
-    :param struct sti_hqvdp_hvsrc \*hvsrc:
+    :param hvsrc:
         the structure containing the LUT coef
+    :type hvsrc: struct sti_hqvdp_hvsrc \*
 
 .. _`sti_hqvdp_update_hvsrc.description`:
 
@@ -113,23 +119,29 @@ sti_hqvdp_check_hw_scaling
 
 .. c:function:: bool sti_hqvdp_check_hw_scaling(struct sti_hqvdp *hqvdp, struct drm_display_mode *mode, int src_w, int src_h, int dst_w, int dst_h)
 
-    :param struct sti_hqvdp \*hqvdp:
+    :param hqvdp:
         hqvdp pointer
+    :type hqvdp: struct sti_hqvdp \*
 
-    :param struct drm_display_mode \*mode:
+    :param mode:
         display mode with timing constraints
+    :type mode: struct drm_display_mode \*
 
-    :param int src_w:
+    :param src_w:
         source width
+    :type src_w: int
 
-    :param int src_h:
+    :param src_h:
         source height
+    :type src_h: int
 
-    :param int dst_w:
+    :param dst_w:
         destination width
+    :type dst_w: int
 
-    :param int dst_h:
+    :param dst_h:
         destination height
+    :type dst_h: int
 
 .. _`sti_hqvdp_check_hw_scaling.description`:
 
@@ -165,8 +177,9 @@ sti_hqvdp_disable
 
 .. c:function:: void sti_hqvdp_disable(struct sti_hqvdp *hqvdp)
 
-    :param struct sti_hqvdp \*hqvdp:
+    :param hqvdp:
         hqvdp pointer
+    :type hqvdp: struct sti_hqvdp \*
 
 .. _`sti_hqvdp_disable.description`:
 
@@ -182,14 +195,17 @@ sti_hqvdp_vtg_cb
 
 .. c:function:: int sti_hqvdp_vtg_cb(struct notifier_block *nb, unsigned long evt, void *data)
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block
+    :type nb: struct notifier_block \*
 
-    :param unsigned long evt:
+    :param evt:
         event message
+    :type evt: unsigned long
 
-    :param void \*data:
+    :param data:
         private data
+    :type data: void \*
 
 .. _`sti_hqvdp_vtg_cb.description`:
 
@@ -212,8 +228,9 @@ sti_hqvdp_start_xp70
 
 .. c:function:: void sti_hqvdp_start_xp70(struct sti_hqvdp *hqvdp)
 
-    :param struct sti_hqvdp \*hqvdp:
+    :param hqvdp:
         hqvdp pointer
+    :type hqvdp: struct sti_hqvdp \*
 
 .. _`sti_hqvdp_start_xp70.description`:
 

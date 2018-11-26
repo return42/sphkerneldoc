@@ -6,24 +6,25 @@
 cafe_nand_read_page
 ===================
 
-.. c:function:: int cafe_nand_read_page(struct mtd_info *mtd, struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
+.. c:function:: int cafe_nand_read_page(struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
 
     [REPLACEABLE] hardware ecc syndrome based page read
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         caller expects OOB data read to chip->oob_poi
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         *undescribed*
+    :type page: int
 
 .. _`cafe_nand_read_page.description`:
 

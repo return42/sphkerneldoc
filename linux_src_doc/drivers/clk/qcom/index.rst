@@ -14,5 +14,6 @@ qcom
     clk-regmap-mux-div_h
     clk-regmap_c
     clk-regmap_h
+    clk-rpmh_c
     common_h
     gdsc_h

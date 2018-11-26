@@ -10,14 +10,17 @@ of_fdt_is_compatible
 
     Return true if given node from the given blob has compat in its compatible list
 
-    :param const void \*blob:
+    :param blob:
         A device tree blob
+    :type blob: const void \*
 
-    :param unsigned long node:
+    :param node:
         node to test
+    :type node: unsigned long
 
-    :param const char \*compat:
+    :param compat:
         compatible string to compare with compatible list.
+    :type compat: const char \*
 
 .. _`of_fdt_is_compatible.description`:
 
@@ -36,11 +39,13 @@ of_fdt_is_big_endian
 
     Return true if given node needs BE MMIO accesses
 
-    :param const void \*blob:
+    :param blob:
         A device tree blob
+    :type blob: const void \*
 
-    :param unsigned long node:
+    :param node:
         node to test
+    :type node: unsigned long
 
 .. _`of_fdt_is_big_endian.description`:
 
@@ -60,14 +65,17 @@ of_fdt_match
 
     Return true if node matches a list of compatible values
 
-    :param const void \*blob:
+    :param blob:
         *undescribed*
+    :type blob: const void \*
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
-    :param const char \*const \*compat:
+    :param compat:
         *undescribed*
+    :type compat: const char \*const \*
 
 .. _`unflatten_dt_nodes`:
 
@@ -78,17 +86,21 @@ unflatten_dt_nodes
 
     Alloc and populate a device_node from the flat tree
 
-    :param const void \*blob:
+    :param blob:
         The parent device tree blob
+    :type blob: const void \*
 
-    :param void \*mem:
+    :param mem:
         Memory chunk to use for allocating device nodes and properties
+    :type mem: void \*
 
-    :param struct device_node \*dad:
+    :param dad:
         Parent struct device_node
+    :type dad: struct device_node \*
 
-    :param struct device_node \*\*nodepp:
+    :param nodepp:
         The device_node tree created by the call
+    :type nodepp: struct device_node \*\*
 
 .. _`unflatten_dt_nodes.description`:
 
@@ -106,21 +118,25 @@ It returns the size of unflattened device tree or error code
 
     create tree of device_nodes from flat blob
 
-    :param const void \*blob:
+    :param blob:
         The blob to expand
+    :type blob: const void \*
 
-    :param struct device_node \*dad:
+    :param dad:
         Parent device node
+    :type dad: struct device_node \*
 
-    :param struct device_node \*\*mynodes:
+    :param mynodes:
         The device_node tree created by the call
+    :type mynodes: struct device_node \*\*
 
     :param void \*(\*dt_alloc)(u64 size, u64 align):
         An allocator that provides a virtual address to memory
         for the resulting tree
 
-    :param bool detached:
+    :param detached:
         if true set OF_DETACHED on \ ``mynodes``\ 
+    :type detached: bool
 
 .. _`__unflatten_device_tree.description`:
 
@@ -144,14 +160,17 @@ of_fdt_unflatten_tree
 
     create tree of device_nodes from flat blob
 
-    :param const unsigned long \*blob:
+    :param blob:
         Flat device tree blob
+    :type blob: const unsigned long \*
 
-    :param struct device_node \*dad:
+    :param dad:
         Parent device node
+    :type dad: struct device_node \*
 
-    :param struct device_node \*\*mynodes:
+    :param mynodes:
         The device tree created by the call
+    :type mynodes: struct device_node \*\*
 
 .. _`of_fdt_unflatten_tree.description`:
 
@@ -175,11 +194,13 @@ device tree on success.
 
     reserve all memory described in 'reg' property
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
-    :param const char \*uname:
+    :param uname:
         *undescribed*
+    :type uname: const char \*
 
 .. _`__reserved_mem_check_root`:
 
@@ -190,8 +211,9 @@ device tree on success.
 
     check if #size-cells, #address-cells provided in /reserved-memory matches the values supported by the current implementation, also check if ranges property has been provided
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
 .. _`__fdt_scan_reserved_mem`:
 
@@ -202,17 +224,21 @@ device tree on success.
 
     scan a single FDT node for reserved memory
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
-    :param const char \*uname:
+    :param uname:
         *undescribed*
+    :type uname: const char \*
 
-    :param int depth:
+    :param depth:
         *undescribed*
+    :type depth: int
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`early_init_fdt_scan_reserved_mem`:
 
@@ -223,8 +249,9 @@ early_init_fdt_scan_reserved_mem
 
     create reserved memory regions
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`early_init_fdt_scan_reserved_mem.description`:
 
@@ -244,8 +271,9 @@ early_init_fdt_reserve_self
 
     reserve the memory used by the FDT blob
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`of_scan_flat_dt`:
 
@@ -259,8 +287,9 @@ of_scan_flat_dt
     :param int (\*it)(unsigned long node, const char \*uname, int depth, void \*data):
         callback function
 
-    :param void \*data:
+    :param data:
         context data pointer
+    :type data: void \*
 
 .. _`of_scan_flat_dt.description`:
 
@@ -280,14 +309,16 @@ of_scan_flat_dt_subnodes
 
     scan sub-nodes of a node call callback on each.
 
-    :param unsigned long parent:
+    :param parent:
         *undescribed*
+    :type parent: unsigned long
 
     :param int (\*it)(unsigned long node, const char \*uname, void \*data):
         callback function
 
-    :param void \*data:
+    :param data:
         context data pointer
+    :type data: void \*
 
 .. _`of_scan_flat_dt_subnodes.description`:
 
@@ -305,12 +336,14 @@ of_get_flat_dt_subnode_by_name
 
     get the subnode by given name
 
-    :param unsigned long node:
+    :param node:
         the parent node
+    :type node: unsigned long
 
-    :param const char \*uname:
+    :param uname:
         the name of subnode
         \ ``return``\  offset of the subnode, or -FDT_ERR_NOTFOUND if there is none
+    :type uname: const char \*
 
 .. _`of_get_flat_dt_root`:
 
@@ -321,8 +354,9 @@ of_get_flat_dt_root
 
     find the root node in the flat blob
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`of_get_flat_dt_size`:
 
@@ -333,8 +367,9 @@ of_get_flat_dt_size
 
     Return the total size of the FDT
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`of_get_flat_dt_prop`:
 
@@ -345,14 +380,17 @@ of_get_flat_dt_prop
 
     Given a node in the flat blob, return the property ptr
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param int \*size:
+    :param size:
         *undescribed*
+    :type size: int \*
 
 .. _`of_get_flat_dt_prop.description`:
 
@@ -371,11 +409,13 @@ of_flat_dt_is_compatible
 
     Return true if given node has compat in compatible list
 
-    :param unsigned long node:
+    :param node:
         node to test
+    :type node: unsigned long
 
-    :param const char \*compat:
+    :param compat:
         compatible string to compare with compatible list.
+    :type compat: const char \*
 
 .. _`of_flat_dt_match`:
 
@@ -386,11 +426,13 @@ of_flat_dt_match
 
     Return true if node matches a list of compatible values
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
-    :param const char \*const \*compat:
+    :param compat:
         *undescribed*
+    :type compat: const char \*const \*
 
 .. _`of_get_flat_dt_phandle`:
 
@@ -401,8 +443,9 @@ of_get_flat_dt_phandle
 
     Given a node in the flat blob, return the phandle
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
 .. _`of_flat_dt_match_machine`:
 
@@ -413,8 +456,9 @@ of_flat_dt_match_machine
 
     Iterate match tables to find matching machine.
 
-    :param const void \*default_match:
+    :param default_match:
         A machine specific ptr to return in case of no match.
+    :type default_match: const void \*
 
     :param const void \* (\*get_next_compat)(const char \* const\*\*):
         callback function to return next compatible match table.
@@ -436,8 +480,9 @@ early_init_dt_check_for_initrd
 
     Decode initrd location from flat tree
 
-    :param unsigned long node:
+    :param node:
         reference to node containing initrd location ('chosen')
+    :type node: unsigned long
 
 .. _`early_init_dt_scan_root`:
 
@@ -448,17 +493,21 @@ early_init_dt_scan_root
 
     fetch the top level address and size cells
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
-    :param const char \*uname:
+    :param uname:
         *undescribed*
+    :type uname: const char \*
 
-    :param int depth:
+    :param depth:
         *undescribed*
+    :type depth: int
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`early_init_dt_scan_memory`:
 
@@ -469,17 +518,21 @@ early_init_dt_scan_memory
 
     Look for and parse memory nodes
 
-    :param unsigned long node:
+    :param node:
         *undescribed*
+    :type node: unsigned long
 
-    :param const char \*uname:
+    :param uname:
         *undescribed*
+    :type uname: const char \*
 
-    :param int depth:
+    :param depth:
         *undescribed*
+    :type depth: int
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`unflatten_device_tree`:
 
@@ -490,8 +543,9 @@ unflatten_device_tree
 
     create tree of device_nodes from flat blob
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`unflatten_device_tree.description`:
 
@@ -512,8 +566,9 @@ unflatten_and_copy_device_tree
 
     copy and create tree of device_nodes from flat blob
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`unflatten_and_copy_device_tree.description`:
 

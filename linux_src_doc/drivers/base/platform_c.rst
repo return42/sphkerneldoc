@@ -10,8 +10,9 @@ arch_setup_pdev_archdata
 
     Allow manipulation of archdata before its used
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
 .. _`arch_setup_pdev_archdata.description`:
 
@@ -43,14 +44,17 @@ platform_get_resource
 
     get a resource for a device
 
-    :param struct platform_device \*dev:
+    :param dev:
         platform device
+    :type dev: struct platform_device \*
 
-    :param unsigned int type:
+    :param type:
         resource type
+    :type type: unsigned int
 
-    :param unsigned int num:
+    :param num:
         resource index
+    :type num: unsigned int
 
 .. _`platform_get_irq`:
 
@@ -61,11 +65,13 @@ platform_get_irq
 
     get an IRQ for a device
 
-    :param struct platform_device \*dev:
+    :param dev:
         platform device
+    :type dev: struct platform_device \*
 
-    :param unsigned int num:
+    :param num:
         IRQ number index
+    :type num: unsigned int
 
 .. _`platform_irq_count`:
 
@@ -76,8 +82,9 @@ platform_irq_count
 
     Count the number of IRQs a platform device uses
 
-    :param struct platform_device \*dev:
+    :param dev:
         platform device
+    :type dev: struct platform_device \*
 
 .. _`platform_irq_count.return`:
 
@@ -95,14 +102,17 @@ platform_get_resource_byname
 
     get a resource for a device by name
 
-    :param struct platform_device \*dev:
+    :param dev:
         platform device
+    :type dev: struct platform_device \*
 
-    :param unsigned int type:
+    :param type:
         resource type
+    :type type: unsigned int
 
-    :param const char \*name:
+    :param name:
         resource name
+    :type name: const char \*
 
 .. _`platform_get_irq_byname`:
 
@@ -113,11 +123,13 @@ platform_get_irq_byname
 
     get an IRQ for a device by name
 
-    :param struct platform_device \*dev:
+    :param dev:
         platform device
+    :type dev: struct platform_device \*
 
-    :param const char \*name:
+    :param name:
         IRQ name
+    :type name: const char \*
 
 .. _`platform_add_devices`:
 
@@ -128,11 +140,13 @@ platform_add_devices
 
     add a numbers of platform devices
 
-    :param struct platform_device \*\*devs:
+    :param devs:
         array of platform devices to add
+    :type devs: struct platform_device \*\*
 
-    :param int num:
+    :param num:
         number of platform devices in array
+    :type num: int
 
 .. _`platform_device_put`:
 
@@ -143,8 +157,9 @@ platform_device_put
 
     destroy a platform device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device to free
+    :type pdev: struct platform_device \*
 
 .. _`platform_device_put.description`:
 
@@ -163,11 +178,13 @@ platform_device_alloc
 
     create a platform device
 
-    :param const char \*name:
+    :param name:
         base name of the device we're adding
+    :type name: const char \*
 
-    :param int id:
+    :param id:
         instance id
+    :type id: int
 
 .. _`platform_device_alloc.description`:
 
@@ -186,14 +203,17 @@ platform_device_add_resources
 
     add resources to a platform device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device allocated by platform_device_alloc to add resources to
+    :type pdev: struct platform_device \*
 
-    :param const struct resource \*res:
+    :param res:
         set of resources that needs to be allocated for the device
+    :type res: const struct resource \*
 
-    :param unsigned int num:
+    :param num:
         number of resources
+    :type num: unsigned int
 
 .. _`platform_device_add_resources.description`:
 
@@ -213,14 +233,17 @@ platform_device_add_data
 
     add platform-specific data to a platform device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device allocated by platform_device_alloc to add resources to
+    :type pdev: struct platform_device \*
 
-    :param const void \*data:
+    :param data:
         platform specific data for this platform device
+    :type data: const void \*
 
-    :param size_t size:
+    :param size:
         size of platform specific data
+    :type size: size_t
 
 .. _`platform_device_add_data.description`:
 
@@ -240,11 +263,13 @@ platform_device_add_properties
 
     add built-in properties to a platform device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device to add properties to
+    :type pdev: struct platform_device \*
 
-    :param const struct property_entry \*properties:
+    :param properties:
         null terminated array of properties to add
+    :type properties: const struct property_entry \*
 
 .. _`platform_device_add_properties.description`:
 
@@ -264,8 +289,9 @@ platform_device_add
 
     add a platform device to device hierarchy
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device we're adding
+    :type pdev: struct platform_device \*
 
 .. _`platform_device_add.description`:
 
@@ -284,8 +310,9 @@ platform_device_del
 
     remove a platform-level device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device we're removing
+    :type pdev: struct platform_device \*
 
 .. _`platform_device_del.description`:
 
@@ -305,8 +332,9 @@ platform_device_register
 
     add a platform-level device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device we're adding
+    :type pdev: struct platform_device \*
 
 .. _`platform_device_unregister`:
 
@@ -317,8 +345,9 @@ platform_device_unregister
 
     unregister a platform-level device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device we're unregistering
+    :type pdev: struct platform_device \*
 
 .. _`platform_device_unregister.description`:
 
@@ -338,8 +367,9 @@ platform_device_register_full
 
     add a platform-level device with resources and platform-specific data
 
-    :param const struct platform_device_info \*pdevinfo:
+    :param pdevinfo:
         data used to create device
+    :type pdevinfo: const struct platform_device_info \*
 
 .. _`platform_device_register_full.description`:
 
@@ -357,11 +387,13 @@ __platform_driver_register
 
     register a driver for platform-level devices
 
-    :param struct platform_driver \*drv:
+    :param drv:
         platform driver structure
+    :type drv: struct platform_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         owning module/driver
+    :type owner: struct module \*
 
 .. _`platform_driver_unregister`:
 
@@ -372,8 +404,9 @@ platform_driver_unregister
 
     unregister a driver for platform-level devices
 
-    :param struct platform_driver \*drv:
+    :param drv:
         platform driver structure
+    :type drv: struct platform_driver \*
 
 .. _`__platform_driver_probe`:
 
@@ -384,14 +417,16 @@ __platform_driver_probe
 
     register driver for non-hotpluggable device
 
-    :param struct platform_driver \*drv:
+    :param drv:
         platform driver structure
+    :type drv: struct platform_driver \*
 
     :param int (\*probe)(struct platform_device \*):
         the driver probe routine, probably from an __init section
 
-    :param struct module \*module:
+    :param module:
         module which will be the owner of the driver
+    :type module: struct module \*
 
 .. _`__platform_driver_probe.description`:
 
@@ -421,26 +456,32 @@ __platform_create_bundle
 
     register driver and create corresponding device
 
-    :param struct platform_driver \*driver:
+    :param driver:
         platform driver structure
+    :type driver: struct platform_driver \*
 
     :param int (\*probe)(struct platform_device \*):
         the driver probe routine, probably from an __init section
 
-    :param struct resource \*res:
+    :param res:
         set of resources that needs to be allocated for the device
+    :type res: struct resource \*
 
-    :param unsigned int n_res:
+    :param n_res:
         number of resources
+    :type n_res: unsigned int
 
-    :param const void \*data:
+    :param data:
         platform specific data for this platform device
+    :type data: const void \*
 
-    :param size_t size:
+    :param size:
         size of platform specific data
+    :type size: size_t
 
-    :param struct module \*module:
+    :param module:
         module which will be the owner of the driver
+    :type module: struct module \*
 
 .. _`__platform_create_bundle.description`:
 
@@ -461,14 +502,17 @@ __platform_register_drivers
 
     register an array of platform drivers
 
-    :param struct platform_driver \* const \*drivers:
+    :param drivers:
         an array of drivers to register
+    :type drivers: struct platform_driver \* const \*
 
-    :param unsigned int count:
+    :param count:
         the number of drivers to register
+    :type count: unsigned int
 
-    :param struct module \*owner:
+    :param owner:
         module owning the drivers
+    :type owner: struct module \*
 
 .. _`__platform_register_drivers.description`:
 
@@ -496,11 +540,13 @@ platform_unregister_drivers
 
     unregister an array of platform drivers
 
-    :param struct platform_driver \* const \*drivers:
+    :param drivers:
         an array of drivers to unregister
+    :type drivers: struct platform_driver \* const \*
 
-    :param unsigned int count:
+    :param count:
         the number of drivers to unregister
+    :type count: unsigned int
 
 .. _`platform_unregister_drivers.description`:
 
@@ -520,11 +566,13 @@ platform_match
 
     bind platform device to platform driver.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver.
+    :type drv: struct device_driver \*
 
 .. _`platform_match.platform-device-ids-are-assumed-to-be-encoded-like-this`:
 
@@ -547,11 +595,13 @@ early_platform_driver_register
 
     register early platform driver
 
-    :param struct early_platform_driver \*epdrv:
+    :param epdrv:
         early_platform driver structure
+    :type epdrv: struct early_platform_driver \*
 
-    :param char \*buf:
+    :param buf:
         string passed from \ :c:func:`early_param`\ 
+    :type buf: char \*
 
 .. _`early_platform_driver_register.description`:
 
@@ -569,11 +619,13 @@ early_platform_add_devices
 
     adds a number of early platform devices
 
-    :param struct platform_device \*\*devs:
+    :param devs:
         array of early platform devices to add
+    :type devs: struct platform_device \*\*
 
-    :param int num:
+    :param num:
         number of early platform devices in array
+    :type num: int
 
 .. _`early_platform_add_devices.description`:
 
@@ -592,8 +644,9 @@ early_platform_driver_register_all
 
     register early platform drivers
 
-    :param char \*class_str:
+    :param class_str:
         string to identify early platform driver class
+    :type class_str: char \*
 
 .. _`early_platform_driver_register_all.description`:
 
@@ -613,11 +666,13 @@ early_platform_match
 
     find early platform device matching driver
 
-    :param struct early_platform_driver \*epdrv:
+    :param epdrv:
         early platform driver structure
+    :type epdrv: struct early_platform_driver \*
 
-    :param int id:
+    :param id:
         id to match against
+    :type id: int
 
 .. _`early_platform_left`:
 
@@ -628,11 +683,13 @@ early_platform_left
 
     check if early platform driver has matching devices
 
-    :param struct early_platform_driver \*epdrv:
+    :param epdrv:
         early platform driver structure
+    :type epdrv: struct early_platform_driver \*
 
-    :param int id:
+    :param id:
         return true if id or above exists
+    :type id: int
 
 .. _`early_platform_driver_probe_id`:
 
@@ -643,14 +700,17 @@ early_platform_driver_probe_id
 
     probe drivers matching class_str and id
 
-    :param char \*class_str:
+    :param class_str:
         string to identify early platform driver class
+    :type class_str: char \*
 
-    :param int id:
+    :param id:
         id to match against
+    :type id: int
 
-    :param int nr_probe:
+    :param nr_probe:
         number of platform devices to successfully probe before exiting
+    :type nr_probe: int
 
 .. _`early_platform_driver_probe`:
 
@@ -661,14 +721,17 @@ early_platform_driver_probe
 
     probe a class of registered drivers
 
-    :param char \*class_str:
+    :param class_str:
         string to identify early platform driver class
+    :type class_str: char \*
 
-    :param int nr_probe:
+    :param nr_probe:
         number of platform devices to successfully probe before exiting
+    :type nr_probe: int
 
-    :param int user_only:
+    :param user_only:
         only probe user specified early platform devices
+    :type user_only: int
 
 .. _`early_platform_driver_probe.description`:
 
@@ -688,8 +751,9 @@ early_platform_cleanup
 
     clean up early platform code
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

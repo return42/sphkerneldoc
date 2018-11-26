@@ -10,14 +10,17 @@ devpts_pty_new
 
     - create a new inode in /dev/pts/
 
-    :param struct pts_fs_info \*fsi:
+    :param fsi:
         *undescribed*
+    :type fsi: struct pts_fs_info \*
 
-    :param int index:
+    :param index:
         used as a name of the node
+    :type index: int
 
-    :param void \*priv:
+    :param priv:
         what's given back by devpts_get_priv
+    :type priv: void \*
 
 .. _`devpts_pty_new.description`:
 
@@ -35,8 +38,9 @@ devpts_get_priv
 
     - get private data for a slave
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
 .. _`devpts_get_priv.description`:
 
@@ -54,8 +58,9 @@ devpts_pty_kill
 
     - remove inode form /dev/pts/
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
 .. _`devpts_pty_kill.description`:
 

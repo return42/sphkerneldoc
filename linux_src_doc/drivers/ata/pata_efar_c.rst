@@ -10,11 +10,13 @@ efar_pre_reset
 
     Enable bits
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`efar_pre_reset.description`:
 
@@ -33,8 +35,9 @@ efar_cable_detect
 
     check for 40/80 pin
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port
+    :type ap: struct ata_port \*
 
 .. _`efar_cable_detect.description`:
 
@@ -53,11 +56,13 @@ efar_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device to program
+    :type adev: struct ata_device \*
 
 .. _`efar_set_piomode.description`:
 
@@ -82,11 +87,13 @@ efar_set_dmamode
 
     Initialize host controller PATA DMA timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device to program
+    :type adev: struct ata_device \*
 
 .. _`efar_set_dmamode.description`:
 
@@ -111,11 +118,13 @@ efar_init_one
 
     Register EFAR ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         Entry in efar_pci_tbl matching with \ ``pdev``\ 
+    :type ent: const struct pci_device_id \*
 
 .. _`efar_init_one.description`:
 

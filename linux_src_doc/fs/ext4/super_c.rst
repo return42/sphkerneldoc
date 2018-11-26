@@ -10,8 +10,9 @@ ext4_get_stripe_size
 
     Get the stripe size.
 
-    :param struct ext4_sb_info \*sbi:
+    :param sbi:
         In memory super block info
+    :type sbi: struct ext4_sb_info \*
 
 .. _`ext4_get_stripe_size.description`:
 

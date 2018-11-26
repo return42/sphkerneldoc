@@ -10,11 +10,13 @@ scif_node_connect
 
     Respond to SCIF_NODE_CONNECT interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param int dst:
+    :param dst:
         Destination node
+    :type dst: int
 
 .. _`scif_node_connect.description`:
 
@@ -33,11 +35,13 @@ scif_nodeqp_send
 
     Send a message on the node queue pair
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         Scif Device.
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         The message to be sent.
+    :type msg: struct scifmsg \*
 
 .. _`scif_init`:
 
@@ -48,11 +52,13 @@ scif_init
 
     Respond to SCIF_INIT interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         Remote SCIF device node
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_exit`:
 
@@ -63,11 +69,13 @@ scif_exit
 
     Respond to SCIF_EXIT interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         Remote SCIF device node
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*unused:
+    :param unused:
         *undescribed*
+    :type unused: struct scifmsg \*
 
 .. _`scif_exit.description`:
 
@@ -87,11 +95,13 @@ scif_exit_ack
 
     Respond to SCIF_EXIT_ACK interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         Remote SCIF device node
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*unused:
+    :param unused:
         *undescribed*
+    :type unused: struct scifmsg \*
 
 .. _`scif_node_add`:
 
@@ -102,11 +112,13 @@ scif_node_add
 
     Respond to SCIF_NODE_ADD interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         Remote SCIF device node
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_node_add.description`:
 
@@ -131,11 +143,13 @@ scif_node_add_ack
 
     Respond to SCIF_NODE_ADD_ACK interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         Remote SCIF device node
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_node_add_ack.description`:
 
@@ -154,11 +168,13 @@ scif_node_add_nack
 
     Respond to SCIF_NODE_ADD_NACK interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_node_add_nack.description`:
 
@@ -176,11 +192,13 @@ scif_get_node_info_resp
 
     Respond to SCIF_GET_NODE_INFO interrupt message
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         *undescribed*
+    :type scifdev: struct scif_dev \*
 
-    :param struct scifmsg \*msg:
+    :param msg:
         Interrupt message
+    :type msg: struct scifmsg \*
 
 .. _`scif_get_node_info_resp.description`:
 
@@ -198,11 +216,13 @@ scif_nodeqp_intrhandler
 
     Interrupt handler for node messages
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         Remote device to respond to
+    :type scifdev: struct scif_dev \*
 
-    :param struct scif_qp \*qp:
+    :param qp:
         Remote memory pointer
+    :type qp: struct scif_qp \*
 
 .. _`scif_nodeqp_intrhandler.description`:
 
@@ -222,8 +242,9 @@ scif_loopb_wq_handler
 
     Loopback Workqueue Handler.
 
-    :param struct work_struct \*unused:
+    :param unused:
         *undescribed*
+    :type unused: struct work_struct \*
 
 .. _`scif_loopb_wq_handler.description`:
 
@@ -245,11 +266,13 @@ scif_loopb_msg_handler
 
     Workqueue handler for loopback messages.
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         SCIF device
+    :type scifdev: struct scif_dev \*
 
-    :param struct scif_qp \*qp:
+    :param qp:
         Queue pair.
+    :type qp: struct scif_qp \*
 
 .. _`scif_loopb_msg_handler.description`:
 
@@ -297,8 +320,9 @@ scif_setup_loopback_qp
 
     One time setup work for Loopback Node Qp.
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         SCIF device
+    :type scifdev: struct scif_dev \*
 
 .. _`scif_setup_loopback_qp.description`:
 
@@ -316,8 +340,9 @@ scif_destroy_loopback_qp
 
     One time uninit work for Loopback Node Qp
 
-    :param struct scif_dev \*scifdev:
+    :param scifdev:
         SCIF device
+    :type scifdev: struct scif_dev \*
 
 .. _`scif_destroy_loopback_qp.description`:
 

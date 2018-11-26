@@ -10,14 +10,17 @@ nfs4_decode_dirent
 
     Decode a single NFSv4 directory entry stored in the local page cache.
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         XDR stream where entry resides
+    :type xdr: struct xdr_stream \*
 
-    :param struct nfs_entry \*entry:
+    :param entry:
         buffer to fill in with entry data
+    :type entry: struct nfs_entry \*
 
-    :param bool plus:
+    :param plus:
         boolean indicating whether this should be a readdirplus entry
+    :type plus: bool
 
 .. _`nfs4_decode_dirent.description`:
 

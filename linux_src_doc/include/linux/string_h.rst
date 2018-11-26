@@ -10,11 +10,13 @@ sysfs_match_string
 
     matches given string in an array
 
-    :param  _a:
+    :param _a:
         array of strings
+    :type _a: 
 
-    :param  _s:
+    :param _s:
         string to match with
+    :type _s: 
 
 .. _`sysfs_match_string.description`:
 
@@ -32,11 +34,13 @@ strstarts
 
     does \ ``str``\  start with \ ``prefix``\ ?
 
-    :param const char \*str:
+    :param str:
         string to examine
+    :type str: const char \*
 
-    :param const char \*prefix:
+    :param prefix:
         prefix to look for.
+    :type prefix: const char \*
 
 .. _`kbasename`:
 
@@ -47,8 +51,9 @@ kbasename
 
     return the last part of a pathname.
 
-    :param const char \*path:
+    :param path:
         path to extract the filename from.
+    :type path: const char \*
 
 .. _`memcpy_and_pad`:
 
@@ -59,20 +64,25 @@ memcpy_and_pad
 
     Copy one buffer to another with padding
 
-    :param void \*dest:
+    :param dest:
         Where to copy to
+    :type dest: void \*
 
-    :param size_t dest_len:
+    :param dest_len:
         The destination buffer size
+    :type dest_len: size_t
 
-    :param const void \*src:
+    :param src:
         Where to copy from
+    :type src: const void \*
 
-    :param size_t count:
+    :param count:
         The number of bytes to copy
+    :type count: size_t
 
-    :param int pad:
+    :param pad:
         Character to use for padding if space is left in destination.
+    :type pad: int
 
 .. This file was automatic generated / don't edit.
 

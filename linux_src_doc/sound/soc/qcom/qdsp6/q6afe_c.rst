@@ -10,8 +10,9 @@ q6afe_get_port_id
 
     Get port id from a given port index
 
-    :param int index:
+    :param index:
         port index
+    :type index: int
 
 .. _`q6afe_get_port_id.return`:
 
@@ -29,8 +30,9 @@ q6afe_port_stop
 
     Stop a afe port
 
-    :param struct q6afe_port \*port:
+    :param port:
         Instance of port to stop
+    :type port: struct q6afe_port \*
 
 .. _`q6afe_port_stop.return`:
 
@@ -48,11 +50,13 @@ q6afe_slim_port_prepare
 
     Prepare slim afe port.
 
-    :param struct q6afe_port \*port:
+    :param port:
         Instance of afe port
+    :type port: struct q6afe_port \*
 
-    :param struct q6afe_slim_cfg \*cfg:
+    :param cfg:
         SLIM configuration for the afe port
+    :type cfg: struct q6afe_slim_cfg \*
 
 .. _`q6afe_tdm_port_prepare`:
 
@@ -63,11 +67,13 @@ q6afe_tdm_port_prepare
 
     Prepare tdm afe port.
 
-    :param struct q6afe_port \*port:
+    :param port:
         Instance of afe port
+    :type port: struct q6afe_port \*
 
-    :param struct q6afe_tdm_cfg \*cfg:
+    :param cfg:
         TDM configuration for the afe port
+    :type cfg: struct q6afe_tdm_cfg \*
 
 .. _`q6afe_hdmi_port_prepare`:
 
@@ -78,11 +84,13 @@ q6afe_hdmi_port_prepare
 
     Prepare hdmi afe port.
 
-    :param struct q6afe_port \*port:
+    :param port:
         Instance of afe port
+    :type port: struct q6afe_port \*
 
-    :param struct q6afe_hdmi_cfg \*cfg:
+    :param cfg:
         HDMI configuration for the afe port
+    :type cfg: struct q6afe_hdmi_cfg \*
 
 .. _`q6afe_i2s_port_prepare`:
 
@@ -93,11 +101,13 @@ q6afe_i2s_port_prepare
 
     Prepare i2s afe port.
 
-    :param struct q6afe_port \*port:
+    :param port:
         Instance of afe port
+    :type port: struct q6afe_port \*
 
-    :param struct q6afe_i2s_cfg \*cfg:
+    :param cfg:
         I2S configuration for the afe port
+    :type cfg: struct q6afe_i2s_cfg \*
 
 .. _`q6afe_i2s_port_prepare.return`:
 
@@ -115,8 +125,9 @@ q6afe_port_start
 
     Start a afe port
 
-    :param struct q6afe_port \*port:
+    :param port:
         Instance of port to start
+    :type port: struct q6afe_port \*
 
 .. _`q6afe_port_start.return`:
 
@@ -134,11 +145,13 @@ q6afe_port_get_from_id
 
     Get port instance from a port id
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to afe child device.
+    :type dev: struct device \*
 
-    :param int id:
+    :param id:
         port id
+    :type id: int
 
 .. _`q6afe_port_get_from_id.return`:
 
@@ -157,8 +170,9 @@ q6afe_port_put
 
     Release port reference
 
-    :param struct q6afe_port \*port:
+    :param port:
         Instance of port to put
+    :type port: struct q6afe_port \*
 
 .. This file was automatic generated / don't edit.
 

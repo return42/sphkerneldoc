@@ -10,17 +10,21 @@ l3_handle_target
 
     Handle Target specific parse and reporting
 
-    :param struct omap_l3 \*l3:
+    :param l3:
         pointer to l3 struct
+    :type l3: struct omap_l3 \*
 
-    :param void __iomem \*base:
+    :param base:
         base address of clkdm
+    :type base: void __iomem \*
 
-    :param struct l3_flagmux_data \*flag_mux:
+    :param flag_mux:
         flagmux corresponding to the event
+    :type flag_mux: struct l3_flagmux_data \*
 
-    :param int err_src:
+    :param err_src:
         error source index of the slave (target)
+    :type err_src: int
 
 .. _`l3_handle_target.this-does-the-second-part-of-the-error-interrupt-handling`:
 
@@ -61,11 +65,13 @@ l3_interrupt_handler
 
     interrupt handler for l3 events
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*_l3:
+    :param _l3:
         pointer to l3 structure
+    :type _l3: void \*
 
 .. _`l3_interrupt_handler.description`:
 
@@ -87,8 +93,9 @@ l3_resume_noirq
 
     resume function for l3_noc
 
-    :param struct device \*dev:
+    :param dev:
         pointer to l3_noc device structure
+    :type dev: struct device \*
 
 .. _`l3_resume_noirq.description`:
 

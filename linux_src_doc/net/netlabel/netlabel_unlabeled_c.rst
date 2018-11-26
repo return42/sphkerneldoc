@@ -10,8 +10,9 @@ netlbl_unlhsh_free_iface
 
     Frees an interface entry from the hash table
 
-    :param struct rcu_head \*entry:
+    :param entry:
         the entry's RCU field
+    :type entry: struct rcu_head \*
 
 .. _`netlbl_unlhsh_free_iface.description`:
 
@@ -34,8 +35,9 @@ netlbl_unlhsh_hash
 
     Hashing function for the hash table
 
-    :param int ifindex:
+    :param ifindex:
         the network interface/device to hash
+    :type ifindex: int
 
 .. _`netlbl_unlhsh_hash.description`:
 
@@ -56,8 +58,9 @@ netlbl_unlhsh_search_iface
 
     Search for a matching interface entry
 
-    :param int ifindex:
+    :param ifindex:
         the network interface
+    :type ifindex: int
 
 .. _`netlbl_unlhsh_search_iface.description`:
 
@@ -78,17 +81,21 @@ netlbl_unlhsh_add_addr4
 
     Add a new IPv4 address entry to the hash table
 
-    :param struct netlbl_unlhsh_iface \*iface:
+    :param iface:
         the associated interface entry
+    :type iface: struct netlbl_unlhsh_iface \*
 
-    :param const struct in_addr \*addr:
+    :param addr:
         IPv4 address in network byte order
+    :type addr: const struct in_addr \*
 
-    :param const struct in_addr \*mask:
+    :param mask:
         IPv4 address mask in network byte order
+    :type mask: const struct in_addr \*
 
-    :param u32 secid:
+    :param secid:
         LSM secid value for entry
+    :type secid: u32
 
 .. _`netlbl_unlhsh_add_addr4.description`:
 
@@ -108,17 +115,21 @@ netlbl_unlhsh_add_addr6
 
     Add a new IPv6 address entry to the hash table
 
-    :param struct netlbl_unlhsh_iface \*iface:
+    :param iface:
         the associated interface entry
+    :type iface: struct netlbl_unlhsh_iface \*
 
-    :param const struct in6_addr \*addr:
+    :param addr:
         IPv6 address in network byte order
+    :type addr: const struct in6_addr \*
 
-    :param const struct in6_addr \*mask:
+    :param mask:
         IPv6 address mask in network byte order
+    :type mask: const struct in6_addr \*
 
-    :param u32 secid:
+    :param secid:
         LSM secid value for entry
+    :type secid: u32
 
 .. _`netlbl_unlhsh_add_addr6.description`:
 
@@ -138,8 +149,9 @@ netlbl_unlhsh_add_iface
 
     Adds a new interface entry to the hash table
 
-    :param int ifindex:
+    :param ifindex:
         network interface
+    :type ifindex: int
 
 .. _`netlbl_unlhsh_add_iface.description`:
 
@@ -159,26 +171,33 @@ netlbl_unlhsh_add
 
     Adds a new entry to the unlabeled connection hash table
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param const char \*dev_name:
+    :param dev_name:
         interface name
+    :type dev_name: const char \*
 
-    :param const void \*addr:
+    :param addr:
         IP address in network byte order
+    :type addr: const void \*
 
-    :param const void \*mask:
+    :param mask:
         address mask in network byte order
+    :type mask: const void \*
 
-    :param u32 addr_len:
+    :param addr_len:
         length of address/mask (4 for IPv4, 16 for IPv6)
+    :type addr_len: u32
 
-    :param u32 secid:
+    :param secid:
         LSM secid value for the entry
+    :type secid: u32
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_unlhsh_add.description`:
 
@@ -197,20 +216,25 @@ netlbl_unlhsh_remove_addr4
 
     Remove an IPv4 address entry
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param struct netlbl_unlhsh_iface \*iface:
+    :param iface:
         interface entry
+    :type iface: struct netlbl_unlhsh_iface \*
 
-    :param const struct in_addr \*addr:
+    :param addr:
         IP address
+    :type addr: const struct in_addr \*
 
-    :param const struct in_addr \*mask:
+    :param mask:
         IP address mask
+    :type mask: const struct in_addr \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_unlhsh_remove_addr4.description`:
 
@@ -229,20 +253,25 @@ netlbl_unlhsh_remove_addr6
 
     Remove an IPv6 address entry
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param struct netlbl_unlhsh_iface \*iface:
+    :param iface:
         interface entry
+    :type iface: struct netlbl_unlhsh_iface \*
 
-    :param const struct in6_addr \*addr:
+    :param addr:
         IP address
+    :type addr: const struct in6_addr \*
 
-    :param const struct in6_addr \*mask:
+    :param mask:
         IP address mask
+    :type mask: const struct in6_addr \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_unlhsh_remove_addr6.description`:
 
@@ -261,8 +290,9 @@ netlbl_unlhsh_condremove_iface
 
     Remove an interface entry
 
-    :param struct netlbl_unlhsh_iface \*iface:
+    :param iface:
         the interface entry
+    :type iface: struct netlbl_unlhsh_iface \*
 
 .. _`netlbl_unlhsh_condremove_iface.description`:
 
@@ -282,23 +312,29 @@ netlbl_unlhsh_remove
 
     Remove an entry from the unlabeled hash table
 
-    :param struct net \*net:
+    :param net:
         network namespace
+    :type net: struct net \*
 
-    :param const char \*dev_name:
+    :param dev_name:
         interface name
+    :type dev_name: const char \*
 
-    :param const void \*addr:
+    :param addr:
         IP address in network byte order
+    :type addr: const void \*
 
-    :param const void \*mask:
+    :param mask:
         address mask in network byte order
+    :type mask: const void \*
 
-    :param u32 addr_len:
+    :param addr_len:
         length of address/mask (4 for IPv4, 16 for IPv6)
+    :type addr_len: u32
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_unlhsh_remove.description`:
 
@@ -317,14 +353,17 @@ netlbl_unlhsh_netdev_handler
 
     Network device notification handler
 
-    :param struct notifier_block \*this:
+    :param this:
         notifier block
+    :type this: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         the event
+    :type event: unsigned long
 
-    :param void \*ptr:
+    :param ptr:
         the netdevice notifier info (cast to void)
+    :type ptr: void \*
 
 .. _`netlbl_unlhsh_netdev_handler.description`:
 
@@ -344,11 +383,13 @@ netlbl_unlabel_acceptflg_set
 
     Set the unlabeled accept flag
 
-    :param u8 value:
+    :param value:
         desired value
+    :type value: u8
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`netlbl_unlabel_acceptflg_set.description`:
 
@@ -366,17 +407,21 @@ netlbl_unlabel_addrinfo_get
 
     Get the IPv4/6 address information
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
-    :param void \*\*addr:
+    :param addr:
         the IP address
+    :type addr: void \*\*
 
-    :param void \*\*mask:
+    :param mask:
         the IP address mask
+    :type mask: void \*\*
 
-    :param u32 \*len:
+    :param len:
         the address length
+    :type len: u32 \*
 
 .. _`netlbl_unlabel_addrinfo_get.description`:
 
@@ -395,11 +440,13 @@ netlbl_unlabel_accept
 
     Handle an ACCEPT message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_unlabel_accept.description`:
 
@@ -418,11 +465,13 @@ netlbl_unlabel_list
 
     Handle a LIST message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_unlabel_list.description`:
 
@@ -441,11 +490,13 @@ netlbl_unlabel_staticadd
 
     Handle a STATICADD message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_unlabel_staticadd.description`:
 
@@ -465,11 +516,13 @@ netlbl_unlabel_staticadddef
 
     Handle a STATICADDDEF message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_unlabel_staticadddef.description`:
 
@@ -489,11 +542,13 @@ netlbl_unlabel_staticremove
 
     Handle a STATICREMOVE message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_unlabel_staticremove.description`:
 
@@ -513,11 +568,13 @@ netlbl_unlabel_staticremovedef
 
     Handle a STATICREMOVEDEF message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct genl_info \*info:
+    :param info:
         the Generic NETLINK info block
+    :type info: struct genl_info \*
 
 .. _`netlbl_unlabel_staticremovedef.description`:
 
@@ -537,20 +594,25 @@ netlbl_unlabel_staticlist_gen
 
     Generate messages for STATICLIST[DEF]
 
-    :param u32 cmd:
+    :param cmd:
         command/message
+    :type cmd: u32
 
-    :param const struct netlbl_unlhsh_iface \*iface:
+    :param iface:
         the interface entry
+    :type iface: const struct netlbl_unlhsh_iface \*
 
-    :param const struct netlbl_unlhsh_addr4 \*addr4:
+    :param addr4:
         the IPv4 address entry
+    :type addr4: const struct netlbl_unlhsh_addr4 \*
 
-    :param const struct netlbl_unlhsh_addr6 \*addr6:
+    :param addr6:
         the IPv6 address entry
+    :type addr6: const struct netlbl_unlhsh_addr6 \*
 
-    :param void \*arg:
+    :param arg:
         the netlbl_unlhsh_walk_arg structure
+    :type arg: void \*
 
 .. _`netlbl_unlabel_staticlist_gen.description`:
 
@@ -572,11 +634,13 @@ netlbl_unlabel_staticlist
 
     Handle a STATICLIST message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         the NETLINK callback
+    :type cb: struct netlink_callback \*
 
 .. _`netlbl_unlabel_staticlist.description`:
 
@@ -596,11 +660,13 @@ netlbl_unlabel_staticlistdef
 
     Handle a STATICLISTDEF message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the NETLINK buffer
+    :type skb: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         the NETLINK callback
+    :type cb: struct netlink_callback \*
 
 .. _`netlbl_unlabel_staticlistdef.description`:
 
@@ -620,8 +686,9 @@ netlbl_unlabel_genl_init
 
     Register the Unlabeled NetLabel component
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`netlbl_unlabel_genl_init.description`:
 
@@ -640,8 +707,9 @@ netlbl_unlabel_init
 
     Initialize the unlabeled connection hash table
 
-    :param u32 size:
+    :param size:
         the number of bits to use for the hash buckets
+    :type size: u32
 
 .. _`netlbl_unlabel_init.description`:
 
@@ -662,14 +730,17 @@ netlbl_unlabel_getattr
 
     Get the security attributes for an unlabled packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         protocol family
+    :type family: u16
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`netlbl_unlabel_getattr.description`:
 
@@ -688,8 +759,9 @@ netlbl_unlabel_defconf
 
     Set the default config to allow unlabeled packets
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`netlbl_unlabel_defconf.description`:
 

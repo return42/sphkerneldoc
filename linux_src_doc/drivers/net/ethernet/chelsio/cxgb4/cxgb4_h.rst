@@ -10,14 +10,17 @@ t4_set_hw_addr
 
     store a port's MAC address in SW
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int port_idx:
+    :param port_idx:
         the port index
+    :type port_idx: int
 
-    :param u8 hw_addr:
+    :param hw_addr:
         the Ethernet address
+    :type hw_addr: u8
 
 .. _`t4_set_hw_addr.description`:
 
@@ -36,8 +39,9 @@ netdev2pinfo
 
     return the port_info structure associated with a net_device
 
-    :param const struct net_device \*dev:
+    :param dev:
         the netdev
+    :type dev: const struct net_device \*
 
 .. _`netdev2pinfo.description`:
 
@@ -55,11 +59,13 @@ adap2pinfo
 
     return the port_info of a port
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int idx:
+    :param idx:
         the port index
+    :type idx: int
 
 .. _`adap2pinfo.description`:
 
@@ -77,8 +83,9 @@ netdev2adap
 
     return the adapter structure associated with a net_device
 
-    :param const struct net_device \*dev:
+    :param dev:
         the netdev
+    :type dev: const struct net_device \*
 
 .. _`netdev2adap.description`:
 
@@ -96,8 +103,9 @@ hash_mac_addr
 
     return the hash value of a MAC address
 
-    :param const u8 \*addr:
+    :param addr:
         the 48-bit Ethernet MAC address
+    :type addr: const u8 \*
 
 .. _`hash_mac_addr.description`:
 
@@ -116,8 +124,9 @@ t4_is_inserted_mod_type
 
     is a plugged in Firmware Module Type
 
-    :param unsigned int fw_mod_type:
+    :param fw_mod_type:
         the Firmware Mofule Type
+    :type fw_mod_type: unsigned int
 
 .. _`t4_is_inserted_mod_type.description`:
 

@@ -10,11 +10,13 @@ dmar_parse_one_drhd
 
     parses exactly one DMA remapping hardware definition structure which uniquely represent one DMA remapping hardware unit present in the platform
 
-    :param struct acpi_dmar_header \*header:
+    :param header:
         *undescribed*
+    :type header: struct acpi_dmar_header \*
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
 .. _`dmar_table_detect`:
 
@@ -25,8 +27,9 @@ dmar_table_detect
 
     checks to see if the platform supports DMAR devices
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`parse_dmar_table`:
 
@@ -37,8 +40,9 @@ parse_dmar_table
 
     parses the DMA reporting table
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`map_iommu`:
 
@@ -49,11 +53,13 @@ map_iommu
 
     map the iommu's registers
 
-    :param struct intel_iommu \*iommu:
+    :param iommu:
         the iommu to map
+    :type iommu: struct intel_iommu \*
 
-    :param u64 phys_addr:
+    :param phys_addr:
         the physical address of the base resgister
+    :type phys_addr: u64
 
 .. _`map_iommu.description`:
 

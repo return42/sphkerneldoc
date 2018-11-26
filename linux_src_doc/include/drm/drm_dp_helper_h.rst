@@ -45,6 +45,50 @@ buffer
 size
     size of \ ``buffer``\ 
 
+.. _`drm_dp_aux_cec`:
+
+struct drm_dp_aux_cec
+=====================
+
+.. c:type:: struct drm_dp_aux_cec
+
+    DisplayPort CEC-Tunneling-over-AUX
+
+.. _`drm_dp_aux_cec.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_dp_aux_cec {
+        struct mutex lock;
+        struct cec_adapter *adap;
+        const char *name;
+        struct device *parent;
+        struct delayed_work unregister_work;
+    }
+
+.. _`drm_dp_aux_cec.members`:
+
+Members
+-------
+
+lock
+    mutex protecting this struct
+
+adap
+    the CEC adapter for CEC-Tunneling-over-AUX support.
+
+name
+    name of the CEC adapter
+
+parent
+    parent device of the CEC adapter
+
+unregister_work
+    unregister the CEC adapter
+
 .. _`drm_dp_aux`:
 
 struct drm_dp_aux
@@ -72,6 +116,7 @@ Definition
         ssize_t (*transfer)(struct drm_dp_aux *aux, struct drm_dp_aux_msg *msg);
         unsigned i2c_nack_count;
         unsigned i2c_defer_count;
+        struct drm_dp_aux_cec cec;
     }
 
 .. _`drm_dp_aux.members`:
@@ -108,6 +153,9 @@ i2c_nack_count
 
 i2c_defer_count
     Counts I2C DEFERs, used for DP validation.
+
+cec
+    struct containing fields used for CEC-Tunneling-over-AUX.
 
 .. _`drm_dp_aux.description`:
 
@@ -152,14 +200,17 @@ drm_dp_dpcd_readb
 
     read a single byte from the DPCD
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param unsigned int offset:
+    :param offset:
         address of the register to read
+    :type offset: unsigned int
 
-    :param u8 \*valuep:
+    :param valuep:
         location where the value of the register will be stored
+    :type valuep: u8 \*
 
 .. _`drm_dp_dpcd_readb.description`:
 
@@ -178,14 +229,17 @@ drm_dp_dpcd_writeb
 
     write a single byte to the DPCD
 
-    :param struct drm_dp_aux \*aux:
+    :param aux:
         DisplayPort AUX channel
+    :type aux: struct drm_dp_aux \*
 
-    :param unsigned int offset:
+    :param offset:
         address of the register to write
+    :type offset: unsigned int
 
-    :param u8 value:
+    :param value:
         value to write to the register
+    :type value: u8
 
 .. _`drm_dp_dpcd_writeb.description`:
 
@@ -244,7 +298,7 @@ Definition
 .. code-block:: c
 
     enum drm_dp_quirk {
-        DP_DPCD_QUIRK_LIMITED_M_N
+        DP_DPCD_QUIRK_CONSTANT_N
     };
 
 .. _`drm_dp_quirk.constants`:
@@ -252,10 +306,10 @@ Definition
 Constants
 ---------
 
-DP_DPCD_QUIRK_LIMITED_M_N
+DP_DPCD_QUIRK_CONSTANT_N
 
     The device requires main link attributes Mvid and Nvid to be limited
-    to 16 bits.
+    to 16 bits. So will give a constant value (0x8000) for compatability.
 
 .. _`drm_dp_quirk.description`:
 
@@ -275,11 +329,13 @@ drm_dp_has_quirk
 
     does the DP device have a specific quirk
 
-    :param const struct drm_dp_desc \*desc:
+    :param desc:
         Device decriptor filled by \ :c:func:`drm_dp_read_desc`\ 
+    :type desc: const struct drm_dp_desc \*
 
-    :param enum drm_dp_quirk quirk:
+    :param quirk:
         Quirk to query for
+    :type quirk: enum drm_dp_quirk
 
 .. _`drm_dp_has_quirk.description`:
 

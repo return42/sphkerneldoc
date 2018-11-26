@@ -10,17 +10,17 @@ rpaphp_enable_slot
 
     record slot state, config pci device
 
-    :param struct slot \*slot:
+    :param slot:
         target \ :c:type:`struct slot <slot>`\ 
+    :type slot: struct slot \*
 
 .. _`rpaphp_enable_slot.description`:
 
 Description
 -----------
 
-Initialize values in the slot, and the hotplug_slot info
-structures to indicate if there is a pci card plugged into
-the slot. If the slot is not empty, run the pcibios routine
+Initialize values in the slot structure to indicate if there is a pci card
+plugged into the slot. If the slot is not empty, run the pcibios routine
 to get pcibios stuff correctly set up.
 
 .. This file was automatic generated / don't edit.

@@ -74,8 +74,9 @@ smb347_update_ps_status
 
     refreshes the power source status
 
-    :param struct smb347_charger \*smb:
+    :param smb:
         pointer to smb347 charger instance
+    :type smb: struct smb347_charger \*
 
 .. _`smb347_update_ps_status.description`:
 
@@ -95,8 +96,9 @@ smb347_charging_status
 
     returns status of charging
 
-    :param struct smb347_charger \*smb:
+    :param smb:
         pointer to smb347 charger instance
+    :type smb: struct smb347_charger \*
 
 .. _`smb347_charging_status.description`:
 

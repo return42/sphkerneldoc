@@ -14,6 +14,8 @@ wil6210
     main_c
     pmc_c
     txrx_c
+    txrx_edma_c
+    txrx_edma_h
     wil6210_h
     wil_platform_c
     wil_platform_h

@@ -10,8 +10,9 @@ setup_earlycon
 
     match and register earlycon console
 
-    :param char \*buf:
+    :param buf:
         earlycon param string
+    :type buf: char \*
 
 .. _`setup_earlycon.description`:
 

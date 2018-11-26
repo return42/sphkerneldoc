@@ -10,17 +10,21 @@ ft_prli
 
     Handle incoming or outgoing PRLI for the FCP target
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         remote port private
+    :type rdata: struct fc_rport_priv \*
 
-    :param u32 spp_len:
+    :param spp_len:
         service parameter page length
+    :type spp_len: u32
 
-    :param const struct fc_els_spp \*rspp:
+    :param rspp:
         received service parameter page (NULL for outgoing PRLI)
+    :type rspp: const struct fc_els_spp \*
 
-    :param struct fc_els_spp \*spp:
+    :param spp:
         response service parameter page
+    :type spp: struct fc_els_spp \*
 
 .. _`ft_prli.description`:
 

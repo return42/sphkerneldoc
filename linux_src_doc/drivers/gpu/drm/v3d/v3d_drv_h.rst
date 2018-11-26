@@ -10,11 +10,13 @@ wait_for
 
     magic (register) wait macro
 
-    :param  COND:
+    :param COND:
         *undescribed*
+    :type COND: 
 
-    :param  MS:
+    :param MS:
         *undescribed*
+    :type MS: 
 
 .. _`wait_for.description`:
 

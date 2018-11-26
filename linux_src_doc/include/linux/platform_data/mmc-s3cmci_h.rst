@@ -88,8 +88,9 @@ s3c24xx_mci_set_platdata
 
     set platform data for mmc/sdi device
 
-    :param struct s3c24xx_mci_pdata \*pdata:
+    :param pdata:
         The platform data
+    :type pdata: struct s3c24xx_mci_pdata \*
 
 .. _`s3c24xx_mci_set_platdata.description`:
 

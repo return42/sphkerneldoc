@@ -21,8 +21,9 @@ intel_create_plane_state
 
     create plane state object
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
 .. _`intel_create_plane_state.description`:
 
@@ -48,8 +49,9 @@ intel_plane_duplicate_state
 
     duplicate plane state
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
 .. _`intel_plane_duplicate_state.description`:
 
@@ -75,11 +77,13 @@ intel_plane_destroy_state
 
     destroy plane state
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*state:
+    :param state:
         state object to destroy
+    :type state: struct drm_plane_state \*
 
 .. _`intel_plane_destroy_state.description`:
 
@@ -98,17 +102,21 @@ intel_plane_atomic_get_property
 
     fetch plane property value
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to fetch property for
+    :type plane: struct drm_plane \*
 
-    :param const struct drm_plane_state \*state:
+    :param state:
         state containing the property value
+    :type state: const struct drm_plane_state \*
 
-    :param struct drm_property \*property:
+    :param property:
         property to look up
+    :type property: struct drm_property \*
 
-    :param uint64_t \*val:
+    :param val:
         pointer to write property value into
+    :type val: uint64_t \*
 
 .. _`intel_plane_atomic_get_property.description`:
 
@@ -128,17 +136,21 @@ intel_plane_atomic_set_property
 
     set plane property value
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to set property for
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*state:
+    :param state:
         state to update property value in
+    :type state: struct drm_plane_state \*
 
-    :param struct drm_property \*property:
+    :param property:
         property to set
+    :type property: struct drm_property \*
 
-    :param uint64_t val:
+    :param val:
         value to set property to
+    :type val: uint64_t
 
 .. _`intel_plane_atomic_set_property.description`:
 

@@ -10,11 +10,13 @@ mapping_set_error
 
     record a writeback error in the address_space \ ``mapping``\  - the mapping in which an error should be set \ ``error``\  - the error to set in the mapping
 
-    :param struct address_space \*mapping:
+    :param mapping:
         *undescribed*
+    :type mapping: struct address_space \*
 
-    :param int error:
+    :param error:
         *undescribed*
+    :type error: int
 
 .. _`mapping_set_error.description`:
 
@@ -39,11 +41,13 @@ find_get_page
 
     find and get a page reference
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t offset:
+    :param offset:
         the page index
+    :type offset: pgoff_t
 
 .. _`find_get_page.description`:
 
@@ -64,11 +68,13 @@ find_lock_page
 
     locate, pin and lock a pagecache page
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t offset:
+    :param offset:
         the page index
+    :type offset: pgoff_t
 
 .. _`find_lock_page.description`:
 
@@ -92,14 +98,17 @@ find_or_create_page
 
     locate or add a pagecache page
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the page's address_space
+    :type mapping: struct address_space \*
 
-    :param pgoff_t offset:
+    :param offset:
         *undescribed*
+    :type offset: pgoff_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         page allocation mode
+    :type gfp_mask: gfp_t
 
 .. _`find_or_create_page.description`:
 
@@ -128,11 +137,13 @@ grab_cache_page_nowait
 
     returns locked page at given index in given cache
 
-    :param struct address_space \*mapping:
+    :param mapping:
         target address_space
+    :type mapping: struct address_space \*
 
-    :param pgoff_t index:
+    :param index:
         the page index
+    :type index: pgoff_t
 
 .. _`grab_cache_page_nowait.description`:
 

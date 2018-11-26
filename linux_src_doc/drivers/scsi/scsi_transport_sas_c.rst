@@ -10,8 +10,9 @@ sas_remove_children
 
     tear down a devices SAS data structures
 
-    :param struct device \*dev:
+    :param dev:
         device belonging to the sas object
+    :type dev: struct device \*
 
 .. _`sas_remove_children.description`:
 
@@ -29,8 +30,9 @@ sas_remove_host
 
     tear down a Scsi_Host's SAS data structures
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Scsi Host that is torn down
+    :type shost: struct Scsi_Host \*
 
 .. _`sas_remove_host.description`:
 
@@ -57,8 +59,9 @@ sas_get_address
 
     return the SAS address of the device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device
+    :type sdev: struct scsi_device \*
 
 .. _`sas_get_address.description`:
 
@@ -76,8 +79,9 @@ sas_tlr_supported
 
     checking TLR bit in vpd 0x90
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`sas_tlr_supported.description`:
 
@@ -96,8 +100,9 @@ sas_disable_tlr
 
     setting TLR flags
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`sas_disable_tlr.description`:
 
@@ -115,8 +120,9 @@ sas_enable_tlr
 
     setting TLR flags
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`sas_enable_tlr.description`:
 
@@ -134,11 +140,13 @@ sas_phy_alloc
 
     allocates and initialize a SAS PHY structure
 
-    :param struct device \*parent:
+    :param parent:
         Parent device
+    :type parent: struct device \*
 
-    :param int number:
+    :param number:
         Phy index
+    :type number: int
 
 .. _`sas_phy_alloc.description`:
 
@@ -165,8 +173,9 @@ sas_phy_add
 
     add a SAS PHY to the device hierarchy
 
-    :param struct sas_phy \*phy:
+    :param phy:
         The PHY to be added
+    :type phy: struct sas_phy \*
 
 .. _`sas_phy_add.description`:
 
@@ -184,8 +193,9 @@ sas_phy_free
 
     free a SAS PHY
 
-    :param struct sas_phy \*phy:
+    :param phy:
         SAS PHY to free
+    :type phy: struct sas_phy \*
 
 .. _`sas_phy_free.description`:
 
@@ -211,8 +221,9 @@ sas_phy_delete
 
     remove SAS PHY
 
-    :param struct sas_phy \*phy:
+    :param phy:
         SAS PHY to remove
+    :type phy: struct sas_phy \*
 
 .. _`sas_phy_delete.description`:
 
@@ -231,8 +242,9 @@ scsi_is_sas_phy
 
     check if a struct device represents a SAS PHY
 
-    :param const struct device \*dev:
+    :param dev:
         device to check
+    :type dev: const struct device \*
 
 .. _`scsi_is_sas_phy.return`:
 
@@ -250,8 +262,9 @@ sas_port_add
 
     add a SAS port to the device hierarchy
 
-    :param struct sas_port \*port:
+    :param port:
         port to be added
+    :type port: struct sas_port \*
 
 .. _`sas_port_add.description`:
 
@@ -269,8 +282,9 @@ sas_port_free
 
     free a SAS PORT
 
-    :param struct sas_port \*port:
+    :param port:
         SAS PORT to free
+    :type port: struct sas_port \*
 
 .. _`sas_port_free.description`:
 
@@ -296,8 +310,9 @@ sas_port_delete
 
     remove SAS PORT
 
-    :param struct sas_port \*port:
+    :param port:
         SAS PORT to remove
+    :type port: struct sas_port \*
 
 .. _`sas_port_delete.description`:
 
@@ -316,8 +331,9 @@ scsi_is_sas_port
 
     check if a struct device represents a SAS port
 
-    :param const struct device \*dev:
+    :param dev:
         device to check
+    :type dev: const struct device \*
 
 .. _`scsi_is_sas_port.return`:
 
@@ -335,8 +351,9 @@ sas_port_get_phy
 
     try to take a reference on a port member
 
-    :param struct sas_port \*port:
+    :param port:
         port to check
+    :type port: struct sas_port \*
 
 .. _`sas_port_add_phy`:
 
@@ -347,11 +364,13 @@ sas_port_add_phy
 
     add another phy to a port to form a wide port
 
-    :param struct sas_port \*port:
+    :param port:
         port to add the phy to
+    :type port: struct sas_port \*
 
-    :param struct sas_phy \*phy:
+    :param phy:
         phy to add
+    :type phy: struct sas_phy \*
 
 .. _`sas_port_add_phy.description`:
 
@@ -374,11 +393,13 @@ sas_port_delete_phy
 
     remove a phy from a port or wide port
 
-    :param struct sas_port \*port:
+    :param port:
         port to remove the phy from
+    :type port: struct sas_port \*
 
-    :param struct sas_phy \*phy:
+    :param phy:
         phy to remove
+    :type phy: struct sas_phy \*
 
 .. _`sas_port_delete_phy.description`:
 
@@ -397,8 +418,9 @@ sas_rphy_initialize
 
     common rphy initialization
 
-    :param struct sas_rphy \*rphy:
+    :param rphy:
         rphy to initialise
+    :type rphy: struct sas_rphy \*
 
 .. _`sas_rphy_initialize.description`:
 
@@ -417,8 +439,9 @@ sas_end_device_alloc
 
     allocate an rphy for an end device
 
-    :param struct sas_port \*parent:
+    :param parent:
         which port
+    :type parent: struct sas_port \*
 
 .. _`sas_end_device_alloc.description`:
 
@@ -443,11 +466,13 @@ sas_expander_alloc
 
     allocate an rphy for an end device
 
-    :param struct sas_port \*parent:
+    :param parent:
         which port
+    :type parent: struct sas_port \*
 
-    :param enum sas_device_type type:
+    :param type:
         SAS_EDGE_EXPANDER_DEVICE or SAS_FANOUT_EXPANDER_DEVICE
+    :type type: enum sas_device_type
 
 .. _`sas_expander_alloc.description`:
 
@@ -472,8 +497,9 @@ sas_rphy_add
 
     add a SAS remote PHY to the device hierarchy
 
-    :param struct sas_rphy \*rphy:
+    :param rphy:
         The remote PHY to be added
+    :type rphy: struct sas_rphy \*
 
 .. _`sas_rphy_add.description`:
 
@@ -491,8 +517,9 @@ sas_rphy_free
 
     free a SAS remote PHY
 
-    :param struct sas_rphy \*rphy:
+    :param rphy:
         SAS remote PHY to free
+    :type rphy: struct sas_rphy \*
 
 .. _`sas_rphy_free.description`:
 
@@ -519,8 +546,9 @@ sas_rphy_delete
 
     remove and free SAS remote PHY
 
-    :param struct sas_rphy \*rphy:
+    :param rphy:
         SAS remote PHY to remove and free
+    :type rphy: struct sas_rphy \*
 
 .. _`sas_rphy_delete.description`:
 
@@ -538,8 +566,9 @@ sas_rphy_unlink
 
     unlink SAS remote PHY
 
-    :param struct sas_rphy \*rphy:
+    :param rphy:
         SAS remote phy to unlink from its parent port
+    :type rphy: struct sas_rphy \*
 
 .. _`sas_rphy_unlink.description`:
 
@@ -557,8 +586,9 @@ sas_rphy_remove
 
     remove SAS remote PHY
 
-    :param struct sas_rphy \*rphy:
+    :param rphy:
         SAS remote phy to remove
+    :type rphy: struct sas_rphy \*
 
 .. _`sas_rphy_remove.description`:
 
@@ -576,8 +606,9 @@ scsi_is_sas_rphy
 
     check if a struct device represents a SAS remote PHY
 
-    :param const struct device \*dev:
+    :param dev:
         device to check
+    :type dev: const struct device \*
 
 .. _`scsi_is_sas_rphy.return`:
 
@@ -595,8 +626,9 @@ sas_attach_transport
 
     instantiate SAS transport template
 
-    :param struct sas_function_template \*ft:
+    :param ft:
         SAS transport class function template
+    :type ft: struct sas_function_template \*
 
 .. _`sas_release_transport`:
 
@@ -607,8 +639,9 @@ sas_release_transport
 
     release SAS transport template instance
 
-    :param struct scsi_transport_template \*t:
+    :param t:
         transport template instance
+    :type t: struct scsi_transport_template \*
 
 .. This file was automatic generated / don't edit.
 

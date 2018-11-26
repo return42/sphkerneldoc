@@ -9,4 +9,5 @@ soc
 
     bcm2835/index
     fsl/index
+    qcom/index
     tegra/index

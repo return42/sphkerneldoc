@@ -10,10 +10,11 @@ ufs_put_super_internal
 
     put on-disk intrenal structures
 
-    :param struct super_block \*sb:
+    :param sb:
         pointer to super_block structure
         Put on-disk structures associated with cylinder groups
         and write them back to disk, also update cs_total on disk
+    :type sb: struct super_block \*
 
 .. This file was automatic generated / don't edit.
 

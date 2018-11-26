@@ -10,14 +10,17 @@ vbox_framebuffer_dirty_rectangles
 
     VBVA first, as this is normally disabled after a change of master in case the new master does not send dirty rectangle information (is this even allowed?)
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         *undescribed*
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_clip_rect \*rects:
+    :param rects:
         *undescribed*
+    :type rects: struct drm_clip_rect \*
 
-    :param unsigned int num_rects:
+    :param num_rects:
         *undescribed*
+    :type num_rects: unsigned int
 
 .. _`vbox_hw_init`:
 
@@ -28,8 +31,9 @@ vbox_hw_init
 
     to the memory manager.
 
-    :param struct vbox_private \*vbox:
+    :param vbox:
         *undescribed*
+    :type vbox: struct vbox_private \*
 
 .. This file was automatic generated / don't edit.
 

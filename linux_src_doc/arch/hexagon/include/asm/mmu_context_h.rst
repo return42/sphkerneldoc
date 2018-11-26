@@ -10,11 +10,13 @@ init_new_context
 
     initialize context related info for new mm_struct instance
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         pointer to a task struct
+    :type tsk: struct task_struct \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         pointer to a new mm struct
+    :type mm: struct mm_struct \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,17 +8,21 @@ create_hw_obj
 
 .. c:function:: int create_hw_obj(struct pci_dev *pci, enum CHIPTYP chip_type, enum CTCARDS model, struct hw **rhw)
 
-    :param struct pci_dev \*pci:
+    :param pci:
         *undescribed*
+    :type pci: struct pci_dev \*
 
-    :param enum CHIPTYP chip_type:
+    :param chip_type:
         *undescribed*
+    :type chip_type: enum CHIPTYP
 
-    :param enum CTCARDS model:
+    :param model:
         *undescribed*
+    :type model: enum CTCARDS
 
-    :param struct hw \*\*rhw:
+    :param rhw:
         *undescribed*
+    :type rhw: struct hw \*\*
 
 .. _`create_hw_obj.description`:
 

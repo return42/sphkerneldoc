@@ -10,8 +10,9 @@ dwc3_host_get_irq
 
     DesignWare USB3 DRD Controller Host Glue
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         *undescribed*
+    :type dwc: struct dwc3 \*
 
 .. _`dwc3_host_get_irq.description`:
 

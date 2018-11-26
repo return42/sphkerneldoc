@@ -10,8 +10,9 @@ sh_wdt_read_cnt
 
     Read from Counter Reads back the WTCNT value.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sh_wdt_write_cnt`:
 
@@ -22,8 +23,9 @@ sh_wdt_write_cnt
 
     Write to Counter
 
-    :param __u32 val:
+    :param val:
         Value to write
+    :type val: __u32
 
 .. _`sh_wdt_write_cnt.description`:
 
@@ -42,8 +44,9 @@ sh_wdt_write_bst
 
     Write to Counter
 
-    :param __u32 val:
+    :param val:
         Value to write
+    :type val: __u32
 
 .. _`sh_wdt_write_bst.description`:
 
@@ -62,8 +65,9 @@ sh_wdt_read_csr
 
     Read from Control/Status Register
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sh_wdt_read_csr.description`:
 
@@ -81,8 +85,9 @@ sh_wdt_write_csr
 
     Write to Control/Status Register
 
-    :param __u32 val:
+    :param val:
         Value to write
+    :type val: __u32
 
 .. _`sh_wdt_write_csr.description`:
 
@@ -101,8 +106,9 @@ sh_wdt_read_cnt
 
     Read from Counter Reads back the WTCNT value.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sh_wdt_write_cnt`:
 
@@ -113,8 +119,9 @@ sh_wdt_write_cnt
 
     Write to Counter
 
-    :param __u8 val:
+    :param val:
         Value to write
+    :type val: __u8
 
 .. _`sh_wdt_write_cnt.description`:
 
@@ -133,8 +140,9 @@ sh_wdt_read_csr
 
     Read from Control/Status Register
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sh_wdt_read_csr.description`:
 
@@ -152,8 +160,9 @@ sh_wdt_write_csr
 
     Write to Control/Status Register
 
-    :param __u8 val:
+    :param val:
         Value to write
+    :type val: __u8
 
 .. _`sh_wdt_write_csr.description`:
 

@@ -464,9 +464,10 @@ rc_allocate_device
 
     Allocates a RC device
 
-    :param enum rc_driver_type:
+    :param rc_driver_type:
         specifies the type of the RC output to be allocated
         returns a pointer to struct rc_dev.
+    :type rc_driver_type: enum
 
 .. _`devm_rc_allocate_device`:
 
@@ -477,12 +478,14 @@ devm_rc_allocate_device
 
     Managed RC device allocation
 
-    :param struct device \*dev:
+    :param dev:
         pointer to struct device
+    :type dev: struct device \*
 
-    :param enum rc_driver_type:
+    :param rc_driver_type:
         specifies the type of the RC output to be allocated
         returns a pointer to struct rc_dev.
+    :type rc_driver_type: enum
 
 .. _`rc_free_device`:
 
@@ -493,8 +496,9 @@ rc_free_device
 
     Frees a RC device
 
-    :param struct rc_dev \*dev:
+    :param dev:
         pointer to struct rc_dev.
+    :type dev: struct rc_dev \*
 
 .. _`rc_register_device`:
 
@@ -505,8 +509,9 @@ rc_register_device
 
     Registers a RC device
 
-    :param struct rc_dev \*dev:
+    :param dev:
         pointer to struct rc_dev.
+    :type dev: struct rc_dev \*
 
 .. _`devm_rc_register_device`:
 
@@ -517,11 +522,13 @@ devm_rc_register_device
 
     Manageded registering of a RC device
 
-    :param struct device \*parent:
+    :param parent:
         pointer to struct device.
+    :type parent: struct device \*
 
-    :param struct rc_dev \*dev:
+    :param dev:
         pointer to struct rc_dev.
+    :type dev: struct rc_dev \*
 
 .. _`rc_unregister_device`:
 
@@ -532,8 +539,9 @@ rc_unregister_device
 
     Unregisters a RC device
 
-    :param struct rc_dev \*dev:
+    :param dev:
         pointer to struct rc_dev.
+    :type dev: struct rc_dev \*
 
 .. This file was automatic generated / don't edit.
 

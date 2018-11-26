@@ -10,23 +10,29 @@ omap_prefetch_enable
 
     configures and starts prefetch transfer
 
-    :param int cs:
+    :param cs:
         cs (chip select) number
+    :type cs: int
 
-    :param int fifo_th:
+    :param fifo_th:
         fifo threshold to be used for read/ write
+    :type fifo_th: int
 
-    :param int dma_mode:
+    :param dma_mode:
         dma mode enable (1) or disable (0)
+    :type dma_mode: int
 
-    :param unsigned int u32_count:
+    :param u32_count:
         number of bytes to be transferred
+    :type u32_count: unsigned int
 
-    :param int is_write:
+    :param is_write:
         prefetch read(0) or write post(1) mode
+    :type is_write: int
 
-    :param struct omap_nand_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct omap_nand_info \*
 
 .. _`omap_prefetch_reset`:
 
@@ -37,29 +43,34 @@ omap_prefetch_reset
 
     disables and stops the prefetch engine
 
-    :param int cs:
+    :param cs:
         *undescribed*
+    :type cs: int
 
-    :param struct omap_nand_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct omap_nand_info \*
 
 .. _`omap_hwcontrol`:
 
 omap_hwcontrol
 ==============
 
-.. c:function:: void omap_hwcontrol(struct mtd_info *mtd, int cmd, unsigned int ctrl)
+.. c:function:: void omap_hwcontrol(struct nand_chip *chip, int cmd, unsigned int ctrl)
 
     hardware specific access to control-lines
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param int cmd:
+    :param cmd:
         command to device
+    :type cmd: int
 
-    :param unsigned int ctrl:
+    :param ctrl:
         *undescribed*
+    :type ctrl: unsigned int
 
 .. _`omap_hwcontrol.nand_nce`:
 
@@ -98,14 +109,17 @@ omap_read_buf8
 
     read data from NAND controller into buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param u_char \*buf:
+    :param buf:
         buffer to store date
+    :type buf: u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to read
+    :type len: int
 
 .. _`omap_write_buf8`:
 
@@ -116,14 +130,17 @@ omap_write_buf8
 
     write buffer to NAND controller
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param const u_char \*buf:
+    :param buf:
         data buffer
+    :type buf: const u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to write
+    :type len: int
 
 .. _`omap_read_buf16`:
 
@@ -134,14 +151,17 @@ omap_read_buf16
 
     read data from NAND controller into buffer
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param u_char \*buf:
+    :param buf:
         buffer to store date
+    :type buf: u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to read
+    :type len: int
 
 .. _`omap_write_buf16`:
 
@@ -152,86 +172,101 @@ omap_write_buf16
 
     write buffer to NAND controller
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param const u_char \*buf:
+    :param buf:
         data buffer
+    :type buf: const u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to write
+    :type len: int
 
 .. _`omap_read_buf_pref`:
 
 omap_read_buf_pref
 ==================
 
-.. c:function:: void omap_read_buf_pref(struct mtd_info *mtd, u_char *buf, int len)
+.. c:function:: void omap_read_buf_pref(struct nand_chip *chip, u_char *buf, int len)
 
     read data from NAND controller into buffer
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param u_char \*buf:
+    :param buf:
         buffer to store date
+    :type buf: u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to read
+    :type len: int
 
 .. _`omap_write_buf_pref`:
 
 omap_write_buf_pref
 ===================
 
-.. c:function:: void omap_write_buf_pref(struct mtd_info *mtd, const u_char *buf, int len)
+.. c:function:: void omap_write_buf_pref(struct nand_chip *chip, const u_char *buf, int len)
 
     write buffer to NAND controller
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param const u_char \*buf:
+    :param buf:
         data buffer
+    :type buf: const u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to write
+    :type len: int
 
 .. _`omap_read_buf_dma_pref`:
 
 omap_read_buf_dma_pref
 ======================
 
-.. c:function:: void omap_read_buf_dma_pref(struct mtd_info *mtd, u_char *buf, int len)
+.. c:function:: void omap_read_buf_dma_pref(struct nand_chip *chip, u_char *buf, int len)
 
     read data from NAND controller into buffer
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param u_char \*buf:
+    :param buf:
         buffer to store date
+    :type buf: u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to read
+    :type len: int
 
 .. _`omap_write_buf_dma_pref`:
 
 omap_write_buf_dma_pref
 =======================
 
-.. c:function:: void omap_write_buf_dma_pref(struct mtd_info *mtd, const u_char *buf, int len)
+.. c:function:: void omap_write_buf_dma_pref(struct nand_chip *chip, const u_char *buf, int len)
 
     write buffer to NAND controller
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param const u_char \*buf:
+    :param buf:
         data buffer
+    :type buf: const u_char \*
 
-    :param int len:
+    :param len:
         number of bytes to write
+    :type len: int
 
 .. _`gen_true_ecc`:
 
@@ -242,8 +277,9 @@ gen_true_ecc
 
     This function will generate true ECC value
 
-    :param u8 \*ecc_buf:
+    :param ecc_buf:
         buffer to store ecc code
+    :type ecc_buf: u8 \*
 
 .. _`gen_true_ecc.description`:
 
@@ -262,14 +298,17 @@ omap_compare_ecc
 
     Detect (2 bits) and correct (1 bit) error in data
 
-    :param u8 \*ecc_data1:
+    :param ecc_data1:
         ecc code from nand spare area
+    :type ecc_data1: u8 \*
 
-    :param u8 \*ecc_data2:
+    :param ecc_data2:
         ecc code from hardware register obtained from hardware ecc
+    :type ecc_data2: u8 \*
 
-    :param u8 \*page_data:
+    :param page_data:
         page data
+    :type page_data: u8 \*
 
 .. _`omap_compare_ecc.description`:
 
@@ -286,21 +325,25 @@ was corrected, \ ``1``\  is returned. Otherwise, \ ``-1``\  is returned.
 omap_correct_data
 =================
 
-.. c:function:: int omap_correct_data(struct mtd_info *mtd, u_char *dat, u_char *read_ecc, u_char *calc_ecc)
+.. c:function:: int omap_correct_data(struct nand_chip *chip, u_char *dat, u_char *read_ecc, u_char *calc_ecc)
 
     Compares the ECC read with HW generated ECC
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param u_char \*dat:
+    :param dat:
         page data
+    :type dat: u_char \*
 
-    :param u_char \*read_ecc:
+    :param read_ecc:
         ecc read from nand flash
+    :type read_ecc: u_char \*
 
-    :param u_char \*calc_ecc:
+    :param calc_ecc:
         ecc read from HW ECC registers
+    :type calc_ecc: u_char \*
 
 .. _`omap_correct_data.description`:
 
@@ -319,18 +362,21 @@ returned.
 omap_calculate_ecc
 ==================
 
-.. c:function:: int omap_calculate_ecc(struct mtd_info *mtd, const u_char *dat, u_char *ecc_code)
+.. c:function:: int omap_calculate_ecc(struct nand_chip *chip, const u_char *dat, u_char *ecc_code)
 
     Generate non-inverted ECC bytes.
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param const u_char \*dat:
+    :param dat:
         The pointer to data on which ecc is computed
+    :type dat: const u_char \*
 
-    :param u_char \*ecc_code:
+    :param ecc_code:
         The ecc_code buffer
+    :type ecc_code: u_char \*
 
 .. _`omap_calculate_ecc.description`:
 
@@ -348,30 +394,30 @@ ECC bytes that has to be dealt with separately.
 omap_enable_hwecc
 =================
 
-.. c:function:: void omap_enable_hwecc(struct mtd_info *mtd, int mode)
+.. c:function:: void omap_enable_hwecc(struct nand_chip *chip, int mode)
 
     This function enables the hardware ecc functionality
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        *undescribed*
+    :type chip: struct nand_chip \*
 
-    :param int mode:
+    :param mode:
         Read/Write mode
+    :type mode: int
 
 .. _`omap_wait`:
 
 omap_wait
 =========
 
-.. c:function:: int omap_wait(struct mtd_info *mtd, struct nand_chip *chip)
+.. c:function:: int omap_wait(struct nand_chip *this)
 
     wait until the command is done
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
-
-    :param struct nand_chip \*chip:
+    :param this:
         NAND Chip structure
+    :type this: struct nand_chip \*
 
 .. _`omap_wait.description`:
 
@@ -390,12 +436,13 @@ general NAND and SmartMedia specs
 omap_dev_ready
 ==============
 
-.. c:function:: int omap_dev_ready(struct mtd_info *mtd)
+.. c:function:: int omap_dev_ready(struct nand_chip *chip)
 
     checks the NAND Ready GPIO line
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        *undescribed*
+    :type chip: struct nand_chip \*
 
 .. _`omap_dev_ready.description`:
 
@@ -409,15 +456,17 @@ Returns true if ready and false if busy.
 omap_enable_hwecc_bch
 =====================
 
-.. c:function:: void __maybe_unused omap_enable_hwecc_bch(struct mtd_info *mtd, int mode)
+.. c:function:: void __maybe_unused omap_enable_hwecc_bch(struct nand_chip *chip, int mode)
 
     Program GPMC to perform BCH ECC calculation
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        *undescribed*
+    :type chip: struct nand_chip \*
 
-    :param int mode:
+    :param mode:
         Read/Write mode
+    :type mode: int
 
 .. _`omap_enable_hwecc_bch.description`:
 
@@ -444,17 +493,21 @@ eccsize1 = 32 (skip 32 nibbles = 16 bytes per sector in spare area)
 
     Generate ECC bytes for one sector
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param const u_char \*dat:
+    :param dat:
         The pointer to data on which ecc is computed
+    :type dat: const u_char \*
 
-    :param u_char \*ecc_calc:
+    :param ecc_calc:
         *undescribed*
+    :type ecc_calc: u_char \*
 
-    :param int i:
+    :param i:
         The sector number (for a multi sector page)
+    :type i: int
 
 .. _`_omap_calculate_ecc_bch.description`:
 
@@ -469,18 +522,21 @@ within a page. Sector number is in \ ``i``\ .
 omap_calculate_ecc_bch_sw
 =========================
 
-.. c:function:: int omap_calculate_ecc_bch_sw(struct mtd_info *mtd, const u_char *dat, u_char *ecc_calc)
+.. c:function:: int omap_calculate_ecc_bch_sw(struct nand_chip *chip, const u_char *dat, u_char *ecc_calc)
 
     ECC generator for sector for SW based correction
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param const u_char \*dat:
+    :param dat:
         The pointer to data on which ecc is computed
+    :type dat: const u_char \*
 
-    :param u_char \*ecc_calc:
+    :param ecc_calc:
         *undescribed*
+    :type ecc_calc: u_char \*
 
 .. _`omap_calculate_ecc_bch_sw.description`:
 
@@ -500,14 +556,17 @@ omap_calculate_ecc_bch_multi
 
     Generate ECC for multiple sectors
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD device structure
+    :type mtd: struct mtd_info \*
 
-    :param const u_char \*dat:
+    :param dat:
         The pointer to data on which ecc is computed
+    :type dat: const u_char \*
 
-    :param u_char \*ecc_calc:
+    :param ecc_calc:
         *undescribed*
+    :type ecc_calc: u_char \*
 
 .. _`omap_calculate_ecc_bch_multi.description`:
 
@@ -525,14 +584,17 @@ erased_sector_bitflips
 
     count bit flips
 
-    :param u_char \*data:
+    :param data:
         data sector buffer
+    :type data: u_char \*
 
-    :param u_char \*oob:
+    :param oob:
         oob buffer
+    :type oob: u_char \*
 
-    :param struct omap_nand_info \*info:
+    :param info:
         omap_nand_info
+    :type info: struct omap_nand_info \*
 
 .. _`erased_sector_bitflips.description`:
 
@@ -548,21 +610,25 @@ flip, else report as uncorrectable page.
 omap_elm_correct_data
 =====================
 
-.. c:function:: int omap_elm_correct_data(struct mtd_info *mtd, u_char *data, u_char *read_ecc, u_char *calc_ecc)
+.. c:function:: int omap_elm_correct_data(struct nand_chip *chip, u_char *data, u_char *read_ecc, u_char *calc_ecc)
 
     corrects page data area in case error reported
 
-    :param struct mtd_info \*mtd:
-        MTD device structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param u_char \*data:
+    :param data:
         page data
+    :type data: u_char \*
 
-    :param u_char \*read_ecc:
+    :param read_ecc:
         ecc read from nand flash
+    :type read_ecc: u_char \*
 
-    :param u_char \*calc_ecc:
+    :param calc_ecc:
         ecc read from HW ECC registers
+    :type calc_ecc: u_char \*
 
 .. _`omap_elm_correct_data.description`:
 
@@ -578,24 +644,25 @@ then process data via ELM to detect bit-flips.
 omap_write_page_bch
 ===================
 
-.. c:function:: int omap_write_page_bch(struct mtd_info *mtd, struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
+.. c:function:: int omap_write_page_bch(struct nand_chip *chip, const uint8_t *buf, int oob_required, int page)
 
     BCH ecc based write page function for entire page
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param const uint8_t \*buf:
+    :param buf:
         data buffer
+    :type buf: const uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         must write chip->oob_poi to OOB
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page
+    :type page: int
 
 .. _`omap_write_page_bch.description`:
 
@@ -609,30 +676,33 @@ Custom write page method evolved to support multi sector writing in one shot
 omap_write_subpage_bch
 ======================
 
-.. c:function:: int omap_write_subpage_bch(struct mtd_info *mtd, struct nand_chip *chip, u32 offset, u32 data_len, const u8 *buf, int oob_required, int page)
+.. c:function:: int omap_write_subpage_bch(struct nand_chip *chip, u32 offset, u32 data_len, const u8 *buf, int oob_required, int page)
 
     BCH hardware ECC based subpage write
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param u32 offset:
+    :param offset:
         column address of subpage within the page
+    :type offset: u32
 
-    :param u32 data_len:
+    :param data_len:
         data length
+    :type data_len: u32
 
-    :param const u8 \*buf:
+    :param buf:
         data buffer
+    :type buf: const u8 \*
 
-    :param int oob_required:
+    :param oob_required:
         must write chip->oob_poi to OOB
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to write
+    :type page: int
 
 .. _`omap_write_subpage_bch.description`:
 
@@ -646,24 +716,25 @@ OMAP optimized subpage write method.
 omap_read_page_bch
 ==================
 
-.. c:function:: int omap_read_page_bch(struct mtd_info *mtd, struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
+.. c:function:: int omap_read_page_bch(struct nand_chip *chip, uint8_t *buf, int oob_required, int page)
 
     BCH ecc based page read function for entire page
 
-    :param struct mtd_info \*mtd:
-        mtd info structure
-
-    :param struct nand_chip \*chip:
+    :param chip:
         nand chip info structure
+    :type chip: struct nand_chip \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: uint8_t \*
 
-    :param int oob_required:
+    :param oob_required:
         caller requires OOB data read to chip->oob_poi
+    :type oob_required: int
 
-    :param int page:
+    :param page:
         page number to read
+    :type page: int
 
 .. _`omap_read_page_bch.description`:
 
@@ -686,11 +757,13 @@ is_elm_present
 
     checks for presence of ELM module by scanning DT nodes
 
-    :param struct omap_nand_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct omap_nand_info \*
 
-    :param struct device_node \*elm_node:
+    :param elm_node:
         *undescribed*
+    :type elm_node: struct device_node \*
 
 .. This file was automatic generated / don't edit.
 

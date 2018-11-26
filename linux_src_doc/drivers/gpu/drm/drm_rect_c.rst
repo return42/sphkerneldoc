@@ -10,11 +10,13 @@ drm_rect_intersect
 
     intersect two rectangles
 
-    :param struct drm_rect \*r1:
+    :param r1:
         first rectangle
+    :type r1: struct drm_rect \*
 
-    :param const struct drm_rect \*r2:
+    :param r2:
         second rectangle
+    :type r2: const struct drm_rect \*
 
 .. _`drm_rect_intersect.description`:
 
@@ -41,14 +43,17 @@ drm_rect_clip_scaled
 
     perform a scaled clip operation
 
-    :param struct drm_rect \*src:
+    :param src:
         source window rectangle
+    :type src: struct drm_rect \*
 
-    :param struct drm_rect \*dst:
+    :param dst:
         destination window rectangle
+    :type dst: struct drm_rect \*
 
-    :param const struct drm_rect \*clip:
+    :param clip:
         clip rectangle
+    :type clip: const struct drm_rect \*
 
 .. _`drm_rect_clip_scaled.description`:
 
@@ -75,17 +80,21 @@ drm_rect_calc_hscale
 
     calculate the horizontal scaling factor
 
-    :param const struct drm_rect \*src:
+    :param src:
         source window rectangle
+    :type src: const struct drm_rect \*
 
-    :param const struct drm_rect \*dst:
+    :param dst:
         destination window rectangle
+    :type dst: const struct drm_rect \*
 
-    :param int min_hscale:
+    :param min_hscale:
         minimum allowed horizontal scaling factor
+    :type min_hscale: int
 
-    :param int max_hscale:
+    :param max_hscale:
         maximum allowed horizontal scaling factor
+    :type max_hscale: int
 
 .. _`drm_rect_calc_hscale.description`:
 
@@ -115,17 +124,21 @@ drm_rect_calc_vscale
 
     calculate the vertical scaling factor
 
-    :param const struct drm_rect \*src:
+    :param src:
         source window rectangle
+    :type src: const struct drm_rect \*
 
-    :param const struct drm_rect \*dst:
+    :param dst:
         destination window rectangle
+    :type dst: const struct drm_rect \*
 
-    :param int min_vscale:
+    :param min_vscale:
         minimum allowed vertical scaling factor
+    :type min_vscale: int
 
-    :param int max_vscale:
+    :param max_vscale:
         maximum allowed vertical scaling factor
+    :type max_vscale: int
 
 .. _`drm_rect_calc_vscale.description`:
 
@@ -155,17 +168,21 @@ drm_rect_calc_hscale_relaxed
 
     calculate the horizontal scaling factor
 
-    :param struct drm_rect \*src:
+    :param src:
         source window rectangle
+    :type src: struct drm_rect \*
 
-    :param struct drm_rect \*dst:
+    :param dst:
         destination window rectangle
+    :type dst: struct drm_rect \*
 
-    :param int min_hscale:
+    :param min_hscale:
         minimum allowed horizontal scaling factor
+    :type min_hscale: int
 
-    :param int max_hscale:
+    :param max_hscale:
         maximum allowed horizontal scaling factor
+    :type max_hscale: int
 
 .. _`drm_rect_calc_hscale_relaxed.description`:
 
@@ -201,17 +218,21 @@ drm_rect_calc_vscale_relaxed
 
     calculate the vertical scaling factor
 
-    :param struct drm_rect \*src:
+    :param src:
         source window rectangle
+    :type src: struct drm_rect \*
 
-    :param struct drm_rect \*dst:
+    :param dst:
         destination window rectangle
+    :type dst: struct drm_rect \*
 
-    :param int min_vscale:
+    :param min_vscale:
         minimum allowed vertical scaling factor
+    :type min_vscale: int
 
-    :param int max_vscale:
+    :param max_vscale:
         maximum allowed vertical scaling factor
+    :type max_vscale: int
 
 .. _`drm_rect_calc_vscale_relaxed.description`:
 
@@ -247,14 +268,17 @@ drm_rect_debug_print
 
     print the rectangle information
 
-    :param const char \*prefix:
+    :param prefix:
         prefix string
+    :type prefix: const char \*
 
-    :param const struct drm_rect \*r:
+    :param r:
         rectangle to print
+    :type r: const struct drm_rect \*
 
-    :param bool fixed_point:
+    :param fixed_point:
         rectangle is in 16.16 fixed point format
+    :type fixed_point: bool
 
 .. _`drm_rect_rotate`:
 
@@ -265,17 +289,21 @@ drm_rect_rotate
 
     Rotate the rectangle
 
-    :param struct drm_rect \*r:
+    :param r:
         rectangle to be rotated
+    :type r: struct drm_rect \*
 
-    :param int width:
+    :param width:
         Width of the coordinate space
+    :type width: int
 
-    :param int height:
+    :param height:
         Height of the coordinate space
+    :type height: int
 
-    :param unsigned int rotation:
+    :param rotation:
         Transformation to be applied
+    :type rotation: unsigned int
 
 .. _`drm_rect_rotate.description`:
 
@@ -300,17 +328,21 @@ drm_rect_rotate_inv
 
     Inverse rotate the rectangle
 
-    :param struct drm_rect \*r:
+    :param r:
         rectangle to be rotated
+    :type r: struct drm_rect \*
 
-    :param int width:
+    :param width:
         Width of the coordinate space
+    :type width: int
 
-    :param int height:
+    :param height:
         Height of the coordinate space
+    :type height: int
 
-    :param unsigned int rotation:
+    :param rotation:
         Transformation whose inverse is to be applied
+    :type rotation: unsigned int
 
 .. _`drm_rect_rotate_inv.description`:
 

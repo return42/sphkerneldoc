@@ -10,11 +10,13 @@ from_fw_port_mod_type
 
     translate Firmware Port/Module type to Ethtool
 
-    :param enum fw_port_type port_type:
+    :param port_type:
         Firmware Port Type
+    :type port_type: enum fw_port_type
 
-    :param enum fw_port_module_type mod_type:
+    :param mod_type:
         Firmware Module Type
+    :type mod_type: enum fw_port_module_type
 
 .. _`from_fw_port_mod_type.description`:
 
@@ -32,8 +34,9 @@ speed_to_fw_caps
 
     translate Port Speed to Firmware Port Capabilities
 
-    :param int speed:
+    :param speed:
         speed in Kb/s
+    :type speed: int
 
 .. _`speed_to_fw_caps.description`:
 
@@ -52,14 +55,17 @@ fw_caps_to_lmm
 
     translate Firmware to ethtool Link Mode Mask
 
-    :param enum fw_port_type port_type:
+    :param port_type:
         Firmware Port Type
+    :type port_type: enum fw_port_type
 
-    :param unsigned int fw_caps:
+    :param fw_caps:
         Firmware Port Capabilities
+    :type fw_caps: unsigned int
 
-    :param unsigned long \*link_mode_mask:
+    :param link_mode_mask:
         ethtool Link Mode Mask
+    :type link_mode_mask: unsigned long \*
 
 .. _`fw_caps_to_lmm.description`:
 
@@ -78,8 +84,9 @@ lmm_to_fw_caps
 
     translate ethtool Link Mode Mask to Firmware capabilities
 
-    :param const unsigned long \*link_mode_mask:
+    :param link_mode_mask:
         *undescribed*
+    :type link_mode_mask: const unsigned long \*
 
 .. _`lmm_to_fw_caps.description`:
 
@@ -98,14 +105,17 @@ set_rx_intr_params
 
     set a net devices's RX interrupt holdoff paramete!
 
-    :param struct net_device \*dev:
+    :param dev:
         the network device
+    :type dev: struct net_device \*
 
-    :param unsigned int us:
+    :param us:
         the hold-off time in us, or 0 to disable timer
+    :type us: unsigned int
 
-    :param unsigned int cnt:
+    :param cnt:
         the hold-off packet count, or 0 to disable counter
+    :type cnt: unsigned int
 
 .. _`set_rx_intr_params.description`:
 
@@ -113,6 +123,27 @@ Description
 -----------
 
 Set the RX interrupt hold-off parameters for a network device.
+
+.. _`set_flags`:
+
+set_flags
+=========
+
+.. c:function:: void set_flags(u32 *cur_flags, u32 new_flags, u32 flags)
+
+    set/unset specified flags if passed in new_flags
+
+    :param cur_flags:
+        pointer to current flags
+    :type cur_flags: u32 \*
+
+    :param new_flags:
+        new incoming flags
+    :type new_flags: u32
+
+    :param flags:
+        set of flags to set/unset
+    :type flags: u32
 
 .. This file was automatic generated / don't edit.
 

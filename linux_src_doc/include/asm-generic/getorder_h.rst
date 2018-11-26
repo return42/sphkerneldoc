@@ -10,8 +10,9 @@ get_order
 
     Determine the allocation order of a memory size
 
-    :param  n:
+    :param n:
         *undescribed*
+    :type n: 
 
 .. _`get_order.description`:
 

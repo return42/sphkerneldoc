@@ -276,8 +276,9 @@ setup_areas
 
     Map the spu regions into the address space.
 
-    :param struct spu \*spu:
+    :param spu:
         *undescribed*
+    :type spu: struct spu \*
 
 .. _`setup_areas.description`:
 
@@ -299,8 +300,9 @@ ps3_enable_spu
 
     Enable SPU run control.
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct spu_context \*
 
 .. _`ps3_enable_spu.description`:
 

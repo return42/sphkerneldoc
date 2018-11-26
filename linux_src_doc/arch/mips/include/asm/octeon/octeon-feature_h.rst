@@ -10,8 +10,9 @@ octeon_has_crypto
 
     Check if this OCTEON has crypto acceleration support.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_has_crypto.return`:
 
@@ -29,9 +30,10 @@ octeon_has_feature
 
     checks have been optimized to be fairly quick, but they should still be kept out of fast path code.
 
-    :param enum octeon_feature feature:
+    :param feature:
         Feature to check for. This should always be a constant so the
         compiler can remove the switch statement through optimization.
+    :type feature: enum octeon_feature
 
 .. _`octeon_has_feature.description`:
 

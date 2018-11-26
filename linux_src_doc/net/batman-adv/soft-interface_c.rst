@@ -10,11 +10,13 @@ batadv_skb_head_push
 
     Increase header size and move (push) head pointer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet buffer which should be modified
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         number of bytes to add
+    :type len: unsigned int
 
 .. _`batadv_skb_head_push.return`:
 
@@ -32,11 +34,13 @@ batadv_sum_counter
 
     Sum the cpu-local counters for index 'idx'
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param size_t idx:
+    :param idx:
         index of counter to sum up
+    :type idx: size_t
 
 .. _`batadv_sum_counter.return`:
 
@@ -54,8 +58,9 @@ batadv_interface_set_rx_mode
 
     set the rx mode of a device
 
-    :param struct net_device \*dev:
+    :param dev:
         registered network device to modify
+    :type dev: struct net_device \*
 
 .. _`batadv_interface_set_rx_mode.description`:
 
@@ -75,17 +80,21 @@ batadv_interface_rx
 
     receive ethernet frame on local batman-adv interface
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         local interface which will receive the ethernet frame
+    :type soft_iface: struct net_device \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         ethernet frame for \ ``soft_iface``\ 
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         size of already parsed batman-adv header
+    :type hdr_size: int
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator from which the batman-adv packet was sent
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_interface_rx.description`:
 
@@ -111,8 +120,9 @@ batadv_softif_vlan_release
 
     release vlan from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the vlan object
+    :type ref: struct kref \*
 
 .. _`batadv_softif_vlan_put`:
 
@@ -123,8 +133,9 @@ batadv_softif_vlan_put
 
     decrease the vlan object refcounter and possibly release it
 
-    :param struct batadv_softif_vlan \*vlan:
+    :param vlan:
         the vlan object to release
+    :type vlan: struct batadv_softif_vlan \*
 
 .. _`batadv_softif_vlan_get`:
 
@@ -135,11 +146,13 @@ batadv_softif_vlan_get
 
     get the vlan object for a specific vid
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param unsigned short vid:
+    :param vid:
         the identifier of the vlan object to retrieve
+    :type vid: unsigned short
 
 .. _`batadv_softif_vlan_get.return`:
 
@@ -158,11 +171,13 @@ batadv_softif_create_vlan
 
     allocate the needed resources for a new vlan
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_softif_create_vlan.return`:
 
@@ -180,11 +195,13 @@ batadv_softif_destroy_vlan
 
     remove and destroy a softif_vlan object
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_softif_vlan \*vlan:
+    :param vlan:
         the object to remove
+    :type vlan: struct batadv_softif_vlan \*
 
 .. _`batadv_interface_add_vid`:
 
@@ -195,14 +212,17 @@ batadv_interface_add_vid
 
     ndo_add_vid API implementation
 
-    :param struct net_device \*dev:
+    :param dev:
         the netdev of the mesh interface
+    :type dev: struct net_device \*
 
-    :param __be16 proto:
+    :param proto:
         protocol of the the vlan id
+    :type proto: __be16
 
-    :param unsigned short vid:
+    :param vid:
         identifier of the new vlan
+    :type vid: unsigned short
 
 .. _`batadv_interface_add_vid.description`:
 
@@ -228,14 +248,17 @@ batadv_interface_kill_vid
 
     ndo_kill_vid API implementation
 
-    :param struct net_device \*dev:
+    :param dev:
         the netdev of the mesh interface
+    :type dev: struct net_device \*
 
-    :param __be16 proto:
+    :param proto:
         protocol of the the vlan id
+    :type proto: __be16
 
-    :param unsigned short vid:
+    :param vid:
         identifier of the deleted vlan
+    :type vid: unsigned short
 
 .. _`batadv_interface_kill_vid.description`:
 
@@ -262,14 +285,17 @@ batadv_set_lockdep_class_one
 
     Set lockdep class for a single tx queue
 
-    :param struct net_device \*dev:
+    :param dev:
         device which owns the tx queue
+    :type dev: struct net_device \*
 
-    :param struct netdev_queue \*txq:
+    :param txq:
         tx queue to modify
+    :type txq: struct netdev_queue \*
 
-    :param void \*_unused:
+    :param _unused:
         always NULL
+    :type _unused: void \*
 
 .. _`batadv_set_lockdep_class`:
 
@@ -280,8 +306,9 @@ batadv_set_lockdep_class
 
     Set txq and addr_list lockdep class
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to modify
+    :type dev: struct net_device \*
 
 .. _`batadv_softif_init_late`:
 
@@ -292,8 +319,9 @@ batadv_softif_init_late
 
     late stage initialization of soft interface
 
-    :param struct net_device \*dev:
+    :param dev:
         registered network device to modify
+    :type dev: struct net_device \*
 
 .. _`batadv_softif_init_late.return`:
 
@@ -311,14 +339,17 @@ batadv_softif_slave_add
 
     Add a slave interface to a batadv_soft_interface
 
-    :param struct net_device \*dev:
+    :param dev:
         batadv_soft_interface used as master interface
+    :type dev: struct net_device \*
 
-    :param struct net_device \*slave_dev:
+    :param slave_dev:
         net_device which should become the slave interface
+    :type slave_dev: struct net_device \*
 
-    :param struct netlink_ext_ack \*extack:
+    :param extack:
         extended ACK report struct
+    :type extack: struct netlink_ext_ack \*
 
 .. _`batadv_softif_slave_add.return`:
 
@@ -336,11 +367,13 @@ batadv_softif_slave_del
 
     Delete a slave iface from a batadv_soft_interface
 
-    :param struct net_device \*dev:
+    :param dev:
         batadv_soft_interface used as master interface
+    :type dev: struct net_device \*
 
-    :param struct net_device \*slave_dev:
+    :param slave_dev:
         net_device which should be removed from the master interface
+    :type slave_dev: struct net_device \*
 
 .. _`batadv_softif_slave_del.return`:
 
@@ -358,8 +391,9 @@ batadv_softif_free
 
     Deconstructor of batadv_soft_interface
 
-    :param struct net_device \*dev:
+    :param dev:
         Device to cleanup and remove
+    :type dev: struct net_device \*
 
 .. _`batadv_softif_init_early`:
 
@@ -370,8 +404,9 @@ batadv_softif_init_early
 
     early stage initialization of soft interface
 
-    :param struct net_device \*dev:
+    :param dev:
         registered network device to modify
+    :type dev: struct net_device \*
 
 .. _`batadv_softif_create`:
 
@@ -382,11 +417,13 @@ batadv_softif_create
 
     Create and register soft interface
 
-    :param struct net \*net:
+    :param net:
         the applicable net namespace
+    :type net: struct net \*
 
-    :param const char \*name:
+    :param name:
         name of the new soft interface
+    :type name: const char \*
 
 .. _`batadv_softif_create.return`:
 
@@ -404,8 +441,9 @@ batadv_softif_destroy_sysfs
 
     deletion of batadv_soft_interface via sysfs
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         the to-be-removed batman-adv interface
+    :type soft_iface: struct net_device \*
 
 .. _`batadv_softif_destroy_netlink`:
 
@@ -416,11 +454,13 @@ batadv_softif_destroy_netlink
 
     deletion of batadv_soft_interface via netlink
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         the to-be-removed batman-adv interface
+    :type soft_iface: struct net_device \*
 
-    :param struct list_head \*head:
+    :param head:
         list pointer
+    :type head: struct list_head \*
 
 .. _`batadv_softif_is_valid`:
 
@@ -431,8 +471,9 @@ batadv_softif_is_valid
 
     Check whether device is a batadv soft interface
 
-    :param const struct net_device \*net_dev:
+    :param net_dev:
         device which should be checked
+    :type net_dev: const struct net_device \*
 
 .. _`batadv_softif_is_valid.return`:
 

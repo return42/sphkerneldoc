@@ -10,8 +10,9 @@ e1000_set_phy_type
 
     Set the phy type member in the hw struct.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_init_script`:
 
@@ -22,8 +23,9 @@ e1000_phy_init_script
 
     IGP phy init script - initializes the GbE PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_set_mac_type`:
 
@@ -34,8 +36,9 @@ e1000_set_mac_type
 
     Set the mac type member in the hw struct.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_set_media_type`:
 
@@ -46,8 +49,9 @@ e1000_set_media_type
 
     Set media type and TBI compatibility.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_reset_hw`:
 
@@ -58,8 +62,9 @@ e1000_reset_hw
 
     reset the hardware completely
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_reset_hw.description`:
 
@@ -77,8 +82,9 @@ e1000_init_hw
 
     Performs basic configuration of the adapter.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_hw.description`:
 
@@ -100,8 +106,9 @@ e1000_adjust_serdes_amplitude
 
     Adjust SERDES output amplitude based on EEPROM setting.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code.
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_link`:
 
@@ -112,8 +119,9 @@ e1000_setup_link
 
     Configures flow control and link settings.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_link.description`:
 
@@ -135,8 +143,9 @@ e1000_setup_fiber_serdes_link
 
     prepare fiber or serdes link
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_fiber_serdes_link.description`:
 
@@ -156,8 +165,9 @@ e1000_copper_link_rtl_setup
 
     Copper link setup for e1000_phy_rtl series.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_copper_link_rtl_setup.description`:
 
@@ -175,8 +185,9 @@ e1000_copper_link_preconfig
 
     early configuration for copper
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_copper_link_preconfig.description`:
 
@@ -194,8 +205,9 @@ e1000_copper_link_igp_setup
 
     Copper link setup for e1000_phy_igp series.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_copper_link_mgp_setup`:
 
@@ -206,8 +218,9 @@ e1000_copper_link_mgp_setup
 
     Copper link setup for e1000_phy_m88 series.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_copper_link_autoneg`:
 
@@ -218,8 +231,9 @@ e1000_copper_link_autoneg
 
     setup auto-neg
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_copper_link_autoneg.description`:
 
@@ -238,8 +252,9 @@ e1000_copper_link_postconfig
 
     post link setup
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_copper_link_postconfig.description`:
 
@@ -264,8 +279,9 @@ e1000_setup_copper_link
 
     phy/speed/duplex setting
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_copper_link.description`:
 
@@ -283,8 +299,9 @@ e1000_phy_setup_autoneg
 
     phy settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_setup_autoneg.description`:
 
@@ -302,8 +319,9 @@ e1000_phy_force_speed_duplex
 
     force link settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_force_speed_duplex.description`:
 
@@ -321,8 +339,9 @@ e1000_config_collision_dist
 
     set collision distance register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_config_collision_dist.description`:
 
@@ -342,8 +361,9 @@ e1000_config_mac_to_phy
 
     sync phy and mac settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_config_mac_to_phy.description`:
 
@@ -363,8 +383,9 @@ e1000_force_mac_fc
 
     force flow control settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_force_mac_fc.description`:
 
@@ -387,8 +408,9 @@ e1000_config_fc_after_link_up
 
     configure flow control after autoneg
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_config_fc_after_link_up.description`:
 
@@ -411,8 +433,9 @@ e1000_check_for_serdes_link_generic
 
     Check for link (Serdes)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_for_serdes_link_generic.description`:
 
@@ -429,8 +452,9 @@ e1000_check_for_link
 
 .. c:function:: s32 e1000_check_for_link(struct e1000_hw *hw)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_for_link.description`:
 
@@ -447,14 +471,17 @@ e1000_get_speed_and_duplex
 
 .. c:function:: s32 e1000_get_speed_and_duplex(struct e1000_hw *hw, u16 *speed, u16 *duplex)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*speed:
+    :param speed:
         Speed of the connection
+    :type speed: u16 \*
 
-    :param u16 \*duplex:
+    :param duplex:
         Duplex setting of the connection
+    :type duplex: u16 \*
 
 .. _`e1000_get_speed_and_duplex.description`:
 
@@ -470,8 +497,9 @@ e1000_wait_autoneg
 
 .. c:function:: s32 e1000_wait_autoneg(struct e1000_hw *hw)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_wait_autoneg.description`:
 
@@ -489,11 +517,13 @@ e1000_raise_mdi_clk
 
     Raises the Management Data Clock
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*ctrl:
+    :param ctrl:
         Device control register's current value
+    :type ctrl: u32 \*
 
 .. _`e1000_lower_mdi_clk`:
 
@@ -504,11 +534,13 @@ e1000_lower_mdi_clk
 
     Lowers the Management Data Clock
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*ctrl:
+    :param ctrl:
         Device control register's current value
+    :type ctrl: u32 \*
 
 .. _`e1000_shift_out_mdi_bits`:
 
@@ -519,14 +551,17 @@ e1000_shift_out_mdi_bits
 
     Shifts data bits out to the PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u32 data:
+    :param data:
         Data to send out to the PHY
+    :type data: u32
 
-    :param u16 count:
+    :param count:
         Number of bits to shift out
+    :type count: u16
 
 .. _`e1000_shift_out_mdi_bits.description`:
 
@@ -544,8 +579,9 @@ e1000_shift_in_mdi_bits
 
     Shifts data bits in from the PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_shift_in_mdi_bits.description`:
 
@@ -563,14 +599,17 @@ e1000_read_phy_reg
 
     read a phy register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         address of the PHY register to read
+    :type reg_addr: u32
 
-    :param u16 \*phy_data:
+    :param phy_data:
         pointer to the value on the PHY register
+    :type phy_data: u16 \*
 
 .. _`e1000_read_phy_reg.description`:
 
@@ -589,14 +628,17 @@ e1000_write_phy_reg
 
     write a phy register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u32 reg_addr:
+    :param reg_addr:
         address of the PHY register to write
+    :type reg_addr: u32
 
-    :param u16 phy_data:
+    :param phy_data:
         *undescribed*
+    :type phy_data: u16
 
 .. _`e1000_write_phy_reg.description`:
 
@@ -614,8 +656,9 @@ e1000_phy_hw_reset
 
     reset the phy, hardware style
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_hw_reset.description`:
 
@@ -633,8 +676,9 @@ e1000_phy_reset
 
     reset the phy to commit settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_reset.description`:
 
@@ -653,8 +697,9 @@ e1000_detect_gig_phy
 
     check the phy type
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_detect_gig_phy.description`:
 
@@ -672,8 +717,9 @@ e1000_phy_reset_dsp
 
     reset DSP
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_reset_dsp.description`:
 
@@ -691,11 +737,13 @@ e1000_phy_igp_get_info
 
     get igp specific registers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param struct e1000_phy_info \*phy_info:
+    :param phy_info:
         PHY information structure
+    :type phy_info: struct e1000_phy_info \*
 
 .. _`e1000_phy_igp_get_info.description`:
 
@@ -713,11 +761,13 @@ e1000_phy_m88_get_info
 
     get m88 specific registers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param struct e1000_phy_info \*phy_info:
+    :param phy_info:
         PHY information structure
+    :type phy_info: struct e1000_phy_info \*
 
 .. _`e1000_phy_m88_get_info.description`:
 
@@ -735,11 +785,13 @@ e1000_phy_get_info
 
     request phy info
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param struct e1000_phy_info \*phy_info:
+    :param phy_info:
         PHY information structure
+    :type phy_info: struct e1000_phy_info \*
 
 .. _`e1000_phy_get_info.description`:
 
@@ -757,8 +809,9 @@ e1000_init_eeprom_params
 
     initialize sw eeprom vars
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_eeprom_params.description`:
 
@@ -777,11 +830,13 @@ e1000_raise_ee_clk
 
     Raises the EEPROM's clock input.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*eecd:
+    :param eecd:
         EECD's current value
+    :type eecd: u32 \*
 
 .. _`e1000_lower_ee_clk`:
 
@@ -792,11 +847,13 @@ e1000_lower_ee_clk
 
     Lowers the EEPROM's clock input.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*eecd:
+    :param eecd:
         EECD's current value
+    :type eecd: u32 \*
 
 .. _`e1000_shift_out_ee_bits`:
 
@@ -807,14 +864,17 @@ e1000_shift_out_ee_bits
 
     Shift data bits out to the EEPROM.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u16 data:
+    :param data:
         data to send to the EEPROM
+    :type data: u16
 
-    :param u16 count:
+    :param count:
         number of bits to shift out
+    :type count: u16
 
 .. _`e1000_shift_in_ee_bits`:
 
@@ -825,11 +885,13 @@ e1000_shift_in_ee_bits
 
     Shift data bits in from the EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u16 count:
+    :param count:
         number of bits to shift in
+    :type count: u16
 
 .. _`e1000_acquire_eeprom`:
 
@@ -840,8 +902,9 @@ e1000_acquire_eeprom
 
     Prepares EEPROM for access
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_acquire_eeprom.description`:
 
@@ -860,8 +923,9 @@ e1000_standby_eeprom
 
     Returns EEPROM to a "standby" state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_release_eeprom`:
 
@@ -872,8 +936,9 @@ e1000_release_eeprom
 
     drop chip select
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_release_eeprom.description`:
 
@@ -891,8 +956,9 @@ e1000_spi_eeprom_ready
 
     Reads a 16 bit word from the EEPROM.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_read_eeprom`:
 
@@ -903,17 +969,21 @@ e1000_read_eeprom
 
     Reads a 16 bit word from the EEPROM.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of  word in the EEPROM to read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to read
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the EEPROM
+    :type data: u16 \*
 
 .. _`e1000_validate_eeprom_checksum`:
 
@@ -924,8 +994,9 @@ e1000_validate_eeprom_checksum
 
     Verifies that the EEPROM has a valid checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_validate_eeprom_checksum.description`:
 
@@ -945,8 +1016,9 @@ e1000_update_eeprom_checksum
 
     Calculates/writes the EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_update_eeprom_checksum.description`:
 
@@ -965,17 +1037,21 @@ e1000_write_eeprom
 
     write words to the different EEPROM types.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be written to
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         16 bit word to be written to the EEPROM
+    :type data: u16 \*
 
 .. _`e1000_write_eeprom.description`:
 
@@ -994,17 +1070,21 @@ e1000_write_eeprom_spi
 
     Writes a 16 bit word to a given offset in an SPI EEPROM.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be written to
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         pointer to array of 8 bit words to be written to the EEPROM
+    :type data: u16 \*
 
 .. _`e1000_write_eeprom_microwire`:
 
@@ -1015,17 +1095,21 @@ e1000_write_eeprom_microwire
 
     Writes a 16 bit word to a given offset in a Microwire EEPROM.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be written to
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         pointer to array of 8 bit words to be written to the EEPROM
+    :type data: u16 \*
 
 .. _`e1000_read_mac_addr`:
 
@@ -1036,8 +1120,9 @@ e1000_read_mac_addr
 
     read the adapters MAC from eeprom
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_read_mac_addr.description`:
 
@@ -1056,8 +1141,9 @@ e1000_init_rx_addrs
 
     Initializes receive address filters.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_rx_addrs.description`:
 
@@ -1077,11 +1163,13 @@ e1000_hash_mc_addr
 
     Hashes an address to determine its location in the multicast table
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*mc_addr:
+    :param mc_addr:
         the multicast address to hash
+    :type mc_addr: u8 \*
 
 .. _`e1000_rar_set`:
 
@@ -1092,14 +1180,17 @@ e1000_rar_set
 
     Puts an ethernet address into a receive address register.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*addr:
+    :param addr:
         Address to put into receive address register
+    :type addr: u8 \*
 
-    :param u32 index:
+    :param index:
         Receive address register to write
+    :type index: u32
 
 .. _`e1000_write_vfta`:
 
@@ -1110,14 +1201,17 @@ e1000_write_vfta
 
     Writes a value to the specified offset in the VLAN filter table.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         Offset in VLAN filer table to write
+    :type offset: u32
 
-    :param u32 value:
+    :param value:
         Value to write into VLAN filter table
+    :type value: u32
 
 .. _`e1000_clear_vfta`:
 
@@ -1128,8 +1222,9 @@ e1000_clear_vfta
 
     Clears the VLAN filer table
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_led`:
 
@@ -1138,8 +1233,9 @@ e1000_setup_led
 
 .. c:function:: s32 e1000_setup_led(struct e1000_hw *hw)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_led.description`:
 
@@ -1157,8 +1253,9 @@ e1000_cleanup_led
 
     Restores the saved state of the SW controlable LED.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_led_on`:
 
@@ -1169,8 +1266,9 @@ e1000_led_on
 
     Turns on the software controllable LED
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_led_off`:
 
@@ -1181,8 +1279,9 @@ e1000_led_off
 
     Turns off the software controllable LED
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_clear_hw_cntrs`:
 
@@ -1193,8 +1292,9 @@ e1000_clear_hw_cntrs
 
     Clears all hardware statistics counters.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_reset_adaptive`:
 
@@ -1205,8 +1305,9 @@ e1000_reset_adaptive
 
     Resets Adaptive IFS to its default state.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_reset_adaptive.description`:
 
@@ -1227,8 +1328,9 @@ e1000_update_adaptive
 
     update adaptive IFS
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_update_adaptive.description`:
 
@@ -1245,8 +1347,9 @@ e1000_get_bus_info
 
 .. c:function:: void e1000_get_bus_info(struct e1000_hw *hw)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_bus_info.description`:
 
@@ -1262,14 +1365,17 @@ e1000_write_reg_io
 
 .. c:function:: void e1000_write_reg_io(struct e1000_hw *hw, u32 offset, u32 value)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         offset to write to
+    :type offset: u32
 
-    :param u32 value:
+    :param value:
         value to write
+    :type value: u32
 
 .. _`e1000_write_reg_io.description`:
 
@@ -1288,14 +1394,17 @@ e1000_get_cable_length
 
     Estimates the cable length.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*min_length:
+    :param min_length:
         The estimated minimum length
+    :type min_length: u16 \*
 
-    :param u16 \*max_length:
+    :param max_length:
         The estimated maximum length
+    :type max_length: u16 \*
 
 .. _`e1000_get_cable_length.return`:
 
@@ -1319,12 +1428,14 @@ e1000_check_polarity
 
     Check the cable polarity
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param e1000_rev_polarity \*polarity:
+    :param polarity:
         output parameter : 0 - Polarity is not reversed
         1 - Polarity is reversed.
+    :type polarity: e1000_rev_polarity \*
 
 .. _`e1000_check_polarity.return`:
 
@@ -1349,8 +1460,9 @@ e1000_check_downshift
 
     Check if Downshift occurred
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_downshift.return`:
 
@@ -1372,11 +1484,13 @@ e1000_config_dsp_after_link_change
 
 .. c:function:: s32 e1000_config_dsp_after_link_change(struct e1000_hw *hw, bool link_up)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param bool link_up:
+    :param link_up:
         was link up at the time this was called
+    :type link_up: bool
 
 .. _`e1000_config_dsp_after_link_change.return`:
 
@@ -1398,8 +1512,9 @@ e1000_set_phy_mode
 
     Set PHY to class A mode
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_set_phy_mode.description`:
 
@@ -1419,11 +1534,13 @@ e1000_set_d3_lplu_state
 
     set d3 link power state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         true to enable lplu false to disable lplu.
+    :type active: bool
 
 .. _`e1000_set_d3_lplu_state.description`:
 
@@ -1450,8 +1567,9 @@ e1000_set_vco_speed
 
 .. c:function:: s32 e1000_set_vco_speed(struct e1000_hw *hw)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_set_vco_speed.description`:
 
@@ -1469,8 +1587,9 @@ e1000_enable_mng_pass_thru
 
     check for bmc pass through
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_enable_mng_pass_thru.description`:
 
@@ -1493,8 +1612,9 @@ e1000_get_auto_rd_done
 
 .. c:function:: s32 e1000_get_auto_rd_done(struct e1000_hw *hw)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_auto_rd_done.description`:
 
@@ -1518,8 +1638,9 @@ e1000_get_phy_cfg_done
 
 .. c:function:: s32 e1000_get_phy_cfg_done(struct e1000_hw *hw)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         Struct containing variables accessed by shared code
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_phy_cfg_done.description`:
 

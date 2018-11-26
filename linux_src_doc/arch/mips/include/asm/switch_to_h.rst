@@ -10,14 +10,17 @@ resume
 
     resume execution of a task
 
-    :param struct task_struct \*prev:
+    :param prev:
         The task previously executed.
+    :type prev: struct task_struct \*
 
-    :param struct task_struct \*next:
+    :param next:
         The task to begin executing.
+    :type next: struct task_struct \*
 
-    :param struct thread_info \*next_ti:
+    :param next_ti:
         task_thread_info(next).
+    :type next_ti: struct thread_info \*
 
 .. _`resume.description`:
 

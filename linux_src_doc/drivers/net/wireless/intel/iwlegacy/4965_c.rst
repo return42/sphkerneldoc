@@ -10,14 +10,17 @@ il4965_verify_inst_sparse
 
     verify runtime uCode image in card vs. host, using sample data 100 bytes apart.  If these sample points are good, it's a pretty good bet that everything between them is good, too.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param __le32 \*image:
+    :param image:
         *undescribed*
+    :type image: __le32 \*
 
-    :param u32 len:
+    :param len:
         *undescribed*
+    :type len: u32
 
 .. _`il4965_verify_inst_full`:
 
@@ -28,14 +31,17 @@ il4965_verify_inst_full
 
     verify runtime uCode image in card vs. host, looking at all data.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param __le32 \*image:
+    :param image:
         *undescribed*
+    :type image: __le32 \*
 
-    :param u32 len:
+    :param len:
         *undescribed*
+    :type len: u32
 
 .. _`il4965_verify_ucode`:
 
@@ -46,8 +52,9 @@ il4965_verify_ucode
 
     determine which instruction image is in SRAM, and verify its contents
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_load_bsm`:
 
@@ -58,8 +65,9 @@ il4965_load_bsm
 
     Load bootstrap instructions
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_load_bsm.bsm-operation`:
 
@@ -103,8 +111,9 @@ il4965_set_ucode_ptrs
 
     Set uCode address location
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_set_ucode_ptrs.description`:
 
@@ -126,8 +135,9 @@ il4965_init_alive_start
 
     Called after N_ALIVE notification received
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_init_alive_start.description`:
 
@@ -151,11 +161,13 @@ il4965_get_voltage_compensation
 
     Power supply voltage comp for txpower
 
-    :param s32 eeprom_voltage:
+    :param eeprom_voltage:
         *undescribed*
+    :type eeprom_voltage: s32
 
-    :param s32 current_voltage:
+    :param current_voltage:
         *undescribed*
+    :type current_voltage: s32
 
 .. _`il4965_get_voltage_compensation.description`:
 
@@ -179,14 +191,17 @@ il4965_interpolate_chan
 
     Interpolate factory measurements for one channel
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u32 channel:
+    :param channel:
         *undescribed*
+    :type channel: u32
 
-    :param struct il_eeprom_calib_ch_info \*chan_info:
+    :param chan_info:
         *undescribed*
+    :type chan_info: struct il_eeprom_calib_ch_info \*
 
 .. _`il4965_interpolate_chan.description`:
 
@@ -207,8 +222,9 @@ il4965_send_tx_power
 
     Configure the TXPOWER level user limit
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_send_tx_power.description`:
 
@@ -227,14 +243,17 @@ il4965_txq_update_byte_cnt_tbl
 
     Set up entry in Tx byte-count array
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_tx_queue \*txq:
+    :param txq:
         *undescribed*
+    :type txq: struct il_tx_queue \*
 
-    :param u16 byte_cnt:
+    :param byte_cnt:
         *undescribed*
+    :type byte_cnt: u16
 
 .. _`il4965_hw_get_temperature`:
 
@@ -245,8 +264,9 @@ il4965_hw_get_temperature
 
     return the calibrated temperature (in Kelvin)
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_hw_get_temperature.description`:
 
@@ -264,8 +284,9 @@ il4965_is_temp_calib_needed
 
     determines if new calibration is needed
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il4965_is_temp_calib_needed.description`:
 

@@ -19,20 +19,25 @@ ath5k_hw_register_timeout
 
     Poll a register for a flag/field change
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 reg:
+    :param reg:
         The register to read
+    :type reg: u32
 
-    :param u32 flag:
+    :param flag:
         The flag/field to check on the register
+    :type flag: u32
 
-    :param u32 val:
+    :param val:
         The field value we expect (if we check a field)
+    :type val: u32
 
-    :param bool is_set:
+    :param is_set:
         Instead of checking if the flag got cleared, check if it got set
+    :type is_set: bool
 
 .. _`ath5k_hw_register_timeout.description`:
 
@@ -55,11 +60,13 @@ ath5k_hw_htoclock
 
     Translate usec to hw clock units
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int usec:
+    :param usec:
         value in microseconds
+    :type usec: unsigned int
 
 .. _`ath5k_hw_htoclock.description`:
 
@@ -80,11 +87,13 @@ ath5k_hw_clocktoh
 
     Translate hw clock units to usec
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int clock:
+    :param clock:
         value in hw clock units
+    :type clock: unsigned int
 
 .. _`ath5k_hw_clocktoh.description`:
 
@@ -105,8 +114,9 @@ ath5k_hw_init_core_clock
 
     Initialize core clock
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_init_core_clock.description`:
 
@@ -125,11 +135,13 @@ ath5k_hw_set_sleep_clock
 
     Setup sleep clock operation
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param bool enable:
+    :param enable:
         Enable sleep clock operation (false to disable)
+    :type enable: bool
 
 .. _`ath5k_hw_set_sleep_clock.description`:
 
@@ -158,11 +170,13 @@ ath5k_hw_nic_reset
 
     Reset the various chipset units
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 val:
+    :param val:
         Mask to indicate what units to reset
+    :type val: u32
 
 .. _`ath5k_hw_nic_reset.description`:
 
@@ -184,11 +198,13 @@ ath5k_hw_wisoc_reset
 
     Reset AHB chipset
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 flags:
+    :param flags:
         Mask to indicate what units to reset
+    :type flags: u32
 
 .. _`ath5k_hw_wisoc_reset.description`:
 
@@ -208,18 +224,22 @@ ath5k_hw_set_power_mode
 
     Set power mode
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum ath5k_power_mode mode:
+    :param mode:
         One of enum ath5k_power_mode
+    :type mode: enum ath5k_power_mode
 
-    :param bool set_chip:
+    :param set_chip:
         Set to true to write sleep control register
+    :type set_chip: bool
 
-    :param u16 sleep_duration:
+    :param sleep_duration:
         How much time the device is allowed to sleep
         when sleep logic is enabled (in 128 microsecond increments).
+    :type sleep_duration: u16
 
 .. _`ath5k_hw_set_power_mode.description`:
 
@@ -242,8 +262,9 @@ ath5k_hw_on_hold
 
     Put device on hold
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_on_hold.description`:
 
@@ -267,11 +288,13 @@ ath5k_hw_nic_wakeup
 
     Force card out of sleep
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_nic_wakeup.description`:
 
@@ -298,11 +321,13 @@ ath5k_hw_tweak_initval_settings
 
     Tweak initial settings
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_tweak_initval_settings.description`:
 
@@ -324,11 +349,13 @@ ath5k_hw_commit_eeprom_settings
 
     Commit settings from EEPROM
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_commit_eeprom_settings.description`:
 
@@ -347,20 +374,25 @@ ath5k_hw_reset
 
     The main reset function
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum nl80211_iftype op_mode:
+    :param op_mode:
         One of enum nl80211_iftype
+    :type op_mode: enum nl80211_iftype
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
-    :param bool fast:
+    :param fast:
         Enable fast channel switching
+    :type fast: bool
 
-    :param bool skip_pcu:
+    :param skip_pcu:
         Skip pcu initialization
+    :type skip_pcu: bool
 
 .. _`ath5k_hw_reset.description`:
 

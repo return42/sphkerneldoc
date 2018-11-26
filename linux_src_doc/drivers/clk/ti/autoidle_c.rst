@@ -10,8 +10,9 @@ omap2_clk_deny_idle
 
     disable autoidle on an OMAP clock
 
-    :param struct clk \*clk:
+    :param clk:
         struct clk \* to disable autoidle for
+    :type clk: struct clk \*
 
 .. _`omap2_clk_deny_idle.description`:
 
@@ -29,8 +30,9 @@ omap2_clk_allow_idle
 
     enable autoidle on an OMAP clock
 
-    :param struct clk \*clk:
+    :param clk:
         struct clk \* to enable autoidle for
+    :type clk: struct clk \*
 
 .. _`omap2_clk_allow_idle.description`:
 
@@ -48,8 +50,9 @@ Enable autoidle on an OMAP clock.
 
     enable autoidle for all clocks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`_clk_generic_allow_autoidle_all.description`:
 
@@ -68,8 +71,9 @@ the feature.
 
     disable autoidle for all clocks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`_clk_generic_deny_autoidle_all.description`:
 
@@ -88,8 +92,9 @@ of_ti_clk_autoidle_setup
 
     sets up hardware autoidle for a clock
 
-    :param struct device_node \*node:
+    :param node:
         pointer to the clock device node
+    :type node: struct device_node \*
 
 .. _`of_ti_clk_autoidle_setup.description`:
 
@@ -112,8 +117,9 @@ omap2_init_clk_hw_omap_clocks
 
     initialize an OMAP clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         struct clk_hw \* to initialize
+    :type hw: struct clk_hw \*
 
 .. _`omap2_init_clk_hw_omap_clocks.description`:
 
@@ -134,8 +140,9 @@ omap2_clk_enable_autoidle_all
 
     enable autoidle on all OMAP clocks that support it
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2_clk_enable_autoidle_all.description`:
 
@@ -156,8 +163,9 @@ omap2_clk_disable_autoidle_all
 
     disable autoidle on all OMAP clocks that support it
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2_clk_disable_autoidle_all.description`:
 

@@ -10,15 +10,18 @@ ef4_filter_insert_filter
 
     add or replace a filter
 
-    :param struct ef4_nic \*efx:
+    :param efx:
         NIC in which to insert the filter
+    :type efx: struct ef4_nic \*
 
-    :param struct ef4_filter_spec \*spec:
+    :param spec:
         Specification for the filter
+    :type spec: struct ef4_filter_spec \*
 
-    :param bool replace_equal:
+    :param replace_equal:
         Flag for whether the specified filter may replace an
         existing filter with equal priority
+    :type replace_equal: bool
 
 .. _`ef4_filter_insert_filter.description`:
 
@@ -52,14 +55,17 @@ ef4_filter_remove_id_safe
 
     remove a filter by ID, carefully
 
-    :param struct ef4_nic \*efx:
+    :param efx:
         NIC from which to remove the filter
+    :type efx: struct ef4_nic \*
 
-    :param enum ef4_filter_priority priority:
+    :param priority:
         Priority of filter, as passed to \ ``ef4_filter_insert_filter``\ 
+    :type priority: enum ef4_filter_priority
 
-    :param u32 filter_id:
+    :param filter_id:
         ID of filter, as returned by \ ``ef4_filter_insert_filter``\ 
+    :type filter_id: u32
 
 .. _`ef4_filter_remove_id_safe.description`:
 
@@ -78,17 +84,21 @@ ef4_filter_get_filter_safe
 
     retrieve a filter by ID, carefully
 
-    :param struct ef4_nic \*efx:
+    :param efx:
         NIC from which to remove the filter
+    :type efx: struct ef4_nic \*
 
-    :param enum ef4_filter_priority priority:
+    :param priority:
         Priority of filter, as passed to \ ``ef4_filter_insert_filter``\ 
+    :type priority: enum ef4_filter_priority
 
-    :param u32 filter_id:
+    :param filter_id:
         ID of filter, as returned by \ ``ef4_filter_insert_filter``\ 
+    :type filter_id: u32
 
-    :param struct ef4_filter_spec \*spec:
+    :param spec:
         Buffer in which to store filter specification
+    :type spec: struct ef4_filter_spec \*
 
 .. _`ef4_filter_get_filter_safe.description`:
 

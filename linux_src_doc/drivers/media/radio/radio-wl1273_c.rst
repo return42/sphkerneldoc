@@ -10,8 +10,9 @@ wl1273_fm_upload_firmware_patch
 
     Upload the firmware.
 
-    :param struct wl1273_device \*radio:
+    :param radio:
         A pointer to the device struct.
+    :type radio: struct wl1273_device \*
 
 .. _`wl1273_fm_upload_firmware_patch.description`:
 
@@ -31,8 +32,9 @@ wl1273_fm_get_tx_ctune
 
     Get the TX tuning capacitor value.
 
-    :param struct wl1273_device \*radio:
+    :param radio:
         A pointer to the device struct.
+    :type radio: struct wl1273_device \*
 
 .. _`wl1273_fm_set_preemphasis`:
 
@@ -43,11 +45,13 @@ wl1273_fm_set_preemphasis
 
     Set the TX pre-emphasis value.
 
-    :param struct wl1273_device \*radio:
+    :param radio:
         A pointer to the device struct.
+    :type radio: struct wl1273_device \*
 
-    :param unsigned int preemphasis:
+    :param preemphasis:
         The new pre-amphasis value.
+    :type preemphasis: unsigned int
 
 .. _`wl1273_fm_set_preemphasis.description`:
 
@@ -66,11 +70,13 @@ wl1273_fm_set_tx_power
 
     Set the transmission power value.
 
-    :param struct wl1273_device \*radio:
+    :param radio:
         A pointer to the device struct.
+    :type radio: struct wl1273_device \*
 
-    :param u16 power:
+    :param power:
         The new power value.
+    :type power: u16
 
 .. This file was automatic generated / don't edit.
 

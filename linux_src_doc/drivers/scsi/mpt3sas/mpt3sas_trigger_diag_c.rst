@@ -10,11 +10,13 @@
 
     notifiy app
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct SL_WH_TRIGGERS_EVENT_DATA_T \*event_data:
-        *undescribed*
+    :param event_data:
+        ?
+    :type event_data: struct SL_WH_TRIGGERS_EVENT_DATA_T \*
 
 .. _`mpt3sas_process_trigger_data`:
 
@@ -25,11 +27,13 @@ mpt3sas_process_trigger_data
 
     process the event data for the trigger
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct SL_WH_TRIGGERS_EVENT_DATA_T \*event_data:
-        *undescribed*
+    :param event_data:
+        ?
+    :type event_data: struct SL_WH_TRIGGERS_EVENT_DATA_T \*
 
 .. _`mpt3sas_trigger_master`:
 
@@ -40,11 +44,13 @@ mpt3sas_trigger_master
 
     Master trigger handler
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u32 trigger_bitmask:
+    :param trigger_bitmask:
         *undescribed*
+    :type trigger_bitmask: u32
 
 .. _`mpt3sas_trigger_event`:
 
@@ -55,14 +61,17 @@ mpt3sas_trigger_event
 
     Event trigger handler
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 event:
-        *undescribed*
+    :param event:
+        ?
+    :type event: u16
 
-    :param u16 log_entry_qualifier:
-        *undescribed*
+    :param log_entry_qualifier:
+        ?
+    :type log_entry_qualifier: u16
 
 .. _`mpt3sas_trigger_scsi`:
 
@@ -73,17 +82,21 @@ mpt3sas_trigger_scsi
 
     SCSI trigger handler
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u8 sense_key:
-        *undescribed*
+    :param sense_key:
+        ?
+    :type sense_key: u8
 
-    :param u8 asc:
-        *undescribed*
+    :param asc:
+        ?
+    :type asc: u8
 
-    :param u8 ascq:
-        *undescribed*
+    :param ascq:
+        ?
+    :type ascq: u8
 
 .. _`mpt3sas_trigger_mpi`:
 
@@ -94,14 +107,17 @@ mpt3sas_trigger_mpi
 
     MPI trigger handler
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 ioc_status:
-        *undescribed*
+    :param ioc_status:
+        ?
+    :type ioc_status: u16
 
-    :param u32 loginfo:
-        *undescribed*
+    :param loginfo:
+        ?
+    :type loginfo: u32
 
 .. This file was automatic generated / don't edit.
 

@@ -668,8 +668,9 @@ zfcp_dbf_hba_fsf_resp_suppress
 
     true if we should not trace by default
 
-    :param struct zfcp_fsf_req \*req:
+    :param req:
         request that has been completed
+    :type req: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_hba_fsf_resp_suppress.description`:
 
@@ -687,8 +688,9 @@ zfcp_dbf_hba_fsf_response
 
     trace event for request completion
 
-    :param struct zfcp_fsf_req \*req:
+    :param req:
         request that has been completed
+    :type req: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_scsi_result`:
 
@@ -699,11 +701,13 @@ zfcp_dbf_scsi_result
 
     trace event for SCSI command completion
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command pointer
+    :type scmd: struct scsi_cmnd \*
 
-    :param struct zfcp_fsf_req \*req:
+    :param req:
         FSF request used to issue SCSI command
+    :type req: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_scsi_fail_send`:
 
@@ -714,8 +718,9 @@ zfcp_dbf_scsi_fail_send
 
     trace event for failure to send SCSI command
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command pointer
+    :type scmd: struct scsi_cmnd \*
 
 .. _`zfcp_dbf_scsi_abort`:
 
@@ -726,14 +731,17 @@ zfcp_dbf_scsi_abort
 
     trace event for SCSI command abort
 
-    :param char \*tag:
+    :param tag:
         tag indicating success or failure of abort operation
+    :type tag: char \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command to be aborted
+    :type scmd: struct scsi_cmnd \*
 
-    :param struct zfcp_fsf_req \*fsf_req:
+    :param fsf_req:
         request containing abort (might be NULL)
+    :type fsf_req: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_scsi_devreset`:
 
@@ -744,17 +752,21 @@ zfcp_dbf_scsi_devreset
 
     Trace event for Logical Unit or Target Reset.
 
-    :param char \*tag:
+    :param tag:
         Tag indicating success or failure of reset operation.
+    :type tag: char \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Pointer to SCSI device as context for this event.
+    :type sdev: struct scsi_device \*
 
-    :param u8 flag:
+    :param flag:
         Indicates type of reset (Target Reset, Logical Unit Reset).
+    :type flag: u8
 
-    :param struct zfcp_fsf_req \*fsf_req:
+    :param fsf_req:
         Pointer to FSF request representing the TMF, or NULL.
+    :type fsf_req: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_scsi_nullcmnd`:
 
@@ -765,11 +777,13 @@ zfcp_dbf_scsi_nullcmnd
 
     trace NULLify of SCSI command in dev/tgt-reset.
 
-    :param struct scsi_cmnd \*scmnd:
+    :param scmnd:
         SCSI command that was NULLified.
+    :type scmnd: struct scsi_cmnd \*
 
-    :param struct zfcp_fsf_req \*fsf_req:
+    :param fsf_req:
         request that owned \ ``scmnd``\ .
+    :type fsf_req: struct zfcp_fsf_req \*
 
 .. This file was automatic generated / don't edit.
 

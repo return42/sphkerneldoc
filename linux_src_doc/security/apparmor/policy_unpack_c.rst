@@ -10,23 +10,29 @@ audit_iface
 
     do audit message for policy unpacking/load/replace/remove
 
-    :param struct aa_profile \*new:
+    :param new:
         profile if it has been allocated (MAYBE NULL)
+    :type new: struct aa_profile \*
 
-    :param const char \*ns_name:
+    :param ns_name:
         name of the ns the profile is to be loaded to (MAY BE NULL)
+    :type ns_name: const char \*
 
-    :param const char \*name:
+    :param name:
         name of the profile being manipulated (MAYBE NULL)
+    :type name: const char \*
 
-    :param const char \*info:
+    :param info:
         any extra info about the failure (MAYBE NULL)
+    :type info: const char \*
 
-    :param struct aa_ext \*e:
+    :param e:
         buffer position info
+    :type e: struct aa_ext \*
 
-    :param int error:
+    :param error:
         error code
+    :type error: int
 
 .. _`audit_iface.return`:
 
@@ -44,11 +50,13 @@ unpack_u16_chunk
 
     test and do bounds checking for a u16 size based chunk
 
-    :param struct aa_ext \*e:
+    :param e:
         serialized data read head (NOT NULL)
+    :type e: struct aa_ext \*
 
-    :param char \*\*chunk:
+    :param chunk:
         start address for chunk of data (NOT NULL)
+    :type chunk: char \*\*
 
 .. _`unpack_u16_chunk.return`:
 
@@ -66,14 +74,17 @@ unpack_nameX
 
     check is the next element is of type X with a name of \ ``name``\ 
 
-    :param struct aa_ext \*e:
+    :param e:
         serialized data extent information  (NOT NULL)
+    :type e: struct aa_ext \*
 
-    :param enum aa_code code:
+    :param code:
         type code
+    :type code: enum aa_code
 
-    :param const char \*name:
+    :param name:
         name to match to the serialized element.  (MAYBE NULL)
+    :type name: const char \*
 
 .. _`unpack_namex.description`:
 
@@ -95,28 +106,6 @@ Return
 
 0 if either match fails, the read head does not move
 
-.. _`verify_accept`:
-
-verify_accept
-=============
-
-.. c:function:: bool verify_accept(struct aa_dfa *dfa, int flags)
-
-    verify the accept tables of a dfa
-
-    :param struct aa_dfa \*dfa:
-        dfa to verify accept tables of (NOT NULL)
-
-    :param int flags:
-        flags governing dfa
-
-.. _`verify_accept.return`:
-
-Return
-------
-
-1 if valid accept tables else 0 if error
-
 .. _`unpack_dfa`:
 
 unpack_dfa
@@ -126,8 +115,9 @@ unpack_dfa
 
     unpack a file rule dfa
 
-    :param struct aa_ext \*e:
+    :param e:
         serialized data extent information (NOT NULL)
+    :type e: struct aa_ext \*
 
 .. _`unpack_dfa.description`:
 
@@ -145,11 +135,13 @@ unpack_trans_table
 
     unpack a profile transition table
 
-    :param struct aa_ext \*e:
+    :param e:
         serialized data extent information  (NOT NULL)
+    :type e: struct aa_ext \*
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to add the accept table to (NOT NULL)
+    :type profile: struct aa_profile \*
 
 .. _`unpack_trans_table.return`:
 
@@ -167,11 +159,13 @@ unpack_profile
 
     unpack a serialized profile
 
-    :param struct aa_ext \*e:
+    :param e:
         serialized data extent information (NOT NULL)
+    :type e: struct aa_ext \*
 
-    :param char \*\*ns_name:
+    :param ns_name:
         *undescribed*
+    :type ns_name: char \*\*
 
 .. _`unpack_profile.note`:
 
@@ -189,14 +183,17 @@ verify_header
 
     unpack serialized stream header
 
-    :param struct aa_ext \*e:
+    :param e:
         serialized data read head (NOT NULL)
+    :type e: struct aa_ext \*
 
-    :param int required:
+    :param required:
         whether the header is required or optional
+    :type required: int
 
-    :param const char \*\*ns:
+    :param ns:
         Returns - namespace if one is specified else NULL (NOT NULL)
+    :type ns: const char \*\*
 
 .. _`verify_header.return`:
 
@@ -214,8 +211,9 @@ verify_profile
 
     Do post unpack analysis to verify profile consistency
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to verify (NOT NULL)
+    :type profile: struct aa_profile \*
 
 .. _`verify_profile.return`:
 
@@ -233,14 +231,17 @@ aa_unpack
 
     unpack packed binary profile(s) data loaded from user space
 
-    :param struct aa_loaddata \*udata:
+    :param udata:
         user data copied to kmem  (NOT NULL)
+    :type udata: struct aa_loaddata \*
 
-    :param struct list_head \*lh:
+    :param lh:
         list to place unpacked profiles in a aa_repl_ws
+    :type lh: struct list_head \*
 
-    :param const char \*\*ns:
+    :param ns:
         Returns namespace profile is in if specified else NULL (NOT NULL)
+    :type ns: const char \*\*
 
 .. _`aa_unpack.description`:
 

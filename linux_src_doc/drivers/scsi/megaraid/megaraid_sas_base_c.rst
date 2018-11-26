@@ -10,17 +10,21 @@ megasas_set_dma_settings
 
     Populate DMA address, length and flags for DCMDs
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_dcmd_frame \*dcmd:
+    :param dcmd:
         DCMD frame inside MFI command
+    :type dcmd: struct megasas_dcmd_frame \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         DMA address of buffer to be passed to FW
+    :type dma_addr: dma_addr_t
 
-    :param u32 dma_len:
+    :param dma_len:
         Length of DMA buffer to be passed to FW
+    :type dma_len: u32
 
 .. _`megasas_get_cmd`:
 
@@ -31,8 +35,9 @@ megasas_get_cmd
 
     Get a command from the free pool
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_get_cmd.description`:
 
@@ -50,11 +55,13 @@ megasas_return_cmd
 
     Return a cmd to free command pool
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         Command packet to be returned to free command pool
+    :type cmd: struct megasas_cmd \*
 
 .. _`megasas_decode_evt`:
 
@@ -65,8 +72,9 @@ megasas_decode_evt
 
     Decode FW AEN event and print critical event for information.
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_enable_intr_xscale`:
 
@@ -77,8 +85,9 @@ megasas_enable_intr_xscale
 
     (deviceid : 1064R, PERC5) controllers
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_disable_intr_xscale`:
 
@@ -89,8 +98,9 @@ megasas_disable_intr_xscale
 
     Disables interrupt
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_read_fw_status_reg_xscale`:
 
@@ -101,8 +111,9 @@ megasas_read_fw_status_reg_xscale
 
     returns the current FW status value
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_clear_intr_xscale`:
 
@@ -113,8 +124,9 @@ megasas_clear_intr_xscale
 
     Check & clear interrupt
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_fire_cmd_xscale`:
 
@@ -125,17 +137,21 @@ megasas_fire_cmd_xscale
 
     Sends command to the FW
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param dma_addr_t frame_phys_addr:
+    :param frame_phys_addr:
         Physical address of cmd
+    :type frame_phys_addr: dma_addr_t
 
-    :param u32 frame_count:
+    :param frame_count:
         Number of frames for the command
+    :type frame_count: u32
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_adp_reset_xscale`:
 
@@ -146,11 +162,13 @@ megasas_adp_reset_xscale
 
     For controller reset
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_check_reset_xscale`:
 
@@ -161,11 +179,13 @@ megasas_check_reset_xscale
 
     For controller reset check
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_enable_intr_ppc`:
 
@@ -176,8 +196,9 @@ megasas_enable_intr_ppc
 
     to xscale (deviceid : 1064R, PERC5) controllers
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_disable_intr_ppc`:
 
@@ -188,8 +209,9 @@ megasas_disable_intr_ppc
 
     Disable interrupt
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_read_fw_status_reg_ppc`:
 
@@ -200,8 +222,9 @@ megasas_read_fw_status_reg_ppc
 
     returns the current FW status value
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_clear_intr_ppc`:
 
@@ -212,8 +235,9 @@ megasas_clear_intr_ppc
 
     Check & clear interrupt
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_fire_cmd_ppc`:
 
@@ -224,17 +248,21 @@ megasas_fire_cmd_ppc
 
     Sends command to the FW
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param dma_addr_t frame_phys_addr:
+    :param frame_phys_addr:
         Physical address of cmd
+    :type frame_phys_addr: dma_addr_t
 
-    :param u32 frame_count:
+    :param frame_count:
         Number of frames for the command
+    :type frame_count: u32
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_check_reset_ppc`:
 
@@ -245,11 +273,13 @@ megasas_check_reset_ppc
 
     For controller reset check
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_enable_intr_skinny`:
 
@@ -260,8 +290,9 @@ megasas_enable_intr_skinny
 
     Enables interrupts
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_disable_intr_skinny`:
 
@@ -272,8 +303,9 @@ megasas_disable_intr_skinny
 
     Disables interrupt
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_read_fw_status_reg_skinny`:
 
@@ -284,8 +316,9 @@ megasas_read_fw_status_reg_skinny
 
     returns the current FW status value
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_clear_intr_skinny`:
 
@@ -296,8 +329,9 @@ megasas_clear_intr_skinny
 
     Check & clear interrupt
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_fire_cmd_skinny`:
 
@@ -308,17 +342,21 @@ megasas_fire_cmd_skinny
 
     Sends command to the FW
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param dma_addr_t frame_phys_addr:
+    :param frame_phys_addr:
         Physical address of cmd
+    :type frame_phys_addr: dma_addr_t
 
-    :param u32 frame_count:
+    :param frame_count:
         Number of frames for the command
+    :type frame_count: u32
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_check_reset_skinny`:
 
@@ -329,11 +367,13 @@ megasas_check_reset_skinny
 
     For controller reset check
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_enable_intr_gen2`:
 
@@ -344,8 +384,9 @@ megasas_enable_intr_gen2
 
     0x78 0x79) controllers
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_disable_intr_gen2`:
 
@@ -356,8 +397,9 @@ megasas_disable_intr_gen2
 
     Disables interrupt
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_read_fw_status_reg_gen2`:
 
@@ -368,8 +410,9 @@ megasas_read_fw_status_reg_gen2
 
     returns the current FW status value
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_clear_intr_gen2`:
 
@@ -380,8 +423,9 @@ megasas_clear_intr_gen2
 
     Check & clear interrupt
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_fire_cmd_gen2`:
 
@@ -392,17 +436,21 @@ megasas_fire_cmd_gen2
 
     Sends command to the FW
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param dma_addr_t frame_phys_addr:
+    :param frame_phys_addr:
         Physical address of cmd
+    :type frame_phys_addr: dma_addr_t
 
-    :param u32 frame_count:
+    :param frame_count:
         Number of frames for the command
+    :type frame_count: u32
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_adp_reset_gen2`:
 
@@ -413,11 +461,13 @@ megasas_adp_reset_gen2
 
     For controller reset
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_register_set __iomem \*reg_set:
+    :param reg_set:
         *undescribed*
+    :type reg_set: struct megasas_register_set __iomem \*
 
 .. _`megasas_check_reset_gen2`:
 
@@ -428,11 +478,13 @@ megasas_check_reset_gen2
 
     For controller reset check
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_register_set __iomem \*regs:
+    :param regs:
         MFI register set
+    :type regs: struct megasas_register_set __iomem \*
 
 .. _`megasas_issue_polled`:
 
@@ -443,11 +495,13 @@ megasas_issue_polled
 
     Issues a polling command
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         Command packet to be issued
+    :type cmd: struct megasas_cmd \*
 
 .. _`megasas_issue_polled.description`:
 
@@ -465,14 +519,17 @@ megasas_issue_blocked_cmd
 
     Synchronous wrapper around regular FW cmds
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         Command to be issued
+    :type cmd: struct megasas_cmd \*
 
-    :param int timeout:
+    :param timeout:
         Timeout in seconds
+    :type timeout: int
 
 .. _`megasas_issue_blocked_cmd.description`:
 
@@ -492,14 +549,17 @@ megasas_issue_blocked_abort_cmd
 
     Aborts previously issued cmd
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd_to_abort:
+    :param cmd_to_abort:
         Previously issued cmd to be aborted
+    :type cmd_to_abort: struct megasas_cmd \*
 
-    :param int timeout:
+    :param timeout:
         Timeout in seconds
+    :type timeout: int
 
 .. _`megasas_issue_blocked_abort_cmd.description`:
 
@@ -520,14 +580,17 @@ megasas_make_sgl32
 
     Prepares 32-bit SGL
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command from the mid-layer
+    :type scp: struct scsi_cmnd \*
 
-    :param union megasas_sgl \*mfi_sgl:
+    :param mfi_sgl:
         SGL to be filled in
+    :type mfi_sgl: union megasas_sgl \*
 
 .. _`megasas_make_sgl32.description`:
 
@@ -546,14 +609,17 @@ megasas_make_sgl64
 
     Prepares 64-bit SGL
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command from the mid-layer
+    :type scp: struct scsi_cmnd \*
 
-    :param union megasas_sgl \*mfi_sgl:
+    :param mfi_sgl:
         SGL to be filled in
+    :type mfi_sgl: union megasas_sgl \*
 
 .. _`megasas_make_sgl64.description`:
 
@@ -572,14 +638,17 @@ megasas_make_sgl_skinny
 
     Prepares IEEE SGL
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command from the mid-layer
+    :type scp: struct scsi_cmnd \*
 
-    :param union megasas_sgl \*mfi_sgl:
+    :param mfi_sgl:
         SGL to be filled in
+    :type mfi_sgl: union megasas_sgl \*
 
 .. _`megasas_make_sgl_skinny.description`:
 
@@ -598,14 +667,17 @@ megasas_build_dcdb
 
     Prepares a direct cdb (DCDB) command
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command
+    :type scp: struct scsi_cmnd \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         Command to be prepared in
+    :type cmd: struct megasas_cmd \*
 
 .. _`megasas_build_dcdb.description`:
 
@@ -624,14 +696,17 @@ megasas_build_ldio
 
     Prepares IOs to logical devices
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct scsi_cmnd \*scp:
+    :param scp:
         SCSI command
+    :type scp: struct scsi_cmnd \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         Command to be prepared
+    :type cmd: struct megasas_cmd \*
 
 .. _`megasas_build_ldio.description`:
 
@@ -649,8 +724,9 @@ megasas_cmd_type
 
     Checks if the cmd is for logical drive/sysPD and whether it's RW or non RW
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct scsi_cmnd \*
 
 .. _`megasas_queue_command`:
 
@@ -661,11 +737,13 @@ megasas_queue_command
 
     Queue entry point
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         *undescribed*
+    :type shost: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command to be queued
+    :type scmd: struct scsi_cmnd \*
 
 .. _`megasas_complete_cmd_dpc`:
 
@@ -676,8 +754,9 @@ megasas_complete_cmd_dpc
 
     Returns FW's controller structure
 
-    :param unsigned long instance_addr:
+    :param instance_addr:
         Address of adapter soft state
+    :type instance_addr: unsigned long
 
 .. _`megasas_complete_cmd_dpc.description`:
 
@@ -695,8 +774,9 @@ megasas_start_timer
 
     Initializes sriov heartbeat timer object
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_wait_for_outstanding`:
 
@@ -707,8 +787,9 @@ megasas_wait_for_outstanding
 
     Wait for all outstanding cmds
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_wait_for_outstanding.description`:
 
@@ -728,8 +809,9 @@ megasas_generic_reset
 
     Generic reset routine
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         Mid-layer SCSI command
+    :type scmd: struct scsi_cmnd \*
 
 .. _`megasas_generic_reset.description`:
 
@@ -749,8 +831,9 @@ megasas_reset_timer
 
     quiesce the adapter if required
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         scsi cmnd
+    :type scmd: struct scsi_cmnd \*
 
 .. _`megasas_reset_timer.description`:
 
@@ -769,11 +852,13 @@ megasas_dump_frame
 
     This function will dump MPT/MFI frame
 
-    :param void \*mpi_request:
+    :param mpi_request:
         *undescribed*
+    :type mpi_request: void \*
 
-    :param int sz:
+    :param sz:
         *undescribed*
+    :type sz: int
 
 .. _`megasas_reset_bus_host`:
 
@@ -784,8 +869,9 @@ megasas_reset_bus_host
 
     Bus & host reset handler entry point
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         *undescribed*
+    :type scmd: struct scsi_cmnd \*
 
 .. _`megasas_task_abort`:
 
@@ -796,8 +882,9 @@ megasas_task_abort
 
     Issues task abort request to firmware (supported only for fusion adapters)
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command pointer
+    :type scmd: struct scsi_cmnd \*
 
 .. _`megasas_reset_target`:
 
@@ -808,8 +895,9 @@ megasas_reset_target
 
     Issues target reset request to firmware (supported only for fusion adapters)
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         SCSI command pointer
+    :type scmd: struct scsi_cmnd \*
 
 .. _`megasas_bios_param`:
 
@@ -820,17 +908,21 @@ megasas_bios_param
 
     Returns disk geometry for a disk
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         device handle
+    :type sdev: struct scsi_device \*
 
-    :param struct block_device \*bdev:
+    :param bdev:
         block device
+    :type bdev: struct block_device \*
 
-    :param sector_t capacity:
+    :param capacity:
         drive capacity
+    :type capacity: sector_t
 
-    :param int geom:
+    :param geom:
         geometry parameters
+    :type geom: int
 
 .. _`megasas_service_aen`:
 
@@ -841,11 +933,13 @@ megasas_service_aen
 
     Processes an event notification
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         AEN command completed by the ISR
+    :type cmd: struct megasas_cmd \*
 
 .. _`megasas_service_aen.description`:
 
@@ -868,11 +962,13 @@ megasas_complete_int_cmd
 
     Completes an internal command
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         Command to be completed
+    :type cmd: struct megasas_cmd \*
 
 .. _`megasas_complete_int_cmd.description`:
 
@@ -892,11 +988,13 @@ megasas_complete_abort
 
     Completes aborting a command
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         Cmd that was issued to abort another cmd
+    :type cmd: struct megasas_cmd \*
 
 .. _`megasas_complete_abort.description`:
 
@@ -916,18 +1014,21 @@ megasas_complete_cmd
 
     Completes a command
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_cmd \*cmd:
+    :param cmd:
         Command to be completed
+    :type cmd: struct megasas_cmd \*
 
-    :param u8 alt_status:
+    :param alt_status:
         If non-zero, use this value as status to
         SCSI mid-layer instead of the value returned
         by the FW. This should be used if caller wants
         an alternate status (as in the case of aborted
         commands)
+    :type alt_status: u8
 
 .. _`megasas_issue_pending_cmds_again`:
 
@@ -938,8 +1039,9 @@ megasas_issue_pending_cmds_again
 
     issue all pending cmds in FW again because of the fw reset
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_internal_reset_defer_cmds`:
 
@@ -948,8 +1050,9 @@ megasas_internal_reset_defer_cmds
 
 .. c:function:: void megasas_internal_reset_defer_cmds(struct megasas_instance *instance)
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_internal_reset_defer_cmds.description`:
 
@@ -971,13 +1074,15 @@ megasas_deplete_reply_queue
 
     Processes all completed commands
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param u8 alt_status:
+    :param alt_status:
         Alternate status to be returned to
         SCSI mid-layer instead of the status
         returned by the FW
+    :type alt_status: u8
 
 .. _`megasas_deplete_reply_queue.note`:
 
@@ -995,11 +1100,13 @@ megasas_isr
 
     isr entry point
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*devp:
+    :param devp:
         *undescribed*
+    :type devp: void \*
 
 .. _`megasas_transition_to_ready`:
 
@@ -1010,11 +1117,13 @@ megasas_transition_to_ready
 
     Move the FW to READY state
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param int ocr:
+    :param ocr:
         *undescribed*
+    :type ocr: int
 
 .. _`megasas_transition_to_ready.description`:
 
@@ -1035,8 +1144,9 @@ megasas_teardown_frame_pool
 
     Destroy the cmd frame DMA pool
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_create_frame_pool`:
 
@@ -1047,8 +1157,9 @@ megasas_create_frame_pool
 
     Creates DMA pool for cmd frames
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_create_frame_pool.description`:
 
@@ -1069,8 +1180,9 @@ megasas_free_cmds
 
     Free all the cmds in the free cmd pool
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_alloc_cmds`:
 
@@ -1081,8 +1193,9 @@ megasas_alloc_cmds
 
     Allocates the command packets
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_alloc_cmds.description`:
 
@@ -1112,11 +1225,13 @@ megasas_ld_list_query
 
     Returns FW's ld_list structure
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param u8 query_type:
+    :param query_type:
         *undescribed*
+    :type query_type: u8
 
 .. _`megasas_ld_list_query.description`:
 
@@ -1136,8 +1251,9 @@ megasas_get_ctrl_info
 
     Returns FW's controller structure
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_get_ctrl_info.description`:
 
@@ -1157,8 +1273,9 @@ megasas_issue_init_mfi
 
     Initializes the FW
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_issue_init_mfi.description`:
 
@@ -1176,11 +1293,13 @@ megasas_setup_irqs_msix
 
     register MSI-x interrupts.
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param u8 is_probe:
+    :param is_probe:
         Driver probe check
+    :type is_probe: u8
 
 .. _`megasas_setup_irqs_msix.description`:
 
@@ -1200,8 +1319,9 @@ megasas_setup_jbod_map
 
     setup jbod map for FP seq_number.
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_setup_jbod_map.description`:
 
@@ -1219,8 +1339,9 @@ megasas_init_fw
 
     Initializes the FW
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_init_fw.description`:
 
@@ -1238,8 +1359,9 @@ megasas_release_mfi
 
     Reverses the FW initialization
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_get_seq_num`:
 
@@ -1250,11 +1372,13 @@ megasas_get_seq_num
 
     Gets latest event sequence numbers
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_evt_log_info \*eli:
+    :param eli:
         FW event log sequence numbers information
+    :type eli: struct megasas_evt_log_info \*
 
 .. _`megasas_get_seq_num.description`:
 
@@ -1277,14 +1401,17 @@ megasas_register_aen
 
     Registers for asynchronous event notification
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param u32 seq_num:
+    :param seq_num:
         The starting sequence number
+    :type seq_num: u32
 
-    :param u32 class_locale_word:
+    :param class_locale_word:
         *undescribed*
+    :type class_locale_word: u32
 
 .. _`megasas_register_aen.description`:
 
@@ -1303,8 +1430,9 @@ megasas_start_aen
 
     Subscribes to AEN during driver load time
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_io_attach`:
 
@@ -1315,8 +1443,9 @@ megasas_io_attach
 
     Attaches this driver to SCSI mid-layer
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_set_dma_mask`:
 
@@ -1327,8 +1456,9 @@ megasas_set_dma_mask
 
     Set DMA mask for supported controllers
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_set_dma_mask.description`:
 
@@ -1356,8 +1486,9 @@ megasas_alloc_ctrl_mem
 
     Allocate per controller memory for core data structures which are not common across MFI adapters and fusion adapters. For MFI based adapters, allocate producer and consumer buffers. For fusion adapters, allocate memory for fusion context.
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_alloc_ctrl_mem.return`:
 
@@ -1375,8 +1506,9 @@ megasas_alloc_ctrl_dma_buffers
 
     Allocate consistent DMA buffers during driver load time
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         *undescribed*
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_alloc_ctrl_dma_buffers.description`:
 
@@ -1395,11 +1527,13 @@ megasas_probe_one
 
     PCI hotplug entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         PCI ids of supported hotplugged adapter
+    :type id: const struct pci_device_id \*
 
 .. _`megasas_flush_cache`:
 
@@ -1410,8 +1544,9 @@ megasas_flush_cache
 
     Requests FW to flush all its caches
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
 .. _`megasas_shutdown_controller`:
 
@@ -1422,11 +1557,13 @@ megasas_shutdown_controller
 
     Instructs FW to shutdown the controller
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param u32 opcode:
+    :param opcode:
         Shutdown/Hibernate
+    :type opcode: u32
 
 .. _`megasas_suspend`:
 
@@ -1437,11 +1574,13 @@ megasas_suspend
 
     driver suspend entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t state:
+    :param state:
         PCI power state to suspend routine
+    :type state: pm_message_t
 
 .. _`megasas_resume`:
 
@@ -1452,8 +1591,9 @@ megasas_resume
 
     driver resume entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`megasas_detach_one`:
 
@@ -1464,8 +1604,9 @@ megasas_detach_one
 
     PCI hot"un"plug entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`megasas_shutdown`:
 
@@ -1476,8 +1617,9 @@ megasas_shutdown
 
     Shutdown entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`megasas_mgmt_open`:
 
@@ -1488,11 +1630,13 @@ megasas_mgmt_open
 
     char node "open" entry point
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*filep:
+    :param filep:
         *undescribed*
+    :type filep: struct file \*
 
 .. _`megasas_mgmt_fasync`:
 
@@ -1503,14 +1647,17 @@ megasas_mgmt_fasync
 
     Async notifier registration from applications
 
-    :param int fd:
+    :param fd:
         *undescribed*
+    :type fd: int
 
-    :param struct file \*filep:
+    :param filep:
         *undescribed*
+    :type filep: struct file \*
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
 .. _`megasas_mgmt_fasync.description`:
 
@@ -1529,11 +1676,13 @@ megasas_mgmt_poll
 
     char node "poll" entry point
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         *undescribed*
+    :type wait: poll_table \*
 
 .. _`megasas_mgmt_fw_ioctl`:
 
@@ -1544,14 +1693,17 @@ megasas_mgmt_fw_ioctl
 
     Issues management ioctls to FW
 
-    :param struct megasas_instance \*instance:
+    :param instance:
         Adapter soft state
+    :type instance: struct megasas_instance \*
 
-    :param struct megasas_iocpacket __user \*user_ioc:
+    :param user_ioc:
         *undescribed*
+    :type user_ioc: struct megasas_iocpacket __user \*
 
-    :param struct megasas_iocpacket \*ioc:
+    :param ioc:
         *undescribed*
+    :type ioc: struct megasas_iocpacket \*
 
 .. _`megasas_mgmt_ioctl`:
 
@@ -1562,14 +1714,17 @@ megasas_mgmt_ioctl
 
     char node ioctl entry point
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         *undescribed*
+    :type arg: unsigned long
 
 .. _`megasas_init`:
 
@@ -1580,8 +1735,9 @@ megasas_init
 
     Driver load entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`megasas_exit`:
 
@@ -1592,8 +1748,9 @@ megasas_exit
 
     Driver unload entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

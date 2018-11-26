@@ -10,11 +10,13 @@ iwl_acpi_get_mcc
 
     read MCC from ACPI, if available
 
-    :param struct device \*dev:
+    :param dev:
         the struct device
+    :type dev: struct device \*
 
-    :param char \*mcc:
+    :param mcc:
         output buffer (3 bytes) that will get the MCC
+    :type mcc: char \*
 
 .. _`iwl_acpi_get_mcc.description`:
 

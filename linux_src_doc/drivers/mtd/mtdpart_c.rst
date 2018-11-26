@@ -41,31 +41,6 @@ offset
 list
     *undescribed*
 
-.. _`mtd_parse_part`:
-
-mtd_parse_part
-==============
-
-.. c:function:: int mtd_parse_part(struct mtd_part *slave, const char *const *types)
-
-    parse MTD partition looking for subpartitions
-
-    :param struct mtd_part \*slave:
-        part that is supposed to be a container and should be parsed
-
-    :param const char \*const \*types:
-        NULL-terminated array with names of partition parsers to try
-
-.. _`mtd_parse_part.description`:
-
-Description
------------
-
-Some partitions are kind of containers with extra subpartitions (volumes).
-There can be various formats of such containers. This function tries to use
-specified parsers to analyze given partition and registers found
-subpartitions on success.
-
 .. _`__mtd_del_partition`:
 
 \__mtd_del_partition
@@ -75,8 +50,9 @@ subpartitions on success.
 
     delete MTD partition
 
-    :param struct mtd_part \*priv:
+    :param priv:
         internal MTD struct for partition to be deleted
+    :type priv: struct mtd_part \*
 
 .. _`__mtd_del_partition.description`:
 
@@ -94,8 +70,9 @@ mtd_part_get_compatible_parser
 
     find MTD parser by a compatible string
 
-    :param const char \*compat:
+    :param compat:
         compatible string describing partitions in a device tree
+    :type compat: const char \*
 
 .. _`mtd_part_get_compatible_parser.description`:
 
@@ -115,14 +92,17 @@ parse_mtd_partitions
 
     parse and register MTD partitions
 
-    :param struct mtd_info \*master:
+    :param master:
         the master partition (describes whole MTD device)
+    :type master: struct mtd_info \*
 
-    :param const char \*const \*types:
+    :param types:
         names of partition parsers to try or \ ``NULL``\ 
+    :type types: const char \*const \*
 
-    :param struct mtd_part_parser_data \*data:
+    :param data:
         MTD partition parser-specific data
+    :type data: struct mtd_part_parser_data \*
 
 .. _`parse_mtd_partitions.description`:
 

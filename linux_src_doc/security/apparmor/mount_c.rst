@@ -10,11 +10,13 @@ audit_cb
 
     call back for mount specific audit fields
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         audit_buffer  (NOT NULL)
+    :type ab: struct audit_buffer \*
 
-    :param void \*va:
+    :param va:
         audit struct to audit values of  (NOT NULL)
+    :type va: void \*
 
 .. _`audit_mount`:
 
@@ -25,41 +27,53 @@ audit_mount
 
     handle the auditing of mount operations
 
-    :param struct aa_profile \*profile:
+    :param profile:
         the profile being enforced  (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param const char \*op:
+    :param op:
         operation being mediated (NOT NULL)
+    :type op: const char \*
 
-    :param const char \*name:
+    :param name:
         name of object being mediated (MAYBE NULL)
+    :type name: const char \*
 
-    :param const char \*src_name:
+    :param src_name:
         src_name of object being mediated (MAYBE_NULL)
+    :type src_name: const char \*
 
-    :param const char \*type:
+    :param type:
         type of filesystem (MAYBE_NULL)
+    :type type: const char \*
 
-    :param const char \*trans:
+    :param trans:
         name of trans (MAYBE NULL)
+    :type trans: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         filesystem independent mount flags
+    :type flags: unsigned long
 
-    :param const void \*data:
+    :param data:
         filesystem mount flags
+    :type data: const void \*
 
-    :param u32 request:
+    :param request:
         permissions requested
+    :type request: u32
 
-    :param struct aa_perms \*perms:
+    :param perms:
         the permissions computed for the request (NOT NULL)
+    :type perms: struct aa_perms \*
 
-    :param const char \*info:
+    :param info:
         extra information message (MAYBE NULL)
+    :type info: const char \*
 
-    :param int error:
+    :param error:
         0 if operation allowed else failure error code
+    :type error: int
 
 .. _`audit_mount.return`:
 
@@ -77,14 +91,17 @@ match_mnt_flags
 
     Do an ordered match on mount flags
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         dfa to match against
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int state:
+    :param state:
         state to start in
+    :type state: unsigned int
 
-    :param unsigned long flags:
+    :param flags:
         mount flags to match against
+    :type flags: unsigned long
 
 .. _`match_mnt_flags.description`:
 
@@ -111,11 +128,13 @@ compute_mnt_perms
 
     compute mount permission associated with \ ``state``\ 
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         dfa to match against (NOT NULL)
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int state:
+    :param state:
         state match finished in
+    :type state: unsigned int
 
 .. _`compute_mnt_perms.return`:
 
@@ -133,32 +152,41 @@ match_mnt_path_str
 
     handle path matching for mount
 
-    :param struct aa_profile \*profile:
+    :param profile:
         the confining profile
+    :type profile: struct aa_profile \*
 
-    :param const struct path \*mntpath:
+    :param mntpath:
         for the mntpnt (NOT NULL)
+    :type mntpath: const struct path \*
 
-    :param char \*buffer:
+    :param buffer:
         buffer to be used to lookup mntpath
+    :type buffer: char \*
 
-    :param const char \*devname:
+    :param devname:
         *undescribed*
+    :type devname: const char \*
 
-    :param const char \*type:
+    :param type:
         string for the dev type (MAYBE NULL)
+    :type type: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         mount flags to match
+    :type flags: unsigned long
 
-    :param void \*data:
+    :param data:
         fs mount data (MAYBE NULL)
+    :type data: void \*
 
-    :param bool binary:
+    :param binary:
         whether \ ``data``\  is binary
+    :type binary: bool
 
-    :param const char \*devinfo:
+    :param devinfo:
         error str if (IS_ERR(@devname))
+    :type devinfo: const char \*
 
 .. _`match_mnt_path_str.return`:
 
@@ -176,32 +204,41 @@ match_mnt
 
     handle path matching for mount
 
-    :param struct aa_profile \*profile:
+    :param profile:
         the confining profile
+    :type profile: struct aa_profile \*
 
-    :param const struct path \*path:
+    :param path:
         *undescribed*
+    :type path: const struct path \*
 
-    :param char \*buffer:
+    :param buffer:
         buffer to be used to lookup mntpath
+    :type buffer: char \*
 
-    :param struct path \*devpath:
+    :param devpath:
         path devname/src_name (MAYBE NULL)
+    :type devpath: struct path \*
 
-    :param char \*devbuffer:
+    :param devbuffer:
         buffer to be used to lookup devname/src_name
+    :type devbuffer: char \*
 
-    :param const char \*type:
+    :param type:
         string for the dev type (MAYBE NULL)
+    :type type: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         mount flags to match
+    :type flags: unsigned long
 
-    :param void \*data:
+    :param data:
         fs mount data (MAYBE NULL)
+    :type data: void \*
 
-    :param bool binary:
+    :param binary:
         whether \ ``data``\  is binary
+    :type binary: bool
 
 .. _`match_mnt.return`:
 

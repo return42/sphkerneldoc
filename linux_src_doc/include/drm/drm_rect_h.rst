@@ -64,8 +64,9 @@ DRM_RECT_ARG
 
     printf arguments for \ :c:type:`struct drm_rect <drm_rect>`\ 
 
-    :param  r:
+    :param r:
         rectangle struct
+    :type r: 
 
 .. _`drm_rect_fp_fmt`:
 
@@ -85,8 +86,9 @@ DRM_RECT_FP_ARG
 
     printf arguments for \ :c:type:`struct drm_rect <drm_rect>`\  in 16.16 fixed point
 
-    :param  r:
+    :param r:
         rectangle struct
+    :type r: 
 
 .. _`drm_rect_fp_arg.description`:
 
@@ -105,14 +107,17 @@ drm_rect_adjust_size
 
     adjust the size of the rectangle
 
-    :param struct drm_rect \*r:
+    :param r:
         rectangle to be adjusted
+    :type r: struct drm_rect \*
 
-    :param int dw:
+    :param dw:
         horizontal adjustment
+    :type dw: int
 
-    :param int dh:
+    :param dh:
         vertical adjustment
+    :type dh: int
 
 .. _`drm_rect_adjust_size.description`:
 
@@ -134,14 +139,17 @@ drm_rect_translate
 
     translate the rectangle
 
-    :param struct drm_rect \*r:
+    :param r:
         rectangle to be tranlated
+    :type r: struct drm_rect \*
 
-    :param int dx:
+    :param dx:
         horizontal translation
+    :type dx: int
 
-    :param int dy:
+    :param dy:
         vertical translation
+    :type dy: int
 
 .. _`drm_rect_translate.description`:
 
@@ -160,14 +168,17 @@ drm_rect_downscale
 
     downscale a rectangle
 
-    :param struct drm_rect \*r:
+    :param r:
         rectangle to be downscaled
+    :type r: struct drm_rect \*
 
-    :param int horz:
+    :param horz:
         horizontal downscale factor
+    :type horz: int
 
-    :param int vert:
+    :param vert:
         vertical downscale factor
+    :type vert: int
 
 .. _`drm_rect_downscale.description`:
 
@@ -185,8 +196,9 @@ drm_rect_width
 
     determine the rectangle width
 
-    :param const struct drm_rect \*r:
+    :param r:
         rectangle whose width is returned
+    :type r: const struct drm_rect \*
 
 .. _`drm_rect_width.return`:
 
@@ -204,8 +216,9 @@ drm_rect_height
 
     determine the rectangle height
 
-    :param const struct drm_rect \*r:
+    :param r:
         rectangle whose height is returned
+    :type r: const struct drm_rect \*
 
 .. _`drm_rect_height.return`:
 
@@ -223,8 +236,9 @@ drm_rect_visible
 
     determine if the the rectangle is visible
 
-    :param const struct drm_rect \*r:
+    :param r:
         rectangle whose visibility is returned
+    :type r: const struct drm_rect \*
 
 .. _`drm_rect_visible.return`:
 
@@ -242,11 +256,13 @@ drm_rect_equals
 
     determine if two rectangles are equal
 
-    :param const struct drm_rect \*r1:
+    :param r1:
         first rectangle
+    :type r1: const struct drm_rect \*
 
-    :param const struct drm_rect \*r2:
+    :param r2:
         second rectangle
+    :type r2: const struct drm_rect \*
 
 .. _`drm_rect_equals.return`:
 

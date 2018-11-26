@@ -10,8 +10,9 @@ zynq_secondary_init
 
     Initialize secondary CPU cores
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU that is initialized
+    :type cpu: unsigned int
 
 .. _`zynq_secondary_init.description`:
 
@@ -30,8 +31,9 @@ zynq_cpu_die
 
     Let a CPU core die
 
-    :param unsigned int cpu:
+    :param cpu:
         Dying CPU
+    :type cpu: unsigned int
 
 .. _`zynq_cpu_die.description`:
 

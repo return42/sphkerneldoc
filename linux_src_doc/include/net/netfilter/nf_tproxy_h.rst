@@ -10,20 +10,25 @@ nf_tproxy_handle_time_wait4
 
     handle IPv4 TCP TIME_WAIT reopen redirections
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb being processed.
+    :type skb: struct sk_buff \*
 
-    :param __be32 laddr:
+    :param laddr:
         IPv4 address to redirect to or zero.
+    :type laddr: __be32
 
-    :param __be16 lport:
+    :param lport:
         TCP port to redirect to or zero.
+    :type lport: __be16
 
-    :param struct sock \*sk:
+    :param sk:
         The TIME_WAIT TCP socket found by the lookup.
+    :type sk: struct sock \*
 
 .. _`nf_tproxy_handle_time_wait4.description`:
 
@@ -55,26 +60,33 @@ nf_tproxy_handle_time_wait6
 
     handle IPv6 TCP TIME_WAIT reopen redirections
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb being processed.
+    :type skb: struct sk_buff \*
 
-    :param int tproto:
+    :param tproto:
         Transport protocol.
+    :type tproto: int
 
-    :param int thoff:
+    :param thoff:
         Transport protocol header offset.
+    :type thoff: int
 
-    :param struct net \*net:
+    :param net:
         Network namespace.
+    :type net: struct net \*
 
-    :param const struct in6_addr \*laddr:
+    :param laddr:
         IPv6 address to redirect to.
+    :type laddr: const struct in6_addr \*
 
-    :param const __be16 lport:
+    :param lport:
         TCP port to redirect to or zero.
+    :type lport: const __be16
 
-    :param struct sock \*sk:
+    :param sk:
         The TIME_WAIT TCP socket found by the lookup.
+    :type sk: struct sock \*
 
 .. _`nf_tproxy_handle_time_wait6.description`:
 

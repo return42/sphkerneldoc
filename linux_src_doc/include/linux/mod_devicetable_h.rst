@@ -404,5 +404,41 @@ Thunderbolt XDomain services are exposed as devices where each device
 carries the protocol information the service supports. Thunderbolt
 XDomain service drivers match against that information.
 
+.. _`typec_device_id`:
+
+struct typec_device_id
+======================
+
+.. c:type:: struct typec_device_id
+
+    USB Type-C alternate mode identifiers
+
+.. _`typec_device_id.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct typec_device_id {
+        __u16 svid;
+        __u8 mode;
+        kernel_ulong_t driver_data;
+    }
+
+.. _`typec_device_id.members`:
+
+Members
+-------
+
+svid
+    Standard or Vendor ID
+
+mode
+    Mode index
+
+driver_data
+    Driver specific data
+
 .. This file was automatic generated / don't edit.
 

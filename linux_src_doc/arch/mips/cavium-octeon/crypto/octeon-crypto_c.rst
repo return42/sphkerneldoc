@@ -10,8 +10,9 @@ octeon_crypto_enable
 
     crypto operations in calls to octeon_crypto_enable/disable in order to make sure the state of COP2 isn't corrupted if userspace is also performing hardware crypto operations. Allocate the state parameter on the stack. Returns with preemption disabled.
 
-    :param struct octeon_cop2_state \*state:
+    :param state:
         Pointer to state structure to store current COP2 state in.
+    :type state: struct octeon_cop2_state \*
 
 .. _`octeon_crypto_enable.return`:
 
@@ -29,11 +30,13 @@ octeon_crypto_disable
 
     called after an \ :c:func:`octeon_crypto_enable`\  before any context switch or return to userspace.
 
-    :param struct octeon_cop2_state \*state:
+    :param state:
         Pointer to COP2 state to restore
+    :type state: struct octeon_cop2_state \*
 
-    :param unsigned long crypto_flags:
+    :param crypto_flags:
         *undescribed*
+    :type crypto_flags: unsigned long
 
 .. This file was automatic generated / don't edit.
 

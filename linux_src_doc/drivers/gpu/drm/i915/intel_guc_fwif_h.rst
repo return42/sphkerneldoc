@@ -97,41 +97,6 @@ The message header consists of:
 - **code**, indicates message code
 - **flags**, holds various bits to control message handling
 
-.. _`guc-log-buffer-layout`:
-
-GuC Log buffer Layout
-=====================
-
-Page0  +-------------------------------+
-       |   ISR state header (32 bytes) |
-       |      DPC state header         |
-       |   Crash dump state header     |
-Page1  +-------------------------------+
-       |           ISR logs            |
-Page9  +-------------------------------+
-       |           DPC logs            |
-Page17 +-------------------------------+
-       |         Crash Dump logs       |
-       +-------------------------------+
-
-Below state structure is used for coordination of retrieval of GuC firmware
-logs. Separate state is maintained for each log buffer type.
-read_ptr points to the location where i915 read last in log buffer and
-is read only for GuC firmware. write_ptr is incremented by GuC with number
-of bytes written for each log entry and is read only for i915.
-When any type of log buffer becomes half full, GuC sends a flush interrupt.
-GuC firmware expects that while it is writing to 2nd half of the buffer,
-first half would get consumed by Host and then get a flush completed
-acknowledgment from Host, so that it does not end up doing any overwrite
-causing loss of logs. So when buffer gets half filled & i915 has requested
-for interrupt, GuC will set flush_to_file field, set the sampled_write_ptr
-to the value of write_ptr and raise the interrupt.
-On receiving the interrupt i915 should read the buffer, clear flush_to_file
-field and also update read_ptr with the value of sample_write_ptr, before
-sending an acknowledgment to GuC. marker & version fields are for internal
-usage of GuC and opaque to i915. buffer_full_cnt field is incremented every
-time GuC detects the log buffer overflow.
-
 .. _`mmio-based-communication`:
 
 MMIO based communication

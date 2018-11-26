@@ -10,11 +10,13 @@ bnx2fc_xmit
 
     bnx2fc's FCoE frame transmit function
 
-    :param struct fc_lport \*lport:
+    :param lport:
         the associated local port
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         the fc_frame to be transmitted
+    :type fp: struct fc_frame \*
 
 .. _`bnx2fc_rcv`:
 
@@ -25,17 +27,21 @@ bnx2fc_rcv
 
     This is bnx2fc's receive function called by NET_RX_SOFTIRQ
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the receive socket buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         associated net device
+    :type dev: struct net_device \*
 
-    :param struct packet_type \*ptype:
+    :param ptype:
         context
+    :type ptype: struct packet_type \*
 
-    :param struct net_device \*olddev:
+    :param olddev:
         last device
+    :type olddev: struct net_device \*
 
 .. _`bnx2fc_rcv.description`:
 
@@ -53,8 +59,9 @@ bnx2fc_percpu_io_thread
 
     thread per cpu for ios
 
-    :param void \*arg:
+    :param arg:
         ptr to bnx2fc_percpu_info structure
+    :type arg: void \*
 
 .. _`bnx2fc_get_link_state`:
 
@@ -65,8 +72,9 @@ bnx2fc_get_link_state
 
     get network link state
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         adapter instance pointer
+    :type hba: struct bnx2fc_hba \*
 
 .. _`bnx2fc_get_link_state.description`:
 
@@ -84,14 +92,17 @@ bnx2fc_indicate_netevent
 
     Generic netdev event handler
 
-    :param void \*context:
+    :param context:
         adapter structure pointer
+    :type context: void \*
 
-    :param unsigned long event:
+    :param event:
         event type
+    :type event: unsigned long
 
-    :param u16 vlan_id:
+    :param vlan_id:
         vlan id - associated vlan id with this event
+    :type vlan_id: u16
 
 .. _`bnx2fc_indicate_netevent.description`:
 
@@ -110,17 +121,21 @@ bnx2fc_fip_recv
 
     handle a received FIP frame.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the received skb
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         associated \ :c:type:`struct net_device <net_device>`\ 
+    :type dev: struct net_device \*
 
-    :param struct packet_type \*ptype:
+    :param ptype:
         the \ :c:type:`struct packet_type <packet_type>`\  structure which was used to register this handler.
+    :type ptype: struct packet_type \*
 
-    :param struct net_device \*orig_dev:
+    :param orig_dev:
         original receive \ :c:type:`struct net_device <net_device>`\ , in case \ ````\  dev is a bond.
+    :type orig_dev: struct net_device \*
 
 .. _`bnx2fc_fip_recv.return`:
 
@@ -138,11 +153,13 @@ bnx2fc_update_src_mac
 
     Update Ethernet MAC filters.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param u8 \*addr:
+    :param addr:
         *undescribed*
+    :type addr: u8 \*
 
 .. _`bnx2fc_update_src_mac.description`:
 
@@ -161,8 +178,9 @@ bnx2fc_get_src_mac
 
     return the ethernet source address for an lport
 
-    :param struct fc_lport \*lport:
+    :param lport:
         libfc port
+    :type lport: struct fc_lport \*
 
 .. _`bnx2fc_fip_send`:
 
@@ -173,11 +191,13 @@ bnx2fc_fip_send
 
     send an Ethernet-encapsulated FIP frame.
 
-    :param struct fcoe_ctlr \*fip:
+    :param fip:
         FCoE controller.
+    :type fip: struct fcoe_ctlr \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         FIP Packet.
+    :type skb: struct sk_buff \*
 
 .. _`bnx2fc_hba_create`:
 
@@ -188,8 +208,9 @@ bnx2fc_hba_create
 
     create a new bnx2fc hba
 
-    :param struct cnic_dev \*cnic:
+    :param cnic:
         pointer to cnic device
+    :type cnic: struct cnic_dev \*
 
 .. _`bnx2fc_hba_create.description`:
 
@@ -207,14 +228,17 @@ bnx2fc_if_create
 
     Create FCoE instance on a given interface
 
-    :param struct bnx2fc_interface \*interface:
+    :param interface:
         FCoE interface to create a local port on
+    :type interface: struct bnx2fc_interface \*
 
-    :param struct device \*parent:
+    :param parent:
         Device pointer to be the parent in sysfs for the SCSI host
+    :type parent: struct device \*
 
-    :param int npiv:
+    :param npiv:
         Indicates if the port is vport or not
+    :type npiv: int
 
 .. _`bnx2fc_if_create.description`:
 
@@ -239,8 +263,9 @@ bnx2fc_destroy
 
     Destroy a bnx2fc FCoE interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
 .. _`bnx2fc_destroy.description`:
 
@@ -265,8 +290,9 @@ bnx2fc_bind_adapter_devices
 
     binds bnx2fc adapter with the associated pci structure
 
-    :param struct bnx2fc_hba \*hba:
+    :param hba:
         Adapter instance
+    :type hba: struct bnx2fc_hba \*
 
 .. _`bnx2fc_ulp_get_stats`:
 
@@ -277,8 +303,9 @@ bnx2fc_ulp_get_stats
 
     cnic callback to populate FCoE stats
 
-    :param void \*handle:
+    :param handle:
         transport handle pointing to adapter struture
+    :type handle: void \*
 
 .. _`bnx2fc_ulp_start`:
 
@@ -289,8 +316,9 @@ bnx2fc_ulp_start
 
     cnic callback to initialize & start adapter instance
 
-    :param void \*handle:
+    :param handle:
         transport handle pointing to adapter structure
+    :type handle: void \*
 
 .. _`bnx2fc_ulp_start.description`:
 
@@ -314,8 +342,9 @@ bnx2fc_ulp_stop
 
     cnic callback to shutdown adapter instance
 
-    :param void \*handle:
+    :param handle:
         transport handle pointing to adapter structure
+    :type handle: void \*
 
 .. _`bnx2fc_ulp_stop.description`:
 
@@ -334,11 +363,12 @@ bnx2fc_ulp_init
 
     Initialize an adapter instance
 
-    :param struct cnic_dev \*dev:
+    :param dev:
         cnic device handle
         Called from \ :c:func:`cnic_register_driver`\  context to initialize all
         enumerated cnic devices. This routine allocates adapter structure
         and other device specific resources.
+    :type dev: struct cnic_dev \*
 
 .. _`bnx2fc_disable`:
 
@@ -349,8 +379,9 @@ bnx2fc_disable
 
     Use \ :c:func:`bnx2fc_enabled`\ 
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
 .. _`bnx2fc_enable`:
 
@@ -361,8 +392,9 @@ bnx2fc_enable
 
     Use \ :c:func:`bnx2fc_enabled`\ 
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
 .. _`bnx2fc_ctlr_enabled`:
 
@@ -373,8 +405,9 @@ bnx2fc_ctlr_enabled
 
     Enable or disable an FCoE Controller
 
-    :param struct fcoe_ctlr_device \*cdev:
+    :param cdev:
         The FCoE Controller that is being enabled or disabled
+    :type cdev: struct fcoe_ctlr_device \*
 
 .. _`bnx2fc_ctlr_enabled.description`:
 
@@ -396,14 +429,17 @@ here.
 
     Create bnx2fc FCoE interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net_device object the Ethernet interface to create on
+    :type netdev: struct net_device \*
 
-    :param enum fip_mode fip_mode:
+    :param fip_mode:
         The FIP mode for this creation
+    :type fip_mode: enum fip_mode
 
-    :param enum bnx2fc_create_link_state link_state:
+    :param link_state:
         The ctlr link state on creation
+    :type link_state: enum bnx2fc_create_link_state
 
 .. _`_bnx2fc_create.description`:
 
@@ -433,11 +469,13 @@ bnx2fc_create
 
     Create a bnx2fc interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net_device object the Ethernet interface to create on
+    :type netdev: struct net_device \*
 
-    :param enum fip_mode fip_mode:
+    :param fip_mode:
         The FIP mode for this creation
+    :type fip_mode: enum fip_mode
 
 .. _`bnx2fc_create.description`:
 
@@ -462,8 +500,9 @@ bnx2fc_ctlr_alloc
 
     Allocate a bnx2fc interface from fcoe_sysfs
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The net_device to be used by the allocated FCoE Controller
+    :type netdev: struct net_device \*
 
 .. _`bnx2fc_ctlr_alloc.description`:
 
@@ -486,8 +525,9 @@ bnx2fc_find_hba_for_cnic
 
     maps cnic instance to bnx2fc hba instance
 
-    :param struct cnic_dev \*cnic:
+    :param cnic:
         Pointer to cnic device instance
+    :type cnic: struct cnic_dev \*
 
 .. _`bnx2fc_ulp_exit`:
 
@@ -498,8 +538,9 @@ bnx2fc_ulp_exit
 
     shuts down adapter instance and frees all resources
 
-    :param struct cnic_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct cnic_dev \*
 
 .. _`bnx2fc_ulp_exit.description`:
 
@@ -517,8 +558,9 @@ bnx2fc_fcoe_reset
 
     Resets the fcoe
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         shost the reset is from
+    :type shost: struct Scsi_Host \*
 
 .. _`bnx2fc_fcoe_reset.return`:
 
@@ -536,8 +578,9 @@ bnx2fc_cpu_online
 
     Create a receive thread for an  online CPU
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu index for the online cpu
+    :type cpu: unsigned int
 
 .. _`bnx2fc_mod_init`:
 
@@ -548,8 +591,9 @@ bnx2fc_mod_init
 
     module init entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bnx2fc_mod_init.description`:
 

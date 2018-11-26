@@ -10,11 +10,13 @@ kvm_handle_mmio_return
 
     - Handle MMIO loads after user space emulation or in-kernel IO emulation
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_run \*run:
+    :param run:
         The VCPU run struct containing the mmio data
+    :type run: struct kvm_run \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ __scsi_queue_insert
 
     private queue insertion
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         The SCSI command being requeued
+    :type cmd: struct scsi_cmnd \*
 
-    :param int reason:
+    :param reason:
         The reason for the requeue
+    :type reason: int
 
-    :param bool unbusy:
+    :param unbusy:
         Whether the queue should be unbusied
+    :type unbusy: bool
 
 .. _`__scsi_queue_insert.description`:
 
@@ -30,52 +33,64 @@ because it's always called before the completion.  This function is
 for a requeue after completion, which should only occur in this
 file.
 
-.. _`scsi_execute`:
+.. _`__scsi_execute`:
 
-scsi_execute
-============
+__scsi_execute
+==============
 
-.. c:function:: int scsi_execute(struct scsi_device *sdev, const unsigned char *cmd, int data_direction, void *buffer, unsigned bufflen, unsigned char *sense, struct scsi_sense_hdr *sshdr, int timeout, int retries, u64 flags, req_flags_t rq_flags, int *resid)
+.. c:function:: int __scsi_execute(struct scsi_device *sdev, const unsigned char *cmd, int data_direction, void *buffer, unsigned bufflen, unsigned char *sense, struct scsi_sense_hdr *sshdr, int timeout, int retries, u64 flags, req_flags_t rq_flags, int *resid)
 
     insert request and wait for the result
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device
+    :type sdev: struct scsi_device \*
 
-    :param const unsigned char \*cmd:
+    :param cmd:
         scsi command
+    :type cmd: const unsigned char \*
 
-    :param int data_direction:
+    :param data_direction:
         data direction
+    :type data_direction: int
 
-    :param void \*buffer:
+    :param buffer:
         data buffer
+    :type buffer: void \*
 
-    :param unsigned bufflen:
+    :param bufflen:
         len of buffer
+    :type bufflen: unsigned
 
-    :param unsigned char \*sense:
+    :param sense:
         optional sense buffer
+    :type sense: unsigned char \*
 
-    :param struct scsi_sense_hdr \*sshdr:
+    :param sshdr:
         optional decoded sense header
+    :type sshdr: struct scsi_sense_hdr \*
 
-    :param int timeout:
+    :param timeout:
         request timeout in seconds
+    :type timeout: int
 
-    :param int retries:
+    :param retries:
         number of times to retry request
+    :type retries: int
 
-    :param u64 flags:
+    :param flags:
         flags for ->cmd_flags
+    :type flags: u64
 
-    :param req_flags_t rq_flags:
+    :param rq_flags:
         flags for ->rq_flags
+    :type rq_flags: req_flags_t
 
-    :param int \*resid:
+    :param resid:
         optional residual length
+    :type resid: int \*
 
-.. _`scsi_execute.description`:
+.. _`__scsi_execute.description`:
 
 Description
 -----------
@@ -92,11 +107,13 @@ scsi_result_to_blk_status
 
     translate a SCSI result code into blk_status_t
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         SCSI command
+    :type cmd: struct scsi_cmnd \*
 
-    :param int result:
+    :param result:
         scsi error code
+    :type result: int
 
 .. _`scsi_result_to_blk_status.description`:
 
@@ -104,7 +121,7 @@ Description
 -----------
 
 Translate a SCSI result code into a blk_status_t value. May reset the host
-byte of \ ``cmd``\ ->result.
+byte of \ ``cmd->result``\ .
 
 .. _`scsi_initialize_rq`:
 
@@ -115,8 +132,9 @@ scsi_initialize_rq
 
     initialize struct scsi_cmnd partially
 
-    :param struct request \*rq:
+    :param rq:
         Request associated with the SCSI command to be initialized.
+    :type rq: struct request \*
 
 .. _`scsi_initialize_rq.description`:
 
@@ -139,8 +157,9 @@ scsi_dispatch_cmd
 
     Dispatch a command to the low-level driver.
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         command block we are dispatching.
+    :type cmd: struct scsi_cmnd \*
 
 .. _`scsi_dispatch_cmd.return`:
 
@@ -159,9 +178,10 @@ scsi_done
 
     Invoke completion on finished SCSI command.
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         The SCSI Command for which a low-level device driver (LLDD) gives
         ownership back to SCSI Core -- i.e. the LLDD has finished with it.
+    :type cmd: struct scsi_cmnd \*
 
 .. _`scsi_done.description`:
 
@@ -183,8 +203,9 @@ scsi_device_from_queue
 
     return sdev associated with a request_queue
 
-    :param struct request_queue \*q:
+    :param q:
         The request queue to return the sdev from
+    :type q: struct request_queue \*
 
 .. _`scsi_device_from_queue.description`:
 
@@ -203,36 +224,46 @@ scsi_mode_select
 
     issue a mode select
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to be queried
+    :type sdev: struct scsi_device \*
 
-    :param int pf:
+    :param pf:
         Page format bit (1 == standard, 0 == vendor specific)
+    :type pf: int
 
-    :param int sp:
+    :param sp:
         Save page bit (0 == don't save, 1 == save)
+    :type sp: int
 
-    :param int modepage:
+    :param modepage:
         mode page being requested
+    :type modepage: int
 
-    :param unsigned char \*buffer:
+    :param buffer:
         request buffer (may not be smaller than eight bytes)
+    :type buffer: unsigned char \*
 
-    :param int len:
+    :param len:
         length of request buffer.
+    :type len: int
 
-    :param int timeout:
+    :param timeout:
         command timeout
+    :type timeout: int
 
-    :param int retries:
+    :param retries:
         number of retries before failing
+    :type retries: int
 
-    :param struct scsi_mode_data \*data:
+    :param data:
         returns a structure abstracting the mode header data
+    :type data: struct scsi_mode_data \*
 
-    :param struct scsi_sense_hdr \*sshdr:
+    :param sshdr:
         place to put sense data (or NULL if no sense to be collected).
         must be SCSI_SENSE_BUFFERSIZE big.
+    :type sshdr: struct scsi_sense_hdr \*
 
 .. _`scsi_mode_select.description`:
 
@@ -251,33 +282,42 @@ scsi_mode_sense
 
     issue a mode sense, falling back from 10 to six bytes if necessary.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to be queried
+    :type sdev: struct scsi_device \*
 
-    :param int dbd:
+    :param dbd:
         set if mode sense will allow block descriptors to be returned
+    :type dbd: int
 
-    :param int modepage:
+    :param modepage:
         mode page being requested
+    :type modepage: int
 
-    :param unsigned char \*buffer:
+    :param buffer:
         request buffer (may not be smaller than eight bytes)
+    :type buffer: unsigned char \*
 
-    :param int len:
+    :param len:
         length of request buffer.
+    :type len: int
 
-    :param int timeout:
+    :param timeout:
         command timeout
+    :type timeout: int
 
-    :param int retries:
+    :param retries:
         number of retries before failing
+    :type retries: int
 
-    :param struct scsi_mode_data \*data:
+    :param data:
         returns a structure abstracting the mode header data
+    :type data: struct scsi_mode_data \*
 
-    :param struct scsi_sense_hdr \*sshdr:
+    :param sshdr:
         place to put sense data (or NULL if no sense to be collected).
         must be SCSI_SENSE_BUFFERSIZE big.
+    :type sshdr: struct scsi_sense_hdr \*
 
 .. _`scsi_mode_sense.description`:
 
@@ -297,17 +337,21 @@ scsi_test_unit_ready
 
     test if unit is ready
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device to change the state of.
+    :type sdev: struct scsi_device \*
 
-    :param int timeout:
+    :param timeout:
         command timeout
+    :type timeout: int
 
-    :param int retries:
+    :param retries:
         number of retries before failing
+    :type retries: int
 
-    :param struct scsi_sense_hdr \*sshdr:
+    :param sshdr:
         outpout pointer for decoded sense information.
+    :type sshdr: struct scsi_sense_hdr \*
 
 .. _`scsi_test_unit_ready.description`:
 
@@ -326,11 +370,13 @@ scsi_device_set_state
 
     Take the given device through the device state model.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device to change the state of.
+    :type sdev: struct scsi_device \*
 
-    :param enum scsi_device_state state:
+    :param state:
         state to change to.
+    :type state: enum scsi_device_state
 
 .. _`scsi_device_set_state.description`:
 
@@ -349,11 +395,13 @@ scsi_evt_emit
 
     emit a single SCSI device uevent
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         associated SCSI device
+    :type sdev: struct scsi_device \*
 
-    :param struct scsi_event \*evt:
+    :param evt:
         event to emit
+    :type evt: struct scsi_event \*
 
 .. _`scsi_evt_emit.description`:
 
@@ -371,8 +419,9 @@ scsi_evt_thread
 
     send a uevent for each scsi event
 
-    :param struct work_struct \*work:
+    :param work:
         work struct for scsi_device
+    :type work: struct work_struct \*
 
 .. _`scsi_evt_thread.description`:
 
@@ -391,11 +440,13 @@ sdev_evt_send
 
     send asserted event to uevent thread
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi_device event occurred on
+    :type sdev: struct scsi_device \*
 
-    :param struct scsi_event \*evt:
+    :param evt:
         event to send
+    :type evt: struct scsi_event \*
 
 .. _`sdev_evt_send.description`:
 
@@ -413,11 +464,13 @@ sdev_evt_alloc
 
     allocate a new scsi event
 
-    :param enum scsi_device_event evt_type:
+    :param evt_type:
         type of event to allocate
+    :type evt_type: enum scsi_device_event
 
-    :param gfp_t gfpflags:
+    :param gfpflags:
         GFP flags for allocation
+    :type gfpflags: gfp_t
 
 .. _`sdev_evt_alloc.description`:
 
@@ -435,14 +488,17 @@ sdev_evt_send_simple
 
     send asserted event to uevent thread
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi_device event occurred on
+    :type sdev: struct scsi_device \*
 
-    :param enum scsi_device_event evt_type:
+    :param evt_type:
         type of event to send
+    :type evt_type: enum scsi_device_event
 
-    :param gfp_t gfpflags:
+    :param gfpflags:
         GFP flags for allocation
+    :type gfpflags: gfp_t
 
 .. _`sdev_evt_send_simple.description`:
 
@@ -460,8 +516,9 @@ scsi_request_fn_active
 
     number of kernel threads inside \ :c:func:`scsi_request_fn`\ 
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device to count the number of \ :c:func:`scsi_request_fn`\  callers for.
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_wait_for_queuecommand`:
 
@@ -472,8 +529,9 @@ scsi_wait_for_queuecommand
 
     wait for ongoing \ :c:func:`queuecommand`\  calls
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device pointer.
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_wait_for_queuecommand.description`:
 
@@ -492,8 +550,9 @@ scsi_device_quiesce
 
     Block user issued commands.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device to quiesce.
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_device_quiesce.description`:
 
@@ -520,8 +579,9 @@ scsi_device_resume
 
     Restart user issued commands to a quiesced device.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device to resume.
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_device_resume.description`:
 
@@ -542,8 +602,9 @@ scsi_internal_device_block_nowait
 
     try to transition to the SDEV_BLOCK state
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         device to block
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_internal_device_block_nowait.description`:
 
@@ -573,8 +634,9 @@ scsi_internal_device_block
 
     try to transition to the SDEV_BLOCK state
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         device to block
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_internal_device_block.description`:
 
@@ -609,11 +671,13 @@ scsi_internal_device_unblock_nowait
 
     resume a device after a block request
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         device to resume
+    :type sdev: struct scsi_device \*
 
-    :param enum scsi_device_state new_state:
+    :param new_state:
         state to set the device to after unblocking
+    :type new_state: enum scsi_device_state
 
 .. _`scsi_internal_device_unblock_nowait.description`:
 
@@ -643,11 +707,13 @@ scsi_internal_device_unblock
 
     resume a device after a block request
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         device to resume
+    :type sdev: struct scsi_device \*
 
-    :param enum scsi_device_state new_state:
+    :param new_state:
         state to set the device to after unblocking
+    :type new_state: enum scsi_device_state
 
 .. _`scsi_internal_device_unblock.description`:
 
@@ -676,17 +742,21 @@ scsi_kmap_atomic_sg
 
     find and atomically map an sg-elemnt
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         scatter-gather list
+    :type sgl: struct scatterlist \*
 
-    :param int sg_count:
+    :param sg_count:
         number of segments in sg
+    :type sg_count: int
 
-    :param size_t \*offset:
+    :param offset:
         offset in bytes into sg, on return offset into the mapped area
+    :type offset: size_t \*
 
-    :param size_t \*len:
+    :param len:
         bytes to map, on return number of bytes mapped
+    :type len: size_t \*
 
 .. _`scsi_kmap_atomic_sg.description`:
 
@@ -704,8 +774,9 @@ scsi_kunmap_atomic_sg
 
     atomically unmap a virtual address, previously mapped with scsi_kmap_atomic_sg
 
-    :param void \*virt:
+    :param virt:
         virtual address to be unmapped
+    :type virt: void \*
 
 .. _`scsi_vpd_lun_id`:
 
@@ -716,14 +787,17 @@ scsi_vpd_lun_id
 
     return a unique device identification
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device
+    :type sdev: struct scsi_device \*
 
-    :param char \*id:
+    :param id:
         buffer for the identification
+    :type id: char \*
 
-    :param size_t id_len:
+    :param id_len:
         length of the buffer
+    :type id_len: size_t
 
 .. _`scsi_vpd_lun_id.description`:
 

@@ -10,8 +10,9 @@ cipso_v4_cache_entry_free
 
     Frees a cache entry
 
-    :param struct cipso_v4_map_cache_entry \*entry:
+    :param entry:
         the entry to free
+    :type entry: struct cipso_v4_map_cache_entry \*
 
 .. _`cipso_v4_cache_entry_free.description`:
 
@@ -30,11 +31,13 @@ cipso_v4_map_cache_hash
 
     Hashing function for the CIPSO cache
 
-    :param const unsigned char \*key:
+    :param key:
         the hash key
+    :type key: const unsigned char \*
 
-    :param u32 key_len:
+    :param key_len:
         the length of the key in bytes
+    :type key_len: u32
 
 .. _`cipso_v4_map_cache_hash.description`:
 
@@ -52,8 +55,9 @@ cipso_v4_cache_init
 
     Initialize the CIPSO cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cipso_v4_cache_init.description`:
 
@@ -73,8 +77,9 @@ cipso_v4_cache_invalidate
 
     Invalidates the current CIPSO cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cipso_v4_cache_invalidate.description`:
 
@@ -93,14 +98,17 @@ cipso_v4_cache_check
 
     Check the CIPSO cache for a label mapping
 
-    :param const unsigned char \*key:
+    :param key:
         the buffer to check
+    :type key: const unsigned char \*
 
-    :param u32 key_len:
+    :param key_len:
         buffer length in bytes
+    :type key_len: u32
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attribute struct to use
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_cache_check.description`:
 
@@ -135,11 +143,13 @@ cipso_v4_cache_add
 
     Add an entry to the CIPSO cache
 
-    :param const unsigned char \*cipso_ptr:
+    :param cipso_ptr:
         *undescribed*
+    :type cipso_ptr: const unsigned char \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the packet's security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_cache_add.description`:
 
@@ -161,8 +171,9 @@ cipso_v4_doi_search
 
     Searches for a DOI definition
 
-    :param u32 doi:
+    :param doi:
         the DOI to search for
+    :type doi: u32
 
 .. _`cipso_v4_doi_search.description`:
 
@@ -182,11 +193,13 @@ cipso_v4_doi_add
 
     Add a new DOI to the CIPSO protocol engine
 
-    :param struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI structure
+    :type doi_def: struct cipso_v4_doi \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`cipso_v4_doi_add.description`:
 
@@ -195,7 +208,7 @@ Description
 
 The caller defines a new DOI for use by the CIPSO engine and calls this
 function to add it to the list of acceptable domains.  The caller must
-ensure that the mapping table specified in \ ``doi_def``\ ->map meets all of the
+ensure that the mapping table specified in \ ``doi_def->map``\  meets all of the
 requirements of the mapping type (see cipso_ipv4.h for details).  Returns
 zero on success and non-zero on failure.
 
@@ -208,8 +221,9 @@ cipso_v4_doi_free
 
     Frees a DOI definition
 
-    :param struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: struct cipso_v4_doi \*
 
 .. _`cipso_v4_doi_free.description`:
 
@@ -227,8 +241,9 @@ cipso_v4_doi_free_rcu
 
     Frees a DOI definition via the RCU pointer
 
-    :param struct rcu_head \*entry:
+    :param entry:
         the entry's RCU field
+    :type entry: struct rcu_head \*
 
 .. _`cipso_v4_doi_free_rcu.description`:
 
@@ -248,11 +263,13 @@ cipso_v4_doi_remove
 
     Remove an existing DOI from the CIPSO protocol engine
 
-    :param u32 doi:
+    :param doi:
         the DOI value
+    :type doi: u32
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         *undescribed*
+    :type audit_info: struct netlbl_audit \*
 
 .. _`cipso_v4_doi_remove.description`:
 
@@ -272,8 +289,9 @@ cipso_v4_doi_getdef
 
     Returns a reference to a valid DOI definition
 
-    :param u32 doi:
+    :param doi:
         the DOI value
+    :type doi: u32
 
 .. _`cipso_v4_doi_getdef.description`:
 
@@ -294,8 +312,9 @@ cipso_v4_doi_putdef
 
     Releases a reference for the given DOI definition
 
-    :param struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: struct cipso_v4_doi \*
 
 .. _`cipso_v4_doi_putdef.description`:
 
@@ -313,14 +332,16 @@ cipso_v4_doi_walk
 
     Iterate through the DOI definitions
 
-    :param u32 \*skip_cnt:
+    :param skip_cnt:
         skip past this number of DOI definitions, updated
+    :type skip_cnt: u32 \*
 
     :param int (\*callback)(struct cipso_v4_doi \*doi_def, void \*arg):
         callback for each DOI definition
 
-    :param void \*cb_arg:
+    :param cb_arg:
         argument for the callback function
+    :type cb_arg: void \*
 
 .. _`cipso_v4_doi_walk.description`:
 
@@ -341,11 +362,13 @@ cipso_v4_map_lvl_valid
 
     Checks to see if the given level is understood
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param u8 level:
+    :param level:
         the level to check
+    :type level: u8
 
 .. _`cipso_v4_map_lvl_valid.description`:
 
@@ -365,14 +388,17 @@ cipso_v4_map_lvl_hton
 
     Perform a level mapping from the host to the network
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param u32 host_lvl:
+    :param host_lvl:
         the host MLS level
+    :type host_lvl: u32
 
-    :param u32 \*net_lvl:
+    :param net_lvl:
         the network/CIPSO MLS level
+    :type net_lvl: u32 \*
 
 .. _`cipso_v4_map_lvl_hton.description`:
 
@@ -392,14 +418,17 @@ cipso_v4_map_lvl_ntoh
 
     Perform a level mapping from the network to the host
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param u32 net_lvl:
+    :param net_lvl:
         the network/CIPSO MLS level
+    :type net_lvl: u32
 
-    :param u32 \*host_lvl:
+    :param host_lvl:
         the host MLS level
+    :type host_lvl: u32 \*
 
 .. _`cipso_v4_map_lvl_ntoh.description`:
 
@@ -419,14 +448,17 @@ cipso_v4_map_cat_rbm_valid
 
     Checks to see if the category bitmap is valid
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const unsigned char \*bitmap:
+    :param bitmap:
         category bitmap
+    :type bitmap: const unsigned char \*
 
-    :param u32 bitmap_len:
+    :param bitmap_len:
         bitmap length in bytes
+    :type bitmap_len: u32
 
 .. _`cipso_v4_map_cat_rbm_valid.description`:
 
@@ -446,17 +478,21 @@ cipso_v4_map_cat_rbm_hton
 
     Perform a category mapping from host to network
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
-    :param unsigned char \*net_cat:
+    :param net_cat:
         the zero'd out category bitmap in network/CIPSO format
+    :type net_cat: unsigned char \*
 
-    :param u32 net_cat_len:
+    :param net_cat_len:
         the length of the CIPSO bitmap in bytes
+    :type net_cat_len: u32
 
 .. _`cipso_v4_map_cat_rbm_hton.description`:
 
@@ -476,17 +512,21 @@ cipso_v4_map_cat_rbm_ntoh
 
     Perform a category mapping from network to host
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const unsigned char \*net_cat:
+    :param net_cat:
         the category bitmap in network/CIPSO format
+    :type net_cat: const unsigned char \*
 
-    :param u32 net_cat_len:
+    :param net_cat_len:
         the length of the CIPSO bitmap in bytes
+    :type net_cat_len: u32
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_map_cat_rbm_ntoh.description`:
 
@@ -506,14 +546,17 @@ cipso_v4_map_cat_enum_valid
 
     Checks to see if the categories are valid
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const unsigned char \*enumcat:
+    :param enumcat:
         category list
+    :type enumcat: const unsigned char \*
 
-    :param u32 enumcat_len:
+    :param enumcat_len:
         length of the category list in bytes
+    :type enumcat_len: u32
 
 .. _`cipso_v4_map_cat_enum_valid.description`:
 
@@ -533,17 +576,21 @@ cipso_v4_map_cat_enum_hton
 
     Perform a category mapping from host to network
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
-    :param unsigned char \*net_cat:
+    :param net_cat:
         the zero'd out category list in network/CIPSO format
+    :type net_cat: unsigned char \*
 
-    :param u32 net_cat_len:
+    :param net_cat_len:
         the length of the CIPSO category list in bytes
+    :type net_cat_len: u32
 
 .. _`cipso_v4_map_cat_enum_hton.description`:
 
@@ -564,17 +611,21 @@ cipso_v4_map_cat_enum_ntoh
 
     Perform a category mapping from network to host
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const unsigned char \*net_cat:
+    :param net_cat:
         the category list in network/CIPSO format
+    :type net_cat: const unsigned char \*
 
-    :param u32 net_cat_len:
+    :param net_cat_len:
         the length of the CIPSO bitmap in bytes
+    :type net_cat_len: u32
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_map_cat_enum_ntoh.description`:
 
@@ -594,14 +645,17 @@ cipso_v4_map_cat_rng_valid
 
     Checks to see if the categories are valid
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const unsigned char \*rngcat:
+    :param rngcat:
         category list
+    :type rngcat: const unsigned char \*
 
-    :param u32 rngcat_len:
+    :param rngcat_len:
         length of the category list in bytes
+    :type rngcat_len: u32
 
 .. _`cipso_v4_map_cat_rng_valid.description`:
 
@@ -621,17 +675,21 @@ cipso_v4_map_cat_rng_hton
 
     Perform a category mapping from host to network
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
-    :param unsigned char \*net_cat:
+    :param net_cat:
         the zero'd out category list in network/CIPSO format
+    :type net_cat: unsigned char \*
 
-    :param u32 net_cat_len:
+    :param net_cat_len:
         the length of the CIPSO category list in bytes
+    :type net_cat_len: u32
 
 .. _`cipso_v4_map_cat_rng_hton.description`:
 
@@ -652,17 +710,21 @@ cipso_v4_map_cat_rng_ntoh
 
     Perform a category mapping from network to host
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const unsigned char \*net_cat:
+    :param net_cat:
         the category list in network/CIPSO format
+    :type net_cat: const unsigned char \*
 
-    :param u32 net_cat_len:
+    :param net_cat_len:
         the length of the CIPSO bitmap in bytes
+    :type net_cat_len: u32
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_map_cat_rng_ntoh.description`:
 
@@ -682,14 +744,17 @@ cipso_v4_gentag_hdr
 
     Generate a CIPSO option header
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param unsigned char \*buf:
+    :param buf:
         the CIPSO option buffer
+    :type buf: unsigned char \*
 
-    :param u32 len:
+    :param len:
         the total tag length in bytes, not including this header
+    :type len: u32
 
 .. _`cipso_v4_gentag_hdr.description`:
 
@@ -707,17 +772,21 @@ cipso_v4_gentag_rbm
 
     Generate a CIPSO restricted bitmap tag (type #1)
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         the option buffer
+    :type buffer: unsigned char \*
 
-    :param u32 buffer_len:
+    :param buffer_len:
         length of buffer in bytes
+    :type buffer_len: u32
 
 .. _`cipso_v4_gentag_rbm.description`:
 
@@ -738,14 +807,17 @@ cipso_v4_parsetag_rbm
 
     Parse a CIPSO restricted bitmap tag
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const unsigned char \*tag:
+    :param tag:
         the CIPSO tag
+    :type tag: const unsigned char \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_parsetag_rbm.description`:
 
@@ -765,17 +837,21 @@ cipso_v4_gentag_enum
 
     Generate a CIPSO enumerated tag (type #2)
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         the option buffer
+    :type buffer: unsigned char \*
 
-    :param u32 buffer_len:
+    :param buffer_len:
         length of buffer in bytes
+    :type buffer_len: u32
 
 .. _`cipso_v4_gentag_enum.description`:
 
@@ -794,14 +870,17 @@ cipso_v4_parsetag_enum
 
     Parse a CIPSO enumerated tag
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const unsigned char \*tag:
+    :param tag:
         the CIPSO tag
+    :type tag: const unsigned char \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_parsetag_enum.description`:
 
@@ -821,17 +900,21 @@ cipso_v4_gentag_rng
 
     Generate a CIPSO ranged tag (type #5)
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         the option buffer
+    :type buffer: unsigned char \*
 
-    :param u32 buffer_len:
+    :param buffer_len:
         length of buffer in bytes
+    :type buffer_len: u32
 
 .. _`cipso_v4_gentag_rng.description`:
 
@@ -850,14 +933,17 @@ cipso_v4_parsetag_rng
 
     Parse a CIPSO ranged tag
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const unsigned char \*tag:
+    :param tag:
         the CIPSO tag
+    :type tag: const unsigned char \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_parsetag_rng.description`:
 
@@ -876,17 +962,21 @@ cipso_v4_gentag_loc
 
     Generate a CIPSO local tag (non-standard)
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         the option buffer
+    :type buffer: unsigned char \*
 
-    :param u32 buffer_len:
+    :param buffer_len:
         length of buffer in bytes
+    :type buffer_len: u32
 
 .. _`cipso_v4_gentag_loc.description`:
 
@@ -905,14 +995,17 @@ cipso_v4_parsetag_loc
 
     Parse a CIPSO local tag
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const unsigned char \*tag:
+    :param tag:
         the CIPSO tag
+    :type tag: const unsigned char \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_parsetag_loc.description`:
 
@@ -931,8 +1024,9 @@ cipso_v4_optptr
 
     Find the CIPSO option in the packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
 .. _`cipso_v4_optptr.description`:
 
@@ -940,7 +1034,7 @@ Description
 -----------
 
 Parse the packet's IP header looking for a CIPSO option.  Returns a pointer
-to the start of the CIPSO option on success, NULL if one if not found.
+to the start of the CIPSO option on success, NULL if one is not found.
 
 .. _`cipso_v4_validate`:
 
@@ -951,11 +1045,13 @@ cipso_v4_validate
 
     Validate a CIPSO option
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: const struct sk_buff \*
 
-    :param unsigned char \*\*option:
+    :param option:
         the start of the option, on error it is set to point to the error
+    :type option: unsigned char \*\*
 
 .. _`cipso_v4_validate.description`:
 
@@ -984,14 +1080,17 @@ cipso_v4_error
 
     Send the correct response for a bad packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param int error:
+    :param error:
         the error code
+    :type error: int
 
-    :param u32 gateway:
+    :param gateway:
         CIPSO gateway flag
+    :type gateway: u32
 
 .. _`cipso_v4_error.description`:
 
@@ -1026,17 +1125,21 @@ cipso_v4_genopt
 
     Generate a CIPSO option
 
-    :param unsigned char \*buf:
+    :param buf:
         the option buffer
+    :type buf: unsigned char \*
 
-    :param u32 buf_len:
+    :param buf_len:
         the size of opt_buf
+    :type buf_len: u32
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the CIPSO DOI to use
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_genopt.description`:
 
@@ -1056,14 +1159,17 @@ cipso_v4_sock_setattr
 
     Add a CIPSO option to a socket
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the CIPSO DOI to use
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the specific security attributes of the socket
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_sock_setattr.description`:
 
@@ -1085,14 +1191,17 @@ cipso_v4_req_setattr
 
     Add a CIPSO option to a connection request socket
 
-    :param struct request_sock \*req:
+    :param req:
         the connection request socket
+    :type req: struct request_sock \*
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         the CIPSO DOI to use
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the specific security attributes of the socket
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_req_setattr.description`:
 
@@ -1112,8 +1221,9 @@ cipso_v4_delopt
 
     Delete the CIPSO option from a set of IP options
 
-    :param struct ip_options_rcu __rcu \*\*opt_ptr:
+    :param opt_ptr:
         IP option pointer
+    :type opt_ptr: struct ip_options_rcu __rcu \*\*
 
 .. _`cipso_v4_delopt.description`:
 
@@ -1133,8 +1243,9 @@ cipso_v4_sock_delattr
 
     Delete the CIPSO option from a socket
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
 .. _`cipso_v4_sock_delattr.description`:
 
@@ -1152,8 +1263,9 @@ cipso_v4_req_delattr
 
     Delete the CIPSO option from a request socket
 
-    :param struct request_sock \*req:
+    :param req:
         *undescribed*
+    :type req: struct request_sock \*
 
 .. _`cipso_v4_req_delattr.description`:
 
@@ -1171,11 +1283,13 @@ cipso_v4_getattr
 
     Helper function for the cipso_v4\_\*\_getattr functions
 
-    :param const unsigned char \*cipso:
+    :param cipso:
         the CIPSO v4 option
+    :type cipso: const unsigned char \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_getattr.description`:
 
@@ -1194,11 +1308,13 @@ cipso_v4_sock_getattr
 
     Get the security attributes from a sock
 
-    :param struct sock \*sk:
+    :param sk:
         the sock
+    :type sk: struct sock \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_sock_getattr.description`:
 
@@ -1219,14 +1335,17 @@ cipso_v4_skbuff_setattr
 
     Set the CIPSO option on a packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param const struct cipso_v4_doi \*doi_def:
+    :param doi_def:
         *undescribed*
+    :type doi_def: const struct cipso_v4_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`cipso_v4_skbuff_setattr.description`:
 
@@ -1245,8 +1364,9 @@ cipso_v4_skbuff_delattr
 
     Delete any CIPSO options from a packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`cipso_v4_skbuff_delattr.description`:
 
@@ -1265,8 +1385,9 @@ cipso_v4_init
 
     Initialize the CIPSO module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cipso_v4_init.description`:
 

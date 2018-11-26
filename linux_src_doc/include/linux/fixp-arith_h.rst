@@ -8,8 +8,9 @@
 
 .. c:function:: s32 __fixp_sin32(int degrees)
 
-    :param int degrees:
+    :param degrees:
         angle, in degrees, from 0 to 360.
+    :type degrees: int
 
 .. _`__fixp_sin32.description`:
 
@@ -25,8 +26,9 @@ fixp_sin32
 
 .. c:function:: s32 fixp_sin32(int degrees)
 
-    :param int degrees:
+    :param degrees:
         angle, in degrees. The angle can be positive or negative
+    :type degrees: int
 
 .. _`fixp_sin32.description`:
 
@@ -44,11 +46,13 @@ fixp_sin32_rad
 
     calculates the sin of an angle in radians
 
-    :param u32 radians:
+    :param radians:
         angle, in radians
+    :type radians: u32
 
-    :param u32 twopi:
+    :param twopi:
         value to be used for 2\*pi
+    :type twopi: u32
 
 .. _`fixp_sin32_rad.description`:
 

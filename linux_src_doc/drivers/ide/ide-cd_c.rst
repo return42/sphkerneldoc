@@ -10,11 +10,13 @@ cdrom_decode_status
 
     0: if the request should be continued. 1: if the request will be going through error recovery. 2: if the request should be ended.
 
-    :param ide_drive_t \*drive:
+    :param drive:
         *undescribed*
+    :type drive: ide_drive_t \*
 
-    :param u8 stat:
+    :param stat:
         *undescribed*
+    :type stat: u8
 
 .. This file was automatic generated / don't edit.
 

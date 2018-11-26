@@ -39,11 +39,13 @@ drm_atomic_helper_check_modeset
 
     validate state object for modeset changes
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         the driver state object
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_check_modeset.description`:
 
@@ -105,26 +107,32 @@ drm_atomic_helper_check_plane_state
 
     Check plane state for validity
 
-    :param struct drm_plane_state \*plane_state:
+    :param plane_state:
         plane state to check
+    :type plane_state: struct drm_plane_state \*
 
-    :param const struct drm_crtc_state \*crtc_state:
+    :param crtc_state:
         crtc state to check
+    :type crtc_state: const struct drm_crtc_state \*
 
-    :param int min_scale:
+    :param min_scale:
         minimum \ ``src``\ :@dest scaling factor in 16.16 fixed point
+    :type min_scale: int
 
-    :param int max_scale:
+    :param max_scale:
         maximum \ ``src``\ :@dest scaling factor in 16.16 fixed point
+    :type max_scale: int
 
-    :param bool can_position:
+    :param can_position:
         is it legal to position the plane such that it
         doesn't cover the entire crtc?  This will generally
         only be false for primary planes.
+    :type can_position: bool
 
-    :param bool can_update_disabled:
+    :param can_update_disabled:
         can the plane be updated while the crtc
         is disabled?
+    :type can_update_disabled: bool
 
 .. _`drm_atomic_helper_check_plane_state.description`:
 
@@ -153,11 +161,13 @@ drm_atomic_helper_check_planes
 
     validate state object for planes changes
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         the driver state object
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_check_planes.description`:
 
@@ -188,11 +198,13 @@ drm_atomic_helper_check
 
     validate state object
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         the driver state object
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_check.description`:
 
@@ -233,11 +245,13 @@ drm_atomic_helper_update_legacy_modeset_state
 
     update legacy modeset state
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_update_legacy_modeset_state.description`:
 
@@ -267,11 +281,13 @@ drm_atomic_helper_commit_modeset_disables
 
     modeset commit to disable outputs
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_commit_modeset_disables.description`:
 
@@ -296,11 +312,13 @@ drm_atomic_helper_commit_modeset_enables
 
     modeset commit to enable outputs
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_commit_modeset_enables.description`:
 
@@ -325,15 +343,18 @@ drm_atomic_helper_wait_for_fences
 
     wait for fences stashed in plane state
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state object with old state structures
+    :type state: struct drm_atomic_state \*
 
-    :param bool pre_swap:
+    :param pre_swap:
         If true, do an interruptible wait, and \ ``state``\  is the new state.
         Otherwise \ ``state``\  is the old state.
+    :type pre_swap: bool
 
 .. _`drm_atomic_helper_wait_for_fences.description`:
 
@@ -363,11 +384,13 @@ drm_atomic_helper_wait_for_vblanks
 
     wait for vblank on crtcs
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_wait_for_vblanks.description`:
 
@@ -393,11 +416,13 @@ drm_atomic_helper_wait_for_flip_done
 
     wait for all page flips to be done
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_wait_for_flip_done.description`:
 
@@ -423,8 +448,9 @@ drm_atomic_helper_commit_tail
 
     commit atomic update to hardware
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_commit_tail.description`:
 
@@ -449,8 +475,9 @@ drm_atomic_helper_commit_tail_rpm
 
     commit atomic update to hardware
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         new modeset state to be committed
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_commit_tail_rpm.description`:
 
@@ -472,11 +499,13 @@ drm_atomic_helper_async_check
 
     check if state can be commited asynchronously
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         the driver state object
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_async_check.description`:
 
@@ -500,11 +529,13 @@ drm_atomic_helper_async_commit
 
     commit state asynchronously
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         the driver state object
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_async_commit.description`:
 
@@ -526,14 +557,17 @@ drm_atomic_helper_commit
 
     commit validated state object
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         the driver state object
+    :type state: struct drm_atomic_state \*
 
-    :param bool nonblock:
+    :param nonblock:
         whether nonblocking behavior is requested.
+    :type nonblock: bool
 
 .. _`drm_atomic_helper_commit.description`:
 
@@ -607,11 +641,13 @@ drm_atomic_helper_setup_commit
 
     setup possibly nonblocking commit
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         new modeset state to be committed
+    :type state: struct drm_atomic_state \*
 
-    :param bool nonblock:
+    :param nonblock:
         whether nonblocking behavior is requested.
+    :type nonblock: bool
 
 .. _`drm_atomic_helper_setup_commit.description`:
 
@@ -669,8 +705,9 @@ drm_atomic_helper_wait_for_dependencies
 
     wait for required preceeding commits
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_wait_for_dependencies.description`:
 
@@ -685,6 +722,36 @@ by calling \ :c:func:`drm_crtc_send_vblank_event`\  on the \ :c:type:`drm_crtc_s
 This is part of the atomic helper support for nonblocking commits, see
 \ :c:func:`drm_atomic_helper_setup_commit`\  for an overview.
 
+.. _`drm_atomic_helper_fake_vblank`:
+
+drm_atomic_helper_fake_vblank
+=============================
+
+.. c:function:: void drm_atomic_helper_fake_vblank(struct drm_atomic_state *old_state)
+
+    fake VBLANK events if needed
+
+    :param old_state:
+        atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
+
+.. _`drm_atomic_helper_fake_vblank.description`:
+
+Description
+-----------
+
+This function walks all CRTCs and fake VBLANK events on those with
+\ :c:type:`drm_crtc_state.no_vblank <drm_crtc_state>`\  set to true and \ :c:type:`drm_crtc_state.event <drm_crtc_state>`\  != NULL.
+The primary use of this function is writeback connectors working in oneshot
+mode and faking VBLANK events. In this case they only fake the VBLANK event
+when a job is queued, and any change to the pipeline that does not touch the
+connector is leading to timeouts when calling
+\ :c:func:`drm_atomic_helper_wait_for_vblanks`\  or
+\ :c:func:`drm_atomic_helper_wait_for_flip_done`\ .
+
+This is part of the atomic helper support for nonblocking commits, see
+\ :c:func:`drm_atomic_helper_setup_commit`\  for an overview.
+
 .. _`drm_atomic_helper_commit_hw_done`:
 
 drm_atomic_helper_commit_hw_done
@@ -694,8 +761,9 @@ drm_atomic_helper_commit_hw_done
 
     setup possible nonblocking commit
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_commit_hw_done.description`:
 
@@ -722,8 +790,9 @@ drm_atomic_helper_commit_cleanup_done
 
     signal completion of commit
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_commit_cleanup_done.description`:
 
@@ -746,11 +815,13 @@ drm_atomic_helper_prepare_planes
 
     prepare plane resources before commit
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state object with new state structures
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_prepare_planes.description`:
 
@@ -778,14 +849,17 @@ drm_atomic_helper_commit_planes
 
     commit plane state
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
-    :param uint32_t flags:
+    :param flags:
         flags for committing plane state
+    :type flags: uint32_t
 
 .. _`drm_atomic_helper_commit_planes.description`:
 
@@ -836,8 +910,9 @@ drm_atomic_helper_commit_planes_on_crtc
 
     commit plane state for a crtc
 
-    :param struct drm_crtc_state \*old_crtc_state:
+    :param old_crtc_state:
         atomic state object with the old crtc state
+    :type old_crtc_state: struct drm_crtc_state \*
 
 .. _`drm_atomic_helper_commit_planes_on_crtc.description`:
 
@@ -866,11 +941,13 @@ drm_atomic_helper_disable_planes_on_crtc
 
     helper to disable CRTC's planes
 
-    :param struct drm_crtc_state \*old_crtc_state:
+    :param old_crtc_state:
         atomic state object with the old CRTC state
+    :type old_crtc_state: struct drm_crtc_state \*
 
-    :param bool atomic:
+    :param atomic:
         if set, synchronize with CRTC's atomic_begin/flush hooks
+    :type atomic: bool
 
 .. _`drm_atomic_helper_disable_planes_on_crtc.description`:
 
@@ -897,11 +974,13 @@ drm_atomic_helper_cleanup_planes
 
     cleanup plane resources after commit
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*old_state:
+    :param old_state:
         atomic state object with old state structures
+    :type old_state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_cleanup_planes.description`:
 
@@ -924,11 +1003,13 @@ drm_atomic_helper_swap_state
 
     store atomic state into current sw state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state
+    :type state: struct drm_atomic_state \*
 
-    :param bool stall:
+    :param stall:
         stall for preceeding commits
+    :type stall: bool
 
 .. _`drm_atomic_helper_swap_state.description`:
 
@@ -978,41 +1059,53 @@ drm_atomic_helper_update_plane
 
     Helper for primary plane update using atomic
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane object to update
+    :type plane: struct drm_plane \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         owning CRTC of owning plane
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         framebuffer to flip onto plane
+    :type fb: struct drm_framebuffer \*
 
-    :param int crtc_x:
+    :param crtc_x:
         x offset of primary plane on crtc
+    :type crtc_x: int
 
-    :param int crtc_y:
+    :param crtc_y:
         y offset of primary plane on crtc
+    :type crtc_y: int
 
-    :param unsigned int crtc_w:
+    :param crtc_w:
         width of primary plane rectangle on crtc
+    :type crtc_w: unsigned int
 
-    :param unsigned int crtc_h:
+    :param crtc_h:
         height of primary plane rectangle on crtc
+    :type crtc_h: unsigned int
 
-    :param uint32_t src_x:
+    :param src_x:
         x offset of \ ``fb``\  for panning
+    :type src_x: uint32_t
 
-    :param uint32_t src_y:
+    :param src_y:
         y offset of \ ``fb``\  for panning
+    :type src_y: uint32_t
 
-    :param uint32_t src_w:
+    :param src_w:
         width of source rectangle in \ ``fb``\ 
+    :type src_w: uint32_t
 
-    :param uint32_t src_h:
+    :param src_h:
         height of source rectangle in \ ``fb``\ 
+    :type src_h: uint32_t
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquire context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_atomic_helper_update_plane.description`:
 
@@ -1037,11 +1130,13 @@ drm_atomic_helper_disable_plane
 
     Helper for primary plane disable using * atomic
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to disable
+    :type plane: struct drm_plane \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquire context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_atomic_helper_disable_plane.description`:
 
@@ -1066,11 +1161,13 @@ drm_atomic_helper_set_config
 
     set a new config from userspace
 
-    :param struct drm_mode_set \*set:
+    :param set:
         mode set configuration
+    :type set: struct drm_mode_set \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquisition context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_atomic_helper_set_config.description`:
 
@@ -1088,7 +1185,7 @@ For backwards compatibility with old userspace this automatically
 resets the "link-status" property to GOOD, to force any link
 re-training. The SETCRTC ioctl does not define whether an update does
 need a full modeset or just a plane update, hence we're allowed to do
-that. See also \ :c:func:`drm_mode_connector_set_link_status_property`\ .
+that. See also \ :c:func:`drm_connector_set_link_status_property`\ .
 
 .. _`drm_atomic_helper_set_config.return`:
 
@@ -1106,11 +1203,13 @@ drm_atomic_helper_disable_all
 
     disable all currently active outputs
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquisition context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_atomic_helper_disable_all.description`:
 
@@ -1152,8 +1251,9 @@ drm_atomic_helper_shutdown
 
     shutdown all CRTC
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_atomic_helper_shutdown.description`:
 
@@ -1176,8 +1276,9 @@ drm_atomic_helper_suspend
 
     subsystem-level suspend helper
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_atomic_helper_suspend.description`:
 
@@ -1222,11 +1323,13 @@ drm_atomic_helper_commit_duplicated_state
 
     commit duplicated state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         duplicated atomic state to commit
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         pointer to acquire_ctx to use for commit.
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_atomic_helper_commit_duplicated_state.description`:
 
@@ -1260,11 +1363,13 @@ drm_atomic_helper_resume
 
     subsystem-level resume helper
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state to resume to
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_helper_resume.description`:
 
@@ -1299,20 +1404,25 @@ drm_atomic_helper_page_flip
 
     execute a legacy page flip
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM crtc
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         DRM framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_pending_vblank_event \*event:
+    :param event:
         optional DRM event to signal upon completion
+    :type event: struct drm_pending_vblank_event \*
 
-    :param uint32_t flags:
+    :param flags:
         flip flags for non-vblank sync'ed updates
+    :type flags: uint32_t
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquisition context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_atomic_helper_page_flip.description`:
 
@@ -1345,23 +1455,29 @@ drm_atomic_helper_page_flip_target
 
     do page flip on target vblank period.
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM crtc
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         DRM framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_pending_vblank_event \*event:
+    :param event:
         optional DRM event to signal upon completion
+    :type event: struct drm_pending_vblank_event \*
 
-    :param uint32_t flags:
+    :param flags:
         flip flags for non-vblank sync'ed updates
+    :type flags: uint32_t
 
-    :param uint32_t target:
+    :param target:
         specifying the target vblank period when the flip to take effect
+    :type target: uint32_t
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquisition context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_atomic_helper_page_flip_target.description`:
 
@@ -1388,8 +1504,9 @@ drm_atomic_helper_best_encoder
 
     Helper for \ :c:type:`drm_connector_helper_funcs.best_encoder <drm_connector_helper_funcs>`\  callback
 
-    :param struct drm_connector \*connector:
+    :param connector:
         Connector control structure
+    :type connector: struct drm_connector \*
 
 .. _`drm_atomic_helper_best_encoder.description`:
 
@@ -1431,8 +1548,9 @@ drm_atomic_helper_crtc_reset
 
     default \ :c:type:`drm_crtc_funcs.reset <drm_crtc_funcs>`\  hook for CRTCs
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm CRTC
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_atomic_helper_crtc_reset.description`:
 
@@ -1451,11 +1569,13 @@ __drm_atomic_helper_crtc_duplicate_state
 
     copy atomic CRTC state
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC object
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_crtc_state \*state:
+    :param state:
         atomic CRTC state
+    :type state: struct drm_crtc_state \*
 
 .. _`__drm_atomic_helper_crtc_duplicate_state.description`:
 
@@ -1474,8 +1594,9 @@ drm_atomic_helper_crtc_duplicate_state
 
     default state duplicate hook
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm CRTC
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_atomic_helper_crtc_duplicate_state.description`:
 
@@ -1494,8 +1615,9 @@ __drm_atomic_helper_crtc_destroy_state
 
     release CRTC state
 
-    :param struct drm_crtc_state \*state:
+    :param state:
         CRTC state object to release
+    :type state: struct drm_crtc_state \*
 
 .. _`__drm_atomic_helper_crtc_destroy_state.description`:
 
@@ -1515,11 +1637,13 @@ drm_atomic_helper_crtc_destroy_state
 
     default state destroy hook
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm CRTC
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_crtc_state \*state:
+    :param state:
         CRTC state object to release
+    :type state: struct drm_crtc_state \*
 
 .. _`drm_atomic_helper_crtc_destroy_state.description`:
 
@@ -1528,6 +1652,31 @@ Description
 
 Default CRTC state destroy hook for drivers which don't have their own
 subclassed CRTC state structure.
+
+.. _`__drm_atomic_helper_plane_reset`:
+
+__drm_atomic_helper_plane_reset
+===============================
+
+.. c:function:: void __drm_atomic_helper_plane_reset(struct drm_plane *plane, struct drm_plane_state *state)
+
+    resets planes state to default values
+
+    :param plane:
+        plane object, must not be NULL
+    :type plane: struct drm_plane \*
+
+    :param state:
+        atomic plane state, must not be NULL
+    :type state: struct drm_plane_state \*
+
+.. _`__drm_atomic_helper_plane_reset.description`:
+
+Description
+-----------
+
+Initializes plane state to default. This is useful for drivers that subclass
+the plane state.
 
 .. _`drm_atomic_helper_plane_reset`:
 
@@ -1538,8 +1687,9 @@ drm_atomic_helper_plane_reset
 
     default \ :c:type:`drm_plane_funcs.reset <drm_plane_funcs>`\  hook for planes
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
 .. _`drm_atomic_helper_plane_reset.description`:
 
@@ -1558,11 +1708,13 @@ __drm_atomic_helper_plane_duplicate_state
 
     copy atomic plane state
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane object
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*state:
+    :param state:
         atomic plane state
+    :type state: struct drm_plane_state \*
 
 .. _`__drm_atomic_helper_plane_duplicate_state.description`:
 
@@ -1581,8 +1733,9 @@ drm_atomic_helper_plane_duplicate_state
 
     default state duplicate hook
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
 .. _`drm_atomic_helper_plane_duplicate_state.description`:
 
@@ -1601,8 +1754,9 @@ __drm_atomic_helper_plane_destroy_state
 
     release plane state
 
-    :param struct drm_plane_state \*state:
+    :param state:
         plane state object to release
+    :type state: struct drm_plane_state \*
 
 .. _`__drm_atomic_helper_plane_destroy_state.description`:
 
@@ -1622,11 +1776,13 @@ drm_atomic_helper_plane_destroy_state
 
     default state destroy hook
 
-    :param struct drm_plane \*plane:
+    :param plane:
         drm plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*state:
+    :param state:
         plane state object to release
+    :type state: struct drm_plane_state \*
 
 .. _`drm_atomic_helper_plane_destroy_state.description`:
 
@@ -1645,11 +1801,13 @@ __drm_atomic_helper_connector_reset
 
     reset state on connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         drm connector
+    :type connector: struct drm_connector \*
 
-    :param struct drm_connector_state \*conn_state:
+    :param conn_state:
         connector state to assign
+    :type conn_state: struct drm_connector_state \*
 
 .. _`__drm_atomic_helper_connector_reset.description`:
 
@@ -1672,8 +1830,9 @@ drm_atomic_helper_connector_reset
 
     default \ :c:type:`drm_connector_funcs.reset <drm_connector_funcs>`\  hook for connectors
 
-    :param struct drm_connector \*connector:
+    :param connector:
         drm connector
+    :type connector: struct drm_connector \*
 
 .. _`drm_atomic_helper_connector_reset.description`:
 
@@ -1693,11 +1852,13 @@ __drm_atomic_helper_connector_duplicate_state
 
     copy atomic connector state
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector object
+    :type connector: struct drm_connector \*
 
-    :param struct drm_connector_state \*state:
+    :param state:
         atomic connector state
+    :type state: struct drm_connector_state \*
 
 .. _`__drm_atomic_helper_connector_duplicate_state.description`:
 
@@ -1716,8 +1877,9 @@ drm_atomic_helper_connector_duplicate_state
 
     default state duplicate hook
 
-    :param struct drm_connector \*connector:
+    :param connector:
         drm connector
+    :type connector: struct drm_connector \*
 
 .. _`drm_atomic_helper_connector_duplicate_state.description`:
 
@@ -1736,11 +1898,13 @@ drm_atomic_helper_duplicate_state
 
     duplicate an atomic state object
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquisition context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_atomic_helper_duplicate_state.description`:
 
@@ -1783,8 +1947,9 @@ __drm_atomic_helper_connector_destroy_state
 
     release connector state
 
-    :param struct drm_connector_state \*state:
+    :param state:
         connector state object to release
+    :type state: struct drm_connector_state \*
 
 .. _`__drm_atomic_helper_connector_destroy_state.description`:
 
@@ -1804,11 +1969,13 @@ drm_atomic_helper_connector_destroy_state
 
     default state destroy hook
 
-    :param struct drm_connector \*connector:
+    :param connector:
         drm connector
+    :type connector: struct drm_connector \*
 
-    :param struct drm_connector_state \*state:
+    :param state:
         connector state object to release
+    :type state: struct drm_connector_state \*
 
 .. _`drm_atomic_helper_connector_destroy_state.description`:
 
@@ -1827,23 +1994,29 @@ drm_atomic_helper_legacy_gamma_set
 
     set the legacy gamma correction table
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC object
+    :type crtc: struct drm_crtc \*
 
-    :param u16 \*red:
+    :param red:
         red correction table
+    :type red: u16 \*
 
-    :param u16 \*green:
+    :param green:
         green correction table
+    :type green: u16 \*
 
-    :param u16 \*blue:
+    :param blue:
         green correction table
+    :type blue: u16 \*
 
-    :param uint32_t size:
+    :param size:
         size of the tables
+    :type size: uint32_t
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquire context
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_atomic_helper_legacy_gamma_set.description`:
 
@@ -1864,11 +2037,13 @@ __drm_atomic_helper_private_obj_duplicate_state
 
     copy atomic private state
 
-    :param struct drm_private_obj \*obj:
+    :param obj:
         CRTC object
+    :type obj: struct drm_private_obj \*
 
-    :param struct drm_private_state \*state:
+    :param state:
         new private object state
+    :type state: struct drm_private_state \*
 
 .. _`__drm_atomic_helper_private_obj_duplicate_state.description`:
 

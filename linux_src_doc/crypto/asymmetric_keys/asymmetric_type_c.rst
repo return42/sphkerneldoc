@@ -10,17 +10,21 @@ find_asymmetric_key
 
     Find a key by ID.
 
-    :param struct key \*keyring:
+    :param keyring:
         The keys to search.
+    :type keyring: struct key \*
 
-    :param const struct asymmetric_key_id \*id_0:
+    :param id_0:
         The first ID to look for or NULL.
+    :type id_0: const struct asymmetric_key_id \*
 
-    :param const struct asymmetric_key_id \*id_1:
+    :param id_1:
         The second ID to look for or NULL.
+    :type id_1: const struct asymmetric_key_id \*
 
-    :param bool partial:
+    :param partial:
         Use partial match if true, exact if false.
+    :type partial: bool
 
 .. _`find_asymmetric_key.description`:
 
@@ -40,17 +44,21 @@ asymmetric_key_generate_id
 
     Construct an asymmetric key ID
 
-    :param const void \*val_1:
+    :param val_1:
         First binary blob
+    :type val_1: const void \*
 
-    :param size_t len_1:
+    :param len_1:
         Length of first binary blob
+    :type len_1: size_t
 
-    :param const void \*val_2:
+    :param val_2:
         Second binary blob
+    :type val_2: const void \*
 
-    :param size_t len_2:
+    :param len_2:
         Length of second binary blob
+    :type len_2: size_t
 
 .. _`asymmetric_key_generate_id.description`:
 
@@ -68,11 +76,13 @@ asymmetric_key_id_same
 
     Return true if two asymmetric keys IDs are the same.
 
-    :param const struct asymmetric_key_id \*kid1:
+    :param kid1:
         *undescribed*
+    :type kid1: const struct asymmetric_key_id \*
 
-    :param const struct asymmetric_key_id \*kid2:
+    :param kid2:
         *undescribed*
+    :type kid2: const struct asymmetric_key_id \*
 
 .. _`asymmetric_key_id_partial`:
 
@@ -83,11 +93,13 @@ asymmetric_key_id_partial
 
     Return true if two asymmetric keys IDs partially match
 
-    :param const struct asymmetric_key_id \*kid1:
+    :param kid1:
         *undescribed*
+    :type kid1: const struct asymmetric_key_id \*
 
-    :param const struct asymmetric_key_id \*kid2:
+    :param kid2:
         *undescribed*
+    :type kid2: const struct asymmetric_key_id \*
 
 .. _`asymmetric_match_key_ids`:
 
@@ -98,11 +110,13 @@ asymmetric_match_key_ids
 
     Search asymmetric key IDs
 
-    :param const struct asymmetric_key_ids \*kids:
+    :param kids:
         The list of key IDs to check
+    :type kids: const struct asymmetric_key_ids \*
 
-    :param const struct asymmetric_key_id \*match_id:
+    :param match_id:
         The key ID we're looking for
+    :type match_id: const struct asymmetric_key_id \*
 
     :param bool (\*match)(const struct asymmetric_key_id \*kid1, const struct asymmetric_key_id \*kid2):
         The match function to use
@@ -116,8 +130,9 @@ asymmetric_key_hex_to_key_id
 
     Convert a hex string into a key ID.
 
-    :param const char \*id:
+    :param id:
         The ID as a hex string.
+    :type id: const char \*
 
 .. _`register_asymmetric_key_parser`:
 
@@ -128,8 +143,9 @@ register_asymmetric_key_parser
 
     Register a asymmetric key blob parser
 
-    :param struct asymmetric_key_parser \*parser:
+    :param parser:
         The parser to register
+    :type parser: struct asymmetric_key_parser \*
 
 .. _`unregister_asymmetric_key_parser`:
 
@@ -140,8 +156,9 @@ unregister_asymmetric_key_parser
 
     Unregister a asymmetric key blob parser
 
-    :param struct asymmetric_key_parser \*parser:
+    :param parser:
         The parser to unregister
+    :type parser: struct asymmetric_key_parser \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,11 +8,13 @@ drm_lock_take
 
 .. c:function:: int drm_lock_take(struct drm_lock_data *lock_data, unsigned int context)
 
-    :param struct drm_lock_data \*lock_data:
+    :param lock_data:
         *undescribed*
+    :type lock_data: struct drm_lock_data \*
 
-    :param unsigned int context:
+    :param context:
         *undescribed*
+    :type context: unsigned int
 
 .. _`drm_lock_take.description`:
 
@@ -34,11 +36,13 @@ drm_lock_transfer
 
     inside \*\_unlock to give lock to kernel before calling \*\_dma_schedule.
 
-    :param struct drm_lock_data \*lock_data:
+    :param lock_data:
         *undescribed*
+    :type lock_data: struct drm_lock_data \*
 
-    :param unsigned int context:
+    :param context:
         *undescribed*
+    :type context: unsigned int
 
 .. _`drm_lock_transfer.description`:
 
@@ -60,14 +64,17 @@ drm_legacy_lock
 
 .. c:function:: int drm_legacy_lock(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_lock.description`:
 
@@ -89,14 +96,17 @@ drm_legacy_unlock
 
 .. c:function:: int drm_legacy_unlock(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_unlock.description`:
 
@@ -120,8 +130,9 @@ drm_legacy_idlelock_take
 
     with the kernel context if it is free, otherwise it gets the highest priority when and if it is eventually released.
 
-    :param struct drm_lock_data \*lock_data:
+    :param lock_data:
         *undescribed*
+    :type lock_data: struct drm_lock_data \*
 
 .. _`drm_legacy_idlelock_take.description`:
 

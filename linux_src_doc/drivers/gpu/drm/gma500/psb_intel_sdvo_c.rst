@@ -10,11 +10,13 @@ psb_intel_sdvo_write_sdvox
 
     SDVOB and SDVOC to work around apparent hardware issues (according to comments in the BIOS).
 
-    :param struct psb_intel_sdvo \*psb_intel_sdvo:
+    :param psb_intel_sdvo:
         *undescribed*
+    :type psb_intel_sdvo: struct psb_intel_sdvo \*
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
 .. _`psb_intel_sdvo_get_trained_inputs`:
 
@@ -23,14 +25,17 @@ psb_intel_sdvo_get_trained_inputs
 
 .. c:function:: bool psb_intel_sdvo_get_trained_inputs(struct psb_intel_sdvo *psb_intel_sdvo, bool *input_1, bool *input_2)
 
-    :param struct psb_intel_sdvo \*psb_intel_sdvo:
+    :param psb_intel_sdvo:
         *undescribed*
+    :type psb_intel_sdvo: struct psb_intel_sdvo \*
 
-    :param bool \*input_1:
+    :param input_1:
         *undescribed*
+    :type input_1: bool \*
 
-    :param bool \*input_2:
+    :param input_2:
         *undescribed*
+    :type input_2: bool \*
 
 .. _`psb_intel_sdvo_get_trained_inputs.description`:
 
@@ -49,14 +54,17 @@ psb_intel_sdvo_select_ddc_bus
 
     SDVO output based on the controlled output.
 
-    :param struct drm_psb_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct drm_psb_private \*
 
-    :param struct psb_intel_sdvo \*sdvo:
+    :param sdvo:
         *undescribed*
+    :type sdvo: struct psb_intel_sdvo \*
 
-    :param u32 reg:
+    :param reg:
         *undescribed*
+    :type reg: u32
 
 .. _`psb_intel_sdvo_select_ddc_bus.description`:
 

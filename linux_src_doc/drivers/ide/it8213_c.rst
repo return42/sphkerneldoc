@@ -10,11 +10,13 @@ it8213_set_pio_mode
 
     set host controller for PIO mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`it8213_set_pio_mode.description`:
 
@@ -32,11 +34,13 @@ it8213_set_dma_mode
 
     set host controller for DMA mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`it8213_set_dma_mode.description`:
 
@@ -54,11 +58,13 @@ it8213_init_one
 
     pci layer discovery entry
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         ident table entry
+    :type id: const struct pci_device_id \*
 
 .. _`it8213_init_one.description`:
 

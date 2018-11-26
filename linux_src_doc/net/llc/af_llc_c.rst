@@ -10,8 +10,9 @@ llc_ui_next_link_no
 
     return the next unused link number for a sap
 
-    :param int sap:
+    :param sap:
         Address of sap to get link number from.
+    :type sap: int
 
 .. _`llc_ui_next_link_no.description`:
 
@@ -29,8 +30,9 @@ llc_proto_type
 
     return eth protocol for ARP header type
 
-    :param u16 arphrd:
+    :param arphrd:
         ARP header type.
+    :type arphrd: u16
 
 .. _`llc_proto_type.description`:
 
@@ -48,8 +50,9 @@ llc_ui_addr_null
 
     determines if a address structure is null
 
-    :param struct sockaddr_llc \*addr:
+    :param addr:
         Address to test if null.
+    :type addr: struct sockaddr_llc \*
 
 .. _`llc_ui_header_len`:
 
@@ -60,11 +63,13 @@ llc_ui_header_len
 
     return length of llc header based on operation
 
-    :param struct sock \*sk:
+    :param sk:
         Socket which contains a valid llc socket type.
+    :type sk: struct sock \*
 
-    :param struct sockaddr_llc \*addr:
+    :param addr:
         Complete sockaddr_llc structure received from the user.
+    :type addr: struct sockaddr_llc \*
 
 .. _`llc_ui_header_len.description`:
 
@@ -80,18 +85,21 @@ Returns the correct llc header length.
 llc_ui_send_data
 ================
 
-.. c:function:: int llc_ui_send_data(struct sock*sk, struct sk_buff *skb, int noblock)
+.. c:function:: int llc_ui_send_data(struct sock* sk, struct sk_buff *skb, int noblock)
 
     send data via reliable llc2 connection
 
-    :param struct sock\*sk:
+    :param sk:
         Connection the socket is using.
+    :type sk: struct sock\*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Data the user wishes to send.
+    :type skb: struct sk_buff \*
 
-    :param int noblock:
+    :param noblock:
         can we block waiting for data?
+    :type noblock: int
 
 .. _`llc_ui_send_data.description`:
 
@@ -110,17 +118,21 @@ llc_ui_create
 
     alloc and init a new llc_ui socket
 
-    :param struct net \*net:
+    :param net:
         network namespace (must be default network)
+    :type net: struct net \*
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to initialize and attach allocated sk to.
+    :type sock: struct socket \*
 
-    :param int protocol:
+    :param protocol:
         Unused.
+    :type protocol: int
 
-    :param int kern:
+    :param kern:
         on behalf of kernel or userspace
+    :type kern: int
 
 .. _`llc_ui_create.description`:
 
@@ -140,8 +152,9 @@ llc_ui_release
 
     shutdown socket
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to release.
+    :type sock: struct socket \*
 
 .. _`llc_ui_release.description`:
 
@@ -159,8 +172,9 @@ llc_ui_autoport
 
     provide dynamically allocate SAP number
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`llc_ui_autoport.description`:
 
@@ -180,11 +194,13 @@ llc_ui_autobind
 
     automatically bind a socket to a sap
 
-    :param struct socket \*sock:
+    :param sock:
         socket to bind
+    :type sock: struct socket \*
 
-    :param struct sockaddr_llc \*addr:
+    :param addr:
         address to connect to
+    :type addr: struct sockaddr_llc \*
 
 .. _`llc_ui_autobind.description`:
 
@@ -210,14 +226,17 @@ llc_ui_bind
 
     bind a socket to a specific address.
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to bind an address to.
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*uaddr:
+    :param uaddr:
         Address the user wants the socket bound to.
+    :type uaddr: struct sockaddr \*
 
-    :param int addrlen:
+    :param addrlen:
         Length of the uaddr structure.
+    :type addrlen: int
 
 .. _`llc_ui_bind.description`:
 
@@ -247,11 +266,13 @@ llc_ui_shutdown
 
     shutdown a connect llc2 socket.
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to shutdown.
+    :type sock: struct socket \*
 
-    :param int how:
+    :param how:
         What part of the socket to shutdown.
+    :type how: int
 
 .. _`llc_ui_shutdown.description`:
 
@@ -279,17 +300,21 @@ llc_ui_connect
 
     Connect to a remote llc2 mac + sap.
 
-    :param struct socket \*sock:
+    :param sock:
         Socket which will be connected to the remote destination.
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*uaddr:
+    :param uaddr:
         Remote and possibly the local address of the new connection.
+    :type uaddr: struct sockaddr \*
 
-    :param int addrlen:
+    :param addrlen:
         Size of uaddr structure.
+    :type addrlen: int
 
-    :param int flags:
+    :param flags:
         Operational flags specified by the user.
+    :type flags: int
 
 .. _`llc_ui_connect.description`:
 
@@ -318,11 +343,13 @@ llc_ui_listen
 
     allow a normal socket to accept incoming connections
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to allow incoming connections on.
+    :type sock: struct socket \*
 
-    :param int backlog:
+    :param backlog:
         Number of connections to queue.
+    :type backlog: int
 
 .. _`llc_ui_listen.description`:
 
@@ -341,17 +368,21 @@ llc_ui_accept
 
     accept a new incoming connection.
 
-    :param struct socket \*sock:
+    :param sock:
         Socket which connections arrive on.
+    :type sock: struct socket \*
 
-    :param struct socket \*newsock:
+    :param newsock:
         Socket to move incoming connection to.
+    :type newsock: struct socket \*
 
-    :param int flags:
+    :param flags:
         User specified operational flags.
+    :type flags: int
 
-    :param bool kern:
+    :param kern:
         If the socket is kernel internal
+    :type kern: bool
 
 .. _`llc_ui_accept.description`:
 
@@ -370,17 +401,21 @@ llc_ui_recvmsg
 
     copy received data to the socket user.
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to copy data from.
+    :type sock: struct socket \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         Various user space related information.
+    :type msg: struct msghdr \*
 
-    :param size_t len:
+    :param len:
         Size of user buffer.
+    :type len: size_t
 
-    :param int flags:
+    :param flags:
         User specified flags.
+    :type flags: int
 
 .. _`llc_ui_recvmsg.description`:
 
@@ -399,14 +434,17 @@ llc_ui_sendmsg
 
     Transmit data provided by the socket user.
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to transmit data from.
+    :type sock: struct socket \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         Various user related information.
+    :type msg: struct msghdr \*
 
-    :param size_t len:
+    :param len:
         Length of data to transmit.
+    :type len: size_t
 
 .. _`llc_ui_sendmsg.description`:
 
@@ -425,14 +463,17 @@ llc_ui_getname
 
     return the address info of a socket
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to get address of.
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*uaddr:
+    :param uaddr:
         Address structure to return information.
+    :type uaddr: struct sockaddr \*
 
-    :param int peer:
+    :param peer:
         Does user want local or remote address information.
+    :type peer: int
 
 .. _`llc_ui_getname.description`:
 
@@ -450,14 +491,17 @@ llc_ui_ioctl
 
     io controls for PF_LLC
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to get/set info
+    :type sock: struct socket \*
 
-    :param unsigned int cmd:
+    :param cmd:
         command
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         optional argument for cmd
+    :type arg: unsigned long
 
 .. _`llc_ui_ioctl.description`:
 
@@ -475,20 +519,25 @@ llc_ui_setsockopt
 
     set various connection specific parameters.
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to set options on.
+    :type sock: struct socket \*
 
-    :param int level:
+    :param level:
         Socket level user is requesting operations on.
+    :type level: int
 
-    :param int optname:
+    :param optname:
         Operation name.
+    :type optname: int
 
-    :param char __user \*optval:
+    :param optval:
         User provided operation data.
+    :type optval: char __user \*
 
-    :param unsigned int optlen:
+    :param optlen:
         Length of optval.
+    :type optlen: unsigned int
 
 .. _`llc_ui_setsockopt.description`:
 
@@ -506,20 +555,25 @@ llc_ui_getsockopt
 
     get connection specific socket info
 
-    :param struct socket \*sock:
+    :param sock:
         Socket to get information from.
+    :type sock: struct socket \*
 
-    :param int level:
+    :param level:
         Socket level user is requesting operations on.
+    :type level: int
 
-    :param int optname:
+    :param optname:
         Operation name.
+    :type optname: int
 
-    :param char __user \*optval:
+    :param optval:
         Variable to return operation data in.
+    :type optval: char __user \*
 
-    :param int __user \*optlen:
+    :param optlen:
         Length of optval.
+    :type optlen: int __user \*
 
 .. _`llc_ui_getsockopt.description`:
 

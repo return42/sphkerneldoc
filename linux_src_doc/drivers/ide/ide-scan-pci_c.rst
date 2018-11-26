@@ -10,8 +10,9 @@ ide_scan_pcidev
 
     find an IDE driver for a device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to check
+    :type dev: struct pci_dev \*
 
 .. _`ide_scan_pcidev.description`:
 
@@ -31,8 +32,9 @@ ide_scan_pcibus
 
     perform the initial IDE driver scan
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ide_scan_pcibus.description`:
 

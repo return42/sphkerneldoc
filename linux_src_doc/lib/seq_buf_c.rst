@@ -10,11 +10,13 @@ seq_buf_can_fit
 
     can the new data fit in the current buffer?
 
-    :param struct seq_buf \*s:
+    :param s:
         the seq_buf descriptor
+    :type s: struct seq_buf \*
 
-    :param size_t len:
+    :param len:
         The length to see if it can fit in the current buffer
+    :type len: size_t
 
 .. _`seq_buf_can_fit.description`:
 
@@ -33,11 +35,13 @@ seq_buf_print_seq
 
     move the contents of seq_buf into a seq_file
 
-    :param struct seq_file \*m:
+    :param m:
         the seq_file descriptor that is the destination
+    :type m: struct seq_file \*
 
-    :param struct seq_buf \*s:
+    :param s:
         the seq_buf descriptor that is the source.
+    :type s: struct seq_buf \*
 
 .. _`seq_buf_print_seq.description`:
 
@@ -55,14 +59,17 @@ seq_buf_vprintf
 
     sequence printing of information.
 
-    :param struct seq_buf \*s:
+    :param s:
         seq_buf descriptor
+    :type s: struct seq_buf \*
 
-    :param const char \*fmt:
+    :param fmt:
         printf format string
+    :type fmt: const char \*
 
-    :param va_list args:
+    :param args:
         va_list of arguments from a \ :c:func:`printf`\  type function
+    :type args: va_list
 
 .. _`seq_buf_vprintf.description`:
 
@@ -82,11 +89,13 @@ seq_buf_printf
 
     sequence printing of information
 
-    :param struct seq_buf \*s:
+    :param s:
         seq_buf descriptor
+    :type s: struct seq_buf \*
 
-    :param const char \*fmt:
+    :param fmt:
         printf format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -109,14 +118,17 @@ seq_buf_bprintf
 
     Write the printf string from binary arguments
 
-    :param struct seq_buf \*s:
+    :param s:
         seq_buf descriptor
+    :type s: struct seq_buf \*
 
-    :param const char \*fmt:
+    :param fmt:
         The format string for the \ ``binary``\  arguments
+    :type fmt: const char \*
 
-    :param const u32 \*binary:
+    :param binary:
         The binary arguments for \ ``fmt``\ .
+    :type binary: const u32 \*
 
 .. _`seq_buf_bprintf.description`:
 
@@ -143,11 +155,13 @@ seq_buf_puts
 
     sequence printing of simple string
 
-    :param struct seq_buf \*s:
+    :param s:
         seq_buf descriptor
+    :type s: struct seq_buf \*
 
-    :param const char \*str:
+    :param str:
         simple string to record
+    :type str: const char \*
 
 .. _`seq_buf_puts.description`:
 
@@ -167,11 +181,13 @@ seq_buf_putc
 
     sequence printing of simple character
 
-    :param struct seq_buf \*s:
+    :param s:
         seq_buf descriptor
+    :type s: struct seq_buf \*
 
-    :param unsigned char c:
+    :param c:
         simple character to record
+    :type c: unsigned char
 
 .. _`seq_buf_putc.description`:
 
@@ -191,14 +207,17 @@ seq_buf_putmem
 
     write raw data into the sequenc buffer
 
-    :param struct seq_buf \*s:
+    :param s:
         seq_buf descriptor
+    :type s: struct seq_buf \*
 
-    :param const void \*mem:
+    :param mem:
         The raw memory to copy into the buffer
+    :type mem: const void \*
 
-    :param unsigned int len:
+    :param len:
         The length of the raw memory to copy (in bytes)
+    :type len: unsigned int
 
 .. _`seq_buf_putmem.description`:
 
@@ -220,14 +239,17 @@ seq_buf_putmem_hex
 
     write raw memory into the buffer in ASCII hex
 
-    :param struct seq_buf \*s:
+    :param s:
         seq_buf descriptor
+    :type s: struct seq_buf \*
 
-    :param const void \*mem:
+    :param mem:
         The raw memory to write its hex ASCII representation of
+    :type mem: const void \*
 
-    :param unsigned int len:
+    :param len:
         The length of the raw memory to copy (in bytes)
+    :type len: unsigned int
 
 .. _`seq_buf_putmem_hex.description`:
 
@@ -249,14 +271,17 @@ seq_buf_path
 
     copy a path into the sequence buffer
 
-    :param struct seq_buf \*s:
+    :param s:
         seq_buf descriptor
+    :type s: struct seq_buf \*
 
-    :param const struct path \*path:
+    :param path:
         path to write into the sequence buffer.
+    :type path: const struct path \*
 
-    :param const char \*esc:
+    :param esc:
         set of characters to escape in the output
+    :type esc: const char \*
 
 .. _`seq_buf_path.description`:
 
@@ -276,14 +301,17 @@ seq_buf_to_user
 
     copy the squence buffer to user space
 
-    :param struct seq_buf \*s:
+    :param s:
         seq_buf descriptor
+    :type s: struct seq_buf \*
 
-    :param char __user \*ubuf:
+    :param ubuf:
         The userspace memory location to copy to
+    :type ubuf: char __user \*
 
-    :param int cnt:
+    :param cnt:
         The amount to copy
+    :type cnt: int
 
 .. _`seq_buf_to_user.description`:
 
@@ -300,7 +328,7 @@ it copied.
 
 On failure it returns -EBUSY if all of the content in the
 sequence has been already read, which includes nothing in the
-sequence (@s->len == \ ``s``\ ->readpos).
+sequence (@s->len == \ ``s->readpos``\ ).
 
 Returns -EFAULT if the copy to userspace fails.
 

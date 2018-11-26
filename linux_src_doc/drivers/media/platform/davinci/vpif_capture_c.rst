@@ -10,8 +10,9 @@ vpif_buffer_prepare
 
     callback function for buffer prepare
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         ptr to vb2_buffer
+    :type vb: struct vb2_buffer \*
 
 .. _`vpif_buffer_prepare.description`:
 
@@ -31,20 +32,25 @@ vpif_buffer_queue_setup
 
     Callback function for buffer setup.
 
-    :param struct vb2_queue \*vq:
+    :param vq:
         vb2_queue ptr
+    :type vq: struct vb2_queue \*
 
-    :param unsigned int \*nbuffers:
+    :param nbuffers:
         ptr to number of buffers requested by application
+    :type nbuffers: unsigned int \*
 
-    :param unsigned int \*nplanes:
+    :param nplanes:
         : contains number of distinct video planes needed to hold a frame
+    :type nplanes: unsigned int \*
 
-    :param unsigned int sizes:
+    :param sizes:
         contains the size (in bytes) of each plane.
+    :type sizes: unsigned int
 
-    :param struct device  \*alloc_devs:
+    :param alloc_devs:
         ptr to allocation context
+    :type alloc_devs: struct device  \*
 
 .. _`vpif_buffer_queue_setup.description`:
 
@@ -63,8 +69,9 @@ vpif_buffer_queue
 
     Callback function to add buffer to DMA queue
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         ptr to vb2_buffer
+    :type vb: struct vb2_buffer \*
 
 .. _`vpif_start_streaming`:
 
@@ -75,11 +82,13 @@ vpif_start_streaming
 
     Starts the DMA engine for streaming
 
-    :param struct vb2_queue \*vq:
+    :param vq:
         ptr to vb2_buffer
+    :type vq: struct vb2_queue \*
 
-    :param unsigned int count:
+    :param count:
         number of buffers
+    :type count: unsigned int
 
 .. _`vpif_stop_streaming`:
 
@@ -90,8 +99,9 @@ vpif_stop_streaming
 
     Stop the DMA engine
 
-    :param struct vb2_queue \*vq:
+    :param vq:
         ptr to vb2_queue
+    :type vq: struct vb2_queue \*
 
 .. _`vpif_stop_streaming.description`:
 
@@ -110,8 +120,9 @@ vpif_process_buffer_complete
 
     process a completed buffer
 
-    :param struct common_obj \*common:
+    :param common:
         ptr to common channel object
+    :type common: struct common_obj \*
 
 .. _`vpif_process_buffer_complete.description`:
 
@@ -131,8 +142,9 @@ vpif_schedule_next_buffer
 
     set next buffer address for capture
 
-    :param struct common_obj \*common:
+    :param common:
         ptr to common channel object
+    :type common: struct common_obj \*
 
 .. _`vpif_schedule_next_buffer.description`:
 
@@ -152,11 +164,13 @@ vpif_channel_isr
 
     ISR handler for vpif capture
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         dev_id ptr
+    :type dev_id: void \*
 
 .. _`vpif_channel_isr.description`:
 
@@ -175,8 +189,9 @@ vpif_update_std_info
 
     update standard related info
 
-    :param struct channel_obj \*ch:
+    :param ch:
         ptr to channel object
+    :type ch: struct channel_obj \*
 
 .. _`vpif_update_std_info.description`:
 
@@ -195,8 +210,9 @@ vpif_calculate_offsets
 
     This function calculates buffers offsets
 
-    :param struct channel_obj \*ch:
+    :param ch:
         ptr to channel object
+    :type ch: struct channel_obj \*
 
 .. _`vpif_calculate_offsets.description`:
 
@@ -215,8 +231,9 @@ vpif_get_default_field
 
     Get default field type based on interface
 
-    :param struct vpif_interface \*iface:
+    :param iface:
         ptr to vpif interface
+    :type iface: struct vpif_interface \*
 
 .. _`vpif_config_addr`:
 
@@ -227,11 +244,13 @@ vpif_config_addr
 
     function to configure buffer address in vpif
 
-    :param struct channel_obj \*ch:
+    :param ch:
         channel ptr
+    :type ch: struct channel_obj \*
 
-    :param int muxmode:
+    :param muxmode:
         channel mux mode
+    :type muxmode: int
 
 .. _`vpif_input_to_subdev`:
 
@@ -242,14 +261,17 @@ vpif_input_to_subdev
 
     Maps input to sub device
 
-    :param struct vpif_capture_config \*vpif_cfg:
+    :param vpif_cfg:
         global config ptr
+    :type vpif_cfg: struct vpif_capture_config \*
 
-    :param struct vpif_capture_chan_config \*chan_cfg:
+    :param chan_cfg:
         channel config ptr
+    :type chan_cfg: struct vpif_capture_chan_config \*
 
-    :param int input_index:
+    :param input_index:
         Given input index from application
+    :type input_index: int
 
 .. _`vpif_input_to_subdev.description`:
 
@@ -269,14 +291,17 @@ vpif_set_input
 
     Select an input
 
-    :param struct vpif_capture_config \*vpif_cfg:
+    :param vpif_cfg:
         global config ptr
+    :type vpif_cfg: struct vpif_capture_config \*
 
-    :param struct channel_obj \*ch:
+    :param ch:
         channel
+    :type ch: struct channel_obj \*
 
-    :param int index:
+    :param index:
         Given input index from application
+    :type index: int
 
 .. _`vpif_set_input.description`:
 
@@ -294,14 +319,17 @@ vpif_querystd
 
     querystd handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param v4l2_std_id \*std_id:
+    :param std_id:
         ptr to std id
+    :type std_id: v4l2_std_id \*
 
 .. _`vpif_querystd.description`:
 
@@ -319,14 +347,17 @@ vpif_g_std
 
     get STD handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param v4l2_std_id \*std:
+    :param std:
         ptr to std id
+    :type std: v4l2_std_id \*
 
 .. _`vpif_s_std`:
 
@@ -337,14 +368,17 @@ vpif_s_std
 
     set STD handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param v4l2_std_id std_id:
+    :param std_id:
         ptr to std id
+    :type std_id: v4l2_std_id
 
 .. _`vpif_enum_input`:
 
@@ -355,14 +389,17 @@ vpif_enum_input
 
     ENUMINPUT handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_input \*input:
+    :param input:
         ptr to input structure
+    :type input: struct v4l2_input \*
 
 .. _`vpif_g_input`:
 
@@ -373,14 +410,17 @@ vpif_g_input
 
     Get INPUT handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param unsigned int \*index:
+    :param index:
         ptr to input index
+    :type index: unsigned int \*
 
 .. _`vpif_s_input`:
 
@@ -391,14 +431,17 @@ vpif_s_input
 
     Set INPUT handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param unsigned int index:
+    :param index:
         input index
+    :type index: unsigned int
 
 .. _`vpif_enum_fmt_vid_cap`:
 
@@ -409,14 +452,17 @@ vpif_enum_fmt_vid_cap
 
     ENUM_FMT handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_fmtdesc \*fmt:
+    :param fmt:
         ptr to V4L2 format descriptor
+    :type fmt: struct v4l2_fmtdesc \*
 
 .. _`vpif_try_fmt_vid_cap`:
 
@@ -427,14 +473,17 @@ vpif_try_fmt_vid_cap
 
     TRY_FMT handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_format \*fmt:
+    :param fmt:
         ptr to v4l2 format structure
+    :type fmt: struct v4l2_format \*
 
 .. _`vpif_g_fmt_vid_cap`:
 
@@ -445,14 +494,17 @@ vpif_g_fmt_vid_cap
 
     Set INPUT handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_format \*fmt:
+    :param fmt:
         ptr to v4l2 format structure
+    :type fmt: struct v4l2_format \*
 
 .. _`vpif_s_fmt_vid_cap`:
 
@@ -463,14 +515,17 @@ vpif_s_fmt_vid_cap
 
     Set FMT handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_format \*fmt:
+    :param fmt:
         ptr to v4l2 format structure
+    :type fmt: struct v4l2_format \*
 
 .. _`vpif_querycap`:
 
@@ -481,14 +536,17 @@ vpif_querycap
 
     QUERYCAP handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_capability \*cap:
+    :param cap:
         ptr to v4l2_capability structure
+    :type cap: struct v4l2_capability \*
 
 .. _`vpif_enum_dv_timings`:
 
@@ -499,14 +557,17 @@ vpif_enum_dv_timings
 
     ENUM_DV_TIMINGS handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_enum_dv_timings \*timings:
+    :param timings:
         input timings
+    :type timings: struct v4l2_enum_dv_timings \*
 
 .. _`vpif_query_dv_timings`:
 
@@ -517,14 +578,17 @@ vpif_query_dv_timings
 
     QUERY_DV_TIMINGS handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_dv_timings \*timings:
+    :param timings:
         input timings
+    :type timings: struct v4l2_dv_timings \*
 
 .. _`vpif_s_dv_timings`:
 
@@ -535,14 +599,17 @@ vpif_s_dv_timings
 
     S_DV_TIMINGS handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_dv_timings \*timings:
+    :param timings:
         digital video timings
+    :type timings: struct v4l2_dv_timings \*
 
 .. _`vpif_g_dv_timings`:
 
@@ -553,14 +620,17 @@ vpif_g_dv_timings
 
     G_DV_TIMINGS handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_dv_timings \*timings:
+    :param timings:
         digital video timings
+    :type timings: struct v4l2_dv_timings \*
 
 .. _`initialize_vpif`:
 
@@ -571,8 +641,9 @@ initialize_vpif
 
     Initialize vpif data structures
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`initialize_vpif.description`:
 
@@ -590,8 +661,9 @@ vpif_probe
 
     This function probes the vpif capture driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer
+    :type pdev: struct platform_device \*
 
 .. _`vpif_probe.description`:
 
@@ -610,8 +682,9 @@ vpif_remove
 
     driver remove handler
 
-    :param struct platform_device \*device:
+    :param device:
         ptr to platform device structure
+    :type device: struct platform_device \*
 
 .. _`vpif_remove.description`:
 
@@ -629,8 +702,9 @@ vpif_suspend
 
     vpif device suspend
 
-    :param struct device \*dev:
+    :param dev:
         pointer to \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
 .. This file was automatic generated / don't edit.
 

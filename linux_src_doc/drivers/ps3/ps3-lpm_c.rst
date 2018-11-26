@@ -149,11 +149,13 @@ ps3_read_phys_ctr
 
     Read physical counter registers.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param u32 phys_ctr:
+    :param phys_ctr:
         *undescribed*
+    :type phys_ctr: u32
 
 .. _`ps3_read_phys_ctr.description`:
 
@@ -172,14 +174,17 @@ ps3_write_phys_ctr
 
     Write physical counter registers.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param u32 phys_ctr:
+    :param phys_ctr:
         *undescribed*
+    :type phys_ctr: u32
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
 .. _`ps3_write_phys_ctr.description`:
 
@@ -198,11 +203,13 @@ ps3_read_ctr
 
     Read counter.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param u32 ctr:
+    :param ctr:
         *undescribed*
+    :type ctr: u32
 
 .. _`ps3_read_ctr.description`:
 
@@ -221,14 +228,17 @@ ps3_write_ctr
 
     Write counter.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param u32 ctr:
+    :param ctr:
         *undescribed*
+    :type ctr: u32
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
 .. _`ps3_write_ctr.description`:
 
@@ -247,11 +257,13 @@ ps3_read_pm07_control
 
     Read counter control registers.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param u32 ctr:
+    :param ctr:
         *undescribed*
+    :type ctr: u32
 
 .. _`ps3_read_pm07_control.description`:
 
@@ -269,14 +281,17 @@ ps3_write_pm07_control
 
     Write counter control registers.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param u32 ctr:
+    :param ctr:
         *undescribed*
+    :type ctr: u32
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
 .. _`ps3_write_pm07_control.description`:
 
@@ -294,11 +309,13 @@ ps3_read_pm
 
     Read Other LPM control registers.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param enum pm_reg_name reg:
+    :param reg:
         *undescribed*
+    :type reg: enum pm_reg_name
 
 .. _`ps3_write_pm`:
 
@@ -309,14 +326,17 @@ ps3_write_pm
 
     Write Other LPM control registers.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param enum pm_reg_name reg:
+    :param reg:
         *undescribed*
+    :type reg: enum pm_reg_name
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
 .. _`ps3_get_ctr_size`:
 
@@ -327,11 +347,13 @@ ps3_get_ctr_size
 
     Get the size of a physical counter.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param u32 phys_ctr:
+    :param phys_ctr:
         *undescribed*
+    :type phys_ctr: u32
 
 .. _`ps3_get_ctr_size.description`:
 
@@ -349,14 +371,17 @@ ps3_set_ctr_size
 
     Set the size of a physical counter to 16 or 32 bits.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param u32 phys_ctr:
+    :param phys_ctr:
         *undescribed*
+    :type phys_ctr: u32
 
-    :param u32 ctr_size:
+    :param ctr_size:
         *undescribed*
+    :type ctr_size: u32
 
 .. _`ps3_enable_pm`:
 
@@ -367,8 +392,9 @@ ps3_enable_pm
 
     Enable the entire performance monitoring unit.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
 .. _`ps3_enable_pm.description`:
 
@@ -386,8 +412,9 @@ ps3_disable_pm
 
     Disable the entire performance monitoring unit.
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
 .. _`ps3_lpm_copy_tb`:
 
@@ -398,18 +425,22 @@ ps3_lpm_copy_tb
 
     Copy data from the trace buffer to a kernel buffer.
 
-    :param unsigned long offset:
+    :param offset:
         Offset in bytes from the start of the trace buffer.
+    :type offset: unsigned long
 
-    :param void \*buf:
+    :param buf:
         Copy destination.
+    :type buf: void \*
 
-    :param unsigned long count:
+    :param count:
         Maximum count of bytes to copy.
+    :type count: unsigned long
 
-    :param unsigned long \*bytes_copied:
+    :param bytes_copied:
         Pointer to a variable that will receive the number of
         bytes copied to \ ``buf``\ .
+    :type bytes_copied: unsigned long \*
 
 .. _`ps3_lpm_copy_tb.description`:
 
@@ -428,18 +459,22 @@ ps3_lpm_copy_tb_to_user
 
     Copy data from the trace buffer to a user buffer.
 
-    :param unsigned long offset:
+    :param offset:
         Offset in bytes from the start of the trace buffer.
+    :type offset: unsigned long
 
-    :param void __user \*buf:
+    :param buf:
         A \__user copy destination.
+    :type buf: void __user \*
 
-    :param unsigned long count:
+    :param count:
         Maximum count of bytes to copy.
+    :type count: unsigned long
 
-    :param unsigned long \*bytes_copied:
+    :param bytes_copied:
         Pointer to a variable that will receive the number of
         bytes copied to \ ``buf``\ .
+    :type bytes_copied: unsigned long \*
 
 .. _`ps3_lpm_copy_tb_to_user.description`:
 
@@ -456,8 +491,9 @@ ps3_get_and_clear_pm_interrupts
 
 .. c:function:: u32 ps3_get_and_clear_pm_interrupts(u32 cpu)
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
 .. _`ps3_get_and_clear_pm_interrupts.description`:
 
@@ -474,14 +510,17 @@ ps3_enable_pm_interrupts
 
 .. c:function:: void ps3_enable_pm_interrupts(u32 cpu, u32 thread, u32 mask)
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
-    :param u32 thread:
+    :param thread:
         *undescribed*
+    :type thread: u32
 
-    :param u32 mask:
+    :param mask:
         *undescribed*
+    :type mask: u32
 
 .. _`ps3_enable_pm_interrupts.description`:
 
@@ -498,8 +537,9 @@ ps3_disable_pm_interrupts
 
 .. c:function:: void ps3_disable_pm_interrupts(u32 cpu)
 
-    :param u32 cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: u32
 
 .. _`ps3_disable_pm_interrupts.description`:
 
@@ -517,18 +557,21 @@ ps3_lpm_open
 
     Open the logical performance monitor device.
 
-    :param enum ps3_lpm_tb_type tb_type:
+    :param tb_type:
         Specifies the type of trace buffer lv1 should use for this lpm
         instance, specified by one of enum ps3_lpm_tb_type.
+    :type tb_type: enum ps3_lpm_tb_type
 
-    :param void \*tb_cache:
+    :param tb_cache:
         Optional user supplied buffer to use as the trace buffer cache.
         If NULL, the driver will allocate and manage an internal buffer.
         Unused when when \ ``tb_type``\  is PS3_LPM_TB_TYPE_NONE.
+    :type tb_cache: void \*
 
-    :param u64 tb_cache_size:
+    :param tb_cache_size:
         The size in bytes of the user supplied \ ``tb_cache``\  buffer.
         Unused when \ ``tb_cache``\  is NULL or \ ``tb_type``\  is PS3_LPM_TB_TYPE_NONE.
+    :type tb_cache_size: u64
 
 .. _`ps3_lpm_close`:
 
@@ -539,8 +582,9 @@ ps3_lpm_close
 
     Close the lpm device.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

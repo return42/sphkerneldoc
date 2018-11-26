@@ -10,14 +10,17 @@ drm_vma_offset_exact_lookup_locked
 
     Look up node by exact address
 
-    :param struct drm_vma_offset_manager \*mgr:
+    :param mgr:
         Manager object
+    :type mgr: struct drm_vma_offset_manager \*
 
-    :param unsigned long start:
+    :param start:
         Start address (page-based, not byte-based)
+    :type start: unsigned long
 
-    :param unsigned long pages:
+    :param pages:
         Size of object (page-based)
+    :type pages: unsigned long
 
 .. _`drm_vma_offset_exact_lookup_locked.description`:
 
@@ -43,8 +46,9 @@ drm_vma_offset_lock_lookup
 
     Lock lookup for extended private use
 
-    :param struct drm_vma_offset_manager \*mgr:
+    :param mgr:
         Manager object
+    :type mgr: struct drm_vma_offset_manager \*
 
 .. _`drm_vma_offset_lock_lookup.description`:
 
@@ -77,8 +81,9 @@ drm_vma_offset_unlock_lookup
 
     Unlock lookup for extended private use
 
-    :param struct drm_vma_offset_manager \*mgr:
+    :param mgr:
         Manager object
+    :type mgr: struct drm_vma_offset_manager \*
 
 .. _`drm_vma_offset_unlock_lookup.description`:
 
@@ -96,8 +101,9 @@ drm_vma_node_reset
 
     Initialize or reset node object
 
-    :param struct drm_vma_offset_node \*node:
+    :param node:
         Node to initialize or reset
+    :type node: struct drm_vma_offset_node \*
 
 .. _`drm_vma_node_reset.description`:
 
@@ -119,8 +125,9 @@ drm_vma_node_start
 
     Return start address for page-based addressing
 
-    :param const struct drm_vma_offset_node \*node:
+    :param node:
         Node to inspect
+    :type node: const struct drm_vma_offset_node \*
 
 .. _`drm_vma_node_start.description`:
 
@@ -150,8 +157,9 @@ drm_vma_node_size
 
     Return size (page-based)
 
-    :param struct drm_vma_offset_node \*node:
+    :param node:
         Node to inspect
+    :type node: struct drm_vma_offset_node \*
 
 .. _`drm_vma_node_size.description`:
 
@@ -179,8 +187,9 @@ drm_vma_node_offset_addr
 
     Return sanitized offset for user-space mmaps
 
-    :param struct drm_vma_offset_node \*node:
+    :param node:
         Linked offset node
+    :type node: struct drm_vma_offset_node \*
 
 .. _`drm_vma_node_offset_addr.description`:
 
@@ -208,11 +217,13 @@ drm_vma_node_unmap
 
     Unmap offset node
 
-    :param struct drm_vma_offset_node \*node:
+    :param node:
         Offset node
+    :type node: struct drm_vma_offset_node \*
 
-    :param struct address_space \*file_mapping:
+    :param file_mapping:
         Address space to unmap \ ``node``\  from
+    :type file_mapping: struct address_space \*
 
 .. _`drm_vma_node_unmap.description`:
 
@@ -235,11 +246,13 @@ drm_vma_node_verify_access
 
     Access verification helper for TTM
 
-    :param struct drm_vma_offset_node \*node:
+    :param node:
         Offset node
+    :type node: struct drm_vma_offset_node \*
 
-    :param struct drm_file \*tag:
+    :param tag:
         Tag of file to check
+    :type tag: struct drm_file \*
 
 .. _`drm_vma_node_verify_access.description`:
 

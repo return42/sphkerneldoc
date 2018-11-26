@@ -10,28 +10,35 @@ skb_frag_foreach_page
 
     loop over pages in a fragment
 
-    :param  f:
+    :param f:
         skb frag to operate on
+    :type f: 
 
-    :param  f_off:
+    :param f_off:
         offset from start of f->page.p
+    :type f_off: 
 
-    :param  f_len:
+    :param f_len:
         length from f_off to loop over
+    :type f_len: 
 
-    :param  p:
+    :param p:
         (temp var) current page
+    :type p: 
 
-    :param  p_off:
+    :param p_off:
         (temp var) offset from start of current page,
         non-zero only on first page.
+    :type p_off: 
 
-    :param  p_len:
+    :param p_len:
         (temp var) length in current page,
         < PAGE_SIZE only on first and last page.
+    :type p_len: 
 
-    :param  copied:
+    :param copied:
         (temp var) length so far, excluding current p_len.
+    :type copied: 
 
 .. _`skb_frag_foreach_page.description`:
 
@@ -109,15 +116,18 @@ Definition
                 union {
                     struct net_device *dev;
                     unsigned long dev_scratch;
-                    int ip_defrag_offset;
                 } ;
             } ;
             struct rb_node rbnode;
+            struct list_head list;
         } ;
-        struct sock *sk;
+        union {
+            struct sock *sk;
+            int ip_defrag_offset;
+        } ;
         union {
             ktime_t tstamp;
-            u64 skb_mstamp;
+            u64 skb_mstamp_ns;
         } ;
         char cb[48] __aligned(8);
         union {
@@ -186,6 +196,9 @@ Definition
         __u8 tc_at_ingress:1;
         __u8 tc_redirected:1;
         __u8 tc_from_ingress:1;
+    #endif
+    #ifdef CONFIG_TLS_DEVICE
+        __u8 decrypted:1;
     #endif
     #ifdef CONFIG_NET_SCHED
         __u16 tc_index;
@@ -259,14 +272,20 @@ dev
 dev_scratch
     *undescribed*
 
-ip_defrag_offset
-    *undescribed*
-
 rbnode
     RB tree node, alternative to next/prev for netem/tcp
 
+list
+    *undescribed*
+
+{unnamed_union}
+    anonymous
+
 sk
     Socket we are owned by
+
+ip_defrag_offset
+    *undescribed*
 
 {unnamed_union}
     anonymous
@@ -274,7 +293,7 @@ sk
 tstamp
     Time we arrived/left
 
-skb_mstamp
+skb_mstamp_ns
     *undescribed*
 
 cb
@@ -429,6 +448,9 @@ tc_redirected
 tc_from_ingress
     if tc_redirected, tc_at_ingress at time of redirect
 
+decrypted
+    Decrypted SKB
+
 tc_index
     Traffic control index
 
@@ -540,8 +562,9 @@ skb_dst
 
     returns skb dst_entry
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: const struct sk_buff \*
 
 .. _`skb_dst.description`:
 
@@ -559,11 +582,13 @@ skb_dst_set
 
     sets skb dst
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: struct sk_buff \*
 
-    :param struct dst_entry \*dst:
+    :param dst:
         dst entry
+    :type dst: struct dst_entry \*
 
 .. _`skb_dst_set.description`:
 
@@ -582,11 +607,13 @@ skb_dst_set_noref
 
     sets skb dst, hopefully, without taking reference
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: struct sk_buff \*
 
-    :param struct dst_entry \*dst:
+    :param dst:
         dst entry
+    :type dst: struct dst_entry \*
 
 .. _`skb_dst_set_noref.description`:
 
@@ -607,8 +634,9 @@ skb_dst_is_noref
 
     Test if skb dst isn't refcounted
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: const struct sk_buff \*
 
 .. _`skb_fclone_busy`:
 
@@ -619,11 +647,13 @@ skb_fclone_busy
 
     check if fclone is busy
 
-    :param const struct sock \*sk:
+    :param sk:
         socket
+    :type sk: const struct sock \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: const struct sk_buff \*
 
 .. _`skb_fclone_busy.description`:
 
@@ -643,11 +673,13 @@ skb_pad
 
     zero pad the tail of an skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to pad
+    :type skb: struct sk_buff \*
 
-    :param int pad:
+    :param pad:
         space to pad
+    :type pad: int
 
 .. _`skb_pad.description`:
 
@@ -669,8 +701,9 @@ skb_queue_empty
 
     check if a queue is empty
 
-    :param const struct sk_buff_head \*list:
+    :param list:
         queue head
+    :type list: const struct sk_buff_head \*
 
 .. _`skb_queue_empty.description`:
 
@@ -688,11 +721,13 @@ skb_queue_is_last
 
     check if skb is the last entry in the queue
 
-    :param const struct sk_buff_head \*list:
+    :param list:
         queue head
+    :type list: const struct sk_buff_head \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: const struct sk_buff \*
 
 .. _`skb_queue_is_last.description`:
 
@@ -710,11 +745,13 @@ skb_queue_is_first
 
     check if skb is the first entry in the queue
 
-    :param const struct sk_buff_head \*list:
+    :param list:
         queue head
+    :type list: const struct sk_buff_head \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: const struct sk_buff \*
 
 .. _`skb_queue_is_first.description`:
 
@@ -732,11 +769,13 @@ skb_queue_next
 
     return the next packet in the queue
 
-    :param const struct sk_buff_head \*list:
+    :param list:
         queue head
+    :type list: const struct sk_buff_head \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         current buffer
+    :type skb: const struct sk_buff \*
 
 .. _`skb_queue_next.description`:
 
@@ -755,11 +794,13 @@ skb_queue_prev
 
     return the prev packet in the queue
 
-    :param const struct sk_buff_head \*list:
+    :param list:
         queue head
+    :type list: const struct sk_buff_head \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         current buffer
+    :type skb: const struct sk_buff \*
 
 .. _`skb_queue_prev.description`:
 
@@ -778,8 +819,9 @@ skb_get
 
     reference buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to reference
+    :type skb: struct sk_buff \*
 
 .. _`skb_get.description`:
 
@@ -798,8 +840,9 @@ skb_cloned
 
     is the buffer a clone
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to check
+    :type skb: const struct sk_buff \*
 
 .. _`skb_cloned.description`:
 
@@ -819,8 +862,9 @@ skb_header_cloned
 
     is the header a clone
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to check
+    :type skb: const struct sk_buff \*
 
 .. _`skb_header_cloned.description`:
 
@@ -839,8 +883,9 @@ __skb_header_release
 
     release reference to header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to operate on
+    :type skb: struct sk_buff \*
 
 .. _`skb_shared`:
 
@@ -851,8 +896,9 @@ skb_shared
 
     is the buffer shared
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to check
+    :type skb: const struct sk_buff \*
 
 .. _`skb_shared.description`:
 
@@ -871,11 +917,13 @@ skb_share_check
 
     check if buffer is shared and if so clone it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to check
+    :type skb: struct sk_buff \*
 
-    :param gfp_t pri:
+    :param pri:
         priority for memory allocation
+    :type pri: gfp_t
 
 .. _`skb_share_check.description`:
 
@@ -899,11 +947,13 @@ skb_unshare
 
     make a copy of a shared buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to check
+    :type skb: struct sk_buff \*
 
-    :param gfp_t pri:
+    :param pri:
         priority for memory allocation
+    :type pri: gfp_t
 
 .. _`skb_unshare.description`:
 
@@ -927,8 +977,9 @@ skb_peek
 
     peek at the head of an \ :c:type:`struct sk_buff_head <sk_buff_head>`\ 
 
-    :param const struct sk_buff_head \*list_:
+    :param list_:
         list to peek at
+    :type list_: const struct sk_buff_head \*
 
 .. _`skb_peek.description`:
 
@@ -944,6 +995,26 @@ Description
      The reference count is not incremented and the reference is therefore
      volatile. Use with caution.
 
+.. _`__skb_peek`:
+
+__skb_peek
+==========
+
+.. c:function:: struct sk_buff *__skb_peek(const struct sk_buff_head *list_)
+
+    peek at the head of a non-empty \ :c:type:`struct sk_buff_head <sk_buff_head>`\ 
+
+    :param list_:
+        list to peek at
+    :type list_: const struct sk_buff_head \*
+
+.. _`__skb_peek.description`:
+
+Description
+-----------
+
+     Like \ :c:func:`skb_peek`\ , but the caller knows that the list is not empty.
+
 .. _`skb_peek_next`:
 
 skb_peek_next
@@ -953,11 +1024,13 @@ skb_peek_next
 
     peek skb following the given one from a queue
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb to start from
+    :type skb: struct sk_buff \*
 
-    :param const struct sk_buff_head \*list_:
+    :param list_:
         list to peek at
+    :type list_: const struct sk_buff_head \*
 
 .. _`skb_peek_next.description`:
 
@@ -977,8 +1050,9 @@ skb_peek_tail
 
     peek at the tail of an \ :c:type:`struct sk_buff_head <sk_buff_head>`\ 
 
-    :param const struct sk_buff_head \*list_:
+    :param list_:
         list to peek at
+    :type list_: const struct sk_buff_head \*
 
 .. _`skb_peek_tail.description`:
 
@@ -1003,8 +1077,9 @@ skb_queue_len
 
     get queue length
 
-    :param const struct sk_buff_head \*list_:
+    :param list_:
         list to measure
+    :type list_: const struct sk_buff_head \*
 
 .. _`skb_queue_len.description`:
 
@@ -1022,8 +1097,9 @@ __skb_queue_head_init
 
     initialize non-spinlock portions of sk_buff_head
 
-    :param struct sk_buff_head \*list:
+    :param list:
         queue to initialize
+    :type list: struct sk_buff_head \*
 
 .. _`__skb_queue_head_init.description`:
 
@@ -1045,11 +1121,13 @@ skb_queue_splice
 
     join two skb lists, this is designed for stacks
 
-    :param const struct sk_buff_head \*list:
+    :param list:
         the new list to add
+    :type list: const struct sk_buff_head \*
 
-    :param struct sk_buff_head \*head:
+    :param head:
         the place to add it in the first list
+    :type head: struct sk_buff_head \*
 
 .. _`skb_queue_splice_init`:
 
@@ -1060,11 +1138,13 @@ skb_queue_splice_init
 
     join two skb lists and reinitialise the emptied list
 
-    :param struct sk_buff_head \*list:
+    :param list:
         the new list to add
+    :type list: struct sk_buff_head \*
 
-    :param struct sk_buff_head \*head:
+    :param head:
         the place to add it in the first list
+    :type head: struct sk_buff_head \*
 
 .. _`skb_queue_splice_init.description`:
 
@@ -1082,11 +1162,13 @@ skb_queue_splice_tail
 
     join two skb lists, each list being a queue
 
-    :param const struct sk_buff_head \*list:
+    :param list:
         the new list to add
+    :type list: const struct sk_buff_head \*
 
-    :param struct sk_buff_head \*head:
+    :param head:
         the place to add it in the first list
+    :type head: struct sk_buff_head \*
 
 .. _`skb_queue_splice_tail_init`:
 
@@ -1097,11 +1179,13 @@ skb_queue_splice_tail_init
 
     join two skb lists and reinitialise the emptied list
 
-    :param struct sk_buff_head \*list:
+    :param list:
         the new list to add
+    :type list: struct sk_buff_head \*
 
-    :param struct sk_buff_head \*head:
+    :param head:
         the place to add it in the first list
+    :type head: struct sk_buff_head \*
 
 .. _`skb_queue_splice_tail_init.description`:
 
@@ -1120,14 +1204,17 @@ __skb_queue_after
 
     queue a buffer at the list head
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to use
+    :type list: struct sk_buff_head \*
 
-    :param struct sk_buff \*prev:
+    :param prev:
         place after this buffer
+    :type prev: struct sk_buff \*
 
-    :param struct sk_buff \*newsk:
+    :param newsk:
         buffer to queue
+    :type newsk: struct sk_buff \*
 
 .. _`__skb_queue_after.description`:
 
@@ -1148,11 +1235,13 @@ skb_queue_head
 
     queue a buffer at the list head
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to use
+    :type list: struct sk_buff_head \*
 
-    :param struct sk_buff \*newsk:
+    :param newsk:
         buffer to queue
+    :type newsk: struct sk_buff \*
 
 .. _`skb_queue_head.description`:
 
@@ -1173,11 +1262,13 @@ skb_queue_tail
 
     queue a buffer at the list tail
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to use
+    :type list: struct sk_buff_head \*
 
-    :param struct sk_buff \*newsk:
+    :param newsk:
         buffer to queue
+    :type newsk: struct sk_buff \*
 
 .. _`skb_queue_tail.description`:
 
@@ -1198,8 +1289,9 @@ skb_dequeue
 
     remove from the head of the queue
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to dequeue from
+    :type list: struct sk_buff_head \*
 
 .. _`skb_dequeue.description`:
 
@@ -1219,8 +1311,9 @@ skb_dequeue_tail
 
     remove from the tail of the queue
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to dequeue from
+    :type list: struct sk_buff_head \*
 
 .. _`skb_dequeue_tail.description`:
 
@@ -1240,20 +1333,25 @@ __skb_fill_page_desc
 
     initialise a paged fragment in an skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer containing fragment to be initialised
+    :type skb: struct sk_buff \*
 
-    :param int i:
+    :param i:
         paged fragment index to initialise
+    :type i: int
 
-    :param struct page \*page:
+    :param page:
         the page to use for this fragment
+    :type page: struct page \*
 
-    :param int off:
+    :param off:
         the offset to the data with \ ``page``\ 
+    :type off: int
 
-    :param int size:
+    :param size:
         the length of the data
+    :type size: int
 
 .. _`__skb_fill_page_desc.description`:
 
@@ -1274,20 +1372,25 @@ skb_fill_page_desc
 
     initialise a paged fragment in an skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer containing fragment to be initialised
+    :type skb: struct sk_buff \*
 
-    :param int i:
+    :param i:
         paged fragment index to initialise
+    :type i: int
 
-    :param struct page \*page:
+    :param page:
         the page to use for this fragment
+    :type page: struct page \*
 
-    :param int off:
+    :param off:
         the offset to the data with \ ``page``\ 
+    :type off: int
 
-    :param int size:
+    :param size:
         the length of the data
+    :type size: int
 
 .. _`skb_fill_page_desc.description`:
 
@@ -1309,8 +1412,9 @@ skb_headroom
 
     bytes at buffer head
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to check
+    :type skb: const struct sk_buff \*
 
 .. _`skb_headroom.description`:
 
@@ -1328,8 +1432,9 @@ skb_tailroom
 
     bytes at buffer end
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to check
+    :type skb: const struct sk_buff \*
 
 .. _`skb_tailroom.description`:
 
@@ -1347,8 +1452,9 @@ skb_availroom
 
     bytes at buffer end
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to check
+    :type skb: const struct sk_buff \*
 
 .. _`skb_availroom.description`:
 
@@ -1367,11 +1473,13 @@ skb_reserve
 
     adjust headroom
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to alter
+    :type skb: struct sk_buff \*
 
-    :param int len:
+    :param len:
         bytes to move
+    :type len: int
 
 .. _`skb_reserve.description`:
 
@@ -1390,14 +1498,17 @@ skb_tailroom_reserve
 
     adjust reserved_tailroom
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to alter
+    :type skb: struct sk_buff \*
 
-    :param unsigned int mtu:
+    :param mtu:
         maximum amount of headlen permitted
+    :type mtu: unsigned int
 
-    :param unsigned int needed_tailroom:
+    :param needed_tailroom:
         minimum amount of reserved_tailroom
+    :type needed_tailroom: unsigned int
 
 .. _`skb_tailroom_reserve.description`:
 
@@ -1419,11 +1530,13 @@ pskb_trim_unique
 
     remove end from a paged unique (not cloned) buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to alter
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         new length
+    :type len: unsigned int
 
 .. _`pskb_trim_unique.description`:
 
@@ -1443,8 +1556,9 @@ skb_orphan
 
     orphan a buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to orphan
+    :type skb: struct sk_buff \*
 
 .. _`skb_orphan.description`:
 
@@ -1464,11 +1578,13 @@ skb_orphan_frags
 
     orphan the frags contained in a buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to orphan frags from
+    :type skb: struct sk_buff \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation mask for replacement pages
+    :type gfp_mask: gfp_t
 
 .. _`skb_orphan_frags.description`:
 
@@ -1488,8 +1604,9 @@ skb_queue_purge
 
     empty a list
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to empty
+    :type list: struct sk_buff_head \*
 
 .. _`skb_queue_purge.description`:
 
@@ -1509,11 +1626,13 @@ netdev_alloc_skb
 
     allocate an skbuff for rx on a specific device
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to receive on
+    :type dev: struct net_device \*
 
-    :param unsigned int length:
+    :param length:
         length to allocate
+    :type length: unsigned int
 
 .. _`netdev_alloc_skb.description`:
 
@@ -1537,11 +1656,13 @@ __dev_alloc_pages
 
     allocate page for network Rx
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation priority. Set __GFP_NOMEMALLOC if not for network Rx
+    :type gfp_mask: gfp_t
 
-    :param unsigned int order:
+    :param order:
         size of the allocation
+    :type order: unsigned int
 
 .. _`__dev_alloc_pages.description`:
 
@@ -1561,8 +1682,9 @@ __dev_alloc_page
 
     allocate a page for network Rx
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation priority. Set __GFP_NOMEMALLOC if not for network Rx
+    :type gfp_mask: gfp_t
 
 .. _`__dev_alloc_page.description`:
 
@@ -1582,11 +1704,13 @@ skb_propagate_pfmemalloc
 
     Propagate pfmemalloc if skb is allocated after RX page
 
-    :param struct page \*page:
+    :param page:
         The page that was allocated from skb_alloc_page
+    :type page: struct page \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb that may need pfmemalloc set
+    :type skb: struct sk_buff \*
 
 .. _`skb_frag_page`:
 
@@ -1597,8 +1721,9 @@ skb_frag_page
 
     retrieve the page referred to by a paged fragment
 
-    :param const skb_frag_t \*frag:
+    :param frag:
         the paged fragment
+    :type frag: const skb_frag_t \*
 
 .. _`skb_frag_page.description`:
 
@@ -1616,8 +1741,9 @@ __skb_frag_ref
 
     take an addition reference on a paged fragment.
 
-    :param skb_frag_t \*frag:
+    :param frag:
         the paged fragment
+    :type frag: skb_frag_t \*
 
 .. _`__skb_frag_ref.description`:
 
@@ -1635,11 +1761,13 @@ skb_frag_ref
 
     take an addition reference on a paged fragment of an skb.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer
+    :type skb: struct sk_buff \*
 
-    :param int f:
+    :param f:
         the fragment offset.
+    :type f: int
 
 .. _`skb_frag_ref.description`:
 
@@ -1657,8 +1785,9 @@ __skb_frag_unref
 
     release a reference on a paged fragment.
 
-    :param skb_frag_t \*frag:
+    :param frag:
         the paged fragment
+    :type frag: skb_frag_t \*
 
 .. _`__skb_frag_unref.description`:
 
@@ -1676,11 +1805,13 @@ skb_frag_unref
 
     release a reference on a paged fragment of an skb.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer
+    :type skb: struct sk_buff \*
 
-    :param int f:
+    :param f:
         the fragment offset
+    :type f: int
 
 .. _`skb_frag_unref.description`:
 
@@ -1698,8 +1829,9 @@ skb_frag_address
 
     gets the address of the data contained in a paged fragment
 
-    :param const skb_frag_t \*frag:
+    :param frag:
         the paged fragment buffer
+    :type frag: const skb_frag_t \*
 
 .. _`skb_frag_address.description`:
 
@@ -1718,8 +1850,9 @@ skb_frag_address_safe
 
     gets the address of the data contained in a paged fragment
 
-    :param const skb_frag_t \*frag:
+    :param frag:
         the paged fragment buffer
+    :type frag: const skb_frag_t \*
 
 .. _`skb_frag_address_safe.description`:
 
@@ -1738,11 +1871,13 @@ __skb_frag_set_page
 
     sets the page contained in a paged fragment
 
-    :param skb_frag_t \*frag:
+    :param frag:
         the paged fragment
+    :type frag: skb_frag_t \*
 
-    :param struct page \*page:
+    :param page:
         the page to set
+    :type page: struct page \*
 
 .. _`__skb_frag_set_page.description`:
 
@@ -1760,14 +1895,17 @@ skb_frag_set_page
 
     sets the page contained in a paged fragment of an skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer
+    :type skb: struct sk_buff \*
 
-    :param int f:
+    :param f:
         the fragment offset
+    :type f: int
 
-    :param struct page \*page:
+    :param page:
         the page to set
+    :type page: struct page \*
 
 .. _`skb_frag_set_page.description`:
 
@@ -1785,21 +1923,26 @@ skb_frag_dma_map
 
     maps a paged fragment via the DMA API
 
-    :param struct device \*dev:
+    :param dev:
         the device to map the fragment to
+    :type dev: struct device \*
 
-    :param const skb_frag_t \*frag:
+    :param frag:
         the paged fragment to map
+    :type frag: const skb_frag_t \*
 
-    :param size_t offset:
+    :param offset:
         the offset within the fragment (starting at the
         fragment's own offset)
+    :type offset: size_t
 
-    :param size_t size:
+    :param size:
         the number of bytes to map
+    :type size: size_t
 
-    :param enum dma_data_direction dir:
+    :param dir:
         the direction of the mapping (``PCI_DMA_*``)
+    :type dir: enum dma_data_direction
 
 .. _`skb_frag_dma_map.description`:
 
@@ -1817,11 +1960,13 @@ skb_clone_writable
 
     is the header of a clone writable
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to check
+    :type skb: const struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         length up to which to write
+    :type len: unsigned int
 
 .. _`skb_clone_writable.description`:
 
@@ -1840,11 +1985,13 @@ skb_cow
 
     copy header of skb when it is required
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to cow
+    :type skb: struct sk_buff \*
 
-    :param unsigned int headroom:
+    :param headroom:
         needed headroom
+    :type headroom: unsigned int
 
 .. _`skb_cow.description`:
 
@@ -1867,11 +2014,13 @@ skb_cow_head
 
     skb_cow but only making the head writable
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to cow
+    :type skb: struct sk_buff \*
 
-    :param unsigned int headroom:
+    :param headroom:
         needed headroom
+    :type headroom: unsigned int
 
 .. _`skb_cow_head.description`:
 
@@ -1892,11 +2041,13 @@ skb_padto
 
     pad an skbuff up to a minimal size
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to pad
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         minimal length
+    :type len: unsigned int
 
 .. _`skb_padto.description`:
 
@@ -1917,14 +2068,17 @@ __skb_put_padto
 
     increase size and pad an skbuff up to a minimal size
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to pad
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         minimal length
+    :type len: unsigned int
 
-    :param bool free_on_error:
+    :param free_on_error:
         free buffer on error
+    :type free_on_error: bool
 
 .. _`__skb_put_padto.description`:
 
@@ -1945,11 +2099,13 @@ skb_put_padto
 
     increase size and pad an skbuff up to a minimal size
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to pad
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         minimal length
+    :type len: unsigned int
 
 .. _`skb_put_padto.description`:
 
@@ -1970,8 +2126,9 @@ skb_linearize
 
     convert paged skb to linear one
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to linarize
+    :type skb: struct sk_buff \*
 
 .. _`skb_linearize.description`:
 
@@ -1990,8 +2147,9 @@ skb_has_shared_frag
 
     can any frag be overwritten
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to test
+    :type skb: const struct sk_buff \*
 
 .. _`skb_has_shared_frag.description`:
 
@@ -2010,8 +2168,9 @@ skb_linearize_cow
 
     make sure skb is linear and writable
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to process
+    :type skb: struct sk_buff \*
 
 .. _`skb_linearize_cow.description`:
 
@@ -2030,14 +2189,17 @@ skb_postpull_rcsum
 
     update checksum for received skb after pull
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to update
+    :type skb: struct sk_buff \*
 
-    :param const void \*start:
+    :param start:
         start of data before pull
+    :type start: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of data pulled
+    :type len: unsigned int
 
 .. _`skb_postpull_rcsum.description`:
 
@@ -2057,14 +2219,17 @@ skb_postpush_rcsum
 
     update checksum for received skb after push
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to update
+    :type skb: struct sk_buff \*
 
-    :param const void \*start:
+    :param start:
         start of data after push
+    :type start: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of data pushed
+    :type len: unsigned int
 
 .. _`skb_postpush_rcsum.description`:
 
@@ -2083,11 +2248,13 @@ skb_push_rcsum
 
     push skb and update receive checksum
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to update
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         length of data pulled
+    :type len: unsigned int
 
 .. _`skb_push_rcsum.description`:
 
@@ -2109,11 +2276,13 @@ pskb_trim_rcsum
 
     trim received skb and update checksum
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to trim
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         new length
+    :type len: unsigned int
 
 .. _`pskb_trim_rcsum.description`:
 
@@ -2132,11 +2301,13 @@ skb_needs_linearize
 
     check if we need to linearize a given skb depending on the given device features.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to check
+    :type skb: struct sk_buff \*
 
-    :param netdev_features_t features:
+    :param features:
         net device features
+    :type features: netdev_features_t
 
 .. _`skb_needs_linearize.returns-true-if-either`:
 
@@ -2155,11 +2326,13 @@ skb_get_timestamp
 
     get timestamp from a skb
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skb to get stamp from
+    :type skb: const struct sk_buff \*
 
-    :param struct timeval \*stamp:
+    :param stamp:
         pointer to struct timeval to store stamp in
+    :type stamp: struct timeval \*
 
 .. _`skb_get_timestamp.description`:
 
@@ -2179,11 +2352,13 @@ skb_complete_tx_timestamp
 
     deliver cloned skb with tx timestamps
 
-    :param struct sk_buff \*skb:
+    :param skb:
         clone of the the original outgoing packet
+    :type skb: struct sk_buff \*
 
-    :param struct skb_shared_hwtstamps \*hwtstamps:
+    :param hwtstamps:
         hardware time stamps
+    :type hwtstamps: struct skb_shared_hwtstamps \*
 
 .. _`skb_complete_tx_timestamp.description`:
 
@@ -2204,11 +2379,13 @@ skb_tstamp_tx
 
     queue clone of skb with send time stamps
 
-    :param struct sk_buff \*orig_skb:
+    :param orig_skb:
         the original outgoing packet
+    :type orig_skb: struct sk_buff \*
 
-    :param struct skb_shared_hwtstamps \*hwtstamps:
+    :param hwtstamps:
         hardware time stamps, may be NULL if not available
+    :type hwtstamps: struct skb_shared_hwtstamps \*
 
 .. _`skb_tstamp_tx.description`:
 
@@ -2230,8 +2407,9 @@ skb_tx_timestamp
 
     Driver hook for transmit timestamping
 
-    :param struct sk_buff \*skb:
+    :param skb:
         A socket buffer.
+    :type skb: struct sk_buff \*
 
 .. _`skb_tx_timestamp.description`:
 
@@ -2254,11 +2432,13 @@ skb_complete_wifi_ack
 
     deliver skb with wifi status
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the original outgoing packet
+    :type skb: struct sk_buff \*
 
-    :param bool acked:
+    :param acked:
         ack status
+    :type acked: bool
 
 .. _`skb_checksum_complete`:
 
@@ -2269,8 +2449,9 @@ skb_checksum_complete
 
     Calculate checksum of an entire packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to process
+    :type skb: struct sk_buff \*
 
 .. _`skb_checksum_complete.description`:
 
@@ -2298,8 +2479,9 @@ skb_checksum_none_assert
 
     make sure skb ip_summed is CHECKSUM_NONE
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skb to check
+    :type skb: const struct sk_buff \*
 
 .. _`skb_checksum_none_assert.description`:
 
@@ -2319,8 +2501,9 @@ skb_head_is_locked
 
     Determine if the skb->head is locked down
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         skb to check
+    :type skb: const struct sk_buff \*
 
 .. _`skb_head_is_locked.description`:
 

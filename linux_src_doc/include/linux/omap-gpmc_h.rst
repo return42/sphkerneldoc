@@ -10,20 +10,25 @@ gpmc_omap_onenand_set_timings
 
     set optimized sync timings.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param int cs:
+    :param cs:
         Chip Select Region
+    :type cs: int
 
-    :param int freq:
+    :param freq:
         Chip frequency
+    :type freq: int
 
-    :param int latency:
+    :param latency:
         Burst latency cycle count
+    :type latency: int
 
-    :param struct gpmc_onenand_info \*info:
+    :param info:
         Structure describing parameters used
+    :type info: struct gpmc_onenand_info \*
 
 .. _`gpmc_omap_onenand_set_timings.description`:
 

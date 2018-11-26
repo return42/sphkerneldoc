@@ -10,14 +10,17 @@ knav_init_acc_range
 
     Initialise accumulator ranges
 
-    :param struct knav_device \*kdev:
+    :param kdev:
         qmss device
+    :type kdev: struct knav_device \*
 
-    :param struct device_node \*node:
+    :param node:
         device node
+    :type node: struct device_node \*
 
-    :param struct knav_range_info \*range:
+    :param range:
         qmms range information
+    :type range: struct knav_range_info \*
 
 .. _`knav_init_acc_range.description`:
 

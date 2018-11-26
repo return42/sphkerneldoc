@@ -42,38 +42,49 @@ iwl_parse_nvm_data
 
     parse NVM data and return values
 
-    :param struct iwl_trans \*trans:
+    :param trans:
         *undescribed*
+    :type trans: struct iwl_trans \*
 
-    :param const struct iwl_cfg \*cfg:
+    :param cfg:
         *undescribed*
+    :type cfg: const struct iwl_cfg \*
 
-    :param const __be16 \*nvm_hw:
+    :param nvm_hw:
         *undescribed*
+    :type nvm_hw: const __be16 \*
 
-    :param const __le16 \*nvm_sw:
+    :param nvm_sw:
         *undescribed*
+    :type nvm_sw: const __le16 \*
 
-    :param const __le16 \*nvm_calib:
+    :param nvm_calib:
         *undescribed*
+    :type nvm_calib: const __le16 \*
 
-    :param const __le16 \*regulatory:
+    :param regulatory:
         *undescribed*
+    :type regulatory: const __le16 \*
 
-    :param const __le16 \*mac_override:
+    :param mac_override:
         *undescribed*
+    :type mac_override: const __le16 \*
 
-    :param const __le16 \*phy_sku:
+    :param phy_sku:
         *undescribed*
+    :type phy_sku: const __le16 \*
 
-    :param u8 tx_chains:
+    :param tx_chains:
         *undescribed*
+    :type tx_chains: u8
 
-    :param u8 rx_chains:
+    :param rx_chains:
         *undescribed*
+    :type rx_chains: u8
 
-    :param bool lar_fw_supported:
+    :param lar_fw_supported:
         *undescribed*
+    :type lar_fw_supported: bool
 
 .. _`iwl_parse_nvm_data.description`:
 
@@ -94,23 +105,29 @@ iwl_parse_nvm_mcc_info
 
     parse MCC (mobile country code) info coming from FW
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param const struct iwl_cfg \*cfg:
+    :param cfg:
         *undescribed*
+    :type cfg: const struct iwl_cfg \*
 
-    :param int num_of_ch:
+    :param num_of_ch:
         *undescribed*
+    :type num_of_ch: int
 
-    :param __le32 \*channels:
+    :param channels:
         *undescribed*
+    :type channels: __le32 \*
 
-    :param u16 fw_mcc:
+    :param fw_mcc:
         *undescribed*
+    :type fw_mcc: u16
 
-    :param u16 geo_info:
+    :param geo_info:
         *undescribed*
+    :type geo_info: u16
 
 .. _`iwl_parse_nvm_mcc_info.description`:
 
@@ -174,14 +191,17 @@ iwl_read_external_nvm
 
     Reads external NVM from a file into nvm_sections
 
-    :param struct iwl_trans \*trans:
+    :param trans:
         *undescribed*
+    :type trans: struct iwl_trans \*
 
-    :param const char \*nvm_file_name:
+    :param nvm_file_name:
         *undescribed*
+    :type nvm_file_name: const char \*
 
-    :param struct iwl_nvm_section \*nvm_sections:
+    :param nvm_sections:
         *undescribed*
+    :type nvm_sections: struct iwl_nvm_section \*
 
 .. _`iwl_get_nvm`:
 
@@ -192,11 +212,13 @@ iwl_get_nvm
 
     retrieve NVM data from firmware
 
-    :param struct iwl_trans \*trans:
+    :param trans:
         *undescribed*
+    :type trans: struct iwl_trans \*
 
-    :param const struct iwl_fw \*fw:
+    :param fw:
         *undescribed*
+    :type fw: const struct iwl_fw \*
 
 .. _`iwl_get_nvm.description`:
 

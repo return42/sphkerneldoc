@@ -6,19 +6,23 @@
 tda826x_attach
 ==============
 
-.. c:function:: struct dvb_frontend*tda826x_attach(struct dvb_frontend *fe, int addr, struct i2c_adapter *i2c, int has_loopthrough)
+.. c:function:: struct dvb_frontend* tda826x_attach(struct dvb_frontend *fe, int addr, struct i2c_adapter *i2c, int has_loopthrough)
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         Frontend to attach to.
+    :type fe: struct dvb_frontend \*
 
-    :param int addr:
+    :param addr:
         i2c address of the tuner.
+    :type addr: int
 
-    :param struct i2c_adapter \*i2c:
+    :param i2c:
         i2c adapter to use.
+    :type i2c: struct i2c_adapter \*
 
-    :param int has_loopthrough:
+    :param has_loopthrough:
         Set to 1 if the card has a loopthrough RF connector.
+    :type has_loopthrough: int
 
 .. _`tda826x_attach.return`:
 

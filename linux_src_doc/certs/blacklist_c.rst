@@ -10,8 +10,9 @@ mark_hash_blacklisted
 
     Add a hash to the system blacklist
 
-    :param const char \*hash:
+    :param hash:
         23aa429783")
+    :type hash: const char \*
 
 .. _`is_hash_blacklisted`:
 
@@ -22,14 +23,17 @@ is_hash_blacklisted
 
     Determine if a hash is blacklisted
 
-    :param const u8 \*hash:
+    :param hash:
         The hash to be checked as a binary blob
+    :type hash: const u8 \*
 
-    :param size_t hash_len:
+    :param hash_len:
         The length of the binary hash
+    :type hash_len: size_t
 
-    :param const char \*type:
+    :param type:
         Type of hash
+    :type type: const char \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ tl_release
 
     mark as BARRIER_ACKED all requests in the corresponding transfer log epoch
 
-    :param struct drbd_connection \*connection:
+    :param connection:
         DRBD connection.
+    :type connection: struct drbd_connection \*
 
-    :param unsigned int barrier_nr:
+    :param barrier_nr:
         Expected identifier of the DRBD write barrier packet.
+    :type barrier_nr: unsigned int
 
-    :param unsigned int set_size:
+    :param set_size:
         Expected number of requests before that barrier.
+    :type set_size: unsigned int
 
 .. _`tl_release.description`:
 
@@ -37,11 +40,13 @@ termination of the connection.
 
     Walks the transfer log, and applies an action to all requests
 
-    :param struct drbd_connection \*connection:
+    :param connection:
         DRBD connection to operate on.
+    :type connection: struct drbd_connection \*
 
-    :param enum drbd_req_event what:
+    :param what:
         The action/event to perform with all request objects
+    :type what: enum drbd_req_event
 
 .. _`_tl_restart.description`:
 
@@ -60,8 +65,9 @@ tl_clear
 
     Clears all requests and \ :c:type:`struct drbd_tl_epoch <drbd_tl_epoch>`\  objects out of the TL
 
-    :param struct drbd_connection \*connection:
+    :param connection:
         *undescribed*
+    :type connection: struct drbd_connection \*
 
 .. _`tl_clear.description`:
 
@@ -81,8 +87,9 @@ tl_abort_disk_io
 
     Abort disk I/O for all requests for a certain device in the TL
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_calc_cpu_mask`:
 
@@ -93,8 +100,9 @@ drbd_calc_cpu_mask
 
     Generate CPU masks, spread over all CPUs
 
-    :param cpumask_var_t \*cpu_mask:
+    :param cpu_mask:
         *undescribed*
+    :type cpu_mask: cpumask_var_t \*
 
 .. _`drbd_calc_cpu_mask.description`:
 
@@ -113,8 +121,9 @@ drbd_thread_current_set_cpu
 
     modifies the cpu mask of the \_current\_ thread
 
-    :param struct drbd_thread \*thi:
+    :param thi:
         drbd_thread object
+    :type thi: struct drbd_thread \*
 
 .. _`drbd_thread_current_set_cpu.description`:
 
@@ -133,8 +142,9 @@ drbd_header_size
 
     size of a packet header
 
-    :param struct drbd_connection \*connection:
+    :param connection:
         *undescribed*
+    :type connection: struct drbd_connection \*
 
 .. _`drbd_header_size.description`:
 
@@ -154,8 +164,9 @@ drbd_send_current_state
 
     Sends the drbd state to the peer
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         DRBD peer device.
+    :type peer_device: struct drbd_peer_device \*
 
 .. _`drbd_send_state`:
 
@@ -166,11 +177,13 @@ drbd_send_state
 
     After a state change, sends the new state to the peer
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         DRBD peer device.
+    :type peer_device: struct drbd_peer_device \*
 
-    :param union drbd_state state:
+    :param state:
         the state to send, not necessarily the current state.
+    :type state: union drbd_state
 
 .. _`drbd_send_state.description`:
 
@@ -189,11 +202,13 @@ send_bitmap_rle_or_plain
 
 .. c:function:: int send_bitmap_rle_or_plain(struct drbd_device *device, struct bm_xfer_ctx *c)
 
-    :param struct drbd_device \*device:
+    :param device:
         *undescribed*
+    :type device: struct drbd_device \*
 
-    :param struct bm_xfer_ctx \*c:
+    :param c:
         *undescribed*
+    :type c: struct bm_xfer_ctx \*
 
 .. _`send_bitmap_rle_or_plain.description`:
 
@@ -212,20 +227,25 @@ code upon failure.
 
     Sends an ack packet
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         *undescribed*
+    :type peer_device: struct drbd_peer_device \*
 
-    :param enum drbd_packet cmd:
+    :param cmd:
         Packet command code.
+    :type cmd: enum drbd_packet
 
-    :param u64 sector:
+    :param sector:
         sector, needs to be in big endian byte order
+    :type sector: u64
 
-    :param u32 blksize:
+    :param blksize:
         size in byte, needs to be in big endian byte order
+    :type blksize: u32
 
-    :param u64 block_id:
+    :param block_id:
         Id, big endian byte order
+    :type block_id: u64
 
 .. _`drbd_send_ack`:
 
@@ -236,14 +256,17 @@ drbd_send_ack
 
     Sends an ack packet
 
-    :param struct drbd_peer_device \*peer_device:
+    :param peer_device:
         *undescribed*
+    :type peer_device: struct drbd_peer_device \*
 
-    :param enum drbd_packet cmd:
+    :param cmd:
         packet command code
+    :type cmd: enum drbd_packet
 
-    :param struct drbd_peer_request \*peer_req:
+    :param peer_req:
         peer request
+    :type peer_req: struct drbd_peer_request \*
 
 .. _`drbd_send_all`:
 
@@ -254,20 +277,25 @@ drbd_send_all
 
     Send an entire buffer
 
-    :param struct drbd_connection \*connection:
+    :param connection:
         *undescribed*
+    :type connection: struct drbd_connection \*
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param void \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param unsigned msg_flags:
+    :param msg_flags:
         *undescribed*
+    :type msg_flags: unsigned
 
 .. _`drbd_send_all.description`:
 
@@ -285,11 +313,13 @@ drbd_congested
 
     Callback for the flusher thread
 
-    :param void \*congested_data:
+    :param congested_data:
         User data
+    :type congested_data: void \*
 
-    :param int bdi_bits:
+    :param bdi_bits:
         Bits the BDI flusher thread is currently interested in
+    :type bdi_bits: int
 
 .. _`drbd_congested.description`:
 
@@ -307,8 +337,9 @@ drbd_md_sync
 
     Writes the meta data super block if the MD_DIRTY flag bit is set
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_md_read`:
 
@@ -319,11 +350,13 @@ drbd_md_read
 
     Reads in the meta data super block
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param struct drbd_backing_dev \*bdev:
+    :param bdev:
         Device from which the meta data should be read in.
+    :type bdev: struct drbd_backing_dev \*
 
 .. _`drbd_md_read.description`:
 
@@ -334,7 +367,7 @@ Return NO_ERROR on success, and an enum drbd_ret_code in case
 something goes wrong.
 
 Called exactly once during \ :c:func:`drbd_adm_attach`\ , while still being D_DISKLESS,
-even before \ ``bdev``\  is assigned to \ ``device``\ ->ldev.
+even before \ ``bdev``\  is assigned to \ ``device->ldev``\ .
 
 .. _`drbd_md_mark_dirty_`:
 
@@ -345,14 +378,17 @@ drbd_md_mark_dirty_
 
     Mark meta data super block as dirty
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param unsigned int line:
+    :param line:
         *undescribed*
+    :type line: unsigned int
 
-    :param const char \*func:
+    :param func:
         *undescribed*
+    :type func: const char \*
 
 .. _`drbd_md_mark_dirty_.description`:
 
@@ -372,8 +408,9 @@ drbd_uuid_new_current
 
     Creates a new current UUID
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_uuid_new_current.description`:
 
@@ -392,8 +429,9 @@ drbd_bmio_set_n_write
 
     io_fn for \ :c:func:`drbd_queue_bitmap_io`\  or \ :c:func:`drbd_bitmap_io`\ 
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_bmio_set_n_write.description`:
 
@@ -411,8 +449,9 @@ drbd_bmio_clear_n_write
 
     io_fn for \ :c:func:`drbd_queue_bitmap_io`\  or \ :c:func:`drbd_bitmap_io`\ 
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_bmio_clear_n_write.description`:
 
@@ -430,8 +469,9 @@ drbd_queue_bitmap_io
 
     Queues an IO operation on the whole bitmap
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
     :param int (\*io_fn)(struct drbd_device \*):
         IO callback to be called when bitmap IO is possible
@@ -439,11 +479,13 @@ drbd_queue_bitmap_io
     :param void (\*done)(struct drbd_device \*, int):
         callback to be called after the bitmap IO was performed
 
-    :param char \*why:
+    :param why:
         Descriptive text of the reason for doing the IO
+    :type why: char \*
 
-    :param enum bm_flag flags:
+    :param flags:
         *undescribed*
+    :type flags: enum bm_flag
 
 .. _`drbd_queue_bitmap_io.description`:
 
@@ -467,17 +509,20 @@ drbd_bitmap_io
 
     Does an IO operation on the whole bitmap
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
     :param int (\*io_fn)(struct drbd_device \*):
         IO callback to be called when bitmap IO is possible
 
-    :param char \*why:
+    :param why:
         Descriptive text of the reason for doing the IO
+    :type why: char \*
 
-    :param enum bm_flag flags:
+    :param flags:
         *undescribed*
+    :type flags: enum bm_flag
 
 .. _`drbd_bitmap_io.description`:
 
@@ -496,12 +541,14 @@ drbd_wait_misc
 
     wait for a request to make progress
 
-    :param struct drbd_device \*device:
+    :param device:
         device associated with the request
+    :type device: struct drbd_device \*
 
-    :param struct drbd_interval \*i:
+    :param i:
         the struct drbd_interval embedded in struct drbd_request or
         struct drbd_peer_request
+    :type i: struct drbd_interval \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ regulator_is_enabled_regmap
 
     standard \ :c:func:`is_enabled`\  for regmap users
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator to operate on
+    :type rdev: struct regulator_dev \*
 
 .. _`regulator_is_enabled_regmap.description`:
 
@@ -31,8 +32,9 @@ regulator_enable_regmap
 
     standard \ :c:func:`enable`\  for regmap users
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator to operate on
+    :type rdev: struct regulator_dev \*
 
 .. _`regulator_enable_regmap.description`:
 
@@ -52,8 +54,9 @@ regulator_disable_regmap
 
     standard \ :c:func:`disable`\  for regmap users
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator to operate on
+    :type rdev: struct regulator_dev \*
 
 .. _`regulator_disable_regmap.description`:
 
@@ -64,6 +67,56 @@ Regulators that use regmap for their register I/O can set the
 enable_reg and enable_mask fields in their descriptor and then use
 this as their \ :c:func:`disable`\  operation, saving some code.
 
+.. _`regulator_get_voltage_sel_pickable_regmap`:
+
+regulator_get_voltage_sel_pickable_regmap
+=========================================
+
+.. c:function:: int regulator_get_voltage_sel_pickable_regmap(struct regulator_dev *rdev)
+
+    pickable range get_voltage_sel
+
+    :param rdev:
+        regulator to operate on
+    :type rdev: struct regulator_dev \*
+
+.. _`regulator_get_voltage_sel_pickable_regmap.description`:
+
+Description
+-----------
+
+Regulators that use regmap for their register I/O and use pickable
+ranges can set the vsel_reg, vsel_mask, vsel_range_reg and vsel_range_mask
+fields in their descriptor and then use this as their get_voltage_vsel
+operation, saving some code.
+
+.. _`regulator_set_voltage_sel_pickable_regmap`:
+
+regulator_set_voltage_sel_pickable_regmap
+=========================================
+
+.. c:function:: int regulator_set_voltage_sel_pickable_regmap(struct regulator_dev *rdev, unsigned int sel)
+
+    pickable range set_voltage_sel
+
+    :param rdev:
+        regulator to operate on
+    :type rdev: struct regulator_dev \*
+
+    :param sel:
+        Selector to set
+    :type sel: unsigned int
+
+.. _`regulator_set_voltage_sel_pickable_regmap.description`:
+
+Description
+-----------
+
+Regulators that use regmap for their register I/O and use pickable
+ranges can set the vsel_reg, vsel_mask, vsel_range_reg and vsel_range_mask
+fields in their descriptor and then use this as their set_voltage_vsel
+operation, saving some code.
+
 .. _`regulator_get_voltage_sel_regmap`:
 
 regulator_get_voltage_sel_regmap
@@ -73,8 +126,9 @@ regulator_get_voltage_sel_regmap
 
     standard get_voltage_sel for regmap users
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator to operate on
+    :type rdev: struct regulator_dev \*
 
 .. _`regulator_get_voltage_sel_regmap.description`:
 
@@ -94,11 +148,13 @@ regulator_set_voltage_sel_regmap
 
     standard set_voltage_sel for regmap users
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         regulator to operate on
+    :type rdev: struct regulator_dev \*
 
-    :param unsigned sel:
+    :param sel:
         Selector to set
+    :type sel: unsigned
 
 .. _`regulator_set_voltage_sel_regmap.description`:
 
@@ -118,14 +174,17 @@ regulator_map_voltage_iterate
 
     \ :c:func:`map_voltage`\  based on \ :c:func:`list_voltage`\ 
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Regulator to operate on
+    :type rdev: struct regulator_dev \*
 
-    :param int min_uV:
+    :param min_uV:
         Lower bound for voltage
+    :type min_uV: int
 
-    :param int max_uV:
+    :param max_uV:
         Upper bound for voltage
+    :type max_uV: int
 
 .. _`regulator_map_voltage_iterate.description`:
 
@@ -146,14 +205,17 @@ regulator_map_voltage_ascend
 
     \ :c:func:`map_voltage`\  for ascendant voltage list
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Regulator to operate on
+    :type rdev: struct regulator_dev \*
 
-    :param int min_uV:
+    :param min_uV:
         Lower bound for voltage
+    :type min_uV: int
 
-    :param int max_uV:
+    :param max_uV:
         Upper bound for voltage
+    :type max_uV: int
 
 .. _`regulator_map_voltage_ascend.description`:
 
@@ -172,14 +234,17 @@ regulator_map_voltage_linear
 
     \ :c:func:`map_voltage`\  for simple linear mappings
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Regulator to operate on
+    :type rdev: struct regulator_dev \*
 
-    :param int min_uV:
+    :param min_uV:
         Lower bound for voltage
+    :type min_uV: int
 
-    :param int max_uV:
+    :param max_uV:
         Upper bound for voltage
+    :type max_uV: int
 
 .. _`regulator_map_voltage_linear.description`:
 
@@ -198,14 +263,17 @@ regulator_map_voltage_linear_range
 
     \ :c:func:`map_voltage`\  for multiple linear ranges
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Regulator to operate on
+    :type rdev: struct regulator_dev \*
 
-    :param int min_uV:
+    :param min_uV:
         Lower bound for voltage
+    :type min_uV: int
 
-    :param int max_uV:
+    :param max_uV:
         Upper bound for voltage
+    :type max_uV: int
 
 .. _`regulator_map_voltage_linear_range.description`:
 
@@ -214,6 +282,35 @@ Description
 
 Drivers providing linear_ranges in their descriptor can use this as
 their \ :c:func:`map_voltage`\  callback.
+
+.. _`regulator_map_voltage_pickable_linear_range`:
+
+regulator_map_voltage_pickable_linear_range
+===========================================
+
+.. c:function:: int regulator_map_voltage_pickable_linear_range(struct regulator_dev *rdev, int min_uV, int max_uV)
+
+    map_voltage, pickable ranges
+
+    :param rdev:
+        Regulator to operate on
+    :type rdev: struct regulator_dev \*
+
+    :param min_uV:
+        Lower bound for voltage
+    :type min_uV: int
+
+    :param max_uV:
+        Upper bound for voltage
+    :type max_uV: int
+
+.. _`regulator_map_voltage_pickable_linear_range.description`:
+
+Description
+-----------
+
+Drivers providing pickable linear_ranges in their descriptor can use
+this as their \ :c:func:`map_voltage`\  callback.
 
 .. _`regulator_list_voltage_linear`:
 
@@ -224,11 +321,13 @@ regulator_list_voltage_linear
 
     List voltages with simple calculation
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Regulator device
+    :type rdev: struct regulator_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         Selector to convert into a voltage
+    :type selector: unsigned int
 
 .. _`regulator_list_voltage_linear.description`:
 
@@ -239,6 +338,31 @@ Regulators with a simple linear mapping between voltages and
 selectors can set min_uV and uV_step in the regulator descriptor
 and then use this function as their \ :c:func:`list_voltage`\  operation,
 
+.. _`regulator_list_voltage_pickable_linear_range`:
+
+regulator_list_voltage_pickable_linear_range
+============================================
+
+.. c:function:: int regulator_list_voltage_pickable_linear_range(struct regulator_dev *rdev, unsigned int selector)
+
+    pickable range list voltages
+
+    :param rdev:
+        Regulator device
+    :type rdev: struct regulator_dev \*
+
+    :param selector:
+        Selector to convert into a voltage
+    :type selector: unsigned int
+
+.. _`regulator_list_voltage_pickable_linear_range.description`:
+
+Description
+-----------
+
+\ :c:func:`list_voltage`\  operation, intended to be used by drivers utilizing pickable
+ranges helpers.
+
 .. _`regulator_list_voltage_linear_range`:
 
 regulator_list_voltage_linear_range
@@ -248,11 +372,13 @@ regulator_list_voltage_linear_range
 
     List voltages for linear ranges
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Regulator device
+    :type rdev: struct regulator_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         Selector to convert into a voltage
+    :type selector: unsigned int
 
 .. _`regulator_list_voltage_linear_range.description`:
 
@@ -272,11 +398,13 @@ regulator_list_voltage_table
 
     List voltages with table based mapping
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Regulator device
+    :type rdev: struct regulator_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         Selector to convert into a voltage
+    :type selector: unsigned int
 
 .. _`regulator_list_voltage_table.description`:
 
@@ -296,11 +424,13 @@ regulator_set_bypass_regmap
 
     Default \ :c:func:`set_bypass`\  using regmap
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         device to operate on.
+    :type rdev: struct regulator_dev \*
 
-    :param bool enable:
+    :param enable:
         state to set.
+    :type enable: bool
 
 .. _`regulator_set_soft_start_regmap`:
 
@@ -311,8 +441,9 @@ regulator_set_soft_start_regmap
 
     Default \ :c:func:`set_soft_start`\  using regmap
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         device to operate on.
+    :type rdev: struct regulator_dev \*
 
 .. _`regulator_set_pull_down_regmap`:
 
@@ -323,8 +454,9 @@ regulator_set_pull_down_regmap
 
     Default \ :c:func:`set_pull_down`\  using regmap
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         device to operate on.
+    :type rdev: struct regulator_dev \*
 
 .. _`regulator_get_bypass_regmap`:
 
@@ -335,11 +467,13 @@ regulator_get_bypass_regmap
 
     Default \ :c:func:`get_bypass`\  using regmap
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         device to operate on.
+    :type rdev: struct regulator_dev \*
 
-    :param bool \*enable:
+    :param enable:
         current state.
+    :type enable: bool \*
 
 .. _`regulator_set_active_discharge_regmap`:
 
@@ -350,11 +484,13 @@ regulator_set_active_discharge_regmap
 
     Default \ :c:func:`set_active_discharge`\  using regmap
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         device to operate on.
+    :type rdev: struct regulator_dev \*
 
-    :param bool enable:
+    :param enable:
         state to set, 0 to disable and 1 to enable.
+    :type enable: bool
 
 .. This file was automatic generated / don't edit.
 

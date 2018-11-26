@@ -10,23 +10,29 @@ gpiotools_request_linehandle
 
     Operation of gpio
 
-    :param const char \*device_name:
+    :param device_name:
         *undescribed*
+    :type device_name: const char \*
 
-    :param unsigned int \*lines:
+    :param lines:
         *undescribed*
+    :type lines: unsigned int \*
 
-    :param unsigned int nlines:
+    :param nlines:
         *undescribed*
+    :type nlines: unsigned int
 
-    :param unsigned int flag:
+    :param flag:
         *undescribed*
+    :type flag: unsigned int
 
-    :param struct gpiohandle_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct gpiohandle_data \*
 
-    :param const char \*consumer_label:
+    :param consumer_label:
         *undescribed*
+    :type consumer_label: const char \*
 
 .. _`gpiotools_request_linehandle.description`:
 
@@ -52,12 +58,14 @@ gpiotools_set_values
 
     Set the value of gpio(s)
 
-    :param const int fd:
+    :param fd:
         The fd returned by
         \ :c:func:`gpiotools_request_linehandle`\ .
+    :type fd: const int
 
-    :param struct gpiohandle_data \*data:
+    :param data:
         The array of values want to set.
+    :type data: struct gpiohandle_data \*
 
 .. _`gpiotools_set_values.return`:
 
@@ -76,12 +84,14 @@ gpiotools_get_values
 
     Get the value of gpio(s)
 
-    :param const int fd:
+    :param fd:
         The fd returned by
         \ :c:func:`gpiotools_request_linehandle`\ .
+    :type fd: const int
 
-    :param struct gpiohandle_data \*data:
+    :param data:
         The array of values get from hardware.
+    :type data: struct gpiohandle_data \*
 
 .. _`gpiotools_get_values.return`:
 
@@ -100,9 +110,10 @@ gpiotools_release_linehandle
 
     Release the line(s) of gpiochip
 
-    :param const int fd:
+    :param fd:
         The fd returned by
         \ :c:func:`gpiotools_request_linehandle`\ .
+    :type fd: const int
 
 .. _`gpiotools_release_linehandle.return`:
 
@@ -121,12 +132,14 @@ gpiotools_get
 
     Get value from specific line
 
-    :param const char \*device_name:
+    :param device_name:
         The name of gpiochip without prefix "/dev/",
         such as "gpiochip0"
+    :type device_name: const char \*
 
-    :param unsigned int line:
+    :param line:
         number of line, such as 2.
+    :type line: unsigned int
 
 .. _`gpiotools_get.return`:
 
@@ -145,19 +158,23 @@ gpiotools_gets
 
     Get values from specific lines.
 
-    :param const char \*device_name:
+    :param device_name:
         The name of gpiochip without prefix "/dev/",
         such as "gpiochip0".
+    :type device_name: const char \*
 
-    :param unsigned int \*lines:
+    :param lines:
         An array desired lines, specified by offset
         index for the associated GPIO device.
+    :type lines: unsigned int \*
 
-    :param unsigned int nlines:
+    :param nlines:
         *undescribed*
+    :type nlines: unsigned int
 
-    :param struct gpiohandle_data \*data:
+    :param data:
         The array of values get from gpiochip.
+    :type data: struct gpiohandle_data \*
 
 .. _`gpiotools_gets.return`:
 
@@ -176,15 +193,18 @@ gpiotools_set
 
     Set value to specific line
 
-    :param const char \*device_name:
+    :param device_name:
         The name of gpiochip without prefix "/dev/",
         such as "gpiochip0"
+    :type device_name: const char \*
 
-    :param unsigned int line:
+    :param line:
         number of line, such as 2.
+    :type line: unsigned int
 
-    :param unsigned int value:
+    :param value:
         The value of gpio, must be 0(low) or 1(high).
+    :type value: unsigned int
 
 .. _`gpiotools_set.return`:
 
@@ -203,20 +223,24 @@ gpiotools_sets
 
     Set values to specific lines.
 
-    :param const char \*device_name:
+    :param device_name:
         The name of gpiochip without prefix "/dev/",
         such as "gpiochip0".
+    :type device_name: const char \*
 
-    :param unsigned int \*lines:
+    :param lines:
         An array desired lines, specified by offset
         index for the associated GPIO device.
+    :type lines: unsigned int \*
 
-    :param unsigned int nlines:
+    :param nlines:
         *undescribed*
+    :type nlines: unsigned int
 
-    :param struct gpiohandle_data \*data:
+    :param data:
         The array of values set to gpiochip, must be
         0(low) or 1(high).
+    :type data: struct gpiohandle_data \*
 
 .. _`gpiotools_sets.return`:
 

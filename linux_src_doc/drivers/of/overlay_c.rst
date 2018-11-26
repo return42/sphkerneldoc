@@ -97,8 +97,9 @@ of_overlay_notifier_register
 
     Register notifier for overlay operations
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Notifier block to register
+    :type nb: struct notifier_block \*
 
 .. _`of_overlay_notifier_register.description`:
 
@@ -122,8 +123,9 @@ of_overlay_notifier_unregister
 
     Unregister notifier for overlay operations
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Notifier block to unregister
+    :type nb: struct notifier_block \*
 
 .. _`add_changeset_property`:
 
@@ -134,17 +136,21 @@ add_changeset_property
 
     add \ ``overlay_prop``\  to overlay changeset
 
-    :param struct overlay_changeset \*ovcs:
+    :param ovcs:
         overlay changeset
+    :type ovcs: struct overlay_changeset \*
 
-    :param struct device_node \*target_node:
+    :param target_node:
         where to place \ ``overlay_prop``\  in live tree
+    :type target_node: struct device_node \*
 
-    :param struct property \*overlay_prop:
+    :param overlay_prop:
         property to add or update, from overlay tree
+    :type overlay_prop: struct property \*
 
-    :param bool is_symbols_prop:
+    :param is_symbols_prop:
         1 if \ ``overlay_prop``\  is from node "/__symbols__"
+    :type is_symbols_prop: bool
 
 .. _`add_changeset_property.description`:
 
@@ -171,14 +177,17 @@ add_changeset_node
 
     add \ ``node``\  (and children) to overlay changeset
 
-    :param struct overlay_changeset \*ovcs:
+    :param ovcs:
         overlay changeset
+    :type ovcs: struct overlay_changeset \*
 
-    :param struct device_node \*target_node:
+    :param target_node:
         where to place \ ``node``\  in live tree
+    :type target_node: struct device_node \*
 
-    :param struct device_node \*node:
+    :param node:
         node from within overlay device tree fragment
+    :type node: struct device_node \*
 
 .. _`add_changeset_node.description`:
 
@@ -244,14 +253,17 @@ build_changeset_next_level
 
     add level of overlay changeset
 
-    :param struct overlay_changeset \*ovcs:
+    :param ovcs:
         overlay changeset
+    :type ovcs: struct overlay_changeset \*
 
-    :param struct device_node \*target_node:
+    :param target_node:
         where to place \ ``overlay_node``\  in live tree
+    :type target_node: struct device_node \*
 
-    :param const struct device_node \*overlay_node:
+    :param overlay_node:
         node from within an overlay device tree fragment
+    :type overlay_node: const struct device_node \*
 
 .. _`build_changeset_next_level.description`:
 
@@ -259,7 +271,7 @@ Description
 -----------
 
 Add the properties (if any) and nodes (if any) from \ ``overlay_node``\  to the
-\ ``ovcs``\ ->cset changeset.  If an added node has child nodes, they will
+\ ``ovcs->cset``\  changeset.  If an added node has child nodes, they will
 be added recursively.
 
 Do not allow symbols node to have any children.
@@ -274,23 +286,24 @@ build_changeset
 
 .. c:function:: int build_changeset(struct overlay_changeset *ovcs)
 
-    populate overlay changeset in \ ``ovcs``\  from \ ``ovcs``\ ->fragments
+    populate overlay changeset in \ ``ovcs``\  from \ ``ovcs->fragments``\ 
 
-    :param struct overlay_changeset \*ovcs:
+    :param ovcs:
         Overlay changeset
+    :type ovcs: struct overlay_changeset \*
 
 .. _`build_changeset.description`:
 
 Description
 -----------
 
-Create changeset \ ``ovcs``\ ->cset to contain the nodes and properties of the
-overlay device tree fragments in \ ``ovcs``\ ->fragments[].  If an error occurs,
+Create changeset \ ``ovcs->cset``\  to contain the nodes and properties of the
+overlay device tree fragments in \ ``ovcs->fragments``\ [].  If an error occurs,
 any portions of the changeset that were successfully created will remain
-in \ ``ovcs``\ ->cset.
+in \ ``ovcs->cset``\ .
 
 Returns 0 on success, -ENOMEM if memory allocation failure, or -EINVAL if
-invalid overlay in \ ``ovcs``\ ->fragments[].
+invalid overlay in \ ``ovcs->fragments``\ [].
 
 .. _`init_overlay_changeset`:
 
@@ -301,21 +314,24 @@ init_overlay_changeset
 
     initialize overlay changeset from overlay tree
 
-    :param struct overlay_changeset \*ovcs:
+    :param ovcs:
         Overlay changeset to build
+    :type ovcs: struct overlay_changeset \*
 
-    :param const void \*fdt:
+    :param fdt:
         the FDT that was unflattened to create \ ``tree``\ 
+    :type fdt: const void \*
 
-    :param struct device_node \*tree:
+    :param tree:
         Contains all the overlay fragments and overlay fixup nodes
+    :type tree: struct device_node \*
 
 .. _`init_overlay_changeset.description`:
 
 Description
 -----------
 
-Initialize \ ``ovcs``\ .  Populate \ ``ovcs``\ ->fragments with node information from
+Initialize \ ``ovcs``\ .  Populate \ ``ovcs->fragments``\  with node information from
 the top level of \ ``tree``\ .  The relevant top level nodes are the fragment
 nodes and the \__symbols_\_ node.  Any other top level node will be ignored.
 
@@ -331,8 +347,9 @@ of_overlay_remove
 
     Revert and free an overlay changeset
 
-    :param int \*ovcs_id:
+    :param ovcs_id:
         Pointer to overlay changeset id
+    :type ovcs_id: int \*
 
 .. _`of_overlay_remove.description`:
 
@@ -378,8 +395,9 @@ of_overlay_remove_all
 
     Reverts and frees all overlay changesets
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`of_overlay_remove_all.description`:
 

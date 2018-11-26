@@ -1,52 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdkfd/kfd_priv.h
 
-.. _`kfd_sched_policy`:
-
-enum kfd_sched_policy
-=====================
-
-.. c:type:: enum kfd_sched_policy
-
-
-.. _`kfd_sched_policy.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum kfd_sched_policy {
-        KFD_SCHED_POLICY_HWS,
-        KFD_SCHED_POLICY_HWS_NO_OVERSUBSCRIPTION,
-        KFD_SCHED_POLICY_NO_HWS
-    };
-
-.. _`kfd_sched_policy.constants`:
-
-Constants
----------
-
-KFD_SCHED_POLICY_HWS
-    H/W scheduling policy known as command processor (cp)
-    scheduling. In this scheduling mode we're using the firmware code to
-    schedule the user mode queues and kernel queues such as HIQ and DIQ.
-    the HIQ queue is used as a special queue that dispatches the configuration
-    to the cp and the user mode queues list that are currently running.
-    the DIQ queue is a debugging queue that dispatches debugging commands to the
-    firmware.
-    in this scheduling mode user mode queues over subscription feature is
-    enabled.
-
-KFD_SCHED_POLICY_HWS_NO_OVERSUBSCRIPTION
-    The same as above but the over
-    subscription feature disabled.
-
-KFD_SCHED_POLICY_NO_HWS
-    no H/W scheduling policy is a mode which directly
-    set the command processor registers and sets the queues "manually". This
-    mode is used \*ONLY\* for debugging proposes.
-
 .. _`kfd_unmap_queues_filter`:
 
 enum kfd_unmap_queues_filter
@@ -168,6 +122,8 @@ Definition
         uint32_t ctl_stack_size;
         uint64_t tba_addr;
         uint64_t tma_addr;
+        uint32_t cu_mask_count;
+        uint32_t *cu_mask;
     }
 
 .. _`queue_properties.members`:
@@ -261,6 +217,12 @@ tba_addr
     *undescribed*
 
 tma_addr
+    *undescribed*
+
+cu_mask_count
+    *undescribed*
+
+cu_mask
     *undescribed*
 
 .. _`queue_properties.description`:
@@ -359,14 +321,17 @@ amdkfd_ioctl_t
 
 .. c:function:: int amdkfd_ioctl_t(struct file *filep, struct kfd_process *p, void *data)
 
-    :param struct file \*filep:
+    :param filep:
         *undescribed*
+    :type filep: struct file \*
 
-    :param struct kfd_process \*p:
+    :param p:
         *undescribed*
+    :type p: struct kfd_process \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`amdkfd_ioctl_t.description`:
 

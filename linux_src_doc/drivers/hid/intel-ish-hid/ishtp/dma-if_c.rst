@@ -10,8 +10,9 @@ ishtp_cl_alloc_dma_buf
 
     Allocate DMA RX and TX buffer
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_cl_alloc_dma_buf.description`:
 
@@ -31,8 +32,9 @@ ishtp_cl_free_dma_buf
 
     Free DMA RX and TX buffer
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_cl_free_dma_buf.description`:
 

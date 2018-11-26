@@ -10,11 +10,13 @@ ata_tosh_init_one
 
     attach generic IDE
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device found
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         match entry
+    :type id: const struct pci_device_id \*
 
 .. _`ata_tosh_init_one.description`:
 

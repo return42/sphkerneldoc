@@ -10,20 +10,25 @@ t4vf_record_mbox
 
     record a Firmware Mailbox Command/Reply in the log
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param const __be64 \*cmd:
+    :param cmd:
         the Firmware Mailbox Command or Reply
+    :type cmd: const __be64 \*
 
-    :param int size:
+    :param size:
         command length in bytes
+    :type size: int
 
-    :param int access:
+    :param access:
         the time (ms) needed to access the Firmware Mailbox
+    :type access: int
 
-    :param int execute:
+    :param execute:
         the time (ms) the command spent being executed
+    :type execute: int
 
 .. _`t4vf_wr_mbox_core`:
 
@@ -34,20 +39,25 @@ t4vf_wr_mbox_core
 
     send a command to FW through the mailbox
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param const void \*cmd:
+    :param cmd:
         the command to write
+    :type cmd: const void \*
 
-    :param int size:
+    :param size:
         command length in bytes
+    :type size: int
 
-    :param void \*rpl:
+    :param rpl:
         where to optionally store the reply
+    :type rpl: void \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         if true we may sleep while awaiting command completion
+    :type sleep_ok: bool
 
 .. _`t4vf_wr_mbox_core.description`:
 
@@ -75,8 +85,9 @@ fwcaps16_to_caps32
 
     convert 16-bit Port Capabilities to 32-bits
 
-    :param fw_port_cap16_t caps16:
+    :param caps16:
         a 16-bit Port Capabilities value
+    :type caps16: fw_port_cap16_t
 
 .. _`fwcaps16_to_caps32.description`:
 
@@ -92,8 +103,9 @@ fwcap_to_speed
 
 .. c:function:: unsigned int fwcap_to_speed(fw_port_cap32_t caps)
 
-    :param fw_port_cap32_t caps:
+    :param caps:
         *undescribed*
+    :type caps: fw_port_cap32_t
 
 .. _`fwcap_to_fwspeed`:
 
@@ -104,8 +116,9 @@ fwcap_to_fwspeed
 
     return highest speed in Port Capabilities
 
-    :param fw_port_cap32_t acaps:
+    :param acaps:
         advertised Port Capabilities
+    :type acaps: fw_port_cap32_t
 
 .. _`fwcap_to_fwspeed.description`:
 
@@ -125,11 +138,13 @@ t4vf_port_init
 
     initialize port hardware/software state
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int pidx:
+    :param pidx:
         the adapter port index
+    :type pidx: int
 
 .. _`t4vf_fw_reset`:
 
@@ -140,8 +155,9 @@ t4vf_fw_reset
 
     issue a reset to FW
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_fw_reset.description`:
 
@@ -161,17 +177,21 @@ t4vf_query_params
 
     query FW or device parameters
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int nparams:
+    :param nparams:
         the number of parameters
+    :type nparams: unsigned int
 
-    :param const u32 \*params:
+    :param params:
         the parameter names
+    :type params: const u32 \*
 
-    :param u32 \*vals:
+    :param vals:
         the parameter values
+    :type vals: u32 \*
 
 .. _`t4vf_query_params.description`:
 
@@ -190,17 +210,21 @@ t4vf_set_params
 
     sets FW or device parameters
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int nparams:
+    :param nparams:
         the number of parameters
+    :type nparams: unsigned int
 
-    :param const u32 \*params:
+    :param params:
         the parameter names
+    :type params: const u32 \*
 
-    :param const u32 \*vals:
+    :param vals:
         the parameter values
+    :type vals: const u32 \*
 
 .. _`t4vf_set_params.description`:
 
@@ -219,8 +243,9 @@ t4vf_fl_pkt_align
 
     return the fl packet alignment
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_fl_pkt_align.description`:
 
@@ -242,20 +267,25 @@ t4vf_bar2_sge_qregs
 
     return BAR2 SGE Queue register information
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int qid:
+    :param qid:
         the Queue ID
+    :type qid: unsigned int
 
-    :param enum t4_bar2_qtype qtype:
+    :param qtype:
         the Ingress or Egress type for \ ``qid``\ 
+    :type qtype: enum t4_bar2_qtype
 
-    :param u64 \*pbar2_qoffset:
+    :param pbar2_qoffset:
         BAR2 Queue Offset
+    :type pbar2_qoffset: u64 \*
 
-    :param unsigned int \*pbar2_qid:
+    :param pbar2_qid:
         BAR2 Queue ID or 0 for Queue ID inferred SGE Queues
+    :type pbar2_qid: unsigned int \*
 
 .. _`t4vf_bar2_sge_qregs.description`:
 
@@ -293,8 +323,9 @@ t4vf_get_sge_params
 
     retrieve adapter Scatter gather Engine parameters
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_get_sge_params.description`:
 
@@ -303,7 +334,7 @@ Description
 
 Retrieves various core SGE parameters in the form of hardware SGE
 register values.  The caller is responsible for decoding these as
-needed.  The SGE parameters are stored in \ ``adapter``\ ->params.sge.
+needed.  The SGE parameters are stored in \ ``adapter->params.sge``\ .
 
 .. _`t4vf_get_vpd_params`:
 
@@ -314,8 +345,9 @@ t4vf_get_vpd_params
 
     retrieve device VPD paremeters
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_get_vpd_params.description`:
 
@@ -323,7 +355,7 @@ Description
 -----------
 
 Retrives various device Vital Product Data parameters.  The parameters
-are stored in \ ``adapter``\ ->params.vpd.
+are stored in \ ``adapter->params.vpd``\ .
 
 .. _`t4vf_get_dev_params`:
 
@@ -334,8 +366,9 @@ t4vf_get_dev_params
 
     retrieve device paremeters
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_get_dev_params.description`:
 
@@ -343,7 +376,7 @@ Description
 -----------
 
 Retrives various device parameters.  The parameters are stored in
-\ ``adapter``\ ->params.dev.
+\ ``adapter->params.dev``\ .
 
 .. _`t4vf_get_rss_glb_config`:
 
@@ -354,8 +387,9 @@ t4vf_get_rss_glb_config
 
     retrieve adapter RSS Global Configuration
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_get_rss_glb_config.description`:
 
@@ -374,8 +408,9 @@ t4vf_get_vfres
 
     retrieve VF resource limits
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_get_vfres.description`:
 
@@ -383,7 +418,7 @@ Description
 -----------
 
 Retrieves configured resource limits and capabilities for a virtual
-function.  The results are stored in \ ``adapter``\ ->vfres.
+function.  The results are stored in \ ``adapter->vfres``\ .
 
 .. _`t4vf_read_rss_vi_config`:
 
@@ -394,14 +429,17 @@ t4vf_read_rss_vi_config
 
     read a VI's RSS configuration
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         Virtual Interface ID
+    :type viid: unsigned int
 
-    :param union rss_vi_config \*config:
+    :param config:
         pointer to host-native VI RSS Configuration buffer
+    :type config: union rss_vi_config \*
 
 .. _`t4vf_read_rss_vi_config.description`:
 
@@ -420,14 +458,17 @@ t4vf_write_rss_vi_config
 
     write a VI's RSS configuration
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         Virtual Interface ID
+    :type viid: unsigned int
 
-    :param union rss_vi_config \*config:
+    :param config:
         pointer to host-native VI RSS Configuration buffer
+    :type config: union rss_vi_config \*
 
 .. _`t4vf_write_rss_vi_config.description`:
 
@@ -446,23 +487,29 @@ t4vf_config_rss_range
 
     configure a portion of the RSS mapping table
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         Virtual Interface of RSS Table Slice
+    :type viid: unsigned int
 
-    :param int start:
+    :param start:
         starting entry in the table to write
+    :type start: int
 
-    :param int n:
+    :param n:
         how many table entries to write
+    :type n: int
 
-    :param const u16 \*rspq:
+    :param rspq:
         values for the "Response Queue" (Ingress Queue) lookup table
+    :type rspq: const u16 \*
 
-    :param int nrspq:
+    :param nrspq:
         number of values in \ ``rspq``\ 
+    :type nrspq: int
 
 .. _`t4vf_config_rss_range.description`:
 
@@ -484,11 +531,13 @@ t4vf_alloc_vi
 
     allocate a virtual interface on a port
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int port_id:
+    :param port_id:
         physical port associated with the VI
+    :type port_id: int
 
 .. _`t4vf_alloc_vi.description`:
 
@@ -508,11 +557,13 @@ t4vf_free_vi
 
     - free a virtual interface
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int viid:
+    :param viid:
         the virtual interface identifier
+    :type viid: int
 
 .. _`t4vf_free_vi.description`:
 
@@ -531,17 +582,21 @@ t4vf_enable_vi
 
     enable/disable a virtual interface
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the Virtual Interface ID
+    :type viid: unsigned int
 
-    :param bool rx_en:
+    :param rx_en:
         1=enable Rx, 0=disable Rx
+    :type rx_en: bool
 
-    :param bool tx_en:
+    :param tx_en:
         1=enable Tx, 0=disable Tx
+    :type tx_en: bool
 
 .. _`t4vf_enable_vi.description`:
 
@@ -559,17 +614,21 @@ t4vf_enable_pi
 
     enable/disable a Port's virtual interface
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct port_info \*pi:
+    :param pi:
         the Port Information structure
+    :type pi: struct port_info \*
 
-    :param bool rx_en:
+    :param rx_en:
         1=enable Rx, 0=disable Rx
+    :type rx_en: bool
 
-    :param bool tx_en:
+    :param tx_en:
         1=enable Tx, 0=disable Tx
+    :type tx_en: bool
 
 .. _`t4vf_enable_pi.description`:
 
@@ -590,14 +649,17 @@ t4vf_identify_port
 
     identify a VI's port by blinking its LED
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the Virtual Interface ID
+    :type viid: unsigned int
 
-    :param unsigned int nblinks:
+    :param nblinks:
         how many times to blink LED at 2.5 Hz
+    :type nblinks: unsigned int
 
 .. _`t4vf_identify_port.description`:
 
@@ -615,30 +677,38 @@ t4vf_set_rxmode
 
     set Rx properties of a virtual interface
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param int mtu:
+    :param mtu:
         the new MTU or -1 for no change
+    :type mtu: int
 
-    :param int promisc:
+    :param promisc:
         1 to enable promiscuous mode, 0 to disable it, -1 no change
+    :type promisc: int
 
-    :param int all_multi:
+    :param all_multi:
         1 to enable all-multi mode, 0 to disable it, -1 no change
+    :type all_multi: int
 
-    :param int bcast:
+    :param bcast:
         1 to enable broadcast Rx, 0 to disable it, -1 no change
+    :type bcast: int
 
-    :param int vlanex:
+    :param vlanex:
         1 to enable hardware VLAN Tag extraction, 0 to disable it,
         -1 no change
+    :type vlanex: int
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         *undescribed*
+    :type sleep_ok: bool
 
 .. _`t4vf_set_rxmode.description`:
 
@@ -656,29 +726,37 @@ t4vf_alloc_mac_filt
 
     allocates exact-match filters for MAC addresses
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the Virtual Interface Identifier
+    :type viid: unsigned int
 
-    :param bool free:
+    :param free:
         if true any existing filters for this VI id are first removed
+    :type free: bool
 
-    :param unsigned int naddr:
+    :param naddr:
         the number of MAC addresses to allocate filters for (up to 7)
+    :type naddr: unsigned int
 
-    :param const u8 \*\*addr:
+    :param addr:
         the MAC address(es)
+    :type addr: const u8 \*\*
 
-    :param u16 \*idx:
+    :param idx:
         where to store the index of each allocated filter
+    :type idx: u16 \*
 
-    :param u64 \*hash:
+    :param hash:
         pointer to hash address filter bitmap
+    :type hash: u64 \*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         call is allowed to sleep
+    :type sleep_ok: bool
 
 .. _`t4vf_alloc_mac_filt.description`:
 
@@ -704,20 +782,25 @@ t4vf_free_mac_filt
 
     frees exact-match filters of given MAC addresses
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the VI id
+    :type viid: unsigned int
 
-    :param unsigned int naddr:
+    :param naddr:
         the number of MAC addresses to allocate filters for (up to 7)
+    :type naddr: unsigned int
 
-    :param const u8 \*\*addr:
+    :param addr:
         the MAC address(es)
+    :type addr: const u8 \*\*
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         call is allowed to sleep
+    :type sleep_ok: bool
 
 .. _`t4vf_free_mac_filt.description`:
 
@@ -737,20 +820,25 @@ t4vf_change_mac
 
     modifies the exact-match filter for a MAC address
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the Virtual Interface ID
+    :type viid: unsigned int
 
-    :param int idx:
+    :param idx:
         index of existing filter for old value of MAC address, or -1
+    :type idx: int
 
-    :param const u8 \*addr:
+    :param addr:
         the new MAC address value
+    :type addr: const u8 \*
 
-    :param bool persist:
+    :param persist:
         if idx < 0, the new MAC allocation should be persistent
+    :type persist: bool
 
 .. _`t4vf_change_mac.description`:
 
@@ -776,20 +864,25 @@ t4vf_set_addr_hash
 
     program the MAC inexact-match hash filter
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int viid:
+    :param viid:
         the Virtual Interface Identifier
+    :type viid: unsigned int
 
-    :param bool ucast:
+    :param ucast:
         whether the hash filter should also match unicast addresses
+    :type ucast: bool
 
-    :param u64 vec:
+    :param vec:
         the value to be written to the hash filter
+    :type vec: u64
 
-    :param bool sleep_ok:
+    :param sleep_ok:
         call is allowed to sleep
+    :type sleep_ok: bool
 
 .. _`t4vf_set_addr_hash.description`:
 
@@ -807,14 +900,17 @@ t4vf_get_port_stats
 
     collect "port" statistics
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param int pidx:
+    :param pidx:
         the port index
+    :type pidx: int
 
-    :param struct t4vf_port_stats \*s:
+    :param s:
         the stats structure to fill
+    :type s: struct t4vf_port_stats \*
 
 .. _`t4vf_get_port_stats.description`:
 
@@ -832,20 +928,25 @@ t4vf_iq_free
 
     free an ingress queue and its free lists
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int iqtype:
+    :param iqtype:
         the ingress queue type (FW_IQ_TYPE_FL_INT_CAP, etc.)
+    :type iqtype: unsigned int
 
-    :param unsigned int iqid:
+    :param iqid:
         ingress queue ID
+    :type iqid: unsigned int
 
-    :param unsigned int fl0id:
+    :param fl0id:
         FL0 queue ID or 0xffff if no attached FL0
+    :type fl0id: unsigned int
 
-    :param unsigned int fl1id:
+    :param fl1id:
         FL1 queue ID or 0xffff if no attached FL1
+    :type fl1id: unsigned int
 
 .. _`t4vf_iq_free.description`:
 
@@ -863,11 +964,13 @@ t4vf_eth_eq_free
 
     free an Ethernet egress queue
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int eqid:
+    :param eqid:
         egress queue ID
+    :type eqid: unsigned int
 
 .. _`t4vf_eth_eq_free.description`:
 
@@ -885,8 +988,9 @@ t4vf_link_down_rc_str
 
     return a string for a Link Down Reason Code
 
-    :param unsigned char link_down_rc:
+    :param link_down_rc:
         Link Down Reason Code
+    :type link_down_rc: unsigned char
 
 .. _`t4vf_link_down_rc_str.description`:
 
@@ -904,11 +1008,13 @@ t4vf_handle_get_port_info
 
     process a FW reply message
 
-    :param struct port_info \*pi:
+    :param pi:
         the port info
+    :type pi: struct port_info \*
 
-    :param const struct fw_port_cmd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: const struct fw_port_cmd \*
 
 .. _`t4vf_handle_get_port_info.description`:
 
@@ -926,8 +1032,9 @@ t4vf_update_port_info
 
     retrieve and update port information if changed
 
-    :param struct port_info \*pi:
+    :param pi:
         the port_info
+    :type pi: struct port_info \*
 
 .. _`t4vf_update_port_info.description`:
 
@@ -947,11 +1054,13 @@ t4vf_handle_fw_rpl
 
     process a firmware reply message
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param const __be64 \*rpl:
+    :param rpl:
         start of the firmware message
+    :type rpl: const __be64 \*
 
 .. _`t4vf_handle_fw_rpl.description`:
 
@@ -969,17 +1078,21 @@ t4vf_get_vf_mac_acl
 
     Get the MAC address to be set to the VI of this VF.
 
-    :param struct adapter \*adapter:
+    :param adapter:
         The adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int pf:
+    :param pf:
         The pf associated with vf
+    :type pf: unsigned int
 
-    :param unsigned int \*naddr:
+    :param naddr:
         the number of ACL MAC addresses returned in addr
+    :type naddr: unsigned int \*
 
-    :param u8 \*addr:
+    :param addr:
         Placeholder for MAC addresses
+    :type addr: u8 \*
 
 .. _`t4vf_get_vf_mac_acl.description`:
 
@@ -998,8 +1111,9 @@ t4vf_get_vf_vlan_acl
 
     Get the VLAN ID to be set to the VI of this VF.
 
-    :param struct adapter \*adapter:
+    :param adapter:
         The adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_get_vf_vlan_acl.description`:
 

@@ -10,11 +10,13 @@ rz1000_set_mode
 
     mode setting function
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*unused:
+    :param unused:
         returned device on set_mode failure
+    :type unused: struct ata_device \*\*
 
 .. _`rz1000_set_mode.description`:
 
@@ -34,11 +36,13 @@ rz1000_init_one
 
     Register RZ1000 ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         Entry in rz1000_pci_tbl matching with \ ``pdev``\ 
+    :type ent: const struct pci_device_id \*
 
 .. _`rz1000_init_one.description`:
 

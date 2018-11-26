@@ -8,11 +8,13 @@ stmmac_pci_probe
 
 .. c:function:: int stmmac_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device pointer
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         pointer to table of device id/id's.
+    :type id: const struct pci_device_id \*
 
 .. _`stmmac_pci_probe.description`:
 
@@ -32,8 +34,9 @@ stmmac_pci_remove
 
 .. c:function:: void stmmac_pci_remove(struct pci_dev *pdev)
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         platform device pointer
+    :type pdev: struct pci_dev \*
 
 .. _`stmmac_pci_remove.description`:
 

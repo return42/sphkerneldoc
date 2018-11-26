@@ -10,14 +10,17 @@ do_invalidatepage
 
     invalidate part or all of a page
 
-    :param struct page \*page:
+    :param page:
         the page which is affected
+    :type page: struct page \*
 
-    :param unsigned int offset:
+    :param offset:
         start of the range to invalidate
+    :type offset: unsigned int
 
-    :param unsigned int length:
+    :param length:
         length of the range to invalidate
+    :type length: unsigned int
 
 .. _`do_invalidatepage.description`:
 
@@ -42,14 +45,17 @@ truncate_inode_pages_range
 
     truncate range of pages specified by start & end byte offsets
 
-    :param struct address_space \*mapping:
+    :param mapping:
         mapping to truncate
+    :type mapping: struct address_space \*
 
-    :param loff_t lstart:
+    :param lstart:
         offset from which to truncate
+    :type lstart: loff_t
 
-    :param loff_t lend:
+    :param lend:
         offset to which to truncate (inclusive)
+    :type lend: loff_t
 
 .. _`truncate_inode_pages_range.description`:
 
@@ -83,11 +89,13 @@ truncate_inode_pages
 
     truncate *all* the pages from an offset
 
-    :param struct address_space \*mapping:
+    :param mapping:
         mapping to truncate
+    :type mapping: struct address_space \*
 
-    :param loff_t lstart:
+    :param lstart:
         offset from which to truncate
+    :type lstart: loff_t
 
 .. _`truncate_inode_pages.description`:
 
@@ -115,8 +123,9 @@ truncate_inode_pages_final
 
     truncate *all* pages before inode dies
 
-    :param struct address_space \*mapping:
+    :param mapping:
         mapping to truncate
+    :type mapping: struct address_space \*
 
 .. _`truncate_inode_pages_final.description`:
 
@@ -137,14 +146,17 @@ invalidate_mapping_pages
 
     Invalidate all the unlocked pages of one inode
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space which holds the pages to invalidate
+    :type mapping: struct address_space \*
 
-    :param pgoff_t start:
+    :param start:
         the offset 'from' which to invalidate
+    :type start: pgoff_t
 
-    :param pgoff_t end:
+    :param end:
         the offset 'to' which to invalidate (inclusive)
+    :type end: pgoff_t
 
 .. _`invalidate_mapping_pages.description`:
 
@@ -167,14 +179,17 @@ invalidate_inode_pages2_range
 
     remove range of pages from an address_space
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space
+    :type mapping: struct address_space \*
 
-    :param pgoff_t start:
+    :param start:
         the page offset 'from' which to invalidate
+    :type start: pgoff_t
 
-    :param pgoff_t end:
+    :param end:
         the page offset 'to' which to invalidate (inclusive)
+    :type end: pgoff_t
 
 .. _`invalidate_inode_pages2_range.description`:
 
@@ -195,8 +210,9 @@ invalidate_inode_pages2
 
     remove all pages from an address_space
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space
+    :type mapping: struct address_space \*
 
 .. _`invalidate_inode_pages2.description`:
 
@@ -217,11 +233,13 @@ truncate_pagecache
 
     unmap and remove pagecache that has been truncated
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
-    :param loff_t newsize:
+    :param newsize:
         new file size
+    :type newsize: loff_t
 
 .. _`truncate_pagecache.description`:
 
@@ -247,11 +265,13 @@ truncate_setsize
 
     update inode and pagecache for a new file size
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
-    :param loff_t newsize:
+    :param newsize:
         new file size
+    :type newsize: loff_t
 
 .. _`truncate_setsize.description`:
 
@@ -275,14 +295,17 @@ pagecache_isize_extended
 
     update pagecache after extension of i_size
 
-    :param struct inode \*inode:
+    :param inode:
         inode for which i_size was extended
+    :type inode: struct inode \*
 
-    :param loff_t from:
+    :param from:
         original inode size
+    :type from: loff_t
 
-    :param loff_t to:
+    :param to:
         new inode size
+    :type to: loff_t
 
 .. _`pagecache_isize_extended.description`:
 
@@ -311,14 +334,17 @@ truncate_pagecache_range
 
     unmap and remove pagecache that is hole-punched
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
-    :param loff_t lstart:
+    :param lstart:
         offset of beginning of hole
+    :type lstart: loff_t
 
-    :param loff_t lend:
+    :param lend:
         offset of last byte of hole
+    :type lend: loff_t
 
 .. _`truncate_pagecache_range.description`:
 

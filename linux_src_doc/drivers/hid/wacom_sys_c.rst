@@ -10,11 +10,13 @@ wacom_led_next
 
     gives the next available led with a wacom trigger.
 
-    :param struct wacom \*wacom:
+    :param wacom:
         *undescribed*
+    :type wacom: struct wacom \*
 
-    :param struct wacom_led \*cur:
+    :param cur:
         *undescribed*
+    :type cur: struct wacom_led \*
 
 .. _`wacom_led_next.description`:
 

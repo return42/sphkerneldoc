@@ -10,27 +10,34 @@ futex
 
     SYS_futex syscall wrapper
 
-    :param  uaddr:
+    :param uaddr:
         address of first futex
+    :type uaddr: 
 
-    :param  op:
+    :param op:
         futex op code
+    :type op: 
 
-    :param  val:
+    :param val:
         typically expected value of uaddr, but varies by op
+    :type val: 
 
-    :param  timeout:
+    :param timeout:
         typically an absolute struct timespec (except where noted
         otherwise). Overloaded by some ops
+    :type timeout: 
 
-    :param  uaddr2:
+    :param uaddr2:
         address of second futex for some ops\
+    :type uaddr2: 
 
-    :param  val3:
+    :param val3:
         varies by op
+    :type val3: 
 
-    :param  opflags:
+    :param opflags:
         flags to be bitwise OR'd with op, such as FUTEX_PRIVATE_FLAG
+    :type opflags: 
 
 .. _`futex.description`:
 
@@ -55,17 +62,21 @@ futex_wait
 
     block on uaddr with optional timeout
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         *undescribed*
+    :type uaddr: futex_t \*
 
-    :param futex_t val:
+    :param val:
         *undescribed*
+    :type val: futex_t
 
-    :param struct timespec \*timeout:
+    :param timeout:
         relative timeout
+    :type timeout: struct timespec \*
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_wake`:
 
@@ -76,14 +87,17 @@ futex_wake
 
     wake one or more tasks blocked on uaddr
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         *undescribed*
+    :type uaddr: futex_t \*
 
-    :param int nr_wake:
+    :param nr_wake:
         wake up to this many tasks
+    :type nr_wake: int
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_wait_bitset`:
 
@@ -94,20 +108,25 @@ futex_wait_bitset
 
     block on uaddr with bitset
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         *undescribed*
+    :type uaddr: futex_t \*
 
-    :param futex_t val:
+    :param val:
         *undescribed*
+    :type val: futex_t
 
-    :param struct timespec \*timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: struct timespec \*
 
-    :param u_int32_t bitset:
+    :param bitset:
         bitset to be used with futex_wake_bitset
+    :type bitset: u_int32_t
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_wake_bitset`:
 
@@ -118,17 +137,21 @@ futex_wake_bitset
 
     wake one or more tasks blocked on uaddr with bitset
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         *undescribed*
+    :type uaddr: futex_t \*
 
-    :param int nr_wake:
+    :param nr_wake:
         *undescribed*
+    :type nr_wake: int
 
-    :param u_int32_t bitset:
+    :param bitset:
         bitset to compare with that used in futex_wait_bitset
+    :type bitset: u_int32_t
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_lock_pi`:
 
@@ -139,17 +162,21 @@ futex_lock_pi
 
     block on uaddr as a PI mutex
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         *undescribed*
+    :type uaddr: futex_t \*
 
-    :param struct timespec \*timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: struct timespec \*
 
-    :param int detect:
+    :param detect:
         whether (1) or not (0) to perform deadlock detection
+    :type detect: int
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_unlock_pi`:
 
@@ -160,11 +187,13 @@ futex_unlock_pi
 
     release uaddr as a PI mutex, waking the top waiter
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         *undescribed*
+    :type uaddr: futex_t \*
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_wake_op`:
 
@@ -175,23 +204,29 @@ futex_wake_op
 
     FIXME: COME UP WITH A GOOD ONE LINE DESCRIPTION
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         *undescribed*
+    :type uaddr: futex_t \*
 
-    :param futex_t \*uaddr2:
+    :param uaddr2:
         *undescribed*
+    :type uaddr2: futex_t \*
 
-    :param int nr_wake:
+    :param nr_wake:
         *undescribed*
+    :type nr_wake: int
 
-    :param int nr_wake2:
+    :param nr_wake2:
         *undescribed*
+    :type nr_wake2: int
 
-    :param int wake_op:
+    :param wake_op:
         *undescribed*
+    :type wake_op: int
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_requeue`:
 
@@ -202,20 +237,25 @@ futex_requeue
 
     requeue without expected value comparison, deprecated
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         *undescribed*
+    :type uaddr: futex_t \*
 
-    :param futex_t \*uaddr2:
+    :param uaddr2:
         *undescribed*
+    :type uaddr2: futex_t \*
 
-    :param int nr_wake:
+    :param nr_wake:
         wake up to this many tasks
+    :type nr_wake: int
 
-    :param int nr_requeue:
+    :param nr_requeue:
         requeue up to this many tasks
+    :type nr_requeue: int
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_requeue.description`:
 
@@ -234,23 +274,29 @@ futex_cmp_requeue
 
     requeue tasks from uaddr to uaddr2
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         *undescribed*
+    :type uaddr: futex_t \*
 
-    :param futex_t val:
+    :param val:
         *undescribed*
+    :type val: futex_t
 
-    :param futex_t \*uaddr2:
+    :param uaddr2:
         *undescribed*
+    :type uaddr2: futex_t \*
 
-    :param int nr_wake:
+    :param nr_wake:
         wake up to this many tasks
+    :type nr_wake: int
 
-    :param int nr_requeue:
+    :param nr_requeue:
         requeue up to this many tasks
+    :type nr_requeue: int
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_wait_requeue_pi`:
 
@@ -261,20 +307,25 @@ futex_wait_requeue_pi
 
     block on uaddr and prepare to requeue to uaddr2
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         non-PI futex source
+    :type uaddr: futex_t \*
 
-    :param futex_t val:
+    :param val:
         *undescribed*
+    :type val: futex_t
 
-    :param futex_t \*uaddr2:
+    :param uaddr2:
         PI futex target
+    :type uaddr2: futex_t \*
 
-    :param struct timespec \*timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: struct timespec \*
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_wait_requeue_pi.description`:
 
@@ -293,23 +344,29 @@ futex_cmp_requeue_pi
 
     requeue tasks from uaddr to uaddr2 (PI aware)
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         non-PI futex source
+    :type uaddr: futex_t \*
 
-    :param futex_t val:
+    :param val:
         *undescribed*
+    :type val: futex_t
 
-    :param futex_t \*uaddr2:
+    :param uaddr2:
         PI futex target
+    :type uaddr2: futex_t \*
 
-    :param int nr_wake:
+    :param nr_wake:
         wake up to this many tasks
+    :type nr_wake: int
 
-    :param int nr_requeue:
+    :param nr_requeue:
         requeue up to this many tasks
+    :type nr_requeue: int
 
-    :param int opflags:
+    :param opflags:
         *undescribed*
+    :type opflags: int
 
 .. _`futex_cmpxchg`:
 
@@ -320,14 +377,17 @@ futex_cmpxchg
 
     atomic compare and exchange
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         The address of the futex to be modified
+    :type uaddr: futex_t \*
 
-    :param u_int32_t oldval:
+    :param oldval:
         The expected value of the futex
+    :type oldval: u_int32_t
 
-    :param u_int32_t newval:
+    :param newval:
         The new value to try and assign the futex
+    :type newval: u_int32_t
 
 .. _`futex_cmpxchg.description`:
 
@@ -348,8 +408,9 @@ futex_dec
 
     atomic decrement of the futex value
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         The address of the futex to be modified
+    :type uaddr: futex_t \*
 
 .. _`futex_dec.description`:
 
@@ -367,8 +428,9 @@ futex_inc
 
     atomic increment of the futex value
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         the address of the futex to be modified
+    :type uaddr: futex_t \*
 
 .. _`futex_inc.description`:
 
@@ -386,11 +448,13 @@ futex_set
 
     atomic decrement of the futex value
 
-    :param futex_t \*uaddr:
+    :param uaddr:
         the address of the futex to be modified
+    :type uaddr: futex_t \*
 
-    :param u_int32_t newval:
+    :param newval:
         New value for the atomic_t
+    :type newval: u_int32_t
 
 .. _`futex_set.description`:
 

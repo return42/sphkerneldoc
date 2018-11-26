@@ -120,11 +120,13 @@ samsung_gpiolib_to_irq
 
     convert gpio pin to irq number
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         The gpio chip that the pin belongs to.
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int offset:
+    :param offset:
         The offset of the pin in the chip.
+    :type offset: unsigned int
 
 .. _`samsung_gpiolib_to_irq.description`:
 

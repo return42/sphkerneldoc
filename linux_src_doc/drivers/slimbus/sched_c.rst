@@ -10,15 +10,18 @@ slim_ctrl_clk_pause
 
     Called by slimbus controller to enter/exit 'clock pause'
 
-    :param struct slim_controller \*ctrl:
+    :param ctrl:
         controller requesting bus to be paused or woken up
+    :type ctrl: struct slim_controller \*
 
-    :param bool wakeup:
+    :param wakeup:
         Wakeup this controller from clock pause.
+    :type wakeup: bool
 
-    :param u8 restart:
+    :param restart:
         Restart time value per spec used for clock pause. This value
         isn't used when controller is to be woken up.
+    :type restart: u8
 
 .. _`slim_ctrl_clk_pause.description`:
 

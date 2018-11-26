@@ -10,21 +10,25 @@ kmemleak_alloc
 
     register a newly allocated object
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to beginning of the object
+    :type ptr: const void \*
 
-    :param size_t size:
+    :param size:
         size of the object
+    :type size: size_t
 
-    :param int min_count:
+    :param min_count:
         minimum number of references to this object. If during memory
         scanning a number of references less than \ ``min_count``\  is found,
         the object is reported as a memory leak. If \ ``min_count``\  is 0,
         the object is never reported as a leak. If \ ``min_count``\  is -1,
         the object is ignored (not scanned and not reported as a leak)
+    :type min_count: int
 
-    :param gfp_t gfp:
+    :param gfp:
         \ :c:func:`kmalloc`\  flags used for kmemleak internal memory allocations
+    :type gfp: gfp_t
 
 .. _`kmemleak_alloc.description`:
 
@@ -43,14 +47,17 @@ kmemleak_alloc_percpu
 
     register a newly allocated \__percpu object
 
-    :param const void __percpu \*ptr:
+    :param ptr:
         \__percpu pointer to beginning of the object
+    :type ptr: const void __percpu \*
 
-    :param size_t size:
+    :param size:
         size of the object
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         flags used for kmemleak internal memory allocations
+    :type gfp: gfp_t
 
 .. _`kmemleak_alloc_percpu.description`:
 
@@ -69,14 +76,17 @@ kmemleak_vmalloc
 
     register a newly vmalloc'ed object
 
-    :param const struct vm_struct \*area:
+    :param area:
         pointer to vm_struct
+    :type area: const struct vm_struct \*
 
-    :param size_t size:
+    :param size:
         size of the object
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         \__vmalloc() flags used for kmemleak internal memory allocations
+    :type gfp: gfp_t
 
 .. _`kmemleak_vmalloc.description`:
 
@@ -95,8 +105,9 @@ kmemleak_free
 
     unregister a previously registered object
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to beginning of the object
+    :type ptr: const void \*
 
 .. _`kmemleak_free.description`:
 
@@ -115,12 +126,14 @@ kmemleak_free_part
 
     partially unregister a previously registered object
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to the beginning or inside the object. This also
         represents the start of the range to be freed
+    :type ptr: const void \*
 
-    :param size_t size:
+    :param size:
         size to be unregistered
+    :type size: size_t
 
 .. _`kmemleak_free_part.description`:
 
@@ -139,8 +152,9 @@ kmemleak_free_percpu
 
     unregister a previously registered \__percpu object
 
-    :param const void __percpu \*ptr:
+    :param ptr:
         \__percpu pointer to beginning of the object
+    :type ptr: const void __percpu \*
 
 .. _`kmemleak_free_percpu.description`:
 
@@ -159,8 +173,9 @@ kmemleak_update_trace
 
     update object allocation stack trace
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to beginning of the object
+    :type ptr: const void \*
 
 .. _`kmemleak_update_trace.description`:
 
@@ -179,8 +194,9 @@ kmemleak_not_leak
 
     mark an allocated object as false positive
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to beginning of the object
+    :type ptr: const void \*
 
 .. _`kmemleak_not_leak.description`:
 
@@ -199,8 +215,9 @@ kmemleak_ignore
 
     ignore an allocated object
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to beginning of the object
+    :type ptr: const void \*
 
 .. _`kmemleak_ignore.description`:
 
@@ -221,15 +238,18 @@ kmemleak_scan_area
 
     limit the range to be scanned in an allocated object
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to beginning or inside the object. This also
         represents the start of the scan area
+    :type ptr: const void \*
 
-    :param size_t size:
+    :param size:
         size of the scan area
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         \ :c:func:`kmalloc`\  flags used for kmemleak internal memory allocations
+    :type gfp: gfp_t
 
 .. _`kmemleak_scan_area.description`:
 
@@ -249,8 +269,9 @@ kmemleak_no_scan
 
     do not scan an allocated object
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to beginning of the object
+    :type ptr: const void \*
 
 .. _`kmemleak_no_scan.description`:
 
@@ -271,18 +292,22 @@ kmemleak_alloc_phys
 
     similar to kmemleak_alloc but taking a physical address argument
 
-    :param phys_addr_t phys:
+    :param phys:
         physical address of the object
+    :type phys: phys_addr_t
 
-    :param size_t size:
+    :param size:
         size of the object
+    :type size: size_t
 
-    :param int min_count:
+    :param min_count:
         minimum number of references to this object.
         See \ :c:func:`kmemleak_alloc`\ 
+    :type min_count: int
 
-    :param gfp_t gfp:
+    :param gfp:
         \ :c:func:`kmalloc`\  flags used for kmemleak internal memory allocations
+    :type gfp: gfp_t
 
 .. _`kmemleak_free_part_phys`:
 
@@ -293,12 +318,14 @@ kmemleak_free_part_phys
 
     similar to kmemleak_free_part but taking a physical address argument
 
-    :param phys_addr_t phys:
+    :param phys:
         physical address if the beginning or inside an object. This
         also represents the start of the range to be freed
+    :type phys: phys_addr_t
 
-    :param size_t size:
+    :param size:
         size to be unregistered
+    :type size: size_t
 
 .. _`kmemleak_not_leak_phys`:
 
@@ -309,8 +336,9 @@ kmemleak_not_leak_phys
 
     similar to kmemleak_not_leak but taking a physical address argument
 
-    :param phys_addr_t phys:
+    :param phys:
         physical address of the object
+    :type phys: phys_addr_t
 
 .. _`kmemleak_ignore_phys`:
 
@@ -321,8 +349,9 @@ kmemleak_ignore_phys
 
     similar to kmemleak_ignore but taking a physical address argument
 
-    :param phys_addr_t phys:
+    :param phys:
         physical address of the object
+    :type phys: phys_addr_t
 
 .. This file was automatic generated / don't edit.
 

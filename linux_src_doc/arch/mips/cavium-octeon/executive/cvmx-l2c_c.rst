@@ -10,8 +10,9 @@ cvmx_l2c_get_set_bits
 
     Returns
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cvmx_l2c_flush_line`:
 
@@ -22,11 +23,13 @@ cvmx_l2c_flush_line
 
     This should only be called from one core at a time, as this routine sets the core to the 'debug' core in order to flush the line.
 
-    :param uint32_t assoc:
+    :param assoc:
         Association (or way) to flush
+    :type assoc: uint32_t
 
-    :param uint32_t index:
+    :param index:
         Index to flush
+    :type index: uint32_t
 
 .. This file was automatic generated / don't edit.
 

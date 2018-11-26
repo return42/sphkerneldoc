@@ -10,17 +10,21 @@ ntfs_rl_mm
 
     NTFS runlist handling code.  Part of the Linux-NTFS project.
 
-    :param runlist_element \*base:
+    :param base:
         *undescribed*
+    :type base: runlist_element \*
 
-    :param int dst:
+    :param dst:
         *undescribed*
+    :type dst: int
 
-    :param int src:
+    :param src:
         *undescribed*
+    :type src: int
 
-    :param int size:
+    :param size:
         *undescribed*
+    :type size: int
 
 .. _`ntfs_rl_mm.description`:
 
@@ -54,20 +58,25 @@ ntfs_rl_mc
 
     runlist memory copy
 
-    :param runlist_element \*dstbase:
+    :param dstbase:
         *undescribed*
+    :type dstbase: runlist_element \*
 
-    :param int dst:
+    :param dst:
         *undescribed*
+    :type dst: int
 
-    :param runlist_element \*srcbase:
+    :param srcbase:
         *undescribed*
+    :type srcbase: runlist_element \*
 
-    :param int src:
+    :param src:
         *undescribed*
+    :type src: int
 
-    :param int size:
+    :param size:
         *undescribed*
+    :type size: int
 
 .. _`ntfs_rl_mc.description`:
 
@@ -86,14 +95,17 @@ ntfs_rl_realloc
 
     Reallocate memory for runlists
 
-    :param runlist_element \*rl:
+    :param rl:
         original runlist
+    :type rl: runlist_element \*
 
-    :param int old_size:
+    :param old_size:
         number of runlist elements in the original runlist \ ``rl``\ 
+    :type old_size: int
 
-    :param int new_size:
+    :param new_size:
         number of runlist elements we need space for
+    :type new_size: int
 
 .. _`ntfs_rl_realloc.description`:
 
@@ -123,14 +135,17 @@ ntfs_rl_realloc_nofail
 
     Reallocate memory for runlists
 
-    :param runlist_element \*rl:
+    :param rl:
         original runlist
+    :type rl: runlist_element \*
 
-    :param int old_size:
+    :param old_size:
         number of runlist elements in the original runlist \ ``rl``\ 
+    :type old_size: int
 
-    :param int new_size:
+    :param new_size:
         number of runlist elements we need space for
+    :type new_size: int
 
 .. _`ntfs_rl_realloc_nofail.description`:
 
@@ -163,11 +178,13 @@ ntfs_are_rl_mergeable
 
     test if two runlists can be joined together
 
-    :param runlist_element \*dst:
+    :param dst:
         original runlist
+    :type dst: runlist_element \*
 
-    :param runlist_element \*src:
+    :param src:
         new runlist to test for mergeability with \ ``dst``\ 
+    :type src: runlist_element \*
 
 .. _`ntfs_are_rl_mergeable.description`:
 
@@ -196,11 +213,13 @@ false  Failure, the runlists cannot be merged.
 
     merge two runlists without testing if they can be merged
 
-    :param runlist_element \*dst:
+    :param dst:
         original, destination runlist
+    :type dst: runlist_element \*
 
-    :param runlist_element \*src:
+    :param src:
         new runlist to merge with \ ``dst``\ 
+    :type src: runlist_element \*
 
 .. _`__ntfs_rl_merge.description`:
 
@@ -222,20 +241,25 @@ ntfs_rl_append
 
     append a runlist after a given element
 
-    :param runlist_element \*dst:
+    :param dst:
         original runlist to be worked on
+    :type dst: runlist_element \*
 
-    :param int dsize:
+    :param dsize:
         number of elements in \ ``dst``\  (including end marker)
+    :type dsize: int
 
-    :param runlist_element \*src:
+    :param src:
         runlist to be inserted into \ ``dst``\ 
+    :type src: runlist_element \*
 
-    :param int ssize:
+    :param ssize:
         number of elements in \ ``src``\  (excluding end marker)
+    :type ssize: int
 
-    :param int loc:
+    :param loc:
         append the new runlist \ ``src``\  after this element in \ ``dst``\ 
+    :type loc: int
 
 .. _`ntfs_rl_append.description`:
 
@@ -272,20 +296,25 @@ ntfs_rl_insert
 
     insert a runlist into another
 
-    :param runlist_element \*dst:
+    :param dst:
         original runlist to be worked on
+    :type dst: runlist_element \*
 
-    :param int dsize:
+    :param dsize:
         number of elements in \ ``dst``\  (including end marker)
+    :type dsize: int
 
-    :param runlist_element \*src:
+    :param src:
         new runlist to be inserted
+    :type src: runlist_element \*
 
-    :param int ssize:
+    :param ssize:
         number of elements in \ ``src``\  (excluding end marker)
+    :type ssize: int
 
-    :param int loc:
+    :param loc:
         insert the new runlist \ ``src``\  before this element in \ ``dst``\ 
+    :type loc: int
 
 .. _`ntfs_rl_insert.description`:
 
@@ -322,20 +351,25 @@ ntfs_rl_replace
 
     overwrite a runlist element with another runlist
 
-    :param runlist_element \*dst:
+    :param dst:
         original runlist to be worked on
+    :type dst: runlist_element \*
 
-    :param int dsize:
+    :param dsize:
         number of elements in \ ``dst``\  (including end marker)
+    :type dsize: int
 
-    :param runlist_element \*src:
+    :param src:
         new runlist to be inserted
+    :type src: runlist_element \*
 
-    :param int ssize:
+    :param ssize:
         number of elements in \ ``src``\  (excluding end marker)
+    :type ssize: int
 
-    :param int loc:
+    :param loc:
         index in runlist \ ``dst``\  to overwrite with \ ``src``\ 
+    :type loc: int
 
 .. _`ntfs_rl_replace.description`:
 
@@ -371,20 +405,25 @@ ntfs_rl_split
 
     insert a runlist into the centre of a hole
 
-    :param runlist_element \*dst:
+    :param dst:
         original runlist to be worked on
+    :type dst: runlist_element \*
 
-    :param int dsize:
+    :param dsize:
         number of elements in \ ``dst``\  (including end marker)
+    :type dsize: int
 
-    :param runlist_element \*src:
+    :param src:
         new runlist to be inserted
+    :type src: runlist_element \*
 
-    :param int ssize:
+    :param ssize:
         number of elements in \ ``src``\  (excluding end marker)
+    :type ssize: int
 
-    :param int loc:
+    :param loc:
         index in runlist \ ``dst``\  at which to split and insert \ ``src``\ 
+    :type loc: int
 
 .. _`ntfs_rl_split.description`:
 
@@ -421,11 +460,13 @@ ntfs_runlists_merge
 
     merge two runlists into one
 
-    :param runlist_element \*drl:
+    :param drl:
         original runlist to be worked on
+    :type drl: runlist_element \*
 
-    :param runlist_element \*srl:
+    :param srl:
         new runlist to be merged into \ ``drl``\ 
+    :type srl: runlist_element \*
 
 .. _`ntfs_runlists_merge.description`:
 
@@ -479,14 +520,17 @@ ntfs_mapping_pairs_decompress
 
     convert mapping pairs array to runlist
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume on which the attribute resides
+    :type vol: const ntfs_volume \*
 
-    :param const ATTR_RECORD \*attr:
+    :param attr:
         attribute record whose mapping pairs array to decompress
+    :type attr: const ATTR_RECORD \*
 
-    :param runlist_element \*old_rl:
+    :param old_rl:
         optional runlist in which to insert \ ``attr``\ 's runlist
+    :type old_rl: runlist_element \*
 
 .. _`ntfs_mapping_pairs_decompress.description`:
 
@@ -533,11 +577,13 @@ ntfs_rl_vcn_to_lcn
 
     convert a vcn into a lcn given a runlist
 
-    :param const runlist_element \*rl:
+    :param rl:
         runlist to use for conversion
+    :type rl: const runlist_element \*
 
-    :param const VCN vcn:
+    :param vcn:
         vcn to convert
+    :type vcn: const VCN
 
 .. _`ntfs_rl_vcn_to_lcn.description`:
 
@@ -577,11 +623,13 @@ ntfs_rl_find_vcn_nolock
 
     find a vcn in a runlist
 
-    :param runlist_element \*rl:
+    :param rl:
         runlist to search
+    :type rl: runlist_element \*
 
-    :param const VCN vcn:
+    :param vcn:
         vcn to find
+    :type vcn: const VCN
 
 .. _`ntfs_rl_find_vcn_nolock.description`:
 
@@ -610,8 +658,9 @@ ntfs_get_nr_significant_bytes
 
     get number of bytes needed to store a number
 
-    :param const s64 n:
+    :param n:
         number for which to get the number of bytes for
+    :type n: const s64
 
 .. _`ntfs_get_nr_significant_bytes.description`:
 
@@ -636,17 +685,21 @@ ntfs_get_size_for_mapping_pairs
 
     get bytes needed for mapping pairs array
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume (needed for the ntfs version)
+    :type vol: const ntfs_volume \*
 
-    :param const runlist_element \*rl:
+    :param rl:
         locked runlist to determine the size of the mapping pairs of
+    :type rl: const runlist_element \*
 
-    :param const VCN first_vcn:
+    :param first_vcn:
         first vcn which to include in the mapping pairs array
+    :type first_vcn: const VCN
 
-    :param const VCN last_vcn:
+    :param last_vcn:
         last vcn which to include in the mapping pairs array
+    :type last_vcn: const VCN
 
 .. _`ntfs_get_size_for_mapping_pairs.description`:
 
@@ -694,14 +747,17 @@ ntfs_write_significant_bytes
 
     write the significant bytes of a number
 
-    :param s8 \*dst:
+    :param dst:
         destination buffer to write to
+    :type dst: s8 \*
 
-    :param const s8 \*dst_max:
+    :param dst_max:
         pointer to last byte of destination buffer for bounds checking
+    :type dst_max: const s8 \*
 
-    :param const s64 n:
+    :param n:
         number whose significant bytes to write
+    :type n: const s64
 
 .. _`ntfs_write_significant_bytes.description`:
 
@@ -729,26 +785,33 @@ ntfs_mapping_pairs_build
 
     build the mapping pairs array from a runlist
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume (needed for the ntfs version)
+    :type vol: const ntfs_volume \*
 
-    :param s8 \*dst:
+    :param dst:
         destination buffer to which to write the mapping pairs array
+    :type dst: s8 \*
 
-    :param const int dst_len:
+    :param dst_len:
         size of destination buffer \ ``dst``\  in bytes
+    :type dst_len: const int
 
-    :param const runlist_element \*rl:
+    :param rl:
         locked runlist for which to build the mapping pairs array
+    :type rl: const runlist_element \*
 
-    :param const VCN first_vcn:
+    :param first_vcn:
         first vcn which to include in the mapping pairs array
+    :type first_vcn: const VCN
 
-    :param const VCN last_vcn:
+    :param last_vcn:
         last vcn which to include in the mapping pairs array
+    :type last_vcn: const VCN
 
-    :param VCN \*const stop_vcn:
+    :param stop_vcn:
         first vcn outside destination buffer on success or -ENOSPC
+    :type stop_vcn: VCN \*const
 
 .. _`ntfs_mapping_pairs_build.description`:
 
@@ -802,14 +865,17 @@ ntfs_rl_truncate_nolock
 
     truncate a runlist starting at a specified vcn
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume (needed for error output)
+    :type vol: const ntfs_volume \*
 
-    :param runlist \*const runlist:
+    :param runlist:
         runlist to truncate
+    :type runlist: runlist \*const
 
-    :param const s64 new_length:
+    :param new_length:
         the new length of the runlist in VCNs
+    :type new_length: const s64
 
 .. _`ntfs_rl_truncate_nolock.description`:
 
@@ -837,7 +903,7 @@ Return 0 on success and -errno on error.
 Locking
 -------
 
-The caller must hold \ ``runlist``\ ->lock for writing.
+The caller must hold \ ``runlist->lock``\  for writing.
 
 .. _`ntfs_rl_punch_nolock`:
 
@@ -848,17 +914,21 @@ ntfs_rl_punch_nolock
 
     punch a hole into a runlist
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume (needed for error output)
+    :type vol: const ntfs_volume \*
 
-    :param runlist \*const runlist:
+    :param runlist:
         runlist to punch a hole into
+    :type runlist: runlist \*const
 
-    :param const VCN start:
+    :param start:
         starting VCN of the hole to be created
+    :type start: const VCN
 
-    :param const s64 length:
+    :param length:
         size of the hole to be created in units of clusters
+    :type length: const s64
 
 .. _`ntfs_rl_punch_nolock.description`:
 
@@ -882,7 +952,7 @@ If the runlist contains unmapped or error elements between \ ``start``\  and \ `
 Locking
 -------
 
-The caller must hold \ ``runlist``\ ->lock for writing.
+The caller must hold \ ``runlist->lock``\  for writing.
 
 .. This file was automatic generated / don't edit.
 

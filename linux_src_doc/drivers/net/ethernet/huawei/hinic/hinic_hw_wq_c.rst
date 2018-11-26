@@ -10,20 +10,25 @@ queue_alloc_page
 
     allocate page for Queue
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         HW interface for allocating DMA
+    :type hwif: struct hinic_hwif \*
 
-    :param u64 \*\*vaddr:
+    :param vaddr:
         virtual address will be returned in this address
+    :type vaddr: u64 \*\*
 
-    :param u64 \*paddr:
+    :param paddr:
         physical address will be returned in this address
+    :type paddr: u64 \*
 
-    :param void \*\*\*shadow_vaddr:
+    :param shadow_vaddr:
         VM area will be return here for holding WQ page addresses
+    :type shadow_vaddr: void \*\*\*
 
-    :param size_t page_sz:
+    :param page_sz:
         page size of each WQ page
+    :type page_sz: size_t
 
 .. _`queue_alloc_page.description`:
 
@@ -41,11 +46,13 @@ wqs_allocate_page
 
     allocate page for WQ set
 
-    :param struct hinic_wqs \*wqs:
+    :param wqs:
         Work Queue Set
+    :type wqs: struct hinic_wqs \*
 
-    :param int page_idx:
+    :param page_idx:
         the page index of the page will be allocated
+    :type page_idx: int
 
 .. _`wqs_allocate_page.description`:
 
@@ -63,11 +70,13 @@ wqs_free_page
 
     free page of WQ set
 
-    :param struct hinic_wqs \*wqs:
+    :param wqs:
         Work Queue Set
+    :type wqs: struct hinic_wqs \*
 
-    :param int page_idx:
+    :param page_idx:
         the page index of the page will be freed
+    :type page_idx: int
 
 .. _`cmdq_allocate_page`:
 
@@ -78,8 +87,9 @@ cmdq_allocate_page
 
     allocate page for cmdq
 
-    :param struct hinic_cmdq_pages \*cmdq_pages:
+    :param cmdq_pages:
         the pages of the cmdq queue struct to hold the page
+    :type cmdq_pages: struct hinic_cmdq_pages \*
 
 .. _`cmdq_allocate_page.description`:
 
@@ -97,8 +107,9 @@ cmdq_free_page
 
     free page from cmdq
 
-    :param struct hinic_cmdq_pages \*cmdq_pages:
+    :param cmdq_pages:
         the pages of the cmdq queue struct that hold the page
+    :type cmdq_pages: struct hinic_cmdq_pages \*
 
 .. _`cmdq_free_page.description`:
 
@@ -116,14 +127,17 @@ hinic_wqs_alloc
 
     allocate Work Queues set
 
-    :param struct hinic_wqs \*wqs:
+    :param wqs:
         Work Queue Set
+    :type wqs: struct hinic_wqs \*
 
-    :param int max_wqs:
+    :param max_wqs:
         maximum wqs to allocate
+    :type max_wqs: int
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         HW interface for use for the allocation
+    :type hwif: struct hinic_hwif \*
 
 .. _`hinic_wqs_alloc.description`:
 
@@ -141,8 +155,9 @@ hinic_wqs_free
 
     free Work Queues set
 
-    :param struct hinic_wqs \*wqs:
+    :param wqs:
         Work Queue Set
+    :type wqs: struct hinic_wqs \*
 
 .. _`alloc_wqes_shadow`:
 
@@ -153,8 +168,9 @@ alloc_wqes_shadow
 
     allocate WQE shadows for WQ
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         WQ to allocate shadows for
+    :type wq: struct hinic_wq \*
 
 .. _`alloc_wqes_shadow.description`:
 
@@ -172,8 +188,9 @@ free_wqes_shadow
 
     free WQE shadows of WQ
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         WQ to free shadows from
+    :type wq: struct hinic_wq \*
 
 .. _`free_wq_pages`:
 
@@ -184,14 +201,17 @@ free_wq_pages
 
     free pages of WQ
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         WQ to free pages from
+    :type wq: struct hinic_wq \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         HW interface for releasing dma addresses
+    :type hwif: struct hinic_hwif \*
 
-    :param int num_q_pages:
+    :param num_q_pages:
         number pages to free
+    :type num_q_pages: int
 
 .. _`alloc_wq_pages`:
 
@@ -202,14 +222,17 @@ alloc_wq_pages
 
     alloc pages for WQ
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         WQ to allocate pages for
+    :type wq: struct hinic_wq \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         HW interface for allocating dma addresses
+    :type hwif: struct hinic_hwif \*
 
-    :param int max_pages:
+    :param max_pages:
         maximum pages allowed
+    :type max_pages: int
 
 .. _`alloc_wq_pages.description`:
 
@@ -227,23 +250,29 @@ hinic_wq_allocate
 
     Allocate the WQ resources from the WQS
 
-    :param struct hinic_wqs \*wqs:
+    :param wqs:
         WQ set from which to allocate the WQ resources
+    :type wqs: struct hinic_wqs \*
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         WQ to allocate resources for it from the WQ set
+    :type wq: struct hinic_wq \*
 
-    :param u16 wqebb_size:
+    :param wqebb_size:
         Work Queue Block Byte Size
+    :type wqebb_size: u16
 
-    :param u16 wq_page_size:
+    :param wq_page_size:
         the page size in the Work Queue
+    :type wq_page_size: u16
 
-    :param u16 q_depth:
+    :param q_depth:
         number of wqebbs in WQ
+    :type q_depth: u16
 
-    :param u16 max_wqe_size:
+    :param max_wqe_size:
         maximum WQE size that will be used in the WQ
+    :type max_wqe_size: u16
 
 .. _`hinic_wq_allocate.description`:
 
@@ -261,11 +290,13 @@ hinic_wq_free
 
     Free the WQ resources to the WQS
 
-    :param struct hinic_wqs \*wqs:
+    :param wqs:
         WQ set to free the WQ resources to it
+    :type wqs: struct hinic_wqs \*
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         WQ to free its resources to the WQ set resources
+    :type wq: struct hinic_wq \*
 
 .. _`hinic_wqs_cmdq_alloc`:
 
@@ -276,29 +307,37 @@ hinic_wqs_cmdq_alloc
 
     Allocate wqs for cmdqs
 
-    :param struct hinic_cmdq_pages \*cmdq_pages:
+    :param cmdq_pages:
         will hold the pages of the cmdq
+    :type cmdq_pages: struct hinic_cmdq_pages \*
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         returned wqs
+    :type wq: struct hinic_wq \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         HW interface
+    :type hwif: struct hinic_hwif \*
 
-    :param int cmdq_blocks:
+    :param cmdq_blocks:
         number of cmdq blocks/wq to allocate
+    :type cmdq_blocks: int
 
-    :param u16 wqebb_size:
+    :param wqebb_size:
         Work Queue Block Byte Size
+    :type wqebb_size: u16
 
-    :param u16 wq_page_size:
+    :param wq_page_size:
         the page size in the Work Queue
+    :type wq_page_size: u16
 
-    :param u16 q_depth:
+    :param q_depth:
         number of wqebbs in WQ
+    :type q_depth: u16
 
-    :param u16 max_wqe_size:
+    :param max_wqe_size:
         maximum WQE size that will be used in the WQ
+    :type max_wqe_size: u16
 
 .. _`hinic_wqs_cmdq_alloc.description`:
 
@@ -316,14 +355,17 @@ hinic_wqs_cmdq_free
 
     Free wqs from cmdqs
 
-    :param struct hinic_cmdq_pages \*cmdq_pages:
+    :param cmdq_pages:
         hold the pages of the cmdq
+    :type cmdq_pages: struct hinic_cmdq_pages \*
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         wqs to free
+    :type wq: struct hinic_wq \*
 
-    :param int cmdq_blocks:
+    :param cmdq_blocks:
         number of wqs to free
+    :type cmdq_blocks: int
 
 .. _`hinic_get_wqe`:
 
@@ -334,14 +376,17 @@ hinic_get_wqe
 
     get wqe ptr in the current pi and update the pi
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         wq to get wqe from
+    :type wq: struct hinic_wq \*
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         wqe size
+    :type wqe_size: unsigned int
 
-    :param u16 \*prod_idx:
+    :param prod_idx:
         returned pi
+    :type prod_idx: u16 \*
 
 .. _`hinic_get_wqe.description`:
 
@@ -349,6 +394,23 @@ Description
 -----------
 
 Return wqe pointer
+
+.. _`hinic_return_wqe`:
+
+hinic_return_wqe
+================
+
+.. c:function:: void hinic_return_wqe(struct hinic_wq *wq, unsigned int wqe_size)
+
+    return the wqe when transmit failed
+
+    :param wq:
+        wq to return wqe
+    :type wq: struct hinic_wq \*
+
+    :param wqe_size:
+        wqe size
+    :type wqe_size: unsigned int
 
 .. _`hinic_put_wqe`:
 
@@ -359,11 +421,13 @@ hinic_put_wqe
 
     return the wqe place to use for a new wqe
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         wq to return wqe
+    :type wq: struct hinic_wq \*
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         wqe size
+    :type wqe_size: unsigned int
 
 .. _`hinic_read_wqe`:
 
@@ -374,14 +438,17 @@ hinic_read_wqe
 
     read wqe ptr in the current ci
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         wq to get read from
+    :type wq: struct hinic_wq \*
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         wqe size
+    :type wqe_size: unsigned int
 
-    :param u16 \*cons_idx:
+    :param cons_idx:
         returned ci
+    :type cons_idx: u16 \*
 
 .. _`hinic_read_wqe.description`:
 
@@ -399,11 +466,13 @@ hinic_read_wqe_direct
 
     read wqe directly from ci position
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         wq
+    :type wq: struct hinic_wq \*
 
-    :param u16 cons_idx:
+    :param cons_idx:
         ci position
+    :type cons_idx: u16
 
 .. _`hinic_read_wqe_direct.description`:
 
@@ -421,11 +490,13 @@ wqe_shadow
 
     check if a wqe is shadow
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         wq of the wqe
+    :type wq: struct hinic_wq \*
 
-    :param struct hinic_hw_wqe \*wqe:
+    :param wqe:
         the wqe for shadow checking
+    :type wqe: struct hinic_hw_wqe \*
 
 .. _`wqe_shadow.description`:
 
@@ -443,14 +514,17 @@ hinic_write_wqe
 
     write the wqe to the wq
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         wq to write wqe to
+    :type wq: struct hinic_wq \*
 
-    :param struct hinic_hw_wqe \*wqe:
+    :param wqe:
         wqe to write
+    :type wqe: struct hinic_hw_wqe \*
 
-    :param unsigned int wqe_size:
+    :param wqe_size:
         wqe size
+    :type wqe_size: unsigned int
 
 .. This file was automatic generated / don't edit.
 

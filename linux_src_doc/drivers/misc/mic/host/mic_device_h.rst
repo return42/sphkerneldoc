@@ -251,11 +251,13 @@ mic_mmio_read
 
     read from an MMIO register.
 
-    :param struct mic_mw \*mw:
+    :param mw:
         MMIO register base virtual address.
+    :type mw: struct mic_mw \*
 
-    :param u32 offset:
+    :param offset:
         register offset.
+    :type offset: u32
 
 .. _`mic_mmio_read.return`:
 
@@ -273,14 +275,17 @@ mic_mmio_write
 
     write to an MMIO register.
 
-    :param struct mic_mw \*mw:
+    :param mw:
         MMIO register base virtual address.
+    :type mw: struct mic_mw \*
 
-    :param u32 val:
+    :param val:
         the data value to put into the register
+    :type val: u32
 
-    :param u32 offset:
+    :param offset:
         register offset.
+    :type offset: u32
 
 .. _`mic_mmio_write.return`:
 

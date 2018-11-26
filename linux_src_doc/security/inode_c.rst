@@ -10,29 +10,35 @@ securityfs_create_dentry
 
     create a dentry in the securityfs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the securityfs filesystem.
+    :type parent: struct dentry \*
 
-    :param void \*data:
+    :param data:
         a pointer to something that the caller will want to get to later
         on.  The inode.i_private pointer will point to this value on
         the \ :c:func:`open`\  call.
+    :type data: void \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         a pointer to a struct file_operations that should be used for
         this file.
+    :type fops: const struct file_operations \*
 
-    :param const struct inode_operations \*iops:
+    :param iops:
         a point to a struct of inode_operations that should be used for
         this file/dir
+    :type iops: const struct inode_operations \*
 
 .. _`securityfs_create_dentry.description`:
 
@@ -63,25 +69,30 @@ securityfs_create_file
 
     create a file in the securityfs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the securityfs filesystem.
+    :type parent: struct dentry \*
 
-    :param void \*data:
+    :param data:
         a pointer to something that the caller will want to get to later
         on.  The inode.i_private pointer will point to this value on
         the \ :c:func:`open`\  call.
+    :type data: void \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         a pointer to a struct file_operations that should be used for
         this file.
+    :type fops: const struct file_operations \*
 
 .. _`securityfs_create_file.description`:
 
@@ -108,14 +119,16 @@ securityfs_create_dir
 
     create a directory in the securityfs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the directory to
         create.
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         directory will be created in the root of the securityfs filesystem.
+    :type parent: struct dentry \*
 
 .. _`securityfs_create_dir.description`:
 
@@ -142,24 +155,28 @@ securityfs_create_symlink
 
     create a symlink in the securityfs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the symlink to
         create.
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for the symlink.  This should be a
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         directory will be created in the root of the securityfs filesystem.
+    :type parent: struct dentry \*
 
-    :param const char \*target:
+    :param target:
         a pointer to a string containing the name of the symlink's target.
         If this parameter is \ ``NULL``\ , then the \ ``iops``\  parameter needs to be
         setup to handle .readlink and .get_link inode_operations.
+    :type target: const char \*
 
-    :param const struct inode_operations \*iops:
+    :param iops:
         a pointer to the struct inode_operations to use for the symlink. If
         this parameter is \ ``NULL``\ , then the default simple_symlink_inode
         operations will be used.
+    :type iops: const struct inode_operations \*
 
 .. _`securityfs_create_symlink.description`:
 
@@ -186,8 +203,9 @@ securityfs_remove
 
     removes a file or directory from the securityfs filesystem
 
-    :param struct dentry \*dentry:
+    :param dentry:
         a pointer to a the dentry of the file or directory to be removed.
+    :type dentry: struct dentry \*
 
 .. _`securityfs_remove.description`:
 

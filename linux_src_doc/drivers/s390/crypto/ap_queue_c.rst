@@ -1,35 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/s390/crypto/ap_queue.c
 
-.. _`ap_queue_irq_ctrl`:
-
-ap_queue_irq_ctrl
-=================
-
-.. c:function:: struct ap_queue_status ap_queue_irq_ctrl(ap_qid_t qid, struct ap_qirq_ctrl qirqctrl, void *ind)
-
-    Control interruption on a AP queue.
-
-    :param ap_qid_t qid:
-        *undescribed*
-
-    :param struct ap_qirq_ctrl qirqctrl:
-        struct ap_qirq_ctrl (64 bit value)
-
-    :param void \*ind:
-        The notification indicator byte
-
-.. _`ap_queue_irq_ctrl.description`:
-
-Description
------------
-
-Returns AP queue status.
-
-Control interruption on the given AP queue.
-Just a simple wrapper function for the low level PQAP(AQIC)
-instruction available for other kernel modules.
-
 .. _`ap_queue_enable_interruption`:
 
 ap_queue_enable_interruption
@@ -39,11 +10,13 @@ ap_queue_enable_interruption
 
     Enable interruption on an AP queue.
 
-    :param struct ap_queue \*aq:
+    :param aq:
         *undescribed*
+    :type aq: struct ap_queue \*
 
-    :param void \*ind:
+    :param ind:
         the notification indicator byte
+    :type ind: void \*
 
 .. _`ap_queue_enable_interruption.description`:
 
@@ -63,20 +36,25 @@ have been switched on using \ :c:func:`ap_test_queue`\ .
 
     Send message to adjunct processor queue.
 
-    :param ap_qid_t qid:
+    :param qid:
         The AP queue number
+    :type qid: ap_qid_t
 
-    :param unsigned long long psmid:
+    :param psmid:
         The program supplied message identifier
+    :type psmid: unsigned long long
 
-    :param void \*msg:
+    :param msg:
         The message text
+    :type msg: void \*
 
-    :param size_t length:
+    :param length:
         The message length
+    :type length: size_t
 
-    :param unsigned int special:
+    :param special:
         Special Bit
+    :type special: unsigned int
 
 .. _`__ap_send.description`:
 
@@ -97,8 +75,9 @@ ap_sm_recv
 
     Receive pending reply messages from an AP queue but do not change the state of the device.
 
-    :param struct ap_queue \*aq:
+    :param aq:
         pointer to the AP queue
+    :type aq: struct ap_queue \*
 
 .. _`ap_sm_recv.description`:
 
@@ -116,8 +95,9 @@ ap_sm_read
 
     Receive pending reply messages from an AP queue.
 
-    :param struct ap_queue \*aq:
+    :param aq:
         pointer to the AP queue
+    :type aq: struct ap_queue \*
 
 .. _`ap_sm_read.description`:
 
@@ -135,8 +115,9 @@ ap_sm_suspend_read
 
     Receive pending reply messages from an AP queue without changing the device state in between. In suspend mode we don't allow sending new requests, therefore just fetch pending replies.
 
-    :param struct ap_queue \*aq:
+    :param aq:
         pointer to the AP queue
+    :type aq: struct ap_queue \*
 
 .. _`ap_sm_suspend_read.description`:
 
@@ -154,8 +135,9 @@ ap_sm_write
 
     Send messages from the request queue to an AP queue.
 
-    :param struct ap_queue \*aq:
+    :param aq:
         pointer to the AP queue
+    :type aq: struct ap_queue \*
 
 .. _`ap_sm_write.description`:
 
@@ -173,8 +155,9 @@ ap_sm_read_write
 
     Send and receive messages to/from an AP queue.
 
-    :param struct ap_queue \*aq:
+    :param aq:
         pointer to the AP queue
+    :type aq: struct ap_queue \*
 
 .. _`ap_sm_read_write.description`:
 
@@ -192,8 +175,9 @@ ap_sm_reset
 
     Reset an AP queue.
 
-    :param struct ap_queue \*aq:
+    :param aq:
         *undescribed*
+    :type aq: struct ap_queue \*
 
 .. _`ap_sm_reset.description`:
 
@@ -211,8 +195,9 @@ ap_sm_reset_wait
 
     Test queue for completion of the reset operation
 
-    :param struct ap_queue \*aq:
+    :param aq:
         pointer to the AP queue
+    :type aq: struct ap_queue \*
 
 .. _`ap_sm_reset_wait.description`:
 
@@ -230,8 +215,9 @@ ap_sm_setirq_wait
 
     Test queue for completion of the irq enablement
 
-    :param struct ap_queue \*aq:
+    :param aq:
         pointer to the AP queue
+    :type aq: struct ap_queue \*
 
 .. _`ap_sm_setirq_wait.description`:
 
@@ -249,11 +235,13 @@ ap_queue_message
 
     Queue a request to an AP device.
 
-    :param struct ap_queue \*aq:
+    :param aq:
         The AP device to queue the message to
+    :type aq: struct ap_queue \*
 
-    :param struct ap_message \*ap_msg:
+    :param ap_msg:
         The message that is to be added
+    :type ap_msg: struct ap_message \*
 
 .. _`ap_cancel_message`:
 
@@ -264,11 +252,13 @@ ap_cancel_message
 
     Cancel a crypto request.
 
-    :param struct ap_queue \*aq:
+    :param aq:
         The AP device that has the message queued
+    :type aq: struct ap_queue \*
 
-    :param struct ap_message \*ap_msg:
+    :param ap_msg:
         The message that is to be removed
+    :type ap_msg: struct ap_message \*
 
 .. _`ap_cancel_message.description`:
 
@@ -289,8 +279,9 @@ reply will be discarded because the psmid can't be found.
 
     Flush requests.
 
-    :param struct ap_queue \*aq:
+    :param aq:
         Pointer to the AP queue
+    :type aq: struct ap_queue \*
 
 .. _`__ap_flush_queue.description`:
 

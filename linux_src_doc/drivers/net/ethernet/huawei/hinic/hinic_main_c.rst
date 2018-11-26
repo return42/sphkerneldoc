@@ -10,8 +10,9 @@ create_txqs
 
     Create the Logical Tx Queues of specific NIC device
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         the specific NIC device
+    :type nic_dev: struct hinic_dev \*
 
 .. _`create_txqs.description`:
 
@@ -29,8 +30,9 @@ free_txqs
 
     Free the Logical Tx Queues of specific NIC device
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         the specific NIC device
+    :type nic_dev: struct hinic_dev \*
 
 .. _`create_rxqs`:
 
@@ -41,8 +43,9 @@ create_rxqs
 
     Create the Logical Rx Queues of specific NIC device
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         the specific NIC device
+    :type nic_dev: struct hinic_dev \*
 
 .. _`create_rxqs.description`:
 
@@ -60,8 +63,9 @@ free_rxqs
 
     Free the Logical Rx Queues of specific NIC device
 
-    :param struct hinic_dev \*nic_dev:
+    :param nic_dev:
         the specific NIC device
+    :type nic_dev: struct hinic_dev \*
 
 .. _`change_mac_addr`:
 
@@ -72,11 +76,13 @@ change_mac_addr
 
     change the main mac address of network device
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network device
+    :type netdev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         mac address to set
+    :type addr: const u8 \*
 
 .. _`change_mac_addr.description`:
 
@@ -94,11 +100,13 @@ add_mac_addr
 
     add mac address to network device
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network device
+    :type netdev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         mac address to add
+    :type addr: const u8 \*
 
 .. _`add_mac_addr.description`:
 
@@ -116,11 +124,13 @@ remove_mac_addr
 
     remove mac address from network device
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network device
+    :type netdev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         mac address to remove
+    :type addr: const u8 \*
 
 .. _`remove_mac_addr.description`:
 
@@ -138,20 +148,25 @@ link_status_event_handler
 
     link event handler
 
-    :param void \*handle:
+    :param handle:
         nic device for the handler
+    :type handle: void \*
 
-    :param void \*buf_in:
+    :param buf_in:
         output buffer
+    :type buf_in: void \*
 
-    :param u16 in_size:
+    :param in_size:
         input size
+    :type in_size: u16
 
-    :param void \*buf_out:
+    :param buf_out:
         *undescribed*
+    :type buf_out: void \*
 
-    :param u16 \*out_size:
+    :param out_size:
         returned output size
+    :type out_size: u16 \*
 
 .. _`link_status_event_handler.description`:
 
@@ -169,8 +184,9 @@ nic_dev_init
 
     Initialize the NIC device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         the NIC pci device
+    :type pdev: struct pci_dev \*
 
 .. _`nic_dev_init.description`:
 

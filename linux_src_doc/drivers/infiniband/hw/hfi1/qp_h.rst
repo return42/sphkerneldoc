@@ -10,14 +10,17 @@ hfi1_create_qp
 
     create a queue pair for a device
 
-    :param struct ib_pd \*ibpd:
+    :param ibpd:
         the protection domain who's device we create the queue pair for
+    :type ibpd: struct ib_pd \*
 
-    :param struct ib_qp_init_attr \*init_attr:
+    :param init_attr:
         the attributes of the queue pair
+    :type init_attr: struct ib_qp_init_attr \*
 
-    :param struct ib_udata \*udata:
+    :param udata:
         user data for libibverbs.so
+    :type udata: struct ib_udata \*
 
 .. _`hfi1_create_qp.description`:
 
@@ -37,11 +40,13 @@ hfi1_qp_wakeup
 
     wake up on the indicated event
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP
+    :type qp: struct rvt_qp \*
 
-    :param u32 flag:
+    :param flag:
         flag the qp on which the qp is stalled
+    :type flag: u32
 
 .. This file was automatic generated / don't edit.
 

@@ -61,6 +61,58 @@ MEI_HBMS_NOT_STARTED
 MEI_HBMS_MAX
     sentinel
 
+.. _`mei_msg_hdr`:
+
+struct mei_msg_hdr
+==================
+
+.. c:type:: struct mei_msg_hdr
+
+    MEI BUS Interface Section
+
+.. _`mei_msg_hdr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mei_msg_hdr {
+        u32 me_addr:8;
+        u32 host_addr:8;
+        u32 length:9;
+        u32 reserved:4;
+        u32 dma_ring:1;
+        u32 internal:1;
+        u32 msg_complete:1;
+    }
+
+.. _`mei_msg_hdr.members`:
+
+Members
+-------
+
+me_addr
+    device address
+
+host_addr
+    host address
+
+length
+    message length
+
+reserved
+    reserved
+
+dma_ring
+    message is on dma ring
+
+internal
+    message is internal
+
+msg_complete
+    last packet of the message
+
 .. _`mei_hbm_cl_cmd`:
 
 struct mei_hbm_cl_cmd
@@ -491,6 +543,114 @@ me_addr
 
 host_addr
     address of the client in the driver
+
+reserved
+    reserved for alignment
+
+.. _`hbm_dma_mem_dscr`:
+
+struct hbm_dma_mem_dscr
+=======================
+
+.. c:type:: struct hbm_dma_mem_dscr
+
+    dma ring
+
+.. _`hbm_dma_mem_dscr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct hbm_dma_mem_dscr {
+        u32 addr_hi;
+        u32 addr_lo;
+        u32 size;
+    }
+
+.. _`hbm_dma_mem_dscr.members`:
+
+Members
+-------
+
+addr_hi
+    the high 32bits of 64 bit address
+
+addr_lo
+    the low  32bits of 64 bit address
+
+size
+    size in bytes (must be power of 2)
+
+.. _`hbm_dma_setup_request`:
+
+struct hbm_dma_setup_request
+============================
+
+.. c:type:: struct hbm_dma_setup_request
+
+    dma setup request
+
+.. _`hbm_dma_setup_request.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct hbm_dma_setup_request {
+        u8 hbm_cmd;
+        u8 reserved[3];
+        struct hbm_dma_mem_dscr dma_dscr[DMA_DSCR_NUM];
+    }
+
+.. _`hbm_dma_setup_request.members`:
+
+Members
+-------
+
+hbm_cmd
+    bus message command header
+
+reserved
+    reserved for alignment
+
+dma_dscr
+    dma descriptor for HOST, DEVICE, and CTRL
+
+.. _`hbm_dma_setup_response`:
+
+struct hbm_dma_setup_response
+=============================
+
+.. c:type:: struct hbm_dma_setup_response
+
+    dma setup response
+
+.. _`hbm_dma_setup_response.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct hbm_dma_setup_response {
+        u8 hbm_cmd;
+        u8 status;
+        u8 reserved[2];
+    }
+
+.. _`hbm_dma_setup_response.members`:
+
+Members
+-------
+
+hbm_cmd
+    bus message command header
+
+status
+    0 on success; otherwise DMA setup failed.
 
 reserved
     reserved for alignment

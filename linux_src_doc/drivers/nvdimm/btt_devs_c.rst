@@ -10,11 +10,13 @@ nd_btt_arena_is_valid
 
     check if the metadata layout is valid
 
-    :param struct nd_btt \*nd_btt:
+    :param nd_btt:
         device with BTT geometry and backing device info
+    :type nd_btt: struct nd_btt \*
 
-    :param struct btt_sb \*super:
+    :param super:
         pointer to the arena's info block being tested
+    :type super: struct btt_sb \*
 
 .. _`nd_btt_arena_is_valid.description`:
 

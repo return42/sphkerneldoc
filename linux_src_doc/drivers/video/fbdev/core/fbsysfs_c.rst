@@ -10,11 +10,13 @@ framebuffer_alloc
 
     creates a new frame buffer info structure
 
-    :param size_t size:
+    :param size:
         size of driver private data, can be zero
+    :type size: size_t
 
-    :param struct device \*dev:
+    :param dev:
         pointer to the device for this fb, this can be NULL
+    :type dev: struct device \*
 
 .. _`framebuffer_alloc.description`:
 
@@ -36,8 +38,9 @@ framebuffer_release
 
     marks the structure available for freeing
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. _`framebuffer_release.description`:
 

@@ -10,8 +10,9 @@ atomic_read
 
     read atomic variable
 
-    :param  v:
+    :param v:
         pointer of type atomic_t
+    :type v: 
 
 .. _`atomic_read.description`:
 
@@ -29,11 +30,13 @@ atomic_set
 
     set atomic variable
 
-    :param  v:
+    :param v:
         pointer of type atomic_t
+    :type v: 
 
-    :param  i:
+    :param i:
         required value
+    :type i: 
 
 .. _`atomic_set.description`:
 

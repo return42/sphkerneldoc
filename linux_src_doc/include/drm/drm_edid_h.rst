@@ -10,8 +10,9 @@ drm_eld_mnl
 
     Get ELD monitor name length in bytes.
 
-    :param const uint8_t \*eld:
+    :param eld:
         pointer to an eld memory structure with mnl set
+    :type eld: const uint8_t \*
 
 .. _`drm_eld_sad`:
 
@@ -22,8 +23,9 @@ drm_eld_sad
 
     Get ELD SAD structures.
 
-    :param const uint8_t \*eld:
+    :param eld:
         pointer to an eld memory structure with sad_count set
+    :type eld: const uint8_t \*
 
 .. _`drm_eld_sad_count`:
 
@@ -34,8 +36,9 @@ drm_eld_sad_count
 
     Get ELD SAD count.
 
-    :param const uint8_t \*eld:
+    :param eld:
         pointer to an eld memory structure with sad_count set
+    :type eld: const uint8_t \*
 
 .. _`drm_eld_calc_baseline_block_size`:
 
@@ -46,8 +49,9 @@ drm_eld_calc_baseline_block_size
 
     Calculate baseline block size in bytes
 
-    :param const uint8_t \*eld:
+    :param eld:
         pointer to an eld memory structure with mnl and sad_count set
+    :type eld: const uint8_t \*
 
 .. _`drm_eld_calc_baseline_block_size.description`:
 
@@ -66,8 +70,9 @@ drm_eld_size
 
     Get ELD size in bytes
 
-    :param const uint8_t \*eld:
+    :param eld:
         pointer to a complete eld memory structure
+    :type eld: const uint8_t \*
 
 .. _`drm_eld_size.description`:
 
@@ -89,8 +94,9 @@ drm_eld_get_spk_alloc
 
     Get speaker allocation
 
-    :param const uint8_t \*eld:
+    :param eld:
         pointer to an ELD memory structure
+    :type eld: const uint8_t \*
 
 .. _`drm_eld_get_spk_alloc.description`:
 
@@ -109,8 +115,9 @@ drm_eld_get_conn_type
 
     Get device type hdmi/dp connected
 
-    :param const uint8_t \*eld:
+    :param eld:
         pointer to an ELD memory structure
+    :type eld: const uint8_t \*
 
 .. _`drm_eld_get_conn_type.description`:
 

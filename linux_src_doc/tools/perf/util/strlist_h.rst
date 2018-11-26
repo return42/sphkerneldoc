@@ -10,11 +10,13 @@ strlist__for_each_entry
 
     iterate over a strlist
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct str_node <str_node>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  slist:
+    :param slist:
         the \ :c:type:`struct strlist <strlist>`\  for loop.
+    :type slist: 
 
 .. _`strlist__for_each_entry_safe`:
 
@@ -25,14 +27,17 @@ strlist__for_each_entry_safe
 
     iterate over a strlist safe against removal of str_node
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct str_node <str_node>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another \ :c:type:`struct str_node <str_node>`\  to use as temporary storage.
+    :type n: 
 
-    :param  slist:
+    :param slist:
         the \ :c:type:`struct strlist <strlist>`\  for loop.
+    :type slist: 
 
 .. This file was automatic generated / don't edit.
 

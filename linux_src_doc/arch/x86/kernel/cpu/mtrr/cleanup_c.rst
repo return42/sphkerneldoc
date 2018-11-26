@@ -10,8 +10,9 @@ mtrr_trim_uncached_memory
 
     trim RAM not covered by MTRRs
 
-    :param unsigned long end_pfn:
+    :param end_pfn:
         ending page frame number
+    :type end_pfn: unsigned long
 
 .. _`mtrr_trim_uncached_memory.description`:
 

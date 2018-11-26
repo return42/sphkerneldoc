@@ -269,11 +269,13 @@ axienet_ior
 
     Memory mapped Axi Ethernet register read
 
-    :param struct axienet_local \*lp:
+    :param lp:
         Pointer to axienet local structure
+    :type lp: struct axienet_local \*
 
-    :param off_t offset:
+    :param offset:
         Address offset from the base address of Axi Ethernet core
+    :type offset: off_t
 
 .. _`axienet_ior.return`:
 
@@ -293,14 +295,17 @@ axienet_iow
 
     Memory mapped Axi Ethernet register write
 
-    :param struct axienet_local \*lp:
+    :param lp:
         Pointer to axienet local structure
+    :type lp: struct axienet_local \*
 
-    :param off_t offset:
+    :param offset:
         Address offset from the base address of Axi Ethernet core
+    :type offset: off_t
 
-    :param u32 value:
+    :param value:
         Value to be written into the Axi Ethernet register
+    :type value: u32
 
 .. _`axienet_iow.description`:
 

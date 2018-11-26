@@ -92,8 +92,9 @@ v4l2_device_get
 
     gets a V4L2 device reference
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to struct \ :c:type:`struct v4l2_device <v4l2_device>`\ 
+    :type v4l2_dev: struct v4l2_device \*
 
 .. _`v4l2_device_get.description`:
 
@@ -112,8 +113,9 @@ v4l2_device_put
 
     putss a V4L2 device reference
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to struct \ :c:type:`struct v4l2_device <v4l2_device>`\ 
+    :type v4l2_dev: struct v4l2_device \*
 
 .. _`v4l2_device_put.description`:
 
@@ -130,13 +132,15 @@ v4l2_device_register
 
 .. c:function:: int v4l2_device_register(struct device *dev, struct v4l2_device *v4l2_dev)
 
-    Initialize v4l2_dev and make \ ``dev``\ ->driver_data point to \ ``v4l2_dev``\ .
+    Initialize v4l2_dev and make \ ``dev->driver_data``\  point to \ ``v4l2_dev``\ .
 
-    :param struct device \*dev:
+    :param dev:
         pointer to struct \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to struct \ :c:type:`struct v4l2_device <v4l2_device>`\ 
+    :type v4l2_dev: struct v4l2_device \*
 
 .. _`v4l2_device_register.description`:
 
@@ -157,15 +161,18 @@ v4l2_device_set_name
 
     Optional function to initialize the name field of struct \ :c:type:`struct v4l2_device <v4l2_device>`\ 
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to struct \ :c:type:`struct v4l2_device <v4l2_device>`\ 
+    :type v4l2_dev: struct v4l2_device \*
 
-    :param const char \*basename:
+    :param basename:
         base name for the device name
+    :type basename: const char \*
 
-    :param atomic_t \*instance:
+    :param instance:
         pointer to a static atomic_t var with the instance usage for
         the device driver.
+    :type instance: atomic_t \*
 
 .. _`v4l2_device_set_name.description`:
 
@@ -206,8 +213,9 @@ v4l2_device_disconnect
 
     Change V4L2 device state to disconnected.
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to struct v4l2_device
+    :type v4l2_dev: struct v4l2_device \*
 
 .. _`v4l2_device_disconnect.description`:
 
@@ -218,7 +226,7 @@ Should be called when the USB parent disconnects.
 Since the parent disappears, this ensures that \ ``v4l2_dev``\  doesn't have
 an invalid parent pointer.
 
-.. note:: This function sets \ ``v4l2_dev``\ ->dev to NULL.
+.. note:: This function sets \ ``v4l2_dev->dev``\  to NULL.
 
 .. _`v4l2_device_unregister`:
 
@@ -229,8 +237,9 @@ v4l2_device_unregister
 
     Unregister all sub-devices and any other resources related to \ ``v4l2_dev``\ .
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to struct v4l2_device
+    :type v4l2_dev: struct v4l2_device \*
 
 .. _`v4l2_device_register_subdev`:
 
@@ -241,11 +250,13 @@ v4l2_device_register_subdev
 
     Registers a subdev with a v4l2 device.
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to struct \ :c:type:`struct v4l2_device <v4l2_device>`\ 
+    :type v4l2_dev: struct v4l2_device \*
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
 .. _`v4l2_device_register_subdev.description`:
 
@@ -266,8 +277,9 @@ v4l2_device_unregister_subdev
 
     Unregisters a subdev with a v4l2 device.
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
 .. _`v4l2_device_unregister_subdev.description`:
 
@@ -288,8 +300,9 @@ v4l2_device_register_subdev_nodes
 
     Registers device nodes for all subdevs of the v4l2 device that are marked with the \ ``V4L2_SUBDEV_FL_HAS_DEVNODE``\  flag.
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         pointer to struct v4l2_device
+    :type v4l2_dev: struct v4l2_device \*
 
 .. _`v4l2_subdev_notify`:
 
@@ -300,16 +313,32 @@ v4l2_subdev_notify
 
     Sends a notification to v4l2_device.
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param unsigned int notification:
+    :param notification:
         type of notification. Please notice that the notification
         type is driver-specific.
+    :type notification: unsigned int
 
-    :param void \*arg:
+    :param arg:
         arguments for the notification. Those are specific to each
         notification type.
+    :type arg: void \*
+
+.. _`v4l2_device_supports_requests`:
+
+v4l2_device_supports_requests
+=============================
+
+.. c:function:: bool v4l2_device_supports_requests(struct v4l2_device *v4l2_dev)
+
+    Test if requests are supported.
+
+    :param v4l2_dev:
+        pointer to struct v4l2_device
+    :type v4l2_dev: struct v4l2_device \*
 
 .. _`v4l2_device_for_each_subdev`:
 
@@ -320,12 +349,14 @@ v4l2_device_for_each_subdev
 
     Helper macro that interates over all sub-devices of a given \ :c:type:`struct v4l2_device <v4l2_device>`\ .
 
-    :param  sd:
+    :param sd:
         pointer that will be filled by the macro with all
         \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  pointer used as an iterator by the loop.
+    :type sd: 
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
 .. _`v4l2_device_for_each_subdev.description`:
 
@@ -345,24 +376,29 @@ __v4l2_device_call_subdevs_p
 
     Calls the specified operation for all subdevs matching the condition.
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
-    :param  sd:
+    :param sd:
         pointer that will be filled by the macro with all
         \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  pointer used as an iterator by the loop.
+    :type sd: 
 
-    :param  cond:
+    :param cond:
         condition to be match
+    :type cond: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of operations functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         operation function that will be called if \ ``cond``\  matches.
         The operation functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. _`__v4l2_device_call_subdevs_p.description`:
 
@@ -388,20 +424,24 @@ __v4l2_device_call_subdevs
 
     Calls the specified operation for all subdevs matching the condition.
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
-    :param  cond:
+    :param cond:
         condition to be match
+    :type cond: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of operations functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         operation function that will be called if \ ``cond``\  matches.
         The operation functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. _`__v4l2_device_call_subdevs.description`:
 
@@ -427,24 +467,29 @@ __v4l2_device_call_subdevs_until_err_p
 
     Calls the specified operation for all subdevs matching the condition.
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
-    :param  sd:
+    :param sd:
         pointer that will be filled by the macro with all
         \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  sub-devices associated with \ ``v4l2_dev``\ .
+    :type sd: 
 
-    :param  cond:
+    :param cond:
         condition to be match
+    :type cond: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of operations functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         operation function that will be called if \ ``cond``\  matches.
         The operation functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. _`__v4l2_device_call_subdevs_until_err_p.return`:
 
@@ -473,20 +518,24 @@ __v4l2_device_call_subdevs_until_err
 
     Calls the specified operation for all subdevs matching the condition.
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
-    :param  cond:
+    :param cond:
         condition to be match
+    :type cond: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of operations functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         operation function that will be called if \ ``cond``\  matches.
         The operation functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. _`__v4l2_device_call_subdevs_until_err.return`:
 
@@ -515,21 +564,25 @@ v4l2_device_call_all
 
     Calls the specified operation for all subdevs matching the \ :c:type:`v4l2_subdev.grp_id <v4l2_subdev>`\ , as assigned by the bridge driver.
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
-    :param  grpid:
+    :param grpid:
         \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id group ID to match.
         Use 0 to match them all.
+    :type grpid: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of operations functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         operation function that will be called if \ ``cond``\  matches.
         The operation functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. _`v4l2_device_call_all.description`:
 
@@ -555,21 +608,25 @@ v4l2_device_call_until_err
 
     Calls the specified operation for all subdevs matching the \ :c:type:`v4l2_subdev.grp_id <v4l2_subdev>`\ , as assigned by the bridge driver, until an error occurs.
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
-    :param  grpid:
+    :param grpid:
         \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id group ID to match.
         Use 0 to match them all.
+    :type grpid: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of operations functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         operation function that will be called if \ ``cond``\  matches.
         The operation functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. _`v4l2_device_call_until_err.return`:
 
@@ -598,21 +655,25 @@ v4l2_device_mask_call_all
 
     Calls the specified operation for all subdevices where a group ID matches a specified bitmask.
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
-    :param  grpmsk:
+    :param grpmsk:
         bitmask to be checked against \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id
         group ID to be matched. Use 0 to match them all.
+    :type grpmsk: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of operations functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         operation function that will be called if \ ``cond``\  matches.
         The operation functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. _`v4l2_device_mask_call_all.description`:
 
@@ -638,21 +699,25 @@ v4l2_device_mask_call_until_err
 
     Calls the specified operation for all subdevices where a group ID matches a specified bitmask.
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
-    :param  grpmsk:
+    :param grpmsk:
         bitmask to be checked against \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id
         group ID to be matched. Use 0 to match them all.
+    :type grpmsk: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of operations functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         operation function that will be called if \ ``cond``\  matches.
         The operation functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. _`v4l2_device_mask_call_until_err.return`:
 
@@ -681,21 +746,25 @@ v4l2_device_has_op
 
     checks if any subdev with matching grpid has a given ops.
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
-    :param  grpid:
+    :param grpid:
         \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id group ID to match.
         Use 0 to match them all.
+    :type grpid: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of operations functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         operation function that will be called if \ ``cond``\  matches.
         The operation functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. _`v4l2_device_mask_has_op`:
 
@@ -706,21 +775,25 @@ v4l2_device_mask_has_op
 
     checks if any subdev with matching group mask has a given ops.
 
-    :param  v4l2_dev:
+    :param v4l2_dev:
         \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
+    :type v4l2_dev: 
 
-    :param  grpmsk:
+    :param grpmsk:
         bitmask to be checked against \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id
         group ID to be matched. Use 0 to match them all.
+    :type grpmsk: 
 
-    :param  o:
+    :param o:
         name of the element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\  that contains \ ``f``\ .
         Each element there groups a set of operations functions.
+    :type o: 
 
-    :param  f:
+    :param f:
         operation function that will be called if \ ``cond``\  matches.
         The operation functions are defined in groups, according to
         each element at \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type f: 
 
 .. This file was automatic generated / don't edit.
 

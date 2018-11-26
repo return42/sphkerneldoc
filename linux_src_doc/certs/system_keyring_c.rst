@@ -10,17 +10,21 @@ restrict_link_by_builtin_trusted
 
     Restrict keyring addition by built in CA
 
-    :param struct key \*dest_keyring:
+    :param dest_keyring:
         *undescribed*
+    :type dest_keyring: struct key \*
 
-    :param const struct key_type \*type:
+    :param type:
         *undescribed*
+    :type type: const struct key_type \*
 
-    :param const union key_payload \*payload:
+    :param payload:
         *undescribed*
+    :type payload: const union key_payload \*
 
-    :param struct key \*restriction_key:
+    :param restriction_key:
         *undescribed*
+    :type restriction_key: struct key \*
 
 .. _`restrict_link_by_builtin_trusted.description`:
 
@@ -39,17 +43,21 @@ restrict_link_by_builtin_and_secondary_trusted
 
     Restrict keyring addition by both builtin and secondary keyrings
 
-    :param struct key \*dest_keyring:
+    :param dest_keyring:
         *undescribed*
+    :type dest_keyring: struct key \*
 
-    :param const struct key_type \*type:
+    :param type:
         *undescribed*
+    :type type: const struct key_type \*
 
-    :param const union key_payload \*payload:
+    :param payload:
         *undescribed*
+    :type payload: const union key_payload \*
 
-    :param struct key \*restrict_key:
+    :param restrict_key:
         *undescribed*
+    :type restrict_key: struct key \*
 
 .. _`restrict_link_by_builtin_and_secondary_trusted.description`:
 
@@ -69,8 +77,9 @@ get_builtin_and_secondary_restriction
 
     keyring. Only for use in \ :c:func:`system_trusted_keyring_init`\ .
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`verify_pkcs7_signature`:
 
@@ -81,30 +90,37 @@ verify_pkcs7_signature
 
     Verify a PKCS#7-based signature on system data.
 
-    :param const void \*data:
+    :param data:
         The data to be verified (NULL if expecting internal data).
+    :type data: const void \*
 
-    :param size_t len:
+    :param len:
         Size of \ ``data``\ .
+    :type len: size_t
 
-    :param const void \*raw_pkcs7:
+    :param raw_pkcs7:
         The PKCS#7 message that is the signature.
+    :type raw_pkcs7: const void \*
 
-    :param size_t pkcs7_len:
+    :param pkcs7_len:
         The size of \ ``raw_pkcs7``\ .
+    :type pkcs7_len: size_t
 
-    :param struct key \*trusted_keys:
+    :param trusted_keys:
         Trusted keys to use (NULL for builtin trusted keys only,
         (void \*)1UL for all trusted keys).
+    :type trusted_keys: struct key \*
 
-    :param enum key_being_used_for usage:
+    :param usage:
         The use to which the key is being put.
+    :type usage: enum key_being_used_for
 
     :param int (\*view_content)(void \*ctx, const void \*data, size_t len, size_t asn1hdrlen):
         Callback to gain access to content.
 
-    :param void \*ctx:
+    :param ctx:
         Context for callback.
+    :type ctx: void \*
 
 .. This file was automatic generated / don't edit.
 

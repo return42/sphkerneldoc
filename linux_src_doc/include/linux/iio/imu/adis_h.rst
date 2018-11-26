@@ -82,14 +82,17 @@ adis_write_reg_8
 
     Write single byte to a register
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
-    :param unsigned int reg:
+    :param reg:
         The address of the register to be written
+    :type reg: unsigned int
 
-    :param uint8_t val:
+    :param val:
         *undescribed*
+    :type val: uint8_t
 
 .. _`adis_write_reg_16`:
 
@@ -100,14 +103,17 @@ adis_write_reg_16
 
     Write 2 bytes to a pair of registers
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
-    :param unsigned int reg:
+    :param reg:
         The address of the lower of the two registers
+    :type reg: unsigned int
 
-    :param uint16_t val:
+    :param val:
         *undescribed*
+    :type val: uint16_t
 
 .. _`adis_write_reg_32`:
 
@@ -118,14 +124,17 @@ adis_write_reg_32
 
     write 4 bytes to four registers
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
-    :param unsigned int reg:
+    :param reg:
         The address of the lower of the four register
+    :type reg: unsigned int
 
-    :param uint32_t val:
+    :param val:
         *undescribed*
+    :type val: uint32_t
 
 .. _`adis_read_reg_16`:
 
@@ -136,14 +145,17 @@ adis_read_reg_16
 
     read 2 bytes from a 16-bit register
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
-    :param unsigned int reg:
+    :param reg:
         The address of the lower of the two registers
+    :type reg: unsigned int
 
-    :param uint16_t \*val:
+    :param val:
         The value read back from the device
+    :type val: uint16_t \*
 
 .. _`adis_read_reg_32`:
 
@@ -154,14 +166,17 @@ adis_read_reg_32
 
     read 4 bytes from a 32-bit register
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
-    :param unsigned int reg:
+    :param reg:
         The address of the lower of the two registers
+    :type reg: unsigned int
 
-    :param uint32_t \*val:
+    :param val:
         The value read back from the device
+    :type val: uint32_t \*
 
 .. This file was automatic generated / don't edit.
 

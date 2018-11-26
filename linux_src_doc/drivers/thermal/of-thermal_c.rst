@@ -1,6 +1,42 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/thermal/of-thermal.c
 
+.. _`__thermal_cooling_bind_param`:
+
+struct \__thermal_cooling_bind_param
+====================================
+
+.. c:type:: struct __thermal_cooling_bind_param
+
+    a cooling device for a trip point
+
+.. _`__thermal_cooling_bind_param.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct __thermal_cooling_bind_param {
+        struct device_node *cooling_device;
+        unsigned long min;
+        unsigned long max;
+    }
+
+.. _`__thermal_cooling_bind_param.members`:
+
+Members
+-------
+
+cooling_device
+    a pointer to identify the referred cooling device
+
+min
+    minimum cooling state used at this trip point
+
+max
+    maximum cooling state used at this trip point
+
 .. _`__thermal_bind_params`:
 
 struct \__thermal_bind_params
@@ -18,11 +54,10 @@ Definition
 .. code-block:: c
 
     struct __thermal_bind_params {
-        struct device_node *cooling_device;
+        struct __thermal_cooling_bind_param *tcbp;
+        unsigned int count;
         unsigned int trip_id;
         unsigned int usage;
-        unsigned long min;
-        unsigned long max;
     }
 
 .. _`__thermal_bind_params.members`:
@@ -30,20 +65,17 @@ Definition
 Members
 -------
 
-cooling_device
-    a pointer to identify the referred cooling device
+tcbp
+    a pointer to an array of cooling devices
+
+count
+    number of elements in array
 
 trip_id
     the trip point index
 
 usage
     the percentage (from 0 to 100) of cooling contribution
-
-min
-    minimum cooling state used at this trip point
-
-max
-    maximum cooling state used at this trip point
 
 .. _`__thermal_zone`:
 
@@ -122,8 +154,9 @@ of_thermal_get_ntrips
 
     function to export number of available trip points.
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         pointer to a thermal zone
+    :type tz: struct thermal_zone_device \*
 
 .. _`of_thermal_get_ntrips.description`:
 
@@ -149,11 +182,13 @@ of_thermal_is_trip_valid
 
     function to check if trip point is valid
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         pointer to a thermal zone
+    :type tz: struct thermal_zone_device \*
 
-    :param int trip:
+    :param trip:
         trip point to evaluate
+    :type trip: int
 
 .. _`of_thermal_is_trip_valid.description`:
 
@@ -178,8 +213,9 @@ of_thermal_get_trip_points
 
     function to get access to a globally exported trip points
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         pointer to a thermal zone
+    :type tz: struct thermal_zone_device \*
 
 .. _`of_thermal_get_trip_points.description`:
 
@@ -204,11 +240,13 @@ of_thermal_set_emul_temp
 
     function to set emulated temperature
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         pointer to a thermal zone
+    :type tz: struct thermal_zone_device \*
 
-    :param int temp:
+    :param temp:
         temperature to set
+    :type temp: int
 
 .. _`of_thermal_set_emul_temp.description`:
 
@@ -234,20 +272,24 @@ thermal_zone_of_sensor_register
 
     registers a sensor to a DT thermal zone
 
-    :param struct device \*dev:
+    :param dev:
         a valid struct device pointer of a sensor device. Must contain
         a valid .of_node, for the sensor node.
+    :type dev: struct device \*
 
-    :param int sensor_id:
+    :param sensor_id:
         a sensor identifier, in case the sensor IP has more
         than one sensors
+    :type sensor_id: int
 
-    :param void \*data:
+    :param data:
         a private pointer (owned by the caller) that will be passed
         back, when a temperature reading is needed.
+    :type data: void \*
 
-    :param const struct thermal_zone_of_device_ops \*ops:
+    :param ops:
         struct thermal_zone_of_device_ops \*. Must contain at least .get_temp.
+    :type ops: const struct thermal_zone_of_device_ops \*
 
 .. _`thermal_zone_of_sensor_register.description`:
 
@@ -256,7 +298,7 @@ Description
 
 This function will search the list of thermal zones described in device
 tree and look for the zone that refer to the sensor device pointed by
-\ ``dev``\ ->of_node as temperature providers. For the zone pointing to the
+\ ``dev->of_node``\  as temperature providers. For the zone pointing to the
 sensor node, the sensor will be added to the DT thermal zone device.
 
 The thermal zone temperature is provided by the \ ``get_temp``\  function
@@ -294,12 +336,14 @@ thermal_zone_of_sensor_unregister
 
     unregisters a sensor from a DT thermal zone
 
-    :param struct device \*dev:
+    :param dev:
         a valid struct device pointer of a sensor device. Must contain
         a valid .of_node, for the sensor node.
+    :type dev: struct device \*
 
-    :param struct thermal_zone_device \*tzd:
+    :param tzd:
         a pointer to struct thermal_zone_device where the sensor is registered.
+    :type tzd: struct thermal_zone_device \*
 
 .. _`thermal_zone_of_sensor_unregister.description`:
 
@@ -328,20 +372,24 @@ devm_thermal_zone_of_sensor_register
 
     Resource managed version of \ :c:func:`thermal_zone_of_sensor_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         a valid struct device pointer of a sensor device. Must contain
         a valid .of_node, for the sensor node.
+    :type dev: struct device \*
 
-    :param int sensor_id:
+    :param sensor_id:
         a sensor identifier, in case the sensor IP has more
         than one sensors
+    :type sensor_id: int
 
-    :param void \*data:
+    :param data:
         a private pointer (owned by the caller) that will be passed
         back, when a temperature reading is needed.
+    :type data: void \*
 
-    :param const struct thermal_zone_of_device_ops \*ops:
+    :param ops:
         struct thermal_zone_of_device_ops \*. Must contain at least .get_temp.
+    :type ops: const struct thermal_zone_of_device_ops \*
 
 .. _`devm_thermal_zone_of_sensor_register.description`:
 
@@ -370,11 +418,13 @@ devm_thermal_zone_of_sensor_unregister
 
     Resource managed version of \ :c:func:`thermal_zone_of_sensor_unregister`\ .
 
-    :param struct device \*dev:
+    :param dev:
         Device for which which resource was allocated.
+    :type dev: struct device \*
 
-    :param struct thermal_zone_device \*tzd:
+    :param tzd:
         a pointer to struct thermal_zone_device where the sensor is registered.
+    :type tzd: struct thermal_zone_device \*
 
 .. _`devm_thermal_zone_of_sensor_unregister.description`:
 
@@ -397,17 +447,21 @@ thermal_of_populate_bind_params
 
     parse and fill cooling map data
 
-    :param struct device_node \*np:
+    :param np:
         DT node containing a cooling-map node
+    :type np: struct device_node \*
 
-    :param struct __thermal_bind_params \*__tbp:
+    :param __tbp:
         data structure to be filled with cooling map info
+    :type __tbp: struct __thermal_bind_params \*
 
-    :param struct thermal_trip \*trips:
+    :param trips:
         array of thermal zone trip points
+    :type trips: struct thermal_trip \*
 
-    :param int ntrips:
+    :param ntrips:
         number of trip points inside trips.
+    :type ntrips: int
 
 .. _`thermal_of_populate_bind_params.description`:
 
@@ -435,11 +489,13 @@ thermal_of_get_trip_type
 
     Get phy mode for given device_node
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to the given device_node
+    :type np: struct device_node \*
 
-    :param enum thermal_trip_type \*type:
+    :param type:
         Pointer to resulting trip type
+    :type type: enum thermal_trip_type \*
 
 .. _`thermal_of_get_trip_type.description`:
 
@@ -465,11 +521,13 @@ thermal_of_populate_trip
 
     parse and fill one trip point data
 
-    :param struct device_node \*np:
+    :param np:
         DT node containing a trip point node
+    :type np: struct device_node \*
 
-    :param struct thermal_trip \*trip:
+    :param trip:
         trip point data structure to be filled up
+    :type trip: struct thermal_trip \*
 
 .. _`thermal_of_populate_trip.description`:
 
@@ -495,8 +553,9 @@ thermal_of_build_thermal_zone
 
     parse and fill one thermal zone data
 
-    :param struct device_node \*np:
+    :param np:
         DT node containing a thermal zone node
+    :type np: struct device_node \*
 
 .. _`thermal_of_build_thermal_zone.description`:
 
@@ -532,8 +591,9 @@ of_parse_thermal_zones
 
     parse device tree thermal data
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`of_parse_thermal_zones.description`:
 
@@ -562,8 +622,9 @@ of_thermal_destroy_zones
 
     remove all zones parsed and allocated resources
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`of_thermal_destroy_zones.description`:
 

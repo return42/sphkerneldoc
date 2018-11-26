@@ -10,8 +10,9 @@ fscache_register_netfs
 
     Register a filesystem as desiring caching services
 
-    :param struct fscache_netfs \*netfs:
+    :param netfs:
         The description of the filesystem
+    :type netfs: struct fscache_netfs \*
 
 .. _`fscache_register_netfs.description`:
 
@@ -32,8 +33,9 @@ fscache_unregister_netfs
 
     Indicate that a filesystem no longer desires caching services
 
-    :param struct fscache_netfs \*netfs:
+    :param netfs:
         The description of the filesystem
+    :type netfs: struct fscache_netfs \*
 
 .. _`fscache_unregister_netfs.description`:
 
@@ -55,8 +57,9 @@ fscache_lookup_cache_tag
 
     Look up a cache tag
 
-    :param const char \*name:
+    :param name:
         The name of the tag to search for
+    :type name: const char \*
 
 .. _`fscache_lookup_cache_tag.description`:
 
@@ -78,8 +81,9 @@ fscache_release_cache_tag
 
     Release a cache tag
 
-    :param struct fscache_cache_tag \*tag:
+    :param tag:
         The tag to release
+    :type tag: struct fscache_cache_tag \*
 
 .. _`fscache_release_cache_tag.description`:
 
@@ -100,33 +104,42 @@ fscache_acquire_cookie
 
     Acquire a cookie to represent a cache object
 
-    :param struct fscache_cookie \*parent:
+    :param parent:
         The cookie that's to be the parent of this one
+    :type parent: struct fscache_cookie \*
 
-    :param const struct fscache_cookie_def \*def:
+    :param def:
         A description of the cache object, including callback operations
+    :type def: const struct fscache_cookie_def \*
 
-    :param const void \*index_key:
+    :param index_key:
         The index key for this cookie
+    :type index_key: const void \*
 
-    :param size_t index_key_len:
+    :param index_key_len:
         Size of the index key
+    :type index_key_len: size_t
 
-    :param const void \*aux_data:
+    :param aux_data:
         The auxiliary data for the cookie (may be NULL)
+    :type aux_data: const void \*
 
-    :param size_t aux_data_len:
+    :param aux_data_len:
         Size of the auxiliary data buffer
+    :type aux_data_len: size_t
 
-    :param void \*netfs_data:
+    :param netfs_data:
         An arbitrary piece of data to be kept in the cookie to
         represent the cache object to the netfs
+    :type netfs_data: void \*
 
-    :param loff_t object_size:
+    :param object_size:
         The initial size of object
+    :type object_size: loff_t
 
-    :param bool enable:
+    :param enable:
         Whether or not to enable a data cookie immediately
+    :type enable: bool
 
 .. _`fscache_acquire_cookie.description`:
 
@@ -149,14 +162,17 @@ fscache_relinquish_cookie
 
     Return the cookie to the cache, maybe discarding it
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie being returned
+    :type cookie: struct fscache_cookie \*
 
-    :param const void \*aux_data:
+    :param aux_data:
         The updated auxiliary data for the cookie (may be NULL)
+    :type aux_data: const void \*
 
-    :param bool retire:
+    :param retire:
         True if the cache object the cookie represents is to be discarded
+    :type retire: bool
 
 .. _`fscache_relinquish_cookie.description`:
 
@@ -180,11 +196,13 @@ fscache_check_consistency
 
     Request validation of a cache's auxiliary data
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param const void \*aux_data:
+    :param aux_data:
         The updated auxiliary data for the cookie (may be NULL)
+    :type aux_data: const void \*
 
 .. _`fscache_check_consistency.description`:
 
@@ -207,11 +225,13 @@ fscache_update_cookie
 
     Request that a cache object be updated
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param const void \*aux_data:
+    :param aux_data:
         The updated auxiliary data for the cookie (may be NULL)
+    :type aux_data: const void \*
 
 .. _`fscache_update_cookie.description`:
 
@@ -234,8 +254,9 @@ fscache_pin_cookie
 
     Pin a data-storage cache object in its cache
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
 .. _`fscache_pin_cookie.description`:
 
@@ -256,8 +277,9 @@ fscache_unpin_cookie
 
     Unpin a data-storage cache object in its cache
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
 .. _`fscache_unpin_cookie.description`:
 
@@ -278,8 +300,9 @@ fscache_attr_changed
 
     Notify cache that an object's attributes changed
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
 .. _`fscache_attr_changed.description`:
 
@@ -302,8 +325,9 @@ fscache_invalidate
 
     Notify cache that an object needs invalidation
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
 .. _`fscache_invalidate.description`:
 
@@ -328,8 +352,9 @@ fscache_wait_on_invalidate
 
     Wait for invalidation to complete
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
 .. _`fscache_wait_on_invalidate.description`:
 
@@ -350,11 +375,13 @@ fscache_reserve_space
 
     Reserve data space for a cached object
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param loff_t size:
+    :param size:
         *undescribed*
+    :type size: loff_t
 
 .. _`fscache_reserve_space.description`:
 
@@ -377,20 +404,25 @@ fscache_read_or_alloc_page
 
     Read a page from the cache or allocate a block in which to store it
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param struct page \*page:
+    :param page:
         The netfs page to fill if possible
+    :type page: struct page \*
 
-    :param fscache_rw_complete_t end_io_func:
+    :param end_io_func:
         The callback to invoke when and if the page is filled
+    :type end_io_func: fscache_rw_complete_t
 
-    :param void \*context:
+    :param context:
         An arbitrary piece of data to pass on to \ :c:func:`end_io_func`\ 
+    :type context: void \*
 
-    :param gfp_t gfp:
+    :param gfp:
         The conditions under which memory allocation should be made
+    :type gfp: gfp_t
 
 .. _`fscache_read_or_alloc_page.description`:
 
@@ -426,26 +458,33 @@ fscache_read_or_alloc_pages
 
     Read pages from the cache and/or allocate blocks in which to store them
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The netfs inode mapping to which the pages will be attached
+    :type mapping: struct address_space \*
 
-    :param struct list_head \*pages:
+    :param pages:
         A list of potential netfs pages to be filled
+    :type pages: struct list_head \*
 
-    :param unsigned \*nr_pages:
+    :param nr_pages:
         Number of pages to be read and/or allocated
+    :type nr_pages: unsigned \*
 
-    :param fscache_rw_complete_t end_io_func:
+    :param end_io_func:
         The callback to invoke when and if each page is filled
+    :type end_io_func: fscache_rw_complete_t
 
-    :param void \*context:
+    :param context:
         An arbitrary piece of data to pass on to \ :c:func:`end_io_func`\ 
+    :type context: void \*
 
-    :param gfp_t gfp:
+    :param gfp:
         The conditions under which memory allocation should be made
+    :type gfp: gfp_t
 
 .. _`fscache_read_or_alloc_pages.description`:
 
@@ -485,14 +524,17 @@ fscache_alloc_page
 
     Allocate a block in which to store a page
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param struct page \*page:
+    :param page:
         The netfs page to allocate a page for
+    :type page: struct page \*
 
-    :param gfp_t gfp:
+    :param gfp:
         The conditions under which memory allocation should be made
+    :type gfp: gfp_t
 
 .. _`fscache_alloc_page.description`:
 
@@ -520,11 +562,13 @@ fscache_readpages_cancel
 
     Cancel read/alloc on pages
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the inode's cache object.
+    :type cookie: struct fscache_cookie \*
 
-    :param struct list_head \*pages:
+    :param pages:
         The netfs pages that we canceled write on in \ :c:func:`readpages`\ 
+    :type pages: struct list_head \*
 
 .. _`fscache_readpages_cancel.description`:
 
@@ -547,17 +591,21 @@ fscache_write_page
 
     Request storage of a page in the cache
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param struct page \*page:
+    :param page:
         The netfs page to store
+    :type page: struct page \*
 
-    :param loff_t object_size:
+    :param object_size:
         Updated size of object
+    :type object_size: loff_t
 
-    :param gfp_t gfp:
+    :param gfp:
         The conditions under which memory allocation should be made
+    :type gfp: gfp_t
 
 .. _`fscache_write_page.description`:
 
@@ -585,11 +633,13 @@ fscache_uncache_page
 
     Indicate that caching is no longer required on a page
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param struct page \*page:
+    :param page:
         The netfs page that was being cached.
+    :type page: struct page \*
 
 .. _`fscache_uncache_page.description`:
 
@@ -614,11 +664,13 @@ fscache_check_page_write
 
     Ask if a page is being writing to the cache
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param struct page \*page:
+    :param page:
         The netfs page that is being cached.
+    :type page: struct page \*
 
 .. _`fscache_check_page_write.description`:
 
@@ -639,11 +691,13 @@ fscache_wait_on_page_write
 
     Wait for a page to complete writing to the cache
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param struct page \*page:
+    :param page:
         The netfs page that is being cached.
+    :type page: struct page \*
 
 .. _`fscache_wait_on_page_write.description`:
 
@@ -665,14 +719,17 @@ fscache_maybe_release_page
 
     Consider releasing a page, cancelling a store
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param struct page \*page:
+    :param page:
         The netfs page that is being cached.
+    :type page: struct page \*
 
-    :param gfp_t gfp:
+    :param gfp:
         The gfp flags passed to \ :c:func:`releasepage`\ 
+    :type gfp: gfp_t
 
 .. _`fscache_maybe_release_page.description`:
 
@@ -697,11 +754,13 @@ fscache_uncache_all_inode_pages
 
     Uncache all an inode's pages
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the inode's cache object.
+    :type cookie: struct fscache_cookie \*
 
-    :param struct inode \*inode:
+    :param inode:
         The inode to uncache pages from.
+    :type inode: struct inode \*
 
 .. _`fscache_uncache_all_inode_pages.description`:
 
@@ -723,14 +782,17 @@ fscache_disable_cookie
 
     Disable a cookie
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param const void \*aux_data:
+    :param aux_data:
         The updated auxiliary data for the cookie (may be NULL)
+    :type aux_data: const void \*
 
-    :param bool invalidate:
+    :param invalidate:
         Invalidate the backing object
+    :type invalidate: bool
 
 .. _`fscache_disable_cookie.description`:
 
@@ -757,20 +819,24 @@ fscache_enable_cookie
 
     Reenable a cookie
 
-    :param struct fscache_cookie \*cookie:
+    :param cookie:
         The cookie representing the cache object
+    :type cookie: struct fscache_cookie \*
 
-    :param const void \*aux_data:
+    :param aux_data:
         The updated auxiliary data for the cookie (may be NULL)
+    :type aux_data: const void \*
 
-    :param loff_t object_size:
+    :param object_size:
         Current size of object
+    :type object_size: loff_t
 
     :param bool (\*can_enable)(void \*data):
         A function to permit enablement once lock is held
 
-    :param void \*data:
+    :param data:
         Data for \ :c:func:`can_enable`\ 
+    :type data: void \*
 
 .. _`fscache_enable_cookie.description`:
 

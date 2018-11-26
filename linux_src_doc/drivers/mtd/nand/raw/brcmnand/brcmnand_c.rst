@@ -8,32 +8,41 @@ brcmnand_fill_dma_desc
 
 .. c:function:: int brcmnand_fill_dma_desc(struct brcmnand_host *host, struct brcm_nand_dma_desc *desc, u64 addr, dma_addr_t buf, u32 len, u8 dma_cmd, bool begin, bool end, dma_addr_t next_desc)
 
-    :param struct brcmnand_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct brcmnand_host \*
 
-    :param struct brcm_nand_dma_desc \*desc:
+    :param desc:
         *undescribed*
+    :type desc: struct brcm_nand_dma_desc \*
 
-    :param u64 addr:
+    :param addr:
         *undescribed*
+    :type addr: u64
 
-    :param dma_addr_t buf:
+    :param buf:
         *undescribed*
+    :type buf: dma_addr_t
 
-    :param u32 len:
+    :param len:
         *undescribed*
+    :type len: u32
 
-    :param u8 dma_cmd:
+    :param dma_cmd:
         *undescribed*
+    :type dma_cmd: u8
 
-    :param bool begin:
+    :param begin:
         *undescribed*
+    :type begin: bool
 
-    :param bool end:
+    :param end:
         *undescribed*
+    :type end: bool
 
-    :param dma_addr_t next_desc:
+    :param next_desc:
         *undescribed*
+    :type next_desc: dma_addr_t
 
 .. _`brcmnand_fill_dma_desc.following-ahead-of-time`:
 
@@ -50,11 +59,13 @@ brcmnand_dma_run
 
 .. c:function:: void brcmnand_dma_run(struct brcmnand_host *host, dma_addr_t desc)
 
-    :param struct brcmnand_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct brcmnand_host \*
 
-    :param dma_addr_t desc:
+    :param desc:
         *undescribed*
+    :type desc: dma_addr_t
 
 .. This file was automatic generated / don't edit.
 

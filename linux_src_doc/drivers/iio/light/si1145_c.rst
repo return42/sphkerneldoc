@@ -70,8 +70,9 @@ meas_rate
 
     Send CMD_NOP and wait for response 0
 
-    :param struct si1145_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct si1145_data \*
 
 .. _`__si1145_command_reset.description`:
 
@@ -96,11 +97,13 @@ si1145_command
 
     Execute a command and poll the response register
 
-    :param struct si1145_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct si1145_data \*
 
-    :param u8 cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: u8
 
 .. _`si1145_command.description`:
 
@@ -127,11 +130,13 @@ si1145_trigger_set_state
 
     Set trigger state
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         *undescribed*
+    :type trig: struct iio_trigger \*
 
-    :param bool state:
+    :param state:
         *undescribed*
+    :type state: bool
 
 .. _`si1145_trigger_set_state.description`:
 

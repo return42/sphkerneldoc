@@ -8,4 +8,7 @@ fsl
     :maxdepth: 1
 
     bman_h
+    dpaa2-fd_h
+    dpaa2-global_h
+    dpaa2-io_h
     qman_h

@@ -10,8 +10,9 @@ ibmveth_get_desired_dma
 
     Calculate IO memory desired by the driver
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         struct vio_dev for the device whose desired IO mem is to be returned
+    :type vdev: struct vio_dev \*
 
 .. _`ibmveth_get_desired_dma.return-value`:
 

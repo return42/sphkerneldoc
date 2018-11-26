@@ -10,14 +10,17 @@
 
     Flush all HPTEs for a given address range from the hash table (and the TLB). But keeps the linux PTEs intact.
 
-    :param struct mm_struct \*mm:
+    :param mm:
         mm_struct of the target address space (generally init_mm)
+    :type mm: struct mm_struct \*
 
-    :param unsigned long start:
+    :param start:
         starting address
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         ending address (not included in the flush)
+    :type end: unsigned long
 
 .. _`__flush_hash_table_range.description`:
 

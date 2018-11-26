@@ -10,11 +10,13 @@ lpfc_sli4_set_rsp_sgl_last
 
     Set the last bit in the response sge.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         lpfc scsi command object pointer.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_sli4_set_rsp_sgl_last.description`:
 
@@ -33,11 +35,13 @@ lpfc_update_stats
 
     Update statistical data for the command completion
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         lpfc scsi command object pointer.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_update_stats.description`:
 
@@ -56,8 +60,9 @@ lpfc_rampdown_queue_depth
 
     Post RAMP_DOWN_QUEUE event to worker thread
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_rampdown_queue_depth.description`:
 
@@ -80,8 +85,9 @@ lpfc_ramp_down_queue_handler
 
     WORKER_RAMP_DOWN_QUEUE event handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_ramp_down_queue_handler.description`:
 
@@ -101,8 +107,9 @@ lpfc_scsi_dev_block
 
     set all scsi hosts to block state
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_scsi_dev_block.description`:
 
@@ -122,11 +129,13 @@ lpfc_new_scsi_buf_s3
 
     Scsi buffer allocator for HBA with SLI3 IF spec
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port for which this call being executed.
+    :type vport: struct lpfc_vport \*
 
-    :param int num_to_alloc:
+    :param num_to_alloc:
         *undescribed*
+    :type num_to_alloc: int
 
 .. _`lpfc_new_scsi_buf_s3.description`:
 
@@ -157,8 +166,9 @@ lpfc_sli4_vport_delete_fcp_xri_aborted
 
     Remove all ndlp references for vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to lpfc vport data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_sli4_vport_delete_fcp_xri_aborted.description`:
 
@@ -177,11 +187,13 @@ lpfc_sli4_fcp_xri_aborted
 
     Fast-path process of fcp xri abort
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct sli4_wcqe_xri_aborted \*axri:
+    :param axri:
         pointer to the fcp xri abort wcqe structure.
+    :type axri: struct sli4_wcqe_xri_aborted \*
 
 .. _`lpfc_sli4_fcp_xri_aborted.description`:
 
@@ -200,14 +212,17 @@ lpfc_sli4_post_scsi_sgl_list
 
     Post blocks of scsi buffer sgls from a list
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct list_head \*post_sblist:
+    :param post_sblist:
         pointer to the scsi buffer list.
+    :type post_sblist: struct list_head \*
 
-    :param int sb_count:
+    :param sb_count:
         *undescribed*
+    :type sb_count: int
 
 .. _`lpfc_sli4_post_scsi_sgl_list.description`:
 
@@ -237,8 +252,9 @@ lpfc_sli4_repost_scsi_sgl_list
 
     Repost all the allocated scsi buffer sgls
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_repost_scsi_sgl_list.description`:
 
@@ -267,11 +283,13 @@ lpfc_new_scsi_buf_s4
 
     Scsi buffer allocator for HBA with SLI4 IF spec
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port for which this call being executed.
+    :type vport: struct lpfc_vport \*
 
-    :param int num_to_alloc:
+    :param num_to_alloc:
         *undescribed*
+    :type num_to_alloc: int
 
 .. _`lpfc_new_scsi_buf_s4.description`:
 
@@ -300,11 +318,13 @@ lpfc_new_scsi_buf
 
     Wrapper funciton for scsi buffer allocator
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port for which this call being executed.
+    :type vport: struct lpfc_vport \*
 
-    :param int num_to_alloc:
+    :param num_to_alloc:
         *undescribed*
+    :type num_to_alloc: int
 
 .. _`lpfc_new_scsi_buf.description`:
 
@@ -327,15 +347,17 @@ int - number of scsi buffers that were allocated.
 lpfc_get_scsi_buf_s3
 ====================
 
-.. c:function:: struct lpfc_scsi_buf*lpfc_get_scsi_buf_s3(struct lpfc_hba *phba, struct lpfc_nodelist *ndlp)
+.. c:function:: struct lpfc_scsi_buf* lpfc_get_scsi_buf_s3(struct lpfc_hba *phba, struct lpfc_nodelist *ndlp)
 
     Get a scsi buffer from lpfc_scsi_buf_list of the HBA
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The HBA for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         *undescribed*
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_get_scsi_buf_s3.description`:
 
@@ -358,15 +380,17 @@ Pointer to lpfc_scsi_buf - Success
 lpfc_get_scsi_buf_s4
 ====================
 
-.. c:function:: struct lpfc_scsi_buf*lpfc_get_scsi_buf_s4(struct lpfc_hba *phba, struct lpfc_nodelist *ndlp)
+.. c:function:: struct lpfc_scsi_buf* lpfc_get_scsi_buf_s4(struct lpfc_hba *phba, struct lpfc_nodelist *ndlp)
 
     Get a scsi buffer from lpfc_scsi_buf_list of the HBA
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The HBA for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         *undescribed*
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_get_scsi_buf_s4.description`:
 
@@ -389,15 +413,17 @@ Pointer to lpfc_scsi_buf - Success
 lpfc_get_scsi_buf
 =================
 
-.. c:function:: struct lpfc_scsi_buf*lpfc_get_scsi_buf(struct lpfc_hba *phba, struct lpfc_nodelist *ndlp)
+.. c:function:: struct lpfc_scsi_buf* lpfc_get_scsi_buf(struct lpfc_hba *phba, struct lpfc_nodelist *ndlp)
 
     Get a scsi buffer from lpfc_scsi_buf_list of the HBA
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The HBA for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         *undescribed*
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_get_scsi_buf.description`:
 
@@ -424,11 +450,13 @@ lpfc_release_scsi_buf_s3
 
     Return a scsi buffer back to hba scsi buf list
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*psb:
+    :param psb:
         The scsi buffer which is being released.
+    :type psb: struct lpfc_scsi_buf \*
 
 .. _`lpfc_release_scsi_buf_s3.description`:
 
@@ -447,11 +475,13 @@ lpfc_release_scsi_buf_s4
 
     Return a scsi buffer back to hba scsi buf list.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*psb:
+    :param psb:
         The scsi buffer which is being released.
+    :type psb: struct lpfc_scsi_buf \*
 
 .. _`lpfc_release_scsi_buf_s4.description`:
 
@@ -472,11 +502,13 @@ lpfc_release_scsi_buf
 
     Return a scsi buffer back to hba scsi buf list.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*psb:
+    :param psb:
         The scsi buffer which is being released.
+    :type psb: struct lpfc_scsi_buf \*
 
 .. _`lpfc_release_scsi_buf.description`:
 
@@ -495,11 +527,13 @@ lpfc_scsi_prep_dma_buf_s3
 
     DMA mapping for scsi buffer to SLI3 IF spec
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         The scsi buffer which is going to be mapped.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_scsi_prep_dma_buf_s3.description`:
 
@@ -537,21 +571,26 @@ lpfc_bg_err_inject
 
     Determine if we should inject an error
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         The SCSI command to examine
+    :type sc: struct scsi_cmnd \*
 
-    :param uint32_t \*reftag:
+    :param reftag:
         (out) BlockGuard reference tag for transmitted data
+    :type reftag: uint32_t \*
 
-    :param uint16_t \*apptag:
+    :param apptag:
         (out) BlockGuard application tag for transmitted data
         \ ``new_guard``\  (in) Value to replace CRC with if needed
+    :type apptag: uint16_t \*
 
-    :param uint32_t new_guard:
+    :param new_guard:
         *undescribed*
+    :type new_guard: uint32_t
 
 .. _`lpfc_bg_err_inject.description`:
 
@@ -569,17 +608,21 @@ lpfc_sc_to_bg_opcodes
 
     Determine the BlockGuard opcodes to be used with the specified SCSI command.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         The SCSI command to examine
+    :type sc: struct scsi_cmnd \*
 
-    :param uint8_t \*txop:
+    :param txop:
         *undescribed*
+    :type txop: uint8_t \*
 
-    :param uint8_t \*rxop:
+    :param rxop:
         *undescribed*
+    :type rxop: uint8_t \*
 
 .. _`lpfc_sc_to_bg_opcodes.return`:
 
@@ -597,17 +640,21 @@ lpfc_bg_err_opcodes
 
     reDetermine the BlockGuard opcodes to be used with the specified SCSI command in order to force a guard tag error.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         The SCSI command to examine
+    :type sc: struct scsi_cmnd \*
 
-    :param uint8_t \*txop:
+    :param txop:
         *undescribed*
+    :type txop: uint8_t \*
 
-    :param uint8_t \*rxop:
+    :param rxop:
         *undescribed*
+    :type rxop: uint8_t \*
 
 .. _`lpfc_bg_err_opcodes.return`:
 
@@ -625,17 +672,21 @@ lpfc_bg_setup_bpl
 
     Setup BlockGuard BPL with no protection data
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         pointer to scsi command we're working on
+    :type sc: struct scsi_cmnd \*
 
-    :param struct ulp_bde64 \*bpl:
+    :param bpl:
         pointer to buffer list for protection groups
+    :type bpl: struct ulp_bde64 \*
 
-    :param int datasegcnt:
+    :param datasegcnt:
         *undescribed*
+    :type datasegcnt: int
 
 .. _`lpfc_bg_setup_bpl.description`:
 
@@ -684,20 +735,25 @@ lpfc_bg_setup_bpl_prot
 
     Setup BlockGuard BPL with protection data
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         pointer to scsi command we're working on
+    :type sc: struct scsi_cmnd \*
 
-    :param struct ulp_bde64 \*bpl:
+    :param bpl:
         pointer to buffer list for protection groups
+    :type bpl: struct ulp_bde64 \*
 
-    :param int datacnt:
+    :param datacnt:
         number of segments of data that have been dma mapped
+    :type datacnt: int
 
-    :param int protcnt:
+    :param protcnt:
         number of segment of protection data that have been dma mapped
+    :type protcnt: int
 
 .. _`lpfc_bg_setup_bpl_prot.description`:
 
@@ -754,17 +810,21 @@ lpfc_bg_setup_sgl
 
     Setup BlockGuard SGL with no protection data
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         pointer to scsi command we're working on
+    :type sc: struct scsi_cmnd \*
 
-    :param struct sli4_sge \*sgl:
+    :param sgl:
         pointer to buffer list for protection groups
+    :type sgl: struct sli4_sge \*
 
-    :param int datasegcnt:
+    :param datasegcnt:
         *undescribed*
+    :type datasegcnt: int
 
 .. _`lpfc_bg_setup_sgl.description`:
 
@@ -811,20 +871,25 @@ lpfc_bg_setup_sgl_prot
 
     Setup BlockGuard SGL with protection data
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         pointer to scsi command we're working on
+    :type sc: struct scsi_cmnd \*
 
-    :param struct sli4_sge \*sgl:
+    :param sgl:
         pointer to buffer list for protection groups
+    :type sgl: struct sli4_sge \*
 
-    :param int datacnt:
+    :param datacnt:
         number of segments of data that have been dma mapped
+    :type datacnt: int
 
-    :param int protcnt:
+    :param protcnt:
         number of segment of protection data that have been dma mapped
+    :type protcnt: int
 
 .. _`lpfc_bg_setup_sgl_prot.description`:
 
@@ -879,11 +944,13 @@ lpfc_prot_group_type
 
     Get prtotection group type of SCSI command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         pointer to scsi command we're working on
+    :type sc: struct scsi_cmnd \*
 
 .. _`lpfc_prot_group_type.description`:
 
@@ -909,11 +976,13 @@ lpfc_bg_scsi_adjust_dl
 
     Adjust SCSI data length for BlockGuard
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         The scsi buffer which is going to be adjusted.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_bg_scsi_adjust_dl.description`:
 
@@ -934,11 +1003,13 @@ lpfc_bg_scsi_prep_dma_buf_s3
 
     DMA mapping for scsi buffer to SLI3 IF spec
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         The scsi buffer which is going to be prep'ed.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_bg_scsi_prep_dma_buf_s3.description`:
 
@@ -958,11 +1029,13 @@ lpfc_scsi_prep_dma_buf_s4
 
     DMA mapping for scsi buffer to SLI4 IF spec
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         The scsi buffer which is going to be mapped.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_scsi_prep_dma_buf_s4.description`:
 
@@ -989,11 +1062,13 @@ lpfc_bg_scsi_prep_dma_buf_s4
 
     DMA mapping for scsi buffer to SLI4 IF spec
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         The scsi buffer which is going to be mapped.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_bg_scsi_prep_dma_buf_s4.description`:
 
@@ -1013,11 +1088,13 @@ lpfc_scsi_prep_dma_buf
 
     Wrapper function for DMA mapping of scsi buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         The scsi buffer which is going to be mapped.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_scsi_prep_dma_buf.description`:
 
@@ -1044,11 +1121,13 @@ lpfc_bg_scsi_prep_dma_buf
 
     Wrapper function for DMA mapping of scsi buffer using BlockGuard.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         The scsi buffer which is going to be mapped.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_bg_scsi_prep_dma_buf.description`:
 
@@ -1075,17 +1154,21 @@ lpfc_send_scsi_error_event
 
     Posts an event when there is SCSI error
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Pointer to vport object.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         Pointer to lpfc scsi command which reported the error.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
-    :param struct lpfc_iocbq \*rsp_iocb:
+    :param rsp_iocb:
         Pointer to response iocb object which reported error.
+    :type rsp_iocb: struct lpfc_iocbq \*
 
 .. _`lpfc_send_scsi_error_event.description`:
 
@@ -1104,11 +1187,13 @@ lpfc_scsi_unprep_dma_buf
 
     Un-map DMA mapping of SG-list for dev
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The HBA for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*psb:
+    :param psb:
         The scsi buffer which is going to be un-mapped.
+    :type psb: struct lpfc_scsi_buf \*
 
 .. _`lpfc_scsi_unprep_dma_buf.description`:
 
@@ -1127,14 +1212,17 @@ lpfc_handle_fcp_err
 
     FCP response handler
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port for which this call is being executed.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         Pointer to lpfc_scsi_buf data structure.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
-    :param struct lpfc_iocbq \*rsp_iocb:
+    :param rsp_iocb:
         The response IOCB which contains FCP error.
+    :type rsp_iocb: struct lpfc_iocbq \*
 
 .. _`lpfc_handle_fcp_err.description`:
 
@@ -1154,11 +1242,13 @@ lpfc_sli4_scmd_to_wqidx_distr
 
     scsi command to SLI4 WQ index distribution
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         *undescribed*
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_sli4_scmd_to_wqidx_distr.description`:
 
@@ -1187,14 +1277,17 @@ lpfc_scsi_cmd_iocb_cmpl
 
     Scsi cmnd IOCB completion routine
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*pIocbIn:
+    :param pIocbIn:
         The command IOCBQ for the scsi cmnd.
+    :type pIocbIn: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*pIocbOut:
+    :param pIocbOut:
         The response IOCBQ for the scsi cmnd.
+    :type pIocbOut: struct lpfc_iocbq \*
 
 .. _`lpfc_scsi_cmd_iocb_cmpl.description`:
 
@@ -1214,11 +1307,13 @@ lpfc_fcpcmd_to_iocb
 
     copy the fcp_cmd data into the IOCB
 
-    :param uint8_t \*data:
+    :param data:
         A pointer to the immediate command data portion of the IOCB.
+    :type data: uint8_t \*
 
-    :param struct fcp_cmnd \*fcp_cmnd:
+    :param fcp_cmnd:
         The FCP Command that is provided by the SCSI layer.
+    :type fcp_cmnd: struct fcp_cmnd \*
 
 .. _`lpfc_fcpcmd_to_iocb.description`:
 
@@ -1237,14 +1332,17 @@ lpfc_scsi_prep_cmnd
 
     Wrapper func for convert scsi cmnd to FCP info unit
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port for which this call is being executed.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         The scsi command which needs to send.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
-    :param struct lpfc_nodelist \*pnode:
+    :param pnode:
         Pointer to lpfc_nodelist.
+    :type pnode: struct lpfc_nodelist \*
 
 .. _`lpfc_scsi_prep_cmnd.description`:
 
@@ -1263,17 +1361,21 @@ lpfc_scsi_prep_task_mgmt_cmd
 
     Convert SLI3 scsi TM cmd to FCP info unit
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port for which this call is being executed.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         Pointer to lpfc_scsi_buf data structure.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
-    :param uint64_t lun:
+    :param lun:
         Logical unit number.
+    :type lun: uint64_t
 
-    :param uint8_t task_mgmt_cmd:
+    :param task_mgmt_cmd:
         SCSI task management command.
+    :type task_mgmt_cmd: uint8_t
 
 .. _`lpfc_scsi_prep_task_mgmt_cmd.description`:
 
@@ -1300,11 +1402,13 @@ lpfc_scsi_api_table_setup
 
     Set up scsi api function jump table
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The hba struct for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t dev_grp:
+    :param dev_grp:
         The HBA PCI-Device group number.
+    :type dev_grp: uint8_t
 
 .. _`lpfc_scsi_api_table_setup.description`:
 
@@ -1330,14 +1434,17 @@ lpfc_tskmgmt_def_cmpl
 
     IOCB completion routine for task management command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocbq:
+    :param cmdiocbq:
         Pointer to lpfc_iocbq data structure.
+    :type cmdiocbq: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocbq:
+    :param rspiocbq:
         Pointer to lpfc_iocbq data structure.
+    :type rspiocbq: struct lpfc_iocbq \*
 
 .. _`lpfc_tskmgmt_def_cmpl.description`:
 
@@ -1356,8 +1463,9 @@ lpfc_info
 
     Info entry point of scsi_host_template data structure
 
-    :param struct Scsi_Host \*host:
+    :param host:
         The scsi host for which this call is being executed.
+    :type host: struct Scsi_Host \*
 
 .. _`lpfc_info.description`:
 
@@ -1382,8 +1490,9 @@ lpfc_poll_rearm_timer
 
     Routine to modify fcp_poll timer of hba
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_poll_rearm_timer.description`:
 
@@ -1402,8 +1511,9 @@ lpfc_poll_start_timer
 
     Routine to start fcp_poll_timer of HBA
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The Hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_poll_start_timer.description`:
 
@@ -1421,8 +1531,9 @@ lpfc_poll_timeout
 
     Restart polling timer
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`lpfc_poll_timeout.description`:
 
@@ -1441,11 +1552,13 @@ lpfc_queuecommand
 
     scsi_host_template queuecommand entry point
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         *undescribed*
+    :type shost: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         Pointer to scsi_cmnd data structure.
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`lpfc_queuecommand.description`:
 
@@ -1469,8 +1582,9 @@ lpfc_abort_handler
 
     scsi_host_template eh_abort_handler entry point
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         Pointer to scsi_cmnd data structure.
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`lpfc_abort_handler.description`:
 
@@ -1492,11 +1606,13 @@ lpfc_check_fcp_rsp
 
     check the returned fcp_rsp to see if task failed
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port for which this call is being executed.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_scsi_buf \*lpfc_cmd:
+    :param lpfc_cmd:
         Pointer to lpfc_scsi_buf data structure.
+    :type lpfc_cmd: struct lpfc_scsi_buf \*
 
 .. _`lpfc_check_fcp_rsp.description`:
 
@@ -1518,20 +1634,25 @@ lpfc_send_taskmgmt
 
     Generic SCSI Task Mgmt Handler
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port for which this call is being executed.
+    :type vport: struct lpfc_vport \*
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         *undescribed*
+    :type cmnd: struct scsi_cmnd \*
 
-    :param unsigned int tgt_id:
+    :param tgt_id:
         Target ID of remote device.
+    :type tgt_id: unsigned int
 
-    :param uint64_t lun_id:
+    :param lun_id:
         Lun number for the TMF
+    :type lun_id: uint64_t
 
-    :param uint8_t task_mgmt_cmd:
+    :param task_mgmt_cmd:
         type of TMF to send
+    :type task_mgmt_cmd: uint8_t
 
 .. _`lpfc_send_taskmgmt.description`:
 
@@ -1556,11 +1677,13 @@ lpfc_chk_tgt_mapped
 
 .. c:function:: int lpfc_chk_tgt_mapped(struct lpfc_vport *vport, struct scsi_cmnd *cmnd)
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port to check on
+    :type vport: struct lpfc_vport \*
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         Pointer to scsi_cmnd data structure.
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`lpfc_chk_tgt_mapped.description`:
 
@@ -1581,17 +1704,21 @@ lpfc_reset_flush_io_context
 
 .. c:function:: int lpfc_reset_flush_io_context(struct lpfc_vport *vport, uint16_t tgt_id, uint64_t lun_id, lpfc_ctx_cmd context)
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         The virtual port (scsi_host) for the flush context
+    :type vport: struct lpfc_vport \*
 
-    :param uint16_t tgt_id:
+    :param tgt_id:
         If aborting by Target contect - specifies the target id
+    :type tgt_id: uint16_t
 
-    :param uint64_t lun_id:
+    :param lun_id:
         If aborting by Lun context - specifies the lun id
+    :type lun_id: uint64_t
 
-    :param lpfc_ctx_cmd context:
+    :param context:
         specifies the context level to flush at.
+    :type context: lpfc_ctx_cmd
 
 .. _`lpfc_reset_flush_io_context.description`:
 
@@ -1616,8 +1743,9 @@ lpfc_device_reset_handler
 
     scsi_host_template eh_device_reset entry point
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         Pointer to scsi_cmnd data structure.
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`lpfc_device_reset_handler.description`:
 
@@ -1640,8 +1768,9 @@ lpfc_target_reset_handler
 
     scsi_host_template eh_target_reset entry point
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         Pointer to scsi_cmnd data structure.
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`lpfc_target_reset_handler.description`:
 
@@ -1664,15 +1793,16 @@ lpfc_bus_reset_handler
 
     scsi_host_template eh_bus_reset_handler entry point
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         Pointer to scsi_cmnd data structure.
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`lpfc_bus_reset_handler.description`:
 
 Description
 -----------
 
-This routine does target reset to all targets on \ ``cmnd``\ ->device->host.
+This routine does target reset to all targets on \ ``cmnd->device->host``\ .
 This emulates Parallel SCSI Bus Reset Semantics.
 
 Return code :
@@ -1688,8 +1818,9 @@ lpfc_host_reset_handler
 
     scsi_host_template eh_host_reset_handler entry pt
 
-    :param struct scsi_cmnd \*cmnd:
+    :param cmnd:
         Pointer to scsi_cmnd data structure.
+    :type cmnd: struct scsi_cmnd \*
 
 .. _`lpfc_host_reset_handler.description`:
 
@@ -1717,8 +1848,9 @@ lpfc_slave_alloc
 
     scsi_host_template slave_alloc entry point
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Pointer to scsi_device.
+    :type sdev: struct scsi_device \*
 
 .. _`lpfc_slave_alloc.description`:
 
@@ -1747,8 +1879,9 @@ lpfc_slave_configure
 
     scsi_host_template slave_configure entry point
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Pointer to scsi_device.
+    :type sdev: struct scsi_device \*
 
 .. _`lpfc_slave_configure.description`:
 
@@ -1775,8 +1908,9 @@ lpfc_slave_destroy
 
     slave_destroy entry point of SHT data structure
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Pointer to scsi_device.
+    :type sdev: struct scsi_device \*
 
 .. _`lpfc_slave_destroy.description`:
 
@@ -1790,28 +1924,34 @@ This routine sets \ ``sdev``\  hostatdata filed to null.
 lpfc_create_device_data
 =======================
 
-.. c:function:: struct lpfc_device_data*lpfc_create_device_data(struct lpfc_hba *phba, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun, uint32_t pri, bool atomic_create)
+.. c:function:: struct lpfc_device_data* lpfc_create_device_data(struct lpfc_hba *phba, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun, uint32_t pri, bool atomic_create)
 
     creates and initializes device data structure for OAS
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_name \*vport_wwpn:
+    :param vport_wwpn:
         Pointer to vport's wwpn information
+    :type vport_wwpn: struct lpfc_name \*
 
-    :param struct lpfc_name \*target_wwpn:
+    :param target_wwpn:
         Pointer to target's wwpn information
+    :type target_wwpn: struct lpfc_name \*
 
-    :param uint64_t lun:
+    :param lun:
         Lun on target
+    :type lun: uint64_t
 
-    :param uint32_t pri:
+    :param pri:
         *undescribed*
+    :type pri: uint32_t
 
-    :param bool atomic_create:
+    :param atomic_create:
         Flag to indicate if memory should be allocated using the
         GFP_ATOMIC flag or not.
+    :type atomic_create: bool
 
 .. _`lpfc_create_device_data.description`:
 
@@ -1840,11 +1980,13 @@ lpfc_delete_device_data
 
     frees a device data structure for OAS
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_device_data \*lun_info:
+    :param lun_info:
         Pointer to device data structure to free.
+    :type lun_info: struct lpfc_device_data \*
 
 .. _`lpfc_delete_device_data.description`:
 
@@ -1858,24 +2000,29 @@ This routine frees the previously allocated device data structure passed.
 \__lpfc_get_device_data
 =======================
 
-.. c:function:: struct lpfc_device_data*__lpfc_get_device_data(struct lpfc_hba *phba, struct list_head *list, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun)
+.. c:function:: struct lpfc_device_data* __lpfc_get_device_data(struct lpfc_hba *phba, struct list_head *list, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun)
 
     returns the device data for the specified lun
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
-    :param struct list_head \*list:
+    :param list:
         Point to list to search.
+    :type list: struct list_head \*
 
-    :param struct lpfc_name \*vport_wwpn:
+    :param vport_wwpn:
         Pointer to vport's wwpn information
+    :type vport_wwpn: struct lpfc_name \*
 
-    :param struct lpfc_name \*target_wwpn:
+    :param target_wwpn:
         Pointer to target's wwpn information
+    :type target_wwpn: struct lpfc_name \*
 
-    :param uint64_t lun:
+    :param lun:
         Lun on target
+    :type lun: uint64_t
 
 .. _`__lpfc_get_device_data.description`:
 
@@ -1903,32 +2050,41 @@ lpfc_find_next_oas_lun
 
     searches for the next oas lun
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_name \*vport_wwpn:
+    :param vport_wwpn:
         Pointer to vport's wwpn information
+    :type vport_wwpn: struct lpfc_name \*
 
-    :param struct lpfc_name \*target_wwpn:
+    :param target_wwpn:
         Pointer to target's wwpn information
+    :type target_wwpn: struct lpfc_name \*
 
-    :param uint64_t \*starting_lun:
+    :param starting_lun:
         Pointer to the lun to start searching for
+    :type starting_lun: uint64_t \*
 
-    :param struct lpfc_name \*found_vport_wwpn:
+    :param found_vport_wwpn:
         Pointer to the found lun's vport wwpn information
+    :type found_vport_wwpn: struct lpfc_name \*
 
-    :param struct lpfc_name \*found_target_wwpn:
+    :param found_target_wwpn:
         Pointer to the found lun's target wwpn information
+    :type found_target_wwpn: struct lpfc_name \*
 
-    :param uint64_t \*found_lun:
+    :param found_lun:
         Pointer to the found lun.
+    :type found_lun: uint64_t \*
 
-    :param uint32_t \*found_lun_status:
+    :param found_lun_status:
         Pointer to status of the found lun.
+    :type found_lun_status: uint32_t \*
 
-    :param uint32_t \*found_lun_pri:
+    :param found_lun_pri:
         *undescribed*
+    :type found_lun_pri: uint32_t \*
 
 .. _`lpfc_find_next_oas_lun.description`:
 
@@ -1963,20 +2119,25 @@ lpfc_enable_oas_lun
 
     enables a lun for OAS operations
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_name \*vport_wwpn:
+    :param vport_wwpn:
         Pointer to vport's wwpn information
+    :type vport_wwpn: struct lpfc_name \*
 
-    :param struct lpfc_name \*target_wwpn:
+    :param target_wwpn:
         Pointer to target's wwpn information
+    :type target_wwpn: struct lpfc_name \*
 
-    :param uint64_t lun:
+    :param lun:
         Lun
+    :type lun: uint64_t
 
-    :param uint8_t pri:
+    :param pri:
         *undescribed*
+    :type pri: uint8_t
 
 .. _`lpfc_enable_oas_lun.description`:
 
@@ -2009,20 +2170,25 @@ lpfc_disable_oas_lun
 
     disables a lun for OAS operations
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_name \*vport_wwpn:
+    :param vport_wwpn:
         Pointer to vport's wwpn information
+    :type vport_wwpn: struct lpfc_name \*
 
-    :param struct lpfc_name \*target_wwpn:
+    :param target_wwpn:
         Pointer to target's wwpn information
+    :type target_wwpn: struct lpfc_name \*
 
-    :param uint64_t lun:
+    :param lun:
         Lun
+    :type lun: uint64_t
 
-    :param uint8_t pri:
+    :param pri:
         *undescribed*
+    :type pri: uint8_t
 
 .. _`lpfc_disable_oas_lun.description`:
 

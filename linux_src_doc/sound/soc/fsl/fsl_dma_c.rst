@@ -10,8 +10,9 @@ fsl_dma_abort_stream
 
     tell ALSA that the DMA transfer has aborted
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
 .. _`fsl_dma_abort_stream.description`:
 
@@ -30,8 +31,9 @@ fsl_dma_update_pointers
 
     update LD pointers to point to the next period
 
-    :param struct fsl_dma_private \*dma_private:
+    :param dma_private:
         *undescribed*
+    :type dma_private: struct fsl_dma_private \*
 
 .. _`fsl_dma_update_pointers.description`:
 
@@ -50,11 +52,13 @@ fsl_dma_isr
 
     interrupt handler for the DMA controller
 
-    :param int irq:
+    :param irq:
         IRQ of the DMA channel
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         pointer to the dma_private structure for this DMA channel
+    :type dev_id: void \*
 
 .. _`fsl_dma_new`:
 
@@ -65,8 +69,9 @@ fsl_dma_new
 
     initialize this PCM driver.
 
-    :param struct snd_soc_pcm_runtime \*rtd:
+    :param rtd:
         *undescribed*
+    :type rtd: struct snd_soc_pcm_runtime \*
 
 .. _`fsl_dma_new.description`:
 
@@ -94,8 +99,9 @@ fsl_dma_open
 
     open a new substream.
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
 .. _`fsl_dma_open.description`:
 
@@ -179,11 +185,13 @@ fsl_dma_hw_params
 
     continue initializing the DMA links
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*hw_params:
+    :param hw_params:
         *undescribed*
+    :type hw_params: struct snd_pcm_hw_params \*
 
 .. _`fsl_dma_hw_params.description`:
 
@@ -220,8 +228,9 @@ fsl_dma_pointer
 
     determine the current position of the DMA transfer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
 .. _`fsl_dma_pointer.description`:
 
@@ -246,8 +255,9 @@ fsl_dma_hw_free
 
     release resources allocated in \ :c:func:`fsl_dma_hw_params`\ 
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
 .. _`fsl_dma_hw_free.description`:
 
@@ -268,8 +278,9 @@ fsl_dma_close
 
     close the stream.
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
 .. _`find_ssi_node`:
 
@@ -280,8 +291,9 @@ find_ssi_node
 
     - returns the SSI node that points to its DMA channel node
 
-    :param struct device_node \*dma_channel_np:
+    :param dma_channel_np:
         *undescribed*
+    :type dma_channel_np: struct device_node \*
 
 .. _`find_ssi_node.description`:
 

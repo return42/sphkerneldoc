@@ -10,23 +10,29 @@ make_idx_node
 
     make an index node for fill-the-gaps method of TNC commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_idx_node \*idx:
+    :param idx:
         buffer in which to place new index node
+    :type idx: struct ubifs_idx_node \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode from which to make new index node
+    :type znode: struct ubifs_znode \*
 
-    :param int lnum:
+    :param lnum:
         LEB number where new index node will be written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where new index node will be written
+    :type offs: int
 
-    :param int len:
+    :param len:
         length of new index node
+    :type len: int
 
 .. _`fill_gap`:
 
@@ -37,20 +43,25 @@ fill_gap
 
     make index nodes in gaps in dirty index LEBs.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number that gap appears in
+    :type lnum: int
 
-    :param int gap_start:
+    :param gap_start:
         offset of start of gap
+    :type gap_start: int
 
-    :param int gap_end:
+    :param gap_end:
         offset of end of gap
+    :type gap_end: int
 
-    :param int \*dirt:
+    :param dirt:
         adds dirty space to this
+    :type dirt: int \*
 
 .. _`fill_gap.description`:
 
@@ -68,14 +79,17 @@ find_old_idx
 
     find an index node obsoleted since the last commit start.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of obsoleted index node
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset of obsoleted index node
+    :type offs: int
 
 .. _`find_old_idx.description`:
 
@@ -93,20 +107,25 @@ is_idx_node_in_use
 
     determine if an index node can be overwritten.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key of index node
+    :type key: union ubifs_key \*
 
-    :param int level:
+    :param level:
         index node level
+    :type level: int
 
-    :param int lnum:
+    :param lnum:
         LEB number of index node
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset of index node
+    :type offs: int
 
 .. _`is_idx_node_in_use.description`:
 
@@ -127,11 +146,13 @@ layout_leb_in_gaps
 
     layout index nodes using in-the-gaps method.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int \*p:
+    :param p:
         return LEB number here
+    :type p: int \*
 
 .. _`layout_leb_in_gaps.description`:
 
@@ -154,11 +175,13 @@ get_leb_cnt
 
     calculate the number of empty LEBs needed to commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int cnt:
+    :param cnt:
         number of znodes to commit
+    :type cnt: int
 
 .. _`get_leb_cnt.description`:
 
@@ -178,11 +201,13 @@ layout_in_gaps
 
     in-the-gaps method of committing TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int cnt:
+    :param cnt:
         number of dirty znodes to commit.
+    :type cnt: int
 
 .. _`layout_in_gaps.description`:
 
@@ -203,8 +228,9 @@ layout_in_empty_space
 
     layout index nodes in empty space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`layout_in_empty_space.description`:
 
@@ -224,14 +250,17 @@ layout_commit
 
     determine positions of index nodes to commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int no_space:
+    :param no_space:
         indicates that insufficient empty LEBs were allocated
+    :type no_space: int
 
-    :param int cnt:
+    :param cnt:
         number of znodes to commit
+    :type cnt: int
 
 .. _`layout_commit.description`:
 
@@ -254,8 +283,9 @@ find_first_dirty
 
     find first dirty znode.
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to begin searching from
+    :type znode: struct ubifs_znode \*
 
 .. _`find_next_dirty`:
 
@@ -266,8 +296,9 @@ find_next_dirty
 
     find next dirty znode.
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to begin searching from
+    :type znode: struct ubifs_znode \*
 
 .. _`get_znodes_to_commit`:
 
@@ -278,8 +309,9 @@ get_znodes_to_commit
 
     create list of dirty znodes to commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`get_znodes_to_commit.description`:
 
@@ -297,11 +329,13 @@ alloc_idx_lebs
 
     allocate empty LEBs to be used to commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int cnt:
+    :param cnt:
         number of znodes to commit
+    :type cnt: int
 
 .. _`alloc_idx_lebs.description`:
 
@@ -321,8 +355,9 @@ free_unused_idx_lebs
 
     free unused LEBs that were allocated for the commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`free_unused_idx_lebs.description`:
 
@@ -343,8 +378,9 @@ free_idx_lebs
 
     free unused LEBs after commit end.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`free_idx_lebs.description`:
 
@@ -362,11 +398,13 @@ ubifs_tnc_start_commit
 
     start TNC commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zroot:
+    :param zroot:
         new index root position is returned here
+    :type zroot: struct ubifs_zbranch \*
 
 .. _`ubifs_tnc_start_commit.description`:
 
@@ -387,8 +425,9 @@ write_index
 
     write index nodes.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`write_index.description`:
 
@@ -407,8 +446,9 @@ free_obsolete_znodes
 
     free obsolete znodes.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`free_obsolete_znodes.description`:
 
@@ -426,8 +466,9 @@ return_gap_lebs
 
     return LEBs used by the in-gap commit method.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`return_gap_lebs.description`:
 
@@ -446,8 +487,9 @@ ubifs_tnc_end_commit
 
     update the TNC for commit end.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_tnc_end_commit.description`:
 

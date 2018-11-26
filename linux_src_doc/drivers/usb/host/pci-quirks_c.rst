@@ -8,8 +8,9 @@ quirk_usb_handoff_xhci
 
 .. c:function:: void quirk_usb_handoff_xhci(struct pci_dev *pdev)
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`quirk_usb_handoff_xhci.description`:
 

@@ -10,11 +10,13 @@ kernfs_setattr
 
     set iattr on a node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         target node
+    :type kn: struct kernfs_node \*
 
-    :param const struct iattr \*iattr:
+    :param iattr:
         iattr to set
+    :type iattr: const struct iattr \*
 
 .. _`kernfs_setattr.description`:
 
@@ -32,11 +34,13 @@ kernfs_get_inode
 
     get inode for kernfs_node
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node to allocate inode for
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_get_inode.description`:
 

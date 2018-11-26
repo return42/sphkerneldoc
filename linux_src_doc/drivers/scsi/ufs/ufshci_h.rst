@@ -169,41 +169,5 @@ prd_table_length
 prd_table_offset
     Physical region descriptor offset DW-7
 
-.. _`utp_task_req_desc`:
-
-struct utp_task_req_desc
-========================
-
-.. c:type:: struct utp_task_req_desc
-
-    UTMRD structure
-
-.. _`utp_task_req_desc.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct utp_task_req_desc {
-        struct request_desc_header header;
-        __le32 task_req_upiu[TASK_REQ_UPIU_SIZE_DWORDS];
-        __le32 task_rsp_upiu[TASK_RSP_UPIU_SIZE_DWORDS];
-    }
-
-.. _`utp_task_req_desc.members`:
-
-Members
--------
-
-header
-    UTMRD header DW-0 to DW-3
-
-task_req_upiu
-    Pointer to task request UPIU DW-4 to DW-11
-
-task_rsp_upiu
-    Pointer to task response UPIU DW12 to DW-19
-
 .. This file was automatic generated / don't edit.
 

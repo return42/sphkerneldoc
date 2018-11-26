@@ -10,26 +10,33 @@ stm32_timers_dma_burst_read
 
     Read from timers registers using DMA.
 
-    :param struct device \*dev:
+    :param dev:
         reference to stm32_timers MFD device
+    :type dev: struct device \*
 
-    :param u32 \*buf:
+    :param buf:
         DMA'able destination buffer
+    :type buf: u32 \*
 
-    :param enum stm32_timers_dmas id:
+    :param id:
         stm32_timers_dmas event identifier (ch[1..4], up, trig or com)
+    :type id: enum stm32_timers_dmas
 
-    :param u32 reg:
+    :param reg:
         registers start offset for DMA to read from (like CCRx for capture)
+    :type reg: u32
 
-    :param unsigned int num_reg:
+    :param num_reg:
         number of registers to read upon each DMA request, starting \ ``reg``\ .
+    :type num_reg: unsigned int
 
-    :param unsigned int bursts:
+    :param bursts:
         number of bursts to read (e.g. like two for pwm period capture)
+    :type bursts: unsigned int
 
-    :param unsigned long tmo_ms:
+    :param tmo_ms:
         timeout (milliseconds)
+    :type tmo_ms: unsigned long
 
 .. _`stm32_timers_dma_burst_read.description`:
 

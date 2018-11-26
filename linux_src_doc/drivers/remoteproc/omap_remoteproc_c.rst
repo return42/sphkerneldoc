@@ -46,11 +46,13 @@ omap_rproc_mbox_callback
 
     inbound mailbox message handler
 
-    :param struct mbox_client \*client:
+    :param client:
         mailbox client pointer used for requesting the mailbox channel
+    :type client: struct mbox_client \*
 
-    :param void \*data:
+    :param data:
         mailbox payload
+    :type data: void \*
 
 .. _`omap_rproc_mbox_callback.description`:
 

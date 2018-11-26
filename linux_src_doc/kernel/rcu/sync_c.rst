@@ -10,11 +10,13 @@ rcu_sync_init
 
     Initialize an rcu_sync structure
 
-    :param struct rcu_sync \*rsp:
+    :param rsp:
         Pointer to rcu_sync structure to be initialized
+    :type rsp: struct rcu_sync \*
 
-    :param enum rcu_sync_type type:
+    :param type:
         Flavor of RCU with which to synchronize rcu_sync structure
+    :type type: enum rcu_sync_type
 
 .. _`rcu_sync_enter_start`:
 
@@ -25,8 +27,9 @@ rcu_sync_enter_start
 
     Force readers onto slow path for multiple updates
 
-    :param struct rcu_sync \*rsp:
+    :param rsp:
         Pointer to rcu_sync structure to use for synchronization
+    :type rsp: struct rcu_sync \*
 
 .. _`rcu_sync_enter_start.description`:
 
@@ -47,8 +50,9 @@ rcu_sync_enter
 
     Force readers onto slowpath
 
-    :param struct rcu_sync \*rsp:
+    :param rsp:
         Pointer to rcu_sync structure to use for synchronization
+    :type rsp: struct rcu_sync \*
 
 .. _`rcu_sync_enter.description`:
 
@@ -75,8 +79,9 @@ rcu_sync_func
 
     Callback function managing reader access to fastpath
 
-    :param struct rcu_head \*rhp:
+    :param rhp:
         Pointer to rcu_head in rcu_sync structure to use for synchronization
+    :type rhp: struct rcu_head \*
 
 .. _`rcu_sync_func.description`:
 
@@ -106,8 +111,9 @@ rcu_sync_exit
 
     Allow readers back onto fast patch after grace period
 
-    :param struct rcu_sync \*rsp:
+    :param rsp:
         Pointer to rcu_sync structure to use for synchronization
+    :type rsp: struct rcu_sync \*
 
 .. _`rcu_sync_exit.description`:
 
@@ -129,8 +135,9 @@ rcu_sync_dtor
 
     Clean up an rcu_sync structure
 
-    :param struct rcu_sync \*rsp:
+    :param rsp:
         Pointer to rcu_sync structure to be cleaned up
+    :type rsp: struct rcu_sync \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ comedi_check_chanlist
 
     Validate each element in a chanlist.
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         comedi_subdevice struct
+    :type s: struct comedi_subdevice \*
 
-    :param int n:
+    :param n:
         number of elements in the chanlist
+    :type n: int
 
-    :param unsigned int \*chanlist:
+    :param chanlist:
         the chanlist to validate
+    :type chanlist: unsigned int \*
 
 .. _`comedi_check_chanlist.description`:
 

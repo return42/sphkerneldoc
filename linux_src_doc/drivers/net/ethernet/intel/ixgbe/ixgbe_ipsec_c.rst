@@ -10,17 +10,21 @@ ixgbe_ipsec_set_tx_sa
 
     set the Tx SA registers
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         hw specific details
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 idx:
+    :param idx:
         register index to write
+    :type idx: u16
 
-    :param u32 key:
+    :param key:
         key byte array
+    :type key: u32
 
-    :param u32 salt:
+    :param salt:
         salt bytes
+    :type salt: u32
 
 .. _`ixgbe_ipsec_set_rx_item`:
 
@@ -31,14 +35,17 @@ ixgbe_ipsec_set_rx_item
 
     set an Rx table item
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         hw specific details
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 idx:
+    :param idx:
         register index to write
+    :type idx: u16
 
-    :param enum ixgbe_ipsec_tbl_sel tbl:
+    :param tbl:
         table selector
+    :type tbl: enum ixgbe_ipsec_tbl_sel
 
 .. _`ixgbe_ipsec_set_rx_item.description`:
 
@@ -57,26 +64,33 @@ ixgbe_ipsec_set_rx_sa
 
     set up the register bits to save SA info
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         hw specific details
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 idx:
+    :param idx:
         register index to write
+    :type idx: u16
 
-    :param __be32 spi:
+    :param spi:
         security parameter index
+    :type spi: __be32
 
-    :param u32 key:
+    :param key:
         key byte array
+    :type key: u32
 
-    :param u32 salt:
+    :param salt:
         salt bytes
+    :type salt: u32
 
-    :param u32 mode:
+    :param mode:
         rx decrypt control bits
+    :type mode: u32
 
-    :param u32 ip_idx:
+    :param ip_idx:
         index into IP table for related IP address
+    :type ip_idx: u32
 
 .. _`ixgbe_ipsec_set_rx_ip`:
 
@@ -87,14 +101,17 @@ ixgbe_ipsec_set_rx_ip
 
     set up the register bits to save SA IP addr info
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         hw specific details
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 idx:
+    :param idx:
         register index to write
+    :type idx: u16
 
-    :param __be32 addr:
+    :param addr:
         IP address byte array
+    :type addr: __be32
 
 .. _`ixgbe_ipsec_clear_hw_tables`:
 
@@ -105,8 +122,9 @@ ixgbe_ipsec_clear_hw_tables
 
     because some tables don't get cleared on reset
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ipsec_stop_data`:
 
@@ -115,8 +133,9 @@ ixgbe_ipsec_stop_data
 
 .. c:function:: void ixgbe_ipsec_stop_data(struct ixgbe_adapter *adapter)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ipsec_stop_engine`:
 
@@ -125,8 +144,9 @@ ixgbe_ipsec_stop_engine
 
 .. c:function:: void ixgbe_ipsec_stop_engine(struct ixgbe_adapter *adapter)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ipsec_start_engine`:
 
@@ -135,8 +155,9 @@ ixgbe_ipsec_start_engine
 
 .. c:function:: void ixgbe_ipsec_start_engine(struct ixgbe_adapter *adapter)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_ipsec_start_engine.note`:
 
@@ -154,8 +175,21 @@ ixgbe_ipsec_restore
 
     restore the ipsec HW settings after a reset
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
+
+.. _`ixgbe_ipsec_restore.description`:
+
+Description
+-----------
+
+Reload the HW tables from the SW tables after they've been bashed
+by a chip reset.
+
+Any VF entries are removed from the SW and HW tables since either
+(a) the VF also gets reset on PF reset and will ask again for the
+offloads, or (b) the VF has been removed by a change in the num_vfs.
 
 .. _`ixgbe_ipsec_find_empty_idx`:
 
@@ -166,11 +200,13 @@ ixgbe_ipsec_find_empty_idx
 
     find the first unused security parameter index
 
-    :param struct ixgbe_ipsec \*ipsec:
+    :param ipsec:
         pointer to ipsec struct
+    :type ipsec: struct ixgbe_ipsec \*
 
-    :param bool rxtable:
+    :param rxtable:
         true if we need to look in the Rx table
+    :type rxtable: bool
 
 .. _`ixgbe_ipsec_find_empty_idx.description`:
 
@@ -188,20 +224,25 @@ ixgbe_ipsec_find_rx_state
 
     find the state that matches
 
-    :param struct ixgbe_ipsec \*ipsec:
+    :param ipsec:
         pointer to ipsec struct
+    :type ipsec: struct ixgbe_ipsec \*
 
-    :param __be32 \*daddr:
+    :param daddr:
         inbound address to match
+    :type daddr: __be32 \*
 
-    :param u8 proto:
+    :param proto:
         protocol to match
+    :type proto: u8
 
-    :param __be32 spi:
+    :param spi:
         SPI to match
+    :type spi: __be32
 
-    :param bool ip4:
+    :param ip4:
         true if using an ipv4 address
+    :type ip4: bool
 
 .. _`ixgbe_ipsec_find_rx_state.description`:
 
@@ -219,14 +260,17 @@ ixgbe_ipsec_parse_proto_keys
 
     find the key and salt based on the protocol
 
-    :param struct xfrm_state \*xs:
+    :param xs:
         pointer to xfrm_state struct
+    :type xs: struct xfrm_state \*
 
-    :param u32 \*mykey:
+    :param mykey:
         pointer to key array to populate
+    :type mykey: u32 \*
 
-    :param u32 \*mysalt:
+    :param mysalt:
         pointer to salt value to populate
+    :type mysalt: u32 \*
 
 .. _`ixgbe_ipsec_parse_proto_keys.description`:
 
@@ -245,8 +289,9 @@ ixgbe_ipsec_check_mgmt_ip
 
     make sure there is no clash with mgmt IP filters
 
-    :param struct xfrm_state \*xs:
+    :param xs:
         pointer to transformer state struct
+    :type xs: struct xfrm_state \*
 
 .. _`ixgbe_ipsec_add_sa`:
 
@@ -257,8 +302,9 @@ ixgbe_ipsec_add_sa
 
     program device with a security association
 
-    :param struct xfrm_state \*xs:
+    :param xs:
         pointer to transformer state struct
+    :type xs: struct xfrm_state \*
 
 .. _`ixgbe_ipsec_del_sa`:
 
@@ -269,8 +315,9 @@ ixgbe_ipsec_del_sa
 
     clear out this specific SA
 
-    :param struct xfrm_state \*xs:
+    :param xs:
         pointer to transformer state struct
+    :type xs: struct xfrm_state \*
 
 .. _`ixgbe_ipsec_offload_ok`:
 
@@ -281,11 +328,105 @@ ixgbe_ipsec_offload_ok
 
     can this packet use the xfrm hw offload
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current data packet
+    :type skb: struct sk_buff \*
 
-    :param struct xfrm_state \*xs:
+    :param xs:
         pointer to transformer state struct
+    :type xs: struct xfrm_state \*
+
+.. _`ixgbe_ipsec_vf_clear`:
+
+ixgbe_ipsec_vf_clear
+====================
+
+.. c:function:: void ixgbe_ipsec_vf_clear(struct ixgbe_adapter *adapter, u32 vf)
+
+    clear the tables of data for a VF
+
+    :param adapter:
+        board private structure
+    :type adapter: struct ixgbe_adapter \*
+
+    :param vf:
+        VF id to be removed
+    :type vf: u32
+
+.. _`ixgbe_ipsec_vf_add_sa`:
+
+ixgbe_ipsec_vf_add_sa
+=====================
+
+.. c:function:: int ixgbe_ipsec_vf_add_sa(struct ixgbe_adapter *adapter, u32 *msgbuf, u32 vf)
+
+    translate VF request to SA add
+
+    :param adapter:
+        board private structure
+    :type adapter: struct ixgbe_adapter \*
+
+    :param msgbuf:
+        The message buffer
+    :type msgbuf: u32 \*
+
+    :param vf:
+        the VF index
+    :type vf: u32
+
+.. _`ixgbe_ipsec_vf_add_sa.description`:
+
+Description
+-----------
+
+Make up a new xs and algorithm info from the data sent by the VF.
+We only need to sketch in just enough to set up the HW offload.
+Put the resulting offload_handle into the return message to the VF.
+
+Returns 0 or error value
+
+.. _`ixgbe_ipsec_vf_del_sa`:
+
+ixgbe_ipsec_vf_del_sa
+=====================
+
+.. c:function:: int ixgbe_ipsec_vf_del_sa(struct ixgbe_adapter *adapter, u32 *msgbuf, u32 vf)
+
+    translate VF request to SA delete
+
+    :param adapter:
+        board private structure
+    :type adapter: struct ixgbe_adapter \*
+
+    :param msgbuf:
+        The message buffer
+    :type msgbuf: u32 \*
+
+    :param vf:
+        the VF index
+    :type vf: u32
+
+.. _`ixgbe_ipsec_vf_del_sa.description`:
+
+Description
+-----------
+
+Given the offload_handle sent by the VF, look for the related SA table
+entry and use its xs field to call for a delete of the SA.
+
+.. _`ixgbe_ipsec_vf_del_sa.note`:
+
+Note
+----
+
+We silently ignore requests to delete entries that are already
+set to unused because when a VF is set to "DOWN", the PF first
+gets a reset and clears all the VF's entries; then the VF's
+XFRM stack sends individual deletes for each entry, which the
+reset already removed.  In the future it might be good to try to
+optimize this so not so many unnecessary delete messages are sent.
+
+Returns 0 or error value
 
 .. _`ixgbe_ipsec_tx`:
 
@@ -296,14 +437,17 @@ ixgbe_ipsec_tx
 
     setup Tx flags for ipsec offload
 
-    :param struct ixgbe_ring \*tx_ring:
+    :param tx_ring:
         outgoing context
+    :type tx_ring: struct ixgbe_ring \*
 
-    :param struct ixgbe_tx_buffer \*first:
+    :param first:
         current data packet
+    :type first: struct ixgbe_tx_buffer \*
 
-    :param struct ixgbe_ipsec_tx_data \*itd:
+    :param itd:
         ipsec Tx data for later use in building context descriptor
+    :type itd: struct ixgbe_ipsec_tx_data \*
 
 .. _`ixgbe_ipsec_rx`:
 
@@ -314,14 +458,17 @@ ixgbe_ipsec_rx
 
     decode ipsec bits from Rx descriptor
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         receiving ring
+    :type rx_ring: struct ixgbe_ring \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         receive data descriptor
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         current data packet
+    :type skb: struct sk_buff \*
 
 .. _`ixgbe_ipsec_rx.description`:
 
@@ -340,8 +487,9 @@ ixgbe_init_ipsec_offload
 
     initialize security registers for IPSec operation
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_stop_ipsec_offload`:
 
@@ -352,8 +500,9 @@ ixgbe_stop_ipsec_offload
 
     tear down the ipsec offload
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. This file was automatic generated / don't edit.
 

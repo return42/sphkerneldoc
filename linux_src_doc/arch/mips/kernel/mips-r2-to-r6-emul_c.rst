@@ -10,11 +10,13 @@ mipsr6_emul
 
     Emulate some frequent R2/R5/R6 instructions in delay slot for performance instead of the traditional way of using a stack trampoline which is rather slow.
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`movf_func`:
 
@@ -25,11 +27,13 @@ movf_func
 
     Emulate a MOVF instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`movf_func.description`:
 
@@ -47,11 +51,13 @@ movt_func
 
     Emulate a MOVT instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`movt_func.description`:
 
@@ -69,11 +75,13 @@ jr_func
 
     Emulate a JR instruction.
 
-    :param struct pt_regs \*regs:
+    :param regs:
         *undescribed*
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`jr_func.description`:
 
@@ -93,11 +101,13 @@ movz_func
 
     Emulate a MOVZ instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`movz_func.description`:
 
@@ -115,11 +125,13 @@ movn_func
 
     Emulate a MOVZ instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`movn_func.description`:
 
@@ -137,11 +149,13 @@ mfhi_func
 
     Emulate a MFHI instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`mfhi_func.description`:
 
@@ -159,11 +173,13 @@ mthi_func
 
     Emulate a MTHI instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`mthi_func.description`:
 
@@ -181,11 +197,13 @@ mflo_func
 
     Emulate a MFLO instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`mflo_func.description`:
 
@@ -203,11 +221,13 @@ mtlo_func
 
     Emulate a MTLO instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`mtlo_func.description`:
 
@@ -225,11 +245,13 @@ mult_func
 
     Emulate a MULT instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`mult_func.description`:
 
@@ -247,11 +269,13 @@ multu_func
 
     Emulate a MULTU instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`multu_func.description`:
 
@@ -269,11 +293,13 @@ div_func
 
     Emulate a DIV instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`div_func.description`:
 
@@ -291,11 +317,13 @@ divu_func
 
     Emulate a DIVU instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`divu_func.description`:
 
@@ -313,11 +341,13 @@ dmult_func
 
     Emulate a DMULT instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`dmult_func.description`:
 
@@ -335,11 +365,13 @@ dmultu_func
 
     Emulate a DMULTU instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`dmultu_func.description`:
 
@@ -357,11 +389,13 @@ ddiv_func
 
     Emulate a DDIV instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`ddiv_func.description`:
 
@@ -379,11 +413,13 @@ ddivu_func
 
     Emulate a DDIVU instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`ddivu_func.description`:
 
@@ -401,11 +437,13 @@ madd_func
 
     Emulate a MADD instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`madd_func.description`:
 
@@ -423,11 +461,13 @@ maddu_func
 
     Emulate a MADDU instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`maddu_func.description`:
 
@@ -445,11 +485,13 @@ msub_func
 
     Emulate a MSUB instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`msub_func.description`:
 
@@ -467,11 +509,13 @@ msubu_func
 
     Emulate a MSUBU instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`msubu_func.description`:
 
@@ -489,11 +533,13 @@ mul_func
 
     Emulate a MUL instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`mul_func.description`:
 
@@ -511,11 +557,13 @@ clz_func
 
     Emulate a CLZ instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`clz_func.description`:
 
@@ -533,11 +581,13 @@ clo_func
 
     Emulate a CLO instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`clo_func.description`:
 
@@ -555,11 +605,13 @@ dclz_func
 
     Emulate a DCLZ instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`dclz_func.description`:
 
@@ -577,11 +629,13 @@ dclo_func
 
     Emulate a DCLO instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 ir:
+    :param ir:
         Instruction
+    :type ir: u32
 
 .. _`dclo_func.description`:
 
@@ -599,14 +653,17 @@ mipsr2_decoder
 
     Decode and emulate a MIPS R2 instruction
 
-    :param struct pt_regs \*regs:
+    :param regs:
         Process register set
+    :type regs: struct pt_regs \*
 
-    :param u32 inst:
+    :param inst:
         Instruction to decode and emulate
+    :type inst: u32
 
-    :param unsigned long \*fcr31:
+    :param fcr31:
         Floating Point Control and Status Register Cause bits returned
+    :type fcr31: unsigned long \*
 
 .. This file was automatic generated / don't edit.
 

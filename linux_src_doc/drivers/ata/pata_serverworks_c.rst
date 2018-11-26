@@ -10,8 +10,9 @@ oem_cable
 
     Dell/Sun serverworks cable detection
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to do cable detect
+    :type ap: struct ata_port \*
 
 .. _`oem_cable.description`:
 
@@ -30,8 +31,9 @@ serverworks_cable_detect
 
     cable detection
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
 .. _`serverworks_cable_detect.description`:
 
@@ -50,8 +52,9 @@ serverworks_is_csb
 
     Check for CSB or OSB
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to check
+    :type pdev: struct pci_dev \*
 
 .. _`serverworks_is_csb.description`:
 
@@ -70,11 +73,13 @@ serverworks_osb4_filter
 
     mode selection filter
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         Mask of proposed modes
+    :type mask: unsigned long
 
 .. _`serverworks_osb4_filter.description`:
 
@@ -94,11 +99,13 @@ serverworks_csb_filter
 
     mode selection filter
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         Mask of proposed modes
+    :type mask: unsigned long
 
 .. _`serverworks_csb_filter.description`:
 
@@ -116,11 +123,13 @@ serverworks_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`serverworks_set_piomode.description`:
 
@@ -139,11 +148,13 @@ serverworks_set_dmamode
 
     set initial DMA mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`serverworks_set_dmamode.description`:
 

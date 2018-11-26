@@ -10,8 +10,9 @@ prandom_u32_state
 
     seeded pseudo-random number generator.
 
-    :param struct rnd_state \*state:
+    :param state:
         pointer to state structure holding seeded state.
+    :type state: struct rnd_state \*
 
 .. _`prandom_u32_state.description`:
 
@@ -30,8 +31,9 @@ prandom_u32
 
     pseudo random number generator
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`prandom_u32.description`:
 
@@ -51,14 +53,17 @@ prandom_bytes_state
 
     get the requested number of pseudo-random bytes
 
-    :param struct rnd_state \*state:
+    :param state:
         pointer to state structure holding seeded state.
+    :type state: struct rnd_state \*
 
-    :param void \*buf:
+    :param buf:
         where to copy the pseudo-random bytes to
+    :type buf: void \*
 
-    :param size_t bytes:
+    :param bytes:
         the requested number of bytes
+    :type bytes: size_t
 
 .. _`prandom_bytes_state.description`:
 
@@ -77,11 +82,13 @@ prandom_bytes
 
     get the requested number of pseudo-random bytes
 
-    :param void \*buf:
+    :param buf:
         where to copy the pseudo-random bytes to
+    :type buf: void \*
 
-    :param size_t bytes:
+    :param bytes:
         the requested number of bytes
+    :type bytes: size_t
 
 .. _`prandom_seed`:
 
@@ -92,8 +99,9 @@ prandom_seed
 
     add entropy to pseudo random number generator
 
-    :param u32 entropy:
+    :param entropy:
         *undescribed*
+    :type entropy: u32
 
 .. _`prandom_seed.description`:
 

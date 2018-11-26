@@ -8,17 +8,21 @@ sw842_decompress
 
 .. c:function:: int sw842_decompress(const u8 *in, unsigned int ilen, u8 *out, unsigned int *olen)
 
-    :param const u8 \*in:
+    :param in:
         *undescribed*
+    :type in: const u8 \*
 
-    :param unsigned int ilen:
+    :param ilen:
         *undescribed*
+    :type ilen: unsigned int
 
-    :param u8 \*out:
+    :param out:
         *undescribed*
+    :type out: u8 \*
 
-    :param unsigned int \*olen:
+    :param olen:
         *undescribed*
+    :type olen: unsigned int \*
 
 .. _`sw842_decompress.description`:
 

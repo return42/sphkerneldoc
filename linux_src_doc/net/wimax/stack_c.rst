@@ -10,11 +10,13 @@ wimax_state_change
 
     Set the current state of a WiMAX device
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor (properly referenced)
+    :type wimax_dev: struct wimax_dev \*
 
-    :param enum wimax_st new_state:
+    :param new_state:
         New state to switch to
+    :type new_state: enum wimax_st
 
 .. _`wimax_state_change.description`:
 
@@ -49,8 +51,9 @@ wimax_state_get
 
     Return the current state of a WiMAX device
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor
+    :type wimax_dev: struct wimax_dev \*
 
 .. _`wimax_state_get.return`:
 
@@ -68,8 +71,9 @@ wimax_dev_init
 
     initialize a newly allocated instance
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor to initialize.
+    :type wimax_dev: struct wimax_dev \*
 
 .. _`wimax_dev_init.description`:
 
@@ -89,14 +93,16 @@ wimax_dev_add
 
     Register a new WiMAX device
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor (as embedded in your \ ``net_dev``\ 's
         priv data). You must have called \ :c:func:`wimax_dev_init`\  on it before.
+    :type wimax_dev: struct wimax_dev \*
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         net device the \ ``wimax_dev``\  is associated with. The
         function expects \ :c:func:`SET_NETDEV_DEV`\  and \ :c:func:`register_netdev`\  were
         already called on it.
+    :type net_dev: struct net_device \*
 
 .. _`wimax_dev_add.description`:
 
@@ -121,8 +127,9 @@ wimax_dev_rm
 
     Unregister an existing WiMAX device
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor
+    :type wimax_dev: struct wimax_dev \*
 
 .. _`wimax_dev_rm.description`:
 

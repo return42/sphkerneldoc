@@ -8,23 +8,29 @@ ceph_lock_message
 
 .. c:function:: int ceph_lock_message(u8 lock_type, u16 operation, struct inode *inode, int cmd, u8 wait, struct file_lock *fl)
 
-    :param u8 lock_type:
+    :param lock_type:
         *undescribed*
+    :type lock_type: u8
 
-    :param u16 operation:
+    :param operation:
         *undescribed*
+    :type operation: u16
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
-    :param u8 wait:
+    :param wait:
         *undescribed*
+    :type wait: u8
 
-    :param struct file_lock \*fl:
+    :param fl:
         *undescribed*
+    :type fl: struct file_lock \*
 
 .. _`ceph_lock`:
 
@@ -35,14 +41,17 @@ ceph_lock
 
     For now, this just goes away to the server. Later it may be more awesome.
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
-    :param struct file_lock \*fl:
+    :param fl:
         *undescribed*
+    :type fl: struct file_lock \*
 
 .. _`ceph_encode_locks_to_buffer`:
 
@@ -53,17 +62,21 @@ ceph_encode_locks_to_buffer
 
     array. Must be called with inode->i_lock already held. If we encounter more of a specific lock type than expected, return -ENOSPC.
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct ceph_filelock \*flocks:
+    :param flocks:
         *undescribed*
+    :type flocks: struct ceph_filelock \*
 
-    :param int num_fcntl_locks:
+    :param num_fcntl_locks:
         *undescribed*
+    :type num_fcntl_locks: int
 
-    :param int num_flock_locks:
+    :param num_flock_locks:
         *undescribed*
+    :type num_flock_locks: int
 
 .. _`ceph_locks_to_pagelist`:
 
@@ -72,17 +85,21 @@ ceph_locks_to_pagelist
 
 .. c:function:: int ceph_locks_to_pagelist(struct ceph_filelock *flocks, struct ceph_pagelist *pagelist, int num_fcntl_locks, int num_flock_locks)
 
-    :param struct ceph_filelock \*flocks:
+    :param flocks:
         *undescribed*
+    :type flocks: struct ceph_filelock \*
 
-    :param struct ceph_pagelist \*pagelist:
+    :param pagelist:
         *undescribed*
+    :type pagelist: struct ceph_pagelist \*
 
-    :param int num_fcntl_locks:
+    :param num_fcntl_locks:
         *undescribed*
+    :type num_fcntl_locks: int
 
-    :param int num_flock_locks:
+    :param num_flock_locks:
         *undescribed*
+    :type num_flock_locks: int
 
 .. _`ceph_locks_to_pagelist.format-is`:
 

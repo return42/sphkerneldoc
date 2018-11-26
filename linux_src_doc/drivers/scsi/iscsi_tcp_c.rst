@@ -10,17 +10,21 @@ iscsi_sw_tcp_recv
 
     TCP receive in sendfile fashion
 
-    :param read_descriptor_t \*rd_desc:
+    :param rd_desc:
         read descriptor
+    :type rd_desc: read_descriptor_t \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer
+    :type skb: struct sk_buff \*
 
-    :param unsigned int offset:
+    :param offset:
         offset in skb
+    :type offset: unsigned int
 
-    :param size_t len:
+    :param len:
         skb->len - offset
+    :type len: size_t
 
 .. _`iscsi_sw_sk_state_check`:
 
@@ -31,8 +35,9 @@ iscsi_sw_sk_state_check
 
     check socket state
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`iscsi_sw_sk_state_check.description`:
 
@@ -54,8 +59,9 @@ iscsi_sw_tcp_write_space
 
     Called when more output buffer space is available
 
-    :param struct sock \*sk:
+    :param sk:
         socket space is available for
+    :type sk: struct sock \*
 
 .. _`iscsi_sw_tcp_xmit_segment`:
 
@@ -66,11 +72,13 @@ iscsi_sw_tcp_xmit_segment
 
     transmit segment
 
-    :param struct iscsi_tcp_conn \*tcp_conn:
+    :param tcp_conn:
         the iSCSI TCP connection
+    :type tcp_conn: struct iscsi_tcp_conn \*
 
-    :param struct iscsi_segment \*segment:
+    :param segment:
         the buffer to transmnit
+    :type segment: struct iscsi_segment \*
 
 .. _`iscsi_sw_tcp_xmit_segment.description`:
 
@@ -94,8 +102,9 @@ iscsi_sw_tcp_xmit
 
     TCP transmit
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
 .. _`iscsi_sw_tcp_xmit_qlen`:
 
@@ -106,8 +115,9 @@ iscsi_sw_tcp_xmit_qlen
 
     return the number of bytes queued for xmit
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
 .. This file was automatic generated / don't edit.
 

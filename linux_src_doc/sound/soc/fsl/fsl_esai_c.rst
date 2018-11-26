@@ -10,20 +10,25 @@ fsl_esai_divisor_cal
 
     supposed to be called in \ :c:func:`set_dai_sysclk`\  and \ :c:func:`set_bclk`\ .
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         *undescribed*
+    :type dai: struct snd_soc_dai \*
 
-    :param bool tx:
+    :param tx:
         current setting is for playback or capture
+    :type tx: bool
 
-    :param u32 ratio:
+    :param ratio:
         desired overall ratio for the paticipating dividers
+    :type ratio: u32
 
-    :param bool usefp:
+    :param usefp:
         for HCK setting, there is no need to set fp divider
+    :type usefp: bool
 
-    :param u32 fp:
+    :param fp:
         bypass other dividers by setting fp directly if fp != 0
+    :type fp: u32
 
 .. _`fsl_esai_set_dai_sysclk`:
 
@@ -32,17 +37,21 @@ fsl_esai_set_dai_sysclk
 
 .. c:function:: int fsl_esai_set_dai_sysclk(struct snd_soc_dai *dai, int clk_id, unsigned int freq, int dir)
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         *undescribed*
+    :type dai: struct snd_soc_dai \*
 
-    :param int clk_id:
+    :param clk_id:
         *undescribed*
+    :type clk_id: int
 
-    :param unsigned int freq:
+    :param freq:
         *undescribed*
+    :type freq: unsigned int
 
-    :param int dir:
+    :param dir:
         *undescribed*
+    :type dir: int
 
 .. _`fsl_esai_set_dai_sysclk.clk_id`:
 
@@ -80,14 +89,17 @@ fsl_esai_set_bclk
 
 .. c:function:: int fsl_esai_set_bclk(struct snd_soc_dai *dai, bool tx, u32 freq)
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         *undescribed*
+    :type dai: struct snd_soc_dai \*
 
-    :param bool tx:
+    :param tx:
         *undescribed*
+    :type tx: bool
 
-    :param u32 freq:
+    :param freq:
         *undescribed*
+    :type freq: u32
 
 .. This file was automatic generated / don't edit.
 

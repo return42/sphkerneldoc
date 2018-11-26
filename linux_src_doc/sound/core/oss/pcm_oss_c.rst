@@ -8,14 +8,17 @@ snd_pcm_hw_param_value_min
 
 .. c:function:: unsigned int snd_pcm_hw_param_value_min(const struct snd_pcm_hw_params *params, snd_pcm_hw_param_t var, int *dir)
 
-    :param const struct snd_pcm_hw_params \*params:
+    :param params:
         the hw_params instance
+    :type params: const struct snd_pcm_hw_params \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         parameter to retrieve
+    :type var: snd_pcm_hw_param_t
 
-    :param int \*dir:
+    :param dir:
         pointer to the direction (-1,0,1) or NULL
+    :type dir: int \*
 
 .. _`snd_pcm_hw_param_value_min.description`:
 
@@ -31,14 +34,17 @@ snd_pcm_hw_param_value_max
 
 .. c:function:: unsigned int snd_pcm_hw_param_value_max(const struct snd_pcm_hw_params *params, snd_pcm_hw_param_t var, int *dir)
 
-    :param const struct snd_pcm_hw_params \*params:
+    :param params:
         the hw_params instance
+    :type params: const struct snd_pcm_hw_params \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         parameter to retrieve
+    :type var: snd_pcm_hw_param_t
 
-    :param int \*dir:
+    :param dir:
         pointer to the direction (-1,0,1) or NULL
+    :type dir: int \*
 
 .. _`snd_pcm_hw_param_value_max.description`:
 
@@ -54,20 +60,25 @@ snd_pcm_hw_param_min
 
 .. c:function:: int snd_pcm_hw_param_min(struct snd_pcm_substream *pcm, struct snd_pcm_hw_params *params, snd_pcm_hw_param_t var, unsigned int val, int *dir)
 
-    :param struct snd_pcm_substream \*pcm:
+    :param pcm:
         PCM instance
+    :type pcm: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         the hw_params instance
+    :type params: struct snd_pcm_hw_params \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         parameter to retrieve
+    :type var: snd_pcm_hw_param_t
 
-    :param unsigned int val:
+    :param val:
         minimal value
+    :type val: unsigned int
 
-    :param int \*dir:
+    :param dir:
         pointer to the direction (-1,0,1) or NULL
+    :type dir: int \*
 
 .. _`snd_pcm_hw_param_min.description`:
 
@@ -85,20 +96,25 @@ snd_pcm_hw_param_max
 
 .. c:function:: int snd_pcm_hw_param_max(struct snd_pcm_substream *pcm, struct snd_pcm_hw_params *params, snd_pcm_hw_param_t var, unsigned int val, int *dir)
 
-    :param struct snd_pcm_substream \*pcm:
+    :param pcm:
         PCM instance
+    :type pcm: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         the hw_params instance
+    :type params: struct snd_pcm_hw_params \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         parameter to retrieve
+    :type var: snd_pcm_hw_param_t
 
-    :param unsigned int val:
+    :param val:
         maximal value
+    :type val: unsigned int
 
-    :param int \*dir:
+    :param dir:
         pointer to the direction (-1,0,1) or NULL
+    :type dir: int \*
 
 .. _`snd_pcm_hw_param_max.description`:
 
@@ -116,20 +132,25 @@ snd_pcm_hw_param_near
 
 .. c:function:: int snd_pcm_hw_param_near(struct snd_pcm_substream *pcm, struct snd_pcm_hw_params *params, snd_pcm_hw_param_t var, unsigned int best, int *dir)
 
-    :param struct snd_pcm_substream \*pcm:
+    :param pcm:
         PCM instance
+    :type pcm: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         the hw_params instance
+    :type params: struct snd_pcm_hw_params \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         parameter to retrieve
+    :type var: snd_pcm_hw_param_t
 
-    :param unsigned int best:
+    :param best:
         value to set
+    :type best: unsigned int
 
-    :param int \*dir:
+    :param dir:
         pointer to the direction (-1,0,1) or NULL
+    :type dir: int \*
 
 .. _`snd_pcm_hw_param_near.description`:
 
@@ -149,20 +170,25 @@ snd_pcm_hw_param_set
 
 .. c:function:: int snd_pcm_hw_param_set(struct snd_pcm_substream *pcm, struct snd_pcm_hw_params *params, snd_pcm_hw_param_t var, unsigned int val, int dir)
 
-    :param struct snd_pcm_substream \*pcm:
+    :param pcm:
         PCM instance
+    :type pcm: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         the hw_params instance
+    :type params: struct snd_pcm_hw_params \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         parameter to retrieve
+    :type var: snd_pcm_hw_param_t
 
-    :param unsigned int val:
+    :param val:
         value to set
+    :type val: unsigned int
 
-    :param int dir:
+    :param dir:
         pointer to the direction (-1,0,1) or NULL
+    :type dir: int
 
 .. _`snd_pcm_hw_param_set.description`:
 

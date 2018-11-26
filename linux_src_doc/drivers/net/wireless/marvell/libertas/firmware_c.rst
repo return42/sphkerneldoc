@@ -10,22 +10,27 @@ lbs_get_firmware_async
 
     Retrieves firmware asynchronously. Can load either a helper firmware and a main firmware (2-stage), or just the helper.
 
-    :param struct lbs_private \*priv:
+    :param priv:
         Pointer to lbs_private instance
+    :type priv: struct lbs_private \*
 
-    :param struct device \*device:
+    :param device:
         *undescribed*
+    :type device: struct device \*
 
-    :param u32 card_model:
+    :param card_model:
         Bus-specific card model ID used to filter firmware table
         elements
+    :type card_model: u32
 
-    :param const struct lbs_fw_table \*fw_table:
+    :param fw_table:
         Table of firmware file names and device model numbers
         terminated by an entry with a NULL helper name
+    :type fw_table: const struct lbs_fw_table \*
 
-    :param lbs_fw_cb callback:
+    :param callback:
         User callback to invoke when firmware load succeeds or fails.
+    :type callback: lbs_fw_cb
 
 .. _`lbs_get_firmware`:
 
@@ -36,22 +41,27 @@ lbs_get_firmware
 
     Retrieves two-stage firmware
 
-    :param struct device \*dev:
+    :param dev:
         A pointer to \ :c:type:`struct device <device>`\  structure
+    :type dev: struct device \*
 
-    :param u32 card_model:
+    :param card_model:
         Bus-specific card model ID used to filter firmware table
         elements
+    :type card_model: u32
 
-    :param const struct lbs_fw_table \*fw_table:
+    :param fw_table:
         Table of firmware file names and device model numbers
         terminated by an entry with a NULL helper name
+    :type fw_table: const struct lbs_fw_table \*
 
-    :param const struct firmware \*\*helper:
+    :param helper:
         On success, the helper firmware; caller must free
+    :type helper: const struct firmware \*\*
 
-    :param const struct firmware \*\*mainfw:
+    :param mainfw:
         On success, the main firmware; caller must free
+    :type mainfw: const struct firmware \*\*
 
 .. _`lbs_get_firmware.deprecated`:
 

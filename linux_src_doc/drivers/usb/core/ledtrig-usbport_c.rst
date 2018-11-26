@@ -10,11 +10,13 @@ usbport_trig_usb_dev_observed
 
     Check if dev is connected to observed port
 
-    :param struct usbport_trig_data \*usbport_data:
+    :param usbport_data:
         *undescribed*
+    :type usbport_data: struct usbport_trig_data \*
 
-    :param struct usb_device \*usb_dev:
+    :param usb_dev:
         *undescribed*
+    :type usb_dev: struct usb_device \*
 
 .. _`usbport_trig_update_count`:
 
@@ -25,8 +27,9 @@ usbport_trig_update_count
 
     Recalculate amount of connected matching devices
 
-    :param struct usbport_trig_data \*usbport_data:
+    :param usbport_data:
         *undescribed*
+    :type usbport_data: struct usbport_trig_data \*
 
 .. _`usbport_trig_port_observed`:
 
@@ -37,14 +40,17 @@ usbport_trig_port_observed
 
     Check if port should be observed
 
-    :param struct usbport_trig_data \*usbport_data:
+    :param usbport_data:
         *undescribed*
+    :type usbport_data: struct usbport_trig_data \*
 
-    :param struct usb_device \*usb_dev:
+    :param usb_dev:
         *undescribed*
+    :type usb_dev: struct usb_device \*
 
-    :param int port1:
+    :param port1:
         *undescribed*
+    :type port1: int
 
 .. This file was automatic generated / don't edit.
 

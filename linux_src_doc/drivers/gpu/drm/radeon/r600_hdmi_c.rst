@@ -10,8 +10,9 @@ r600_hdmi_update_audio_settings
 
     Update audio infoframe
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         drm encoder
+    :type encoder: struct drm_encoder \*
 
 .. _`r600_hdmi_update_audio_settings.description`:
 

@@ -10,12 +10,14 @@ nau8825_sema_acquire
 
     acquire the semaphore of nau88l25
 
-    :param struct nau8825 \*nau8825:
+    :param nau8825:
         component to register the codec private data with
+    :type nau8825: struct nau8825 \*
 
-    :param long timeout:
+    :param timeout:
         how long in jiffies to wait before failure or zero to wait
         until release
+    :type timeout: long
 
 .. _`nau8825_sema_acquire.description`:
 
@@ -44,8 +46,9 @@ nau8825_sema_release
 
     release the semaphore of nau88l25
 
-    :param struct nau8825 \*nau8825:
+    :param nau8825:
         component to register the codec private data with
+    :type nau8825: struct nau8825 \*
 
 .. _`nau8825_sema_release.description`:
 
@@ -64,8 +67,9 @@ nau8825_sema_reset
 
     reset the semaphore for nau88l25
 
-    :param struct nau8825 \*nau8825:
+    :param nau8825:
         component to register the codec private data with
+    :type nau8825: struct nau8825 \*
 
 .. _`nau8825_sema_reset.description`:
 
@@ -82,17 +86,21 @@ nau8825_hpvol_ramp
 
 .. c:function:: void nau8825_hpvol_ramp(struct nau8825 *nau8825, unsigned int vol_from, unsigned int vol_to, unsigned int step)
 
-    :param struct nau8825 \*nau8825:
+    :param nau8825:
         component to register the codec private data with
+    :type nau8825: struct nau8825 \*
 
-    :param unsigned int vol_from:
+    :param vol_from:
         the volume to start up
+    :type vol_from: unsigned int
 
-    :param unsigned int vol_to:
+    :param vol_to:
         the target volume
+    :type vol_to: unsigned int
 
-    :param unsigned int step:
+    :param step:
         the volume span to move on
+    :type step: unsigned int
 
 .. _`nau8825_hpvol_ramp.description`:
 
@@ -113,8 +121,9 @@ nau8825_intlog10_dec3
 
     tion takes reference to dvb-math. The source code locates as the following. Linux/drivers/media/dvb-core/dvb_math.c
 
-    :param u32 value:
+    :param value:
         *undescribed*
+    :type value: u32
 
 .. _`nau8825_intlog10_dec3.description`:
 
@@ -130,11 +139,13 @@ nau8825_xtalk_sidetone
 
 .. c:function:: u32 nau8825_xtalk_sidetone(u32 sig_org, u32 sig_cros)
 
-    :param u32 sig_org:
+    :param sig_org:
         orignal signal level
+    :type sig_org: u32
 
-    :param u32 sig_cros:
+    :param sig_cros:
         cross talk signal level
+    :type sig_cros: u32
 
 .. _`nau8825_xtalk_sidetone.description`:
 
@@ -157,11 +168,13 @@ nau8825_enable_jack_detect
 
     Specify a jack for event reporting
 
-    :param struct snd_soc_component \*component:
+    :param component:
         component to register the jack with
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         jack to use to report headset and button events on
+    :type jack: struct snd_soc_jack \*
 
 .. _`nau8825_enable_jack_detect.description`:
 
@@ -181,14 +194,17 @@ nau8825_calc_fll_param
 
     Calculate FLL parameters.
 
-    :param unsigned int fll_in:
+    :param fll_in:
         external clock provided to codec.
+    :type fll_in: unsigned int
 
-    :param unsigned int fs:
+    :param fs:
         sampling rate.
+    :type fs: unsigned int
 
-    :param struct nau8825_fll \*fll_param:
+    :param fll_param:
         Pointer to structure of FLL parameters.
+    :type fll_param: struct nau8825_fll \*
 
 .. _`nau8825_calc_fll_param.description`:
 

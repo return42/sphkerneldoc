@@ -10,8 +10,9 @@ argv_free
 
     free an argv \ ``argv``\  - the argument vector to be freed
 
-    :param char \*\*argv:
+    :param argv:
         *undescribed*
+    :type argv: char \*\*
 
 .. _`argv_free.description`:
 
@@ -29,14 +30,17 @@ argv_split
 
     split a string at whitespace, returning an argv
 
-    :param gfp_t gfp:
+    :param gfp:
         the GFP mask used to allocate memory
+    :type gfp: gfp_t
 
-    :param const char \*str:
+    :param str:
         the string to be split
+    :type str: const char \*
 
-    :param int \*argcp:
+    :param argcp:
         returned argument count
+    :type argcp: int \*
 
 .. _`argv_split.description`:
 

@@ -150,13 +150,15 @@ tveeprom_hauppauge_analog
 
     Fill struct tveeprom using the contents of the eeprom previously filled at \ ``eeprom_data``\  field.
 
-    :param struct tveeprom \*tvee:
+    :param tvee:
         Struct to where the eeprom parsed data will be filled;
+    :type tvee: struct tveeprom \*
 
-    :param unsigned char \*eeprom_data:
+    :param eeprom_data:
         Array with the contents of the eeprom_data. It should
         contain 256 bytes filled with the contents of the
         eeprom read from the Hauppauge device.
+    :type eeprom_data: unsigned char \*
 
 .. _`tveeprom_read`:
 
@@ -167,16 +169,19 @@ tveeprom_read
 
     Reads the contents of the eeprom found at the Hauppauge devices.
 
-    :param struct i2c_client \*c:
+    :param c:
         I2C client struct
+    :type c: struct i2c_client \*
 
-    :param unsigned char \*eedata:
+    :param eedata:
         Array where the eeprom content will be stored.
+    :type eedata: unsigned char \*
 
-    :param int len:
+    :param len:
         Size of \ ``eedata``\  array. If the eeprom content will be latter
         be parsed by \ :c:func:`tveeprom_hauppauge_analog`\ , len should be, at
         least, 256.
+    :type len: int
 
 .. This file was automatic generated / don't edit.
 

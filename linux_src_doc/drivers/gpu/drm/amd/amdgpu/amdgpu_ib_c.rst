@@ -10,17 +10,21 @@ amdgpu_ib_get
 
     request an IB (Indirect Buffer)
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_vm \*vm:
+    :param vm:
         *undescribed*
+    :type vm: struct amdgpu_vm \*
 
-    :param unsigned size:
+    :param size:
         requested IB size
+    :type size: unsigned
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         IB object returned
+    :type ib: struct amdgpu_ib \*
 
 .. _`amdgpu_ib_get.description`:
 
@@ -40,14 +44,17 @@ amdgpu_ib_free
 
     free an IB (Indirect Buffer)
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         IB object to free
+    :type ib: struct amdgpu_ib \*
 
-    :param struct dma_fence \*f:
+    :param f:
         the fence SA bo need wait on for the ib alloation
+    :type f: struct dma_fence \*
 
 .. _`amdgpu_ib_free.description`:
 
@@ -65,20 +72,25 @@ amdgpu_ib_schedule
 
     schedule an IB (Indirect Buffer) on the ring
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct amdgpu_ring \*
 
-    :param unsigned num_ibs:
+    :param num_ibs:
         number of IBs to schedule
+    :type num_ibs: unsigned
 
-    :param struct amdgpu_ib \*ibs:
+    :param ibs:
         IB objects to schedule
+    :type ibs: struct amdgpu_ib \*
 
-    :param struct amdgpu_job \*job:
+    :param job:
         *undescribed*
+    :type job: struct amdgpu_job \*
 
-    :param struct dma_fence \*\*f:
+    :param f:
         fence created during this submission
+    :type f: struct dma_fence \*\*
 
 .. _`amdgpu_ib_schedule.description`:
 
@@ -107,8 +119,9 @@ amdgpu_ib_pool_init
 
     Init the IB (Indirect Buffer) pool
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_ib_pool_init.description`:
 
@@ -128,8 +141,9 @@ amdgpu_ib_pool_fini
 
     Free the IB (Indirect Buffer) pool
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_ib_pool_fini.description`:
 
@@ -148,8 +162,9 @@ amdgpu_ib_ring_tests
 
     test IBs on the rings
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_ib_ring_tests.description`:
 

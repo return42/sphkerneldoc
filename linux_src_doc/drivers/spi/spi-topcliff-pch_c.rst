@@ -185,14 +185,17 @@ pch_spi_writereg
 
     Performs  register writes
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to struct spi_master.
+    :type master: struct spi_master \*
 
-    :param int idx:
+    :param idx:
         Register offset.
+    :type idx: int
 
-    :param u32 val:
+    :param val:
         Value to be written to register.
+    :type val: u32
 
 .. _`pch_spi_readreg`:
 
@@ -203,11 +206,13 @@ pch_spi_readreg
 
     Performs register reads
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to struct spi_master.
+    :type master: struct spi_master \*
 
-    :param int idx:
+    :param idx:
         Register offset.
+    :type idx: int
 
 .. _`pch_spi_clear_fifo`:
 
@@ -218,8 +223,9 @@ pch_spi_clear_fifo
 
     Clears the Transmit and Receive FIFOs
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to struct spi_master.
+    :type master: struct spi_master \*
 
 .. _`pch_spi_handler`:
 
@@ -230,11 +236,13 @@ pch_spi_handler
 
     Interrupt handler
 
-    :param int irq:
+    :param irq:
         The interrupt number.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to struct pch_spi_board_data.
+    :type dev_id: void \*
 
 .. _`pch_spi_set_baud_rate`:
 
@@ -245,11 +253,13 @@ pch_spi_set_baud_rate
 
     Sets SPBR field in SPBRR
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to struct spi_master.
+    :type master: struct spi_master \*
 
-    :param u32 speed_hz:
+    :param speed_hz:
         Baud rate.
+    :type speed_hz: u32
 
 .. _`pch_spi_set_bits_per_word`:
 
@@ -260,11 +270,13 @@ pch_spi_set_bits_per_word
 
     Sets SIZE field in SPBRR
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to struct spi_master.
+    :type master: struct spi_master \*
 
-    :param u8 bits_per_word:
+    :param bits_per_word:
         Bits per word for SPI transfer.
+    :type bits_per_word: u8
 
 .. _`pch_spi_setup_transfer`:
 
@@ -275,8 +287,9 @@ pch_spi_setup_transfer
 
     Configures the PCH SPI hardware for transfer
 
-    :param struct spi_device \*spi:
+    :param spi:
         Pointer to struct spi_device.
+    :type spi: struct spi_device \*
 
 .. _`pch_spi_reset`:
 
@@ -287,8 +300,9 @@ pch_spi_reset
 
     Clears SPI registers
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to struct spi_master.
+    :type master: struct spi_master \*
 
 .. This file was automatic generated / don't edit.
 

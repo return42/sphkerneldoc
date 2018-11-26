@@ -10,11 +10,13 @@ ud_loopback
 
     handle send on loopback QPs
 
-    :param struct rvt_qp \*sqp:
+    :param sqp:
         the sending QP
+    :type sqp: struct rvt_qp \*
 
-    :param struct rvt_swqe \*swqe:
+    :param swqe:
         the send work request
+    :type swqe: struct rvt_swqe \*
 
 .. _`ud_loopback.description`:
 
@@ -35,11 +37,13 @@ hfi1_make_ud_req
 
     construct a UD request packet
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP
+    :type qp: struct rvt_qp \*
 
-    :param struct hfi1_pkt_state \*ps:
+    :param ps:
         *undescribed*
+    :type ps: struct hfi1_pkt_state \*
 
 .. _`hfi1_make_ud_req.description`:
 
@@ -59,8 +63,9 @@ hfi1_ud_rcv
 
     receive an incoming UD packet
 
-    :param struct hfi1_packet \*packet:
+    :param packet:
         *undescribed*
+    :type packet: struct hfi1_packet \*
 
 .. _`hfi1_ud_rcv.description`:
 

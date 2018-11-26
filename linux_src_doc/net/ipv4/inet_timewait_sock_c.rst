@@ -10,11 +10,13 @@ inet_twsk_bind_unhash
 
     unhash a timewait socket from bind hash
 
-    :param struct inet_timewait_sock \*tw:
+    :param tw:
         timewait socket
+    :type tw: struct inet_timewait_sock \*
 
-    :param struct inet_hashinfo \*hashinfo:
+    :param hashinfo:
         hashinfo pointer
+    :type hashinfo: struct inet_hashinfo \*
 
 .. _`inet_twsk_bind_unhash.description`:
 

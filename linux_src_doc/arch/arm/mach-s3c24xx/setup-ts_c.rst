@@ -10,8 +10,9 @@ s3c24xx_ts_cfg_gpio
 
     configure gpio for s3c2410 systems
 
-    :param struct platform_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct platform_device \*
 
 .. _`s3c24xx_ts_cfg_gpio.description`:
 

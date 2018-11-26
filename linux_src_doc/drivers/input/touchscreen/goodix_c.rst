@@ -10,17 +10,21 @@ goodix_i2c_read
 
     read data from a register of the i2c slave device.
 
-    :param struct i2c_client \*client:
+    :param client:
         i2c device.
+    :type client: struct i2c_client \*
 
-    :param u16 reg:
+    :param reg:
         the register to read from.
+    :type reg: u16
 
-    :param u8 \*buf:
+    :param buf:
         raw write data buffer.
+    :type buf: u8 \*
 
-    :param int len:
+    :param len:
         length of the buffer to write
+    :type len: int
 
 .. _`goodix_i2c_write`:
 
@@ -31,17 +35,21 @@ goodix_i2c_write
 
     write data to a register of the i2c slave device.
 
-    :param struct i2c_client \*client:
+    :param client:
         i2c device.
+    :type client: struct i2c_client \*
 
-    :param u16 reg:
+    :param reg:
         the register to write to.
+    :type reg: u16
 
-    :param const u8 \*buf:
+    :param buf:
         raw data buffer to write.
+    :type buf: const u8 \*
 
-    :param unsigned len:
+    :param len:
         length of the buffer to write
+    :type len: unsigned
 
 .. _`goodix_process_events`:
 
@@ -52,8 +60,9 @@ goodix_process_events
 
     Process incoming events
 
-    :param struct goodix_ts_data \*ts:
+    :param ts:
         our goodix_ts_data pointer
+    :type ts: struct goodix_ts_data \*
 
 .. _`goodix_process_events.description`:
 
@@ -72,11 +81,13 @@ goodix_ts_irq_handler
 
     The IRQ handler
 
-    :param int irq:
+    :param irq:
         interrupt number.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         private data pointer.
+    :type dev_id: void \*
 
 .. _`goodix_check_cfg`:
 
@@ -87,11 +98,13 @@ goodix_check_cfg
 
     Checks if config fw is valid
 
-    :param struct goodix_ts_data \*ts:
+    :param ts:
         goodix_ts_data pointer
+    :type ts: struct goodix_ts_data \*
 
-    :param const struct firmware \*cfg:
+    :param cfg:
         firmware config data
+    :type cfg: const struct firmware \*
 
 .. _`goodix_send_cfg`:
 
@@ -102,11 +115,13 @@ goodix_send_cfg
 
     Write fw config to device
 
-    :param struct goodix_ts_data \*ts:
+    :param ts:
         goodix_ts_data pointer
+    :type ts: struct goodix_ts_data \*
 
-    :param const struct firmware \*cfg:
+    :param cfg:
         config firmware to write to device
+    :type cfg: const struct firmware \*
 
 .. _`goodix_reset`:
 
@@ -117,8 +132,9 @@ goodix_reset
 
     Reset device during power on
 
-    :param struct goodix_ts_data \*ts:
+    :param ts:
         goodix_ts_data pointer
+    :type ts: struct goodix_ts_data \*
 
 .. _`goodix_get_gpio_config`:
 
@@ -129,8 +145,9 @@ goodix_get_gpio_config
 
     Get GPIO config from ACPI/DT
 
-    :param struct goodix_ts_data \*ts:
+    :param ts:
         goodix_ts_data pointer
+    :type ts: struct goodix_ts_data \*
 
 .. _`goodix_read_config`:
 
@@ -141,8 +158,9 @@ goodix_read_config
 
     Read the embedded configuration of the panel
 
-    :param struct goodix_ts_data \*ts:
+    :param ts:
         our goodix_ts_data pointer
+    :type ts: struct goodix_ts_data \*
 
 .. _`goodix_read_config.description`:
 
@@ -160,8 +178,9 @@ goodix_read_version
 
     Read goodix touchscreen version
 
-    :param struct goodix_ts_data \*ts:
+    :param ts:
         our goodix_ts_data pointer
+    :type ts: struct goodix_ts_data \*
 
 .. _`goodix_i2c_test`:
 
@@ -172,8 +191,9 @@ goodix_i2c_test
 
     I2C test function to check if the device answers.
 
-    :param struct i2c_client \*client:
+    :param client:
         the i2c client
+    :type client: struct i2c_client \*
 
 .. _`goodix_configure_dev`:
 
@@ -184,8 +204,9 @@ goodix_configure_dev
 
     Finish device initialization
 
-    :param struct goodix_ts_data \*ts:
+    :param ts:
         our goodix_ts_data pointer
+    :type ts: struct goodix_ts_data \*
 
 .. _`goodix_configure_dev.description`:
 
@@ -206,11 +227,13 @@ goodix_config_cb
 
     Callback to finish device init
 
-    :param const struct firmware \*cfg:
+    :param cfg:
         *undescribed*
+    :type cfg: const struct firmware \*
 
-    :param void \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: void \*
 
 .. _`goodix_config_cb.description`:
 

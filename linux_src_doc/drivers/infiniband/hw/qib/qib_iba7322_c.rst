@@ -10,14 +10,17 @@ qib_read_ureg32
 
     read 32-bit virtualized per-context register
 
-    :param const struct qib_devdata \*dd:
+    :param dd:
         device
+    :type dd: const struct qib_devdata \*
 
-    :param enum qib_ureg regno:
+    :param regno:
         register number
+    :type regno: enum qib_ureg
 
-    :param int ctxt:
+    :param ctxt:
         context number
+    :type ctxt: int
 
 .. _`qib_read_ureg32.description`:
 
@@ -37,14 +40,17 @@ qib_read_ureg
 
     read virtualized per-context register
 
-    :param const struct qib_devdata \*dd:
+    :param dd:
         device
+    :type dd: const struct qib_devdata \*
 
-    :param enum qib_ureg regno:
+    :param regno:
         register number
+    :type regno: enum qib_ureg
 
-    :param int ctxt:
+    :param ctxt:
         context number
+    :type ctxt: int
 
 .. _`qib_read_ureg.description`:
 
@@ -64,17 +70,21 @@ qib_write_ureg
 
     write virtualized per-context register
 
-    :param const struct qib_devdata \*dd:
+    :param dd:
         device
+    :type dd: const struct qib_devdata \*
 
-    :param enum qib_ureg regno:
+    :param regno:
         register number
+    :type regno: enum qib_ureg
 
-    :param u64 value:
+    :param value:
         value
+    :type value: u64
 
-    :param int ctxt:
+    :param ctxt:
         context
+    :type ctxt: int
 
 .. _`qib_write_ureg.description`:
 
@@ -92,17 +102,21 @@ qib_write_kreg_ctxt
 
     write a device's per-ctxt 64-bit kernel register
 
-    :param const struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: const struct qib_devdata \*
 
-    :param const u16 regno:
+    :param regno:
         the register number to write
+    :type regno: const u16
 
-    :param unsigned ctxt:
+    :param ctxt:
         the context containing the register
+    :type ctxt: unsigned
 
-    :param u64 value:
+    :param value:
         the value to write
+    :type value: u64
 
 .. _`qib_7322_handle_hwerrors`:
 
@@ -113,14 +127,17 @@ qib_7322_handle_hwerrors
 
     display hardware errors.
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param char \*msg:
+    :param msg:
         the output buffer
+    :type msg: char \*
 
-    :param size_t msgl:
+    :param msgl:
         the size of the output buffer
+    :type msgl: size_t
 
 .. _`qib_7322_handle_hwerrors.description`:
 
@@ -141,8 +158,9 @@ qib_7322_init_hwerrors
 
     enable hardware errors
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`qib_7322_init_hwerrors.description`:
 
@@ -164,8 +182,9 @@ qib_7322_bringup_serdes
 
     bring up the serdes
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         physical port on the qlogic_ib device
+    :type ppd: struct qib_pportdata \*
 
 .. _`qib_7322_mini_quiet_serdes`:
 
@@ -176,8 +195,9 @@ qib_7322_mini_quiet_serdes
 
     set serdes to txidle
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         *undescribed*
+    :type ppd: struct qib_pportdata \*
 
 .. _`qib_setup_7322_setextled`:
 
@@ -188,11 +208,13 @@ qib_setup_7322_setextled
 
     set the state of the two external LEDs
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         physical port on the qlogic_ib device
+    :type ppd: struct qib_pportdata \*
 
-    :param u32 on:
+    :param on:
         whether the link is up or not
+    :type on: u32
 
 .. _`qib_setup_7322_setextled.description`:
 
@@ -230,8 +252,9 @@ qib_7322_boardname
 
     fill in the board name and note features
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`qib_7322_boardname.description`:
 
@@ -249,17 +272,21 @@ qib_7322_put_tid
 
     write a TID to the chip
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param u64 __iomem \*tidptr:
+    :param tidptr:
         pointer to the expected TID (in chip) to update
+    :type tidptr: u64 __iomem \*
 
-    :param u32 type:
+    :param type:
         *undescribed*
+    :type type: u32
 
-    :param unsigned long pa:
+    :param pa:
         physical address of in memory buffer; tidinvalid if freeing
+    :type pa: unsigned long
 
 .. _`qib_7322_clear_tids`:
 
@@ -270,11 +297,13 @@ qib_7322_clear_tids
 
     clear all TID entries for a ctxt, expected and eager
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct qib_ctxtdata \*
 
 .. _`qib_7322_clear_tids.description`:
 
@@ -293,8 +322,9 @@ qib_7322_tidtemplate
 
     setup constants for TID updates
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`qib_7322_tidtemplate.description`:
 
@@ -312,11 +342,13 @@ qib_7322_get_base_info
 
     set chip-specific flags for user code
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the qlogic_ib ctxt
+    :type rcd: struct qib_ctxtdata \*
 
-    :param struct qib_base_info \*kinfo:
+    :param kinfo:
         *undescribed*
+    :type kinfo: struct qib_base_info \*
 
 .. _`qib_7322_get_base_info.description`:
 
@@ -335,11 +367,13 @@ qib_portcntr_7322
 
     read a per-port chip counter
 
-    :param struct qib_pportdata \*ppd:
+    :param ppd:
         the qlogic_ib pport
+    :type ppd: struct qib_pportdata \*
 
-    :param u32 reg:
+    :param reg:
         *undescribed*
+    :type reg: u32
 
 .. _`qib_get_7322_faststats`:
 
@@ -350,8 +384,9 @@ qib_get_7322_faststats
 
     get word counters from chip before they overflow \ ``opaque``\  - contains a pointer to the qlogic_ib device qib_devdata
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`qib_get_7322_faststats.description`:
 
@@ -374,11 +409,13 @@ qib_init_iba7322_funcs
 
     set up the chip-specific function pointers
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         pci_device_id struct for this dev
+    :type ent: const struct pci_device_id \*
 
 .. _`qib_init_iba7322_funcs.description`:
 

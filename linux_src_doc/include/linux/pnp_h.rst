@@ -10,8 +10,9 @@ module_pnp_driver
 
     Helper macro for registering a PnP driver
 
-    :param  __pnp_driver:
+    :param __pnp_driver:
         pnp_driver struct
+    :type __pnp_driver: 
 
 .. _`module_pnp_driver.description`:
 

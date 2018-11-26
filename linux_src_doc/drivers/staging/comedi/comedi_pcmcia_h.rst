@@ -10,11 +10,13 @@ module_comedi_pcmcia_driver
 
     Helper macro for registering a comedi PCMCIA driver
 
-    :param  __comedi_driver:
+    :param __comedi_driver:
         comedi_driver struct
+    :type __comedi_driver: 
 
-    :param  __pcmcia_driver:
+    :param __pcmcia_driver:
         pcmcia_driver struct
+    :type __pcmcia_driver: 
 
 .. _`module_comedi_pcmcia_driver.description`:
 

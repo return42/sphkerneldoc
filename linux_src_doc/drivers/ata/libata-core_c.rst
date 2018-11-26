@@ -10,14 +10,17 @@ ata_link_next
 
     link iteration helper
 
-    :param struct ata_link \*link:
+    :param link:
         the previous link, NULL to start
+    :type link: struct ata_link \*
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port containing links to iterate
+    :type ap: struct ata_port \*
 
-    :param enum ata_link_iter_mode mode:
+    :param mode:
         iteration mode, one of ATA_LITER_*
+    :type mode: enum ata_link_iter_mode
 
 .. _`ata_link_next.locking`:
 
@@ -42,14 +45,17 @@ ata_dev_next
 
     device iteration helper
 
-    :param struct ata_device \*dev:
+    :param dev:
         the previous device, NULL to start
+    :type dev: struct ata_device \*
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link containing devices to iterate
+    :type link: struct ata_link \*
 
-    :param enum ata_dev_iter_mode mode:
+    :param mode:
         iteration mode, one of ATA_DITER_*
+    :type mode: enum ata_dev_iter_mode
 
 .. _`ata_dev_next.locking`:
 
@@ -74,8 +80,9 @@ ata_dev_phys_link
 
     find physical link for a device
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device to look up physical link for
+    :type dev: struct ata_device \*
 
 .. _`ata_dev_phys_link.description`:
 
@@ -83,8 +90,8 @@ Description
 -----------
 
      Look up physical link which \ ``dev``\  is attached to.  Note that
-     this is different from \ ``dev``\ ->link only when \ ``dev``\  is on slave
-     link.  For all other cases, it's the same as \ ``dev``\ ->link.
+     this is different from \ ``dev->link``\  only when \ ``dev``\  is on slave
+     link.  For all other cases, it's the same as \ ``dev->link``\ .
 
 .. _`ata_dev_phys_link.locking`:
 
@@ -109,8 +116,9 @@ ata_force_cbl
 
     force cable type according to libata.force
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port of interest
+    :type ap: struct ata_port \*
 
 .. _`ata_force_cbl.description`:
 
@@ -139,8 +147,9 @@ ata_force_link_limits
 
     force link limits according to libata.force
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link of interest
+    :type link: struct ata_link \*
 
 .. _`ata_force_link_limits.description`:
 
@@ -172,8 +181,9 @@ ata_force_xfermask
 
     force xfermask according to libata.force
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device of interest
+    :type dev: struct ata_device \*
 
 .. _`ata_force_xfermask.description`:
 
@@ -200,8 +210,9 @@ ata_force_horkage
 
     force horkage according to libata.force
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device of interest
+    :type dev: struct ata_device \*
 
 .. _`ata_force_horkage.description`:
 
@@ -228,8 +239,9 @@ atapi_cmd_type
 
     Determine ATAPI command type from SCSI opcode
 
-    :param u8 opcode:
+    :param opcode:
         SCSI opcode
+    :type opcode: u8
 
 .. _`atapi_cmd_type.description`:
 
@@ -261,17 +273,21 @@ ata_tf_to_fis
 
     Convert ATA taskfile to SATA FIS structure
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         Taskfile to convert
+    :type tf: const struct ata_taskfile \*
 
-    :param u8 pmp:
+    :param pmp:
         Port multiplier port
+    :type pmp: u8
 
-    :param int is_cmd:
+    :param is_cmd:
         This FIS is for command
+    :type is_cmd: int
 
-    :param u8 \*fis:
+    :param fis:
         Buffer into which data will output
+    :type fis: u8 \*
 
 .. _`ata_tf_to_fis.description`:
 
@@ -297,11 +313,13 @@ ata_tf_from_fis
 
     Convert SATA FIS to ATA taskfile
 
-    :param const u8 \*fis:
+    :param fis:
         Buffer from which data will be input
+    :type fis: const u8 \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         Taskfile to output
+    :type tf: struct ata_taskfile \*
 
 .. _`ata_tf_from_fis.description`:
 
@@ -326,11 +344,13 @@ ata_rwcmd_protocol
 
     set taskfile r/w commands and protocol
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         command to examine and configure
+    :type tf: struct ata_taskfile \*
 
-    :param struct ata_device \*dev:
+    :param dev:
         device tf belongs to
+    :type dev: struct ata_device \*
 
 .. _`ata_rwcmd_protocol.description`:
 
@@ -356,11 +376,13 @@ ata_tf_read_block
 
     Read block address from ATA taskfile
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         ATA taskfile of interest
+    :type tf: const struct ata_taskfile \*
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device \ ``tf``\  belongs to
+    :type dev: struct ata_device \*
 
 .. _`ata_tf_read_block.locking`:
 
@@ -389,26 +411,33 @@ ata_build_rw_tf
 
     Build ATA taskfile for given read/write request
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         Target ATA taskfile
+    :type tf: struct ata_taskfile \*
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device \ ``tf``\  belongs to
+    :type dev: struct ata_device \*
 
-    :param u64 block:
+    :param block:
         Block address
+    :type block: u64
 
-    :param u32 n_block:
+    :param n_block:
         Number of blocks
+    :type n_block: u32
 
-    :param unsigned int tf_flags:
+    :param tf_flags:
         RW/FUA etc...
+    :type tf_flags: unsigned int
 
-    :param unsigned int tag:
+    :param tag:
         tag
+    :type tag: unsigned int
 
-    :param int class:
+    :param class:
         IO priority class
+    :type class: int
 
 .. _`ata_build_rw_tf.locking`:
 
@@ -438,14 +467,17 @@ ata_pack_xfermask
 
     Pack pio, mwdma and udma masks into xfer_mask
 
-    :param unsigned long pio_mask:
+    :param pio_mask:
         pio_mask
+    :type pio_mask: unsigned long
 
-    :param unsigned long mwdma_mask:
+    :param mwdma_mask:
         mwdma_mask
+    :type mwdma_mask: unsigned long
 
-    :param unsigned long udma_mask:
+    :param udma_mask:
         udma_mask
+    :type udma_mask: unsigned long
 
 .. _`ata_pack_xfermask.description`:
 
@@ -478,17 +510,21 @@ ata_unpack_xfermask
 
     Unpack xfer_mask into pio, mwdma and udma masks
 
-    :param unsigned long xfer_mask:
+    :param xfer_mask:
         xfer_mask to unpack
+    :type xfer_mask: unsigned long
 
-    :param unsigned long \*pio_mask:
+    :param pio_mask:
         resulting pio_mask
+    :type pio_mask: unsigned long \*
 
-    :param unsigned long \*mwdma_mask:
+    :param mwdma_mask:
         resulting mwdma_mask
+    :type mwdma_mask: unsigned long \*
 
-    :param unsigned long \*udma_mask:
+    :param udma_mask:
         resulting udma_mask
+    :type udma_mask: unsigned long \*
 
 .. _`ata_unpack_xfermask.description`:
 
@@ -507,8 +543,9 @@ ata_xfer_mask2mode
 
     Find matching XFER_* for the given xfer_mask
 
-    :param unsigned long xfer_mask:
+    :param xfer_mask:
         xfer_mask of interest
+    :type xfer_mask: unsigned long
 
 .. _`ata_xfer_mask2mode.description`:
 
@@ -541,8 +578,9 @@ ata_xfer_mode2mask
 
     Find matching xfer_mask for XFER_*
 
-    :param u8 xfer_mode:
+    :param xfer_mode:
         XFER_* of interest
+    :type xfer_mode: u8
 
 .. _`ata_xfer_mode2mask.description`:
 
@@ -574,8 +612,9 @@ ata_xfer_mode2shift
 
     Find matching xfer_shift for XFER_*
 
-    :param unsigned long xfer_mode:
+    :param xfer_mode:
         XFER_* of interest
+    :type xfer_mode: unsigned long
 
 .. _`ata_xfer_mode2shift.description`:
 
@@ -607,8 +646,9 @@ ata_mode_string
 
     convert xfer_mask to string
 
-    :param unsigned long xfer_mask:
+    :param xfer_mask:
         mask of bits supported; only highest bit counts.
+    :type xfer_mask: unsigned long
 
 .. _`ata_mode_string.description`:
 
@@ -642,8 +682,9 @@ ata_dev_classify
 
     determine device type based on ATA-spec signature
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         ATA taskfile register set for device to be identified
+    :type tf: const struct ata_taskfile \*
 
 .. _`ata_dev_classify.description`:
 
@@ -678,17 +719,21 @@ ata_id_string
 
     Convert IDENTIFY DEVICE page into string
 
-    :param const u16 \*id:
+    :param id:
         IDENTIFY DEVICE results we will examine
+    :type id: const u16 \*
 
-    :param unsigned char \*s:
+    :param s:
         string into which data is output
+    :type s: unsigned char \*
 
-    :param unsigned int ofs:
+    :param ofs:
         offset into identify device page
+    :type ofs: unsigned int
 
-    :param unsigned int len:
+    :param len:
         length of string to return. must be an even number.
+    :type len: unsigned int
 
 .. _`ata_id_string.description`:
 
@@ -715,17 +760,21 @@ ata_id_c_string
 
     Convert IDENTIFY DEVICE page into C string
 
-    :param const u16 \*id:
+    :param id:
         IDENTIFY DEVICE results we will examine
+    :type id: const u16 \*
 
-    :param unsigned char \*s:
+    :param s:
         string into which data is output
+    :type s: unsigned char \*
 
-    :param unsigned int ofs:
+    :param ofs:
         offset into identify device page
+    :type ofs: unsigned int
 
-    :param unsigned int len:
+    :param len:
         length of string to return. must be an odd number.
+    :type len: unsigned int
 
 .. _`ata_id_c_string.description`:
 
@@ -752,11 +801,13 @@ ata_read_native_max_address
 
     Read native max address
 
-    :param struct ata_device \*dev:
+    :param dev:
         target device
+    :type dev: struct ata_device \*
 
-    :param u64 \*max_sectors:
+    :param max_sectors:
         out parameter for the result native max address
+    :type max_sectors: u64 \*
 
 .. _`ata_read_native_max_address.description`:
 
@@ -783,11 +834,13 @@ ata_set_max_sectors
 
     Set max sectors
 
-    :param struct ata_device \*dev:
+    :param dev:
         target device
+    :type dev: struct ata_device \*
 
-    :param u64 new_sectors:
+    :param new_sectors:
         new max sectors value to set for the device
+    :type new_sectors: u64
 
 .. _`ata_set_max_sectors.description`:
 
@@ -814,8 +867,9 @@ ata_hpa_resize
 
     Resize a device with an HPA set
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device to resize
+    :type dev: struct ata_device \*
 
 .. _`ata_hpa_resize.description`:
 
@@ -842,8 +896,9 @@ ata_dump_id
 
     IDENTIFY DEVICE info debugging output
 
-    :param const u16 \*id:
+    :param id:
         IDENTIFY DEVICE page to dump
+    :type id: const u16 \*
 
 .. _`ata_dump_id.description`:
 
@@ -869,8 +924,9 @@ ata_id_xfermask
 
     Compute xfermask from the given IDENTIFY data
 
-    :param const u16 \*id:
+    :param id:
         IDENTIFY data to compute xfer mask from
+    :type id: const u16 \*
 
 .. _`ata_id_xfermask.description`:
 
@@ -905,26 +961,33 @@ ata_exec_internal_sg
 
     execute libata internal command
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device to which the command is sent
+    :type dev: struct ata_device \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         Taskfile registers for the command and the result
+    :type tf: struct ata_taskfile \*
 
-    :param const u8 \*cdb:
+    :param cdb:
         CDB for packet command
+    :type cdb: const u8 \*
 
-    :param int dma_dir:
+    :param dma_dir:
         Data transfer direction of the command
+    :type dma_dir: int
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         sg list for the data buffer of the command
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int n_elem:
+    :param n_elem:
         Number of sg entries
+    :type n_elem: unsigned int
 
-    :param unsigned long timeout:
+    :param timeout:
         Timeout in msecs (0 for default)
+    :type timeout: unsigned long
 
 .. _`ata_exec_internal_sg.description`:
 
@@ -960,26 +1023,33 @@ ata_exec_internal
 
     execute libata internal command
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device to which the command is sent
+    :type dev: struct ata_device \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         Taskfile registers for the command and the result
+    :type tf: struct ata_taskfile \*
 
-    :param const u8 \*cdb:
+    :param cdb:
         CDB for packet command
+    :type cdb: const u8 \*
 
-    :param int dma_dir:
+    :param dma_dir:
         Data transfer direction of the command
+    :type dma_dir: int
 
-    :param void \*buf:
+    :param buf:
         Data buffer of the command
+    :type buf: void \*
 
-    :param unsigned int buflen:
+    :param buflen:
         Length of data buffer
+    :type buflen: unsigned int
 
-    :param unsigned long timeout:
+    :param timeout:
         Timeout in msecs (0 for default)
+    :type timeout: unsigned long
 
 .. _`ata_exec_internal.description`:
 
@@ -1012,8 +1082,9 @@ ata_pio_need_iordy
 
     check if iordy needed
 
-    :param const struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: const struct ata_device \*
 
 .. _`ata_pio_need_iordy.description`:
 
@@ -1032,8 +1103,9 @@ ata_pio_mask_no_iordy
 
     Return the non IORDY mask
 
-    :param const struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: const struct ata_device \*
 
 .. _`ata_pio_mask_no_iordy.description`:
 
@@ -1052,14 +1124,17 @@ ata_do_dev_read_id
 
     default ID read method
 
-    :param struct ata_device \*dev:
+    :param dev:
         device
+    :type dev: struct ata_device \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         proposed taskfile
+    :type tf: struct ata_taskfile \*
 
-    :param u16 \*id:
+    :param id:
         data buffer
+    :type id: u16 \*
 
 .. _`ata_do_dev_read_id.description`:
 
@@ -1079,17 +1154,21 @@ ata_dev_read_id
 
     Read ID data from the specified device
 
-    :param struct ata_device \*dev:
+    :param dev:
         target device
+    :type dev: struct ata_device \*
 
-    :param unsigned int \*p_class:
+    :param p_class:
         pointer to class of the target device (may be changed)
+    :type p_class: unsigned int \*
 
-    :param unsigned int flags:
+    :param flags:
         ATA_READID_* flags
+    :type flags: unsigned int
 
-    :param u16 \*id:
+    :param id:
         buffer to read IDENTIFY data into
+    :type id: u16 \*
 
 .. _`ata_dev_read_id.description`:
 
@@ -1127,20 +1206,25 @@ ata_read_log_page
 
     read a specific log page
 
-    :param struct ata_device \*dev:
+    :param dev:
         target device
+    :type dev: struct ata_device \*
 
-    :param u8 log:
+    :param log:
         log to read
+    :type log: u8
 
-    :param u8 page:
+    :param page:
         page to read
+    :type page: u8
 
-    :param void \*buf:
+    :param buf:
         buffer to store read page
+    :type buf: void \*
 
-    :param unsigned int sectors:
+    :param sectors:
         number of sectors to read
+    :type sectors: unsigned int
 
 .. _`ata_read_log_page.description`:
 
@@ -1172,15 +1256,16 @@ ata_dev_configure
 
     Configure the specified ATA/ATAPI device
 
-    :param struct ata_device \*dev:
+    :param dev:
         Target device to configure
+    :type dev: struct ata_device \*
 
 .. _`ata_dev_configure.description`:
 
 Description
 -----------
 
-     Configure \ ``dev``\  according to \ ``dev``\ ->id.  Generic and low-level
+     Configure \ ``dev``\  according to \ ``dev->id``\ .  Generic and low-level
      driver specific fixups are also applied.
 
 .. _`ata_dev_configure.locking`:
@@ -1206,8 +1291,9 @@ ata_cable_40wire
 
     return 40 wire cable type
 
-    :param struct ata_port \*ap:
+    :param ap:
         port
+    :type ap: struct ata_port \*
 
 .. _`ata_cable_40wire.description`:
 
@@ -1226,8 +1312,9 @@ ata_cable_80wire
 
     return 80 wire cable type
 
-    :param struct ata_port \*ap:
+    :param ap:
         port
+    :type ap: struct ata_port \*
 
 .. _`ata_cable_80wire.description`:
 
@@ -1246,8 +1333,9 @@ ata_cable_unknown
 
     return unknown PATA cable.
 
-    :param struct ata_port \*ap:
+    :param ap:
         port
+    :type ap: struct ata_port \*
 
 .. _`ata_cable_unknown.description`:
 
@@ -1265,8 +1353,9 @@ ata_cable_ignore
 
     return ignored PATA cable.
 
-    :param struct ata_port \*ap:
+    :param ap:
         port
+    :type ap: struct ata_port \*
 
 .. _`ata_cable_ignore.description`:
 
@@ -1285,8 +1374,9 @@ ata_cable_sata
 
     return SATA cable type
 
-    :param struct ata_port \*ap:
+    :param ap:
         port
+    :type ap: struct ata_port \*
 
 .. _`ata_cable_sata.description`:
 
@@ -1304,8 +1394,9 @@ ata_bus_probe
 
     Reset and probe ATA bus
 
-    :param struct ata_port \*ap:
+    :param ap:
         Bus to probe
+    :type ap: struct ata_port \*
 
 .. _`ata_bus_probe.description`:
 
@@ -1339,8 +1430,9 @@ sata_print_link_status
 
     Print SATA link status
 
-    :param struct ata_link \*link:
+    :param link:
         SATA link to printk link status about
+    :type link: struct ata_link \*
 
 .. _`sata_print_link_status.description`:
 
@@ -1365,8 +1457,9 @@ ata_dev_pair
 
     return other device on cable
 
-    :param struct ata_device \*adev:
+    :param adev:
         device
+    :type adev: struct ata_device \*
 
 .. _`ata_dev_pair.description`:
 
@@ -1385,11 +1478,13 @@ sata_down_spd_limit
 
     adjust SATA spd limit downward
 
-    :param struct ata_link \*link:
+    :param link:
         Link to adjust SATA spd limit for
+    :type link: struct ata_link \*
 
-    :param u32 spd_limit:
+    :param spd_limit:
         Additional limit
+    :type spd_limit: u32
 
 .. _`sata_down_spd_limit.description`:
 
@@ -1428,8 +1523,9 @@ sata_set_spd_needed
 
     is SATA spd configuration needed
 
-    :param struct ata_link \*link:
+    :param link:
         Link in question
+    :type link: struct ata_link \*
 
 .. _`sata_set_spd_needed.description`:
 
@@ -1437,7 +1533,7 @@ Description
 -----------
 
      Test whether the spd limit in SControl matches
-     \ ``link``\ ->sata_spd_limit.  This function is used to determine
+     \ ``link->sata_spd_limit``\ .  This function is used to determine
      whether hardreset is necessary to apply SATA spd
      configuration.
 
@@ -1464,8 +1560,9 @@ sata_set_spd
 
     set SATA spd according to spd limit
 
-    :param struct ata_link \*link:
+    :param link:
         Link to set SATA spd for
+    :type link: struct ata_link \*
 
 .. _`sata_set_spd.description`:
 
@@ -1498,11 +1595,13 @@ ata_timing_cycle2mode
 
     find xfer mode for the specified cycle duration
 
-    :param unsigned int xfer_shift:
+    :param xfer_shift:
         ATA_SHIFT_* value for transfer type to examine.
+    :type xfer_shift: unsigned int
 
-    :param int cycle:
+    :param cycle:
         cycle duration in ns
+    :type cycle: int
 
 .. _`ata_timing_cycle2mode.description`:
 
@@ -1537,11 +1636,13 @@ ata_down_xfermask_limit
 
     adjust dev xfer masks downward
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device to adjust xfer masks
+    :type dev: struct ata_device \*
 
-    :param unsigned int sel:
+    :param sel:
         ATA_DNXFER_* selector
+    :type sel: unsigned int
 
 .. _`ata_down_xfermask_limit.description`:
 
@@ -1575,11 +1676,13 @@ ata_do_set_mode
 
     Program timings and issue SET FEATURES - XFER
 
-    :param struct ata_link \*link:
+    :param link:
         link on which timings will be programmed
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*r_failed_dev:
+    :param r_failed_dev:
         out parameter for failed device
+    :type r_failed_dev: struct ata_device \*\*
 
 .. _`ata_do_set_mode.description`:
 
@@ -1614,11 +1717,13 @@ ata_wait_ready
 
     wait for link to become ready
 
-    :param struct ata_link \*link:
+    :param link:
         link to be waited on
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
     :param int (\*check_ready)(struct ata_link \*link):
         callback to check link readiness
@@ -1659,11 +1764,13 @@ ata_wait_after_reset
 
     wait for link to become ready after reset
 
-    :param struct ata_link \*link:
+    :param link:
         link to be waited on
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
     :param int (\*check_ready)(struct ata_link \*link):
         callback to check link readiness
@@ -1698,14 +1805,17 @@ sata_link_debounce
 
     debounce SATA phy status
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to debounce SATA phy status for
+    :type link: struct ata_link \*
 
-    :param const unsigned long \*params:
+    :param params:
         timing parameters { interval, duration, timeout } in msec
+    :type params: const unsigned long \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`sata_link_debounce.description`:
 
@@ -1745,14 +1855,17 @@ sata_link_resume
 
     resume SATA link
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to resume SATA
+    :type link: struct ata_link \*
 
-    :param const unsigned long \*params:
+    :param params:
         timing parameters { interval, duration, timeout } in msec
+    :type params: const unsigned long \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`sata_link_resume.description`:
 
@@ -1784,14 +1897,17 @@ sata_link_scr_lpm
 
     manipulate SControl IPM and SPM fields
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to manipulate SControl for
+    :type link: struct ata_link \*
 
-    :param enum ata_lpm_policy policy:
+    :param policy:
         LPM policy to configure
+    :type policy: enum ata_lpm_policy
 
-    :param bool spm_wakeup:
+    :param spm_wakeup:
         initiate LPM transition to active state
+    :type spm_wakeup: bool
 
 .. _`sata_link_scr_lpm.description`:
 
@@ -1827,11 +1943,13 @@ ata_std_prereset
 
     prepare for reset
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to be reset
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`ata_std_prereset.description`:
 
@@ -1867,17 +1985,21 @@ sata_link_hardreset
 
     reset link via SATA phy reset
 
-    :param struct ata_link \*link:
+    :param link:
         link to reset
+    :type link: struct ata_link \*
 
-    :param const unsigned long \*timing:
+    :param timing:
         timing parameters { interval, duration, timeout } in msec
+    :type timing: const unsigned long \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
-    :param bool \*online:
+    :param online:
         optional out parameter indicating link onlineness
+    :type online: bool \*
 
     :param int (\*check_ready)(struct ata_link \*):
         optional callback to check link readiness
@@ -1920,14 +2042,17 @@ sata_std_hardreset
 
     COMRESET w/o waiting or classification
 
-    :param struct ata_link \*link:
+    :param link:
         link to reset
+    :type link: struct ata_link \*
 
-    :param unsigned int \*class:
+    :param class:
         resulting class of attached device
+    :type class: unsigned int \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`sata_std_hardreset.description`:
 
@@ -1959,11 +2084,13 @@ ata_std_postreset
 
     standard postreset callback
 
-    :param struct ata_link \*link:
+    :param link:
         the target ata_link
+    :type link: struct ata_link \*
 
-    :param unsigned int \*classes:
+    :param classes:
         classes of attached devices
+    :type classes: unsigned int \*
 
 .. _`ata_std_postreset.description`:
 
@@ -1990,14 +2117,17 @@ ata_dev_same_device
 
     Determine whether new ID matches configured device
 
-    :param struct ata_device \*dev:
+    :param dev:
         device to compare against
+    :type dev: struct ata_device \*
 
-    :param unsigned int new_class:
+    :param new_class:
         class of the new device
+    :type new_class: unsigned int
 
-    :param const u16 \*new_id:
+    :param new_id:
         IDENTIFY page of the new device
+    :type new_id: const u16 \*
 
 .. _`ata_dev_same_device.description`:
 
@@ -2031,11 +2161,13 @@ ata_dev_reread_id
 
     Re-read IDENTIFY data
 
-    :param struct ata_device \*dev:
+    :param dev:
         target ATA device
+    :type dev: struct ata_device \*
 
-    :param unsigned int readid_flags:
+    :param readid_flags:
         read ID flags
+    :type readid_flags: unsigned int
 
 .. _`ata_dev_reread_id.description`:
 
@@ -2068,14 +2200,17 @@ ata_dev_revalidate
 
     Revalidate ATA device
 
-    :param struct ata_device \*dev:
+    :param dev:
         device to revalidate
+    :type dev: struct ata_device \*
 
-    :param unsigned int new_class:
+    :param new_class:
         new class code
+    :type new_class: unsigned int
 
-    :param unsigned int readid_flags:
+    :param readid_flags:
         read ID flags
+    :type readid_flags: unsigned int
 
 .. _`ata_dev_revalidate.description`:
 
@@ -2108,8 +2243,9 @@ ata_is_40wire
 
     check drive side detection
 
-    :param struct ata_device \*dev:
+    :param dev:
         device
+    :type dev: struct ata_device \*
 
 .. _`ata_is_40wire.description`:
 
@@ -2128,8 +2264,9 @@ cable_is_40wire
 
     40/80/SATA decider
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to consider
+    :type ap: struct ata_port \*
 
 .. _`cable_is_40wire.description`:
 
@@ -2153,8 +2290,9 @@ ata_dev_xfermask
 
     Compute supported xfermask of the given device
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device to compute xfermask for
+    :type dev: struct ata_device \*
 
 .. _`ata_dev_xfermask.description`:
 
@@ -2182,8 +2320,9 @@ ata_dev_set_xfermode
 
     Issue SET FEATURES - XFER MODE command
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device to which command will be sent
+    :type dev: struct ata_device \*
 
 .. _`ata_dev_set_xfermode.description`:
 
@@ -2216,14 +2355,17 @@ ata_dev_set_feature
 
     Issue SET FEATURES - SATA FEATURES
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device to which command will be sent
+    :type dev: struct ata_device \*
 
-    :param u8 enable:
+    :param enable:
         Whether to enable or disable the feature
+    :type enable: u8
 
-    :param u8 feature:
+    :param feature:
         The sector count represents the feature to set
+    :type feature: u8
 
 .. _`ata_dev_set_feature.description`:
 
@@ -2256,14 +2398,17 @@ ata_dev_init_params
 
     Issue INIT DEV PARAMS command
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device to which command will be sent
+    :type dev: struct ata_device \*
 
-    :param u16 heads:
+    :param heads:
         Number of heads (taskfile parameter)
+    :type heads: u16
 
-    :param u16 sectors:
+    :param sectors:
         Number of sectors (taskfile parameter)
+    :type sectors: u16
 
 .. _`ata_dev_init_params.locking`:
 
@@ -2288,8 +2433,9 @@ atapi_check_dma
 
     Check whether ATAPI DMA can be supported
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Metadata associated with taskfile to check
+    :type qc: struct ata_queued_cmd \*
 
 .. _`atapi_check_dma.description`:
 
@@ -2324,8 +2470,9 @@ ata_std_qc_defer
 
     Check whether a qc needs to be deferred
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA command in question
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_std_qc_defer.description`:
 
@@ -2360,14 +2507,17 @@ ata_sg_init
 
     Associate command with scatter-gather table.
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command to be associated
+    :type qc: struct ata_queued_cmd \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         Scatter-gather table.
+    :type sg: struct scatterlist \*
 
-    :param unsigned int n_elem:
+    :param n_elem:
         Number of elements in s/g table.
+    :type n_elem: unsigned int
 
 .. _`ata_sg_init.description`:
 
@@ -2394,8 +2544,9 @@ ata_sg_clean
 
     Unmap DMA memory associated with command
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command containing DMA memory to be released
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_sg_clean.description`:
 
@@ -2420,8 +2571,9 @@ ata_sg_setup
 
     DMA-map the scatter-gather table associated with a command.
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command with scatter-gather table to be mapped.
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_sg_setup.description`:
 
@@ -2453,11 +2605,13 @@ swap_buf_le16
 
     swap halves of 16-bit words in place
 
-    :param u16 \*buf:
+    :param buf:
         Buffer to swap
+    :type buf: u16 \*
 
-    :param unsigned int buf_words:
+    :param buf_words:
         Number of 16-bit words in buffer.
+    :type buf_words: unsigned int
 
 .. _`swap_buf_le16.description`:
 
@@ -2484,11 +2638,13 @@ ata_qc_new_init
 
     Request an available ATA command, and initialize it
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device from whom we request an available command structure
+    :type dev: struct ata_device \*
 
-    :param int tag:
+    :param tag:
         tag
+    :type tag: int
 
 .. _`ata_qc_new_init.locking`:
 
@@ -2506,8 +2662,9 @@ ata_qc_free
 
     free unused ata_queued_cmd
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command to complete
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_qc_free.description`:
 
@@ -2533,8 +2690,9 @@ ata_qc_complete
 
     Complete an active ATA command
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command to complete
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_qc_complete.description`:
 
@@ -2565,11 +2723,13 @@ ata_qc_complete_multiple
 
     Complete multiple qcs successfully
 
-    :param struct ata_port \*ap:
+    :param ap:
         port in question
+    :type ap: struct ata_port \*
 
-    :param u64 qc_active:
+    :param qc_active:
         new qc_active mask
+    :type qc_active: u64
 
 .. _`ata_qc_complete_multiple.description`:
 
@@ -2608,8 +2768,9 @@ ata_qc_issue
 
     issue taskfile to device
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command to issue to device
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ata_qc_issue.description`:
 
@@ -2637,8 +2798,9 @@ sata_scr_valid
 
     test whether SCRs are accessible
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to test SCR accessibility for
+    :type link: struct ata_link \*
 
 .. _`sata_scr_valid.description`:
 
@@ -2670,14 +2832,17 @@ sata_scr_read
 
     read SCR register of the specified port
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to read SCR for
+    :type link: struct ata_link \*
 
-    :param int reg:
+    :param reg:
         SCR to read
+    :type reg: int
 
-    :param u32 \*val:
+    :param val:
         Place to store read value
+    :type val: u32 \*
 
 .. _`sata_scr_read.description`:
 
@@ -2711,14 +2876,17 @@ sata_scr_write
 
     write SCR register of the specified port
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to write SCR for
+    :type link: struct ata_link \*
 
-    :param int reg:
+    :param reg:
         SCR to write
+    :type reg: int
 
-    :param u32 val:
+    :param val:
         value to write
+    :type val: u32
 
 .. _`sata_scr_write.description`:
 
@@ -2752,14 +2920,17 @@ sata_scr_write_flush
 
     write SCR register of the specified port and flush
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to write SCR for
+    :type link: struct ata_link \*
 
-    :param int reg:
+    :param reg:
         SCR to write
+    :type reg: int
 
-    :param u32 val:
+    :param val:
         value to write
+    :type val: u32
 
 .. _`sata_scr_write_flush.description`:
 
@@ -2792,8 +2963,9 @@ ata_phys_link_online
 
     test whether the given link is online
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to test
+    :type link: struct ata_link \*
 
 .. _`ata_phys_link_online.description`:
 
@@ -2827,8 +2999,9 @@ ata_phys_link_offline
 
     test whether the given link is offline
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to test
+    :type link: struct ata_link \*
 
 .. _`ata_phys_link_offline.description`:
 
@@ -2862,8 +3035,9 @@ ata_link_online
 
     test whether the given link is online
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to test
+    :type link: struct ata_link \*
 
 .. _`ata_link_online.description`:
 
@@ -2899,8 +3073,9 @@ ata_link_offline
 
     test whether the given link is offline
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to test
+    :type link: struct ata_link \*
 
 .. _`ata_link_offline.description`:
 
@@ -2936,11 +3111,13 @@ ata_host_suspend
 
     suspend host
 
-    :param struct ata_host \*host:
+    :param host:
         host to suspend
+    :type host: struct ata_host \*
 
-    :param pm_message_t mesg:
+    :param mesg:
         PM message
+    :type mesg: pm_message_t
 
 .. _`ata_host_suspend.description`:
 
@@ -2958,8 +3135,9 @@ ata_host_resume
 
     resume host
 
-    :param struct ata_host \*host:
+    :param host:
         host to resume
+    :type host: struct ata_host \*
 
 .. _`ata_host_resume.description`:
 
@@ -2977,8 +3155,9 @@ ata_dev_init
 
     Initialize an ata_device structure
 
-    :param struct ata_device \*dev:
+    :param dev:
         Device structure to initialize
+    :type dev: struct ata_device \*
 
 .. _`ata_dev_init.description`:
 
@@ -3003,14 +3182,17 @@ ata_link_init
 
     Initialize an ata_link structure
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port link is attached to
+    :type ap: struct ata_port \*
 
-    :param struct ata_link \*link:
+    :param link:
         Link structure to initialize
+    :type link: struct ata_link \*
 
-    :param int pmp:
+    :param pmp:
         Port multiplier port number
+    :type pmp: int
 
 .. _`ata_link_init.description`:
 
@@ -3035,8 +3217,9 @@ sata_link_init_spd
 
     Initialize link->sata_spd_limit
 
-    :param struct ata_link \*link:
+    :param link:
         Link to configure sata_spd_limit for
+    :type link: struct ata_link \*
 
 .. _`sata_link_init_spd.description`:
 
@@ -3069,8 +3252,9 @@ ata_port_alloc
 
     allocate and initialize basic ATA port resources
 
-    :param struct ata_host \*host:
+    :param host:
         ATA host this allocated port belongs to
+    :type host: struct ata_host \*
 
 .. _`ata_port_alloc.description`:
 
@@ -3102,11 +3286,13 @@ ata_host_alloc
 
     allocate and init basic ATA host resources
 
-    :param struct device \*dev:
+    :param dev:
         generic device this host is associated with
+    :type dev: struct device \*
 
-    :param int max_ports:
+    :param max_ports:
         maximum number of ATA ports associated with this host
+    :type max_ports: int
 
 .. _`ata_host_alloc.description`:
 
@@ -3145,14 +3331,17 @@ ata_host_alloc_pinfo
 
     alloc host and init with port_info array
 
-    :param struct device \*dev:
+    :param dev:
         generic device this host is associated with
+    :type dev: struct device \*
 
-    :param const struct ata_port_info \* const \*ppi:
+    :param ppi:
         array of ATA port_info to initialize host with
+    :type ppi: const struct ata_port_info \* const \*
 
-    :param int n_ports:
+    :param n_ports:
         number of ATA ports attached to this host
+    :type n_ports: int
 
 .. _`ata_host_alloc_pinfo.description`:
 
@@ -3186,8 +3375,9 @@ ata_slave_link_init
 
     initialize slave link
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to initialize slave link for
+    :type ap: struct ata_port \*
 
 .. _`ata_slave_link_init.description`:
 
@@ -3217,7 +3407,7 @@ Description
      controllers without impacting core layer too much.  For
      anything other than physical link handling, the default host
      link is used for both master and slave.  For physical link
-     handling, separate \ ``ap``\ ->slave_link is used.  All dirty details
+     handling, separate \ ``ap->slave_link``\  is used.  All dirty details
      are implemented inside libata core layer.  From LLD's POV, the
      only difference is that prereset, hardreset and postreset are
      called once more for the slave link, so the reset sequence
@@ -3253,8 +3443,9 @@ ata_finalize_port_ops
 
     finalize ata_port_operations
 
-    :param struct ata_port_operations \*ops:
+    :param ops:
         ata_port_operations to finalize
+    :type ops: struct ata_port_operations \*
 
 .. _`ata_finalize_port_ops.description`:
 
@@ -3290,8 +3481,9 @@ ata_host_start
 
     start and freeze ports of an ATA host
 
-    :param struct ata_host \*host:
+    :param host:
         ATA host to start ports for
+    :type host: struct ata_host \*
 
 .. _`ata_host_start.description`:
 
@@ -3327,14 +3519,17 @@ ata_host_init
 
     Initialize a host struct for sas (ipr, libsas)
 
-    :param struct ata_host \*host:
+    :param host:
         host to initialize
+    :type host: struct ata_host \*
 
-    :param struct device \*dev:
+    :param dev:
         device host is attached to
+    :type dev: struct device \*
 
-    :param struct ata_port_operations \*ops:
+    :param ops:
         port_ops
+    :type ops: struct ata_port_operations \*
 
 .. _`ata_host_register`:
 
@@ -3345,11 +3540,13 @@ ata_host_register
 
     register initialized ATA host
 
-    :param struct ata_host \*host:
+    :param host:
         ATA host to register
+    :type host: struct ata_host \*
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         template for SCSI host
+    :type sht: struct scsi_host_template \*
 
 .. _`ata_host_register.description`:
 
@@ -3384,20 +3581,25 @@ ata_host_activate
 
     start host, request IRQ and register it
 
-    :param struct ata_host \*host:
+    :param host:
         target ATA host
+    :type host: struct ata_host \*
 
-    :param int irq:
+    :param irq:
         IRQ to request
+    :type irq: int
 
-    :param irq_handler_t irq_handler:
+    :param irq_handler:
         irq_handler used when requesting IRQ
+    :type irq_handler: irq_handler_t
 
-    :param unsigned long irq_flags:
+    :param irq_flags:
         irq_flags used when requesting IRQ
+    :type irq_flags: unsigned long
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         scsi_host_template to use when registering the host
+    :type sht: struct scsi_host_template \*
 
 .. _`ata_host_activate.description`:
 
@@ -3436,8 +3638,9 @@ ata_port_detach
 
     Detach ATA port in preparation of device removal
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to be detached
+    :type ap: struct ata_port \*
 
 .. _`ata_port_detach.description`:
 
@@ -3464,8 +3667,9 @@ ata_host_detach
 
     Detach all ports of an ATA host
 
-    :param struct ata_host \*host:
+    :param host:
         Host to detach
+    :type host: struct ata_host \*
 
 .. _`ata_host_detach.description`:
 
@@ -3490,8 +3694,9 @@ ata_pci_remove_one
 
     PCI layer callback for device removal
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device that was removed
+    :type pdev: struct pci_dev \*
 
 .. _`ata_pci_remove_one.description`:
 
@@ -3518,8 +3723,9 @@ ata_platform_remove_one
 
     Platform layer callback for device removal
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Platform device that was removed
+    :type pdev: struct platform_device \*
 
 .. _`ata_platform_remove_one.description`:
 
@@ -3546,11 +3752,13 @@ ata_msleep
 
     ATA EH owner aware msleep
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to attribute the sleep to
+    :type ap: struct ata_port \*
 
-    :param unsigned int msecs:
+    :param msecs:
         duration to sleep in milliseconds
+    :type msecs: unsigned int
 
 .. _`ata_msleep.description`:
 
@@ -3560,7 +3768,7 @@ Description
      Sleeps \ ``msecs``\ .  If the current task is owner of \ ``ap``\ 's EH, the
      ownership is released before going to sleep and reacquired
      after the sleep is complete.  IOW, other ports sharing the
-     \ ``ap``\ ->host will be allowed to own the EH while this task is
+     \ ``ap->host``\  will be allowed to own the EH while this task is
      sleeping.
 
 .. _`ata_msleep.locking`:
@@ -3579,23 +3787,29 @@ ata_wait_register
 
     wait until register value changes
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to wait register for, can be NULL
+    :type ap: struct ata_port \*
 
-    :param void __iomem \*reg:
+    :param reg:
         IO-mapped register
+    :type reg: void __iomem \*
 
-    :param u32 mask:
+    :param mask:
         Mask to apply to read register value
+    :type mask: u32
 
-    :param u32 val:
+    :param val:
         Wait condition
+    :type val: u32
 
-    :param unsigned long interval:
+    :param interval:
         polling interval in milliseconds
+    :type interval: unsigned long
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout in milliseconds
+    :type timeout: unsigned long
 
 .. _`ata_wait_register.description`:
 
@@ -3634,8 +3848,9 @@ sata_lpm_ignore_phy_events
 
     test if PHY event should be ignored
 
-    :param struct ata_link \*link:
+    :param link:
         Link receiving the event
+    :type link: struct ata_link \*
 
 .. _`sata_lpm_ignore_phy_events.description`:
 

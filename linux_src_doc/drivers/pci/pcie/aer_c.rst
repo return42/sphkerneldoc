@@ -10,8 +10,9 @@ enable_ecrc_checking
 
     enable PCIe ECRC checking for a device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`enable_ecrc_checking.description`:
 
@@ -29,8 +30,9 @@ disable_ecrc_checking
 
     disables PCIe ECRC checking for a device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`disable_ecrc_checking.description`:
 
@@ -48,8 +50,9 @@ pcie_set_ecrc_checking
 
     set/unset PCIe ECRC checking for a device based on global policy
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pcie_ecrc_get_policy`:
 
@@ -60,8 +63,9 @@ pcie_ecrc_get_policy
 
     parse kernel command-line ecrc option
 
-    :param char \*str:
+    :param str:
         *undescribed*
+    :type str: char \*
 
 .. _`aer_acpi_firmware_first`:
 
@@ -72,8 +76,9 @@ aer_acpi_firmware_first
 
     Check if APEI should control AER.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`add_error_device`:
 
@@ -84,11 +89,13 @@ add_error_device
 
     list device to be handled
 
-    :param struct aer_err_info \*e_info:
+    :param e_info:
         pointer to error info
+    :type e_info: struct aer_err_info \*
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to pci_dev to be added
+    :type dev: struct pci_dev \*
 
 .. _`is_error_source`:
 
@@ -99,11 +106,13 @@ is_error_source
 
     check whether the device is source of reported error
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to pci_dev to be checked
+    :type dev: struct pci_dev \*
 
-    :param struct aer_err_info \*e_info:
+    :param e_info:
         pointer to reported error info
+    :type e_info: struct aer_err_info \*
 
 .. _`find_source_device`:
 
@@ -114,11 +123,13 @@ find_source_device
 
     search through device hierarchy for source device
 
-    :param struct pci_dev \*parent:
+    :param parent:
         pointer to Root Port pci_dev data structure
+    :type parent: struct pci_dev \*
 
-    :param struct aer_err_info \*e_info:
+    :param e_info:
         including detailed error information such like id
+    :type e_info: struct aer_err_info \*
 
 .. _`find_source_device.description`:
 
@@ -141,11 +152,13 @@ handle_error_source
 
     handle logging error into an event log
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to pci_dev data structure of error source device
+    :type dev: struct pci_dev \*
 
-    :param struct aer_err_info \*info:
+    :param info:
         comprehensive error information
+    :type info: struct aer_err_info \*
 
 .. _`handle_error_source.description`:
 
@@ -154,22 +167,24 @@ Description
 
 Invoked when an error being detected by Root Port.
 
-.. _`get_device_error_info`:
+.. _`aer_get_device_error_info`:
 
-get_device_error_info
-=====================
+aer_get_device_error_info
+=========================
 
-.. c:function:: int get_device_error_info(struct pci_dev *dev, struct aer_err_info *info)
+.. c:function:: int aer_get_device_error_info(struct pci_dev *dev, struct aer_err_info *info)
 
     read error status from dev and store it to info
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to the device expected to have a error record
+    :type dev: struct pci_dev \*
 
-    :param struct aer_err_info \*info:
+    :param info:
         pointer to structure to store the error record
+    :type info: struct aer_err_info \*
 
-.. _`get_device_error_info.description`:
+.. _`aer_get_device_error_info.description`:
 
 Description
 -----------
@@ -187,47 +202,30 @@ aer_isr_one_error
 
     consume an error detected by root port
 
-    :param struct aer_rpc \*rpc:
+    :param rpc:
         pointer to the root port which holds an error
+    :type rpc: struct aer_rpc \*
 
-    :param struct aer_err_source \*e_src:
+    :param e_src:
         pointer to an error source
-
-.. _`get_e_source`:
-
-get_e_source
-============
-
-.. c:function:: int get_e_source(struct aer_rpc *rpc, struct aer_err_source *e_src)
-
-    retrieve an error source
-
-    :param struct aer_rpc \*rpc:
-        pointer to the root port which holds an error
-
-    :param struct aer_err_source \*e_src:
-        pointer to store retrieved error source
-
-.. _`get_e_source.description`:
-
-Description
------------
-
-Return 1 if an error source is retrieved, otherwise 0.
-
-Invoked by DPC handler to consume an error.
+    :type e_src: struct aer_err_source \*
 
 .. _`aer_isr`:
 
 aer_isr
 =======
 
-.. c:function:: void aer_isr(struct work_struct *work)
+.. c:function:: irqreturn_t aer_isr(int irq, void *context)
 
     consume errors detected by root port
 
-    :param struct work_struct \*work:
-        definition of this work item
+    :param irq:
+        *undescribed*
+    :type irq: int
+
+    :param context:
+        *undescribed*
+    :type context: void \*
 
 .. _`aer_isr.description`:
 
@@ -245,11 +243,13 @@ aer_irq
 
     Root Port's ISR
 
-    :param int irq:
+    :param irq:
         IRQ assigned to Root Port
+    :type irq: int
 
-    :param void \*context:
+    :param context:
         pointer to Root Port data structure
+    :type context: void \*
 
 .. _`aer_irq.description`:
 
@@ -267,11 +267,13 @@ set_downstream_devices_error_reporting
 
     enable/disable the error reporting  bits on the root port and its downstream ports.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to root port's pci_dev data structure
+    :type dev: struct pci_dev \*
 
-    :param bool enable:
+    :param enable:
         true = enable error reporting, false = disable error reporting.
+    :type enable: bool
 
 .. _`aer_enable_rootport`:
 
@@ -282,8 +284,9 @@ aer_enable_rootport
 
     enable Root Port's interrupts when receiving messages
 
-    :param struct aer_rpc \*rpc:
+    :param rpc:
         pointer to a Root Port data structure
+    :type rpc: struct aer_rpc \*
 
 .. _`aer_enable_rootport.description`:
 
@@ -301,8 +304,9 @@ aer_disable_rootport
 
     disable Root Port's interrupts when receiving messages
 
-    :param struct aer_rpc \*rpc:
+    :param rpc:
         pointer to a Root Port data structure
+    :type rpc: struct aer_rpc \*
 
 .. _`aer_disable_rootport.description`:
 
@@ -310,25 +314,6 @@ Description
 -----------
 
 Invoked when PCIe bus unloads AER service driver.
-
-.. _`aer_alloc_rpc`:
-
-aer_alloc_rpc
-=============
-
-.. c:function:: struct aer_rpc *aer_alloc_rpc(struct pcie_device *dev)
-
-    allocate Root Port data structure
-
-    :param struct pcie_device \*dev:
-        pointer to the pcie_dev data structure
-
-.. _`aer_alloc_rpc.description`:
-
-Description
------------
-
-Invoked when Root Port's AER service is loaded.
 
 .. _`aer_remove`:
 
@@ -339,8 +324,9 @@ aer_remove
 
     clean up resources
 
-    :param struct pcie_device \*dev:
+    :param dev:
         pointer to the pcie_dev data structure
+    :type dev: struct pcie_device \*
 
 .. _`aer_remove.description`:
 
@@ -358,8 +344,9 @@ aer_probe
 
     initialize resources
 
-    :param struct pcie_device \*dev:
+    :param dev:
         pointer to the pcie_dev data structure
+    :type dev: struct pcie_device \*
 
 .. _`aer_probe.description`:
 
@@ -377,8 +364,9 @@ aer_root_reset
 
     reset link on Root Port
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pointer to Root Port's pci_dev data structure
+    :type dev: struct pci_dev \*
 
 .. _`aer_root_reset.description`:
 
@@ -387,38 +375,20 @@ Description
 
 Invoked by Port Bus driver when performing link reset at Root Port.
 
-.. _`aer_error_resume`:
+.. _`pcie_aer_init`:
 
-aer_error_resume
-================
+pcie_aer_init
+=============
 
-.. c:function:: void aer_error_resume(struct pci_dev *dev)
-
-    clean up corresponding error status bits
-
-    :param struct pci_dev \*dev:
-        pointer to Root Port's pci_dev data structure
-
-.. _`aer_error_resume.description`:
-
-Description
------------
-
-Invoked by Port Bus driver during nonfatal recovery.
-
-.. _`aer_service_init`:
-
-aer_service_init
-================
-
-.. c:function:: int aer_service_init( void)
+.. c:function:: int pcie_aer_init( void)
 
     register AER root service driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
-.. _`aer_service_init.description`:
+.. _`pcie_aer_init.description`:
 
 Description
 -----------

@@ -10,35 +10,45 @@ q6adm_open
 
     open adm and grab a free copp
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to adm child device.
+    :type dev: struct device \*
 
-    :param int port_id:
+    :param port_id:
         port id
+    :type port_id: int
 
-    :param int path:
+    :param path:
         playback or capture path.
+    :type path: int
 
-    :param int rate:
+    :param rate:
         rate at which copp is required.
+    :type rate: int
 
-    :param int channel_mode:
+    :param channel_mode:
         channel mode
+    :type channel_mode: int
 
-    :param int topology:
+    :param topology:
         adm topology id
+    :type topology: int
 
-    :param int perf_mode:
+    :param perf_mode:
         performace mode.
+    :type perf_mode: int
 
-    :param uint16_t bit_width:
+    :param bit_width:
         audio sample bit width
+    :type bit_width: uint16_t
 
-    :param int app_type:
+    :param app_type:
         Application type.
+    :type app_type: int
 
-    :param int acdb_id:
+    :param acdb_id:
         ACDB id
+    :type acdb_id: int
 
 .. _`q6adm_open.return`:
 
@@ -56,8 +66,9 @@ q6adm_get_copp_id
 
     get copp index
 
-    :param struct q6copp \*copp:
+    :param copp:
         Pointer to valid copp
+    :type copp: struct q6copp \*
 
 .. _`q6adm_get_copp_id.return`:
 
@@ -75,17 +86,21 @@ q6adm_matrix_map
 
     Map asm streams and afe ports using payload
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to adm child device.
+    :type dev: struct device \*
 
-    :param int path:
+    :param path:
         playback or capture path.
+    :type path: int
 
-    :param struct route_payload payload_map:
+    :param payload_map:
         map between session id and afe ports.
+    :type payload_map: struct route_payload
 
-    :param int perf_mode:
+    :param perf_mode:
         Performace mode.
+    :type perf_mode: int
 
 .. _`q6adm_matrix_map.return`:
 
@@ -103,11 +118,13 @@ q6adm_close
 
     Close adm copp
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to adm child device.
+    :type dev: struct device \*
 
-    :param struct q6copp \*copp:
+    :param copp:
         pointer to previously opened copp
+    :type copp: struct q6copp \*
 
 .. _`q6adm_close.return`:
 

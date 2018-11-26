@@ -21,7 +21,10 @@ Definition
         DRM_MM_INSERT_BEST,
         DRM_MM_INSERT_LOW,
         DRM_MM_INSERT_HIGH,
-        DRM_MM_INSERT_EVICT
+        DRM_MM_INSERT_EVICT,
+        DRM_MM_INSERT_ONCE,
+        DRM_MM_INSERT_HIGHEST,
+        DRM_MM_INSERT_LOWEST
     };
 
 .. _`drm_mm_insert_mode.constants`:
@@ -60,6 +63,29 @@ DRM_MM_INSERT_EVICT
     removing the selected nodes to form a hole.
 
     Allocates the node from the bottom of the found hole.
+
+DRM_MM_INSERT_ONCE
+
+    Only check the first hole for suitablity and report -ENOSPC
+    immediately otherwise, rather than check every hole until a
+    suitable one is found. Can only be used in conjunction with another
+    search method such as DRM_MM_INSERT_HIGH or DRM_MM_INSERT_LOW.
+
+DRM_MM_INSERT_HIGHEST
+
+    Only check the highest hole (the hole with the largest address) and
+    insert the node at the top of the hole or report -ENOSPC if
+    unsuitable.
+
+    Does not search all holes.
+
+DRM_MM_INSERT_LOWEST
+
+    Only check the lowest hole (the hole with the smallest address) and
+    insert the node at the bottom of the hole or report -ENOSPC if
+    unsuitable.
+
+    Does not search all holes.
 
 .. _`drm_mm_insert_mode.description`:
 
@@ -211,8 +237,9 @@ drm_mm_node_allocated
 
     checks whether a node is allocated
 
-    :param const struct drm_mm_node \*node:
+    :param node:
         drm_mm_node to check
+    :type node: const struct drm_mm_node \*
 
 .. _`drm_mm_node_allocated.description`:
 
@@ -241,8 +268,9 @@ drm_mm_initialized
 
     checks whether an allocator is initialized
 
-    :param const struct drm_mm \*mm:
+    :param mm:
         drm_mm to check
+    :type mm: const struct drm_mm \*
 
 .. _`drm_mm_initialized.description`:
 
@@ -271,8 +299,9 @@ drm_mm_hole_follows
 
     checks whether a hole follows this node
 
-    :param const struct drm_mm_node \*node:
+    :param node:
         drm_mm_node to check
+    :type node: const struct drm_mm_node \*
 
 .. _`drm_mm_hole_follows.description`:
 
@@ -300,8 +329,9 @@ drm_mm_hole_node_start
 
     computes the start of the hole following \ ``node``\ 
 
-    :param const struct drm_mm_node \*hole_node:
+    :param hole_node:
         drm_mm_node which implicitly tracks the following hole
+    :type hole_node: const struct drm_mm_node \*
 
 .. _`drm_mm_hole_node_start.description`:
 
@@ -328,8 +358,9 @@ drm_mm_hole_node_end
 
     computes the end of the hole following \ ``node``\ 
 
-    :param const struct drm_mm_node \*hole_node:
+    :param hole_node:
         drm_mm_node which implicitly tracks the following hole
+    :type hole_node: const struct drm_mm_node \*
 
 .. _`drm_mm_hole_node_end.description`:
 
@@ -356,8 +387,9 @@ drm_mm_nodes
 
     list of nodes under the drm_mm range manager
 
-    :param  mm:
+    :param mm:
         the struct drm_mm range manger
+    :type mm: 
 
 .. _`drm_mm_nodes.description`:
 
@@ -385,11 +417,13 @@ drm_mm_for_each_node
 
     iterator to walk over all allocated nodes
 
-    :param  entry:
+    :param entry:
         \ :c:type:`struct drm_mm_node <drm_mm_node>`\  to assign to in each iteration step
+    :type entry: 
 
-    :param  mm:
+    :param mm:
         \ :c:type:`struct drm_mm <drm_mm>`\  allocator to walk
+    :type mm: 
 
 .. _`drm_mm_for_each_node.description`:
 
@@ -408,14 +442,17 @@ drm_mm_for_each_node_safe
 
     iterator to walk over all allocated nodes
 
-    :param  entry:
+    :param entry:
         \ :c:type:`struct drm_mm_node <drm_mm_node>`\  to assign to in each iteration step
+    :type entry: 
 
-    :param  next:
+    :param next:
         \ :c:type:`struct drm_mm_node <drm_mm_node>`\  to store the next step
+    :type next: 
 
-    :param  mm:
+    :param mm:
         \ :c:type:`struct drm_mm <drm_mm>`\  allocator to walk
+    :type mm: 
 
 .. _`drm_mm_for_each_node_safe.description`:
 
@@ -434,17 +471,21 @@ drm_mm_for_each_hole
 
     iterator to walk over all holes
 
-    :param  pos:
+    :param pos:
         \ :c:type:`struct drm_mm_node <drm_mm_node>`\  used internally to track progress
+    :type pos: 
 
-    :param  mm:
+    :param mm:
         \ :c:type:`struct drm_mm <drm_mm>`\  allocator to walk
+    :type mm: 
 
-    :param  hole_start:
+    :param hole_start:
         ulong variable to assign the hole start to on each iteration
+    :type hole_start: 
 
-    :param  hole_end:
+    :param hole_end:
         ulong variable to assign the hole end to on each iteration
+    :type hole_end: 
 
 .. _`drm_mm_for_each_hole.description`:
 
@@ -473,23 +514,29 @@ drm_mm_insert_node_generic
 
     search for space and insert \ ``node``\ 
 
-    :param struct drm_mm \*mm:
+    :param mm:
         drm_mm to allocate from
+    :type mm: struct drm_mm \*
 
-    :param struct drm_mm_node \*node:
+    :param node:
         preallocate node to insert
+    :type node: struct drm_mm_node \*
 
-    :param u64 size:
+    :param size:
         size of the allocation
+    :type size: u64
 
-    :param u64 alignment:
+    :param alignment:
         alignment of the allocation
+    :type alignment: u64
 
-    :param unsigned long color:
+    :param color:
         opaque tag value to use for this node
+    :type color: unsigned long
 
-    :param enum drm_mm_insert_mode mode:
+    :param mode:
         fine-tune the allocation search and placement
+    :type mode: enum drm_mm_insert_mode
 
 .. _`drm_mm_insert_node_generic.description`:
 
@@ -517,14 +564,17 @@ drm_mm_insert_node
 
     search for space and insert \ ``node``\ 
 
-    :param struct drm_mm \*mm:
+    :param mm:
         drm_mm to allocate from
+    :type mm: struct drm_mm \*
 
-    :param struct drm_mm_node \*node:
+    :param node:
         preallocate node to insert
+    :type node: struct drm_mm_node \*
 
-    :param u64 size:
+    :param size:
         size of the allocation
+    :type size: u64
 
 .. _`drm_mm_insert_node.description`:
 
@@ -552,8 +602,9 @@ drm_mm_clean
 
     checks whether an allocator is clean
 
-    :param const struct drm_mm \*mm:
+    :param mm:
         drm_mm allocator to check
+    :type mm: const struct drm_mm \*
 
 .. _`drm_mm_clean.return`:
 
@@ -572,17 +623,21 @@ drm_mm_for_each_node_in_range
 
     iterator to walk over a range of allocated nodes
 
-    :param  node__:
+    :param node__:
         drm_mm_node structure to assign to in each iteration step
+    :type node__: 
 
-    :param  mm__:
+    :param mm__:
         drm_mm allocator to walk
+    :type mm__: 
 
-    :param  start__:
+    :param start__:
         starting offset, the first node will overlap this
+    :type start__: 
 
-    :param  end__:
+    :param end__:
         ending offset, the last node will start before this (but may overlap)
+    :type end__: 
 
 .. _`drm_mm_for_each_node_in_range.description`:
 
@@ -607,23 +662,29 @@ drm_mm_scan_init
 
     initialize lru scanning
 
-    :param struct drm_mm_scan \*scan:
+    :param scan:
         scan state
+    :type scan: struct drm_mm_scan \*
 
-    :param struct drm_mm \*mm:
+    :param mm:
         drm_mm to scan
+    :type mm: struct drm_mm \*
 
-    :param u64 size:
+    :param size:
         size of the allocation
+    :type size: u64
 
-    :param u64 alignment:
+    :param alignment:
         alignment of the allocation
+    :type alignment: u64
 
-    :param unsigned long color:
+    :param color:
         opaque tag value to use for the allocation
+    :type color: unsigned long
 
-    :param enum drm_mm_insert_mode mode:
+    :param mode:
         fine-tune the allocation search and placement
+    :type mode: enum drm_mm_insert_mode
 
 .. _`drm_mm_scan_init.description`:
 

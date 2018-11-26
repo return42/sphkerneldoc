@@ -10,11 +10,13 @@ intel_vgpu_gpa_to_mmio_offset
 
     translate a GPA to MMIO offset
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param u64 gpa:
-        *undescribed*
+    :param gpa:
+        guest physical address
+    :type gpa: u64
 
 .. _`intel_vgpu_gpa_to_mmio_offset.return`:
 
@@ -32,17 +34,21 @@ intel_vgpu_emulate_mmio_read
 
     emulate MMIO read
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param uint64_t pa:
+    :param pa:
         guest physical address
+    :type pa: uint64_t
 
-    :param void \*p_data:
+    :param p_data:
         data return buffer
+    :type p_data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         access data length
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_emulate_mmio_read.return`:
 
@@ -60,17 +66,21 @@ intel_vgpu_emulate_mmio_write
 
     emulate MMIO write
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param uint64_t pa:
+    :param pa:
         guest physical address
+    :type pa: uint64_t
 
-    :param void \*p_data:
+    :param p_data:
         write data buffer
+    :type p_data: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         access data length
+    :type bytes: unsigned int
 
 .. _`intel_vgpu_emulate_mmio_write.return`:
 
@@ -88,11 +98,13 @@ intel_vgpu_reset_mmio
 
     reset virtual MMIO space
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param bool dmlr:
-        *undescribed*
+    :param dmlr:
+        whether this is device model level reset
+    :type dmlr: bool
 
 .. _`intel_vgpu_init_mmio`:
 
@@ -103,8 +115,9 @@ intel_vgpu_init_mmio
 
     init MMIO  space
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_init_mmio.return`:
 
@@ -122,8 +135,9 @@ intel_vgpu_clean_mmio
 
     clean MMIO space
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. This file was automatic generated / don't edit.
 

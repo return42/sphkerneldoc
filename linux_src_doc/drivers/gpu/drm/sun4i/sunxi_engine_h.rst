@@ -159,8 +159,9 @@ sunxi_engine_commit
 
     commit all changes of the engine
 
-    :param struct sunxi_engine \*engine:
+    :param engine:
         pointer to the engine
+    :type engine: struct sunxi_engine \*
 
 .. _`sunxi_engine_layers_init`:
 
@@ -171,11 +172,13 @@ sunxi_engine_layers_init
 
     Create planes (layers) for the engine
 
-    :param struct drm_device \*drm:
+    :param drm:
         pointer to the drm_device for which planes will be created
+    :type drm: struct drm_device \*
 
-    :param struct sunxi_engine \*engine:
+    :param engine:
         pointer to the engine
+    :type engine: struct sunxi_engine \*
 
 .. _`sunxi_engine_apply_color_correction`:
 
@@ -186,8 +189,9 @@ sunxi_engine_apply_color_correction
 
     Apply the RGB2YUV color correction
 
-    :param struct sunxi_engine \*engine:
+    :param engine:
         pointer to the engine
+    :type engine: struct sunxi_engine \*
 
 .. _`sunxi_engine_apply_color_correction.description`:
 
@@ -208,8 +212,9 @@ sunxi_engine_disable_color_correction
 
     Disable the color space correction
 
-    :param struct sunxi_engine \*engine:
+    :param engine:
         pointer to the engine
+    :type engine: struct sunxi_engine \*
 
 .. _`sunxi_engine_disable_color_correction.description`:
 

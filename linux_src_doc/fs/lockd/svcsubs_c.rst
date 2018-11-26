@@ -10,8 +10,9 @@ nlmsvc_invalidate_all
 
     remove all locks held for clients
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nlmsvc_invalidate_all.description`:
 
@@ -29,8 +30,9 @@ nlmsvc_unlock_all_by_sb
 
     release locks held on this file system
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
 .. _`nlmsvc_unlock_all_by_sb.description`:
 
@@ -48,8 +50,9 @@ nlmsvc_unlock_all_by_ip
 
     release local locks by IP address
 
-    :param struct sockaddr \*server_addr:
+    :param server_addr:
         server's IP address as seen by clients
+    :type server_addr: struct sockaddr \*
 
 .. _`nlmsvc_unlock_all_by_ip.description`:
 

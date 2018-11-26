@@ -10,8 +10,9 @@ fsnotify_get_cookie
 
     return a unique cookie for use in synchronizing events. Called from fsnotify_move, which is inlined into filesystem modules.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ ccio_alloc_range
 
     Allocate pages in the ioc's resource map.
 
-    :param struct ioc \*ioc:
+    :param ioc:
         The I/O Controller.
+    :type ioc: struct ioc \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`ccio_alloc_range.description`:
 
@@ -36,15 +39,18 @@ ccio_free_range
 
     Free pages from the ioc's resource map.
 
-    :param struct ioc \*ioc:
+    :param ioc:
         The I/O Controller.
+    :type ioc: struct ioc \*
 
-    :param dma_addr_t iova:
+    :param iova:
         The I/O Virtual Address.
+    :type iova: dma_addr_t
 
-    :param unsigned long pages_mapped:
+    :param pages_mapped:
         The requested number of pages to be freed from the
         I/O Pdir.
+    :type pages_mapped: unsigned long
 
 .. _`ccio_free_range.description`:
 
@@ -62,17 +68,21 @@ ccio_io_pdir_entry
 
     Initialize an I/O Pdir.
 
-    :param u64 \*pdir_ptr:
+    :param pdir_ptr:
         A pointer into I/O Pdir.
+    :type pdir_ptr: u64 \*
 
-    :param space_t sid:
+    :param sid:
         The Space Identifier.
+    :type sid: space_t
 
-    :param unsigned long vba:
+    :param vba:
         The virtual address.
+    :type vba: unsigned long
 
-    :param unsigned long hints:
+    :param hints:
         The DMA Hint.
+    :type hints: unsigned long
 
 .. _`ccio_io_pdir_entry.description`:
 
@@ -118,14 +128,17 @@ ccio_clear_io_tlb
 
     Remove stale entries from the I/O TLB.
 
-    :param struct ioc \*ioc:
+    :param ioc:
         The I/O Controller.
+    :type ioc: struct ioc \*
 
-    :param dma_addr_t iovp:
+    :param iovp:
         The I/O Virtual Page.
+    :type iovp: dma_addr_t
 
-    :param size_t byte_cnt:
+    :param byte_cnt:
         The requested number of bytes to be freed from the I/O Pdir.
+    :type byte_cnt: size_t
 
 .. _`ccio_clear_io_tlb.description`:
 
@@ -150,14 +163,17 @@ ccio_mark_invalid
 
     Mark the I/O Pdir entries invalid.
 
-    :param struct ioc \*ioc:
+    :param ioc:
         The I/O Controller.
+    :type ioc: struct ioc \*
 
-    :param dma_addr_t iova:
+    :param iova:
         The I/O Virtual Address.
+    :type iova: dma_addr_t
 
-    :param size_t byte_cnt:
+    :param byte_cnt:
         The requested number of bytes to be freed from the I/O Pdir.
+    :type byte_cnt: size_t
 
 .. _`ccio_mark_invalid.description`:
 
@@ -190,11 +206,13 @@ ccio_dma_supported
 
     Verify the IOMMU supports the DMA address range.
 
-    :param struct device \*dev:
+    :param dev:
         The PCI device.
+    :type dev: struct device \*
 
-    :param u64 mask:
+    :param mask:
         A bit mask describing the DMA address range of the device.
+    :type mask: u64
 
 .. _`ccio_map_single`:
 
@@ -205,17 +223,21 @@ ccio_map_single
 
     Map an address range into the IOMMU.
 
-    :param struct device \*dev:
+    :param dev:
         The PCI device.
+    :type dev: struct device \*
 
-    :param void \*addr:
+    :param addr:
         The start address of the DMA region.
+    :type addr: void \*
 
-    :param size_t size:
+    :param size:
         The length of the DMA region.
+    :type size: size_t
 
-    :param enum dma_data_direction direction:
+    :param direction:
         The direction of the DMA transaction (to/from device).
+    :type direction: enum dma_data_direction
 
 .. _`ccio_map_single.description`:
 
@@ -233,20 +255,25 @@ ccio_unmap_page
 
     Unmap an address range from the IOMMU.
 
-    :param struct device \*dev:
+    :param dev:
         The PCI device.
+    :type dev: struct device \*
 
-    :param dma_addr_t iova:
+    :param iova:
         *undescribed*
+    :type iova: dma_addr_t
 
-    :param size_t size:
+    :param size:
         The length of the DMA region.
+    :type size: size_t
 
-    :param enum dma_data_direction direction:
+    :param direction:
         The direction of the DMA transaction (to/from device).
+    :type direction: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`ccio_alloc`:
 
@@ -257,20 +284,25 @@ ccio_alloc
 
     Allocate a consistent DMA mapping.
 
-    :param struct device \*dev:
+    :param dev:
         The PCI device.
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         The length of the DMA region.
+    :type size: size_t
 
-    :param dma_addr_t \*dma_handle:
+    :param dma_handle:
         The DMA address handed back to the device (not the cpu).
+    :type dma_handle: dma_addr_t \*
 
-    :param gfp_t flag:
+    :param flag:
         *undescribed*
+    :type flag: gfp_t
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`ccio_alloc.description`:
 
@@ -288,20 +320,25 @@ ccio_free
 
     Free a consistent DMA mapping.
 
-    :param struct device \*dev:
+    :param dev:
         The PCI device.
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         The length of the DMA region.
+    :type size: size_t
 
-    :param void \*cpu_addr:
+    :param cpu_addr:
         The cpu address returned from the ccio_alloc_consistent.
+    :type cpu_addr: void \*
 
-    :param dma_addr_t dma_handle:
+    :param dma_handle:
         The device address returned from the ccio_alloc_consistent.
+    :type dma_handle: dma_addr_t
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`ccio_free.description`:
 
@@ -319,20 +356,25 @@ ccio_map_sg
 
     Map the scatter/gather list into the IOMMU.
 
-    :param struct device \*dev:
+    :param dev:
         The PCI device.
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sglist:
+    :param sglist:
         The scatter/gather list to be mapped in the IOMMU.
+    :type sglist: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         The number of entries in the scatter/gather list.
+    :type nents: int
 
-    :param enum dma_data_direction direction:
+    :param direction:
         The direction of the DMA transaction (to/from device).
+    :type direction: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`ccio_map_sg.description`:
 
@@ -350,20 +392,25 @@ ccio_unmap_sg
 
     Unmap the scatter/gather list from the IOMMU.
 
-    :param struct device \*dev:
+    :param dev:
         The PCI device.
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sglist:
+    :param sglist:
         The scatter/gather list to be unmapped from the IOMMU.
+    :type sglist: struct scatterlist \*
 
-    :param int nents:
+    :param nents:
         The number of entries in the scatter/gather list.
+    :type nents: int
 
-    :param enum dma_data_direction direction:
+    :param direction:
         The direction of the DMA transaction (to/from device).
+    :type direction: enum dma_data_direction
 
-    :param unsigned long attrs:
+    :param attrs:
         *undescribed*
+    :type attrs: unsigned long
 
 .. _`ccio_unmap_sg.description`:
 
@@ -381,8 +428,9 @@ ccio_find_ioc
 
     Find the ioc in the ioc_list
 
-    :param int hw_path:
+    :param hw_path:
         The hardware path of the ioc.
+    :type hw_path: int
 
 .. _`ccio_find_ioc.description`:
 
@@ -401,8 +449,9 @@ ccio_get_iommu
 
     Find the iommu which controls this device
 
-    :param const struct parisc_device \*dev:
+    :param dev:
         The parisc device.
+    :type dev: const struct parisc_device \*
 
 .. _`ccio_get_iommu.description`:
 
@@ -421,8 +470,9 @@ ccio_ioc_init
 
     Initialize the I/O Controller
 
-    :param struct ioc \*ioc:
+    :param ioc:
         The I/O Controller.
+    :type ioc: struct ioc \*
 
 .. _`ccio_ioc_init.description`:
 
@@ -442,8 +492,9 @@ ccio_probe
 
     Determine if ccio should claim this device.
 
-    :param struct parisc_device \*dev:
+    :param dev:
         The device which has been found
+    :type dev: struct parisc_device \*
 
 .. _`ccio_probe.description`:
 
@@ -463,8 +514,9 @@ ccio_init
 
     ccio initialization procedure.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ccio_init.description`:
 

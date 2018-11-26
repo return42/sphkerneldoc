@@ -225,11 +225,13 @@ Refer to \_scsi_send_scsi_io().
 
     global setting of ioc->logging_level.
 
-    :param const char \*val:
-        *undescribed*
+    :param val:
+        ?
+    :type val: const char \*
 
-    :param const struct kernel_param \*kp:
-        *undescribed*
+    :param kp:
+        ?
+    :type kp: const struct kernel_param \*
 
 .. _`_scsih_set_debug_level.note`:
 
@@ -247,18 +249,20 @@ The logging levels are defined in mpt3sas_debug.h.
 
     search based on sas_address
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address
+    :type sas_address: u64
 
-    :param Mpi2BootDeviceSasWwid_t \*boot_device:
+    :param boot_device:
         boot device object from bios page 2
+    :type boot_device: Mpi2BootDeviceSasWwid_t \*
 
-.. _`_scsih_srch_boot_sas_address.description`:
+.. _`_scsih_srch_boot_sas_address.return`:
 
-Description
------------
+Return
+------
 
-Returns 1 when there's a match, 0 means no match.
+1 when there's a match, 0 means no match.
 
 .. _`_scsih_srch_boot_device_name`:
 
@@ -269,18 +273,20 @@ Returns 1 when there's a match, 0 means no match.
 
     search based on device name
 
-    :param u64 device_name:
+    :param device_name:
         device name specified in INDENTIFY fram
+    :type device_name: u64
 
-    :param Mpi2BootDeviceDeviceName_t \*boot_device:
+    :param boot_device:
         boot device object from bios page 2
+    :type boot_device: Mpi2BootDeviceDeviceName_t \*
 
-.. _`_scsih_srch_boot_device_name.description`:
+.. _`_scsih_srch_boot_device_name.return`:
 
-Description
------------
+Return
+------
 
-Returns 1 when there's a match, 0 means no match.
+1 when there's a match, 0 means no match.
 
 .. _`_scsih_srch_boot_encl_slot`:
 
@@ -291,21 +297,24 @@ Returns 1 when there's a match, 0 means no match.
 
     search based on enclosure_logical_id/slot
 
-    :param u64 enclosure_logical_id:
+    :param enclosure_logical_id:
         enclosure logical id
+    :type enclosure_logical_id: u64
 
-    :param u16 slot_number:
+    :param slot_number:
         slot number
+    :type slot_number: u16
 
-    :param Mpi2BootDeviceEnclosureSlot_t \*boot_device:
+    :param boot_device:
         boot device object from bios page 2
+    :type boot_device: Mpi2BootDeviceEnclosureSlot_t \*
 
-.. _`_scsih_srch_boot_encl_slot.description`:
+.. _`_scsih_srch_boot_encl_slot.return`:
 
-Description
------------
+Return
+------
 
-Returns 1 when there's a match, 0 means no match.
+1 when there's a match, 0 means no match.
 
 .. _`_scsih_is_boot_device`:
 
@@ -316,30 +325,36 @@ Returns 1 when there's a match, 0 means no match.
 
     search for matching boot device.
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address
+    :type sas_address: u64
 
-    :param u64 device_name:
+    :param device_name:
         device name specified in INDENTIFY fram
+    :type device_name: u64
 
-    :param u64 enclosure_logical_id:
+    :param enclosure_logical_id:
         enclosure logical id
+    :type enclosure_logical_id: u64
 
-    :param u16 slot:
-        *undescribed*
+    :param slot:
+        slot number
+    :type slot: u16
 
-    :param u8 form:
+    :param form:
         specifies boot device form
+    :type form: u8
 
-    :param Mpi2BiosPage2BootDevice_t \*boot_device:
+    :param boot_device:
         boot device object from bios page 2
+    :type boot_device: Mpi2BiosPage2BootDevice_t \*
 
-.. _`_scsih_is_boot_device.description`:
+.. _`_scsih_is_boot_device.return`:
 
-Description
------------
+Return
+------
 
-Returns 1 when there's a match, 0 means no match.
+1 when there's a match, 0 means no match.
 
 .. _`_scsih_get_sas_address`:
 
@@ -350,21 +365,24 @@ Returns 1 when there's a match, 0 means no match.
 
     set the sas_address for given device handle
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        *undescribed*
+    :param ioc:
+        ?
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
-    :param u64 \*sas_address:
+    :param sas_address:
         sas address
+    :type sas_address: u64 \*
 
-.. _`_scsih_get_sas_address.description`:
+.. _`_scsih_get_sas_address.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 success, non-zero when failure
+0 success, non-zero when failure
 
 .. _`_scsih_determine_boot_device`:
 
@@ -375,14 +393,17 @@ Returns 0 success, non-zero when failure
 
     determine boot device.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param void \*device:
+    :param device:
         sas_device or pcie_device object
+    :type device: void \*
 
-    :param u32 channel:
+    :param channel:
         SAS or PCIe channel
+    :type channel: u32
 
 .. _`_scsih_determine_boot_device.description`:
 
@@ -405,11 +426,13 @@ mpt3sas_get_pdev_from_target
 
     pcie device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct MPT3SAS_TARGET \*tgt_priv:
+    :param tgt_priv:
         starget private object
+    :type tgt_priv: struct MPT3SAS_TARGET \*
 
 .. _`mpt3sas_get_pdev_from_target.context`:
 
@@ -435,11 +458,13 @@ mpt3sas_get_sdev_by_addr
 
     sas device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address
+    :type sas_address: u64
 
 .. _`mpt3sas_get_sdev_by_addr.context`:
 
@@ -465,11 +490,13 @@ mpt3sas_get_sdev_by_handle
 
     sas device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         sas device handle (assigned by firmware)
+    :type handle: u16
 
 .. _`mpt3sas_get_sdev_by_handle.context`:
 
@@ -495,24 +522,21 @@ object.
 
     display device location info
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_device \*sas_device:
+    :param sas_device:
         per sas device object
+    :type sas_device: struct _sas_device \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
-
-.. _`_scsih_display_enclosure_chassis_info.description`:
-
-Description
------------
-
-Returns nothing.
+    :type starget: struct scsi_target \*
 
 .. _`_scsih_sas_device_remove`:
 
@@ -523,11 +547,13 @@ Returns nothing.
 
     remove sas_device from list.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_device \*sas_device:
+    :param sas_device:
         the sas_device object
+    :type sas_device: struct _sas_device \*
 
 .. _`_scsih_sas_device_remove.context`:
 
@@ -552,18 +578,13 @@ If sas_device is on the list, remove it and decrement its reference count.
 
     removing device object by handle
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
-
-.. _`_scsih_device_remove_by_handle.description`:
-
-Description
------------
-
-Return nothing.
+    :type handle: u16
 
 .. _`mpt3sas_device_remove_by_sas_address`:
 
@@ -574,18 +595,13 @@ mpt3sas_device_remove_by_sas_address
 
     removing device object by sas address
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         device sas_address
-
-.. _`mpt3sas_device_remove_by_sas_address.description`:
-
-Description
------------
-
-Return nothing.
+    :type sas_address: u64
 
 .. _`_scsih_sas_device_add`:
 
@@ -596,11 +612,13 @@ Return nothing.
 
     insert sas_device to the list.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_device \*sas_device:
+    :param sas_device:
         the sas_device object
+    :type sas_device: struct _sas_device \*
 
 .. _`_scsih_sas_device_add.context`:
 
@@ -625,11 +643,13 @@ Adding new object to the ioc->sas_device_list.
 
     insert sas_device to the list.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_device \*sas_device:
+    :param sas_device:
         the sas_device object
+    :type sas_device: struct _sas_device \*
 
 .. _`_scsih_sas_device_init_add.context`:
 
@@ -654,11 +674,13 @@ mpt3sas_get_pdev_by_wwid
 
     pcie device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 wwid:
+    :param wwid:
         wwid
+    :type wwid: u64
 
 .. _`mpt3sas_get_pdev_by_wwid.context`:
 
@@ -684,11 +706,13 @@ mpt3sas_get_pdev_by_handle
 
     pcie device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         Firmware device handle
+    :type handle: u16
 
 .. _`mpt3sas_get_pdev_by_handle.context`:
 
@@ -715,11 +739,13 @@ object.
 
     remove pcie_device from list.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _pcie_device \*pcie_device:
+    :param pcie_device:
         the pcie_device object
+    :type pcie_device: struct _pcie_device \*
 
 .. _`_scsih_pcie_device_remove.context`:
 
@@ -744,18 +770,13 @@ If pcie_device is on the list, remove it and decrement its reference count.
 
     removing pcie device object by handle
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
-
-.. _`_scsih_pcie_device_remove_by_handle.description`:
-
-Description
------------
-
-Return nothing.
+    :type handle: u16
 
 .. _`_scsih_pcie_device_add`:
 
@@ -766,11 +787,13 @@ Return nothing.
 
     add pcie_device object
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _pcie_device \*pcie_device:
+    :param pcie_device:
         pcie_device object
+    :type pcie_device: struct _pcie_device \*
 
 .. _`_scsih_pcie_device_add.description`:
 
@@ -788,14 +811,17 @@ This is added to the pcie_device_list link list.
 
     raid device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param int id:
+    :param id:
         sas device target id
+    :type id: int
 
-    :param int channel:
+    :param channel:
         sas device channel
+    :type channel: int
 
 .. _`_scsih_raid_device_find_by_id.context`:
 
@@ -821,11 +847,13 @@ mpt3sas_raid_device_find_by_handle
 
     raid device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         sas device handle (assigned by firmware)
+    :type handle: u16
 
 .. _`mpt3sas_raid_device_find_by_handle.context`:
 
@@ -851,11 +879,13 @@ object.
 
     raid device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 wwid:
-        *undescribed*
+    :param wwid:
+        ?
+    :type wwid: u64
 
 .. _`_scsih_raid_device_find_by_wwid.context`:
 
@@ -881,11 +911,13 @@ object.
 
     add raid_device object
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _raid_device \*raid_device:
+    :param raid_device:
         raid_device object
+    :type raid_device: struct _raid_device \*
 
 .. _`_scsih_raid_device_add.description`:
 
@@ -903,11 +935,13 @@ This is added to the raid_device_list link list.
 
     delete raid_device object
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _raid_device \*raid_device:
+    :param raid_device:
         raid_device object
+    :type raid_device: struct _raid_device \*
 
 .. _`mpt3sas_scsih_expander_find_by_handle`:
 
@@ -918,11 +952,13 @@ mpt3sas_scsih_expander_find_by_handle
 
     expander device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         expander handle (assigned by firmware)
+    :type handle: u16
 
 .. _`mpt3sas_scsih_expander_find_by_handle.context`:
 
@@ -948,11 +984,13 @@ mpt3sas_scsih_enclosure_find_by_handle
 
     exclosure device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         enclosure handle (assigned by firmware)
+    :type handle: u16
 
 .. _`mpt3sas_scsih_enclosure_find_by_handle.context`:
 
@@ -978,11 +1016,13 @@ mpt3sas_scsih_expander_find_by_sas_address
 
     expander device search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address
+    :type sas_address: u64
 
 .. _`mpt3sas_scsih_expander_find_by_sas_address.context`:
 
@@ -1008,11 +1048,13 @@ sas_node object.
 
     insert expander device to the list.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_node \*sas_expander:
+    :param sas_expander:
         the sas_device object
+    :type sas_expander: struct _sas_node \*
 
 .. _`_scsih_expander_node_add.context`:
 
@@ -1028,8 +1070,6 @@ Description
 
 Adding new object to the ioc->sas_expander_list.
 
-Return nothing.
-
 .. _`_scsih_is_end_device`:
 
 \_scsih_is_end_device
@@ -1039,8 +1079,9 @@ Return nothing.
 
     determines if device is an end device
 
-    :param u32 device_info:
+    :param device_info:
         bitfield providing information about the device.
+    :type device_info: u32
 
 .. _`_scsih_is_end_device.context`:
 
@@ -1049,12 +1090,12 @@ Context
 
 none
 
-.. _`_scsih_is_end_device.description`:
+.. _`_scsih_is_end_device.return`:
 
-Description
------------
+Return
+------
 
-Returns 1 if end device.
+1 if end device.
 
 .. _`_scsih_is_nvme_device`:
 
@@ -1065,8 +1106,9 @@ Returns 1 if end device.
 
     determines if device is an nvme device
 
-    :param u32 device_info:
+    :param device_info:
         bitfield providing information about the device.
+    :type device_info: u32
 
 .. _`_scsih_is_nvme_device.context`:
 
@@ -1075,12 +1117,12 @@ Context
 
 none
 
-.. _`_scsih_is_nvme_device.description`:
+.. _`_scsih_is_nvme_device.return`:
 
-Description
------------
+Return
+------
 
-Returns 1 if nvme device.
+1 if nvme device.
 
 .. _`mpt3sas_scsih_scsi_lookup_get`:
 
@@ -1091,18 +1133,20 @@ mpt3sas_scsih_scsi_lookup_get
 
     returns scmd entry
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-.. _`mpt3sas_scsih_scsi_lookup_get.description`:
+.. _`mpt3sas_scsih_scsi_lookup_get.return`:
 
-Description
------------
+Return
+------
 
-Returns the smid stored scmd pointer.
+the smid stored scmd pointer.
 Then will dereference the stored scmd pointer.
 
 .. _`scsih_change_queue_depth`:
@@ -1114,18 +1158,20 @@ scsih_change_queue_depth
 
     setting device queue depth
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param int qdepth:
+    :param qdepth:
         requested queue depth
+    :type qdepth: int
 
-.. _`scsih_change_queue_depth.description`:
+.. _`scsih_change_queue_depth.return`:
 
-Description
------------
+Return
+------
 
-Returns queue depth.
+queue depth.
 
 .. _`scsih_target_alloc`:
 
@@ -1136,15 +1182,16 @@ scsih_target_alloc
 
     target add routine
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
+    :type starget: struct scsi_target \*
 
-.. _`scsih_target_alloc.description`:
+.. _`scsih_target_alloc.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 if ok. Any other return is assumed to be an error and
+0 if ok. Any other return is assumed to be an error and
 the device is ignored.
 
 .. _`scsih_target_destroy`:
@@ -1156,15 +1203,9 @@ scsih_target_destroy
 
     target destroy routine
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
-
-.. _`scsih_target_destroy.description`:
-
-Description
------------
-
-Returns nothing.
+    :type starget: struct scsi_target \*
 
 .. _`scsih_slave_alloc`:
 
@@ -1175,15 +1216,16 @@ scsih_slave_alloc
 
     device add routine
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-.. _`scsih_slave_alloc.description`:
+.. _`scsih_slave_alloc.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 if ok. Any other return is assumed to be an error and
+0 if ok. Any other return is assumed to be an error and
 the device is ignored.
 
 .. _`scsih_slave_destroy`:
@@ -1195,15 +1237,9 @@ scsih_slave_destroy
 
     device destroy routine
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
-
-.. _`scsih_slave_destroy.description`:
-
-Description
------------
-
-Returns nothing.
+    :type sdev: struct scsi_device \*
 
 .. _`_scsih_display_sata_capabilities`:
 
@@ -1214,14 +1250,17 @@ Returns nothing.
 
     sata capabilities
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`scsih_is_raid`:
 
@@ -1230,10 +1269,11 @@ scsih_is_raid
 
 .. c:function:: int scsih_is_raid(struct device *dev)
 
-    return boolean indicating device is raid volume \ ``dev``\  the device struct object
+    return boolean indicating device is raid volume
 
-    :param struct device \*dev:
-        *undescribed*
+    :param dev:
+        the device struct object
+    :type dev: struct device \*
 
 .. _`scsih_get_resync`:
 
@@ -1242,10 +1282,11 @@ scsih_get_resync
 
 .. c:function:: void scsih_get_resync(struct device *dev)
 
-    get raid volume resync percent complete \ ``dev``\  the device struct object
+    get raid volume resync percent complete
 
-    :param struct device \*dev:
-        *undescribed*
+    :param dev:
+        the device struct object
+    :type dev: struct device \*
 
 .. _`scsih_get_state`:
 
@@ -1254,10 +1295,11 @@ scsih_get_state
 
 .. c:function:: void scsih_get_state(struct device *dev)
 
-    get raid volume level \ ``dev``\  the device struct object
+    get raid volume level
 
-    :param struct device \*dev:
-        *undescribed*
+    :param dev:
+        the device struct object
+    :type dev: struct device \*
 
 .. _`_scsih_set_level`:
 
@@ -1268,14 +1310,17 @@ scsih_get_state
 
     set raid level
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        *undescribed*
+    :param ioc:
+        ?
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param u8 volume_type:
+    :param volume_type:
         volume type
+    :type volume_type: u8
 
 .. _`_scsih_get_volume_capabilities`:
 
@@ -1286,18 +1331,20 @@ scsih_get_state
 
     volume capabilities
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _raid_device \*raid_device:
-        *undescribed*
+    :param raid_device:
+        the raid_device object
+    :type raid_device: struct _raid_device \*
 
-.. _`_scsih_get_volume_capabilities.description`:
+.. _`_scsih_get_volume_capabilities.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, else 1
+0 for success, else 1
 
 .. _`_scsih_enable_tlr`:
 
@@ -1308,11 +1355,13 @@ Returns 0 for success, else 1
 
     setting TLR flags
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`_scsih_enable_tlr.description`:
 
@@ -1331,15 +1380,16 @@ scsih_slave_configure
 
     device configure routine.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-.. _`scsih_slave_configure.description`:
+.. _`scsih_slave_configure.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 if ok. Any other return is assumed to be an error and
+0 if ok. Any other return is assumed to be an error and
 the device is ignored.
 
 .. _`scsih_bios_param`:
@@ -1351,27 +1401,24 @@ scsih_bios_param
 
     fetch head, sector, cylinder info for a disk
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param struct block_device \*bdev:
+    :param bdev:
         pointer to block device context
+    :type bdev: struct block_device \*
 
-    :param sector_t capacity:
+    :param capacity:
         device size (in 512 byte sectors)
+    :type capacity: sector_t
 
-    :param int params:
+    :param params:
         three element array to place output:
         params[0] number of heads (max 255)
         params[1] number of sectors (max 63)
         params[2] number of cylinders
-
-.. _`scsih_bios_param.description`:
-
-Description
------------
-
-Return nothing.
+    :type params: int
 
 .. _`_scsih_response_code`:
 
@@ -1382,18 +1429,13 @@ Return nothing.
 
     translation of device response code
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u8 response_code:
+    :param response_code:
         response code returned by the device
-
-.. _`_scsih_response_code.description`:
-
-Description
------------
-
-Return nothing.
+    :type response_code: u8
 
 .. _`_scsih_tm_done`:
 
@@ -1404,17 +1446,21 @@ Return nothing.
 
     tm completion routine
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`_scsih_tm_done.context`:
 
@@ -1430,7 +1476,12 @@ Description
 
 The callback handler when using scsih_issue_tm.
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`_scsih_tm_done.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`mpt3sas_scsih_set_tm_flag`:
@@ -1442,11 +1493,13 @@ mpt3sas_scsih_set_tm_flag
 
     set per target tm_busy
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`mpt3sas_scsih_set_tm_flag.description`:
 
@@ -1464,11 +1517,13 @@ mpt3sas_scsih_clear_tm_flag
 
     clear per target tm_busy
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`mpt3sas_scsih_clear_tm_flag.description`:
 
@@ -1486,29 +1541,37 @@ mpt3sas_scsih_issue_tm
 
     main routine for sending tm requests
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter struct
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
-    :param u64 lun:
+    :param lun:
         lun number
+    :type lun: u64
 
-    :param u8 type:
+    :param type:
         MPI2_SCSITASKMGMT_TASKTYPE__XXX (defined in mpi2_init.h)
+    :type type: u8
 
-    :param u16 smid_task:
+    :param smid_task:
         smid assigned to the task
+    :type smid_task: u16
 
-    :param u16 msix_task:
+    :param msix_task:
         MSIX table index supplied by the OS
+    :type msix_task: u16
 
-    :param u8 timeout:
+    :param timeout:
         timeout in seconds
+    :type timeout: u8
 
-    :param u8 tr_method:
+    :param tr_method:
         Target Reset Method
+    :type tr_method: u8
 
 .. _`mpt3sas_scsih_issue_tm.context`:
 
@@ -1527,7 +1590,12 @@ A generic API for sending task management requests to firmware.
 The callback index is set inside \`ioc->tm_cb_idx\`.
 The caller is responsible to check for outstanding commands.
 
-Return SUCCESS or FAILED.
+.. _`mpt3sas_scsih_issue_tm.return`:
+
+Return
+------
+
+SUCCESS or FAILED.
 
 .. _`_scsih_tm_display_info`:
 
@@ -1538,11 +1606,13 @@ Return SUCCESS or FAILED.
 
     displays info about the device
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter struct
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi command object
+    :type scmd: struct scsi_cmnd \*
 
 .. _`_scsih_tm_display_info.description`:
 
@@ -1560,15 +1630,16 @@ scsih_abort
 
     eh threads main abort routine
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi command object
+    :type scmd: struct scsi_cmnd \*
 
-.. _`scsih_abort.description`:
+.. _`scsih_abort.return`:
 
-Description
------------
+Return
+------
 
-Returns SUCCESS if command aborted else FAILED
+SUCCESS if command aborted else FAILED
 
 .. _`scsih_dev_reset`:
 
@@ -1579,15 +1650,16 @@ scsih_dev_reset
 
     eh threads main device reset routine
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi command object
+    :type scmd: struct scsi_cmnd \*
 
-.. _`scsih_dev_reset.description`:
+.. _`scsih_dev_reset.return`:
 
-Description
------------
+Return
+------
 
-Returns SUCCESS if command aborted else FAILED
+SUCCESS if command aborted else FAILED
 
 .. _`scsih_target_reset`:
 
@@ -1598,15 +1670,16 @@ scsih_target_reset
 
     eh threads main target reset routine
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi command object
+    :type scmd: struct scsi_cmnd \*
 
-.. _`scsih_target_reset.description`:
+.. _`scsih_target_reset.return`:
 
-Description
------------
+Return
+------
 
-Returns SUCCESS if command aborted else FAILED
+SUCCESS if command aborted else FAILED
 
 .. _`scsih_host_reset`:
 
@@ -1617,15 +1690,16 @@ scsih_host_reset
 
     eh threads main host reset routine
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi command object
+    :type scmd: struct scsi_cmnd \*
 
-.. _`scsih_host_reset.description`:
+.. _`scsih_host_reset.return`:
 
-Description
------------
+Return
+------
 
-Returns SUCCESS if command aborted else FAILED
+SUCCESS if command aborted else FAILED
 
 .. _`_scsih_fw_event_add`:
 
@@ -1636,11 +1710,13 @@ Returns SUCCESS if command aborted else FAILED
 
     insert and queue up fw_event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         object describing the event
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_fw_event_add.context`:
 
@@ -1657,8 +1733,6 @@ Description
 This adds the firmware event object into link list, then queues it up to
 be processed from user context.
 
-Return nothing.
-
 .. _`_scsih_fw_event_del_from_list`:
 
 \_scsih_fw_event_del_from_list
@@ -1668,11 +1742,13 @@ Return nothing.
 
     delete fw_event from the list
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         object describing the event
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_fw_event_del_from_list.context`:
 
@@ -1688,8 +1764,6 @@ Description
 
 If the fw_event is on the fw_event_list, remove it and do a put.
 
-Return nothing.
-
 .. _`_scsih_error_recovery_delete_devices`:
 
 \_scsih_error_recovery_delete_devices
@@ -1699,15 +1773,9 @@ Return nothing.
 
     remove devices not responding
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-
-.. _`_scsih_error_recovery_delete_devices.description`:
-
-Description
------------
-
-Return nothing.
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`mpt3sas_port_enable_complete`:
 
@@ -1718,15 +1786,9 @@ mpt3sas_port_enable_complete
 
     port enable completed (fake event)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-
-.. _`mpt3sas_port_enable_complete.description`:
-
-Description
------------
-
-Return nothing.
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_fw_event_cleanup_queue`:
 
@@ -1737,8 +1799,9 @@ Return nothing.
 
     cleanup event queue
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_fw_event_cleanup_queue.description`:
 
@@ -1747,8 +1810,6 @@ Description
 
 Walk the firmware event queue, either killing timers, or waiting
 for outstanding events to complete
-
-Return nothing.
 
 .. _`_scsih_internal_device_block`:
 
@@ -1759,11 +1820,13 @@ Return nothing.
 
     block the sdev device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         per device object
+    :type sdev: struct scsi_device \*
 
-    :param struct MPT3SAS_DEVICE \*sas_device_priv_data:
+    :param sas_device_priv_data:
         per device driver private data
+    :type sas_device_priv_data: struct MPT3SAS_DEVICE \*
 
 .. _`_scsih_internal_device_block.description`:
 
@@ -1782,13 +1845,15 @@ print an error
 
     unblock the sdev device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         per device object
+    :type sdev: struct scsi_device \*
 
-    :param struct MPT3SAS_DEVICE \*sas_device_priv_data:
+    :param sas_device_priv_data:
         per device driver private data
         make sure device is unblocked without error, if not retry
         by blocking and then unblocking
+    :type sas_device_priv_data: struct MPT3SAS_DEVICE \*
 
 .. _`_scsih_ublock_io_all_device`:
 
@@ -1799,8 +1864,9 @@ print an error
 
     unblock every device
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_ublock_io_all_device.description`:
 
@@ -1818,11 +1884,13 @@ change the device state from block to running
 
     prepare device to be deleted
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 sas_address:
-        *undescribed*
+    :param sas_address:
+        sas address
+    :type sas_address: u64
 
 .. _`_scsih_ublock_io_device.description`:
 
@@ -1840,8 +1908,9 @@ unblock then put device in offline state
 
     set the device state to SDEV_BLOCK
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_block_io_all_device.description`:
 
@@ -1859,11 +1928,13 @@ During device pull we need to appropriately set the sdev state.
 
     set the device state to SDEV_BLOCK
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`_scsih_block_io_device.description`:
 
@@ -1879,11 +1950,13 @@ During device pull we need to appropriately set the sdev state.
 
 .. c:function:: void _scsih_block_io_to_children_attached_to_ex(struct MPT3SAS_ADAPTER *ioc, struct _sas_node *sas_expander)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_node \*sas_expander:
+    :param sas_expander:
         the sas_device object
+    :type sas_expander: struct _sas_node \*
 
 .. _`_scsih_block_io_to_children_attached_to_ex.description`:
 
@@ -1901,11 +1974,13 @@ pulled.
 
 .. c:function:: void _scsih_block_io_to_children_attached_directly(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataSasTopologyChangeList_t *event_data)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventDataSasTopologyChangeList_t \*event_data:
+    :param event_data:
         topology change event data
+    :type event_data: Mpi2EventDataSasTopologyChangeList_t \*
 
 .. _`_scsih_block_io_to_children_attached_directly.description`:
 
@@ -1922,11 +1997,13 @@ direct attached during device pull.
 
 .. c:function:: void _scsih_block_io_to_pcie_children_attached_directly(struct MPT3SAS_ADAPTER *ioc, Mpi26EventDataPCIeTopologyChangeList_t *event_data)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi26EventDataPCIeTopologyChangeList_t \*event_data:
+    :param event_data:
         topology change event data
+    :type event_data: Mpi26EventDataPCIeTopologyChangeList_t \*
 
 .. _`_scsih_block_io_to_pcie_children_attached_directly.description`:
 
@@ -1945,11 +2022,13 @@ direct attached during device pull/reconnect.
 
     send task management request
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`_scsih_tm_tr_send.context`:
 
@@ -1979,17 +2058,21 @@ and process it in a future completion.
 
 .. c:function:: u8 _scsih_tm_tr_complete(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 msix_index, u32 reply)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`_scsih_tm_tr_complete.context`:
 
@@ -2008,7 +2091,12 @@ This code is part of the code to initiate the device removal
 handshake protocol with controller firmware.
 It will send a sas iounit control request (MPI2_SAS_OP_REMOVE_DEVICE)
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`_scsih_tm_tr_complete.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_scsih_sas_control_complete`:
@@ -2020,17 +2108,21 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     completion routine
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`_scsih_sas_control_complete.context`:
 
@@ -2048,7 +2140,12 @@ This is the sas iounit control completion routine.
 This code is part of the code to initiate the device removal
 handshake protocol with controller firmware.
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`_scsih_sas_control_complete.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_scsih_tm_tr_volume_send`:
@@ -2060,11 +2157,13 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     send target reset request for volumes
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`_scsih_tm_tr_volume_send.context`:
 
@@ -2091,17 +2190,21 @@ and process it in a future completion.
 
     target reset completion
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`_scsih_tm_volume_tr_complete.context`:
 
@@ -2110,12 +2213,12 @@ Context
 
 interrupt time.
 
-.. _`_scsih_tm_volume_tr_complete.description`:
+.. _`_scsih_tm_volume_tr_complete.return`:
 
-Description
------------
+Return
+------
 
-Return 1 meaning mf should be freed from \_base_interrupt
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_scsih_issue_delayed_event_ack`:
@@ -2127,17 +2230,21 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     issue delayed Event ACK messages
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param U16 event:
+    :param event:
         Event ID
+    :type event: U16
 
-    :param U32 event_context:
+    :param event_context:
         used to track events uniquely
+    :type event_context: U32
 
 .. _`_scsih_issue_delayed_event_ack.description`:
 
@@ -2155,14 +2262,17 @@ Context - processed in interrupt context.
 
     issue delayed sas_io_unit_ctrl messages
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`_scsih_issue_delayed_sas_io_unit_ctrl.description`:
 
@@ -2180,11 +2290,13 @@ mpt3sas_check_for_pending_internal_cmds
 
     check for pending internal messages
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
 .. _`mpt3sas_check_for_pending_internal_cmds.context`:
 
@@ -2201,7 +2313,12 @@ Description
 This will check delayed internal messages list, and process the
 next request.
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`mpt3sas_check_for_pending_internal_cmds.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_scsih_check_for_pending_tm`:
@@ -2213,11 +2330,13 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     check for pending task management
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
 .. _`_scsih_check_for_pending_tm.description`:
 
@@ -2227,7 +2346,12 @@ Description
 This will check delayed target reset list, and feed the
 next reqeust.
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`_scsih_check_for_pending_tm.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_scsih_check_topo_delete_events`:
@@ -2239,11 +2363,13 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     sanity check on topo events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventDataSasTopologyChangeList_t \*event_data:
+    :param event_data:
         the event data payload
+    :type event_data: Mpi2EventDataSasTopologyChangeList_t \*
 
 .. _`_scsih_check_topo_delete_events.description`:
 
@@ -2256,8 +2382,6 @@ This handles the case where driver receives multiple expander
 add and delete events in a single shot.  When there is a delete event
 the routine will void any pending add events waiting in the event queue.
 
-Return nothing.
-
 .. _`_scsih_check_pcie_topo_remove_events`:
 
 \_scsih_check_pcie_topo_remove_events
@@ -2267,11 +2391,13 @@ Return nothing.
 
     sanity check on topo events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi26EventDataPCIeTopologyChangeList_t \*event_data:
+    :param event_data:
         the event data payload
+    :type event_data: Mpi26EventDataPCIeTopologyChangeList_t \*
 
 .. _`_scsih_check_pcie_topo_remove_events.description`:
 
@@ -2283,8 +2409,6 @@ or device add and delete events in a single shot.  When there
 is a delete event the routine will void any pending add
 events waiting in the event queue.
 
-Return nothing.
-
 .. _`_scsih_set_volume_delete_flag`:
 
 \_scsih_set_volume_delete_flag
@@ -2294,11 +2418,13 @@ Return nothing.
 
     setting volume delete flag
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`_scsih_set_volume_delete_flag.description`:
 
@@ -2316,14 +2442,17 @@ This returns nothing.
 
     set handle for target reset to volume
 
-    :param u16 handle:
+    :param handle:
         input handle
+    :type handle: u16
 
-    :param u16 \*a:
+    :param a:
         handle for volume a
+    :type a: u16 \*
 
-    :param u16 \*b:
+    :param b:
         handle for volume b
+    :type b: u16 \*
 
 .. _`_scsih_set_volume_handle_for_tr.description`:
 
@@ -2343,11 +2472,13 @@ input handle is non-zero, or when a and b have not been set before.
 
     check for UNHIDE events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventDataIrConfigChangeList_t \*event_data:
+    :param event_data:
         the event data payload
+    :type event_data: Mpi2EventDataIrConfigChangeList_t \*
 
 .. _`_scsih_check_ir_config_unhide_events.context`:
 
@@ -2367,8 +2498,6 @@ volume has been deleted or removed. When the target reset is sent
 to volume, the PD target resets need to be queued to start upon
 completion of the volume target reset.
 
-Return nothing.
-
 .. _`_scsih_check_volume_delete_events`:
 
 \_scsih_check_volume_delete_events
@@ -2378,11 +2507,13 @@ Return nothing.
 
     set delete flag for volumes
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventDataIrVolume_t \*event_data:
+    :param event_data:
         the event data payload
+    :type event_data: Mpi2EventDataIrVolume_t \*
 
 .. _`_scsih_check_volume_delete_events.context`:
 
@@ -2400,8 +2531,6 @@ This will handle the case when the cable connected to entire volume is
 pulled. We will take care of setting the deleted flag so normal IO will
 not be sent.
 
-Return nothing.
-
 .. _`_scsih_temp_threshold_events`:
 
 \_scsih_temp_threshold_events
@@ -2411,11 +2540,13 @@ Return nothing.
 
     display temperature threshold exceeded events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventDataTemperature_t \*event_data:
+    :param event_data:
         the temp threshold event data
+    :type event_data: Mpi2EventDataTemperature_t \*
 
 .. _`_scsih_temp_threshold_events.context`:
 
@@ -2423,13 +2554,6 @@ Context
 -------
 
 interrupt time.
-
-.. _`_scsih_temp_threshold_events.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_flush_running_cmds`:
 
@@ -2440,8 +2564,9 @@ Return nothing.
 
     completing outstanding commands.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_flush_running_cmds.description`:
 
@@ -2450,8 +2575,6 @@ Description
 
 The flushing out of all pending scmd commands following host reset,
 where all IO is dropped to the floor.
-
-Return nothing.
 
 .. _`_scsih_setup_eedp`:
 
@@ -2462,14 +2585,17 @@ Return nothing.
 
     setup MPI request for EEDP transfer
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi command object
+    :type scmd: struct scsi_cmnd \*
 
-    :param Mpi25SCSIIORequest_t \*mpi_request:
+    :param mpi_request:
         pointer to the SCSI_IO request message frame
+    :type mpi_request: Mpi25SCSIIORequest_t \*
 
 .. _`_scsih_setup_eedp.description`:
 
@@ -2477,8 +2603,6 @@ Description
 -----------
 
 Supporting protection 1 and 3.
-
-Returns nothing
 
 .. _`_scsih_eedp_error_handling`:
 
@@ -2489,18 +2613,13 @@ Returns nothing
 
     return sense code for EEDP errors
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi command object
+    :type scmd: struct scsi_cmnd \*
 
-    :param u16 ioc_status:
+    :param ioc_status:
         ioc status
-
-.. _`_scsih_eedp_error_handling.description`:
-
-Description
------------
-
-Returns nothing
+    :type ioc_status: u16
 
 .. _`scsih_qcmd`:
 
@@ -2511,11 +2630,13 @@ scsih_qcmd
 
     main scsi request entry point
 
-    :param struct Scsi_Host \*shost:
-        *undescribed*
+    :param shost:
+        SCSI host pointer
+    :type shost: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi command object
+    :type scmd: struct scsi_cmnd \*
 
 .. _`scsih_qcmd.description`:
 
@@ -2524,7 +2645,12 @@ Description
 
 The callback index is set inside \`ioc->scsi_io_cb_idx\`.
 
-Returns 0 on success.  If there's a failure, return either:
+.. _`scsih_qcmd.return`:
+
+Return
+------
+
+0 on success.  If there's a failure, return either:
 SCSI_MLQUEUE_DEVICE_BUSY if the device queue is full, or
 SCSI_MLQUEUE_HOST_BUSY if the entire host queue is full
 
@@ -2537,18 +2663,13 @@ SCSI_MLQUEUE_HOST_BUSY if the entire host queue is full
 
     normalize descriptor and fixed format sense data
 
-    :param char \*sense_buffer:
+    :param sense_buffer:
         sense data returned by target
+    :type sense_buffer: char \*
 
-    :param struct sense_info \*data:
+    :param data:
         normalized skey/asc/ascq
-
-.. _`_scsih_normalize_sense.description`:
-
-Description
------------
-
-Return nothing.
+    :type data: struct sense_info \*
 
 .. _`_scsih_scsi_ioc_info`:
 
@@ -2559,17 +2680,21 @@ Return nothing.
 
     translated non-succesfull SCSI_IO request
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi command object
+    :type scmd: struct scsi_cmnd \*
 
-    :param Mpi2SCSIIOReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2SCSIIOReply_t \*
 
-    :param u16 smid:
-        *undescribed*
+    :param smid:
+        ?
+    :type smid: u16
 
 .. _`_scsih_scsi_ioc_info.description`:
 
@@ -2580,8 +2705,6 @@ scsi_status - SCSI Status code returned from target device
 scsi_state - state info associated with SCSI_IO determined by ioc
 ioc_status - ioc supplied status info
 
-Return nothing.
-
 .. _`_scsih_turn_on_pfa_led`:
 
 \_scsih_turn_on_pfa_led
@@ -2591,11 +2714,13 @@ Return nothing.
 
     illuminate PFA LED
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`_scsih_turn_on_pfa_led.context`:
 
@@ -2603,13 +2728,6 @@ Context
 -------
 
 process
-
-.. _`_scsih_turn_on_pfa_led.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_turn_off_pfa_led`:
 
@@ -2620,11 +2738,13 @@ Return nothing.
 
     turn off Fault LED
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_device \*sas_device:
+    :param sas_device:
         sas device whose PFA LED has to turned off
+    :type sas_device: struct _sas_device \*
 
 .. _`_scsih_turn_off_pfa_led.context`:
 
@@ -2632,13 +2752,6 @@ Context
 -------
 
 process
-
-.. _`_scsih_turn_off_pfa_led.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_send_event_to_turn_on_pfa_led`:
 
@@ -2649,11 +2762,13 @@ Return nothing.
 
     fire delayed event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`_scsih_send_event_to_turn_on_pfa_led.context`:
 
@@ -2661,13 +2776,6 @@ Context
 -------
 
 interrupt.
-
-.. _`_scsih_send_event_to_turn_on_pfa_led.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_smart_predicted_fault`:
 
@@ -2678,11 +2786,13 @@ Return nothing.
 
     process smart errors
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`_scsih_smart_predicted_fault.context`:
 
@@ -2690,13 +2800,6 @@ Context
 -------
 
 interrupt.
-
-.. _`_scsih_smart_predicted_fault.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_io_done`:
 
@@ -2707,17 +2810,21 @@ Return nothing.
 
     scsi request callback
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`_scsih_io_done.description`:
 
@@ -2726,7 +2833,12 @@ Description
 
 Callback handler when using \_scsih_qcmd.
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`_scsih_io_done.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_scsih_sas_host_refresh`:
@@ -2738,8 +2850,9 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     refreshing sas host object contents
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_sas_host_refresh.context`:
 
@@ -2757,8 +2870,6 @@ During port enable, fw will send topology events for every device. Its
 possible that the handles may change from the previous setting, so this
 code keeping handles updating if changed.
 
-Return nothing.
-
 .. _`_scsih_sas_host_add`:
 
 \_scsih_sas_host_add
@@ -2768,8 +2879,9 @@ Return nothing.
 
     create sas host object
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_sas_host_add.description`:
 
@@ -2777,8 +2889,6 @@ Description
 -----------
 
 Creating host side data object, stored in ioc->sas_hba
-
-Return nothing.
 
 .. _`_scsih_expander_add`:
 
@@ -2789,11 +2899,13 @@ Return nothing.
 
     creating expander object
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         expander handle
+    :type handle: u16
 
 .. _`_scsih_expander_add.description`:
 
@@ -2802,7 +2914,12 @@ Description
 
 Creating expander object, stored in ioc->sas_expander_list.
 
-Return 0 for success, else error.
+.. _`_scsih_expander_add.return`:
+
+Return
+------
+
+0 for success, else error.
 
 .. _`mpt3sas_expander_remove`:
 
@@ -2813,18 +2930,13 @@ mpt3sas_expander_remove
 
     removing expander object
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         expander sas_address
-
-.. _`mpt3sas_expander_remove.description`:
-
-Description
------------
-
-Return nothing.
+    :type sas_address: u64
 
 .. _`_scsih_done`:
 
@@ -2835,17 +2947,21 @@ Return nothing.
 
     internal SCSI_IO callback handler.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`_scsih_done.description`:
 
@@ -2855,7 +2971,12 @@ Description
 Callback handler when sending internal generated SCSI_IO.
 The callback index passed is \`ioc->scsih_cb_idx\`
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`_scsih_done.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_scsih_check_access_status`:
@@ -2867,24 +2988,28 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     check access flags
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address
+    :type sas_address: u64
 
-    :param u16 handle:
+    :param handle:
         sas device handle
+    :type handle: u16
 
-    :param u8 access_status:
-        *undescribed*
+    :param access_status:
+        errors returned during discovery of the device
+    :type access_status: u8
 
-.. _`_scsih_check_access_status.description`:
+.. _`_scsih_check_access_status.return`:
 
-Description
------------
+Return
+------
 
-Return 0 for success, else failure
+0 for success, else failure
 
 .. _`_scsih_check_device`:
 
@@ -2895,27 +3020,25 @@ Return 0 for success, else failure
 
     checking device responsiveness
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 parent_sas_address:
+    :param parent_sas_address:
         sas address of parent expander or sas host
+    :type parent_sas_address: u64
 
-    :param u16 handle:
+    :param handle:
         attached device handle
+    :type handle: u16
 
-    :param u8 phy_number:
-        *undescribed*
+    :param phy_number:
+        phy number
+    :type phy_number: u8
 
-    :param u8 link_rate:
+    :param link_rate:
         new link rate
-
-.. _`_scsih_check_device.description`:
-
-Description
------------
-
-Returns nothing.
+    :type link_rate: u8
 
 .. _`_scsih_add_device`:
 
@@ -2926,17 +3049,21 @@ Returns nothing.
 
     creating sas device object
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         sas device handle
+    :type handle: u16
 
-    :param u8 phy_num:
+    :param phy_num:
         phy number end device attached to
+    :type phy_num: u8
 
-    :param u8 is_pd:
+    :param is_pd:
         is this hidden raid component
+    :type is_pd: u8
 
 .. _`_scsih_add_device.description`:
 
@@ -2945,7 +3072,12 @@ Description
 
 Creating end device object, stored in ioc->sas_device_list.
 
-Returns 0 for success, non-zero for failure.
+.. _`_scsih_add_device.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`_scsih_remove_device`:
 
@@ -2956,18 +3088,13 @@ Returns 0 for success, non-zero for failure.
 
     removing sas device object
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_device \*sas_device:
-        *undescribed*
-
-.. _`_scsih_remove_device.description`:
-
-Description
------------
-
-Return nothing.
+    :param sas_device:
+        the sas_device object
+    :type sas_device: struct _sas_device \*
 
 .. _`_scsih_sas_topology_change_event_debug`:
 
@@ -2978,11 +3105,13 @@ Return nothing.
 
     debug for topology event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventDataSasTopologyChangeList_t \*event_data:
+    :param event_data:
         event data payload
+    :type event_data: Mpi2EventDataSasTopologyChangeList_t \*
 
 .. _`_scsih_sas_topology_change_event_debug.context`:
 
@@ -3000,11 +3129,13 @@ user.
 
     handle topology changes
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_sas_topology_change_event.context`:
 
@@ -3022,11 +3153,13 @@ user.
 
     debug for device event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        *undescribed*
+    :param ioc:
+        ?
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventDataSasDeviceStatusChange_t \*event_data:
+    :param event_data:
         event data payload
+    :type event_data: Mpi2EventDataSasDeviceStatusChange_t \*
 
 .. _`_scsih_sas_device_status_change_event_debug.context`:
 
@@ -3034,13 +3167,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_device_status_change_event_debug.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_device_status_change_event`:
 
@@ -3051,11 +3177,13 @@ Return nothing.
 
     handle device status change
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_sas_device_status_change_event.context`:
 
@@ -3063,13 +3191,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_device_status_change_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_check_pcie_access_status`:
 
@@ -3080,24 +3201,28 @@ Return nothing.
 
     check access flags
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 wwid:
+    :param wwid:
         wwid
+    :type wwid: u64
 
-    :param u16 handle:
+    :param handle:
         sas device handle
+    :type handle: u16
 
-    :param u8 access_status:
-        *undescribed*
+    :param access_status:
+        errors returned during discovery of the device
+    :type access_status: u8
 
-.. _`_scsih_check_pcie_access_status.description`:
+.. _`_scsih_check_pcie_access_status.return`:
 
-Description
------------
+Return
+------
 
-Return 0 for success, else failure
+0 for success, else failure
 
 .. _`_scsih_pcie_device_remove_from_sml`:
 
@@ -3108,18 +3233,13 @@ Return 0 for success, else failure
 
     removing pcie device from SML and free up associated memory
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _pcie_device \*pcie_device:
+    :param pcie_device:
         the pcie_device object
-
-.. _`_scsih_pcie_device_remove_from_sml.description`:
-
-Description
------------
-
-Return nothing.
+    :type pcie_device: struct _pcie_device \*
 
 .. _`_scsih_pcie_check_device`:
 
@@ -3130,18 +3250,13 @@ Return nothing.
 
     checking device responsiveness
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         attached device handle
-
-.. _`_scsih_pcie_check_device.description`:
-
-Description
------------
-
-Returns nothing.
+    :type handle: u16
 
 .. _`_scsih_pcie_add_device`:
 
@@ -3152,11 +3267,13 @@ Returns nothing.
 
     creating pcie device object
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         pcie device handle
+    :type handle: u16
 
 .. _`_scsih_pcie_add_device.description`:
 
@@ -3165,7 +3282,12 @@ Description
 
 Creating end device object, stored in ioc->pcie_device_list.
 
-Return 1 means queue the event later, 0 means complete the event
+.. _`_scsih_pcie_add_device.return`:
+
+Return
+------
+
+1 means queue the event later, 0 means complete the event
 
 .. _`_scsih_pcie_topology_change_event_debug`:
 
@@ -3176,11 +3298,13 @@ Return 1 means queue the event later, 0 means complete the event
 
     debug for topology event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi26EventDataPCIeTopologyChangeList_t \*event_data:
+    :param event_data:
         event data payload
+    :type event_data: Mpi26EventDataPCIeTopologyChangeList_t \*
 
 .. _`_scsih_pcie_topology_change_event_debug.context`:
 
@@ -3198,11 +3322,13 @@ user.
 
     handle PCIe topology changes
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_pcie_topology_change_event.context`:
 
@@ -3220,11 +3346,13 @@ user.
 
     debug for device event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        *undescribed*
+    :param ioc:
+        ?
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi26EventDataPCIeDeviceStatusChange_t \*event_data:
+    :param event_data:
         event data payload
+    :type event_data: Mpi26EventDataPCIeDeviceStatusChange_t \*
 
 .. _`_scsih_pcie_device_status_change_event_debug.context`:
 
@@ -3232,13 +3360,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_pcie_device_status_change_event_debug.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_pcie_device_status_change_event`:
 
@@ -3249,11 +3370,13 @@ Return nothing.
 
     handle device status change
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_pcie_device_status_change_event.context`:
 
@@ -3261,13 +3384,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_pcie_device_status_change_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_enclosure_dev_status_change_event_debug`:
 
@@ -3278,11 +3394,13 @@ Return nothing.
 
     debug for enclosure event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventDataSasEnclDevStatusChange_t \*event_data:
+    :param event_data:
         event data payload
+    :type event_data: Mpi2EventDataSasEnclDevStatusChange_t \*
 
 .. _`_scsih_sas_enclosure_dev_status_change_event_debug.context`:
 
@@ -3290,13 +3408,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_enclosure_dev_status_change_event_debug.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_enclosure_dev_status_change_event`:
 
@@ -3307,11 +3418,13 @@ Return nothing.
 
     handle enclosure events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_sas_enclosure_dev_status_change_event.context`:
 
@@ -3319,13 +3432,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_enclosure_dev_status_change_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_broadcast_primitive_event`:
 
@@ -3336,11 +3442,13 @@ Return nothing.
 
     handle broadcast events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_sas_broadcast_primitive_event.context`:
 
@@ -3348,13 +3456,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_broadcast_primitive_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_discovery_event`:
 
@@ -3365,11 +3466,13 @@ Return nothing.
 
     handle discovery events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_sas_discovery_event.context`:
 
@@ -3377,13 +3480,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_discovery_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_device_discovery_error_event`:
 
@@ -3394,11 +3490,13 @@ Return nothing.
 
     display SAS device discovery error events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_sas_device_discovery_error_event.context`:
 
@@ -3406,13 +3504,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_device_discovery_error_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_pcie_enumeration_event`:
 
@@ -3423,11 +3514,13 @@ Return nothing.
 
     handle enumeration events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_pcie_enumeration_event.context`:
 
@@ -3435,13 +3528,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_pcie_enumeration_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_ir_fastpath`:
 
@@ -3452,21 +3538,24 @@ Return nothing.
 
     turn on fastpath for IR physdisk
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle for physical disk
+    :type handle: u16
 
-    :param u8 phys_disk_num:
+    :param phys_disk_num:
         physical disk number
+    :type phys_disk_num: u8
 
-.. _`_scsih_ir_fastpath.description`:
+.. _`_scsih_ir_fastpath.return`:
 
-Description
------------
+Return
+------
 
-Return 0 for success, else failure.
+0 for success, else failure.
 
 .. _`_scsih_reprobe_lun`:
 
@@ -3477,11 +3566,13 @@ Return 0 for success, else failure.
 
     reprobing lun
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param void \*no_uld_attach:
+    :param no_uld_attach:
         sdev->no_uld_attach flag setting
+    :type no_uld_attach: void \*
 
 .. _`_scsih_sas_volume_add`:
 
@@ -3492,11 +3583,13 @@ Return 0 for success, else failure.
 
     add new volume
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventIrConfigElement_t \*element:
+    :param element:
         IR config element data
+    :type element: Mpi2EventIrConfigElement_t \*
 
 .. _`_scsih_sas_volume_add.context`:
 
@@ -3504,13 +3597,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_volume_add.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_volume_delete`:
 
@@ -3521,11 +3607,13 @@ Return nothing.
 
     delete volume
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         volume device handle
+    :type handle: u16
 
 .. _`_scsih_sas_volume_delete.context`:
 
@@ -3533,13 +3621,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_volume_delete.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_pd_expose`:
 
@@ -3550,11 +3631,13 @@ Return nothing.
 
     expose pd component to /dev/sdX
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventIrConfigElement_t \*element:
+    :param element:
         IR config element data
+    :type element: Mpi2EventIrConfigElement_t \*
 
 .. _`_scsih_sas_pd_expose.context`:
 
@@ -3562,13 +3645,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_pd_expose.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_pd_hide`:
 
@@ -3579,11 +3655,13 @@ Return nothing.
 
     hide pd component from /dev/sdX
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventIrConfigElement_t \*element:
+    :param element:
         IR config element data
+    :type element: Mpi2EventIrConfigElement_t \*
 
 .. _`_scsih_sas_pd_hide.context`:
 
@@ -3591,13 +3669,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_pd_hide.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_pd_delete`:
 
@@ -3608,11 +3679,13 @@ Return nothing.
 
     delete pd component
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventIrConfigElement_t \*element:
+    :param element:
         IR config element data
+    :type element: Mpi2EventIrConfigElement_t \*
 
 .. _`_scsih_sas_pd_delete.context`:
 
@@ -3620,13 +3693,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_pd_delete.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_pd_add`:
 
@@ -3637,11 +3703,13 @@ Return nothing.
 
     remove pd component
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventIrConfigElement_t \*element:
+    :param element:
         IR config element data
+    :type element: Mpi2EventIrConfigElement_t \*
 
 .. _`_scsih_sas_pd_add.context`:
 
@@ -3649,13 +3717,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_pd_add.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_ir_config_change_event_debug`:
 
@@ -3666,11 +3727,13 @@ Return nothing.
 
     debug for IR Config Change events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventDataIrConfigChangeList_t \*event_data:
+    :param event_data:
         event data payload
+    :type event_data: Mpi2EventDataIrConfigChangeList_t \*
 
 .. _`_scsih_sas_ir_config_change_event_debug.context`:
 
@@ -3678,13 +3741,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_ir_config_change_event_debug.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_ir_config_change_event`:
 
@@ -3695,11 +3751,13 @@ Return nothing.
 
     handle ir configuration change events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_sas_ir_config_change_event.context`:
 
@@ -3707,13 +3765,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_ir_config_change_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_ir_volume_event`:
 
@@ -3724,11 +3775,13 @@ Return nothing.
 
     IR volume event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_sas_ir_volume_event.context`:
 
@@ -3736,13 +3789,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_ir_volume_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_ir_physical_disk_event`:
 
@@ -3753,11 +3799,13 @@ Return nothing.
 
     PD event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_sas_ir_physical_disk_event.context`:
 
@@ -3765,13 +3813,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_ir_physical_disk_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_ir_operation_status_event_debug`:
 
@@ -3782,11 +3823,13 @@ Return nothing.
 
     debug for IR op event
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2EventDataIrOperationStatus_t \*event_data:
+    :param event_data:
         event data payload
+    :type event_data: Mpi2EventDataIrOperationStatus_t \*
 
 .. _`_scsih_sas_ir_operation_status_event_debug.context`:
 
@@ -3794,13 +3837,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_ir_operation_status_event_debug.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_sas_ir_operation_status_event`:
 
@@ -3811,11 +3847,13 @@ Return nothing.
 
     handle RAID operation events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_scsih_sas_ir_operation_status_event.context`:
 
@@ -3823,13 +3861,6 @@ Context
 -------
 
 user.
-
-.. _`_scsih_sas_ir_operation_status_event.description`:
-
-Description
------------
-
-Return nothing.
 
 .. _`_scsih_prep_device_scan`:
 
@@ -3840,8 +3871,9 @@ Return nothing.
 
     initialize parameters prior to device scan
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_prep_device_scan.description`:
 
@@ -3860,11 +3892,13 @@ the scan, then we clear the deleted flag.
 
     mark a sas_devices as responding
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2SasDevicePage0_t \*sas_device_pg0:
+    :param sas_device_pg0:
         SAS Device page 0
+    :type sas_device_pg0: Mpi2SasDevicePage0_t \*
 
 .. _`_scsih_mark_responding_sas_device.description`:
 
@@ -3873,8 +3907,6 @@ Description
 
 After host reset, find out whether devices are still responding.
 Used in \_scsih_remove_unresponsive_sas_devices.
-
-Return nothing.
 
 .. _`_scsih_create_enclosure_list_after_reset`:
 
@@ -3885,15 +3917,9 @@ Return nothing.
 
     Free Existing list, And create enclosure list by scanning all Enclosure Page(0)s
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-
-.. _`_scsih_create_enclosure_list_after_reset.description`:
-
-Description
------------
-
-Return nothing.
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_search_responding_sas_devices`:
 
@@ -3902,8 +3928,9 @@ Return nothing.
 
 .. c:function:: void _scsih_search_responding_sas_devices(struct MPT3SAS_ADAPTER *ioc)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_search_responding_sas_devices.description`:
 
@@ -3912,8 +3939,6 @@ Description
 
 After host reset, find out whether devices are still responding.
 If not remove.
-
-Return nothing.
 
 .. _`_scsih_mark_responding_pcie_device`:
 
@@ -3924,11 +3949,13 @@ Return nothing.
 
     mark a pcie_device as responding
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi26PCIeDevicePage0_t \*pcie_device_pg0:
+    :param pcie_device_pg0:
         PCIe Device page 0
+    :type pcie_device_pg0: Mpi26PCIeDevicePage0_t \*
 
 .. _`_scsih_mark_responding_pcie_device.description`:
 
@@ -3938,8 +3965,6 @@ Description
 After host reset, find out whether devices are still responding.
 Used in \_scsih_remove_unresponding_devices.
 
-Return nothing.
-
 .. _`_scsih_search_responding_pcie_devices`:
 
 \_scsih_search_responding_pcie_devices
@@ -3947,8 +3972,9 @@ Return nothing.
 
 .. c:function:: void _scsih_search_responding_pcie_devices(struct MPT3SAS_ADAPTER *ioc)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_search_responding_pcie_devices.description`:
 
@@ -3957,8 +3983,6 @@ Description
 
 After host reset, find out whether devices are still responding.
 If not remove.
-
-Return nothing.
 
 .. _`_scsih_mark_responding_raid_device`:
 
@@ -3969,14 +3993,17 @@ Return nothing.
 
     mark a raid_device as responding
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 wwid:
+    :param wwid:
         world wide identifier for raid volume
+    :type wwid: u64
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
 .. _`_scsih_mark_responding_raid_device.description`:
 
@@ -3986,8 +4013,6 @@ Description
 After host reset, find out whether devices are still responding.
 Used in \_scsih_remove_unresponsive_raid_devices.
 
-Return nothing.
-
 .. _`_scsih_search_responding_raid_devices`:
 
 \_scsih_search_responding_raid_devices
@@ -3995,8 +4020,9 @@ Return nothing.
 
 .. c:function:: void _scsih_search_responding_raid_devices(struct MPT3SAS_ADAPTER *ioc)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_search_responding_raid_devices.description`:
 
@@ -4005,8 +4031,6 @@ Description
 
 After host reset, find out whether devices are still responding.
 If not remove.
-
-Return nothing.
 
 .. _`_scsih_mark_responding_expander`:
 
@@ -4017,11 +4041,13 @@ Return nothing.
 
     mark a expander as responding
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ExpanderPage0_t \*expander_pg0:
+    :param expander_pg0:
         SAS Expander Config Page0
+    :type expander_pg0: Mpi2ExpanderPage0_t \*
 
 .. _`_scsih_mark_responding_expander.description`:
 
@@ -4031,8 +4057,6 @@ Description
 After host reset, find out whether devices are still responding.
 Used in \_scsih_remove_unresponsive_expanders.
 
-Return nothing.
-
 .. _`_scsih_search_responding_expanders`:
 
 \_scsih_search_responding_expanders
@@ -4040,8 +4064,9 @@ Return nothing.
 
 .. c:function:: void _scsih_search_responding_expanders(struct MPT3SAS_ADAPTER *ioc)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_search_responding_expanders.description`:
 
@@ -4050,8 +4075,6 @@ Description
 
 After host reset, find out whether devices are still responding.
 If not remove.
-
-Return nothing.
 
 .. _`_scsih_remove_unresponding_devices`:
 
@@ -4062,15 +4085,9 @@ Return nothing.
 
     removing unresponding devices
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
-
-.. _`_scsih_remove_unresponding_devices.description`:
-
-Description
------------
-
-Return nothing.
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_scan_for_devices_after_reset`:
 
@@ -4081,42 +4098,69 @@ Return nothing.
 
     scan for devices after host reset
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-.. _`_scsih_scan_for_devices_after_reset.description`:
+.. _`mpt3sas_scsih_pre_reset_handler`:
 
-Description
------------
+mpt3sas_scsih_pre_reset_handler
+===============================
 
-Return nothing.
-
-.. _`mpt3sas_scsih_reset_handler`:
-
-mpt3sas_scsih_reset_handler
-===========================
-
-.. c:function:: void mpt3sas_scsih_reset_handler(struct MPT3SAS_ADAPTER *ioc, int reset_phase)
+.. c:function:: void mpt3sas_scsih_pre_reset_handler(struct MPT3SAS_ADAPTER *ioc)
 
     reset callback handler (for scsih)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param int reset_phase:
-        phase
-
-.. _`mpt3sas_scsih_reset_handler.description`:
+.. _`mpt3sas_scsih_pre_reset_handler.description`:
 
 Description
 -----------
 
 The handler for doing any required cleanup or initialization.
 
-The reset phase can be MPT3_IOC_PRE_RESET, MPT3_IOC_AFTER_RESET,
-MPT3_IOC_DONE_RESET
+.. _`mpt3sas_scsih_after_reset_handler`:
 
-Return nothing.
+mpt3sas_scsih_after_reset_handler
+=================================
+
+.. c:function:: void mpt3sas_scsih_after_reset_handler(struct MPT3SAS_ADAPTER *ioc)
+
+    reset callback handler (for scsih)
+
+    :param ioc:
+        per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
+
+.. _`mpt3sas_scsih_after_reset_handler.description`:
+
+Description
+-----------
+
+The handler for doing any required cleanup or initialization.
+
+.. _`mpt3sas_scsih_reset_done_handler`:
+
+mpt3sas_scsih_reset_done_handler
+================================
+
+.. c:function:: void mpt3sas_scsih_reset_done_handler(struct MPT3SAS_ADAPTER *ioc)
+
+    reset callback handler (for scsih)
+
+    :param ioc:
+        per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
+
+.. _`mpt3sas_scsih_reset_done_handler.description`:
+
+Description
+-----------
+
+The handler for doing any required cleanup or initialization.
 
 .. _`_mpt3sas_fw_work`:
 
@@ -4127,11 +4171,13 @@ Return nothing.
 
     delayed task for processing firmware events
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct fw_event_work \*fw_event:
+    :param fw_event:
         The fw_event_work object
+    :type fw_event: struct fw_event_work \*
 
 .. _`_mpt3sas_fw_work.context`:
 
@@ -4140,13 +4186,6 @@ Context
 
 user.
 
-.. _`_mpt3sas_fw_work.description`:
-
-Description
------------
-
-Return nothing.
-
 .. _`_firmware_event_work`:
 
 \_firmware_event_work
@@ -4154,8 +4193,9 @@ Return nothing.
 
 .. c:function:: void _firmware_event_work(struct work_struct *work)
 
-    :param struct work_struct \*work:
+    :param work:
         The fw_event_work object
+    :type work: struct work_struct \*
 
 .. _`_firmware_event_work.context`:
 
@@ -4171,8 +4211,6 @@ Description
 
 wrappers for the work thread handling firmware events
 
-Return nothing.
-
 .. _`mpt3sas_scsih_event_callback`:
 
 mpt3sas_scsih_event_callback
@@ -4182,14 +4220,17 @@ mpt3sas_scsih_event_callback
 
     firmware event handler (called at ISR time)
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`mpt3sas_scsih_event_callback.context`:
 
@@ -4206,7 +4247,12 @@ Description
 This function merely adds a new work task into ioc->firmware_event_thread.
 The tasks are worked from \_firmware_event_work in user context.
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`mpt3sas_scsih_event_callback.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_scsih_expander_node_remove`:
@@ -4218,11 +4264,13 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     removing expander device from list.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_node \*sas_expander:
+    :param sas_expander:
         the sas_device object
+    :type sas_expander: struct _sas_node \*
 
 .. _`_scsih_expander_node_remove.description`:
 
@@ -4231,8 +4279,6 @@ Description
 
 Removing object and freeing associated memory from the
 ioc->sas_expander_list.
-
-Return nothing.
 
 .. _`_scsih_ir_shutdown`:
 
@@ -4243,8 +4289,9 @@ Return nothing.
 
     IR shutdown notification
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_ir_shutdown.description`:
 
@@ -4253,8 +4300,6 @@ Description
 
 Sending RAID Action to alert the Integrated RAID subsystem of the IOC that
 the host system is shutting down.
-
-Return nothing.
 
 .. _`scsih_remove`:
 
@@ -4265,8 +4310,9 @@ scsih_remove
 
     detach and remove add host
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
 .. _`scsih_remove.description`:
 
@@ -4274,7 +4320,6 @@ Description
 -----------
 
 Routine called when unloading the driver.
-Return nothing.
 
 .. _`scsih_shutdown`:
 
@@ -4285,15 +4330,9 @@ scsih_shutdown
 
     routine call during system shutdown
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
-
-.. _`scsih_shutdown.description`:
-
-Description
------------
-
-Return nothing.
+    :type pdev: struct pci_dev \*
 
 .. _`_scsih_probe_boot_devices`:
 
@@ -4304,8 +4343,9 @@ Return nothing.
 
     reports 1st device
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_probe_boot_devices.description`:
 
@@ -4325,8 +4365,9 @@ purposes.  Please refer to function \_scsih_determine_boot_device()
 
     reporting raid volumes to scsi-ml
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_probe_raid.description`:
 
@@ -4344,8 +4385,9 @@ Called during initial loading of the driver.
 
     reporting sas devices to sas transport
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_probe_sas.description`:
 
@@ -4363,8 +4405,9 @@ get_next_pcie_device
 
     Get the next pcie device
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`get_next_pcie_device.description`:
 
@@ -4373,7 +4416,12 @@ Description
 
 Get the next pcie device from pcie_device_init_list list.
 
-Returns pcie device structure if pcie_device_init_list list is not empty
+.. _`get_next_pcie_device.return`:
+
+Return
+------
+
+pcie device structure if pcie_device_init_list list is not empty
 otherwise returns NULL
 
 .. _`pcie_device_make_active`:
@@ -4385,11 +4433,13 @@ pcie_device_make_active
 
     Add pcie device to pcie_device_list list
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _pcie_device \*pcie_device:
+    :param pcie_device:
         pcie device object
+    :type pcie_device: struct _pcie_device \*
 
 .. _`pcie_device_make_active.description`:
 
@@ -4408,8 +4458,9 @@ pcie_device_list list
 
     reporting PCIe devices to scsi-ml
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_probe_pcie.description`:
 
@@ -4427,8 +4478,9 @@ Called during initial loading of the driver.
 
     probing for devices
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`_scsih_probe_devices.description`:
 
@@ -4446,8 +4498,9 @@ scsih_scan_start
 
     scsi lld callback for .scan_start
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         SCSI host pointer
+    :type shost: struct Scsi_Host \*
 
 .. _`scsih_scan_start.description`:
 
@@ -4467,11 +4520,13 @@ scsih_scan_finished
 
     scsi lld callback for .scan_finished
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         SCSI host pointer
+    :type shost: struct Scsi_Host \*
 
-    :param unsigned long time:
+    :param time:
         elapsed time of the scan in jiffies
+    :type time: unsigned long
 
 .. _`scsih_scan_finished.description`:
 
@@ -4491,8 +4546,9 @@ we wait for firmware discovery to complete, then return 1.
 
     determine in which MPI version class this device belongs to.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
 .. _`_scsih_determine_hba_mpi_version.description`:
 
@@ -4512,18 +4568,20 @@ MPI26 VERSION for Cutlass & Invader SAS 3.0 HBA devices
 
     attach and add scsi host
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         pci device id
+    :type id: const struct pci_device_id \*
 
-.. _`_scsih_probe.description`:
+.. _`_scsih_probe.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 success, anything else error.
+0 success, anything else error.
 
 .. _`scsih_suspend`:
 
@@ -4534,18 +4592,20 @@ scsih_suspend
 
     power management suspend main entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t state:
+    :param state:
         PM state change to (usually PCI_D3)
+    :type state: pm_message_t
 
-.. _`scsih_suspend.description`:
+.. _`scsih_suspend.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 success, anything else error.
+0 success, anything else error.
 
 .. _`scsih_resume`:
 
@@ -4556,15 +4616,16 @@ scsih_resume
 
     power management resume main entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
-.. _`scsih_resume.description`:
+.. _`scsih_resume.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 success, anything else error.
+0 success, anything else error.
 
 .. _`scsih_pci_error_detected`:
 
@@ -4575,11 +4636,13 @@ scsih_pci_error_detected
 
     Called when a PCI error is detected.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         PCI channel state
+    :type state: pci_channel_state_t
 
 .. _`scsih_pci_error_detected.description`:
 
@@ -4588,12 +4651,12 @@ Description
 
 Called when a PCI error is detected.
 
-.. _`scsih_pci_error_detected.return-value`:
+.. _`scsih_pci_error_detected.return`:
 
-Return value
-------------
+Return
+------
 
-PCI_ERS_RESULT_NEED_RESET or PCI_ERS_RESULT_DISCONNECT
+PCI_ERS_RESULT_NEED_RESET or PCI_ERS_RESULT_DISCONNECT.
 
 .. _`scsih_pci_slot_reset`:
 
@@ -4604,8 +4667,9 @@ scsih_pci_slot_reset
 
     Called when PCI slot has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
 .. _`scsih_pci_slot_reset.description`:
 
@@ -4625,8 +4689,9 @@ scsih_pci_resume
 
     resume normal ops after PCI reset
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`scsih_pci_resume.description`:
 
@@ -4646,8 +4711,9 @@ scsih_pci_mmio_enabled
 
     Enable MMIO and dump debug registers
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`scsih_ncq_prio_supp`:
 
@@ -4658,8 +4724,9 @@ scsih_ncq_prio_supp
 
     Check for NCQ command priority support
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`scsih_ncq_prio_supp.description`:
 
@@ -4678,15 +4745,16 @@ scsih_init
 
     main entry point for this driver.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
-.. _`scsih_init.description`:
+.. _`scsih_init.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 success, anything else error.
+0 success, anything else error.
 
 .. _`scsih_exit`:
 
@@ -4697,15 +4765,16 @@ scsih_exit
 
     exit point for this driver (when it is a module).
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
-.. _`scsih_exit.description`:
+.. _`scsih_exit.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 success, anything else error.
+0 success, anything else error.
 
 .. _`_mpt3sas_init`:
 
@@ -4716,15 +4785,16 @@ Returns 0 success, anything else error.
 
     main entry point for this driver.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
-.. _`_mpt3sas_init.description`:
+.. _`_mpt3sas_init.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 success, anything else error.
+0 success, anything else error.
 
 .. _`_mpt3sas_exit`:
 
@@ -4735,8 +4805,9 @@ Returns 0 success, anything else error.
 
     exit point for this driver (when it is a module).
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

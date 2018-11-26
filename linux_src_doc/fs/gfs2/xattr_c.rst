@@ -10,17 +10,21 @@ ea_calc_size
 
     returns the acutal number of bytes the request will take up (not counting any unstuffed data blocks)
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         *undescribed*
+    :type sdp: struct gfs2_sbd \*
 
-    :param unsigned int nsize:
+    :param nsize:
         *undescribed*
+    :type nsize: unsigned int
 
-    :param size_t dsize:
+    :param dsize:
         *undescribed*
+    :type dsize: size_t
 
-    :param unsigned int \*size:
+    :param size:
         *undescribed*
+    :type size: unsigned int \*
 
 .. _`ea_calc_size.return`:
 
@@ -36,20 +40,25 @@ ea_dealloc_unstuffed
 
 .. c:function:: int ea_dealloc_unstuffed(struct gfs2_inode *ip, struct buffer_head *bh, struct gfs2_ea_header *ea, struct gfs2_ea_header *prev, void *private)
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         *undescribed*
+    :type ip: struct gfs2_inode \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         *undescribed*
+    :type bh: struct buffer_head \*
 
-    :param struct gfs2_ea_header \*ea:
+    :param ea:
         *undescribed*
+    :type ea: struct gfs2_ea_header \*
 
-    :param struct gfs2_ea_header \*prev:
+    :param prev:
         *undescribed*
+    :type prev: struct gfs2_ea_header \*
 
-    :param void \*private:
+    :param private:
         *undescribed*
+    :type private: void \*
 
 .. _`ea_dealloc_unstuffed.description`:
 
@@ -76,14 +85,17 @@ gfs2_listxattr
 
     List gfs2 extended attributes
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The dentry whose inode we are interested in
+    :type dentry: struct dentry \*
 
-    :param char \*buffer:
+    :param buffer:
         The buffer to write the results
+    :type buffer: char \*
 
-    :param size_t size:
+    :param size:
         The size of the buffer
+    :type size: size_t
 
 .. _`gfs2_listxattr.return`:
 
@@ -101,17 +113,21 @@ gfs2_iter_unstuffed
 
     copies the unstuffed xattr data to/from the request buffer
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The GFS2 inode
+    :type ip: struct gfs2_inode \*
 
-    :param struct gfs2_ea_header \*ea:
+    :param ea:
         The extended attribute header structure
+    :type ea: struct gfs2_ea_header \*
 
-    :param const char \*din:
+    :param din:
         The data to be copied in
+    :type din: const char \*
 
-    :param char \*dout:
+    :param dout:
         The data to be copied out (one of din,dout will be NULL)
+    :type dout: char \*
 
 .. _`gfs2_iter_unstuffed.return`:
 
@@ -129,20 +145,25 @@ errno
 
     Get a GFS2 extended attribute
 
-    :param struct inode \*inode:
+    :param inode:
         The inode
+    :type inode: struct inode \*
 
-    :param const char \*name:
+    :param name:
         The name of the extended attribute
+    :type name: const char \*
 
-    :param void \*buffer:
+    :param buffer:
         The buffer to write the result into
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         The size of the buffer
+    :type size: size_t
 
-    :param int type:
+    :param type:
         The type of extended attribute
+    :type type: int
 
 .. _`__gfs2_xattr_get.return`:
 
@@ -160,11 +181,13 @@ ea_alloc_blk
 
     allocates a new block for extended attributes.
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         A pointer to the inode that's getting extended attributes
+    :type ip: struct gfs2_inode \*
 
-    :param struct buffer_head \*\*bhp:
+    :param bhp:
         Pointer to pointer to a struct buffer_head
+    :type bhp: struct buffer_head \*\*
 
 .. _`ea_alloc_blk.return`:
 
@@ -182,14 +205,17 @@ ea_write
 
     writes the request info to an ea, creating new blocks if necessary
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         inode that is being modified
+    :type ip: struct gfs2_inode \*
 
-    :param struct gfs2_ea_header \*ea:
+    :param ea:
         the location of the new ea in a block
+    :type ea: struct gfs2_ea_header \*
 
-    :param struct gfs2_ea_request \*er:
+    :param er:
         the write request
+    :type er: struct gfs2_ea_request \*
 
 .. _`ea_write.note`:
 
@@ -209,20 +235,25 @@ ea_init
 
     initializes a new eattr block
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         *undescribed*
+    :type ip: struct gfs2_inode \*
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param const void \*data:
+    :param data:
         *undescribed*
+    :type data: const void \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`ea_init.return`:
 
@@ -240,14 +271,17 @@ gfs2_xattr_remove
 
     Remove a GFS2 extended attribute
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The inode
+    :type ip: struct gfs2_inode \*
 
-    :param int type:
+    :param type:
         The type of the extended attribute
+    :type type: int
 
-    :param const char \*name:
+    :param name:
         The name of the extended attribute
+    :type name: const char \*
 
 .. _`gfs2_xattr_remove.description`:
 
@@ -274,23 +308,29 @@ Return
 
     Set (or remove) a GFS2 extended attribute
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param const char \*name:
+    :param name:
         The name of the extended attribute
+    :type name: const char \*
 
-    :param const void \*value:
+    :param value:
         The value of the extended attribute (NULL for remove)
+    :type value: const void \*
 
-    :param size_t size:
+    :param size:
         The size of the \ ``value``\  argument
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         Create or Replace
+    :type flags: int
 
-    :param int type:
+    :param type:
         The type of the extended attribute
+    :type type: int
 
 .. _`__gfs2_xattr_set.description`:
 
@@ -315,8 +355,9 @@ gfs2_ea_dealloc
 
     deallocate the extended attribute fork
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode
+    :type ip: struct gfs2_inode \*
 
 .. _`gfs2_ea_dealloc.return`:
 

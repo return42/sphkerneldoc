@@ -98,11 +98,13 @@ ps3_vuart_set_interrupt_mask
 
     Enable/disable the port interrupt sources.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         The struct ps3_system_bus_device instance.
+    :type dev: struct ps3_system_bus_device \*
 
-    :param unsigned long mask:
+    :param mask:
         *undescribed*
+    :type mask: unsigned long
 
 .. _`ps3_vuart_raw_write`:
 
@@ -113,17 +115,21 @@ ps3_vuart_raw_write
 
     Low level write helper.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         The struct ps3_system_bus_device instance.
+    :type dev: struct ps3_system_bus_device \*
 
-    :param const void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         *undescribed*
+    :type bytes: unsigned int
 
-    :param u64 \*bytes_written:
+    :param bytes_written:
         *undescribed*
+    :type bytes_written: u64 \*
 
 .. _`ps3_vuart_raw_write.description`:
 
@@ -141,17 +147,21 @@ ps3_vuart_raw_read
 
     Low level read helper.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         The struct ps3_system_bus_device instance.
+    :type dev: struct ps3_system_bus_device \*
 
-    :param void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         *undescribed*
+    :type bytes: unsigned int
 
-    :param u64 \*bytes_read:
+    :param bytes_read:
         *undescribed*
+    :type bytes_read: u64 \*
 
 .. _`ps3_vuart_raw_read.description`:
 
@@ -169,11 +179,13 @@ ps3_vuart_clear_rx_bytes
 
     Discard bytes received.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         The struct ps3_system_bus_device instance.
+    :type dev: struct ps3_system_bus_device \*
 
-    :param unsigned int bytes:
+    :param bytes:
         Max byte count to discard, zero = all pending.
+    :type bytes: unsigned int
 
 .. _`ps3_vuart_clear_rx_bytes.description`:
 
@@ -235,14 +247,17 @@ ps3_vuart_write
 
     the entry point for writing data to a port
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         The struct ps3_system_bus_device instance.
+    :type dev: struct ps3_system_bus_device \*
 
-    :param const void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         *undescribed*
+    :type bytes: unsigned int
 
 .. _`ps3_vuart_write.description`:
 
@@ -263,11 +278,13 @@ ps3_vuart_queue_rx_bytes
 
     Queue waiting bytes into the buffer list.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         The struct ps3_system_bus_device instance.
+    :type dev: struct ps3_system_bus_device \*
 
-    :param u64 \*bytes_queued:
+    :param bytes_queued:
         Number of bytes queued to the buffer list.
+    :type bytes_queued: u64 \*
 
 .. _`ps3_vuart_queue_rx_bytes.description`:
 
@@ -285,14 +302,17 @@ ps3_vuart_read
 
     The entry point for reading data from a port.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
-    :param void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: void \*
 
-    :param unsigned int bytes:
+    :param bytes:
         *undescribed*
+    :type bytes: unsigned int
 
 .. _`ps3_vuart_read.description`:
 
@@ -313,8 +333,9 @@ ps3_vuart_work
 
     Asynchronous read handler.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`ps3_vuart_handle_interrupt_tx`:
 
@@ -325,8 +346,9 @@ ps3_vuart_handle_interrupt_tx
 
     third stage transmit interrupt handler
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_vuart_handle_interrupt_tx.description`:
 
@@ -346,8 +368,9 @@ ps3_vuart_handle_interrupt_rx
 
     third stage receive interrupt handler
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_vuart_handle_interrupt_rx.description`:
 
@@ -367,8 +390,9 @@ ps3_vuart_handle_port_interrupt
 
     second stage interrupt handler
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_vuart_handle_port_interrupt.description`:
 
@@ -388,11 +412,13 @@ ps3_vuart_irq_handler
 
     first stage interrupt handler
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*_private:
+    :param _private:
         *undescribed*
+    :type _private: void \*
 
 .. _`ps3_vuart_irq_handler.description`:
 
@@ -412,8 +438,9 @@ ps3_vuart_cleanup
 
     common cleanup helper.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         The struct ps3_system_bus_device instance.
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_vuart_cleanup.description`:
 
@@ -433,8 +460,9 @@ ps3_vuart_remove
 
     Completely clean the device instance.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         The struct ps3_system_bus_device instance.
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_vuart_remove.description`:
 
@@ -453,8 +481,9 @@ ps3_vuart_shutdown
 
     Cleans interrupts and HV resources.
 
-    :param struct ps3_system_bus_device \*dev:
+    :param dev:
         The struct ps3_system_bus_device instance.
+    :type dev: struct ps3_system_bus_device \*
 
 .. _`ps3_vuart_shutdown.description`:
 
@@ -475,8 +504,9 @@ ps3_vuart_port_driver_register
 
     Add a vuart port device driver.
 
-    :param struct ps3_vuart_port_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct ps3_vuart_port_driver \*
 
 .. _`ps3_vuart_port_driver_unregister`:
 
@@ -487,8 +517,9 @@ ps3_vuart_port_driver_unregister
 
     Remove a vuart port device driver.
 
-    :param struct ps3_vuart_port_driver \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct ps3_vuart_port_driver \*
 
 .. This file was automatic generated / don't edit.
 

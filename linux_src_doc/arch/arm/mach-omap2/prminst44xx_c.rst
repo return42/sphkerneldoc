@@ -10,8 +10,9 @@ omap_prm_base_init
 
     Populates the prm partitions
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_prm_base_init.description`:
 
@@ -30,17 +31,21 @@ omap4_prminst_is_hardreset_asserted
 
     read the HW reset line state of submodules contained in the hwmod module
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line to check
+    :type shift: u8
 
-    :param u8 part:
+    :param part:
         *undescribed*
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         *undescribed*
+    :type inst: s16
 
-    :param u16 rstctrl_offs:
+    :param rstctrl_offs:
         *undescribed*
+    :type rstctrl_offs: u16
 
 .. _`omap4_prminst_is_hardreset_asserted.description`:
 
@@ -60,17 +65,21 @@ omap4_prminst_assert_hardreset
 
     assert the HW reset line of a submodule
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line to assert
+    :type shift: u8
 
-    :param u8 part:
+    :param part:
         *undescribed*
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         *undescribed*
+    :type inst: s16
 
-    :param u16 rstctrl_offs:
+    :param rstctrl_offs:
         *undescribed*
+    :type rstctrl_offs: u16
 
 .. _`omap4_prminst_assert_hardreset.description`:
 
@@ -93,23 +102,29 @@ omap4_prminst_deassert_hardreset
 
     deassert a submodule hardreset line and wait
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line to deassert
+    :type shift: u8
 
-    :param u8 st_shift:
+    :param st_shift:
         status bit offset corresponding to the reset line
+    :type st_shift: u8
 
-    :param u8 part:
+    :param part:
         PRM partition
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         PRM instance offset
+    :type inst: s16
 
-    :param u16 rstctrl_offs:
+    :param rstctrl_offs:
         reset register offset
+    :type rstctrl_offs: u16
 
-    :param u16 rstst_offs:
+    :param rstst_offs:
         reset status register offset
+    :type rstst_offs: u16
 
 .. _`omap4_prminst_deassert_hardreset.description`:
 

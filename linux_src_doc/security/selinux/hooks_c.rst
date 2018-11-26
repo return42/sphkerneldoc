@@ -10,8 +10,9 @@ selinux_secmark_enabled
 
     Check to see if SECMARK is currently enabled
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`selinux_secmark_enabled.description`:
 
@@ -33,8 +34,9 @@ selinux_peerlbl_enabled
 
     Check to see if peer labeling is currently enabled
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`selinux_peerlbl_enabled.description`:
 
@@ -55,14 +57,17 @@ selinux_skb_peerlbl_sid
 
     Determine the peer label of a packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param u16 family:
+    :param family:
         protocol family
+    :type family: u16
 
-    :param u32 \*sid:
+    :param sid:
         the packet's peer label SID
+    :type sid: u32 \*
 
 .. _`selinux_skb_peerlbl_sid.description`:
 
@@ -85,14 +90,17 @@ selinux_conn_sid
 
     Determine the child socket label for a connection
 
-    :param u32 sk_sid:
+    :param sk_sid:
         the parent socket's SID
+    :type sk_sid: u32
 
-    :param u32 skb_sid:
+    :param skb_sid:
         the packet's SID
+    :type skb_sid: u32
 
-    :param u32 \*conn_sid:
+    :param conn_sid:
         the resulting connection SID
+    :type conn_sid: u32 \*
 
 .. _`selinux_conn_sid.description`:
 

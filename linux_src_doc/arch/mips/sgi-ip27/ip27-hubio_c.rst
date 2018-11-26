@@ -10,17 +10,21 @@ hub_pio_map
 
     establish a HUB PIO mapping
 
-    :param cnodeid_t cnode:
+    :param cnode:
         *undescribed*
+    :type cnode: cnodeid_t
 
-    :param xwidgetnum_t widget:
+    :param widget:
         widget ID to perform PIO mapping for
+    :type widget: xwidgetnum_t
 
-    :param unsigned long xtalk_addr:
+    :param xtalk_addr:
         xtalk_address that needs to be mapped
+    :type xtalk_addr: unsigned long
 
-    :param size_t size:
+    :param size:
         size of the PIO mapping
+    :type size: size_t
 
 .. _`hub_set_piomode`:
 
@@ -31,8 +35,9 @@ hub_set_piomode
 
     set pio mode for a given hub
 
-    :param nasid_t nasid:
+    :param nasid:
         physical node ID for the hub in question
+    :type nasid: nasid_t
 
 .. _`hub_set_piomode.description`:
 

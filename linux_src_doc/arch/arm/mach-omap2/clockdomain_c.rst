@@ -10,8 +10,9 @@
 
     register a clockdomain
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \* to register
+    :type clkdm: struct clockdomain \*
 
 .. _`_clkdm_register.description`:
 
@@ -31,8 +32,9 @@ already registered by the provided name, or 0 upon success.
 
     resolve autodep clkdm names to clkdm pointers; store
 
-    :param struct clkdm_autodep \*autodep:
+    :param autodep:
         struct clkdm_autodep \* to resolve
+    :type autodep: struct clkdm_autodep \*
 
 .. _`_autodep_lookup.description`:
 
@@ -60,11 +62,13 @@ opportunity
 
     resolve clkdm_names in \ ``clkdm_deps``\  to clkdms
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         clockdomain that we are resolving dependencies for
+    :type clkdm: struct clockdomain \*
 
-    :param struct clkdm_dep \*clkdm_deps:
+    :param clkdm_deps:
         ptr to array of struct clkdm_deps to resolve
+    :type clkdm_deps: struct clkdm_dep \*
 
 .. _`_resolve_clkdm_deps.description`:
 
@@ -84,11 +88,13 @@ No return value.
 
     add a wakeup dependency from clkdm2 to clkdm1 (lockless)
 
-    :param struct clockdomain \*clkdm1:
+    :param clkdm1:
         wake this struct clockdomain \* up (dependent)
+    :type clkdm1: struct clockdomain \*
 
-    :param struct clockdomain \*clkdm2:
+    :param clkdm2:
         when this struct clockdomain \* wakes up (source)
+    :type clkdm2: struct clockdomain \*
 
 .. _`_clkdm_add_wkdep.description`:
 
@@ -111,11 +117,13 @@ success.
 
     remove a wakeup dep from clkdm2 to clkdm1 (lockless)
 
-    :param struct clockdomain \*clkdm1:
+    :param clkdm1:
         wake this struct clockdomain \* up (dependent)
+    :type clkdm1: struct clockdomain \*
 
-    :param struct clockdomain \*clkdm2:
+    :param clkdm2:
         when this struct clockdomain \* wakes up (source)
+    :type clkdm2: struct clockdomain \*
 
 .. _`_clkdm_del_wkdep.description`:
 
@@ -136,11 +144,13 @@ pointers, -ENOENT if \ ``clkdm2``\  cannot wake up clkdm1 in hardware, or
 
     add a sleep dependency from clkdm2 to clkdm1 (lockless)
 
-    :param struct clockdomain \*clkdm1:
+    :param clkdm1:
         prevent this struct clockdomain \* from sleeping (dependent)
+    :type clkdm1: struct clockdomain \*
 
-    :param struct clockdomain \*clkdm2:
+    :param clkdm2:
         when this struct clockdomain \* is active (source)
+    :type clkdm2: struct clockdomain \*
 
 .. _`_clkdm_add_sleepdep.description`:
 
@@ -163,11 +173,13 @@ hardware, or 0 upon success.
 
     remove a sleep dep from clkdm2 to clkdm1 (lockless)
 
-    :param struct clockdomain \*clkdm1:
+    :param clkdm1:
         prevent this struct clockdomain \* from sleeping (dependent)
+    :type clkdm1: struct clockdomain \*
 
-    :param struct clockdomain \*clkdm2:
+    :param clkdm2:
         when this struct clockdomain \* is active (source)
+    :type clkdm2: struct clockdomain \*
 
 .. _`_clkdm_del_sleepdep.description`:
 
@@ -190,8 +202,9 @@ clkdm_register_platform_funcs
 
     register clockdomain implementation fns
 
-    :param struct clkdm_ops \*co:
+    :param co:
         func pointers for arch specific implementations
+    :type co: struct clkdm_ops \*
 
 .. _`clkdm_register_platform_funcs.description`:
 
@@ -213,8 +226,9 @@ clkdm_register_clkdms
 
     register SoC clockdomains
 
-    :param struct clockdomain \*\*cs:
+    :param cs:
         pointer to an array of struct clockdomain to register
+    :type cs: struct clockdomain \*\*
 
 .. _`clkdm_register_clkdms.description`:
 
@@ -236,8 +250,9 @@ clkdm_register_autodeps
 
     register autodeps (if required)
 
-    :param struct clkdm_autodep \*ia:
+    :param ia:
         pointer to a static array of struct clkdm_autodep to register
+    :type ia: struct clkdm_autodep \*
 
 .. _`clkdm_register_autodeps.description`:
 
@@ -273,8 +288,9 @@ clkdm_complete_init
 
     set up the clockdomain layer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`clkdm_complete_init.description`:
 
@@ -295,8 +311,9 @@ clkdm_lookup
 
     look up a clockdomain by name, return a pointer
 
-    :param const char \*name:
+    :param name:
         name of clockdomain
+    :type name: const char \*
 
 .. _`clkdm_lookup.description`:
 
@@ -318,8 +335,9 @@ clkdm_for_each
     :param int (\*fn)(struct clockdomain \*clkdm, void \*user):
         callback function \*
 
-    :param void \*user:
+    :param user:
         *undescribed*
+    :type user: void \*
 
 .. _`clkdm_for_each.description`:
 
@@ -345,8 +363,9 @@ clkdm_get_pwrdm
 
     return a ptr to the pwrdm that this clkdm resides in
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_get_pwrdm.description`:
 
@@ -365,11 +384,13 @@ clkdm_add_wkdep
 
     add a wakeup dependency from clkdm2 to clkdm1
 
-    :param struct clockdomain \*clkdm1:
+    :param clkdm1:
         wake this struct clockdomain \* up (dependent)
+    :type clkdm1: struct clockdomain \*
 
-    :param struct clockdomain \*clkdm2:
+    :param clkdm2:
         when this struct clockdomain \* wakes up (source)
+    :type clkdm2: struct clockdomain \*
 
 .. _`clkdm_add_wkdep.description`:
 
@@ -392,11 +413,13 @@ clkdm_del_wkdep
 
     remove a wakeup dependency from clkdm2 to clkdm1
 
-    :param struct clockdomain \*clkdm1:
+    :param clkdm1:
         wake this struct clockdomain \* up (dependent)
+    :type clkdm1: struct clockdomain \*
 
-    :param struct clockdomain \*clkdm2:
+    :param clkdm2:
         when this struct clockdomain \* wakes up (source)
+    :type clkdm2: struct clockdomain \*
 
 .. _`clkdm_del_wkdep.description`:
 
@@ -417,11 +440,13 @@ clkdm_read_wkdep
 
     read wakeup dependency state from clkdm2 to clkdm1
 
-    :param struct clockdomain \*clkdm1:
+    :param clkdm1:
         wake this struct clockdomain \* up (dependent)
+    :type clkdm1: struct clockdomain \*
 
-    :param struct clockdomain \*clkdm2:
+    :param clkdm2:
         when this struct clockdomain \* wakes up (source)
+    :type clkdm2: struct clockdomain \*
 
 .. _`clkdm_read_wkdep.description`:
 
@@ -451,8 +476,9 @@ clkdm_clear_all_wkdeps
 
     remove all wakeup dependencies from target clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \* to remove all wakeup dependencies from
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_clear_all_wkdeps.description`:
 
@@ -474,11 +500,13 @@ clkdm_add_sleepdep
 
     add a sleep dependency from clkdm2 to clkdm1
 
-    :param struct clockdomain \*clkdm1:
+    :param clkdm1:
         prevent this struct clockdomain \* from sleeping (dependent)
+    :type clkdm1: struct clockdomain \*
 
-    :param struct clockdomain \*clkdm2:
+    :param clkdm2:
         when this struct clockdomain \* is active (source)
+    :type clkdm2: struct clockdomain \*
 
 .. _`clkdm_add_sleepdep.description`:
 
@@ -501,11 +529,13 @@ clkdm_del_sleepdep
 
     remove a sleep dependency from clkdm2 to clkdm1
 
-    :param struct clockdomain \*clkdm1:
+    :param clkdm1:
         prevent this struct clockdomain \* from sleeping (dependent)
+    :type clkdm1: struct clockdomain \*
 
-    :param struct clockdomain \*clkdm2:
+    :param clkdm2:
         when this struct clockdomain \* is active (source)
+    :type clkdm2: struct clockdomain \*
 
 .. _`clkdm_del_sleepdep.description`:
 
@@ -528,11 +558,13 @@ clkdm_read_sleepdep
 
     read sleep dependency state from clkdm2 to clkdm1
 
-    :param struct clockdomain \*clkdm1:
+    :param clkdm1:
         prevent this struct clockdomain \* from sleeping (dependent)
+    :type clkdm1: struct clockdomain \*
 
-    :param struct clockdomain \*clkdm2:
+    :param clkdm2:
         when this struct clockdomain \* is active (source)
+    :type clkdm2: struct clockdomain \*
 
 .. _`clkdm_read_sleepdep.description`:
 
@@ -564,8 +596,9 @@ clkdm_clear_all_sleepdeps
 
     remove all sleep dependencies from target clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \* to remove all sleep dependencies from
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_clear_all_sleepdeps.description`:
 
@@ -587,8 +620,9 @@ clkdm_sleep_nolock
 
     force clockdomain sleep transition (lockless)
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_sleep_nolock.description`:
 
@@ -609,8 +643,9 @@ clkdm_sleep
 
     force clockdomain sleep transition
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_sleep.description`:
 
@@ -631,8 +666,9 @@ clkdm_wakeup_nolock
 
     force clockdomain wakeup transition (lockless)
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_wakeup_nolock.description`:
 
@@ -653,8 +689,9 @@ clkdm_wakeup
 
     force clockdomain wakeup transition
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_wakeup.description`:
 
@@ -675,8 +712,9 @@ clkdm_allow_idle_nolock
 
     enable hwsup idle transitions for clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_allow_idle_nolock.description`:
 
@@ -699,8 +737,9 @@ clkdm_allow_idle
 
     enable hwsup idle transitions for clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_allow_idle.description`:
 
@@ -722,8 +761,9 @@ clkdm_deny_idle_nolock
 
     disable hwsup idle transitions for clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_deny_idle_nolock.description`:
 
@@ -745,8 +785,9 @@ clkdm_deny_idle
 
     disable hwsup idle transitions for clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_deny_idle.description`:
 
@@ -767,8 +808,9 @@ clkdm_in_hwsup
 
     is clockdomain \ ``clkdm``\  have hardware-supervised idle enabled?
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_in_hwsup.description`:
 
@@ -791,8 +833,9 @@ clkdm_missing_idle_reporting
 
     can \ ``clkdm``\  enter autoidle even if in use?
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_missing_idle_reporting.description`:
 
@@ -813,8 +856,9 @@ clkdm_add_autodeps
 
     add auto sleepdeps/wkdeps to clkdm upon clock enable
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_add_autodeps.description`:
 
@@ -837,8 +881,9 @@ clkdm_del_autodeps
 
     remove auto sleepdeps/wkdeps from clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
 .. _`clkdm_del_autodeps.description`:
 
@@ -861,11 +906,13 @@ clkdm_clk_enable
 
     add an enabled downstream clock to this clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
-    :param struct clk \*clk:
+    :param clk:
         struct clk \* of the enabled downstream clock
+    :type clk: struct clk \*
 
 .. _`clkdm_clk_enable.description`:
 
@@ -890,11 +937,13 @@ clkdm_clk_disable
 
     remove an enabled downstream clock from this clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
-    :param struct clk \*clk:
+    :param clk:
         struct clk \* of the disabled downstream clock
+    :type clk: struct clk \*
 
 .. _`clkdm_clk_disable.description`:
 
@@ -918,11 +967,13 @@ clkdm_hwmod_enable
 
     add an enabled downstream hwmod to this clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* of the enabled downstream hwmod
+    :type oh: struct omap_hwmod \*
 
 .. _`clkdm_hwmod_enable.description`:
 
@@ -948,11 +999,13 @@ clkdm_hwmod_disable
 
     remove an enabled downstream hwmod from this clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         struct clockdomain \*
+    :type clkdm: struct clockdomain \*
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \* of the disabled downstream hwmod
+    :type oh: struct omap_hwmod \*
 
 .. _`clkdm_hwmod_disable.description`:
 
@@ -977,11 +1030,13 @@ idle mode.
 
     save the context for the control of this clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         *undescribed*
+    :type clkdm: struct clockdomain \*
 
-    :param void \*ununsed:
+    :param ununsed:
         *undescribed*
+    :type ununsed: void \*
 
 .. _`_clkdm_save_context.description`:
 
@@ -1000,11 +1055,13 @@ controlling this clkdm will be lost, save their context.
 
     restore context for control of this clkdm
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         *undescribed*
+    :type clkdm: struct clockdomain \*
 
-    :param void \*ununsed:
+    :param ununsed:
         *undescribed*
+    :type ununsed: void \*
 
 .. _`_clkdm_restore_context.description`:
 
@@ -1022,8 +1079,9 @@ clkdm_save_context
 
     Saves the context for each registered clkdm
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`clkdm_save_context.description`:
 
@@ -1041,8 +1099,9 @@ clkdm_restore_context
 
     Restores the context for each registered clkdm
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`clkdm_restore_context.description`:
 

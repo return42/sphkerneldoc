@@ -106,11 +106,13 @@ of_reset_simple_xlate
 
     translate reset_spec to the reset line number
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         a pointer to the reset controller device
+    :type rcdev: struct reset_controller_dev \*
 
-    :param const struct of_phandle_args \*reset_spec:
+    :param reset_spec:
         reset line specifier as found in the device tree
+    :type reset_spec: const struct of_phandle_args \*
 
 .. _`of_reset_simple_xlate.description`:
 
@@ -129,8 +131,9 @@ reset_controller_register
 
     register a reset controller device
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         a pointer to the initialized reset controller device
+    :type rcdev: struct reset_controller_dev \*
 
 .. _`reset_controller_unregister`:
 
@@ -141,8 +144,9 @@ reset_controller_unregister
 
     unregister a reset controller device
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         a pointer to the reset controller device
+    :type rcdev: struct reset_controller_dev \*
 
 .. _`devm_reset_controller_register`:
 
@@ -153,11 +157,13 @@ devm_reset_controller_register
 
     resource managed \ :c:func:`reset_controller_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this reset controller
+    :type dev: struct device \*
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         a pointer to the initialized reset controller device
+    :type rcdev: struct reset_controller_dev \*
 
 .. _`devm_reset_controller_register.description`:
 
@@ -177,11 +183,13 @@ reset_controller_add_lookup
 
     register a set of lookup entries
 
-    :param struct reset_control_lookup \*lookup:
+    :param lookup:
         array of reset lookup entries
+    :type lookup: struct reset_control_lookup \*
 
-    :param unsigned int num_entries:
+    :param num_entries:
         number of entries in the lookup array
+    :type num_entries: unsigned int
 
 .. _`reset_control_reset`:
 
@@ -192,8 +200,9 @@ reset_control_reset
 
     reset the controlled device
 
-    :param struct reset_control \*rstc:
+    :param rstc:
         reset controller
+    :type rstc: struct reset_control \*
 
 .. _`reset_control_reset.description`:
 
@@ -224,8 +233,9 @@ reset_control_assert
 
     asserts the reset line
 
-    :param struct reset_control \*rstc:
+    :param rstc:
         reset controller
+    :type rstc: struct reset_control \*
 
 .. _`reset_control_assert.description`:
 
@@ -254,8 +264,9 @@ reset_control_deassert
 
     deasserts the reset line
 
-    :param struct reset_control \*rstc:
+    :param rstc:
         reset controller
+    :type rstc: struct reset_control \*
 
 .. _`reset_control_deassert.description`:
 
@@ -279,8 +290,9 @@ reset_control_status
 
     returns a negative errno if not supported, a positive value if the reset line is asserted, or zero if the reset line is not asserted or if the desc is NULL (optional reset).
 
-    :param struct reset_control \*rstc:
+    :param rstc:
         reset controller
+    :type rstc: struct reset_control \*
 
 .. _`reset_control_put`:
 
@@ -291,8 +303,9 @@ reset_control_put
 
     free the reset controller
 
-    :param struct reset_control \*rstc:
+    :param rstc:
         reset controller
+    :type rstc: struct reset_control \*
 
 .. _`__device_reset`:
 
@@ -303,11 +316,13 @@ reset_control_put
 
     find reset controller associated with the device and perform reset
 
-    :param struct device \*dev:
+    :param dev:
         device to be reset by the controller
+    :type dev: struct device \*
 
-    :param bool optional:
+    :param optional:
         whether it is optional to reset the device
+    :type optional: bool
 
 .. _`__device_reset.description`:
 
@@ -325,8 +340,9 @@ of_reset_control_get_count
 
 .. c:function:: int of_reset_control_get_count(struct device_node *node)
 
-    :param struct device_node \*node:
+    :param node:
         *undescribed*
+    :type node: struct device_node \*
 
 .. _`of_reset_control_array_get`:
 
@@ -337,14 +353,17 @@ of_reset_control_array_get
 
     Get a list of reset controls using device node.
 
-    :param struct device_node \*np:
+    :param np:
         device node for the device that requests the reset controls array
+    :type np: struct device_node \*
 
-    :param bool shared:
+    :param shared:
         whether reset controls are shared or not
+    :type shared: bool
 
-    :param bool optional:
+    :param optional:
         whether it is optional to get the reset controls
+    :type optional: bool
 
 .. _`of_reset_control_array_get.description`:
 
@@ -363,14 +382,17 @@ devm_reset_control_array_get
 
     Resource managed reset control array get
 
-    :param struct device \*dev:
+    :param dev:
         device that requests the list of reset controls
+    :type dev: struct device \*
 
-    :param bool shared:
+    :param shared:
         whether reset controls are shared or not
+    :type shared: bool
 
-    :param bool optional:
+    :param optional:
         whether it is optional to get the reset controls
+    :type optional: bool
 
 .. _`devm_reset_control_array_get.description`:
 

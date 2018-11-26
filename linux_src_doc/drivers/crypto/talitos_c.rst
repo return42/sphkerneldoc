@@ -10,20 +10,24 @@ talitos_submit
 
     submits a descriptor to the device for processing
 
-    :param struct device \*dev:
+    :param dev:
         the SEC device to be used
+    :type dev: struct device \*
 
-    :param int ch:
+    :param ch:
         the SEC device channel to be used
+    :type ch: int
 
-    :param struct talitos_desc \*desc:
+    :param desc:
         the descriptor to be processed by the device
+    :type desc: struct talitos_desc \*
 
     :param void (\*callback)(struct device \*dev, struct talitos_desc \*desc, void \*context, int error):
         whom to call when processing is complete
 
-    :param void \*context:
+    :param context:
         a handle for use by caller (optional)
+    :type context: void \*
 
 .. _`talitos_submit.description`:
 

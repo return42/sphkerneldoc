@@ -41,8 +41,9 @@ drm_bridge_add
 
     add the given bridge to the global bridge list
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge control structure
+    :type bridge: struct drm_bridge \*
 
 .. _`drm_bridge_remove`:
 
@@ -53,8 +54,9 @@ drm_bridge_remove
 
     remove the given bridge from the global bridge list
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge control structure
+    :type bridge: struct drm_bridge \*
 
 .. _`drm_bridge_attach`:
 
@@ -65,14 +67,17 @@ drm_bridge_attach
 
     attach the bridge to an encoder's chain
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         DRM encoder
+    :type encoder: struct drm_encoder \*
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge to attach
+    :type bridge: struct drm_bridge \*
 
-    :param struct drm_bridge \*previous:
+    :param previous:
         previous bridge in the chain (optional)
+    :type previous: struct drm_bridge \*
 
 .. _`drm_bridge_attach.description`:
 
@@ -86,6 +91,10 @@ previous bridge's output.
 
 If non-NULL the previous bridge must be already attached by a call to this
 function.
+
+Note that bridges attached to encoders are auto-detached during encoder
+cleanup in \ :c:func:`drm_encoder_cleanup`\ , so \ :c:func:`drm_bridge_attach`\  should generally
+*not* be balanced with a \ :c:func:`drm_bridge_detach`\  in driver code.
 
 .. _`drm_bridge_attach.return`:
 
@@ -115,14 +124,17 @@ drm_bridge_mode_fixup
 
     fixup proposed mode for all bridges in the encoder chain
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge control structure
+    :type bridge: struct drm_bridge \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         desired mode to be set for the bridge
+    :type mode: const struct drm_display_mode \*
 
-    :param struct drm_display_mode \*adjusted_mode:
+    :param adjusted_mode:
         updated mode that works for this bridge
+    :type adjusted_mode: struct drm_display_mode \*
 
 .. _`drm_bridge_mode_fixup.description`:
 
@@ -155,11 +167,13 @@ drm_bridge_mode_valid
 
     validate the mode against all bridges in the encoder chain.
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge control structure
+    :type bridge: struct drm_bridge \*
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         desired mode to be validated
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_bridge_mode_valid.description`:
 
@@ -193,8 +207,9 @@ drm_bridge_disable
 
     disables all bridges in the encoder chain
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge control structure
+    :type bridge: struct drm_bridge \*
 
 .. _`drm_bridge_disable.description`:
 
@@ -221,8 +236,9 @@ drm_bridge_post_disable
 
     cleans up after disabling all bridges in the encoder chain
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge control structure
+    :type bridge: struct drm_bridge \*
 
 .. _`drm_bridge_post_disable.description`:
 
@@ -249,14 +265,17 @@ drm_bridge_mode_set
 
     set proposed mode for all bridges in the encoder chain
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge control structure
+    :type bridge: struct drm_bridge \*
 
-    :param struct drm_display_mode \*mode:
+    :param mode:
         desired mode to be set for the bridge
+    :type mode: struct drm_display_mode \*
 
-    :param struct drm_display_mode \*adjusted_mode:
+    :param adjusted_mode:
         updated mode that works for this bridge
+    :type adjusted_mode: struct drm_display_mode \*
 
 .. _`drm_bridge_mode_set.description`:
 
@@ -282,8 +301,9 @@ drm_bridge_pre_enable
 
     prepares for enabling all bridges in the encoder chain
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge control structure
+    :type bridge: struct drm_bridge \*
 
 .. _`drm_bridge_pre_enable.description`:
 
@@ -310,8 +330,9 @@ drm_bridge_enable
 
     enables all bridges in the encoder chain
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge control structure
+    :type bridge: struct drm_bridge \*
 
 .. _`drm_bridge_enable.description`:
 
@@ -333,8 +354,9 @@ of_drm_find_bridge
 
     find the bridge corresponding to the device node in the global bridge list
 
-    :param struct device_node \*np:
+    :param np:
         device node
+    :type np: struct device_node \*
 
 .. _`of_drm_find_bridge.return`:
 

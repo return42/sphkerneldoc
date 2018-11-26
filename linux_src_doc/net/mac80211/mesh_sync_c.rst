@@ -10,8 +10,9 @@ mesh_peer_tbtt_adjusting
 
     check if an mp is currently adjusting its TBTT
 
-    :param struct ieee802_11_elems \*ie:
+    :param ie:
         information elements of a management frame from the mesh peer
+    :type ie: struct ieee802_11_elems \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,8 +8,9 @@ queue_empty
 
 .. c:function:: int queue_empty(struct ddcb_queue *queue)
 
-    :param struct ddcb_queue \*queue:
+    :param queue:
         *undescribed*
+    :type queue: struct ddcb_queue \*
 
 .. _`queue_empty.description`:
 
@@ -49,14 +50,17 @@ genwqe_crc16
 
     Generate 16-bit crc as required for DDCBs
 
-    :param const u8 \*buff:
+    :param buff:
         pointer to data buffer
+    :type buff: const u8 \*
 
-    :param size_t len:
+    :param len:
         length of data for calculation
+    :type len: size_t
 
-    :param u16 init:
+    :param init:
         initial crc (0xffff at start)
+    :type init: u16
 
 .. _`genwqe_crc16.description`:
 
@@ -92,11 +96,13 @@ ddcb_requ_finished
 
     Returns the hardware state of the associated DDCB
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
-    :param struct ddcb_requ \*req:
+    :param req:
         DDCB work request
+    :type req: struct ddcb_requ \*
 
 .. _`ddcb_requ_finished.description`:
 
@@ -149,11 +155,13 @@ copy_ddcb_results
 
     Copy output state from real DDCB to request
 
-    :param struct ddcb_requ \*req:
+    :param req:
         *undescribed*
+    :type req: struct ddcb_requ \*
 
-    :param int ddcb_no:
+    :param ddcb_no:
         *undescribed*
+    :type ddcb_no: int
 
 .. _`copy_ddcb_results.description`:
 
@@ -181,11 +189,13 @@ genwqe_check_ddcb_queue
 
     Checks DDCB queue for completed work equests.
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
-    :param struct ddcb_queue \*queue:
+    :param queue:
         *undescribed*
+    :type queue: struct ddcb_queue \*
 
 .. _`genwqe_check_ddcb_queue.return`:
 
@@ -203,11 +213,13 @@ Number of DDCBs which were finished
 
     Waits until DDCB is completed
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
-    :param struct ddcb_requ \*req:
+    :param req:
         pointer to requsted DDCB parameters
+    :type req: struct ddcb_requ \*
 
 .. _`__genwqe_wait_ddcb.description`:
 
@@ -240,14 +252,17 @@ get_next_ddcb
 
     Get next available DDCB
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
-    :param struct ddcb_queue \*queue:
+    :param queue:
         *undescribed*
+    :type queue: struct ddcb_queue \*
 
-    :param int \*num:
+    :param num:
         *undescribed*
+    :type num: int \*
 
 .. _`get_next_ddcb.description`:
 
@@ -273,11 +288,13 @@ NULL if no empty DDCB available otherwise ptr to next DDCB.
 
     Remove a DDCB from the workqueue
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
-    :param struct ddcb_requ \*req:
+    :param req:
         DDCB request
+    :type req: struct ddcb_requ \*
 
 .. _`__genwqe_purge_ddcb.description`:
 
@@ -308,14 +325,17 @@ Return
 
     Enqueue a DDCB
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
-    :param struct ddcb_requ \*req:
+    :param req:
         pointer to DDCB execution request
+    :type req: struct ddcb_requ \*
 
-    :param unsigned int f_flags:
+    :param f_flags:
         file mode: blocking, non-blocking
+    :type f_flags: unsigned int
 
 .. _`__genwqe_enqueue_ddcb.return`:
 
@@ -335,14 +355,17 @@ Return
 
     Setup and execute DDCB
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
-    :param struct genwqe_ddcb_cmd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct genwqe_ddcb_cmd \*
 
-    :param unsigned int f_flags:
+    :param f_flags:
         file mode: blocking, non-blocking
+    :type f_flags: unsigned int
 
 .. _`genwqe_next_ddcb_ready`:
 
@@ -353,8 +376,9 @@ genwqe_next_ddcb_ready
 
     Figure out if the next DDCB is already finished
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_next_ddcb_ready.description`:
 
@@ -372,8 +396,9 @@ genwqe_ddcbs_in_flight
 
     Check how many DDCBs are in flight
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_ddcbs_in_flight.description`:
 
@@ -393,8 +418,9 @@ genwqe_card_thread
 
     Work thread for the DDCB queue
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`genwqe_card_thread.description`:
 
@@ -415,8 +441,9 @@ genwqe_setup_service_layer
 
     Setup DDCB queue
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_setup_service_layer.description`:
 
@@ -441,8 +468,9 @@ queue_wake_up_all
 
     Handles fatal error case
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`queue_wake_up_all.description`:
 
@@ -462,8 +490,9 @@ genwqe_finish_queue
 
     Remove any genwqe devices and user-interfaces
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_finish_queue.description`:
 
@@ -484,8 +513,9 @@ genwqe_release_service_layer
 
     Shutdown DDCB queue
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_release_service_layer.description`:
 

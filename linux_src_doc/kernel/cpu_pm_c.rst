@@ -10,8 +10,9 @@ cpu_pm_register_notifier
 
     register a driver with cpu_pm
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block to register
+    :type nb: struct notifier_block \*
 
 .. _`cpu_pm_register_notifier.description`:
 
@@ -33,8 +34,9 @@ cpu_pm_unregister_notifier
 
     unregister a driver with cpu_pm
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier block to be unregistered
+    :type nb: struct notifier_block \*
 
 .. _`cpu_pm_unregister_notifier.description`:
 
@@ -55,8 +57,9 @@ cpu_pm_enter
 
     CPU low power entry notifier
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpu_pm_enter.description`:
 
@@ -84,8 +87,9 @@ cpu_pm_exit
 
     CPU low power exit notifier
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpu_pm_exit.description`:
 
@@ -110,8 +114,9 @@ cpu_cluster_pm_enter
 
     CPU cluster low power entry notifier
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpu_cluster_pm_enter.description`:
 
@@ -140,8 +145,9 @@ cpu_cluster_pm_exit
 
     CPU cluster low power exit notifier
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpu_cluster_pm_exit.description`:
 

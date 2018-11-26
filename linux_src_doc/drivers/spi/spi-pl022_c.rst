@@ -281,8 +281,9 @@ null_cs_control
 
     Dummy chip select function
 
-    :param u32 command:
+    :param command:
         select/delect the chip
+    :type command: u32
 
 .. _`null_cs_control.description`:
 
@@ -301,11 +302,13 @@ internal_cs_control
 
     Control chip select signals via SSP_CSR.
 
-    :param struct pl022 \*pl022:
+    :param pl022:
         SSP driver private data structure
+    :type pl022: struct pl022 \*
 
-    :param u32 command:
+    :param command:
         select/delect the chip
+    :type command: u32
 
 .. _`internal_cs_control.description`:
 
@@ -325,8 +328,9 @@ giveback
 
     current spi_message is over, schedule next message and call callback of this message. Assumes that caller already set message->status; dma and pio irqs are blocked
 
-    :param struct pl022 \*pl022:
+    :param pl022:
         SSP driver private data structure
+    :type pl022: struct pl022 \*
 
 .. _`flush`:
 
@@ -337,8 +341,9 @@ flush
 
     flush the FIFO to reach a clean state
 
-    :param struct pl022 \*pl022:
+    :param pl022:
         SSP driver private data structure
+    :type pl022: struct pl022 \*
 
 .. _`restore_state`:
 
@@ -349,8 +354,9 @@ restore_state
 
     Load configuration of current chip
 
-    :param struct pl022 \*pl022:
+    :param pl022:
         SSP driver private data structure
+    :type pl022: struct pl022 \*
 
 .. _`load_ssp_default_config`:
 
@@ -361,8 +367,9 @@ load_ssp_default_config
 
     Load default configuration for SSP
 
-    :param struct pl022 \*pl022:
+    :param pl022:
         SSP driver private data structure
+    :type pl022: struct pl022 \*
 
 .. _`readwriter`:
 
@@ -373,8 +380,9 @@ readwriter
 
     set in pl022.
 
-    :param struct pl022 \*pl022:
+    :param pl022:
         *undescribed*
+    :type pl022: struct pl022 \*
 
 .. _`next_transfer`:
 
@@ -385,8 +393,9 @@ next_transfer
 
     Move to the Next transfer in the current spi message
 
-    :param struct pl022 \*pl022:
+    :param pl022:
         SSP driver private data structure
+    :type pl022: struct pl022 \*
 
 .. _`next_transfer.description`:
 
@@ -407,8 +416,9 @@ configure_dma
 
     configures the channels for the next transfer
 
-    :param struct pl022 \*pl022:
+    :param pl022:
         SSP driver's private data structure
+    :type pl022: struct pl022 \*
 
 .. _`pl022_interrupt_handler`:
 
@@ -419,11 +429,13 @@ pl022_interrupt_handler
 
     Interrupt handler for SSP controller
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: void \*
 
 .. _`pl022_interrupt_handler.description`:
 
@@ -447,11 +459,13 @@ set_up_next_transfer
 
     send out on the SPI bus.
 
-    :param struct pl022 \*pl022:
+    :param pl022:
         *undescribed*
+    :type pl022: struct pl022 \*
 
-    :param struct spi_transfer \*transfer:
+    :param transfer:
         *undescribed*
+    :type transfer: struct spi_transfer \*
 
 .. _`pump_transfers`:
 
@@ -462,8 +476,9 @@ pump_transfers
 
     Tasklet function which schedules next transfer when running in interrupt or DMA transfer mode.
 
-    :param unsigned long data:
+    :param data:
         SSP driver private data structure
+    :type data: unsigned long
 
 .. _`pl022_setup`:
 
@@ -474,8 +489,9 @@ pl022_setup
 
     setup function registered to SPI master framework
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device which is requesting setup
+    :type spi: struct spi_device \*
 
 .. _`pl022_setup.description`:
 
@@ -499,8 +515,9 @@ pl022_cleanup
 
     cleanup function registered to SPI master framework
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device which is requesting cleanup
+    :type spi: struct spi_device \*
 
 .. _`pl022_cleanup.description`:
 

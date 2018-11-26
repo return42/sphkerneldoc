@@ -10,8 +10,9 @@ usb_phy_notify_charger_work
 
     notify the USB charger state \ ``work``\  - the charger work to notify the USB charger state
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`usb_phy_notify_charger_work.description`:
 
@@ -39,14 +40,17 @@ usb_phy_get_charger_type
 
     get charger type from extcon subsystem \ ``nb``\  -the notifier block to determine charger type \ ``state``\  - the cable state \ ``data``\  - private data
 
-    :param struct notifier_block \*nb:
+    :param nb:
         *undescribed*
+    :type nb: struct notifier_block \*
 
-    :param unsigned long state:
+    :param state:
         *undescribed*
+    :type state: unsigned long
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`usb_phy_get_charger_type.description`:
 
@@ -65,11 +69,13 @@ usb_phy_set_charger_current
 
     set the USB charger current \ ``usb_phy``\  - the USB phy to be used \ ``mA``\  - the current need to be set
 
-    :param struct usb_phy \*usb_phy:
+    :param usb_phy:
         *undescribed*
+    :type usb_phy: struct usb_phy \*
 
-    :param unsigned int mA:
+    :param mA:
         *undescribed*
+    :type mA: unsigned int
 
 .. _`usb_phy_set_charger_current.description`:
 
@@ -94,14 +100,17 @@ usb_phy_get_charger_current
 
     get the USB charger current \ ``usb_phy``\  - the USB phy to be used \ ``min``\  - the minimum current \ ``max``\  - the maximum current
 
-    :param struct usb_phy \*usb_phy:
+    :param usb_phy:
         *undescribed*
+    :type usb_phy: struct usb_phy \*
 
-    :param unsigned int \*min:
+    :param min:
         *undescribed*
+    :type min: unsigned int \*
 
-    :param unsigned int \*max:
+    :param max:
         *undescribed*
+    :type max: unsigned int \*
 
 .. _`usb_phy_get_charger_current.description`:
 
@@ -121,11 +130,13 @@ usb_phy_set_charger_state
 
     set the USB charger state \ ``usb_phy``\  - the USB phy to be used \ ``state``\  - the new state need to be set for charger
 
-    :param struct usb_phy \*usb_phy:
+    :param usb_phy:
         *undescribed*
+    :type usb_phy: struct usb_phy \*
 
-    :param enum usb_charger_state state:
+    :param state:
         *undescribed*
+    :type state: enum usb_charger_state
 
 .. _`usb_phy_set_charger_state.description`:
 
@@ -145,11 +156,13 @@ devm_usb_get_phy
 
     find the USB PHY \ ``dev``\  - device that requests this phy \ ``type``\  - the type of the phy the controller requires
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param enum usb_phy_type type:
+    :param type:
         *undescribed*
+    :type type: enum usb_phy_type
 
 .. _`devm_usb_get_phy.description`:
 
@@ -171,8 +184,9 @@ usb_get_phy
 
     find the USB PHY \ ``type``\  - the type of the phy the controller requires
 
-    :param enum usb_phy_type type:
+    :param type:
         *undescribed*
+    :type type: enum usb_phy_type
 
 .. _`usb_get_phy.description`:
 
@@ -194,14 +208,17 @@ devm_usb_get_phy_by_node
 
     find the USB PHY by device_node \ ``dev``\  - device that requests this phy \ ``node``\  - the device_node for the phy device. \ ``nb``\  - a notifier_block to register with the phy.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_node \*node:
+    :param node:
         *undescribed*
+    :type node: struct device_node \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         *undescribed*
+    :type nb: struct notifier_block \*
 
 .. _`devm_usb_get_phy_by_node.description`:
 
@@ -227,14 +244,17 @@ devm_usb_get_phy_by_phandle
 
     find the USB PHY by phandle \ ``dev``\  - device that requests this phy \ ``phandle``\  - name of the property holding the phy phandle value \ ``index``\  - the index of the phy
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param const char \*phandle:
+    :param phandle:
         *undescribed*
+    :type phandle: const char \*
 
-    :param u8 index:
+    :param index:
         *undescribed*
+    :type index: u8
 
 .. _`devm_usb_get_phy_by_phandle.description`:
 
@@ -259,11 +279,13 @@ devm_usb_put_phy
 
     release the USB PHY \ ``dev``\  - device that wants to release this phy \ ``phy``\  - the phy returned by \ :c:func:`devm_usb_get_phy`\ 
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct usb_phy \*phy:
+    :param phy:
         *undescribed*
+    :type phy: struct usb_phy \*
 
 .. _`devm_usb_put_phy.description`:
 
@@ -284,8 +306,9 @@ usb_put_phy
 
     release the USB PHY
 
-    :param struct usb_phy \*x:
+    :param x:
         the phy returned by \ :c:func:`usb_get_phy`\ 
+    :type x: struct usb_phy \*
 
 .. _`usb_put_phy.description`:
 
@@ -305,12 +328,14 @@ usb_add_phy
 
     declare the USB PHY
 
-    :param struct usb_phy \*x:
+    :param x:
         the USB phy to be used; or NULL
         \ ``type``\  - the type of this PHY
+    :type x: struct usb_phy \*
 
-    :param enum usb_phy_type type:
+    :param type:
         *undescribed*
+    :type type: enum usb_phy_type
 
 .. _`usb_add_phy.description`:
 
@@ -330,8 +355,9 @@ usb_add_phy_dev
 
     declare the USB PHY
 
-    :param struct usb_phy \*x:
+    :param x:
         the USB phy to be used; or NULL
+    :type x: struct usb_phy \*
 
 .. _`usb_add_phy_dev.description`:
 
@@ -351,8 +377,9 @@ usb_remove_phy
 
     remove the OTG PHY
 
-    :param struct usb_phy \*x:
+    :param x:
         the USB OTG PHY to be removed;
+    :type x: struct usb_phy \*
 
 .. _`usb_remove_phy.description`:
 
@@ -370,11 +397,13 @@ usb_phy_set_event
 
     set event to phy event
 
-    :param struct usb_phy \*x:
+    :param x:
         the phy returned by \ :c:func:`usb_get_phy`\ ;
+    :type x: struct usb_phy \*
 
-    :param unsigned long event:
+    :param event:
         *undescribed*
+    :type event: unsigned long
 
 .. _`usb_phy_set_event.description`:
 

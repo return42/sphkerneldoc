@@ -10,11 +10,12 @@ halmac_init_sdio_cfg_88xx
 
     init SDIO
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_deinit_sdio_cfg_88xx`:
 
@@ -25,11 +26,12 @@ halmac_deinit_sdio_cfg_88xx
 
     deinit SDIO
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. _`halmac_cfg_rx_aggregation_88xx_sdio`:
 
@@ -40,15 +42,17 @@ halmac_cfg_rx_aggregation_88xx_sdio
 
     config rx aggregation
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         \ ``halmac_rx_agg_mode``\ 
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param struct halmac_rxagg_cfg \*phalmac_rxagg_cfg:
+    :param phalmac_rxagg_cfg:
         *undescribed*
+    :type phalmac_rxagg_cfg: struct halmac_rxagg_cfg \*
 
 .. _`halmac_reg_read_8_sdio_88xx`:
 
@@ -59,14 +63,16 @@ halmac_reg_read_8_sdio_88xx
 
     read 1byte register
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         register offset
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_offset: u32
 
 .. _`halmac_reg_write_8_sdio_88xx`:
 
@@ -77,17 +83,20 @@ halmac_reg_write_8_sdio_88xx
 
     write 1byte register
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         register offset
+    :type halmac_offset: u32
 
-    :param u8 halmac_data:
+    :param halmac_data:
         register value
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_data: u8
 
 .. _`halmac_reg_read_16_sdio_88xx`:
 
@@ -98,14 +107,16 @@ halmac_reg_read_16_sdio_88xx
 
     read 2byte register
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         register offset
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_offset: u32
 
 .. _`halmac_reg_write_16_sdio_88xx`:
 
@@ -116,17 +127,20 @@ halmac_reg_write_16_sdio_88xx
 
     write 2byte register
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         register offset
+    :type halmac_offset: u32
 
-    :param u16 halmac_data:
+    :param halmac_data:
         register value
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_data: u16
 
 .. _`halmac_reg_read_32_sdio_88xx`:
 
@@ -137,14 +151,16 @@ halmac_reg_read_32_sdio_88xx
 
     read 4byte register
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         register offset
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_offset: u32
 
 .. _`halmac_reg_write_32_sdio_88xx`:
 
@@ -155,17 +171,20 @@ halmac_reg_write_32_sdio_88xx
 
     write 4byte register
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         register offset
+    :type halmac_offset: u32
 
-    :param u32 halmac_data:
+    :param halmac_data:
         register value
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_data: u32
 
 .. _`halmac_reg_read_nbyte_sdio_88xx`:
 
@@ -176,20 +195,24 @@ halmac_reg_read_nbyte_sdio_88xx
 
     read n byte register
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         register offset
+    :type halmac_offset: u32
 
-    :param u32 halmac_size:
+    :param halmac_size:
         register value size
+    :type halmac_size: u32
 
-    :param u8 \*halmac_data:
+    :param halmac_data:
         register value
         Author : Soar
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_data: u8 \*
 
 .. _`halmac_get_sdio_tx_addr_88xx`:
 
@@ -200,20 +223,24 @@ halmac_get_sdio_tx_addr_88xx
 
     get CMD53 addr for the TX packet
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 \*halmac_buf:
+    :param halmac_buf:
         tx packet, include txdesc
+    :type halmac_buf: u8 \*
 
-    :param u32 halmac_size:
+    :param halmac_size:
         tx packet size
+    :type halmac_size: u32
 
-    :param u32 \*pcmd53_addr:
+    :param pcmd53_addr:
         cmd53 addr value
         Author : KaiYuan Chang/Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type pcmd53_addr: u32 \*
 
 .. _`halmac_cfg_tx_agg_align_sdio_88xx`:
 
@@ -224,17 +251,20 @@ halmac_cfg_tx_agg_align_sdio_88xx
 
     config sdio bus tx agg alignment
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 enable:
+    :param enable:
         function enable(1)/disable(0)
+    :type enable: u8
 
-    :param u16 align_size:
+    :param align_size:
         sdio bus tx agg alignment size (2^n, n = 3~11)
         Author : Soar Tu
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type align_size: u16
 
 .. _`halmac_tx_allowed_sdio_88xx`:
 
@@ -245,17 +275,20 @@ halmac_tx_allowed_sdio_88xx
 
     check tx status
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u8 \*halmac_buf:
+    :param halmac_buf:
         tx packet, include txdesc
+    :type halmac_buf: u8 \*
 
-    :param u32 halmac_size:
+    :param halmac_size:
         tx packet size, include txdesc
         Author : Ivan Lin
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_size: u32
 
 .. _`halmac_reg_read_indirect_32_sdio_88xx`:
 
@@ -266,14 +299,16 @@ halmac_reg_read_indirect_32_sdio_88xx
 
     read MAC reg by SDIO reg
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param u32 halmac_offset:
+    :param halmac_offset:
         register offset
         Author : Soar
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_offset: u32
 
 .. This file was automatic generated / don't edit.
 

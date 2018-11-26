@@ -10,11 +10,13 @@ iioutils_break_up_name
 
     extract generic name from full channel name
 
-    :param const char \*full_name:
+    :param full_name:
         the full channel name
+    :type full_name: const char \*
 
-    :param char \*\*generic_name:
+    :param generic_name:
         the output generic channel name
+    :type generic_name: char \*\*
 
 .. _`iioutils_break_up_name.description`:
 
@@ -32,32 +34,41 @@ iioutils_get_type
 
     find and process \_type attribute data
 
-    :param unsigned \*is_signed:
+    :param is_signed:
         output whether channel is signed
+    :type is_signed: unsigned \*
 
-    :param unsigned \*bytes:
+    :param bytes:
         output how many bytes the channel storage occupies
+    :type bytes: unsigned \*
 
-    :param unsigned \*bits_used:
+    :param bits_used:
         output number of valid bits of data
+    :type bits_used: unsigned \*
 
-    :param unsigned \*shift:
+    :param shift:
         output amount of bits to shift right data before applying bit mask
+    :type shift: unsigned \*
 
-    :param uint64_t \*mask:
+    :param mask:
         output a bit mask for the raw data
+    :type mask: uint64_t \*
 
-    :param unsigned \*be:
+    :param be:
         output if data in big endian
+    :type be: unsigned \*
 
-    :param const char \*device_dir:
+    :param device_dir:
         the IIO device directory
+    :type device_dir: const char \*
 
-    :param const char \*name:
+    :param name:
         the channel name
+    :type name: const char \*
 
-    :param const char \*generic_name:
+    :param generic_name:
         the channel type name
+    :type generic_name: const char \*
 
 .. _`iioutils_get_type.description`:
 
@@ -75,20 +86,25 @@ iioutils_get_param_float
 
     read a float value from a channel parameter
 
-    :param float \*output:
+    :param output:
         output the float value
+    :type output: float \*
 
-    :param const char \*param_name:
+    :param param_name:
         the parameter name to read
+    :type param_name: const char \*
 
-    :param const char \*device_dir:
+    :param device_dir:
         the IIO device directory in sysfs
+    :type device_dir: const char \*
 
-    :param const char \*name:
+    :param name:
         the channel name
+    :type name: const char \*
 
-    :param const char \*generic_name:
+    :param generic_name:
         the channel type name
+    :type generic_name: const char \*
 
 .. _`iioutils_get_param_float.description`:
 
@@ -106,11 +122,13 @@ bsort_channel_array_by_index
 
     sort the array in index order
 
-    :param struct iio_channel_info \*ci_array:
+    :param ci_array:
         the iio_channel_info array to be sorted
+    :type ci_array: struct iio_channel_info \*
 
-    :param int cnt:
+    :param cnt:
         the amount of array elements
+    :type cnt: int
 
 .. _`build_channel_array`:
 
@@ -121,14 +139,17 @@ build_channel_array
 
     function to figure out what channels are present
 
-    :param const char \*device_dir:
+    :param device_dir:
         the IIO device directory in sysfs
+    :type device_dir: const char \*
 
-    :param struct iio_channel_info \*\*ci_array:
+    :param ci_array:
         output the resulting array of iio_channel_info
+    :type ci_array: struct iio_channel_info \*\*
 
-    :param int \*counter:
+    :param counter:
         output the amount of array elements
+    :type counter: int \*
 
 .. _`build_channel_array.description`:
 
@@ -146,11 +167,13 @@ find_type_by_name
 
     function to match top level types by name
 
-    :param const char \*name:
+    :param name:
         top level type instance name
+    :type name: const char \*
 
-    :param const char \*type:
+    :param type:
         the type of top level instance being searched
+    :type type: const char \*
 
 .. _`find_type_by_name.description`:
 
@@ -170,14 +193,17 @@ write_sysfs_int
 
     write an integer value to a sysfs file
 
-    :param const char \*filename:
+    :param filename:
         name of the file to write to
+    :type filename: const char \*
 
-    :param const char \*basedir:
+    :param basedir:
         the sysfs directory in which the file is to be found
+    :type basedir: const char \*
 
-    :param int val:
+    :param val:
         integer value to write to file
+    :type val: int
 
 .. _`write_sysfs_int.description`:
 
@@ -195,14 +221,17 @@ write_sysfs_int_and_verify
 
     write an integer value to a sysfs file and verify
 
-    :param const char \*filename:
+    :param filename:
         name of the file to write to
+    :type filename: const char \*
 
-    :param const char \*basedir:
+    :param basedir:
         the sysfs directory in which the file is to be found
+    :type basedir: const char \*
 
-    :param int val:
+    :param val:
         integer value to write to file
+    :type val: int
 
 .. _`write_sysfs_int_and_verify.description`:
 
@@ -220,14 +249,17 @@ write_sysfs_string_and_verify
 
     string write, readback and verify
 
-    :param const char \*filename:
+    :param filename:
         name of file to write to
+    :type filename: const char \*
 
-    :param const char \*basedir:
+    :param basedir:
         the sysfs directory in which the file is to be found
+    :type basedir: const char \*
 
-    :param const char \*val:
+    :param val:
         the string to write
+    :type val: const char \*
 
 .. _`write_sysfs_string_and_verify.description`:
 
@@ -245,14 +277,17 @@ write_sysfs_string
 
     write string to a sysfs file
 
-    :param const char \*filename:
+    :param filename:
         name of file to write to
+    :type filename: const char \*
 
-    :param const char \*basedir:
+    :param basedir:
         the sysfs directory in which the file is to be found
+    :type basedir: const char \*
 
-    :param const char \*val:
+    :param val:
         the string to write
+    :type val: const char \*
 
 .. _`write_sysfs_string.description`:
 
@@ -270,11 +305,13 @@ read_sysfs_posint
 
     read an integer value from file
 
-    :param const char \*filename:
+    :param filename:
         name of file to read from
+    :type filename: const char \*
 
-    :param const char \*basedir:
+    :param basedir:
         the sysfs directory in which the file is to be found
+    :type basedir: const char \*
 
 .. _`read_sysfs_posint.description`:
 
@@ -293,14 +330,17 @@ read_sysfs_float
 
     read a float value from file
 
-    :param const char \*filename:
+    :param filename:
         name of file to read from
+    :type filename: const char \*
 
-    :param const char \*basedir:
+    :param basedir:
         the sysfs directory in which the file is to be found
+    :type basedir: const char \*
 
-    :param float \*val:
+    :param val:
         output the read float value
+    :type val: float \*
 
 .. _`read_sysfs_float.description`:
 
@@ -318,14 +358,17 @@ read_sysfs_string
 
     read a string from file
 
-    :param const char \*filename:
+    :param filename:
         name of file to read from
+    :type filename: const char \*
 
-    :param const char \*basedir:
+    :param basedir:
         the sysfs directory in which the file is to be found
+    :type basedir: const char \*
 
-    :param char \*str:
+    :param str:
         output the read string
+    :type str: char \*
 
 .. _`read_sysfs_string.description`:
 

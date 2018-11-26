@@ -8,18 +8,21 @@ START_BYTE
 
 .. c:function::  START_BYTE( id,  rs,  rw)
 
-    :param  id:
+    :param id:
         display's id as set by the manufacturer
+    :type id: 
 
-    :param  rs:
+    :param rs:
         operation type bit, one of:
         - START_RS_INDEX      set the index register
         - START_RS_REG        write/read registers/GRAM
+    :type rs: 
 
-    :param  rw:
+    :param rw:
         read/write operation
         - START_RW_WRITE       write
         - START_RW_READ        read
+    :type rw: 
 
 .. _`start_byte.description`:
 
@@ -46,11 +49,13 @@ CHECK_FREQ_REG
 
     Check the frequency for the SPI transfer. According to the datasheet, the controller accept higher frequency for the GRAM transfer, but it requires lower frequency when the registers are read/written. The macro sets the frequency in the spi_transfer structure if the frequency exceeds the maximum value.
 
-    :param  s:
+    :param s:
         *undescribed*
+    :type s: 
 
-    :param  x:
+    :param x:
         *undescribed*
+    :type x: 
 
 .. _`ili922x_read_status`:
 
@@ -61,11 +66,13 @@ ili922x_read_status
 
     read status register from display
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device
+    :type spi: struct spi_device \*
 
-    :param u16 \*rs:
+    :param rs:
         output value
+    :type rs: u16 \*
 
 .. _`ili922x_read`:
 
@@ -76,14 +83,17 @@ ili922x_read
 
     read register from display
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device
+    :type spi: struct spi_device \*
 
-    :param u8 reg:
+    :param reg:
         offset of the register to be read
+    :type reg: u8
 
-    :param u16 \*rx:
+    :param rx:
         output value
+    :type rx: u16 \*
 
 .. _`ili922x_write`:
 
@@ -94,14 +104,17 @@ ili922x_write
 
     write a controller register
 
-    :param struct spi_device \*spi:
+    :param spi:
         struct spi_device \*
+    :type spi: struct spi_device \*
 
-    :param u8 reg:
+    :param reg:
         offset of the register to be written
+    :type reg: u8
 
-    :param u16 value:
+    :param value:
         value to be written
+    :type value: u16
 
 .. _`ili922x_reg_dump`:
 
@@ -112,8 +125,9 @@ ili922x_reg_dump
 
     dump all registers
 
-    :param struct spi_device \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct spi_device \*
 
 .. _`set_write_to_gram_reg`:
 
@@ -124,8 +138,9 @@ set_write_to_gram_reg
 
     initialize the display to write the GRAM
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device
+    :type spi: struct spi_device \*
 
 .. _`ili922x_poweron`:
 
@@ -136,8 +151,9 @@ ili922x_poweron
 
     turn the display on
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device
+    :type spi: struct spi_device \*
 
 .. _`ili922x_poweron.description`:
 
@@ -157,8 +173,9 @@ ili922x_poweroff
 
     turn the display off
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device
+    :type spi: struct spi_device \*
 
 .. _`ili922x_display_init`:
 
@@ -169,8 +186,9 @@ ili922x_display_init
 
     initialize the display by setting the configuration registers
 
-    :param struct spi_device \*spi:
+    :param spi:
         spi device
+    :type spi: struct spi_device \*
 
 .. This file was automatic generated / don't edit.
 

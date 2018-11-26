@@ -10,8 +10,9 @@ jbd2_journal_recover
 
     recovers a on-disk journal
 
-    :param journal_t \*journal:
+    :param journal:
         the journal to recover
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_recover.description`:
 
@@ -35,8 +36,9 @@ jbd2_journal_skip_recovery
 
     Start journal and wipe exiting records
 
-    :param journal_t \*journal:
+    :param journal:
         journal to startup
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_skip_recovery.description`:
 

@@ -10,14 +10,17 @@ adf_iov_putmsg
 
     send PF2VF message
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
-    :param u32 msg:
+    :param msg:
         Message to send
+    :type msg: u32
 
-    :param u8 vf_nr:
+    :param vf_nr:
         VF number to which the message will be sent
+    :type vf_nr: u8
 
 .. _`adf_iov_putmsg.description`:
 
@@ -42,8 +45,9 @@ adf_enable_vf2pf_comms
 
     Function enables communication from vf to pf
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device virtual function.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_enable_vf2pf_comms.return`:
 

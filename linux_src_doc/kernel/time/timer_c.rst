@@ -10,11 +10,13 @@ __round_jiffies
 
     function to round jiffies to a full second
 
-    :param unsigned long j:
+    :param j:
         the time in (absolute) jiffies that should be rounded
+    :type j: unsigned long
 
-    :param int cpu:
+    :param cpu:
         the processor number on which the timeout will happen
+    :type cpu: int
 
 .. _`__round_jiffies.description`:
 
@@ -45,11 +47,13 @@ __round_jiffies_relative
 
     function to round jiffies to a full second
 
-    :param unsigned long j:
+    :param j:
         the time in (relative) jiffies that should be rounded
+    :type j: unsigned long
 
-    :param int cpu:
+    :param cpu:
         the processor number on which the timeout will happen
+    :type cpu: int
 
 .. _`__round_jiffies_relative.description`:
 
@@ -80,8 +84,9 @@ round_jiffies
 
     function to round jiffies to a full second
 
-    :param unsigned long j:
+    :param j:
         the time in (absolute) jiffies that should be rounded
+    :type j: unsigned long
 
 .. _`round_jiffies.description`:
 
@@ -108,8 +113,9 @@ round_jiffies_relative
 
     function to round jiffies to a full second
 
-    :param unsigned long j:
+    :param j:
         the time in (relative) jiffies that should be rounded
+    :type j: unsigned long
 
 .. _`round_jiffies_relative.description`:
 
@@ -136,11 +142,13 @@ __round_jiffies_up
 
     function to round jiffies up to a full second
 
-    :param unsigned long j:
+    :param j:
         the time in (absolute) jiffies that should be rounded
+    :type j: unsigned long
 
-    :param int cpu:
+    :param cpu:
         the processor number on which the timeout will happen
+    :type cpu: int
 
 .. _`__round_jiffies_up.description`:
 
@@ -161,11 +169,13 @@ __round_jiffies_up_relative
 
     function to round jiffies up to a full second
 
-    :param unsigned long j:
+    :param j:
         the time in (relative) jiffies that should be rounded
+    :type j: unsigned long
 
-    :param int cpu:
+    :param cpu:
         the processor number on which the timeout will happen
+    :type cpu: int
 
 .. _`__round_jiffies_up_relative.description`:
 
@@ -186,8 +196,9 @@ round_jiffies_up
 
     function to round jiffies up to a full second
 
-    :param unsigned long j:
+    :param j:
         the time in (absolute) jiffies that should be rounded
+    :type j: unsigned long
 
 .. _`round_jiffies_up.description`:
 
@@ -208,8 +219,9 @@ round_jiffies_up_relative
 
     function to round jiffies up to a full second
 
-    :param unsigned long j:
+    :param j:
         the time in (relative) jiffies that should be rounded
+    :type j: unsigned long
 
 .. _`round_jiffies_up_relative.description`:
 
@@ -230,21 +242,25 @@ init_timer_key
 
     initialize a timer
 
-    :param struct timer_list \*timer:
+    :param timer:
         the timer to be initialized
+    :type timer: struct timer_list \*
 
     :param void (\*func)(struct timer_list \*):
         timer callback function
 
-    :param unsigned int flags:
+    :param flags:
         timer flags
+    :type flags: unsigned int
 
-    :param const char \*name:
+    :param name:
         name of the timer
+    :type name: const char \*
 
-    :param struct lock_class_key \*key:
+    :param key:
         lockdep class key of the fake lock used for tracking timer
         sync lock dependencies
+    :type key: struct lock_class_key \*
 
 .. _`init_timer_key.description`:
 
@@ -263,11 +279,13 @@ mod_timer_pending
 
     modify a pending timer's timeout
 
-    :param struct timer_list \*timer:
+    :param timer:
         the pending timer to be modified
+    :type timer: struct timer_list \*
 
-    :param unsigned long expires:
+    :param expires:
         new timeout in jiffies
+    :type expires: unsigned long
 
 .. _`mod_timer_pending.description`:
 
@@ -288,11 +306,13 @@ mod_timer
 
     modify a timer's timeout
 
-    :param struct timer_list \*timer:
+    :param timer:
         the timer to be modified
+    :type timer: struct timer_list \*
 
-    :param unsigned long expires:
+    :param expires:
         new timeout in jiffies
+    :type expires: unsigned long
 
 .. _`mod_timer.description`:
 
@@ -323,11 +343,13 @@ timer_reduce
 
     Modify a timer's timeout if it would reduce the timeout
 
-    :param struct timer_list \*timer:
+    :param timer:
         The timer to be modified
+    :type timer: struct timer_list \*
 
-    :param unsigned long expires:
+    :param expires:
         New timeout in jiffies
+    :type expires: unsigned long
 
 .. _`timer_reduce.description`:
 
@@ -347,8 +369,9 @@ add_timer
 
     start a timer
 
-    :param struct timer_list \*timer:
+    :param timer:
         the timer to be added
+    :type timer: struct timer_list \*
 
 .. _`add_timer.description`:
 
@@ -374,11 +397,13 @@ add_timer_on
 
     start a timer on a particular CPU
 
-    :param struct timer_list \*timer:
+    :param timer:
         the timer to be added
+    :type timer: struct timer_list \*
 
-    :param int cpu:
+    :param cpu:
         the CPU to start it on
+    :type cpu: int
 
 .. _`add_timer_on.description`:
 
@@ -396,8 +421,9 @@ del_timer
 
     deactivate a timer.
 
-    :param struct timer_list \*timer:
+    :param timer:
         the timer to be deactivated
+    :type timer: struct timer_list \*
 
 .. _`del_timer.description`:
 
@@ -420,8 +446,9 @@ try_to_del_timer_sync
 
     Try to deactivate a timer
 
-    :param struct timer_list \*timer:
+    :param timer:
         timer to delete
+    :type timer: struct timer_list \*
 
 .. _`try_to_del_timer_sync.description`:
 
@@ -440,8 +467,9 @@ del_timer_sync
 
     deactivate a timer and wait for the handler to finish.
 
-    :param struct timer_list \*timer:
+    :param timer:
         the timer to be deactivated
+    :type timer: struct timer_list \*
 
 .. _`del_timer_sync.description`:
 
@@ -494,11 +522,13 @@ get_next_timer_interrupt
 
     return the time (clock mono) of the next timer
 
-    :param unsigned long basej:
+    :param basej:
         base time jiffies
+    :type basej: unsigned long
 
-    :param u64 basem:
+    :param basem:
         base time clock monotonic
+    :type basem: u64
 
 .. _`get_next_timer_interrupt.description`:
 
@@ -517,8 +547,9 @@ timer_clear_idle
 
     Clear the idle state of the timer base
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`timer_clear_idle.description`:
 
@@ -536,8 +567,9 @@ __run_timers
 
     run all expired timers (if any) on this CPU.
 
-    :param struct timer_base \*base:
+    :param base:
         the timer vector to be processed.
+    :type base: struct timer_base \*
 
 .. _`schedule_timeout`:
 
@@ -548,8 +580,9 @@ schedule_timeout
 
     sleep until timeout
 
-    :param signed long timeout:
+    :param timeout:
         timeout value in jiffies
+    :type timeout: signed long
 
 .. _`schedule_timeout.description`:
 
@@ -590,8 +623,9 @@ msleep
 
     sleep safely even with waitqueue interruptions
 
-    :param unsigned int msecs:
+    :param msecs:
         Time in milliseconds to sleep for
+    :type msecs: unsigned int
 
 .. _`msleep_interruptible`:
 
@@ -602,8 +636,9 @@ msleep_interruptible
 
     sleep waiting for signals
 
-    :param unsigned int msecs:
+    :param msecs:
         Time in milliseconds to sleep for
+    :type msecs: unsigned int
 
 .. _`usleep_range`:
 
@@ -614,11 +649,13 @@ usleep_range
 
     Sleep for an approximate time
 
-    :param unsigned long min:
+    :param min:
         Minimum time in usecs to sleep
+    :type min: unsigned long
 
-    :param unsigned long max:
+    :param max:
         Maximum time in usecs to sleep
+    :type max: unsigned long
 
 .. _`usleep_range.description`:
 

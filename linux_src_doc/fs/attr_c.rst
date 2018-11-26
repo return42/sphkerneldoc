@@ -10,11 +10,13 @@ setattr_prepare
 
     check if attribute changes to a dentry are allowed
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to check
+    :type dentry: struct dentry \*
 
-    :param struct iattr \*attr:
+    :param attr:
         attributes to change
+    :type attr: struct iattr \*
 
 .. _`setattr_prepare.description`:
 
@@ -39,11 +41,13 @@ inode_newsize_ok
 
     may this inode be truncated to a given size
 
-    :param const struct inode \*inode:
+    :param inode:
         the inode to be truncated
+    :type inode: const struct inode \*
 
-    :param loff_t offset:
+    :param offset:
         the new size to assign to the inode
+    :type offset: loff_t
 
 .. _`inode_newsize_ok.description`:
 
@@ -59,6 +63,13 @@ returned. \ ``inode``\  must be a file (not directory), with appropriate
 permissions to allow truncate (inode_newsize_ok does NOT check these
 conditions).
 
+.. _`inode_newsize_ok.return`:
+
+Return
+------
+
+0 on success, -ve errno on failure
+
 .. _`setattr_copy`:
 
 setattr_copy
@@ -68,11 +79,13 @@ setattr_copy
 
     copy simple metadata updates into the generic inode
 
-    :param struct inode \*inode:
+    :param inode:
         the inode to be updated
+    :type inode: struct inode \*
 
-    :param const struct iattr \*attr:
+    :param attr:
         the new attributes
+    :type attr: const struct iattr \*
 
 .. _`setattr_copy.description`:
 
@@ -98,14 +111,17 @@ notify_change
 
     modify attributes of a filesytem object
 
-    :param struct dentry \*dentry:
+    :param dentry:
         object affected
+    :type dentry: struct dentry \*
 
-    :param struct iattr \*attr:
-        *undescribed*
+    :param attr:
+        new attributes
+    :type attr: struct iattr \*
 
-    :param struct inode \*\*delegated_inode:
+    :param delegated_inode:
         returns inode, if the inode is delegated
+    :type delegated_inode: struct inode \*\*
 
 .. _`notify_change.description`:
 

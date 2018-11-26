@@ -10,17 +10,21 @@
 
     set the router for this originator
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node which is to be configured
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         the receive interface for which this route is set
+    :type recv_if: struct batadv_hard_iface \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         neighbor which should be the next router
+    :type neigh_node: struct batadv_neigh_node \*
 
 .. _`_batadv_update_route.description`:
 
@@ -38,17 +42,21 @@ batadv_update_route
 
     set the router for this originator
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node which is to be configured
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         the receive interface for which this route is set
+    :type recv_if: struct batadv_hard_iface \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         neighbor which should be the next router
+    :type neigh_node: struct batadv_neigh_node \*
 
 .. _`batadv_window_protected`:
 
@@ -59,23 +67,28 @@ batadv_window_protected
 
     checks whether the host restarted and is in the protection time.
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param s32 seq_num_diff:
+    :param seq_num_diff:
         difference between the current/received sequence number and
         the last sequence number
+    :type seq_num_diff: s32
 
-    :param s32 seq_old_max_diff:
+    :param seq_old_max_diff:
         maximum age of sequence number not considered as restart
+    :type seq_old_max_diff: s32
 
-    :param unsigned long \*last_reset:
+    :param last_reset:
         jiffies timestamp of the last reset, will be updated when reset
         is detected
+    :type last_reset: unsigned long \*
 
-    :param bool \*protection_started:
+    :param protection_started:
         is set to true if the protection window was started,
         doesn't change otherwise.
+    :type protection_started: bool \*
 
 .. _`batadv_window_protected.return`:
 
@@ -94,14 +107,17 @@ batadv_check_management_packet
 
     Check preconditions for management packets
 
-    :param struct sk_buff \*skb:
+    :param skb:
         incoming packet buffer
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         incoming hard interface
+    :type hard_iface: struct batadv_hard_iface \*
 
-    :param int header_len:
+    :param header_len:
         minimal header length of packet type
+    :type header_len: int
 
 .. _`batadv_check_management_packet.return`:
 
@@ -119,11 +135,13 @@ batadv_recv_my_icmp_packet
 
     receive an icmp packet locally
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         icmp packet to process
+    :type skb: struct sk_buff \*
 
 .. _`batadv_recv_my_icmp_packet.return`:
 
@@ -142,11 +160,13 @@ batadv_recv_icmp_packet
 
     Process incoming icmp packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         incoming packet buffer
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         incoming hard interface
+    :type recv_if: struct batadv_hard_iface \*
 
 .. _`batadv_recv_icmp_packet.return`:
 
@@ -164,14 +184,17 @@ batadv_check_unicast_packet
 
     Check for malformed unicast packets
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to check
+    :type skb: struct sk_buff \*
 
-    :param int hdr_size:
+    :param hdr_size:
         size of header to pull
+    :type hdr_size: int
 
 .. _`batadv_check_unicast_packet.description`:
 
@@ -204,8 +227,9 @@ batadv_last_bonding_get
 
     Get last_bonding_candidate of orig_node
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator node whose last bonding candidate should be retrieved
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_last_bonding_get.return`:
 
@@ -225,11 +249,13 @@ batadv_last_bonding_replace
 
     Replace last_bonding_candidate of orig_node
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator node whose bonding candidates should be replaced
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_orig_ifinfo \*new_candidate:
+    :param new_candidate:
         new bonding candidate or NULL
+    :type new_candidate: struct batadv_orig_ifinfo \*
 
 .. _`batadv_find_router`:
 
@@ -240,14 +266,17 @@ batadv_find_router
 
     find a suitable router for this originator
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the destination node
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         pointer to interface this packet was received on
+    :type recv_if: struct batadv_hard_iface \*
 
 .. _`batadv_find_router.return`:
 
@@ -266,20 +295,25 @@ batadv_reroute_unicast_packet
 
     update the unicast header for re-routing
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         unicast packet to process
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_unicast_packet \*unicast_packet:
+    :param unicast_packet:
         the unicast header to be updated
+    :type unicast_packet: struct batadv_unicast_packet \*
 
-    :param u8 \*dst_addr:
+    :param dst_addr:
         the payload destination
+    :type dst_addr: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_reroute_unicast_packet.description`:
 
@@ -306,11 +340,13 @@ batadv_recv_unhandled_unicast_packet
 
     receive and process packets which are in the unicast number space but not yet known to the implementation
 
-    :param struct sk_buff \*skb:
+    :param skb:
         unicast tvlv packet to process
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         pointer to interface this packet was received on
+    :type recv_if: struct batadv_hard_iface \*
 
 .. _`batadv_recv_unhandled_unicast_packet.return`:
 
@@ -329,11 +365,13 @@ batadv_recv_unicast_packet
 
     Process incoming unicast packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         incoming packet buffer
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         incoming hard interface
+    :type recv_if: struct batadv_hard_iface \*
 
 .. _`batadv_recv_unicast_packet.return`:
 
@@ -351,11 +389,13 @@ batadv_recv_unicast_tvlv
 
     receive and process unicast tvlv packets
 
-    :param struct sk_buff \*skb:
+    :param skb:
         unicast tvlv packet to process
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         pointer to interface this packet was received on
+    :type recv_if: struct batadv_hard_iface \*
 
 .. _`batadv_recv_unicast_tvlv.return`:
 
@@ -374,11 +414,13 @@ batadv_recv_frag_packet
 
     process received fragment
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the received fragment
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         interface that the skb is received on
+    :type recv_if: struct batadv_hard_iface \*
 
 .. _`batadv_recv_frag_packet.this-function-does-one-of-the-three-following-things`:
 
@@ -405,11 +447,13 @@ batadv_recv_bcast_packet
 
     Process incoming broadcast packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         incoming packet buffer
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*recv_if:
+    :param recv_if:
         incoming hard interface
+    :type recv_if: struct batadv_hard_iface \*
 
 .. _`batadv_recv_bcast_packet.return`:
 

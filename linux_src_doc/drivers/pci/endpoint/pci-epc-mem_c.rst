@@ -8,11 +8,13 @@ pci_epc_mem_get_order
 
 .. c:function:: int pci_epc_mem_get_order(struct pci_epc_mem *mem, size_t size)
 
-    :param struct pci_epc_mem \*mem:
+    :param mem:
         *undescribed*
+    :type mem: struct pci_epc_mem \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`pci_epc_mem_get_order.description`:
 
@@ -37,17 +39,21 @@ Kishon Vijay Abraham I <kishon@ti.com>
 
     initialize the pci_epc_mem structure
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device that invoked pci_epc_mem_init
+    :type epc: struct pci_epc \*
 
-    :param phys_addr_t phys_base:
+    :param phys_base:
         the physical address of the base
+    :type phys_base: phys_addr_t
 
-    :param size_t size:
+    :param size:
         the size of the address space
+    :type size: size_t
 
-    :param size_t page_size:
+    :param page_size:
         size of each page
+    :type page_size: size_t
 
 .. _`__pci_epc_mem_init.description`:
 
@@ -66,8 +72,9 @@ pci_epc_mem_exit
 
     cleanup the pci_epc_mem structure
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device that invoked pci_epc_mem_exit
+    :type epc: struct pci_epc \*
 
 .. _`pci_epc_mem_exit.description`:
 
@@ -86,14 +93,17 @@ pci_epc_mem_alloc_addr
 
     allocate memory address from EPC addr space
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device on which memory has to be allocated
+    :type epc: struct pci_epc \*
 
-    :param phys_addr_t \*phys_addr:
+    :param phys_addr:
         populate the allocated physical address here
+    :type phys_addr: phys_addr_t \*
 
-    :param size_t size:
+    :param size:
         the size of the address space that has to be allocated
+    :type size: size_t
 
 .. _`pci_epc_mem_alloc_addr.description`:
 
@@ -112,17 +122,21 @@ pci_epc_mem_free_addr
 
     free the allocated memory address
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device on which memory was allocated
+    :type epc: struct pci_epc \*
 
-    :param phys_addr_t phys_addr:
+    :param phys_addr:
         the allocated physical address
+    :type phys_addr: phys_addr_t
 
-    :param void __iomem \*virt_addr:
+    :param virt_addr:
         virtual address of the allocated mem space
+    :type virt_addr: void __iomem \*
 
-    :param size_t size:
+    :param size:
         the size of the allocated address space
+    :type size: size_t
 
 .. _`pci_epc_mem_free_addr.description`:
 

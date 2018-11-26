@@ -10,14 +10,17 @@ qib_pio_copy
 
     copy data to MMIO space, in multiples of 32-bits
 
-    :param void __iomem \*to:
+    :param to:
         destination, in MMIO space (must be 64-bit aligned)
+    :type to: void __iomem \*
 
-    :param const void \*from:
+    :param from:
         source (must be 64-bit aligned)
+    :type from: const void \*
 
-    :param size_t count:
+    :param count:
         number of 32-bit quantities to copy
+    :type count: size_t
 
 .. _`qib_pio_copy.description`:
 

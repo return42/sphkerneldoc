@@ -10,8 +10,9 @@ nfs_mount
 
     Obtain an NFS file handle for the given host and path
 
-    :param struct nfs_mount_request \*info:
+    :param info:
         pointer to mount request arguments
+    :type info: struct nfs_mount_request \*
 
 .. _`nfs_mount.description`:
 
@@ -32,8 +33,9 @@ nfs_umount
 
     Notify a server that we have unmounted this export
 
-    :param const struct nfs_mount_request \*info:
+    :param info:
         pointer to umount request arguments
+    :type info: const struct nfs_mount_request \*
 
 .. _`nfs_umount.description`:
 

@@ -16,6 +16,7 @@ sched
     idle_c
     loadavg_c
     membarrier_c
+    psi_c
     sched_h
     wait_bit_c
     wait_c

@@ -10,11 +10,13 @@ igb_raise_eec_clk
 
     Raise EEPROM clock
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*eecd:
+    :param eecd:
         pointer to the EEPROM
+    :type eecd: u32 \*
 
 .. _`igb_raise_eec_clk.description`:
 
@@ -32,11 +34,13 @@ igb_lower_eec_clk
 
     Lower EEPROM clock
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*eecd:
+    :param eecd:
         pointer to the EEPROM
+    :type eecd: u32 \*
 
 .. _`igb_lower_eec_clk.description`:
 
@@ -54,14 +58,17 @@ igb_shift_out_eec_bits
 
     Shift data bits our to the EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 data:
+    :param data:
         data to send to the EEPROM
+    :type data: u16
 
-    :param u16 count:
+    :param count:
         number of bits to shift out
+    :type count: u16
 
 .. _`igb_shift_out_eec_bits.description`:
 
@@ -81,11 +88,13 @@ igb_shift_in_eec_bits
 
     Shift data bits in from the EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 count:
+    :param count:
         number of bits to shift in
+    :type count: u16
 
 .. _`igb_shift_in_eec_bits.description`:
 
@@ -107,11 +116,13 @@ igb_poll_eerd_eewr_done
 
     Poll for EEPROM read/write completion
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param int ee_reg:
+    :param ee_reg:
         EEPROM flag for polling
+    :type ee_reg: int
 
 .. _`igb_poll_eerd_eewr_done.description`:
 
@@ -130,8 +141,9 @@ igb_acquire_nvm
 
     Generic request for access to EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_acquire_nvm.description`:
 
@@ -151,8 +163,9 @@ igb_standby_nvm
 
     Return EEPROM to standby state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_standby_nvm.description`:
 
@@ -170,8 +183,9 @@ e1000_stop_nvm
 
     Terminate EEPROM command
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_stop_nvm.description`:
 
@@ -189,8 +203,9 @@ igb_release_nvm
 
     Release exclusive access to EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_release_nvm.description`:
 
@@ -208,8 +223,9 @@ igb_ready_nvm_eeprom
 
     Prepares EEPROM for read/write
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_ready_nvm_eeprom.description`:
 
@@ -227,17 +243,21 @@ igb_read_nvm_spi
 
     Read EEPROM's using SPI
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of word in the EEPROM to read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to read
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the EEPROM
+    :type data: u16 \*
 
 .. _`igb_read_nvm_spi.description`:
 
@@ -255,17 +275,21 @@ igb_read_nvm_eerd
 
     Reads EEPROM using EERD register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of word in the EEPROM to read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to read
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the EEPROM
+    :type data: u16 \*
 
 .. _`igb_read_nvm_eerd.description`:
 
@@ -283,17 +307,21 @@ igb_write_nvm_spi
 
     Write to EEPROM using SPI
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be written to
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         16 bit word(s) to be written to the EEPROM
+    :type data: u16 \*
 
 .. _`igb_write_nvm_spi.description`:
 
@@ -314,14 +342,17 @@ igb_read_part_string
 
     Read device part number
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*part_num:
+    :param part_num:
         pointer to device part number
+    :type part_num: u8 \*
 
-    :param u32 part_num_size:
+    :param part_num_size:
         size of part number buffer
+    :type part_num_size: u32
 
 .. _`igb_read_part_string.description`:
 
@@ -340,8 +371,9 @@ igb_read_mac_addr
 
     Read device MAC address
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_read_mac_addr.description`:
 
@@ -361,8 +393,9 @@ igb_validate_nvm_checksum
 
     Validate EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_validate_nvm_checksum.description`:
 
@@ -381,8 +414,9 @@ igb_update_nvm_checksum
 
     Update EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_update_nvm_checksum.description`:
 
@@ -402,11 +436,13 @@ igb_get_fw_version
 
     Get firmware version information
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param struct e1000_fw_version \*fw_vers:
+    :param fw_vers:
         pointer to output structure
+    :type fw_vers: struct e1000_fw_version \*
 
 .. _`igb_get_fw_version.description`:
 

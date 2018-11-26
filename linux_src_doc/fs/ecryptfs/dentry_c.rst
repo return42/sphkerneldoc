@@ -10,11 +10,13 @@ ecryptfs_d_revalidate
 
     Linux filesystem encryption layer
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`ecryptfs_d_revalidate.description`:
 
@@ -48,8 +50,9 @@ ecryptfs_d_release
 
 .. c:function:: void ecryptfs_d_release(struct dentry *dentry)
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The ecryptfs dentry
+    :type dentry: struct dentry \*
 
 .. _`ecryptfs_d_release.description`:
 

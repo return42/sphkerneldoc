@@ -10,8 +10,9 @@ iommu_get_dma_cookie
 
     Acquire DMA-API resources for a domain
 
-    :param struct iommu_domain \*domain:
+    :param domain:
         IOMMU domain to prepare for DMA-API usage
+    :type domain: struct iommu_domain \*
 
 .. _`iommu_get_dma_cookie.description`:
 
@@ -30,11 +31,13 @@ iommu_get_msi_cookie
 
     Acquire just MSI remapping resources
 
-    :param struct iommu_domain \*domain:
+    :param domain:
         IOMMU domain to prepare
+    :type domain: struct iommu_domain \*
 
-    :param dma_addr_t base:
+    :param base:
         Start address of IOVA region for MSI mappings
+    :type base: dma_addr_t
 
 .. _`iommu_get_msi_cookie.description`:
 
@@ -57,9 +60,10 @@ iommu_put_dma_cookie
 
     Release a domain's DMA mapping resources
 
-    :param struct iommu_domain \*domain:
+    :param domain:
         IOMMU domain previously prepared by \ :c:func:`iommu_get_dma_cookie`\  or
         \ :c:func:`iommu_get_msi_cookie`\ 
+    :type domain: struct iommu_domain \*
 
 .. _`iommu_put_dma_cookie.description`:
 
@@ -77,11 +81,13 @@ iommu_dma_get_resv_regions
 
     Reserved region driver helper
 
-    :param struct device \*dev:
+    :param dev:
         Device from \ :c:func:`iommu_get_resv_regions`\ 
+    :type dev: struct device \*
 
-    :param struct list_head \*list:
+    :param list:
         Reserved region list from \ :c:func:`iommu_get_resv_regions`\ 
+    :type list: struct list_head \*
 
 .. _`iommu_dma_get_resv_regions.description`:
 
@@ -102,17 +108,21 @@ iommu_dma_init_domain
 
     Initialise a DMA mapping domain
 
-    :param struct iommu_domain \*domain:
+    :param domain:
         IOMMU domain previously prepared by \ :c:func:`iommu_get_dma_cookie`\ 
+    :type domain: struct iommu_domain \*
 
-    :param dma_addr_t base:
+    :param base:
         IOVA at which the mappable address space starts
+    :type base: dma_addr_t
 
-    :param u64 size:
+    :param size:
         Size of IOVA space
+    :type size: u64
 
-    :param struct device \*dev:
+    :param dev:
         Device the domain is being initialised for
+    :type dev: struct device \*
 
 .. _`iommu_dma_init_domain.description`:
 
@@ -133,14 +143,17 @@ dma_info_to_prot
 
     Translate DMA API directions and attributes to IOMMU API page flags.
 
-    :param enum dma_data_direction dir:
+    :param dir:
         Direction of DMA transfer
+    :type dir: enum dma_data_direction
 
-    :param bool coherent:
+    :param coherent:
         Is the DMA master cache-coherent?
+    :type coherent: bool
 
-    :param unsigned long attrs:
+    :param attrs:
         DMA attributes for the mapping
+    :type attrs: unsigned long
 
 .. _`dma_info_to_prot.return`:
 
@@ -158,17 +171,21 @@ iommu_dma_free
 
     Free a buffer allocated by \ :c:func:`iommu_dma_alloc`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device which owns this buffer
+    :type dev: struct device \*
 
-    :param struct page \*\*pages:
+    :param pages:
         Array of buffer pages as returned by \ :c:func:`iommu_dma_alloc`\ 
+    :type pages: struct page \*\*
 
-    :param size_t size:
+    :param size:
         Size of buffer in bytes
+    :type size: size_t
 
-    :param dma_addr_t \*handle:
+    :param handle:
         DMA address of buffer
+    :type handle: dma_addr_t \*
 
 .. _`iommu_dma_free.description`:
 
@@ -187,24 +204,30 @@ iommu_dma_alloc
 
     Allocate and map a buffer contiguous in IOVA space
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate memory for. Must be a real device
         attached to an iommu_dma_domain
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         Size of buffer in bytes
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         Allocation flags
+    :type gfp: gfp_t
 
-    :param unsigned long attrs:
+    :param attrs:
         DMA attributes for this allocation
+    :type attrs: unsigned long
 
-    :param int prot:
+    :param prot:
         IOMMU mapping flags
+    :type prot: int
 
-    :param dma_addr_t \*handle:
+    :param handle:
         Out argument for allocated DMA handle
+    :type handle: dma_addr_t \*
 
     :param void (\*flush_page)(struct device \*, const void \*, phys_addr_t):
         Arch callback which must ensure PAGE_SIZE bytes from the
@@ -235,14 +258,17 @@ iommu_dma_mmap
 
     Map a buffer into provided user VMA
 
-    :param struct page \*\*pages:
+    :param pages:
         Array representing buffer from \ :c:func:`iommu_dma_alloc`\ 
+    :type pages: struct page \*\*
 
-    :param size_t size:
+    :param size:
         Size of buffer in bytes
+    :type size: size_t
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMA describing requested userspace mapping
+    :type vma: struct vm_area_struct \*
 
 .. _`iommu_dma_mmap.description`:
 

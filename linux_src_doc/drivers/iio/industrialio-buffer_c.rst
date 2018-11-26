@@ -10,17 +10,21 @@ iio_buffer_read_first_n_outer
 
     chrdev read for buffer access
 
-    :param struct file \*filp:
+    :param filp:
         File structure pointer for the char device
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         Destination buffer for iio buffer read
+    :type buf: char __user \*
 
-    :param size_t n:
+    :param n:
         First n bytes to read
+    :type n: size_t
 
-    :param loff_t \*f_ps:
+    :param f_ps:
         Long offset provided by the user as a seek position
+    :type f_ps: loff_t \*
 
 .. _`iio_buffer_read_first_n_outer.description`:
 
@@ -47,12 +51,14 @@ iio_buffer_poll
 
     poll the buffer to find out if it has data
 
-    :param struct file \*filp:
+    :param filp:
         File structure pointer for device access
+    :type filp: struct file \*
 
-    :param struct poll_table_struct \*wait:
+    :param wait:
         Poll table structure pointer for which the driver adds
         a wait queue
+    :type wait: struct poll_table_struct \*
 
 .. _`iio_buffer_poll.return`:
 
@@ -71,8 +77,9 @@ iio_buffer_wakeup_poll
 
     Wakes up the buffer waitqueue
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_buffer_wakeup_poll.description`:
 
@@ -91,11 +98,13 @@ iio_buffer_set_attrs
 
     Set buffer specific attributes
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         The buffer for which we are setting attributes
+    :type buffer: struct iio_buffer \*
 
-    :param const struct attribute \*\*attrs:
+    :param attrs:
         Pointer to a null terminated list of pointers to attributes
+    :type attrs: const struct attribute \*\*
 
 .. _`iio_scan_mask_set`:
 
@@ -106,14 +115,17 @@ iio_scan_mask_set
 
     set particular bit in the scan mask
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         the iio device
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         the buffer whose scan mask we are interested in
+    :type buffer: struct iio_buffer \*
 
-    :param int bit:
+    :param bit:
         the bit to be set.
+    :type bit: int
 
 .. _`iio_scan_mask_set.description`:
 
@@ -173,11 +185,13 @@ iio_validate_scan_mask_onehot
 
     Validates that exactly one channel is selected
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         the iio device
+    :type indio_dev: struct iio_dev \*
 
-    :param const unsigned long \*mask:
+    :param mask:
         scan mask to be checked
+    :type mask: const unsigned long \*
 
 .. _`iio_validate_scan_mask_onehot.description`:
 
@@ -197,11 +211,13 @@ iio_push_to_buffers
 
     push to a registered buffer.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         iio_dev structure for device.
+    :type indio_dev: struct iio_dev \*
 
-    :param const void \*data:
+    :param data:
         Full scan.
+    :type data: const void \*
 
 .. _`iio_buffer_release`:
 
@@ -212,8 +228,9 @@ iio_buffer_release
 
     Free a buffer's resources
 
-    :param struct kref \*ref:
+    :param ref:
         Pointer to the kref embedded in the iio_buffer struct
+    :type ref: struct kref \*
 
 .. _`iio_buffer_release.description`:
 
@@ -234,8 +251,9 @@ iio_buffer_get
 
     Grab a reference to the buffer
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         The buffer to grab a reference for, may be NULL
+    :type buffer: struct iio_buffer \*
 
 .. _`iio_buffer_get.description`:
 
@@ -253,8 +271,9 @@ iio_buffer_put
 
     Release the reference to the buffer
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         The buffer to release the reference for, may be NULL
+    :type buffer: struct iio_buffer \*
 
 .. _`iio_device_attach_buffer`:
 
@@ -265,11 +284,13 @@ iio_device_attach_buffer
 
     Attach a buffer to a IIO device
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The device the buffer should be attached to
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_buffer \*buffer:
+    :param buffer:
         The buffer to attach to the device
+    :type buffer: struct iio_buffer \*
 
 .. _`iio_device_attach_buffer.description`:
 

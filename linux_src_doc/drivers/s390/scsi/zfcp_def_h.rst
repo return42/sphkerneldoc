@@ -111,8 +111,9 @@ sdev_to_zfcp
 
     Access zfcp LUN data for SCSI device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi_device where to get the zfcp_scsi_dev pointer
+    :type sdev: struct scsi_device \*
 
 .. _`zfcp_scsi_dev_lun`:
 
@@ -123,8 +124,9 @@ zfcp_scsi_dev_lun
 
     Return SCSI device LUN as 64 bit FCP LUN
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device where to get the LUN from
+    :type sdev: struct scsi_device \*
 
 .. _`zfcp_fsf_req`:
 

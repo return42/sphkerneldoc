@@ -10,11 +10,13 @@ iwl_beacon_time_mask_low
 
     mask of lower 32 bit of beacon time \ ``priv``\  -- pointer to iwl_priv data structure \ ``tsf_bits``\  -- number of bits need to shift for masking)
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param u16 tsf_bits:
+    :param tsf_bits:
         *undescribed*
+    :type tsf_bits: u16
 
 .. _`iwl_beacon_time_mask_high`:
 
@@ -25,11 +27,13 @@ iwl_beacon_time_mask_high
 
     mask of higher 32 bit of beacon time \ ``priv``\  -- pointer to iwl_priv data structure \ ``tsf_bits``\  -- number of bits need to shift for masking)
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param u16 tsf_bits:
+    :param tsf_bits:
         *undescribed*
+    :type tsf_bits: u16
 
 .. This file was automatic generated / don't edit.
 

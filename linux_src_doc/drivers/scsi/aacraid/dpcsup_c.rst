@@ -10,8 +10,9 @@ aac_response_normal
 
     Handle command replies
 
-    :param struct aac_queue \*q:
+    :param q:
         Queue to read from
+    :type q: struct aac_queue \*
 
 .. _`aac_response_normal.description`:
 
@@ -32,8 +33,9 @@ aac_command_normal
 
     handle commands
 
-    :param struct aac_queue \*q:
+    :param q:
         queue to process
+    :type q: struct aac_queue \*
 
 .. _`aac_command_normal.description`:
 
@@ -54,20 +56,25 @@ aac_intr_normal
 
     Handle command replies
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Device
+    :type dev: struct aac_dev \*
 
-    :param u32 index:
+    :param index:
         completion reference
+    :type index: u32
 
-    :param int isAif:
+    :param isAif:
         *undescribed*
+    :type isAif: int
 
-    :param int isFastResponse:
+    :param isFastResponse:
         *undescribed*
+    :type isFastResponse: int
 
-    :param struct hw_fib \*aif_fib:
+    :param aif_fib:
         *undescribed*
+    :type aif_fib: struct hw_fib \*
 
 .. _`aac_intr_normal.description`:
 

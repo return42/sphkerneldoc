@@ -27,8 +27,9 @@ ZSTD_maxCLevel
 
     maximum compression level available
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zstd_maxclevel.return`:
 
@@ -46,8 +47,9 @@ ZSTD_compressBound
 
     maximum compressed size in worst case scenario
 
-    :param size_t srcSize:
+    :param srcSize:
         The size of the data to compress.
+    :type srcSize: size_t
 
 .. _`zstd_compressbound.return`:
 
@@ -65,8 +67,9 @@ ZSTD_isError
 
     tells if a size_t function result is an error code
 
-    :param size_t code:
+    :param code:
         The function result to check for error.
+    :type code: size_t
 
 .. _`zstd_iserror.return`:
 
@@ -84,8 +87,9 @@ ZSTD_getErrorCode
 
     translates an error function result to a ZSTD_ErrorCode
 
-    :param size_t functionResult:
+    :param functionResult:
         The result of a function for which \ :c:func:`ZSTD_isError`\  is true.
+    :type functionResult: size_t
 
 .. _`zstd_geterrorcode.return`:
 
@@ -154,14 +158,17 @@ ZSTD_getCParams
 
     returns ZSTD_compressionParameters for selected level
 
-    :param int compressionLevel:
+    :param compressionLevel:
         The compression level from 1 to \ :c:func:`ZSTD_maxCLevel`\ .
+    :type compressionLevel: int
 
-    :param unsigned long long estimatedSrcSize:
+    :param estimatedSrcSize:
         The estimated source size to compress or 0 if unknown.
+    :type estimatedSrcSize: unsigned long long
 
-    :param size_t dictSize:
+    :param dictSize:
         The dictionary size or 0 if a dictionary isn't being used.
+    :type dictSize: size_t
 
 .. _`zstd_getcparams.return`:
 
@@ -179,14 +186,17 @@ ZSTD_getParams
 
     returns ZSTD_parameters for selected level
 
-    :param int compressionLevel:
+    :param compressionLevel:
         The compression level from 1 to \ :c:func:`ZSTD_maxCLevel`\ .
+    :type compressionLevel: int
 
-    :param unsigned long long estimatedSrcSize:
+    :param estimatedSrcSize:
         The estimated source size to compress or 0 if unknown.
+    :type estimatedSrcSize: unsigned long long
 
-    :param size_t dictSize:
+    :param dictSize:
         The dictionary size or 0 if a dictionary isn't being used.
+    :type dictSize: size_t
 
 .. _`zstd_getparams.description`:
 
@@ -212,8 +222,9 @@ ZSTD_CCtxWorkspaceBound
 
     amount of memory needed to initialize a ZSTD_CCtx
 
-    :param ZSTD_compressionParameters cParams:
+    :param cParams:
         The compression parameters to be used for compression.
+    :type cParams: ZSTD_compressionParameters
 
 .. _`zstd_cctxworkspacebound.description`:
 
@@ -258,13 +269,15 @@ ZSTD_initCCtx
 
     initialize a zstd compression context
 
-    :param void \*workspace:
+    :param workspace:
         The workspace to emplace the context into. It must outlive
         the returned context.
+    :type workspace: void \*
 
-    :param size_t workspaceSize:
+    :param workspaceSize:
         The size of workspace. Use \ :c:func:`ZSTD_CCtxWorkspaceBound`\  to
         determine how large the workspace must be.
+    :type workspaceSize: size_t
 
 .. _`zstd_initcctx.return`:
 
@@ -282,25 +295,31 @@ ZSTD_compressCCtx
 
     compress src into dst
 
-    :param ZSTD_CCtx \*ctx:
+    :param ctx:
         The context. Must have been initialized with a workspace at
         least as large as ZSTD_CCtxWorkspaceBound(params.cParams).
+    :type ctx: ZSTD_CCtx \*
 
-    :param void \*dst:
+    :param dst:
         The buffer to compress src into.
+    :type dst: void \*
 
-    :param size_t dstCapacity:
+    :param dstCapacity:
         The size of the destination buffer. May be any size, but
         ZSTD_compressBound(srcSize) is guaranteed to be large enough.
+    :type dstCapacity: size_t
 
-    :param const void \*src:
+    :param src:
         The data to compress.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The size of the data to compress.
+    :type srcSize: size_t
 
-    :param ZSTD_parameters params:
+    :param params:
         The parameters to use for compression. See \ :c:func:`ZSTD_getParams`\ .
+    :type params: ZSTD_parameters
 
 .. _`zstd_compresscctx.return`:
 
@@ -319,8 +338,9 @@ ZSTD_DCtxWorkspaceBound
 
     amount of memory needed to initialize a ZSTD_DCtx
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zstd_dctxworkspacebound.return`:
 
@@ -356,13 +376,15 @@ ZSTD_initDCtx
 
     initialize a zstd decompression context
 
-    :param void \*workspace:
+    :param workspace:
         The workspace to emplace the context into. It must outlive
         the returned context.
+    :type workspace: void \*
 
-    :param size_t workspaceSize:
+    :param workspaceSize:
         The size of workspace. Use \ :c:func:`ZSTD_DCtxWorkspaceBound`\  to
         determine how large the workspace must be.
+    :type workspaceSize: size_t
 
 .. _`zstd_initdctx.return`:
 
@@ -380,23 +402,28 @@ ZSTD_decompressDCtx
 
     decompress zstd compressed src into dst
 
-    :param ZSTD_DCtx \*ctx:
+    :param ctx:
         The decompression context.
+    :type ctx: ZSTD_DCtx \*
 
-    :param void \*dst:
+    :param dst:
         The buffer to decompress src into.
+    :type dst: void \*
 
-    :param size_t dstCapacity:
+    :param dstCapacity:
         The size of the destination buffer. Must be at least as large
         as the decompressed size. If the caller cannot upper bound the
         decompressed size, then it's better to use the streaming API.
+    :type dstCapacity: size_t
 
-    :param const void \*src:
+    :param src:
         The zstd compressed data to decompress. Multiple concatenated
         frames and skippable frames are allowed.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The exact size of the data to decompress.
+    :type srcSize: size_t
 
 .. _`zstd_decompressdctx.return`:
 
@@ -415,31 +442,39 @@ ZSTD_compress_usingDict
 
     compress src into dst using a dictionary
 
-    :param ZSTD_CCtx \*ctx:
+    :param ctx:
         The context. Must have been initialized with a workspace at
         least as large as ZSTD_CCtxWorkspaceBound(params.cParams).
+    :type ctx: ZSTD_CCtx \*
 
-    :param void \*dst:
+    :param dst:
         The buffer to compress src into.
+    :type dst: void \*
 
-    :param size_t dstCapacity:
+    :param dstCapacity:
         The size of the destination buffer. May be any size, but
         ZSTD_compressBound(srcSize) is guaranteed to be large enough.
+    :type dstCapacity: size_t
 
-    :param const void \*src:
+    :param src:
         The data to compress.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The size of the data to compress.
+    :type srcSize: size_t
 
-    :param const void \*dict:
+    :param dict:
         The dictionary to use for compression.
+    :type dict: const void \*
 
-    :param size_t dictSize:
+    :param dictSize:
         The size of the dictionary.
+    :type dictSize: size_t
 
-    :param ZSTD_parameters params:
+    :param params:
         The parameters to use for compression. See \ :c:func:`ZSTD_getParams`\ .
+    :type params: ZSTD_parameters
 
 .. _`zstd_compress_usingdict.description`:
 
@@ -466,30 +501,37 @@ ZSTD_decompress_usingDict
 
     decompress src into dst using a dictionary
 
-    :param ZSTD_DCtx \*ctx:
+    :param ctx:
         The decompression context.
+    :type ctx: ZSTD_DCtx \*
 
-    :param void \*dst:
+    :param dst:
         The buffer to decompress src into.
+    :type dst: void \*
 
-    :param size_t dstCapacity:
+    :param dstCapacity:
         The size of the destination buffer. Must be at least as large
         as the decompressed size. If the caller cannot upper bound the
         decompressed size, then it's better to use the streaming API.
+    :type dstCapacity: size_t
 
-    :param const void \*src:
+    :param src:
         The zstd compressed data to decompress. Multiple concatenated
         frames and skippable frames are allowed.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The exact size of the data to decompress.
+    :type srcSize: size_t
 
-    :param const void \*dict:
+    :param dict:
         The dictionary to use for decompression. The same dictionary
         must've been used to compress the data.
+    :type dict: const void \*
 
-    :param size_t dictSize:
+    :param dictSize:
         The size of the dictionary.
+    :type dictSize: size_t
 
 .. _`zstd_decompress_usingdict.return`:
 
@@ -508,8 +550,9 @@ ZSTD_CDictWorkspaceBound
 
     memory needed to initialize a ZSTD_CDict
 
-    :param ZSTD_compressionParameters cParams:
+    :param cParams:
         The compression parameters to be used for compression.
+    :type cParams: ZSTD_compressionParameters
 
 .. _`zstd_cdictworkspacebound.return`:
 
@@ -537,22 +580,27 @@ ZSTD_initCDict
 
     initialize a digested dictionary for compression
 
-    :param const void \*dictBuffer:
+    :param dictBuffer:
         The dictionary to digest. The buffer is referenced by the
         ZSTD_CDict so it must outlive the returned ZSTD_CDict.
+    :type dictBuffer: const void \*
 
-    :param size_t dictSize:
+    :param dictSize:
         The size of the dictionary.
+    :type dictSize: size_t
 
-    :param ZSTD_parameters params:
+    :param params:
         The parameters to use for compression. See \ :c:func:`ZSTD_getParams`\ .
+    :type params: ZSTD_parameters
 
-    :param void \*workspace:
+    :param workspace:
         The workspace. It must outlive the returned ZSTD_CDict.
+    :type workspace: void \*
 
-    :param size_t workspaceSize:
+    :param workspaceSize:
         The workspace size. Must be at least
         ZSTD_CDictWorkspaceBound(params.cParams).
+    :type workspaceSize: size_t
 
 .. _`zstd_initcdict.description`:
 
@@ -579,24 +627,30 @@ ZSTD_compress_usingCDict
 
     compress src into dst using a ZSTD_CDict
 
-    :param ZSTD_CCtx \*cctx:
+    :param cctx:
         *undescribed*
+    :type cctx: ZSTD_CCtx \*
 
-    :param void \*dst:
+    :param dst:
         The buffer to compress src into.
+    :type dst: void \*
 
-    :param size_t dstCapacity:
+    :param dstCapacity:
         The size of the destination buffer. May be any size, but
         ZSTD_compressBound(srcSize) is guaranteed to be large enough.
+    :type dstCapacity: size_t
 
-    :param const void \*src:
+    :param src:
         The data to compress.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The size of the data to compress.
+    :type srcSize: size_t
 
-    :param const ZSTD_CDict \*cdict:
+    :param cdict:
         The digested dictionary to use for compression.
+    :type cdict: const ZSTD_CDict \*
 
 .. _`zstd_compress_usingcdict.description`:
 
@@ -623,8 +677,9 @@ ZSTD_DDictWorkspaceBound
 
     memory needed to initialize a ZSTD_DDict
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zstd_ddictworkspacebound.return`:
 
@@ -652,19 +707,23 @@ ZSTD_initDDict
 
     initialize a digested dictionary for decompression
 
-    :param const void \*dictBuffer:
+    :param dictBuffer:
         The dictionary to digest. The buffer is referenced by the
         ZSTD_DDict so it must outlive the returned ZSTD_DDict.
+    :type dictBuffer: const void \*
 
-    :param size_t dictSize:
+    :param dictSize:
         The size of the dictionary.
+    :type dictSize: size_t
 
-    :param void \*workspace:
+    :param workspace:
         The workspace. It must outlive the returned ZSTD_DDict.
+    :type workspace: void \*
 
-    :param size_t workspaceSize:
+    :param workspaceSize:
         The workspace size. Must be at least
         \ :c:func:`ZSTD_DDictWorkspaceBound`\ .
+    :type workspaceSize: size_t
 
 .. _`zstd_initddict.description`:
 
@@ -691,27 +750,33 @@ ZSTD_decompress_usingDDict
 
     decompress src into dst using a ZSTD_DDict
 
-    :param ZSTD_DCtx \*dctx:
+    :param dctx:
         *undescribed*
+    :type dctx: ZSTD_DCtx \*
 
-    :param void \*dst:
+    :param dst:
         The buffer to decompress src into.
+    :type dst: void \*
 
-    :param size_t dstCapacity:
+    :param dstCapacity:
         The size of the destination buffer. Must be at least as large
         as the decompressed size. If the caller cannot upper bound the
         decompressed size, then it's better to use the streaming API.
+    :type dstCapacity: size_t
 
-    :param const void \*src:
+    :param src:
         The zstd compressed data to decompress. Multiple concatenated
         frames and skippable frames are allowed.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The exact size of the data to decompress.
+    :type srcSize: size_t
 
-    :param const ZSTD_DDict \*ddict:
+    :param ddict:
         The digested dictionary to use for decompression. The same
         dictionary must've been used to compress the data.
+    :type ddict: const ZSTD_DDict \*
 
 .. _`zstd_decompress_usingddict.return`:
 
@@ -748,8 +813,9 @@ ZSTD_CStreamWorkspaceBound
 
     memory needed to initialize a ZSTD_CStream
 
-    :param ZSTD_compressionParameters cParams:
+    :param cParams:
         The compression parameters to be used for compression.
+    :type cParams: ZSTD_compressionParameters
 
 .. _`zstd_cstreamworkspacebound.return`:
 
@@ -777,23 +843,27 @@ ZSTD_initCStream
 
     initialize a zstd streaming compression context
 
-    :param ZSTD_parameters params:
+    :param params:
         The zstd compression parameters.
+    :type params: ZSTD_parameters
 
-    :param unsigned long long pledgedSrcSize:
+    :param pledgedSrcSize:
         If params.fParams.contentSizeFlag == 1 then the caller must
         pass the source size (zero means empty source). Otherwise,
         the caller may optionally pass the source size, or zero if
         unknown.
+    :type pledgedSrcSize: unsigned long long
 
-    :param void \*workspace:
+    :param workspace:
         The workspace to emplace the context into. It must outlive
         the returned context.
+    :type workspace: void \*
 
-    :param size_t workspaceSize:
+    :param workspaceSize:
         The size of workspace.
         Use ZSTD_CStreamWorkspaceBound(params.cParams) to determine
         how large the workspace must be.
+    :type workspaceSize: size_t
 
 .. _`zstd_initcstream.return`:
 
@@ -811,20 +881,24 @@ ZSTD_initCStream_usingCDict
 
     initialize a streaming compression context
 
-    :param const ZSTD_CDict \*cdict:
+    :param cdict:
         The digested dictionary to use for compression.
+    :type cdict: const ZSTD_CDict \*
 
-    :param unsigned long long pledgedSrcSize:
+    :param pledgedSrcSize:
         Optionally the source size, or zero if unknown.
+    :type pledgedSrcSize: unsigned long long
 
-    :param void \*workspace:
+    :param workspace:
         The workspace to emplace the context into. It must outlive
         the returned context.
+    :type workspace: void \*
 
-    :param size_t workspaceSize:
+    :param workspaceSize:
         The size of workspace. Call \ :c:func:`ZSTD_CStreamWorkspaceBound`\ 
         with the cParams used to initialize the cdict to determine
         how large the workspace must be.
+    :type workspaceSize: size_t
 
 .. _`zstd_initcstream_usingcdict.return`:
 
@@ -842,11 +916,13 @@ ZSTD_resetCStream
 
     reset the context using parameters from creation
 
-    :param ZSTD_CStream \*zcs:
+    :param zcs:
         The zstd streaming compression context to reset.
+    :type zcs: ZSTD_CStream \*
 
-    :param unsigned long long pledgedSrcSize:
+    :param pledgedSrcSize:
         Optionally the source size, or zero if unknown.
+    :type pledgedSrcSize: unsigned long long
 
 .. _`zstd_resetcstream.description`:
 
@@ -873,18 +949,21 @@ ZSTD_compressStream
 
     streaming compress some of input into output
 
-    :param ZSTD_CStream \*zcs:
+    :param zcs:
         The zstd streaming compression context.
+    :type zcs: ZSTD_CStream \*
 
-    :param ZSTD_outBuffer \*output:
+    :param output:
         Destination buffer. \`output->pos\` is updated to indicate how much
         compressed data was written.
+    :type output: ZSTD_outBuffer \*
 
-    :param ZSTD_inBuffer \*input:
+    :param input:
         Source buffer. \`input->pos\` is updated to indicate how much data was
         read. Note that it may not consume the entire input, in which case
         \`input->pos < input->size\`, and it's up to the caller to present
         remaining data again.
+    :type input: ZSTD_inBuffer \*
 
 .. _`zstd_compressstream.description`:
 
@@ -912,12 +991,14 @@ ZSTD_flushStream
 
     flush internal buffers into output
 
-    :param ZSTD_CStream \*zcs:
+    :param zcs:
         The zstd streaming compression context.
+    :type zcs: ZSTD_CStream \*
 
-    :param ZSTD_outBuffer \*output:
+    :param output:
         Destination buffer. \`output->pos\` is updated to indicate how much
         compressed data was written.
+    :type output: ZSTD_outBuffer \*
 
 .. _`zstd_flushstream.description`:
 
@@ -945,12 +1026,14 @@ ZSTD_endStream
 
     flush internal buffers into output and end the frame
 
-    :param ZSTD_CStream \*zcs:
+    :param zcs:
         The zstd streaming compression context.
+    :type zcs: ZSTD_CStream \*
 
-    :param ZSTD_outBuffer \*output:
+    :param output:
         Destination buffer. \`output->pos\` is updated to indicate how much
         compressed data was written.
+    :type output: ZSTD_outBuffer \*
 
 .. _`zstd_endstream.description`:
 
@@ -977,8 +1060,9 @@ ZSTD_CStreamInSize
 
     recommended size for the input buffer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zstd_cstreaminsize.return`:
 
@@ -996,8 +1080,9 @@ ZSTD_CStreamOutSize
 
     recommended size for the output buffer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zstd_cstreamoutsize.description`:
 
@@ -1023,8 +1108,9 @@ ZSTD_DStreamWorkspaceBound
 
     memory needed to initialize a ZSTD_DStream
 
-    :param size_t maxWindowSize:
+    :param maxWindowSize:
         The maximum window size allowed for compressed frames.
+    :type maxWindowSize: size_t
 
 .. _`zstd_dstreamworkspacebound.return`:
 
@@ -1052,17 +1138,20 @@ ZSTD_initDStream
 
     initialize a zstd streaming decompression context
 
-    :param size_t maxWindowSize:
+    :param maxWindowSize:
         The maximum window size allowed for compressed frames.
+    :type maxWindowSize: size_t
 
-    :param void \*workspace:
+    :param workspace:
         The workspace to emplace the context into. It must outlive
         the returned context.
+    :type workspace: void \*
 
-    :param size_t workspaceSize:
+    :param workspaceSize:
         The size of workspace.
         Use ZSTD_DStreamWorkspaceBound(maxWindowSize) to determine
         how large the workspace must be.
+    :type workspaceSize: size_t
 
 .. _`zstd_initdstream.return`:
 
@@ -1080,20 +1169,24 @@ ZSTD_initDStream_usingDDict
 
     initialize streaming decompression context
 
-    :param size_t maxWindowSize:
+    :param maxWindowSize:
         The maximum window size allowed for compressed frames.
+    :type maxWindowSize: size_t
 
-    :param const ZSTD_DDict \*ddict:
+    :param ddict:
         The digested dictionary to use for decompression.
+    :type ddict: const ZSTD_DDict \*
 
-    :param void \*workspace:
+    :param workspace:
         The workspace to emplace the context into. It must outlive
         the returned context.
+    :type workspace: void \*
 
-    :param size_t workspaceSize:
+    :param workspaceSize:
         The size of workspace.
         Use ZSTD_DStreamWorkspaceBound(maxWindowSize) to determine
         how large the workspace must be.
+    :type workspaceSize: size_t
 
 .. _`zstd_initdstream_usingddict.return`:
 
@@ -1111,8 +1204,9 @@ ZSTD_resetDStream
 
     reset the context using parameters from creation
 
-    :param ZSTD_DStream \*zds:
+    :param zds:
         The zstd streaming decompression context to reset.
+    :type zds: ZSTD_DStream \*
 
 .. _`zstd_resetdstream.description`:
 
@@ -1138,18 +1232,21 @@ ZSTD_decompressStream
 
     streaming decompress some of input into output
 
-    :param ZSTD_DStream \*zds:
+    :param zds:
         The zstd streaming decompression context.
+    :type zds: ZSTD_DStream \*
 
-    :param ZSTD_outBuffer \*output:
+    :param output:
         Destination buffer. \`output.pos\` is updated to indicate how much
         decompressed data was written.
+    :type output: ZSTD_outBuffer \*
 
-    :param ZSTD_inBuffer \*input:
+    :param input:
         Source buffer. \`input.pos\` is updated to indicate how much data was
         read. Note that it may not consume the entire input, in which case
         \`input.pos < input.size\`, and it's up to the caller to present
         remaining data again.
+    :type input: ZSTD_inBuffer \*
 
 .. _`zstd_decompressstream.description`:
 
@@ -1180,8 +1277,9 @@ ZSTD_DStreamInSize
 
     recommended size for the input buffer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zstd_dstreaminsize.return`:
 
@@ -1199,8 +1297,9 @@ ZSTD_DStreamOutSize
 
     recommended size for the output buffer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zstd_dstreamoutsize.description`:
 
@@ -1226,13 +1325,15 @@ ZSTD_findFrameCompressedSize
 
     returns the size of a compressed frame
 
-    :param const void \*src:
+    :param src:
         Source buffer. It should point to the start of a zstd encoded frame
         or a skippable frame.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The size of the source buffer. It must be at least as large as the
         size of the frame.
+    :type srcSize: size_t
 
 .. _`zstd_findframecompressedsize.return`:
 
@@ -1252,12 +1353,14 @@ ZSTD_getFrameContentSize
 
     returns the content size in a zstd frame header
 
-    :param const void \*src:
+    :param src:
         It should point to the start of a zstd encoded frame.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The size of the source buffer. It must be at least as large as the
         frame header. \`ZSTD_frameHeaderSize_max\` is always large enough.
+    :type srcSize: size_t
 
 .. _`zstd_getframecontentsize.return`:
 
@@ -1277,12 +1380,14 @@ ZSTD_findDecompressedSize
 
     returns decompressed size of a series of frames
 
-    :param const void \*src:
+    :param src:
         It should point to the start of a series of zstd encoded and/or
         skippable frames.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The exact size of the series of frames.
+    :type srcSize: size_t
 
 .. _`zstd_finddecompressedsize.description`:
 
@@ -1317,8 +1422,9 @@ ZSTD_checkCParams
 
     ensure parameter values remain within authorized range
 
-    :param ZSTD_compressionParameters cParams:
+    :param cParams:
         The zstd compression parameters.
+    :type cParams: ZSTD_compressionParameters
 
 .. _`zstd_checkcparams.return`:
 
@@ -1336,14 +1442,17 @@ ZSTD_adjustCParams
 
     optimize parameters for a given srcSize and dictSize
 
-    :param ZSTD_compressionParameters cParams:
+    :param cParams:
         *undescribed*
+    :type cParams: ZSTD_compressionParameters
 
-    :param unsigned long long srcSize:
+    :param srcSize:
         Optionally the estimated source size, or zero if unknown.
+    :type srcSize: unsigned long long
 
-    :param size_t dictSize:
+    :param dictSize:
         Optionally the estimated dictionary size, or zero if unknown.
+    :type dictSize: size_t
 
 .. _`zstd_adjustcparams.return`:
 
@@ -1361,11 +1470,13 @@ ZSTD_isFrame
 
     returns true iff the buffer starts with a valid frame
 
-    :param const void \*buffer:
+    :param buffer:
         The source buffer to check.
+    :type buffer: const void \*
 
-    :param size_t size:
+    :param size:
         The size of the source buffer, must be at least 4 bytes.
+    :type size: size_t
 
 .. _`zstd_isframe.return`:
 
@@ -1383,11 +1494,13 @@ ZSTD_getDictID_fromDict
 
     returns the dictionary id stored in a dictionary
 
-    :param const void \*dict:
+    :param dict:
         The dictionary buffer.
+    :type dict: const void \*
 
-    :param size_t dictSize:
+    :param dictSize:
         The size of the dictionary buffer.
+    :type dictSize: size_t
 
 .. _`zstd_getdictid_fromdict.return`:
 
@@ -1407,8 +1520,9 @@ ZSTD_getDictID_fromDDict
 
     returns the dictionary id stored in a ZSTD_DDict
 
-    :param const ZSTD_DDict \*ddict:
+    :param ddict:
         The ddict to find the id of.
+    :type ddict: const ZSTD_DDict \*
 
 .. _`zstd_getdictid_fromddict.return`:
 
@@ -1428,12 +1542,14 @@ ZSTD_getDictID_fromFrame
 
     returns the dictionary id stored in a zstd frame
 
-    :param const void \*src:
+    :param src:
         Source buffer. It must be a zstd encoded frame.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The size of the source buffer. It must be at least as large as the
         frame header. \`ZSTD_frameHeaderSize_max\` is always large enough.
+    :type srcSize: size_t
 
 .. _`zstd_getdictid_fromframe.return`:
 
@@ -1464,15 +1580,18 @@ ZSTD_getFrameParams
 
     extracts parameters from a zstd or skippable frame
 
-    :param ZSTD_frameParams \*fparamsPtr:
+    :param fparamsPtr:
         On success the frame parameters are written here.
+    :type fparamsPtr: ZSTD_frameParams \*
 
-    :param const void \*src:
+    :param src:
         The source buffer. It must point to a zstd or skippable frame.
+    :type src: const void \*
 
-    :param size_t srcSize:
+    :param srcSize:
         The size of the source buffer. \`ZSTD_frameHeaderSize_max\` is
         always large enough to succeed.
+    :type srcSize: size_t
 
 .. _`zstd_getframeparams.return`:
 

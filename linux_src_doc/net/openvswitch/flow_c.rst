@@ -10,14 +10,17 @@ parse_vlan_tag
 
     Returns ERROR on memory error. Returns 0 if it encounters a non-vlan or incomplete packet. Returns 1 after successfully parsing vlan tag.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct vlan_head \*key_vh:
+    :param key_vh:
         *undescribed*
+    :type key_vh: struct vlan_head \*
 
-    :param bool untag_vlan:
+    :param untag_vlan:
         *undescribed*
+    :type untag_vlan: bool
 
 .. _`key_extract`:
 
@@ -28,12 +31,14 @@ key_extract
 
     extracts a flow key from an Ethernet frame.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff that contains the frame, with skb->data pointing to the
         Ethernet header
+    :type skb: struct sk_buff \*
 
-    :param struct sw_flow_key \*key:
+    :param key:
         output flow key
+    :type key: struct sw_flow_key \*
 
 .. _`key_extract.description`:
 

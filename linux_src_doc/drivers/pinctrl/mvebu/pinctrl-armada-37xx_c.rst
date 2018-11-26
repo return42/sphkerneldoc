@@ -70,14 +70,17 @@ armada_37xx_add_function
 
     Add a new function to the list
 
-    :param struct armada_37xx_pmx_func \*funcs:
+    :param funcs:
         array of function to add the new one
+    :type funcs: struct armada_37xx_pmx_func \*
 
-    :param int \*funcsize:
+    :param funcsize:
         size of the remaining space for the function
+    :type funcsize: int \*
 
-    :param const char \*name:
+    :param name:
         name of the function to add
+    :type name: const char \*
 
 .. _`armada_37xx_add_function.description`:
 
@@ -96,8 +99,9 @@ armada_37xx_fill_group
 
     complete the group array
 
-    :param struct armada_37xx_pinctrl \*info:
+    :param info:
         info driver instance
+    :type info: struct armada_37xx_pinctrl \*
 
 .. _`armada_37xx_fill_group.description`:
 
@@ -123,8 +127,9 @@ armada_37xx_fill_func
 
     complete the funcs array
 
-    :param struct armada_37xx_pinctrl \*info:
+    :param info:
         info driver instance
+    :type info: struct armada_37xx_pinctrl \*
 
 .. _`armada_37xx_fill_func.description`:
 

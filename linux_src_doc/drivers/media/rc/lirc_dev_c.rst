@@ -10,11 +10,13 @@ ir_lirc_raw_event
 
     Send raw IR data to lirc to be relayed to userspace
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
-    :param struct ir_raw_event ev:
+    :param ev:
         the struct ir_raw_event descriptor of the pulse/space
+    :type ev: struct ir_raw_event
 
 .. _`ir_lirc_scancode_event`:
 
@@ -25,11 +27,13 @@ ir_lirc_scancode_event
 
     Send scancode data to lirc to be relayed to userspace. This can be called in atomic context.
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
-    :param struct lirc_scancode \*lsc:
+    :param lsc:
         the struct lirc_scancode describing the decoded scancode
+    :type lsc: struct lirc_scancode \*
 
 .. This file was automatic generated / don't edit.
 

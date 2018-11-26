@@ -10,8 +10,9 @@ mpc52xx_lpbfifo_kick
 
     Trigger the next block of data to be transferred
 
-    :param struct mpc52xx_lpbfifo_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct mpc52xx_lpbfifo_request \*
 
 .. _`mpc52xx_lpbfifo_irq`:
 
@@ -22,11 +23,13 @@ mpc52xx_lpbfifo_irq
 
     IRQ handler for LPB FIFO
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: void \*
 
 .. _`mpc52xx_lpbfifo_irq.description`:
 
@@ -92,11 +95,13 @@ mpc52xx_lpbfifo_bcom_irq
 
     IRQ handler for LPB FIFO Bestcomm task
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: void \*
 
 .. _`mpc52xx_lpbfifo_bcom_irq.description`:
 
@@ -114,8 +119,9 @@ mpc52xx_lpbfifo_poll
 
     Poll for DMA completion
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mpc52xx_lpbfifo_submit`:
 
@@ -126,8 +132,9 @@ mpc52xx_lpbfifo_submit
 
     Submit an LPB FIFO transfer request.
 
-    :param struct mpc52xx_lpbfifo_request \*req:
+    :param req:
         Pointer to request structure
+    :type req: struct mpc52xx_lpbfifo_request \*
 
 .. This file was automatic generated / don't edit.
 

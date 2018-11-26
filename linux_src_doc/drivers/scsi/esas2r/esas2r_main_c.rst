@@ -10,17 +10,21 @@ esas2r_check_active_queue
 
     to abort.
 
-    :param struct esas2r_adapter \*a:
+    :param a:
         *undescribed*
+    :type a: struct esas2r_adapter \*
 
-    :param struct esas2r_request \*\*abort_request:
+    :param abort_request:
         *undescribed*
+    :type abort_request: struct esas2r_request \*\*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct scsi_cmnd \*
 
-    :param struct list_head \*queue:
+    :param queue:
         *undescribed*
+    :type queue: struct list_head \*
 
 .. _`esas2r_check_active_queue.description`:
 

@@ -10,11 +10,13 @@ mei_me_quirk_probe
 
     probe for devices that doesn't valid ME interface
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
-    :param const struct mei_cfg \*cfg:
+    :param cfg:
         per generation config
+    :type cfg: const struct mei_cfg \*
 
 .. _`mei_me_quirk_probe.return`:
 
@@ -32,11 +34,13 @@ mei_me_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in kcs_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`mei_me_probe.return`:
 
@@ -54,8 +58,9 @@ mei_me_shutdown
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`mei_me_shutdown.description`:
 
@@ -75,8 +80,9 @@ mei_me_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`mei_me_remove.description`:
 
@@ -95,8 +101,9 @@ mei_me_set_pm_domain
 
     fill and set pm domain structure for device
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei_device
+    :type dev: struct mei_device \*
 
 .. _`mei_me_unset_pm_domain`:
 
@@ -107,8 +114,9 @@ mei_me_unset_pm_domain
 
     clean pm domain structure for device
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei_device
+    :type dev: struct mei_device \*
 
 .. This file was automatic generated / don't edit.
 

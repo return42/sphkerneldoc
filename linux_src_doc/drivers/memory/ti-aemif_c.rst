@@ -126,17 +126,21 @@ aemif_calc_rate
 
     calculate timing data.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device to calculate for
+    :type pdev: struct platform_device \*
 
-    :param int wanted:
+    :param wanted:
         The cycle time needed in nanoseconds.
+    :type wanted: int
 
-    :param unsigned long clk:
+    :param clk:
         The input clock rate in kHz.
+    :type clk: unsigned long
 
-    :param int max:
+    :param max:
         The maximum divider value that can be programmed.
+    :type max: int
 
 .. _`aemif_calc_rate.description`:
 
@@ -155,11 +159,13 @@ aemif_config_abus
 
     configure async bus parameters
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device to configure for
+    :type pdev: struct platform_device \*
 
-    :param int csnum:
+    :param csnum:
         aemif chip select number
+    :type csnum: int
 
 .. _`aemif_config_abus.description`:
 
@@ -184,11 +190,13 @@ aemif_get_hw_params
 
     function to read hw register values
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device to read for
+    :type pdev: struct platform_device \*
 
-    :param int csnum:
+    :param csnum:
         aemif chip select number
+    :type csnum: int
 
 .. _`aemif_get_hw_params.description`:
 
@@ -208,11 +216,13 @@ of_aemif_parse_abus_config
 
     parse CS configuration from DT
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device to parse for
+    :type pdev: struct platform_device \*
 
-    :param struct device_node \*np:
+    :param np:
         device node ptr
+    :type np: struct device_node \*
 
 .. _`of_aemif_parse_abus_config.description`:
 

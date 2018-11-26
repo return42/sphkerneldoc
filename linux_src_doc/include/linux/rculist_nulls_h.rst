@@ -10,8 +10,9 @@ hlist_nulls_del_init_rcu
 
     deletes entry from hash list with re-initialization
 
-    :param struct hlist_nulls_node \*n:
+    :param n:
         the element to delete from the hash list.
+    :type n: struct hlist_nulls_node \*
 
 .. _`hlist_nulls_del_init_rcu.note`:
 
@@ -43,8 +44,9 @@ hlist_nulls_del_rcu
 
     deletes entry from hash list without re-initialization
 
-    :param struct hlist_nulls_node \*n:
+    :param n:
         the element to delete from the hash list.
+    :type n: struct hlist_nulls_node \*
 
 .. _`hlist_nulls_del_rcu.note`:
 
@@ -73,11 +75,13 @@ hlist_nulls_add_head_rcu
 
 .. c:function:: void hlist_nulls_add_head_rcu(struct hlist_nulls_node *n, struct hlist_nulls_head *h)
 
-    :param struct hlist_nulls_node \*n:
+    :param n:
         the element to add to the hash list.
+    :type n: struct hlist_nulls_node \*
 
-    :param struct hlist_nulls_head \*h:
+    :param h:
         the list to add to.
+    :type h: struct hlist_nulls_head \*
 
 .. _`hlist_nulls_add_head_rcu.description`:
 
@@ -106,17 +110,21 @@ hlist_nulls_for_each_entry_rcu
 
     iterate over rcu list of given type
 
-    :param  tpos:
+    :param tpos:
         the type * to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct hlist_nulls_node <hlist_nulls_node>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the hlist_nulls_node within the struct.
+    :type member: 
 
 .. _`hlist_nulls_for_each_entry_rcu.description`:
 
@@ -137,17 +145,21 @@ hlist_nulls_for_each_entry_safe
 
     iterate over list of given type safe against removal of list entry
 
-    :param  tpos:
+    :param tpos:
         the type * to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct hlist_nulls_node <hlist_nulls_node>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the hlist_nulls_node within the struct.
+    :type member: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ pdc202xx_init_one
 
     called when a PDC202xx is found
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the pdc202xx device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         the matching pci id
+    :type id: const struct pci_device_id \*
 
 .. _`pdc202xx_init_one.description`:
 

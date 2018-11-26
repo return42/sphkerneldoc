@@ -63,11 +63,13 @@ hwspin_trylock_irqsave
 
     try to lock an hwspinlock, disable interrupts
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         an hwspinlock which we want to trylock
+    :type hwlock: struct hwspinlock \*
 
-    :param unsigned long \*flags:
+    :param flags:
         a pointer to where the caller's interrupt state will be saved at
+    :type flags: unsigned long \*
 
 .. _`hwspin_trylock_irqsave.description`:
 
@@ -94,8 +96,9 @@ hwspin_trylock_irq
 
     try to lock an hwspinlock, disable interrupts
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         an hwspinlock which we want to trylock
+    :type hwlock: struct hwspinlock \*
 
 .. _`hwspin_trylock_irq.description`:
 
@@ -121,8 +124,9 @@ hwspin_trylock_raw
 
     attempt to lock a specific hwspinlock
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         an hwspinlock which we want to trylock
+    :type hwlock: struct hwspinlock \*
 
 .. _`hwspin_trylock_raw.description`:
 
@@ -153,8 +157,9 @@ hwspin_trylock
 
     attempt to lock a specific hwspinlock
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         an hwspinlock which we want to trylock
+    :type hwlock: struct hwspinlock \*
 
 .. _`hwspin_trylock.description`:
 
@@ -181,14 +186,17 @@ hwspin_lock_timeout_irqsave
 
     lock hwspinlock, with timeout, disable irqs
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         the hwspinlock to be locked
+    :type hwlock: struct hwspinlock \*
 
-    :param unsigned int to:
+    :param to:
         timeout value in msecs
+    :type to: unsigned int
 
-    :param unsigned long \*flags:
+    :param flags:
         a pointer to where the caller's interrupt state will be saved at
+    :type flags: unsigned long \*
 
 .. _`hwspin_lock_timeout_irqsave.description`:
 
@@ -216,11 +224,13 @@ hwspin_lock_timeout_irq
 
     lock hwspinlock, with timeout, disable irqs
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         the hwspinlock to be locked
+    :type hwlock: struct hwspinlock \*
 
-    :param unsigned int to:
+    :param to:
         timeout value in msecs
+    :type to: unsigned int
 
 .. _`hwspin_lock_timeout_irq.description`:
 
@@ -248,11 +258,13 @@ hwspin_lock_timeout_raw
 
     lock an hwspinlock with timeout limit
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         the hwspinlock to be locked
+    :type hwlock: struct hwspinlock \*
 
-    :param unsigned int to:
+    :param to:
         timeout value in msecs
+    :type to: unsigned int
 
 .. _`hwspin_lock_timeout_raw.description`:
 
@@ -285,11 +297,13 @@ hwspin_lock_timeout
 
     lock an hwspinlock with timeout limit
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         the hwspinlock to be locked
+    :type hwlock: struct hwspinlock \*
 
-    :param unsigned int to:
+    :param to:
         timeout value in msecs
+    :type to: unsigned int
 
 .. _`hwspin_lock_timeout.description`:
 
@@ -319,12 +333,14 @@ hwspin_unlock_irqrestore
 
     unlock hwspinlock, restore irq state
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         it is a bug
         to call unlock on a \ ``hwlock``\  that is already unlocked.
+    :type hwlock: struct hwspinlock \*
 
-    :param unsigned long \*flags:
+    :param flags:
         previous caller's interrupt state to restore
+    :type flags: unsigned long \*
 
 .. _`hwspin_unlock_irqrestore.description`:
 
@@ -344,8 +360,9 @@ hwspin_unlock_irq
 
     unlock hwspinlock, enable interrupts
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         a previously-acquired hwspinlock which we want to unlock
+    :type hwlock: struct hwspinlock \*
 
 .. _`hwspin_unlock_irq.description`:
 
@@ -374,8 +391,9 @@ hwspin_unlock_raw
 
     unlock hwspinlock
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         a previously-acquired hwspinlock which we want to unlock
+    :type hwlock: struct hwspinlock \*
 
 .. _`hwspin_unlock_raw.description`:
 
@@ -403,8 +421,9 @@ hwspin_unlock
 
     unlock hwspinlock
 
-    :param struct hwspinlock \*hwlock:
+    :param hwlock:
         a previously-acquired hwspinlock which we want to unlock
+    :type hwlock: struct hwspinlock \*
 
 .. _`hwspin_unlock.description`:
 

@@ -38,8 +38,9 @@ auditd_test_task
 
     Check to see if a given task is an audit daemon
 
-    :param struct task_struct \*task:
+    :param task:
         the task to check
+    :type task: struct task_struct \*
 
 .. _`auditd_test_task.description`:
 
@@ -57,8 +58,9 @@ audit_ctl_lock
 
     Take the audit control lock
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`audit_ctl_unlock`:
 
@@ -69,8 +71,9 @@ audit_ctl_unlock
 
     Drop the audit control lock
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`audit_ctl_owner_current`:
 
@@ -81,8 +84,9 @@ audit_ctl_owner_current
 
     Test to see if the current task owns the lock
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`audit_ctl_owner_current.description`:
 
@@ -101,8 +105,9 @@ auditd_pid_vnr
 
     Return the auditd PID relative to the namespace
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`auditd_pid_vnr.description`:
 
@@ -120,8 +125,9 @@ audit_get_sk
 
     Return the audit socket for the given network namespace
 
-    :param const struct net \*net:
+    :param net:
         the destination network namespace
+    :type net: const struct net \*
 
 .. _`audit_get_sk.description`:
 
@@ -140,8 +146,9 @@ audit_log_lost
 
     conditionally log lost audit message event
 
-    :param const char \*message:
+    :param message:
         the message stating reason for lost audit message
+    :type message: const char \*
 
 .. _`audit_log_lost.description`:
 
@@ -161,8 +168,9 @@ auditd_conn_free
 
     RCU helper to release an auditd connection struct
 
-    :param struct rcu_head \*rcu:
+    :param rcu:
         RCU head
+    :type rcu: struct rcu_head \*
 
 .. _`auditd_conn_free.description`:
 
@@ -181,14 +189,17 @@ auditd_set
 
     Set/Reset the auditd connection state
 
-    :param struct pid \*pid:
+    :param pid:
         auditd PID
+    :type pid: struct pid \*
 
-    :param u32 portid:
+    :param portid:
         auditd netlink portid
+    :type portid: u32
 
-    :param struct net \*net:
+    :param net:
         auditd network namespace pointer
+    :type net: struct net \*
 
 .. _`auditd_set.description`:
 
@@ -207,8 +218,9 @@ kauditd_printk_skb
 
     Print the audit record to the ring buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         audit record
+    :type skb: struct sk_buff \*
 
 .. _`kauditd_printk_skb.description`:
 
@@ -227,8 +239,9 @@ kauditd_rehold_skb
 
     Handle a audit record send failure in the hold queue
 
-    :param struct sk_buff \*skb:
+    :param skb:
         audit record
+    :type skb: struct sk_buff \*
 
 .. _`kauditd_rehold_skb.description`:
 
@@ -247,8 +260,9 @@ kauditd_hold_skb
 
     Queue an audit record, waiting for auditd
 
-    :param struct sk_buff \*skb:
+    :param skb:
         audit record
+    :type skb: struct sk_buff \*
 
 .. _`kauditd_hold_skb.description`:
 
@@ -271,8 +285,9 @@ kauditd_retry_skb
 
     Queue an audit record, attempt to send again to auditd
 
-    :param struct sk_buff \*skb:
+    :param skb:
         audit record
+    :type skb: struct sk_buff \*
 
 .. _`kauditd_retry_skb.description`:
 
@@ -292,8 +307,9 @@ auditd_reset
 
     Disconnect the auditd connection
 
-    :param const struct auditd_connection \*ac:
+    :param ac:
         auditd connection state
+    :type ac: const struct auditd_connection \*
 
 .. _`auditd_reset.description`:
 
@@ -315,8 +331,9 @@ auditd_send_unicast_skb
 
     Send a record via unicast to auditd
 
-    :param struct sk_buff \*skb:
+    :param skb:
         audit record
+    :type skb: struct sk_buff \*
 
 .. _`auditd_send_unicast_skb.description`:
 
@@ -338,17 +355,21 @@ kauditd_send_queue
 
     Helper for kauditd_thread to flush skb queues
 
-    :param struct sock \*sk:
+    :param sk:
         the sending sock
+    :type sk: struct sock \*
 
-    :param u32 portid:
+    :param portid:
         the netlink destination
+    :type portid: u32
 
-    :param struct sk_buff_head \*queue:
+    :param queue:
         the skb queue to process
+    :type queue: struct sk_buff_head \*
 
-    :param unsigned int retry_limit:
+    :param retry_limit:
         limit on number of netlink unicast failures
+    :type retry_limit: unsigned int
 
     :param void (\*skb_hook)(struct sk_buff \*skb):
         per-skb hook for additional processing
@@ -374,8 +395,9 @@ kauditd_thread
 
     Worker thread to send audit records to userspace
 
-    :param void \*dummy:
+    :param dummy:
         unused
+    :type dummy: void \*
 
 .. _`audit_send_reply`:
 
@@ -386,26 +408,33 @@ audit_send_reply
 
     send an audit reply message via netlink
 
-    :param struct sk_buff \*request_skb:
+    :param request_skb:
         skb of request we are replying to (used to target the reply)
+    :type request_skb: struct sk_buff \*
 
-    :param int seq:
+    :param seq:
         sequence number
+    :type seq: int
 
-    :param int type:
+    :param type:
         audit message type
+    :type type: int
 
-    :param int done:
+    :param done:
         done (last) flag
+    :type done: int
 
-    :param int multi:
+    :param multi:
         multi-part message flag
+    :type multi: int
 
-    :param const void \*payload:
+    :param payload:
         payload data
+    :type payload: const void \*
 
-    :param int size:
+    :param size:
         payload size
+    :type size: int
 
 .. _`audit_send_reply.description`:
 
@@ -424,8 +453,9 @@ audit_receive
 
     receive messages from a netlink control socket
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the message buffer
+    :type skb: struct sk_buff \*
 
 .. _`audit_receive.description`:
 
@@ -444,8 +474,9 @@ audit_serial
 
     compute a serial number for the audit record
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`audit_serial.description`:
 
@@ -480,14 +511,17 @@ audit_log_start
 
     obtain an audit buffer
 
-    :param struct audit_context \*ctx:
+    :param ctx:
         audit_context (may be NULL)
+    :type ctx: struct audit_context \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         type of allocation
+    :type gfp_mask: gfp_t
 
-    :param int type:
+    :param type:
         audit message type
+    :type type: int
 
 .. _`audit_log_start.description`:
 
@@ -512,11 +546,13 @@ audit_expand
 
     expand skb in the audit buffer
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         audit_buffer
+    :type ab: struct audit_buffer \*
 
-    :param int extra:
+    :param extra:
         space to add at tail of the skb
+    :type extra: int
 
 .. _`audit_expand.description`:
 
@@ -535,11 +571,13 @@ audit_log_format
 
     format a message into the audit buffer.
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         audit_buffer
+    :type ab: struct audit_buffer \*
 
-    :param const char \*fmt:
+    :param fmt:
         format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         optional parameters matching \ ``fmt``\  string
@@ -560,14 +598,17 @@ audit_log_n_hex
 
     convert a buffer to hex and append it to the audit skb
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         the audit_buffer
+    :type ab: struct audit_buffer \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         buffer to convert to hex
+    :type buf: const unsigned char \*
 
-    :param size_t len:
+    :param len:
         length of \ ``buf``\  to be converted
+    :type len: size_t
 
 .. _`audit_log_n_hex.description`:
 
@@ -588,11 +629,13 @@ audit_string_contains_control
 
     does a string need to be logged in hex
 
-    :param const char \*string:
+    :param string:
         string to be checked
+    :type string: const char \*
 
-    :param size_t len:
+    :param len:
         max length of the string to check
+    :type len: size_t
 
 .. _`audit_log_n_untrustedstring`:
 
@@ -603,14 +646,17 @@ audit_log_n_untrustedstring
 
     log a string that may contain random characters
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         audit_buffer
+    :type ab: struct audit_buffer \*
 
-    :param const char \*string:
+    :param string:
         string to be logged
+    :type string: const char \*
 
-    :param size_t len:
+    :param len:
         length of string (not including trailing null)
+    :type len: size_t
 
 .. _`audit_log_n_untrustedstring.description`:
 
@@ -634,11 +680,13 @@ audit_log_untrustedstring
 
     log a string that may contain random characters
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         audit_buffer
+    :type ab: struct audit_buffer \*
 
-    :param const char \*string:
+    :param string:
         string to be logged
+    :type string: const char \*
 
 .. _`audit_log_untrustedstring.description`:
 
@@ -657,20 +705,25 @@ audit_log_name
 
     produce AUDIT_PATH record from struct audit_names
 
-    :param struct audit_context \*context:
+    :param context:
         audit_context for the task
+    :type context: struct audit_context \*
 
-    :param struct audit_names \*n:
+    :param n:
         audit_names structure with reportable details
+    :type n: struct audit_names \*
 
-    :param const struct path \*path:
+    :param path:
         optional path to report instead of audit_names->name
+    :type path: const struct path \*
 
-    :param int record_num:
+    :param record_num:
         record number to report when handling a list of names
+    :type record_num: int
 
-    :param int \*call_panic:
+    :param call_panic:
         optional pointer to int that will be updated if secid fails
+    :type call_panic: int \*
 
 .. _`audit_log_link_denied`:
 
@@ -681,8 +734,9 @@ audit_log_link_denied
 
     report a link restriction denial
 
-    :param const char \*operation:
+    :param operation:
         specific link operation
+    :type operation: const char \*
 
 .. _`audit_log_end`:
 
@@ -693,8 +747,9 @@ audit_log_end
 
     end one audit record
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         the audit_buffer
+    :type ab: struct audit_buffer \*
 
 .. _`audit_log_end.description`:
 
@@ -715,17 +770,21 @@ audit_log
 
     Log an audit record
 
-    :param struct audit_context \*ctx:
+    :param ctx:
         audit context
+    :type ctx: struct audit_context \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         type of allocation
+    :type gfp_mask: gfp_t
 
-    :param int type:
+    :param type:
         audit message type
+    :type type: int
 
-    :param const char \*fmt:
+    :param fmt:
         format string to use
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable parameters matching the format string

@@ -10,20 +10,25 @@ to_sas_gpio_gp_bit
 
     given the gpio frame data find the byte/bit position of 'od'
 
-    :param unsigned int od:
+    :param od:
         od bit to find
+    :type od: unsigned int
 
-    :param u8 \*data:
+    :param data:
         incoming bitstream (from frame)
+    :type data: u8 \*
 
-    :param u8 index:
+    :param index:
         requested data register index (from frame)
+    :type index: u8
 
-    :param u8 count:
+    :param count:
         total number of registers in the bitstream (from frame)
+    :type count: u8
 
-    :param u8 \*bit:
+    :param bit:
         bit position of 'od' in the returned byte
+    :type bit: u8 \*
 
 .. _`to_sas_gpio_gp_bit.description`:
 

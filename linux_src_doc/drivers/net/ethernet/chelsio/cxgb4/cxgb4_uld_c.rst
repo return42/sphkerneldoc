@@ -10,14 +10,17 @@ uldrx_handler
 
     response queue handler for ULD queues
 
-    :param struct sge_rspq \*q:
+    :param q:
         the response queue that received the packet
+    :type q: struct sge_rspq \*
 
-    :param const __be64 \*rsp:
+    :param rsp:
         the response queue descriptor holding the offload message
+    :type rsp: const __be64 \*
 
-    :param const struct pkt_gl \*gl:
+    :param gl:
         the gather list of packet fragments
+    :type gl: const struct pkt_gl \*
 
 .. _`uldrx_handler.description`:
 
@@ -32,15 +35,17 @@ the ULD, we just maintain statistics.
 cxgb4_register_uld
 ==================
 
-.. c:function:: int cxgb4_register_uld(enum cxgb4_uld type, const struct cxgb4_uld_info *p)
+.. c:function:: void cxgb4_register_uld(enum cxgb4_uld type, const struct cxgb4_uld_info *p)
 
     register an upper-layer driver
 
-    :param enum cxgb4_uld type:
+    :param type:
         the ULD type
+    :type type: enum cxgb4_uld
 
-    :param const struct cxgb4_uld_info \*p:
+    :param p:
         the ULD methods
+    :type p: const struct cxgb4_uld_info \*
 
 .. _`cxgb4_register_uld.description`:
 
@@ -60,8 +65,9 @@ cxgb4_unregister_uld
 
     unregister an upper-layer driver
 
-    :param enum cxgb4_uld type:
+    :param type:
         the ULD type
+    :type type: enum cxgb4_uld
 
 .. _`cxgb4_unregister_uld.description`:
 

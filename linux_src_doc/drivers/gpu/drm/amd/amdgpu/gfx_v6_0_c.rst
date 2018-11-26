@@ -10,11 +10,13 @@ gfx_v6_0_ring_test_ib
 
     basic ring IB test
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring structure holding ring information
+    :type ring: struct amdgpu_ring \*
 
-    :param long timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: long
 
 .. _`gfx_v6_0_ring_test_ib.description`:
 

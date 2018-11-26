@@ -10,8 +10,9 @@ sctp_list_dequeue
 
     remove from the head of the queue
 
-    :param struct list_head \*list:
+    :param list:
         list to dequeue from
+    :type list: struct list_head \*
 
 .. _`sctp_list_dequeue.description`:
 

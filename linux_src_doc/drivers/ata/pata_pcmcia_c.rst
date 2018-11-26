@@ -10,11 +10,13 @@ pcmcia_set_mode
 
     PCMCIA specific mode setup
 
-    :param struct ata_link \*link:
+    :param link:
         link
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*r_failed_dev:
+    :param r_failed_dev:
         Return pointer for failed device
+    :type r_failed_dev: struct ata_device \*\*
 
 .. _`pcmcia_set_mode.description`:
 
@@ -35,11 +37,13 @@ pcmcia_set_mode_8bit
 
     PCMCIA specific mode setup
 
-    :param struct ata_link \*link:
+    :param link:
         link
+    :type link: struct ata_link \*
 
-    :param struct ata_device \*\*r_failed_dev:
+    :param r_failed_dev:
         Return pointer for failed device
+    :type r_failed_dev: struct ata_device \*\*
 
 .. _`pcmcia_set_mode_8bit.description`:
 
@@ -57,17 +61,21 @@ ata_data_xfer_8bit
 
     Transfer data by 8bit PIO
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command
+    :type qc: struct ata_queued_cmd \*
 
-    :param unsigned char \*buf:
+    :param buf:
         data buffer
+    :type buf: unsigned char \*
 
-    :param unsigned int buflen:
+    :param buflen:
         buffer length
+    :type buflen: unsigned int
 
-    :param int rw:
+    :param rw:
         read/write
+    :type rw: int
 
 .. _`ata_data_xfer_8bit.description`:
 
@@ -92,8 +100,9 @@ pcmcia_8bit_drain_fifo
 
     Stock FIFO drain logic for SFF controllers
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`pcmcia_8bit_drain_fifo.description`:
 
@@ -113,8 +122,9 @@ pcmcia_init_one
 
     attach a PCMCIA interface
 
-    :param struct pcmcia_device \*pdev:
+    :param pdev:
         pcmcia device
+    :type pdev: struct pcmcia_device \*
 
 .. _`pcmcia_init_one.description`:
 
@@ -133,8 +143,9 @@ pcmcia_remove_one
 
     unplug an pcmcia interface
 
-    :param struct pcmcia_device \*pdev:
+    :param pdev:
         pcmcia device
+    :type pdev: struct pcmcia_device \*
 
 .. _`pcmcia_remove_one.description`:
 

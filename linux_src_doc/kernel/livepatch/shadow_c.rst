@@ -77,14 +77,17 @@ klp_shadow_match
 
     verify a shadow variable matches given <obj, id>
 
-    :param struct klp_shadow \*shadow:
+    :param shadow:
         shadow variable to match
+    :type shadow: struct klp_shadow \*
 
-    :param void \*obj:
+    :param obj:
         pointer to parent object
+    :type obj: void \*
 
-    :param unsigned long id:
+    :param id:
         data identifier
+    :type id: unsigned long
 
 .. _`klp_shadow_match.return`:
 
@@ -102,11 +105,13 @@ klp_shadow_get
 
     retrieve a shadow variable data pointer
 
-    :param void \*obj:
+    :param obj:
         pointer to parent object
+    :type obj: void \*
 
-    :param unsigned long id:
+    :param id:
         data identifier
+    :type id: unsigned long
 
 .. _`klp_shadow_get.return`:
 
@@ -124,23 +129,29 @@ klp_shadow_alloc
 
     allocate and add a new shadow variable
 
-    :param void \*obj:
+    :param obj:
         pointer to parent object
+    :type obj: void \*
 
-    :param unsigned long id:
+    :param id:
         data identifier
+    :type id: unsigned long
 
-    :param size_t size:
+    :param size:
         size of attached data
+    :type size: size_t
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         GFP mask for allocation
+    :type gfp_flags: gfp_t
 
-    :param klp_shadow_ctor_t ctor:
+    :param ctor:
         custom constructor to initialize the shadow data (optional)
+    :type ctor: klp_shadow_ctor_t
 
-    :param void \*ctor_data:
+    :param ctor_data:
         pointer to any data needed by \ ``ctor``\  (optional)
+    :type ctor_data: void \*
 
 .. _`klp_shadow_alloc.description`:
 
@@ -176,23 +187,29 @@ klp_shadow_get_or_alloc
 
     get existing or allocate a new shadow variable
 
-    :param void \*obj:
+    :param obj:
         pointer to parent object
+    :type obj: void \*
 
-    :param unsigned long id:
+    :param id:
         data identifier
+    :type id: unsigned long
 
-    :param size_t size:
+    :param size:
         size of attached data
+    :type size: size_t
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         GFP mask for allocation
+    :type gfp_flags: gfp_t
 
-    :param klp_shadow_ctor_t ctor:
+    :param ctor:
         custom constructor to initialize the shadow data (optional)
+    :type ctor: klp_shadow_ctor_t
 
-    :param void \*ctor_data:
+    :param ctor_data:
         pointer to any data needed by \ ``ctor``\  (optional)
+    :type ctor_data: void \*
 
 .. _`klp_shadow_get_or_alloc.description`:
 
@@ -224,15 +241,18 @@ klp_shadow_free
 
     detach and free a <obj, id> shadow variable
 
-    :param void \*obj:
+    :param obj:
         pointer to parent object
+    :type obj: void \*
 
-    :param unsigned long id:
+    :param id:
         data identifier
+    :type id: unsigned long
 
-    :param klp_shadow_dtor_t dtor:
+    :param dtor:
         custom callback that can be used to unregister the variable
         and/or free data that the shadow variable points to (optional)
+    :type dtor: klp_shadow_dtor_t
 
 .. _`klp_shadow_free.description`:
 
@@ -251,12 +271,14 @@ klp_shadow_free_all
 
     detach and free all <\*, id> shadow variables
 
-    :param unsigned long id:
+    :param id:
         data identifier
+    :type id: unsigned long
 
-    :param klp_shadow_dtor_t dtor:
+    :param dtor:
         custom callback that can be used to unregister the variable
         and/or free data that the shadow variable points to (optional)
+    :type dtor: klp_shadow_dtor_t
 
 .. _`klp_shadow_free_all.description`:
 

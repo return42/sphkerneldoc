@@ -10,17 +10,21 @@ sdc_set_window_pos
 
     set window position of the respective plane.
 
-    :param struct mx3fb_data \*mx3fb:
+    :param mx3fb:
         mx3fb context.
+    :type mx3fb: struct mx3fb_data \*
 
-    :param enum ipu_channel channel:
+    :param channel:
         IPU DMAC channel ID.
+    :type channel: enum ipu_channel
 
-    :param int16_t x_pos:
+    :param x_pos:
         X coordinate relative to the top left corner to place window at.
+    :type x_pos: int16_t
 
-    :param int16_t y_pos:
+    :param y_pos:
         Y coordinate relative to the top left corner to place window at.
+    :type y_pos: int16_t
 
 .. _`sdc_init_panel`:
 
@@ -31,45 +35,57 @@ sdc_init_panel
 
     initialize a synchronous LCD panel.
 
-    :param struct mx3fb_data \*mx3fb:
+    :param mx3fb:
         mx3fb context.
+    :type mx3fb: struct mx3fb_data \*
 
-    :param enum ipu_panel panel:
+    :param panel:
         panel type.
+    :type panel: enum ipu_panel
 
-    :param uint32_t pixel_clk:
+    :param pixel_clk:
         desired pixel clock frequency in Hz.
+    :type pixel_clk: uint32_t
 
-    :param uint16_t width:
+    :param width:
         width of panel in pixels.
+    :type width: uint16_t
 
-    :param uint16_t height:
+    :param height:
         height of panel in pixels.
+    :type height: uint16_t
 
-    :param uint16_t h_start_width:
+    :param h_start_width:
         number of pixel clocks between the HSYNC signal pulse
         and the start of valid data.
+    :type h_start_width: uint16_t
 
-    :param uint16_t h_sync_width:
+    :param h_sync_width:
         width of the HSYNC signal in units of pixel clocks.
+    :type h_sync_width: uint16_t
 
-    :param uint16_t h_end_width:
+    :param h_end_width:
         number of pixel clocks between the end of valid data
         and the HSYNC signal for next line.
+    :type h_end_width: uint16_t
 
-    :param uint16_t v_start_width:
+    :param v_start_width:
         number of lines between the VSYNC signal pulse and the
         start of valid data.
+    :type v_start_width: uint16_t
 
-    :param uint16_t v_sync_width:
+    :param v_sync_width:
         width of the VSYNC signal in units of lines
+    :type v_sync_width: uint16_t
 
-    :param uint16_t v_end_width:
+    :param v_end_width:
         number of lines between the end of valid data and the
         VSYNC signal for next frame.
+    :type v_end_width: uint16_t
 
-    :param struct ipu_di_signal_cfg sig:
+    :param sig:
         bitfield of signal polarities for LCD interface.
+    :type sig: struct ipu_di_signal_cfg
 
 .. _`sdc_set_color_key`:
 
@@ -80,17 +96,21 @@ sdc_set_color_key
 
     set the transparent color key for SDC graphic plane.
 
-    :param struct mx3fb_data \*mx3fb:
+    :param mx3fb:
         mx3fb context.
+    :type mx3fb: struct mx3fb_data \*
 
-    :param enum ipu_channel channel:
+    :param channel:
         IPU DMAC channel ID.
+    :type channel: enum ipu_channel
 
-    :param bool enable:
+    :param enable:
         boolean to enable or disable color keyl.
+    :type enable: bool
 
-    :param uint32_t color_key:
+    :param color_key:
         24-bit RGB color to use as transparent color key.
+    :type color_key: uint32_t
 
 .. _`sdc_set_global_alpha`:
 
@@ -101,15 +121,18 @@ sdc_set_global_alpha
 
     set global alpha blending modes.
 
-    :param struct mx3fb_data \*mx3fb:
+    :param mx3fb:
         mx3fb context.
+    :type mx3fb: struct mx3fb_data \*
 
-    :param bool enable:
+    :param enable:
         boolean to enable or disable global alpha blending. If disabled,
         per pixel blending is used.
+    :type enable: bool
 
-    :param uint8_t alpha:
+    :param alpha:
         global alpha value.
+    :type alpha: uint8_t
 
 .. _`mx3fb_set_fix`:
 
@@ -120,8 +143,9 @@ mx3fb_set_fix
 
     set fixed framebuffer parameters from variable settings.
 
-    :param struct fb_info \*fbi:
+    :param fbi:
         *undescribed*
+    :type fbi: struct fb_info \*
 
 .. _`mx3fb_set_par`:
 
@@ -132,8 +156,9 @@ mx3fb_set_par
 
     set framebuffer parameters and change the operating mode.
 
-    :param struct fb_info \*fbi:
+    :param fbi:
         framebuffer information pointer.
+    :type fbi: struct fb_info \*
 
 .. _`mx3fb_check_var`:
 
@@ -144,11 +169,13 @@ mx3fb_check_var
 
     check and adjust framebuffer variable parameters.
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         framebuffer variable parameters
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*fbi:
+    :param fbi:
         framebuffer information pointer
+    :type fbi: struct fb_info \*
 
 .. _`mx3fb_blank`:
 
@@ -159,11 +186,13 @@ mx3fb_blank
 
     blank the display.
 
-    :param int blank:
+    :param blank:
         *undescribed*
+    :type blank: int
 
-    :param struct fb_info \*fbi:
+    :param fbi:
         *undescribed*
+    :type fbi: struct fb_info \*
 
 .. _`mx3fb_pan_display`:
 
@@ -174,11 +203,13 @@ mx3fb_pan_display
 
     pan or wrap the display
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         variable screen buffer information.
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*fbi:
+    :param fbi:
         *undescribed*
+    :type fbi: struct fb_info \*
 
 .. _`mx3fb_pan_display.description`:
 
@@ -196,14 +227,17 @@ mx3fb_map_video_memory
 
     allocates the DRAM memory for the frame buffer.
 
-    :param struct fb_info \*fbi:
+    :param fbi:
         framebuffer information pointer
+    :type fbi: struct fb_info \*
 
-    :param unsigned int mem_len:
+    :param mem_len:
         length of mapped memory
+    :type mem_len: unsigned int
 
-    :param bool lock:
+    :param lock:
         do not lock during initialisation
+    :type lock: bool
 
 .. _`mx3fb_map_video_memory.description`:
 
@@ -224,8 +258,9 @@ mx3fb_unmap_video_memory
 
     de-allocate frame buffer memory.
 
-    :param struct fb_info \*fbi:
+    :param fbi:
         framebuffer information pointer
+    :type fbi: struct fb_info \*
 
 .. _`mx3fb_init_fbinfo`:
 
@@ -236,11 +271,13 @@ mx3fb_init_fbinfo
 
     initialize framebuffer information object.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct fb_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct fb_ops \*
 
 .. This file was automatic generated / don't edit.
 

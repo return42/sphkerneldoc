@@ -95,6 +95,7 @@ Definition
         bool no_nvm_upgrade;
         bool safe_mode;
         bool boot;
+        bool rpm;
         unsigned int authorized;
         struct work_struct work;
         enum tb_security_level security_level;
@@ -169,6 +170,9 @@ safe_mode
 
 boot
     Whether the switch was already authorized on boot or not
+
+rpm
+    The switch supports runtime PM
 
 authorized
     Whether the switch is authorized by user or policy
@@ -470,6 +474,8 @@ Definition
         int (*resume_noirq)(struct tb *tb);
         int (*suspend)(struct tb *tb);
         void (*complete)(struct tb *tb);
+        int (*runtime_suspend)(struct tb *tb);
+        int (*runtime_resume)(struct tb *tb);
         void (*handle_event)(struct tb *tb, enum tb_cfg_pkg_type, const void *buf, size_t size);
         int (*get_boot_acl)(struct tb *tb, uuid_t *uuids, size_t nuuids);
         int (*set_boot_acl)(struct tb *tb, const uuid_t *uuids, size_t nuuids);
@@ -508,6 +514,12 @@ suspend
 complete
     Connection manager specific complete
 
+runtime_suspend
+    Connection manager specific runtime_suspend
+
+runtime_resume
+    Connection manager specific runtime_resume
+
 handle_event
     Handle thunderbolt event
 
@@ -544,8 +556,9 @@ tb_upstream_port
 
     return the upstream port of a switch
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
 .. _`tb_upstream_port.description`:
 
@@ -573,8 +586,9 @@ tb_downstream_route
 
     get route to downstream switch
 
-    :param struct tb_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tb_port \*
 
 .. _`tb_downstream_route.description`:
 

@@ -1,22 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_of.c
 
-.. _`drm_crtc_port_mask`:
+.. _`overview`:
 
-drm_crtc_port_mask
-==================
+overview
+========
 
-.. c:function:: uint32_t drm_crtc_port_mask(struct drm_device *dev, struct device_node *port)
+A set of helper functions to aid DRM drivers in parsing standard DT
+properties.
+
+.. _`drm_of_crtc_port_mask`:
+
+drm_of_crtc_port_mask
+=====================
+
+.. c:function:: uint32_t drm_of_crtc_port_mask(struct drm_device *dev, struct device_node *port)
 
     find the mask of a registered CRTC by port OF node
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct device_node \*port:
+    :param port:
         port OF node
+    :type port: struct device_node \*
 
-.. _`drm_crtc_port_mask.description`:
+.. _`drm_of_crtc_port_mask.description`:
 
 Description
 -----------
@@ -33,11 +43,13 @@ drm_of_find_possible_crtcs
 
     find the possible CRTCs for an encoder port
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct device_node \*port:
+    :param port:
         encoder port to scan for endpoints
+    :type port: struct device_node \*
 
 .. _`drm_of_find_possible_crtcs.description`:
 
@@ -59,17 +71,20 @@ drm_of_component_match_add
 
     Add a component helper OF node match rule
 
-    :param struct device \*master:
+    :param master:
         master device
+    :type master: struct device \*
 
-    :param struct component_match \*\*matchptr:
+    :param matchptr:
         component match pointer
+    :type matchptr: struct component_match \*\*
 
     :param int (\*compare)(struct device \*, void \*):
         compare function used for matching component
 
-    :param struct device_node \*node:
+    :param node:
         of_node
+    :type node: struct device_node \*
 
 .. _`drm_of_component_probe`:
 
@@ -80,14 +95,16 @@ drm_of_component_probe
 
     Generic probe function for a component based master
 
-    :param struct device \*dev:
+    :param dev:
         master device containing the OF node
+    :type dev: struct device \*
 
     :param int (\*compare_of)(struct device \*, void \*):
         compare function used for matching components
 
-    :param const struct component_master_ops \*m_ops:
-        *undescribed*
+    :param m_ops:
+        component master ops to be used
+    :type m_ops: const struct component_master_ops \*
 
 .. _`drm_of_component_probe.description`:
 

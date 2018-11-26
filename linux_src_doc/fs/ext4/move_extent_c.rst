@@ -10,14 +10,17 @@ get_ext_path
 
     Find an extent path for designated logical block number.
 
-    :param struct inode \*inode:
+    :param inode:
         an inode which is searched
+    :type inode: struct inode \*
 
-    :param ext4_lblk_t lblock:
+    :param lblock:
         logical block number to find an extent path
+    :type lblock: ext4_lblk_t
 
-    :param struct ext4_ext_path \*\*ppath:
+    :param ppath:
         *undescribed*
+    :type ppath: struct ext4_ext_path \*\*
 
 .. _`get_ext_path.description`:
 
@@ -36,11 +39,13 @@ ext4_double_down_write_data_sem
 
     Acquire two inodes' write lock of i_data_sem
 
-    :param struct inode \*first:
+    :param first:
         *undescribed*
+    :type first: struct inode \*
 
-    :param struct inode \*second:
+    :param second:
         *undescribed*
+    :type second: struct inode \*
 
 .. _`ext4_double_down_write_data_sem.description`:
 
@@ -58,12 +63,14 @@ ext4_double_up_write_data_sem
 
     Release two inodes' write lock of i_data_sem
 
-    :param struct inode \*orig_inode:
+    :param orig_inode:
         original inode structure to be released its lock first
+    :type orig_inode: struct inode \*
 
-    :param struct inode \*donor_inode:
+    :param donor_inode:
         donor inode structure to be released its lock second
         Release write lock of i_data_sem of two inodes (orig and donor).
+    :type donor_inode: struct inode \*
 
 .. _`mext_check_coverage`:
 
@@ -74,20 +81,25 @@ mext_check_coverage
 
     Check that all extents in range has the same type
 
-    :param struct inode \*inode:
+    :param inode:
         inode in question
+    :type inode: struct inode \*
 
-    :param ext4_lblk_t from:
+    :param from:
         block offset of inode
+    :type from: ext4_lblk_t
 
-    :param ext4_lblk_t count:
+    :param count:
         block count to be checked
+    :type count: ext4_lblk_t
 
-    :param int unwritten:
+    :param unwritten:
         extents expected to be unwritten
+    :type unwritten: int
 
-    :param int \*err:
+    :param err:
         pointer to save error value
+    :type err: int \*
 
 .. _`mext_check_coverage.description`:
 
@@ -105,20 +117,25 @@ mext_page_double_lock
 
     Grab and lock pages on both \ ``inode1``\  and \ ``inode2``\ 
 
-    :param struct inode \*inode1:
+    :param inode1:
         the inode structure
+    :type inode1: struct inode \*
 
-    :param struct inode \*inode2:
+    :param inode2:
         the inode structure
+    :type inode2: struct inode \*
 
-    :param pgoff_t index1:
+    :param index1:
         page index
+    :type index1: pgoff_t
 
-    :param pgoff_t index2:
+    :param index2:
         page index
+    :type index2: pgoff_t
 
-    :param struct page  \*page:
+    :param page:
         result page vector
+    :type page: struct page  \*
 
 .. _`mext_page_double_lock.description`:
 
@@ -136,29 +153,37 @@ move_extent_per_page
 
     Move extent data per page
 
-    :param struct file \*o_filp:
+    :param o_filp:
         file structure of original file
+    :type o_filp: struct file \*
 
-    :param struct inode \*donor_inode:
+    :param donor_inode:
         donor inode
+    :type donor_inode: struct inode \*
 
-    :param pgoff_t orig_page_offset:
+    :param orig_page_offset:
         page index on original file
+    :type orig_page_offset: pgoff_t
 
-    :param pgoff_t donor_page_offset:
+    :param donor_page_offset:
         page index on donor file
+    :type donor_page_offset: pgoff_t
 
-    :param int data_offset_in_page:
+    :param data_offset_in_page:
         block index where data swapping starts
+    :type data_offset_in_page: int
 
-    :param int block_len_in_page:
+    :param block_len_in_page:
         the number of blocks to be swapped
+    :type block_len_in_page: int
 
-    :param int unwritten:
+    :param unwritten:
         orig extent is unwritten or not
+    :type unwritten: int
 
-    :param int \*err:
+    :param err:
         pointer to save return value
+    :type err: int \*
 
 .. _`move_extent_per_page.description`:
 
@@ -179,20 +204,25 @@ mext_check_arguments
 
     Check whether move extent can be done
 
-    :param struct inode \*orig_inode:
+    :param orig_inode:
         original inode
+    :type orig_inode: struct inode \*
 
-    :param struct inode \*donor_inode:
+    :param donor_inode:
         donor inode
+    :type donor_inode: struct inode \*
 
-    :param __u64 orig_start:
+    :param orig_start:
         logical start offset in block for orig
+    :type orig_start: __u64
 
-    :param __u64 donor_start:
+    :param donor_start:
         logical start offset in block for donor
+    :type donor_start: __u64
 
-    :param __u64 \*len:
+    :param len:
         the number of blocks to be moved
+    :type len: __u64 \*
 
 .. _`mext_check_arguments.description`:
 
@@ -212,23 +242,29 @@ ext4_move_extents
 
     Exchange the specified range of a file
 
-    :param struct file \*o_filp:
+    :param o_filp:
         file structure of the original file
+    :type o_filp: struct file \*
 
-    :param struct file \*d_filp:
+    :param d_filp:
         file structure of the donor file
+    :type d_filp: struct file \*
 
-    :param __u64 orig_blk:
+    :param orig_blk:
         start offset in block for orig
+    :type orig_blk: __u64
 
-    :param __u64 donor_blk:
+    :param donor_blk:
         start offset in block for donor
+    :type donor_blk: __u64
 
-    :param __u64 len:
+    :param len:
         the number of blocks to be moved
+    :type len: __u64
 
-    :param __u64 \*moved_len:
+    :param moved_len:
         moved block length
+    :type moved_len: __u64 \*
 
 .. _`ext4_move_extents.description`:
 

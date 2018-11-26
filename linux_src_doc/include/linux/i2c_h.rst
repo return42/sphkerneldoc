@@ -10,14 +10,17 @@ i2c_master_recv
 
     issue a single I2C message in master receive mode
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param char \*buf:
+    :param buf:
         Where to store data read from slave
+    :type buf: char \*
 
-    :param int count:
+    :param count:
         How many bytes to read, must be less than 64k since msg.len is u16
+    :type count: int
 
 .. _`i2c_master_recv.description`:
 
@@ -35,14 +38,17 @@ i2c_master_recv_dmasafe
 
     issue a single I2C message in master receive mode using a DMA safe buffer
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param char \*buf:
+    :param buf:
         Where to store data read from slave, must be safe to use with DMA
+    :type buf: char \*
 
-    :param int count:
+    :param count:
         How many bytes to read, must be less than 64k since msg.len is u16
+    :type count: int
 
 .. _`i2c_master_recv_dmasafe.description`:
 
@@ -60,14 +66,17 @@ i2c_master_send
 
     issue a single I2C message in master transmit mode
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param const char \*buf:
+    :param buf:
         Data that will be written to the slave
+    :type buf: const char \*
 
-    :param int count:
+    :param count:
         How many bytes to write, must be less than 64k since msg.len is u16
+    :type count: int
 
 .. _`i2c_master_send.description`:
 
@@ -85,14 +94,17 @@ i2c_master_send_dmasafe
 
     issue a single I2C message in master transmit mode using a DMA safe buffer
 
-    :param const struct i2c_client \*client:
+    :param client:
         Handle to slave device
+    :type client: const struct i2c_client \*
 
-    :param const char \*buf:
+    :param buf:
         Data that will be written to the slave, must be safe to use with DMA
+    :type buf: const char \*
 
-    :param int count:
+    :param count:
         How many bytes to write, must be less than 64k since msg.len is u16
+    :type count: int
 
 .. _`i2c_master_send_dmasafe.description`:
 
@@ -170,7 +182,6 @@ Definition
 
     struct i2c_driver {
         unsigned int class;
-        int (*attach_adapter)(struct i2c_adapter *) __deprecated;
         int (*probe)(struct i2c_client *, const struct i2c_device_id *);
         int (*remove)(struct i2c_client *);
         int (*probe_new)(struct i2c_client *);
@@ -192,9 +203,6 @@ Members
 
 class
     What kind of i2c device we instantiate (for detect)
-
-attach_adapter
-    Callback for bus addition (deprecated)
 
 probe
     Callback for device binding - soon to be deprecated
@@ -421,11 +429,13 @@ I2C_BOARD_INFO
 
     macro used to list an i2c device and its address
 
-    :param  dev_type:
+    :param dev_type:
         identifies the device type
+    :type dev_type: 
 
-    :param  dev_addr:
+    :param dev_addr:
         the device's address on the bus.
+    :type dev_addr: 
 
 .. _`i2c_board_info.description`:
 
@@ -566,6 +576,7 @@ Definition
         u32 scl_fall_ns;
         u32 scl_int_delay_ns;
         u32 sda_fall_ns;
+        u32 sda_hold_ns;
     }
 
 .. _`i2c_timings.members`:
@@ -587,6 +598,9 @@ scl_int_delay_ns
 
 sda_fall_ns
     time SDA signal takes to fall in ns; t(f) in the I2C specification
+
+sda_hold_ns
+    time IP core additionally needs to hold SDA in ns
 
 .. _`i2c_bus_recovery_info`:
 
@@ -610,6 +624,7 @@ Definition
         void (*set_scl)(struct i2c_adapter *adap, int val);
         int (*get_sda)(struct i2c_adapter *adap);
         void (*set_sda)(struct i2c_adapter *adap, int val);
+        int (*get_bus_free)(struct i2c_adapter *adap);
         void (*prepare_recovery)(struct i2c_adapter *adap);
         void (*unprepare_recovery)(struct i2c_adapter *adap);
         struct gpio_desc *scl_gpiod;
@@ -634,14 +649,18 @@ set_scl
     Populated internally for generic GPIO recovery.
 
 get_sda
-    This gets current value of SDA line. Optional for generic SCL
-    recovery. Populated internally, if sda_gpio is a valid GPIO, for generic
-    GPIO recovery.
+    This gets current value of SDA line. This or \ :c:func:`set_sda`\  is mandatory
+    for generic SCL recovery. Populated internally, if sda_gpio is a valid
+    GPIO, for generic GPIO recovery.
 
 set_sda
-    This sets/clears the SDA line. Optional for generic SCL recovery.
-    Populated internally, if sda_gpio is a valid GPIO, for generic GPIO
-    recovery.
+    This sets/clears the SDA line. This or \ :c:func:`get_sda`\  is mandatory for
+    generic SCL recovery. Populated internally, if sda_gpio is a valid GPIO,
+    for generic GPIO recovery.
+
+get_bus_free
+    Returns the bus free state as seen from the IP core in case it
+    has a more complex internal logic than just reading SDA. Optional.
 
 prepare_recovery
     This will be called before starting recovery. Platform may
@@ -730,12 +749,14 @@ i2c_lock_bus
 
     Get exclusive access to an I2C bus segment
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         Target I2C bus segment
+    :type adapter: struct i2c_adapter \*
 
-    :param unsigned int flags:
+    :param flags:
         I2C_LOCK_ROOT_ADAPTER locks the root i2c adapter, I2C_LOCK_SEGMENT
         locks only this branch in the adapter tree
+    :type flags: unsigned int
 
 .. _`i2c_trylock_bus`:
 
@@ -746,12 +767,14 @@ i2c_trylock_bus
 
     Try to get exclusive access to an I2C bus segment
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         Target I2C bus segment
+    :type adapter: struct i2c_adapter \*
 
-    :param unsigned int flags:
+    :param flags:
         I2C_LOCK_ROOT_ADAPTER tries to locks the root i2c adapter,
         I2C_LOCK_SEGMENT tries to lock only this branch in the adapter tree
+    :type flags: unsigned int
 
 .. _`i2c_trylock_bus.return`:
 
@@ -769,12 +792,14 @@ i2c_unlock_bus
 
     Release exclusive access to an I2C bus segment
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         Target I2C bus segment
+    :type adapter: struct i2c_adapter \*
 
-    :param unsigned int flags:
+    :param flags:
         I2C_LOCK_ROOT_ADAPTER unlocks the root i2c adapter, I2C_LOCK_SEGMENT
         unlocks only this branch in the adapter tree
+    :type flags: unsigned int
 
 .. _`i2c_check_quirks`:
 
@@ -785,11 +810,13 @@ i2c_check_quirks
 
     Function for checking the quirk flags in an i2c adapter
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         i2c adapter
+    :type adap: struct i2c_adapter \*
 
-    :param u64 quirks:
+    :param quirks:
         quirk flags
+    :type quirks: u64
 
 .. _`i2c_check_quirks.return`:
 
@@ -807,8 +834,9 @@ module_i2c_driver
 
     Helper macro for registering a modular I2C driver
 
-    :param  __i2c_driver:
+    :param __i2c_driver:
         i2c_driver struct
+    :type __i2c_driver: 
 
 .. _`module_i2c_driver.description`:
 
@@ -828,8 +856,9 @@ builtin_i2c_driver
 
     Helper macro for registering a builtin I2C driver
 
-    :param  __i2c_driver:
+    :param __i2c_driver:
         i2c_driver struct
+    :type __i2c_driver: 
 
 .. _`builtin_i2c_driver.description`:
 

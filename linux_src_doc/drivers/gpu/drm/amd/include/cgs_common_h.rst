@@ -122,11 +122,13 @@ cgs_read_register_t
 
     Read an MMIO register
 
-    :param struct cgs_device \*cgs_device:
+    :param cgs_device:
         opaque device handle
+    :type cgs_device: struct cgs_device \*
 
-    :param unsigned offset:
+    :param offset:
         register offset
+    :type offset: unsigned
 
 .. _`cgs_read_register_t.return`:
 
@@ -144,14 +146,17 @@ cgs_write_register_t
 
     Write an MMIO register
 
-    :param struct cgs_device \*cgs_device:
+    :param cgs_device:
         opaque device handle
+    :type cgs_device: struct cgs_device \*
 
-    :param unsigned offset:
+    :param offset:
         register offset
+    :type offset: unsigned
 
-    :param uint32_t value:
+    :param value:
         register value
+    :type value: uint32_t
 
 .. _`cgs_read_ind_register_t`:
 
@@ -162,14 +167,17 @@ cgs_read_ind_register_t
 
     Read an indirect register
 
-    :param struct cgs_device \*cgs_device:
+    :param cgs_device:
         opaque device handle
+    :type cgs_device: struct cgs_device \*
 
-    :param enum cgs_ind_reg space:
+    :param space:
         *undescribed*
+    :type space: enum cgs_ind_reg
 
-    :param unsigned index:
+    :param index:
         *undescribed*
+    :type index: unsigned
 
 .. _`cgs_read_ind_register_t.return`:
 
@@ -187,17 +195,21 @@ cgs_write_ind_register_t
 
     Write an indirect register
 
-    :param struct cgs_device \*cgs_device:
+    :param cgs_device:
         opaque device handle
+    :type cgs_device: struct cgs_device \*
 
-    :param enum cgs_ind_reg space:
+    :param space:
         *undescribed*
+    :type space: enum cgs_ind_reg
 
-    :param unsigned index:
+    :param index:
         *undescribed*
+    :type index: unsigned
 
-    :param uint32_t value:
+    :param value:
         register value
+    :type value: uint32_t
 
 .. This file was automatic generated / don't edit.
 

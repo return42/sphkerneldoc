@@ -10,19 +10,23 @@ setup_physmem
 
     Setup physical memory for UML
 
-    :param unsigned long start:
+    :param start:
         Start address of the physical kernel memory,
         i.e start address of the executable image.
+    :type start: unsigned long
 
-    :param unsigned long reserve_end:
+    :param reserve_end:
         end address of the physical kernel memory.
+    :type reserve_end: unsigned long
 
-    :param unsigned long len:
+    :param len:
         Length of total physical memory that should be mapped/made
         available, in bytes.
+    :type len: unsigned long
 
-    :param unsigned long long highmem:
+    :param highmem:
         Number of highmem bytes that should be mapped/made available.
+    :type highmem: unsigned long long
 
 .. _`setup_physmem.description`:
 

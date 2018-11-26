@@ -10,11 +10,13 @@ kvm_s390_inject_prog_cond
 
     conditionally inject a program check
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         virtual cpu
+    :type vcpu: struct kvm_vcpu \*
 
-    :param int rc:
+    :param rc:
         original return/error code
+    :type rc: int
 
 .. _`kvm_s390_inject_prog_cond.description`:
 
@@ -54,8 +56,9 @@ kvm_s390_vcpu_crypto_reset_all
 
 .. c:function:: void kvm_s390_vcpu_crypto_reset_all(struct kvm *kvm)
 
-    :param struct kvm \*kvm:
+    :param kvm:
         the KVM guest
+    :type kvm: struct kvm \*
 
 .. _`kvm_s390_vcpu_crypto_reset_all.description`:
 

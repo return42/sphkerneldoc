@@ -10,11 +10,13 @@ dwc3_gadget_set_test_mode
 
     enables usb2 test modes
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         pointer to our context structure
+    :type dwc: struct dwc3 \*
 
-    :param int mode:
+    :param mode:
         the mode to set (J, K SE0 NAK, Force Enable)
+    :type mode: int
 
 .. _`dwc3_gadget_set_test_mode.description`:
 
@@ -33,8 +35,9 @@ dwc3_gadget_get_link_state
 
     gets current state of usb link
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         pointer to our context structure
+    :type dwc: struct dwc3 \*
 
 .. _`dwc3_gadget_get_link_state.description`:
 
@@ -53,11 +56,13 @@ dwc3_gadget_set_link_state
 
     sets usb link to a particular state
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         pointer to our context structure
+    :type dwc: struct dwc3 \*
 
-    :param enum dwc3_link_state state:
+    :param state:
         the state to put link into
+    :type state: enum dwc3_link_state
 
 .. _`dwc3_gadget_set_link_state.description`:
 
@@ -76,8 +81,9 @@ dwc3_ep_inc_trb
 
     increment a trb index.
 
-    :param u8 \*index:
+    :param index:
         Pointer to the TRB index to increment.
+    :type index: u8 \*
 
 .. _`dwc3_ep_inc_trb.description`:
 
@@ -97,8 +103,9 @@ dwc3_ep_inc_enq
 
     increment endpoint's enqueue pointer
 
-    :param struct dwc3_ep \*dep:
+    :param dep:
         The endpoint whose enqueue pointer we're incrementing
+    :type dep: struct dwc3_ep \*
 
 .. _`dwc3_ep_inc_deq`:
 
@@ -109,8 +116,9 @@ dwc3_ep_inc_deq
 
     increment endpoint's dequeue pointer
 
-    :param struct dwc3_ep \*dep:
+    :param dep:
         The endpoint whose enqueue pointer we're incrementing
+    :type dep: struct dwc3_ep \*
 
 .. _`dwc3_gadget_giveback`:
 
@@ -121,14 +129,17 @@ dwc3_gadget_giveback
 
     call struct usb_request's ->complete callback
 
-    :param struct dwc3_ep \*dep:
+    :param dep:
         The endpoint to whom the request belongs to
+    :type dep: struct dwc3_ep \*
 
-    :param struct dwc3_request \*req:
+    :param req:
         The request we're giving back
+    :type req: struct dwc3_request \*
 
-    :param int status:
+    :param status:
         completion code for the request
+    :type status: int
 
 .. _`dwc3_gadget_giveback.description`:
 
@@ -148,14 +159,17 @@ dwc3_send_gadget_generic_command
 
     issue a generic command for the controller
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         pointer to the controller context
+    :type dwc: struct dwc3 \*
 
-    :param unsigned cmd:
+    :param cmd:
         the command to be issued
+    :type cmd: unsigned
 
-    :param u32 param:
+    :param param:
         command parameter
+    :type param: u32
 
 .. _`dwc3_send_gadget_generic_command.description`:
 
@@ -174,14 +188,17 @@ dwc3_send_gadget_ep_cmd
 
     issue an endpoint command
 
-    :param struct dwc3_ep \*dep:
+    :param dep:
         the endpoint to which the command is going to be issued
+    :type dep: struct dwc3_ep \*
 
-    :param unsigned cmd:
+    :param cmd:
         the command to be issued
+    :type cmd: unsigned
 
-    :param struct dwc3_gadget_ep_cmd_params \*params:
+    :param params:
         parameters to the command
+    :type params: struct dwc3_gadget_ep_cmd_params \*
 
 .. _`dwc3_send_gadget_ep_cmd.description`:
 
@@ -200,8 +217,9 @@ dwc3_gadget_start_config
 
     configure ep resources
 
-    :param struct dwc3_ep \*dep:
+    :param dep:
         endpoint that is being enabled
+    :type dep: struct dwc3_ep \*
 
 .. _`dwc3_gadget_start_config.description`:
 
@@ -250,11 +268,13 @@ __dwc3_gadget_ep_enable
 
     initializes a hw endpoint
 
-    :param struct dwc3_ep \*dep:
+    :param dep:
         endpoint to be initialized
+    :type dep: struct dwc3_ep \*
 
-    :param unsigned int action:
+    :param action:
         one of INIT, MODIFY or RESTORE
+    :type action: unsigned int
 
 .. _`__dwc3_gadget_ep_enable.description`:
 
@@ -273,8 +293,9 @@ __dwc3_gadget_ep_disable
 
     disables a hw endpoint
 
-    :param struct dwc3_ep \*dep:
+    :param dep:
         the endpoint to disable
+    :type dep: struct dwc3_ep \*
 
 .. _`__dwc3_gadget_ep_disable.description`:
 
@@ -296,11 +317,13 @@ dwc3_ep_prev_trb
 
     returns the previous TRB in the ring
 
-    :param struct dwc3_ep \*dep:
+    :param dep:
         The endpoint with the TRB ring
+    :type dep: struct dwc3_ep \*
 
-    :param u8 index:
+    :param index:
         The index of the current TRB in the ring
+    :type index: u8
 
 .. _`dwc3_ep_prev_trb.description`:
 
@@ -320,17 +343,21 @@ dwc3_prepare_one_trb
 
     setup one TRB from one request
 
-    :param struct dwc3_ep \*dep:
+    :param dep:
         endpoint for which this request is prepared
+    :type dep: struct dwc3_ep \*
 
-    :param struct dwc3_request \*req:
+    :param req:
         dwc3_request pointer
+    :type req: struct dwc3_request \*
 
-    :param unsigned chain:
+    :param chain:
         should this TRB be chained to the next?
+    :type chain: unsigned
 
-    :param unsigned node:
+    :param node:
         only for isochronous endpoints. First TRB needs different type.
+    :type node: unsigned
 
 .. _`dwc3_gadget_setup_nump`:
 
@@ -341,8 +368,9 @@ dwc3_gadget_setup_nump
 
     calculate and initialize NUMP field of \ ``DWC3_DCFG``\ 
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         pointer to our context structure
+    :type dwc: struct dwc3 \*
 
 .. _`dwc3_gadget_setup_nump.description`:
 
@@ -379,8 +407,9 @@ dwc3_gadget_init
 
     initializes gadget related registers
 
-    :param struct dwc3 \*dwc:
+    :param dwc:
         pointer to our controller context structure
+    :type dwc: struct dwc3 \*
 
 .. _`dwc3_gadget_init.description`:
 

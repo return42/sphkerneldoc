@@ -10,14 +10,17 @@ acpi_get_ioapic_id
 
     Get IOAPIC ID and physical address matching \ ``gsi_base``\ 
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI object for IOAPIC device
+    :type handle: acpi_handle
 
-    :param u32 gsi_base:
+    :param gsi_base:
         GSI base to match with
+    :type gsi_base: u32
 
-    :param u64 \*phys_addr:
+    :param phys_addr:
         Pointer to store physical address of matching IOAPIC record
+    :type phys_addr: u64 \*
 
 .. _`acpi_get_ioapic_id.description`:
 

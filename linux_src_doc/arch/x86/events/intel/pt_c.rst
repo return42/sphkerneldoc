@@ -58,11 +58,13 @@ topa_alloc
 
     allocate page-sized ToPA table
 
-    :param int cpu:
+    :param cpu:
         CPU on which to allocate.
+    :type cpu: int
 
-    :param gfp_t gfp:
+    :param gfp:
         Allocation flags.
+    :type gfp: gfp_t
 
 .. _`topa_alloc.return`:
 
@@ -80,8 +82,9 @@ topa_free
 
     free a page-sized ToPA table
 
-    :param struct topa \*topa:
+    :param topa:
         Table to deallocate.
+    :type topa: struct topa \*
 
 .. _`topa_insert_table`:
 
@@ -92,11 +95,13 @@ topa_insert_table
 
     insert a ToPA table into a buffer
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer that's being extended.
+    :type buf: struct pt_buffer \*
 
-    :param struct topa \*topa:
+    :param topa:
         New topa table to be inserted.
+    :type topa: struct topa \*
 
 .. _`topa_insert_table.description`:
 
@@ -116,8 +121,9 @@ topa_table_full
 
     check if a ToPA table is filled up
 
-    :param struct topa \*topa:
+    :param topa:
         ToPA table.
+    :type topa: struct topa \*
 
 .. _`topa_insert_pages`:
 
@@ -128,11 +134,13 @@ topa_insert_pages
 
     create a list of ToPA tables
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer being initialized.
+    :type buf: struct pt_buffer \*
 
-    :param gfp_t gfp:
+    :param gfp:
         Allocation flags.
+    :type gfp: gfp_t
 
 .. _`topa_insert_pages.description`:
 
@@ -158,8 +166,9 @@ pt_topa_dump
 
     print ToPA tables and their entries
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
 .. _`pt_buffer_advance`:
 
@@ -170,8 +179,9 @@ pt_buffer_advance
 
     advance to the next output region
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
 .. _`pt_buffer_advance.description`:
 
@@ -189,8 +199,9 @@ pt_update_head
 
     calculate current offsets and sizes
 
-    :param struct pt \*pt:
+    :param pt:
         Per-cpu pt context.
+    :type pt: struct pt \*
 
 .. _`pt_update_head.description`:
 
@@ -208,8 +219,9 @@ pt_buffer_region
 
     obtain current output region's address
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
 .. _`pt_buffer_region_size`:
 
@@ -220,8 +232,9 @@ pt_buffer_region_size
 
     obtain current output region's size
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
 .. _`pt_handle_status`:
 
@@ -232,8 +245,9 @@ pt_handle_status
 
     take care of possible status conditions
 
-    :param struct pt \*pt:
+    :param pt:
         Per-cpu pt context.
+    :type pt: struct pt \*
 
 .. _`pt_read_offset`:
 
@@ -244,8 +258,9 @@ pt_read_offset
 
     translate registers into buffer pointers
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
 .. _`pt_read_offset.description`:
 
@@ -263,11 +278,13 @@ pt_topa_next_entry
 
     obtain index of the first page in the next ToPA entry
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
-    :param unsigned int pg:
+    :param pg:
         Page offset in the buffer.
+    :type pg: unsigned int
 
 .. _`pt_topa_next_entry.description`:
 
@@ -287,11 +304,13 @@ pt_buffer_reset_markers
 
     place interrupt and stop bits in the buffer
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
-    :param struct perf_output_handle \*handle:
+    :param handle:
         Current output handle.
+    :type handle: struct perf_output_handle \*
 
 .. _`pt_buffer_reset_markers.description`:
 
@@ -315,8 +334,9 @@ pt_buffer_setup_topa_index
 
     build topa_index[] table of regions
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
 .. _`pt_buffer_setup_topa_index.description`:
 
@@ -335,11 +355,13 @@ pt_buffer_reset_offsets
 
     adjust buffer's write pointers from aux_head
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
-    :param unsigned long head:
+    :param head:
         Write pointer (aux_head) from AUX buffer.
+    :type head: unsigned long
 
 .. _`pt_buffer_reset_offsets.description`:
 
@@ -365,8 +387,9 @@ pt_buffer_fini_topa
 
     deallocate ToPA structure of a buffer
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
 .. _`pt_buffer_init_topa`:
 
@@ -377,14 +400,17 @@ pt_buffer_init_topa
 
     initialize ToPA table for pt buffer
 
-    :param struct pt_buffer \*buf:
+    :param buf:
         PT buffer.
+    :type buf: struct pt_buffer \*
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         *undescribed*
+    :type nr_pages: unsigned long
 
-    :param gfp_t gfp:
+    :param gfp:
         Allocation flags.
+    :type gfp: gfp_t
 
 .. _`pt_buffer_setup_aux`:
 
@@ -395,17 +421,21 @@ pt_buffer_setup_aux
 
     set up topa tables for a PT buffer
 
-    :param int cpu:
+    :param cpu:
         Cpu on which to allocate, -1 means current.
+    :type cpu: int
 
-    :param void \*\*pages:
+    :param pages:
         Array of pointers to buffer pages passed from perf core.
+    :type pages: void \*\*
 
-    :param int nr_pages:
+    :param nr_pages:
         Number of pages in the buffer.
+    :type nr_pages: int
 
-    :param bool snapshot:
+    :param snapshot:
         If this is a snapshot/overwrite counter.
+    :type snapshot: bool
 
 .. _`pt_buffer_setup_aux.description`:
 
@@ -431,8 +461,9 @@ pt_buffer_free_aux
 
     perf AUX deallocation path callback
 
-    :param void \*data:
+    :param data:
         PT buffer.
+    :type data: void \*
 
 .. _`intel_pt_interrupt`:
 
@@ -443,8 +474,9 @@ intel_pt_interrupt
 
     PT PMI handler
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ dw_apb_clockevent_pause
 
     stop the clock_event_device from running
 
-    :param struct dw_apb_clock_event_device \*dw_ced:
+    :param dw_ced:
         The APB clock to stop generating events.
+    :type dw_ced: struct dw_apb_clock_event_device \*
 
 .. _`dw_apb_clockevent_init`:
 
@@ -22,23 +23,29 @@ dw_apb_clockevent_init
 
     use an APB timer as a clock_event_device
 
-    :param int cpu:
+    :param cpu:
         The CPU the events will be targeted at.
+    :type cpu: int
 
-    :param const char \*name:
+    :param name:
         The name used for the timer and the IRQ for it.
+    :type name: const char \*
 
-    :param unsigned rating:
+    :param rating:
         The rating to give the timer.
+    :type rating: unsigned
 
-    :param void __iomem \*base:
+    :param base:
         I/O base for the timer registers.
+    :type base: void __iomem \*
 
-    :param int irq:
+    :param irq:
         The interrupt number to use for the timer.
+    :type irq: int
 
-    :param unsigned long freq:
+    :param freq:
         The frequency that the timer counts at.
+    :type freq: unsigned long
 
 .. _`dw_apb_clockevent_init.description`:
 
@@ -61,8 +68,9 @@ dw_apb_clockevent_resume
 
     resume a clock that has been paused.
 
-    :param struct dw_apb_clock_event_device \*dw_ced:
+    :param dw_ced:
         The APB clock to resume.
+    :type dw_ced: struct dw_apb_clock_event_device \*
 
 .. _`dw_apb_clockevent_stop`:
 
@@ -73,8 +81,9 @@ dw_apb_clockevent_stop
 
     stop the clock_event_device and release the IRQ.
 
-    :param struct dw_apb_clock_event_device \*dw_ced:
+    :param dw_ced:
         The APB clock to stop generating the events.
+    :type dw_ced: struct dw_apb_clock_event_device \*
 
 .. _`dw_apb_clockevent_register`:
 
@@ -85,8 +94,9 @@ dw_apb_clockevent_register
 
     register the clock with the generic layer
 
-    :param struct dw_apb_clock_event_device \*dw_ced:
+    :param dw_ced:
         The APB clock to register as a clock_event_device.
+    :type dw_ced: struct dw_apb_clock_event_device \*
 
 .. _`dw_apb_clocksource_start`:
 
@@ -97,8 +107,9 @@ dw_apb_clocksource_start
 
     start the clocksource counting.
 
-    :param struct dw_apb_clocksource \*dw_cs:
+    :param dw_cs:
         The clocksource to start.
+    :type dw_cs: struct dw_apb_clocksource \*
 
 .. _`dw_apb_clocksource_start.description`:
 
@@ -117,17 +128,21 @@ dw_apb_clocksource_init
 
     use an APB timer as a clocksource.
 
-    :param unsigned rating:
+    :param rating:
         The rating to give the clocksource.
+    :type rating: unsigned
 
-    :param const char \*name:
+    :param name:
         The name for the clocksource.
+    :type name: const char \*
 
-    :param void __iomem \*base:
+    :param base:
         The I/O base for the timer registers.
+    :type base: void __iomem \*
 
-    :param unsigned long freq:
+    :param freq:
         The frequency that the timer counts at.
+    :type freq: unsigned long
 
 .. _`dw_apb_clocksource_init.description`:
 
@@ -147,8 +162,9 @@ dw_apb_clocksource_register
 
     register the APB clocksource.
 
-    :param struct dw_apb_clocksource \*dw_cs:
+    :param dw_cs:
         The clocksource to register.
+    :type dw_cs: struct dw_apb_clocksource \*
 
 .. _`dw_apb_clocksource_read`:
 
@@ -159,8 +175,9 @@ dw_apb_clocksource_read
 
     read the current value of a clocksource.
 
-    :param struct dw_apb_clocksource \*dw_cs:
+    :param dw_cs:
         The clocksource to read.
+    :type dw_cs: struct dw_apb_clocksource \*
 
 .. This file was automatic generated / don't edit.
 

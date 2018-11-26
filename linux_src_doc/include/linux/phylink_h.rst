@@ -125,21 +125,24 @@ validate
 
     Validate and update the link configuration
 
-    :param struct net_device \*ndev:
+    :param ndev:
         a pointer to a \ :c:type:`struct net_device <net_device>`\  for the MAC.
+    :type ndev: struct net_device \*
 
-    :param unsigned long \*supported:
+    :param supported:
         ethtool bitmask for supported link modes.
+    :type supported: unsigned long \*
 
-    :param struct phylink_link_state \*state:
+    :param state:
         a pointer to a \ :c:type:`struct phylink_link_state <phylink_link_state>`\ .
+    :type state: struct phylink_link_state \*
 
 .. _`validate.description`:
 
 Description
 -----------
 
-Clear bits in the \ ``supported``\  and \ ``state``\ ->advertising masks that
+Clear bits in the \ ``supported``\  and \ ``state->advertising``\  masks that
 are not supportable by the MAC.
 
 Note that the PHY may be able to transform from one connection
@@ -147,10 +150,10 @@ technology to another, so, eg, don't clear 1000BaseX just
 because the MAC is unable to BaseX mode. This is more about
 clearing unsupported speeds and duplex settings.
 
-If the \ ``state``\ ->interface mode is \ ``PHY_INTERFACE_MODE_1000BASEX``\ 
+If the \ ``state->interface``\  mode is \ ``PHY_INTERFACE_MODE_1000BASEX``\ 
 or \ ``PHY_INTERFACE_MODE_2500BASEX``\ , select the appropriate mode
-based on \ ``state``\ ->advertising and/or \ ``state``\ ->speed and update
-\ ``state``\ ->interface accordingly.
+based on \ ``state->advertising``\  and/or \ ``state->speed``\  and update
+\ ``state->interface``\  accordingly.
 
 .. _`mac_link_state`:
 
@@ -161,11 +164,13 @@ mac_link_state
 
     Read the current link state from the hardware
 
-    :param struct net_device \*ndev:
+    :param ndev:
         a pointer to a \ :c:type:`struct net_device <net_device>`\  for the MAC.
+    :type ndev: struct net_device \*
 
-    :param struct phylink_link_state \*state:
+    :param state:
         a pointer to a \ :c:type:`struct phylink_link_state <phylink_link_state>`\ .
+    :type state: struct phylink_link_state \*
 
 .. _`mac_link_state.description`:
 
@@ -173,10 +178,10 @@ Description
 -----------
 
 Read the current link state from the MAC, reporting the current
-speed in \ ``state``\ ->speed, duplex mode in \ ``state``\ ->duplex, pause mode
-in \ ``state``\ ->pause using the \ ``MLO_PAUSE_RX``\  and \ ``MLO_PAUSE_TX``\  bits,
-negotiation completion state in \ ``state``\ ->an_complete, and link
-up state in \ ``state``\ ->link.
+speed in \ ``state->speed``\ , duplex mode in \ ``state->duplex``\ , pause mode
+in \ ``state->pause``\  using the \ ``MLO_PAUSE_RX``\  and \ ``MLO_PAUSE_TX``\  bits,
+negotiation completion state in \ ``state->an_complete``\ , and link
+up state in \ ``state->link``\ .
 
 .. _`mac_config`:
 
@@ -187,14 +192,17 @@ mac_config
 
     configure the MAC for the selected mode and state
 
-    :param struct net_device \*ndev:
+    :param ndev:
         a pointer to a \ :c:type:`struct net_device <net_device>`\  for the MAC.
+    :type ndev: struct net_device \*
 
-    :param unsigned int mode:
+    :param mode:
         one of \ ``MLO_AN_FIXED``\ , \ ``MLO_AN_PHY``\ , \ ``MLO_AN_INBAND``\ .
+    :type mode: unsigned int
 
-    :param const struct phylink_link_state \*state:
+    :param state:
         a pointer to a \ :c:type:`struct phylink_link_state <phylink_link_state>`\ .
+    :type state: const struct phylink_link_state \*
 
 .. _`mac_config.the-action-performed-depends-on-the-currently-selected-mode`:
 
@@ -203,21 +211,21 @@ The action performed depends on the currently selected mode
 
 
 \ ``MLO_AN_FIXED``\ , \ ``MLO_AN_PHY``\ :
-  Configure the specified \ ``state``\ ->speed, \ ``state``\ ->duplex and
-  \ ``state``\ ->pause (%MLO_PAUSE_TX / \ ``MLO_PAUSE_RX``\ ) mode.
+  Configure the specified \ ``state->speed``\ , \ ``state->duplex``\  and
+  \ ``state->pause``\  (%MLO_PAUSE_TX / \ ``MLO_PAUSE_RX``\ ) mode.
 
 \ ``MLO_AN_INBAND``\ :
   place the link in an inband negotiation mode (such as 802.3z
-  1000base-X or Cisco SGMII mode depending on the \ ``state``\ ->interface
+  1000base-X or Cisco SGMII mode depending on the \ ``state->interface``\ 
   mode). In both cases, link state management (whether the link
   is up or not) is performed by the MAC, and reported via the
   \ :c:func:`mac_link_state`\  callback. Changes in link state must be made
   by calling \ :c:func:`phylink_mac_change`\ .
 
   If in 802.3z mode, the link speed is fixed, dependent on the
-  \ ``state``\ ->interface. Duplex is negotiated, and pause is advertised
-  according to \ ``state``\ ->an_enabled, \ ``state``\ ->pause and
-  \ ``state``\ ->advertising flags. Beware of MACs which only support full
+  \ ``state->interface``\ . Duplex is negotiated, and pause is advertised
+  according to \ ``state->an_enabled``\ , \ ``state->pause``\  and
+  \ ``state->advertising``\  flags. Beware of MACs which only support full
   duplex at gigabit and higher speeds.
 
   If in Cisco SGMII mode, the link speed and duplex mode are passed
@@ -236,8 +244,9 @@ mac_an_restart
 
     restart 802.3z BaseX autonegotiation
 
-    :param struct net_device \*ndev:
+    :param ndev:
         a pointer to a \ :c:type:`struct net_device <net_device>`\  for the MAC.
+    :type ndev: struct net_device \*
 
 .. _`mac_link_down`:
 
@@ -248,14 +257,17 @@ mac_link_down
 
     take the link down
 
-    :param struct net_device \*ndev:
+    :param ndev:
         a pointer to a \ :c:type:`struct net_device <net_device>`\  for the MAC.
+    :type ndev: struct net_device \*
 
-    :param unsigned int mode:
+    :param mode:
         link autonegotiation mode
+    :type mode: unsigned int
 
-    :param phy_interface_t interface:
+    :param interface:
         link \ :c:type:`typedef phy_interface_t <phy_interface_t>`\  mode
+    :type interface: phy_interface_t
 
 .. _`mac_link_down.description`:
 
@@ -276,17 +288,21 @@ mac_link_up
 
     allow the link to come up
 
-    :param struct net_device \*ndev:
+    :param ndev:
         a pointer to a \ :c:type:`struct net_device <net_device>`\  for the MAC.
+    :type ndev: struct net_device \*
 
-    :param unsigned int mode:
+    :param mode:
         link autonegotiation mode
+    :type mode: unsigned int
 
-    :param phy_interface_t interface:
+    :param interface:
         link \ :c:type:`typedef phy_interface_t <phy_interface_t>`\  mode
+    :type interface: phy_interface_t
 
-    :param struct phy_device \*phy:
+    :param phy:
         any attached phy
+    :type phy: struct phy_device \*
 
 .. _`mac_link_up.description`:
 

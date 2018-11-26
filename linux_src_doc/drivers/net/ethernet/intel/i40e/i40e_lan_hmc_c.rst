@@ -10,8 +10,9 @@ i40e_align_l2obj_base
 
     aligns base object pointer to 512 bytes
 
-    :param u64 offset:
+    :param offset:
         base address offset needing alignment
+    :type offset: u64
 
 .. _`i40e_align_l2obj_base.description`:
 
@@ -29,17 +30,21 @@ i40e_calculate_l2fpm_size
 
     calculates layer 2 FPM memory size
 
-    :param u32 txq_num:
+    :param txq_num:
         number of Tx queues needing backing context
+    :type txq_num: u32
 
-    :param u32 rxq_num:
+    :param rxq_num:
         number of Rx queues needing backing context
+    :type rxq_num: u32
 
-    :param u32 fcoe_cntx_num:
+    :param fcoe_cntx_num:
         amount of FCoE statefull contexts needing backing context
+    :type fcoe_cntx_num: u32
 
-    :param u32 fcoe_filt_num:
+    :param fcoe_filt_num:
         number of FCoE filters needing backing context
+    :type fcoe_filt_num: u32
 
 .. _`i40e_calculate_l2fpm_size.description`:
 
@@ -58,20 +63,25 @@ i40e_init_lan_hmc
 
     initialize i40e_hmc_info struct
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u32 txq_num:
+    :param txq_num:
         number of Tx queues needing backing context
+    :type txq_num: u32
 
-    :param u32 rxq_num:
+    :param rxq_num:
         number of Rx queues needing backing context
+    :type rxq_num: u32
 
-    :param u32 fcoe_cntx_num:
+    :param fcoe_cntx_num:
         amount of FCoE statefull contexts needing backing context
+    :type fcoe_cntx_num: u32
 
-    :param u32 fcoe_filt_num:
+    :param fcoe_filt_num:
         number of FCoE filters needing backing context
+    :type fcoe_filt_num: u32
 
 .. _`i40e_init_lan_hmc.description`:
 
@@ -99,14 +109,17 @@ i40e_remove_pd_page
 
     Remove a page from the page descriptor table
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40e_hmc_info \*
 
-    :param u32 idx:
+    :param idx:
         segment descriptor index to find the relevant page descriptor
+    :type idx: u32
 
 .. _`i40e_remove_pd_page.this-function`:
 
@@ -134,14 +147,17 @@ i40e_remove_sd_bp
 
     remove a backing page from a segment descriptor
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to our HW structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to the HMC configuration information structure
+    :type hmc_info: struct i40e_hmc_info \*
 
-    :param u32 idx:
+    :param idx:
         the page index
+    :type idx: u32
 
 .. _`i40e_remove_sd_bp.this-function`:
 
@@ -170,11 +186,13 @@ i40e_create_lan_hmc_object
 
     allocate backing store for hmc objects
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_hmc_lan_create_obj_info \*info:
+    :param info:
         pointer to i40e_hmc_create_obj_info struct
+    :type info: struct i40e_hmc_lan_create_obj_info \*
 
 .. _`i40e_create_lan_hmc_object.description`:
 
@@ -193,11 +211,13 @@ i40e_configure_lan_hmc
 
     prepare the HMC backing store
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw structure
+    :type hw: struct i40e_hw \*
 
-    :param enum i40e_hmc_model model:
+    :param model:
         the model for the layout of the SD/PD tables
+    :type model: enum i40e_hmc_model
 
 .. _`i40e_configure_lan_hmc.description`:
 
@@ -217,11 +237,13 @@ i40e_delete_lan_hmc_object
 
     remove hmc objects
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_hmc_lan_delete_obj_info \*info:
+    :param info:
         pointer to i40e_hmc_delete_obj_info struct
+    :type info: struct i40e_hmc_lan_delete_obj_info \*
 
 .. _`i40e_delete_lan_hmc_object.description`:
 
@@ -242,8 +264,9 @@ i40e_shutdown_lan_hmc
 
     Remove HMC backing store, free allocated memory
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_shutdown_lan_hmc.description`:
 
@@ -262,14 +285,17 @@ i40e_write_byte
 
     replace HMC context byte
 
-    :param u8 \*hmc_bits:
+    :param hmc_bits:
         pointer to the HMC memory
+    :type hmc_bits: u8 \*
 
-    :param struct i40e_context_ele \*ce_info:
+    :param ce_info:
         a description of the struct to be read from
+    :type ce_info: struct i40e_context_ele \*
 
-    :param u8 \*src:
+    :param src:
         the struct to be read from
+    :type src: u8 \*
 
 .. _`i40e_write_word`:
 
@@ -280,14 +306,17 @@ i40e_write_word
 
     replace HMC context word
 
-    :param u8 \*hmc_bits:
+    :param hmc_bits:
         pointer to the HMC memory
+    :type hmc_bits: u8 \*
 
-    :param struct i40e_context_ele \*ce_info:
+    :param ce_info:
         a description of the struct to be read from
+    :type ce_info: struct i40e_context_ele \*
 
-    :param u8 \*src:
+    :param src:
         the struct to be read from
+    :type src: u8 \*
 
 .. _`i40e_write_dword`:
 
@@ -298,14 +327,17 @@ i40e_write_dword
 
     replace HMC context dword
 
-    :param u8 \*hmc_bits:
+    :param hmc_bits:
         pointer to the HMC memory
+    :type hmc_bits: u8 \*
 
-    :param struct i40e_context_ele \*ce_info:
+    :param ce_info:
         a description of the struct to be read from
+    :type ce_info: struct i40e_context_ele \*
 
-    :param u8 \*src:
+    :param src:
         the struct to be read from
+    :type src: u8 \*
 
 .. _`i40e_write_qword`:
 
@@ -316,14 +348,17 @@ i40e_write_qword
 
     replace HMC context qword
 
-    :param u8 \*hmc_bits:
+    :param hmc_bits:
         pointer to the HMC memory
+    :type hmc_bits: u8 \*
 
-    :param struct i40e_context_ele \*ce_info:
+    :param ce_info:
         a description of the struct to be read from
+    :type ce_info: struct i40e_context_ele \*
 
-    :param u8 \*src:
+    :param src:
         the struct to be read from
+    :type src: u8 \*
 
 .. _`i40e_clear_hmc_context`:
 
@@ -334,14 +369,17 @@ i40e_clear_hmc_context
 
     zero out the HMC context bits
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         the hardware struct
+    :type hw: struct i40e_hw \*
 
-    :param u8 \*context_bytes:
+    :param context_bytes:
         pointer to the context bit array (DMA memory)
+    :type context_bytes: u8 \*
 
-    :param enum i40e_hmc_lan_rsrc_type hmc_type:
+    :param hmc_type:
         the type of HMC resource
+    :type hmc_type: enum i40e_hmc_lan_rsrc_type
 
 .. _`i40e_set_hmc_context`:
 
@@ -352,14 +390,17 @@ i40e_set_hmc_context
 
     replace HMC context bits
 
-    :param u8 \*context_bytes:
+    :param context_bytes:
         pointer to the context bit array
+    :type context_bytes: u8 \*
 
-    :param struct i40e_context_ele \*ce_info:
+    :param ce_info:
         a description of the struct to be filled
+    :type ce_info: struct i40e_context_ele \*
 
-    :param u8 \*dest:
+    :param dest:
         the struct to be filled
+    :type dest: u8 \*
 
 .. _`i40e_hmc_get_object_va`:
 
@@ -370,17 +411,21 @@ i40e_hmc_get_object_va
 
     retrieves an object's virtual address
 
-    :param struct i40e_hmc_info \*hmc_info:
+    :param hmc_info:
         pointer to i40e_hmc_info struct
+    :type hmc_info: struct i40e_hmc_info \*
 
-    :param u8 \*\*object_base:
+    :param object_base:
         pointer to u64 to get the va
+    :type object_base: u8 \*\*
 
-    :param enum i40e_hmc_lan_rsrc_type rsrc_type:
+    :param rsrc_type:
         the hmc resource type
+    :type rsrc_type: enum i40e_hmc_lan_rsrc_type
 
-    :param u32 obj_idx:
+    :param obj_idx:
         hmc object index
+    :type obj_idx: u32
 
 .. _`i40e_hmc_get_object_va.description`:
 
@@ -399,11 +444,13 @@ i40e_clear_lan_tx_queue_context
 
     clear the HMC context for the queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         the hardware struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 queue:
+    :param queue:
         the queue we care about
+    :type queue: u16
 
 .. _`i40e_set_lan_tx_queue_context`:
 
@@ -414,14 +461,17 @@ i40e_set_lan_tx_queue_context
 
     set the HMC context for the queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         the hardware struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 queue:
+    :param queue:
         the queue we care about
+    :type queue: u16
 
-    :param struct i40e_hmc_obj_txq \*s:
+    :param s:
         the struct to be filled
+    :type s: struct i40e_hmc_obj_txq \*
 
 .. _`i40e_clear_lan_rx_queue_context`:
 
@@ -432,11 +482,13 @@ i40e_clear_lan_rx_queue_context
 
     clear the HMC context for the queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         the hardware struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 queue:
+    :param queue:
         the queue we care about
+    :type queue: u16
 
 .. _`i40e_set_lan_rx_queue_context`:
 
@@ -447,14 +499,17 @@ i40e_set_lan_rx_queue_context
 
     set the HMC context for the queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         the hardware struct
+    :type hw: struct i40e_hw \*
 
-    :param u16 queue:
+    :param queue:
         the queue we care about
+    :type queue: u16
 
-    :param struct i40e_hmc_obj_rxq \*s:
+    :param s:
         the struct to be filled
+    :type s: struct i40e_hmc_obj_rxq \*
 
 .. This file was automatic generated / don't edit.
 

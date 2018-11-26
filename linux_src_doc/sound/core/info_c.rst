@@ -10,14 +10,17 @@ snd_info_get_line
 
     read one line from the procfs buffer
 
-    :param struct snd_info_buffer \*buffer:
+    :param buffer:
         the procfs buffer
+    :type buffer: struct snd_info_buffer \*
 
-    :param char \*line:
+    :param line:
         the buffer to store
+    :type line: char \*
 
-    :param int len:
+    :param len:
         the max. buffer size
+    :type len: int
 
 .. _`snd_info_get_line.description`:
 
@@ -42,14 +45,17 @@ snd_info_get_str
 
     parse a string token
 
-    :param char \*dest:
+    :param dest:
         the buffer to store the string token
+    :type dest: char \*
 
-    :param const char \*src:
+    :param src:
         the original string
+    :type src: const char \*
 
-    :param int len:
+    :param len:
         the max. length of token - 1
+    :type len: int
 
 .. _`snd_info_get_str.description`:
 
@@ -76,14 +82,17 @@ snd_info_create_module_entry
 
     create an info entry for the given module
 
-    :param struct module \*module:
+    :param module:
         the module pointer
+    :type module: struct module \*
 
-    :param const char \*name:
+    :param name:
         the file name
+    :type name: const char \*
 
-    :param struct snd_info_entry \*parent:
+    :param parent:
         the parent directory
+    :type parent: struct snd_info_entry \*
 
 .. _`snd_info_create_module_entry.description`:
 
@@ -108,14 +117,17 @@ snd_info_create_card_entry
 
     create an info entry for the given card
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param const char \*name:
+    :param name:
         the file name
+    :type name: const char \*
 
-    :param struct snd_info_entry \*parent:
+    :param parent:
         the parent directory
+    :type parent: struct snd_info_entry \*
 
 .. _`snd_info_create_card_entry.description`:
 
@@ -140,8 +152,9 @@ snd_info_free_entry
 
     release the info entry
 
-    :param struct snd_info_entry \*entry:
+    :param entry:
         the info entry
+    :type entry: struct snd_info_entry \*
 
 .. _`snd_info_free_entry.description`:
 
@@ -159,8 +172,9 @@ snd_info_register
 
     register the info entry
 
-    :param struct snd_info_entry \*entry:
+    :param entry:
         the info entry
+    :type entry: struct snd_info_entry \*
 
 .. _`snd_info_register.description`:
 

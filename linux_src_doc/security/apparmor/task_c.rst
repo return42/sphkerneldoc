@@ -10,8 +10,9 @@ aa_get_task_label
 
     Get another task's label
 
-    :param struct task_struct \*task:
+    :param task:
         task to query  (NOT NULL)
+    :type task: struct task_struct \*
 
 .. _`aa_get_task_label.return`:
 
@@ -29,8 +30,9 @@ aa_replace_current_label
 
     replace the current tasks label
 
-    :param struct aa_label \*label:
+    :param label:
         new label  (NOT NULL)
+    :type label: struct aa_label \*
 
 .. _`aa_replace_current_label.return`:
 
@@ -48,11 +50,13 @@ aa_set_current_onexec
 
     set the tasks change_profile to happen onexec
 
-    :param struct aa_label \*label:
+    :param label:
         system label to set at exec  (MAYBE NULL to clear value)
+    :type label: struct aa_label \*
 
-    :param bool stack:
+    :param stack:
         whether stacking should be done
+    :type stack: bool
 
 .. _`aa_set_current_onexec.return`:
 
@@ -70,11 +74,13 @@ aa_set_current_hat
 
     set the current tasks hat
 
-    :param struct aa_label \*label:
+    :param label:
         label to set as the current hat  (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param u64 token:
+    :param token:
         token value that must be specified to change from the hat
+    :type token: u64
 
 .. _`aa_set_current_hat.description`:
 
@@ -100,8 +106,9 @@ aa_restore_previous_label
 
     exit from hat context restoring previous label
 
-    :param u64 token:
+    :param token:
         the token that must be matched to exit hat context
+    :type token: u64
 
 .. _`aa_restore_previous_label.description`:
 

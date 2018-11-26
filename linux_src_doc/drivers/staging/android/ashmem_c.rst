@@ -125,8 +125,9 @@ lru_add
 
     Adds a range of memory to the LRU list
 
-    :param struct ashmem_range \*range:
+    :param range:
         The memory range being added.
+    :type range: struct ashmem_range \*
 
 .. _`lru_add.description`:
 
@@ -145,8 +146,9 @@ lru_del
 
     Removes a range of memory from the LRU list
 
-    :param struct ashmem_range \*range:
+    :param range:
         The memory range being removed
+    :type range: struct ashmem_range \*
 
 .. _`lru_del.description`:
 
@@ -165,20 +167,25 @@ range_alloc
 
     Allocates and initializes a new ashmem_range structure
 
-    :param struct ashmem_area \*asma:
+    :param asma:
         The associated ashmem_area
+    :type asma: struct ashmem_area \*
 
-    :param struct ashmem_range \*prev_range:
+    :param prev_range:
         The previous ashmem_range in the sorted asma->unpinned list
+    :type prev_range: struct ashmem_range \*
 
-    :param unsigned int purged:
+    :param purged:
         Initial purge status (ASMEM_NOT_PURGED or ASHMEM_WAS_PURGED)
+    :type purged: unsigned int
 
-    :param size_t start:
+    :param start:
         The starting page (inclusive)
+    :type start: size_t
 
-    :param size_t end:
+    :param end:
         The ending page (inclusive)
+    :type end: size_t
 
 .. _`range_alloc.description`:
 
@@ -203,8 +210,9 @@ range_del
 
     Deletes and dealloctes an ashmem_range structure
 
-    :param struct ashmem_range \*range:
+    :param range:
         The associated ashmem_range that has previously been allocated
+    :type range: struct ashmem_range \*
 
 .. _`range_shrink`:
 
@@ -215,14 +223,17 @@ range_shrink
 
     Shrinks an ashmem_range
 
-    :param struct ashmem_range \*range:
+    :param range:
         The associated ashmem_range being shrunk
+    :type range: struct ashmem_range \*
 
-    :param size_t start:
+    :param start:
         The starting byte of the new range
+    :type start: size_t
 
-    :param size_t end:
+    :param end:
         The ending byte of the new range
+    :type end: size_t
 
 .. _`range_shrink.description`:
 
@@ -244,11 +255,13 @@ ashmem_open
 
     Opens an Anonymous Shared Memory structure
 
-    :param struct inode \*inode:
+    :param inode:
         The backing file's index node(?)
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The backing file
+    :type file: struct file \*
 
 .. _`ashmem_open.description`:
 
@@ -274,11 +287,13 @@ ashmem_release
 
     Releases an Anonymous Shared Memory structure
 
-    :param struct inode \*ignored:
+    :param ignored:
         The backing file's Index Node(?) - It is ignored here.
+    :type ignored: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The backing file
+    :type file: struct file \*
 
 .. _`ashmem_release.return`:
 

@@ -10,14 +10,17 @@
 
     reads a specified block and returns the bh
 
-    :param struct block_device \*bdev:
+    :param bdev:
         the block_device to read from
+    :type bdev: struct block_device \*
 
-    :param sector_t block:
+    :param block:
         number of block
+    :type block: sector_t
 
-    :param unsigned size:
+    :param size:
         size (in bytes) to read
+    :type size: unsigned
 
 .. _`__bread.description`:
 

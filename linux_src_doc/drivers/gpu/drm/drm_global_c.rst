@@ -10,8 +10,9 @@ drm_global_item_ref
 
     Initialize and acquire reference to memory object
 
-    :param struct drm_global_reference \*ref:
+    :param ref:
         Object for initialization
+    :type ref: struct drm_global_reference \*
 
 .. _`drm_global_item_ref.description`:
 
@@ -38,8 +39,9 @@ drm_global_item_unref
 
     Drop reference to memory object
 
-    :param struct drm_global_reference \*ref:
+    :param ref:
         Object being removed
+    :type ref: struct drm_global_reference \*
 
 .. _`drm_global_item_unref.description`:
 

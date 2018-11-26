@@ -10,8 +10,9 @@ ixgbe_pcie_from_parent
 
     Determine whether PCIe info should come from parent
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         hw specific details
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_pcie_from_parent.description`:
 
@@ -32,11 +33,13 @@ ixgbe_read_reg
 
     Read from device register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         hw specific details
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg:
+    :param reg:
         offset of register to read
+    :type reg: u32
 
 .. _`ixgbe_read_reg.description`:
 
@@ -60,17 +63,21 @@ ixgbe_set_ivar
 
     set the IVAR registers, mapping interrupt causes to vectors
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to adapter struct
+    :type adapter: struct ixgbe_adapter \*
 
-    :param s8 direction:
+    :param direction:
         0 for Rx, 1 for Tx, -1 for other causes
+    :type direction: s8
 
-    :param u8 queue:
+    :param queue:
         queue to map the corresponding interrupt to
+    :type queue: u8
 
-    :param u8 msix_vector:
+    :param msix_vector:
         the vector to map to the corresponding queue
+    :type msix_vector: u8
 
 .. _`ixgbe_tx_timeout_reset`:
 
@@ -81,8 +88,9 @@ ixgbe_tx_timeout_reset
 
     initiate reset due to Tx timeout
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         driver private struct
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_tx_maxrate`:
 
@@ -93,14 +101,17 @@ ixgbe_tx_maxrate
 
     callback to set the maximum per-queue bitrate
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int queue_index:
+    :param queue_index:
         Tx queue to set
+    :type queue_index: int
 
-    :param u32 maxrate:
+    :param maxrate:
         desired maximum transmit bitrate
+    :type maxrate: u32
 
 .. _`ixgbe_clean_tx_irq`:
 
@@ -111,14 +122,17 @@ ixgbe_clean_tx_irq
 
     Reclaim resources after transmit completes
 
-    :param struct ixgbe_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct ixgbe_q_vector \*
 
-    :param struct ixgbe_ring \*tx_ring:
+    :param tx_ring:
         tx ring to clean
+    :type tx_ring: struct ixgbe_ring \*
 
-    :param int napi_budget:
+    :param napi_budget:
         Used to determine if we are in netpoll
+    :type napi_budget: int
 
 .. _`ixgbe_rx_is_fcoe`:
 
@@ -129,11 +143,13 @@ ixgbe_rx_is_fcoe
 
     check the rx desc for incoming pkt type
 
-    :param struct ixgbe_ring \*ring:
+    :param ring:
         structure containing ring specific data
+    :type ring: struct ixgbe_ring \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         advanced rx descriptor
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
 .. _`ixgbe_rx_is_fcoe.description`:
 
@@ -151,14 +167,17 @@ ixgbe_rx_checksum
 
     indicate in skb if hw indicated a good cksum
 
-    :param struct ixgbe_ring \*ring:
+    :param ring:
         structure containing ring specific data
+    :type ring: struct ixgbe_ring \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         current Rx descriptor being processed
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb currently being received and modified
+    :type skb: struct sk_buff \*
 
 .. _`ixgbe_alloc_rx_buffers`:
 
@@ -169,11 +188,13 @@ ixgbe_alloc_rx_buffers
 
     Replace used receive buffers
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         ring to place buffers on
+    :type rx_ring: struct ixgbe_ring \*
 
-    :param u16 cleaned_count:
+    :param cleaned_count:
         number of buffers to replace
+    :type cleaned_count: u16
 
 .. _`ixgbe_process_skb_fields`:
 
@@ -184,14 +205,17 @@ ixgbe_process_skb_fields
 
     Populate skb header fields from Rx descriptor
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct ixgbe_ring \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being populated
+    :type skb: struct sk_buff \*
 
 .. _`ixgbe_process_skb_fields.description`:
 
@@ -211,14 +235,17 @@ ixgbe_is_non_eop
 
     process handling of non-EOP buffers
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         Rx ring being processed
+    :type rx_ring: struct ixgbe_ring \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         Rx descriptor for current buffer
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Current socket buffer containing buffer in progress
+    :type skb: struct sk_buff \*
 
 .. _`ixgbe_is_non_eop.description`:
 
@@ -239,11 +266,13 @@ ixgbe_pull_tail
 
     ixgbe specific version of skb_pull_tail
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct ixgbe_ring \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being adjusted
+    :type skb: struct sk_buff \*
 
 .. _`ixgbe_pull_tail.description`:
 
@@ -266,11 +295,13 @@ ixgbe_dma_sync_frag
 
     perform DMA sync for first frag of SKB
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct ixgbe_ring \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being updated
+    :type skb: struct sk_buff \*
 
 .. _`ixgbe_dma_sync_frag.description`:
 
@@ -291,14 +322,17 @@ ixgbe_cleanup_headers
 
     Correct corrupted or empty headers
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct ixgbe_ring \*
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union ixgbe_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being fixed
+    :type skb: struct sk_buff \*
 
 .. _`ixgbe_cleanup_headers.description`:
 
@@ -330,11 +364,13 @@ ixgbe_reuse_rx_page
 
     page flip buffer and store it back on the ring
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to store buffers on
+    :type rx_ring: struct ixgbe_ring \*
 
-    :param struct ixgbe_rx_buffer \*old_buff:
+    :param old_buff:
         donor buffer to have page reused
+    :type old_buff: struct ixgbe_rx_buffer \*
 
 .. _`ixgbe_reuse_rx_page.description`:
 
@@ -352,17 +388,21 @@ ixgbe_add_rx_frag
 
     Add contents of Rx buffer to sk_buff
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct ixgbe_ring \*
 
-    :param struct ixgbe_rx_buffer \*rx_buffer:
+    :param rx_buffer:
         buffer containing page to add
+    :type rx_buffer: struct ixgbe_rx_buffer \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff to place the data into
+    :type skb: struct sk_buff \*
 
-    :param unsigned int size:
+    :param size:
         size of data in rx_buffer
+    :type size: unsigned int
 
 .. _`ixgbe_add_rx_frag.description`:
 
@@ -386,14 +426,17 @@ ixgbe_clean_rx_irq
 
     Clean completed descriptors from Rx ring - bounce buf
 
-    :param struct ixgbe_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct ixgbe_q_vector \*
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct ixgbe_ring \*
 
-    :param const int budget:
+    :param budget:
         Total limit on number of packets to process
+    :type budget: const int
 
 .. _`ixgbe_clean_rx_irq.description`:
 
@@ -416,8 +459,9 @@ ixgbe_configure_msix
 
     Configure MSI-X hardware
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_configure_msix.description`:
 
@@ -436,11 +480,13 @@ ixgbe_update_itr
 
     update the dynamic ITR value based on statistics
 
-    :param struct ixgbe_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct ixgbe_q_vector \*
 
-    :param struct ixgbe_ring_container \*ring_container:
+    :param ring_container:
         structure containing ring performance data
+    :type ring_container: struct ixgbe_ring_container \*
 
 .. _`ixgbe_update_itr.description`:
 
@@ -464,8 +510,9 @@ ixgbe_write_eitr
 
     write EITR register in hardware specific way
 
-    :param struct ixgbe_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct ixgbe_q_vector \*
 
 .. _`ixgbe_write_eitr.description`:
 
@@ -485,8 +532,9 @@ ixgbe_check_overtemp_subtask
 
     check for over temperature
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to adapter
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_irq_enable`:
 
@@ -497,14 +545,17 @@ ixgbe_irq_enable
 
     Enable default interrupt generation settings
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
-    :param bool queues:
+    :param queues:
         enable irqs for queues
+    :type queues: bool
 
-    :param bool flush:
+    :param flush:
         flush register write
+    :type flush: bool
 
 .. _`ixgbe_poll`:
 
@@ -515,11 +566,13 @@ ixgbe_poll
 
     NAPI Rx polling callback
 
-    :param struct napi_struct \*napi:
+    :param napi:
         structure for representing this polling device
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         how many packets driver is allowed to clean
+    :type budget: int
 
 .. _`ixgbe_poll.description`:
 
@@ -537,8 +590,9 @@ ixgbe_request_msix_irqs
 
     Initialize MSI-X interrupts
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_request_msix_irqs.description`:
 
@@ -557,11 +611,13 @@ ixgbe_intr
 
     legacy mode Interrupt Handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a network interface device structure
+    :type data: void \*
 
 .. _`ixgbe_request_irq`:
 
@@ -572,8 +628,9 @@ ixgbe_request_irq
 
     initialize interrupts
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_request_irq.description`:
 
@@ -592,8 +649,9 @@ ixgbe_irq_disable
 
     Mask off interrupt generation on the NIC
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_configure_msi_and_legacy`:
 
@@ -604,8 +662,9 @@ ixgbe_configure_msi_and_legacy
 
     Initialize PIN (INTA...) and MSI interrupts
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_configure_tx_ring`:
 
@@ -616,11 +675,13 @@ ixgbe_configure_tx_ring
 
     Configure 8259x Tx ring after Reset
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
-    :param struct ixgbe_ring \*ring:
+    :param ring:
         structure containing ring specific data
+    :type ring: struct ixgbe_ring \*
 
 .. _`ixgbe_configure_tx_ring.description`:
 
@@ -638,8 +699,9 @@ ixgbe_configure_tx
 
     Configure 8259x Transmit Unit after Reset
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_configure_tx.description`:
 
@@ -657,8 +719,9 @@ ixgbe_rss_indir_tbl_entries
 
     Return RSS indirection table entries
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         device handle
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_rss_indir_tbl_entries.description`:
 
@@ -678,8 +741,9 @@ ixgbe_store_key
 
     Write the RSS key to HW
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         device handle
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_store_key.description`:
 
@@ -697,8 +761,9 @@ ixgbe_init_rss_key
 
     Initialize adapter RSS key
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         device handle
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_init_rss_key.description`:
 
@@ -716,8 +781,9 @@ ixgbe_store_reta
 
     Write the RETA table to HW
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         device handle
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_store_reta.description`:
 
@@ -735,8 +801,9 @@ ixgbe_store_vfreta
 
     Write the RETA table to HW (x550 devices in SRIOV mode)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         device handle
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_store_vfreta.description`:
 
@@ -754,11 +821,13 @@ ixgbe_configure_rscctl
 
     enable RSC for the indicated ring
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct ixgbe_adapter \*
 
-    :param struct ixgbe_ring \*ring:
+    :param ring:
         structure containing ring specific data
+    :type ring: struct ixgbe_ring \*
 
 .. _`ixgbe_configure_rx`:
 
@@ -769,8 +838,9 @@ ixgbe_configure_rx
 
     Configure 8259x Receive Unit after Reset
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_configure_rx.description`:
 
@@ -788,8 +858,9 @@ ixgbe_vlan_strip_disable
 
     helper to disable hw vlan stripping
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         driver data
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_vlan_strip_enable`:
 
@@ -800,8 +871,9 @@ ixgbe_vlan_strip_enable
 
     helper to enable hw vlan stripping
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         driver data
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_write_mc_addr_list`:
 
@@ -812,8 +884,9 @@ ixgbe_write_mc_addr_list
 
     write multicast addresses to MTA
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbe_write_mc_addr_list.description`:
 
@@ -840,8 +913,9 @@ ixgbe_set_rx_mode
 
     Unicast, Multicast and Promiscuous mode set
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbe_set_rx_mode.description`:
 
@@ -862,8 +936,9 @@ ixgbe_configure_dcb
 
     Configure DCB hardware
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         ixgbe adapter struct
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_configure_dcb.description`:
 
@@ -883,11 +958,13 @@ ixgbe_hpbthresh
 
     calculate high water mark for flow control
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to calculate for
+    :type adapter: struct ixgbe_adapter \*
 
-    :param int pb:
+    :param pb:
         packet buffer to calculate
+    :type pb: int
 
 .. _`ixgbe_lpbthresh`:
 
@@ -898,11 +975,13 @@ ixgbe_lpbthresh
 
     calculate low water mark for for flow control
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to calculate for
+    :type adapter: struct ixgbe_adapter \*
 
-    :param int pb:
+    :param pb:
         packet buffer to calculate
+    :type pb: int
 
 .. _`ixgbe_clean_rx_ring`:
 
@@ -913,8 +992,9 @@ ixgbe_clean_rx_ring
 
     Free Rx Buffers per Queue
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         ring to free buffers from
+    :type rx_ring: struct ixgbe_ring \*
 
 .. _`ixgbe_sfp_link_config`:
 
@@ -925,8 +1005,9 @@ ixgbe_sfp_link_config
 
     set up SFP+ link
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to private adapter struct
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_non_sfp_link_config`:
 
@@ -937,8 +1018,9 @@ ixgbe_non_sfp_link_config
 
     set up non-SFP+ link
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to private hardware struct
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_non_sfp_link_config.description`:
 
@@ -956,8 +1038,9 @@ ixgbe_clean_tx_ring
 
     Free Tx Buffers
 
-    :param struct ixgbe_ring \*tx_ring:
+    :param tx_ring:
         ring to be cleaned
+    :type tx_ring: struct ixgbe_ring \*
 
 .. _`ixgbe_clean_all_rx_rings`:
 
@@ -968,8 +1051,9 @@ ixgbe_clean_all_rx_rings
 
     Free Rx Buffers for all queues
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_clean_all_tx_rings`:
 
@@ -980,8 +1064,9 @@ ixgbe_clean_all_tx_rings
 
     Free Tx Buffers for all queues
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_set_eee_capable`:
 
@@ -992,8 +1077,9 @@ ixgbe_set_eee_capable
 
     helper function to determine EEE support on X550
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_tx_timeout`:
 
@@ -1004,8 +1090,9 @@ ixgbe_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbe_sw_init`:
 
@@ -1016,11 +1103,13 @@ ixgbe_sw_init
 
     Initialize general software structures (struct ixgbe_adapter)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct ixgbe_adapter \*
 
-    :param const struct ixgbe_info \*ii:
+    :param ii:
         pointer to ixgbe_info for device
+    :type ii: const struct ixgbe_info \*
 
 .. _`ixgbe_sw_init.description`:
 
@@ -1040,8 +1129,9 @@ ixgbe_setup_tx_resources
 
     allocate Tx resources (Descriptors)
 
-    :param struct ixgbe_ring \*tx_ring:
+    :param tx_ring:
         tx descriptor ring (for a specific queue) to setup
+    :type tx_ring: struct ixgbe_ring \*
 
 .. _`ixgbe_setup_tx_resources.description`:
 
@@ -1059,8 +1149,9 @@ ixgbe_setup_all_tx_resources
 
     allocate all queues Tx resources
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_setup_all_tx_resources.description`:
 
@@ -1082,11 +1173,13 @@ ixgbe_setup_rx_resources
 
     allocate Rx resources (Descriptors)
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to ixgbe_adapter
+    :type adapter: struct ixgbe_adapter \*
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring (for a specific queue) to setup
+    :type rx_ring: struct ixgbe_ring \*
 
 .. _`ixgbe_setup_rx_resources.description`:
 
@@ -1104,8 +1197,9 @@ ixgbe_setup_all_rx_resources
 
     allocate all queues Rx resources
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_setup_all_rx_resources.description`:
 
@@ -1127,8 +1221,9 @@ ixgbe_free_tx_resources
 
     Free Tx Resources per Queue
 
-    :param struct ixgbe_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring for a specific queue
+    :type tx_ring: struct ixgbe_ring \*
 
 .. _`ixgbe_free_tx_resources.description`:
 
@@ -1146,8 +1241,9 @@ ixgbe_free_all_tx_resources
 
     Free Tx Resources for All Queues
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_free_all_tx_resources.description`:
 
@@ -1165,8 +1261,9 @@ ixgbe_free_rx_resources
 
     Free Rx Resources
 
-    :param struct ixgbe_ring \*rx_ring:
+    :param rx_ring:
         ring to clean the resources from
+    :type rx_ring: struct ixgbe_ring \*
 
 .. _`ixgbe_free_rx_resources.description`:
 
@@ -1184,8 +1281,9 @@ ixgbe_free_all_rx_resources
 
     Free Rx Resources for All Queues
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_free_all_rx_resources.description`:
 
@@ -1203,11 +1301,13 @@ ixgbe_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`ixgbe_change_mtu.description`:
 
@@ -1225,8 +1325,9 @@ ixgbe_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbe_open.description`:
 
@@ -1250,8 +1351,9 @@ ixgbe_close
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ixgbe_close.description`:
 
@@ -1274,8 +1376,9 @@ ixgbe_update_stats
 
     Update the board statistics counters.
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_fdir_reinit_subtask`:
 
@@ -1286,8 +1389,9 @@ ixgbe_fdir_reinit_subtask
 
     worker thread to reinit FDIR filter table
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to the device adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_check_hang_subtask`:
 
@@ -1298,8 +1402,9 @@ ixgbe_check_hang_subtask
 
     check for hung queues and dropped interrupts
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to the device adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_check_hang_subtask.description`:
 
@@ -1320,8 +1425,9 @@ ixgbe_watchdog_update_link
 
     update the link status
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to the device adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_watchdog_link_is_up`:
 
@@ -1332,8 +1438,9 @@ ixgbe_watchdog_link_is_up
 
     update netif_carrier status and print link up message
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to the device adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_watchdog_link_is_down`:
 
@@ -1344,8 +1451,9 @@ ixgbe_watchdog_link_is_down
 
     update netif_carrier status and print link down message
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to the adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_watchdog_flush_tx`:
 
@@ -1356,8 +1464,9 @@ ixgbe_watchdog_flush_tx
 
     flush queues on link down
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to the device adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_watchdog_subtask`:
 
@@ -1368,8 +1477,9 @@ ixgbe_watchdog_subtask
 
     check and bring link up
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to the device adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_sfp_detection_subtask`:
 
@@ -1380,8 +1490,9 @@ ixgbe_sfp_detection_subtask
 
     poll for SFP+ cable
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the ixgbe adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_sfp_link_config_subtask`:
 
@@ -1392,8 +1503,9 @@ ixgbe_sfp_link_config_subtask
 
     set up link SFP after module install
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the ixgbe adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_service_timer`:
 
@@ -1404,8 +1516,29 @@ ixgbe_service_timer
 
     Timer Call-back
 
-    :param struct timer_list \*t:
+    :param t:
         pointer to timer_list structure
+    :type t: struct timer_list \*
+
+.. _`ixgbe_check_fw_error`:
+
+ixgbe_check_fw_error
+====================
+
+.. c:function:: bool ixgbe_check_fw_error(struct ixgbe_adapter *adapter)
+
+    Check firmware for errors
+
+    :param adapter:
+        the adapter private structure
+    :type adapter: struct ixgbe_adapter \*
+
+.. _`ixgbe_check_fw_error.description`:
+
+Description
+-----------
+
+Check firmware errors in register FWSM
 
 .. _`ixgbe_service_task`:
 
@@ -1416,8 +1549,9 @@ ixgbe_service_task
 
     manages and runs subtasks
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work_struct containing our data
+    :type work: struct work_struct \*
 
 .. _`ixgbe_set_mac`:
 
@@ -1428,11 +1562,13 @@ ixgbe_set_mac
 
     Change the Ethernet Address of the NIC
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         pointer to an address structure
+    :type p: void \*
 
 .. _`ixgbe_set_mac.description`:
 
@@ -1450,8 +1586,9 @@ ixgbe_add_sanmac_netdev
 
     Add the SAN MAC address to the corresponding netdev->dev_addrs
 
-    :param struct net_device \*dev:
+    :param dev:
         network interface device structure
+    :type dev: struct net_device \*
 
 .. _`ixgbe_add_sanmac_netdev.description`:
 
@@ -1469,8 +1606,9 @@ ixgbe_del_sanmac_netdev
 
     Removes the SAN MAC address to the corresponding netdev->dev_addrs
 
-    :param struct net_device \*dev:
+    :param dev:
         network interface device structure
+    :type dev: struct net_device \*
 
 .. _`ixgbe_del_sanmac_netdev.description`:
 
@@ -1488,11 +1626,13 @@ ixgbe_validate_rtr
 
     verify 802.1Qp to Rx packet buffer mapping is valid.
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         pointer to ixgbe_adapter
+    :type adapter: struct ixgbe_adapter \*
 
-    :param u8 tc:
+    :param tc:
         number of traffic classes currently enabled
+    :type tc: u8
 
 .. _`ixgbe_validate_rtr.description`:
 
@@ -1511,8 +1651,9 @@ ixgbe_set_prio_tc_map
 
     Configure netdev prio tc map
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         Pointer to adapter struct
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_set_prio_tc_map.description`:
 
@@ -1530,11 +1671,13 @@ ixgbe_setup_tc
 
     configure net_device for multiple traffic classes
 
-    :param struct net_device \*dev:
+    :param dev:
         net device to configure
+    :type dev: struct net_device \*
 
-    :param u8 tc:
+    :param tc:
         number of traffic classes to enable
+    :type tc: u8
 
 .. _`ixgbe_add_udp_tunnel_port`:
 
@@ -1545,11 +1688,13 @@ ixgbe_add_udp_tunnel_port
 
     Get notifications about adding UDP tunnel ports
 
-    :param struct net_device \*dev:
+    :param dev:
         The port's netdev
+    :type dev: struct net_device \*
 
-    :param struct udp_tunnel_info \*ti:
+    :param ti:
         Tunnel endpoint information
+    :type ti: struct udp_tunnel_info \*
 
 .. _`ixgbe_del_udp_tunnel_port`:
 
@@ -1560,11 +1705,13 @@ ixgbe_del_udp_tunnel_port
 
     Get notifications about removing UDP tunnel ports
 
-    :param struct net_device \*dev:
+    :param dev:
         The port's netdev
+    :type dev: struct net_device \*
 
-    :param struct udp_tunnel_info \*ti:
+    :param ti:
         Tunnel endpoint information
+    :type ti: struct udp_tunnel_info \*
 
 .. _`ixgbe_configure_bridge_mode`:
 
@@ -1575,11 +1722,13 @@ ixgbe_configure_bridge_mode
 
     set various bridge modes
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the private structure
+    :type adapter: struct ixgbe_adapter \*
 
-    :param __u16 mode:
+    :param mode:
         requested bridge mode
+    :type mode: __u16
 
 .. _`ixgbe_configure_bridge_mode.description`:
 
@@ -1587,6 +1736,56 @@ Description
 -----------
 
 Configure some settings require for various bridge modes.
+
+.. _`ixgbe_txrx_ring_disable`:
+
+ixgbe_txrx_ring_disable
+=======================
+
+.. c:function:: void ixgbe_txrx_ring_disable(struct ixgbe_adapter *adapter, int ring)
+
+    Disable Rx/Tx/XDP Tx rings
+
+    :param adapter:
+        adapter structure
+    :type adapter: struct ixgbe_adapter \*
+
+    :param ring:
+        ring index
+    :type ring: int
+
+.. _`ixgbe_txrx_ring_disable.description`:
+
+Description
+-----------
+
+This function disables a certain Rx/Tx/XDP Tx ring. The function
+assumes that the netdev is running.
+
+.. _`ixgbe_txrx_ring_enable`:
+
+ixgbe_txrx_ring_enable
+======================
+
+.. c:function:: void ixgbe_txrx_ring_enable(struct ixgbe_adapter *adapter, int ring)
+
+    Enable Rx/Tx/XDP Tx rings
+
+    :param adapter:
+        adapter structure
+    :type adapter: struct ixgbe_adapter \*
+
+    :param ring:
+        ring index
+    :type ring: int
+
+.. _`ixgbe_txrx_ring_enable.description`:
+
+Description
+-----------
+
+This function enables a certain Rx/Tx/XDP Tx ring. The function
+assumes that the netdev is running.
 
 .. _`ixgbe_enumerate_functions`:
 
@@ -1597,8 +1796,9 @@ ixgbe_enumerate_functions
 
     Get the number of ports this device has
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         adapter structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_enumerate_functions.description`:
 
@@ -1619,14 +1819,17 @@ ixgbe_wol_supported
 
     Check whether device supports WoL
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the adapter private structure
+    :type adapter: struct ixgbe_adapter \*
 
-    :param u16 device_id:
+    :param device_id:
         the device ID
+    :type device_id: u16
 
-    :param u16 subdevice_id:
+    :param subdevice_id:
         the subsystem device ID
+    :type subdevice_id: u16
 
 .. _`ixgbe_wol_supported.description`:
 
@@ -1645,8 +1848,9 @@ ixgbe_set_fw_version
 
     Set FW version
 
-    :param struct ixgbe_adapter \*adapter:
+    :param adapter:
         the adapter private structure
+    :type adapter: struct ixgbe_adapter \*
 
 .. _`ixgbe_set_fw_version.description`:
 
@@ -1665,11 +1869,13 @@ ixgbe_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in ixgbe_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`ixgbe_probe.description`:
 
@@ -1691,8 +1897,9 @@ ixgbe_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`ixgbe_remove.description`:
 
@@ -1713,11 +1920,13 @@ ixgbe_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`ixgbe_io_error_detected.description`:
 
@@ -1736,8 +1945,9 @@ ixgbe_io_slot_reset
 
     called after the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`ixgbe_io_slot_reset.description`:
 
@@ -1755,8 +1965,9 @@ ixgbe_io_resume
 
     called when traffic can start flowing again.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`ixgbe_io_resume.description`:
 
@@ -1775,8 +1986,9 @@ ixgbe_init_module
 
     Driver Registration Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ixgbe_init_module.description`:
 
@@ -1795,8 +2007,9 @@ ixgbe_exit_module
 
     Driver Exit Cleanup Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ixgbe_exit_module.description`:
 

@@ -187,8 +187,9 @@ srp_chkready
 
     evaluate the transport layer state before I/O
 
-    :param struct srp_rport \*rport:
+    :param rport:
         SRP target port pointer.
+    :type rport: struct srp_rport \*
 
 .. _`srp_chkready.description`:
 

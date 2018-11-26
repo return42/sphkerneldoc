@@ -10,8 +10,9 @@ twl_get_regmap
 
     Get the regmap associated with the given module
 
-    :param u8 mod_no:
+    :param mod_no:
         module number
+    :type mod_no: u8
 
 .. _`twl_get_regmap.description`:
 
@@ -29,17 +30,21 @@ twl_i2c_write
 
     Writes a n bit register in TWL4030/TWL5030/TWL60X0
 
-    :param u8 mod_no:
+    :param mod_no:
         module number
+    :type mod_no: u8
 
-    :param u8 \*value:
+    :param value:
         an array of num_bytes+1 containing data to write
+    :type value: u8 \*
 
-    :param u8 reg:
+    :param reg:
         register address (just offset will do)
+    :type reg: u8
 
-    :param unsigned num_bytes:
+    :param num_bytes:
         number of bytes to transfer
+    :type num_bytes: unsigned
 
 .. _`twl_i2c_write.description`:
 
@@ -57,17 +62,21 @@ twl_i2c_read
 
     Reads a n bit register in TWL4030/TWL5030/TWL60X0
 
-    :param u8 mod_no:
+    :param mod_no:
         module number
+    :type mod_no: u8
 
-    :param u8 \*value:
+    :param value:
         an array of num_bytes containing data to be read
+    :type value: u8 \*
 
-    :param u8 reg:
+    :param reg:
         register address (just offset will do)
+    :type reg: u8
 
-    :param unsigned num_bytes:
+    :param num_bytes:
         number of bytes to transfer
+    :type num_bytes: unsigned
 
 .. _`twl_i2c_read.description`:
 
@@ -85,11 +94,13 @@ twl_set_regcache_bypass
 
     Configure the regcache bypass for the regmap associated with the module
 
-    :param u8 mod_no:
+    :param mod_no:
         module number
+    :type mod_no: u8
 
-    :param bool enable:
+    :param enable:
         Regcache bypass state
+    :type enable: bool
 
 .. _`twl_set_regcache_bypass.description`:
 
@@ -107,8 +118,9 @@ twl_read_idcode_register
 
     API to read the IDCODE register.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`twl_read_idcode_register.description`:
 
@@ -126,8 +138,9 @@ twl_get_type
 
     API to get TWL Si type.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`twl_get_type.description`:
 
@@ -145,8 +158,9 @@ twl_get_version
 
     API to get TWL Si version.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`twl_get_version.description`:
 
@@ -164,8 +178,9 @@ twl_get_hfclk_rate
 
     API to get TWL external HFCLK clock rate.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`twl_get_hfclk_rate.description`:
 

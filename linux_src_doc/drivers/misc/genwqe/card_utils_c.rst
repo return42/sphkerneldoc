@@ -8,14 +8,17 @@
 
 .. c:function:: int __genwqe_writeq(struct genwqe_dev *cd, u64 byte_offs, u64 val)
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param u64 byte_offs:
+    :param byte_offs:
         *undescribed*
+    :type byte_offs: u64
 
-    :param u64 val:
+    :param val:
         *undescribed*
+    :type val: u64
 
 .. _`__genwqe_writeq.description`:
 
@@ -55,11 +58,13 @@ GNU General Public License for more details.
 
     Read 64-bit register
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
-    :param u64 byte_offs:
+    :param byte_offs:
         offset within BAR
+    :type byte_offs: u64
 
 .. _`__genwqe_readq.return`:
 
@@ -77,14 +82,17 @@ value from register
 
     Write 32-bit register
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
-    :param u64 byte_offs:
+    :param byte_offs:
         byte offset within BAR
+    :type byte_offs: u64
 
-    :param u32 val:
+    :param val:
         32-bit value
+    :type val: u32
 
 .. _`__genwqe_writel.return`:
 
@@ -102,11 +110,13 @@ Return
 
     Read 32-bit register
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
-    :param u64 byte_offs:
+    :param byte_offs:
         offset within BAR
+    :type byte_offs: u64
 
 .. _`__genwqe_readl.return`:
 
@@ -124,14 +134,17 @@ genwqe_read_app_id
 
     Extract app_id
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param char \*app_name:
+    :param app_name:
         *undescribed*
+    :type app_name: char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
 .. _`genwqe_read_app_id.description`:
 
@@ -168,14 +181,17 @@ genwqe_crc32
 
     Generate 32-bit crc as required for DDCBs
 
-    :param u8 \*buff:
+    :param buff:
         pointer to data buffer
+    :type buff: u8 \*
 
-    :param size_t len:
+    :param len:
         length of data for calculation
+    :type len: size_t
 
-    :param u32 init:
+    :param init:
         initial crc (0xffffffff at start)
+    :type init: u32
 
 .. _`genwqe_crc32.description`:
 
@@ -213,20 +229,25 @@ genwqe_alloc_sync_sgl
 
     Allocate memory for sgl and overlapping pages
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param struct genwqe_sgl \*sgl:
+    :param sgl:
         *undescribed*
+    :type sgl: struct genwqe_sgl \*
 
-    :param void __user \*user_addr:
+    :param user_addr:
         *undescribed*
+    :type user_addr: void __user \*
 
-    :param size_t user_size:
+    :param user_size:
         *undescribed*
+    :type user_size: size_t
 
-    :param int write:
+    :param write:
         *undescribed*
+    :type write: int
 
 .. _`genwqe_alloc_sync_sgl.description`:
 
@@ -247,11 +268,13 @@ genwqe_free_sync_sgl
 
     Free memory for sgl and overlapping pages
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param struct genwqe_sgl \*sgl:
+    :param sgl:
         *undescribed*
+    :type sgl: struct genwqe_sgl \*
 
 .. _`genwqe_free_sync_sgl.description`:
 
@@ -271,14 +294,17 @@ genwqe_free_user_pages
 
     Give pinned pages back
 
-    :param struct page \*\*page_list:
+    :param page_list:
         *undescribed*
+    :type page_list: struct page \*\*
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         *undescribed*
+    :type nr_pages: unsigned int
 
-    :param int dirty:
+    :param dirty:
         *undescribed*
+    :type dirty: int
 
 .. _`genwqe_free_user_pages.description`:
 
@@ -300,17 +326,21 @@ genwqe_user_vmap
 
     Map user-space memory to virtual kernel memory
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to genwqe device
+    :type cd: struct genwqe_dev \*
 
-    :param struct dma_mapping \*m:
+    :param m:
         mapping params
+    :type m: struct dma_mapping \*
 
-    :param void \*uaddr:
+    :param uaddr:
         user virtual address
+    :type uaddr: void \*
 
-    :param unsigned long size:
+    :param size:
         size of memory to be mapped
+    :type size: unsigned long
 
 .. _`genwqe_user_vmap.description`:
 
@@ -352,11 +382,13 @@ genwqe_user_vunmap
 
     Undo mapping of user-space mem to virtual kernel memory
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to genwqe device
+    :type cd: struct genwqe_dev \*
 
-    :param struct dma_mapping \*m:
+    :param m:
         mapping params
+    :type m: struct dma_mapping \*
 
 .. _`genwqe_card_type`:
 
@@ -367,8 +399,9 @@ genwqe_card_type
 
     Get chip type SLU Configuration Register
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to the genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_card_type.return`:
 
@@ -389,8 +422,9 @@ genwqe_card_reset
 
     Reset the card
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to the genwqe device descriptor
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_set_interrupt_capability`:
 
@@ -401,11 +435,13 @@ genwqe_set_interrupt_capability
 
     Configure MSI capability structure
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to the device
+    :type cd: struct genwqe_dev \*
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
 .. _`genwqe_set_interrupt_capability.return`:
 
@@ -423,8 +459,9 @@ genwqe_reset_interrupt_capability
 
     Undo \ :c:func:`genwqe_set_interrupt_capability`\ 
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         pointer to the device
+    :type cd: struct genwqe_dev \*
 
 .. _`set_reg_idx`:
 
@@ -435,26 +472,33 @@ set_reg_idx
 
     Fill array with data. Ignore illegal offsets.
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         card device
+    :type cd: struct genwqe_dev \*
 
-    :param struct genwqe_reg \*r:
+    :param r:
         debug register array
+    :type r: struct genwqe_reg \*
 
-    :param unsigned int \*i:
+    :param i:
         index to desired entry
+    :type i: unsigned int \*
 
-    :param unsigned int m:
+    :param m:
         maximum possible entries
+    :type m: unsigned int
 
-    :param u32 addr:
+    :param addr:
         addr which is read
+    :type addr: u32
 
-    :param u32 idx:
+    :param idx:
         *undescribed*
+    :type idx: u32
 
-    :param u64 val:
+    :param val:
         read value
+    :type val: u64
 
 .. _`genwqe_ffdc_buff_size`:
 
@@ -465,11 +509,13 @@ genwqe_ffdc_buff_size
 
     Calculates the number of dump registers
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param int uid:
+    :param uid:
         *undescribed*
+    :type uid: int
 
 .. _`genwqe_ffdc_buff_read`:
 
@@ -480,17 +526,21 @@ genwqe_ffdc_buff_read
 
     Implements LogoutExtendedErrorRegisters procedure
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param int uid:
+    :param uid:
         *undescribed*
+    :type uid: int
 
-    :param struct genwqe_reg \*regs:
+    :param regs:
         *undescribed*
+    :type regs: struct genwqe_reg \*
 
-    :param unsigned int max_regs:
+    :param max_regs:
         *undescribed*
+    :type max_regs: unsigned int
 
 .. _`genwqe_write_vreg`:
 
@@ -501,17 +551,21 @@ genwqe_write_vreg
 
     Write register in virtual window
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param u32 reg:
+    :param reg:
         *undescribed*
+    :type reg: u32
 
-    :param u64 val:
+    :param val:
         *undescribed*
+    :type val: u64
 
-    :param int func:
+    :param func:
         *undescribed*
+    :type func: int
 
 .. _`genwqe_write_vreg.description`:
 
@@ -530,14 +584,17 @@ genwqe_read_vreg
 
     Read register in virtual window
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param u32 reg:
+    :param reg:
         *undescribed*
+    :type reg: u32
 
-    :param int func:
+    :param func:
         *undescribed*
+    :type func: int
 
 .. _`genwqe_read_vreg.description`:
 
@@ -556,8 +613,9 @@ genwqe_base_clock_frequency
 
     Deteremine base clock frequency of the card
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_base_clock_frequency.note`:
 
@@ -587,8 +645,9 @@ genwqe_stop_traps
 
     Stop traps
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_stop_traps.description`:
 
@@ -606,8 +665,9 @@ genwqe_start_traps
 
     Start traps
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_start_traps.description`:
 

@@ -41,8 +41,9 @@ i915_vma_put_fence
 
     force-remove fence for a VMA
 
-    :param struct i915_vma \*vma:
+    :param vma:
         vma to map linearly (not through a fence reg)
+    :type vma: struct i915_vma \*
 
 .. _`i915_vma_put_fence.description`:
 
@@ -69,8 +70,9 @@ i915_vma_pin_fence
 
     set up fencing for a vma
 
-    :param struct i915_vma \*vma:
+    :param vma:
         vma to map through a fence reg
+    :type vma: struct i915_vma \*
 
 .. _`i915_vma_pin_fence.description`:
 
@@ -104,8 +106,9 @@ i915_reserve_fence
 
     Reserve a fence for vGPU
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_reserve_fence.description`:
 
@@ -124,8 +127,9 @@ i915_unreserve_fence
 
     Reclaim a reserved fence
 
-    :param struct drm_i915_fence_reg \*fence:
+    :param fence:
         the fence reg
+    :type fence: struct drm_i915_fence_reg \*
 
 .. _`i915_unreserve_fence.description`:
 
@@ -143,8 +147,9 @@ i915_gem_revoke_fences
 
     revoke fence state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_gem_revoke_fences.description`:
 
@@ -166,8 +171,9 @@ i915_gem_restore_fences
 
     restore fence state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_gem_restore_fences.description`:
 
@@ -236,8 +242,9 @@ i915_gem_detect_bit_6_swizzle
 
     detect bit 6 swizzling pattern
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_gem_detect_bit_6_swizzle.description`:
 
@@ -256,11 +263,13 @@ i915_gem_object_do_bit_17_swizzle
 
     fixup bit 17 swizzling
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         i915 GEM buffer object
+    :type obj: struct drm_i915_gem_object \*
 
-    :param struct sg_table \*pages:
+    :param pages:
         the scattergather list of physical pages
+    :type pages: struct sg_table \*
 
 .. _`i915_gem_object_do_bit_17_swizzle.description`:
 
@@ -284,11 +293,13 @@ i915_gem_object_save_bit_17_swizzle
 
     save bit 17 swizzling
 
-    :param struct drm_i915_gem_object \*obj:
+    :param obj:
         i915 GEM buffer object
+    :type obj: struct drm_i915_gem_object \*
 
-    :param struct sg_table \*pages:
+    :param pages:
         the scattergather list of physical pages
+    :type pages: struct sg_table \*
 
 .. _`i915_gem_object_save_bit_17_swizzle.description`:
 

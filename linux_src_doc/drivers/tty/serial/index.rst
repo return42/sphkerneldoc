@@ -23,4 +23,5 @@ serial
     serial_txx9_c
     sn_console_c
     st-asc_c
+    uartlite_c
     xilinx_uartps_c

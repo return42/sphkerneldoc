@@ -10,8 +10,9 @@ drm_sched_fence_free
 
     free up the fence memory
 
-    :param struct rcu_head \*rcu:
+    :param rcu:
         RCU callback head
+    :type rcu: struct rcu_head \*
 
 .. _`drm_sched_fence_free.description`:
 
@@ -29,8 +30,9 @@ drm_sched_fence_release_scheduled
 
     callback that fence can be freed
 
-    :param struct dma_fence \*f:
+    :param f:
         *undescribed*
+    :type f: struct dma_fence \*
 
 .. _`drm_sched_fence_release_scheduled.description`:
 
@@ -49,8 +51,9 @@ drm_sched_fence_release_finished
 
     drop extra reference
 
-    :param struct dma_fence \*f:
+    :param f:
         fence
+    :type f: struct dma_fence \*
 
 .. _`drm_sched_fence_release_finished.description`:
 

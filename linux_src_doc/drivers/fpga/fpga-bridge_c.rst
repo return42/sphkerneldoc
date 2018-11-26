@@ -10,8 +10,9 @@ fpga_bridge_enable
 
     Enable transactions on the bridge
 
-    :param struct fpga_bridge \*bridge:
+    :param bridge:
         FPGA bridge
+    :type bridge: struct fpga_bridge \*
 
 .. _`fpga_bridge_enable.return`:
 
@@ -29,8 +30,9 @@ fpga_bridge_disable
 
     Disable transactions on the bridge
 
-    :param struct fpga_bridge \*bridge:
+    :param bridge:
         FPGA bridge
+    :type bridge: struct fpga_bridge \*
 
 .. _`fpga_bridge_disable.return`:
 
@@ -48,11 +50,13 @@ of_fpga_bridge_get
 
     get an exclusive reference to a fpga bridge
 
-    :param struct device_node \*np:
+    :param np:
         node pointer of a FPGA bridge
+    :type np: struct device_node \*
 
-    :param struct fpga_image_info \*info:
+    :param info:
         fpga image specific information
+    :type info: struct fpga_image_info \*
 
 .. _`of_fpga_bridge_get.description`:
 
@@ -72,11 +76,13 @@ fpga_bridge_get
 
     get an exclusive reference to a fpga bridge
 
-    :param struct device \*dev:
+    :param dev:
         parent device that fpga bridge was registered with
+    :type dev: struct device \*
 
-    :param struct fpga_image_info \*info:
+    :param info:
         fpga manager info
+    :type info: struct fpga_image_info \*
 
 .. _`fpga_bridge_get.description`:
 
@@ -90,7 +96,7 @@ Given a device, get an exclusive reference to a fpga bridge.
 Return
 ------
 
-fpga manager struct or \ :c:func:`IS_ERR`\  condition containing error code.
+fpga bridge struct or \ :c:func:`IS_ERR`\  condition containing error code.
 
 .. _`fpga_bridge_put`:
 
@@ -101,8 +107,9 @@ fpga_bridge_put
 
     release a reference to a bridge
 
-    :param struct fpga_bridge \*bridge:
+    :param bridge:
         FPGA bridge
+    :type bridge: struct fpga_bridge \*
 
 .. _`fpga_bridges_enable`:
 
@@ -113,8 +120,9 @@ fpga_bridges_enable
 
     enable bridges in a list
 
-    :param struct list_head \*bridge_list:
+    :param bridge_list:
         list of FPGA bridges
+    :type bridge_list: struct list_head \*
 
 .. _`fpga_bridges_enable.description`:
 
@@ -134,8 +142,9 @@ fpga_bridges_disable
 
     disable bridges in a list
 
-    :param struct list_head \*bridge_list:
+    :param bridge_list:
         list of FPGA bridges
+    :type bridge_list: struct list_head \*
 
 .. _`fpga_bridges_disable.description`:
 
@@ -155,8 +164,9 @@ fpga_bridges_put
 
     put bridges
 
-    :param struct list_head \*bridge_list:
+    :param bridge_list:
         list of FPGA bridges
+    :type bridge_list: struct list_head \*
 
 .. _`fpga_bridges_put.description`:
 
@@ -175,14 +185,17 @@ of_fpga_bridge_get_to_list
 
     get a bridge, add it to a list
 
-    :param struct device_node \*np:
+    :param np:
         node pointer of a FPGA bridge
+    :type np: struct device_node \*
 
-    :param struct fpga_image_info \*info:
+    :param info:
         fpga image specific information
+    :type info: struct fpga_image_info \*
 
-    :param struct list_head \*bridge_list:
+    :param bridge_list:
         list of FPGA bridges
+    :type bridge_list: struct list_head \*
 
 .. _`of_fpga_bridge_get_to_list.description`:
 
@@ -202,14 +215,17 @@ fpga_bridge_get_to_list
 
     given device, get a bridge, add it to a list
 
-    :param struct device \*dev:
+    :param dev:
         FPGA bridge device
+    :type dev: struct device \*
 
-    :param struct fpga_image_info \*info:
+    :param info:
         fpga image specific information
+    :type info: struct fpga_image_info \*
 
-    :param struct list_head \*bridge_list:
+    :param bridge_list:
         list of FPGA bridges
+    :type bridge_list: struct list_head \*
 
 .. _`fpga_bridge_get_to_list.description`:
 
@@ -229,17 +245,29 @@ fpga_bridge_create
 
     create and initialize a struct fpga_bridge
 
-    :param struct device \*dev:
+    :param dev:
         FPGA bridge device from pdev
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         FPGA bridge name
+    :type name: const char \*
 
-    :param const struct fpga_bridge_ops \*br_ops:
+    :param br_ops:
         pointer to structure of fpga bridge ops
+    :type br_ops: const struct fpga_bridge_ops \*
 
-    :param void \*priv:
+    :param priv:
         FPGA bridge private data
+    :type priv: void \*
+
+.. _`fpga_bridge_create.description`:
+
+Description
+-----------
+
+The caller of this function is responsible for freeing the bridge with
+\ :c:func:`fpga_bridge_free`\ .  Using \ :c:func:`devm_fpga_bridge_create`\  instead is recommended.
 
 .. _`fpga_bridge_create.return`:
 
@@ -255,10 +283,56 @@ fpga_bridge_free
 
 .. c:function:: void fpga_bridge_free(struct fpga_bridge *bridge)
 
-    free a fpga bridge and its id
+    free a fpga bridge created by \ :c:func:`fpga_bridge_create`\ 
 
-    :param struct fpga_bridge \*bridge:
-        FPGA bridge struct created by fpga_bridge_create
+    :param bridge:
+        FPGA bridge struct
+    :type bridge: struct fpga_bridge \*
+
+.. _`devm_fpga_bridge_create`:
+
+devm_fpga_bridge_create
+=======================
+
+.. c:function:: struct fpga_bridge *devm_fpga_bridge_create(struct device *dev, const char *name, const struct fpga_bridge_ops *br_ops, void *priv)
+
+    create and init a managed struct fpga_bridge
+
+    :param dev:
+        FPGA bridge device from pdev
+    :type dev: struct device \*
+
+    :param name:
+        FPGA bridge name
+    :type name: const char \*
+
+    :param br_ops:
+        pointer to structure of fpga bridge ops
+    :type br_ops: const struct fpga_bridge_ops \*
+
+    :param priv:
+        FPGA bridge private data
+    :type priv: void \*
+
+.. _`devm_fpga_bridge_create.description`:
+
+Description
+-----------
+
+This function is intended for use in a FPGA bridge driver's probe function.
+After the bridge driver creates the struct with \ :c:func:`devm_fpga_bridge_create`\ , it
+should register the bridge with \ :c:func:`fpga_bridge_register`\ .  The bridge driver's
+remove function should call \ :c:func:`fpga_bridge_unregister`\ .  The bridge struct
+allocated with this function will be freed automatically on driver detach.
+This includes the case of a probe function returning error before calling
+\ :c:func:`fpga_bridge_register`\ , the struct will still get cleaned up.
+
+.. _`devm_fpga_bridge_create.return`:
+
+Return
+------
+
+struct fpga_bridge or NULL
 
 .. _`fpga_bridge_register`:
 
@@ -267,10 +341,11 @@ fpga_bridge_register
 
 .. c:function:: int fpga_bridge_register(struct fpga_bridge *bridge)
 
-    register a fpga bridge
+    register a FPGA bridge
 
-    :param struct fpga_bridge \*bridge:
-        FPGA bridge struct created by fpga_bridge_create
+    :param bridge:
+        FPGA bridge struct
+    :type bridge: struct fpga_bridge \*
 
 .. _`fpga_bridge_register.return`:
 
@@ -286,10 +361,18 @@ fpga_bridge_unregister
 
 .. c:function:: void fpga_bridge_unregister(struct fpga_bridge *bridge)
 
-    unregister and free a fpga bridge
+    unregister a FPGA bridge
 
-    :param struct fpga_bridge \*bridge:
-        FPGA bridge struct created by fpga_bridge_create
+    :param bridge:
+        FPGA bridge struct
+    :type bridge: struct fpga_bridge \*
+
+.. _`fpga_bridge_unregister.description`:
+
+Description
+-----------
+
+This function is intended for use in a FPGA bridge driver's remove function.
 
 .. This file was automatic generated / don't edit.
 

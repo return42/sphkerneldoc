@@ -10,14 +10,17 @@ dccp_parse_options
 
     Parse DCCP options present in \ ``skb``\ 
 
-    :param struct sock \*sk:
+    :param sk:
         client\|server\|listening dccp socket (when \ ``dreq``\  != NULL)
+    :type sk: struct sock \*
 
-    :param struct dccp_request_sock \*dreq:
+    :param dreq:
         request socket to use during connection setup, or NULL
+    :type dreq: struct dccp_request_sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`dccp_insert_option_mandatory`:
 
@@ -28,8 +31,9 @@ dccp_insert_option_mandatory
 
     Mandatory option (5.8.2) Note that since we are using skb_push, this function needs to be called \_after\_ inserting the option it is supposed to influence (stack order).
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`dccp_insert_fn_opt`:
 
@@ -40,23 +44,29 @@ dccp_insert_fn_opt
 
     Insert single Feature-Negotiation option into \ ``skb``\ 
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param u8 type:
+    :param type:
         \ ``DCCPO_CHANGE_L``\ , \ ``DCCPO_CHANGE_R``\ , \ ``DCCPO_CONFIRM_L``\ , \ ``DCCPO_CONFIRM_R``\ 
+    :type type: u8
 
-    :param u8 feat:
+    :param feat:
         one out of \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u8 \*val:
+    :param val:
         NN value or SP array (preferred element first) to copy
+    :type val: u8 \*
 
-    :param u8 len:
+    :param len:
         true length of \ ``val``\  in bytes (excluding first element repetition)
+    :type len: u8
 
-    :param bool repeat_first:
+    :param repeat_first:
         whether to copy the first element of \ ``val``\  twice
+    :type repeat_first: bool
 
 .. _`dccp_insert_fn_opt.description`:
 

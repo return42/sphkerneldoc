@@ -10,14 +10,17 @@ bfq_bfqq_move
 
     migrate \ ``bfqq``\  to \ ``bfqg``\ .
 
-    :param struct bfq_data \*bfqd:
+    :param bfqd:
         queue descriptor.
+    :type bfqd: struct bfq_data \*
 
-    :param struct bfq_queue \*bfqq:
+    :param bfqq:
         the queue to move.
+    :type bfqq: struct bfq_queue \*
 
-    :param struct bfq_group \*bfqg:
+    :param bfqg:
         the group to move to.
+    :type bfqg: struct bfq_group \*
 
 .. _`bfq_bfqq_move.description`:
 
@@ -41,14 +44,17 @@ objects).
 
     move \ ``bic``\  to \ ``cgroup``\ .
 
-    :param struct bfq_data \*bfqd:
+    :param bfqd:
         the queue descriptor.
+    :type bfqd: struct bfq_data \*
 
-    :param struct bfq_io_cq \*bic:
+    :param bic:
         the bic to move.
+    :type bic: struct bfq_io_cq \*
 
-    :param struct blkcg \*blkcg:
+    :param blkcg:
         the blk-cgroup to move to.
+    :type blkcg: struct blkcg \*
 
 .. _`__bfq_bic_change_cgroup.description`:
 
@@ -77,8 +83,9 @@ bfq_flush_idle_tree
 
     deactivate any entity on the idle tree of \ ``st``\ .
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service tree being flushed.
+    :type st: struct bfq_service_tree \*
 
 .. _`bfq_reparent_leaf_entity`:
 
@@ -89,11 +96,13 @@ bfq_reparent_leaf_entity
 
     move leaf entity to the root_group.
 
-    :param struct bfq_data \*bfqd:
+    :param bfqd:
         the device data structure with the root group.
+    :type bfqd: struct bfq_data \*
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity to move.
+    :type entity: struct bfq_entity \*
 
 .. _`bfq_reparent_active_entities`:
 
@@ -104,14 +113,17 @@ bfq_reparent_active_entities
 
     move to the root group all active entities.
 
-    :param struct bfq_data \*bfqd:
+    :param bfqd:
         the device data structure with the root group.
+    :type bfqd: struct bfq_data \*
 
-    :param struct bfq_group \*bfqg:
+    :param bfqg:
         the group to move from.
+    :type bfqg: struct bfq_group \*
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service tree with the entities.
+    :type st: struct bfq_service_tree \*
 
 .. _`bfq_pd_offline`:
 
@@ -122,8 +134,9 @@ bfq_pd_offline
 
     deactivate the entity associated with \ ``pd``\ , and reparent its children entities.
 
-    :param struct blkg_policy_data \*pd:
+    :param pd:
         descriptor of the policy going offline.
+    :type pd: struct blkg_policy_data \*
 
 .. _`bfq_pd_offline.description`:
 

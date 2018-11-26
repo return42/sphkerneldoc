@@ -10,11 +10,13 @@ nilfs_sufile_scrap
 
     make a segment garbage
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 segnum:
+    :param segnum:
         segment number to be freed
+    :type segnum: __u64
 
 .. _`nilfs_sufile_free`:
 
@@ -25,11 +27,13 @@ nilfs_sufile_free
 
     free segment
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 segnum:
+    :param segnum:
         segment number to be freed
+    :type segnum: __u64
 
 .. _`nilfs_sufile_freev`:
 
@@ -40,17 +44,21 @@ nilfs_sufile_freev
 
     free segments
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 \*segnumv:
+    :param segnumv:
         array of segment numbers
+    :type segnumv: __u64 \*
 
-    :param size_t nsegs:
+    :param nsegs:
         size of \ ``segnumv``\  array
+    :type nsegs: size_t
 
-    :param size_t \*ndone:
+    :param ndone:
         place to store the number of freed segments
+    :type ndone: size_t \*
 
 .. _`nilfs_sufile_cancel_freev`:
 
@@ -61,17 +69,21 @@ nilfs_sufile_cancel_freev
 
     reallocate freeing segments
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 \*segnumv:
+    :param segnumv:
         array of segment numbers
+    :type segnumv: __u64 \*
 
-    :param size_t nsegs:
+    :param nsegs:
         size of \ ``segnumv``\  array
+    :type nsegs: size_t
 
-    :param size_t \*ndone:
+    :param ndone:
         place to store the number of cancelled segments
+    :type ndone: size_t \*
 
 .. _`nilfs_sufile_cancel_freev.return-value`:
 
@@ -90,11 +102,13 @@ nilfs_sufile_set_error
 
     mark a segment as erroneous
 
-    :param struct inode \*sufile:
+    :param sufile:
         inode of segment usage file
+    :type sufile: struct inode \*
 
-    :param __u64 segnum:
+    :param segnum:
         segment number
+    :type segnum: __u64
 
 .. _`nilfs_sufile_set_error.description`:
 

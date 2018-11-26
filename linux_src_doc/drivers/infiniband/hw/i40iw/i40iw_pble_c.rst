@@ -10,11 +10,13 @@ i40iw_destroy_pble_pool
 
     destroy pool during module unload
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resources
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
 .. _`i40iw_hmc_init_pble`:
 
@@ -25,11 +27,13 @@ i40iw_hmc_init_pble
 
     Initialize pble resources during module load
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         i40iw_sc_dev struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resources
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
 .. _`get_sd_pd_idx`:
 
@@ -40,11 +44,13 @@ get_sd_pd_idx
 
     Returns sd index, pd index and rel_pd_idx from fpm address \ ````\  pble_rsrc: structure containing fpm address \ ````\  idx: where to return indexes
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         *undescribed*
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
-    :param struct sd_pd_idx \*idx:
+    :param idx:
         *undescribed*
+    :type idx: struct sd_pd_idx \*
 
 .. _`add_sd_direct`:
 
@@ -55,14 +61,17 @@ add_sd_direct
 
     add sd direct for pble
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resource ptr
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
-    :param struct i40iw_add_page_info \*info:
+    :param info:
         page info for sd
+    :type info: struct i40iw_add_page_info \*
 
 .. _`i40iw_free_vmalloc_mem`:
 
@@ -73,11 +82,13 @@ i40iw_free_vmalloc_mem
 
     free vmalloc during close
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         hw struct
+    :type hw: struct i40iw_hw \*
 
-    :param struct i40iw_chunk \*chunk:
+    :param chunk:
         chunk information for vmalloc
+    :type chunk: struct i40iw_chunk \*
 
 .. _`i40iw_get_vmalloc_mem`:
 
@@ -88,14 +99,17 @@ i40iw_get_vmalloc_mem
 
     get 2M page for sd
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         hardware address
+    :type hw: struct i40iw_hw \*
 
-    :param struct i40iw_chunk \*chunk:
+    :param chunk:
         chunk to adf
+    :type chunk: struct i40iw_chunk \*
 
-    :param int pg_cnt:
+    :param pg_cnt:
         #of 4 K pages
+    :type pg_cnt: int
 
 .. _`fpm_to_idx`:
 
@@ -106,11 +120,13 @@ fpm_to_idx
 
     given fpm address, get pble index
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resource management
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
-    :param u64 addr:
+    :param addr:
         fpm address for index
+    :type addr: u64
 
 .. _`add_bp_pages`:
 
@@ -121,14 +137,17 @@ add_bp_pages
 
     add backing pages for sd
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resource management
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
-    :param struct i40iw_add_page_info \*info:
+    :param info:
         page info for sd
+    :type info: struct i40iw_add_page_info \*
 
 .. _`add_pble_pool`:
 
@@ -139,11 +158,13 @@ add_pble_pool
 
     add a sd entry for pble resoure
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resource management
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
 .. _`free_lvl2`:
 
@@ -154,11 +175,13 @@ free_lvl2
 
     fee level 2 pble
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resource management
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
-    :param struct i40iw_pble_alloc \*palloc:
+    :param palloc:
         level 2 pble allocation
+    :type palloc: struct i40iw_pble_alloc \*
 
 .. _`get_lvl2_pble`:
 
@@ -169,14 +192,17 @@ get_lvl2_pble
 
     get level 2 pble resource
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resource management
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
-    :param struct i40iw_pble_alloc \*palloc:
+    :param palloc:
         level 2 pble allocation
+    :type palloc: struct i40iw_pble_alloc \*
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pool pointer
+    :type pool: struct gen_pool \*
 
 .. _`get_lvl1_pble`:
 
@@ -187,14 +213,17 @@ get_lvl1_pble
 
     get level 1 pble resource
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resource management
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
-    :param struct i40iw_pble_alloc \*palloc:
+    :param palloc:
         level 1 pble allocation
+    :type palloc: struct i40iw_pble_alloc \*
 
 .. _`get_lvl1_lvl2_pble`:
 
@@ -205,17 +234,21 @@ get_lvl1_lvl2_pble
 
     calls get_lvl1 and get_lvl2 pble routine
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         i40iw_sc_dev struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resources
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
-    :param struct i40iw_pble_alloc \*palloc:
+    :param palloc:
         contains all inforamtion regarding pble (idx + pble addr)
+    :type palloc: struct i40iw_pble_alloc \*
 
-    :param struct gen_pool \*pool:
+    :param pool:
         pointer to general purpose special memory pool descriptor
+    :type pool: struct gen_pool \*
 
 .. _`i40iw_get_pble`:
 
@@ -226,17 +259,21 @@ i40iw_get_pble
 
     allocate pbles from the pool
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         i40iw_sc_dev struct
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resources
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
-    :param struct i40iw_pble_alloc \*palloc:
+    :param palloc:
         contains all inforamtion regarding pble (idx + pble addr)
+    :type palloc: struct i40iw_pble_alloc \*
 
-    :param u32 pble_cnt:
+    :param pble_cnt:
         #of pbles requested
+    :type pble_cnt: u32
 
 .. _`i40iw_free_pble`:
 
@@ -247,11 +284,13 @@ i40iw_free_pble
 
     put pbles back into pool
 
-    :param struct i40iw_hmc_pble_rsrc \*pble_rsrc:
+    :param pble_rsrc:
         pble resources
+    :type pble_rsrc: struct i40iw_hmc_pble_rsrc \*
 
-    :param struct i40iw_pble_alloc \*palloc:
+    :param palloc:
         contains all inforamtion regarding pble resource being freed
+    :type palloc: struct i40iw_pble_alloc \*
 
 .. This file was automatic generated / don't edit.
 

@@ -46,17 +46,21 @@ page_dma
 
     debug routine
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param char \*calling_function_name:
+    :param calling_function_name:
         string pass from calling function
+    :type calling_function_name: char \*
 
-    :param MPI2DefaultReply_t \*mpi_reply:
+    :param mpi_reply:
         reply message frame
+    :type mpi_reply: MPI2DefaultReply_t \*
 
 .. _`_config_display_some_debug.context`:
 
@@ -82,11 +86,13 @@ in this module.
 
     obtain physical memory
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct config_request \*mem:
+    :param mem:
         struct config_request
+    :type mem: struct config_request \*
 
 .. _`_config_alloc_config_dma_memory.description`:
 
@@ -95,7 +101,12 @@ Description
 
 A wrapper for obtaining dma-able memory for config page request.
 
-Returns 0 for success, non-zero for failure.
+.. _`_config_alloc_config_dma_memory.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`_config_free_config_dma_memory`:
 
@@ -106,11 +117,13 @@ Returns 0 for success, non-zero for failure.
 
     wrapper to free the memory
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct config_request \*mem:
+    :param mem:
         struct config_request
+    :type mem: struct config_request \*
 
 .. _`_config_free_config_dma_memory.description`:
 
@@ -119,7 +132,12 @@ Description
 
 A wrapper to free dma-able memory when using \_config_alloc_config_dma_memory.
 
-Returns 0 for success, non-zero for failure.
+.. _`_config_free_config_dma_memory.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_done`:
 
@@ -130,17 +148,21 @@ mpt3sas_config_done
 
     config page completion routine
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`mpt3sas_config_done.context`:
 
@@ -156,7 +178,12 @@ Description
 
 The callback handler when using \_config_request.
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`mpt3sas_config_done.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_config_request`:
@@ -168,23 +195,29 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     main routine for sending config page requests
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigRequest_t \*mpi_request:
+    :param mpi_request:
         request message frame
+    :type mpi_request: Mpi2ConfigRequest_t \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param int timeout:
+    :param timeout:
         timeout in seconds
+    :type timeout: int
 
-    :param void \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: void \*
 
-    :param u16 config_page_sz:
+    :param config_page_sz:
         size of config page
+    :type config_page_sz: u16
 
 .. _`_config_request.context`:
 
@@ -205,7 +238,12 @@ this API.
 
 The callback index is set inside \`ioc->config_cb_idx.
 
-Returns 0 for success, non-zero for failure.
+.. _`_config_request.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_manufacturing_pg0`:
 
@@ -216,14 +254,17 @@ mpt3sas_config_get_manufacturing_pg0
 
     obtain manufacturing page 0
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2ManufacturingPage0_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2ManufacturingPage0_t \*
 
 .. _`mpt3sas_config_get_manufacturing_pg0.context`:
 
@@ -232,12 +273,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_manufacturing_pg0.description`:
+.. _`mpt3sas_config_get_manufacturing_pg0.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_manufacturing_pg7`:
 
@@ -248,17 +289,21 @@ mpt3sas_config_get_manufacturing_pg7
 
     obtain manufacturing page 7
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2ManufacturingPage7_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2ManufacturingPage7_t \*
 
-    :param u16 sz:
+    :param sz:
         size of buffer passed in config_page
+    :type sz: u16
 
 .. _`mpt3sas_config_get_manufacturing_pg7.context`:
 
@@ -267,12 +312,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_manufacturing_pg7.description`:
+.. _`mpt3sas_config_get_manufacturing_pg7.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_manufacturing_pg10`:
 
@@ -283,14 +328,17 @@ mpt3sas_config_get_manufacturing_pg10
 
     obtain manufacturing page 10
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param struct Mpi2ManufacturingPage10_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: struct Mpi2ManufacturingPage10_t \*
 
 .. _`mpt3sas_config_get_manufacturing_pg10.context`:
 
@@ -299,12 +347,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_manufacturing_pg10.description`:
+.. _`mpt3sas_config_get_manufacturing_pg10.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_manufacturing_pg11`:
 
@@ -315,14 +363,17 @@ mpt3sas_config_get_manufacturing_pg11
 
     obtain manufacturing page 11
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param struct Mpi2ManufacturingPage11_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: struct Mpi2ManufacturingPage11_t \*
 
 .. _`mpt3sas_config_get_manufacturing_pg11.context`:
 
@@ -331,12 +382,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_manufacturing_pg11.description`:
+.. _`mpt3sas_config_get_manufacturing_pg11.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_set_manufacturing_pg11`:
 
@@ -347,14 +398,17 @@ mpt3sas_config_set_manufacturing_pg11
 
     set manufacturing page 11
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param struct Mpi2ManufacturingPage11_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: struct Mpi2ManufacturingPage11_t \*
 
 .. _`mpt3sas_config_set_manufacturing_pg11.context`:
 
@@ -363,12 +417,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_set_manufacturing_pg11.description`:
+.. _`mpt3sas_config_set_manufacturing_pg11.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_bios_pg2`:
 
@@ -379,14 +433,17 @@ mpt3sas_config_get_bios_pg2
 
     obtain bios page 2
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2BiosPage2_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2BiosPage2_t \*
 
 .. _`mpt3sas_config_get_bios_pg2.context`:
 
@@ -395,12 +452,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_bios_pg2.description`:
+.. _`mpt3sas_config_get_bios_pg2.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_bios_pg3`:
 
@@ -411,14 +468,17 @@ mpt3sas_config_get_bios_pg3
 
     obtain bios page 3
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2BiosPage3_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2BiosPage3_t \*
 
 .. _`mpt3sas_config_get_bios_pg3.context`:
 
@@ -427,12 +487,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_bios_pg3.description`:
+.. _`mpt3sas_config_get_bios_pg3.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_iounit_pg0`:
 
@@ -443,14 +503,17 @@ mpt3sas_config_get_iounit_pg0
 
     obtain iounit page 0
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2IOUnitPage0_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2IOUnitPage0_t \*
 
 .. _`mpt3sas_config_get_iounit_pg0.context`:
 
@@ -459,12 +522,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_iounit_pg0.description`:
+.. _`mpt3sas_config_get_iounit_pg0.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_iounit_pg1`:
 
@@ -475,14 +538,17 @@ mpt3sas_config_get_iounit_pg1
 
     obtain iounit page 1
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2IOUnitPage1_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2IOUnitPage1_t \*
 
 .. _`mpt3sas_config_get_iounit_pg1.context`:
 
@@ -491,12 +557,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_iounit_pg1.description`:
+.. _`mpt3sas_config_get_iounit_pg1.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_set_iounit_pg1`:
 
@@ -507,14 +573,17 @@ mpt3sas_config_set_iounit_pg1
 
     set iounit page 1
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2IOUnitPage1_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2IOUnitPage1_t \*
 
 .. _`mpt3sas_config_set_iounit_pg1.context`:
 
@@ -523,12 +592,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_set_iounit_pg1.description`:
+.. _`mpt3sas_config_set_iounit_pg1.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_iounit_pg3`:
 
@@ -539,17 +608,21 @@ mpt3sas_config_get_iounit_pg3
 
     obtain iounit page 3
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2IOUnitPage3_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2IOUnitPage3_t \*
 
-    :param u16 sz:
+    :param sz:
         size of buffer passed in config_page
+    :type sz: u16
 
 .. _`mpt3sas_config_get_iounit_pg3.context`:
 
@@ -558,12 +631,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_iounit_pg3.description`:
+.. _`mpt3sas_config_get_iounit_pg3.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_iounit_pg8`:
 
@@ -574,14 +647,17 @@ mpt3sas_config_get_iounit_pg8
 
     obtain iounit page 8
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2IOUnitPage8_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2IOUnitPage8_t \*
 
 .. _`mpt3sas_config_get_iounit_pg8.context`:
 
@@ -590,12 +666,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_iounit_pg8.description`:
+.. _`mpt3sas_config_get_iounit_pg8.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_ioc_pg8`:
 
@@ -606,14 +682,17 @@ mpt3sas_config_get_ioc_pg8
 
     obtain ioc page 8
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2IOCPage8_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2IOCPage8_t \*
 
 .. _`mpt3sas_config_get_ioc_pg8.context`:
 
@@ -622,12 +701,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_ioc_pg8.description`:
+.. _`mpt3sas_config_get_ioc_pg8.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_sas_device_pg0`:
 
@@ -638,20 +717,25 @@ mpt3sas_config_get_sas_device_pg0
 
     obtain sas device page 0
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2SasDevicePage0_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2SasDevicePage0_t \*
 
-    :param u32 form:
+    :param form:
         GET_NEXT_HANDLE or HANDLE
+    :type form: u32
 
-    :param u32 handle:
+    :param handle:
         device handle
+    :type handle: u32
 
 .. _`mpt3sas_config_get_sas_device_pg0.context`:
 
@@ -660,12 +744,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_sas_device_pg0.description`:
+.. _`mpt3sas_config_get_sas_device_pg0.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_sas_device_pg1`:
 
@@ -676,20 +760,25 @@ mpt3sas_config_get_sas_device_pg1
 
     obtain sas device page 1
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2SasDevicePage1_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2SasDevicePage1_t \*
 
-    :param u32 form:
+    :param form:
         GET_NEXT_HANDLE or HANDLE
+    :type form: u32
 
-    :param u32 handle:
+    :param handle:
         device handle
+    :type handle: u32
 
 .. _`mpt3sas_config_get_sas_device_pg1.context`:
 
@@ -698,12 +787,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_sas_device_pg1.description`:
+.. _`mpt3sas_config_get_sas_device_pg1.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_pcie_device_pg0`:
 
@@ -714,20 +803,25 @@ mpt3sas_config_get_pcie_device_pg0
 
     obtain pcie device page 0
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi26PCIeDevicePage0_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi26PCIeDevicePage0_t \*
 
-    :param u32 form:
+    :param form:
         GET_NEXT_HANDLE or HANDLE
+    :type form: u32
 
-    :param u32 handle:
+    :param handle:
         device handle
+    :type handle: u32
 
 .. _`mpt3sas_config_get_pcie_device_pg0.context`:
 
@@ -736,12 +830,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_pcie_device_pg0.description`:
+.. _`mpt3sas_config_get_pcie_device_pg0.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_pcie_device_pg2`:
 
@@ -752,20 +846,25 @@ mpt3sas_config_get_pcie_device_pg2
 
     obtain pcie device page 2
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi26PCIeDevicePage2_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi26PCIeDevicePage2_t \*
 
-    :param u32 form:
+    :param form:
         GET_NEXT_HANDLE or HANDLE
+    :type form: u32
 
-    :param u32 handle:
+    :param handle:
         device handle
+    :type handle: u32
 
 .. _`mpt3sas_config_get_pcie_device_pg2.context`:
 
@@ -774,12 +873,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_pcie_device_pg2.description`:
+.. _`mpt3sas_config_get_pcie_device_pg2.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_number_hba_phys`:
 
@@ -790,11 +889,13 @@ mpt3sas_config_get_number_hba_phys
 
     obtain number of phys on the host
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u8 \*num_phys:
+    :param num_phys:
         pointer returned with the number of phys
+    :type num_phys: u8 \*
 
 .. _`mpt3sas_config_get_number_hba_phys.context`:
 
@@ -803,12 +904,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_number_hba_phys.description`:
+.. _`mpt3sas_config_get_number_hba_phys.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_sas_iounit_pg0`:
 
@@ -819,17 +920,21 @@ mpt3sas_config_get_sas_iounit_pg0
 
     obtain sas iounit page 0
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2SasIOUnitPage0_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2SasIOUnitPage0_t \*
 
-    :param u16 sz:
+    :param sz:
         size of buffer passed in config_page
+    :type sz: u16
 
 .. _`mpt3sas_config_get_sas_iounit_pg0.context`:
 
@@ -846,7 +951,12 @@ Description
 Calling function should call config_get_number_hba_phys prior to
 this function, so enough memory is allocated for config_page.
 
-Returns 0 for success, non-zero for failure.
+.. _`mpt3sas_config_get_sas_iounit_pg0.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_sas_iounit_pg1`:
 
@@ -857,17 +967,21 @@ mpt3sas_config_get_sas_iounit_pg1
 
     obtain sas iounit page 1
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2SasIOUnitPage1_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2SasIOUnitPage1_t \*
 
-    :param u16 sz:
+    :param sz:
         size of buffer passed in config_page
+    :type sz: u16
 
 .. _`mpt3sas_config_get_sas_iounit_pg1.context`:
 
@@ -884,7 +998,12 @@ Description
 Calling function should call config_get_number_hba_phys prior to
 this function, so enough memory is allocated for config_page.
 
-Returns 0 for success, non-zero for failure.
+.. _`mpt3sas_config_get_sas_iounit_pg1.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_set_sas_iounit_pg1`:
 
@@ -895,17 +1014,21 @@ mpt3sas_config_set_sas_iounit_pg1
 
     send sas iounit page 1
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2SasIOUnitPage1_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2SasIOUnitPage1_t \*
 
-    :param u16 sz:
+    :param sz:
         size of buffer passed in config_page
+    :type sz: u16
 
 .. _`mpt3sas_config_set_sas_iounit_pg1.context`:
 
@@ -922,7 +1045,12 @@ Description
 Calling function should call config_get_number_hba_phys prior to
 this function, so enough memory is allocated for config_page.
 
-Returns 0 for success, non-zero for failure.
+.. _`mpt3sas_config_set_sas_iounit_pg1.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_expander_pg0`:
 
@@ -933,20 +1061,25 @@ mpt3sas_config_get_expander_pg0
 
     obtain expander page 0
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2ExpanderPage0_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2ExpanderPage0_t \*
 
-    :param u32 form:
+    :param form:
         GET_NEXT_HANDLE or HANDLE
+    :type form: u32
 
-    :param u32 handle:
+    :param handle:
         expander handle
+    :type handle: u32
 
 .. _`mpt3sas_config_get_expander_pg0.context`:
 
@@ -955,12 +1088,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_expander_pg0.description`:
+.. _`mpt3sas_config_get_expander_pg0.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_expander_pg1`:
 
@@ -971,20 +1104,25 @@ mpt3sas_config_get_expander_pg1
 
     obtain expander page 1
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2ExpanderPage1_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2ExpanderPage1_t \*
 
-    :param u32 phy_number:
+    :param phy_number:
         phy number
+    :type phy_number: u32
 
-    :param u16 handle:
+    :param handle:
         expander handle
+    :type handle: u16
 
 .. _`mpt3sas_config_get_expander_pg1.context`:
 
@@ -993,12 +1131,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_expander_pg1.description`:
+.. _`mpt3sas_config_get_expander_pg1.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_enclosure_pg0`:
 
@@ -1009,20 +1147,25 @@ mpt3sas_config_get_enclosure_pg0
 
     obtain enclosure page 0
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2SasEnclosurePage0_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2SasEnclosurePage0_t \*
 
-    :param u32 form:
+    :param form:
         GET_NEXT_HANDLE or HANDLE
+    :type form: u32
 
-    :param u32 handle:
+    :param handle:
         expander handle
+    :type handle: u32
 
 .. _`mpt3sas_config_get_enclosure_pg0.context`:
 
@@ -1031,12 +1174,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_enclosure_pg0.description`:
+.. _`mpt3sas_config_get_enclosure_pg0.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_phy_pg0`:
 
@@ -1047,17 +1190,21 @@ mpt3sas_config_get_phy_pg0
 
     obtain phy page 0
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2SasPhyPage0_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2SasPhyPage0_t \*
 
-    :param u32 phy_number:
+    :param phy_number:
         phy number
+    :type phy_number: u32
 
 .. _`mpt3sas_config_get_phy_pg0.context`:
 
@@ -1066,12 +1213,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_phy_pg0.description`:
+.. _`mpt3sas_config_get_phy_pg0.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_phy_pg1`:
 
@@ -1082,17 +1229,21 @@ mpt3sas_config_get_phy_pg1
 
     obtain phy page 1
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2SasPhyPage1_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2SasPhyPage1_t \*
 
-    :param u32 phy_number:
+    :param phy_number:
         phy number
+    :type phy_number: u32
 
 .. _`mpt3sas_config_get_phy_pg1.context`:
 
@@ -1101,12 +1252,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_phy_pg1.description`:
+.. _`mpt3sas_config_get_phy_pg1.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_raid_volume_pg1`:
 
@@ -1117,20 +1268,25 @@ mpt3sas_config_get_raid_volume_pg1
 
     obtain raid volume page 1
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2RaidVolPage1_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2RaidVolPage1_t \*
 
-    :param u32 form:
+    :param form:
         GET_NEXT_HANDLE or HANDLE
+    :type form: u32
 
-    :param u32 handle:
+    :param handle:
         volume handle
+    :type handle: u32
 
 .. _`mpt3sas_config_get_raid_volume_pg1.context`:
 
@@ -1139,12 +1295,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_raid_volume_pg1.description`:
+.. _`mpt3sas_config_get_raid_volume_pg1.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_number_pds`:
 
@@ -1155,14 +1311,17 @@ mpt3sas_config_get_number_pds
 
     obtain number of phys disk assigned to volume
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         volume handle
+    :type handle: u16
 
-    :param u8 \*num_pds:
+    :param num_pds:
         returns pds count
+    :type num_pds: u8 \*
 
 .. _`mpt3sas_config_get_number_pds.context`:
 
@@ -1171,12 +1330,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_number_pds.description`:
+.. _`mpt3sas_config_get_number_pds.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_raid_volume_pg0`:
 
@@ -1187,23 +1346,29 @@ mpt3sas_config_get_raid_volume_pg0
 
     obtain raid volume page 0
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2RaidVolPage0_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2RaidVolPage0_t \*
 
-    :param u32 form:
+    :param form:
         GET_NEXT_HANDLE or HANDLE
+    :type form: u32
 
-    :param u32 handle:
+    :param handle:
         volume handle
+    :type handle: u32
 
-    :param u16 sz:
+    :param sz:
         size of buffer passed in config_page
+    :type sz: u16
 
 .. _`mpt3sas_config_get_raid_volume_pg0.context`:
 
@@ -1212,12 +1377,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_raid_volume_pg0.description`:
+.. _`mpt3sas_config_get_raid_volume_pg0.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_phys_disk_pg0`:
 
@@ -1228,20 +1393,25 @@ mpt3sas_config_get_phys_disk_pg0
 
     obtain phys disk page 0
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param Mpi2ConfigReply_t \*mpi_reply:
+    :param mpi_reply:
         reply mf payload returned from firmware
+    :type mpi_reply: Mpi2ConfigReply_t \*
 
-    :param Mpi2RaidPhysDiskPage0_t \*config_page:
+    :param config_page:
         contents of the config page
+    :type config_page: Mpi2RaidPhysDiskPage0_t \*
 
-    :param u32 form:
+    :param form:
         GET_NEXT_PHYSDISKNUM, PHYSDISKNUM, DEVHANDLE
+    :type form: u32
 
-    :param u32 form_specific:
+    :param form_specific:
         specific to the form
+    :type form_specific: u32
 
 .. _`mpt3sas_config_get_phys_disk_pg0.context`:
 
@@ -1250,12 +1420,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_phys_disk_pg0.description`:
+.. _`mpt3sas_config_get_phys_disk_pg0.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_volume_handle`:
 
@@ -1266,14 +1436,17 @@ mpt3sas_config_get_volume_handle
 
     returns volume handle for give hidden raid components
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 pd_handle:
+    :param pd_handle:
         phys disk handle
+    :type pd_handle: u16
 
-    :param u16 \*volume_handle:
+    :param volume_handle:
         volume handle
+    :type volume_handle: u16 \*
 
 .. _`mpt3sas_config_get_volume_handle.context`:
 
@@ -1282,12 +1455,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_volume_handle.description`:
+.. _`mpt3sas_config_get_volume_handle.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_config_get_volume_wwid`:
 
@@ -1298,14 +1471,17 @@ mpt3sas_config_get_volume_wwid
 
     returns wwid given the volume handle
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 volume_handle:
+    :param volume_handle:
         volume handle
+    :type volume_handle: u16
 
-    :param u64 \*wwid:
+    :param wwid:
         volume wwid
+    :type wwid: u64 \*
 
 .. _`mpt3sas_config_get_volume_wwid.context`:
 
@@ -1314,12 +1490,12 @@ Context
 
 sleep.
 
-.. _`mpt3sas_config_get_volume_wwid.description`:
+.. _`mpt3sas_config_get_volume_wwid.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. This file was automatic generated / don't edit.
 

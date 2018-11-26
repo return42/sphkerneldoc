@@ -10,11 +10,13 @@ acpi_get_gpiod
 
     Translate ACPI GPIO pin to GPIO descriptor usable with GPIO API
 
-    :param char \*path:
+    :param path:
         ACPI GPIO controller full path name, (e.g. "\\_SB.GPO1")
+    :type path: char \*
 
-    :param int pin:
+    :param pin:
         ACPI GPIO pin number (0-based, controller-relative)
+    :type pin: int
 
 .. _`acpi_get_gpiod.return`:
 
@@ -35,8 +37,9 @@ acpi_gpiochip_request_interrupts
 
     Register isr for gpio chip ACPI events
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         GPIO chip
+    :type chip: struct gpio_chip \*
 
 .. _`acpi_gpiochip_request_interrupts.description`:
 
@@ -58,8 +61,9 @@ acpi_gpiochip_free_interrupts
 
     Free GPIO ACPI event interrupts.
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         GPIO chip
+    :type chip: struct gpio_chip \*
 
 .. _`acpi_gpiochip_free_interrupts.description`:
 
@@ -78,17 +82,21 @@ acpi_get_gpiod_by_index
 
     get a GPIO descriptor from device resources
 
-    :param struct acpi_device \*adev:
+    :param adev:
         pointer to a ACPI device to get GPIO from
+    :type adev: struct acpi_device \*
 
-    :param const char \*propname:
+    :param propname:
         Property name of the GPIO (optional)
+    :type propname: const char \*
 
-    :param int index:
+    :param index:
         index of GpioIo/GpioInt resource (starting from \ ``0``\ )
+    :type index: int
 
-    :param struct acpi_gpio_info \*info:
+    :param info:
         info pointer to fill in (optional)
+    :type info: struct acpi_gpio_info \*
 
 .. _`acpi_get_gpiod_by_index.description`:
 
@@ -124,17 +132,21 @@ acpi_node_get_gpiod
 
     get a GPIO descriptor from ACPI resources
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         pointer to an ACPI firmware node to get the GPIO information from
+    :type fwnode: struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Property name of the GPIO
+    :type propname: const char \*
 
-    :param int index:
+    :param index:
         index of GpioIo/GpioInt resource (starting from \ ``0``\ )
+    :type index: int
 
-    :param struct acpi_gpio_info \*info:
+    :param info:
         info pointer to fill in (optional)
+    :type info: struct acpi_gpio_info \*
 
 .. _`acpi_node_get_gpiod.description`:
 
@@ -155,11 +167,13 @@ acpi_dev_gpio_irq_get
 
     Find GpioInt and translate it to Linux IRQ number
 
-    :param struct acpi_device \*adev:
+    :param adev:
         pointer to a ACPI device to get IRQ from
+    :type adev: struct acpi_device \*
 
-    :param int index:
+    :param index:
         index of GpioInt resource (starting from \ ``0``\ )
+    :type index: int
 
 .. _`acpi_dev_gpio_irq_get.description`:
 
@@ -189,11 +203,13 @@ acpi_gpio_count
 
     return the number of GPIOs associated with a device / function or -ENOENT if no GPIO has been assigned to the requested function.
 
-    :param struct device \*dev:
+    :param dev:
         GPIO consumer, can be NULL for system-global GPIOs
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         function within the GPIO consumer
+    :type con_id: const char \*
 
 .. This file was automatic generated / don't edit.
 

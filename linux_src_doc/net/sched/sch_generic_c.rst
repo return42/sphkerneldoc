@@ -10,8 +10,9 @@ netif_carrier_on
 
     set carrier
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_carrier_on.description`:
 
@@ -29,8 +30,9 @@ netif_carrier_off
 
     clear carrier
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
 .. _`netif_carrier_off.description`:
 
@@ -48,8 +50,9 @@ dev_deactivate_many
 
     deactivate transmissions on several devices
 
-    :param struct list_head \*head:
+    :param head:
         list of devices to deactivate
+    :type head: struct list_head \*
 
 .. _`dev_deactivate_many.description`:
 

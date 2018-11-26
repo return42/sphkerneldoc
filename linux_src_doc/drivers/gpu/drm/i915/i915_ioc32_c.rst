@@ -10,14 +10,17 @@ i915_compat_ioctl
 
     handle the mistakes of the past
 
-    :param struct file \*filp:
+    :param filp:
         the file pointer
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         the ioctl command (and encoded flags)
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         the ioctl argument (from userspace)
+    :type arg: unsigned long
 
 .. _`i915_compat_ioctl.description`:
 

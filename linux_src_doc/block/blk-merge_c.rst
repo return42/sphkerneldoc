@@ -10,8 +10,9 @@ blk_rq_set_mixed_merge
 
     mark a request as mixed merge
 
-    :param struct request \*rq:
+    :param rq:
         request to mark as mixed merge
+    :type rq: struct request \*
 
 .. _`blk_rq_set_mixed_merge.description`:
 

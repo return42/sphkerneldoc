@@ -6,30 +6,35 @@
 ib_umem_odp_map_dma_pages
 =========================
 
-.. c:function:: int ib_umem_odp_map_dma_pages(struct ib_umem *umem, u64 user_virt, u64 bcnt, u64 access_mask, unsigned long current_seq)
+.. c:function:: int ib_umem_odp_map_dma_pages(struct ib_umem_odp *umem_odp, u64 user_virt, u64 bcnt, u64 access_mask, unsigned long current_seq)
 
     Pin and DMA map userspace memory in an ODP MR.
 
-    :param struct ib_umem \*umem:
+    :param umem_odp:
         the umem to map and pin
+    :type umem_odp: struct ib_umem_odp \*
 
-    :param u64 user_virt:
+    :param user_virt:
         the address from which we need to map.
+    :type user_virt: u64
 
-    :param u64 bcnt:
+    :param bcnt:
         the minimal number of bytes to pin and map. The mapping might be
         bigger due to alignment, and may also be smaller in case of an error
         pinning or mapping a page. The actual pages mapped is returned in
         the return value.
+    :type bcnt: u64
 
-    :param u64 access_mask:
+    :param access_mask:
         bit mask of the requested access permissions for the given
         range.
+    :type access_mask: u64
 
-    :param unsigned long current_seq:
+    :param current_seq:
         the MMU notifiers sequance value for synchronization with
         invalidations. the sequance number is read from
-        umem->odp_data->notifiers_seq before calling this function
+        umem_odp->notifiers_seq before calling this function
+    :type current_seq: unsigned long
 
 .. _`ib_umem_odp_map_dma_pages.description`:
 
@@ -38,7 +43,7 @@ Description
 
 Pins the range of pages passed in the argument, and maps them to
 DMA addresses. The DMA addresses of the mapped pages is updated in
-umem->odp_data->dma_list.
+umem_odp->dma_list.
 
 Returns the number of pages mapped in success, negative error code
 for failure.

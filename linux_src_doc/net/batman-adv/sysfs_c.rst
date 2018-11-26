@@ -10,8 +10,9 @@ batadv_vlan_kobj_to_batpriv
 
     convert a vlan kobj in the associated batpriv
 
-    :param struct kobject \*obj:
+    :param obj:
         kobject to covert
+    :type obj: struct kobject \*
 
 .. _`batadv_vlan_kobj_to_batpriv.return`:
 
@@ -29,11 +30,13 @@ batadv_kobj_to_vlan
 
     convert a kobj in the associated softif_vlan struct
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct kobject \*obj:
+    :param obj:
         kobject to covert
+    :type obj: struct kobject \*
 
 .. _`batadv_kobj_to_vlan.return`:
 
@@ -51,14 +54,17 @@ batadv_show_isolation_mark
 
     print the current isolation mark/mask
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject representing the private mesh sysfs directory
+    :type kobj: struct kobject \*
 
-    :param struct attribute \*attr:
+    :param attr:
         the batman-adv attribute the user is interacting with
+    :type attr: struct attribute \*
 
-    :param char \*buff:
+    :param buff:
         the buffer that will contain the data to send back to the user
+    :type buff: char \*
 
 .. _`batadv_show_isolation_mark.return`:
 
@@ -77,17 +83,21 @@ batadv_store_isolation_mark
 
     parse and store the isolation mark/mask entered by the user
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject representing the private mesh sysfs directory
+    :type kobj: struct kobject \*
 
-    :param struct attribute \*attr:
+    :param attr:
         the batman-adv attribute the user is interacting with
+    :type attr: struct attribute \*
 
-    :param char \*buff:
+    :param buff:
         the buffer containing the user data
+    :type buff: char \*
 
-    :param size_t count:
+    :param count:
         number of bytes in the buffer
+    :type count: size_t
 
 .. _`batadv_store_isolation_mark.return`:
 
@@ -105,8 +115,9 @@ batadv_sysfs_add_meshif
 
     Add soft interface specific sysfs entries
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev struct of the soft interface
+    :type dev: struct net_device \*
 
 .. _`batadv_sysfs_add_meshif.return`:
 
@@ -124,8 +135,9 @@ batadv_sysfs_del_meshif
 
     Remove soft interface specific sysfs entries
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev struct of the soft interface
+    :type dev: struct net_device \*
 
 .. _`batadv_sysfs_add_vlan`:
 
@@ -136,11 +148,13 @@ batadv_sysfs_add_vlan
 
     add all the needed sysfs objects for the new vlan
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev of the mesh interface
+    :type dev: struct net_device \*
 
-    :param struct batadv_softif_vlan \*vlan:
+    :param vlan:
         private data of the newly added VLAN interface
+    :type vlan: struct batadv_softif_vlan \*
 
 .. _`batadv_sysfs_add_vlan.return`:
 
@@ -158,11 +172,13 @@ batadv_sysfs_del_vlan
 
     remove all the sysfs objects for a given VLAN
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_softif_vlan \*vlan:
+    :param vlan:
         the private data of the VLAN to destroy
+    :type vlan: struct batadv_softif_vlan \*
 
 .. _`batadv_store_mesh_iface_finish`:
 
@@ -173,11 +189,13 @@ batadv_store_mesh_iface_finish
 
     store new hardif mesh_iface state
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         netdevice to add/remove to/from batman-adv soft-interface
+    :type net_dev: struct net_device \*
 
-    :param char ifname:
+    :param ifname:
         name of soft-interface to modify
+    :type ifname: char
 
 .. _`batadv_store_mesh_iface_finish.description`:
 
@@ -203,8 +221,9 @@ batadv_store_mesh_iface_work
 
     store new hardif mesh_iface state
 
-    :param struct work_struct \*work:
+    :param work:
         work queue item
+    :type work: struct work_struct \*
 
 .. _`batadv_store_mesh_iface_work.description`:
 
@@ -223,17 +242,21 @@ batadv_store_throughput_override
 
     parse and store throughput override entered by the user
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject representing the private mesh sysfs directory
+    :type kobj: struct kobject \*
 
-    :param struct attribute \*attr:
+    :param attr:
         the batman-adv attribute the user is interacting with
+    :type attr: struct attribute \*
 
-    :param char \*buff:
+    :param buff:
         the buffer containing the user data
+    :type buff: char \*
 
-    :param size_t count:
+    :param count:
         number of bytes in the buffer
+    :type count: size_t
 
 .. _`batadv_store_throughput_override.return`:
 
@@ -251,11 +274,13 @@ batadv_sysfs_add_hardif
 
     Add hard interface specific sysfs entries
 
-    :param struct kobject \*\*hardif_obj:
+    :param hardif_obj:
         address where to store the pointer to new sysfs folder
+    :type hardif_obj: struct kobject \*\*
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev struct of the hard interface
+    :type dev: struct net_device \*
 
 .. _`batadv_sysfs_add_hardif.return`:
 
@@ -273,9 +298,10 @@ batadv_sysfs_del_hardif
 
     Remove hard interface specific sysfs entries
 
-    :param struct kobject \*\*hardif_obj:
+    :param hardif_obj:
         address to the pointer to which stores batman-adv sysfs folder
         of the hard interface
+    :type hardif_obj: struct kobject \*\*
 
 .. _`batadv_throw_uevent`:
 
@@ -286,18 +312,22 @@ batadv_throw_uevent
 
     Send an uevent with batman-adv specific env data
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param enum batadv_uev_type type:
+    :param type:
         subsystem type of event. Stored in uevent's BATTYPE
+    :type type: enum batadv_uev_type
 
-    :param enum batadv_uev_action action:
+    :param action:
         action type of event. Stored in uevent's BATACTION
+    :type action: enum batadv_uev_action
 
-    :param const char \*data:
+    :param data:
         string with additional information to the event (ignored for
         BATADV_UEV_DEL). Stored in uevent's BATDATA
+    :type data: const char \*
 
 .. _`batadv_throw_uevent.return`:
 

@@ -10,11 +10,13 @@ hpi_validate_response
 
     validate that the response has the correct fields filled in, i.e ObjectType, Function etc
 
-    :param struct hpi_message \*phm:
+    :param phm:
         *undescribed*
+    :type phm: struct hpi_message \*
 
-    :param struct hpi_response \*phr:
+    :param phr:
         *undescribed*
+    :type phr: struct hpi_response \*
 
 .. _`hpi_find_adapter`:
 
@@ -25,8 +27,9 @@ hpi_find_adapter
 
     index wAdapterIndex in an HPI_ADAPTERS_LIST structure.
 
-    :param u16 adapter_index:
+    :param adapter_index:
         *undescribed*
+    :type adapter_index: u16
 
 .. This file was automatic generated / don't edit.
 

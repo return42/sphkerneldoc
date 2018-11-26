@@ -10,17 +10,21 @@ dpbp_open
 
     Open a control session for the specified object.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param int dpbp_id:
+    :param dpbp_id:
         DPBP unique ID
+    :type dpbp_id: int
 
-    :param u16 \*token:
+    :param token:
         Returned token; use in subsequent API calls
+    :type token: u16 \*
 
 .. _`dpbp_open.description`:
 
@@ -51,14 +55,17 @@ dpbp_close
 
     Close the control session of the object
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPBP object
+    :type token: u16
 
 .. _`dpbp_close.description`:
 
@@ -84,14 +91,17 @@ dpbp_enable
 
     Enable the DPBP.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPBP object
+    :type token: u16
 
 .. _`dpbp_enable.return`:
 
@@ -109,14 +119,17 @@ dpbp_disable
 
     Disable the DPBP.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPBP object
+    :type token: u16
 
 .. _`dpbp_disable.return`:
 
@@ -134,14 +147,17 @@ dpbp_reset
 
     Reset the DPBP, returns the object to initial state.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPBP object
+    :type token: u16
 
 .. _`dpbp_reset.return`:
 
@@ -159,17 +175,21 @@ dpbp_get_attributes
 
     Retrieve DPBP attributes.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPBP object
+    :type token: u16
 
-    :param struct dpbp_attr \*attr:
+    :param attr:
         Returned object's attributes
+    :type attr: struct dpbp_attr \*
 
 .. _`dpbp_get_attributes.return`:
 

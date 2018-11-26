@@ -10,8 +10,9 @@ init_srcu_struct
 
     initialize a sleep-RCU structure
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         structure to initialize.
+    :type sp: struct srcu_struct \*
 
 .. _`init_srcu_struct.description`:
 
@@ -31,8 +32,9 @@ srcu_readers_active
 
     returns true if there are readers. and false otherwise
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         which srcu_struct to count active readers (holding srcu_read_lock).
+    :type sp: struct srcu_struct \*
 
 .. _`srcu_readers_active.description`:
 
@@ -52,14 +54,17 @@ call_srcu
 
     Queue a callback for invocation after an SRCU grace period
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         srcu_struct in queue the callback
+    :type sp: struct srcu_struct \*
 
-    :param struct rcu_head \*rhp:
+    :param rhp:
         structure to be used for queueing the SRCU callback.
+    :type rhp: struct rcu_head \*
 
-    :param rcu_callback_t func:
+    :param func:
         function to be invoked after the SRCU grace period
+    :type func: rcu_callback_t
 
 .. _`call_srcu.description`:
 
@@ -86,8 +91,9 @@ synchronize_srcu_expedited
 
     Brute-force SRCU grace period
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         srcu_struct with which to synchronize.
+    :type sp: struct srcu_struct \*
 
 .. _`synchronize_srcu_expedited.description`:
 
@@ -109,8 +115,9 @@ synchronize_srcu
 
     wait for prior SRCU read-side critical-section completion
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         srcu_struct with which to synchronize.
+    :type sp: struct srcu_struct \*
 
 .. _`synchronize_srcu.description`:
 
@@ -133,7 +140,7 @@ as long as the resulting graph of srcu_structs is acyclic.
 There are memory-ordering constraints implied by \ :c:func:`synchronize_srcu`\ .
 On systems with more than one CPU, when \ :c:func:`synchronize_srcu`\  returns,
 each CPU is guaranteed to have executed a full memory barrier since
-the end of its last corresponding SRCU-sched read-side critical section
+the end of its last corresponding SRCU read-side critical section
 whose beginning preceded the call to \ :c:func:`synchronize_srcu`\ .  In addition,
 each CPU having an SRCU read-side critical section that extends beyond
 the return from \ :c:func:`synchronize_srcu`\  is guaranteed to have executed a
@@ -166,8 +173,9 @@ srcu_barrier
 
     Wait until all in-flight \ :c:func:`call_srcu`\  callbacks complete.
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         srcu_struct on which to wait for in-flight callbacks.
+    :type sp: struct srcu_struct \*
 
 .. _`srcu_batches_completed`:
 
@@ -178,8 +186,9 @@ srcu_batches_completed
 
     return batches completed.
 
-    :param struct srcu_struct \*sp:
+    :param sp:
         srcu_struct on which to report batch completion.
+    :type sp: struct srcu_struct \*
 
 .. _`srcu_batches_completed.description`:
 

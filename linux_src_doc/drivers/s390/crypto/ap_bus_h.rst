@@ -10,8 +10,9 @@ ap_init_message
 
     Initialize ap_message. Initialize a message before using. Otherwise this might result in unexpected behaviour.
 
-    :param struct ap_message \*ap_msg:
+    :param ap_msg:
         *undescribed*
+    :type ap_msg: struct ap_message \*
 
 .. _`ap_release_message`:
 
@@ -22,8 +23,9 @@ ap_release_message
 
     Release ap_message. Releases all memory used internal within the ap_message struct Currently this is the message and private field.
 
-    :param struct ap_message \*ap_msg:
+    :param ap_msg:
         *undescribed*
+    :type ap_msg: struct ap_message \*
 
 .. This file was automatic generated / don't edit.
 

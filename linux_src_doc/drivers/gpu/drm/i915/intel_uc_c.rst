@@ -6,12 +6,13 @@
 sanitize_options_early
 ======================
 
-.. c:function:: void sanitize_options_early(struct drm_i915_private *dev_priv)
+.. c:function:: void sanitize_options_early(struct drm_i915_private *i915)
 
     sanitize uC related modparam options
 
-    :param struct drm_i915_private \*dev_priv:
+    :param i915:
         device private
+    :type i915: struct drm_i915_private \*
 
 .. _`sanitize_options_early.description`:
 
@@ -36,12 +37,13 @@ debug config when this modparam will default to "enable(1..4)".
 intel_uc_init_mmio
 ==================
 
-.. c:function:: void intel_uc_init_mmio(struct drm_i915_private *dev_priv)
+.. c:function:: void intel_uc_init_mmio(struct drm_i915_private *i915)
 
     setup uC MMIO access
 
-    :param struct drm_i915_private \*dev_priv:
+    :param i915:
         device private
+    :type i915: struct drm_i915_private \*
 
 .. _`intel_uc_init_mmio.description`:
 

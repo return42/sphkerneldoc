@@ -91,7 +91,7 @@ hash_node
     Element in \ ``dev_table``\  hash table in vport.c.
 
 dp_hash_node
-    Element in \ ``datapath``\ ->ports hash table in datapath.c.
+    Element in \ ``datapath->ports``\  hash table in datapath.c.
 
 ops
     Class structure.
@@ -222,8 +222,9 @@ vport_priv
 
     access private data area of vport
 
-    :param const struct vport \*vport:
+    :param vport:
         vport to access
+    :type vport: const struct vport \*
 
 .. _`vport_priv.description`:
 
@@ -243,8 +244,9 @@ vport_from_priv
 
     lookup vport from private data pointer
 
-    :param void \*priv:
+    :param priv:
         Start of private data area.
+    :type priv: void \*
 
 .. _`vport_from_priv.description`:
 

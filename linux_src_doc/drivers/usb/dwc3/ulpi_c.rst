@@ -10,8 +10,9 @@ DWC3_ULPI_ADDR
 
     DesignWare USB3 Controller's ULPI PHY interface
 
-    :param  a:
+    :param a:
         *undescribed*
+    :type a: 
 
 .. _`dwc3_ulpi_addr.description`:
 

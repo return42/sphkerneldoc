@@ -10,8 +10,9 @@ nfs_fhandle_hash
 
     calculate the crc32 hash for the filehandle \ ``fh``\  - pointer to filehandle
 
-    :param const struct nfs_fh \*fh:
+    :param fh:
         *undescribed*
+    :type fh: const struct nfs_fh \*
 
 .. _`nfs_fhandle_hash.description`:
 

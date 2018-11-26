@@ -10,8 +10,9 @@ stop_spu_isolate
 
     Check SPU run-control state and force isolated exit function as necessary.
 
-    :param struct spu \*spu:
+    :param spu:
         *undescribed*
+    :type spu: struct spu \*
 
 .. _`spu_save`:
 
@@ -22,11 +23,13 @@ spu_save
 
     SPU context save, with locking.
 
-    :param struct spu_state \*prev:
+    :param prev:
         pointer to SPU context save area, to be saved.
+    :type prev: struct spu_state \*
 
-    :param struct spu \*spu:
+    :param spu:
         pointer to SPU iomem structure.
+    :type spu: struct spu \*
 
 .. _`spu_save.description`:
 
@@ -44,11 +47,13 @@ spu_restore
 
     SPU context restore, with harvest and locking.
 
-    :param struct spu_state \*new:
+    :param new:
         pointer to SPU context save area, to be restored.
+    :type new: struct spu_state \*
 
-    :param struct spu \*spu:
+    :param spu:
         pointer to SPU iomem structure.
+    :type spu: struct spu \*
 
 .. _`spu_restore.description`:
 
@@ -68,8 +73,9 @@ spu_init_csa
 
     allocate and initialize an SPU context save area.
 
-    :param struct spu_state \*csa:
+    :param csa:
         *undescribed*
+    :type csa: struct spu_state \*
 
 .. _`spu_init_csa.description`:
 

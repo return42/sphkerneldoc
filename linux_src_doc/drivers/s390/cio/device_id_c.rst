@@ -10,11 +10,13 @@ diag210_to_senseid
 
     convert diag 0x210 data to sense id information
 
-    :param struct senseid \*senseid:
+    :param senseid:
         sense id
+    :type senseid: struct senseid \*
 
-    :param struct diag210 \*diag:
+    :param diag:
         diag 0x210 data
+    :type diag: struct diag210 \*
 
 .. _`diag210_to_senseid.description`:
 
@@ -32,8 +34,9 @@ diag210_get_dev_info
 
     retrieve device information via diag 0x210
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`diag210_get_dev_info.description`:
 
@@ -51,8 +54,9 @@ ccw_device_sense_id_start
 
     perform SENSE ID
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_sense_id_start.description`:
 

@@ -37,8 +37,9 @@ phylink_set_port_modes
 
     set the port type modes in the ethtool mask
 
-    :param unsigned long \*mask:
+    :param mask:
         ethtool link mode mask
+    :type mask: unsigned long \*
 
 .. _`phylink_set_port_modes.description`:
 
@@ -57,18 +58,22 @@ phylink_create
 
     create a phylink instance
 
-    :param struct net_device \*ndev:
+    :param ndev:
         a pointer to the \ :c:type:`struct net_device <net_device>`\ 
+    :type ndev: struct net_device \*
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         a pointer to a \ :c:type:`struct fwnode_handle <fwnode_handle>`\  describing the network
         interface
+    :type fwnode: struct fwnode_handle \*
 
-    :param phy_interface_t iface:
+    :param iface:
         the desired link mode defined by \ :c:type:`typedef phy_interface_t <phy_interface_t>`\ 
+    :type iface: phy_interface_t
 
-    :param const struct phylink_mac_ops \*ops:
+    :param ops:
         a pointer to a \ :c:type:`struct phylink_mac_ops <phylink_mac_ops>`\  for the MAC.
+    :type ops: const struct phylink_mac_ops \*
 
 .. _`phylink_create.description`:
 
@@ -90,8 +95,9 @@ phylink_destroy
 
     cleanup and destroy the phylink instance
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
 .. _`phylink_destroy.description`:
 
@@ -110,11 +116,13 @@ phylink_connect_phy
 
     connect a PHY to the phylink instance
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param struct phy_device \*phy:
+    :param phy:
         a pointer to a \ :c:type:`struct phy_device <phy_device>`\ .
+    :type phy: struct phy_device \*
 
 .. _`phylink_connect_phy.description`:
 
@@ -140,14 +148,17 @@ phylink_of_phy_connect
 
     connect the PHY specified in the DT mode.
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param struct device_node \*dn:
+    :param dn:
         a pointer to a \ :c:type:`struct device_node <device_node>`\ .
+    :type dn: struct device_node \*
 
-    :param u32 flags:
+    :param flags:
         PHY-specific flags to communicate to the PHY device driver
+    :type flags: u32
 
 .. _`phylink_of_phy_connect.description`:
 
@@ -169,8 +180,9 @@ phylink_disconnect_phy
 
     disconnect any PHY attached to the phylink instance.
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
 .. _`phylink_disconnect_phy.description`:
 
@@ -188,8 +200,9 @@ phylink_fixed_state_cb
 
     allow setting a fixed link callback
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
     :param void (\*cb)(struct net_device \*dev, struct phylink_link_state \*state):
         callback to execute to determine the fixed link state.
@@ -211,11 +224,13 @@ phylink_mac_change
 
     notify phylink of a change in MAC state
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param bool up:
+    :param up:
         indicates whether the link is currently up.
+    :type up: bool
 
 .. _`phylink_mac_change.description`:
 
@@ -234,8 +249,9 @@ phylink_start
 
     start a phylink instance
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
 .. _`phylink_start.description`:
 
@@ -255,8 +271,9 @@ phylink_stop
 
     stop a phylink instance
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
 .. _`phylink_stop.description`:
 
@@ -277,11 +294,13 @@ phylink_ethtool_get_wol
 
     get the wake on lan parameters for the PHY
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param struct ethtool_wolinfo \*wol:
+    :param wol:
         a pointer to \ :c:type:`struct ethtool_wolinfo <ethtool_wolinfo>`\  to hold the read parameters
+    :type wol: struct ethtool_wolinfo \*
 
 .. _`phylink_ethtool_get_wol.description`:
 
@@ -301,11 +320,13 @@ phylink_ethtool_set_wol
 
     set wake on lan parameters
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param struct ethtool_wolinfo \*wol:
+    :param wol:
         a pointer to \ :c:type:`struct ethtool_wolinfo <ethtool_wolinfo>`\  for the desired parameters
+    :type wol: struct ethtool_wolinfo \*
 
 .. _`phylink_ethtool_set_wol.description`:
 
@@ -327,11 +348,13 @@ phylink_ethtool_ksettings_get
 
     get the current link settings
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param struct ethtool_link_ksettings \*kset:
+    :param kset:
         a pointer to a \ :c:type:`struct ethtool_link_ksettings <ethtool_link_ksettings>`\  to hold link settings
+    :type kset: struct ethtool_link_ksettings \*
 
 .. _`phylink_ethtool_ksettings_get.description`:
 
@@ -351,11 +374,13 @@ phylink_ethtool_ksettings_set
 
     set the link settings
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param const struct ethtool_link_ksettings \*kset:
+    :param kset:
         a pointer to a \ :c:type:`struct ethtool_link_ksettings <ethtool_link_ksettings>`\  for the desired modes
+    :type kset: const struct ethtool_link_ksettings \*
 
 .. _`phylink_ethtool_nway_reset`:
 
@@ -366,8 +391,9 @@ phylink_ethtool_nway_reset
 
     restart negotiation
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
 .. _`phylink_ethtool_nway_reset.description`:
 
@@ -390,11 +416,13 @@ phylink_ethtool_get_pauseparam
 
     get the current pause parameters
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param struct ethtool_pauseparam \*pause:
+    :param pause:
         a pointer to a \ :c:type:`struct ethtool_pauseparam <ethtool_pauseparam>`\ 
+    :type pause: struct ethtool_pauseparam \*
 
 .. _`phylink_ethtool_set_pauseparam`:
 
@@ -405,11 +433,13 @@ phylink_ethtool_set_pauseparam
 
     set the current pause parameters
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param struct ethtool_pauseparam \*pause:
+    :param pause:
         a pointer to a \ :c:type:`struct ethtool_pauseparam <ethtool_pauseparam>`\ 
+    :type pause: struct ethtool_pauseparam \*
 
 .. _`phylink_get_eee_err`:
 
@@ -420,8 +450,9 @@ phylink_get_eee_err
 
     read the energy efficient ethernet error counter
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ .
+    :type pl: struct phylink \*
 
 .. _`phylink_get_eee_err.description`:
 
@@ -442,11 +473,13 @@ phylink_ethtool_get_eee
 
     read the energy efficient ethernet parameters
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param struct ethtool_eee \*eee:
+    :param eee:
         a pointer to a \ :c:type:`struct ethtool_eee <ethtool_eee>`\  for the read parameters
+    :type eee: struct ethtool_eee \*
 
 .. _`phylink_ethtool_set_eee`:
 
@@ -457,11 +490,13 @@ phylink_ethtool_set_eee
 
     set the energy efficient ethernet parameters
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param struct ethtool_eee \*eee:
+    :param eee:
         a pointer to a \ :c:type:`struct ethtool_eee <ethtool_eee>`\  for the desired parameters
+    :type eee: struct ethtool_eee \*
 
 .. _`phylink_mii_ioctl`:
 
@@ -472,14 +507,17 @@ phylink_mii_ioctl
 
     generic mii ioctl interface
 
-    :param struct phylink \*pl:
+    :param pl:
         a pointer to a \ :c:type:`struct phylink <phylink>`\  returned from \ :c:func:`phylink_create`\ 
+    :type pl: struct phylink \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         a pointer to a \ :c:type:`struct ifreq <ifreq>`\  for socket ioctls
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         ioctl cmd to execute
+    :type cmd: int
 
 .. _`phylink_mii_ioctl.description`:
 
@@ -502,6 +540,30 @@ zero on success or negative error code.
  read register from the specified PHY.
 \ ``SIOCSMIIREG``\ :
  set a register on the specified PHY.
+
+.. _`phylink_helper_basex_speed`:
+
+phylink_helper_basex_speed
+==========================
+
+.. c:function:: void phylink_helper_basex_speed(struct phylink_link_state *state)
+
+    1000BaseX/2500BaseX helper
+
+    :param state:
+        a pointer to a \ :c:type:`struct phylink_link_state <phylink_link_state>`\ 
+    :type state: struct phylink_link_state \*
+
+.. _`phylink_helper_basex_speed.description`:
+
+Description
+-----------
+
+Inspect the interface mode, advertising mask or forced speed and
+decide whether to run at 2.5Gbit or 1Gbit appropriately, switching
+the interface mode to suit.  \ ``state->interface``\  is appropriately
+updated, and the advertising mask has the "other" baseX_Full flag
+cleared.
 
 .. This file was automatic generated / don't edit.
 

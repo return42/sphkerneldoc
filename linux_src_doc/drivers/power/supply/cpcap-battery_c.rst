@@ -10,20 +10,25 @@ cpcap_battery_cc_raw_div
 
     calculate and divide coulomb counter μAms values
 
-    :param struct cpcap_battery_ddata \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct cpcap_battery_ddata \*
 
-    :param u32 sample:
+    :param sample:
         coulomb counter sample value
+    :type sample: u32
 
-    :param s32 accumulator:
+    :param accumulator:
         coulomb counter integrator value
+    :type accumulator: s32
 
-    :param s16 offset:
+    :param offset:
         coulomb counter offset value
+    :type offset: s16
 
-    :param u32 divider:
+    :param divider:
         conversion divider
+    :type divider: u32
 
 .. _`cpcap_battery_cc_raw_div.description`:
 
@@ -52,11 +57,13 @@ cpcap_battery_read_accumulated
 
     reads cpcap coulomb counter
 
-    :param struct cpcap_battery_ddata \*ddata:
+    :param ddata:
         device driver data
+    :type ddata: struct cpcap_battery_ddata \*
 
-    :param struct cpcap_coulomb_counter_data \*ccd:
+    :param ccd:
         *undescribed*
+    :type ccd: struct cpcap_coulomb_counter_data \*
 
 .. _`cpcap_battery_read_accumulated.description`:
 
@@ -82,8 +89,9 @@ cpcap_battery_cc_get_avg_current
 
     read cpcap coulumb counter
 
-    :param struct cpcap_battery_ddata \*ddata:
+    :param ddata:
         cpcap battery driver device data
+    :type ddata: struct cpcap_battery_ddata \*
 
 .. This file was automatic generated / don't edit.
 

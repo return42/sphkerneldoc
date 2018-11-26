@@ -10,11 +10,13 @@ iio_simple_dummy_trigger_h
 
     the trigger handler function
 
-    :param int irq:
+    :param irq:
         the interrupt number
+    :type irq: int
 
-    :param void \*p:
+    :param p:
         private data - always a pointer to the poll func.
+    :type p: void \*
 
 .. _`iio_simple_dummy_trigger_h.description`:
 
@@ -35,8 +37,9 @@ iio_simple_dummy_unconfigure_buffer
 
     release buffer resources
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         *undescribed*
+    :type indio_dev: struct iio_dev \*
 
 .. This file was automatic generated / don't edit.
 

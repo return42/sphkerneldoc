@@ -10,11 +10,13 @@ eeh_slot_error_detail
 
     Generate combined log including driver log and error log
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
-    :param int severity:
+    :param severity:
         temporary or permanent error log
+    :type severity: int
 
 .. _`eeh_slot_error_detail.description`:
 
@@ -35,8 +37,9 @@ eeh_token_to_phys
 
     Convert EEH address token to phys address
 
-    :param unsigned long token:
+    :param token:
         I/O token, should be address in the form 0xA....
+    :type token: unsigned long
 
 .. _`eeh_token_to_phys.description`:
 
@@ -55,8 +58,9 @@ eeh_dev_check_failure
 
     Check if all 1's data is due to EEH slot freeze
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         eeh device
+    :type edev: struct eeh_dev \*
 
 .. _`eeh_dev_check_failure.description`:
 
@@ -82,8 +86,9 @@ eeh_check_failure
 
     Check if all 1's data is due to EEH slot freeze
 
-    :param const volatile void __iomem \*token:
+    :param token:
         I/O address
+    :type token: const volatile void __iomem \*
 
 .. _`eeh_check_failure.description`:
 
@@ -106,11 +111,13 @@ eeh_pci_enable
 
     Enable MMIO or DMA transfers for this slot
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
-    :param int function:
+    :param function:
         *undescribed*
+    :type function: int
 
 .. _`eeh_pci_enable.description`:
 
@@ -130,11 +137,13 @@ pcibios_set_pcie_reset_state
 
     Set PCI-E reset state
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci device struct
+    :type dev: struct pci_dev \*
 
-    :param enum pcie_reset_state state:
+    :param state:
         reset state to enter
+    :type state: enum pcie_reset_state
 
 .. _`pcibios_set_pcie_reset_state.return-value`:
 
@@ -152,11 +161,13 @@ eeh_set_dev_freset
 
     Check the required reset for the indicated device
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         *undescribed*
+    :type edev: struct eeh_dev \*
 
-    :param void \*flag:
+    :param flag:
         return value
+    :type flag: void \*
 
 .. _`eeh_set_dev_freset.each-device-might-have-its-preferred-reset-type`:
 
@@ -177,8 +188,9 @@ eeh_pe_reset_full
 
     Complete a full reset process on the indicated PE
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
 .. _`eeh_pe_reset_full.description`:
 
@@ -202,8 +214,9 @@ eeh_save_bars
 
     Save device bars
 
-    :param struct eeh_dev \*edev:
+    :param edev:
         PCI device associated EEH device
+    :type edev: struct eeh_dev \*
 
 .. _`eeh_save_bars.description`:
 
@@ -224,8 +237,9 @@ eeh_ops_register
 
     Register platform dependent EEH operations
 
-    :param struct eeh_ops \*ops:
+    :param ops:
         platform dependent EEH operations
+    :type ops: struct eeh_ops \*
 
 .. _`eeh_ops_register.description`:
 
@@ -245,8 +259,9 @@ eeh_ops_unregister
 
     Unreigster platform dependent EEH operations
 
-    :param const char \*name:
+    :param name:
         name of EEH platform operations
+    :type name: const char \*
 
 .. _`eeh_ops_unregister.description`:
 
@@ -265,8 +280,9 @@ eeh_init
 
     EEH initialization
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`eeh_init.description`:
 
@@ -294,8 +310,9 @@ eeh_add_device_early
 
     Enable EEH for the indicated device node
 
-    :param struct pci_dn \*pdn:
+    :param pdn:
         PCI device node for which to set up EEH
+    :type pdn: struct pci_dn \*
 
 .. _`eeh_add_device_early.description`:
 
@@ -319,8 +336,9 @@ eeh_add_device_tree_early
 
     Enable EEH for the indicated device
 
-    :param struct pci_dn \*pdn:
+    :param pdn:
         PCI device node
+    :type pdn: struct pci_dn \*
 
 .. _`eeh_add_device_tree_early.description`:
 
@@ -340,8 +358,9 @@ eeh_add_device_late
 
     Perform EEH initialization for the indicated pci device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci device for which to set up EEH
+    :type dev: struct pci_dev \*
 
 .. _`eeh_add_device_late.description`:
 
@@ -360,8 +379,9 @@ eeh_add_device_tree_late
 
     Perform EEH initialization for the indicated PCI bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus
+    :type bus: struct pci_bus \*
 
 .. _`eeh_add_device_tree_late.description`:
 
@@ -381,8 +401,9 @@ eeh_add_sysfs_files
 
     Add EEH sysfs files for the indicated PCI bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus
+    :type bus: struct pci_bus \*
 
 .. _`eeh_add_sysfs_files.description`:
 
@@ -402,8 +423,9 @@ eeh_remove_device
 
     Undo EEH setup for the indicated pci device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci device to be removed
+    :type dev: struct pci_dev \*
 
 .. _`eeh_remove_device.description`:
 
@@ -425,8 +447,9 @@ eeh_dev_open
 
     Increase count of pass through devices for PE
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`eeh_dev_open.description`:
 
@@ -447,8 +470,9 @@ eeh_dev_release
 
     Decrease count of pass through devices for PE
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`eeh_dev_release.description`:
 
@@ -468,8 +492,9 @@ eeh_iommu_group_to_pe
 
     Convert IOMMU group to EEH PE
 
-    :param struct iommu_group \*group:
+    :param group:
         IOMMU group
+    :type group: struct iommu_group \*
 
 .. _`eeh_iommu_group_to_pe.description`:
 
@@ -487,11 +512,13 @@ eeh_pe_set_option
 
     Set options for the indicated PE
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
-    :param int option:
+    :param option:
         requested option
+    :type option: int
 
 .. _`eeh_pe_set_option.description`:
 
@@ -510,8 +537,9 @@ eeh_pe_get_state
 
     Retrieve PE's state
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
 .. _`eeh_pe_get_state.description`:
 
@@ -530,11 +558,13 @@ eeh_pe_reset
 
     Issue PE reset according to specified type
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
-    :param int option:
+    :param option:
         reset type
+    :type option: int
 
 .. _`eeh_pe_reset.description`:
 
@@ -554,8 +584,9 @@ eeh_pe_configure
 
     Configure PCI bridges after PE reset
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         EEH PE
+    :type pe: struct eeh_pe \*
 
 .. _`eeh_pe_configure.description`:
 
@@ -575,20 +606,25 @@ eeh_pe_inject_err
 
     Injecting the specified PCI error to the indicated PE
 
-    :param struct eeh_pe \*pe:
+    :param pe:
         the indicated PE
+    :type pe: struct eeh_pe \*
 
-    :param int type:
+    :param type:
         error type
+    :type type: int
 
-    :param int func:
+    :param func:
         *undescribed*
+    :type func: int
 
-    :param unsigned long addr:
+    :param addr:
         address
+    :type addr: unsigned long
 
-    :param unsigned long mask:
+    :param mask:
         address mask
+    :type mask: unsigned long
 
 .. _`eeh_pe_inject_err.description`:
 

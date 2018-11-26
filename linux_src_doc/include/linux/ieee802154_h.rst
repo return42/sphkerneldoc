@@ -10,8 +10,9 @@ ieee802154_is_secen
 
     check if Security bit is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee802154_is_ackreq`:
 
@@ -22,8 +23,9 @@ ieee802154_is_ackreq
 
     check if acknowledgment request bit is set
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee802154_is_intra_pan`:
 
@@ -34,8 +36,9 @@ ieee802154_is_intra_pan
 
     check if intra pan id communication
 
-    :param __le16 fc:
+    :param fc:
         frame control bytes in little-endian byteorder
+    :type fc: __le16
 
 .. _`ieee802154_is_valid_psdu_len`:
 
@@ -46,8 +49,9 @@ ieee802154_is_valid_psdu_len
 
     check if psdu len is valid
 
-    :param u8 len:
+    :param len:
         psdu len with (MHR + payload + MFR)
+    :type len: u8
 
 .. _`ieee802154_is_valid_psdu_len.available-lengths`:
 
@@ -68,8 +72,9 @@ ieee802154_is_valid_extended_unicast_addr
 
     check if extended addr is valid
 
-    :param __le64 addr:
+    :param addr:
         extended addr to check
+    :type addr: __le64
 
 .. _`ieee802154_is_broadcast_short_addr`:
 
@@ -80,8 +85,9 @@ ieee802154_is_broadcast_short_addr
 
     check if short addr is broadcast
 
-    :param __le16 addr:
+    :param addr:
         short addr to check
+    :type addr: __le16
 
 .. _`ieee802154_is_unspec_short_addr`:
 
@@ -92,8 +98,9 @@ ieee802154_is_unspec_short_addr
 
     check if short addr is unspecified
 
-    :param __le16 addr:
+    :param addr:
         short addr to check
+    :type addr: __le16
 
 .. _`ieee802154_is_valid_src_short_addr`:
 
@@ -104,8 +111,9 @@ ieee802154_is_valid_src_short_addr
 
     check if source short address is valid
 
-    :param __le16 addr:
+    :param addr:
         short addr to check
+    :type addr: __le16
 
 .. _`ieee802154_random_extended_addr`:
 
@@ -116,8 +124,9 @@ ieee802154_random_extended_addr
 
     generates a random extended address
 
-    :param __le64 \*addr:
+    :param addr:
         extended addr pointer to place the random address
+    :type addr: __le64 \*
 
 .. This file was automatic generated / don't edit.
 

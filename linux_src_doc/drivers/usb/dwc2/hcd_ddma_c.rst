@@ -10,14 +10,17 @@ dwc2_hcd_qh_init_ddma
 
     Initializes a QH structure's Descriptor DMA related members
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         The QH to init
+    :type qh: struct dwc2_qh \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         Indicates the type of memory allocation
+    :type mem_flags: gfp_t
 
 .. _`dwc2_hcd_qh_init_ddma.return`:
 
@@ -38,11 +41,13 @@ dwc2_hcd_qh_free_ddma
 
     Frees a QH structure's Descriptor DMA related members
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         The QH to free
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_hcd_qh_free_ddma.description`:
 
@@ -61,11 +66,13 @@ dwc2_hcd_start_xfer_ddma
 
     Starts a transfer in Descriptor DMA mode
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         The QH to init
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_hcd_start_xfer_ddma.return`:
 
@@ -94,18 +101,22 @@ dwc2_hcd_complete_xfer_ddma
 
     Scans the descriptor list, updates URB's status and calls completion routine for the URB if it's done. Called from interrupt handlers.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Host channel the transfer is completed on
+    :type chan: struct dwc2_host_chan \*
 
-    :param int chnum:
+    :param chnum:
         Index of Host channel registers
+    :type chnum: int
 
-    :param enum dwc2_halt_status halt_status:
+    :param halt_status:
         Reason the channel is being halted or just XferComplete
         for isochronous transfers
+    :type halt_status: enum dwc2_halt_status
 
 .. _`dwc2_hcd_complete_xfer_ddma.description`:
 

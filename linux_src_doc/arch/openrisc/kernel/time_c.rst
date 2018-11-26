@@ -10,8 +10,9 @@ openrisc_timer_read
 
     Based on OpenRISC timer/counter
 
-    :param struct clocksource \*cs:
+    :param cs:
         *undescribed*
+    :type cs: struct clocksource \*
 
 .. _`openrisc_timer_read.description`:
 

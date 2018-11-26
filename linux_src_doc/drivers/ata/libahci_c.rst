@@ -10,8 +10,9 @@ ahci_rpm_get_port
 
     Make sure the port is powered on
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to power on
+    :type ap: struct ata_port \*
 
 .. _`ahci_rpm_get_port.description`:
 
@@ -31,8 +32,9 @@ ahci_rpm_put_port
 
     Undoes \ :c:func:`ahci_rpm_get_port`\ 
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port to power down
+    :type ap: struct ata_port \*
 
 .. _`ahci_rpm_put_port.description`:
 
@@ -51,11 +53,13 @@ ahci_save_initial_config
 
     Save and fixup initial config values
 
-    :param struct device \*dev:
+    :param dev:
         target AHCI device
+    :type dev: struct device \*
 
-    :param struct ahci_host_priv \*hpriv:
+    :param hpriv:
         host private area to store config values
+    :type hpriv: struct ahci_host_priv \*
 
 .. _`ahci_save_initial_config.description`:
 
@@ -88,8 +92,9 @@ ahci_restore_initial_config
 
     Restore initial config
 
-    :param struct ata_host \*host:
+    :param host:
         target ATA host
+    :type host: struct ata_host \*
 
 .. _`ahci_restore_initial_config.description`:
 
@@ -114,11 +119,13 @@ ahci_host_activate
 
     start AHCI host, request IRQs and register it
 
-    :param struct ata_host \*host:
+    :param host:
         target ATA host
+    :type host: struct ata_host \*
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         scsi_host_template to use when registering the host
+    :type sht: struct scsi_host_template \*
 
 .. _`ahci_host_activate.locking`:
 

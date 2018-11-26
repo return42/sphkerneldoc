@@ -24,3 +24,4 @@ misc
     pci_endpoint_test_c
     pti_c
     sram-exec_c
+    vmw_balloon_c

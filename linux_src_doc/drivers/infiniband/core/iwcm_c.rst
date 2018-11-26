@@ -10,14 +10,17 @@ iw_cm_check_wildcard
 
     If IP address is 0 then use original
 
-    :param struct sockaddr_storage \*pm_addr:
+    :param pm_addr:
         sockaddr containing the ip to check for wildcard
+    :type pm_addr: struct sockaddr_storage \*
 
-    :param struct sockaddr_storage \*cm_addr:
+    :param cm_addr:
         sockaddr containing the actual IP address
+    :type cm_addr: struct sockaddr_storage \*
 
-    :param struct sockaddr_storage \*cm_outaddr:
+    :param cm_outaddr:
         sockaddr to set IP addr which leaving port
+    :type cm_outaddr: struct sockaddr_storage \*
 
 .. _`iw_cm_check_wildcard.description`:
 
@@ -36,12 +39,14 @@ iw_cm_map
 
     Use portmapper to map the ports
 
-    :param struct iw_cm_id \*cm_id:
+    :param cm_id:
         connection manager pointer
+    :type cm_id: struct iw_cm_id \*
 
-    :param bool active:
+    :param active:
         Indicates the active side when true
         returns nonzero for error only if \ :c:func:`iwpm_create_mapinfo`\  fails
+    :type active: bool
 
 .. _`iw_cm_map.description`:
 

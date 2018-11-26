@@ -10,8 +10,9 @@ skb_dst_drop
 
     drops skb dst
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: struct sk_buff \*
 
 .. _`skb_dst_drop.description`:
 
@@ -29,8 +30,9 @@ dst_hold_safe
 
     Take a reference on a dst if possible
 
-    :param struct dst_entry \*dst:
+    :param dst:
         pointer to dst entry
+    :type dst: struct dst_entry \*
 
 .. _`dst_hold_safe.description`:
 
@@ -49,8 +51,9 @@ skb_dst_force
 
     makes sure skb dst is refcounted
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: struct sk_buff \*
 
 .. _`skb_dst_force.description`:
 
@@ -68,14 +71,17 @@ If dst is not yet refcounted and not destroyed, grab a ref on it.
 
     prepare skb for rx reinsert
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         tunnel device
+    :type dev: struct net_device \*
 
-    :param struct net \*net:
+    :param net:
         netns for packet i/o
+    :type net: struct net \*
 
 .. _`__skb_tunnel_rx.description`:
 
@@ -94,14 +100,17 @@ skb_tunnel_rx
 
     prepare skb for rx reinsert
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         tunnel device
+    :type dev: struct net_device \*
 
-    :param struct net \*net:
+    :param net:
         netns for packet i/o
+    :type net: struct net \*
 
 .. _`skb_tunnel_rx.description`:
 

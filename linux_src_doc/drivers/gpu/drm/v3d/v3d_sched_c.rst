@@ -16,8 +16,8 @@ jobs when bulk background jobs are queued up, we submit a new job
 to the HW only when it has completed the last one, instead of
 filling up the CT[01]Q FIFOs with jobs.  Similarly, we use
 \ :c:func:`v3d_job_dependency`\  to manage the dependency between bin and
-render, instead of having the clients submit jobs with using the
-HW's semaphores to interlock between them.
+render, instead of having the clients submit jobs using the HW's
+semaphores to interlock between them.
 
 .. _`v3d_job_dependency`:
 
@@ -28,11 +28,13 @@ v3d_job_dependency
 
     \ :c:func:`v3d_job_run`\  won't be called until all of them have been signaled.
 
-    :param struct drm_sched_job \*sched_job:
+    :param sched_job:
         *undescribed*
+    :type sched_job: struct drm_sched_job \*
 
-    :param struct drm_sched_entity \*s_entity:
+    :param s_entity:
         *undescribed*
+    :type s_entity: struct drm_sched_entity \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,24 +10,30 @@ gether_setup_name
 
     initialize one ethernet-over-usb link
 
-    :param struct usb_gadget \*g:
+    :param g:
         gadget to associated with these links
+    :type g: struct usb_gadget \*
 
-    :param const char \*dev_addr:
+    :param dev_addr:
         *undescribed*
+    :type dev_addr: const char \*
 
-    :param const char \*host_addr:
+    :param host_addr:
         *undescribed*
+    :type host_addr: const char \*
 
-    :param u8 ethaddr:
+    :param ethaddr:
         NULL, or a buffer in which the ethernet address of the
         host side of the link is recorded
+    :type ethaddr: u8
 
-    :param unsigned qmult:
+    :param qmult:
         *undescribed*
+    :type qmult: unsigned
 
-    :param const char \*netname:
+    :param netname:
         name for network device (for example, "usb")
+    :type netname: const char \*
 
 .. _`gether_setup_name.context`:
 
@@ -56,8 +62,9 @@ gether_cleanup
 
     remove Ethernet-over-USB device
 
-    :param struct eth_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct eth_dev \*
 
 .. _`gether_cleanup.context`:
 
@@ -82,9 +89,10 @@ gether_connect
 
     notify network layer that USB link is active
 
-    :param struct gether \*link:
+    :param link:
         the USB link, set up with endpoints, descriptors matching
         current device speed, and any framing wrapper(s) set up.
+    :type link: struct gether \*
 
 .. _`gether_connect.context`:
 
@@ -117,8 +125,9 @@ gether_disconnect
 
     notify network layer that USB link is inactive
 
-    :param struct gether \*link:
+    :param link:
         the USB link, on which \ :c:func:`gether_connect`\  was called
+    :type link: struct gether \*
 
 .. _`gether_disconnect.context`:
 

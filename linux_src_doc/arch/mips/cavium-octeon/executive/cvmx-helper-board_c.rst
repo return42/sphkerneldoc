@@ -10,8 +10,9 @@ cvmx_helper_board_get_mii_address
 
     port. A result of -1 means there isn't a MII capable PHY connected to this port. On chips supporting multiple MII busses the bus number is encoded in bits <15:8>.
 
-    :param int ipd_port:
+    :param ipd_port:
         Octeon IPD port to get the MII address for.
+    :type ipd_port: int
 
 .. _`cvmx_helper_board_get_mii_address.description`:
 
@@ -35,9 +36,10 @@ Returns MII PHY address and bus number or -1.
 
     ethernet ports link speed. Most Octeon boards have Marvell PHYs and are handled by the fall through case. This function must be updated for boards that don't have the normal Marvell PHYs.
 
-    :param int ipd_port:
+    :param ipd_port:
         IPD input port associated with the port we want to get link
         status for.
+    :type ipd_port: int
 
 .. _`__cvmx_helper_board_link_get.description`:
 
@@ -62,11 +64,13 @@ return zero.
 
     determines the number of ports Octeon can support on a specific interface. This function is the per board location to override this value. It is called with the number of ports Octeon might support and should return the number of actual ports on the board.
 
-    :param int interface:
+    :param interface:
         Interface to probe
+    :type interface: int
 
-    :param int supported_ports:
+    :param supported_ports:
         Number of ports Octeon supports.
+    :type supported_ports: int
 
 .. _`__cvmx_helper_board_interface_probe.description`:
 
@@ -91,8 +95,9 @@ simple be "support_ports".
 
     called after by \ :c:func:`cvmx_helper_packet_hardware_enable`\  to perform board specific initialization. For most boards nothing is needed.
 
-    :param int interface:
+    :param interface:
         Interface to enable
+    :type interface: int
 
 .. _`__cvmx_helper_board_hardware_enable.description`:
 
@@ -110,8 +115,9 @@ Returns Zero on success, negative on failure
 
     Used by the USB code for auto configuration of clock type.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__cvmx_helper_board_usb_get_clock_type.description`:
 

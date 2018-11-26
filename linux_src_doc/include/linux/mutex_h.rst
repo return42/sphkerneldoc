@@ -10,8 +10,9 @@ mutex_init
 
     initialize the mutex
 
-    :param  mutex:
+    :param mutex:
         the mutex to be initialized
+    :type mutex: 
 
 .. _`mutex_init.description`:
 
@@ -31,8 +32,9 @@ mutex_is_locked
 
     is the mutex locked
 
-    :param struct mutex \*lock:
+    :param lock:
         the mutex to be queried
+    :type lock: struct mutex \*
 
 .. _`mutex_is_locked.description`:
 
@@ -50,8 +52,9 @@ mutex_trylock_recursive
 
     trylock variant that allows recursive locking
 
-    :param struct mutex \*lock:
+    :param lock:
         mutex to be locked
+    :type lock: struct mutex \*
 
 .. _`mutex_trylock_recursive.description`:
 

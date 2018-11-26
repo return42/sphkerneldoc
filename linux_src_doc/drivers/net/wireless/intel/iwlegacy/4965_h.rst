@@ -10,17 +10,21 @@ il4965_tx_queue_set_status
 
     (optionally) start Tx/Cmd queue
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_tx_queue \*txq:
+    :param txq:
         *undescribed*
+    :type txq: struct il_tx_queue \*
 
-    :param int tx_fifo_id:
+    :param tx_fifo_id:
         Tx DMA/FIFO channel (range 0-7) that the queue will feed
+    :type tx_fifo_id: int
 
-    :param int scd_retry:
+    :param scd_retry:
         (1) Indicates queue will be used in aggregation mode
+    :type scd_retry: int
 
 .. _`il4965_tx_queue_set_status.note`:
 

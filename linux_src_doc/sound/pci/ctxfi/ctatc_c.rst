@@ -35,26 +35,33 @@ ct_atc_create
 
     create and initialize a hardware manager
 
-    :param struct snd_card \*card:
+    :param card:
         corresponding alsa card object
+    :type card: struct snd_card \*
 
-    :param struct pci_dev \*pci:
+    :param pci:
         corresponding kernel pci device object
+    :type pci: struct pci_dev \*
 
-    :param unsigned int rsr:
+    :param rsr:
         *undescribed*
+    :type rsr: unsigned int
 
-    :param unsigned int msr:
+    :param msr:
         *undescribed*
+    :type msr: unsigned int
 
-    :param int chip_type:
+    :param chip_type:
         *undescribed*
+    :type chip_type: int
 
-    :param unsigned int ssid:
+    :param ssid:
         *undescribed*
+    :type ssid: unsigned int
 
-    :param struct ct_atc \*\*ratc:
+    :param ratc:
         return created object address in it
+    :type ratc: struct ct_atc \*\*
 
 .. _`ct_atc_create.description`:
 

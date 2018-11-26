@@ -10,14 +10,17 @@ vfs_setpos
 
     update the file offset for lseek
 
-    :param struct file \*file:
+    :param file:
         file structure in question
+    :type file: struct file \*
 
-    :param loff_t offset:
+    :param offset:
         file offset to seek to
+    :type offset: loff_t
 
-    :param loff_t maxsize:
+    :param maxsize:
         maximum file size
+    :type maxsize: loff_t
 
 .. _`vfs_setpos.description`:
 
@@ -39,20 +42,25 @@ generic_file_llseek_size
 
     generic llseek implementation for regular files
 
-    :param struct file \*file:
+    :param file:
         file structure to seek on
+    :type file: struct file \*
 
-    :param loff_t offset:
+    :param offset:
         file offset to seek to
+    :type offset: loff_t
 
-    :param int whence:
+    :param whence:
         type of seek
+    :type whence: int
 
-    :param loff_t maxsize:
+    :param maxsize:
         *undescribed*
+    :type maxsize: loff_t
 
-    :param loff_t eof:
+    :param eof:
         offset used for SEEK_END position
+    :type eof: loff_t
 
 .. _`generic_file_llseek_size.description`:
 
@@ -80,14 +88,17 @@ generic_file_llseek
 
     generic llseek implementation for regular files
 
-    :param struct file \*file:
+    :param file:
         file structure to seek on
+    :type file: struct file \*
 
-    :param loff_t offset:
+    :param offset:
         file offset to seek to
+    :type offset: loff_t
 
-    :param int whence:
+    :param whence:
         type of seek
+    :type whence: int
 
 .. _`generic_file_llseek.description`:
 
@@ -107,17 +118,21 @@ fixed_size_llseek
 
     llseek implementation for fixed-sized devices
 
-    :param struct file \*file:
+    :param file:
         file structure to seek on
+    :type file: struct file \*
 
-    :param loff_t offset:
+    :param offset:
         file offset to seek to
+    :type offset: loff_t
 
-    :param int whence:
+    :param whence:
         type of seek
+    :type whence: int
 
-    :param loff_t size:
+    :param size:
         size of the file
+    :type size: loff_t
 
 .. _`no_seek_end_llseek`:
 
@@ -128,14 +143,17 @@ no_seek_end_llseek
 
     llseek implementation for fixed-sized devices
 
-    :param struct file \*file:
+    :param file:
         file structure to seek on
+    :type file: struct file \*
 
-    :param loff_t offset:
+    :param offset:
         file offset to seek to
+    :type offset: loff_t
 
-    :param int whence:
+    :param whence:
         type of seek
+    :type whence: int
 
 .. _`no_seek_end_llseek_size`:
 
@@ -146,17 +164,21 @@ no_seek_end_llseek_size
 
     llseek implementation for fixed-sized devices
 
-    :param struct file \*file:
+    :param file:
         file structure to seek on
+    :type file: struct file \*
 
-    :param loff_t offset:
+    :param offset:
         file offset to seek to
+    :type offset: loff_t
 
-    :param int whence:
+    :param whence:
         type of seek
+    :type whence: int
 
-    :param loff_t size:
+    :param size:
         maximal offset allowed
+    :type size: loff_t
 
 .. _`noop_llseek`:
 
@@ -167,14 +189,17 @@ noop_llseek
 
     No Operation Performed llseek implementation
 
-    :param struct file \*file:
+    :param file:
         file structure to seek on
+    :type file: struct file \*
 
-    :param loff_t offset:
+    :param offset:
         file offset to seek to
+    :type offset: loff_t
 
-    :param int whence:
+    :param whence:
         type of seek
+    :type whence: int
 
 .. _`noop_llseek.description`:
 
@@ -195,25 +220,31 @@ rw_copy_check_uvector
 
     Copy an array of \ :c:type:`struct iovec <iovec>`\  from userspace into the kernel and check that it is valid.
 
-    :param int type:
+    :param type:
         One of \ ``CHECK_IOVEC_ONLY``\ , \ ``READ``\ , or \ ``WRITE``\ .
+    :type type: int
 
-    :param const struct iovec __user \*uvector:
+    :param uvector:
         Pointer to the userspace array.
+    :type uvector: const struct iovec __user \*
 
-    :param unsigned long nr_segs:
+    :param nr_segs:
         Number of elements in userspace array.
+    :type nr_segs: unsigned long
 
-    :param unsigned long fast_segs:
+    :param fast_segs:
         Number of elements in \ ``fast_pointer``\ .
+    :type fast_segs: unsigned long
 
-    :param struct iovec \*fast_pointer:
+    :param fast_pointer:
         Pointer to (usually small on-stack) kernel array.
+    :type fast_pointer: struct iovec \*
 
-    :param struct iovec \*\*ret_pointer:
+    :param ret_pointer:
         (output parameter) Pointer to a variable that will point to
         either \ ``fast_pointer``\ , a newly allocated kernel array, or NULL,
         depending on which array was used.
+    :type ret_pointer: struct iovec \*\*
 
 .. _`rw_copy_check_uvector.description`:
 

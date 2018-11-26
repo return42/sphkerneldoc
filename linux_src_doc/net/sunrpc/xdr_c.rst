@@ -10,14 +10,17 @@ xdr_encode_opaque_fixed
 
     Encode fixed length opaque data
 
-    :param __be32 \*p:
+    :param p:
         pointer to current position in XDR buffer.
+    :type p: __be32 \*
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to data to encode (or NULL)
+    :type ptr: const void \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         size of data.
+    :type nbytes: unsigned int
 
 .. _`xdr_encode_opaque_fixed.description`:
 
@@ -46,14 +49,17 @@ xdr_encode_opaque
 
     Encode variable length opaque data
 
-    :param __be32 \*p:
+    :param p:
         pointer to current position in XDR buffer.
+    :type p: __be32 \*
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to data to encode (or NULL)
+    :type ptr: const void \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         size of data.
+    :type nbytes: unsigned int
 
 .. _`xdr_encode_opaque.description`:
 
@@ -71,11 +77,13 @@ xdr_terminate_string
 
     '\0'-terminate a string residing in an xdr_buf
 
-    :param struct xdr_buf \*buf:
+    :param buf:
         XDR buffer where string resides
+    :type buf: struct xdr_buf \*
 
-    :param const u32 len:
+    :param len:
         length of string, in bytes
+    :type len: const u32
 
 .. _`_shift_data_right_pages`:
 
@@ -84,17 +92,21 @@ _shift_data_right_pages
 
 .. c:function:: void _shift_data_right_pages(struct page **pages, size_t pgto_base, size_t pgfrom_base, size_t len)
 
-    :param struct page \*\*pages:
+    :param pages:
         vector of pages containing both the source and dest memory area.
+    :type pages: struct page \*\*
 
-    :param size_t pgto_base:
+    :param pgto_base:
         page vector address of destination
+    :type pgto_base: size_t
 
-    :param size_t pgfrom_base:
+    :param pgfrom_base:
         page vector address of source
+    :type pgfrom_base: size_t
 
-    :param size_t len:
+    :param len:
         number of bytes to copy
+    :type len: size_t
 
 .. _`_shift_data_right_pages.note`:
 
@@ -120,17 +132,21 @@ _copy_to_pages
 
 .. c:function:: void _copy_to_pages(struct page **pages, size_t pgbase, const char *p, size_t len)
 
-    :param struct page \*\*pages:
+    :param pages:
         array of pages
+    :type pages: struct page \*\*
 
-    :param size_t pgbase:
+    :param pgbase:
         page vector address of destination
+    :type pgbase: size_t
 
-    :param const char \*p:
+    :param p:
         pointer to source data
+    :type p: const char \*
 
-    :param size_t len:
+    :param len:
         length
+    :type len: size_t
 
 .. _`_copy_to_pages.description`:
 
@@ -147,17 +163,21 @@ _copy_from_pages
 
 .. c:function:: void _copy_from_pages(char *p, struct page **pages, size_t pgbase, size_t len)
 
-    :param char \*p:
+    :param p:
         pointer to destination
+    :type p: char \*
 
-    :param struct page \*\*pages:
+    :param pages:
         array of pages
+    :type pages: struct page \*\*
 
-    :param size_t pgbase:
+    :param pgbase:
         offset of source data
+    :type pgbase: size_t
 
-    :param size_t len:
+    :param len:
         length
+    :type len: size_t
 
 .. _`_copy_from_pages.description`:
 
@@ -174,11 +194,13 @@ xdr_shrink_bufhead
 
 .. c:function:: void xdr_shrink_bufhead(struct xdr_buf *buf, size_t len)
 
-    :param struct xdr_buf \*buf:
+    :param buf:
         xdr_buf
+    :type buf: struct xdr_buf \*
 
-    :param size_t len:
+    :param len:
         bytes to remove from buf->head[0]
+    :type len: size_t
 
 .. _`xdr_shrink_bufhead.description`:
 
@@ -196,11 +218,13 @@ xdr_shrink_pagelen
 
 .. c:function:: void xdr_shrink_pagelen(struct xdr_buf *buf, size_t len)
 
-    :param struct xdr_buf \*buf:
+    :param buf:
         xdr_buf
+    :type buf: struct xdr_buf \*
 
-    :param size_t len:
+    :param len:
         bytes to remove from buf->pages
+    :type len: size_t
 
 .. _`xdr_shrink_pagelen.description`:
 
@@ -220,8 +244,9 @@ xdr_stream_pos
 
     Return the current offset from the start of the xdr_stream
 
-    :param const struct xdr_stream \*xdr:
+    :param xdr:
         pointer to struct xdr_stream
+    :type xdr: const struct xdr_stream \*
 
 .. _`xdr_init_encode`:
 
@@ -232,14 +257,17 @@ xdr_init_encode
 
     Initialize a struct xdr_stream for sending data.
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream struct
+    :type xdr: struct xdr_stream \*
 
-    :param struct xdr_buf \*buf:
+    :param buf:
         pointer to XDR buffer in which to encode data
+    :type buf: struct xdr_buf \*
 
-    :param __be32 \*p:
+    :param p:
         current pointer inside XDR buffer
+    :type p: __be32 \*
 
 .. _`xdr_init_encode.note`:
 
@@ -262,8 +290,9 @@ xdr_commit_encode
 
     Ensure all data is written to buffer
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
 .. _`xdr_commit_encode.description`:
 
@@ -288,11 +317,13 @@ xdr_reserve_space
 
     Reserve buffer space for sending
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param size_t nbytes:
+    :param nbytes:
         number of bytes to reserve
+    :type nbytes: size_t
 
 .. _`xdr_reserve_space.description`:
 
@@ -312,11 +343,13 @@ xdr_truncate_encode
 
     truncate an encode buffer
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param size_t len:
+    :param len:
         new length of buffer
+    :type len: size_t
 
 .. _`xdr_truncate_encode.description`:
 
@@ -345,11 +378,13 @@ xdr_restrict_buflen
 
     decrease available buffer space
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param int newbuflen:
+    :param newbuflen:
         new maximum number of bytes available
+    :type newbuflen: int
 
 .. _`xdr_restrict_buflen.description`:
 
@@ -372,17 +407,21 @@ xdr_write_pages
 
     Insert a list of pages into an XDR buffer for sending
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param struct page \*\*pages:
+    :param pages:
         list of pages
+    :type pages: struct page \*\*
 
-    :param unsigned int base:
+    :param base:
         offset of first byte
+    :type base: unsigned int
 
-    :param unsigned int len:
+    :param len:
         length of data in bytes
+    :type len: unsigned int
 
 .. _`xdr_init_decode`:
 
@@ -393,14 +432,17 @@ xdr_init_decode
 
     Initialize an xdr_stream for decoding data.
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream struct
+    :type xdr: struct xdr_stream \*
 
-    :param struct xdr_buf \*buf:
+    :param buf:
         pointer to XDR buffer from which to decode data
+    :type buf: struct xdr_buf \*
 
-    :param __be32 \*p:
+    :param p:
         current pointer inside XDR buffer
+    :type p: __be32 \*
 
 .. _`xdr_init_decode_pages`:
 
@@ -411,17 +453,21 @@ xdr_init_decode_pages
 
     Initialize an xdr_stream for decoding into pages
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream struct
+    :type xdr: struct xdr_stream \*
 
-    :param struct xdr_buf \*buf:
+    :param buf:
         pointer to XDR buffer from which to decode data
+    :type buf: struct xdr_buf \*
 
-    :param struct page \*\*pages:
+    :param pages:
         list of pages to decode into
+    :type pages: struct page \*\*
 
-    :param unsigned int len:
+    :param len:
         length in bytes of buffer in pages
+    :type len: unsigned int
 
 .. _`xdr_set_scratch_buffer`:
 
@@ -432,14 +478,17 @@ xdr_set_scratch_buffer
 
     Attach a scratch buffer for decoding data.
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream struct
+    :type xdr: struct xdr_stream \*
 
-    :param void \*buf:
+    :param buf:
         pointer to an empty buffer
+    :type buf: void \*
 
-    :param size_t buflen:
+    :param buflen:
         size of 'buf'
+    :type buflen: size_t
 
 .. _`xdr_set_scratch_buffer.description`:
 
@@ -460,11 +509,13 @@ xdr_inline_decode
 
     Retrieve XDR data to decode
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream struct
+    :type xdr: struct xdr_stream \*
 
-    :param size_t nbytes:
+    :param nbytes:
         number of bytes of data to decode
+    :type nbytes: size_t
 
 .. _`xdr_inline_decode.description`:
 
@@ -485,11 +536,13 @@ xdr_read_pages
 
     Ensure page-based XDR data to decode is aligned at current pointer position
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream struct
+    :type xdr: struct xdr_stream \*
 
-    :param unsigned int len:
+    :param len:
         number of bytes of page data
+    :type len: unsigned int
 
 .. _`xdr_read_pages.description`:
 
@@ -511,11 +564,13 @@ xdr_enter_page
 
     decode data from the XDR page
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream struct
+    :type xdr: struct xdr_stream \*
 
-    :param unsigned int len:
+    :param len:
         number of bytes of page data
+    :type len: unsigned int
 
 .. _`xdr_enter_page.description`:
 
@@ -536,17 +591,21 @@ xdr_buf_subsegment
 
     set subbuf to a portion of buf
 
-    :param struct xdr_buf \*buf:
+    :param buf:
         an xdr buffer
+    :type buf: struct xdr_buf \*
 
-    :param struct xdr_buf \*subbuf:
+    :param subbuf:
         the result buffer
+    :type subbuf: struct xdr_buf \*
 
-    :param unsigned int base:
+    :param base:
         beginning of range in bytes
+    :type base: unsigned int
 
-    :param unsigned int len:
+    :param len:
         length of range in bytes
+    :type len: unsigned int
 
 .. _`xdr_buf_subsegment.description`:
 
@@ -569,11 +628,13 @@ xdr_buf_trim
 
     lop at most "len" bytes off the end of "buf"
 
-    :param struct xdr_buf \*buf:
+    :param buf:
         buf to be trimmed
+    :type buf: struct xdr_buf \*
 
-    :param unsigned int len:
+    :param len:
         number of bytes to reduce "buf" by
+    :type len: unsigned int
 
 .. _`xdr_buf_trim.description`:
 
@@ -594,14 +655,17 @@ xdr_stream_decode_opaque
 
     Decode variable length opaque
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param void \*ptr:
+    :param ptr:
         location to store opaque data
+    :type ptr: void \*
 
-    :param size_t size:
+    :param size:
         size of storage buffer \ ``ptr``\ 
+    :type size: size_t
 
 .. _`xdr_stream_decode_opaque.return-values`:
 
@@ -621,17 +685,21 @@ xdr_stream_decode_opaque_dup
 
     Decode and duplicate variable length opaque
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param void \*\*ptr:
+    :param ptr:
         location to store pointer to opaque data
+    :type ptr: void \*\*
 
-    :param size_t maxlen:
+    :param maxlen:
         maximum acceptable object size
+    :type maxlen: size_t
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         GFP mask to use
+    :type gfp_flags: gfp_t
 
 .. _`xdr_stream_decode_opaque_dup.return-values`:
 
@@ -652,14 +720,17 @@ xdr_stream_decode_string
 
     Decode variable length string
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param char \*str:
+    :param str:
         location to store string
+    :type str: char \*
 
-    :param size_t size:
+    :param size:
         size of storage buffer \ ``str``\ 
+    :type size: size_t
 
 .. _`xdr_stream_decode_string.return-values`:
 
@@ -679,17 +750,21 @@ xdr_stream_decode_string_dup
 
     Decode and duplicate variable length string
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         pointer to xdr_stream
+    :type xdr: struct xdr_stream \*
 
-    :param char \*\*str:
+    :param str:
         location to store pointer to string
+    :type str: char \*\*
 
-    :param size_t maxlen:
+    :param maxlen:
         maximum acceptable string length
+    :type maxlen: size_t
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         GFP mask to use
+    :type gfp_flags: gfp_t
 
 .. _`xdr_stream_decode_string_dup.return-values`:
 

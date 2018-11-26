@@ -10,8 +10,9 @@ blk_complete_request
 
     end I/O on a request
 
-    :param struct request \*req:
+    :param req:
         the request being processed
+    :type req: struct request \*
 
 .. _`blk_complete_request.description`:
 

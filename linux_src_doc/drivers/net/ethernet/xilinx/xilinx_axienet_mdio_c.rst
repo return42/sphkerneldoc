@@ -10,14 +10,17 @@ axienet_mdio_read
 
     MDIO interface read function
 
-    :param struct mii_bus \*bus:
+    :param bus:
         Pointer to mii bus structure
+    :type bus: struct mii_bus \*
 
-    :param int phy_id:
+    :param phy_id:
         Address of the PHY device
+    :type phy_id: int
 
-    :param int reg:
+    :param reg:
         PHY register to read
+    :type reg: int
 
 .. _`axienet_mdio_read.return`:
 
@@ -39,17 +42,21 @@ axienet_mdio_write
 
     MDIO interface write function
 
-    :param struct mii_bus \*bus:
+    :param bus:
         Pointer to mii bus structure
+    :type bus: struct mii_bus \*
 
-    :param int phy_id:
+    :param phy_id:
         Address of the PHY device
+    :type phy_id: int
 
-    :param int reg:
+    :param reg:
         PHY register to write to
+    :type reg: int
 
-    :param u16 val:
+    :param val:
         Value to be written into the register
+    :type val: u16
 
 .. _`axienet_mdio_write.return`:
 
@@ -71,11 +78,13 @@ axienet_mdio_setup
 
     MDIO setup function
 
-    :param struct axienet_local \*lp:
+    :param lp:
         Pointer to axienet local data structure.
+    :type lp: struct axienet_local \*
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to device node
+    :type np: struct device_node \*
 
 .. _`axienet_mdio_setup.return`:
 
@@ -97,8 +106,9 @@ axienet_mdio_teardown
 
     MDIO remove function
 
-    :param struct axienet_local \*lp:
+    :param lp:
         Pointer to axienet local data structure.
+    :type lp: struct axienet_local \*
 
 .. _`axienet_mdio_teardown.description`:
 

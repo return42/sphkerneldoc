@@ -10,26 +10,33 @@ proc_create_net_data_write
 
     Create a writable net_ns-specific proc file
 
-    :param const char \*name:
+    :param name:
         The name of the file.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         The file's access mode.
+    :type mode: umode_t
 
-    :param struct proc_dir_entry \*parent:
+    :param parent:
         The parent directory in which to create.
+    :type parent: struct proc_dir_entry \*
 
-    :param const struct seq_operations \*ops:
+    :param ops:
         The seq_file ops with which to read the file.
+    :type ops: const struct seq_operations \*
 
-    :param proc_write_t write:
+    :param write:
         The write method which which to 'modify' the file.
+    :type write: proc_write_t
 
-    :param unsigned int state_size:
+    :param state_size:
         *undescribed*
+    :type state_size: unsigned int
 
-    :param void \*data:
+    :param data:
         Data for retrieval by \ :c:func:`PDE_DATA`\ .
+    :type data: void \*
 
 .. _`proc_create_net_data_write.description`:
 
@@ -61,23 +68,28 @@ proc_create_net_single_write
 
     Create a writable net_ns-specific proc file
 
-    :param const char \*name:
+    :param name:
         The name of the file.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         The file's access mode.
+    :type mode: umode_t
 
-    :param struct proc_dir_entry \*parent:
+    :param parent:
         The parent directory in which to create.
+    :type parent: struct proc_dir_entry \*
 
     :param int (\*show)(struct seq_file \*, void \*):
         The seqfile show method with which to read the file.
 
-    :param proc_write_t write:
+    :param write:
         The write method which which to 'modify' the file.
+    :type write: proc_write_t
 
-    :param void \*data:
+    :param data:
         Data for retrieval by \ :c:func:`PDE_DATA`\ .
+    :type data: void \*
 
 .. _`proc_create_net_single_write.description`:
 

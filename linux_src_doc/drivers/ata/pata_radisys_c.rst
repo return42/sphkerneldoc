@@ -10,11 +10,13 @@ radisys_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device whose timings we are configuring
+    :type adev: struct ata_device \*
 
 .. _`radisys_set_piomode.description`:
 
@@ -39,11 +41,13 @@ radisys_set_dmamode
 
     Initialize host controller PATA DMA timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device to program
+    :type adev: struct ata_device \*
 
 .. _`radisys_set_dmamode.description`:
 
@@ -68,8 +72,9 @@ radisys_qc_issue
 
     command issue
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command pending
+    :type qc: struct ata_queued_cmd \*
 
 .. _`radisys_qc_issue.description`:
 
@@ -91,11 +96,13 @@ radisys_init_one
 
     Register PIIX ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         Entry in radisys_pci_tbl matching with \ ``pdev``\ 
+    :type ent: const struct pci_device_id \*
 
 .. _`radisys_init_one.description`:
 

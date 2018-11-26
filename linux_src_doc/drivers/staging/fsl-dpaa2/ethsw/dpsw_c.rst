@@ -10,17 +10,21 @@ dpsw_open
 
     Open a control session for the specified object
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param int dpsw_id:
+    :param dpsw_id:
         DPSW unique ID
+    :type dpsw_id: int
 
-    :param u16 \*token:
+    :param token:
         Returned token; use in subsequent API calls
+    :type token: u16 \*
 
 .. _`dpsw_open.description`:
 
@@ -51,14 +55,17 @@ dpsw_close
 
     Close the control session of the object
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
 .. _`dpsw_close.description`:
 
@@ -84,14 +91,17 @@ dpsw_enable
 
     Enable DPSW functionality
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
 .. _`dpsw_enable.return`:
 
@@ -109,14 +119,17 @@ dpsw_disable
 
     Disable DPSW functionality
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
 .. _`dpsw_disable.return`:
 
@@ -134,14 +147,17 @@ dpsw_reset
 
     Reset the DPSW, returns the object to initial state.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
 .. _`dpsw_reset.return`:
 
@@ -159,20 +175,25 @@ dpsw_set_irq_enable
 
     Set overall interrupt state.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPCI object
+    :type token: u16
 
-    :param u8 irq_index:
+    :param irq_index:
         The interrupt index to configure
+    :type irq_index: u8
 
-    :param u8 en:
+    :param en:
         Interrupt state - enable = 1, disable = 0
+    :type en: u8
 
 .. _`dpsw_set_irq_enable.description`:
 
@@ -200,23 +221,28 @@ dpsw_set_irq_mask
 
     Set interrupt mask.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPCI object
+    :type token: u16
 
-    :param u8 irq_index:
+    :param irq_index:
         The interrupt index to configure
+    :type irq_index: u8
 
-    :param u32 mask:
+    :param mask:
         Event mask to trigger interrupt;
         each bit:
         0 = ignore event
         1 = consider event for asserting IRQ
+    :type mask: u32
 
 .. _`dpsw_set_irq_mask.description`:
 
@@ -242,22 +268,27 @@ dpsw_get_irq_status
 
     Get the current status of any pending interrupts
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u8 irq_index:
+    :param irq_index:
         The interrupt index to configure
+    :type irq_index: u8
 
-    :param u32 \*status:
+    :param status:
         Returned interrupts status - one bit per cause:
         0 = no interrupt pending
         1 = interrupt pending
+    :type status: u32 \*
 
 .. _`dpsw_get_irq_status.return`:
 
@@ -275,22 +306,27 @@ dpsw_clear_irq_status
 
     Clear a pending interrupt's status
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPCI object
+    :type token: u16
 
-    :param u8 irq_index:
+    :param irq_index:
         The interrupt index to configure
+    :type irq_index: u8
 
-    :param u32 status:
+    :param status:
         bits to clear (W1C) - one bit per cause:
         0 = don't change
         1 = clear status bit
+    :type status: u32
 
 .. _`dpsw_clear_irq_status.return`:
 
@@ -308,17 +344,21 @@ dpsw_get_attributes
 
     Retrieve DPSW attributes
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param struct dpsw_attr \*attr:
+    :param attr:
         Returned DPSW attributes
+    :type attr: struct dpsw_attr \*
 
 .. _`dpsw_get_attributes.return`:
 
@@ -336,20 +376,25 @@ dpsw_if_set_link_cfg
 
     Set the link configuration.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface id
+    :type if_id: u16
 
-    :param struct dpsw_link_cfg \*cfg:
+    :param cfg:
         Link configuration
+    :type cfg: struct dpsw_link_cfg \*
 
 .. _`dpsw_if_set_link_cfg.return`:
 
@@ -367,20 +412,25 @@ dpsw_if_get_link_state
 
     Return the link state
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface id
+    :type if_id: u16
 
-    :param struct dpsw_link_state \*state:
+    :param state:
         Link state      1 - linkup, 0 - link down or disconnected
+    :type state: struct dpsw_link_state \*
 
 .. _`dpsw_if_get_link_state.description`:
 
@@ -398,20 +448,25 @@ dpsw_if_set_flooding
 
     Enable Disable flooding for particular interface
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface Identifier
+    :type if_id: u16
 
-    :param u8 en:
+    :param en:
         1 - enable, 0 - disable
+    :type en: u8
 
 .. _`dpsw_if_set_flooding.return`:
 
@@ -429,20 +484,25 @@ dpsw_if_set_broadcast
 
     Enable/disable broadcast for particular interface
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface Identifier
+    :type if_id: u16
 
-    :param u8 en:
+    :param en:
         1 - enable, 0 - disable
+    :type en: u8
 
 .. _`dpsw_if_set_broadcast.return`:
 
@@ -460,20 +520,25 @@ dpsw_if_set_tci
 
     Set default VLAN Tag Control Information (TCI)
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface Identifier
+    :type if_id: u16
 
-    :param const struct dpsw_tci_cfg \*cfg:
+    :param cfg:
         Tag Control Information Configuration
+    :type cfg: const struct dpsw_tci_cfg \*
 
 .. _`dpsw_if_set_tci.return`:
 
@@ -491,20 +556,25 @@ dpsw_if_get_tci
 
     Get default VLAN Tag Control Information (TCI)
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface Identifier
+    :type if_id: u16
 
-    :param struct dpsw_tci_cfg \*cfg:
+    :param cfg:
         Tag Control Information Configuration
+    :type cfg: struct dpsw_tci_cfg \*
 
 .. _`dpsw_if_get_tci.return`:
 
@@ -522,20 +592,25 @@ dpsw_if_set_stp
 
     Function sets Spanning Tree Protocol (STP) state.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface Identifier
+    :type if_id: u16
 
-    :param const struct dpsw_stp_cfg \*cfg:
+    :param cfg:
         STP State configuration parameters
+    :type cfg: const struct dpsw_stp_cfg \*
 
 .. _`dpsw_if_set_stp.description`:
 
@@ -561,23 +636,29 @@ dpsw_if_get_counter
 
     Get specific counter of particular interface
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface Identifier
+    :type if_id: u16
 
-    :param enum dpsw_counter type:
+    :param type:
         Counter type
+    :type type: enum dpsw_counter
 
-    :param u64 \*counter:
+    :param counter:
         return value
+    :type counter: u64 \*
 
 .. _`dpsw_if_get_counter.return`:
 
@@ -595,17 +676,21 @@ dpsw_if_enable
 
     Enable Interface
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface Identifier
+    :type if_id: u16
 
 .. _`dpsw_if_enable.return`:
 
@@ -623,17 +708,21 @@ dpsw_if_disable
 
     Disable Interface
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface Identifier
+    :type if_id: u16
 
 .. _`dpsw_if_disable.return`:
 
@@ -651,20 +740,25 @@ dpsw_if_set_max_frame_length
 
     Set Maximum Receive frame length.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 if_id:
+    :param if_id:
         Interface Identifier
+    :type if_id: u16
 
-    :param u16 frame_length:
+    :param frame_length:
         Maximum Frame Length
+    :type frame_length: u16
 
 .. _`dpsw_if_set_max_frame_length.return`:
 
@@ -682,20 +776,25 @@ dpsw_vlan_add
 
     Adding new VLAN to DPSW.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 vlan_id:
+    :param vlan_id:
         VLAN Identifier
+    :type vlan_id: u16
 
-    :param const struct dpsw_vlan_cfg \*cfg:
+    :param cfg:
         VLAN configuration
+    :type cfg: const struct dpsw_vlan_cfg \*
 
 .. _`dpsw_vlan_add.description`:
 
@@ -725,20 +824,25 @@ dpsw_vlan_add_if
 
     Adding a set of interfaces to an existing VLAN.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 vlan_id:
+    :param vlan_id:
         VLAN Identifier
+    :type vlan_id: u16
 
-    :param const struct dpsw_vlan_if_cfg \*cfg:
+    :param cfg:
         Set of interfaces to add
+    :type cfg: const struct dpsw_vlan_if_cfg \*
 
 .. _`dpsw_vlan_add_if.description`:
 
@@ -766,20 +870,25 @@ dpsw_vlan_add_if_untagged
 
     Defining a set of interfaces that should be transmitted as untagged.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 vlan_id:
+    :param vlan_id:
         VLAN Identifier
+    :type vlan_id: u16
 
-    :param const struct dpsw_vlan_if_cfg \*cfg:
+    :param cfg:
         Set of interfaces that should be transmitted as untagged
+    :type cfg: const struct dpsw_vlan_if_cfg \*
 
 .. _`dpsw_vlan_add_if_untagged.description`:
 
@@ -808,20 +917,25 @@ dpsw_vlan_remove_if
 
     Remove interfaces from an existing VLAN.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 vlan_id:
+    :param vlan_id:
         VLAN Identifier
+    :type vlan_id: u16
 
-    :param const struct dpsw_vlan_if_cfg \*cfg:
+    :param cfg:
         Set of interfaces that should be removed
+    :type cfg: const struct dpsw_vlan_if_cfg \*
 
 .. _`dpsw_vlan_remove_if.description`:
 
@@ -847,20 +961,25 @@ dpsw_vlan_remove_if_untagged
 
     Define a set of interfaces that should be converted from transmitted as untagged to transmit as tagged.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 vlan_id:
+    :param vlan_id:
         VLAN Identifier
+    :type vlan_id: u16
 
-    :param const struct dpsw_vlan_if_cfg \*cfg:
+    :param cfg:
         Set of interfaces that should be removed
+    :type cfg: const struct dpsw_vlan_if_cfg \*
 
 .. _`dpsw_vlan_remove_if_untagged.description`:
 
@@ -887,17 +1006,21 @@ dpsw_vlan_remove
 
     Remove an entire VLAN
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 vlan_id:
+    :param vlan_id:
         VLAN Identifier
+    :type vlan_id: u16
 
 .. _`dpsw_vlan_remove.return`:
 
@@ -915,20 +1038,25 @@ dpsw_fdb_add_unicast
 
     Function adds an unicast entry into MAC lookup table
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 fdb_id:
+    :param fdb_id:
         Forwarding Database Identifier
+    :type fdb_id: u16
 
-    :param const struct dpsw_fdb_unicast_cfg \*cfg:
+    :param cfg:
         Unicast entry configuration
+    :type cfg: const struct dpsw_fdb_unicast_cfg \*
 
 .. _`dpsw_fdb_add_unicast.return`:
 
@@ -946,20 +1074,25 @@ dpsw_fdb_remove_unicast
 
     removes an entry from MAC lookup table
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 fdb_id:
+    :param fdb_id:
         Forwarding Database Identifier
+    :type fdb_id: u16
 
-    :param const struct dpsw_fdb_unicast_cfg \*cfg:
+    :param cfg:
         Unicast entry configuration
+    :type cfg: const struct dpsw_fdb_unicast_cfg \*
 
 .. _`dpsw_fdb_remove_unicast.return`:
 
@@ -977,20 +1110,25 @@ dpsw_fdb_add_multicast
 
     Add a set of egress interfaces to multi-cast group
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 fdb_id:
+    :param fdb_id:
         Forwarding Database Identifier
+    :type fdb_id: u16
 
-    :param const struct dpsw_fdb_multicast_cfg \*cfg:
+    :param cfg:
         Multicast entry configuration
+    :type cfg: const struct dpsw_fdb_multicast_cfg \*
 
 .. _`dpsw_fdb_add_multicast.description`:
 
@@ -1020,20 +1158,25 @@ dpsw_fdb_remove_multicast
 
     Removing interfaces from an existing multicast group.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 fdb_id:
+    :param fdb_id:
         Forwarding Database Identifier
+    :type fdb_id: u16
 
-    :param const struct dpsw_fdb_multicast_cfg \*cfg:
+    :param cfg:
         Multicast entry configuration
+    :type cfg: const struct dpsw_fdb_multicast_cfg \*
 
 .. _`dpsw_fdb_remove_multicast.description`:
 
@@ -1061,20 +1204,25 @@ dpsw_fdb_set_learning_mode
 
     Define FDB learning mode
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 token:
+    :param token:
         Token of DPSW object
+    :type token: u16
 
-    :param u16 fdb_id:
+    :param fdb_id:
         Forwarding Database Identifier
+    :type fdb_id: u16
 
-    :param enum dpsw_fdb_learning_mode mode:
+    :param mode:
         Learning mode
+    :type mode: enum dpsw_fdb_learning_mode
 
 .. _`dpsw_fdb_set_learning_mode.return`:
 
@@ -1092,17 +1240,21 @@ dpsw_get_api_version
 
     Get Data Path Switch API version
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to MC portal's I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param u16 \*major_ver:
+    :param major_ver:
         Major version of data path switch API
+    :type major_ver: u16 \*
 
-    :param u16 \*minor_ver:
+    :param minor_ver:
         Minor version of data path switch API
+    :type minor_ver: u16 \*
 
 .. _`dpsw_get_api_version.return`:
 

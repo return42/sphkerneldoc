@@ -10,14 +10,17 @@ unprotect_frame
 
     unset Protected flag and strip off IV and ICV/MIC
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param int iv_len:
+    :param iv_len:
         *undescribed*
+    :type iv_len: int
 
-    :param int icv_len:
+    :param icv_len:
         *undescribed*
+    :type icv_len: int
 
 .. _`rtl88eu_mon_recv_hook`:
 
@@ -28,11 +31,13 @@ rtl88eu_mon_recv_hook
 
     forward received frame to the monitor interface
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct recv_frame \*frame:
+    :param frame:
         *undescribed*
+    :type frame: struct recv_frame \*
 
 .. _`rtl88eu_mon_recv_hook.description`:
 
@@ -51,14 +56,17 @@ rtl88eu_mon_xmit_hook
 
     forward trasmitted frame to the monitor interface
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct xmit_frame \*frame:
+    :param frame:
         *undescribed*
+    :type frame: struct xmit_frame \*
 
-    :param uint frag_len:
+    :param frag_len:
         *undescribed*
+    :type frag_len: uint
 
 .. _`rtl88eu_mon_xmit_hook.assumes-that`:
 

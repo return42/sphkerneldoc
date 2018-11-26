@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/crypto/cavium/nitrox/nitrox_isr.c
 
+.. _`nr_ring_vectors`:
+
+NR_RING_VECTORS
+===============
+
+.. c:function::  NR_RING_VECTORS()
+
+    - NPS packet ring, AQMQ ring and ZQMQ ring
+
 .. _`nps_pkt_slc_isr`:
 
 nps_pkt_slc_isr
@@ -10,54 +19,30 @@ nps_pkt_slc_isr
 
     IRQ handler for NPS solicit port
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         argument
+    :type data: void \*
 
-.. _`clear_nps_core_int_active`:
+.. _`nps_core_int_isr`:
 
-clear_nps_core_int_active
-=========================
+nps_core_int_isr
+================
 
-.. c:function:: void clear_nps_core_int_active(struct nitrox_device *ndev)
+.. c:function:: irqreturn_t nps_core_int_isr(int irq, void *data)
 
-    clear NPS_CORE_INT_ACTIVE interrupts
+    interrupt handler for NITROX errors and mailbox communication
 
-    :param struct nitrox_device \*ndev:
-        NITROX device
+    :param irq:
+        *undescribed*
+    :type irq: int
 
-.. _`nitrox_pf_cleanup_isr`:
-
-nitrox_pf_cleanup_isr
-=====================
-
-.. c:function:: void nitrox_pf_cleanup_isr(struct nitrox_device *ndev)
-
-    Cleanup PF MSI-X and IRQ
-
-    :param struct nitrox_device \*ndev:
-        NITROX device
-
-.. _`nitrox_pf_init_isr`:
-
-nitrox_pf_init_isr
-==================
-
-.. c:function:: int nitrox_pf_init_isr(struct nitrox_device *ndev)
-
-    Initialize PF MSI-X vectors and IRQ
-
-    :param struct nitrox_device \*ndev:
-        NITROX device
-
-.. _`nitrox_pf_init_isr.return`:
-
-Return
-------
-
-0 on success, a negative value on failure.
+    :param data:
+        *undescribed*
+    :type data: void \*
 
 .. This file was automatic generated / don't edit.
 

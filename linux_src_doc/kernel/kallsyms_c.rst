@@ -10,11 +10,13 @@ sprint_symbol
 
     Look up a kernel symbol and return it in a text buffer
 
-    :param char \*buffer:
+    :param buffer:
         buffer to be stored
+    :type buffer: char \*
 
-    :param unsigned long address:
+    :param address:
         address to lookup
+    :type address: unsigned long
 
 .. _`sprint_symbol.description`:
 
@@ -36,11 +38,13 @@ sprint_symbol_no_offset
 
     Look up a kernel symbol and return it in a text buffer
 
-    :param char \*buffer:
+    :param buffer:
         buffer to be stored
+    :type buffer: char \*
 
-    :param unsigned long address:
+    :param address:
         address to lookup
+    :type address: unsigned long
 
 .. _`sprint_symbol_no_offset.description`:
 
@@ -62,11 +66,13 @@ sprint_backtrace
 
     Look up a backtrace symbol and return it in a text buffer
 
-    :param char \*buffer:
+    :param buffer:
         buffer to be stored
+    :type buffer: char \*
 
-    :param unsigned long address:
+    :param address:
         address to lookup
+    :type address: unsigned long
 
 .. _`sprint_backtrace.description`:
 

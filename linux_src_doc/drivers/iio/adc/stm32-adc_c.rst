@@ -222,11 +222,13 @@ stm32_adc_readl
 
 .. c:function:: u32 stm32_adc_readl(struct stm32_adc *adc, u32 reg)
 
-    :param struct stm32_adc \*adc:
+    :param adc:
         stm32 adc instance
+    :type adc: struct stm32_adc \*
 
-    :param u32 reg:
+    :param reg:
         reg offset in adc instance
+    :type reg: u32
 
 .. _`stm32_adc_readl.note`:
 
@@ -245,8 +247,9 @@ stm32_adc_conv_irq_enable
 
     Enable end of conversion interrupt
 
-    :param struct stm32_adc \*adc:
+    :param adc:
         stm32 adc instance
+    :type adc: struct stm32_adc \*
 
 .. _`stm32_adc_conv_irq_disable`:
 
@@ -257,8 +260,9 @@ stm32_adc_conv_irq_disable
 
     Disable end of conversion interrupt
 
-    :param struct stm32_adc \*adc:
+    :param adc:
         stm32 adc instance
+    :type adc: struct stm32_adc \*
 
 .. _`stm32f4_adc_start_conv`:
 
@@ -269,11 +273,13 @@ stm32f4_adc_start_conv
 
     Start conversions for regular channels.
 
-    :param struct stm32_adc \*adc:
+    :param adc:
         stm32 adc instance
+    :type adc: struct stm32_adc \*
 
-    :param bool dma:
+    :param dma:
         use dma to transfer conversion result
+    :type dma: bool
 
 .. _`stm32f4_adc_start_conv.description`:
 
@@ -294,8 +300,9 @@ stm32h7_adc_read_selfcalib
 
     read calibration shadow regs, save result
 
-    :param struct stm32_adc \*adc:
+    :param adc:
         stm32 adc instance
+    :type adc: struct stm32_adc \*
 
 .. _`stm32h7_adc_restore_selfcalib`:
 
@@ -306,8 +313,9 @@ stm32h7_adc_restore_selfcalib
 
     Restore saved self-calibration result
 
-    :param struct stm32_adc \*adc:
+    :param adc:
         stm32 adc instance
+    :type adc: struct stm32_adc \*
 
 .. _`stm32h7_adc_restore_selfcalib.note`:
 
@@ -350,9 +358,10 @@ stm32h7_adc_selfcalib
 
     Procedure to calibrate ADC (from power down)
 
-    :param struct stm32_adc \*adc:
+    :param adc:
         stm32 adc instance
         Exit from power down, calibrate ADC, then return to power down.
+    :type adc: struct stm32_adc \*
 
 .. _`stm32h7_adc_prepare`:
 
@@ -363,7 +372,7 @@ stm32h7_adc_prepare
 
     Leave power down mode to enable ADC.
 
-    :param struct stm32_adc \*adc:
+    :param adc:
         stm32 adc instance
         Leave power down mode.
         Configure channels as single ended or differential before enabling ADC.
@@ -372,6 +381,7 @@ stm32h7_adc_prepare
         Pre-select channels that may be used in PCSEL (required by input MUX / IO):
         - Only one input is selected for single ended (e.g. 'vinp')
         - Two inputs are selected for differential channels (e.g. 'vinp' & 'vinn')
+    :type adc: struct stm32_adc \*
 
 .. _`stm32_adc_conf_scan_seq`:
 
@@ -382,11 +392,13 @@ stm32_adc_conf_scan_seq
 
     Build regular channels scan sequence
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param const unsigned long \*scan_mask:
+    :param scan_mask:
         channels to be converted
+    :type scan_mask: const unsigned long \*
 
 .. _`stm32_adc_conf_scan_seq.description`:
 
@@ -408,11 +420,13 @@ stm32_adc_get_trig_extsel
 
     Get external trigger selection
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         *undescribed*
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         trigger
+    :type trig: struct iio_trigger \*
 
 .. _`stm32_adc_get_trig_extsel.description`:
 
@@ -430,11 +444,13 @@ stm32_adc_set_trig
 
     Set a regular trigger
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         IIO trigger
+    :type trig: struct iio_trigger \*
 
 .. _`stm32_adc_set_trig.description`:
 
@@ -454,14 +470,17 @@ stm32_adc_single_conv
 
     Performs a single conversion
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param const struct iio_chan_spec \*chan:
+    :param chan:
         IIO channel
+    :type chan: const struct iio_chan_spec \*
 
-    :param int \*res:
+    :param res:
         conversion result
+    :type res: int \*
 
 .. _`stm32_adc_single_conv.the-function-performs-a-single-conversion-on-a-given-channel`:
 
@@ -482,11 +501,13 @@ stm32_adc_validate_trigger
 
     validate trigger for stm32 adc
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         new trigger
+    :type trig: struct iio_trigger \*
 
 .. _`stm32_adc_validate_trigger.return`:
 
@@ -505,17 +526,21 @@ stm32_adc_debugfs_reg_access
 
     read or write register value
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         *undescribed*
+    :type indio_dev: struct iio_dev \*
 
-    :param unsigned reg:
+    :param reg:
         *undescribed*
+    :type reg: unsigned
 
-    :param unsigned writeval:
+    :param writeval:
         *undescribed*
+    :type writeval: unsigned
 
-    :param unsigned \*readval:
+    :param readval:
         *undescribed*
+    :type readval: unsigned \*
 
 .. _`stm32_adc_debugfs_reg_access.to-read-a-value-from-an-adc-register`:
 

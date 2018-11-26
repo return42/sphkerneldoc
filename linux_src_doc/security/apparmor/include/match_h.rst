@@ -32,8 +32,9 @@ aa_get_dfa
 
     increment refcount on dfa \ ``p``\ 
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         dfa  (MAYBE NULL)
+    :type dfa: struct aa_dfa \*
 
 .. _`aa_get_dfa.return`:
 
@@ -58,8 +59,9 @@ aa_put_dfa
 
     put a dfa refcount
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         dfa to put refcount   (MAYBE NULL)
+    :type dfa: struct aa_dfa \*
 
 .. _`aa_put_dfa.requires`:
 

@@ -10,8 +10,9 @@ handle_bad_irq
 
     handle spurious and unhandled irqs
 
-    :param struct irq_desc \*desc:
+    :param desc:
         description of the interrupt
+    :type desc: struct irq_desc \*
 
 .. _`handle_bad_irq.description`:
 

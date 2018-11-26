@@ -10,11 +10,13 @@ usb_role_switch_set_role
 
     Set USB role for a switch
 
-    :param struct usb_role_switch \*sw:
+    :param sw:
         USB role switch
+    :type sw: struct usb_role_switch \*
 
-    :param enum usb_role role:
+    :param role:
         USB role to be switched to
+    :type role: enum usb_role
 
 .. _`usb_role_switch_set_role.description`:
 
@@ -32,8 +34,9 @@ usb_role_switch_get_role
 
     Get the USB role for a switch
 
-    :param struct usb_role_switch \*sw:
+    :param sw:
         USB role switch
+    :type sw: struct usb_role_switch \*
 
 .. _`usb_role_switch_get_role.description`:
 
@@ -52,8 +55,9 @@ usb_role_switch_get
 
     Find USB role switch linked with the caller
 
-    :param struct device \*dev:
+    :param dev:
         The caller device
+    :type dev: struct device \*
 
 .. _`usb_role_switch_get.description`:
 
@@ -72,8 +76,9 @@ usb_role_switch_put
 
     Release handle to a switch
 
-    :param struct usb_role_switch \*sw:
+    :param sw:
         USB Role Switch
+    :type sw: struct usb_role_switch \*
 
 .. _`usb_role_switch_put.description`:
 
@@ -91,11 +96,13 @@ usb_role_switch_register
 
     Register USB Role Switch
 
-    :param struct device \*parent:
+    :param parent:
         Parent device for the switch
+    :type parent: struct device \*
 
-    :param const struct usb_role_switch_desc \*desc:
+    :param desc:
         Description of the switch
+    :type desc: const struct usb_role_switch_desc \*
 
 .. _`usb_role_switch_register.description`:
 
@@ -120,8 +127,9 @@ usb_role_switch_unregister
 
     Unregsiter USB Role Switch
 
-    :param struct usb_role_switch \*sw:
+    :param sw:
         USB Role Switch
+    :type sw: struct usb_role_switch \*
 
 .. _`usb_role_switch_unregister.description`:
 

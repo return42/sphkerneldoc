@@ -10,8 +10,9 @@ txq_avail
 
     return the number of available slots in a Tx queue
 
-    :param const struct sge_txq \*q:
+    :param q:
         the Tx queue
+    :type q: const struct sge_txq \*
 
 .. _`txq_avail.description`:
 
@@ -30,8 +31,9 @@ fl_cap
 
     return the capacity of a free-buffer list
 
-    :param const struct sge_fl \*fl:
+    :param fl:
         the FL
+    :type fl: const struct sge_fl \*
 
 .. _`fl_cap.description`:
 
@@ -51,11 +53,13 @@ fl_starving
 
     return whether a Free List is starving.
 
-    :param const struct adapter \*adapter:
+    :param adapter:
         pointer to the adapter
+    :type adapter: const struct adapter \*
 
-    :param const struct sge_fl \*fl:
+    :param fl:
         the Free List
+    :type fl: const struct sge_fl \*
 
 .. _`fl_starving.description`:
 
@@ -75,8 +79,9 @@ deferred_unmap_destructor
 
     unmap a packet when it is freed
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`deferred_unmap_destructor.description`:
 
@@ -96,17 +101,21 @@ free_tx_desc
 
     reclaims Tx descriptors and their buffers
 
-    :param struct adapter \*adap:
+    :param adap:
         *undescribed*
+    :type adap: struct adapter \*
 
-    :param struct sge_txq \*q:
+    :param q:
         the Tx queue to reclaim descriptors from
+    :type q: struct sge_txq \*
 
-    :param unsigned int n:
+    :param n:
         the number of descriptors to reclaim
+    :type n: unsigned int
 
-    :param bool unmap:
+    :param unmap:
         whether the buffers should be unmapped for DMA
+    :type unmap: bool
 
 .. _`free_tx_desc.description`:
 
@@ -125,14 +134,17 @@ cxgb4_reclaim_completed_tx
 
     reclaims completed Tx descriptors
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct sge_txq \*q:
+    :param q:
         the Tx queue to reclaim completed descriptors from
+    :type q: struct sge_txq \*
 
-    :param bool unmap:
+    :param unmap:
         whether the buffers should be unmapped for DMA
+    :type unmap: bool
 
 .. _`cxgb4_reclaim_completed_tx.description`:
 
@@ -152,14 +164,17 @@ free_rx_bufs
 
     free the Rx buffers on an SGE free list
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct sge_fl \*q:
+    :param q:
         the SGE free list to free buffers from
+    :type q: struct sge_fl \*
 
-    :param int n:
+    :param n:
         how many buffers to free
+    :type n: int
 
 .. _`free_rx_bufs.description`:
 
@@ -178,11 +193,13 @@ unmap_rx_buf
 
     unmap the current Rx buffer on an SGE free list
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct sge_fl \*q:
+    :param q:
         the SGE free list
+    :type q: struct sge_fl \*
 
 .. _`unmap_rx_buf.description`:
 
@@ -204,17 +221,21 @@ refill_fl
 
     refill an SGE Rx buffer ring
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct sge_fl \*q:
+    :param q:
         the ring to refill
+    :type q: struct sge_fl \*
 
-    :param int n:
+    :param n:
         the number of new buffers to allocate
+    :type n: int
 
-    :param gfp_t gfp:
+    :param gfp:
         the gfp flags for the allocations
+    :type gfp: gfp_t
 
 .. _`refill_fl.description`:
 
@@ -237,29 +258,37 @@ alloc_ring
 
     allocate resources for an SGE descriptor ring
 
-    :param struct device \*dev:
+    :param dev:
         the PCI device's core device
+    :type dev: struct device \*
 
-    :param size_t nelem:
+    :param nelem:
         the number of descriptors
+    :type nelem: size_t
 
-    :param size_t elem_size:
+    :param elem_size:
         the size of each descriptor
+    :type elem_size: size_t
 
-    :param size_t sw_size:
+    :param sw_size:
         the size of the SW state associated with each ring element
+    :type sw_size: size_t
 
-    :param dma_addr_t \*phys:
+    :param phys:
         the physical address of the allocated ring
+    :type phys: dma_addr_t \*
 
-    :param void \*metadata:
+    :param metadata:
         address of the array holding the SW state for the ring
+    :type metadata: void \*
 
-    :param size_t stat_size:
+    :param stat_size:
         extra space in HW ring for status information
+    :type stat_size: size_t
 
-    :param int node:
+    :param node:
         preferred node for memory allocations
+    :type node: int
 
 .. _`alloc_ring.description`:
 
@@ -289,8 +318,9 @@ sgl_len
 
     calculates the size of an SGL of the given capacity
 
-    :param unsigned int n:
+    :param n:
         the number of SGL entries
+    :type n: unsigned int
 
 .. _`sgl_len.description`:
 
@@ -309,8 +339,9 @@ flits_to_desc
 
     returns the num of Tx descriptors for the given flits
 
-    :param unsigned int n:
+    :param n:
         the number of flits
+    :type n: unsigned int
 
 .. _`flits_to_desc.description`:
 
@@ -329,11 +360,13 @@ is_eth_imm
 
     can an Ethernet packet be sent as immediate data?
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param unsigned int chip_ver:
+    :param chip_ver:
         *undescribed*
+    :type chip_ver: unsigned int
 
 .. _`is_eth_imm.description`:
 
@@ -352,11 +385,13 @@ calc_tx_flits
 
     calculate the number of flits for a packet Tx WR
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param unsigned int chip_ver:
+    :param chip_ver:
         *undescribed*
+    :type chip_ver: unsigned int
 
 .. _`calc_tx_flits.description`:
 
@@ -375,11 +410,13 @@ calc_tx_descs
 
     calculate the number of Tx descriptors for a packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param unsigned int chip_ver:
+    :param chip_ver:
         *undescribed*
+    :type chip_ver: unsigned int
 
 .. _`calc_tx_descs.description`:
 
@@ -398,23 +435,29 @@ cxgb4_write_sgl
 
     populate a scatter/gather list for a packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param struct sge_txq \*q:
+    :param q:
         the Tx queue we are writing into
+    :type q: struct sge_txq \*
 
-    :param struct ulptx_sgl \*sgl:
+    :param sgl:
         starting location for writing the SGL
+    :type sgl: struct ulptx_sgl \*
 
-    :param u64 \*end:
+    :param end:
         points right after the end of the SGL
+    :type end: u64 \*
 
-    :param unsigned int start:
+    :param start:
         start offset into skb main-body data to include in the SGL
+    :type start: unsigned int
 
-    :param const dma_addr_t \*addr:
+    :param addr:
         the list of bus addresses for the SGL elements
+    :type addr: const dma_addr_t \*
 
 .. _`cxgb4_write_sgl.description`:
 
@@ -438,14 +481,17 @@ cxgb4_ring_tx_db
 
     check and potentially ring a Tx queue's doorbell
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct sge_txq \*q:
+    :param q:
         the Tx queue
+    :type q: struct sge_txq \*
 
-    :param int n:
+    :param n:
         number of new descriptors to give to HW
+    :type n: int
 
 .. _`cxgb4_ring_tx_db.description`:
 
@@ -463,14 +509,17 @@ cxgb4_inline_tx_skb
 
     inline a packet's data into Tx descriptors
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param const struct sge_txq \*q:
+    :param q:
         the Tx queue where the packet will be inlined
+    :type q: const struct sge_txq \*
 
-    :param void \*pos:
+    :param pos:
         starting position in the Tx queue where to inline the packet
+    :type pos: void \*
 
 .. _`cxgb4_inline_tx_skb.description`:
 
@@ -482,27 +531,95 @@ the given position within the Tx DMA ring.
 Most of the complexity of this operation is dealing with wrap arounds
 in the middle of the packet we want to inline.
 
-.. _`t4_eth_xmit`:
+.. _`cxgb4_eth_xmit`:
 
-t4_eth_xmit
-===========
+cxgb4_eth_xmit
+==============
 
-.. c:function:: netdev_tx_t t4_eth_xmit(struct sk_buff *skb, struct net_device *dev)
+.. c:function:: netdev_tx_t cxgb4_eth_xmit(struct sk_buff *skb, struct net_device *dev)
 
     add a packet to an Ethernet Tx queue
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the egress net device
+    :type dev: struct net_device \*
 
-.. _`t4_eth_xmit.description`:
+.. _`cxgb4_eth_xmit.description`:
 
 Description
 -----------
 
 Add a packet to an SGE Ethernet Tx queue.  Runs with softirqs disabled.
+
+.. _`t4vf_is_eth_imm`:
+
+t4vf_is_eth_imm
+===============
+
+.. c:function:: int t4vf_is_eth_imm(const struct sk_buff *skb)
+
+    can an Ethernet packet be sent as immediate data?
+
+    :param skb:
+        the packet
+    :type skb: const struct sk_buff \*
+
+.. _`t4vf_is_eth_imm.description`:
+
+Description
+-----------
+
+Returns whether an Ethernet packet is small enough to fit completely as
+immediate data.
+
+.. _`t4vf_calc_tx_flits`:
+
+t4vf_calc_tx_flits
+==================
+
+.. c:function:: unsigned int t4vf_calc_tx_flits(const struct sk_buff *skb)
+
+    calculate the number of flits for a packet TX WR
+
+    :param skb:
+        the packet
+    :type skb: const struct sk_buff \*
+
+.. _`t4vf_calc_tx_flits.description`:
+
+Description
+-----------
+
+Returns the number of flits needed for a TX Work Request for the
+given Ethernet packet, including the needed WR and CPL headers.
+
+.. _`cxgb4_vf_eth_xmit`:
+
+cxgb4_vf_eth_xmit
+=================
+
+.. c:function:: netdev_tx_t cxgb4_vf_eth_xmit(struct sk_buff *skb, struct net_device *dev)
+
+    add a packet to an Ethernet TX queue
+
+    :param skb:
+        the packet
+    :type skb: struct sk_buff \*
+
+    :param dev:
+        the egress net device
+    :type dev: struct net_device \*
+
+.. _`cxgb4_vf_eth_xmit.description`:
+
+Description
+-----------
+
+Add a packet to an SGE Ethernet TX queue.  Runs with softirqs disabled.
 
 .. _`reclaim_completed_tx_imm`:
 
@@ -513,8 +630,9 @@ reclaim_completed_tx_imm
 
     reclaim completed control-queue Tx descs
 
-    :param struct sge_txq \*q:
+    :param q:
         the SGE control Tx queue
+    :type q: struct sge_txq \*
 
 .. _`reclaim_completed_tx_imm.description`:
 
@@ -534,8 +652,9 @@ is_imm
 
     check whether a packet can be sent as immediate data
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
 .. _`is_imm.description`:
 
@@ -553,11 +672,13 @@ ctrlq_check_stop
 
     check if a control queue is full and should stop
 
-    :param struct sge_ctrl_txq \*q:
+    :param q:
         the queue
+    :type q: struct sge_ctrl_txq \*
 
-    :param struct fw_wr_hdr \*wr:
+    :param wr:
         most recent WR written to the queue
+    :type wr: struct fw_wr_hdr \*
 
 .. _`ctrlq_check_stop.description`:
 
@@ -578,11 +699,13 @@ ctrl_xmit
 
     send a packet through an SGE control Tx queue
 
-    :param struct sge_ctrl_txq \*q:
+    :param q:
         the control queue
+    :type q: struct sge_ctrl_txq \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`ctrl_xmit.description`:
 
@@ -601,8 +724,9 @@ restart_ctrlq
 
     restart a suspended control queue
 
-    :param unsigned long data:
+    :param data:
         the control queue to restart
+    :type data: unsigned long
 
 .. _`restart_ctrlq.description`:
 
@@ -620,11 +744,13 @@ t4_mgmt_tx
 
     send a management message
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet containing the management message
+    :type skb: struct sk_buff \*
 
 .. _`t4_mgmt_tx.description`:
 
@@ -642,8 +768,9 @@ is_ofld_imm
 
     check whether a packet can be sent as immediate data
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
 .. _`is_ofld_imm.description`:
 
@@ -662,8 +789,9 @@ calc_tx_flits_ofld
 
     calculate # of flits for an offload packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
 .. _`calc_tx_flits_ofld.description`:
 
@@ -683,8 +811,9 @@ txq_stop_maperr
 
     stop a Tx queue due to I/O MMU exhaustion
 
-    :param struct sge_uld_txq \*q:
+    :param q:
         the queue to stop
+    :type q: struct sge_uld_txq \*
 
 .. _`txq_stop_maperr.description`:
 
@@ -704,11 +833,13 @@ ofldtxq_stop
 
     stop an offload Tx queue that has become full
 
-    :param struct sge_uld_txq \*q:
+    :param q:
         the queue to stop
+    :type q: struct sge_uld_txq \*
 
-    :param struct fw_wr_hdr \*wr:
+    :param wr:
         the Work Request causing the queue to become full
+    :type wr: struct fw_wr_hdr \*
 
 .. _`ofldtxq_stop.description`:
 
@@ -727,8 +858,9 @@ service_ofldq
 
     service/restart a suspended offload queue
 
-    :param struct sge_uld_txq \*q:
+    :param q:
         the offload queue
+    :type q: struct sge_uld_txq \*
 
 .. _`service_ofldq.description`:
 
@@ -758,11 +890,13 @@ ofld_xmit
 
     send a packet through an offload queue
 
-    :param struct sge_uld_txq \*q:
+    :param q:
         the Tx offload queue
+    :type q: struct sge_uld_txq \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`ofld_xmit.description`:
 
@@ -780,8 +914,9 @@ restart_ofldq
 
     restart a suspended offload queue
 
-    :param unsigned long data:
+    :param data:
         the offload queue to restart
+    :type data: unsigned long
 
 .. _`restart_ofldq.description`:
 
@@ -799,8 +934,9 @@ skb_txq
 
     return the Tx queue an offload packet should use
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
 .. _`skb_txq.description`:
 
@@ -819,8 +955,9 @@ is_ctrl_pkt
 
     return whether an offload packet is a control packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
 .. _`is_ctrl_pkt.description`:
 
@@ -839,11 +976,13 @@ t4_ofld_send
 
     send an offload packet
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`t4_ofld_send.description`:
 
@@ -869,11 +1008,13 @@ cxgb4_ofld_send
 
     send an offload packet
 
-    :param struct net_device \*dev:
+    :param dev:
         the net device
+    :type dev: struct net_device \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`cxgb4_ofld_send.description`:
 
@@ -892,14 +1033,17 @@ ofld_xmit_direct
 
     copy a WR into offload queue
 
-    :param struct sge_uld_txq \*q:
+    :param q:
         the Tx offload queue
+    :type q: struct sge_uld_txq \*
 
-    :param const void \*src:
+    :param src:
         location of WR
+    :type src: const void \*
 
-    :param unsigned int len:
+    :param len:
         WR length
+    :type len: unsigned int
 
 .. _`ofld_xmit_direct.description`:
 
@@ -917,11 +1061,13 @@ t4_crypto_send
 
     send crypto packet
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`t4_crypto_send.description`:
 
@@ -947,11 +1093,13 @@ cxgb4_crypto_send
 
     send crypto packet
 
-    :param struct net_device \*dev:
+    :param dev:
         the net device
+    :type dev: struct net_device \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`cxgb4_crypto_send.description`:
 
@@ -970,14 +1118,17 @@ cxgb4_pktgl_to_skb
 
     build an sk_buff from a packet gather list
 
-    :param const struct pkt_gl \*gl:
+    :param gl:
         the gather list
+    :type gl: const struct pkt_gl \*
 
-    :param unsigned int skb_len:
+    :param skb_len:
         size of sk_buff main body if it carries fragments
+    :type skb_len: unsigned int
 
-    :param unsigned int pull_len:
+    :param pull_len:
         amount of data to move to the sk_buff's main body
+    :type pull_len: unsigned int
 
 .. _`cxgb4_pktgl_to_skb.description`:
 
@@ -996,8 +1147,9 @@ t4_pktgl_free
 
     free a packet gather list
 
-    :param const struct pkt_gl \*gl:
+    :param gl:
         the gather list
+    :type gl: const struct pkt_gl \*
 
 .. _`t4_pktgl_free.description`:
 
@@ -1016,14 +1168,17 @@ cxgb4_sgetim_to_hwtstamp
 
     convert sge time stamp to hw time stamp
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param struct skb_shared_hwtstamps \*hwtstamps:
+    :param hwtstamps:
         time stamp structure to update
+    :type hwtstamps: struct skb_shared_hwtstamps \*
 
-    :param u64 sgetstamp:
+    :param sgetstamp:
         60bit iqe timestamp
+    :type sgetstamp: u64
 
 .. _`cxgb4_sgetim_to_hwtstamp.description`:
 
@@ -1042,11 +1197,13 @@ t4_systim_to_hwstamp
 
     read hardware time stamp
 
-    :param struct adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct adapter \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`t4_systim_to_hwstamp.description`:
 
@@ -1065,17 +1222,21 @@ t4_rx_hststamp
 
     Recv PTP Event Message
 
-    :param struct adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct adapter \*
 
-    :param const __be64 \*rsp:
+    :param rsp:
         the response queue descriptor holding the RX_PKT message
+    :type rsp: const __be64 \*
 
-    :param struct sge_eth_rxq \*rxq:
+    :param rxq:
         *undescribed*
+    :type rxq: struct sge_eth_rxq \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`t4_rx_hststamp.description`:
 
@@ -1093,14 +1254,17 @@ t4_tx_hststamp
 
     Loopback PTP Transmit Event Message
 
-    :param struct adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct adapter \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the ingress net device
+    :type dev: struct net_device \*
 
 .. _`t4_tx_hststamp.description`:
 
@@ -1118,14 +1282,17 @@ t4_ethrx_handler
 
     process an ingress ethernet packet
 
-    :param struct sge_rspq \*q:
+    :param q:
         the response queue that received the packet
+    :type q: struct sge_rspq \*
 
-    :param const __be64 \*rsp:
+    :param rsp:
         the response queue descriptor holding the RX_PKT message
+    :type rsp: const __be64 \*
 
-    :param const struct pkt_gl \*si:
+    :param si:
         the gather list of packet fragments
+    :type si: const struct pkt_gl \*
 
 .. _`t4_ethrx_handler.description`:
 
@@ -1143,14 +1310,17 @@ restore_rx_bufs
 
     put back a packet's Rx buffers
 
-    :param const struct pkt_gl \*si:
+    :param si:
         the packet gather list
+    :type si: const struct pkt_gl \*
 
-    :param struct sge_fl \*q:
+    :param q:
         the SGE free list
+    :type q: struct sge_fl \*
 
-    :param int frags:
+    :param frags:
         number of FL buffers to restore
+    :type frags: int
 
 .. _`restore_rx_bufs.description`:
 
@@ -1175,11 +1345,13 @@ is_new_response
 
     check if a response is newly written
 
-    :param const struct rsp_ctrl \*r:
+    :param r:
         the response descriptor
+    :type r: const struct rsp_ctrl \*
 
-    :param const struct sge_rspq \*q:
+    :param q:
         the response queue
+    :type q: const struct sge_rspq \*
 
 .. _`is_new_response.description`:
 
@@ -1198,8 +1370,9 @@ rspq_next
 
     advance to the next entry in a response queue
 
-    :param struct sge_rspq \*q:
+    :param q:
         the queue
+    :type q: struct sge_rspq \*
 
 .. _`rspq_next.description`:
 
@@ -1217,11 +1390,13 @@ process_responses
 
     process responses from an SGE response queue
 
-    :param struct sge_rspq \*q:
+    :param q:
         the ingress queue to process
+    :type q: struct sge_rspq \*
 
-    :param int budget:
+    :param budget:
         how many responses can be processed in this round
+    :type budget: int
 
 .. _`process_responses.description`:
 
@@ -1245,11 +1420,13 @@ napi_rx_handler
 
     the NAPI handler for Rx processing
 
-    :param struct napi_struct \*napi:
+    :param napi:
         the napi instance
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         how many packets we can process in this round
+    :type budget: int
 
 .. _`napi_rx_handler.description`:
 
@@ -1271,8 +1448,9 @@ t4_intr_handler
 
     select the top-level interrupt handler
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`t4_intr_handler.description`:
 
@@ -1291,17 +1469,21 @@ bar2_address
 
     return the BAR2 address for an SGE Queue's Registers
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int qid:
+    :param qid:
         the SGE Queue ID
+    :type qid: unsigned int
 
-    :param enum t4_bar2_qtype qtype:
+    :param qtype:
         the SGE Queue Type (Egress or Ingress)
+    :type qtype: enum t4_bar2_qtype
 
-    :param unsigned int \*pbar2_qid:
+    :param pbar2_qid:
         BAR2 Queue ID or 0 for Queue ID inferred SGE Queues
+    :type pbar2_qid: unsigned int \*
 
 .. _`bar2_address.description`:
 
@@ -1323,14 +1505,17 @@ t4_free_ofld_rxqs
 
     free a block of consecutive Rx queues
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int n:
+    :param n:
         number of queues
+    :type n: int
 
-    :param struct sge_ofld_rxq \*q:
+    :param q:
         pointer to first queue
+    :type q: struct sge_ofld_rxq \*
 
 .. _`t4_free_ofld_rxqs.description`:
 
@@ -1348,8 +1533,9 @@ t4_free_sge_resources
 
     free SGE resources
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`t4_free_sge_resources.description`:
 
@@ -1367,8 +1553,9 @@ t4_sge_stop
 
     disable SGE operation
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`t4_sge_stop.description`:
 
@@ -1388,8 +1575,9 @@ t4_sge_init_soft
 
     grab core SGE values needed by SGE code
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`t4_sge_init_soft.description`:
 
@@ -1408,8 +1596,9 @@ t4_sge_init
 
     initialize SGE
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`t4_sge_init.description`:
 

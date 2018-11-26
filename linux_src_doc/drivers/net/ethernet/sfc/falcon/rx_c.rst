@@ -10,11 +10,13 @@ ef4_init_rx_buffers
 
     create EF4_RX_BATCH page-based RX buffers
 
-    :param struct ef4_rx_queue \*rx_queue:
+    :param rx_queue:
         Efx RX queue
+    :type rx_queue: struct ef4_rx_queue \*
 
-    :param bool atomic:
+    :param atomic:
         *undescribed*
+    :type atomic: bool
 
 .. _`ef4_init_rx_buffers.description`:
 
@@ -35,11 +37,13 @@ ef4_fast_push_rx_descriptors
 
     push new RX descriptors quickly
 
-    :param struct ef4_rx_queue \*rx_queue:
+    :param rx_queue:
         RX descriptor queue
+    :type rx_queue: struct ef4_rx_queue \*
 
-    :param bool atomic:
+    :param atomic:
         *undescribed*
+    :type atomic: bool
 
 .. _`ef4_fast_push_rx_descriptors.description`:
 
@@ -63,8 +67,9 @@ ef4_filter_is_mc_recipient
 
     test whether spec is a multicast recipient
 
-    :param const struct ef4_filter_spec \*spec:
+    :param spec:
         Specification to test
+    :type spec: const struct ef4_filter_spec \*
 
 .. _`ef4_filter_is_mc_recipient.return`:
 

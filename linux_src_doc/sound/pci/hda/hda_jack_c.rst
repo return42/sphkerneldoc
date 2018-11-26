@@ -10,11 +10,13 @@ is_jack_detectable
 
     Check whether the given pin is jack-detectable
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         pin NID
+    :type nid: hda_nid_t
 
 .. _`is_jack_detectable.description`:
 
@@ -35,11 +37,13 @@ snd_hda_jack_tbl_get
 
     query the jack-table entry for the given NID
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         pin NID to refer to
+    :type nid: hda_nid_t
 
 .. _`snd_hda_jack_tbl_get_from_tag`:
 
@@ -50,11 +54,13 @@ snd_hda_jack_tbl_get_from_tag
 
     query the jack-table entry for the given tag
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param unsigned char tag:
+    :param tag:
         tag value to refer to
+    :type tag: unsigned char
 
 .. _`snd_hda_jack_tbl_new`:
 
@@ -65,11 +71,13 @@ snd_hda_jack_tbl_new
 
     create a jack-table entry for the given NID
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         pin NID to assign
+    :type nid: hda_nid_t
 
 .. _`snd_hda_jack_set_dirty_all`:
 
@@ -80,8 +88,9 @@ snd_hda_jack_set_dirty_all
 
     Mark all the cached as dirty
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_jack_set_dirty_all.description`:
 
@@ -100,11 +109,13 @@ snd_hda_pin_sense
 
     execute pin sense measurement
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the CODEC to sense
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         the pin NID to sense
+    :type nid: hda_nid_t
 
 .. _`snd_hda_pin_sense.description`:
 
@@ -123,11 +134,13 @@ snd_hda_jack_detect_state
 
     query pin Presence Detect status
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the CODEC to sense
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         the pin NID to sense
+    :type nid: hda_nid_t
 
 .. _`snd_hda_jack_detect_state.description`:
 
@@ -146,14 +159,17 @@ snd_hda_jack_detect_enable_callback
 
     enable the jack-detection
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         pin NID to enable
+    :type nid: hda_nid_t
 
-    :param hda_jack_callback_fn func:
+    :param func:
         callback function to register
+    :type func: hda_jack_callback_fn
 
 .. _`snd_hda_jack_detect_enable_callback.description`:
 
@@ -173,11 +189,13 @@ snd_hda_jack_detect_enable
 
     Enable the jack detection on the given pin
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         pin NID to enable jack detection
+    :type nid: hda_nid_t
 
 .. _`snd_hda_jack_detect_enable.description`:
 
@@ -196,14 +214,17 @@ snd_hda_jack_set_gating_jack
 
     Set gating jack.
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t gated_nid:
+    :param gated_nid:
         gated pin NID
+    :type gated_nid: hda_nid_t
 
-    :param hda_nid_t gating_nid:
+    :param gating_nid:
         gating pin NID
+    :type gating_nid: hda_nid_t
 
 .. _`snd_hda_jack_set_gating_jack.description`:
 
@@ -221,8 +242,9 @@ snd_hda_jack_report_sync
 
     sync the states of all jacks and report if changed
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_jack_add_kctl`:
 
@@ -233,17 +255,21 @@ snd_hda_jack_add_kctl
 
     Add a kctl for the given pin
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         pin NID to assign
+    :type nid: hda_nid_t
 
-    :param const char \*name:
+    :param name:
         string name for the jack
+    :type name: const char \*
 
-    :param bool phantom_jack:
+    :param phantom_jack:
         flag to deal as a phantom jack
+    :type phantom_jack: bool
 
 .. _`snd_hda_jack_add_kctl.description`:
 
@@ -262,11 +288,13 @@ snd_hda_jack_add_kctls
 
     Add kctls for all pins included in the given pincfg
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct auto_pin_cfg \*cfg:
+    :param cfg:
         pin config table to parse
+    :type cfg: const struct auto_pin_cfg \*
 
 .. _`snd_hda_jack_unsol_event`:
 
@@ -277,11 +305,13 @@ snd_hda_jack_unsol_event
 
     Handle an unsolicited event
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param unsigned int res:
+    :param res:
         the unsolicited event data
+    :type res: unsigned int
 
 .. _`snd_hda_jack_poll_all`:
 
@@ -292,8 +322,9 @@ snd_hda_jack_poll_all
 
     Poll all jacks
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_jack_poll_all.description`:
 

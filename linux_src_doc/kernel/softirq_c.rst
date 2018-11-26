@@ -10,17 +10,20 @@ tasklet_hrtimer_init
 
     Init a tasklet/hrtimer combo for softirq callbacks
 
-    :param struct tasklet_hrtimer \*ttimer:
+    :param ttimer:
         tasklet_hrtimer which is initialized
+    :type ttimer: struct tasklet_hrtimer \*
 
     :param enum hrtimer_restart (\*function)(struct hrtimer \*):
         hrtimer callback function which gets called from softirq context
 
-    :param clockid_t which_clock:
+    :param which_clock:
         clock id (CLOCK_MONOTONIC/CLOCK_REALTIME)
+    :type which_clock: clockid_t
 
-    :param enum hrtimer_mode mode:
+    :param mode:
         hrtimer mode (HRTIMER_MODE_ABS/HRTIMER_MODE_REL)
+    :type mode: enum hrtimer_mode
 
 .. This file was automatic generated / don't edit.
 

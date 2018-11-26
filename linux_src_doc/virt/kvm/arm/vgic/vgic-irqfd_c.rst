@@ -10,20 +10,25 @@ vgic_irqfd_set_irq
 
     inject the IRQ corresponding to the irqchip routing entry
 
-    :param struct kvm_kernel_irq_routing_entry \*e:
+    :param e:
         *undescribed*
+    :type e: struct kvm_kernel_irq_routing_entry \*
 
-    :param struct kvm \*kvm:
+    :param kvm:
         *undescribed*
+    :type kvm: struct kvm \*
 
-    :param int irq_source_id:
+    :param irq_source_id:
         *undescribed*
+    :type irq_source_id: int
 
-    :param int level:
+    :param level:
         *undescribed*
+    :type level: int
 
-    :param bool line_status:
+    :param line_status:
         *undescribed*
+    :type line_status: bool
 
 .. _`vgic_irqfd_set_irq.description`:
 
@@ -41,15 +46,18 @@ kvm_set_routing_entry
 
     populate a kvm routing entry from a user routing entry
 
-    :param struct kvm \*kvm:
+    :param kvm:
         the VM this entry is applied to
+    :type kvm: struct kvm \*
 
-    :param struct kvm_kernel_irq_routing_entry \*e:
+    :param e:
         kvm kernel routing entry handle
+    :type e: struct kvm_kernel_irq_routing_entry \*
 
-    :param const struct kvm_irq_routing_entry \*ue:
+    :param ue:
         user api routing entry handle
         return 0 on success, -EINVAL on errors.
+    :type ue: const struct kvm_irq_routing_entry \*
 
 .. _`kvm_set_msi`:
 
@@ -60,20 +68,25 @@ kvm_set_msi
 
     inject the MSI corresponding to the MSI routing entry
 
-    :param struct kvm_kernel_irq_routing_entry \*e:
+    :param e:
         *undescribed*
+    :type e: struct kvm_kernel_irq_routing_entry \*
 
-    :param struct kvm \*kvm:
+    :param kvm:
         *undescribed*
+    :type kvm: struct kvm \*
 
-    :param int irq_source_id:
+    :param irq_source_id:
         *undescribed*
+    :type irq_source_id: int
 
-    :param int level:
+    :param level:
         *undescribed*
+    :type level: int
 
-    :param bool line_status:
+    :param line_status:
         *undescribed*
+    :type line_status: bool
 
 .. _`kvm_set_msi.description`:
 

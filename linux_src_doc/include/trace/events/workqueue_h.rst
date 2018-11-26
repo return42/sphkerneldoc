@@ -10,14 +10,17 @@ trace_workqueue_queue_work
 
     called when a work gets queued
 
-    :param unsigned int req_cpu:
+    :param req_cpu:
         the requested cpu
+    :type req_cpu: unsigned int
 
-    :param struct pool_workqueue \*pwq:
+    :param pwq:
         pointer to struct pool_workqueue
+    :type pwq: struct pool_workqueue \*
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to struct work_struct
+    :type work: struct work_struct \*
 
 .. _`trace_workqueue_queue_work.description`:
 
@@ -37,8 +40,9 @@ trace_workqueue_activate_work
 
     called when a work gets activated
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to struct work_struct
+    :type work: struct work_struct \*
 
 .. _`trace_workqueue_activate_work.description`:
 
@@ -58,8 +62,9 @@ trace_workqueue_execute_start
 
     called immediately before the workqueue callback
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to struct work_struct
+    :type work: struct work_struct \*
 
 .. _`trace_workqueue_execute_start.description`:
 
@@ -77,8 +82,9 @@ trace_workqueue_execute_end
 
     called immediately after the workqueue callback
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to struct work_struct
+    :type work: struct work_struct \*
 
 .. _`trace_workqueue_execute_end.description`:
 

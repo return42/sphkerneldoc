@@ -10,11 +10,13 @@ spu_req_incl_icv
 
     Return true if SPU request message should include the ICV as a separate buffer.
 
-    :param enum spu_cipher_mode cipher_mode:
+    :param cipher_mode:
         the cipher mode being requested
+    :type cipher_mode: enum spu_cipher_mode
 
-    :param bool is_encrypt:
+    :param is_encrypt:
         true if encrypting. false if decrypting.
+    :type is_encrypt: bool
 
 .. _`spu_req_incl_icv.return`:
 

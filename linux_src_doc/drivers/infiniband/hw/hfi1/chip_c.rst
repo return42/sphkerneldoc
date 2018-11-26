@@ -10,11 +10,13 @@ hfi1_addr_from_offset
 
     return addr for readq/writeq \ ``dd``\  - the dd device \ ``offset``\  - the offset of the CSR within bar0
 
-    :param const struct hfi1_devdata \*dd:
+    :param dd:
         *undescribed*
+    :type dd: const struct hfi1_devdata \*
 
-    :param u32 offset:
+    :param offset:
         *undescribed*
+    :type offset: u32
 
 .. _`hfi1_addr_from_offset.description`:
 
@@ -33,11 +35,13 @@ read_csr
 
     read CSR at the indicated offset \ ``dd``\  - the dd device \ ``offset``\  - the offset of the CSR within bar0
 
-    :param const struct hfi1_devdata \*dd:
+    :param dd:
         *undescribed*
+    :type dd: const struct hfi1_devdata \*
 
-    :param u32 offset:
+    :param offset:
         *undescribed*
+    :type offset: u32
 
 .. _`read_csr.return`:
 
@@ -56,14 +60,17 @@ write_csr
 
     write CSR at the indicated offset \ ``dd``\  - the dd device \ ``offset``\  - the offset of the CSR within bar0 \ ``value``\  - value to write
 
-    :param const struct hfi1_devdata \*dd:
+    :param dd:
         *undescribed*
+    :type dd: const struct hfi1_devdata \*
 
-    :param u32 offset:
+    :param offset:
         *undescribed*
+    :type offset: u32
 
-    :param u64 value:
+    :param value:
         *undescribed*
+    :type value: u64
 
 .. _`get_csr_addr`:
 
@@ -74,11 +81,13 @@ get_csr_addr
 
     return te iomem address for offset \ ``dd``\  - the dd device \ ``offset``\  - the offset of the CSR within bar0
 
-    :param const struct hfi1_devdata \*dd:
+    :param dd:
         *undescribed*
+    :type dd: const struct hfi1_devdata \*
 
-    :param u32 offset:
+    :param offset:
         *undescribed*
+    :type offset: u32
 
 .. _`get_csr_addr.return`:
 
@@ -97,11 +106,13 @@ update_xmit_counters
 
     update PortXmitWait/PortVlXmitWait counters.
 
-    :param struct hfi1_pportdata \*ppd:
+    :param ppd:
         info of physical Hfi port
+    :type ppd: struct hfi1_pportdata \*
 
-    :param u16 link_width:
+    :param link_width:
         new link width after link up or downgrade
+    :type link_width: u16
 
 .. _`update_xmit_counters.description`:
 
@@ -120,11 +131,13 @@ apply_link_downgrade_policy
 
     Apply the link width downgrade enabled policy against the current active link widths.
 
-    :param struct hfi1_pportdata \*ppd:
+    :param ppd:
         info of physical Hfi port
+    :type ppd: struct hfi1_pportdata \*
 
-    :param bool refresh_widths:
+    :param refresh_widths:
         True indicates link downgrade event
+    :type refresh_widths: bool
 
 .. _`apply_link_downgrade_policy.description`:
 
@@ -137,6 +150,109 @@ Refresh_widths indicates that a link downgrade occurred. The
 link_downgraded variable is set by refresh_widths and
 determines the success/failure of the policy application.
 
+.. _`is_rcv_avail_int`:
+
+is_rcv_avail_int
+================
+
+.. c:function:: void is_rcv_avail_int(struct hfi1_devdata *dd, unsigned int source)
+
+    User receive context available IRQ handler
+
+    :param dd:
+        valid dd
+    :type dd: struct hfi1_devdata \*
+
+    :param source:
+        logical IRQ source (offset from IS_RCVAVAIL_START)
+    :type source: unsigned int
+
+.. _`is_rcv_avail_int.description`:
+
+Description
+-----------
+
+RX block receive available interrupt.  Source is < 160.
+
+This is the general interrupt handler for user (PSM) receive contexts,
+and can only be used for non-threaded IRQs.
+
+.. _`is_rcv_urgent_int`:
+
+is_rcv_urgent_int
+=================
+
+.. c:function:: void is_rcv_urgent_int(struct hfi1_devdata *dd, unsigned int source)
+
+    User receive context urgent IRQ handler
+
+    :param dd:
+        valid dd
+    :type dd: struct hfi1_devdata \*
+
+    :param source:
+        logical IRQ source (offset from IS_RCVURGENT_START)
+    :type source: unsigned int
+
+.. _`is_rcv_urgent_int.description`:
+
+Description
+-----------
+
+RX block receive urgent interrupt.  Source is < 160.
+
+.. _`is_rcv_urgent_int.note`:
+
+NOTE
+----
+
+kernel receive contexts specifically do NOT enable this IRQ.
+
+.. _`general_interrupt`:
+
+general_interrupt
+=================
+
+.. c:function:: irqreturn_t general_interrupt(int irq, void *data)
+
+    General interrupt handler
+
+    :param irq:
+        MSIx IRQ vector
+    :type irq: int
+
+    :param data:
+        hfi1 devdata
+    :type data: void \*
+
+.. _`general_interrupt.description`:
+
+Description
+-----------
+
+This is able to correctly handle all non-threaded interrupts.  Receive
+context DATA IRQs are threaded and are not supported by this handler.
+
+.. _`data_vls_operational`:
+
+data_vls_operational
+====================
+
+.. c:function:: bool data_vls_operational(struct hfi1_pportdata *ppd)
+
+    Verify if data VL BCT credits and MTU are both set.
+
+    :param ppd:
+        pointer to hfi1_pportdata structure
+    :type ppd: struct hfi1_pportdata \*
+
+.. _`data_vls_operational.return`:
+
+Return
+------
+
+true - Ok, false -otherwise.
+
 .. _`update_statusp`:
 
 update_statusp
@@ -146,11 +262,13 @@ update_statusp
 
     Update userspace status flag
 
-    :param struct hfi1_pportdata \*ppd:
+    :param ppd:
         Port data structure
+    :type ppd: struct hfi1_pportdata \*
 
-    :param u32 state:
+    :param state:
         port state information
+    :type state: u32
 
 .. _`update_statusp.description`:
 
@@ -172,14 +290,17 @@ wait_logical_linkstate
 
     wait for an IB link state change to occur
 
-    :param struct hfi1_pportdata \*ppd:
+    :param ppd:
         port device
+    :type ppd: struct hfi1_pportdata \*
 
-    :param u32 state:
+    :param state:
         the state to wait for
+    :type state: u32
 
-    :param int msecs:
+    :param msecs:
         the number of milliseconds to wait
+    :type msecs: int
 
 .. _`wait_logical_linkstate.description`:
 
@@ -190,48 +311,75 @@ Wait up to msecs milliseconds for IB link state change to occur.
 For now, take the easy polling route.
 Returns 0 if state reached, otherwise -ETIMEDOUT.
 
-.. _`get_int_mask`:
+.. _`read_mod_write`:
 
-get_int_mask
-============
+read_mod_write
+==============
 
-.. c:function:: u64 get_int_mask(struct hfi1_devdata *dd, u32 i)
+.. c:function:: void read_mod_write(struct hfi1_devdata *dd, u16 src, u64 bits, bool set)
 
-    get 64 bit int mask \ ``dd``\  - the devdata \ ``i``\  - the csr (relative to CCE_INT_MASK)
+    Calculate the IRQ register index and set/clear the bits
 
-    :param struct hfi1_devdata \*dd:
-        *undescribed*
+    :param dd:
+        valid devdata
+    :type dd: struct hfi1_devdata \*
 
-    :param u32 i:
-        *undescribed*
+    :param src:
+        IRQ source to determine register index from
+    :type src: u16
 
-.. _`get_int_mask.description`:
+    :param bits:
+        the bits to set or clear
+    :type bits: u64
+
+    :param set:
+        true == set the bits, false == clear the bits
+    :type set: bool
+
+.. _`set_intr_bits`:
+
+set_intr_bits
+=============
+
+.. c:function:: int set_intr_bits(struct hfi1_devdata *dd, u16 first, u16 last, bool set)
+
+    Enable/disable a range (one or more) IRQ sources
+
+    :param dd:
+        valid devdata
+    :type dd: struct hfi1_devdata \*
+
+    :param first:
+        first IRQ source to set/clear
+    :type first: u16
+
+    :param last:
+        last IRQ source (inclusive) to set/clear
+    :type last: u16
+
+    :param set:
+        true == set the bits, false == clear the bits
+    :type set: bool
+
+.. _`set_intr_bits.description`:
 
 Description
 -----------
 
-Returns the mask with the urgent interrupt mask
-bit clear for kernel receive contexts.
+If first == last, set the exact source.
 
-.. _`hfi1_clean_up_interrupts`:
+.. _`set_up_interrupts`:
 
-hfi1_clean_up_interrupts
-========================
+set_up_interrupts
+=================
 
-.. c:function:: void hfi1_clean_up_interrupts(struct hfi1_devdata *dd)
+.. c:function:: int set_up_interrupts(struct hfi1_devdata *dd)
 
-    Free all IRQ resources
+    Initialize the IRQ resources and state
 
-    :param struct hfi1_devdata \*dd:
-        valid device data data structure
-
-.. _`hfi1_clean_up_interrupts.description`:
-
-Description
------------
-
-Free the MSI or INTx IRQs and assoicated PCI resources,
-if they have been allocated.
+    :param dd:
+        valid devdata
+    :type dd: struct hfi1_devdata \*
 
 .. _`init_qpmap_table`:
 
@@ -242,14 +390,17 @@ init_qpmap_table
 
     \ ``dd``\  - device data \ ``first_ctxt``\  - first context \ ``last_ctxt``\  - first context
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         *undescribed*
+    :type dd: struct hfi1_devdata \*
 
-    :param u32 first_ctxt:
+    :param first_ctxt:
         *undescribed*
+    :type first_ctxt: u32
 
-    :param u32 last_ctxt:
+    :param last_ctxt:
         *undescribed*
+    :type last_ctxt: u32
 
 .. _`init_qpmap_table.description`:
 
@@ -276,11 +427,13 @@ init_qos
 
     init RX qos \ ``dd``\  - device data \ ``rmt``\  - RSM map table
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         *undescribed*
+    :type dd: struct hfi1_devdata \*
 
-    :param struct rsm_map_table \*rmt:
+    :param rmt:
         *undescribed*
+    :type rmt: struct rsm_map_table \*
 
 .. _`init_qos.description`:
 
@@ -301,21 +454,18 @@ feed both the RSM map table and the single rule.
 hfi1_init_dd
 ============
 
-.. c:function:: struct hfi1_devdata *hfi1_init_dd(struct pci_dev *pdev, const struct pci_device_id *ent)
+.. c:function:: int hfi1_init_dd(struct hfi1_devdata *dd)
 
-    :param struct pci_dev \*pdev:
+    Initialize most of the dd structure.
+
+    :param dd:
         *undescribed*
-
-    :param const struct pci_device_id \*ent:
-        pci_device_id struct for this dev
+    :type dd: struct hfi1_devdata \*
 
 .. _`hfi1_init_dd.description`:
 
 Description
 -----------
-
-Also allocates, initializes, and returns the devdata struct for this
-device instance
 
 This is global, and is called directly at init to set up the
 chip-specific function pointers for later use.
@@ -329,20 +479,25 @@ create_pbc
 
     build a pbc for transmission
 
-    :param struct hfi1_pportdata \*ppd:
+    :param ppd:
         *undescribed*
+    :type ppd: struct hfi1_pportdata \*
 
-    :param u64 flags:
+    :param flags:
         special case flags or-ed in built pbc
+    :type flags: u64
 
-    :param int srate_mbs:
+    :param srate_mbs:
         *undescribed*
+    :type srate_mbs: int
 
-    :param u32 vl:
+    :param vl:
         vl
+    :type vl: u32
 
-    :param u32 dw_len:
+    :param dw_len:
         *undescribed*
+    :type dw_len: u32
 
 .. _`create_pbc.description`:
 

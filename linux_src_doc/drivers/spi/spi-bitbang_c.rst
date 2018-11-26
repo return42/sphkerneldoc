@@ -10,8 +10,9 @@ spi_bitbang_setup
 
     default setup for per-word I/O loops
 
-    :param struct spi_device \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct spi_device \*
 
 .. _`spi_bitbang_cleanup`:
 
@@ -22,8 +23,9 @@ spi_bitbang_cleanup
 
     default cleanup for per-word I/O loops
 
-    :param struct spi_device \*spi:
+    :param spi:
         *undescribed*
+    :type spi: struct spi_device \*
 
 .. _`spi_bitbang_start`:
 
@@ -34,8 +36,9 @@ spi_bitbang_start
 
     start up a polled/bitbanging SPI master driver
 
-    :param struct spi_bitbang \*bitbang:
+    :param bitbang:
         driver handle
+    :type bitbang: struct spi_bitbang \*
 
 .. _`spi_bitbang_start.description`:
 
@@ -75,8 +78,9 @@ spi_bitbang_stop
 
     stops the task providing spi communication
 
-    :param struct spi_bitbang \*bitbang:
+    :param bitbang:
         *undescribed*
+    :type bitbang: struct spi_bitbang \*
 
 .. This file was automatic generated / don't edit.
 

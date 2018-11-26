@@ -10,11 +10,13 @@ vx_init_rmh
 
     initialize the RMH instance
 
-    :param struct vx_rmh \*rmh:
+    :param rmh:
         the rmh pointer to be initialized
+    :type rmh: struct vx_rmh \*
 
-    :param unsigned int cmd:
+    :param cmd:
         the rmh command to be set
+    :type cmd: unsigned int
 
 .. This file was automatic generated / don't edit.
 

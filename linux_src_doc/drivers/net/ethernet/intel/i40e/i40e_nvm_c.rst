@@ -10,8 +10,9 @@ i40e_init_nvm
 
     Initialize NVM function pointers
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_init_nvm.description`:
 
@@ -33,11 +34,13 @@ i40e_acquire_nvm
 
     Generic request for acquiring the NVM ownership
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param enum i40e_aq_resource_access_type access:
+    :param access:
         NVM access type (read or write)
+    :type access: enum i40e_aq_resource_access_type
 
 .. _`i40e_acquire_nvm.description`:
 
@@ -56,8 +59,9 @@ i40e_release_nvm
 
     Generic request for releasing the NVM ownership
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_release_nvm.description`:
 
@@ -75,8 +79,9 @@ i40e_poll_sr_srctl_done_bit
 
     Polls the GLNVM_SRCTL done bit
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_poll_sr_srctl_done_bit.description`:
 
@@ -94,14 +99,17 @@ i40e_read_nvm_word_srctl
 
     Reads Shadow RAM via SRCTL register
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of the Shadow RAM word to read (0x000000 - 0x001FFF)
+    :type offset: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the Shadow RAM
+    :type data: u16 \*
 
 .. _`i40e_read_nvm_word_srctl.description`:
 
@@ -119,23 +127,29 @@ i40e_read_nvm_aq
 
     Read Shadow RAM.
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure.
+    :type hw: struct i40e_hw \*
 
-    :param u8 module_pointer:
+    :param module_pointer:
         module pointer location in words from the NVM beginning
+    :type module_pointer: u8
 
-    :param u32 offset:
+    :param offset:
         offset in words from module start
+    :type offset: u32
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param void \*data:
+    :param data:
         buffer with words to write to the Shadow RAM
+    :type data: void \*
 
-    :param bool last_command:
+    :param last_command:
         tells the AdminQ that this is the last command
+    :type last_command: bool
 
 .. _`i40e_read_nvm_aq.description`:
 
@@ -153,14 +167,17 @@ i40e_read_nvm_word_aq
 
     Reads Shadow RAM via AQ
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of the Shadow RAM word to read (0x000000 - 0x001FFF)
+    :type offset: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the Shadow RAM
+    :type data: u16 \*
 
 .. _`i40e_read_nvm_word_aq.description`:
 
@@ -178,14 +195,17 @@ Reads one 16 bit word from the Shadow RAM using the AdminQ
 
     Reads nvm word, assumes caller does the locking
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of the Shadow RAM word to read (0x000000 - 0x001FFF)
+    :type offset: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the Shadow RAM
+    :type data: u16 \*
 
 .. _`__i40e_read_nvm_word.description`:
 
@@ -206,14 +226,17 @@ i40e_read_nvm_word
 
     Reads nvm word and acquire lock if necessary
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of the Shadow RAM word to read (0x000000 - 0x001FFF)
+    :type offset: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the Shadow RAM
+    :type data: u16 \*
 
 .. _`i40e_read_nvm_word.description`:
 
@@ -231,17 +254,21 @@ i40e_read_nvm_buffer_srctl
 
     Reads Shadow RAM buffer via SRCTL register
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of the Shadow RAM word to read (0x000000 - 0x001FFF).
+    :type offset: u16
 
-    :param u16 \*words:
+    :param words:
         (in) number of words to read; (out) number of words actually read
+    :type words: u16 \*
 
-    :param u16 \*data:
+    :param data:
         words read from the Shadow RAM
+    :type data: u16 \*
 
 .. _`i40e_read_nvm_buffer_srctl.description`:
 
@@ -261,17 +288,21 @@ i40e_read_nvm_buffer_aq
 
     Reads Shadow RAM buffer via AQ
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of the Shadow RAM word to read (0x000000 - 0x001FFF).
+    :type offset: u16
 
-    :param u16 \*words:
+    :param words:
         (in) number of words to read; (out) number of words actually read
+    :type words: u16 \*
 
-    :param u16 \*data:
+    :param data:
         words read from the Shadow RAM
+    :type data: u16 \*
 
 .. _`i40e_read_nvm_buffer_aq.description`:
 
@@ -291,17 +322,21 @@ and followed by the release.
 
     Reads nvm buffer, caller must acquire lock
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of the Shadow RAM word to read (0x000000 - 0x001FFF).
+    :type offset: u16
 
-    :param u16 \*words:
+    :param words:
         (in) number of words to read; (out) number of words actually read
+    :type words: u16 \*
 
-    :param u16 \*data:
+    :param data:
         words read from the Shadow RAM
+    :type data: u16 \*
 
 .. _`__i40e_read_nvm_buffer.description`:
 
@@ -320,23 +355,29 @@ i40e_write_nvm_aq
 
     Writes Shadow RAM.
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the HW structure.
+    :type hw: struct i40e_hw \*
 
-    :param u8 module_pointer:
+    :param module_pointer:
         module pointer location in words from the NVM beginning
+    :type module_pointer: u8
 
-    :param u32 offset:
+    :param offset:
         offset in words from module start
+    :type offset: u32
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param void \*data:
+    :param data:
         buffer with words to write to the Shadow RAM
+    :type data: void \*
 
-    :param bool last_command:
+    :param last_command:
         tells the AdminQ that this is the last command
+    :type last_command: bool
 
 .. _`i40e_write_nvm_aq.description`:
 
@@ -354,11 +395,13 @@ i40e_calc_nvm_checksum
 
     Calculates and returns the checksum
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 \*checksum:
+    :param checksum:
         pointer to the checksum
+    :type checksum: u16 \*
 
 .. _`i40e_calc_nvm_checksum.description`:
 
@@ -379,8 +422,9 @@ i40e_update_nvm_checksum
 
     Updates the NVM checksum
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_update_nvm_checksum.description`:
 
@@ -400,11 +444,13 @@ i40e_validate_nvm_checksum
 
     Validate EEPROM checksum
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 \*checksum:
+    :param checksum:
         calculated checksum
+    :type checksum: u16 \*
 
 .. _`i40e_validate_nvm_checksum.description`:
 
@@ -423,17 +469,21 @@ i40e_nvmupd_command
 
     Process an NVM update command
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command
+    :type cmd: struct i40e_nvm_access \*
 
-    :param u8 \*bytes:
+    :param bytes:
         pointer to the data buffer
+    :type bytes: u8 \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_command.description`:
 
@@ -451,17 +501,21 @@ i40e_nvmupd_state_init
 
     Handle NVM update state Init
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command buffer
+    :type cmd: struct i40e_nvm_access \*
 
-    :param u8 \*bytes:
+    :param bytes:
         pointer to the data buffer
+    :type bytes: u8 \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_state_init.description`:
 
@@ -480,17 +534,21 @@ i40e_nvmupd_state_reading
 
     Handle NVM update state Reading
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command buffer
+    :type cmd: struct i40e_nvm_access \*
 
-    :param u8 \*bytes:
+    :param bytes:
         pointer to the data buffer
+    :type bytes: u8 \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_state_reading.description`:
 
@@ -509,17 +567,21 @@ i40e_nvmupd_state_writing
 
     Handle NVM update state Writing
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command buffer
+    :type cmd: struct i40e_nvm_access \*
 
-    :param u8 \*bytes:
+    :param bytes:
         pointer to the data buffer
+    :type bytes: u8 \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_state_writing.description`:
 
@@ -538,8 +600,9 @@ i40e_nvmupd_clear_wait_state
 
     clear wait state on hw
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_nvmupd_check_wait_event`:
 
@@ -550,14 +613,17 @@ i40e_nvmupd_check_wait_event
 
     handle NVM update operation events
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param u16 opcode:
+    :param opcode:
         the event that just happened
+    :type opcode: u16
 
-    :param struct i40e_aq_desc \*desc:
+    :param desc:
         AdminQ descriptor
+    :type desc: struct i40e_aq_desc \*
 
 .. _`i40e_nvmupd_validate_command`:
 
@@ -568,14 +634,17 @@ i40e_nvmupd_validate_command
 
     Validate given command
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command buffer
+    :type cmd: struct i40e_nvm_access \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_validate_command.description`:
 
@@ -593,17 +662,21 @@ i40e_nvmupd_exec_aq
 
     Run an AQ command
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command buffer
+    :type cmd: struct i40e_nvm_access \*
 
-    :param u8 \*bytes:
+    :param bytes:
         pointer to the data buffer
+    :type bytes: u8 \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_exec_aq.description`:
 
@@ -621,17 +694,21 @@ i40e_nvmupd_get_aq_result
 
     Get the results from the previous exec_aq
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command buffer
+    :type cmd: struct i40e_nvm_access \*
 
-    :param u8 \*bytes:
+    :param bytes:
         pointer to the data buffer
+    :type bytes: u8 \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_get_aq_result.description`:
 
@@ -649,17 +726,21 @@ i40e_nvmupd_get_aq_event
 
     Get the Admin Queue event from previous exec_aq
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command buffer
+    :type cmd: struct i40e_nvm_access \*
 
-    :param u8 \*bytes:
+    :param bytes:
         pointer to the data buffer
+    :type bytes: u8 \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_get_aq_event.description`:
 
@@ -677,17 +758,21 @@ i40e_nvmupd_nvm_read
 
     Read NVM
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command buffer
+    :type cmd: struct i40e_nvm_access \*
 
-    :param u8 \*bytes:
+    :param bytes:
         pointer to the data buffer
+    :type bytes: u8 \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_nvm_read.description`:
 
@@ -705,14 +790,17 @@ i40e_nvmupd_nvm_erase
 
     Erase an NVM module
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command buffer
+    :type cmd: struct i40e_nvm_access \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_nvm_erase.description`:
 
@@ -730,17 +818,21 @@ i40e_nvmupd_nvm_write
 
     Write NVM
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_nvm_access \*cmd:
+    :param cmd:
         pointer to nvm update command buffer
+    :type cmd: struct i40e_nvm_access \*
 
-    :param u8 \*bytes:
+    :param bytes:
         pointer to the data buffer
+    :type bytes: u8 \*
 
-    :param int \*perrno:
+    :param perrno:
         pointer to return error code
+    :type perrno: int \*
 
 .. _`i40e_nvmupd_nvm_write.description`:
 

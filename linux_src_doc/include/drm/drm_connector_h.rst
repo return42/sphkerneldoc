@@ -54,6 +54,70 @@ Description
 This enum is used to track the connector status. There are no separate
 #defines for the uapi!
 
+.. _`drm_connector_registration_state`:
+
+enum drm_connector_registration_state
+=====================================
+
+.. c:type:: enum drm_connector_registration_state
+
+    userspace registration status for a \ :c:type:`struct drm_connector <drm_connector>`\ 
+
+.. _`drm_connector_registration_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum drm_connector_registration_state {
+        DRM_CONNECTOR_INITIALIZING,
+        DRM_CONNECTOR_REGISTERED,
+        DRM_CONNECTOR_UNREGISTERED
+    };
+
+.. _`drm_connector_registration_state.constants`:
+
+Constants
+---------
+
+DRM_CONNECTOR_INITIALIZING
+    The connector has just been created,but has yet to be exposed to userspace. There should be no
+    additional restrictions to how the state of this connector may be
+    modified.
+
+DRM_CONNECTOR_REGISTERED
+    The connector has been fully initializedand registered with sysfs, as such it has been exposed to
+    userspace. There should be no additional restrictions to how the
+    state of this connector may be modified.
+
+DRM_CONNECTOR_UNREGISTERED
+    The connector has either been exposedto userspace and has since been unregistered and removed from
+    userspace, or the connector was unregistered before it had a chance
+    to be exposed to userspace (e.g. still in the
+    \ ``DRM_CONNECTOR_INITIALIZING``\  state). When a connector is
+    unregistered, there are additional restrictions to how its state
+    may be modified:
+
+    - An unregistered connector may only have its DPMS changed from
+      On->Off. Once DPMS is changed to Off, it may not be switched back
+      to On.
+    - Modesets are not allowed on unregistered connectors, unless they
+      would result in disabling its assigned CRTCs. This means
+      disabling a CRTC on an unregistered connector is OK, but enabling
+      one is not.
+    - Removing a CRTC from an unregistered connector is OK, but new
+      CRTCs may never be assigned to an unregistered connector.
+
+.. _`drm_connector_registration_state.description`:
+
+Description
+-----------
+
+This enum is used to track the status of initializing a connector and
+registering it with userspace, so that DRM can prevent bogus modesets on
+connectors that no longer exist.
+
 .. _`drm_scrambling`:
 
 struct drm_scrambling
@@ -282,6 +346,8 @@ Definition
     #define DRM_BUS_FLAG_PIXDATA_NEGEDGE (1<<3)
     #define DRM_BUS_FLAG_DATA_MSB_TO_LSB (1<<4)
     #define DRM_BUS_FLAG_DATA_LSB_TO_MSB (1<<5)
+    #define DRM_BUS_FLAG_SYNC_POSEDGE (1<<6)
+    #define DRM_BUS_FLAG_SYNC_NEGEDGE (1<<7)
         u32 bus_flags;
         int max_tmds_clock;
         bool dvi_dual;
@@ -473,8 +539,10 @@ Definition
         struct drm_crtc_commit *commit;
         struct drm_tv_connector_state tv;
         enum hdmi_picture_aspect picture_aspect_ratio;
+        unsigned int content_type;
         unsigned int scaling_mode;
         unsigned int content_protection;
+        struct drm_writeback_job *writeback_job;
     }
 
 .. _`drm_connector_state.members`:
@@ -491,7 +559,10 @@ crtc
     instead.
 
 best_encoder
-    can be used by helpers and drivers to select the encoder
+
+    Used by the atomic helpers to select the encoder, through the
+    \ :c:type:`drm_connector_helper_funcs.atomic_best_encoder <drm_connector_helper_funcs>`\  or
+    \ :c:type:`drm_connector_helper_funcs.best_encoder <drm_connector_helper_funcs>`\  callbacks.
 
 link_status
     Connector link_status to keep track of whether link isGOOD or BAD to notify userspace if retraining is necessary.
@@ -512,11 +583,26 @@ picture_aspect_ratio
     The \ ``DRM_MODE_PICTURE_ASPECT_``\ \* values much match the
     values for \ :c:type:`enum hdmi_picture_aspect <hdmi_picture_aspect>`\ 
 
+content_type
+    Connector property to control theHDMI infoframe content type setting.
+    The \ ``DRM_MODE_CONTENT_TYPE_``\ \* values much
+    match the values.
+
 scaling_mode
     Connector property to control theupscaling, mostly used for built-in panels.
 
 content_protection
     Connector property to request contentprotection. This is most commonly used for HDCP.
+
+writeback_job
+    Writeback job for writeback connectors
+    Holds the framebuffer and out-fence for a writeback connector. As
+    the writeback completion may be asynchronous to the normal commit
+    cycle, the writeback job lifetime is managed separately from the
+    normal atomic state by this object.
+
+    See also: \ :c:func:`drm_writeback_queue_job`\  and
+    \ :c:func:`drm_writeback_signal_completion`\ 
 
 .. _`drm_connector_funcs`:
 
@@ -633,8 +719,7 @@ fill_modes
     received for this output connector->edid must be NULL.
 
     Drivers using the probe helpers should use
-    \ :c:func:`drm_helper_probe_single_connector_modes`\  or
-    \ :c:func:`drm_helper_probe_single_connector_modes_nomerge`\  to implement this
+    \ :c:func:`drm_helper_probe_single_connector_modes`\  to implement this
     function.
 
     RETURNS:
@@ -695,6 +780,8 @@ atomic_duplicate_state
     cleaned up by calling the \ ``atomic_destroy_state``\  hook in this
     structure.
 
+    This callback is mandatory for atomic drivers.
+
     Atomic drivers which don't subclass \ :c:type:`struct drm_connector_state <drm_connector_state>`\  should use
     \ :c:func:`drm_atomic_helper_connector_duplicate_state`\ . Drivers that subclass the
     state structure to extend it with driver-private state should use
@@ -718,6 +805,8 @@ atomic_destroy_state
 
     Destroy a state duplicated with \ ``atomic_duplicate_state``\  and release
     or unreference all resources it references
+
+    This callback is mandatory for atomic drivers.
 
 atomic_set_property
 
@@ -825,7 +914,7 @@ Definition
         bool doublescan_allowed;
         bool stereo_allowed;
         bool ycbcr_420_allowed;
-        bool registered;
+        enum drm_connector_registration_state registration_state;
         struct list_head modes;
         enum drm_connector_status status;
         struct list_head probed_modes;
@@ -836,7 +925,6 @@ Definition
         struct drm_property *scaling_mode_property;
         struct drm_property *content_protection_property;
         struct drm_property_blob *path_blob_ptr;
-        struct drm_property_blob *tile_blob_ptr;
     #define DRM_CONNECTOR_POLL_HPD (1 << 0)
     #define DRM_CONNECTOR_POLL_CONNECT (1 << 1)
     #define DRM_CONNECTOR_POLL_DISCONNECT (1 << 2)
@@ -859,6 +947,7 @@ Definition
         bool edid_corrupt;
         struct dentry *debugfs_entry;
         struct drm_connector_state *state;
+        struct drm_property_blob *tile_blob_ptr;
         bool has_tile;
         struct drm_tile_group *tile_group;
         bool tile_is_single_monitor;
@@ -883,7 +972,11 @@ attr
     sysfs attributes
 
 head
-    list management
+
+    List of all connectors on a \ ``dev``\ , linked from
+    \ :c:type:`drm_mode_config.connector_list <drm_mode_config>`\ . Protected by
+    \ :c:type:`drm_mode_config.connector_list_lock <drm_mode_config>`\ , but please only use
+    \ :c:type:`struct drm_connector_list_iter <drm_connector_list_iter>`\  to walk this list.
 
 base
     base KMS object
@@ -907,21 +1000,26 @@ connector_type_id
     index into connector type enum
 
 interlace_allowed
-    can this connector handle interlaced modes?
+    Can this connector handle interlaced modes? Only used by
+    \ :c:func:`drm_helper_probe_single_connector_modes`\  for mode filtering.
 
 doublescan_allowed
-    can this connector handle doublescan?
+    Can this connector handle doublescan? Only used by
+    \ :c:func:`drm_helper_probe_single_connector_modes`\  for mode filtering.
 
 stereo_allowed
-    can this connector handle stereo modes?
+    Can this connector handle stereo modes? Only used by
+    \ :c:func:`drm_helper_probe_single_connector_modes`\  for mode filtering.
 
 ycbcr_420_allowed
     This bool indicates if this connector iscapable of handling YCBCR 420 output. While parsing the EDID
     blocks, its very helpful to know, if the source is capable of
     handling YCBCR 420 outputs.
 
-registered
-    Is this connector exposed (registered) with userspace?Protected by \ ``mutex``\ .
+registration_state
+    Is this connector initializing, exposed(registered) with userspace, or unregistered?
+
+    Protected by \ ``mutex``\ .
 
 modes
     Modes available on this connector (from \ :c:func:`fill_modes`\  + user).
@@ -948,29 +1046,22 @@ funcs
     connector control functions
 
 edid_blob_ptr
-    DRM property containing EDID if present
+    DRM property containing EDID if present. Protected by&drm_mode_config.mutex. This should be updated only by calling
+    \ :c:func:`drm_connector_update_edid_property`\ .
 
 properties
     property tracking for this connector
 
 scaling_mode_property
-    Optional atomic property to control the upscaling.
+    Optional atomic property to control theupscaling. See \ :c:func:`drm_connector_attach_content_protection_property`\ .
 
 content_protection_property
-    DRM ENUM property for contentprotection
+    DRM ENUM property for contentprotection. See \ :c:func:`drm_connector_attach_content_protection_property`\ .
 
 path_blob_ptr
 
-    DRM blob property data for the DP MST path property.
-
-tile_blob_ptr
-
-    DRM blob property data for the tile property (used mostly by DP MST).
-    This is meant for screens which are driven through separate display
-    pipelines represented by \ :c:type:`struct drm_crtc <drm_crtc>`\ , which might not be running with
-    genlocked clocks. For tiled panels which are genlocked, like
-    dual-link LVDS or dual-link DSI, the driver should try to not expose
-    the tiling and virtualize both \ :c:type:`struct drm_crtc <drm_crtc>`\  and \ :c:type:`struct drm_plane <drm_plane>`\  if needed.
+    DRM blob property data for the DP MST path property. This should only
+    be updated by calling \ :c:func:`drm_connector_set_path_property`\ .
 
 polled
 
@@ -985,13 +1076,17 @@ polled
         Periodically poll the connector for connection.
 
     DRM_CONNECTOR_POLL_DISCONNECT
-        Periodically poll the connector for disconnection.
+        Periodically poll the connector for disconnection, without
+        causing flickering even when the connector is in use. DACs should
+        rarely do this without a lot of testing.
 
     Set to 0 for connectors that don't support connection status
     discovery.
 
 dpms
-    current dpms state
+    Current dpms state. For legacy drivers the&drm_connector_funcs.dpms callback must update this. For atomic
+    drivers, this is handled by the core atomic code, and drivers must
+    only take \ :c:type:`drm_crtc_state.active <drm_crtc_state>`\  into account.
 
 helper_private
     mid-layer private data
@@ -1006,7 +1101,7 @@ override_edid
     has the EDID been overwritten through debugfs for testing?
 
 encoder_ids
-    valid encoders for this connector
+    Valid encoders for this connector. Please only \ :c:func:`usedrm_connector_for_each_possible_encoder`\  to enumerate these.
 
 encoder
     Currently bound encoder driving this connector, if any.Only really meaningful for non-atomic drivers. Atomic drivers should
@@ -1020,19 +1115,20 @@ latency_present
     AV delay info from ELD, if found
 
 video_latency
-    video latency info from ELD, if found
+    Video latency info from ELD, if found.[0]: progressive, [1]: interlaced
 
 audio_latency
-    audio latency info from ELD, if found
+    audio latency info from ELD, if found[0]: progressive, [1]: interlaced
 
 null_edid_counter
-    track sinks that give us all zeros for the EDID
+    track sinks that give us all zeros for the EDID.Needed to workaround some HW bugs where we get all 0s
 
 bad_edid_counter
     track sinks that give us an EDID with invalid checksum
 
 edid_corrupt
-    indicates whether the last read EDID was corrupt
+    Indicates whether the last read EDID was corrupt. Usedin Displayport compliance testing - Displayport Link CTS Core 1.2
+    rev1.1 4.2.2.6
 
 debugfs_entry
     debugfs directory for this connector
@@ -1041,7 +1137,7 @@ state
 
     Current atomic state for this connector.
 
-    This is protected by \ ``drm_mode_config.connection_mutex``\ . Note that
+    This is protected by \ :c:type:`drm_mode_config.connection_mutex <drm_mode_config>`\ . Note that
     nonblocking atomic commits access the current connector state without
     taking locks. Either by going through the \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\ 
     pointers, see \ :c:func:`for_each_oldnew_connector_in_state`\ ,
@@ -1049,6 +1145,18 @@ state
     \ :c:func:`for_each_new_connector_in_state`\ . Or through careful ordering of
     atomic commit operations as implemented in the atomic helpers, see
     \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\ .
+
+tile_blob_ptr
+
+    DRM blob property data for the tile property (used mostly by DP MST).
+    This is meant for screens which are driven through separate display
+    pipelines represented by \ :c:type:`struct drm_crtc <drm_crtc>`\ , which might not be running with
+    genlocked clocks. For tiled panels which are genlocked, like
+    dual-link LVDS or dual-link DSI, the driver should try to not expose
+    the tiling and virtualize both \ :c:type:`struct drm_crtc <drm_crtc>`\  and \ :c:type:`struct drm_plane <drm_plane>`\  if needed.
+
+    This should only be updated by calling
+    \ :c:func:`drm_connector_set_tile_property`\ .
 
 has_tile
     is this connector connected to a tiled monitor
@@ -1079,7 +1187,7 @@ tile_v_size
 
 free_node
 
-    List used only by \ :c:type:`struct drm_connector_iter <drm_connector_iter>`\  to be able to clean up a
+    List used only by \ :c:type:`struct drm_connector_list_iter <drm_connector_list_iter>`\  to be able to clean up a
     connector from any context, in conjunction with
     \ :c:type:`drm_mode_config.connector_free_work <drm_mode_config>`\ .
 
@@ -1102,14 +1210,17 @@ drm_connector_lookup
 
     lookup connector object
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file to check for lease against.
+    :type file_priv: struct drm_file \*
 
-    :param uint32_t id:
+    :param id:
         connector object id
+    :type id: uint32_t
 
 .. _`drm_connector_lookup.description`:
 
@@ -1128,8 +1239,9 @@ drm_connector_get
 
     acquire a connector reference
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector
+    :type connector: struct drm_connector \*
 
 .. _`drm_connector_get.description`:
 
@@ -1147,8 +1259,9 @@ drm_connector_put
 
     release a connector reference
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector
+    :type connector: struct drm_connector \*
 
 .. _`drm_connector_put.description`:
 
@@ -1167,8 +1280,9 @@ drm_connector_reference
 
     acquire a connector reference
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector
+    :type connector: struct drm_connector \*
 
 .. _`drm_connector_reference.description`:
 
@@ -1187,8 +1301,9 @@ drm_connector_unreference
 
     release a connector reference
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector
+    :type connector: struct drm_connector \*
 
 .. _`drm_connector_unreference.description`:
 
@@ -1197,6 +1312,34 @@ Description
 
 This is a compatibility alias for \ :c:func:`drm_connector_put`\  and should not be
 used by new code.
+
+.. _`drm_connector_is_unregistered`:
+
+drm_connector_is_unregistered
+=============================
+
+.. c:function:: bool drm_connector_is_unregistered(struct drm_connector *connector)
+
+    has the connector been unregistered from userspace?
+
+    :param connector:
+        DRM connector
+    :type connector: struct drm_connector \*
+
+.. _`drm_connector_is_unregistered.description`:
+
+Description
+-----------
+
+Checks whether or not \ ``connector``\  has been unregistered from userspace.
+
+.. _`drm_connector_is_unregistered.return`:
+
+Return
+------
+
+True if the connector was unregistered, false if the connector is
+registered or has not yet been registered with userspace.
 
 .. _`drm_tile_group`:
 
@@ -1293,11 +1436,13 @@ drm_for_each_connector_iter
 
     connector_list iterator macro
 
-    :param  connector:
+    :param connector:
         \ :c:type:`struct drm_connector <drm_connector>`\  pointer used as cursor
+    :type connector: 
 
-    :param  iter:
+    :param iter:
         \ :c:type:`struct drm_connector_list_iter <drm_connector_list_iter>`\ 
+    :type iter: 
 
 .. _`drm_for_each_connector_iter.description`:
 
@@ -1307,6 +1452,27 @@ Description
 Note that \ ``connector``\  is only valid within the list body, if you want to use
 \ ``connector``\  after calling \ :c:func:`drm_connector_list_iter_end`\  then you need to grab
 your own reference first using \ :c:func:`drm_connector_get`\ .
+
+.. _`drm_connector_for_each_possible_encoder`:
+
+drm_connector_for_each_possible_encoder
+=======================================
+
+.. c:function::  drm_connector_for_each_possible_encoder( connector,  encoder,  __i)
+
+    iterate connector's possible encoders
+
+    :param connector:
+        \ :c:type:`struct drm_connector <drm_connector>`\  pointer
+    :type connector: 
+
+    :param encoder:
+        \ :c:type:`struct drm_encoder <drm_encoder>`\  pointer used as cursor
+    :type encoder: 
+
+    :param __i:
+        int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. This file was automatic generated / don't edit.
 

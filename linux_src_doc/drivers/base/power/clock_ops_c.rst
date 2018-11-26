@@ -10,11 +10,13 @@
 
     Enable a clock, reporting any errors
 
-    :param struct device \*dev:
+    :param dev:
         The device for the given clock
+    :type dev: struct device \*
 
-    :param struct pm_clock_entry \*ce:
+    :param ce:
         PM clock entry corresponding to the clock.
+    :type ce: struct pm_clock_entry \*
 
 .. _`pm_clk_acquire`:
 
@@ -25,11 +27,13 @@ pm_clk_acquire
 
     Acquire a device clock.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose clock is to be acquired.
+    :type dev: struct device \*
 
-    :param struct pm_clock_entry \*ce:
+    :param ce:
         PM clock entry corresponding to the clock.
+    :type ce: struct pm_clock_entry \*
 
 .. _`pm_clk_add`:
 
@@ -40,11 +44,13 @@ pm_clk_add
 
     Start using a device clock for power management.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose clock is going to be used for power management.
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         Connection ID of the clock.
+    :type con_id: const char \*
 
 .. _`pm_clk_add.description`:
 
@@ -63,11 +69,13 @@ pm_clk_add_clk
 
     Start using a device clock for power management.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose clock is going to be used for power management.
+    :type dev: struct device \*
 
-    :param struct clk \*clk:
+    :param clk:
         Clock pointer
+    :type clk: struct clk \*
 
 .. _`pm_clk_add_clk.description`:
 
@@ -88,11 +96,13 @@ of_pm_clk_add_clk
 
     Start using a device clock for power management.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose clock is going to be used for power management.
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         Name of clock that is going to be used for power management.
+    :type name: const char \*
 
 .. _`of_pm_clk_add_clk.description`:
 
@@ -113,8 +123,9 @@ of_pm_clk_add_clks
 
     Start using device clock(s) for power management.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose clock(s) is going to be used for power management.
+    :type dev: struct device \*
 
 .. _`of_pm_clk_add_clks.description`:
 
@@ -136,8 +147,9 @@ or if adding a clock fails.
 
     Destroy PM clock entry.
 
-    :param struct pm_clock_entry \*ce:
+    :param ce:
         PM clock entry to destroy.
+    :type ce: struct pm_clock_entry \*
 
 .. _`pm_clk_remove`:
 
@@ -148,11 +160,13 @@ pm_clk_remove
 
     Stop using a device clock for power management.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose clock should not be used for PM any more.
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         Connection ID of the clock.
+    :type con_id: const char \*
 
 .. _`pm_clk_remove.description`:
 
@@ -171,11 +185,13 @@ pm_clk_remove_clk
 
     Stop using a device clock for power management.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose clock should not be used for PM any more.
+    :type dev: struct device \*
 
-    :param struct clk \*clk:
+    :param clk:
         Clock pointer
+    :type clk: struct clk \*
 
 .. _`pm_clk_remove_clk.description`:
 
@@ -194,8 +210,9 @@ pm_clk_init
 
     Initialize a device's list of power management clocks.
 
-    :param struct device \*dev:
+    :param dev:
         Device to initialize the list of PM clocks for.
+    :type dev: struct device \*
 
 .. _`pm_clk_init.description`:
 
@@ -214,8 +231,9 @@ pm_clk_create
 
     Create and initialize a device's list of PM clocks.
 
-    :param struct device \*dev:
+    :param dev:
         Device to create and initialize the list of PM clocks for.
+    :type dev: struct device \*
 
 .. _`pm_clk_create.description`:
 
@@ -234,8 +252,9 @@ pm_clk_destroy
 
     Destroy a device's list of power management clocks.
 
-    :param struct device \*dev:
+    :param dev:
         Device to destroy the list of PM clocks for.
+    :type dev: struct device \*
 
 .. _`pm_clk_destroy.description`:
 
@@ -255,8 +274,9 @@ pm_clk_suspend
 
     Disable clocks in a device's PM clock list.
 
-    :param struct device \*dev:
+    :param dev:
         Device to disable the clocks for.
+    :type dev: struct device \*
 
 .. _`pm_clk_resume`:
 
@@ -267,8 +287,9 @@ pm_clk_resume
 
     Enable clocks in a device's PM clock list.
 
-    :param struct device \*dev:
+    :param dev:
         Device to enable the clocks for.
+    :type dev: struct device \*
 
 .. _`pm_clk_notify`:
 
@@ -279,14 +300,17 @@ pm_clk_notify
 
     Notify routine for device addition and removal.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Notifier block object this function is a member of.
+    :type nb: struct notifier_block \*
 
-    :param unsigned long action:
+    :param action:
         Operation being carried out by the caller.
+    :type action: unsigned long
 
-    :param void \*data:
+    :param data:
         Device the routine is being run for.
+    :type data: void \*
 
 .. _`pm_clk_notify.description`:
 
@@ -312,11 +336,13 @@ enable_clock
 
     Enable a device clock.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose clock is to be enabled.
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         Connection ID of the clock.
+    :type con_id: const char \*
 
 .. _`disable_clock`:
 
@@ -327,11 +353,13 @@ disable_clock
 
     Disable a device clock.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose clock is to be disabled.
+    :type dev: struct device \*
 
-    :param const char \*con_id:
+    :param con_id:
         Connection ID of the clock.
+    :type con_id: const char \*
 
 .. _`pm_clk_notify`:
 
@@ -342,14 +370,17 @@ pm_clk_notify
 
     Notify routine for device addition and removal.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Notifier block object this function is a member of.
+    :type nb: struct notifier_block \*
 
-    :param unsigned long action:
+    :param action:
         Operation being carried out by the caller.
+    :type action: unsigned long
 
-    :param void \*data:
+    :param data:
         Device the routine is being run for.
+    :type data: void \*
 
 .. _`pm_clk_notify.description`:
 
@@ -370,11 +401,13 @@ pm_clk_add_notifier
 
     Add bus type notifier for power management clocks.
 
-    :param struct bus_type \*bus:
+    :param bus:
         Bus type to add the notifier to.
+    :type bus: struct bus_type \*
 
-    :param struct pm_clk_notifier_block \*clknb:
+    :param clknb:
         Notifier to be added to the given bus type.
+    :type clknb: struct pm_clk_notifier_block \*
 
 .. _`pm_clk_add_notifier.description`:
 

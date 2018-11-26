@@ -10,14 +10,17 @@ cxgb4_sched_class_bind
 
     Bind an entity to a scheduling class
 
-    :param struct net_device \*dev:
+    :param dev:
         net_device pointer
+    :type dev: struct net_device \*
 
-    :param void \*arg:
+    :param arg:
         Entity opaque data
+    :type arg: void \*
 
-    :param enum sched_bind_type type:
+    :param type:
         Entity type (Queue)
+    :type type: enum sched_bind_type
 
 .. _`cxgb4_sched_class_bind.description`:
 
@@ -37,14 +40,17 @@ cxgb4_sched_class_unbind
 
     Unbind an entity from a scheduling class
 
-    :param struct net_device \*dev:
+    :param dev:
         net_device pointer
+    :type dev: struct net_device \*
 
-    :param void \*arg:
+    :param arg:
         Entity opaque data
+    :type arg: void \*
 
-    :param enum sched_bind_type type:
+    :param type:
         Entity type (Queue)
+    :type type: enum sched_bind_type
 
 .. _`cxgb4_sched_class_unbind.description`:
 
@@ -62,11 +68,13 @@ cxgb4_sched_class_alloc
 
     allocate a scheduling class
 
-    :param struct net_device \*dev:
+    :param dev:
         net_device pointer
+    :type dev: struct net_device \*
 
-    :param struct ch_sched_params \*p:
+    :param p:
         new scheduling class to create.
+    :type p: struct ch_sched_params \*
 
 .. _`cxgb4_sched_class_alloc.description`:
 

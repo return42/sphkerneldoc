@@ -10,11 +10,13 @@ integrator_impd1_clk_init
 
     set up the integrator clock tree
 
-    :param void __iomem \*base:
+    :param base:
         base address of the logic module (LM)
+    :type base: void __iomem \*
 
-    :param unsigned int id:
+    :param id:
         the ID of this LM
+    :type id: unsigned int
 
 .. This file was automatic generated / don't edit.
 

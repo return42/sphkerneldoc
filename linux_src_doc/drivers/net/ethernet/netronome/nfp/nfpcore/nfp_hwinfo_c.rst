@@ -10,11 +10,13 @@ nfp_hwinfo_lookup
 
     Find a value in the HWInfo table by name
 
-    :param struct nfp_hwinfo \*hwinfo:
+    :param hwinfo:
         NFP HWinfo table
+    :type hwinfo: struct nfp_hwinfo \*
 
-    :param const char \*lookup:
+    :param lookup:
         HWInfo name to search for
+    :type lookup: const char \*
 
 .. _`nfp_hwinfo_lookup.return`:
 

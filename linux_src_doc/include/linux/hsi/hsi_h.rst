@@ -408,8 +408,9 @@ hsi_id
 
     Get HSI controller ID associated to a client
 
-    :param struct hsi_client \*cl:
+    :param cl:
         Pointer to a HSI client
+    :type cl: struct hsi_client \*
 
 .. _`hsi_id.description`:
 
@@ -427,8 +428,9 @@ hsi_port_id
 
     Gets the port number a client is attached to
 
-    :param struct hsi_client \*cl:
+    :param cl:
         Pointer to HSI client
+    :type cl: struct hsi_client \*
 
 .. _`hsi_port_id.description`:
 
@@ -446,8 +448,9 @@ hsi_setup
 
     Configure the client's port
 
-    :param struct hsi_client \*cl:
+    :param cl:
         Pointer to the HSI client
+    :type cl: struct hsi_client \*
 
 .. _`hsi_setup.description`:
 
@@ -468,8 +471,9 @@ hsi_flush
 
     Flush all pending transactions on the client's port
 
-    :param struct hsi_client \*cl:
+    :param cl:
         Pointer to the HSI client
+    :type cl: struct hsi_client \*
 
 .. _`hsi_flush.description`:
 
@@ -490,11 +494,13 @@ hsi_async_read
 
     Submit a read transfer
 
-    :param struct hsi_client \*cl:
+    :param cl:
         Pointer to the HSI client
+    :type cl: struct hsi_client \*
 
-    :param struct hsi_msg \*msg:
+    :param msg:
         HSI message descriptor of the transfer
+    :type msg: struct hsi_msg \*
 
 .. _`hsi_async_read.description`:
 
@@ -512,11 +518,13 @@ hsi_async_write
 
     Submit a write transfer
 
-    :param struct hsi_client \*cl:
+    :param cl:
         Pointer to the HSI client
+    :type cl: struct hsi_client \*
 
-    :param struct hsi_msg \*msg:
+    :param msg:
         HSI message descriptor of the transfer
+    :type msg: struct hsi_msg \*
 
 .. _`hsi_async_write.description`:
 
@@ -534,8 +542,9 @@ hsi_start_tx
 
     Signal the port that the client wants to start a TX
 
-    :param struct hsi_client \*cl:
+    :param cl:
         Pointer to the HSI client
+    :type cl: struct hsi_client \*
 
 .. _`hsi_start_tx.description`:
 
@@ -553,8 +562,9 @@ hsi_stop_tx
 
     Signal the port that the client no longer wants to transmit
 
-    :param struct hsi_client \*cl:
+    :param cl:
         Pointer to the HSI client
+    :type cl: struct hsi_client \*
 
 .. _`hsi_stop_tx.description`:
 

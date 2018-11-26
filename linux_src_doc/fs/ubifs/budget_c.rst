@@ -10,11 +10,13 @@ shrink_liability
 
     write-back some dirty pages/inodes.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int nr_to_write:
+    :param nr_to_write:
         how many dirty pages to write-back
+    :type nr_to_write: int
 
 .. _`shrink_liability.description`:
 
@@ -37,8 +39,9 @@ run_gc
 
     run garbage collector.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`run_gc.description`:
 
@@ -58,8 +61,9 @@ get_liability
 
     calculate current liability.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`get_liability.description`:
 
@@ -78,8 +82,9 @@ make_free_space
 
     make more free space on the file-system.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`make_free_space.description`:
 
@@ -109,8 +114,9 @@ ubifs_calc_min_idx_lebs
 
     calculate amount of LEBs for the index.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_calc_min_idx_lebs.description`:
 
@@ -129,11 +135,13 @@ ubifs_calc_available
 
     calculate available FS space.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param int min_idx_lebs:
+    :param min_idx_lebs:
         minimum number of LEBs reserved for the index
+    :type min_idx_lebs: int
 
 .. _`ubifs_calc_available.description`:
 
@@ -151,8 +159,9 @@ can_use_rp
 
     check whether the user is allowed to use reserved pool.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`can_use_rp.description`:
 
@@ -173,8 +182,9 @@ do_budget_space
 
     reserve flash space for index and data growth.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`do_budget_space.description`:
 
@@ -191,13 +201,13 @@ be able to commit dirty index. So this function basically adds amount of
 budgeted index space to the size of the current index, multiplies this by 3,
 and makes sure this does not exceed the amount of free LEBs.
 
-Notes about \ ``c``\ ->bi.min_idx_lebs and \ ``c``\ ->lst.idx_lebs variables:
-o \ ``c``\ ->lst.idx_lebs is the number of LEBs the index currently uses. It might
+Notes about \ ``c->bi.min_idx_lebs``\  and \ ``c->lst.idx_lebs``\  variables:
+o \ ``c->lst.idx_lebs``\  is the number of LEBs the index currently uses. It might
 be large, because UBIFS does not do any index consolidation as long as
 there is free space. IOW, the index may take a lot of LEBs, but the LEBs
 will contain a lot of dirt.
-o \ ``c``\ ->bi.min_idx_lebs is the number of LEBS the index presumably takes. IOW,
-the index may be consolidated to take up to \ ``c``\ ->bi.min_idx_lebs LEBs.
+o \ ``c->bi.min_idx_lebs``\  is the number of LEBS the index presumably takes. IOW,
+the index may be consolidated to take up to \ ``c->bi.min_idx_lebs``\  LEBs.
 
 This function returns zero in case of success, and \ ``-ENOSPC``\  in case of
 failure.
@@ -211,11 +221,13 @@ calc_idx_growth
 
     calculate approximate index growth from budgeting request.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const struct ubifs_budget_req \*req:
+    :param req:
         budgeting request
+    :type req: const struct ubifs_budget_req \*
 
 .. _`calc_idx_growth.description`:
 
@@ -234,11 +246,13 @@ calc_data_growth
 
     calculate approximate amount of new data from budgeting request.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const struct ubifs_budget_req \*req:
+    :param req:
         budgeting request
+    :type req: const struct ubifs_budget_req \*
 
 .. _`calc_dd_growth`:
 
@@ -249,11 +263,13 @@ calc_dd_growth
 
     calculate approximate amount of data which makes other data dirty from budgeting request.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const struct ubifs_budget_req \*req:
+    :param req:
         budgeting request
+    :type req: const struct ubifs_budget_req \*
 
 .. _`ubifs_budget_space`:
 
@@ -264,11 +280,13 @@ ubifs_budget_space
 
     ensure there is enough space to complete an operation.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_budget_req \*req:
+    :param req:
         budget request
+    :type req: struct ubifs_budget_req \*
 
 .. _`ubifs_budget_space.description`:
 
@@ -292,11 +310,13 @@ ubifs_release_budget
 
     release budgeted free space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_budget_req \*req:
+    :param req:
         budget request
+    :type req: struct ubifs_budget_req \*
 
 .. _`ubifs_release_budget.description`:
 
@@ -304,9 +324,9 @@ Description
 -----------
 
 This function releases the space budgeted by 'ubifs_budget_space()'. Note,
-since the index changes (which were budgeted for in \ ``req``\ ->idx_growth) will
+since the index changes (which were budgeted for in \ ``req->idx_growth``\ ) will
 only be written to the media on commit, this function moves the index budget
-from \ ``c``\ ->bi.idx_growth to \ ``c``\ ->bi.uncommitted_idx. The latter will be zeroed
+from \ ``c->bi.idx_growth``\  to \ ``c->bi.uncommitted_idx``\ . The latter will be zeroed
 by the commit operation.
 
 .. _`ubifs_convert_page_budget`:
@@ -318,8 +338,9 @@ ubifs_convert_page_budget
 
     convert budget of a new page.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_convert_page_budget.description`:
 
@@ -340,11 +361,13 @@ ubifs_release_dirty_inode_budget
 
     release dirty inode budget.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_inode \*ui:
+    :param ui:
         UBIFS inode to release the budget for
+    :type ui: struct ubifs_inode \*
 
 .. _`ubifs_release_dirty_inode_budget.description`:
 
@@ -364,11 +387,13 @@ ubifs_reported_space
 
     calculate reported free space.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param long long free:
+    :param free:
         amount of free space
+    :type free: long long
 
 .. _`ubifs_reported_space.description`:
 
@@ -399,8 +424,9 @@ ubifs_get_free_space_nolock
 
     return amount of free space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_get_free_space_nolock.description`:
 
@@ -428,8 +454,9 @@ ubifs_get_free_space
 
     return amount of free space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_get_free_space.description`:
 

@@ -10,11 +10,13 @@ e1000_calculate_checksum
 
     Calculate checksum for buffer
 
-    :param u8 \*buffer:
+    :param buffer:
         pointer to EEPROM
+    :type buffer: u8 \*
 
-    :param u32 length:
+    :param length:
         size of EEPROM to calculate a checksum for
+    :type length: u32
 
 .. _`e1000_calculate_checksum.description`:
 
@@ -33,8 +35,9 @@ e1000_mng_enable_host_if
 
     Checks host interface is enabled
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_mng_enable_host_if.description`:
 
@@ -56,8 +59,9 @@ e1000e_check_mng_mode_generic
 
     Generic check management mode
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_check_mng_mode_generic.description`:
 
@@ -76,8 +80,9 @@ e1000e_enable_tx_pkt_filtering
 
     Enable packet filtering on Tx
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_enable_tx_pkt_filtering.description`:
 
@@ -96,11 +101,13 @@ e1000_mng_write_cmd_header
 
     Writes manageability command header
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param struct e1000_host_mng_command_header \*hdr:
+    :param hdr:
         pointer to the host interface command header
+    :type hdr: struct e1000_host_mng_command_header \*
 
 .. _`e1000_mng_write_cmd_header.description`:
 
@@ -118,20 +125,25 @@ e1000_mng_host_if_write
 
     Write to the manageability host interface
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*buffer:
+    :param buffer:
         pointer to the host interface buffer
+    :type buffer: u8 \*
 
-    :param u16 length:
+    :param length:
         size of the buffer
+    :type length: u16
 
-    :param u16 offset:
+    :param offset:
         location in the buffer to write to
+    :type offset: u16
 
-    :param u8 \*sum:
+    :param sum:
         sum of the data (not checksum)
+    :type sum: u8 \*
 
 .. _`e1000_mng_host_if_write.description`:
 
@@ -151,14 +163,17 @@ e1000e_mng_write_dhcp_info
 
     Writes DHCP info to host interface
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*buffer:
+    :param buffer:
         pointer to the host interface
+    :type buffer: u8 \*
 
-    :param u16 length:
+    :param length:
         size of the buffer
+    :type length: u16
 
 .. _`e1000e_mng_write_dhcp_info.description`:
 
@@ -176,8 +191,9 @@ e1000e_enable_mng_pass_thru
 
     Check if management passthrough is needed
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_enable_mng_pass_thru.description`:
 

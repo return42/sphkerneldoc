@@ -10,11 +10,13 @@ usb_of_get_device_node
 
     get a USB device node
 
-    :param struct usb_device \*hub:
+    :param hub:
         hub to which device is connected
+    :type hub: struct usb_device \*
 
-    :param int port1:
+    :param port1:
         one-based index of port
+    :type port1: int
 
 .. _`usb_of_get_device_node.description`:
 
@@ -41,8 +43,9 @@ usb_of_has_combined_node
 
     determine whether a device has a combined node
 
-    :param struct usb_device \*udev:
+    :param udev:
         USB device
+    :type udev: struct usb_device \*
 
 .. _`usb_of_has_combined_node.description`:
 
@@ -79,14 +82,17 @@ usb_of_get_interface_node
 
     get a USB interface node
 
-    :param struct usb_device \*udev:
+    :param udev:
         USB device of interface
+    :type udev: struct usb_device \*
 
-    :param u8 config:
+    :param config:
         configuration value
+    :type config: u8
 
-    :param u8 ifnum:
+    :param ifnum:
         interface number
+    :type ifnum: u8
 
 .. _`usb_of_get_interface_node.description`:
 
@@ -103,35 +109,6 @@ Return
 
 A pointer to the node with incremented refcount if found, or
 \ ``NULL``\  otherwise.
-
-.. _`usb_of_get_companion_dev`:
-
-usb_of_get_companion_dev
-========================
-
-.. c:function:: struct device *usb_of_get_companion_dev(struct device *dev)
-
-    Find the companion device
-
-    :param struct device \*dev:
-        the device pointer to find a companion
-
-.. _`usb_of_get_companion_dev.description`:
-
-Description
------------
-
-Find the companion device from platform bus.
-
-Takes a reference to the returned struct device which needs to be dropped
-after use.
-
-.. _`usb_of_get_companion_dev.return`:
-
-Return
-------
-
-On success, a pointer to the companion device, \ ``NULL``\  on failure.
 
 .. This file was automatic generated / don't edit.
 

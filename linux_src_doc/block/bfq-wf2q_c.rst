@@ -10,11 +10,13 @@ bfq_gt
 
     compare two timestamps.
 
-    :param u64 a:
+    :param a:
         first ts.
+    :type a: u64
 
-    :param u64 b:
+    :param b:
         second ts.
+    :type b: u64
 
 .. _`bfq_gt.description`:
 
@@ -32,17 +34,20 @@ bfq_update_next_in_service
 
     update sd->next_in_service
 
-    :param struct bfq_sched_data \*sd:
+    :param sd:
         sched_data for which to perform the update.
+    :type sd: struct bfq_sched_data \*
 
-    :param struct bfq_entity \*new_entity:
+    :param new_entity:
         if not NULL, pointer to the entity whose activation,
         requeueing or repositionig triggered the invocation of
         this function.
+    :type new_entity: struct bfq_entity \*
 
-    :param bool expiration:
+    :param expiration:
         id true, this function is being invoked after the
         expiration of the in-service entity
+    :type expiration: bool
 
 .. _`bfq_update_next_in_service.description`:
 
@@ -74,11 +79,13 @@ bfq_delta
 
     map service into the virtual time domain.
 
-    :param unsigned long service:
+    :param service:
         amount of service.
+    :type service: unsigned long
 
-    :param unsigned long weight:
+    :param weight:
         scale factor (weight of an entity or weight sum).
+    :type weight: unsigned long
 
 .. _`bfq_calc_finish`:
 
@@ -89,11 +96,13 @@ bfq_calc_finish
 
     assign the finish time to an entity.
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity to act upon.
+    :type entity: struct bfq_entity \*
 
-    :param unsigned long service:
+    :param service:
         the service to be charged to the entity.
+    :type service: unsigned long
 
 .. _`bfq_entity_of`:
 
@@ -104,8 +113,9 @@ bfq_entity_of
 
     get an entity from a node.
 
-    :param struct rb_node \*node:
+    :param node:
         the node field of the entity.
+    :type node: struct rb_node \*
 
 .. _`bfq_entity_of.description`:
 
@@ -126,11 +136,13 @@ bfq_extract
 
     remove an entity from a tree.
 
-    :param struct rb_root \*root:
+    :param root:
         the tree root.
+    :type root: struct rb_root \*
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity to remove.
+    :type entity: struct bfq_entity \*
 
 .. _`bfq_idle_extract`:
 
@@ -141,11 +153,13 @@ bfq_idle_extract
 
     extract an entity from the idle tree.
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service tree of the owning \ ``entity``\ .
+    :type st: struct bfq_service_tree \*
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity being removed.
+    :type entity: struct bfq_entity \*
 
 .. _`bfq_insert`:
 
@@ -156,11 +170,13 @@ bfq_insert
 
     generic tree insertion.
 
-    :param struct rb_root \*root:
+    :param root:
         tree root.
+    :type root: struct rb_root \*
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         entity to insert.
+    :type entity: struct bfq_entity \*
 
 .. _`bfq_insert.description`:
 
@@ -179,11 +195,13 @@ bfq_update_min
 
     update the min_start field of a entity.
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity to update.
+    :type entity: struct bfq_entity \*
 
-    :param struct rb_node \*node:
+    :param node:
         one of its children.
+    :type node: struct rb_node \*
 
 .. _`bfq_update_min.description`:
 
@@ -204,8 +222,9 @@ bfq_update_active_node
 
     recalculate min_start.
 
-    :param struct rb_node \*node:
+    :param node:
         the node to update.
+    :type node: struct rb_node \*
 
 .. _`bfq_update_active_node.description`:
 
@@ -225,8 +244,9 @@ bfq_update_active_tree
 
     update min_start for the whole active tree.
 
-    :param struct rb_node \*node:
+    :param node:
         the starting node.
+    :type node: struct rb_node \*
 
 .. _`bfq_update_active_tree.description`:
 
@@ -248,11 +268,13 @@ bfq_active_insert
 
     insert an entity in the active tree of its group/device.
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service tree of the entity.
+    :type st: struct bfq_service_tree \*
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity being inserted.
+    :type entity: struct bfq_entity \*
 
 .. _`bfq_active_insert.description`:
 
@@ -273,8 +295,9 @@ bfq_ioprio_to_weight
 
     calc a weight from an ioprio.
 
-    :param int ioprio:
+    :param ioprio:
         the ioprio value to convert.
+    :type ioprio: int
 
 .. _`bfq_weight_to_ioprio`:
 
@@ -285,8 +308,9 @@ bfq_weight_to_ioprio
 
     calc an ioprio from a weight.
 
-    :param int weight:
+    :param weight:
         the weight value to convert.
+    :type weight: int
 
 .. _`bfq_weight_to_ioprio.description`:
 
@@ -306,8 +330,9 @@ bfq_find_deepest
 
     find the deepest node that an extraction can modify.
 
-    :param struct rb_node \*node:
+    :param node:
         the node being removed.
+    :type node: struct rb_node \*
 
 .. _`bfq_find_deepest.description`:
 
@@ -328,11 +353,13 @@ bfq_active_extract
 
     remove an entity from the active tree.
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service_tree containing the tree.
+    :type st: struct bfq_service_tree \*
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity being removed.
+    :type entity: struct bfq_entity \*
 
 .. _`bfq_idle_insert`:
 
@@ -343,11 +370,13 @@ bfq_idle_insert
 
     insert an entity into the idle tree.
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service tree containing the tree.
+    :type st: struct bfq_service_tree \*
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity to insert.
+    :type entity: struct bfq_entity \*
 
 .. _`bfq_forget_entity`:
 
@@ -358,14 +387,17 @@ bfq_forget_entity
 
     do not consider entity any longer for scheduling
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service tree.
+    :type st: struct bfq_service_tree \*
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity being removed.
+    :type entity: struct bfq_entity \*
 
-    :param bool is_in_service:
+    :param is_in_service:
         true if entity is currently the in-service entity.
+    :type is_in_service: bool
 
 .. _`bfq_forget_entity.description`:
 
@@ -390,11 +422,13 @@ bfq_put_idle_entity
 
     release the idle tree ref of an entity.
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         service tree for the entity.
+    :type st: struct bfq_service_tree \*
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity being released.
+    :type entity: struct bfq_entity \*
 
 .. _`bfq_forget_idle`:
 
@@ -405,8 +439,9 @@ bfq_forget_idle
 
     update the idle tree if necessary.
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service tree to act upon.
+    :type st: struct bfq_service_tree \*
 
 .. _`bfq_forget_idle.description`:
 
@@ -425,11 +460,13 @@ bfq_bfqq_served
 
     update the scheduler status after selection for service.
 
-    :param struct bfq_queue \*bfqq:
+    :param bfqq:
         the queue being served.
+    :type bfqq: struct bfq_queue \*
 
-    :param int served:
+    :param served:
         bytes to transfer.
+    :type served: int
 
 .. _`bfq_bfqq_served.note`:
 
@@ -449,14 +486,17 @@ bfq_bfqq_charge_time
 
     charge an amount of service equivalent to the length of the time interval during which bfqq has been in service.
 
-    :param struct bfq_data \*bfqd:
+    :param bfqd:
         the device
+    :type bfqd: struct bfq_data \*
 
-    :param struct bfq_queue \*bfqq:
+    :param bfqq:
         the queue that needs a service update.
+    :type bfqq: struct bfq_queue \*
 
-    :param unsigned long time_ms:
+    :param time_ms:
         the amount of time during which the queue has received service
+    :type time_ms: unsigned long
 
 .. _`bfq_bfqq_charge_time.description`:
 
@@ -491,11 +531,13 @@ especially true for short service slots.
 
     handle activation of entity.
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity being activated.
+    :type entity: struct bfq_entity \*
 
-    :param bool non_blocking_wait_rq:
+    :param non_blocking_wait_rq:
         true if entity was waiting for a request
+    :type non_blocking_wait_rq: bool
 
 .. _`__bfq_activate_entity.description`:
 
@@ -506,7 +548,7 @@ Called for a 'true' activation, i.e., if entity is not active and
 one of its children receives a new request.
 
 Basically, this function updates the timestamps of entity and
-inserts entity into its active tree, ater possibly extracting it
+inserts entity into its active tree, after possibly extracting it
 from its idle tree.
 
 .. _`__bfq_requeue_entity`:
@@ -518,8 +560,9 @@ from its idle tree.
 
     handle requeueing or repositioning of an entity.
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity being requeued or repositioned.
+    :type entity: struct bfq_entity \*
 
 .. _`__bfq_requeue_entity.description`:
 
@@ -546,20 +589,24 @@ bfq_activate_requeue_entity
 
     activate or requeue an entity representing a bfq_queue, and activate, requeue or reposition all ancestors for which such an update becomes necessary.
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity to activate.
+    :type entity: struct bfq_entity \*
 
-    :param bool non_blocking_wait_rq:
+    :param non_blocking_wait_rq:
         true if this entity was waiting for a request
+    :type non_blocking_wait_rq: bool
 
-    :param bool requeue:
+    :param requeue:
         true if this is a requeue, which implies that bfqq is
         being expired; thus ALL its ancestors stop being served and must
         therefore be requeued
+    :type requeue: bool
 
-    :param bool expiration:
+    :param expiration:
         true if this function is being invoked in the expiration path
         of the in-service queue
+    :type expiration: bool
 
 .. _`__bfq_deactivate_entity`:
 
@@ -570,12 +617,14 @@ bfq_activate_requeue_entity
 
     deactivate an entity from its service tree.
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity to deactivate.
+    :type entity: struct bfq_entity \*
 
-    :param bool ins_into_idle_tree:
+    :param ins_into_idle_tree:
         if false, the entity will not be put into the
         idle tree.
+    :type ins_into_idle_tree: bool
 
 .. _`__bfq_deactivate_entity.description`:
 
@@ -596,15 +645,18 @@ bfq_deactivate_entity
 
     deactivate an entity representing a bfq_queue.
 
-    :param struct bfq_entity \*entity:
+    :param entity:
         the entity to deactivate.
+    :type entity: struct bfq_entity \*
 
-    :param bool ins_into_idle_tree:
+    :param ins_into_idle_tree:
         true if the entity can be put into the idle tree
+    :type ins_into_idle_tree: bool
 
-    :param bool expiration:
+    :param expiration:
         true if this function is being invoked in the expiration path
         of the in-service queue
+    :type expiration: bool
 
 .. _`bfq_calc_vtime_jump`:
 
@@ -615,8 +667,9 @@ bfq_calc_vtime_jump
 
     compute the value to which the vtime should jump, if needed, to have at least one entity eligible.
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service tree to act upon.
+    :type st: struct bfq_service_tree \*
 
 .. _`bfq_calc_vtime_jump.description`:
 
@@ -634,11 +687,13 @@ bfq_first_active_entity
 
     find the eligible entity with the smallest finish time
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service tree to select from.
+    :type st: struct bfq_service_tree \*
 
-    :param u64 vtime:
+    :param vtime:
         the system virtual to use as a reference for eligibility
+    :type vtime: u64
 
 .. _`bfq_first_active_entity.description`:
 
@@ -660,11 +715,13 @@ entities and b) no eligible entity has been found yet.
 
     return the first eligible entity in \ ``st``\ .
 
-    :param struct bfq_service_tree \*st:
+    :param st:
         the service tree.
+    :type st: struct bfq_service_tree \*
 
-    :param bool in_service:
+    :param in_service:
         *undescribed*
+    :type in_service: bool
 
 .. _`__bfq_lookup_next_entity.description`:
 
@@ -703,11 +760,13 @@ bfq_lookup_next_entity
 
     return the first eligible entity in \ ``sd``\ .
 
-    :param struct bfq_sched_data \*sd:
+    :param sd:
         the sched_data.
+    :type sd: struct bfq_sched_data \*
 
-    :param bool expiration:
+    :param expiration:
         true if we are on the expiration path of the in-service queue
+    :type expiration: bool
 
 .. _`bfq_lookup_next_entity.description`:
 

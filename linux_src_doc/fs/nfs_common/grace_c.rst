@@ -8,11 +8,13 @@ locks_start_grace
 
 .. c:function:: void locks_start_grace(struct net *net, struct lock_manager *lm)
 
-    :param struct net \*net:
+    :param net:
         net namespace that this lock manager belongs to
+    :type net: struct net \*
 
-    :param struct lock_manager \*lm:
+    :param lm:
         who this grace period is for
+    :type lm: struct lock_manager \*
 
 .. _`locks_start_grace.description`:
 
@@ -33,8 +35,9 @@ locks_end_grace
 
 .. c:function:: void locks_end_grace(struct lock_manager *lm)
 
-    :param struct lock_manager \*lm:
+    :param lm:
         who this grace period is for
+    :type lm: struct lock_manager \*
 
 .. _`locks_end_grace.description`:
 
@@ -54,8 +57,9 @@ locks_in_grace
 
 .. c:function:: bool locks_in_grace(struct net *net)
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
 .. _`locks_in_grace.description`:
 

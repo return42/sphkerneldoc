@@ -291,8 +291,9 @@ enable_cmf
 
     switch on the channel measurement for a specific device
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         The ccw device to be enabled
+    :type cdev: struct ccw_device \*
 
 .. _`enable_cmf.description`:
 
@@ -326,8 +327,9 @@ __disable_cmf
 
     switch off the channel measurement for a specific device
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         The ccw device to be disabled
+    :type cdev: struct ccw_device \*
 
 .. _`__disable_cmf.return`:
 
@@ -352,8 +354,9 @@ disable_cmf
 
     switch off the channel measurement for a specific device
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         The ccw device to be disabled
+    :type cdev: struct ccw_device \*
 
 .. _`disable_cmf.return`:
 
@@ -378,11 +381,13 @@ cmf_read
 
     read one value from the current channel measurement block
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         the channel to be read
+    :type cdev: struct ccw_device \*
 
-    :param int index:
+    :param index:
         the index of the value to be read
+    :type index: int
 
 .. _`cmf_read.return`:
 
@@ -407,11 +412,13 @@ cmf_readall
 
     read the current channel measurement block
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         the channel to be read
+    :type cdev: struct ccw_device \*
 
-    :param struct cmbdata \*data:
+    :param data:
         a pointer to a data block that will be filled
+    :type data: struct cmbdata \*
 
 .. _`cmf_readall.return`:
 
@@ -436,8 +443,9 @@ cmf_reactivate
 
     reactivate measurement block updates
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cmf_reactivate.description`:
 

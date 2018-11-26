@@ -10,8 +10,9 @@ e1000_phy_is_accessible_pchlan
 
     Check if able to access PHY registers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_is_accessible_pchlan.description`:
 
@@ -33,8 +34,9 @@ e1000_toggle_lanphypc_pch_lpt
 
     toggle the LANPHYPC pin value
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_toggle_lanphypc_pch_lpt.description`:
 
@@ -53,8 +55,9 @@ e1000_init_phy_workarounds_pchlan
 
     PHY initialization workarounds
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_phy_workarounds_pchlan.description`:
 
@@ -73,8 +76,9 @@ e1000_init_phy_params_pchlan
 
     Initialize PHY function pointers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_phy_params_pchlan.description`:
 
@@ -92,8 +96,9 @@ e1000_init_phy_params_ich8lan
 
     Initialize PHY function pointers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_phy_params_ich8lan.description`:
 
@@ -111,8 +116,9 @@ e1000_init_nvm_params_ich8lan
 
     Initialize NVM function pointers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_nvm_params_ich8lan.description`:
 
@@ -131,8 +137,9 @@ e1000_init_mac_params_ich8lan
 
     Initialize MAC function pointers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_mac_params_ich8lan.description`:
 
@@ -151,17 +158,21 @@ pointers.
 
     Read/write EMI register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 address:
+    :param address:
         *undescribed*
+    :type address: u16
 
-    :param u16 \*data:
+    :param data:
         pointer to value to read/write from/to the EMI address
+    :type data: u16 \*
 
-    :param bool read:
+    :param read:
         boolean flag to indicate read or write
+    :type read: bool
 
 .. _`__e1000_access_emi_reg_locked.description`:
 
@@ -179,14 +190,17 @@ e1000_read_emi_reg_locked
 
     Read Extended Management Interface register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 addr:
+    :param addr:
         EMI address to program
+    :type addr: u16
 
-    :param u16 \*data:
+    :param data:
         value to be read from the EMI address
+    :type data: u16 \*
 
 .. _`e1000_read_emi_reg_locked.description`:
 
@@ -204,14 +218,17 @@ e1000_write_emi_reg_locked
 
     Write Extended Management Interface register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 addr:
+    :param addr:
         EMI address to program
+    :type addr: u16
 
-    :param u16 data:
+    :param data:
         value to be written to the EMI address
+    :type data: u16
 
 .. _`e1000_write_emi_reg_locked.description`:
 
@@ -229,8 +246,9 @@ e1000_set_eee_pchlan
 
     Enable/disable EEE support
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_set_eee_pchlan.description`:
 
@@ -256,11 +274,13 @@ e1000_k1_workaround_lpt_lp
 
     K1 workaround on Lynxpoint-LP
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool link:
+    :param link:
         link up bool flag
+    :type link: bool
 
 .. _`e1000_k1_workaround_lpt_lp.description`:
 
@@ -282,11 +302,13 @@ e1000_platform_pm_pch_lpt
 
     Set platform power management values
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool link:
+    :param link:
         bool indicating link status
+    :type link: bool
 
 .. _`e1000_platform_pm_pch_lpt.description`:
 
@@ -313,11 +335,13 @@ e1000_enable_ulp_lpt_lp
 
     configure Ultra Low Power mode for LynxPoint-LP
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool to_sx:
+    :param to_sx:
         boolean indicating a system power state transition to Sx
+    :type to_sx: bool
 
 .. _`e1000_enable_ulp_lpt_lp.description`:
 
@@ -338,11 +362,13 @@ e1000_disable_ulp_lpt_lp
 
     unconfigure Ultra Low Power mode for LynxPoint-LP
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool force:
+    :param force:
         boolean indicating whether or not to force disabling ULP
+    :type force: bool
 
 .. _`e1000_disable_ulp_lpt_lp.description`:
 
@@ -368,8 +394,9 @@ e1000_check_for_copper_link_ich8lan
 
     Check for link (Copper)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_for_copper_link_ich8lan.description`:
 
@@ -389,8 +416,9 @@ e1000_acquire_nvm_ich8lan
 
     Acquire NVM mutex
 
-    :param struct e1000_hw __always_unused \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw __always_unused \*
 
 .. _`e1000_acquire_nvm_ich8lan.description`:
 
@@ -408,8 +436,9 @@ e1000_release_nvm_ich8lan
 
     Release NVM mutex
 
-    :param struct e1000_hw __always_unused \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw __always_unused \*
 
 .. _`e1000_release_nvm_ich8lan.description`:
 
@@ -427,8 +456,9 @@ e1000_acquire_swflag_ich8lan
 
     Acquire software control flag
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_acquire_swflag_ich8lan.description`:
 
@@ -447,8 +477,9 @@ e1000_release_swflag_ich8lan
 
     Release software control flag
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_release_swflag_ich8lan.description`:
 
@@ -467,8 +498,9 @@ e1000_check_mng_mode_ich8lan
 
     Checks management mode
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_mng_mode_ich8lan.description`:
 
@@ -488,8 +520,9 @@ e1000_check_mng_mode_pchlan
 
     Checks management mode
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_mng_mode_pchlan.description`:
 
@@ -509,14 +542,17 @@ e1000_rar_set_pch2lan
 
     Set receive address register
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*addr:
+    :param addr:
         pointer to the receive address
+    :type addr: u8 \*
 
-    :param u32 index:
+    :param index:
         receive address array register
+    :type index: u32
 
 .. _`e1000_rar_set_pch2lan.description`:
 
@@ -537,8 +573,9 @@ e1000_rar_get_count_pch_lpt
 
     Get the number of available SHRA
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_rar_get_count_pch_lpt.description`:
 
@@ -560,14 +597,17 @@ e1000_rar_set_pch_lpt
 
     Set receive address registers
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 \*addr:
+    :param addr:
         pointer to the receive address
+    :type addr: u8 \*
 
-    :param u32 index:
+    :param index:
         receive address array register
+    :type index: u32
 
 .. _`e1000_rar_set_pch_lpt.description`:
 
@@ -588,8 +628,9 @@ e1000_check_reset_block_ich8lan
 
     Check if PHY reset is blocked
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_reset_block_ich8lan.description`:
 
@@ -609,8 +650,9 @@ e1000_write_smbus_addr
 
     Write SMBus address to PHY needed during Sx states
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_write_smbus_addr.description`:
 
@@ -628,8 +670,9 @@ e1000_sw_lcd_config_ich8lan
 
     SW-based LCD Configuration
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_sw_lcd_config_ich8lan.description`:
 
@@ -648,11 +691,13 @@ e1000_k1_gig_workaround_hv
 
     K1 Si workaround
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool link:
+    :param link:
         link up bool flag
+    :type link: bool
 
 .. _`e1000_k1_gig_workaround_hv.description`:
 
@@ -673,11 +718,13 @@ e1000_configure_k1_ich8lan
 
     Configure K1 power state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool k1_enable:
+    :param k1_enable:
         *undescribed*
+    :type k1_enable: bool
 
 .. _`e1000_configure_k1_ich8lan.description`:
 
@@ -698,11 +745,13 @@ e1000_oem_bits_config_ich8lan
 
     SW-based LCD Configuration
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool d0_state:
+    :param d0_state:
         boolean if entering d0 or d3 device state
+    :type d0_state: bool
 
 .. _`e1000_oem_bits_config_ich8lan.description`:
 
@@ -722,8 +771,9 @@ e1000_set_mdio_slow_mode_hv
 
     Set slow MDIO access mode
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_hv_phy_workarounds_ich8lan`:
 
@@ -734,8 +784,9 @@ e1000_hv_phy_workarounds_ich8lan
 
     A series of Phy workarounds to be done after every PHY reset.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_copy_rx_addrs_to_phy_ich8lan`:
 
@@ -746,8 +797,9 @@ e1000_copy_rx_addrs_to_phy_ich8lan
 
     Copy Rx addresses from MAC to PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_lv_jumbo_workaround_ich8lan`:
 
@@ -758,11 +810,13 @@ e1000_lv_jumbo_workaround_ich8lan
 
     required for jumbo frame operation with 82579 PHY
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool enable:
+    :param enable:
         flag to enable/disable workaround when enabling/disabling jumbos
+    :type enable: bool
 
 .. _`e1000_lv_phy_workarounds_ich8lan`:
 
@@ -773,8 +827,9 @@ e1000_lv_phy_workarounds_ich8lan
 
     A series of Phy workarounds to be done after every PHY reset.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_k1_workaround_lv`:
 
@@ -785,8 +840,9 @@ e1000_k1_workaround_lv
 
     K1 Si workaround
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_k1_workaround_lv.description`:
 
@@ -805,11 +861,13 @@ e1000_gate_hw_phy_config_ich8lan
 
     disable PHY config via hardware
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool gate:
+    :param gate:
         boolean set to true to gate, false to ungate
+    :type gate: bool
 
 .. _`e1000_gate_hw_phy_config_ich8lan.description`:
 
@@ -828,8 +886,9 @@ e1000_lan_init_done_ich8lan
 
     Check for PHY config completion
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_lan_init_done_ich8lan.description`:
 
@@ -848,8 +907,9 @@ e1000_post_phy_reset_ich8lan
 
     Perform steps required after a PHY reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_hw_reset_ich8lan`:
 
@@ -860,8 +920,9 @@ e1000_phy_hw_reset_ich8lan
 
     Performs a PHY reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_phy_hw_reset_ich8lan.description`:
 
@@ -881,11 +942,13 @@ e1000_set_lplu_state_pchlan
 
     Set Low Power Link Up state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         true to enable LPLU, false to disable
+    :type active: bool
 
 .. _`e1000_set_lplu_state_pchlan.description`:
 
@@ -907,11 +970,13 @@ e1000_set_d0_lplu_state_ich8lan
 
     Set Low Power Linkup D0 state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         true to enable LPLU, false to disable
+    :type active: bool
 
 .. _`e1000_set_d0_lplu_state_ich8lan.description`:
 
@@ -935,11 +1000,13 @@ e1000_set_d3_lplu_state_ich8lan
 
     Set Low Power Linkup D3 state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         true to enable LPLU, false to disable
+    :type active: bool
 
 .. _`e1000_set_d3_lplu_state_ich8lan.description`:
 
@@ -963,11 +1030,13 @@ e1000_valid_nvm_bank_detect_ich8lan
 
     finds out the valid bank 0 or 1
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 \*bank:
+    :param bank:
         pointer to the variable that returns the active bank
+    :type bank: u32 \*
 
 .. _`e1000_valid_nvm_bank_detect_ich8lan.description`:
 
@@ -986,17 +1055,21 @@ e1000_read_nvm_spt
 
     NVM access for SPT
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         The offset (in bytes) of the word(s) to read.
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         Size of data to read in words.
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         pointer to the word(s) to read at offset.
+    :type data: u16 \*
 
 .. _`e1000_read_nvm_spt.description`:
 
@@ -1014,17 +1087,21 @@ e1000_read_nvm_ich8lan
 
     Read word(s) from the NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         The offset (in bytes) of the word(s) to read.
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         Size of data to read in words
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         Pointer to the word(s) to read at offset.
+    :type data: u16 \*
 
 .. _`e1000_read_nvm_ich8lan.description`:
 
@@ -1042,8 +1119,9 @@ e1000_flash_cycle_init_ich8lan
 
     Initialize flash
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_flash_cycle_init_ich8lan.description`:
 
@@ -1062,11 +1140,13 @@ e1000_flash_cycle_ich8lan
 
     Starts flash cycle (read/write/erase)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 timeout:
+    :param timeout:
         maximum time to wait for completion
+    :type timeout: u32
 
 .. _`e1000_flash_cycle_ich8lan.description`:
 
@@ -1084,14 +1164,17 @@ e1000_read_flash_dword_ich8lan
 
     Read dword from flash
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         offset to data location
+    :type offset: u32
 
-    :param u32 \*data:
+    :param data:
         pointer to the location for storing the data
+    :type data: u32 \*
 
 .. _`e1000_read_flash_dword_ich8lan.description`:
 
@@ -1110,14 +1193,17 @@ e1000_read_flash_word_ich8lan
 
     Read word from flash
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         offset to data location
+    :type offset: u32
 
-    :param u16 \*data:
+    :param data:
         pointer to the location for storing the data
+    :type data: u16 \*
 
 .. _`e1000_read_flash_word_ich8lan.description`:
 
@@ -1136,14 +1222,17 @@ e1000_read_flash_byte_ich8lan
 
     Read byte from flash
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         The offset of the byte to read.
+    :type offset: u32
 
-    :param u8 \*data:
+    :param data:
         Pointer to a byte to store the value read.
+    :type data: u8 \*
 
 .. _`e1000_read_flash_byte_ich8lan.description`:
 
@@ -1161,17 +1250,21 @@ e1000_read_flash_data_ich8lan
 
     Read byte or word from NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         The offset (in bytes) of the byte or word to read.
+    :type offset: u32
 
-    :param u8 size:
+    :param size:
         Size of data to read, 1=byte 2=word
+    :type size: u8
 
-    :param u16 \*data:
+    :param data:
         Pointer to the word to store the value read.
+    :type data: u16 \*
 
 .. _`e1000_read_flash_data_ich8lan.description`:
 
@@ -1189,14 +1282,17 @@ e1000_read_flash_data32_ich8lan
 
     Read dword from NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         The offset (in bytes) of the dword to read.
+    :type offset: u32
 
-    :param u32 \*data:
+    :param data:
         Pointer to the dword to store the value read.
+    :type data: u32 \*
 
 .. _`e1000_read_flash_data32_ich8lan.description`:
 
@@ -1214,17 +1310,21 @@ e1000_write_nvm_ich8lan
 
     Write word(s) to the NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         The offset (in bytes) of the word(s) to write.
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         Size of data to write in words
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         Pointer to the word(s) to write at offset.
+    :type data: u16 \*
 
 .. _`e1000_write_nvm_ich8lan.description`:
 
@@ -1242,8 +1342,9 @@ e1000_update_nvm_checksum_spt
 
     Update the checksum for NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_update_nvm_checksum_spt.description`:
 
@@ -1266,8 +1367,9 @@ e1000_update_nvm_checksum_ich8lan
 
     Update the checksum for NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_update_nvm_checksum_ich8lan.description`:
 
@@ -1290,8 +1392,9 @@ e1000_validate_nvm_checksum_ich8lan
 
     Validate EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_validate_nvm_checksum_ich8lan.description`:
 
@@ -1311,8 +1414,9 @@ e1000e_write_protect_nvm_ich8lan
 
     Make the NVM read-only
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_write_protect_nvm_ich8lan.description`:
 
@@ -1334,17 +1438,21 @@ e1000_write_flash_data_ich8lan
 
     Writes bytes to the NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         The offset (in bytes) of the byte/word to read.
+    :type offset: u32
 
-    :param u8 size:
+    :param size:
         Size of data to read, 1=byte 2=word
+    :type size: u8
 
-    :param u16 data:
+    :param data:
         The byte(s) to write to the NVM.
+    :type data: u16
 
 .. _`e1000_write_flash_data_ich8lan.description`:
 
@@ -1362,14 +1470,17 @@ e1000_write_flash_data32_ich8lan
 
     Writes 4 bytes to the NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         The offset (in bytes) of the dwords to read.
+    :type offset: u32
 
-    :param u32 data:
+    :param data:
         The 4 bytes to write to the NVM.
+    :type data: u32
 
 .. _`e1000_write_flash_data32_ich8lan.description`:
 
@@ -1387,14 +1498,17 @@ e1000_write_flash_byte_ich8lan
 
     Write a single byte to NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         The index of the byte to read.
+    :type offset: u32
 
-    :param u8 data:
+    :param data:
         The byte to write to the NVM.
+    :type data: u8
 
 .. _`e1000_write_flash_byte_ich8lan.description`:
 
@@ -1412,14 +1526,17 @@ e1000_retry_write_flash_dword_ich8lan
 
     Writes a dword to NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         The offset of the word to write.
+    :type offset: u32
 
-    :param u32 dword:
+    :param dword:
         The dword to write to the NVM.
+    :type dword: u32
 
 .. _`e1000_retry_write_flash_dword_ich8lan.description`:
 
@@ -1438,14 +1555,17 @@ e1000_retry_write_flash_byte_ich8lan
 
     Writes a single byte to NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 offset:
+    :param offset:
         The offset of the byte to write.
+    :type offset: u32
 
-    :param u8 byte:
+    :param byte:
         The byte to write to the NVM.
+    :type byte: u8
 
 .. _`e1000_retry_write_flash_byte_ich8lan.description`:
 
@@ -1464,11 +1584,13 @@ e1000_erase_flash_bank_ich8lan
 
     Erase a bank (4k) from NVM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u32 bank:
+    :param bank:
         0 for first bank, 1 for second bank, etc.
+    :type bank: u32
 
 .. _`e1000_erase_flash_bank_ich8lan.description`:
 
@@ -1487,11 +1609,13 @@ e1000_valid_led_default_ich8lan
 
     Set the default LED settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*data:
+    :param data:
         Pointer to the LED settings
+    :type data: u16 \*
 
 .. _`e1000_valid_led_default_ich8lan.description`:
 
@@ -1511,8 +1635,9 @@ e1000_id_led_init_pchlan
 
     store LED configurations
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_id_led_init_pchlan.description`:
 
@@ -1537,8 +1662,9 @@ e1000_get_bus_info_ich8lan
 
     Get/Set the bus type and width
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_bus_info_ich8lan.description`:
 
@@ -1557,8 +1683,9 @@ e1000_reset_hw_ich8lan
 
     Reset the hardware
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_reset_hw_ich8lan.description`:
 
@@ -1577,8 +1704,9 @@ e1000_init_hw_ich8lan
 
     Initialize the hardware
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_hw_ich8lan.prepares-the-hardware-for-transmit-and-receive-by-doing-the-following`:
 
@@ -1601,8 +1729,9 @@ e1000_initialize_hw_bits_ich8lan
 
     Initialize required hardware bits
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_initialize_hw_bits_ich8lan.description`:
 
@@ -1621,8 +1750,9 @@ e1000_setup_link_ich8lan
 
     Setup flow control and link settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_link_ich8lan.description`:
 
@@ -1644,8 +1774,9 @@ e1000_setup_copper_link_ich8lan
 
     Configure MAC/PHY interface
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_copper_link_ich8lan.description`:
 
@@ -1665,8 +1796,9 @@ e1000_setup_copper_link_pch_lpt
 
     Configure MAC/PHY interface
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_copper_link_pch_lpt.description`:
 
@@ -1686,14 +1818,17 @@ e1000_get_link_up_info_ich8lan
 
     Get current link speed and duplex
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*speed:
+    :param speed:
         pointer to store current link speed
+    :type speed: u16 \*
 
-    :param u16 \*duplex:
+    :param duplex:
         pointer to store the current link duplex
+    :type duplex: u16 \*
 
 .. _`e1000_get_link_up_info_ich8lan.description`:
 
@@ -1713,8 +1848,9 @@ e1000_kmrn_lock_loss_workaround_ich8lan
 
     Kumeran workaround
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_kmrn_lock_loss_workaround_ich8lan.description`:
 
@@ -1747,11 +1883,13 @@ e1000e_set_kmrn_lock_loss_workaround_ich8lan
 
     Set Kumeran workaround state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool state:
+    :param state:
         boolean value used to set the current Kumeran workaround state
+    :type state: bool
 
 .. _`e1000e_set_kmrn_lock_loss_workaround_ich8lan.description`:
 
@@ -1770,8 +1908,9 @@ e1000e_igp3_phy_powerdown_workaround_ich8lan
 
     Power down workaround on D3
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_igp3_phy_powerdown_workaround_ich8lan.description`:
 
@@ -1793,8 +1932,9 @@ e1000e_gig_downshift_workaround_ich8lan
 
     WoL from S5 stops working
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_gig_downshift_workaround_ich8lan.description`:
 
@@ -1816,8 +1956,9 @@ e1000_suspend_workarounds_ich8lan
 
     workarounds needed during S0->Sx
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_suspend_workarounds_ich8lan.description`:
 
@@ -1843,8 +1984,9 @@ e1000_resume_workarounds_pchlan
 
     workarounds needed during Sx->S0
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_resume_workarounds_pchlan.description`:
 
@@ -1866,8 +2008,9 @@ e1000_cleanup_led_ich8lan
 
     Restore the default LED operation
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_cleanup_led_ich8lan.description`:
 
@@ -1885,8 +2028,9 @@ e1000_led_on_ich8lan
 
     Turn LEDs on
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_led_on_ich8lan.description`:
 
@@ -1904,8 +2048,9 @@ e1000_led_off_ich8lan
 
     Turn LEDs off
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_led_off_ich8lan.description`:
 
@@ -1923,8 +2068,9 @@ e1000_setup_led_pchlan
 
     Configures SW controllable LED
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_led_pchlan.description`:
 
@@ -1942,8 +2088,9 @@ e1000_cleanup_led_pchlan
 
     Restore the default LED operation
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_cleanup_led_pchlan.description`:
 
@@ -1961,8 +2108,9 @@ e1000_led_on_pchlan
 
     Turn LEDs on
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_led_on_pchlan.description`:
 
@@ -1980,8 +2128,9 @@ e1000_led_off_pchlan
 
     Turn LEDs off
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_led_off_pchlan.description`:
 
@@ -1999,8 +2148,9 @@ e1000_get_cfg_done_ich8lan
 
     Read config done bit after Full or PHY reset
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_cfg_done_ich8lan.description`:
 
@@ -2029,8 +2179,9 @@ e1000_power_down_phy_copper_ich8lan
 
     Remove link during PHY power down
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_power_down_phy_copper_ich8lan.description`:
 
@@ -2049,8 +2200,9 @@ e1000_clear_hw_cntrs_ich8lan
 
     Clear statistical counters
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_clear_hw_cntrs_ich8lan.description`:
 

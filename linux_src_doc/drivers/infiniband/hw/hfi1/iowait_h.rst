@@ -1,168 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/hfi1/iowait.h
 
-.. _`iowait`:
-
-struct iowait
-=============
-
-.. c:type:: struct iowait
-
-    linkage for delayed progress/waiting
-
-.. _`iowait.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iowait {
-        struct list_head list;
-        struct list_head tx_head;
-        int (*sleep)(struct sdma_engine *sde,struct iowait *wait,struct sdma_txreq *tx,uint seq,bool pkts_sent );
-        void (*wakeup)(struct iowait *wait, int reason);
-        void (*sdma_drained)(struct iowait *wait);
-        seqlock_t *lock;
-        struct work_struct iowork;
-        wait_queue_head_t wait_dma;
-        wait_queue_head_t wait_pio;
-        atomic_t sdma_busy;
-        atomic_t pio_busy;
-        u32 count;
-        u32 tx_limit;
-        u32 tx_count;
-        u8 starved_cnt;
-    }
-
-.. _`iowait.members`:
-
-Members
--------
-
-list
-    used to add/insert into QP/PQ wait lists
-
-tx_head
-    overflow list of sdma_txreq's
-
-sleep
-    no space callback
-
-wakeup
-    space callback wakeup
-
-sdma_drained
-    sdma count drained
-
-lock
-    uses to record the list head lock
-
-iowork
-    workqueue overhead
-
-wait_dma
-    wait for sdma_busy == 0
-
-wait_pio
-    wait for pio_busy == 0
-
-sdma_busy
-    # of packets in flight
-
-pio_busy
-    *undescribed*
-
-count
-    total number of descriptors in tx_head'ed list
-
-tx_limit
-    limit for overflow queuing
-
-tx_count
-    number of tx entry's in tx_head'ed list
-
-starved_cnt
-    *undescribed*
-
-.. _`iowait.description`:
-
-Description
------------
-
-This is to be embedded in user's state structure
-(QP or PQ).
-
-The sleep and wakeup members are a
-bit misnamed.   They do not strictly
-speaking sleep or wake up, but they
-are callbacks for the ULP to implement
-what ever queuing/dequeuing of
-the embedded iowait and its containing struct
-when a resource shortage like SDMA ring space is seen.
-
-Both potentially have locks help
-so sleeping is not allowed.
-
-The wait_dma member along with the iow
-
-The lock field is used by waiters to record
-the seqlock_t that guards the list head.
-Waiters explicity know that, but the destroy
-code that unwaits QPs does not.
-
-.. _`iowait_init`:
-
-iowait_init
-===========
-
-.. c:function:: void iowait_init(struct iowait *wait, u32 tx_limit, void (*func)(struct work_struct *work), int (*sleep)( struct sdma_engine *sde, struct iowait *wait, struct sdma_txreq *tx, uint seq, bool pkts_sent), void (*wakeup)(struct iowait *wait, int reason), void (*sdma_drained)(struct iowait *wait))
-
-    initialize wait structure
-
-    :param struct iowait \*wait:
-        wait struct to initialize
-
-    :param u32 tx_limit:
-        limit for overflow queuing
-
-    :param void (\*func)(struct work_struct \*work):
-        restart function for workqueue
-
-    :param int (\*sleep)( struct sdma_engine \*sde, struct iowait \*wait, struct sdma_txreq \*tx, uint seq, bool pkts_sent):
-        sleep function for no space
-
-    :param void (\*wakeup)(struct iowait \*wait, int reason):
-        *undescribed*
-
-    :param void (\*sdma_drained)(struct iowait \*wait):
-        *undescribed*
-
-.. _`iowait_init.description`:
-
-Description
------------
-
-This function initializes the iowait
-structure embedded in the QP or PQ.
-
 .. _`iowait_schedule`:
 
 iowait_schedule
 ===============
 
-.. c:function:: void iowait_schedule(struct iowait *wait, struct workqueue_struct *wq, int cpu)
+.. c:function:: bool iowait_schedule(struct iowait *wait, struct workqueue_struct *wq, int cpu)
 
-    initialize wait structure
+    schedule the default send engine work
 
-    :param struct iowait \*wait:
+    :param wait:
         wait struct to schedule
+    :type wait: struct iowait \*
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue for schedule
+    :type wq: struct workqueue_struct \*
 
-    :param int cpu:
+    :param cpu:
         cpu
+    :type cpu: int
 
 .. _`iowait_sdma_drain`:
 
@@ -173,8 +31,9 @@ iowait_sdma_drain
 
     wait for DMAs to drain
 
-    :param struct iowait \*wait:
+    :param wait:
         iowait structure
+    :type wait: struct iowait \*
 
 .. _`iowait_sdma_drain.description`:
 
@@ -193,8 +52,9 @@ iowait_sdma_pending
 
     return sdma pending count
 
-    :param struct iowait \*wait:
+    :param wait:
         iowait structure
+    :type wait: struct iowait \*
 
 .. _`iowait_sdma_inc`:
 
@@ -205,8 +65,9 @@ iowait_sdma_inc
 
     note sdma io pending
 
-    :param struct iowait \*wait:
+    :param wait:
         iowait structure
+    :type wait: struct iowait \*
 
 .. _`iowait_sdma_add`:
 
@@ -217,11 +78,13 @@ iowait_sdma_add
 
     add count to pending
 
-    :param struct iowait \*wait:
+    :param wait:
         iowait structure
+    :type wait: struct iowait \*
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
 .. _`iowait_sdma_dec`:
 
@@ -232,8 +95,9 @@ iowait_sdma_dec
 
     note sdma complete
 
-    :param struct iowait \*wait:
+    :param wait:
         iowait structure
+    :type wait: struct iowait \*
 
 .. _`iowait_pio_drain`:
 
@@ -244,8 +108,9 @@ iowait_pio_drain
 
     wait for pios to drain
 
-    :param struct iowait \*wait:
+    :param wait:
         iowait structure
+    :type wait: struct iowait \*
 
 .. _`iowait_pio_drain.description`:
 
@@ -264,8 +129,9 @@ iowait_pio_pending
 
     return pio pending count
 
-    :param struct iowait \*wait:
+    :param wait:
         iowait structure
+    :type wait: struct iowait \*
 
 .. _`iowait_pio_inc`:
 
@@ -276,8 +142,9 @@ iowait_pio_inc
 
     note pio pending
 
-    :param struct iowait \*wait:
+    :param wait:
         iowait structure
+    :type wait: struct iowait \*
 
 .. _`iowait_pio_dec`:
 
@@ -288,8 +155,9 @@ iowait_pio_dec
 
     note pio complete
 
-    :param struct iowait \*wait:
+    :param wait:
         iowait structure
+    :type wait: struct iowait \*
 
 .. _`iowait_drain_wakeup`:
 
@@ -300,8 +168,9 @@ iowait_drain_wakeup
 
     trigger \ :c:func:`iowait_drain`\  waiter
 
-    :param struct iowait \*wait:
+    :param wait:
         iowait structure
+    :type wait: struct iowait \*
 
 .. _`iowait_drain_wakeup.description`:
 
@@ -315,19 +184,20 @@ This will trigger any waiters.
 iowait_get_txhead
 =================
 
-.. c:function:: struct sdma_txreq *iowait_get_txhead(struct iowait *wait)
+.. c:function:: struct sdma_txreq *iowait_get_txhead(struct iowait_work *wait)
 
     get packet off of iowait list
 
-    :param struct iowait \*wait:
+    :param wait:
         *undescribed*
+    :type wait: struct iowait_work \*
 
 .. _`iowait_get_txhead.description`:
 
 Description
 -----------
 
-\ ``wait``\  wait struture
+\ ``wait``\  iowait_work struture
 
 .. _`iowait_queue`:
 
@@ -338,14 +208,17 @@ iowait_queue
 
     Put the iowait on a wait queue
 
-    :param bool pkts_sent:
+    :param pkts_sent:
         have some packets been sent before queuing?
+    :type pkts_sent: bool
 
-    :param struct iowait \*w:
+    :param w:
         the iowait struct
+    :type w: struct iowait \*
 
-    :param struct list_head \*wait_head:
+    :param wait_head:
         the wait queue
+    :type wait_head: struct list_head \*
 
 .. _`iowait_queue.description`:
 
@@ -365,11 +238,13 @@ iowait_starve_clear
 
     clear the wait queue's starve count
 
-    :param bool pkts_sent:
+    :param pkts_sent:
         have some packets been sent?
+    :type pkts_sent: bool
 
-    :param struct iowait \*w:
+    :param w:
         the iowait struct
+    :type w: struct iowait \*
 
 .. _`iowait_starve_clear.description`:
 
@@ -388,18 +263,22 @@ iowait_starve_find_max
 
     Find the maximum of the starve count
 
-    :param struct iowait \*w:
+    :param w:
         the iowait struct
+    :type w: struct iowait \*
 
-    :param u8 \*max:
+    :param max:
         a variable containing the max starve count
+    :type max: u8 \*
 
-    :param uint idx:
+    :param idx:
         the index of the current iowait in an array
+    :type idx: uint
 
-    :param uint \*max_idx:
+    :param max_idx:
         a variable containing the array index for the
         iowait entry that has the max starve count
+    :type max_idx: uint \*
 
 .. _`iowait_starve_find_max.description`:
 
@@ -416,12 +295,69 @@ count is larger.
 iowait_packet_queued
 ====================
 
-.. c:function:: bool iowait_packet_queued(struct iowait *wait)
+.. c:function:: bool iowait_packet_queued(struct iowait_work *wait)
 
-    determine if a packet is already built
+    determine if a packet is queued
 
-    :param struct iowait \*wait:
-        the wait structure
+    :param wait:
+        the iowait_work structure
+    :type wait: struct iowait_work \*
+
+.. _`iowait_inc_wait_count`:
+
+iowait_inc_wait_count
+=====================
+
+.. c:function:: void iowait_inc_wait_count(struct iowait_work *w, u16 n)
+
+    increment wait counts
+
+    :param w:
+        the log work struct
+    :type w: struct iowait_work \*
+
+    :param n:
+        the count
+    :type n: u16
+
+.. _`iowait_get_tid_work`:
+
+iowait_get_tid_work
+===================
+
+.. c:function:: struct iowait_work *iowait_get_tid_work(struct iowait *w)
+
+    return iowait_work for tid SE
+
+    :param w:
+        the iowait struct
+    :type w: struct iowait \*
+
+.. _`iowait_get_ib_work`:
+
+iowait_get_ib_work
+==================
+
+.. c:function:: struct iowait_work *iowait_get_ib_work(struct iowait *w)
+
+    return iowait_work for ib SE
+
+    :param w:
+        the iowait struct
+    :type w: struct iowait \*
+
+.. _`iowait_ioww_to_iow`:
+
+iowait_ioww_to_iow
+==================
+
+.. c:function:: struct iowait *iowait_ioww_to_iow(struct iowait_work *w)
+
+    return iowait given iowait_work
+
+    :param w:
+        the iowait_work struct
+    :type w: struct iowait_work \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ ieee80211_radiotap_iterator_init
 
     radiotap parser iterator initialization
 
-    :param struct ieee80211_radiotap_iterator \*iterator:
+    :param iterator:
         radiotap_iterator to initialize
+    :type iterator: struct ieee80211_radiotap_iterator \*
 
-    :param struct ieee80211_radiotap_header \*radiotap_header:
+    :param radiotap_header:
         radiotap header to parse
+    :type radiotap_header: struct ieee80211_radiotap_header \*
 
-    :param int max_length:
+    :param max_length:
         total length we can parse into (eg, whole packet length)
+    :type max_length: int
 
-    :param const struct ieee80211_radiotap_vendor_namespaces \*vns:
+    :param vns:
         *undescribed*
+    :type vns: const struct ieee80211_radiotap_vendor_namespaces \*
 
 .. _`ieee80211_radiotap_iterator_init.return`:
 
@@ -84,8 +88,9 @@ ieee80211_radiotap_iterator_next
 
     return next radiotap parser iterator arg
 
-    :param struct ieee80211_radiotap_iterator \*iterator:
+    :param iterator:
         radiotap_iterator to move to next arg (if any)
+    :type iterator: struct ieee80211_radiotap_iterator \*
 
 .. _`ieee80211_radiotap_iterator_next.return`:
 

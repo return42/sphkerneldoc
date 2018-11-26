@@ -10,11 +10,13 @@ acpi_gsi_to_irq
 
     Retrieve the linux irq number for a given GSI
 
-    :param u32 gsi:
+    :param gsi:
         GSI IRQ number to map
+    :type gsi: u32
 
-    :param unsigned int \*irq:
+    :param irq:
         pointer where linux IRQ number is stored
+    :type irq: unsigned int \*
 
 .. _`acpi_gsi_to_irq.description`:
 
@@ -40,17 +42,21 @@ acpi_register_gsi
 
     Map a GSI to a linux IRQ number
 
-    :param struct device \*dev:
+    :param dev:
         device for which IRQ has to be mapped
+    :type dev: struct device \*
 
-    :param u32 gsi:
+    :param gsi:
         GSI IRQ number
+    :type gsi: u32
 
-    :param int trigger:
+    :param trigger:
         trigger type of the GSI number to be mapped
+    :type trigger: int
 
-    :param int polarity:
+    :param polarity:
         polarity of the GSI to be mapped
+    :type polarity: int
 
 .. _`acpi_register_gsi.return`:
 
@@ -69,8 +75,9 @@ acpi_unregister_gsi
 
     Free a GSI<->linux IRQ number mapping
 
-    :param u32 gsi:
+    :param gsi:
         GSI IRQ number
+    :type gsi: u32
 
 .. _`acpi_get_irq_source_fwhandle`:
 
@@ -81,8 +88,9 @@ acpi_get_irq_source_fwhandle
 
     Retrieve fwhandle from IRQ resource source.
 
-    :param const struct acpi_resource_source \*source:
+    :param source:
         acpi_resource_source to use for the lookup.
+    :type source: const struct acpi_resource_source \*
 
 .. _`acpi_get_irq_source_fwhandle.description`:
 
@@ -108,23 +116,29 @@ acpi_irq_parse_one_match
 
     Handle a matching IRQ resource.
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         matching fwnode
+    :type fwnode: struct fwnode_handle \*
 
-    :param u32 hwirq:
+    :param hwirq:
         hardware IRQ number
+    :type hwirq: u32
 
-    :param u8 triggering:
+    :param triggering:
         triggering attributes of hwirq
+    :type triggering: u8
 
-    :param u8 polarity:
+    :param polarity:
         polarity attributes of hwirq
+    :type polarity: u8
 
-    :param u8 shareable:
+    :param shareable:
         shareable attributes of hwirq
+    :type shareable: u8
 
-    :param struct acpi_irq_parse_one_ctx \*ctx:
+    :param ctx:
         acpi_irq_parse_one_ctx updated by this function
+    :type ctx: struct acpi_irq_parse_one_ctx \*
 
 .. _`acpi_irq_parse_one_match.description`:
 
@@ -143,11 +157,13 @@ acpi_irq_parse_one_cb
 
     Handle the given resource.
 
-    :param struct acpi_resource \*ares:
+    :param ares:
         resource to handle
+    :type ares: struct acpi_resource \*
 
-    :param void \*context:
+    :param context:
         context for the walk
+    :type context: void \*
 
 .. _`acpi_irq_parse_one_cb.description`:
 
@@ -179,17 +195,21 @@ acpi_irq_parse_one
 
     Resolve an interrupt for a device
 
-    :param acpi_handle handle:
+    :param handle:
         the device whose interrupt is to be resolved
+    :type handle: acpi_handle
 
-    :param unsigned int index:
+    :param index:
         index of the interrupt to resolve
+    :type index: unsigned int
 
-    :param struct irq_fwspec \*fwspec:
+    :param fwspec:
         structure irq_fwspec filled by this function
+    :type fwspec: struct irq_fwspec \*
 
-    :param unsigned long \*flags:
+    :param flags:
         resource flags filled by this function
+    :type flags: unsigned long \*
 
 .. _`acpi_irq_parse_one.description`:
 
@@ -217,14 +237,17 @@ acpi_irq_get
 
     Lookup an ACPI IRQ resource and use it to initialize resource.
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI device handle
+    :type handle: acpi_handle
 
-    :param unsigned int index:
+    :param index:
         ACPI IRQ resource index to lookup
+    :type index: unsigned int
 
-    :param struct resource \*res:
+    :param res:
         Linux IRQ resource to initialize
+    :type res: struct resource \*
 
 .. _`acpi_irq_get.description`:
 
@@ -252,12 +275,14 @@ acpi_set_irq_model
 
     Setup the GSI irqdomain information
 
-    :param enum acpi_irq_model_id model:
+    :param model:
         the value assigned to acpi_irq_model
+    :type model: enum acpi_irq_model_id
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         the irq_domain identifier for mapping and looking up
         GSI interrupts
+    :type fwnode: struct fwnode_handle \*
 
 .. This file was automatic generated / don't edit.
 

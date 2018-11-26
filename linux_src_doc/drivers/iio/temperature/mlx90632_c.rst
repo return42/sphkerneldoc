@@ -10,8 +10,9 @@ mlx90632_perform_measurement
 
     Trigger and retrieve current measurement cycle \ ````\ \*data: pointer to mlx90632_data object containing regmap information
 
-    :param struct mlx90632_data \*data:
+    :param data:
         *undescribed*
+    :type data: struct mlx90632_data \*
 
 .. _`mlx90632_perform_measurement.description`:
 

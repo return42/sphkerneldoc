@@ -10,11 +10,13 @@ max98090_mic_detect
 
     Enable microphone detection via the MAX98090 IRQ
 
-    :param struct snd_soc_component \*component:
+    :param component:
         MAX98090 component
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         jack to report detection events on
+    :type jack: struct snd_soc_jack \*
 
 .. _`max98090_mic_detect.description`:
 

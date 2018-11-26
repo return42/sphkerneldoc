@@ -10,9 +10,10 @@ alloc_fddidev
 
     Register FDDI device
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         Size of additional driver-private structure to be allocated
         for this FDDI device
+    :type sizeof_priv: int
 
 .. _`alloc_fddidev.description`:
 

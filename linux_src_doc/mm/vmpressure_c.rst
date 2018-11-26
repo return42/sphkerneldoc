@@ -10,20 +10,25 @@ vmpressure
 
     Account memory pressure through scanned/reclaimed ratio
 
-    :param gfp_t gfp:
+    :param gfp:
         reclaimer's gfp mask
+    :type gfp: gfp_t
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         cgroup memory controller handle
+    :type memcg: struct mem_cgroup \*
 
-    :param bool tree:
+    :param tree:
         legacy subtree mode
+    :type tree: bool
 
-    :param unsigned long scanned:
+    :param scanned:
         number of pages scanned
+    :type scanned: unsigned long
 
-    :param unsigned long reclaimed:
+    :param reclaimed:
         number of pages reclaimed
+    :type reclaimed: unsigned long
 
 .. _`vmpressure.description`:
 
@@ -58,14 +63,17 @@ vmpressure_prio
 
     Account memory pressure through reclaimer priority level
 
-    :param gfp_t gfp:
+    :param gfp:
         reclaimer's gfp mask
+    :type gfp: gfp_t
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         cgroup memory controller handle
+    :type memcg: struct mem_cgroup \*
 
-    :param int prio:
+    :param prio:
         reclaimer's priority
+    :type prio: int
 
 .. _`vmpressure_prio.description`:
 
@@ -86,14 +94,17 @@ vmpressure_register_event
 
     Bind vmpressure notifications to an eventfd
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg that is interested in vmpressure notifications
+    :type memcg: struct mem_cgroup \*
 
-    :param struct eventfd_ctx \*eventfd:
+    :param eventfd:
         eventfd context to link notifications with
+    :type eventfd: struct eventfd_ctx \*
 
-    :param const char \*args:
+    :param args:
         event arguments (pressure level threshold, optional mode)
+    :type args: const char \*
 
 .. _`vmpressure_register_event.description`:
 
@@ -118,11 +129,13 @@ vmpressure_unregister_event
 
     Unbind eventfd from vmpressure
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg handle
+    :type memcg: struct mem_cgroup \*
 
-    :param struct eventfd_ctx \*eventfd:
+    :param eventfd:
         eventfd context that was used to link vmpressure with the \ ``cg``\ 
+    :type eventfd: struct eventfd_ctx \*
 
 .. _`vmpressure_unregister_event.description`:
 
@@ -144,8 +157,9 @@ vmpressure_init
 
     Initialize vmpressure control structure
 
-    :param struct vmpressure \*vmpr:
+    :param vmpr:
         Structure to be initialized
+    :type vmpr: struct vmpressure \*
 
 .. _`vmpressure_init.description`:
 
@@ -164,8 +178,9 @@ vmpressure_cleanup
 
     shuts down vmpressure control structure
 
-    :param struct vmpressure \*vmpr:
+    :param vmpr:
         Structure to be cleaned up
+    :type vmpr: struct vmpressure \*
 
 .. _`vmpressure_cleanup.description`:
 

@@ -10,8 +10,9 @@ drm_color_lut_size
 
     calculate the number of entries in the LUT
 
-    :param const struct drm_property_blob \*blob:
+    :param blob:
         blob containing the LUT
+    :type blob: const struct drm_property_blob \*
 
 .. _`drm_color_lut_size.return`:
 

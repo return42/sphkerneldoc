@@ -10,14 +10,17 @@
 
     find the first device with a given source address.
 
-    :param struct net \*net:
+    :param net:
         the net namespace
+    :type net: struct net \*
 
-    :param __be32 addr:
+    :param addr:
         the source address
+    :type addr: __be32
 
-    :param bool devref:
+    :param devref:
         if true, take a reference on the found device
+    :type devref: bool
 
 .. _`__ip_dev_find.description`:
 

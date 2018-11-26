@@ -151,14 +151,17 @@ ttm_pages_put
 
 .. c:function:: void ttm_pages_put(struct page  *pages, unsigned npages, unsigned int order)
 
-    :param struct page  \*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct page  \*
 
-    :param unsigned npages:
+    :param npages:
         *undescribed*
+    :type npages: unsigned
 
-    :param unsigned int order:
+    :param order:
         *undescribed*
+    :type order: unsigned int
 
 .. _`ttm_page_pool_free`:
 
@@ -167,14 +170,17 @@ ttm_page_pool_free
 
 .. c:function:: int ttm_page_pool_free(struct ttm_page_pool *pool, unsigned nr_free, bool use_static)
 
-    :param struct ttm_page_pool \*pool:
+    :param pool:
         to free the pages from
+    :type pool: struct ttm_page_pool \*
 
-    :param unsigned nr_free:
+    :param nr_free:
         *undescribed*
+    :type nr_free: unsigned
 
-    :param bool use_static:
+    :param use_static:
         Safe to use static buffer
+    :type use_static: bool
 
 .. _`ttm_page_pool_free.description`:
 
@@ -191,11 +197,13 @@ ttm_pool_shrink_scan
 
 .. c:function:: unsigned long ttm_pool_shrink_scan(struct shrinker *shrink, struct shrink_control *sc)
 
-    :param struct shrinker \*shrink:
+    :param shrink:
         *undescribed*
+    :type shrink: struct shrinker \*
 
-    :param struct shrink_control \*sc:
+    :param sc:
         *undescribed*
+    :type sc: struct shrink_control \*
 
 .. _`ttm_pool_shrink_scan.xxx`:
 
@@ -215,20 +223,25 @@ ttm_handle_caching_state_failure
 
     any pages that have changed their caching state already put them to the pool.
 
-    :param struct list_head \*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct list_head \*
 
-    :param int ttm_flags:
+    :param ttm_flags:
         *undescribed*
+    :type ttm_flags: int
 
-    :param enum ttm_caching_state cstate:
+    :param cstate:
         *undescribed*
+    :type cstate: enum ttm_caching_state
 
-    :param struct page \*\*failed_pages:
+    :param failed_pages:
         *undescribed*
+    :type failed_pages: struct page \*\*
 
-    :param unsigned cpages:
+    :param cpages:
         *undescribed*
+    :type cpages: unsigned
 
 .. _`ttm_alloc_new_pages`:
 
@@ -237,23 +250,29 @@ ttm_alloc_new_pages
 
 .. c:function:: int ttm_alloc_new_pages(struct list_head *pages, gfp_t gfp_flags, int ttm_flags, enum ttm_caching_state cstate, unsigned count, unsigned order)
 
-    :param struct list_head \*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct list_head \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         *undescribed*
+    :type gfp_flags: gfp_t
 
-    :param int ttm_flags:
+    :param ttm_flags:
         *undescribed*
+    :type ttm_flags: int
 
-    :param enum ttm_caching_state cstate:
+    :param cstate:
         *undescribed*
+    :type cstate: enum ttm_caching_state
 
-    :param unsigned count:
+    :param count:
         *undescribed*
+    :type count: unsigned
 
-    :param unsigned order:
+    :param order:
         *undescribed*
+    :type order: unsigned
 
 .. _`ttm_alloc_new_pages.description`:
 
@@ -272,20 +291,25 @@ ttm_page_pool_fill_locked
 
     pages is small.
 
-    :param struct ttm_page_pool \*pool:
+    :param pool:
         *undescribed*
+    :type pool: struct ttm_page_pool \*
 
-    :param int ttm_flags:
+    :param ttm_flags:
         *undescribed*
+    :type ttm_flags: int
 
-    :param enum ttm_caching_state cstate:
+    :param cstate:
         *undescribed*
+    :type cstate: enum ttm_caching_state
 
-    :param unsigned count:
+    :param count:
         *undescribed*
+    :type count: unsigned
 
-    :param unsigned long \*irq_flags:
+    :param irq_flags:
         *undescribed*
+    :type irq_flags: unsigned long \*
 
 .. _`ttm_page_pool_get_pages`:
 
@@ -294,23 +318,29 @@ ttm_page_pool_get_pages
 
 .. c:function:: int ttm_page_pool_get_pages(struct ttm_page_pool *pool, struct list_head *pages, int ttm_flags, enum ttm_caching_state cstate, unsigned count, unsigned order)
 
-    :param struct ttm_page_pool \*pool:
+    :param pool:
         *undescribed*
+    :type pool: struct ttm_page_pool \*
 
-    :param struct list_head \*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct list_head \*
 
-    :param int ttm_flags:
+    :param ttm_flags:
         *undescribed*
+    :type ttm_flags: int
 
-    :param enum ttm_caching_state cstate:
+    :param cstate:
         *undescribed*
+    :type cstate: enum ttm_caching_state
 
-    :param unsigned count:
+    :param count:
         *undescribed*
+    :type count: unsigned
 
-    :param unsigned order:
+    :param order:
         *undescribed*
+    :type order: unsigned
 
 .. _`ttm_page_pool_get_pages.description`:
 

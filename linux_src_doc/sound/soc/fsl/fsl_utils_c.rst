@@ -8,33 +8,35 @@ fsl_asoc_get_dma_channel
 
 .. c:function:: int fsl_asoc_get_dma_channel(struct device_node *ssi_np, const char *name, struct snd_soc_dai_link *dai, unsigned int *dma_channel_id, unsigned int *dma_id)
 
-    :param struct device_node \*ssi_np:
-        *undescribed*
+    determine the dma channel for a SSI node
 
-    :param const char \*name:
-        *undescribed*
+    :param ssi_np:
+        pointer to the SSI device tree node
+    :type ssi_np: struct device_node \*
 
-    :param struct snd_soc_dai_link \*dai:
-        *undescribed*
+    :param name:
+        name of the phandle pointing to the dma channel
+    :type name: const char \*
 
-    :param unsigned int \*dma_channel_id:
-        *undescribed*
+    :param dai:
+        ASoC DAI link pointer to be filled with platform_name
+    :type dai: struct snd_soc_dai_link \*
 
-    :param unsigned int \*dma_id:
-        *undescribed*
+    :param dma_channel_id:
+        dma channel id to be returned
+    :type dma_channel_id: unsigned int \*
 
-.. _`fsl_asoc_get_dma_channel.author`:
+    :param dma_id:
+        dma id to be returned
+    :type dma_id: unsigned int \*
 
-Author
-------
+.. _`fsl_asoc_get_dma_channel.description`:
 
-Timur Tabi <timur@freescale.com>
+Description
+-----------
 
-Copyright 2010 Freescale Semiconductor, Inc.
-
-This file is licensed under the terms of the GNU General Public License
-version 2.  This program is licensed "as is" without any warranty of any
-kind, whether express or implied.
+This function determines the dma and channel id for given SSI node.  It
+also discovers the platform_name for the ASoC DAI link.
 
 .. This file was automatic generated / don't edit.
 

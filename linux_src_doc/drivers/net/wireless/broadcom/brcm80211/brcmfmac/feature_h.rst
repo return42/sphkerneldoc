@@ -10,8 +10,9 @@ brcmf_feat_attach
 
     determine features and quirks.
 
-    :param struct brcmf_pub \*drvr:
+    :param drvr:
         driver instance.
+    :type drvr: struct brcmf_pub \*
 
 .. _`brcmf_feat_debugfs_create`:
 
@@ -22,8 +23,9 @@ brcmf_feat_debugfs_create
 
     create debugfs entries.
 
-    :param struct brcmf_pub \*drvr:
+    :param drvr:
         driver instance.
+    :type drvr: struct brcmf_pub \*
 
 .. _`brcmf_feat_is_enabled`:
 
@@ -34,11 +36,13 @@ brcmf_feat_is_enabled
 
     query feature.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interface instance.
+    :type ifp: struct brcmf_if \*
 
-    :param enum brcmf_feat_id id:
+    :param id:
         feature id to check.
+    :type id: enum brcmf_feat_id
 
 .. _`brcmf_feat_is_enabled.return`:
 
@@ -56,11 +60,13 @@ brcmf_feat_is_quirk_enabled
 
     query chip quirk.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interface instance.
+    :type ifp: struct brcmf_if \*
 
-    :param enum brcmf_feat_quirk quirk:
+    :param quirk:
         quirk id to check.
+    :type quirk: enum brcmf_feat_quirk
 
 .. _`brcmf_feat_is_quirk_enabled.return`:
 

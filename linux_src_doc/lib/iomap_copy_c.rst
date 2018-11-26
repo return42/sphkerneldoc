@@ -10,14 +10,17 @@
 
     copy data to MMIO space, in 32-bit units
 
-    :param void __iomem \*to:
+    :param to:
         destination, in MMIO space (must be 32-bit aligned)
+    :type to: void __iomem \*
 
-    :param const void \*from:
+    :param from:
         source (must be 32-bit aligned)
+    :type from: const void \*
 
-    :param size_t count:
+    :param count:
         number of 32-bit quantities to copy
+    :type count: size_t
 
 .. _`__iowrite32_copy.description`:
 
@@ -37,14 +40,17 @@ performed afterwards.
 
     copy data from MMIO space, in 32-bit units
 
-    :param void \*to:
+    :param to:
         destination (must be 32-bit aligned)
+    :type to: void \*
 
-    :param const void __iomem \*from:
+    :param from:
         source, in MMIO space (must be 32-bit aligned)
+    :type from: const void __iomem \*
 
-    :param size_t count:
+    :param count:
         number of 32-bit quantities to copy
+    :type count: size_t
 
 .. _`__ioread32_copy.description`:
 
@@ -64,14 +70,17 @@ performed afterwards.
 
     copy data to MMIO space, in 64-bit or 32-bit units
 
-    :param void __iomem \*to:
+    :param to:
         destination, in MMIO space (must be 64-bit aligned)
+    :type to: void __iomem \*
 
-    :param const void \*from:
+    :param from:
         source (must be 64-bit aligned)
+    :type from: const void \*
 
-    :param size_t count:
+    :param count:
         number of 64-bit quantities to copy
+    :type count: size_t
 
 .. _`__iowrite64_copy.description`:
 

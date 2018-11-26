@@ -22,6 +22,8 @@ Definition
         bool tm_busy;
         atomic_t r1_ldio_hint;
         u8 interface_type;
+        u8 task_abort_tmo;
+        u8 target_reset_tmo;
     }
 
 .. _`mr_priv_device.members`:
@@ -39,6 +41,12 @@ r1_ldio_hint
     *undescribed*
 
 interface_type
+    *undescribed*
+
+task_abort_tmo
+    *undescribed*
+
+target_reset_tmo
     *undescribed*
 
 .. This file was automatic generated / don't edit.

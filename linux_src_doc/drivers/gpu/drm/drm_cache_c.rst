@@ -10,11 +10,13 @@ drm_clflush_pages
 
     Flush dcache lines of a set of pages.
 
-    :param struct page  \*pages:
+    :param pages:
         List of pages to be flushed.
+    :type pages: struct page  \*
 
-    :param unsigned long num_pages:
+    :param num_pages:
         Number of pages in the array.
+    :type num_pages: unsigned long
 
 .. _`drm_clflush_pages.description`:
 
@@ -33,8 +35,9 @@ drm_clflush_sg
 
     Flush dcache lines pointing to a scather-gather.
 
-    :param struct sg_table \*st:
+    :param st:
         struct sg_table.
+    :type st: struct sg_table \*
 
 .. _`drm_clflush_sg.description`:
 
@@ -53,11 +56,13 @@ drm_clflush_virt_range
 
     Flush dcache lines of a region
 
-    :param void \*addr:
+    :param addr:
         Initial kernel memory address.
+    :type addr: void \*
 
-    :param unsigned long length:
+    :param length:
         Region size.
+    :type length: unsigned long
 
 .. _`drm_clflush_virt_range.description`:
 

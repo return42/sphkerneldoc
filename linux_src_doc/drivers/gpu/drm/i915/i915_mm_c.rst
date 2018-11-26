@@ -10,20 +10,25 @@ remap_io_mapping
 
     remap an IO mapping to userspace
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         user vma to map to
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         target user address to start at
+    :type addr: unsigned long
 
-    :param unsigned long pfn:
+    :param pfn:
         physical address of kernel memory
+    :type pfn: unsigned long
 
-    :param unsigned long size:
+    :param size:
         size of map area
+    :type size: unsigned long
 
-    :param struct io_mapping \*iomap:
+    :param iomap:
         the source io_mapping
+    :type iomap: struct io_mapping \*
 
 .. _`remap_io_mapping.note`:
 

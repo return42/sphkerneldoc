@@ -10,14 +10,17 @@ stm_ftrace_write
 
     write data to STM via 'stm_ftrace' source
 
-    :param struct trace_export \*export:
+    :param export:
         *undescribed*
+    :type export: struct trace_export \*
 
-    :param const void \*buf:
+    :param buf:
         buffer containing the data packet
+    :type buf: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of the data packet
+    :type len: unsigned int
 
 .. This file was automatic generated / don't edit.
 

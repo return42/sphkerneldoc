@@ -10,8 +10,9 @@ ixgbe_set_pcie_completion_timeout
 
     set pci-e completion timeout
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_set_pcie_completion_timeout.description`:
 
@@ -33,8 +34,9 @@ ixgbe_init_phy_ops_82598
 
     PHY/SFP specific init
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_init_phy_ops_82598.description`:
 
@@ -54,8 +56,9 @@ ixgbe_start_hw_82598
 
     Prepare hardware for Tx/Rx
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_start_hw_82598.description`:
 
@@ -75,14 +78,17 @@ ixgbe_get_link_capabilities_82598
 
     Determines link capabilities
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed \*speed:
+    :param speed:
         pointer to link speed
+    :type speed: ixgbe_link_speed \*
 
-    :param bool \*autoneg:
+    :param autoneg:
         boolean auto-negotiation value
+    :type autoneg: bool \*
 
 .. _`ixgbe_get_link_capabilities_82598.description`:
 
@@ -100,8 +106,9 @@ ixgbe_get_media_type_82598
 
     Determines media type
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_media_type_82598.description`:
 
@@ -119,8 +126,9 @@ ixgbe_fc_enable_82598
 
     Enable flow control
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_fc_enable_82598.description`:
 
@@ -138,11 +146,13 @@ ixgbe_start_mac_link_82598
 
     Configures MAC link settings
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         true when waiting for completion is needed
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbe_start_mac_link_82598.description`:
 
@@ -161,8 +171,9 @@ ixgbe_validate_link_ready
 
     Function looks for phy link
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_validate_link_ready.description`:
 
@@ -181,17 +192,21 @@ ixgbe_check_mac_link_82598
 
     Get link/speed status
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed \*speed:
+    :param speed:
         pointer to link speed
+    :type speed: ixgbe_link_speed \*
 
-    :param bool \*link_up:
+    :param link_up:
         true is link is up, false otherwise
+    :type link_up: bool \*
 
-    :param bool link_up_wait_to_complete:
+    :param link_up_wait_to_complete:
         bool used to wait for link up or not
+    :type link_up_wait_to_complete: bool
 
 .. _`ixgbe_check_mac_link_82598.description`:
 
@@ -209,14 +224,17 @@ ixgbe_setup_mac_link_82598
 
     Set MAC link speed
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         new link speed
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         true when waiting for completion is needed
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbe_setup_mac_link_82598.description`:
 
@@ -234,14 +252,17 @@ ixgbe_setup_copper_link_82598
 
     Set the PHY autoneg advertised field
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         new link speed
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         true if waiting is needed to complete
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbe_setup_copper_link_82598.description`:
 
@@ -259,8 +280,9 @@ ixgbe_reset_hw_82598
 
     Performs hardware reset
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_reset_hw_82598.description`:
 
@@ -280,14 +302,17 @@ ixgbe_set_vmdq_82598
 
     Associate a VMDq set index with a rx address
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware struct
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 rar:
+    :param rar:
         receive address register index to associate with a VMDq index
+    :type rar: u32
 
-    :param u32 vmdq:
+    :param vmdq:
         VMDq set index
+    :type vmdq: u32
 
 .. _`ixgbe_clear_vmdq_82598`:
 
@@ -298,14 +323,17 @@ ixgbe_clear_vmdq_82598
 
     Disassociate a VMDq set index from an rx address
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware struct
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 rar:
+    :param rar:
         receive address register index to associate with a VMDq index
+    :type rar: u32
 
-    :param u32 vmdq:
+    :param vmdq:
         VMDq clear index (not used in 82598, but elsewhere)
+    :type vmdq: u32
 
 .. _`ixgbe_set_vfta_82598`:
 
@@ -316,20 +344,25 @@ ixgbe_set_vfta_82598
 
     Set VLAN filter table
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 vlan:
+    :param vlan:
         VLAN id to write to VLAN filter
+    :type vlan: u32
 
-    :param u32 vind:
+    :param vind:
         VMDq output index that maps queue to VLAN id in VFTA
+    :type vind: u32
 
-    :param bool vlan_on:
+    :param vlan_on:
         boolean flag to turn on/off VLAN in VFTA
+    :type vlan_on: bool
 
-    :param bool vlvf_bypass:
+    :param vlvf_bypass:
         boolean flag - unused
+    :type vlvf_bypass: bool
 
 .. _`ixgbe_set_vfta_82598.description`:
 
@@ -347,8 +380,9 @@ ixgbe_clear_vfta_82598
 
     Clear VLAN filter table
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_clear_vfta_82598.description`:
 
@@ -366,14 +400,17 @@ ixgbe_read_analog_reg8_82598
 
     Reads 8 bit Atlas analog register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg:
+    :param reg:
         analog register to read
+    :type reg: u32
 
-    :param u8 \*val:
+    :param val:
         read value
+    :type val: u8 \*
 
 .. _`ixgbe_read_analog_reg8_82598.description`:
 
@@ -391,14 +428,17 @@ ixgbe_write_analog_reg8_82598
 
     Writes 8 bit Atlas analog register
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 reg:
+    :param reg:
         atlas register to write
+    :type reg: u32
 
-    :param u8 val:
+    :param val:
         value to write
+    :type val: u8
 
 .. _`ixgbe_write_analog_reg8_82598.description`:
 
@@ -416,17 +456,21 @@ ixgbe_read_i2c_phy_82598
 
     Reads 8 bit word over I2C interface.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 dev_addr:
+    :param dev_addr:
         address to read from
+    :type dev_addr: u8
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to read from dev_addr
+    :type byte_offset: u8
 
-    :param u8 \*eeprom_data:
+    :param eeprom_data:
         value read
+    :type eeprom_data: u8 \*
 
 .. _`ixgbe_read_i2c_phy_82598.description`:
 
@@ -444,14 +488,17 @@ ixgbe_read_i2c_eeprom_82598
 
     Reads 8 bit word over I2C interface.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         EEPROM byte offset to read
+    :type byte_offset: u8
 
-    :param u8 \*eeprom_data:
+    :param eeprom_data:
         value read
+    :type eeprom_data: u8 \*
 
 .. _`ixgbe_read_i2c_eeprom_82598.description`:
 
@@ -469,14 +516,17 @@ ixgbe_read_i2c_sff8472_82598
 
     Reads 8 bit word over I2C interface.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset at address 0xA2
+    :type byte_offset: u8
 
-    :param u8 \*sff8472_data:
+    :param sff8472_data:
         value read
+    :type sff8472_data: u8 \*
 
 .. _`ixgbe_read_i2c_sff8472_82598.description`:
 
@@ -494,8 +544,9 @@ ixgbe_set_lan_id_multi_port_pcie_82598
 
     Set LAN id for PCIe multiple port devices.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_set_lan_id_multi_port_pcie_82598.description`:
 
@@ -514,17 +565,21 @@ ixgbe_set_rxpba_82598
 
     Initialize RX packet buffer
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param int num_pb:
+    :param num_pb:
         number of packet buffers to allocate
+    :type num_pb: int
 
-    :param u32 headroom:
+    :param headroom:
         reserve n KB of headroom
+    :type headroom: u32
 
-    :param int strategy:
+    :param strategy:
         packet buffer allocation strategy
+    :type strategy: int
 
 .. This file was automatic generated / don't edit.
 

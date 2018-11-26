@@ -10,11 +10,13 @@ efi_crc32
 
     EFI version of crc32 function
 
-    :param const void \*buf:
+    :param buf:
         buffer to calculate crc32 of
+    :type buf: const void \*
 
-    :param unsigned long len:
+    :param len:
         length of buf
+    :type len: unsigned long
 
 .. _`efi_crc32.description`:
 
@@ -37,8 +39,9 @@ last_lba
 
     return number of last logical block of device
 
-    :param struct block_device \*bdev:
+    :param bdev:
         block device
+    :type bdev: struct block_device \*
 
 .. _`last_lba.description`:
 
@@ -59,11 +62,13 @@ is_pmbr_valid
 
     test Protective MBR for validity
 
-    :param legacy_mbr \*mbr:
+    :param mbr:
         pointer to a legacy mbr structure
+    :type mbr: legacy_mbr \*
 
-    :param sector_t total_sectors:
+    :param total_sectors:
         amount of sectors in the device
+    :type total_sectors: sector_t
 
 .. _`is_pmbr_valid.description`:
 
@@ -97,24 +102,28 @@ read_lba
 
     Read bytes from disk, starting at given LBA
 
-    :param struct parsed_partitions \*state:
+    :param state:
         disk parsed partitions
+    :type state: struct parsed_partitions \*
 
-    :param u64 lba:
+    :param lba:
         the Logical Block Address of the partition table
+    :type lba: u64
 
-    :param u8 \*buffer:
+    :param buffer:
         destination buffer
+    :type buffer: u8 \*
 
-    :param size_t count:
+    :param count:
         bytes to read
+    :type count: size_t
 
 .. _`read_lba.description`:
 
 Description
 -----------
 
-Reads \ ``count``\  bytes from \ ``state``\ ->bdev into \ ``buffer``\ .
+Reads \ ``count``\  bytes from \ ``state->bdev``\  into \ ``buffer``\ .
 Returns number of bytes read on success, 0 on error.
 
 .. _`alloc_read_gpt_entries`:
@@ -126,11 +135,13 @@ alloc_read_gpt_entries
 
     reads partition entries from disk
 
-    :param struct parsed_partitions \*state:
+    :param state:
         disk parsed partitions
+    :type state: struct parsed_partitions \*
 
-    :param gpt_header \*gpt:
+    :param gpt:
         GPT header
+    :type gpt: gpt_header \*
 
 .. _`alloc_read_gpt_entries.description`:
 
@@ -156,11 +167,13 @@ alloc_read_gpt_header
 
     Allocates GPT header, reads into it from disk
 
-    :param struct parsed_partitions \*state:
+    :param state:
         disk parsed partitions
+    :type state: struct parsed_partitions \*
 
-    :param u64 lba:
+    :param lba:
         the Logical Block Address of the partition table
+    :type lba: u64
 
 .. _`alloc_read_gpt_header.description`:
 
@@ -168,7 +181,7 @@ Description
 -----------
 
 returns GPT header on success, NULL on error.   Allocates
-and fills a GPT header starting at \ ````\  from \ ``state``\ ->bdev.
+and fills a GPT header starting at \ ````\  from \ ``state->bdev``\ .
 
 .. _`alloc_read_gpt_header.note`:
 
@@ -186,17 +199,21 @@ is_gpt_valid
 
     tests one GPT header and PTEs for validity
 
-    :param struct parsed_partitions \*state:
+    :param state:
         disk parsed partitions
+    :type state: struct parsed_partitions \*
 
-    :param u64 lba:
+    :param lba:
         logical block address of the GPT header to test
+    :type lba: u64
 
-    :param gpt_header \*\*gpt:
+    :param gpt:
         GPT header ptr, filled on return.
+    :type gpt: gpt_header \*\*
 
-    :param gpt_entry \*\*ptes:
+    :param ptes:
         PTEs ptr, filled on return.
+    :type ptes: gpt_entry \*\*
 
 .. _`is_gpt_valid.description`:
 
@@ -215,11 +232,13 @@ is_pte_valid
 
     tests one PTE for validity
 
-    :param const gpt_entry \*pte:
+    :param pte:
         pte to check
+    :type pte: const gpt_entry \*
 
-    :param const u64 lastlba:
+    :param lastlba:
         last lba of the disk
+    :type lastlba: const u64
 
 .. _`is_pte_valid.description`:
 
@@ -237,14 +256,17 @@ compare_gpts
 
     Search disk for valid GPT headers and PTEs
 
-    :param gpt_header \*pgpt:
+    :param pgpt:
         primary GPT header
+    :type pgpt: gpt_header \*
 
-    :param gpt_header \*agpt:
+    :param agpt:
         alternate GPT header
+    :type agpt: gpt_header \*
 
-    :param u64 lastlba:
+    :param lastlba:
         last LBA number
+    :type lastlba: u64
 
 .. _`compare_gpts.description`:
 
@@ -263,14 +285,17 @@ find_valid_gpt
 
     Search disk for valid GPT headers and PTEs
 
-    :param struct parsed_partitions \*state:
+    :param state:
         disk parsed partitions
+    :type state: struct parsed_partitions \*
 
-    :param gpt_header \*\*gpt:
+    :param gpt:
         GPT header ptr, filled on return.
+    :type gpt: gpt_header \*\*
 
-    :param gpt_entry \*\*ptes:
+    :param ptes:
         PTEs ptr, filled on return.
+    :type ptes: gpt_entry \*\*
 
 .. _`find_valid_gpt.description`:
 
@@ -294,8 +319,9 @@ efi_partition
 
 .. c:function:: int efi_partition(struct parsed_partitions *state)
 
-    :param struct parsed_partitions \*state:
+    :param state:
         disk parsed partitions
+    :type state: struct parsed_partitions \*
 
 .. _`efi_partition.description`:
 

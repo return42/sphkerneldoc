@@ -10,8 +10,9 @@ radeon_unpin_work_func
 
     unpin old buffer object
 
-    :param struct work_struct \*__work:
+    :param __work:
         *undescribed*
+    :type __work: struct work_struct \*
 
 .. _`radeon_unpin_work_func.description`:
 
@@ -31,11 +32,13 @@ radeon_crtc_handle_flip
 
     page flip completed
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int crtc_id:
+    :param crtc_id:
         crtc number this event is for
+    :type crtc_id: int
 
 .. _`radeon_crtc_handle_flip.description`:
 
@@ -53,8 +56,9 @@ radeon_flip_work_func
 
     page flip framebuffer
 
-    :param struct work_struct \*__work:
+    :param __work:
         *undescribed*
+    :type __work: struct work_struct \*
 
 .. _`radeon_flip_work_func.description`:
 
@@ -74,17 +78,21 @@ avivo_reduce_ratio
 
     fractional number reduction
 
-    :param unsigned \*nom:
+    :param nom:
         nominator
+    :type nom: unsigned \*
 
-    :param unsigned \*den:
+    :param den:
         denominator
+    :type den: unsigned \*
 
-    :param unsigned nom_min:
+    :param nom_min:
         minimum value for nominator
+    :type nom_min: unsigned
 
-    :param unsigned den_min:
+    :param den_min:
         minimum value for denominator
+    :type den_min: unsigned
 
 .. _`avivo_reduce_ratio.description`:
 
@@ -104,26 +112,33 @@ avivo_get_fb_ref_div
 
     feedback and ref divider calculation
 
-    :param unsigned nom:
+    :param nom:
         nominator
+    :type nom: unsigned
 
-    :param unsigned den:
+    :param den:
         denominator
+    :type den: unsigned
 
-    :param unsigned post_div:
+    :param post_div:
         post divider
+    :type post_div: unsigned
 
-    :param unsigned fb_div_max:
+    :param fb_div_max:
         feedback divider maximum
+    :type fb_div_max: unsigned
 
-    :param unsigned ref_div_max:
+    :param ref_div_max:
         reference divider maximum
+    :type ref_div_max: unsigned
 
-    :param unsigned \*fb_div:
+    :param fb_div:
         resulting feedback divider
+    :type fb_div: unsigned \*
 
-    :param unsigned \*ref_div:
+    :param ref_div:
         resulting reference divider
+    :type ref_div: unsigned \*
 
 .. _`avivo_get_fb_ref_div.description`:
 
@@ -142,26 +157,33 @@ radeon_compute_pll_avivo
 
     compute PLL paramaters
 
-    :param struct radeon_pll \*pll:
+    :param pll:
         information about the PLL
+    :type pll: struct radeon_pll \*
 
-    :param u32 freq:
+    :param freq:
         *undescribed*
+    :type freq: u32
 
-    :param u32 \*dot_clock_p:
+    :param dot_clock_p:
         resulting pixel clock
+    :type dot_clock_p: u32 \*
 
-    :param u32 \*fb_div_p:
+    :param fb_div_p:
         *undescribed*
+    :type fb_div_p: u32 \*
 
-    :param u32 \*frac_fb_div_p:
+    :param frac_fb_div_p:
         *undescribed*
+    :type frac_fb_div_p: u32 \*
 
-    :param u32 \*ref_div_p:
+    :param ref_div_p:
         *undescribed*
+    :type ref_div_p: u32 \*
 
-    :param u32 \*post_div_p:
+    :param post_div_p:
         *undescribed*
+    :type post_div_p: u32 \*
 
 .. _`radeon_compute_pll_avivo.fb_div_p`:
 

@@ -10,11 +10,13 @@ hns_roce_v1_reset
 
     reset RoCE
 
-    :param struct hns_roce_dev \*hr_dev:
+    :param hr_dev:
         RoCE device struct pointer
+    :type hr_dev: struct hns_roce_dev \*
 
-    :param bool dereset:
+    :param dereset:
         *undescribed*
+    :type dereset: bool
 
 .. _`hns_roce_probe`:
 
@@ -25,9 +27,10 @@ hns_roce_probe
 
     RoCE driver entrance
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to platform device
         Return : int
+    :type pdev: struct platform_device \*
 
 .. _`hns_roce_remove`:
 
@@ -38,8 +41,9 @@ hns_roce_remove
 
     remove RoCE device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to platform device
+    :type pdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -24,10 +24,12 @@ Definition
         size_t max_boot_acl;
         int vnd_cap;
         bool safe_mode;
+        bool rpm;
         bool (*is_supported)(struct tb *tb);
         int (*get_mode)(struct tb *tb);
         int (*get_route)(struct tb *tb, u8 link, u8 depth, u64 *route);
-        int (*driver_ready)(struct tb *tb,enum tb_security_level *security_level, size_t *nboot_acl);
+        void (*save_devices)(struct tb *tb);
+        int (*driver_ready)(struct tb *tb,enum tb_security_level *security_level, size_t *nboot_acl, bool *rpm);
         void (*device_connected)(struct tb *tb, const struct icm_pkg_header *hdr);
         void (*device_disconnected)(struct tb *tb, const struct icm_pkg_header *hdr);
         void (*xdomain_connected)(struct tb *tb, const struct icm_pkg_header *hdr);
@@ -60,6 +62,9 @@ vnd_cap
 safe_mode
     ICM is in safe mode
 
+rpm
+    Does the controller support runtime PM (RTD3)
+
 is_supported
     Checks if we can support ICM on this controller
 
@@ -68,6 +73,9 @@ get_mode
 
 get_route
     Find a route string for given switch
+
+save_devices
+    Ask ICM to save devices to ACL when suspending (optional)
 
 driver_ready
     Send driver ready message to ICM

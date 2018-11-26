@@ -10,8 +10,9 @@
 
     get inet6_dev pointer from netdevice
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`__in6_dev_get.description`:
 
@@ -30,8 +31,9 @@ does not take a reference on the inet6_dev.
 
     get inet6_dev pointer from netdevice
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`__in6_dev_get_safely.description`:
 
@@ -49,8 +51,9 @@ in6_dev_get
 
     get inet6_dev pointer from netdevice
 
-    :param const struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: const struct net_device \*
 
 .. _`in6_dev_get.description`:
 

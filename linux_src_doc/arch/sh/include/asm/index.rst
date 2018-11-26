@@ -7,7 +7,6 @@ asm
 .. toctree::
     :maxdepth: 1
 
-    atomic_h
     bitops-op32_h
     bitops_h
     bug_h

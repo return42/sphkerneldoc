@@ -10,11 +10,13 @@
 
     Check if the device supports dax for filesystem
 
-    :param struct block_device \*bdev:
+    :param bdev:
         block device to check
+    :type bdev: struct block_device \*
 
-    :param int blocksize:
+    :param blocksize:
         The block size of the device
+    :type blocksize: int
 
 .. _`__bdev_dax_supported.description`:
 
@@ -92,20 +94,25 @@ dax_direct_access
 
     translate a device pgoff to an absolute pfn
 
-    :param struct dax_device \*dax_dev:
+    :param dax_dev:
         a dax_device instance representing the logical memory range
+    :type dax_dev: struct dax_device \*
 
-    :param pgoff_t pgoff:
+    :param pgoff:
         offset in pages from the start of the device to translate
+    :type pgoff: pgoff_t
 
-    :param long nr_pages:
+    :param nr_pages:
         number of consecutive pages caller can handle relative to \ ``pfn``\ 
+    :type nr_pages: long
 
-    :param void \*\*kaddr:
+    :param kaddr:
         output parameter that returns a virtual address mapping of pfn
+    :type kaddr: void \*\*
 
-    :param pfn_t \*pfn:
+    :param pfn:
         output parameter that returns an absolute pfn translation of \ ``pgoff``\ 
+    :type pfn: pfn_t \*
 
 .. _`dax_direct_access.return`:
 
@@ -124,8 +131,9 @@ dax_get_by_host
 
     temporary lookup mechanism for filesystem-dax
 
-    :param const char \*host:
+    :param host:
         alternate name for the device registered by a dax driver
+    :type host: const char \*
 
 .. _`inode_dax`:
 
@@ -136,8 +144,9 @@ inode_dax
 
     convert a public inode into its dax_dev
 
-    :param struct inode \*inode:
+    :param inode:
         An inode with i_cdev pointing to a dax_dev
+    :type inode: struct inode \*
 
 .. _`inode_dax.description`:
 

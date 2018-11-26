@@ -10,8 +10,9 @@ cxgb_fcoe_enable
 
     enable FCoE offload features
 
-    :param struct net_device \*netdev:
+    :param netdev:
         net device
+    :type netdev: struct net_device \*
 
 .. _`cxgb_fcoe_enable.description`:
 
@@ -29,8 +30,9 @@ cxgb_fcoe_disable
 
     disable FCoE offload
 
-    :param struct net_device \*netdev:
+    :param netdev:
         net device
+    :type netdev: struct net_device \*
 
 .. _`cxgb_fcoe_disable.description`:
 

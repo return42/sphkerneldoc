@@ -10,11 +10,13 @@ batadv_debug_log
 
     Add debug log entry
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const char \*fmt:
+    :param fmt:
         format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -35,8 +37,9 @@ batadv_debug_log_setup
 
     Initialize debug log
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_debug_log_setup.return`:
 
@@ -54,8 +57,9 @@ batadv_debug_log_cleanup
 
     Destroy debug log
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. This file was automatic generated / don't edit.
 

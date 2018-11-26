@@ -10,11 +10,13 @@ iwlagn_txfifo_flush
 
     send REPLY_TXFIFO_FLUSH command to uCode
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param u32 scd_q_msk:
+    :param scd_q_msk:
         *undescribed*
+    :type scd_q_msk: u32
 
 .. _`iwlagn_txfifo_flush.description`:
 
@@ -34,11 +36,13 @@ iwlagn_set_rxon_chain
 
     Set up Rx chain usage in "staging" RXON image
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
 .. _`iwlagn_set_rxon_chain.description`:
 

@@ -10,11 +10,13 @@ efi_get_device_by_path
 
     find device by EFI Device Path
 
-    :param struct efi_dev_path \*\*node:
+    :param node:
         EFI Device Path
+    :type node: struct efi_dev_path \*\*
 
-    :param size_t \*len:
+    :param len:
         maximum length of EFI Device Path in bytes
+    :type len: size_t \*
 
 .. _`efi_get_device_by_path.description`:
 

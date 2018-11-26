@@ -10,11 +10,13 @@ ccp_crypto_enqueue_request
 
     queue an crypto async request for processing by the CCP
 
-    :param struct crypto_async_request \*req:
+    :param req:
         crypto_async_request struct to be processed
+    :type req: struct crypto_async_request \*
 
-    :param struct ccp_cmd \*cmd:
+    :param cmd:
         ccp_cmd struct to be sent to the CCP
+    :type cmd: struct ccp_cmd \*
 
 .. This file was automatic generated / don't edit.
 

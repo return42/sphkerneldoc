@@ -10,23 +10,29 @@ acpi_pptt_walk_cache
 
     Attempt to find the requested acpi_pptt_cache
 
-    :param struct acpi_table_header \*table_hdr:
+    :param table_hdr:
         Pointer to the head of the PPTT table
+    :type table_hdr: struct acpi_table_header \*
 
-    :param int local_level:
+    :param local_level:
         passed res reflects this cache level
+    :type local_level: int
 
-    :param struct acpi_subtable_header \*res:
+    :param res:
         cache resource in the PPTT we want to walk
+    :type res: struct acpi_subtable_header \*
 
-    :param struct acpi_pptt_cache \*\*found:
+    :param found:
         returns a pointer to the requested level if found
+    :type found: struct acpi_pptt_cache \*\*
 
-    :param int level:
+    :param level:
         the requested cache level
+    :type level: int
 
-    :param int type:
+    :param type:
         the requested cache type
+    :type type: int
 
 .. _`acpi_pptt_walk_cache.description`:
 
@@ -59,11 +65,13 @@ acpi_count_levels
 
     Given a PPTT table, and a cpu node, count the caches
 
-    :param struct acpi_table_header \*table_hdr:
+    :param table_hdr:
         Pointer to the head of the PPTT table
+    :type table_hdr: struct acpi_table_header \*
 
-    :param struct acpi_pptt_processor \*cpu_node:
+    :param cpu_node:
         processor node we wish to count caches for
+    :type cpu_node: struct acpi_pptt_processor \*
 
 .. _`acpi_count_levels.description`:
 
@@ -92,11 +100,13 @@ acpi_pptt_leaf_node
 
     Given a processor node, determine if its a leaf
 
-    :param struct acpi_table_header \*table_hdr:
+    :param table_hdr:
         Pointer to the head of the PPTT table
+    :type table_hdr: struct acpi_table_header \*
 
-    :param struct acpi_pptt_processor \*node:
+    :param node:
         passed node is checked to see if its a leaf
+    :type node: struct acpi_pptt_processor \*
 
 .. _`acpi_pptt_leaf_node.description`:
 
@@ -123,11 +133,13 @@ acpi_find_processor_node
 
     Given a PPTT table find the requested processor
 
-    :param struct acpi_table_header \*table_hdr:
+    :param table_hdr:
         Pointer to the head of the PPTT table
+    :type table_hdr: struct acpi_table_header \*
 
-    :param u32 acpi_cpu_id:
+    :param acpi_cpu_id:
         cpu we are searching for
+    :type acpi_cpu_id: u32
 
 .. _`acpi_find_processor_node.description`:
 
@@ -157,14 +169,17 @@ update_cache_properties
 
     Update cacheinfo for the given processor
 
-    :param struct cacheinfo \*this_leaf:
+    :param this_leaf:
         Kernel cache info structure being updated
+    :type this_leaf: struct cacheinfo \*
 
-    :param struct acpi_pptt_cache \*found_cache:
+    :param found_cache:
         The PPTT node describing this cache instance
+    :type found_cache: struct acpi_pptt_cache \*
 
-    :param struct acpi_pptt_processor \*cpu_node:
+    :param cpu_node:
         A unique reference to describe this cache instance
+    :type cpu_node: struct acpi_pptt_processor \*
 
 .. _`update_cache_properties.description`:
 
@@ -191,17 +206,21 @@ topology_get_acpi_cpu_tag
 
     Find a unique topology value for a feature
 
-    :param struct acpi_table_header \*table:
+    :param table:
         Pointer to the head of the PPTT table
+    :type table: struct acpi_table_header \*
 
-    :param unsigned int cpu:
+    :param cpu:
         Kernel logical cpu number
+    :type cpu: unsigned int
 
-    :param int level:
+    :param level:
         A level that terminates the search
+    :type level: int
 
-    :param int flag:
+    :param flag:
         A flag which terminates the search
+    :type flag: int
 
 .. _`topology_get_acpi_cpu_tag.description`:
 
@@ -228,8 +247,9 @@ acpi_find_last_cache_level
 
     Determines the number of cache levels for a PE
 
-    :param unsigned int cpu:
+    :param cpu:
         Kernel logical cpu number
+    :type cpu: unsigned int
 
 .. _`acpi_find_last_cache_level.description`:
 
@@ -256,8 +276,9 @@ cache_setup_acpi
 
     Override CPU cache topology with data from the PPTT
 
-    :param unsigned int cpu:
+    :param cpu:
         Kernel logical cpu number
+    :type cpu: unsigned int
 
 .. _`cache_setup_acpi.description`:
 
@@ -287,11 +308,13 @@ find_acpi_cpu_topology
 
     Determine a unique topology value for a given cpu
 
-    :param unsigned int cpu:
+    :param cpu:
         Kernel logical cpu number
+    :type cpu: unsigned int
 
-    :param int level:
+    :param level:
         The topological level for which we would like a unique ID
+    :type level: int
 
 .. _`find_acpi_cpu_topology.description`:
 
@@ -325,11 +348,13 @@ find_acpi_cpu_cache_topology
 
     Determine a unique cache topology value
 
-    :param unsigned int cpu:
+    :param cpu:
         Kernel logical cpu number
+    :type cpu: unsigned int
 
-    :param int level:
+    :param level:
         The cache level for which we would like a unique ID
+    :type level: int
 
 .. _`find_acpi_cpu_cache_topology.description`:
 
@@ -355,8 +380,9 @@ find_acpi_cpu_topology_package
 
     Determine a unique cpu package value
 
-    :param unsigned int cpu:
+    :param cpu:
         Kernel logical cpu number
+    :type cpu: unsigned int
 
 .. _`find_acpi_cpu_topology_package.description`:
 

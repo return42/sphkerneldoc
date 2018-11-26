@@ -10,14 +10,17 @@ tlb_remove_tlb_entry
 
     remember a pte unmapping for later tlb invalidation.
 
-    :param  tlb:
+    :param tlb:
         *undescribed*
+    :type tlb: 
 
-    :param  ptep:
+    :param ptep:
         *undescribed*
+    :type ptep: 
 
-    :param  address:
+    :param address:
         *undescribed*
+    :type address: 
 
 .. _`tlb_remove_tlb_entry.description`:
 
@@ -37,14 +40,17 @@ userspace is unmapping already-unmapped pages, which happens quite a lot.
 
     remember a pmd mapping for later tlb invalidation This is a nop so far, because only x86 needs it.
 
-    :param  tlb:
+    :param tlb:
         *undescribed*
+    :type tlb: 
 
-    :param  pmdp:
+    :param pmdp:
         *undescribed*
+    :type pmdp: 
 
-    :param  address:
+    :param address:
         *undescribed*
+    :type address: 
 
 .. _`__tlb_remove_pud_tlb_entry`:
 
@@ -55,14 +61,17 @@ userspace is unmapping already-unmapped pages, which happens quite a lot.
 
     remember a pud mapping for later tlb invalidation. This is a nop so far, because only x86 needs it.
 
-    :param  tlb:
+    :param tlb:
         *undescribed*
+    :type tlb: 
 
-    :param  pudp:
+    :param pudp:
         *undescribed*
+    :type pudp: 
 
-    :param  address:
+    :param address:
         *undescribed*
+    :type address: 
 
 .. This file was automatic generated / don't edit.
 

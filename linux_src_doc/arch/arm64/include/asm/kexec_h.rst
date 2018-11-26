@@ -10,11 +10,13 @@ crash_setup_regs
 
     save registers for the panic kernel
 
-    :param struct pt_regs \*newregs:
+    :param newregs:
         registers are saved here
+    :type newregs: struct pt_regs \*
 
-    :param struct pt_regs \*oldregs:
+    :param oldregs:
         registers to be saved (may be \ ``NULL``\ )
+    :type oldregs: struct pt_regs \*
 
 .. This file was automatic generated / don't edit.
 

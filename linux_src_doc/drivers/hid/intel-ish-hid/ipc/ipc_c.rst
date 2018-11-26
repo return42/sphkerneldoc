@@ -10,11 +10,13 @@ ish_reg_read
 
     Read register
 
-    :param const struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: const struct ishtp_device \*
 
-    :param unsigned long offset:
+    :param offset:
         Register offset
+    :type offset: unsigned long
 
 .. _`ish_reg_read.description`:
 
@@ -39,14 +41,17 @@ ish_reg_write
 
     Write register
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
-    :param unsigned long offset:
+    :param offset:
         Register offset
+    :type offset: unsigned long
 
-    :param uint32_t value:
+    :param value:
         Value to write
+    :type value: uint32_t
 
 .. _`ish_reg_write.description`:
 
@@ -64,8 +69,9 @@ Writes 32 bit register at a give offset
 
     Read FW status register
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`_ish_read_fw_sts_reg.description`:
 
@@ -90,8 +96,9 @@ check_generated_interrupt
 
     Check if ISH interrupt
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`check_generated_interrupt.description`:
 
@@ -116,8 +123,9 @@ ish_is_input_ready
 
     Check if FW ready for RX
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`ish_is_input_ready.description`:
 
@@ -142,8 +150,9 @@ set_host_ready
 
     Indicate host ready
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`set_host_ready.description`:
 
@@ -161,8 +170,9 @@ ishtp_fw_is_ready
 
     Check if FW ready
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_fw_is_ready.description`:
 
@@ -187,8 +197,9 @@ ish_set_host_rdy
 
     Indicate host ready
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`ish_set_host_rdy.description`:
 
@@ -206,8 +217,9 @@ ish_clr_host_rdy
 
     Indicate host not ready
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`ish_clr_host_rdy.description`:
 
@@ -225,8 +237,9 @@ Send host not ready indication to FW
 
     Read message header
 
-    :param const struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: const struct ishtp_device \*
 
 .. _`_ishtp_read_hdr.description`:
 
@@ -251,14 +264,17 @@ Read register value
 
     Read message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         message buffer
+    :type buffer: unsigned char \*
 
-    :param unsigned long buffer_length:
+    :param buffer_length:
         length of message buffer
+    :type buffer_length: unsigned long
 
 .. _`_ishtp_read.description`:
 
@@ -283,8 +299,9 @@ write_ipc_from_queue
 
     try to write ipc msg from Tx queue to device
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`write_ipc_from_queue.description`:
 
@@ -310,20 +327,24 @@ write_ipc_to_queue
 
     write ipc msg to Tx queue
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device instance
+    :type dev: struct ishtp_device \*
 
     :param void (\*ipc_send_compl)(void \*):
         Send complete callback
 
-    :param void \*ipc_send_compl_prm:
+    :param ipc_send_compl_prm:
         Parameter to send in complete callback
+    :type ipc_send_compl_prm: void \*
 
-    :param unsigned char \*msg:
+    :param msg:
         Pointer to message
+    :type msg: unsigned char \*
 
-    :param int length:
+    :param length:
         Length of message
+    :type length: int
 
 .. _`write_ipc_to_queue.description`:
 
@@ -352,17 +373,21 @@ ipc_send_mng_msg
 
     Send management message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device instance
+    :type dev: struct ishtp_device \*
 
-    :param uint32_t msg_code:
+    :param msg_code:
         Message code
+    :type msg_code: uint32_t
 
-    :param void \*msg:
+    :param msg:
         Pointer to message
+    :type msg: void \*
 
-    :param size_t size:
+    :param size:
         Length of message
+    :type size: size_t
 
 .. _`ipc_send_mng_msg.description`:
 
@@ -387,17 +412,21 @@ timed_wait_for_timeout
 
     wait special event with timeout
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
-    :param int condition:
+    :param condition:
         indicate the condition for waiting
+    :type condition: int
 
-    :param unsigned int timeinc:
+    :param timeinc:
         time slice for every wait cycle, in ms
+    :type timeinc: unsigned int
 
-    :param unsigned int timeout:
+    :param timeout:
         time in ms for timeout
+    :type timeout: unsigned int
 
 .. _`timed_wait_for_timeout.description`:
 
@@ -423,8 +452,9 @@ ish_fw_reset_handler
 
     FW reset handler
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`ish_fw_reset_handler.description`:
 
@@ -449,8 +479,9 @@ fw_reset_work_fn
 
     FW reset worker function
 
-    :param struct work_struct \*unused:
+    :param unused:
         not used
+    :type unused: struct work_struct \*
 
 .. _`fw_reset_work_fn.description`:
 
@@ -468,8 +499,9 @@ Call ish_fw_reset_handler to complete FW reset
 
     Sync FW clock with the OS clock
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`_ish_sync_fw_clock.description`:
 
@@ -487,11 +519,13 @@ recv_ipc
 
     Receive and process IPC management messages
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device instance
+    :type dev: struct ishtp_device \*
 
-    :param uint32_t doorbell_val:
+    :param doorbell_val:
         doorbell value
+    :type doorbell_val: uint32_t
 
 .. _`recv_ipc.description`:
 
@@ -517,11 +551,13 @@ ish_irq_handler
 
     ISH IRQ handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         ishtp device pointer
+    :type dev_id: void \*
 
 .. _`ish_irq_handler.description`:
 
@@ -540,8 +576,9 @@ ish_disable_dma
 
     disable dma communication between host and ISHFW
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`ish_disable_dma.description`:
 
@@ -566,8 +603,9 @@ ish_wakeup
 
     wakeup ishfw from waiting-for-host state
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`ish_wakeup.description`:
 
@@ -586,8 +624,9 @@ it wil wakeup FW from waiting-for-host state.
 
     HW reset
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`_ish_hw_reset.description`:
 
@@ -612,8 +651,9 @@ Return
 
     IPC reset
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`_ish_ipc_reset.description`:
 
@@ -638,8 +678,9 @@ ish_hw_start
 
     Start ISH HW
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`ish_hw_start.description`:
 
@@ -664,14 +705,17 @@ ish_ipc_get_header
 
     Get doorbell value
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device pointer
+    :type dev: struct ishtp_device \*
 
-    :param int length:
+    :param length:
         length of message
+    :type length: int
 
-    :param int busy:
+    :param busy:
         busy status
+    :type busy: int
 
 .. _`ish_ipc_get_header.description`:
 
@@ -696,8 +740,9 @@ ish_dev_init
 
     Initialize ISH devoce
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`ish_dev_init.description`:
 
@@ -722,8 +767,9 @@ ish_device_disable
 
     Disable ISH device
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device pointer
+    :type dev: struct ishtp_device \*
 
 .. _`ish_device_disable.description`:
 

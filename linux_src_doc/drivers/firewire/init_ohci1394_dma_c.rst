@@ -10,8 +10,9 @@ init_ohci1394_wait_for_busresets
 
     wait until bus resets are completed
 
-    :param struct ohci \*ohci:
+    :param ohci:
         *undescribed*
+    :type ohci: struct ohci \*
 
 .. _`init_ohci1394_wait_for_busresets.description`:
 
@@ -33,8 +34,9 @@ init_ohci1394_enable_physical_dma
 
     Enable physical DMA for remote debugging This enables remote DMA access over IEEE1394 from every host for the low 4GB of address space. DMA accesses above 4GB are not available currently.
 
-    :param struct ohci \*ohci:
+    :param ohci:
         *undescribed*
+    :type ohci: struct ohci \*
 
 .. _`init_ohci1394_reset_and_init_dma`:
 
@@ -45,8 +47,9 @@ init_ohci1394_reset_and_init_dma
 
     init controller and enable DMA This initializes the given controller and enables physical DMA engine in it.
 
-    :param struct ohci \*ohci:
+    :param ohci:
         *undescribed*
+    :type ohci: struct ohci \*
 
 .. _`init_ohci1394_controller`:
 
@@ -57,14 +60,17 @@ init_ohci1394_controller
 
     Map the registers of the controller and init DMA This maps the registers of the specified controller and initializes it
 
-    :param int num:
+    :param num:
         *undescribed*
+    :type num: int
 
-    :param int slot:
+    :param slot:
         *undescribed*
+    :type slot: int
 
-    :param int func:
+    :param func:
         *undescribed*
+    :type func: int
 
 .. _`init_ohci1394_dma_on_all_controllers`:
 
@@ -75,8 +81,9 @@ init_ohci1394_dma_on_all_controllers
 
     scan for OHCI1394 controllers and init DMA on them Scans the whole PCI space for OHCI1394 controllers and inits DMA on them
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`setup_ohci1394_dma`:
 
@@ -87,8 +94,9 @@ setup_ohci1394_dma
 
     enables early OHCI1394 DMA initialization
 
-    :param char \*opt:
+    :param opt:
         *undescribed*
+    :type opt: char \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ trace_print_seq
 
     move the contents of trace_seq into a seq_file
 
-    :param struct seq_file \*m:
+    :param m:
         the seq_file descriptor that is the destination
+    :type m: struct seq_file \*
 
-    :param struct trace_seq \*s:
+    :param s:
         the trace_seq descriptor that is the source.
+    :type s: struct trace_seq \*
 
 .. _`trace_print_seq.description`:
 
@@ -34,11 +36,13 @@ trace_seq_printf
 
     sequence printing of trace information
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const char \*fmt:
+    :param fmt:
         printf format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -63,14 +67,17 @@ trace_seq_bitmask
 
     write a bitmask array in its ASCII representation
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const unsigned long \*maskp:
+    :param maskp:
         points to an array of unsigned longs that represent a bitmask
+    :type maskp: const unsigned long \*
 
-    :param int nmaskbits:
+    :param nmaskbits:
         The number of bits that are valid in \ ``maskp``\ 
+    :type nmaskbits: int
 
 .. _`trace_seq_bitmask.description`:
 
@@ -88,14 +95,17 @@ trace_seq_vprintf
 
     sequence printing of trace information
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const char \*fmt:
+    :param fmt:
         printf format string
+    :type fmt: const char \*
 
-    :param va_list args:
+    :param args:
         *undescribed*
+    :type args: va_list
 
 .. _`trace_seq_vprintf.description`:
 
@@ -117,14 +127,17 @@ trace_seq_bprintf
 
     Write the printf string from binary arguments
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const char \*fmt:
+    :param fmt:
         The format string for the \ ``binary``\  arguments
+    :type fmt: const char \*
 
-    :param const u32 \*binary:
+    :param binary:
         The binary arguments for \ ``fmt``\ .
+    :type binary: const u32 \*
 
 .. _`trace_seq_bprintf.description`:
 
@@ -149,11 +162,13 @@ trace_seq_puts
 
     trace sequence printing of simple string
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const char \*str:
+    :param str:
         simple string to record
+    :type str: const char \*
 
 .. _`trace_seq_puts.description`:
 
@@ -174,11 +189,13 @@ trace_seq_putc
 
     trace sequence printing of simple character
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param unsigned char c:
+    :param c:
         simple character to record
+    :type c: unsigned char
 
 .. _`trace_seq_putc.description`:
 
@@ -199,14 +216,17 @@ trace_seq_putmem
 
     write raw data into the trace_seq buffer
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const void \*mem:
+    :param mem:
         The raw memory to copy into the buffer
+    :type mem: const void \*
 
-    :param unsigned int len:
+    :param len:
         The length of the raw memory to copy (in bytes)
+    :type len: unsigned int
 
 .. _`trace_seq_putmem.description`:
 
@@ -226,14 +246,17 @@ trace_seq_putmem_hex
 
     write raw memory into the buffer in ASCII hex
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const void \*mem:
+    :param mem:
         The raw memory to write its hex ASCII representation of
+    :type mem: const void \*
 
-    :param unsigned int len:
+    :param len:
         The length of the raw memory to copy (in bytes)
+    :type len: unsigned int
 
 .. _`trace_seq_putmem_hex.description`:
 
@@ -253,11 +276,13 @@ trace_seq_path
 
     copy a path into the sequence buffer
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const struct path \*path:
+    :param path:
         path to write into the sequence buffer.
+    :type path: const struct path \*
 
 .. _`trace_seq_path.description`:
 
@@ -280,14 +305,17 @@ trace_seq_to_user
 
     copy the squence buffer to user space
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param char __user \*ubuf:
+    :param ubuf:
         The userspace memory location to copy to
+    :type ubuf: char __user \*
 
-    :param int cnt:
+    :param cnt:
         The amount to copy
+    :type cnt: int
 
 .. _`trace_seq_to_user.description`:
 
@@ -304,7 +332,7 @@ it copied.
 
 On failure it returns -EBUSY if all of the content in the
 sequence has been already read, which includes nothing in the
-sequenc (@s->len == \ ``s``\ ->readpos).
+sequenc (@s->len == \ ``s->readpos``\ ).
 
 Returns -EFAULT if the copy to userspace fails.
 

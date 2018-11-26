@@ -36,11 +36,13 @@ amd_iommu_init_device
 
     Init device for use with IOMMUv2 driver
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The PCI device to initialize
+    :type pdev: struct pci_dev \*
 
-    :param int pasids:
+    :param pasids:
         Number of PASIDs to support for this device
+    :type pasids: int
 
 .. _`amd_iommu_init_device.description`:
 
@@ -60,8 +62,9 @@ amd_iommu_free_device
 
     Free all IOMMUv2 related device resources and disable IOMMUv2 usage for this device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The PCI device to disable IOMMUv2 usage for'
+    :type pdev: struct pci_dev \*
 
 .. _`amd_iommu_bind_pasid`:
 
@@ -72,14 +75,17 @@ amd_iommu_bind_pasid
 
     Bind a given task to a PASID on a device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The PCI device to bind the task to
+    :type pdev: struct pci_dev \*
 
-    :param int pasid:
+    :param pasid:
         The PASID on the device the task should be bound to
+    :type pasid: int
 
-    :param struct task_struct \*task:
+    :param task:
         the task to bind
+    :type task: struct task_struct \*
 
 .. _`amd_iommu_bind_pasid.description`:
 
@@ -97,11 +103,13 @@ amd_iommu_unbind_pasid
 
     Unbind a PASID from its task on a device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The device of the PASID
+    :type pdev: struct pci_dev \*
 
-    :param int pasid:
+    :param pasid:
         The PASID to unbind
+    :type pasid: int
 
 .. _`amd_iommu_unbind_pasid.description`:
 
@@ -163,11 +171,13 @@ amd_iommu_invalidate_ctx
 
     Register a call-back for invalidating a pasid context. This call-back is invoked when the IOMMUv2 driver needs to invalidate a PASID context, for example because the task that is bound to that context is about to exit.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The PCI device the call-back should be registered for
+    :type pdev: struct pci_dev \*
 
-    :param int pasid:
+    :param pasid:
         *undescribed*
+    :type pasid: int
 
 .. This file was automatic generated / don't edit.
 

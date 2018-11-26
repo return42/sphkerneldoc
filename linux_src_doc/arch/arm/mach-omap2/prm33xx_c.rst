@@ -10,17 +10,21 @@ am33xx_prm_is_hardreset_asserted
 
     read the HW reset line state of submodules contained in the hwmod module
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line to check
+    :type shift: u8
 
-    :param u8 part:
+    :param part:
         PRM partition, ignored for AM33xx
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: s16
 
-    :param u16 rstctrl_offs:
+    :param rstctrl_offs:
         RM_RSTCTRL register address offset for this module
+    :type rstctrl_offs: u16
 
 .. _`am33xx_prm_is_hardreset_asserted.description`:
 
@@ -40,17 +44,21 @@ am33xx_prm_assert_hardreset
 
     assert the HW reset line of a submodule
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line to assert
+    :type shift: u8
 
-    :param u8 part:
+    :param part:
         CM partition, ignored for AM33xx
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: s16
 
-    :param u16 rstctrl_offs:
+    :param rstctrl_offs:
         *undescribed*
+    :type rstctrl_offs: u16
 
 .. _`am33xx_prm_assert_hardreset.description`:
 
@@ -73,23 +81,29 @@ am33xx_prm_deassert_hardreset
 
     deassert a submodule hardreset line and wait
 
-    :param u8 shift:
+    :param shift:
         register bit shift corresponding to the reset line to deassert
+    :type shift: u8
 
-    :param u8 st_shift:
+    :param st_shift:
         reset status register bit shift corresponding to the reset line
+    :type st_shift: u8
 
-    :param u8 part:
+    :param part:
         PRM partition, not used for AM33xx
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: s16
 
-    :param u16 rstctrl_offs:
+    :param rstctrl_offs:
         *undescribed*
+    :type rstctrl_offs: u16
 
-    :param u16 rstst_offs:
+    :param rstst_offs:
         *undescribed*
+    :type rstst_offs: u16
 
 .. _`am33xx_prm_deassert_hardreset.description`:
 
@@ -114,8 +128,9 @@ am33xx_prm_global_warm_sw_reset
 
     reboot the device via warm reset
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`am33xx_prm_global_warm_sw_reset.description`:
 

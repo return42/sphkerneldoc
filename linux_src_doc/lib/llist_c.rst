@@ -10,14 +10,17 @@ llist_add_batch
 
     add several linked entries in batch
 
-    :param struct llist_node \*new_first:
+    :param new_first:
         first entry in batch to be added
+    :type new_first: struct llist_node \*
 
-    :param struct llist_node \*new_last:
+    :param new_last:
         last entry in batch to be added
+    :type new_last: struct llist_node \*
 
-    :param struct llist_head \*head:
+    :param head:
         the head for your lock-less list
+    :type head: struct llist_head \*
 
 .. _`llist_add_batch.description`:
 
@@ -35,8 +38,9 @@ llist_del_first
 
     delete the first entry of lock-less list
 
-    :param struct llist_head \*head:
+    :param head:
         the head for your lock-less list
+    :type head: struct llist_head \*
 
 .. _`llist_del_first.description`:
 
@@ -49,8 +53,8 @@ deleted, this is the newest added one.
 Only one llist_del_first user can be used simultaneously with
 multiple llist_add users without lock.  Because otherwise
 llist_del_first, llist_add, llist_add (or llist_del_all, llist_add,
-llist_add) sequence in another user may change \ ``head``\ ->first->next,
-but keep \ ``head``\ ->first.  If multiple consumers are needed, please
+llist_add) sequence in another user may change \ ``head->first->next``\ ,
+but keep \ ``head->first``\ .  If multiple consumers are needed, please
 use llist_del_all or use lock between consumers.
 
 .. _`llist_reverse_order`:
@@ -62,8 +66,9 @@ llist_reverse_order
 
     reverse order of a llist chain
 
-    :param struct llist_node \*head:
+    :param head:
         first item of the list to be reversed
+    :type head: struct llist_node \*
 
 .. _`llist_reverse_order.description`:
 

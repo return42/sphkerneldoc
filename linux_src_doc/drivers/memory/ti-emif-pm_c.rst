@@ -10,11 +10,13 @@ ti_emif_copy_pm_function_table
 
     copy mapping of pm funcs in sram
 
-    :param struct gen_pool \*sram_pool:
+    :param sram_pool:
         pointer to struct gen_pool where dst resides
+    :type sram_pool: struct gen_pool \*
 
-    :param void \*dst:
+    :param dst:
         void \* to address that table should be copied
+    :type dst: void \*
 
 .. _`ti_emif_copy_pm_function_table.description`:
 
@@ -32,8 +34,9 @@ ti_emif_get_mem_type
 
     return type for memory type in use
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ti_emif_get_mem_type.description`:
 

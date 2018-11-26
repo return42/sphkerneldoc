@@ -10,11 +10,13 @@ zynq_slcr_write
 
     Write to a register in SLCR block
 
-    :param u32 val:
+    :param val:
         Value to write to the register
+    :type val: u32
 
-    :param u32 offset:
+    :param offset:
         Register offset in SLCR block
+    :type offset: u32
 
 .. _`zynq_slcr_write.return`:
 
@@ -32,11 +34,13 @@ zynq_slcr_read
 
     Read a register in SLCR block
 
-    :param u32 \*val:
+    :param val:
         Pointer to value to be read from SLCR
+    :type val: u32 \*
 
-    :param u32 offset:
+    :param offset:
         Register offset in SLCR block
+    :type offset: u32
 
 .. _`zynq_slcr_read.return`:
 
@@ -54,8 +58,9 @@ zynq_slcr_unlock
 
     Unlock SLCR registers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zynq_slcr_unlock.return`:
 
@@ -73,8 +78,9 @@ zynq_slcr_get_device_id
 
     Read device code id
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zynq_slcr_get_device_id.return`:
 
@@ -92,14 +98,17 @@ zynq_slcr_system_restart
 
     Restart the entire system.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Pointer to restart notifier block (unused)
+    :type nb: struct notifier_block \*
 
-    :param unsigned long action:
+    :param action:
         Reboot mode (unused)
+    :type action: unsigned long
 
-    :param void \*data:
+    :param data:
         Restart handler private data (unused)
+    :type data: void \*
 
 .. _`zynq_slcr_system_restart.return`:
 
@@ -117,8 +126,9 @@ zynq_slcr_cpu_start
 
     Start cpu
 
-    :param int cpu:
+    :param cpu:
         cpu number
+    :type cpu: int
 
 .. _`zynq_slcr_cpu_stop`:
 
@@ -129,8 +139,9 @@ zynq_slcr_cpu_stop
 
     Stop cpu
 
-    :param int cpu:
+    :param cpu:
         cpu number
+    :type cpu: int
 
 .. _`zynq_slcr_cpu_state_read`:
 
@@ -141,8 +152,9 @@ zynq_slcr_cpu_state_read
 
     Read/write cpu state
 
-    :param int cpu:
+    :param cpu:
         cpu number
+    :type cpu: int
 
 .. _`zynq_slcr_cpu_state_read.description`:
 
@@ -168,11 +180,13 @@ zynq_slcr_cpu_state_write
 
     Read/write cpu state
 
-    :param int cpu:
+    :param cpu:
         cpu number
+    :type cpu: int
 
-    :param bool die:
+    :param die:
         cpu state - true if cpu is going to die
+    :type die: bool
 
 .. _`zynq_slcr_cpu_state_write.description`:
 
@@ -191,8 +205,9 @@ zynq_early_slcr_init
 
     Early slcr init function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zynq_early_slcr_init.return`:
 

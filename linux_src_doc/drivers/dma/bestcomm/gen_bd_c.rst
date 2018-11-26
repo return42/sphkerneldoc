@@ -10,17 +10,21 @@ bcom_psc_gen_bd_rx_init
 
     Allocate a receive bcom_task for a PSC port
 
-    :param unsigned psc_num:
+    :param psc_num:
         Number of the PSC to allocate a task for
+    :type psc_num: unsigned
 
-    :param int queue_len:
+    :param queue_len:
         number of buffer descriptors to allocate for the task
+    :type queue_len: int
 
-    :param phys_addr_t fifo:
+    :param fifo:
         physical address of FIFO register
+    :type fifo: phys_addr_t
 
-    :param int maxbufsize:
+    :param maxbufsize:
         Maximum receive data size in bytes.
+    :type maxbufsize: int
 
 .. _`bcom_psc_gen_bd_rx_init.description`:
 
@@ -38,14 +42,17 @@ bcom_psc_gen_bd_tx_init
 
     Allocate a transmit bcom_task for a PSC port
 
-    :param unsigned psc_num:
+    :param psc_num:
         Number of the PSC to allocate a task for
+    :type psc_num: unsigned
 
-    :param int queue_len:
+    :param queue_len:
         number of buffer descriptors to allocate for the task
+    :type queue_len: int
 
-    :param phys_addr_t fifo:
+    :param fifo:
         physical address of FIFO register
+    :type fifo: phys_addr_t
 
 .. _`bcom_psc_gen_bd_tx_init.description`:
 

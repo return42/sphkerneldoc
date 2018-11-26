@@ -10,14 +10,17 @@
 
     Convert a physical address range to bad sectors
 
-    :param struct badblocks \*bb:
+    :param bb:
         badblocks instance to populate
+    :type bb: struct badblocks \*
 
-    :param u64 ns_offset:
+    :param ns_offset:
         namespace offset where the error range begins (in bytes)
+    :type ns_offset: u64
 
-    :param u64 len:
+    :param len:
         number of bytes of badrange to be added
+    :type len: u64
 
 .. _`__add_badblock_range.description`:
 
@@ -37,14 +40,17 @@ nvdimm_badblocks_populate
 
     Convert a list of badranges to badblocks
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         *undescribed*
+    :type nd_region: struct nd_region \*
 
-    :param struct badblocks \*bb:
+    :param bb:
         badblocks instance to populate
+    :type bb: struct badblocks \*
 
-    :param const struct resource \*res:
+    :param res:
         resource range to consider
+    :type res: const struct resource \*
 
 .. _`nvdimm_badblocks_populate.description`:
 

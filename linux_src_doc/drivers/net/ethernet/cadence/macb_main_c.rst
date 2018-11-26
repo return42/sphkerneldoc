@@ -10,14 +10,17 @@ macb_set_tx_clk
 
     Set a clock to a new frequency \ ``clk``\          Pointer to the clock to change \ ``rate``\         New frequency in Hz \ ``dev``\          Pointer to the struct net_device
 
-    :param struct clk \*clk:
+    :param clk:
         *undescribed*
+    :type clk: struct clk \*
 
-    :param int speed:
+    :param speed:
         *undescribed*
+    :type speed: int
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. This file was automatic generated / don't edit.
 

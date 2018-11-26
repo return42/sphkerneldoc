@@ -10,12 +10,14 @@ vxge_ethtool_set_link_ksettings
 
     Sets different link parameters.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param const struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         pointer to the structure with parameters given by ethtool to set
         link information.
+    :type cmd: const struct ethtool_link_ksettings \*
 
 .. _`vxge_ethtool_set_link_ksettings.description`:
 
@@ -41,12 +43,14 @@ vxge_ethtool_get_link_ksettings
 
     Return link specific information.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         pointer to the structure with parameters given by ethtool
         to return link information.
+    :type cmd: struct ethtool_link_ksettings \*
 
 .. _`vxge_ethtool_get_link_ksettings.description`:
 
@@ -66,12 +70,14 @@ vxge_ethtool_gdrvinfo
 
     Returns driver specific information.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_drvinfo \*info:
+    :param info:
         pointer to the structure with parameters given by ethtool to
         return driver information.
+    :type info: struct ethtool_drvinfo \*
 
 .. _`vxge_ethtool_gdrvinfo.description`:
 
@@ -89,15 +95,18 @@ vxge_ethtool_gregs
 
     dumps the entire space of Titan into the buffer.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_regs \*regs:
+    :param regs:
         pointer to the structure with parameters given by ethtool for
         dumping the registers.
+    :type regs: struct ethtool_regs \*
 
-    :param void \*space:
+    :param space:
         *undescribed*
+    :type space: void \*
 
 .. _`vxge_ethtool_gregs.description`:
 
@@ -116,11 +125,13 @@ vxge_ethtool_idnic
 
     To physically identify the nic on the system.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param enum ethtool_phys_id_state state:
+    :param state:
         requested LED state
+    :type state: enum ethtool_phys_id_state
 
 .. _`vxge_ethtool_idnic.description`:
 
@@ -139,11 +150,13 @@ vxge_ethtool_getpause_data
 
     Pause frame frame generation and reception.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*ep:
+    :param ep:
         pointer to the structure with pause parameters given by ethtool.
+    :type ep: struct ethtool_pauseparam \*
 
 .. _`vxge_ethtool_getpause_data.description`:
 
@@ -168,11 +181,13 @@ vxge_ethtool_setpause_data
 
     set/reset pause frame generation.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*ep:
+    :param ep:
         pointer to the structure with pause parameters given by ethtool.
+    :type ep: struct ethtool_pauseparam \*
 
 .. _`vxge_ethtool_setpause_data.description`:
 

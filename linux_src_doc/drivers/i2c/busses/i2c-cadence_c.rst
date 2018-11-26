@@ -106,8 +106,9 @@ cdns_i2c_clear_bus_hold
 
     Clear bus hold bit
 
-    :param struct cdns_i2c \*id:
+    :param id:
         Pointer to driver data struct
+    :type id: struct cdns_i2c \*
 
 .. _`cdns_i2c_clear_bus_hold.description`:
 
@@ -125,11 +126,13 @@ cdns_i2c_isr
 
     Interrupt handler for the I2C device
 
-    :param int irq:
+    :param irq:
         irq number for the I2C device
+    :type irq: int
 
-    :param void \*ptr:
+    :param ptr:
         void pointer to cdns_i2c structure
+    :type ptr: void \*
 
 .. _`cdns_i2c_isr.description`:
 
@@ -155,8 +158,9 @@ cdns_i2c_mrecv
 
     Prepare and start a master receive operation
 
-    :param struct cdns_i2c \*id:
+    :param id:
         pointer to the i2c device structure
+    :type id: struct cdns_i2c \*
 
 .. _`cdns_i2c_msend`:
 
@@ -167,8 +171,9 @@ cdns_i2c_msend
 
     Prepare and start a master send operation
 
-    :param struct cdns_i2c \*id:
+    :param id:
         pointer to the i2c device
+    :type id: struct cdns_i2c \*
 
 .. _`cdns_i2c_master_reset`:
 
@@ -179,8 +184,9 @@ cdns_i2c_master_reset
 
     Reset the interface
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         pointer to the i2c adapter driver instance
+    :type adap: struct i2c_adapter \*
 
 .. _`cdns_i2c_master_reset.description`:
 
@@ -199,14 +205,17 @@ cdns_i2c_master_xfer
 
     The main i2c transfer function
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         pointer to the i2c adapter driver instance
+    :type adap: struct i2c_adapter \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         pointer to the i2c message structure
+    :type msgs: struct i2c_msg \*
 
-    :param int num:
+    :param num:
         the number of messages to transfer
+    :type num: int
 
 .. _`cdns_i2c_master_xfer.description`:
 
@@ -231,8 +240,9 @@ cdns_i2c_func
 
     Returns the supported features of the I2C driver
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         pointer to the i2c adapter structure
+    :type adap: struct i2c_adapter \*
 
 .. _`cdns_i2c_func.return`:
 
@@ -250,17 +260,21 @@ cdns_i2c_calc_divs
 
     Calculate clock dividers
 
-    :param unsigned long \*f:
+    :param f:
         I2C clock frequency
+    :type f: unsigned long \*
 
-    :param unsigned long input_clk:
+    :param input_clk:
         Input clock frequency
+    :type input_clk: unsigned long
 
-    :param unsigned int \*a:
+    :param a:
         First divider (return value)
+    :type a: unsigned int \*
 
-    :param unsigned int \*b:
+    :param b:
         Second divider (return value)
+    :type b: unsigned int \*
 
 .. _`cdns_i2c_calc_divs.description`:
 
@@ -286,11 +300,13 @@ cdns_i2c_setclk
 
     This function sets the serial clock rate for the I2C device
 
-    :param unsigned long clk_in:
+    :param clk_in:
         I2C clock input frequency in Hz
+    :type clk_in: unsigned long
 
-    :param struct cdns_i2c \*id:
+    :param id:
         Pointer to the I2C device structure
+    :type id: struct cdns_i2c \*
 
 .. _`cdns_i2c_setclk.description`:
 
@@ -322,14 +338,17 @@ cdns_i2c_clk_notifier_cb
 
     Clock rate change callback
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Pointer to notifier block
+    :type nb: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         Notification reason
+    :type event: unsigned long
 
-    :param void \*data:
+    :param data:
         Pointer to notification data object
+    :type data: void \*
 
 .. _`cdns_i2c_clk_notifier_cb.description`:
 
@@ -360,8 +379,9 @@ cdns_i2c_runtime_suspend
 
     Runtime suspend method for the driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the platform_device structure
+    :type dev: struct device \*
 
 .. _`cdns_i2c_runtime_suspend.description`:
 
@@ -386,8 +406,9 @@ cdns_i2c_runtime_resume
 
     Runtime resume
 
-    :param struct device \*dev:
+    :param dev:
         Address of the platform_device structure
+    :type dev: struct device \*
 
 .. _`cdns_i2c_runtime_resume.description`:
 
@@ -412,8 +433,9 @@ cdns_i2c_probe
 
     Platform registration call
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Handle to the platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`cdns_i2c_probe.description`:
 
@@ -440,8 +462,9 @@ cdns_i2c_remove
 
     Unregister the device after releasing the resources
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Handle to the platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`cdns_i2c_remove.description`:
 

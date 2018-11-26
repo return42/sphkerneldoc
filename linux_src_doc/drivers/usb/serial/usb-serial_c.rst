@@ -10,11 +10,13 @@ serial_install
 
     install tty
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the driver (USB in our case)
+    :type driver: struct tty_driver \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty being created
+    :type tty: struct tty_struct \*
 
 .. _`serial_install.description`:
 
@@ -39,8 +41,9 @@ serial_port_shutdown
 
     shut down hardware
 
-    :param struct tty_port \*tport:
+    :param tport:
         tty port to shut down
+    :type tport: struct tty_port \*
 
 .. _`serial_port_shutdown.description`:
 
@@ -62,8 +65,9 @@ serial_cleanup
 
     free resources post close/hangup
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`serial_cleanup.description`:
 
@@ -84,14 +88,17 @@ usb_serial_register_drivers
 
     register drivers for a usb-serial module
 
-    :param struct usb_serial_driver \*const serial_drivers:
+    :param serial_drivers:
         NULL-terminated array of pointers to drivers to be registered
+    :type serial_drivers: struct usb_serial_driver \*const
 
-    :param const char \*name:
+    :param name:
         name of the usb_driver for this set of \ ``serial_drivers``\ 
+    :type name: const char \*
 
-    :param const struct usb_device_id \*id_table:
+    :param id_table:
         list of all devices this \ ``serial_drivers``\  set binds to
+    :type id_table: const struct usb_device_id \*
 
 .. _`usb_serial_register_drivers.description`:
 
@@ -110,8 +117,9 @@ usb_serial_deregister_drivers
 
     deregister drivers for a usb-serial module
 
-    :param struct usb_serial_driver \*const serial_drivers:
+    :param serial_drivers:
         NULL-terminated array of pointers to drivers to be deregistered
+    :type serial_drivers: struct usb_serial_driver \*const
 
 .. _`usb_serial_deregister_drivers.description`:
 

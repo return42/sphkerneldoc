@@ -10,14 +10,17 @@ qedf_dbg_host_init
 
     setup the debugfs file for the pf
 
-    :param struct qedf_dbg_ctx \*qedf:
+    :param qedf:
         *undescribed*
+    :type qedf: struct qedf_dbg_ctx \*
 
-    :param const struct qedf_debugfs_ops \*dops:
+    :param dops:
         *undescribed*
+    :type dops: const struct qedf_debugfs_ops \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         *undescribed*
+    :type fops: const struct file_operations \*
 
 .. _`qedf_dbg_host_exit`:
 
@@ -28,8 +31,9 @@ qedf_dbg_host_exit
 
     clear out the pf's debugfs entries
 
-    :param struct qedf_dbg_ctx \*qedf:
+    :param qedf:
         *undescribed*
+    :type qedf: struct qedf_dbg_ctx \*
 
 .. _`qedf_dbg_init`:
 
@@ -40,8 +44,9 @@ qedf_dbg_init
 
     start up debugfs for the driver
 
-    :param char \*drv_name:
+    :param drv_name:
         *undescribed*
+    :type drv_name: char \*
 
 .. _`qedf_dbg_exit`:
 
@@ -52,8 +57,9 @@ qedf_dbg_exit
 
     clean out the driver's debugfs entries
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

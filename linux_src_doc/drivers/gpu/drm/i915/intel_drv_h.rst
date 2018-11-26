@@ -10,20 +10,25 @@
 
     magic wait macro
 
-    :param  OP:
+    :param OP:
         *undescribed*
+    :type OP: 
 
-    :param  COND:
+    :param COND:
         *undescribed*
+    :type COND: 
 
-    :param  US:
+    :param US:
         *undescribed*
+    :type US: 
 
-    :param  Wmin:
+    :param Wmin:
         *undescribed*
+    :type Wmin: 
 
-    :param  Wmax:
+    :param Wmax:
         *undescribed*
+    :type Wmax: 
 
 .. _`__wait_for.description`:
 
@@ -44,8 +49,9 @@ disable_rpm_wakeref_asserts
 
     disable the RPM assert checks
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`disable_rpm_wakeref_asserts.description`:
 
@@ -75,8 +81,9 @@ enable_rpm_wakeref_asserts
 
     re-enable the RPM assert checks
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`enable_rpm_wakeref_asserts.description`:
 

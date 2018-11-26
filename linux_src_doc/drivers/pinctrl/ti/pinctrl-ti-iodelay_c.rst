@@ -306,11 +306,13 @@ ti_iodelay_extract
 
     extract bits for a field
 
-    :param u32 val:
+    :param val:
         Register value
+    :type val: u32
 
-    :param u32 mask:
+    :param mask:
         Mask
+    :type mask: u32
 
 .. _`ti_iodelay_extract.return`:
 
@@ -328,17 +330,21 @@ ti_iodelay_compute_dpe
 
     Compute equation for delay parameter
 
-    :param u16 period:
+    :param period:
         Period to use
+    :type period: u16
 
-    :param u16 ref:
+    :param ref:
         Reference Count
+    :type ref: u16
 
-    :param u16 delay:
+    :param delay:
         Delay count
+    :type delay: u16
 
-    :param u16 delay_m:
+    :param delay_m:
         Delay multiplier
+    :type delay_m: u16
 
 .. _`ti_iodelay_compute_dpe.return`:
 
@@ -356,11 +362,13 @@ ti_iodelay_pinconf_set
 
     Configure the pin configuration
 
-    :param struct ti_iodelay_device \*iod:
+    :param iod:
         iodelay device
+    :type iod: struct ti_iodelay_device \*
 
-    :param struct ti_iodelay_cfg \*cfg:
+    :param cfg:
         Configuration
+    :type cfg: struct ti_iodelay_cfg \*
 
 .. _`ti_iodelay_pinconf_set.description`:
 
@@ -390,8 +398,9 @@ ti_iodelay_pinconf_init_dev
 
     Initialize IODelay device
 
-    :param struct ti_iodelay_device \*iod:
+    :param iod:
         iodelay device
+    :type iod: struct ti_iodelay_device \*
 
 .. _`ti_iodelay_pinconf_init_dev.description`:
 
@@ -416,8 +425,9 @@ ti_iodelay_pinconf_deinit_dev
 
     deinit the iodelay device
 
-    :param struct ti_iodelay_device \*iod:
+    :param iod:
         IODelay device
+    :type iod: struct ti_iodelay_device \*
 
 .. _`ti_iodelay_pinconf_deinit_dev.description`:
 
@@ -435,11 +445,13 @@ ti_iodelay_get_pingroup
 
     Find the group mapped by a group selector
 
-    :param struct ti_iodelay_device \*iod:
+    :param iod:
         iodelay device
+    :type iod: struct ti_iodelay_device \*
 
-    :param unsigned int selector:
+    :param selector:
         Group Selector
+    :type selector: unsigned int
 
 .. _`ti_iodelay_get_pingroup.return`:
 
@@ -457,11 +469,13 @@ ti_iodelay_offset_to_pin
 
     get a pin index based on the register offset
 
-    :param struct ti_iodelay_device \*iod:
+    :param iod:
         iodelay driver instance
+    :type iod: struct ti_iodelay_device \*
 
-    :param unsigned int offset:
+    :param offset:
         register offset from the base
+    :type offset: unsigned int
 
 .. _`ti_iodelay_node_iterator`:
 
@@ -472,23 +486,29 @@ ti_iodelay_node_iterator
 
     Iterate iodelay node
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         Pin controller driver
+    :type pctldev: struct pinctrl_dev \*
 
-    :param struct device_node \*np:
+    :param np:
         Device node
+    :type np: struct device_node \*
 
-    :param const struct of_phandle_args \*pinctrl_spec:
+    :param pinctrl_spec:
         Parsed arguments from device tree
+    :type pinctrl_spec: const struct of_phandle_args \*
 
-    :param int \*pins:
+    :param pins:
         Array of pins in the pin group
+    :type pins: int \*
 
-    :param int pin_index:
+    :param pin_index:
         Pin index in the pin array
+    :type pin_index: int
 
-    :param void \*data:
+    :param data:
         Pin controller driver specific data
+    :type data: void \*
 
 .. _`ti_iodelay_dt_node_to_map`:
 
@@ -499,17 +519,21 @@ ti_iodelay_dt_node_to_map
 
     Map a device tree node to appropriate group
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pinctrl device representing IODelay device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param struct device_node \*np:
+    :param np:
         Node Pointer (device tree)
+    :type np: struct device_node \*
 
-    :param struct pinctrl_map \*\*map:
+    :param map:
         Pinctrl Map returned back to pinctrl framework
+    :type map: struct pinctrl_map \*\*
 
-    :param unsigned int \*num_maps:
+    :param num_maps:
         Number of maps (1)
+    :type num_maps: unsigned int \*
 
 .. _`ti_iodelay_dt_node_to_map.description`:
 
@@ -535,14 +559,17 @@ ti_iodelay_pinconf_group_get
 
     Get the group configuration
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pinctrl device representing IODelay device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         Group selector
+    :type selector: unsigned int
 
-    :param unsigned long \*config:
+    :param config:
         Configuration returned
+    :type config: unsigned long \*
 
 .. _`ti_iodelay_pinconf_group_get.return`:
 
@@ -560,17 +587,21 @@ ti_iodelay_pinconf_group_set
 
     Configure the groups of pins
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         pinctrl device representing IODelay device
+    :type pctldev: struct pinctrl_dev \*
 
-    :param unsigned int selector:
+    :param selector:
         Group selector
+    :type selector: unsigned int
 
-    :param unsigned long \*configs:
+    :param configs:
         Configurations
+    :type configs: unsigned long \*
 
-    :param unsigned int num_configs:
+    :param num_configs:
         Number of configurations
+    :type num_configs: unsigned int
 
 .. _`ti_iodelay_pinconf_group_set.return`:
 
@@ -588,11 +619,13 @@ ti_iodelay_pin_to_offset
 
     get pin register offset based on the pin index
 
-    :param struct ti_iodelay_device \*iod:
+    :param iod:
         iodelay driver instance
+    :type iod: struct ti_iodelay_device \*
 
-    :param unsigned int selector:
+    :param selector:
         Pin index
+    :type selector: unsigned int
 
 .. _`ti_iodelay_pinconf_group_dbg_show`:
 
@@ -603,14 +636,17 @@ ti_iodelay_pinconf_group_dbg_show
 
     show the group information
 
-    :param struct pinctrl_dev \*pctldev:
+    :param pctldev:
         Show the group information
+    :type pctldev: struct pinctrl_dev \*
 
-    :param struct seq_file \*s:
+    :param s:
         Sequence file
+    :type s: struct seq_file \*
 
-    :param unsigned int selector:
+    :param selector:
         Group selector
+    :type selector: unsigned int
 
 .. _`ti_iodelay_pinconf_group_dbg_show.description`:
 
@@ -628,14 +664,17 @@ ti_iodelay_alloc_pins
 
     Allocate structures needed for pins for iodelay
 
-    :param struct device \*dev:
+    :param dev:
         Device pointer
+    :type dev: struct device \*
 
-    :param struct ti_iodelay_device \*iod:
+    :param iod:
         iodelay device
+    :type iod: struct ti_iodelay_device \*
 
-    :param u32 base_phy:
+    :param base_phy:
         Base Physical Address
+    :type base_phy: u32
 
 .. _`ti_iodelay_alloc_pins.return`:
 
@@ -653,8 +692,9 @@ ti_iodelay_probe
 
     Standard probe
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
 .. _`ti_iodelay_probe.return`:
 
@@ -672,8 +712,9 @@ ti_iodelay_remove
 
     standard remove
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
 .. _`ti_iodelay_remove.return`:
 

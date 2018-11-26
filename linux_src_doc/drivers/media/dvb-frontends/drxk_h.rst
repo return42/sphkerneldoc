@@ -98,11 +98,13 @@ drxk_attach
 
 .. c:function:: struct dvb_frontend *drxk_attach(const struct drxk_config *config, struct i2c_adapter *i2c)
 
-    :param const struct drxk_config \*config:
+    :param config:
         pointer to \ :c:type:`struct drxk_config <drxk_config>`\  with demod configuration.
+    :type config: const struct drxk_config \*
 
-    :param struct i2c_adapter \*i2c:
+    :param i2c:
         i2c adapter to use.
+    :type i2c: struct i2c_adapter \*
 
 .. _`drxk_attach.return`:
 

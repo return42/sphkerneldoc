@@ -10,8 +10,9 @@ mips_cpc_default_phys_base
 
     retrieve the default physical base address of the CPC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cpc_default_phys_base.description`:
 
@@ -31,8 +32,9 @@ mips_cpc_probe
 
     probe for a Cluster Power Controller
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cpc_probe.description`:
 
@@ -51,8 +53,9 @@ mips_cpc_present
 
     determine whether a Cluster Power Controller is present
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cpc_present.description`:
 
@@ -70,8 +73,9 @@ mips_cpc_lock_other
 
     lock access to another core
 
-    :param unsigned int core:
+    :param core:
         *undescribed*
+    :type core: unsigned int
 
 .. _`mips_cpc_lock_other.core`:
 
@@ -94,8 +98,9 @@ mips_cpc_unlock_other
 
     unlock access to another core
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cpc_unlock_other.description`:
 

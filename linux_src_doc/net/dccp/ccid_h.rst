@@ -128,23 +128,29 @@ ccid_hc_tx_parse_options
 
     Parse CCID-specific options sent by the receiver
 
-    :param struct ccid \*ccid:
+    :param ccid:
         *undescribed*
+    :type ccid: struct ccid \*
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param u8 pkt:
+    :param pkt:
         type of packet that \ ``opt``\  appears on (RFC 4340, 5.1)
+    :type pkt: u8
 
-    :param u8 opt:
+    :param opt:
         the CCID-specific option type (RFC 4340, 5.8 and 10.3)
+    :type opt: u8
 
-    :param u8 \*val:
+    :param val:
         value of \ ``opt``\ 
+    :type val: u8 \*
 
-    :param u8 len:
+    :param len:
         length of \ ``val``\  in bytes
+    :type len: u8
 
 .. _`ccid_hc_rx_parse_options`:
 
@@ -155,23 +161,29 @@ ccid_hc_rx_parse_options
 
     Parse CCID-specific options sent by the sender Arguments are analogous to \ :c:func:`ccid_hc_tx_parse_options`\ 
 
-    :param struct ccid \*ccid:
+    :param ccid:
         *undescribed*
+    :type ccid: struct ccid \*
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param u8 pkt:
+    :param pkt:
         *undescribed*
+    :type pkt: u8
 
-    :param u8 opt:
+    :param opt:
         *undescribed*
+    :type opt: u8
 
-    :param u8 \*val:
+    :param val:
         *undescribed*
+    :type val: u8 \*
 
-    :param u8 len:
+    :param len:
         *undescribed*
+    :type len: u8
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ iproc_set_bit
 
     set or clear one bit (corresponding to the GPIO pin) in a Iproc GPIO register
 
-    :param struct iproc_gpio \*chip:
+    :param chip:
         *undescribed*
+    :type chip: struct iproc_gpio \*
 
-    :param unsigned int reg:
+    :param reg:
         register offset
+    :type reg: unsigned int
 
-    :param unsigned gpio:
+    :param gpio:
         GPIO pin
+    :type gpio: unsigned
 
-    :param bool set:
+    :param set:
         set or clear
+    :type set: bool
 
 .. _`iproc_gpio_irq_set_mask`:
 
@@ -31,11 +35,13 @@ iproc_gpio_irq_set_mask
 
     mask/unmask a GPIO interrupt
 
-    :param struct irq_data \*d:
+    :param d:
         IRQ chip data
+    :type d: struct irq_data \*
 
-    :param bool unmask:
+    :param unmask:
         mask/unmask GPIO interrupt
+    :type unmask: bool
 
 .. This file was automatic generated / don't edit.
 

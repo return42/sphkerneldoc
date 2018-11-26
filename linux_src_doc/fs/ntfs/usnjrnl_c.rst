@@ -10,8 +10,9 @@ ntfs_stamp_usnjrnl
 
     stamp the transaction log ($UsnJrnl) on an ntfs volume
 
-    :param ntfs_volume \*vol:
+    :param vol:
         ntfs volume on which to stamp the transaction log
+    :type vol: ntfs_volume \*
 
 .. _`ntfs_stamp_usnjrnl.description`:
 

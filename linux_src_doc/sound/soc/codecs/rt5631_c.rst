@@ -10,14 +10,17 @@ rt5631_write_index
 
     write index register of 2nd layer
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int reg:
+    :param reg:
         *undescribed*
+    :type reg: unsigned int
 
-    :param unsigned int value:
+    :param value:
         *undescribed*
+    :type value: unsigned int
 
 .. _`rt5631_read_index`:
 
@@ -28,11 +31,13 @@ rt5631_read_index
 
     read index register of 2nd layer
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int reg:
+    :param reg:
         *undescribed*
+    :type reg: unsigned int
 
 .. _`onebit_depop_power_stage`:
 
@@ -43,11 +48,13 @@ onebit_depop_power_stage
 
     auto depop in power stage.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
-    :param int enable:
+    :param enable:
         power on/off
+    :type enable: int
 
 .. _`onebit_depop_power_stage.description`:
 
@@ -65,11 +72,13 @@ onebit_depop_mute_stage
 
     auto depop in mute stage.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
-    :param int enable:
+    :param enable:
         mute/unmute
+    :type enable: int
 
 .. _`onebit_depop_mute_stage.description`:
 
@@ -87,11 +96,13 @@ depop_seq_power_stage
 
     step by step depop sequence in power stage.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
-    :param int enable:
+    :param enable:
         power on/off
+    :type enable: int
 
 .. _`depop_seq_power_stage.description`:
 
@@ -109,11 +120,13 @@ depop_seq_mute_stage
 
     step by step depop sequence in mute stage.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
-    :param int enable:
+    :param enable:
         mute/unmute
+    :type enable: int
 
 .. _`depop_seq_mute_stage.description`:
 

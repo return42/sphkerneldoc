@@ -50,8 +50,9 @@ dma_port_alloc
 
     Finds DMA control port from a switch pointed by route
 
-    :param struct tb_switch \*sw:
+    :param sw:
         Switch from where find the DMA port
+    :type sw: struct tb_switch \*
 
 .. _`dma_port_alloc.description`:
 
@@ -74,8 +75,9 @@ dma_port_free
 
     Release DMA control port structure
 
-    :param struct tb_dma_port \*dma:
+    :param dma:
         DMA control port
+    :type dma: struct tb_dma_port \*
 
 .. _`dma_port_flash_read`:
 
@@ -86,17 +88,21 @@ dma_port_flash_read
 
     Read from active flash region
 
-    :param struct tb_dma_port \*dma:
+    :param dma:
         DMA control port
+    :type dma: struct tb_dma_port \*
 
-    :param unsigned int address:
+    :param address:
         Address relative to the start of active region
+    :type address: unsigned int
 
-    :param void \*buf:
+    :param buf:
         Buffer where the data is read
+    :type buf: void \*
 
-    :param size_t size:
+    :param size:
         Size of the buffer
+    :type size: size_t
 
 .. _`dma_port_flash_write`:
 
@@ -107,17 +113,21 @@ dma_port_flash_write
 
     Write to non-active flash region
 
-    :param struct tb_dma_port \*dma:
+    :param dma:
         DMA control port
+    :type dma: struct tb_dma_port \*
 
-    :param unsigned int address:
+    :param address:
         Address relative to the start of non-active region
+    :type address: unsigned int
 
-    :param const void \*buf:
+    :param buf:
         Data to write
+    :type buf: const void \*
 
-    :param size_t size:
+    :param size:
         Size of the buffer
+    :type size: size_t
 
 .. _`dma_port_flash_write.description`:
 
@@ -137,8 +147,9 @@ dma_port_flash_update_auth
 
     Starts flash authenticate cycle
 
-    :param struct tb_dma_port \*dma:
+    :param dma:
         DMA control port
+    :type dma: struct tb_dma_port \*
 
 .. _`dma_port_flash_update_auth.description`:
 
@@ -161,11 +172,13 @@ dma_port_flash_update_auth_status
 
     Reads status of update auth command
 
-    :param struct tb_dma_port \*dma:
+    :param dma:
         DMA control port
+    :type dma: struct tb_dma_port \*
 
-    :param u32 \*status:
+    :param status:
         Status code of the operation
+    :type status: u32 \*
 
 .. _`dma_port_flash_update_auth_status.description`:
 
@@ -189,8 +202,9 @@ dma_port_power_cycle
 
     Power cycles the switch
 
-    :param struct tb_dma_port \*dma:
+    :param dma:
         DMA control port
+    :type dma: struct tb_dma_port \*
 
 .. _`dma_port_power_cycle.description`:
 

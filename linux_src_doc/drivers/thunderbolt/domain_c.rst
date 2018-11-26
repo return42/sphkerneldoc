@@ -10,11 +10,13 @@ tb_domain_alloc
 
     Allocate a domain
 
-    :param struct tb_nhi \*nhi:
+    :param nhi:
         Pointer to the host controller
+    :type nhi: struct tb_nhi \*
 
-    :param size_t privsize:
+    :param privsize:
         Size of the connection manager private data
+    :type privsize: size_t
 
 .. _`tb_domain_alloc.description`:
 
@@ -44,8 +46,9 @@ tb_domain_add
 
     Add domain to the system
 
-    :param struct tb \*tb:
+    :param tb:
         Domain to add
+    :type tb: struct tb \*
 
 .. _`tb_domain_add.description`:
 
@@ -73,8 +76,9 @@ tb_domain_remove
 
     Removes and releases a domain
 
-    :param struct tb \*tb:
+    :param tb:
         Domain to remove
+    :type tb: struct tb \*
 
 .. _`tb_domain_remove.description`:
 
@@ -93,8 +97,9 @@ tb_domain_suspend_noirq
 
     Suspend a domain
 
-    :param struct tb \*tb:
+    :param tb:
         Domain to suspend
+    :type tb: struct tb \*
 
 .. _`tb_domain_suspend_noirq.description`:
 
@@ -112,8 +117,9 @@ tb_domain_resume_noirq
 
     Resume a domain
 
-    :param struct tb \*tb:
+    :param tb:
         Domain to resume
+    :type tb: struct tb \*
 
 .. _`tb_domain_resume_noirq.description`:
 
@@ -132,11 +138,13 @@ tb_domain_approve_switch
 
     Approve switch
 
-    :param struct tb \*tb:
+    :param tb:
         Domain the switch belongs to
+    :type tb: struct tb \*
 
-    :param struct tb_switch \*sw:
+    :param sw:
         Switch to approve
+    :type sw: struct tb_switch \*
 
 .. _`tb_domain_approve_switch.description`:
 
@@ -156,11 +164,13 @@ tb_domain_approve_switch_key
 
     Approve switch and add key
 
-    :param struct tb \*tb:
+    :param tb:
         Domain the switch belongs to
+    :type tb: struct tb \*
 
-    :param struct tb_switch \*sw:
+    :param sw:
         Switch to approve
+    :type sw: struct tb_switch \*
 
 .. _`tb_domain_approve_switch_key.description`:
 
@@ -187,11 +197,13 @@ tb_domain_challenge_switch_key
 
     Challenge and approve switch
 
-    :param struct tb \*tb:
+    :param tb:
         Domain the switch belongs to
+    :type tb: struct tb \*
 
-    :param struct tb_switch \*sw:
+    :param sw:
         Switch to approve
+    :type sw: struct tb_switch \*
 
 .. _`tb_domain_challenge_switch_key.description`:
 
@@ -219,8 +231,9 @@ tb_domain_disconnect_pcie_paths
 
     Disconnect all PCIe paths
 
-    :param struct tb \*tb:
+    :param tb:
         Domain whose PCIe paths to disconnect
+    :type tb: struct tb \*
 
 .. _`tb_domain_disconnect_pcie_paths.description`:
 
@@ -241,11 +254,13 @@ tb_domain_approve_xdomain_paths
 
     Enable DMA paths for XDomain
 
-    :param struct tb \*tb:
+    :param tb:
         Domain enabling the DMA paths
+    :type tb: struct tb \*
 
-    :param struct tb_xdomain \*xd:
+    :param xd:
         XDomain DMA paths are created to
+    :type xd: struct tb_xdomain \*
 
 .. _`tb_domain_approve_xdomain_paths.description`:
 
@@ -273,11 +288,13 @@ tb_domain_disconnect_xdomain_paths
 
     Disable DMA paths for XDomain
 
-    :param struct tb \*tb:
+    :param tb:
         Domain disabling the DMA paths
+    :type tb: struct tb \*
 
-    :param struct tb_xdomain \*xd:
+    :param xd:
         XDomain whose DMA paths are disconnected
+    :type xd: struct tb_xdomain \*
 
 .. _`tb_domain_disconnect_xdomain_paths.description`:
 
@@ -305,8 +322,9 @@ tb_domain_disconnect_all_paths
 
     Disconnect all paths for the domain
 
-    :param struct tb \*tb:
+    :param tb:
         Domain whose paths are disconnected
+    :type tb: struct tb \*
 
 .. _`tb_domain_disconnect_all_paths.description`:
 

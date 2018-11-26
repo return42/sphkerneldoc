@@ -10,11 +10,13 @@ as10x_cmd_add_PID_filter
 
     send add filter command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
-    :param struct as10x_ts_filter \*filter:
+    :param filter:
         TSFilter filter for DVB-T
+    :type filter: struct as10x_ts_filter \*
 
 .. _`as10x_cmd_add_pid_filter.description`:
 
@@ -32,11 +34,13 @@ as10x_cmd_del_PID_filter
 
     Send delete filter command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapte
+    :type adap: struct as10x_bus_adapter_t \*
 
-    :param uint16_t pid_value:
+    :param pid_value:
         PID to delete
+    :type pid_value: uint16_t
 
 .. _`as10x_cmd_del_pid_filter.description`:
 
@@ -54,8 +58,9 @@ as10x_cmd_start_streaming
 
     Send start streaming command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
 .. _`as10x_cmd_start_streaming.description`:
 
@@ -73,8 +78,9 @@ as10x_cmd_stop_streaming
 
     Send stop streaming command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
 .. _`as10x_cmd_stop_streaming.description`:
 

@@ -10,8 +10,9 @@ ERR_CAST
 
     Explicitly cast an error-valued pointer to another pointer type
 
-    :param __force const void \*ptr:
+    :param ptr:
         The pointer to cast.
+    :type ptr: __force const void \*
 
 .. _`err_cast.description`:
 

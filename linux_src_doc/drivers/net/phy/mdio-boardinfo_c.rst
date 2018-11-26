@@ -10,8 +10,9 @@ mdiobus_setup_mdiodev_from_board_info
 
     create and setup MDIO devices from pre-collected board specific MDIO information
 
-    :param struct mii_bus \*bus:
+    :param bus:
         *undescribed*
+    :type bus: struct mii_bus \*
 
     :param int (\*cb)(struct mii_bus \*bus, struct mdio_board_info \*bi):
         *undescribed*
@@ -32,11 +33,13 @@ mdiobus_register_board_info
 
     register MDIO devices for a given board
 
-    :param const struct mdio_board_info \*info:
+    :param info:
         array of devices descriptors
+    :type info: const struct mdio_board_info \*
 
-    :param unsigned int n:
+    :param n:
         number of descriptors provided
+    :type n: unsigned int
 
 .. _`mdiobus_register_board_info.context`:
 

@@ -10,8 +10,9 @@ qmgr_stat_empty
 
     checks if a hardware queue is empty
 
-    :param unsigned int queue:
+    :param queue:
         queue number
+    :type queue: unsigned int
 
 .. _`qmgr_stat_empty.description`:
 
@@ -29,8 +30,9 @@ qmgr_stat_below_low_watermark
 
     checks if a queue is below low watermark
 
-    :param unsigned int queue:
+    :param queue:
         queue number
+    :type queue: unsigned int
 
 .. _`qmgr_stat_below_low_watermark.description`:
 
@@ -48,8 +50,9 @@ qmgr_stat_above_high_watermark
 
     checks if a queue is above high watermark
 
-    :param unsigned int queue:
+    :param queue:
         queue number
+    :type queue: unsigned int
 
 .. _`qmgr_stat_above_high_watermark.description`:
 
@@ -67,8 +70,9 @@ qmgr_stat_full
 
     checks if a hardware queue is full
 
-    :param unsigned int queue:
+    :param queue:
         queue number
+    :type queue: unsigned int
 
 .. _`qmgr_stat_full.description`:
 
@@ -86,8 +90,9 @@ qmgr_stat_underflow
 
     checks if a hardware queue experienced underflow
 
-    :param unsigned int queue:
+    :param queue:
         queue number
+    :type queue: unsigned int
 
 .. _`qmgr_stat_underflow.description`:
 
@@ -105,8 +110,9 @@ qmgr_stat_overflow
 
     checks if a hardware queue experienced overflow
 
-    :param unsigned int queue:
+    :param queue:
         queue number
+    :type queue: unsigned int
 
 .. _`qmgr_stat_overflow.description`:
 

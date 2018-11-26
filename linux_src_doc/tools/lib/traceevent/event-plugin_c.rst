@@ -1,19 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: tools/lib/traceevent/event-plugin.c
 
-.. _`traceevent_plugin_list_options`:
+.. _`tep_plugin_list_options`:
 
-traceevent_plugin_list_options
-==============================
+tep_plugin_list_options
+=======================
 
-.. c:function:: char **traceevent_plugin_list_options( void)
+.. c:function:: char **tep_plugin_list_options( void)
 
     get list of plugin options
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
-.. _`traceevent_plugin_list_options.description`:
+.. _`tep_plugin_list_options.description`:
 
 Description
 -----------
@@ -25,70 +26,77 @@ used by toggling the option.
 Returns NULL if there's no options registered. On error it returns
 INVALID_PLUGIN_LIST_OPTION
 
-Must be freed with \ :c:func:`traceevent_plugin_free_options_list`\ .
+Must be freed with \ :c:func:`tep_plugin_free_options_list`\ .
 
-.. _`traceevent_plugin_add_options`:
+.. _`tep_plugin_add_options`:
 
-traceevent_plugin_add_options
-=============================
+tep_plugin_add_options
+======================
 
-.. c:function:: int traceevent_plugin_add_options(const char *name, struct pevent_plugin_option *options)
+.. c:function:: int tep_plugin_add_options(const char *name, struct tep_plugin_option *options)
 
     Add a set of options by a plugin
 
-    :param const char \*name:
+    :param name:
         The name of the plugin adding the options
+    :type name: const char \*
 
-    :param struct pevent_plugin_option \*options:
+    :param options:
         The set of options being loaded
+    :type options: struct tep_plugin_option \*
 
-.. _`traceevent_plugin_add_options.description`:
+.. _`tep_plugin_add_options.description`:
 
 Description
 -----------
 
 Sets the options with the values that have been added by user.
 
-.. _`traceevent_plugin_remove_options`:
+.. _`tep_plugin_remove_options`:
 
-traceevent_plugin_remove_options
-================================
+tep_plugin_remove_options
+=========================
 
-.. c:function:: void traceevent_plugin_remove_options(struct pevent_plugin_option *options)
+.. c:function:: void tep_plugin_remove_options(struct tep_plugin_option *options)
 
     remove plugin options that were registered
 
-    :param struct pevent_plugin_option \*options:
-        Options to removed that were registered with traceevent_plugin_add_options
+    :param options:
+        Options to removed that were registered with tep_plugin_add_options
+    :type options: struct tep_plugin_option \*
 
-.. _`traceevent_print_plugins`:
+.. _`tep_print_plugins`:
 
-traceevent_print_plugins
-========================
+tep_print_plugins
+=================
 
-.. c:function:: void traceevent_print_plugins(struct trace_seq *s, const char *prefix, const char *suffix, const struct plugin_list *list)
+.. c:function:: void tep_print_plugins(struct trace_seq *s, const char *prefix, const char *suffix, const struct tep_plugin_list *list)
 
     print out the list of plugins loaded
 
-    :param struct trace_seq \*s:
+    :param s:
         the trace_seq descripter to write to
+    :type s: struct trace_seq \*
 
-    :param const char \*prefix:
+    :param prefix:
         The prefix string to add before listing the option name
+    :type prefix: const char \*
 
-    :param const char \*suffix:
+    :param suffix:
         The suffix string ot append after the option name
+    :type suffix: const char \*
 
-    :param const struct plugin_list \*list:
-        The list of plugins (usually returned by \ :c:func:`traceevent_load_plugins`\ 
+    :param list:
+        The list of plugins (usually returned by \ :c:func:`tep_load_plugins`\ 
+    :type list: const struct tep_plugin_list \*
 
-.. _`traceevent_print_plugins.description`:
+.. _`tep_print_plugins.description`:
 
 Description
 -----------
 
 Writes to the trace_seq \ ``s``\  the list of plugins (files) that is
-returned by \ :c:func:`traceevent_load_plugins`\ . Use \ ``prefix``\  and \ ``suffix``\  for formating:
+returned by \ :c:func:`tep_load_plugins`\ . Use \ ``prefix``\  and \ ``suffix``\  for formating:
 \ ``prefix``\  = "  ", \ ``suffix``\  = "\n".
 
 .. This file was automatic generated / don't edit.

@@ -8,8 +8,9 @@ ad7606_poll_bh_to_ring
 
 .. c:function:: void ad7606_poll_bh_to_ring(struct work_struct *work_s)
 
-    :param struct work_struct \*work_s:
+    :param work_s:
         the work struct through which this was scheduled
+    :type work_s: struct work_struct \*
 
 .. _`ad7606_poll_bh_to_ring.description`:
 
@@ -28,11 +29,13 @@ ad7606_interrupt
 
 .. c:function:: irqreturn_t ad7606_interrupt(int irq, void *dev_id)
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: void \*
 
 .. This file was automatic generated / don't edit.
 

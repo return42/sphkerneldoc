@@ -10,11 +10,13 @@ strfilter__new
 
     Create a new string filter
 
-    :param const char \*rules:
+    :param rules:
         Filter rule, which is a combination of glob expressions.
+    :type rules: const char \*
 
-    :param const char \*\*err:
+    :param err:
         Pointer which points an error detected on \ ``rules``\ 
+    :type err: const char \*\*
 
 .. _`strfilter__new.description`:
 
@@ -34,15 +36,18 @@ strfilter__or
 
     Append an additional rule by logical-or
 
-    :param struct strfilter \*filter:
+    :param filter:
         Original string filter
+    :type filter: struct strfilter \*
 
-    :param const char \*rules:
+    :param rules:
         Filter rule to be appended at left of the root of
         \ ``filter``\  by using logical-or.
+    :type rules: const char \*
 
-    :param const char \*\*err:
+    :param err:
         Pointer which points an error detected on \ ``rules``\ 
+    :type err: const char \*\*
 
 .. _`strfilter__or.description`:
 
@@ -61,15 +66,18 @@ strfilter__and
 
     Append an additional rule by logical-and
 
-    :param struct strfilter \*filter:
+    :param filter:
         Original string filter
+    :type filter: struct strfilter \*
 
-    :param const char \*rules:
+    :param rules:
         Filter rule to be appended at left of the root of
         \ ``filter``\  by using logical-and.
+    :type rules: const char \*
 
-    :param const char \*\*err:
+    :param err:
         Pointer which points an error detected on \ ``rules``\ 
+    :type err: const char \*\*
 
 .. _`strfilter__and.description`:
 
@@ -88,11 +96,13 @@ strfilter__compare
 
     compare given string and a string filter
 
-    :param struct strfilter \*filter:
+    :param filter:
         String filter
+    :type filter: struct strfilter \*
 
-    :param const char \*str:
+    :param str:
         target string
+    :type str: const char \*
 
 .. _`strfilter__compare.description`:
 
@@ -110,8 +120,9 @@ strfilter__delete
 
     delete a string filter
 
-    :param struct strfilter \*filter:
+    :param filter:
         String filter to delete
+    :type filter: struct strfilter \*
 
 .. _`strfilter__delete.description`:
 
@@ -129,8 +140,9 @@ strfilter__string
 
     Reconstruct a rule string from filter
 
-    :param struct strfilter \*filter:
+    :param filter:
         String filter to reconstruct
+    :type filter: struct strfilter \*
 
 .. _`strfilter__string.description`:
 

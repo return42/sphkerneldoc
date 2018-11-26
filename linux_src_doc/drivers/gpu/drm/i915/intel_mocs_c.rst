@@ -8,12 +8,14 @@ get_mocs_settings
 
 .. c:function:: bool get_mocs_settings(struct drm_i915_private *dev_priv, struct drm_i915_mocs_table *table)
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device.
+    :type dev_priv: struct drm_i915_private \*
 
-    :param struct drm_i915_mocs_table \*table:
+    :param table:
         Output table that will be made to point at appropriate
         MOCS values for the device.
+    :type table: struct drm_i915_mocs_table \*
 
 .. _`get_mocs_settings.description`:
 
@@ -36,12 +38,13 @@ true if there are applicable MOCS settings for the device.
 intel_mocs_init_engine
 ======================
 
-.. c:function:: int intel_mocs_init_engine(struct intel_engine_cs *engine)
+.. c:function:: void intel_mocs_init_engine(struct intel_engine_cs *engine)
 
     emit the mocs control table
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         The engine for whom to emit the registers.
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_mocs_init_engine.description`:
 
@@ -50,13 +53,6 @@ Description
 
 This function simply emits a MI_LOAD_REGISTER_IMM command for the
 given table starting at the given address.
-
-.. _`intel_mocs_init_engine.return`:
-
-Return
-------
-
-0 on success, otherwise the error status.
 
 .. _`emit_mocs_control_table`:
 
@@ -67,11 +63,13 @@ emit_mocs_control_table
 
     emit the mocs control table
 
-    :param struct i915_request \*rq:
+    :param rq:
         Request to set up the MOCS table for.
+    :type rq: struct i915_request \*
 
-    :param const struct drm_i915_mocs_table \*table:
+    :param table:
         The values to program into the control regs.
+    :type table: const struct drm_i915_mocs_table \*
 
 .. _`emit_mocs_control_table.description`:
 
@@ -97,11 +95,13 @@ emit_mocs_l3cc_table
 
     emit the mocs control table
 
-    :param struct i915_request \*rq:
+    :param rq:
         Request to set up the MOCS table for.
+    :type rq: struct i915_request \*
 
-    :param const struct drm_i915_mocs_table \*table:
+    :param table:
         The values to program into the control regs.
+    :type table: const struct drm_i915_mocs_table \*
 
 .. _`emit_mocs_l3cc_table.description`:
 
@@ -128,8 +128,9 @@ intel_mocs_init_l3cc_table
 
     program the mocs control table
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_mocs_init_l3cc_table.description`:
 
@@ -160,8 +161,9 @@ intel_rcs_context_init_mocs
 
     program the MOCS register.
 
-    :param struct i915_request \*rq:
+    :param rq:
         Request to set up the MOCS tables for.
+    :type rq: struct i915_request \*
 
 .. _`intel_rcs_context_init_mocs.description`:
 

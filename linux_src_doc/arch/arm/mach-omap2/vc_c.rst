@@ -82,8 +82,9 @@ omap_vc_config_channel
 
     configure VC channel to PMIC mappings
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         pointer to voltagdomain defining the desired VC channel
+    :type voltdm: struct voltagedomain \*
 
 .. _`omap_vc_config_channel.description`:
 
@@ -111,8 +112,9 @@ omap3_set_i2c_timings
 
     sets i2c sleep timings for a channel
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         channel to configure
+    :type voltdm: struct voltagedomain \*
 
 .. _`omap3_set_i2c_timings.description`:
 
@@ -139,8 +141,9 @@ omap3_set_off_timings
 
     sets off-mode timings for a channel
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         channel to configure
+    :type voltdm: struct voltagedomain \*
 
 .. _`omap3_set_off_timings.description`:
 
@@ -167,11 +170,13 @@ omap4_calc_volt_ramp
 
     calculates voltage ramping delays on omap4
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         channel to calculate values for
+    :type voltdm: struct voltagedomain \*
 
-    :param u32 voltage_diff:
+    :param voltage_diff:
         voltage difference in microvolts
+    :type voltage_diff: u32
 
 .. _`omap4_calc_volt_ramp.description`:
 
@@ -197,14 +202,17 @@ omap4_usec_to_val_scrm
 
     convert microsecond value to SCRM module bitfield
 
-    :param u32 usec:
+    :param usec:
         microseconds
+    :type usec: u32
 
-    :param int shift:
+    :param shift:
         number of bits to shift left
+    :type shift: int
 
-    :param u32 mask:
+    :param mask:
         bitfield mask
+    :type mask: u32
 
 .. _`omap4_usec_to_val_scrm.description`:
 
@@ -225,11 +233,13 @@ omap4_set_timings
 
     set voltage ramp timings for a channel
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         channel to configure
+    :type voltdm: struct voltagedomain \*
 
-    :param bool off_mode:
+    :param off_mode:
         whether off-mode values are used
+    :type off_mode: bool
 
 .. _`omap4_set_timings.description`:
 
@@ -247,8 +257,9 @@ omap4_vc_i2c_timing_init
 
     sets up board I2C timing parameters
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         voltagedomain pointer to get data from
+    :type voltdm: struct voltagedomain \*
 
 .. _`omap4_vc_i2c_timing_init.description`:
 
@@ -269,8 +280,9 @@ omap_vc_i2c_init
 
     initialize I2C interface to PMIC
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         voltage domain containing VC data
+    :type voltdm: struct voltagedomain \*
 
 .. _`omap_vc_i2c_init.description`:
 
@@ -295,11 +307,13 @@ omap_vc_calc_vsel
 
     calculate vsel value for a channel
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         channel to calculate value for
+    :type voltdm: struct voltagedomain \*
 
-    :param u32 uvolt:
+    :param uvolt:
         microvolt value to convert to vsel
+    :type uvolt: u32
 
 .. _`omap_vc_calc_vsel.description`:
 
@@ -320,8 +334,9 @@ omap_pm_setup_sr_i2c_pcb_length
 
     set length of SR I2C traces on PCB
 
-    :param u32 mm:
+    :param mm:
         length of the PCB trace in millimetres
+    :type mm: u32
 
 .. _`omap_pm_setup_sr_i2c_pcb_length.description`:
 

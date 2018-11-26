@@ -10,8 +10,9 @@ cgroup_ssid_enabled
 
     cgroup subsys enabled test by subsys ID
 
-    :param int ssid:
+    :param ssid:
         subsys ID of interest
+    :type ssid: int
 
 .. _`cgroup_ssid_enabled.description`:
 
@@ -31,8 +32,9 @@ cgroup_on_dfl
 
     test whether a cgroup is on the default hierarchy
 
-    :param const struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup of interest
+    :type cgrp: const struct cgroup \*
 
 .. _`cgroup_on_dfl.description`:
 
@@ -101,11 +103,13 @@ cgroup_css
 
     obtain a cgroup's css for the specified subsystem
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup of interest
+    :type cgrp: struct cgroup \*
 
-    :param struct cgroup_subsys \*ss:
-        the subsystem of interest (%NULL returns \ ``cgrp``\ ->self)
+    :param ss:
+        the subsystem of interest (%NULL returns \ ``cgrp->self``\ )
+    :type ss: struct cgroup_subsys \*
 
 .. _`cgroup_css.description`:
 
@@ -127,11 +131,13 @@ cgroup_tryget_css
 
     try to get a cgroup's css for the specified subsystem
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup of interest
+    :type cgrp: struct cgroup \*
 
-    :param struct cgroup_subsys \*ss:
+    :param ss:
         the subsystem of interest
+    :type ss: struct cgroup_subsys \*
 
 .. _`cgroup_tryget_css.description`:
 
@@ -150,11 +156,13 @@ cgroup_e_css
 
     obtain a cgroup's effective css for the specified subsystem
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup of interest
+    :type cgrp: struct cgroup \*
 
-    :param struct cgroup_subsys \*ss:
-        the subsystem of interest (%NULL returns \ ``cgrp``\ ->self)
+    :param ss:
+        the subsystem of interest (%NULL returns \ ``cgrp->self``\ )
+    :type ss: struct cgroup_subsys \*
 
 .. _`cgroup_e_css.description`:
 
@@ -175,11 +183,13 @@ cgroup_get_e_css
 
     get a cgroup's effective css for the specified subsystem
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup of interest
+    :type cgrp: struct cgroup \*
 
-    :param struct cgroup_subsys \*ss:
+    :param ss:
         the subsystem of interest
+    :type ss: struct cgroup_subsys \*
 
 .. _`cgroup_get_e_css.description`:
 
@@ -201,14 +211,17 @@ for_each_css
 
     iterate all css's of a cgroup
 
-    :param  css:
+    :param css:
         the iteration cursor
+    :type css: 
 
-    :param  ssid:
+    :param ssid:
         the index of the subsystem, CGROUP_SUBSYS_COUNT after reaching the end
+    :type ssid: 
 
-    :param  cgrp:
+    :param cgrp:
         the target cgroup to iterate css's of
+    :type cgrp: 
 
 .. _`for_each_css.description`:
 
@@ -226,14 +239,17 @@ for_each_e_css
 
     iterate all effective css's of a cgroup
 
-    :param  css:
+    :param css:
         the iteration cursor
+    :type css: 
 
-    :param  ssid:
+    :param ssid:
         the index of the subsystem, CGROUP_SUBSYS_COUNT after reaching the end
+    :type ssid: 
 
-    :param  cgrp:
+    :param cgrp:
         the target cgroup to iterate css's of
+    :type cgrp: 
 
 .. _`for_each_e_css.description`:
 
@@ -251,14 +267,17 @@ do_each_subsys_mask
 
     filter for_each_subsys with a bitmask
 
-    :param  ss:
+    :param ss:
         the iteration cursor
+    :type ss: 
 
-    :param  ssid:
+    :param ssid:
         the index of \ ``ss``\ , CGROUP_SUBSYS_COUNT after reaching the end
+    :type ssid: 
 
-    :param  ss_mask:
+    :param ss_mask:
         the bitmask
+    :type ss_mask: 
 
 .. _`do_each_subsys_mask.description`:
 
@@ -277,8 +296,9 @@ css_set_populated
 
     does a css_set contain any tasks?
 
-    :param struct css_set \*cset:
+    :param cset:
         target css_set
+    :type cset: struct css_set \*
 
 .. _`css_set_populated.description`:
 
@@ -299,11 +319,13 @@ cgroup_update_populated
 
     update the populated count of a cgroup
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the target cgroup
+    :type cgrp: struct cgroup \*
 
-    :param bool populated:
+    :param populated:
         inc or dec populated count
+    :type populated: bool
 
 .. _`cgroup_update_populated.description`:
 
@@ -311,13 +333,13 @@ Description
 -----------
 
 One of the css_sets associated with \ ``cgrp``\  is either getting its first
-task or losing the last.  Update \ ``cgrp``\ ->nr_populated\_\* accordingly.  The
+task or losing the last.  Update \ ``cgrp->nr_populated``\ \_\* accordingly.  The
 count is propagated towards root so that a given cgroup's
 nr_populated_children is zero iff none of its descendants contain any
 tasks.
 
 \ ``cgrp``\ 's interface file "cgroup.populated" is zero if both
-\ ``cgrp``\ ->nr_populated_csets and \ ``cgrp``\ ->nr_populated_children are zero and
+\ ``cgrp->nr_populated_csets``\  and \ ``cgrp->nr_populated_children``\  are zero and
 1 otherwise.  When the sum changes from or to zero, userland is notified
 that the content of the interface file has changed.  This can be used to
 detect when \ ``cgrp``\  and its descendants become populated or empty.
@@ -331,11 +353,13 @@ css_set_update_populated
 
     update populated state of a css_set
 
-    :param struct css_set \*cset:
+    :param cset:
         target css_set
+    :type cset: struct css_set \*
 
-    :param bool populated:
+    :param populated:
         whether \ ``cset``\  is populated or depopulated
+    :type populated: bool
 
 .. _`css_set_update_populated.description`:
 
@@ -354,17 +378,21 @@ css_set_move_task
 
     move a task from one css_set to another
 
-    :param struct task_struct \*task:
+    :param task:
         task being moved
+    :type task: struct task_struct \*
 
-    :param struct css_set \*from_cset:
+    :param from_cset:
         css_set \ ``task``\  currently belongs to (may be NULL)
+    :type from_cset: struct css_set \*
 
-    :param struct css_set \*to_cset:
+    :param to_cset:
         new css_set \ ``task``\  is being moved to (may be NULL)
+    :type to_cset: struct css_set \*
 
-    :param bool use_mg_tasks:
-        move to \ ``to_cset``\ ->mg_tasks instead of ->tasks
+    :param use_mg_tasks:
+        move to \ ``to_cset->mg_tasks``\  instead of ->tasks
+    :type use_mg_tasks: bool
 
 .. _`css_set_move_task.description`:
 
@@ -388,17 +416,21 @@ compare_css_sets
 
     helper function for \ :c:func:`find_existing_css_set`\ .
 
-    :param struct css_set \*cset:
+    :param cset:
         candidate css_set being tested
+    :type cset: struct css_set \*
 
-    :param struct css_set \*old_cset:
+    :param old_cset:
         existing css_set for a task
+    :type old_cset: struct css_set \*
 
-    :param struct cgroup \*new_cgrp:
+    :param new_cgrp:
         cgroup that's being entered by the task
+    :type new_cgrp: struct cgroup \*
 
-    :param struct cgroup_subsys_state  \*template:
+    :param template:
         desired set of css pointers in css_set (pre-calculated)
+    :type template: struct cgroup_subsys_state  \*
 
 .. _`compare_css_sets.description`:
 
@@ -417,14 +449,17 @@ find_existing_css_set
 
     init css array and find the matching css_set
 
-    :param struct css_set \*old_cset:
+    :param old_cset:
         the css_set that we're using before the cgroup transition
+    :type old_cset: struct css_set \*
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup that we're moving into
+    :type cgrp: struct cgroup \*
 
-    :param struct cgroup_subsys_state  \*template:
+    :param template:
         out param for the new set of csses, should be clear on entry
+    :type template: struct cgroup_subsys_state  \*
 
 .. _`allocate_cgrp_cset_links`:
 
@@ -435,11 +470,13 @@ allocate_cgrp_cset_links
 
     allocate cgrp_cset_links
 
-    :param int count:
+    :param count:
         the number of links to allocate
+    :type count: int
 
-    :param struct list_head \*tmp_links:
+    :param tmp_links:
         list_head the allocated links are put on
+    :type tmp_links: struct list_head \*
 
 .. _`allocate_cgrp_cset_links.description`:
 
@@ -458,14 +495,17 @@ link_css_set
 
     a helper function to link a css_set to a cgroup
 
-    :param struct list_head \*tmp_links:
+    :param tmp_links:
         cgrp_cset_link objects allocated by \ :c:func:`allocate_cgrp_cset_links`\ 
+    :type tmp_links: struct list_head \*
 
-    :param struct css_set \*cset:
+    :param cset:
         the css_set to be linked
+    :type cset: struct css_set \*
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the destination cgroup
+    :type cgrp: struct cgroup \*
 
 .. _`find_css_set`:
 
@@ -476,11 +516,13 @@ find_css_set
 
     return a new css_set with one cgroup updated
 
-    :param struct css_set \*old_cset:
+    :param old_cset:
         the baseline css_set
+    :type old_cset: struct css_set \*
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup to be updated
+    :type cgrp: struct cgroup \*
 
 .. _`find_css_set.description`:
 
@@ -499,8 +541,9 @@ cgroup_file_mode
 
     deduce file mode of a control file
 
-    :param const struct cftype \*cft:
+    :param cft:
         the control file in question
+    :type cft: const struct cftype \*
 
 .. _`cgroup_file_mode.description`:
 
@@ -518,11 +561,13 @@ cgroup_calc_subtree_ss_mask
 
     calculate subtree_ss_mask
 
-    :param u16 subtree_control:
+    :param subtree_control:
         the new subtree_control mask to consider
+    :type subtree_control: u16
 
-    :param u16 this_ss_mask:
+    :param this_ss_mask:
         available subsystems
+    :type this_ss_mask: u16
 
 .. _`cgroup_calc_subtree_ss_mask.description`:
 
@@ -545,8 +590,9 @@ cgroup_kn_unlock
 
     unlocking helper for cgroup kernfs methods
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         the kernfs_node being serviced
+    :type kn: struct kernfs_node \*
 
 .. _`cgroup_kn_unlock.description`:
 
@@ -568,11 +614,13 @@ cgroup_kn_lock_live
 
     locking helper for cgroup kernfs methods
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         the kernfs_node being serviced
+    :type kn: struct kernfs_node \*
 
-    :param bool drain_offline:
+    :param drain_offline:
         perform offline draining on the cgroup
+    :type drain_offline: bool
 
 .. _`cgroup_kn_lock_live.description`:
 
@@ -600,8 +648,9 @@ css_clear_dir
 
     remove subsys files in a cgroup directory
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         taget css
+    :type css: struct cgroup_subsys_state \*
 
 .. _`css_populate_dir`:
 
@@ -612,8 +661,9 @@ css_populate_dir
 
     create subsys files in a cgroup directory
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         target css
+    :type css: struct cgroup_subsys_state \*
 
 .. _`css_populate_dir.description`:
 
@@ -631,14 +681,17 @@ task_cgroup_path
 
     cgroup path of a task in the first cgroup hierarchy
 
-    :param struct task_struct \*task:
+    :param task:
         target task
+    :type task: struct task_struct \*
 
-    :param char \*buf:
+    :param buf:
         the buffer to write the path into
+    :type buf: char \*
 
-    :param size_t buflen:
+    :param buflen:
         the length of the buffer
+    :type buflen: size_t
 
 .. _`task_cgroup_path.description`:
 
@@ -661,20 +714,22 @@ cgroup_migrate_add_task
 
     add a migration target task to a migration context
 
-    :param struct task_struct \*task:
+    :param task:
         target task
+    :type task: struct task_struct \*
 
-    :param struct cgroup_mgctx \*mgctx:
+    :param mgctx:
         target migration context
+    :type mgctx: struct cgroup_mgctx \*
 
 .. _`cgroup_migrate_add_task.description`:
 
 Description
 -----------
 
-Add \ ``task``\ , which is a migration target, to \ ``mgctx``\ ->tset.  This function
+Add \ ``task``\ , which is a migration target, to \ ``mgctx->tset``\ .  This function
 becomes noop if \ ``task``\  doesn't need to be migrated.  \ ``task``\ 's css_set
-should have been added as a migration source and \ ``task``\ ->cg_list will be
+should have been added as a migration source and \ ``task->cg_list``\  will be
 moved from the css_set's tasks list to mg_tasks one.
 
 .. _`cgroup_taskset_first`:
@@ -686,11 +741,13 @@ cgroup_taskset_first
 
     reset taskset and return the first task
 
-    :param struct cgroup_taskset \*tset:
+    :param tset:
         taskset of interest
+    :type tset: struct cgroup_taskset \*
 
-    :param struct cgroup_subsys_state \*\*dst_cssp:
+    :param dst_cssp:
         output variable for the destination css
+    :type dst_cssp: struct cgroup_subsys_state \*\*
 
 .. _`cgroup_taskset_first.description`:
 
@@ -708,11 +765,13 @@ cgroup_taskset_next
 
     iterate to the next task in taskset
 
-    :param struct cgroup_taskset \*tset:
+    :param tset:
         taskset of interest
+    :type tset: struct cgroup_taskset \*
 
-    :param struct cgroup_subsys_state \*\*dst_cssp:
+    :param dst_cssp:
         output variable for the destination css
+    :type dst_cssp: struct cgroup_subsys_state \*\*
 
 .. _`cgroup_taskset_next.description`:
 
@@ -731,8 +790,9 @@ cgroup_migrate_execute
 
     migrate a taskset
 
-    :param struct cgroup_mgctx \*mgctx:
+    :param mgctx:
         migration context
+    :type mgctx: struct cgroup_mgctx \*
 
 .. _`cgroup_migrate_execute.description`:
 
@@ -753,8 +813,9 @@ cgroup_migrate_vet_dst
 
     verify whether a cgroup can be migration destination
 
-    :param struct cgroup \*dst_cgrp:
+    :param dst_cgrp:
         destination cgroup to test
+    :type dst_cgrp: struct cgroup \*
 
 .. _`cgroup_migrate_vet_dst.description`:
 
@@ -775,8 +836,9 @@ cgroup_migrate_finish
 
     cleanup after attach
 
-    :param struct cgroup_mgctx \*mgctx:
+    :param mgctx:
         migration context
+    :type mgctx: struct cgroup_mgctx \*
 
 .. _`cgroup_migrate_finish.description`:
 
@@ -795,14 +857,17 @@ cgroup_migrate_add_src
 
     add a migration source css_set
 
-    :param struct css_set \*src_cset:
+    :param src_cset:
         the source css_set to add
+    :type src_cset: struct css_set \*
 
-    :param struct cgroup \*dst_cgrp:
+    :param dst_cgrp:
         the destination cgroup
+    :type dst_cgrp: struct cgroup \*
 
-    :param struct cgroup_mgctx \*mgctx:
+    :param mgctx:
         migration context
+    :type mgctx: struct cgroup_mgctx \*
 
 .. _`cgroup_migrate_add_src.description`:
 
@@ -810,7 +875,7 @@ Description
 -----------
 
 Tasks belonging to \ ``src_cset``\  are about to be migrated to \ ``dst_cgrp``\ .  Pin
-\ ``src_cset``\  and add it to \ ``mgctx``\ ->src_csets, which should later be cleaned
+\ ``src_cset``\  and add it to \ ``mgctx->src_csets``\ , which should later be cleaned
 up by \ :c:func:`cgroup_migrate_finish`\ .
 
 This function may be called without holding cgroup_threadgroup_rwsem
@@ -828,8 +893,9 @@ cgroup_migrate_prepare_dst
 
     prepare destination css_sets for migration
 
-    :param struct cgroup_mgctx \*mgctx:
+    :param mgctx:
         migration context
+    :type mgctx: struct cgroup_mgctx \*
 
 .. _`cgroup_migrate_prepare_dst.description`:
 
@@ -837,9 +903,9 @@ Description
 -----------
 
 Tasks are about to be moved and all the source css_sets have been
-preloaded to \ ``mgctx``\ ->preloaded_src_csets.  This function looks up and
+preloaded to \ ``mgctx->preloaded_src_csets``\ .  This function looks up and
 pins all destination css_sets, links each to its source, and append them
-to \ ``mgctx``\ ->preloaded_dst_csets.
+to \ ``mgctx->preloaded_dst_csets``\ .
 
 This function must be called after \ :c:func:`cgroup_migrate_add_src`\  has been
 called on each migration source css_set.  After migration is performed
@@ -855,14 +921,17 @@ cgroup_migrate
 
     migrate a process or task to a cgroup
 
-    :param struct task_struct \*leader:
+    :param leader:
         the leader of the process or the task to migrate
+    :type leader: struct task_struct \*
 
-    :param bool threadgroup:
+    :param threadgroup:
         whether \ ``leader``\  points to the whole process or a single task
+    :type threadgroup: bool
 
-    :param struct cgroup_mgctx \*mgctx:
+    :param mgctx:
         migration context
+    :type mgctx: struct cgroup_mgctx \*
 
 .. _`cgroup_migrate.description`:
 
@@ -890,14 +959,17 @@ cgroup_attach_task
 
     attach a task or a whole threadgroup to a cgroup
 
-    :param struct cgroup \*dst_cgrp:
+    :param dst_cgrp:
         the cgroup to attach to
+    :type dst_cgrp: struct cgroup \*
 
-    :param struct task_struct \*leader:
+    :param leader:
         the task or the leader of the threadgroup to be attached
+    :type leader: struct task_struct \*
 
-    :param bool threadgroup:
+    :param threadgroup:
         attach the whole threadgroup?
+    :type threadgroup: bool
 
 .. _`cgroup_attach_task.description`:
 
@@ -915,8 +987,9 @@ cgroup_update_dfl_csses
 
     update css assoc of a subtree in default hierarchy
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         root of the subtree to update csses for
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_update_dfl_csses.description`:
 
@@ -937,8 +1010,9 @@ cgroup_lock_and_drain_offline
 
     lock cgroup_mutex and drain offlined csses
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         root of the target subtree
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_lock_and_drain_offline.description`:
 
@@ -956,18 +1030,20 @@ cgroup_save_control
 
 .. c:function:: void cgroup_save_control(struct cgroup *cgrp)
 
-    save control masks of a subtree
+    save control masks and dom_cgrp of a subtree
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         root of the target subtree
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_save_control.description`:
 
 Description
 -----------
 
-Save ->subtree_control and ->subtree_ss_mask to the respective old_
-prefixed fields for \ ``cgrp``\ 's subtree including \ ``cgrp``\  itself.
+Save ->subtree_control, ->subtree_ss_mask and ->dom_cgrp to the
+respective old\_ prefixed fields for \ ``cgrp``\ 's subtree including \ ``cgrp``\ 
+itself.
 
 .. _`cgroup_propagate_control`:
 
@@ -978,8 +1054,9 @@ cgroup_propagate_control
 
     refresh control masks of a subtree
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         root of the target subtree
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_propagate_control.description`:
 
@@ -997,18 +1074,20 @@ cgroup_restore_control
 
 .. c:function:: void cgroup_restore_control(struct cgroup *cgrp)
 
-    restore control masks of a subtree
+    restore control masks and dom_cgrp of a subtree
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         root of the target subtree
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_restore_control.description`:
 
 Description
 -----------
 
-Restore ->subtree_control and ->subtree_ss_mask from the respective old_
-prefixed fields for \ ``cgrp``\ 's subtree including \ ``cgrp``\  itself.
+Restore ->subtree_control, ->subtree_ss_mask and ->dom_cgrp from the
+respective old\_ prefixed fields for \ ``cgrp``\ 's subtree including \ ``cgrp``\ 
+itself.
 
 .. _`cgroup_apply_control_enable`:
 
@@ -1019,8 +1098,9 @@ cgroup_apply_control_enable
 
     enable or show csses according to control
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         root of the target subtree
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_apply_control_enable.description`:
 
@@ -1045,8 +1125,9 @@ cgroup_apply_control_disable
 
     kill or hide csses according to control
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         root of the target subtree
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_apply_control_disable.description`:
 
@@ -1071,8 +1152,9 @@ cgroup_apply_control
 
     apply control mask updates to the subtree
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         root of the target subtree
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_apply_control.description`:
 
@@ -1101,11 +1183,13 @@ cgroup_finalize_control
 
     finalize control mask update
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         root of the target subtree
+    :type cgrp: struct cgroup \*
 
-    :param int ret:
+    :param ret:
         the result of the update
+    :type ret: int
 
 .. _`cgroup_finalize_control.description`:
 
@@ -1123,8 +1207,9 @@ cgroup_enable_threaded
 
     make \ ``cgrp``\  threaded
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the target cgroup
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_enable_threaded.description`:
 
@@ -1145,17 +1230,21 @@ cgroup_addrm_files
 
     add or remove files to a cgroup directory
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         the target css
+    :type css: struct cgroup_subsys_state \*
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the target cgroup (usually css->cgroup)
+    :type cgrp: struct cgroup \*
 
-    :param struct cftype cfts:
+    :param cfts:
         array of cftypes to be added
+    :type cfts: struct cftype
 
-    :param bool is_add:
+    :param is_add:
         whether to add or remove
+    :type is_add: bool
 
 .. _`cgroup_addrm_files.description`:
 
@@ -1174,8 +1263,9 @@ cgroup_rm_cftypes
 
     remove an array of cftypes from a subsystem
 
-    :param struct cftype \*cfts:
+    :param cfts:
         zero-length name terminated array of cftypes
+    :type cfts: struct cftype \*
 
 .. _`cgroup_rm_cftypes.description`:
 
@@ -1198,11 +1288,13 @@ cgroup_add_cftypes
 
     add an array of cftypes to a subsystem
 
-    :param struct cgroup_subsys \*ss:
+    :param ss:
         target cgroup subsystem
+    :type ss: struct cgroup_subsys \*
 
-    :param struct cftype \*cfts:
+    :param cfts:
         zero-length name terminated array of cftypes
+    :type cfts: struct cftype \*
 
 .. _`cgroup_add_cftypes.description`:
 
@@ -1227,11 +1319,13 @@ cgroup_add_dfl_cftypes
 
     add an array of cftypes for default hierarchy
 
-    :param struct cgroup_subsys \*ss:
+    :param ss:
         target cgroup subsystem
+    :type ss: struct cgroup_subsys \*
 
-    :param struct cftype \*cfts:
+    :param cfts:
         zero-length name terminated array of cftypes
+    :type cfts: struct cftype \*
 
 .. _`cgroup_add_dfl_cftypes.description`:
 
@@ -1250,11 +1344,13 @@ cgroup_add_legacy_cftypes
 
     add an array of cftypes for legacy hierarchies
 
-    :param struct cgroup_subsys \*ss:
+    :param ss:
         target cgroup subsystem
+    :type ss: struct cgroup_subsys \*
 
-    :param struct cftype \*cfts:
+    :param cfts:
         zero-length name terminated array of cftypes
+    :type cfts: struct cftype \*
 
 .. _`cgroup_add_legacy_cftypes.description`:
 
@@ -1273,8 +1369,9 @@ cgroup_file_notify
 
     generate a file modified event for a cgroup_file
 
-    :param struct cgroup_file \*cfile:
+    :param cfile:
         target cgroup_file
+    :type cfile: struct cgroup_file \*
 
 .. _`cgroup_file_notify.description`:
 
@@ -1292,11 +1389,13 @@ css_next_child
 
     find the next child of a given css
 
-    :param struct cgroup_subsys_state \*pos:
+    :param pos:
         the current position (%NULL to initiate traversal)
+    :type pos: struct cgroup_subsys_state \*
 
-    :param struct cgroup_subsys_state \*parent:
+    :param parent:
         css whose children to walk
+    :type parent: struct cgroup_subsys_state \*
 
 .. _`css_next_child.description`:
 
@@ -1324,11 +1423,13 @@ css_next_descendant_pre
 
     find the next descendant for pre-order walk
 
-    :param struct cgroup_subsys_state \*pos:
+    :param pos:
         the current position (%NULL to initiate traversal)
+    :type pos: struct cgroup_subsys_state \*
 
-    :param struct cgroup_subsys_state \*root:
+    :param root:
         css whose descendants to walk
+    :type root: struct cgroup_subsys_state \*
 
 .. _`css_next_descendant_pre.description`:
 
@@ -1360,8 +1461,9 @@ css_rightmost_descendant
 
     return the rightmost descendant of a css
 
-    :param struct cgroup_subsys_state \*pos:
+    :param pos:
         css of interest
+    :type pos: struct cgroup_subsys_state \*
 
 .. _`css_rightmost_descendant.description`:
 
@@ -1386,11 +1488,13 @@ css_next_descendant_post
 
     find the next descendant for post-order walk
 
-    :param struct cgroup_subsys_state \*pos:
+    :param pos:
         the current position (%NULL to initiate traversal)
+    :type pos: struct cgroup_subsys_state \*
 
-    :param struct cgroup_subsys_state \*root:
+    :param root:
         css whose descendants to walk
+    :type root: struct cgroup_subsys_state \*
 
 .. _`css_next_descendant_post.description`:
 
@@ -1423,8 +1527,9 @@ css_has_online_children
 
     does a css have online children
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         the target css
+    :type css: struct cgroup_subsys_state \*
 
 .. _`css_has_online_children.description`:
 
@@ -1444,8 +1549,9 @@ css_task_iter_advance_css_set
 
     advance a task itererator to the next css_set
 
-    :param struct css_task_iter \*it:
+    :param it:
         the iterator to advance
+    :type it: struct css_task_iter \*
 
 .. _`css_task_iter_advance_css_set.description`:
 
@@ -1463,14 +1569,17 @@ css_task_iter_start
 
     initiate task iteration
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         the css to walk tasks of
+    :type css: struct cgroup_subsys_state \*
 
-    :param unsigned int flags:
+    :param flags:
         CSS_TASK_ITER\_\* flags
+    :type flags: unsigned int
 
-    :param struct css_task_iter \*it:
+    :param it:
         the task iterator to use
+    :type it: struct css_task_iter \*
 
 .. _`css_task_iter_start.description`:
 
@@ -1491,8 +1600,9 @@ css_task_iter_next
 
     return the next task for the iterator
 
-    :param struct css_task_iter \*it:
+    :param it:
         the task iterator being iterated
+    :type it: struct css_task_iter \*
 
 .. _`css_task_iter_next.description`:
 
@@ -1512,8 +1622,9 @@ css_task_iter_end
 
     finish task iteration
 
-    :param struct css_task_iter \*it:
+    :param it:
         the task iterator to finish
+    :type it: struct css_task_iter \*
 
 .. _`css_task_iter_end.description`:
 
@@ -1531,11 +1642,13 @@ css_create
 
     create a cgroup_subsys_state
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup new css will be associated with
+    :type cgrp: struct cgroup \*
 
-    :param struct cgroup_subsys \*ss:
+    :param ss:
         the subsys of new css
+    :type ss: struct cgroup_subsys \*
 
 .. _`css_create.description`:
 
@@ -1555,8 +1668,9 @@ kill_css
 
     destroy a css
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         css to destroy
+    :type css: struct cgroup_subsys_state \*
 
 .. _`kill_css.description`:
 
@@ -1577,8 +1691,9 @@ cgroup_destroy_locked
 
     the first stage of cgroup destruction
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         cgroup to be destroyed
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_destroy_locked.description`:
 
@@ -1614,8 +1729,9 @@ cgroup_init_early
 
     cgroup initialization at system boot
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cgroup_init_early.description`:
 
@@ -1634,8 +1750,9 @@ cgroup_init
 
     cgroup initialization
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cgroup_init.description`:
 
@@ -1654,8 +1771,9 @@ cgroup_fork
 
     initialize cgroup related fields during \ :c:func:`copy_process`\ 
 
-    :param struct task_struct \*child:
+    :param child:
         pointer to task_struct of forking parent process.
+    :type child: struct task_struct \*
 
 .. _`cgroup_fork.description`:
 
@@ -1675,8 +1793,9 @@ cgroup_can_fork
 
     called on a new task before the process is exposed
 
-    :param struct task_struct \*child:
+    :param child:
         the task in question.
+    :type child: struct task_struct \*
 
 .. _`cgroup_can_fork.description`:
 
@@ -1696,8 +1815,9 @@ cgroup_cancel_fork
 
     called if a fork failed after \ :c:func:`cgroup_can_fork`\ 
 
-    :param struct task_struct \*child:
+    :param child:
         the task in question
+    :type child: struct task_struct \*
 
 .. _`cgroup_cancel_fork.description`:
 
@@ -1716,8 +1836,9 @@ cgroup_post_fork
 
     called on a new task after adding it to the task list
 
-    :param struct task_struct \*child:
+    :param child:
         the task in question
+    :type child: struct task_struct \*
 
 .. _`cgroup_post_fork.description`:
 
@@ -1739,8 +1860,9 @@ cgroup_exit
 
     detach cgroup from exiting task
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         pointer to task_struct of exiting process
+    :type tsk: struct task_struct \*
 
 .. _`cgroup_exit.description`:
 
@@ -1771,11 +1893,13 @@ css_tryget_online_from_dir
 
     get corresponding css from a cgroup dentry
 
-    :param struct dentry \*dentry:
+    :param dentry:
         directory dentry of interest
+    :type dentry: struct dentry \*
 
-    :param struct cgroup_subsys \*ss:
+    :param ss:
         subsystem of interest
+    :type ss: struct cgroup_subsys \*
 
 .. _`css_tryget_online_from_dir.description`:
 
@@ -1795,11 +1919,13 @@ css_from_id
 
     lookup css by id
 
-    :param int id:
+    :param id:
         the cgroup id
+    :type id: int
 
-    :param struct cgroup_subsys \*ss:
+    :param ss:
         cgroup subsys to be looked into
+    :type ss: struct cgroup_subsys \*
 
 .. _`css_from_id.description`:
 
@@ -1818,8 +1944,9 @@ cgroup_get_from_path
 
     lookup and get a cgroup from its default hierarchy path
 
-    :param const char \*path:
+    :param path:
         path on the default hierarchy
+    :type path: const char \*
 
 .. _`cgroup_get_from_path.description`:
 
@@ -1840,8 +1967,9 @@ cgroup_get_from_fd
 
     get a cgroup pointer from a fd
 
-    :param int fd:
+    :param fd:
         fd obtained by open(cgroup2_dir)
+    :type fd: int
 
 .. _`cgroup_get_from_fd.description`:
 

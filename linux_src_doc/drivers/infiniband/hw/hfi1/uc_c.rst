@@ -10,11 +10,13 @@ hfi1_make_uc_req
 
     construct a request packet (SEND, RDMA write)
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         a pointer to the QP
+    :type qp: struct rvt_qp \*
 
-    :param struct hfi1_pkt_state \*ps:
+    :param ps:
         *undescribed*
+    :type ps: struct hfi1_pkt_state \*
 
 .. _`hfi1_make_uc_req.description`:
 
@@ -34,8 +36,9 @@ hfi1_uc_rcv
 
     handle an incoming UC packet
 
-    :param struct hfi1_packet \*packet:
+    :param packet:
         *undescribed*
+    :type packet: struct hfi1_packet \*
 
 .. _`hfi1_uc_rcv.description`:
 

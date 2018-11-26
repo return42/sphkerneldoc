@@ -10,17 +10,21 @@ ttm_shrink
 
     Extend this if needed, perhaps using a linked list of callbacks.
 
-    :param struct ttm_mem_global \*glob:
+    :param glob:
         *undescribed*
+    :type glob: struct ttm_mem_global \*
 
-    :param bool from_wq:
+    :param from_wq:
         *undescribed*
+    :type from_wq: bool
 
-    :param uint64_t extra:
+    :param extra:
         *undescribed*
+    :type extra: uint64_t
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
 .. _`ttm_shrink.note-that-this-function-is-reentrant`:
 

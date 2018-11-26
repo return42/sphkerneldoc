@@ -10,11 +10,13 @@ snd_soc_runtime_activate
 
     Increment active count for PCM runtime components
 
-    :param struct snd_soc_pcm_runtime \*rtd:
+    :param rtd:
         ASoC PCM runtime that is activated
+    :type rtd: struct snd_soc_pcm_runtime \*
 
-    :param int stream:
+    :param stream:
         Direction of the PCM stream
+    :type stream: int
 
 .. _`snd_soc_runtime_activate.description`:
 
@@ -35,11 +37,13 @@ snd_soc_runtime_deactivate
 
     Decrement active count for PCM runtime components
 
-    :param struct snd_soc_pcm_runtime \*rtd:
+    :param rtd:
         ASoC PCM runtime that is deactivated
+    :type rtd: struct snd_soc_pcm_runtime \*
 
-    :param int stream:
+    :param stream:
         Direction of the PCM stream
+    :type stream: int
 
 .. _`snd_soc_runtime_deactivate.description`:
 
@@ -60,8 +64,9 @@ snd_soc_runtime_ignore_pmdown_time
 
     Check whether to ignore the power down delay
 
-    :param struct snd_soc_pcm_runtime \*rtd:
+    :param rtd:
         The ASoC PCM runtime that should be checked.
+    :type rtd: struct snd_soc_pcm_runtime \*
 
 .. _`snd_soc_runtime_ignore_pmdown_time.description`:
 
@@ -82,11 +87,13 @@ snd_soc_set_runtime_hwparams
 
     set the runtime hardware parameters
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param const struct snd_pcm_hardware \*hw:
+    :param hw:
         the hardware parameters
+    :type hw: const struct snd_pcm_hardware \*
 
 .. _`snd_soc_set_runtime_hwparams.description`:
 

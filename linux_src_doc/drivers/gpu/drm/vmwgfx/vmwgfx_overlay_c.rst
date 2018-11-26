@@ -6,19 +6,23 @@
 vmw_overlay_send_put
 ====================
 
-.. c:function:: int vmw_overlay_send_put(struct vmw_private *dev_priv, struct vmw_dma_buffer *buf, struct drm_vmw_control_stream_arg *arg, bool interruptible)
+.. c:function:: int vmw_overlay_send_put(struct vmw_private *dev_priv, struct vmw_buffer_object *buf, struct drm_vmw_control_stream_arg *arg, bool interruptible)
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_dma_buffer \*buf:
+    :param buf:
         *undescribed*
+    :type buf: struct vmw_buffer_object \*
 
-    :param struct drm_vmw_control_stream_arg \*arg:
+    :param arg:
         *undescribed*
+    :type arg: struct drm_vmw_control_stream_arg \*
 
-    :param bool interruptible:
+    :param interruptible:
         *undescribed*
+    :type interruptible: bool
 
 .. _`vmw_overlay_send_put.description`:
 
@@ -35,14 +39,17 @@ vmw_overlay_send_stop
 
 .. c:function:: int vmw_overlay_send_stop(struct vmw_private *dev_priv, uint32_t stream_id, bool interruptible)
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param uint32_t stream_id:
+    :param stream_id:
         *undescribed*
+    :type stream_id: uint32_t
 
-    :param bool interruptible:
+    :param interruptible:
         *undescribed*
+    :type interruptible: bool
 
 .. _`vmw_overlay_send_stop.description`:
 
@@ -57,19 +64,23 @@ Returns
 vmw_overlay_move_buffer
 =======================
 
-.. c:function:: int vmw_overlay_move_buffer(struct vmw_private *dev_priv, struct vmw_dma_buffer *buf, bool pin, bool inter)
+.. c:function:: int vmw_overlay_move_buffer(struct vmw_private *dev_priv, struct vmw_buffer_object *buf, bool pin, bool inter)
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_dma_buffer \*buf:
+    :param buf:
         *undescribed*
+    :type buf: struct vmw_buffer_object \*
 
-    :param bool pin:
+    :param pin:
         *undescribed*
+    :type pin: bool
 
-    :param bool inter:
+    :param inter:
         *undescribed*
+    :type inter: bool
 
 .. _`vmw_overlay_move_buffer.description`:
 
@@ -86,17 +97,21 @@ vmw_overlay_stop
 
 .. c:function:: int vmw_overlay_stop(struct vmw_private *dev_priv, uint32_t stream_id, bool pause, bool interruptible)
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param uint32_t stream_id:
+    :param stream_id:
         *undescribed*
+    :type stream_id: uint32_t
 
-    :param bool pause:
+    :param pause:
         *undescribed*
+    :type pause: bool
 
-    :param bool interruptible:
+    :param interruptible:
         *undescribed*
+    :type interruptible: bool
 
 .. _`vmw_overlay_stop.description`:
 
@@ -117,19 +132,23 @@ The caller must hold the overlay lock.
 vmw_overlay_update_stream
 =========================
 
-.. c:function:: int vmw_overlay_update_stream(struct vmw_private *dev_priv, struct vmw_dma_buffer *buf, struct drm_vmw_control_stream_arg *arg, bool interruptible)
+.. c:function:: int vmw_overlay_update_stream(struct vmw_private *dev_priv, struct vmw_buffer_object *buf, struct drm_vmw_control_stream_arg *arg, bool interruptible)
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_dma_buffer \*buf:
+    :param buf:
         *undescribed*
+    :type buf: struct vmw_buffer_object \*
 
-    :param struct drm_vmw_control_stream_arg \*arg:
+    :param arg:
         *undescribed*
+    :type arg: struct drm_vmw_control_stream_arg \*
 
-    :param bool interruptible:
+    :param interruptible:
         *undescribed*
+    :type interruptible: bool
 
 .. _`vmw_overlay_update_stream.description`:
 
@@ -149,8 +168,9 @@ vmw_overlay_stop_all
 
 .. c:function:: int vmw_overlay_stop_all(struct vmw_private *dev_priv)
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_overlay_stop_all.description`:
 
@@ -168,8 +188,9 @@ vmw_overlay_resume_all
 
 .. c:function:: int vmw_overlay_resume_all(struct vmw_private *dev_priv)
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_overlay_resume_all.description`:
 
@@ -187,8 +208,9 @@ vmw_overlay_pause_all
 
 .. c:function:: int vmw_overlay_pause_all(struct vmw_private *dev_priv)
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_overlay_pause_all.description`:
 

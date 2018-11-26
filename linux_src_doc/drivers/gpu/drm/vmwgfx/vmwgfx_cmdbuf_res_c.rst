@@ -99,14 +99,17 @@ vmw_cmdbuf_res_lookup
 
     Look up a command buffer resource
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         Pointer to the command buffer resource manager
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param enum vmw_cmdbuf_res_type res_type:
+    :param res_type:
         *undescribed*
+    :type res_type: enum vmw_cmdbuf_res_type
 
-    :param u32 user_key:
+    :param user_key:
         The user key.
+    :type user_key: u32
 
 .. _`vmw_cmdbuf_res_lookup.description`:
 
@@ -125,11 +128,13 @@ vmw_cmdbuf_res_free
 
     Free a command buffer resource.
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         Pointer to the command buffer resource manager
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param struct vmw_cmdbuf_res \*entry:
+    :param entry:
         Pointer to a struct vmw_cmdbuf_res.
+    :type entry: struct vmw_cmdbuf_res \*
 
 .. _`vmw_cmdbuf_res_free.description`:
 
@@ -148,8 +153,9 @@ vmw_cmdbuf_res_commit
 
     Commit a list of command buffer resource actions
 
-    :param struct list_head \*list:
+    :param list:
         Caller's list of command buffer resource actions.
+    :type list: struct list_head \*
 
 .. _`vmw_cmdbuf_res_commit.description`:
 
@@ -170,8 +176,9 @@ vmw_cmdbuf_res_revert
 
     Revert a list of command buffer resource actions
 
-    :param struct list_head \*list:
+    :param list:
         Caller's list of command buffer resource action
+    :type list: struct list_head \*
 
 .. _`vmw_cmdbuf_res_revert.description`:
 
@@ -193,20 +200,25 @@ vmw_cmdbuf_res_add
 
     Stage a command buffer managed resource for addition.
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         Pointer to the command buffer resource manager.
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param enum vmw_cmdbuf_res_type res_type:
+    :param res_type:
         The resource type.
+    :type res_type: enum vmw_cmdbuf_res_type
 
-    :param u32 user_key:
+    :param user_key:
         The user-space id of the resource.
+    :type user_key: u32
 
-    :param struct vmw_resource \*res:
+    :param res:
         Valid (refcount != 0) pointer to a struct vmw_resource.
+    :type res: struct vmw_resource \*
 
-    :param struct list_head \*list:
+    :param list:
         The staging list.
+    :type list: struct list_head \*
 
 .. _`vmw_cmdbuf_res_add.description`:
 
@@ -226,22 +238,27 @@ vmw_cmdbuf_res_remove
 
     Stage a command buffer managed resource for removal.
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         Pointer to the command buffer resource manager.
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param enum vmw_cmdbuf_res_type res_type:
+    :param res_type:
         The resource type.
+    :type res_type: enum vmw_cmdbuf_res_type
 
-    :param u32 user_key:
+    :param user_key:
         The user-space id of the resource.
+    :type user_key: u32
 
-    :param struct list_head \*list:
+    :param list:
         The staging list.
+    :type list: struct list_head \*
 
-    :param struct vmw_resource \*\*res_p:
+    :param res_p:
         If the resource is in an already committed state, points to the
         struct vmw_resource on successful return. The pointer will be
         non ref-counted.
+    :type res_p: struct vmw_resource \*\*
 
 .. _`vmw_cmdbuf_res_remove.description`:
 
@@ -262,8 +279,9 @@ vmw_cmdbuf_res_man_create
 
     Allocate a command buffer managed resource manager.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a struct vmw_private
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_cmdbuf_res_man_create.description`:
 
@@ -282,8 +300,9 @@ vmw_cmdbuf_res_man_destroy
 
     Destroy a command buffer managed resource manager.
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         Pointer to the  manager to destroy.
+    :type man: struct vmw_cmdbuf_res_manager \*
 
 .. _`vmw_cmdbuf_res_man_destroy.description`:
 

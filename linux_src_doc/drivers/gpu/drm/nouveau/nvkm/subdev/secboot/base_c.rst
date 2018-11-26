@@ -10,11 +10,13 @@ nvkm_secboot_reset
 
     reset specified falcon
 
-    :param struct nvkm_secboot \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct nvkm_secboot \*
 
-    :param unsigned long falcon_mask:
+    :param falcon_mask:
         *undescribed*
+    :type falcon_mask: unsigned long
 
 .. _`nvkm_secboot_is_managed`:
 
@@ -25,11 +27,13 @@ nvkm_secboot_is_managed
 
     check whether a given falcon is securely-managed
 
-    :param struct nvkm_secboot \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct nvkm_secboot \*
 
-    :param enum nvkm_secboot_falcon fid:
+    :param fid:
         *undescribed*
+    :type fid: enum nvkm_secboot_falcon
 
 .. This file was automatic generated / don't edit.
 

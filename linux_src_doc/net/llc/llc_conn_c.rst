@@ -10,11 +10,13 @@ llc_conn_state_process
 
     sends event to connection state machine
 
-    :param struct sock \*sk:
+    :param sk:
         connection
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         occurred event
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_state_process.description`:
 
@@ -35,11 +37,13 @@ llc_conn_rtn_pdu
 
     sends received data pdu to upper layer
 
-    :param struct sock \*sk:
+    :param sk:
         Active connection
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Received data frame
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_rtn_pdu.description`:
 
@@ -59,14 +63,17 @@ llc_conn_resend_i_pdu_as_cmd
 
     resend all all unacknowledged I PDUs
 
-    :param struct sock \*sk:
+    :param sk:
         active connection
+    :type sk: struct sock \*
 
-    :param u8 nr:
+    :param nr:
         NR
+    :type nr: u8
 
-    :param u8 first_p_bit:
+    :param first_p_bit:
         p_bit value of first pdu
+    :type first_p_bit: u8
 
 .. _`llc_conn_resend_i_pdu_as_cmd.description`:
 
@@ -86,14 +93,17 @@ llc_conn_resend_i_pdu_as_rsp
 
     Resend all unacknowledged I PDUs
 
-    :param struct sock \*sk:
+    :param sk:
         active connection.
+    :type sk: struct sock \*
 
-    :param u8 nr:
+    :param nr:
         NR
+    :type nr: u8
 
-    :param u8 first_f_bit:
+    :param first_f_bit:
         f_bit value of first pdu.
+    :type first_f_bit: u8
 
 .. _`llc_conn_resend_i_pdu_as_rsp.description`:
 
@@ -113,15 +123,18 @@ llc_conn_remove_acked_pdus
 
     Removes acknowledged pdus from tx queue
 
-    :param struct sock \*sk:
+    :param sk:
         active connection
         nr: NR
+    :type sk: struct sock \*
 
-    :param u8 nr:
+    :param nr:
         *undescribed*
+    :type nr: u8
 
-    :param u16 \*how_many_unacked:
+    :param how_many_unacked:
         *undescribed*
+    :type how_many_unacked: u16 \*
 
 .. _`llc_conn_remove_acked_pdus.how_many_unacked`:
 
@@ -142,11 +155,13 @@ llc_conn_send_pdus
 
     Sends queued PDUs
 
-    :param struct sock \*sk:
+    :param sk:
         active connection
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*hold_skb:
+    :param hold_skb:
         the skb held by caller, or NULL if does not care
+    :type hold_skb: struct sk_buff \*
 
 .. _`llc_conn_send_pdus.description`:
 
@@ -166,11 +181,13 @@ llc_conn_service
 
     finds transition and changes state of connection
 
-    :param struct sock \*sk:
+    :param sk:
         connection
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         happened event
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_service.description`:
 
@@ -190,11 +207,13 @@ llc_qualify_conn_ev
 
     finds transition for event
 
-    :param struct sock \*sk:
+    :param sk:
         connection
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         happened event
+    :type skb: struct sk_buff \*
 
 .. _`llc_qualify_conn_ev.description`:
 
@@ -213,14 +232,17 @@ llc_exec_conn_trans_actions
 
     executes related actions
 
-    :param struct sock \*sk:
+    :param sk:
         connection
+    :type sk: struct sock \*
 
-    :param struct llc_conn_state_trans \*trans:
+    :param trans:
         transition that it's actions must be performed
+    :type trans: struct llc_conn_state_trans \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         event
+    :type skb: struct sk_buff \*
 
 .. _`llc_exec_conn_trans_actions.description`:
 
@@ -239,14 +261,17 @@ success, 1 to indicate failure of at least one action.
 
     Finds connection for the remote/local sap/mac
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct llc_addr \*daddr:
+    :param daddr:
         address of remote LLC (MAC + SAP)
+    :type daddr: struct llc_addr \*
 
-    :param struct llc_addr \*laddr:
+    :param laddr:
         address of local LLC (MAC + SAP)
+    :type laddr: struct llc_addr \*
 
 .. _`__llc_lookup_established.description`:
 
@@ -267,11 +292,13 @@ llc_lookup_listener
 
     Finds listener for local MAC + SAP
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct llc_addr \*laddr:
+    :param laddr:
         address of local LLC (MAC + SAP)
+    :type laddr: struct llc_addr \*
 
 .. _`llc_lookup_listener.description`:
 
@@ -292,8 +319,9 @@ llc_data_accept_state
 
     designates if in this state data can be sent.
 
-    :param u8 state:
+    :param state:
         state of connection.
+    :type state: u8
 
 .. _`llc_data_accept_state.description`:
 
@@ -311,11 +339,13 @@ llc_find_next_offset
 
     finds offset for next category of transitions
 
-    :param struct llc_conn_state \*state:
+    :param state:
         state table.
+    :type state: struct llc_conn_state \*
 
-    :param u16 offset:
+    :param offset:
         start offset.
+    :type offset: u16
 
 .. _`llc_find_next_offset.description`:
 
@@ -334,8 +364,9 @@ llc_build_offset_table
 
     builds offset table of connection
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`llc_build_offset_table.description`:
 
@@ -354,11 +385,13 @@ llc_find_offset
 
     finds start offset of category of transitions
 
-    :param int state:
+    :param state:
         state of connection
+    :type state: int
 
-    :param int ev_type:
+    :param ev_type:
         type of happened event
+    :type ev_type: int
 
 .. _`llc_find_offset.description`:
 
@@ -377,11 +410,13 @@ llc_sap_add_socket
 
     adds a socket to a SAP
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`llc_sap_add_socket.description`:
 
@@ -399,11 +434,13 @@ llc_sap_remove_socket
 
     removes a socket from SAP
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`llc_sap_remove_socket.description`:
 
@@ -422,11 +459,13 @@ llc_conn_rcv
 
     sends received pdus to the connection state machine
 
-    :param struct sock \*sk:
+    :param sk:
         current connection structure.
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received frame.
+    :type skb: struct sk_buff \*
 
 .. _`llc_conn_rcv.description`:
 
@@ -444,11 +483,13 @@ llc_backlog_rcv
 
     Processes rx frames and expired timers.
 
-    :param struct sock \*sk:
+    :param sk:
         LLC sock (p8022 connection)
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         queued rx frame or event
+    :type skb: struct sk_buff \*
 
 .. _`llc_backlog_rcv.description`:
 
@@ -469,8 +510,9 @@ llc_sk_init
 
     Initializes a socket with default llc values.
 
-    :param struct sock \*sk:
+    :param sk:
         socket to initialize.
+    :type sk: struct sock \*
 
 .. _`llc_sk_init.description`:
 
@@ -488,20 +530,25 @@ llc_sk_alloc
 
     Allocates LLC sock
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param int family:
+    :param family:
         upper layer protocol family
+    :type family: int
 
-    :param gfp_t priority:
+    :param priority:
         for allocation (%GFP_KERNEL, \ ``GFP_ATOMIC``\ , etc)
+    :type priority: gfp_t
 
-    :param struct proto \*prot:
+    :param prot:
         *undescribed*
+    :type prot: struct proto \*
 
-    :param int kern:
+    :param kern:
         *undescribed*
+    :type kern: int
 
 .. _`llc_sk_alloc.description`:
 
@@ -520,8 +567,9 @@ llc_sk_free
 
     Frees a LLC socket \ ``sk``\  - socket to free
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`llc_sk_free.description`:
 
@@ -539,8 +587,9 @@ llc_sk_reset
 
     resets a connection
 
-    :param struct sock \*sk:
+    :param sk:
         LLC socket to reset
+    :type sk: struct sock \*
 
 .. _`llc_sk_reset.description`:
 

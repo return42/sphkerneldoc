@@ -10,11 +10,13 @@ sdw_cdns_irq
 
     Cadence interrupt handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         irq context
+    :type dev_id: void \*
 
 .. _`sdw_cdns_thread`:
 
@@ -25,11 +27,13 @@ sdw_cdns_thread
 
     Cadence irq thread handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         irq context
+    :type dev_id: void \*
 
 .. _`sdw_cdns_enable_interrupt`:
 
@@ -40,8 +44,9 @@ sdw_cdns_enable_interrupt
 
     Enable SDW interrupts and update config
 
-    :param struct sdw_cdns \*cdns:
+    :param cdns:
         Cadence instance
+    :type cdns: struct sdw_cdns \*
 
 .. _`sdw_cdns_pdi_init`:
 
@@ -52,11 +57,13 @@ sdw_cdns_pdi_init
 
     PDI initialization routine
 
-    :param struct sdw_cdns \*cdns:
+    :param cdns:
         Cadence instance
+    :type cdns: struct sdw_cdns \*
 
-    :param struct sdw_cdns_stream_config config:
+    :param config:
         Stream configurations
+    :type config: struct sdw_cdns_stream_config
 
 .. _`sdw_cdns_init`:
 
@@ -67,8 +74,9 @@ sdw_cdns_init
 
     Cadence initialization
 
-    :param struct sdw_cdns \*cdns:
+    :param cdns:
         Cadence instance
+    :type cdns: struct sdw_cdns \*
 
 .. _`sdw_cdns_probe`:
 
@@ -79,8 +87,9 @@ sdw_cdns_probe
 
     Cadence probe routine
 
-    :param struct sdw_cdns \*cdns:
+    :param cdns:
         Cadence instance
+    :type cdns: struct sdw_cdns \*
 
 .. _`cdns_find_pdi`:
 
@@ -91,14 +100,17 @@ cdns_find_pdi
 
     Find a free PDI
 
-    :param struct sdw_cdns \*cdns:
+    :param cdns:
         Cadence instance
+    :type cdns: struct sdw_cdns \*
 
-    :param unsigned int num:
+    :param num:
         Number of PDIs
+    :type num: unsigned int
 
-    :param struct sdw_cdns_pdi \*pdi:
+    :param pdi:
         PDI instances
+    :type pdi: struct sdw_cdns_pdi \*
 
 .. _`cdns_find_pdi.description`:
 
@@ -116,20 +128,25 @@ sdw_cdns_config_stream
 
     Configure a stream
 
-    :param struct sdw_cdns \*cdns:
+    :param cdns:
         Cadence instance
+    :type cdns: struct sdw_cdns \*
 
-    :param struct sdw_cdns_port \*port:
+    :param port:
         Cadence data port
+    :type port: struct sdw_cdns_port \*
 
-    :param u32 ch:
+    :param ch:
         Channel count
+    :type ch: u32
 
-    :param u32 dir:
+    :param dir:
         Data direction
+    :type dir: u32
 
-    :param struct sdw_cdns_pdi \*pdi:
+    :param pdi:
         PDI to be used
+    :type pdi: struct sdw_cdns_pdi \*
 
 .. _`cdns_get_num_pdi`:
 
@@ -140,17 +157,21 @@ cdns_get_num_pdi
 
     Get number of PDIs required
 
-    :param struct sdw_cdns \*cdns:
+    :param cdns:
         Cadence instance
+    :type cdns: struct sdw_cdns \*
 
-    :param struct sdw_cdns_pdi \*pdi:
+    :param pdi:
         PDI to be used
+    :type pdi: struct sdw_cdns_pdi \*
 
-    :param unsigned int num:
+    :param num:
         Number of PDIs
+    :type num: unsigned int
 
-    :param u32 ch_count:
+    :param ch_count:
         Channel count
+    :type ch_count: u32
 
 .. _`sdw_cdns_get_stream`:
 
@@ -161,17 +182,21 @@ sdw_cdns_get_stream
 
     Get stream information
 
-    :param struct sdw_cdns \*cdns:
+    :param cdns:
         Cadence instance
+    :type cdns: struct sdw_cdns \*
 
-    :param struct sdw_cdns_streams \*stream:
+    :param stream:
         Stream to be allocated
+    :type stream: struct sdw_cdns_streams \*
 
-    :param u32 ch:
+    :param ch:
         Channel count
+    :type ch: u32
 
-    :param u32 dir:
+    :param dir:
         Data direction
+    :type dir: u32
 
 .. _`sdw_cdns_alloc_stream`:
 
@@ -182,20 +207,25 @@ sdw_cdns_alloc_stream
 
     Allocate a stream
 
-    :param struct sdw_cdns \*cdns:
+    :param cdns:
         Cadence instance
+    :type cdns: struct sdw_cdns \*
 
-    :param struct sdw_cdns_streams \*stream:
+    :param stream:
         Stream to be allocated
+    :type stream: struct sdw_cdns_streams \*
 
-    :param struct sdw_cdns_port \*port:
+    :param port:
         Cadence data port
+    :type port: struct sdw_cdns_port \*
 
-    :param u32 ch:
+    :param ch:
         Channel count
+    :type ch: u32
 
-    :param u32 dir:
+    :param dir:
         Data direction
+    :type dir: u32
 
 .. This file was automatic generated / don't edit.
 

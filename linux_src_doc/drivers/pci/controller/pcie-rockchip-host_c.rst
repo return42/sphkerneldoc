@@ -10,8 +10,9 @@ rockchip_pcie_host_init_port
 
     Initialize hardware
 
-    :param struct rockchip_pcie \*rockchip:
+    :param rockchip:
         PCIe port information
+    :type rockchip: struct rockchip_pcie \*
 
 .. _`rockchip_pcie_parse_host_dt`:
 
@@ -22,8 +23,9 @@ rockchip_pcie_parse_host_dt
 
     Parse Device Tree
 
-    :param struct rockchip_pcie \*rockchip:
+    :param rockchip:
         PCIe port information
+    :type rockchip: struct rockchip_pcie \*
 
 .. _`rockchip_pcie_parse_host_dt.return`:
 

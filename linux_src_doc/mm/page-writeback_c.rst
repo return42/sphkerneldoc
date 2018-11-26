@@ -10,8 +10,9 @@ node_dirtyable_memory
 
     number of dirtyable pages in a node
 
-    :param struct pglist_data \*pgdat:
+    :param pgdat:
         the node
+    :type pgdat: struct pglist_data \*
 
 .. _`node_dirtyable_memory.description`:
 
@@ -30,8 +31,9 @@ global_dirtyable_memory
 
     number of globally dirtyable pages
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`global_dirtyable_memory.description`:
 
@@ -50,17 +52,18 @@ domain_dirty_limits
 
     calculate thresh and bg_thresh for a wb_domain
 
-    :param struct dirty_throttle_control \*dtc:
+    :param dtc:
         dirty_throttle_control of interest
+    :type dtc: struct dirty_throttle_control \*
 
 .. _`domain_dirty_limits.description`:
 
 Description
 -----------
 
-Calculate \ ``dtc``\ ->thresh and ->bg_thresh considering
+Calculate \ ``dtc->thresh``\  and ->bg_thresh considering
 vm_dirty_{bytes|ratio} and dirty_background_{bytes|ratio}.  The caller
-must ensure that \ ``dtc``\ ->avail is set before calling this function.  The
+must ensure that \ ``dtc->avail``\  is set before calling this function.  The
 dirty limits will be lifted by 1/4 for PF_LESS_THROTTLE (ie. nfsd) and
 real-time tasks.
 
@@ -73,11 +76,13 @@ global_dirty_limits
 
     background-writeback and dirty-throttling thresholds
 
-    :param unsigned long \*pbackground:
+    :param pbackground:
         out parameter for bg_thresh
+    :type pbackground: unsigned long \*
 
-    :param unsigned long \*pdirty:
+    :param pdirty:
         out parameter for thresh
+    :type pdirty: unsigned long \*
 
 .. _`global_dirty_limits.description`:
 
@@ -96,8 +101,9 @@ node_dirty_limit
 
     maximum number of dirty pages allowed in a node
 
-    :param struct pglist_data \*pgdat:
+    :param pgdat:
         the node
+    :type pgdat: struct pglist_data \*
 
 .. _`node_dirty_limit.description`:
 
@@ -116,8 +122,9 @@ node_dirty_ok
 
     tells whether a node is within its dirty limits
 
-    :param struct pglist_data \*pgdat:
+    :param pgdat:
         the node to check
+    :type pgdat: struct pglist_data \*
 
 .. _`node_dirty_ok.description`:
 
@@ -136,8 +143,9 @@ __wb_calc_thresh
 
     \ ``wb``\ 's share of dirty throttling threshold
 
-    :param struct dirty_throttle_control \*dtc:
+    :param dtc:
         dirty_throttle_context of interest
+    :type dtc: struct dirty_throttle_control \*
 
 .. _`__wb_calc_thresh.description`:
 
@@ -170,8 +178,9 @@ balance_dirty_pages_ratelimited
 
     balance dirty memory state
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address_space which was dirtied
+    :type mapping: struct address_space \*
 
 .. _`balance_dirty_pages_ratelimited.description`:
 
@@ -196,8 +205,9 @@ wb_over_bg_thresh
 
     does \ ``wb``\  need to be written back?
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         bdi_writeback of interest
+    :type wb: struct bdi_writeback \*
 
 .. _`wb_over_bg_thresh.description`:
 
@@ -216,14 +226,17 @@ tag_pages_for_writeback
 
     tag pages to be written by write_cache_pages
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space structure to write
+    :type mapping: struct address_space \*
 
-    :param pgoff_t start:
+    :param start:
         starting page index
+    :type start: pgoff_t
 
-    :param pgoff_t end:
+    :param end:
         ending page index (inclusive)
+    :type end: pgoff_t
 
 .. _`tag_pages_for_writeback.description`:
 
@@ -247,17 +260,21 @@ write_cache_pages
 
     walk the list of dirty pages of the given address space and write all of them.
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space structure to write
+    :type mapping: struct address_space \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         subtract the number of written pages from *@wbc->nr_to_write
+    :type wbc: struct writeback_control \*
 
-    :param writepage_t writepage:
+    :param writepage:
         function called for each page
+    :type writepage: writepage_t
 
-    :param void \*data:
+    :param data:
         data passed to writepage function
+    :type data: void \*
 
 .. _`write_cache_pages.description`:
 
@@ -279,6 +296,13 @@ not miss some pages (e.g., because some other process has cleared TOWRITE
 tag we set). The rule we follow is that TOWRITE tag can be cleared only
 by the process clearing the DIRTY tag (and submitting the page for IO).
 
+To avoid deadlocks between range_cyclic writeback and callers that hold
+pages in PageWriteback to aggregate IO until \ :c:func:`write_cache_pages`\  returns,
+we do not loop back to the start of the file. Doing so causes a page
+lock/page writeback access order inversion - we should only ever lock
+multiple pages in ascending page->index order, and looping back to the start
+of the file violates that rule and causes deadlocks.
+
 .. _`generic_writepages`:
 
 generic_writepages
@@ -288,11 +312,13 @@ generic_writepages
 
     walk the list of dirty pages of the given address space and \ :c:func:`writepage`\  all of them.
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space structure to write
+    :type mapping: struct address_space \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         subtract the number of written pages from *@wbc->nr_to_write
+    :type wbc: struct writeback_control \*
 
 .. _`generic_writepages.description`:
 
@@ -311,8 +337,9 @@ write_one_page
 
     write out a single page and wait on I/O
 
-    :param struct page \*page:
+    :param page:
         the page to write
+    :type page: struct page \*
 
 .. _`write_one_page.description`:
 
@@ -333,8 +360,9 @@ wait_for_stable_page
 
     wait for writeback to finish, if necessary.
 
-    :param struct page \*page:
+    :param page:
         The page to wait on.
+    :type page: struct page \*
 
 .. _`wait_for_stable_page.description`:
 

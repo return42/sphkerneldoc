@@ -11,5 +11,6 @@ selftests
     bpf/index
     futex/index
     mqueue/index
+    powerpc/index
     rcutorture/index
     kselftest_harness_h

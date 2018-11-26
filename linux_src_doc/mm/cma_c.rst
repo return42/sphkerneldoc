@@ -10,22 +10,27 @@ cma_init_reserved_mem
 
     create custom contiguous area from reserved memory
 
-    :param phys_addr_t base:
+    :param base:
         Base address of the reserved area
+    :type base: phys_addr_t
 
-    :param phys_addr_t size:
+    :param size:
         Size of the reserved area (in bytes),
+    :type size: phys_addr_t
 
-    :param unsigned int order_per_bit:
+    :param order_per_bit:
         Order of pages represented by one bit on bitmap.
+    :type order_per_bit: unsigned int
 
-    :param const char \*name:
+    :param name:
         The name of the area. If this parameter is NULL, the name of
         the area will be set to "cmaN", where N is a running counter of
         used areas.
+    :type name: const char \*
 
-    :param struct cma \*\*res_cma:
+    :param res_cma:
         Pointer to store the created cma region.
+    :type res_cma: struct cma \*\*
 
 .. _`cma_init_reserved_mem.description`:
 
@@ -43,29 +48,37 @@ cma_declare_contiguous
 
     reserve custom contiguous area
 
-    :param phys_addr_t base:
+    :param base:
         Base address of the reserved area optional, use 0 for any
+    :type base: phys_addr_t
 
-    :param phys_addr_t size:
+    :param size:
         Size of the reserved area (in bytes),
+    :type size: phys_addr_t
 
-    :param phys_addr_t limit:
+    :param limit:
         End address of the reserved memory (optional, 0 for any).
+    :type limit: phys_addr_t
 
-    :param phys_addr_t alignment:
+    :param alignment:
         Alignment for the CMA area, should be power of 2 or zero
+    :type alignment: phys_addr_t
 
-    :param unsigned int order_per_bit:
+    :param order_per_bit:
         Order of pages represented by one bit on bitmap.
+    :type order_per_bit: unsigned int
 
-    :param bool fixed:
+    :param fixed:
         hint about where to place the reserved area
+    :type fixed: bool
 
-    :param const char \*name:
+    :param name:
         The name of the area. See function \ :c:func:`cma_init_reserved_mem`\ 
+    :type name: const char \*
 
-    :param struct cma \*\*res_cma:
+    :param res_cma:
         Pointer to store the created cma region.
+    :type res_cma: struct cma \*\*
 
 .. _`cma_declare_contiguous.description`:
 
@@ -85,21 +98,25 @@ reserve in range from \ ``base``\  to \ ``limit``\ .
 cma_alloc
 =========
 
-.. c:function:: struct page *cma_alloc(struct cma *cma, size_t count, unsigned int align, gfp_t gfp_mask)
+.. c:function:: struct page *cma_alloc(struct cma *cma, size_t count, unsigned int align, bool no_warn)
 
     allocate pages from contiguous area
 
-    :param struct cma \*cma:
+    :param cma:
         Contiguous memory region for which the allocation is performed.
+    :type cma: struct cma \*
 
-    :param size_t count:
+    :param count:
         Requested number of pages.
+    :type count: size_t
 
-    :param unsigned int align:
+    :param align:
         Requested alignment of pages (in PAGE_SIZE order).
+    :type align: unsigned int
 
-    :param gfp_t gfp_mask:
-        GFP mask to use during compaction
+    :param no_warn:
+        Avoid printing message about failed allocation
+    :type no_warn: bool
 
 .. _`cma_alloc.description`:
 
@@ -118,14 +135,17 @@ cma_release
 
     release allocated pages
 
-    :param struct cma \*cma:
+    :param cma:
         Contiguous memory region for which the allocation is performed.
+    :type cma: struct cma \*
 
-    :param const struct page \*pages:
+    :param pages:
         Allocated pages.
+    :type pages: const struct page \*
 
-    :param unsigned int count:
+    :param count:
         Number of allocated pages.
+    :type count: unsigned int
 
 .. _`cma_release.description`:
 

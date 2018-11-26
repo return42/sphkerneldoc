@@ -155,14 +155,17 @@ intel_th_device_get_resource
 
     obtain \ ``num``\ 'th resource of type \ ``type``\ 
 
-    :param struct intel_th_device \*thdev:
+    :param thdev:
         the device to search the resource for
+    :type thdev: struct intel_th_device \*
 
-    :param unsigned int type:
+    :param type:
         resource type
+    :type type: unsigned int
 
-    :param unsigned int num:
+    :param num:
         number of the resource
+    :type num: unsigned int
 
 .. _`intel_th_output_assigned`:
 
@@ -173,8 +176,9 @@ intel_th_output_assigned
 
     if an output device is assigned to a switch port
 
-    :param struct intel_th_device \*thdev:
+    :param thdev:
         the output device
+    :type thdev: struct intel_th_device \*
 
 .. _`intel_th_output_assigned.return`:
 

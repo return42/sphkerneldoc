@@ -8,8 +8,9 @@ bdisp_hw_reset
 
 .. c:function:: int bdisp_hw_reset(struct bdisp_dev *bdisp)
 
-    :param struct bdisp_dev \*bdisp:
+    :param bdisp:
         bdisp entity
+    :type bdisp: struct bdisp_dev \*
 
 .. _`bdisp_hw_reset.description`:
 
@@ -32,8 +33,9 @@ bdisp_hw_get_and_clear_irq
 
 .. c:function:: int bdisp_hw_get_and_clear_irq(struct bdisp_dev *bdisp)
 
-    :param struct bdisp_dev \*bdisp:
+    :param bdisp:
         bdisp entity
+    :type bdisp: struct bdisp_dev \*
 
 .. _`bdisp_hw_get_and_clear_irq.description`:
 
@@ -56,8 +58,9 @@ bdisp_hw_free_nodes
 
 .. c:function:: void bdisp_hw_free_nodes(struct bdisp_ctx *ctx)
 
-    :param struct bdisp_ctx \*ctx:
+    :param ctx:
         bdisp context
+    :type ctx: struct bdisp_ctx \*
 
 .. _`bdisp_hw_free_nodes.description`:
 
@@ -80,8 +83,9 @@ bdisp_hw_alloc_nodes
 
 .. c:function:: int bdisp_hw_alloc_nodes(struct bdisp_ctx *ctx)
 
-    :param struct bdisp_ctx \*ctx:
+    :param ctx:
         bdisp context
+    :type ctx: struct bdisp_ctx \*
 
 .. _`bdisp_hw_alloc_nodes.description`:
 
@@ -104,8 +108,9 @@ bdisp_hw_free_filters
 
 .. c:function:: void bdisp_hw_free_filters(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
 .. _`bdisp_hw_free_filters.description`:
 
@@ -128,8 +133,9 @@ bdisp_hw_alloc_filters
 
 .. c:function:: int bdisp_hw_alloc_filters(struct device *dev)
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
 .. _`bdisp_hw_alloc_filters.description`:
 
@@ -152,8 +158,9 @@ bdisp_hw_get_hf_addr
 
 .. c:function:: dma_addr_t bdisp_hw_get_hf_addr(u16 inc)
 
-    :param u16 inc:
+    :param inc:
         resize increment
+    :type inc: u16
 
 .. _`bdisp_hw_get_hf_addr.description`:
 
@@ -176,8 +183,9 @@ bdisp_hw_get_vf_addr
 
 .. c:function:: dma_addr_t bdisp_hw_get_vf_addr(u16 inc)
 
-    :param u16 inc:
+    :param inc:
         resize increment
+    :type inc: u16
 
 .. _`bdisp_hw_get_vf_addr.description`:
 
@@ -200,14 +208,17 @@ bdisp_hw_get_inc
 
 .. c:function:: int bdisp_hw_get_inc(u32 from, u32 to, u16 *inc)
 
-    :param u32 from:
+    :param from:
         input size
+    :type from: u32
 
-    :param u32 to:
+    :param to:
         output size
+    :type to: u32
 
-    :param u16 \*inc:
+    :param inc:
         resize increment in 6.10 format
+    :type inc: u16 \*
 
 .. _`bdisp_hw_get_inc.description`:
 
@@ -230,14 +241,17 @@ bdisp_hw_get_hv_inc
 
 .. c:function:: int bdisp_hw_get_hv_inc(struct bdisp_ctx *ctx, u16 *h_inc, u16 *v_inc)
 
-    :param struct bdisp_ctx \*ctx:
+    :param ctx:
         device context
+    :type ctx: struct bdisp_ctx \*
 
-    :param u16 \*h_inc:
+    :param h_inc:
         horizontal increment
+    :type h_inc: u16 \*
 
-    :param u16 \*v_inc:
+    :param v_inc:
         vertical increment
+    :type v_inc: u16 \*
 
 .. _`bdisp_hw_get_hv_inc.description`:
 
@@ -260,11 +274,13 @@ bdisp_hw_get_op_cfg
 
 .. c:function:: int bdisp_hw_get_op_cfg(struct bdisp_ctx *ctx, struct bdisp_op_cfg *c)
 
-    :param struct bdisp_ctx \*ctx:
+    :param ctx:
         device context
+    :type ctx: struct bdisp_ctx \*
 
-    :param struct bdisp_op_cfg \*c:
+    :param c:
         operation configuration
+    :type c: struct bdisp_op_cfg \*
 
 .. _`bdisp_hw_get_op_cfg.description`:
 
@@ -287,8 +303,9 @@ bdisp_hw_color_format
 
 .. c:function:: u32 bdisp_hw_color_format(u32 pixelformat)
 
-    :param u32 pixelformat:
+    :param pixelformat:
         v4l2 pixel format
+    :type pixelformat: u32
 
 .. _`bdisp_hw_color_format.description`:
 
@@ -311,20 +328,25 @@ bdisp_hw_build_node
 
 .. c:function:: void bdisp_hw_build_node(struct bdisp_ctx *ctx, struct bdisp_op_cfg *cfg, struct bdisp_node *node, enum bdisp_target_plan t_plan, int src_x_offset)
 
-    :param struct bdisp_ctx \*ctx:
+    :param ctx:
         device context
+    :type ctx: struct bdisp_ctx \*
 
-    :param struct bdisp_op_cfg \*cfg:
+    :param cfg:
         operation configuration
+    :type cfg: struct bdisp_op_cfg \*
 
-    :param struct bdisp_node \*node:
+    :param node:
         node to be set
+    :type node: struct bdisp_node \*
 
-    :param enum bdisp_target_plan t_plan:
+    :param t_plan:
         whether the node refers to a RGB/Y or a CbCr plane
+    :type t_plan: enum bdisp_target_plan
 
-    :param int src_x_offset:
+    :param src_x_offset:
         x offset in the source image
+    :type src_x_offset: int
 
 .. _`bdisp_hw_build_node.description`:
 
@@ -347,8 +369,9 @@ bdisp_hw_build_all_nodes
 
 .. c:function:: int bdisp_hw_build_all_nodes(struct bdisp_ctx *ctx)
 
-    :param struct bdisp_ctx \*ctx:
+    :param ctx:
         device context
+    :type ctx: struct bdisp_ctx \*
 
 .. _`bdisp_hw_build_all_nodes.description`:
 
@@ -371,8 +394,9 @@ bdisp_hw_save_request
 
 .. c:function:: void bdisp_hw_save_request(struct bdisp_ctx *ctx)
 
-    :param struct bdisp_ctx \*ctx:
+    :param ctx:
         device context
+    :type ctx: struct bdisp_ctx \*
 
 .. _`bdisp_hw_save_request.description`:
 
@@ -395,8 +419,9 @@ bdisp_hw_update
 
 .. c:function:: int bdisp_hw_update(struct bdisp_ctx *ctx)
 
-    :param struct bdisp_ctx \*ctx:
+    :param ctx:
         device context
+    :type ctx: struct bdisp_ctx \*
 
 .. _`bdisp_hw_update.description`:
 

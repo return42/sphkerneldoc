@@ -43,11 +43,13 @@ ath5k_hw_radio_revision
 
     Get the PHY Chip revision
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum nl80211_band band:
+    :param band:
         One of enum nl80211_band
+    :type band: enum nl80211_band
 
 .. _`ath5k_hw_radio_revision.description`:
 
@@ -66,11 +68,13 @@ ath5k_channel_ok
 
     Check if a channel is supported by the hw
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_channel_ok.note`:
 
@@ -89,11 +93,13 @@ ath5k_hw_chan_has_spur_noise
 
     Check if channel is sensitive to spur noise
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_rfb_op`:
 
@@ -104,20 +110,25 @@ ath5k_hw_rfb_op
 
     Perform an operation on the given RF Buffer
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param const struct ath5k_rf_reg \*rf_regs:
+    :param rf_regs:
         The struct ath5k_rf_reg
+    :type rf_regs: const struct ath5k_rf_reg \*
 
-    :param u32 val:
+    :param val:
         New value
+    :type val: u32
 
-    :param u8 reg_id:
+    :param reg_id:
         RF register ID
+    :type reg_id: u8
 
-    :param bool set:
+    :param set:
         Indicate we need to swap data
+    :type set: bool
 
 .. _`ath5k_hw_rfb_op.description`:
 
@@ -137,11 +148,13 @@ ath5k_hw_write_ofdm_timings
 
     set OFDM timings on AR5212
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         the \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         the currently set channel upon reset
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_write_ofdm_timings.description`:
 
@@ -166,8 +179,9 @@ ath5k_hw_phy_disable
 
     Disable PHY
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_wait_for_synth`:
 
@@ -178,11 +192,13 @@ ath5k_hw_wait_for_synth
 
     Wait for synth to settle
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`rf-gain-optimization`:
 
@@ -217,8 +233,9 @@ ath5k_hw_rfgain_opt_init
 
     Initialize ah_gain during attach
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_request_rfgain_probe`:
 
@@ -229,8 +246,9 @@ ath5k_hw_request_rfgain_probe
 
     Request a PAPD probe packet
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_request_rfgain_probe.description`:
 
@@ -260,8 +278,9 @@ ath5k_hw_rf_gainf_corr
 
     Calculate Gain_F measurement correction
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_rf_gainf_corr.description`:
 
@@ -280,8 +299,9 @@ ath5k_hw_rf_check_gainf_readback
 
     Validate Gain_F feedback from detector
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_rf_check_gainf_readback.description`:
 
@@ -304,8 +324,9 @@ ath5k_hw_rf_gainf_adjust
 
     Perform Gain_F adjustment
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_rf_gainf_adjust.description`:
 
@@ -324,8 +345,9 @@ ath5k_hw_gainf_calibrate
 
     Do a gain_F calibration
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_gainf_calibrate.description`:
 
@@ -347,11 +369,13 @@ ath5k_hw_rfgain_init
 
     Write initial RF gain settings to hw
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum nl80211_band band:
+    :param band:
         One of enum nl80211_band
+    :type band: enum nl80211_band
 
 .. _`ath5k_hw_rfgain_init.description`:
 
@@ -377,14 +401,17 @@ ath5k_hw_rfregs_init
 
     Initialize RF register settings
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
-    :param unsigned int mode:
+    :param mode:
         One of enum ath5k_driver_mode
+    :type mode: unsigned int
 
 .. _`ath5k_hw_rfregs_init.description`:
 
@@ -403,8 +430,9 @@ ath5k_hw_rf5110_chan2athchan
 
     Convert channel freq on RF5110
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_rf5110_chan2athchan.description`:
 
@@ -423,11 +451,13 @@ ath5k_hw_rf5110_channel
 
     Set channel frequency on RF5110
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_rf5111_chan2athchan`:
 
@@ -438,11 +468,13 @@ ath5k_hw_rf5111_chan2athchan
 
     Handle 2GHz channels on RF5111/2111
 
-    :param unsigned int ieee:
+    :param ieee:
         IEEE channel number
+    :type ieee: unsigned int
 
-    :param struct ath5k_athchan_2ghz \*athchan:
+    :param athchan:
         The \ :c:type:`struct ath5k_athchan_2ghz <ath5k_athchan_2ghz>`\ 
+    :type athchan: struct ath5k_athchan_2ghz \*
 
 .. _`ath5k_hw_rf5111_chan2athchan.description`:
 
@@ -463,11 +495,13 @@ ath5k_hw_rf5111_channel
 
     Set channel frequency on RF5111/2111
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_rf5112_channel`:
 
@@ -478,11 +512,13 @@ ath5k_hw_rf5112_channel
 
     Set channel frequency on 5112 and newer
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_rf5112_channel.description`:
 
@@ -510,11 +546,13 @@ ath5k_hw_rf2425_channel
 
     Set channel frequency on RF2425
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_rf2425_channel.description`:
 
@@ -533,11 +571,13 @@ ath5k_hw_channel
 
     Set a channel on the radio chip
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_channel.description`:
 
@@ -586,8 +626,9 @@ ath5k_hw_read_measured_noise_floor
 
     Read measured NF from hw
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_init_nfcal_hist`:
 
@@ -598,8 +639,9 @@ ath5k_hw_init_nfcal_hist
 
     Initialize NF calibration history buffer
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_update_nfcal_hist`:
 
@@ -610,11 +652,13 @@ ath5k_hw_update_nfcal_hist
 
     Update NF calibration history buffer
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param s16 noise_floor:
+    :param noise_floor:
         The NF we got from hw
+    :type noise_floor: s16
 
 .. _`ath5k_hw_get_median_noise_floor`:
 
@@ -625,8 +669,9 @@ ath5k_hw_get_median_noise_floor
 
     Get median NF from history buffer
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_update_noise_floor`:
 
@@ -637,8 +682,9 @@ ath5k_hw_update_noise_floor
 
     Update NF on hardware
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_update_noise_floor.description`:
 
@@ -658,11 +704,13 @@ ath5k_hw_rf5110_calibrate
 
     Perform a PHY calibration on RF5110
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_rf5110_calibrate.description`:
 
@@ -680,8 +728,9 @@ ath5k_hw_rf511x_iq_calibrate
 
     Perform I/Q calibration on RF5111 and newer
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_phy_calibrate`:
 
@@ -692,11 +741,13 @@ ath5k_hw_phy_calibrate
 
     Perform a PHY calibration
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_phy_calibrate.description`:
 
@@ -716,11 +767,13 @@ ath5k_hw_set_spur_mitigation_filter
 
     Configure SPUR filter
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_hw_set_spur_mitigation_filter.description`:
 
@@ -792,11 +845,13 @@ ath5k_hw_set_def_antenna
 
     Set default rx antenna on AR5211/5212 and newer
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u8 ant:
+    :param ant:
         Antenna number
+    :type ant: u8
 
 .. _`ath5k_hw_set_fast_div`:
 
@@ -807,14 +862,17 @@ ath5k_hw_set_fast_div
 
     Enable/disable fast rx antenna diversity
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u8 ee_mode:
+    :param ee_mode:
         One of enum ath5k_driver_mode
+    :type ee_mode: u8
 
-    :param bool enable:
+    :param enable:
         True to enable, false to disable
+    :type enable: bool
 
 .. _`ath5k_hw_set_antenna_switch`:
 
@@ -825,11 +883,13 @@ ath5k_hw_set_antenna_switch
 
     Set up antenna switch table
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u8 ee_mode:
+    :param ee_mode:
         One of enum ath5k_driver_mode
+    :type ee_mode: u8
 
 .. _`ath5k_hw_set_antenna_switch.description`:
 
@@ -848,11 +908,13 @@ ath5k_hw_set_antenna_mode
 
     Set antenna operating mode
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u8 ant_mode:
+    :param ant_mode:
         One of enum ath5k_ant_mode
+    :type ant_mode: u8
 
 .. _`ath5k_get_interpolated_value`:
 
@@ -863,20 +925,25 @@ ath5k_get_interpolated_value
 
     Get interpolated Y val between two points
 
-    :param s16 target:
+    :param target:
         X value of the middle point
+    :type target: s16
 
-    :param s16 x_left:
+    :param x_left:
         X value of the left point
+    :type x_left: s16
 
-    :param s16 x_right:
+    :param x_right:
         X value of the right point
+    :type x_right: s16
 
-    :param s16 y_left:
+    :param y_left:
         Y value of the left point
+    :type y_left: s16
 
-    :param s16 y_right:
+    :param y_right:
         Y value of the right point
+    :type y_right: s16
 
 .. _`ath5k_get_linear_pcdac_min`:
 
@@ -887,17 +954,21 @@ ath5k_get_linear_pcdac_min
 
     Find vertical boundary (min pwr) for the linear PCDAC curve
 
-    :param const u8 \*stepL:
+    :param stepL:
         Left array with y values (pcdac steps)
+    :type stepL: const u8 \*
 
-    :param const u8 \*stepR:
+    :param stepR:
         Right array with y values (pcdac steps)
+    :type stepR: const u8 \*
 
-    :param const s16 \*pwrL:
+    :param pwrL:
         Left array with x values (power steps)
+    :type pwrL: const s16 \*
 
-    :param const s16 \*pwrR:
+    :param pwrR:
         Right array with x values (power steps)
+    :type pwrR: const s16 \*
 
 .. _`ath5k_get_linear_pcdac_min.description`:
 
@@ -918,26 +989,33 @@ ath5k_create_power_curve
 
     Create a Power to PDADC or PCDAC curve
 
-    :param s16 pmin:
+    :param pmin:
         Minimum power value (xmin)
+    :type pmin: s16
 
-    :param s16 pmax:
+    :param pmax:
         Maximum power value (xmax)
+    :type pmax: s16
 
-    :param const s16 \*pwr:
+    :param pwr:
         Array of power steps (x values)
+    :type pwr: const s16 \*
 
-    :param const u8 \*vpd:
+    :param vpd:
         Array of matching PCDAC/PDADC steps (y values)
+    :type vpd: const u8 \*
 
-    :param u8 num_points:
+    :param num_points:
         Number of provided points
+    :type num_points: u8
 
-    :param u8 \*vpd_table:
+    :param vpd_table:
         Array to fill with the full PCDAC/PDADC values (y values)
+    :type vpd_table: u8 \*
 
-    :param u8 type:
+    :param type:
         One of enum ath5k_powertable_type (eeprom.h)
+    :type type: u8
 
 .. _`ath5k_create_power_curve.description`:
 
@@ -964,17 +1042,21 @@ ath5k_get_chan_pcal_surrounding_piers
 
     Get surrounding calibration piers for a given channel.
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
-    :param struct ath5k_chan_pcal_info \*\*pcinfo_l:
+    :param pcinfo_l:
         The \ :c:type:`struct ath5k_chan_pcal_info <ath5k_chan_pcal_info>`\  to put the left cal. pier
+    :type pcinfo_l: struct ath5k_chan_pcal_info \*\*
 
-    :param struct ath5k_chan_pcal_info \*\*pcinfo_r:
+    :param pcinfo_r:
         The \ :c:type:`struct ath5k_chan_pcal_info <ath5k_chan_pcal_info>`\  to put the right cal. pier
+    :type pcinfo_r: struct ath5k_chan_pcal_info \*\*
 
 .. _`ath5k_get_chan_pcal_surrounding_piers.description`:
 
@@ -995,14 +1077,17 @@ ath5k_get_rate_pcal_data
 
     Get the interpolated per-rate power calibration data
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\  \*ah,
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
-    :param struct ath5k_rate_pcal_info \*rates:
+    :param rates:
         The \ :c:type:`struct ath5k_rate_pcal_info <ath5k_rate_pcal_info>`\  to fill
+    :type rates: struct ath5k_rate_pcal_info \*
 
 .. _`ath5k_get_rate_pcal_data.description`:
 
@@ -1023,11 +1108,13 @@ ath5k_get_max_ctl_power
 
     Get max edge power for a given frequency
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         the \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
 .. _`ath5k_get_max_ctl_power.description`:
 
@@ -1072,18 +1159,21 @@ We finally write the Y values of the curve(s) (the PCDAC values) on hw
 ath5k_fill_pwr_to_pcdac_table
 =============================
 
-.. c:function:: void ath5k_fill_pwr_to_pcdac_table(struct ath5k_hw *ah, s16*table_min, s16 *table_max)
+.. c:function:: void ath5k_fill_pwr_to_pcdac_table(struct ath5k_hw *ah, s16* table_min, s16 *table_max)
 
     Fill Power to PCDAC table on RF5111
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param s16\*table_min:
+    :param table_min:
         Minimum power (x min)
+    :type table_min: s16\*
 
-    :param s16 \*table_max:
+    :param table_max:
         Maximum power (x max)
+    :type table_max: s16 \*
 
 .. _`ath5k_fill_pwr_to_pcdac_table.description`:
 
@@ -1099,21 +1189,25 @@ may not cover the entire PCDAC table.
 ath5k_combine_linear_pcdac_curves
 =================================
 
-.. c:function:: void ath5k_combine_linear_pcdac_curves(struct ath5k_hw *ah, s16*table_min, s16 *table_max, u8 pdcurves)
+.. c:function:: void ath5k_combine_linear_pcdac_curves(struct ath5k_hw *ah, s16* table_min, s16 *table_max, u8 pdcurves)
 
     Combine available PCDAC Curves
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param s16\*table_min:
+    :param table_min:
         Minimum power (x min)
+    :type table_min: s16\*
 
-    :param s16 \*table_max:
+    :param table_max:
         Maximum power (x max)
+    :type table_max: s16 \*
 
-    :param u8 pdcurves:
+    :param pdcurves:
         Number of pd curves
+    :type pdcurves: u8
 
 .. _`ath5k_combine_linear_pcdac_curves.description`:
 
@@ -1137,8 +1231,9 @@ ath5k_write_pcdac_table
 
     Write the PCDAC values on hw
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`power-to-pdadc-table-functions`:
 
@@ -1168,17 +1263,21 @@ ath5k_combine_pwr_to_pdadc_curves
 
     Combine the various PDADC curves
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param s16 \*pwr_min:
+    :param pwr_min:
         Minimum power (x min)
+    :type pwr_min: s16 \*
 
-    :param s16 \*pwr_max:
+    :param pwr_max:
         Maximum power (x max)
+    :type pwr_max: s16 \*
 
-    :param u8 pdcurves:
+    :param pdcurves:
         Number of available curves
+    :type pdcurves: u8
 
 .. _`ath5k_combine_pwr_to_pdadc_curves.description`:
 
@@ -1199,11 +1298,13 @@ ath5k_write_pwr_to_pdadc_table
 
     Write the PDADC values on hw
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u8 ee_mode:
+    :param ee_mode:
         One of enum ath5k_driver_mode
+    :type ee_mode: u8
 
 .. _`ath5k_setup_channel_powertable`:
 
@@ -1214,17 +1315,21 @@ ath5k_setup_channel_powertable
 
     Set up power table for this channel
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
-    :param u8 ee_mode:
+    :param ee_mode:
         One of enum ath5k_driver_mode
+    :type ee_mode: u8
 
-    :param u8 type:
+    :param type:
         One of enum ath5k_powertable_type (eeprom.h)
+    :type type: u8
 
 .. _`ath5k_setup_channel_powertable.description`:
 
@@ -1246,14 +1351,17 @@ ath5k_write_channel_powertable
 
     Set power table for current channel on hw
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u8 ee_mode:
+    :param ee_mode:
         One of enum ath5k_driver_mode
+    :type ee_mode: u8
 
-    :param u8 type:
+    :param type:
         One of enum ath5k_powertable_type (eeprom.h)
+    :type type: u8
 
 .. _`per-rate-tx-power-setting`:
 
@@ -1287,17 +1395,21 @@ ath5k_setup_rate_powertable
 
     Set up rate power table for a given tx power
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u16 max_pwr:
+    :param max_pwr:
         The maximum tx power requested in 0.5dB steps
+    :type max_pwr: u16
 
-    :param struct ath5k_rate_pcal_info \*rate_info:
+    :param rate_info:
         The \ :c:type:`struct ath5k_rate_pcal_info <ath5k_rate_pcal_info>`\  to fill
+    :type rate_info: struct ath5k_rate_pcal_info \*
 
-    :param u8 ee_mode:
+    :param ee_mode:
         One of enum ath5k_driver_mode
+    :type ee_mode: u8
 
 .. _`ath5k_hw_txpower`:
 
@@ -1308,14 +1420,17 @@ ath5k_hw_txpower
 
     Set transmission power limit for a given channel
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+    :type channel: struct ieee80211_channel \*
 
-    :param u8 txpower:
+    :param txpower:
         Requested tx power in 0.5dB steps
+    :type txpower: u8
 
 .. _`ath5k_hw_txpower.description`:
 
@@ -1334,11 +1449,13 @@ ath5k_hw_set_txpower_limit
 
     Set txpower limit for the current channel
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u8 txpower:
+    :param txpower:
         The requested tx power limit in 0.5dB steps
+    :type txpower: u8
 
 .. _`ath5k_hw_set_txpower_limit.description`:
 
@@ -1357,17 +1474,21 @@ ath5k_hw_phy_init
 
     Initialize PHY
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         The \ ``struct``\  ieee80211_channel
+    :type channel: struct ieee80211_channel \*
 
-    :param u8 mode:
+    :param mode:
         One of enum ath5k_driver_mode
+    :type mode: u8
 
-    :param bool fast:
+    :param fast:
         Try a fast channel switch instead
+    :type fast: bool
 
 .. _`ath5k_hw_phy_init.description`:
 

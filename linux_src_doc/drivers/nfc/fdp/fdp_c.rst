@@ -8,14 +8,16 @@ fdp_nci_set_data_pkt_counter
 
 .. c:function:: void fdp_nci_set_data_pkt_counter(struct nci_dev *ndev, void (*cb)(struct nci_dev *ndev), int count)
 
-    :param struct nci_dev \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct nci_dev \*
 
     :param void (\*cb)(struct nci_dev \*ndev):
         *undescribed*
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
 .. _`fdp_nci_set_data_pkt_counter.description`:
 
@@ -35,14 +37,17 @@ fdp_nci_send_patch
 
     have the PBF flag set to 0x0 (last packet) even if the firmware file is segmented and there are multiple packets. If we give the whole firmware to nci_send_data it will segment it and it will set the PBF flag to 0x01 so we need to do the segmentation here.
 
-    :param struct nci_dev \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct nci_dev \*
 
-    :param u8 conn_id:
+    :param conn_id:
         *undescribed*
+    :type conn_id: u8
 
-    :param u8 type:
+    :param type:
         *undescribed*
+    :type type: u8
 
 .. _`fdp_nci_send_patch.description`:
 

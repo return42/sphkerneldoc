@@ -10,17 +10,21 @@ nci_spi_allocate_spi
 
     allocate a new nci spi
 
-    :param struct spi_device \*spi:
+    :param spi:
         SPI device
+    :type spi: struct spi_device \*
 
-    :param u8 acknowledge_mode:
+    :param acknowledge_mode:
         Acknowledge mode used by the NFC device
+    :type acknowledge_mode: u8
 
-    :param unsigned int delay:
+    :param delay:
         delay between transactions in us
+    :type delay: unsigned int
 
-    :param struct nci_dev \*ndev:
+    :param ndev:
         nci dev to send incoming nci frames to
+    :type ndev: struct nci_dev \*
 
 .. _`nci_spi_read`:
 
@@ -31,8 +35,9 @@ nci_spi_read
 
     read frame from NCI SPI drivers
 
-    :param struct nci_spi \*nspi:
+    :param nspi:
         The nci spi
+    :type nspi: struct nci_spi \*
 
 .. _`nci_spi_read.context`:
 

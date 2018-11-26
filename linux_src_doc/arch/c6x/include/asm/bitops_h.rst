@@ -10,8 +10,9 @@
 
     find first bit in word.
 
-    :param unsigned long x:
+    :param x:
         *undescribed*
+    :type x: unsigned long
 
 .. _`__ffs.description`:
 
@@ -30,8 +31,9 @@ fls
 
     find last (most-significant) bit set
 
-    :param int x:
+    :param x:
         the word to search
+    :type x: int
 
 .. _`fls.description`:
 
@@ -50,8 +52,9 @@ ffs
 
     find first bit set
 
-    :param int x:
+    :param x:
         the word to search
+    :type x: int
 
 .. _`ffs.description`:
 

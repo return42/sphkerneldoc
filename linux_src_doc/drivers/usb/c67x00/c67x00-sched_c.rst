@@ -153,14 +153,17 @@ dbg_td
 
     Dump the contents of the TD
 
-    :param struct c67x00_hcd \*c67x00:
+    :param c67x00:
         *undescribed*
+    :type c67x00: struct c67x00_hcd \*
 
-    :param struct c67x00_td \*td:
+    :param td:
         *undescribed*
+    :type td: struct c67x00_td \*
 
-    :param char \*msg:
+    :param msg:
         *undescribed*
+    :type msg: char \*
 
 .. _`frame_add`:
 
@@ -171,11 +174,13 @@ frame_add
 
     Software wraparound for framenumbers.
 
-    :param u16 a:
+    :param a:
         *undescribed*
+    :type a: u16
 
-    :param u16 b:
+    :param b:
         *undescribed*
+    :type b: u16
 
 .. _`frame_after`:
 
@@ -186,11 +191,13 @@ frame_after
 
     is frame a after frame b
 
-    :param u16 a:
+    :param a:
         *undescribed*
+    :type a: u16
 
-    :param u16 b:
+    :param b:
         *undescribed*
+    :type b: u16
 
 .. _`frame_after_eq`:
 
@@ -201,11 +208,13 @@ frame_after_eq
 
     is frame a after or equal to frame b
 
-    :param u16 a:
+    :param a:
         *undescribed*
+    :type a: u16
 
-    :param u16 b:
+    :param b:
         *undescribed*
+    :type b: u16
 
 .. _`c67x00_release_urb`:
 
@@ -216,11 +225,13 @@ c67x00_release_urb
 
     remove link from all tds to this urb Disconnects the urb from it's tds, so that it can be given back.
 
-    :param struct c67x00_hcd \*c67x00:
+    :param c67x00:
         *undescribed*
+    :type c67x00: struct c67x00_hcd \*
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`c67x00_release_urb.pre`:
 
@@ -236,26 +247,33 @@ c67x00_create_td
 
 .. c:function:: int c67x00_create_td(struct c67x00_hcd *c67x00, struct urb *urb, void *data, int len, int pid, int toggle, unsigned long privdata)
 
-    :param struct c67x00_hcd \*c67x00:
+    :param c67x00:
         *undescribed*
+    :type c67x00: struct c67x00_hcd \*
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param int pid:
+    :param pid:
         *undescribed*
+    :type pid: int
 
-    :param int toggle:
+    :param toggle:
         *undescribed*
+    :type toggle: int
 
-    :param unsigned long privdata:
+    :param privdata:
         *undescribed*
+    :type privdata: unsigned long
 
 .. _`c67x00_add_ctrl_urb`:
 
@@ -264,11 +282,13 @@ c67x00_add_ctrl_urb
 
 .. c:function:: int c67x00_add_ctrl_urb(struct c67x00_hcd *c67x00, struct urb *urb)
 
-    :param struct c67x00_hcd \*c67x00:
+    :param c67x00:
         *undescribed*
+    :type c67x00: struct c67x00_hcd \*
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`c67x00_parse_td`:
 
@@ -277,11 +297,13 @@ c67x00_parse_td
 
 .. c:function:: void c67x00_parse_td(struct c67x00_hcd *c67x00, struct c67x00_td *td)
 
-    :param struct c67x00_hcd \*c67x00:
+    :param c67x00:
         *undescribed*
+    :type c67x00: struct c67x00_hcd \*
 
-    :param struct c67x00_td \*td:
+    :param td:
         *undescribed*
+    :type td: struct c67x00_td \*
 
 .. _`c67x00_check_td_list`:
 
@@ -292,8 +314,9 @@ c67x00_check_td_list
 
     handle tds which have been processed by the c67x00
 
-    :param struct c67x00_hcd \*c67x00:
+    :param c67x00:
         *undescribed*
+    :type c67x00: struct c67x00_hcd \*
 
 .. _`c67x00_check_td_list.pre`:
 
@@ -309,11 +332,13 @@ c67x00_send_td
 
 .. c:function:: void c67x00_send_td(struct c67x00_hcd *c67x00, struct c67x00_td *td)
 
-    :param struct c67x00_hcd \*c67x00:
+    :param c67x00:
         *undescribed*
+    :type c67x00: struct c67x00_hcd \*
 
-    :param struct c67x00_td \*td:
+    :param td:
         *undescribed*
+    :type td: struct c67x00_td \*
 
 .. _`c67x00_do_work`:
 
@@ -324,8 +349,9 @@ c67x00_do_work
 
     Schedulers state machine
 
-    :param struct c67x00_hcd \*c67x00:
+    :param c67x00:
         *undescribed*
+    :type c67x00: struct c67x00_hcd \*
 
 .. This file was automatic generated / don't edit.
 

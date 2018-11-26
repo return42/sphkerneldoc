@@ -10,8 +10,9 @@ rmi_register_transport_device
 
     register a transport device connection on the RMI bus.  Transport drivers provide communication from the devices on a bus (such as SPI, I2C, and so on) to the RMI4 sensor.
 
-    :param struct rmi_transport_dev \*xport:
+    :param xport:
         the transport device to register
+    :type xport: struct rmi_transport_dev \*
 
 .. _`rmi_unregister_transport_device`:
 
@@ -22,8 +23,9 @@ rmi_unregister_transport_device
 
     unregister a transport device connection
 
-    :param struct rmi_transport_dev \*xport:
+    :param xport:
         the transport driver to unregister
+    :type xport: struct rmi_transport_dev \*
 
 .. _`__rmi_register_function_handler`:
 
@@ -34,14 +36,17 @@ rmi_unregister_transport_device
 
     register a handler for an RMI function
 
-    :param struct rmi_function_handler \*handler:
+    :param handler:
         RMI handler that should be registered.
+    :type handler: struct rmi_function_handler \*
 
-    :param struct module \*owner:
+    :param owner:
         *undescribed*
+    :type owner: struct module \*
 
-    :param const char \*mod_name:
+    :param mod_name:
         name of the module implementing the handler
+    :type mod_name: const char \*
 
 .. _`__rmi_register_function_handler.description`:
 
@@ -61,8 +66,9 @@ rmi_unregister_function_handler
 
     unregister given RMI function handler
 
-    :param struct rmi_function_handler \*handler:
+    :param handler:
         RMI handler that should be unregistered.
+    :type handler: struct rmi_function_handler \*
 
 .. _`rmi_unregister_function_handler.description`:
 

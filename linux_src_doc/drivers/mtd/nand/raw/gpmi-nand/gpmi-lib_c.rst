@@ -10,20 +10,25 @@ gpmi_copy_bits
 
     copy bits from one memory region to another
 
-    :param u8 \*dst:
+    :param dst:
         destination buffer
+    :type dst: u8 \*
 
-    :param size_t dst_bit_off:
+    :param dst_bit_off:
         bit offset we're starting to write at
+    :type dst_bit_off: size_t
 
-    :param const u8 \*src:
+    :param src:
         source buffer
+    :type src: const u8 \*
 
-    :param size_t src_bit_off:
+    :param src_bit_off:
         bit offset we're starting to read from
+    :type src_bit_off: size_t
 
-    :param size_t nbits:
+    :param nbits:
         number of bits to copy
+    :type nbits: size_t
 
 .. _`gpmi_copy_bits.description`:
 

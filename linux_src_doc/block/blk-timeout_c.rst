@@ -10,8 +10,9 @@ blk_abort_request
 
     - Request request recovery for the specified command
 
-    :param struct request \*req:
+    :param req:
         pointer to the request of interest
+    :type req: struct request \*
 
 .. _`blk_abort_request.description`:
 
@@ -32,8 +33,9 @@ blk_add_timer
 
     Start timeout timer for a single request
 
-    :param struct request \*req:
+    :param req:
         request that is about to start running.
+    :type req: struct request \*
 
 .. _`blk_add_timer.notes`:
 

@@ -10,8 +10,9 @@ tty_audit_buf_push
 
     Push buffered data out
 
-    :param struct tty_audit_buf \*buf:
+    :param buf:
         *undescribed*
+    :type buf: struct tty_audit_buf \*
 
 .. _`tty_audit_buf_push.description`:
 
@@ -19,7 +20,7 @@ Description
 -----------
 
 Generate an audit message from the contents of \ ``buf``\ , which is owned by
-the current task.  \ ``buf``\ ->mutex must be locked.
+the current task.  \ ``buf->mutex``\  must be locked.
 
 .. _`tty_audit_exit`:
 
@@ -30,8 +31,9 @@ tty_audit_exit
 
     Handle a task exit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tty_audit_exit.description`:
 
@@ -53,8 +55,9 @@ tty_audit_fork
 
     Copy TTY audit state for a new task
 
-    :param struct signal_struct \*sig:
+    :param sig:
         *undescribed*
+    :type sig: struct signal_struct \*
 
 .. _`tty_audit_fork.description`:
 
@@ -72,11 +75,13 @@ tty_audit_tiocsti
 
     Log TIOCSTI
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param char ch:
+    :param ch:
         *undescribed*
+    :type ch: char
 
 .. _`tty_audit_push`:
 
@@ -87,8 +92,9 @@ tty_audit_push
 
     Flush current's pending audit data
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tty_audit_push.description`:
 
@@ -106,8 +112,9 @@ tty_audit_buf_get
 
     Get an audit buffer.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tty_audit_buf_get.description`:
 
@@ -127,14 +134,17 @@ tty_audit_add_data
 
     Add data for TTY auditing.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param const void \*data:
+    :param data:
         *undescribed*
+    :type data: const void \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`tty_audit_add_data.description`:
 

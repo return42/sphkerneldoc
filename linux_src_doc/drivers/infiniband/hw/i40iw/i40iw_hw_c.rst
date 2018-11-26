@@ -10,8 +10,9 @@ i40iw_initialize_hw_resources
 
     initialize hw resource during open
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_cqp_ce_handler`:
 
@@ -22,14 +23,17 @@ i40iw_cqp_ce_handler
 
     handle cqp completions
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         cq for cqp completions
+    :type cq: struct i40iw_sc_cq \*
 
-    :param bool arm:
+    :param arm:
         flag to arm after completions
+    :type arm: bool
 
 .. _`i40iw_iwarp_ce_handler`:
 
@@ -40,11 +44,13 @@ i40iw_iwarp_ce_handler
 
     handle iwarp completions
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_sc_cq \*iwcq:
+    :param iwcq:
         *undescribed*
+    :type iwcq: struct i40iw_sc_cq \*
 
 .. _`i40iw_puda_ce_handler`:
 
@@ -55,11 +61,13 @@ i40iw_puda_ce_handler
 
     handle puda completion events
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         puda completion q for event
+    :type cq: struct i40iw_sc_cq \*
 
 .. _`i40iw_process_ceq`:
 
@@ -70,11 +78,13 @@ i40iw_process_ceq
 
     handle ceq for completions
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_ceq \*ceq:
+    :param ceq:
         ceq having cq for completion
+    :type ceq: struct i40iw_ceq \*
 
 .. _`i40iw_next_iw_state`:
 
@@ -85,20 +95,25 @@ i40iw_next_iw_state
 
     modify qp state
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         iwarp qp to modify
+    :type iwqp: struct i40iw_qp \*
 
-    :param u8 state:
+    :param state:
         next state for qp
+    :type state: u8
 
-    :param u8 del_hash:
+    :param del_hash:
         del hash
+    :type del_hash: u8
 
-    :param u8 term:
+    :param term:
         term message
+    :type term: u8
 
-    :param u8 termlen:
+    :param termlen:
         length of term message
+    :type termlen: u8
 
 .. _`i40iw_process_aeq`:
 
@@ -109,26 +124,51 @@ i40iw_process_aeq
 
     handle aeq events
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
+
+.. _`i40iw_cqp_manage_abvpt_cmd`:
+
+i40iw_cqp_manage_abvpt_cmd
+==========================
+
+.. c:function:: enum i40iw_status_code i40iw_cqp_manage_abvpt_cmd(struct i40iw_device *iwdev, u16 accel_local_port, bool add_port)
+
+    send cqp command manage abpvt
+
+    :param iwdev:
+        iwarp device
+    :type iwdev: struct i40iw_device \*
+
+    :param accel_local_port:
+        port for apbvt
+    :type accel_local_port: u16
+
+    :param add_port:
+        add or delete port
+    :type add_port: bool
 
 .. _`i40iw_manage_apbvt`:
 
 i40iw_manage_apbvt
 ==================
 
-.. c:function:: int i40iw_manage_apbvt(struct i40iw_device *iwdev, u16 accel_local_port, bool add_port)
+.. c:function:: enum i40iw_status_code i40iw_manage_apbvt(struct i40iw_device *iwdev, u16 accel_local_port, bool add_port)
 
     add or delete tcp port
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param u16 accel_local_port:
+    :param accel_local_port:
         port for apbvt
+    :type accel_local_port: u16
 
-    :param bool add_port:
+    :param add_port:
         add or delete port
+    :type add_port: bool
 
 .. _`i40iw_manage_arp_cache`:
 
@@ -139,20 +179,25 @@ i40iw_manage_arp_cache
 
     manage hw arp cache
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param unsigned char \*mac_addr:
+    :param mac_addr:
         mac address ptr
+    :type mac_addr: unsigned char \*
 
-    :param u32 \*ip_addr:
+    :param ip_addr:
         ip addr for arp cache
+    :type ip_addr: u32 \*
 
-    :param bool ipv4:
+    :param ipv4:
         *undescribed*
+    :type ipv4: bool
 
-    :param u32 action:
+    :param action:
         add, delete or modify
+    :type action: u32
 
 .. _`i40iw_send_syn_cqp_callback`:
 
@@ -163,11 +208,13 @@ i40iw_send_syn_cqp_callback
 
     do syn/ack after qhash
 
-    :param struct i40iw_cqp_request \*cqp_request:
+    :param cqp_request:
         qhash cqp completion
+    :type cqp_request: struct i40iw_cqp_request \*
 
-    :param u32 send_ack:
+    :param send_ack:
         flag send ack
+    :type send_ack: u32
 
 .. _`i40iw_manage_qhash`:
 
@@ -178,23 +225,29 @@ i40iw_manage_qhash
 
     add or modify qhash
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_cm_info \*cminfo:
+    :param cminfo:
         cm info for qhash
+    :type cminfo: struct i40iw_cm_info \*
 
-    :param enum i40iw_quad_entry_type etype:
+    :param etype:
         type (syn or quad)
+    :type etype: enum i40iw_quad_entry_type
 
-    :param enum i40iw_quad_hash_manage_type mtype:
+    :param mtype:
         type of qhash
+    :type mtype: enum i40iw_quad_hash_manage_type
 
-    :param void \*cmnode:
+    :param cmnode:
         cmnode associated with connection
+    :type cmnode: void \*
 
-    :param bool wait:
+    :param wait:
         wait for completion
+    :type wait: bool
 
 .. _`i40iw_hw_flush_wqes`:
 
@@ -205,17 +258,21 @@ i40iw_hw_flush_wqes
 
     flush qp's wqe
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         hardware control qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_qp_flush_info \*info:
+    :param info:
         info for flush
+    :type info: struct i40iw_qp_flush_info \*
 
-    :param bool wait:
+    :param wait:
         flag wait for completion
+    :type wait: bool
 
 .. _`i40iw_gen_ae`:
 
@@ -226,17 +283,21 @@ i40iw_gen_ae
 
     generate AE
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         qp associated with AE
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_gen_ae_info \*info:
+    :param info:
         info for ae
+    :type info: struct i40iw_gen_ae_info \*
 
-    :param bool wait:
+    :param wait:
         wait for completion
+    :type wait: bool
 
 .. _`i40iw_hw_manage_vf_pble_bp`:
 
@@ -247,14 +308,17 @@ i40iw_hw_manage_vf_pble_bp
 
     manage vf pbles
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_manage_vf_pble_info \*info:
+    :param info:
         info for managing pble
+    :type info: struct i40iw_manage_vf_pble_info \*
 
-    :param bool wait:
+    :param wait:
         flag wait for completion
+    :type wait: bool
 
 .. _`i40iw_get_ib_wc`:
 
@@ -265,8 +329,9 @@ i40iw_get_ib_wc
 
     return change flush code to IB's
 
-    :param enum i40iw_flush_opcode opcode:
+    :param opcode:
         iwarp flush code
+    :type opcode: enum i40iw_flush_opcode
 
 .. _`i40iw_set_flush_info`:
 
@@ -277,17 +342,21 @@ i40iw_set_flush_info
 
     set flush info
 
-    :param struct i40iw_qp_flush_info \*pinfo:
+    :param pinfo:
         set flush info
+    :type pinfo: struct i40iw_qp_flush_info \*
 
-    :param u16 \*min:
+    :param min:
         minor err
+    :type min: u16 \*
 
-    :param u16 \*maj:
+    :param maj:
         major err
+    :type maj: u16 \*
 
-    :param enum i40iw_flush_opcode opcode:
+    :param opcode:
         flush error code
+    :type opcode: enum i40iw_flush_opcode
 
 .. _`i40iw_flush_wqes`:
 
@@ -298,11 +367,13 @@ i40iw_flush_wqes
 
     flush wqe for qp
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_qp \*iwqp:
+    :param iwqp:
         qp to flush wqes
+    :type iwqp: struct i40iw_qp \*
 
 .. This file was automatic generated / don't edit.
 

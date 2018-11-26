@@ -10,8 +10,9 @@ st_lsm6dsx_read_fifo
 
     hw FIFO read routine
 
-    :param struct st_lsm6dsx_hw \*hw:
+    :param hw:
         Pointer to instance of struct st_lsm6dsx_hw.
+    :type hw: struct st_lsm6dsx_hw \*
 
 .. _`st_lsm6dsx_read_fifo.description`:
 
@@ -21,6 +22,33 @@ Description
 Read samples from the hw FIFO and push them to IIO buffers.
 
 .. _`st_lsm6dsx_read_fifo.return`:
+
+Return
+------
+
+Number of bytes read from the FIFO
+
+.. _`st_lsm6dsx_read_tagged_fifo`:
+
+st_lsm6dsx_read_tagged_fifo
+===========================
+
+.. c:function:: int st_lsm6dsx_read_tagged_fifo(struct st_lsm6dsx_hw *hw)
+
+    LSM6DSO read FIFO routine
+
+    :param hw:
+        Pointer to instance of struct st_lsm6dsx_hw.
+    :type hw: struct st_lsm6dsx_hw \*
+
+.. _`st_lsm6dsx_read_tagged_fifo.description`:
+
+Description
+-----------
+
+Read samples from the hw FIFO and push them to IIO buffers.
+
+.. _`st_lsm6dsx_read_tagged_fifo.return`:
 
 Return
 ------

@@ -10,12 +10,14 @@ devm_extcon_dev_allocate
 
     Allocate managed extcon device
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the extcon device being created
+    :type dev: struct device \*
 
-    :param const unsigned int \*supported_cable:
+    :param supported_cable:
         the array of the supported external connectors
         ending with EXTCON_NONE.
+    :type supported_cable: const unsigned int \*
 
 .. _`devm_extcon_dev_allocate.description`:
 
@@ -38,11 +40,13 @@ devm_extcon_dev_free
 
     Resource-managed \ :c:func:`extcon_dev_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the extcon device being created
+    :type dev: struct device \*
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device to be freed
+    :type edev: struct extcon_dev \*
 
 .. _`devm_extcon_dev_free.description`:
 
@@ -61,11 +65,13 @@ devm_extcon_dev_register
 
     Resource-managed \ :c:func:`extcon_dev_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the extcon device being created
+    :type dev: struct device \*
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device to be registered
+    :type edev: struct extcon_dev \*
 
 .. _`devm_extcon_dev_register.description`:
 
@@ -90,11 +96,13 @@ devm_extcon_dev_unregister
 
     Resource-managed \ :c:func:`extcon_dev_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the extcon device being created
+    :type dev: struct device \*
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device to unregistered
+    :type edev: struct extcon_dev \*
 
 .. _`devm_extcon_dev_unregister.description`:
 
@@ -113,17 +121,21 @@ devm_extcon_register_notifier
 
     Resource-managed \ :c:func:`extcon_register_notifier`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the extcon device being created
+    :type dev: struct device \*
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         the unique id among the extcon enumeration
+    :type id: unsigned int
 
-    :param struct notifier_block \*nb:
+    :param nb:
         a notifier block to be registered
+    :type nb: struct notifier_block \*
 
 .. _`devm_extcon_register_notifier.description`:
 
@@ -147,17 +159,21 @@ devm_extcon_unregister_notifier
 
 .. c:function:: void devm_extcon_unregister_notifier(struct device *dev, struct extcon_dev *edev, unsigned int id, struct notifier_block *nb)
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the extcon device being created
+    :type dev: struct device \*
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param unsigned int id:
+    :param id:
         the unique id among the extcon enumeration
+    :type id: unsigned int
 
-    :param struct notifier_block \*nb:
+    :param nb:
         a notifier block to be registered
+    :type nb: struct notifier_block \*
 
 .. _`devm_extcon_register_notifier_all`:
 
@@ -168,14 +184,17 @@ devm_extcon_register_notifier_all
 
     - Resource-managed \ :c:func:`extcon_register_notifier_all`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the extcon device being created
+    :type dev: struct device \*
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         a notifier block to be registered
+    :type nb: struct notifier_block \*
 
 .. _`devm_extcon_register_notifier_all.description`:
 
@@ -197,14 +216,17 @@ devm_extcon_unregister_notifier_all
 
     - Resource-managed \ :c:func:`extcon_unregister_notifier_all`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the extcon device being created
+    :type dev: struct device \*
 
-    :param struct extcon_dev \*edev:
+    :param edev:
         the extcon device
+    :type edev: struct extcon_dev \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         a notifier block to be registered
+    :type nb: struct notifier_block \*
 
 .. This file was automatic generated / don't edit.
 

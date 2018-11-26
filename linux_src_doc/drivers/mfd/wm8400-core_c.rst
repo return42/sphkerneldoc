@@ -10,8 +10,9 @@ wm8400_reset_codec_reg_cache
 
     Reset cached codec registers to their default values.
 
-    :param struct wm8400 \*wm8400:
+    :param wm8400:
         *undescribed*
+    :type wm8400: struct wm8400 \*
 
 .. This file was automatic generated / don't edit.
 

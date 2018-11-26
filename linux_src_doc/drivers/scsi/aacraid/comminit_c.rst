@@ -10,8 +10,9 @@ aac_send_shutdown
 
     shutdown an adapter
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter to shutdown
+    :type dev: struct aac_dev \*
 
 .. _`aac_send_shutdown.description`:
 
@@ -29,8 +30,9 @@ aac_comm_init
 
     Initialise FSA data structures
 
-    :param struct aac_dev \*dev:
+    :param dev:
         Adapter to initialise
+    :type dev: struct aac_dev \*
 
 .. _`aac_comm_init.description`:
 

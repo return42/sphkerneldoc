@@ -10,17 +10,21 @@ batadv_parse_throughput
 
     parse supplied string buffer to extract throughput information
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the soft interface net device
+    :type net_dev: struct net_device \*
 
-    :param char \*buff:
+    :param buff:
         string buffer to parse
+    :type buff: char \*
 
-    :param const char \*description:
+    :param description:
         text shown when throughput string cannot be parsed
+    :type description: const char \*
 
-    :param u32 \*throughput:
+    :param throughput:
         pointer holding the returned throughput information
+    :type throughput: u32 \*
 
 .. _`batadv_parse_throughput.return`:
 
@@ -38,17 +42,21 @@ batadv_parse_gw_bandwidth
 
     parse supplied string buffer to extract download and upload bandwidth information
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the soft interface net device
+    :type net_dev: struct net_device \*
 
-    :param char \*buff:
+    :param buff:
         string buffer to parse
+    :type buff: char \*
 
-    :param u32 \*down:
+    :param down:
         pointer holding the returned download bandwidth information
+    :type down: u32 \*
 
-    :param u32 \*up:
+    :param up:
         pointer holding the returned upload bandwidth information
+    :type up: u32 \*
 
 .. _`batadv_parse_gw_bandwidth.return`:
 
@@ -66,8 +74,9 @@ batadv_gw_tvlv_container_update
 
     update the gw tvlv container after gateway setting change
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_gw_bandwidth_set`:
 
@@ -78,14 +87,17 @@ batadv_gw_bandwidth_set
 
     Parse and set download/upload gateway bandwidth from supplied string buffer
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         netdev struct of the soft interface
+    :type net_dev: struct net_device \*
 
-    :param char \*buff:
+    :param buff:
         the buffer containing the user data
+    :type buff: char \*
 
-    :param size_t count:
+    :param count:
         number of bytes in the buffer
+    :type count: size_t
 
 .. _`batadv_gw_bandwidth_set.return`:
 
@@ -103,20 +115,25 @@ batadv_gw_tvlv_ogm_handler_v1
 
     process incoming gateway tvlv container
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig:
+    :param orig:
         the orig_node of the ogm
+    :type orig: struct batadv_orig_node \*
 
-    :param u8 flags:
+    :param flags:
         flags indicating the tvlv state (see batadv_tvlv_handler_flags)
+    :type flags: u8
 
-    :param void \*tvlv_value:
+    :param tvlv_value:
         tvlv buffer containing the gateway data
+    :type tvlv_value: void \*
 
-    :param u16 tvlv_value_len:
+    :param tvlv_value_len:
         tvlv buffer length
+    :type tvlv_value_len: u16
 
 .. _`batadv_gw_init`:
 
@@ -127,8 +144,9 @@ batadv_gw_init
 
     initialise the gateway handling internals
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_gw_free`:
 
@@ -139,8 +157,9 @@ batadv_gw_free
 
     free the gateway handling internals
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. This file was automatic generated / don't edit.
 

@@ -45,8 +45,9 @@ tb_scan_switch
 
     scan for and initialize downstream switches
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
 .. _`tb_scan_port`:
 
@@ -57,8 +58,9 @@ tb_scan_port
 
     check for and initialize switches below port
 
-    :param struct tb_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tb_port \*
 
 .. _`tb_free_invalid_tunnels`:
 
@@ -69,8 +71,9 @@ tb_free_invalid_tunnels
 
     destroy tunnels of devices that have gone away
 
-    :param struct tb \*tb:
+    :param tb:
         *undescribed*
+    :type tb: struct tb \*
 
 .. _`tb_free_unplugged_children`:
 
@@ -81,8 +84,9 @@ tb_free_unplugged_children
 
     traverse hierarchy and free unplugged switches
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
 .. _`tb_find_pci_up_port`:
 
@@ -93,8 +97,9 @@ tb_find_pci_up_port
 
     return the first PCIe up port on \ ``sw``\  or NULL
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
 .. _`tb_find_unused_down_port`:
 
@@ -105,8 +110,9 @@ tb_find_unused_down_port
 
     return the first inactive PCIe down port on \ ``sw``\ 
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
 .. _`tb_activate_pcie_devices`:
 
@@ -117,8 +123,9 @@ tb_activate_pcie_devices
 
     scan for and activate PCIe devices
 
-    :param struct tb \*tb:
+    :param tb:
         *undescribed*
+    :type tb: struct tb \*
 
 .. _`tb_activate_pcie_devices.description`:
 
@@ -137,8 +144,9 @@ tb_handle_hotplug
 
     handle hotplug event
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`tb_handle_hotplug.description`:
 
@@ -156,17 +164,21 @@ tb_handle_event
 
     callback function for the control channel
 
-    :param struct tb \*tb:
+    :param tb:
         *undescribed*
+    :type tb: struct tb \*
 
-    :param enum tb_cfg_pkg_type type:
+    :param type:
         *undescribed*
+    :type type: enum tb_cfg_pkg_type
 
-    :param const void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const void \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`tb_handle_event.description`:
 

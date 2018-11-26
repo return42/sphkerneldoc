@@ -41,11 +41,13 @@ queue_cmd_ring
 
     queue cmd to ring or internally
 
-    :param struct tcmu_cmd \*tcmu_cmd:
+    :param tcmu_cmd:
         cmd to queue
+    :type tcmu_cmd: struct tcmu_cmd \*
 
-    :param int \*scsi_err:
+    :param scsi_err:
         TCM error code if failure (-1) returned.
+    :type scsi_err: int \*
 
 .. _`queue_cmd_ring.return`:
 

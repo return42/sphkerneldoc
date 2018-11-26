@@ -10,11 +10,13 @@ async_schedule
 
     schedule a function for asynchronous execution
 
-    :param async_func_t func:
+    :param func:
         function to execute asynchronously
+    :type func: async_func_t
 
-    :param void \*data:
+    :param data:
         data pointer to pass to the function
+    :type data: void \*
 
 .. _`async_schedule.description`:
 
@@ -39,14 +41,17 @@ async_schedule_domain
 
     schedule a function for asynchronous execution within a certain domain
 
-    :param async_func_t func:
+    :param func:
         function to execute asynchronously
+    :type func: async_func_t
 
-    :param void \*data:
+    :param data:
         data pointer to pass to the function
+    :type data: void \*
 
-    :param struct async_domain \*domain:
+    :param domain:
         the domain
+    :type domain: struct async_domain \*
 
 .. _`async_schedule_domain.description`:
 
@@ -68,8 +73,9 @@ async_synchronize_full
 
     synchronize all asynchronous function calls
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`async_synchronize_full.description`:
 
@@ -87,8 +93,9 @@ async_unregister_domain
 
     ensure no more anonymous waiters on this domain
 
-    :param struct async_domain \*domain:
+    :param domain:
         idle domain to flush out of any async_synchronize_full instances
+    :type domain: struct async_domain \*
 
 .. _`async_unregister_domain.description`:
 
@@ -109,8 +116,9 @@ async_synchronize_full_domain
 
     synchronize all asynchronous function within a certain domain
 
-    :param struct async_domain \*domain:
+    :param domain:
         the domain to synchronize
+    :type domain: struct async_domain \*
 
 .. _`async_synchronize_full_domain.description`:
 
@@ -129,11 +137,13 @@ async_synchronize_cookie_domain
 
     synchronize asynchronous function calls within a certain domain with cookie checkpointing
 
-    :param async_cookie_t cookie:
+    :param cookie:
         async_cookie_t to use as checkpoint
+    :type cookie: async_cookie_t
 
-    :param struct async_domain \*domain:
+    :param domain:
         the domain to synchronize (%NULL for all registered domains)
+    :type domain: struct async_domain \*
 
 .. _`async_synchronize_cookie_domain.description`:
 
@@ -153,8 +163,9 @@ async_synchronize_cookie
 
     synchronize asynchronous function calls with cookie checkpointing
 
-    :param async_cookie_t cookie:
+    :param cookie:
         async_cookie_t to use as checkpoint
+    :type cookie: async_cookie_t
 
 .. _`async_synchronize_cookie.description`:
 
@@ -173,8 +184,9 @@ current_is_async
 
     is \ ``current``\  an async worker task?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`current_is_async.description`:
 

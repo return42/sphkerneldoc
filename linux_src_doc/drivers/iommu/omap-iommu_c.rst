@@ -10,8 +10,9 @@ to_omap_domain
 
     Get struct omap_iommu_domain from generic iommu_domain
 
-    :param struct iommu_domain \*dom:
+    :param dom:
         generic iommu domain handle
+    :type dom: struct iommu_domain \*
 
 .. _`omap_iommu_save_ctx`:
 
@@ -22,8 +23,9 @@ omap_iommu_save_ctx
 
     Save registers for pm off-mode support
 
-    :param struct device \*dev:
+    :param dev:
         client device
+    :type dev: struct device \*
 
 .. _`omap_iommu_restore_ctx`:
 
@@ -34,8 +36,9 @@ omap_iommu_restore_ctx
 
     Restore registers for pm off-mode support
 
-    :param struct device \*dev:
+    :param dev:
         client device
+    :type dev: struct device \*
 
 .. _`load_iotlb_entry`:
 
@@ -46,11 +49,13 @@ load_iotlb_entry
 
     Set an iommu tlb entry
 
-    :param struct omap_iommu \*obj:
+    :param obj:
         target iommu
+    :type obj: struct omap_iommu \*
 
-    :param struct iotlb_entry \*e:
+    :param e:
         an iommu tlb entry info
+    :type e: struct iotlb_entry \*
 
 .. _`flush_iotlb_page`:
 
@@ -61,11 +66,13 @@ flush_iotlb_page
 
     Clear an iommu tlb entry
 
-    :param struct omap_iommu \*obj:
+    :param obj:
         target iommu
+    :type obj: struct omap_iommu \*
 
-    :param u32 da:
+    :param da:
         iommu device virtual address
+    :type da: u32
 
 .. _`flush_iotlb_page.description`:
 
@@ -83,8 +90,9 @@ flush_iotlb_all
 
     Clear all iommu tlb entries
 
-    :param struct omap_iommu \*obj:
+    :param obj:
         target iommu
+    :type obj: struct omap_iommu \*
 
 .. _`omap_iopgtable_store_entry`:
 
@@ -95,11 +103,13 @@ omap_iopgtable_store_entry
 
     Make an iommu pte entry
 
-    :param struct omap_iommu \*obj:
+    :param obj:
         target iommu
+    :type obj: struct omap_iommu \*
 
-    :param struct iotlb_entry \*e:
+    :param e:
         an iommu tlb entry info
+    :type e: struct iotlb_entry \*
 
 .. _`iopgtable_lookup_entry`:
 
@@ -110,17 +120,21 @@ iopgtable_lookup_entry
 
     Lookup an iommu pte entry
 
-    :param struct omap_iommu \*obj:
+    :param obj:
         target iommu
+    :type obj: struct omap_iommu \*
 
-    :param u32 da:
+    :param da:
         iommu device virtual address
+    :type da: u32
 
-    :param u32 \*\*ppgd:
+    :param ppgd:
         iommu pgd entry pointer to be returned
+    :type ppgd: u32 \*\*
 
-    :param u32 \*\*ppte:
+    :param ppte:
         iommu pte entry pointer to be returned
+    :type ppte: u32 \*\*
 
 .. _`iopgtable_clear_entry`:
 
@@ -131,11 +145,13 @@ iopgtable_clear_entry
 
     Remove an iommu pte entry
 
-    :param struct omap_iommu \*obj:
+    :param obj:
         target iommu
+    :type obj: struct omap_iommu \*
 
-    :param u32 da:
+    :param da:
         iommu device virtual address
+    :type da: u32
 
 .. _`omap_iommu_attach`:
 
@@ -146,11 +162,13 @@ omap_iommu_attach
 
     attach iommu device to an iommu domain
 
-    :param struct omap_iommu \*obj:
+    :param obj:
         target omap iommu device
+    :type obj: struct omap_iommu \*
 
-    :param u32 \*iopgd:
+    :param iopgd:
         page table
+    :type iopgd: u32 \*
 
 .. _`omap_iommu_detach`:
 
@@ -161,8 +179,9 @@ omap_iommu_detach
 
     release iommu device
 
-    :param struct omap_iommu \*obj:
+    :param obj:
         target iommu
+    :type obj: struct omap_iommu \*
 
 .. This file was automatic generated / don't edit.
 

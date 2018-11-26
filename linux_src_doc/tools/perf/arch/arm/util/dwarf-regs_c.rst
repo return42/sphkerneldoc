@@ -10,8 +10,9 @@ get_arch_regstr
 
     lookup register name from it's DWARF register number
 
-    :param unsigned int n:
+    :param n:
         the DWARF register number
+    :type n: unsigned int
 
 .. _`get_arch_regstr.description`:
 

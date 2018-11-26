@@ -10,17 +10,21 @@ restrict_link_by_signature
 
     Restrict additions to a ring of public keys
 
-    :param struct key \*dest_keyring:
+    :param dest_keyring:
         Keyring being linked to.
+    :type dest_keyring: struct key \*
 
-    :param const struct key_type \*type:
+    :param type:
         The type of key being added.
+    :type type: const struct key_type \*
 
-    :param const union key_payload \*payload:
+    :param payload:
         The payload of the new key.
+    :type payload: const union key_payload \*
 
-    :param struct key \*trust_keyring:
+    :param trust_keyring:
         A ring of keys that can be used to vouch for the new cert.
+    :type trust_keyring: struct key \*
 
 .. _`restrict_link_by_signature.description`:
 
@@ -46,17 +50,21 @@ restrict_link_by_key_or_keyring
 
     Restrict additions to a ring of public keys using the restrict_key information stored in the ring.
 
-    :param struct key \*dest_keyring:
+    :param dest_keyring:
         Keyring being linked to.
+    :type dest_keyring: struct key \*
 
-    :param const struct key_type \*type:
+    :param type:
         The type of key being added.
+    :type type: const struct key_type \*
 
-    :param const union key_payload \*payload:
+    :param payload:
         The payload of the new key.
+    :type payload: const union key_payload \*
 
-    :param struct key \*trusted:
+    :param trusted:
         A key or ring of keys that can be used to vouch for the new cert.
+    :type trusted: struct key \*
 
 .. _`restrict_link_by_key_or_keyring.description`:
 
@@ -82,17 +90,21 @@ restrict_link_by_key_or_keyring_chain
 
     Restrict additions to a ring of public keys using the restrict_key information stored in the ring.
 
-    :param struct key \*dest_keyring:
+    :param dest_keyring:
         Keyring being linked to.
+    :type dest_keyring: struct key \*
 
-    :param const struct key_type \*type:
+    :param type:
         The type of key being added.
+    :type type: const struct key_type \*
 
-    :param const union key_payload \*payload:
+    :param payload:
         The payload of the new key.
+    :type payload: const union key_payload \*
 
-    :param struct key \*trusted:
+    :param trusted:
         A key or ring of keys that can be used to vouch for the new cert.
+    :type trusted: struct key \*
 
 .. _`restrict_link_by_key_or_keyring_chain.description`:
 

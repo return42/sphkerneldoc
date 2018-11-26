@@ -10,14 +10,17 @@ iscsi_prep_data_out_pdu
 
     initialize Data-Out
 
-    :param struct iscsi_task \*task:
+    :param task:
         scsi command task
+    :type task: struct iscsi_task \*
 
-    :param struct iscsi_r2t_info \*r2t:
+    :param r2t:
         R2T info
+    :type r2t: struct iscsi_r2t_info \*
 
-    :param struct iscsi_data \*hdr:
+    :param hdr:
         iscsi data in pdu
+    :type hdr: struct iscsi_data \*
 
 .. _`iscsi_prep_data_out_pdu.notes`:
 
@@ -38,11 +41,13 @@ iscsi_check_tmf_restrictions
 
     check if a task is affected by TMF
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task
+    :type task: struct iscsi_task \*
 
-    :param int opcode:
+    :param opcode:
         opcode to check for
+    :type opcode: int
 
 .. _`iscsi_check_tmf_restrictions.description`:
 
@@ -66,8 +71,9 @@ iscsi_prep_scsi_cmd_pdu
 
     prep iscsi scsi cmd pdu
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_prep_scsi_cmd_pdu.description`:
 
@@ -86,8 +92,9 @@ iscsi_free_task
 
     free a task
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi cmd task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_free_task.description`:
 
@@ -107,11 +114,13 @@ iscsi_complete_task
 
     finish a task
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi cmd task
+    :type task: struct iscsi_task \*
 
-    :param int state:
+    :param state:
         state to complete task with
+    :type state: int
 
 .. _`iscsi_complete_task.description`:
 
@@ -129,14 +138,17 @@ iscsi_complete_scsi_task
 
     finish scsi task normally
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task for scsi cmd
+    :type task: struct iscsi_task \*
 
-    :param uint32_t exp_cmdsn:
+    :param exp_cmdsn:
         expected cmd sn in cpu format
+    :type exp_cmdsn: uint32_t
 
-    :param uint32_t max_cmdsn:
+    :param max_cmdsn:
         max cmd sn in cpu format
+    :type max_cmdsn: uint32_t
 
 .. _`iscsi_complete_scsi_task.description`:
 
@@ -157,20 +169,25 @@ iscsi_scsi_cmd_rsp
 
     SCSI Command Response processing
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
-    :param struct iscsi_hdr \*hdr:
+    :param hdr:
         iscsi header
+    :type hdr: struct iscsi_hdr \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         scsi command task
+    :type task: struct iscsi_task \*
 
-    :param char \*data:
+    :param data:
         cmd data buffer
+    :type data: char \*
 
-    :param int datalen:
+    :param datalen:
         len of buffer
+    :type datalen: int
 
 .. _`iscsi_scsi_cmd_rsp.description`:
 
@@ -189,14 +206,17 @@ iscsi_data_in_rsp
 
     SCSI Data-In Response processing
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
-    :param struct iscsi_hdr \*hdr:
+    :param hdr:
         iscsi pdu
+    :type hdr: struct iscsi_hdr \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         scsi command task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_itt_to_task`:
 
@@ -207,11 +227,13 @@ iscsi_itt_to_task
 
     look up task by itt
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
-    :param itt_t itt:
+    :param itt:
         itt
+    :type itt: itt_t
 
 .. _`iscsi_itt_to_task.description`:
 
@@ -232,17 +254,21 @@ __iscsi_complete_pdu
 
     complete pdu
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi conn
+    :type conn: struct iscsi_conn \*
 
-    :param struct iscsi_hdr \*hdr:
+    :param hdr:
         iscsi header
+    :type hdr: struct iscsi_hdr \*
 
-    :param char \*data:
+    :param data:
         data buffer
+    :type data: char \*
 
-    :param int datalen:
+    :param datalen:
         len of data buffer
+    :type datalen: int
 
 .. _`__iscsi_complete_pdu.description`:
 
@@ -262,11 +288,13 @@ iscsi_itt_to_ctask
 
     look up ctask by itt
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
-    :param itt_t itt:
+    :param itt:
         itt
+    :type itt: itt_t
 
 .. _`iscsi_itt_to_ctask.description`:
 
@@ -286,8 +314,9 @@ iscsi_requeue_task
 
     requeue task to run from session workqueue
 
-    :param struct iscsi_task \*task:
+    :param task:
         task to requeue
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_requeue_task.description`:
 
@@ -307,8 +336,9 @@ iscsi_data_xmit
 
     xmit any command into the scheduled connection
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
 .. _`iscsi_data_xmit.notes`:
 
@@ -328,8 +358,9 @@ iscsi_suspend_queue
 
     suspend iscsi_queuecommand
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi conn to stop queueing IO on
+    :type conn: struct iscsi_conn \*
 
 .. _`iscsi_suspend_queue.description`:
 
@@ -352,8 +383,9 @@ iscsi_suspend_tx
 
     suspend iscsi_data_xmit
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi conn tp stop processing IO on.
+    :type conn: struct iscsi_conn \*
 
 .. _`iscsi_suspend_tx.description`:
 
@@ -373,8 +405,9 @@ iscsi_eh_session_reset
 
     drop session and attempt relogin
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         scsi command
+    :type sc: struct scsi_cmnd \*
 
 .. _`iscsi_eh_session_reset.description`:
 
@@ -393,8 +426,9 @@ iscsi_eh_target_reset
 
     reset target
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         scsi command
+    :type sc: struct scsi_cmnd \*
 
 .. _`iscsi_eh_target_reset.description`:
 
@@ -412,8 +446,9 @@ iscsi_eh_recover_target
 
     reset target and possibly the session
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         scsi command
+    :type sc: struct scsi_cmnd \*
 
 .. _`iscsi_eh_recover_target.description`:
 
@@ -432,11 +467,13 @@ iscsi_host_add
 
     add host to system
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host
+    :type shost: struct Scsi_Host \*
 
-    :param struct device \*pdev:
+    :param pdev:
         parent device
+    :type pdev: struct device \*
 
 .. _`iscsi_host_add.description`:
 
@@ -455,14 +492,17 @@ iscsi_host_alloc
 
     allocate a host and driver data
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         scsi host template
+    :type sht: struct scsi_host_template \*
 
-    :param int dd_data_size:
+    :param dd_data_size:
         driver host data size
+    :type dd_data_size: int
 
-    :param bool xmit_can_sleep:
+    :param xmit_can_sleep:
         bool indicating if LLD will queue IO from a work queue
+    :type xmit_can_sleep: bool
 
 .. _`iscsi_host_alloc.description`:
 
@@ -481,8 +521,9 @@ iscsi_host_remove
 
     remove host and sessions
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host
+    :type shost: struct Scsi_Host \*
 
 .. _`iscsi_host_remove.description`:
 
@@ -501,26 +542,33 @@ iscsi_session_setup
 
     create iscsi cls session and host and session
 
-    :param struct iscsi_transport \*iscsit:
+    :param iscsit:
         iscsi transport template
+    :type iscsit: struct iscsi_transport \*
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host
+    :type shost: struct Scsi_Host \*
 
-    :param uint16_t cmds_max:
+    :param cmds_max:
         session can queue
+    :type cmds_max: uint16_t
 
-    :param int dd_size:
+    :param dd_size:
         private driver data size, added to session allocation size
+    :type dd_size: int
 
-    :param int cmd_task_size:
+    :param cmd_task_size:
         LLD task private data size
+    :type cmd_task_size: int
 
-    :param uint32_t initial_cmdsn:
+    :param initial_cmdsn:
         initial CmdSN
+    :type initial_cmdsn: uint32_t
 
-    :param unsigned int id:
+    :param id:
         target ID to add to this session
+    :type id: unsigned int
 
 .. _`iscsi_session_setup.description`:
 
@@ -543,8 +591,9 @@ iscsi_session_teardown
 
     destroy session, host, and cls_session
 
-    :param struct iscsi_cls_session \*cls_session:
+    :param cls_session:
         iscsi session
+    :type cls_session: struct iscsi_cls_session \*
 
 .. _`iscsi_conn_setup`:
 
@@ -555,14 +604,17 @@ iscsi_conn_setup
 
     create iscsi_cls_conn and iscsi_conn
 
-    :param struct iscsi_cls_session \*cls_session:
+    :param cls_session:
         iscsi_cls_session
+    :type cls_session: struct iscsi_cls_session \*
 
-    :param int dd_size:
+    :param dd_size:
         private driver data size
+    :type dd_size: int
 
-    :param uint32_t conn_idx:
+    :param conn_idx:
         cid
+    :type conn_idx: uint32_t
 
 .. _`iscsi_conn_teardown`:
 
@@ -573,8 +625,9 @@ iscsi_conn_teardown
 
     teardown iscsi connection
 
-    :param struct iscsi_cls_conn \*cls_conn:
+    :param cls_conn:
         iscsi class connection
+    :type cls_conn: struct iscsi_cls_conn \*
 
 .. _`iscsi_conn_teardown.description`:
 

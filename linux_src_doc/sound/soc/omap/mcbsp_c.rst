@@ -10,11 +10,13 @@ omap_mcbsp_dma_reg_params
 
     returns the address of mcbsp data register \ ``id``\  - mcbsp id \ ``stream``\  - indicates the direction of data flow (rx or tx)
 
-    :param struct omap_mcbsp \*mcbsp:
+    :param mcbsp:
         *undescribed*
+    :type mcbsp: struct omap_mcbsp \*
 
-    :param unsigned int stream:
+    :param stream:
         *undescribed*
+    :type stream: unsigned int
 
 .. _`omap_mcbsp_dma_reg_params.description`:
 

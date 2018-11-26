@@ -10,17 +10,21 @@ rt5677_dsp_mode_i2c_write_addr
 
     Write value to address on DSP mode.
 
-    :param struct rt5677_priv \*rt5677:
+    :param rt5677:
         Private Data.
+    :type rt5677: struct rt5677_priv \*
 
-    :param unsigned int addr:
+    :param addr:
         Address index.
+    :type addr: unsigned int
 
-    :param unsigned int value:
+    :param value:
         Address data.
+    :type value: unsigned int
 
-    :param unsigned int opcode:
+    :param opcode:
         *undescribed*
+    :type opcode: unsigned int
 
 .. _`rt5677_dsp_mode_i2c_write_addr.description`:
 
@@ -39,14 +43,17 @@ rt5677_dsp_mode_i2c_read_addr
 
     Read value from address on DSP mode.
 
-    :param struct rt5677_priv \*rt5677:
+    :param rt5677:
         *undescribed*
+    :type rt5677: struct rt5677_priv \*
 
-    :param unsigned int addr:
+    :param addr:
         Address index.
+    :type addr: unsigned int
 
-    :param unsigned int \*value:
+    :param value:
         Address data.
+    :type value: unsigned int \*
 
 .. _`rt5677_dsp_mode_i2c_read_addr.rt5677`:
 
@@ -72,14 +79,17 @@ rt5677_dsp_mode_i2c_write
 
     Write register on DSP mode.
 
-    :param struct rt5677_priv \*rt5677:
+    :param rt5677:
         *undescribed*
+    :type rt5677: struct rt5677_priv \*
 
-    :param unsigned int reg:
+    :param reg:
         Register index.
+    :type reg: unsigned int
 
-    :param unsigned int value:
+    :param value:
         Register data.
+    :type value: unsigned int
 
 .. _`rt5677_dsp_mode_i2c_write.rt5677`:
 
@@ -105,14 +115,17 @@ rt5677_dsp_mode_i2c_read
 
     Read register on DSP mode.
 
-    :param struct rt5677_priv \*rt5677:
+    :param rt5677:
         *undescribed*
+    :type rt5677: struct rt5677_priv \*
 
-    :param unsigned int reg:
+    :param reg:
         Register index.
+    :type reg: unsigned int
 
-    :param unsigned int \*value:
+    :param value:
         Register data.
+    :type value: unsigned int \*
 
 .. _`rt5677_dsp_mode_i2c_read.description`:
 
@@ -131,14 +144,17 @@ set_dmic_clk
 
     Set parameter of dmic.
 
-    :param struct snd_soc_dapm_widget \*w:
+    :param w:
         DAPM widget.
+    :type w: struct snd_soc_dapm_widget \*
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The kcontrol of this widget.
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param int event:
+    :param event:
         Event id.
+    :type event: int
 
 .. _`set_dmic_clk.description`:
 
@@ -157,14 +173,17 @@ rt5677_sel_asrc_clk_src
 
     select ASRC clock source for a set of filters
 
-    :param struct snd_soc_component \*component:
+    :param component:
         SoC audio component device.
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int filter_mask:
+    :param filter_mask:
         mask of filters.
+    :type filter_mask: unsigned int
 
-    :param unsigned int clk_src:
+    :param clk_src:
         clock source
+    :type clk_src: unsigned int
 
 .. _`rt5677_sel_asrc_clk_src.description`:
 
@@ -188,14 +207,17 @@ rt5677_pll_calc
 
     Calcualte PLL M/N/K code.
 
-    :param const unsigned int freq_in:
+    :param freq_in:
         external clock provided to codec.
+    :type freq_in: const unsigned int
 
-    :param const unsigned int freq_out:
+    :param freq_out:
         target clock which codec works on.
+    :type freq_out: const unsigned int
 
-    :param struct rl6231_pll_code \*pll_code:
+    :param pll_code:
         Pointer to structure with M, N, K, bypass K and bypass M flag.
+    :type pll_code: struct rl6231_pll_code \*
 
 .. _`rt5677_pll_calc.description`:
 

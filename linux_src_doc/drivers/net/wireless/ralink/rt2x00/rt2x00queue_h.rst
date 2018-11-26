@@ -195,12 +195,13 @@ this structure should not exceed the size of that array (40 bytes).
 get_skb_frame_desc
 ==================
 
-.. c:function:: struct skb_frame_desc*get_skb_frame_desc(struct sk_buff *skb)
+.. c:function:: struct skb_frame_desc* get_skb_frame_desc(struct sk_buff *skb)
 
     Obtain the rt2x00 frame descriptor from a sk_buff.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         \ :c:type:`struct sk_buff <sk_buff>`\  from where we obtain the \ :c:type:`struct skb_frame_desc <skb_frame_desc>`\ 
+    :type skb: struct sk_buff \*
 
 .. _`rxdone_entry_desc_flags`:
 
@@ -958,8 +959,9 @@ queue_end
 
     Return pointer to the last queue (HELPER MACRO).
 
-    :param  __dev:
+    :param __dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type __dev: 
 
 .. _`queue_end.description`:
 
@@ -979,8 +981,9 @@ tx_queue_end
 
     Return pointer to the last TX queue (HELPER MACRO).
 
-    :param  __dev:
+    :param __dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type __dev: 
 
 .. _`tx_queue_end.description`:
 
@@ -1000,8 +1003,9 @@ queue_next
 
     Return pointer to next queue in list (HELPER MACRO).
 
-    :param  __queue:
+    :param __queue:
         Current queue for which we need the next queue
+    :type __queue: 
 
 .. _`queue_next.description`:
 
@@ -1023,14 +1027,17 @@ queue_loop
 
     Loop through the queues within a specific range (HELPER MACRO).
 
-    :param  __entry:
+    :param __entry:
         Pointer where the current queue entry will be stored in.
+    :type __entry: 
 
-    :param  __start:
+    :param __start:
         Start queue pointer.
+    :type __start: 
 
-    :param  __end:
+    :param __end:
         End queue pointer.
+    :type __end: 
 
 .. _`queue_loop.description`:
 
@@ -1048,11 +1055,13 @@ queue_for_each
 
     Loop through all queues
 
-    :param  __dev:
+    :param __dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type __dev: 
 
-    :param  __entry:
+    :param __entry:
         Pointer where the current queue entry will be stored in.
+    :type __entry: 
 
 .. _`queue_for_each.description`:
 
@@ -1070,11 +1079,13 @@ tx_queue_for_each
 
     Loop through the TX queues
 
-    :param  __dev:
+    :param __dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type __dev: 
 
-    :param  __entry:
+    :param __entry:
         Pointer where the current queue entry will be stored in.
+    :type __entry: 
 
 .. _`tx_queue_for_each.description`:
 
@@ -1093,11 +1104,13 @@ txall_queue_for_each
 
     Loop through all TX related queues
 
-    :param  __dev:
+    :param __dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type __dev: 
 
-    :param  __entry:
+    :param __entry:
         Pointer where the current queue entry will be stored in.
+    :type __entry: 
 
 .. _`txall_queue_for_each.description`:
 
@@ -1116,17 +1129,21 @@ rt2x00queue_for_each_entry
 
     Loop through all entries in the queue
 
-    :param struct data_queue \*queue:
+    :param queue:
         Pointer to \ ``data_queue``\ 
+    :type queue: struct data_queue \*
 
-    :param enum queue_index start:
+    :param start:
         \ :c:type:`enum queue_index <queue_index>`\  Pointer to start index
+    :type start: enum queue_index
 
-    :param enum queue_index end:
+    :param end:
         \ :c:type:`enum queue_index <queue_index>`\  Pointer to end index
+    :type end: enum queue_index
 
-    :param void \*data:
+    :param data:
         Data to pass to the callback function
+    :type data: void \*
 
     :param bool (\*fn)(struct queue_entry \*entry, void \*data):
         The function to call for each \ :c:type:`struct queue_entry <queue_entry>`\ 
@@ -1152,8 +1169,9 @@ rt2x00queue_empty
 
     Check if the queue is empty.
 
-    :param struct data_queue \*queue:
+    :param queue:
         Queue to check if empty.
+    :type queue: struct data_queue \*
 
 .. _`rt2x00queue_full`:
 
@@ -1164,8 +1182,9 @@ rt2x00queue_full
 
     Check if the queue is full.
 
-    :param struct data_queue \*queue:
+    :param queue:
         Queue to check if full.
+    :type queue: struct data_queue \*
 
 .. _`rt2x00queue_available`:
 
@@ -1176,8 +1195,9 @@ rt2x00queue_available
 
     Check the number of available entries in queue.
 
-    :param struct data_queue \*queue:
+    :param queue:
         Queue to check.
+    :type queue: struct data_queue \*
 
 .. _`rt2x00queue_threshold`:
 
@@ -1188,8 +1208,9 @@ rt2x00queue_threshold
 
     Check if the queue is below threshold
 
-    :param struct data_queue \*queue:
+    :param queue:
         Queue to check.
+    :type queue: struct data_queue \*
 
 .. _`rt2x00queue_dma_timeout`:
 
@@ -1200,8 +1221,9 @@ rt2x00queue_dma_timeout
 
     Check if a timeout occurred for DMA transfers
 
-    :param struct queue_entry \*entry:
+    :param entry:
         Queue entry to check.
+    :type entry: struct queue_entry \*
 
 .. _`_rt2x00_desc_read`:
 
@@ -1212,11 +1234,13 @@ rt2x00queue_dma_timeout
 
     Read a word from the hardware descriptor.
 
-    :param __le32 \*desc:
+    :param desc:
         Base descriptor address
+    :type desc: __le32 \*
 
-    :param const u8 word:
+    :param word:
         Word index from where the descriptor should be read.
+    :type word: const u8
 
 .. _`rt2x00_desc_read`:
 
@@ -1227,11 +1251,13 @@ rt2x00_desc_read
 
     Read a word from the hardware descriptor, this function will take care of the byte ordering.
 
-    :param __le32 \*desc:
+    :param desc:
         Base descriptor address
+    :type desc: __le32 \*
 
-    :param const u8 word:
+    :param word:
         Word index from where the descriptor should be read.
+    :type word: const u8
 
 .. _`_rt2x00_desc_write`:
 
@@ -1242,14 +1268,17 @@ rt2x00_desc_read
 
     write a word to the hardware descriptor, this function will take care of the byte ordering.
 
-    :param __le32 \*desc:
+    :param desc:
         Base descriptor address
+    :type desc: __le32 \*
 
-    :param const u8 word:
+    :param word:
         Word index from where the descriptor should be written.
+    :type word: const u8
 
-    :param __le32 value:
+    :param value:
         Value that should be written into the descriptor.
+    :type value: __le32
 
 .. _`rt2x00_desc_write`:
 
@@ -1260,14 +1289,17 @@ rt2x00_desc_write
 
     write a word to the hardware descriptor.
 
-    :param __le32 \*desc:
+    :param desc:
         Base descriptor address
+    :type desc: __le32 \*
 
-    :param const u8 word:
+    :param word:
         Word index from where the descriptor should be written.
+    :type word: const u8
 
-    :param u32 value:
+    :param value:
         Value that should be written into the descriptor.
+    :type value: u32
 
 .. This file was automatic generated / don't edit.
 

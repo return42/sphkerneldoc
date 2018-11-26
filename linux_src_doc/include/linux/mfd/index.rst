@@ -8,6 +8,7 @@ mfd
     :maxdepth: 1
 
     abx500/index
+    madera/index
     samsung/index
     syscon/index
     ab3100_h
@@ -15,9 +16,8 @@ mfd
     altera-a10sr_h
     axp20x_h
     bd9571mwv_h
+    cros_ec_commands_h
     cros_ec_h
-    cros_ec_lpc_mec_h
-    cros_ec_lpc_reg_h
     db8500-prcmu_h
     dbx500-prcmu_h
     dln2_h

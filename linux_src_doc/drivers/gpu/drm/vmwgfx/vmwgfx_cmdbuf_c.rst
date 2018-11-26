@@ -335,11 +335,13 @@ vmw_cmdbuf_cur_lock
 
     Helper to lock the cur_mutex.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The range manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param bool interruptible:
+    :param interruptible:
         Whether to wait interruptible when locking.
+    :type interruptible: bool
 
 .. _`vmw_cmdbuf_cur_unlock`:
 
@@ -350,8 +352,9 @@ vmw_cmdbuf_cur_unlock
 
     Helper to unlock the cur_mutex.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The range manager.
+    :type man: struct vmw_cmdbuf_man \*
 
 .. _`vmw_cmdbuf_header_inline_free`:
 
@@ -362,8 +365,9 @@ vmw_cmdbuf_header_inline_free
 
     Free a struct vmw_cmdbuf_header that has been used for the device context with inline command buffers. Need not be called locked.
 
-    :param struct vmw_cmdbuf_header \*header:
+    :param header:
         Pointer to the header to free.
+    :type header: struct vmw_cmdbuf_header \*
 
 .. _`__vmw_cmdbuf_header_free`:
 
@@ -374,8 +378,9 @@ vmw_cmdbuf_header_inline_free
 
     Free a struct vmw_cmdbuf_header  and its associated structures.
 
-    :param struct vmw_cmdbuf_header \*header:
+    :param header:
         *undescribed*
+    :type header: struct vmw_cmdbuf_header \*
 
 .. _`__vmw_cmdbuf_header_free.header`:
 
@@ -395,8 +400,9 @@ vmw_cmdbuf_header_free
 
     Free a struct vmw_cmdbuf_header  and its associated structures.
 
-    :param struct vmw_cmdbuf_header \*header:
+    :param header:
         Pointer to the header to free.
+    :type header: struct vmw_cmdbuf_header \*
 
 .. _`vmw_cmdbuf_header_submit`:
 
@@ -407,8 +413,9 @@ vmw_cmdbuf_header_submit
 
     Submit a command buffer to hardware.
 
-    :param struct vmw_cmdbuf_header \*header:
+    :param header:
         The header of the buffer to submit.
+    :type header: struct vmw_cmdbuf_header \*
 
 .. _`vmw_cmdbuf_ctx_init`:
 
@@ -419,8 +426,9 @@ vmw_cmdbuf_ctx_init
 
     Initialize a command buffer context.
 
-    :param struct vmw_cmdbuf_context \*ctx:
+    :param ctx:
         The command buffer context to initialize
+    :type ctx: struct vmw_cmdbuf_context \*
 
 .. _`vmw_cmdbuf_ctx_submit`:
 
@@ -431,11 +439,13 @@ vmw_cmdbuf_ctx_submit
 
     Submit command buffers from a command buffer context.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param struct vmw_cmdbuf_context \*ctx:
+    :param ctx:
         The command buffer context.
+    :type ctx: struct vmw_cmdbuf_context \*
 
 .. _`vmw_cmdbuf_ctx_submit.description`:
 
@@ -454,14 +464,17 @@ vmw_cmdbuf_ctx_process
 
     Process a command buffer context.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param struct vmw_cmdbuf_context \*ctx:
+    :param ctx:
         The command buffer context.
+    :type ctx: struct vmw_cmdbuf_context \*
 
-    :param int \*notempty:
+    :param notempty:
         *undescribed*
+    :type notempty: int \*
 
 .. _`vmw_cmdbuf_ctx_process.description`:
 
@@ -481,8 +494,9 @@ vmw_cmdbuf_man_process
 
     Process all command buffer contexts and switch on and off irqs as appropriate.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
 .. _`vmw_cmdbuf_man_process.description`:
 
@@ -502,14 +516,17 @@ vmw_cmdbuf_ctx_add
 
     Schedule a command buffer for submission on a command buffer context
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param struct vmw_cmdbuf_header \*header:
+    :param header:
         The header of the buffer to submit.
+    :type header: struct vmw_cmdbuf_header \*
 
-    :param SVGACBContext cb_context:
+    :param cb_context:
         The command buffer context to use.
+    :type cb_context: SVGACBContext
 
 .. _`vmw_cmdbuf_ctx_add.description`:
 
@@ -519,7 +536,7 @@ Description
 This function adds \ ``header``\  to the "submitted" queue of the command
 buffer context identified by \ ``cb_context``\ . It then calls the command buffer
 manager processing to potentially submit the buffer to hardware.
-\ ``man``\ ->lock needs to be held when calling this function.
+\ ``man->lock``\  needs to be held when calling this function.
 
 .. _`vmw_cmdbuf_irqthread`:
 
@@ -530,8 +547,9 @@ vmw_cmdbuf_irqthread
 
     The main part of the command buffer interrupt handler implemented as a threaded irq task.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         Pointer to the command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
 .. _`vmw_cmdbuf_irqthread.description`:
 
@@ -551,8 +569,9 @@ vmw_cmdbuf_work_func
 
     The deferred work function that handles command buffer errors.
 
-    :param struct work_struct \*work:
+    :param work:
         The work func closure argument.
+    :type work: struct work_struct \*
 
 .. _`vmw_cmdbuf_work_func.description`:
 
@@ -571,11 +590,13 @@ vmw_cmdbuf_man_idle
 
     Check whether the command buffer manager is idle.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param bool check_preempted:
+    :param check_preempted:
         Check also the preempted queue for pending command buffers.
+    :type check_preempted: bool
 
 .. _`__vmw_cmdbuf_cur_flush`:
 
@@ -586,8 +607,9 @@ vmw_cmdbuf_man_idle
 
     Flush the current command buffer for small kernel command submissions
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
 .. _`__vmw_cmdbuf_cur_flush.description`:
 
@@ -595,7 +617,7 @@ Description
 -----------
 
 Flushes the current command buffer without allocating a new one. A new one
-is automatically allocated when needed. Call with \ ``man``\ ->cur_mutex held.
+is automatically allocated when needed. Call with \ ``man->cur_mutex``\  held.
 
 .. _`vmw_cmdbuf_cur_flush`:
 
@@ -606,11 +628,13 @@ vmw_cmdbuf_cur_flush
 
     Flush the current command buffer for small kernel command submissions
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param bool interruptible:
+    :param interruptible:
         Whether to sleep interruptible when sleeping.
+    :type interruptible: bool
 
 .. _`vmw_cmdbuf_cur_flush.description`:
 
@@ -629,14 +653,17 @@ vmw_cmdbuf_idle
 
     Wait for command buffer manager idle.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param bool interruptible:
+    :param interruptible:
         Sleep interruptible while waiting.
+    :type interruptible: bool
 
-    :param unsigned long timeout:
+    :param timeout:
         Time out after this many ticks.
+    :type timeout: unsigned long
 
 .. _`vmw_cmdbuf_idle.description`:
 
@@ -656,12 +683,14 @@ vmw_cmdbuf_try_alloc
 
     Try to allocate buffer space from the main pool.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param struct vmw_cmdbuf_alloc_info \*info:
+    :param info:
         Allocation info. Will hold the size on entry and allocated mm node
         on successful return.
+    :type info: struct vmw_cmdbuf_alloc_info \*
 
 .. _`vmw_cmdbuf_try_alloc.description`:
 
@@ -669,7 +698,7 @@ Description
 -----------
 
 Try to allocate buffer space from the main pool. Returns true if succeeded.
-If a fatal error was hit, the error code is returned in \ ``info``\ ->ret.
+If a fatal error was hit, the error code is returned in \ ``info->ret``\ .
 
 .. _`vmw_cmdbuf_alloc_space`:
 
@@ -680,17 +709,21 @@ vmw_cmdbuf_alloc_space
 
     Allocate buffer space from the main pool.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param struct drm_mm_node \*node:
+    :param node:
         Pointer to pre-allocated range-manager node.
+    :type node: struct drm_mm_node \*
 
-    :param size_t size:
+    :param size:
         The size of the allocation.
+    :type size: size_t
 
-    :param bool interruptible:
+    :param interruptible:
         Whether to sleep interruptible while waiting for space.
+    :type interruptible: bool
 
 .. _`vmw_cmdbuf_alloc_space.description`:
 
@@ -710,17 +743,21 @@ vmw_cmdbuf_space_pool
 
     Set up a command buffer header with command buffer space from the main pool.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param struct vmw_cmdbuf_header \*header:
+    :param header:
         Pointer to the header to set up.
+    :type header: struct vmw_cmdbuf_header \*
 
-    :param size_t size:
+    :param size:
         The requested size of the buffer space.
+    :type size: size_t
 
-    :param bool interruptible:
+    :param interruptible:
         Whether to sleep interruptible while waiting for space.
+    :type interruptible: bool
 
 .. _`vmw_cmdbuf_space_inline`:
 
@@ -731,14 +768,17 @@ vmw_cmdbuf_space_inline
 
     Set up a command buffer header with inline command buffer space.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param struct vmw_cmdbuf_header \*header:
+    :param header:
         Pointer to the header to set up.
+    :type header: struct vmw_cmdbuf_header \*
 
-    :param int size:
+    :param size:
         The requested size of the buffer space.
+    :type size: int
 
 .. _`vmw_cmdbuf_alloc`:
 
@@ -749,17 +789,21 @@ vmw_cmdbuf_alloc
 
     Allocate a command buffer header complete with command buffer space.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param size_t size:
+    :param size:
         The requested size of the buffer space.
+    :type size: size_t
 
-    :param bool interruptible:
+    :param interruptible:
         Whether to sleep interruptible while waiting for space.
+    :type interruptible: bool
 
-    :param struct vmw_cmdbuf_header \*\*p_header:
+    :param p_header:
         points to a header pointer to populate on successful return.
+    :type p_header: struct vmw_cmdbuf_header \*\*
 
 .. _`vmw_cmdbuf_alloc.description`:
 
@@ -779,17 +823,21 @@ vmw_cmdbuf_reserve_cur
 
     Reserve space for commands in the current command buffer.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param size_t size:
+    :param size:
         The requested size of the commands.
+    :type size: size_t
 
-    :param int ctx_id:
+    :param ctx_id:
         The context id if any. Otherwise set to SVGA3D_REG_INVALID.
+    :type ctx_id: int
 
-    :param bool interruptible:
+    :param interruptible:
         Whether to sleep interruptible while waiting for space.
+    :type interruptible: bool
 
 .. _`vmw_cmdbuf_reserve_cur.description`:
 
@@ -808,14 +856,17 @@ vmw_cmdbuf_commit_cur
 
     Commit commands in the current command buffer.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param size_t size:
+    :param size:
         The size of the commands actually written.
+    :type size: size_t
 
-    :param bool flush:
+    :param flush:
         Whether to flush the command buffer immediately.
+    :type flush: bool
 
 .. _`vmw_cmdbuf_reserve`:
 
@@ -826,21 +877,26 @@ vmw_cmdbuf_reserve
 
     Reserve space for commands in a command buffer.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param size_t size:
+    :param size:
         The requested size of the commands.
+    :type size: size_t
 
-    :param int ctx_id:
+    :param ctx_id:
         The context id if any. Otherwise set to SVGA3D_REG_INVALID.
+    :type ctx_id: int
 
-    :param bool interruptible:
+    :param interruptible:
         Whether to sleep interruptible while waiting for space.
+    :type interruptible: bool
 
-    :param struct vmw_cmdbuf_header \*header:
+    :param header:
         Header of the command buffer. NULL if the current command buffer
         should be used.
+    :type header: struct vmw_cmdbuf_header \*
 
 .. _`vmw_cmdbuf_reserve.description`:
 
@@ -859,18 +915,22 @@ vmw_cmdbuf_commit
 
     Commit commands in a command buffer.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param size_t size:
+    :param size:
         The size of the commands actually written.
+    :type size: size_t
 
-    :param struct vmw_cmdbuf_header \*header:
+    :param header:
         Header of the command buffer. NULL if the current command buffer
         should be used.
+    :type header: struct vmw_cmdbuf_header \*
 
-    :param bool flush:
+    :param flush:
         Whether to flush the command buffer immediately.
+    :type flush: bool
 
 .. _`vmw_cmdbuf_send_device_command`:
 
@@ -881,14 +941,17 @@ vmw_cmdbuf_send_device_command
 
     Send a command through the device context.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param const void \*command:
+    :param command:
         Pointer to the command to send.
+    :type command: const void \*
 
-    :param size_t size:
+    :param size:
         Size of the command.
+    :type size: size_t
 
 .. _`vmw_cmdbuf_send_device_command.description`:
 
@@ -906,11 +969,13 @@ vmw_cmdbuf_preempt
 
     Send a preempt command through the device context.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param u32 context:
+    :param context:
         *undescribed*
+    :type context: u32
 
 .. _`vmw_cmdbuf_preempt.description`:
 
@@ -928,14 +993,17 @@ vmw_cmdbuf_startstop
 
     Send a start / stop command through the device context.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param u32 context:
+    :param context:
         *undescribed*
+    :type context: u32
 
-    :param bool enable:
+    :param enable:
         Whether to enable or disable the context.
+    :type enable: bool
 
 .. _`vmw_cmdbuf_startstop.description`:
 
@@ -953,15 +1021,18 @@ vmw_cmdbuf_set_pool_size
 
     Set command buffer manager sizes
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         The command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
-    :param size_t size:
+    :param size:
         The size of the main space pool.
+    :type size: size_t
 
-    :param size_t default_size:
+    :param default_size:
         The default size of the command buffer for small kernel
         submissions.
+    :type default_size: size_t
 
 .. _`vmw_cmdbuf_set_pool_size.description`:
 
@@ -984,8 +1055,9 @@ vmw_cmdbuf_man_create
 
     Create a command buffer manager and enable it for inline command buffer submissions only.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private structure.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_cmdbuf_man_create.description`:
 
@@ -1005,8 +1077,9 @@ vmw_cmdbuf_remove_pool
 
     Take down the main buffer space pool.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         Pointer to a command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
 .. _`vmw_cmdbuf_remove_pool.description`:
 
@@ -1028,8 +1101,9 @@ vmw_cmdbuf_man_destroy
 
     Take down a command buffer manager.
 
-    :param struct vmw_cmdbuf_man \*man:
+    :param man:
         Pointer to a command buffer manager.
+    :type man: struct vmw_cmdbuf_man \*
 
 .. _`vmw_cmdbuf_man_destroy.description`:
 

@@ -10,8 +10,9 @@ tb_port_state
 
     get connectedness state of a port
 
-    :param struct tb_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tb_port \*
 
 .. _`tb_port_state.description`:
 
@@ -36,11 +37,13 @@ tb_wait_for_port
 
     wait for a port to become ready
 
-    :param struct tb_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tb_port \*
 
-    :param bool wait_if_unplugged:
+    :param wait_if_unplugged:
         *undescribed*
+    :type wait_if_unplugged: bool
 
 .. _`tb_wait_for_port.description`:
 
@@ -71,11 +74,13 @@ tb_port_add_nfc_credits
 
     add/remove non flow controlled credits to port
 
-    :param struct tb_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tb_port \*
 
-    :param int credits:
+    :param credits:
         *undescribed*
+    :type credits: int
 
 .. _`tb_port_add_nfc_credits.description`:
 
@@ -101,11 +106,13 @@ tb_port_clear_counter
 
     clear a counter in TB_CFG_COUNTER
 
-    :param struct tb_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tb_port \*
 
-    :param int counter:
+    :param counter:
         *undescribed*
+    :type counter: int
 
 .. _`tb_port_clear_counter.return`:
 
@@ -123,8 +130,9 @@ tb_init_port
 
     initialize a port
 
-    :param struct tb_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tb_port \*
 
 .. _`tb_init_port.description`:
 
@@ -150,11 +158,13 @@ tb_switch_reset
 
     reconfigure route, enable and send TB_CFG_PKG_RESET
 
-    :param struct tb \*tb:
+    :param tb:
         *undescribed*
+    :type tb: struct tb \*
 
-    :param u64 route:
+    :param route:
         *undescribed*
+    :type route: u64
 
 .. _`tb_switch_reset.return`:
 
@@ -172,11 +182,13 @@ tb_plug_events_active
 
     enable/disable plug events on a switch
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param bool active:
+    :param active:
         *undescribed*
+    :type active: bool
 
 .. _`tb_plug_events_active.description`:
 
@@ -201,14 +213,17 @@ tb_switch_alloc
 
     allocate a switch
 
-    :param struct tb \*tb:
+    :param tb:
         Pointer to the owning domain
+    :type tb: struct tb \*
 
-    :param struct device \*parent:
+    :param parent:
         Parent device for this switch
+    :type parent: struct device \*
 
-    :param u64 route:
+    :param route:
         Route string for this switch
+    :type route: u64
 
 .. _`tb_switch_alloc.description`:
 
@@ -236,14 +251,17 @@ tb_switch_alloc_safe_mode
 
     allocate a switch that is in safe mode
 
-    :param struct tb \*tb:
+    :param tb:
         Pointer to the owning domain
+    :type tb: struct tb \*
 
-    :param struct device \*parent:
+    :param parent:
         Parent device for this switch
+    :type parent: struct device \*
 
-    :param u64 route:
+    :param route:
         Route string for this switch
+    :type route: u64
 
 .. _`tb_switch_alloc_safe_mode.description`:
 
@@ -272,8 +290,9 @@ tb_switch_configure
 
     Uploads configuration to the switch
 
-    :param struct tb_switch \*sw:
+    :param sw:
         Switch to configure
+    :type sw: struct tb_switch \*
 
 .. _`tb_switch_configure.description`:
 
@@ -300,8 +319,9 @@ tb_switch_add
 
     Add a switch to the domain
 
-    :param struct tb_switch \*sw:
+    :param sw:
         Switch to add
+    :type sw: struct tb_switch \*
 
 .. _`tb_switch_add.description`:
 
@@ -330,8 +350,9 @@ tb_switch_remove
 
     Remove and release a switch
 
-    :param struct tb_switch \*sw:
+    :param sw:
         Switch to remove
+    :type sw: struct tb_switch \*
 
 .. _`tb_switch_remove.description`:
 
@@ -351,8 +372,9 @@ tb_sw_set_unplugged
 
     set is_unplugged on switch and downstream switches
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
 .. _`tb_switch_find_by_link_depth`:
 
@@ -363,14 +385,17 @@ tb_switch_find_by_link_depth
 
     Find switch by link and depth
 
-    :param struct tb \*tb:
+    :param tb:
         Domain the switch belongs
+    :type tb: struct tb \*
 
-    :param u8 link:
+    :param link:
         Link number the switch is connected
+    :type link: u8
 
-    :param u8 depth:
+    :param depth:
         Depth of the switch in link
+    :type depth: u8
 
 .. _`tb_switch_find_by_link_depth.description`:
 
@@ -389,11 +414,13 @@ tb_switch_find_by_uuid
 
     Find switch by UUID
 
-    :param struct tb \*tb:
+    :param tb:
         Domain the switch belongs
+    :type tb: struct tb \*
 
-    :param const uuid_t \*uuid:
+    :param uuid:
         UUID to look for
+    :type uuid: const uuid_t \*
 
 .. _`tb_switch_find_by_uuid.description`:
 
@@ -412,11 +439,13 @@ tb_switch_find_by_route
 
     Find switch by route string
 
-    :param struct tb \*tb:
+    :param tb:
         Domain the switch belongs
+    :type tb: struct tb \*
 
-    :param u64 route:
+    :param route:
         Route string to look for
+    :type route: u64
 
 .. _`tb_switch_find_by_route.description`:
 

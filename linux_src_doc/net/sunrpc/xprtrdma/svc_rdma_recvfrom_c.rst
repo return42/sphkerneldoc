@@ -10,8 +10,9 @@ svc_rdma_recv_ctxts_destroy
 
     Release all recv_ctxt's for an xprt
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         svcxprt_rdma being torn down
+    :type rdma: struct svcxprt_rdma \*
 
 .. _`svc_rdma_recv_ctxt_put`:
 
@@ -22,11 +23,13 @@ svc_rdma_recv_ctxt_put
 
     Return recv_ctxt to free list
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         controlling svcxprt_rdma
+    :type rdma: struct svcxprt_rdma \*
 
-    :param struct svc_rdma_recv_ctxt \*ctxt:
+    :param ctxt:
         object to return to the free list
+    :type ctxt: struct svc_rdma_recv_ctxt \*
 
 .. _`svc_rdma_post_recvs`:
 
@@ -37,8 +40,9 @@ svc_rdma_post_recvs
 
     Post initial set of Recv WRs
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         fresh svcxprt_rdma
+    :type rdma: struct svcxprt_rdma \*
 
 .. _`svc_rdma_post_recvs.description`:
 
@@ -56,11 +60,13 @@ svc_rdma_wc_receive
 
     Invoked by RDMA provider for each polled Receive WC
 
-    :param struct ib_cq \*cq:
+    :param cq:
         Completion Queue context
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         Work Completion object
+    :type wc: struct ib_wc \*
 
 .. _`svc_rdma_wc_receive.description`:
 
@@ -79,8 +85,9 @@ svc_rdma_flush_recv_queues
 
     Drain pending Receive work
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         svcxprt_rdma being shut down
+    :type rdma: struct svcxprt_rdma \*
 
 .. _`svc_rdma_recvfrom`:
 
@@ -91,8 +98,9 @@ svc_rdma_recvfrom
 
     Receive an RPC call
 
-    :param struct svc_rqst \*rqstp:
+    :param rqstp:
         request structure into which to receive an RPC Call
+    :type rqstp: struct svc_rqst \*
 
 .. _`svc_rdma_recvfrom.return`:
 

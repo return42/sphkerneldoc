@@ -10,8 +10,9 @@ r4k_op_needs_ipi
 
     Decide if a cache op needs to be done on every core.
 
-    :param unsigned int type:
+    :param type:
         Type of cache operations (R4K_HIT or R4K_INDEX).
+    :type type: unsigned int
 
 .. _`r4k_op_needs_ipi.description`:
 
@@ -42,11 +43,13 @@ has_valid_asid
 
     Determine if an mm already has an ASID.
 
-    :param const struct mm_struct \*mm:
+    :param mm:
         Memory map.
+    :type mm: const struct mm_struct \*
 
-    :param unsigned int type:
+    :param type:
         R4K_HIT or R4K_INDEX, type of cache op.
+    :type type: unsigned int
 
 .. _`has_valid_asid.description`:
 

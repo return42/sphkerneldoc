@@ -10,8 +10,9 @@ k2_bmdma_setup_mmio
 
     Set up PCI IDE BMDMA transaction (MMIO)
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Info associated with this ATA transaction.
+    :type qc: struct ata_queued_cmd \*
 
 .. _`k2_bmdma_setup_mmio.locking`:
 
@@ -29,8 +30,9 @@ k2_bmdma_start_mmio
 
     Start a PCI IDE BMDMA transaction (MMIO)
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Info associated with this ATA transaction.
+    :type qc: struct ata_queued_cmd \*
 
 .. _`k2_bmdma_start_mmio.locking`:
 

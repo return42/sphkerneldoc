@@ -10,8 +10,9 @@ intel_guc_ads_create
 
     creates GuC ADS
 
-    :param struct intel_guc \*guc:
+    :param guc:
         intel_guc struct
+    :type guc: struct intel_guc \*
 
 .. This file was automatic generated / don't edit.
 

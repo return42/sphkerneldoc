@@ -10,14 +10,17 @@ stop_one_cpu
 
     stop a cpu
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu to stop
+    :type cpu: unsigned int
 
-    :param cpu_stop_fn_t fn:
+    :param fn:
         function to execute
+    :type fn: cpu_stop_fn_t
 
-    :param void \*arg:
+    :param arg:
         argument to \ ``fn``\ 
+    :type arg: void \*
 
 .. _`stop_one_cpu.description`:
 
@@ -59,17 +62,21 @@ stop_two_cpus
 
     stops two cpus
 
-    :param unsigned int cpu1:
+    :param cpu1:
         the cpu to stop
+    :type cpu1: unsigned int
 
-    :param unsigned int cpu2:
+    :param cpu2:
         the other cpu to stop
+    :type cpu2: unsigned int
 
-    :param cpu_stop_fn_t fn:
+    :param fn:
         function to execute
+    :type fn: cpu_stop_fn_t
 
-    :param void \*arg:
+    :param arg:
         argument to \ ``fn``\ 
+    :type arg: void \*
 
 .. _`stop_two_cpus.description`:
 
@@ -89,17 +96,21 @@ stop_one_cpu_nowait
 
     stop a cpu but don't wait for completion
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu to stop
+    :type cpu: unsigned int
 
-    :param cpu_stop_fn_t fn:
+    :param fn:
         function to execute
+    :type fn: cpu_stop_fn_t
 
-    :param void \*arg:
+    :param arg:
         argument to \ ``fn``\ 
+    :type arg: void \*
 
-    :param struct cpu_stop_work \*work_buf:
+    :param work_buf:
         pointer to cpu_stop_work structure
+    :type work_buf: struct cpu_stop_work \*
 
 .. _`stop_one_cpu_nowait.description`:
 
@@ -134,14 +145,17 @@ stop_cpus
 
     stop multiple cpus
 
-    :param const struct cpumask \*cpumask:
+    :param cpumask:
         cpus to stop
+    :type cpumask: const struct cpumask \*
 
-    :param cpu_stop_fn_t fn:
+    :param fn:
         function to execute
+    :type fn: cpu_stop_fn_t
 
-    :param void \*arg:
+    :param arg:
         argument to \ ``fn``\ 
+    :type arg: void \*
 
 .. _`stop_cpus.description`:
 
@@ -187,14 +201,17 @@ try_stop_cpus
 
     try to stop multiple cpus
 
-    :param const struct cpumask \*cpumask:
+    :param cpumask:
         cpus to stop
+    :type cpumask: const struct cpumask \*
 
-    :param cpu_stop_fn_t fn:
+    :param fn:
         function to execute
+    :type fn: cpu_stop_fn_t
 
-    :param void \*arg:
+    :param arg:
         argument to \ ``fn``\ 
+    :type arg: void \*
 
 .. _`try_stop_cpus.description`:
 
@@ -230,14 +247,17 @@ stop_machine_from_inactive_cpu
 
     \ :c:func:`stop_machine`\  from inactive CPU
 
-    :param cpu_stop_fn_t fn:
+    :param fn:
         the function to run
+    :type fn: cpu_stop_fn_t
 
-    :param void \*data:
+    :param data:
         the data ptr for the \ ``fn``\ ()
+    :type data: void \*
 
-    :param const struct cpumask \*cpus:
+    :param cpus:
         the cpus to run the \ ``fn``\ () on (NULL = any online cpu)
+    :type cpus: const struct cpumask \*
 
 .. _`stop_machine_from_inactive_cpu.description`:
 

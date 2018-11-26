@@ -98,17 +98,21 @@ wil_platform_init
 
     initialize the platform driver
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct wil_platform_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct wil_platform_ops \*
 
-    :param const struct wil_platform_rops \*rops:
+    :param rops:
         *undescribed*
+    :type rops: const struct wil_platform_rops \*
 
-    :param void \*wil_handle:
+    :param wil_handle:
         *undescribed*
+    :type wil_handle: void \*
 
 .. _`wil_platform_init.description`:
 

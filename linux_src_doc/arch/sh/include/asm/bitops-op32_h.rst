@@ -10,11 +10,13 @@
 
     Toggle a bit in memory
 
-    :param int nr:
+    :param nr:
         the bit to change
+    :type nr: int
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`__change_bit.description`:
 
@@ -34,11 +36,13 @@ may be that only one operation succeeds.
 
     Set a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to set
+    :type nr: int
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`__test_and_set_bit.description`:
 
@@ -58,11 +62,13 @@ but actually fail.  You must protect multiple accesses with a lock.
 
     Clear a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to clear
+    :type nr: int
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`__test_and_clear_bit.description`:
 
@@ -82,11 +88,13 @@ test_bit
 
     Determine whether a bit is set
 
-    :param int nr:
+    :param nr:
         bit number to test
+    :type nr: int
 
-    :param const volatile unsigned long \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: const volatile unsigned long \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ rfkill_set_block
 
     wrapper for set_block method
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         the rfkill struct to use
+    :type rfkill: struct rfkill \*
 
-    :param bool blocked:
+    :param blocked:
         the new software state
+    :type blocked: bool
 
 .. _`rfkill_set_block.description`:
 
@@ -33,11 +35,13 @@ etc. as well.
 
     Toggle state of all switches of given type
 
-    :param const enum rfkill_type type:
+    :param type:
         type of interfaces to be affected
+    :type type: const enum rfkill_type
 
-    :param bool blocked:
+    :param blocked:
         the new state
+    :type blocked: bool
 
 .. _`__rfkill_switch_all.description`:
 
@@ -58,11 +62,13 @@ rfkill_switch_all
 
     Toggle state of all switches of given type
 
-    :param enum rfkill_type type:
+    :param type:
         type of interfaces to be affected
+    :type type: enum rfkill_type
 
-    :param bool blocked:
+    :param blocked:
         the new state
+    :type blocked: bool
 
 .. _`rfkill_switch_all.description`:
 
@@ -83,8 +89,9 @@ rfkill_epo
 
     emergency power off all transmitters
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rfkill_epo.description`:
 
@@ -106,8 +113,9 @@ rfkill_restore_states
 
     restore global states
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rfkill_restore_states.description`:
 
@@ -127,8 +135,9 @@ rfkill_remove_epo_lock
 
     unlock state changes
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rfkill_remove_epo_lock.description`:
 
@@ -147,16 +156,17 @@ rfkill_is_epo_lock_active
 
     returns true EPO is active
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rfkill_is_epo_lock_active.description`:
 
 Description
 -----------
 
-Returns 0 (false) if there is NOT an active EPO contidion,
-and 1 (true) if there is an active EPO contition, which
+Returns 0 (false) if there is NOT an active EPO condition,
+and 1 (true) if there is an active EPO condition, which
 locks all radios in one of the BLOCKED states.
 
 Can be called in atomic context.
@@ -170,8 +180,9 @@ rfkill_get_global_sw_state
 
     returns global state for a type
 
-    :param const enum rfkill_type type:
+    :param type:
         the type to get the global state of
+    :type type: const enum rfkill_type
 
 .. _`rfkill_get_global_sw_state.description`:
 

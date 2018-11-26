@@ -10,8 +10,9 @@ bnx2i_get_cid_num
 
     get cid from ep
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         endpoint pointer
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_get_cid_num.description`:
 
@@ -29,8 +30,9 @@ bnx2i_adjust_qp_size
 
     Adjust SQ/RQ/CQ size for 57710 device type
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         Adapter for which adjustments is to be made
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_adjust_qp_size.description`:
 
@@ -48,8 +50,9 @@ bnx2i_get_link_state
 
     get network interface link state
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter instance pointer
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_get_link_state.description`:
 
@@ -67,11 +70,13 @@ bnx2i_iscsi_license_error
 
     displays iscsi license related error message
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter instance pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param u32 error_code:
+    :param error_code:
         error classification
+    :type error_code: u32
 
 .. _`bnx2i_iscsi_license_error.description`:
 
@@ -90,11 +95,13 @@ bnx2i_arm_cq_event_coalescing
 
     arms CQ to enable EQ notification
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
-    :param u8 action:
+    :param action:
         action, ARM or DISARM. For now only ARM_CQE is used
+    :type action: u8
 
 .. _`bnx2i_arm_cq_event_coalescing.description`:
 
@@ -114,15 +121,18 @@ bnx2i_get_rq_buf
 
     copy RQ buffer contents to driver buffer
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param char \*ptr:
+    :param ptr:
         driver buffer to which RQ buffer contents is to
         be copied
+    :type ptr: char \*
 
-    :param int len:
+    :param len:
         length of valid data inside RQ buf
+    :type len: int
 
 .. _`bnx2i_get_rq_buf.description`:
 
@@ -142,11 +152,13 @@ bnx2i_put_rq_buf
 
     Replenish RQ buffer, if required ring on chip doorbell
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param int count:
+    :param count:
         number of RQ buffer being posted to chip
+    :type count: int
 
 .. _`bnx2i_put_rq_buf.description`:
 
@@ -164,11 +176,13 @@ bnx2i_ring_sq_dbell
 
     Ring SQ doorbell to wake-up the processing engine
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param int count:
+    :param count:
         number of SQ WQEs to post
+    :type count: int
 
 .. _`bnx2i_ring_sq_dbell.description`:
 
@@ -188,11 +202,13 @@ bnx2i_ring_dbell_update_sq_params
 
     update SQ driver parameters
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param int count:
+    :param count:
         number of SQ WQEs to post
+    :type count: int
 
 .. _`bnx2i_ring_dbell_update_sq_params.description`:
 
@@ -210,11 +226,13 @@ bnx2i_send_iscsi_login
 
     post iSCSI login request MP WQE to hardware
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         *undescribed*
+    :type task: struct iscsi_task \*
 
 .. _`bnx2i_send_iscsi_login.description`:
 
@@ -232,12 +250,14 @@ bnx2i_send_iscsi_tmf
 
     post iSCSI task management request MP WQE to hardware
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct iscsi_task \*mtask:
+    :param mtask:
         driver command structure which is requesting
         a WQE to sent to chip for further processing
+    :type mtask: struct iscsi_task \*
 
 .. _`bnx2i_send_iscsi_tmf.description`:
 
@@ -255,12 +275,14 @@ bnx2i_send_iscsi_text
 
     post iSCSI text WQE to hardware
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct iscsi_task \*mtask:
+    :param mtask:
         driver command structure which is requesting
         a WQE to sent to chip for further processing
+    :type mtask: struct iscsi_task \*
 
 .. _`bnx2i_send_iscsi_text.description`:
 
@@ -278,12 +300,14 @@ bnx2i_send_iscsi_scsicmd
 
     post iSCSI scsicmd request WQE to hardware
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct bnx2i_cmd \*cmd:
+    :param cmd:
         driver command structure which is requesting
         a WQE to sent to chip for further processing
+    :type cmd: struct bnx2i_cmd \*
 
 .. _`bnx2i_send_iscsi_scsicmd.description`:
 
@@ -301,21 +325,26 @@ bnx2i_send_iscsi_nopout
 
     post iSCSI NOPOUT request WQE to hardware
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         *undescribed*
+    :type task: struct iscsi_task \*
 
-    :param char \*datap:
+    :param datap:
         payload buffer pointer
+    :type datap: char \*
 
-    :param int data_len:
+    :param data_len:
         payload data length
+    :type data_len: int
 
-    :param int unsol:
+    :param unsol:
         indicated whether nopout pdu is unsolicited pdu or
         in response to target's NOPIN w/ TTT != FFFFFFFF
+    :type unsol: int
 
 .. _`bnx2i_send_iscsi_nopout.description`:
 
@@ -333,11 +362,13 @@ bnx2i_send_iscsi_logout
 
     post iSCSI logout request WQE to hardware
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         *undescribed*
+    :type task: struct iscsi_task \*
 
 .. _`bnx2i_send_iscsi_logout.description`:
 
@@ -355,8 +386,9 @@ bnx2i_update_iscsi_conn
 
     post iSCSI logout request WQE to hardware
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection which requires iscsi parameter update
+    :type conn: struct iscsi_conn \*
 
 .. _`bnx2i_update_iscsi_conn.description`:
 
@@ -374,8 +406,9 @@ bnx2i_ep_ofld_timer
 
     post iSCSI logout request WQE to hardware
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`bnx2i_ep_ofld_timer.description`:
 
@@ -393,12 +426,14 @@ bnx2i_send_cmd_cleanup_req
 
     send iscsi cmd context clean-up request
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_cmd \*cmd:
+    :param cmd:
         driver command structure which is requesting
         a WQE to sent to chip for further processing
+    :type cmd: struct bnx2i_cmd \*
 
 .. _`bnx2i_send_cmd_cleanup_req.description`:
 
@@ -416,11 +451,13 @@ bnx2i_send_conn_destroy
 
     initiates iscsi connection teardown process
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_send_conn_destroy.description`:
 
@@ -439,11 +476,13 @@ bnx2i_570x_send_conn_ofld_req
 
     initiates iscsi conn context setup process
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_570x_send_conn_ofld_req.description`:
 
@@ -461,11 +500,13 @@ bnx2i_5771x_send_conn_ofld_req
 
     initiates iscsi connection context creation
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_5771x_send_conn_ofld_req.description`:
 
@@ -483,11 +524,13 @@ bnx2i_send_conn_ofld_req
 
     initiates iscsi connection context setup process
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_send_conn_ofld_req.description`:
 
@@ -505,8 +548,9 @@ setup_qp_page_tables
 
     iscsi QP page table setup function
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`setup_qp_page_tables.description`:
 
@@ -526,11 +570,13 @@ bnx2i_alloc_qp_resc
 
     allocates required resources for QP.
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_alloc_qp_resc.description`:
 
@@ -551,11 +597,13 @@ bnx2i_free_qp_resc
 
     free memory resources held by QP
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         endpoint (transport identifier) structure
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_free_qp_resc.description`:
 
@@ -573,8 +621,9 @@ bnx2i_send_fw_iscsi_init_msg
 
     initiates initial handshake with iscsi f/w
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
 .. _`bnx2i_send_fw_iscsi_init_msg.description`:
 
@@ -597,14 +646,17 @@ bnx2i_process_scsi_cmd_resp
 
     this function handles scsi cmd completion.
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         bnx2i connection
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct cqe \*cqe:
+    :param cqe:
         pointer to newly DMA'ed CQE entry for processing
+    :type cqe: struct cqe \*
 
 .. _`bnx2i_process_scsi_cmd_resp.description`:
 
@@ -622,14 +674,17 @@ bnx2i_process_login_resp
 
     this function handles iscsi login response
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct cqe \*cqe:
+    :param cqe:
         pointer to newly DMA'ed CQE entry for processing
+    :type cqe: struct cqe \*
 
 .. _`bnx2i_process_login_resp.description`:
 
@@ -647,14 +702,17 @@ bnx2i_process_text_resp
 
     this function handles iscsi text response
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct cqe \*cqe:
+    :param cqe:
         pointer to newly DMA'ed CQE entry for processing
+    :type cqe: struct cqe \*
 
 .. _`bnx2i_process_text_resp.description`:
 
@@ -672,14 +730,17 @@ bnx2i_process_tmf_resp
 
     this function handles iscsi TMF response
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct cqe \*cqe:
+    :param cqe:
         pointer to newly DMA'ed CQE entry for processing
+    :type cqe: struct cqe \*
 
 .. _`bnx2i_process_tmf_resp.description`:
 
@@ -697,14 +758,17 @@ bnx2i_process_logout_resp
 
     this function handles iscsi logout response
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct cqe \*cqe:
+    :param cqe:
         pointer to newly DMA'ed CQE entry for processing
+    :type cqe: struct cqe \*
 
 .. _`bnx2i_process_logout_resp.description`:
 
@@ -723,14 +787,17 @@ bnx2i_process_nopin_local_cmpl
 
     this function handles iscsi nopin CQE
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct cqe \*cqe:
+    :param cqe:
         pointer to newly DMA'ed CQE entry for processing
+    :type cqe: struct cqe \*
 
 .. _`bnx2i_process_nopin_local_cmpl.description`:
 
@@ -748,8 +815,9 @@ bnx2i_unsol_pdu_adjust_rq
 
     makes adjustments to RQ after unsol pdu is recvd
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         *undescribed*
+    :type bnx2i_conn: struct bnx2i_conn \*
 
 .. _`bnx2i_unsol_pdu_adjust_rq.description`:
 
@@ -769,14 +837,17 @@ bnx2i_process_nopin_mesg
 
     this function handles iscsi nopin CQE
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct cqe \*cqe:
+    :param cqe:
         pointer to newly DMA'ed CQE entry for processing
+    :type cqe: struct cqe \*
 
 .. _`bnx2i_process_nopin_mesg.description`:
 
@@ -794,14 +865,17 @@ bnx2i_process_async_mesg
 
     this function handles iscsi async message
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct cqe \*cqe:
+    :param cqe:
         pointer to newly DMA'ed CQE entry for processing
+    :type cqe: struct cqe \*
 
 .. _`bnx2i_process_async_mesg.description`:
 
@@ -819,14 +893,17 @@ bnx2i_process_reject_mesg
 
     process iscsi reject pdu
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct cqe \*cqe:
+    :param cqe:
         pointer to newly DMA'ed CQE entry for processing
+    :type cqe: struct cqe \*
 
 .. _`bnx2i_process_reject_mesg.description`:
 
@@ -844,14 +921,17 @@ bnx2i_process_cmd_cleanup_resp
 
     process scsi command clean-up completion
 
-    :param struct iscsi_session \*session:
+    :param session:
         iscsi session pointer
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection pointer
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct cqe \*cqe:
+    :param cqe:
         pointer to newly DMA'ed CQE entry for processing
+    :type cqe: struct cqe \*
 
 .. _`bnx2i_process_cmd_cleanup_resp.description`:
 
@@ -869,8 +949,9 @@ bnx2i_percpu_io_thread
 
     thread per cpu for ios
 
-    :param void \*arg:
+    :param arg:
         ptr to bnx2i_percpu_info structure
+    :type arg: void \*
 
 .. _`bnx2i_queue_scsi_cmd_resp`:
 
@@ -881,14 +962,17 @@ bnx2i_queue_scsi_cmd_resp
 
     queue cmd completion to the percpu thread
 
-    :param struct iscsi_session \*session:
+    :param session:
         *undescribed*
+    :type session: struct iscsi_session \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         bnx2i connection
+    :type bnx2i_conn: struct bnx2i_conn \*
 
-    :param struct bnx2i_nop_in_msg \*cqe:
+    :param cqe:
         *undescribed*
+    :type cqe: struct bnx2i_nop_in_msg \*
 
 .. _`bnx2i_queue_scsi_cmd_resp.description`:
 
@@ -911,8 +995,9 @@ bnx2i_process_new_cqes
 
     process newly DMA'ed CQE's
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         bnx2i connection
+    :type bnx2i_conn: struct bnx2i_conn \*
 
 .. _`bnx2i_process_new_cqes.description`:
 
@@ -930,11 +1015,13 @@ bnx2i_fastpath_notification
 
     process global event queue (KCQ)
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct iscsi_kcqe \*new_cqe_kcqe:
+    :param new_cqe_kcqe:
         pointer to newly DMA'ed KCQE entry
+    :type new_cqe_kcqe: struct iscsi_kcqe \*
 
 .. _`bnx2i_fastpath_notification.description`:
 
@@ -953,11 +1040,13 @@ bnx2i_process_update_conn_cmpl
 
     process iscsi conn update completion KCQE
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct iscsi_kcqe \*update_kcqe:
+    :param update_kcqe:
         kcqe pointer
+    :type update_kcqe: struct iscsi_kcqe \*
 
 .. _`bnx2i_process_update_conn_cmpl.description`:
 
@@ -975,11 +1064,13 @@ bnx2i_recovery_que_add_conn
 
     add connection to recovery queue
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct bnx2i_conn \*bnx2i_conn:
+    :param bnx2i_conn:
         iscsi connection
+    :type bnx2i_conn: struct bnx2i_conn \*
 
 .. _`bnx2i_recovery_que_add_conn.description`:
 
@@ -997,11 +1088,13 @@ bnx2i_process_tcp_error
 
     process error notification on a given connection
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct iscsi_kcqe \*tcp_err:
+    :param tcp_err:
         tcp error kcqe pointer
+    :type tcp_err: struct iscsi_kcqe \*
 
 .. _`bnx2i_process_tcp_error.description`:
 
@@ -1019,11 +1112,13 @@ bnx2i_process_iscsi_error
 
     process error notification on a given connection
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct iscsi_kcqe \*iscsi_err:
+    :param iscsi_err:
         iscsi error kcqe pointer
+    :type iscsi_err: struct iscsi_kcqe \*
 
 .. _`bnx2i_process_iscsi_error.description`:
 
@@ -1047,11 +1142,13 @@ bnx2i_process_conn_destroy_cmpl
 
     process iscsi conn destroy completion
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct iscsi_kcqe \*conn_destroy:
+    :param conn_destroy:
         conn destroy kcqe pointer
+    :type conn_destroy: struct iscsi_kcqe \*
 
 .. _`bnx2i_process_conn_destroy_cmpl.description`:
 
@@ -1069,11 +1166,13 @@ bnx2i_process_ofld_cmpl
 
     process initial iscsi conn offload completion
 
-    :param struct bnx2i_hba \*hba:
+    :param hba:
         adapter structure pointer
+    :type hba: struct bnx2i_hba \*
 
-    :param struct iscsi_kcqe \*ofld_kcqe:
+    :param ofld_kcqe:
         conn offload kcqe pointer
+    :type ofld_kcqe: struct iscsi_kcqe \*
 
 .. _`bnx2i_process_ofld_cmpl.description`:
 
@@ -1092,14 +1191,17 @@ bnx2i_indicate_kcqe
 
     process iscsi conn update completion KCQE
 
-    :param void \*context:
+    :param context:
         *undescribed*
+    :type context: void \*
 
-    :param struct kcqe  \*kcqe:
+    :param kcqe:
         *undescribed*
+    :type kcqe: struct kcqe  \*
 
-    :param u32 num_cqe:
+    :param num_cqe:
         *undescribed*
+    :type num_cqe: u32
 
 .. _`bnx2i_indicate_kcqe.description`:
 
@@ -1117,14 +1219,17 @@ bnx2i_indicate_netevent
 
     Generic netdev event handler
 
-    :param void \*context:
+    :param context:
         adapter structure pointer
+    :type context: void \*
 
-    :param unsigned long event:
+    :param event:
         event type
+    :type event: unsigned long
 
-    :param u16 vlan_id:
+    :param vlan_id:
         vlans id - associated vlan id with this event
+    :type vlan_id: u16
 
 .. _`bnx2i_indicate_netevent.description`:
 
@@ -1143,8 +1248,9 @@ bnx2i_cm_connect_cmpl
 
     process iscsi conn establishment completion
 
-    :param struct cnic_sock \*cm_sk:
+    :param cm_sk:
         cnic sock structure pointer
+    :type cm_sk: struct cnic_sock \*
 
 .. _`bnx2i_cm_connect_cmpl.description`:
 
@@ -1163,8 +1269,9 @@ bnx2i_cm_close_cmpl
 
     process tcp conn close completion
 
-    :param struct cnic_sock \*cm_sk:
+    :param cm_sk:
         cnic sock structure pointer
+    :type cm_sk: struct cnic_sock \*
 
 .. _`bnx2i_cm_close_cmpl.description`:
 
@@ -1183,8 +1290,9 @@ bnx2i_cm_abort_cmpl
 
     process abortive tcp conn teardown completion
 
-    :param struct cnic_sock \*cm_sk:
+    :param cm_sk:
         cnic sock structure pointer
+    :type cm_sk: struct cnic_sock \*
 
 .. _`bnx2i_cm_abort_cmpl.description`:
 
@@ -1203,8 +1311,9 @@ bnx2i_cm_remote_close
 
     process received TCP FIN
 
-    :param struct cnic_sock \*cm_sk:
+    :param cm_sk:
         *undescribed*
+    :type cm_sk: struct cnic_sock \*
 
 .. _`bnx2i_cm_remote_close.description`:
 
@@ -1223,8 +1332,9 @@ bnx2i_cm_remote_abort
 
     process TCP RST and start conn cleanup
 
-    :param struct cnic_sock \*cm_sk:
+    :param cm_sk:
         *undescribed*
+    :type cm_sk: struct cnic_sock \*
 
 .. _`bnx2i_cm_remote_abort.description`:
 
@@ -1243,8 +1353,9 @@ bnx2i_map_ep_dbell_regs
 
     map connection doorbell registers
 
-    :param struct bnx2i_endpoint \*ep:
+    :param ep:
         bnx2i endpoint
+    :type ep: struct bnx2i_endpoint \*
 
 .. _`bnx2i_map_ep_dbell_regs.description`:
 

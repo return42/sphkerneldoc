@@ -10,8 +10,9 @@ jmicron_cable_detect
 
     cable detection
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         IDE port
+    :type hwif: ide_hwif_t \*
 
 .. _`jmicron_cable_detect.description`:
 
@@ -29,11 +30,13 @@ jmicron_set_dma_mode
 
     set host controller for DMA mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`jmicron_set_dma_mode.description`:
 
@@ -51,11 +54,13 @@ jmicron_init_one
 
     pci layer discovery entry
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         ident table entry
+    :type id: const struct pci_device_id \*
 
 .. _`jmicron_init_one.description`:
 

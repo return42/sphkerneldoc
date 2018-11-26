@@ -10,11 +10,13 @@ thermal_zone_get_temp
 
     returns the temperature of a thermal zone
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         a valid pointer to a struct thermal_zone_device
+    :type tz: struct thermal_zone_device \*
 
-    :param int \*temp:
+    :param temp:
         a valid pointer to where to store the resulting temperature.
+    :type temp: int \*
 
 .. _`thermal_zone_get_temp.description`:
 
@@ -40,8 +42,9 @@ thermal_zone_get_slope
 
     return the slope attribute of the thermal zone
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         thermal zone device with the slope attribute
+    :type tz: struct thermal_zone_device \*
 
 .. _`thermal_zone_get_slope.return`:
 
@@ -60,8 +63,9 @@ thermal_zone_get_offset
 
     return the offset attribute of the thermal zone
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         thermal zone device with the offset attribute
+    :type tz: struct thermal_zone_device \*
 
 .. _`thermal_zone_get_offset.return`:
 

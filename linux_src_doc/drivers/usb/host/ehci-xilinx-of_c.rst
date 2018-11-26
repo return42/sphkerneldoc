@@ -10,11 +10,13 @@ ehci_xilinx_port_handed_over
 
     hand the port out if failed to enable it
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         Pointer to the usb_hcd device to which the host controller bound
+    :type hcd: struct usb_hcd \*
 
-    :param int portnum:
+    :param portnum:
         Port number to which the device is attached.
+    :type portnum: int
 
 .. _`ehci_xilinx_port_handed_over.description`:
 
@@ -39,8 +41,9 @@ ehci_hcd_xilinx_of_probe
 
     Probe method for the USB host controller
 
-    :param struct platform_device \*op:
+    :param op:
         pointer to the platform_device bound to the host controller
+    :type op: struct platform_device \*
 
 .. _`ehci_hcd_xilinx_of_probe.description`:
 
@@ -61,8 +64,9 @@ ehci_hcd_xilinx_of_remove
 
     shutdown hcd and release resources
 
-    :param struct platform_device \*op:
+    :param op:
         pointer to platform_device structure that is to be removed
+    :type op: struct platform_device \*
 
 .. _`ehci_hcd_xilinx_of_remove.description`:
 

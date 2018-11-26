@@ -10,17 +10,21 @@ IIO_UNMOD_EVENT_CODE
 
     create event identifier for unmodified channels
 
-    :param  chan_type:
+    :param chan_type:
         Type of the channel. Should be one of enum iio_chan_type.
+    :type chan_type: 
 
-    :param  number:
+    :param number:
         Channel number.
+    :type number: 
 
-    :param  type:
+    :param type:
         Type of the event. Should be one of enum iio_event_type.
+    :type type: 
 
-    :param  direction:
+    :param direction:
         Direction of the event. One of enum iio_event_direction.
+    :type direction: 
 
 .. This file was automatic generated / don't edit.
 

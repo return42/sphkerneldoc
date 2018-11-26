@@ -10,11 +10,13 @@ qla2x00_prep_ms_iocb
 
     Prepare common MS/CT IOCB fields for SNS CT query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param struct ct_arg \*arg:
+    :param arg:
         CT arguments
+    :type arg: struct ct_arg \*
 
 .. _`qla2x00_prep_ms_iocb.description`:
 
@@ -32,11 +34,13 @@ qla24xx_prep_ms_iocb
 
     Prepare common CT IOCB fields for SNS CT query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param struct ct_arg \*arg:
+    :param arg:
         CT arguments
+    :type arg: struct ct_arg \*
 
 .. _`qla24xx_prep_ms_iocb.description`:
 
@@ -54,14 +58,17 @@ qla2x00_prep_ct_req
 
     Prepare common CT request fields for SNS query.
 
-    :param struct ct_sns_pkt \*p:
+    :param p:
         CT request buffer
+    :type p: struct ct_sns_pkt \*
 
-    :param uint16_t cmd:
+    :param cmd:
         GS command
+    :type cmd: uint16_t
 
-    :param uint16_t rsp_size:
+    :param rsp_size:
         response size in bytes
+    :type rsp_size: uint16_t
 
 .. _`qla2x00_prep_ct_req.description`:
 
@@ -79,11 +86,13 @@ qla2x00_ga_nxt
 
     SNS scan for fabric devices via GA_NXT command.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param fc_port_t \*fcport:
+    :param fcport:
         fcport entry to updated
+    :type fcport: fc_port_t \*
 
 .. _`qla2x00_ga_nxt.description`:
 
@@ -101,11 +110,13 @@ qla2x00_gid_pt
 
     SNS scan for fabric devices via GID_PT command.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param sw_info_t \*list:
+    :param list:
         switch info entries to populate
+    :type list: sw_info_t \*
 
 .. _`qla2x00_gid_pt.note`:
 
@@ -125,11 +136,13 @@ qla2x00_gpn_id
 
     SNS Get Port Name (GPN_ID) query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param sw_info_t \*list:
+    :param list:
         switch info entries to populate
+    :type list: sw_info_t \*
 
 .. _`qla2x00_gpn_id.description`:
 
@@ -147,11 +160,13 @@ qla2x00_gnn_id
 
     SNS Get Node Name (GNN_ID) query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param sw_info_t \*list:
+    :param list:
         switch info entries to populate
+    :type list: sw_info_t \*
 
 .. _`qla2x00_gnn_id.description`:
 
@@ -169,8 +184,9 @@ qla2x00_rft_id
 
     SNS Register FC-4 TYPEs (RFT_ID) supported by the HBA.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_rft_id.description`:
 
@@ -188,11 +204,13 @@ qla2x00_rff_id
 
     SNS Register FC-4 Features (RFF_ID) supported by the HBA.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param u8 type:
+    :param type:
         not used
+    :type type: u8
 
 .. _`qla2x00_rff_id.description`:
 
@@ -210,8 +228,9 @@ qla2x00_rnn_id
 
     SNS Register Node Name (RNN_ID) of the HBA.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_rnn_id.description`:
 
@@ -229,8 +248,9 @@ qla2x00_rsnn_nn
 
     SNS Register Symbolic Node Name (RSNN_NN) of the HBA.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_rsnn_nn.description`:
 
@@ -248,17 +268,21 @@ qla2x00_prep_sns_cmd
 
     Prepare common SNS command request fields for query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param uint16_t cmd:
+    :param cmd:
         GS command
+    :type cmd: uint16_t
 
-    :param uint16_t scmd_len:
+    :param scmd_len:
         Subcommand length
+    :type scmd_len: uint16_t
 
-    :param uint16_t data_size:
+    :param data_size:
         response size in bytes
+    :type data_size: uint16_t
 
 .. _`qla2x00_prep_sns_cmd.description`:
 
@@ -276,11 +300,13 @@ qla2x00_sns_ga_nxt
 
     SNS scan for fabric devices via GA_NXT command.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param fc_port_t \*fcport:
+    :param fcport:
         fcport entry to updated
+    :type fcport: fc_port_t \*
 
 .. _`qla2x00_sns_ga_nxt.description`:
 
@@ -300,11 +326,13 @@ qla2x00_sns_gid_pt
 
     SNS scan for fabric devices via GID_PT command.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param sw_info_t \*list:
+    :param list:
         switch info entries to populate
+    :type list: sw_info_t \*
 
 .. _`qla2x00_sns_gid_pt.description`:
 
@@ -331,11 +359,13 @@ qla2x00_sns_gpn_id
 
     SNS Get Port Name (GPN_ID) query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param sw_info_t \*list:
+    :param list:
         switch info entries to populate
+    :type list: sw_info_t \*
 
 .. _`qla2x00_sns_gpn_id.description`:
 
@@ -355,11 +385,13 @@ qla2x00_sns_gnn_id
 
     SNS Get Node Name (GNN_ID) query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param sw_info_t \*list:
+    :param list:
         switch info entries to populate
+    :type list: sw_info_t \*
 
 .. _`qla2x00_sns_gnn_id.description`:
 
@@ -379,8 +411,9 @@ qla2x00_sns_rft_id
 
     SNS Register FC-4 TYPEs (RFT_ID) supported by the HBA.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_sns_rft_id.description`:
 
@@ -400,8 +433,9 @@ qla2x00_sns_rnn_id
 
     SNS Register Node Name (RNN_ID) of the HBA.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_sns_rnn_id.description`:
 
@@ -421,8 +455,9 @@ qla2x00_mgmt_svr_login
 
     Login to fabric Management Service.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_mgmt_svr_login.description`:
 
@@ -440,14 +475,17 @@ qla2x00_prep_ms_fdmi_iocb
 
     Prepare common MS IOCB fields for FDMI query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param uint32_t req_size:
+    :param req_size:
         request size in bytes
+    :type req_size: uint32_t
 
-    :param uint32_t rsp_size:
+    :param rsp_size:
         response size in bytes
+    :type rsp_size: uint32_t
 
 .. _`qla2x00_prep_ms_fdmi_iocb.description`:
 
@@ -465,14 +503,17 @@ qla24xx_prep_ms_fdmi_iocb
 
     Prepare common MS IOCB fields for FDMI query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param uint32_t req_size:
+    :param req_size:
         request size in bytes
+    :type req_size: uint32_t
 
-    :param uint32_t rsp_size:
+    :param rsp_size:
         response size in bytes
+    :type rsp_size: uint32_t
 
 .. _`qla24xx_prep_ms_fdmi_iocb.description`:
 
@@ -490,14 +531,17 @@ qla2x00_prep_ct_fdmi_req
 
     Prepare common CT request fields for SNS query.
 
-    :param struct ct_sns_pkt \*p:
+    :param p:
         CT request buffer
+    :type p: struct ct_sns_pkt \*
 
-    :param uint16_t cmd:
+    :param cmd:
         GS command
+    :type cmd: uint16_t
 
-    :param uint16_t rsp_size:
+    :param rsp_size:
         response size in bytes
+    :type rsp_size: uint16_t
 
 .. _`qla2x00_prep_ct_fdmi_req.description`:
 
@@ -515,8 +559,9 @@ qla2x00_fdmi_rhba
 
     perform RHBA FDMI registration
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_fdmi_rhba.description`:
 
@@ -534,8 +579,9 @@ qla2x00_fdmi_rpa
 
     perform RPA registration
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_fdmi_rpa.description`:
 
@@ -553,8 +599,9 @@ qla2x00_fdmiv2_rhba
 
     perform RHBA FDMI v2 registration
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_fdmiv2_rhba.description`:
 
@@ -570,8 +617,9 @@ qla2x00_fdmi_dhba
 
 .. c:function:: int qla2x00_fdmi_dhba(scsi_qla_host_t *vha)
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_fdmi_dhba.description`:
 
@@ -587,8 +635,9 @@ qla2x00_fdmiv2_rpa
 
 .. c:function:: int qla2x00_fdmiv2_rpa(scsi_qla_host_t *vha)
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_fdmiv2_rpa.description`:
 
@@ -604,8 +653,9 @@ qla2x00_fdmi_register
 
 .. c:function:: int qla2x00_fdmi_register(scsi_qla_host_t *vha)
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
 .. _`qla2x00_fdmi_register.description`:
 
@@ -623,11 +673,13 @@ qla2x00_gfpn_id
 
     SNS Get Fabric Port Name (GFPN_ID) query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param sw_info_t \*list:
+    :param list:
         switch info entries to populate
+    :type list: sw_info_t \*
 
 .. _`qla2x00_gfpn_id.description`:
 
@@ -645,11 +697,13 @@ qla2x00_gpsc
 
     FCS Get Port Speed Capabilities (GPSC) query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param sw_info_t \*list:
+    :param list:
         switch info entries to populate
+    :type list: sw_info_t \*
 
 .. _`qla2x00_gpsc.description`:
 
@@ -667,11 +721,13 @@ qla2x00_gff_id
 
     SNS Get FC-4 Features (GFF_ID) query.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param sw_info_t \*list:
+    :param list:
         switch info entries to populate
+    :type list: sw_info_t \*
 
 .. This file was automatic generated / don't edit.
 

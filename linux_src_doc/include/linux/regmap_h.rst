@@ -94,25 +94,31 @@ regmap_read_poll_timeout
 
     Poll until a condition is met or a timeout occurs
 
-    :param  map:
+    :param map:
         Regmap to read from
+    :type map: 
 
-    :param  addr:
+    :param addr:
         Address to poll
+    :type addr: 
 
-    :param  val:
+    :param val:
         Unsigned integer variable to read the value into
+    :type val: 
 
-    :param  cond:
+    :param cond:
         Break condition (usually involving \ ``val``\ )
+    :type cond: 
 
-    :param  sleep_us:
+    :param sleep_us:
         Maximum time to sleep between reads in us (0
         tight-loops).  Should be less than ~20ms since usleep_range
         is used (see Documentation/timers/timers-howto.txt).
+    :type sleep_us: 
 
-    :param  timeout_us:
+    :param timeout_us:
         Timeout in us, 0 means never timeout
+    :type timeout_us: 
 
 .. _`regmap_read_poll_timeout.description`:
 
@@ -135,22 +141,27 @@ regmap_field_read_poll_timeout
 
     Poll until a condition is met or timeout
 
-    :param  field:
+    :param field:
         Regmap field to read from
+    :type field: 
 
-    :param  val:
+    :param val:
         Unsigned integer variable to read the value into
+    :type val: 
 
-    :param  cond:
+    :param cond:
         Break condition (usually involving \ ``val``\ )
+    :type cond: 
 
-    :param  sleep_us:
+    :param sleep_us:
         Maximum time to sleep between reads in us (0
         tight-loops).  Should be less than ~20ms since usleep_range
         is used (see Documentation/timers/timers-howto.txt).
+    :type sleep_us: 
 
-    :param  timeout_us:
+    :param timeout_us:
         Timeout in us, 0 means never timeout
+    :type timeout_us: 
 
 .. _`regmap_field_read_poll_timeout.description`:
 
@@ -272,6 +283,8 @@ Definition
         bool (*readable_reg)(struct device *dev, unsigned int reg);
         bool (*volatile_reg)(struct device *dev, unsigned int reg);
         bool (*precious_reg)(struct device *dev, unsigned int reg);
+        bool (*writeable_noinc_reg)(struct device *dev, unsigned int reg);
+        bool (*readable_noinc_reg)(struct device *dev, unsigned int reg);
         bool disable_locking;
         regmap_lock lock;
         regmap_unlock unlock;
@@ -284,6 +297,8 @@ Definition
         const struct regmap_access_table *rd_table;
         const struct regmap_access_table *volatile_table;
         const struct regmap_access_table *precious_table;
+        const struct regmap_access_table *wr_noinc_table;
+        const struct regmap_access_table *rd_noinc_table;
         const struct reg_default *reg_defaults;
         unsigned int num_reg_defaults;
         enum regcache_type cache_type;
@@ -292,7 +307,8 @@ Definition
         unsigned long read_flag_mask;
         unsigned long write_flag_mask;
         bool zero_flag_mask;
-        bool use_single_rw;
+        bool use_single_read;
+        bool use_single_write;
         bool can_multi_write;
         enum regmap_endian reg_format_endian;
         enum regmap_endian val_format_endian;
@@ -355,6 +371,24 @@ precious_reg
     check is performed on such table (a register is precious if
     it belongs to one of the ranges specified by precious_table).
 
+writeable_noinc_reg
+    Optional callback returning true if the register
+    supports multiple write operations without incrementing
+    the register number. If this field is NULL but
+    wr_noinc_table (see below) is not, the check is
+    performed on such table (a register is no increment
+    writeable if it belongs to one of the ranges specified
+    by wr_noinc_table).
+
+readable_noinc_reg
+    Optional callback returning true if the register
+    supports multiple read operations without incrementing
+    the register number. If this field is NULL but
+    rd_noinc_table (see below) is not, the check is
+    performed on such table (a register is no increment
+    readable if it belongs to one of the ranges specified
+    by rd_noinc_table).
+
 disable_locking
     This regmap is either protected by external means or
     is guaranteed not be be accessed from multiple threads.
@@ -406,6 +440,12 @@ volatile_table
 precious_table
     As above, for precious registers.
 
+wr_noinc_table
+    As above, for no increment writeable registers.
+
+rd_noinc_table
+    As above, for no increment readable registers.
+
 reg_defaults
     Power on reset values for registers (for use with
     register cache support).
@@ -437,10 +477,15 @@ zero_flag_mask
     If set, read_flag_mask and write_flag_mask are used even
     if they are both empty.
 
-use_single_rw
-    If set, converts the bulk read and write operations into
-    a series of single read and write operations. This is useful
-    for device that does not support bulk read and write.
+use_single_read
+    If set, converts the bulk read operation into a series of
+    single read operations. This is useful for a device that
+    does not support  bulk read.
+
+use_single_write
+    If set, converts the bulk write operation into a series of
+    single write operations. This is useful for a device that
+    does not support bulk write.
 
 can_multi_write
     If set, the device supports the multi write mode of bulk
@@ -646,17 +691,21 @@ regmap_init
 
     Initialise register map
 
-    :param  dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: 
 
-    :param  bus:
+    :param bus:
         Bus-specific callbacks to use with device
+    :type bus: 
 
-    :param  bus_context:
+    :param bus_context:
         Data passed to bus-specific callbacks
+    :type bus_context: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init.description`:
 
@@ -676,13 +725,40 @@ regmap_init_i2c
 
     Initialise register map
 
-    :param  i2c:
+    :param i2c:
         Device that will be interacted with
+    :type i2c: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init_i2c.description`:
+
+Description
+-----------
+
+The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer to
+a struct regmap.
+
+.. _`regmap_init_sccb`:
+
+regmap_init_sccb
+================
+
+.. c:function::  regmap_init_sccb( i2c,  config)
+
+    Initialise register map
+
+    :param i2c:
+        Device that will be interacted with
+    :type i2c: 
+
+    :param config:
+        Configuration for register map
+    :type config: 
+
+.. _`regmap_init_sccb.description`:
 
 Description
 -----------
@@ -699,11 +775,13 @@ regmap_init_slimbus
 
     Initialise register map
 
-    :param  slimbus:
+    :param slimbus:
         Device that will be interacted with
+    :type slimbus: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init_slimbus.description`:
 
@@ -722,11 +800,13 @@ regmap_init_spi
 
     Initialise register map
 
-    :param  dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init_spi.description`:
 
@@ -745,11 +825,13 @@ regmap_init_spmi_base
 
     Create regmap for the Base register space
 
-    :param  dev:
+    :param dev:
         SPMI device that will be interacted with
+    :type dev: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init_spmi_base.description`:
 
@@ -768,11 +850,13 @@ regmap_init_spmi_ext
 
     Create regmap for Ext register space
 
-    :param  dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init_spmi_ext.description`:
 
@@ -791,11 +875,13 @@ regmap_init_w1
 
     Initialise register map
 
-    :param  w1_dev:
+    :param w1_dev:
         Device that will be interacted with
+    :type w1_dev: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init_w1.description`:
 
@@ -814,17 +900,21 @@ regmap_init_mmio_clk
 
     Initialise register map with register clock
 
-    :param  dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: 
 
-    :param  clk_id:
+    :param clk_id:
         register clock consumer ID
+    :type clk_id: 
 
-    :param  regs:
+    :param regs:
         Pointer to memory-mapped IO region
+    :type regs: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init_mmio_clk.description`:
 
@@ -843,14 +933,17 @@ regmap_init_mmio
 
     Initialise register map
 
-    :param  dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: 
 
-    :param  regs:
+    :param regs:
         Pointer to memory-mapped IO region
+    :type regs: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init_mmio.description`:
 
@@ -869,11 +962,13 @@ regmap_init_ac97
 
     Initialise AC'97 register map
 
-    :param  ac97:
+    :param ac97:
         Device that will be interacted with
+    :type ac97: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init_ac97.description`:
 
@@ -892,11 +987,13 @@ regmap_init_sdw
 
     Initialise register map
 
-    :param  sdw:
+    :param sdw:
         Device that will be interacted with
+    :type sdw: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`regmap_init_sdw.description`:
 
@@ -915,17 +1012,21 @@ devm_regmap_init
 
     Initialise managed register map
 
-    :param  dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: 
 
-    :param  bus:
+    :param bus:
         Bus-specific callbacks to use with device
+    :type bus: 
 
-    :param  bus_context:
+    :param bus_context:
         Data passed to bus-specific callbacks
+    :type bus_context: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init.description`:
 
@@ -946,13 +1047,41 @@ devm_regmap_init_i2c
 
     Initialise managed register map
 
-    :param  i2c:
+    :param i2c:
         Device that will be interacted with
+    :type i2c: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_i2c.description`:
+
+Description
+-----------
+
+The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer
+to a struct regmap.  The regmap will be automatically freed by the
+device management code.
+
+.. _`devm_regmap_init_sccb`:
+
+devm_regmap_init_sccb
+=====================
+
+.. c:function::  devm_regmap_init_sccb( i2c,  config)
+
+    Initialise managed register map
+
+    :param i2c:
+        Device that will be interacted with
+    :type i2c: 
+
+    :param config:
+        Configuration for register map
+    :type config: 
+
+.. _`devm_regmap_init_sccb.description`:
 
 Description
 -----------
@@ -970,11 +1099,13 @@ devm_regmap_init_spi
 
     Initialise register map
 
-    :param  dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_spi.description`:
 
@@ -994,11 +1125,13 @@ devm_regmap_init_spmi_base
 
     Create managed regmap for Base register space
 
-    :param  dev:
+    :param dev:
         SPMI device that will be interacted with
+    :type dev: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_spmi_base.description`:
 
@@ -1018,11 +1151,13 @@ devm_regmap_init_spmi_ext
 
     Create managed regmap for Ext register space
 
-    :param  dev:
+    :param dev:
         SPMI device that will be interacted with
+    :type dev: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_spmi_ext.description`:
 
@@ -1042,11 +1177,13 @@ devm_regmap_init_w1
 
     Initialise managed register map
 
-    :param  w1_dev:
+    :param w1_dev:
         Device that will be interacted with
+    :type w1_dev: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_w1.description`:
 
@@ -1066,17 +1203,21 @@ devm_regmap_init_mmio_clk
 
     Initialise managed register map with clock
 
-    :param  dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: 
 
-    :param  clk_id:
+    :param clk_id:
         register clock consumer ID
+    :type clk_id: 
 
-    :param  regs:
+    :param regs:
         Pointer to memory-mapped IO region
+    :type regs: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_mmio_clk.description`:
 
@@ -1096,14 +1237,17 @@ devm_regmap_init_mmio
 
     Initialise managed register map
 
-    :param  dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: 
 
-    :param  regs:
+    :param regs:
         Pointer to memory-mapped IO region
+    :type regs: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_mmio.description`:
 
@@ -1123,11 +1267,13 @@ devm_regmap_init_ac97
 
     Initialise AC'97 register map
 
-    :param  ac97:
+    :param ac97:
         Device that will be interacted with
+    :type ac97: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_ac97.description`:
 
@@ -1147,11 +1293,13 @@ devm_regmap_init_sdw
 
     Initialise managed register map
 
-    :param  sdw:
+    :param sdw:
         Device that will be interacted with
+    :type sdw: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_sdw.description`:
 
@@ -1171,11 +1319,13 @@ devm_regmap_init_slimbus
 
     Initialise managed register map
 
-    :param  slimbus:
+    :param slimbus:
         Device that will be interacted with
+    :type slimbus: 
 
-    :param  config:
+    :param config:
         Configuration for register map
+    :type config: 
 
 .. _`devm_regmap_init_slimbus.description`:
 

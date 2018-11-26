@@ -10,8 +10,9 @@ octeon_flush_data_cache_page
 
     from Linux's viewpoint it acts much like a physically tagged cache. No flushing is needed
 
-    :param unsigned long addr:
+    :param addr:
         *undescribed*
+    :type addr: unsigned long
 
 .. _`octeon_flush_icache_all_cores`:
 
@@ -22,8 +23,9 @@ octeon_flush_icache_all_cores
 
     vma. If no vma is supplied, all cores are flushed.
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMA to flush or NULL to flush all icaches.
+    :type vma: struct vm_area_struct \*
 
 .. _`octeon_flush_icache_all`:
 
@@ -32,8 +34,9 @@ octeon_flush_icache_all
 
 .. c:function:: void octeon_flush_icache_all( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_flush_cache_mm`:
 
@@ -44,8 +47,9 @@ octeon_flush_cache_mm
 
     context.
 
-    :param struct mm_struct \*mm:
+    :param mm:
         Memory context to flush
+    :type mm: struct mm_struct \*
 
 .. _`octeon_flush_icache_range`:
 
@@ -54,11 +58,13 @@ octeon_flush_icache_range
 
 .. c:function:: void octeon_flush_icache_range(unsigned long start, unsigned long end)
 
-    :param unsigned long start:
+    :param start:
         *undescribed*
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         *undescribed*
+    :type end: unsigned long
 
 .. _`octeon_flush_cache_sigtramp`:
 
@@ -69,8 +75,9 @@ octeon_flush_cache_sigtramp
 
     and exception hooking.
 
-    :param unsigned long addr:
+    :param addr:
         Address to flush
+    :type addr: unsigned long
 
 .. _`octeon_flush_cache_range`:
 
@@ -79,14 +86,17 @@ octeon_flush_cache_range
 
 .. c:function:: void octeon_flush_cache_range(struct vm_area_struct *vma, unsigned long start, unsigned long end)
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMA to flush
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long start:
+    :param start:
         *undescribed*
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         *undescribed*
+    :type end: unsigned long
 
 .. _`octeon_flush_cache_page`:
 
@@ -95,14 +105,17 @@ octeon_flush_cache_page
 
 .. c:function:: void octeon_flush_cache_page(struct vm_area_struct *vma, unsigned long page, unsigned long pfn)
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMA to flush page for
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long page:
+    :param page:
         Page to flush
+    :type page: unsigned long
 
-    :param unsigned long pfn:
+    :param pfn:
         *undescribed*
+    :type pfn: unsigned long
 
 .. _`probe_octeon`:
 
@@ -111,8 +124,9 @@ probe_octeon
 
 .. c:function:: void probe_octeon( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`octeon_cache_init`:
 
@@ -121,8 +135,9 @@ octeon_cache_init
 
 .. c:function:: void octeon_cache_init( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cache_parity_error_octeon_non_recoverable`:
 
@@ -131,8 +146,9 @@ cache_parity_error_octeon_non_recoverable
 
 .. c:function:: void cache_parity_error_octeon_non_recoverable( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

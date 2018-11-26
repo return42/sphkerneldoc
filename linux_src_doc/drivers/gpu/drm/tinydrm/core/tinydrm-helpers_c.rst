@@ -10,23 +10,29 @@ tinydrm_merge_clips
 
     Merge clip rectangles
 
-    :param struct drm_clip_rect \*dst:
+    :param dst:
         Destination clip rectangle
+    :type dst: struct drm_clip_rect \*
 
-    :param struct drm_clip_rect \*src:
+    :param src:
         Source clip rectangle(s)
+    :type src: struct drm_clip_rect \*
 
-    :param unsigned int num_clips:
+    :param num_clips:
         Number of \ ``src``\  clip rectangles
+    :type num_clips: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         Dirty fb ioctl flags
+    :type flags: unsigned int
 
-    :param u32 max_width:
+    :param max_width:
         Maximum width of \ ``dst``\ 
+    :type max_width: u32
 
-    :param u32 max_height:
+    :param max_height:
         Maximum height of \ ``dst``\ 
+    :type max_height: u32
 
 .. _`tinydrm_merge_clips.description`:
 
@@ -52,17 +58,21 @@ tinydrm_memcpy
 
     Copy clip buffer
 
-    :param void \*dst:
+    :param dst:
         Destination buffer
+    :type dst: void \*
 
-    :param void \*vaddr:
+    :param vaddr:
         Source buffer
+    :type vaddr: void \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         DRM framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_clip_rect \*clip:
+    :param clip:
         Clip rectangle area to copy
+    :type clip: struct drm_clip_rect \*
 
 .. _`tinydrm_swab16`:
 
@@ -73,17 +83,21 @@ tinydrm_swab16
 
     Swap bytes into clip buffer
 
-    :param u16 \*dst:
+    :param dst:
         RGB565 destination buffer
+    :type dst: u16 \*
 
-    :param void \*vaddr:
+    :param vaddr:
         RGB565 source buffer
+    :type vaddr: void \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         DRM framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_clip_rect \*clip:
+    :param clip:
         Clip rectangle area to copy
+    :type clip: struct drm_clip_rect \*
 
 .. _`tinydrm_xrgb8888_to_rgb565`:
 
@@ -94,20 +108,25 @@ tinydrm_xrgb8888_to_rgb565
 
     Convert XRGB8888 to RGB565 clip buffer
 
-    :param u16 \*dst:
+    :param dst:
         RGB565 destination buffer
+    :type dst: u16 \*
 
-    :param void \*vaddr:
+    :param vaddr:
         XRGB8888 source buffer
+    :type vaddr: void \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         DRM framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_clip_rect \*clip:
+    :param clip:
         Clip rectangle area to copy
+    :type clip: struct drm_clip_rect \*
 
-    :param bool swap:
+    :param swap:
         Swap bytes
+    :type swap: bool
 
 .. _`tinydrm_xrgb8888_to_rgb565.description`:
 
@@ -126,17 +145,21 @@ tinydrm_xrgb8888_to_gray8
 
     Convert XRGB8888 to grayscale
 
-    :param u8 \*dst:
+    :param dst:
         8-bit grayscale destination buffer
+    :type dst: u8 \*
 
-    :param void \*vaddr:
+    :param vaddr:
         XRGB8888 source buffer
+    :type vaddr: void \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         DRM framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_clip_rect \*clip:
+    :param clip:
         Clip rectangle area to copy
+    :type clip: struct drm_clip_rect \*
 
 .. _`tinydrm_xrgb8888_to_gray8.description`:
 
@@ -161,11 +184,13 @@ tinydrm_spi_max_transfer_size
 
     Determine max SPI transfer size
 
-    :param struct spi_device \*spi:
+    :param spi:
         SPI device
+    :type spi: struct spi_device \*
 
-    :param size_t max_len:
+    :param max_len:
         Maximum buffer size needed (optional)
+    :type max_len: size_t
 
 .. _`tinydrm_spi_max_transfer_size.description`:
 
@@ -192,11 +217,13 @@ tinydrm_spi_bpw_supported
 
     Check if bits per word is supported
 
-    :param struct spi_device \*spi:
+    :param spi:
         SPI device
+    :type spi: struct spi_device \*
 
-    :param u8 bpw:
+    :param bpw:
         Bits per word
+    :type bpw: u8
 
 .. _`tinydrm_spi_bpw_supported.description`:
 
@@ -221,23 +248,29 @@ tinydrm_spi_transfer
 
     SPI transfer helper
 
-    :param struct spi_device \*spi:
+    :param spi:
         SPI device
+    :type spi: struct spi_device \*
 
-    :param u32 speed_hz:
+    :param speed_hz:
         Override speed (optional)
+    :type speed_hz: u32
 
-    :param struct spi_transfer \*header:
+    :param header:
         Optional header transfer
+    :type header: struct spi_transfer \*
 
-    :param u8 bpw:
+    :param bpw:
         Bits per word
+    :type bpw: u8
 
-    :param const void \*buf:
+    :param buf:
         Buffer to transfer
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         Buffer length
+    :type len: size_t
 
 .. _`tinydrm_spi_transfer.description`:
 

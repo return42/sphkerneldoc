@@ -10,8 +10,9 @@ xgmac_dma_desc_rings_init
 
     init the RX/TX descriptor rings
 
-    :param struct net_device \*dev:
+    :param dev:
         net device structure
+    :type dev: struct net_device \*
 
 .. _`xgmac_dma_desc_rings_init.description`:
 
@@ -28,8 +29,9 @@ xgmac_tx_complete
 
 .. c:function:: void xgmac_tx_complete(struct xgmac_priv *priv)
 
-    :param struct xgmac_priv \*priv:
+    :param priv:
         private driver structure
+    :type priv: struct xgmac_priv \*
 
 .. _`xgmac_tx_complete.description`:
 
@@ -47,8 +49,9 @@ xgmac_open
 
     open entry point of the driver
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure.
+    :type dev: struct net_device \*
 
 .. _`xgmac_open.description`:
 
@@ -74,8 +77,9 @@ xgmac_stop
 
     close entry point of the driver
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
 .. _`xgmac_stop.description`:
 
@@ -91,12 +95,14 @@ xgmac_xmit
 
 .. c:function:: netdev_tx_t xgmac_xmit(struct sk_buff *skb, struct net_device *dev)
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the socket buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer
         Description : Tx entry point of the driver.
+    :type dev: struct net_device \*
 
 .. _`xgmac_poll`:
 
@@ -107,15 +113,17 @@ xgmac_poll
 
     xgmac poll method (NAPI)
 
-    :param struct napi_struct \*napi:
+    :param napi:
         pointer to the napi structure.
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         maximum number of packets that the current CPU can receive from
         all interfaces.
         Description :
         This function implements the the reception process.
         Also it runs the TX completion thread
+    :type budget: int
 
 .. _`xgmac_tx_timeout`:
 
@@ -124,8 +132,9 @@ xgmac_tx_timeout
 
 .. c:function:: void xgmac_tx_timeout(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         Pointer to net device structure
+    :type dev: struct net_device \*
 
 .. _`xgmac_tx_timeout.description`:
 
@@ -146,8 +155,9 @@ xgmac_set_rx_mode
 
     entry point for multicast addressing
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct net_device \*
 
 .. _`xgmac_set_rx_mode.description`:
 
@@ -173,11 +183,13 @@ xgmac_change_mtu
 
     entry point to change MTU size for the device.
 
-    :param struct net_device \*dev:
+    :param dev:
         device pointer.
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         the new MTU size for the device.
+    :type new_mtu: int
 
 .. _`xgmac_change_mtu.description`:
 
@@ -203,8 +215,9 @@ xgmac_probe
 
 .. c:function:: int xgmac_probe(struct platform_device *pdev)
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer
+    :type pdev: struct platform_device \*
 
 .. _`xgmac_probe.description`:
 
@@ -220,8 +233,9 @@ xgmac_remove
 
 .. c:function:: int xgmac_remove(struct platform_device *pdev)
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device pointer
+    :type pdev: struct platform_device \*
 
 .. _`xgmac_remove.description`:
 

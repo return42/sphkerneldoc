@@ -10,11 +10,13 @@ ir_sony_decode
 
     Decode one Sony pulse or space
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
-    :param struct ir_raw_event ev:
+    :param ev:
         the struct ir_raw_event descriptor of the pulse/space
+    :type ev: struct ir_raw_event
 
 .. _`ir_sony_decode.description`:
 
@@ -32,17 +34,21 @@ ir_sony_encode
 
     Encode a scancode as a stream of raw events
 
-    :param enum rc_proto protocol:
+    :param protocol:
         protocol to encode
+    :type protocol: enum rc_proto
 
-    :param u32 scancode:
+    :param scancode:
         scancode to encode
+    :type scancode: u32
 
-    :param struct ir_raw_event \*events:
+    :param events:
         array of raw ir events to write into
+    :type events: struct ir_raw_event \*
 
-    :param unsigned int max:
+    :param max:
         maximum size of \ ``events``\ 
+    :type max: unsigned int
 
 .. _`ir_sony_encode.return`:
 

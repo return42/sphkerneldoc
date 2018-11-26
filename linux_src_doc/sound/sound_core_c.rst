@@ -10,14 +10,17 @@ register_sound_special_device
 
     register a special sound node
 
-    :param const struct file_operations \*fops:
+    :param fops:
         File operations for the driver
+    :type fops: const struct file_operations \*
 
-    :param int unit:
+    :param unit:
         Unit number to allocate
+    :type unit: int
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
 .. _`register_sound_special_device.description`:
 
@@ -44,11 +47,13 @@ register_sound_mixer
 
     register a mixer device
 
-    :param const struct file_operations \*fops:
+    :param fops:
         File operations for the driver
+    :type fops: const struct file_operations \*
 
-    :param int dev:
+    :param dev:
         Unit number to allocate
+    :type dev: int
 
 .. _`register_sound_mixer.description`:
 
@@ -75,11 +80,13 @@ register_sound_dsp
 
     register a DSP device
 
-    :param const struct file_operations \*fops:
+    :param fops:
         File operations for the driver
+    :type fops: const struct file_operations \*
 
-    :param int dev:
+    :param dev:
         Unit number to allocate
+    :type dev: int
 
 .. _`register_sound_dsp.description`:
 
@@ -109,8 +116,9 @@ unregister_sound_special
 
     unregister a special sound device
 
-    :param int unit:
+    :param unit:
         unit number to allocate
+    :type unit: int
 
 .. _`unregister_sound_special.description`:
 
@@ -130,8 +138,9 @@ unregister_sound_mixer
 
     unregister a mixer
 
-    :param int unit:
+    :param unit:
         unit number to allocate
+    :type unit: int
 
 .. _`unregister_sound_mixer.description`:
 
@@ -150,8 +159,9 @@ unregister_sound_dsp
 
     unregister a DSP device
 
-    :param int unit:
+    :param unit:
         unit number to allocate
+    :type unit: int
 
 .. _`unregister_sound_dsp.description`:
 

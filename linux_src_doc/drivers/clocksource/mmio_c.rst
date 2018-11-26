@@ -10,20 +10,25 @@ clocksource_mmio_init
 
     Initialize a simple mmio based clocksource
 
-    :param void __iomem \*base:
+    :param base:
         Virtual address of the clock readout register
+    :type base: void __iomem \*
 
-    :param const char \*name:
+    :param name:
         Name of the clocksource
+    :type name: const char \*
 
-    :param unsigned long hz:
+    :param hz:
         Frequency of the clocksource in Hz
+    :type hz: unsigned long
 
-    :param int rating:
+    :param rating:
         Rating of the clocksource
+    :type rating: int
 
-    :param unsigned bits:
+    :param bits:
         Number of valid bits
+    :type bits: unsigned
 
     :param u64 (\*read)(struct clocksource \*):
         One of clocksource_mmio_read\*() above

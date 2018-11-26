@@ -10,8 +10,9 @@ tegra_ivc_read_get_next_frame
 
     Peek at the next frame to receive \ ``ivc``\          pointer of the IVC channel
 
-    :param struct tegra_ivc \*ivc:
+    :param ivc:
         *undescribed*
+    :type ivc: struct tegra_ivc \*
 
 .. _`tegra_ivc_read_get_next_frame.description`:
 
@@ -32,8 +33,9 @@ tegra_ivc_read_advance
 
     Advance the read queue \ ``ivc``\          pointer of the IVC channel
 
-    :param struct tegra_ivc \*ivc:
+    :param ivc:
         *undescribed*
+    :type ivc: struct tegra_ivc \*
 
 .. _`tegra_ivc_read_advance.description`:
 
@@ -53,8 +55,9 @@ tegra_ivc_write_get_next_frame
 
     Poke at the next frame to transmit \ ``ivc``\          pointer of the IVC channel
 
-    :param struct tegra_ivc \*ivc:
+    :param ivc:
         *undescribed*
+    :type ivc: struct tegra_ivc \*
 
 .. _`tegra_ivc_write_get_next_frame.description`:
 
@@ -74,8 +77,9 @@ tegra_ivc_write_advance
 
     Advance the write queue \ ``ivc``\          pointer of the IVC channel
 
-    :param struct tegra_ivc \*ivc:
+    :param ivc:
         *undescribed*
+    :type ivc: struct tegra_ivc \*
 
 .. _`tegra_ivc_write_advance.description`:
 
@@ -95,8 +99,9 @@ tegra_ivc_notified
 
     handle internal messages \ ``ivc``\          pointer of the IVC channel
 
-    :param struct tegra_ivc \*ivc:
+    :param ivc:
         *undescribed*
+    :type ivc: struct tegra_ivc \*
 
 .. _`tegra_ivc_notified.description`:
 
@@ -117,8 +122,9 @@ tegra_ivc_reset
 
     initiates a reset of the shared memory state \ ``ivc``\          pointer of the IVC channel
 
-    :param struct tegra_ivc \*ivc:
+    :param ivc:
         *undescribed*
+    :type ivc: struct tegra_ivc \*
 
 .. _`tegra_ivc_reset.description`:
 

@@ -8,8 +8,9 @@ pvr2fb_common_init
 
 .. c:function:: int pvr2fb_common_init( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pvr2fb_common_init.description`:
 

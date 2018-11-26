@@ -10,11 +10,13 @@ disk_get_part
 
     get partition
 
-    :param struct gendisk \*disk:
+    :param disk:
         disk to look partition from
+    :type disk: struct gendisk \*
 
-    :param int partno:
+    :param partno:
         partition number
+    :type partno: int
 
 .. _`disk_get_part.description`:
 
@@ -47,14 +49,17 @@ disk_part_iter_init
 
     initialize partition iterator
 
-    :param struct disk_part_iter \*piter:
+    :param piter:
         iterator to initialize
+    :type piter: struct disk_part_iter \*
 
-    :param struct gendisk \*disk:
+    :param disk:
         disk to iterate over
+    :type disk: struct gendisk \*
 
-    :param unsigned int flags:
+    :param flags:
         DISK_PITER_* flags
+    :type flags: unsigned int
 
 .. _`disk_part_iter_init.description`:
 
@@ -79,8 +84,9 @@ disk_part_iter_next
 
     proceed iterator to the next partition and return it
 
-    :param struct disk_part_iter \*piter:
+    :param piter:
         iterator of interest
+    :type piter: struct disk_part_iter \*
 
 .. _`disk_part_iter_next.description`:
 
@@ -105,8 +111,9 @@ disk_part_iter_exit
 
     finish up partition iteration
 
-    :param struct disk_part_iter \*piter:
+    :param piter:
         iter of interest
+    :type piter: struct disk_part_iter \*
 
 .. _`disk_part_iter_exit.description`:
 
@@ -131,11 +138,13 @@ disk_map_sector_rcu
 
     map sector to partition
 
-    :param struct gendisk \*disk:
+    :param disk:
         gendisk of interest
+    :type disk: struct gendisk \*
 
-    :param sector_t sector:
+    :param sector:
         sector to map
+    :type sector: sector_t
 
 .. _`disk_map_sector_rcu.description`:
 
@@ -169,12 +178,14 @@ register_blkdev
 
     register a new block device
 
-    :param unsigned int major:
+    :param major:
         the requested major device number [1..BLKDEV_MAJOR_MAX-1]. If
         \ ``major``\  = 0, try to allocate any unused major number.
+    :type major: unsigned int
 
-    :param const char \*name:
+    :param name:
         the name of the new block device as a zero terminated string
+    :type name: const char \*
 
 .. _`register_blkdev.description`:
 
@@ -203,8 +214,9 @@ blk_mangle_minor
 
     scatter minor numbers apart
 
-    :param int minor:
+    :param minor:
         minor number to mangle
+    :type minor: int
 
 .. _`blk_mangle_minor.description`:
 
@@ -237,11 +249,13 @@ blk_alloc_devt
 
     allocate a dev_t for a partition
 
-    :param struct hd_struct \*part:
+    :param part:
         partition to allocate dev_t for
+    :type part: struct hd_struct \*
 
-    :param dev_t \*devt:
+    :param devt:
         out parameter for resulting dev_t
+    :type devt: dev_t \*
 
 .. _`blk_alloc_devt.description`:
 
@@ -274,8 +288,9 @@ blk_free_devt
 
     free a dev_t
 
-    :param dev_t devt:
+    :param devt:
         dev_t to free
+    :type devt: dev_t
 
 .. _`blk_free_devt.description`:
 
@@ -296,18 +311,25 @@ Might sleep.
 __device_add_disk
 =================
 
-.. c:function:: void __device_add_disk(struct device *parent, struct gendisk *disk, bool register_queue)
+.. c:function:: void __device_add_disk(struct device *parent, struct gendisk *disk, const struct attribute_group **groups, bool register_queue)
 
     add disk information to kernel list
 
-    :param struct device \*parent:
+    :param parent:
         parent device for the disk
+    :type parent: struct device \*
 
-    :param struct gendisk \*disk:
+    :param disk:
         per-device partitioning information
+    :type disk: struct gendisk \*
 
-    :param bool register_queue:
+    :param groups:
+        Additional per-device sysfs groups
+    :type groups: const struct attribute_group \*\*
+
+    :param register_queue:
         register the queue if set to true
+    :type register_queue: bool
 
 .. _`__device_add_disk.description`:
 
@@ -328,11 +350,13 @@ get_gendisk
 
     get partitioning information for a given device
 
-    :param dev_t devt:
+    :param devt:
         device to get partitioning information for
+    :type devt: dev_t
 
-    :param int \*partno:
+    :param partno:
         returned partition index
+    :type partno: int \*
 
 .. _`get_gendisk.description`:
 
@@ -351,11 +375,13 @@ bdget_disk
 
     do \ :c:func:`bdget`\  by gendisk and partition number
 
-    :param struct gendisk \*disk:
+    :param disk:
         gendisk of interest
+    :type disk: struct gendisk \*
 
-    :param int partno:
+    :param partno:
         partition number
+    :type partno: int
 
 .. _`bdget_disk.description`:
 
@@ -387,11 +413,13 @@ disk_replace_part_tbl
 
     replace disk->part_tbl in RCU-safe way
 
-    :param struct gendisk \*disk:
+    :param disk:
         disk to replace part_tbl for
+    :type disk: struct gendisk \*
 
-    :param struct disk_part_tbl \*new_ptbl:
+    :param new_ptbl:
         new part_tbl to install
+    :type new_ptbl: struct disk_part_tbl \*
 
 .. _`disk_replace_part_tbl.description`:
 
@@ -417,11 +445,13 @@ disk_expand_part_tbl
 
     expand disk->part_tbl
 
-    :param struct gendisk \*disk:
+    :param disk:
         disk to expand part_tbl for
+    :type disk: struct gendisk \*
 
-    :param int partno:
+    :param partno:
         expand such that this partno can fit in
+    :type partno: int
 
 .. _`disk_expand_part_tbl.description`:
 
@@ -455,8 +485,9 @@ disk_block_events
 
     block and flush disk event checking
 
-    :param struct gendisk \*disk:
+    :param disk:
         disk to block events for
+    :type disk: struct gendisk \*
 
 .. _`disk_block_events.description`:
 
@@ -487,8 +518,9 @@ disk_unblock_events
 
     unblock disk event checking
 
-    :param struct gendisk \*disk:
+    :param disk:
         disk to unblock events for
+    :type disk: struct gendisk \*
 
 .. _`disk_unblock_events.description`:
 
@@ -514,11 +546,13 @@ disk_flush_events
 
     schedule immediate event checking and flushing
 
-    :param struct gendisk \*disk:
+    :param disk:
         disk to check and flush events for
+    :type disk: struct gendisk \*
 
-    :param unsigned int mask:
+    :param mask:
         events to flush
+    :type mask: unsigned int
 
 .. _`disk_flush_events.description`:
 
@@ -527,7 +561,7 @@ Description
 
 Schedule immediate event checking on \ ``disk``\  if not blocked.  Events in
 \ ``mask``\  are scheduled to be cleared from the driver.  Note that this
-doesn't clear the events from \ ``disk``\ ->ev.
+doesn't clear the events from \ ``disk->ev``\ .
 
 .. _`disk_flush_events.context`:
 
@@ -545,11 +579,13 @@ disk_clear_events
 
     synchronously check, clear and return pending events
 
-    :param struct gendisk \*disk:
+    :param disk:
         disk to fetch and clear events from
+    :type disk: struct gendisk \*
 
-    :param unsigned int mask:
+    :param mask:
         mask of events to be fetched and cleared
+    :type mask: unsigned int
 
 .. _`disk_clear_events.description`:
 

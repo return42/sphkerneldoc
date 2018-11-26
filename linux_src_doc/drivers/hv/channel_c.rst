@@ -10,32 +10,38 @@ vmbus_sendpacket
 
     Send the specified buffer on the given channel
 
-    :param struct vmbus_channel \*channel:
-        Pointer to vmbus_channel structure.
+    :param channel:
+        Pointer to vmbus_channel structure
+    :type channel: struct vmbus_channel \*
 
-    :param void \*buffer:
-        Pointer to the buffer you want to receive the data into.
+    :param buffer:
+        Pointer to the buffer you want to send the data from.
+    :type buffer: void \*
 
-    :param u32 bufferlen:
-        Maximum size of what the the buffer will hold
+    :param bufferlen:
+        Maximum size of what the buffer holds.
+    :type bufferlen: u32
 
-    :param u64 requestid:
+    :param requestid:
         Identifier of the request
+    :type requestid: u64
 
-    :param enum vmbus_packet_type type:
-        Type of packet that is being send e.g. negotiate, time
+    :param type:
+        Type of packet that is being sent e.g. negotiate, time
         packet etc.
+    :type type: enum vmbus_packet_type
 
-    :param u32 flags:
-        *undescribed*
+    :param flags:
+        0 or VMBUS_DATA_PACKET_FLAG_COMPLETION_REQUESTED
+    :type flags: u32
 
 .. _`vmbus_sendpacket.description`:
 
 Description
 -----------
 
-Sends data in \ ``buffer``\  directly to hyper-v via the vmbus
-This will send the data unparsed to hyper-v.
+Sends data in \ ``buffer``\  directly to Hyper-V via the vmbus.
+This will send the data unparsed to Hyper-V.
 
 Mainly used by Hyper-V drivers.
 
@@ -48,23 +54,29 @@ Mainly used by Hyper-V drivers.
 
     Retrieve the user packet on the specified channel
 
-    :param struct vmbus_channel \*channel:
-        Pointer to vmbus_channel structure.
+    :param channel:
+        Pointer to vmbus_channel structure
+    :type channel: struct vmbus_channel \*
 
-    :param void \*buffer:
+    :param buffer:
         Pointer to the buffer you want to receive the data into.
+    :type buffer: void \*
 
-    :param u32 bufferlen:
-        Maximum size of what the the buffer will hold
+    :param bufferlen:
+        Maximum size of what the buffer can hold.
+    :type bufferlen: u32
 
-    :param u32 \*buffer_actual_len:
-        The actual size of the data after it was received
+    :param buffer_actual_len:
+        The actual size of the data after it was received.
+    :type buffer_actual_len: u32 \*
 
-    :param u64 \*requestid:
+    :param requestid:
         Identifier of the request
+    :type requestid: u64 \*
 
-    :param bool raw:
-        *undescribed*
+    :param raw:
+        true means keep the vmpacket_descriptor header in the received data.
+    :type raw: bool
 
 .. _`__vmbus_recvpacket.description`:
 

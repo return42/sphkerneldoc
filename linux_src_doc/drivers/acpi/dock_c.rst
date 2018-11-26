@@ -10,11 +10,13 @@ add_dock_dependent_device
 
     associate a device with the dock station
 
-    :param struct dock_station \*ds:
+    :param ds:
         Dock station.
+    :type ds: struct dock_station \*
 
-    :param struct acpi_device \*adev:
+    :param adev:
         Dependent ACPI device object.
+    :type adev: struct acpi_device \*
 
 .. _`add_dock_dependent_device.description`:
 
@@ -32,11 +34,13 @@ find_dock_dependent_device
 
     get a device dependent on this dock
 
-    :param struct dock_station \*ds:
+    :param ds:
         the dock station
+    :type ds: struct dock_station \*
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device object to find.
+    :type adev: struct acpi_device \*
 
 .. _`find_dock_dependent_device.description`:
 
@@ -55,8 +59,9 @@ is_dock_device
 
     see if a device is on a dock station
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device object to check.
+    :type adev: struct acpi_device \*
 
 .. _`is_dock_device.description`:
 
@@ -76,8 +81,9 @@ dock_present
 
     see if the dock station is present.
 
-    :param struct dock_station \*ds:
+    :param ds:
         the dock station
+    :type ds: struct dock_station \*
 
 .. _`dock_present.description`:
 
@@ -96,8 +102,9 @@ hot_remove_dock_devices
 
     Remove dock station devices.
 
-    :param struct dock_station \*ds:
+    :param ds:
         Dock station.
+    :type ds: struct dock_station \*
 
 .. _`hotplug_dock_devices`:
 
@@ -108,11 +115,13 @@ hotplug_dock_devices
 
     Insert devices on a dock station.
 
-    :param struct dock_station \*ds:
+    :param ds:
         the dock station
+    :type ds: struct dock_station \*
 
-    :param u32 event:
+    :param event:
         either bus check or device check request
+    :type event: u32
 
 .. _`hotplug_dock_devices.description`:
 
@@ -133,11 +142,13 @@ handle_dock
 
     handle a dock event
 
-    :param struct dock_station \*ds:
+    :param ds:
         the dock station
+    :type ds: struct dock_station \*
 
-    :param int dock:
+    :param dock:
         to dock, or undock - that is the question
+    :type dock: int
 
 .. _`handle_dock.description`:
 
@@ -155,8 +166,9 @@ dock_in_progress
 
     see if we are in the middle of handling a dock event
 
-    :param struct dock_station \*ds:
+    :param ds:
         the dock station
+    :type ds: struct dock_station \*
 
 .. _`dock_in_progress.description`:
 
@@ -176,11 +188,13 @@ handle_eject_request
 
     handle an undock request checking for error conditions
 
-    :param struct dock_station \*ds:
+    :param ds:
         *undescribed*
+    :type ds: struct dock_station \*
 
-    :param u32 event:
+    :param event:
         *undescribed*
+    :type event: u32
 
 .. _`handle_eject_request.description`:
 
@@ -199,11 +213,13 @@ dock_notify
 
     Handle ACPI dock notification.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         Dock station's ACPI device object.
+    :type adev: struct acpi_device \*
 
-    :param u32 event:
+    :param event:
         Event code.
+    :type event: u32
 
 .. _`dock_notify.description`:
 
@@ -223,8 +239,9 @@ acpi_dock_add
 
     Add a new dock station
 
-    :param struct acpi_device \*adev:
+    :param adev:
         Dock station ACPI device object.
+    :type adev: struct acpi_device \*
 
 .. _`acpi_dock_add.description`:
 

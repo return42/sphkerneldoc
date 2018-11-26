@@ -10,21 +10,24 @@ inode_io_list_move_locked
 
     move an inode onto a bdi_writeback IO list
 
-    :param struct inode \*inode:
+    :param inode:
         inode to be moved
+    :type inode: struct inode \*
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         target bdi_writeback
+    :type wb: struct bdi_writeback \*
 
-    :param struct list_head \*head:
-        one of \ ``wb``\ ->b_{dirty|io|more_io|dirty_time}
+    :param head:
+        one of \ ``wb->b_``\ {dirty|io|more_io|dirty_time}
+    :type head: struct list_head \*
 
 .. _`inode_io_list_move_locked.description`:
 
 Description
 -----------
 
-Move \ ``inode``\ ->i_io_list to \ ``list``\  of \ ``wb``\  and set \ ``WB_has_dirty_io``\ .
+Move \ ``inode->i_io_list``\  to \ ``list``\  of \ ``wb``\  and set \ ``WB_has_dirty_io``\ .
 Returns \ ``true``\  if \ ``inode``\  is the first occupant of the !dirty_time IO
 lists; otherwise, \ ``false``\ .
 
@@ -37,18 +40,20 @@ inode_io_list_del_locked
 
     remove an inode from its bdi_writeback IO list
 
-    :param struct inode \*inode:
+    :param inode:
         inode to be removed
+    :type inode: struct inode \*
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         bdi_writeback \ ``inode``\  is being removed from
+    :type wb: struct bdi_writeback \*
 
 .. _`inode_io_list_del_locked.description`:
 
 Description
 -----------
 
-Remove \ ``inode``\  which may be on one of \ ``wb``\ ->b_{dirty|io|more_io} lists and
+Remove \ ``inode``\  which may be on one of \ ``wb->b_``\ {dirty|io|more_io} lists and
 clear \ ``WB_has_dirty_io``\  if all are empty afterwards.
 
 .. _`wb_wait_for_completion`:
@@ -60,11 +65,13 @@ wb_wait_for_completion
 
     wait for completion of bdi_writeback_works
 
-    :param struct backing_dev_info \*bdi:
+    :param bdi:
         bdi work items were issued to
+    :type bdi: struct backing_dev_info \*
 
-    :param struct wb_completion \*done:
+    :param done:
         target wb_completion
+    :type done: struct wb_completion \*
 
 .. _`wb_wait_for_completion.description`:
 
@@ -86,15 +93,16 @@ locked_inode_to_wb_and_lock_list
 
     determine a locked inode's wb and lock it
 
-    :param struct inode \*inode:
+    :param inode:
         inode of interest with i_lock held
+    :type inode: struct inode \*
 
 .. _`locked_inode_to_wb_and_lock_list.description`:
 
 Description
 -----------
 
-Returns \ ``inode``\ 's wb with its list_lock held.  \ ``inode``\ ->i_lock must be
+Returns \ ``inode``\ 's wb with its list_lock held.  \ ``inode->i_lock``\  must be
 held on entry and is released on return.  The returned wb is guaranteed
 to stay \ ``inode``\ 's associated wb until its list_lock is released.
 
@@ -107,15 +115,16 @@ inode_to_wb_and_lock_list
 
     determine an inode's wb and lock it
 
-    :param struct inode \*inode:
+    :param inode:
         inode of interest
+    :type inode: struct inode \*
 
 .. _`inode_to_wb_and_lock_list.description`:
 
 Description
 -----------
 
-Same as \ :c:func:`locked_inode_to_wb_and_lock_list`\  but \ ``inode``\ ->i_lock isn't held
+Same as \ :c:func:`locked_inode_to_wb_and_lock_list`\  but \ ``inode->i_lock``\  isn't held
 on entry.
 
 .. _`inode_switch_wbs`:
@@ -127,11 +136,13 @@ inode_switch_wbs
 
     change the wb association of an inode
 
-    :param struct inode \*inode:
+    :param inode:
         target inode
+    :type inode: struct inode \*
 
-    :param int new_wb_id:
+    :param new_wb_id:
         ID of the new wb
+    :type new_wb_id: int
 
 .. _`inode_switch_wbs.description`:
 
@@ -150,11 +161,13 @@ wbc_attach_and_unlock_inode
 
     associate wbc with target inode and unlock it
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         writeback_control of interest
+    :type wbc: struct writeback_control \*
 
-    :param struct inode \*inode:
+    :param inode:
         target inode
+    :type inode: struct inode \*
 
 .. _`wbc_attach_and_unlock_inode.description`:
 
@@ -175,8 +188,9 @@ wbc_detach_inode
 
     disassociate wbc from inode and perform foreign detection
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         writeback_control of the just finished writeback
+    :type wbc: struct writeback_control \*
 
 .. _`wbc_detach_inode.description`:
 
@@ -225,14 +239,17 @@ wbc_account_io
 
     account IO issued during writeback
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         writeback_control of the writeback in progress
+    :type wbc: struct writeback_control \*
 
-    :param struct page \*page:
+    :param page:
         page being written out
+    :type page: struct page \*
 
-    :param size_t bytes:
+    :param bytes:
         number of bytes being written out
+    :type bytes: size_t
 
 .. _`wbc_account_io.description`:
 
@@ -252,11 +269,13 @@ inode_congested
 
     test whether an inode is congested
 
-    :param struct inode \*inode:
+    :param inode:
         inode to test for congestion (may be NULL)
+    :type inode: struct inode \*
 
-    :param int cong_bits:
+    :param cong_bits:
         mask of WB_[a]sync_congested bits to test
+    :type cong_bits: int
 
 .. _`inode_congested.description`:
 
@@ -283,11 +302,13 @@ wb_split_bdi_pages
 
     split nr_pages to write according to bandwidth
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         target bdi_writeback to split \ ``nr_pages``\  to
+    :type wb: struct bdi_writeback \*
 
-    :param long nr_pages:
+    :param nr_pages:
         number of pages to write for the whole bdi
+    :type nr_pages: long
 
 .. _`wb_split_bdi_pages.description`:
 
@@ -296,7 +317,7 @@ Description
 
 Split \ ``wb``\ 's portion of \ ``nr_pages``\  according to \ ``wb``\ 's write bandwidth in
 relation to the total write bandwidth of all wb's w/ dirty inodes on
-\ ``wb``\ ->bdi.
+\ ``wb->bdi``\ .
 
 .. _`bdi_split_work_to_wbs`:
 
@@ -307,14 +328,17 @@ bdi_split_work_to_wbs
 
     split a wb_writeback_work to all wb's of a bdi
 
-    :param struct backing_dev_info \*bdi:
+    :param bdi:
         target backing_dev_info
+    :type bdi: struct backing_dev_info \*
 
-    :param struct wb_writeback_work \*base_work:
+    :param base_work:
         wb_writeback_work to issue
+    :type base_work: struct wb_writeback_work \*
 
-    :param bool skip_if_busy:
+    :param skip_if_busy:
         skip wb's which already have writeback in progress
+    :type skip_if_busy: bool
 
 .. _`bdi_split_work_to_wbs.description`:
 
@@ -322,7 +346,7 @@ Description
 -----------
 
 Split and issue \ ``base_work``\  to all wb's (bdi_writeback's) of \ ``bdi``\  which
-have dirty inodes.  If \ ``base_work``\ ->nr_page isn't \ ``LONG_MAX``\ , it's
+have dirty inodes.  If \ ``base_work->nr_page``\  isn't \ ``LONG_MAX``\ , it's
 distributed to the busy wbs according to each wb's proportion in the
 total active write bandwidth of \ ``bdi``\ .
 
@@ -335,8 +359,9 @@ cgroup_writeback_umount
 
     flush inode wb switches for umount
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cgroup_writeback_umount.description`:
 
@@ -359,8 +384,9 @@ wb_start_background_writeback
 
     start background writeback
 
-    :param struct bdi_writeback \*wb:
+    :param wb:
         bdi_writback to write from
+    :type wb: struct bdi_writeback \*
 
 .. _`wb_start_background_writeback.description`:
 
@@ -381,11 +407,13 @@ __mark_inode_dirty
 
     internal function
 
-    :param struct inode \*inode:
+    :param inode:
         inode to mark
+    :type inode: struct inode \*
 
-    :param int flags:
+    :param flags:
         what kind of dirty (i.e. I_DIRTY_SYNC)
+    :type flags: int
 
 .. _`__mark_inode_dirty.description`:
 
@@ -421,14 +449,17 @@ writeback_inodes_sb_nr
 
     writeback dirty inodes from given super_block
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock
+    :type sb: struct super_block \*
 
-    :param unsigned long nr:
+    :param nr:
         the number of pages to write
+    :type nr: unsigned long
 
-    :param enum wb_reason reason:
+    :param reason:
         reason why some writeback work initiated
+    :type reason: enum wb_reason
 
 .. _`writeback_inodes_sb_nr.description`:
 
@@ -448,11 +479,13 @@ writeback_inodes_sb
 
     writeback dirty inodes from given super_block
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock
+    :type sb: struct super_block \*
 
-    :param enum wb_reason reason:
+    :param reason:
         reason why some writeback work was initiated
+    :type reason: enum wb_reason
 
 .. _`writeback_inodes_sb.description`:
 
@@ -472,11 +505,13 @@ try_to_writeback_inodes_sb
 
     try to start writeback if none underway
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock
+    :type sb: struct super_block \*
 
-    :param enum wb_reason reason:
+    :param reason:
         reason why some writeback work was initiated
+    :type reason: enum wb_reason
 
 .. _`try_to_writeback_inodes_sb.description`:
 
@@ -494,8 +529,9 @@ sync_inodes_sb
 
     sync sb inode pages
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock
+    :type sb: struct super_block \*
 
 .. _`sync_inodes_sb.description`:
 
@@ -514,11 +550,13 @@ write_inode_now
 
     write an inode to disk
 
-    :param struct inode \*inode:
+    :param inode:
         inode to write to disk
+    :type inode: struct inode \*
 
-    :param int sync:
+    :param sync:
         whether the write should be synchronous or not
+    :type sync: int
 
 .. _`write_inode_now.description`:
 
@@ -539,11 +577,13 @@ sync_inode
 
     write an inode and its pages to disk.
 
-    :param struct inode \*inode:
+    :param inode:
         the inode to sync
+    :type inode: struct inode \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         controls the writeback mode
+    :type wbc: struct writeback_control \*
 
 .. _`sync_inode.description`:
 
@@ -565,11 +605,13 @@ sync_inode_metadata
 
     write an inode to disk
 
-    :param struct inode \*inode:
+    :param inode:
         the inode to sync
+    :type inode: struct inode \*
 
-    :param int wait:
+    :param wait:
         wait for I/O to complete.
+    :type wait: int
 
 .. _`sync_inode_metadata.description`:
 

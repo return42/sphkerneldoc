@@ -8,17 +8,21 @@ hwarc_filter_evt_beacon_WUSB_0100
 
 .. c:function:: int hwarc_filter_evt_beacon_WUSB_0100(struct uwb_rc *rc, struct uwb_rceb **header, const size_t buf_size, size_t *new_size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rceb \*\*header:
+    :param header:
         the incoming event
+    :type header: struct uwb_rceb \*\*
 
-    :param const size_t buf_size:
+    :param buf_size:
         size of buffer containing incoming event
+    :type buf_size: const size_t
 
-    :param size_t \*new_size:
+    :param new_size:
         size of event after filtering completed
+    :type new_size: size_t \*
 
 .. _`hwarc_filter_evt_beacon_wusb_0100.description`:
 
@@ -39,17 +43,21 @@ hwarc_filter_evt_drp_avail_WUSB_0100
 
 .. c:function:: int hwarc_filter_evt_drp_avail_WUSB_0100(struct uwb_rc *rc, struct uwb_rceb **header, const size_t buf_size, size_t *new_size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rceb \*\*header:
+    :param header:
         the incoming event
+    :type header: struct uwb_rceb \*\*
 
-    :param const size_t buf_size:
+    :param buf_size:
         size of buffer containing incoming event
+    :type buf_size: const size_t
 
-    :param size_t \*new_size:
+    :param new_size:
         size of event after filtering completed
+    :type new_size: size_t \*
 
 .. _`hwarc_filter_evt_drp_wusb_0100`:
 
@@ -58,17 +66,21 @@ hwarc_filter_evt_drp_WUSB_0100
 
 .. c:function:: int hwarc_filter_evt_drp_WUSB_0100(struct uwb_rc *rc, struct uwb_rceb **header, const size_t buf_size, size_t *new_size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rceb \*\*header:
+    :param header:
         the incoming event
+    :type header: struct uwb_rceb \*\*
 
-    :param const size_t buf_size:
+    :param buf_size:
         size of buffer containing incoming event
+    :type buf_size: const size_t
 
-    :param size_t \*new_size:
+    :param new_size:
         size of event after filtering completed
+    :type new_size: size_t \*
 
 .. _`hwarc_filter_evt_drp_wusb_0100.description`:
 
@@ -88,14 +100,17 @@ hwarc_filter_cmd_scan_WUSB_0100
 
 .. c:function:: int hwarc_filter_cmd_scan_WUSB_0100(struct uwb_rc *rc, struct uwb_rccb **header, size_t *size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rccb \*\*header:
+    :param header:
         command sent to device (compliant to WHCI 0.95)
+    :type header: struct uwb_rccb \*\*
 
-    :param size_t \*size:
+    :param size:
         size of command sent to device
+    :type size: size_t \*
 
 .. _`hwarc_filter_cmd_scan_wusb_0100.description`:
 
@@ -113,14 +128,17 @@ hwarc_filter_cmd_set_drp_ie_WUSB_0100
 
 .. c:function:: int hwarc_filter_cmd_set_drp_ie_WUSB_0100(struct uwb_rc *rc, struct uwb_rccb **header, size_t *size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rccb \*\*header:
+    :param header:
         command sent to device (compliant to WHCI 0.95)
+    :type header: struct uwb_rccb \*\*
 
-    :param size_t \*size:
+    :param size:
         size of command sent to device
+    :type size: size_t \*
 
 .. _`hwarc_filter_cmd_set_drp_ie_wusb_0100.description`:
 
@@ -141,14 +159,17 @@ hwarc_filter_cmd_WUSB_0100
 
 .. c:function:: int hwarc_filter_cmd_WUSB_0100(struct uwb_rc *rc, struct uwb_rccb **header, size_t *size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rccb \*\*header:
+    :param header:
         WHCI 0.95 compliant command from driver
+    :type header: struct uwb_rccb \*\*
 
-    :param size_t \*size:
+    :param size:
         length of command
+    :type size: size_t \*
 
 .. _`hwarc_filter_cmd_wusb_0100.description`:
 
@@ -177,14 +198,17 @@ hwarc_filter_cmd
 
 .. c:function:: int hwarc_filter_cmd(struct uwb_rc *rc, struct uwb_rccb **header, size_t *size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rccb \*\*header:
+    :param header:
         WHCI 0.95 compliant command from driver
+    :type header: struct uwb_rccb \*\*
 
-    :param size_t \*size:
+    :param size:
         length of command
+    :type size: size_t \*
 
 .. _`hwarc_filter_cmd.description`:
 
@@ -202,22 +226,27 @@ hwarc_get_event_size
 
 .. c:function:: ssize_t hwarc_get_event_size(struct uwb_rc *rc, const struct uwb_rceb *rceb, size_t core_size, size_t offset, const size_t buf_size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param const struct uwb_rceb \*rceb:
+    :param rceb:
         event for which we compute the size, it contains a variable
         length field.
+    :type rceb: const struct uwb_rceb \*
 
-    :param size_t core_size:
+    :param core_size:
         size of the "non variable" part of the event
+    :type core_size: size_t
 
-    :param size_t offset:
+    :param offset:
         place in event where the length of the variable part is stored
+    :type offset: size_t
 
-    :param const size_t buf_size:
+    :param buf_size:
         total length of buffer in which event arrived - we need to make
         sure we read the offset in memory that is still part of the event
+    :type buf_size: const size_t
 
 .. _`hwarc_filter_event_wusb_0100`:
 
@@ -226,20 +255,25 @@ hwarc_filter_event_WUSB_0100
 
 .. c:function:: int hwarc_filter_event_WUSB_0100(struct uwb_rc *rc, struct uwb_rceb **header, const size_t buf_size, size_t *_real_size, size_t *_new_size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rceb \*\*header:
+    :param header:
         incoming event
+    :type header: struct uwb_rceb \*\*
 
-    :param const size_t buf_size:
+    :param buf_size:
         size of buffer in which event arrived
+    :type buf_size: const size_t
 
-    :param size_t \*_real_size:
+    :param _real_size:
         *undescribed*
+    :type _real_size: size_t \*
 
-    :param size_t \*_new_size:
+    :param _new_size:
         *undescribed*
+    :type _new_size: size_t \*
 
 .. _`hwarc_filter_event_wusb_0100.description`:
 
@@ -267,20 +301,25 @@ hwarc_filter_event
 
 .. c:function:: int hwarc_filter_event(struct uwb_rc *rc, struct uwb_rceb **header, const size_t buf_size, size_t *_real_size, size_t *_new_size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param struct uwb_rceb \*\*header:
+    :param header:
         incoming event
+    :type header: struct uwb_rceb \*\*
 
-    :param const size_t buf_size:
+    :param buf_size:
         size of buffer in which event arrived
+    :type buf_size: const size_t
 
-    :param size_t \*_real_size:
+    :param _real_size:
         *undescribed*
+    :type _real_size: size_t \*
 
-    :param size_t \*_new_size:
+    :param _new_size:
         size of event after filtered
+    :type _new_size: size_t \*
 
 .. _`hwarc_filter_event.description`:
 
@@ -302,14 +341,17 @@ hwarc_cmd
 
 .. c:function:: int hwarc_cmd(struct uwb_rc *uwb_rc, const struct uwb_rccb *cmd, size_t cmd_size)
 
-    :param struct uwb_rc \*uwb_rc:
+    :param uwb_rc:
         *undescribed*
+    :type uwb_rc: struct uwb_rc \*
 
-    :param const struct uwb_rccb \*cmd:
+    :param cmd:
         Buffer containing the RCCB and payload to execute
+    :type cmd: const struct uwb_rccb \*
 
-    :param size_t cmd_size:
+    :param cmd_size:
         Size of the command buffer.
+    :type cmd_size: size_t
 
 .. _`hwarc_cmd.note`:
 
@@ -325,8 +367,9 @@ hwarc_neep_cb
 
 .. c:function:: void hwarc_neep_cb(struct urb *urb)
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`hwarc_neep_cb.description`:
 
@@ -343,8 +386,9 @@ hwarc_neep_init
 
 .. c:function:: int hwarc_neep_init(struct uwb_rc *rc)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
 .. _`hwarc_neep_init.description`:
 
@@ -365,8 +409,9 @@ hwarc_get_version
 
     specific descriptor
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
 .. _`hwarc_get_version.note`:
 

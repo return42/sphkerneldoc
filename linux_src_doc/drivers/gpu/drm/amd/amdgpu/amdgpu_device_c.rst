@@ -10,8 +10,9 @@ amdgpu_device_is_px
 
     Is the device is a dGPU with HG/PX power control
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device pointer
+    :type dev: struct drm_device \*
 
 .. _`amdgpu_device_is_px.description`:
 
@@ -30,14 +31,17 @@ amdgpu_mm_rreg
 
     read a memory mapped IO register
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t reg:
+    :param reg:
         dword aligned register offset
+    :type reg: uint32_t
 
-    :param uint32_t acc_flags:
+    :param acc_flags:
         access flags which require special behavior
+    :type acc_flags: uint32_t
 
 .. _`amdgpu_mm_rreg.description`:
 
@@ -55,11 +59,13 @@ amdgpu_mm_rreg8
 
     read a memory mapped IO register
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t offset:
+    :param offset:
         byte aligned register offset
+    :type offset: uint32_t
 
 .. _`amdgpu_mm_rreg8.description`:
 
@@ -77,14 +83,17 @@ amdgpu_mm_wreg8
 
     read a memory mapped IO register
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t offset:
+    :param offset:
         byte aligned register offset
+    :type offset: uint32_t
 
-    :param uint8_t value:
+    :param value:
         8 bit value to write
+    :type value: uint8_t
 
 .. _`amdgpu_mm_wreg8.description`:
 
@@ -102,17 +111,21 @@ amdgpu_mm_wreg
 
     write to a memory mapped IO register
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t reg:
+    :param reg:
         dword aligned register offset
+    :type reg: uint32_t
 
-    :param uint32_t v:
+    :param v:
         32 bit value to write to the register
+    :type v: uint32_t
 
-    :param uint32_t acc_flags:
+    :param acc_flags:
         access flags which require special behavior
+    :type acc_flags: uint32_t
 
 .. _`amdgpu_mm_wreg.description`:
 
@@ -130,11 +143,13 @@ amdgpu_io_rreg
 
     read an IO register
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 reg:
+    :param reg:
         dword aligned register offset
+    :type reg: u32
 
 .. _`amdgpu_io_rreg.description`:
 
@@ -152,14 +167,17 @@ amdgpu_io_wreg
 
     write to an IO register
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 reg:
+    :param reg:
         dword aligned register offset
+    :type reg: u32
 
-    :param u32 v:
+    :param v:
         32 bit value to write to the register
+    :type v: u32
 
 .. _`amdgpu_io_wreg.description`:
 
@@ -177,11 +195,13 @@ amdgpu_mm_rdoorbell
 
     read a doorbell dword
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 index:
+    :param index:
         doorbell index
+    :type index: u32
 
 .. _`amdgpu_mm_rdoorbell.description`:
 
@@ -200,14 +220,17 @@ amdgpu_mm_wdoorbell
 
     write a doorbell dword
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 index:
+    :param index:
         doorbell index
+    :type index: u32
 
-    :param u32 v:
+    :param v:
         value to write
+    :type v: u32
 
 .. _`amdgpu_mm_wdoorbell.description`:
 
@@ -226,11 +249,13 @@ amdgpu_mm_rdoorbell64
 
     read a doorbell Qword
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 index:
+    :param index:
         doorbell index
+    :type index: u32
 
 .. _`amdgpu_mm_rdoorbell64.description`:
 
@@ -249,14 +274,17 @@ amdgpu_mm_wdoorbell64
 
     write a doorbell Qword
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 index:
+    :param index:
         doorbell index
+    :type index: u32
 
-    :param u64 v:
+    :param v:
         value to write
+    :type v: u64
 
 .. _`amdgpu_mm_wdoorbell64.description`:
 
@@ -275,11 +303,13 @@ amdgpu_invalid_rreg
 
     dummy reg read function
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t reg:
+    :param reg:
         offset of register
+    :type reg: uint32_t
 
 .. _`amdgpu_invalid_rreg.description`:
 
@@ -299,14 +329,17 @@ amdgpu_invalid_wreg
 
     dummy reg write function
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t reg:
+    :param reg:
         offset of register
+    :type reg: uint32_t
 
-    :param uint32_t v:
+    :param v:
         value to write to the register
+    :type v: uint32_t
 
 .. _`amdgpu_invalid_wreg.description`:
 
@@ -325,14 +358,17 @@ amdgpu_block_invalid_rreg
 
     dummy reg read function
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t block:
+    :param block:
         offset of instance
+    :type block: uint32_t
 
-    :param uint32_t reg:
+    :param reg:
         offset of register
+    :type reg: uint32_t
 
 .. _`amdgpu_block_invalid_rreg.description`:
 
@@ -352,17 +388,21 @@ amdgpu_block_invalid_wreg
 
     dummy reg write function
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t block:
+    :param block:
         offset of instance
+    :type block: uint32_t
 
-    :param uint32_t reg:
+    :param reg:
         offset of register
+    :type reg: uint32_t
 
-    :param uint32_t v:
+    :param v:
         value to write to the register
+    :type v: uint32_t
 
 .. _`amdgpu_block_invalid_wreg.description`:
 
@@ -381,8 +421,9 @@ amdgpu_device_vram_scratch_init
 
     allocate the VRAM scratch page
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_vram_scratch_init.description`:
 
@@ -401,8 +442,9 @@ amdgpu_device_vram_scratch_fini
 
     Free the VRAM scratch page
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_vram_scratch_fini.description`:
 
@@ -420,14 +462,17 @@ amdgpu_device_program_register_sequence
 
     program an array of registers.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param const u32 \*registers:
+    :param registers:
         pointer to the register array
+    :type registers: const u32 \*
 
-    :param const u32 array_size:
+    :param array_size:
         size of the register array
+    :type array_size: const u32
 
 .. _`amdgpu_device_program_register_sequence.description`:
 
@@ -446,8 +491,9 @@ amdgpu_device_pci_config_reset
 
     reset the GPU
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_pci_config_reset.description`:
 
@@ -466,8 +512,9 @@ amdgpu_device_doorbell_init
 
     Init doorbell driver information.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_doorbell_init.description`:
 
@@ -486,8 +533,9 @@ amdgpu_device_doorbell_fini
 
     Tear down doorbell driver information.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_doorbell_fini.description`:
 
@@ -505,8 +553,9 @@ amdgpu_device_wb_fini
 
     Disable Writeback and free memory
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_wb_fini.description`:
 
@@ -525,8 +574,9 @@ amdgpu_device_wb_init
 
     Init Writeback driver info and allocate memory
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_wb_init.description`:
 
@@ -546,11 +596,13 @@ amdgpu_device_wb_get
 
     Allocate a wb entry
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 \*wb:
+    :param wb:
         wb index
+    :type wb: u32 \*
 
 .. _`amdgpu_device_wb_get.description`:
 
@@ -569,11 +621,13 @@ amdgpu_device_wb_free
 
     Free a wb entry
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 wb:
+    :param wb:
         wb index
+    :type wb: u32
 
 .. _`amdgpu_device_wb_free.description`:
 
@@ -581,64 +635,6 @@ Description
 -----------
 
 Free a wb slot allocated for use by the driver (all asics)
-
-.. _`amdgpu_device_vram_location`:
-
-amdgpu_device_vram_location
-===========================
-
-.. c:function:: void amdgpu_device_vram_location(struct amdgpu_device *adev, struct amdgpu_gmc *mc, u64 base)
-
-    try to find VRAM location
-
-    :param struct amdgpu_device \*adev:
-        amdgpu device structure holding all necessary informations
-
-    :param struct amdgpu_gmc \*mc:
-        memory controller structure holding memory informations
-
-    :param u64 base:
-        base address at which to put VRAM
-
-.. _`amdgpu_device_vram_location.description`:
-
-Description
------------
-
-Function will try to place VRAM at base address provided
-as parameter.
-
-.. _`amdgpu_device_gart_location`:
-
-amdgpu_device_gart_location
-===========================
-
-.. c:function:: void amdgpu_device_gart_location(struct amdgpu_device *adev, struct amdgpu_gmc *mc)
-
-    try to find GTT location
-
-    :param struct amdgpu_device \*adev:
-        amdgpu device structure holding all necessary informations
-
-    :param struct amdgpu_gmc \*mc:
-        memory controller structure holding memory informations
-
-.. _`amdgpu_device_gart_location.description`:
-
-Description
------------
-
-Function will place try to place GTT before or after VRAM.
-
-If GTT size is bigger than space left then we ajust GTT size.
-Thus function will never fails.
-
-.. _`amdgpu_device_gart_location.fixme`:
-
-FIXME
------
-
-when reducing GTT size align new size on power of 2.
 
 .. _`amdgpu_device_resize_fb_bar`:
 
@@ -649,8 +645,9 @@ amdgpu_device_resize_fb_bar
 
     try to resize FB BAR
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_resize_fb_bar.description`:
 
@@ -670,8 +667,9 @@ amdgpu_device_need_post
 
     check if the hw need post or not
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_need_post.description`:
 
@@ -691,11 +689,13 @@ amdgpu_device_vga_set_decode
 
     enable/disable vga decode
 
-    :param void \*cookie:
+    :param cookie:
         amdgpu_device pointer
+    :type cookie: void \*
 
-    :param bool state:
+    :param state:
         enable/disable vga decode
+    :type state: bool
 
 .. _`amdgpu_device_vga_set_decode.description`:
 
@@ -714,8 +714,9 @@ amdgpu_device_check_block_size
 
     validate the vm block size
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_check_block_size.description`:
 
@@ -736,8 +737,9 @@ amdgpu_device_check_vm_size
 
     validate the vm size
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_check_vm_size.description`:
 
@@ -756,8 +758,9 @@ amdgpu_device_check_arguments
 
     validate module params
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_check_arguments.description`:
 
@@ -776,11 +779,13 @@ amdgpu_switcheroo_set_state
 
     set switcheroo state
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci dev pointer
+    :type pdev: struct pci_dev \*
 
-    :param enum vga_switcheroo_state state:
+    :param state:
         vga_switcheroo state
+    :type state: enum vga_switcheroo_state
 
 .. _`amdgpu_switcheroo_set_state.description`:
 
@@ -799,8 +804,9 @@ amdgpu_switcheroo_can_switch
 
     see if switcheroo state can change
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci dev pointer
+    :type pdev: struct pci_dev \*
 
 .. _`amdgpu_switcheroo_can_switch.description`:
 
@@ -820,14 +826,17 @@ amdgpu_device_ip_set_clockgating_state
 
     set the CG state
 
-    :param void \*dev:
-        *undescribed*
+    :param dev:
+        amdgpu_device pointer
+    :type dev: void \*
 
-    :param enum amd_ip_block_type block_type:
+    :param block_type:
         Type of hardware IP (SMU, GFX, UVD, etc.)
+    :type block_type: enum amd_ip_block_type
 
-    :param enum amd_clockgating_state state:
+    :param state:
         clockgating state (gate or ungate)
+    :type state: enum amd_clockgating_state
 
 .. _`amdgpu_device_ip_set_clockgating_state.description`:
 
@@ -847,14 +856,17 @@ amdgpu_device_ip_set_powergating_state
 
     set the PG state
 
-    :param void \*dev:
-        *undescribed*
+    :param dev:
+        amdgpu_device pointer
+    :type dev: void \*
 
-    :param enum amd_ip_block_type block_type:
+    :param block_type:
         Type of hardware IP (SMU, GFX, UVD, etc.)
+    :type block_type: enum amd_ip_block_type
 
-    :param enum amd_powergating_state state:
+    :param state:
         powergating state (gate or ungate)
+    :type state: enum amd_powergating_state
 
 .. _`amdgpu_device_ip_set_powergating_state.description`:
 
@@ -874,11 +886,13 @@ amdgpu_device_ip_get_clockgating_state
 
     get the CG state
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param u32 \*flags:
+    :param flags:
         clockgating feature flags
+    :type flags: u32 \*
 
 .. _`amdgpu_device_ip_get_clockgating_state.description`:
 
@@ -899,11 +913,13 @@ amdgpu_device_ip_wait_for_idle
 
     wait for idle
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param enum amd_ip_block_type block_type:
+    :param block_type:
         Type of hardware IP (SMU, GFX, UVD, etc.)
+    :type block_type: enum amd_ip_block_type
 
 .. _`amdgpu_device_ip_wait_for_idle.description`:
 
@@ -922,11 +938,13 @@ amdgpu_device_ip_is_idle
 
     is the hardware IP idle
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param enum amd_ip_block_type block_type:
+    :param block_type:
         Type of hardware IP (SMU, GFX, UVD, etc.)
+    :type block_type: enum amd_ip_block_type
 
 .. _`amdgpu_device_ip_is_idle.description`:
 
@@ -945,11 +963,13 @@ amdgpu_device_ip_get_ip_block
 
     get a hw IP pointer
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param enum amd_ip_block_type type:
-        *undescribed*
+    :param type:
+        Type of hardware IP (SMU, GFX, UVD, etc.)
+    :type type: enum amd_ip_block_type
 
 .. _`amdgpu_device_ip_get_ip_block.description`:
 
@@ -966,17 +986,21 @@ amdgpu_device_ip_block_version_cmp
 
 .. c:function:: int amdgpu_device_ip_block_version_cmp(struct amdgpu_device *adev, enum amd_ip_block_type type, u32 major, u32 minor)
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param enum amd_ip_block_type type:
+    :param type:
         enum amd_ip_block_type
+    :type type: enum amd_ip_block_type
 
-    :param u32 major:
+    :param major:
         major version
+    :type major: u32
 
-    :param u32 minor:
+    :param minor:
         minor version
+    :type minor: u32
 
 .. _`amdgpu_device_ip_block_version_cmp.description`:
 
@@ -993,11 +1017,13 @@ amdgpu_device_ip_block_add
 
 .. c:function:: int amdgpu_device_ip_block_add(struct amdgpu_device *adev, const struct amdgpu_ip_block_version *ip_block_version)
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param const struct amdgpu_ip_block_version \*ip_block_version:
+    :param ip_block_version:
         pointer to the IP to add
+    :type ip_block_version: const struct amdgpu_ip_block_version \*
 
 .. _`amdgpu_device_ip_block_add.description`:
 
@@ -1016,8 +1042,9 @@ amdgpu_device_enable_virtual_display
 
     enable virtual display feature
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_enable_virtual_display.description`:
 
@@ -1040,8 +1067,9 @@ amdgpu_device_parse_gpu_info_fw
 
     parse gpu info firmware
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_parse_gpu_info_fw.description`:
 
@@ -1062,8 +1090,9 @@ amdgpu_device_ip_early_init
 
     run early init for hardware IPs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_early_init.description`:
 
@@ -1084,8 +1113,9 @@ amdgpu_device_ip_init
 
     run init for hardware IPs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_init.description`:
 
@@ -1107,8 +1137,9 @@ amdgpu_device_fill_reset_magic
 
     writes reset magic to gart pointer
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_fill_reset_magic.description`:
 
@@ -1128,8 +1159,9 @@ amdgpu_device_check_vram_lost
 
     check if vram is valid
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_check_vram_lost.description`:
 
@@ -1141,27 +1173,32 @@ The driver calls this after a GPU reset to see if the contents of
 VRAM is lost or now.
 returns true if vram is lost, false if not.
 
-.. _`amdgpu_device_ip_late_set_cg_state`:
+.. _`amdgpu_device_set_cg_state`:
 
-amdgpu_device_ip_late_set_cg_state
-==================================
+amdgpu_device_set_cg_state
+==========================
 
-.. c:function:: int amdgpu_device_ip_late_set_cg_state(struct amdgpu_device *adev)
+.. c:function:: int amdgpu_device_set_cg_state(struct amdgpu_device *adev, enum amd_clockgating_state state)
 
-    late init for clockgating
+    set clockgating for amdgpu device
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-.. _`amdgpu_device_ip_late_set_cg_state.description`:
+    :param state:
+        *undescribed*
+    :type state: enum amd_clockgating_state
+
+.. _`amdgpu_device_set_cg_state.description`:
 
 Description
 -----------
 
-Late initialization pass enabling clockgating for hardware IPs.
 The list of all the hardware IPs that make up the asic is walked and the
-set_clockgating_state callbacks are run.  This stage is run late
-in the init process.
+set_clockgating_state callbacks are run.
+Late initialization pass enabling clockgating for hardware IPs.
+Fini or suspend, pass disabling clockgating for hardware IPs.
 Returns 0 on success, negative error code on failure.
 
 .. _`amdgpu_device_ip_late_init`:
@@ -1173,8 +1210,9 @@ amdgpu_device_ip_late_init
 
     run late init for hardware IPs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_late_init.description`:
 
@@ -1197,8 +1235,9 @@ amdgpu_device_ip_fini
 
     run fini for hardware IPs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_fini.description`:
 
@@ -1218,19 +1257,59 @@ amdgpu_device_ip_late_init_func_handler
 
 .. c:function:: void amdgpu_device_ip_late_init_func_handler(struct work_struct *work)
 
-    work handler for clockgating
+    work handler for ib test
 
-    :param struct work_struct \*work:
-        work_struct
+    :param work:
+        work_struct.
+    :type work: struct work_struct \*
 
-.. _`amdgpu_device_ip_late_init_func_handler.description`:
+.. _`amdgpu_device_ip_suspend_phase1`:
+
+amdgpu_device_ip_suspend_phase1
+===============================
+
+.. c:function:: int amdgpu_device_ip_suspend_phase1(struct amdgpu_device *adev)
+
+    run suspend for hardware IPs (phase 1)
+
+    :param adev:
+        amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
+
+.. _`amdgpu_device_ip_suspend_phase1.description`:
 
 Description
 -----------
 
-Work handler for amdgpu_device_ip_late_set_cg_state.  We put the
-clockgating setup into a worker thread to speed up driver init and
-resume from suspend.
+Main suspend function for hardware IPs.  The list of all the hardware
+IPs that make up the asic is walked, clockgating is disabled and the
+suspend callbacks are run.  suspend puts the hardware and software state
+in each IP into a state suitable for suspend.
+Returns 0 on success, negative error code on failure.
+
+.. _`amdgpu_device_ip_suspend_phase2`:
+
+amdgpu_device_ip_suspend_phase2
+===============================
+
+.. c:function:: int amdgpu_device_ip_suspend_phase2(struct amdgpu_device *adev)
+
+    run suspend for hardware IPs (phase 2)
+
+    :param adev:
+        amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
+
+.. _`amdgpu_device_ip_suspend_phase2.description`:
+
+Description
+-----------
+
+Main suspend function for hardware IPs.  The list of all the hardware
+IPs that make up the asic is walked, clockgating is disabled and the
+suspend callbacks are run.  suspend puts the hardware and software state
+in each IP into a state suitable for suspend.
+Returns 0 on success, negative error code on failure.
 
 .. _`amdgpu_device_ip_suspend`:
 
@@ -1241,8 +1320,9 @@ amdgpu_device_ip_suspend
 
     run suspend for hardware IPs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_suspend.description`:
 
@@ -1264,8 +1344,9 @@ amdgpu_device_ip_resume_phase1
 
     run resume for hardware IPs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_resume_phase1.description`:
 
@@ -1288,8 +1369,9 @@ amdgpu_device_ip_resume_phase2
 
     run resume for hardware IPs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_resume_phase2.description`:
 
@@ -1313,8 +1395,9 @@ amdgpu_device_ip_resume
 
     run resume for hardware IPs
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_resume.description`:
 
@@ -1337,8 +1420,9 @@ amdgpu_device_detect_sriov_bios
 
     determine if the board supports SR-IOV
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_detect_sriov_bios.description`:
 
@@ -1356,8 +1440,9 @@ amdgpu_device_asic_has_dc_support
 
     determine if DC supports the asic
 
-    :param enum amd_asic_type asic_type:
+    :param asic_type:
         AMD asic type
+    :type asic_type: enum amd_asic_type
 
 .. _`amdgpu_device_asic_has_dc_support.description`:
 
@@ -1376,8 +1461,9 @@ amdgpu_device_has_dc_support
 
     check if dc is supported
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device_pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_has_dc_support.description`:
 
@@ -1395,17 +1481,21 @@ amdgpu_device_init
 
     initialize the driver
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param struct drm_device \*ddev:
-        *undescribed*
+    :param ddev:
+        drm dev pointer
+    :type ddev: struct drm_device \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci dev pointer
+    :type pdev: struct pci_dev \*
 
-    :param uint32_t flags:
+    :param flags:
         driver flags
+    :type flags: uint32_t
 
 .. _`amdgpu_device_init.description`:
 
@@ -1425,8 +1515,9 @@ amdgpu_device_fini
 
     tear down the driver
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_fini.description`:
 
@@ -1445,14 +1536,17 @@ amdgpu_device_suspend
 
     initiate device suspend
 
-    :param struct drm_device \*dev:
-        *undescribed*
+    :param dev:
+        drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param bool suspend:
-        *undescribed*
+    :param suspend:
+        suspend state
+    :type suspend: bool
 
-    :param bool fbcon:
-        *undescribed*
+    :param fbcon:
+        notify the fbdev of suspend
+    :type fbcon: bool
 
 .. _`amdgpu_device_suspend.description`:
 
@@ -1472,14 +1566,17 @@ amdgpu_device_resume
 
     initiate device resume
 
-    :param struct drm_device \*dev:
-        *undescribed*
+    :param dev:
+        drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param bool resume:
-        *undescribed*
+    :param resume:
+        resume state
+    :type resume: bool
 
-    :param bool fbcon:
-        *undescribed*
+    :param fbcon:
+        notify the fbdev of resume
+    :type fbcon: bool
 
 .. _`amdgpu_device_resume.description`:
 
@@ -1499,8 +1596,9 @@ amdgpu_device_ip_check_soft_reset
 
     did soft reset succeed
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_check_soft_reset.description`:
 
@@ -1521,8 +1619,9 @@ amdgpu_device_ip_pre_soft_reset
 
     prepare for soft reset
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_pre_soft_reset.description`:
 
@@ -1544,8 +1643,9 @@ amdgpu_device_ip_need_full_reset
 
     check if a full asic reset is needed
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_need_full_reset.description`:
 
@@ -1565,8 +1665,9 @@ amdgpu_device_ip_soft_reset
 
     do a soft reset
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_soft_reset.description`:
 
@@ -1588,8 +1689,9 @@ amdgpu_device_ip_post_soft_reset
 
     clean up from soft reset
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_ip_post_soft_reset.description`:
 
@@ -1602,50 +1704,20 @@ handles any IP specific hardware or software state changes that are
 necessary after the IP has been soft reset.
 Returns 0 on success, negative error code on failure.
 
-.. _`amdgpu_device_recover_vram_from_shadow`:
+.. _`amdgpu_device_recover_vram`:
 
-amdgpu_device_recover_vram_from_shadow
-======================================
+amdgpu_device_recover_vram
+==========================
 
-.. c:function:: int amdgpu_device_recover_vram_from_shadow(struct amdgpu_device *adev, struct amdgpu_ring *ring, struct amdgpu_bo *bo, struct dma_fence **fence)
+.. c:function:: int amdgpu_device_recover_vram(struct amdgpu_device *adev)
 
-    restore shadowed VRAM buffers
+    Recover some VRAM contents
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_ring \*ring:
-        amdgpu_ring for the engine handling the buffer operations
-
-    :param struct amdgpu_bo \*bo:
-        amdgpu_bo buffer whose shadow is being restored
-
-    :param struct dma_fence \*\*fence:
-        dma_fence associated with the operation
-
-.. _`amdgpu_device_recover_vram_from_shadow.description`:
-
-Description
------------
-
-Restores the VRAM buffer contents from the shadow in GTT.  Used to
-restore things like GPUVM page tables after a GPU reset where
-the contents of VRAM might be lost.
-Returns 0 on success, negative error code on failure.
-
-.. _`amdgpu_device_handle_vram_lost`:
-
-amdgpu_device_handle_vram_lost
-==============================
-
-.. c:function:: int amdgpu_device_handle_vram_lost(struct amdgpu_device *adev)
-
-    Handle the loss of VRAM contents
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`amdgpu_device_handle_vram_lost.description`:
+.. _`amdgpu_device_recover_vram.description`:
 
 Description
 -----------
@@ -1653,7 +1725,13 @@ Description
 Restores the contents of VRAM buffers from the shadows in GTT.  Used to
 restore things like GPUVM page tables after a GPU reset where
 the contents of VRAM might be lost.
-Returns 0 on success, 1 on failure.
+
+.. _`amdgpu_device_recover_vram.return`:
+
+Return
+------
+
+0 on success, negative error code on failure.
 
 .. _`amdgpu_device_reset`:
 
@@ -1664,8 +1742,9 @@ amdgpu_device_reset
 
     reset ASIC/GPU for bare-metal or passthrough
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_reset.description`:
 
@@ -1673,7 +1752,7 @@ Description
 -----------
 
 attempt to do soft-reset or full-reset and reinitialize Asic
-return 0 means successed otherwise failed
+return 0 means succeeded otherwise failed
 
 .. _`amdgpu_device_reset_sriov`:
 
@@ -1684,11 +1763,13 @@ amdgpu_device_reset_sriov
 
     reset ASIC for SR-IOV vf
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param bool from_hypervisor:
-        *undescribed*
+    :param from_hypervisor:
+        request from hypervisor
+    :type from_hypervisor: bool
 
 .. _`amdgpu_device_reset_sriov.description`:
 
@@ -1696,26 +1777,45 @@ Description
 -----------
 
 do VF FLR and reinitialize Asic
-return 0 means successed otherwise failed
+return 0 means succeeded otherwise failed
+
+.. _`amdgpu_device_should_recover_gpu`:
+
+amdgpu_device_should_recover_gpu
+================================
+
+.. c:function:: bool amdgpu_device_should_recover_gpu(struct amdgpu_device *adev)
+
+    check if we should try GPU recovery
+
+    :param adev:
+        amdgpu device pointer
+    :type adev: struct amdgpu_device \*
+
+.. _`amdgpu_device_should_recover_gpu.description`:
+
+Description
+-----------
+
+Check amdgpu_gpu_recovery and SRIOV status to see if we should try to recover
+a hung GPU.
 
 .. _`amdgpu_device_gpu_recover`:
 
 amdgpu_device_gpu_recover
 =========================
 
-.. c:function:: int amdgpu_device_gpu_recover(struct amdgpu_device *adev, struct amdgpu_job *job, bool force)
+.. c:function:: int amdgpu_device_gpu_recover(struct amdgpu_device *adev, struct amdgpu_job *job)
 
     reset the asic and recover scheduler
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_job \*job:
+    :param job:
         which job trigger hang
-        \ ``force``\  forces reset regardless of amdgpu_gpu_recovery
-
-    :param bool force:
-        *undescribed*
+    :type job: struct amdgpu_job \*
 
 .. _`amdgpu_device_gpu_recover.description`:
 
@@ -1734,8 +1834,9 @@ amdgpu_device_get_pcie_info
 
     fence pcie info about the PCIE slot
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_device_get_pcie_info.description`:
 

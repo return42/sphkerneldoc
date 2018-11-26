@@ -10,8 +10,9 @@ intel_pipe_update_start
 
     start update of a set of display registers
 
-    :param const struct intel_crtc_state \*new_crtc_state:
+    :param new_crtc_state:
         the new crtc state
+    :type new_crtc_state: const struct intel_crtc_state \*
 
 .. _`intel_pipe_update_start.description`:
 
@@ -35,8 +36,9 @@ intel_pipe_update_end
 
     end update of a set of display registers
 
-    :param struct intel_crtc_state \*new_crtc_state:
+    :param new_crtc_state:
         the new crtc state
+    :type new_crtc_state: struct intel_crtc_state \*
 
 .. _`intel_pipe_update_end.description`:
 

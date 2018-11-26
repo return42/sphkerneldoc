@@ -10,8 +10,9 @@ pr_fmt
 
     - Intel Isolated Memory Region driver
 
-    :param  fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: 
 
 .. _`pr_fmt.description`:
 
@@ -47,8 +48,9 @@ imr_is_enabled
 
     true if an IMR is enabled false otherwise.
 
-    :param struct imr_regs \*imr:
+    :param imr:
         pointer to IMR descriptor.
+    :type imr: struct imr_regs \*
 
 .. _`imr_is_enabled.description`:
 
@@ -72,14 +74,17 @@ imr_read
 
     read an IMR at a given index.
 
-    :param struct imr_device \*idev:
+    :param idev:
         pointer to imr_device structure.
+    :type idev: struct imr_device \*
 
-    :param u32 imr_id:
+    :param imr_id:
         IMR entry to read.
+    :type imr_id: u32
 
-    :param struct imr_regs \*imr:
+    :param imr:
         IMR structure representing address and access masks.
+    :type imr: struct imr_regs \*
 
 .. _`imr_read.description`:
 
@@ -97,14 +102,17 @@ imr_write
 
     write an IMR at a given index.
 
-    :param struct imr_device \*idev:
+    :param idev:
         pointer to imr_device structure.
+    :type idev: struct imr_device \*
 
-    :param u32 imr_id:
+    :param imr_id:
         IMR entry to write.
+    :type imr_id: u32
 
-    :param struct imr_regs \*imr:
+    :param imr:
         IMR structure representing address and access masks.
+    :type imr: struct imr_regs \*
 
 .. _`imr_write.description`:
 
@@ -123,11 +131,13 @@ imr_dbgfs_state_show
 
     print state of IMR registers.
 
-    :param struct seq_file \*s:
+    :param s:
         pointer to seq_file for output.
+    :type s: struct seq_file \*
 
-    :param void \*unused:
+    :param unused:
         unused parameter.
+    :type unused: void \*
 
 .. _`imr_debugfs_register`:
 
@@ -138,8 +148,9 @@ imr_debugfs_register
 
     register debugfs hooks.
 
-    :param struct imr_device \*idev:
+    :param idev:
         pointer to imr_device structure.
+    :type idev: struct imr_device \*
 
 .. _`imr_check_params`:
 
@@ -150,11 +161,13 @@ imr_check_params
 
     check passed address range IMR alignment and non-zero size
 
-    :param phys_addr_t base:
+    :param base:
         base address of intended IMR.
+    :type base: phys_addr_t
 
-    :param size_t size:
+    :param size:
         size of intended IMR.
+    :type size: size_t
 
 .. _`imr_raw_size`:
 
@@ -165,8 +178,9 @@ imr_raw_size
 
     account for the IMR_ALIGN bytes that addr_hi appends.
 
-    :param size_t size:
+    :param size:
         input size bytes.
+    :type size: size_t
 
 .. _`imr_raw_size.description`:
 
@@ -186,11 +200,13 @@ imr_address_overlap
 
     detects an address overlap.
 
-    :param phys_addr_t addr:
+    :param addr:
         address to check against an existing IMR.
+    :type addr: phys_addr_t
 
-    :param struct imr_regs \*imr:
+    :param imr:
         imr being checked.
+    :type imr: struct imr_regs \*
 
 .. _`imr_add_range`:
 
@@ -201,17 +217,21 @@ imr_add_range
 
     add an Isolated Memory Region.
 
-    :param phys_addr_t base:
+    :param base:
         physical base address of region aligned to 1KiB.
+    :type base: phys_addr_t
 
-    :param size_t size:
+    :param size:
         physical size of region in bytes must be aligned to 1KiB.
+    :type size: size_t
 
-    :param unsigned int rmask:
+    :param rmask:
         *undescribed*
+    :type rmask: unsigned int
 
-    :param unsigned int wmask:
+    :param wmask:
         *undescribed*
+    :type wmask: unsigned int
 
 .. _`__imr_remove_range`:
 
@@ -222,14 +242,17 @@ imr_add_range
 
     delete an Isolated Memory Region.
 
-    :param int reg:
+    :param reg:
         imr index to remove.
+    :type reg: int
 
-    :param phys_addr_t base:
+    :param base:
         physical base address of region aligned to 1 KiB.
+    :type base: phys_addr_t
 
-    :param size_t size:
+    :param size:
         physical size of region in bytes aligned to 1 KiB.
+    :type size: size_t
 
 .. _`__imr_remove_range.description`:
 
@@ -251,11 +274,13 @@ imr_remove_range
 
     delete an Isolated Memory Region by address
 
-    :param phys_addr_t base:
+    :param base:
         physical base address of region aligned to 1 KiB.
+    :type base: phys_addr_t
 
-    :param size_t size:
+    :param size:
         physical size of region in bytes aligned to 1 KiB.
+    :type size: size_t
 
 .. _`imr_remove_range.description`:
 
@@ -275,8 +300,9 @@ imr_clear
 
     delete an Isolated Memory Region by index
 
-    :param int reg:
+    :param reg:
         imr index to remove.
+    :type reg: int
 
 .. _`imr_clear.description`:
 
@@ -297,8 +323,9 @@ imr_fixup_memmap
 
     Tear down IMRs used during bootup.
 
-    :param struct imr_device \*idev:
+    :param idev:
         pointer to imr_device structure.
+    :type idev: struct imr_device \*
 
 .. _`imr_fixup_memmap.description`:
 
@@ -322,8 +349,9 @@ imr_init
 
     entry point for IMR driver.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`imr_init.return`:
 

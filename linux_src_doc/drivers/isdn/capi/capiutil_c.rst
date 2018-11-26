@@ -10,11 +10,13 @@ capi_cmd2par
 
     find parameter string for CAPI 2.0 command/subcommand
 
-    :param u8 cmd:
+    :param cmd:
         command number
+    :type cmd: u8
 
-    :param u8 subcmd:
+    :param subcmd:
         subcommand number
+    :type subcmd: u8
 
 .. _`capi_cmd2par.return-value`:
 
@@ -32,11 +34,13 @@ capi_cmsg2message
 
     assemble CAPI 2.0 message from \_cmsg structure
 
-    :param _cmsg \*cmsg:
+    :param cmsg:
         \_cmsg structure
+    :type cmsg: _cmsg \*
 
-    :param u8 \*msg:
+    :param msg:
         buffer for assembled message
+    :type msg: u8 \*
 
 .. _`capi_cmsg2message.return-value`:
 
@@ -54,11 +58,13 @@ capi_message2cmsg
 
     disassemble CAPI 2.0 message into \_cmsg structure
 
-    :param _cmsg \*cmsg:
+    :param cmsg:
         \_cmsg structure
+    :type cmsg: _cmsg \*
 
-    :param u8 \*msg:
+    :param msg:
         buffer for assembled message
+    :type msg: u8 \*
 
 .. _`capi_message2cmsg.return-value`:
 
@@ -76,23 +82,29 @@ capi_cmsg_header
 
     initialize header part of \_cmsg structure
 
-    :param _cmsg \*cmsg:
+    :param cmsg:
         \_cmsg structure
+    :type cmsg: _cmsg \*
 
-    :param u16 _ApplId:
+    :param _ApplId:
         ApplID field value
+    :type _ApplId: u16
 
-    :param u8 _Command:
+    :param _Command:
         Command field value
+    :type _Command: u8
 
-    :param u8 _Subcommand:
+    :param _Subcommand:
         Subcommand field value
+    :type _Subcommand: u8
 
-    :param u16 _Messagenumber:
+    :param _Messagenumber:
         Message Number field value
+    :type _Messagenumber: u16
 
-    :param u32 _Controller:
+    :param _Controller:
         Controller/PLCI/NCCI field value
+    :type _Controller: u32
 
 .. _`capi_cmsg_header.return-value`:
 
@@ -110,11 +122,13 @@ capi_cmd2str
 
     convert CAPI 2.0 command/subcommand number to name
 
-    :param u8 cmd:
+    :param cmd:
         command number
+    :type cmd: u8
 
-    :param u8 subcmd:
+    :param subcmd:
         subcommand number
+    :type subcmd: u8
 
 .. _`capi_cmd2str.return-value`:
 
@@ -132,8 +146,9 @@ cdebbuf_free
 
     free CAPI debug buffer
 
-    :param _cdebbuf \*cdb:
+    :param cdb:
         buffer to free
+    :type cdb: _cdebbuf \*
 
 .. _`capi_message2str`:
 
@@ -144,8 +159,9 @@ capi_message2str
 
     format CAPI 2.0 message for printing
 
-    :param u8 \*msg:
+    :param msg:
         CAPI 2.0 message
+    :type msg: u8 \*
 
 .. _`capi_message2str.description`:
 
@@ -172,8 +188,9 @@ capi_cmsg2str
 
     format \_cmsg structure for printing
 
-    :param _cmsg \*cmsg:
+    :param cmsg:
         \_cmsg structure
+    :type cmsg: _cmsg \*
 
 .. _`capi_cmsg2str.description`:
 

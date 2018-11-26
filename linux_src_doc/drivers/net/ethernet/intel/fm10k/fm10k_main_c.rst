@@ -10,8 +10,9 @@ fm10k_init_module
 
     Driver Registration Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fm10k_init_module.description`:
 
@@ -30,8 +31,9 @@ fm10k_exit_module
 
     Driver Exit Cleanup Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fm10k_exit_module.description`:
 
@@ -50,11 +52,13 @@ fm10k_alloc_rx_buffers
 
     Replace used receive buffers
 
-    :param struct fm10k_ring \*rx_ring:
+    :param rx_ring:
         ring to place buffers on
+    :type rx_ring: struct fm10k_ring \*
 
-    :param u16 cleaned_count:
+    :param cleaned_count:
         number of buffers to replace
+    :type cleaned_count: u16
 
 .. _`fm10k_reuse_rx_page`:
 
@@ -65,11 +69,13 @@ fm10k_reuse_rx_page
 
     page flip buffer and store it back on the ring
 
-    :param struct fm10k_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to store buffers on
+    :type rx_ring: struct fm10k_ring \*
 
-    :param struct fm10k_rx_buffer \*old_buff:
+    :param old_buff:
         donor buffer to have page reused
+    :type old_buff: struct fm10k_rx_buffer \*
 
 .. _`fm10k_reuse_rx_page.description`:
 
@@ -87,17 +93,21 @@ fm10k_add_rx_frag
 
     Add contents of Rx buffer to sk_buff
 
-    :param struct fm10k_rx_buffer \*rx_buffer:
+    :param rx_buffer:
         buffer containing page to add
+    :type rx_buffer: struct fm10k_rx_buffer \*
 
-    :param unsigned int size:
+    :param size:
         packet size from rx_desc
+    :type size: unsigned int
 
-    :param union fm10k_rx_desc \*rx_desc:
+    :param rx_desc:
         descriptor containing length of buffer written by hardware
+    :type rx_desc: union fm10k_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff to place the data into
+    :type skb: struct sk_buff \*
 
 .. _`fm10k_add_rx_frag.description`:
 
@@ -121,14 +131,17 @@ fm10k_process_skb_fields
 
     Populate skb header fields from Rx descriptor
 
-    :param struct fm10k_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct fm10k_ring \*
 
-    :param union fm10k_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union fm10k_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being populated
+    :type skb: struct sk_buff \*
 
 .. _`fm10k_process_skb_fields.description`:
 
@@ -148,11 +161,13 @@ fm10k_is_non_eop
 
     process handling of non-EOP buffers
 
-    :param struct fm10k_ring \*rx_ring:
+    :param rx_ring:
         Rx ring being processed
+    :type rx_ring: struct fm10k_ring \*
 
-    :param union fm10k_rx_desc \*rx_desc:
+    :param rx_desc:
         Rx descriptor for current buffer
+    :type rx_desc: union fm10k_rx_desc \*
 
 .. _`fm10k_is_non_eop.description`:
 
@@ -173,14 +188,17 @@ fm10k_cleanup_headers
 
     Correct corrupted or empty headers
 
-    :param struct fm10k_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct fm10k_ring \*
 
-    :param union fm10k_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union fm10k_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being fixed
+    :type skb: struct sk_buff \*
 
 .. _`fm10k_cleanup_headers.description`:
 
@@ -204,11 +222,13 @@ fm10k_receive_skb
 
     helper function to handle rx indications
 
-    :param struct fm10k_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct fm10k_q_vector \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet to send up
+    :type skb: struct sk_buff \*
 
 .. _`fm10k_get_tx_pending`:
 
@@ -219,11 +239,13 @@ fm10k_get_tx_pending
 
     how many Tx descriptors not processed
 
-    :param struct fm10k_ring \*ring:
+    :param ring:
         the ring structure
+    :type ring: struct fm10k_ring \*
 
-    :param bool in_sw:
+    :param in_sw:
         is tx_pending being checked in SW or in HW?
+    :type in_sw: bool
 
 .. _`fm10k_tx_timeout_reset`:
 
@@ -234,8 +256,9 @@ fm10k_tx_timeout_reset
 
     initiate reset due to Tx timeout
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         driver private struct
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_clean_tx_irq`:
 
@@ -246,14 +269,17 @@ fm10k_clean_tx_irq
 
     Reclaim resources after transmit completes
 
-    :param struct fm10k_q_vector \*q_vector:
+    :param q_vector:
         structure containing interrupt and ring information
+    :type q_vector: struct fm10k_q_vector \*
 
-    :param struct fm10k_ring \*tx_ring:
+    :param tx_ring:
         tx ring to clean
+    :type tx_ring: struct fm10k_ring \*
 
-    :param int napi_budget:
+    :param napi_budget:
         Used to determine if we are in netpoll
+    :type napi_budget: int
 
 .. _`fm10k_update_itr`:
 
@@ -264,8 +290,9 @@ fm10k_update_itr
 
     update the dynamic ITR value based on packet size
 
-    :param struct fm10k_ring_container \*ring_container:
+    :param ring_container:
         Container for rings to have ITR updated
+    :type ring_container: struct fm10k_ring_container \*
 
 .. _`fm10k_update_itr.description`:
 
@@ -286,8 +313,9 @@ fm10k_set_qos_queues
 
     Allocate queues for a QOS-enabled device
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_set_qos_queues.description`:
 
@@ -309,8 +337,9 @@ fm10k_set_rss_queues
 
     Allocate queues for RSS
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_set_rss_queues.description`:
 
@@ -329,8 +358,9 @@ fm10k_set_num_queues
 
     Allocate queues for device, feature dependent
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_set_num_queues.description`:
 
@@ -352,8 +382,9 @@ fm10k_reset_num_queues
 
     Reset the number of queues to zero
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_reset_num_queues.description`:
 
@@ -372,26 +403,33 @@ fm10k_alloc_q_vector
 
     Allocate memory for a single interrupt vector
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
-    :param unsigned int v_count:
+    :param v_count:
         q_vectors allocated on interface, used for ring interleaving
+    :type v_count: unsigned int
 
-    :param unsigned int v_idx:
+    :param v_idx:
         index of vector in interface struct
+    :type v_idx: unsigned int
 
-    :param unsigned int txr_count:
+    :param txr_count:
         total number of Tx rings to allocate
+    :type txr_count: unsigned int
 
-    :param unsigned int txr_idx:
+    :param txr_idx:
         index of first Tx ring to allocate
+    :type txr_idx: unsigned int
 
-    :param unsigned int rxr_count:
+    :param rxr_count:
         total number of Rx rings to allocate
+    :type rxr_count: unsigned int
 
-    :param unsigned int rxr_idx:
+    :param rxr_idx:
         index of first Rx ring to allocate
+    :type rxr_idx: unsigned int
 
 .. _`fm10k_alloc_q_vector.description`:
 
@@ -409,11 +447,13 @@ fm10k_free_q_vector
 
     Free memory allocated for specific interrupt vector
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
-    :param int v_idx:
+    :param v_idx:
         Index of vector to be freed
+    :type v_idx: int
 
 .. _`fm10k_free_q_vector.description`:
 
@@ -433,8 +473,9 @@ fm10k_alloc_q_vectors
 
     Allocate memory for interrupt vectors
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_alloc_q_vectors.description`:
 
@@ -453,8 +494,9 @@ fm10k_free_q_vectors
 
     Free memory allocated for interrupt vectors
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_free_q_vectors.description`:
 
@@ -474,8 +516,9 @@ fm10k_reset_msix_capability
 
     reset MSI-X capability
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_reset_msix_capability.description`:
 
@@ -493,8 +536,9 @@ fm10k_init_msix_capability
 
     configure MSI-X capability
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_init_msix_capability.description`:
 
@@ -513,8 +557,9 @@ fm10k_cache_ring_qos
 
     Descriptor ring to register mapping for QoS
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         Interface structure continaining rings and devices
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_cache_ring_qos.description`:
 
@@ -532,8 +577,9 @@ fm10k_cache_ring_rss
 
     Descriptor ring to register mapping for RSS
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         Interface structure continaining rings and devices
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_cache_ring_rss.description`:
 
@@ -551,8 +597,9 @@ fm10k_assign_rings
 
     Map rings to network devices
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         Interface structure containing rings and devices
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_assign_rings.description`:
 
@@ -572,8 +619,9 @@ fm10k_init_queueing_scheme
 
     Determine proper queueing scheme
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_init_queueing_scheme.description`:
 
@@ -593,8 +641,9 @@ fm10k_clear_queueing_scheme
 
     Clear the current queueing scheme settings
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure to clear queueing scheme on
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_clear_queueing_scheme.description`:
 

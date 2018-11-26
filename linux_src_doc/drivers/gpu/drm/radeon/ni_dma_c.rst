@@ -10,11 +10,13 @@ cayman_dma_get_rptr
 
     get the current read pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`cayman_dma_get_rptr.description`:
 
@@ -32,11 +34,13 @@ cayman_dma_get_wptr
 
     get the current write pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`cayman_dma_get_wptr.description`:
 
@@ -54,11 +58,13 @@ cayman_dma_set_wptr
 
     commit the write pointer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring pointer
+    :type ring: struct radeon_ring \*
 
 .. _`cayman_dma_set_wptr.description`:
 
@@ -76,11 +82,13 @@ cayman_dma_ring_ib_execute
 
     Schedule an IB on the DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         IB object to schedule
+    :type ib: struct radeon_ib \*
 
 .. _`cayman_dma_ring_ib_execute.description`:
 
@@ -98,8 +106,9 @@ cayman_dma_stop
 
     stop the async dma engines
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cayman_dma_stop.description`:
 
@@ -117,8 +126,9 @@ cayman_dma_resume
 
     setup and start the async dma engines
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cayman_dma_resume.description`:
 
@@ -137,8 +147,9 @@ cayman_dma_fini
 
     tear down the async dma engines
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cayman_dma_fini.description`:
 
@@ -156,11 +167,13 @@ cayman_dma_is_lockup
 
     Check if the DMA engine is locked up
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`cayman_dma_is_lockup.description`:
 
@@ -179,20 +192,25 @@ cayman_dma_vm_copy_pages
 
     update PTEs by copying them from the GART
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t src:
+    :param src:
         src addr where to copy from
+    :type src: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
 .. _`cayman_dma_vm_copy_pages.description`:
 
@@ -210,26 +228,33 @@ cayman_dma_vm_write_pages
 
     update PTEs by writing them manually
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t addr:
+    :param addr:
         dst addr to write into pe
+    :type addr: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
-    :param uint32_t incr:
+    :param incr:
         increase next addr by incr bytes
+    :type incr: uint32_t
 
-    :param uint32_t flags:
+    :param flags:
         hw access flags
+    :type flags: uint32_t
 
 .. _`cayman_dma_vm_write_pages.description`:
 
@@ -247,26 +272,33 @@ cayman_dma_vm_set_pages
 
     update the page tables using the DMA
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with commands
+    :type ib: struct radeon_ib \*
 
-    :param uint64_t pe:
+    :param pe:
         addr of the page entry
+    :type pe: uint64_t
 
-    :param uint64_t addr:
+    :param addr:
         dst addr to write into pe
+    :type addr: uint64_t
 
-    :param unsigned count:
+    :param count:
         number of page entries to update
+    :type count: unsigned
 
-    :param uint32_t incr:
+    :param incr:
         increase next addr by incr bytes
+    :type incr: uint32_t
 
-    :param uint32_t flags:
+    :param flags:
         hw access flags
+    :type flags: uint32_t
 
 .. _`cayman_dma_vm_set_pages.description`:
 
@@ -284,8 +316,9 @@ cayman_dma_vm_pad_ib
 
     pad the IB to the required number of dw
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer to fill with padding
+    :type ib: struct radeon_ib \*
 
 .. This file was automatic generated / don't edit.
 

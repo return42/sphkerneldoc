@@ -10,8 +10,9 @@ nd_region_to_nstype
 
     region to an integer namespace type
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         region-device to interrogate
+    :type nd_region: struct nd_region \*
 
 .. _`nd_region_to_nstype.description`:
 
@@ -31,8 +32,9 @@ nd_region_acquire_lane
 
     allocate and lock a lane
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         region id and number of lanes possible
+    :type nd_region: struct nd_region \*
 
 .. _`nd_region_acquire_lane.description`:
 
@@ -61,8 +63,9 @@ nvdimm_flush
 
     flush any posted write queues between the cpu and pmem media
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         blk or interleaved pmem region
+    :type nd_region: struct nd_region \*
 
 .. _`nvdimm_has_flush`:
 
@@ -73,8 +76,9 @@ nvdimm_has_flush
 
     determine write flushing requirements
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         blk or interleaved pmem region
+    :type nd_region: struct nd_region \*
 
 .. _`nvdimm_has_flush.description`:
 

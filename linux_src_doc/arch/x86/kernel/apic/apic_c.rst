@@ -10,8 +10,9 @@ get_physical_broadcast
 
     Get number of physical broadcast IDs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`lapic_get_maxlvt`:
 
@@ -22,8 +23,9 @@ lapic_get_maxlvt
 
     get the maximum number of local vector table entries
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`clear_local_apic`:
 
@@ -34,8 +36,9 @@ clear_local_APIC
 
     shutdown the local APIC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`clear_local_apic.description`:
 
@@ -55,8 +58,9 @@ disable_local_APIC
 
     clear and disable the local APIC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sync_arb_ids`:
 
@@ -67,8 +71,9 @@ sync_Arb_IDs
 
     synchronize APIC bus arbitration IDs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`setup_local_apic`:
 
@@ -79,8 +84,9 @@ setup_local_APIC
 
     setup the local APIC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`setup_local_apic.description`:
 
@@ -99,8 +105,9 @@ init_apic_mappings
 
     initialize APIC mappings
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`connect_bsp_apic`:
 
@@ -111,8 +118,9 @@ connect_bsp_APIC
 
     attach the APIC to the interrupt system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`disconnect_bsp_apic`:
 
@@ -123,8 +131,9 @@ disconnect_bsp_APIC
 
     detach the APIC from the interrupt system
 
-    :param int virt_wire_setup:
+    :param virt_wire_setup:
         indicates, whether virtual wire mode is selected
+    :type virt_wire_setup: int
 
 .. _`disconnect_bsp_apic.description`:
 
@@ -133,6 +142,19 @@ Description
 
 Virtual wire mode is necessary to deliver legacy interrupts even when the
 APIC is disabled.
+
+.. _`apic_id_is_primary_thread`:
+
+apic_id_is_primary_thread
+=========================
+
+.. c:function:: bool apic_id_is_primary_thread(unsigned int apicid)
+
+    Check whether APIC ID belongs to a primary thread
+
+    :param apicid:
+        *undescribed*
+    :type apicid: unsigned int
 
 .. _`apic_bsp_setup`:
 
@@ -143,8 +165,9 @@ apic_bsp_setup
 
     Setup function for local apic and io-apic
 
-    :param bool upmode:
+    :param upmode:
         Force UP mode (for APIC_init_uniprocessor)
+    :type upmode: bool
 
 .. _`apic_bsp_setup.return`:
 

@@ -10,8 +10,9 @@ atp870u_queuecommand_lck
 
     Queue SCSI command
 
-    :param struct scsi_cmnd \*req_p:
+    :param req_p:
         request block
+    :type req_p: struct scsi_cmnd \*
 
     :param void (\*done)(struct scsi_cmnd \*):
         completion function
@@ -32,11 +33,13 @@ send_s870
 
     send a command to the controller
 
-    :param struct atp_unit \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct atp_unit \*
 
-    :param unsigned char c:
+    :param c:
         *undescribed*
+    :type c: unsigned char
 
 .. _`send_s870.description`:
 

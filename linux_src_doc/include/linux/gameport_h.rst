@@ -10,8 +10,9 @@ module_gameport_driver
 
     Helper macro for registering a gameport driver
 
-    :param  __gameport_driver:
+    :param __gameport_driver:
         gameport_driver struct
+    :type __gameport_driver: 
 
 .. _`module_gameport_driver.description`:
 

@@ -10,11 +10,13 @@ sis900_get_mac_addr
 
     Get MAC address for stand alone SiS900 model
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         the sis900 pci device
+    :type pci_dev: struct pci_dev \*
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to get address for
+    :type net_dev: struct net_device \*
 
 .. _`sis900_get_mac_addr.description`:
 
@@ -22,7 +24,7 @@ Description
 -----------
 
 Older SiS900 and friends, use EEPROM to store MAC address.
-MAC address is read from \ :c:func:`read_eeprom`\  into \ ``net_dev``\ ->dev_addr.
+MAC address is read from \ :c:func:`read_eeprom`\  into \ ``net_dev->dev_addr``\ .
 
 .. _`sis630e_get_mac_addr`:
 
@@ -33,11 +35,13 @@ sis630e_get_mac_addr
 
     Get MAC address for SiS630E model
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         the sis900 pci device
+    :type pci_dev: struct pci_dev \*
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to get address for
+    :type net_dev: struct net_device \*
 
 .. _`sis630e_get_mac_addr.description`:
 
@@ -46,7 +50,7 @@ Description
 
 SiS630E model, use APC CMOS RAM to store MAC address.
 APC CMOS RAM is accessed through ISA bridge.
-MAC address is read into \ ``net_dev``\ ->dev_addr.
+MAC address is read into \ ``net_dev->dev_addr``\ .
 
 .. _`sis635_get_mac_addr`:
 
@@ -57,11 +61,13 @@ sis635_get_mac_addr
 
     Get MAC address for SIS635 model
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         the sis900 pci device
+    :type pci_dev: struct pci_dev \*
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to get address for
+    :type net_dev: struct net_device \*
 
 .. _`sis635_get_mac_addr.description`:
 
@@ -70,7 +76,7 @@ Description
 
 SiS635 model, set MAC Reload Bit to load Mac address from APC
 to rfdr. rfdr is accessed through rfcr. MAC address is read into
-\ ``net_dev``\ ->dev_addr.
+\ ``net_dev->dev_addr``\ .
 
 .. _`sis96x_get_mac_addr`:
 
@@ -81,11 +87,13 @@ sis96x_get_mac_addr
 
     Get MAC address for SiS962 or SiS963 model
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         the sis900 pci device
+    :type pci_dev: struct pci_dev \*
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to get address for
+    :type net_dev: struct net_device \*
 
 .. _`sis96x_get_mac_addr.description`:
 
@@ -100,7 +108,7 @@ by LAN, otherwise is not. After MAC address is read from EEPROM, send
 EEDONE signal to refuse EEPROM access by LAN.
 The EEPROM map of SiS962 or SiS963 is different to SiS900.
 The signature field in SiS962 or SiS963 spec is meaningless.
-MAC address is read into \ ``net_dev``\ ->dev_addr.
+MAC address is read into \ ``net_dev->dev_addr``\ .
 
 .. _`sis900_probe`:
 
@@ -111,11 +119,13 @@ sis900_probe
 
     Probe for sis900 device
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         the sis900 pci device
+    :type pci_dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*pci_id:
+    :param pci_id:
         the pci device ID
+    :type pci_id: const struct pci_device_id \*
 
 .. _`sis900_probe.description`:
 
@@ -136,8 +146,9 @@ sis900_mii_probe
 
     Probe MII PHY for sis900
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to probe for
+    :type net_dev: struct net_device \*
 
 .. _`sis900_mii_probe.description`:
 
@@ -157,8 +168,9 @@ sis900_default_phy
 
     Select default PHY for sis900 mac.
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to probe for
+    :type net_dev: struct net_device \*
 
 .. _`sis900_default_phy.description`:
 
@@ -178,11 +190,13 @@ sis900_set_capability
 
     set the media capability of network adapter.
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to probe for
+    :type net_dev: struct net_device \*
 
-    :param struct mii_phy \*phy:
+    :param phy:
         default PHY
+    :type phy: struct mii_phy \*
 
 .. _`sis900_set_capability.description`:
 
@@ -201,11 +215,13 @@ read_eeprom
 
     Read Serial EEPROM
 
-    :param void __iomem \*ioaddr:
+    :param ioaddr:
         base i/o address
+    :type ioaddr: void __iomem \*
 
-    :param int location:
+    :param location:
         the EEPROM location to read
+    :type location: int
 
 .. _`read_eeprom.description`:
 
@@ -224,14 +240,17 @@ mdio_read
 
     read MII PHY register
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to read
+    :type net_dev: struct net_device \*
 
-    :param int phy_id:
+    :param phy_id:
         the phy address to read
+    :type phy_id: int
 
-    :param int location:
+    :param location:
         the phy regiester id to read
+    :type location: int
 
 .. _`mdio_read.description`:
 
@@ -251,17 +270,21 @@ mdio_write
 
     write MII PHY register
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to write
+    :type net_dev: struct net_device \*
 
-    :param int phy_id:
+    :param phy_id:
         the phy address to write
+    :type phy_id: int
 
-    :param int location:
+    :param location:
         the phy regiester id to write
+    :type location: int
 
-    :param int value:
+    :param value:
         the register value to write with
+    :type value: int
 
 .. _`mdio_write.description`:
 
@@ -281,11 +304,13 @@ sis900_reset_phy
 
     reset sis900 mii phy.
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to write
+    :type net_dev: struct net_device \*
 
-    :param int phy_addr:
+    :param phy_addr:
         default phy address
+    :type phy_addr: int
 
 .. _`sis900_reset_phy.description`:
 
@@ -305,8 +330,9 @@ sis900_open
 
     open sis900 device
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to open
+    :type net_dev: struct net_device \*
 
 .. _`sis900_open.description`:
 
@@ -325,8 +351,9 @@ sis900_init_rxfilter
 
     Initialize the Rx filter
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to initialize for
+    :type net_dev: struct net_device \*
 
 .. _`sis900_init_rxfilter.description`:
 
@@ -345,8 +372,9 @@ sis900_init_tx_ring
 
     Initialize the Tx descriptor ring
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to initialize for
+    :type net_dev: struct net_device \*
 
 .. _`sis900_init_tx_ring.description`:
 
@@ -364,8 +392,9 @@ sis900_init_rx_ring
 
     Initialize the Rx descriptor ring
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to initialize for
+    :type net_dev: struct net_device \*
 
 .. _`sis900_init_rx_ring.description`:
 
@@ -384,11 +413,13 @@ sis630_set_eq
 
     set phy equalizer value for 630 LAN
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to set equalizer value
+    :type net_dev: struct net_device \*
 
-    :param u8 revision:
+    :param revision:
         630 LAN revision number
+    :type revision: u8
 
 .. _`sis630_set_eq.description`:
 
@@ -448,8 +479,9 @@ sis900_timer
 
     sis900 timer routine
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`sis900_timer.description`:
 
@@ -468,11 +500,13 @@ sis900_check_mode
 
     check the media mode for sis900
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to be checked
+    :type net_dev: struct net_device \*
 
-    :param struct mii_phy \*mii_phy:
+    :param mii_phy:
         the mii phy
+    :type mii_phy: struct mii_phy \*
 
 .. _`sis900_check_mode.description`:
 
@@ -494,14 +528,17 @@ sis900_set_mode
 
     Set the media mode of mac register.
 
-    :param struct sis900_private \*sp:
+    :param sp:
         the device private data
+    :type sp: struct sis900_private \*
 
-    :param int speed:
+    :param speed:
         the transmit speed to be determined
+    :type speed: int
 
-    :param int duplex:
+    :param duplex:
         the duplex mode to be determined
+    :type duplex: int
 
 .. _`sis900_set_mode.description`:
 
@@ -523,11 +560,13 @@ sis900_auto_negotiate
 
     Set the Auto-Negotiation Enable/Reset bit.
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to read mode for
+    :type net_dev: struct net_device \*
 
-    :param int phy_addr:
+    :param phy_addr:
         mii phy address
+    :type phy_addr: int
 
 .. _`sis900_auto_negotiate.description`:
 
@@ -548,14 +587,17 @@ sis900_read_mode
 
     read media mode for sis900 internal phy
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to read mode for
+    :type net_dev: struct net_device \*
 
-    :param int \*speed:
+    :param speed:
         the transmit speed to be determined
+    :type speed: int \*
 
-    :param int \*duplex:
+    :param duplex:
         the duplex mode to be determined
+    :type duplex: int \*
 
 .. _`sis900_read_mode.description`:
 
@@ -575,8 +617,9 @@ sis900_tx_timeout
 
     sis900 transmit timeout routine
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to transmit
+    :type net_dev: struct net_device \*
 
 .. _`sis900_tx_timeout.description`:
 
@@ -595,11 +638,13 @@ sis900_start_xmit
 
     sis900 start transmit routine
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer pointer to put the data being transmitted
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to transmit with
+    :type net_dev: struct net_device \*
 
 .. _`sis900_start_xmit.description`:
 
@@ -619,11 +664,13 @@ sis900_interrupt
 
     sis900 interrupt handler
 
-    :param int irq:
+    :param irq:
         the irq number
+    :type irq: int
 
-    :param void \*dev_instance:
+    :param dev_instance:
         the client data object
+    :type dev_instance: void \*
 
 .. _`sis900_interrupt.description`:
 
@@ -642,8 +689,9 @@ sis900_rx
 
     sis900 receive routine
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device which receives data
+    :type net_dev: struct net_device \*
 
 .. _`sis900_rx.description`:
 
@@ -670,8 +718,9 @@ sis900_finish_xmit
 
     finish up transmission of packets
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to be transmitted on
+    :type net_dev: struct net_device \*
 
 .. _`sis900_finish_xmit.description`:
 
@@ -698,8 +747,9 @@ sis900_close
 
     close sis900 device
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to be closed
+    :type net_dev: struct net_device \*
 
 .. _`sis900_close.description`:
 
@@ -718,11 +768,13 @@ sis900_get_drvinfo
 
     Return information about driver
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to probe
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_drvinfo \*info:
+    :param info:
         container for info returned
+    :type info: struct ethtool_drvinfo \*
 
 .. _`sis900_get_drvinfo.description`:
 
@@ -740,11 +792,13 @@ sis900_set_wol
 
     Set up Wake on Lan registers
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to probe
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_wolinfo \*wol:
+    :param wol:
         container for info passed to the driver
+    :type wol: struct ethtool_wolinfo \*
 
 .. _`sis900_set_wol.description`:
 
@@ -765,14 +819,17 @@ mii_ioctl
 
     process MII i/o control command
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to command for
+    :type net_dev: struct net_device \*
 
-    :param struct ifreq \*rq:
+    :param rq:
         parameter for command
+    :type rq: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         the i/o command
+    :type cmd: int
 
 .. _`mii_ioctl.description`:
 
@@ -790,11 +847,13 @@ sis900_set_config
 
     Set media type by net_device.set_config
 
-    :param struct net_device \*dev:
+    :param dev:
         the net device for media type change
+    :type dev: struct net_device \*
 
-    :param struct ifmap \*map:
+    :param map:
         ifmap passed by ifconfig
+    :type map: struct ifmap \*
 
 .. _`sis900_set_config.description`:
 
@@ -814,11 +873,13 @@ sis900_mcast_bitnr
 
     compute hashtable index
 
-    :param u8 \*addr:
+    :param addr:
         multicast address
+    :type addr: u8 \*
 
-    :param u8 revision:
+    :param revision:
         revision id of chip
+    :type revision: u8
 
 .. _`sis900_mcast_bitnr.description`:
 
@@ -839,8 +900,9 @@ set_rx_mode
 
     Set SiS900 receive mode
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to be set
+    :type net_dev: struct net_device \*
 
 .. _`set_rx_mode.description`:
 
@@ -860,8 +922,9 @@ sis900_reset
 
     Reset sis900 MAC
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         the net device to reset
+    :type net_dev: struct net_device \*
 
 .. _`sis900_reset.description`:
 
@@ -881,8 +944,9 @@ sis900_remove
 
     Remove sis900 device
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         the pci device to be removed
+    :type pci_dev: struct pci_dev \*
 
 .. _`sis900_remove.description`:
 

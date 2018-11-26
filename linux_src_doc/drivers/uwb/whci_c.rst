@@ -10,23 +10,29 @@ whci_wait_for
 
     wait for a WHCI register to be set
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param u32 __iomem \*reg:
+    :param reg:
         *undescribed*
+    :type reg: u32 __iomem \*
 
-    :param u32 mask:
+    :param mask:
         *undescribed*
+    :type mask: u32
 
-    :param u32 result:
+    :param result:
         *undescribed*
+    :type result: u32
 
-    :param unsigned long max_ms:
+    :param max_ms:
         *undescribed*
+    :type max_ms: unsigned long
 
-    :param const char \*tag:
+    :param tag:
         *undescribed*
+    :type tag: const char \*
 
 .. _`whci_wait_for.description`:
 

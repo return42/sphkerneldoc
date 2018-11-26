@@ -10,11 +10,13 @@ qib_ud_loopback
 
     handle send on loopback QPs
 
-    :param struct rvt_qp \*sqp:
+    :param sqp:
         the sending QP
+    :type sqp: struct rvt_qp \*
 
-    :param struct rvt_swqe \*swqe:
+    :param swqe:
         the send work request
+    :type swqe: struct rvt_swqe \*
 
 .. _`qib_ud_loopback.description`:
 
@@ -35,11 +37,13 @@ qib_make_ud_req
 
     construct a UD request packet
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP
+    :type qp: struct rvt_qp \*
 
-    :param unsigned long \*flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long \*
 
 .. _`qib_make_ud_req.description`:
 
@@ -59,23 +63,29 @@ qib_ud_rcv
 
     receive an incoming UD packet
 
-    :param struct qib_ibport \*ibp:
+    :param ibp:
         the port the packet came in on
+    :type ibp: struct qib_ibport \*
 
-    :param struct ib_header \*hdr:
+    :param hdr:
         the packet header
+    :type hdr: struct ib_header \*
 
-    :param int has_grh:
+    :param has_grh:
         true if the packet has a GRH
+    :type has_grh: int
 
-    :param void \*data:
+    :param data:
         the packet data
+    :type data: void \*
 
-    :param u32 tlen:
+    :param tlen:
         the packet length
+    :type tlen: u32
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP the packet came on
+    :type qp: struct rvt_qp \*
 
 .. _`qib_ud_rcv.description`:
 

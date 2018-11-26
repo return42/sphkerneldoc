@@ -10,8 +10,9 @@ ishtp_read_list_flush
 
     Flush read queue
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         ishtp client instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_read_list_flush.description`:
 
@@ -29,8 +30,9 @@ ishtp_cl_flush_queues
 
     Flush all queues for a client
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         ishtp client instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_flush_queues.description`:
 
@@ -56,11 +58,13 @@ ishtp_cl_init
 
     Initialize all fields of a client device
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         ishtp client instance
+    :type cl: struct ishtp_cl \*
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_cl_init.initializes-a-client-device-fields`:
 
@@ -79,8 +83,9 @@ ishtp_cl_allocate
 
     allocates client structure and sets it up.
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_cl_allocate.description`:
 
@@ -105,8 +110,9 @@ ishtp_cl_free
 
     Frees a client device
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_free.description`:
 
@@ -124,12 +130,14 @@ ishtp_cl_link
 
     Reserve a host id and link the client instance
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
-    :param int id:
+    :param id:
         host client id to use. It can be ISHTP_HOST_CLIENT_ID_ANY if any
         id from the available can be used
+    :type id: int
 
 .. _`ishtp_cl_link.description`:
 
@@ -158,8 +166,9 @@ ishtp_cl_unlink
 
     remove fw_cl from the client device list
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_unlink.description`:
 
@@ -177,8 +186,9 @@ ishtp_cl_disconnect
 
     Send disconnect request to firmware
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_disconnect.description`:
 
@@ -204,8 +214,9 @@ ishtp_cl_is_other_connecting
 
     Check other client is connecting
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_is_other_connecting.description`:
 
@@ -230,8 +241,9 @@ ishtp_cl_connect
 
     Send connect request to firmware
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_connect.description`:
 
@@ -258,8 +270,9 @@ ishtp_cl_read_start
 
     Prepare to read client message
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_read_start.description`:
 
@@ -286,14 +299,17 @@ ishtp_cl_send
 
     Send a message to firmware
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
-    :param uint8_t \*buf:
+    :param buf:
         message buffer
+    :type buf: uint8_t \*
 
-    :param size_t length:
+    :param length:
         length of message
+    :type length: size_t
 
 .. _`ishtp_cl_send.description`:
 
@@ -320,8 +336,9 @@ ishtp_cl_read_complete
 
     read complete
 
-    :param struct ishtp_cl_rb \*rb:
+    :param rb:
         Pointer to client request block
+    :type rb: struct ishtp_cl_rb \*
 
 .. _`ishtp_cl_read_complete.description`:
 
@@ -340,8 +357,9 @@ ipc_tx_callback
 
     IPC tx callback function
 
-    :param void \*prm:
+    :param prm:
         Pointer to client device instance
+    :type prm: void \*
 
 .. _`ipc_tx_callback.description`:
 
@@ -360,11 +378,13 @@ ishtp_cl_send_msg_ipc
 
     Send message using IPC
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         Pointer to client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_send_msg_ipc.description`:
 
@@ -382,11 +402,13 @@ ishtp_cl_send_msg_dma
 
     Send message using DMA
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         Pointer to client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_send_msg_dma.description`:
 
@@ -404,11 +426,13 @@ ishtp_cl_send_msg
 
     Send message using DMA or IPC
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         Pointer to client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_send_msg.description`:
 
@@ -426,11 +450,13 @@ recv_ishtp_cl_msg
 
     Receive client message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_msg_hdr \*ishtp_hdr:
+    :param ishtp_hdr:
         Pointer to message header
+    :type ishtp_hdr: struct ishtp_msg_hdr \*
 
 .. _`recv_ishtp_cl_msg.description`:
 
@@ -449,14 +475,17 @@ recv_ishtp_cl_msg_dma
 
     Receive client message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
-    :param void \*msg:
+    :param msg:
         message pointer
+    :type msg: void \*
 
-    :param struct dma_xfer_hbm \*hbm:
+    :param hbm:
         hbm buffer
+    :type hbm: struct dma_xfer_hbm \*
 
 .. _`recv_ishtp_cl_msg_dma.description`:
 

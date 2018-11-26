@@ -10,8 +10,9 @@ g_NCR5380_probe_irq
 
     find the IRQ of a NCR5380 or equivalent
 
-    :param struct Scsi_Host \*instance:
+    :param instance:
         SCSI host instance
+    :type instance: struct Scsi_Host \*
 
 .. _`g_ncr5380_probe_irq.description`:
 
@@ -30,14 +31,17 @@ generic_NCR5380_precv
 
     pseudo DMA receive
 
-    :param struct NCR5380_hostdata \*hostdata:
+    :param hostdata:
         scsi host private data
+    :type hostdata: struct NCR5380_hostdata \*
 
-    :param unsigned char \*dst:
+    :param dst:
         buffer to write into
+    :type dst: unsigned char \*
 
-    :param int len:
+    :param len:
         transfer size
+    :type len: int
 
 .. _`generic_ncr5380_precv.description`:
 
@@ -55,14 +59,17 @@ generic_NCR5380_psend
 
     pseudo DMA send
 
-    :param struct NCR5380_hostdata \*hostdata:
+    :param hostdata:
         scsi host private data
+    :type hostdata: struct NCR5380_hostdata \*
 
-    :param unsigned char \*src:
+    :param src:
         buffer to read from
+    :type src: unsigned char \*
 
-    :param int len:
+    :param len:
         transfer size
+    :type len: int
 
 .. _`generic_ncr5380_psend.description`:
 

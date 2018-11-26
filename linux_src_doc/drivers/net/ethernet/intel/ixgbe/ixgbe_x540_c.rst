@@ -10,14 +10,17 @@ ixgbe_setup_mac_link_X540
 
     Set the auto advertised capabilitires
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param ixgbe_link_speed speed:
+    :param speed:
         new link speed
+    :type speed: ixgbe_link_speed
 
-    :param bool autoneg_wait_to_complete:
+    :param autoneg_wait_to_complete:
         true when waiting for completion is needed
+    :type autoneg_wait_to_complete: bool
 
 .. _`ixgbe_reset_hw_x540`:
 
@@ -28,8 +31,9 @@ ixgbe_reset_hw_X540
 
     Perform hardware reset
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_reset_hw_x540.description`:
 
@@ -49,8 +53,9 @@ ixgbe_start_hw_X540
 
     Prepare hardware for Tx/Rx
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_start_hw_x540.description`:
 
@@ -70,8 +75,9 @@ ixgbe_init_eeprom_params_X540
 
     Initialize EEPROM params
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_init_eeprom_params_x540.description`:
 
@@ -90,14 +96,17 @@ ixgbe_read_eerd_X540
 
     Read EEPROM word using EERD
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of  word in the EEPROM to read
+    :type offset: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_read_eerd_x540.description`:
 
@@ -115,17 +124,21 @@ ixgbe_read_eerd_buffer_X540
 
     Read EEPROM word(s) using EERD
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of  word in the EEPROM to read
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         word(s) read from the EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_read_eerd_buffer_x540.description`:
 
@@ -143,14 +156,17 @@ ixgbe_write_eewr_X540
 
     Write EEPROM word using EEWR
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of  word in the EEPROM to write
+    :type offset: u16
 
-    :param u16 data:
+    :param data:
         word write to the EEPROM
+    :type data: u16
 
 .. _`ixgbe_write_eewr_x540.description`:
 
@@ -168,17 +184,21 @@ ixgbe_write_eewr_buffer_X540
 
     Write EEPROM word(s) using EEWR
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of  word in the EEPROM to write
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         word(s) write to the EEPROM
+    :type data: u16 \*
 
 .. _`ixgbe_write_eewr_buffer_x540.description`:
 
@@ -196,8 +216,9 @@ ixgbe_calc_eeprom_checksum_X540
 
     Calculates and returns the checksum
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_calc_eeprom_checksum_x540.description`:
 
@@ -216,11 +237,13 @@ ixgbe_validate_eeprom_checksum_X540
 
     Validate EEPROM checksum
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*checksum_val:
+    :param checksum_val:
         calculated checksum
+    :type checksum_val: u16 \*
 
 .. _`ixgbe_validate_eeprom_checksum_x540.description`:
 
@@ -239,8 +262,9 @@ ixgbe_update_eeprom_checksum_X540
 
     Updates the EEPROM checksum and flash
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_update_eeprom_checksum_x540.description`:
 
@@ -260,8 +284,9 @@ ixgbe_update_flash_X540
 
     Instruct HW to copy EEPROM to Flash device
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_update_flash_x540.description`:
 
@@ -280,8 +305,9 @@ ixgbe_poll_flash_update_done_X540
 
     Poll flash update status
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_poll_flash_update_done_x540.description`:
 
@@ -300,11 +326,13 @@ ixgbe_acquire_swfw_sync_X540
 
     Acquire SWFW semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 mask:
+    :param mask:
         Mask to specify which semaphore to acquire
+    :type mask: u32
 
 .. _`ixgbe_acquire_swfw_sync_x540.description`:
 
@@ -323,11 +351,13 @@ ixgbe_release_swfw_sync_X540
 
     Release SWFW semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 mask:
+    :param mask:
         Mask to specify which semaphore to release
+    :type mask: u32
 
 .. _`ixgbe_release_swfw_sync_x540.description`:
 
@@ -346,8 +376,9 @@ ixgbe_get_swfw_sync_semaphore
 
     Get hardware semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_get_swfw_sync_semaphore.description`:
 
@@ -365,8 +396,9 @@ ixgbe_release_swfw_sync_semaphore
 
     Release hardware semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_release_swfw_sync_semaphore.description`:
 
@@ -384,8 +416,9 @@ ixgbe_init_swfw_sync_X540
 
     Release hardware semaphore
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_init_swfw_sync_x540.description`:
 
@@ -404,11 +437,13 @@ ixgbe_blink_led_start_X540
 
     Blink LED based on index.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 index:
+    :param index:
         led number to blink
+    :type index: u32
 
 .. _`ixgbe_blink_led_start_x540.devices-that-implement-the-version-2-interface`:
 
@@ -426,11 +461,13 @@ ixgbe_blink_led_stop_X540
 
     Stop blinking LED based on index.
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u32 index:
+    :param index:
         led number to stop blinking
+    :type index: u32
 
 .. _`ixgbe_blink_led_stop_x540.devices-that-implement-the-version-2-interface`:
 

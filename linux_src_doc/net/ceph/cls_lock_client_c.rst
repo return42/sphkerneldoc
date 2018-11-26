@@ -10,32 +10,41 @@ ceph_cls_lock
 
     grab rados lock for object
 
-    :param struct ceph_osd_client \*osdc:
+    :param osdc:
         *undescribed*
+    :type osdc: struct ceph_osd_client \*
 
-    :param struct ceph_object_id \*oid:
+    :param oid:
         object to lock
+    :type oid: struct ceph_object_id \*
 
-    :param struct ceph_object_locator \*oloc:
+    :param oloc:
         *undescribed*
+    :type oloc: struct ceph_object_locator \*
 
-    :param char \*lock_name:
+    :param lock_name:
         the name of the lock
+    :type lock_name: char \*
 
-    :param u8 type:
+    :param type:
         lock type (CEPH_CLS_LOCK_EXCLUSIVE or CEPH_CLS_LOCK_SHARED)
+    :type type: u8
 
-    :param char \*cookie:
+    :param cookie:
         user-defined identifier for this instance of the lock
+    :type cookie: char \*
 
-    :param char \*tag:
+    :param tag:
         user-defined tag
+    :type tag: char \*
 
-    :param char \*desc:
+    :param desc:
         user-defined lock description
+    :type desc: char \*
 
-    :param u8 flags:
+    :param flags:
         lock flags
+    :type flags: u8
 
 .. _`ceph_cls_lock.description`:
 
@@ -53,20 +62,25 @@ ceph_cls_unlock
 
     release rados lock for object
 
-    :param struct ceph_osd_client \*osdc:
+    :param osdc:
         *undescribed*
+    :type osdc: struct ceph_osd_client \*
 
-    :param struct ceph_object_id \*oid:
+    :param oid:
         object to lock
+    :type oid: struct ceph_object_id \*
 
-    :param struct ceph_object_locator \*oloc:
+    :param oloc:
         *undescribed*
+    :type oloc: struct ceph_object_locator \*
 
-    :param char \*lock_name:
+    :param lock_name:
         the name of the lock
+    :type lock_name: char \*
 
-    :param char \*cookie:
+    :param cookie:
         user-defined identifier for this instance of the lock
+    :type cookie: char \*
 
 .. _`ceph_cls_break_lock`:
 
@@ -77,23 +91,29 @@ ceph_cls_break_lock
 
     release rados lock for object for specified client
 
-    :param struct ceph_osd_client \*osdc:
+    :param osdc:
         *undescribed*
+    :type osdc: struct ceph_osd_client \*
 
-    :param struct ceph_object_id \*oid:
+    :param oid:
         object to lock
+    :type oid: struct ceph_object_id \*
 
-    :param struct ceph_object_locator \*oloc:
+    :param oloc:
         *undescribed*
+    :type oloc: struct ceph_object_locator \*
 
-    :param char \*lock_name:
+    :param lock_name:
         the name of the lock
+    :type lock_name: char \*
 
-    :param char \*cookie:
+    :param cookie:
         user-defined identifier for this instance of the lock
+    :type cookie: char \*
 
-    :param struct ceph_entity_name \*locker:
+    :param locker:
         current lock owner
+    :type locker: struct ceph_entity_name \*
 
 .. This file was automatic generated / don't edit.
 

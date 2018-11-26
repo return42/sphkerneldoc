@@ -10,8 +10,9 @@
 
     unlink ptracee and restore its execution state
 
-    :param struct task_struct \*child:
+    :param child:
         ptracee to be unlinked
+    :type child: struct task_struct \*
 
 .. _`__ptrace_unlink.description`:
 
@@ -55,11 +56,13 @@ ptrace_check_attach
 
     check whether ptracee is ready for ptrace operation
 
-    :param struct task_struct \*child:
+    :param child:
         ptracee to check for
+    :type child: struct task_struct \*
 
-    :param bool ignore_state:
+    :param ignore_state:
         don't check whether \ ``child``\  is currently \ ``TASK_TRACED``\ 
+    :type ignore_state: bool
 
 .. _`ptrace_check_attach.description`:
 
@@ -77,7 +80,7 @@ state.
 Context
 -------
 
-Grabs and releases tasklist_lock and \ ``child``\ ->sighand->siglock.
+Grabs and releases tasklist_lock and \ ``child->sighand->siglock``\ .
 
 .. _`ptrace_check_attach.return`:
 
@@ -95,8 +98,9 @@ ptrace_traceme
 
     -  helper for PTRACE_TRACEME
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ptrace_traceme.description`:
 

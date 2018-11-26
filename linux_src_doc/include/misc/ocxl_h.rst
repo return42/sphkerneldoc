@@ -8,14 +8,17 @@ ocxl_link_update_pe
 
 .. c:function:: int ocxl_link_update_pe(void *link_handle, int pasid, __u16 tid)
 
-    :param void \*link_handle:
+    :param link_handle:
         *undescribed*
+    :type link_handle: void \*
 
-    :param int pasid:
+    :param pasid:
         *undescribed*
+    :type pasid: int
 
-    :param __u16 tid:
+    :param tid:
         *undescribed*
+    :type tid: __u16
 
 .. _`ocxl_link_update_pe.link_handle`:
 

@@ -10,8 +10,9 @@ get_buf_addr
 
     return DMA buffer address of software descriptor
 
-    :param const struct rx_sw_desc \*sdesc:
+    :param sdesc:
         pointer to the software buffer descriptor
+    :type sdesc: const struct rx_sw_desc \*
 
 .. _`get_buf_addr.description`:
 
@@ -30,8 +31,9 @@ is_buf_mapped
 
     is buffer mapped for DMA?
 
-    :param const struct rx_sw_desc \*sdesc:
+    :param sdesc:
         pointer to the software buffer descriptor
+    :type sdesc: const struct rx_sw_desc \*
 
 .. _`is_buf_mapped.description`:
 
@@ -50,8 +52,9 @@ need_skb_unmap
 
     does the platform need unmapping of sk_buffs?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`need_skb_unmap.description`:
 
@@ -70,8 +73,9 @@ txq_avail
 
     return the number of available slots in a TX queue
 
-    :param const struct sge_txq \*tq:
+    :param tq:
         the TX queue
+    :type tq: const struct sge_txq \*
 
 .. _`txq_avail.description`:
 
@@ -89,8 +93,9 @@ fl_cap
 
     return the capacity of a Free List
 
-    :param const struct sge_fl \*fl:
+    :param fl:
         the Free List
+    :type fl: const struct sge_fl \*
 
 .. _`fl_cap.description`:
 
@@ -111,11 +116,13 @@ fl_starving
 
     return whether a Free List is starving.
 
-    :param const struct adapter \*adapter:
+    :param adapter:
         pointer to the adapter
+    :type adapter: const struct adapter \*
 
-    :param const struct sge_fl \*fl:
+    :param fl:
         the Free List
+    :type fl: const struct sge_fl \*
 
 .. _`fl_starving.description`:
 
@@ -135,14 +142,17 @@ map_skb
 
     map an skb for DMA to the device
 
-    :param struct device \*dev:
+    :param dev:
         the egress net device
+    :type dev: struct device \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet to map
+    :type skb: const struct sk_buff \*
 
-    :param dma_addr_t \*addr:
+    :param addr:
         a pointer to the base of the DMA mapping array
+    :type addr: dma_addr_t \*
 
 .. _`map_skb.description`:
 
@@ -160,17 +170,21 @@ free_tx_desc
 
     reclaims TX descriptors and their buffers
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_txq \*tq:
+    :param tq:
         the TX queue to reclaim descriptors from
+    :type tq: struct sge_txq \*
 
-    :param unsigned int n:
+    :param n:
         the number of descriptors to reclaim
+    :type n: unsigned int
 
-    :param bool unmap:
+    :param unmap:
         whether the buffers should be unmapped for DMA
+    :type unmap: bool
 
 .. _`free_tx_desc.description`:
 
@@ -189,14 +203,17 @@ reclaim_completed_tx
 
     reclaims completed TX descriptors
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_txq \*tq:
+    :param tq:
         the TX queue to reclaim completed descriptors from
+    :type tq: struct sge_txq \*
 
-    :param bool unmap:
+    :param unmap:
         whether the buffers should be unmapped for DMA
+    :type unmap: bool
 
 .. _`reclaim_completed_tx.description`:
 
@@ -216,11 +233,13 @@ get_buf_size
 
     return the size of an RX Free List buffer.
 
-    :param const struct adapter \*adapter:
+    :param adapter:
         pointer to the associated adapter
+    :type adapter: const struct adapter \*
 
-    :param const struct rx_sw_desc \*sdesc:
+    :param sdesc:
         pointer to the software buffer descriptor
+    :type sdesc: const struct rx_sw_desc \*
 
 .. _`free_rx_bufs`:
 
@@ -231,14 +250,17 @@ free_rx_bufs
 
     free RX buffers on an SGE Free List
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_fl \*fl:
+    :param fl:
         the SGE Free List to free buffers from
+    :type fl: struct sge_fl \*
 
-    :param int n:
+    :param n:
         how many buffers to free
+    :type n: int
 
 .. _`free_rx_bufs.description`:
 
@@ -258,11 +280,13 @@ unmap_rx_buf
 
     unmap the current RX buffer on an SGE Free List
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_fl \*fl:
+    :param fl:
         the SGE Free List
+    :type fl: struct sge_fl \*
 
 .. _`unmap_rx_buf.description`:
 
@@ -286,11 +310,13 @@ ring_fl_db
 
     righ doorbell on free list
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_fl \*fl:
+    :param fl:
         the Free List whose doorbell should be rung ...
+    :type fl: struct sge_fl \*
 
 .. _`ring_fl_db.description`:
 
@@ -309,14 +335,17 @@ set_rx_sw_desc
 
     initialize software RX buffer descriptor
 
-    :param struct rx_sw_desc \*sdesc:
+    :param sdesc:
         pointer to the softwore RX buffer descriptor
+    :type sdesc: struct rx_sw_desc \*
 
-    :param struct page \*page:
+    :param page:
         pointer to the page data structure backing the RX buffer
+    :type page: struct page \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         PCI DMA address (possibly with low-bit flags)
+    :type dma_addr: dma_addr_t
 
 .. _`refill_fl`:
 
@@ -327,17 +356,21 @@ refill_fl
 
     refill an SGE RX buffer ring
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_fl \*fl:
+    :param fl:
         the Free List ring to refill
+    :type fl: struct sge_fl \*
 
-    :param int n:
+    :param n:
         the number of new buffers to allocate
+    :type n: int
 
-    :param gfp_t gfp:
+    :param gfp:
         the gfp flags for the allocations
+    :type gfp: gfp_t
 
 .. _`refill_fl.description`:
 
@@ -360,26 +393,33 @@ alloc_ring
 
     allocate resources for an SGE descriptor ring
 
-    :param struct device \*dev:
+    :param dev:
         the PCI device's core device
+    :type dev: struct device \*
 
-    :param size_t nelem:
+    :param nelem:
         the number of descriptors
+    :type nelem: size_t
 
-    :param size_t hwsize:
+    :param hwsize:
         the size of each hardware descriptor
+    :type hwsize: size_t
 
-    :param size_t swsize:
+    :param swsize:
         the size of each software descriptor
+    :type swsize: size_t
 
-    :param dma_addr_t \*busaddrp:
+    :param busaddrp:
         the physical PCI bus address of the allocated ring
+    :type busaddrp: dma_addr_t \*
 
-    :param void \*swringp:
+    :param swringp:
         return address pointer for software ring
+    :type swringp: void \*
 
-    :param size_t stat_size:
+    :param stat_size:
         extra space in hardware ring for status information
+    :type stat_size: size_t
 
 .. _`alloc_ring.description`:
 
@@ -410,8 +450,9 @@ sgl_len
 
     calculates the size of an SGL of the given capacity
 
-    :param unsigned int n:
+    :param n:
         the number of SGL entries
+    :type n: unsigned int
 
 .. _`sgl_len.description`:
 
@@ -430,8 +471,9 @@ flits_to_desc
 
     returns the num of TX descriptors for the given flits
 
-    :param unsigned int flits:
+    :param flits:
         the number of flits
+    :type flits: unsigned int
 
 .. _`flits_to_desc.description`:
 
@@ -450,8 +492,9 @@ is_eth_imm
 
     can an Ethernet packet be sent as immediate data?
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
 .. _`is_eth_imm.description`:
 
@@ -470,8 +513,9 @@ calc_tx_flits
 
     calculate the number of flits for a packet TX WR
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
 .. _`calc_tx_flits.description`:
 
@@ -490,23 +534,29 @@ write_sgl
 
     populate a Scatter/Gather List for a packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param struct sge_txq \*tq:
+    :param tq:
         the TX queue we are writing into
+    :type tq: struct sge_txq \*
 
-    :param struct ulptx_sgl \*sgl:
+    :param sgl:
         starting location for writing the SGL
+    :type sgl: struct ulptx_sgl \*
 
-    :param u64 \*end:
+    :param end:
         points right after the end of the SGL
+    :type end: u64 \*
 
-    :param unsigned int start:
+    :param start:
         start offset into skb main-body data to include in the SGL
+    :type start: unsigned int
 
-    :param const dma_addr_t \*addr:
+    :param addr:
         the list of DMA bus addresses for the SGL elements
+    :type addr: const dma_addr_t \*
 
 .. _`write_sgl.description`:
 
@@ -519,7 +569,7 @@ The SGL includes all of the packet's page fragments and the data in its
 main body except for the first \ ``start``\  bytes.  \ ``pos``\  must be 16-byte
 aligned and within a TX descriptor with available space.  \ ``end``\  points
 write after the end of the SGL but does not account for any potential
-wrap around, i.e., \ ``end``\  > \ ``tq``\ ->stat.
+wrap around, i.e., \ ``end``\  > \ ``tq->stat``\ .
 
 .. _`ring_tx_db`:
 
@@ -530,14 +580,17 @@ ring_tx_db
 
     check and potentially ring a TX queue's doorbell
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_txq \*tq:
+    :param tq:
         the TX queue
+    :type tq: struct sge_txq \*
 
-    :param int n:
+    :param n:
         number of new descriptors to give to HW
+    :type n: int
 
 .. _`ring_tx_db.description`:
 
@@ -555,14 +608,17 @@ inline_tx_skb
 
     inline a packet's data into TX descriptors
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param const struct sge_txq \*tq:
+    :param tq:
         the TX queue where the packet will be inlined
+    :type tq: const struct sge_txq \*
 
-    :param void \*pos:
+    :param pos:
         starting position in the TX queue to inline the packet
+    :type pos: void \*
 
 .. _`inline_tx_skb.description`:
 
@@ -583,11 +639,13 @@ t4vf_eth_xmit
 
     add a packet to an Ethernet TX queue
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the egress net device
+    :type dev: struct net_device \*
 
 .. _`t4vf_eth_xmit.description`:
 
@@ -605,14 +663,17 @@ copy_frags
 
     copy fragments from gather list into skb_shared_info
 
-    :param struct sk_buff \*skb:
+    :param skb:
         destination skb
+    :type skb: struct sk_buff \*
 
-    :param const struct pkt_gl \*gl:
+    :param gl:
         source internal packet gather list
+    :type gl: const struct pkt_gl \*
 
-    :param unsigned int offset:
+    :param offset:
         packet start offset in first page
+    :type offset: unsigned int
 
 .. _`copy_frags.description`:
 
@@ -631,14 +692,17 @@ t4vf_pktgl_to_skb
 
     build an sk_buff from a packet gather list
 
-    :param const struct pkt_gl \*gl:
+    :param gl:
         the gather list
+    :type gl: const struct pkt_gl \*
 
-    :param unsigned int skb_len:
+    :param skb_len:
         size of sk_buff main body if it carries fragments
+    :type skb_len: unsigned int
 
-    :param unsigned int pull_len:
+    :param pull_len:
         amount of data to move to the sk_buff's main body
+    :type pull_len: unsigned int
 
 .. _`t4vf_pktgl_to_skb.description`:
 
@@ -657,8 +721,9 @@ t4vf_pktgl_free
 
     free a packet gather list
 
-    :param const struct pkt_gl \*gl:
+    :param gl:
         the gather list
+    :type gl: const struct pkt_gl \*
 
 .. _`t4vf_pktgl_free.description`:
 
@@ -677,14 +742,17 @@ do_gro
 
     perform Generic Receive Offload ingress packet processing
 
-    :param struct sge_eth_rxq \*rxq:
+    :param rxq:
         ingress RX Ethernet Queue
+    :type rxq: struct sge_eth_rxq \*
 
-    :param const struct pkt_gl \*gl:
+    :param gl:
         gather list for ingress packet
+    :type gl: const struct pkt_gl \*
 
-    :param const struct cpl_rx_pkt \*pkt:
+    :param pkt:
         CPL header for last packet fragment
+    :type pkt: const struct cpl_rx_pkt \*
 
 .. _`do_gro.description`:
 
@@ -703,14 +771,17 @@ t4vf_ethrx_handler
 
     process an ingress ethernet packet
 
-    :param struct sge_rspq \*rspq:
+    :param rspq:
         the response queue that received the packet
+    :type rspq: struct sge_rspq \*
 
-    :param const __be64 \*rsp:
+    :param rsp:
         the response queue descriptor holding the RX_PKT message
+    :type rsp: const __be64 \*
 
-    :param const struct pkt_gl \*gl:
+    :param gl:
         the gather list of packet fragments
+    :type gl: const struct pkt_gl \*
 
 .. _`t4vf_ethrx_handler.description`:
 
@@ -728,11 +799,13 @@ is_new_response
 
     check if a response is newly written
 
-    :param const struct rsp_ctrl \*rc:
+    :param rc:
         the response control descriptor
+    :type rc: const struct rsp_ctrl \*
 
-    :param const struct sge_rspq \*rspq:
+    :param rspq:
         the response queue
+    :type rspq: const struct sge_rspq \*
 
 .. _`is_new_response.description`:
 
@@ -751,14 +824,17 @@ restore_rx_bufs
 
     put back a packet's RX buffers
 
-    :param const struct pkt_gl \*gl:
+    :param gl:
         the packet gather list
+    :type gl: const struct pkt_gl \*
 
-    :param struct sge_fl \*fl:
+    :param fl:
         the SGE Free List
+    :type fl: struct sge_fl \*
 
-    :param int frags:
+    :param frags:
         *undescribed*
+    :type frags: int
 
 .. _`restore_rx_bufs.description`:
 
@@ -788,8 +864,9 @@ rspq_next
 
     advance to the next entry in a response queue
 
-    :param struct sge_rspq \*rspq:
+    :param rspq:
         the queue
+    :type rspq: struct sge_rspq \*
 
 .. _`rspq_next.description`:
 
@@ -807,11 +884,13 @@ process_responses
 
     process responses from an SGE response queue
 
-    :param struct sge_rspq \*rspq:
+    :param rspq:
         the ingress response queue to process
+    :type rspq: struct sge_rspq \*
 
-    :param int budget:
+    :param budget:
         how many responses can be processed in this round
+    :type budget: int
 
 .. _`process_responses.description`:
 
@@ -835,11 +914,13 @@ napi_rx_handler
 
     the NAPI handler for RX processing
 
-    :param struct napi_struct \*napi:
+    :param napi:
         the napi instance
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         how many packets we can process in this round
+    :type budget: int
 
 .. _`napi_rx_handler.description`:
 
@@ -861,8 +942,9 @@ t4vf_intr_handler
 
     select the top-level interrupt handler
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_intr_handler.description`:
 
@@ -881,8 +963,9 @@ sge_rx_timer_cb
 
     perform periodic maintenance of SGE RX queues
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`sge_rx_timer_cb.description`:
 
@@ -905,8 +988,9 @@ sge_tx_timer_cb
 
     perform periodic maintenance of SGE Tx queues
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`sge_tx_timer_cb.description`:
 
@@ -929,17 +1013,21 @@ bar2_address
 
     return the BAR2 address for an SGE Queue's Registers
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param unsigned int qid:
+    :param qid:
         the SGE Queue ID
+    :type qid: unsigned int
 
-    :param enum t4_bar2_qtype qtype:
+    :param qtype:
         the SGE Queue Type (Egress or Ingress)
+    :type qtype: enum t4_bar2_qtype
 
-    :param unsigned int \*pbar2_qid:
+    :param pbar2_qid:
         BAR2 Queue ID or 0 for Queue ID inferred SGE Queues
+    :type pbar2_qid: unsigned int \*
 
 .. _`bar2_address.description`:
 
@@ -961,26 +1049,33 @@ t4vf_sge_alloc_rxq
 
     allocate an SGE RX Queue
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_rspq \*rspq:
+    :param rspq:
         pointer to to the new rxq's Response Queue to be filled in
+    :type rspq: struct sge_rspq \*
 
-    :param bool iqasynch:
+    :param iqasynch:
         if 0, a normal rspq; if 1, an asynchronous event queue
+    :type iqasynch: bool
 
-    :param struct net_device \*dev:
+    :param dev:
         the network device associated with the new rspq
+    :type dev: struct net_device \*
 
-    :param int intr_dest:
+    :param intr_dest:
         MSI-X vector index (overriden in MSI mode)
+    :type intr_dest: int
 
-    :param struct sge_fl \*fl:
+    :param fl:
         pointer to the new rxq's Free List to be filled in
+    :type fl: struct sge_fl \*
 
-    :param rspq_handler_t hnd:
+    :param hnd:
         the interrupt handler to invoke for the rspq
+    :type hnd: rspq_handler_t
 
 .. _`t4vf_sge_alloc_eth_txq`:
 
@@ -991,21 +1086,26 @@ t4vf_sge_alloc_eth_txq
 
     allocate an SGE Ethernet TX Queue
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_eth_txq \*txq:
+    :param txq:
         pointer to the new txq to be filled in
+    :type txq: struct sge_eth_txq \*
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct netdev_queue \*devq:
+    :param devq:
         the network TX queue associated with the new txq
+    :type devq: struct netdev_queue \*
 
-    :param unsigned int iqid:
+    :param iqid:
         the relative ingress queue ID to which events relating to
         the new txq should be directed
+    :type iqid: unsigned int
 
 .. _`t4vf_free_sge_resources`:
 
@@ -1016,8 +1116,9 @@ t4vf_free_sge_resources
 
     free SGE resources
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_free_sge_resources.description`:
 
@@ -1035,8 +1136,9 @@ t4vf_sge_start
 
     enable SGE operation
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_sge_start.description`:
 
@@ -1054,8 +1156,9 @@ t4vf_sge_stop
 
     disable SGE operation
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_sge_stop.description`:
 
@@ -1075,8 +1178,9 @@ t4vf_sge_init
 
     initialize SGE
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
 .. _`t4vf_sge_init.description`:
 

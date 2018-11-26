@@ -10,8 +10,9 @@ keystone_timer_barrier
 
     write memory barrier use explicit barrier to avoid using readl/writel non relaxed function variants, because in our case non relaxed variants hide the true places where barrier is needed.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`keystone_timer_config`:
 
@@ -22,11 +23,13 @@ keystone_timer_config
 
     configures timer to work in oneshot/periodic modes. \ ````\  mask: mask of the mode to configure \ ````\  period: cycles number to configure for
 
-    :param u64 period:
+    :param period:
         *undescribed*
+    :type period: u64
 
-    :param int mask:
+    :param mask:
         *undescribed*
+    :type mask: int
 
 .. This file was automatic generated / don't edit.
 

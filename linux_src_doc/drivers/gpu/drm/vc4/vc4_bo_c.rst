@@ -24,11 +24,13 @@ vc4_create_object
 
     Implementation of driver->gem_create_object.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param size_t size:
+    :param size:
         Size in bytes of the memory the object will reference
+    :type size: size_t
 
 .. _`vc4_create_object.description`:
 
@@ -47,14 +49,17 @@ vc4_set_tiling_ioctl
 
     Sets the tiling modifier for a BO.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl argument
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file for this fd
+    :type file_priv: struct drm_file \*
 
 .. _`vc4_set_tiling_ioctl.description`:
 
@@ -76,14 +81,17 @@ vc4_get_tiling_ioctl
 
     Gets the tiling modifier for a BO.
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl argument
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file for this fd
+    :type file_priv: struct drm_file \*
 
 .. _`vc4_get_tiling_ioctl.description`:
 

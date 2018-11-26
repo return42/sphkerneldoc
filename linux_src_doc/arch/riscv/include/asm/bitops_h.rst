@@ -10,11 +10,13 @@ test_and_set_bit
 
     Set a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to set
+    :type nr: int
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`test_and_set_bit.description`:
 
@@ -32,11 +34,13 @@ test_and_clear_bit
 
     Clear a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to clear
+    :type nr: int
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`test_and_clear_bit.description`:
 
@@ -54,11 +58,13 @@ test_and_change_bit
 
     Change a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to change
+    :type nr: int
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`test_and_change_bit.description`:
 
@@ -77,11 +83,13 @@ set_bit
 
     Atomically set a bit in memory
 
-    :param int nr:
+    :param nr:
         the bit to set
+    :type nr: int
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`set_bit.note`:
 
@@ -104,11 +112,13 @@ clear_bit
 
     Clears a bit in memory
 
-    :param int nr:
+    :param nr:
         Bit to clear
+    :type nr: int
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`clear_bit.note`:
 
@@ -128,11 +138,13 @@ change_bit
 
     Toggle a bit in memory
 
-    :param int nr:
+    :param nr:
         Bit to change
+    :type nr: int
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`change_bit.description`:
 
@@ -152,11 +164,13 @@ test_and_set_bit_lock
 
     Set a bit and return its old value, for lock
 
-    :param unsigned long nr:
+    :param nr:
         Bit to set
+    :type nr: unsigned long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile unsigned long \*
 
 .. _`test_and_set_bit_lock.description`:
 
@@ -175,11 +189,13 @@ clear_bit_unlock
 
     Clear a bit in memory, for unlock
 
-    :param unsigned long nr:
+    :param nr:
         the bit to set
+    :type nr: unsigned long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`clear_bit_unlock.description`:
 
@@ -197,11 +213,13 @@ This operation is atomic and provides release barrier semantics.
 
     Clear a bit in memory, for unlock
 
-    :param unsigned long nr:
+    :param nr:
         the bit to set
+    :type nr: unsigned long
 
-    :param volatile unsigned long \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile unsigned long \*
 
 .. _`__clear_bit_unlock.description`:
 

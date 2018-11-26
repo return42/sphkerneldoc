@@ -632,7 +632,7 @@ Definition
         struct genwqe_driver *client;
         struct file *filp;
         struct fasync_struct *async_queue;
-        struct task_struct *owner;
+        struct pid *opener;
         struct list_head list;
         spinlock_t map_lock;
         struct list_head map_list;
@@ -657,7 +657,7 @@ filp
 async_queue
     *undescribed*
 
-owner
+opener
     *undescribed*
 
 list
@@ -684,8 +684,9 @@ genwqe_get_slu_id
 
     Read Service Layer Unit Id
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_get_slu_id.return`:
 
@@ -706,17 +707,21 @@ genwqe_write_vreg
 
     Write register in VF window
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         genwqe device
+    :type cd: struct genwqe_dev \*
 
-    :param u32 reg:
+    :param reg:
         register address
+    :type reg: u32
 
-    :param u64 val:
+    :param val:
         value to write
+    :type val: u64
 
-    :param int func:
+    :param func:
         0: PF, 1: VF0, ..., 15: VF14
+    :type func: int
 
 .. _`genwqe_read_vreg`:
 
@@ -727,14 +732,17 @@ genwqe_read_vreg
 
     Read register in VF window
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         genwqe device
+    :type cd: struct genwqe_dev \*
 
-    :param u32 reg:
+    :param reg:
         register address
+    :type reg: u32
 
-    :param int func:
+    :param func:
         0: PF, 1: VF0, ..., 15: VF14
+    :type func: int
 
 .. _`genwqe_read_vreg.return`:
 
@@ -752,14 +760,17 @@ content of the register
 
     Execute DDCB request with addr translation
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param struct genwqe_ddcb_cmd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct genwqe_ddcb_cmd \*
 
-    :param unsigned int f_flags:
+    :param f_flags:
         *undescribed*
+    :type f_flags: unsigned int
 
 .. _`__genwqe_execute_ddcb.description`:
 
@@ -781,14 +792,17 @@ buildup and teardown.
 
     Execute DDCB request without addr translation
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
-    :param struct genwqe_ddcb_cmd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct genwqe_ddcb_cmd \*
 
-    :param unsigned int f_flags:
+    :param f_flags:
         *undescribed*
+    :type f_flags: unsigned int
 
 .. _`__genwqe_execute_raw_ddcb.description`:
 
@@ -810,8 +824,9 @@ genwqe_is_privileged
 
     Determine operation mode for PCI function
 
-    :param struct genwqe_dev \*cd:
+    :param cd:
         *undescribed*
+    :type cd: struct genwqe_dev \*
 
 .. _`genwqe_is_privileged.on-intel-with-sriov-support-we-see`:
 

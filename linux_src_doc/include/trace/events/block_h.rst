@@ -10,8 +10,9 @@ trace_block_touch_buffer
 
     mark a buffer accessed
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer_head being touched
+    :type bh: struct buffer_head \*
 
 .. _`trace_block_touch_buffer.description`:
 
@@ -29,8 +30,9 @@ trace_block_dirty_buffer
 
     mark a buffer dirty
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer_head being dirtied
+    :type bh: struct buffer_head \*
 
 .. _`trace_block_dirty_buffer.description`:
 
@@ -48,11 +50,13 @@ trace_block_rq_requeue
 
     place block IO request back on a queue
 
-    :param struct request_queue \*q:
+    :param q:
         queue holding operation
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         block IO operation request
+    :type rq: struct request \*
 
 .. _`trace_block_rq_requeue.description`:
 
@@ -72,14 +76,17 @@ trace_block_rq_complete
 
     block IO operation completed by device driver
 
-    :param struct request \*rq:
+    :param rq:
         block operations request
+    :type rq: struct request \*
 
-    :param int error:
+    :param error:
         status code
+    :type error: int
 
-    :param unsigned int nr_bytes:
+    :param nr_bytes:
         number of completed bytes
+    :type nr_bytes: unsigned int
 
 .. _`trace_block_rq_complete.description`:
 
@@ -88,8 +95,8 @@ Description
 
 The block_rq_complete tracepoint event indicates that some portion
 of operation request has been completed by the device driver.  If
-the \ ``rq``\ ->bio is \ ``NULL``\ , then there is absolutely no additional work to
-do for the request. If \ ``rq``\ ->bio is non-NULL then there is
+the \ ``rq->bio``\  is \ ``NULL``\ , then there is absolutely no additional work to
+do for the request. If \ ``rq->bio``\  is non-NULL then there is
 additional work required to complete the request.
 
 .. _`trace_block_rq_insert`:
@@ -101,11 +108,13 @@ trace_block_rq_insert
 
     insert block operation request into queue
 
-    :param struct request_queue \*q:
+    :param q:
         target queue
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         block IO operation request
+    :type rq: struct request \*
 
 .. _`trace_block_rq_insert.description`:
 
@@ -126,11 +135,13 @@ trace_block_rq_issue
 
     issue pending block IO request operation to device driver
 
-    :param struct request_queue \*q:
+    :param q:
         queue holding operation
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         block IO operation operation request
+    :type rq: struct request \*
 
 .. _`trace_block_rq_issue.description`:
 
@@ -149,11 +160,13 @@ trace_block_bio_bounce
 
     used bounce buffer when processing block operation
 
-    :param struct request_queue \*q:
+    :param q:
         queue holding the block operation
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         block operation
+    :type bio: struct bio \*
 
 .. _`trace_block_bio_bounce.description`:
 
@@ -175,14 +188,17 @@ trace_block_bio_complete
 
     completed all work on the block operation
 
-    :param struct request_queue \*q:
+    :param q:
         queue holding the block operation
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         block operation completed
+    :type bio: struct bio \*
 
-    :param int error:
+    :param error:
         io error value
+    :type error: int
 
 .. _`trace_block_bio_complete.description`:
 
@@ -201,14 +217,17 @@ trace_block_bio_backmerge
 
     merging block operation to the end of an existing operation
 
-    :param struct request_queue \*q:
+    :param q:
         queue holding operation
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         request bio is being merged into
+    :type rq: struct request \*
 
-    :param struct bio \*bio:
+    :param bio:
         new block operation to merge
+    :type bio: struct bio \*
 
 .. _`trace_block_bio_backmerge.description`:
 
@@ -227,14 +246,17 @@ trace_block_bio_frontmerge
 
     merging block operation to the beginning of an existing operation
 
-    :param struct request_queue \*q:
+    :param q:
         queue holding operation
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         request bio is being merged into
+    :type rq: struct request \*
 
-    :param struct bio \*bio:
+    :param bio:
         new block operation to merge
+    :type bio: struct bio \*
 
 .. _`trace_block_bio_frontmerge.description`:
 
@@ -253,11 +275,13 @@ trace_block_bio_queue
 
     putting new block IO operation in queue
 
-    :param struct request_queue \*q:
+    :param q:
         queue holding operation
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         new block operation
+    :type bio: struct bio \*
 
 .. _`trace_block_bio_queue.description`:
 
@@ -275,14 +299,17 @@ trace_block_getrq
 
     get a free request entry in queue for block IO operations
 
-    :param struct request_queue \*q:
+    :param q:
         queue for operations
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         pending block IO operation (can be \ ``NULL``\ )
+    :type bio: struct bio \*
 
-    :param int rw:
+    :param rw:
         low bit indicates a read (%0) or a write (%1)
+    :type rw: int
 
 .. _`trace_block_getrq.description`:
 
@@ -301,14 +328,17 @@ trace_block_sleeprq
 
     waiting to get a free request entry in queue for block IO operation
 
-    :param struct request_queue \*q:
+    :param q:
         queue for operation
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         pending block IO operation (can be \ ``NULL``\ )
+    :type bio: struct bio \*
 
-    :param int rw:
+    :param rw:
         low bit indicates a read (%0) or a write (%1)
+    :type rw: int
 
 .. _`trace_block_sleeprq.description`:
 
@@ -329,8 +359,9 @@ trace_block_plug
 
     keep operations requests in request queue
 
-    :param struct request_queue \*q:
+    :param q:
         request queue to plug
+    :type q: struct request_queue \*
 
 .. _`trace_block_plug.description`:
 
@@ -350,14 +381,17 @@ trace_block_unplug
 
     release of operations requests in request queue
 
-    :param struct request_queue \*q:
+    :param q:
         request queue to unplug
+    :type q: struct request_queue \*
 
-    :param unsigned int depth:
+    :param depth:
         number of requests just added to the queue
+    :type depth: unsigned int
 
-    :param bool explicit:
+    :param explicit:
         whether this was an explicit unplug, or one from \ :c:func:`schedule`\ 
+    :type explicit: bool
 
 .. _`trace_block_unplug.description`:
 
@@ -376,14 +410,17 @@ trace_block_split
 
     split a single bio struct into two bio structs
 
-    :param struct request_queue \*q:
+    :param q:
         queue containing the bio
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         block operation being split
+    :type bio: struct bio \*
 
-    :param unsigned int new_sector:
+    :param new_sector:
         The starting sector for the new bio
+    :type new_sector: unsigned int
 
 .. _`trace_block_split.description`:
 
@@ -404,17 +441,21 @@ trace_block_bio_remap
 
     map request for a logical device to the raw device
 
-    :param struct request_queue \*q:
+    :param q:
         queue holding the operation
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         revised operation
+    :type bio: struct bio \*
 
-    :param dev_t dev:
+    :param dev:
         device for the operation
+    :type dev: dev_t
 
-    :param sector_t from:
+    :param from:
         original sector for the operation
+    :type from: sector_t
 
 .. _`trace_block_bio_remap.description`:
 
@@ -433,17 +474,21 @@ trace_block_rq_remap
 
     map request for a block operation request
 
-    :param struct request_queue \*q:
+    :param q:
         queue holding the operation
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         block IO operation request
+    :type rq: struct request \*
 
-    :param dev_t dev:
+    :param dev:
         device for the operation
+    :type dev: dev_t
 
-    :param sector_t from:
+    :param from:
         original sector for the operation
+    :type from: sector_t
 
 .. _`trace_block_rq_remap.description`:
 

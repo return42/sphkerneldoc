@@ -10,8 +10,9 @@ hcd_buffer_create
 
     initialize buffer pools
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         the bus whose buffer pools are to be initialized
+    :type hcd: struct usb_hcd \*
 
 .. _`hcd_buffer_create.context`:
 
@@ -47,8 +48,9 @@ hcd_buffer_destroy
 
     deallocate buffer pools
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         the bus whose buffer pools are to be destroyed
+    :type hcd: struct usb_hcd \*
 
 .. _`hcd_buffer_destroy.context`:
 

@@ -78,8 +78,9 @@ s3c_nand_set_platdata
 
     register NAND platform data.
 
-    :param struct s3c2410_platform_nand \*nand:
+    :param nand:
         The NAND platform data to register with s3c_device_nand.
+    :type nand: struct s3c2410_platform_nand \*
 
 .. _`s3c_nand_set_platdata.description`:
 

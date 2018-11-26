@@ -10,11 +10,13 @@ tfrc_lh_update_i_mean
 
     Update the \`open' loss interval I_0
 
-    :param struct tfrc_loss_hist \*lh:
+    :param lh:
         *undescribed*
+    :type lh: struct tfrc_loss_hist \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`tfrc_lh_update_i_mean.for-recomputing-p`:
 
@@ -32,17 +34,20 @@ tfrc_lh_interval_add
 
     Insert new record into the Loss Interval database
 
-    :param struct tfrc_loss_hist \*lh:
+    :param lh:
         Loss Interval database
+    :type lh: struct tfrc_loss_hist \*
 
-    :param struct tfrc_rx_hist \*rh:
+    :param rh:
         Receive history containing a fresh loss event
+    :type rh: struct tfrc_rx_hist \*
 
     :param u32 (\*calc_first_li)(struct sock \*):
         Caller-dependent routine to compute length of first interval
 
-    :param struct sock \*sk:
+    :param sk:
         Used by \ ``calc_first_li``\  in caller-specific way (subtyping)
+    :type sk: struct sock \*
 
 .. _`tfrc_lh_interval_add.description`:
 

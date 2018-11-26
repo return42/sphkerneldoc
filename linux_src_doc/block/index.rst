@@ -26,11 +26,11 @@ block
     blk-merge_c
     blk-mq-pci_c
     blk-mq-rdma_c
-    blk-mq-sched_c
     blk-mq-tag_c
     blk-mq-virtio_c
     blk-mq_c
     blk-mq_h
+    blk-pm_c
     blk-settings_c
     blk-softirq_c
     blk-stat_h
@@ -44,3 +44,4 @@ block
     cfq-iosched_c
     genhd_c
     scsi_ioctl_c
+    t10-pi_c

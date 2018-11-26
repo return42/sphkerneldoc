@@ -42,8 +42,9 @@ coresight_disable_source
 
     Drop the reference count by 1 and disable the device if there are no users left.
 
-    :param struct coresight_device \*csdev:
+    :param csdev:
         *undescribed*
+    :type csdev: struct coresight_device \*
 
 .. _`coresight_disable_source.description`:
 
@@ -63,8 +64,9 @@ coresight_get_enabled_sink
 
     returns the first enabled sink found on the bus
 
-    :param bool deactivate:
+    :param deactivate:
         Whether the 'enable_sink' flag should be reset
+    :type deactivate: bool
 
 .. _`coresight_get_enabled_sink.description`:
 
@@ -88,14 +90,17 @@ clear the flag.
 
     recursively build a path from a \ ``csdev``\  to a sink.
 
-    :param struct coresight_device \*csdev:
+    :param csdev:
         The device to start from.
+    :type csdev: struct coresight_device \*
 
-    :param struct coresight_device \*sink:
+    :param sink:
         *undescribed*
+    :type sink: struct coresight_device \*
 
-    :param struct list_head \*path:
+    :param path:
         The list to add devices to.
+    :type path: struct list_head \*
 
 .. _`_coresight_build_path.description`:
 
@@ -117,8 +122,9 @@ coresight_release_path
 
     release a previously built path.
 
-    :param struct list_head \*path:
+    :param path:
         the path to release.
+    :type path: struct list_head \*
 
 .. _`coresight_release_path.description`:
 
@@ -137,17 +143,21 @@ coresight_timeout
 
     loop until a bit has changed to a specific state.
 
-    :param void __iomem \*addr:
+    :param addr:
         base address of the area of interest.
+    :type addr: void __iomem \*
 
-    :param u32 offset:
+    :param offset:
         address of a register, starting from \ ``addr``\ .
+    :type offset: u32
 
-    :param int position:
+    :param position:
         the position of the bit of interest.
+    :type position: int
 
-    :param int value:
+    :param value:
         the value the bit should have.
+    :type value: int
 
 .. _`coresight_timeout.return`:
 

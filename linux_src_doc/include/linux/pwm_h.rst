@@ -147,11 +147,13 @@ pwm_get_state
 
     retrieve the current PWM state
 
-    :param const struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: const struct pwm_device \*
 
-    :param struct pwm_state \*state:
+    :param state:
         state to fill with the current PWM state
+    :type state: struct pwm_state \*
 
 .. _`pwm_init_state`:
 
@@ -162,11 +164,13 @@ pwm_init_state
 
     prepare a new state to be applied with \ :c:func:`pwm_apply_state`\ 
 
-    :param const struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: const struct pwm_device \*
 
-    :param struct pwm_state \*state:
+    :param state:
         state to fill with the prepared PWM state
+    :type state: struct pwm_state \*
 
 .. _`pwm_init_state.description`:
 
@@ -194,11 +198,13 @@ pwm_get_relative_duty_cycle
 
     Get a relative duty cycle value
 
-    :param const struct pwm_state \*state:
+    :param state:
         PWM state to extract the duty cycle from
+    :type state: const struct pwm_state \*
 
-    :param unsigned int scale:
+    :param scale:
         target scale of the relative duty cycle
+    :type scale: unsigned int
 
 .. _`pwm_get_relative_duty_cycle.description`:
 
@@ -222,14 +228,17 @@ pwm_set_relative_duty_cycle
 
     Set a relative duty cycle value
 
-    :param struct pwm_state \*state:
+    :param state:
         PWM state to fill
+    :type state: struct pwm_state \*
 
-    :param unsigned int duty_cycle:
+    :param duty_cycle:
         relative duty cycle value
+    :type duty_cycle: unsigned int
 
-    :param unsigned int scale:
+    :param scale:
         scale in which \ ``duty_cycle``\  is expressed
+    :type scale: unsigned int
 
 .. _`pwm_set_relative_duty_cycle.description`:
 
@@ -420,14 +429,17 @@ pwm_config
 
     change a PWM device configuration
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
-    :param int duty_ns:
+    :param duty_ns:
         "on" time (in nanoseconds)
+    :type duty_ns: int
 
-    :param int period_ns:
+    :param period_ns:
         duration (in nanoseconds) of one cycle
+    :type period_ns: int
 
 .. _`pwm_config.return`:
 
@@ -445,11 +457,13 @@ pwm_set_polarity
 
     configure the polarity of a PWM signal
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
-    :param enum pwm_polarity polarity:
+    :param polarity:
         new polarity of the PWM signal
+    :type polarity: enum pwm_polarity
 
 .. _`pwm_set_polarity.description`:
 
@@ -475,8 +489,9 @@ pwm_enable
 
     start a PWM output toggling
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
 .. _`pwm_enable.return`:
 
@@ -494,8 +509,9 @@ pwm_disable
 
     stop a PWM output toggling
 
-    :param struct pwm_device \*pwm:
+    :param pwm:
         PWM device
+    :type pwm: struct pwm_device \*
 
 .. This file was automatic generated / don't edit.
 

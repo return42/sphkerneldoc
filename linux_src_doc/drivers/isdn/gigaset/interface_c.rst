@@ -10,14 +10,17 @@ gigaset_if_receive
 
     pass a received block of data to the tty device
 
-    :param struct cardstate \*cs:
+    :param cs:
         device descriptor structure.
+    :type cs: struct cardstate \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         received data.
+    :type buffer: unsigned char \*
 
-    :param size_t len:
+    :param len:
         number of bytes received.
+    :type len: size_t
 
 .. _`gigaset_if_receive.description`:
 

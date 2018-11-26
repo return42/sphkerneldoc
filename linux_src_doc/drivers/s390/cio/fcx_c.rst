@@ -10,8 +10,9 @@ tcw_get_intrg
 
     return pointer to associated interrogate tcw
 
-    :param struct tcw \*tcw:
+    :param tcw:
         pointer to the original tcw
+    :type tcw: struct tcw \*
 
 .. _`tcw_get_intrg.description`:
 
@@ -30,8 +31,9 @@ tcw_get_data
 
     return pointer to input/output data associated with tcw
 
-    :param struct tcw \*tcw:
+    :param tcw:
         pointer to the tcw
+    :type tcw: struct tcw \*
 
 .. _`tcw_get_data.description`:
 
@@ -51,8 +53,9 @@ tcw_get_tccb
 
     return pointer to tccb associated with tcw
 
-    :param struct tcw \*tcw:
+    :param tcw:
         pointer to the tcw
+    :type tcw: struct tcw \*
 
 .. _`tcw_get_tccb.description`:
 
@@ -70,8 +73,9 @@ tcw_get_tsb
 
     return pointer to tsb associated with tcw
 
-    :param struct tcw \*tcw:
+    :param tcw:
         pointer to the tcw
+    :type tcw: struct tcw \*
 
 .. _`tcw_get_tsb.description`:
 
@@ -89,14 +93,17 @@ tcw_init
 
     initialize tcw data structure
 
-    :param struct tcw \*tcw:
+    :param tcw:
         pointer to the tcw to be initialized
+    :type tcw: struct tcw \*
 
-    :param int r:
+    :param r:
         initial value of the r-bit
+    :type r: int
 
-    :param int w:
+    :param w:
         initial value of the w-bit
+    :type w: int
 
 .. _`tcw_init.description`:
 
@@ -115,12 +122,14 @@ tcw_finalize
 
     finalize tcw length fields and tidaw list
 
-    :param struct tcw \*tcw:
+    :param tcw:
         pointer to the tcw
+    :type tcw: struct tcw \*
 
-    :param int num_tidaws:
+    :param num_tidaws:
         the number of tidaws used to address input/output data or zero
         if no tida is used
+    :type num_tidaws: int
 
 .. _`tcw_finalize.description`:
 
@@ -148,11 +157,13 @@ tcw_set_intrg
 
     set the interrogate tcw address of a tcw
 
-    :param struct tcw \*tcw:
+    :param tcw:
         the tcw address
+    :type tcw: struct tcw \*
 
-    :param struct tcw \*intrg_tcw:
+    :param intrg_tcw:
         the address of the interrogate tcw
+    :type intrg_tcw: struct tcw \*
 
 .. _`tcw_set_intrg.description`:
 
@@ -170,15 +181,18 @@ tcw_set_data
 
     set data address and tida flag of a tcw
 
-    :param struct tcw \*tcw:
+    :param tcw:
         the tcw address
+    :type tcw: struct tcw \*
 
-    :param void \*data:
+    :param data:
         the data address
+    :type data: void \*
 
-    :param int use_tidal:
+    :param use_tidal:
         zero of the data address specifies a contiguous block of data,
         non-zero if it specifies a list if tidaws.
+    :type use_tidal: int
 
 .. _`tcw_set_data.description`:
 
@@ -198,11 +212,13 @@ tcw_set_tccb
 
     set tccb address of a tcw
 
-    :param struct tcw \*tcw:
+    :param tcw:
         the tcw address
+    :type tcw: struct tcw \*
 
-    :param struct tccb \*tccb:
+    :param tccb:
         the tccb address
+    :type tccb: struct tccb \*
 
 .. _`tcw_set_tccb.description`:
 
@@ -220,11 +236,13 @@ tcw_set_tsb
 
     set tsb address of a tcw
 
-    :param struct tcw \*tcw:
+    :param tcw:
         the tcw address
+    :type tcw: struct tcw \*
 
-    :param struct tsb \*tsb:
+    :param tsb:
         the tsb address
+    :type tsb: struct tsb \*
 
 .. _`tcw_set_tsb.description`:
 
@@ -242,14 +260,17 @@ tccb_init
 
     initialize tccb
 
-    :param struct tccb \*tccb:
+    :param tccb:
         the tccb address
+    :type tccb: struct tccb \*
 
-    :param size_t size:
+    :param size:
         the maximum size of the tccb
+    :type size: size_t
 
-    :param u32 sac:
+    :param sac:
         the service-action-code to be user
+    :type sac: u32
 
 .. _`tccb_init.description`:
 
@@ -268,8 +289,9 @@ tsb_init
 
     initialize tsb
 
-    :param struct tsb \*tsb:
+    :param tsb:
         the tsb address
+    :type tsb: struct tsb \*
 
 .. _`tsb_init.description`:
 
@@ -287,26 +309,33 @@ tccb_add_dcw
 
     add a dcw to the tccb
 
-    :param struct tccb \*tccb:
+    :param tccb:
         the tccb address
+    :type tccb: struct tccb \*
 
-    :param size_t tccb_size:
+    :param tccb_size:
         the maximum tccb size
+    :type tccb_size: size_t
 
-    :param u8 cmd:
+    :param cmd:
         the dcw command
+    :type cmd: u8
 
-    :param u8 flags:
+    :param flags:
         flags for the dcw
+    :type flags: u8
 
-    :param void \*cd:
+    :param cd:
         pointer to control data for this dcw or NULL if none is required
+    :type cd: void \*
 
-    :param u8 cd_count:
+    :param cd_count:
         number of control data bytes for this dcw
+    :type cd_count: u8
 
-    :param u32 count:
+    :param count:
         number of data bytes for this dcw
+    :type count: u32
 
 .. _`tccb_add_dcw.description`:
 
@@ -335,20 +364,25 @@ tcw_add_tidaw
 
     add a tidaw to a tcw
 
-    :param struct tcw \*tcw:
+    :param tcw:
         the tcw address
+    :type tcw: struct tcw \*
 
-    :param int num_tidaws:
+    :param num_tidaws:
         the current number of tidaws
+    :type num_tidaws: int
 
-    :param u8 flags:
+    :param flags:
         flags for the new tidaw
+    :type flags: u8
 
-    :param void \*addr:
+    :param addr:
         address value for the new tidaw
+    :type addr: void \*
 
-    :param u32 count:
+    :param count:
         count value for the new tidaw
+    :type count: u32
 
 .. _`tcw_add_tidaw.description`:
 

@@ -10,11 +10,13 @@ xps2_recv
 
     attempts to receive a byte from the PS/2 port.
 
-    :param struct xps2data \*drvdata:
+    :param drvdata:
         pointer to ps2 device private data structure
+    :type drvdata: struct xps2data \*
 
-    :param u8 \*byte:
+    :param byte:
         address where the read data will be copied
+    :type byte: u8 \*
 
 .. _`xps2_recv.description`:
 
@@ -33,11 +35,13 @@ sxps2_write
 
     sends a byte out through the PS/2 port.
 
-    :param struct serio \*pserio:
+    :param pserio:
         pointer to the serio structure of the PS/2 port
+    :type pserio: struct serio \*
 
-    :param unsigned char c:
+    :param c:
         data that needs to be written to the PS/2 port
+    :type c: unsigned char
 
 .. _`sxps2_write.description`:
 
@@ -58,8 +62,9 @@ sxps2_open
 
     called when a port is opened by the higher layer.
 
-    :param struct serio \*pserio:
+    :param pserio:
         pointer to the serio structure of the PS/2 device
+    :type pserio: struct serio \*
 
 .. _`sxps2_open.description`:
 
@@ -77,8 +82,9 @@ sxps2_close
 
     frees the interrupt.
 
-    :param struct serio \*pserio:
+    :param pserio:
         pointer to the serio structure of the PS/2 device
+    :type pserio: struct serio \*
 
 .. _`sxps2_close.description`:
 
@@ -96,8 +102,9 @@ xps2_of_probe
 
     probe method for the PS/2 device.
 
-    :param struct platform_device \*ofdev:
+    :param ofdev:
         *undescribed*
+    :type ofdev: struct platform_device \*
 
 .. _`xps2_of_probe.description`:
 
@@ -118,8 +125,9 @@ xps2_of_remove
 
     unbinds the driver from the PS/2 device.
 
-    :param struct platform_device \*of_dev:
+    :param of_dev:
         pointer to OF device structure
+    :type of_dev: struct platform_device \*
 
 .. _`xps2_of_remove.description`:
 

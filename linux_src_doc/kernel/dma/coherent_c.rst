@@ -10,18 +10,22 @@ dma_alloc_from_dev_coherent
 
     allocate memory from device coherent pool
 
-    :param struct device \*dev:
+    :param dev:
         device from which we allocate memory
+    :type dev: struct device \*
 
-    :param ssize_t size:
+    :param size:
         size of requested memory area
+    :type size: ssize_t
 
-    :param dma_addr_t \*dma_handle:
+    :param dma_handle:
         This will be filled with the correct dma handle
+    :type dma_handle: dma_addr_t \*
 
-    :param void \*\*ret:
+    :param ret:
         This pointer will be filled with the virtual address
         to allocated area.
+    :type ret: void \*\*
 
 .. _`dma_alloc_from_dev_coherent.description`:
 
@@ -43,14 +47,17 @@ dma_release_from_dev_coherent
 
     free memory to device coherent memory pool
 
-    :param struct device \*dev:
+    :param dev:
         device from which the memory was allocated
+    :type dev: struct device \*
 
-    :param int order:
+    :param order:
         the order of pages allocated
+    :type order: int
 
-    :param void \*vaddr:
+    :param vaddr:
         virtual address of allocated pages
+    :type vaddr: void \*
 
 .. _`dma_release_from_dev_coherent.description`:
 
@@ -72,20 +79,25 @@ dma_mmap_from_dev_coherent
 
     mmap memory from the device coherent pool
 
-    :param struct device \*dev:
+    :param dev:
         device from which the memory was allocated
+    :type dev: struct device \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vm_area for the userspace memory
+    :type vma: struct vm_area_struct \*
 
-    :param void \*vaddr:
+    :param vaddr:
         cpu address returned by dma_alloc_from_dev_coherent
+    :type vaddr: void \*
 
-    :param size_t size:
+    :param size:
         size of the memory buffer allocated
+    :type size: size_t
 
-    :param int \*ret:
+    :param ret:
         result from \ :c:func:`remap_pfn_range`\ 
+    :type ret: int \*
 
 .. _`dma_mmap_from_dev_coherent.description`:
 

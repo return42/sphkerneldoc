@@ -10,11 +10,13 @@ asd_move_swb
 
     - move sliding window B
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param u32 reg:
+    :param reg:
         register desired to be within range of the new window
+    :type reg: u32
 
 .. _`asd_read_reg_string`:
 
@@ -25,17 +27,21 @@ asd_read_reg_string
 
     - read a string of bytes from io space memory
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param void \*dst:
+    :param dst:
         pointer to a destination buffer where data will be written to
+    :type dst: void \*
 
-    :param u32 offs:
+    :param offs:
         start offset (register) to read from
+    :type offs: u32
 
-    :param int count:
+    :param count:
         number of bytes to read
+    :type count: int
 
 .. _`asd_write_reg_string`:
 
@@ -46,17 +52,21 @@ asd_write_reg_string
 
     - write a string of bytes to io space memory
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param void \*src:
+    :param src:
         pointer to source buffer where data will be read from
+    :type src: void \*
 
-    :param u32 offs:
+    :param offs:
         start offset (register) to write to
+    :type offs: u32
 
-    :param int count:
+    :param count:
         number of bytes to write
+    :type count: int
 
 .. This file was automatic generated / don't edit.
 

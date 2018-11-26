@@ -10,8 +10,9 @@ omap36xx_gate_clk_enable_with_hsdiv_restore
 
     enable clocks suffering from HSDivider PWRDN problem Implements Errata ID: i556.
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
 .. _`omap36xx_gate_clk_enable_with_hsdiv_restore.3630-only`:
 

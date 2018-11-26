@@ -80,11 +80,13 @@ ad799x_trigger_handler
 
 .. c:function:: irqreturn_t ad799x_trigger_handler(int irq, void *p)
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*p:
+    :param p:
         *undescribed*
+    :type p: void \*
 
 .. _`ad799x_trigger_handler.description`:
 

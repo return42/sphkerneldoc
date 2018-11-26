@@ -10,20 +10,25 @@ acm_cdc_notify
 
     issue CDC notification to host
 
-    :param struct f_acm \*acm:
+    :param acm:
         wraps host to be notified
+    :type acm: struct f_acm \*
 
-    :param u8 type:
+    :param type:
         notification type
+    :type type: u8
 
-    :param u16 value:
+    :param value:
         Refer to cdc specs, wValue field.
+    :type value: u16
 
-    :param void \*data:
+    :param data:
         data to be sent
+    :type data: void \*
 
-    :param unsigned length:
+    :param length:
         size of data
+    :type length: unsigned
 
 .. _`acm_cdc_notify.context`:
 

@@ -10,11 +10,13 @@ pnp_add_id
 
     adds an EISA id to the specified device
 
-    :param struct pnp_dev \*dev:
+    :param dev:
         pointer to the desired device
+    :type dev: struct pnp_dev \*
 
-    :param const char \*id:
+    :param id:
         pointer to an EISA id string
+    :type id: const char \*
 
 .. This file was automatic generated / don't edit.
 

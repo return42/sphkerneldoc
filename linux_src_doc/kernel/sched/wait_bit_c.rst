@@ -10,11 +10,13 @@ wake_up_bit
 
     wake up a waiter on a bit
 
-    :param void \*word:
+    :param word:
         the word being waited on, a kernel virtual address
+    :type word: void \*
 
-    :param int bit:
+    :param bit:
         the bit of the word being waited on
+    :type bit: int
 
 .. _`wake_up_bit.description`:
 

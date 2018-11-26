@@ -10,17 +10,21 @@ gb_operation_request_send
 
     send an operation request message
 
-    :param struct gb_operation \*operation:
+    :param operation:
         the operation to initiate
+    :type operation: struct gb_operation \*
 
-    :param gb_operation_callback callback:
+    :param callback:
         the operation completion callback
+    :type callback: gb_operation_callback
 
-    :param unsigned int timeout:
+    :param timeout:
         operation timeout in milliseconds, or zero for no timeout
+    :type timeout: unsigned int
 
-    :param gfp_t gfp:
+    :param gfp:
         the memory flags to use for any allocations
+    :type gfp: gfp_t
 
 .. _`gb_operation_request_send.description`:
 
@@ -51,26 +55,33 @@ gb_operation_sync_timeout
 
     implement a "simple" synchronous operation
 
-    :param struct gb_connection \*connection:
+    :param connection:
         the Greybus connection to send this to
+    :type connection: struct gb_connection \*
 
-    :param int type:
+    :param type:
         the type of operation to send
+    :type type: int
 
-    :param void \*request:
+    :param request:
         pointer to a memory buffer to copy the request from
+    :type request: void \*
 
-    :param int request_size:
+    :param request_size:
         size of \ ``request``\ 
+    :type request_size: int
 
-    :param void \*response:
+    :param response:
         pointer to a memory buffer to copy the response to
+    :type response: void \*
 
-    :param int response_size:
+    :param response_size:
         the size of \ ``response``\ .
+    :type response_size: int
 
-    :param unsigned int timeout:
+    :param timeout:
         operation timeout in milliseconds
+    :type timeout: unsigned int
 
 .. _`gb_operation_sync_timeout.description`:
 
@@ -99,20 +110,25 @@ gb_operation_unidirectional_timeout
 
     initiate a unidirectional operation
 
-    :param struct gb_connection \*connection:
+    :param connection:
         connection to use
+    :type connection: struct gb_connection \*
 
-    :param int type:
+    :param type:
         type of operation to send
+    :type type: int
 
-    :param void \*request:
+    :param request:
         memory buffer to copy the request from
+    :type request: void \*
 
-    :param int request_size:
+    :param request_size:
         size of \ ``request``\ 
+    :type request_size: int
 
-    :param unsigned int timeout:
+    :param timeout:
         send timeout in milliseconds
+    :type timeout: unsigned int
 
 .. _`gb_operation_unidirectional_timeout.description`:
 

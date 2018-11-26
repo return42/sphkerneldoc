@@ -10,17 +10,21 @@ qib_make_rc_ack
 
     construct a response packet (ACK, NAK, or RDMA read)
 
-    :param struct qib_ibdev \*dev:
+    :param dev:
         the device for this QP
+    :type dev: struct qib_ibdev \*
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         a pointer to the QP
+    :type qp: struct rvt_qp \*
 
-    :param struct ib_other_headers \*ohdr:
+    :param ohdr:
         a pointer to the IB header being constructed
+    :type ohdr: struct ib_other_headers \*
 
-    :param u32 pmtu:
+    :param pmtu:
         the path MTU
+    :type pmtu: u32
 
 .. _`qib_make_rc_ack.description`:
 
@@ -40,11 +44,13 @@ qib_make_rc_req
 
     construct a request packet (SEND, RDMA r/w, ATOMIC)
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         a pointer to the QP
+    :type qp: struct rvt_qp \*
 
-    :param unsigned long \*flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long \*
 
 .. _`qib_make_rc_req.description`:
 
@@ -64,8 +70,9 @@ qib_send_rc_ack
 
     Construct an ACK packet and send it
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         a pointer to the QP
+    :type qp: struct rvt_qp \*
 
 .. _`qib_send_rc_ack.description`:
 
@@ -85,11 +92,13 @@ reset_psn
 
     reset the QP state to send starting from PSN
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP
+    :type qp: struct rvt_qp \*
 
-    :param u32 psn:
+    :param psn:
         the packet sequence number to restart at
+    :type psn: u32
 
 .. _`reset_psn.description`:
 
@@ -109,23 +118,29 @@ do_rc_ack
 
     process an incoming RC ACK
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP the ACK came in on
+    :type qp: struct rvt_qp \*
 
-    :param u32 aeth:
+    :param aeth:
         *undescribed*
+    :type aeth: u32
 
-    :param u32 psn:
+    :param psn:
         the packet sequence number of the ACK
+    :type psn: u32
 
-    :param int opcode:
+    :param opcode:
         the opcode of the request that resulted in the ACK
+    :type opcode: int
 
-    :param u64 val:
+    :param val:
         *undescribed*
+    :type val: u64
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct qib_ctxtdata \*
 
 .. _`do_rc_ack.description`:
 
@@ -146,35 +161,45 @@ qib_rc_rcv_resp
 
     process an incoming RC response packet
 
-    :param struct qib_ibport \*ibp:
+    :param ibp:
         the port this packet came in on
+    :type ibp: struct qib_ibport \*
 
-    :param struct ib_other_headers \*ohdr:
+    :param ohdr:
         the other headers for this packet
+    :type ohdr: struct ib_other_headers \*
 
-    :param void \*data:
+    :param data:
         the packet data
+    :type data: void \*
 
-    :param u32 tlen:
+    :param tlen:
         the packet length
+    :type tlen: u32
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP for this packet
+    :type qp: struct rvt_qp \*
 
-    :param u32 opcode:
+    :param opcode:
         the opcode for this packet
+    :type opcode: u32
 
-    :param u32 psn:
+    :param psn:
         the packet sequence number for this packet
+    :type psn: u32
 
-    :param u32 hdrsize:
+    :param hdrsize:
         the header length
+    :type hdrsize: u32
 
-    :param u32 pmtu:
+    :param pmtu:
         the path MTU
+    :type pmtu: u32
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct qib_ctxtdata \*
 
 .. _`qib_rc_rcv_resp.description`:
 
@@ -194,26 +219,33 @@ qib_rc_rcv_error
 
     process an incoming duplicate or error RC packet
 
-    :param struct ib_other_headers \*ohdr:
+    :param ohdr:
         the other headers for this packet
+    :type ohdr: struct ib_other_headers \*
 
-    :param void \*data:
+    :param data:
         the packet data
+    :type data: void \*
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP for this packet
+    :type qp: struct rvt_qp \*
 
-    :param u32 opcode:
+    :param opcode:
         the opcode for this packet
+    :type opcode: u32
 
-    :param u32 psn:
+    :param psn:
         the packet sequence number for this packet
+    :type psn: u32
 
-    :param int diff:
+    :param diff:
         the difference between the PSN and the expected PSN
+    :type diff: int
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct qib_ctxtdata \*
 
 .. _`qib_rc_rcv_error.description`:
 
@@ -235,23 +267,29 @@ qib_rc_rcv
 
     process an incoming RC packet
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the context pointer
+    :type rcd: struct qib_ctxtdata \*
 
-    :param struct ib_header \*hdr:
+    :param hdr:
         the header of this packet
+    :type hdr: struct ib_header \*
 
-    :param int has_grh:
+    :param has_grh:
         true if the header has a GRH
+    :type has_grh: int
 
-    :param void \*data:
+    :param data:
         the packet data
+    :type data: void \*
 
-    :param u32 tlen:
+    :param tlen:
         the packet length
+    :type tlen: u32
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP for this packet
+    :type qp: struct rvt_qp \*
 
 .. _`qib_rc_rcv.description`:
 

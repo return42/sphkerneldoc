@@ -27,7 +27,6 @@ Definition
         void (*cleanup)(unsigned int cpu, bool online);
         void (*park)(unsigned int cpu);
         void (*unpark)(unsigned int cpu);
-        cpumask_var_t cpumask;
         bool selfparking;
         const char *thread_comm;
     }
@@ -69,10 +68,6 @@ park
 unpark
     Optional unpark function, called when the thread is
     unparked (cpu online)
-
-cpumask
-    Internal state.  To update which threads are unparked,
-    call \ :c:func:`smpboot_update_cpumask_percpu_thread`\ .
 
 selfparking
     Thread is not parked by the park function.

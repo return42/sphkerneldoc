@@ -10,8 +10,9 @@ qib_enable_wc
 
     enable write combining for MMIO writes to the device
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`qib_enable_wc.description`:
 
@@ -29,8 +30,9 @@ qib_unordered_wc
 
     indicate whether write combining is unordered
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`qib_unordered_wc.description`:
 

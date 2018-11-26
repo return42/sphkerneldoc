@@ -127,8 +127,9 @@ tcp_lp_init
 
 .. c:function:: void tcp_lp_init(struct sock *sk)
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`tcp_lp_init.description`:
 
@@ -145,14 +146,17 @@ tcp_lp_cong_avoid
 
 .. c:function:: void tcp_lp_cong_avoid(struct sock *sk, u32 ack, u32 acked)
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param u32 ack:
+    :param ack:
         *undescribed*
+    :type ack: u32
 
-    :param u32 acked:
+    :param acked:
         *undescribed*
+    :type acked: u32
 
 .. _`tcp_lp_cong_avoid.description`:
 
@@ -170,8 +174,9 @@ tcp_lp_remote_hz_estimator
 
 .. c:function:: u32 tcp_lp_remote_hz_estimator(struct sock *sk)
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`tcp_lp_remote_hz_estimator.description`:
 
@@ -189,8 +194,9 @@ tcp_lp_owd_calculator
 
 .. c:function:: u32 tcp_lp_owd_calculator(struct sock *sk)
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`tcp_lp_owd_calculator.description`:
 
@@ -211,11 +217,13 @@ tcp_lp_rtt_sample
 
 .. c:function:: void tcp_lp_rtt_sample(struct sock *sk, u32 rtt)
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param u32 rtt:
+    :param rtt:
         *undescribed*
+    :type rtt: u32
 
 .. _`tcp_lp_rtt_sample.description`:
 
@@ -236,11 +244,13 @@ tcp_lp_pkts_acked
 
 .. c:function:: void tcp_lp_pkts_acked(struct sock *sk, const struct ack_sample *sample)
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param const struct ack_sample \*sample:
+    :param sample:
         *undescribed*
+    :type sample: const struct ack_sample \*
 
 .. _`tcp_lp_pkts_acked.description`:
 

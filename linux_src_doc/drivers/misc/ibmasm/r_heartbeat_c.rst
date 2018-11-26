@@ -10,11 +10,13 @@ ibmasm_start_reverse_heartbeat
 
     Loop forever, sending a reverse heartbeat dot command to the service processor, then sleeping. The loop comes to an end if the service processor fails to respond 3 times or we were interrupted.
 
-    :param struct service_processor \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct service_processor \*
 
-    :param struct reverse_heartbeat \*rhb:
+    :param rhb:
         *undescribed*
+    :type rhb: struct reverse_heartbeat \*
 
 .. This file was automatic generated / don't edit.
 

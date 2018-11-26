@@ -10,11 +10,13 @@ videomode_from_timing
 
     convert display timing to videomode
 
-    :param const struct display_timing \*dt:
+    :param dt:
         display_timing structure
+    :type dt: const struct display_timing \*
 
-    :param struct videomode \*vm:
+    :param vm:
         return value
+    :type vm: struct videomode \*
 
 .. _`videomode_from_timing.description`:
 
@@ -32,14 +34,17 @@ videomode_from_timings
 
     convert one display timings entry to videomode
 
-    :param const struct display_timings \*disp:
+    :param disp:
         structure with all possible timing entries
+    :type disp: const struct display_timings \*
 
-    :param struct videomode \*vm:
+    :param vm:
         return value
+    :type vm: struct videomode \*
 
-    :param unsigned int index:
+    :param index:
         index into the list of display timings in devicetree
+    :type index: unsigned int
 
 .. _`videomode_from_timings.description`:
 

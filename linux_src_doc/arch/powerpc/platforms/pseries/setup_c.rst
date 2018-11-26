@@ -10,8 +10,9 @@ pSeries_cmo_feature_init
 
     FW_FEATURE_CMO is not stored in ibm,hypertas-functions, handle that here. (Stolen from parse_system_parameter_string)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pseries_power_off`:
 
@@ -22,8 +23,9 @@ pseries_power_off
 
     tell firmware about how to power off the system.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pseries_power_off.description`:
 

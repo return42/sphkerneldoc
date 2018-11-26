@@ -489,11 +489,13 @@ usb_ep_align
 
     returns \ ``len``\  aligned to ep's maxpacketsize.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint whose maxpacketsize is used to align \ ``len``\ 
+    :type ep: struct usb_ep \*
 
-    :param size_t len:
+    :param len:
         buffer size's length to align to \ ``ep``\ 's maxpacketsize
+    :type len: size_t
 
 .. _`usb_ep_align.description`:
 
@@ -511,14 +513,17 @@ usb_ep_align_maybe
 
     returns \ ``len``\  aligned to ep's maxpacketsize if gadget requires quirk_ep_out_aligned_size, otherwise returns len.
 
-    :param struct usb_gadget \*g:
+    :param g:
         controller to check for quirk
+    :type g: struct usb_gadget \*
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint whose maxpacketsize is used to align \ ``len``\ 
+    :type ep: struct usb_ep \*
 
-    :param size_t len:
+    :param len:
         buffer size's length to align to \ ``ep``\ 's maxpacketsize
+    :type len: size_t
 
 .. _`usb_ep_align_maybe.description`:
 
@@ -537,8 +542,9 @@ gadget_is_altset_supported
 
     return true iff the hardware supports altsettings
 
-    :param struct usb_gadget \*g:
+    :param g:
         controller to check for quirk
+    :type g: struct usb_gadget \*
 
 .. _`gadget_is_stall_supported`:
 
@@ -549,8 +555,9 @@ gadget_is_stall_supported
 
     return true iff the hardware supports stalling
 
-    :param struct usb_gadget \*g:
+    :param g:
         controller to check for quirk
+    :type g: struct usb_gadget \*
 
 .. _`gadget_is_zlp_supported`:
 
@@ -561,8 +568,9 @@ gadget_is_zlp_supported
 
     return true iff the hardware supports zlp
 
-    :param struct usb_gadget \*g:
+    :param g:
         controller to check for quirk
+    :type g: struct usb_gadget \*
 
 .. _`gadget_avoids_skb_reserve`:
 
@@ -573,8 +581,9 @@ gadget_avoids_skb_reserve
 
     return true iff the hardware would like to avoid skb_reserve to improve performance.
 
-    :param struct usb_gadget \*g:
+    :param g:
         controller to check for quirk
+    :type g: struct usb_gadget \*
 
 .. _`gadget_is_dualspeed`:
 
@@ -585,8 +594,9 @@ gadget_is_dualspeed
 
     return true iff the hardware handles high speed
 
-    :param struct usb_gadget \*g:
+    :param g:
         controller that might support both high and full speeds
+    :type g: struct usb_gadget \*
 
 .. _`gadget_is_superspeed`:
 
@@ -597,8 +607,9 @@ gadget_is_superspeed
 
     return true if the hardware handles superspeed
 
-    :param struct usb_gadget \*g:
+    :param g:
         controller that might support superspeed
+    :type g: struct usb_gadget \*
 
 .. _`gadget_is_superspeed_plus`:
 
@@ -609,8 +620,9 @@ gadget_is_superspeed_plus
 
     return true if the hardware handles superspeed plus
 
-    :param struct usb_gadget \*g:
+    :param g:
         controller that might support superspeed plus
+    :type g: struct usb_gadget \*
 
 .. _`gadget_is_otg`:
 
@@ -621,8 +633,9 @@ gadget_is_otg
 
     return true iff the hardware is OTG-ready
 
-    :param struct usb_gadget \*g:
+    :param g:
         controller that might have a Mini-AB connector
+    :type g: struct usb_gadget \*
 
 .. _`gadget_is_otg.description`:
 
@@ -779,8 +792,9 @@ usb_gadget_probe_driver
 
     probe a gadget driver
 
-    :param struct usb_gadget_driver \*driver:
+    :param driver:
         the driver being registered
+    :type driver: struct usb_gadget_driver \*
 
 .. _`usb_gadget_probe_driver.context`:
 
@@ -809,8 +823,9 @@ usb_gadget_unregister_driver
 
     unregister a gadget driver
 
-    :param struct usb_gadget_driver \*driver:
+    :param driver:
         the driver being unregistered
+    :type driver: struct usb_gadget_driver \*
 
 .. _`usb_gadget_unregister_driver.context`:
 
@@ -921,8 +936,9 @@ usb_free_descriptors
 
     free descriptors returned by \ :c:func:`usb_copy_descriptors`\ 
 
-    :param struct usb_descriptor_header \*\*v:
+    :param v:
         vector of descriptors
+    :type v: struct usb_descriptor_header \*\*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,8 +8,9 @@ acpi_get_hp_hw_control_from_firmware
 
 .. c:function:: int acpi_get_hp_hw_control_from_firmware(struct pci_dev *pdev)
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`acpi_get_hp_hw_control_from_firmware.description`:
 
@@ -27,11 +28,13 @@ acpi_pci_check_ejectable
 
     check if handle is ejectable ACPI PCI slot
 
-    :param struct pci_bus \*pbus:
+    :param pbus:
         the PCI bus of the PCI slot corresponding to 'handle'
+    :type pbus: struct pci_bus \*
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI handle to check
+    :type handle: acpi_handle
 
 .. _`acpi_pci_check_ejectable.description`:
 
@@ -49,8 +52,9 @@ acpi_pci_detect_ejectable
 
     check if the PCI bus has ejectable slots \ ``handle``\  - handle of the PCI bus to scan
 
-    :param acpi_handle handle:
+    :param handle:
         *undescribed*
+    :type handle: acpi_handle
 
 .. _`acpi_pci_detect_ejectable.description`:
 

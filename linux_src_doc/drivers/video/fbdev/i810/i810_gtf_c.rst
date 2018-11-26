@@ -10,17 +10,21 @@ i810fb_encode_registers
 
     encode \ ``var``\  to hardware register values
 
-    :param const struct fb_var_screeninfo \*var:
+    :param var:
         pointer to var structure
+    :type var: const struct fb_var_screeninfo \*
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to hardware par structure
+    :type par: struct i810fb_par \*
 
-    :param u32 xres:
+    :param xres:
         *undescribed*
+    :type xres: u32
 
-    :param u32 yres:
+    :param yres:
         *undescribed*
+    :type yres: u32
 
 .. _`i810fb_encode_registers.description`:
 
@@ -39,11 +43,13 @@ i810_get_watermark
 
     gets watermark
 
-    :param const struct fb_var_screeninfo \*var:
+    :param var:
         pointer to fb_var_screeninfo
+    :type var: const struct fb_var_screeninfo \*
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. _`i810_get_watermark.description`:
 

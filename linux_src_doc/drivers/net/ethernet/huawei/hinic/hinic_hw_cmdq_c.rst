@@ -10,11 +10,13 @@ hinic_alloc_cmdq_buf
 
     alloc buffer for sending command
 
-    :param struct hinic_cmdqs \*cmdqs:
+    :param cmdqs:
         the cmdqs
+    :type cmdqs: struct hinic_cmdqs \*
 
-    :param struct hinic_cmdq_buf \*cmdq_buf:
+    :param cmdq_buf:
         the buffer returned in this struct
+    :type cmdq_buf: struct hinic_cmdq_buf \*
 
 .. _`hinic_alloc_cmdq_buf.description`:
 
@@ -32,11 +34,13 @@ hinic_free_cmdq_buf
 
     free buffer
 
-    :param struct hinic_cmdqs \*cmdqs:
+    :param cmdqs:
         the cmdqs
+    :type cmdqs: struct hinic_cmdqs \*
 
-    :param struct hinic_cmdq_buf \*cmdq_buf:
+    :param cmdq_buf:
         the buffer to free that is in this struct
+    :type cmdq_buf: struct hinic_cmdq_buf \*
 
 .. _`hinic_cmdq_direct_resp`:
 
@@ -47,20 +51,25 @@ hinic_cmdq_direct_resp
 
     send command with direct data as resp
 
-    :param struct hinic_cmdqs \*cmdqs:
+    :param cmdqs:
         the cmdqs
+    :type cmdqs: struct hinic_cmdqs \*
 
-    :param enum hinic_mod_type mod:
+    :param mod:
         module on the card that will handle the command
+    :type mod: enum hinic_mod_type
 
-    :param u8 cmd:
+    :param cmd:
         the command
+    :type cmd: u8
 
-    :param struct hinic_cmdq_buf \*buf_in:
+    :param buf_in:
         the buffer for the command
+    :type buf_in: struct hinic_cmdq_buf \*
 
-    :param u64 \*resp:
+    :param resp:
         the response to return
+    :type resp: u64 \*
 
 .. _`hinic_cmdq_direct_resp.description`:
 
@@ -78,14 +87,17 @@ hinic_set_arm_bit
 
     set arm bit for enable interrupt again
 
-    :param struct hinic_cmdqs \*cmdqs:
+    :param cmdqs:
         the cmdqs
+    :type cmdqs: struct hinic_cmdqs \*
 
-    :param enum hinic_set_arm_qtype q_type:
+    :param q_type:
         type of queue to set the arm bit for
+    :type q_type: enum hinic_set_arm_qtype
 
-    :param u32 q_id:
+    :param q_id:
         the queue number
+    :type q_id: u32
 
 .. _`hinic_set_arm_bit.description`:
 
@@ -103,11 +115,13 @@ cmdq_arm_ceq_handler
 
     cmdq completion event handler for arm command
 
-    :param struct hinic_cmdq \*cmdq:
+    :param cmdq:
         the cmdq of the arm command
+    :type cmdq: struct hinic_cmdq \*
 
-    :param struct hinic_cmdq_wqe \*wqe:
+    :param wqe:
         the wqe of the arm command
+    :type wqe: struct hinic_cmdq_wqe \*
 
 .. _`cmdq_arm_ceq_handler.description`:
 
@@ -125,14 +139,17 @@ cmdq_sync_cmd_handler
 
     cmdq completion event handler for sync command
 
-    :param struct hinic_cmdq \*cmdq:
+    :param cmdq:
         the cmdq of the command
+    :type cmdq: struct hinic_cmdq \*
 
-    :param u16 cons_idx:
+    :param cons_idx:
         the consumer index to update the error code for
+    :type cons_idx: u16
 
-    :param int errcode:
+    :param errcode:
         the error code
+    :type errcode: int
 
 .. _`cmdq_ceq_handler`:
 
@@ -143,11 +160,13 @@ cmdq_ceq_handler
 
     cmdq completion event handler
 
-    :param void \*handle:
+    :param handle:
         private data for the handler(cmdqs)
+    :type handle: void \*
 
-    :param u32 ceqe_data:
+    :param ceqe_data:
         ceq element data
+    :type ceqe_data: u32
 
 .. _`cmdq_init_queue_ctxt`:
 
@@ -158,14 +177,17 @@ cmdq_init_queue_ctxt
 
     init the queue ctxt of a cmdq
 
-    :param struct hinic_cmdq_ctxt \*cmdq_ctxt:
+    :param cmdq_ctxt:
         cmdq ctxt to initialize
+    :type cmdq_ctxt: struct hinic_cmdq_ctxt \*
 
-    :param struct hinic_cmdq \*cmdq:
+    :param cmdq:
         the cmdq
+    :type cmdq: struct hinic_cmdq \*
 
-    :param struct hinic_cmdq_pages \*cmdq_pages:
+    :param cmdq_pages:
         the memory of the queue
+    :type cmdq_pages: struct hinic_cmdq_pages \*
 
 .. _`init_cmdq`:
 
@@ -176,17 +198,21 @@ init_cmdq
 
     initialize cmdq
 
-    :param struct hinic_cmdq \*cmdq:
+    :param cmdq:
         the cmdq
+    :type cmdq: struct hinic_cmdq \*
 
-    :param struct hinic_wq \*wq:
+    :param wq:
         the wq attaced to the cmdq
+    :type wq: struct hinic_wq \*
 
-    :param enum hinic_cmdq_type q_type:
+    :param q_type:
         the cmdq type of the cmdq
+    :type q_type: enum hinic_cmdq_type
 
-    :param void __iomem \*db_area:
+    :param db_area:
         doorbell area for the cmdq
+    :type db_area: void __iomem \*
 
 .. _`init_cmdq.description`:
 
@@ -204,8 +230,9 @@ free_cmdq
 
     Free cmdq
 
-    :param struct hinic_cmdq \*cmdq:
+    :param cmdq:
         the cmdq to free
+    :type cmdq: struct hinic_cmdq \*
 
 .. _`init_cmdqs_ctxt`:
 
@@ -216,15 +243,18 @@ init_cmdqs_ctxt
 
     write the cmdq ctxt to HW after init all cmdq
 
-    :param struct hinic_hwdev \*hwdev:
+    :param hwdev:
         the NIC HW device
+    :type hwdev: struct hinic_hwdev \*
 
-    :param struct hinic_cmdqs \*cmdqs:
+    :param cmdqs:
         cmdqs to write the ctxts for
         \ :c:type:`struct db_area <db_area>`\ : db_area for all the cmdqs
+    :type cmdqs: struct hinic_cmdqs \*
 
-    :param void __iomem \*\*db_area:
+    :param db_area:
         *undescribed*
+    :type db_area: void __iomem \*\*
 
 .. _`init_cmdqs_ctxt.description`:
 
@@ -242,14 +272,17 @@ hinic_init_cmdqs
 
     init all cmdqs
 
-    :param struct hinic_cmdqs \*cmdqs:
+    :param cmdqs:
         cmdqs to init
+    :type cmdqs: struct hinic_cmdqs \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         HW interface for accessing cmdqs
+    :type hwif: struct hinic_hwif \*
 
-    :param void __iomem \*\*db_area:
+    :param db_area:
         doorbell areas for all the cmdqs
+    :type db_area: void __iomem \*\*
 
 .. _`hinic_init_cmdqs.description`:
 
@@ -267,8 +300,9 @@ hinic_free_cmdqs
 
     free all cmdqs
 
-    :param struct hinic_cmdqs \*cmdqs:
+    :param cmdqs:
         cmdqs to free
+    :type cmdqs: struct hinic_cmdqs \*
 
 .. This file was automatic generated / don't edit.
 

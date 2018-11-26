@@ -10,25 +10,31 @@ snd_fw_transaction
 
     send a request and wait for its completion
 
-    :param struct fw_unit \*unit:
+    :param unit:
         the driver's unit on the target device
+    :type unit: struct fw_unit \*
 
-    :param int tcode:
+    :param tcode:
         the transaction code
+    :type tcode: int
 
-    :param u64 offset:
+    :param offset:
         the address in the target's address space
+    :type offset: u64
 
-    :param void \*buffer:
+    :param buffer:
         input/output data
+    :type buffer: void \*
 
-    :param size_t length:
+    :param length:
         length of \ ``buffer``\ 
+    :type length: size_t
 
-    :param unsigned int flags:
+    :param flags:
         use \ ``FW_FIXED_GENERATION``\  and add the generation value to attempt the
         request only in that generation; use \ ``FW_QUIET``\  to suppress error
         messages
+    :type flags: unsigned int
 
 .. _`snd_fw_transaction.description`:
 
@@ -49,11 +55,13 @@ snd_fw_schedule_registration
 
     schedule work for sound card registration
 
-    :param struct fw_unit \*unit:
+    :param unit:
         an instance for unit on IEEE 1394 bus
+    :type unit: struct fw_unit \*
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         delayed work with callback function
+    :type dwork: struct delayed_work \*
 
 .. _`snd_fw_schedule_registration.description`:
 

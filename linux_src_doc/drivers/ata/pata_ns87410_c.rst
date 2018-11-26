@@ -10,11 +10,13 @@ ns87410_pre_reset
 
     probe begin
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`ns87410_pre_reset.description`:
 
@@ -32,11 +34,13 @@ ns87410_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`ns87410_set_piomode.description`:
 
@@ -55,8 +59,9 @@ ns87410_qc_issue
 
     command issue
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command pending
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ns87410_qc_issue.description`:
 

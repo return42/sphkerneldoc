@@ -10,17 +10,21 @@ snd_hdac_device_init
 
     initialize the HD-audio codec base device
 
-    :param struct hdac_device \*codec:
+    :param codec:
         device to initialize
+    :type codec: struct hdac_device \*
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         but to attach
+    :type bus: struct hdac_bus \*
 
-    :param const char \*name:
+    :param name:
         device name string
+    :type name: const char \*
 
-    :param unsigned int addr:
+    :param addr:
         codec address
+    :type addr: unsigned int
 
 .. _`snd_hdac_device_init.description`:
 
@@ -43,8 +47,9 @@ snd_hdac_device_exit
 
     clean up the HD-audio codec base device
 
-    :param struct hdac_device \*codec:
+    :param codec:
         device to clean up
+    :type codec: struct hdac_device \*
 
 .. _`snd_hdac_device_register`:
 
@@ -55,8 +60,9 @@ snd_hdac_device_register
 
     register the hd-audio codec base device
 
-    :param struct hdac_device \*codec:
+    :param codec:
         *undescribed*
+    :type codec: struct hdac_device \*
 
 .. _`snd_hdac_device_register.codec`:
 
@@ -74,8 +80,9 @@ snd_hdac_device_unregister
 
     unregister the hd-audio codec base device
 
-    :param struct hdac_device \*codec:
+    :param codec:
         *undescribed*
+    :type codec: struct hdac_device \*
 
 .. _`snd_hdac_device_unregister.codec`:
 
@@ -93,11 +100,13 @@ snd_hdac_device_set_chip_name
 
     set/update the codec name
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the HDAC device
+    :type codec: struct hdac_device \*
 
-    :param const char \*name:
+    :param name:
         name string to set
+    :type name: const char \*
 
 .. _`snd_hdac_device_set_chip_name.description`:
 
@@ -115,14 +124,17 @@ snd_hdac_codec_modalias
 
     give the module alias name
 
-    :param struct hdac_device \*codec:
+    :param codec:
         HDAC device
+    :type codec: struct hdac_device \*
 
-    :param char \*buf:
+    :param buf:
         string buffer to store
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         string buffer size
+    :type size: size_t
 
 .. _`snd_hdac_codec_modalias.description`:
 
@@ -140,17 +152,21 @@ snd_hdac_make_cmd
 
     compose a 32bit command word to be sent to the HD-audio controller
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to encode
+    :type nid: hda_nid_t
 
-    :param unsigned int verb:
+    :param verb:
         verb to encode
+    :type verb: unsigned int
 
-    :param unsigned int parm:
+    :param parm:
         parameter to encode
+    :type parm: unsigned int
 
 .. _`snd_hdac_make_cmd.description`:
 
@@ -168,17 +184,21 @@ snd_hdac_exec_verb
 
     execute an encoded verb
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param unsigned int cmd:
+    :param cmd:
         encoded verb to execute
+    :type cmd: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         optional flags, pass zero for default
+    :type flags: unsigned int
 
-    :param unsigned int \*res:
+    :param res:
         the pointer to store the result, NULL if running async
+    :type res: unsigned int \*
 
 .. _`snd_hdac_exec_verb.description`:
 
@@ -199,20 +219,25 @@ snd_hdac_read
 
     execute a verb
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to execute a verb
+    :type nid: hda_nid_t
 
-    :param unsigned int verb:
+    :param verb:
         verb to execute
+    :type verb: unsigned int
 
-    :param unsigned int parm:
+    :param parm:
         parameter for a verb
+    :type parm: unsigned int
 
-    :param unsigned int \*res:
+    :param res:
         the pointer to store the result, NULL if running async
+    :type res: unsigned int \*
 
 .. _`snd_hdac_read.description`:
 
@@ -230,17 +255,21 @@ Returns zero if successful, or a negative error code.
 
     read a parmeter
 
-    :param struct hdac_device \*codec:
+    :param codec:
         *undescribed*
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         *undescribed*
+    :type nid: hda_nid_t
 
-    :param int parm:
+    :param parm:
         *undescribed*
+    :type parm: int
 
-    :param unsigned int \*res:
+    :param res:
         *undescribed*
+    :type res: unsigned int \*
 
 .. _`_snd_hdac_read_parm.description`:
 
@@ -258,14 +287,17 @@ snd_hdac_read_parm_uncached
 
     read a codec parameter without caching
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to read a parameter
+    :type nid: hda_nid_t
 
-    :param int parm:
+    :param parm:
         parameter to read
+    :type parm: int
 
 .. _`snd_hdac_read_parm_uncached.description`:
 
@@ -284,17 +316,21 @@ snd_hdac_override_parm
 
     override read-only parameters
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID for the parameter
+    :type nid: hda_nid_t
 
-    :param unsigned int parm:
+    :param parm:
         the parameter to change
+    :type parm: unsigned int
 
-    :param unsigned int val:
+    :param val:
         the parameter value to overwrite
+    :type val: unsigned int
 
 .. _`snd_hdac_get_sub_nodes`:
 
@@ -305,14 +341,17 @@ snd_hdac_get_sub_nodes
 
     get start NID and number of subtree nodes
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to inspect
+    :type nid: hda_nid_t
 
-    :param hda_nid_t \*start_id:
+    :param start_id:
         the pointer to store the starting NID
+    :type start_id: hda_nid_t \*
 
 .. _`snd_hdac_get_sub_nodes.description`:
 
@@ -331,11 +370,13 @@ snd_hdac_refresh_widgets
 
     Reset the widget start/end nodes
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param bool sysfs:
+    :param sysfs:
         re-initialize sysfs tree, too
+    :type sysfs: bool
 
 .. _`snd_hdac_get_connections`:
 
@@ -346,17 +387,21 @@ snd_hdac_get_connections
 
     get a widget connection list
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID
+    :type nid: hda_nid_t
 
-    :param hda_nid_t \*conn_list:
+    :param conn_list:
         the array to store the results, can be NULL
+    :type conn_list: hda_nid_t \*
 
-    :param int max_conns:
+    :param max_conns:
         the max size of the given array
+    :type max_conns: int
 
 .. _`snd_hdac_get_connections.description`:
 
@@ -378,8 +423,9 @@ snd_hdac_power_up
 
     power up the codec
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
 .. _`snd_hdac_power_up.description`:
 
@@ -401,8 +447,9 @@ snd_hdac_power_down
 
     power down the codec
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
 .. _`snd_hdac_power_down.description`:
 
@@ -420,8 +467,9 @@ snd_hdac_power_up_pm
 
     power up the codec
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
 .. _`snd_hdac_power_up_pm.description`:
 
@@ -444,8 +492,9 @@ snd_hdac_power_down_pm
 
     power down the codec
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
 .. _`snd_hdac_power_down_pm.description`:
 
@@ -466,35 +515,42 @@ snd_hdac_link_power
 
     Enable/disable the link power for a codec
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param bool enable:
+    :param enable:
         *undescribed*
+    :type enable: bool
 
 .. _`snd_hdac_calc_stream_format`:
 
 snd_hdac_calc_stream_format
 ===========================
 
-.. c:function:: unsigned int snd_hdac_calc_stream_format(unsigned int rate, unsigned int channels, unsigned int format, unsigned int maxbps, unsigned short spdif_ctls)
+.. c:function:: unsigned int snd_hdac_calc_stream_format(unsigned int rate, unsigned int channels, snd_pcm_format_t format, unsigned int maxbps, unsigned short spdif_ctls)
 
     calculate the format bitset
 
-    :param unsigned int rate:
+    :param rate:
         the sample rate
+    :type rate: unsigned int
 
-    :param unsigned int channels:
+    :param channels:
         the number of channels
+    :type channels: unsigned int
 
-    :param unsigned int format:
+    :param format:
         the PCM format (SNDRV_PCM_FORMAT_XXX)
+    :type format: snd_pcm_format_t
 
-    :param unsigned int maxbps:
+    :param maxbps:
         the max. bps
+    :type maxbps: unsigned int
 
-    :param unsigned short spdif_ctls:
+    :param spdif_ctls:
         HD-audio SPDIF status bits (0 if irrelevant)
+    :type spdif_ctls: unsigned short
 
 .. _`snd_hdac_calc_stream_format.description`:
 
@@ -514,20 +570,25 @@ snd_hdac_query_supported_pcm
 
     query the supported PCM rates and formats
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to query
+    :type nid: hda_nid_t
 
-    :param u32 \*ratesp:
+    :param ratesp:
         the pointer to store the detected rate bitflags
+    :type ratesp: u32 \*
 
-    :param u64 \*formatsp:
+    :param formatsp:
         the pointer to store the detected formats
+    :type formatsp: u64 \*
 
-    :param unsigned int \*bpsp:
+    :param bpsp:
         the pointer to store the detected format widths
+    :type bpsp: unsigned int \*
 
 .. _`snd_hdac_query_supported_pcm.description`:
 
@@ -548,14 +609,17 @@ snd_hdac_is_supported_format
 
     Check the validity of the format
 
-    :param struct hdac_device \*codec:
+    :param codec:
         the codec object
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to check
+    :type nid: hda_nid_t
 
-    :param unsigned int format:
+    :param format:
         the HD-audio format value to check
+    :type format: unsigned int
 
 .. _`snd_hdac_is_supported_format.description`:
 
@@ -575,20 +639,25 @@ snd_hdac_codec_read
 
     send a command and get the response
 
-    :param struct hdac_device \*hdac:
+    :param hdac:
         the HDAC device
+    :type hdac: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to send the command
+    :type nid: hda_nid_t
 
-    :param int flags:
+    :param flags:
         optional bit flags
+    :type flags: int
 
-    :param unsigned int verb:
+    :param verb:
         the verb to send
+    :type verb: unsigned int
 
-    :param unsigned int parm:
+    :param parm:
         the parameter for the verb
+    :type parm: unsigned int
 
 .. _`snd_hdac_codec_read.description`:
 
@@ -608,20 +677,25 @@ snd_hdac_codec_write
 
     send a single command without waiting for response
 
-    :param struct hdac_device \*hdac:
+    :param hdac:
         the HDAC device
+    :type hdac: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to send the command
+    :type nid: hda_nid_t
 
-    :param int flags:
+    :param flags:
         optional bit flags
+    :type flags: int
 
-    :param unsigned int verb:
+    :param verb:
         the verb to send
+    :type verb: unsigned int
 
-    :param unsigned int parm:
+    :param parm:
         the parameter for the verb
+    :type parm: unsigned int
 
 .. _`snd_hdac_codec_write.description`:
 
@@ -641,14 +715,17 @@ snd_hdac_check_power_state
 
     check whether the actual power state matches with the target state
 
-    :param struct hdac_device \*hdac:
+    :param hdac:
         the HDAC device
+    :type hdac: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to send the command
+    :type nid: hda_nid_t
 
-    :param unsigned int target_state:
+    :param target_state:
         target state to check for
+    :type target_state: unsigned int
 
 .. _`snd_hdac_check_power_state.description`:
 
@@ -666,14 +743,17 @@ snd_hdac_sync_power_state
 
     wait until actual power state matches with the target state
 
-    :param struct hdac_device \*codec:
+    :param codec:
         *undescribed*
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to send the command
+    :type nid: hda_nid_t
 
-    :param unsigned int power_state:
+    :param power_state:
         *undescribed*
+    :type power_state: unsigned int
 
 .. _`snd_hdac_sync_power_state.description`:
 

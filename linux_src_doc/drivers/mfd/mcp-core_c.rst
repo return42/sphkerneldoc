@@ -10,11 +10,13 @@ mcp_set_telecom_divisor
 
     set the telecom divisor
 
-    :param struct mcp \*mcp:
+    :param mcp:
         MCP interface structure
+    :type mcp: struct mcp \*
 
-    :param unsigned int div:
+    :param div:
         SIB clock divisor
+    :type div: unsigned int
 
 .. _`mcp_set_telecom_divisor.description`:
 
@@ -33,11 +35,13 @@ mcp_set_audio_divisor
 
     set the audio divisor
 
-    :param struct mcp \*mcp:
+    :param mcp:
         MCP interface structure
+    :type mcp: struct mcp \*
 
-    :param unsigned int div:
+    :param div:
         SIB clock divisor
+    :type div: unsigned int
 
 .. _`mcp_set_audio_divisor.description`:
 
@@ -55,14 +59,17 @@ mcp_reg_write
 
     write a device register
 
-    :param struct mcp \*mcp:
+    :param mcp:
         MCP interface structure
+    :type mcp: struct mcp \*
 
-    :param unsigned int reg:
+    :param reg:
         4-bit register index
+    :type reg: unsigned int
 
-    :param unsigned int val:
+    :param val:
         16-bit data value
+    :type val: unsigned int
 
 .. _`mcp_reg_write.description`:
 
@@ -81,11 +88,13 @@ mcp_reg_read
 
     read a device register
 
-    :param struct mcp \*mcp:
+    :param mcp:
         MCP interface structure
+    :type mcp: struct mcp \*
 
-    :param unsigned int reg:
+    :param reg:
         4-bit register index
+    :type reg: unsigned int
 
 .. _`mcp_reg_read.description`:
 
@@ -104,8 +113,9 @@ mcp_enable
 
     enable the MCP interface
 
-    :param struct mcp \*mcp:
+    :param mcp:
         MCP interface to enable
+    :type mcp: struct mcp \*
 
 .. _`mcp_enable.description`:
 
@@ -124,8 +134,9 @@ mcp_disable
 
     disable the MCP interface
 
-    :param struct mcp \*mcp:
+    :param mcp:
         MCP interface to disable
+    :type mcp: struct mcp \*
 
 .. _`mcp_disable.description`:
 

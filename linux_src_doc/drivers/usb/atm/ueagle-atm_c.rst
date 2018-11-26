@@ -10,17 +10,21 @@ uea_send_modem_cmd
 
     Send a command for pre-firmware devices.
 
-    :param struct usb_device \*usb:
+    :param usb:
         *undescribed*
+    :type usb: struct usb_device \*
 
-    :param u16 addr:
+    :param addr:
         *undescribed*
+    :type addr: u16
 
-    :param u16 size:
+    :param size:
         *undescribed*
+    :type size: u16
 
-    :param const u8 \*buff:
+    :param buff:
         *undescribed*
+    :type buff: const u8 \*
 
 .. _`uea_load_firmware`:
 
@@ -31,11 +35,13 @@ uea_load_firmware
 
     Load usb firmware for pre-firmware devices.
 
-    :param struct usb_device \*usb:
+    :param usb:
         *undescribed*
+    :type usb: struct usb_device \*
 
-    :param unsigned int ver:
+    :param ver:
         *undescribed*
+    :type ver: unsigned int
 
 .. This file was automatic generated / don't edit.
 

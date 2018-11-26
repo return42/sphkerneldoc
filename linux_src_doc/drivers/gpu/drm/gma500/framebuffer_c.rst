@@ -10,17 +10,21 @@ psb_framebuffer_init
 
     initialize a framebuffer
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
-    :param struct psb_framebuffer \*fb:
+    :param fb:
         framebuffer to set up
+    :type fb: struct psb_framebuffer \*
 
-    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
+    :param mode_cmd:
         mode description
+    :type mode_cmd: const struct drm_mode_fb_cmd2 \*
 
-    :param struct gtt_range \*gt:
+    :param gt:
         backing object
+    :type gt: struct gtt_range \*
 
 .. _`psb_framebuffer_init.description`:
 
@@ -39,14 +43,17 @@ psb_framebuffer_create
 
     create a framebuffer backed by gt
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
-    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
+    :param mode_cmd:
         the description of the requested mode
+    :type mode_cmd: const struct drm_mode_fb_cmd2 \*
 
-    :param struct gtt_range \*gt:
+    :param gt:
         the backing object
+    :type gt: struct gtt_range \*
 
 .. _`psb_framebuffer_create.description`:
 
@@ -72,11 +79,13 @@ psbfb_alloc
 
     allocate frame buffer memory
 
-    :param struct drm_device \*dev:
+    :param dev:
         the DRM device
+    :type dev: struct drm_device \*
 
-    :param int aligned_size:
+    :param aligned_size:
         space needed
+    :type aligned_size: int
 
 .. _`psbfb_alloc.description`:
 
@@ -99,11 +108,13 @@ psbfb_create
 
     create a framebuffer
 
-    :param struct psb_fbdev \*fbdev:
+    :param fbdev:
         the framebuffer device
+    :type fbdev: struct psb_fbdev \*
 
-    :param struct drm_fb_helper_surface_size \*sizes:
+    :param sizes:
         specification of the layout
+    :type sizes: struct drm_fb_helper_surface_size \*
 
 .. _`psbfb_create.description`:
 
@@ -121,14 +132,17 @@ psb_user_framebuffer_create
 
     create framebuffer
 
-    :param struct drm_device \*dev:
+    :param dev:
         our DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*filp:
+    :param filp:
         client file
+    :type filp: struct drm_file \*
 
-    :param const struct drm_mode_fb_cmd2 \*cmd:
+    :param cmd:
         mode request
+    :type cmd: const struct drm_mode_fb_cmd2 \*
 
 .. _`psb_user_framebuffer_create.description`:
 
@@ -136,53 +150,6 @@ Description
 -----------
 
 Create a new framebuffer backed by a userspace GEM object
-
-.. _`psb_user_framebuffer_create_handle`:
-
-psb_user_framebuffer_create_handle
-==================================
-
-.. c:function:: int psb_user_framebuffer_create_handle(struct drm_framebuffer *fb, struct drm_file *file_priv, unsigned int *handle)
-
-    add hamdle to a framebuffer
-
-    :param struct drm_framebuffer \*fb:
-        framebuffer
-
-    :param struct drm_file \*file_priv:
-        our DRM file
-
-    :param unsigned int \*handle:
-        returned handle
-
-.. _`psb_user_framebuffer_create_handle.description`:
-
-Description
------------
-
-Our framebuffer object is a GTT range which also contains a GEM
-object. We need to turn it into a handle for userspace. GEM will do
-the work for us
-
-.. _`psb_user_framebuffer_destroy`:
-
-psb_user_framebuffer_destroy
-============================
-
-.. c:function:: void psb_user_framebuffer_destroy(struct drm_framebuffer *fb)
-
-    destruct user created fb
-
-    :param struct drm_framebuffer \*fb:
-        framebuffer
-
-.. _`psb_user_framebuffer_destroy.description`:
-
-Description
------------
-
-User framebuffers are backed by GEM objects so all we have to do is
-clean up a bit and drop the reference, GEM will handle the fallout
 
 .. This file was automatic generated / don't edit.
 

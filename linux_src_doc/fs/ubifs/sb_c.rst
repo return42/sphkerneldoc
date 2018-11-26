@@ -10,8 +10,9 @@ create_default_filesystem
 
     format empty UBI volume.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`create_default_filesystem.description`:
 
@@ -30,11 +31,13 @@ validate_sb
 
     validate superblock node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_sb_node \*sup:
+    :param sup:
         superblock node
+    :type sup: struct ubifs_sb_node \*
 
 .. _`validate_sb.description`:
 
@@ -55,8 +58,9 @@ ubifs_read_sb_node
 
     read superblock node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_read_sb_node.description`:
 
@@ -76,11 +80,13 @@ ubifs_write_sb_node
 
     write superblock node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_sb_node \*sup:
+    :param sup:
         superblock node read with 'ubifs_read_sb_node()'
+    :type sup: struct ubifs_sb_node \*
 
 .. _`ubifs_write_sb_node.description`:
 
@@ -98,8 +104,9 @@ ubifs_read_superblock
 
     read superblock.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_read_superblock.description`:
 
@@ -119,14 +126,17 @@ fixup_leb
 
     fixup/unmap an LEB containing free space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         the LEB number to fix up
+    :type lnum: int
 
-    :param int len:
+    :param len:
         number of used bytes in LEB (starting at offset 0)
+    :type len: int
 
 .. _`fixup_leb.description`:
 
@@ -147,8 +157,9 @@ fixup_free_space
 
     find & remap all LEBs containing free space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`fixup_free_space.description`:
 
@@ -167,8 +178,9 @@ ubifs_fixup_free_space
 
     find & fix all LEBs with free space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_fixup_free_space.description`:
 

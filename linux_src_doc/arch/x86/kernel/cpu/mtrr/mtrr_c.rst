@@ -10,8 +10,9 @@ mtrr_rendezvous_handler
 
     Work done in the synchronization handler. Executed by all the CPUs.
 
-    :param void \*info:
+    :param info:
         pointer to mtrr configuration data
+    :type info: void \*
 
 .. _`mtrr_rendezvous_handler.description`:
 
@@ -29,17 +30,21 @@ set_mtrr
 
     update mtrrs on all processors
 
-    :param unsigned int reg:
+    :param reg:
         mtrr in question
+    :type reg: unsigned int
 
-    :param unsigned long base:
+    :param base:
         mtrr base
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         mtrr size
+    :type size: unsigned long
 
-    :param mtrr_type type:
+    :param type:
         mtrr type
+    :type type: mtrr_type
 
 .. _`set_mtrr.description`:
 
@@ -82,17 +87,21 @@ mtrr_add_page
 
     Add a memory type region
 
-    :param unsigned long base:
+    :param base:
         Physical base address of region in pages (in units of 4 kB!)
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         Physical size of region in pages (4 kB)
+    :type size: unsigned long
 
-    :param unsigned int type:
+    :param type:
         Type of MTRR desired
+    :type type: unsigned int
 
-    :param bool increment:
+    :param increment:
         If this is true do usage counting on the region
+    :type increment: bool
 
 .. _`mtrr_add_page.description`:
 
@@ -136,17 +145,21 @@ mtrr_add
 
     Add a memory type region
 
-    :param unsigned long base:
+    :param base:
         Physical base address of region
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         Physical size of region
+    :type size: unsigned long
 
-    :param unsigned int type:
+    :param type:
         Type of MTRR desired
+    :type type: unsigned int
 
-    :param bool increment:
+    :param increment:
         If this is true do usage counting on the region
+    :type increment: bool
 
 .. _`mtrr_add.description`:
 
@@ -190,14 +203,17 @@ mtrr_del_page
 
     delete a memory type region
 
-    :param int reg:
+    :param reg:
         Register returned by mtrr_add
+    :type reg: int
 
-    :param unsigned long base:
+    :param base:
         Physical base address
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         Size of region
+    :type size: unsigned long
 
 .. _`mtrr_del_page.description`:
 
@@ -221,14 +237,17 @@ mtrr_del
 
     delete a memory type region
 
-    :param int reg:
+    :param reg:
         Register returned by mtrr_add
+    :type reg: int
 
-    :param unsigned long base:
+    :param base:
         Physical base address
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         Size of region
+    :type size: unsigned long
 
 .. _`mtrr_del.description`:
 
@@ -252,11 +271,13 @@ arch_phys_wc_add
 
     add a WC MTRR and handle errors if PAT is unavailable
 
-    :param unsigned long base:
+    :param base:
         Physical base address
+    :type base: unsigned long
 
-    :param unsigned long size:
+    :param size:
         Size of region
+    :type size: unsigned long
 
 .. _`arch_phys_wc_add.description`:
 
@@ -282,8 +303,9 @@ mtrr_bp_init
 
     initialize mtrrs on the boot CPU
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mtrr_bp_init.description`:
 
@@ -302,8 +324,9 @@ mtrr_save_state
 
     range MTRR state of the first cpu in cpu_online_mask.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

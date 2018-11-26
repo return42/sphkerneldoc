@@ -10,20 +10,25 @@ llc_pdu_header_init
 
     initializes pdu header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         input skb that header must be set into it.
+    :type skb: struct sk_buff \*
 
-    :param u8 type:
+    :param type:
         type of PDU (U, I or S).
+    :type type: u8
 
-    :param u8 ssap:
+    :param ssap:
         source sap.
+    :type ssap: u8
 
-    :param u8 dsap:
+    :param dsap:
         destination sap.
+    :type dsap: u8
 
-    :param u8 cr:
+    :param cr:
         command/response bit (0 or 1).
+    :type cr: u8
 
 .. _`llc_pdu_header_init.description`:
 
@@ -41,11 +46,13 @@ llc_pdu_decode_sa
 
     extracs source address (MAC) of input frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         input skb that source address must be extracted from it.
+    :type skb: struct sk_buff \*
 
-    :param u8 \*sa:
+    :param sa:
         pointer to source address (6 byte array).
+    :type sa: u8 \*
 
 .. _`llc_pdu_decode_sa.description`:
 
@@ -63,11 +70,13 @@ llc_pdu_decode_da
 
     extracts dest address of input frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         input skb that destination address must be extracted from it
+    :type skb: struct sk_buff \*
 
-    :param u8 \*da:
+    :param da:
         *undescribed*
+    :type da: u8 \*
 
 .. _`llc_pdu_decode_da.description`:
 
@@ -85,11 +94,13 @@ llc_pdu_decode_ssap
 
     extracts source SAP of input frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         input skb that source SAP must be extracted from it.
+    :type skb: struct sk_buff \*
 
-    :param u8 \*ssap:
+    :param ssap:
         source SAP (output argument).
+    :type ssap: u8 \*
 
 .. _`llc_pdu_decode_ssap.description`:
 
@@ -108,11 +119,13 @@ llc_pdu_decode_dsap
 
     extracts dest SAP of input frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         input skb that destination SAP must be extracted from it.
+    :type skb: struct sk_buff \*
 
-    :param u8 \*dsap:
+    :param dsap:
         destination SAP (output argument).
+    :type dsap: u8 \*
 
 .. _`llc_pdu_decode_dsap.description`:
 
@@ -131,8 +144,9 @@ llc_pdu_init_as_ui_cmd
 
     sets LLC header as UI PDU
 
-    :param struct sk_buff \*skb:
+    :param skb:
         input skb that header must be set into it.
+    :type skb: struct sk_buff \*
 
 .. _`llc_pdu_init_as_ui_cmd.description`:
 
@@ -150,8 +164,9 @@ llc_pdu_init_as_test_cmd
 
     sets PDU as TEST \ ``skb``\  - Address of the skb to build
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`llc_pdu_init_as_test_cmd.description`:
 
@@ -169,11 +184,13 @@ llc_pdu_init_as_test_rsp
 
     build TEST response PDU
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff \*ev_skb:
+    :param ev_skb:
         The received TEST command PDU frame
+    :type ev_skb: struct sk_buff \*
 
 .. _`llc_pdu_init_as_test_rsp.description`:
 
@@ -191,14 +208,17 @@ llc_pdu_init_as_xid_cmd
 
     sets bytes 3, 4 & 5 of LLC header as XID
 
-    :param struct sk_buff \*skb:
+    :param skb:
         input skb that header must be set into it.
+    :type skb: struct sk_buff \*
 
-    :param u8 svcs_supported:
+    :param svcs_supported:
         *undescribed*
+    :type svcs_supported: u8
 
-    :param u8 rx_window:
+    :param rx_window:
         *undescribed*
+    :type rx_window: u8
 
 .. _`llc_pdu_init_as_xid_cmd.description`:
 
@@ -217,14 +237,17 @@ llc_pdu_init_as_xid_rsp
 
     builds XID response PDU
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param u8 svcs_supported:
+    :param svcs_supported:
         The class of the LLC (I or II)
+    :type svcs_supported: u8
 
-    :param u8 rx_window:
+    :param rx_window:
         The size of the receive window of the LLC
+    :type rx_window: u8
 
 .. _`llc_pdu_init_as_xid_rsp.description`:
 

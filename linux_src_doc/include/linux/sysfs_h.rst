@@ -10,8 +10,9 @@ sysfs_attr_init
 
     initialize a dynamically allocated sysfs attribute
 
-    :param  attr:
+    :param attr:
         struct attribute to initialize
+    :type attr: 
 
 .. _`sysfs_attr_init.description`:
 
@@ -82,15 +83,6 @@ bin_attrs
     Pointer to NULL terminated list of binary attributes.
     Either attrs or bin_attrs or both must be provided.
 
-.. _`sysfs_prealloc`:
-
-SYSFS_PREALLOC
-==============
-
-.. c:function::  SYSFS_PREALLOC()
-
-    for examples..
-
 .. _`sysfs_bin_attr_init`:
 
 sysfs_bin_attr_init
@@ -100,8 +92,9 @@ sysfs_bin_attr_init
 
     initialize a dynamically allocated bin_attribute
 
-    :param  bin_attr:
+    :param bin_attr:
         *undescribed*
+    :type bin_attr: 
 
 .. _`sysfs_bin_attr_init.description`:
 

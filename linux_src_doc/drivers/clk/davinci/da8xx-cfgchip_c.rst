@@ -10,11 +10,13 @@ da8xx_cfgchip_register_usb1_clk48
 
     Register a new USB 1.1 PHY clock
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct regmap \*regmap:
+    :param regmap:
         The CFGCHIP regmap
+    :type regmap: struct regmap \*
 
 .. This file was automatic generated / don't edit.
 

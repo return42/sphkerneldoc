@@ -10,17 +10,21 @@ cuse_parse_one
 
     parse one key=value pair
 
-    :param char \*\*pp:
+    :param pp:
         i/o parameter for the current position
+    :type pp: char \*\*
 
-    :param char \*end:
+    :param end:
         points to one past the end of the packed string
+    :type end: char \*
 
-    :param char \*\*keyp:
+    :param keyp:
         out parameter for key
+    :type keyp: char \*\*
 
-    :param char \*\*valp:
+    :param valp:
         out parameter for value
+    :type valp: char \*\*
 
 .. _`cuse_parse_one.description`:
 
@@ -49,14 +53,17 @@ cuse_parse_devinfo
 
     parse device info
 
-    :param char \*p:
+    :param p:
         device info string
+    :type p: char \*
 
-    :param size_t len:
+    :param len:
         length of device info string
+    :type len: size_t
 
-    :param struct cuse_devinfo \*devinfo:
+    :param devinfo:
         out parameter for parsed device info
+    :type devinfo: struct cuse_devinfo \*
 
 .. _`cuse_parse_devinfo.description`:
 
@@ -83,11 +90,13 @@ cuse_process_init_reply
 
     finish initializing CUSE channel
 
-    :param struct fuse_conn \*fc:
+    :param fc:
         *undescribed*
+    :type fc: struct fuse_conn \*
 
-    :param struct fuse_req \*req:
+    :param req:
         *undescribed*
+    :type req: struct fuse_req \*
 
 .. _`cuse_process_init_reply.description`:
 
@@ -107,11 +116,13 @@ cuse_channel_open
 
     open method for /dev/cuse
 
-    :param struct inode \*inode:
+    :param inode:
         inode for /dev/cuse
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file struct being opened
+    :type file: struct file \*
 
 .. _`cuse_channel_open.description`:
 
@@ -141,11 +152,13 @@ cuse_channel_release
 
     release method for /dev/cuse
 
-    :param struct inode \*inode:
+    :param inode:
         inode for /dev/cuse
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file struct being closed
+    :type file: struct file \*
 
 .. _`cuse_channel_release.description`:
 

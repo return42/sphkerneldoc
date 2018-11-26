@@ -10,8 +10,9 @@ intlog2
 
     computes log2 of a value; the result is shifted left by 24 bits
 
-    :param u32 value:
+    :param value:
         The value (must be != 0)
+    :type value: u32
 
 .. _`intlog2.to-use-rational-values-you-can-use-the-following-method`:
 
@@ -49,8 +50,9 @@ intlog10
 
     computes log10 of a value; the result is shifted left by 24 bits
 
-    :param u32 value:
+    :param value:
         The value (must be != 0)
+    :type value: u32
 
 .. _`intlog10.to-use-rational-values-you-can-use-the-following-method`:
 

@@ -10,8 +10,9 @@ amdgpu_mem_type_to_domain
 
     return domain corresponding to mem_type
 
-    :param u32 mem_type:
+    :param mem_type:
         ttm memory type
+    :type mem_type: u32
 
 .. _`amdgpu_mem_type_to_domain.description`:
 
@@ -29,11 +30,13 @@ amdgpu_bo_reserve
 
     reserve bo
 
-    :param struct amdgpu_bo \*bo:
+    :param bo:
         bo structure
+    :type bo: struct amdgpu_bo \*
 
-    :param bool no_intr:
+    :param no_intr:
         don't return -ERESTARTSYS on pending signal
+    :type no_intr: bool
 
 .. _`amdgpu_bo_reserve.return`:
 
@@ -52,8 +55,9 @@ amdgpu_bo_mmap_offset
 
     return mmap offset of bo
 
-    :param struct amdgpu_bo \*bo:
+    :param bo:
         amdgpu object for which we query the offset
+    :type bo: struct amdgpu_bo \*
 
 .. _`amdgpu_bo_mmap_offset.description`:
 
@@ -61,18 +65,6 @@ Description
 -----------
 
 Returns mmap offset of the object.
-
-.. _`amdgpu_bo_gpu_accessible`:
-
-amdgpu_bo_gpu_accessible
-========================
-
-.. c:function:: bool amdgpu_bo_gpu_accessible(struct amdgpu_bo *bo)
-
-    return whether the bo is currently in memory that is accessible to the GPU.
-
-    :param struct amdgpu_bo \*bo:
-        *undescribed*
 
 .. _`amdgpu_bo_in_cpu_visible_vram`:
 
@@ -83,8 +75,9 @@ amdgpu_bo_in_cpu_visible_vram
 
     check if BO is (partly) in visible VRAM
 
-    :param struct amdgpu_bo \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct amdgpu_bo \*
 
 .. _`amdgpu_bo_explicit_sync`:
 
@@ -95,8 +88,9 @@ amdgpu_bo_explicit_sync
 
     return whether the bo is explicitly synced
 
-    :param struct amdgpu_bo \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct amdgpu_bo \*
 
 .. This file was automatic generated / don't edit.
 

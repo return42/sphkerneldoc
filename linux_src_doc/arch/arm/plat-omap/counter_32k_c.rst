@@ -10,8 +10,9 @@ omap_init_clocksource_32k
 
     setup and register counter 32k as a kernel clocksource
 
-    :param void __iomem \*vbase:
+    :param vbase:
         *undescribed*
+    :type vbase: void __iomem \*
 
 .. _`omap_init_clocksource_32k.description`:
 

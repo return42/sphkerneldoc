@@ -10,8 +10,9 @@ n_tty_kick_worker
 
     start input worker (if required)
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`n_tty_kick_worker.description`:
 
@@ -34,8 +35,9 @@ n_tty_write_wakeup
 
     asynchronous I/O notifier
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
 .. _`n_tty_write_wakeup.description`:
 
@@ -55,11 +57,13 @@ put_tty_queue
 
     add character to tty
 
-    :param unsigned char c:
+    :param c:
         character
+    :type c: unsigned char
 
-    :param struct n_tty_data \*ldata:
+    :param ldata:
         n_tty data
+    :type ldata: struct n_tty_data \*
 
 .. _`put_tty_queue.description`:
 
@@ -80,8 +84,9 @@ reset_buffer_flags
 
     reset buffer state
 
-    :param struct n_tty_data \*ldata:
+    :param ldata:
         *undescribed*
+    :type ldata: struct n_tty_data \*
 
 .. _`reset_buffer_flags.description`:
 
@@ -108,8 +113,9 @@ n_tty_flush_buffer
 
     clean input queue
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
 .. _`n_tty_flush_buffer.description`:
 
@@ -139,8 +145,9 @@ is_utf8_continuation
 
     utf8 multibyte check
 
-    :param unsigned char c:
+    :param c:
         byte to check
+    :type c: unsigned char
 
 .. _`is_utf8_continuation.description`:
 
@@ -160,11 +167,13 @@ is_continuation
 
     multibyte check
 
-    :param unsigned char c:
+    :param c:
         byte to check
+    :type c: unsigned char
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`is_continuation.description`:
 
@@ -183,14 +192,17 @@ do_output_char
 
     output one character
 
-    :param unsigned char c:
+    :param c:
         character (or partial unicode symbol)
+    :type c: unsigned char
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
-    :param int space:
+    :param space:
         space available in tty driver write buffer
+    :type space: int
 
 .. _`do_output_char.description`:
 
@@ -226,11 +238,13 @@ process_output
 
     output post processor
 
-    :param unsigned char c:
+    :param c:
         character (or partial unicode symbol)
+    :type c: unsigned char
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
 .. _`process_output.description`:
 
@@ -259,14 +273,17 @@ process_output_block
 
     block post processor
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         character buffer
+    :type buf: const unsigned char \*
 
-    :param unsigned int nr:
+    :param nr:
         number of bytes to output
+    :type nr: unsigned int
 
 .. _`process_output_block.description`:
 
@@ -299,8 +316,9 @@ tty layer write lock)
 
     write pending echo characters
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
 .. _`__process_echoes.description`:
 
@@ -341,11 +359,13 @@ add_echo_byte
 
     add a byte to the echo buffer
 
-    :param unsigned char c:
+    :param c:
         unicode byte to echo
+    :type c: unsigned char
 
-    :param struct n_tty_data \*ldata:
+    :param ldata:
         n_tty data
+    :type ldata: struct n_tty_data \*
 
 .. _`add_echo_byte.description`:
 
@@ -363,8 +383,9 @@ echo_move_back_col
 
     add operation to move back a column
 
-    :param struct n_tty_data \*ldata:
+    :param ldata:
         n_tty data
+    :type ldata: struct n_tty_data \*
 
 .. _`echo_move_back_col.description`:
 
@@ -382,8 +403,9 @@ echo_set_canon_col
 
     add operation to set the canon column
 
-    :param struct n_tty_data \*ldata:
+    :param ldata:
         n_tty data
+    :type ldata: struct n_tty_data \*
 
 .. _`echo_set_canon_col.description`:
 
@@ -402,14 +424,17 @@ echo_erase_tab
 
     add operation to erase a tab
 
-    :param unsigned int num_chars:
+    :param num_chars:
         number of character columns already used
+    :type num_chars: unsigned int
 
-    :param int after_tab:
+    :param after_tab:
         true if num_chars starts after a previous tab
+    :type after_tab: int
 
-    :param struct n_tty_data \*ldata:
+    :param ldata:
         n_tty data
+    :type ldata: struct n_tty_data \*
 
 .. _`echo_erase_tab.description`:
 
@@ -433,11 +458,13 @@ echo_char_raw
 
     echo a character raw
 
-    :param unsigned char c:
+    :param c:
         unicode byte to echo
+    :type c: unsigned char
 
-    :param struct n_tty_data \*ldata:
+    :param ldata:
         *undescribed*
+    :type ldata: struct n_tty_data \*
 
 .. _`echo_char_raw.description`:
 
@@ -458,11 +485,13 @@ echo_char
 
     echo a character
 
-    :param unsigned char c:
+    :param c:
         unicode byte to echo
+    :type c: unsigned char
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
 .. _`echo_char.description`:
 
@@ -484,8 +513,9 @@ finish_erasing
 
     complete erase
 
-    :param struct n_tty_data \*ldata:
+    :param ldata:
         n_tty data
+    :type ldata: struct n_tty_data \*
 
 .. _`eraser`:
 
@@ -496,11 +526,13 @@ eraser
 
     handle erase function
 
-    :param unsigned char c:
+    :param c:
         character input
+    :type c: unsigned char
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
 .. _`eraser.description`:
 
@@ -523,11 +555,13 @@ caller holds non-exclusive termios_rwsem
 
     handle the ISIG optio
 
-    :param int sig:
+    :param sig:
         signal
+    :type sig: int
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`__isig.description`:
 
@@ -557,8 +591,9 @@ n_tty_receive_break
 
     handle break
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`n_tty_receive_break.description`:
 
@@ -587,8 +622,9 @@ n_tty_receive_overrun
 
     handle overrun reporting
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`n_tty_receive_overrun.description`:
 
@@ -612,11 +648,13 @@ n_tty_receive_parity_error
 
     error notifier
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
-    :param unsigned char c:
+    :param c:
         character
+    :type c: unsigned char
 
 .. _`n_tty_receive_parity_error.description`:
 
@@ -638,11 +676,13 @@ n_tty_receive_char_special
 
     perform processing
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
-    :param unsigned char c:
+    :param c:
         character
+    :type c: unsigned char
 
 .. _`n_tty_receive_char_special.description`:
 
@@ -668,20 +708,25 @@ n_tty_receive_buf_common
 
     process input
 
-    :param struct tty_struct \*tty:
+    :param tty:
         device to receive input
+    :type tty: struct tty_struct \*
 
-    :param const unsigned char \*cp:
+    :param cp:
         input chars
+    :type cp: const unsigned char \*
 
-    :param char \*fp:
+    :param fp:
         flags for each char (if NULL, all chars are TTY_NORMAL)
+    :type fp: char \*
 
-    :param int count:
+    :param count:
         number of input chars in \ ``cp``\ 
+    :type count: int
 
-    :param int flow:
+    :param flow:
         *undescribed*
+    :type flow: int
 
 .. _`n_tty_receive_buf_common.description`:
 
@@ -723,11 +768,13 @@ n_tty_set_termios
 
     termios data changed
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
-    :param struct ktermios \*old:
+    :param old:
         previous data
+    :type old: struct ktermios \*
 
 .. _`n_tty_set_termios.description`:
 
@@ -756,8 +803,9 @@ n_tty_close
 
     close the ldisc for this tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         device
+    :type tty: struct tty_struct \*
 
 .. _`n_tty_close.description`:
 
@@ -778,8 +826,9 @@ n_tty_open
 
     open an ldisc
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal to open
+    :type tty: struct tty_struct \*
 
 .. _`n_tty_open.description`:
 
@@ -800,14 +849,17 @@ copy_from_read_buf
 
     copy read data directly
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
-    :param unsigned char __user \*\*b:
+    :param b:
         user data
+    :type b: unsigned char __user \*\*
 
-    :param size_t \*nr:
+    :param nr:
         size of data
+    :type nr: size_t \*
 
 .. _`copy_from_read_buf.description`:
 
@@ -836,14 +888,17 @@ canon_copy_from_read_buf
 
     copy read data in canonical mode
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
-    :param unsigned char __user \*\*b:
+    :param b:
         user data
+    :type b: unsigned char __user \*\*
 
-    :param size_t \*nr:
+    :param nr:
         size of data
+    :type nr: size_t \*
 
 .. _`canon_copy_from_read_buf.description`:
 
@@ -875,11 +930,13 @@ job_control
 
     check job control
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         file handle
+    :type file: struct file \*
 
 .. _`job_control.description`:
 
@@ -908,17 +965,21 @@ n_tty_read
 
     read function for tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         file object
+    :type file: struct file \*
 
-    :param unsigned char __user \*buf:
+    :param buf:
         userspace buffer pointer
+    :type buf: unsigned char __user \*
 
-    :param size_t nr:
+    :param nr:
         size of I/O
+    :type nr: size_t
 
 .. _`n_tty_read.description`:
 
@@ -945,17 +1006,21 @@ n_tty_write
 
     write function for tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         file object
+    :type file: struct file \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         userspace buffer pointer
+    :type buf: const unsigned char \*
 
-    :param size_t nr:
+    :param nr:
         size of I/O
+    :type nr: size_t
 
 .. _`n_tty_write.description`:
 
@@ -990,14 +1055,17 @@ n_tty_poll
 
     poll method for N_TTY
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         file accessing it
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         poll table
+    :type wait: poll_table \*
 
 .. _`n_tty_poll.description`:
 
@@ -1020,8 +1088,9 @@ n_tty_inherit_ops
 
     inherit N_TTY methods
 
-    :param struct tty_ldisc_ops \*ops:
+    :param ops:
         struct tty_ldisc_ops where to save N_TTY methods
+    :type ops: struct tty_ldisc_ops \*
 
 .. _`n_tty_inherit_ops.description`:
 

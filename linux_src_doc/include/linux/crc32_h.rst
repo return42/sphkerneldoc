@@ -10,11 +10,13 @@ crc32_le_shift
 
     Combine two crc32 check values into one. For two sequences of bytes, seq1 and seq2 with lengths len1 and len2, \ :c:func:`crc32_le`\  check values were calculated for each, crc1 and crc2.
 
-    :param u32 crc:
+    :param crc:
         *undescribed*
+    :type crc: u32
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`crc32_le_shift.return`:
 
@@ -38,11 +40,13 @@ also \ :c:func:`crc32_combine_test`\ .
 
     Combine two crc32c check values into one. For two sequences of bytes, seq1 and seq2 with lengths len1 and len2, \__crc32c_le() check values were calculated for each, crc1 and crc2.
 
-    :param u32 crc:
+    :param crc:
         *undescribed*
+    :type crc: u32
 
-    :param size_t len:
+    :param len:
         *undescribed*
+    :type len: size_t
 
 .. _`__crc32c_le_shift.return`:
 

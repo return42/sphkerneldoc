@@ -10,11 +10,13 @@ nfs_list_add_request
 
     Insert a request into a list
 
-    :param struct nfs_page \*req:
+    :param req:
         request
+    :type req: struct nfs_page \*
 
-    :param struct list_head \*head:
+    :param head:
         head of list into which to insert the request.
+    :type head: struct list_head \*
 
 .. _`nfs_list_remove_request`:
 
@@ -25,8 +27,9 @@ nfs_list_remove_request
 
     Remove a request from its wb_list
 
-    :param struct nfs_page \*req:
+    :param req:
         request
+    :type req: struct nfs_page \*
 
 .. This file was automatic generated / don't edit.
 

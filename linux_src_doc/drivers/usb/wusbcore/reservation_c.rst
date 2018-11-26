@@ -10,8 +10,9 @@ wusbhc_rsv_complete_cb
 
     WUSB HC reservation complete callback
 
-    :param struct uwb_rsv \*rsv:
+    :param rsv:
         the reservation
+    :type rsv: struct uwb_rsv \*
 
 .. _`wusbhc_rsv_complete_cb.description`:
 
@@ -36,8 +37,9 @@ wusbhc_rsv_establish
 
     establish a reservation for the cluster
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         the WUSB HC requesting a bandwidth reservation
+    :type wusbhc: struct wusbhc \*
 
 .. _`wusbhc_rsv_terminate`:
 
@@ -48,8 +50,9 @@ wusbhc_rsv_terminate
 
     terminate the cluster reservation
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         the WUSB host whose reservation is to be terminated
+    :type wusbhc: struct wusbhc \*
 
 .. This file was automatic generated / don't edit.
 

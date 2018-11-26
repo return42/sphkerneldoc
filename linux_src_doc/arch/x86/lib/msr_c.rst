@@ -8,11 +8,13 @@ msr_read
 
 .. c:function:: int msr_read(u32 msr, struct msr *m)
 
-    :param u32 msr:
+    :param msr:
         MSR to read
+    :type msr: u32
 
-    :param struct msr \*m:
+    :param m:
         value to read into
+    :type m: struct msr \*
 
 .. _`msr_read.description`:
 
@@ -29,11 +31,13 @@ msr_write
 
 .. c:function:: int msr_write(u32 msr, struct msr *m)
 
-    :param u32 msr:
+    :param msr:
         MSR to write
+    :type msr: u32
 
-    :param struct msr \*m:
+    :param m:
         value to write
+    :type m: struct msr \*
 
 .. _`msr_set_bit`:
 
@@ -42,11 +46,13 @@ msr_set_bit
 
 .. c:function:: int msr_set_bit(u32 msr, u8 bit)
 
-    :param u32 msr:
+    :param msr:
         *undescribed*
+    :type msr: u32
 
-    :param u8 bit:
+    :param bit:
         *undescribed*
+    :type bit: u8
 
 .. _`msr_set_bit.retval`:
 
@@ -64,11 +70,13 @@ msr_clear_bit
 
 .. c:function:: int msr_clear_bit(u32 msr, u8 bit)
 
-    :param u32 msr:
+    :param msr:
         *undescribed*
+    :type msr: u32
 
-    :param u8 bit:
+    :param bit:
         *undescribed*
+    :type bit: u8
 
 .. _`msr_clear_bit.retval`:
 

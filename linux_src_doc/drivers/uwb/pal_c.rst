@@ -10,8 +10,9 @@ uwb_pal_init
 
     initialize a UWB PAL
 
-    :param struct uwb_pal \*pal:
+    :param pal:
         the PAL to initialize
+    :type pal: struct uwb_pal \*
 
 .. _`uwb_pal_register`:
 
@@ -22,8 +23,9 @@ uwb_pal_register
 
     register a UWB PAL
 
-    :param struct uwb_pal \*pal:
+    :param pal:
         the PAL
+    :type pal: struct uwb_pal \*
 
 .. _`uwb_pal_register.description`:
 
@@ -39,8 +41,9 @@ uwb_rc_class_device_exists
 
 .. c:function:: bool uwb_rc_class_device_exists(struct uwb_rc *target_rc)
 
-    :param struct uwb_rc \*target_rc:
+    :param target_rc:
         *undescribed*
+    :type target_rc: struct uwb_rc \*
 
 .. _`uwb_rc_class_device_exists.description`:
 
@@ -58,8 +61,9 @@ uwb_pal_unregister
 
     unregister a UWB PAL
 
-    :param struct uwb_pal \*pal:
+    :param pal:
         the PAL
+    :type pal: struct uwb_pal \*
 
 .. _`uwb_rc_pal_init`:
 
@@ -70,8 +74,9 @@ uwb_rc_pal_init
 
     initialize the PAL related parts of a radio controller
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller
+    :type rc: struct uwb_rc \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ ti_cpufreq_get_efuse
 
     Parse and return efuse value present on SoC
 
-    :param struct ti_cpufreq_data \*opp_data:
+    :param opp_data:
         pointer to ti_cpufreq_data context
+    :type opp_data: struct ti_cpufreq_data \*
 
-    :param u32 \*efuse_value:
+    :param efuse_value:
         Set to the value parsed from efuse
+    :type efuse_value: u32 \*
 
 .. _`ti_cpufreq_get_efuse.description`:
 
@@ -32,11 +34,13 @@ ti_cpufreq_get_rev
 
     Parse and return rev value present on SoC
 
-    :param struct ti_cpufreq_data \*opp_data:
+    :param opp_data:
         pointer to ti_cpufreq_data context
+    :type opp_data: struct ti_cpufreq_data \*
 
-    :param u32 \*revision_value:
+    :param revision_value:
         Set to the value parsed from revision register
+    :type revision_value: u32 \*
 
 .. _`ti_cpufreq_get_rev.description`:
 

@@ -10,14 +10,17 @@ zip_inflate
 
     API to offload inflate operation to hardware
 
-    :param struct zip_operation \*zip_ops:
+    :param zip_ops:
         Pointer to zip operation structure
+    :type zip_ops: struct zip_operation \*
 
-    :param struct zip_state \*s:
+    :param s:
         Pointer to the structure representing zip state
+    :type s: struct zip_state \*
 
-    :param struct zip_device \*zip_dev:
+    :param zip_dev:
         Pointer to zip device structure
+    :type zip_dev: struct zip_device \*
 
 .. _`zip_inflate.description`:
 

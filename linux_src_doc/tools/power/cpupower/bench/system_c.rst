@@ -8,8 +8,9 @@ get_time
 
 .. c:function:: long long int get_time( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`get_time.description`:
 
@@ -25,11 +26,13 @@ set_cpufreq_governor
 
 .. c:function:: int set_cpufreq_governor(char *governor, unsigned int cpu)
 
-    :param char \*governor:
+    :param governor:
         *undescribed*
+    :type governor: char \*
 
-    :param unsigned int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: unsigned int
 
 .. _`set_cpufreq_governor.description`:
 
@@ -49,8 +52,9 @@ set_cpu_affinity
 
 .. c:function:: int set_cpu_affinity(unsigned int cpu)
 
-    :param unsigned int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: unsigned int
 
 .. _`set_cpu_affinity.description`:
 
@@ -69,8 +73,9 @@ set_process_priority
 
 .. c:function:: int set_process_priority(int priority)
 
-    :param int priority:
+    :param priority:
         *undescribed*
+    :type priority: int
 
 .. _`set_process_priority.description`:
 
@@ -89,8 +94,9 @@ prepare_user
 
 .. c:function:: void prepare_user(const struct config *config)
 
-    :param const struct config \*config:
+    :param config:
         *undescribed*
+    :type config: const struct config \*
 
 .. _`prepare_user.description`:
 
@@ -106,8 +112,9 @@ prepare_system
 
 .. c:function:: void prepare_system(const struct config *config)
 
-    :param const struct config \*config:
+    :param config:
         *undescribed*
+    :type config: const struct config \*
 
 .. _`prepare_system.description`:
 

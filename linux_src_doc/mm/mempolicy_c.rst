@@ -6,31 +6,33 @@
 alloc_pages_vma
 ===============
 
-.. c:function:: struct page *alloc_pages_vma(gfp_t gfp, int order, struct vm_area_struct *vma, unsigned long addr, int node, bool hugepage)
+.. c:function:: struct page *alloc_pages_vma(gfp_t gfp, int order, struct vm_area_struct *vma, unsigned long addr, int node)
 
     Allocate a page for a VMA.
 
-    :param gfp_t gfp:
+    :param gfp:
         \ ``GFP_USER``\     user allocation.
         \ ``GFP_KERNEL``\   kernel allocations,
         \ ``GFP_HIGHMEM``\  highmem/user allocations,
         \ ``GFP_FS``\       allocation should not call back into a file system.
         \ ``GFP_ATOMIC``\   don't sleep.
+    :type gfp: gfp_t
 
-    :param int order:
+    :param order:
         Order of the GFP allocation.
+    :type order: int
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         Pointer to VMA or NULL if not available.
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         Virtual Address of the allocation. Must be inside the VMA.
+    :type addr: unsigned long
 
-    :param int node:
+    :param node:
         Which node to prefer for allocation (modulo policy).
-
-    :param bool hugepage:
-        for hugepages try only the preferred node if possible
+    :type node: int
 
 .. _`alloc_pages_vma.description`:
 
@@ -53,15 +55,17 @@ alloc_pages_current
 
     Allocate pages.
 
-    :param gfp_t gfp:
+    :param gfp:
         \ ``GFP_USER``\    user allocation,
         \ ``GFP_KERNEL``\  kernel allocation,
         \ ``GFP_HIGHMEM``\  highmem allocation,
         \ ``GFP_FS``\      don't call back into a file system.
         \ ``GFP_ATOMIC``\  don't sleep.
+    :type gfp: gfp_t
 
-    :param unsigned order:
+    :param order:
         Power of two of allocation size in pages. 0 is a single page.
+    :type order: unsigned
 
 .. _`alloc_pages_current.description`:
 
@@ -81,14 +85,17 @@ mpol_misplaced
 
     check whether current page node is valid in policy
 
-    :param struct page \*page:
+    :param page:
         page to be checked
+    :type page: struct page \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vm area where page mapped
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long addr:
+    :param addr:
         virtual address where page mapped
+    :type addr: unsigned long
 
 .. _`mpol_misplaced.description`:
 
@@ -118,11 +125,13 @@ mpol_shared_policy_init
 
     initialize shared policy for inode
 
-    :param struct shared_policy \*sp:
+    :param sp:
         pointer to inode shared policy
+    :type sp: struct shared_policy \*
 
-    :param struct mempolicy \*mpol:
+    :param mpol:
         struct mempolicy to install
+    :type mpol: struct mempolicy \*
 
 .. _`mpol_shared_policy_init.description`:
 
@@ -143,11 +152,13 @@ mpol_parse_str
 
     parse string to mempolicy, for tmpfs mpol mount option.
 
-    :param char \*str:
+    :param str:
         string containing mempolicy to parse
+    :type str: char \*
 
-    :param struct mempolicy \*\*mpol:
+    :param mpol:
         pointer to struct mempolicy pointer, returned on success.
+    :type mpol: struct mempolicy \*\*
 
 .. _`mpol_parse_str.format-of-input`:
 
@@ -167,14 +178,17 @@ mpol_to_str
 
     format a mempolicy structure for printing
 
-    :param char \*buffer:
+    :param buffer:
         to contain formatted mempolicy string
+    :type buffer: char \*
 
-    :param int maxlen:
+    :param maxlen:
         length of \ ``buffer``\ 
+    :type maxlen: int
 
-    :param struct mempolicy \*pol:
+    :param pol:
         pointer to mempolicy to be formatted
+    :type pol: struct mempolicy \*
 
 .. _`mpol_to_str.description`:
 

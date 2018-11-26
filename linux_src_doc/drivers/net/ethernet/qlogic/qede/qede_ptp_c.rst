@@ -8,11 +8,13 @@ qede_ptp_adjfreq
 
 .. c:function:: int qede_ptp_adjfreq(struct ptp_clock_info *info, s32 ppb)
 
-    :param struct ptp_clock_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct ptp_clock_info \*
 
-    :param s32 ppb:
+    :param ppb:
         parts per billion adjustment from base
+    :type ppb: s32
 
 .. _`qede_ptp_adjfreq.description`:
 

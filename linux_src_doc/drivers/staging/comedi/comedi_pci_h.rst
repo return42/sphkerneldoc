@@ -10,11 +10,13 @@ module_comedi_pci_driver
 
     Helper macro for registering a comedi PCI driver
 
-    :param  __comedi_driver:
+    :param __comedi_driver:
         comedi_driver struct
+    :type __comedi_driver: 
 
-    :param  __pci_driver:
+    :param __pci_driver:
         pci_driver struct
+    :type __pci_driver: 
 
 .. _`module_comedi_pci_driver.description`:
 

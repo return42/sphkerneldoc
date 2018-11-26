@@ -10,11 +10,13 @@ sdio_claim_irq
 
     claim the IRQ for a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function
+    :type func: struct sdio_func \*
 
-    :param sdio_irq_handler_t \*handler:
+    :param handler:
         IRQ handler callback
+    :type handler: sdio_irq_handler_t \*
 
 .. _`sdio_claim_irq.description`:
 
@@ -35,8 +37,9 @@ sdio_release_irq
 
     release the IRQ for a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function
+    :type func: struct sdio_func \*
 
 .. _`sdio_release_irq.description`:
 

@@ -10,8 +10,9 @@ is_module_percpu_address
 
     test whether address is from module static percpu
 
-    :param unsigned long addr:
+    :param addr:
         address to test
+    :type addr: unsigned long
 
 .. _`is_module_percpu_address.description`:
 
@@ -36,8 +37,9 @@ module_refcount
 
     return the refcount or -1 if unloading
 
-    :param struct module \*mod:
+    :param mod:
         the module we're checking
+    :type mod: struct module \*
 
 .. _`module_refcount.return`:
 

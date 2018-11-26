@@ -10,11 +10,13 @@ open_dso
 
     Open DSO data file
 
-    :param struct dso \*dso:
+    :param dso:
         dso object
+    :type dso: struct dso \*
 
-    :param struct machine \*machine:
+    :param machine:
         *undescribed*
+    :type machine: struct machine \*
 
 .. _`open_dso.description`:
 
@@ -33,8 +35,9 @@ close_dso
 
     Close DSO data file
 
-    :param struct dso \*dso:
+    :param dso:
         dso object
+    :type dso: struct dso \*
 
 .. _`close_dso.description`:
 
@@ -53,8 +56,9 @@ dso__data_close
 
     Close DSO data file
 
-    :param struct dso \*dso:
+    :param dso:
         dso object
+    :type dso: struct dso \*
 
 .. _`dso__data_close.description`:
 
@@ -72,11 +76,13 @@ dso__data_get_fd
 
     Get dso's data file descriptor
 
-    :param struct dso \*dso:
+    :param dso:
         dso object
+    :type dso: struct dso \*
 
-    :param struct machine \*machine:
+    :param machine:
         machine object
+    :type machine: struct machine \*
 
 .. _`dso__data_get_fd.description`:
 
@@ -96,11 +102,13 @@ dso__data_size
 
     Return dso data size
 
-    :param struct dso \*dso:
+    :param dso:
         dso object
+    :type dso: struct dso \*
 
-    :param struct machine \*machine:
+    :param machine:
         machine object
+    :type machine: struct machine \*
 
 .. _`dso__data_size.return`:
 
@@ -118,20 +126,25 @@ dso__data_read_offset
 
     Read data from dso file offset
 
-    :param struct dso \*dso:
+    :param dso:
         dso object
+    :type dso: struct dso \*
 
-    :param struct machine \*machine:
+    :param machine:
         machine object
+    :type machine: struct machine \*
 
-    :param u64 offset:
+    :param offset:
         file offset
+    :type offset: u64
 
-    :param u8 \*data:
+    :param data:
         buffer to store data
+    :type data: u8 \*
 
-    :param ssize_t size:
+    :param size:
         size of the \ ``data``\  buffer
+    :type size: ssize_t
 
 .. _`dso__data_read_offset.description`:
 
@@ -150,23 +163,29 @@ dso__data_read_addr
 
     Read data from dso address
 
-    :param struct dso \*dso:
+    :param dso:
         dso object
+    :type dso: struct dso \*
 
-    :param struct map \*map:
+    :param map:
         *undescribed*
+    :type map: struct map \*
 
-    :param struct machine \*machine:
+    :param machine:
         machine object
+    :type machine: struct machine \*
 
-    :param u64 addr:
+    :param addr:
         *undescribed*
+    :type addr: u64
 
-    :param u8 \*data:
+    :param data:
         buffer to store data
+    :type data: u8 \*
 
-    :param ssize_t size:
+    :param size:
         size of the \ ``data``\  buffer
+    :type size: ssize_t
 
 .. _`dso__data_read_addr.description`:
 

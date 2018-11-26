@@ -10,11 +10,13 @@ hw_ep_bit
 
     calculates the bit number
 
-    :param int num:
+    :param num:
         endpoint number
+    :type num: int
 
-    :param int dir:
+    :param dir:
         endpoint direction
+    :type dir: int
 
 .. _`hw_ep_bit.description`:
 
@@ -32,11 +34,13 @@ hw_device_state
 
     enables/disables interrupts (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param u32 dma:
+    :param dma:
         0 => disable, !0 => enable and set dma engine
+    :type dma: u32
 
 .. _`hw_device_state.description`:
 
@@ -54,14 +58,17 @@ hw_ep_flush
 
     flush endpoint fifo (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param int num:
+    :param num:
         endpoint number
+    :type num: int
 
-    :param int dir:
+    :param dir:
         endpoint direction
+    :type dir: int
 
 .. _`hw_ep_flush.description`:
 
@@ -79,14 +86,17 @@ hw_ep_disable
 
     disables endpoint (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param int num:
+    :param num:
         endpoint number
+    :type num: int
 
-    :param int dir:
+    :param dir:
         endpoint direction
+    :type dir: int
 
 .. _`hw_ep_disable.description`:
 
@@ -104,17 +114,21 @@ hw_ep_enable
 
     enables endpoint (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param int num:
+    :param num:
         endpoint number
+    :type num: int
 
-    :param int dir:
+    :param dir:
         endpoint direction
+    :type dir: int
 
-    :param int type:
+    :param type:
         endpoint type
+    :type type: int
 
 .. _`hw_ep_enable.description`:
 
@@ -132,14 +146,17 @@ hw_ep_get_halt
 
     return endpoint halt status
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param int num:
+    :param num:
         endpoint number
+    :type num: int
 
-    :param int dir:
+    :param dir:
         endpoint direction
+    :type dir: int
 
 .. _`hw_ep_get_halt.description`:
 
@@ -157,17 +174,21 @@ hw_ep_prime
 
     primes endpoint (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param int num:
+    :param num:
         endpoint number
+    :type num: int
 
-    :param int dir:
+    :param dir:
         endpoint direction
+    :type dir: int
 
-    :param int is_ctrl:
+    :param is_ctrl:
         true if control endpoint
+    :type is_ctrl: int
 
 .. _`hw_ep_prime.description`:
 
@@ -185,17 +206,21 @@ hw_ep_set_halt
 
     configures ep halt & resets data toggle after clear (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param int num:
+    :param num:
         endpoint number
+    :type num: int
 
-    :param int dir:
+    :param dir:
         endpoint direction
+    :type dir: int
 
-    :param int value:
+    :param value:
         true => stall, false => unstall
+    :type value: int
 
 .. _`hw_ep_set_halt.description`:
 
@@ -213,8 +238,9 @@ hw_port_is_high_speed
 
     test if port is high speed
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_port_is_high_speed.description`:
 
@@ -232,11 +258,13 @@ hw_test_and_clear_complete
 
     test & clear complete status (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param int n:
+    :param n:
         endpoint number
+    :type n: int
 
 .. _`hw_test_and_clear_complete.description`:
 
@@ -254,8 +282,9 @@ hw_test_and_clear_intr_active
 
     test & clear active interrupts (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_test_and_clear_intr_active.description`:
 
@@ -273,8 +302,9 @@ hw_test_and_clear_setup_guard
 
     test & clear setup guard (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_test_and_clear_setup_guard.description`:
 
@@ -292,8 +322,9 @@ hw_test_and_set_setup_guard
 
     test & set setup guard (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_test_and_set_setup_guard.description`:
 
@@ -311,11 +342,13 @@ hw_usb_set_address
 
     configures USB address (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
-    :param u8 value:
+    :param value:
         new USB address
+    :type value: u8
 
 .. _`hw_usb_set_address.description`:
 
@@ -334,8 +367,9 @@ hw_usb_reset
 
     restart device after a bus reset (execute without interruption)
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
 .. _`hw_usb_reset.description`:
 
@@ -353,8 +387,9 @@ This function returns an error code
 
     calculates endpoint address from direction & number
 
-    :param struct ci_hw_ep \*ep:
+    :param ep:
         endpoint
+    :type ep: struct ci_hw_ep \*
 
 .. _`_hardware_enqueue`:
 
@@ -365,11 +400,13 @@ This function returns an error code
 
     configures a request at hardware level
 
-    :param struct ci_hw_ep \*hwep:
+    :param hwep:
         endpoint
+    :type hwep: struct ci_hw_ep \*
 
-    :param struct ci_hw_req \*hwreq:
+    :param hwreq:
         request
+    :type hwreq: struct ci_hw_req \*
 
 .. _`_hardware_enqueue.description`:
 
@@ -387,11 +424,13 @@ This function returns an error code
 
     handles a request at hardware level
 
-    :param struct ci_hw_ep \*hwep:
+    :param hwep:
         endpoint
+    :type hwep: struct ci_hw_ep \*
 
-    :param struct ci_hw_req \*hwreq:
+    :param hwreq:
         *undescribed*
+    :type hwreq: struct ci_hw_req \*
 
 .. _`_hardware_dequeue.description`:
 
@@ -409,8 +448,9 @@ This function returns an error code
 
     dequeues all endpoint requests
 
-    :param struct ci_hw_ep \*hwep:
+    :param hwep:
         endpoint
+    :type hwep: struct ci_hw_ep \*
 
 .. _`_ep_nuke.description`:
 
@@ -429,8 +469,9 @@ Caller must hold lock
 
     stops all USB activity, flushes & disables all endpts
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         gadget
+    :type gadget: struct usb_gadget \*
 
 .. _`_gadget_stop_activity.description`:
 
@@ -448,8 +489,9 @@ isr_reset_handler
 
     USB reset interrupt handler
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         UDC device
+    :type ci: struct ci_hdrc \*
 
 .. _`isr_reset_handler.description`:
 
@@ -467,11 +509,13 @@ isr_get_status_complete
 
     get_status request complete function
 
-    :param struct usb_ep \*ep:
+    :param ep:
         endpoint
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         request handled
+    :type req: struct usb_request \*
 
 .. _`isr_get_status_complete.description`:
 
@@ -489,14 +533,17 @@ Caller must release lock
 
     queues (submits) an I/O request to an endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         endpoint
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         request
+    :type req: struct usb_request \*
 
-    :param gfp_t __maybe_unused gfp_flags:
+    :param gfp_flags:
         GFP flags (not used)
+    :type gfp_flags: gfp_t __maybe_unused
 
 .. _`_ep_queue.description`:
 
@@ -515,11 +562,13 @@ isr_get_status_response
 
     get_status request response
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         ci struct
+    :type ci: struct ci_hdrc \*
 
-    :param struct usb_ctrlrequest \*setup:
+    :param setup:
         setup request packet
+    :type setup: struct usb_ctrlrequest \*
 
 .. _`isr_get_status_response.description`:
 
@@ -537,11 +586,13 @@ isr_setup_status_complete
 
     setup_status request complete function
 
-    :param struct usb_ep \*ep:
+    :param ep:
         endpoint
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         request handled
+    :type req: struct usb_request \*
 
 .. _`isr_setup_status_complete.description`:
 
@@ -560,8 +611,9 @@ isr_setup_status_phase
 
     queues the status phase of a setup transation
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         ci struct
+    :type ci: struct ci_hdrc \*
 
 .. _`isr_setup_status_phase.description`:
 
@@ -579,8 +631,9 @@ isr_tr_complete_low
 
     transaction complete low level handler
 
-    :param struct ci_hw_ep \*hwep:
+    :param hwep:
         endpoint
+    :type hwep: struct ci_hw_ep \*
 
 .. _`isr_tr_complete_low.description`:
 
@@ -599,8 +652,9 @@ isr_setup_packet_handler
 
     setup packet handler
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         UDC descriptor
+    :type ci: struct ci_hdrc \*
 
 .. _`isr_setup_packet_handler.description`:
 
@@ -618,8 +672,9 @@ isr_tr_complete_handler
 
     transaction complete interrupt handler
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         UDC descriptor
+    :type ci: struct ci_hdrc \*
 
 .. _`isr_tr_complete_handler.description`:
 
@@ -637,11 +692,13 @@ ep_enable
 
     configure endpoint, making it usable
 
-    :param struct usb_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct usb_ep \*
 
-    :param const struct usb_endpoint_descriptor \*desc:
+    :param desc:
         *undescribed*
+    :type desc: const struct usb_endpoint_descriptor \*
 
 .. _`ep_enable.description`:
 
@@ -659,8 +716,9 @@ ep_disable
 
     endpoint is no longer usable
 
-    :param struct usb_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct usb_ep \*
 
 .. _`ep_disable.description`:
 
@@ -678,11 +736,13 @@ ep_alloc_request
 
     allocate a request object to use with this endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct usb_ep \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         *undescribed*
+    :type gfp_flags: gfp_t
 
 .. _`ep_alloc_request.description`:
 
@@ -700,11 +760,13 @@ ep_free_request
 
     frees a request object
 
-    :param struct usb_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct usb_request \*
 
 .. _`ep_free_request.description`:
 
@@ -722,14 +784,17 @@ ep_queue
 
     queues (submits) an I/O request to an endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct usb_request \*
 
-    :param gfp_t __maybe_unused gfp_flags:
+    :param gfp_flags:
         *undescribed*
+    :type gfp_flags: gfp_t __maybe_unused
 
 .. _`ep_queue.description`:
 
@@ -747,11 +812,13 @@ ep_dequeue
 
     dequeues (cancels, unlinks) an I/O request from an endpoint
 
-    :param struct usb_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct usb_ep \*
 
-    :param struct usb_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct usb_request \*
 
 .. _`ep_dequeue.description`:
 
@@ -769,11 +836,13 @@ ep_set_halt
 
     sets the endpoint halt feature
 
-    :param struct usb_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct usb_ep \*
 
-    :param int value:
+    :param value:
         *undescribed*
+    :type value: int
 
 .. _`ep_set_halt.description`:
 
@@ -791,8 +860,9 @@ ep_set_wedge
 
     sets the halt feature and ignores clear requests
 
-    :param struct usb_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct usb_ep \*
 
 .. _`ep_set_wedge.description`:
 
@@ -810,8 +880,9 @@ ep_fifo_flush
 
     flushes contents of a fifo
 
-    :param struct usb_ep \*ep:
+    :param ep:
         *undescribed*
+    :type ep: struct usb_ep \*
 
 .. _`ep_fifo_flush.description`:
 
@@ -829,11 +900,13 @@ ci_udc_start
 
     register a gadget driver
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         our gadget
+    :type gadget: struct usb_gadget \*
 
-    :param struct usb_gadget_driver \*driver:
+    :param driver:
         the driver being registered
+    :type driver: struct usb_gadget_driver \*
 
 .. _`ci_udc_start.description`:
 
@@ -851,8 +924,9 @@ ci_udc_stop
 
     unregister a gadget driver
 
-    :param struct usb_gadget \*gadget:
+    :param gadget:
         *undescribed*
+    :type gadget: struct usb_gadget \*
 
 .. _`udc_irq`:
 
@@ -863,8 +937,9 @@ udc_irq
 
     ci interrupt handler
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
 .. _`udc_irq.description`:
 
@@ -883,8 +958,9 @@ udc_start
 
     initialize gadget role
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         chipidea controller
+    :type ci: struct ci_hdrc \*
 
 .. _`ci_hdrc_gadget_destroy`:
 
@@ -895,8 +971,9 @@ ci_hdrc_gadget_destroy
 
     parent remove must call this to remove UDC
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
 .. _`ci_hdrc_gadget_destroy.description`:
 
@@ -914,8 +991,9 @@ ci_hdrc_gadget_init
 
     initialize device related bits ci: the controller
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         *undescribed*
+    :type ci: struct ci_hdrc \*
 
 .. _`ci_hdrc_gadget_init.description`:
 

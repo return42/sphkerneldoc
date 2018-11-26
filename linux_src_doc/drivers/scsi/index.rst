@@ -52,6 +52,8 @@ scsi
     libiscsi_tcp_c
     megaraid_c
     mvumi_c
+    myrb_c
+    myrs_c
     pmcraid_c
     scsi_c
     scsi_common_c

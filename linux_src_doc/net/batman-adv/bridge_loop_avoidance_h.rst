@@ -10,8 +10,9 @@ batadv_bla_is_loopdetect_mac
 
     check if the mac address is from a loop detect frame sent by bridge loop avoidance
 
-    :param const uint8_t \*mac:
+    :param mac:
         mac address to check
+    :type mac: const uint8_t \*
 
 .. _`batadv_bla_is_loopdetect_mac.return`:
 

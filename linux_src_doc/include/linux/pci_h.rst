@@ -71,8 +71,9 @@ pci_is_bridge
 
     check if the PCI device is a bridge
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_is_bridge.description`:
 
@@ -91,11 +92,13 @@ PCI_DEVICE
 
     macro used to describe a specific PCI device
 
-    :param  vend:
+    :param vend:
         the 16 bit PCI Vendor ID
+    :type vend: 
 
-    :param  dev:
+    :param dev:
         the 16 bit PCI Device ID
+    :type dev: 
 
 .. _`pci_device.description`:
 
@@ -115,17 +118,21 @@ PCI_DEVICE_SUB
 
     macro used to describe a specific PCI device with subsystem
 
-    :param  vend:
+    :param vend:
         the 16 bit PCI Vendor ID
+    :type vend: 
 
-    :param  dev:
+    :param dev:
         the 16 bit PCI Device ID
+    :type dev: 
 
-    :param  subvend:
+    :param subvend:
         the 16 bit PCI Subvendor ID
+    :type subvend: 
 
-    :param  subdev:
+    :param subdev:
         the 16 bit PCI Subdevice ID
+    :type subdev: 
 
 .. _`pci_device_sub.description`:
 
@@ -144,11 +151,13 @@ PCI_DEVICE_CLASS
 
     macro used to describe a specific PCI device class
 
-    :param  dev_class:
+    :param dev_class:
         the class, subclass, prog-if triple for this device
+    :type dev_class: 
 
-    :param  dev_class_mask:
+    :param dev_class_mask:
         the class mask for this device
+    :type dev_class_mask: 
 
 .. _`pci_device_class.description`:
 
@@ -168,11 +177,13 @@ PCI_VDEVICE
 
     macro used to describe a specific PCI device in short form
 
-    :param  vend:
+    :param vend:
         the vendor name
+    :type vend: 
 
-    :param  dev:
+    :param dev:
         the 16 bit PCI Device ID
+    :type dev: 
 
 .. _`pci_vdevice.description`:
 
@@ -184,6 +195,36 @@ specific PCI device.  The subvendor, and subdevice fields will be set
 to PCI_ANY_ID. The macro allows the next field to follow as the device
 private data.
 
+.. _`pci_device_data`:
+
+PCI_DEVICE_DATA
+===============
+
+.. c:function::  PCI_DEVICE_DATA( vend,  dev,  data)
+
+    macro used to describe a specific PCI device in very short form
+
+    :param vend:
+        the vendor name (without PCI_VENDOR_ID\_ prefix)
+    :type vend: 
+
+    :param dev:
+        the device name (without PCI_DEVICE_ID_<vend>_ prefix)
+    :type dev: 
+
+    :param data:
+        the driver data to be filled
+    :type data: 
+
+.. _`pci_device_data.description`:
+
+Description
+-----------
+
+This macro is used to create a struct pci_device_id that matches a
+specific PCI device.  The subvendor, and subdevice fields will be set
+to PCI_ANY_ID.
+
 .. _`module_pci_driver`:
 
 module_pci_driver
@@ -193,8 +234,9 @@ module_pci_driver
 
     Helper macro for registering a PCI driver
 
-    :param  __pci_driver:
+    :param __pci_driver:
         pci_driver struct
+    :type __pci_driver: 
 
 .. _`module_pci_driver.description`:
 
@@ -214,8 +256,9 @@ builtin_pci_driver
 
     Helper macro for registering a PCI driver
 
-    :param  __pci_driver:
+    :param __pci_driver:
         pci_driver struct
+    :type __pci_driver: 
 
 .. _`builtin_pci_driver.description`:
 
@@ -235,23 +278,29 @@ pci_irqd_intx_xlate
 
     Translate PCI INTx value to an IRQ domain hwirq
 
-    :param struct irq_domain \*d:
+    :param d:
         the INTx IRQ domain
+    :type d: struct irq_domain \*
 
-    :param struct device_node \*node:
+    :param node:
         the DT node for the device whose interrupt we're translating
+    :type node: struct device_node \*
 
-    :param const u32 \*intspec:
+    :param intspec:
         the interrupt specifier data from the DT
+    :type intspec: const u32 \*
 
-    :param unsigned int intsize:
+    :param intsize:
         the number of entries in \ ``intspec``\ 
+    :type intsize: unsigned int
 
-    :param unsigned long \*out_hwirq:
+    :param out_hwirq:
         pointer at which to write the hwirq number
+    :type out_hwirq: unsigned long \*
 
-    :param unsigned int \*out_type:
+    :param out_type:
         pointer at which to write the interrupt type
+    :type out_type: unsigned int \*
 
 .. _`pci_irqd_intx_xlate.description`:
 
@@ -274,8 +323,9 @@ pci_pcie_cap
 
     get the saved PCIe capability offset
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_pcie_cap.description`:
 
@@ -298,8 +348,9 @@ pci_is_pcie
 
     check if the PCI device is PCI Express capable
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_is_pcie.return`:
 
@@ -317,8 +368,9 @@ pcie_caps_reg
 
     get the PCIe Capabilities Register
 
-    :param const struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: const struct pci_dev \*
 
 .. _`pci_pcie_type`:
 
@@ -329,8 +381,9 @@ pci_pcie_type
 
     get the PCIe device/port type
 
-    :param const struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: const struct pci_dev \*
 
 .. _`pci_vpd_lrdt_size`:
 
@@ -341,8 +394,9 @@ pci_vpd_lrdt_size
 
     Extracts the Large Resource Data Type length
 
-    :param const u8 \*lrdt:
+    :param lrdt:
         Pointer to the beginning of the Large Resource Data Type tag
+    :type lrdt: const u8 \*
 
 .. _`pci_vpd_lrdt_size.description`:
 
@@ -360,8 +414,9 @@ pci_vpd_lrdt_tag
 
     Extracts the Large Resource Data Type Tag Item
 
-    :param const u8 \*lrdt:
+    :param lrdt:
         Pointer to the beginning of the Large Resource Data Type tag
+    :type lrdt: const u8 \*
 
 .. _`pci_vpd_lrdt_tag.description`:
 
@@ -379,8 +434,9 @@ pci_vpd_srdt_size
 
     Extracts the Small Resource Data Type length
 
-    :param const u8 \*srdt:
+    :param srdt:
         Pointer to the beginning of the Small Resource Data Type tag
+    :type srdt: const u8 \*
 
 .. _`pci_vpd_srdt_size.description`:
 
@@ -398,8 +454,9 @@ pci_vpd_srdt_tag
 
     Extracts the Small Resource Data Type Tag Item
 
-    :param const u8 \*srdt:
+    :param srdt:
         Pointer to the beginning of the Small Resource Data Type tag
+    :type srdt: const u8 \*
 
 .. _`pci_vpd_srdt_tag.description`:
 
@@ -417,8 +474,9 @@ pci_vpd_info_field_size
 
     Extracts the information field length
 
-    :param const u8 \*info_field:
+    :param info_field:
         *undescribed*
+    :type info_field: const u8 \*
 
 .. _`pci_vpd_info_field_size.description`:
 
@@ -436,17 +494,21 @@ pci_vpd_find_tag
 
     Locates the Resource Data Type tag provided
 
-    :param const u8 \*buf:
+    :param buf:
         Pointer to buffered vpd data
+    :type buf: const u8 \*
 
-    :param unsigned int off:
+    :param off:
         The offset into the buffer at which to begin the search
+    :type off: unsigned int
 
-    :param unsigned int len:
+    :param len:
         The length of the vpd buffer
+    :type len: unsigned int
 
-    :param u8 rdt:
+    :param rdt:
         The Resource Data Type to search for
+    :type rdt: u8
 
 .. _`pci_vpd_find_tag.description`:
 
@@ -465,17 +527,21 @@ pci_vpd_find_info_keyword
 
     Locates an information field keyword in the VPD
 
-    :param const u8 \*buf:
+    :param buf:
         Pointer to buffered vpd data
+    :type buf: const u8 \*
 
-    :param unsigned int off:
+    :param off:
         The offset into the buffer at which to begin the search
+    :type off: unsigned int
 
-    :param unsigned int len:
+    :param len:
         The length of the buffer area, relative to off, in which to search
+    :type len: unsigned int
 
-    :param const char \*kw:
+    :param kw:
         The keyword to search for
+    :type kw: const char \*
 
 .. _`pci_vpd_find_info_keyword.description`:
 
@@ -494,8 +560,9 @@ pci_ari_enabled
 
     query ARI forwarding status
 
-    :param struct pci_bus \*bus:
+    :param bus:
         the PCI bus
+    :type bus: struct pci_bus \*
 
 .. _`pci_ari_enabled.description`:
 
@@ -513,8 +580,9 @@ pci_is_thunderbolt_attached
 
     whether device is on a Thunderbolt daisy chain
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to check
+    :type pdev: struct pci_dev \*
 
 .. _`pci_is_thunderbolt_attached.description`:
 

@@ -10,8 +10,9 @@ uvd_v5_0_ring_get_rptr
 
     get read pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`uvd_v5_0_ring_get_rptr.description`:
 
@@ -29,8 +30,9 @@ uvd_v5_0_ring_get_wptr
 
     get write pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`uvd_v5_0_ring_get_wptr.description`:
 
@@ -48,8 +50,9 @@ uvd_v5_0_ring_set_wptr
 
     set write pointer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`uvd_v5_0_ring_set_wptr.description`:
 
@@ -67,8 +70,9 @@ uvd_v5_0_hw_init
 
     start and test UVD block
 
-    :param void \*handle:
+    :param handle:
         *undescribed*
+    :type handle: void \*
 
 .. _`uvd_v5_0_hw_init.description`:
 
@@ -86,8 +90,9 @@ uvd_v5_0_hw_fini
 
     stop the hardware block
 
-    :param void \*handle:
+    :param handle:
         *undescribed*
+    :type handle: void \*
 
 .. _`uvd_v5_0_hw_fini.description`:
 
@@ -105,8 +110,9 @@ uvd_v5_0_mc_resume
 
     memory controller programming
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`uvd_v5_0_mc_resume.description`:
 
@@ -124,8 +130,9 @@ uvd_v5_0_start
 
     start UVD block
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`uvd_v5_0_start.description`:
 
@@ -143,8 +150,9 @@ uvd_v5_0_stop
 
     stop UVD block
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`uvd_v5_0_stop.description`:
 
@@ -162,17 +170,21 @@ uvd_v5_0_ring_emit_fence
 
     emit an fence & trap command
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
-    :param u64 addr:
+    :param addr:
         *undescribed*
+    :type addr: u64
 
-    :param u64 seq:
+    :param seq:
         *undescribed*
+    :type seq: u64
 
-    :param unsigned flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned
 
 .. _`uvd_v5_0_ring_emit_fence.description`:
 
@@ -190,8 +202,9 @@ uvd_v5_0_ring_test_ring
 
     register write test
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
 .. _`uvd_v5_0_ring_test_ring.description`:
 
@@ -209,17 +222,21 @@ uvd_v5_0_ring_emit_ib
 
     execute indirect buffer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu_ring pointer
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         indirect buffer to execute
+    :type ib: struct amdgpu_ib \*
 
-    :param unsigned vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: unsigned
 
-    :param bool ctx_switch:
+    :param ctx_switch:
         *undescribed*
+    :type ctx_switch: bool
 
 .. _`uvd_v5_0_ring_emit_ib.description`:
 

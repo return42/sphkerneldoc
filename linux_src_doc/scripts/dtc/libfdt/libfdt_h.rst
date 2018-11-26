@@ -10,12 +10,14 @@ fdt_first_subnode
 
     get offset of first direct subnode
 
-    :param const void \*fdt:
+    :param fdt:
         FDT blob
+    :type fdt: const void \*
 
-    :param int offset:
+    :param offset:
         Offset of node to check
         \ ``return``\  offset of first subnode, or -FDT_ERR_NOTFOUND if there is none
+    :type offset: int
 
 .. _`fdt_next_subnode`:
 
@@ -26,13 +28,15 @@ fdt_next_subnode
 
     get offset of next direct subnode
 
-    :param const void \*fdt:
+    :param fdt:
         FDT blob
+    :type fdt: const void \*
 
-    :param int offset:
+    :param offset:
         Offset of previous subnode
         \ ``return``\  offset of next subnode, or -FDT_ERR_NOTFOUND if there are no more
         subnodes
+    :type offset: int
 
 .. _`fdt_next_subnode.description`:
 
@@ -51,14 +55,17 @@ fdt_for_each_subnode
 
     iterate over all subnodes of a parent
 
-    :param  node:
+    :param node:
         child node (int, lvalue)
+    :type node: 
 
-    :param  fdt:
+    :param fdt:
         FDT blob (const void \*)
+    :type fdt: 
 
-    :param  parent:
+    :param parent:
         parent node (int)
+    :type parent: 
 
 .. _`fdt_for_each_subnode.this-is-actually-a-wrapper-around-a-for-loop-and-would-be-used-like-so`:
 
@@ -79,6 +86,19 @@ Note that this is implemented as a macro and \ ``node``\  is used as
 iterator in the loop. The parent variable be constant or even a
 literal.
 
+.. _`fdt_header_size_`:
+
+fdt_header_size_
+================
+
+.. c:function:: size_t fdt_header_size_(uint32_t version)
+
+    return the size of the tree's header
+
+    :param version:
+        *undescribed*
+    :type version: uint32_t
+
 .. _`fdt_check_header`:
 
 fdt_check_header
@@ -86,10 +106,11 @@ fdt_check_header
 
 .. c:function:: int fdt_check_header(const void *fdt)
 
-    sanity check a device tree or possible device tree
+    sanity check a device tree header
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to data which might be a flattened device tree
+    :type fdt: const void \*
 
 .. _`fdt_check_header.description`:
 
@@ -97,8 +118,9 @@ Description
 -----------
 
 \ :c:func:`fdt_check_header`\  checks that the given buffer contains what
-appears to be a flattened device tree with sane information in its
-header.
+appears to be a flattened device tree, and that the header contains
+valid information (to the extent that can be determined from the
+header alone).
 
 .. _`fdt_check_header.return`:
 
@@ -108,7 +130,8 @@ Return
 0, if the buffer appears to contain a valid device tree
 -FDT_ERR_BADMAGIC,
 -FDT_ERR_BADVERSION,
--FDT_ERR_BADSTATE, standard meanings, as above
+-FDT_ERR_BADSTATE,
+-FDT_ERR_TRUNCATED, standard meanings, as above
 
 .. _`fdt_move`:
 
@@ -119,14 +142,17 @@ fdt_move
 
     move a device tree around in memory
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree to move
+    :type fdt: const void \*
 
-    :param void \*buf:
+    :param buf:
         pointer to memory where the device is to be moved
+    :type buf: void \*
 
-    :param int bufsize:
+    :param bufsize:
         size of the memory space at buf
+    :type bufsize: int
 
 .. _`fdt_move.description`:
 
@@ -150,6 +176,44 @@ Return
 -FDT_ERR_BADVERSION,
 -FDT_ERR_BADSTATE, standard meanings
 
+.. _`fdt_get_string`:
+
+fdt_get_string
+==============
+
+.. c:function:: const char *fdt_get_string(const void *fdt, int stroffset, int *lenp)
+
+    retrieve a string from the strings block of a device tree
+
+    :param fdt:
+        pointer to the device tree blob
+    :type fdt: const void \*
+
+    :param stroffset:
+        offset of the string within the strings block (native endian)
+    :type stroffset: int
+
+    :param lenp:
+        optional pointer to return the string's length
+    :type lenp: int \*
+
+.. _`fdt_get_string.description`:
+
+Description
+-----------
+
+\ :c:func:`fdt_get_string`\  retrieves a pointer to a single string from the
+strings block of the device tree blob at fdt, and optionally also
+returns the string's length in \*lenp.
+
+.. _`fdt_get_string.return`:
+
+Return
+------
+
+a pointer to the string, on success
+NULL, if stroffset is out of bounds, or doesn't point to a valid string
+
 .. _`fdt_string`:
 
 fdt_string
@@ -159,11 +223,13 @@ fdt_string
 
     retrieve a string from the strings block of a device tree
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int stroffset:
+    :param stroffset:
         offset of the string within the strings block (native endian)
+    :type stroffset: int
 
 .. _`fdt_string.description`:
 
@@ -179,7 +245,7 @@ Return
 ------
 
 a pointer to the string, on success
-NULL, if stroffset is out of bounds
+NULL, if stroffset is out of bounds, or doesn't point to a valid string
 
 .. _`fdt_get_max_phandle`:
 
@@ -190,8 +256,9 @@ fdt_get_max_phandle
 
     retrieves the highest phandle in a tree
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
 .. _`fdt_get_max_phandle.description`:
 
@@ -220,8 +287,9 @@ fdt_num_mem_rsv
 
     retrieve the number of memory reserve map entries
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
 .. _`fdt_num_mem_rsv.description`:
 
@@ -248,17 +316,21 @@ fdt_get_mem_rsv
 
     retrieve one memory reserve map entry
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int n:
+    :param n:
         *undescribed*
+    :type n: int
 
-    :param uint64_t \*address:
+    :param address:
         pointers to 64-bit variables
+    :type address: uint64_t \*
 
-    :param uint64_t \*size:
+    :param size:
         *undescribed*
+    :type size: uint64_t \*
 
 .. _`fdt_get_mem_rsv.description`:
 
@@ -288,17 +360,21 @@ fdt_subnode_offset_namelen
 
     find a subnode based on substring
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int parentoffset:
+    :param parentoffset:
         structure block offset of a node
+    :type parentoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the subnode to locate
+    :type name: const char \*
 
-    :param int namelen:
+    :param namelen:
         number of characters of name to consider
+    :type namelen: int
 
 .. _`fdt_subnode_offset_namelen.description`:
 
@@ -319,14 +395,17 @@ fdt_subnode_offset
 
     find a subnode of a given node
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int parentoffset:
+    :param parentoffset:
         structure block offset of a node
+    :type parentoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the subnode to locate
+    :type name: const char \*
 
 .. _`fdt_subnode_offset.description`:
 
@@ -364,14 +443,17 @@ fdt_path_offset_namelen
 
     find a tree node by its full path
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param const char \*path:
+    :param path:
         full path of the node to locate
+    :type path: const char \*
 
-    :param int namelen:
+    :param namelen:
         number of characters of path to consider
+    :type namelen: int
 
 .. _`fdt_path_offset_namelen.description`:
 
@@ -390,11 +472,13 @@ fdt_path_offset
 
     find a tree node by its full path
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param const char \*path:
+    :param path:
         full path of the node to locate
+    :type path: const char \*
 
 .. _`fdt_path_offset.description`:
 
@@ -432,14 +516,17 @@ fdt_get_name
 
     retrieve the name of a given node
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         structure block offset of the starting node
+    :type nodeoffset: int
 
-    :param int \*lenp:
+    :param lenp:
         pointer to an integer variable (will be overwritten) or NULL
+    :type lenp: int \*
 
 .. _`fdt_get_name.description`:
 
@@ -476,11 +563,13 @@ fdt_first_property_offset
 
     find the offset of a node's first property
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         structure block offset of a node
+    :type nodeoffset: int
 
 .. _`fdt_first_property_offset.description`:
 
@@ -513,11 +602,13 @@ fdt_next_property_offset
 
     step through a node's properties
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int offset:
+    :param offset:
         structure block offset of a property
+    :type offset: int
 
 .. _`fdt_next_property_offset.description`:
 
@@ -551,14 +642,17 @@ fdt_for_each_property_offset
 
     iterate over all properties of a node
 
-    :param  property:
+    :param property:
         *undescribed*
+    :type property: 
 
-    :param  fdt:
+    :param fdt:
         FDT blob (const void \*)
+    :type fdt: 
 
-    :param  node:
+    :param node:
         node offset (int)
+    :type node: 
 
 .. _`fdt_for_each_property_offset.this-is-actually-a-wrapper-around-a-for-loop-and-would-be-used-like-so`:
 
@@ -588,14 +682,17 @@ fdt_get_property_by_offset
 
     retrieve the property at a given offset
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int offset:
+    :param offset:
         offset of the property to retrieve
+    :type offset: int
 
-    :param int \*lenp:
+    :param lenp:
         pointer to an integer variable (will be overwritten) or NULL
+    :type lenp: int \*
 
 .. _`fdt_get_property_by_offset.description`:
 
@@ -636,20 +733,25 @@ fdt_get_property_namelen
 
     find a property based on substring
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to find
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to find
+    :type name: const char \*
 
-    :param int namelen:
+    :param namelen:
         number of characters of name to consider
+    :type namelen: int
 
-    :param int \*lenp:
+    :param lenp:
         pointer to an integer variable (will be overwritten) or NULL
+    :type lenp: int \*
 
 .. _`fdt_get_property_namelen.description`:
 
@@ -668,17 +770,21 @@ fdt_get_property
 
     find a given property in a given node
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to find
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to find
+    :type name: const char \*
 
-    :param int \*lenp:
+    :param lenp:
         pointer to an integer variable (will be overwritten) or NULL
+    :type lenp: int \*
 
 .. _`fdt_get_property.description`:
 
@@ -719,17 +825,21 @@ fdt_getprop_by_offset
 
     retrieve the value of a property at a given offset
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param const char \*\*namep:
+    :param namep:
         pointer to a string variable (will be overwritten) or NULL
+    :type namep: const char \*\*
 
-    :param int \*lenp:
+    :param lenp:
         pointer to an integer variable (will be overwritten) or NULL
+    :type lenp: int \*
 
 .. _`fdt_getprop_by_offset.description`:
 
@@ -773,20 +883,25 @@ fdt_getprop_namelen
 
     get property value based on substring
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to find
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to find
+    :type name: const char \*
 
-    :param int namelen:
+    :param namelen:
         number of characters of name to consider
+    :type namelen: int
 
-    :param int \*lenp:
+    :param lenp:
         pointer to an integer variable (will be overwritten) or NULL
+    :type lenp: int \*
 
 .. _`fdt_getprop_namelen.description`:
 
@@ -805,17 +920,21 @@ fdt_getprop
 
     retrieve the value of a given property
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to find
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to find
+    :type name: const char \*
 
-    :param int \*lenp:
+    :param lenp:
         pointer to an integer variable (will be overwritten) or NULL
+    :type lenp: int \*
 
 .. _`fdt_getprop.description`:
 
@@ -856,11 +975,13 @@ fdt_get_phandle
 
     retrieve the phandle of a given node
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         structure block offset of the node
+    :type nodeoffset: int
 
 .. _`fdt_get_phandle.description`:
 
@@ -887,14 +1008,17 @@ fdt_get_alias_namelen
 
     get alias based on substring
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param const char \*name:
+    :param name:
         name of the alias th look up
+    :type name: const char \*
 
-    :param int namelen:
+    :param namelen:
         number of characters of name to consider
+    :type namelen: int
 
 .. _`fdt_get_alias_namelen.description`:
 
@@ -913,11 +1037,13 @@ fdt_get_alias
 
     retrieve the path referenced by a given alias
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param const char \*name:
+    :param name:
         name of the alias th look up
+    :type name: const char \*
 
 .. _`fdt_get_alias.description`:
 
@@ -944,17 +1070,21 @@ fdt_get_path
 
     determine the full path of a node
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose path to find
+    :type nodeoffset: int
 
-    :param char \*buf:
+    :param buf:
         character buffer to contain the returned path (will be overwritten)
+    :type buf: char \*
 
-    :param int buflen:
+    :param buflen:
         size of the character buffer at buf
+    :type buflen: int
 
 .. _`fdt_get_path.description`:
 
@@ -997,17 +1127,21 @@ fdt_supernode_atdepth_offset
 
     find a specific ancestor of a node
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose parent to find
+    :type nodeoffset: int
 
-    :param int supernodedepth:
+    :param supernodedepth:
         depth of the ancestor to find
+    :type supernodedepth: int
 
-    :param int \*nodedepth:
+    :param nodedepth:
         pointer to an integer variable (will be overwritten) or NULL
+    :type nodedepth: int \*
 
 .. _`fdt_supernode_atdepth_offset.description`:
 
@@ -1055,11 +1189,13 @@ fdt_node_depth
 
     find the depth of a given node
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose parent to find
+    :type nodeoffset: int
 
 .. _`fdt_node_depth.description`:
 
@@ -1098,11 +1234,13 @@ fdt_parent_offset
 
     find the parent of a given node
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose parent to find
+    :type nodeoffset: int
 
 .. _`fdt_parent_offset.description`:
 
@@ -1143,20 +1281,25 @@ fdt_node_offset_by_prop_value
 
     find nodes with a given property value
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int startoffset:
+    :param startoffset:
         only find nodes after this offset
+    :type startoffset: int
 
-    :param const char \*propname:
+    :param propname:
         property name to check
+    :type propname: const char \*
 
-    :param const void \*propval:
+    :param propval:
         property value to search for
+    :type propval: const void \*
 
-    :param int proplen:
+    :param proplen:
         length of the value in propval
+    :type proplen: int
 
 .. _`fdt_node_offset_by_prop_value.description`:
 
@@ -1211,11 +1354,13 @@ fdt_node_offset_by_phandle
 
     find the node with a given phandle
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param uint32_t phandle:
+    :param phandle:
         phandle value
+    :type phandle: uint32_t
 
 .. _`fdt_node_offset_by_phandle.description`:
 
@@ -1249,14 +1394,17 @@ fdt_node_check_compatible
 
     check a node's compatible property
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of a tree node
+    :type nodeoffset: int
 
-    :param const char \*compatible:
+    :param compatible:
         string to match against
+    :type compatible: const char \*
 
 .. _`fdt_node_check_compatible.description`:
 
@@ -1292,14 +1440,17 @@ fdt_node_offset_by_compatible
 
     find nodes with a given 'compatible' value
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int startoffset:
+    :param startoffset:
         only find nodes after this offset
+    :type startoffset: int
 
-    :param const char \*compatible:
+    :param compatible:
         'compatible' string to match against
+    :type compatible: const char \*
 
 .. _`fdt_node_offset_by_compatible.description`:
 
@@ -1352,14 +1503,17 @@ fdt_stringlist_contains
 
     check a string list property for a string
 
-    :param const char \*strlist:
+    :param strlist:
         Property containing a list of strings to check
+    :type strlist: const char \*
 
-    :param int listlen:
+    :param listlen:
         Length of property
+    :type listlen: int
 
-    :param const char \*str:
+    :param str:
         String to search for
+    :type str: const char \*
 
 .. _`fdt_stringlist_contains.description`:
 
@@ -1379,14 +1533,17 @@ fdt_stringlist_count
 
     count the number of strings in a string list
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of a tree node
+    :type nodeoffset: int
 
-    :param const char \*property:
+    :param property:
         name of the property containing the string list
+    :type property: const char \*
 
 .. _`fdt_stringlist_search`:
 
@@ -1397,17 +1554,21 @@ fdt_stringlist_search
 
     find a string in a string list and return its index
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of a tree node
+    :type nodeoffset: int
 
-    :param const char \*property:
+    :param property:
         name of the property containing the string list
+    :type property: const char \*
 
-    :param const char \*string:
+    :param string:
         string to look up in the string list
+    :type string: const char \*
 
 .. _`fdt_stringlist_search.description`:
 
@@ -1429,20 +1590,25 @@ fdt_stringlist_get
 
     obtain the string at a given index in a string list
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of a tree node
+    :type nodeoffset: int
 
-    :param const char \*property:
+    :param property:
         name of the property containing the string list
+    :type property: const char \*
 
-    :param int index:
+    :param index:
         index of the string to return
+    :type index: int
 
-    :param int \*lenp:
+    :param lenp:
         return location for the string length or an error code on failure
+    :type lenp: int \*
 
 .. _`fdt_stringlist_get.description`:
 
@@ -1485,11 +1651,13 @@ fdt_address_cells
 
     retrieve address size for a bus represented in the tree
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node to find the address size for
+    :type nodeoffset: int
 
 .. _`fdt_address_cells.description`:
 
@@ -1522,11 +1690,13 @@ fdt_size_cells
 
     retrieve address range size for a bus represented in the tree
 
-    :param const void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: const void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node to find the address range size for
+    :type nodeoffset: int
 
 .. _`fdt_size_cells.description`:
 
@@ -1541,7 +1711,7 @@ Return
 ------
 
 0 <= n < FDT_MAX_NCELLS, on success
-2, if the node has no #address-cells property
+2, if the node has no #size-cells property
 -FDT_ERR_BADNCELLS, if the node has a badly formatted or invalid
 #size-cells property
 -FDT_ERR_BADMAGIC,
@@ -1559,26 +1729,33 @@ fdt_setprop_inplace_namelen_partial
 
     change a property's value, but not its size
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to change
+    :type name: const char \*
 
-    :param int namelen:
+    :param namelen:
         number of characters of name to consider
+    :type namelen: int
 
-    :param uint32_t idx:
+    :param idx:
         index of the property to change in the array
+    :type idx: uint32_t
 
-    :param const void \*val:
+    :param val:
         pointer to data to replace the property value with
+    :type val: const void \*
 
-    :param int len:
+    :param len:
         length of the property value
+    :type len: int
 
 .. _`fdt_setprop_inplace_namelen_partial.description`:
 
@@ -1599,20 +1776,25 @@ fdt_setprop_inplace
 
     change a property's value, but not its size
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to change
+    :type name: const char \*
 
-    :param const void \*val:
+    :param val:
         pointer to data to replace the property value with
+    :type val: const void \*
 
-    :param int len:
+    :param len:
         length of the property value
+    :type len: int
 
 .. _`fdt_setprop_inplace.description`:
 
@@ -1652,17 +1834,21 @@ fdt_setprop_inplace_u32
 
     change the value of a 32-bit integer property
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to change
+    :type name: const char \*
 
-    :param uint32_t val:
+    :param val:
         32-bit integer value to replace the property with
+    :type val: uint32_t
 
 .. _`fdt_setprop_inplace_u32.description`:
 
@@ -1703,17 +1889,21 @@ fdt_setprop_inplace_u64
 
     change the value of a 64-bit integer property
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to change
+    :type name: const char \*
 
-    :param uint64_t val:
+    :param val:
         64-bit integer value to replace the property with
+    :type val: uint64_t
 
 .. _`fdt_setprop_inplace_u64.description`:
 
@@ -1754,17 +1944,21 @@ fdt_setprop_inplace_cell
 
     change the value of a single-cell property
 
-    :param void \*fdt:
+    :param fdt:
         *undescribed*
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         *undescribed*
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param uint32_t val:
+    :param val:
         *undescribed*
+    :type val: uint32_t
 
 .. _`fdt_setprop_inplace_cell.description`:
 
@@ -1782,14 +1976,17 @@ fdt_nop_property
 
     replace a property with nop tags
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to nop
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to nop
+    :type name: const char \*
 
 .. _`fdt_nop_property.description`:
 
@@ -1827,11 +2024,13 @@ fdt_nop_node
 
     replace a node (subtree) with nop tags
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node to nop
+    :type nodeoffset: int
 
 .. _`fdt_nop_node.description`:
 
@@ -1868,17 +2067,21 @@ fdt_property_placeholder
 
     add a new property and return a ptr to its value
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param const char \*name:
+    :param name:
         name of property to add
+    :type name: const char \*
 
-    :param int len:
+    :param len:
         length of property value in bytes
+    :type len: int
 
-    :param void \*\*valp:
+    :param valp:
         returns a pointer to where where the value should be placed
+    :type valp: void \*\*
 
 .. _`fdt_property_placeholder.return`:
 
@@ -1898,14 +2101,17 @@ fdt_add_mem_rsv
 
     add one memory reserve map entry
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param uint64_t address:
+    :param address:
         64-bit values (native endian)
+    :type address: uint64_t
 
-    :param uint64_t size:
+    :param size:
         *undescribed*
+    :type size: uint64_t
 
 .. _`fdt_add_mem_rsv.description`:
 
@@ -1942,11 +2148,13 @@ fdt_del_mem_rsv
 
     remove a memory reserve map entry
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int n:
+    :param n:
         entry to remove
+    :type n: int
 
 .. _`fdt_del_mem_rsv.description`:
 
@@ -1983,14 +2191,17 @@ fdt_set_name
 
     change the name of a given node
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         structure block offset of a node
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name to give the node
+    :type name: const char \*
 
 .. _`fdt_set_name.description`:
 
@@ -2028,20 +2239,25 @@ fdt_setprop
 
     create or change a property
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to change
+    :type name: const char \*
 
-    :param const void \*val:
+    :param val:
         pointer to data to set the property value to
+    :type val: const void \*
 
-    :param int len:
+    :param len:
         length of the property value
+    :type len: int
 
 .. _`fdt_setprop.description`:
 
@@ -2081,20 +2297,25 @@ fdt_setprop_placeholder
 
     allocate space for a property
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to change
+    :type name: const char \*
 
-    :param int len:
+    :param len:
         length of the property value
+    :type len: int
 
-    :param void \*\*prop_data:
+    :param prop_data:
         return pointer to property data
+    :type prop_data: void \*\*
 
 .. _`fdt_setprop_placeholder.description`:
 
@@ -2134,17 +2355,21 @@ fdt_setprop_u32
 
     set a property to a 32-bit integer
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to change
+    :type name: const char \*
 
-    :param uint32_t val:
+    :param val:
         32-bit integer value for the property (native endian)
+    :type val: uint32_t
 
 .. _`fdt_setprop_u32.description`:
 
@@ -2185,17 +2410,21 @@ fdt_setprop_u64
 
     set a property to a 64-bit integer
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to change
+    :type name: const char \*
 
-    :param uint64_t val:
+    :param val:
         64-bit integer value for the property (native endian)
+    :type val: uint64_t
 
 .. _`fdt_setprop_u64.description`:
 
@@ -2236,17 +2465,21 @@ fdt_setprop_cell
 
     set a property to a single cell value
 
-    :param void \*fdt:
+    :param fdt:
         *undescribed*
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         *undescribed*
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param uint32_t val:
+    :param val:
         *undescribed*
+    :type val: uint32_t
 
 .. _`fdt_setprop_cell.description`:
 
@@ -2264,17 +2497,21 @@ fdt_setprop_string
 
     set a property to a string value
 
-    :param  fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: 
 
-    :param  nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: 
 
-    :param  name:
+    :param name:
         name of the property to change
+    :type name: 
 
-    :param  str:
+    :param str:
         string value for the property
+    :type str: 
 
 .. _`fdt_setprop_string.description`:
 
@@ -2315,14 +2552,17 @@ fdt_setprop_empty
 
     set a property to an empty value
 
-    :param  fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: 
 
-    :param  nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: 
 
-    :param  name:
+    :param name:
         name of the property to change
+    :type name: 
 
 .. _`fdt_setprop_empty.description`:
 
@@ -2362,20 +2602,25 @@ fdt_appendprop
 
     append to or create a property
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to append to
+    :type name: const char \*
 
-    :param const void \*val:
+    :param val:
         pointer to data to append to the property value
+    :type val: const void \*
 
-    :param int len:
+    :param len:
         length of the data to append to the property value
+    :type len: int
 
 .. _`fdt_appendprop.description`:
 
@@ -2414,17 +2659,21 @@ fdt_appendprop_u32
 
     append a 32-bit integer value to a property
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to change
+    :type name: const char \*
 
-    :param uint32_t val:
+    :param val:
         32-bit integer value to append to the property (native endian)
+    :type val: uint32_t
 
 .. _`fdt_appendprop_u32.description`:
 
@@ -2465,17 +2714,21 @@ fdt_appendprop_u64
 
     append a 64-bit integer value to a property
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to change
+    :type name: const char \*
 
-    :param uint64_t val:
+    :param val:
         64-bit integer value to append to the property (native endian)
+    :type val: uint64_t
 
 .. _`fdt_appendprop_u64.description`:
 
@@ -2516,17 +2769,21 @@ fdt_appendprop_cell
 
     append a single cell value to a property
 
-    :param void \*fdt:
+    :param fdt:
         *undescribed*
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         *undescribed*
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param uint32_t val:
+    :param val:
         *undescribed*
+    :type val: uint32_t
 
 .. _`fdt_appendprop_cell.description`:
 
@@ -2544,17 +2801,21 @@ fdt_appendprop_string
 
     append a string to a property
 
-    :param  fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: 
 
-    :param  nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to change
+    :type nodeoffset: 
 
-    :param  name:
+    :param name:
         name of the property to change
+    :type name: 
 
-    :param  str:
+    :param str:
         string value to append to the property
+    :type str: 
 
 .. _`fdt_appendprop_string.description`:
 
@@ -2594,14 +2855,17 @@ fdt_delprop
 
     delete a property
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node whose property to nop
+    :type nodeoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the property to nop
+    :type name: const char \*
 
 .. _`fdt_delprop.description`:
 
@@ -2637,17 +2901,21 @@ fdt_add_subnode_namelen
 
     creates a new node based on substring
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int parentoffset:
+    :param parentoffset:
         structure block offset of a node
+    :type parentoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the subnode to locate
+    :type name: const char \*
 
-    :param int namelen:
+    :param namelen:
         number of characters of name to consider
+    :type namelen: int
 
 .. _`fdt_add_subnode_namelen.description`:
 
@@ -2668,14 +2936,17 @@ fdt_add_subnode
 
     creates a new node
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int parentoffset:
+    :param parentoffset:
         structure block offset of a node
+    :type parentoffset: int
 
-    :param const char \*name:
+    :param name:
         name of the subnode to locate
+    :type name: const char \*
 
 .. _`fdt_add_subnode.description`:
 
@@ -2720,11 +2991,13 @@ fdt_del_node
 
     delete a node (subtree)
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the device tree blob
+    :type fdt: void \*
 
-    :param int nodeoffset:
+    :param nodeoffset:
         offset of the node to nop
+    :type nodeoffset: int
 
 .. _`fdt_del_node.description`:
 
@@ -2760,11 +3033,13 @@ fdt_overlay_apply
 
     Applies a DT overlay on a base DT
 
-    :param void \*fdt:
+    :param fdt:
         pointer to the base device tree blob
+    :type fdt: void \*
 
-    :param void \*fdto:
+    :param fdto:
         pointer to the device tree overlay blob
+    :type fdto: void \*
 
 .. _`fdt_overlay_apply.description`:
 

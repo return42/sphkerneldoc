@@ -10,14 +10,17 @@ poll_select_set_timeout
 
     helper function to setup the timeout value
 
-    :param struct timespec64 \*to:
+    :param to:
         pointer to timespec64 variable for the final timeout
+    :type to: struct timespec64 \*
 
-    :param time64_t sec:
+    :param sec:
         seconds (from user space)
+    :type sec: time64_t
 
-    :param long nsec:
+    :param nsec:
         nanoseconds (from user space)
+    :type nsec: long
 
 .. _`poll_select_set_timeout.description`:
 

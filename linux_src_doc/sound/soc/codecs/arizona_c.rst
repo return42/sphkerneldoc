@@ -10,14 +10,17 @@ arizona_set_output_mode
 
     Set the mode of the specified output
 
-    :param struct snd_soc_component \*component:
+    :param component:
         Device to configure
+    :type component: struct snd_soc_component \*
 
-    :param int output:
+    :param output:
         Output number
+    :type output: int
 
-    :param bool diff:
+    :param diff:
         True to set the output to differential mode
+    :type diff: bool
 
 .. _`arizona_set_output_mode.description`:
 

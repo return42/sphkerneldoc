@@ -10,23 +10,29 @@ rtnl_register_module
 
     Register a rtnetlink message type
 
-    :param struct module \*owner:
+    :param owner:
         module registering the hook (THIS_MODULE)
+    :type owner: struct module \*
 
-    :param int protocol:
+    :param protocol:
         Protocol family or PF_UNSPEC
+    :type protocol: int
 
-    :param int msgtype:
+    :param msgtype:
         rtnetlink message type
+    :type msgtype: int
 
-    :param rtnl_doit_func doit:
+    :param doit:
         Function pointer called for each request message
+    :type doit: rtnl_doit_func
 
-    :param rtnl_dumpit_func dumpit:
+    :param dumpit:
         Function pointer called for each dump request (NLM_F_DUMP) message
+    :type dumpit: rtnl_dumpit_func
 
-    :param unsigned int flags:
+    :param flags:
         rtnl_link_flags to modifiy behaviour of doit/dumpit functions
+    :type flags: unsigned int
 
 .. _`rtnl_register_module.description`:
 
@@ -44,20 +50,25 @@ rtnl_register
 
     Register a rtnetlink message type
 
-    :param int protocol:
+    :param protocol:
         Protocol family or PF_UNSPEC
+    :type protocol: int
 
-    :param int msgtype:
+    :param msgtype:
         rtnetlink message type
+    :type msgtype: int
 
-    :param rtnl_doit_func doit:
+    :param doit:
         Function pointer called for each request message
+    :type doit: rtnl_doit_func
 
-    :param rtnl_dumpit_func dumpit:
+    :param dumpit:
         Function pointer called for each dump request (NLM_F_DUMP) message
+    :type dumpit: rtnl_dumpit_func
 
-    :param unsigned int flags:
+    :param flags:
         rtnl_link_flags to modifiy behaviour of doit/dumpit functions
+    :type flags: unsigned int
 
 .. _`rtnl_register.description`:
 
@@ -81,11 +92,13 @@ rtnl_unregister
 
     Unregister a rtnetlink message type
 
-    :param int protocol:
+    :param protocol:
         Protocol family or PF_UNSPEC
+    :type protocol: int
 
-    :param int msgtype:
+    :param msgtype:
         rtnetlink message type
+    :type msgtype: int
 
 .. _`rtnl_unregister.description`:
 
@@ -103,8 +116,9 @@ rtnl_unregister_all
 
     Unregister all rtnetlink message type of a protocol
 
-    :param int protocol:
+    :param protocol:
         Protocol family or PF_UNSPEC
+    :type protocol: int
 
 .. _`rtnl_unregister_all.description`:
 
@@ -123,8 +137,9 @@ of a certain protocol family.
 
     Register rtnl_link_ops with rtnetlink.
 
-    :param struct rtnl_link_ops \*ops:
+    :param ops:
         struct rtnl_link_ops \* to register
+    :type ops: struct rtnl_link_ops \*
 
 .. _`__rtnl_link_register.description`:
 
@@ -146,8 +161,9 @@ rtnl_link_register
 
     Register rtnl_link_ops with rtnetlink.
 
-    :param struct rtnl_link_ops \*ops:
+    :param ops:
         struct rtnl_link_ops \* to register
+    :type ops: struct rtnl_link_ops \*
 
 .. _`rtnl_link_register.description`:
 
@@ -165,8 +181,9 @@ Returns 0 on success or a negative error code.
 
     Unregister rtnl_link_ops from rtnetlink.
 
-    :param struct rtnl_link_ops \*ops:
+    :param ops:
         struct rtnl_link_ops \* to unregister
+    :type ops: struct rtnl_link_ops \*
 
 .. _`__rtnl_link_unregister.description`:
 
@@ -186,8 +203,9 @@ rtnl_link_unregister
 
     Unregister rtnl_link_ops from rtnetlink.
 
-    :param struct rtnl_link_ops \*ops:
+    :param ops:
         struct rtnl_link_ops \* to unregister
+    :type ops: struct rtnl_link_ops \*
 
 .. _`rtnl_af_register`:
 
@@ -198,8 +216,9 @@ rtnl_af_register
 
     Register rtnl_af_ops with rtnetlink.
 
-    :param struct rtnl_af_ops \*ops:
+    :param ops:
         struct rtnl_af_ops \* to register
+    :type ops: struct rtnl_af_ops \*
 
 .. _`rtnl_af_register.description`:
 
@@ -217,8 +236,34 @@ rtnl_af_unregister
 
     Unregister rtnl_af_ops from rtnetlink.
 
-    :param struct rtnl_af_ops \*ops:
+    :param ops:
         struct rtnl_af_ops \* to unregister
+    :type ops: struct rtnl_af_ops \*
+
+.. _`rtnl_get_net_ns_capable`:
+
+rtnl_get_net_ns_capable
+=======================
+
+.. c:function:: struct net *rtnl_get_net_ns_capable(struct sock *sk, int netnsid)
+
+    Get netns if sufficiently privileged.
+
+    :param sk:
+        netlink socket
+    :type sk: struct sock \*
+
+    :param netnsid:
+        network namespace identifier
+    :type netnsid: int
+
+.. _`rtnl_get_net_ns_capable.description`:
+
+Description
+-----------
+
+Returns the network namespace identified by netnsid on success or an error
+pointer on failure.
 
 .. _`ndo_dflt_fdb_add`:
 
@@ -229,23 +274,29 @@ ndo_dflt_fdb_add
 
     default netdevice operation to add an FDB entry
 
-    :param struct ndmsg \*ndm:
+    :param ndm:
         *undescribed*
+    :type ndm: struct ndmsg \*
 
-    :param struct nlattr  \*tb:
+    :param tb:
         *undescribed*
+    :type tb: struct nlattr  \*
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const unsigned char \*
 
-    :param u16 vid:
+    :param vid:
         *undescribed*
+    :type vid: u16
 
-    :param u16 flags:
+    :param flags:
         *undescribed*
+    :type flags: u16
 
 .. _`ndo_dflt_fdb_del`:
 
@@ -256,20 +307,25 @@ ndo_dflt_fdb_del
 
     default netdevice operation to delete an FDB entry
 
-    :param struct ndmsg \*ndm:
+    :param ndm:
         *undescribed*
+    :type ndm: struct ndmsg \*
 
-    :param struct nlattr  \*tb:
+    :param tb:
         *undescribed*
+    :type tb: struct nlattr  \*
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const unsigned char \*
 
-    :param u16 vid:
+    :param vid:
         *undescribed*
+    :type vid: u16
 
 .. _`ndo_dflt_fdb_dump`:
 
@@ -280,20 +336,25 @@ ndo_dflt_fdb_dump
 
     default netdevice operation to dump an FDB table.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         *undescribed*
+    :type cb: struct netlink_callback \*
 
-    :param struct net_device \*dev:
+    :param dev:
         netdevice
+    :type dev: struct net_device \*
 
-    :param struct net_device \*filter_dev:
+    :param filter_dev:
         *undescribed*
+    :type filter_dev: struct net_device \*
 
-    :param int \*idx:
+    :param idx:
         *undescribed*
+    :type idx: int \*
 
 .. _`ndo_dflt_fdb_dump.description`:
 

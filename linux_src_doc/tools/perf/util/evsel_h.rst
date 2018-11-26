@@ -10,14 +10,17 @@ perf_evsel__read_on_cpu
 
     Read out the results on a CPU and thread
 
-    :param struct perf_evsel \*evsel:
+    :param evsel:
         *undescribed*
+    :type evsel: struct perf_evsel \*
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
-    :param int thread:
+    :param thread:
         *undescribed*
+    :type thread: int
 
 .. _`perf_evsel__read_on_cpu.description`:
 
@@ -37,14 +40,17 @@ perf_evsel__read_on_cpu_scaled
 
     Read out the results on a CPU and thread, scaled
 
-    :param struct perf_evsel \*evsel:
+    :param evsel:
         *undescribed*
+    :type evsel: struct perf_evsel \*
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
-    :param int thread:
+    :param thread:
         *undescribed*
+    :type thread: int
 
 .. _`perf_evsel__read_on_cpu_scaled.description`:
 
@@ -64,8 +70,9 @@ perf_evsel__is_group_leader
 
     Return whether given evsel is a leader event
 
-    :param const struct perf_evsel \*evsel:
+    :param evsel:
         *undescribed*
+    :type evsel: const struct perf_evsel \*
 
 .. _`perf_evsel__is_group_leader.description`:
 
@@ -85,8 +92,9 @@ perf_evsel__is_group_event
 
     Return whether given evsel is a group event
 
-    :param struct perf_evsel \*evsel:
+    :param evsel:
         *undescribed*
+    :type evsel: struct perf_evsel \*
 
 .. _`perf_evsel__is_group_event.description`:
 

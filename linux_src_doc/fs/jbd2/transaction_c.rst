@@ -10,11 +10,13 @@ jbd2_journal_start
 
     Obtain a new handle.
 
-    :param journal_t \*journal:
+    :param journal:
         Journal to start transaction on.
+    :type journal: journal_t \*
 
-    :param int nblocks:
+    :param nblocks:
         number of block buffer we might modify
+    :type nblocks: int
 
 .. _`jbd2_journal_start.description`:
 
@@ -44,14 +46,17 @@ jbd2_journal_start_reserved
 
     start reserved handle
 
-    :param handle_t \*handle:
+    :param handle:
         handle to start
+    :type handle: handle_t \*
 
-    :param unsigned int type:
+    :param type:
         for handle statistics
+    :type type: unsigned int
 
-    :param unsigned int line_no:
+    :param line_no:
         for handle statistics
+    :type line_no: unsigned int
 
 .. _`jbd2_journal_start_reserved.description`:
 
@@ -75,11 +80,13 @@ jbd2_journal_extend
 
     extend buffer credits.
 
-    :param handle_t \*handle:
+    :param handle:
         handle to 'extend'
+    :type handle: handle_t \*
 
-    :param int nblocks:
+    :param nblocks:
         nr blocks to try to extend by.
+    :type nblocks: int
 
 .. _`jbd2_journal_extend.description`:
 
@@ -110,14 +117,17 @@ jbd2__journal_restart
 
     restart a handle .
 
-    :param handle_t \*handle:
+    :param handle:
         handle to restart
+    :type handle: handle_t \*
 
-    :param int nblocks:
+    :param nblocks:
         nr credits requested
+    :type nblocks: int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags (for start_this_handle)
+    :type gfp_mask: gfp_t
 
 .. _`jbd2__journal_restart.description`:
 
@@ -143,8 +153,9 @@ jbd2_journal_lock_updates
 
     establish a transaction barrier.
 
-    :param journal_t \*journal:
+    :param journal:
         Journal to establish a barrier on.
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_lock_updates.description`:
 
@@ -166,8 +177,9 @@ jbd2_journal_unlock_updates
 
     release barrier
 
-    :param journal_t \*journal:
+    :param journal:
         Journal to release the barrier on.
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_unlock_updates.description`:
 
@@ -187,11 +199,13 @@ jbd2_journal_get_write_access
 
     notify intent to modify a buffer for metadata (not data) update.
 
-    :param handle_t \*handle:
+    :param handle:
         transaction to add buffer modifications to
+    :type handle: handle_t \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         bh to be used for metadata writes
+    :type bh: struct buffer_head \*
 
 .. _`jbd2_journal_get_write_access.return`:
 
@@ -212,11 +226,13 @@ jbd2_journal_get_create_access
 
     notify intent to use newly created bh
 
-    :param handle_t \*handle:
+    :param handle:
         transaction to new buffer to
+    :type handle: handle_t \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         new buffer.
+    :type bh: struct buffer_head \*
 
 .. _`jbd2_journal_get_create_access.description`:
 
@@ -234,11 +250,13 @@ jbd2_journal_get_undo_access
 
     Notify intent to modify metadata with non-rewindable consequences
 
-    :param handle_t \*handle:
+    :param handle:
         transaction
+    :type handle: handle_t \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer to undo
+    :type bh: struct buffer_head \*
 
 .. _`jbd2_journal_get_undo_access.description`:
 
@@ -274,11 +292,13 @@ jbd2_journal_set_triggers
 
     Add triggers for commit writeout
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer to trigger on
+    :type bh: struct buffer_head \*
 
-    :param struct jbd2_buffer_trigger_type \*type:
+    :param type:
         struct jbd2_buffer_trigger_type containing the trigger(s).
+    :type type: struct jbd2_buffer_trigger_type \*
 
 .. _`jbd2_journal_set_triggers.description`:
 
@@ -300,11 +320,13 @@ jbd2_journal_dirty_metadata
 
     mark a buffer as containing dirty metadata
 
-    :param handle_t \*handle:
+    :param handle:
         transaction to add buffer to.
+    :type handle: handle_t \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer to mark
+    :type bh: struct buffer_head \*
 
 .. _`jbd2_journal_dirty_metadata.description`:
 
@@ -338,11 +360,13 @@ jbd2_journal_forget
 
     \ :c:func:`bforget`\  for potentially-journaled buffers.
 
-    :param handle_t \*handle:
+    :param handle:
         transaction handle
+    :type handle: handle_t \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         bh to 'forget'
+    :type bh: struct buffer_head \*
 
 .. _`jbd2_journal_forget.description`:
 
@@ -370,8 +394,9 @@ jbd2_journal_stop
 
     complete a transaction
 
-    :param handle_t \*handle:
+    :param handle:
         transaction to complete.
+    :type handle: handle_t \*
 
 .. _`jbd2_journal_stop.description`:
 
@@ -399,16 +424,19 @@ jbd2_journal_try_to_free_buffers
 
     try to free page buffers.
 
-    :param journal_t \*journal:
+    :param journal:
         journal for operation
+    :type journal: journal_t \*
 
-    :param struct page \*page:
+    :param page:
         to try and free
+    :type page: struct page \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         we use the mask to detect how hard should we try to release
         buffers. If __GFP_DIRECT_RECLAIM and __GFP_FS is set, we wait for commit
         code to release the buffers.
+    :type gfp_mask: gfp_t
 
 .. _`jbd2_journal_try_to_free_buffers.description`:
 
@@ -452,17 +480,21 @@ jbd2_journal_invalidatepage
 
 .. c:function:: int jbd2_journal_invalidatepage(journal_t *journal, struct page *page, unsigned int offset, unsigned int length)
 
-    :param journal_t \*journal:
+    :param journal:
         journal to use for flush...
+    :type journal: journal_t \*
 
-    :param struct page \*page:
+    :param page:
         page to flush
+    :type page: struct page \*
 
-    :param unsigned int offset:
+    :param offset:
         start of the range to invalidate
+    :type offset: unsigned int
 
-    :param unsigned int length:
+    :param length:
         length of the range to invalidate
+    :type length: unsigned int
 
 .. _`jbd2_journal_invalidatepage.description`:
 

@@ -10,20 +10,25 @@ scsi_dev_info_list_add
 
     add one dev_info list entry.
 
-    :param int compatible:
+    :param compatible:
         if true, null terminate short strings.  Otherwise space pad.
+    :type compatible: int
 
-    :param char \*vendor:
+    :param vendor:
         vendor string
+    :type vendor: char \*
 
-    :param char \*model:
+    :param model:
         model (product) string
+    :type model: char \*
 
-    :param char \*strflags:
+    :param strflags:
         integer string
+    :type strflags: char \*
 
-    :param blist_flags_t flags:
+    :param flags:
         if strflags NULL, use this flag value
+    :type flags: blist_flags_t
 
 .. _`scsi_dev_info_list_add.description`:
 
@@ -51,23 +56,29 @@ scsi_dev_info_list_add_keyed
 
     add one dev_info list entry.
 
-    :param int compatible:
+    :param compatible:
         if true, null terminate short strings.  Otherwise space pad.
+    :type compatible: int
 
-    :param char \*vendor:
+    :param vendor:
         vendor string
+    :type vendor: char \*
 
-    :param char \*model:
+    :param model:
         model (product) string
+    :type model: char \*
 
-    :param char \*strflags:
+    :param strflags:
         integer string
+    :type strflags: char \*
 
-    :param blist_flags_t flags:
+    :param flags:
         if strflags NULL, use this flag value
+    :type flags: blist_flags_t
 
-    :param enum scsi_devinfo_key key:
+    :param key:
         specify list to use
+    :type key: enum scsi_devinfo_key
 
 .. _`scsi_dev_info_list_add_keyed.description`:
 
@@ -96,14 +107,17 @@ scsi_dev_info_list_find
 
     find a matching dev_info list entry.
 
-    :param const char \*vendor:
+    :param vendor:
         full vendor string
+    :type vendor: const char \*
 
-    :param const char \*model:
+    :param model:
         full model (product) string
+    :type model: const char \*
 
-    :param enum scsi_devinfo_key key:
+    :param key:
         specify list to use
+    :type key: enum scsi_devinfo_key
 
 .. _`scsi_dev_info_list_find.description`:
 
@@ -129,14 +143,17 @@ scsi_dev_info_list_del_keyed
 
     remove one dev_info list entry.
 
-    :param char \*vendor:
+    :param vendor:
         vendor string
+    :type vendor: char \*
 
-    :param char \*model:
+    :param model:
         model (product) string
+    :type model: char \*
 
-    :param enum scsi_devinfo_key key:
+    :param key:
         specify list to use
+    :type key: enum scsi_devinfo_key
 
 .. _`scsi_dev_info_list_del_keyed.description`:
 
@@ -162,8 +179,9 @@ scsi_dev_info_list_add_str
 
     parse dev_list and add to the scsi_dev_info_list.
 
-    :param char \*dev_list:
+    :param dev_list:
         string of device flags to add
+    :type dev_list: char \*
 
 .. _`scsi_dev_info_list_add_str.description`:
 
@@ -191,14 +209,17 @@ scsi_get_device_flags
 
     get device specific flags from the dynamic device list.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         \ :c:type:`struct scsi_device <scsi_device>`\  to get flags for
+    :type sdev: struct scsi_device \*
 
-    :param const unsigned char \*vendor:
+    :param vendor:
         vendor name
+    :type vendor: const unsigned char \*
 
-    :param const unsigned char \*model:
+    :param model:
         model name
+    :type model: const unsigned char \*
 
 .. _`scsi_get_device_flags.description`:
 
@@ -219,17 +240,21 @@ scsi_get_device_flags_keyed
 
     get device specific flags from the dynamic device list
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         \ :c:type:`struct scsi_device <scsi_device>`\  to get flags for
+    :type sdev: struct scsi_device \*
 
-    :param const unsigned char \*vendor:
+    :param vendor:
         vendor name
+    :type vendor: const unsigned char \*
 
-    :param const unsigned char \*model:
+    :param model:
         model name
+    :type model: const unsigned char \*
 
-    :param enum scsi_devinfo_key key:
+    :param key:
         list to look up
+    :type key: enum scsi_devinfo_key
 
 .. _`scsi_get_device_flags_keyed.description`:
 
@@ -250,8 +275,9 @@ scsi_exit_devinfo
 
     remove /proc/scsi/device_info & the scsi_dev_info_list
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`scsi_dev_info_add_list`:
 
@@ -262,11 +288,13 @@ scsi_dev_info_add_list
 
     add a new devinfo list
 
-    :param enum scsi_devinfo_key key:
+    :param key:
         key of the list to add
+    :type key: enum scsi_devinfo_key
 
-    :param const char \*name:
+    :param name:
         Name of the list to add (for /proc/scsi/device_info)
+    :type name: const char \*
 
 .. _`scsi_dev_info_add_list.description`:
 
@@ -285,8 +313,9 @@ scsi_dev_info_remove_list
 
     destroy an added devinfo list
 
-    :param enum scsi_devinfo_key key:
+    :param key:
         key of the list to destroy
+    :type key: enum scsi_devinfo_key
 
 .. _`scsi_dev_info_remove_list.description`:
 
@@ -306,8 +335,9 @@ scsi_init_devinfo
 
     set up the dynamic device list.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`scsi_init_devinfo.description`:
 

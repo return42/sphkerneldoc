@@ -10,8 +10,9 @@ ubifs_set_inode_flags
 
     set VFS inode flags.
 
-    :param struct inode \*inode:
+    :param inode:
         VFS inode to set flags for
+    :type inode: struct inode \*
 
 .. _`ubifs_set_inode_flags.description`:
 

@@ -10,11 +10,13 @@ get_option
 
     Parse integer from an option string
 
-    :param char \*\*str:
+    :param str:
         option string
+    :type str: char \*\*
 
-    :param int \*pint:
+    :param pint:
         (output) integer value parsed from \ ``str``\ 
+    :type pint: int \*
 
 .. _`get_option.description`:
 
@@ -43,14 +45,17 @@ get_options
 
     Parse a string into a list of integers
 
-    :param const char \*str:
+    :param str:
         String to be parsed
+    :type str: const char \*
 
-    :param int nints:
+    :param nints:
         size of integer array
+    :type nints: int
 
-    :param int \*ints:
+    :param ints:
         integer array
+    :type ints: int \*
 
 .. _`get_options.description`:
 
@@ -76,11 +81,13 @@ memparse
 
     parse a string with mem suffixes into a number
 
-    :param const char \*ptr:
+    :param ptr:
         Where parse begins
+    :type ptr: const char \*
 
-    :param char \*\*retptr:
+    :param retptr:
         (output) Optional pointer to next char after parse completes
+    :type retptr: char \*\*
 
 .. _`memparse.description`:
 
@@ -99,11 +106,13 @@ parse_option_str
 
     Parse a string and check an option is set or not
 
-    :param const char \*str:
+    :param str:
         String to be parsed
+    :type str: const char \*
 
-    :param const char \*option:
+    :param option:
         option name
+    :type option: const char \*
 
 .. _`parse_option_str.description`:
 

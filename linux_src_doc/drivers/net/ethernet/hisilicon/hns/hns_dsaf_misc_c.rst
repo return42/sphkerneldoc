@@ -10,18 +10,21 @@ hns_dsaf_srst_chns
 
     reset dsaf channels
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsaf device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u32 msk:
+    :param msk:
         xbar channels mask value:
         bit0-5 for xge0-5
         bit6-11 for ppe0-5
         bit12-17 for roce0-5
         bit18-19 for com/dfx
+    :type msk: u32
 
-    :param bool dereset:
+    :param dereset:
         *undescribed*
+    :type dereset: bool
 
 .. _`hns_dsaf_srst_chns_acpi`:
 
@@ -32,18 +35,21 @@ hns_dsaf_srst_chns_acpi
 
     reset dsaf channels
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dsaf device struct pointer
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u32 msk:
+    :param msk:
         xbar channels mask value:
         bit0-5 for xge0-5
         bit6-11 for ppe0-5
         bit12-17 for roce0-5
         bit18-19 for com/dfx
+    :type msk: u32
 
-    :param bool dereset:
+    :param dereset:
         *undescribed*
+    :type dereset: bool
 
 .. _`hns_mac_get_phy_if`:
 
@@ -54,9 +60,10 @@ hns_mac_get_phy_if
 
     get phy ifterface form serdes mode
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         mac control block
         retuen phy interface
+    :type mac_cb: struct hns_mac_cb \*
 
 .. _`hns_mac_config_sds_loopback`:
 
@@ -67,12 +74,14 @@ hns_mac_config_sds_loopback
 
     set loop back for serdes
 
-    :param struct hns_mac_cb \*mac_cb:
+    :param mac_cb:
         mac control block
         retuen 0 == success
+    :type mac_cb: struct hns_mac_cb \*
 
-    :param bool en:
+    :param en:
         *undescribed*
+    :type en: bool
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ ccp_add_device
 
     add a CCP device to the list
 
-    :param struct ccp_device \*ccp:
+    :param ccp:
         ccp_device struct pointer
+    :type ccp: struct ccp_device \*
 
 .. _`ccp_add_device.description`:
 
@@ -32,8 +33,9 @@ ccp_del_device
 
     remove a CCP device from the list
 
-    :param struct ccp_device \*ccp:
+    :param ccp:
         ccp_device struct pointer
+    :type ccp: struct ccp_device \*
 
 .. _`ccp_del_device.description`:
 
@@ -53,8 +55,9 @@ ccp_present
 
     check if a CCP device is present
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ccp_present.description`:
 
@@ -72,8 +75,9 @@ ccp_version
 
     get the version of the CCP device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ccp_version.description`:
 
@@ -92,8 +96,9 @@ ccp_enqueue_cmd
 
     queue an operation for processing by the CCP
 
-    :param struct ccp_cmd \*cmd:
+    :param cmd:
         ccp_cmd struct to be processed
+    :type cmd: struct ccp_cmd \*
 
 .. _`ccp_enqueue_cmd.description`:
 
@@ -129,8 +134,9 @@ ccp_cmd_queue_thread
 
     create a kernel thread to manage a CCP queue
 
-    :param void \*data:
+    :param data:
         thread-specific data
+    :type data: void \*
 
 .. _`ccp_alloc_struct`:
 
@@ -141,8 +147,9 @@ ccp_alloc_struct
 
     allocate and initialize the ccp_device struct
 
-    :param struct sp_device \*sp:
+    :param sp:
         *undescribed*
+    :type sp: struct sp_device \*
 
 .. This file was automatic generated / don't edit.
 

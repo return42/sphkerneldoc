@@ -10,8 +10,9 @@ e1000_init_phy_params_82571
 
     Init PHY func ptrs.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_nvm_params_82571`:
 
@@ -22,8 +23,9 @@ e1000_init_nvm_params_82571
 
     Init NVM func ptrs.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_mac_params_82571`:
 
@@ -34,8 +36,9 @@ e1000_init_mac_params_82571
 
     Init MAC func ptrs.
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_phy_id_82571`:
 
@@ -46,8 +49,9 @@ e1000_get_phy_id_82571
 
     Retrieve the PHY ID and revision
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_phy_id_82571.description`:
 
@@ -66,8 +70,9 @@ e1000_get_hw_semaphore_82571
 
     Acquire hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_hw_semaphore_82571.description`:
 
@@ -85,8 +90,9 @@ e1000_put_hw_semaphore_82571
 
     Release hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_put_hw_semaphore_82571.description`:
 
@@ -104,8 +110,9 @@ e1000_get_hw_semaphore_82573
 
     Acquire hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_hw_semaphore_82573.description`:
 
@@ -123,8 +130,9 @@ e1000_put_hw_semaphore_82573
 
     Release hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_put_hw_semaphore_82573.description`:
 
@@ -142,8 +150,9 @@ e1000_get_hw_semaphore_82574
 
     Acquire hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_hw_semaphore_82574.description`:
 
@@ -161,8 +170,9 @@ e1000_put_hw_semaphore_82574
 
     Release hardware semaphore
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_put_hw_semaphore_82574.description`:
 
@@ -180,11 +190,13 @@ e1000_set_d0_lplu_state_82574
 
     Set Low Power Linkup D0 state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         true to enable LPLU, false to disable
+    :type active: bool
 
 .. _`e1000_set_d0_lplu_state_82574.description`:
 
@@ -207,11 +219,13 @@ e1000_set_d3_lplu_state_82574
 
     Sets low power link up state for D3
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         boolean used to enable/disable lplu
+    :type active: bool
 
 .. _`e1000_set_d3_lplu_state_82574.description`:
 
@@ -233,8 +247,9 @@ e1000_acquire_nvm_82571
 
     Request for access to the EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_acquire_nvm_82571.description`:
 
@@ -255,8 +270,9 @@ e1000_release_nvm_82571
 
     Release exclusive access to EEPROM
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_release_nvm_82571.description`:
 
@@ -274,17 +290,21 @@ e1000_write_nvm_82571
 
     Write to EEPROM using appropriate interface
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be written to
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         16 bit word(s) to be written to the EEPROM
+    :type data: u16 \*
 
 .. _`e1000_write_nvm_82571.description`:
 
@@ -305,8 +325,9 @@ e1000_update_nvm_checksum_82571
 
     Update EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_update_nvm_checksum_82571.description`:
 
@@ -326,8 +347,9 @@ e1000_validate_nvm_checksum_82571
 
     Validate EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_validate_nvm_checksum_82571.description`:
 
@@ -346,17 +368,21 @@ e1000_write_nvm_eewr_82571
 
     Write to EEPROM for 82573 silicon
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset within the EEPROM to be written to
+    :type offset: u16
 
-    :param u16 words:
+    :param words:
         number of words to write
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         16 bit word(s) to be written to the EEPROM
+    :type data: u16 \*
 
 .. _`e1000_write_nvm_eewr_82571.description`:
 
@@ -379,8 +405,9 @@ e1000_get_cfg_done_82571
 
     Poll for configuration done
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_get_cfg_done_82571.description`:
 
@@ -398,11 +425,13 @@ e1000_set_d0_lplu_state_82571
 
     Set Low Power Linkup D0 state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool active:
+    :param active:
         true to enable LPLU, false to disable
+    :type active: bool
 
 .. _`e1000_set_d0_lplu_state_82571.description`:
 
@@ -424,8 +453,9 @@ e1000_reset_hw_82571
 
     Reset hardware
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_reset_hw_82571.description`:
 
@@ -443,8 +473,9 @@ e1000_init_hw_82571
 
     Initialize hardware
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_init_hw_82571.description`:
 
@@ -462,8 +493,9 @@ e1000_initialize_hw_bits_82571
 
     Initialize hardware-dependent bits
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_initialize_hw_bits_82571.description`:
 
@@ -481,8 +513,9 @@ e1000_clear_vfta_82571
 
     Clear VLAN filter table
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_clear_vfta_82571.description`:
 
@@ -501,8 +534,9 @@ e1000_check_mng_mode_82574
 
     Check manageability is enabled
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_mng_mode_82574.description`:
 
@@ -521,8 +555,9 @@ e1000_led_on_82574
 
     Turn LED on
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_led_on_82574.description`:
 
@@ -540,8 +575,9 @@ e1000_check_phy_82574
 
     check 82574 phy hung state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_phy_82574.description`:
 
@@ -559,8 +595,9 @@ e1000_setup_link_82571
 
     Setup flow control and link settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_link_82571.description`:
 
@@ -582,8 +619,9 @@ e1000_setup_copper_link_82571
 
     Configure copper link settings
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_copper_link_82571.description`:
 
@@ -603,8 +641,9 @@ e1000_setup_fiber_serdes_link_82571
 
     Setup link for fiber/serdes
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_setup_fiber_serdes_link_82571.description`:
 
@@ -623,8 +662,9 @@ e1000_check_for_serdes_link_82571
 
     Check for link (Serdes)
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_check_for_serdes_link_82571.description`:
 
@@ -658,11 +698,13 @@ e1000_valid_led_default_82571
 
     Verify a valid default LED config
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param u16 \*data:
+    :param data:
         pointer to the NVM (EEPROM)
+    :type data: u16 \*
 
 .. _`e1000_valid_led_default_82571.description`:
 
@@ -681,8 +723,9 @@ e1000e_get_laa_state_82571
 
     Get locally administered address state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000e_get_laa_state_82571.description`:
 
@@ -700,11 +743,13 @@ e1000e_set_laa_state_82571
 
     Set locally administered address state
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param bool state:
+    :param state:
         enable/disable locally administered address
+    :type state: bool
 
 .. _`e1000e_set_laa_state_82571.description`:
 
@@ -722,8 +767,9 @@ e1000_fix_nvm_checksum_82571
 
     Fix EEPROM checksum
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_fix_nvm_checksum_82571.description`:
 
@@ -745,8 +791,9 @@ e1000_read_mac_addr_82571
 
     Read device MAC address
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_power_down_phy_copper_82571`:
 
@@ -757,8 +804,9 @@ e1000_power_down_phy_copper_82571
 
     Remove link during PHY power down
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_power_down_phy_copper_82571.description`:
 
@@ -777,8 +825,9 @@ e1000_clear_hw_cntrs_82571
 
     Clear device specific hardware counters
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
 .. _`e1000_clear_hw_cntrs_82571.description`:
 

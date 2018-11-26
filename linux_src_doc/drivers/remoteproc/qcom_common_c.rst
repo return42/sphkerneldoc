@@ -10,11 +10,13 @@ qcom_add_glink_subdev
 
     try to add a GLINK subdevice to rproc
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle to parent the subdevice
+    :type rproc: struct rproc \*
 
-    :param struct qcom_rproc_glink \*glink:
+    :param glink:
         reference to a GLINK subdev context
+    :type glink: struct qcom_rproc_glink \*
 
 .. _`qcom_remove_glink_subdev`:
 
@@ -25,11 +27,13 @@ qcom_remove_glink_subdev
 
     remove a GLINK subdevice from rproc
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle
+    :type rproc: struct rproc \*
 
-    :param struct qcom_rproc_glink \*glink:
+    :param glink:
         reference to a GLINK subdev context
+    :type glink: struct qcom_rproc_glink \*
 
 .. _`qcom_register_dump_segments`:
 
@@ -40,11 +44,13 @@ qcom_register_dump_segments
 
     register segments for coredump
 
-    :param struct rproc \*rproc:
+    :param rproc:
         remoteproc handle
+    :type rproc: struct rproc \*
 
-    :param const struct firmware \*fw:
+    :param fw:
         firmware header
+    :type fw: const struct firmware \*
 
 .. _`qcom_register_dump_segments.description`:
 
@@ -69,11 +75,13 @@ qcom_add_smd_subdev
 
     try to add a SMD subdevice to rproc
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle to parent the subdevice
+    :type rproc: struct rproc \*
 
-    :param struct qcom_rproc_subdev \*smd:
+    :param smd:
         reference to a Qualcomm subdev context
+    :type smd: struct qcom_rproc_subdev \*
 
 .. _`qcom_remove_smd_subdev`:
 
@@ -84,11 +92,13 @@ qcom_remove_smd_subdev
 
     remove the smd subdevice from rproc
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle
+    :type rproc: struct rproc \*
 
-    :param struct qcom_rproc_subdev \*smd:
+    :param smd:
         the SMD subdevice to remove
+    :type smd: struct qcom_rproc_subdev \*
 
 .. _`qcom_register_ssr_notifier`:
 
@@ -99,8 +109,9 @@ qcom_register_ssr_notifier
 
     register SSR notification handler
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier_block to notify for restart notifications
+    :type nb: struct notifier_block \*
 
 .. _`qcom_register_ssr_notifier.description`:
 
@@ -122,8 +133,9 @@ qcom_unregister_ssr_notifier
 
     unregister SSR notification handler
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier_block to unregister
+    :type nb: struct notifier_block \*
 
 .. _`qcom_add_ssr_subdev`:
 
@@ -134,14 +146,17 @@ qcom_add_ssr_subdev
 
     register subdevice as restart notification source
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle
+    :type rproc: struct rproc \*
 
-    :param struct qcom_rproc_ssr \*ssr:
+    :param ssr:
         SSR subdevice handle
+    :type ssr: struct qcom_rproc_ssr \*
 
-    :param const char \*ssr_name:
+    :param ssr_name:
         identifier to use for notifications originating from \ ``rproc``\ 
+    :type ssr_name: const char \*
 
 .. _`qcom_add_ssr_subdev.description`:
 
@@ -160,11 +175,13 @@ qcom_remove_ssr_subdev
 
     remove subdevice as restart notification source
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle
+    :type rproc: struct rproc \*
 
-    :param struct qcom_rproc_ssr \*ssr:
+    :param ssr:
         SSR subdevice handle
+    :type ssr: struct qcom_rproc_ssr \*
 
 .. This file was automatic generated / don't edit.
 

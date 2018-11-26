@@ -10,9 +10,10 @@ of_node_get
 
     Increment refcount of a node
 
-    :param struct device_node \*node:
+    :param node:
         Node to inc refcount, NULL is supported to simplify writing of
         callers
+    :type node: struct device_node \*
 
 .. _`of_node_get.description`:
 
@@ -30,9 +31,10 @@ of_node_put
 
     Decrement refcount of a node
 
-    :param struct device_node \*node:
+    :param node:
         Node to dec refcount, NULL is supported to simplify writing of
         callers
+    :type node: struct device_node \*
 
 .. _`of_attach_node`:
 
@@ -43,8 +45,9 @@ of_attach_node
 
     Plug a device node into the tree and global list.
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
 .. _`of_detach_node`:
 
@@ -55,8 +58,9 @@ of_detach_node
 
     "Unplug" a node from the device tree.
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
 .. _`of_detach_node.description`:
 
@@ -75,8 +79,9 @@ of_node_release
 
     release a dynamically allocated node
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
 .. _`of_node_release.description`:
 
@@ -94,11 +99,13 @@ In \ :c:func:`of_node_put`\  this function is passed to \ :c:func:`kref_put`\  a
 
     Copy a property dynamically.
 
-    :param const struct property \*prop:
+    :param prop:
         Property to copy
+    :type prop: const struct property \*
 
-    :param gfp_t allocflags:
+    :param allocflags:
         Allocation flags (typically pass GFP_KERNEL)
+    :type allocflags: gfp_t
 
 .. _`__of_prop_dup.description`:
 
@@ -120,11 +127,13 @@ Returns the newly allocated property or NULL on out of memory error.
 
     Duplicate or create an empty device node dynamically.
 
-    :param const struct device_node \*np:
+    :param np:
         if not NULL, contains properties to be duplicated in new node
+    :type np: const struct device_node \*
 
-    :param const char \*full_name:
+    :param full_name:
         string value to be duplicated into new node's full_name field
+    :type full_name: const char \*
 
 .. _`__of_node_dup.description`:
 
@@ -146,8 +155,9 @@ of_changeset_init
 
     Initialize a changeset for use
 
-    :param struct of_changeset \*ocs:
+    :param ocs:
         changeset pointer
+    :type ocs: struct of_changeset \*
 
 .. _`of_changeset_init.description`:
 
@@ -165,8 +175,9 @@ of_changeset_destroy
 
     Destroy a changeset
 
-    :param struct of_changeset \*ocs:
+    :param ocs:
         changeset pointer
+    :type ocs: struct of_changeset \*
 
 .. _`of_changeset_destroy.description`:
 
@@ -185,8 +196,9 @@ of_changeset_apply
 
     Applies a changeset
 
-    :param struct of_changeset \*ocs:
+    :param ocs:
         changeset pointer
+    :type ocs: struct of_changeset \*
 
 .. _`of_changeset_apply.description`:
 
@@ -209,8 +221,9 @@ of_changeset_revert
 
     Reverts an applied changeset
 
-    :param struct of_changeset \*ocs:
+    :param ocs:
         changeset pointer
+    :type ocs: struct of_changeset \*
 
 .. _`of_changeset_revert.description`:
 
@@ -232,17 +245,21 @@ of_changeset_action
 
     Add an action to the tail of the changeset list
 
-    :param struct of_changeset \*ocs:
+    :param ocs:
         changeset pointer
+    :type ocs: struct of_changeset \*
 
-    :param unsigned long action:
+    :param action:
         action to perform
+    :type action: unsigned long
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to device node
+    :type np: struct device_node \*
 
-    :param struct property \*prop:
+    :param prop:
         Pointer to property
+    :type prop: struct property \*
 
 .. _`of_changeset_action.on-action-being-one-of`:
 

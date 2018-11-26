@@ -10,11 +10,13 @@ qcom_pdc_gic_set_type
 
     Configure PDC for the interrupt
 
-    :param struct irq_data \*d:
+    :param d:
         the interrupt data
+    :type d: struct irq_data \*
 
-    :param unsigned int type:
+    :param type:
         the interrupt type
+    :type type: unsigned int
 
 .. _`qcom_pdc_gic_set_type.description`:
 

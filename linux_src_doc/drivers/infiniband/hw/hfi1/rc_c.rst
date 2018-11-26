@@ -10,17 +10,21 @@ make_rc_ack
 
     construct a response packet (ACK, NAK, or RDMA read)
 
-    :param struct hfi1_ibdev \*dev:
+    :param dev:
         the device for this QP
+    :type dev: struct hfi1_ibdev \*
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         a pointer to the QP
+    :type qp: struct rvt_qp \*
 
-    :param struct ib_other_headers \*ohdr:
+    :param ohdr:
         a pointer to the IB header being constructed
+    :type ohdr: struct ib_other_headers \*
 
-    :param struct hfi1_pkt_state \*ps:
+    :param ps:
         the xmit packet state
+    :type ps: struct hfi1_pkt_state \*
 
 .. _`make_rc_ack.description`:
 
@@ -40,11 +44,13 @@ hfi1_make_rc_req
 
     construct a request packet (SEND, RDMA r/w, ATOMIC)
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         a pointer to the QP
+    :type qp: struct rvt_qp \*
 
-    :param struct hfi1_pkt_state \*ps:
+    :param ps:
         *undescribed*
+    :type ps: struct hfi1_pkt_state \*
 
 .. _`hfi1_make_rc_req.description`:
 
@@ -64,11 +70,13 @@ hfi1_send_rc_ack
 
     Construct an ACK packet and send it
 
-    :param struct hfi1_packet \*packet:
+    :param packet:
         *undescribed*
+    :type packet: struct hfi1_packet \*
 
-    :param bool is_fecn:
+    :param is_fecn:
         *undescribed*
+    :type is_fecn: bool
 
 .. _`hfi1_send_rc_ack.description`:
 
@@ -88,11 +96,13 @@ reset_psn
 
     reset the QP state to send starting from PSN
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP
+    :type qp: struct rvt_qp \*
 
-    :param u32 psn:
+    :param psn:
         the packet sequence number to restart at
+    :type psn: u32
 
 .. _`reset_psn.description`:
 
@@ -112,23 +122,29 @@ do_rc_ack
 
     process an incoming RC ACK
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP the ACK came in on
+    :type qp: struct rvt_qp \*
 
-    :param u32 aeth:
+    :param aeth:
         *undescribed*
+    :type aeth: u32
 
-    :param u32 psn:
+    :param psn:
         the packet sequence number of the ACK
+    :type psn: u32
 
-    :param int opcode:
+    :param opcode:
         the opcode of the request that resulted in the ACK
+    :type opcode: int
 
-    :param u64 val:
+    :param val:
         *undescribed*
+    :type val: u64
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`do_rc_ack.description`:
 
@@ -149,8 +165,9 @@ rc_rcv_resp
 
     process an incoming RC response packet
 
-    :param struct hfi1_packet \*packet:
+    :param packet:
         data packet information
+    :type packet: struct hfi1_packet \*
 
 .. _`rc_rcv_resp.description`:
 
@@ -170,26 +187,33 @@ rc_rcv_error
 
     process an incoming duplicate or error RC packet
 
-    :param struct ib_other_headers \*ohdr:
+    :param ohdr:
         the other headers for this packet
+    :type ohdr: struct ib_other_headers \*
 
-    :param void \*data:
+    :param data:
         the packet data
+    :type data: void \*
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP for this packet
+    :type qp: struct rvt_qp \*
 
-    :param u32 opcode:
+    :param opcode:
         the opcode for this packet
+    :type opcode: u32
 
-    :param u32 psn:
+    :param psn:
         the packet sequence number for this packet
+    :type psn: u32
 
-    :param int diff:
+    :param diff:
         the difference between the PSN and the expected PSN
+    :type diff: int
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`rc_rcv_error.description`:
 
@@ -211,8 +235,9 @@ hfi1_rc_rcv
 
     process an incoming RC packet
 
-    :param struct hfi1_packet \*packet:
+    :param packet:
         data packet information
+    :type packet: struct hfi1_packet \*
 
 .. _`hfi1_rc_rcv.description`:
 

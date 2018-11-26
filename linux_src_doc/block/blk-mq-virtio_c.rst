@@ -10,14 +10,17 @@ blk_mq_virtio_map_queues
 
     provide a default queue mapping for virtio device
 
-    :param struct blk_mq_tag_set \*set:
+    :param set:
         tagset to provide the mapping for
+    :type set: struct blk_mq_tag_set \*
 
-    :param struct virtio_device \*vdev:
+    :param vdev:
         virtio device associated with \ ``set``\ .
+    :type vdev: struct virtio_device \*
 
-    :param int first_vec:
+    :param first_vec:
         first interrupt vectors to use for queues (usually 0)
+    :type first_vec: int
 
 .. _`blk_mq_virtio_map_queues.description`:
 

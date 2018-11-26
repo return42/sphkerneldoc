@@ -24,7 +24,7 @@ Definition
         s32 fb_left, fb_top;
         u32 pitch;
         union {
-            struct vmw_dma_buffer *buf;
+            struct vmw_buffer_object *buf;
             u32 sid;
         } ;
     }
@@ -65,7 +65,7 @@ pitch
     anonymous
 
 buf
-    DMA buffer when DMA-ing between buffer and screen targets.
+    buffer object when DMA-ing between buffer and screen targets.
 
 sid
     Surface ID when copying between surface and screen targets.
@@ -133,8 +133,9 @@ vmw_stdu_crtc_destroy
 
     cleans up the STDU
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         used to get a reference to the containing STDU
+    :type crtc: struct drm_crtc \*
 
 .. _`vmw_stdu_define_st`:
 
@@ -145,20 +146,25 @@ vmw_stdu_define_st
 
     Defines a Screen Target
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         VMW DRM device
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_screen_target_display_unit \*stdu:
+    :param stdu:
         display unit to create a Screen Target for
+    :type stdu: struct vmw_screen_target_display_unit \*
 
-    :param struct drm_display_mode \*mode:
+    :param mode:
         The mode to set.
+    :type mode: struct drm_display_mode \*
 
-    :param int crtc_x:
+    :param crtc_x:
         X coordinate of screen target relative to framebuffer origin.
+    :type crtc_x: int
 
-    :param int crtc_y:
+    :param crtc_y:
         Y coordinate of screen target relative to framebuffer origin.
+    :type crtc_y: int
 
 .. _`vmw_stdu_define_st.description`:
 
@@ -184,14 +190,17 @@ vmw_stdu_bind_st
 
     Binds a surface to a Screen Target
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         VMW DRM device
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_screen_target_display_unit \*stdu:
+    :param stdu:
         display unit affected
+    :type stdu: struct vmw_screen_target_display_unit \*
 
-    :param const struct vmw_resource \*res:
+    :param res:
         Buffer to bind to the screen target.  Set to NULL to blank screen.
+    :type res: const struct vmw_resource \*
 
 .. _`vmw_stdu_bind_st.description`:
 
@@ -209,23 +218,29 @@ vmw_stdu_populate_update
 
     populate an UPDATE_GB_SCREENTARGET command with a bounding box.
 
-    :param void \*cmd:
+    :param cmd:
         Pointer to command stream.
+    :type cmd: void \*
 
-    :param int unit:
+    :param unit:
         Screen target unit.
+    :type unit: int
 
-    :param s32 left:
+    :param left:
         Left side of bounding box.
+    :type left: s32
 
-    :param s32 right:
+    :param right:
         Right side of bounding box.
+    :type right: s32
 
-    :param s32 top:
+    :param top:
         Top side of bounding box.
+    :type top: s32
 
-    :param s32 bottom:
+    :param bottom:
         Bottom side of bounding box.
+    :type bottom: s32
 
 .. _`vmw_stdu_update_st`:
 
@@ -236,11 +251,13 @@ vmw_stdu_update_st
 
     Full update of a Screen Target
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         VMW DRM device
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_screen_target_display_unit \*stdu:
+    :param stdu:
         display unit affected
+    :type stdu: struct vmw_screen_target_display_unit \*
 
 .. _`vmw_stdu_update_st.description`:
 
@@ -267,11 +284,13 @@ vmw_stdu_destroy_st
 
     Destroy a Screen Target
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         VMW DRM device
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_screen_target_display_unit \*stdu:
+    :param stdu:
         display unit to destroy
+    :type stdu: struct vmw_screen_target_display_unit \*
 
 .. _`vmw_stdu_crtc_mode_set_nofb`:
 
@@ -282,8 +301,9 @@ vmw_stdu_crtc_mode_set_nofb
 
     Updates screen target size
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC associated with the screen target
+    :type crtc: struct drm_crtc \*
 
 .. _`vmw_stdu_crtc_mode_set_nofb.description`:
 
@@ -301,21 +321,26 @@ vmw_stdu_crtc_page_flip
 
     Binds a buffer to a screen target
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC to attach FB to
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_framebuffer \*new_fb:
+    :param new_fb:
         *undescribed*
+    :type new_fb: struct drm_framebuffer \*
 
-    :param struct drm_pending_vblank_event \*event:
+    :param event:
         Event to be posted. This event should've been alloced
         using k[mz]alloc, and should've been completely initialized.
+    :type event: struct drm_pending_vblank_event \*
 
-    :param uint32_t flags:
+    :param flags:
         *undescribed*
+    :type flags: uint32_t
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`vmw_stdu_crtc_page_flip.description`:
 
@@ -336,19 +361,20 @@ Return
 
 0 on success, error code on failure
 
-.. _`vmw_stdu_dmabuf_clip`:
+.. _`vmw_stdu_bo_clip`:
 
-vmw_stdu_dmabuf_clip
-====================
+vmw_stdu_bo_clip
+================
 
-.. c:function:: void vmw_stdu_dmabuf_clip(struct vmw_kms_dirty *dirty)
+.. c:function:: void vmw_stdu_bo_clip(struct vmw_kms_dirty *dirty)
 
     Callback to encode a suface DMA command cliprect
 
-    :param struct vmw_kms_dirty \*dirty:
+    :param dirty:
         The closure structure.
+    :type dirty: struct vmw_kms_dirty \*
 
-.. _`vmw_stdu_dmabuf_clip.description`:
+.. _`vmw_stdu_bo_clip.description`:
 
 Description
 -----------
@@ -356,19 +382,20 @@ Description
 Encodes a surface DMA command cliprect and updates the bounding box
 for the DMA.
 
-.. _`vmw_stdu_dmabuf_fifo_commit`:
+.. _`vmw_stdu_bo_fifo_commit`:
 
-vmw_stdu_dmabuf_fifo_commit
-===========================
+vmw_stdu_bo_fifo_commit
+=======================
 
-.. c:function:: void vmw_stdu_dmabuf_fifo_commit(struct vmw_kms_dirty *dirty)
+.. c:function:: void vmw_stdu_bo_fifo_commit(struct vmw_kms_dirty *dirty)
 
     Callback to fill in and submit a DMA command.
 
-    :param struct vmw_kms_dirty \*dirty:
+    :param dirty:
         The closure structure.
+    :type dirty: struct vmw_kms_dirty \*
 
-.. _`vmw_stdu_dmabuf_fifo_commit.description`:
+.. _`vmw_stdu_bo_fifo_commit.description`:
 
 Description
 -----------
@@ -376,38 +403,40 @@ Description
 Fills in the missing fields in a DMA command, and optionally encodes
 a screen target update command, depending on transfer direction.
 
-.. _`vmw_stdu_dmabuf_cpu_clip`:
+.. _`vmw_stdu_bo_cpu_clip`:
 
-vmw_stdu_dmabuf_cpu_clip
-========================
+vmw_stdu_bo_cpu_clip
+====================
 
-.. c:function:: void vmw_stdu_dmabuf_cpu_clip(struct vmw_kms_dirty *dirty)
+.. c:function:: void vmw_stdu_bo_cpu_clip(struct vmw_kms_dirty *dirty)
 
     Callback to encode a CPU blit
 
-    :param struct vmw_kms_dirty \*dirty:
+    :param dirty:
         The closure structure.
+    :type dirty: struct vmw_kms_dirty \*
 
-.. _`vmw_stdu_dmabuf_cpu_clip.description`:
+.. _`vmw_stdu_bo_cpu_clip.description`:
 
 Description
 -----------
 
 This function calculates the bounding box for all the incoming clips.
 
-.. _`vmw_stdu_dmabuf_cpu_commit`:
+.. _`vmw_stdu_bo_cpu_commit`:
 
-vmw_stdu_dmabuf_cpu_commit
-==========================
+vmw_stdu_bo_cpu_commit
+======================
 
-.. c:function:: void vmw_stdu_dmabuf_cpu_commit(struct vmw_kms_dirty *dirty)
+.. c:function:: void vmw_stdu_bo_cpu_commit(struct vmw_kms_dirty *dirty)
 
-    Callback to do a CPU blit from DMAbuf
+    Callback to do a CPU blit from buffer object
 
-    :param struct vmw_kms_dirty \*dirty:
+    :param dirty:
         The closure structure.
+    :type dirty: struct vmw_kms_dirty \*
 
-.. _`vmw_stdu_dmabuf_cpu_commit.description`:
+.. _`vmw_stdu_bo_cpu_commit.description`:
 
 Description
 -----------
@@ -422,43 +451,54 @@ vmw_kms_stdu_dma
 
 .. c:function:: int vmw_kms_stdu_dma(struct vmw_private *dev_priv, struct drm_file *file_priv, struct vmw_framebuffer *vfb, struct drm_vmw_fence_rep __user *user_fence_rep, struct drm_clip_rect *clips, struct drm_vmw_rect *vclips, uint32_t num_clips, int increment, bool to_surface, bool interruptible, struct drm_crtc *crtc)
 
-    Perform a DMA transfer between a dma-buffer backed framebuffer and the screen target system.
+    Perform a DMA transfer between a buffer-object backed framebuffer and the screen target system.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to the device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to a struct drm-file identifying the caller. May be
         set to NULL, but then \ ``user_fence_rep``\  must also be set to NULL.
+    :type file_priv: struct drm_file \*
 
-    :param struct vmw_framebuffer \*vfb:
-        Pointer to the dma-buffer backed framebuffer.
+    :param vfb:
+        Pointer to the buffer-object backed framebuffer.
+    :type vfb: struct vmw_framebuffer \*
 
-    :param struct drm_vmw_fence_rep __user \*user_fence_rep:
+    :param user_fence_rep:
         *undescribed*
+    :type user_fence_rep: struct drm_vmw_fence_rep __user \*
 
-    :param struct drm_clip_rect \*clips:
+    :param clips:
         Array of clip rects. Either \ ``clips``\  or \ ``vclips``\  must be NULL.
+    :type clips: struct drm_clip_rect \*
 
-    :param struct drm_vmw_rect \*vclips:
+    :param vclips:
         Alternate array of clip rects. Either \ ``clips``\  or \ ``vclips``\  must
         be NULL.
+    :type vclips: struct drm_vmw_rect \*
 
-    :param uint32_t num_clips:
+    :param num_clips:
         Number of clip rects in \ ``clips``\  or \ ``vclips``\ .
+    :type num_clips: uint32_t
 
-    :param int increment:
+    :param increment:
         Increment to use when looping over \ ``clips``\  or \ ``vclips``\ .
+    :type increment: int
 
-    :param bool to_surface:
+    :param to_surface:
         Whether to DMA to the screen target system as opposed to
         from the screen target system.
+    :type to_surface: bool
 
-    :param bool interruptible:
+    :param interruptible:
         Whether to perform waits interruptible if possible.
+    :type interruptible: bool
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         If crtc is passed, perform stdu dma on that crtc only.
+    :type crtc: struct drm_crtc \*
 
 .. _`vmw_kms_stdu_dma.description`:
 
@@ -480,8 +520,9 @@ vmw_kms_stdu_surface_clip
 
     Callback to encode a surface copy command cliprect
 
-    :param struct vmw_kms_dirty \*dirty:
+    :param dirty:
         The closure structure.
+    :type dirty: struct vmw_kms_dirty \*
 
 .. _`vmw_kms_stdu_surface_clip.description`:
 
@@ -500,8 +541,9 @@ vmw_kms_stdu_surface_fifo_commit
 
     Callback to fill in and submit a surface copy command.
 
-    :param struct vmw_kms_dirty \*dirty:
+    :param dirty:
         The closure structure.
+    :type dirty: struct vmw_kms_dirty \*
 
 .. _`vmw_kms_stdu_surface_fifo_commit.description`:
 
@@ -520,42 +562,53 @@ vmw_kms_stdu_surface_dirty
 
     Dirty part of a surface backed framebuffer
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to the device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct vmw_framebuffer \*framebuffer:
+    :param framebuffer:
         Pointer to the surface-buffer backed framebuffer.
+    :type framebuffer: struct vmw_framebuffer \*
 
-    :param struct drm_clip_rect \*clips:
+    :param clips:
         Array of clip rects. Either \ ``clips``\  or \ ``vclips``\  must be NULL.
+    :type clips: struct drm_clip_rect \*
 
-    :param struct drm_vmw_rect \*vclips:
+    :param vclips:
         Alternate array of clip rects. Either \ ``clips``\  or \ ``vclips``\  must
         be NULL.
+    :type vclips: struct drm_vmw_rect \*
 
-    :param struct vmw_resource \*srf:
+    :param srf:
         Pointer to surface to blit from. If NULL, the surface attached
         to \ ``framebuffer``\  will be used.
+    :type srf: struct vmw_resource \*
 
-    :param s32 dest_x:
+    :param dest_x:
         X coordinate offset to align \ ``srf``\  with framebuffer coordinates.
+    :type dest_x: s32
 
-    :param s32 dest_y:
+    :param dest_y:
         Y coordinate offset to align \ ``srf``\  with framebuffer coordinates.
+    :type dest_y: s32
 
-    :param unsigned num_clips:
+    :param num_clips:
         Number of clip rects in \ ``clips``\ .
+    :type num_clips: unsigned
 
-    :param int inc:
+    :param inc:
         Increment to use when looping over \ ``clips``\ .
+    :type inc: int
 
-    :param struct vmw_fence_obj \*\*out_fence:
+    :param out_fence:
         If non-NULL, will return a ref-counted pointer to a
         struct vmw_fence_obj. The returned fence pointer may be NULL in which
         case the device has already synchronized.
+    :type out_fence: struct vmw_fence_obj \*\*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         If crtc is passed, perform surface dirty on that crtc only.
+    :type crtc: struct drm_crtc \*
 
 .. _`vmw_kms_stdu_surface_dirty.description`:
 
@@ -574,8 +627,9 @@ vmw_stdu_encoder_destroy
 
     cleans up the STDU
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         used the get the containing STDU
+    :type encoder: struct drm_encoder \*
 
 .. _`vmw_stdu_encoder_destroy.description`:
 
@@ -596,8 +650,9 @@ vmw_stdu_connector_destroy
 
     cleans up the STDU
 
-    :param struct drm_connector \*connector:
+    :param connector:
         used to get the containing STDU
+    :type connector: struct drm_connector \*
 
 .. _`vmw_stdu_connector_destroy.description`:
 
@@ -618,11 +673,13 @@ vmw_stdu_primary_plane_cleanup_fb
 
     Unpins the display surface
 
-    :param struct drm_plane \*plane:
+    :param plane:
         display plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*old_state:
+    :param old_state:
         Contains the FB to clean up
+    :type old_state: struct drm_plane_state \*
 
 .. _`vmw_stdu_primary_plane_cleanup_fb.description`:
 
@@ -642,11 +699,13 @@ vmw_stdu_primary_plane_prepare_fb
 
     Readies the display surface
 
-    :param struct drm_plane \*plane:
+    :param plane:
         display plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*new_state:
+    :param new_state:
         info on the new plane state, including the FB
+    :type new_state: struct drm_plane_state \*
 
 .. _`vmw_stdu_primary_plane_prepare_fb.description`:
 
@@ -654,7 +713,7 @@ Description
 -----------
 
 This function allocates a new display surface if the content is
-backed by a DMA.  The display surface is pinned here, and it'll
+backed by a buffer object.  The display surface is pinned here, and it'll
 be unpinned in .cleanup_fb()
 
 Returns 0 on success
@@ -668,11 +727,13 @@ vmw_stdu_primary_plane_atomic_update
 
     formally switches STDU to new plane
 
-    :param struct drm_plane \*plane:
+    :param plane:
         display plane
+    :type plane: struct drm_plane \*
 
-    :param struct drm_plane_state \*old_state:
+    :param old_state:
         Only used to get crtc info
+    :type old_state: struct drm_plane_state \*
 
 .. _`vmw_stdu_primary_plane_atomic_update.description`:
 
@@ -693,11 +754,13 @@ vmw_stdu_init
 
     Sets up a Screen Target Display Unit
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         VMW DRM device
+    :type dev_priv: struct vmw_private \*
 
-    :param unsigned unit:
+    :param unit:
         unit number range from 0 to VMWGFX_NUM_DISPLAY_UNITS
+    :type unit: unsigned
 
 .. _`vmw_stdu_init.description`:
 
@@ -717,8 +780,9 @@ vmw_stdu_destroy
 
     Cleans up a vmw_screen_target_display_unit
 
-    :param struct vmw_screen_target_display_unit \*stdu:
+    :param stdu:
         Screen Target Display Unit to be destroyed
+    :type stdu: struct vmw_screen_target_display_unit \*
 
 .. _`vmw_stdu_destroy.description`:
 
@@ -736,8 +800,9 @@ vmw_kms_stdu_init_display
 
     Initializes a Screen Target based display
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         VMW DRM device
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_kms_stdu_init_display.description`:
 

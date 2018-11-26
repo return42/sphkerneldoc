@@ -10,8 +10,9 @@ put_pages_list
 
     release a list of pages
 
-    :param struct list_head \*pages:
+    :param pages:
         list of pages threaded on page->lru
+    :type pages: struct list_head \*
 
 .. _`put_pages_list.description`:
 
@@ -30,8 +31,9 @@ lru_cache_add_anon
 
     add a page to the page lists
 
-    :param struct page \*page:
+    :param page:
         the page to add
+    :type page: struct page \*
 
 .. _`lru_cache_add`:
 
@@ -42,8 +44,9 @@ lru_cache_add
 
     add a page to a page list
 
-    :param struct page \*page:
+    :param page:
         the page to be added to the LRU.
+    :type page: struct page \*
 
 .. _`lru_cache_add.description`:
 
@@ -62,11 +65,13 @@ lru_cache_add_active_or_unevictable
 
 .. c:function:: void lru_cache_add_active_or_unevictable(struct page *page, struct vm_area_struct *vma)
 
-    :param struct page \*page:
+    :param page:
         the page to be added to LRU
+    :type page: struct page \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vma in which page is mapped for determining reclaimability
+    :type vma: struct vm_area_struct \*
 
 .. _`lru_cache_add_active_or_unevictable.description`:
 
@@ -87,8 +92,9 @@ deactivate_file_page
 
     forcefully deactivate a file page
 
-    :param struct page \*page:
+    :param page:
         page to deactivate
+    :type page: struct page \*
 
 .. _`deactivate_file_page.description`:
 
@@ -108,8 +114,9 @@ mark_page_lazyfree
 
     make an anon page lazyfree
 
-    :param struct page \*page:
+    :param page:
         page to deactivate
+    :type page: struct page \*
 
 .. _`mark_page_lazyfree.description`:
 
@@ -128,11 +135,13 @@ release_pages
 
     batched \ :c:func:`put_page`\ 
 
-    :param struct page \*\*pages:
+    :param pages:
         array of pages to release
+    :type pages: struct page \*\*
 
-    :param int nr:
+    :param nr:
         number of pages
+    :type nr: int
 
 .. _`release_pages.description`:
 
@@ -151,20 +160,25 @@ pagevec_lookup_entries
 
     gang pagecache lookup
 
-    :param struct pagevec \*pvec:
+    :param pvec:
         Where the resulting entries are placed
+    :type pvec: struct pagevec \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t start:
+    :param start:
         The starting entry index
+    :type start: pgoff_t
 
-    :param unsigned nr_entries:
+    :param nr_entries:
         The maximum number of pages
+    :type nr_entries: unsigned
 
-    :param pgoff_t \*indices:
+    :param indices:
         The cache indices corresponding to the entries in \ ``pvec``\ 
+    :type indices: pgoff_t \*
 
 .. _`pagevec_lookup_entries.description`:
 
@@ -192,8 +206,9 @@ pagevec_remove_exceptionals
 
     pagevec exceptionals pruning
 
-    :param struct pagevec \*pvec:
+    :param pvec:
         The pagevec to prune
+    :type pvec: struct pagevec \*
 
 .. _`pagevec_remove_exceptionals.description`:
 
@@ -214,17 +229,21 @@ pagevec_lookup_range
 
     gang pagecache lookup
 
-    :param struct pagevec \*pvec:
+    :param pvec:
         Where the resulting pages are placed
+    :type pvec: struct pagevec \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t \*start:
+    :param start:
         The starting page index
+    :type start: pgoff_t \*
 
-    :param pgoff_t end:
+    :param end:
         The final page index
+    :type end: pgoff_t
 
 .. _`pagevec_lookup_range.description`:
 

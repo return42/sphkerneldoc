@@ -10,19 +10,23 @@ lcd_device_register
 
     register a new object of lcd_device class.
 
-    :param const char \*name:
+    :param name:
         the name of the new object(must be the same as the name of the
         respective framebuffer device).
+    :type name: const char \*
 
-    :param struct device \*parent:
+    :param parent:
         *undescribed*
+    :type parent: struct device \*
 
-    :param void \*devdata:
+    :param devdata:
         an optional pointer to be stored in the device. The
         methods may retrieve it by using lcd_get_data(ld).
+    :type devdata: void \*
 
-    :param struct lcd_ops \*ops:
+    :param ops:
         the lcd operations structure.
+    :type ops: struct lcd_ops \*
 
 .. _`lcd_device_register.description`:
 
@@ -41,8 +45,9 @@ lcd_device_unregister
 
     unregisters a object of lcd_device class.
 
-    :param struct lcd_device \*ld:
+    :param ld:
         the lcd device object to be unregistered and freed.
+    :type ld: struct lcd_device \*
 
 .. _`lcd_device_unregister.description`:
 
@@ -60,20 +65,25 @@ devm_lcd_device_register
 
     resource managed \ :c:func:`lcd_device_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device to register
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         the name of the device
+    :type name: const char \*
 
-    :param struct device \*parent:
+    :param parent:
         a pointer to the parent device
+    :type parent: struct device \*
 
-    :param void \*devdata:
+    :param devdata:
         an optional pointer to be stored for private driver use
+    :type devdata: void \*
 
-    :param struct lcd_ops \*ops:
+    :param ops:
         the lcd operations structure
+    :type ops: struct lcd_ops \*
 
 .. _`devm_lcd_device_register.description`:
 
@@ -95,11 +105,13 @@ devm_lcd_device_unregister
 
     resource managed \ :c:func:`lcd_device_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device to unregister
+    :type dev: struct device \*
 
-    :param struct lcd_device \*ld:
+    :param ld:
         the lcd device to unregister
+    :type ld: struct lcd_device \*
 
 .. _`devm_lcd_device_unregister.description`:
 

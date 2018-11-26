@@ -10,11 +10,13 @@ gfs2_trans_add_data
 
     Add a databuf to the transaction.
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The inode glock associated with the buffer
+    :type gl: struct gfs2_glock \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         The buffer to add
+    :type bh: struct buffer_head \*
 
 .. _`gfs2_trans_add_data.description`:
 

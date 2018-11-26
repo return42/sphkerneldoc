@@ -10,14 +10,17 @@ hinic_aeq_register_hw_cb
 
     register AEQ callback for specific event
 
-    :param struct hinic_aeqs \*aeqs:
+    :param aeqs:
         pointer to Async eqs of the chip
+    :type aeqs: struct hinic_aeqs \*
 
-    :param enum hinic_aeq_type event:
+    :param event:
         aeq event to register callback for it
+    :type event: enum hinic_aeq_type
 
-    :param void \*handle:
+    :param handle:
         private data will be used by the callback
+    :type handle: void \*
 
     :param void (\*hwe_handler)(void \*handle, void \*data, u8 size):
         *undescribed*
@@ -31,11 +34,13 @@ hinic_aeq_unregister_hw_cb
 
     unregister the AEQ callback for specific event
 
-    :param struct hinic_aeqs \*aeqs:
+    :param aeqs:
         pointer to Async eqs of the chip
+    :type aeqs: struct hinic_aeqs \*
 
-    :param enum hinic_aeq_type event:
+    :param event:
         aeq event to unregister callback for it
+    :type event: enum hinic_aeq_type
 
 .. _`hinic_ceq_register_cb`:
 
@@ -46,14 +51,17 @@ hinic_ceq_register_cb
 
     register CEQ callback for specific event
 
-    :param struct hinic_ceqs \*ceqs:
+    :param ceqs:
         pointer to Completion eqs part of the chip
+    :type ceqs: struct hinic_ceqs \*
 
-    :param enum hinic_ceq_type event:
+    :param event:
         ceq event to register callback for it
+    :type event: enum hinic_ceq_type
 
-    :param void \*handle:
+    :param handle:
         private data will be used by the callback
+    :type handle: void \*
 
     :param void (\*handler)(void \*handle, u32 ceqe_data):
         callback function
@@ -67,11 +75,13 @@ hinic_ceq_unregister_cb
 
     unregister the CEQ callback for specific event
 
-    :param struct hinic_ceqs \*ceqs:
+    :param ceqs:
         pointer to Completion eqs part of the chip
+    :type ceqs: struct hinic_ceqs \*
 
-    :param enum hinic_ceq_type event:
+    :param event:
         ceq event to unregister callback for it
+    :type event: enum hinic_ceq_type
 
 .. _`eq_update_ci`:
 
@@ -82,8 +92,9 @@ eq_update_ci
 
     update the HW cons idx of event queue
 
-    :param struct hinic_eq \*eq:
+    :param eq:
         the event queue to update the cons idx for
+    :type eq: struct hinic_eq \*
 
 .. _`aeq_irq_handler`:
 
@@ -94,8 +105,9 @@ aeq_irq_handler
 
     handler for the AEQ event
 
-    :param struct hinic_eq \*eq:
+    :param eq:
         the Async Event Queue that received the event
+    :type eq: struct hinic_eq \*
 
 .. _`ceq_event_handler`:
 
@@ -106,11 +118,13 @@ ceq_event_handler
 
     handler for the ceq events
 
-    :param struct hinic_ceqs \*ceqs:
+    :param ceqs:
         ceqs part of the chip
+    :type ceqs: struct hinic_ceqs \*
 
-    :param u32 ceqe:
+    :param ceqe:
         ceq element that describes the event
+    :type ceqe: u32
 
 .. _`ceq_irq_handler`:
 
@@ -121,8 +135,9 @@ ceq_irq_handler
 
     handler for the CEQ event
 
-    :param struct hinic_eq \*eq:
+    :param eq:
         the Completion Event Queue that received the event
+    :type eq: struct hinic_eq \*
 
 .. _`eq_irq_handler`:
 
@@ -133,8 +148,9 @@ eq_irq_handler
 
     handler for the EQ event
 
-    :param void \*data:
+    :param data:
         the Event Queue that received the event
+    :type data: void \*
 
 .. _`eq_irq_work`:
 
@@ -145,8 +161,9 @@ eq_irq_work
 
     the work of the EQ that received the event
 
-    :param struct work_struct \*work:
+    :param work:
         the work struct that is associated with the EQ
+    :type work: struct work_struct \*
 
 .. _`ceq_tasklet`:
 
@@ -157,8 +174,9 @@ ceq_tasklet
 
     the tasklet of the EQ that received the event
 
-    :param unsigned long ceq_data:
+    :param ceq_data:
         the eq
+    :type ceq_data: unsigned long
 
 .. _`aeq_interrupt`:
 
@@ -169,11 +187,13 @@ aeq_interrupt
 
     aeq interrupt handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         the Async Event Queue that collected the event
+    :type data: void \*
 
 .. _`ceq_interrupt`:
 
@@ -184,11 +204,13 @@ ceq_interrupt
 
     ceq interrupt handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         the Completion Event Queue that collected the event
+    :type data: void \*
 
 .. _`set_eq_ctrls`:
 
@@ -199,8 +221,9 @@ set_eq_ctrls
 
     setting eq's ctrl registers
 
-    :param struct hinic_eq \*eq:
+    :param eq:
         the Event Queue for setting
+    :type eq: struct hinic_eq \*
 
 .. _`aeq_elements_init`:
 
@@ -211,11 +234,13 @@ aeq_elements_init
 
     initialize all the elements in the aeq
 
-    :param struct hinic_eq \*eq:
+    :param eq:
         the Async Event Queue
+    :type eq: struct hinic_eq \*
 
-    :param u32 init_val:
+    :param init_val:
         value to initialize the elements with it
+    :type init_val: u32
 
 .. _`ceq_elements_init`:
 
@@ -226,11 +251,13 @@ ceq_elements_init
 
     Initialize all the elements in the ceq
 
-    :param struct hinic_eq \*eq:
+    :param eq:
         the event queue
+    :type eq: struct hinic_eq \*
 
-    :param u32 init_val:
+    :param init_val:
         value to init with it the elements
+    :type init_val: u32
 
 .. _`alloc_eq_pages`:
 
@@ -241,8 +268,9 @@ alloc_eq_pages
 
     allocate the pages for the queue
 
-    :param struct hinic_eq \*eq:
+    :param eq:
         the event queue
+    :type eq: struct hinic_eq \*
 
 .. _`alloc_eq_pages.description`:
 
@@ -260,8 +288,9 @@ free_eq_pages
 
     free the pages of the queue
 
-    :param struct hinic_eq \*eq:
+    :param eq:
         the Event Queue
+    :type eq: struct hinic_eq \*
 
 .. _`init_eq`:
 
@@ -272,26 +301,33 @@ init_eq
 
     initialize Event Queue
 
-    :param struct hinic_eq \*eq:
+    :param eq:
         the event queue
+    :type eq: struct hinic_eq \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a PCI function device
+    :type hwif: struct hinic_hwif \*
 
-    :param enum hinic_eq_type type:
+    :param type:
         the type of the event queue, aeq or ceq
+    :type type: enum hinic_eq_type
 
-    :param int q_id:
+    :param q_id:
         Queue id number
+    :type q_id: int
 
-    :param u32 q_len:
+    :param q_len:
         the number of EQ elements
+    :type q_len: u32
 
-    :param u32 page_size:
+    :param page_size:
         the page size of the pages in the event queue
+    :type page_size: u32
 
-    :param struct msix_entry entry:
+    :param entry:
         msix entry associated with the event queue
+    :type entry: struct msix_entry
 
 .. _`init_eq.description`:
 
@@ -309,8 +345,9 @@ remove_eq
 
     remove Event Queue
 
-    :param struct hinic_eq \*eq:
+    :param eq:
         the event queue
+    :type eq: struct hinic_eq \*
 
 .. _`hinic_aeqs_init`:
 
@@ -321,23 +358,29 @@ hinic_aeqs_init
 
     initialize all the aeqs
 
-    :param struct hinic_aeqs \*aeqs:
+    :param aeqs:
         pointer to Async eqs of the chip
+    :type aeqs: struct hinic_aeqs \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the HW interface of a PCI function device
+    :type hwif: struct hinic_hwif \*
 
-    :param int num_aeqs:
+    :param num_aeqs:
         number of AEQs
+    :type num_aeqs: int
 
-    :param u32 q_len:
+    :param q_len:
         number of EQ elements
+    :type q_len: u32
 
-    :param u32 page_size:
+    :param page_size:
         the page size of the pages in the event queue
+    :type page_size: u32
 
-    :param struct msix_entry \*msix_entries:
+    :param msix_entries:
         msix entries associated with the event queues
+    :type msix_entries: struct msix_entry \*
 
 .. _`hinic_aeqs_init.description`:
 
@@ -355,8 +398,9 @@ hinic_aeqs_free
 
     free all the aeqs
 
-    :param struct hinic_aeqs \*aeqs:
+    :param aeqs:
         pointer to Async eqs of the chip
+    :type aeqs: struct hinic_aeqs \*
 
 .. _`hinic_ceqs_init`:
 
@@ -367,23 +411,29 @@ hinic_ceqs_init
 
     init all the ceqs
 
-    :param struct hinic_ceqs \*ceqs:
+    :param ceqs:
         ceqs part of the chip
+    :type ceqs: struct hinic_ceqs \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         the hardware interface of a pci function device
+    :type hwif: struct hinic_hwif \*
 
-    :param int num_ceqs:
+    :param num_ceqs:
         number of CEQs
+    :type num_ceqs: int
 
-    :param u32 q_len:
+    :param q_len:
         number of EQ elements
+    :type q_len: u32
 
-    :param u32 page_size:
+    :param page_size:
         the page size of the event queue
+    :type page_size: u32
 
-    :param struct msix_entry \*msix_entries:
+    :param msix_entries:
         msix entries associated with the event queues
+    :type msix_entries: struct msix_entry \*
 
 .. _`hinic_ceqs_init.description`:
 
@@ -401,8 +451,9 @@ hinic_ceqs_free
 
     free all the ceqs
 
-    :param struct hinic_ceqs \*ceqs:
+    :param ceqs:
         ceqs part of the chip
+    :type ceqs: struct hinic_ceqs \*
 
 .. This file was automatic generated / don't edit.
 

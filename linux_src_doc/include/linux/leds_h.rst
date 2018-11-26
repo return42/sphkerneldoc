@@ -10,14 +10,17 @@ led_blink_set
 
     set blinking with software fallback
 
-    :param struct led_classdev \*led_cdev:
+    :param led_cdev:
         the LED to start blinking
+    :type led_cdev: struct led_classdev \*
 
-    :param unsigned long \*delay_on:
+    :param delay_on:
         the time it should be on (in ms)
+    :type delay_on: unsigned long \*
 
-    :param unsigned long \*delay_off:
+    :param delay_off:
         the time it should ble off (in ms)
+    :type delay_off: unsigned long \*
 
 .. _`led_blink_set.description`:
 
@@ -42,17 +45,21 @@ led_blink_set_oneshot
 
     do a oneshot software blink
 
-    :param struct led_classdev \*led_cdev:
+    :param led_cdev:
         the LED to start blinking
+    :type led_cdev: struct led_classdev \*
 
-    :param unsigned long \*delay_on:
+    :param delay_on:
         the time it should be on (in ms)
+    :type delay_on: unsigned long \*
 
-    :param unsigned long \*delay_off:
+    :param delay_off:
         the time it should ble off (in ms)
+    :type delay_off: unsigned long \*
 
-    :param int invert:
+    :param invert:
         blink off, then on, leaving the led on
+    :type invert: int
 
 .. _`led_blink_set_oneshot.description`:
 
@@ -75,11 +82,13 @@ led_set_brightness
 
     set LED brightness
 
-    :param struct led_classdev \*led_cdev:
+    :param led_cdev:
         the LED to set
+    :type led_cdev: struct led_classdev \*
 
-    :param enum led_brightness brightness:
+    :param brightness:
         the brightness to set it to
+    :type brightness: enum led_brightness
 
 .. _`led_set_brightness.description`:
 
@@ -99,11 +108,13 @@ led_set_brightness_sync
 
     set LED brightness synchronously
 
-    :param struct led_classdev \*led_cdev:
+    :param led_cdev:
         the LED to set
+    :type led_cdev: struct led_classdev \*
 
-    :param enum led_brightness value:
+    :param value:
         *undescribed*
+    :type value: enum led_brightness
 
 .. _`led_set_brightness_sync.description`:
 
@@ -130,8 +141,9 @@ led_update_brightness
 
     update LED brightness
 
-    :param struct led_classdev \*led_cdev:
+    :param led_cdev:
         the LED to query
+    :type led_cdev: struct led_classdev \*
 
 .. _`led_update_brightness.description`:
 
@@ -157,8 +169,9 @@ led_sysfs_disable
 
     disable LED sysfs interface
 
-    :param struct led_classdev \*led_cdev:
+    :param led_cdev:
         the LED to set
+    :type led_cdev: struct led_classdev \*
 
 .. _`led_sysfs_disable.description`:
 
@@ -176,8 +189,9 @@ led_sysfs_enable
 
     enable LED sysfs interface
 
-    :param struct led_classdev \*led_cdev:
+    :param led_cdev:
         the LED to set
+    :type led_cdev: struct led_classdev \*
 
 .. _`led_sysfs_enable.description`:
 
@@ -195,8 +209,9 @@ led_sysfs_is_disabled
 
     check if LED sysfs interface is disabled
 
-    :param struct led_classdev \*led_cdev:
+    :param led_cdev:
         the LED to query
+    :type led_cdev: struct led_classdev \*
 
 .. _`led_sysfs_is_disabled.return`:
 
@@ -214,11 +229,13 @@ led_trigger_rename_static
 
     rename a trigger
 
-    :param const char \*name:
+    :param name:
         the new trigger name
+    :type name: const char \*
 
-    :param struct led_trigger \*trig:
+    :param trig:
         the LED trigger to rename
+    :type trig: struct led_trigger \*
 
 .. _`led_trigger_rename_static.description`:
 
@@ -234,6 +251,38 @@ during LED registration, as that could lead to races.
 
 This is meant to be used on triggers with statically
 allocated name.
+
+.. _`led_pattern`:
+
+struct led_pattern
+==================
+
+.. c:type:: struct led_pattern
+
+    pattern interval settings
+
+.. _`led_pattern.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct led_pattern {
+        u32 delta_t;
+        int brightness;
+    }
+
+.. _`led_pattern.members`:
+
+Members
+-------
+
+delta_t
+    pattern interval delay, in milliseconds
+
+brightness
+    pattern interval brightness
 
 .. This file was automatic generated / don't edit.
 

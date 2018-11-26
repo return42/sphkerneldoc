@@ -10,8 +10,9 @@ to_seqno_fence
 
     cast a fence to a seqno_fence
 
-    :param struct dma_fence \*fence:
+    :param fence:
         fence to cast to a seqno_fence
+    :type fence: struct dma_fence \*
 
 .. _`to_seqno_fence.description`:
 
@@ -30,29 +31,37 @@ seqno_fence_init
 
     initialize a seqno fence
 
-    :param struct seqno_fence \*fence:
+    :param fence:
         seqno_fence to initialize
+    :type fence: struct seqno_fence \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         pointer to spinlock to use for fence
+    :type lock: spinlock_t \*
 
-    :param struct dma_buf \*sync_buf:
+    :param sync_buf:
         buffer containing the memory location to signal on
+    :type sync_buf: struct dma_buf \*
 
-    :param uint32_t context:
+    :param context:
         the execution context this fence is a part of
+    :type context: uint32_t
 
-    :param uint32_t seqno_ofs:
+    :param seqno_ofs:
         the offset within \ ``sync_buf``\ 
+    :type seqno_ofs: uint32_t
 
-    :param uint32_t seqno:
+    :param seqno:
         the sequence # to signal on
+    :type seqno: uint32_t
 
-    :param enum seqno_fence_condition cond:
+    :param cond:
         fence wait condition
+    :type cond: enum seqno_fence_condition
 
-    :param const struct dma_fence_ops \*ops:
+    :param ops:
         the fence_ops for operations on this seqno fence
+    :type ops: const struct dma_fence_ops \*
 
 .. _`seqno_fence_init.description`:
 

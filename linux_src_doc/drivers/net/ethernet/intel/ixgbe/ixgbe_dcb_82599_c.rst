@@ -10,23 +10,29 @@ ixgbe_dcb_config_rx_arbiter_82599
 
     Config Rx Data arbiter
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*refill:
+    :param refill:
         refill credits index by traffic class
+    :type refill: u16 \*
 
-    :param u16 \*max:
+    :param max:
         max credits index by traffic class
+    :type max: u16 \*
 
-    :param u8 \*bwg_id:
+    :param bwg_id:
         bandwidth grouping indexed by traffic class
+    :type bwg_id: u8 \*
 
-    :param u8 \*prio_type:
+    :param prio_type:
         priority type indexed by traffic class
+    :type prio_type: u8 \*
 
-    :param u8 \*prio_tc:
+    :param prio_tc:
         priority to tc assignments indexed by priority
+    :type prio_tc: u8 \*
 
 .. _`ixgbe_dcb_config_rx_arbiter_82599.description`:
 
@@ -44,20 +50,25 @@ ixgbe_dcb_config_tx_desc_arbiter_82599
 
     Config Tx Desc. arbiter
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*refill:
+    :param refill:
         refill credits index by traffic class
+    :type refill: u16 \*
 
-    :param u16 \*max:
+    :param max:
         max credits index by traffic class
+    :type max: u16 \*
 
-    :param u8 \*bwg_id:
+    :param bwg_id:
         bandwidth grouping indexed by traffic class
+    :type bwg_id: u8 \*
 
-    :param u8 \*prio_type:
+    :param prio_type:
         priority type indexed by traffic class
+    :type prio_type: u8 \*
 
 .. _`ixgbe_dcb_config_tx_desc_arbiter_82599.description`:
 
@@ -75,23 +86,29 @@ ixgbe_dcb_config_tx_data_arbiter_82599
 
     Config Tx Data arbiter
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*refill:
+    :param refill:
         refill credits index by traffic class
+    :type refill: u16 \*
 
-    :param u16 \*max:
+    :param max:
         max credits index by traffic class
+    :type max: u16 \*
 
-    :param u8 \*bwg_id:
+    :param bwg_id:
         bandwidth grouping indexed by traffic class
+    :type bwg_id: u8 \*
 
-    :param u8 \*prio_type:
+    :param prio_type:
         priority type indexed by traffic class
+    :type prio_type: u8 \*
 
-    :param u8 \*prio_tc:
+    :param prio_tc:
         priority to tc assignments indexed by priority
+    :type prio_tc: u8 \*
 
 .. _`ixgbe_dcb_config_tx_data_arbiter_82599.description`:
 
@@ -109,14 +126,17 @@ ixgbe_dcb_config_pfc_82599
 
     Configure priority flow control
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 pfc_en:
+    :param pfc_en:
         enabled pfc bitmask
+    :type pfc_en: u8
 
-    :param u8 \*prio_tc:
+    :param prio_tc:
         priority to tc assignments indexed by priority
+    :type prio_tc: u8 \*
 
 .. _`ixgbe_dcb_config_pfc_82599.description`:
 
@@ -134,8 +154,9 @@ ixgbe_dcb_config_tc_stats_82599
 
     Config traffic class statistics
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_dcb_config_tc_stats_82599.description`:
 
@@ -154,26 +175,33 @@ ixgbe_dcb_hw_config_82599
 
     Configure and enable DCB
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 pfc_en:
+    :param pfc_en:
         enabled pfc bitmask
+    :type pfc_en: u8
 
-    :param u16 \*refill:
+    :param refill:
         refill credits index by traffic class
+    :type refill: u16 \*
 
-    :param u16 \*max:
+    :param max:
         max credits index by traffic class
+    :type max: u16 \*
 
-    :param u8 \*bwg_id:
+    :param bwg_id:
         bandwidth grouping indexed by traffic class
+    :type bwg_id: u8 \*
 
-    :param u8 \*prio_type:
+    :param prio_type:
         priority type indexed by traffic class
+    :type prio_type: u8 \*
 
-    :param u8 \*prio_tc:
+    :param prio_tc:
         priority to tc assignments indexed by priority
+    :type prio_tc: u8 \*
 
 .. _`ixgbe_dcb_hw_config_82599.description`:
 

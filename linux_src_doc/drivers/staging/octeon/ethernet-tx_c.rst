@@ -10,11 +10,13 @@ cvm_oct_xmit
 
     transmit a packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Packet to send
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         Device info structure
+    :type dev: struct net_device \*
 
 .. _`cvm_oct_xmit.description`:
 
@@ -32,12 +34,14 @@ cvm_oct_xmit_pow
 
     transmit a packet to the POW
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Packet to send
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         Device info structure
         Returns Always returns zero
+    :type dev: struct net_device \*
 
 .. _`cvm_oct_tx_shutdown_dev`:
 
@@ -48,8 +52,9 @@ cvm_oct_tx_shutdown_dev
 
     free all skb that are currently queued for TX.
 
-    :param struct net_device \*dev:
+    :param dev:
         Device being shutdown
+    :type dev: struct net_device \*
 
 .. This file was automatic generated / don't edit.
 

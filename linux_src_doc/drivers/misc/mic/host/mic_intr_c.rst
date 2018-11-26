@@ -10,11 +10,13 @@ mic_interrupt
 
     Generic interrupt handler for MSI and INTx based interrupts.
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*dev:
+    :param dev:
         *undescribed*
+    :type dev: void \*
 
 .. _`mic_register_intr_callback`:
 
@@ -25,23 +27,28 @@ mic_register_intr_callback
 
     Register a callback handler for the given source id.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to the mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param u8 idx:
+    :param idx:
         The source id to be registered.
+    :type idx: u8
 
-    :param irq_handler_t handler:
+    :param handler:
         The function to be called when the source id receives
         the interrupt.
+    :type handler: irq_handler_t
 
-    :param irq_handler_t thread_fn:
+    :param thread_fn:
         thread fn. corresponding to the handler
+    :type thread_fn: irq_handler_t
 
-    :param void \*data:
+    :param data:
         Private data of the requester.
         Return the callback structure that was registered or an
         appropriate error on failure.
+    :type data: void \*
 
 .. _`mic_unregister_intr_callback`:
 
@@ -52,13 +59,15 @@ mic_unregister_intr_callback
 
     Unregister the callback handler identified by its callback id.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to the mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param u32 idx:
+    :param idx:
         The callback structure id to be unregistered.
         Return the source id that was unregistered or MIC_NUM_OFFSETS if no
         such callback handler was found.
+    :type idx: u32
 
 .. _`mic_setup_msix`:
 
@@ -69,11 +78,13 @@ mic_setup_msix
 
     Initializes MSIx interrupts.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`mic_setup_msix.return`:
 
@@ -91,8 +102,9 @@ mic_setup_callbacks
 
     Initialize data structures needed to handle callbacks.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_release_callbacks`:
 
@@ -103,8 +115,9 @@ mic_release_callbacks
 
     Uninitialize data structures needed to handle callbacks.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
 .. _`mic_setup_msi`:
 
@@ -115,11 +128,13 @@ mic_setup_msi
 
     Initializes MSI interrupts.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`mic_setup_msi.return`:
 
@@ -137,11 +152,13 @@ mic_setup_intx
 
     Initializes legacy interrupts.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`mic_setup_intx.return`:
 
@@ -159,8 +176,9 @@ mic_next_db
 
     Retrieve the next doorbell interrupt source id. The id is picked sequentially from the available pool of doorlbell ids.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to the mic_device instance.
+    :type mdev: struct mic_device \*
 
 .. _`mic_next_db.description`:
 
@@ -178,30 +196,37 @@ mic_request_threaded_irq
 
     request an irq. mic_mutex needs to be held before calling this function.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param irq_handler_t handler:
+    :param handler:
         The callback function that handles the interrupt.
         The function needs to call ack_interrupts
         (mdev->ops->ack_interrupt(mdev)) when handling the interrupts.
+    :type handler: irq_handler_t
 
-    :param irq_handler_t thread_fn:
+    :param thread_fn:
         thread fn required by request_threaded_irq.
+    :type thread_fn: irq_handler_t
 
-    :param const char \*name:
+    :param name:
         The ASCII name of the callee requesting the irq.
+    :type name: const char \*
 
-    :param void \*data:
+    :param data:
         private data that is returned back when calling the
         function handler.
+    :type data: void \*
 
-    :param int intr_src:
+    :param intr_src:
         The source id of the requester. Its the doorbell id
         for Doorbell interrupts and DMA channel id for DMA interrupts.
+    :type intr_src: int
 
-    :param enum mic_intr_type type:
+    :param type:
         The type of interrupt. Values defined in mic_intr_type
+    :type type: enum mic_intr_type
 
 .. _`mic_request_threaded_irq.return`:
 
@@ -223,15 +248,18 @@ mic_free_irq
 
     free irq. mic_mutex needs to be held before calling this function.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param struct mic_irq \*cookie:
+    :param cookie:
         cookie obtained during a successful call to mic_request_threaded_irq
+    :type cookie: struct mic_irq \*
 
-    :param void \*data:
+    :param data:
         private data specified by the calling function during the
         mic_request_threaded_irq
+    :type data: void \*
 
 .. _`mic_free_irq.return`:
 
@@ -249,11 +277,13 @@ mic_setup_interrupts
 
     Initializes interrupts.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`mic_setup_interrupts.return`:
 
@@ -271,11 +301,13 @@ mic_free_interrupts
 
     Frees interrupts setup by mic_setup_interrupts
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance
+    :type mdev: struct mic_device \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device structure
+    :type pdev: struct pci_dev \*
 
 .. _`mic_free_interrupts.description`:
 
@@ -293,8 +325,9 @@ mic_intr_restore
 
     Restore MIC interrupt registers.
 
-    :param struct mic_device \*mdev:
+    :param mdev:
         pointer to mic_device instance.
+    :type mdev: struct mic_device \*
 
 .. _`mic_intr_restore.description`:
 

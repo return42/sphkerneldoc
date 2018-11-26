@@ -10,8 +10,9 @@ kgdb_nmi_poll_knock
 
     Check if it is time to enter the debugger
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kgdb_nmi_poll_knock.description`:
 

@@ -20,6 +20,7 @@ Definition
     struct vsp1_du_lif_config {
         unsigned int width;
         unsigned int height;
+        bool interlaced;
         void (*callback)(void *data, bool completed, u32 crc);
         void *callback_data;
     }
@@ -34,6 +35,9 @@ width
 
 height
     output frame height
+
+interlaced
+    true for interlaced pipelines
 
 callback
     frame completion callback function (optional). When a callback
@@ -78,7 +82,7 @@ pixelformat
     plane pixel format (V4L2 4CC)
 
 pitch
-    line pitch in bytes, for all planes
+    line pitch in bytes for the first plane
 
 mem
     DMA memory address for each plane of the frame buffer

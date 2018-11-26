@@ -19,6 +19,7 @@ Definition
 
     struct itrace_synth_opts {
         bool set;
+        bool default_no_sample;
         bool inject;
         bool instructions;
         bool branches;
@@ -48,6 +49,9 @@ Members
 
 set
     indicates whether or not options have been set
+
+default_no_sample
+    Default to no sampling.
 
 inject
     indicates the event (not just the sample) must be fully synthesized

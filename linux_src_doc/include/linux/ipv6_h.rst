@@ -48,7 +48,7 @@ Definition
             } bits;
             __u16 all;
         } rxopt;
-        __u16 recverr:1,sndflow:1,repflow:1,pmtudisc:3,padding:1, srcprefs:3, dontfrag:1,autoflowlabel:1, autoflowlabel_set:1;
+        __u16 recverr:1,sndflow:1,repflow:1,pmtudisc:3,padding:1, srcprefs:3, dontfrag:1,autoflowlabel:1,autoflowlabel_set:1, mc_all:1;
         __u8 min_hopcount;
         __u8 tclass;
         __be32 rcv_flowinfo;
@@ -150,6 +150,9 @@ autoflowlabel
     *undescribed*
 
 autoflowlabel_set
+    *undescribed*
+
+mc_all
     *undescribed*
 
 min_hopcount

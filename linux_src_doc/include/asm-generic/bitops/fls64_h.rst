@@ -10,8 +10,9 @@ fls64
 
     find last set bit in a 64-bit word
 
-    :param __u64 x:
+    :param x:
         the word to search
+    :type x: __u64
 
 .. _`fls64.description`:
 

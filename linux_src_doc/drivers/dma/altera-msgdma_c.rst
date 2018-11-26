@@ -209,8 +209,9 @@ msgdma_get_descriptor
 
     Get the sw descriptor from the pool
 
-    :param struct msgdma_device \*mdev:
+    :param mdev:
         Pointer to the Altera mSGDMA device structure
+    :type mdev: struct msgdma_device \*
 
 .. _`msgdma_get_descriptor.return`:
 
@@ -228,11 +229,13 @@ msgdma_free_descriptor
 
     Issue pending transactions
 
-    :param struct msgdma_device \*mdev:
+    :param mdev:
         Pointer to the Altera mSGDMA device structure
+    :type mdev: struct msgdma_device \*
 
-    :param struct msgdma_sw_desc \*desc:
+    :param desc:
         Transaction descriptor pointer
+    :type desc: struct msgdma_sw_desc \*
 
 .. _`msgdma_free_desc_list`:
 
@@ -243,11 +246,13 @@ msgdma_free_desc_list
 
     Free descriptors list
 
-    :param struct msgdma_device \*mdev:
+    :param mdev:
         Pointer to the Altera mSGDMA device structure
+    :type mdev: struct msgdma_device \*
 
-    :param struct list_head \*list:
+    :param list:
         List to parse and delete the descriptor
+    :type list: struct list_head \*
 
 .. _`msgdma_desc_config`:
 
@@ -258,20 +263,25 @@ msgdma_desc_config
 
     Configure the descriptor
 
-    :param struct msgdma_extended_desc \*desc:
+    :param desc:
         Hw descriptor pointer
+    :type desc: struct msgdma_extended_desc \*
 
-    :param dma_addr_t dst:
+    :param dst:
         Destination buffer address
+    :type dst: dma_addr_t
 
-    :param dma_addr_t src:
+    :param src:
         Source buffer address
+    :type src: dma_addr_t
 
-    :param size_t len:
+    :param len:
         Transfer length
+    :type len: size_t
 
-    :param u32 stride:
+    :param stride:
         *undescribed*
+    :type stride: u32
 
 .. _`msgdma_desc_config_eod`:
 
@@ -282,8 +292,9 @@ msgdma_desc_config_eod
 
     Mark the descriptor as end descriptor
 
-    :param struct msgdma_extended_desc \*desc:
+    :param desc:
         Hw descriptor pointer
+    :type desc: struct msgdma_extended_desc \*
 
 .. _`msgdma_tx_submit`:
 
@@ -294,8 +305,9 @@ msgdma_tx_submit
 
     Submit DMA transaction
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         Async transaction descriptor pointer
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`msgdma_tx_submit.return`:
 
@@ -313,20 +325,25 @@ msgdma_prep_memcpy
 
     prepare descriptors for memcpy transaction
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param dma_addr_t dma_dst:
+    :param dma_dst:
         Destination buffer address
+    :type dma_dst: dma_addr_t
 
-    :param dma_addr_t dma_src:
+    :param dma_src:
         Source buffer address
+    :type dma_src: dma_addr_t
 
-    :param size_t len:
+    :param len:
         Transfer length
+    :type len: size_t
 
-    :param ulong flags:
+    :param flags:
         transfer ack flags
+    :type flags: ulong
 
 .. _`msgdma_prep_memcpy.return`:
 
@@ -344,23 +361,29 @@ msgdma_prep_slave_sg
 
     prepare descriptors for a slave sg transaction
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         Destination scatter list
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int sg_len:
+    :param sg_len:
         Number of entries in destination scatter list
+    :type sg_len: unsigned int
 
-    :param enum dma_transfer_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         transfer ack flags
+    :type flags: unsigned long
 
-    :param void \*context:
+    :param context:
         transfer context (unused)
+    :type context: void \*
 
 .. _`msgdma_copy_desc_to_fifo`:
 
@@ -371,11 +394,13 @@ msgdma_copy_desc_to_fifo
 
     copy descriptor(s) into controller FIFO
 
-    :param struct msgdma_device \*mdev:
+    :param mdev:
         Pointer to the Altera mSGDMA device structure
+    :type mdev: struct msgdma_device \*
 
-    :param struct msgdma_sw_desc \*desc:
+    :param desc:
         Transaction descriptor pointer
+    :type desc: struct msgdma_sw_desc \*
 
 .. _`msgdma_start_transfer`:
 
@@ -386,8 +411,9 @@ msgdma_start_transfer
 
     Initiate the new transfer
 
-    :param struct msgdma_device \*mdev:
+    :param mdev:
         Pointer to the Altera mSGDMA device structure
+    :type mdev: struct msgdma_device \*
 
 .. _`msgdma_issue_pending`:
 
@@ -398,8 +424,9 @@ msgdma_issue_pending
 
     Issue pending transactions
 
-    :param struct dma_chan \*chan:
+    :param chan:
         DMA channel pointer
+    :type chan: struct dma_chan \*
 
 .. _`msgdma_chan_desc_cleanup`:
 
@@ -410,8 +437,9 @@ msgdma_chan_desc_cleanup
 
     Cleanup the completed descriptors
 
-    :param struct msgdma_device \*mdev:
+    :param mdev:
         Pointer to the Altera mSGDMA device structure
+    :type mdev: struct msgdma_device \*
 
 .. _`msgdma_complete_descriptor`:
 
@@ -422,8 +450,9 @@ msgdma_complete_descriptor
 
     Mark the active descriptor as complete
 
-    :param struct msgdma_device \*mdev:
+    :param mdev:
         Pointer to the Altera mSGDMA device structure
+    :type mdev: struct msgdma_device \*
 
 .. _`msgdma_free_descriptors`:
 
@@ -434,8 +463,9 @@ msgdma_free_descriptors
 
     Free channel descriptors
 
-    :param struct msgdma_device \*mdev:
+    :param mdev:
         Pointer to the Altera mSGDMA device structure
+    :type mdev: struct msgdma_device \*
 
 .. _`msgdma_free_chan_resources`:
 
@@ -446,8 +476,9 @@ msgdma_free_chan_resources
 
     Free channel resources
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel pointer
+    :type dchan: struct dma_chan \*
 
 .. _`msgdma_alloc_chan_resources`:
 
@@ -458,8 +489,9 @@ msgdma_alloc_chan_resources
 
     Allocate channel resources
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
 .. _`msgdma_alloc_chan_resources.return`:
 
@@ -477,8 +509,9 @@ msgdma_tasklet
 
     Schedule completion tasklet
 
-    :param unsigned long data:
+    :param data:
         Pointer to the Altera sSGDMA channel structure
+    :type data: unsigned long
 
 .. _`msgdma_irq_handler`:
 
@@ -489,11 +522,13 @@ msgdma_irq_handler
 
     Altera mSGDMA Interrupt handler
 
-    :param int irq:
+    :param irq:
         IRQ number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Pointer to the Altera mSGDMA device structure
+    :type data: void \*
 
 .. _`msgdma_irq_handler.return`:
 
@@ -511,8 +546,9 @@ msgdma_dev_remove
 
     Channel remove function
 
-    :param struct msgdma_device \*mdev:
+    :param mdev:
         Pointer to the Altera mSGDMA device structure
+    :type mdev: struct msgdma_device \*
 
 .. _`msgdma_probe`:
 
@@ -523,8 +559,9 @@ msgdma_probe
 
     Driver probe function
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`msgdma_probe.return`:
 
@@ -542,8 +579,9 @@ msgdma_remove
 
     Driver remove function
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`msgdma_remove.return`:
 

@@ -10,14 +10,17 @@ iscsi_tcp_segment_init_sg
 
     init indicated scatterlist entry
 
-    :param struct iscsi_segment \*segment:
+    :param segment:
         the buffer object
+    :type segment: struct iscsi_segment \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatterlist
+    :type sg: struct scatterlist \*
 
-    :param unsigned int offset:
+    :param offset:
         byte offset into that sg entry
+    :type offset: unsigned int
 
 .. _`iscsi_tcp_segment_init_sg.description`:
 
@@ -37,11 +40,13 @@ iscsi_tcp_segment_map
 
     map the current S/G page
 
-    :param struct iscsi_segment \*segment:
+    :param segment:
         iscsi_segment
+    :type segment: struct iscsi_segment \*
 
-    :param int recv:
+    :param recv:
         1 if called from recv path
+    :type recv: int
 
 .. _`iscsi_tcp_segment_map.description`:
 
@@ -61,17 +66,21 @@ iscsi_tcp_segment_done
 
     check whether the segment is complete
 
-    :param struct iscsi_tcp_conn \*tcp_conn:
+    :param tcp_conn:
         iscsi tcp connection
+    :type tcp_conn: struct iscsi_tcp_conn \*
 
-    :param struct iscsi_segment \*segment:
+    :param segment:
         iscsi segment to check
+    :type segment: struct iscsi_segment \*
 
-    :param int recv:
+    :param recv:
         set to one of this is called from the recv path
+    :type recv: int
 
-    :param unsigned copied:
+    :param copied:
         number of bytes copied
+    :type copied: unsigned
 
 .. _`iscsi_tcp_segment_done.description`:
 
@@ -96,17 +105,21 @@ iscsi_tcp_segment_recv
 
     copy data to segment
 
-    :param struct iscsi_tcp_conn \*tcp_conn:
+    :param tcp_conn:
         the iSCSI TCP connection
+    :type tcp_conn: struct iscsi_tcp_conn \*
 
-    :param struct iscsi_segment \*segment:
+    :param segment:
         the buffer to copy to
+    :type segment: struct iscsi_segment \*
 
-    :param const void \*ptr:
+    :param ptr:
         data pointer
+    :type ptr: const void \*
 
-    :param unsigned int len:
+    :param len:
         amount of data available
+    :type len: unsigned int
 
 .. _`iscsi_tcp_segment_recv.description`:
 
@@ -132,8 +145,9 @@ iscsi_tcp_hdr_recv_prep
 
     prep segment for hdr reception
 
-    :param struct iscsi_tcp_conn \*tcp_conn:
+    :param tcp_conn:
         iscsi connection to prep for
+    :type tcp_conn: struct iscsi_tcp_conn \*
 
 .. _`iscsi_tcp_hdr_recv_prep.description`:
 
@@ -153,8 +167,9 @@ iscsi_tcp_cleanup_task
 
     free tcp_task resources
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_tcp_cleanup_task.description`:
 
@@ -172,11 +187,13 @@ iscsi_tcp_data_in
 
     SCSI Data-In Response processing
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         scsi command task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_tcp_r2t_rsp`:
 
@@ -187,11 +204,13 @@ iscsi_tcp_r2t_rsp
 
     iSCSI R2T Response processing
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
-    :param struct iscsi_task \*task:
+    :param task:
         scsi command task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_tcp_hdr_dissect`:
 
@@ -202,11 +221,13 @@ iscsi_tcp_hdr_dissect
 
     process PDU header
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iSCSI connection
+    :type conn: struct iscsi_conn \*
 
-    :param struct iscsi_hdr \*hdr:
+    :param hdr:
         PDU header
+    :type hdr: struct iscsi_hdr \*
 
 .. _`iscsi_tcp_hdr_dissect.description`:
 
@@ -227,11 +248,13 @@ iscsi_tcp_hdr_recv_done
 
     process PDU header
 
-    :param struct iscsi_tcp_conn \*tcp_conn:
+    :param tcp_conn:
         iSCSI TCP connection
+    :type tcp_conn: struct iscsi_tcp_conn \*
 
-    :param struct iscsi_segment \*segment:
+    :param segment:
         the buffer segment being processed
+    :type segment: struct iscsi_segment \*
 
 .. _`iscsi_tcp_hdr_recv_done.description`:
 
@@ -251,8 +274,9 @@ iscsi_tcp_recv_segment_is_hdr
 
     tests if we are reading in a header
 
-    :param struct iscsi_tcp_conn \*tcp_conn:
+    :param tcp_conn:
         iscsi tcp conn
+    :type tcp_conn: struct iscsi_tcp_conn \*
 
 .. _`iscsi_tcp_recv_segment_is_hdr.description`:
 
@@ -271,20 +295,25 @@ iscsi_tcp_recv_skb
 
     Process skb
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         network buffer with header and/or data segment
+    :type skb: struct sk_buff \*
 
-    :param unsigned int offset:
+    :param offset:
         offset in skb
+    :type offset: unsigned int
 
-    :param bool offloaded:
+    :param offloaded:
         bool indicating if transfer was offloaded
+    :type offloaded: bool
 
-    :param int \*status:
+    :param status:
         iscsi TCP status result
+    :type status: int \*
 
 .. _`iscsi_tcp_recv_skb.description`:
 
@@ -303,8 +332,9 @@ iscsi_tcp_task_init
 
     Initialize iSCSI SCSI_READ or SCSI_WRITE commands
 
-    :param struct iscsi_task \*task:
+    :param task:
         scsi command task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_tcp_task_xmit`:
 
@@ -315,8 +345,9 @@ iscsi_tcp_task_xmit
 
     xmit normal PDU task
 
-    :param struct iscsi_task \*task:
+    :param task:
         iscsi command task
+    :type task: struct iscsi_task \*
 
 .. _`iscsi_tcp_task_xmit.description`:
 

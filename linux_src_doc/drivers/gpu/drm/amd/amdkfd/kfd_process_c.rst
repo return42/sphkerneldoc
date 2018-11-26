@@ -10,11 +10,13 @@ kfd_process_device_init_vm
 
     Initialize a VM for a process-device
 
-    :param struct kfd_process_device \*pdd:
+    :param pdd:
         The process-device
+    :type pdd: struct kfd_process_device \*
 
-    :param struct file \*drm_file:
+    :param drm_file:
         Optional pointer to a DRM file descriptor
+    :type drm_file: struct file \*
 
 .. _`kfd_process_device_init_vm.description`:
 

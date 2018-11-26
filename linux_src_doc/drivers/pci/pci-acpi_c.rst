@@ -10,8 +10,9 @@ pciehp_is_native
 
     Check whether a hotplug port is handled by the OS
 
-    :param struct pci_dev \*bridge:
+    :param bridge:
         Hotplug port to check
+    :type bridge: struct pci_dev \*
 
 .. _`pciehp_is_native.description`:
 
@@ -30,8 +31,9 @@ shpchp_is_native
 
     Check whether a hotplug port is handled by the OS
 
-    :param struct pci_dev \*bridge:
+    :param bridge:
         Hotplug port to check
+    :type bridge: struct pci_dev \*
 
 .. _`shpchp_is_native.description`:
 
@@ -50,8 +52,9 @@ pci_acpi_wake_bus
 
     Root bus wakeup notification fork function.
 
-    :param struct acpi_device_wakeup_context \*context:
+    :param context:
         Device wakeup context.
+    :type context: struct acpi_device_wakeup_context \*
 
 .. _`pci_acpi_wake_dev`:
 
@@ -62,8 +65,9 @@ pci_acpi_wake_dev
 
     PCI device wakeup notification work function.
 
-    :param struct acpi_device_wakeup_context \*context:
+    :param context:
         Device wakeup context.
+    :type context: struct acpi_device_wakeup_context \*
 
 .. _`pci_acpi_add_bus_pm_notifier`:
 
@@ -74,8 +78,9 @@ pci_acpi_add_bus_pm_notifier
 
     Register PM notifier for root PCI bus.
 
-    :param struct acpi_device \*dev:
+    :param dev:
         PCI root bridge ACPI device.
+    :type dev: struct acpi_device \*
 
 .. _`pci_acpi_add_pm_notifier`:
 
@@ -86,11 +91,13 @@ pci_acpi_add_pm_notifier
 
     Register PM notifier for given PCI device.
 
-    :param struct acpi_device \*dev:
+    :param dev:
         ACPI device to add the notifier for.
+    :type dev: struct acpi_device \*
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         PCI device to check for the PME status if an event is signaled.
+    :type pci_dev: struct pci_dev \*
 
 .. _`pci_acpi_optimize_delay`:
 
@@ -101,11 +108,13 @@ pci_acpi_optimize_delay
 
     optimize PCI D3 and D3cold delay from ACPI
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         the PCI device whose delay is to be updated
+    :type pdev: struct pci_dev \*
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI handle of this device
+    :type handle: acpi_handle
 
 .. _`pci_acpi_optimize_delay.description`:
 
@@ -157,8 +166,9 @@ pci_host_bridge_acpi_msi_domain
 
     Retrieve MSI domain of a PCI host bridge
 
-    :param struct pci_bus \*bus:
+    :param bus:
         The PCI host bridge bus.
+    :type bus: struct pci_bus \*
 
 .. _`pci_host_bridge_acpi_msi_domain.description`:
 

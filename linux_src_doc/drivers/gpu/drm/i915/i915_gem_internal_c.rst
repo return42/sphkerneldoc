@@ -10,11 +10,13 @@ i915_gem_object_create_internal
 
     create an object with volatile pages
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         the i915 device
+    :type i915: struct drm_i915_private \*
 
-    :param phys_addr_t size:
+    :param size:
         the size in bytes of backing storage to allocate for the object
+    :type size: phys_addr_t
 
 .. _`i915_gem_object_create_internal.description`:
 

@@ -22,8 +22,9 @@ SCU_EVENT_TYPE
 
 .. c:function::  SCU_EVENT_TYPE( type)
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
 .. _`scu_event_type.description`:
 
@@ -39,8 +40,9 @@ SCU_EVENT_SPECIFIC
 
 .. c:function::  SCU_EVENT_SPECIFIC( code)
 
-    :param  code:
+    :param code:
         *undescribed*
+    :type code: 
 
 .. _`scu_event_specific.description`:
 
@@ -56,11 +58,13 @@ SCU_EVENT_MESSAGE
 
 .. c:function::  SCU_EVENT_MESSAGE( type,  code)
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
-    :param  code:
+    :param code:
         *undescribed*
+    :type code: 
 
 .. _`scu_event_message.description`:
 
@@ -91,8 +95,9 @@ scu_get_event_type
 
 .. c:function::  scu_get_event_type( event_code)
 
-    :param  event_code:
+    :param event_code:
         *undescribed*
+    :type event_code: 
 
 .. _`scu_get_event_type.description`:
 
@@ -108,8 +113,9 @@ scu_get_event_specifier
 
 .. c:function::  scu_get_event_specifier( event_code)
 
-    :param  event_code:
+    :param event_code:
         *undescribed*
+    :type event_code: 
 
 .. _`scu_get_event_specifier.description`:
 
@@ -125,8 +131,9 @@ scu_get_event_code
 
 .. c:function::  scu_get_event_code( event_code)
 
-    :param  event_code:
+    :param event_code:
         *undescribed*
+    :type event_code: 
 
 .. _`scu_get_event_code.description`:
 

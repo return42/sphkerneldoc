@@ -25,8 +25,8 @@ Definition
         clockid_t it_clock;
         timer_t it_id;
         int it_active;
-        int it_overrun;
-        int it_overrun_last;
+        s64 it_overrun;
+        s64 it_overrun_last;
         int it_requeue_pending;
         int it_sigev_notify;
         ktime_t it_interval;

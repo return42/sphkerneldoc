@@ -10,14 +10,17 @@ alloc_msi_entry
 
     Allocate an initialize msi_entry
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to the device for which this is allocated
+    :type dev: struct device \*
 
-    :param int nvec:
+    :param nvec:
         The number of vectors used in this entry
+    :type nvec: int
 
-    :param const struct cpumask \*affinity:
+    :param affinity:
         Optional pointer to an affinity mask array size of \ ``nvec``\ 
+    :type affinity: const struct cpumask \*
 
 .. _`alloc_msi_entry.description`:
 
@@ -36,14 +39,17 @@ msi_domain_set_affinity
 
     Generic affinity setter function for MSI domains
 
-    :param struct irq_data \*irq_data:
+    :param irq_data:
         The irq data associated to the interrupt
+    :type irq_data: struct irq_data \*
 
-    :param const struct cpumask \*mask:
+    :param mask:
         The affinity mask to set
+    :type mask: const struct cpumask \*
 
-    :param bool force:
+    :param force:
         Flag to enforce setting (disable online checks)
+    :type force: bool
 
 .. _`msi_domain_set_affinity.description`:
 
@@ -62,14 +68,17 @@ msi_create_irq_domain
 
     Create a MSI interrupt domain
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Optional fwnode of the interrupt controller
+    :type fwnode: struct fwnode_handle \*
 
-    :param struct msi_domain_info \*info:
+    :param info:
         MSI domain info
+    :type info: struct msi_domain_info \*
 
-    :param struct irq_domain \*parent:
+    :param parent:
         Parent irq domain
+    :type parent: struct irq_domain \*
 
 .. _`msi_domain_alloc_irqs`:
 
@@ -80,15 +89,18 @@ msi_domain_alloc_irqs
 
     Allocate interrupts from a MSI interrupt domain
 
-    :param struct irq_domain \*domain:
+    :param domain:
         The domain to allocate from
+    :type domain: struct irq_domain \*
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to device struct of the device for which the interrupts
         are allocated
+    :type dev: struct device \*
 
-    :param int nvec:
+    :param nvec:
         The number of interrupts to allocate
+    :type nvec: int
 
 .. _`msi_domain_alloc_irqs.description`:
 
@@ -106,12 +118,14 @@ msi_domain_free_irqs
 
     Free interrupts from a MSI interrupt \ ``domain``\  associated tp \ ``dev``\ 
 
-    :param struct irq_domain \*domain:
+    :param domain:
         The domain to managing the interrupts
+    :type domain: struct irq_domain \*
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to device struct of the device for which the interrupts
         are free
+    :type dev: struct device \*
 
 .. _`msi_get_domain_info`:
 
@@ -122,8 +136,9 @@ msi_get_domain_info
 
     Get the MSI interrupt domain info for \ ``domain``\ 
 
-    :param struct irq_domain \*domain:
+    :param domain:
         The interrupt domain to retrieve data from
+    :type domain: struct irq_domain \*
 
 .. _`msi_get_domain_info.description`:
 
@@ -131,7 +146,7 @@ Description
 -----------
 
 Returns the pointer to the msi_domain_info stored in
-\ ``domain``\ ->host_data.
+\ ``domain->host_data``\ .
 
 .. This file was automatic generated / don't edit.
 

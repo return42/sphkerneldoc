@@ -10,17 +10,21 @@ hlist_bl_for_each_entry
 
     iterate over list of given type
 
-    :param  tpos:
+    :param tpos:
         the type \* to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct hlist_node <hlist_node>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. _`hlist_bl_for_each_entry_safe`:
 
@@ -31,20 +35,25 @@ hlist_bl_for_each_entry_safe
 
     iterate over list of given type safe against removal of list entry
 
-    :param  tpos:
+    :param tpos:
         the type \* to use as a loop cursor.
+    :type tpos: 
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct hlist_node <hlist_node>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another \ :c:type:`struct hlist_node <hlist_node>`\  to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the hlist_node within the struct.
+    :type member: 
 
 .. This file was automatic generated / don't edit.
 

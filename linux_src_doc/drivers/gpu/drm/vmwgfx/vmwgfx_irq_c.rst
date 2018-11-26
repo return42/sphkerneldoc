@@ -10,11 +10,13 @@ vmw_thread_fn
 
     Deferred (process context) irq handler
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         Closure argument. Pointer to a struct drm_device cast to void \*
+    :type arg: void \*
 
 .. _`vmw_thread_fn.description`:
 
@@ -32,11 +34,13 @@ vmw_irq_handler
 
 .. c:function:: irqreturn_t vmw_irq_handler(int irq, void *arg)
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         Closure argument. Pointer to a struct drm_device cast to void \*
+    :type arg: void \*
 
 .. _`vmw_irq_handler.description`:
 
@@ -57,11 +61,13 @@ vmw_irq_install
 
     Install the irq handlers
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to the drm device.
+    :type dev: struct drm_device \*
 
-    :param int irq:
+    :param irq:
         The irq number.
+    :type irq: int
 
 .. _`vmw_irq_install.return`:
 

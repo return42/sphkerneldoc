@@ -31,11 +31,13 @@ addresses and setup/teardown sanity.
 
     Print result string for self test.
 
-    :param  2:
+    :param 2:
         *undescribed*
+    :type 2: 
 
-    :param  3:
+    :param 3:
         *undescribed*
+    :type 3: 
 
 .. _`imr_self_test`:
 
@@ -44,8 +46,9 @@ imr_self_test
 
 .. c:function:: void imr_self_test( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`imr_self_test.description`:
 
@@ -64,8 +67,9 @@ imr_self_test_init
 
     entry point for IMR driver.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`imr_self_test_init.return`:
 
@@ -83,8 +87,9 @@ device_initcall
 
     exit point for IMR code.
 
-    :param  imr_self_test_init:
+    :param imr_self_test_init:
         *undescribed*
+    :type imr_self_test_init: 
 
 .. This file was automatic generated / don't edit.
 

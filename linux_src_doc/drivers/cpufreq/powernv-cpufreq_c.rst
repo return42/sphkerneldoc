@@ -113,8 +113,9 @@ idx_to_pstate
 
     Returns the pstate id corresponding to the frequency in the cpufreq frequency table powernv_freqs indexed by \ ``i``\ .
 
-    :param unsigned int i:
+    :param i:
         *undescribed*
+    :type i: unsigned int
 
 .. _`idx_to_pstate.description`:
 
@@ -133,8 +134,9 @@ pstate_to_idx
 
     Returns the index in the cpufreq frequencytable powernv_freqs for the frequency whose corresponding pstate id is \ ``pstate``\ .
 
-    :param u8 pstate:
+    :param pstate:
         *undescribed*
+    :type pstate: u8
 
 .. _`pstate_to_idx.description`:
 
@@ -154,14 +156,17 @@ calc_global_pstate
 
     Calculate global pstate
 
-    :param unsigned int elapsed_time:
+    :param elapsed_time:
         Elapsed time in milliseconds
+    :type elapsed_time: unsigned int
 
-    :param int highest_lpstate_idx:
+    :param highest_lpstate_idx:
         pstate from which its ramping down
+    :type highest_lpstate_idx: int
 
-    :param int local_pstate_idx:
+    :param local_pstate_idx:
         New local pstate
+    :type local_pstate_idx: int
 
 .. _`calc_global_pstate.description`:
 
@@ -179,8 +184,9 @@ gpstate_timer_handler
 
 .. c:function:: void gpstate_timer_handler(struct timer_list *t)
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`gpstate_timer_handler.description`:
 

@@ -10,11 +10,13 @@ ntfs_file_open
 
     called when an inode is about to be opened
 
-    :param struct inode \*vi:
+    :param vi:
         inode to be opened
+    :type vi: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file structure describing the inode
+    :type filp: struct file \*
 
 .. _`ntfs_file_open.description`:
 
@@ -43,11 +45,13 @@ ntfs_attr_extend_initialized
 
     extend the initialized size of an attribute
 
-    :param ntfs_inode \*ni:
+    :param ni:
         ntfs inode of the attribute to extend
+    :type ni: ntfs_inode \*
 
-    :param const s64 new_init_size:
+    :param new_init_size:
         requested new initialized size in bytes
+    :type new_init_size: const s64
 
 .. _`ntfs_attr_extend_initialized.description`:
 
@@ -99,20 +103,25 @@ held by the caller.
 
     obtain a number of locked pages
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space mapping from which to obtain page cache pages
+    :type mapping: struct address_space \*
 
-    :param pgoff_t index:
+    :param index:
         starting index in \ ``mapping``\  at which to begin obtaining pages
+    :type index: pgoff_t
 
-    :param const unsigned nr_pages:
+    :param nr_pages:
         number of page cache pages to obtain
+    :type nr_pages: const unsigned
 
-    :param struct page \*\*pages:
+    :param pages:
         array of pages in which to return the obtained page cache pages
+    :type pages: struct page \*\*
 
-    :param struct page \*\*cached_page:
+    :param cached_page:
         allocated but as yet unused page
+    :type cached_page: struct page \*\*
 
 .. _`__ntfs_grab_cache_pages.description`:
 
@@ -135,17 +144,21 @@ ntfs_prepare_pages_for_non_resident_write
 
     prepare pages for receiving data
 
-    :param struct page \*\*pages:
+    :param pages:
         array of destination pages
+    :type pages: struct page \*\*
 
-    :param unsigned nr_pages:
+    :param nr_pages:
         number of pages in \ ``pages``\ 
+    :type nr_pages: unsigned
 
-    :param s64 pos:
+    :param pos:
         byte position in file at which the write begins
+    :type pos: s64
 
-    :param size_t bytes:
+    :param bytes:
         number of bytes to be written
+    :type bytes: size_t
 
 .. _`ntfs_prepare_pages_for_non_resident_write.description`:
 
@@ -179,17 +192,21 @@ ntfs_commit_pages_after_non_resident_write
 
     commit the received data
 
-    :param struct page \*\*pages:
+    :param pages:
         array of destination pages
+    :type pages: struct page \*\*
 
-    :param const unsigned nr_pages:
+    :param nr_pages:
         number of pages in \ ``pages``\ 
+    :type nr_pages: const unsigned
 
-    :param s64 pos:
+    :param pos:
         byte position in file at which the write begins
+    :type pos: s64
 
-    :param size_t bytes:
+    :param bytes:
         number of bytes to be written
+    :type bytes: size_t
 
 .. _`ntfs_commit_pages_after_non_resident_write.description`:
 
@@ -207,17 +224,21 @@ ntfs_commit_pages_after_write
 
     commit the received data
 
-    :param struct page \*\*pages:
+    :param pages:
         array of destination pages
+    :type pages: struct page \*\*
 
-    :param const unsigned nr_pages:
+    :param nr_pages:
         number of pages in \ ``pages``\ 
+    :type nr_pages: const unsigned
 
-    :param s64 pos:
+    :param pos:
         byte position in file at which the write begins
+    :type pos: s64
 
-    :param size_t bytes:
+    :param bytes:
         number of bytes to be written
+    :type bytes: size_t
 
 .. _`ntfs_commit_pages_after_write.description`:
 
@@ -262,14 +283,17 @@ ntfs_perform_write
 
     perform buffered write to a file
 
-    :param struct file \*file:
+    :param file:
         file to write to
+    :type file: struct file \*
 
-    :param struct iov_iter \*i:
+    :param i:
         iov_iter with data to write
+    :type i: struct iov_iter \*
 
-    :param loff_t pos:
+    :param pos:
         byte offset in file at which to begin writing to
+    :type pos: loff_t
 
 .. _`ntfs_file_write_iter`:
 
@@ -280,11 +304,13 @@ ntfs_file_write_iter
 
     simple wrapper for \ :c:func:`ntfs_file_write_iter_nolock`\ 
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         IO state structure
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*from:
+    :param from:
         iov_iter with data to write
+    :type from: struct iov_iter \*
 
 .. _`ntfs_file_write_iter.description`:
 
@@ -304,17 +330,21 @@ ntfs_file_fsync
 
     sync a file to disk
 
-    :param struct file \*filp:
+    :param filp:
         file to be synced
+    :type filp: struct file \*
 
-    :param loff_t start:
+    :param start:
         *undescribed*
+    :type start: loff_t
 
-    :param loff_t end:
+    :param end:
         *undescribed*
+    :type end: loff_t
 
-    :param int datasync:
+    :param datasync:
         if non-zero only flush user data and not metadata
+    :type datasync: int
 
 .. _`ntfs_file_fsync.description`:
 

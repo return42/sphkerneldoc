@@ -10,8 +10,9 @@ acpi_idle_bm_check
 
     checks if bus master activity was detected
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`acpi_idle_do_entry`:
 
@@ -22,8 +23,9 @@ acpi_idle_do_entry
 
     enter idle state using the appropriate method
 
-    :param struct acpi_processor_cx \*cx:
+    :param cx:
         cstate data
+    :type cx: struct acpi_processor_cx \*
 
 .. _`acpi_idle_do_entry.description`:
 
@@ -41,11 +43,13 @@ acpi_idle_play_dead
 
     enters an ACPI state for long-term idle (i.e. off-lining)
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the target CPU
+    :type dev: struct cpuidle_device \*
 
-    :param int index:
+    :param index:
         the index of suggested state
+    :type index: int
 
 .. _`acpi_idle_enter_bm`:
 
@@ -56,14 +60,17 @@ acpi_idle_enter_bm
 
     enters C3 with proper BM handling
 
-    :param struct acpi_processor \*pr:
+    :param pr:
         Target processor
+    :type pr: struct acpi_processor \*
 
-    :param struct acpi_processor_cx \*cx:
+    :param cx:
         Target state context
+    :type cx: struct acpi_processor_cx \*
 
-    :param bool timer_bc:
+    :param timer_bc:
         Whether or not to change timer mode to broadcast
+    :type timer_bc: bool
 
 .. _`combine_lpi_states`:
 
@@ -74,14 +81,17 @@ combine_lpi_states
 
     combine local and parent LPI states to form a composite LPI state
 
-    :param struct acpi_lpi_state \*local:
+    :param local:
         local LPI state
+    :type local: struct acpi_lpi_state \*
 
-    :param struct acpi_lpi_state \*parent:
+    :param parent:
         parent LPI state
+    :type parent: struct acpi_lpi_state \*
 
-    :param struct acpi_lpi_state \*result:
+    :param result:
         composite LPI state
+    :type result: struct acpi_lpi_state \*
 
 .. _`acpi_idle_lpi_enter`:
 
@@ -92,14 +102,17 @@ acpi_idle_lpi_enter
 
     enters an ACPI any LPI state
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the target CPU
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver containing cpuidle state info
+    :type drv: struct cpuidle_driver \*
 
-    :param int index:
+    :param index:
         index of target state
+    :type index: int
 
 .. _`acpi_idle_lpi_enter.return`:
 
@@ -117,8 +130,9 @@ acpi_processor_setup_cpuidle_states
 
     prepares and configures cpuidle global state data i.e. idle routines
 
-    :param struct acpi_processor \*pr:
+    :param pr:
         the ACPI processor
+    :type pr: struct acpi_processor \*
 
 .. _`acpi_processor_setup_cpuidle_dev`:
 
@@ -129,11 +143,13 @@ acpi_processor_setup_cpuidle_dev
 
     prepares and configures CPUIDLE device i.e. per-cpu data
 
-    :param struct acpi_processor \*pr:
+    :param pr:
         the ACPI processor
+    :type pr: struct acpi_processor \*
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the cpuidle device
+    :type dev: struct cpuidle_device \*
 
 .. This file was automatic generated / don't edit.
 

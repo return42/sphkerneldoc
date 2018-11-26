@@ -10,8 +10,9 @@ fh_send_nmi
 
     send NMI to virtual cpu(s).
 
-    :param unsigned int vcpu_mask:
+    :param vcpu_mask:
         send NMI to virtual cpu(s) specified by this mask.
+    :type vcpu_mask: unsigned int
 
 .. _`fh_send_nmi.description`:
 
@@ -29,20 +30,25 @@ fh_partition_get_dtprop
 
     get a property from a guest device tree.
 
-    :param int handle:
+    :param handle:
         handle of partition whose device tree is to be accessed
+    :type handle: int
 
-    :param uint64_t dtpath_addr:
+    :param dtpath_addr:
         physical address of device tree path to access
+    :type dtpath_addr: uint64_t
 
-    :param uint64_t propname_addr:
+    :param propname_addr:
         physical address of name of property
+    :type propname_addr: uint64_t
 
-    :param uint64_t propvalue_addr:
+    :param propvalue_addr:
         physical address of property value buffer
+    :type propvalue_addr: uint64_t
 
-    :param uint32_t \*propvalue_len:
+    :param propvalue_len:
         length of buffer on entry, length of property on return
+    :type propvalue_len: uint32_t \*
 
 .. _`fh_partition_get_dtprop.description`:
 
@@ -58,20 +64,25 @@ fh_partition_set_dtprop
 
 .. c:function:: unsigned int fh_partition_set_dtprop(int handle, uint64_t dtpath_addr, uint64_t propname_addr, uint64_t propvalue_addr, uint32_t propvalue_len)
 
-    :param int handle:
+    :param handle:
         handle of partition whose device tree is to be accessed
+    :type handle: int
 
-    :param uint64_t dtpath_addr:
+    :param dtpath_addr:
         physical address of device tree path to access
+    :type dtpath_addr: uint64_t
 
-    :param uint64_t propname_addr:
+    :param propname_addr:
         physical address of name of property
+    :type propname_addr: uint64_t
 
-    :param uint64_t propvalue_addr:
+    :param propvalue_addr:
         physical address of property value
+    :type propvalue_addr: uint64_t
 
-    :param uint32_t propvalue_len:
+    :param propvalue_len:
         length of property
+    :type propvalue_len: uint32_t
 
 .. _`fh_partition_set_dtprop.description`:
 
@@ -89,8 +100,9 @@ fh_partition_restart
 
     reboot the current partition
 
-    :param unsigned int partition:
+    :param partition:
         partition ID
+    :type partition: unsigned int
 
 .. _`fh_partition_restart.description`:
 
@@ -108,11 +120,13 @@ fh_partition_get_status
 
     gets the status of a partition
 
-    :param unsigned int partition:
+    :param partition:
         partition ID
+    :type partition: unsigned int
 
-    :param unsigned int \*status:
+    :param status:
         returned status code
+    :type status: unsigned int \*
 
 .. _`fh_partition_get_status.description`:
 
@@ -130,14 +144,17 @@ fh_partition_start
 
     boots and starts execution of the specified partition
 
-    :param unsigned int partition:
+    :param partition:
         partition ID
+    :type partition: unsigned int
 
-    :param uint32_t entry_point:
+    :param entry_point:
         guest physical address to start execution
+    :type entry_point: uint32_t
 
-    :param int load:
+    :param load:
         *undescribed*
+    :type load: int
 
 .. _`fh_partition_start.description`:
 
@@ -158,8 +175,9 @@ fh_partition_stop
 
     stops another partition
 
-    :param unsigned int partition:
+    :param partition:
         partition ID
+    :type partition: unsigned int
 
 .. _`fh_partition_stop.description`:
 
@@ -228,17 +246,21 @@ fh_partition_memcpy
 
     copies data from one guest to another
 
-    :param unsigned int source:
+    :param source:
         the ID of the partition to copy from
+    :type source: unsigned int
 
-    :param unsigned int target:
+    :param target:
         the ID of the partition to copy to
+    :type target: unsigned int
 
-    :param phys_addr_t sg_list:
+    :param sg_list:
         guest physical address of an array of \ :c:type:`struct fh_sg_list <fh_sg_list>`\  structures
+    :type sg_list: phys_addr_t
 
-    :param unsigned int count:
+    :param count:
         the number of entries in \ ``sg_list``\ 
+    :type count: unsigned int
 
 .. _`fh_partition_memcpy.description`:
 
@@ -256,8 +278,9 @@ fh_dma_enable
 
     enable DMA for the specified device
 
-    :param unsigned int liodn:
+    :param liodn:
         the LIODN of the I/O device for which to enable DMA
+    :type liodn: unsigned int
 
 .. _`fh_dma_enable.description`:
 
@@ -275,8 +298,9 @@ fh_dma_disable
 
     disable DMA for the specified device
 
-    :param unsigned int liodn:
+    :param liodn:
         the LIODN of the I/O device for which to disable DMA
+    :type liodn: unsigned int
 
 .. _`fh_dma_disable.description`:
 
@@ -294,11 +318,13 @@ fh_vmpic_get_msir
 
     returns the MPIC-MSI register value
 
-    :param unsigned int interrupt:
+    :param interrupt:
         the interrupt number
+    :type interrupt: unsigned int
 
-    :param unsigned int \*msir_val:
+    :param msir_val:
         returned MPIC-MSI register value
+    :type msir_val: unsigned int \*
 
 .. _`fh_vmpic_get_msir.description`:
 
@@ -316,8 +342,9 @@ fh_system_reset
 
     reset the system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fh_system_reset.description`:
 
@@ -335,21 +362,26 @@ fh_err_get_info
 
     get platform error information
 
-    :param int queue:
+    :param queue:
         0 for guest error event queue
         1 for global error event queue
+    :type queue: int
 
-    :param uint32_t \*bufsize:
+    :param bufsize:
         *undescribed*
+    :type bufsize: uint32_t \*
 
-    :param uint32_t addr_hi:
+    :param addr_hi:
         *undescribed*
+    :type addr_hi: uint32_t
 
-    :param uint32_t addr_lo:
+    :param addr_lo:
         *undescribed*
+    :type addr_lo: uint32_t
 
-    :param int peek:
+    :param peek:
         *undescribed*
+    :type peek: int
 
 .. _`fh_err_get_info.description`:
 
@@ -367,14 +399,17 @@ fh_get_core_state
 
     get the state of a vcpu
 
-    :param unsigned int handle:
+    :param handle:
         handle of partition containing the vcpu
+    :type handle: unsigned int
 
-    :param unsigned int vcpu:
+    :param vcpu:
         vcpu number within the partition
+    :type vcpu: unsigned int
 
-    :param unsigned int \*state:
+    :param state:
         the current state of the vcpu, see FH_VCPU\_\*
+    :type state: unsigned int \*
 
 .. _`fh_get_core_state.description`:
 
@@ -392,11 +427,13 @@ fh_enter_nap
 
     enter nap on a vcpu
 
-    :param unsigned int handle:
+    :param handle:
         handle of partition containing the vcpu
+    :type handle: unsigned int
 
-    :param unsigned int vcpu:
+    :param vcpu:
         vcpu number within the partition
+    :type vcpu: unsigned int
 
 .. _`fh_enter_nap.description`:
 
@@ -417,11 +454,13 @@ fh_exit_nap
 
     exit nap on a vcpu
 
-    :param unsigned int handle:
+    :param handle:
         handle of partition containing the vcpu
+    :type handle: unsigned int
 
-    :param unsigned int vcpu:
+    :param vcpu:
         vcpu number within the partition
+    :type vcpu: unsigned int
 
 .. _`fh_exit_nap.description`:
 
@@ -439,8 +478,9 @@ fh_claim_device
 
     claim a "claimable" shared device
 
-    :param unsigned int handle:
+    :param handle:
         fsl,hv-device-handle of node to claim
+    :type handle: unsigned int
 
 .. _`fh_claim_device.description`:
 
@@ -456,8 +496,9 @@ fh_partition_stop_dma
 
 .. c:function:: unsigned int fh_partition_stop_dma(unsigned int handle)
 
-    :param unsigned int handle:
+    :param handle:
         partition (must be stopped) whose DMA is to be disabled
+    :type handle: unsigned int
 
 .. _`fh_partition_stop_dma.description`:
 

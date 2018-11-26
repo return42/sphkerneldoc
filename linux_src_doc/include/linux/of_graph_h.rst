@@ -46,11 +46,13 @@ for_each_endpoint_of_node
 
     iterate over every endpoint in a device node
 
-    :param  parent:
+    :param parent:
         parent device node containing ports and endpoints
+    :type parent: 
 
-    :param  child:
+    :param child:
         loop variable pointing to the current endpoint node
+    :type child: 
 
 .. _`for_each_endpoint_of_node.description`:
 

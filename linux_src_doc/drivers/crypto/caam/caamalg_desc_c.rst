@@ -10,21 +10,25 @@ cnstr_shdsc_aead_null_encap
 
     IPSec ESP encapsulation shared descriptor (non-protocol) with no (null) encryption.
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*adata:
+    :param adata:
         pointer to authentication transform definitions.
         A split key is required for SEC Era < 6; the size of the split key
         is specified in this case. Valid algorithm values - one of
         OP_ALG_ALGSEL_{MD5, SHA1, SHA224, SHA256, SHA384, SHA512} ANDed
         with OP_ALG_AAI_HMAC_PRECOMP.
+    :type adata: struct alginfo \*
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param int era:
+    :param era:
         SEC Era
+    :type era: int
 
 .. _`cnstr_shdsc_aead_null_decap`:
 
@@ -35,21 +39,25 @@ cnstr_shdsc_aead_null_decap
 
     IPSec ESP decapsulation shared descriptor (non-protocol) with no (null) decryption.
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*adata:
+    :param adata:
         pointer to authentication transform definitions.
         A split key is required for SEC Era < 6; the size of the split key
         is specified in this case. Valid algorithm values - one of
         OP_ALG_ALGSEL_{MD5, SHA1, SHA224, SHA256, SHA384, SHA512} ANDed
         with OP_ALG_AAI_HMAC_PRECOMP.
+    :type adata: struct alginfo \*
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param int era:
+    :param era:
         SEC Era
+    :type era: int
 
 .. _`cnstr_shdsc_aead_encap`:
 
@@ -60,41 +68,51 @@ cnstr_shdsc_aead_encap
 
     IPSec ESP encapsulation shared descriptor (non-protocol).
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - one of OP_ALG_ALGSEL_{AES, DES, 3DES} ANDed
         with OP_ALG_AAI_CBC or OP_ALG_AAI_CTR_MOD128.
+    :type cdata: struct alginfo \*
 
-    :param struct alginfo \*adata:
+    :param adata:
         pointer to authentication transform definitions.
         A split key is required for SEC Era < 6; the size of the split key
         is specified in this case. Valid algorithm values - one of
         OP_ALG_ALGSEL_{MD5, SHA1, SHA224, SHA256, SHA384, SHA512} ANDed
         with OP_ALG_AAI_HMAC_PRECOMP.
+    :type adata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param const bool is_rfc3686:
+    :param is_rfc3686:
         true when ctr(aes) is wrapped by rfc3686 template
+    :type is_rfc3686: const bool
 
-    :param u32 \*nonce:
+    :param nonce:
         pointer to rfc3686 nonce
+    :type nonce: u32 \*
 
-    :param const u32 ctx1_iv_off:
+    :param ctx1_iv_off:
         IV offset in CONTEXT1 register
+    :type ctx1_iv_off: const u32
 
-    :param const bool is_qi:
+    :param is_qi:
         true when called from caam/qi
+    :type is_qi: const bool
 
-    :param int era:
+    :param era:
         SEC Era
+    :type era: int
 
 .. _`cnstr_shdsc_aead_decap`:
 
@@ -105,44 +123,55 @@ cnstr_shdsc_aead_decap
 
     IPSec ESP decapsulation shared descriptor (non-protocol).
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - one of OP_ALG_ALGSEL_{AES, DES, 3DES} ANDed
         with OP_ALG_AAI_CBC or OP_ALG_AAI_CTR_MOD128.
+    :type cdata: struct alginfo \*
 
-    :param struct alginfo \*adata:
+    :param adata:
         pointer to authentication transform definitions.
         A split key is required for SEC Era < 6; the size of the split key
         is specified in this case. Valid algorithm values - one of
         OP_ALG_ALGSEL_{MD5, SHA1, SHA224, SHA256, SHA384, SHA512} ANDed
         with OP_ALG_AAI_HMAC_PRECOMP.
+    :type adata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param const bool geniv:
+    :param geniv:
         *undescribed*
+    :type geniv: const bool
 
-    :param const bool is_rfc3686:
+    :param is_rfc3686:
         true when ctr(aes) is wrapped by rfc3686 template
+    :type is_rfc3686: const bool
 
-    :param u32 \*nonce:
+    :param nonce:
         pointer to rfc3686 nonce
+    :type nonce: u32 \*
 
-    :param const u32 ctx1_iv_off:
+    :param ctx1_iv_off:
         IV offset in CONTEXT1 register
+    :type ctx1_iv_off: const u32
 
-    :param const bool is_qi:
+    :param is_qi:
         true when called from caam/qi
+    :type is_qi: const bool
 
-    :param int era:
+    :param era:
         SEC Era
+    :type era: int
 
 .. _`cnstr_shdsc_aead_givencap`:
 
@@ -153,41 +182,51 @@ cnstr_shdsc_aead_givencap
 
     IPSec ESP encapsulation shared descriptor (non-protocol) with HW-generated initialization vector.
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - one of OP_ALG_ALGSEL_{AES, DES, 3DES} ANDed
         with OP_ALG_AAI_CBC or OP_ALG_AAI_CTR_MOD128.
+    :type cdata: struct alginfo \*
 
-    :param struct alginfo \*adata:
+    :param adata:
         pointer to authentication transform definitions.
         A split key is required for SEC Era < 6; the size of the split key
         is specified in this case. Valid algorithm values - one of
         OP_ALG_ALGSEL_{MD5, SHA1, SHA224, SHA256, SHA384, SHA512} ANDed
         with OP_ALG_AAI_HMAC_PRECOMP.
+    :type adata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param const bool is_rfc3686:
+    :param is_rfc3686:
         true when ctr(aes) is wrapped by rfc3686 template
+    :type is_rfc3686: const bool
 
-    :param u32 \*nonce:
+    :param nonce:
         pointer to rfc3686 nonce
+    :type nonce: u32 \*
 
-    :param const u32 ctx1_iv_off:
+    :param ctx1_iv_off:
         IV offset in CONTEXT1 register
+    :type ctx1_iv_off: const u32
 
-    :param const bool is_qi:
+    :param is_qi:
         true when called from caam/qi
+    :type is_qi: const bool
 
-    :param int era:
+    :param era:
         SEC Era
+    :type era: int
 
 .. _`cnstr_shdsc_gcm_encap`:
 
@@ -198,21 +237,26 @@ cnstr_shdsc_gcm_encap
 
     gcm encapsulation shared descriptor
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
+    :type cdata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param const bool is_qi:
+    :param is_qi:
         true when called from caam/qi
+    :type is_qi: const bool
 
 .. _`cnstr_shdsc_gcm_decap`:
 
@@ -223,21 +267,26 @@ cnstr_shdsc_gcm_decap
 
     gcm decapsulation shared descriptor
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
+    :type cdata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param const bool is_qi:
+    :param is_qi:
         true when called from caam/qi
+    :type is_qi: const bool
 
 .. _`cnstr_shdsc_rfc4106_encap`:
 
@@ -248,21 +297,26 @@ cnstr_shdsc_rfc4106_encap
 
     IPSec ESP gcm encapsulation shared descriptor (non-protocol).
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
+    :type cdata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param const bool is_qi:
+    :param is_qi:
         true when called from caam/qi
+    :type is_qi: const bool
 
 .. _`cnstr_shdsc_rfc4106_decap`:
 
@@ -273,21 +327,26 @@ cnstr_shdsc_rfc4106_decap
 
     IPSec ESP gcm decapsulation shared descriptor (non-protocol).
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
+    :type cdata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param const bool is_qi:
+    :param is_qi:
         true when called from caam/qi
+    :type is_qi: const bool
 
 .. _`cnstr_shdsc_rfc4543_encap`:
 
@@ -298,21 +357,26 @@ cnstr_shdsc_rfc4543_encap
 
     IPSec ESP gmac encapsulation shared descriptor (non-protocol).
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
+    :type cdata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param const bool is_qi:
+    :param is_qi:
         true when called from caam/qi
+    :type is_qi: const bool
 
 .. _`cnstr_shdsc_rfc4543_decap`:
 
@@ -323,131 +387,124 @@ cnstr_shdsc_rfc4543_decap
 
     IPSec ESP gmac decapsulation shared descriptor (non-protocol).
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_GCM.
+    :type cdata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param unsigned int icvsize:
+    :param icvsize:
         integrity check value (ICV) size (truncated or full)
+    :type icvsize: unsigned int
 
-    :param const bool is_qi:
+    :param is_qi:
         true when called from caam/qi
+    :type is_qi: const bool
 
-.. _`cnstr_shdsc_ablkcipher_encap`:
+.. _`cnstr_shdsc_skcipher_encap`:
 
-cnstr_shdsc_ablkcipher_encap
-============================
+cnstr_shdsc_skcipher_encap
+==========================
 
-.. c:function:: void cnstr_shdsc_ablkcipher_encap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, const bool is_rfc3686, const u32 ctx1_iv_off)
+.. c:function:: void cnstr_shdsc_skcipher_encap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, const bool is_rfc3686, const u32 ctx1_iv_off)
 
-    ablkcipher encapsulation shared descriptor
+    skcipher encapsulation shared descriptor
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - one of OP_ALG_ALGSEL_{AES, DES, 3DES} ANDed
         with OP_ALG_AAI_CBC or OP_ALG_AAI_CTR_MOD128.
+    :type cdata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param const bool is_rfc3686:
+    :param is_rfc3686:
         true when ctr(aes) is wrapped by rfc3686 template
+    :type is_rfc3686: const bool
 
-    :param const u32 ctx1_iv_off:
+    :param ctx1_iv_off:
         IV offset in CONTEXT1 register
+    :type ctx1_iv_off: const u32
 
-.. _`cnstr_shdsc_ablkcipher_decap`:
+.. _`cnstr_shdsc_skcipher_decap`:
 
-cnstr_shdsc_ablkcipher_decap
-============================
+cnstr_shdsc_skcipher_decap
+==========================
 
-.. c:function:: void cnstr_shdsc_ablkcipher_decap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, const bool is_rfc3686, const u32 ctx1_iv_off)
+.. c:function:: void cnstr_shdsc_skcipher_decap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, const bool is_rfc3686, const u32 ctx1_iv_off)
 
-    ablkcipher decapsulation shared descriptor
+    skcipher decapsulation shared descriptor
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - one of OP_ALG_ALGSEL_{AES, DES, 3DES} ANDed
         with OP_ALG_AAI_CBC or OP_ALG_AAI_CTR_MOD128.
+    :type cdata: struct alginfo \*
 
-    :param unsigned int ivsize:
+    :param ivsize:
         initialization vector size
+    :type ivsize: unsigned int
 
-    :param const bool is_rfc3686:
+    :param is_rfc3686:
         true when ctr(aes) is wrapped by rfc3686 template
+    :type is_rfc3686: const bool
 
-    :param const u32 ctx1_iv_off:
+    :param ctx1_iv_off:
         IV offset in CONTEXT1 register
+    :type ctx1_iv_off: const u32
 
-.. _`cnstr_shdsc_ablkcipher_givencap`:
+.. _`cnstr_shdsc_xts_skcipher_encap`:
 
-cnstr_shdsc_ablkcipher_givencap
-===============================
+cnstr_shdsc_xts_skcipher_encap
+==============================
 
-.. c:function:: void cnstr_shdsc_ablkcipher_givencap(u32 * const desc, struct alginfo *cdata, unsigned int ivsize, const bool is_rfc3686, const u32 ctx1_iv_off)
+.. c:function:: void cnstr_shdsc_xts_skcipher_encap(u32 * const desc, struct alginfo *cdata)
 
-    ablkcipher encapsulation shared descriptor with HW-generated initialization vector.
+    xts skcipher encapsulation shared descriptor
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
-        pointer to block cipher transform definitions
-        Valid algorithm values - one of OP_ALG_ALGSEL_{AES, DES, 3DES} ANDed
-        with OP_ALG_AAI_CBC.
-
-    :param unsigned int ivsize:
-        initialization vector size
-
-    :param const bool is_rfc3686:
-        true when ctr(aes) is wrapped by rfc3686 template
-
-    :param const u32 ctx1_iv_off:
-        IV offset in CONTEXT1 register
-
-.. _`cnstr_shdsc_xts_ablkcipher_encap`:
-
-cnstr_shdsc_xts_ablkcipher_encap
-================================
-
-.. c:function:: void cnstr_shdsc_xts_ablkcipher_encap(u32 * const desc, struct alginfo *cdata)
-
-    xts ablkcipher encapsulation shared descriptor
-
-    :param u32 \* const desc:
-        pointer to buffer used for descriptor construction
-
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_XTS.
+    :type cdata: struct alginfo \*
 
-.. _`cnstr_shdsc_xts_ablkcipher_decap`:
+.. _`cnstr_shdsc_xts_skcipher_decap`:
 
-cnstr_shdsc_xts_ablkcipher_decap
-================================
+cnstr_shdsc_xts_skcipher_decap
+==============================
 
-.. c:function:: void cnstr_shdsc_xts_ablkcipher_decap(u32 * const desc, struct alginfo *cdata)
+.. c:function:: void cnstr_shdsc_xts_skcipher_decap(u32 * const desc, struct alginfo *cdata)
 
-    xts ablkcipher decapsulation shared descriptor
+    xts skcipher decapsulation shared descriptor
 
-    :param u32 \* const desc:
+    :param desc:
         pointer to buffer used for descriptor construction
+    :type desc: u32 \* const
 
-    :param struct alginfo \*cdata:
+    :param cdata:
         pointer to block cipher transform definitions
         Valid algorithm values - OP_ALG_ALGSEL_AES ANDed with OP_ALG_AAI_XTS.
+    :type cdata: struct alginfo \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ iser_unreg_mem_fmr
 
     If memory is non-FMR does nothing.
 
-    :param struct iscsi_iser_task \*iser_task:
+    :param iser_task:
         *undescribed*
+    :type iser_task: struct iscsi_iser_task \*
 
-    :param enum iser_data_dir cmd_dir:
+    :param cmd_dir:
         *undescribed*
+    :type cmd_dir: enum iser_data_dir
 
 .. This file was automatic generated / don't edit.
 

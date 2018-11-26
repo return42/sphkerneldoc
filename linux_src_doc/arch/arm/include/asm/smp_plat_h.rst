@@ -10,8 +10,9 @@ smp_cpuid_part
 
     return part id for a given cpu
 
-    :param int cpu:
+    :param cpu:
         logical cpu id.
+    :type cpu: int
 
 .. _`smp_cpuid_part.return`:
 

@@ -10,14 +10,17 @@ bnx2x_move_fp
 
     move content of the fastpath structure.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int from:
+    :param from:
         source FP index
+    :type from: int
 
-    :param int to:
+    :param to:
         destination FP index
+    :type to: int
 
 .. _`bnx2x_move_fp.description`:
 
@@ -39,14 +42,17 @@ bnx2x_fill_fw_str
 
     Fill buffer with FW version string.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param char \*buf:
+    :param buf:
         character buffer to fill with the fw name
+    :type buf: char \*
 
-    :param size_t buf_len:
+    :param buf_len:
         length of the above buffer
+    :type buf_len: size_t
 
 .. _`bnx2x_shrink_eth_fp`:
 
@@ -57,11 +63,13 @@ bnx2x_shrink_eth_fp
 
     guarantees fastpath structures stay intact
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int delta:
+    :param delta:
         number of eth queues which were not allocated
+    :type delta: int
 
 .. _`bnx2x_set_gro_params`:
 
@@ -72,21 +80,26 @@ bnx2x_set_gro_params
 
     compute GRO values
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet skb
+    :type skb: struct sk_buff \*
 
-    :param u16 parsing_flags:
+    :param parsing_flags:
         parsing flags from the START CQE
+    :type parsing_flags: u16
 
-    :param u16 len_on_bd:
+    :param len_on_bd:
         total length of the first packet for the
         aggregation.
+    :type len_on_bd: u16
 
-    :param unsigned int pkt_len:
+    :param pkt_len:
         length of all segments
+    :type pkt_len: unsigned int
 
-    :param u16 num_of_coalesced_segs:
+    :param num_of_coalesced_segs:
         *undescribed*
+    :type num_of_coalesced_segs: u16
 
 .. _`bnx2x_set_gro_params.description`:
 
@@ -106,11 +119,13 @@ bnx2x_fill_report_data
 
     fill link report data to report
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_link_report_data \*data:
+    :param data:
         link state to update
+    :type data: struct bnx2x_link_report_data \*
 
 .. _`bnx2x_fill_report_data.description`:
 
@@ -128,8 +143,9 @@ bnx2x_link_report
 
     report link status to OS.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`bnx2x_link_report.description`:
 
@@ -149,8 +165,9 @@ reporting.
 
     report link status to OS.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
 .. _`__bnx2x_link_report.description`:
 
@@ -169,11 +186,13 @@ bnx2x_free_msix_irqs
 
     free previously requested MSI-X IRQ vectors
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int nvecs:
+    :param nvecs:
         number of vectors to be released
+    :type nvecs: int
 
 .. _`bnx2x_set_real_num_queues`:
 
@@ -184,11 +203,13 @@ bnx2x_set_real_num_queues
 
     configure netdev->real_num_[tx,rx]_queues
 
-    :param struct bnx2x \*bp:
+    :param bp:
         Driver handle
+    :type bp: struct bnx2x \*
 
-    :param int include_cnic:
+    :param include_cnic:
         *undescribed*
+    :type include_cnic: int
 
 .. _`bnx2x_set_real_num_queues.description`:
 
@@ -221,11 +242,13 @@ bnx2x_bz_fp
 
     zero content of the fastpath structure.
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param int index:
+    :param index:
         fastpath index to be zeroed
+    :type index: int
 
 .. _`bnx2x_bz_fp.description`:
 
@@ -244,14 +267,17 @@ bnx2x_set_pbd_gso
 
     update PBD in GSO case.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet skb
+    :type skb: struct sk_buff \*
 
-    :param struct eth_tx_parse_bd_e1x \*pbd:
+    :param pbd:
         parse BD
+    :type pbd: struct eth_tx_parse_bd_e1x \*
 
-    :param u32 xmit_type:
+    :param xmit_type:
         xmit flags
+    :type xmit_type: u32
 
 .. _`bnx2x_set_pbd_csum_enc`:
 
@@ -262,17 +288,21 @@ bnx2x_set_pbd_csum_enc
 
     update PBD with checksum and return header length
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet skb
+    :type skb: struct sk_buff \*
 
-    :param u32 \*parsing_data:
+    :param parsing_data:
         data to be updated
+    :type parsing_data: u32 \*
 
-    :param u32 xmit_type:
+    :param xmit_type:
         xmit flags
+    :type xmit_type: u32
 
 .. _`bnx2x_set_pbd_csum_enc.description`:
 
@@ -290,17 +320,21 @@ bnx2x_set_pbd_csum_e2
 
     update PBD with checksum and return header length
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet skb
+    :type skb: struct sk_buff \*
 
-    :param u32 \*parsing_data:
+    :param parsing_data:
         data to be updated
+    :type parsing_data: u32 \*
 
-    :param u32 xmit_type:
+    :param xmit_type:
         xmit flags
+    :type xmit_type: u32
 
 .. _`bnx2x_set_pbd_csum_e2.description`:
 
@@ -318,17 +352,21 @@ bnx2x_set_pbd_csum
 
     update PBD with checksum and return header length
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet skb
+    :type skb: struct sk_buff \*
 
-    :param struct eth_tx_parse_bd_e1x \*pbd:
+    :param pbd:
         parse BD to be updated
+    :type pbd: struct eth_tx_parse_bd_e1x \*
 
-    :param u32 xmit_type:
+    :param xmit_type:
         xmit flags
+    :type xmit_type: u32
 
 .. _`bnx2x_setup_tc`:
 
@@ -339,11 +377,13 @@ bnx2x_setup_tc
 
     routine to configure net_device for multi tc
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param u8 num_tc:
+    :param num_tc:
         *undescribed*
+    :type num_tc: u8
 
 .. _`bnx2x_setup_tc.description`:
 

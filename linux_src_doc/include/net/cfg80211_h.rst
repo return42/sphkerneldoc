@@ -149,7 +149,7 @@ Definition
 
     struct ieee80211_channel {
         enum nl80211_band band;
-        u16 center_freq;
+        u32 center_freq;
         u16 hw_value;
         u32 flags;
         int max_antenna_gain;
@@ -517,6 +517,94 @@ Description
 This structure describes most essential parameters needed
 to describe 802.11ac VHT capabilities for an STA.
 
+.. _`ieee80211_sta_he_cap`:
+
+struct ieee80211_sta_he_cap
+===========================
+
+.. c:type:: struct ieee80211_sta_he_cap
+
+    STA's HE capabilities
+
+.. _`ieee80211_sta_he_cap.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_sta_he_cap {
+        bool has_he;
+        struct ieee80211_he_cap_elem he_cap_elem;
+        struct ieee80211_he_mcs_nss_supp he_mcs_nss_supp;
+        u8 ppe_thres[IEEE80211_HE_PPE_THRES_MAX_LEN];
+    }
+
+.. _`ieee80211_sta_he_cap.members`:
+
+Members
+-------
+
+has_he
+    true iff HE data is valid.
+
+he_cap_elem
+    Fixed portion of the HE capabilities element.
+
+he_mcs_nss_supp
+    The supported NSS/MCS combinations.
+
+ppe_thres
+    Holds the PPE Thresholds data.
+
+.. _`ieee80211_sta_he_cap.description`:
+
+Description
+-----------
+
+This structure describes most essential parameters needed
+to describe 802.11ax HE capabilities for a STA.
+
+.. _`ieee80211_sband_iftype_data`:
+
+struct ieee80211_sband_iftype_data
+==================================
+
+.. c:type:: struct ieee80211_sband_iftype_data
+
+
+.. _`ieee80211_sband_iftype_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_sband_iftype_data {
+        u16 types_mask;
+        struct ieee80211_sta_he_cap he_cap;
+    }
+
+.. _`ieee80211_sband_iftype_data.members`:
+
+Members
+-------
+
+types_mask
+    interface types mask
+
+he_cap
+    holds the HE capabilities
+
+.. _`ieee80211_sband_iftype_data.description`:
+
+Description
+-----------
+
+This structure encapsulates sband data that is relevant for the
+interface types defined in \ ``types_mask``\ .  Each type in the
+\ ``types_mask``\  must be unique across all instances of iftype_data.
+
 .. _`ieee80211_supported_band`:
 
 struct ieee80211_supported_band
@@ -541,6 +629,8 @@ Definition
         int n_bitrates;
         struct ieee80211_sta_ht_cap ht_cap;
         struct ieee80211_sta_vht_cap vht_cap;
+        u16 n_iftype_data;
+        const struct ieee80211_sband_iftype_data *iftype_data;
     }
 
 .. _`ieee80211_supported_band.members`:
@@ -572,6 +662,15 @@ ht_cap
 vht_cap
     VHT capabilities in this band
 
+n_iftype_data
+    number of iftype data entries
+
+iftype_data
+    interface type data entries.  Note that the bits in
+    \ ``types_mask``\  inside this structure cannot overlap (i.e. only
+    one occurrence of each type is allowed across all instances of
+    iftype_data).
+
 .. _`ieee80211_supported_band.description`:
 
 Description
@@ -579,6 +678,50 @@ Description
 
 This structure describes a frequency band a wiphy
 is able to operate in.
+
+.. _`ieee80211_get_sband_iftype_data`:
+
+ieee80211_get_sband_iftype_data
+===============================
+
+.. c:function:: const struct ieee80211_sband_iftype_data *ieee80211_get_sband_iftype_data(const struct ieee80211_supported_band *sband, u8 iftype)
+
+    return sband data for a given iftype
+
+    :param sband:
+        the sband to search for the STA on
+    :type sband: const struct ieee80211_supported_band \*
+
+    :param iftype:
+        enum nl80211_iftype
+    :type iftype: u8
+
+.. _`ieee80211_get_sband_iftype_data.return`:
+
+Return
+------
+
+pointer to struct ieee80211_sband_iftype_data, or NULL is none found
+
+.. _`ieee80211_get_he_sta_cap`:
+
+ieee80211_get_he_sta_cap
+========================
+
+.. c:function:: const struct ieee80211_sta_he_cap *ieee80211_get_he_sta_cap(const struct ieee80211_supported_band *sband)
+
+    return HE capabilities for an sband's STA
+
+    :param sband:
+        the sband to search for the STA on
+    :type sband: const struct ieee80211_supported_band \*
+
+.. _`ieee80211_get_he_sta_cap.return`:
+
+Return
+------
+
+pointer to the struct ieee80211_sta_he_cap, or NULL is none found
 
 .. _`wiphy_read_of_freq_limits`:
 
@@ -589,8 +732,9 @@ wiphy_read_of_freq_limits
 
     read frequency limits from device tree
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wireless device to get extra limits for
+    :type wiphy: struct wiphy \*
 
 .. _`wiphy_read_of_freq_limits.description`:
 
@@ -782,8 +926,9 @@ cfg80211_get_chandef_type
 
     return old channel type from chandef
 
-    :param const struct cfg80211_chan_def \*chandef:
+    :param chandef:
         the channel definition
+    :type chandef: const struct cfg80211_chan_def \*
 
 .. _`cfg80211_get_chandef_type.return`:
 
@@ -802,14 +947,17 @@ cfg80211_chandef_create
 
     create channel definition using channel type
 
-    :param struct cfg80211_chan_def \*chandef:
+    :param chandef:
         the channel definition struct to fill
+    :type chandef: struct cfg80211_chan_def \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         the control channel
+    :type channel: struct ieee80211_channel \*
 
-    :param enum nl80211_channel_type chantype:
+    :param chantype:
         the channel type
+    :type chantype: enum nl80211_channel_type
 
 .. _`cfg80211_chandef_create.description`:
 
@@ -827,11 +975,13 @@ cfg80211_chandef_identical
 
     check if two channel definitions are identical
 
-    :param const struct cfg80211_chan_def \*chandef1:
+    :param chandef1:
         first channel definition
+    :type chandef1: const struct cfg80211_chan_def \*
 
-    :param const struct cfg80211_chan_def \*chandef2:
+    :param chandef2:
         second channel definition
+    :type chandef2: const struct cfg80211_chan_def \*
 
 .. _`cfg80211_chandef_identical.return`:
 
@@ -850,11 +1000,13 @@ cfg80211_chandef_compatible
 
     check if two channel definitions are compatible
 
-    :param const struct cfg80211_chan_def \*chandef1:
+    :param chandef1:
         first channel definition
+    :type chandef1: const struct cfg80211_chan_def \*
 
-    :param const struct cfg80211_chan_def \*chandef2:
+    :param chandef2:
         second channel definition
+    :type chandef2: const struct cfg80211_chan_def \*
 
 .. _`cfg80211_chandef_compatible.return`:
 
@@ -873,8 +1025,9 @@ cfg80211_chandef_valid
 
     check if a channel definition is valid
 
-    :param const struct cfg80211_chan_def \*chandef:
+    :param chandef:
         the channel definition to check
+    :type chandef: const struct cfg80211_chan_def \*
 
 .. _`cfg80211_chandef_valid.return`:
 
@@ -892,14 +1045,17 @@ cfg80211_chandef_usable
 
     check if secondary channels can be used
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy to validate against
+    :type wiphy: struct wiphy \*
 
-    :param const struct cfg80211_chan_def \*chandef:
+    :param chandef:
         the channel definition to check
+    :type chandef: const struct cfg80211_chan_def \*
 
-    :param u32 prohibited_flags:
+    :param prohibited_flags:
         the regulatory channel flags that must not be set
+    :type prohibited_flags: u32
 
 .. _`cfg80211_chandef_usable.return`:
 
@@ -917,14 +1073,17 @@ cfg80211_chandef_dfs_required
 
     checks if radar detection is required
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy to validate against
+    :type wiphy: struct wiphy \*
 
-    :param const struct cfg80211_chan_def \*chandef:
+    :param chandef:
         the channel definition to check
+    :type chandef: const struct cfg80211_chan_def \*
 
-    :param enum nl80211_iftype iftype:
+    :param iftype:
         the interface type as specified in \ :c:type:`enum nl80211_iftype <nl80211_iftype>`\ 
+    :type iftype: enum nl80211_iftype
 
 .. _`cfg80211_chandef_dfs_required.return`:
 
@@ -942,8 +1101,9 @@ ieee80211_chandef_rate_flags
 
     returns rate flags for a channel
 
-    :param struct cfg80211_chan_def \*chandef:
+    :param chandef:
         channel definition for the channel
+    :type chandef: struct cfg80211_chan_def \*
 
 .. _`ieee80211_chandef_rate_flags.description`:
 
@@ -969,8 +1129,9 @@ ieee80211_chandef_max_power
 
     maximum transmission power for the chandef
 
-    :param struct cfg80211_chan_def \*chandef:
+    :param chandef:
         channel definition for the channel
+    :type chandef: struct cfg80211_chan_def \*
 
 .. _`ieee80211_chandef_max_power.description`:
 
@@ -1230,11 +1391,16 @@ Definition
         const u8 *proberesp_ies;
         const u8 *assocresp_ies;
         const u8 *probe_resp;
+        const u8 *lci;
+        const u8 *civicloc;
+        s8 ftm_responder;
         size_t head_len, tail_len;
         size_t beacon_ies_len;
         size_t proberesp_ies_len;
         size_t assocresp_ies_len;
         size_t probe_resp_len;
+        size_t lci_len;
+        size_t civicloc_len;
     }
 
 .. _`cfg80211_beacon_data.members`:
@@ -1264,6 +1430,16 @@ assocresp_ies
 probe_resp
     probe response template (AP mode only)
 
+lci
+    LCI subelement content
+
+civicloc
+    Civic location subelement content
+
+ftm_responder
+    enable FTM responder functionality; -1 for no change
+    (which also implies no change in LCI/civic location data)
+
 head_len
     length of \ ``head``\ 
 
@@ -1281,6 +1457,12 @@ assocresp_ies_len
 
 probe_resp_len
     length of probe response template (@probe_resp)
+
+lci_len
+    LCI data length
+
+civicloc_len
+    Civic location data length
 
 .. _`cfg80211_acl_data`:
 
@@ -1354,6 +1536,7 @@ Definition
         struct cfg80211_bitrate_mask beacon_rate;
         const struct ieee80211_ht_cap *ht_cap;
         const struct ieee80211_vht_cap *vht_cap;
+        const struct ieee80211_he_cap_elem *he_cap;
         bool ht_required, vht_required;
     }
 
@@ -1421,6 +1604,9 @@ ht_cap
 
 vht_cap
     VHT capabilities (or \ ``NULL``\  if VHT isn't enabled)
+
+he_cap
+    HE capabilities (or \ ``NULL``\  if HE isn't enabled)
 
 ht_required
     stations must support HT
@@ -1646,6 +1832,8 @@ Definition
         u8 opmode_notif;
         bool opmode_notif_used;
         int support_p2p_ps;
+        const struct ieee80211_he_cap_elem *he_capa;
+        u8 he_capa_len;
     }
 
 .. _`station_parameters.members`:
@@ -1738,6 +1926,12 @@ opmode_notif_used
 
 support_p2p_ps
     information if station supports P2P PS mechanism
+
+he_capa
+    HE capabilities of station
+
+he_capa_len
+    the length of the HE capabilities
 
 .. _`station_parameters.description`:
 
@@ -1865,14 +2059,17 @@ cfg80211_check_station_change
 
     validate parameter changes
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy this operates on
+    :type wiphy: struct wiphy \*
 
-    :param struct station_parameters \*params:
+    :param params:
         the new parameters for a station
+    :type params: struct station_parameters \*
 
-    :param enum cfg80211_station_type statype:
+    :param statype:
         the type of station being modified
+    :type statype: enum cfg80211_station_type
 
 .. _`cfg80211_check_station_change.description`:
 
@@ -1905,7 +2102,8 @@ Definition
         RATE_INFO_FLAGS_MCS,
         RATE_INFO_FLAGS_VHT_MCS,
         RATE_INFO_FLAGS_SHORT_GI,
-        RATE_INFO_FLAGS_60G
+        RATE_INFO_FLAGS_60G,
+        RATE_INFO_FLAGS_HE_MCS
     };
 
 .. _`rate_info_flags.constants`:
@@ -1924,6 +2122,9 @@ RATE_INFO_FLAGS_SHORT_GI
 
 RATE_INFO_FLAGS_60G
     60GHz MCS
+
+RATE_INFO_FLAGS_HE_MCS
+    HE MCS information
 
 .. _`rate_info_flags.description`:
 
@@ -1955,7 +2156,8 @@ Definition
         RATE_INFO_BW_10,
         RATE_INFO_BW_40,
         RATE_INFO_BW_80,
-        RATE_INFO_BW_160
+        RATE_INFO_BW_160,
+        RATE_INFO_BW_HE_RU
     };
 
 .. _`rate_info_bw.constants`:
@@ -1980,6 +2182,9 @@ RATE_INFO_BW_80
 
 RATE_INFO_BW_160
     160 MHz bandwidth
+
+RATE_INFO_BW_HE_RU
+    bandwidth determined by HE RU allocation
 
 .. _`rate_info_bw.description`:
 
@@ -2010,6 +2215,9 @@ Definition
         u16 legacy;
         u8 nss;
         u8 bw;
+        u8 he_gi;
+        u8 he_dcm;
+        u8 he_ru_alloc;
     }
 
 .. _`rate_info.members`:
@@ -2021,16 +2229,26 @@ flags
     bitflag of flags from \ :c:type:`enum rate_info_flags <rate_info_flags>`\ 
 
 mcs
-    mcs index if struct describes a 802.11n bitrate
+    mcs index if struct describes an HT/VHT/HE rate
 
 legacy
     bitrate in 100kbit/s for 802.11abg
 
 nss
-    number of streams (VHT only)
+    number of streams (VHT & HE only)
 
 bw
     bandwidth (from \ :c:type:`enum rate_info_bw <rate_info_bw>`\ )
+
+he_gi
+    HE guard interval (from \ :c:type:`enum nl80211_he_gi <nl80211_he_gi>`\ )
+
+he_dcm
+    HE DCM value
+
+he_ru_alloc
+    HE RU allocation (from \ :c:type:`enum nl80211_he_ru_alloc <nl80211_he_ru_alloc>`\ ,
+    only valid if bw is \ ``RATE_INFO_BW_HE_RU``\ )
 
 .. _`rate_info.description`:
 
@@ -2303,6 +2521,8 @@ Definition
         struct cfg80211_tid_stats *pertid;
         s8 ack_signal;
         s8 avg_ack_signal;
+        u32 rx_mpdu_count;
+        u32 fcs_err_count;
     }
 
 .. _`station_info.members`:
@@ -2435,6 +2655,14 @@ avg_ack_signal
     average rssi value of ack packet for the no of msdu's has
     been sent.
 
+rx_mpdu_count
+    number of MPDUs received from this station
+
+fcs_err_count
+    number of packets (MPDUs) received from this station with
+    an FCS error. This counter should be incremented only when TA of the
+    received packet with an FCS error matches the peer MAC address.
+
 .. _`station_info.description`:
 
 Description
@@ -2451,14 +2679,17 @@ cfg80211_get_station
 
     retrieve information about a given station
 
-    :param struct net_device \*dev:
+    :param dev:
         the device where the station is supposed to be connected to
+    :type dev: struct net_device \*
 
-    :param const u8 \*mac_addr:
+    :param mac_addr:
         the mac address of the station of interest
+    :type mac_addr: const u8 \*
 
-    :param struct station_info \*sinfo:
+    :param sinfo:
         pointer to the structure to fill with the information
+    :type sinfo: struct station_info \*
 
 .. _`cfg80211_get_station.description`:
 
@@ -3808,11 +4039,13 @@ ieee80211_bss_get_ie
 
     find IE with given ID
 
-    :param struct cfg80211_bss \*bss:
+    :param bss:
         the bss to search
+    :type bss: struct cfg80211_bss \*
 
-    :param u8 ie:
+    :param ie:
         the IE ID
+    :type ie: u8
 
 .. _`ieee80211_bss_get_ie.description`:
 
@@ -5786,6 +6019,7 @@ Definition
         int (*del_pmk)(struct wiphy *wiphy, struct net_device *dev, const u8 *aa);
         int (*external_auth)(struct wiphy *wiphy, struct net_device *dev, struct cfg80211_external_auth_params *params);
         int (*tx_control_port)(struct wiphy *wiphy,struct net_device *dev,const u8 *buf, size_t len,const u8 *dest, const __be16 proto, const bool noencrypt);
+        int (*get_ftm_responder_stats)(struct wiphy *wiphy,struct net_device *dev, struct cfg80211_ftm_responder_stats *ftm_stats);
     }
 
 .. _`cfg80211_ops.members`:
@@ -6266,6 +6500,10 @@ external_auth
 tx_control_port
     TX a control port frame (EAPoL).  The noencrypt parameter
     tells the driver that the frame should not be encrypted.
+
+get_ftm_responder_stats
+    Retrieve FTM responder statistics, if available.
+    Statistics should be cumulative, currently no way to reset is provided.
 
 .. _`cfg80211_ops.description`:
 
@@ -7020,7 +7258,6 @@ Definition
         u8 max_num_csa_counters;
         u8 max_adj_channel_rssi_comp;
         u32 bss_select_support;
-        u64 cookie_counter;
         u8 nan_supported_bands;
         u32 txq_limit;
         u32 txq_memory_limit;
@@ -7305,9 +7542,6 @@ bss_select_support
     by the driver in the .connect() callback. The bit position maps to the
     attribute indices defined in \ :c:type:`enum nl80211_bss_select_attr <nl80211_bss_select_attr>`\ .
 
-cookie_counter
-    unique generic cookie counter, used to identify objects.
-
 nan_supported_bands
     bands supported by the device in NAN mode, a
     bitmap of \ :c:type:`enum nl80211_band <nl80211_band>`\  values.  For instance, for
@@ -7335,8 +7569,9 @@ wiphy_priv
 
     return priv from wiphy
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy whose priv pointer to return
+    :type wiphy: struct wiphy \*
 
 .. _`wiphy_priv.return`:
 
@@ -7354,8 +7589,9 @@ priv_to_wiphy
 
     return the wiphy containing the priv
 
-    :param void \*priv:
+    :param priv:
         a pointer previously returned by wiphy_priv
+    :type priv: void \*
 
 .. _`priv_to_wiphy.return`:
 
@@ -7373,11 +7609,13 @@ set_wiphy_dev
 
     set device pointer for wiphy
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         The wiphy whose device to bind
+    :type wiphy: struct wiphy \*
 
-    :param struct device \*dev:
+    :param dev:
         The device to parent it to
+    :type dev: struct device \*
 
 .. _`wiphy_dev`:
 
@@ -7388,8 +7626,9 @@ wiphy_dev
 
     get wiphy dev pointer
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         The wiphy whose device struct to look up
+    :type wiphy: struct wiphy \*
 
 .. _`wiphy_dev.return`:
 
@@ -7407,8 +7646,9 @@ wiphy_name
 
     get wiphy name
 
-    :param const struct wiphy \*wiphy:
+    :param wiphy:
         The wiphy whose name to return
+    :type wiphy: const struct wiphy \*
 
 .. _`wiphy_name.return`:
 
@@ -7426,15 +7666,18 @@ wiphy_new_nm
 
     create a new wiphy for use with cfg80211
 
-    :param const struct cfg80211_ops \*ops:
+    :param ops:
         The configuration operations for this device
+    :type ops: const struct cfg80211_ops \*
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         The size of the private area to allocate
+    :type sizeof_priv: int
 
-    :param const char \*requested_name:
+    :param requested_name:
         Request a particular name.
         NULL is valid value, and means use the default phy%d naming.
+    :type requested_name: const char \*
 
 .. _`wiphy_new_nm.description`:
 
@@ -7461,11 +7704,13 @@ wiphy_new
 
     create a new wiphy for use with cfg80211
 
-    :param const struct cfg80211_ops \*ops:
+    :param ops:
         The configuration operations for this device
+    :type ops: const struct cfg80211_ops \*
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         The size of the private area to allocate
+    :type sizeof_priv: int
 
 .. _`wiphy_new.description`:
 
@@ -7492,8 +7737,9 @@ wiphy_register
 
     register a wiphy with cfg80211
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         The wiphy to register.
+    :type wiphy: struct wiphy \*
 
 .. _`wiphy_register.return`:
 
@@ -7511,8 +7757,9 @@ wiphy_unregister
 
     deregister a wiphy from cfg80211
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         The wiphy to unregister.
+    :type wiphy: struct wiphy \*
 
 .. _`wiphy_unregister.description`:
 
@@ -7532,8 +7779,9 @@ wiphy_free
 
     free wiphy
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         The wiphy to free
+    :type wiphy: struct wiphy \*
 
 .. _`wireless_dev`:
 
@@ -7759,8 +8007,9 @@ wdev_priv
 
     return wiphy priv from wireless_dev
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         The wireless device whose wiphy's priv pointer to return
+    :type wdev: struct wireless_dev \*
 
 .. _`wdev_priv.return`:
 
@@ -7785,11 +8034,13 @@ ieee80211_channel_to_frequency
 
     convert channel number to frequency
 
-    :param int chan:
+    :param chan:
         channel number
+    :type chan: int
 
-    :param enum nl80211_band band:
+    :param band:
         band, necessary due to channel number overlap
+    :type band: enum nl80211_band
 
 .. _`ieee80211_channel_to_frequency.return`:
 
@@ -7807,8 +8058,9 @@ ieee80211_frequency_to_channel
 
     convert frequency to channel number
 
-    :param int freq:
+    :param freq:
         center frequency
+    :type freq: int
 
 .. _`ieee80211_frequency_to_channel.return`:
 
@@ -7826,11 +8078,13 @@ ieee80211_get_channel
 
     get channel struct from wiphy for specified frequency
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the struct wiphy to get the channel for
+    :type wiphy: struct wiphy \*
 
-    :param int freq:
+    :param freq:
         the center frequency of the channel
+    :type freq: int
 
 .. _`ieee80211_get_channel.return`:
 
@@ -7848,14 +8102,17 @@ ieee80211_get_response_rate
 
     get basic rate for a given rate
 
-    :param struct ieee80211_supported_band \*sband:
+    :param sband:
         the band to look for rates in
+    :type sband: struct ieee80211_supported_band \*
 
-    :param u32 basic_rates:
+    :param basic_rates:
         bitmap of basic rates
+    :type basic_rates: u32
 
-    :param int bitrate:
+    :param bitrate:
         the bitrate for which to find the basic rate
+    :type bitrate: int
 
 .. _`ieee80211_get_response_rate.return`:
 
@@ -7876,11 +8133,13 @@ ieee80211_mandatory_rates
 
     get mandatory rates for a given band
 
-    :param struct ieee80211_supported_band \*sband:
+    :param sband:
         the band to look for rates in
+    :type sband: struct ieee80211_supported_band \*
 
-    :param enum nl80211_bss_scan_width scan_width:
+    :param scan_width:
         width of the control channel
+    :type scan_width: enum nl80211_bss_scan_width
 
 .. _`ieee80211_mandatory_rates.description`:
 
@@ -7993,8 +8252,9 @@ ieee80211_get_hdrlen_from_skb
 
     get header length from data
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the frame
+    :type skb: const struct sk_buff \*
 
 .. _`ieee80211_get_hdrlen_from_skb.description`:
 
@@ -8022,8 +8282,9 @@ ieee80211_hdrlen
 
     get header length in bytes from frame control
 
-    :param __le16 fc:
+    :param fc:
         frame control field in little-endian format
+    :type fc: __le16
 
 .. _`ieee80211_hdrlen.return`:
 
@@ -8041,9 +8302,10 @@ ieee80211_get_mesh_hdrlen
 
     get mesh extension header length
 
-    :param struct ieee80211s_hdr \*meshhdr:
+    :param meshhdr:
         the mesh extension header, only the flags field
         (first byte) will be accessed
+    :type meshhdr: struct ieee80211s_hdr \*
 
 .. _`ieee80211_get_mesh_hdrlen.return`:
 
@@ -8071,21 +8333,26 @@ ieee80211_data_to_8023_exthdr
 
     convert an 802.11 data frame to 802.3
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the 802.11 data frame
+    :type skb: struct sk_buff \*
 
-    :param struct ethhdr \*ehdr:
+    :param ehdr:
         pointer to a \ :c:type:`struct ethhdr <ethhdr>`\  that will get the header, instead
         of it being pushed into the SKB
+    :type ehdr: struct ethhdr \*
 
-    :param const u8 \*addr:
+    :param addr:
         the device MAC address
+    :type addr: const u8 \*
 
-    :param enum nl80211_iftype iftype:
+    :param iftype:
         the virtual interface type
+    :type iftype: enum nl80211_iftype
 
-    :param u8 data_offset:
+    :param data_offset:
         offset of payload after the 802.11 header
+    :type data_offset: u8
 
 .. _`ieee80211_data_to_8023_exthdr.return`:
 
@@ -8103,14 +8370,17 @@ ieee80211_data_to_8023
 
     convert an 802.11 data frame to 802.3
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the 802.11 data frame
+    :type skb: struct sk_buff \*
 
-    :param const u8 \*addr:
+    :param addr:
         the device MAC address
+    :type addr: const u8 \*
 
-    :param enum nl80211_iftype iftype:
+    :param iftype:
         the virtual interface type
+    :type iftype: enum nl80211_iftype
 
 .. _`ieee80211_data_to_8023.return`:
 
@@ -8128,27 +8398,34 @@ ieee80211_amsdu_to_8023s
 
     decode an IEEE 802.11n A-MSDU frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The input A-MSDU frame without any headers.
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff_head \*list:
+    :param list:
         The output list of 802.3 frames. It must be allocated and
         initialized by by the caller.
+    :type list: struct sk_buff_head \*
 
-    :param const u8 \*addr:
+    :param addr:
         The device MAC address.
+    :type addr: const u8 \*
 
-    :param enum nl80211_iftype iftype:
+    :param iftype:
         The device interface type.
+    :type iftype: enum nl80211_iftype
 
-    :param const unsigned int extra_headroom:
+    :param extra_headroom:
         The hardware extra headroom for SKBs in the \ ``list``\ .
+    :type extra_headroom: const unsigned int
 
-    :param const u8 \*check_da:
+    :param check_da:
         DA to check in the inner ethernet header, or NULL
+    :type check_da: const u8 \*
 
-    :param const u8 \*check_sa:
+    :param check_sa:
         SA to check in the inner ethernet header, or NULL
+    :type check_sa: const u8 \*
 
 .. _`ieee80211_amsdu_to_8023s.description`:
 
@@ -8168,11 +8445,13 @@ cfg80211_classify8021d
 
     determine the 802.1p/1d tag for a data frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the data frame
+    :type skb: struct sk_buff \*
 
-    :param struct cfg80211_qos_map \*qos_map:
+    :param qos_map:
         Interworking QoS mapping or \ ``NULL``\  if not in use
+    :type qos_map: struct cfg80211_qos_map \*
 
 .. _`cfg80211_classify8021d.return`:
 
@@ -8190,27 +8469,33 @@ cfg80211_find_ie_match
 
     match information element and byte array in data
 
-    :param u8 eid:
+    :param eid:
         element ID
+    :type eid: u8
 
-    :param const u8 \*ies:
+    :param ies:
         data consisting of IEs
+    :type ies: const u8 \*
 
-    :param int len:
+    :param len:
         length of data
+    :type len: int
 
-    :param const u8 \*match:
+    :param match:
         byte array to match
+    :type match: const u8 \*
 
-    :param int match_len:
+    :param match_len:
         number of bytes in the match array
+    :type match_len: int
 
-    :param int match_offset:
+    :param match_offset:
         offset in the IE where the byte array should match.
         If match_len is zero, this must also be set to zero.
         Otherwise this must be set to 2 or more, because the first
         byte is the element id, which is already compared to eid, and
         the second byte is the IE length.
+    :type match_offset: int
 
 .. _`cfg80211_find_ie_match.return`:
 
@@ -8241,14 +8526,17 @@ cfg80211_find_ie
 
     find information element in data
 
-    :param u8 eid:
+    :param eid:
         element ID
+    :type eid: u8
 
-    :param const u8 \*ies:
+    :param ies:
         data consisting of IEs
+    :type ies: const u8 \*
 
-    :param int len:
+    :param len:
         length of data
+    :type len: int
 
 .. _`cfg80211_find_ie.return`:
 
@@ -8277,14 +8565,17 @@ cfg80211_find_ext_ie
 
     find information element with EID Extension in data
 
-    :param u8 ext_eid:
+    :param ext_eid:
         element ID Extension
+    :type ext_eid: u8
 
-    :param const u8 \*ies:
+    :param ies:
         data consisting of IEs
+    :type ies: const u8 \*
 
-    :param int len:
+    :param len:
         length of data
+    :type len: int
 
 .. _`cfg80211_find_ext_ie.return`:
 
@@ -8313,17 +8604,21 @@ cfg80211_find_vendor_ie
 
     find vendor specific information element in data
 
-    :param unsigned int oui:
+    :param oui:
         vendor OUI
+    :type oui: unsigned int
 
-    :param int oui_type:
+    :param oui_type:
         vendor-specific OUI type (must be < 0xff), negative means any
+    :type oui_type: int
 
-    :param const u8 \*ies:
+    :param ies:
         data consisting of IEs
+    :type ies: const u8 \*
 
-    :param int len:
+    :param len:
         length of data
+    :type len: int
 
 .. _`cfg80211_find_vendor_ie.return`:
 
@@ -8343,6 +8638,31 @@ Note
 There are no checks on the element length other than having to fit into
 the given data.
 
+.. _`cfg80211_send_layer2_update`:
+
+cfg80211_send_layer2_update
+===========================
+
+.. c:function:: void cfg80211_send_layer2_update(struct net_device *dev, const u8 *addr)
+
+    send layer 2 update frame
+
+    :param dev:
+        network device
+    :type dev: struct net_device \*
+
+    :param addr:
+        STA MAC address
+    :type addr: const u8 \*
+
+.. _`cfg80211_send_layer2_update.description`:
+
+Description
+-----------
+
+Wireless drivers can use this function to update forwarding tables in bridge
+devices upon STA association.
+
 .. _`regulatory-enforcement-infrastructure`:
 
 Regulatory enforcement infrastructure
@@ -8359,15 +8679,17 @@ regulatory_hint
 
     driver hint to the wireless core a regulatory domain
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wireless device giving the hint (used only for reporting
         conflicts)
+    :type wiphy: struct wiphy \*
 
-    :param const char \*alpha2:
+    :param alpha2:
         the ISO/IEC 3166 alpha2 the driver claims its regulatory domain
         should be in. If \ ``rd``\  is set this should be NULL. Note that if you
         set this to NULL you should still set rd->alpha2 to some accepted
         alpha2.
+    :type alpha2: const char \*
 
 .. _`regulatory_hint.description`:
 
@@ -8404,11 +8726,13 @@ regulatory_set_wiphy_regd
 
     set regdom info for self managed drivers
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wireless device we want to process the regulatory domain on
+    :type wiphy: struct wiphy \*
 
-    :param struct ieee80211_regdomain \*rd:
+    :param rd:
         the regulatory domain informatoin to use for this wiphy
+    :type rd: struct ieee80211_regdomain \*
 
 .. _`regulatory_set_wiphy_regd.description`:
 
@@ -8435,11 +8759,13 @@ regulatory_set_wiphy_regd_sync_rtnl
 
     set regdom for self-managed drivers
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wireless device we want to process the regulatory domain on
+    :type wiphy: struct wiphy \*
 
-    :param struct ieee80211_regdomain \*rd:
+    :param rd:
         the regulatory domain information to use for this wiphy
+    :type rd: struct ieee80211_regdomain \*
 
 .. _`regulatory_set_wiphy_regd_sync_rtnl.description`:
 
@@ -8466,11 +8792,13 @@ wiphy_apply_custom_regulatory
 
     apply a custom driver regulatory domain
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wireless device we want to process the regulatory domain on
+    :type wiphy: struct wiphy \*
 
-    :param const struct ieee80211_regdomain \*regd:
+    :param regd:
         the custom regulatory domain to use for this wiphy
+    :type regd: const struct ieee80211_regdomain \*
 
 .. _`wiphy_apply_custom_regulatory.description`:
 
@@ -8496,11 +8824,13 @@ freq_reg_info
 
     get regulatory information for the given frequency
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy for which we want to process this rule for
+    :type wiphy: struct wiphy \*
 
-    :param u32 center_freq:
+    :param center_freq:
         Frequency in KHz for which we want regulatory information for
+    :type center_freq: u32
 
 .. _`freq_reg_info.description`:
 
@@ -8534,8 +8864,9 @@ reg_initiator_name
 
     map regulatory request initiator enum to name
 
-    :param enum nl80211_reg_initiator initiator:
+    :param initiator:
         the regulatory request initiator
+    :type initiator: enum nl80211_reg_initiator
 
 .. _`reg_initiator_name.description`:
 
@@ -8557,22 +8888,21 @@ Internal regulatory db functions
 reg_query_regdb_wmm
 ===================
 
-.. c:function:: int reg_query_regdb_wmm(char *alpha2, int freq, u32 *ptr, struct ieee80211_wmm_rule *rule)
+.. c:function:: int reg_query_regdb_wmm(char *alpha2, int freq, struct ieee80211_reg_rule *rule)
 
     Query internal regulatory db for wmm rule Regulatory self-managed driver can use it to proactively
 
-    :param char \*alpha2:
+    :param alpha2:
         the ISO/IEC 3166 alpha2 wmm rule to be queried.
+    :type alpha2: char \*
 
-    :param int freq:
+    :param freq:
         the freqency(in MHz) to be queried.
+    :type freq: int
 
-    :param u32 \*ptr:
-        pointer where the regdb wmm data is to be stored (or \ ``NULL``\  if
-        irrelevant). This can be used later for deduplication.
-
-    :param struct ieee80211_wmm_rule \*rule:
+    :param rule:
         pointer to store the wmm rule from the regulatory db.
+    :type rule: struct ieee80211_reg_rule \*
 
 .. _`reg_query_regdb_wmm.description`:
 
@@ -8602,11 +8932,13 @@ cfg80211_scan_done
 
     notify that scan finished
 
-    :param struct cfg80211_scan_request \*request:
+    :param request:
         the corresponding scan request
+    :type request: struct cfg80211_scan_request \*
 
-    :param struct cfg80211_scan_info \*info:
+    :param info:
         information about the completed scan
+    :type info: struct cfg80211_scan_info \*
 
 .. _`cfg80211_sched_scan_results`:
 
@@ -8617,11 +8949,13 @@ cfg80211_sched_scan_results
 
     notify that new scan results are available
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy which got scheduled scan results
+    :type wiphy: struct wiphy \*
 
-    :param u64 reqid:
+    :param reqid:
         identifier for the related scheduled scan request
+    :type reqid: u64
 
 .. _`cfg80211_sched_scan_stopped`:
 
@@ -8632,11 +8966,13 @@ cfg80211_sched_scan_stopped
 
     notify that the scheduled scan has stopped
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy on which the scheduled scan stopped
+    :type wiphy: struct wiphy \*
 
-    :param u64 reqid:
+    :param reqid:
         identifier for the related scheduled scan request
+    :type reqid: u64
 
 .. _`cfg80211_sched_scan_stopped.description`:
 
@@ -8656,11 +8992,13 @@ cfg80211_sched_scan_stopped_rtnl
 
     notify that the scheduled scan has stopped
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy on which the scheduled scan stopped
+    :type wiphy: struct wiphy \*
 
-    :param u64 reqid:
+    :param reqid:
         identifier for the related scheduled scan request
+    :type reqid: u64
 
 .. _`cfg80211_sched_scan_stopped_rtnl.description`:
 
@@ -8681,20 +9019,25 @@ cfg80211_inform_bss_frame_data
 
     inform cfg80211 of a received BSS frame
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy reporting the BSS
+    :type wiphy: struct wiphy \*
 
-    :param struct cfg80211_inform_bss \*data:
+    :param data:
         the BSS metadata
+    :type data: struct cfg80211_inform_bss \*
 
-    :param struct ieee80211_mgmt \*mgmt:
+    :param mgmt:
         the management frame (probe response or beacon)
+    :type mgmt: struct ieee80211_mgmt \*
 
-    :param size_t len:
+    :param len:
         length of the management frame
+    :type len: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_inform_bss_frame_data.description`:
 
@@ -8758,35 +9101,45 @@ cfg80211_inform_bss_data
 
     inform cfg80211 of a new BSS
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy reporting the BSS
+    :type wiphy: struct wiphy \*
 
-    :param struct cfg80211_inform_bss \*data:
+    :param data:
         the BSS metadata
+    :type data: struct cfg80211_inform_bss \*
 
-    :param enum cfg80211_bss_frame_type ftype:
+    :param ftype:
         frame type (if known)
+    :type ftype: enum cfg80211_bss_frame_type
 
-    :param const u8 \*bssid:
+    :param bssid:
         the BSSID of the BSS
+    :type bssid: const u8 \*
 
-    :param u64 tsf:
+    :param tsf:
         the TSF sent by the peer in the beacon/probe response (or 0)
+    :type tsf: u64
 
-    :param u16 capability:
+    :param capability:
         the capability field sent by the peer
+    :type capability: u16
 
-    :param u16 beacon_interval:
+    :param beacon_interval:
         the beacon interval announced by the peer
+    :type beacon_interval: u16
 
-    :param const u8 \*ie:
+    :param ie:
         additional IEs sent by the peer
+    :type ie: const u8 \*
 
-    :param size_t ielen:
+    :param ielen:
         length of the additional IEs
+    :type ielen: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_inform_bss_data.description`:
 
@@ -8813,26 +9166,33 @@ cfg80211_get_bss
 
     get a BSS reference
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy this BSS struct belongs to
+    :type wiphy: struct wiphy \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         the channel to search on (or \ ``NULL``\ )
+    :type channel: struct ieee80211_channel \*
 
-    :param const u8 \*bssid:
+    :param bssid:
         the desired BSSID (or \ ``NULL``\ )
+    :type bssid: const u8 \*
 
-    :param const u8 \*ssid:
+    :param ssid:
         the desired SSID (or \ ``NULL``\ )
+    :type ssid: const u8 \*
 
-    :param size_t ssid_len:
+    :param ssid_len:
         length of the SSID (or 0)
+    :type ssid_len: size_t
 
-    :param enum ieee80211_bss_type bss_type:
+    :param bss_type:
         type of BSS, see \ :c:type:`enum ieee80211_bss_type <ieee80211_bss_type>`\ 
+    :type bss_type: enum ieee80211_bss_type
 
-    :param enum ieee80211_privacy privacy:
+    :param privacy:
         privacy filter, see \ :c:type:`enum ieee80211_privacy <ieee80211_privacy>`\ 
+    :type privacy: enum ieee80211_privacy
 
 .. _`cfg80211_ref_bss`:
 
@@ -8843,11 +9203,13 @@ cfg80211_ref_bss
 
     reference BSS struct
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy this BSS struct belongs to
+    :type wiphy: struct wiphy \*
 
-    :param struct cfg80211_bss \*bss:
+    :param bss:
         the BSS struct to reference
+    :type bss: struct cfg80211_bss \*
 
 .. _`cfg80211_ref_bss.description`:
 
@@ -8865,11 +9227,13 @@ cfg80211_put_bss
 
     unref BSS struct
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy this BSS struct belongs to
+    :type wiphy: struct wiphy \*
 
-    :param struct cfg80211_bss \*bss:
+    :param bss:
         the BSS struct
+    :type bss: struct cfg80211_bss \*
 
 .. _`cfg80211_put_bss.description`:
 
@@ -8887,11 +9251,13 @@ cfg80211_unlink_bss
 
     unlink BSS from internal data structures
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param struct cfg80211_bss \*bss:
+    :param bss:
         the bss to remove
+    :type bss: struct cfg80211_bss \*
 
 .. _`cfg80211_unlink_bss.description`:
 
@@ -8912,14 +9278,17 @@ cfg80211_rx_mlme_mgmt
 
     notification of processed MLME management frame
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*buf:
+    :param buf:
         authentication frame (header + body)
+    :type buf: const u8 \*
 
-    :param size_t len:
+    :param len:
         length of the frame data
+    :type len: size_t
 
 .. _`cfg80211_rx_mlme_mgmt.description`:
 
@@ -8948,11 +9317,13 @@ cfg80211_auth_timeout
 
     notification of timed out authentication
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         The MAC address of the device with which the authentication timed out
+    :type addr: const u8 \*
 
 .. _`cfg80211_auth_timeout.description`:
 
@@ -8971,22 +9342,27 @@ cfg80211_rx_assoc_resp
 
     notification of processed association response
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param struct cfg80211_bss \*bss:
+    :param bss:
         the BSS that association was requested with, ownership of the pointer
         moves to cfg80211 in this call
+    :type bss: struct cfg80211_bss \*
 
-    :param const u8 \*buf:
+    :param buf:
         authentication frame (header + body)
+    :type buf: const u8 \*
 
-    :param size_t len:
+    :param len:
         length of the frame data
+    :type len: size_t
 
-    :param int uapsd_queues:
+    :param uapsd_queues:
         bitmap of queues configured for uapsd. Same format
         as the AC bitmap in the QoS info field
+    :type uapsd_queues: int
 
 .. _`cfg80211_rx_assoc_resp.description`:
 
@@ -9007,11 +9383,13 @@ cfg80211_assoc_timeout
 
     notification of timed out association
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param struct cfg80211_bss \*bss:
+    :param bss:
         The BSS entry with which association timed out.
+    :type bss: struct cfg80211_bss \*
 
 .. _`cfg80211_assoc_timeout.description`:
 
@@ -9029,11 +9407,13 @@ cfg80211_abandon_assoc
 
     notify cfg80211 of abandoned association attempt
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param struct cfg80211_bss \*bss:
+    :param bss:
         The BSS entry with which association was abandoned.
+    :type bss: struct cfg80211_bss \*
 
 .. _`cfg80211_abandon_assoc.description`:
 
@@ -9053,14 +9433,17 @@ cfg80211_tx_mlme_mgmt
 
     notification of transmitted deauth/disassoc frame
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*buf:
+    :param buf:
         802.11 frame (header + body)
+    :type buf: const u8 \*
 
-    :param size_t len:
+    :param len:
         length of the frame data
+    :type len: size_t
 
 .. _`cfg80211_tx_mlme_mgmt.description`:
 
@@ -9081,14 +9464,17 @@ cfg80211_rx_unprot_mlme_mgmt
 
     notification of unprotected mlme mgmt frame
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*buf:
+    :param buf:
         deauthentication frame (header + body)
+    :type buf: const u8 \*
 
-    :param size_t len:
+    :param len:
         length of the frame data
+    :type len: size_t
 
 .. _`cfg80211_rx_unprot_mlme_mgmt.description`:
 
@@ -9108,23 +9494,29 @@ cfg80211_michael_mic_failure
 
     notification of Michael MIC failure (TKIP)
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         The source MAC address of the frame
+    :type addr: const u8 \*
 
-    :param enum nl80211_key_type key_type:
+    :param key_type:
         The key type that the received frame used
+    :type key_type: enum nl80211_key_type
 
-    :param int key_id:
+    :param key_id:
         Key identifier (0..3). Can be -1 if missing.
+    :type key_id: int
 
-    :param const u8 \*tsc:
+    :param tsc:
         The TSC value of the frame that generated the MIC failure (6 octets)
+    :type tsc: const u8 \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_michael_mic_failure.description`:
 
@@ -9144,17 +9536,21 @@ cfg80211_ibss_joined
 
     notify cfg80211 that device joined an IBSS
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*bssid:
+    :param bssid:
         the BSSID of the IBSS joined
+    :type bssid: const u8 \*
 
-    :param struct ieee80211_channel \*channel:
+    :param channel:
         the channel of the IBSS joined
+    :type channel: struct ieee80211_channel \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_ibss_joined.description`:
 
@@ -9177,20 +9573,25 @@ cfg80211_notify_new_peer_candidate
 
     notify cfg80211 of a new mesh peer candidate
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*macaddr:
+    :param macaddr:
         the MAC address of the new candidate
+    :type macaddr: const u8 \*
 
-    :param const u8 \*ie:
+    :param ie:
         information elements advertised by the peer candidate
+    :type ie: const u8 \*
 
-    :param u8 ie_len:
+    :param ie_len:
         lenght of the information elements buffer
+    :type ie_len: u8
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_notify_new_peer_candidate.description`:
 
@@ -9225,11 +9626,13 @@ wiphy_rfkill_set_hw_state
 
     notify cfg80211 about hw block state
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param bool blocked:
+    :param blocked:
         block status
+    :type blocked: bool
 
 .. _`wiphy_rfkill_start_polling`:
 
@@ -9240,8 +9643,9 @@ wiphy_rfkill_start_polling
 
     start polling rfkill
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
 .. _`wiphy_rfkill_stop_polling`:
 
@@ -9252,8 +9656,9 @@ wiphy_rfkill_stop_polling
 
     stop polling rfkill
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
 .. _`vendor-commands`:
 
@@ -9285,12 +9690,14 @@ cfg80211_vendor_cmd_alloc_reply_skb
 
     allocate vendor command reply
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param int approxlen:
+    :param approxlen:
         an upper bound of the length of the data that will
         be put into the skb
+    :type approxlen: int
 
 .. _`cfg80211_vendor_cmd_alloc_reply_skb.description`:
 
@@ -9328,9 +9735,10 @@ cfg80211_vendor_cmd_reply
 
     send the reply skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb, must have been allocated with
         \ :c:func:`cfg80211_vendor_cmd_alloc_reply_skb`\ 
+    :type skb: struct sk_buff \*
 
 .. _`cfg80211_vendor_cmd_reply.description`:
 
@@ -9358,21 +9766,26 @@ cfg80211_vendor_event_alloc
 
     allocate vendor-specific event skb
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         the wireless device
+    :type wdev: struct wireless_dev \*
 
-    :param int approxlen:
+    :param approxlen:
         an upper bound of the length of the data that will
         be put into the skb
+    :type approxlen: int
 
-    :param int event_idx:
+    :param event_idx:
         index of the vendor event in the wiphy's vendor_events
+    :type event_idx: int
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_vendor_event_alloc.description`:
 
@@ -9405,11 +9818,13 @@ cfg80211_vendor_event
 
     send the event
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb, must have been allocated with \ :c:func:`cfg80211_vendor_event_alloc`\ 
+    :type skb: struct sk_buff \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_vendor_event.description`:
 
@@ -9440,12 +9855,14 @@ cfg80211_testmode_alloc_reply_skb
 
     allocate testmode reply
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param int approxlen:
+    :param approxlen:
         an upper bound of the length of the data that will
         be put into the skb
+    :type approxlen: int
 
 .. _`cfg80211_testmode_alloc_reply_skb.description`:
 
@@ -9483,9 +9900,10 @@ cfg80211_testmode_reply
 
     send the reply skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb, must have been allocated with
         \ :c:func:`cfg80211_testmode_alloc_reply_skb`\ 
+    :type skb: struct sk_buff \*
 
 .. _`cfg80211_testmode_reply.description`:
 
@@ -9513,15 +9931,18 @@ cfg80211_testmode_alloc_event_skb
 
     allocate testmode event
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param int approxlen:
+    :param approxlen:
         an upper bound of the length of the data that will
         be put into the skb
+    :type approxlen: int
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_testmode_alloc_event_skb.description`:
 
@@ -9556,12 +9977,14 @@ cfg80211_testmode_event
 
     send the event
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skb, must have been allocated with
         \ :c:func:`cfg80211_testmode_alloc_event_skb`\ 
+    :type skb: struct sk_buff \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_testmode_event.description`:
 
@@ -9711,14 +10134,17 @@ cfg80211_connect_done
 
     notify cfg80211 of connection result
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param struct cfg80211_connect_resp_params \*params:
+    :param params:
         connection response parameters
+    :type params: struct cfg80211_connect_resp_params \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_connect_done.description`:
 
@@ -9741,29 +10167,36 @@ cfg80211_connect_bss
 
     notify cfg80211 of connection result
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*bssid:
+    :param bssid:
         the BSSID of the AP
+    :type bssid: const u8 \*
 
-    :param struct cfg80211_bss \*bss:
+    :param bss:
         entry of bss to which STA got connected to, can be obtained
         through cfg80211_get_bss (may be \ ``NULL``\ )
+    :type bss: struct cfg80211_bss \*
 
-    :param const u8 \*req_ie:
+    :param req_ie:
         association request IEs (maybe be \ ``NULL``\ )
+    :type req_ie: const u8 \*
 
-    :param size_t req_ie_len:
+    :param req_ie_len:
         association request IEs length
+    :type req_ie_len: size_t
 
-    :param const u8 \*resp_ie:
+    :param resp_ie:
         association response IEs (may be \ ``NULL``\ )
+    :type resp_ie: const u8 \*
 
-    :param size_t resp_ie_len:
+    :param resp_ie_len:
         assoc response IEs length
+    :type resp_ie_len: size_t
 
-    :param int status:
+    :param status:
         status code, \ ``WLAN_STATUS_SUCCESS``\  for successful connection, use
         \ ``WLAN_STATUS_UNSPECIFIED_FAILURE``\  if your device cannot give you
         the real status code for failures. If this call is used to report a
@@ -9772,17 +10205,20 @@ cfg80211_connect_bss
         indicate that this is a failure, but without a status code.
         \ ``timeout_reason``\  is used to report the reason for the timeout in that
         case.
+    :type status: int
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
-    :param enum nl80211_timeout_reason timeout_reason:
+    :param timeout_reason:
         reason for connection timeout. This is used when the
         connection fails due to a timeout instead of an explicit rejection from
         the AP. \ ``NL80211_TIMEOUT_UNSPECIFIED``\  is used when the timeout reason is
         not known. This value is used only if \ ``status``\  < 0 to indicate that the
         failure is due to a timeout and not due to explicit rejection by the AP.
         This value is ignored in other cases (@status >= 0).
+    :type timeout_reason: enum nl80211_timeout_reason
 
 .. _`cfg80211_connect_bss.description`:
 
@@ -9805,31 +10241,39 @@ cfg80211_connect_result
 
     notify cfg80211 of connection result
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*bssid:
+    :param bssid:
         the BSSID of the AP
+    :type bssid: const u8 \*
 
-    :param const u8 \*req_ie:
+    :param req_ie:
         association request IEs (maybe be \ ``NULL``\ )
+    :type req_ie: const u8 \*
 
-    :param size_t req_ie_len:
+    :param req_ie_len:
         association request IEs length
+    :type req_ie_len: size_t
 
-    :param const u8 \*resp_ie:
+    :param resp_ie:
         association response IEs (may be \ ``NULL``\ )
+    :type resp_ie: const u8 \*
 
-    :param size_t resp_ie_len:
+    :param resp_ie_len:
         assoc response IEs length
+    :type resp_ie_len: size_t
 
-    :param u16 status:
+    :param status:
         status code, \ ``WLAN_STATUS_SUCCESS``\  for successful connection, use
         \ ``WLAN_STATUS_UNSPECIFIED_FAILURE``\  if your device cannot give you
         the real status code for failures.
+    :type status: u16
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_connect_result.description`:
 
@@ -9851,23 +10295,29 @@ cfg80211_connect_timeout
 
     notify cfg80211 of connection timeout
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*bssid:
+    :param bssid:
         the BSSID of the AP
+    :type bssid: const u8 \*
 
-    :param const u8 \*req_ie:
+    :param req_ie:
         association request IEs (maybe be \ ``NULL``\ )
+    :type req_ie: const u8 \*
 
-    :param size_t req_ie_len:
+    :param req_ie_len:
         association request IEs length
+    :type req_ie_len: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
-    :param enum nl80211_timeout_reason timeout_reason:
+    :param timeout_reason:
         reason for connection timeout.
+    :type timeout_reason: enum nl80211_timeout_reason
 
 .. _`cfg80211_connect_timeout.description`:
 
@@ -9947,14 +10397,17 @@ cfg80211_roamed
 
     notify cfg80211 of roaming
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param struct cfg80211_roam_info \*info:
+    :param info:
         information about the new BSS. struct \ :c:type:`struct cfg80211_roam_info <cfg80211_roam_info>`\ .
+    :type info: struct cfg80211_roam_info \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_roamed.description`:
 
@@ -9981,14 +10434,17 @@ cfg80211_port_authorized
 
     notify cfg80211 of successful security association
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*bssid:
+    :param bssid:
         the BSSID of the AP
+    :type bssid: const u8 \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_port_authorized.description`:
 
@@ -10011,23 +10467,29 @@ cfg80211_disconnected
 
     notify cfg80211 that connection was dropped
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param u16 reason:
+    :param reason:
         reason code for the disconnection, set it to 0 if unknown
+    :type reason: u16
 
-    :param const u8 \*ie:
+    :param ie:
         information elements of the deauth/disassoc frame (may be \ ``NULL``\ )
+    :type ie: const u8 \*
 
-    :param size_t ie_len:
+    :param ie_len:
         length of IEs
+    :type ie_len: size_t
 
-    :param bool locally_generated:
+    :param locally_generated:
         disconnection was requested locally
+    :type locally_generated: bool
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_disconnected.description`:
 
@@ -10046,21 +10508,26 @@ cfg80211_ready_on_channel
 
     notification of remain_on_channel start
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         wireless device
+    :type wdev: struct wireless_dev \*
 
-    :param u64 cookie:
+    :param cookie:
         the request cookie
+    :type cookie: u64
 
-    :param struct ieee80211_channel \*chan:
+    :param chan:
         The current channel (from remain_on_channel request)
+    :type chan: struct ieee80211_channel \*
 
-    :param unsigned int duration:
+    :param duration:
         Duration in milliseconds that the driver intents to remain on the
         channel
+    :type duration: unsigned int
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_remain_on_channel_expired`:
 
@@ -10071,17 +10538,21 @@ cfg80211_remain_on_channel_expired
 
     remain_on_channel duration expired
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         wireless device
+    :type wdev: struct wireless_dev \*
 
-    :param u64 cookie:
+    :param cookie:
         the request cookie
+    :type cookie: u64
 
-    :param struct ieee80211_channel \*chan:
+    :param chan:
         The current channel (from remain_on_channel request)
+    :type chan: struct ieee80211_channel \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_sinfo_alloc_tid_stats`:
 
@@ -10092,11 +10563,13 @@ cfg80211_sinfo_alloc_tid_stats
 
     allocate per-tid statistics.
 
-    :param struct station_info \*sinfo:
+    :param sinfo:
         the station information
+    :type sinfo: struct station_info \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_sinfo_release_content`:
 
@@ -10107,8 +10580,9 @@ cfg80211_sinfo_release_content
 
     release contents of station info
 
-    :param struct station_info \*sinfo:
+    :param sinfo:
         the station information
+    :type sinfo: struct station_info \*
 
 .. _`cfg80211_sinfo_release_content.description`:
 
@@ -10128,17 +10602,21 @@ cfg80211_new_sta
 
     notify userspace about station
 
-    :param struct net_device \*dev:
+    :param dev:
         the netdev
+    :type dev: struct net_device \*
 
-    :param const u8 \*mac_addr:
+    :param mac_addr:
         the station's address
+    :type mac_addr: const u8 \*
 
-    :param struct station_info \*sinfo:
+    :param sinfo:
         the station information
+    :type sinfo: struct station_info \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_del_sta_sinfo`:
 
@@ -10149,17 +10627,21 @@ cfg80211_del_sta_sinfo
 
     notify userspace about deletion of a station
 
-    :param struct net_device \*dev:
+    :param dev:
         the netdev
+    :type dev: struct net_device \*
 
-    :param const u8 \*mac_addr:
+    :param mac_addr:
         the station's address
+    :type mac_addr: const u8 \*
 
-    :param struct station_info \*sinfo:
+    :param sinfo:
         the station information/statistics
+    :type sinfo: struct station_info \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_del_sta`:
 
@@ -10170,14 +10652,17 @@ cfg80211_del_sta
 
     notify userspace about deletion of a station
 
-    :param struct net_device \*dev:
+    :param dev:
         the netdev
+    :type dev: struct net_device \*
 
-    :param const u8 \*mac_addr:
+    :param mac_addr:
         the station's address
+    :type mac_addr: const u8 \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_conn_failed`:
 
@@ -10188,17 +10673,21 @@ cfg80211_conn_failed
 
     connection request failed notification
 
-    :param struct net_device \*dev:
+    :param dev:
         the netdev
+    :type dev: struct net_device \*
 
-    :param const u8 \*mac_addr:
+    :param mac_addr:
         the station's address
+    :type mac_addr: const u8 \*
 
-    :param enum nl80211_connect_failed_reason reason:
+    :param reason:
         the reason for connection failure
+    :type reason: enum nl80211_connect_failed_reason
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_conn_failed.description`:
 
@@ -10221,23 +10710,29 @@ cfg80211_rx_mgmt
 
     notification of received, unprocessed management frame
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         wireless device receiving the frame
+    :type wdev: struct wireless_dev \*
 
-    :param int freq:
+    :param freq:
         Frequency on which the frame was received in MHz
+    :type freq: int
 
-    :param int sig_dbm:
+    :param sig_dbm:
         signal strength in dBm, or 0 if unknown
+    :type sig_dbm: int
 
-    :param const u8 \*buf:
+    :param buf:
         Management frame (header + body)
+    :type buf: const u8 \*
 
-    :param size_t len:
+    :param len:
         length of the frame data
+    :type len: size_t
 
-    :param u32 flags:
+    :param flags:
         flags, as defined in enum nl80211_rxmgmt_flags
+    :type flags: u32
 
 .. _`cfg80211_rx_mgmt.description`:
 
@@ -10266,23 +10761,29 @@ cfg80211_mgmt_tx_status
 
     notification of TX status for management frame
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         wireless device receiving the frame
+    :type wdev: struct wireless_dev \*
 
-    :param u64 cookie:
+    :param cookie:
         Cookie returned by cfg80211_ops::mgmt_tx()
+    :type cookie: u64
 
-    :param const u8 \*buf:
+    :param buf:
         Management frame (header + body)
+    :type buf: const u8 \*
 
-    :param size_t len:
+    :param len:
         length of the frame data
+    :type len: size_t
 
-    :param bool ack:
+    :param ack:
         Whether frame was acknowledged
+    :type ack: bool
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_mgmt_tx_status.description`:
 
@@ -10302,18 +10803,21 @@ cfg80211_rx_control_port
 
     notification about a received control port frame
 
-    :param struct net_device \*dev:
+    :param dev:
         The device the frame matched to
+    :type dev: struct net_device \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The skbuf with the control port frame.  It is assumed that the skbuf
         is 802.3 formatted (with 802.3 header).  The skb can be non-linear.
         This function does not take ownership of the skb, so the caller is
         responsible for any cleanup.  The caller must also ensure that
         skb->protocol is set appropriately.
+    :type skb: struct sk_buff \*
 
-    :param bool unencrypted:
+    :param unencrypted:
         Whether the frame was received unencrypted
+    :type unencrypted: bool
 
 .. _`cfg80211_rx_control_port.description`:
 
@@ -10343,17 +10847,21 @@ cfg80211_cqm_rssi_notify
 
     connection quality monitoring rssi event
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param enum nl80211_cqm_rssi_threshold_event rssi_event:
+    :param rssi_event:
         the triggered RSSI event
+    :type rssi_event: enum nl80211_cqm_rssi_threshold_event
 
-    :param s32 rssi_level:
+    :param rssi_level:
         new RSSI level value or 0 if not available
+    :type rssi_level: s32
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_cqm_rssi_notify.description`:
 
@@ -10372,19 +10880,23 @@ cfg80211_cqm_pktloss_notify
 
     notify userspace about packetloss to peer
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*peer:
+    :param peer:
         peer's MAC address
+    :type peer: const u8 \*
 
-    :param u32 num_packets:
+    :param num_packets:
         how many packets were lost -- should be a fixed threshold
         but probably no less than maybe 50, or maybe a throughput dependent
         threshold (to account for temporary interference)
+    :type num_packets: u32
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_cqm_txe_notify`:
 
@@ -10395,23 +10907,29 @@ cfg80211_cqm_txe_notify
 
     TX error rate event
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*peer:
+    :param peer:
         peer's MAC address
+    :type peer: const u8 \*
 
-    :param u32 num_packets:
+    :param num_packets:
         how many packets were lost
+    :type num_packets: u32
 
-    :param u32 rate:
+    :param rate:
         % of packets which failed transmission
+    :type rate: u32
 
-    :param u32 intvl:
+    :param intvl:
         interval (in s) over which the TX failure threshold was breached.
+    :type intvl: u32
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_cqm_txe_notify.description`:
 
@@ -10430,11 +10948,13 @@ cfg80211_cqm_beacon_loss_notify
 
     beacon loss event
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_cqm_beacon_loss_notify.description`:
 
@@ -10452,14 +10972,17 @@ cfg80211_radar_event
 
     radar detection event
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param struct cfg80211_chan_def \*chandef:
+    :param chandef:
         chandef for the current channel
+    :type chandef: struct cfg80211_chan_def \*
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_radar_event.description`:
 
@@ -10477,17 +11000,21 @@ cfg80211_sta_opmode_change_notify
 
     STA's ht/vht operation mode change event
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*mac:
+    :param mac:
         MAC address of a station which opmode got modified
+    :type mac: const u8 \*
 
-    :param struct sta_opmode_info \*sta_opmode:
+    :param sta_opmode:
         station's current opmode value
+    :type sta_opmode: struct sta_opmode_info \*
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_sta_opmode_change_notify.description`:
 
@@ -10506,17 +11033,21 @@ cfg80211_cac_event
 
     Channel availability check (CAC) event
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network device
+    :type netdev: struct net_device \*
 
-    :param const struct cfg80211_chan_def \*chandef:
+    :param chandef:
         chandef for the current channel
+    :type chandef: const struct cfg80211_chan_def \*
 
-    :param enum nl80211_radar_event event:
+    :param event:
         type of event
+    :type event: enum nl80211_radar_event
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_cac_event.description`:
 
@@ -10536,17 +11067,21 @@ cfg80211_gtk_rekey_notify
 
     notify userspace about driver rekeying
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param const u8 \*bssid:
+    :param bssid:
         BSSID of AP (to avoid races)
+    :type bssid: const u8 \*
 
-    :param const u8 \*replay_ctr:
+    :param replay_ctr:
         new replay counter
+    :type replay_ctr: const u8 \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_pmksa_candidate_notify`:
 
@@ -10557,20 +11092,25 @@ cfg80211_pmksa_candidate_notify
 
     notify about PMKSA caching candidate
 
-    :param struct net_device \*dev:
+    :param dev:
         network device
+    :type dev: struct net_device \*
 
-    :param int index:
+    :param index:
         candidate index (the smaller the index, the higher the priority)
+    :type index: int
 
-    :param const u8 \*bssid:
+    :param bssid:
         BSSID of AP
+    :type bssid: const u8 \*
 
-    :param bool preauth:
+    :param preauth:
         Whether AP advertises support for RSN pre-authentication
+    :type preauth: bool
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_rx_spurious_frame`:
 
@@ -10581,14 +11121,17 @@ cfg80211_rx_spurious_frame
 
     inform userspace about a spurious frame
 
-    :param struct net_device \*dev:
+    :param dev:
         The device the frame matched to
+    :type dev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         the transmitter address
+    :type addr: const u8 \*
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_rx_spurious_frame.description`:
 
@@ -10616,14 +11159,17 @@ cfg80211_rx_unexpected_4addr_frame
 
     inform about unexpected WDS frame
 
-    :param struct net_device \*dev:
+    :param dev:
         The device the frame matched to
+    :type dev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         the transmitter address
+    :type addr: const u8 \*
 
-    :param gfp_t gfp:
+    :param gfp:
         context flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_rx_unexpected_4addr_frame.description`:
 
@@ -10652,26 +11198,33 @@ cfg80211_probe_status
 
     notify userspace about probe status
 
-    :param struct net_device \*dev:
+    :param dev:
         the device the probe was sent on
+    :type dev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         the address of the peer
+    :type addr: const u8 \*
 
-    :param u64 cookie:
+    :param cookie:
         the cookie filled in \ ``probe_client``\  previously
+    :type cookie: u64
 
-    :param bool acked:
+    :param acked:
         indicates whether probe was acked or not
+    :type acked: bool
 
-    :param s32 ack_signal:
+    :param ack_signal:
         signal strength (in dBm) of the ACK frame.
+    :type ack_signal: s32
 
-    :param bool is_valid_ack_signal:
+    :param is_valid_ack_signal:
         indicates the ack_signal is valid or not.
+    :type is_valid_ack_signal: bool
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_report_obss_beacon`:
 
@@ -10682,20 +11235,25 @@ cfg80211_report_obss_beacon
 
     report beacon from other APs
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         The wiphy that received the beacon
+    :type wiphy: struct wiphy \*
 
-    :param const u8 \*frame:
+    :param frame:
         the frame
+    :type frame: const u8 \*
 
-    :param size_t len:
+    :param len:
         length of the frame
+    :type len: size_t
 
-    :param int freq:
+    :param freq:
         frequency the frame was received on
+    :type freq: int
 
-    :param int sig_dbm:
+    :param sig_dbm:
         signal strength in dBm, or 0 if unknown
+    :type sig_dbm: int
 
 .. _`cfg80211_report_obss_beacon.description`:
 
@@ -10715,14 +11273,17 @@ cfg80211_reg_can_beacon
 
     check if beaconing is allowed
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param struct cfg80211_chan_def \*chandef:
+    :param chandef:
         the channel definition
+    :type chandef: struct cfg80211_chan_def \*
 
-    :param enum nl80211_iftype iftype:
+    :param iftype:
         interface type
+    :type iftype: enum nl80211_iftype
 
 .. _`cfg80211_reg_can_beacon.return`:
 
@@ -10741,14 +11302,17 @@ cfg80211_reg_can_beacon_relax
 
     check if beaconing is allowed with relaxation
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param struct cfg80211_chan_def \*chandef:
+    :param chandef:
         the channel definition
+    :type chandef: struct cfg80211_chan_def \*
 
-    :param enum nl80211_iftype iftype:
+    :param iftype:
         interface type
+    :type iftype: enum nl80211_iftype
 
 .. _`cfg80211_reg_can_beacon_relax.return`:
 
@@ -10771,11 +11335,13 @@ ieee80211_operating_class_to_band
 
     convert operating class to band
 
-    :param u8 operating_class:
+    :param operating_class:
         the operating class to convert
+    :type operating_class: u8
 
-    :param enum nl80211_band \*band:
+    :param band:
         band pointer to fill
+    :type band: enum nl80211_band \*
 
 .. _`ieee80211_operating_class_to_band.description`:
 
@@ -10793,11 +11359,13 @@ ieee80211_chandef_to_operating_class
 
     convert chandef to operation class
 
-    :param struct cfg80211_chan_def \*chandef:
+    :param chandef:
         the chandef to convert
+    :type chandef: struct cfg80211_chan_def \*
 
-    :param u8 \*op_class:
+    :param op_class:
         a pointer to the resulting operating class
+    :type op_class: u8 \*
 
 .. _`ieee80211_chandef_to_operating_class.description`:
 
@@ -10815,8 +11383,9 @@ cfg80211_unregister_wdev
 
     remove the given wdev
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         struct wireless_dev to remove
+    :type wdev: struct wireless_dev \*
 
 .. _`cfg80211_unregister_wdev.description`:
 
@@ -10886,11 +11455,13 @@ cfg80211_ft_event
 
     notify userspace about FT IE and RIC IE
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network device
+    :type netdev: struct net_device \*
 
-    :param struct cfg80211_ft_event_params \*ft_event:
+    :param ft_event:
         IE information
+    :type ft_event: struct cfg80211_ft_event_params \*
 
 .. _`cfg80211_get_p2p_attr`:
 
@@ -10901,21 +11472,26 @@ cfg80211_get_p2p_attr
 
     find and copy a P2P attribute from IE buffer
 
-    :param const u8 \*ies:
+    :param ies:
         the input IE buffer
+    :type ies: const u8 \*
 
-    :param unsigned int len:
+    :param len:
         the input length
+    :type len: unsigned int
 
-    :param enum ieee80211_p2p_attr_id attr:
+    :param attr:
         the attribute ID to find
+    :type attr: enum ieee80211_p2p_attr_id
 
-    :param u8 \*buf:
+    :param buf:
         output buffer, can be \ ``NULL``\  if the data isn't needed, e.g.
         if the function is only called to get the needed buffer size
+    :type buf: u8 \*
 
-    :param unsigned int bufsize:
+    :param bufsize:
         size of the output buffer
+    :type bufsize: unsigned int
 
 .. _`cfg80211_get_p2p_attr.description`:
 
@@ -10943,28 +11519,35 @@ ieee80211_ie_split_ric
 
     split an IE buffer according to ordering (with RIC)
 
-    :param const u8 \*ies:
+    :param ies:
         the IE buffer
+    :type ies: const u8 \*
 
-    :param size_t ielen:
+    :param ielen:
         the length of the IE buffer
+    :type ielen: size_t
 
-    :param const u8 \*ids:
+    :param ids:
         an array with element IDs that are allowed before
         the split. A WLAN_EID_EXTENSION value means that the next
         EID in the list is a sub-element of the EXTENSION IE.
+    :type ids: const u8 \*
 
-    :param int n_ids:
+    :param n_ids:
         the size of the element ID array
+    :type n_ids: int
 
-    :param const u8 \*after_ric:
+    :param after_ric:
         array IE types that come after the RIC element
+    :type after_ric: const u8 \*
 
-    :param int n_after_ric:
+    :param n_after_ric:
         size of the \ ``after_ric``\  array
+    :type n_after_ric: int
 
-    :param size_t offset:
+    :param offset:
         offset where to start splitting in the buffer
+    :type offset: size_t
 
 .. _`ieee80211_ie_split_ric.description`:
 
@@ -10995,22 +11578,27 @@ ieee80211_ie_split
 
     split an IE buffer according to ordering
 
-    :param const u8 \*ies:
+    :param ies:
         the IE buffer
+    :type ies: const u8 \*
 
-    :param size_t ielen:
+    :param ielen:
         the length of the IE buffer
+    :type ielen: size_t
 
-    :param const u8 \*ids:
+    :param ids:
         an array with element IDs that are allowed before
         the split. A WLAN_EID_EXTENSION value means that the next
         EID in the list is a sub-element of the EXTENSION IE.
+    :type ids: const u8 \*
 
-    :param int n_ids:
+    :param n_ids:
         the size of the element ID array
+    :type n_ids: int
 
-    :param size_t offset:
+    :param offset:
         offset where to start splitting in the buffer
+    :type offset: size_t
 
 .. _`ieee80211_ie_split.description`:
 
@@ -11041,14 +11629,17 @@ cfg80211_report_wowlan_wakeup
 
     report wakeup from WoWLAN
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         the wireless device reporting the wakeup
+    :type wdev: struct wireless_dev \*
 
-    :param struct cfg80211_wowlan_wakeup \*wakeup:
+    :param wakeup:
         the wakeup report
+    :type wakeup: struct cfg80211_wowlan_wakeup \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_report_wowlan_wakeup.description`:
 
@@ -11069,11 +11660,13 @@ cfg80211_crit_proto_stopped
 
     indicate critical protocol stopped by driver.
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         the wireless device for which critical protocol is stopped.
+    :type wdev: struct wireless_dev \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_crit_proto_stopped.description`:
 
@@ -11093,8 +11686,9 @@ ieee80211_get_num_supported_channels
 
     get number of channels device has
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
 .. _`ieee80211_get_num_supported_channels.return`:
 
@@ -11112,11 +11706,13 @@ cfg80211_check_combinations
 
     check interface combinations
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param struct iface_combination_params \*params:
+    :param params:
         the interface combinations parameter
+    :type params: struct iface_combination_params \*
 
 .. _`cfg80211_check_combinations.description`:
 
@@ -11136,17 +11732,20 @@ cfg80211_iter_combinations
 
     iterate over matching combinations
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy
+    :type wiphy: struct wiphy \*
 
-    :param struct iface_combination_params \*params:
+    :param params:
         the interface combinations parameter
+    :type params: struct iface_combination_params \*
 
     :param void (\*iter)(const struct ieee80211_iface_combination \*c, void \*data):
         function to call for each matching combination
 
-    :param void \*data:
+    :param data:
         pointer to pass to iter function
+    :type data: void \*
 
 .. _`cfg80211_iter_combinations.description`:
 
@@ -11166,8 +11765,9 @@ cfg80211_shutdown_all_interfaces
 
     shut down all interfaces for a wiphy
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy to shut down
+    :type wiphy: struct wiphy \*
 
 .. _`cfg80211_shutdown_all_interfaces.description`:
 
@@ -11191,11 +11791,13 @@ wiphy_ext_feature_set
 
     set the extended feature flag
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy to modify.
+    :type wiphy: struct wiphy \*
 
-    :param enum nl80211_ext_feature_index ftidx:
+    :param ftidx:
         extended feature bit index.
+    :type ftidx: enum nl80211_ext_feature_index
 
 .. _`wiphy_ext_feature_set.description`:
 
@@ -11214,11 +11816,13 @@ wiphy_ext_feature_isset
 
     check the extended feature flag
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         the wiphy to modify.
+    :type wiphy: struct wiphy \*
 
-    :param enum nl80211_ext_feature_index ftidx:
+    :param ftidx:
         extended feature bit index.
+    :type ftidx: enum nl80211_ext_feature_index
 
 .. _`wiphy_ext_feature_isset.description`:
 
@@ -11237,8 +11841,9 @@ cfg80211_free_nan_func
 
     free NAN function
 
-    :param struct cfg80211_nan_func \*f:
+    :param f:
         NAN function that should be freed
+    :type f: struct cfg80211_nan_func \*
 
 .. _`cfg80211_free_nan_func.description`:
 
@@ -11312,14 +11917,17 @@ cfg80211_nan_match
 
     report a match for a NAN function.
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         the wireless device reporting the match
+    :type wdev: struct wireless_dev \*
 
-    :param struct cfg80211_nan_match_params \*match:
+    :param match:
         match notification parameters
+    :type match: struct cfg80211_nan_match_params \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_nan_match.description`:
 
@@ -11339,20 +11947,25 @@ cfg80211_nan_func_terminated
 
     notify about NAN function termination.
 
-    :param struct wireless_dev \*wdev:
+    :param wdev:
         the wireless device reporting the match
+    :type wdev: struct wireless_dev \*
 
-    :param u8 inst_id:
+    :param inst_id:
         the local instance id
+    :type inst_id: u8
 
-    :param enum nl80211_nan_func_term_reason reason:
+    :param reason:
         termination reason (one of the NL80211_NAN_FUNC_TERM_REASON_*)
+    :type reason: enum nl80211_nan_func_term_reason
 
-    :param u64 cookie:
+    :param cookie:
         unique NAN function identifier
+    :type cookie: u64
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_nan_func_terminated.description`:
 
@@ -11370,14 +11983,17 @@ cfg80211_external_auth_request
 
     userspace request for authentication
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network device
+    :type netdev: struct net_device \*
 
-    :param struct cfg80211_external_auth_params \*params:
+    :param params:
         External authentication parameters
+    :type params: struct cfg80211_external_auth_params \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`cfg80211_external_auth_request.return`:
 

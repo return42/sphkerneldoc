@@ -10,8 +10,9 @@ ide_scan_pio_blacklist
 
     check for a blacklisted drive
 
-    :param char \*model:
+    :param model:
         Drive model string
+    :type model: char \*
 
 .. _`ide_scan_pio_blacklist.description`:
 

@@ -10,14 +10,17 @@ NFP_CPP_ID
 
     pack target, token, and action into a CPP ID.
 
-    :param  target:
+    :param target:
         NFP CPP target id
+    :type target: 
 
-    :param  action:
+    :param action:
         NFP CPP action id
+    :type action: 
 
-    :param  token:
+    :param token:
         NFP CPP token id
+    :type token: 
 
 .. _`nfp_cpp_id.description`:
 
@@ -45,17 +48,21 @@ NFP_CPP_ISLAND_ID
 
     pack target, token, action, and island into a CPP ID.
 
-    :param  target:
+    :param target:
         NFP CPP target id
+    :type target: 
 
-    :param  action:
+    :param action:
         NFP CPP action id
+    :type action: 
 
-    :param  token:
+    :param token:
         NFP CPP token id
+    :type token: 
 
-    :param  island:
+    :param island:
         NFP CPP island id
+    :type island: 
 
 .. _`nfp_cpp_island_id.description`:
 
@@ -83,8 +90,9 @@ NFP_CPP_ID_TARGET_of
 
     Return the NFP CPP target of a NFP CPP ID
 
-    :param u32 id:
+    :param id:
         NFP CPP ID
+    :type id: u32
 
 .. _`nfp_cpp_id_target_of.return`:
 
@@ -102,8 +110,9 @@ NFP_CPP_ID_TOKEN_of
 
     Return the NFP CPP token of a NFP CPP ID
 
-    :param u32 id:
+    :param id:
         NFP CPP ID
+    :type id: u32
 
 .. _`nfp_cpp_id_token_of.return`:
 
@@ -121,8 +130,9 @@ NFP_CPP_ID_ACTION_of
 
     Return the NFP CPP action of a NFP CPP ID
 
-    :param u32 id:
+    :param id:
         NFP CPP ID
+    :type id: u32
 
 .. _`nfp_cpp_id_action_of.return`:
 
@@ -140,8 +150,9 @@ NFP_CPP_ID_ISLAND_of
 
     Return the NFP CPP island of a NFP CPP ID
 
-    :param u32 id:
+    :param id:
         NFP CPP ID
+    :type id: u32
 
 .. _`nfp_cpp_id_island_of.return`:
 
@@ -159,14 +170,17 @@ NFP_CPP_INTERFACE
 
     Construct a 16-bit NFP Interface ID
 
-    :param  type:
+    :param type:
         NFP Interface Type
+    :type type: 
 
-    :param  unit:
+    :param unit:
         Unit identifier for the interface type
+    :type unit: 
 
-    :param  channel:
+    :param channel:
         Channel identifier for the interface unit
+    :type channel: 
 
 .. _`nfp_cpp_interface.description`:
 
@@ -197,8 +211,9 @@ NFP_CPP_INTERFACE_TYPE_of
 
     Get the interface type
 
-    :param  interface:
+    :param interface:
         NFP Interface ID
+    :type interface: 
 
 .. _`nfp_cpp_interface_type_of.return`:
 
@@ -216,8 +231,9 @@ NFP_CPP_INTERFACE_UNIT_of
 
     Get the interface unit
 
-    :param  interface:
+    :param interface:
         NFP Interface ID
+    :type interface: 
 
 .. _`nfp_cpp_interface_unit_of.return`:
 
@@ -235,8 +251,9 @@ NFP_CPP_INTERFACE_CHANNEL_of
 
     Get the interface channel
 
-    :param  interface:
+    :param interface:
         NFP Interface ID
+    :type interface: 
 
 .. _`nfp_cpp_interface_channel_of.return`:
 
@@ -254,8 +271,9 @@ nfp_cppcore_pcie_unit
 
     Get PCI Unit of a CPP handle
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_cppcore_pcie_unit.return`:
 
@@ -285,8 +303,8 @@ Definition
         struct module *owner;
         int (*init)(struct nfp_cpp *cpp);
         void (*free)(struct nfp_cpp *cpp);
-        void (*read_serial)(struct device *dev, u8 *serial);
-        u16 (*get_interface)(struct device *dev);
+        int (*read_serial)(struct device *dev, u8 *serial);
+        int (*get_interface)(struct device *dev);
         int (*area_init)(struct nfp_cpp_area *area,u32 dest, unsigned long long address, unsigned long size);
         void (*area_cleanup)(struct nfp_cpp_area *area);
         int (*area_acquire)(struct nfp_cpp_area *area);

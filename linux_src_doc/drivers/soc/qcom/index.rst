@@ -10,10 +10,14 @@ qcom
     apr_c
     cmd-db_c
     glink_ssr_c
+    llcc-slice_c
     mdt_loader_c
     qcom-geni-se_c
     qmi_encdec_c
     qmi_interface_c
+    rpmh-internal_h
+    rpmh-rsc_c
+    rpmh_c
     smd-rpm_c
     smem_c
     smem_state_c

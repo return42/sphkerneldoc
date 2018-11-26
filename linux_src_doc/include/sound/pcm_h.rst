@@ -10,8 +10,9 @@ snd_pcm_stream_linked
 
     Check whether the substream is linked with others
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         substream to check
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_stream_linked.description`:
 
@@ -29,11 +30,13 @@ snd_pcm_stream_lock_irqsave
 
     Lock the PCM stream
 
-    :param  substream:
+    :param substream:
         PCM substream
+    :type substream: 
 
-    :param  flags:
+    :param flags:
         irq flags
+    :type flags: 
 
 .. _`snd_pcm_stream_lock_irqsave.description`:
 
@@ -53,11 +56,13 @@ snd_pcm_group_for_each_entry
 
     iterate over the linked substreams
 
-    :param  s:
+    :param s:
         the iterator
+    :type s: 
 
-    :param  substream:
+    :param substream:
         the substream
+    :type substream: 
 
 .. _`snd_pcm_group_for_each_entry.description`:
 
@@ -77,8 +82,9 @@ snd_pcm_running
 
     Check whether the substream is in a running state
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         substream to check
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_running.description`:
 
@@ -97,11 +103,13 @@ bytes_to_samples
 
     Unit conversion of the size from bytes to samples
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param ssize_t size:
+    :param size:
         size in bytes
+    :type size: ssize_t
 
 .. _`bytes_to_frames`:
 
@@ -112,11 +120,13 @@ bytes_to_frames
 
     Unit conversion of the size from bytes to frames
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param ssize_t size:
+    :param size:
         size in bytes
+    :type size: ssize_t
 
 .. _`samples_to_bytes`:
 
@@ -127,11 +137,13 @@ samples_to_bytes
 
     Unit conversion of the size from samples to bytes
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param ssize_t size:
+    :param size:
         size in samples
+    :type size: ssize_t
 
 .. _`frames_to_bytes`:
 
@@ -142,11 +154,13 @@ frames_to_bytes
 
     Unit conversion of the size from frames to bytes
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param snd_pcm_sframes_t size:
+    :param size:
         size in frames
+    :type size: snd_pcm_sframes_t
 
 .. _`frame_aligned`:
 
@@ -157,11 +171,13 @@ frame_aligned
 
     Check whether the byte size is aligned to frames
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param ssize_t bytes:
+    :param bytes:
         size in bytes
+    :type bytes: ssize_t
 
 .. _`snd_pcm_lib_buffer_bytes`:
 
@@ -172,8 +188,9 @@ snd_pcm_lib_buffer_bytes
 
     Get the buffer size of the current PCM in bytes
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_lib_period_bytes`:
 
@@ -184,8 +201,9 @@ snd_pcm_lib_period_bytes
 
     Get the period size of the current PCM in bytes
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_playback_avail`:
 
@@ -196,8 +214,9 @@ snd_pcm_playback_avail
 
     Get the available (writable) space for playback
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
 .. _`snd_pcm_playback_avail.description`:
 
@@ -215,8 +234,9 @@ snd_pcm_capture_avail
 
     Get the available (readable) space for capture
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
 .. _`snd_pcm_capture_avail.description`:
 
@@ -234,8 +254,9 @@ snd_pcm_playback_hw_avail
 
     Get the queued space for playback
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
 .. _`snd_pcm_capture_hw_avail`:
 
@@ -246,8 +267,9 @@ snd_pcm_capture_hw_avail
 
     Get the free space for capture
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
 .. _`snd_pcm_playback_ready`:
 
@@ -258,8 +280,9 @@ snd_pcm_playback_ready
 
     check whether the playback buffer is available
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_playback_ready.description`:
 
@@ -284,8 +307,9 @@ snd_pcm_capture_ready
 
     check whether the capture buffer is available
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_capture_ready.description`:
 
@@ -310,8 +334,9 @@ snd_pcm_playback_data
 
     check whether any data exists on the playback buffer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_playback_data.description`:
 
@@ -337,8 +362,9 @@ snd_pcm_playback_empty
 
     check whether the playback buffer is empty
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_playback_empty.description`:
 
@@ -363,8 +389,9 @@ snd_pcm_capture_empty
 
     check whether the capture buffer is empty
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_capture_empty.description`:
 
@@ -389,11 +416,13 @@ snd_pcm_trigger_done
 
     Mark the master substream
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_substream \*master:
+    :param master:
         the linked master substream
+    :type master: struct snd_pcm_substream \*
 
 .. _`snd_pcm_trigger_done.description`:
 
@@ -418,8 +447,9 @@ params_channels
 
     Get the number of channels from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`params_rate`:
 
@@ -430,8 +460,9 @@ params_rate
 
     Get the sample rate from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`params_period_size`:
 
@@ -442,8 +473,9 @@ params_period_size
 
     Get the period size (in frames) from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`params_periods`:
 
@@ -454,8 +486,9 @@ params_periods
 
     Get the number of periods from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`params_buffer_size`:
 
@@ -466,8 +499,9 @@ params_buffer_size
 
     Get the buffer size (in frames) from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`params_buffer_bytes`:
 
@@ -478,8 +512,9 @@ params_buffer_bytes
 
     Get the buffer size (in bytes) from the hw params
 
-    :param const struct snd_pcm_hw_params \*p:
+    :param p:
         hw params
+    :type p: const struct snd_pcm_hw_params \*
 
 .. _`snd_pcm_hw_constraint_single`:
 
@@ -490,14 +525,17 @@ snd_pcm_hw_constraint_single
 
     Constrain parameter to a single value
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param snd_pcm_hw_param_t var:
+    :param var:
         The hw_params variable to constrain
+    :type var: snd_pcm_hw_param_t
 
-    :param unsigned int val:
+    :param val:
         The value to constrain to
+    :type val: unsigned int
 
 .. _`snd_pcm_hw_constraint_single.return`:
 
@@ -516,8 +554,9 @@ snd_pcm_format_cpu_endian
 
     Check the PCM format is CPU-endian
 
-    :param snd_pcm_format_t format:
+    :param format:
         the format to check
+    :type format: snd_pcm_format_t
 
 .. _`snd_pcm_format_cpu_endian.return`:
 
@@ -536,11 +575,13 @@ snd_pcm_set_runtime_buffer
 
     Set the PCM runtime buffer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream to set
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct snd_dma_buffer \*bufp:
+    :param bufp:
         the buffer information, NULL to clear
+    :type bufp: struct snd_dma_buffer \*
 
 .. _`snd_pcm_set_runtime_buffer.description`:
 
@@ -559,11 +600,13 @@ snd_pcm_gettime
 
     Fill the timespec depending on the timestamp mode
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         PCM runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
-    :param struct timespec \*tv:
+    :param tv:
         timespec to fill
+    :type tv: struct timespec \*
 
 .. _`snd_pcm_lib_alloc_vmalloc_buffer`:
 
@@ -574,11 +617,13 @@ snd_pcm_lib_alloc_vmalloc_buffer
 
     allocate virtual DMA buffer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the substream to allocate the buffer to
+    :type substream: struct snd_pcm_substream \*
 
-    :param size_t size:
+    :param size:
         the requested buffer size, in bytes
+    :type size: size_t
 
 .. _`snd_pcm_lib_alloc_vmalloc_buffer.description`:
 
@@ -606,11 +651,13 @@ snd_pcm_lib_alloc_vmalloc_32_buffer
 
     allocate 32-bit-addressable buffer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the substream to allocate the buffer to
+    :type substream: struct snd_pcm_substream \*
 
-    :param size_t size:
+    :param size:
         the requested buffer size, in bytes
+    :type size: size_t
 
 .. _`snd_pcm_lib_alloc_vmalloc_32_buffer.description`:
 
@@ -637,11 +684,13 @@ snd_pcm_sgbuf_get_addr
 
     Get the DMA address at the corresponding offset
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param unsigned int ofs:
+    :param ofs:
         byte offset
+    :type ofs: unsigned int
 
 .. _`snd_pcm_sgbuf_get_ptr`:
 
@@ -652,11 +701,13 @@ snd_pcm_sgbuf_get_ptr
 
     Get the virtual address at the corresponding offset
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param unsigned int ofs:
+    :param ofs:
         byte offset
+    :type ofs: unsigned int
 
 .. _`snd_pcm_sgbuf_get_chunk_size`:
 
@@ -667,14 +718,17 @@ snd_pcm_sgbuf_get_chunk_size
 
     Compute the max size that fits within the contig. page from the given size
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param unsigned int ofs:
+    :param ofs:
         byte offset
+    :type ofs: unsigned int
 
-    :param unsigned int size:
+    :param size:
         byte size to examine
+    :type size: unsigned int
 
 .. _`snd_pcm_mmap_data_open`:
 
@@ -685,8 +739,9 @@ snd_pcm_mmap_data_open
 
     increase the mmap counter
 
-    :param struct vm_area_struct \*area:
+    :param area:
         VMA
+    :type area: struct vm_area_struct \*
 
 .. _`snd_pcm_mmap_data_open.description`:
 
@@ -704,8 +759,9 @@ snd_pcm_mmap_data_close
 
     decrease the mmap counter
 
-    :param struct vm_area_struct \*area:
+    :param area:
         VMA
+    :type area: struct vm_area_struct \*
 
 .. _`snd_pcm_mmap_data_close.description`:
 
@@ -723,11 +779,13 @@ snd_pcm_limit_isa_dma_size
 
     Get the max size fitting with ISA DMA transfer
 
-    :param int dma:
+    :param dma:
         DMA number
+    :type dma: int
 
-    :param size_t \*max:
+    :param max:
         pointer to store the max size
+    :type max: size_t \*
 
 .. _`snd_pcm_stream_str`:
 
@@ -738,8 +796,9 @@ snd_pcm_stream_str
 
     Get a string naming the direction of a stream
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_stream_str.return`:
 
@@ -757,11 +816,13 @@ snd_pcm_chmap_substream
 
     get the PCM substream assigned to the given chmap info
 
-    :param struct snd_pcm_chmap \*info:
+    :param info:
         chmap information
+    :type info: struct snd_pcm_chmap \*
 
-    :param unsigned int idx:
+    :param idx:
         the substream number index
+    :type idx: unsigned int
 
 .. _`pcm_format_to_bits`:
 
@@ -772,8 +833,9 @@ pcm_format_to_bits
 
     Strong-typed conversion of pcm_format to bitwise
 
-    :param snd_pcm_format_t pcm_format:
+    :param pcm_format:
         PCM format
+    :type pcm_format: snd_pcm_format_t
 
 .. This file was automatic generated / don't edit.
 

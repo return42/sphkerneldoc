@@ -369,6 +369,7 @@ Definition
         void (*start_transfer)(struct xilinx_dma_chan *chan);
         int (*stop_transfer)(struct xilinx_dma_chan *chan);
         u16 tdest;
+        bool has_vflip;
     }
 
 .. _`xilinx_dma_chan.members`:
@@ -477,6 +478,9 @@ stop_transfer
 
 tdest
     TDEST value for mcdma
+
+has_vflip
+    S2MM vertical flip
 
 .. _`xdma_ip_type`:
 
@@ -615,17 +619,21 @@ vdma_desc_write_64
 
     64-bit descriptor write
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific VDMA channel
+    :type chan: struct xilinx_dma_chan \*
 
-    :param u32 reg:
+    :param reg:
         Register to write
+    :type reg: u32
 
-    :param u32 value_lsb:
+    :param value_lsb:
         lower address of the descriptor.
+    :type value_lsb: u32
 
-    :param u32 value_msb:
+    :param value_msb:
         upper address of the descriptor.
+    :type value_msb: u32
 
 .. _`vdma_desc_write_64.description`:
 
@@ -645,8 +653,9 @@ xilinx_vdma_alloc_tx_segment
 
     Allocate transaction segment
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_vdma_alloc_tx_segment.return`:
 
@@ -664,8 +673,9 @@ xilinx_cdma_alloc_tx_segment
 
     Allocate transaction segment
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_cdma_alloc_tx_segment.return`:
 
@@ -683,8 +693,9 @@ xilinx_axidma_alloc_tx_segment
 
     Allocate transaction segment
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_axidma_alloc_tx_segment.return`:
 
@@ -702,11 +713,13 @@ xilinx_dma_free_tx_segment
 
     Free transaction segment
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
-    :param struct xilinx_axidma_tx_segment \*segment:
+    :param segment:
         DMA transaction segment
+    :type segment: struct xilinx_axidma_tx_segment \*
 
 .. _`xilinx_cdma_free_tx_segment`:
 
@@ -717,11 +730,13 @@ xilinx_cdma_free_tx_segment
 
     Free transaction segment
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
-    :param struct xilinx_cdma_tx_segment \*segment:
+    :param segment:
         DMA transaction segment
+    :type segment: struct xilinx_cdma_tx_segment \*
 
 .. _`xilinx_vdma_free_tx_segment`:
 
@@ -732,11 +747,13 @@ xilinx_vdma_free_tx_segment
 
     Free transaction segment
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
-    :param struct xilinx_vdma_tx_segment \*segment:
+    :param segment:
         DMA transaction segment
+    :type segment: struct xilinx_vdma_tx_segment \*
 
 .. _`xilinx_dma_alloc_tx_descriptor`:
 
@@ -747,8 +764,9 @@ xilinx_dma_alloc_tx_descriptor
 
     Allocate transaction descriptor
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_dma_alloc_tx_descriptor.return`:
 
@@ -766,11 +784,13 @@ xilinx_dma_free_tx_descriptor
 
     Free transaction descriptor
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
-    :param struct xilinx_dma_tx_descriptor \*desc:
+    :param desc:
         DMA transaction descriptor
+    :type desc: struct xilinx_dma_tx_descriptor \*
 
 .. _`xilinx_dma_free_desc_list`:
 
@@ -781,11 +801,13 @@ xilinx_dma_free_desc_list
 
     Free descriptors list
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
-    :param struct list_head \*list:
+    :param list:
         List to parse and delete the descriptor
+    :type list: struct list_head \*
 
 .. _`xilinx_dma_free_descriptors`:
 
@@ -796,8 +818,9 @@ xilinx_dma_free_descriptors
 
     Free channel descriptors
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_dma_free_chan_resources`:
 
@@ -808,8 +831,9 @@ xilinx_dma_free_chan_resources
 
     Free channel resources
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
 .. _`xilinx_dma_chan_handle_cyclic`:
 
@@ -820,14 +844,17 @@ xilinx_dma_chan_handle_cyclic
 
     Cyclic dma callback
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific dma channel
+    :type chan: struct xilinx_dma_chan \*
 
-    :param struct xilinx_dma_tx_descriptor \*desc:
+    :param desc:
         dma transaction descriptor
+    :type desc: struct xilinx_dma_tx_descriptor \*
 
-    :param unsigned long \*flags:
+    :param flags:
         flags for spin lock
+    :type flags: unsigned long \*
 
 .. _`xilinx_dma_chan_desc_cleanup`:
 
@@ -838,8 +865,9 @@ xilinx_dma_chan_desc_cleanup
 
     Clean channel descriptors
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_dma_do_tasklet`:
 
@@ -850,8 +878,9 @@ xilinx_dma_do_tasklet
 
     Schedule completion tasklet
 
-    :param unsigned long data:
+    :param data:
         Pointer to the Xilinx DMA channel structure
+    :type data: unsigned long
 
 .. _`xilinx_dma_alloc_chan_resources`:
 
@@ -862,8 +891,9 @@ xilinx_dma_alloc_chan_resources
 
     Allocate channel resources
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
 .. _`xilinx_dma_alloc_chan_resources.return`:
 
@@ -881,14 +911,17 @@ xilinx_dma_tx_status
 
     Get DMA transaction status
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         Transaction identifier
+    :type cookie: dma_cookie_t
 
-    :param struct dma_tx_state \*txstate:
+    :param txstate:
         Transaction state
+    :type txstate: struct dma_tx_state \*
 
 .. _`xilinx_dma_tx_status.return`:
 
@@ -906,8 +939,9 @@ xilinx_dma_stop_transfer
 
     Halt DMA channel
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_dma_stop_transfer.return`:
 
@@ -925,8 +959,9 @@ xilinx_cdma_stop_transfer
 
     Wait for the current transfer to complete
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_cdma_stop_transfer.return`:
 
@@ -944,8 +979,9 @@ xilinx_dma_start
 
     Start DMA channel
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_vdma_start_transfer`:
 
@@ -956,8 +992,9 @@ xilinx_vdma_start_transfer
 
     Starts VDMA transfer
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific channel struct pointer
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_cdma_start_transfer`:
 
@@ -968,8 +1005,9 @@ xilinx_cdma_start_transfer
 
     Starts cdma transfer
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific channel struct pointer
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_dma_start_transfer`:
 
@@ -980,8 +1018,9 @@ xilinx_dma_start_transfer
 
     Starts DMA transfer
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific channel struct pointer
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_dma_issue_pending`:
 
@@ -992,8 +1031,9 @@ xilinx_dma_issue_pending
 
     Issue pending transactions
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
 .. _`xilinx_dma_complete_descriptor`:
 
@@ -1004,8 +1044,9 @@ xilinx_dma_complete_descriptor
 
     Mark the active descriptor as complete
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         xilinx DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_dma_complete_descriptor.context`:
 
@@ -1023,8 +1064,9 @@ xilinx_dma_reset
 
     Reset DMA channel
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_dma_reset.return`:
 
@@ -1042,8 +1084,9 @@ xilinx_dma_chan_reset
 
     Reset DMA channel and enable interrupts
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_dma_chan_reset.return`:
 
@@ -1061,11 +1104,13 @@ xilinx_dma_irq_handler
 
     DMA Interrupt handler
 
-    :param int irq:
+    :param irq:
         IRQ number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Pointer to the Xilinx DMA channel structure
+    :type data: void \*
 
 .. _`xilinx_dma_irq_handler.return`:
 
@@ -1083,11 +1128,13 @@ append_desc_queue
 
     Queuing descriptor
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific dma channel
+    :type chan: struct xilinx_dma_chan \*
 
-    :param struct xilinx_dma_tx_descriptor \*desc:
+    :param desc:
         dma transaction descriptor
+    :type desc: struct xilinx_dma_tx_descriptor \*
 
 .. _`xilinx_dma_tx_submit`:
 
@@ -1098,8 +1145,9 @@ xilinx_dma_tx_submit
 
     Submit DMA transaction
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         Async transaction descriptor
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`xilinx_dma_tx_submit.return`:
 
@@ -1117,14 +1165,17 @@ xilinx_vdma_dma_prep_interleaved
 
     prepare a descriptor for a DMA_SLAVE transaction
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param struct dma_interleaved_template \*xt:
+    :param xt:
         Interleaved template pointer
+    :type xt: struct dma_interleaved_template \*
 
-    :param unsigned long flags:
+    :param flags:
         transfer ack flags
+    :type flags: unsigned long
 
 .. _`xilinx_vdma_dma_prep_interleaved.return`:
 
@@ -1142,20 +1193,25 @@ xilinx_cdma_prep_memcpy
 
     prepare descriptors for a memcpy transaction
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param dma_addr_t dma_dst:
+    :param dma_dst:
         destination address
+    :type dma_dst: dma_addr_t
 
-    :param dma_addr_t dma_src:
+    :param dma_src:
         source address
+    :type dma_src: dma_addr_t
 
-    :param size_t len:
+    :param len:
         transfer length
+    :type len: size_t
 
-    :param unsigned long flags:
+    :param flags:
         transfer ack flags
+    :type flags: unsigned long
 
 .. _`xilinx_cdma_prep_memcpy.return`:
 
@@ -1173,23 +1229,29 @@ xilinx_dma_prep_slave_sg
 
     prepare descriptors for a DMA_SLAVE transaction
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         scatterlist to transfer to/from
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int sg_len:
+    :param sg_len:
         number of entries in \ ``scatterlist``\ 
+    :type sg_len: unsigned int
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         DMA direction
+    :type direction: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         transfer ack flags
+    :type flags: unsigned long
 
-    :param void \*context:
+    :param context:
         APP words of the descriptor
+    :type context: void \*
 
 .. _`xilinx_dma_prep_slave_sg.return`:
 
@@ -1207,23 +1269,29 @@ xilinx_dma_prep_dma_cyclic
 
     prepare descriptors for a DMA_SLAVE transaction
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param dma_addr_t buf_addr:
+    :param buf_addr:
         Physical address of the buffer
+    :type buf_addr: dma_addr_t
 
-    :param size_t buf_len:
+    :param buf_len:
         Total length of the cyclic buffers
+    :type buf_len: size_t
 
-    :param size_t period_len:
+    :param period_len:
         length of individual cyclic buffer
+    :type period_len: size_t
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         DMA direction
+    :type direction: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         transfer ack flags
+    :type flags: unsigned long
 
 .. _`xilinx_dma_prep_dma_cyclic.return`:
 
@@ -1241,14 +1309,17 @@ xilinx_dma_prep_interleaved
 
     prepare a descriptor for a DMA_SLAVE transaction
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param struct dma_interleaved_template \*xt:
+    :param xt:
         Interleaved template pointer
+    :type xt: struct dma_interleaved_template \*
 
-    :param unsigned long flags:
+    :param flags:
         transfer ack flags
+    :type flags: unsigned long
 
 .. _`xilinx_dma_prep_interleaved.return`:
 
@@ -1266,8 +1337,9 @@ xilinx_dma_terminate_all
 
     Halt the channel and free descriptors
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         Driver specific DMA Channel pointer
+    :type dchan: struct dma_chan \*
 
 .. _`xilinx_dma_terminate_all.return`:
 
@@ -1285,11 +1357,13 @@ xilinx_vdma_channel_set_config
 
     Configure VDMA channel Run-time configuration for Axi VDMA, supports: . halt the channel . configure interrupt coalescing and inter-packet delay threshold . start/stop parking . enable genlock
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param struct xilinx_vdma_config \*cfg:
+    :param cfg:
         VDMA device configuration pointer
+    :type cfg: struct xilinx_vdma_config \*
 
 .. _`xilinx_vdma_channel_set_config.return`:
 
@@ -1307,8 +1381,9 @@ xilinx_dma_chan_remove
 
     Per Channel remove function
 
-    :param struct xilinx_dma_chan \*chan:
+    :param chan:
         Driver specific DMA channel
+    :type chan: struct xilinx_dma_chan \*
 
 .. _`xilinx_dma_chan_probe`:
 
@@ -1319,14 +1394,17 @@ xilinx_dma_chan_probe
 
     Per Channel Probing It get channel features from the device tree entry and initialize special channel handling routines
 
-    :param struct xilinx_dma_device \*xdev:
+    :param xdev:
         Driver specific device structure
+    :type xdev: struct xilinx_dma_device \*
 
-    :param struct device_node \*node:
+    :param node:
         Device node
+    :type node: struct device_node \*
 
-    :param int chan_id:
+    :param chan_id:
         DMA Channel id
+    :type chan_id: int
 
 .. _`xilinx_dma_chan_probe.return`:
 
@@ -1344,11 +1422,13 @@ xilinx_dma_child_probe
 
     Per child node probe It get number of dma-channels per child node from device-tree and initializes all the channels.
 
-    :param struct xilinx_dma_device \*xdev:
+    :param xdev:
         Driver specific device structure
+    :type xdev: struct xilinx_dma_device \*
 
-    :param struct device_node \*node:
+    :param node:
         Device node
+    :type node: struct device_node \*
 
 .. _`xilinx_dma_child_probe.return`:
 
@@ -1366,11 +1446,13 @@ of_dma_xilinx_xlate
 
     Translation function
 
-    :param struct of_phandle_args \*dma_spec:
+    :param dma_spec:
         Pointer to DMA specifier as found in the device tree
+    :type dma_spec: struct of_phandle_args \*
 
-    :param struct of_dma \*ofdma:
+    :param ofdma:
         Pointer to DMA controller data
+    :type ofdma: struct of_dma \*
 
 .. _`of_dma_xilinx_xlate.return`:
 
@@ -1388,8 +1470,9 @@ xilinx_dma_probe
 
     Driver probe function
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`xilinx_dma_probe.return`:
 
@@ -1407,8 +1490,9 @@ xilinx_dma_remove
 
     Driver remove function
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`xilinx_dma_remove.return`:
 

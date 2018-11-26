@@ -147,8 +147,9 @@ vmw_cbs_context
 
     Return a pointer to the context resource of a context binding state tracker.
 
-    :param const struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         The context binding state tracker.
+    :type cbs: const struct vmw_ctx_binding_state \*
 
 .. _`vmw_cbs_context.description`:
 
@@ -170,17 +171,21 @@ vmw_binding_loc
 
     determine the struct vmw_ctx_bindinfo slot location.
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to a struct vmw_ctx_binding state which holds the slot.
+    :type cbs: struct vmw_ctx_binding_state \*
 
-    :param enum vmw_ctx_binding_type bt:
+    :param bt:
         The binding type.
+    :type bt: enum vmw_ctx_binding_type
 
-    :param u32 shader_slot:
+    :param shader_slot:
         The shader slot of the binding. If none, then set to 0.
+    :type shader_slot: u32
 
-    :param u32 slot:
+    :param slot:
         The slot of the binding.
+    :type slot: u32
 
 .. _`vmw_binding_drop`:
 
@@ -191,8 +196,9 @@ vmw_binding_drop
 
     Stop tracking a context binding
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         Pointer to binding tracker storage.
+    :type bi: struct vmw_ctx_bindinfo \*
 
 .. _`vmw_binding_drop.description`:
 
@@ -212,17 +218,21 @@ vmw_binding_add
 
     Start tracking a context binding
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context binding state tracker.
+    :type cbs: struct vmw_ctx_binding_state \*
 
-    :param const struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         Information about the binding to track.
+    :type bi: const struct vmw_ctx_bindinfo \*
 
-    :param u32 shader_slot:
+    :param shader_slot:
         *undescribed*
+    :type shader_slot: u32
 
-    :param u32 slot:
+    :param slot:
         *undescribed*
+    :type slot: u32
 
 .. _`vmw_binding_add.description`:
 
@@ -241,14 +251,17 @@ vmw_binding_transfer
 
     Transfer a context binding tracking entry.
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the persistent context binding state tracker.
+    :type cbs: struct vmw_ctx_binding_state \*
 
-    :param const struct vmw_ctx_binding_state \*from:
+    :param from:
         *undescribed*
+    :type from: const struct vmw_ctx_binding_state \*
 
-    :param const struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         Information about the binding to track.
+    :type bi: const struct vmw_ctx_bindinfo \*
 
 .. _`vmw_binding_state_kill`:
 
@@ -259,8 +272,9 @@ vmw_binding_state_kill
 
     Kill all bindings associated with a struct vmw_ctx_binding state structure, and re-initialize the structure.
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context binding state tracker.
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_binding_state_kill.description`:
 
@@ -279,8 +293,9 @@ vmw_binding_state_scrub
 
     Scrub all bindings associated with a struct vmw_ctx_binding state structure.
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context binding state tracker.
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_binding_state_scrub.description`:
 
@@ -299,8 +314,9 @@ vmw_binding_res_list_kill
 
     Kill all bindings on a resource binding list
 
-    :param struct list_head \*head:
+    :param head:
         list head of resource binding list
+    :type head: struct list_head \*
 
 .. _`vmw_binding_res_list_kill.description`:
 
@@ -319,8 +335,9 @@ vmw_binding_res_list_scrub
 
     Scrub all bindings on a resource binding list
 
-    :param struct list_head \*head:
+    :param head:
         list head of resource binding list
+    :type head: struct list_head \*
 
 .. _`vmw_binding_res_list_scrub.description`:
 
@@ -339,11 +356,13 @@ vmw_binding_state_commit
 
     Commit staged binding info
 
-    :param struct vmw_ctx_binding_state \*to:
+    :param to:
         *undescribed*
+    :type to: struct vmw_ctx_binding_state \*
 
-    :param struct vmw_ctx_binding_state \*from:
+    :param from:
         Staged binding info built during execbuf.
+    :type from: struct vmw_ctx_binding_state \*
 
 .. _`vmw_binding_state_commit.description`:
 
@@ -364,8 +383,9 @@ vmw_binding_rebind_all
 
     Rebind all scrubbed bindings of a context
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         *undescribed*
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_binding_rebind_all.description`:
 
@@ -384,11 +404,13 @@ vmw_binding_scrub_shader
 
     scrub a shader binding from a context.
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         single binding information.
+    :type bi: struct vmw_ctx_bindinfo \*
 
-    :param bool rebind:
+    :param rebind:
         Whether to issue a bind instead of scrub command.
+    :type rebind: bool
 
 .. _`vmw_binding_scrub_render_target`:
 
@@ -399,11 +421,13 @@ vmw_binding_scrub_render_target
 
     scrub a render target binding from a context.
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         single binding information.
+    :type bi: struct vmw_ctx_bindinfo \*
 
-    :param bool rebind:
+    :param rebind:
         Whether to issue a bind instead of scrub command.
+    :type rebind: bool
 
 .. _`vmw_binding_scrub_texture`:
 
@@ -414,11 +438,13 @@ vmw_binding_scrub_texture
 
     scrub a texture binding from a context.
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         single binding information.
+    :type bi: struct vmw_ctx_bindinfo \*
 
-    :param bool rebind:
+    :param rebind:
         Whether to issue a bind instead of scrub command.
+    :type rebind: bool
 
 .. _`vmw_binding_scrub_texture.todo`:
 
@@ -437,11 +463,13 @@ vmw_binding_scrub_dx_shader
 
     scrub a dx shader binding from a context.
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         single binding information.
+    :type bi: struct vmw_ctx_bindinfo \*
 
-    :param bool rebind:
+    :param rebind:
         Whether to issue a bind instead of scrub command.
+    :type rebind: bool
 
 .. _`vmw_binding_scrub_cb`:
 
@@ -452,11 +480,13 @@ vmw_binding_scrub_cb
 
     scrub a constant buffer binding from a context.
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         single binding information.
+    :type bi: struct vmw_ctx_bindinfo \*
 
-    :param bool rebind:
+    :param rebind:
         Whether to issue a bind instead of scrub command.
+    :type rebind: bool
 
 .. _`vmw_collect_view_ids`:
 
@@ -467,14 +497,17 @@ vmw_collect_view_ids
 
     Build view id data for a view binding command without checking which bindings actually need to be emitted
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context's struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
-    :param const struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         Pointer to where the binding info array is stored in \ ``cbs``\ 
+    :type bi: const struct vmw_ctx_bindinfo \*
 
-    :param u32 max_num:
+    :param max_num:
         Maximum number of entries in the \ ``bi``\  array.
+    :type max_num: u32
 
 .. _`vmw_collect_view_ids.description`:
 
@@ -483,8 +516,8 @@ Description
 
 Scans the \ ``bi``\  array for bindings and builds a buffer of view id data.
 Stops at the first non-existing binding in the \ ``bi``\  array.
-On output, \ ``cbs``\ ->bind_cmd_count contains the number of bindings to be
-emitted, \ ``cbs``\ ->bind_first_slot is set to zero, and \ ``cbs``\ ->bind_cmd_buffer
+On output, \ ``cbs->bind_cmd_count``\  contains the number of bindings to be
+emitted, \ ``cbs->bind_first_slot``\  is set to zero, and \ ``cbs->bind_cmd_buffer``\ 
 contains the command data.
 
 .. _`vmw_collect_dirty_view_ids`:
@@ -496,17 +529,21 @@ vmw_collect_dirty_view_ids
 
     Build view id data for a view binding command
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context's struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
-    :param const struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         Pointer to where the binding info array is stored in \ ``cbs``\ 
+    :type bi: const struct vmw_ctx_bindinfo \*
 
-    :param unsigned long \*dirty:
+    :param dirty:
         Bitmap indicating which bindings need to be emitted.
+    :type dirty: unsigned long \*
 
-    :param u32 max_num:
+    :param max_num:
         Maximum number of entries in the \ ``bi``\  array.
+    :type max_num: u32
 
 .. _`vmw_collect_dirty_view_ids.description`:
 
@@ -515,9 +552,9 @@ Description
 
 Scans the \ ``bi``\  array for bindings that need to be emitted and
 builds a buffer of view id data.
-On output, \ ``cbs``\ ->bind_cmd_count contains the number of bindings to be
-emitted, \ ``cbs``\ ->bind_first_slot indicates the index of the first emitted
-binding, and \ ``cbs``\ ->bind_cmd_buffer contains the command data.
+On output, \ ``cbs->bind_cmd_count``\  contains the number of bindings to be
+emitted, \ ``cbs->bind_first_slot``\  indicates the index of the first emitted
+binding, and \ ``cbs->bind_cmd_buffer``\  contains the command data.
 
 .. _`vmw_emit_set_sr`:
 
@@ -528,11 +565,13 @@ vmw_emit_set_sr
 
     Issue delayed DX shader resource binding commands
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context's struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
-    :param int shader_slot:
+    :param shader_slot:
         *undescribed*
+    :type shader_slot: int
 
 .. _`vmw_emit_set_rt`:
 
@@ -543,8 +582,9 @@ vmw_emit_set_rt
 
     Issue delayed DX rendertarget binding commands
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context's struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_collect_so_targets`:
 
@@ -555,14 +595,17 @@ vmw_collect_so_targets
 
     Build SVGA3dSoTarget data for a binding command without checking which bindings actually need to be emitted
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context's struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
-    :param const struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         Pointer to where the binding info array is stored in \ ``cbs``\ 
+    :type bi: const struct vmw_ctx_bindinfo \*
 
-    :param u32 max_num:
+    :param max_num:
         Maximum number of entries in the \ ``bi``\  array.
+    :type max_num: u32
 
 .. _`vmw_collect_so_targets.description`:
 
@@ -571,8 +614,8 @@ Description
 
 Scans the \ ``bi``\  array for bindings and builds a buffer of SVGA3dSoTarget data.
 Stops at the first non-existing binding in the \ ``bi``\  array.
-On output, \ ``cbs``\ ->bind_cmd_count contains the number of bindings to be
-emitted, \ ``cbs``\ ->bind_first_slot is set to zero, and \ ``cbs``\ ->bind_cmd_buffer
+On output, \ ``cbs->bind_cmd_count``\  contains the number of bindings to be
+emitted, \ ``cbs->bind_first_slot``\  is set to zero, and \ ``cbs->bind_cmd_buffer``\ 
 contains the command data.
 
 .. _`vmw_emit_set_so`:
@@ -584,8 +627,9 @@ vmw_emit_set_so
 
     Issue delayed streamout binding commands
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context's struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_binding_emit_dirty_ps`:
 
@@ -596,8 +640,9 @@ vmw_binding_emit_dirty_ps
 
     Issue delayed per shader binding commands
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context's struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_collect_dirty_vbs`:
 
@@ -608,17 +653,21 @@ vmw_collect_dirty_vbs
 
     Build SVGA3dVertexBuffer data for a SVGA3dCmdDXSetVertexBuffers command
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context's struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
-    :param const struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         Pointer to where the binding info array is stored in \ ``cbs``\ 
+    :type bi: const struct vmw_ctx_bindinfo \*
 
-    :param unsigned long \*dirty:
+    :param dirty:
         Bitmap indicating which bindings need to be emitted.
+    :type dirty: unsigned long \*
 
-    :param u32 max_num:
+    :param max_num:
         Maximum number of entries in the \ ``bi``\  array.
+    :type max_num: u32
 
 .. _`vmw_collect_dirty_vbs.description`:
 
@@ -627,9 +676,9 @@ Description
 
 Scans the \ ``bi``\  array for bindings that need to be emitted and
 builds a buffer of SVGA3dVertexBuffer data.
-On output, \ ``cbs``\ ->bind_cmd_count contains the number of bindings to be
-emitted, \ ``cbs``\ ->bind_first_slot indicates the index of the first emitted
-binding, and \ ``cbs``\ ->bind_cmd_buffer contains the command data.
+On output, \ ``cbs->bind_cmd_count``\  contains the number of bindings to be
+emitted, \ ``cbs->bind_first_slot``\  indicates the index of the first emitted
+binding, and \ ``cbs->bind_cmd_buffer``\  contains the command data.
 
 .. _`vmw_emit_set_vb`:
 
@@ -640,8 +689,9 @@ vmw_emit_set_vb
 
     Issue delayed vertex buffer binding commands
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context's struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_binding_emit_dirty`:
 
@@ -652,8 +702,9 @@ vmw_binding_emit_dirty
 
     Issue delayed binding commands
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the context's struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_binding_emit_dirty.description`:
 
@@ -674,11 +725,13 @@ vmw_binding_scrub_sr
 
     Schedule a dx shaderresource binding scrub from a context
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         single binding information.
+    :type bi: struct vmw_ctx_bindinfo \*
 
-    :param bool rebind:
+    :param rebind:
         Whether to issue a bind instead of scrub command.
+    :type rebind: bool
 
 .. _`vmw_binding_scrub_dx_rt`:
 
@@ -689,11 +742,13 @@ vmw_binding_scrub_dx_rt
 
     Schedule a dx rendertarget binding scrub from a context
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         single binding information.
+    :type bi: struct vmw_ctx_bindinfo \*
 
-    :param bool rebind:
+    :param rebind:
         Whether to issue a bind instead of scrub command.
+    :type rebind: bool
 
 .. _`vmw_binding_scrub_so`:
 
@@ -704,11 +759,13 @@ vmw_binding_scrub_so
 
     Schedule a dx streamoutput buffer binding scrub from a context
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         single binding information.
+    :type bi: struct vmw_ctx_bindinfo \*
 
-    :param bool rebind:
+    :param rebind:
         Whether to issue a bind instead of scrub command.
+    :type rebind: bool
 
 .. _`vmw_binding_scrub_vb`:
 
@@ -719,11 +776,13 @@ vmw_binding_scrub_vb
 
     Schedule a dx vertex buffer binding scrub from a context
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         single binding information.
+    :type bi: struct vmw_ctx_bindinfo \*
 
-    :param bool rebind:
+    :param rebind:
         Whether to issue a bind instead of scrub command.
+    :type rebind: bool
 
 .. _`vmw_binding_scrub_ib`:
 
@@ -734,11 +793,13 @@ vmw_binding_scrub_ib
 
     scrub a dx index buffer binding from a context
 
-    :param struct vmw_ctx_bindinfo \*bi:
+    :param bi:
         single binding information.
+    :type bi: struct vmw_ctx_bindinfo \*
 
-    :param bool rebind:
+    :param rebind:
         Whether to issue a bind instead of scrub command.
+    :type rebind: bool
 
 .. _`vmw_binding_state_alloc`:
 
@@ -749,8 +810,9 @@ vmw_binding_state_alloc
 
     Allocate a struct vmw_ctx_binding_state with memory accounting.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private structure.
+    :type dev_priv: struct vmw_private \*
 
 .. _`vmw_binding_state_alloc.description`:
 
@@ -768,8 +830,9 @@ vmw_binding_state_free
 
     Free a struct vmw_ctx_binding_state and its memory accounting info.
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the struct vmw_ctx_binding_state to be freed.
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_binding_state_list`:
 
@@ -780,8 +843,9 @@ vmw_binding_state_list
 
     Get the binding list of a struct vmw_ctx_binding_state
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the struct vmw_ctx_binding_state
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_binding_state_list.description`:
 
@@ -800,8 +864,9 @@ vmw_binding_state_reset
 
     clear a struct vmw_ctx_binding_state
 
-    :param struct vmw_ctx_binding_state \*cbs:
+    :param cbs:
         Pointer to the struct vmw_ctx_binding_state to be cleared
+    :type cbs: struct vmw_ctx_binding_state \*
 
 .. _`vmw_binding_state_reset.description`:
 

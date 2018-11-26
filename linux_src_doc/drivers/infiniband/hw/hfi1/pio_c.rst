@@ -8,11 +8,13 @@ sc_wait_for_packet_egress
 
 .. c:function:: void sc_wait_for_packet_egress(struct send_context *sc, int pause)
 
-    :param struct send_context \*sc:
+    :param sc:
         valid send context
+    :type sc: struct send_context \*
 
-    :param int pause:
+    :param pause:
         wait for credit return
+    :type pause: int
 
 .. _`sc_wait_for_packet_egress.description`:
 
@@ -33,6 +35,32 @@ The context halt bit may not be set immediately.  Because of this,
 it is necessary to check the SW SFC_HALTED bit (set in the IRQ) and the HW
 context bit to determine if the context is halted.
 
+.. _`pio_kernel_linkup`:
+
+pio_kernel_linkup
+=================
+
+.. c:function:: void pio_kernel_linkup(struct hfi1_devdata *dd)
+
+    Re-enable send contexts after linkup event
+
+    :param dd:
+        valid devive data
+    :type dd: struct hfi1_devdata \*
+
+.. _`pio_kernel_linkup.description`:
+
+Description
+-----------
+
+When the link goes down, the freeze path is taken.  However, a link down
+event is different from a freeze because if the send context is re-enabled
+whowever is sending data will start sending data again, which will hang
+any QP that is sending data.
+
+The freeze path now looks at the type of event that occurs and takes this
+path for link down event.
+
 .. _`sc_piobufavail`:
 
 sc_piobufavail
@@ -42,8 +70,9 @@ sc_piobufavail
 
     callback when a PIO buffer is available
 
-    :param struct send_context \*sc:
+    :param sc:
         the send context
+    :type sc: struct send_context \*
 
 .. _`sc_piobufavail.description`:
 

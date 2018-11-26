@@ -10,11 +10,13 @@ wm8962_mic_detect
 
     Enable microphone detection via the WM8962 IRQ
 
-    :param struct snd_soc_component \*component:
+    :param component:
         WM8962 component
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         jack to report detection events on
+    :type jack: struct snd_soc_jack \*
 
 .. _`wm8962_mic_detect.description`:
 

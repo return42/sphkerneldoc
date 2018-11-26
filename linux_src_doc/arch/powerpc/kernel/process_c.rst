@@ -10,8 +10,9 @@ set_thread_tidr
 
     structure. For now, we only support setting TIDR for 'current' task.
 
-    :param struct task_struct \*t:
+    :param t:
         the task to set the thread ID for
+    :type t: struct task_struct \*
 
 .. _`set_thread_tidr.description`:
 

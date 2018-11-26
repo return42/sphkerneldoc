@@ -10,8 +10,9 @@ dump_register
 
     DesignWare USB3 DRD Controller DebugFS file
 
-    :param  nm:
+    :param nm:
         *undescribed*
+    :type nm: 
 
 .. _`dump_register.description`:
 

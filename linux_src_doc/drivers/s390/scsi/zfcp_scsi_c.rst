@@ -10,12 +10,14 @@ zfcp_scsi_task_mgmt_function
 
     Send a task management function (sync).
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Pointer to SCSI device to send the task management command to.
+    :type sdev: struct scsi_device \*
 
-    :param u8 tm_flags:
+    :param tm_flags:
         Task management flags,
         here we only handle \ ``FCP_TMF_TGT_RESET``\  or \ ``FCP_TMF_LUN_RESET``\ .
+    :type tm_flags: u8
 
 .. _`zfcp_scsi_sysfs_host_reset`:
 
@@ -26,11 +28,13 @@ zfcp_scsi_sysfs_host_reset
 
     Support scsi_host sysfs attribute host_reset.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to Scsi_Host to perform action on.
+    :type shost: struct Scsi_Host \*
 
-    :param int reset_type:
+    :param reset_type:
         We support \ ``SCSI_ADAPTER_RESET``\  but not \ ``SCSI_FIRMWARE_RESET``\ .
+    :type reset_type: int
 
 .. _`zfcp_scsi_sysfs_host_reset.return`:
 
@@ -50,8 +54,9 @@ zfcp_scsi_adapter_register
 
     Register SCSI and FC host with SCSI midlayer
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         The zfcp adapter to register with the SCSI midlayer
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_scsi_adapter_unregister`:
 
@@ -62,8 +67,9 @@ zfcp_scsi_adapter_unregister
 
     Unregister SCSI and FC host from SCSI midlayer
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         The zfcp adapter to unregister.
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_scsi_terminate_rport_io`:
 
@@ -74,8 +80,9 @@ zfcp_scsi_terminate_rport_io
 
     Terminate all I/O on a rport
 
-    :param struct fc_rport \*rport:
+    :param rport:
         The FC rport where to teminate I/O
+    :type rport: struct fc_rport \*
 
 .. _`zfcp_scsi_terminate_rport_io.description`:
 
@@ -97,8 +104,9 @@ zfcp_scsi_set_prot
 
     Configure DIF/DIX support in scsi_host
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         The adapter where to configure DIF/DIX for the SCSI host
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_scsi_dif_sense_error`:
 
@@ -109,11 +117,13 @@ zfcp_scsi_dif_sense_error
 
     Report DIF/DIX error as driver sense error
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         The SCSI command to report the error for
+    :type scmd: struct scsi_cmnd \*
 
-    :param int ascq:
+    :param ascq:
         The ASCQ to put in the sense buffer
+    :type ascq: int
 
 .. _`zfcp_scsi_dif_sense_error.description`:
 

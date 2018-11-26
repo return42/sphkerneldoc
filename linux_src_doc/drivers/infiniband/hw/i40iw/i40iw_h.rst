@@ -10,8 +10,9 @@ to_iwdev
 
     get device
 
-    :param struct ib_device \*ibdev:
+    :param ibdev:
         ib device
+    :type ibdev: struct ib_device \*
 
 .. _`to_ucontext`:
 
@@ -22,8 +23,9 @@ to_ucontext
 
     get user context
 
-    :param struct ib_ucontext \*ibucontext:
+    :param ibucontext:
         ib user context
+    :type ibucontext: struct ib_ucontext \*
 
 .. _`to_iwpd`:
 
@@ -34,8 +36,9 @@ to_iwpd
 
     get protection domain
 
-    :param struct ib_pd \*ibpd:
+    :param ibpd:
         ib pd
+    :type ibpd: struct ib_pd \*
 
 .. _`to_iwmr`:
 
@@ -46,8 +49,9 @@ to_iwmr
 
     get device memory region
 
-    :param struct ib_mr \*ibmr:
+    :param ibmr:
         *undescribed*
+    :type ibmr: struct ib_mr \*
 
 .. _`to_iwmr_from_ibfmr`:
 
@@ -58,8 +62,9 @@ to_iwmr_from_ibfmr
 
     get device memory region
 
-    :param struct ib_fmr \*ibfmr:
+    :param ibfmr:
         ib fmr
+    :type ibfmr: struct ib_fmr \*
 
 .. _`to_iwmw`:
 
@@ -70,8 +75,9 @@ to_iwmw
 
     get device memory window
 
-    :param struct ib_mw \*ibmw:
+    :param ibmw:
         ib memory window
+    :type ibmw: struct ib_mw \*
 
 .. _`to_iwcq`:
 
@@ -82,8 +88,9 @@ to_iwcq
 
     get completion queue
 
-    :param struct ib_cq \*ibcq:
+    :param ibcq:
         ib cqdevice
+    :type ibcq: struct ib_cq \*
 
 .. _`to_iwqp`:
 
@@ -94,8 +101,9 @@ to_iwqp
 
     get device qp
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         ib qp
+    :type ibqp: struct ib_qp \*
 
 .. _`i40iw_alloc_resource`:
 
@@ -106,20 +114,25 @@ i40iw_alloc_resource
 
     allocate a resource
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         device pointer
+    :type iwdev: struct i40iw_device \*
 
-    :param unsigned long \*resource_array:
+    :param resource_array:
         resource bit array:
+    :type resource_array: unsigned long \*
 
-    :param u32 max_resources:
+    :param max_resources:
         maximum resource number
+    :type max_resources: u32
 
-    :param u32 \*req_resource_num:
+    :param req_resource_num:
         *undescribed*
+    :type req_resource_num: u32 \*
 
-    :param u32 \*next:
+    :param next:
         next free id
+    :type next: u32 \*
 
 .. _`i40iw_is_resource_allocated`:
 
@@ -130,14 +143,17 @@ i40iw_is_resource_allocated
 
     detrmine if resource is allocated
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         device pointer
+    :type iwdev: struct i40iw_device \*
 
-    :param unsigned long \*resource_array:
+    :param resource_array:
         resource array for the resource_num
+    :type resource_array: unsigned long \*
 
-    :param u32 resource_num:
+    :param resource_num:
         resource number to check
+    :type resource_num: u32
 
 .. _`i40iw_free_resource`:
 
@@ -148,14 +164,17 @@ i40iw_free_resource
 
     free a resource
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         device pointer
+    :type iwdev: struct i40iw_device \*
 
-    :param unsigned long \*resource_array:
+    :param resource_array:
         resource array for the resource_num
+    :type resource_array: unsigned long \*
 
-    :param u32 resource_num:
+    :param resource_num:
         resource number to free
+    :type resource_num: u32
 
 .. _`to_iwhdl`:
 
@@ -166,8 +185,9 @@ to_iwhdl
 
     Get the handler from the device pointer
 
-    :param struct i40iw_device \*iw_dev:
+    :param iw_dev:
         *undescribed*
+    :type iw_dev: struct i40iw_device \*
 
 .. _`i40iw_initialize_hw_resources`:
 
@@ -176,8 +196,9 @@ i40iw_initialize_hw_resources
 
 .. c:function:: u32 i40iw_initialize_hw_resources(struct i40iw_device *iwdev)
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         *undescribed*
+    :type iwdev: struct i40iw_device \*
 
 .. This file was automatic generated / don't edit.
 

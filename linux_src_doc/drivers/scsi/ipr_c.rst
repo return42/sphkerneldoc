@@ -10,14 +10,17 @@ ipr_trc_hook
 
     Add a trace entry to the driver trace
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param u8 type:
+    :param type:
         trace type
+    :type type: u8
 
-    :param u32 add_data:
+    :param add_data:
         additional data
+    :type add_data: u32
 
 .. _`ipr_trc_hook.return-value`:
 
@@ -35,8 +38,9 @@ ipr_lock_and_done
 
     Acquire lock and complete command
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_lock_and_done.return-value`:
 
@@ -54,8 +58,9 @@ ipr_reinit_ipr_cmnd
 
     Re-initialize an IPR Cmnd block for reuse
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reinit_ipr_cmnd.return-value`:
 
@@ -73,8 +78,9 @@ ipr_init_ipr_cmnd
 
     Initialize an IPR Cmnd block
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
     :param void (\*fast_done)(struct ipr_cmnd \*):
         *undescribed*
@@ -95,8 +101,9 @@ none
 
     Get a free IPR Cmnd block
 
-    :param struct ipr_hrr_queue \*hrrq:
+    :param hrrq:
         *undescribed*
+    :type hrrq: struct ipr_hrr_queue \*
 
 .. _`__ipr_get_free_ipr_cmnd.return-value`:
 
@@ -114,8 +121,9 @@ ipr_get_free_ipr_cmnd
 
     Get a free IPR Cmnd block and initialize it
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_get_free_ipr_cmnd.return-value`:
 
@@ -133,11 +141,13 @@ ipr_mask_and_clear_interrupts
 
     Mask all and clear specified interrupts
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param u32 clr_ints:
+    :param clr_ints:
         interrupts to clear
+    :type clr_ints: u32
 
 .. _`ipr_mask_and_clear_interrupts.description`:
 
@@ -163,8 +173,9 @@ ipr_save_pcix_cmd_reg
 
     Save PCI-X command register
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_save_pcix_cmd_reg.return-value`:
 
@@ -182,8 +193,9 @@ ipr_set_pcix_cmd_reg
 
     Setup PCI-X command register
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_set_pcix_cmd_reg.return-value`:
 
@@ -201,8 +213,9 @@ Return value
 
     done function for aborted SATA commands
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`__ipr_sata_eh_done.description`:
 
@@ -228,8 +241,9 @@ ipr_sata_eh_done
 
     done function for aborted SATA commands
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_sata_eh_done.description`:
 
@@ -255,8 +269,9 @@ none
 
     mid-layer done function for aborted ops
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`__ipr_scsi_eh_done.description`:
 
@@ -282,8 +297,9 @@ ipr_scsi_eh_done
 
     mid-layer done function for aborted ops
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_scsi_eh_done.description`:
 
@@ -309,8 +325,9 @@ ipr_fail_all_ops
 
     Fails all outstanding ops.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_fail_all_ops.description`:
 
@@ -335,8 +352,9 @@ ipr_send_command
 
     Send driver initiated requests.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_send_command.description`:
 
@@ -363,8 +381,9 @@ ipr_do_req
 
     Send driver initiated requests.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
     :param void (\*done)(struct ipr_cmnd \*):
         done function
@@ -372,8 +391,9 @@ ipr_do_req
     :param void (\*timeout_func)(struct timer_list \*):
         timeout function
 
-    :param u32 timeout:
+    :param timeout:
         timeout value
+    :type timeout: u32
 
 .. _`ipr_do_req.description`:
 
@@ -399,8 +419,9 @@ ipr_internal_cmd_done
 
     Op done function for an internally generated op.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_internal_cmd_done.description`:
 
@@ -426,17 +447,21 @@ ipr_init_ioadl
 
     initialize the ioadl for the correct SIS type
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         dma address
+    :type dma_addr: dma_addr_t
 
-    :param u32 len:
+    :param len:
         transfer length
+    :type len: u32
 
-    :param int flags:
+    :param flags:
         ioadl flag value
+    :type flags: int
 
 .. _`ipr_init_ioadl.description`:
 
@@ -462,14 +487,16 @@ ipr_send_blocking_cmd
 
     Send command and sleep on its completion.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
     :param void (\*timeout_func)(struct timer_list \*):
         function to invoke if command times out
 
-    :param u32 timeout:
+    :param timeout:
         timeout
+    :type timeout: u32
 
 .. _`ipr_send_blocking_cmd.return-value`:
 
@@ -487,14 +514,17 @@ ipr_send_hcam
 
     Send an HCAM to the adapter.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param u8 type:
+    :param type:
         HCAM type
+    :type type: u8
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_send_hcam.description`:
 
@@ -521,11 +551,13 @@ ipr_update_ata_class
 
     Update the ata class in the resource entry
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
-    :param unsigned int proto:
+    :param proto:
         cfgte device bus protocol value
+    :type proto: unsigned int
 
 .. _`ipr_update_ata_class.return-value`:
 
@@ -543,11 +575,13 @@ ipr_init_res_entry
 
     Initialize a resource entry struct.
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
-    :param struct ipr_config_table_entry_wrapper \*cfgtew:
+    :param cfgtew:
         config table entry wrapper struct
+    :type cfgtew: struct ipr_config_table_entry_wrapper \*
 
 .. _`ipr_init_res_entry.return-value`:
 
@@ -565,11 +599,13 @@ ipr_is_same_device
 
     Determine if two devices are the same.
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
-    :param struct ipr_config_table_entry_wrapper \*cfgtew:
+    :param cfgtew:
         config table entry wrapper struct
+    :type cfgtew: struct ipr_config_table_entry_wrapper \*
 
 .. _`ipr_is_same_device.return-value`:
 
@@ -587,14 +623,17 @@ Return value
 
     Format the resource path for printing.
 
-    :param u8 \*res_path:
+    :param res_path:
         resource path
+    :type res_path: u8 \*
 
-    :param char \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: char \*
 
-    :param int len:
+    :param len:
         length of buffer provided
+    :type len: int
 
 .. _`__ipr_format_res_path.return-value`:
 
@@ -612,17 +651,21 @@ ipr_format_res_path
 
     Format the resource path for printing.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param u8 \*res_path:
+    :param res_path:
         resource path
+    :type res_path: u8 \*
 
-    :param char \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: char \*
 
-    :param int len:
+    :param len:
         length of buffer provided
+    :type len: int
 
 .. _`ipr_format_res_path.return-value`:
 
@@ -640,11 +683,13 @@ ipr_update_res_entry
 
     Update the resource entry.
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
-    :param struct ipr_config_table_entry_wrapper \*cfgtew:
+    :param cfgtew:
         config table entry wrapper struct
+    :type cfgtew: struct ipr_config_table_entry_wrapper \*
 
 .. _`ipr_update_res_entry.return-value`:
 
@@ -662,8 +707,9 @@ ipr_clear_res_target
 
     Clear the bit in the bit map representing the target for the resource.
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_clear_res_target.return-value`:
 
@@ -681,11 +727,13 @@ ipr_handle_config_change
 
     Handle a config change from the adapter
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_handle_config_change.return-value`:
 
@@ -703,8 +751,9 @@ ipr_process_ccn
 
     Op done function for a CCN.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_process_ccn.description`:
 
@@ -730,11 +779,13 @@ strip_and_pad_whitespace
 
     Strip and pad trailing whitespace.
 
-    :param int i:
+    :param i:
         index into buffer
+    :type i: int
 
-    :param char \*buf:
+    :param buf:
         string to modify
+    :type buf: char \*
 
 .. _`strip_and_pad_whitespace.description`:
 
@@ -760,14 +811,17 @@ ipr_log_vpd_compact
 
     Log the passed extended VPD compactly.
 
-    :param char \*prefix:
+    :param prefix:
         string to print at start of printk
+    :type prefix: char \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb pointer
+    :type hostrcb: struct ipr_hostrcb \*
 
-    :param struct ipr_vpd \*vpd:
+    :param vpd:
         vendor/product id/sn struct
+    :type vpd: struct ipr_vpd \*
 
 .. _`ipr_log_vpd_compact.return-value`:
 
@@ -785,8 +839,9 @@ ipr_log_vpd
 
     Log the passed VPD to the error log.
 
-    :param struct ipr_vpd \*vpd:
+    :param vpd:
         vendor/product id/sn struct
+    :type vpd: struct ipr_vpd \*
 
 .. _`ipr_log_vpd.return-value`:
 
@@ -804,14 +859,17 @@ ipr_log_ext_vpd_compact
 
     Log the passed extended VPD compactly.
 
-    :param char \*prefix:
+    :param prefix:
         string to print at start of printk
+    :type prefix: char \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb pointer
+    :type hostrcb: struct ipr_hostrcb \*
 
-    :param struct ipr_ext_vpd \*vpd:
+    :param vpd:
         vendor/product id/sn/wwn struct
+    :type vpd: struct ipr_ext_vpd \*
 
 .. _`ipr_log_ext_vpd_compact.return-value`:
 
@@ -829,8 +887,9 @@ ipr_log_ext_vpd
 
     Log the passed extended VPD to the error log.
 
-    :param struct ipr_ext_vpd \*vpd:
+    :param vpd:
         vendor/product id/sn/wwn struct
+    :type vpd: struct ipr_ext_vpd \*
 
 .. _`ipr_log_ext_vpd.return-value`:
 
@@ -848,11 +907,13 @@ ipr_log_enhanced_cache_error
 
     Log a cache error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_enhanced_cache_error.return-value`:
 
@@ -870,11 +931,13 @@ ipr_log_cache_error
 
     Log a cache error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_cache_error.return-value`:
 
@@ -892,11 +955,13 @@ ipr_log_enhanced_config_error
 
     Log a configuration error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_enhanced_config_error.return-value`:
 
@@ -914,11 +979,13 @@ ipr_log_sis64_config_error
 
     Log a device error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_sis64_config_error.return-value`:
 
@@ -936,11 +1003,13 @@ ipr_log_config_error
 
     Log a configuration error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_config_error.return-value`:
 
@@ -958,11 +1027,13 @@ ipr_log_enhanced_array_error
 
     Log an array configuration error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_enhanced_array_error.return-value`:
 
@@ -980,11 +1051,13 @@ ipr_log_array_error
 
     Log an array configuration error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_array_error.return-value`:
 
@@ -1002,14 +1075,17 @@ ipr_log_hex_data
 
     Log additional hex IOA error data.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param __be32 \*data:
+    :param data:
         IOA error data
+    :type data: __be32 \*
 
-    :param int len:
+    :param len:
         data length
+    :type len: int
 
 .. _`ipr_log_hex_data.return-value`:
 
@@ -1027,11 +1103,13 @@ ipr_log_enhanced_dual_ioa_error
 
     Log an enhanced dual adapter error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_enhanced_dual_ioa_error.return-value`:
 
@@ -1049,11 +1127,13 @@ ipr_log_dual_ioa_error
 
     Log a dual adapter error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_dual_ioa_error.return-value`:
 
@@ -1071,11 +1151,13 @@ ipr_log_fabric_path
 
     Log a fabric path error
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
-    :param struct ipr_hostrcb_fabric_desc \*fabric:
+    :param fabric:
         fabric descriptor
+    :type fabric: struct ipr_hostrcb_fabric_desc \*
 
 .. _`ipr_log_fabric_path.return-value`:
 
@@ -1093,11 +1175,13 @@ ipr_log64_fabric_path
 
     Log a fabric path error
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
-    :param struct ipr_hostrcb64_fabric_desc \*fabric:
+    :param fabric:
         fabric descriptor
+    :type fabric: struct ipr_hostrcb64_fabric_desc \*
 
 .. _`ipr_log64_fabric_path.return-value`:
 
@@ -1115,11 +1199,13 @@ ipr_log_path_elem
 
     Log a fabric path element.
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
-    :param struct ipr_hostrcb_config_element \*cfg:
+    :param cfg:
         fabric path element struct
+    :type cfg: struct ipr_hostrcb_config_element \*
 
 .. _`ipr_log_path_elem.return-value`:
 
@@ -1137,11 +1223,13 @@ ipr_log64_path_elem
 
     Log a fabric path element.
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
-    :param struct ipr_hostrcb64_config_element \*cfg:
+    :param cfg:
         fabric path element struct
+    :type cfg: struct ipr_hostrcb64_config_element \*
 
 .. _`ipr_log64_path_elem.return-value`:
 
@@ -1159,11 +1247,13 @@ ipr_log_fabric_error
 
     Log a fabric error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_fabric_error.return-value`:
 
@@ -1181,11 +1271,13 @@ ipr_log_sis64_array_error
 
     Log a sis64 array error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_sis64_array_error.return-value`:
 
@@ -1203,13 +1295,39 @@ ipr_log_sis64_fabric_error
 
     Log a sis64 fabric error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_sis64_fabric_error.return-value`:
+
+Return value
+------------
+
+none
+
+.. _`ipr_log_sis64_service_required_error`:
+
+ipr_log_sis64_service_required_error
+====================================
+
+.. c:function:: void ipr_log_sis64_service_required_error(struct ipr_ioa_cfg *ioa_cfg, struct ipr_hostrcb *hostrcb)
+
+    Log a sis64 service required error.
+
+    :param ioa_cfg:
+        ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
+
+    :param hostrcb:
+        hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
+
+.. _`ipr_log_sis64_service_required_error.return-value`:
 
 Return value
 ------------
@@ -1225,11 +1343,13 @@ ipr_log_generic_error
 
     Log an adapter error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_generic_error.return-value`:
 
@@ -1247,11 +1367,13 @@ ipr_log_sis64_device_error
 
     Log a cache error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_log_sis64_device_error.return-value`:
 
@@ -1269,8 +1391,9 @@ ipr_get_error
 
     Find the specfied IOASC in the ipr_error_table.
 
-    :param u32 ioasc:
+    :param ioasc:
         IOASC
+    :type ioasc: u32
 
 .. _`ipr_get_error.description`:
 
@@ -1297,11 +1420,13 @@ ipr_handle_log_data
 
     Log an adapter error.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         hostrcb struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_handle_log_data.description`:
 
@@ -1326,8 +1451,9 @@ ipr_process_error
 
     Op done function for an adapter error log.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_process_error.description`:
 
@@ -1354,8 +1480,9 @@ ipr_timeout
 
     An internally generated op has timed out.
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`ipr_timeout.description`:
 
@@ -1381,8 +1508,9 @@ ipr_oper_timeout
 
     Adapter timed out transitioning to operational
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`ipr_oper_timeout.description`:
 
@@ -1408,8 +1536,9 @@ ipr_find_ses_entry
 
     Find matching SES in SES table
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct of SES
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_find_ses_entry.return-value`:
 
@@ -1427,14 +1556,17 @@ ipr_get_max_scsi_speed
 
     Determine max SCSI speed for a given bus
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param u8 bus:
+    :param bus:
         SCSI bus
+    :type bus: u8
 
-    :param u8 bus_width:
+    :param bus_width:
         bus width
+    :type bus_width: u8
 
 .. _`ipr_get_max_scsi_speed.return-value`:
 
@@ -1455,11 +1587,13 @@ ipr_wait_iodbg_ack
 
     Wait for an IODEBUG ACK from the IOA
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param int max_delay:
+    :param max_delay:
         max delay in micro-seconds to wait
+    :type max_delay: int
 
 .. _`ipr_wait_iodbg_ack.description`:
 
@@ -1484,17 +1618,21 @@ ipr_get_sis64_dump_data_section
 
     Dump IOA memory
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param u32 start_addr:
+    :param start_addr:
         adapter address to dump
+    :type start_addr: u32
 
-    :param __be32 \*dest:
+    :param dest:
         destination kernel buffer
+    :type dest: __be32 \*
 
-    :param u32 length_in_words:
+    :param length_in_words:
         length to dump in 4 byte words
+    :type length_in_words: u32
 
 .. _`ipr_get_sis64_dump_data_section.return-value`:
 
@@ -1512,17 +1650,21 @@ ipr_get_ldump_data_section
 
     Dump IOA memory
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param u32 start_addr:
+    :param start_addr:
         adapter address to dump
+    :type start_addr: u32
 
-    :param __be32 \*dest:
+    :param dest:
         destination kernel buffer
+    :type dest: __be32 \*
 
-    :param u32 length_in_words:
+    :param length_in_words:
         length to dump in 4 byte words
+    :type length_in_words: u32
 
 .. _`ipr_get_ldump_data_section.return-value`:
 
@@ -1540,14 +1682,17 @@ ipr_sdt_copy
 
     Copy Smart Dump Table to kernel buffer
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param unsigned long pci_address:
+    :param pci_address:
         adapter address
+    :type pci_address: unsigned long
 
-    :param u32 length:
+    :param length:
         length of data to copy
+    :type length: u32
 
 .. _`ipr_sdt_copy.description`:
 
@@ -1579,8 +1724,9 @@ ipr_init_dump_entry_hdr
 
     Initialize a dump entry header.
 
-    :param struct ipr_dump_entry_header \*hdr:
+    :param hdr:
         dump entry header struct
+    :type hdr: struct ipr_dump_entry_header \*
 
 .. _`ipr_init_dump_entry_hdr.return-value`:
 
@@ -1598,11 +1744,13 @@ ipr_dump_ioa_type_data
 
     Fill in the adapter type in the dump.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_driver_dump \*driver_dump:
+    :param driver_dump:
         driver dump struct
+    :type driver_dump: struct ipr_driver_dump \*
 
 .. _`ipr_dump_ioa_type_data.return-value`:
 
@@ -1620,11 +1768,13 @@ ipr_dump_version_data
 
     Fill in the driver version in the dump.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_driver_dump \*driver_dump:
+    :param driver_dump:
         driver dump struct
+    :type driver_dump: struct ipr_driver_dump \*
 
 .. _`ipr_dump_version_data.return-value`:
 
@@ -1642,11 +1792,13 @@ ipr_dump_trace_data
 
     Fill in the IOA trace in the dump.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_driver_dump \*driver_dump:
+    :param driver_dump:
         driver dump struct
+    :type driver_dump: struct ipr_driver_dump \*
 
 .. _`ipr_dump_trace_data.return-value`:
 
@@ -1664,11 +1816,13 @@ ipr_dump_location_data
 
     Fill in the IOA location in the dump.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_driver_dump \*driver_dump:
+    :param driver_dump:
         driver dump struct
+    :type driver_dump: struct ipr_driver_dump \*
 
 .. _`ipr_dump_location_data.return-value`:
 
@@ -1686,11 +1840,13 @@ ipr_get_ioa_dump
 
     Perform a dump of the driver and adapter.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_dump \*dump:
+    :param dump:
         dump struct
+    :type dump: struct ipr_dump \*
 
 .. _`ipr_get_ioa_dump.return-value`:
 
@@ -1708,8 +1864,9 @@ ipr_release_dump
 
     Free adapter dump memory
 
-    :param struct kref \*kref:
+    :param kref:
         kref struct
+    :type kref: struct kref \*
 
 .. _`ipr_release_dump.return-value`:
 
@@ -1727,8 +1884,9 @@ ipr_worker_thread
 
     Worker thread
 
-    :param struct work_struct \*work:
+    :param work:
         ioa config struct
+    :type work: struct work_struct \*
 
 .. _`ipr_worker_thread.description`:
 
@@ -1755,23 +1913,29 @@ ipr_read_trace
 
     Dump the adapter trace
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject struct
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         bin_attribute struct
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         offset
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`ipr_read_trace.return-value`:
 
@@ -1789,14 +1953,17 @@ ipr_show_fw_version
 
     Show the firmware version
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`ipr_show_fw_version.return-value`:
 
@@ -1814,14 +1981,17 @@ ipr_show_log_level
 
     Show the adapter's error logging level
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`ipr_show_log_level.return-value`:
 
@@ -1839,17 +2009,21 @@ ipr_store_log_level
 
     Change the adapter's error logging level
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`ipr_store_log_level.return-value`:
 
@@ -1867,17 +2041,21 @@ ipr_store_diagnostics
 
     IOA Diagnostics interface
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`ipr_store_diagnostics.description`:
 
@@ -1903,14 +2081,17 @@ ipr_show_adapter_state
 
     Show the adapter's state
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`ipr_show_adapter_state.return-value`:
 
@@ -1928,17 +2109,21 @@ ipr_store_adapter_state
 
     Change adapter state
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`ipr_store_adapter_state.description`:
 
@@ -1963,17 +2148,21 @@ ipr_store_reset_adapter
 
     Reset the adapter
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`ipr_store_reset_adapter.description`:
 
@@ -1998,17 +2187,21 @@ ipr_store_iopoll_weight
 
     Change the adapter's polling mode
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`ipr_store_iopoll_weight.return-value`:
 
@@ -2026,8 +2219,9 @@ ipr_alloc_ucode_buffer
 
     Allocates a microcode download buffer
 
-    :param int buf_len:
+    :param buf_len:
         buffer length
+    :type buf_len: int
 
 .. _`ipr_alloc_ucode_buffer.description`:
 
@@ -2053,8 +2247,9 @@ ipr_free_ucode_buffer
 
     Frees a microcode download buffer
 
-    :param struct ipr_sglist \*sglist:
+    :param sglist:
         *undescribed*
+    :type sglist: struct ipr_sglist \*
 
 .. _`ipr_free_ucode_buffer.description`:
 
@@ -2080,14 +2275,17 @@ ipr_copy_ucode_buffer
 
     Copy user buffer to kernel buffer
 
-    :param struct ipr_sglist \*sglist:
+    :param sglist:
         scatter/gather list pointer
+    :type sglist: struct ipr_sglist \*
 
-    :param u8 \*buffer:
+    :param buffer:
         buffer pointer
+    :type buffer: u8 \*
 
-    :param u32 len:
+    :param len:
         buffer length
+    :type len: u32
 
 .. _`ipr_copy_ucode_buffer.description`:
 
@@ -2113,11 +2311,13 @@ ipr_build_ucode_ioadl64
 
     Build a microcode download IOADL
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param struct ipr_sglist \*sglist:
+    :param sglist:
         scatter/gather list
+    :type sglist: struct ipr_sglist \*
 
 .. _`ipr_build_ucode_ioadl64.description`:
 
@@ -2135,11 +2335,13 @@ ipr_build_ucode_ioadl
 
     Build a microcode download IOADL
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param struct ipr_sglist \*sglist:
+    :param sglist:
         scatter/gather list
+    :type sglist: struct ipr_sglist \*
 
 .. _`ipr_build_ucode_ioadl.description`:
 
@@ -2157,11 +2359,13 @@ ipr_update_ioa_ucode
 
     Update IOA's microcode
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_sglist \*sglist:
+    :param sglist:
         scatter/gather list
+    :type sglist: struct ipr_sglist \*
 
 .. _`ipr_update_ioa_ucode.description`:
 
@@ -2186,17 +2390,21 @@ ipr_store_update_fw
 
     Update the firmware on the adapter
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`ipr_store_update_fw.description`:
 
@@ -2221,14 +2429,17 @@ ipr_show_fw_type
 
     Show the adapter's firmware type.
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`ipr_show_fw_type.return-value`:
 
@@ -2246,23 +2457,29 @@ ipr_read_dump
 
     Dump the adapter
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject struct
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         bin_attribute struct
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         offset
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`ipr_read_dump.return-value`:
 
@@ -2280,8 +2497,9 @@ ipr_alloc_dump
 
     Prepare for adapter dump
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_alloc_dump.return-value`:
 
@@ -2299,8 +2517,9 @@ ipr_free_dump
 
     Free adapter dump memory
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_free_dump.return-value`:
 
@@ -2318,23 +2537,29 @@ ipr_write_dump
 
     Setup dump state of adapter
 
-    :param struct file \*filp:
+    :param filp:
         open sysfs file
+    :type filp: struct file \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject struct
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*bin_attr:
+    :param bin_attr:
         bin_attribute struct
+    :type bin_attr: struct bin_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
-    :param loff_t off:
+    :param off:
         offset
+    :type off: loff_t
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`ipr_write_dump.return-value`:
 
@@ -2352,11 +2577,13 @@ ipr_change_queue_depth
 
     Change the device's queue depth
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param int qdepth:
+    :param qdepth:
         depth to set
+    :type qdepth: int
 
 .. _`ipr_change_queue_depth.return-value`:
 
@@ -2374,14 +2601,17 @@ ipr_show_adapter_handle
 
     Show the adapter's resource handle for this device
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute structure
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`ipr_show_adapter_handle.return-value`:
 
@@ -2399,14 +2629,17 @@ ipr_show_resource_path
 
     Show the resource path or the resource address for this device.
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute structure
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`ipr_show_resource_path.return-value`:
 
@@ -2424,14 +2657,17 @@ ipr_show_device_id
 
     Show the device_id for this device.
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute structure
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`ipr_show_device_id.return-value`:
 
@@ -2449,14 +2685,17 @@ ipr_show_resource_type
 
     Show the resource type for this device.
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute structure
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`ipr_show_resource_type.return-value`:
 
@@ -2474,14 +2713,17 @@ ipr_show_raw_mode
 
     Show the adapter's raw mode
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer
+    :type buf: char \*
 
 .. _`ipr_show_raw_mode.return-value`:
 
@@ -2499,17 +2741,21 @@ ipr_store_raw_mode
 
     Change the adapter's raw mode
 
-    :param struct device \*dev:
+    :param dev:
         class device struct
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`ipr_store_raw_mode.return-value`:
 
@@ -2527,17 +2773,21 @@ ipr_biosparam
 
     Return the HSC mapping
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param struct block_device \*block_device:
+    :param block_device:
         block device pointer
+    :type block_device: struct block_device \*
 
-    :param sector_t capacity:
+    :param capacity:
         capacity of the device
+    :type capacity: sector_t
 
-    :param int \*parm:
+    :param parm:
         Array containing returned HSC values.
+    :type parm: int \*
 
 .. _`ipr_biosparam.description`:
 
@@ -2564,8 +2814,9 @@ ipr_find_starget
 
     Find target based on bus/target.
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
+    :type starget: struct scsi_target \*
 
 .. _`ipr_find_starget.return-value`:
 
@@ -2583,8 +2834,9 @@ ipr_target_alloc
 
     Prepare for commands to a SCSI target
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
+    :type starget: struct scsi_target \*
 
 .. _`ipr_target_alloc.description`:
 
@@ -2610,8 +2862,9 @@ ipr_target_destroy
 
     Destroy a SCSI target
 
-    :param struct scsi_target \*starget:
+    :param starget:
         scsi target struct
+    :type starget: struct scsi_target \*
 
 .. _`ipr_target_destroy.description`:
 
@@ -2630,8 +2883,9 @@ ipr_find_sdev
 
     Find device based on bus/target/lun.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`ipr_find_sdev.return-value`:
 
@@ -2649,8 +2903,9 @@ ipr_slave_destroy
 
     Unconfigure a SCSI device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`ipr_slave_destroy.return-value`:
 
@@ -2668,8 +2923,9 @@ ipr_slave_configure
 
     Configure a SCSI device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`ipr_slave_configure.description`:
 
@@ -2694,8 +2950,9 @@ ipr_ata_slave_alloc
 
     Prepare for commands to a SATA device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`ipr_ata_slave_alloc.description`:
 
@@ -2721,8 +2978,9 @@ ipr_slave_alloc
 
     Prepare for commands to a device.
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
 .. _`ipr_slave_alloc.description`:
 
@@ -2750,11 +3008,13 @@ ipr_match_lun
 
     Match function for specified LUN
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param void \*device:
+    :param device:
         device to match (sdev)
+    :type device: void \*
 
 .. _`ipr_match_lun.return`:
 
@@ -2772,8 +3032,9 @@ ipr_cmnd_is_free
 
     Check if a command is free or not \ ``ipr_cmd``\      ipr command struct
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         *undescribed*
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_cmnd_is_free.return`:
 
@@ -2791,11 +3052,13 @@ ipr_match_res
 
     Match function for specified resource entry
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param void \*resource:
+    :param resource:
         resource entry to match
+    :type resource: void \*
 
 .. _`ipr_match_res.return`:
 
@@ -2813,11 +3076,13 @@ ipr_wait_for_ops
 
     Wait for matching commands to complete
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         *undescribed*
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param void \*device:
+    :param device:
         device to match (sdev)
+    :type device: void \*
 
     :param int (\*match)(struct ipr_cmnd \*, void \*):
         match function to use
@@ -2838,11 +3103,13 @@ ipr_device_reset
 
     Reset the device
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_device_reset.description`:
 
@@ -2871,14 +3138,17 @@ ipr_sata_reset
 
     Reset the SATA port
 
-    :param struct ata_link \*link:
+    :param link:
         SATA link to reset
+    :type link: struct ata_link \*
 
-    :param unsigned int \*classes:
+    :param classes:
         class of the attached device
+    :type classes: unsigned int \*
 
-    :param unsigned long deadline:
+    :param deadline:
         *undescribed*
+    :type deadline: unsigned long
 
 .. _`ipr_sata_reset.description`:
 
@@ -2903,8 +3173,9 @@ Return value
 
     Reset the device
 
-    :param struct scsi_cmnd \*scsi_cmd:
+    :param scsi_cmd:
         scsi command struct
+    :type scsi_cmd: struct scsi_cmnd \*
 
 .. _`__ipr_eh_dev_reset.description`:
 
@@ -2931,8 +3202,9 @@ ipr_bus_reset_done
 
     Op done function for bus reset.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_bus_reset_done.description`:
 
@@ -2957,8 +3229,9 @@ ipr_abort_timeout
 
     An abort task has timed out
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`ipr_abort_timeout.description`:
 
@@ -2985,8 +3258,9 @@ ipr_cancel_op
 
     Cancel specified op
 
-    :param struct scsi_cmnd \*scsi_cmd:
+    :param scsi_cmd:
         scsi command struct
+    :type scsi_cmd: struct scsi_cmnd \*
 
 .. _`ipr_cancel_op.description`:
 
@@ -3011,11 +3285,13 @@ ipr_scan_finished
 
     Abort a single op
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         *undescribed*
+    :type shost: struct Scsi_Host \*
 
-    :param unsigned long elapsed_time:
+    :param elapsed_time:
         *undescribed*
+    :type elapsed_time: unsigned long
 
 .. _`ipr_scan_finished.return-value`:
 
@@ -3033,8 +3309,9 @@ ipr_eh_abort
 
     Reset the host adapter
 
-    :param struct scsi_cmnd \*scsi_cmd:
+    :param scsi_cmd:
         scsi command struct
+    :type scsi_cmd: struct scsi_cmnd \*
 
 .. _`ipr_eh_abort.return-value`:
 
@@ -3052,11 +3329,13 @@ ipr_handle_other_interrupt
 
     Handle "other" interrupts
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param u32 int_reg:
+    :param int_reg:
         interrupt register
+    :type int_reg: u32
 
 .. _`ipr_handle_other_interrupt.return-value`:
 
@@ -3074,14 +3353,17 @@ ipr_isr_eh
 
     Interrupt service routine error handler
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param char \*msg:
+    :param msg:
         message to log
+    :type msg: char \*
 
-    :param u16 number:
+    :param number:
         *undescribed*
+    :type number: u16
 
 .. _`ipr_isr_eh.return-value`:
 
@@ -3099,11 +3381,13 @@ ipr_isr
 
     Interrupt service routine
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*devp:
+    :param devp:
         pointer to ioa config struct
+    :type devp: void \*
 
 .. _`ipr_isr.return-value`:
 
@@ -3121,11 +3405,13 @@ ipr_isr_mhrrq
 
     Interrupt service routine
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*devp:
+    :param devp:
         pointer to ioa config struct
+    :type devp: void \*
 
 .. _`ipr_isr_mhrrq.return-value`:
 
@@ -3143,11 +3429,13 @@ ipr_build_ioadl64
 
     Build a scatter/gather list and map the buffer
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_build_ioadl64.return-value`:
 
@@ -3165,11 +3453,13 @@ ipr_build_ioadl
 
     Build a scatter/gather list and map the buffer
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_build_ioadl.return-value`:
 
@@ -3187,8 +3477,9 @@ Return value
 
     Process completion of ERP for a device
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`__ipr_erp_done.description`:
 
@@ -3214,8 +3505,9 @@ ipr_erp_done
 
     Process completion of ERP for a device
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_erp_done.description`:
 
@@ -3241,8 +3533,9 @@ ipr_reinit_ipr_cmnd_for_erp
 
     Re-initialize a cmnd block to be used for ERP
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reinit_ipr_cmnd_for_erp.return-value`:
 
@@ -3260,8 +3553,9 @@ none
 
     Send request sense to a device
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`__ipr_erp_request_sense.description`:
 
@@ -3287,8 +3581,9 @@ ipr_erp_request_sense
 
     Send request sense to a device
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_erp_request_sense.description`:
 
@@ -3314,8 +3609,9 @@ ipr_erp_cancel_all
 
     Send cancel all to a device
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_erp_cancel_all.description`:
 
@@ -3343,14 +3639,17 @@ ipr_dump_ioasa
 
     Dump contents of IOASA
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_dump_ioasa.description`:
 
@@ -3377,8 +3676,9 @@ ipr_gen_sense
 
     Generate SCSI sense data from an IOASA
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         *undescribed*
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_gen_sense.return-value`:
 
@@ -3396,8 +3696,9 @@ ipr_get_autosense
 
     Copy autosense data to sense buffer
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_get_autosense.description`:
 
@@ -3423,11 +3724,13 @@ ipr_erp_start
 
     Process an error response for a SCSI op
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_erp_start.description`:
 
@@ -3453,8 +3756,9 @@ ipr_scsi_done
 
     mid-layer done function
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_scsi_done.description`:
 
@@ -3480,11 +3784,13 @@ ipr_queuecommand
 
     Queue a mid-layer request
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host struct
+    :type shost: struct Scsi_Host \*
 
-    :param struct scsi_cmnd \*scsi_cmd:
+    :param scsi_cmd:
         scsi command struct
+    :type scsi_cmd: struct scsi_cmnd \*
 
 .. _`ipr_queuecommand.description`:
 
@@ -3511,14 +3817,17 @@ ipr_ioctl
 
     IOCTL handler
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param int cmd:
+    :param cmd:
         IOCTL cmd
+    :type cmd: int
 
-    :param void __user \*arg:
+    :param arg:
         IOCTL arg
+    :type arg: void __user \*
 
 .. _`ipr_ioctl.return-value`:
 
@@ -3536,8 +3845,9 @@ ipr_ioa_info
 
     Get information about the card/driver
 
-    :param struct Scsi_Host \*host:
+    :param host:
         *undescribed*
+    :type host: struct Scsi_Host \*
 
 .. _`ipr_ioa_info.return-value`:
 
@@ -3555,8 +3865,9 @@ ipr_ata_phy_reset
 
     libata phy_reset handler
 
-    :param struct ata_port \*ap:
+    :param ap:
         ata port to reset
+    :type ap: struct ata_port \*
 
 .. _`ipr_ata_post_internal`:
 
@@ -3567,8 +3878,9 @@ ipr_ata_post_internal
 
     Cleanup after an internal command
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA queued command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ipr_ata_post_internal.return-value`:
 
@@ -3586,11 +3898,13 @@ ipr_copy_sata_tf
 
     Copy a SATA taskfile to an IOA data structure
 
-    :param struct ipr_ioarcb_ata_regs \*regs:
+    :param regs:
         destination
+    :type regs: struct ipr_ioarcb_ata_regs \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         source ATA taskfile
+    :type tf: struct ata_taskfile \*
 
 .. _`ipr_copy_sata_tf.return-value`:
 
@@ -3608,8 +3922,9 @@ ipr_sata_done
 
     done function for SATA commands
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_sata_done.description`:
 
@@ -3635,11 +3950,13 @@ ipr_build_ata_ioadl64
 
     Build an ATA scatter/gather list
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA queued command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ipr_build_ata_ioadl`:
 
@@ -3650,11 +3967,13 @@ ipr_build_ata_ioadl
 
     Build an ATA scatter/gather list
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA queued command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ipr_qc_defer`:
 
@@ -3665,8 +3984,9 @@ ipr_qc_defer
 
     Get a free ipr_cmd
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ipr_qc_defer.return-value`:
 
@@ -3684,8 +4004,9 @@ ipr_qc_issue
 
     Issue a SATA qc to a device
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         queued command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ipr_qc_issue.return-value`:
 
@@ -3703,8 +4024,9 @@ ipr_qc_fill_rtf
 
     Read result TF
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA queued command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ipr_qc_fill_rtf.return-value`:
 
@@ -3722,8 +4044,9 @@ ipr_invalid_adapter
 
     Determine if this adapter is supported on this hardware
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa cfg struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_invalid_adapter.description`:
 
@@ -3750,8 +4073,9 @@ ipr_ioa_bringdown_done
 
     IOA bring down completion.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioa_bringdown_done.description`:
 
@@ -3777,8 +4101,9 @@ ipr_ioa_reset_done
 
     IOA reset completion.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioa_reset_done.description`:
 
@@ -3805,11 +4130,13 @@ ipr_set_sup_dev_dflt
 
     Initialize a Set Supported Device buffer
 
-    :param struct ipr_supported_device \*supported_dev:
+    :param supported_dev:
         supported device struct
+    :type supported_dev: struct ipr_supported_device \*
 
-    :param struct ipr_std_inq_vpids \*vpids:
+    :param vpids:
         vendor product id struct
+    :type vpids: struct ipr_std_inq_vpids \*
 
 .. _`ipr_set_sup_dev_dflt.return-value`:
 
@@ -3827,8 +4154,9 @@ ipr_set_supported_devs
 
     Send Set Supported Devices for a device
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_set_supported_devs.description`:
 
@@ -3853,14 +4181,17 @@ ipr_get_mode_page
 
     Locate specified mode page
 
-    :param struct ipr_mode_pages \*mode_pages:
+    :param mode_pages:
         mode page buffer
+    :type mode_pages: struct ipr_mode_pages \*
 
-    :param u32 page_code:
+    :param page_code:
         page code to find
+    :type page_code: u32
 
-    :param u32 len:
+    :param len:
         minimum required length for mode page
+    :type len: u32
 
 .. _`ipr_get_mode_page.return-value`:
 
@@ -3878,11 +4209,13 @@ ipr_check_term_power
 
     Check for term power errors
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_mode_pages \*mode_pages:
+    :param mode_pages:
         IOAFP mode pages buffer
+    :type mode_pages: struct ipr_mode_pages \*
 
 .. _`ipr_check_term_power.description`:
 
@@ -3907,8 +4240,9 @@ ipr_scsi_bus_speed_limit
 
     Limit the SCSI speed based on SES table
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_scsi_bus_speed_limit.description`:
 
@@ -3935,11 +4269,13 @@ ipr_modify_ioafp_mode_page_28
 
     Modify IOAFP Mode Page 28
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct ipr_mode_pages \*mode_pages:
+    :param mode_pages:
         mode page 28 buffer
+    :type mode_pages: struct ipr_mode_pages \*
 
 .. _`ipr_modify_ioafp_mode_page_28.description`:
 
@@ -3964,20 +4300,25 @@ ipr_build_mode_select
 
     Build a mode select command
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param __be32 res_handle:
+    :param res_handle:
         resource handle to send command to
+    :type res_handle: __be32
 
-    :param u8 parm:
+    :param parm:
         Byte 2 of Mode Sense command
+    :type parm: u8
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         DMA buffer address
+    :type dma_addr: dma_addr_t
 
-    :param u8 xfer_len:
+    :param xfer_len:
         data transfer length
+    :type xfer_len: u8
 
 .. _`ipr_build_mode_select.return-value`:
 
@@ -3995,8 +4336,9 @@ ipr_ioafp_mode_select_page28
 
     Issue Mode Select Page 28 to IOA
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_mode_select_page28.description`:
 
@@ -4022,20 +4364,25 @@ ipr_build_mode_sense
 
     Builds a mode sense command
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param __be32 res_handle:
+    :param res_handle:
         *undescribed*
+    :type res_handle: __be32
 
-    :param u8 parm:
+    :param parm:
         Byte 2 of mode sense command
+    :type parm: u8
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         DMA address of mode sense buffer
+    :type dma_addr: dma_addr_t
 
-    :param u8 xfer_len:
+    :param xfer_len:
         Size of DMA buffer
+    :type xfer_len: u8
 
 .. _`ipr_build_mode_sense.return-value`:
 
@@ -4053,8 +4400,9 @@ ipr_reset_cmd_failed
 
     Handle failure of IOA reset command
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_cmd_failed.description`:
 
@@ -4079,8 +4427,9 @@ ipr_reset_mode_sense_failed
 
     Handle failure of IOAFP mode sense
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_mode_sense_failed.description`:
 
@@ -4106,8 +4455,9 @@ ipr_ioafp_mode_sense_page28
 
     Issue Mode Sense Page 28 to IOA
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_mode_sense_page28.description`:
 
@@ -4133,8 +4483,9 @@ ipr_ioafp_mode_select_page24
 
     Issue Mode Select to IOA
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_mode_select_page24.description`:
 
@@ -4159,8 +4510,9 @@ ipr_reset_mode_sense_page24_failed
 
     Handle failure of IOAFP mode sense
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_mode_sense_page24_failed.description`:
 
@@ -4186,8 +4538,9 @@ ipr_ioafp_mode_sense_page24
 
     Issue Page 24 Mode Sense to IOA
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_mode_sense_page24.description`:
 
@@ -4213,8 +4566,9 @@ ipr_init_res_table
 
     Initialize the resource table
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_init_res_table.description`:
 
@@ -4242,8 +4596,9 @@ ipr_ioafp_query_ioa_cfg
 
     Send a Query IOA Config to the adapter.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_query_ioa_cfg.description`:
 
@@ -4269,8 +4624,9 @@ ipr_ioafp_set_caching_parameters
 
     Issue Set Cache parameters service action
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         *undescribed*
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_set_caching_parameters.return-value`:
 
@@ -4288,20 +4644,25 @@ ipr_ioafp_inquiry
 
     Send an Inquiry to the adapter.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param u8 flags:
+    :param flags:
         *undescribed*
+    :type flags: u8
 
-    :param u8 page:
+    :param page:
         *undescribed*
+    :type page: u8
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         *undescribed*
+    :type dma_addr: dma_addr_t
 
-    :param u8 xfer_len:
+    :param xfer_len:
         *undescribed*
+    :type xfer_len: u8
 
 .. _`ipr_ioafp_inquiry.description`:
 
@@ -4326,11 +4687,13 @@ ipr_inquiry_page_supported
 
     Is the given inquiry page supported
 
-    :param struct ipr_inquiry_page0 \*page0:
+    :param page0:
         inquiry page 0 buffer
+    :type page0: struct ipr_inquiry_page0 \*
 
-    :param u8 page:
+    :param page:
         page code.
+    :type page: u8
 
 .. _`ipr_inquiry_page_supported.description`:
 
@@ -4355,8 +4718,9 @@ ipr_ioafp_pageC4_inquiry
 
     Send a Page 0xC4 Inquiry to the adapter.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_pagec4_inquiry.description`:
 
@@ -4382,8 +4746,9 @@ ipr_ioafp_cap_inquiry
 
     Send a Page 0xD0 Inquiry to the adapter.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_cap_inquiry.description`:
 
@@ -4409,8 +4774,9 @@ ipr_ioafp_page3_inquiry
 
     Send a Page 3 Inquiry to the adapter.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_page3_inquiry.description`:
 
@@ -4436,8 +4802,9 @@ ipr_ioafp_page0_inquiry
 
     Send a Page 0 Inquiry to the adapter.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_page0_inquiry.description`:
 
@@ -4463,8 +4830,9 @@ ipr_ioafp_std_inquiry
 
     Send a Standard Inquiry to the adapter.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_std_inquiry.description`:
 
@@ -4489,8 +4857,9 @@ ipr_ioafp_identify_hrrq
 
     Send Identify Host RRQ.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_ioafp_identify_hrrq.description`:
 
@@ -4516,8 +4885,9 @@ ipr_reset_timer_done
 
     Adapter reset timer function
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`ipr_reset_timer_done.description`:
 
@@ -4546,11 +4916,13 @@ ipr_reset_start_timer
 
     Start a timer for adapter reset job
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout value
+    :type timeout: unsigned long
 
 .. _`ipr_reset_start_timer.description`:
 
@@ -4579,8 +4951,9 @@ ipr_init_ioa_mem
 
     Initialize ioa_cfg control block
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa cfg struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_init_ioa_mem.return-value`:
 
@@ -4598,8 +4971,9 @@ ipr_reset_next_stage
 
     Process IPL stage change based on feedback register.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_next_stage.return-value`:
 
@@ -4617,8 +4991,9 @@ ipr_reset_enable_ioa
 
     Enable the IOA following a reset.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_enable_ioa.description`:
 
@@ -4644,8 +5019,9 @@ ipr_reset_wait_for_dump
 
     Wait for a dump to timeout.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_wait_for_dump.description`:
 
@@ -4671,8 +5047,9 @@ ipr_unit_check_no_data
 
     Log a unit check/no data error log
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_unit_check_no_data.description`:
 
@@ -4698,8 +5075,9 @@ ipr_get_unit_check_buffer
 
     Get the unit check buffer from the IOA
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_get_unit_check_buffer.description`:
 
@@ -4725,8 +5103,9 @@ ipr_reset_get_unit_check_job
 
     Call to get the unit check buffer.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_get_unit_check_job.description`:
 
@@ -4751,8 +5130,9 @@ ipr_reset_restore_cfg_space
 
     Restore PCI config space.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_restore_cfg_space.description`:
 
@@ -4779,8 +5159,9 @@ ipr_reset_bist_done
 
     BIST has completed on the adapter.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_bist_done.description`:
 
@@ -4805,8 +5186,9 @@ ipr_reset_start_bist
 
     Run BIST on the adapter.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_start_bist.description`:
 
@@ -4831,8 +5213,9 @@ ipr_reset_slot_reset_done
 
     Clear PCI reset to the adapter
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_slot_reset_done.description`:
 
@@ -4857,8 +5240,9 @@ ipr_reset_reset_work
 
     Pulse a PCIe fundamental reset
 
-    :param struct work_struct \*work:
+    :param work:
         work struct
+    :type work: struct work_struct \*
 
 .. _`ipr_reset_reset_work.description`:
 
@@ -4876,8 +5260,9 @@ ipr_reset_slot_reset
 
     Reset the PCI slot of the adapter.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_slot_reset.description`:
 
@@ -4902,8 +5287,9 @@ ipr_reset_block_config_access_wait
 
     Wait for permission to block config access
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_block_config_access_wait.description`:
 
@@ -4928,8 +5314,9 @@ ipr_reset_block_config_access
 
     Block config access to the IOA
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_block_config_access.description`:
 
@@ -4954,8 +5341,9 @@ ipr_reset_allowed
 
     Query whether or not IOA can be reset
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_reset_allowed.return-value`:
 
@@ -4973,8 +5361,9 @@ ipr_reset_wait_to_start_bist
 
     Wait for permission to reset IOA.
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_wait_to_start_bist.description`:
 
@@ -5005,8 +5394,9 @@ ipr_reset_alert
 
     Alert the adapter of a pending reset
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_alert.description`:
 
@@ -5034,8 +5424,9 @@ ipr_reset_quiesce_done
 
     Complete IOA disconnect
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_quiesce_done.description`:
 
@@ -5060,8 +5451,9 @@ ipr_reset_cancel_hcam_done
 
     Check for outstanding commands
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_cancel_hcam_done.description`:
 
@@ -5087,8 +5479,9 @@ ipr_reset_cancel_hcam
 
     Cancel outstanding HCAMs
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_cancel_hcam.description`:
 
@@ -5113,8 +5506,9 @@ ipr_reset_ucode_download_done
 
     Microcode download completion
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_ucode_download_done.description`:
 
@@ -5139,8 +5533,9 @@ ipr_reset_ucode_download
 
     Download microcode to the adapter
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_ucode_download.description`:
 
@@ -5166,8 +5561,9 @@ ipr_reset_shutdown_ioa
 
     Shutdown the adapter
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_shutdown_ioa.description`:
 
@@ -5194,8 +5590,9 @@ ipr_reset_ioa_job
 
     Adapter reset job
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_ioa_job.description`:
 
@@ -5220,14 +5617,16 @@ none
 
     Initiate an adapter reset
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
     :param int (\*job_step)(struct ipr_cmnd \*):
         first job step of reset job
 
-    :param enum ipr_shutdown_type shutdown_type:
+    :param shutdown_type:
         shutdown type
+    :type shutdown_type: enum ipr_shutdown_type
 
 .. _`_ipr_initiate_ioa_reset.description`:
 
@@ -5255,11 +5654,13 @@ ipr_initiate_ioa_reset
 
     Initiate an adapter reset
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param enum ipr_shutdown_type shutdown_type:
+    :param shutdown_type:
         shutdown type
+    :type shutdown_type: enum ipr_shutdown_type
 
 .. _`ipr_initiate_ioa_reset.description`:
 
@@ -5286,8 +5687,9 @@ ipr_reset_freeze
 
     Hold off all I/O activity
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         ipr command struct
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_reset_freeze.description`:
 
@@ -5307,8 +5709,9 @@ ipr_pci_mmio_enabled
 
     Called when MMIO has been re-enabled
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
 .. _`ipr_pci_mmio_enabled.description`:
 
@@ -5327,8 +5730,9 @@ ipr_pci_frozen
 
     Called when slot has experienced a PCI bus error.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
 .. _`ipr_pci_frozen.description`:
 
@@ -5348,8 +5752,9 @@ ipr_pci_slot_reset
 
     Called when PCI slot has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
 .. _`ipr_pci_slot_reset.description`:
 
@@ -5369,8 +5774,9 @@ ipr_pci_perm_failure
 
     Called when PCI slot is dead for good.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
 .. _`ipr_pci_perm_failure.description`:
 
@@ -5389,11 +5795,13 @@ ipr_pci_error_detected
 
     Called when a PCI error is detected.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         PCI channel state
+    :type state: pci_channel_state_t
 
 .. _`ipr_pci_error_detected.description`:
 
@@ -5418,8 +5826,9 @@ ipr_probe_ioa_part2
 
     Initializes IOAs found in ipr_probe_ioa(..)
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa cfg struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_probe_ioa_part2.description`:
 
@@ -5446,8 +5855,9 @@ ipr_free_cmd_blks
 
     Frees command blocks allocated for an adapter
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_free_cmd_blks.return-value`:
 
@@ -5465,8 +5875,9 @@ ipr_free_mem
 
     Frees memory allocated for an adapter
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa cfg struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_free_mem.return-value`:
 
@@ -5484,8 +5895,9 @@ ipr_free_irqs
 
     Free all allocated IRQs for the adapter.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ipr cfg struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_free_irqs.description`:
 
@@ -5511,8 +5923,9 @@ ipr_free_all_resources
 
     Free all allocated resources for an adapter.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         *undescribed*
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_free_all_resources.description`:
 
@@ -5538,8 +5951,9 @@ ipr_alloc_cmd_blks
 
     Allocate command blocks for an adapter
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_alloc_cmd_blks.return-value`:
 
@@ -5557,8 +5971,9 @@ ipr_alloc_mem
 
     Allocate memory for an adapter
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_alloc_mem.return-value`:
 
@@ -5576,8 +5991,9 @@ ipr_initialize_bus_attr
 
     Initialize SCSI bus attributes to default values
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_initialize_bus_attr.return-value`:
 
@@ -5595,8 +6011,9 @@ ipr_init_regs
 
     Initialize IOA registers
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_init_regs.return-value`:
 
@@ -5614,14 +6031,17 @@ ipr_init_ioa_cfg
 
     Initialize IOA config struct
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct Scsi_Host \*host:
+    :param host:
         scsi host struct
+    :type host: struct Scsi_Host \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI dev struct
+    :type pdev: struct pci_dev \*
 
 .. _`ipr_init_ioa_cfg.return-value`:
 
@@ -5639,8 +6059,9 @@ ipr_get_chip_info
 
     Find adapter chip information
 
-    :param const struct pci_device_id \*dev_id:
+    :param dev_id:
         PCI device id struct
+    :type dev_id: const struct pci_device_id \*
 
 .. _`ipr_get_chip_info.return-value`:
 
@@ -5658,8 +6079,9 @@ ipr_wait_for_pci_err_recovery
 
     Wait for any PCI error recovery to complete during probe time
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
 .. _`ipr_wait_for_pci_err_recovery.return-value`:
 
@@ -5677,11 +6099,13 @@ ipr_test_intr
 
     Handle the interrupt generated in \ :c:func:`ipr_test_msi`\ .
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*devp:
+    :param devp:
         *undescribed*
+    :type devp: void \*
 
 .. _`ipr_test_intr.description`:
 
@@ -5707,11 +6131,13 @@ ipr_test_msi
 
     Test for Message Signaled Interrupt (MSI) support.
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         *undescribed*
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
 .. _`ipr_test_msi.description`:
 
@@ -5738,11 +6164,13 @@ ipr_initiate_ioa_bringdown
 
     Bring down an adapter
 
-    :param struct ipr_ioa_cfg \*ioa_cfg:
+    :param ioa_cfg:
         ioa config struct
+    :type ioa_cfg: struct ipr_ioa_cfg \*
 
-    :param enum ipr_shutdown_type shutdown_type:
+    :param shutdown_type:
         shutdown type
+    :type shutdown_type: enum ipr_shutdown_type
 
 .. _`ipr_initiate_ioa_bringdown.description`:
 
@@ -5771,8 +6199,9 @@ none
 
     Remove a single adapter
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device struct
+    :type pdev: struct pci_dev \*
 
 .. _`__ipr_remove.description`:
 
@@ -5797,8 +6226,9 @@ ipr_remove
 
     IOA hot plug remove entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device struct
+    :type pdev: struct pci_dev \*
 
 .. _`ipr_remove.description`:
 
@@ -5823,11 +6253,13 @@ ipr_probe
 
     Adapter hot plug add entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*dev_id:
+    :param dev_id:
         *undescribed*
+    :type dev_id: const struct pci_device_id \*
 
 .. _`ipr_probe.return-value`:
 
@@ -5845,8 +6277,9 @@ ipr_shutdown
 
     Shutdown handler.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device struct
+    :type pdev: struct pci_dev \*
 
 .. _`ipr_shutdown.description`:
 
@@ -5872,8 +6305,9 @@ ipr_halt_done
 
     Shutdown prepare completion
 
-    :param struct ipr_cmnd \*ipr_cmd:
+    :param ipr_cmd:
         *undescribed*
+    :type ipr_cmd: struct ipr_cmnd \*
 
 .. _`ipr_halt_done.return-value`:
 
@@ -5891,14 +6325,17 @@ ipr_halt
 
     Issue shutdown prepare to all adapters
 
-    :param struct notifier_block \*nb:
+    :param nb:
         *undescribed*
+    :type nb: struct notifier_block \*
 
-    :param ulong event:
+    :param event:
         *undescribed*
+    :type event: ulong
 
-    :param void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: void \*
 
 .. _`ipr_halt.return-value`:
 
@@ -5916,8 +6353,9 @@ ipr_init
 
     Module entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ipr_init.return-value`:
 
@@ -5935,8 +6373,9 @@ ipr_exit
 
     Module unload
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ipr_exit.description`:
 

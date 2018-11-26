@@ -10,8 +10,9 @@ uvd_v4_2_resume
 
     memory controller programming
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`uvd_v4_2_resume.description`:
 

@@ -10,14 +10,17 @@ rsa_parse_pub_key
 
     decodes the BER encoded buffer and stores in the provided struct rsa_key, pointers to the raw key as is, so that the caller can copy it or MPI parse it, etc.
 
-    :param struct rsa_key \*rsa_key:
+    :param rsa_key:
         struct rsa_key key representation
+    :type rsa_key: struct rsa_key \*
 
-    :param const void \*key:
+    :param key:
         key in BER format
+    :type key: const void \*
 
-    :param unsigned int key_len:
+    :param key_len:
         length of key
+    :type key_len: unsigned int
 
 .. _`rsa_parse_pub_key.return`:
 
@@ -35,14 +38,17 @@ rsa_parse_priv_key
 
     decodes the BER encoded buffer and stores in the provided struct rsa_key, pointers to the raw key as is, so that the caller can copy it or MPI parse it, etc.
 
-    :param struct rsa_key \*rsa_key:
+    :param rsa_key:
         struct rsa_key key representation
+    :type rsa_key: struct rsa_key \*
 
-    :param const void \*key:
+    :param key:
         key in BER format
+    :type key: const void \*
 
-    :param unsigned int key_len:
+    :param key_len:
         length of key
+    :type key_len: unsigned int
 
 .. _`rsa_parse_priv_key.return`:
 

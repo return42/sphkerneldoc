@@ -10,26 +10,31 @@ nau8824_set_tdm_slot
 
     configure DAI TDM.
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         DAI
+    :type dai: struct snd_soc_dai \*
 
-    :param unsigned int tx_mask:
+    :param tx_mask:
         Bitmask representing active TX slots. Ex.
         0xf for normal 4 channel TDM.
         0xf0 for shifted 4 channel TDM
+    :type tx_mask: unsigned int
 
-    :param unsigned int rx_mask:
+    :param rx_mask:
         Bitmask [0:1] representing active DACR RX slots.
         Bitmask [2:3] representing active DACL RX slots.
         00=CH0,01=CH1,10=CH2,11=CH3. Ex.
         0xf for DACL/R selecting TDM CH3.
         0xf0 for DACL/R selecting shifted TDM CH3.
+    :type rx_mask: unsigned int
 
-    :param int slots:
+    :param slots:
         Number of slots in use.
+    :type slots: int
 
-    :param int slot_width:
+    :param slot_width:
         Width in bits for each slot.
+    :type slot_width: int
 
 .. _`nau8824_set_tdm_slot.description`:
 
@@ -47,14 +52,17 @@ nau8824_calc_fll_param
 
     Calculate FLL parameters.
 
-    :param unsigned int fll_in:
+    :param fll_in:
         external clock provided to codec.
+    :type fll_in: unsigned int
 
-    :param unsigned int fs:
+    :param fs:
         sampling rate.
+    :type fs: unsigned int
 
-    :param struct nau8824_fll \*fll_param:
+    :param fll_param:
         Pointer to structure of FLL parameters.
+    :type fll_param: struct nau8824_fll \*
 
 .. _`nau8824_calc_fll_param.description`:
 
@@ -74,11 +82,13 @@ nau8824_enable_jack_detect
 
     Specify a jack for event reporting
 
-    :param struct snd_soc_component \*component:
+    :param component:
         component to register the jack with
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         jack to use to report headset and button events on
+    :type jack: struct snd_soc_jack \*
 
 .. _`nau8824_enable_jack_detect.description`:
 

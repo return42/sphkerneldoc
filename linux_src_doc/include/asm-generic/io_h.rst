@@ -26,14 +26,17 @@ memset_io
 
 .. c:function:: void memset_io(volatile void __iomem *addr, int value, size_t size)
 
-    :param volatile void __iomem \*addr:
+    :param addr:
         The beginning of the I/O-memory range to set
+    :type addr: volatile void __iomem \*
 
-    :param int value:
+    :param value:
         *undescribed*
+    :type value: int
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`memset_io.description`:
 
@@ -49,14 +52,17 @@ memcpy_fromio
 
 .. c:function:: void memcpy_fromio(void *buffer, const volatile void __iomem *addr, size_t size)
 
-    :param void \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: void \*
 
-    :param const volatile void __iomem \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const volatile void __iomem \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`memcpy_fromio.description`:
 
@@ -72,14 +78,17 @@ memcpy_toio
 
 .. c:function:: void memcpy_toio(volatile void __iomem *addr, const void *buffer, size_t size)
 
-    :param volatile void __iomem \*addr:
+    :param addr:
         *undescribed*
+    :type addr: volatile void __iomem \*
 
-    :param const void \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: const void \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`memcpy_toio.description`:
 

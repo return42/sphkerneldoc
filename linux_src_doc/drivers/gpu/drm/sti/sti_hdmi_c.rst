@@ -8,11 +8,13 @@ hdmi_irq_thread
 
 .. c:function:: irqreturn_t hdmi_irq_thread(int irq, void *arg)
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         connector structure
+    :type arg: void \*
 
 .. _`hdmi_irq`:
 
@@ -21,11 +23,13 @@ hdmi_irq
 
 .. c:function:: irqreturn_t hdmi_irq(int irq, void *arg)
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         connector structure
+    :type arg: void \*
 
 .. _`hdmi_active_area`:
 
@@ -34,8 +38,9 @@ hdmi_active_area
 
 .. c:function:: void hdmi_active_area(struct sti_hdmi *hdmi)
 
-    :param struct sti_hdmi \*hdmi:
+    :param hdmi:
         pointer on the hdmi internal structure
+    :type hdmi: struct sti_hdmi \*
 
 .. _`hdmi_config`:
 
@@ -44,8 +49,9 @@ hdmi_config
 
 .. c:function:: void hdmi_config(struct sti_hdmi *hdmi)
 
-    :param struct sti_hdmi \*hdmi:
+    :param hdmi:
         pointer on the hdmi internal structure
+    :type hdmi: struct sti_hdmi \*
 
 .. _`hdmi_infoframe_subpack`:
 
@@ -54,11 +60,13 @@ hdmi_infoframe_subpack
 
 .. c:function:: unsigned int hdmi_infoframe_subpack(const u8 *ptr, size_t size)
 
-    :param const u8 \*ptr:
+    :param ptr:
         pointer on the hdmi internal structure
+    :type ptr: const u8 \*
 
-    :param size_t size:
+    :param size:
         size to write
+    :type size: size_t
 
 .. _`hdmi_infoframe_write_infopack`:
 
@@ -67,14 +75,17 @@ hdmi_infoframe_write_infopack
 
 .. c:function:: void hdmi_infoframe_write_infopack(struct sti_hdmi *hdmi, const u8 *data, size_t size)
 
-    :param struct sti_hdmi \*hdmi:
+    :param hdmi:
         pointer on the hdmi internal structure
+    :type hdmi: struct sti_hdmi \*
 
-    :param const u8 \*data:
+    :param data:
         infoframe to write
+    :type data: const u8 \*
 
-    :param size_t size:
+    :param size:
         size to write
+    :type size: size_t
 
 .. _`hdmi_avi_infoframe_config`:
 
@@ -83,8 +94,9 @@ hdmi_avi_infoframe_config
 
 .. c:function:: int hdmi_avi_infoframe_config(struct sti_hdmi *hdmi)
 
-    :param struct sti_hdmi \*hdmi:
+    :param hdmi:
         pointer on the hdmi internal structure
+    :type hdmi: struct sti_hdmi \*
 
 .. _`hdmi_avi_infoframe_config.description`:
 
@@ -104,8 +116,9 @@ hdmi_audio_infoframe_config
 
 .. c:function:: int hdmi_audio_infoframe_config(struct sti_hdmi *hdmi)
 
-    :param struct sti_hdmi \*hdmi:
+    :param hdmi:
         pointer on the hdmi internal structure
+    :type hdmi: struct sti_hdmi \*
 
 .. _`hdmi_audio_infoframe_config.description`:
 
@@ -134,8 +147,9 @@ sti_hdmi_audio_get_non_coherent_n
 
     get N parameter for non-coherent clocks. None-coherent clocks means that audio and TMDS clocks have not the same source (drifts between clocks). In this case assumption is that CTS is automatically calculated by hardware.
 
-    :param unsigned int audio_fs:
+    :param audio_fs:
         audio frame clock frequency in Hz
+    :type audio_fs: unsigned int
 
 .. _`sti_hdmi_audio_get_non_coherent_n.description`:
 

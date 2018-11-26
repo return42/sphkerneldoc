@@ -10,8 +10,9 @@ efivar_create_sysfs_entry
 
     create a new entry in sysfs
 
-    :param struct efivar_entry \*new_var:
+    :param new_var:
         efivar entry to create
+    :type new_var: struct efivar_entry \*
 
 .. _`efivar_create_sysfs_entry.description`:
 

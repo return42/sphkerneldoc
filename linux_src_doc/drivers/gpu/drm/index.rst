@@ -34,16 +34,19 @@ drm
     v3d/index
     vc4/index
     vgem/index
+    vkms/index
     vmwgfx/index
     xen/index
     drm_agpsupport_c
     drm_atomic_c
     drm_atomic_helper_c
+    drm_atomic_uapi_c
     drm_auth_c
     drm_blend_c
     drm_bridge_c
     drm_bufs_c
     drm_cache_c
+    drm_client_c
     drm_color_mgmt_c
     drm_connector_c
     drm_context_c
@@ -52,6 +55,7 @@ drm
     drm_debugfs_c
     drm_debugfs_crc_c
     drm_dma_c
+    drm_dp_cec_c
     drm_dp_dual_mode_helper_c
     drm_dp_helper_c
     drm_dp_mst_topology_c
@@ -101,3 +105,4 @@ drm
     drm_vblank_c
     drm_vm_c
     drm_vma_manager_c
+    drm_writeback_c

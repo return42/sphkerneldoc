@@ -103,8 +103,9 @@ drm_modeset_lock_fini
 
     cleanup lock
 
-    :param struct drm_modeset_lock \*lock:
+    :param lock:
         lock to cleanup
+    :type lock: struct drm_modeset_lock \*
 
 .. _`drm_modeset_is_locked`:
 
@@ -115,8 +116,9 @@ drm_modeset_is_locked
 
     equivalent to \ :c:func:`mutex_is_locked`\ 
 
-    :param struct drm_modeset_lock \*lock:
+    :param lock:
         lock to check
+    :type lock: struct drm_modeset_lock \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ queued_read_lock_slowpath
 
     acquire read lock of a queue rwlock
 
-    :param struct qrwlock \*lock:
+    :param lock:
         Pointer to queue rwlock structure
+    :type lock: struct qrwlock \*
 
 .. _`queued_write_lock_slowpath`:
 
@@ -22,8 +23,9 @@ queued_write_lock_slowpath
 
     acquire write lock of a queue rwlock
 
-    :param struct qrwlock \*lock:
+    :param lock:
         Pointer to queue rwlock structure
+    :type lock: struct qrwlock \*
 
 .. This file was automatic generated / don't edit.
 

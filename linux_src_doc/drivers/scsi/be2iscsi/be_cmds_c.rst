@@ -10,26 +10,33 @@ be_cmd_create_default_pdu_queue
 
     Create DEFQ for the adapter
 
-    :param struct be_ctrl_info \*ctrl:
+    :param ctrl:
         ptr to ctrl_info
+    :type ctrl: struct be_ctrl_info \*
 
-    :param struct be_queue_info \*cq:
+    :param cq:
         Completion Queue
+    :type cq: struct be_queue_info \*
 
-    :param struct be_queue_info \*dq:
+    :param dq:
         Default Queue
+    :type dq: struct be_queue_info \*
 
-    :param int length:
+    :param length:
         *undescribed*
+    :type length: int
 
-    :param int entry_size:
+    :param entry_size:
         size of each entry in DEFQ
+    :type entry_size: int
 
-    :param uint8_t is_header:
+    :param is_header:
         Header or Data DEFQ
+    :type is_header: uint8_t
 
-    :param uint8_t ulp_num:
+    :param ulp_num:
         Bind to which ULP
+    :type ulp_num: uint8_t
 
 .. _`be_cmd_create_default_pdu_queue.description`:
 
@@ -64,20 +71,25 @@ be_cmd_wrbq_create
 
     Create WRBQ
 
-    :param struct be_ctrl_info \*ctrl:
+    :param ctrl:
         ptr to ctrl_info
+    :type ctrl: struct be_ctrl_info \*
 
-    :param struct be_dma_mem \*q_mem:
+    :param q_mem:
         memory details for the queue
+    :type q_mem: struct be_dma_mem \*
 
-    :param struct be_queue_info \*wrbq:
+    :param wrbq:
         queue info
+    :type wrbq: struct be_queue_info \*
 
-    :param struct hwi_wrb_context \*pwrb_context:
+    :param pwrb_context:
         ptr to wrb_context
+    :type pwrb_context: struct hwi_wrb_context \*
 
-    :param uint8_t ulp_num:
+    :param ulp_num:
         ULP on which the WRBQ is to be created
+    :type ulp_num: uint8_t
 
 .. _`be_cmd_wrbq_create.description`:
 
@@ -95,11 +107,13 @@ be_cmd_set_vlan
 
     Configure VLAN paramters on the adapter
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         device priv structure instance
+    :type phba: struct beiscsi_hba \*
 
-    :param uint16_t vlan_tag:
+    :param vlan_tag:
         TAG to be set
+    :type vlan_tag: uint16_t
 
 .. _`be_cmd_set_vlan.description`:
 
@@ -120,11 +134,13 @@ beiscsi_get_fw_config
 
     Get the FW config for the function
 
-    :param struct be_ctrl_info \*ctrl:
+    :param ctrl:
         ptr to Ctrl Info
+    :type ctrl: struct be_ctrl_info \*
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         ptr to the dev priv structure
+    :type phba: struct beiscsi_hba \*
 
 .. _`beiscsi_get_fw_config.description`:
 
@@ -159,11 +175,13 @@ beiscsi_get_port_name
 
     Get port name for the function
 
-    :param struct be_ctrl_info \*ctrl:
+    :param ctrl:
         ptr to Ctrl Info
+    :type ctrl: struct be_ctrl_info \*
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         ptr to the dev priv structure
+    :type phba: struct beiscsi_hba \*
 
 .. _`beiscsi_get_port_name.description`:
 
@@ -181,11 +199,13 @@ beiscsi_cmd_iscsi_cleanup
 
     Inform FW to cleanup EP data structures.
 
-    :param struct beiscsi_hba \*phba:
+    :param phba:
         pointer to dev priv structure
+    :type phba: struct beiscsi_hba \*
 
-    :param unsigned short ulp:
+    :param ulp:
         ULP number.
+    :type ulp: unsigned short
 
 .. _`beiscsi_cmd_iscsi_cleanup.description`:
 

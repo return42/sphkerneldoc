@@ -10,14 +10,17 @@ dm_copy_name_and_uuid
 
     Copy mapped device name & uuid into supplied buffers
 
-    :param struct mapped_device \*md:
+    :param md:
         Pointer to mapped_device
+    :type md: struct mapped_device \*
 
-    :param char \*name:
+    :param name:
         Buffer (size DM_NAME_LEN) for name
+    :type name: char \*
 
-    :param char \*uuid:
+    :param uuid:
         Buffer (size DM_UUID_LEN) for uuid or empty string if uuid not defined
+    :type uuid: char \*
 
 .. This file was automatic generated / don't edit.
 

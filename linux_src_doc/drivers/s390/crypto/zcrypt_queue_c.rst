@@ -10,8 +10,9 @@ zcrypt_queue_register
 
     Register a crypto queue device.
 
-    :param struct zcrypt_queue \*zq:
+    :param zq:
         Pointer to a crypto queue device
+    :type zq: struct zcrypt_queue \*
 
 .. _`zcrypt_queue_register.description`:
 
@@ -29,8 +30,9 @@ zcrypt_queue_unregister
 
     Unregister a crypto queue device.
 
-    :param struct zcrypt_queue \*zq:
+    :param zq:
         Pointer to crypto queue device
+    :type zq: struct zcrypt_queue \*
 
 .. _`zcrypt_queue_unregister.description`:
 

@@ -10,17 +10,21 @@ mma9551_read_config_byte
 
     read 1 configuration byte
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u16 reg:
+    :param reg:
         Application register
+    :type reg: u16
 
-    :param u8 \*val:
+    :param val:
         Pointer to store value read
+    :type val: u8 \*
 
 .. _`mma9551_read_config_byte.description`:
 
@@ -56,17 +60,21 @@ mma9551_write_config_byte
 
     write 1 configuration byte
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u16 reg:
+    :param reg:
         Application register
+    :type reg: u16
 
-    :param u8 val:
+    :param val:
         Value to write
+    :type val: u8
 
 .. _`mma9551_write_config_byte.description`:
 
@@ -102,17 +110,21 @@ mma9551_read_status_byte
 
     read 1 status byte
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u16 reg:
+    :param reg:
         Application register
+    :type reg: u16
 
-    :param u8 \*val:
+    :param val:
         Pointer to store value read
+    :type val: u8 \*
 
 .. _`mma9551_read_status_byte.description`:
 
@@ -148,17 +160,21 @@ mma9551_read_config_word
 
     read 1 config word
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u16 reg:
+    :param reg:
         Application register
+    :type reg: u16
 
-    :param u16 \*val:
+    :param val:
         Pointer to store value read
+    :type val: u16 \*
 
 .. _`mma9551_read_config_word.description`:
 
@@ -194,17 +210,21 @@ mma9551_write_config_word
 
     write 1 config word
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u16 reg:
+    :param reg:
         Application register
+    :type reg: u16
 
-    :param u16 val:
+    :param val:
         Value to write
+    :type val: u16
 
 .. _`mma9551_write_config_word.description`:
 
@@ -240,17 +260,21 @@ mma9551_read_status_word
 
     read 1 status word
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u16 reg:
+    :param reg:
         Application register
+    :type reg: u16
 
-    :param u16 \*val:
+    :param val:
         Pointer to store value read
+    :type val: u16 \*
 
 .. _`mma9551_read_status_word.description`:
 
@@ -286,20 +310,25 @@ mma9551_read_config_words
 
     read multiple config words
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u16 reg:
+    :param reg:
         Application register
+    :type reg: u16
 
-    :param u8 len:
+    :param len:
         Length of array to read (in words)
+    :type len: u8
 
-    :param u16 \*buf:
+    :param buf:
         Array of words to read
+    :type buf: u16 \*
 
 .. _`mma9551_read_config_words.description`:
 
@@ -333,20 +362,25 @@ mma9551_read_status_words
 
     read multiple status words
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u16 reg:
+    :param reg:
         Application register
+    :type reg: u16
 
-    :param u8 len:
+    :param len:
         Length of array to read (in words)
+    :type len: u8
 
-    :param u16 \*buf:
+    :param buf:
         Array of words to read
+    :type buf: u16 \*
 
 .. _`mma9551_read_status_words.description`:
 
@@ -380,20 +414,25 @@ mma9551_write_config_words
 
     write multiple config words
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u16 reg:
+    :param reg:
         Application register
+    :type reg: u16
 
-    :param u8 len:
+    :param len:
         Length of array to write (in words)
+    :type len: u8
 
-    :param u16 \*buf:
+    :param buf:
         Array of words to write
+    :type buf: u16 \*
 
 .. _`mma9551_write_config_words.description`:
 
@@ -427,20 +466,25 @@ mma9551_update_config_bits
 
     update bits in register
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u16 reg:
+    :param reg:
         Application register
+    :type reg: u16
 
-    :param u8 mask:
+    :param mask:
         Mask for the bits to update
+    :type mask: u8
 
-    :param u8 val:
+    :param val:
         Value of the bits to update
+    :type val: u8
 
 .. _`mma9551_update_config_bits.description`:
 
@@ -474,23 +518,28 @@ mma9551_gpio_config
 
     configure gpio
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param enum mma9551_gpio_pin pin:
+    :param pin:
         GPIO pin to configure
+    :type pin: enum mma9551_gpio_pin
 
-    :param u8 app_id:
+    :param app_id:
         Application ID
+    :type app_id: u8
 
-    :param u8 bitnum:
+    :param bitnum:
         Bit number of status register being assigned to the GPIO pin.
+    :type bitnum: u8
 
-    :param int polarity:
+    :param polarity:
         The polarity parameter is described in section 6.2.2, page 66,
         of the Software Reference Manual.  Basically, polarity=0 means
         the interrupt line has the same value as the selected bit,
         while polarity=1 means the line is inverted.
+    :type polarity: int
 
 .. _`mma9551_gpio_config.description`:
 
@@ -524,8 +573,9 @@ mma9551_read_version
 
     read device version information
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
 .. _`mma9551_read_version.description`:
 
@@ -559,12 +609,14 @@ mma9551_set_device_state
 
     sets HW power mode
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param bool enable:
+    :param enable:
         Use true to power on device, false to cause the device
         to enter sleep.
+    :type enable: bool
 
 .. _`mma9551_set_device_state.description`:
 
@@ -601,11 +653,13 @@ mma9551_set_power_state
 
     sets runtime PM state
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param bool on:
+    :param on:
         Use true to power on device, false to power off
+    :type on: bool
 
 .. _`mma9551_set_power_state.description`:
 
@@ -631,8 +685,9 @@ mma9551_sleep
 
     sleep
 
-    :param int freq:
+    :param freq:
         Application frequency
+    :type freq: int
 
 .. _`mma9551_sleep.description`:
 
@@ -652,17 +707,21 @@ mma9551_read_accel_chan
 
     read accelerometer channel
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param const struct iio_chan_spec \*chan:
+    :param chan:
         IIO channel
+    :type chan: const struct iio_chan_spec \*
 
-    :param int \*val:
+    :param val:
         Pointer to the accelerometer value read
+    :type val: int \*
 
-    :param int \*val2:
+    :param val2:
         Unused
+    :type val2: int \*
 
 .. _`mma9551_read_accel_chan.description`:
 
@@ -696,11 +755,13 @@ mma9551_read_accel_scale
 
     read accelerometer scale
 
-    :param int \*val:
+    :param val:
         Pointer to the accelerometer scale (int value)
+    :type val: int \*
 
-    :param int \*val2:
+    :param val2:
         Pointer to the accelerometer scale (micro value)
+    :type val2: int \*
 
 .. _`mma9551_read_accel_scale.description`:
 
@@ -725,11 +786,13 @@ mma9551_app_reset
 
     reset application
 
-    :param struct i2c_client \*client:
+    :param client:
         I2C client
+    :type client: struct i2c_client \*
 
-    :param u32 app_mask:
+    :param app_mask:
         Application to reset
+    :type app_mask: u32
 
 .. _`mma9551_app_reset.description`:
 

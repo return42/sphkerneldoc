@@ -10,8 +10,9 @@ adf_cfg_dev_add
 
     Create an acceleration device configuration table.
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_cfg_dev_add.description`:
 
@@ -38,8 +39,9 @@ adf_cfg_dev_remove
 
     Clears acceleration device configuration table.
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_cfg_dev_remove.description`:
 
@@ -66,20 +68,25 @@ adf_cfg_add_key_value_param
 
     Add key-value config entry to config table.
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
-    :param const char \*section_name:
+    :param section_name:
         Name of the section where the param will be added
+    :type section_name: const char \*
 
-    :param const char \*key:
+    :param key:
         The key string
+    :type key: const char \*
 
-    :param const void \*val:
+    :param val:
         Value pain for the given \ ``key``\ 
+    :type val: const void \*
 
-    :param enum adf_cfg_val_type type:
+    :param type:
         Type - string, int or address
+    :type type: enum adf_cfg_val_type
 
 .. _`adf_cfg_add_key_value_param.description`:
 
@@ -106,11 +113,13 @@ adf_cfg_section_add
 
     Add config section entry to config table.
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
-    :param const char \*name:
+    :param name:
         Name of the section
+    :type name: const char \*
 
 .. _`adf_cfg_section_add.description`:
 

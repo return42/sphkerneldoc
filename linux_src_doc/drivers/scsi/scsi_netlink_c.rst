@@ -10,8 +10,9 @@ scsi_nl_rcv_msg
 
     Receive message handler.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket receive buffer
+    :type skb: struct sk_buff \*
 
 .. _`scsi_nl_rcv_msg.description`:
 
@@ -30,8 +31,9 @@ scsi_netlink_init
 
     Called by SCSI subsystem to initialize the SCSI transport netlink interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`scsi_netlink_exit`:
 
@@ -42,8 +44,9 @@ scsi_netlink_exit
 
     Called by SCSI subsystem to disable the SCSI transport netlink interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

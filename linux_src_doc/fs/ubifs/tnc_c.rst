@@ -10,14 +10,17 @@ insert_old_idx
 
     record an index node obsoleted since the last commit start.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of obsoleted index node
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset of obsoleted index node
+    :type offs: int
 
 .. _`insert_old_idx.description`:
 
@@ -50,11 +53,13 @@ insert_old_idx_znode
 
     record a znode obsoleted since last commit start.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode of obsoleted index node
+    :type znode: struct ubifs_znode \*
 
 .. _`insert_old_idx_znode.description`:
 
@@ -72,11 +77,13 @@ ins_clr_old_idx_znode
 
     record a znode obsoleted since last commit start.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode of obsoleted index node
+    :type znode: struct ubifs_znode \*
 
 .. _`ins_clr_old_idx_znode.description`:
 
@@ -94,8 +101,9 @@ destroy_old_idx
 
     destroy the old_idx RB-tree.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`destroy_old_idx.description`:
 
@@ -117,11 +125,13 @@ copy_znode
 
     copy a dirty znode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to copy
+    :type znode: struct ubifs_znode \*
 
 .. _`copy_znode.description`:
 
@@ -139,14 +149,17 @@ add_idx_dirt
 
     add dirt due to a dirty znode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of index node
+    :type lnum: int
 
-    :param int dirt:
+    :param dirt:
         size of index node
+    :type dirt: int
 
 .. _`add_idx_dirt.description`:
 
@@ -164,11 +177,13 @@ dirty_cow_znode
 
     ensure a znode is not being committed.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         branch of znode to check
+    :type zbr: struct ubifs_zbranch \*
 
 .. _`dirty_cow_znode.description`:
 
@@ -186,14 +201,17 @@ lnc_add
 
     add a leaf node to the leaf node cache.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         zbranch of leaf node
+    :type zbr: struct ubifs_zbranch \*
 
-    :param const void \*node:
+    :param node:
         leaf node
+    :type node: const void \*
 
 .. _`lnc_add.description`:
 
@@ -211,7 +229,7 @@ complex implementation is created.
 Note, this function does not add the \ ``node``\  object to LNC directly, but
 allocates a copy of the object and adds the copy to LNC. The reason for this
 is that \ ``node``\  has been allocated outside of the TNC subsystem and will be
-used with \ ``c``\ ->tnc_mutex unlock upon return from the TNC subsystem. But LNC
+used with \ ``c->tnc_mutex``\  unlock upon return from the TNC subsystem. But LNC
 may be changed at any time, e.g. freed by the shrinker.
 
 .. _`lnc_free`:
@@ -223,8 +241,9 @@ lnc_free
 
     remove a leaf node from the leaf node cache.
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         zbranch of leaf node
+    :type zbr: struct ubifs_zbranch \*
 
 .. _`tnc_read_hashed_node`:
 
@@ -235,14 +254,17 @@ tnc_read_hashed_node
 
     read a "hashed" leaf node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         key and position of the node
+    :type zbr: struct ubifs_zbranch \*
 
-    :param void \*node:
+    :param node:
         node is returned here
+    :type node: void \*
 
 .. _`tnc_read_hashed_node.description`:
 
@@ -259,27 +281,25 @@ code in case of failure.
 try_read_node
 =============
 
-.. c:function:: int try_read_node(const struct ubifs_info *c, void *buf, int type, int len, int lnum, int offs)
+.. c:function:: int try_read_node(const struct ubifs_info *c, void *buf, int type, struct ubifs_zbranch *zbr)
 
     read a node if it is a node.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer to read to
+    :type buf: void \*
 
-    :param int type:
+    :param type:
         node type
+    :type type: int
 
-    :param int len:
-        node length (not aligned)
-
-    :param int lnum:
-        LEB number of node to read
-
-    :param int offs:
-        offset of node to read
+    :param zbr:
+        the zbranch describing the node to read
+    :type zbr: struct ubifs_zbranch \*
 
 .. _`try_read_node.description`:
 
@@ -293,10 +313,10 @@ This function performs that same function as ubifs_read_node except that
 it does not require that there is actually a node present and instead
 the return code indicates if a node was read.
 
-Note, this function does not check CRC of data nodes if \ ``c``\ ->no_chk_data_crc
+Note, this function does not check CRC of data nodes if \ ``c->no_chk_data_crc``\ 
 is true (it is controlled by corresponding mount option). However, if
-\ ``c``\ ->mounting or \ ``c``\ ->remounting_rw is true (we are mounting or re-mounting to
-R/W mode), \ ``c``\ ->no_chk_data_crc is ignored and CRC is checked. This is
+\ ``c->mounting``\  or \ ``c->remounting_rw``\  is true (we are mounting or re-mounting to
+R/W mode), \ ``c->no_chk_data_crc``\  is ignored and CRC is checked. This is
 because during mounting or re-mounting from R/O mode to R/W mode we may read
 journal nodes (when replying the journal or doing the recovery) and the
 journal nodes may potentially be corrupted, so checking is required.
@@ -310,17 +330,21 @@ fallible_read_node
 
     try to read a leaf node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key of node to read
+    :type key: const union ubifs_key \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         position of node
+    :type zbr: struct ubifs_zbranch \*
 
-    :param void \*node:
+    :param node:
         node returned
+    :type node: void \*
 
 .. _`fallible_read_node.description`:
 
@@ -339,14 +363,17 @@ matches_name
 
     determine if a direntry or xattr entry matches a given name.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         zbranch of dent
+    :type zbr: struct ubifs_zbranch \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         name to match
+    :type nm: const struct fscrypt_name \*
 
 .. _`matches_name.description`:
 
@@ -367,14 +394,17 @@ get_znode
 
     get a TNC znode that may not be loaded yet.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         parent znode
+    :type znode: struct ubifs_znode \*
 
-    :param int n:
+    :param n:
         znode branch slot number
+    :type n: int
 
 .. _`get_znode.description`:
 
@@ -392,14 +422,17 @@ tnc_next
 
     find next TNC entry.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*\*zn:
+    :param zn:
         znode is passed and returned here
+    :type zn: struct ubifs_znode \*\*
 
-    :param int \*n:
+    :param n:
         znode branch slot number is passed and returned here
+    :type n: int \*
 
 .. _`tnc_next.description`:
 
@@ -418,14 +451,17 @@ tnc_prev
 
     find previous TNC entry.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*\*zn:
+    :param zn:
         znode is returned here
+    :type zn: struct ubifs_znode \*\*
 
-    :param int \*n:
+    :param n:
         znode branch slot number is passed and returned here
+    :type n: int \*
 
 .. _`tnc_prev.description`:
 
@@ -444,20 +480,25 @@ resolve_collision
 
     resolve a collision.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key of a directory or extended attribute entry
+    :type key: const union ubifs_key \*
 
-    :param struct ubifs_znode \*\*zn:
+    :param zn:
         znode is returned here
+    :type zn: struct ubifs_znode \*\*
 
-    :param int \*n:
+    :param n:
         zbranch number is passed and returned here
+    :type n: int \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         name of the entry
+    :type nm: const struct fscrypt_name \*
 
 .. _`resolve_collision.description`:
 
@@ -481,14 +522,17 @@ fallible_matches_name
 
     determine if a dent matches a given name.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         zbranch of dent
+    :type zbr: struct ubifs_zbranch \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         name to match
+    :type nm: const struct fscrypt_name \*
 
 .. _`fallible_matches_name.description`:
 
@@ -513,23 +557,29 @@ fallible_resolve_collision
 
     resolve a collision even if nodes are missing.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key
+    :type key: const union ubifs_key \*
 
-    :param struct ubifs_znode \*\*zn:
+    :param zn:
         znode is returned here
+    :type zn: struct ubifs_znode \*\*
 
-    :param int \*n:
+    :param n:
         branch number is passed and returned here
+    :type n: int \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         name of directory entry
+    :type nm: const struct fscrypt_name \*
 
-    :param int adding:
+    :param adding:
         indicates caller is adding a key to the TNC
+    :type adding: int
 
 .. _`fallible_resolve_collision.description`:
 
@@ -563,14 +613,17 @@ matches_position
 
     determine if a zbranch matches a given position.
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         zbranch of dent
+    :type zbr: struct ubifs_zbranch \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of dent to match
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset of dent to match
+    :type offs: int
 
 .. _`matches_position.description`:
 
@@ -588,23 +641,29 @@ resolve_collision_directly
 
     resolve a collision directly.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key of directory entry
+    :type key: const union ubifs_key \*
 
-    :param struct ubifs_znode \*\*zn:
+    :param zn:
         znode is passed and returned here
+    :type zn: struct ubifs_znode \*\*
 
-    :param int \*n:
+    :param n:
         zbranch number is passed and returned here
+    :type n: int \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of dent node to match
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset of dent node to match
+    :type offs: int
 
 .. _`resolve_collision_directly.description`:
 
@@ -628,11 +687,13 @@ dirty_cow_bottom_up
 
     dirty a znode and its ancestors.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to dirty
+    :type znode: struct ubifs_znode \*
 
 .. _`dirty_cow_bottom_up.description`:
 
@@ -653,17 +714,21 @@ ubifs_lookup_level0
 
     search for zero-level znode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key to lookup
+    :type key: const union ubifs_key \*
 
-    :param struct ubifs_znode \*\*zn:
+    :param zn:
         znode is returned here
+    :type zn: struct ubifs_znode \*\*
 
-    :param int \*n:
+    :param n:
         znode branch slot number is returned here
+    :type n: int \*
 
 .. _`ubifs_lookup_level0.description`:
 
@@ -699,17 +764,21 @@ lookup_level0_dirty
 
     search for zero-level znode dirtying.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key to lookup
+    :type key: const union ubifs_key \*
 
-    :param struct ubifs_znode \*\*zn:
+    :param zn:
         znode is returned here
+    :type zn: struct ubifs_znode \*\*
 
-    :param int \*n:
+    :param n:
         znode branch slot number is returned here
+    :type n: int \*
 
 .. _`lookup_level0_dirty.description`:
 
@@ -748,14 +817,17 @@ maybe_leb_gced
 
     determine if a LEB may have been garbage collected.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number
+    :type lnum: int
 
-    :param int gc_seq1:
+    :param gc_seq1:
         garbage collection sequence number
+    :type gc_seq1: int
 
 .. _`maybe_leb_gced.description`:
 
@@ -775,20 +847,25 @@ ubifs_tnc_locate
 
     look up a file-system node and return it and its location.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         node key to lookup
+    :type key: const union ubifs_key \*
 
-    :param void \*node:
+    :param node:
         the node is returned here
+    :type node: void \*
 
-    :param int \*lnum:
+    :param lnum:
         LEB number is returned here
+    :type lnum: int \*
 
-    :param int \*offs:
+    :param offs:
         offset is returned here
+    :type offs: int \*
 
 .. _`ubifs_tnc_locate.description`:
 
@@ -809,11 +886,13 @@ ubifs_tnc_get_bu_keys
 
     lookup keys for bulk-read.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct bu_info \*bu:
+    :param bu:
         bulk-read parameters and results
+    :type bu: struct bu_info \*
 
 .. _`ubifs_tnc_get_bu_keys.description`:
 
@@ -837,20 +916,25 @@ read_wbuf
 
     bulk-read from a LEB with a wbuf.
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         wbuf that may overlap the read
+    :type wbuf: struct ubifs_wbuf \*
 
-    :param void \*buf:
+    :param buf:
         buffer into which to read
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         read length
+    :type len: int
 
-    :param int lnum:
+    :param lnum:
         LEB number from which to read
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset from which to read
+    :type offs: int
 
 .. _`read_wbuf.description`:
 
@@ -868,14 +952,17 @@ validate_data_node
 
     validate data nodes for bulk-read.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer containing data node to validate
+    :type buf: void \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         zbranch of data node to validate
+    :type zbr: struct ubifs_zbranch \*
 
 .. _`validate_data_node.description`:
 
@@ -893,11 +980,13 @@ ubifs_tnc_bulk_read
 
     read a number of data nodes in one go.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct bu_info \*bu:
+    :param bu:
         bulk-read parameters and results
+    :type bu: struct bu_info \*
 
 .. _`ubifs_tnc_bulk_read.description`:
 
@@ -918,17 +1007,21 @@ do_lookup_nm
 
     look up a "hashed" node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         node key to lookup
+    :type key: const union ubifs_key \*
 
-    :param void \*node:
+    :param node:
         the node is returned here
+    :type node: void \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         node name
+    :type nm: const struct fscrypt_name \*
 
 .. _`do_lookup_nm.description`:
 
@@ -950,17 +1043,21 @@ ubifs_tnc_lookup_nm
 
     look up a "hashed" node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         node key to lookup
+    :type key: const union ubifs_key \*
 
-    :param void \*node:
+    :param node:
         the node is returned here
+    :type node: void \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         node name
+    :type nm: const struct fscrypt_name \*
 
 .. _`ubifs_tnc_lookup_nm.description`:
 
@@ -982,17 +1079,21 @@ ubifs_tnc_lookup_dh
 
     look up a "double hashed" node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         node key to lookup
+    :type key: const union ubifs_key \*
 
-    :param void \*node:
+    :param node:
         the node is returned here
+    :type node: void \*
 
-    :param uint32_t cookie:
+    :param cookie:
         node cookie for collision resolution
+    :type cookie: uint32_t
 
 .. _`ubifs_tnc_lookup_dh.description`:
 
@@ -1015,11 +1116,13 @@ correct_parent_keys
 
     correct parent znodes' keys.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to correct parent znodes for
+    :type znode: struct ubifs_znode \*
 
 .. _`correct_parent_keys.description`:
 
@@ -1035,18 +1138,25 @@ function is called in such situations and corrects the keys if needed.
 insert_zbranch
 ==============
 
-.. c:function:: void insert_zbranch(struct ubifs_znode *znode, const struct ubifs_zbranch *zbr, int n)
+.. c:function:: void insert_zbranch(struct ubifs_info *c, struct ubifs_znode *znode, const struct ubifs_zbranch *zbr, int n)
 
     insert a zbranch into a znode.
 
-    :param struct ubifs_znode \*znode:
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param znode:
         znode into which to insert
+    :type znode: struct ubifs_znode \*
 
-    :param const struct ubifs_zbranch \*zbr:
+    :param zbr:
         zbranch to insert
+    :type zbr: const struct ubifs_zbranch \*
 
-    :param int n:
+    :param n:
         slot number to insert to
+    :type n: int
 
 .. _`insert_zbranch.description`:
 
@@ -1055,7 +1165,7 @@ Description
 
 This is a helper function for 'tnc_insert()'. UBIFS does not allow "gaps" in
 znode's array of zbranches and keeps zbranches consolidated, so when a new
-zbranch has to be inserted to the \ ``znode``\ ->zbranches[]' array at the \ ``n``\ -th
+zbranch has to be inserted to the \ ``znode->zbranches``\ []' array at the \ ``n``\ -th
 slot, zbranches starting from \ ``n``\  have to be moved right.
 
 .. _`tnc_insert`:
@@ -1067,17 +1177,21 @@ tnc_insert
 
     insert a node into TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to insert into
+    :type znode: struct ubifs_znode \*
 
-    :param struct ubifs_zbranch \*zbr:
+    :param zbr:
         branch to insert
+    :type zbr: struct ubifs_zbranch \*
 
-    :param int n:
+    :param n:
         slot number to insert new zbranch to
+    :type n: int
 
 .. _`tnc_insert.description`:
 
@@ -1094,24 +1208,33 @@ error code in case of failure.
 ubifs_tnc_add
 =============
 
-.. c:function:: int ubifs_tnc_add(struct ubifs_info *c, const union ubifs_key *key, int lnum, int offs, int len)
+.. c:function:: int ubifs_tnc_add(struct ubifs_info *c, const union ubifs_key *key, int lnum, int offs, int len, const u8 *hash)
 
     add a node to TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key to add
+    :type key: const union ubifs_key \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of node
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         node offset
+    :type offs: int
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
+
+    :param hash:
+        The hash over the node
+    :type hash: const u8 \*
 
 .. _`ubifs_tnc_add.description`:
 
@@ -1131,26 +1254,33 @@ ubifs_tnc_replace
 
     replace a node in the TNC only if the old node is found.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key to add
+    :type key: const union ubifs_key \*
 
-    :param int old_lnum:
+    :param old_lnum:
         LEB number of old node
+    :type old_lnum: int
 
-    :param int old_offs:
+    :param old_offs:
         old node offset
+    :type old_offs: int
 
-    :param int lnum:
+    :param lnum:
         LEB number of node
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         node offset
+    :type offs: int
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
 
 .. _`ubifs_tnc_replace.description`:
 
@@ -1166,27 +1296,37 @@ Returns \ ``0``\  on success or negative error code on failure.
 ubifs_tnc_add_nm
 ================
 
-.. c:function:: int ubifs_tnc_add_nm(struct ubifs_info *c, const union ubifs_key *key, int lnum, int offs, int len, const struct fscrypt_name *nm)
+.. c:function:: int ubifs_tnc_add_nm(struct ubifs_info *c, const union ubifs_key *key, int lnum, int offs, int len, const u8 *hash, const struct fscrypt_name *nm)
 
     add a "hashed" node to TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key to add
+    :type key: const union ubifs_key \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of node
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         node offset
+    :type offs: int
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
 
-    :param const struct fscrypt_name \*nm:
+    :param hash:
+        The hash over the node
+    :type hash: const u8 \*
+
+    :param nm:
         node name
+    :type nm: const struct fscrypt_name \*
 
 .. _`ubifs_tnc_add_nm.description`:
 
@@ -1205,14 +1345,17 @@ tnc_delete
 
     delete a znode form TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode to delete from
+    :type znode: struct ubifs_znode \*
 
-    :param int n:
+    :param n:
         zbranch slot number to delete
+    :type n: int
 
 .. _`tnc_delete.description`:
 
@@ -1231,11 +1374,13 @@ ubifs_tnc_remove
 
     remove an index entry of a node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key of node
+    :type key: const union ubifs_key \*
 
 .. _`ubifs_tnc_remove.description`:
 
@@ -1253,14 +1398,17 @@ ubifs_tnc_remove_nm
 
     remove an index entry for a "hashed" node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key of node
+    :type key: const union ubifs_key \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         directory entry name
+    :type nm: const struct fscrypt_name \*
 
 .. _`ubifs_tnc_remove_nm.description`:
 
@@ -1278,14 +1426,17 @@ ubifs_tnc_remove_dh
 
     remove an index entry for a "double hashed" node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const union ubifs_key \*key:
+    :param key:
         key of node
+    :type key: const union ubifs_key \*
 
-    :param uint32_t cookie:
+    :param cookie:
         node cookie for collision resolution
+    :type cookie: uint32_t
 
 .. _`ubifs_tnc_remove_dh.description`:
 
@@ -1303,17 +1454,21 @@ key_in_range
 
     determine if a key falls within a range of keys.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key to check
+    :type key: union ubifs_key \*
 
-    :param union ubifs_key \*from_key:
+    :param from_key:
         lowest key in range
+    :type from_key: union ubifs_key \*
 
-    :param union ubifs_key \*to_key:
+    :param to_key:
         highest key in range
+    :type to_key: union ubifs_key \*
 
 .. _`key_in_range.description`:
 
@@ -1331,14 +1486,17 @@ ubifs_tnc_remove_range
 
     remove index entries in range.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param union ubifs_key \*from_key:
+    :param from_key:
         lowest key to remove
+    :type from_key: union ubifs_key \*
 
-    :param union ubifs_key \*to_key:
+    :param to_key:
         highest key to remove
+    :type to_key: union ubifs_key \*
 
 .. _`ubifs_tnc_remove_range.description`:
 
@@ -1358,11 +1516,13 @@ ubifs_tnc_remove_ino
 
     remove an inode from TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param ino_t inum:
+    :param inum:
         inode number to remove
+    :type inum: ino_t
 
 .. _`ubifs_tnc_remove_ino.description`:
 
@@ -1382,14 +1542,17 @@ ubifs_tnc_next_ent
 
     walk directory or extended attribute entries.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key of last entry
+    :type key: union ubifs_key \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         name of last entry found or \ ``NULL``\ 
+    :type nm: const struct fscrypt_name \*
 
 .. _`ubifs_tnc_next_ent.description`:
 
@@ -1401,7 +1564,7 @@ after the given key (@key) if there is one. \ ``nm``\  is used to resolve
 collisions.
 
 If the name of the current entry is not known and only the key is known,
-\ ``nm``\ ->name has to be \ ``NULL``\ . In this case the semantics of this function is a
+\ ``nm->name``\  has to be \ ``NULL``\ . In this case the semantics of this function is a
 little bit different and it returns the entry corresponding to this key, not
 the next one. If the key was not found, the closest "right" entry is
 returned.
@@ -1422,8 +1585,9 @@ tnc_destroy_cnext
 
     destroy left-over obsolete znodes from a failed commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`tnc_destroy_cnext.description`:
 
@@ -1441,8 +1605,9 @@ ubifs_tnc_close
 
     close TNC subsystem and free all related resources.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`left_znode`:
 
@@ -1453,11 +1618,13 @@ left_znode
 
     get the znode to the left.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode
+    :type znode: struct ubifs_znode \*
 
 .. _`left_znode.description`:
 
@@ -1476,11 +1643,13 @@ right_znode
 
     get the znode to the right.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_znode \*znode:
+    :param znode:
         znode
+    :type znode: struct ubifs_znode \*
 
 .. _`right_znode.description`:
 
@@ -1499,20 +1668,25 @@ lookup_znode
 
     find a particular indexing node from TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         index node key to lookup
+    :type key: union ubifs_key \*
 
-    :param int level:
+    :param level:
         index node level
+    :type level: int
 
-    :param int lnum:
+    :param lnum:
         index node LEB number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         index node offset
+    :type offs: int
 
 .. _`lookup_znode.description`:
 
@@ -1545,20 +1719,25 @@ is_idx_node_in_tnc
 
     determine if an index node is in the TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         key of index node
+    :type key: union ubifs_key \*
 
-    :param int level:
+    :param level:
         index node level
+    :type level: int
 
-    :param int lnum:
+    :param lnum:
         LEB number of index node
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset of index node
+    :type offs: int
 
 .. _`is_idx_node_in_tnc.description`:
 
@@ -1583,17 +1762,21 @@ is_leaf_node_in_tnc
 
     determine if a non-indexing not is in the TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         node key
+    :type key: union ubifs_key \*
 
-    :param int lnum:
+    :param lnum:
         node LEB number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         node offset
+    :type offs: int
 
 .. _`is_leaf_node_in_tnc.description`:
 
@@ -1615,23 +1798,29 @@ ubifs_tnc_has_node
 
     determine whether a node is in the TNC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         node key
+    :type key: union ubifs_key \*
 
-    :param int level:
+    :param level:
         index node level (if it is an index node)
+    :type level: int
 
-    :param int lnum:
+    :param lnum:
         node LEB number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         node offset
+    :type offs: int
 
-    :param int is_idx:
+    :param is_idx:
         non-zero if the node is an index node
+    :type is_idx: int
 
 .. _`ubifs_tnc_has_node.description`:
 
@@ -1652,20 +1841,25 @@ ubifs_dirty_idx_node
 
     dirty an index node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         index node key
+    :type key: union ubifs_key \*
 
-    :param int level:
+    :param level:
         index node level
+    :type level: int
 
-    :param int lnum:
+    :param lnum:
         index node LEB number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         index node offset
+    :type offs: int
 
 .. _`ubifs_dirty_idx_node.description`:
 
@@ -1687,14 +1881,17 @@ dbg_check_inode_size
 
     check if inode size is correct.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: const struct inode \*
 
-    :param loff_t size:
+    :param size:
         inode size
+    :type size: loff_t
 
 .. _`dbg_check_inode_size.description`:
 

@@ -10,11 +10,13 @@
 
     low level registration of a DPLL clock
 
-    :param void \*user:
+    :param user:
         *undescribed*
+    :type user: void \*
 
-    :param struct device_node \*node:
+    :param node:
         device node for the clock
+    :type node: struct device_node \*
 
 .. _`_register_dpll.description`:
 
@@ -34,14 +36,17 @@ the initialization is retried on later stage.
 
     Registers a DPLLx2 clock
 
-    :param struct device_node \*node:
+    :param node:
         device node for this clock
+    :type node: struct device_node \*
 
-    :param const struct clk_ops \*ops:
+    :param ops:
         clk_ops for this clock
+    :type ops: const struct clk_ops \*
 
-    :param const struct clk_hw_omap_ops \*hw_ops:
+    :param hw_ops:
         clk_hw_ops for this clock
+    :type hw_ops: const struct clk_hw_omap_ops \*
 
 .. _`_register_dpll_x2.description`:
 
@@ -59,14 +64,17 @@ of_ti_dpll_setup
 
     Setup function for OMAP DPLL clocks
 
-    :param struct device_node \*node:
+    :param node:
         device node containing the DPLL info
+    :type node: struct device_node \*
 
-    :param const struct clk_ops \*ops:
+    :param ops:
         ops for the DPLL
+    :type ops: const struct clk_ops \*
 
-    :param const struct dpll_data \*ddt:
+    :param ddt:
         DPLL data template to use
+    :type ddt: const struct dpll_data \*
 
 .. _`of_ti_dpll_setup.description`:
 

@@ -10,8 +10,9 @@ w1_reply_len
 
     calculate current reply length, compare to maxlen
 
-    :param struct w1_cb_block \*block:
+    :param block:
         block to calculate
+    :type block: struct w1_cb_block \*
 
 .. _`w1_reply_len.description`:
 
@@ -31,11 +32,13 @@ w1_reply_make_space
 
     send message if needed to make space
 
-    :param struct w1_cb_block \*block:
+    :param block:
         block to make space on
+    :type block: struct w1_cb_block \*
 
-    :param u16 space:
+    :param space:
         how many bytes requested
+    :type space: u16
 
 .. _`w1_reply_make_space.description`:
 
@@ -54,11 +57,13 @@ w1_netlink_setup_msg
 
     prepare to write block->msg
 
-    :param struct w1_cb_block \*block:
+    :param block:
         block to operate on
+    :type block: struct w1_cb_block \*
 
-    :param u32 ack:
+    :param ack:
         determines if cn can be reused
+    :type ack: u32
 
 .. _`w1_netlink_setup_msg.description`:
 
@@ -78,17 +83,21 @@ w1_netlink_send_error
 
     sends the error message now
 
-    :param struct cn_msg \*cn:
+    :param cn:
         original cn_msg
+    :type cn: struct cn_msg \*
 
-    :param struct w1_netlink_msg \*msg:
+    :param msg:
         original w1_netlink_msg
+    :type msg: struct w1_netlink_msg \*
 
-    :param int portid:
+    :param portid:
         where to send it
+    :type portid: int
 
-    :param int error:
+    :param error:
         error status
+    :type error: int
 
 .. _`w1_netlink_send_error.description`:
 
@@ -107,11 +116,13 @@ w1_netlink_send
 
     sends w1 netlink notifications
 
-    :param struct w1_master \*dev:
+    :param dev:
         w1_master the even is associated with or for
+    :type dev: struct w1_master \*
 
-    :param struct w1_netlink_msg \*msg:
+    :param msg:
         w1_netlink_msg message to be sent
+    :type msg: struct w1_netlink_msg \*
 
 .. _`w1_netlink_send.description`:
 

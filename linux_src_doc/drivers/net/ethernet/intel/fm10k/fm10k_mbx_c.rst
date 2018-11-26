@@ -10,14 +10,17 @@ fm10k_fifo_init
 
     Initialize a message FIFO
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
-    :param u32 \*buffer:
+    :param buffer:
         pointer to memory to be used to store FIFO
+    :type buffer: u32 \*
 
-    :param u16 size:
+    :param size:
         maximum message size to store in FIFO, must be 2^n - 1
+    :type size: u16
 
 .. _`fm10k_fifo_used`:
 
@@ -28,8 +31,9 @@ fm10k_fifo_used
 
     Retrieve used space in FIFO
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
 .. _`fm10k_fifo_used.description`:
 
@@ -47,8 +51,9 @@ fm10k_fifo_unused
 
     Retrieve unused space in FIFO
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
 .. _`fm10k_fifo_unused.description`:
 
@@ -66,8 +71,9 @@ fm10k_fifo_empty
 
     Test to verify if FIFO is empty
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
 .. _`fm10k_fifo_empty.description`:
 
@@ -85,11 +91,13 @@ fm10k_fifo_head_offset
 
     returns indices of head with given offset
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
-    :param u16 offset:
+    :param offset:
         offset to add to head
+    :type offset: u16
 
 .. _`fm10k_fifo_head_offset.description`:
 
@@ -107,11 +115,13 @@ fm10k_fifo_tail_offset
 
     returns indices of tail with given offset
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
-    :param u16 offset:
+    :param offset:
         offset to add to tail
+    :type offset: u16
 
 .. _`fm10k_fifo_tail_offset.description`:
 
@@ -129,8 +139,9 @@ fm10k_fifo_head_len
 
     Retrieve length of first message in FIFO
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
 .. _`fm10k_fifo_head_len.description`:
 
@@ -148,8 +159,9 @@ fm10k_fifo_head_drop
 
     Drop the first message in FIFO
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
 .. _`fm10k_fifo_head_drop.description`:
 
@@ -167,8 +179,9 @@ fm10k_fifo_drop_all
 
     Drop all messages in FIFO
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
 .. _`fm10k_fifo_drop_all.description`:
 
@@ -187,14 +200,17 @@ fm10k_mbx_index_len
 
     Convert a head/tail index into a length value
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 head:
+    :param head:
         head index
+    :type head: u16
 
-    :param u16 tail:
+    :param tail:
         head index
+    :type tail: u16
 
 .. _`fm10k_mbx_index_len.description`:
 
@@ -213,11 +229,13 @@ fm10k_mbx_tail_add
 
     Determine new tail value with added offset
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 offset:
+    :param offset:
         length to add to tail offset
+    :type offset: u16
 
 .. _`fm10k_mbx_tail_add.description`:
 
@@ -236,11 +254,13 @@ fm10k_mbx_tail_sub
 
     Determine new tail value with subtracted offset
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 offset:
+    :param offset:
         length to add to tail offset
+    :type offset: u16
 
 .. _`fm10k_mbx_tail_sub.description`:
 
@@ -259,11 +279,13 @@ fm10k_mbx_head_add
 
     Determine new head value with added offset
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 offset:
+    :param offset:
         length to add to head offset
+    :type offset: u16
 
 .. _`fm10k_mbx_head_add.description`:
 
@@ -282,11 +304,13 @@ fm10k_mbx_head_sub
 
     Determine new head value with subtracted offset
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 offset:
+    :param offset:
         length to add to head offset
+    :type offset: u16
 
 .. _`fm10k_mbx_head_sub.description`:
 
@@ -305,8 +329,9 @@ fm10k_mbx_pushed_tail_len
 
     Retrieve the length of message being pushed
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_pushed_tail_len.description`:
 
@@ -325,17 +350,21 @@ fm10k_fifo_write_copy
 
     pulls data off of msg and places it in FIFO
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
-    :param const u32 \*msg:
+    :param msg:
         message array to populate
+    :type msg: const u32 \*
 
-    :param u16 tail_offset:
+    :param tail_offset:
         additional offset to add to tail pointer
+    :type tail_offset: u16
 
-    :param u16 len:
+    :param len:
         length of FIFO to copy into message header
+    :type len: u16
 
 .. _`fm10k_fifo_write_copy.description`:
 
@@ -355,11 +384,13 @@ fm10k_fifo_enqueue
 
     Enqueues the message to the tail of the FIFO
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
-    :param const u32 \*msg:
+    :param msg:
         message array to read
+    :type msg: const u32 \*
 
 .. _`fm10k_fifo_enqueue.description`:
 
@@ -379,11 +410,13 @@ fm10k_mbx_validate_msg_size
 
     Validate incoming message based on size
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 len:
+    :param len:
         length of data pushed onto buffer
+    :type len: u16
 
 .. _`fm10k_mbx_validate_msg_size.description`:
 
@@ -402,11 +435,13 @@ fm10k_mbx_write_copy
 
     pulls data off of Tx FIFO and places it in mbmem
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_write_copy.description`:
 
@@ -426,14 +461,17 @@ fm10k_mbx_pull_head
 
     Pulls data off of head of Tx FIFO
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 head:
+    :param head:
         acknowledgement number last received
+    :type head: u16
 
 .. _`fm10k_mbx_pull_head.description`:
 
@@ -454,11 +492,13 @@ fm10k_mbx_read_copy
 
     pulls data off of mbmem and places it in Rx FIFO
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_read_copy.description`:
 
@@ -478,14 +518,17 @@ fm10k_mbx_push_tail
 
     Pushes up to 15 DWORDs on to tail of FIFO
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 tail:
+    :param tail:
         tail index of message
+    :type tail: u16
 
 .. _`fm10k_mbx_push_tail.description`:
 
@@ -506,14 +549,17 @@ fm10k_crc_16b
 
     Generate a 16 bit CRC for a region of 16 bit data
 
-    :param const u32 \*data:
+    :param data:
         pointer to data to process
+    :type data: const u32 \*
 
-    :param u16 seed:
+    :param seed:
         seed value for CRC
+    :type seed: u16
 
-    :param u16 len:
+    :param len:
         length measured in 16 bits words
+    :type len: u16
 
 .. _`fm10k_crc_16b.description`:
 
@@ -534,17 +580,21 @@ fm10k_fifo_crc
 
     generate a CRC based off of FIFO data
 
-    :param struct fm10k_mbx_fifo \*fifo:
+    :param fifo:
         pointer to FIFO
+    :type fifo: struct fm10k_mbx_fifo \*
 
-    :param u16 offset:
+    :param offset:
         offset point for start of FIFO
+    :type offset: u16
 
-    :param u16 len:
+    :param len:
         number of DWORDS words to process
+    :type len: u16
 
-    :param u16 seed:
+    :param seed:
         seed value for CRC
+    :type seed: u16
 
 .. _`fm10k_fifo_crc.description`:
 
@@ -562,11 +612,13 @@ fm10k_mbx_update_local_crc
 
     Update the local CRC for outgoing data
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 head:
+    :param head:
         head index provided by remote mailbox
+    :type head: u16
 
 .. _`fm10k_mbx_update_local_crc.description`:
 
@@ -587,8 +639,9 @@ fm10k_mbx_verify_remote_crc
 
     Verify the CRC is correct for current data
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_verify_remote_crc.description`:
 
@@ -610,8 +663,9 @@ fm10k_mbx_rx_ready
 
     Indicates that a message is ready in the Rx FIFO
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_rx_ready.description`:
 
@@ -629,11 +683,13 @@ fm10k_mbx_tx_ready
 
     Indicates that the mailbox is in state ready for Tx
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 len:
+    :param len:
         verify free space is >= this value
+    :type len: u16
 
 .. _`fm10k_mbx_tx_ready.description`:
 
@@ -651,8 +707,9 @@ fm10k_mbx_tx_complete
 
     Indicates that the Tx FIFO has been emptied
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_tx_complete.description`:
 
@@ -670,11 +727,13 @@ fm10k_mbx_dequeue_rx
 
     Dequeues the message from the head in the Rx FIFO
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_dequeue_rx.description`:
 
@@ -693,14 +752,17 @@ fm10k_mbx_enqueue_tx
 
     Enqueues the message to the tail of the Tx FIFO
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param const u32 \*msg:
+    :param msg:
         message array to read
+    :type msg: const u32 \*
 
 .. _`fm10k_mbx_enqueue_tx.description`:
 
@@ -720,11 +782,13 @@ fm10k_mbx_read
 
     Copies the mbmem to local message buffer
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_read.description`:
 
@@ -742,11 +806,13 @@ fm10k_mbx_write
 
     Copies the local message buffer to mbmem
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_write.description`:
 
@@ -764,8 +830,9 @@ fm10k_mbx_create_connect_hdr
 
     Generate a connect mailbox header
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_create_connect_hdr.description`:
 
@@ -783,8 +850,9 @@ fm10k_mbx_create_data_hdr
 
     Generate a data mailbox header
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_create_data_hdr.description`:
 
@@ -802,8 +870,9 @@ fm10k_mbx_create_disconnect_hdr
 
     Generate a disconnect mailbox header
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_create_disconnect_hdr.description`:
 
@@ -821,8 +890,9 @@ fm10k_mbx_create_fake_disconnect_hdr
 
     Generate a false disconnect mbox hdr
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_create_fake_disconnect_hdr.description`:
 
@@ -842,11 +912,13 @@ fm10k_mbx_create_error_msg
 
     Generate an error message
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param s32 err:
+    :param err:
         local error encountered
+    :type err: s32
 
 .. _`fm10k_mbx_create_error_msg.description`:
 
@@ -866,8 +938,9 @@ fm10k_mbx_validate_msg_hdr
 
     Validate common fields in the message header
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_validate_msg_hdr.description`:
 
@@ -887,14 +960,17 @@ fm10k_mbx_create_reply
 
     Generate reply based on state and remote head
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 head:
+    :param head:
         acknowledgement number
+    :type head: u16
 
 .. _`fm10k_mbx_create_reply.description`:
 
@@ -915,8 +991,9 @@ fm10k_mbx_reset_work
 
     Reset internal pointers for any pending work
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_reset_work.description`:
 
@@ -936,11 +1013,13 @@ fm10k_mbx_update_max_size
 
     Update the max_size and drop any large messages
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 size:
+    :param size:
         new value for max_size
+    :type size: u16
 
 .. _`fm10k_mbx_update_max_size.description`:
 
@@ -962,8 +1041,9 @@ fm10k_mbx_connect_reset
 
     Reset following request for reset
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_connect_reset.description`:
 
@@ -982,11 +1062,13 @@ fm10k_mbx_process_connect
 
     Process connect header
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_process_connect.description`:
 
@@ -1006,11 +1088,13 @@ fm10k_mbx_process_data
 
     Process data header
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_process_data.description`:
 
@@ -1030,11 +1114,13 @@ fm10k_mbx_process_disconnect
 
     Process disconnect header
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_process_disconnect.description`:
 
@@ -1054,11 +1140,13 @@ fm10k_mbx_process_error
 
     Process error header
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_process_error.description`:
 
@@ -1078,11 +1166,13 @@ fm10k_mbx_process
 
     Process mailbox interrupt
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_process.description`:
 
@@ -1102,11 +1192,13 @@ fm10k_mbx_disconnect
 
     Shutdown mailbox connection
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_disconnect.description`:
 
@@ -1130,11 +1222,13 @@ fm10k_mbx_connect
 
     Start mailbox connection
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_mbx_connect.description`:
 
@@ -1158,8 +1252,9 @@ fm10k_mbx_validate_handlers
 
     Validate layout of message parsing data
 
-    :param const struct fm10k_msg_data \*msg_data:
+    :param msg_data:
         handlers for mailbox events
+    :type msg_data: const struct fm10k_msg_data \*
 
 .. _`fm10k_mbx_validate_handlers.description`:
 
@@ -1179,11 +1274,13 @@ fm10k_mbx_register_handlers
 
     Register a set of handler ops for mailbox
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param const struct fm10k_msg_data \*msg_data:
+    :param msg_data:
         handlers for mailbox events
+    :type msg_data: const struct fm10k_msg_data \*
 
 .. _`fm10k_mbx_register_handlers.description`:
 
@@ -1201,17 +1298,21 @@ fm10k_pfvf_mbx_init
 
     Initialize mailbox memory for PF/VF mailbox
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param const struct fm10k_msg_data \*msg_data:
+    :param msg_data:
         handlers for mailbox events
+    :type msg_data: const struct fm10k_msg_data \*
 
-    :param u8 id:
+    :param id:
         ID reference for PF as it supports up to 64 PF/VF mailboxes
+    :type id: u8
 
 .. _`fm10k_pfvf_mbx_init.description`:
 
@@ -1234,8 +1335,9 @@ fm10k_sm_mbx_create_data_hdr
 
     Generate a mailbox header for local FIFO
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_sm_mbx_create_data_hdr.description`:
 
@@ -1253,11 +1355,13 @@ fm10k_sm_mbx_create_connect_hdr
 
     Generate a mailbox header for local FIFO
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u8 err:
+    :param err:
         error flags to report if any
+    :type err: u8
 
 .. _`fm10k_sm_mbx_create_connect_hdr.description`:
 
@@ -1275,8 +1379,9 @@ fm10k_sm_mbx_connect_reset
 
     Reset following request for reset
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_sm_mbx_connect_reset.description`:
 
@@ -1294,11 +1399,13 @@ fm10k_sm_mbx_connect
 
     Start switch manager mailbox connection
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_sm_mbx_connect.description`:
 
@@ -1321,11 +1428,13 @@ fm10k_sm_mbx_disconnect
 
     Shutdown mailbox connection
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_sm_mbx_disconnect.description`:
 
@@ -1349,8 +1458,9 @@ fm10k_sm_mbx_validate_fifo_hdr
 
     Validate fields in the remote FIFO header
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_sm_mbx_validate_fifo_hdr.description`:
 
@@ -1370,8 +1480,9 @@ fm10k_sm_mbx_process_error
 
     Process header with error flag set
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_sm_mbx_process_error.description`:
 
@@ -1392,11 +1503,13 @@ fm10k_sm_mbx_create_error_msg
 
     Process an error in FIFO header
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param s32 err:
+    :param err:
         local error encountered
+    :type err: s32
 
 .. _`fm10k_sm_mbx_create_error_msg.description`:
 
@@ -1415,14 +1528,17 @@ fm10k_sm_mbx_receive
 
     Take message from Rx mailbox FIFO and put it in Rx
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 tail:
+    :param tail:
         tail index of message
+    :type tail: u16
 
 .. _`fm10k_sm_mbx_receive.description`:
 
@@ -1441,14 +1557,17 @@ fm10k_sm_mbx_transmit
 
     Take message from Tx and put it in Tx mailbox FIFO
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 head:
+    :param head:
         head index of message
+    :type head: u16
 
 .. _`fm10k_sm_mbx_transmit.description`:
 
@@ -1467,14 +1586,17 @@ fm10k_sm_mbx_create_reply
 
     Generate reply based on state and remote head
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param u16 head:
+    :param head:
         acknowledgement number
+    :type head: u16
 
 .. _`fm10k_sm_mbx_create_reply.description`:
 
@@ -1495,11 +1617,13 @@ fm10k_sm_mbx_process_reset
 
     Process header with version == 0 (RESET)
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_sm_mbx_process_reset.description`:
 
@@ -1521,11 +1645,13 @@ fm10k_sm_mbx_process_version_1
 
     Process header with version == 1
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_sm_mbx_process_version_1.description`:
 
@@ -1544,11 +1670,13 @@ fm10k_sm_mbx_process
 
     Process switch manager mailbox interrupt
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_sm_mbx_process.description`:
 
@@ -1568,14 +1696,17 @@ fm10k_sm_mbx_init
 
     Initialize mailbox memory for PF/SM mailbox
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         pointer to mailbox
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param const struct fm10k_msg_data \*msg_data:
+    :param msg_data:
         handlers for mailbox events
+    :type msg_data: const struct fm10k_msg_data \*
 
 .. _`fm10k_sm_mbx_init.description`:
 

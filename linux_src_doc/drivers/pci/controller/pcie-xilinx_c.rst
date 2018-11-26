@@ -66,8 +66,9 @@ xilinx_pcie_clear_err_interrupts
 
     Clear Error Interrupts
 
-    :param struct xilinx_pcie_port \*port:
+    :param port:
         PCIe port information
+    :type port: struct xilinx_pcie_port \*
 
 .. _`xilinx_pcie_valid_device`:
 
@@ -78,11 +79,13 @@ xilinx_pcie_valid_device
 
     Check if a valid device is present on bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI Bus structure
+    :type bus: struct pci_bus \*
 
-    :param unsigned int devfn:
+    :param devfn:
         device/function
+    :type devfn: unsigned int
 
 .. _`xilinx_pcie_valid_device.return`:
 
@@ -100,14 +103,17 @@ xilinx_pcie_map_bus
 
     Get configuration base
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI Bus structure
+    :type bus: struct pci_bus \*
 
-    :param unsigned int devfn:
+    :param devfn:
         Device/function
+    :type devfn: unsigned int
 
-    :param int where:
+    :param where:
         Offset from base
+    :type where: int
 
 .. _`xilinx_pcie_map_bus.return`:
 
@@ -126,8 +132,9 @@ xilinx_pcie_destroy_msi
 
     Free MSI number
 
-    :param unsigned int irq:
+    :param irq:
         IRQ to be freed
+    :type irq: unsigned int
 
 .. _`xilinx_pcie_assign_msi`:
 
@@ -138,8 +145,9 @@ xilinx_pcie_assign_msi
 
     Allocate MSI number
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`xilinx_pcie_assign_msi.return`:
 
@@ -157,11 +165,13 @@ xilinx_msi_teardown_irq
 
     Destroy the MSI
 
-    :param struct msi_controller \*chip:
+    :param chip:
         MSI Chip descriptor
+    :type chip: struct msi_controller \*
 
-    :param unsigned int irq:
+    :param irq:
         MSI IRQ to destroy
+    :type irq: unsigned int
 
 .. _`xilinx_pcie_msi_setup_irq`:
 
@@ -172,14 +182,17 @@ xilinx_pcie_msi_setup_irq
 
     Setup MSI request
 
-    :param struct msi_controller \*chip:
+    :param chip:
         MSI chip pointer
+    :type chip: struct msi_controller \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCIe device pointer
+    :type pdev: struct pci_dev \*
 
-    :param struct msi_desc \*desc:
+    :param desc:
         MSI descriptor pointer
+    :type desc: struct msi_desc \*
 
 .. _`xilinx_pcie_msi_setup_irq.return`:
 
@@ -197,14 +210,17 @@ xilinx_pcie_msi_map
 
     Set the handler for the MSI and mark IRQ as valid
 
-    :param struct irq_domain \*domain:
+    :param domain:
         IRQ domain
+    :type domain: struct irq_domain \*
 
-    :param unsigned int irq:
+    :param irq:
         Virtual IRQ number
+    :type irq: unsigned int
 
-    :param irq_hw_number_t hwirq:
+    :param hwirq:
         HW interrupt number
+    :type hwirq: irq_hw_number_t
 
 .. _`xilinx_pcie_msi_map.return`:
 
@@ -222,8 +238,9 @@ xilinx_pcie_enable_msi
 
     Enable MSI support
 
-    :param struct xilinx_pcie_port \*port:
+    :param port:
         PCIe port information
+    :type port: struct xilinx_pcie_port \*
 
 .. _`xilinx_pcie_intx_map`:
 
@@ -234,14 +251,17 @@ xilinx_pcie_intx_map
 
     Set the handler for the INTx and mark IRQ as valid
 
-    :param struct irq_domain \*domain:
+    :param domain:
         IRQ domain
+    :type domain: struct irq_domain \*
 
-    :param unsigned int irq:
+    :param irq:
         Virtual IRQ number
+    :type irq: unsigned int
 
-    :param irq_hw_number_t hwirq:
+    :param hwirq:
         HW interrupt number
+    :type hwirq: irq_hw_number_t
 
 .. _`xilinx_pcie_intx_map.return`:
 
@@ -259,11 +279,13 @@ xilinx_pcie_intr_handler
 
     Interrupt Service Handler
 
-    :param int irq:
+    :param irq:
         IRQ number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         PCIe port information
+    :type data: void \*
 
 .. _`xilinx_pcie_intr_handler.return`:
 
@@ -281,8 +303,9 @@ xilinx_pcie_init_irq_domain
 
     Initialize IRQ domain
 
-    :param struct xilinx_pcie_port \*port:
+    :param port:
         PCIe port information
+    :type port: struct xilinx_pcie_port \*
 
 .. _`xilinx_pcie_init_irq_domain.return`:
 
@@ -300,8 +323,9 @@ xilinx_pcie_init_port
 
     Initialize hardware
 
-    :param struct xilinx_pcie_port \*port:
+    :param port:
         PCIe port information
+    :type port: struct xilinx_pcie_port \*
 
 .. _`xilinx_pcie_parse_dt`:
 
@@ -312,8 +336,9 @@ xilinx_pcie_parse_dt
 
     Parse Device tree
 
-    :param struct xilinx_pcie_port \*port:
+    :param port:
         PCIe port information
+    :type port: struct xilinx_pcie_port \*
 
 .. _`xilinx_pcie_parse_dt.return`:
 
@@ -331,8 +356,9 @@ xilinx_pcie_probe
 
     Probe function
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Platform device pointer
+    :type pdev: struct platform_device \*
 
 .. _`xilinx_pcie_probe.return`:
 

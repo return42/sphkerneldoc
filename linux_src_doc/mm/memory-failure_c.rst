@@ -10,8 +10,9 @@ get_hwpoison_page
 
     Get refcount for memory error handling:
 
-    :param struct page \*page:
+    :param page:
         raw error page (hit by memory error)
+    :type page: struct page \*
 
 .. _`get_hwpoison_page.return`:
 
@@ -30,11 +31,13 @@ memory_failure
 
     Handle memory failure of a page.
 
-    :param unsigned long pfn:
+    :param pfn:
         Page Number of the corrupted page
+    :type pfn: unsigned long
 
-    :param int flags:
+    :param flags:
         fine tune action taken
+    :type flags: int
 
 .. _`memory_failure.description`:
 
@@ -62,11 +65,13 @@ memory_failure_queue
 
     Schedule handling memory failure of a page.
 
-    :param unsigned long pfn:
+    :param pfn:
         Page Number of the corrupted page
+    :type pfn: unsigned long
 
-    :param int flags:
+    :param flags:
         Flags for memory failure handling
+    :type flags: int
 
 .. _`memory_failure_queue.description`:
 
@@ -93,8 +98,9 @@ unpoison_memory
 
     Unpoison a previously poisoned page
 
-    :param unsigned long pfn:
+    :param pfn:
         Page number of the to be unpoisoned page
+    :type pfn: unsigned long
 
 .. _`unpoison_memory.description`:
 
@@ -118,11 +124,13 @@ soft_offline_page
 
     Soft offline a page.
 
-    :param struct page \*page:
+    :param page:
         page to offline
+    :type page: struct page \*
 
-    :param int flags:
+    :param flags:
         flags. Same as \ :c:func:`memory_failure`\ .
+    :type flags: int
 
 .. _`soft_offline_page.description`:
 

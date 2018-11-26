@@ -265,7 +265,7 @@ struct knav_queue_inst
 
 .. c:type:: struct knav_queue_inst
 
-    qmss queue instace properties
+    qmss queue instance properties
 
 .. _`knav_queue_inst.definition`:
 
@@ -320,7 +320,7 @@ qmgr
     queue manager info
 
 id
-    queue instace id
+    queue instance id
 
 irq_num
     irq line number
@@ -383,7 +383,7 @@ reg_peek
     *undescribed*
 
 inst
-    qmss queue instace properties
+    qmss queue instance properties
 
 stats
     *undescribed*

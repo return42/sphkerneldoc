@@ -10,20 +10,25 @@ x509_decode_time
 
     Decode an X.509 time ASN.1 object
 
-    :param time64_t \*_t:
+    :param _t:
         The time to fill in
+    :type _t: time64_t \*
 
-    :param size_t hdrlen:
+    :param hdrlen:
         The length of the object header
+    :type hdrlen: size_t
 
-    :param unsigned char tag:
+    :param tag:
         The object tag
+    :type tag: unsigned char
 
-    :param const unsigned char \*value:
+    :param value:
         The object value
+    :type value: const unsigned char \*
 
-    :param size_t vlen:
+    :param vlen:
         The size of the object value
+    :type vlen: size_t
 
 .. _`x509_decode_time.description`:
 

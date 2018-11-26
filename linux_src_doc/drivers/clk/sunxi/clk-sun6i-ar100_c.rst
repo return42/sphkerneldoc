@@ -10,8 +10,9 @@ sun6i_get_ar100_factors
 
     Calculates factors p, m for AR100
 
-    :param struct factors_request \*req:
+    :param req:
         *undescribed*
+    :type req: struct factors_request \*
 
 .. _`sun6i_get_ar100_factors.description`:
 

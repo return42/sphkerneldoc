@@ -299,11 +299,13 @@ ks8695_readreg
 
     Read from a KS8695 ethernet register
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The device to read from
+    :type ksp: struct ks8695_priv \*
 
-    :param int reg:
+    :param reg:
         The register to read
+    :type reg: int
 
 .. _`ks8695_writereg`:
 
@@ -314,14 +316,17 @@ ks8695_writereg
 
     Write to a KS8695 ethernet register
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The device to write to
+    :type ksp: struct ks8695_priv \*
 
-    :param int reg:
+    :param reg:
         The register to write
+    :type reg: int
 
-    :param u32 value:
+    :param value:
         The value to write to the register
+    :type value: u32
 
 .. _`ks8695_port_type`:
 
@@ -332,8 +337,9 @@ ks8695_port_type
 
     Retrieve port-type as user-friendly string
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The device to return the type for
+    :type ksp: struct ks8695_priv \*
 
 .. _`ks8695_port_type.description`:
 
@@ -352,8 +358,9 @@ ks8695_update_mac
 
     Update the MAC registers in the device
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The device to update
+    :type ksp: struct ks8695_priv \*
 
 .. _`ks8695_update_mac.description`:
 
@@ -372,8 +379,9 @@ ks8695_refill_rxbuffers
 
     Re-fill the RX buffer ring
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The device to refill
+    :type ksp: struct ks8695_priv \*
 
 .. _`ks8695_refill_rxbuffers.description`:
 
@@ -394,11 +402,13 @@ ks8695_init_partial_multicast
 
     Init the mcast addr registers
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The device to initialise
+    :type ksp: struct ks8695_priv \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
 .. _`ks8695_init_partial_multicast.description`:
 
@@ -418,11 +428,13 @@ ks8695_tx_irq
 
     Transmit IRQ handler
 
-    :param int irq:
+    :param irq:
         The IRQ which went off (ignored)
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         The net_device for the interrupt
+    :type dev_id: void \*
 
 .. _`ks8695_tx_irq.description`:
 
@@ -442,8 +454,9 @@ ks8695_get_rx_enable_bit
 
     Get rx interrupt enable/status bit
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         Private data for the KS8695 Ethernet
+    :type ksp: struct ks8695_priv \*
 
 .. _`ks8695_get_rx_enable_bit.for-ks8695-document`:
 
@@ -480,11 +493,13 @@ ks8695_rx_irq
 
     Receive IRQ handler
 
-    :param int irq:
+    :param irq:
         The IRQ which went off (ignored)
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         The net_device for the interrupt
+    :type dev_id: void \*
 
 .. _`ks8695_rx_irq.description`:
 
@@ -502,11 +517,13 @@ ks8695_rx
 
     Receive packets called by NAPI poll method
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         Private data for the KS8695 Ethernet
+    :type ksp: struct ks8695_priv \*
 
-    :param int budget:
+    :param budget:
         Number of packets allowed to process
+    :type budget: int
 
 .. _`ks8695_poll`:
 
@@ -517,11 +534,13 @@ ks8695_poll
 
     Receive packet by NAPI poll method
 
-    :param struct napi_struct \*napi:
+    :param napi:
         *undescribed*
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         The remaining number packets for network subsystem
+    :type budget: int
 
 .. _`ks8695_poll.description`:
 
@@ -540,11 +559,13 @@ ks8695_link_irq
 
     Link change IRQ handler
 
-    :param int irq:
+    :param irq:
         The IRQ which went off (ignored)
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         The net_device for the interrupt
+    :type dev_id: void \*
 
 .. _`ks8695_link_irq.description`:
 
@@ -563,8 +584,9 @@ ks8695_reset
 
     Reset a KS8695 ethernet interface
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The interface to reset
+    :type ksp: struct ks8695_priv \*
 
 .. _`ks8695_reset.description`:
 
@@ -583,8 +605,9 @@ ks8695_shutdown
 
     Shut down a KS8695 ethernet interface
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The interface to shut down
+    :type ksp: struct ks8695_priv \*
 
 .. _`ks8695_shutdown.description`:
 
@@ -604,17 +627,21 @@ ks8695_setup_irq
 
     IRQ setup helper function
 
-    :param int irq:
+    :param irq:
         The IRQ number to claim
+    :type irq: int
 
-    :param const char \*irq_name:
+    :param irq_name:
         The name to give the IRQ claimant
+    :type irq_name: const char \*
 
-    :param irq_handler_t handler:
+    :param handler:
         The function to call to handle the IRQ
+    :type handler: irq_handler_t
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The net_device to pass in as the dev_id argument to the handler
+    :type ndev: struct net_device \*
 
 .. _`ks8695_setup_irq.description`:
 
@@ -632,8 +659,9 @@ ks8695_init_net
 
     Initialise a KS8695 ethernet interface
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The interface to initialise
+    :type ksp: struct ks8695_priv \*
 
 .. _`ks8695_init_net.description`:
 
@@ -653,8 +681,9 @@ ks8695_release_device
 
     HW resource release for KS8695 e-net
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The device to be freed
+    :type ksp: struct ks8695_priv \*
 
 .. _`ks8695_release_device.description`:
 
@@ -673,8 +702,9 @@ ks8695_get_msglevel
 
     Get the messages enabled for emission
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The network device to read from
+    :type ndev: struct net_device \*
 
 .. _`ks8695_set_msglevel`:
 
@@ -685,11 +715,13 @@ ks8695_set_msglevel
 
     Set the messages enabled for emission
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The network device to configure
+    :type ndev: struct net_device \*
 
-    :param u32 value:
+    :param value:
         The messages to set for emission
+    :type value: u32
 
 .. _`ks8695_wan_get_link_ksettings`:
 
@@ -700,11 +732,13 @@ ks8695_wan_get_link_ksettings
 
     Get device-specific settings.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The network device to read settings from
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         The ethtool structure to read into
+    :type cmd: struct ethtool_link_ksettings \*
 
 .. _`ks8695_wan_set_link_ksettings`:
 
@@ -715,11 +749,13 @@ ks8695_wan_set_link_ksettings
 
     Set device-specific settings.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The network device to configure
+    :type ndev: struct net_device \*
 
-    :param const struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         The settings to configure
+    :type cmd: const struct ethtool_link_ksettings \*
 
 .. _`ks8695_wan_nwayreset`:
 
@@ -730,8 +766,9 @@ ks8695_wan_nwayreset
 
     Restart the autonegotiation on the port.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The network device to restart autoneotiation on
+    :type ndev: struct net_device \*
 
 .. _`ks8695_wan_get_pause`:
 
@@ -742,11 +779,13 @@ ks8695_wan_get_pause
 
     Retrieve network pause/flow-control advertising
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The device to retrieve settings from
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*param:
+    :param param:
         The structure to fill out with the information
+    :type param: struct ethtool_pauseparam \*
 
 .. _`ks8695_get_drvinfo`:
 
@@ -757,11 +796,13 @@ ks8695_get_drvinfo
 
     Retrieve driver information
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The network device to retrieve info about
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_drvinfo \*info:
+    :param info:
         The info structure to fill out.
+    :type info: struct ethtool_drvinfo \*
 
 .. _`ks8695_set_mac`:
 
@@ -772,11 +813,13 @@ ks8695_set_mac
 
     Update MAC in net dev and HW
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The network device to update
+    :type ndev: struct net_device \*
 
-    :param void \*addr:
+    :param addr:
         The new MAC address to set
+    :type addr: void \*
 
 .. _`ks8695_set_multicast`:
 
@@ -787,8 +830,9 @@ ks8695_set_multicast
 
     Set up the multicast behaviour of the interface
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The net_device to configure
+    :type ndev: struct net_device \*
 
 .. _`ks8695_set_multicast.description`:
 
@@ -807,8 +851,9 @@ ks8695_timeout
 
     Handle a network tx/rx timeout.
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The net_device which timed out.
+    :type ndev: struct net_device \*
 
 .. _`ks8695_timeout.description`:
 
@@ -822,15 +867,17 @@ A network transaction timed out, reset the device.
 ks8695_start_xmit
 =================
 
-.. c:function:: int ks8695_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+.. c:function:: netdev_tx_t ks8695_start_xmit(struct sk_buff *skb, struct net_device *ndev)
 
     Start a packet transmission
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The packet to transmit
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The network device to send the packet on
+    :type ndev: struct net_device \*
 
 .. _`ks8695_start_xmit.description`:
 
@@ -850,8 +897,9 @@ ks8695_stop
 
     Stop (shutdown) a KS8695 ethernet interface
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The net_device to stop
+    :type ndev: struct net_device \*
 
 .. _`ks8695_stop.description`:
 
@@ -870,8 +918,9 @@ ks8695_open
 
     Open (bring up) a KS8695 ethernet interface
 
-    :param struct net_device \*ndev:
+    :param ndev:
         The net_device to open
+    :type ndev: struct net_device \*
 
 .. _`ks8695_open.description`:
 
@@ -891,8 +940,9 @@ ks8695_init_switch
 
     Init LAN switch to known good defaults.
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The device to initialise
+    :type ksp: struct ks8695_priv \*
 
 .. _`ks8695_init_switch.description`:
 
@@ -911,8 +961,9 @@ ks8695_init_wan_phy
 
     Initialise the WAN PHY to sensible defaults
 
-    :param struct ks8695_priv \*ksp:
+    :param ksp:
         The device to initialise
+    :type ksp: struct ks8695_priv \*
 
 .. _`ks8695_init_wan_phy.description`:
 
@@ -931,8 +982,9 @@ ks8695_probe
 
     Probe and initialise a KS8695 ethernet interface
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The platform device to probe
+    :type pdev: struct platform_device \*
 
 .. _`ks8695_probe.description`:
 
@@ -957,11 +1009,13 @@ ks8695_drv_suspend
 
     Suspend a KS8695 ethernet platform device.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The device to suspend
+    :type pdev: struct platform_device \*
 
-    :param pm_message_t state:
+    :param state:
         The suspend state
+    :type state: pm_message_t
 
 .. _`ks8695_drv_suspend.description`:
 
@@ -979,8 +1033,9 @@ ks8695_drv_resume
 
     Resume a KS8695 ethernet platform device.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The device to resume
+    :type pdev: struct platform_device \*
 
 .. _`ks8695_drv_resume.description`:
 
@@ -999,8 +1054,9 @@ ks8695_drv_remove
 
     Remove a KS8695 net device on driver unload.
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The platform device to remove
+    :type pdev: struct platform_device \*
 
 .. _`ks8695_drv_remove.description`:
 

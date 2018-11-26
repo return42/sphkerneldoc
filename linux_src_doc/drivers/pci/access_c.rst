@@ -10,11 +10,13 @@ pci_bus_set_ops
 
     Set raw operations of pci bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         pci bus struct
+    :type bus: struct pci_bus \*
 
-    :param struct pci_ops \*ops:
+    :param ops:
         new raw operations
+    :type ops: struct pci_ops \*
 
 .. _`pci_bus_set_ops.description`:
 
@@ -32,8 +34,9 @@ pci_cfg_access_lock
 
     Lock PCI config reads/writes
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci device struct
+    :type dev: struct pci_dev \*
 
 .. _`pci_cfg_access_lock.description`:
 
@@ -53,8 +56,9 @@ pci_cfg_access_trylock
 
     try to lock PCI config reads/writes
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci device struct
+    :type dev: struct pci_dev \*
 
 .. _`pci_cfg_access_trylock.description`:
 
@@ -74,8 +78,9 @@ pci_cfg_access_unlock
 
     Unlock PCI config reads/writes
 
-    :param struct pci_dev \*dev:
+    :param dev:
         pci device struct
+    :type dev: struct pci_dev \*
 
 .. _`pci_cfg_access_unlock.description`:
 

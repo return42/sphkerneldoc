@@ -10,8 +10,9 @@ psb_intel_lvds_destroy
 
     unregister and free LVDS structures
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to free
+    :type connector: struct drm_connector \*
 
 .. _`psb_intel_lvds_destroy.description`:
 
@@ -30,11 +31,13 @@ psb_intel_lvds_init
 
     setup LVDS connectors on this device
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct psb_intel_mode_device \*mode_dev:
+    :param mode_dev:
         *undescribed*
+    :type mode_dev: struct psb_intel_mode_device \*
 
 .. _`psb_intel_lvds_init.description`:
 

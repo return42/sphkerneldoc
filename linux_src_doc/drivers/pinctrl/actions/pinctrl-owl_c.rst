@@ -25,6 +25,9 @@ Definition
         struct clk *clk;
         const struct owl_pinctrl_soc_data *soc;
         void __iomem *base;
+        struct irq_chip irq_chip;
+        unsigned int num_irq;
+        unsigned int *irq;
     }
 
 .. _`owl_pinctrl.members`:
@@ -52,6 +55,15 @@ soc
 
 base
     pinctrl register base address
+
+irq_chip
+    *undescribed*
+
+num_irq
+    *undescribed*
+
+irq
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ init_shadow_tids
 
     allocate the shadow TID array
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`init_shadow_tids.description`:
 
@@ -34,8 +35,9 @@ init_after_reset
 
     re-initialize after a reset
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`init_after_reset.description`:
 
@@ -55,8 +57,9 @@ qib_create_workqueues
 
     create per port workqueues
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`qib_init`:
 
@@ -67,11 +70,13 @@ qib_init
 
     do the actual initialization sequence on the chip
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param int reinit:
+    :param reinit:
         reinitializing, so don't allocate new memory
+    :type reinit: int
 
 .. _`qib_init.description`:
 
@@ -97,8 +102,9 @@ qib_shutdown_device
 
     shut down a device
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
 .. _`qib_shutdown_device.description`:
 
@@ -119,11 +125,13 @@ qib_free_ctxtdata
 
     free a context's allocated data
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the ctxtdata structure
+    :type rcd: struct qib_ctxtdata \*
 
 .. _`qib_free_ctxtdata.description`:
 
@@ -145,11 +153,13 @@ qib_create_rcvhdrq
 
     create a receive header queue
 
-    :param struct qib_devdata \*dd:
+    :param dd:
         the qlogic_ib device
+    :type dd: struct qib_devdata \*
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the context data
+    :type rcd: struct qib_ctxtdata \*
 
 .. _`qib_create_rcvhdrq.description`:
 
@@ -167,8 +177,9 @@ qib_setup_eagerbufs
 
 .. c:function:: int qib_setup_eagerbufs(struct qib_ctxtdata *rcd)
 
-    :param struct qib_ctxtdata \*rcd:
+    :param rcd:
         the context we are setting up.
+    :type rcd: struct qib_ctxtdata \*
 
 .. _`qib_setup_eagerbufs.description`:
 

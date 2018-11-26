@@ -10,20 +10,25 @@ tcp_splice_read
 
     splice data from TCP socket to a pipe
 
-    :param struct socket \*sock:
+    :param sock:
         socket to splice from
+    :type sock: struct socket \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         position (not valid)
+    :type ppos: loff_t \*
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         pipe to splice to
+    :type pipe: struct pipe_inode_info \*
 
-    :param size_t len:
+    :param len:
         number of bytes to splice
+    :type len: size_t
 
-    :param unsigned int flags:
+    :param flags:
         splice modifier flags
+    :type flags: unsigned int
 
 .. _`tcp_splice_read.description`:
 
@@ -41,8 +46,9 @@ tcp_get_md5sig_pool
 
     get md5sig_pool for this user
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tcp_get_md5sig_pool.description`:
 

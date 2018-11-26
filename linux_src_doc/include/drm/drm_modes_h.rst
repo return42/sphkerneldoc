@@ -523,8 +523,9 @@ DRM_MODE_ARG
 
     printf arguments for \ :c:type:`struct drm_display_mode <drm_display_mode>`\ 
 
-    :param  m:
+    :param m:
         display mode
+    :type m: 
 
 .. _`drm_mode_is_stereo`:
 
@@ -535,8 +536,9 @@ drm_mode_is_stereo
 
     check for stereo mode flags
 
-    :param const struct drm_display_mode \*mode:
+    :param mode:
         drm_display_mode to check
+    :type mode: const struct drm_display_mode \*
 
 .. _`drm_mode_is_stereo.return`:
 

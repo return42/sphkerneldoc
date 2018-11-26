@@ -10,11 +10,13 @@ snd_hdac_regmap_encode_verb
 
     encode the verb to a pseudo register
 
-    :param  nid:
+    :param nid:
         widget NID
+    :type nid: 
 
-    :param  verb:
+    :param verb:
         codec verb
+    :type verb: 
 
 .. _`snd_hdac_regmap_encode_verb.description`:
 
@@ -32,17 +34,21 @@ snd_hdac_regmap_encode_amp
 
     encode the AMP verb to a pseudo register
 
-    :param  nid:
+    :param nid:
         widget NID
+    :type nid: 
 
-    :param  ch:
+    :param ch:
         channel (left = 0, right = 1)
+    :type ch: 
 
-    :param  dir:
+    :param dir:
         direction (#HDA_INPUT, #HDA_OUTPUT)
+    :type dir: 
 
-    :param  idx:
+    :param idx:
         input index value
+    :type idx: 
 
 .. _`snd_hdac_regmap_encode_amp.description`:
 
@@ -60,14 +66,17 @@ snd_hdac_regmap_encode_amp_stereo
 
     encode a pseudo register for stereo AMPs
 
-    :param  nid:
+    :param nid:
         widget NID
+    :type nid: 
 
-    :param  dir:
+    :param dir:
         direction (#HDA_INPUT, #HDA_OUTPUT)
+    :type dir: 
 
-    :param  idx:
+    :param idx:
         input index value
+    :type idx: 
 
 .. _`snd_hdac_regmap_encode_amp_stereo.description`:
 
@@ -85,17 +94,21 @@ snd_hdac_regmap_write
 
     Write a verb with caching
 
-    :param struct hdac_device \*codec:
+    :param codec:
         *undescribed*
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         codec NID
+    :type nid: hda_nid_t
 
-    :param unsigned int verb:
+    :param verb:
         *undescribed*
+    :type verb: unsigned int
 
-    :param unsigned int val:
+    :param val:
         value to write
+    :type val: unsigned int
 
 .. _`snd_hdac_regmap_write.description`:
 
@@ -113,20 +126,25 @@ snd_hdac_regmap_update
 
     Update a verb value with caching
 
-    :param struct hdac_device \*codec:
+    :param codec:
         *undescribed*
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         codec NID
+    :type nid: hda_nid_t
 
-    :param unsigned int verb:
+    :param verb:
         verb to update
+    :type verb: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         bit mask to update
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         value to update
+    :type val: unsigned int
 
 .. _`snd_hdac_regmap_update.description`:
 
@@ -144,17 +162,21 @@ snd_hdac_regmap_read
 
     Read a verb with caching
 
-    :param struct hdac_device \*codec:
+    :param codec:
         *undescribed*
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         codec NID
+    :type nid: hda_nid_t
 
-    :param unsigned int verb:
+    :param verb:
         verb to read
+    :type verb: unsigned int
 
-    :param unsigned int \*val:
+    :param val:
         pointer to store the value
+    :type val: unsigned int \*
 
 .. _`snd_hdac_regmap_read.description`:
 
@@ -172,20 +194,25 @@ snd_hdac_regmap_get_amp
 
     Read AMP value
 
-    :param struct hdac_device \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to read the AMP value
+    :type nid: hda_nid_t
 
-    :param int ch:
+    :param ch:
         channel (left=0 or right=1)
+    :type ch: int
 
-    :param int dir:
+    :param dir:
         *undescribed*
+    :type dir: int
 
-    :param int idx:
+    :param idx:
         *undescribed*
+    :type idx: int
 
 .. _`snd_hdac_regmap_get_amp.description`:
 
@@ -204,26 +231,33 @@ snd_hdac_regmap_update_amp
 
     update the AMP value
 
-    :param struct hdac_device \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to read the AMP value
+    :type nid: hda_nid_t
 
-    :param int ch:
+    :param ch:
         channel (left=0 or right=1)
+    :type ch: int
 
-    :param int dir:
+    :param dir:
         *undescribed*
+    :type dir: int
 
-    :param int idx:
+    :param idx:
         the index value (only for input direction)
+    :type idx: int
 
-    :param int mask:
+    :param mask:
         bit mask to set
+    :type mask: int
 
-    :param int val:
+    :param val:
         the bits value to set
+    :type val: int
 
 .. _`snd_hdac_regmap_update_amp.description`:
 
@@ -242,17 +276,21 @@ snd_hdac_regmap_get_amp_stereo
 
     Read stereo AMP values
 
-    :param struct hdac_device \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to read the AMP value
+    :type nid: hda_nid_t
 
-    :param int dir:
+    :param dir:
         *undescribed*
+    :type dir: int
 
-    :param int idx:
+    :param idx:
         *undescribed*
+    :type idx: int
 
 .. _`snd_hdac_regmap_get_amp_stereo.description`:
 
@@ -271,23 +309,29 @@ snd_hdac_regmap_update_amp_stereo
 
     update the stereo AMP value
 
-    :param struct hdac_device \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to read the AMP value
+    :type nid: hda_nid_t
 
-    :param int dir:
+    :param dir:
         *undescribed*
+    :type dir: int
 
-    :param int idx:
+    :param idx:
         the index value (only for input direction)
+    :type idx: int
 
-    :param int mask:
+    :param mask:
         bit mask to set
+    :type mask: int
 
-    :param int val:
+    :param val:
         the bits value to set
+    :type val: int
 
 .. _`snd_hdac_regmap_update_amp_stereo.description`:
 
@@ -307,11 +351,13 @@ snd_hdac_regmap_sync_node
 
     sync the widget node attributes
 
-    :param struct hdac_device \*codec:
+    :param codec:
         HD-audio codec
+    :type codec: struct hdac_device \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to sync
+    :type nid: hda_nid_t
 
 .. This file was automatic generated / don't edit.
 

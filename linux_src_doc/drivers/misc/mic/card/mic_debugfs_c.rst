@@ -10,11 +10,13 @@ mic_intr_test
 
     Send interrupts to host.
 
-    :param struct seq_file \*s:
+    :param s:
         *undescribed*
+    :type s: struct seq_file \*
 
-    :param void \*unused:
+    :param unused:
         *undescribed*
+    :type unused: void \*
 
 .. _`mic_create_card_debug_dir`:
 
@@ -25,8 +27,9 @@ mic_create_card_debug_dir
 
     Initialize MIC debugfs entries.
 
-    :param struct mic_driver \*mdrv:
+    :param mdrv:
         *undescribed*
+    :type mdrv: struct mic_driver \*
 
 .. _`mic_delete_card_debug_dir`:
 
@@ -37,8 +40,9 @@ mic_delete_card_debug_dir
 
     Uninitialize MIC debugfs entries.
 
-    :param struct mic_driver \*mdrv:
+    :param mdrv:
         *undescribed*
+    :type mdrv: struct mic_driver \*
 
 .. _`mic_init_card_debugfs`:
 
@@ -49,8 +53,9 @@ mic_init_card_debugfs
 
     Initialize global debugfs entry.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mic_exit_card_debugfs`:
 
@@ -61,8 +66,9 @@ mic_exit_card_debugfs
 
     Uninitialize global debugfs entry
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

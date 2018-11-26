@@ -10,8 +10,9 @@ scsi_sysfs_add_sdev
 
     add scsi device to sysfs
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi_device to add
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_sysfs_add_sdev.return-value`:
 
@@ -29,8 +30,9 @@ scsi_remove_device
 
     unregister a device from the scsi bus
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi_device to unregister
+    :type sdev: struct scsi_device \*
 
 .. _`scsi_remove_target`:
 
@@ -41,8 +43,9 @@ scsi_remove_target
 
     try to remove a target and all its devices
 
-    :param struct device \*dev:
+    :param dev:
         generic starget or parent of generic stargets to be removed
+    :type dev: struct device \*
 
 .. _`scsi_remove_target.note`:
 
@@ -62,8 +65,9 @@ scsi_sysfs_add_host
 
     add scsi host to subsystem
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host struct to add to subsystem
+    :type shost: struct Scsi_Host \*
 
 .. This file was automatic generated / don't edit.
 

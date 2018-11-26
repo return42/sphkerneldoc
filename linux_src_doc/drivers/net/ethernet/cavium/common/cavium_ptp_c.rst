@@ -10,12 +10,14 @@ cavium_ptp_adjfine
 
     Adjust ptp frequency
 
-    :param struct ptp_clock_info \*ptp_info:
+    :param ptp_info:
         *undescribed*
+    :type ptp_info: struct ptp_clock_info \*
 
-    :param long scaled_ppm:
+    :param scaled_ppm:
         how much to adjust by, in parts per million, but with a
         16 bit binary fractional field
+    :type scaled_ppm: long
 
 .. _`cavium_ptp_adjtime`:
 
@@ -26,11 +28,13 @@ cavium_ptp_adjtime
 
     Adjust ptp time
 
-    :param struct ptp_clock_info \*ptp_info:
+    :param ptp_info:
         *undescribed*
+    :type ptp_info: struct ptp_clock_info \*
 
-    :param s64 delta:
+    :param delta:
         how much to adjust by, in nanosecs
+    :type delta: s64
 
 .. _`cavium_ptp_gettime`:
 
@@ -41,11 +45,13 @@ cavium_ptp_gettime
 
     Get hardware clock time with adjustment
 
-    :param struct ptp_clock_info \*ptp_info:
+    :param ptp_info:
         *undescribed*
+    :type ptp_info: struct ptp_clock_info \*
 
-    :param struct timespec64 \*ts:
+    :param ts:
         timespec
+    :type ts: struct timespec64 \*
 
 .. _`cavium_ptp_settime`:
 
@@ -56,11 +62,13 @@ cavium_ptp_settime
 
     Set hardware clock time. Reset adjustment
 
-    :param struct ptp_clock_info \*ptp_info:
+    :param ptp_info:
         *undescribed*
+    :type ptp_info: struct ptp_clock_info \*
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         timespec
+    :type ts: const struct timespec64 \*
 
 .. _`cavium_ptp_enable`:
 
@@ -71,14 +79,17 @@ cavium_ptp_enable
 
     Request to enable or disable an ancillary feature.
 
-    :param struct ptp_clock_info \*ptp_info:
+    :param ptp_info:
         *undescribed*
+    :type ptp_info: struct ptp_clock_info \*
 
-    :param struct ptp_clock_request \*rq:
+    :param rq:
         request
+    :type rq: struct ptp_clock_request \*
 
-    :param int on:
+    :param on:
         is it on
+    :type on: int
 
 .. This file was automatic generated / don't edit.
 

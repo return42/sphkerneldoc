@@ -231,6 +231,7 @@ Definition
 
     struct tegra_pinctrl_soc_data {
         unsigned ngpios;
+        const char *gpio_compatible;
         const struct pinctrl_pin_desc *pins;
         unsigned npins;
         struct tegra_function *functions;
@@ -249,6 +250,9 @@ Members
 
 ngpios
     The number of GPIO pins the pin controller HW affects.
+
+gpio_compatible
+    *undescribed*
 
 pins
     An array describing all pins the pin controller affects.

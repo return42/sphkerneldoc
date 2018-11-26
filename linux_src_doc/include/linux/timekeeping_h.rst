@@ -10,8 +10,9 @@ ktime_get_real
 
     get the real (wall-) time in ktime_t format
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ktime_get_boottime`:
 
@@ -22,8 +23,9 @@ ktime_get_boottime
 
     Returns monotonic time since boot in ktime_t format
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ktime_get_boottime.description`:
 
@@ -42,8 +44,9 @@ ktime_get_clocktai
 
     Returns the TAI time of day in ktime_t format
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ktime_mono_to_real`:
 
@@ -54,8 +57,9 @@ ktime_mono_to_real
 
     Convert monotonic time to clock realtime
 
-    :param ktime_t mono:
+    :param mono:
         *undescribed*
+    :type mono: ktime_t
 
 .. This file was automatic generated / don't edit.
 

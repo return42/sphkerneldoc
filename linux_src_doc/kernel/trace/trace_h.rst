@@ -138,23 +138,29 @@ event_trigger_unlock_commit
 
     handle triggers and finish event commit
 
-    :param struct trace_event_file \*file:
+    :param file:
         The file pointer assoctiated to the event
+    :type file: struct trace_event_file \*
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer that the event is being written to
+    :type buffer: struct ring_buffer \*
 
-    :param struct ring_buffer_event \*event:
+    :param event:
         The event meta data in the ring buffer
+    :type event: struct ring_buffer_event \*
 
-    :param void \*entry:
+    :param entry:
         The event itself
+    :type entry: void \*
 
-    :param unsigned long irq_flags:
+    :param irq_flags:
         The state of the interrupts at the start of the event
+    :type irq_flags: unsigned long
 
-    :param int pc:
+    :param pc:
         The state of the preempt count at the start of the event.
+    :type pc: int
 
 .. _`event_trigger_unlock_commit.description`:
 
@@ -174,26 +180,33 @@ event_trigger_unlock_commit_regs
 
     handle triggers and finish event commit
 
-    :param struct trace_event_file \*file:
+    :param file:
         The file pointer assoctiated to the event
+    :type file: struct trace_event_file \*
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer that the event is being written to
+    :type buffer: struct ring_buffer \*
 
-    :param struct ring_buffer_event \*event:
+    :param event:
         The event meta data in the ring buffer
+    :type event: struct ring_buffer_event \*
 
-    :param void \*entry:
+    :param entry:
         The event itself
+    :type entry: void \*
 
-    :param unsigned long irq_flags:
+    :param irq_flags:
         The state of the interrupts at the start of the event
+    :type irq_flags: unsigned long
 
-    :param int pc:
+    :param pc:
         The state of the preempt count at the start of the event.
+    :type pc: int
 
-    :param struct pt_regs \*regs:
+    :param regs:
         *undescribed*
+    :type regs: struct pt_regs \*
 
 .. _`event_trigger_unlock_commit_regs.description`:
 

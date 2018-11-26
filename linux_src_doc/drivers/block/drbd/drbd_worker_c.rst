@@ -10,11 +10,13 @@ w_e_end_data_req
 
     Worker callback, to send a P_DATA_REPLY packet in response to a P_DATA_REQUEST
 
-    :param struct drbd_work \*w:
+    :param w:
         work object.
+    :type w: struct drbd_work \*
 
-    :param int cancel:
+    :param cancel:
         The connection will be closed anyways
+    :type cancel: int
 
 .. _`w_e_end_rsdata_req`:
 
@@ -25,11 +27,13 @@ w_e_end_rsdata_req
 
     Worker callback to send a P_RS_DATA_REPLY packet in response to a P_RS_DATA_REQUEST
 
-    :param struct drbd_work \*w:
+    :param w:
         work object.
+    :type w: struct drbd_work \*
 
-    :param int cancel:
+    :param cancel:
         The connection will be closed anyways
+    :type cancel: int
 
 .. _`w_send_dblock`:
 
@@ -40,11 +44,13 @@ w_send_dblock
 
     Worker callback to send a P_DATA packet in order to mirror a write request
 
-    :param struct drbd_work \*w:
+    :param w:
         work object.
+    :type w: struct drbd_work \*
 
-    :param int cancel:
+    :param cancel:
         The connection will be closed anyways
+    :type cancel: int
 
 .. _`w_send_read_req`:
 
@@ -55,11 +61,13 @@ w_send_read_req
 
     Worker callback to send a read request (P_DATA_REQUEST) packet
 
-    :param struct drbd_work \*w:
+    :param w:
         work object.
+    :type w: struct drbd_work \*
 
-    :param int cancel:
+    :param cancel:
         The connection will be closed anyways
+    :type cancel: int
 
 .. _`drbd_pause_after`:
 
@@ -70,8 +78,9 @@ drbd_pause_after
 
     Pause resync on all devices that may not resync now
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_pause_after.description`:
 
@@ -89,8 +98,9 @@ drbd_resume_next
 
     Resume resync on all devices that may resync now
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
 .. _`drbd_resume_next.description`:
 
@@ -108,11 +118,13 @@ drbd_start_resync
 
     Start the resync process
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param enum drbd_conns side:
+    :param side:
         Either C_SYNC_SOURCE or C_SYNC_TARGET
+    :type side: enum drbd_conns
 
 .. _`drbd_start_resync.description`:
 

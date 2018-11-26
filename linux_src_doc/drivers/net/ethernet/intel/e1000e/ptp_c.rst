@@ -10,11 +10,13 @@ e1000e_phc_adjfreq
 
     adjust the frequency of the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s32 delta:
+    :param delta:
         Desired frequency change in parts per billion
+    :type delta: s32
 
 .. _`e1000e_phc_adjfreq.description`:
 
@@ -33,11 +35,13 @@ e1000e_phc_adjtime
 
     Shift the time of the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s64 delta:
+    :param delta:
         Desired change in nanoseconds
+    :type delta: s64
 
 .. _`e1000e_phc_adjtime.description`:
 
@@ -55,14 +59,17 @@ e1000e_phc_get_syncdevicetime
 
     Callback given to timekeeping code reads system/device registers
 
-    :param ktime_t \*device:
+    :param device:
         current device time
+    :type device: ktime_t \*
 
-    :param struct system_counterval_t \*system:
+    :param system:
         system counter value read synchronously with device time
+    :type system: struct system_counterval_t \*
 
-    :param void \*ctx:
+    :param ctx:
         context provided by timekeeping code
+    :type ctx: void \*
 
 .. _`e1000e_phc_get_syncdevicetime.description`:
 
@@ -81,11 +88,13 @@ e1000e_phc_getcrosststamp
 
     Reads the current system/device cross timestamp
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct system_device_crosststamp \*xtstamp:
+    :param xtstamp:
         *undescribed*
+    :type xtstamp: struct system_device_crosststamp \*
 
 .. _`e1000e_phc_getcrosststamp.description`:
 
@@ -104,11 +113,13 @@ e1000e_phc_gettime
 
     Reads the current time from the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct timespec64 \*ts:
+    :param ts:
         timespec structure to hold the current time value
+    :type ts: struct timespec64 \*
 
 .. _`e1000e_phc_gettime.description`:
 
@@ -127,11 +138,13 @@ e1000e_phc_settime
 
     Set the current time on the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         timespec containing the new time for the cycle counter
+    :type ts: const struct timespec64 \*
 
 .. _`e1000e_phc_settime.description`:
 
@@ -150,14 +163,17 @@ e1000e_phc_enable
 
     enable or disable an ancillary feature
 
-    :param struct ptp_clock_info __always_unused \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info __always_unused \*
 
-    :param struct ptp_clock_request __always_unused \*request:
+    :param request:
         Desired resource to enable or disable
+    :type request: struct ptp_clock_request __always_unused \*
 
-    :param int __always_unused on:
+    :param on:
         Caller passes one to enable or zero to disable
+    :type on: int __always_unused
 
 .. _`e1000e_phc_enable.description`:
 
@@ -176,8 +192,9 @@ e1000e_ptp_init
 
     initialize PTP for devices which support it
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000e_ptp_init.description`:
 
@@ -197,8 +214,9 @@ e1000e_ptp_remove
 
     disable PTP device and stop the overflow check
 
-    :param struct e1000_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct e1000_adapter \*
 
 .. _`e1000e_ptp_remove.description`:
 

@@ -90,11 +90,13 @@ rave_sp_wdt_configure
 
     Configure watchdog device
 
-    :param struct watchdog_device \*wdd:
+    :param wdd:
         Device to configure
+    :type wdd: struct watchdog_device \*
 
-    :param bool on:
+    :param on:
         Desired state of the watchdog timer (ON/OFF)
+    :type on: bool
 
 .. _`rave_sp_wdt_configure.this-function-configures-two-aspects-of-the-watchdog-timer`:
 

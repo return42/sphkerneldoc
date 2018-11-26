@@ -8,8 +8,9 @@ uwb_rc_send_all_drp_ie
 
 .. c:function:: int uwb_rc_send_all_drp_ie(struct uwb_rc *rc)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         UWB Host controller
+    :type rc: struct uwb_rc \*
 
 .. _`uwb_rc_send_all_drp_ie.description`:
 
@@ -38,8 +39,9 @@ uwbd_evt_handle_rc_drp
 
     handle a DRP_IE event
 
-    :param struct uwb_event \*evt:
+    :param evt:
         the DRP_IE event from the radio controller
+    :type evt: struct uwb_event \*
 
 .. _`uwbd_evt_handle_rc_drp.description`:
 

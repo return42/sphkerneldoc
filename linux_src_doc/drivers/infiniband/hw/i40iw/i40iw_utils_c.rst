@@ -10,20 +10,25 @@ i40iw_arp_table
 
     manage arp table
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param u32 \*ip_addr:
+    :param ip_addr:
         ip address for device
+    :type ip_addr: u32 \*
 
-    :param bool ipv4:
+    :param ipv4:
         *undescribed*
+    :type ipv4: bool
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         mac address ptr
+    :type mac_addr: u8 \*
 
-    :param u32 action:
+    :param action:
         modify, delete or add
+    :type action: u32
 
 .. _`i40iw_wr32`:
 
@@ -34,14 +39,17 @@ i40iw_wr32
 
     write 32 bits to hw register
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         hardware information including registers
+    :type hw: struct i40iw_hw \*
 
-    :param u32 reg:
+    :param reg:
         register offset
+    :type reg: u32
 
-    :param u32 value:
+    :param value:
         vvalue to write to register
+    :type value: u32
 
 .. _`i40iw_rd32`:
 
@@ -52,11 +60,13 @@ i40iw_rd32
 
     read a 32 bit hw register
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         hardware information including registers
+    :type hw: struct i40iw_hw \*
 
-    :param u32 reg:
+    :param reg:
         register offset
+    :type reg: u32
 
 .. _`i40iw_rd32.description`:
 
@@ -74,14 +84,17 @@ i40iw_inetaddr_event
 
     system notifier for ipv4 addr events
 
-    :param struct notifier_block \*notifier:
+    :param notifier:
         *undescribed*
+    :type notifier: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         event for notifier
+    :type event: unsigned long
 
-    :param void \*ptr:
+    :param ptr:
         if address
+    :type ptr: void \*
 
 .. _`i40iw_inet6addr_event`:
 
@@ -92,14 +105,17 @@ i40iw_inet6addr_event
 
     system notifier for ipv6 addr events
 
-    :param struct notifier_block \*notifier:
+    :param notifier:
         *undescribed*
+    :type notifier: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         event for notifier
+    :type event: unsigned long
 
-    :param void \*ptr:
+    :param ptr:
         if address
+    :type ptr: void \*
 
 .. _`i40iw_net_event`:
 
@@ -110,14 +126,17 @@ i40iw_net_event
 
     system notifier for netevents
 
-    :param struct notifier_block \*notifier:
+    :param notifier:
         *undescribed*
+    :type notifier: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         event for notifier
+    :type event: unsigned long
 
-    :param void \*ptr:
+    :param ptr:
         neighbor
+    :type ptr: void \*
 
 .. _`i40iw_netdevice_event`:
 
@@ -128,14 +147,17 @@ i40iw_netdevice_event
 
     system notifier for netdev events
 
-    :param struct notifier_block \*notifier:
+    :param notifier:
         *undescribed*
+    :type notifier: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         event for notifier
+    :type event: unsigned long
 
-    :param void \*ptr:
+    :param ptr:
         netdev
+    :type ptr: void \*
 
 .. _`i40iw_get_cqp_request`:
 
@@ -146,11 +168,13 @@ i40iw_get_cqp_request
 
     get cqp struct
 
-    :param struct i40iw_cqp \*cqp:
+    :param cqp:
         device cqp ptr
+    :type cqp: struct i40iw_cqp \*
 
-    :param bool wait:
+    :param wait:
         cqp to be used in wait mode
+    :type wait: bool
 
 .. _`i40iw_free_cqp_request`:
 
@@ -161,11 +185,13 @@ i40iw_free_cqp_request
 
     free cqp request
 
-    :param struct i40iw_cqp \*cqp:
+    :param cqp:
         cqp ptr
+    :type cqp: struct i40iw_cqp \*
 
-    :param struct i40iw_cqp_request \*cqp_request:
+    :param cqp_request:
         to be put back in cqp list
+    :type cqp_request: struct i40iw_cqp_request \*
 
 .. _`i40iw_put_cqp_request`:
 
@@ -176,11 +202,13 @@ i40iw_put_cqp_request
 
     dec ref count and free if 0
 
-    :param struct i40iw_cqp \*cqp:
+    :param cqp:
         cqp ptr
+    :type cqp: struct i40iw_cqp \*
 
-    :param struct i40iw_cqp_request \*cqp_request:
+    :param cqp_request:
         to be put back in cqp list
+    :type cqp_request: struct i40iw_cqp_request \*
 
 .. _`i40iw_free_pending_cqp_request`:
 
@@ -191,11 +219,13 @@ i40iw_free_pending_cqp_request
 
     free pending cqp request objs
 
-    :param struct i40iw_cqp \*cqp:
+    :param cqp:
         cqp ptr
+    :type cqp: struct i40iw_cqp \*
 
-    :param struct i40iw_cqp_request \*cqp_request:
+    :param cqp_request:
         to be put back in cqp list
+    :type cqp_request: struct i40iw_cqp_request \*
 
 .. _`i40iw_cleanup_pending_cqp_op`:
 
@@ -206,8 +236,9 @@ i40iw_cleanup_pending_cqp_op
 
     clean-up cqp with no completions
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_free_qp`:
 
@@ -218,11 +249,13 @@ i40iw_free_qp
 
     callback after destroy cqp completes
 
-    :param struct i40iw_cqp_request \*cqp_request:
+    :param cqp_request:
         cqp request for destroy qp
+    :type cqp_request: struct i40iw_cqp_request \*
 
-    :param u32 num:
+    :param num:
         not used
+    :type num: u32
 
 .. _`i40iw_wait_event`:
 
@@ -233,11 +266,13 @@ i40iw_wait_event
 
     wait for completion
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_cqp_request \*cqp_request:
+    :param cqp_request:
         cqp request to wait
+    :type cqp_request: struct i40iw_cqp_request \*
 
 .. _`i40iw_handle_cqp_op`:
 
@@ -248,11 +283,13 @@ i40iw_handle_cqp_op
 
     process cqp command
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_cqp_request \*cqp_request:
+    :param cqp_request:
         cqp request to process
+    :type cqp_request: struct i40iw_cqp_request \*
 
 .. _`i40iw_add_devusecount`:
 
@@ -263,8 +300,9 @@ i40iw_add_devusecount
 
     add dev refcount
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         dev for refcount
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_rem_devusecount`:
 
@@ -275,8 +313,9 @@ i40iw_rem_devusecount
 
     decrement refcount for dev
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_add_pdusecount`:
 
@@ -287,8 +326,9 @@ i40iw_add_pdusecount
 
     add pd refcount
 
-    :param struct i40iw_pd \*iwpd:
+    :param iwpd:
         pd for refcount
+    :type iwpd: struct i40iw_pd \*
 
 .. _`i40iw_rem_pdusecount`:
 
@@ -299,11 +339,13 @@ i40iw_rem_pdusecount
 
     decrement refcount for pd and free if 0
 
-    :param struct i40iw_pd \*iwpd:
+    :param iwpd:
         pd for refcount
+    :type iwpd: struct i40iw_pd \*
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_add_ref`:
 
@@ -314,8 +356,9 @@ i40iw_add_ref
 
     add refcount for qp
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         iqarp qp
+    :type ibqp: struct ib_qp \*
 
 .. _`i40iw_rem_ref`:
 
@@ -326,8 +369,9 @@ i40iw_rem_ref
 
     rem refcount for qp and free if 0
 
-    :param struct ib_qp \*ibqp:
+    :param ibqp:
         iqarp qp
+    :type ibqp: struct ib_qp \*
 
 .. _`i40iw_get_qp`:
 
@@ -338,11 +382,13 @@ i40iw_get_qp
 
     get qp address
 
-    :param struct ib_device \*device:
+    :param device:
         iwarp device
+    :type device: struct ib_device \*
 
-    :param int qpn:
+    :param qpn:
         qp number
+    :type qpn: int
 
 .. _`i40iw_debug_buf`:
 
@@ -353,20 +399,25 @@ i40iw_debug_buf
 
     print debug msg and buffer is mask set
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param enum i40iw_debug_flag mask:
+    :param mask:
         mask to compare if to print debug buffer
+    :type mask: enum i40iw_debug_flag
 
-    :param char \*desc:
+    :param desc:
         *undescribed*
+    :type desc: char \*
 
-    :param u64 \*buf:
+    :param buf:
         points buffer addr
+    :type buf: u64 \*
 
-    :param u32 size:
+    :param size:
         saize of buffer to print
+    :type size: u32
 
 .. _`i40iw_get_hw_addr`:
 
@@ -377,8 +428,9 @@ i40iw_get_hw_addr
 
     return hw addr
 
-    :param void \*par:
+    :param par:
         points to shared dev
+    :type par: void \*
 
 .. _`i40iw_remove_head`:
 
@@ -389,8 +441,9 @@ i40iw_remove_head
 
     return head entry and remove from list
 
-    :param struct list_head \*list:
+    :param list:
         list for entry
+    :type list: struct list_head \*
 
 .. _`i40iw_allocate_dma_mem`:
 
@@ -401,17 +454,21 @@ i40iw_allocate_dma_mem
 
     Memory alloc helper fn
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40iw_hw \*
 
-    :param struct i40iw_dma_mem \*mem:
+    :param mem:
         ptr to mem struct to fill out
+    :type mem: struct i40iw_dma_mem \*
 
-    :param u64 size:
+    :param size:
         size of memory requested
+    :type size: u64
 
-    :param u32 alignment:
+    :param alignment:
         what to align the allocation to
+    :type alignment: u32
 
 .. _`i40iw_free_dma_mem`:
 
@@ -422,11 +479,13 @@ i40iw_free_dma_mem
 
     Memory free helper fn
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40iw_hw \*
 
-    :param struct i40iw_dma_mem \*mem:
+    :param mem:
         ptr to mem struct to free
+    :type mem: struct i40iw_dma_mem \*
 
 .. _`i40iw_allocate_virt_mem`:
 
@@ -437,14 +496,17 @@ i40iw_allocate_virt_mem
 
     virtual memory alloc helper fn
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40iw_hw \*
 
-    :param struct i40iw_virt_mem \*mem:
+    :param mem:
         ptr to mem struct to fill out
+    :type mem: struct i40iw_virt_mem \*
 
-    :param u32 size:
+    :param size:
         size of memory requested
+    :type size: u32
 
 .. _`i40iw_free_virt_mem`:
 
@@ -455,11 +517,13 @@ i40iw_free_virt_mem
 
     virtual memory free helper fn
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct i40iw_hw \*
 
-    :param struct i40iw_virt_mem \*mem:
+    :param mem:
         ptr to mem struct to free
+    :type mem: struct i40iw_virt_mem \*
 
 .. _`i40iw_cqp_sds_cmd`:
 
@@ -470,11 +534,13 @@ i40iw_cqp_sds_cmd
 
     create cqp command for sd
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_update_sds_info \*sdinfo:
+    :param sdinfo:
         *undescribed*
+    :type sdinfo: struct i40iw_update_sds_info \*
 
 .. _`i40iw_qp_suspend_resume`:
 
@@ -485,14 +551,17 @@ i40iw_qp_suspend_resume
 
     cqp command for suspend/resume
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         hardware control qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param bool suspend:
+    :param suspend:
         flag if suspend or resume
+    :type suspend: bool
 
 .. _`i40iw_term_modify_qp`:
 
@@ -503,17 +572,21 @@ i40iw_term_modify_qp
 
     modify qp for term message
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         hardware control qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param u8 next_state:
+    :param next_state:
         qp's next state
+    :type next_state: u8
 
-    :param u8 term:
+    :param term:
         terminate code
+    :type term: u8
 
-    :param u8 term_len:
+    :param term_len:
         length
+    :type term_len: u8
 
 .. _`i40iw_terminate_done`:
 
@@ -524,11 +597,13 @@ i40iw_terminate_done
 
     after terminate is completed
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         hardware control qp
+    :type qp: struct i40iw_sc_qp \*
 
-    :param int timeout_occurred:
+    :param timeout_occurred:
         indicates if terminate timer expired
+    :type timeout_occurred: int
 
 .. _`i40iw_terminate_timeout`:
 
@@ -539,8 +614,9 @@ i40iw_terminate_timeout
 
     timeout happened
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`i40iw_terminate_start_timer`:
 
@@ -551,8 +627,9 @@ i40iw_terminate_start_timer
 
     start terminate timeout
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         hardware control qp
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_terminate_del_timer`:
 
@@ -563,8 +640,9 @@ i40iw_terminate_del_timer
 
     delete terminate timeout
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         hardware control qp
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_cqp_generic_worker`:
 
@@ -575,8 +653,9 @@ i40iw_cqp_generic_worker
 
     generic worker for cqp
 
-    :param struct work_struct \*work:
+    :param work:
         work pointer
+    :type work: struct work_struct \*
 
 .. _`i40iw_cqp_spawn_worker`:
 
@@ -587,14 +666,17 @@ i40iw_cqp_spawn_worker
 
     spawn worket thread
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_virtchnl_work_info \*work_info:
+    :param work_info:
         work request info
+    :type work_info: struct i40iw_virtchnl_work_info \*
 
-    :param u32 iw_vf_idx:
+    :param iw_vf_idx:
         virtual function index
+    :type iw_vf_idx: u32
 
 .. _`i40iw_cqp_manage_hmc_fcn_worker`:
 
@@ -603,8 +685,9 @@ i40iw_cqp_manage_hmc_fcn_worker
 
 .. c:function:: void i40iw_cqp_manage_hmc_fcn_worker(struct work_struct *work)
 
-    :param struct work_struct \*work:
+    :param work:
         work pointer for hmc info
+    :type work: struct work_struct \*
 
 .. _`i40iw_cqp_manage_hmc_fcn_callback`:
 
@@ -615,11 +698,13 @@ i40iw_cqp_manage_hmc_fcn_callback
 
     called function after cqp completion
 
-    :param struct i40iw_cqp_request \*cqp_request:
+    :param cqp_request:
         cqp request info struct for hmc fun
+    :type cqp_request: struct i40iw_cqp_request \*
 
-    :param u32 unused:
+    :param unused:
         unused param of callback
+    :type unused: u32
 
 .. _`i40iw_cqp_manage_hmc_fcn_cmd`:
 
@@ -630,11 +715,13 @@ i40iw_cqp_manage_hmc_fcn_cmd
 
     issue cqp command to manage hmc
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_fcn_info \*hmcfcninfo:
+    :param hmcfcninfo:
         info for hmc
+    :type hmcfcninfo: struct i40iw_hmc_fcn_info \*
 
 .. _`i40iw_cqp_query_fpm_values_cmd`:
 
@@ -645,14 +732,17 @@ i40iw_cqp_query_fpm_values_cmd
 
     send cqp command for fpm
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_dma_mem \*values_mem:
+    :param values_mem:
         buffer for fpm
+    :type values_mem: struct i40iw_dma_mem \*
 
-    :param u8 hmc_fn_id:
+    :param hmc_fn_id:
         function id for fpm
+    :type hmc_fn_id: u8
 
 .. _`i40iw_cqp_commit_fpm_values_cmd`:
 
@@ -663,14 +753,17 @@ i40iw_cqp_commit_fpm_values_cmd
 
     commit fpm values in hw
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_dma_mem \*values_mem:
+    :param values_mem:
         buffer with fpm values
+    :type values_mem: struct i40iw_dma_mem \*
 
-    :param u8 hmc_fn_id:
+    :param hmc_fn_id:
         function id for fpm
+    :type hmc_fn_id: u8
 
 .. _`i40iw_vf_wait_vchnl_resp`:
 
@@ -681,8 +774,9 @@ i40iw_vf_wait_vchnl_resp
 
     wait for channel msg
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct i40iw_sc_dev \*
 
 .. _`i40iw_cqp_cq_create_cmd`:
 
@@ -693,11 +787,13 @@ i40iw_cqp_cq_create_cmd
 
     create a cq for the cqp
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         pointer to created cq
+    :type cq: struct i40iw_sc_cq \*
 
 .. _`i40iw_cqp_qp_create_cmd`:
 
@@ -708,11 +804,13 @@ i40iw_cqp_qp_create_cmd
 
     create a qp for the cqp
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         pointer to created qp
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_cqp_cq_destroy_cmd`:
 
@@ -723,11 +821,13 @@ i40iw_cqp_cq_destroy_cmd
 
     destroy the cqp cq
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         pointer to cq
+    :type cq: struct i40iw_sc_cq \*
 
 .. _`i40iw_cqp_qp_destroy_cmd`:
 
@@ -738,11 +838,13 @@ i40iw_cqp_qp_destroy_cmd
 
     destroy the cqp
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         device pointer
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         pointer to qp
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_ieq_mpa_crc_ae`:
 
@@ -753,11 +855,13 @@ i40iw_ieq_mpa_crc_ae
 
     generate AE for crc error
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         hardware control qp
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_init_hash_desc`:
 
@@ -768,8 +872,9 @@ i40iw_init_hash_desc
 
     initialize hash for crc calculation
 
-    :param struct shash_desc \*\*desc:
+    :param desc:
         cryption type
+    :type desc: struct shash_desc \*\*
 
 .. _`i40iw_free_hash_desc`:
 
@@ -780,8 +885,9 @@ i40iw_free_hash_desc
 
     free hash desc
 
-    :param struct shash_desc \*desc:
+    :param desc:
         to be freed
+    :type desc: struct shash_desc \*
 
 .. _`i40iw_alloc_query_fpm_buf`:
 
@@ -792,11 +898,13 @@ i40iw_alloc_query_fpm_buf
 
     allocate buffer for fpm
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_dma_mem \*mem:
+    :param mem:
         buffer ptr for fpm to be allocated
+    :type mem: struct i40iw_dma_mem \*
 
 .. _`i40iw_ieq_check_mpacrc`:
 
@@ -807,17 +915,21 @@ i40iw_ieq_check_mpacrc
 
     check if mpa crc is OK
 
-    :param struct shash_desc \*desc:
+    :param desc:
         desc for hash
+    :type desc: struct shash_desc \*
 
-    :param void \*addr:
+    :param addr:
         address of buffer for crc
+    :type addr: void \*
 
-    :param u32 length:
+    :param length:
         length of buffer
+    :type length: u32
 
-    :param u32 value:
+    :param value:
         value to be compared
+    :type value: u32
 
 .. _`i40iw_ieq_get_qp`:
 
@@ -828,11 +940,13 @@ i40iw_ieq_get_qp
 
     get qp based on quad in puda buffer
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         receive puda buffer on exception q
+    :type buf: struct i40iw_puda_buf \*
 
 .. _`i40iw_ieq_update_tcpip_info`:
 
@@ -843,14 +957,17 @@ i40iw_ieq_update_tcpip_info
 
     update tcpip in the buffer
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         puda to update
+    :type buf: struct i40iw_puda_buf \*
 
-    :param u16 length:
+    :param length:
         length of buffer
+    :type length: u16
 
-    :param u32 seqnum:
+    :param seqnum:
         seq number for tcp
+    :type seqnum: u32
 
 .. _`i40iw_puda_get_tcpip_info`:
 
@@ -861,11 +978,13 @@ i40iw_puda_get_tcpip_info
 
     get tcpip info from puda buffer
 
-    :param struct i40iw_puda_completion_info \*info:
+    :param info:
         to get information
+    :type info: struct i40iw_puda_completion_info \*
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         puda buffer
+    :type buf: struct i40iw_puda_buf \*
 
 .. _`i40iw_hw_stats_timeout`:
 
@@ -876,8 +995,9 @@ i40iw_hw_stats_timeout
 
     Stats timer-handler which updates all HW stats
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`i40iw_hw_stats_start_timer`:
 
@@ -888,8 +1008,9 @@ i40iw_hw_stats_start_timer
 
     Start periodic stats timer
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         pointer to the vsi structure
+    :type vsi: struct i40iw_sc_vsi \*
 
 .. _`i40iw_hw_stats_stop_timer`:
 
@@ -900,8 +1021,9 @@ i40iw_hw_stats_stop_timer
 
     Delete periodic stats timer
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         pointer to the vsi structure
+    :type vsi: struct i40iw_sc_vsi \*
 
 .. This file was automatic generated / don't edit.
 

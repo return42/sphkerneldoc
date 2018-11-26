@@ -10,14 +10,17 @@
 
     Register a vmbus's driver
 
-    :param struct hv_driver \*hv_driver:
+    :param hv_driver:
         Pointer to driver structure you want to register
+    :type hv_driver: struct hv_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         owner module of the drv
+    :type owner: struct module \*
 
-    :param const char \*mod_name:
+    :param mod_name:
         module name string
+    :type mod_name: const char \*
 
 .. _`__vmbus_driver_register.description`:
 
@@ -37,9 +40,10 @@ vmbus_driver_unregister
 
     Unregister a vmbus's driver
 
-    :param struct hv_driver \*hv_driver:
+    :param hv_driver:
         Pointer to driver structure you want to
         un-register
+    :type hv_driver: struct hv_driver \*
 
 .. _`vmbus_driver_unregister.description`:
 
@@ -58,29 +62,36 @@ vmbus_allocate_mmio
 
     Pick a memory-mapped I/O range.
 
-    :param struct resource \*\*new:
+    :param new:
         If successful, supplied a pointer to the
         allocated MMIO space.
+    :type new: struct resource \*\*
 
-    :param struct hv_device \*device_obj:
+    :param device_obj:
         Identifies the caller
+    :type device_obj: struct hv_device \*
 
-    :param resource_size_t min:
+    :param min:
         Minimum guest physical address of the
         allocation
+    :type min: resource_size_t
 
-    :param resource_size_t max:
+    :param max:
         Maximum guest physical address
+    :type max: resource_size_t
 
-    :param resource_size_t size:
+    :param size:
         Size of the range to be allocated
+    :type size: resource_size_t
 
-    :param resource_size_t align:
+    :param align:
         Alignment of the range to be allocated
+    :type align: resource_size_t
 
-    :param bool fb_overlap_ok:
+    :param fb_overlap_ok:
         Whether this allocation can be allowed
         to overlap the video frame buffer.
+    :type fb_overlap_ok: bool
 
 .. _`vmbus_allocate_mmio.description`:
 
@@ -111,11 +122,13 @@ vmbus_free_mmio
 
     Free a memory-mapped I/O range.
 
-    :param resource_size_t start:
+    :param start:
         Base address of region to release.
+    :type start: resource_size_t
 
-    :param resource_size_t size:
+    :param size:
         Size of the range to be allocated
+    :type size: resource_size_t
 
 .. _`vmbus_free_mmio.description`:
 

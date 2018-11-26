@@ -10,17 +10,21 @@ acpi_evaluate_ost
 
     Evaluate \_OST for hotplug operations
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI device handle
+    :type handle: acpi_handle
 
-    :param u32 source_event:
+    :param source_event:
         source event code
+    :type source_event: u32
 
-    :param u32 status_code:
+    :param status_code:
         status code
+    :type status_code: u32
 
-    :param struct acpi_buffer \*status_buf:
+    :param status_buf:
         optional detailed information (NULL if none)
+    :type status_buf: struct acpi_buffer \*
 
 .. _`acpi_evaluate_ost.description`:
 
@@ -40,8 +44,9 @@ acpi_handle_path
 
     Return the object path of handle
 
-    :param acpi_handle handle:
+    :param handle:
         *undescribed*
+    :type handle: acpi_handle
 
 .. _`acpi_handle_path.description`:
 
@@ -59,14 +64,17 @@ acpi_handle_printk
 
     Print message with ACPI prefix and object path
 
-    :param const char \*level:
+    :param level:
         *undescribed*
+    :type level: const char \*
 
-    :param acpi_handle handle:
+    :param handle:
         *undescribed*
+    :type handle: acpi_handle
 
-    :param const char \*fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -90,14 +98,17 @@ context, it shows the object path as <n/a>.
 
     pr_debug with ACPI prefix and object path
 
-    :param struct _ddebug \*descriptor:
+    :param descriptor:
         *undescribed*
+    :type descriptor: struct _ddebug \*
 
-    :param acpi_handle handle:
+    :param handle:
         *undescribed*
+    :type handle: acpi_handle
 
-    :param const char \*fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -121,11 +132,13 @@ acpi_has_method
 
     Check whether \ ``handle``\  has a method named \ ``name``\ 
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI device handle
+    :type handle: acpi_handle
 
-    :param char \*name:
+    :param name:
         name of object or method
+    :type name: char \*
 
 .. _`acpi_has_method.description`:
 
@@ -143,8 +156,9 @@ acpi_evaluate_ej0
 
     Evaluate \_EJ0 method for hotplug operations
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI device handle
+    :type handle: acpi_handle
 
 .. _`acpi_evaluate_ej0.description`:
 
@@ -162,11 +176,13 @@ acpi_evaluate_lck
 
     Evaluate \_LCK method to lock/unlock device
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI device handle
+    :type handle: acpi_handle
 
-    :param int lock:
+    :param lock:
         lock device if non-zero, otherwise unlock device
+    :type lock: int
 
 .. _`acpi_evaluate_lck.description`:
 
@@ -184,20 +200,25 @@ acpi_evaluate_dsm
 
     evaluate device's \_DSM method
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI device handle
+    :type handle: acpi_handle
 
-    :param const guid_t \*guid:
+    :param guid:
         GUID of requested functions, should be 16 bytes
+    :type guid: const guid_t \*
 
-    :param u64 rev:
+    :param rev:
         revision number of requested function
+    :type rev: u64
 
-    :param u64 func:
+    :param func:
         requested function number
+    :type func: u64
 
-    :param union acpi_object \*argv4:
+    :param argv4:
         the function specific parameter
+    :type argv4: union acpi_object \*
 
 .. _`acpi_evaluate_dsm.description`:
 
@@ -219,17 +240,21 @@ acpi_check_dsm
 
     check if \_DSM method supports requested functions.
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI device handle
+    :type handle: acpi_handle
 
-    :param const guid_t \*guid:
+    :param guid:
         GUID of requested functions, should be 16 bytes at least
+    :type guid: const guid_t \*
 
-    :param u64 rev:
+    :param rev:
         revision number of requested functions
+    :type rev: u64
 
-    :param u64 funcs:
+    :param funcs:
         bitmap of requested functions
+    :type funcs: u64
 
 .. _`acpi_check_dsm.description`:
 
@@ -249,8 +274,9 @@ acpi_dev_found
 
     Detect presence of a given ACPI device in the namespace.
 
-    :param const char \*hid:
+    :param hid:
         Hardware ID of the device.
+    :type hid: const char \*
 
 .. _`acpi_dev_found.description`:
 
@@ -275,14 +301,17 @@ acpi_dev_present
 
     Detect that a given ACPI device is present
 
-    :param const char \*hid:
+    :param hid:
         Hardware ID of the device.
+    :type hid: const char \*
 
-    :param const char \*uid:
+    :param uid:
         Unique ID of the device, pass NULL to not check \_UID
+    :type uid: const char \*
 
-    :param s64 hrv:
+    :param hrv:
         Hardware Revision of the device, pass -1 to not check \_HRV
+    :type hrv: s64
 
 .. _`acpi_dev_present.description`:
 
@@ -312,14 +341,17 @@ acpi_dev_get_first_match_name
 
     Return name of first match of ACPI device
 
-    :param const char \*hid:
+    :param hid:
         Hardware ID of the device.
+    :type hid: const char \*
 
-    :param const char \*uid:
+    :param uid:
         Unique ID of the device, pass NULL to not check \_UID
+    :type uid: const char \*
 
-    :param s64 hrv:
+    :param hrv:
         Hardware Revision of the device, pass -1 to not check \_HRV
+    :type hrv: s64
 
 .. _`acpi_dev_get_first_match_name.description`:
 
@@ -340,8 +372,9 @@ acpi_match_platform_list
 
     Check if the system matches with a given list
 
-    :param const struct acpi_platform_list \*plat:
+    :param plat:
         pointer to acpi_platform_list table terminated by a NULL entry
+    :type plat: const struct acpi_platform_list \*
 
 .. _`acpi_match_platform_list.description`:
 

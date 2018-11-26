@@ -10,14 +10,17 @@ fsl_mc_msi_create_irq_domain
 
     Create a fsl-mc MSI interrupt domain
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         *undescribed*
+    :type fwnode: struct fwnode_handle \*
 
-    :param struct msi_domain_info \*info:
+    :param info:
         MSI domain info
+    :type info: struct msi_domain_info \*
 
-    :param struct irq_domain \*parent:
+    :param parent:
         Parent irq domain
+    :type parent: struct irq_domain \*
 
 .. _`fsl_mc_msi_create_irq_domain.description`:
 

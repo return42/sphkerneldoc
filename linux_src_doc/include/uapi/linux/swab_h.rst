@@ -10,8 +10,9 @@
 
     return a byteswapped 16-bit value
 
-    :param  x:
+    :param x:
         value to byteswap
+    :type x: 
 
 .. _`__swab32`:
 
@@ -22,8 +23,9 @@
 
     return a byteswapped 32-bit value
 
-    :param  x:
+    :param x:
         value to byteswap
+    :type x: 
 
 .. _`__swab64`:
 
@@ -34,8 +36,9 @@
 
     return a byteswapped 64-bit value
 
-    :param  x:
+    :param x:
         value to byteswap
+    :type x: 
 
 .. _`__swahw32`:
 
@@ -46,8 +49,9 @@
 
     return a word-swapped 32-bit value
 
-    :param  x:
+    :param x:
         value to wordswap
+    :type x: 
 
 .. _`__swahw32.description`:
 
@@ -65,8 +69,9 @@ Description
 
     return a high and low byte-swapped 32-bit value
 
-    :param  x:
+    :param x:
         value to byteswap
+    :type x: 
 
 .. _`__swahb32.description`:
 
@@ -84,8 +89,9 @@ Description
 
     return a byteswapped 16-bit value from a pointer
 
-    :param const __u16 \*p:
+    :param p:
         pointer to a naturally-aligned 16-bit value
+    :type p: const __u16 \*
 
 .. _`__swab32p`:
 
@@ -96,8 +102,9 @@ Description
 
     return a byteswapped 32-bit value from a pointer
 
-    :param const __u32 \*p:
+    :param p:
         pointer to a naturally-aligned 32-bit value
+    :type p: const __u32 \*
 
 .. _`__swab64p`:
 
@@ -108,8 +115,9 @@ Description
 
     return a byteswapped 64-bit value from a pointer
 
-    :param const __u64 \*p:
+    :param p:
         pointer to a naturally-aligned 64-bit value
+    :type p: const __u64 \*
 
 .. _`__swahw32p`:
 
@@ -120,8 +128,9 @@ Description
 
     return a wordswapped 32-bit value from a pointer
 
-    :param const __u32 \*p:
+    :param p:
         pointer to a naturally-aligned 32-bit value
+    :type p: const __u32 \*
 
 .. _`__swahw32p.description`:
 
@@ -139,8 +148,9 @@ See \__swahw32() for details of wordswapping.
 
     return a high and low byteswapped 32-bit value from a pointer
 
-    :param const __u32 \*p:
+    :param p:
         pointer to a naturally-aligned 32-bit value
+    :type p: const __u32 \*
 
 .. _`__swahb32p.description`:
 
@@ -158,8 +168,9 @@ See \__swahb32() for details of high/low byteswapping.
 
     byteswap a 16-bit value in-place
 
-    :param __u16 \*p:
+    :param p:
         pointer to a naturally-aligned 16-bit value
+    :type p: __u16 \*
 
 .. _`__swab32s`:
 
@@ -170,8 +181,9 @@ See \__swahb32() for details of high/low byteswapping.
 
     byteswap a 32-bit value in-place
 
-    :param __u32 \*p:
+    :param p:
         pointer to a naturally-aligned 32-bit value
+    :type p: __u32 \*
 
 .. _`__swab64s`:
 
@@ -182,8 +194,9 @@ See \__swahb32() for details of high/low byteswapping.
 
     byteswap a 64-bit value in-place
 
-    :param __u64 \*p:
+    :param p:
         pointer to a naturally-aligned 64-bit value
+    :type p: __u64 \*
 
 .. _`__swahw32s`:
 
@@ -194,8 +207,9 @@ See \__swahb32() for details of high/low byteswapping.
 
     wordswap a 32-bit value in-place
 
-    :param __u32 \*p:
+    :param p:
         pointer to a naturally-aligned 32-bit value
+    :type p: __u32 \*
 
 .. _`__swahw32s.description`:
 
@@ -213,8 +227,9 @@ See \__swahw32() for details of wordswapping
 
     high and low byteswap a 32-bit value in-place
 
-    :param __u32 \*p:
+    :param p:
         pointer to a naturally-aligned 32-bit value
+    :type p: __u32 \*
 
 .. _`__swahb32s.description`:
 

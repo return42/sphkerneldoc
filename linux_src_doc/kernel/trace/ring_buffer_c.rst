@@ -10,8 +10,9 @@ ring_buffer_event_length
 
     return the length of the event
 
-    :param struct ring_buffer_event \*event:
+    :param event:
         the event to get the length of
+    :type event: struct ring_buffer_event \*
 
 .. _`ring_buffer_event_length.description`:
 
@@ -33,8 +34,9 @@ ring_buffer_event_data
 
     return the data of the event
 
-    :param struct ring_buffer_event \*event:
+    :param event:
         the event to get the data from
+    :type event: struct ring_buffer_event \*
 
 .. _`ring_buffer_event_time_stamp`:
 
@@ -45,8 +47,9 @@ ring_buffer_event_time_stamp
 
     return the event's extended timestamp
 
-    :param struct ring_buffer_event \*event:
+    :param event:
         the event to get the timestamp of
+    :type event: struct ring_buffer_event \*
 
 .. _`ring_buffer_event_time_stamp.description`:
 
@@ -68,8 +71,9 @@ ring_buffer_page_len
 
     the size of data on the page.
 
-    :param void \*page:
+    :param page:
         The page to read
+    :type page: void \*
 
 .. _`ring_buffer_page_len.description`:
 
@@ -87,14 +91,17 @@ ring_buffer_wait
 
     wait for input to the ring buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         buffer to wait on
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         the cpu buffer to wait on
+    :type cpu: int
 
-    :param bool full:
+    :param full:
         wait until a full page is available, if \ ``cpu``\  != RING_BUFFER_ALL_CPUS
+    :type full: bool
 
 .. _`ring_buffer_wait.description`:
 
@@ -114,17 +121,21 @@ ring_buffer_poll_wait
 
     poll on buffer input
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         buffer to wait on
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         the cpu buffer to wait on
+    :type cpu: int
 
-    :param struct file \*filp:
+    :param filp:
         the file descriptor
+    :type filp: struct file \*
 
-    :param poll_table \*poll_table:
+    :param poll_table:
         The poll descriptor
+    :type poll_table: poll_table \*
 
 .. _`ring_buffer_poll_wait.description`:
 
@@ -147,11 +158,13 @@ rb_check_list
 
     make sure a pointer to a list has the last bits zero
 
-    :param struct ring_buffer_per_cpu \*cpu_buffer:
+    :param cpu_buffer:
         *undescribed*
+    :type cpu_buffer: struct ring_buffer_per_cpu \*
 
-    :param struct list_head \*list:
+    :param list:
         *undescribed*
+    :type list: struct list_head \*
 
 .. _`rb_check_pages`:
 
@@ -162,8 +175,9 @@ rb_check_pages
 
     integrity check of buffer pages
 
-    :param struct ring_buffer_per_cpu \*cpu_buffer:
+    :param cpu_buffer:
         CPU buffer with pages to test
+    :type cpu_buffer: struct ring_buffer_per_cpu \*
 
 .. _`rb_check_pages.description`:
 
@@ -182,14 +196,17 @@ been corrupted.
 
     allocate a new ring_buffer
 
-    :param unsigned long size:
+    :param size:
         the size in bytes per cpu that is needed.
+    :type size: unsigned long
 
-    :param unsigned flags:
+    :param flags:
         attributes to set for the ring buffer.
+    :type flags: unsigned
 
-    :param struct lock_class_key \*key:
+    :param key:
         *undescribed*
+    :type key: struct lock_class_key \*
 
 .. _`__ring_buffer_alloc.description`:
 
@@ -210,8 +227,9 @@ ring_buffer_free
 
     free a ring buffer.
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         the buffer to free.
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_resize`:
 
@@ -222,14 +240,17 @@ ring_buffer_resize
 
     resize the ring buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         the buffer to resize.
+    :type buffer: struct ring_buffer \*
 
-    :param unsigned long size:
+    :param size:
         the new size.
+    :type size: unsigned long
 
-    :param int cpu_id:
+    :param cpu_id:
         the cpu buffer to resize
+    :type cpu_id: int
 
 .. _`ring_buffer_resize.description`:
 
@@ -249,14 +270,17 @@ rb_update_event
 
     update event type and data
 
-    :param struct ring_buffer_per_cpu \*cpu_buffer:
+    :param cpu_buffer:
         *undescribed*
+    :type cpu_buffer: struct ring_buffer_per_cpu \*
 
-    :param struct ring_buffer_event \*event:
+    :param event:
         the event to update
+    :type event: struct ring_buffer_event \*
 
-    :param struct rb_event_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct rb_event_info \*
 
 .. _`rb_update_event.description`:
 
@@ -277,8 +301,9 @@ ring_buffer_nest_start
 
     Allow to trace while nested
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to modify
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_nest_start.description`:
 
@@ -303,8 +328,9 @@ ring_buffer_nest_end
 
     Allow to trace while nested
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to modify
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_nest_end.description`:
 
@@ -323,11 +349,13 @@ ring_buffer_unlock_commit
 
     commit a reserved
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The buffer to commit to
+    :type buffer: struct ring_buffer \*
 
-    :param struct ring_buffer_event \*event:
+    :param event:
         The event pointer to commit.
+    :type event: struct ring_buffer_event \*
 
 .. _`ring_buffer_unlock_commit.description`:
 
@@ -347,11 +375,13 @@ ring_buffer_lock_reserve
 
     reserve a part of the buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         the ring buffer to reserve from
+    :type buffer: struct ring_buffer \*
 
-    :param unsigned long length:
+    :param length:
         the length of the data to reserve (excluding event header)
+    :type length: unsigned long
 
 .. _`ring_buffer_lock_reserve.description`:
 
@@ -377,11 +407,13 @@ ring_buffer_discard_commit
 
     discard an event that has not been committed
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         the ring buffer
+    :type buffer: struct ring_buffer \*
 
-    :param struct ring_buffer_event \*event:
+    :param event:
         non committed event to discard
+    :type event: struct ring_buffer_event \*
 
 .. _`ring_buffer_discard_commit.description`:
 
@@ -411,14 +443,17 @@ ring_buffer_write
 
     write data to the buffer without reserving
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to write to.
+    :type buffer: struct ring_buffer \*
 
-    :param unsigned long length:
+    :param length:
         The length of the data being written (excluding the event header)
+    :type length: unsigned long
 
-    :param void \*data:
+    :param data:
         The data to write to the buffer.
+    :type data: void \*
 
 .. _`ring_buffer_write.description`:
 
@@ -441,8 +476,9 @@ ring_buffer_record_disable
 
     stop all writes into the buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to stop writes to.
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_record_disable.description`:
 
@@ -463,8 +499,9 @@ ring_buffer_record_enable
 
     enable writes to the buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to enable writes
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_record_enable.description`:
 
@@ -483,8 +520,9 @@ ring_buffer_record_off
 
     stop all writes into the buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to stop writes to.
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_record_off.description`:
 
@@ -507,8 +545,9 @@ ring_buffer_record_on
 
     restart writes into the buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to start writes to.
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_record_on.description`:
 
@@ -527,12 +566,13 @@ must be paired with a \ :c:func:`disable`\ .
 ring_buffer_record_is_on
 ========================
 
-.. c:function:: int ring_buffer_record_is_on(struct ring_buffer *buffer)
+.. c:function:: bool ring_buffer_record_is_on(struct ring_buffer *buffer)
 
     return true if the ring buffer can write
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to see if write is enabled
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_record_is_on.description`:
 
@@ -546,12 +586,13 @@ Returns true if the ring buffer is in a state that it accepts writes.
 ring_buffer_record_is_set_on
 ============================
 
-.. c:function:: int ring_buffer_record_is_set_on(struct ring_buffer *buffer)
+.. c:function:: bool ring_buffer_record_is_set_on(struct ring_buffer *buffer)
 
     return true if the ring buffer is set writable
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to see if write is set enabled
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_record_is_set_on.description`:
 
@@ -574,11 +615,13 @@ ring_buffer_record_disable_cpu
 
     stop all writes into the cpu_buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to stop writes to.
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The CPU buffer to stop
+    :type cpu: int
 
 .. _`ring_buffer_record_disable_cpu.description`:
 
@@ -599,11 +642,13 @@ ring_buffer_record_enable_cpu
 
     enable writes to the buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to enable writes
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The CPU to enable.
+    :type cpu: int
 
 .. _`ring_buffer_record_enable_cpu.description`:
 
@@ -622,11 +667,13 @@ ring_buffer_oldest_event_ts
 
     get the oldest event timestamp from the buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The per CPU buffer to read from.
+    :type cpu: int
 
 .. _`ring_buffer_bytes_cpu`:
 
@@ -637,11 +684,13 @@ ring_buffer_bytes_cpu
 
     get the number of bytes consumed in a cpu buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The per CPU buffer to read from.
+    :type cpu: int
 
 .. _`ring_buffer_entries_cpu`:
 
@@ -652,11 +701,13 @@ ring_buffer_entries_cpu
 
     get the number of entries in a cpu buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The per CPU buffer to get the entries from.
+    :type cpu: int
 
 .. _`ring_buffer_overrun_cpu`:
 
@@ -667,11 +718,13 @@ ring_buffer_overrun_cpu
 
     get the number of overruns caused by the ring buffer wrapping around (only if RB_FL_OVERWRITE is on).
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The per CPU buffer to get the number of overruns from
+    :type cpu: int
 
 .. _`ring_buffer_commit_overrun_cpu`:
 
@@ -682,11 +735,13 @@ ring_buffer_commit_overrun_cpu
 
     get the number of overruns caused by commits failing due to the buffer wrapping around while there are uncommitted events, such as during an interrupt storm.
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The per CPU buffer to get the number of overruns from
+    :type cpu: int
 
 .. _`ring_buffer_dropped_events_cpu`:
 
@@ -697,11 +752,13 @@ ring_buffer_dropped_events_cpu
 
     get the number of dropped events caused by the ring buffer filling up (only if RB_FL_OVERWRITE is off).
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The per CPU buffer to get the number of overruns from
+    :type cpu: int
 
 .. _`ring_buffer_read_events_cpu`:
 
@@ -712,11 +769,13 @@ ring_buffer_read_events_cpu
 
     get the number of events successfully read
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The per CPU buffer to get the number of events read
+    :type cpu: int
 
 .. _`ring_buffer_entries`:
 
@@ -727,8 +786,9 @@ ring_buffer_entries
 
     get the number of entries in a buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_entries.description`:
 
@@ -747,8 +807,9 @@ ring_buffer_overruns
 
     get the number of overruns in buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_overruns.description`:
 
@@ -767,8 +828,9 @@ ring_buffer_iter_reset
 
     reset an iterator
 
-    :param struct ring_buffer_iter \*iter:
+    :param iter:
         The iterator to reset
+    :type iter: struct ring_buffer_iter \*
 
 .. _`ring_buffer_iter_reset.description`:
 
@@ -787,8 +849,9 @@ ring_buffer_iter_empty
 
     check if an iterator has no more to read
 
-    :param struct ring_buffer_iter \*iter:
+    :param iter:
         The iterator to check
+    :type iter: struct ring_buffer_iter \*
 
 .. _`ring_buffer_peek`:
 
@@ -799,17 +862,21 @@ ring_buffer_peek
 
     peek at the next event to be read
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to read
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The cpu to peak at
+    :type cpu: int
 
-    :param u64 \*ts:
+    :param ts:
         The timestamp counter of this event.
+    :type ts: u64 \*
 
-    :param unsigned long \*lost_events:
+    :param lost_events:
         a variable to store if events were lost (may be NULL)
+    :type lost_events: unsigned long \*
 
 .. _`ring_buffer_peek.description`:
 
@@ -828,11 +895,13 @@ ring_buffer_iter_peek
 
     peek at the next event to be read
 
-    :param struct ring_buffer_iter \*iter:
+    :param iter:
         The ring buffer iterator
+    :type iter: struct ring_buffer_iter \*
 
-    :param u64 \*ts:
+    :param ts:
         The timestamp counter of this event.
+    :type ts: u64 \*
 
 .. _`ring_buffer_iter_peek.description`:
 
@@ -851,17 +920,21 @@ ring_buffer_consume
 
     return an event and consume it
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to get the next event from
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         the cpu to read the buffer from
+    :type cpu: int
 
-    :param u64 \*ts:
+    :param ts:
         a variable to store the timestamp (may be NULL)
+    :type ts: u64 \*
 
-    :param unsigned long \*lost_events:
+    :param lost_events:
         a variable to store if events were lost (may be NULL)
+    :type lost_events: unsigned long \*
 
 .. _`ring_buffer_consume.description`:
 
@@ -881,11 +954,13 @@ ring_buffer_read_prepare
 
     Prepare for a non consuming read of the buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to read from
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The cpu buffer to iterate over
+    :type cpu: int
 
 .. _`ring_buffer_read_prepare.description`:
 
@@ -916,8 +991,9 @@ ring_buffer_read_prepare_sync
 
     Synchronize a set of prepare calls
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ring_buffer_read_prepare_sync.description`:
 
@@ -937,8 +1013,9 @@ ring_buffer_read_start
 
     start a non consuming read of the buffer
 
-    :param struct ring_buffer_iter \*iter:
+    :param iter:
         The iterator returned by ring_buffer_read_prepare
+    :type iter: struct ring_buffer_iter \*
 
 .. _`ring_buffer_read_start.description`:
 
@@ -961,8 +1038,9 @@ ring_buffer_read_finish
 
     finish reading the iterator of the buffer
 
-    :param struct ring_buffer_iter \*iter:
+    :param iter:
         The iterator retrieved by ring_buffer_start
+    :type iter: struct ring_buffer_iter \*
 
 .. _`ring_buffer_read_finish.description`:
 
@@ -981,11 +1059,13 @@ ring_buffer_read
 
     read the next item in the ring buffer by the iterator
 
-    :param struct ring_buffer_iter \*iter:
+    :param iter:
         The ring buffer iterator
+    :type iter: struct ring_buffer_iter \*
 
-    :param u64 \*ts:
+    :param ts:
         The time stamp of the event read.
+    :type ts: u64 \*
 
 .. _`ring_buffer_read.description`:
 
@@ -1003,11 +1083,13 @@ ring_buffer_size
 
     return the size of the ring buffer (in bytes)
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer.
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. _`ring_buffer_reset_cpu`:
 
@@ -1018,11 +1100,13 @@ ring_buffer_reset_cpu
 
     reset a ring buffer per CPU buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to reset a per cpu buffer of
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The CPU buffer to be reset
+    :type cpu: int
 
 .. _`ring_buffer_reset`:
 
@@ -1033,8 +1117,9 @@ ring_buffer_reset
 
     reset a ring buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to reset all cpu buffers
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_empty`:
 
@@ -1045,8 +1130,9 @@ ring_buffer_empty
 
     is the ring buffer empty?
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer to test
+    :type buffer: struct ring_buffer \*
 
 .. _`ring_buffer_empty_cpu`:
 
@@ -1057,11 +1143,13 @@ ring_buffer_empty_cpu
 
     is a cpu buffer of a ring buffer empty?
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         The ring buffer
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         The CPU buffer to test
+    :type cpu: int
 
 .. _`ring_buffer_swap_cpu`:
 
@@ -1072,14 +1160,17 @@ ring_buffer_swap_cpu
 
     swap a CPU buffer between two ring buffers
 
-    :param struct ring_buffer \*buffer_a:
+    :param buffer_a:
         One buffer to swap with
+    :type buffer_a: struct ring_buffer \*
 
-    :param struct ring_buffer \*buffer_b:
+    :param buffer_b:
         The other buffer to swap with
+    :type buffer_b: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. _`ring_buffer_swap_cpu.description`:
 
@@ -1100,11 +1191,13 @@ ring_buffer_alloc_read_page
 
     allocate a page to read from buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         the buffer to allocate for.
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         the cpu buffer to allocate.
+    :type cpu: int
 
 .. _`ring_buffer_alloc_read_page.description`:
 
@@ -1135,14 +1228,17 @@ ring_buffer_free_read_page
 
     free an allocated read page
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         the buffer the page was allocate for
+    :type buffer: struct ring_buffer \*
 
-    :param int cpu:
+    :param cpu:
         the cpu buffer the page came from
+    :type cpu: int
 
-    :param void \*data:
+    :param data:
         the page to free
+    :type data: void \*
 
 .. _`ring_buffer_free_read_page.description`:
 
@@ -1160,20 +1256,25 @@ ring_buffer_read_page
 
     extract a page from the ring buffer
 
-    :param struct ring_buffer \*buffer:
+    :param buffer:
         buffer to extract from
+    :type buffer: struct ring_buffer \*
 
-    :param void \*\*data_page:
+    :param data_page:
         the page to use allocated from ring_buffer_alloc_read_page
+    :type data_page: void \*\*
 
-    :param size_t len:
+    :param len:
         amount to extract
+    :type len: size_t
 
-    :param int cpu:
+    :param cpu:
         the cpu of the buffer to extract
+    :type cpu: int
 
-    :param int full:
+    :param full:
         should the extraction only happen when the page is full.
+    :type full: int
 
 .. _`ring_buffer_read_page.description`:
 

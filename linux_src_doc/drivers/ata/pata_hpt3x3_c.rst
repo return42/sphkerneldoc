@@ -10,11 +10,13 @@ hpt3x3_set_piomode
 
     PIO setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device on the interface
+    :type adev: struct ata_device \*
 
 .. _`hpt3x3_set_piomode.description`:
 
@@ -34,11 +36,13 @@ hpt3x3_set_dmamode
 
     DMA timing setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device being configured
+    :type adev: struct ata_device \*
 
 .. _`hpt3x3_set_dmamode.description`:
 
@@ -60,8 +64,9 @@ hpt3x3_freeze
 
     DMA workaround
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to freeze
+    :type ap: struct ata_port \*
 
 .. _`hpt3x3_freeze.description`:
 
@@ -80,8 +85,9 @@ hpt3x3_bmdma_setup
 
     DMA workaround
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Queued command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`hpt3x3_bmdma_setup.description`:
 
@@ -100,8 +106,9 @@ hpt3x3_atapi_dma
 
     ATAPI DMA check
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Queued command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`hpt3x3_atapi_dma.description`:
 
@@ -119,8 +126,9 @@ hpt3x3_init_chipset
 
     chip setup
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`hpt3x3_init_chipset.description`:
 
@@ -138,11 +146,13 @@ hpt3x3_init_one
 
     Initialise an HPT343/363
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         Entry in match table
+    :type id: const struct pci_device_id \*
 
 .. _`hpt3x3_init_one.description`:
 

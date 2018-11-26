@@ -1,6 +1,184 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/mtd/spi-nor.h
 
+.. _`spi_nor_erase_type`:
+
+struct spi_nor_erase_type
+=========================
+
+.. c:type:: struct spi_nor_erase_type
+
+    Structure to describe a SPI NOR erase type
+
+.. _`spi_nor_erase_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct spi_nor_erase_type {
+        u32 size;
+        u32 size_shift;
+        u32 size_mask;
+        u8 opcode;
+        u8 idx;
+    }
+
+.. _`spi_nor_erase_type.members`:
+
+Members
+-------
+
+size
+    the size of the sector/block erased by the erase type.
+    JEDEC JESD216B imposes erase sizes to be a power of 2.
+
+size_shift
+    \ ``size``\  is a power of 2, the shift is stored in
+    \ ``size_shift``\ .
+
+size_mask
+    the size mask based on \ ``size_shift``\ .
+
+opcode
+    the SPI command op code to erase the sector/block.
+
+idx
+    Erase Type index as sorted in the Basic Flash Parameter
+    Table. It will be used to synchronize the supported
+    Erase Types with the ones identified in the SFDP
+    optional tables.
+
+.. _`spi_nor_erase_command`:
+
+struct spi_nor_erase_command
+============================
+
+.. c:type:: struct spi_nor_erase_command
+
+    Used for non-uniform erases The structure is used to describe a list of erase commands to be executed once we validate that the erase can be performed. The elements in the list are run-length encoded.
+
+.. _`spi_nor_erase_command.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct spi_nor_erase_command {
+        struct list_head list;
+        u32 count;
+        u32 size;
+        u8 opcode;
+    }
+
+.. _`spi_nor_erase_command.members`:
+
+Members
+-------
+
+list
+    for inclusion into the list of erase commands.
+
+count
+    how many times the same erase command should be
+    consecutively used.
+
+size
+    the size of the sector/block erased by the command.
+
+opcode
+    the SPI command op code to erase the sector/block.
+
+.. _`spi_nor_erase_region`:
+
+struct spi_nor_erase_region
+===========================
+
+.. c:type:: struct spi_nor_erase_region
+
+    Structure to describe a SPI NOR erase region
+
+.. _`spi_nor_erase_region.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct spi_nor_erase_region {
+        u64 offset;
+        u64 size;
+    }
+
+.. _`spi_nor_erase_region.members`:
+
+Members
+-------
+
+offset
+    the offset in the data array of erase region start.
+    LSB bits are used as a bitmask encoding flags to
+    determine if this region is overlaid, if this region is
+    the last in the SPI NOR flash memory and to indicate
+    all the supported erase commands inside this region.
+    The erase types are sorted in ascending order with the
+    smallest Erase Type size being at BIT(0).
+
+size
+    the size of the region in bytes.
+
+.. _`spi_nor_erase_map`:
+
+struct spi_nor_erase_map
+========================
+
+.. c:type:: struct spi_nor_erase_map
+
+    Structure to describe the SPI NOR erase map
+
+.. _`spi_nor_erase_map.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct spi_nor_erase_map {
+        struct spi_nor_erase_region *regions;
+        struct spi_nor_erase_region uniform_region;
+        struct spi_nor_erase_type erase_type[SNOR_ERASE_TYPE_MAX];
+        u8 uniform_erase_type;
+    }
+
+.. _`spi_nor_erase_map.members`:
+
+Members
+-------
+
+regions
+    array of erase regions. The regions are consecutive in
+    address space. Walking through the regions is done
+    incrementally.
+
+uniform_region
+    a pre-allocated erase region for SPI NOR with a uniform
+    sector size (legacy implementation).
+
+erase_type
+    an array of erase types shared by all the regions.
+    The erase types are sorted in ascending order, with the
+    smallest Erase Type size being the first member in the
+    erase_type array.
+
+uniform_erase_type
+    bitmask encoding erase types that can erase the
+    entire memory. This member is completed at init by
+    uniform and non-uniform SPI NOR flash memories if they
+    support at least one erase type that can erase the
+    entire memory.
+
 .. _`spi_nor`:
 
 struct spi_nor
@@ -34,6 +212,7 @@ Definition
         bool sst_write_second;
         u32 flags;
         u8 cmd_buf[SPI_NOR_MAX_CMD_SIZE];
+        struct spi_nor_erase_map erase_map;
         int (*prepare)(struct spi_nor *nor, enum spi_nor_ops ops);
         void (*unprepare)(struct spi_nor *nor, enum spi_nor_ops ops);
         int (*read_reg)(struct spi_nor *nor, u8 opcode, u8 *buf, int len);
@@ -101,6 +280,9 @@ flags
 
 cmd_buf
     used by the write_reg
+
+erase_map
+    the erase map of the SPI NOR
 
 prepare
     [OPTIONAL] do some preparations for the
@@ -180,14 +362,17 @@ spi_nor_scan
 
     scan the SPI NOR
 
-    :param struct spi_nor \*nor:
+    :param nor:
         the spi_nor structure
+    :type nor: struct spi_nor \*
 
-    :param const char \*name:
+    :param name:
         the chip type name
+    :type name: const char \*
 
-    :param const struct spi_nor_hwcaps \*hwcaps:
+    :param hwcaps:
         the hardware capabilities supported by the controller driver
+    :type hwcaps: const struct spi_nor_hwcaps \*
 
 .. _`spi_nor_scan.description`:
 
@@ -216,8 +401,9 @@ spi_nor_restore
 
     restore the status of SPI NOR
 
-    :param struct spi_nor \*nor:
+    :param nor:
         the spi_nor structure
+    :type nor: struct spi_nor \*
 
 .. This file was automatic generated / don't edit.
 

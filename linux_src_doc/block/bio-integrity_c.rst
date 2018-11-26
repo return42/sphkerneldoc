@@ -10,14 +10,17 @@ bio_integrity_alloc
 
     Allocate integrity payload and attach it to bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio to attach integrity metadata to
+    :type bio: struct bio \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         Memory allocation mask
+    :type gfp_mask: gfp_t
 
-    :param unsigned int nr_vecs:
+    :param nr_vecs:
         Number of integrity metadata scatter-gather elements
+    :type nr_vecs: unsigned int
 
 .. _`bio_integrity_alloc.description`:
 
@@ -37,8 +40,9 @@ bio_integrity_free
 
     Free bio integrity payload
 
-    :param struct bio \*bio:
+    :param bio:
         bio containing bip to be freed
+    :type bio: struct bio \*
 
 .. _`bio_integrity_free.description`:
 
@@ -57,17 +61,21 @@ bio_integrity_add_page
 
     Attach integrity metadata
 
-    :param struct bio \*bio:
+    :param bio:
         bio to update
+    :type bio: struct bio \*
 
-    :param struct page \*page:
+    :param page:
         page containing integrity metadata
+    :type page: struct page \*
 
-    :param unsigned int len:
+    :param len:
         number of bytes of integrity metadata in page
+    :type len: unsigned int
 
-    :param unsigned int offset:
+    :param offset:
         start offset within page
+    :type offset: unsigned int
 
 .. _`bio_integrity_add_page.description`:
 
@@ -75,31 +83,6 @@ Description
 -----------
 
 Attach a page containing integrity metadata to bio.
-
-.. _`bio_integrity_intervals`:
-
-bio_integrity_intervals
-=======================
-
-.. c:function:: unsigned int bio_integrity_intervals(struct blk_integrity *bi, unsigned int sectors)
-
-    Return number of integrity intervals for a bio
-
-    :param struct blk_integrity \*bi:
-        blk_integrity profile for device
-
-    :param unsigned int sectors:
-        Size of the bio in 512-byte sectors
-
-.. _`bio_integrity_intervals.description`:
-
-Description
------------
-
-The block layer calculates everything in 512 byte
-sectors but integrity metadata is done in terms of the data integrity
-interval size of the storage device.  Convert the block layer sectors
-to the appropriate number of integrity intervals.
 
 .. _`bio_integrity_process`:
 
@@ -110,14 +93,17 @@ bio_integrity_process
 
     Process integrity metadata for a bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio to generate/verify integrity metadata for
+    :type bio: struct bio \*
 
-    :param struct bvec_iter \*proc_iter:
+    :param proc_iter:
         iterator to process
+    :type proc_iter: struct bvec_iter \*
 
-    :param integrity_processing_fn \*proc_fn:
+    :param proc_fn:
         Pointer to the relevant processing function
+    :type proc_fn: integrity_processing_fn \*
 
 .. _`bio_integrity_prep`:
 
@@ -128,8 +114,9 @@ bio_integrity_prep
 
     Prepare bio for integrity I/O
 
-    :param struct bio \*bio:
+    :param bio:
         bio to prepare
+    :type bio: struct bio \*
 
 .. _`bio_integrity_prep.description`:
 
@@ -153,8 +140,9 @@ bio_integrity_verify_fn
 
     Integrity I/O completion worker
 
-    :param struct work_struct \*work:
+    :param work:
         Work struct stored in bio to be verified
+    :type work: struct work_struct \*
 
 .. _`bio_integrity_verify_fn.description`:
 
@@ -174,8 +162,9 @@ and then calls the original bio end_io function.
 
     Integrity I/O completion function
 
-    :param struct bio \*bio:
+    :param bio:
         Protected bio
+    :type bio: struct bio \*
 
 .. _`__bio_integrity_endio.description`:
 
@@ -198,11 +187,13 @@ bio_integrity_advance
 
     Advance integrity vector
 
-    :param struct bio \*bio:
+    :param bio:
         bio whose integrity vector to update
+    :type bio: struct bio \*
 
-    :param unsigned int bytes_done:
+    :param bytes_done:
         number of data bytes that have been completed
+    :type bytes_done: unsigned int
 
 .. _`bio_integrity_advance.description`:
 
@@ -222,8 +213,9 @@ bio_integrity_trim
 
     Trim integrity vector
 
-    :param struct bio \*bio:
+    :param bio:
         bio whose integrity vector to update
+    :type bio: struct bio \*
 
 .. _`bio_integrity_trim.description`:
 
@@ -241,14 +233,17 @@ bio_integrity_clone
 
     Callback for cloning bios with integrity metadata
 
-    :param struct bio \*bio:
+    :param bio:
         New bio
+    :type bio: struct bio \*
 
-    :param struct bio \*bio_src:
+    :param bio_src:
         Original bio
+    :type bio_src: struct bio \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         Memory allocation mask
+    :type gfp_mask: gfp_t
 
 .. _`bio_integrity_clone.description`:
 

@@ -10,20 +10,25 @@ create_xattr
 
     create an extended attribute.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct inode \*host:
+    :param host:
         host inode
+    :type host: struct inode \*
 
-    :param const struct fscrypt_name \*nm:
+    :param nm:
         extended attribute name
+    :type nm: const struct fscrypt_name \*
 
-    :param const void \*value:
+    :param value:
         extended attribute value
+    :type value: const void \*
 
-    :param int size:
+    :param size:
         size of extended attribute value
+    :type size: int
 
 .. _`create_xattr.description`:
 
@@ -45,20 +50,25 @@ change_xattr
 
     change an extended attribute.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct inode \*host:
+    :param host:
         host inode
+    :type host: struct inode \*
 
-    :param struct inode \*inode:
+    :param inode:
         extended attribute inode
+    :type inode: struct inode \*
 
-    :param const void \*value:
+    :param value:
         extended attribute value
+    :type value: const void \*
 
-    :param int size:
+    :param size:
         size of extended attribute value
+    :type size: int
 
 .. _`change_xattr.description`:
 
@@ -78,11 +88,13 @@ ubifs_evict_xattr_inode
 
     Evict an xattr inode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param ino_t xattr_inum:
+    :param xattr_inum:
         xattr inode number
+    :type xattr_inum: ino_t
 
 .. _`ubifs_evict_xattr_inode.description`:
 

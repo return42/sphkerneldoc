@@ -73,8 +73,9 @@ mips_gic_present
 
     Determine whether a GIC is present
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_gic_present.description`:
 
@@ -95,8 +96,9 @@ gic_get_c0_compare_int
 
     Return cp0 count/compare interrupt virq
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`gic_get_c0_compare_int.description`:
 
@@ -117,8 +119,9 @@ gic_get_c0_perfcount_int
 
     Return performance counter interrupt virq
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`gic_get_c0_perfcount_int.description`:
 
@@ -139,8 +142,9 @@ gic_get_c0_fdc_int
 
     Return fast debug channel interrupt virq
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`gic_get_c0_fdc_int.description`:
 

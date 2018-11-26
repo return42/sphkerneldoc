@@ -8,8 +8,9 @@ rockchip_saradc_reset_controller
 
 .. c:function:: void rockchip_saradc_reset_controller(struct reset_control *reset)
 
-    :param struct reset_control \*reset:
+    :param reset:
         *undescribed*
+    :type reset: struct reset_control \*
 
 .. This file was automatic generated / don't edit.
 

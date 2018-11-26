@@ -10,11 +10,13 @@ iio_map_array_register
 
     tell the core about inkernel consumers
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         provider device
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_map \*map:
+    :param map:
         array of mappings specifying association of channel with client
+    :type map: struct iio_map \*
 
 .. _`iio_map_array_unregister`:
 
@@ -25,8 +27,9 @@ iio_map_array_unregister
 
     tell the core to remove consumer mappings for the given provider device
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         provider device
+    :type indio_dev: struct iio_dev \*
 
 .. This file was automatic generated / don't edit.
 

@@ -9,6 +9,7 @@ x86
 
     boot/index
     events/index
+    hyperv/index
     include/index
     kernel/index
     kvm/index

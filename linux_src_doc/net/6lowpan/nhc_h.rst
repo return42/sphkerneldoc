@@ -74,8 +74,9 @@ lowpan_nhc_by_nexthdr
 
     return the 6lowpan nhc by ipv6 nexthdr.
 
-    :param u8 nexthdr:
+    :param nexthdr:
         ipv6 nexthdr value.
+    :type nexthdr: u8
 
 .. _`lowpan_nhc_check_compression`:
 
@@ -86,15 +87,18 @@ lowpan_nhc_check_compression
 
     checks if we support compression format. If we support the nhc by nexthdr field, the function will return 0. If we don't support the nhc by nexthdr this function will return -ENOENT.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb of 6LoWPAN header to read nhc and replace header.
+    :type skb: struct sk_buff \*
 
-    :param const struct ipv6hdr \*hdr:
+    :param hdr:
         ipv6hdr to check the nexthdr value
+    :type hdr: const struct ipv6hdr \*
 
-    :param u8 \*\*hc_ptr:
+    :param hc_ptr:
         pointer for 6LoWPAN header which should increment at the end of
         replaced header.
+    :type hc_ptr: u8 \*\*
 
 .. _`lowpan_nhc_do_compression`:
 
@@ -105,15 +109,18 @@ lowpan_nhc_do_compression
 
     calling compress callback for nhc
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb of 6LoWPAN header to read nhc and replace header.
+    :type skb: struct sk_buff \*
 
-    :param const struct ipv6hdr \*hdr:
+    :param hdr:
         ipv6hdr to set the nexthdr value
+    :type hdr: const struct ipv6hdr \*
 
-    :param u8 \*\*hc_ptr:
+    :param hc_ptr:
         pointer for 6LoWPAN header which should increment at the end of
         replaced header.
+    :type hc_ptr: u8 \*\*
 
 .. _`lowpan_nhc_do_uncompression`:
 
@@ -124,14 +131,17 @@ lowpan_nhc_do_uncompression
 
     calling uncompress callback for nhc
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb of 6LoWPAN header, skb->data should be pointed to nhc id value.
+    :type skb: struct sk_buff \*
 
-    :param const struct net_device \*dev:
+    :param dev:
         netdevice for print logging information.
+    :type dev: const struct net_device \*
 
-    :param struct ipv6hdr \*hdr:
+    :param hdr:
         ipv6hdr for setting nexthdr value.
+    :type hdr: struct ipv6hdr \*
 
 .. _`lowpan_nhc_add`:
 
@@ -142,8 +152,9 @@ lowpan_nhc_add
 
     register a next header compression to framework
 
-    :param struct lowpan_nhc \*nhc:
+    :param nhc:
         nhc which should be add.
+    :type nhc: struct lowpan_nhc \*
 
 .. _`lowpan_nhc_del`:
 
@@ -154,8 +165,9 @@ lowpan_nhc_del
 
     delete a next header compression from framework
 
-    :param struct lowpan_nhc \*nhc:
+    :param nhc:
         nhc which should be delete.
+    :type nhc: struct lowpan_nhc \*
 
 .. _`lowpan_nhc_init`:
 
@@ -166,8 +178,9 @@ lowpan_nhc_init
 
     adding all default nhcs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

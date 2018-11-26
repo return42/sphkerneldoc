@@ -10,8 +10,9 @@ da8xx_musb_enable
 
     enable interrupts
 
-    :param struct musb \*musb:
+    :param musb:
         *undescribed*
+    :type musb: struct musb \*
 
 .. _`da8xx_musb_disable`:
 
@@ -22,8 +23,9 @@ da8xx_musb_disable
 
     disable HDRC and flush interrupts
 
-    :param struct musb \*musb:
+    :param musb:
         *undescribed*
+    :type musb: struct musb \*
 
 .. This file was automatic generated / don't edit.
 

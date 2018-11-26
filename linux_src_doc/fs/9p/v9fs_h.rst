@@ -87,6 +87,7 @@ Definition
         struct p9_client *clnt;
         struct list_head slist;
         struct rw_semaphore rename_sem;
+        long session_lock_timeout;
     }
 
 .. _`v9fs_session_info.members`:
@@ -142,6 +143,9 @@ slist
 rename_sem
     *undescribed*
 
+session_lock_timeout
+    *undescribed*
+
 .. _`v9fs_session_info.description`:
 
 Description
@@ -167,14 +171,17 @@ v9fs_get_inode_from_fid
 
     Helper routine to populate an inode by issuing a attribute request
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         session information
+    :type v9ses: struct v9fs_session_info \*
 
-    :param struct p9_fid \*fid:
+    :param fid:
         fid to issue attribute request for
+    :type fid: struct p9_fid \*
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock on which to create inode
+    :type sb: struct super_block \*
 
 .. _`v9fs_get_new_inode_from_fid`:
 
@@ -185,14 +192,17 @@ v9fs_get_new_inode_from_fid
 
     Helper routine to populate an inode by issuing a attribute request
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         session information
+    :type v9ses: struct v9fs_session_info \*
 
-    :param struct p9_fid \*fid:
+    :param fid:
         fid to issue attribute request for
+    :type fid: struct p9_fid \*
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock on which to create inode
+    :type sb: struct super_block \*
 
 .. This file was automatic generated / don't edit.
 

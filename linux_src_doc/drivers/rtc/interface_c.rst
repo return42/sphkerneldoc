@@ -10,14 +10,17 @@ rtc_handle_legacy_irq
 
     AIE, UIE and PIE event hook
 
-    :param struct rtc_device \*rtc:
+    :param rtc:
         pointer to the rtc device
+    :type rtc: struct rtc_device \*
 
-    :param int num:
+    :param num:
         *undescribed*
+    :type num: int
 
-    :param int mode:
+    :param mode:
         *undescribed*
+    :type mode: int
 
 .. _`rtc_handle_legacy_irq.description`:
 
@@ -26,8 +29,6 @@ Description
 
 This function is called when an AIE, UIE or PIE mode interrupt
 has occurred (or been emulated).
-
-Triggers the registered irq_task function callback.
 
 .. _`rtc_aie_update_irq`:
 
@@ -38,8 +39,9 @@ rtc_aie_update_irq
 
     AIE mode rtctimer hook
 
-    :param void \*private:
+    :param private:
         pointer to the rtc_device
+    :type private: void \*
 
 .. _`rtc_aie_update_irq.description`:
 
@@ -57,8 +59,9 @@ rtc_uie_update_irq
 
     UIE mode rtctimer hook
 
-    :param void \*private:
+    :param private:
         pointer to the rtc_device
+    :type private: void \*
 
 .. _`rtc_uie_update_irq.description`:
 
@@ -76,8 +79,9 @@ rtc_pie_update_irq
 
     PIE mode hrtimer hook
 
-    :param struct hrtimer \*timer:
+    :param timer:
         pointer to the pie mode hrtimer
+    :type timer: struct hrtimer \*
 
 .. _`rtc_pie_update_irq.description`:
 
@@ -97,14 +101,17 @@ rtc_update_irq
 
     Triggered when a RTC interrupt occurs.
 
-    :param struct rtc_device \*rtc:
+    :param rtc:
         the rtc device
+    :type rtc: struct rtc_device \*
 
-    :param unsigned long num:
+    :param num:
         how many irqs are being reported (usually one)
+    :type num: unsigned long
 
-    :param unsigned long events:
+    :param events:
         mask of RTC_IRQF with one or more of RTC_PF, RTC_AF, RTC_UF
+    :type events: unsigned long
 
 .. _`rtc_update_irq.context`:
 
@@ -118,18 +125,17 @@ any
 rtc_irq_set_state
 =================
 
-.. c:function:: int rtc_irq_set_state(struct rtc_device *rtc, struct rtc_task *task, int enabled)
+.. c:function:: int rtc_irq_set_state(struct rtc_device *rtc, int enabled)
 
     enable/disable 2^N Hz periodic IRQs
 
-    :param struct rtc_device \*rtc:
+    :param rtc:
         the rtc device
+    :type rtc: struct rtc_device \*
 
-    :param struct rtc_task \*task:
-        currently registered with \ :c:func:`rtc_irq_register`\ 
-
-    :param int enabled:
+    :param enabled:
         true to enable periodic IRQs
+    :type enabled: int
 
 .. _`rtc_irq_set_state.context`:
 
@@ -144,25 +150,24 @@ Description
 -----------
 
 Note that \ :c:func:`rtc_irq_set_freq`\  should previously have been used to
-specify the desired frequency of periodic IRQ task->func() callbacks.
+specify the desired frequency of periodic IRQ.
 
 .. _`rtc_irq_set_freq`:
 
 rtc_irq_set_freq
 ================
 
-.. c:function:: int rtc_irq_set_freq(struct rtc_device *rtc, struct rtc_task *task, int freq)
+.. c:function:: int rtc_irq_set_freq(struct rtc_device *rtc, int freq)
 
     set 2^N Hz periodic IRQ frequency for IRQ
 
-    :param struct rtc_device \*rtc:
+    :param rtc:
         the rtc device
+    :type rtc: struct rtc_device \*
 
-    :param struct rtc_task \*task:
-        currently registered with \ :c:func:`rtc_irq_register`\ 
-
-    :param int freq:
-        positive frequency with which task->func() will be called
+    :param freq:
+        positive frequency
+    :type freq: int
 
 .. _`rtc_irq_set_freq.context`:
 
@@ -188,11 +193,13 @@ rtc_timer_enqueue
 
     Adds a rtc_timer to the rtc_device timerqueue \ ``rtc``\  rtc device \ ``timer``\  timer being added.
 
-    :param struct rtc_device \*rtc:
+    :param rtc:
         *undescribed*
+    :type rtc: struct rtc_device \*
 
-    :param struct rtc_timer \*timer:
+    :param timer:
         *undescribed*
+    :type timer: struct rtc_timer \*
 
 .. _`rtc_timer_enqueue.description`:
 
@@ -215,11 +222,13 @@ rtc_timer_remove
 
     Removes a rtc_timer from the rtc_device timerqueue \ ``rtc``\  rtc device \ ``timer``\  timer being removed.
 
-    :param struct rtc_device \*rtc:
+    :param rtc:
         *undescribed*
+    :type rtc: struct rtc_device \*
 
-    :param struct rtc_timer \*timer:
+    :param timer:
         *undescribed*
+    :type timer: struct rtc_timer \*
 
 .. _`rtc_timer_remove.description`:
 
@@ -242,8 +251,9 @@ rtc_timer_do_work
 
     Expires rtc timers \ ``rtc``\  rtc device \ ``timer``\  timer being removed.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`rtc_timer_do_work.description`:
 
@@ -264,11 +274,13 @@ rtc_read_offset
 
     Read the amount of rtc offset in parts per billion \ ````\  rtc: rtc device to be used \ ````\  offset: the offset in parts per billion
 
-    :param struct rtc_device \*rtc:
+    :param rtc:
         *undescribed*
+    :type rtc: struct rtc_device \*
 
-    :param long \*offset:
+    :param offset:
         *undescribed*
+    :type offset: long \*
 
 .. _`rtc_read_offset.description`:
 
@@ -290,11 +302,13 @@ rtc_set_offset
 
     Adjusts the duration of the average second \ ````\  rtc: rtc device to be used \ ````\  offset: the offset in parts per billion
 
-    :param struct rtc_device \*rtc:
+    :param rtc:
         *undescribed*
+    :type rtc: struct rtc_device \*
 
-    :param long offset:
+    :param offset:
         *undescribed*
+    :type offset: long
 
 .. _`rtc_set_offset.description`:
 

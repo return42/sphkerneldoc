@@ -10,8 +10,9 @@ fcoe_link_speed_update
 
     Update the supported and actual link speeds
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to update speeds for
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_link_speed_update.return`:
 
@@ -30,14 +31,17 @@ Return
 
     Get the Link Error Status Block (LESB) for a given lport
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to update speeds for
+    :type lport: struct fc_lport \*
 
-    :param struct fc_els_lesb \*fc_lesb:
+    :param fc_lesb:
         Pointer to the LESB to be filled up
+    :type fc_lesb: struct fc_els_lesb \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Pointer to the netdev that is associated with the lport
+    :type netdev: struct net_device \*
 
 .. _`__fcoe_get_lesb.description`:
 
@@ -56,11 +60,13 @@ fcoe_get_lesb
 
     Fill the FCoE Link Error Status Block
 
-    :param struct fc_lport \*lport:
+    :param lport:
         the local port
+    :type lport: struct fc_lport \*
 
-    :param struct fc_els_lesb \*fc_lesb:
+    :param fc_lesb:
         the link error status block
+    :type fc_lesb: struct fc_els_lesb \*
 
 .. _`fcoe_ctlr_get_lesb`:
 
@@ -71,8 +77,9 @@ fcoe_ctlr_get_lesb
 
     Get the Link Error Status Block (LESB) for a given fcoe controller device
 
-    :param struct fcoe_ctlr_device \*ctlr_dev:
+    :param ctlr_dev:
         The given fcoe controller device
+    :type ctlr_dev: struct fcoe_ctlr_device \*
 
 .. _`fcoe_validate_vport_create`:
 
@@ -83,8 +90,9 @@ fcoe_validate_vport_create
 
     Validate a vport before creating it
 
-    :param struct fc_vport \*vport:
+    :param vport:
         NPIV port to be created
+    :type vport: struct fc_vport \*
 
 .. _`fcoe_validate_vport_create.description`:
 
@@ -110,14 +118,17 @@ fcoe_get_wwn
 
     Get the world wide name from LLD if it supports it
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the associated net device
+    :type netdev: struct net_device \*
 
-    :param u64 \*wwn:
+    :param wwn:
         the output WWN
+    :type wwn: u64 \*
 
-    :param int type:
+    :param type:
         the type of WWN (WWPN or WWNN)
+    :type type: int
 
 .. _`fcoe_get_wwn.return`:
 
@@ -135,8 +146,9 @@ fcoe_fc_crc
 
     Calculates the CRC for a given frame
 
-    :param struct fc_frame \*fp:
+    :param fp:
         The frame to be checksumed
+    :type fp: struct fc_frame \*
 
 .. _`fcoe_fc_crc.description`:
 
@@ -161,8 +173,9 @@ fcoe_start_io
 
     Start FCoE I/O
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The packet to be transmitted
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_start_io.description`:
 
@@ -188,8 +201,9 @@ fcoe_clean_pending_queue
 
     Dequeue a skb and free it
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port to dequeue a skb on
+    :type lport: struct fc_lport \*
 
 .. _`fcoe_check_wait_queue`:
 
@@ -200,11 +214,13 @@ fcoe_check_wait_queue
 
     Attempt to clear the transmit backlog
 
-    :param struct fc_lport \*lport:
+    :param lport:
         The local port whose backlog is to be cleared
+    :type lport: struct fc_lport \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`fcoe_check_wait_queue.description`:
 
@@ -229,8 +245,9 @@ fcoe_queue_timer
 
     The fcoe queue timer
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`fcoe_queue_timer.description`:
 
@@ -248,14 +265,17 @@ fcoe_get_paged_crc_eof
 
     Allocate a page to be used for the trailer CRC
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The packet to be transmitted
+    :type skb: struct sk_buff \*
 
-    :param int tlen:
+    :param tlen:
         The total length of the trailer
+    :type tlen: int
 
-    :param struct fcoe_percpu_s \*fps:
+    :param fps:
         The fcoe context
+    :type fps: struct fcoe_percpu_s \*
 
 .. _`fcoe_get_paged_crc_eof.description`:
 
@@ -284,8 +304,9 @@ fcoe_transport_lookup
 
     find an fcoe transport that matches a netdev
 
-    :param struct net_device \*netdev:
+    :param netdev:
         The netdev to look for from all attached transports
+    :type netdev: struct net_device \*
 
 .. _`fcoe_transport_lookup.description`:
 
@@ -306,8 +327,9 @@ fcoe_transport_attach
 
     Attaches an FCoE transport
 
-    :param struct fcoe_transport \*ft:
+    :param ft:
         The fcoe transport to be attached
+    :type ft: struct fcoe_transport \*
 
 .. _`fcoe_transport_attach.description`:
 
@@ -325,8 +347,9 @@ fcoe_transport_detach
 
     Detaches an FCoE transport
 
-    :param struct fcoe_transport \*ft:
+    :param ft:
         The fcoe transport to be attached
+    :type ft: struct fcoe_transport \*
 
 .. _`fcoe_transport_detach.description`:
 
@@ -344,8 +367,9 @@ fcoe_netdev_map_lookup
 
     find the fcoe transport that matches the netdev on which it was created
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
 .. _`fcoe_netdev_map_lookup.description`:
 
@@ -366,8 +390,9 @@ fcoe_if_to_netdev
 
     Parse a name buffer to get a net device
 
-    :param const char \*buffer:
+    :param buffer:
         The name of the net device
+    :type buffer: const char \*
 
 .. _`fcoe_if_to_netdev.return`:
 
@@ -385,14 +410,17 @@ libfcoe_device_notification
 
     Handler for net device events
 
-    :param struct notifier_block \*notifier:
+    :param notifier:
         The context of the notification
+    :type notifier: struct notifier_block \*
 
-    :param ulong event:
+    :param event:
         The type of event
+    :type event: ulong
 
-    :param void \*ptr:
+    :param ptr:
         The net device that the event was on
+    :type ptr: void \*
 
 .. _`libfcoe_device_notification.description`:
 
@@ -417,11 +445,13 @@ fcoe_transport_create
 
     Create a fcoe interface
 
-    :param const char \*buffer:
+    :param buffer:
         The name of the Ethernet interface to create on
+    :type buffer: const char \*
 
-    :param const struct kernel_param \*kp:
+    :param kp:
         The associated kernel param
+    :type kp: const struct kernel_param \*
 
 .. _`fcoe_transport_create.description`:
 
@@ -447,11 +477,13 @@ fcoe_transport_destroy
 
     Destroy a FCoE interface
 
-    :param const char \*buffer:
+    :param buffer:
         The name of the Ethernet interface to be destroyed
+    :type buffer: const char \*
 
-    :param const struct kernel_param \*kp:
+    :param kp:
         The associated kernel parameter
+    :type kp: const struct kernel_param \*
 
 .. _`fcoe_transport_destroy.description`:
 
@@ -477,11 +509,13 @@ fcoe_transport_disable
 
     Disables a FCoE interface
 
-    :param const char \*buffer:
+    :param buffer:
         The name of the Ethernet interface to be disabled
+    :type buffer: const char \*
 
-    :param const struct kernel_param \*kp:
+    :param kp:
         The associated kernel parameter
+    :type kp: const struct kernel_param \*
 
 .. _`fcoe_transport_disable.description`:
 
@@ -506,11 +540,13 @@ fcoe_transport_enable
 
     Enables a FCoE interface
 
-    :param const char \*buffer:
+    :param buffer:
         The name of the Ethernet interface to be enabled
+    :type buffer: const char \*
 
-    :param const struct kernel_param \*kp:
+    :param kp:
         The associated kernel parameter
+    :type kp: const struct kernel_param \*
 
 .. _`fcoe_transport_enable.description`:
 
@@ -535,8 +571,9 @@ libfcoe_init
 
     Initialization routine for libfcoe.ko
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`libfcoe_exit`:
 
@@ -547,8 +584,9 @@ libfcoe_exit
 
     Tear down libfcoe.ko
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

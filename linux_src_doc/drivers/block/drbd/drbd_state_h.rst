@@ -30,14 +30,17 @@ drbd_request_state
 
     Request a state change
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param union drbd_state mask:
+    :param mask:
         mask of state bits to change.
+    :type mask: union drbd_state
 
-    :param union drbd_state val:
+    :param val:
         value of new state bits.
+    :type val: union drbd_state
 
 .. _`drbd_request_state.description`:
 

@@ -10,8 +10,9 @@ pci_bus_max_busnr
 
     returns maximum PCI bus number of given bus' children
 
-    :param struct pci_bus \*bus:
+    :param bus:
         pointer to PCI bus structure to search
+    :type bus: struct pci_bus \*
 
 .. _`pci_bus_max_busnr.description`:
 
@@ -20,6 +21,100 @@ Description
 
 Given a PCI bus, returns the highest PCI bus number present in the set
 including the given PCI bus and its list of child PCI buses.
+
+.. _`pci_dev_str_match_path`:
+
+pci_dev_str_match_path
+======================
+
+.. c:function:: int pci_dev_str_match_path(struct pci_dev *dev, const char *path, const char **endptr)
+
+    test if a path string matches a device
+
+    :param dev:
+        the PCI device to test
+    :type dev: struct pci_dev \*
+
+    :param path:
+        string to match the device against
+    :type path: const char \*
+
+    :param endptr:
+        pointer to the string after the match
+    :type endptr: const char \*\*
+
+.. _`pci_dev_str_match_path.description`:
+
+Description
+-----------
+
+Test if a string (typically from a kernel parameter) formatted as a
+path of device/function addresses matches a PCI device. The string must
+
+.. _`pci_dev_str_match_path.be-of-the-form`:
+
+be of the form
+--------------
+
+
+  [<domain>:]<bus>:<device>.<func>[/<device>.<func>]*
+
+A path for a device can be obtained using 'lspci -t'.  Using a path
+is more robust against bus renumbering than using only a single bus,
+device and function address.
+
+Returns 1 if the string matches the device, 0 if it does not and
+a negative error code if it fails to parse the string.
+
+.. _`pci_dev_str_match`:
+
+pci_dev_str_match
+=================
+
+.. c:function:: int pci_dev_str_match(struct pci_dev *dev, const char *p, const char **endptr)
+
+    test if a string matches a device
+
+    :param dev:
+        the PCI device to test
+    :type dev: struct pci_dev \*
+
+    :param p:
+        string to match the device against
+    :type p: const char \*
+
+    :param endptr:
+        pointer to the string after the match
+    :type endptr: const char \*\*
+
+.. _`pci_dev_str_match.description`:
+
+Description
+-----------
+
+Test if a string (typically from a kernel parameter) matches a specified
+PCI device. The string may be of one of the following formats:
+
+  [<domain>:]<bus>:<device>.<func>[/<device>.<func>]*
+  pci:<vendor>:<device>[:<subvendor>:<subdevice>]
+
+The first format specifies a PCI bus/device/function address which
+may change if new hardware is inserted, if motherboard firmware changes,
+or due to changes caused in kernel parameters. If the domain is
+left unspecified, it is taken to be 0.  In order to be robust against
+bus renumbering issues, a path of PCI device/function numbers may be used
+to address the specific device.  The path for a device can be determined
+through the use of 'lspci -t'.
+
+The second format matches devices using IDs in the configuration
+space which may match multiple devices in the system. A value of 0
+for any field will match all devices. (Note: this differs from
+in-kernel code that uses PCI_ANY_ID which is ~0; this is for
+legacy reasons and convenience so users don't have to specify
+FFFFFFFFs on the command line.)
+
+Returns 1 if the string matches the device, 0 if it does not and
+a negative error code if the string cannot be parsed.
 
 .. _`pci_find_capability`:
 
@@ -30,11 +125,13 @@ pci_find_capability
 
     query for devices' capabilities
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
-    :param int cap:
+    :param cap:
         capability code
+    :type cap: int
 
 .. _`pci_find_capability.description`:
 
@@ -64,14 +161,17 @@ pci_bus_find_capability
 
     query for devices' capabilities
 
-    :param struct pci_bus \*bus:
+    :param bus:
         the PCI bus to query
+    :type bus: struct pci_bus \*
 
-    :param unsigned int devfn:
+    :param devfn:
         PCI device to query
+    :type devfn: unsigned int
 
-    :param int cap:
+    :param cap:
         capability code
+    :type cap: int
 
 .. _`pci_bus_find_capability.description`:
 
@@ -94,14 +194,17 @@ pci_find_next_ext_capability
 
     Find an extended capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
-    :param int start:
+    :param start:
         address at which to start looking (0 to start at beginning of list)
+    :type start: int
 
-    :param int cap:
+    :param cap:
         capability code
+    :type cap: int
 
 .. _`pci_find_next_ext_capability.description`:
 
@@ -122,11 +225,13 @@ pci_find_ext_capability
 
     Find an extended capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
-    :param int cap:
+    :param cap:
         capability code
+    :type cap: int
 
 .. _`pci_find_ext_capability.description`:
 
@@ -151,14 +256,17 @@ pci_find_next_ht_capability
 
     query a device's Hypertransport capabilities
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
-    :param int pos:
+    :param pos:
         Position from which to continue searching
+    :type pos: int
 
-    :param int ht_cap:
+    :param ht_cap:
         Hypertransport capability code
+    :type ht_cap: int
 
 .. _`pci_find_next_ht_capability.description`:
 
@@ -181,11 +289,13 @@ pci_find_ht_capability
 
     query a device's Hypertransport capabilities
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
-    :param int ht_cap:
+    :param ht_cap:
         Hypertransport capability code
+    :type ht_cap: int
 
 .. _`pci_find_ht_capability.description`:
 
@@ -207,11 +317,13 @@ pci_find_parent_resource
 
     return resource region of parent bus of given region
 
-    :param const struct pci_dev \*dev:
+    :param dev:
         PCI device structure contains resources to be searched
+    :type dev: const struct pci_dev \*
 
-    :param struct resource \*res:
+    :param res:
         child resource record for which parent is sought
+    :type res: struct resource \*
 
 .. _`pci_find_parent_resource.description`:
 
@@ -230,11 +342,13 @@ pci_find_resource
 
     Return matching PCI device resource
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
-    :param struct resource \*res:
+    :param res:
         Resource to look for
+    :type res: struct resource \*
 
 .. _`pci_find_resource.description`:
 
@@ -254,8 +368,9 @@ pci_find_pcie_root_port
 
     return PCIe Root Port
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
 .. _`pci_find_pcie_root_port.description`:
 
@@ -274,14 +389,17 @@ pci_wait_for_pending
 
     wait for \ ``mask``\  bit(s) to clear in status word \ ``pos``\ 
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device to operate on
+    :type dev: struct pci_dev \*
 
-    :param int pos:
+    :param pos:
         config space offset of status word
+    :type pos: int
 
-    :param u16 mask:
+    :param mask:
         mask of bit(s) to care about in status word
+    :type mask: u16
 
 .. _`pci_wait_for_pending.description`:
 
@@ -299,8 +417,9 @@ pci_restore_bars
 
     restore a device's BAR values (e.g. after wake-up)
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to have its BARs restored
+    :type dev: struct pci_dev \*
 
 .. _`pci_restore_bars.description`:
 
@@ -319,11 +438,13 @@ pci_raw_set_power_state
 
     Use PCI PM registers to set the power state of given PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle.
+    :type dev: struct pci_dev \*
 
-    :param pci_power_t state:
+    :param state:
         PCI power state (D0, D1, D2, D3hot) to put the device into.
+    :type state: pci_power_t
 
 .. _`pci_raw_set_power_state.return-value`:
 
@@ -345,11 +466,13 @@ pci_update_current_state
 
     Read power state of given device and cache it
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle.
+    :type dev: struct pci_dev \*
 
-    :param pci_power_t state:
+    :param state:
         State to cache in case the device doesn't have the PM capability
+    :type state: pci_power_t
 
 .. _`pci_update_current_state.description`:
 
@@ -372,8 +495,9 @@ pci_power_up
 
     Put the given device into D0 forcibly
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to power up
+    :type dev: struct pci_dev \*
 
 .. _`pci_platform_power_transition`:
 
@@ -384,11 +508,13 @@ pci_platform_power_transition
 
     Use platform to change device power state
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle.
+    :type dev: struct pci_dev \*
 
-    :param pci_power_t state:
+    :param state:
         State to put the device into.
+    :type state: pci_power_t
 
 .. _`pci_wakeup`:
 
@@ -399,11 +525,13 @@ pci_wakeup
 
     Wake up a PCI device
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         Device to handle.
+    :type pci_dev: struct pci_dev \*
 
-    :param void \*ign:
+    :param ign:
         ignored parameter
+    :type ign: void \*
 
 .. _`pci_wakeup_bus`:
 
@@ -414,8 +542,9 @@ pci_wakeup_bus
 
     Walk given bus and wake up devices on it
 
-    :param struct pci_bus \*bus:
+    :param bus:
         Top bus of the subtree to walk.
+    :type bus: struct pci_bus \*
 
 .. _`__pci_start_power_transition`:
 
@@ -426,11 +555,13 @@ __pci_start_power_transition
 
     Start power transition of a PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle.
+    :type dev: struct pci_dev \*
 
-    :param pci_power_t state:
+    :param state:
         State to put the device into.
+    :type state: pci_power_t
 
 .. _`__pci_dev_set_current_state`:
 
@@ -441,11 +572,13 @@ __pci_dev_set_current_state
 
     Set current state of a PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         Device to handle
+    :type dev: struct pci_dev \*
 
-    :param void \*data:
+    :param data:
         pointer to state to be set
+    :type data: void \*
 
 .. _`pci_bus_set_current_state`:
 
@@ -456,11 +589,13 @@ pci_bus_set_current_state
 
     Walk given bus and set current state of devices
 
-    :param struct pci_bus \*bus:
+    :param bus:
         Top bus of the subtree to walk.
+    :type bus: struct pci_bus \*
 
-    :param pci_power_t state:
+    :param state:
         state to be set
+    :type state: pci_power_t
 
 .. _`__pci_complete_power_transition`:
 
@@ -471,11 +606,13 @@ __pci_complete_power_transition
 
     Complete power transition of a PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle.
+    :type dev: struct pci_dev \*
 
-    :param pci_power_t state:
+    :param state:
         State to put the device into.
+    :type state: pci_power_t
 
 .. _`__pci_complete_power_transition.description`:
 
@@ -493,11 +630,13 @@ pci_set_power_state
 
     Set the power state of a PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle.
+    :type dev: struct pci_dev \*
 
-    :param pci_power_t state:
+    :param state:
         PCI power state (D0, D1, D2, D3hot) to put the device into.
+    :type state: pci_power_t
 
 .. _`pci_set_power_state.description`:
 
@@ -529,12 +668,14 @@ pci_choose_state
 
     Choose the power state of a PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to be suspended
+    :type dev: struct pci_dev \*
 
-    :param pm_message_t state:
+    :param state:
         target sleep state for the whole system. This is the value
         that is passed to \ :c:func:`suspend`\  function.
+    :type state: pm_message_t
 
 .. _`pci_choose_state.description`:
 
@@ -553,8 +694,9 @@ pci_save_state
 
     save the PCI configuration space of a device before suspending
 
-    :param struct pci_dev \*dev:
+    :param dev:
         - PCI device that we're dealing with
+    :type dev: struct pci_dev \*
 
 .. _`pci_restore_state`:
 
@@ -565,8 +707,9 @@ pci_restore_state
 
     Restore the saved state of a PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         - PCI device that we're dealing with
+    :type dev: struct pci_dev \*
 
 .. _`pci_store_saved_state`:
 
@@ -577,8 +720,9 @@ pci_store_saved_state
 
     Allocate and return an opaque struct containing the device saved state.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device that we're dealing with
+    :type dev: struct pci_dev \*
 
 .. _`pci_store_saved_state.description`:
 
@@ -596,11 +740,13 @@ pci_load_saved_state
 
     Reload the provided save state into struct pci_dev.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device that we're dealing with
+    :type dev: struct pci_dev \*
 
-    :param struct pci_saved_state \*state:
+    :param state:
         Saved state returned from \ :c:func:`pci_store_saved_state`\ 
+    :type state: struct pci_saved_state \*
 
 .. _`pci_load_and_free_saved_state`:
 
@@ -611,11 +757,13 @@ pci_load_and_free_saved_state
 
     Reload the save state pointed to by state, and free the memory allocated for it.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device that we're dealing with
+    :type dev: struct pci_dev \*
 
-    :param struct pci_saved_state \*\*state:
+    :param state:
         Pointer to saved state returned from \ :c:func:`pci_store_saved_state`\ 
+    :type state: struct pci_saved_state \*\*
 
 .. _`pci_reenable_device`:
 
@@ -626,8 +774,9 @@ pci_reenable_device
 
     Resume abandoned device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to be resumed
+    :type dev: struct pci_dev \*
 
 .. _`pci_reenable_device.description`:
 
@@ -646,8 +795,9 @@ pci_enable_device_io
 
     Initialize a device for use with IO space
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to be initialized
+    :type dev: struct pci_dev \*
 
 .. _`pci_enable_device_io.description`:
 
@@ -667,8 +817,9 @@ pci_enable_device_mem
 
     Initialize a device for use with Memory space
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to be initialized
+    :type dev: struct pci_dev \*
 
 .. _`pci_enable_device_mem.description`:
 
@@ -688,8 +839,9 @@ pci_enable_device
 
     Initialize device before it's used by a driver.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to be initialized
+    :type dev: struct pci_dev \*
 
 .. _`pci_enable_device.description`:
 
@@ -712,8 +864,9 @@ pcim_enable_device
 
     Managed \ :c:func:`pci_enable_device`\ 
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to be initialized
+    :type pdev: struct pci_dev \*
 
 .. _`pcim_enable_device.description`:
 
@@ -731,8 +884,9 @@ pcim_pin_device
 
     Pin managed PCI device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to pin
+    :type pdev: struct pci_dev \*
 
 .. _`pcim_pin_device.description`:
 
@@ -752,8 +906,9 @@ pcibios_release_device
 
     provide arch specific hooks when releasing device dev
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device being released
+    :type dev: struct pci_dev \*
 
 .. _`pcibios_release_device.description`:
 
@@ -773,8 +928,9 @@ pcibios_disable_device
 
     disable arch specific PCI resources for device dev
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device to disable
+    :type dev: struct pci_dev \*
 
 .. _`pcibios_disable_device.description`:
 
@@ -794,11 +950,13 @@ pcibios_penalize_isa_irq
 
     penalize an ISA IRQ
 
-    :param int irq:
+    :param irq:
         ISA IRQ to penalize
+    :type irq: int
 
-    :param int active:
+    :param active:
         IRQ active or not
+    :type active: int
 
 .. _`pcibios_penalize_isa_irq.description`:
 
@@ -818,8 +976,9 @@ pci_disable_enabled_device
 
     Disable device without updating enable_cnt
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to disable
+    :type dev: struct pci_dev \*
 
 .. _`pci_disable_enabled_device.note`:
 
@@ -838,8 +997,9 @@ pci_disable_device
 
     Disable PCI device after use
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to be disabled
+    :type dev: struct pci_dev \*
 
 .. _`pci_disable_device.description`:
 
@@ -861,11 +1021,13 @@ pcibios_set_pcie_reset_state
 
     set reset state for device dev
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCIe device reset
+    :type dev: struct pci_dev \*
 
-    :param enum pcie_reset_state state:
+    :param state:
         Reset state to enter into
+    :type state: enum pcie_reset_state
 
 .. _`pcibios_set_pcie_reset_state.description`:
 
@@ -885,11 +1047,13 @@ pci_set_pcie_reset_state
 
     set reset state for device dev
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCIe device reset
+    :type dev: struct pci_dev \*
 
-    :param enum pcie_reset_state state:
+    :param state:
         Reset state to enter into
+    :type state: enum pcie_reset_state
 
 .. _`pci_set_pcie_reset_state.description`:
 
@@ -908,8 +1072,9 @@ pcie_clear_root_pme_status
 
     Clear root port PME interrupt status.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCIe root port or event collector.
+    :type dev: struct pci_dev \*
 
 .. _`pci_check_pme_status`:
 
@@ -920,8 +1085,9 @@ pci_check_pme_status
 
     Check if given device has generated PME.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         Device to check.
+    :type dev: struct pci_dev \*
 
 .. _`pci_check_pme_status.description`:
 
@@ -941,11 +1107,13 @@ pci_pme_wakeup
 
     Wake up a PCI device if its PME Status bit is set.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct pci_dev \*
 
-    :param void \*pme_poll_reset:
+    :param pme_poll_reset:
         Whether or not to reset the device's pme_poll flag.
+    :type pme_poll_reset: void \*
 
 .. _`pci_pme_wakeup.description`:
 
@@ -964,8 +1132,9 @@ pci_pme_wakeup_bus
 
     Walk given bus and wake up devices on it, if necessary.
 
-    :param struct pci_bus \*bus:
+    :param bus:
         Top bus of the subtree to walk.
+    :type bus: struct pci_bus \*
 
 .. _`pci_pme_capable`:
 
@@ -976,11 +1145,13 @@ pci_pme_capable
 
     check the capability of PCI device to generate PME#
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle.
+    :type dev: struct pci_dev \*
 
-    :param pci_power_t state:
+    :param state:
         PCI state from which device will issue PME#.
+    :type state: pci_power_t
 
 .. _`pci_pme_restore`:
 
@@ -991,8 +1162,9 @@ pci_pme_restore
 
     Restore PME configuration after config space restore.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to update.
+    :type dev: struct pci_dev \*
 
 .. _`pci_pme_active`:
 
@@ -1003,11 +1175,13 @@ pci_pme_active
 
     enable or disable PCI device's PME# function
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle.
+    :type dev: struct pci_dev \*
 
-    :param bool enable:
+    :param enable:
         'true' to enable PME# generation; 'false' to disable it.
+    :type enable: bool
 
 .. _`pci_pme_active.description`:
 
@@ -1026,14 +1200,17 @@ __pci_enable_wake
 
     enable PCI device as wakeup event source
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device affected
+    :type dev: struct pci_dev \*
 
-    :param pci_power_t state:
+    :param state:
         PCI state from which device will issue wakeup events
+    :type state: pci_power_t
 
-    :param bool enable:
+    :param enable:
         True to enable event generation; false to disable
+    :type enable: bool
 
 .. _`__pci_enable_wake.description`:
 
@@ -1066,14 +1243,17 @@ pci_enable_wake
 
     change wakeup settings for a PCI device
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         Target device
+    :type pci_dev: struct pci_dev \*
 
-    :param pci_power_t state:
+    :param state:
         PCI state from which device will issue wakeup events
+    :type state: pci_power_t
 
-    :param bool enable:
+    :param enable:
         Whether or not to enable event generation
+    :type enable: bool
 
 .. _`pci_enable_wake.description`:
 
@@ -1092,11 +1272,13 @@ pci_wake_from_d3
 
     enable/disable device to wake up from D3_hot or D3_cold
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to prepare
+    :type dev: struct pci_dev \*
 
-    :param bool enable:
+    :param enable:
         True to enable wake-up event generation; false to disable
+    :type enable: bool
 
 .. _`pci_wake_from_d3.description`:
 
@@ -1121,11 +1303,13 @@ pci_target_state
 
     find an appropriate low power state for a given PCI dev
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param bool wakeup:
+    :param wakeup:
         Whether or not wakeup functionality will be enabled for the device.
+    :type wakeup: bool
 
 .. _`pci_target_state.description`:
 
@@ -1145,8 +1329,9 @@ pci_prepare_to_sleep
 
     prepare PCI device for system-wide transition into a sleep state
 
-    :param struct pci_dev \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct pci_dev \*
 
 .. _`pci_prepare_to_sleep.description`:
 
@@ -1166,8 +1351,9 @@ pci_back_from_sleep
 
     turn PCI device on during system-wide transition into working state
 
-    :param struct pci_dev \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct pci_dev \*
 
 .. _`pci_back_from_sleep.description`:
 
@@ -1185,8 +1371,9 @@ pci_finish_runtime_suspend
 
     Carry out PCI-specific part of runtime suspend.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device being suspended.
+    :type dev: struct pci_dev \*
 
 .. _`pci_finish_runtime_suspend.description`:
 
@@ -1205,8 +1392,9 @@ pci_dev_run_wake
 
     Check if device can generate run-time wake-up events.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         Device to check.
+    :type dev: struct pci_dev \*
 
 .. _`pci_dev_run_wake.description`:
 
@@ -1226,8 +1414,9 @@ pci_dev_keep_suspended
 
     Check if the device can stay in the suspended state.
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         Device to check.
+    :type pci_dev: struct pci_dev \*
 
 .. _`pci_dev_keep_suspended.description`:
 
@@ -1251,8 +1440,9 @@ pci_dev_complete_resume
 
     Finalize resume from system sleep for a device.
 
-    :param struct pci_dev \*pci_dev:
+    :param pci_dev:
         Device to handle.
+    :type pci_dev: struct pci_dev \*
 
 .. _`pci_dev_complete_resume.description`:
 
@@ -1272,8 +1462,9 @@ pci_bridge_d3_possible
 
     Is it possible to put the bridge into D3
 
-    :param struct pci_dev \*bridge:
+    :param bridge:
         Bridge to check
+    :type bridge: struct pci_dev \*
 
 .. _`pci_bridge_d3_possible.description`:
 
@@ -1281,7 +1472,7 @@ Description
 -----------
 
 This function checks if it is possible to move the bridge to D3.
-Currently we only allow D3 for recent enough PCIe ports.
+Currently we only allow D3 for recent enough PCIe ports and Thunderbolt.
 
 .. _`pci_d3cold_enable`:
 
@@ -1292,8 +1483,9 @@ pci_d3cold_enable
 
     Enable D3cold for device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle
+    :type dev: struct pci_dev \*
 
 .. _`pci_d3cold_enable.description`:
 
@@ -1313,8 +1505,9 @@ pci_d3cold_disable
 
     Disable D3cold for device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle
+    :type dev: struct pci_dev \*
 
 .. _`pci_d3cold_disable.description`:
 
@@ -1334,8 +1527,9 @@ pci_pm_init
 
     Initialize PM functions of given PCI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle.
+    :type dev: struct pci_dev \*
 
 .. _`_pci_add_cap_save_buffer`:
 
@@ -1346,17 +1540,21 @@ _pci_add_cap_save_buffer
 
     allocate buffer for saving given capability registers
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param u16 cap:
+    :param cap:
         the capability to allocate the buffer for
+    :type cap: u16
 
-    :param bool extended:
+    :param extended:
         Standard or Extended capability ID
+    :type extended: bool
 
-    :param unsigned int size:
+    :param size:
         requested size of the buffer
+    :type size: unsigned int
 
 .. _`pci_allocate_cap_save_buffers`:
 
@@ -1367,8 +1565,9 @@ pci_allocate_cap_save_buffers
 
     allocate buffers for saving capabilities
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_configure_ari`:
 
@@ -1379,8 +1578,9 @@ pci_configure_ari
 
     enable or disable ARI forwarding
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_configure_ari.description`:
 
@@ -1399,8 +1599,29 @@ pci_request_acs
 
     ask for ACS to be enabled if supported
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
+
+.. _`pci_disable_acs_redir`:
+
+pci_disable_acs_redir
+=====================
+
+.. c:function:: void pci_disable_acs_redir(struct pci_dev *dev)
+
+    disable ACS redirect capabilities
+
+    :param dev:
+        the PCI device
+    :type dev: struct pci_dev \*
+
+.. _`pci_disable_acs_redir.description`:
+
+Description
+-----------
+
+For only devices specified in the disable_acs_redir parameter.
 
 .. _`pci_std_enable_acs`:
 
@@ -1411,8 +1632,9 @@ pci_std_enable_acs
 
     enable ACS on devices using standard ACS capabilites
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_enable_acs`:
 
@@ -1423,8 +1645,9 @@ pci_enable_acs
 
     enable ACS if hardware support it
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_acs_enabled`:
 
@@ -1435,11 +1658,13 @@ pci_acs_enabled
 
     test ACS against required flags for a given device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         device to test
+    :type pdev: struct pci_dev \*
 
-    :param u16 acs_flags:
+    :param acs_flags:
         required PCI ACS flags
+    :type acs_flags: u16
 
 .. _`pci_acs_enabled.description`:
 
@@ -1466,14 +1691,17 @@ pci_acs_path_enabled
 
     test ACS flags from start to end in a hierarchy
 
-    :param struct pci_dev \*start:
+    :param start:
         starting downstream device
+    :type start: struct pci_dev \*
 
-    :param struct pci_dev \*end:
+    :param end:
         ending upstream device or NULL to search to the root bus
+    :type end: struct pci_dev \*
 
-    :param u16 acs_flags:
+    :param acs_flags:
         required flags
+    :type acs_flags: u16
 
 .. _`pci_acs_path_enabled.description`:
 
@@ -1492,11 +1720,13 @@ pci_rebar_find_pos
 
     find position of resize ctrl reg for BAR
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR to find
+    :type bar: int
 
 .. _`pci_rebar_find_pos.description`:
 
@@ -1516,11 +1746,13 @@ pci_rebar_get_possible_sizes
 
     get possible sizes for BAR
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR to query
+    :type bar: int
 
 .. _`pci_rebar_get_possible_sizes.description`:
 
@@ -1539,11 +1771,13 @@ pci_rebar_get_current_size
 
     get the current size of a BAR
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR to set size to
+    :type bar: int
 
 .. _`pci_rebar_get_current_size.description`:
 
@@ -1562,14 +1796,17 @@ pci_rebar_set_size
 
     set a new size for a BAR
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR to set size to
+    :type bar: int
 
-    :param int size:
+    :param size:
         new size as defined in the spec (0=1MB, 19=512GB)
+    :type size: int
 
 .. _`pci_rebar_set_size.description`:
 
@@ -1588,14 +1825,16 @@ pci_enable_atomic_ops_to_root
 
     enable AtomicOp requests to root port
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param u32 cap_mask:
+    :param cap_mask:
         mask of desired AtomicOp sizes, including one or more of:
         PCI_EXP_DEVCAP2_ATOMIC_COMP32
         PCI_EXP_DEVCAP2_ATOMIC_COMP64
         PCI_EXP_DEVCAP2_ATOMIC_COMP128
+    :type cap_mask: u32
 
 .. _`pci_enable_atomic_ops_to_root.description`:
 
@@ -1616,11 +1855,13 @@ pci_swizzle_interrupt_pin
 
     swizzle INTx for device behind bridge
 
-    :param const struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: const struct pci_dev \*
 
-    :param u8 pin:
+    :param pin:
         the INTx pin (1=INTA, 2=INTB, 3=INTC, 4=INTD)
+    :type pin: u8
 
 .. _`pci_swizzle_interrupt_pin.description`:
 
@@ -1642,11 +1883,13 @@ pci_common_swizzle
 
     swizzle INTx all the way to root bridge
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param u8 \*pinp:
+    :param pinp:
         pointer to the INTx pin value (1=INTA, 2=INTB, 3=INTD, 4=INTD)
+    :type pinp: u8 \*
 
 .. _`pci_common_swizzle.description`:
 
@@ -1665,11 +1908,13 @@ pci_release_region
 
     Release a PCI bar
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device whose resources were previously reserved by pci_request_region
+    :type pdev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR to release
+    :type bar: int
 
 .. _`pci_release_region.description`:
 
@@ -1689,17 +1934,21 @@ __pci_request_region
 
     Reserved PCI I/O and memory resource
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device whose resources are to be reserved
+    :type pdev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR to be reserved
+    :type bar: int
 
-    :param const char \*res_name:
+    :param res_name:
         Name to be associated with resource.
+    :type res_name: const char \*
 
-    :param int exclusive:
+    :param exclusive:
         whether the region access is exclusive or not
+    :type exclusive: int
 
 .. _`__pci_request_region.description`:
 
@@ -1727,14 +1976,17 @@ pci_request_region
 
     Reserve PCI I/O and memory resource
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device whose resources are to be reserved
+    :type pdev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR to be reserved
+    :type bar: int
 
-    :param const char \*res_name:
+    :param res_name:
         Name to be associated with resource
+    :type res_name: const char \*
 
 .. _`pci_request_region.description`:
 
@@ -1758,14 +2010,17 @@ pci_request_region_exclusive
 
     Reserved PCI I/O and memory resource
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device whose resources are to be reserved
+    :type pdev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR to be reserved
+    :type bar: int
 
-    :param const char \*res_name:
+    :param res_name:
         Name to be associated with resource.
+    :type res_name: const char \*
 
 .. _`pci_request_region_exclusive.description`:
 
@@ -1793,11 +2048,13 @@ pci_release_selected_regions
 
     Release selected PCI I/O and memory resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device whose resources were previously reserved
+    :type pdev: struct pci_dev \*
 
-    :param int bars:
+    :param bars:
         Bitmask of BARs to be released
+    :type bars: int
 
 .. _`pci_release_selected_regions.description`:
 
@@ -1816,14 +2073,17 @@ pci_request_selected_regions
 
     Reserve selected PCI I/O and memory resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device whose resources are to be reserved
+    :type pdev: struct pci_dev \*
 
-    :param int bars:
+    :param bars:
         Bitmask of BARs to be requested
+    :type bars: int
 
-    :param const char \*res_name:
+    :param res_name:
         Name to be associated with resource
+    :type res_name: const char \*
 
 .. _`pci_release_regions`:
 
@@ -1834,8 +2094,9 @@ pci_release_regions
 
     Release reserved PCI I/O and memory resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device whose resources were previously reserved by pci_request_regions
+    :type pdev: struct pci_dev \*
 
 .. _`pci_release_regions.description`:
 
@@ -1855,11 +2116,13 @@ pci_request_regions
 
     Reserved PCI I/O and memory resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device whose resources are to be reserved
+    :type pdev: struct pci_dev \*
 
-    :param const char \*res_name:
+    :param res_name:
         Name to be associated with resource.
+    :type res_name: const char \*
 
 .. _`pci_request_regions.description`:
 
@@ -1883,11 +2146,13 @@ pci_request_regions_exclusive
 
     Reserved PCI I/O and memory resources
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device whose resources are to be reserved
+    :type pdev: struct pci_dev \*
 
-    :param const char \*res_name:
+    :param res_name:
         Name to be associated with resource.
+    :type res_name: const char \*
 
 .. _`pci_request_regions_exclusive.description`:
 
@@ -1914,11 +2179,13 @@ pci_remap_iospace
 
     Remap the memory mapped I/O space
 
-    :param const struct resource \*res:
+    :param res:
         Resource describing the I/O space
+    :type res: const struct resource \*
 
-    :param phys_addr_t phys_addr:
+    :param phys_addr:
         physical address of range to be mapped
+    :type phys_addr: phys_addr_t
 
 .. _`pci_remap_iospace.description`:
 
@@ -1939,8 +2206,9 @@ pci_unmap_iospace
 
     Unmap the memory mapped I/O space
 
-    :param struct resource \*res:
+    :param res:
         resource to be unmapped
+    :type res: struct resource \*
 
 .. _`pci_unmap_iospace.description`:
 
@@ -1960,14 +2228,17 @@ devm_pci_remap_iospace
 
     Managed \ :c:func:`pci_remap_iospace`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Generic device to remap IO address for
+    :type dev: struct device \*
 
-    :param const struct resource \*res:
+    :param res:
         Resource describing the I/O space
+    :type res: const struct resource \*
 
-    :param phys_addr_t phys_addr:
+    :param phys_addr:
         physical address of range to be mapped
+    :type phys_addr: phys_addr_t
 
 .. _`devm_pci_remap_iospace.description`:
 
@@ -1986,14 +2257,17 @@ devm_pci_remap_cfgspace
 
     Managed \ :c:func:`pci_remap_cfgspace`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Generic device to remap IO address for
+    :type dev: struct device \*
 
-    :param resource_size_t offset:
+    :param offset:
         Resource address to map
+    :type offset: resource_size_t
 
-    :param resource_size_t size:
+    :param size:
         Size of map
+    :type size: resource_size_t
 
 .. _`devm_pci_remap_cfgspace.description`:
 
@@ -2012,11 +2286,13 @@ devm_pci_remap_cfg_resource
 
     check, request region and ioremap cfg resource
 
-    :param struct device \*dev:
+    :param dev:
         generic device to handle the resource for
+    :type dev: struct device \*
 
-    :param struct resource \*res:
+    :param res:
         configuration space resource to be handled
+    :type res: struct resource \*
 
 .. _`devm_pci_remap_cfg_resource.description`:
 
@@ -2046,8 +2322,9 @@ pcibios_setup
 
     process "pci=" kernel boot arguments
 
-    :param char \*str:
+    :param str:
         string used to pass in "pci=" kernel boot arguments
+    :type str: char \*
 
 .. _`pcibios_setup.description`:
 
@@ -2066,8 +2343,9 @@ pcibios_set_master
 
     enable PCI bus-mastering for device dev
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device to enable
+    :type dev: struct pci_dev \*
 
 .. _`pcibios_set_master.description`:
 
@@ -2087,8 +2365,9 @@ pci_set_master
 
     enables bus-mastering for device dev
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device to enable
+    :type dev: struct pci_dev \*
 
 .. _`pci_set_master.description`:
 
@@ -2107,8 +2386,9 @@ pci_clear_master
 
     disables bus-mastering for device dev
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device to disable
+    :type dev: struct pci_dev \*
 
 .. _`pci_set_cacheline_size`:
 
@@ -2119,8 +2399,9 @@ pci_set_cacheline_size
 
     ensure the CACHE_LINE_SIZE register is programmed
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device for which MWI is to be enabled
+    :type dev: struct pci_dev \*
 
 .. _`pci_set_cacheline_size.description`:
 
@@ -2147,8 +2428,9 @@ pci_set_mwi
 
     enables memory-write-invalidate PCI transaction
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device for which MWI is enabled
+    :type dev: struct pci_dev \*
 
 .. _`pci_set_mwi.description`:
 
@@ -2173,8 +2455,9 @@ pcim_set_mwi
 
     a device-managed \ :c:func:`pci_set_mwi`\ 
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device for which MWI is enabled
+    :type dev: struct pci_dev \*
 
 .. _`pcim_set_mwi.description`:
 
@@ -2199,8 +2482,9 @@ pci_try_set_mwi
 
     enables memory-write-invalidate PCI transaction
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device for which MWI is enabled
+    :type dev: struct pci_dev \*
 
 .. _`pci_try_set_mwi.description`:
 
@@ -2226,8 +2510,9 @@ pci_clear_mwi
 
     disables Memory-Write-Invalidate for device dev
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device to disable
+    :type dev: struct pci_dev \*
 
 .. _`pci_clear_mwi.description`:
 
@@ -2245,11 +2530,13 @@ pci_intx
 
     enables/disables PCI INTx for device dev
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         the PCI device to operate on
+    :type pdev: struct pci_dev \*
 
-    :param int enable:
+    :param enable:
         boolean: whether to enable or disable PCI INTx
+    :type enable: int
 
 .. _`pci_intx.description`:
 
@@ -2267,8 +2554,9 @@ pci_check_and_mask_intx
 
     mask INTx on pending interrupt
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device to operate on
+    :type dev: struct pci_dev \*
 
 .. _`pci_check_and_mask_intx.description`:
 
@@ -2288,8 +2576,9 @@ pci_check_and_unmask_intx
 
     unmask INTx if no interrupt is pending
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device to operate on
+    :type dev: struct pci_dev \*
 
 .. _`pci_check_and_unmask_intx.description`:
 
@@ -2309,8 +2598,9 @@ pci_wait_for_pending_transaction
 
     waits for pending transaction
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device to operate on
+    :type dev: struct pci_dev \*
 
 .. _`pci_wait_for_pending_transaction.description`:
 
@@ -2328,8 +2618,9 @@ pcie_has_flr
 
     check if a device supports function level resets
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device to check
+    :type dev: struct pci_dev \*
 
 .. _`pcie_has_flr.description`:
 
@@ -2348,8 +2639,9 @@ pcie_flr
 
     initiate a PCIe function level reset
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device to reset
+    :type dev: struct pci_dev \*
 
 .. _`pcie_flr.description`:
 
@@ -2369,11 +2661,13 @@ pci_pm_reset
 
     Put device into PCI_D3 and back into PCI_D0.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         Device to reset.
+    :type dev: struct pci_dev \*
 
-    :param int probe:
+    :param probe:
         If set, only check if the device can be reset this way.
+    :type probe: int
 
 .. _`pci_pm_reset.description`:
 
@@ -2404,11 +2698,13 @@ pcie_wait_for_link
 
     Wait until link is active or inactive
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Bridge device
+    :type pdev: struct pci_dev \*
 
-    :param bool active:
+    :param active:
         waiting for active or inactive?
+    :type active: bool
 
 .. _`pcie_wait_for_link.description`:
 
@@ -2417,19 +2713,20 @@ Description
 
 Use this to wait till link becomes active or inactive.
 
-.. _`pci_reset_bridge_secondary_bus`:
+.. _`pci_bridge_secondary_bus_reset`:
 
-pci_reset_bridge_secondary_bus
+pci_bridge_secondary_bus_reset
 ==============================
 
-.. c:function:: int pci_reset_bridge_secondary_bus(struct pci_dev *dev)
+.. c:function:: int pci_bridge_secondary_bus_reset(struct pci_dev *dev)
 
     Reset the secondary bus on a PCI bridge.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         Bridge device
+    :type dev: struct pci_dev \*
 
-.. _`pci_reset_bridge_secondary_bus.description`:
+.. _`pci_bridge_secondary_bus_reset.description`:
 
 Description
 -----------
@@ -2446,8 +2743,9 @@ __pci_reset_function_locked
 
     reset a PCI device function while holding the \ ``dev``\  mutex lock.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to reset
+    :type dev: struct pci_dev \*
 
 .. _`__pci_reset_function_locked.description`:
 
@@ -2477,8 +2775,9 @@ pci_probe_reset_function
 
     check whether the device can be safely reset
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to reset
+    :type dev: struct pci_dev \*
 
 .. _`pci_probe_reset_function.description`:
 
@@ -2501,8 +2800,9 @@ pci_reset_function
 
     quiesce and reset a PCI device function
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to reset
+    :type dev: struct pci_dev \*
 
 .. _`pci_reset_function.description`:
 
@@ -2530,8 +2830,9 @@ pci_reset_function_locked
 
     quiesce and reset a PCI device function
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to reset
+    :type dev: struct pci_dev \*
 
 .. _`pci_reset_function_locked.description`:
 
@@ -2560,8 +2861,9 @@ pci_try_reset_function
 
     quiesce and reset a PCI device function
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to reset
+    :type dev: struct pci_dev \*
 
 .. _`pci_try_reset_function.description`:
 
@@ -2579,8 +2881,9 @@ pci_probe_reset_slot
 
     probe whether a PCI slot can be reset
 
-    :param struct pci_slot \*slot:
+    :param slot:
         PCI slot to probe
+    :type slot: struct pci_slot \*
 
 .. _`pci_probe_reset_slot.description`:
 
@@ -2589,19 +2892,20 @@ Description
 
 Return 0 if slot can be reset, negative if a slot reset is not supported.
 
-.. _`pci_reset_slot`:
+.. _`__pci_reset_slot`:
 
-pci_reset_slot
-==============
+__pci_reset_slot
+================
 
-.. c:function:: int pci_reset_slot(struct pci_slot *slot)
+.. c:function:: int __pci_reset_slot(struct pci_slot *slot)
 
-    reset a PCI slot
+    Try to reset a PCI slot
 
-    :param struct pci_slot \*slot:
+    :param slot:
         PCI slot to reset
+    :type slot: struct pci_slot \*
 
-.. _`pci_reset_slot.description`:
+.. _`__pci_reset_slot.description`:
 
 Description
 -----------
@@ -2615,26 +2919,29 @@ function of the slot and any subordinate buses behind the slot are reset
 through this function.  PCI config space of all devices in the slot and
 behind the slot is saved before and restored after reset.
 
-Return 0 on success, non-zero on error.
+Same as above except return -EAGAIN if the slot cannot be locked
 
-.. _`pci_try_reset_slot`:
+.. _`pci_bus_error_reset`:
 
-pci_try_reset_slot
-==================
+pci_bus_error_reset
+===================
 
-.. c:function:: int pci_try_reset_slot(struct pci_slot *slot)
+.. c:function:: int pci_bus_error_reset(struct pci_dev *bridge)
 
-    Try to reset a PCI slot
+    reset the bridge's subordinate bus
 
-    :param struct pci_slot \*slot:
-        PCI slot to reset
+    :param bridge:
+        The parent device that connects to the bus to reset
+    :type bridge: struct pci_dev \*
 
-.. _`pci_try_reset_slot.description`:
+.. _`pci_bus_error_reset.description`:
 
 Description
 -----------
 
-Same as above except return -EAGAIN if the slot cannot be locked
+This function will first try to reset the slots on this bus if the method is
+available. If slot reset fails or is not available, this will fall back to a
+secondary bus reset.
 
 .. _`pci_probe_reset_bus`:
 
@@ -2645,8 +2952,9 @@ pci_probe_reset_bus
 
     probe whether a PCI bus can be reset
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus to probe
+    :type bus: struct pci_bus \*
 
 .. _`pci_probe_reset_bus.description`:
 
@@ -2655,41 +2963,40 @@ Description
 
 Return 0 if bus can be reset, negative if a bus reset is not supported.
 
+.. _`__pci_reset_bus`:
+
+__pci_reset_bus
+===============
+
+.. c:function:: int __pci_reset_bus(struct pci_bus *bus)
+
+    Try to reset a PCI bus
+
+    :param bus:
+        top level PCI bus to reset
+    :type bus: struct pci_bus \*
+
+.. _`__pci_reset_bus.description`:
+
+Description
+-----------
+
+Same as above except return -EAGAIN if the bus cannot be locked
+
 .. _`pci_reset_bus`:
 
 pci_reset_bus
 =============
 
-.. c:function:: int pci_reset_bus(struct pci_bus *bus)
-
-    reset a PCI bus
-
-    :param struct pci_bus \*bus:
-        top level PCI bus to reset
-
-.. _`pci_reset_bus.description`:
-
-Description
------------
-
-Do a bus reset on the given bus and any subordinate buses, saving
-and restoring state of all devices.
-
-Return 0 on success, non-zero on error.
-
-.. _`pci_try_reset_bus`:
-
-pci_try_reset_bus
-=================
-
-.. c:function:: int pci_try_reset_bus(struct pci_bus *bus)
+.. c:function:: int pci_reset_bus(struct pci_dev *pdev)
 
     Try to reset a PCI bus
 
-    :param struct pci_bus \*bus:
-        top level PCI bus to reset
+    :param pdev:
+        top level PCI device to reset via slot/bus
+    :type pdev: struct pci_dev \*
 
-.. _`pci_try_reset_bus.description`:
+.. _`pci_reset_bus.description`:
 
 Description
 -----------
@@ -2705,8 +3012,9 @@ pcix_get_max_mmrbc
 
     get PCI-X maximum designed memory read byte count
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
 .. _`pcix_get_max_mmrbc.description`:
 
@@ -2725,8 +3033,9 @@ pcix_get_mmrbc
 
     get PCI-X maximum memory read byte count
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
 .. _`pcix_get_mmrbc.description`:
 
@@ -2745,12 +3054,14 @@ pcix_set_mmrbc
 
     set PCI-X maximum memory read byte count
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
-    :param int mmrbc:
+    :param mmrbc:
         maximum memory read count in bytes
         valid values are 512, 1024, 2048, 4096
+    :type mmrbc: int
 
 .. _`pcix_set_mmrbc.description`:
 
@@ -2769,8 +3080,9 @@ pcie_get_readrq
 
     get PCI Express read request size
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
 .. _`pcie_get_readrq.description`:
 
@@ -2789,12 +3101,14 @@ pcie_set_readrq
 
     set PCI Express maximum memory read request
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
-    :param int rq:
+    :param rq:
         maximum memory read count in bytes
         valid values are 128, 256, 512, 1024, 2048, 4096
+    :type rq: int
 
 .. _`pcie_set_readrq.description`:
 
@@ -2812,8 +3126,9 @@ pcie_get_mps
 
     get PCI Express maximum payload size
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
 .. _`pcie_get_mps.description`:
 
@@ -2831,12 +3146,14 @@ pcie_set_mps
 
     set PCI Express maximum payload size
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
-    :param int mps:
+    :param mps:
         maximum payload size in bytes
         valid values are 128, 256, 512, 1024, 2048, 4096
+    :type mps: int
 
 .. _`pcie_set_mps.description`:
 
@@ -2854,17 +3171,21 @@ pcie_bandwidth_available
 
     determine minimum link settings of a PCIe device and its bandwidth limitation
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
-    :param struct pci_dev \*\*limiting_dev:
+    :param limiting_dev:
         storage for device causing the bandwidth limitation
+    :type limiting_dev: struct pci_dev \*\*
 
-    :param enum pci_bus_speed \*speed:
+    :param speed:
         storage for speed of limiting device
+    :type speed: enum pci_bus_speed \*
 
-    :param enum pcie_link_width \*width:
+    :param width:
         storage for width of limiting device
+    :type width: enum pcie_link_width \*
 
 .. _`pcie_bandwidth_available.description`:
 
@@ -2886,8 +3207,9 @@ pcie_get_speed_cap
 
     query for the PCI device's link speed capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
 .. _`pcie_get_speed_cap.description`:
 
@@ -2906,8 +3228,9 @@ pcie_get_width_cap
 
     query for the PCI device's link width capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
 .. _`pcie_get_width_cap.description`:
 
@@ -2926,14 +3249,17 @@ pcie_bandwidth_capable
 
     calculate a PCI device's link bandwidth capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param enum pci_bus_speed \*speed:
+    :param speed:
         storage for link speed
+    :type speed: enum pci_bus_speed \*
 
-    :param enum pcie_link_width \*width:
+    :param width:
         storage for link width
+    :type width: enum pcie_link_width \*
 
 .. _`pcie_bandwidth_capable.description`:
 
@@ -2944,6 +3270,33 @@ Calculate a PCI device's link bandwidth by querying for its link speed
 and width, multiplying them, and applying encoding overhead.  The result
 is in Mb/s, i.e., megabits/second of raw bandwidth.
 
+.. _`__pcie_print_link_status`:
+
+__pcie_print_link_status
+========================
+
+.. c:function:: void __pcie_print_link_status(struct pci_dev *dev, bool verbose)
+
+    Report the PCI device's link speed and width
+
+    :param dev:
+        PCI device to query
+    :type dev: struct pci_dev \*
+
+    :param verbose:
+        Print info even when enough bandwidth is available
+    :type verbose: bool
+
+.. _`__pcie_print_link_status.description`:
+
+Description
+-----------
+
+If the available bandwidth at the device is less than the device is
+capable of, report the device's maximum possible bandwidth and the
+upstream link that limits its performance.  If \ ``verbose``\ , always print
+the available bandwidth, even if the device isn't constrained.
+
 .. _`pcie_print_link_status`:
 
 pcie_print_link_status
@@ -2953,17 +3306,16 @@ pcie_print_link_status
 
     Report the PCI device's link speed and width
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to query
+    :type dev: struct pci_dev \*
 
 .. _`pcie_print_link_status.description`:
 
 Description
 -----------
 
-Report the available bandwidth at the device.  If this is less than the
-device is capable of, report the device's maximum possible bandwidth and
-the upstream link that limits its performance to less than that.
+Report the available bandwidth at the device.
 
 .. _`pci_select_bars`:
 
@@ -2974,11 +3326,13 @@ pci_select_bars
 
     Make BAR mask from the type of resource
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device for which BAR mask is made
+    :type dev: struct pci_dev \*
 
-    :param unsigned long flags:
+    :param flags:
         resource type mask to be selected
+    :type flags: unsigned long
 
 .. _`pci_select_bars.description`:
 
@@ -2996,18 +3350,22 @@ pci_set_vga_state
 
     set VGA decode state on device and parents if requested
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param bool decode:
+    :param decode:
         true = enable decoding, false = disable decoding
+    :type decode: bool
 
-    :param unsigned int command_bits:
+    :param command_bits:
         PCI_COMMAND_IO and/or PCI_COMMAND_MEMORY
+    :type command_bits: unsigned int
 
-    :param u32 flags:
+    :param flags:
         traverse ancestors and change bridges
         CHANGE_BRIDGE_ONLY / CHANGE_BRIDGE
+    :type flags: u32
 
 .. _`pci_add_dma_alias`:
 
@@ -3018,19 +3376,32 @@ pci_add_dma_alias
 
     Add a DMA devfn alias for a device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device for which alias is added
+    :type dev: struct pci_dev \*
 
-    :param u8 devfn:
+    :param devfn:
         alias slot and function
+    :type devfn: u8
 
 .. _`pci_add_dma_alias.description`:
 
 Description
 -----------
 
-This helper encodes 8-bit devfn as bit number in dma_alias_mask.
-It should be called early, preferably as PCI fixup header quirk.
+This helper encodes an 8-bit devfn as a bit number in dma_alias_mask
+which is used to program permissible bus-devfn source addresses for DMA
+requests in an IOMMU.  These aliases factor into IOMMU group creation
+and are useful for devices generating DMA requests beyond or different
+from their logical bus-devfn.  Examples include device quirks where the
+device simply uses the wrong devfn, as well as non-transparent bridges
+where the alias may be a proxy for devices in another domain.
+
+IOMMU group creation is performed during device discovery or addition,
+prior to any potential DMA mapping and therefore prior to driver probing
+(especially for userspace assigned devices where IOMMU group definition
+cannot be left as a userspace activity).  DMA aliases should therefore
+be configured via quirks, such as the PCI fixup header quirk.
 
 .. _`pci_specified_resource_alignment`:
 
@@ -3041,11 +3412,13 @@ pci_specified_resource_alignment
 
     get resource alignment specified by user.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device to get
+    :type dev: struct pci_dev \*
 
-    :param bool \*resize:
+    :param resize:
         whether or not to change resources' size when reassigning alignment
+    :type resize: bool \*
 
 .. _`pci_specified_resource_alignment.return`:
 
@@ -3064,8 +3437,9 @@ pci_ext_cfg_avail
 
     can we access extended PCI config space?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pci_ext_cfg_avail.description`:
 

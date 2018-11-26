@@ -10,8 +10,9 @@ adf_send_admin_init
 
     Function sends init message to FW
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_send_admin_init.description`:
 

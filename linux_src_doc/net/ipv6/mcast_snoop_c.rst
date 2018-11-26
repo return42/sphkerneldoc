@@ -10,11 +10,13 @@ ipv6_mc_check_mld
 
     checks whether this is a sane MLD packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb to validate
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff \*\*skb_trimmed:
+    :param skb_trimmed:
         to store an skb pointer trimmed to IPv6 packet tail (optional)
+    :type skb_trimmed: struct sk_buff \*\*
 
 .. _`ipv6_mc_check_mld.description`:
 

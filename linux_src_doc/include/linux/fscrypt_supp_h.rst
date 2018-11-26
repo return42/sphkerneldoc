@@ -10,21 +10,24 @@ fscrypt_match_name
 
     test whether the given name matches a directory entry
 
-    :param const struct fscrypt_name \*fname:
+    :param fname:
         the name being searched for
+    :type fname: const struct fscrypt_name \*
 
-    :param const u8 \*de_name:
+    :param de_name:
         the name from the directory entry
+    :type de_name: const u8 \*
 
-    :param u32 de_name_len:
+    :param de_name_len:
         the length of \ ``de_name``\  in bytes
+    :type de_name_len: u32
 
 .. _`fscrypt_match_name.description`:
 
 Description
 -----------
 
-Normally \ ``fname``\ ->disk_name will be set, and in that case we simply compare
+Normally \ ``fname->disk_name``\  will be set, and in that case we simply compare
 that to the name stored in the directory entry.  The only exception is that
 if we don't have the key for an encrypted directory and a filename in it is
 very long, then we won't have the full disk_name and we'll instead need to

@@ -10,8 +10,9 @@ mpi_get_size
 
     returns max size required to store the number
 
-    :param MPI a:
+    :param a:
         A multi precision integer for which we want to allocate a bufer
+    :type a: MPI
 
 .. _`mpi_get_size.return`:
 

@@ -10,14 +10,17 @@ rt5514_spi_burst_read
 
     Read data from SPI by rt5514 address.
 
-    :param unsigned int addr:
+    :param addr:
         Start address.
+    :type addr: unsigned int
 
-    :param u8 \*rxbuf:
+    :param rxbuf:
         Data Buffer for reading.
+    :type rxbuf: u8 \*
 
-    :param size_t len:
+    :param len:
         Data length, it must be a multiple of 8.
+    :type len: size_t
 
 .. _`rt5514_spi_burst_read.description`:
 
@@ -36,14 +39,17 @@ rt5514_spi_burst_write
 
     Write data to SPI by rt5514 address.
 
-    :param u32 addr:
+    :param addr:
         Start address.
+    :type addr: u32
 
-    :param const u8 \*txbuf:
+    :param txbuf:
         Data Buffer for writng.
+    :type txbuf: const u8 \*
 
-    :param size_t len:
+    :param len:
         Data length, it must be a multiple of 8.
+    :type len: size_t
 
 .. _`rt5514_spi_burst_write.description`:
 

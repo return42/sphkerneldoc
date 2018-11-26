@@ -8,8 +8,9 @@ ahci_mvebu_stop_engine
 
 .. c:function:: int ahci_mvebu_stop_engine(struct ata_port *ap)
 
-    :param struct ata_port \*ap:
+    :param ap:
         Target ata port
+    :type ap: struct ata_port \*
 
 .. _`ahci_mvebu_stop_engine.description`:
 

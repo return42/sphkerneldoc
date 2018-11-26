@@ -10,11 +10,13 @@ gmc_v9_0_flush_gpu_tlb
 
     gart tlb flush callback
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param uint32_t vmid:
+    :param vmid:
         vm instance to flush
+    :type vmid: uint32_t
 
 .. _`gmc_v9_0_flush_gpu_tlb.description`:
 
@@ -32,20 +34,25 @@ gmc_v9_0_set_pte_pde
 
     update the page tables using MMIO
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param void \*cpu_pt_addr:
+    :param cpu_pt_addr:
         cpu address of the page table
+    :type cpu_pt_addr: void \*
 
-    :param uint32_t gpu_page_idx:
+    :param gpu_page_idx:
         entry in the page table to update
+    :type gpu_page_idx: uint32_t
 
-    :param uint64_t addr:
+    :param addr:
         dst addr to write into pte/pde
+    :type addr: uint64_t
 
-    :param uint64_t flags:
+    :param flags:
         access flags
+    :type flags: uint64_t
 
 .. _`gmc_v9_0_set_pte_pde.description`:
 
@@ -63,8 +70,9 @@ gmc_v9_0_mc_init
 
     initialize the memory controller driver params
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gmc_v9_0_mc_init.description`:
 
@@ -75,25 +83,6 @@ Look up the amount of vram, vram width, and decide how to place
 vram and gart within the GPU's physical address space.
 Returns 0 for success.
 
-.. _`gmc_v9_0_gart_fini`:
-
-gmc_v9_0_gart_fini
-==================
-
-.. c:function:: void gmc_v9_0_gart_fini(struct amdgpu_device *adev)
-
-    vm fini callback
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`gmc_v9_0_gart_fini.description`:
-
-Description
------------
-
-Tears down the driver GART/VM setup (CIK).
-
 .. _`gmc_v9_0_gart_enable`:
 
 gmc_v9_0_gart_enable
@@ -103,8 +92,9 @@ gmc_v9_0_gart_enable
 
     gart enable
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gmc_v9_0_gart_disable`:
 
@@ -115,8 +105,9 @@ gmc_v9_0_gart_disable
 
     gart disable
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`gmc_v9_0_gart_disable.description`:
 

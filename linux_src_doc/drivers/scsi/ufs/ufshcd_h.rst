@@ -755,6 +755,8 @@ Definition
         struct rw_semaphore clk_scaling_lock;
         struct ufs_desc_size desc_size;
         atomic_t scsi_block_reqs_cnt;
+        struct device bsg_dev;
+        struct request_queue *bsg_queue;
     }
 
 .. _`ufs_hba.members`:
@@ -985,6 +987,12 @@ desc_size
 scsi_block_reqs_cnt
     reference counting for scsi block requests
 
+bsg_dev
+    *undescribed*
+
+bsg_queue
+    *undescribed*
+
 .. _`ufshcd_rmwl`:
 
 ufshcd_rmwl
@@ -994,17 +1002,21 @@ ufshcd_rmwl
 
     read modify write into a register \ ``hba``\  - per adapter instance \ ``mask``\  - mask to apply on read value \ ``val``\  - actual value to write \ ``reg``\  - register address
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         *undescribed*
+    :type hba: struct ufs_hba \*
 
-    :param u32 mask:
+    :param mask:
         *undescribed*
+    :type mask: u32
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
-    :param u32 reg:
+    :param reg:
         *undescribed*
+    :type reg: u32
 
 .. _`ufshcd_set_variant`:
 
@@ -1015,11 +1027,13 @@ ufshcd_set_variant
 
     set variant specific data to the hba \ ``hba``\  - per adapter instance \ ``variant``\  - pointer to variant specific data
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         *undescribed*
+    :type hba: struct ufs_hba \*
 
-    :param void \*variant:
+    :param variant:
         *undescribed*
+    :type variant: void \*
 
 .. _`ufshcd_get_variant`:
 
@@ -1030,8 +1044,9 @@ ufshcd_get_variant
 
     get variant specific data from the hba \ ``hba``\  - per adapter instance
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         *undescribed*
+    :type hba: struct ufs_hba \*
 
 .. This file was automatic generated / don't edit.
 

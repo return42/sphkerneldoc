@@ -8,21 +8,26 @@ ipw2100_set_key
 
 .. c:function:: int ipw2100_set_key(struct ipw2100_priv *priv, int idx, char *key, int len, int batch_mode)
 
-    :param struct ipw2100_priv \*priv:
+    :param priv:
         struct to work on
+    :type priv: struct ipw2100_priv \*
 
-    :param int idx:
+    :param idx:
         index of the key we want to set
+    :type idx: int
 
-    :param char \*key:
+    :param key:
         ptr to the key data to set
+    :type key: char \*
 
-    :param int len:
+    :param len:
         length of the buffer at \ ``key``\ 
+    :type len: int
 
-    :param int batch_mode:
+    :param batch_mode:
         FIXME perform the operation in batch mode, not
         disabling the device.
+    :type batch_mode: int
 
 .. _`ipw2100_set_key.description`:
 
@@ -41,8 +46,9 @@ ipw2100_init
 
 .. c:function:: int ipw2100_init( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ipw2100_init.description`:
 
@@ -67,8 +73,9 @@ ipw2100_exit
 
 .. c:function:: void __exit ipw2100_exit( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

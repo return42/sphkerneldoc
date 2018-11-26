@@ -10,8 +10,9 @@ failover_slave_register
 
     Register a slave netdev
 
-    :param struct net_device \*slave_dev:
+    :param slave_dev:
         slave netdev that is being registered
+    :type slave_dev: struct net_device \*
 
 .. _`failover_slave_register.description`:
 
@@ -30,8 +31,9 @@ failover_slave_unregister
 
     Unregister a slave netdev
 
-    :param struct net_device \*slave_dev:
+    :param slave_dev:
         slave netdev that is being unregistered
+    :type slave_dev: struct net_device \*
 
 .. _`failover_slave_unregister.description`:
 
@@ -49,11 +51,13 @@ failover_register
 
     Register a failover instance
 
-    :param struct net_device \*dev:
+    :param dev:
         failover netdev
+    :type dev: struct net_device \*
 
-    :param struct failover_ops \*ops:
+    :param ops:
         failover ops
+    :type ops: struct failover_ops \*
 
 .. _`failover_register.description`:
 
@@ -80,8 +84,9 @@ failover_unregister
 
     Unregister a failover instance
 
-    :param struct failover \*failover:
+    :param failover:
         pointer to failover instance
+    :type failover: struct failover \*
 
 .. _`failover_unregister.description`:
 

@@ -10,8 +10,9 @@ msi_bitmap_reserve_dt_hwirqs
 
     Reserve irqs specified in the device tree.
 
-    :param struct msi_bitmap \*bmp:
+    :param bmp:
         pointer to the MSI bitmap.
+    :type bmp: struct msi_bitmap \*
 
 .. _`msi_bitmap_reserve_dt_hwirqs.description`:
 

@@ -10,8 +10,9 @@ read_main_config_table
 
     read the configure table and save it.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`read_general_status_table`:
 
@@ -22,8 +23,9 @@ read_general_status_table
 
     read the general status table and save it.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`read_inbnd_queue_table`:
 
@@ -34,8 +36,9 @@ read_inbnd_queue_table
 
     read the inbound queue table and save it.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`read_outbnd_queue_table`:
 
@@ -46,8 +49,9 @@ read_outbnd_queue_table
 
     read the outbound queue table and save it.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`init_default_table_values`:
 
@@ -58,8 +62,9 @@ init_default_table_values
 
     init the default table.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`update_main_config_table`:
 
@@ -70,8 +75,9 @@ update_main_config_table
 
     update the main default table to the HBA.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`update_inbnd_queue_table`:
 
@@ -82,11 +88,13 @@ update_inbnd_queue_table
 
     update the inbound queue table to the HBA.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param int number:
+    :param number:
         *undescribed*
+    :type number: int
 
 .. _`update_outbnd_queue_table`:
 
@@ -97,11 +105,13 @@ update_outbnd_queue_table
 
     update the outbound queue table to the HBA.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param int number:
+    :param number:
         *undescribed*
+    :type number: int
 
 .. _`pm8001_bar4_shift`:
 
@@ -112,11 +122,13 @@ pm8001_bar4_shift
 
     function is called to shift BAR base address
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card infomation
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 shiftValue:
+    :param shiftValue:
         shifting value in memory bar.
+    :type shiftValue: u32
 
 .. _`mpi_set_phys_g3_with_ssc`:
 
@@ -125,11 +137,13 @@ mpi_set_phys_g3_with_ssc
 
 .. c:function:: void mpi_set_phys_g3_with_ssc(struct pm8001_hba_info *pm8001_ha, u32 SSCbit)
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 SSCbit:
+    :param SSCbit:
         set SSCbit to 0 to disable all phys ssc; 1 to enable all phys ssc.
+    :type SSCbit: u32
 
 .. _`mpi_set_open_retry_interval_reg`:
 
@@ -138,12 +152,14 @@ mpi_set_open_retry_interval_reg
 
 .. c:function:: void mpi_set_open_retry_interval_reg(struct pm8001_hba_info *pm8001_ha, u32 interval)
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
         \ ``interval``\  - interval time for each OPEN_REJECT (RETRY). The units are in 1us.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 interval:
+    :param interval:
         *undescribed*
+    :type interval: u32
 
 .. _`mpi_init_check`:
 
@@ -154,8 +170,9 @@ mpi_init_check
 
     check firmware initialization status.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`check_fw_ready`:
 
@@ -166,8 +183,9 @@ check_fw_ready
 
     The LLDD check if the FW is ready, if not, return error.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_chip_init`:
 
@@ -178,8 +196,9 @@ pm8001_chip_init
 
     the main init function that initialize whole PM8001 chip.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`soft_reset_ready_check`:
 
@@ -190,8 +209,9 @@ soft_reset_ready_check
 
     Function to check FW is ready for soft reset.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_chip_soft_rst`:
 
@@ -202,8 +222,9 @@ pm8001_chip_soft_rst
 
     soft reset the PM8001 chip, so that the clear all the FW register status to the originated status.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_chip_iounmap`:
 
@@ -214,8 +235,9 @@ pm8001_chip_iounmap
 
     which maped when initialized.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_chip_intx_interrupt_enable`:
 
@@ -226,8 +248,9 @@ pm8001_chip_intx_interrupt_enable
 
     enable PM8001 chip interrupt
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_chip_msix_interrupt_enable`:
 
@@ -238,11 +261,13 @@ pm8001_chip_msix_interrupt_enable
 
     enable PM8001 chip interrupt
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 int_vec_idx:
+    :param int_vec_idx:
         *undescribed*
+    :type int_vec_idx: u32
 
 .. _`pm8001_chip_msix_interrupt_disable`:
 
@@ -253,11 +278,13 @@ pm8001_chip_msix_interrupt_disable
 
     disable PM8001 chip interrupt
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 int_vec_idx:
+    :param int_vec_idx:
         *undescribed*
+    :type int_vec_idx: u32
 
 .. _`pm8001_chip_interrupt_enable`:
 
@@ -268,11 +295,13 @@ pm8001_chip_interrupt_enable
 
     enable PM8001 chip interrupt
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u8 vec:
+    :param vec:
         *undescribed*
+    :type vec: u8
 
 .. _`pm8001_chip_interrupt_disable`:
 
@@ -283,11 +312,13 @@ pm8001_chip_interrupt_disable
 
     disable PM8001 chip interrupt
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u8 vec:
+    :param vec:
         *undescribed*
+    :type vec: u8
 
 .. _`pm8001_mpi_msg_free_get`:
 
@@ -298,14 +329,17 @@ pm8001_mpi_msg_free_get
 
     get the free message buffer for transfer inbound queue.
 
-    :param struct inbound_queue_table \*circularQ:
+    :param circularQ:
         the inbound queue  we want to transfer to HBA.
+    :type circularQ: struct inbound_queue_table \*
 
-    :param u16 messageSize:
+    :param messageSize:
         the message size of this transfer, normally it is 64 bytes
+    :type messageSize: u16
 
-    :param void \*\*messagePtr:
+    :param messagePtr:
         the pointer to message.
+    :type messagePtr: void \*\*
 
 .. _`pm8001_mpi_build_cmd`:
 
@@ -316,20 +350,25 @@ pm8001_mpi_build_cmd
 
     build the message queue for transfer, update the PI to FW to tell the fw to get this message from IOMB.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct inbound_queue_table \*circularQ:
+    :param circularQ:
         the inbound queue we want to transfer to HBA.
+    :type circularQ: struct inbound_queue_table \*
 
-    :param u32 opCode:
+    :param opCode:
         the operation code represents commands which LLDD and fw recognized.
+    :type opCode: u32
 
-    :param void \*payload:
+    :param payload:
         the command payload of each operation command.
+    :type payload: void \*
 
-    :param u32 responseQueue:
+    :param responseQueue:
         *undescribed*
+    :type responseQueue: u32
 
 .. _`pm8001_mpi_msg_consume`:
 
@@ -340,17 +379,21 @@ pm8001_mpi_msg_consume
 
     get the MPI message from outbound queue message table.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct outbound_queue_table \*circularQ:
+    :param circularQ:
         the outbound queue  table.
+    :type circularQ: struct outbound_queue_table \*
 
-    :param void \*\*messagePtr1:
+    :param messagePtr1:
         the message contents of this outbound message.
+    :type messagePtr1: void \*\*
 
-    :param u8 \*pBC:
+    :param pBC:
         the message size.
+    :type pBC: u8 \*
 
 .. _`mpi_ssp_completion`:
 
@@ -361,11 +404,13 @@ mpi_ssp_completion
 
     process the event that FW response to the SSP request.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param void \*piomb:
+    :param piomb:
         the message contents of this outbound message.
+    :type piomb: void \*
 
 .. _`mpi_ssp_completion.description`:
 
@@ -387,11 +432,13 @@ pm8001_bytes_dmaed
 
     one of the interface function communication with libsas
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param int i:
+    :param i:
         which phy that received the event.
+    :type i: int
 
 .. _`pm8001_bytes_dmaed.description`:
 
@@ -413,11 +460,13 @@ pm8001_get_attached_sas_addr
 
     - extract/generate attached SAS address
 
-    :param struct pm8001_phy \*phy:
+    :param phy:
         pointer to asd_phy
+    :type phy: struct pm8001_phy \*
 
-    :param u8 \*sas_addr:
+    :param sas_addr:
         pointer to buffer where the SAS address is to be written
+    :type sas_addr: u8 \*
 
 .. _`pm8001_get_attached_sas_addr.description`:
 
@@ -445,26 +494,33 @@ pm8001_hw_event_ack_req
 
     For PM8001,some events need to acknowage to FW.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 Qnum:
+    :param Qnum:
         the outbound queue message number.
+    :type Qnum: u32
 
-    :param u32 SEA:
+    :param SEA:
         source of event to ack
+    :type SEA: u32
 
-    :param u32 port_id:
+    :param port_id:
         port id.
+    :type port_id: u32
 
-    :param u32 phyId:
+    :param phyId:
         phy id.
+    :type phyId: u32
 
-    :param u32 param0:
+    :param param0:
         parameter 0.
+    :type param0: u32
 
-    :param u32 param1:
+    :param param1:
         parameter 1.
+    :type param1: u32
 
 .. _`hw_event_sas_phy_up`:
 
@@ -475,11 +531,13 @@ hw_event_sas_phy_up
 
     FW tells me a SAS phy up event.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param void \*piomb:
+    :param piomb:
         IO message buffer
+    :type piomb: void \*
 
 .. _`hw_event_sata_phy_up`:
 
@@ -490,11 +548,13 @@ hw_event_sata_phy_up
 
     FW tells me a SATA phy up event.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param void \*piomb:
+    :param piomb:
         IO message buffer
+    :type piomb: void \*
 
 .. _`hw_event_phy_down`:
 
@@ -505,11 +565,13 @@ hw_event_phy_down
 
     we should notify the libsas the phy is down.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param void \*piomb:
+    :param piomb:
         IO message buffer
+    :type piomb: void \*
 
 .. _`pm8001_mpi_reg_resp`:
 
@@ -520,11 +582,13 @@ pm8001_mpi_reg_resp
 
     process register device ID response.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param void \*piomb:
+    :param piomb:
         IO message buffer
+    :type piomb: void \*
 
 .. _`pm8001_mpi_reg_resp.description`:
 
@@ -545,26 +609,30 @@ pm8001_mpi_fw_flash_update_resp
 
     Response from FW for flash update command.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param void \*piomb:
+    :param piomb:
         IO message buffer
+    :type piomb: void \*
 
 .. _`mpi_hw_event`:
 
 mpi_hw_event
 ============
 
-.. c:function:: int mpi_hw_event(struct pm8001_hba_info *pm8001_ha, void*piomb)
+.. c:function:: int mpi_hw_event(struct pm8001_hba_info *pm8001_ha, void* piomb)
 
     The hw event has come.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param void\*piomb:
+    :param piomb:
         IO message buffer
+    :type piomb: void\*
 
 .. _`process_one_iomb`:
 
@@ -575,11 +643,13 @@ process_one_iomb
 
     process one outbound Queue memory block
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param void \*piomb:
+    :param piomb:
         IO message buffer
+    :type piomb: void \*
 
 .. _`pm8001_chip_smp_req`:
 
@@ -590,11 +660,13 @@ pm8001_chip_smp_req
 
     send a SMP task to FW
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_ccb_info \*ccb:
+    :param ccb:
         the ccb information this request used.
+    :type ccb: struct pm8001_ccb_info \*
 
 .. _`pm8001_chip_ssp_io_req`:
 
@@ -605,11 +677,13 @@ pm8001_chip_ssp_io_req
 
     send a SSP task to FW
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_ccb_info \*ccb:
+    :param ccb:
         the ccb information this request used.
+    :type ccb: struct pm8001_ccb_info \*
 
 .. _`pm8001_chip_phy_start_req`:
 
@@ -620,11 +694,13 @@ pm8001_chip_phy_start_req
 
     start phy via PHY_START COMMAND
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u8 phy_id:
+    :param phy_id:
         the phy id which we wanted to start up.
+    :type phy_id: u8
 
 .. _`pm8001_chip_phy_stop_req`:
 
@@ -635,11 +711,13 @@ pm8001_chip_phy_stop_req
 
     start phy via PHY_STOP COMMAND
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u8 phy_id:
+    :param phy_id:
         the phy id which we wanted to start up.
+    :type phy_id: u8
 
 .. _`pm8001_chip_reg_dev_req`:
 
@@ -648,14 +726,17 @@ pm8001_chip_reg_dev_req
 
 .. c:function:: int pm8001_chip_reg_dev_req(struct pm8001_hba_info *pm8001_ha, struct pm8001_device *pm8001_dev, u32 flag)
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         *undescribed*
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_device \*pm8001_dev:
+    :param pm8001_dev:
         *undescribed*
+    :type pm8001_dev: struct pm8001_device \*
 
-    :param u32 flag:
+    :param flag:
         *undescribed*
+    :type flag: u32
 
 .. _`pm8001_chip_dereg_dev_req`:
 
@@ -664,11 +745,13 @@ pm8001_chip_dereg_dev_req
 
 .. c:function:: int pm8001_chip_dereg_dev_req(struct pm8001_hba_info *pm8001_ha, u32 device_id)
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         *undescribed*
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 device_id:
+    :param device_id:
         *undescribed*
+    :type device_id: u32
 
 .. _`pm8001_chip_phy_ctl_req`:
 
@@ -679,14 +762,17 @@ pm8001_chip_phy_ctl_req
 
     support the local phy operation
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u32 phyId:
+    :param phyId:
         *undescribed*
+    :type phyId: u32
 
-    :param u32 phy_op:
+    :param phy_op:
         *undescribed*
+    :type phy_op: u32
 
 .. _`pm8001_chip_isr`:
 
@@ -697,11 +783,13 @@ pm8001_chip_isr
 
     PM8001 isr handler.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param u8 vec:
+    :param vec:
         *undescribed*
+    :type vec: u8
 
 .. _`pm8001_chip_abort_task`:
 
@@ -712,20 +800,25 @@ pm8001_chip_abort_task
 
     SAS abort task when error or exception happened.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         *undescribed*
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_device \*pm8001_dev:
+    :param pm8001_dev:
         *undescribed*
+    :type pm8001_dev: struct pm8001_device \*
 
-    :param u8 flag:
+    :param flag:
         the abort flag.
+    :type flag: u8
 
-    :param u32 task_tag:
+    :param task_tag:
         *undescribed*
+    :type task_tag: u32
 
-    :param u32 cmd_tag:
+    :param cmd_tag:
         *undescribed*
+    :type cmd_tag: u32
 
 .. _`pm8001_chip_ssp_tm_req`:
 
@@ -736,14 +829,17 @@ pm8001_chip_ssp_tm_req
 
     built the task management command.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_ccb_info \*ccb:
+    :param ccb:
         the ccb information.
+    :type ccb: struct pm8001_ccb_info \*
 
-    :param struct pm8001_tmf_task \*tmf:
+    :param tmf:
         task management function.
+    :type tmf: struct pm8001_tmf_task \*
 
 .. _`pm8001_chip_fw_flash_update_build`:
 
@@ -754,14 +850,17 @@ pm8001_chip_fw_flash_update_build
 
     support the firmware update operation
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba card information.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param void \*fw_flash_updata_info:
+    :param fw_flash_updata_info:
         firmware flash update param
+    :type fw_flash_updata_info: void \*
 
-    :param u32 tag:
+    :param tag:
         *undescribed*
+    :type tag: u32
 
 .. This file was automatic generated / don't edit.
 

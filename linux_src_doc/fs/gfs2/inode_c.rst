@@ -10,8 +10,9 @@ gfs2_set_iop
 
     Sets inode operations
 
-    :param struct inode \*inode:
+    :param inode:
         The inode with correct i_mode filled in
+    :type inode: struct inode \*
 
 .. _`gfs2_set_iop.description`:
 
@@ -30,21 +31,26 @@ gfs2_inode_lookup
 
     Lookup an inode
 
-    :param struct super_block \*sb:
+    :param sb:
         The super block
+    :type sb: struct super_block \*
 
-    :param unsigned int type:
+    :param type:
         The type of the inode
+    :type type: unsigned int
 
-    :param u64 no_addr:
+    :param no_addr:
         The inode number
+    :type no_addr: u64
 
-    :param u64 no_formal_ino:
+    :param no_formal_ino:
         The inode generation number
+    :type no_formal_ino: u64
 
-    :param unsigned int blktype:
+    :param blktype:
         Requested block type (GFS2_BLKST_DINODE or GFS2_BLKST_UNLINKED;
         GFS2_BLKST_FREE to indicate not to verify)
+    :type blktype: unsigned int
 
 .. _`gfs2_inode_lookup.description`:
 
@@ -73,14 +79,17 @@ gfs2_lookupi
 
     Look up a filename in a directory and return its inode
 
-    :param struct inode \*dir:
+    :param dir:
         *undescribed*
+    :type dir: struct inode \*
 
-    :param const struct qstr \*name:
+    :param name:
         The name of the inode to look for
+    :type name: const struct qstr \*
 
-    :param int is_root:
+    :param is_root:
         If 1, ignore the caller's permissions
+    :type is_root: int
 
 .. _`gfs2_lookupi.description`:
 
@@ -108,14 +117,17 @@ create_ok
 
     OK to create a new on-disk inode here?
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         Directory in which dinode is to be created
+    :type dip: struct gfs2_inode \*
 
-    :param const struct qstr \*name:
+    :param name:
         Name of new dinode
+    :type name: const struct qstr \*
 
-    :param umode_t mode:
+    :param mode:
         *undescribed*
+    :type mode: umode_t
 
 .. _`create_ok.return`:
 
@@ -133,8 +145,9 @@ gfs2_init_xattr
 
     Initialise an xattr block for a new inode
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The inode in question
+    :type ip: struct gfs2_inode \*
 
 .. _`gfs2_init_xattr.description`:
 
@@ -153,14 +166,17 @@ init_dinode
 
     Fill in a new dinode structure
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         The directory this inode is being created in
+    :type dip: struct gfs2_inode \*
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The inode
+    :type ip: struct gfs2_inode \*
 
-    :param const char \*symname:
+    :param symname:
         The symlink destination (if a symlink)
+    :type symname: const char \*
 
 .. _`gfs2_trans_da_blks`:
 
@@ -171,14 +187,17 @@ gfs2_trans_da_blks
 
     Calculate number of blocks to link inode
 
-    :param const struct gfs2_inode \*dip:
+    :param dip:
         The directory we are linking into
+    :type dip: const struct gfs2_inode \*
 
-    :param const struct gfs2_diradd \*da:
+    :param da:
         The dir add information
+    :type da: const struct gfs2_diradd \*
 
-    :param unsigned nr_inodes:
+    :param nr_inodes:
         The number of inodes involved
+    :type nr_inodes: unsigned
 
 .. _`gfs2_trans_da_blks.description`:
 
@@ -202,36 +221,41 @@ Number of blocks
 gfs2_create_inode
 =================
 
-.. c:function:: int gfs2_create_inode(struct inode *dir, struct dentry *dentry, struct file *file, umode_t mode, dev_t dev, const char *symname, unsigned int size, int excl, int *opened)
+.. c:function:: int gfs2_create_inode(struct inode *dir, struct dentry *dentry, struct file *file, umode_t mode, dev_t dev, const char *symname, unsigned int size, int excl)
 
     Create a new inode
 
-    :param struct inode \*dir:
+    :param dir:
         The parent directory
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The new dentry
+    :type dentry: struct dentry \*
 
-    :param struct file \*file:
+    :param file:
         If non-NULL, the file which is being opened
+    :type file: struct file \*
 
-    :param umode_t mode:
+    :param mode:
         The permissions on the new inode
+    :type mode: umode_t
 
-    :param dev_t dev:
+    :param dev:
         For device nodes, this is the device number
+    :type dev: dev_t
 
-    :param const char \*symname:
+    :param symname:
         For symlinks, this is the link destination
+    :type symname: const char \*
 
-    :param unsigned int size:
+    :param size:
         The initial size of the inode (ignored for directories)
+    :type size: unsigned int
 
-    :param int excl:
+    :param excl:
         *undescribed*
-
-    :param int \*opened:
-        *undescribed*
+    :type excl: int
 
 .. _`gfs2_create_inode.return`:
 
@@ -249,17 +273,21 @@ gfs2_create
 
     Create a file
 
-    :param struct inode \*dir:
+    :param dir:
         The directory in which to create the file
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The dentry of the new file
+    :type dentry: struct dentry \*
 
-    :param umode_t mode:
+    :param mode:
         The mode of the new file
+    :type mode: umode_t
 
-    :param bool excl:
+    :param excl:
         *undescribed*
+    :type excl: bool
 
 .. _`gfs2_create.return`:
 
@@ -273,21 +301,21 @@ errno
 \__gfs2_lookup
 ==============
 
-.. c:function:: struct dentry *__gfs2_lookup(struct inode *dir, struct dentry *dentry, struct file *file, int *opened)
+.. c:function:: struct dentry *__gfs2_lookup(struct inode *dir, struct dentry *dentry, struct file *file)
 
     Look up a filename in a directory and return its inode
 
-    :param struct inode \*dir:
+    :param dir:
         The directory inode
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The dentry of the new inode
+    :type dentry: struct dentry \*
 
-    :param struct file \*file:
+    :param file:
         File to be opened
-
-    :param int \*opened:
-        atomic_open flags
+    :type file: struct file \*
 
 .. _`__gfs2_lookup.return`:
 
@@ -305,14 +333,17 @@ gfs2_link
 
     Link to a file
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         The inode to link
+    :type old_dentry: struct dentry \*
 
-    :param struct inode \*dir:
+    :param dir:
         Add link to this directory
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The name of the link
+    :type dentry: struct dentry \*
 
 .. _`gfs2_link.description`:
 
@@ -338,11 +369,13 @@ gfs2_unlink_inode
 
     Removes an inode from its parent dir and unlinks it
 
-    :param struct gfs2_inode \*dip:
+    :param dip:
         The parent directory
+    :type dip: struct gfs2_inode \*
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: const struct dentry \*
 
 .. _`gfs2_unlink_inode.description`:
 
@@ -368,11 +401,13 @@ gfs2_unlink
 
     Unlink an inode (this does rmdir as well)
 
-    :param struct inode \*dir:
+    :param dir:
         The inode of the directory containing the inode to unlink
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The file itself
+    :type dentry: struct dentry \*
 
 .. _`gfs2_unlink.description`:
 
@@ -398,14 +433,17 @@ gfs2_symlink
 
     Create a symlink
 
-    :param struct inode \*dir:
+    :param dir:
         The directory to create the symlink in
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The dentry to put the symlink in
+    :type dentry: struct dentry \*
 
-    :param const char \*symname:
+    :param symname:
         The thing which the link points to
+    :type symname: const char \*
 
 .. _`gfs2_symlink.return`:
 
@@ -423,14 +461,17 @@ gfs2_mkdir
 
     Make a directory
 
-    :param struct inode \*dir:
+    :param dir:
         The parent directory of the new one
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The dentry of the new directory
+    :type dentry: struct dentry \*
 
-    :param umode_t mode:
+    :param mode:
         The mode of the new directory
+    :type mode: umode_t
 
 .. _`gfs2_mkdir.return`:
 
@@ -448,44 +489,50 @@ gfs2_mknod
 
     Make a special file
 
-    :param struct inode \*dir:
+    :param dir:
         The directory in which the special file will reside
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The dentry of the special file
+    :type dentry: struct dentry \*
 
-    :param umode_t mode:
+    :param mode:
         The mode of the special file
+    :type mode: umode_t
 
-    :param dev_t dev:
+    :param dev:
         The device specification of the special file
+    :type dev: dev_t
 
 .. _`gfs2_atomic_open`:
 
 gfs2_atomic_open
 ================
 
-.. c:function:: int gfs2_atomic_open(struct inode *dir, struct dentry *dentry, struct file *file, unsigned flags, umode_t mode, int *opened)
+.. c:function:: int gfs2_atomic_open(struct inode *dir, struct dentry *dentry, struct file *file, unsigned flags, umode_t mode)
 
     Atomically open a file
 
-    :param struct inode \*dir:
+    :param dir:
         The directory
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The proposed new entry
+    :type dentry: struct dentry \*
 
-    :param struct file \*file:
+    :param file:
         The proposed new struct file
+    :type file: struct file \*
 
-    :param unsigned flags:
+    :param flags:
         open flags
+    :type flags: unsigned
 
-    :param umode_t mode:
+    :param mode:
         File mode
-
-    :param int \*opened:
-        Flag to say whether the file has been opened or not
+    :type mode: umode_t
 
 .. _`gfs2_atomic_open.return`:
 
@@ -503,14 +550,17 @@ update_moved_ino
 
     Update an inode that's being moved
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The inode being moved
+    :type ip: struct gfs2_inode \*
 
-    :param struct gfs2_inode \*ndip:
+    :param ndip:
         The parent directory of the new filename
+    :type ndip: struct gfs2_inode \*
 
-    :param int dir_rename:
+    :param dir_rename:
         True of ip is a directory
+    :type dir_rename: int
 
 .. _`update_moved_ino.return`:
 
@@ -528,17 +578,21 @@ gfs2_rename
 
     Rename a file
 
-    :param struct inode \*odir:
+    :param odir:
         Parent directory of old file name
+    :type odir: struct inode \*
 
-    :param struct dentry \*odentry:
+    :param odentry:
         The old dentry of the file
+    :type odentry: struct dentry \*
 
-    :param struct inode \*ndir:
+    :param ndir:
         Parent directory of new file name
+    :type ndir: struct inode \*
 
-    :param struct dentry \*ndentry:
+    :param ndentry:
         The new dentry of the file
+    :type ndentry: struct dentry \*
 
 .. _`gfs2_rename.return`:
 
@@ -556,20 +610,25 @@ gfs2_exchange
 
     exchange two files
 
-    :param struct inode \*odir:
+    :param odir:
         Parent directory of old file name
+    :type odir: struct inode \*
 
-    :param struct dentry \*odentry:
+    :param odentry:
         The old dentry of the file
+    :type odentry: struct dentry \*
 
-    :param struct inode \*ndir:
+    :param ndir:
         Parent directory of new file name
+    :type ndir: struct inode \*
 
-    :param struct dentry \*ndentry:
+    :param ndentry:
         The new dentry of the file
+    :type ndentry: struct dentry \*
 
-    :param unsigned int flags:
+    :param flags:
         The rename flags
+    :type flags: unsigned int
 
 .. _`gfs2_exchange.return`:
 
@@ -587,14 +646,17 @@ gfs2_get_link
 
     Follow a symbolic link
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The dentry of the link
+    :type dentry: struct dentry \*
 
-    :param struct inode \*inode:
+    :param inode:
         The inode of the link
+    :type inode: struct inode \*
 
-    :param struct delayed_call \*done:
+    :param done:
         destructor for return value
+    :type done: struct delayed_call \*
 
 .. _`gfs2_get_link.description`:
 
@@ -617,11 +679,13 @@ gfs2_permission
 
 .. c:function:: int gfs2_permission(struct inode *inode, int mask)
 
-    :param struct inode \*inode:
+    :param inode:
         The inode
+    :type inode: struct inode \*
 
-    :param int mask:
+    :param mask:
         The mask to be tested
+    :type mask: int
 
 .. _`gfs2_permission.description`:
 
@@ -646,11 +710,13 @@ gfs2_setattr_simple
 
 .. c:function:: int gfs2_setattr_simple(struct inode *inode, struct iattr *attr)
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct iattr \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct iattr \*
 
 .. _`gfs2_setattr_simple.return`:
 
@@ -668,11 +734,13 @@ gfs2_setattr
 
     Change attributes on an inode
 
-    :param struct dentry \*dentry:
+    :param dentry:
         The dentry which is changing
+    :type dentry: struct dentry \*
 
-    :param struct iattr \*attr:
+    :param attr:
         The structure describing the change
+    :type attr: struct iattr \*
 
 .. _`gfs2_setattr.description`:
 
@@ -698,17 +766,21 @@ gfs2_getattr
 
     Read out an inode's attributes
 
-    :param const struct path \*path:
+    :param path:
         Object to query
+    :type path: const struct path \*
 
-    :param struct kstat \*stat:
+    :param stat:
         The inode's stats
+    :type stat: struct kstat \*
 
-    :param u32 request_mask:
+    :param request_mask:
         Mask of STATX_xxx flags indicating the caller's interests
+    :type request_mask: u32
 
-    :param unsigned int flags:
+    :param flags:
         AT_STATX_xxx setting
+    :type flags: unsigned int
 
 .. _`gfs2_getattr.description`:
 

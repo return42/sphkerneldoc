@@ -10,11 +10,13 @@ llc_pdu_set_pf_bit
 
     sets poll/final bit in LLC header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param u8 bit_value:
+    :param bit_value:
         poll/final bit (0 or 1).
+    :type bit_value: u8
 
 .. _`llc_pdu_set_pf_bit.description`:
 
@@ -34,11 +36,13 @@ llc_pdu_decode_pf_bit
 
     extracs poll/final bit from LLC header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         input skb that p/f bit must be extracted from it
+    :type skb: struct sk_buff \*
 
-    :param u8 \*pf_bit:
+    :param pf_bit:
         poll/final bit (0 or 1)
+    :type pf_bit: u8 \*
 
 .. _`llc_pdu_decode_pf_bit.description`:
 
@@ -58,11 +62,13 @@ llc_pdu_init_as_disc_cmd
 
     Builds DISC PDU
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param u8 p_bit:
+    :param p_bit:
         The P bit to set in the PDU
+    :type p_bit: u8
 
 .. _`llc_pdu_init_as_disc_cmd.description`:
 
@@ -80,17 +86,21 @@ llc_pdu_init_as_i_cmd
 
     builds I pdu
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param u8 p_bit:
+    :param p_bit:
         The P bit to set in the PDU
+    :type p_bit: u8
 
-    :param u8 ns:
+    :param ns:
         The sequence number of the data PDU
+    :type ns: u8
 
-    :param u8 nr:
+    :param nr:
         The seq. number of the expected I PDU from the remote
+    :type nr: u8
 
 .. _`llc_pdu_init_as_i_cmd.description`:
 
@@ -108,14 +118,17 @@ llc_pdu_init_as_rej_cmd
 
     builds REJ PDU
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param u8 p_bit:
+    :param p_bit:
         The P bit to set in the PDU
+    :type p_bit: u8
 
-    :param u8 nr:
+    :param nr:
         The seq. number of the expected I PDU from the remote
+    :type nr: u8
 
 .. _`llc_pdu_init_as_rej_cmd.description`:
 
@@ -133,14 +146,17 @@ llc_pdu_init_as_rnr_cmd
 
     builds RNR pdu
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param u8 p_bit:
+    :param p_bit:
         The P bit to set in the PDU
+    :type p_bit: u8
 
-    :param u8 nr:
+    :param nr:
         The seq. number of the expected I PDU from the remote
+    :type nr: u8
 
 .. _`llc_pdu_init_as_rnr_cmd.description`:
 
@@ -158,14 +174,17 @@ llc_pdu_init_as_rr_cmd
 
     Builds RR pdu
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param u8 p_bit:
+    :param p_bit:
         The P bit to set in the PDU
+    :type p_bit: u8
 
-    :param u8 nr:
+    :param nr:
         The seq. number of the expected I PDU from the remote
+    :type nr: u8
 
 .. _`llc_pdu_init_as_rr_cmd.description`:
 
@@ -183,11 +202,13 @@ llc_pdu_init_as_sabme_cmd
 
     builds SABME pdu
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param u8 p_bit:
+    :param p_bit:
         The P bit to set in the PDU
+    :type p_bit: u8
 
 .. _`llc_pdu_init_as_sabme_cmd.description`:
 
@@ -205,11 +226,13 @@ llc_pdu_init_as_dm_rsp
 
     builds DM response pdu
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param u8 f_bit:
+    :param f_bit:
         The F bit to set in the PDU
+    :type f_bit: u8
 
 .. _`llc_pdu_init_as_dm_rsp.description`:
 
@@ -227,23 +250,29 @@ llc_pdu_init_as_frmr_rsp
 
     builds FRMR response PDU
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the frame to build
+    :type skb: struct sk_buff \*
 
-    :param struct llc_pdu_sn \*prev_pdu:
+    :param prev_pdu:
         The rejected PDU frame
+    :type prev_pdu: struct llc_pdu_sn \*
 
-    :param u8 f_bit:
+    :param f_bit:
         The F bit to set in the PDU
+    :type f_bit: u8
 
-    :param u8 vs:
+    :param vs:
         tx state vari value for the data link conn at the rejecting LLC
+    :type vs: u8
 
-    :param u8 vr:
+    :param vr:
         rx state var value for the data link conn at the rejecting LLC
+    :type vr: u8
 
-    :param u8 vzyxw:
+    :param vzyxw:
         completely described in the IEEE Std 802.2 document (Pg 55)
+    :type vzyxw: u8
 
 .. _`llc_pdu_init_as_frmr_rsp.description`:
 
@@ -261,14 +290,17 @@ llc_pdu_init_as_rr_rsp
 
     builds RR response pdu
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param u8 f_bit:
+    :param f_bit:
         The F bit to set in the PDU
+    :type f_bit: u8
 
-    :param u8 nr:
+    :param nr:
         The seq. number of the expected data PDU from the remote
+    :type nr: u8
 
 .. _`llc_pdu_init_as_rr_rsp.description`:
 
@@ -286,14 +318,17 @@ llc_pdu_init_as_rej_rsp
 
     builds REJ response pdu
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the skb to build
+    :type skb: struct sk_buff \*
 
-    :param u8 f_bit:
+    :param f_bit:
         The F bit to set in the PDU
+    :type f_bit: u8
 
-    :param u8 nr:
+    :param nr:
         The seq. number of the expected data PDU from the remote
+    :type nr: u8
 
 .. _`llc_pdu_init_as_rej_rsp.description`:
 
@@ -311,14 +346,17 @@ llc_pdu_init_as_rnr_rsp
 
     builds RNR response pdu
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the frame to build
+    :type skb: struct sk_buff \*
 
-    :param u8 f_bit:
+    :param f_bit:
         The F bit to set in the PDU
+    :type f_bit: u8
 
-    :param u8 nr:
+    :param nr:
         The seq. number of the expected data PDU from the remote
+    :type nr: u8
 
 .. _`llc_pdu_init_as_rnr_rsp.description`:
 
@@ -336,11 +374,13 @@ llc_pdu_init_as_ua_rsp
 
     builds UA response pdu
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Address of the frame to build
+    :type skb: struct sk_buff \*
 
-    :param u8 f_bit:
+    :param f_bit:
         The F bit to set in the PDU
+    :type f_bit: u8
 
 .. _`llc_pdu_init_as_ua_rsp.description`:
 
@@ -358,11 +398,13 @@ llc_pdu_decode_pdu_type
 
     designates PDU type
 
-    :param struct sk_buff \*skb:
+    :param skb:
         input skb that type of it must be designated.
+    :type skb: struct sk_buff \*
 
-    :param u8 \*type:
+    :param type:
         type of PDU (output argument).
+    :type type: u8 \*
 
 .. _`llc_pdu_decode_pdu_type.description`:
 
@@ -380,8 +422,9 @@ llc_pdu_get_pf_bit
 
     extracts p/f bit of input PDU
 
-    :param struct llc_pdu_sn \*pdu:
+    :param pdu:
         pointer to LLC header.
+    :type pdu: struct llc_pdu_sn \*
 
 .. _`llc_pdu_get_pf_bit.description`:
 

@@ -10,14 +10,17 @@ set_32bit_val
 
     set 32 value to hw wqe
 
-    :param u32 \*wqe_words:
+    :param wqe_words:
         wqe addr to write
+    :type wqe_words: u32 \*
 
-    :param u32 byte_index:
+    :param byte_index:
         index in wqe
+    :type byte_index: u32
 
-    :param u32 value:
+    :param value:
         value to write
+    :type value: u32
 
 .. _`get_64bit_val`:
 
@@ -28,14 +31,17 @@ get_64bit_val
 
     read 64 bit value from wqe
 
-    :param u64 \*wqe_words:
+    :param wqe_words:
         wqe addr
+    :type wqe_words: u64 \*
 
-    :param u32 byte_index:
+    :param byte_index:
         index to read from
+    :type byte_index: u32
 
-    :param u64 \*value:
+    :param value:
         read value
+    :type value: u64 \*
 
 .. _`get_32bit_val`:
 
@@ -46,14 +52,17 @@ get_32bit_val
 
     read 32 bit value from wqe
 
-    :param u32 \*wqe_words:
+    :param wqe_words:
         wqe addr
+    :type wqe_words: u32 \*
 
-    :param u32 byte_index:
+    :param byte_index:
         index to reaad from
+    :type byte_index: u32
 
-    :param u32 \*value:
+    :param value:
         return 32 bit value
+    :type value: u32 \*
 
 .. This file was automatic generated / don't edit.
 

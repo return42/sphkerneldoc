@@ -10,32 +10,41 @@ avc_audit
 
     Audit the granting or denial of permissions.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 ssid:
+    :param ssid:
         source security identifier
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         target security identifier
+    :type tsid: u32
 
-    :param u16 tclass:
+    :param tclass:
         target security class
+    :type tclass: u16
 
-    :param u32 requested:
+    :param requested:
         requested permissions
+    :type requested: u32
 
-    :param struct av_decision \*avd:
+    :param avd:
         access vector decisions
+    :type avd: struct av_decision \*
 
-    :param int result:
+    :param result:
         result from avc_has_perm_noaudit
+    :type result: int
 
-    :param struct common_audit_data \*a:
+    :param a:
         auxiliary audit data
+    :type a: struct common_audit_data \*
 
-    :param int flags:
+    :param flags:
         VFS walk flags
+    :type flags: int
 
 .. _`avc_audit.description`:
 

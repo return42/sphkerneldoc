@@ -10,8 +10,9 @@ generic_smp_call_function_single_interrupt
 
     Execute SMP IPI callbacks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`generic_smp_call_function_single_interrupt.description`:
 
@@ -30,9 +31,10 @@ flush_smp_call_function_queue
 
     Flush pending smp-call-function callbacks
 
-    :param bool warn_cpu_offline:
+    :param warn_cpu_offline:
         If set to 'true', warn if callbacks were queued on an
         offline CPU. Skip this check if set to 'false'.
+    :type warn_cpu_offline: bool
 
 .. _`flush_smp_call_function_queue.description`:
 
@@ -56,11 +58,13 @@ smp_call_function_single_async
 
     Run an asynchronous function on a specific CPU.
 
-    :param int cpu:
+    :param cpu:
         The CPU to run on.
+    :type cpu: int
 
-    :param call_single_data_t \*csd:
+    :param csd:
         Pre-allocated and setup data structure
+    :type csd: call_single_data_t \*
 
 .. _`smp_call_function_single_async.description`:
 
@@ -91,18 +95,22 @@ smp_call_function_many
 
     Run a function on a set of other CPUs.
 
-    :param const struct cpumask \*mask:
+    :param mask:
         The set of cpus to run on (only runs on online subset).
+    :type mask: const struct cpumask \*
 
-    :param smp_call_func_t func:
+    :param func:
         The function to run. This must be fast and non-blocking.
+    :type func: smp_call_func_t
 
-    :param void \*info:
+    :param info:
         An arbitrary pointer to pass to the function.
+    :type info: void \*
 
-    :param bool wait:
+    :param wait:
         If true, wait (atomically) until function has completed
         on other CPUs.
+    :type wait: bool
 
 .. _`smp_call_function_many.description`:
 
@@ -124,15 +132,18 @@ smp_call_function
 
     Run a function on all other CPUs.
 
-    :param smp_call_func_t func:
+    :param func:
         The function to run. This must be fast and non-blocking.
+    :type func: smp_call_func_t
 
-    :param void \*info:
+    :param info:
         An arbitrary pointer to pass to the function.
+    :type info: void \*
 
-    :param int wait:
+    :param wait:
         If true, wait (atomically) until function has completed
         on other CPUs.
+    :type wait: int
 
 .. _`smp_call_function.description`:
 
@@ -156,18 +167,22 @@ on_each_cpu_mask
 
     Run a function on processors specified by cpumask, which may include the local processor.
 
-    :param const struct cpumask \*mask:
+    :param mask:
         The set of cpus to run on (only runs on online subset).
+    :type mask: const struct cpumask \*
 
-    :param smp_call_func_t func:
+    :param func:
         The function to run. This must be fast and non-blocking.
+    :type func: smp_call_func_t
 
-    :param void \*info:
+    :param info:
         An arbitrary pointer to pass to the function.
+    :type info: void \*
 
-    :param bool wait:
+    :param wait:
         If true, wait (atomically) until function has completed
         on other CPUs.
+    :type wait: bool
 
 .. _`on_each_cpu_mask.description`:
 
@@ -190,8 +205,9 @@ kick_all_cpus_sync
 
     Force all cpus out of idle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kick_all_cpus_sync.description`:
 
@@ -215,8 +231,9 @@ wake_up_all_idle_cpus
 
     break all cpus out of idle wake_up_all_idle_cpus try to break all cpus which is in idle state even including idle polling cpus, for non-idle cpus, we will do nothing for them.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

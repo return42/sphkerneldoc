@@ -78,8 +78,9 @@ n_hdlc_release
 
     release an n_hdlc per device line discipline info structure \ ``n_hdlc``\  - per device line discipline info structure
 
-    :param struct n_hdlc \*n_hdlc:
+    :param n_hdlc:
         *undescribed*
+    :type n_hdlc: struct n_hdlc \*
 
 .. _`n_hdlc_tty_close`:
 
@@ -90,8 +91,9 @@ n_hdlc_tty_close
 
     line discipline close \ ``tty``\  - pointer to tty info structure
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`n_hdlc_tty_close.description`:
 
@@ -110,8 +112,9 @@ n_hdlc_tty_open
 
     called when line discipline changed to n_hdlc \ ``tty``\  - pointer to tty info structure
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`n_hdlc_tty_open.description`:
 
@@ -129,11 +132,13 @@ n_hdlc_send_frames
 
     send frames on pending send buffer list \ ``n_hdlc``\  - pointer to ldisc instance data \ ``tty``\  - pointer to tty instance data
 
-    :param struct n_hdlc \*n_hdlc:
+    :param n_hdlc:
         *undescribed*
+    :type n_hdlc: struct n_hdlc \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`n_hdlc_send_frames.description`:
 
@@ -153,8 +158,9 @@ n_hdlc_tty_wakeup
 
     Callback for transmit wakeup \ ``tty``\  - pointer to associated tty instance data
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`n_hdlc_tty_wakeup.description`:
 
@@ -172,17 +178,21 @@ n_hdlc_tty_receive
 
     Called by tty driver when receive data is available \ ``tty``\  - pointer to tty instance data \ ``data``\  - pointer to received data \ ``flags``\  - pointer to flags for data \ ``count``\  - count of received data in bytes
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param const __u8 \*data:
+    :param data:
         *undescribed*
+    :type data: const __u8 \*
 
-    :param char \*flags:
+    :param flags:
         *undescribed*
+    :type flags: char \*
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
 .. _`n_hdlc_tty_receive.description`:
 
@@ -201,17 +211,21 @@ n_hdlc_tty_read
 
     Called to retrieve one frame of data (if available) \ ``tty``\  - pointer to tty instance data \ ``file``\  - pointer to open file object \ ``buf``\  - pointer to returned data buffer \ ``nr``\  - size of returned data buffer
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param __u8 __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: __u8 __user \*
 
-    :param size_t nr:
+    :param nr:
         *undescribed*
+    :type nr: size_t
 
 .. _`n_hdlc_tty_read.description`:
 
@@ -229,17 +243,21 @@ n_hdlc_tty_write
 
     write a single frame of data to device \ ``tty``\  - pointer to associated tty device instance data \ ``file``\  - pointer to file object data \ ``data``\  - pointer to transmit data (one frame) \ ``count``\  - size of transmit frame in bytes
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param const unsigned char \*data:
+    :param data:
         *undescribed*
+    :type data: const unsigned char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`n_hdlc_tty_write.description`:
 
@@ -257,17 +275,21 @@ n_hdlc_tty_ioctl
 
     process IOCTL system call for the tty device. \ ``tty``\  - pointer to tty instance data \ ``file``\  - pointer to open file object for device \ ``cmd``\  - IOCTL command code \ ``arg``\  - argument for IOCTL call (cmd dependent)
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         *undescribed*
+    :type arg: unsigned long
 
 .. _`n_hdlc_tty_ioctl.description`:
 
@@ -285,14 +307,17 @@ n_hdlc_tty_poll
 
     TTY callback for poll system call \ ``tty``\  - pointer to tty instance data \ ``filp``\  - pointer to open file object for device \ ``poll_table``\  - wait queue for operations
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         *undescribed*
+    :type wait: poll_table \*
 
 .. _`n_hdlc_tty_poll.description`:
 
@@ -312,8 +337,9 @@ n_hdlc_alloc
 
     allocate an n_hdlc instance data structure
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`n_hdlc_alloc.description`:
 
@@ -331,11 +357,13 @@ n_hdlc_buf_return
 
     put the HDLC buffer after the head of the specified list \ ``buf_list``\  - pointer to the buffer list \ ``buf``\  - pointer to the buffer
 
-    :param struct n_hdlc_buf_list \*buf_list:
+    :param buf_list:
         *undescribed*
+    :type buf_list: struct n_hdlc_buf_list \*
 
-    :param struct n_hdlc_buf \*buf:
+    :param buf:
         *undescribed*
+    :type buf: struct n_hdlc_buf \*
 
 .. _`n_hdlc_buf_put`:
 
@@ -346,11 +374,13 @@ n_hdlc_buf_put
 
     add specified HDLC buffer to tail of specified list \ ``buf_list``\  - pointer to buffer list \ ``buf``\  - pointer to buffer
 
-    :param struct n_hdlc_buf_list \*buf_list:
+    :param buf_list:
         *undescribed*
+    :type buf_list: struct n_hdlc_buf_list \*
 
-    :param struct n_hdlc_buf \*buf:
+    :param buf:
         *undescribed*
+    :type buf: struct n_hdlc_buf \*
 
 .. _`n_hdlc_buf_get`:
 
@@ -361,8 +391,9 @@ n_hdlc_buf_get
 
     remove and return an HDLC buffer from list \ ``buf_list``\  - pointer to HDLC buffer list
 
-    :param struct n_hdlc_buf_list \*buf_list:
+    :param buf_list:
         *undescribed*
+    :type buf_list: struct n_hdlc_buf_list \*
 
 .. _`n_hdlc_buf_get.description`:
 

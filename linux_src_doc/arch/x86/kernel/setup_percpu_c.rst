@@ -10,8 +10,9 @@ pcpu_need_numa
 
     determine percpu allocation needs to consider NUMA
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pcpu_need_numa.description`:
 
@@ -38,14 +39,17 @@ pcpu_alloc_bootmem
 
     NUMA friendly alloc_bootmem wrapper for percpu
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu to allocate for
+    :type cpu: unsigned int
 
-    :param unsigned long size:
+    :param size:
         size allocation in bytes
+    :type size: unsigned long
 
-    :param unsigned long align:
+    :param align:
         alignment
+    :type align: unsigned long
 
 .. _`pcpu_alloc_bootmem.description`:
 

@@ -10,11 +10,13 @@ nfp_net_fw_find
 
     Find the correct firmware image for netdev mode
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI Device structure
+    :type pdev: struct pci_dev \*
 
-    :param struct nfp_pf \*pf:
+    :param pf:
         NFP PF Device structure
+    :type pf: struct nfp_pf \*
 
 .. _`nfp_net_fw_find.return`:
 
@@ -32,14 +34,17 @@ nfp_fw_load
 
     Load the firmware image
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI Device structure
+    :type pdev: struct pci_dev \*
 
-    :param struct nfp_pf \*pf:
+    :param pf:
         NFP PF Device structure
+    :type pf: struct nfp_pf \*
 
-    :param struct nfp_nsp \*nsp:
+    :param nsp:
         NFP SP handle
+    :type nsp: struct nfp_nsp \*
 
 .. _`nfp_fw_load.return`:
 

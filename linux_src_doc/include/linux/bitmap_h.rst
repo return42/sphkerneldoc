@@ -9,8 +9,8 @@ bitmap overview
 The available bitmap operations and their rough meaning in the
 case that the bitmap is a single unsigned long are thus:
 
-Note that nbits should be always a compile time evaluable constant.
-Otherwise many inlines will generate horrible code.
+The generated code is more efficient when nbits is known at
+compile-time and at most BITS_PER_LONG.
 
 ::
 
@@ -95,20 +95,25 @@ bitmap_find_next_zero_area
 
     find a contiguous aligned zero area
 
-    :param unsigned long \*map:
+    :param map:
         The address to base the search on
+    :type map: unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The bitmap size in bits
+    :type size: unsigned long
 
-    :param unsigned long start:
+    :param start:
         The bitnumber to start searching at
+    :type start: unsigned long
 
-    :param unsigned int nr:
+    :param nr:
         The number of zeroed bits we're looking for
+    :type nr: unsigned int
 
-    :param unsigned long align_mask:
+    :param align_mask:
         Alignment mask for zero area
+    :type align_mask: unsigned long
 
 .. _`bitmap_find_next_zero_area.description`:
 
@@ -128,8 +133,9 @@ BITMAP_FROM_U64
 
     Represent u64 value in the format suitable for bitmap.
 
-    :param  n:
+    :param n:
         u64 value
+    :type n: 
 
 .. _`bitmap_from_u64.description`:
 
@@ -167,11 +173,13 @@ bitmap_from_u64
 
     Check and swap words within u64.
 
-    :param unsigned long \*dst:
+    :param dst:
         destination bitmap
+    :type dst: unsigned long \*
 
-    :param u64 mask:
+    :param mask:
         source bitmap
+    :type mask: u64
 
 .. _`bitmap_from_u64.description`:
 

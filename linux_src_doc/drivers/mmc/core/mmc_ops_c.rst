@@ -10,33 +10,42 @@
 
     modify EXT_CSD register
 
-    :param struct mmc_card \*card:
+    :param card:
         the MMC card associated with the data transfer
+    :type card: struct mmc_card \*
 
-    :param u8 set:
+    :param set:
         cmd set values
+    :type set: u8
 
-    :param u8 index:
+    :param index:
         EXT_CSD register index
+    :type index: u8
 
-    :param u8 value:
+    :param value:
         value to program into EXT_CSD register
+    :type value: u8
 
-    :param unsigned int timeout_ms:
+    :param timeout_ms:
         timeout (ms) for operation performed by register write,
         timeout of zero implies maximum possible timeout
+    :type timeout_ms: unsigned int
 
-    :param unsigned char timing:
+    :param timing:
         new timing to change to
+    :type timing: unsigned char
 
-    :param bool use_busy_signal:
+    :param use_busy_signal:
         use the busy signal as response type
+    :type use_busy_signal: bool
 
-    :param bool send_status:
+    :param send_status:
         send status cmd to poll for busy
+    :type send_status: bool
 
-    :param bool retry_crc_err:
+    :param retry_crc_err:
         retry when CRC errors when polling with CMD13 for busy
+    :type retry_crc_err: bool
 
 .. _`__mmc_switch.description`:
 
@@ -54,8 +63,9 @@ mmc_interrupt_hpi
 
     Issue for High priority Interrupt
 
-    :param struct mmc_card \*card:
+    :param card:
         the MMC card associated with the HPI transfer
+    :type card: struct mmc_card \*
 
 .. _`mmc_interrupt_hpi.description`:
 
@@ -74,8 +84,9 @@ mmc_stop_bkops
 
     stop ongoing BKOPS
 
-    :param struct mmc_card \*card:
+    :param card:
         MMC card to check BKOPS
+    :type card: struct mmc_card \*
 
 .. _`mmc_stop_bkops.description`:
 
@@ -96,12 +107,14 @@ mmc_start_bkops
 
     start BKOPS for supported cards
 
-    :param struct mmc_card \*card:
+    :param card:
         MMC card to start BKOPS
+    :type card: struct mmc_card \*
 
-    :param bool from_exception:
+    :param from_exception:
         A flag to indicate if this function was
         called due to an exception raised by the card
+    :type from_exception: bool
 
 .. _`mmc_start_bkops.description`:
 

@@ -159,8 +159,9 @@ snd_soc_dapm_to_component
 
     Casts a DAPM context to the component it is embedded in
 
-    :param struct snd_soc_dapm_context \*dapm:
+    :param dapm:
         The DAPM context to cast to the component
+    :type dapm: struct snd_soc_dapm_context \*
 
 .. _`snd_soc_dapm_to_component.description`:
 
@@ -180,8 +181,9 @@ snd_soc_component_get_dapm
 
     Returns the DAPM context associated with a component
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The component for which to get the DAPM context
+    :type component: struct snd_soc_component \*
 
 .. _`snd_soc_component_init_bias_level`:
 
@@ -192,11 +194,13 @@ snd_soc_component_init_bias_level
 
     Initialize COMPONENT DAPM bias level
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The COMPONENT for which to initialize the DAPM bias level
+    :type component: struct snd_soc_component \*
 
-    :param enum snd_soc_bias_level level:
+    :param level:
         The DAPM level to initialize to
+    :type level: enum snd_soc_bias_level
 
 .. _`snd_soc_component_init_bias_level.description`:
 
@@ -214,8 +218,9 @@ snd_soc_component_get_bias_level
 
     Get current COMPONENT DAPM bias level
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The COMPONENT for which to get the DAPM bias level
+    :type component: struct snd_soc_component \*
 
 .. _`snd_soc_component_get_bias_level.return`:
 
@@ -233,11 +238,13 @@ snd_soc_component_force_bias_level
 
     Set the COMPONENT DAPM bias level
 
-    :param struct snd_soc_component \*component:
+    :param component:
         The COMPONENT for which to set the level
+    :type component: struct snd_soc_component \*
 
-    :param enum snd_soc_bias_level level:
+    :param level:
         The level to set to
+    :type level: enum snd_soc_bias_level
 
 .. _`snd_soc_component_force_bias_level.description`:
 
@@ -256,8 +263,9 @@ snd_soc_dapm_kcontrol_component
 
     Returns the component associated to a kcontrol
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The kcontrol
+    :type kcontrol: struct snd_kcontrol \*
 
 .. _`snd_soc_dapm_kcontrol_component.description`:
 
@@ -276,8 +284,9 @@ snd_soc_component_cache_sync
 
     Sync the register cache with the hardware
 
-    :param struct snd_soc_component \*component:
+    :param component:
         COMPONENT to sync
+    :type component: struct snd_soc_component \*
 
 .. _`snd_soc_component_cache_sync.note`:
 
@@ -295,8 +304,9 @@ snd_soc_kcontrol_component
 
     Returns the component that registered the control
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The control for which to get the component
+    :type kcontrol: struct snd_kcontrol \*
 
 .. _`snd_soc_kcontrol_component.note`:
 

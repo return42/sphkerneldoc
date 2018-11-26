@@ -10,14 +10,17 @@ snd_hwparams_to_dma_slave_config
 
     Convert hw_params to dma_slave_config
 
-    :param const struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: const struct snd_pcm_substream \*
 
-    :param const struct snd_pcm_hw_params \*params:
+    :param params:
         hw_params
+    :type params: const struct snd_pcm_hw_params \*
 
-    :param struct dma_slave_config \*slave_config:
+    :param slave_config:
         DMA slave config
+    :type slave_config: struct dma_slave_config \*
 
 .. _`snd_hwparams_to_dma_slave_config.description`:
 
@@ -36,14 +39,17 @@ snd_dmaengine_pcm_set_config_from_dai_data
 
     Initializes a dma slave config using DAI DMA data.
 
-    :param const struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: const struct snd_pcm_substream \*
 
-    :param const struct snd_dmaengine_dai_dma_data \*dma_data:
+    :param dma_data:
         DAI DMA data
+    :type dma_data: const struct snd_dmaengine_dai_dma_data \*
 
-    :param struct dma_slave_config \*slave_config:
+    :param slave_config:
         DMA slave configuration
+    :type slave_config: struct dma_slave_config \*
 
 .. _`snd_dmaengine_pcm_set_config_from_dai_data.description`:
 
@@ -69,11 +75,13 @@ snd_dmaengine_pcm_trigger
 
     dmaengine based PCM trigger implementation
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param int cmd:
+    :param cmd:
         Trigger command
+    :type cmd: int
 
 .. _`snd_dmaengine_pcm_trigger.description`:
 
@@ -94,8 +102,9 @@ snd_dmaengine_pcm_pointer_no_residue
 
     dmaengine based PCM pointer implementation
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_dmaengine_pcm_pointer_no_residue.description`:
 
@@ -114,8 +123,9 @@ snd_dmaengine_pcm_pointer
 
     dmaengine based PCM pointer implementation
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_dmaengine_pcm_pointer.description`:
 
@@ -134,11 +144,13 @@ snd_dmaengine_pcm_request_channel
 
     Request channel for the dmaengine PCM
 
-    :param dma_filter_fn filter_fn:
+    :param filter_fn:
         Filter function used to request the DMA channel
+    :type filter_fn: dma_filter_fn
 
-    :param void \*filter_data:
+    :param filter_data:
         Data passed to the DMA filter function
+    :type filter_data: void \*
 
 .. _`snd_dmaengine_pcm_request_channel.description`:
 
@@ -158,11 +170,13 @@ snd_dmaengine_pcm_open
 
     Open a dmaengine based PCM substream
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct dma_chan \*chan:
+    :param chan:
         DMA channel to use for data transfers
+    :type chan: struct dma_chan \*
 
 .. _`snd_dmaengine_pcm_open.description`:
 
@@ -184,14 +198,17 @@ snd_dmaengine_pcm_open_request_chan
 
     Open a dmaengine based PCM substream and request channel
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param dma_filter_fn filter_fn:
+    :param filter_fn:
         Filter function used to request the DMA channel
+    :type filter_fn: dma_filter_fn
 
-    :param void \*filter_data:
+    :param filter_data:
         Data passed to the DMA filter function
+    :type filter_data: void \*
 
 .. _`snd_dmaengine_pcm_open_request_chan.description`:
 
@@ -214,8 +231,9 @@ snd_dmaengine_pcm_close
 
     Close a dmaengine based PCM substream
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_dmaengine_pcm_close_release_chan`:
 
@@ -226,8 +244,9 @@ snd_dmaengine_pcm_close_release_chan
 
     Close a dmaengine based PCM substream and release channel
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_dmaengine_pcm_close_release_chan.description`:
 

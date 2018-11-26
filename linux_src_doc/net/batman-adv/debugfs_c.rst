@@ -1,6 +1,23 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/batman-adv/debugfs.c
 
+.. _`batadv_debugfs_deprecated`:
+
+batadv_debugfs_deprecated
+=========================
+
+.. c:function:: void batadv_debugfs_deprecated(struct file *file, const char *alt)
+
+    Log use of deprecated batadv debugfs access
+
+    :param file:
+        file which was accessed
+    :type file: struct file \*
+
+    :param alt:
+        explanation what can be used as alternative
+    :type alt: const char \*
+
 .. _`batadv_originators_hardif_open`:
 
 batadv_originators_hardif_open
@@ -10,11 +27,13 @@ batadv_originators_hardif_open
 
     handles debugfs output for the originator table of an hard interface
 
-    :param struct inode \*inode:
+    :param inode:
         inode pointer to debugfs file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         pointer to the seq_file
+    :type file: struct file \*
 
 .. _`batadv_originators_hardif_open.return`:
 
@@ -30,13 +49,15 @@ batadv_dat_cache_open
 
 .. c:function:: int batadv_dat_cache_open(struct inode *inode, struct file *file)
 
-    Prepare file handler for reads from dat_chache
+    Prepare file handler for reads from dat_cache
 
-    :param struct inode \*inode:
+    :param inode:
         inode which was opened
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle to be initialized
+    :type file: struct file \*
 
 .. _`batadv_dat_cache_open.return`:
 
@@ -54,11 +75,13 @@ batadv_mcast_flags_open
 
     prepare file handler for reads from mcast_flags
 
-    :param struct inode \*inode:
+    :param inode:
         inode which was opened
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file handle to be initialized
+    :type file: struct file \*
 
 .. _`batadv_mcast_flags_open.return`:
 
@@ -76,8 +99,9 @@ batadv_debugfs_init
 
     Initialize soft interface independent debugfs entries
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_debugfs_destroy`:
 
@@ -88,8 +112,9 @@ batadv_debugfs_destroy
 
     Remove all debugfs entries
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_debugfs_add_hardif`:
 
@@ -100,8 +125,9 @@ batadv_debugfs_add_hardif
 
     creates the base directory for a hard interface in debugfs.
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         hard interface which should be added.
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_debugfs_add_hardif.return`:
 
@@ -119,8 +145,9 @@ batadv_debugfs_rename_hardif
 
     Fix debugfs path for renamed hardif
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         hard interface which was renamed
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_debugfs_del_hardif`:
 
@@ -131,8 +158,9 @@ batadv_debugfs_del_hardif
 
     delete the base directory for a hard interface in debugfs.
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         hard interface which is deleted.
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_debugfs_add_meshif`:
 
@@ -143,8 +171,9 @@ batadv_debugfs_add_meshif
 
     Initialize interface dependent debugfs entries
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev struct of the soft interface
+    :type dev: struct net_device \*
 
 .. _`batadv_debugfs_add_meshif.return`:
 
@@ -162,8 +191,9 @@ batadv_debugfs_rename_meshif
 
     Fix debugfs path for renamed softif
 
-    :param struct net_device \*dev:
+    :param dev:
         net_device which was renamed
+    :type dev: struct net_device \*
 
 .. _`batadv_debugfs_del_meshif`:
 
@@ -174,8 +204,9 @@ batadv_debugfs_del_meshif
 
     Remove interface dependent debugfs entries
 
-    :param struct net_device \*dev:
+    :param dev:
         netdev struct of the soft interface
+    :type dev: struct net_device \*
 
 .. This file was automatic generated / don't edit.
 

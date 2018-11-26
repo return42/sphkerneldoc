@@ -10,8 +10,9 @@ lpfc_dev_loss_tmo_handler
 
     Remote node devloss timeout handler
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         Pointer to remote node object.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_dev_loss_tmo_handler.description`:
 
@@ -33,14 +34,17 @@ lpfc_sli4_post_dev_loss_tmo_handler
 
     SLI4 post devloss timeout handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
-    :param int fcf_inuse:
+    :param fcf_inuse:
         SLI4 FCF in-use state reported from devloss timeout handler.
+    :type fcf_inuse: int
 
-    :param uint32_t nlp_did:
+    :param nlp_did:
         remote node identifer with devloss timeout.
+    :type nlp_did: uint32_t
 
 .. _`lpfc_sli4_post_dev_loss_tmo_handler.description`:
 
@@ -68,8 +72,9 @@ lpfc_alloc_fast_evt
 
     Allocates data structure for posting event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_alloc_fast_evt.description`:
 
@@ -91,11 +96,13 @@ lpfc_free_fast_evt
 
     Frees event data structure
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_fast_path_event \*evt:
+    :param evt:
         Event object which need to be freed.
+    :type evt: struct lpfc_fast_path_event \*
 
 .. _`lpfc_free_fast_evt.description`:
 
@@ -114,11 +121,13 @@ lpfc_send_fastpath_evt
 
     Posts events generated from fast path
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_work_evt \*evtp:
+    :param evtp:
         Event data structure.
+    :type evtp: struct lpfc_work_evt \*
 
 .. _`lpfc_send_fastpath_evt.description`:
 
@@ -138,8 +147,9 @@ lpfc_sli4_clear_fcf_rr_bmask
 
     \ ``phba``\  pointer to the struct lpfc_hba for this port. This fucnction resets the round robin bit mask and clears the fcf priority list. The list deletions are done while holding the hbalock. The ON_LIST flag and the FLOGI_FAILED flags are cleared from the lpfc_fcf_pri record.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_fab_name_match`:
 
@@ -150,11 +160,13 @@ lpfc_fab_name_match
 
     Check if the fcf fabric name match.
 
-    :param uint8_t \*fab_name:
+    :param fab_name:
         pointer to fabric name.
+    :type fab_name: uint8_t \*
 
-    :param struct fcf_record \*new_fcf_record:
+    :param new_fcf_record:
         pointer to fcf record.
+    :type new_fcf_record: struct fcf_record \*
 
 .. _`lpfc_fab_name_match.description`:
 
@@ -174,11 +186,13 @@ lpfc_sw_name_match
 
     Check if the fcf switch name match.
 
-    :param uint8_t \*sw_name:
+    :param sw_name:
         *undescribed*
+    :type sw_name: uint8_t \*
 
-    :param struct fcf_record \*new_fcf_record:
+    :param new_fcf_record:
         pointer to fcf record.
+    :type new_fcf_record: struct fcf_record \*
 
 .. _`lpfc_sw_name_match.description`:
 
@@ -198,11 +212,13 @@ lpfc_mac_addr_match
 
     Check if the fcf mac address match.
 
-    :param uint8_t \*mac_addr:
+    :param mac_addr:
         pointer to mac address.
+    :type mac_addr: uint8_t \*
 
-    :param struct fcf_record \*new_fcf_record:
+    :param new_fcf_record:
         pointer to fcf record.
+    :type new_fcf_record: struct fcf_record \*
 
 .. _`lpfc_mac_addr_match.description`:
 
@@ -222,14 +238,17 @@ returns 1 else return 0.
 
     Update driver fcf record \__lpfc_update_fcf_record_pri - update the lpfc_fcf_pri record.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t fcf_index:
+    :param fcf_index:
         Index for the lpfc_fcf_record.
+    :type fcf_index: uint16_t
 
-    :param struct fcf_record \*new_fcf_record:
+    :param new_fcf_record:
         pointer to hba fcf record.
+    :type new_fcf_record: struct fcf_record \*
 
 .. _`__lpfc_update_fcf_record_pri.description`:
 
@@ -248,11 +267,13 @@ lpfc_copy_fcf_record
 
     Copy fcf information to lpfc_hba.
 
-    :param struct lpfc_fcf_rec \*fcf_rec:
+    :param fcf_rec:
         *undescribed*
+    :type fcf_rec: struct lpfc_fcf_rec \*
 
-    :param struct fcf_record \*new_fcf_record:
+    :param new_fcf_record:
         pointer to fcf record.
+    :type new_fcf_record: struct fcf_record \*
 
 .. _`lpfc_copy_fcf_record.description`:
 
@@ -271,23 +292,29 @@ record to lpfc_hba data structure.
 
     Update driver fcf record
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_fcf_rec \*fcf_rec:
+    :param fcf_rec:
         pointer to driver fcf record.
+    :type fcf_rec: struct lpfc_fcf_rec \*
 
-    :param struct fcf_record \*new_fcf_record:
+    :param new_fcf_record:
         pointer to hba fcf record.
+    :type new_fcf_record: struct fcf_record \*
 
-    :param uint32_t addr_mode:
+    :param addr_mode:
         address mode to be set to the driver fcf record.
+    :type addr_mode: uint32_t
 
-    :param uint16_t vlan_id:
+    :param vlan_id:
         vlan tag to be set to the driver fcf record.
+    :type vlan_id: uint16_t
 
-    :param uint32_t flag:
+    :param flag:
         flag bits to be set to the driver fcf record.
+    :type flag: uint32_t
 
 .. _`__lpfc_update_fcf_record.description`:
 
@@ -307,8 +334,9 @@ lpfc_register_fcf
 
     Register the FCF with hba.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_register_fcf.description`:
 
@@ -327,20 +355,25 @@ lpfc_match_fcf_conn_list
 
     Check if the FCF record can be used for discovery.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct fcf_record \*new_fcf_record:
+    :param new_fcf_record:
         pointer to fcf record.
+    :type new_fcf_record: struct fcf_record \*
 
-    :param uint32_t \*boot_flag:
+    :param boot_flag:
         Indicates if this record used by boot bios.
+    :type boot_flag: uint32_t \*
 
-    :param uint32_t \*addr_mode:
+    :param addr_mode:
         The address mode to be used by this FCF
+    :type addr_mode: uint32_t \*
 
-    :param uint16_t \*vlan_id:
+    :param vlan_id:
         The vlan id to be used as vlan tagging by this FCF.
+    :type vlan_id: uint16_t \*
 
 .. _`lpfc_match_fcf_conn_list.description`:
 
@@ -366,11 +399,13 @@ lpfc_check_pending_fcoe_event
 
     Check if there is pending fcoe event.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t unreg_fcf:
+    :param unreg_fcf:
         Unregister FCF if FCF table need to be re-scaned.
+    :type unreg_fcf: uint8_t
 
 .. _`lpfc_check_pending_fcoe_event.description`:
 
@@ -390,11 +425,13 @@ lpfc_sli4_new_fcf_random_select
 
     Randomly select an eligible new fcf record
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t fcf_cnt:
+    :param fcf_cnt:
         number of eligible fcf record seen so far.
+    :type fcf_cnt: uint32_t
 
 .. _`lpfc_sli4_new_fcf_random_select.description`:
 
@@ -420,14 +457,17 @@ lpfc_sli4_fcf_rec_mbox_parse
 
     Parse read_fcf mbox command.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         pointer to mailbox object.
+    :type mboxq: LPFC_MBOXQ_t \*
 
-    :param uint16_t \*next_fcf_index:
+    :param next_fcf_index:
         pointer to holder of next fcf index.
+    :type next_fcf_index: uint16_t \*
 
 .. _`lpfc_sli4_fcf_rec_mbox_parse.description`:
 
@@ -450,17 +490,21 @@ lpfc_sli4_log_fcf_record_info
 
     Log the information of a fcf record
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct fcf_record \*fcf_record:
+    :param fcf_record:
         pointer to the fcf record.
+    :type fcf_record: struct fcf_record \*
 
-    :param uint16_t vlan_id:
+    :param vlan_id:
         the lowest vlan identifier associated to this fcf record.
+    :type vlan_id: uint16_t
 
-    :param uint16_t next_fcf_index:
+    :param next_fcf_index:
         the index to the next fcf record in hba's fcf table.
+    :type next_fcf_index: uint16_t
 
 .. _`lpfc_sli4_log_fcf_record_info.description`:
 
@@ -479,11 +523,13 @@ lpfc_sli4_fcf_rr_next_proc
 
     processing next roundrobin fcf
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Pointer to vport object.
+    :type vport: struct lpfc_vport \*
 
-    :param uint16_t fcf_index:
+    :param fcf_index:
         index to next fcf.
+    :type fcf_index: uint16_t
 
 .. _`lpfc_sli4_fcf_rr_next_proc.description`:
 
@@ -509,16 +555,18 @@ lpfc_sli4_fcf_pri_list_del
 
 .. c:function:: void lpfc_sli4_fcf_pri_list_del(struct lpfc_hba *phba, uint16_t fcf_index)
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
         \ ``fcf_index``\  the index of the fcf record to delete
         This routine checks the on list flag of the fcf_index to be deleted.
         If it is one the list then it is removed from the list, and the flag
         is cleared. This routine grab the hbalock before removing the fcf
         record from the list.
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t fcf_index:
+    :param fcf_index:
         *undescribed*
+    :type fcf_index: uint16_t
 
 .. _`lpfc_sli4_set_fcf_flogi_fail`:
 
@@ -527,7 +575,7 @@ lpfc_sli4_set_fcf_flogi_fail
 
 .. c:function:: void lpfc_sli4_set_fcf_flogi_fail(struct lpfc_hba *phba, uint16_t fcf_index)
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
         \ ``fcf_index``\  the index of the fcf record to update
         This routine acquires the hbalock and then set the LPFC_FCF_FLOGI_FAILED
@@ -535,9 +583,11 @@ lpfc_sli4_set_fcf_flogi_fail
         will try a different fcf record that does not have this bit set.
         If the fcf record is re-read for any reason this flag is cleared brfore
         adding it to the priority list.
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t fcf_index:
+    :param fcf_index:
         *undescribed*
+    :type fcf_index: uint16_t
 
 .. _`lpfc_sli4_fcf_pri_list_add`:
 
@@ -546,7 +596,7 @@ lpfc_sli4_fcf_pri_list_add
 
 .. c:function:: int lpfc_sli4_fcf_pri_list_add(struct lpfc_hba *phba, uint16_t fcf_index, struct fcf_record *new_fcf_record)
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
         \ ``fcf_index``\  the index of the fcf record to add
         This routine checks the priority of the fcf_index to be added.
@@ -557,12 +607,15 @@ lpfc_sli4_fcf_pri_list_add
         If the fcf_index to be added is of a higher priority than the current
         head of the list then the rr_bmask is cleared, its bit is set in the
         rr_bmask and it is added to the head of the list.
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t fcf_index:
+    :param fcf_index:
         *undescribed*
+    :type fcf_index: uint16_t
 
-    :param struct fcf_record \*new_fcf_record:
+    :param new_fcf_record:
         *undescribed*
+    :type new_fcf_record: struct fcf_record \*
 
 .. _`lpfc_sli4_fcf_pri_list_add.return`:
 
@@ -580,11 +633,13 @@ lpfc_mbx_cmpl_fcf_scan_read_fcf_rec
 
     fcf scan read_fcf mbox cmpl handler.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         pointer to mailbox object.
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_mbx_cmpl_fcf_scan_read_fcf_rec.description`:
 
@@ -610,11 +665,13 @@ lpfc_mbx_cmpl_fcf_rr_read_fcf_rec
 
     fcf roundrobin read_fcf mbox cmpl hdler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         pointer to mailbox object.
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_mbx_cmpl_fcf_rr_read_fcf_rec.description`:
 
@@ -640,11 +697,13 @@ lpfc_mbx_cmpl_read_fcf_rec
 
     read fcf completion handler.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         pointer to mailbox object.
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_mbx_cmpl_read_fcf_rec.description`:
 
@@ -666,11 +725,13 @@ lpfc_init_vfi_cmpl
 
     Completion handler for init_vfi mbox command.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         pointer to mailbox data structure.
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_init_vfi_cmpl.description`:
 
@@ -688,8 +749,9 @@ lpfc_issue_init_vfi
 
     Issue init_vfi mailbox command.
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to lpfc_vport data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_issue_init_vfi.description`:
 
@@ -708,11 +770,13 @@ lpfc_init_vpi_cmpl
 
     Completion handler for init_vpi mbox command.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         pointer to mailbox data structure.
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_init_vpi_cmpl.description`:
 
@@ -730,8 +794,9 @@ lpfc_issue_init_vpi
 
     Issue init_vpi mailbox command.
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to lpfc_vport data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_issue_init_vpi.description`:
 
@@ -750,8 +815,9 @@ lpfc_start_fdiscs
 
     send fdiscs for each vports on this port.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_start_fdiscs.description`:
 
@@ -770,8 +836,9 @@ lpfc_create_static_vport
 
     Read HBA config region to create static vports.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_create_static_vport.description`:
 
@@ -791,14 +858,17 @@ lpfc_initialize_node
 
     Initialize all fields of node object
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Pointer to Virtual Port object.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         Pointer to FC node object.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param uint32_t did:
+    :param did:
         FC_ID of the node.
+    :type did: uint32_t
 
 .. _`lpfc_initialize_node.description`:
 
@@ -822,11 +892,13 @@ lpfc_nlp_logo_unreg
 
     Unreg mailbox completion handler before LOGO
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         Pointer to mailbox object.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_nlp_logo_unreg.description`:
 
@@ -845,8 +917,9 @@ lpfc_unreg_hba_rpis
 
     Unregister rpis registered to the hba.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_unreg_hba_rpis.description`:
 
@@ -865,11 +938,13 @@ lpfc_find_vport_by_vpid
 
     Find a vport on a HBA through vport identifier
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint16_t vpi:
+    :param vpi:
         the physical host virtual N_Port identifier.
+    :type vpi: uint16_t
 
 .. _`lpfc_find_vport_by_vpid.description`:
 
@@ -893,8 +968,9 @@ lpfc_fcf_inuse
 
     Check if FCF can be unregistered.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_fcf_inuse.description`:
 
@@ -916,11 +992,13 @@ lpfc_unregister_vfi_cmpl
 
     Completion handler for unreg vfi.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         Pointer to mailbox object.
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_unregister_vfi_cmpl.description`:
 
@@ -938,11 +1016,13 @@ lpfc_unregister_fcfi_cmpl
 
     Completion handler for unreg fcfi.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         Pointer to mailbox object.
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_unregister_fcfi_cmpl.description`:
 
@@ -960,8 +1040,9 @@ lpfc_unregister_fcf_prep
 
     Unregister fcf record preparation
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_unregister_fcf_prep.description`:
 
@@ -981,8 +1062,9 @@ lpfc_sli4_unregister_fcf
 
     Unregister currently registered FCF record
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_unregister_fcf.description`:
 
@@ -1004,8 +1086,9 @@ lpfc_unregister_fcf_rescan
 
     Unregister currently registered fcf and rescan
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_unregister_fcf_rescan.description`:
 
@@ -1024,8 +1107,9 @@ lpfc_unregister_fcf
 
     Unregister the currently registered fcf record
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_unregister_fcf.description`:
 
@@ -1044,8 +1128,9 @@ lpfc_unregister_unused_fcf
 
     Unregister FCF if all devices are disconnected.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_unregister_unused_fcf.description`:
 
@@ -1065,14 +1150,16 @@ lpfc_read_fcf_conn_tbl
 
     Create driver FCF connection table.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t \*buff:
+    :param buff:
         Buffer containing the FCF connection table as in the config
         region.
         This function create driver data structure for the FCF connection
         record table read from config region 23.
+    :type buff: uint8_t \*
 
 .. _`lpfc_read_fcoe_param`:
 
@@ -1083,11 +1170,13 @@ lpfc_read_fcoe_param
 
     Read FCoe parameters from conf region..
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t \*buff:
+    :param buff:
         Buffer containing the FCoE parameter data structure.
+    :type buff: uint8_t \*
 
 .. _`lpfc_read_fcoe_param.description`:
 
@@ -1106,14 +1195,17 @@ lpfc_get_rec_conf23
 
     Get a record type in config region data.
 
-    :param uint8_t \*buff:
+    :param buff:
         Buffer containing config region 23 data.
+    :type buff: uint8_t \*
 
-    :param uint32_t size:
+    :param size:
         Size of the data buffer.
+    :type size: uint32_t
 
-    :param uint8_t rec_type:
+    :param rec_type:
         Record type to be searched.
+    :type rec_type: uint8_t
 
 .. _`lpfc_get_rec_conf23.description`:
 
@@ -1133,14 +1225,17 @@ lpfc_parse_fcoe_conf
 
     Parse FCoE config data read from config region 23.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to lpfc_hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t \*buff:
+    :param buff:
         Buffer containing config region 23 data.
+    :type buff: uint8_t \*
 
-    :param uint32_t size:
+    :param size:
         Size of the data buffer.
+    :type size: uint32_t
 
 .. _`lpfc_parse_fcoe_conf.description`:
 

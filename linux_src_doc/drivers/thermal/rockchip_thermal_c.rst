@@ -301,14 +301,17 @@ rk_tsadcv2_initialize
 
     initialize TASDC Controller.
 
-    :param struct regmap \*grf:
+    :param grf:
         *undescribed*
+    :type grf: struct regmap \*
 
-    :param void __iomem \*regs:
+    :param regs:
         *undescribed*
+    :type regs: void __iomem \*
 
-    :param enum tshut_polarity tshut_polarity:
+    :param tshut_polarity:
         *undescribed*
+    :type tshut_polarity: enum tshut_polarity
 
 .. _`rk_tsadcv2_initialize.description`:
 
@@ -336,14 +339,17 @@ rk_tsadcv3_initialize
 
     initialize TASDC Controller.
 
-    :param struct regmap \*grf:
+    :param grf:
         *undescribed*
+    :type grf: struct regmap \*
 
-    :param void __iomem \*regs:
+    :param regs:
         *undescribed*
+    :type regs: void __iomem \*
 
-    :param enum tshut_polarity tshut_polarity:
+    :param tshut_polarity:
         *undescribed*
+    :type tshut_polarity: enum tshut_polarity
 
 .. _`rk_tsadcv3_initialize.description`:
 
@@ -373,11 +379,13 @@ rk_tsadcv3_control
 
     the tsadc controller is enabled or disabled.
 
-    :param void __iomem \*regs:
+    :param regs:
         *undescribed*
+    :type regs: void __iomem \*
 
-    :param bool enable:
+    :param enable:
         *undescribed*
+    :type enable: bool
 
 .. _`rk_tsadcv3_control.note`:
 
@@ -395,8 +403,9 @@ rockchip_thermal_reset_controller
 
 .. c:function:: void rockchip_thermal_reset_controller(struct reset_control *reset)
 
-    :param struct reset_control \*reset:
+    :param reset:
         *undescribed*
+    :type reset: struct reset_control \*
 
 .. This file was automatic generated / don't edit.
 

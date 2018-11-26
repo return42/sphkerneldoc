@@ -341,11 +341,13 @@ os_area_set_property
 
     Add or overwrite a saved_params value to the device tree.
 
-    :param struct device_node \*node:
+    :param node:
         *undescribed*
+    :type node: struct device_node \*
 
-    :param struct property \*prop:
+    :param prop:
         *undescribed*
+    :type prop: struct property \*
 
 .. _`os_area_set_property.description`:
 
@@ -363,11 +365,13 @@ os_area_get_property
 
     Get a saved_params value from the device tree.
 
-    :param struct device_node \*node:
+    :param node:
         *undescribed*
+    :type node: struct device_node \*
 
-    :param struct property \*prop:
+    :param prop:
         *undescribed*
+    :type prop: struct property \*
 
 .. _`db_for_each_64`:
 
@@ -378,14 +382,17 @@ db_for_each_64
 
     Iterator for 64 bit entries.
 
-    :param const struct os_area_db \*db:
+    :param db:
         *undescribed*
+    :type db: const struct os_area_db \*
 
-    :param const struct os_area_db_id \*match_id:
+    :param match_id:
         *undescribed*
+    :type match_id: const struct os_area_db_id \*
 
-    :param struct db_iterator \*i:
+    :param i:
         *undescribed*
+    :type i: struct db_iterator \*
 
 .. _`db_for_each_64.description`:
 
@@ -404,8 +411,9 @@ update_flash_db
 
     Helper for os_area_queue_work_handler.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`os_area_queue_work_handler`:
 
@@ -416,8 +424,9 @@ os_area_queue_work_handler
 
     Asynchronous write handler.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`os_area_queue_work_handler.description`:
 
@@ -436,8 +445,9 @@ ps3_os_area_save_params
 
     Copy data from os area mirror to \ ``saved_params``\ .
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ps3_os_area_save_params.description`:
 
@@ -463,8 +473,9 @@ ps3_os_area_init
 
     Setup os area device tree properties as needed.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ps3_os_area_get_rtc_diff`:
 
@@ -475,8 +486,9 @@ ps3_os_area_get_rtc_diff
 
     Returns the rtc diff value.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ps3_os_area_set_rtc_diff`:
 
@@ -487,8 +499,9 @@ ps3_os_area_set_rtc_diff
 
     Set the rtc diff value.
 
-    :param u64 rtc_diff:
+    :param rtc_diff:
         *undescribed*
+    :type rtc_diff: u64
 
 .. _`ps3_os_area_set_rtc_diff.description`:
 
@@ -507,8 +520,9 @@ ps3_os_area_get_av_multi_out
 
     Returns the default video mode.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ register_virtio_device
 
     register virtio device
 
-    :param struct virtio_device \*dev:
+    :param dev:
         virtio device to be registered
+    :type dev: struct virtio_device \*
 
 .. _`register_virtio_device.description`:
 

@@ -10,14 +10,17 @@ befs_bt_read_super
 
     read in btree superblock convert to cpu byteorder
 
-    :param struct super_block \*sb:
+    :param sb:
         Filesystem superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*ds:
+    :param ds:
         Datastream to read from
+    :type ds: const befs_data_stream \*
 
-    :param befs_btree_super \*sup:
+    :param sup:
         Buffer in which to place the btree superblock
+    :type sup: befs_btree_super \*
 
 .. _`befs_bt_read_super.description`:
 
@@ -44,17 +47,21 @@ befs_bt_read_node
 
     read in btree node and convert to cpu byteorder
 
-    :param struct super_block \*sb:
+    :param sb:
         Filesystem superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*ds:
+    :param ds:
         Datastream to read from
+    :type ds: const befs_data_stream \*
 
-    :param struct befs_btree_node \*node:
+    :param node:
         Buffer in which to place the btree node
+    :type node: struct befs_btree_node \*
 
-    :param befs_off_t node_off:
+    :param node_off:
         Starting offset (in bytes) of the node in \ ``ds``\ 
+    :type node_off: befs_off_t
 
 .. _`befs_bt_read_node.description`:
 
@@ -87,17 +94,21 @@ befs_btree_find
 
     Find a key in a befs B+tree
 
-    :param struct super_block \*sb:
+    :param sb:
         Filesystem superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*ds:
+    :param ds:
         Datastream containing btree
+    :type ds: const befs_data_stream \*
 
-    :param const char \*key:
+    :param key:
         Key string to lookup in btree
+    :type key: const char \*
 
-    :param befs_off_t \*value:
+    :param value:
         Value stored with \ ``key``\ 
+    :type value: befs_off_t \*
 
 .. _`befs_btree_find.description`:
 
@@ -128,17 +139,21 @@ befs_find_key
 
     Search for a key within a node
 
-    :param struct super_block \*sb:
+    :param sb:
         Filesystem superblock
+    :type sb: struct super_block \*
 
-    :param struct befs_btree_node \*node:
+    :param node:
         Node to find the key within
+    :type node: struct befs_btree_node \*
 
-    :param const char \*findkey:
+    :param findkey:
         Keystring to search for
+    :type findkey: const char \*
 
-    :param befs_off_t \*value:
+    :param value:
         If key is found, the value stored with the key is put here
+    :type value: befs_off_t \*
 
 .. _`befs_find_key.description`:
 
@@ -161,26 +176,33 @@ befs_btree_read
 
     Traverse leafnodes of a btree
 
-    :param struct super_block \*sb:
+    :param sb:
         Filesystem superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*ds:
+    :param ds:
         Datastream containing btree
+    :type ds: const befs_data_stream \*
 
-    :param loff_t key_no:
+    :param key_no:
         Key number (alphabetical order) of key to read
+    :type key_no: loff_t
 
-    :param size_t bufsize:
+    :param bufsize:
         Size of the buffer to return key in
+    :type bufsize: size_t
 
-    :param char \*keybuf:
+    :param keybuf:
         Pointer to a buffer to put the key in
+    :type keybuf: char \*
 
-    :param size_t \*keysize:
+    :param keysize:
         Length of the returned key
+    :type keysize: size_t \*
 
-    :param befs_off_t \*value:
+    :param value:
         Value stored with the returned key
+    :type value: befs_off_t \*
 
 .. _`befs_btree_read.description`:
 
@@ -210,21 +232,26 @@ befs_btree_seekleaf
 
     Find the first leafnode in the btree
 
-    :param struct super_block \*sb:
+    :param sb:
         Filesystem superblock
+    :type sb: struct super_block \*
 
-    :param const befs_data_stream \*ds:
+    :param ds:
         Datastream containing btree
+    :type ds: const befs_data_stream \*
 
-    :param befs_btree_super \*bt_super:
+    :param bt_super:
         Pointer to the superblock of the btree
+    :type bt_super: befs_btree_super \*
 
-    :param struct befs_btree_node \*this_node:
+    :param this_node:
         Buffer to return the leafnode in
+    :type this_node: struct befs_btree_node \*
 
-    :param befs_off_t \*node_off:
+    :param node_off:
         Pointer to offset of current node within datastream. Modified
         by the function.
+    :type node_off: befs_off_t \*
 
 .. _`befs_btree_seekleaf.description`:
 
@@ -245,8 +272,9 @@ befs_leafnode
 
     Determine if the btree node is a leaf node or an interior node
 
-    :param struct befs_btree_node \*node:
+    :param node:
         Pointer to node structure to test
+    :type node: struct befs_btree_node \*
 
 .. _`befs_leafnode.description`:
 
@@ -264,8 +292,9 @@ befs_bt_keylen_index
 
     Finds start of keylen index in a node
 
-    :param struct befs_btree_node \*node:
+    :param node:
         Pointer to the node structure to find the keylen index within
+    :type node: struct befs_btree_node \*
 
 .. _`befs_bt_keylen_index.description`:
 
@@ -290,8 +319,9 @@ befs_bt_valarray
 
     Finds the start of value array in a node
 
-    :param struct befs_btree_node \*node:
+    :param node:
         Pointer to the node structure to find the value array within
+    :type node: struct befs_btree_node \*
 
 .. _`befs_bt_valarray.description`:
 
@@ -310,8 +340,9 @@ befs_bt_keydata
 
     Finds start of keydata array in a node
 
-    :param struct befs_btree_node \*node:
+    :param node:
         Pointer to the node structure to find the keydata array within
+    :type node: struct befs_btree_node \*
 
 .. _`befs_bt_keydata.description`:
 
@@ -330,17 +361,21 @@ befs_bt_get_key
 
     returns a pointer to the start of a key
 
-    :param struct super_block \*sb:
+    :param sb:
         filesystem superblock
+    :type sb: struct super_block \*
 
-    :param struct befs_btree_node \*node:
+    :param node:
         node in which to look for the key
+    :type node: struct befs_btree_node \*
 
-    :param int index:
+    :param index:
         the index of the key to get
+    :type index: int
 
-    :param u16 \*keylen:
+    :param keylen:
         modified to be the length of the key at \ ``index``\ 
+    :type keylen: u16 \*
 
 .. _`befs_bt_get_key.description`:
 
@@ -359,17 +394,21 @@ befs_compare_strings
 
     compare two strings
 
-    :param const void \*key1:
+    :param key1:
         pointer to the first key to be compared
+    :type key1: const void \*
 
-    :param int keylen1:
+    :param keylen1:
         length in bytes of key1
+    :type keylen1: int
 
-    :param const void \*key2:
+    :param key2:
         pointer to the second key to be compared
+    :type key2: const void \*
 
-    :param int keylen2:
+    :param keylen2:
         length in bytes of key2
+    :type keylen2: int
 
 .. _`befs_compare_strings.description`:
 

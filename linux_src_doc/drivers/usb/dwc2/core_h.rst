@@ -240,12 +240,15 @@ Definition
         bool lpm_clock_gating;
         bool besl;
         bool hird_threshold_en;
+        bool service_interval;
         u8 hird_threshold;
         bool activate_stm_fs_transceiver;
         bool ipg_isoc_en;
         u16 max_packet_count;
         u32 max_transfer_size;
         u32 ahbcfg;
+        u32 ref_clk_per;
+        u16 sof_cnt_wkup_alert;
         bool host_dma;
         bool dma_desc_enable;
         bool dma_desc_fs_enable;
@@ -394,6 +397,11 @@ hird_threshold_en
     0 - No
     1 - Yes
 
+service_interval
+    Enable service interval based scheduling.
+    0 - No
+    1 - Yes
+
 hird_threshold
     Value of BESL or HIRD Threshold.
 
@@ -431,6 +439,24 @@ ahbcfg
     bits defined by GAHBCFG_CTRL_MASK are controlled
     by the driver and are ignored in this
     configuration value.
+
+ref_clk_per
+    Indicates in terms of pico seconds the period
+    of ref_clk.
+    62500 - 16MHz
+    58823 - 17MHz
+    52083 - 19.2MHz
+    50000 - 20MHz
+    41666 - 24MHz
+    33333 - 30MHz (default)
+    25000 - 40MHz
+
+sof_cnt_wkup_alert
+    Indicates in term of number of SOF's after which
+    the controller should generate an interrupt if the
+    device had been in L1 state until that period.
+    This is used by SW to initiate Remote WakeUp in the
+    controller so as to sync to the uF number from the host.
 
 host_dma
     Specifies whether to use slave or DMA mode for accessing
@@ -592,6 +618,7 @@ Definition
         unsigned utmi_phy_data_width:2;
         unsigned lpm_mode:1;
         unsigned ipg_isoc_en:1;
+        unsigned service_interval_mode:1;
         u32 snpsid;
         u32 dev_ep_dirs;
         u32 g_tx_fifo_size[MAX_EPS_CHANNELS];
@@ -756,6 +783,12 @@ ipg_isoc_en
     specification for any token following ISOC OUT token.
     0 - Don't support
     1 - Support
+
+service_interval_mode
+    For enabling service interval based scheduling in the
+    controller.
+    0 - Disable
+    1 - Enable
 
 snpsid
     Value from SNPSID register
@@ -1033,6 +1066,7 @@ Definition
         struct dwc2_hregs_backup hr_backup;
         struct dentry *debug_root;
         struct debugfs_regset32 *regset;
+        bool needs_byte_swap;
     #define DWC2_CORE_REV_2_71a 0x4f54271a
     #define DWC2_CORE_REV_2_72a 0x4f54272a
     #define DWC2_CORE_REV_2_80a 0x4f54280a
@@ -1253,6 +1287,9 @@ regset
     a pointer to an array of register definitions, the
     array size and the base address where the register bank
     is to be found.
+
+needs_byte_swap
+    Specifies whether the opposite endianness.
 
 flags
     Flags for handling root port state changes

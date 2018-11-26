@@ -10,8 +10,9 @@ snd_compress_register
 
     register compressed device
 
-    :param struct snd_compr \*device:
+    :param device:
         compressed device to register
+    :type device: struct snd_compr \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ set_rxq_intr_params
 
     set a queue's interrupt holdoff parameters
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter
+    :type adapter: struct adapter \*
 
-    :param struct sge_rspq \*rspq:
+    :param rspq:
         the RX response queue
+    :type rspq: struct sge_rspq \*
 
-    :param unsigned int us:
+    :param us:
         the hold-off time in us, or 0 to disable timer
+    :type us: unsigned int
 
-    :param unsigned int cnt:
+    :param cnt:
         the hold-off packet count, or 0 to disable counter
+    :type cnt: unsigned int
 
 .. _`set_rxq_intr_params.description`:
 
@@ -40,11 +44,13 @@ from_fw_port_mod_type
 
     translate Firmware Port/Module type to Ethtool
 
-    :param enum fw_port_type port_type:
+    :param port_type:
         Firmware Port Type
+    :type port_type: enum fw_port_type
 
-    :param enum fw_port_module_type mod_type:
+    :param mod_type:
         Firmware Module Type
+    :type mod_type: enum fw_port_module_type
 
 .. _`from_fw_port_mod_type.description`:
 
@@ -62,14 +68,17 @@ fw_caps_to_lmm
 
     translate Firmware to ethtool Link Mode Mask
 
-    :param enum fw_port_type port_type:
+    :param port_type:
         Firmware Port Type
+    :type port_type: enum fw_port_type
 
-    :param unsigned int fw_caps:
+    :param fw_caps:
         Firmware Port Capabilities
+    :type fw_caps: unsigned int
 
-    :param unsigned long \*link_mode_mask:
+    :param link_mode_mask:
         ethtool Link Mode Mask
+    :type link_mode_mask: unsigned long \*
 
 .. _`fw_caps_to_lmm.description`:
 

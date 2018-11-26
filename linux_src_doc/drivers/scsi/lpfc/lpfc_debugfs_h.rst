@@ -10,11 +10,13 @@ lpfc_debug_dump_qe
 
     dump an specific entry from a queue
 
-    :param struct lpfc_queue \*q:
+    :param q:
         Pointer to the queue descriptor.
+    :type q: struct lpfc_queue \*
 
-    :param uint32_t idx:
+    :param idx:
         Index to the entry on the queue.
+    :type idx: uint32_t
 
 .. _`lpfc_debug_dump_qe.description`:
 
@@ -33,8 +35,9 @@ lpfc_debug_dump_q
 
     dump all entries from an specific queue
 
-    :param struct lpfc_queue \*q:
+    :param q:
         Pointer to the queue descriptor.
+    :type q: struct lpfc_queue \*
 
 .. _`lpfc_debug_dump_q.description`:
 
@@ -53,14 +56,17 @@ lpfc_debug_dump_wq
 
     dump all entries from the fcp or nvme work queue
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param int qtype:
+    :param qtype:
         *undescribed*
+    :type qtype: int
 
-    :param int wqidx:
+    :param wqidx:
         Index to a FCP or NVME work queue.
+    :type wqidx: int
 
 .. _`lpfc_debug_dump_wq.description`:
 
@@ -79,14 +85,17 @@ lpfc_debug_dump_cq
 
     dump all entries from a fcp or nvme work queue's cmpl queue
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param int qtype:
+    :param qtype:
         *undescribed*
+    :type qtype: int
 
-    :param int wqidx:
+    :param wqidx:
         Index to a FCP work queue.
+    :type wqidx: int
 
 .. _`lpfc_debug_dump_cq.description`:
 
@@ -105,11 +114,13 @@ lpfc_debug_dump_hba_eq
 
     dump all entries from a fcp work queue's evt queue
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param int qidx:
+    :param qidx:
         *undescribed*
+    :type qidx: int
 
 .. _`lpfc_debug_dump_hba_eq.description`:
 
@@ -128,8 +139,9 @@ lpfc_debug_dump_dat_rq
 
     dump all entries from the receive data queue
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_debug_dump_dat_rq.description`:
 
@@ -147,8 +159,9 @@ lpfc_debug_dump_hdr_rq
 
     dump all entries from the receive header queue
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_debug_dump_hdr_rq.description`:
 
@@ -166,11 +179,13 @@ lpfc_debug_dump_wq_by_id
 
     dump all entries from a work queue by queue id
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param int qid:
+    :param qid:
         Work queue identifier.
+    :type qid: int
 
 .. _`lpfc_debug_dump_wq_by_id.description`:
 
@@ -189,11 +204,13 @@ lpfc_debug_dump_mq_by_id
 
     dump all entries from a mbox queue by queue id
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param int qid:
+    :param qid:
         Mbox work queue identifier.
+    :type qid: int
 
 .. _`lpfc_debug_dump_mq_by_id.description`:
 
@@ -212,11 +229,13 @@ lpfc_debug_dump_rq_by_id
 
     dump all entries from a receive queue by queue id
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param int qid:
+    :param qid:
         Receive queue identifier.
+    :type qid: int
 
 .. _`lpfc_debug_dump_rq_by_id.description`:
 
@@ -235,11 +254,13 @@ lpfc_debug_dump_cq_by_id
 
     dump all entries from a cmpl queue by queue id
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param int qid:
+    :param qid:
         Complete queue identifier.
+    :type qid: int
 
 .. _`lpfc_debug_dump_cq_by_id.description`:
 
@@ -258,11 +279,13 @@ lpfc_debug_dump_eq_by_id
 
     dump all entries from an event queue by queue id
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param int qid:
+    :param qid:
         Complete queue identifier.
+    :type qid: int
 
 .. _`lpfc_debug_dump_eq_by_id.description`:
 

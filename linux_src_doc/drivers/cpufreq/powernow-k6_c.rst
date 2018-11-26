@@ -10,8 +10,9 @@ powernow_k6_get_cpu_multiplier
 
     returns the current FSB multiplier
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`powernow_k6_get_cpu_multiplier.description`:
 
@@ -30,11 +31,13 @@ powernow_k6_target
 
     set the PowerNow! multiplier
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         *undescribed*
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int best_i:
+    :param best_i:
         clock_ratio[best_i] is the target multiplier
+    :type best_i: unsigned int
 
 .. _`powernow_k6_target.description`:
 
@@ -52,8 +55,9 @@ powernow_k6_init
 
     initializes the k6 PowerNow! CPUFreq driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`powernow_k6_init.description`:
 
@@ -73,8 +77,9 @@ powernow_k6_exit
 
     unregisters AMD K6-2+/3+ PowerNow! support
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`powernow_k6_exit.description`:
 

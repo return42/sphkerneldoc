@@ -10,8 +10,9 @@ intel_gvt_scan_and_shadow_workload
 
     audit the workload by scanning and shadow it as well, include ringbuffer,wa_ctx and ctx.
 
-    :param struct intel_vgpu_workload \*workload:
+    :param workload:
         an abstract entity for each execlist submission.
+    :type workload: struct intel_vgpu_workload \*
 
 .. _`intel_gvt_scan_and_shadow_workload.description`:
 
@@ -30,8 +31,9 @@ intel_vgpu_clean_submission
 
     free submission-related resource for vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_clean_submission.description`:
 
@@ -49,11 +51,13 @@ intel_vgpu_reset_submission
 
     reset submission-related resource for vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long engine_mask:
+    :param engine_mask:
         engines expected to be reset
+    :type engine_mask: unsigned long
 
 .. _`intel_vgpu_reset_submission.description`:
 
@@ -71,8 +75,9 @@ intel_vgpu_setup_submission
 
     setup submission-related resource for vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_vgpu_setup_submission.description`:
 
@@ -97,14 +102,17 @@ intel_vgpu_select_submission_ops
 
     select virtual submission interface
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long engine_mask:
-        *undescribed*
+    :param engine_mask:
+        either ALL_ENGINES or target engine mask
+    :type engine_mask: unsigned long
 
-    :param unsigned int interface:
+    :param interface:
         expected vGPU virtual submission interface
+    :type interface: unsigned int
 
 .. _`intel_vgpu_select_submission_ops.description`:
 
@@ -129,8 +137,9 @@ intel_vgpu_destroy_workload
 
     destroy a vGPU workload
 
-    :param struct intel_vgpu_workload \*workload:
-        *undescribed*
+    :param workload:
+        workload to destroy
+    :type workload: struct intel_vgpu_workload \*
 
 .. _`intel_vgpu_destroy_workload.description`:
 
@@ -148,14 +157,17 @@ intel_vgpu_create_workload
 
     create a vGPU workload
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param int ring_id:
-        *undescribed*
+    :param ring_id:
+        ring index
+    :type ring_id: int
 
-    :param struct execlist_ctx_descriptor_format \*desc:
+    :param desc:
         a guest context descriptor
+    :type desc: struct execlist_ctx_descriptor_format \*
 
 .. _`intel_vgpu_create_workload.description`:
 
@@ -181,8 +193,9 @@ intel_vgpu_queue_workload
 
     Qeue a vGPU workload
 
-    :param struct intel_vgpu_workload \*workload:
+    :param workload:
         the workload to queue in
+    :type workload: struct intel_vgpu_workload \*
 
 .. This file was automatic generated / don't edit.
 

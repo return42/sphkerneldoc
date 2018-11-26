@@ -10,11 +10,13 @@ rpc_cmp_addr
 
     compare the address portion of two sockaddrs.
 
-    :param const struct sockaddr \*sap1:
+    :param sap1:
         first sockaddr
+    :type sap1: const struct sockaddr \*
 
-    :param const struct sockaddr \*sap2:
+    :param sap2:
         second sockaddr
+    :type sap2: const struct sockaddr \*
 
 .. _`rpc_cmp_addr.description`:
 
@@ -35,11 +37,13 @@ rpc_cmp_addr_port
 
     compare the address and port number of two sockaddrs.
 
-    :param const struct sockaddr \*sap1:
+    :param sap1:
         first sockaddr
+    :type sap1: const struct sockaddr \*
 
-    :param const struct sockaddr \*sap2:
+    :param sap2:
         second sockaddr
+    :type sap2: const struct sockaddr \*
 
 .. _`rpc_copy_addr`:
 
@@ -50,11 +54,13 @@ rpc_copy_addr
 
     copy the address portion of one sockaddr to another
 
-    :param struct sockaddr \*dst:
+    :param dst:
         destination sockaddr
+    :type dst: struct sockaddr \*
 
-    :param const struct sockaddr \*src:
+    :param src:
         source sockaddr
+    :type src: const struct sockaddr \*
 
 .. _`rpc_copy_addr.description`:
 
@@ -75,8 +81,9 @@ rpc_get_scope_id
 
     return scopeid for a given sockaddr
 
-    :param const struct sockaddr \*sa:
+    :param sa:
         sockaddr to get scopeid from
+    :type sa: const struct sockaddr \*
 
 .. _`rpc_get_scope_id.description`:
 

@@ -10,17 +10,21 @@ snd_hwdep_new
 
     create a new hwdep instance
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param char \*id:
+    :param id:
         the id string
+    :type id: char \*
 
-    :param int device:
+    :param device:
         the device index (zero-based)
+    :type device: int
 
-    :param struct snd_hwdep \*\*rhwdep:
+    :param rhwdep:
         the pointer to store the new hwdep instance
+    :type rhwdep: struct snd_hwdep \*\*
 
 .. _`snd_hwdep_new.description`:
 

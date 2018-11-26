@@ -118,7 +118,7 @@ get_name
 directory.  The name should be stored in the \ ``name``\  (with the
 understanding that it is already pointing to a a \ ``NAME_MAX``\ +1 sized
 buffer.   \ :c:func:`get_name`\  should return \ ``0``\  on success, a negative error code
-or error.  \ ``get_name``\  will be called without \ ``parent``\ ->i_mutex held.
+or error.  \ ``get_name``\  will be called without \ ``parent->i_mutex``\  held.
 
 .. _`export_operations.get_parent`:
 

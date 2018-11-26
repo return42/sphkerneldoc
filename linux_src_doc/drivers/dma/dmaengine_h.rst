@@ -10,8 +10,9 @@ dma_cookie_init
 
     initialize the cookies for a DMA channel
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dma channel to initialize
+    :type chan: struct dma_chan \*
 
 .. _`dma_cookie_assign`:
 
@@ -22,8 +23,9 @@ dma_cookie_assign
 
     assign a DMA engine cookie to the descriptor
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         descriptor needing cookie
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`dma_cookie_assign.description`:
 
@@ -48,8 +50,9 @@ dma_cookie_complete
 
     complete a descriptor
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         descriptor to complete
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`dma_cookie_complete.description`:
 
@@ -76,14 +79,17 @@ dma_cookie_status
 
     report cookie status
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dma channel
+    :type chan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         cookie we are interested in
+    :type cookie: dma_cookie_t
 
-    :param struct dma_tx_state \*state:
+    :param state:
         dma_tx_state structure to return last/used cookies
+    :type state: struct dma_tx_state \*
 
 .. _`dma_cookie_status.description`:
 
@@ -102,11 +108,13 @@ dmaengine_desc_get_callback
 
     get the passed in callback function
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         tx descriptor
+    :type tx: struct dma_async_tx_descriptor \*
 
-    :param struct dmaengine_desc_callback \*cb:
+    :param cb:
         temp struct to hold the callback info
+    :type cb: struct dmaengine_desc_callback \*
 
 .. _`dmaengine_desc_get_callback.description`:
 
@@ -126,11 +134,13 @@ dmaengine_desc_callback_invoke
 
     call the callback function in cb struct
 
-    :param struct dmaengine_desc_callback \*cb:
+    :param cb:
         temp struct that is holding the callback info
+    :type cb: struct dmaengine_desc_callback \*
 
-    :param const struct dmaengine_result \*result:
+    :param result:
         transaction result
+    :type result: const struct dmaengine_result \*
 
 .. _`dmaengine_desc_callback_invoke.description`:
 
@@ -150,11 +160,13 @@ dmaengine_desc_get_callback_invoke
 
     get the callback in tx descriptor and then immediately call the callback.
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         dma async tx descriptor
+    :type tx: struct dma_async_tx_descriptor \*
 
-    :param const struct dmaengine_result \*result:
+    :param result:
         transaction result
+    :type result: const struct dmaengine_result \*
 
 .. _`dmaengine_desc_get_callback_invoke.description`:
 
@@ -174,8 +186,9 @@ dmaengine_desc_callback_valid
 
     verify the callback is valid in cb
 
-    :param struct dmaengine_desc_callback \*cb:
+    :param cb:
         callback info struct
+    :type cb: struct dmaengine_desc_callback \*
 
 .. _`dmaengine_desc_callback_valid.description`:
 

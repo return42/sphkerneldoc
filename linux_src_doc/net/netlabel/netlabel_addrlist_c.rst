@@ -10,11 +10,13 @@ netlbl_af4list_search
 
     Search for a matching IPv4 address entry
 
-    :param __be32 addr:
+    :param addr:
         IPv4 address
+    :type addr: __be32
 
-    :param struct list_head \*head:
+    :param head:
         the list head
+    :type head: struct list_head \*
 
 .. _`netlbl_af4list_search.description`:
 
@@ -34,14 +36,17 @@ netlbl_af4list_search_exact
 
     Search for an exact IPv4 address entry
 
-    :param __be32 addr:
+    :param addr:
         IPv4 address
+    :type addr: __be32
 
-    :param __be32 mask:
+    :param mask:
         IPv4 address mask
+    :type mask: __be32
 
-    :param struct list_head \*head:
+    :param head:
         the list head
+    :type head: struct list_head \*
 
 .. _`netlbl_af4list_search_exact.description`:
 
@@ -61,11 +66,13 @@ netlbl_af6list_search
 
     Search for a matching IPv6 address entry
 
-    :param const struct in6_addr \*addr:
+    :param addr:
         IPv6 address
+    :type addr: const struct in6_addr \*
 
-    :param struct list_head \*head:
+    :param head:
         the list head
+    :type head: struct list_head \*
 
 .. _`netlbl_af6list_search.description`:
 
@@ -85,14 +92,17 @@ netlbl_af6list_search_exact
 
     Search for an exact IPv6 address entry
 
-    :param const struct in6_addr \*addr:
+    :param addr:
         IPv6 address
+    :type addr: const struct in6_addr \*
 
-    :param const struct in6_addr \*mask:
+    :param mask:
         IPv6 address mask
+    :type mask: const struct in6_addr \*
 
-    :param struct list_head \*head:
+    :param head:
         the list head
+    :type head: struct list_head \*
 
 .. _`netlbl_af6list_search_exact.description`:
 
@@ -112,11 +122,13 @@ netlbl_af4list_add
 
     Add a new IPv4 address entry to a list
 
-    :param struct netlbl_af4list \*entry:
+    :param entry:
         address entry
+    :type entry: struct netlbl_af4list \*
 
-    :param struct list_head \*head:
+    :param head:
         the list head
+    :type head: struct list_head \*
 
 .. _`netlbl_af4list_add.description`:
 
@@ -136,11 +148,13 @@ netlbl_af6list_add
 
     Add a new IPv6 address entry to a list
 
-    :param struct netlbl_af6list \*entry:
+    :param entry:
         address entry
+    :type entry: struct netlbl_af6list \*
 
-    :param struct list_head \*head:
+    :param head:
         the list head
+    :type head: struct list_head \*
 
 .. _`netlbl_af6list_add.description`:
 
@@ -160,8 +174,9 @@ netlbl_af4list_remove_entry
 
     Remove an IPv4 address entry
 
-    :param struct netlbl_af4list \*entry:
+    :param entry:
         address entry
+    :type entry: struct netlbl_af4list \*
 
 .. _`netlbl_af4list_remove_entry.description`:
 
@@ -180,14 +195,17 @@ netlbl_af4list_remove
 
     Remove an IPv4 address entry
 
-    :param __be32 addr:
+    :param addr:
         IP address
+    :type addr: __be32
 
-    :param __be32 mask:
+    :param mask:
         IP address mask
+    :type mask: __be32
 
-    :param struct list_head \*head:
+    :param head:
         the list head
+    :type head: struct list_head \*
 
 .. _`netlbl_af4list_remove.description`:
 
@@ -207,8 +225,9 @@ netlbl_af6list_remove_entry
 
     Remove an IPv6 address entry
 
-    :param struct netlbl_af6list \*entry:
+    :param entry:
         address entry
+    :type entry: struct netlbl_af6list \*
 
 .. _`netlbl_af6list_remove_entry.description`:
 
@@ -227,14 +246,17 @@ netlbl_af6list_remove
 
     Remove an IPv6 address entry
 
-    :param const struct in6_addr \*addr:
+    :param addr:
         IP address
+    :type addr: const struct in6_addr \*
 
-    :param const struct in6_addr \*mask:
+    :param mask:
         IP address mask
+    :type mask: const struct in6_addr \*
 
-    :param struct list_head \*head:
+    :param head:
         the list head
+    :type head: struct list_head \*
 
 .. _`netlbl_af6list_remove.description`:
 
@@ -254,20 +276,25 @@ netlbl_af4list_audit_addr
 
     Audit an IPv4 address
 
-    :param struct audit_buffer \*audit_buf:
+    :param audit_buf:
         audit buffer
+    :type audit_buf: struct audit_buffer \*
 
-    :param int src:
+    :param src:
         true if source address, false if destination
+    :type src: int
 
-    :param const char \*dev:
+    :param dev:
         network interface
+    :type dev: const char \*
 
-    :param __be32 addr:
+    :param addr:
         IP address
+    :type addr: __be32
 
-    :param __be32 mask:
+    :param mask:
         IP address mask
+    :type mask: __be32
 
 .. _`netlbl_af4list_audit_addr.description`:
 
@@ -285,20 +312,25 @@ netlbl_af6list_audit_addr
 
     Audit an IPv6 address
 
-    :param struct audit_buffer \*audit_buf:
+    :param audit_buf:
         audit buffer
+    :type audit_buf: struct audit_buffer \*
 
-    :param int src:
+    :param src:
         true if source address, false if destination
+    :type src: int
 
-    :param const char \*dev:
+    :param dev:
         network interface
+    :type dev: const char \*
 
-    :param const struct in6_addr \*addr:
+    :param addr:
         IP address
+    :type addr: const struct in6_addr \*
 
-    :param const struct in6_addr \*mask:
+    :param mask:
         IP address mask
+    :type mask: const struct in6_addr \*
 
 .. _`netlbl_af6list_audit_addr.description`:
 

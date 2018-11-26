@@ -10,17 +10,21 @@ acpi_device_sleep_wake
 
     execute \_DSW (Device Sleep Wake) or (deprecated in ACPI 3.0) \_PSW (Power State Wake)
 
-    :param struct acpi_device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct acpi_device \*
 
-    :param int enable:
+    :param enable:
         0 - disable, 1 - enable the wake capabilities of the device.
+    :type enable: int
 
-    :param int sleep_state:
+    :param sleep_state:
         Target sleep state of the system.
+    :type sleep_state: int
 
-    :param int dev_state:
+    :param dev_state:
         Target power state of the device.
+    :type dev_state: int
 
 .. _`acpi_device_sleep_wake.description`:
 

@@ -127,8 +127,9 @@ batadv_print_vid
 
     return printable version of vid information
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_print_vid.return`:
 
@@ -146,11 +147,13 @@ batadv_compare_eth
 
     Compare two not u16 aligned Ethernet addresses
 
-    :param const void \*data1:
+    :param data1:
         Pointer to a six-byte array containing the Ethernet address
+    :type data1: const void \*
 
-    :param const void \*data2:
+    :param data2:
         Pointer other six-byte array containing the Ethernet address
+    :type data2: const void \*
 
 .. _`batadv_compare_eth.note`:
 
@@ -175,11 +178,13 @@ batadv_has_timed_out
 
     compares current time (jiffies) and timestamp + timeout
 
-    :param unsigned long timestamp:
+    :param timestamp:
         base value to compare with (in jiffies)
+    :type timestamp: unsigned long
 
-    :param unsigned int timeout:
+    :param timeout:
         added to base value before comparing (in milliseconds)
+    :type timeout: unsigned int
 
 .. _`batadv_has_timed_out.return`:
 
@@ -197,8 +202,9 @@ batadv_atomic_dec_not_zero
 
     Decrease unless the number is 0
 
-    :param  v:
+    :param v:
         pointer of type atomic_t
+    :type v: 
 
 .. _`batadv_atomic_dec_not_zero.return`:
 
@@ -216,8 +222,9 @@ batadv_smallest_signed_int
 
     Returns the smallest signed integer in two's complement with the sizeof x
 
-    :param  x:
+    :param x:
         type of integer
+    :type x: 
 
 .. _`batadv_smallest_signed_int.return`:
 
@@ -235,11 +242,13 @@ batadv_seq_before
 
     Checks if a sequence number x is a predecessor of y
 
-    :param  x:
+    :param x:
         potential predecessor of \ ``y``\ 
+    :type x: 
 
-    :param  y:
+    :param y:
         value to compare \ ``x``\  against
+    :type y: 
 
 .. _`batadv_seq_before.description`:
 
@@ -273,11 +282,13 @@ batadv_seq_after
 
     Checks if a sequence number x is a successor of y
 
-    :param  x:
+    :param x:
         potential sucessor of \ ``y``\ 
+    :type x: 
 
-    :param  y:
+    :param y:
         value to compare \ ``x``\  against
+    :type y: 
 
 .. _`batadv_seq_after.description`:
 
@@ -311,14 +322,17 @@ batadv_add_counter
 
     Add to per cpu statistics counter of soft interface
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param size_t idx:
+    :param idx:
         counter index which should be modified
+    :type idx: size_t
 
-    :param size_t count:
+    :param count:
         value to increase counter by
+    :type count: size_t
 
 .. _`batadv_add_counter.description`:
 
@@ -336,11 +350,13 @@ batadv_inc_counter
 
     Increase per cpu statistics counter of soft interface
 
-    :param  b:
+    :param b:
         the bat priv with all the soft interface information
+    :type b: 
 
-    :param  i:
+    :param i:
         counter index which should be modified
+    :type i: 
 
 .. _`batadv_skb_cb`:
 
@@ -351,8 +367,9 @@ BATADV_SKB_CB
 
     Get batadv_skb_cb from skb control buffer
 
-    :param  __skb:
+    :param __skb:
         skb holding the control buffer
+    :type __skb: 
 
 .. _`batadv_skb_cb.description`:
 

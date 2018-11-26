@@ -10,11 +10,13 @@ scu_reg_access
 
     implement register access ioctls
 
-    :param u32 cmd:
+    :param cmd:
         command we are doing (read/write/update)
+    :type cmd: u32
 
-    :param struct scu_ipc_data \*data:
+    :param data:
         kernel copy of ioctl data
+    :type data: struct scu_ipc_data \*
 
 .. _`scu_reg_access.description`:
 
@@ -33,14 +35,17 @@ scu_ipc_ioctl
 
     control ioctls for the SCU
 
-    :param struct file \*fp:
+    :param fp:
         file handle of the SCU device
+    :type fp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl coce
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         pointer to user passed structure
+    :type arg: unsigned long
 
 .. _`scu_ipc_ioctl.description`:
 

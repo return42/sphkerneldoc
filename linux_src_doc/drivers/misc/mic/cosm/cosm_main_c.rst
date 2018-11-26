@@ -10,11 +10,13 @@ cosm_hw_reset
 
     Issue a HW reset for the MIC device
 
-    :param struct cosm_device \*cdev:
+    :param cdev:
         pointer to cosm_device instance
+    :type cdev: struct cosm_device \*
 
-    :param bool force:
+    :param force:
         *undescribed*
+    :type force: bool
 
 .. _`cosm_start`:
 
@@ -25,8 +27,9 @@ cosm_start
 
     Start the MIC
 
-    :param struct cosm_device \*cdev:
+    :param cdev:
         pointer to cosm_device instance
+    :type cdev: struct cosm_device \*
 
 .. _`cosm_start.description`:
 
@@ -51,11 +54,13 @@ cosm_stop
 
     Prepare the MIC for reset and trigger reset
 
-    :param struct cosm_device \*cdev:
+    :param cdev:
         pointer to cosm_device instance
+    :type cdev: struct cosm_device \*
 
-    :param bool force:
+    :param force:
         force a MIC to reset even if it is already reset and ready.
+    :type force: bool
 
 .. _`cosm_stop.return`:
 
@@ -73,8 +78,9 @@ cosm_reset_trigger_work
 
     Trigger MIC reset
 
-    :param struct work_struct \*work:
+    :param work:
         The work structure
+    :type work: struct work_struct \*
 
 .. _`cosm_reset_trigger_work.description`:
 
@@ -92,8 +98,9 @@ cosm_reset
 
     Schedule MIC reset
 
-    :param struct cosm_device \*cdev:
+    :param cdev:
         pointer to cosm_device instance
+    :type cdev: struct cosm_device \*
 
 .. _`cosm_reset.return`:
 
@@ -111,8 +118,9 @@ cosm_shutdown
 
     Initiate MIC shutdown.
 
-    :param struct cosm_device \*cdev:
+    :param cdev:
         pointer to cosm_device instance
+    :type cdev: struct cosm_device \*
 
 .. _`cosm_shutdown.return`:
 

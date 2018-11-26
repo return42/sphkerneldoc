@@ -10,14 +10,17 @@ get_avenrun
 
     get the load average array
 
-    :param unsigned long \*loads:
+    :param loads:
         pointer to dest load array
+    :type loads: unsigned long \*
 
-    :param unsigned long offset:
+    :param offset:
         offset to add
+    :type offset: unsigned long
 
-    :param int shift:
+    :param shift:
         shift count to shift the result left
+    :type shift: int
 
 .. _`get_avenrun.description`:
 
@@ -35,14 +38,17 @@ fixed_power_int
 
     compute: x^n, in O(log n) time
 
-    :param unsigned long x:
+    :param x:
         base of the power
+    :type x: unsigned long
 
-    :param unsigned int frac_bits:
+    :param frac_bits:
         fractional bits of \ ``x``\ 
+    :type frac_bits: unsigned int
 
-    :param unsigned int n:
+    :param n:
         power to raise \ ``x``\  to.
+    :type n: unsigned int
 
 .. _`fixed_power_int.description`:
 

@@ -10,8 +10,9 @@ tcf_em_register
 
     register an extended match
 
-    :param struct tcf_ematch_ops \*ops:
+    :param ops:
         ematch operations lookup table
+    :type ops: struct tcf_ematch_ops \*
 
 .. _`tcf_em_register.description`:
 
@@ -34,8 +35,9 @@ tcf_em_unregister
 
     unregster and extended match
 
-    :param struct tcf_ematch_ops \*ops:
+    :param ops:
         ematch operations lookup table
+    :type ops: struct tcf_ematch_ops \*
 
 .. _`tcf_em_unregister.description`:
 
@@ -57,15 +59,18 @@ tcf_em_tree_validate
 
     validate ematch config TLV and build ematch tree
 
-    :param struct tcf_proto \*tp:
+    :param tp:
         classifier kind handle
+    :type tp: struct tcf_proto \*
 
-    :param struct nlattr \*nla:
+    :param nla:
         ematch tree configuration TLV
+    :type nla: struct nlattr \*
 
-    :param struct tcf_ematch_tree \*tree:
+    :param tree:
         destination ematch tree variable to store the resulting
         ematch tree.
+    :type tree: struct tcf_ematch_tree \*
 
 .. _`tcf_em_tree_validate.description`:
 
@@ -89,8 +94,9 @@ tcf_em_tree_destroy
 
     destroy an ematch tree
 
-    :param struct tcf_ematch_tree \*tree:
+    :param tree:
         ematch tree to be deleted
+    :type tree: struct tcf_ematch_tree \*
 
 .. _`tcf_em_tree_destroy.description`:
 
@@ -110,14 +116,17 @@ tcf_em_tree_dump
 
     dump ematch tree into a rtnl message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb holding the rtnl message
+    :type skb: struct sk_buff \*
 
-    :param struct tcf_ematch_tree \*tree:
+    :param tree:
         *undescribed*
+    :type tree: struct tcf_ematch_tree \*
 
-    :param int tlv:
+    :param tlv:
         TLV type to be used to encapsulate the tree
+    :type tlv: int
 
 .. _`tcf_em_tree_dump.description`:
 

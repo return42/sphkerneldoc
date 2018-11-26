@@ -10,11 +10,13 @@ hpt37x_find_mode
 
     reset the hpt37x bus
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port
+    :type ap: struct ata_port \*
 
-    :param int speed:
+    :param speed:
         transfer mode
+    :type speed: int
 
 .. _`hpt37x_find_mode.description`:
 
@@ -33,11 +35,13 @@ hpt370_filter
 
     mode selection filter
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         *undescribed*
+    :type mask: unsigned long
 
 .. _`hpt370_filter.description`:
 
@@ -55,11 +59,13 @@ hpt370a_filter
 
     mode selection filter
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         *undescribed*
+    :type mask: unsigned long
 
 .. _`hpt370a_filter.description`:
 
@@ -77,11 +83,13 @@ hpt372_filter
 
     mode selection filter
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         mode mask
+    :type mask: unsigned long
 
 .. _`hpt372_filter.description`:
 
@@ -100,8 +108,9 @@ hpt37x_cable_detect
 
     Detect the cable type
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to detect on
+    :type ap: struct ata_port \*
 
 .. _`hpt37x_cable_detect.description`:
 
@@ -119,8 +128,9 @@ hpt374_fn1_cable_detect
 
     Detect the cable type
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to detect on
+    :type ap: struct ata_port \*
 
 .. _`hpt374_fn1_cable_detect.description`:
 
@@ -138,11 +148,13 @@ hpt37x_pre_reset
 
     reset the hpt37x bus
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to reset
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`hpt37x_pre_reset.description`:
 
@@ -160,11 +172,13 @@ hpt370_set_piomode
 
     PIO setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device on the interface
+    :type adev: struct ata_device \*
 
 .. _`hpt370_set_piomode.description`:
 
@@ -182,11 +196,13 @@ hpt370_set_dmamode
 
     DMA timing setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device being configured
+    :type adev: struct ata_device \*
 
 .. _`hpt370_set_dmamode.description`:
 
@@ -204,8 +220,9 @@ hpt370_bmdma_stop
 
     DMA engine stop
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`hpt370_bmdma_stop.description`:
 
@@ -223,11 +240,13 @@ hpt372_set_piomode
 
     PIO setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         device on the interface
+    :type adev: struct ata_device \*
 
 .. _`hpt372_set_piomode.description`:
 
@@ -245,11 +264,13 @@ hpt372_set_dmamode
 
     DMA timing setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device being configured
+    :type adev: struct ata_device \*
 
 .. _`hpt372_set_dmamode.description`:
 
@@ -267,8 +288,9 @@ hpt37x_bmdma_stop
 
     DMA engine stop
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA command
+    :type qc: struct ata_queued_cmd \*
 
 .. _`hpt37x_bmdma_stop.description`:
 
@@ -286,11 +308,13 @@ hpt37x_clock_slot
 
     Turn timing to PC clock entry
 
-    :param unsigned int freq:
+    :param freq:
         Reported frequency timing
+    :type freq: unsigned int
 
-    :param unsigned int base:
+    :param base:
         Base timing
+    :type base: unsigned int
 
 .. _`hpt37x_clock_slot.description`:
 
@@ -309,8 +333,9 @@ hpt37x_calibrate_dpll
 
     Calibrate the DPLL loop
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`hpt37x_calibrate_dpll.description`:
 
@@ -329,11 +354,13 @@ hpt37x_init_one
 
     Initialise an HPT37X/302
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         Entry in match table
+    :type id: const struct pci_device_id \*
 
 .. _`hpt37x_init_one.description`:
 

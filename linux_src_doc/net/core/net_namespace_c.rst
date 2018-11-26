@@ -1,6 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/core/net_namespace.c
 
+.. _`net_ns_get_ownership`:
+
+net_ns_get_ownership
+====================
+
+.. c:function:: void net_ns_get_ownership(const struct net *net, kuid_t *uid, kgid_t *gid)
+
+    get sysfs ownership data for \ ``net``\ 
+
+    :param net:
+        network namespace in question (can be NULL)
+    :type net: const struct net \*
+
+    :param uid:
+        kernel user ID for sysfs objects
+    :type uid: kuid_t \*
+
+    :param gid:
+        kernel group ID for sysfs objects
+    :type gid: kgid_t \*
+
+.. _`net_ns_get_ownership.description`:
+
+Description
+-----------
+
+Returns the uid/gid pair of root in the user namespace associated with the
+given network namespace.
+
 .. _`net_ns_barrier`:
 
 net_ns_barrier
@@ -10,8 +39,9 @@ net_ns_barrier
 
     wait until concurrent net_cleanup_work is done
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`net_ns_barrier.description`:
 
@@ -33,8 +63,9 @@ register_pernet_subsys
 
     register a network namespace subsystem
 
-    :param struct pernet_operations \*ops:
+    :param ops:
         pernet operations structure for the subsystem
+    :type ops: struct pernet_operations \*
 
 .. _`register_pernet_subsys.description`:
 
@@ -65,8 +96,9 @@ unregister_pernet_subsys
 
     unregister a network namespace subsystem
 
-    :param struct pernet_operations \*ops:
+    :param ops:
         pernet operations structure to manipulate
+    :type ops: struct pernet_operations \*
 
 .. _`unregister_pernet_subsys.description`:
 
@@ -87,8 +119,9 @@ register_pernet_device
 
     register a network namespace device
 
-    :param struct pernet_operations \*ops:
+    :param ops:
         pernet operations structure for the subsystem
+    :type ops: struct pernet_operations \*
 
 .. _`register_pernet_device.description`:
 
@@ -119,8 +152,9 @@ unregister_pernet_device
 
     unregister a network namespace netdevice
 
-    :param struct pernet_operations \*ops:
+    :param ops:
         pernet operations structure to manipulate
+    :type ops: struct pernet_operations \*
 
 .. _`unregister_pernet_device.description`:
 

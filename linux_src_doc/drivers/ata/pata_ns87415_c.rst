@@ -10,14 +10,17 @@ ns87415_set_mode
 
     Initialize host controller mode timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device whose timings we are configuring
+    :type adev: struct ata_device \*
 
-    :param u8 mode:
+    :param mode:
         Mode to set
+    :type mode: u8
 
 .. _`ns87415_set_mode.description`:
 
@@ -44,11 +47,13 @@ ns87415_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Device to program
+    :type adev: struct ata_device \*
 
 .. _`ns87415_set_piomode.description`:
 
@@ -73,8 +78,9 @@ ns87415_bmdma_setup
 
     Set up DMA
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command block
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ns87415_bmdma_setup.description`:
 
@@ -93,8 +99,9 @@ ns87415_bmdma_start
 
     Begin DMA transfer
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command block
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ns87415_bmdma_start.description`:
 
@@ -121,8 +128,9 @@ ns87415_bmdma_stop
 
     End DMA transfer
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command block
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ns87415_bmdma_stop.description`:
 
@@ -140,8 +148,9 @@ ns87415_irq_clear
 
     Clear interrupt
 
-    :param struct ata_port \*ap:
+    :param ap:
         Channel to clear
+    :type ap: struct ata_port \*
 
 .. _`ns87415_irq_clear.erratum`:
 
@@ -160,8 +169,9 @@ ns87415_check_atapi_dma
 
     ATAPI DMA filter
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command block
+    :type qc: struct ata_queued_cmd \*
 
 .. _`ns87415_check_atapi_dma.description`:
 
@@ -180,8 +190,9 @@ ns87560_read_buggy
 
     workaround buggy Super I/O chip
 
-    :param void __iomem \*port:
+    :param port:
         Port to read
+    :type port: void __iomem \*
 
 .. _`ns87560_read_buggy.description`:
 
@@ -197,8 +208,9 @@ ns87560_check_status
 
 .. c:function:: u8 ns87560_check_status(struct ata_port *ap)
 
-    :param struct ata_port \*ap:
+    :param ap:
         channel to check
+    :type ap: struct ata_port \*
 
 .. _`ns87560_check_status.description`:
 
@@ -217,11 +229,13 @@ ns87560_tf_read
 
     input device's ATA taskfile shadow registers
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port from which input is read
+    :type ap: struct ata_port \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         ATA taskfile register set for storing input
+    :type tf: struct ata_taskfile \*
 
 .. _`ns87560_tf_read.description`:
 
@@ -245,8 +259,9 @@ ns87560_bmdma_status
 
 .. c:function:: u8 ns87560_bmdma_status(struct ata_port *ap)
 
-    :param struct ata_port \*ap:
+    :param ap:
         channel to check
+    :type ap: struct ata_port \*
 
 .. _`ns87560_bmdma_status.description`:
 
@@ -265,11 +280,13 @@ ns87415_init_one
 
     Register 87415 ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         Entry in ns87415_pci_tbl matching with \ ``pdev``\ 
+    :type ent: const struct pci_device_id \*
 
 .. _`ns87415_init_one.description`:
 

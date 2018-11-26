@@ -10,8 +10,9 @@ w1_add_master_device
 
     registers a new master device
 
-    :param struct w1_bus_master \*master:
+    :param master:
         master bus device to register
+    :type master: struct w1_bus_master \*
 
 .. _`w1_remove_master_device`:
 
@@ -22,8 +23,9 @@ w1_remove_master_device
 
     unregister a master device
 
-    :param struct w1_bus_master \*bm:
+    :param bm:
         master bus device to remove
+    :type bm: struct w1_bus_master \*
 
 .. This file was automatic generated / don't edit.
 

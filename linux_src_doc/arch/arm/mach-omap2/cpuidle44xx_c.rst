@@ -10,14 +10,17 @@ omap_enter_idle_simple
 
     OMAP4PLUS cpuidle entry functions
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle device
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver
+    :type drv: struct cpuidle_driver \*
 
-    :param int index:
+    :param index:
         the index of state to be entered
+    :type index: int
 
 .. _`omap_enter_idle_simple.description`:
 
@@ -37,8 +40,9 @@ omap4_idle_init
 
     Init routine for OMAP4+ idle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap4_idle_init.description`:
 

@@ -10,11 +10,13 @@ retry_estale
 
     determine whether the caller should retry an operation
 
-    :param const long error:
+    :param error:
         the error that would currently be returned
+    :type error: const long
 
-    :param const unsigned int flags:
+    :param flags:
         flags being used for next lookup attempt
+    :type flags: const unsigned int
 
 .. _`retry_estale.description`:
 

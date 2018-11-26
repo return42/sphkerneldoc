@@ -10,8 +10,9 @@ config_drive_for_dma
 
     attempt to activate IDE DMA
 
-    :param ide_drive_t \*drive:
+    :param drive:
         the drive to place in DMA mode
+    :type drive: ide_drive_t \*
 
 .. _`config_drive_for_dma.description`:
 
@@ -33,11 +34,13 @@ ide_dma_host_set
 
     Enable/disable DMA on a host
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to control
+    :type drive: ide_drive_t \*
 
-    :param int on:
+    :param on:
         *undescribed*
+    :type on: int
 
 .. _`ide_dma_host_set.description`:
 
@@ -56,11 +59,13 @@ ide_build_dmatable
 
     build IDE DMA table
 
-    :param ide_drive_t \*drive:
+    :param drive:
         *undescribed*
+    :type drive: ide_drive_t \*
 
-    :param struct ide_cmd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct ide_cmd \*
 
 .. _`ide_build_dmatable.description`:
 
@@ -89,11 +94,13 @@ ide_dma_setup
 
     begin a DMA phase
 
-    :param ide_drive_t \*drive:
+    :param drive:
         target device
+    :type drive: ide_drive_t \*
 
-    :param struct ide_cmd \*cmd:
+    :param cmd:
         command
+    :type cmd: struct ide_cmd \*
 
 .. _`ide_dma_setup.description`:
 
@@ -117,8 +124,9 @@ ide_dma_sff_timer_expiry
 
     handle a DMA timeout
 
-    :param ide_drive_t \*drive:
+    :param drive:
         Drive that timed out
+    :type drive: ide_drive_t \*
 
 .. _`ide_dma_sff_timer_expiry.description`:
 

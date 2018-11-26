@@ -219,8 +219,9 @@ sensor_hub_device_open
 
     Open hub device
 
-    :param struct hid_sensor_hub_device \*hsdev:
+    :param hsdev:
         Hub device instance.
+    :type hsdev: struct hid_sensor_hub_device \*
 
 .. _`sensor_hub_device_open.description`:
 
@@ -238,8 +239,9 @@ sensor_hub_device_close
 
     Close hub device
 
-    :param struct hid_sensor_hub_device \*hsdev:
+    :param hsdev:
         Hub device instance.
+    :type hsdev: struct hid_sensor_hub_device \*
 
 .. _`sensor_hub_device_close.description`:
 
@@ -257,14 +259,17 @@ sensor_hub_register_callback
 
     Register client callbacks
 
-    :param struct hid_sensor_hub_device \*hsdev:
+    :param hsdev:
         Hub device instance.
+    :type hsdev: struct hid_sensor_hub_device \*
 
-    :param u32 usage_id:
+    :param usage_id:
         Usage id of the client (E.g. 0x200076 for Gyro).
+    :type usage_id: u32
 
-    :param struct hid_sensor_hub_callbacks \*usage_callback:
+    :param usage_callback:
         Callback function storage
+    :type usage_callback: struct hid_sensor_hub_callbacks \*
 
 .. _`sensor_hub_register_callback.description`:
 
@@ -284,11 +289,13 @@ sensor_hub_remove_callback
 
     Remove client callbacks
 
-    :param struct hid_sensor_hub_device \*hsdev:
+    :param hsdev:
         Hub device instance.
+    :type hsdev: struct hid_sensor_hub_device \*
 
-    :param u32 usage_id:
+    :param usage_id:
         Usage id of the client (E.g. 0x200076 for Gyro).
+    :type usage_id: u32
 
 .. _`sensor_hub_remove_callback.description`:
 
@@ -307,20 +314,25 @@ sensor_hub_input_get_attribute_info
 
     Get an attribute information
 
-    :param struct hid_sensor_hub_device \*hsdev:
+    :param hsdev:
         Hub device instance.
+    :type hsdev: struct hid_sensor_hub_device \*
 
-    :param u8 type:
+    :param type:
         Type of this attribute, input/output/feature
+    :type type: u8
 
-    :param u32 usage_id:
+    :param usage_id:
         Attribute usage id of parent physical device as per spec
+    :type usage_id: u32
 
-    :param u32 attr_usage_id:
+    :param attr_usage_id:
         Attribute usage id as per spec
+    :type attr_usage_id: u32
 
-    :param struct hid_sensor_hub_attribute_info \*info:
+    :param info:
         return information about attribute after parsing report
+    :type info: struct hid_sensor_hub_attribute_info \*
 
 .. _`sensor_hub_input_get_attribute_info.description`:
 
@@ -339,20 +351,25 @@ sensor_hub_set_feature
 
     Feature set request
 
-    :param struct hid_sensor_hub_device \*hsdev:
+    :param hsdev:
         Hub device instance.
+    :type hsdev: struct hid_sensor_hub_device \*
 
-    :param u32 report_id:
+    :param report_id:
         Report id to look for
+    :type report_id: u32
 
-    :param u32 field_index:
+    :param field_index:
         Field index inside a report
+    :type field_index: u32
 
-    :param int buffer_size:
+    :param buffer_size:
         size of the buffer
+    :type buffer_size: int
 
-    :param void \*buffer:
+    :param buffer:
         buffer to use in the feature set
+    :type buffer: void \*
 
 .. _`sensor_hub_set_feature.description`:
 
@@ -371,20 +388,25 @@ sensor_hub_get_feature
 
     Feature get request
 
-    :param struct hid_sensor_hub_device \*hsdev:
+    :param hsdev:
         Hub device instance.
+    :type hsdev: struct hid_sensor_hub_device \*
 
-    :param u32 report_id:
+    :param report_id:
         Report id to look for
+    :type report_id: u32
 
-    :param u32 field_index:
+    :param field_index:
         Field index inside a report
+    :type field_index: u32
 
-    :param int buffer_size:
+    :param buffer_size:
         size of the buffer
+    :type buffer_size: int
 
-    :param void \*buffer:
+    :param buffer:
         buffer to copy output
+    :type buffer: void \*
 
 .. _`sensor_hub_get_feature.description`:
 

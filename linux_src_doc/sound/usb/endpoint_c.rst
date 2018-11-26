@@ -10,8 +10,9 @@ snd_usb_endpoint_implicit_feedback_sink
 
     Report endpoint usage type
 
-    :param struct snd_usb_endpoint \*ep:
+    :param ep:
         The snd_usb_endpoint
+    :type ep: struct snd_usb_endpoint \*
 
 .. _`snd_usb_endpoint_implicit_feedback_sink.description`:
 
@@ -30,20 +31,25 @@ snd_usb_add_endpoint
 
     Add an endpoint to an USB audio chip
 
-    :param struct snd_usb_audio \*chip:
+    :param chip:
         The chip
+    :type chip: struct snd_usb_audio \*
 
-    :param struct usb_host_interface \*alts:
+    :param alts:
         The USB host interface
+    :type alts: struct usb_host_interface \*
 
-    :param int ep_num:
+    :param ep_num:
         The number of the endpoint to use
+    :type ep_num: int
 
-    :param int direction:
+    :param direction:
         SNDRV_PCM_STREAM_PLAYBACK or SNDRV_PCM_STREAM_CAPTURE
+    :type direction: int
 
-    :param int type:
+    :param type:
         SND_USB_ENDPOINT_TYPE_DATA or SND_USB_ENDPOINT_TYPE_SYNC
+    :type type: int
 
 .. _`snd_usb_add_endpoint.description`:
 
@@ -69,32 +75,41 @@ snd_usb_endpoint_set_params
 
     configure an snd_usb_endpoint
 
-    :param struct snd_usb_endpoint \*ep:
+    :param ep:
         the snd_usb_endpoint to configure
+    :type ep: struct snd_usb_endpoint \*
 
-    :param snd_pcm_format_t pcm_format:
+    :param pcm_format:
         the audio fomat.
+    :type pcm_format: snd_pcm_format_t
 
-    :param unsigned int channels:
+    :param channels:
         the number of audio channels.
+    :type channels: unsigned int
 
-    :param unsigned int period_bytes:
+    :param period_bytes:
         the number of bytes in one alsa period.
+    :type period_bytes: unsigned int
 
-    :param unsigned int period_frames:
+    :param period_frames:
         the number of frames in one alsa period.
+    :type period_frames: unsigned int
 
-    :param unsigned int buffer_periods:
+    :param buffer_periods:
         the number of periods in one alsa buffer.
+    :type buffer_periods: unsigned int
 
-    :param unsigned int rate:
+    :param rate:
         the frame rate.
+    :type rate: unsigned int
 
-    :param struct audioformat \*fmt:
+    :param fmt:
         the USB audio format information
+    :type fmt: struct audioformat \*
 
-    :param struct snd_usb_endpoint \*sync_ep:
+    :param sync_ep:
         the sync endpoint to use, if any
+    :type sync_ep: struct snd_usb_endpoint \*
 
 .. _`snd_usb_endpoint_set_params.description`:
 
@@ -114,8 +129,9 @@ snd_usb_endpoint_start
 
     start an snd_usb_endpoint
 
-    :param struct snd_usb_endpoint \*ep:
+    :param ep:
         the endpoint to start
+    :type ep: struct snd_usb_endpoint \*
 
 .. _`snd_usb_endpoint_start.description`:
 
@@ -139,8 +155,9 @@ snd_usb_endpoint_stop
 
     stop an snd_usb_endpoint
 
-    :param struct snd_usb_endpoint \*ep:
+    :param ep:
         the endpoint to stop (may be NULL)
+    :type ep: struct snd_usb_endpoint \*
 
 .. _`snd_usb_endpoint_stop.description`:
 
@@ -165,8 +182,9 @@ snd_usb_endpoint_deactivate
 
     deactivate an snd_usb_endpoint
 
-    :param struct snd_usb_endpoint \*ep:
+    :param ep:
         the endpoint to deactivate
+    :type ep: struct snd_usb_endpoint \*
 
 .. _`snd_usb_endpoint_deactivate.description`:
 
@@ -187,8 +205,9 @@ snd_usb_endpoint_release
 
     Tear down an snd_usb_endpoint
 
-    :param struct snd_usb_endpoint \*ep:
+    :param ep:
         the endpoint to release
+    :type ep: struct snd_usb_endpoint \*
 
 .. _`snd_usb_endpoint_release.description`:
 
@@ -207,8 +226,9 @@ snd_usb_endpoint_free
 
     Free the resources of an snd_usb_endpoint
 
-    :param struct snd_usb_endpoint \*ep:
+    :param ep:
         the endpoint to free
+    :type ep: struct snd_usb_endpoint \*
 
 .. _`snd_usb_endpoint_free.description`:
 
@@ -226,14 +246,17 @@ snd_usb_handle_sync_urb
 
     parse an USB sync packet
 
-    :param struct snd_usb_endpoint \*ep:
+    :param ep:
         the endpoint to handle the packet
+    :type ep: struct snd_usb_endpoint \*
 
-    :param struct snd_usb_endpoint \*sender:
+    :param sender:
         the sending endpoint
+    :type sender: struct snd_usb_endpoint \*
 
-    :param const struct urb \*urb:
+    :param urb:
         the received packet
+    :type urb: const struct urb \*
 
 .. _`snd_usb_handle_sync_urb.description`:
 

@@ -10,17 +10,21 @@ restrict_link_reject
 
     Give -EPERM to restrict link
 
-    :param struct key \*keyring:
+    :param keyring:
         The keyring being added to.
+    :type keyring: struct key \*
 
-    :param const struct key_type \*type:
+    :param type:
         The type of key being added.
+    :type type: const struct key_type \*
 
-    :param const union key_payload \*payload:
+    :param payload:
         The payload of the key intended to be added.
+    :type payload: const union key_payload \*
 
-    :param struct key \*restriction_key:
+    :param restriction_key:
         *undescribed*
+    :type restriction_key: struct key \*
 
 .. _`restrict_link_reject.description`:
 
@@ -43,11 +47,13 @@ keyring_search_aux
 
     Search a keyring tree for a key matching some criteria
 
-    :param key_ref_t keyring_ref:
+    :param keyring_ref:
         A pointer to the keyring with possession indicator.
+    :type keyring_ref: key_ref_t
 
-    :param struct keyring_search_context \*ctx:
+    :param ctx:
         The keyring search context.
+    :type ctx: struct keyring_search_context \*
 
 .. _`keyring_search_aux.description`:
 
@@ -90,14 +96,17 @@ keyring_search
 
     Search the supplied keyring tree for a matching key
 
-    :param key_ref_t keyring:
+    :param keyring:
         The root of the keyring tree to be searched.
+    :type keyring: key_ref_t
 
-    :param struct key_type \*type:
+    :param type:
         The type of keyring we want to find.
+    :type type: struct key_type \*
 
-    :param const char \*description:
+    :param description:
         The name of the keyring we want to find.
+    :type description: const char \*
 
 .. _`keyring_search.description`:
 
@@ -116,14 +125,17 @@ keyring_restrict
 
     Look up and apply a restriction to a keyring
 
-    :param key_ref_t keyring_ref:
+    :param keyring_ref:
         *undescribed*
+    :type keyring_ref: key_ref_t
 
-    :param const char \*type:
+    :param type:
         *undescribed*
+    :type type: const char \*
 
-    :param const char \*restriction:
+    :param restriction:
         The restriction options to apply to the keyring
+    :type restriction: const char \*
 
 .. _`key_link`:
 
@@ -134,11 +146,13 @@ key_link
 
     Link a key to a keyring
 
-    :param struct key \*keyring:
+    :param keyring:
         The keyring to make the link in.
+    :type keyring: struct key \*
 
-    :param struct key \*key:
+    :param key:
         The key to link to.
+    :type key: struct key \*
 
 .. _`key_link.description`:
 
@@ -169,11 +183,13 @@ key_unlink
 
     Unlink the first link to a key from a keyring.
 
-    :param struct key \*keyring:
+    :param keyring:
         The keyring to remove the link from.
+    :type keyring: struct key \*
 
-    :param struct key \*key:
+    :param key:
         The key the link is to.
+    :type key: struct key \*
 
 .. _`key_unlink.description`:
 
@@ -201,8 +217,9 @@ keyring_clear
 
     Clear a keyring
 
-    :param struct key \*keyring:
+    :param keyring:
         The keyring to clear.
+    :type keyring: struct key \*
 
 .. _`keyring_clear.description`:
 

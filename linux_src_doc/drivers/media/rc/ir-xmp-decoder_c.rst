@@ -10,11 +10,13 @@ ir_xmp_decode
 
     Decode one XMP pulse or space
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
-    :param struct ir_raw_event ev:
+    :param ev:
         the struct ir_raw_event descriptor of the pulse/space
+    :type ev: struct ir_raw_event
 
 .. _`ir_xmp_decode.description`:
 

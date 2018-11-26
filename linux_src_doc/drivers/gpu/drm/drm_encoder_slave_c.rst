@@ -10,20 +10,24 @@ drm_i2c_encoder_init
 
     Initialize an I2C slave encoder
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device.
+    :type dev: struct drm_device \*
 
-    :param struct drm_encoder_slave \*encoder:
+    :param encoder:
         Encoder to be attached to the I2C device. You aren't
         required to have called \ :c:func:`drm_encoder_init`\  before.
+    :type encoder: struct drm_encoder_slave \*
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         I2C adapter that will be used to communicate with
         the device.
+    :type adap: struct i2c_adapter \*
 
-    :param const struct i2c_board_info \*info:
+    :param info:
         Information that will be used to create the I2C device.
         Required fields are \ ``addr``\  and \ ``type``\ .
+    :type info: const struct i2c_board_info \*
 
 .. _`drm_i2c_encoder_init.description`:
 
@@ -50,8 +54,9 @@ drm_i2c_encoder_destroy
 
     Unregister the I2C device backing an encoder
 
-    :param struct drm_encoder \*drm_encoder:
+    :param drm_encoder:
         Encoder to be unregistered.
+    :type drm_encoder: struct drm_encoder \*
 
 .. _`drm_i2c_encoder_destroy.description`:
 

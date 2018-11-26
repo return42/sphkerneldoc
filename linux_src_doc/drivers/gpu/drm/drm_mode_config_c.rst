@@ -10,14 +10,17 @@ drm_mode_getresources
 
     get graphics configuration
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device for the ioctl
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data pointer for the ioctl
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file for the ioctl call
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_getresources.description`:
 
@@ -45,8 +48,9 @@ drm_mode_config_reset
 
     call ->reset callbacks
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
 .. _`drm_mode_config_reset.description`:
 
@@ -66,8 +70,9 @@ drm_mode_config_init
 
     initialize DRM mode_configuration structure
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_mode_config_init.description`:
 
@@ -90,8 +95,9 @@ drm_mode_config_cleanup
 
     free up DRM mode_config info
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_mode_config_cleanup.description`:
 

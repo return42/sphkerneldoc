@@ -10,11 +10,13 @@ is_empty
 
     determine whether a buffer is empty (contains all 0xff).
 
-    :param void \*buf:
+    :param buf:
         buffer to clean
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         length of buffer
+    :type len: int
 
 .. _`is_empty.description`:
 
@@ -33,11 +35,13 @@ first_non_ff
 
     find offset of the first non-0xff byte.
 
-    :param void \*buf:
+    :param buf:
         buffer to search in
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         length of buffer
+    :type len: int
 
 .. _`first_non_ff.description`:
 
@@ -56,20 +60,25 @@ get_master_node
 
     get the last valid master node allowing for corruption.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number
+    :type lnum: int
 
-    :param void \*\*pbuf:
+    :param pbuf:
         buffer containing the LEB read, is returned here
+    :type pbuf: void \*\*
 
-    :param struct ubifs_mst_node \*\*mst:
+    :param mst:
         master node, if found, is returned here
+    :type mst: struct ubifs_mst_node \*\*
 
-    :param void \*\*cor:
+    :param cor:
         corruption, if found, is returned here
+    :type cor: void \*\*
 
 .. _`get_master_node.description`:
 
@@ -94,11 +103,13 @@ write_rcvrd_mst_node
 
     write recovered master node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_mst_node \*mst:
+    :param mst:
         master node
+    :type mst: struct ubifs_mst_node \*
 
 .. _`write_rcvrd_mst_node.description`:
 
@@ -116,8 +127,9 @@ ubifs_recover_master_node
 
     recover the master node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_recover_master_node.description`:
 
@@ -138,8 +150,9 @@ ubifs_write_rcvrd_mst_node
 
     write the recovered master node.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_write_rcvrd_mst_node.description`:
 
@@ -160,14 +173,17 @@ is_last_write
 
     determine if an offset was in the last write to a LEB.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer to check
+    :type buf: void \*
 
-    :param int offs:
+    :param offs:
         offset to check
+    :type offs: int
 
 .. _`is_last_write.description`:
 
@@ -176,7 +192,7 @@ Description
 
 This function returns \ ``1``\  if \ ``offs``\  was in the last write to the LEB whose data
 is in \ ``buf``\ , otherwise \ ``0``\  is returned. The determination is made by checking
-for subsequent empty space starting from the next \ ``c``\ ->max_write_size
+for subsequent empty space starting from the next \ ``c->max_write_size``\ 
 boundary.
 
 .. _`clean_buf`:
@@ -188,20 +204,25 @@ clean_buf
 
     clean the data from an LEB sitting in a buffer.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*\*buf:
+    :param buf:
         buffer to clean
+    :type buf: void \*\*
 
-    :param int lnum:
+    :param lnum:
         LEB number to clean
+    :type lnum: int
 
-    :param int \*offs:
+    :param offs:
         offset from which to clean
+    :type offs: int \*
 
-    :param int \*len:
+    :param len:
         length of buffer
+    :type len: int \*
 
 .. _`clean_buf.description`:
 
@@ -210,7 +231,7 @@ Description
 
 This function pads up to the next min_io_size boundary (if there is one) and
 sets empty space to all 0xff. \ ``buf``\ , \ ``offs``\  and \ ``len``\  are updated to the next
-\ ``c``\ ->min_io_size boundary.
+\ ``c->min_io_size``\  boundary.
 
 .. _`no_more_nodes`:
 
@@ -221,20 +242,25 @@ no_more_nodes
 
     determine if there are no more nodes in a buffer.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer to check
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         length of buffer
+    :type len: int
 
-    :param int lnum:
+    :param lnum:
         LEB number of the LEB from which \ ``buf``\  was read
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset from which \ ``buf``\  was read
+    :type offs: int
 
 .. _`no_more_nodes.description`:
 
@@ -254,14 +280,17 @@ fix_unclean_leb
 
     fix an unclean LEB.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_scan_leb \*sleb:
+    :param sleb:
         scanned LEB information
+    :type sleb: struct ubifs_scan_leb \*
 
-    :param int start:
+    :param start:
         offset where scan started
+    :type start: int
 
 .. _`drop_last_group`:
 
@@ -272,11 +301,13 @@ drop_last_group
 
     drop the last group of nodes.
 
-    :param struct ubifs_scan_leb \*sleb:
+    :param sleb:
         scanned LEB information
+    :type sleb: struct ubifs_scan_leb \*
 
-    :param int \*offs:
+    :param offs:
         offset of dropped nodes is returned here
+    :type offs: int \*
 
 .. _`drop_last_group.description`:
 
@@ -295,11 +326,13 @@ drop_last_node
 
     drop the last node.
 
-    :param struct ubifs_scan_leb \*sleb:
+    :param sleb:
         scanned LEB information
+    :type sleb: struct ubifs_scan_leb \*
 
-    :param int \*offs:
+    :param offs:
         offset of dropped nodes is returned here
+    :type offs: int \*
 
 .. _`drop_last_node.description`:
 
@@ -318,21 +351,26 @@ ubifs_recover_leb
 
     scan and recover a LEB.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset
+    :type offs: int
 
-    :param void \*sbuf:
+    :param sbuf:
         LEB-sized buffer to use
+    :type sbuf: void \*
 
-    :param int jhead:
+    :param jhead:
         journal head number this LEB belongs to (%-1 if the LEB does not
         belong to any journal head)
+    :type jhead: int
 
 .. _`ubifs_recover_leb.description`:
 
@@ -353,17 +391,21 @@ get_cs_sqnum
 
     get commit start sequence number.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of commit start node
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset of commit start node
+    :type offs: int
 
-    :param unsigned long long \*cs_sqnum:
+    :param cs_sqnum:
         commit start sequence number is returned here
+    :type cs_sqnum: unsigned long long \*
 
 .. _`get_cs_sqnum.description`:
 
@@ -381,17 +423,21 @@ ubifs_recover_log_leb
 
     scan and recover a log LEB.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset
+    :type offs: int
 
-    :param void \*sbuf:
+    :param sbuf:
         LEB-sized buffer to use
+    :type sbuf: void \*
 
 .. _`ubifs_recover_log_leb.description`:
 
@@ -413,17 +459,21 @@ recover_head
 
     recover a head.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number of head to recover
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset of head to recover
+    :type offs: int
 
-    :param void \*sbuf:
+    :param sbuf:
         LEB-sized buffer to use
+    :type sbuf: void \*
 
 .. _`recover_head.description`:
 
@@ -443,11 +493,13 @@ ubifs_recover_inl_heads
 
     recover index and LPT heads.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*sbuf:
+    :param sbuf:
         LEB-sized buffer to use
+    :type sbuf: void \*
 
 .. _`ubifs_recover_inl_heads.description`:
 
@@ -475,14 +527,17 @@ clean_an_unclean_leb
 
     read and write a LEB to remove corruption.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_unclean_leb \*ucleb:
+    :param ucleb:
         unclean LEB information
+    :type ucleb: struct ubifs_unclean_leb \*
 
-    :param void \*sbuf:
+    :param sbuf:
         LEB-sized buffer to use
+    :type sbuf: void \*
 
 .. _`clean_an_unclean_leb.description`:
 
@@ -504,11 +559,13 @@ ubifs_clean_lebs
 
     clean LEBs recovered during read-only mount.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*sbuf:
+    :param sbuf:
         LEB-sized buffer to use
+    :type sbuf: void \*
 
 .. _`ubifs_clean_lebs.description`:
 
@@ -530,8 +587,9 @@ grab_empty_leb
 
     grab an empty LEB to use as GC LEB and run commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`grab_empty_leb.description`:
 
@@ -551,8 +609,9 @@ ubifs_rcvry_gc_commit
 
     recover the GC LEB number and run the commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_rcvry_gc_commit.description`:
 
@@ -630,20 +689,25 @@ add_ino
 
     add an entry to the size tree.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param ino_t inum:
+    :param inum:
         inode number
+    :type inum: ino_t
 
-    :param loff_t i_size:
+    :param i_size:
         size on inode
+    :type i_size: loff_t
 
-    :param loff_t d_size:
+    :param d_size:
         maximum size based on data nodes
+    :type d_size: loff_t
 
-    :param int exists:
+    :param exists:
         indicates whether the inode exists
+    :type exists: int
 
 .. _`find_ino`:
 
@@ -654,11 +718,13 @@ find_ino
 
     find an entry on the size tree.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param ino_t inum:
+    :param inum:
         inode number
+    :type inum: ino_t
 
 .. _`remove_ino`:
 
@@ -669,11 +735,13 @@ remove_ino
 
     remove an entry from the size tree.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param ino_t inum:
+    :param inum:
         inode number
+    :type inum: ino_t
 
 .. _`ubifs_destroy_size_tree`:
 
@@ -684,8 +752,9 @@ ubifs_destroy_size_tree
 
     free resources related to the size tree.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_recover_size_accum`:
 
@@ -696,17 +765,21 @@ ubifs_recover_size_accum
 
     accumulate inode sizes for recovery.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param union ubifs_key \*key:
+    :param key:
         node key
+    :type key: union ubifs_key \*
 
-    :param int deletion:
+    :param deletion:
         node is for a deletion
+    :type deletion: int
 
-    :param loff_t new_size:
+    :param new_size:
         inode size
+    :type new_size: loff_t
 
 .. _`ubifs_recover_size_accum.this-function-has-two-purposes`:
 
@@ -739,23 +812,47 @@ fix_size_in_place
 
     fix inode size in place on flash.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct size_entry \*e:
+    :param e:
         inode size information for recovery
+    :type e: struct size_entry \*
+
+.. _`inode_fix_size`:
+
+inode_fix_size
+==============
+
+.. c:function:: int inode_fix_size(struct ubifs_info *c, struct size_entry *e)
+
+    fix inode size
+
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param e:
+        inode size information for recovery
+    :type e: struct size_entry \*
 
 .. _`ubifs_recover_size`:
 
 ubifs_recover_size
 ==================
 
-.. c:function:: int ubifs_recover_size(struct ubifs_info *c)
+.. c:function:: int ubifs_recover_size(struct ubifs_info *c, bool in_place)
 
     recover inode size.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param in_place:
+        If true, do a in-place size fixup
+    :type in_place: bool
 
 .. _`ubifs_recover_size.description`:
 

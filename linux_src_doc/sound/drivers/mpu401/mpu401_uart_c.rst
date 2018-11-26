@@ -10,11 +10,13 @@ snd_mpu401_uart_interrupt
 
     generic MPU401-UART interrupt handler
 
-    :param int irq:
+    :param irq:
         the irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         mpu401 instance
+    :type dev_id: void \*
 
 .. _`snd_mpu401_uart_interrupt.description`:
 
@@ -39,11 +41,13 @@ snd_mpu401_uart_interrupt_tx
 
     generic MPU401-UART transmit irq handler
 
-    :param int irq:
+    :param irq:
         the irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         mpu401 instance
+    :type dev_id: void \*
 
 .. _`snd_mpu401_uart_interrupt_tx.description`:
 
@@ -68,26 +72,33 @@ snd_mpu401_uart_new
 
     create an MPU401-UART instance
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param int device:
+    :param device:
         the device index, zero-based
+    :type device: int
 
-    :param unsigned short hardware:
+    :param hardware:
         the hardware type, MPU401_HW_XXXX
+    :type hardware: unsigned short
 
-    :param unsigned long port:
+    :param port:
         the base address of MPU401 port
+    :type port: unsigned long
 
-    :param unsigned int info_flags:
+    :param info_flags:
         bitflags MPU401_INFO_XXX
+    :type info_flags: unsigned int
 
-    :param int irq:
+    :param irq:
         the ISA irq number, -1 if not to be allocated
+    :type irq: int
 
-    :param struct snd_rawmidi \*\*rrawmidi:
+    :param rrawmidi:
         the pointer to store the new rawmidi instance
+    :type rrawmidi: struct snd_rawmidi \*\*
 
 .. _`snd_mpu401_uart_new.description`:
 

@@ -10,10 +10,31 @@ ice_adminq_init_regs
 
     Initialize AdminQ registers
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
 .. _`ice_adminq_init_regs.description`:
+
+Description
+-----------
+
+This assumes the alloc_sq and alloc_rq functions have already been called
+
+.. _`ice_mailbox_init_regs`:
+
+ice_mailbox_init_regs
+=====================
+
+.. c:function:: void ice_mailbox_init_regs(struct ice_hw *hw)
+
+    Initialize Mailbox registers
+
+    :param hw:
+        pointer to the hardware structure
+    :type hw: struct ice_hw \*
+
+.. _`ice_mailbox_init_regs.description`:
 
 Description
 -----------
@@ -27,11 +48,13 @@ ice_check_sq_alive
 
 .. c:function:: bool ice_check_sq_alive(struct ice_hw *hw, struct ice_ctl_q_info *cq)
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_check_sq_alive.description`:
 
@@ -49,11 +72,13 @@ ice_alloc_ctrlq_sq_ring
 
     Allocate Control Transmit Queue (ATQ) rings
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_alloc_ctrlq_rq_ring`:
 
@@ -64,11 +89,13 @@ ice_alloc_ctrlq_rq_ring
 
     Allocate Control Receive Queue (ARQ) rings
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_free_ctrlq_sq_ring`:
 
@@ -79,11 +106,13 @@ ice_free_ctrlq_sq_ring
 
     Free Control Transmit Queue (ATQ) rings
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_free_ctrlq_sq_ring.description`:
 
@@ -102,11 +131,13 @@ ice_free_ctrlq_rq_ring
 
     Free Control Receive Queue (ARQ) rings
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_free_ctrlq_rq_ring.description`:
 
@@ -125,11 +156,13 @@ ice_alloc_rq_bufs
 
     Allocate pre-posted buffers for the ARQ
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_alloc_sq_bufs`:
 
@@ -140,11 +173,13 @@ ice_alloc_sq_bufs
 
     Allocate empty buffer structs for the ATQ
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_free_rq_bufs`:
 
@@ -155,11 +190,13 @@ ice_free_rq_bufs
 
     Free ARQ buffer info elements
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_free_sq_bufs`:
 
@@ -170,11 +207,13 @@ ice_free_sq_bufs
 
     Free ATQ buffer info elements
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_cfg_sq_regs`:
 
@@ -185,11 +224,13 @@ ice_cfg_sq_regs
 
     configure Control ATQ registers
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_cfg_sq_regs.description`:
 
@@ -207,11 +248,13 @@ ice_cfg_rq_regs
 
     configure Control ARQ register
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_cfg_rq_regs.description`:
 
@@ -229,11 +272,13 @@ ice_init_sq
 
     main initialization routine for Control ATQ
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_init_sq.description`:
 
@@ -258,11 +303,13 @@ ice_init_rq
 
     initialize ARQ
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_init_rq.description`:
 
@@ -287,11 +334,13 @@ ice_shutdown_sq
 
     shutdown the Control ATQ
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_shutdown_sq.description`:
 
@@ -305,18 +354,13 @@ The main shutdown routine for the Control Transmit Queue
 ice_aq_ver_check
 ================
 
-.. c:function:: bool ice_aq_ver_check(u8 fw_branch, u8 fw_major, u8 fw_minor)
+.. c:function:: bool ice_aq_ver_check(struct ice_hw *hw)
 
     Check the reported AQ API version.
 
-    :param u8 fw_branch:
-        The "branch" of FW, typically describes the device type
-
-    :param u8 fw_major:
-        The major version of the FW API
-
-    :param u8 fw_minor:
-        The minor version increment of the FW API
+    :param hw:
+        pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
 .. _`ice_aq_ver_check.description`:
 
@@ -341,11 +385,13 @@ ice_shutdown_rq
 
     shutdown Control ARQ
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_shutdown_rq.description`:
 
@@ -363,8 +409,9 @@ ice_init_check_adminq
 
     Check version for Admin Queue to know if its alive
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
 .. _`ice_init_ctrlq`:
 
@@ -375,11 +422,13 @@ ice_init_ctrlq
 
     main initialization routine for any control Queue
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param enum ice_ctl_q q_type:
+    :param q_type:
         specific Control queue type
+    :type q_type: enum ice_ctl_q
 
 .. _`ice_init_ctrlq.description`:
 
@@ -402,8 +451,9 @@ ice_init_all_ctrlq
 
     main initialization routine for all control queues
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
 .. _`ice_init_all_ctrlq.description`:
 
@@ -426,11 +476,13 @@ ice_shutdown_ctrlq
 
     shutdown routine for any control queue
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param enum ice_ctl_q q_type:
+    :param q_type:
         specific Control queue type
+    :type q_type: enum ice_ctl_q
 
 .. _`ice_shutdown_all_ctrlq`:
 
@@ -441,8 +493,9 @@ ice_shutdown_all_ctrlq
 
     shutdown routine for all control queues
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
 .. _`ice_clean_sq`:
 
@@ -453,11 +506,13 @@ ice_clean_sq
 
     cleans Admin send queue (ATQ)
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_clean_sq.description`:
 
@@ -475,11 +530,13 @@ ice_sq_done
 
     check if FW has processed the Admin Send Queue (ATQ)
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
 .. _`ice_sq_done.description`:
 
@@ -498,23 +555,29 @@ ice_sq_send_cmd
 
     send command to Control Queue (ATQ)
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
-    :param struct ice_aq_desc \*desc:
+    :param desc:
         prefilled descriptor describing the command (non DMA mem)
+    :type desc: struct ice_aq_desc \*
 
-    :param void \*buf:
+    :param buf:
         buffer to use for indirect commands (or NULL for direct commands)
+    :type buf: void \*
 
-    :param u16 buf_size:
+    :param buf_size:
         size of buffer for indirect commands (or 0 for direct commands)
+    :type buf_size: u16
 
-    :param struct ice_sq_cd \*cd:
+    :param cd:
         pointer to command details structure
+    :type cd: struct ice_sq_cd \*
 
 .. _`ice_sq_send_cmd.description`:
 
@@ -533,11 +596,13 @@ ice_fill_dflt_direct_cmd_desc
 
     AQ descriptor helper function
 
-    :param struct ice_aq_desc \*desc:
+    :param desc:
         pointer to the temp descriptor (non DMA mem)
+    :type desc: struct ice_aq_desc \*
 
-    :param u16 opcode:
+    :param opcode:
         the opcode can be used to decide which flags to turn off or on
+    :type opcode: u16
 
 .. _`ice_fill_dflt_direct_cmd_desc.description`:
 
@@ -553,17 +618,21 @@ ice_clean_rq_elem
 
 .. c:function:: enum ice_status ice_clean_rq_elem(struct ice_hw *hw, struct ice_ctl_q_info *cq, struct ice_rq_event_info *e, u16 *pending)
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param struct ice_ctl_q_info \*cq:
+    :param cq:
         pointer to the specific Control queue
+    :type cq: struct ice_ctl_q_info \*
 
-    :param struct ice_rq_event_info \*e:
+    :param e:
         event info from the receive descriptor, includes any buffers
+    :type e: struct ice_rq_event_info \*
 
-    :param u16 \*pending:
+    :param pending:
         number of events that could be left to process
+    :type pending: u16 \*
 
 .. _`ice_clean_rq_elem.description`:
 

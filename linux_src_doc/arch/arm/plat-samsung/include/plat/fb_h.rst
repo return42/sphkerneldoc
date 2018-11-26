@@ -10,10 +10,11 @@ s3c_fb_set_platdata
 
     Setup the FB device with platform data.
 
-    :param struct s3c_fb_platdata \*pd:
+    :param pd:
         The platform data to set. The data is copied from the passed structure
         so the machine data can mark the data \__initdata so that any unused
         machines will end up dumping their data at runtime.
+    :type pd: struct s3c_fb_platdata \*
 
 .. _`s3c64xx_fb_gpio_setup_24bpp`:
 
@@ -24,8 +25,9 @@ s3c64xx_fb_gpio_setup_24bpp
 
     S3C64XX setup function for 24bpp LCD
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`s3c64xx_fb_gpio_setup_24bpp.description`:
 

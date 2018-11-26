@@ -10,8 +10,9 @@ bcma_hcd_usb20_old_arm_init
 
     Initialize old USB 2.0 controller on ARM
 
-    :param struct bcma_hcd_device \*usb_dev:
+    :param usb_dev:
         *undescribed*
+    :type usb_dev: struct bcma_hcd_device \*
 
 .. _`bcma_hcd_usb20_old_arm_init.description`:
 
@@ -32,8 +33,9 @@ bcma_hcd_usb20_ns_init
 
     Initialize Northstar USB 2.0 controller
 
-    :param struct bcma_hcd_device \*bcma_hcd:
+    :param bcma_hcd:
         *undescribed*
+    :type bcma_hcd: struct bcma_hcd_device \*
 
 .. This file was automatic generated / don't edit.
 

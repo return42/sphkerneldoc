@@ -10,8 +10,9 @@ dwc2_periodic_channel_available
 
     Checks that a channel is available for a periodic transfer
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_periodic_channel_available.return`:
 
@@ -29,11 +30,13 @@ dwc2_check_periodic_bandwidth
 
     Checks that there is sufficient bandwidth for the specified QH in the periodic schedule
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH containing periodic bandwidth required
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_check_periodic_bandwidth.return`:
 
@@ -54,37 +57,44 @@ pmap_schedule
 
     Schedule time in a periodic bitmap (pmap).
 
-    :param unsigned long \*map:
+    :param map:
         The bitmap representing the schedule; will be updated
         upon success.
+    :type map: unsigned long \*
 
-    :param int bits_per_period:
+    :param bits_per_period:
         The schedule represents several periods.  This is how many
         bits are in each period.  It's assumed that the beginning
         of the schedule will repeat after its end.
+    :type bits_per_period: int
 
-    :param int periods_in_map:
+    :param periods_in_map:
         The number of periods in the schedule.
+    :type periods_in_map: int
 
-    :param int num_bits:
+    :param num_bits:
         The number of bits we need per period we want to reserve
         in this function call.
+    :type num_bits: int
 
-    :param int interval:
+    :param interval:
         How often we need to be scheduled for the reservation this
         time.  1 means every period.  2 means every other period.
         ...you get the picture?
+    :type interval: int
 
-    :param int start:
+    :param start:
         The bit number to start at.  Normally 0.  Must be within
         the interval or we return failure right away.
+    :type start: int
 
-    :param bool only_one_period:
+    :param only_one_period:
         Normally we'll allow picking a start anywhere within the
         first interval, since we can still make all repetition
         requirements by doing that.  However, if you pass true
         here then we'll return failure if we can't fit within
         the period that "start" is in.
+    :type only_one_period: bool
 
 .. _`pmap_schedule.description`:
 
@@ -169,23 +179,29 @@ pmap_unschedule
 
     Undo work done by \ :c:func:`pmap_schedule`\ 
 
-    :param unsigned long \*map:
+    :param map:
         See \ :c:func:`pmap_schedule`\ .
+    :type map: unsigned long \*
 
-    :param int bits_per_period:
+    :param bits_per_period:
         See \ :c:func:`pmap_schedule`\ .
+    :type bits_per_period: int
 
-    :param int periods_in_map:
+    :param periods_in_map:
         See \ :c:func:`pmap_schedule`\ .
+    :type periods_in_map: int
 
-    :param int num_bits:
+    :param num_bits:
         The number of bits that was passed to schedule.
+    :type num_bits: int
 
-    :param int interval:
+    :param interval:
         The interval that was passed to schedule.
+    :type interval: int
 
-    :param int start:
+    :param start:
         The return value from \ :c:func:`pmap_schedule`\ .
+    :type start: int
 
 .. _`dwc2_get_ls_map`:
 
@@ -196,11 +212,13 @@ dwc2_get_ls_map
 
     Get the map used for the given qh
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_get_ls_map.description`:
 
@@ -228,11 +246,13 @@ dwc2_qh_print
 
     Helper function for \ :c:func:`dwc2_qh_schedule_print`\ 
 
-    :param const char \*str:
+    :param str:
         The string to print
+    :type str: const char \*
 
-    :param void \*data:
+    :param data:
         A pointer to a struct dwc2_qh_print_data
+    :type data: void \*
 
 .. _`dwc2_qh_schedule_print`:
 
@@ -243,11 +263,13 @@ dwc2_qh_schedule_print
 
     Print the periodic schedule
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH to print.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_ls_pmap_schedule`:
 
@@ -258,16 +280,19 @@ dwc2_ls_pmap_schedule
 
     Schedule a low speed QH
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
-    :param int search_slice:
+    :param search_slice:
         We'll start trying to schedule at the passed slice.
         Remember that slices are the units of the low speed
         schedule (think 25us or so).
+    :type search_slice: int
 
 .. _`dwc2_ls_pmap_schedule.description`:
 
@@ -294,11 +319,13 @@ dwc2_ls_pmap_unschedule
 
     Undo work done by \ :c:func:`dwc2_ls_pmap_schedule`\ 
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_hs_pmap_schedule`:
 
@@ -309,20 +336,24 @@ dwc2_hs_pmap_schedule
 
     Schedule in the main high speed schedule
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
-    :param bool only_one_period:
+    :param only_one_period:
         If true we will limit ourselves to just looking at
         one period (aka one 100us chunk).  This is used if we have
         already scheduled something on the low speed schedule and
         need to find something that matches on the high speed one.
+    :type only_one_period: bool
 
-    :param int index:
+    :param index:
         The index into qh->hs_transfers that we're working with.
+    :type index: int
 
 .. _`dwc2_hs_pmap_schedule.description`:
 
@@ -352,14 +383,17 @@ dwc2_hs_pmap_unschedule
 
     Undo work done by \ :c:func:`dwc2_hs_pmap_schedule`\ 
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
-    :param int index:
+    :param index:
         Transfer index
+    :type index: int
 
 .. _`dwc2_uframe_schedule_split`:
 
@@ -370,11 +404,13 @@ dwc2_uframe_schedule_split
 
     Schedule a QH for a periodic split xfer.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_uframe_schedule_split.description`:
 
@@ -397,11 +433,13 @@ dwc2_uframe_schedule_hs
 
     Schedule a QH for a periodic high speed xfer.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_uframe_schedule_hs.description`:
 
@@ -420,11 +458,13 @@ dwc2_uframe_schedule_ls
 
     Schedule a QH for a periodic low/full speed xfer.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_uframe_schedule_ls.description`:
 
@@ -443,11 +483,13 @@ dwc2_uframe_schedule
 
     Schedule a QH for a periodic xfer.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_uframe_schedule.description`:
 
@@ -466,11 +508,13 @@ dwc2_uframe_unschedule
 
     Undoes \ :c:func:`dwc2_uframe_schedule`\ .
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller.
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_pick_first_frame`:
 
@@ -481,11 +525,13 @@ dwc2_pick_first_frame
 
     Choose 1st frame for qh that's already scheduled
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for a periodic endpoint
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_pick_first_frame.description`:
 
@@ -509,11 +555,13 @@ dwc2_do_reserve
 
     Make a periodic reservation
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_do_reserve.description`:
 
@@ -539,11 +587,13 @@ dwc2_do_unreserve
 
     Actually release the periodic reservation
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_do_unreserve.description`:
 
@@ -562,8 +612,9 @@ dwc2_unreserve_timer_fn
 
     Timer function to release periodic reservation
 
-    :param struct timer_list \*t:
+    :param t:
         Address to a qh unreserve_work.
+    :type t: struct timer_list \*
 
 .. _`dwc2_unreserve_timer_fn.description`:
 
@@ -586,11 +637,13 @@ dwc2_check_max_xfer_size
 
     Checks that the max transfer size allowed in a host channel is large enough to handle the maximum data transfer in a single (micro)frame for a periodic transfer
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for a periodic endpoint
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_check_max_xfer_size.return`:
 
@@ -608,12 +661,14 @@ dwc2_schedule_periodic
 
     Schedules an interrupt or isochronous transfer in the periodic schedule
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer. The QH should already contain the
         scheduling information.
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_schedule_periodic.return`:
 
@@ -631,11 +686,13 @@ dwc2_deschedule_periodic
 
     Removes an interrupt or isochronous transfer from the periodic schedule
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_wait_timer_fn`:
 
@@ -646,8 +703,9 @@ dwc2_wait_timer_fn
 
     Timer function to re-queue after waiting
 
-    :param struct timer_list \*t:
+    :param t:
         Pointer to wait_timer in a qh.
+    :type t: struct timer_list \*
 
 .. _`dwc2_wait_timer_fn.description`:
 
@@ -679,18 +737,22 @@ dwc2_qh_init
 
     Initializes a QH structure
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         The QH to init
+    :type qh: struct dwc2_qh \*
 
-    :param struct dwc2_hcd_urb \*urb:
+    :param urb:
         Holds the information about the device/endpoint needed to initialize
         the QH
+    :type urb: struct dwc2_hcd_urb \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         Flags for allocating memory.
+    :type mem_flags: gfp_t
 
 .. _`dwc2_hcd_qh_create`:
 
@@ -701,15 +763,18 @@ dwc2_hcd_qh_create
 
     Allocates and initializes a QH
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_hcd_urb \*urb:
+    :param urb:
         Holds the information about the device/endpoint needed
         to initialize the QH
+    :type urb: struct dwc2_hcd_urb \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         Flags for allocating memory.
+    :type mem_flags: gfp_t
 
 .. _`dwc2_hcd_qh_create.return`:
 
@@ -727,11 +792,13 @@ dwc2_hcd_qh_free
 
     Frees the QH
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         HCD instance
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         The QH to free
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_hcd_qh_free.description`:
 
@@ -752,11 +819,13 @@ dwc2_hcd_qh_add
 
     Adds a QH to either the non periodic or periodic schedule if it is not already in the schedule. If the QH is already in the schedule, no action is taken.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure for the DWC OTG controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         The QH to add
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_hcd_qh_add.return`:
 
@@ -774,11 +843,13 @@ dwc2_hcd_qh_unlink
 
     Removes a QH from either the non-periodic or periodic schedule. Memory is not freed.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH to remove from schedule
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_next_for_periodic_split`:
 
@@ -789,14 +860,17 @@ dwc2_next_for_periodic_split
 
     Set next_active_frame midway thru a split.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
-    :param u16 frame_number:
+    :param frame_number:
         The current frame number.
+    :type frame_number: u16
 
 .. _`dwc2_next_for_periodic_split.description`:
 
@@ -829,14 +903,17 @@ dwc2_next_periodic_start
 
     Set next_active_frame for next transfer start
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         QH for the periodic transfer.
+    :type qh: struct dwc2_qh \*
 
-    :param u16 frame_number:
+    :param frame_number:
         The current frame number.
+    :type frame_number: u16
 
 .. _`dwc2_next_periodic_start.description`:
 
@@ -876,11 +953,13 @@ dwc2_hcd_qtd_init
 
     Initializes a QTD structure
 
-    :param struct dwc2_qtd \*qtd:
+    :param qtd:
         The QTD to initialize
+    :type qtd: struct dwc2_qtd \*
 
-    :param struct dwc2_hcd_urb \*urb:
+    :param urb:
         The associated URB
+    :type urb: struct dwc2_hcd_urb \*
 
 .. _`dwc2_hcd_qtd_add`:
 
@@ -891,14 +970,17 @@ dwc2_hcd_qtd_add
 
     Adds a QTD to the QTD-list of a QH Caller must hold driver lock.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The DWC HCD structure
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_qtd \*qtd:
+    :param qtd:
         The QTD to add
+    :type qtd: struct dwc2_qtd \*
 
-    :param struct dwc2_qh \*qh:
+    :param qh:
         Queue head to add qtd to
+    :type qh: struct dwc2_qh \*
 
 .. _`dwc2_hcd_qtd_add.return`:
 

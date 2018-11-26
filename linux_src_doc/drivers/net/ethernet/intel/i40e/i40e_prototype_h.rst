@@ -10,8 +10,9 @@ i40e_virtchnl_link_speed
 
     Convert AdminQ link_speed to virtchnl definition
 
-    :param enum i40e_aq_link_speed link_speed:
+    :param link_speed:
         the speed to convert
+    :type link_speed: enum i40e_aq_link_speed
 
 .. _`i40e_virtchnl_link_speed.description`:
 

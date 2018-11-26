@@ -10,11 +10,13 @@ ib_process_cq_direct
 
     process a CQ in caller context
 
-    :param struct ib_cq \*cq:
+    :param cq:
         CQ to process
+    :type cq: struct ib_cq \*
 
-    :param int budget:
+    :param budget:
         number of CQEs to poll for
+    :type budget: int
 
 .. _`ib_process_cq_direct.description`:
 
@@ -44,23 +46,29 @@ of completions that will be processed is small.
 
     allocate a completion queue
 
-    :param struct ib_device \*dev:
+    :param dev:
         device to allocate the CQ for
+    :type dev: struct ib_device \*
 
-    :param void \*private:
+    :param private:
         driver private data, accessible from cq->cq_context
+    :type private: void \*
 
-    :param int nr_cqe:
+    :param nr_cqe:
         number of CQEs to allocate
+    :type nr_cqe: int
 
-    :param int comp_vector:
+    :param comp_vector:
         HCA completion vectors for this CQ
+    :type comp_vector: int
 
-    :param enum ib_poll_context poll_ctx:
+    :param poll_ctx:
         context to poll the CQ from.
+    :type poll_ctx: enum ib_poll_context
 
-    :param const char \*caller:
+    :param caller:
         module owner name.
+    :type caller: const char \*
 
 .. _`__ib_alloc_cq.description`:
 
@@ -81,8 +89,9 @@ ib_free_cq
 
     free a completion queue
 
-    :param struct ib_cq \*cq:
+    :param cq:
         completion queue to free.
+    :type cq: struct ib_cq \*
 
 .. This file was automatic generated / don't edit.
 

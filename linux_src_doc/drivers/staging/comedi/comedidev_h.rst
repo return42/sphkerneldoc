@@ -702,8 +702,8 @@ Definition
         struct device *hw_dev;
         const char *board_name;
         const void *board_ptr;
-        bool attached:1;
-        bool ioenabled:1;
+        unsigned int attached:1;
+        unsigned int ioenabled:1;
         spinlock_t spinlock;
         struct mutex mutex;
         struct rw_semaphore attach_lock;
@@ -719,6 +719,8 @@ Definition
         struct fasync_struct *async_queue;
         int (*open)(struct comedi_device *dev);
         void (*close)(struct comedi_device *dev);
+        int (*insn_device_config)(struct comedi_device *dev, struct comedi_insn *insn, unsigned int *data);
+        unsigned int (*get_valid_routes)(struct comedi_device *dev,unsigned int n_pairs, unsigned int *pair_data);
     }
 
 .. _`comedi_device.members`:
@@ -846,6 +848,19 @@ close
     Optional pointer to a function set by the low-level driver to be
     called when \ ``use_count``\  changed from 1 to 0.
 
+insn_device_config
+    Optional pointer to a handler for all sub-instructions
+    except \ ``INSN_DEVICE_CONFIG_GET_ROUTES``\  of the \ ``INSN_DEVICE_CONFIG``\ 
+    instruction.  If this is not initialized by the low-level driver, a
+    default handler will be set during post-configuration.
+
+get_valid_routes
+    Optional pointer to a handler for the
+    \ ``INSN_DEVICE_CONFIG_GET_ROUTES``\  sub-instruction of the
+    \ ``INSN_DEVICE_CONFIG``\  instruction set.  If this is not initialized by the
+    low-level driver, a default handler that copies zero routes back to the
+    user will be used.
+
 .. _`comedi_device.description`:
 
 Description
@@ -915,11 +930,13 @@ comedi_range_is_bipolar
 
     Test if subdevice range is bipolar
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int range:
+    :param range:
         Index of range within a range table.
+    :type range: unsigned int
 
 .. _`comedi_range_is_bipolar.description`:
 
@@ -949,11 +966,13 @@ comedi_range_is_unipolar
 
     Test if subdevice range is unipolar
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int range:
+    :param range:
         Index of range within a range table.
+    :type range: unsigned int
 
 .. _`comedi_range_is_unipolar.description`:
 
@@ -983,11 +1002,13 @@ comedi_range_is_external
 
     Test if subdevice range is external
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int range:
+    :param range:
         Index of range within a range table.
+    :type range: unsigned int
 
 .. _`comedi_range_is_external.description`:
 
@@ -1017,14 +1038,17 @@ comedi_chan_range_is_bipolar
 
     Test if channel-specific range is bipolar
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int chan:
+    :param chan:
         The channel number.
+    :type chan: unsigned int
 
-    :param unsigned int range:
+    :param range:
         Index of range within a range table.
+    :type range: unsigned int
 
 .. _`comedi_chan_range_is_bipolar.description`:
 
@@ -1054,14 +1078,17 @@ comedi_chan_range_is_unipolar
 
     Test if channel-specific range is unipolar
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int chan:
+    :param chan:
         The channel number.
+    :type chan: unsigned int
 
-    :param unsigned int range:
+    :param range:
         Index of range within a range table.
+    :type range: unsigned int
 
 .. _`comedi_chan_range_is_unipolar.description`:
 
@@ -1091,14 +1118,17 @@ comedi_chan_range_is_external
 
     Test if channel-specific range is external
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int chan:
+    :param chan:
         The channel number.
+    :type chan: unsigned int
 
-    :param unsigned int range:
+    :param range:
         Index of range within a range table.
+    :type range: unsigned int
 
 .. _`comedi_chan_range_is_external.description`:
 
@@ -1128,11 +1158,13 @@ comedi_offset_munge
 
     Convert between offset binary and 2's complement
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int val:
+    :param val:
         Value to be converted.
+    :type val: unsigned int
 
 .. _`comedi_offset_munge.description`:
 
@@ -1140,7 +1172,7 @@ Description
 -----------
 
 Toggles the highest bit of a sample value to toggle between offset binary
-and 2's complement.  Assumes that \ ``s``\ ->maxdata is a power of 2 minus 1.
+and 2's complement.  Assumes that \ ``s->maxdata``\  is a power of 2 minus 1.
 
 .. _`comedi_offset_munge.return`:
 
@@ -1158,8 +1190,9 @@ comedi_bytes_per_sample
 
     Determine subdevice sample size
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`comedi_bytes_per_sample.description`:
 
@@ -1185,8 +1218,9 @@ comedi_sample_shift
 
     Determine log2 of subdevice sample size
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`comedi_sample_shift.description`:
 
@@ -1214,11 +1248,13 @@ comedi_bytes_to_samples
 
     Convert a number of bytes to a number of samples
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         Number of bytes
+    :type nbytes: unsigned int
 
 .. _`comedi_bytes_to_samples.return`:
 
@@ -1236,11 +1272,13 @@ comedi_samples_to_bytes
 
     Convert a number of samples to a number of bytes
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
-    :param unsigned int nsamples:
+    :param nsamples:
         Number of samples.
+    :type nsamples: unsigned int
 
 .. _`comedi_samples_to_bytes.return`:
 
@@ -1259,11 +1297,13 @@ comedi_check_trigger_src
 
     Trivially validate a comedi_cmd trigger source
 
-    :param unsigned int \*src:
+    :param src:
         Pointer to the trigger source to validate.
+    :type src: unsigned int \*
 
-    :param unsigned int flags:
+    :param flags:
         Bitmask of valid \ ``TRIG``\ \_\* for the trigger.
+    :type flags: unsigned int
 
 .. _`comedi_check_trigger_src.description`:
 
@@ -1292,8 +1332,9 @@ comedi_check_trigger_is_unique
 
     Make sure a trigger source is unique
 
-    :param unsigned int src:
+    :param src:
         The trigger source to check.
+    :type src: unsigned int
 
 .. _`comedi_check_trigger_is_unique.return`:
 
@@ -1312,11 +1353,13 @@ comedi_check_trigger_arg_is
 
     Trivially validate a trigger argument
 
-    :param unsigned int \*arg:
+    :param arg:
         Pointer to the trigger arg to validate.
+    :type arg: unsigned int \*
 
-    :param unsigned int val:
+    :param val:
         The value the argument should be.
+    :type val: unsigned int
 
 .. _`comedi_check_trigger_arg_is.description`:
 
@@ -1342,11 +1385,13 @@ comedi_check_trigger_arg_min
 
     Trivially validate a trigger argument min
 
-    :param unsigned int \*arg:
+    :param arg:
         Pointer to the trigger arg to validate.
+    :type arg: unsigned int \*
 
-    :param unsigned int val:
+    :param val:
         The minimum value the argument should be.
+    :type val: unsigned int
 
 .. _`comedi_check_trigger_arg_min.description`:
 
@@ -1372,11 +1417,13 @@ comedi_check_trigger_arg_max
 
     Trivially validate a trigger argument max
 
-    :param unsigned int \*arg:
+    :param arg:
         Pointer to the trigger arg to validate.
+    :type arg: unsigned int \*
 
-    :param unsigned int val:
+    :param val:
         The maximum value the argument should be.
+    :type val: unsigned int
 
 .. _`comedi_check_trigger_arg_max.description`:
 
@@ -1402,8 +1449,9 @@ comedi_buf_n_bytes_ready
 
     Determine amount of unread data in buffer
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         COMEDI subdevice.
+    :type s: struct comedi_subdevice \*
 
 .. _`comedi_buf_n_bytes_ready.description`:
 
@@ -1430,8 +1478,9 @@ module_comedi_driver
 
     Helper macro for registering a comedi driver
 
-    :param  __comedi_driver:
+    :param __comedi_driver:
         comedi_driver struct
+    :type __comedi_driver: 
 
 .. _`module_comedi_driver.description`:
 

@@ -10,11 +10,13 @@ cros_ec_sensors_idx_to_reg
 
     convert index into offset in shared memory
 
-    :param struct cros_ec_sensors_core_state \*st:
+    :param st:
         pointer to state information for device
+    :type st: struct cros_ec_sensors_core_state \*
 
-    :param unsigned int idx:
+    :param idx:
         sensor index (should be element of enum sensor_index)
+    :type idx: unsigned int
 
 .. _`cros_ec_sensors_idx_to_reg.return`:
 
@@ -32,8 +34,9 @@ cros_ec_sensors_read_until_not_busy
 
     read until is not busy
 
-    :param struct cros_ec_sensors_core_state \*st:
+    :param st:
         pointer to state information for device
+    :type st: struct cros_ec_sensors_core_state \*
 
 .. _`cros_ec_sensors_read_until_not_busy.description`:
 
@@ -58,14 +61,17 @@ cros_ec_sensors_read_data_unsafe
 
     read acceleration data from EC shared memory
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         pointer to IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param unsigned long scan_mask:
+    :param scan_mask:
         bitmap of the sensor indices to scan
+    :type scan_mask: unsigned long
 
-    :param s16 \*data:
+    :param data:
         location to store data
+    :type data: s16 \*
 
 .. _`cros_ec_sensors_read_data_unsafe.description`:
 

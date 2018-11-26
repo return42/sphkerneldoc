@@ -8,8 +8,9 @@ save_guest_debug_regs
 
 .. c:function:: void save_guest_debug_regs(struct kvm_vcpu *vcpu)
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`save_guest_debug_regs.description`:
 
@@ -32,8 +33,9 @@ kvm_arm_init_debug
 
     grab what we need for debug
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kvm_arm_init_debug.description`:
 
@@ -55,8 +57,9 @@ kvm_arm_reset_debug_ptr
 
     reset the debug ptr to point to the vcpu state
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_arm_setup_debug`:
 
@@ -67,8 +70,9 @@ kvm_arm_setup_debug
 
     set up debug related stuff
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         the vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_arm_setup_debug.description`:
 

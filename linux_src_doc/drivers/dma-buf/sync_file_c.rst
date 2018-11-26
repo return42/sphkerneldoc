@@ -10,8 +10,9 @@ sync_file_create
 
     creates a sync file
 
-    :param struct dma_fence \*fence:
+    :param fence:
         fence to add to the sync_fence
+    :type fence: struct dma_fence \*
 
 .. _`sync_file_create.description`:
 
@@ -32,8 +33,9 @@ sync_file_get_fence
 
     get the fence related to the sync_file fd
 
-    :param int fd:
+    :param fd:
         sync_file fd to get the fence from
+    :type fd: int
 
 .. _`sync_file_get_fence.description`:
 
@@ -52,14 +54,17 @@ sync_file_get_name
 
     get the name of the sync_file
 
-    :param struct sync_file \*sync_file:
+    :param sync_file:
         sync_file to get the fence from
+    :type sync_file: struct sync_file \*
 
-    :param char \*buf:
+    :param buf:
         destination buffer to copy sync_file name into
+    :type buf: char \*
 
-    :param int len:
+    :param len:
         available size of destination buffer.
+    :type len: int
 
 .. _`sync_file_get_name.description`:
 
@@ -87,14 +92,17 @@ sync_file_merge
 
     merge two sync_files
 
-    :param const char \*name:
+    :param name:
         name of new fence
+    :type name: const char \*
 
-    :param struct sync_file \*a:
+    :param a:
         sync_file a
+    :type a: struct sync_file \*
 
-    :param struct sync_file \*b:
+    :param b:
         sync_file b
+    :type b: struct sync_file \*
 
 .. _`sync_file_merge.description`:
 

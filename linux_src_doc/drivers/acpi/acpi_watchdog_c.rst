@@ -10,8 +10,9 @@ acpi_has_watchdog
 
     the native one (which are typically the same hardware).
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ coresight_timeout_etm
 
     loop until a bit has changed to a specific state.
 
-    :param struct etm_drvdata \*drvdata:
+    :param drvdata:
         etm's private data structure.
+    :type drvdata: struct etm_drvdata \*
 
-    :param u32 offset:
+    :param offset:
         address of a register, starting from \ ``addr``\ .
+    :type offset: u32
 
-    :param int position:
+    :param position:
         the position of the bit of interest.
+    :type position: int
 
-    :param int value:
+    :param value:
         the value the bit should have.
+    :type value: int
 
 .. _`coresight_timeout_etm.description`:
 

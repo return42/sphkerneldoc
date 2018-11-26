@@ -10,17 +10,21 @@ rvt_set_ibdev_name
 
     Craft an IB device name from client info
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         pointer to the client rvt_dev_info structure
+    :type rdi: struct rvt_dev_info \*
 
-    :param const char \*fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: const char \*
 
-    :param const char \*name:
+    :param name:
         client specific name
+    :type name: const char \*
 
-    :param const int unit:
+    :param unit:
         client specific unit number.
+    :type unit: const int
 
 .. _`rvt_get_ibdev_name`:
 
@@ -31,8 +35,9 @@ rvt_get_ibdev_name
 
     return the IB name
 
-    :param const struct rvt_dev_info \*rdi:
+    :param rdi:
         rdmavt device
+    :type rdi: const struct rvt_dev_info \*
 
 .. _`rvt_get_ibdev_name.description`:
 
@@ -50,14 +55,17 @@ rvt_lookup_qpn
 
     return the QP with the given QPN
 
-    :param struct rvt_dev_info \*rdi:
+    :param rdi:
         *undescribed*
+    :type rdi: struct rvt_dev_info \*
 
-    :param struct rvt_ibport \*rvp:
+    :param rvp:
         *undescribed*
+    :type rvp: struct rvt_ibport \*
 
-    :param u32 qpn:
+    :param qpn:
         the QP number to look up
+    :type qpn: u32
 
 .. _`rvt_lookup_qpn.description`:
 
@@ -76,8 +84,9 @@ rvt_mod_retry_timer
 
     mod a retry timer \ ``qp``\  - the QP Modify a potentially already running retry timer
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
 .. This file was automatic generated / don't edit.
 

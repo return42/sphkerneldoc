@@ -90,8 +90,9 @@ dma_fence_is_array
 
     check if a fence is from the array subsclass
 
-    :param struct dma_fence \*fence:
+    :param fence:
         fence to test
+    :type fence: struct dma_fence \*
 
 .. _`dma_fence_is_array.description`:
 
@@ -109,8 +110,9 @@ to_dma_fence_array
 
     cast a fence to a dma_fence_array
 
-    :param struct dma_fence \*fence:
+    :param fence:
         fence to cast to a dma_fence_array
+    :type fence: struct dma_fence \*
 
 .. _`to_dma_fence_array.description`:
 

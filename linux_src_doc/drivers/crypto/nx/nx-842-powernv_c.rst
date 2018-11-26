@@ -10,17 +10,21 @@ setup_indirect_dde
 
     Setup an indirect DDE
 
-    :param struct data_descriptor_entry \*dde:
+    :param dde:
         *undescribed*
+    :type dde: struct data_descriptor_entry \*
 
-    :param struct data_descriptor_entry \*ddl:
+    :param ddl:
         *undescribed*
+    :type ddl: struct data_descriptor_entry \*
 
-    :param unsigned int dde_count:
+    :param dde_count:
         *undescribed*
+    :type dde_count: unsigned int
 
-    :param unsigned int byte_count:
+    :param byte_count:
         *undescribed*
+    :type byte_count: unsigned int
 
 .. _`setup_indirect_dde.description`:
 
@@ -39,14 +43,17 @@ setup_direct_dde
 
     Setup single DDE from buffer
 
-    :param struct data_descriptor_entry \*dde:
+    :param dde:
         *undescribed*
+    :type dde: struct data_descriptor_entry \*
 
-    :param unsigned long pa:
+    :param pa:
         *undescribed*
+    :type pa: unsigned long
 
-    :param unsigned int len:
+    :param len:
         *undescribed*
+    :type len: unsigned int
 
 .. _`setup_direct_dde.description`:
 
@@ -72,20 +79,25 @@ setup_ddl
 
     Setup DDL from buffer
 
-    :param struct data_descriptor_entry \*dde:
+    :param dde:
         *undescribed*
+    :type dde: struct data_descriptor_entry \*
 
-    :param struct data_descriptor_entry \*ddl:
+    :param ddl:
         *undescribed*
+    :type ddl: struct data_descriptor_entry \*
 
-    :param unsigned char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: unsigned char \*
 
-    :param unsigned int len:
+    :param len:
         *undescribed*
+    :type len: unsigned int
 
-    :param bool in:
+    :param in:
         *undescribed*
+    :type in: bool
 
 .. _`setup_ddl.return`:
 
@@ -101,11 +113,13 @@ wait_for_csb
 
 .. c:function:: int wait_for_csb(struct nx842_workmem *wmem, struct coprocessor_status_block *csb)
 
-    :param struct nx842_workmem \*wmem:
+    :param wmem:
         *undescribed*
+    :type wmem: struct nx842_workmem \*
 
-    :param struct coprocessor_status_block \*csb:
+    :param csb:
         *undescribed*
+    :type csb: struct coprocessor_status_block \*
 
 .. _`nx842_exec_icswx`:
 
@@ -116,24 +130,30 @@ nx842_exec_icswx
 
     compress/decompress data using the 842 algorithm
 
-    :param const unsigned char \*in:
+    :param in:
         input buffer pointer
+    :type in: const unsigned char \*
 
-    :param unsigned int inlen:
+    :param inlen:
         input buffer size
+    :type inlen: unsigned int
 
-    :param unsigned char \*out:
+    :param out:
         output buffer pointer
+    :type out: unsigned char \*
 
-    :param unsigned int \*outlenp:
+    :param outlenp:
         output buffer size pointer
+    :type outlenp: unsigned int \*
 
-    :param void \*workmem:
+    :param workmem:
         working memory buffer pointer, size determined by
         nx842_powernv_driver.workmem_size
+    :type workmem: void \*
 
-    :param int fc:
+    :param fc:
         function code, see CCW Function Codes in nx-842.h
+    :type fc: int
 
 .. _`nx842_exec_icswx.description`:
 
@@ -173,24 +193,30 @@ nx842_exec_vas
 
     compress/decompress data using the 842 algorithm
 
-    :param const unsigned char \*in:
+    :param in:
         input buffer pointer
+    :type in: const unsigned char \*
 
-    :param unsigned int inlen:
+    :param inlen:
         input buffer size
+    :type inlen: unsigned int
 
-    :param unsigned char \*out:
+    :param out:
         output buffer pointer
+    :type out: unsigned char \*
 
-    :param unsigned int \*outlenp:
+    :param outlenp:
         output buffer size pointer
+    :type outlenp: unsigned int \*
 
-    :param void \*workmem:
+    :param workmem:
         working memory buffer pointer, size determined by
         nx842_powernv_driver.workmem_size
+    :type workmem: void \*
 
-    :param int fc:
+    :param fc:
         function code, see CCW Function Codes in nx-842.h
+    :type fc: int
 
 .. _`nx842_exec_vas.description`:
 
@@ -231,20 +257,25 @@ nx842_powernv_compress
 
     Compress data using the 842 algorithm
 
-    :param const unsigned char \*in:
+    :param in:
         input buffer pointer
+    :type in: const unsigned char \*
 
-    :param unsigned int inlen:
+    :param inlen:
         input buffer size
+    :type inlen: unsigned int
 
-    :param unsigned char \*out:
+    :param out:
         output buffer pointer
+    :type out: unsigned char \*
 
-    :param unsigned int \*outlenp:
+    :param outlenp:
         output buffer size pointer
+    :type outlenp: unsigned int \*
 
-    :param void \*wmem:
+    :param wmem:
         *undescribed*
+    :type wmem: void \*
 
 .. _`nx842_powernv_compress.description`:
 
@@ -275,20 +306,25 @@ nx842_powernv_decompress
 
     Decompress data using the 842 algorithm
 
-    :param const unsigned char \*in:
+    :param in:
         input buffer pointer
+    :type in: const unsigned char \*
 
-    :param unsigned int inlen:
+    :param inlen:
         input buffer size
+    :type inlen: unsigned int
 
-    :param unsigned char \*out:
+    :param out:
         output buffer pointer
+    :type out: unsigned char \*
 
-    :param unsigned int \*outlenp:
+    :param outlenp:
         output buffer size pointer
+    :type outlenp: unsigned int \*
 
-    :param void \*wmem:
+    :param wmem:
         *undescribed*
+    :type wmem: void \*
 
 .. _`nx842_powernv_decompress.description`:
 

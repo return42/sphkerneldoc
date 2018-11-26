@@ -10,8 +10,9 @@
 
     Disable direct I/O for all the volumes
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`mpt3sas_get_num_volumes`:
 
@@ -22,8 +23,9 @@ mpt3sas_get_num_volumes
 
     Get number of volumes in the ioc
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
 .. _`mpt3sas_init_warpdrive_properties`:
 
@@ -34,11 +36,13 @@ mpt3sas_init_warpdrive_properties
 
     Set properties for warpdrive direct I/O.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _raid_device \*raid_device:
+    :param raid_device:
         the raid_device object
+    :type raid_device: struct _raid_device \*
 
 .. _`mpt3sas_setup_direct_io`:
 
@@ -49,24 +53,21 @@ mpt3sas_setup_direct_io
 
     setup MPI request for WARPDRIVE Direct I/O
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct scsi_cmnd \*scmd:
+    :param scmd:
         pointer to scsi command object
+    :type scmd: struct scsi_cmnd \*
 
-    :param struct _raid_device \*raid_device:
+    :param raid_device:
         pointer to raid device data structure
+    :type raid_device: struct _raid_device \*
 
-    :param Mpi25SCSIIORequest_t \*mpi_request:
+    :param mpi_request:
         pointer to the SCSI_IO reqest message frame
-
-.. _`mpt3sas_setup_direct_io.description`:
-
-Description
------------
-
-Returns nothing
+    :type mpi_request: Mpi25SCSIIORequest_t \*
 
 .. This file was automatic generated / don't edit.
 

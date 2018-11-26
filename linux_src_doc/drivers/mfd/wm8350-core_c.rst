@@ -8,8 +8,9 @@ wm8350_reg_lock
 
 .. c:function:: int wm8350_reg_lock(struct wm8350 *wm8350)
 
-    :param struct wm8350 \*wm8350:
+    :param wm8350:
         *undescribed*
+    :type wm8350: struct wm8350 \*
 
 .. _`wm8350_reg_lock.description`:
 
@@ -27,8 +28,9 @@ wm8350_reg_unlock
 
 .. c:function:: int wm8350_reg_unlock(struct wm8350 *wm8350)
 
-    :param struct wm8350 \*wm8350:
+    :param wm8350:
         *undescribed*
+    :type wm8350: struct wm8350 \*
 
 .. _`wm8350_reg_unlock.description`:
 

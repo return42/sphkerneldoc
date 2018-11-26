@@ -10,17 +10,21 @@ smc_wr_tx_get_free_slot
 
     returns buffer for message assembly, and sets info for pending transmit tracking
 
-    :param struct smc_link \*link:
+    :param link:
         Pointer to smc_link used to later send the message.
+    :type link: struct smc_link \*
 
-    :param smc_wr_tx_handler handler:
+    :param handler:
         Send completion handler function pointer.
+    :type handler: smc_wr_tx_handler
 
-    :param struct smc_wr_buf \*\*wr_buf:
+    :param wr_buf:
         Out value returns pointer to message buffer.
+    :type wr_buf: struct smc_wr_buf \*\*
 
-    :param struct smc_wr_tx_pend_priv \*\*wr_pend_priv:
+    :param wr_pend_priv:
         Out value returns pointer serving as handler context.
+    :type wr_pend_priv: struct smc_wr_tx_pend_priv \*\*
 
 .. _`smc_wr_tx_get_free_slot.return`:
 

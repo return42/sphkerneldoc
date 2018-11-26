@@ -10,15 +10,18 @@ qset_fill_qh
 
     fill the static endpoint state in a qset's QHead
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         the qset whose QH needs initializing with static endpoint
         state
+    :type qset: struct whc_qset \*
 
-    :param struct urb \*urb:
+    :param urb:
         an urb for a transfer to this endpoint
+    :type urb: struct urb \*
 
 .. _`qset_clear`:
 
@@ -29,11 +32,13 @@ qset_clear
 
     clear fields in a qset so it may be reinserted into a schedule.
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
 .. _`qset_clear.description`:
 
@@ -52,11 +57,13 @@ qset_reset
 
     reset endpoint state in a qset.
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
 .. _`qset_reset.description`:
 
@@ -75,14 +82,17 @@ get_qset
 
     get the qset for an async endpoint
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         *undescribed*
+    :type mem_flags: gfp_t
 
 .. _`get_qset.description`:
 
@@ -100,11 +110,13 @@ qset_add_qtds
 
     add qTDs for an URB to a qset
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
 .. _`qset_add_qtds.description`:
 
@@ -123,11 +135,13 @@ qset_remove_qtd
 
     remove the first qTD from a qset.
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
 .. _`qset_remove_qtd.description`:
 
@@ -146,11 +160,13 @@ qset_free_std
 
     remove an sTD and free it.
 
-    :param struct whc \*whc:
+    :param whc:
         the WHCI host controller
+    :type whc: struct whc \*
 
-    :param struct whc_std \*std:
+    :param std:
         the sTD to remove and free.
+    :type std: struct whc_std \*
 
 .. _`qset_remove_qtds`:
 
@@ -161,14 +177,17 @@ qset_remove_qtds
 
     remove an URB's qTDs (and sTDs).
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`qset_free_stds`:
 
@@ -179,11 +198,13 @@ qset_free_stds
 
     free any remaining sTDs for an URB.
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`urb_dequeue_work`:
 
@@ -194,8 +215,9 @@ urb_dequeue_work
 
     executes asl/pzl update and gives back the urb to the system.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`qset_add_urb_sg_linearize`:
 
@@ -206,17 +228,21 @@ qset_add_urb_sg_linearize
 
     add an urb with sg list, copying the data
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         *undescribed*
+    :type mem_flags: gfp_t
 
 .. _`qset_add_urb_sg_linearize.description`:
 
@@ -236,17 +262,21 @@ qset_add_urb
 
     add an urb to the qset's queue.
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         *undescribed*
+    :type mem_flags: gfp_t
 
 .. _`qset_add_urb.description`:
 
@@ -266,17 +296,21 @@ qset_remove_urb
 
     remove an URB from the urb queue.
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
-    :param int status:
+    :param status:
         *undescribed*
+    :type status: int
 
 .. _`qset_remove_urb.description`:
 
@@ -294,11 +328,13 @@ get_urb_status_from_qtd
 
     get the completed urb status from qTD status
 
-    :param struct urb \*urb:
+    :param urb:
         completed urb
+    :type urb: struct urb \*
 
-    :param u32 status:
+    :param status:
         qTD status
+    :type status: u32
 
 .. _`process_inactive_qtd`:
 
@@ -309,14 +345,17 @@ process_inactive_qtd
 
     process an inactive (but not halted) qTD.
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
-    :param struct whc_qtd \*qtd:
+    :param qtd:
         *undescribed*
+    :type qtd: struct whc_qtd \*
 
 .. _`process_inactive_qtd.description`:
 
@@ -337,14 +376,17 @@ process_halted_qtd
 
     process a qset with a halted qtd
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
-    :param struct whc_qtd \*qtd:
+    :param qtd:
         *undescribed*
+    :type qtd: struct whc_qtd \*
 
 .. _`process_halted_qtd.description`:
 
@@ -374,11 +416,13 @@ qset_delete
 
     wait for a qset to be unused, then free it.
 
-    :param struct whc \*whc:
+    :param whc:
         *undescribed*
+    :type whc: struct whc \*
 
-    :param struct whc_qset \*qset:
+    :param qset:
         *undescribed*
+    :type qset: struct whc_qset \*
 
 .. This file was automatic generated / don't edit.
 

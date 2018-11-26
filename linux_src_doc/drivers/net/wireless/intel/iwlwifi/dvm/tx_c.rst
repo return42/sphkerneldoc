@@ -10,11 +10,13 @@ iwl_sta_id_or_broadcast
 
     return sta_id or broadcast sta
 
-    :param struct iwl_rxon_context \*context:
+    :param context:
         the current context
+    :type context: struct iwl_rxon_context \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         mac80211 station
+    :type sta: struct ieee80211_sta \*
 
 .. _`iwl_sta_id_or_broadcast.description`:
 
@@ -33,14 +35,17 @@ iwlagn_hwrate_to_tx_control
 
 .. c:function:: void iwlagn_hwrate_to_tx_control(struct iwl_priv *priv, u32 rate_n_flags, struct ieee80211_tx_info *info)
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param u32 rate_n_flags:
+    :param rate_n_flags:
         *undescribed*
+    :type rate_n_flags: u32
 
-    :param struct ieee80211_tx_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct ieee80211_tx_info \*
 
 .. _`iwlagn_rx_reply_compressed_ba`:
 
@@ -51,11 +56,13 @@ iwlagn_rx_reply_compressed_ba
 
     Handler for REPLY_COMPRESSED_BA
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rx_cmd_buffer \*rxb:
+    :param rxb:
         *undescribed*
+    :type rxb: struct iwl_rx_cmd_buffer \*
 
 .. _`iwlagn_rx_reply_compressed_ba.description`:
 

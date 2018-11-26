@@ -10,11 +10,13 @@ cvm_oct_do_interrupt
 
     interrupt handler.
 
-    :param int irq:
+    :param irq:
         Interrupt number.
+    :type irq: int
 
-    :param void \*napi_id:
+    :param napi_id:
         Cookie to identify the NAPI instance.
+    :type napi_id: void \*
 
 .. _`cvm_oct_do_interrupt.description`:
 
@@ -32,8 +34,9 @@ cvm_oct_check_rcv_error
 
     process receive errors
 
-    :param cvmx_wqe_t \*work:
+    :param work:
         Work queue entry pointing to the packet.
+    :type work: cvmx_wqe_t \*
 
 .. _`cvm_oct_check_rcv_error.description`:
 
@@ -51,11 +54,13 @@ cvm_oct_napi_poll
 
     the NAPI poll function.
 
-    :param struct napi_struct \*napi:
+    :param napi:
         The NAPI instance.
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         Maximum number of packets to receive.
+    :type budget: int
 
 .. _`cvm_oct_napi_poll.description`:
 
@@ -73,8 +78,9 @@ cvm_oct_poll_controller
 
     poll for receive packets device.
 
-    :param struct net_device \*dev:
+    :param dev:
         Device to poll. Unused
+    :type dev: struct net_device \*
 
 .. This file was automatic generated / don't edit.
 

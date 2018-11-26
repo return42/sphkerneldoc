@@ -6,15 +6,13 @@
 i915_driver_init_early
 ======================
 
-.. c:function:: int i915_driver_init_early(struct drm_i915_private *dev_priv, const struct pci_device_id *ent)
+.. c:function:: int i915_driver_init_early(struct drm_i915_private *dev_priv)
 
     setup state not requiring device access
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
-
-    :param const struct pci_device_id \*ent:
-        the matching pci_device_id
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_driver_init_early.description`:
 
@@ -36,8 +34,9 @@ i915_driver_cleanup_early
 
     cleanup the setup done in \ :c:func:`i915_driver_init_early`\ 
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_driver_init_mmio`:
 
@@ -48,8 +47,9 @@ i915_driver_init_mmio
 
     setup device MMIO
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_driver_init_mmio.description`:
 
@@ -70,8 +70,9 @@ i915_driver_cleanup_mmio
 
     cleanup the setup done in \ :c:func:`i915_driver_init_mmio`\ 
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_driver_init_hw`:
 
@@ -82,8 +83,9 @@ i915_driver_init_hw
 
     setup state requiring device access
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_driver_init_hw.description`:
 
@@ -102,8 +104,9 @@ i915_driver_cleanup_hw
 
     cleanup the setup done in \ :c:func:`i915_driver_init_hw`\ 
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_driver_register`:
 
@@ -114,8 +117,9 @@ i915_driver_register
 
     register the driver with the rest of the system
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_driver_register.description`:
 
@@ -134,8 +138,9 @@ i915_driver_unregister
 
     cleanup the registration done in \ :c:func:`i915_driver_regiser`\ 
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_driver_load`:
 
@@ -146,11 +151,13 @@ i915_driver_load
 
     setup chip and create an initial config
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         matching PCI ID entry
+    :type ent: const struct pci_device_id \*
 
 .. _`i915_driver_load.the-driver-load-routine-has-to-do-several-things`:
 
@@ -171,8 +178,9 @@ i915_driver_lastclose
 
     clean up after all DRM clients have exited
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`i915_driver_lastclose.description`:
 
@@ -196,14 +204,17 @@ i915_reset
 
     reset chip after a hang
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         #drm_i915_private to reset
+    :type i915: struct drm_i915_private \*
 
-    :param unsigned int stalled_mask:
+    :param stalled_mask:
         mask of the stalled engines with the guilty requests
+    :type stalled_mask: unsigned int
 
-    :param const char \*reason:
+    :param reason:
         user error message for why we are resetting
+    :type reason: const char \*
 
 .. _`i915_reset.description`:
 
@@ -236,11 +247,13 @@ i915_reset_engine
 
     reset GPU engine to recover from a hang
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         engine to reset
+    :type engine: struct intel_engine_cs \*
 
-    :param const char \*msg:
+    :param msg:
         reason for GPU reset; or NULL for no \ :c:func:`dev_notice`\ 
+    :type msg: const char \*
 
 .. _`i915_reset_engine.description`:
 

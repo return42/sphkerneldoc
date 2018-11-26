@@ -10,14 +10,17 @@ smk_fetch
 
     Fetch the smack label from a file.
 
-    :param const char \*name:
+    :param name:
         type of the label (attribute)
+    :type name: const char \*
 
-    :param struct inode \*ip:
+    :param ip:
         a pointer to the inode
+    :type ip: struct inode \*
 
-    :param struct dentry \*dp:
+    :param dp:
         a pointer to the dentry
+    :type dp: struct dentry \*
 
 .. _`smk_fetch.description`:
 
@@ -36,8 +39,9 @@ new_inode_smack
 
     allocate an inode security blob
 
-    :param struct smack_known \*skp:
+    :param skp:
         a pointer to the Smack label entry to use in the blob
+    :type skp: struct smack_known \*
 
 .. _`new_inode_smack.description`:
 
@@ -55,14 +59,17 @@ new_task_smack
 
     allocate a task security blob
 
-    :param struct smack_known \*task:
+    :param task:
         a pointer to the Smack label for the running task
+    :type task: struct smack_known \*
 
-    :param struct smack_known \*forked:
+    :param forked:
         a pointer to the Smack label for the forked task
+    :type forked: struct smack_known \*
 
-    :param gfp_t gfp:
+    :param gfp:
         type of the memory for the allocation
+    :type gfp: gfp_t
 
 .. _`new_task_smack.description`:
 
@@ -80,14 +87,17 @@ smk_copy_rules
 
     copy a rule set
 
-    :param struct list_head \*nhead:
+    :param nhead:
         new rules header pointer
+    :type nhead: struct list_head \*
 
-    :param struct list_head \*ohead:
+    :param ohead:
         old rules header pointer
+    :type ohead: struct list_head \*
 
-    :param gfp_t gfp:
+    :param gfp:
         type of the memory for the allocation
+    :type gfp: gfp_t
 
 .. _`smk_copy_rules.description`:
 
@@ -105,14 +115,17 @@ smk_copy_relabel
 
     copy smk_relabel labels list
 
-    :param struct list_head \*nhead:
+    :param nhead:
         new rules header pointer
+    :type nhead: struct list_head \*
 
-    :param struct list_head \*ohead:
+    :param ohead:
         old rules header pointer
+    :type ohead: struct list_head \*
 
-    :param gfp_t gfp:
+    :param gfp:
         type of the memory for the allocation
+    :type gfp: gfp_t
 
 .. _`smk_copy_relabel.description`:
 
@@ -130,8 +143,9 @@ smk_ptrace_mode
 
     helper function for converting PTRACE_MODE\_\* into MAY\_\* \ ``mode``\  - input mode in form of PTRACE_MODE\_\*
 
-    :param unsigned int mode:
+    :param mode:
         *undescribed*
+    :type mode: unsigned int
 
 .. _`smk_ptrace_mode.description`:
 
@@ -149,17 +163,21 @@ smk_ptrace_rule_check
 
     helper for ptrace access
 
-    :param struct task_struct \*tracer:
+    :param tracer:
         tracer process
+    :type tracer: struct task_struct \*
 
-    :param struct smack_known \*tracee_known:
+    :param tracee_known:
         label entry of the process that's about to be traced
+    :type tracee_known: struct smack_known \*
 
-    :param unsigned int mode:
+    :param mode:
         ptrace attachment mode (PTRACE_MODE\_\*)
+    :type mode: unsigned int
 
-    :param const char \*func:
+    :param func:
         name of the function that called us, used for audit
+    :type func: const char \*
 
 .. _`smk_ptrace_rule_check.description`:
 
@@ -177,11 +195,13 @@ smack_ptrace_access_check
 
     Smack approval on PTRACE_ATTACH
 
-    :param struct task_struct \*ctp:
+    :param ctp:
         child task pointer
+    :type ctp: struct task_struct \*
 
-    :param unsigned int mode:
+    :param mode:
         ptrace attachment mode (PTRACE_MODE\_\*)
+    :type mode: unsigned int
 
 .. _`smack_ptrace_access_check.description`:
 
@@ -201,8 +221,9 @@ smack_ptrace_traceme
 
     Smack approval on PTRACE_TRACEME
 
-    :param struct task_struct \*ptp:
+    :param ptp:
         parent task pointer
+    :type ptp: struct task_struct \*
 
 .. _`smack_ptrace_traceme.description`:
 
@@ -222,8 +243,9 @@ smack_syslog
 
     Smack approval on syslog
 
-    :param int typefrom_file:
+    :param typefrom_file:
         *undescribed*
+    :type typefrom_file: int
 
 .. _`smack_syslog.description`:
 
@@ -241,8 +263,9 @@ smack_sb_alloc_security
 
     allocate a superblock blob
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock getting the blob
+    :type sb: struct super_block \*
 
 .. _`smack_sb_alloc_security.description`:
 
@@ -260,8 +283,9 @@ smack_sb_free_security
 
     free a superblock blob
 
-    :param struct super_block \*sb:
+    :param sb:
         the superblock getting the blob
+    :type sb: struct super_block \*
 
 .. _`smack_sb_copy_data`:
 
@@ -272,11 +296,13 @@ smack_sb_copy_data
 
     copy mount options data for processing
 
-    :param char \*orig:
+    :param orig:
         where to start
+    :type orig: char \*
 
-    :param char \*smackopts:
+    :param smackopts:
         mount options string
+    :type smackopts: char \*
 
 .. _`smack_sb_copy_data.description`:
 
@@ -297,11 +323,13 @@ smack_parse_opts_str
 
     parse Smack specific mount options
 
-    :param char \*options:
+    :param options:
         mount options string
+    :type options: char \*
 
-    :param struct security_mnt_opts \*opts:
+    :param opts:
         where to store converted mount opts
+    :type opts: struct security_mnt_opts \*
 
 .. _`smack_parse_opts_str.description`:
 
@@ -321,17 +349,21 @@ smack_set_mnt_opts
 
     set Smack specific mount options
 
-    :param struct super_block \*sb:
+    :param sb:
         the file system superblock
+    :type sb: struct super_block \*
 
-    :param struct security_mnt_opts \*opts:
+    :param opts:
         Smack mount options
+    :type opts: struct security_mnt_opts \*
 
-    :param unsigned long kern_flags:
+    :param kern_flags:
         mount option from kernel space or user space
+    :type kern_flags: unsigned long
 
-    :param unsigned long \*set_kern_flags:
+    :param set_kern_flags:
         where to store converted mount opts
+    :type set_kern_flags: unsigned long \*
 
 .. _`smack_set_mnt_opts.description`:
 
@@ -352,14 +384,17 @@ smack_sb_kern_mount
 
     Smack specific mount processing
 
-    :param struct super_block \*sb:
+    :param sb:
         the file system superblock
+    :type sb: struct super_block \*
 
-    :param int flags:
+    :param flags:
         the mount flags
+    :type flags: int
 
-    :param void \*data:
+    :param data:
         the smack mount options
+    :type data: void \*
 
 .. _`smack_sb_kern_mount.description`:
 
@@ -377,8 +412,9 @@ smack_sb_statfs
 
     Smack check on statfs
 
-    :param struct dentry \*dentry:
+    :param dentry:
         identifies the file system in question
+    :type dentry: struct dentry \*
 
 .. _`smack_sb_statfs.description`:
 
@@ -397,8 +433,9 @@ smack_bprm_set_creds
 
     set creds for exec
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         the exec information
+    :type bprm: struct linux_binprm \*
 
 .. _`smack_bprm_set_creds.description`:
 
@@ -416,8 +453,9 @@ smack_inode_alloc_security
 
     allocate an inode blob
 
-    :param struct inode \*inode:
+    :param inode:
         the inode in need of a blob
+    :type inode: struct inode \*
 
 .. _`smack_inode_alloc_security.description`:
 
@@ -435,8 +473,9 @@ smack_inode_free_rcu
 
     Free inode_smack blob from cache
 
-    :param struct rcu_head \*head:
+    :param head:
         the rcu_head for getting inode_smack pointer
+    :type head: struct rcu_head \*
 
 .. _`smack_inode_free_rcu.description`:
 
@@ -455,8 +494,9 @@ smack_inode_free_security
 
     free an inode blob using \ :c:func:`call_rcu`\ 
 
-    :param struct inode \*inode:
+    :param inode:
         the inode with a blob
+    :type inode: struct inode \*
 
 .. _`smack_inode_free_security.description`:
 
@@ -474,23 +514,29 @@ smack_inode_init_security
 
     copy out the smack from an inode
 
-    :param struct inode \*inode:
+    :param inode:
         the newly created inode
+    :type inode: struct inode \*
 
-    :param struct inode \*dir:
+    :param dir:
         containing directory object
+    :type dir: struct inode \*
 
-    :param const struct qstr \*qstr:
+    :param qstr:
         unused
+    :type qstr: const struct qstr \*
 
-    :param const char \*\*name:
+    :param name:
         where to put the attribute name
+    :type name: const char \*\*
 
-    :param void \*\*value:
+    :param value:
         where to put the attribute value
+    :type value: void \*\*
 
-    :param size_t \*len:
+    :param len:
         where to put the length of the attribute
+    :type len: size_t \*
 
 .. _`smack_inode_init_security.description`:
 
@@ -508,14 +554,17 @@ smack_inode_link
 
     Smack check on link
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         the existing object
+    :type old_dentry: struct dentry \*
 
-    :param struct inode \*dir:
+    :param dir:
         unused
+    :type dir: struct inode \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         the new object
+    :type new_dentry: struct dentry \*
 
 .. _`smack_inode_link.description`:
 
@@ -533,11 +582,13 @@ smack_inode_unlink
 
     Smack check on inode deletion
 
-    :param struct inode \*dir:
+    :param dir:
         containing directory object
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         file to unlink
+    :type dentry: struct dentry \*
 
 .. _`smack_inode_unlink.description`:
 
@@ -556,11 +607,13 @@ smack_inode_rmdir
 
     Smack check on directory deletion
 
-    :param struct inode \*dir:
+    :param dir:
         containing directory object
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         directory to unlink
+    :type dentry: struct dentry \*
 
 .. _`smack_inode_rmdir.description`:
 
@@ -579,17 +632,21 @@ smack_inode_rename
 
     Smack check on rename
 
-    :param struct inode \*old_inode:
+    :param old_inode:
         unused
+    :type old_inode: struct inode \*
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         the old object
+    :type old_dentry: struct dentry \*
 
-    :param struct inode \*new_inode:
+    :param new_inode:
         unused
+    :type new_inode: struct inode \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         the new object
+    :type new_dentry: struct dentry \*
 
 .. _`smack_inode_rename.description`:
 
@@ -610,11 +667,13 @@ smack_inode_permission
 
     Smack version of \ :c:func:`permission`\ 
 
-    :param struct inode \*inode:
+    :param inode:
         the inode in question
+    :type inode: struct inode \*
 
-    :param int mask:
+    :param mask:
         the access requested
+    :type mask: int
 
 .. _`smack_inode_permission.description`:
 
@@ -634,11 +693,13 @@ smack_inode_setattr
 
     Smack check for setting attributes
 
-    :param struct dentry \*dentry:
+    :param dentry:
         the object
+    :type dentry: struct dentry \*
 
-    :param struct iattr \*iattr:
+    :param iattr:
         for the force flag
+    :type iattr: struct iattr \*
 
 .. _`smack_inode_setattr.description`:
 
@@ -656,8 +717,9 @@ smack_inode_getattr
 
     Smack check for getting attributes
 
-    :param const struct path \*path:
+    :param path:
         *undescribed*
+    :type path: const struct path \*
 
 .. _`smack_inode_getattr.description`:
 
@@ -675,20 +737,25 @@ smack_inode_setxattr
 
     Smack check for setting xattrs
 
-    :param struct dentry \*dentry:
+    :param dentry:
         the object
+    :type dentry: struct dentry \*
 
-    :param const char \*name:
+    :param name:
         name of the attribute
+    :type name: const char \*
 
-    :param const void \*value:
+    :param value:
         value of the attribute
+    :type value: const void \*
 
-    :param size_t size:
+    :param size:
         size of the value
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         unused
+    :type flags: int
 
 .. _`smack_inode_setxattr.description`:
 
@@ -708,20 +775,25 @@ smack_inode_post_setxattr
 
     Apply the Smack update approved above
 
-    :param struct dentry \*dentry:
+    :param dentry:
         object
+    :type dentry: struct dentry \*
 
-    :param const char \*name:
+    :param name:
         attribute name
+    :type name: const char \*
 
-    :param const void \*value:
+    :param value:
         attribute value
+    :type value: const void \*
 
-    :param size_t size:
+    :param size:
         attribute size
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         unused
+    :type flags: int
 
 .. _`smack_inode_post_setxattr.description`:
 
@@ -740,11 +812,13 @@ smack_inode_getxattr
 
     Smack check on getxattr
 
-    :param struct dentry \*dentry:
+    :param dentry:
         the object
+    :type dentry: struct dentry \*
 
-    :param const char \*name:
+    :param name:
         unused
+    :type name: const char \*
 
 .. _`smack_inode_getxattr.description`:
 
@@ -762,11 +836,13 @@ smack_inode_removexattr
 
     Smack check on removexattr
 
-    :param struct dentry \*dentry:
+    :param dentry:
         the object
+    :type dentry: struct dentry \*
 
-    :param const char \*name:
+    :param name:
         name of the attribute
+    :type name: const char \*
 
 .. _`smack_inode_removexattr.description`:
 
@@ -786,17 +862,21 @@ smack_inode_getsecurity
 
     get smack xattrs
 
-    :param struct inode \*inode:
+    :param inode:
         the object
+    :type inode: struct inode \*
 
-    :param const char \*name:
+    :param name:
         attribute name
+    :type name: const char \*
 
-    :param void \*\*buffer:
+    :param buffer:
         where to put the result
+    :type buffer: void \*\*
 
-    :param bool alloc:
+    :param alloc:
         duplicate memory
+    :type alloc: bool
 
 .. _`smack_inode_getsecurity.description`:
 
@@ -814,14 +894,17 @@ smack_inode_listsecurity
 
     list the Smack attributes
 
-    :param struct inode \*inode:
+    :param inode:
         the object
+    :type inode: struct inode \*
 
-    :param char \*buffer:
+    :param buffer:
         where they go
+    :type buffer: char \*
 
-    :param size_t buffer_size:
+    :param buffer_size:
         size of buffer
+    :type buffer_size: size_t
 
 .. _`smack_inode_getsecid`:
 
@@ -832,11 +915,13 @@ smack_inode_getsecid
 
     Extract inode's security id
 
-    :param struct inode \*inode:
+    :param inode:
         inode to extract the info from
+    :type inode: struct inode \*
 
-    :param u32 \*secid:
+    :param secid:
         where result will be saved
+    :type secid: u32 \*
 
 .. _`smack_file_alloc_security`:
 
@@ -847,8 +932,9 @@ smack_file_alloc_security
 
     assign a file security blob
 
-    :param struct file \*file:
+    :param file:
         the object
+    :type file: struct file \*
 
 .. _`smack_file_alloc_security.description`:
 
@@ -872,8 +958,9 @@ smack_file_free_security
 
     clear a file security blob
 
-    :param struct file \*file:
+    :param file:
         the object
+    :type file: struct file \*
 
 .. _`smack_file_free_security.description`:
 
@@ -892,14 +979,17 @@ smack_file_ioctl
 
     Smack check on ioctls
 
-    :param struct file \*file:
+    :param file:
         the object
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         what to do
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         unused
+    :type arg: unsigned long
 
 .. _`smack_file_ioctl.description`:
 
@@ -919,11 +1009,13 @@ smack_file_lock
 
     Smack check on file locking
 
-    :param struct file \*file:
+    :param file:
         the object
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         unused
+    :type cmd: unsigned int
 
 .. _`smack_file_lock.description`:
 
@@ -941,14 +1033,17 @@ smack_file_fcntl
 
     Smack check on fcntl
 
-    :param struct file \*file:
+    :param file:
         the object
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         what action to check
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         unused
+    :type arg: unsigned long
 
 .. _`smack_file_fcntl.description`:
 
@@ -970,17 +1065,21 @@ smack_mmap_file
 
     Check permissions for a mmap operation.  The \ ``file``\  may be NULL, e.g. if mapping anonymous memory. \ ``file``\  contains the file structure for file to map (may be NULL). \ ``reqprot``\  contains the protection requested by the application. \ ``prot``\  contains the protection that will be applied by the kernel. \ ``flags``\  contains the operational flags. Return 0 if permission is granted.
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param unsigned long reqprot:
+    :param reqprot:
         *undescribed*
+    :type reqprot: unsigned long
 
-    :param unsigned long prot:
+    :param prot:
         *undescribed*
+    :type prot: unsigned long
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`smack_file_set_fowner`:
 
@@ -991,8 +1090,9 @@ smack_file_set_fowner
 
     set the file security blob value
 
-    :param struct file \*file:
+    :param file:
         object in question
+    :type file: struct file \*
 
 .. _`smack_file_send_sigiotask`:
 
@@ -1003,14 +1103,17 @@ smack_file_send_sigiotask
 
     Smack on sigio
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         The target task
+    :type tsk: struct task_struct \*
 
-    :param struct fown_struct \*fown:
+    :param fown:
         the object the signal come from
+    :type fown: struct fown_struct \*
 
-    :param int signum:
+    :param signum:
         unused
+    :type signum: int
 
 .. _`smack_file_send_sigiotask.description`:
 
@@ -1031,8 +1134,9 @@ smack_file_receive
 
     Smack file receive check
 
-    :param struct file \*file:
+    :param file:
         the object
+    :type file: struct file \*
 
 .. _`smack_file_receive.description`:
 
@@ -1046,15 +1150,13 @@ Returns 0 if current has access, error code otherwise
 smack_file_open
 ===============
 
-.. c:function:: int smack_file_open(struct file *file, const struct cred *cred)
+.. c:function:: int smack_file_open(struct file *file)
 
     Smack dentry open processing
 
-    :param struct file \*file:
+    :param file:
         the object
-
-    :param const struct cred \*cred:
-        task credential
+    :type file: struct file \*
 
 .. _`smack_file_open.description`:
 
@@ -1077,11 +1179,13 @@ smack_cred_alloc_blank
 
     "allocate" blank task-level security credentials
 
-    :param struct cred \*cred:
+    :param cred:
         *undescribed*
+    :type cred: struct cred \*
 
-    :param gfp_t gfp:
+    :param gfp:
         the atomicity of any memory allocations
+    :type gfp: gfp_t
 
 .. _`smack_cred_alloc_blank.description`:
 
@@ -1101,8 +1205,9 @@ smack_cred_free
 
     "free" task-level security credentials
 
-    :param struct cred \*cred:
+    :param cred:
         the credentials in question
+    :type cred: struct cred \*
 
 .. _`smack_cred_prepare`:
 
@@ -1113,14 +1218,17 @@ smack_cred_prepare
 
     prepare new set of credentials for modification
 
-    :param struct cred \*new:
+    :param new:
         the new credentials
+    :type new: struct cred \*
 
-    :param const struct cred \*old:
+    :param old:
         the original credentials
+    :type old: const struct cred \*
 
-    :param gfp_t gfp:
+    :param gfp:
         the atomicity of any memory allocations
+    :type gfp: gfp_t
 
 .. _`smack_cred_prepare.description`:
 
@@ -1138,11 +1246,13 @@ smack_cred_transfer
 
     Transfer the old credentials to the new credentials
 
-    :param struct cred \*new:
+    :param new:
         the new credentials
+    :type new: struct cred \*
 
-    :param const struct cred \*old:
+    :param old:
         the original credentials
+    :type old: const struct cred \*
 
 .. _`smack_cred_transfer.description`:
 
@@ -1160,11 +1270,13 @@ smack_cred_getsecid
 
     get the secid corresponding to a creds structure
 
-    :param const struct cred \*c:
+    :param c:
         the object creds
+    :type c: const struct cred \*
 
-    :param u32 \*secid:
+    :param secid:
         where to put the result
+    :type secid: u32 \*
 
 .. _`smack_cred_getsecid.description`:
 
@@ -1182,11 +1294,13 @@ smack_kernel_act_as
 
     Set the subjective context in a set of credentials
 
-    :param struct cred \*new:
+    :param new:
         points to the set of credentials to be modified.
+    :type new: struct cred \*
 
-    :param u32 secid:
+    :param secid:
         specifies the security ID to be set
+    :type secid: u32
 
 .. _`smack_kernel_act_as.description`:
 
@@ -1204,11 +1318,13 @@ smack_kernel_create_files_as
 
     Set the file creation label in a set of creds
 
-    :param struct cred \*new:
+    :param new:
         points to the set of credentials to be modified
+    :type new: struct cred \*
 
-    :param struct inode \*inode:
+    :param inode:
         points to the inode to use as a reference
+    :type inode: struct inode \*
 
 .. _`smack_kernel_create_files_as.description`:
 
@@ -1227,14 +1343,17 @@ smk_curacc_on_task
 
     helper to log task related access
 
-    :param struct task_struct \*p:
+    :param p:
         the task object
+    :type p: struct task_struct \*
 
-    :param int access:
+    :param access:
         the access requested
+    :type access: int
 
-    :param const char \*caller:
+    :param caller:
         name of the calling function for audit
+    :type caller: const char \*
 
 .. _`smk_curacc_on_task.description`:
 
@@ -1252,11 +1371,13 @@ smack_task_setpgid
 
     Smack check on setting pgid
 
-    :param struct task_struct \*p:
+    :param p:
         the task object
+    :type p: struct task_struct \*
 
-    :param pid_t pgid:
+    :param pgid:
         unused
+    :type pgid: pid_t
 
 .. _`smack_task_setpgid.description`:
 
@@ -1274,8 +1395,9 @@ smack_task_getpgid
 
     Smack access check for getpgid
 
-    :param struct task_struct \*p:
+    :param p:
         the object task
+    :type p: struct task_struct \*
 
 .. _`smack_task_getpgid.description`:
 
@@ -1293,8 +1415,9 @@ smack_task_getsid
 
     Smack access check for getsid
 
-    :param struct task_struct \*p:
+    :param p:
         the object task
+    :type p: struct task_struct \*
 
 .. _`smack_task_getsid.description`:
 
@@ -1312,11 +1435,13 @@ smack_task_getsecid
 
     get the secid of the task
 
-    :param struct task_struct \*p:
+    :param p:
         the object task
+    :type p: struct task_struct \*
 
-    :param u32 \*secid:
+    :param secid:
         where to put the result
+    :type secid: u32 \*
 
 .. _`smack_task_getsecid.description`:
 
@@ -1334,11 +1459,13 @@ smack_task_setnice
 
     Smack check on setting nice
 
-    :param struct task_struct \*p:
+    :param p:
         the task object
+    :type p: struct task_struct \*
 
-    :param int nice:
+    :param nice:
         unused
+    :type nice: int
 
 .. _`smack_task_setnice.description`:
 
@@ -1356,11 +1483,13 @@ smack_task_setioprio
 
     Smack check on setting ioprio
 
-    :param struct task_struct \*p:
+    :param p:
         the task object
+    :type p: struct task_struct \*
 
-    :param int ioprio:
+    :param ioprio:
         unused
+    :type ioprio: int
 
 .. _`smack_task_setioprio.description`:
 
@@ -1378,8 +1507,9 @@ smack_task_getioprio
 
     Smack check on reading ioprio
 
-    :param struct task_struct \*p:
+    :param p:
         the task object
+    :type p: struct task_struct \*
 
 .. _`smack_task_getioprio.description`:
 
@@ -1397,8 +1527,9 @@ smack_task_setscheduler
 
     Smack check on setting scheduler
 
-    :param struct task_struct \*p:
+    :param p:
         the task object
+    :type p: struct task_struct \*
 
 .. _`smack_task_setscheduler.description`:
 
@@ -1416,8 +1547,9 @@ smack_task_getscheduler
 
     Smack check on reading scheduler
 
-    :param struct task_struct \*p:
+    :param p:
         the task object
+    :type p: struct task_struct \*
 
 .. _`smack_task_getscheduler.description`:
 
@@ -1435,8 +1567,9 @@ smack_task_movememory
 
     Smack check on moving memory
 
-    :param struct task_struct \*p:
+    :param p:
         the task object
+    :type p: struct task_struct \*
 
 .. _`smack_task_movememory.description`:
 
@@ -1450,21 +1583,25 @@ Return 0 if write access is permitted
 smack_task_kill
 ===============
 
-.. c:function:: int smack_task_kill(struct task_struct *p, struct siginfo *info, int sig, const struct cred *cred)
+.. c:function:: int smack_task_kill(struct task_struct *p, struct kernel_siginfo *info, int sig, const struct cred *cred)
 
     Smack check on signal delivery
 
-    :param struct task_struct \*p:
+    :param p:
         the task object
+    :type p: struct task_struct \*
 
-    :param struct siginfo \*info:
+    :param info:
         unused
+    :type info: struct kernel_siginfo \*
 
-    :param int sig:
+    :param sig:
         unused
+    :type sig: int
 
-    :param const struct cred \*cred:
+    :param cred:
         identifies the cred to use in lieu of current's
+    :type cred: const struct cred \*
 
 .. _`smack_task_kill.description`:
 
@@ -1482,11 +1619,13 @@ smack_task_to_inode
 
     copy task smack into the inode blob
 
-    :param struct task_struct \*p:
+    :param p:
         task to copy from
+    :type p: struct task_struct \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode to copy to
+    :type inode: struct inode \*
 
 .. _`smack_task_to_inode.description`:
 
@@ -1504,14 +1643,17 @@ smack_sk_alloc_security
 
     Allocate a socket blob
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
-    :param int family:
+    :param family:
         unused
+    :type family: int
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         memory allocation flags
+    :type gfp_flags: gfp_t
 
 .. _`smack_sk_alloc_security.description`:
 
@@ -1531,8 +1673,9 @@ smack_sk_free_security
 
     Free a socket blob
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
 .. _`smack_sk_free_security.description`:
 
@@ -1550,8 +1693,9 @@ smack_ipv4host_label
 
     check host based restrictions
 
-    :param struct sockaddr_in \*sip:
+    :param sip:
         the object end
+    :type sip: struct sockaddr_in \*
 
 .. _`smack_ipv4host_label.description`:
 
@@ -1575,8 +1719,9 @@ smack_ipv6host_label
 
     check host based restrictions
 
-    :param struct sockaddr_in6 \*sip:
+    :param sip:
         the object end
+    :type sip: struct sockaddr_in6 \*
 
 .. _`smack_ipv6host_label.description`:
 
@@ -1600,11 +1745,13 @@ smack_netlabel
 
     Set the secattr on a socket
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
-    :param int labeled:
+    :param labeled:
         socket label scheme
+    :type labeled: int
 
 .. _`smack_netlabel.description`:
 
@@ -1625,11 +1772,13 @@ smack_netlabel_send
 
     Set the secattr on a socket and perform access checks
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
-    :param struct sockaddr_in \*sap:
+    :param sap:
         the destination address
+    :type sap: struct sockaddr_in \*
 
 .. _`smack_netlabel_send.description`:
 
@@ -1650,17 +1799,21 @@ smk_ipv6_check
 
     check Smack access
 
-    :param struct smack_known \*subject:
+    :param subject:
         subject Smack label
+    :type subject: struct smack_known \*
 
-    :param struct smack_known \*object:
+    :param object:
         object Smack label
+    :type object: struct smack_known \*
 
-    :param struct sockaddr_in6 \*address:
+    :param address:
         address
+    :type address: struct sockaddr_in6 \*
 
-    :param int act:
+    :param act:
         the action being taken
+    :type act: int
 
 .. _`smk_ipv6_check.description`:
 
@@ -1678,11 +1831,13 @@ smk_ipv6_port_label
 
     Smack port access table management
 
-    :param struct socket \*sock:
+    :param sock:
         socket
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*address:
+    :param address:
         address
+    :type address: struct sockaddr \*
 
 .. _`smk_ipv6_port_label.description`:
 
@@ -1700,14 +1855,17 @@ smk_ipv6_port_check
 
     check Smack port access
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct sockaddr_in6 \*address:
+    :param address:
         address
+    :type address: struct sockaddr_in6 \*
 
-    :param int act:
+    :param act:
         *undescribed*
+    :type act: int
 
 .. _`smk_ipv6_port_check.description`:
 
@@ -1725,20 +1883,25 @@ smack_inode_setsecurity
 
     set smack xattrs
 
-    :param struct inode \*inode:
+    :param inode:
         the object
+    :type inode: struct inode \*
 
-    :param const char \*name:
+    :param name:
         attribute name
+    :type name: const char \*
 
-    :param const void \*value:
+    :param value:
         attribute value
+    :type value: const void \*
 
-    :param size_t size:
+    :param size:
         size of the attribute
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         unused
+    :type flags: int
 
 .. _`smack_inode_setsecurity.description`:
 
@@ -1758,20 +1921,25 @@ smack_socket_post_create
 
     finish socket setup
 
-    :param struct socket \*sock:
+    :param sock:
         the socket
+    :type sock: struct socket \*
 
-    :param int family:
+    :param family:
         protocol family
+    :type family: int
 
-    :param int type:
+    :param type:
         unused
+    :type type: int
 
-    :param int protocol:
+    :param protocol:
         unused
+    :type protocol: int
 
-    :param int kern:
+    :param kern:
         unused
+    :type kern: int
 
 .. _`smack_socket_post_create.description`:
 
@@ -1791,11 +1959,13 @@ smack_socket_socketpair
 
     create socket pair
 
-    :param struct socket \*socka:
+    :param socka:
         one socket
+    :type socka: struct socket \*
 
-    :param struct socket \*sockb:
+    :param sockb:
         another socket
+    :type sockb: struct socket \*
 
 .. _`smack_socket_socketpair.description`:
 
@@ -1815,14 +1985,17 @@ smack_socket_bind
 
     record port binding information.
 
-    :param struct socket \*sock:
+    :param sock:
         the socket
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*address:
+    :param address:
         the port address
+    :type address: struct sockaddr \*
 
-    :param int addrlen:
+    :param addrlen:
         size of the address
+    :type addrlen: int
 
 .. _`smack_socket_bind.description`:
 
@@ -1842,14 +2015,17 @@ smack_socket_connect
 
     connect access check
 
-    :param struct socket \*sock:
+    :param sock:
         the socket
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*sap:
+    :param sap:
         the other end
+    :type sap: struct sockaddr \*
 
-    :param int addrlen:
+    :param addrlen:
         size of sap
+    :type addrlen: int
 
 .. _`smack_socket_connect.description`:
 
@@ -1869,8 +2045,9 @@ smack_flags_to_may
 
     convert S\_ to MAY\_ values
 
-    :param int flags:
+    :param flags:
         the S\_ value
+    :type flags: int
 
 .. _`smack_flags_to_may.description`:
 
@@ -1888,8 +2065,9 @@ smack_msg_msg_alloc_security
 
     Set the security blob for msg_msg
 
-    :param struct msg_msg \*msg:
+    :param msg:
         the object
+    :type msg: struct msg_msg \*
 
 .. _`smack_msg_msg_alloc_security.description`:
 
@@ -1907,8 +2085,9 @@ smack_msg_msg_free_security
 
     Clear the security blob for msg_msg
 
-    :param struct msg_msg \*msg:
+    :param msg:
         the object
+    :type msg: struct msg_msg \*
 
 .. _`smack_msg_msg_free_security.description`:
 
@@ -1926,8 +2105,9 @@ smack_of_ipc
 
     the smack pointer for the ipc
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
 .. _`smack_of_ipc.description`:
 
@@ -1945,8 +2125,9 @@ smack_ipc_alloc_security
 
     Set the security blob for ipc
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
 .. _`smack_ipc_alloc_security.description`:
 
@@ -1964,8 +2145,9 @@ smack_ipc_free_security
 
     Clear the security blob for ipc
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
 .. _`smack_ipc_free_security.description`:
 
@@ -1983,11 +2165,13 @@ smk_curacc_shm
 
     check if current has access on shm
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param int access:
+    :param access:
         access requested
+    :type access: int
 
 .. _`smk_curacc_shm.description`:
 
@@ -2005,11 +2189,13 @@ smack_shm_associate
 
     Smack access check for shm
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param int shmflg:
+    :param shmflg:
         access requested
+    :type shmflg: int
 
 .. _`smack_shm_associate.description`:
 
@@ -2027,11 +2213,13 @@ smack_shm_shmctl
 
     Smack access check for shm
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param int cmd:
+    :param cmd:
         what it wants to do
+    :type cmd: int
 
 .. _`smack_shm_shmctl.description`:
 
@@ -2049,14 +2237,17 @@ smack_shm_shmat
 
     Smack access for shmat
 
-    :param struct kern_ipc_perm \*ipc:
+    :param ipc:
         *undescribed*
+    :type ipc: struct kern_ipc_perm \*
 
-    :param char __user \*shmaddr:
+    :param shmaddr:
         unused
+    :type shmaddr: char __user \*
 
-    :param int shmflg:
+    :param shmflg:
         access requested
+    :type shmflg: int
 
 .. _`smack_shm_shmat.description`:
 
@@ -2074,11 +2265,13 @@ smk_curacc_sem
 
     check if current has access on sem
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param int access:
+    :param access:
         access requested
+    :type access: int
 
 .. _`smk_curacc_sem.description`:
 
@@ -2096,11 +2289,13 @@ smack_sem_associate
 
     Smack access check for sem
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param int semflg:
+    :param semflg:
         access requested
+    :type semflg: int
 
 .. _`smack_sem_associate.description`:
 
@@ -2118,11 +2313,13 @@ smack_sem_semctl
 
     Smack access check for sem
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param int cmd:
+    :param cmd:
         what it wants to do
+    :type cmd: int
 
 .. _`smack_sem_semctl.description`:
 
@@ -2140,17 +2337,21 @@ smack_sem_semop
 
     Smack checks of semaphore operations
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param struct sembuf \*sops:
+    :param sops:
         unused
+    :type sops: struct sembuf \*
 
-    :param unsigned nsops:
+    :param nsops:
         unused
+    :type nsops: unsigned
 
-    :param int alter:
+    :param alter:
         unused
+    :type alter: int
 
 .. _`smack_sem_semop.description`:
 
@@ -2170,11 +2371,13 @@ smk_curacc_msq
 
     helper to check if current has access on msq
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the msq
+    :type isp: struct kern_ipc_perm \*
 
-    :param int access:
+    :param access:
         access requested
+    :type access: int
 
 .. _`smk_curacc_msq.description`:
 
@@ -2192,11 +2395,13 @@ smack_msg_queue_associate
 
     Smack access check for msg_queue
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param int msqflg:
+    :param msqflg:
         access requested
+    :type msqflg: int
 
 .. _`smack_msg_queue_associate.description`:
 
@@ -2214,11 +2419,13 @@ smack_msg_queue_msgctl
 
     Smack access check for msg_queue
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param int cmd:
+    :param cmd:
         what it wants to do
+    :type cmd: int
 
 .. _`smack_msg_queue_msgctl.description`:
 
@@ -2236,14 +2443,17 @@ smack_msg_queue_msgsnd
 
     Smack access check for msg_queue
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param struct msg_msg \*msg:
+    :param msg:
         unused
+    :type msg: struct msg_msg \*
 
-    :param int msqflg:
+    :param msqflg:
         access requested
+    :type msqflg: int
 
 .. _`smack_msg_queue_msgsnd.description`:
 
@@ -2261,20 +2471,25 @@ smack_msg_queue_msgrcv
 
     Smack access check for msg_queue
 
-    :param struct kern_ipc_perm \*isp:
+    :param isp:
         the object
+    :type isp: struct kern_ipc_perm \*
 
-    :param struct msg_msg \*msg:
+    :param msg:
         unused
+    :type msg: struct msg_msg \*
 
-    :param struct task_struct \*target:
+    :param target:
         unused
+    :type target: struct task_struct \*
 
-    :param long type:
+    :param type:
         unused
+    :type type: long
 
-    :param int mode:
+    :param mode:
         unused
+    :type mode: int
 
 .. _`smack_msg_queue_msgrcv.description`:
 
@@ -2292,11 +2507,13 @@ smack_ipc_permission
 
     Smack access for \ :c:func:`ipc_permission`\ 
 
-    :param struct kern_ipc_perm \*ipp:
+    :param ipp:
         the object permissions
+    :type ipp: struct kern_ipc_perm \*
 
-    :param short flag:
+    :param flag:
         access requested
+    :type flag: short
 
 .. _`smack_ipc_permission.description`:
 
@@ -2314,11 +2531,13 @@ smack_ipc_getsecid
 
     Extract smack security id
 
-    :param struct kern_ipc_perm \*ipp:
+    :param ipp:
         the object permissions
+    :type ipp: struct kern_ipc_perm \*
 
-    :param u32 \*secid:
+    :param secid:
         where result will be saved
+    :type secid: u32 \*
 
 .. _`smack_d_instantiate`:
 
@@ -2329,11 +2548,13 @@ smack_d_instantiate
 
     Make sure the blob is correct on an inode
 
-    :param struct dentry \*opt_dentry:
+    :param opt_dentry:
         dentry where inode will be attached
+    :type opt_dentry: struct dentry \*
 
-    :param struct inode \*inode:
+    :param inode:
         the object
+    :type inode: struct inode \*
 
 .. _`smack_d_instantiate.description`:
 
@@ -2351,14 +2572,17 @@ smack_getprocattr
 
     Smack process attribute access
 
-    :param struct task_struct \*p:
+    :param p:
         the object task
+    :type p: struct task_struct \*
 
-    :param char \*name:
+    :param name:
         the name of the attribute in /proc/.../attr
+    :type name: char \*
 
-    :param char \*\*value:
+    :param value:
         where to put the result
+    :type value: char \*\*
 
 .. _`smack_getprocattr.description`:
 
@@ -2378,14 +2602,17 @@ smack_setprocattr
 
     Smack process attribute setting
 
-    :param const char \*name:
+    :param name:
         the name of the attribute in /proc/.../attr
+    :type name: const char \*
 
-    :param void \*value:
+    :param value:
         the value to set
+    :type value: void \*
 
-    :param size_t size:
+    :param size:
         the size of the value
+    :type size: size_t
 
 .. _`smack_setprocattr.description`:
 
@@ -2406,14 +2633,17 @@ smack_unix_stream_connect
 
     Smack access on UDS
 
-    :param struct sock \*sock:
+    :param sock:
         one sock
+    :type sock: struct sock \*
 
-    :param struct sock \*other:
+    :param other:
         the other sock
+    :type other: struct sock \*
 
-    :param struct sock \*newsk:
+    :param newsk:
         unused
+    :type newsk: struct sock \*
 
 .. _`smack_unix_stream_connect.description`:
 
@@ -2432,11 +2662,13 @@ smack_unix_may_send
 
     Smack access on UDS
 
-    :param struct socket \*sock:
+    :param sock:
         one socket
+    :type sock: struct socket \*
 
-    :param struct socket \*other:
+    :param other:
         the other socket
+    :type other: struct socket \*
 
 .. _`smack_unix_may_send.description`:
 
@@ -2455,14 +2687,17 @@ smack_socket_sendmsg
 
     Smack check based on destination host
 
-    :param struct socket \*sock:
+    :param sock:
         the socket
+    :type sock: struct socket \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         the message
+    :type msg: struct msghdr \*
 
-    :param int size:
+    :param size:
         the size of the message
+    :type size: int
 
 .. _`smack_socket_sendmsg.description`:
 
@@ -2482,11 +2717,13 @@ smack_from_secattr
 
     Convert a netlabel attr.mls.lvl/attr.mls.cat pair to smack
 
-    :param struct netlbl_lsm_secattr \*sap:
+    :param sap:
         netlabel secattr
+    :type sap: struct netlbl_lsm_secattr \*
 
-    :param struct socket_smack \*ssp:
+    :param ssp:
         socket security information
+    :type ssp: struct socket_smack \*
 
 .. _`smack_from_secattr.description`:
 
@@ -2504,11 +2741,13 @@ smack_socket_sock_rcv_skb
 
     Smack packet delivery access check
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet
+    :type skb: struct sk_buff \*
 
 .. _`smack_socket_sock_rcv_skb.description`:
 
@@ -2526,17 +2765,21 @@ smack_socket_getpeersec_stream
 
     pull in packet label
 
-    :param struct socket \*sock:
+    :param sock:
         the socket
+    :type sock: struct socket \*
 
-    :param char __user \*optval:
+    :param optval:
         user's destination
+    :type optval: char __user \*
 
-    :param int __user \*optlen:
+    :param optlen:
         size thereof
+    :type optlen: int __user \*
 
-    :param unsigned len:
+    :param len:
         max thereof
+    :type len: unsigned
 
 .. _`smack_socket_getpeersec_stream.description`:
 
@@ -2554,14 +2797,17 @@ smack_socket_getpeersec_dgram
 
     pull in packet label
 
-    :param struct socket \*sock:
+    :param sock:
         the peer socket
+    :type sock: struct socket \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet data
+    :type skb: struct sk_buff \*
 
-    :param u32 \*secid:
+    :param secid:
         pointer to where to put the secid of the packet
+    :type secid: u32 \*
 
 .. _`smack_socket_getpeersec_dgram.description`:
 
@@ -2579,11 +2825,13 @@ smack_sock_graft
 
     Initialize a newly created socket with an existing sock
 
-    :param struct sock \*sk:
+    :param sk:
         child sock
+    :type sk: struct sock \*
 
-    :param struct socket \*parent:
+    :param parent:
         parent socket
+    :type parent: struct socket \*
 
 .. _`smack_sock_graft.description`:
 
@@ -2602,14 +2850,17 @@ smack_inet_conn_request
 
     Smack access check on connect
 
-    :param struct sock \*sk:
+    :param sk:
         socket involved
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         packet
+    :type skb: struct sk_buff \*
 
-    :param struct request_sock \*req:
+    :param req:
         unused
+    :type req: struct request_sock \*
 
 .. _`smack_inet_conn_request.description`:
 
@@ -2628,11 +2879,13 @@ smack_inet_csk_clone
 
     Copy the connection information to the new socket
 
-    :param struct sock \*sk:
+    :param sk:
         the new socket
+    :type sk: struct sock \*
 
-    :param const struct request_sock \*req:
+    :param req:
         the connection's request_sock
+    :type req: const struct request_sock \*
 
 .. _`smack_inet_csk_clone.description`:
 
@@ -2650,14 +2903,17 @@ smack_key_alloc
 
     Set the key security blob
 
-    :param struct key \*key:
+    :param key:
         object
+    :type key: struct key \*
 
-    :param const struct cred \*cred:
+    :param cred:
         the credentials to use
+    :type cred: const struct cred \*
 
-    :param unsigned long flags:
+    :param flags:
         unused
+    :type flags: unsigned long
 
 .. _`smack_key_alloc.description`:
 
@@ -2677,8 +2933,9 @@ smack_key_free
 
     Clear the key security blob
 
-    :param struct key \*key:
+    :param key:
         the object
+    :type key: struct key \*
 
 .. _`smack_key_free.description`:
 
@@ -2696,14 +2953,17 @@ smack_key_permission
 
     Smack access on a key
 
-    :param key_ref_t key_ref:
+    :param key_ref:
         gets to the object
+    :type key_ref: key_ref_t
 
-    :param const struct cred \*cred:
+    :param cred:
         the credentials to use
+    :type cred: const struct cred \*
 
-    :param unsigned perm:
+    :param perm:
         requested key permissions
+    :type perm: unsigned
 
 .. _`smack_key_permission.description`:
 
@@ -2722,17 +2982,21 @@ smack_audit_rule_init
 
     Initialize a smack audit rule
 
-    :param u32 field:
+    :param field:
         audit rule fields given from user-space (audit.h)
+    :type field: u32
 
-    :param u32 op:
+    :param op:
         required testing operator (=, !=, >, <, ...)
+    :type op: u32
 
-    :param char \*rulestr:
+    :param rulestr:
         smack label to be audited
+    :type rulestr: char \*
 
-    :param void \*\*vrule:
+    :param vrule:
         pointer to save our own audit rule representation
+    :type vrule: void \*\*
 
 .. _`smack_audit_rule_init.description`:
 
@@ -2751,8 +3015,9 @@ smack_audit_rule_known
 
     Distinguish Smack audit rules
 
-    :param struct audit_krule \*krule:
+    :param krule:
         rule of interest, in Audit kernel representation format
+    :type krule: struct audit_krule \*
 
 .. _`smack_audit_rule_known.description`:
 
@@ -2772,20 +3037,25 @@ smack_audit_rule_match
 
     Audit given object ?
 
-    :param u32 secid:
+    :param secid:
         security id for identifying the object to test
+    :type secid: u32
 
-    :param u32 field:
+    :param field:
         audit rule flags given from user-space
+    :type field: u32
 
-    :param u32 op:
+    :param op:
         required testing operator
+    :type op: u32
 
-    :param void \*vrule:
+    :param vrule:
         smack internal rule presentation
+    :type vrule: void \*
 
-    :param struct audit_context \*actx:
+    :param actx:
         audit context associated with the check
+    :type actx: struct audit_context \*
 
 .. _`smack_audit_rule_match.description`:
 
@@ -2804,8 +3074,9 @@ smack_ismaclabel
 
     check if xattr \ ``name``\  references a smack MAC label
 
-    :param const char \*name:
+    :param name:
         Full xattr name to check.
+    :type name: const char \*
 
 .. _`smack_secid_to_secctx`:
 
@@ -2816,14 +3087,17 @@ smack_secid_to_secctx
 
     return the smack label for a secid
 
-    :param u32 secid:
+    :param secid:
         incoming integer
+    :type secid: u32
 
-    :param char \*\*secdata:
+    :param secdata:
         destination
+    :type secdata: char \*\*
 
-    :param u32 \*seclen:
+    :param seclen:
         how long it is
+    :type seclen: u32 \*
 
 .. _`smack_secid_to_secctx.description`:
 
@@ -2841,14 +3115,17 @@ smack_secctx_to_secid
 
     return the secid for a smack label
 
-    :param const char \*secdata:
+    :param secdata:
         smack label
+    :type secdata: const char \*
 
-    :param u32 seclen:
+    :param seclen:
         how long result is
+    :type seclen: u32
 
-    :param u32 \*secid:
+    :param secid:
         outgoing integer
+    :type secid: u32 \*
 
 .. _`smack_secctx_to_secid.description`:
 
@@ -2866,8 +3143,9 @@ smack_init
 
     initialize the smack system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`smack_init.description`:
 

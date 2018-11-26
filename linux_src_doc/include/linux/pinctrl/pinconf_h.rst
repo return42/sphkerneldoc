@@ -49,7 +49,8 @@ pin_config_set
     configure an individual pin
 
 pin_config_group_get
-    get configurations for an entire pin group
+    get configurations for an entire pin group; should
+    return -ENOTSUPP and -EINVAL using the same rules as pin_config_get.
 
 pin_config_group_set
     configure all pins in a group

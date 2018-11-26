@@ -10,14 +10,17 @@ btrfs_check_shared
 
     tell us whether an extent is shared
 
-    :param struct btrfs_root \*root:
+    :param root:
         *undescribed*
+    :type root: struct btrfs_root \*
 
-    :param u64 inum:
+    :param inum:
         *undescribed*
+    :type inum: u64
 
-    :param u64 bytenr:
+    :param bytenr:
         *undescribed*
+    :type bytenr: u64
 
 .. _`btrfs_check_shared.description`:
 

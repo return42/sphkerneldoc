@@ -10,17 +10,21 @@ register_user_hw_breakpoint
 
     register a hardware breakpoint for user space
 
-    :param struct perf_event_attr \*attr:
+    :param attr:
         breakpoint attributes
+    :type attr: struct perf_event_attr \*
 
-    :param perf_overflow_handler_t triggered:
+    :param triggered:
         callback to trigger when we hit the breakpoint
+    :type triggered: perf_overflow_handler_t
 
-    :param void \*context:
+    :param context:
         *undescribed*
+    :type context: void \*
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         pointer to 'task_struct' of the process to which the address belongs
+    :type tsk: struct task_struct \*
 
 .. _`modify_user_hw_breakpoint`:
 
@@ -31,11 +35,13 @@ modify_user_hw_breakpoint
 
     modify a user-space hardware breakpoint
 
-    :param struct perf_event \*bp:
+    :param bp:
         the breakpoint structure to modify
+    :type bp: struct perf_event \*
 
-    :param struct perf_event_attr \*attr:
+    :param attr:
         new breakpoint attributes
+    :type attr: struct perf_event_attr \*
 
 .. _`unregister_hw_breakpoint`:
 
@@ -46,8 +52,9 @@ unregister_hw_breakpoint
 
     unregister a user-space hardware breakpoint
 
-    :param struct perf_event \*bp:
+    :param bp:
         the breakpoint structure to unregister
+    :type bp: struct perf_event \*
 
 .. _`register_wide_hw_breakpoint`:
 
@@ -58,14 +65,17 @@ register_wide_hw_breakpoint
 
     register a wide breakpoint in the kernel
 
-    :param struct perf_event_attr \*attr:
+    :param attr:
         breakpoint attributes
+    :type attr: struct perf_event_attr \*
 
-    :param perf_overflow_handler_t triggered:
+    :param triggered:
         callback to trigger when we hit the breakpoint
+    :type triggered: perf_overflow_handler_t
 
-    :param void \*context:
+    :param context:
         *undescribed*
+    :type context: void \*
 
 .. _`register_wide_hw_breakpoint.description`:
 
@@ -83,8 +93,9 @@ unregister_wide_hw_breakpoint
 
     unregister a wide breakpoint in the kernel
 
-    :param struct perf_event \* __percpu \*cpu_events:
+    :param cpu_events:
         the per cpu set of events to unregister
+    :type cpu_events: struct perf_event \* __percpu \*
 
 .. This file was automatic generated / don't edit.
 

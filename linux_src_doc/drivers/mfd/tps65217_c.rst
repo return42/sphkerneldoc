@@ -10,14 +10,17 @@ tps65217_reg_read
 
     Read a single tps65217 register.
 
-    :param struct tps65217 \*tps:
+    :param tps:
         Device to read from.
+    :type tps: struct tps65217 \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to read.
+    :type reg: unsigned int
 
-    :param unsigned int \*val:
+    :param val:
         Contians the value
+    :type val: unsigned int \*
 
 .. _`tps65217_reg_write`:
 
@@ -28,17 +31,21 @@ tps65217_reg_write
 
     Write a single tps65217 register.
 
-    :param struct tps65217 \*tps:
+    :param tps:
         *undescribed*
+    :type tps: struct tps65217 \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to write to.
+    :type reg: unsigned int
 
-    :param unsigned int val:
+    :param val:
         Value to write.
+    :type val: unsigned int
 
-    :param unsigned int level:
+    :param level:
         Password protected level
+    :type level: unsigned int
 
 .. _`tps65217_update_bits`:
 
@@ -49,20 +56,25 @@ tps65217_update_bits
 
     Modify bits w.r.t mask, val and level.
 
-    :param struct tps65217 \*tps:
+    :param tps:
         *undescribed*
+    :type tps: struct tps65217 \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to read-write to.
+    :type reg: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         Mask.
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         Value to write.
+    :type val: unsigned int
 
-    :param unsigned int level:
+    :param level:
         Password protected level
+    :type level: unsigned int
 
 .. This file was automatic generated / don't edit.
 

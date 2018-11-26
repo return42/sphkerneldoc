@@ -10,8 +10,9 @@ lpfc_config_port_prep
 
     Perform lpfc initialization prior to config port
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_config_port_prep.description`:
 
@@ -41,11 +42,13 @@ lpfc_config_async_cmpl
 
     Completion handler for config async event mbox cmd
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmboxq:
+    :param pmboxq:
         pointer to the driver internal queue element for mailbox command.
+    :type pmboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_config_async_cmpl.description`:
 
@@ -66,11 +69,13 @@ lpfc_dump_wakeup_param_cmpl
 
     dump memory mailbox command completion handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmboxq:
+    :param pmboxq:
         pointer to the driver internal queue element for mailbox command.
+    :type pmboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_dump_wakeup_param_cmpl.description`:
 
@@ -91,8 +96,9 @@ lpfc_update_vport_wwn
 
     Updates the fc_nodename, fc_portname, cfg_soft_wwnn, cfg_soft_wwpn
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to lpfc vport data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_update_vport_wwn.description`:
 
@@ -112,8 +118,9 @@ lpfc_config_port_post
 
     Perform lpfc initialization after config port
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_config_port_post.description`:
 
@@ -144,11 +151,13 @@ lpfc_hba_init_link
 
     Initialize the FC link
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t flag:
+    :param flag:
         mailbox command issue mode - either MBX_POLL or MBX_NOWAIT
+    :type flag: uint32_t
 
 .. _`lpfc_hba_init_link.description`:
 
@@ -173,14 +182,17 @@ lpfc_hba_init_link_fc_topology
 
     Initialize FC link with desired topology
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t fc_topology:
+    :param fc_topology:
         desired fc topology.
+    :type fc_topology: uint32_t
 
-    :param uint32_t flag:
+    :param flag:
         mailbox command issue mode - either MBX_POLL or MBX_NOWAIT
+    :type flag: uint32_t
 
 .. _`lpfc_hba_init_link_fc_topology.description`:
 
@@ -205,11 +217,13 @@ lpfc_hba_down_link
 
     this routine downs the FC link
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t flag:
+    :param flag:
         mailbox command issue mode - either MBX_POLL or MBX_NOWAIT
+    :type flag: uint32_t
 
 .. _`lpfc_hba_down_link.description`:
 
@@ -233,8 +247,9 @@ lpfc_hba_down_prep
 
     Perform lpfc uninitialization prior to HBA reset
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc HBA data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_hba_down_prep.description`:
 
@@ -257,8 +272,9 @@ lpfc_sli4_free_sp_events
 
     Cleanup sp_queue_events to free rspiocb which got deferred
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc HBA data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_free_sp_events.description`:
 
@@ -281,8 +297,9 @@ lpfc_hba_free_post_buf
 
     Perform lpfc uninitialization after HBA reset
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc HBA data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_hba_free_post_buf.description`:
 
@@ -305,8 +322,9 @@ lpfc_hba_clean_txcmplq
 
     Perform lpfc uninitialization after HBA reset
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc HBA data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_hba_clean_txcmplq.description`:
 
@@ -328,8 +346,9 @@ lpfc_hba_down_post_s3
 
     Perform lpfc uninitialization after HBA reset
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc HBA data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_hba_down_post_s3.description`:
 
@@ -352,8 +371,9 @@ lpfc_hba_down_post_s4
 
     Perform lpfc uninitialization after HBA reset
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc HBA data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_hba_down_post_s4.description`:
 
@@ -376,8 +396,9 @@ lpfc_hba_down_post
 
     Wrapper func for hba down post routine
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc HBA data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_hba_down_post.description`:
 
@@ -400,8 +421,9 @@ lpfc_hb_timeout
 
     The HBA-timer timeout handler
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`lpfc_hb_timeout.description`:
 
@@ -425,8 +447,9 @@ lpfc_rrq_timeout
 
     The RRQ-timer timeout handler
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`lpfc_rrq_timeout.description`:
 
@@ -450,11 +473,13 @@ lpfc_hb_mbox_cmpl
 
     The lpfc heart-beat mailbox command callback function
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmboxq:
+    :param pmboxq:
         pointer to the driver internal queue element for mailbox command.
+    :type pmboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_hb_mbox_cmpl.description`:
 
@@ -481,8 +506,9 @@ lpfc_hb_timeout_handler
 
     The HBA-timer timeout handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_hb_timeout_handler.description`:
 
@@ -510,8 +536,9 @@ lpfc_offline_eratt
 
     Bring lpfc offline on hardware error attention
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_offline_eratt.description`:
 
@@ -530,8 +557,9 @@ lpfc_sli4_offline_eratt
 
     Bring lpfc offline on SLI4 hardware error attention
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_offline_eratt.description`:
 
@@ -550,8 +578,9 @@ lpfc_handle_deferred_eratt
 
     The HBA hardware deferred error handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_handle_deferred_eratt.description`:
 
@@ -572,8 +601,9 @@ lpfc_handle_eratt_s3
 
     The SLI3 HBA hardware error handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_handle_eratt_s3.description`:
 
@@ -600,14 +630,17 @@ lpfc_sli4_port_sta_fn_reset
 
     The SLI4 function reset due to port status reg
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param int mbx_action:
+    :param mbx_action:
         flag for mailbox shutdown action.
+    :type mbx_action: int
 
-    :param bool en_rn_msg:
+    :param en_rn_msg:
         *undescribed*
+    :type en_rn_msg: bool
 
 .. _`lpfc_sli4_port_sta_fn_reset.description`:
 
@@ -629,8 +662,9 @@ lpfc_handle_eratt_s4
 
     The SLI4 HBA hardware error handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_handle_eratt_s4.description`:
 
@@ -649,8 +683,9 @@ lpfc_handle_eratt
 
     Wrapper func for handling hba error attention
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc HBA data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_handle_eratt.description`:
 
@@ -673,8 +708,9 @@ lpfc_handle_latt
 
     The HBA link event handler
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_handle_latt.description`:
 
@@ -693,14 +729,17 @@ lpfc_parse_vpd
 
     Parse VPD (Vital Product Data)
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t \*vpd:
+    :param vpd:
         pointer to the vital product data.
+    :type vpd: uint8_t \*
 
-    :param int len:
+    :param len:
         length of the vital product data in bytes.
+    :type len: int
 
 .. _`lpfc_parse_vpd.description`:
 
@@ -724,14 +763,17 @@ lpfc_get_hba_model_desc
 
     Retrieve HBA device model name and description
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t \*mdp:
+    :param mdp:
         pointer to the data structure to hold the derived model name.
+    :type mdp: uint8_t \*
 
-    :param uint8_t \*descp:
+    :param descp:
         pointer to the data structure to hold the derived description.
+    :type descp: uint8_t \*
 
 .. _`lpfc_get_hba_model_desc.description`:
 
@@ -753,14 +795,17 @@ lpfc_post_buffer
 
     Post IOCB(s) with DMA buffer descriptor(s) to a IOCB ring
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_sli_ring \*pring:
+    :param pring:
         pointer to a IOCB ring.
+    :type pring: struct lpfc_sli_ring \*
 
-    :param int cnt:
+    :param cnt:
         the number of IOCBs to be posted to the IOCB ring.
+    :type cnt: int
 
 .. _`lpfc_post_buffer.description`:
 
@@ -782,8 +827,9 @@ lpfc_post_rcv_buf
 
     Post the initial receive IOCB buffers to ELS ring
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_post_rcv_buf.description`:
 
@@ -806,8 +852,9 @@ lpfc_sha_init
 
     Set up initial array of hash table entries
 
-    :param uint32_t \*HashResultPointer:
+    :param HashResultPointer:
         pointer to an array as hash table.
+    :type HashResultPointer: uint32_t \*
 
 .. _`lpfc_sha_init.description`:
 
@@ -826,11 +873,13 @@ lpfc_sha_iterate
 
     Iterate initial hash table with the working hash table
 
-    :param uint32_t \*HashResultPointer:
+    :param HashResultPointer:
         pointer to an initial/result hash table.
+    :type HashResultPointer: uint32_t \*
 
-    :param uint32_t \*HashWorkingPointer:
+    :param HashWorkingPointer:
         pointer to an working hash table.
+    :type HashWorkingPointer: uint32_t \*
 
 .. _`lpfc_sha_iterate.description`:
 
@@ -851,11 +900,13 @@ lpfc_challenge_key
 
     Create challenge key based on WWPN of the HBA
 
-    :param uint32_t \*RandomChallenge:
+    :param RandomChallenge:
         pointer to the entry of host challenge random number array.
+    :type RandomChallenge: uint32_t \*
 
-    :param uint32_t \*HashWorking:
+    :param HashWorking:
         pointer to the entry of the working hash array.
+    :type HashWorking: uint32_t \*
 
 .. _`lpfc_challenge_key.description`:
 
@@ -876,11 +927,13 @@ lpfc_hba_init
 
     Perform special handling for LC HBA initialization
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t \*hbainit:
+    :param hbainit:
         pointer to an array of unsigned 32-bit integers.
+    :type hbainit: uint32_t \*
 
 .. _`lpfc_hba_init.description`:
 
@@ -898,8 +951,9 @@ lpfc_cleanup
 
     Performs vport cleanups before deleting a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_cleanup.description`:
 
@@ -920,8 +974,9 @@ lpfc_stop_vport_timers
 
     Stop all the timers associated with a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_stop_vport_timers.description`:
 
@@ -941,8 +996,9 @@ port is treated as \ ``vport``\  0.
 
     Stop FCF rediscovery wait timer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`__lpfc_sli4_stop_fcf_redisc_wait_timer.description`:
 
@@ -961,8 +1017,9 @@ lpfc_sli4_stop_fcf_redisc_wait_timer
 
     Stop FCF rediscovery wait timer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_stop_fcf_redisc_wait_timer.description`:
 
@@ -983,8 +1040,9 @@ lpfc_stop_hba_timers
 
     Stop all the timers associated with an HBA
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_stop_hba_timers.description`:
 
@@ -1003,11 +1061,13 @@ lpfc_block_mgmt_io
 
     Mark a HBA's management interface as blocked
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param int mbx_action:
+    :param mbx_action:
         *undescribed*
+    :type mbx_action: int
 
 .. _`lpfc_block_mgmt_io.description`:
 
@@ -1029,8 +1089,9 @@ lpfc_sli4_node_prep
 
     Assign RPIs for active nodes.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_node_prep.description`:
 
@@ -1050,8 +1111,9 @@ lpfc_online
 
     Initialize and bring a HBA online
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_online.description`:
 
@@ -1075,8 +1137,9 @@ lpfc_unblock_mgmt_io
 
     Mark a HBA's management interface to be not blocked
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_unblock_mgmt_io.description`:
 
@@ -1099,11 +1162,13 @@ lpfc_offline_prep
 
     Prepare a HBA to be brought offline
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param int mbx_action:
+    :param mbx_action:
         *undescribed*
+    :type mbx_action: int
 
 .. _`lpfc_offline_prep.description`:
 
@@ -1123,8 +1188,9 @@ lpfc_offline
 
     Bring a HBA offline
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_offline.description`:
 
@@ -1144,8 +1210,9 @@ lpfc_scsi_free
 
     Free all the SCSI buffers and IOCBs from driver lists
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_scsi_free.description`:
 
@@ -1165,8 +1232,9 @@ lpfc_nvme_free
 
     Free all the NVME buffers and IOCBs from driver lists
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_nvme_free.description`:
 
@@ -1186,8 +1254,9 @@ lpfc_sli4_els_sgl_update
 
     update ELS xri-sgl sizing and mapping
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_els_sgl_update.description`:
 
@@ -1211,8 +1280,9 @@ lpfc_sli4_nvmet_sgl_update
 
     update xri-sgl sizing and mapping
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_nvmet_sgl_update.description`:
 
@@ -1236,8 +1306,9 @@ lpfc_sli4_scsi_sgl_update
 
     update xri-sgl sizing and mapping
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_scsi_sgl_update.description`:
 
@@ -1261,8 +1332,9 @@ lpfc_sli4_nvme_sgl_update
 
     update xri-sgl sizing and mapping
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_nvme_sgl_update.description`:
 
@@ -1286,14 +1358,17 @@ lpfc_create_port
 
     Create an FC port
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param int instance:
+    :param instance:
         a unique integer ID to this FC port.
+    :type instance: int
 
-    :param struct device \*dev:
+    :param dev:
         pointer to the device data structure.
+    :type dev: struct device \*
 
 .. _`lpfc_create_port.description`:
 
@@ -1319,8 +1394,9 @@ destroy_port
 
     destroy an FC port
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to an lpfc virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`destroy_port.description`:
 
@@ -1339,8 +1415,9 @@ lpfc_get_instance
 
     Get a unique integer ID
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`lpfc_get_instance.description`:
 
@@ -1367,11 +1444,13 @@ lpfc_scan_finished
 
     method for SCSI layer to detect whether scan is done
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         pointer to SCSI host data structure.
+    :type shost: struct Scsi_Host \*
 
-    :param unsigned long time:
+    :param time:
         elapsed time of the scan in jiffies.
+    :type time: unsigned long
 
 .. _`lpfc_scan_finished.description`:
 
@@ -1402,8 +1481,9 @@ lpfc_host_attrib_init
 
     Initialize SCSI host attributes on a FC port
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         pointer to SCSI host data structure.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_host_attrib_init.description`:
 
@@ -1422,8 +1502,9 @@ lpfc_stop_port_s3
 
     Stop SLI3 device port
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_stop_port_s3.description`:
 
@@ -1443,8 +1524,9 @@ lpfc_stop_port_s4
 
     Stop SLI4 device port
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_stop_port_s4.description`:
 
@@ -1464,8 +1546,9 @@ lpfc_stop_port
 
     Wrapper function for stopping hba port
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_stop_port.description`:
 
@@ -1484,8 +1567,9 @@ lpfc_fcf_redisc_wait_start_timer
 
     Start fcf rediscover wait timer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_fcf_redisc_wait_start_timer.description`:
 
@@ -1503,8 +1587,9 @@ lpfc_sli4_fcf_redisc_wait_tmo
 
     FCF table rediscover wait timeout
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`lpfc_sli4_fcf_redisc_wait_tmo.description`:
 
@@ -1526,11 +1611,13 @@ lpfc_sli4_parse_latt_fault
 
     Parse sli4 link-attention link fault code
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_acqe_link \*acqe_link:
+    :param acqe_link:
         pointer to the async link completion queue entry.
+    :type acqe_link: struct lpfc_acqe_link \*
 
 .. _`lpfc_sli4_parse_latt_fault.description`:
 
@@ -1548,11 +1635,13 @@ lpfc_sli4_parse_latt_type
 
     Parse sli4 link attention type
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_acqe_link \*acqe_link:
+    :param acqe_link:
         pointer to the async link completion queue entry.
+    :type acqe_link: struct lpfc_acqe_link \*
 
 .. _`lpfc_sli4_parse_latt_type.description`:
 
@@ -1578,8 +1667,9 @@ lpfc_sli_port_speed_get
 
     Get sli3 link speed code to link speed
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_port_speed_get.description`:
 
@@ -1604,14 +1694,17 @@ lpfc_sli4_port_speed_parse
 
     Parse async evt link speed code to link speed
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t evt_code:
+    :param evt_code:
         asynchronous event code.
+    :type evt_code: uint32_t
 
-    :param uint8_t speed_code:
+    :param speed_code:
         asynchronous event link speed code.
+    :type speed_code: uint8_t
 
 .. _`lpfc_sli4_port_speed_parse.description`:
 
@@ -1637,11 +1730,13 @@ lpfc_sli4_async_link_evt
 
     Process the asynchronous FCoE link event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_acqe_link \*acqe_link:
+    :param acqe_link:
         pointer to the async link completion queue entry.
+    :type acqe_link: struct lpfc_acqe_link \*
 
 .. _`lpfc_sli4_async_link_evt.description`:
 
@@ -1659,11 +1754,13 @@ lpfc_sli4_async_fc_evt
 
     Process the asynchronous FC link event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_acqe_fc_la \*acqe_fc:
+    :param acqe_fc:
         pointer to the async fc completion queue entry.
+    :type acqe_fc: struct lpfc_acqe_fc_la \*
 
 .. _`lpfc_sli4_async_fc_evt.description`:
 
@@ -1683,11 +1780,13 @@ lpfc_sli4_async_sli_evt
 
     Process the asynchronous SLI link event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_acqe_sli \*acqe_sli:
+    :param acqe_sli:
         *undescribed*
+    :type acqe_sli: struct lpfc_acqe_sli \*
 
 .. _`lpfc_sli4_async_sli_evt.description`:
 
@@ -1705,8 +1804,9 @@ lpfc_sli4_perform_vport_cvl
 
     Perform clear virtual link on a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to vport data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_sli4_perform_vport_cvl.description`:
 
@@ -1728,8 +1828,9 @@ lpfc_sli4_perform_all_vport_cvl
 
     Perform clear virtual link on all vports
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         *undescribed*
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_perform_all_vport_cvl.description`:
 
@@ -1748,11 +1849,13 @@ lpfc_sli4_async_fip_evt
 
     Process the asynchronous FCoE FIP event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_acqe_fip \*acqe_fip:
+    :param acqe_fip:
         *undescribed*
+    :type acqe_fip: struct lpfc_acqe_fip \*
 
 .. _`lpfc_sli4_async_fip_evt.description`:
 
@@ -1770,11 +1873,13 @@ lpfc_sli4_async_dcbx_evt
 
     Process the asynchronous dcbx event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_acqe_dcbx \*acqe_dcbx:
+    :param acqe_dcbx:
         *undescribed*
+    :type acqe_dcbx: struct lpfc_acqe_dcbx \*
 
 .. _`lpfc_sli4_async_dcbx_evt.description`:
 
@@ -1792,11 +1897,13 @@ lpfc_sli4_async_grp5_evt
 
     Process the asynchronous group5 event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_acqe_grp5 \*acqe_grp5:
+    :param acqe_grp5:
         *undescribed*
+    :type acqe_grp5: struct lpfc_acqe_grp5 \*
 
 .. _`lpfc_sli4_async_grp5_evt.description`:
 
@@ -1816,8 +1923,9 @@ lpfc_sli4_async_event_proc
 
     Process all the pending asynchronous event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_async_event_proc.description`:
 
@@ -1836,8 +1944,9 @@ lpfc_sli4_fcf_redisc_event_proc
 
     Process fcf table rediscovery event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_fcf_redisc_event_proc.description`:
 
@@ -1856,11 +1965,13 @@ lpfc_api_table_setup
 
     Set up per hba pci-device group func api jump table
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t dev_grp:
+    :param dev_grp:
         The HBA PCI-Device group number.
+    :type dev_grp: uint8_t
 
 .. _`lpfc_api_table_setup.description`:
 
@@ -1886,11 +1997,13 @@ lpfc_log_intr_mode
 
     Log the active interrupt mode
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t intr_mode:
+    :param intr_mode:
         active interrupt mode adopted.
+    :type intr_mode: uint32_t
 
 .. _`lpfc_log_intr_mode.description`:
 
@@ -1909,8 +2022,9 @@ lpfc_enable_pci_dev
 
     Enable a generic PCI device.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_enable_pci_dev.description`:
 
@@ -1933,8 +2047,9 @@ lpfc_disable_pci_dev
 
     Disable a generic PCI device.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_disable_pci_dev.description`:
 
@@ -1953,8 +2068,9 @@ lpfc_reset_hba
 
     Reset a hba
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_reset_hba.description`:
 
@@ -1975,8 +2091,9 @@ lpfc_sli_sriov_nr_virtfn_get
 
     Get the number of sr-iov virtual functions
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_sriov_nr_virtfn_get.description`:
 
@@ -1998,11 +2115,13 @@ lpfc_sli_probe_sriov_nr_virtfn
 
     Enable a number of sr-iov virtual functions
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param int nr_vfn:
+    :param nr_vfn:
         number of virtual functions to be enabled.
+    :type nr_vfn: int
 
 .. _`lpfc_sli_probe_sriov_nr_virtfn.description`:
 
@@ -2024,8 +2143,9 @@ lpfc_setup_driver_resource_phase1
 
     Phase1 etup driver internal resources.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_setup_driver_resource_phase1.description`:
 
@@ -2048,8 +2168,9 @@ lpfc_sli_driver_resource_setup
 
     Setup driver internal resources for SLI3 dev
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_driver_resource_setup.description`:
 
@@ -2072,8 +2193,9 @@ lpfc_sli_driver_resource_unset
 
     Unset drvr internal resources for SLI3 dev
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_driver_resource_unset.description`:
 
@@ -2092,8 +2214,9 @@ lpfc_sli4_driver_resource_setup
 
     Setup drvr internal resources for SLI4 dev
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_driver_resource_setup.description`:
 
@@ -2116,8 +2239,9 @@ lpfc_sli4_driver_resource_unset
 
     Unset drvr internal resources for SLI4 dev
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_driver_resource_unset.description`:
 
@@ -2136,11 +2260,13 @@ lpfc_init_api_table_setup
 
     Set up init api function jump table
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         The hba struct for which this call is being executed.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t dev_grp:
+    :param dev_grp:
         The HBA PCI-Device group number.
+    :type dev_grp: uint8_t
 
 .. _`lpfc_init_api_table_setup.description`:
 
@@ -2166,8 +2292,9 @@ lpfc_setup_driver_resource_phase2
 
     Phase2 setup driver internal resources.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_setup_driver_resource_phase2.description`:
 
@@ -2190,8 +2317,9 @@ lpfc_unset_driver_resource_phase2
 
     Phase2 unset driver internal resources.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_unset_driver_resource_phase2.description`:
 
@@ -2211,8 +2339,9 @@ lpfc_free_iocb_list
 
     Free iocb list.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_free_iocb_list.description`:
 
@@ -2230,11 +2359,13 @@ lpfc_init_iocb_list
 
     Allocate and initialize iocb list.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param int iocb_count:
+    :param iocb_count:
         *undescribed*
+    :type iocb_count: int
 
 .. _`lpfc_init_iocb_list.description`:
 
@@ -2257,11 +2388,13 @@ lpfc_free_sgl_list
 
     Free a given sgl list.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct list_head \*sglq_list:
+    :param sglq_list:
         pointer to the head of sgl list.
+    :type sglq_list: struct list_head \*
 
 .. _`lpfc_free_sgl_list.description`:
 
@@ -2279,8 +2412,9 @@ lpfc_free_els_sgl_list
 
     Free els sgl list.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_free_els_sgl_list.description`:
 
@@ -2298,8 +2432,9 @@ lpfc_free_nvmet_sgl_list
 
     Free nvmet sgl list.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_free_nvmet_sgl_list.description`:
 
@@ -2317,8 +2452,9 @@ lpfc_init_active_sgl_array
 
     Allocate the buf to track active ELS XRIs.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_init_active_sgl_array.description`:
 
@@ -2337,8 +2473,9 @@ lpfc_free_active_sgl
 
     Free the buf that tracks active ELS XRIs.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_free_active_sgl.description`:
 
@@ -2358,8 +2495,9 @@ lpfc_init_sgl_list
 
     Allocate and initialize sgl list.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_init_sgl_list.description`:
 
@@ -2378,8 +2516,9 @@ lpfc_sli4_init_rpi_hdrs
 
     Post the rpi header memory region to the port
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_init_rpi_hdrs.description`:
 
@@ -2405,8 +2544,9 @@ lpfc_sli4_create_rpi_hdr
 
     Allocate an rpi header memory region
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_create_rpi_hdr.description`:
 
@@ -2435,8 +2575,9 @@ lpfc_sli4_remove_rpi_hdrs
 
     Remove all rpi header memory regions
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_remove_rpi_hdrs.description`:
 
@@ -2457,8 +2598,9 @@ lpfc_hba_alloc
 
     Allocate driver hba data structure for a device.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to pci device data structure.
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_hba_alloc.description`:
 
@@ -2482,8 +2624,9 @@ lpfc_hba_free
 
     Free driver hba data structure with a device.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_hba_free.description`:
 
@@ -2502,8 +2645,9 @@ lpfc_create_shost
 
     Create hba physical port with associated scsi host.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_create_shost.description`:
 
@@ -2526,8 +2670,9 @@ lpfc_destroy_shost
 
     Destroy hba physical port with associated scsi host.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_destroy_shost.description`:
 
@@ -2546,11 +2691,13 @@ lpfc_setup_bg
 
     Setup Block guard structures and debug areas.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         the shost to be used to detect Block guard settings.
+    :type shost: struct Scsi_Host \*
 
 .. _`lpfc_setup_bg.description`:
 
@@ -2569,8 +2716,9 @@ lpfc_post_init_setup
 
     Perform necessary device post initialization setup.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_post_init_setup.description`:
 
@@ -2589,8 +2737,9 @@ lpfc_sli_pci_mem_setup
 
     Setup SLI3 HBA PCI memory space.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_pci_mem_setup.description`:
 
@@ -2613,8 +2762,9 @@ lpfc_sli_pci_mem_unset
 
     Unset SLI3 HBA PCI memory space.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_pci_mem_unset.description`:
 
@@ -2633,8 +2783,9 @@ lpfc_sli4_post_status_check
 
     Wait for SLI4 POST done and check status
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_post_status_check.description`:
 
@@ -2655,11 +2806,13 @@ lpfc_sli4_bar0_register_memmap
 
     Set up SLI4 BAR0 register memory map.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t if_type:
+    :param if_type:
         The SLI4 interface type getting configured.
+    :type if_type: uint32_t
 
 .. _`lpfc_sli4_bar0_register_memmap.description`:
 
@@ -2678,11 +2831,13 @@ lpfc_sli4_bar1_register_memmap
 
     Set up SLI4 BAR1 register memory map.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t if_type:
+    :param if_type:
         *undescribed*
+    :type if_type: uint32_t
 
 .. _`lpfc_sli4_bar1_register_memmap.description`:
 
@@ -2700,11 +2855,13 @@ lpfc_sli4_bar2_register_memmap
 
     Set up SLI4 BAR2 register memory map.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t vf:
+    :param vf:
         virtual function number
+    :type vf: uint32_t
 
 .. _`lpfc_sli4_bar2_register_memmap.description`:
 
@@ -2725,8 +2882,9 @@ lpfc_create_bootstrap_mbox
 
     Create the bootstrap mailbox
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_create_bootstrap_mbox.description`:
 
@@ -2753,8 +2911,9 @@ lpfc_destroy_bootstrap_mbox
 
     Destroy all bootstrap mailbox resources
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_destroy_bootstrap_mbox.description`:
 
@@ -2776,8 +2935,9 @@ lpfc_sli4_read_config
 
     Get the config parameters.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_read_config.description`:
 
@@ -2803,8 +2963,9 @@ lpfc_setup_endian_order
 
     Write endian order to an SLI4 if_type 0 port.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_setup_endian_order.description`:
 
@@ -2829,8 +2990,9 @@ lpfc_sli4_queue_verify
 
     Verify and update EQ counts
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_queue_verify.description`:
 
@@ -2855,8 +3017,9 @@ lpfc_sli4_queue_create
 
     Create all the SLI4 queues
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_queue_create.description`:
 
@@ -2882,8 +3045,9 @@ lpfc_sli4_queue_destroy
 
     Destroy all the SLI4 queues
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_queue_destroy.description`:
 
@@ -2907,8 +3071,9 @@ lpfc_sli4_queue_setup
 
     Set up all the SLI4 queues
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_queue_setup.description`:
 
@@ -2932,8 +3097,9 @@ lpfc_sli4_queue_unset
 
     Unset all the SLI4 queues
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_queue_unset.description`:
 
@@ -2957,8 +3123,9 @@ lpfc_sli4_cq_event_pool_create
 
     Create completion-queue event free pool
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_cq_event_pool_create.description`:
 
@@ -2991,8 +3158,9 @@ lpfc_sli4_cq_event_pool_destroy
 
     Free completion-queue event free pool
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_cq_event_pool_destroy.description`:
 
@@ -3014,8 +3182,9 @@ to destroy the pool.
 
     Allocate a completion-queue event from free pool
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`__lpfc_sli4_cq_event_alloc.description`:
 
@@ -3042,8 +3211,9 @@ lpfc_sli4_cq_event_alloc
 
     Allocate a completion-queue event from free pool
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_cq_event_alloc.description`:
 
@@ -3070,11 +3240,13 @@ NULL otherwise.
 
     Release a completion-queue event to free pool
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_cq_event \*cq_event:
+    :param cq_event:
         pointer to the completion queue event to be freed.
+    :type cq_event: struct lpfc_cq_event \*
 
 .. _`__lpfc_sli4_cq_event_release.description`:
 
@@ -3093,11 +3265,13 @@ lpfc_sli4_cq_event_release
 
     Release a completion-queue event to free pool
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_cq_event \*cq_event:
+    :param cq_event:
         pointer to the completion queue event to be freed.
+    :type cq_event: struct lpfc_cq_event \*
 
 .. _`lpfc_sli4_cq_event_release.description`:
 
@@ -3116,8 +3290,9 @@ lpfc_sli4_cq_event_release_all
 
     Release all cq events to the free pool
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_cq_event_release_all.description`:
 
@@ -3136,8 +3311,9 @@ lpfc_pci_function_reset
 
     Reset pci function.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_pci_function_reset.description`:
 
@@ -3161,8 +3337,9 @@ lpfc_sli4_pci_mem_setup
 
     Setup SLI4 HBA PCI memory space.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_pci_mem_setup.description`:
 
@@ -3185,8 +3362,9 @@ lpfc_sli4_pci_mem_unset
 
     Unset SLI4 HBA PCI memory space.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_pci_mem_unset.description`:
 
@@ -3205,8 +3383,9 @@ lpfc_sli_enable_msix
 
     Enable MSI-X interrupt mode on SLI-3 device
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_enable_msix.description`:
 
@@ -3229,8 +3408,9 @@ lpfc_sli_enable_msi
 
     Enable MSI interrupt mode on SLI-3 device.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_enable_msi.description`:
 
@@ -3256,11 +3436,13 @@ lpfc_sli_enable_intr
 
     Enable device interrupt to SLI-3 device.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t cfg_mode:
+    :param cfg_mode:
         *undescribed*
+    :type cfg_mode: uint32_t
 
 .. _`lpfc_sli_enable_intr.description`:
 
@@ -3288,8 +3470,9 @@ lpfc_sli_disable_intr
 
     Disable device interrupt to SLI-3 device.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_disable_intr.description`:
 
@@ -3310,11 +3493,13 @@ lpfc_cpu_affinity_check
 
     Check vector CPU affinity mappings
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param int vectors:
+    :param vectors:
         number of msix vectors allocated.
+    :type vectors: int
 
 .. _`lpfc_cpu_affinity_check.description`:
 
@@ -3338,8 +3523,9 @@ lpfc_sli4_enable_msix
 
     Enable MSI-X interrupt mode to SLI-4 device
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_enable_msix.description`:
 
@@ -3362,8 +3548,9 @@ lpfc_sli4_enable_msi
 
     Enable MSI interrupt mode to SLI-4 device
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_enable_msi.description`:
 
@@ -3389,11 +3576,13 @@ lpfc_sli4_enable_intr
 
     Enable device interrupt to SLI-4 device
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t cfg_mode:
+    :param cfg_mode:
         *undescribed*
+    :type cfg_mode: uint32_t
 
 .. _`lpfc_sli4_enable_intr.description`:
 
@@ -3426,8 +3615,9 @@ lpfc_sli4_disable_intr
 
     Disable device interrupt to SLI-4 device
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_disable_intr.description`:
 
@@ -3448,8 +3638,9 @@ lpfc_unset_hba
 
     Unset SLI3 hba device initialization
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_unset_hba.description`:
 
@@ -3468,8 +3659,9 @@ lpfc_sli4_xri_exchange_busy_wait
 
     Wait for device XRI exchange busy
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_xri_exchange_busy_wait.description`:
 
@@ -3494,8 +3686,9 @@ lpfc_sli4_hba_unset
 
     Unset the fcoe hba
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_hba_unset.description`:
 
@@ -3517,11 +3710,13 @@ lpfc_get_sli4_parameters
 
     Get the SLI4 Config PARAMETERS.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to HBA context object.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*mboxq:
+    :param mboxq:
         Pointer to the mailboxq memory for the mailbox command response.
+    :type mboxq: LPFC_MBOXQ_t \*
 
 .. _`lpfc_get_sli4_parameters.description`:
 
@@ -3544,11 +3739,13 @@ lpfc_pci_probe_one_s3
 
     PCI probe func to reg SLI-3 device to PCI subsystem.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*pid:
+    :param pid:
         pointer to PCI device identifier
+    :type pid: const struct pci_device_id \*
 
 .. _`lpfc_pci_probe_one_s3.description`:
 
@@ -3576,8 +3773,9 @@ lpfc_pci_remove_one_s3
 
     PCI func to unreg SLI-3 device from PCI subsystem.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_pci_remove_one_s3.description`:
 
@@ -3598,11 +3796,13 @@ lpfc_pci_suspend_one_s3
 
     PCI func to suspend SLI-3 device for power mgmnt
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t msg:
+    :param msg:
         power management message
+    :type msg: pm_message_t
 
 .. _`lpfc_pci_suspend_one_s3.description`:
 
@@ -3634,8 +3834,9 @@ lpfc_pci_resume_one_s3
 
     PCI func to resume SLI-3 device for power mgmnt
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_pci_resume_one_s3.description`:
 
@@ -3666,8 +3867,9 @@ lpfc_sli_prep_dev_for_recover
 
     Prepare SLI3 device for pci slot recover
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_prep_dev_for_recover.description`:
 
@@ -3686,8 +3888,9 @@ lpfc_sli_prep_dev_for_reset
 
     Prepare SLI3 device for pci slot reset
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_prep_dev_for_reset.description`:
 
@@ -3707,8 +3910,9 @@ lpfc_sli_prep_dev_for_perm_failure
 
     Prepare SLI3 dev for pci slot disable
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli_prep_dev_for_perm_failure.description`:
 
@@ -3728,11 +3932,13 @@ lpfc_io_error_detected_s3
 
     Method for handling SLI-3 device PCI I/O error
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device.
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         the current PCI connection state.
+    :type state: pci_channel_state_t
 
 .. _`lpfc_io_error_detected_s3.description`:
 
@@ -3761,8 +3967,9 @@ lpfc_io_slot_reset_s3
 
     Method for restarting PCI SLI-3 device from scratch.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device.
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_io_slot_reset_s3.description`:
 
@@ -3792,8 +3999,9 @@ lpfc_io_resume_s3
 
     Method for resuming PCI I/O operation on SLI-3 device.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_io_resume_s3.description`:
 
@@ -3815,8 +4023,9 @@ lpfc_sli4_get_els_iocb_cnt
 
     Calculate the # of ELS IOCBs to reserve
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_get_els_iocb_cnt.description`:
 
@@ -3834,8 +4043,9 @@ lpfc_sli4_get_iocb_cnt
 
     Calculate the # of total IOCBs to reserve
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_get_iocb_cnt.description`:
 
@@ -3853,11 +4063,13 @@ lpfc_write_firmware
 
     attempt to write a firmware image to the port
 
-    :param const struct firmware \*fw:
+    :param fw:
         pointer to firmware image returned from request_firmware.
+    :type fw: const struct firmware \*
 
-    :param void \*context:
+    :param context:
         *undescribed*
+    :type context: void \*
 
 .. _`lpfc_sli4_request_firmware_update`:
 
@@ -3868,11 +4080,13 @@ lpfc_sli4_request_firmware_update
 
     Request linux generic firmware upgrade
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint8_t fw_upgrade:
+    :param fw_upgrade:
         *undescribed*
+    :type fw_upgrade: uint8_t
 
 .. _`lpfc_sli4_request_firmware_update.description`:
 
@@ -3891,11 +4105,13 @@ lpfc_pci_probe_one_s4
 
     PCI probe func to reg SLI-4 device to PCI subsys
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*pid:
+    :param pid:
         pointer to PCI device identifier
+    :type pid: const struct pci_device_id \*
 
 .. _`lpfc_pci_probe_one_s4.description`:
 
@@ -3924,8 +4140,9 @@ lpfc_pci_remove_one_s4
 
     PCI func to unreg SLI-4 device from PCI subsystem
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_pci_remove_one_s4.description`:
 
@@ -3946,11 +4163,13 @@ lpfc_pci_suspend_one_s4
 
     PCI func to suspend SLI-4 device for power mgmnt
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t msg:
+    :param msg:
         power management message
+    :type msg: pm_message_t
 
 .. _`lpfc_pci_suspend_one_s4.description`:
 
@@ -3982,8 +4201,9 @@ lpfc_pci_resume_one_s4
 
     PCI func to resume SLI-4 device for power mgmnt
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_pci_resume_one_s4.description`:
 
@@ -4014,8 +4234,9 @@ lpfc_sli4_prep_dev_for_recover
 
     Prepare SLI4 device for pci slot recover
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_prep_dev_for_recover.description`:
 
@@ -4034,8 +4255,9 @@ lpfc_sli4_prep_dev_for_reset
 
     Prepare SLI4 device for pci slot reset
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_prep_dev_for_reset.description`:
 
@@ -4055,8 +4277,9 @@ lpfc_sli4_prep_dev_for_perm_failure
 
     Prepare SLI4 dev for pci slot disable
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_prep_dev_for_perm_failure.description`:
 
@@ -4076,11 +4299,13 @@ lpfc_io_error_detected_s4
 
     Method for handling PCI I/O error to SLI-4 device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device.
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         the current PCI connection state.
+    :type state: pci_channel_state_t
 
 .. _`lpfc_io_error_detected_s4.description`:
 
@@ -4107,8 +4332,9 @@ lpfc_io_slot_reset_s4
 
     Method for restart PCI SLI-4 device from scratch
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device.
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_io_slot_reset_s4.description`:
 
@@ -4138,8 +4364,9 @@ lpfc_io_resume_s4
 
     Method for resuming PCI I/O operation to SLI-4 device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_io_resume_s4.description`:
 
@@ -4161,11 +4388,13 @@ lpfc_pci_probe_one
 
     lpfc PCI probe func to reg dev to PCI subsystem
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*pid:
+    :param pid:
         pointer to PCI device identifier
+    :type pid: const struct pci_device_id \*
 
 .. _`lpfc_pci_probe_one.description`:
 
@@ -4194,8 +4423,9 @@ lpfc_pci_remove_one
 
     lpfc PCI func to unreg dev from PCI subsystem
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_pci_remove_one.description`:
 
@@ -4217,11 +4447,13 @@ lpfc_pci_suspend_one
 
     lpfc PCI func to suspend dev for power management
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t msg:
+    :param msg:
         power management message
+    :type msg: pm_message_t
 
 .. _`lpfc_pci_suspend_one.description`:
 
@@ -4246,8 +4478,9 @@ lpfc_pci_resume_one
 
     lpfc PCI func to resume dev for power management
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_pci_resume_one.description`:
 
@@ -4272,11 +4505,13 @@ lpfc_io_error_detected
 
     lpfc method for handling PCI I/O error
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device.
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         the current PCI connection state.
+    :type state: pci_channel_state_t
 
 .. _`lpfc_io_error_detected.description`:
 
@@ -4302,8 +4537,9 @@ lpfc_io_slot_reset
 
     lpfc method for restart PCI dev from scratch
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device.
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_io_slot_reset.description`:
 
@@ -4329,8 +4565,9 @@ lpfc_io_resume
 
     lpfc method for resuming PCI I/O operation
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`lpfc_io_resume.description`:
 
@@ -4352,8 +4589,9 @@ lpfc_sli4_oas_verify
 
     Verify OAS is supported by this adapter
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_sli4_oas_verify.description`:
 
@@ -4365,6 +4603,27 @@ supported, the configure Flash Optimized Fabric flag is set.  Otherwise,
 the enable oas flag is cleared and the pool created for OAS device data
 is destroyed.
 
+.. _`lpfc_sli4_ras_init`:
+
+lpfc_sli4_ras_init
+==================
+
+.. c:function:: void lpfc_sli4_ras_init(struct lpfc_hba *phba)
+
+    Verify RAS-FW log is supported by this adapter
+
+    :param phba:
+        pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
+
+.. _`lpfc_sli4_ras_init.description`:
+
+Description
+-----------
+
+This routine checks to see if RAS is supported by the adapter. Check the
+function through which RAS support enablement is to be done.
+
 .. _`lpfc_fof_queue_setup`:
 
 lpfc_fof_queue_setup
@@ -4374,8 +4633,9 @@ lpfc_fof_queue_setup
 
     Set up all the fof queues
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_fof_queue_setup.description`:
 
@@ -4398,8 +4658,9 @@ lpfc_fof_queue_create
 
     Create all the fof queues
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_fof_queue_create.description`:
 
@@ -4425,8 +4686,9 @@ lpfc_fof_queue_destroy
 
     Destroy all the fof queues
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_fof_queue_destroy.description`:
 
@@ -4448,8 +4710,9 @@ lpfc_init
 
     lpfc module initialization routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`lpfc_init.description`:
 
@@ -4474,8 +4737,9 @@ lpfc_exit
 
     lpfc module removal routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`lpfc_exit.description`:
 

@@ -10,11 +10,13 @@ scsi_host_set_state
 
     Take the given host through the host state model.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host to change the state of.
+    :type shost: struct Scsi_Host \*
 
-    :param enum scsi_host_state state:
+    :param state:
         state to change to.
+    :type state: enum scsi_host_state
 
 .. _`scsi_host_set_state.description`:
 
@@ -33,8 +35,9 @@ scsi_remove_host
 
     remove a scsi host
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         a pointer to a scsi host to remove
+    :type shost: struct Scsi_Host \*
 
 .. _`scsi_add_host_with_dma`:
 
@@ -45,14 +48,17 @@ scsi_add_host_with_dma
 
     add a scsi host with dma device
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host pointer to add
+    :type shost: struct Scsi_Host \*
 
-    :param struct device \*dev:
+    :param dev:
         a struct device of type scsi class
+    :type dev: struct device \*
 
-    :param struct device \*dma_dev:
+    :param dma_dev:
         dma device for the host
+    :type dma_dev: struct device \*
 
 .. _`scsi_add_host_with_dma.note`:
 
@@ -79,11 +85,13 @@ scsi_host_alloc
 
     register a scsi host adapter instance.
 
-    :param struct scsi_host_template \*sht:
+    :param sht:
         pointer to scsi host template
+    :type sht: struct scsi_host_template \*
 
-    :param int privsize:
+    :param privsize:
         extra bytes to allocate for driver
+    :type privsize: int
 
 .. _`scsi_host_alloc.note`:
 
@@ -110,8 +118,9 @@ scsi_host_lookup
 
     get a reference to a Scsi_Host by host no
 
-    :param unsigned short hostnum:
+    :param hostnum:
         host number to locate
+    :type hostnum: unsigned short
 
 .. _`scsi_host_lookup.return-value`:
 
@@ -133,8 +142,22 @@ scsi_host_get
 
     inc a Scsi_Host ref count
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to Scsi_Host to inc.
+    :type shost: struct Scsi_Host \*
+
+.. _`scsi_host_busy`:
+
+scsi_host_busy
+==============
+
+.. c:function:: int scsi_host_busy(struct Scsi_Host *shost)
+
+    Return the host busy counter
+
+    :param shost:
+        Pointer to Scsi_Host to inc.
+    :type shost: struct Scsi_Host \*
 
 .. _`scsi_host_put`:
 
@@ -145,8 +168,9 @@ scsi_host_put
 
     dec a Scsi_Host ref count
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to Scsi_Host to dec.
+    :type shost: struct Scsi_Host \*
 
 .. _`scsi_queue_work`:
 
@@ -157,11 +181,13 @@ scsi_queue_work
 
     Queue work to the Scsi_Host workqueue.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to Scsi_Host.
+    :type shost: struct Scsi_Host \*
 
-    :param struct work_struct \*work:
+    :param work:
         Work to queue for execution.
+    :type work: struct work_struct \*
 
 .. _`scsi_queue_work.return-value`:
 
@@ -181,8 +207,9 @@ scsi_flush_work
 
     Flush a Scsi_Host's workqueue.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         Pointer to Scsi_Host.
+    :type shost: struct Scsi_Host \*
 
 .. This file was automatic generated / don't edit.
 

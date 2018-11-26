@@ -94,11 +94,13 @@ zynqmp_gqspi_read
 
     For GQSPI controller read operation
 
-    :param struct zynqmp_qspi \*xqspi:
+    :param xqspi:
         Pointer to the zynqmp_qspi structure
+    :type xqspi: struct zynqmp_qspi \*
 
-    :param u32 offset:
+    :param offset:
         Offset from where to read
+    :type offset: u32
 
 .. _`zynqmp_gqspi_write`:
 
@@ -109,14 +111,17 @@ zynqmp_gqspi_write
 
     For GQSPI controller write operation
 
-    :param struct zynqmp_qspi \*xqspi:
+    :param xqspi:
         Pointer to the zynqmp_qspi structure
+    :type xqspi: struct zynqmp_qspi \*
 
-    :param u32 offset:
+    :param offset:
         Offset where to write
+    :type offset: u32
 
-    :param u32 val:
+    :param val:
         Value to be written
+    :type val: u32
 
 .. _`zynqmp_gqspi_selectslave`:
 
@@ -127,14 +132,17 @@ zynqmp_gqspi_selectslave
 
     For selection of slave device
 
-    :param struct zynqmp_qspi \*instanceptr:
+    :param instanceptr:
         Pointer to the zynqmp_qspi structure
+    :type instanceptr: struct zynqmp_qspi \*
 
-    :param u8 slavecs:
+    :param slavecs:
         *undescribed*
+    :type slavecs: u8
 
-    :param u8 slavebus:
+    :param slavebus:
         *undescribed*
+    :type slavebus: u8
 
 .. _`zynqmp_qspi_init_hw`:
 
@@ -145,8 +153,9 @@ zynqmp_qspi_init_hw
 
     Initialize the hardware
 
-    :param struct zynqmp_qspi \*xqspi:
+    :param xqspi:
         Pointer to the zynqmp_qspi structure
+    :type xqspi: struct zynqmp_qspi \*
 
 .. _`zynqmp_qspi_init_hw.description`:
 
@@ -176,14 +185,17 @@ zynqmp_qspi_copy_read_data
 
     Copy data to RX buffer
 
-    :param struct zynqmp_qspi \*xqspi:
+    :param xqspi:
         Pointer to the zynqmp_qspi structure
+    :type xqspi: struct zynqmp_qspi \*
 
-    :param ulong data:
+    :param data:
         The variable where data is stored
+    :type data: ulong
 
-    :param u8 size:
+    :param size:
         Number of bytes to be copied from data to RX buffer
+    :type size: u8
 
 .. _`zynqmp_prepare_transfer_hardware`:
 
@@ -194,9 +206,10 @@ zynqmp_prepare_transfer_hardware
 
     Prepares hardware for transfer.
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to the spi_master structure which provides
         information about the controller.
+    :type master: struct spi_master \*
 
 .. _`zynqmp_prepare_transfer_hardware.description`:
 
@@ -221,9 +234,10 @@ zynqmp_unprepare_transfer_hardware
 
     Relaxes hardware after transfer
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to the spi_master structure which provides
         information about the controller.
+    :type master: struct spi_master \*
 
 .. _`zynqmp_unprepare_transfer_hardware.description`:
 
@@ -248,11 +262,13 @@ zynqmp_qspi_chipselect
 
     Select or deselect the chip select line
 
-    :param struct spi_device \*qspi:
+    :param qspi:
         Pointer to the spi_device structure
+    :type qspi: struct spi_device \*
 
-    :param bool is_high:
+    :param is_high:
         Select(0) or deselect (1) the chip select line
+    :type is_high: bool
 
 .. _`zynqmp_qspi_setup_transfer`:
 
@@ -263,12 +279,14 @@ zynqmp_qspi_setup_transfer
 
     Configure QSPI controller for specified transfer
 
-    :param struct spi_device \*qspi:
+    :param qspi:
         Pointer to the spi_device structure
+    :type qspi: struct spi_device \*
 
-    :param struct spi_transfer \*transfer:
+    :param transfer:
         Pointer to the spi_transfer structure which provides
         information about next transfer setup parameters
+    :type transfer: struct spi_transfer \*
 
 .. _`zynqmp_qspi_setup_transfer.description`:
 
@@ -308,8 +326,9 @@ zynqmp_qspi_setup
 
     Configure the QSPI controller
 
-    :param struct spi_device \*qspi:
+    :param qspi:
         Pointer to the spi_device structure
+    :type qspi: struct spi_device \*
 
 .. _`zynqmp_qspi_setup.description`:
 
@@ -335,11 +354,13 @@ zynqmp_qspi_filltxfifo
 
     Fills the TX FIFO as long as there is room in the FIFO or the bytes required to be transmitted.
 
-    :param struct zynqmp_qspi \*xqspi:
+    :param xqspi:
         Pointer to the zynqmp_qspi structure
+    :type xqspi: struct zynqmp_qspi \*
 
-    :param int size:
+    :param size:
         Number of bytes to be copied from TX buffer to TX FIFO
+    :type size: int
 
 .. _`zynqmp_qspi_readrxfifo`:
 
@@ -350,11 +371,13 @@ zynqmp_qspi_readrxfifo
 
     Fills the RX FIFO as long as there is room in the FIFO.
 
-    :param struct zynqmp_qspi \*xqspi:
+    :param xqspi:
         Pointer to the zynqmp_qspi structure
+    :type xqspi: struct zynqmp_qspi \*
 
-    :param u32 size:
+    :param size:
         Number of bytes to be copied from RX buffer to RX FIFO
+    :type size: u32
 
 .. _`zynqmp_process_dma_irq`:
 
@@ -365,8 +388,9 @@ zynqmp_process_dma_irq
 
     Handler for DMA done interrupt of QSPI controller
 
-    :param struct zynqmp_qspi \*xqspi:
+    :param xqspi:
         zynqmp_qspi instance pointer
+    :type xqspi: struct zynqmp_qspi \*
 
 .. _`zynqmp_process_dma_irq.description`:
 
@@ -384,11 +408,13 @@ zynqmp_qspi_irq
 
     Interrupt service routine of the QSPI controller
 
-    :param int irq:
+    :param irq:
         IRQ number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to the xqspi structure
+    :type dev_id: void \*
 
 .. _`zynqmp_qspi_irq.description`:
 
@@ -416,11 +442,13 @@ zynqmp_qspi_selectspimode
 
     Selects SPI mode - x1 or x2 or x4.
 
-    :param struct zynqmp_qspi \*xqspi:
+    :param xqspi:
         xqspi is a pointer to the GQSPI instance
+    :type xqspi: struct zynqmp_qspi \*
 
-    :param u8 spimode:
+    :param spimode:
         spimode - SPI or DUAL or QUAD.
+    :type spimode: u8
 
 .. _`zynqmp_qspi_selectspimode.return`:
 
@@ -438,8 +466,9 @@ zynq_qspi_setuprxdma
 
     This function sets up the RX DMA operation
 
-    :param struct zynqmp_qspi \*xqspi:
+    :param xqspi:
         xqspi is a pointer to the GQSPI instance.
+    :type xqspi: struct zynqmp_qspi \*
 
 .. _`zynqmp_qspi_txrxsetup`:
 
@@ -450,15 +479,18 @@ zynqmp_qspi_txrxsetup
 
     This function checks the TX/RX buffers in the transfer and sets up the GENFIFO entries, TX FIFO as required.
 
-    :param struct zynqmp_qspi \*xqspi:
+    :param xqspi:
         xqspi is a pointer to the GQSPI instance.
+    :type xqspi: struct zynqmp_qspi \*
 
-    :param struct spi_transfer \*transfer:
+    :param transfer:
         It is a pointer to the structure containing transfer data.
+    :type transfer: struct spi_transfer \*
 
-    :param u32 \*genfifoentry:
+    :param genfifoentry:
         genfifoentry is pointer to the variable in which
         GENFIFO mask is returned to calling function
+    :type genfifoentry: u32 \*
 
 .. _`zynqmp_qspi_start_transfer`:
 
@@ -469,16 +501,19 @@ zynqmp_qspi_start_transfer
 
     Initiates the QSPI transfer
 
-    :param struct spi_master \*master:
+    :param master:
         Pointer to the spi_master structure which provides
         information about the controller.
+    :type master: struct spi_master \*
 
-    :param struct spi_device \*qspi:
+    :param qspi:
         Pointer to the spi_device structure
+    :type qspi: struct spi_device \*
 
-    :param struct spi_transfer \*transfer:
+    :param transfer:
         Pointer to the spi_transfer structure which provide information
         about next transfer parameters
+    :type transfer: struct spi_transfer \*
 
 .. _`zynqmp_qspi_start_transfer.description`:
 
@@ -504,8 +539,9 @@ zynqmp_qspi_suspend
 
     Suspend method for the QSPI driver
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`zynqmp_qspi_suspend.description`:
 
@@ -530,8 +566,9 @@ zynqmp_qspi_resume
 
     Resume method for the QSPI driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the platform_device structure
+    :type dev: struct device \*
 
 .. _`zynqmp_qspi_resume.description`:
 
@@ -557,8 +594,9 @@ zynqmp_runtime_suspend
 
     Runtime suspend method for the SPI driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the platform_device structure
+    :type dev: struct device \*
 
 .. _`zynqmp_runtime_suspend.description`:
 
@@ -583,8 +621,9 @@ zynqmp_runtime_resume
 
     Runtime resume method for the SPI driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the platform_device structure
+    :type dev: struct device \*
 
 .. _`zynqmp_runtime_resume.description`:
 
@@ -609,8 +648,9 @@ zynqmp_qspi_probe
 
     Probe method for the QSPI driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`zynqmp_qspi_probe.description`:
 
@@ -635,8 +675,9 @@ zynqmp_qspi_remove
 
     Remove method for the QSPI driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`zynqmp_qspi_remove.description`:
 

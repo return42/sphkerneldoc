@@ -58,11 +58,13 @@ omap4_enter_lowpower
 
     OMAP4 MPUSS Low Power Entry Function The purpose of this function is to manage low power programming of OMAP4 MPUSS subsystem
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU ID
+    :type cpu: unsigned int
 
-    :param unsigned int power_state:
+    :param power_state:
         Low power state.
+    :type power_state: unsigned int
 
 .. _`omap4_enter_lowpower.mpuss-states-for-the-context-save`:
 
@@ -84,11 +86,13 @@ omap4_hotplug_cpu
 
     OMAP4 CPU hotplug entry
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU ID
+    :type cpu: unsigned int
 
-    :param unsigned int power_state:
+    :param power_state:
         CPU low power state.
+    :type power_state: unsigned int
 
 .. This file was automatic generated / don't edit.
 

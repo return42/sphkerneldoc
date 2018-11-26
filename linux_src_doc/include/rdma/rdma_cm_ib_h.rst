@@ -10,11 +10,13 @@ rdma_set_ib_path
 
     Manually sets the path record used to establish a connection.
 
-    :param struct rdma_cm_id \*id:
+    :param id:
         Connection identifier associated with the request.
+    :type id: struct rdma_cm_id \*
 
-    :param struct sa_path_rec \*path_rec:
+    :param path_rec:
         Reference to the path record
+    :type path_rec: struct sa_path_rec \*
 
 .. _`rdma_set_ib_path.description`:
 

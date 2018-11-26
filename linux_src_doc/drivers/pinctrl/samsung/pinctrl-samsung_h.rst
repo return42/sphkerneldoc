@@ -450,10 +450,20 @@ eint_wkup_init
     interrupts for the controller.
 
 suspend
-    *undescribed*
+    platform specific suspend callback, executed during pin controller
+    device suspend, see \ :c:func:`samsung_pinctrl_suspend`\ 
 
 resume
-    *undescribed*
+    platform specific resume callback, executed during pin controller
+    device suspend, see \ :c:func:`samsung_pinctrl_resume`\ 
+
+.. _`samsung_pin_ctrl.description`:
+
+Description
+-----------
+
+External wakeup interrupts must define at least eint_wkup_init,
+retention_data and suspend in order for proper suspend/resume to work.
 
 .. _`samsung_pinctrl_drv_data`:
 
@@ -545,10 +555,12 @@ retention_ctrl
     retention control runtime data.
 
 suspend
-    *undescribed*
+    platform specific suspend callback, executed during pin controller
+    device suspend, see \ :c:func:`samsung_pinctrl_suspend`\ 
 
 resume
-    *undescribed*
+    platform specific resume callback, executed during pin controller
+    device suspend, see \ :c:func:`samsung_pinctrl_resume`\ 
 
 .. _`samsung_pinctrl_of_match_data`:
 

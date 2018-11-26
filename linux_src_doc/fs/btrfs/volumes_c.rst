@@ -10,11 +10,13 @@ alloc_profile_is_valid
 
     see if a given profile is valid and reduced
 
-    :param u64 flags:
+    :param flags:
         profile to validate
+    :type flags: u64
 
-    :param int extended:
+    :param extended:
         if true \ ``flags``\  is treated as an extended profile
+    :type extended: int
 
 .. _`btrfs_alloc_device`:
 
@@ -25,17 +27,20 @@ btrfs_alloc_device
 
     allocate struct btrfs_device
 
-    :param struct btrfs_fs_info \*fs_info:
+    :param fs_info:
         used only for generating a new devid, can be NULL if
         devid is provided (i.e. \ ``devid``\  != NULL).
+    :type fs_info: struct btrfs_fs_info \*
 
-    :param const u64 \*devid:
+    :param devid:
         a pointer to devid for this device.  If NULL a new devid
         is generated.
+    :type devid: const u64 \*
 
-    :param const u8 \*uuid:
+    :param uuid:
         a pointer to UUID for this device.  If NULL a new UUID
         is generated.
+    :type uuid: const u8 \*
 
 .. _`btrfs_alloc_device.return`:
 

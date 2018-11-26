@@ -10,17 +10,21 @@ iwl_parse_eeprom_data
 
     parse EEPROM data and return values
 
-    :param struct device \*dev:
+    :param dev:
         device pointer we're parsing for, for debug only
+    :type dev: struct device \*
 
-    :param const struct iwl_cfg \*cfg:
+    :param cfg:
         device configuration for parsing and overrides
+    :type cfg: const struct iwl_cfg \*
 
-    :param const u8 \*eeprom:
+    :param eeprom:
         the EEPROM data
+    :type eeprom: const u8 \*
 
-    :param size_t eeprom_size:
+    :param eeprom_size:
         length of the EEPROM data
+    :type eeprom_size: size_t
 
 .. _`iwl_parse_eeprom_data.description`:
 

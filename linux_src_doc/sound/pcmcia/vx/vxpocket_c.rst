@@ -10,14 +10,17 @@ snd_vxpocket_assign_resources
 
     initialize the hardware and card instance.
 
-    :param struct vx_core \*chip:
+    :param chip:
         VX core instance
+    :type chip: struct vx_core \*
 
-    :param int port:
+    :param port:
         i/o port for the card
+    :type port: int
 
-    :param int irq:
+    :param irq:
         irq number for the card
+    :type irq: int
 
 .. _`snd_vxpocket_assign_resources.description`:
 

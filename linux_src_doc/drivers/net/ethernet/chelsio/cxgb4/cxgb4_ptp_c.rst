@@ -10,8 +10,9 @@ cxgb4_ptp_is_ptp_tx
 
     determine whether TX packet is PTP or not
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb of outgoing ptp request
+    :type skb: struct sk_buff \*
 
 .. _`cxgb4_ptp_is_ptp_rx`:
 
@@ -22,8 +23,9 @@ cxgb4_ptp_is_ptp_rx
 
     determine whether RX packet is PTP or not
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb of incoming ptp request
+    :type skb: struct sk_buff \*
 
 .. _`cxgb4_ptp_read_hwstamp`:
 
@@ -34,11 +36,13 @@ cxgb4_ptp_read_hwstamp
 
     read timestamp for TX event PTP message
 
-    :param struct adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct adapter \*
 
-    :param struct port_info \*pi:
+    :param pi:
         port private structure
+    :type pi: struct port_info \*
 
 .. _`cxgb4_ptprx_timestamping`:
 
@@ -49,14 +53,17 @@ cxgb4_ptprx_timestamping
 
     Enable Timestamp for RX PTP event message
 
-    :param struct port_info \*pi:
+    :param pi:
         port private structure
+    :type pi: struct port_info \*
 
-    :param u8 port:
+    :param port:
         pot number
+    :type port: u8
 
-    :param u16 mode:
+    :param mode:
         RX mode
+    :type mode: u16
 
 .. _`cxgb4_ptp_fineadjtime`:
 
@@ -67,11 +74,13 @@ cxgb4_ptp_fineadjtime
 
     Shift the time of the hardware clock
 
-    :param struct adapter \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct adapter \*
 
-    :param s64 delta:
+    :param delta:
         Desired change in nanoseconds
+    :type delta: s64
 
 .. _`cxgb4_ptp_fineadjtime.description`:
 
@@ -89,11 +98,13 @@ cxgb4_ptp_adjtime
 
     Shift the time of the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param s64 delta:
+    :param delta:
         Desired change in nanoseconds
+    :type delta: s64
 
 .. _`cxgb4_ptp_adjtime.description`:
 
@@ -111,11 +122,13 @@ cxgb4_ptp_gettime
 
     Reads the current time from the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param struct timespec64 \*ts:
+    :param ts:
         timespec structure to hold the current time value
+    :type ts: struct timespec64 \*
 
 .. _`cxgb4_ptp_gettime.description`:
 
@@ -134,11 +147,13 @@ cxgb4_ptp_settime
 
     Set the current time on the hardware clock
 
-    :param struct ptp_clock_info \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info \*
 
-    :param const struct timespec64 \*ts:
+    :param ts:
         timespec containing the new time for the cycle counter
+    :type ts: const struct timespec64 \*
 
 .. _`cxgb4_ptp_settime.description`:
 
@@ -157,14 +172,17 @@ cxgb4_ptp_enable
 
     enable or disable an ancillary feature
 
-    :param struct ptp_clock_info __always_unused \*ptp:
+    :param ptp:
         ptp clock structure
+    :type ptp: struct ptp_clock_info __always_unused \*
 
-    :param struct ptp_clock_request __always_unused \*request:
+    :param request:
         Desired resource to enable or disable
+    :type request: struct ptp_clock_request __always_unused \*
 
-    :param int __always_unused on:
+    :param on:
         Caller passes one to enable or zero to disable
+    :type on: int __always_unused
 
 .. _`cxgb4_ptp_enable.description`:
 
@@ -183,8 +201,9 @@ cxgb4_ptp_init
 
     initialize PTP for devices which support it
 
-    :param struct adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct adapter \*
 
 .. _`cxgb4_ptp_init.description`:
 
@@ -202,8 +221,9 @@ cxgb4_ptp_stop
 
     disable PTP device and stop the overflow check
 
-    :param struct adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct adapter \*
 
 .. _`cxgb4_ptp_stop.description`:
 

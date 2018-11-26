@@ -8,17 +8,21 @@ i1480_usb_write
 
 .. c:function:: int i1480_usb_write(struct i1480 *i1480, u32 memory_address, const void *buffer, size_t size)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         i1480 instance
+    :type i1480: struct i1480 \*
 
-    :param u32 memory_address:
+    :param memory_address:
         Address where to write the data buffer to.
+    :type memory_address: u32
 
-    :param const void \*buffer:
+    :param buffer:
         Buffer to the data
+    :type buffer: const void \*
 
-    :param size_t size:
+    :param size:
         Size of the buffer [has to be < 512].
+    :type size: size_t
 
 .. _`i1480_usb_write.description`:
 
@@ -36,14 +40,17 @@ i1480_usb_read
 
 .. c:function:: int i1480_usb_read(struct i1480 *i1480, u32 addr, size_t size)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         i1480 instance
+    :type i1480: struct i1480 \*
 
-    :param u32 addr:
+    :param addr:
         *undescribed*
+    :type addr: u32
 
-    :param size_t size:
+    :param size:
         Size to read. Smaller than or equal to 512.
+    :type size: size_t
 
 .. _`i1480_usb_read.note`:
 
@@ -61,8 +68,9 @@ i1480_usb_neep_cb
 
 .. c:function:: void i1480_usb_neep_cb(struct urb *urb)
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`i1480_usb_neep_cb.description`:
 
@@ -78,8 +86,9 @@ i1480_usb_wait_init_done
 
 .. c:function:: int i1480_usb_wait_init_done(struct i1480 *i1480)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         *undescribed*
+    :type i1480: struct i1480 \*
 
 .. _`i1480_usb_wait_init_done.description`:
 
@@ -102,14 +111,17 @@ i1480_usb_cmd
 
 .. c:function:: int i1480_usb_cmd(struct i1480 *i1480, const char *cmd_name, size_t cmd_size)
 
-    :param struct i1480 \*i1480:
+    :param i1480:
         i1480 instance
+    :type i1480: struct i1480 \*
 
-    :param const char \*cmd_name:
+    :param cmd_name:
         Name of the command (for error messages)
+    :type cmd_name: const char \*
 
-    :param size_t cmd_size:
+    :param cmd_size:
         Size of the command buffer
+    :type cmd_size: size_t
 
 .. _`i1480_usb_cmd.description`:
 

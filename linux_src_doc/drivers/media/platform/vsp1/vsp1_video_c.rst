@@ -10,17 +10,21 @@ vsp1_video_calculate_partition
 
     Calculate the active partition output window
 
-    :param struct vsp1_pipeline \*pipe:
+    :param pipe:
         the pipeline
+    :type pipe: struct vsp1_pipeline \*
 
-    :param struct vsp1_partition \*partition:
+    :param partition:
         partition that will hold the calculated values
+    :type partition: struct vsp1_partition \*
 
-    :param unsigned int div_size:
+    :param div_size:
         pre-determined maximum partition division size
+    :type div_size: unsigned int
 
-    :param unsigned int index:
+    :param index:
         partition index
+    :type index: unsigned int
 
 .. This file was automatic generated / don't edit.
 

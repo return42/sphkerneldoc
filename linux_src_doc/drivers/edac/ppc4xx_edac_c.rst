@@ -10,11 +10,13 @@ mfsdram
 
     read and return controller register data
 
-    :param const dcr_host_t \*dcr_host:
+    :param dcr_host:
         A pointer to the DCR mapping.
+    :type dcr_host: const dcr_host_t \*
 
-    :param unsigned int idcr_n:
+    :param idcr_n:
         The indirect DCR register to read.
+    :type idcr_n: unsigned int
 
 .. _`mfsdram.description`:
 
@@ -35,14 +37,17 @@ mtsdram
 
     write controller register data
 
-    :param const dcr_host_t \*dcr_host:
+    :param dcr_host:
         A pointer to the DCR mapping.
+    :type dcr_host: const dcr_host_t \*
 
-    :param unsigned int idcr_n:
+    :param idcr_n:
         The indirect DCR register to write.
+    :type idcr_n: unsigned int
 
-    :param u32 value:
+    :param value:
         The data to write.
+    :type value: u32
 
 .. _`mtsdram.description`:
 
@@ -61,12 +66,14 @@ ppc4xx_edac_check_bank_error
 
     check a bank for an ECC bank error
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure to check for an
         ECC bank error.
+    :type status: const struct ppc4xx_ecc_status \*
 
-    :param unsigned int bank:
+    :param bank:
         The bank to check for an ECC error.
+    :type bank: unsigned int
 
 .. _`ppc4xx_edac_check_bank_error.description`:
 
@@ -88,20 +95,24 @@ ppc4xx_edac_generate_bank_message
 
     generate interpretted bank status message
 
-    :param const struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance associated
         with the bank message being generated.
+    :type mci: const struct mem_ctl_info \*
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure to generate the
         message from.
+    :type status: const struct ppc4xx_ecc_status \*
 
-    :param char \*buffer:
+    :param buffer:
         A pointer to the buffer in which to generate the
         message.
+    :type buffer: char \*
 
-    :param size_t size:
+    :param size:
         The size, in bytes, of space available in buffer.
+    :type size: size_t
 
 .. _`ppc4xx_edac_generate_bank_message.description`:
 
@@ -124,20 +135,24 @@ ppc4xx_edac_generate_checkbit_message
 
     generate interpretted checkbit message
 
-    :param const struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance associated
         with the checkbit message being generated.
+    :type mci: const struct mem_ctl_info \*
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure to generate the
         message from.
+    :type status: const struct ppc4xx_ecc_status \*
 
-    :param char \*buffer:
+    :param buffer:
         A pointer to the buffer in which to generate the
         message.
+    :type buffer: char \*
 
-    :param size_t size:
+    :param size:
         The size, in bytes, of space available in buffer.
+    :type size: size_t
 
 .. _`ppc4xx_edac_generate_checkbit_message.description`:
 
@@ -160,20 +175,24 @@ ppc4xx_edac_generate_lane_message
 
     generate interpretted byte lane message
 
-    :param const struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance associated
         with the byte lane message being generated.
+    :type mci: const struct mem_ctl_info \*
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure to generate the
         message from.
+    :type status: const struct ppc4xx_ecc_status \*
 
-    :param char \*buffer:
+    :param buffer:
         A pointer to the buffer in which to generate the
         message.
+    :type buffer: char \*
 
-    :param size_t size:
+    :param size:
         The size, in bytes, of space available in buffer.
+    :type size: size_t
 
 .. _`ppc4xx_edac_generate_lane_message.description`:
 
@@ -196,20 +215,24 @@ ppc4xx_edac_generate_ecc_message
 
     generate interpretted ECC status message
 
-    :param const struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance associated
         with the ECCES message being generated.
+    :type mci: const struct mem_ctl_info \*
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure to generate the
         message from.
+    :type status: const struct ppc4xx_ecc_status \*
 
-    :param char \*buffer:
+    :param buffer:
         A pointer to the buffer in which to generate the
         message.
+    :type buffer: char \*
 
-    :param size_t size:
+    :param size:
         The size, in bytes, of space available in buffer.
+    :type size: size_t
 
 .. _`ppc4xx_edac_generate_ecc_message.description`:
 
@@ -232,20 +255,24 @@ ppc4xx_edac_generate_plb_message
 
     generate interpretted PLB status message
 
-    :param const struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance associated
         with the PLB message being generated.
+    :type mci: const struct mem_ctl_info \*
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure to generate the
         message from.
+    :type status: const struct ppc4xx_ecc_status \*
 
-    :param char \*buffer:
+    :param buffer:
         A pointer to the buffer in which to generate the
         message.
+    :type buffer: char \*
 
-    :param size_t size:
+    :param size:
         The size, in bytes, of space available in buffer.
+    :type size: size_t
 
 .. _`ppc4xx_edac_generate_plb_message.description`:
 
@@ -268,20 +295,24 @@ ppc4xx_edac_generate_message
 
     generate interpretted status message
 
-    :param const struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance associated
         with the driver-unique message being generated.
+    :type mci: const struct mem_ctl_info \*
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure to generate the
         message from.
+    :type status: const struct ppc4xx_ecc_status \*
 
-    :param char \*buffer:
+    :param buffer:
         A pointer to the buffer in which to generate the
         message.
+    :type buffer: char \*
 
-    :param size_t size:
+    :param size:
         The size, in bytes, of space available in buffer.
+    :type size: size_t
 
 .. _`ppc4xx_edac_generate_message.description`:
 
@@ -300,13 +331,15 @@ ppc4xx_ecc_dump_status
 
     dump controller ECC status registers
 
-    :param const struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance
         associated with the status being dumped.
+    :type mci: const struct mem_ctl_info \*
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure to generate the
         dump from.
+    :type status: const struct ppc4xx_ecc_status \*
 
 .. _`ppc4xx_ecc_dump_status.description`:
 
@@ -325,13 +358,15 @@ ppc4xx_ecc_get_status
 
     get controller ECC status
 
-    :param const struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance
         associated with the status being retrieved.
+    :type mci: const struct mem_ctl_info \*
 
-    :param struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure to populate the
         ECC status with.
+    :type status: struct ppc4xx_ecc_status \*
 
 .. _`ppc4xx_ecc_get_status.description`:
 
@@ -353,13 +388,15 @@ ppc4xx_ecc_clear_status
 
     clear controller ECC status
 
-    :param const struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance
         associated with the status being cleared.
+    :type mci: const struct mem_ctl_info \*
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure containing the
         values to write to clear the ECC status.
+    :type status: const struct ppc4xx_ecc_status \*
 
 .. _`ppc4xx_ecc_clear_status.description`:
 
@@ -379,13 +416,15 @@ ppc4xx_edac_handle_ce
 
     handle controller correctable ECC error (CE)
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance
         associated with the correctable error being handled and reported.
+    :type mci: struct mem_ctl_info \*
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure associated with
         the correctable error being handled and reported.
+    :type status: const struct ppc4xx_ecc_status \*
 
 .. _`ppc4xx_edac_handle_ce.description`:
 
@@ -407,14 +446,16 @@ ppc4xx_edac_handle_ue
 
     handle controller uncorrectable ECC error (UE)
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance
         associated with the uncorrectable error being handled and
         reported.
+    :type mci: struct mem_ctl_info \*
 
-    :param const struct ppc4xx_ecc_status \*status:
+    :param status:
         A pointer to the ECC status structure associated with
         the uncorrectable error being handled and reported.
+    :type status: const struct ppc4xx_ecc_status \*
 
 .. _`ppc4xx_edac_handle_ue.description`:
 
@@ -433,10 +474,11 @@ ppc4xx_edac_check
 
     check controller for ECC errors
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance
         associated with the ibm,sdram-4xx-ddr2 controller being
         checked.
+    :type mci: struct mem_ctl_info \*
 
 .. _`ppc4xx_edac_check.description`:
 
@@ -456,12 +498,14 @@ ppc4xx_edac_isr
 
     SEC (CE) and DED (UE) interrupt service routine
 
-    :param int irq:
+    :param irq:
         The virtual interrupt number being serviced.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         A pointer to the EDAC memory controller instance
         associated with the interrupt being handled.
+    :type dev_id: void \*
 
 .. _`ppc4xx_edac_isr.description`:
 
@@ -484,10 +528,11 @@ ppc4xx_edac_get_dtype
 
     return the controller memory width
 
-    :param u32 mcopt1:
+    :param mcopt1:
         The 32-bit Memory Controller Option 1 register value
         currently set for the controller, from which the width
         is derived.
+    :type mcopt1: u32
 
 .. _`ppc4xx_edac_get_dtype.description`:
 
@@ -519,10 +564,11 @@ ppc4xx_edac_get_mtype
 
     return controller memory type
 
-    :param u32 mcopt1:
+    :param mcopt1:
         The 32-bit Memory Controller Option 1 register value
         currently set for the controller, from which the memory type
         is derived.
+    :type mcopt1: u32
 
 .. _`ppc4xx_edac_get_mtype.description`:
 
@@ -543,15 +589,17 @@ ppc4xx_edac_init_csrows
 
     initialize driver instance rows
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance
         associated with the ibm,sdram-4xx-ddr2 controller for which
         the csrows (i.e. banks/ranks) are being initialized.
+    :type mci: struct mem_ctl_info \*
 
-    :param u32 mcopt1:
+    :param mcopt1:
         The 32-bit Memory Controller Option 1 register value
         currently set for the controller, from which bank width
         and memory typ information is derived.
+    :type mcopt1: u32
 
 .. _`ppc4xx_edac_init_csrows.description`:
 
@@ -574,22 +622,26 @@ ppc4xx_edac_mc_init
 
     initialize driver instance
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance being
         initialized.
+    :type mci: struct mem_ctl_info \*
 
-    :param struct platform_device \*op:
+    :param op:
         A pointer to the OpenFirmware device tree node associated
         with the controller this EDAC instance is bound to.
+    :type op: struct platform_device \*
 
-    :param const dcr_host_t \*dcr_host:
+    :param dcr_host:
         A pointer to the DCR data containing the DCR mapping
         for this controller instance.
+    :type dcr_host: const dcr_host_t \*
 
-    :param u32 mcopt1:
+    :param mcopt1:
         The 32-bit Memory Controller Option 1 register value
         currently set for the controller, from which ECC capabilities
         and scrub mode are derived.
+    :type mcopt1: u32
 
 .. _`ppc4xx_edac_mc_init.description`:
 
@@ -611,14 +663,16 @@ ppc4xx_edac_register_irq
 
     setup and register controller interrupts
 
-    :param struct platform_device \*op:
+    :param op:
         A pointer to the OpenFirmware device tree node associated
         with the controller this EDAC instance is bound to.
+    :type op: struct platform_device \*
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         A pointer to the EDAC memory controller instance
         associated with the ibm,sdram-4xx-ddr2 controller for which
         interrupts are being registered.
+    :type mci: struct mem_ctl_info \*
 
 .. _`ppc4xx_edac_register_irq.description`:
 
@@ -641,13 +695,15 @@ ppc4xx_edac_map_dcrs
 
     locate and map controller registers
 
-    :param const struct device_node \*np:
+    :param np:
         A pointer to the device tree node containing the DCR
         resources to map.
+    :type np: const struct device_node \*
 
-    :param dcr_host_t \*dcr_host:
+    :param dcr_host:
         A pointer to the DCR data to populate with the
         DCR mapping.
+    :type dcr_host: dcr_host_t \*
 
 .. _`ppc4xx_edac_map_dcrs.description`:
 
@@ -670,9 +726,10 @@ ppc4xx_edac_probe
 
     check controller and bind driver
 
-    :param struct platform_device \*op:
+    :param op:
         A pointer to the OpenFirmware device tree node associated
         with the controller being probed for driver binding.
+    :type op: struct platform_device \*
 
 .. _`ppc4xx_edac_probe.description`:
 
@@ -694,10 +751,11 @@ ppc4xx_edac_remove
 
     unbind driver from controller
 
-    :param struct platform_device \*op:
+    :param op:
         A pointer to the OpenFirmware device tree node associated
         with the controller this EDAC instance is to be unbound/removed
         from.
+    :type op: struct platform_device \*
 
 .. _`ppc4xx_edac_remove.description`:
 
@@ -719,8 +777,9 @@ ppc4xx_edac_opstate_init
 
     initialize EDAC reporting method
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ppc4xx_edac_opstate_init.description`:
 
@@ -742,8 +801,9 @@ ppc4xx_edac_init
 
     driver/module insertion entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ppc4xx_edac_init.description`:
 
@@ -764,8 +824,9 @@ ppc4xx_edac_exit
 
     driver/module removal entry point
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ppc4xx_edac_exit.description`:
 

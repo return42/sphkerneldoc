@@ -10,8 +10,9 @@ st_get_plat_device
 
     function which returns the reference to the platform device requested by id. As of now only 1 such device exists (id=0) the context requesting for reference can get the id to be requested by a. The protocol driver which is registering or b. the tty device which is opened.
 
-    :param int id:
+    :param id:
         *undescribed*
+    :type id: int
 
 .. _`validate_firmware_response`:
 
@@ -22,8 +23,9 @@ validate_firmware_response
 
     function to return whether the firmware response was proper in case of error don't complete so that waiting for proper response times out
 
-    :param struct kim_data_s \*kim_gdata:
+    :param kim_gdata:
         *undescribed*
+    :type kim_gdata: struct kim_data_s \*
 
 .. _`kim_int_recv`:
 
@@ -34,14 +36,17 @@ kim_int_recv
 
     receive function called during firmware download firmware download responses on different UART drivers have been observed to come in bursts of different tty_receive and hence the logic
 
-    :param struct kim_data_s \*kim_gdata:
+    :param kim_gdata:
         *undescribed*
+    :type kim_gdata: struct kim_data_s \*
 
-    :param const unsigned char \*data:
+    :param data:
         *undescribed*
+    :type data: const unsigned char \*
 
-    :param long count:
+    :param count:
         *undescribed*
+    :type count: long
 
 .. _`download_firmware`:
 
@@ -52,8 +57,9 @@ download_firmware
 
     internal function which parses through the .bts firmware script file intreprets SEND, DELAY actions only as of now
 
-    :param struct kim_data_s \*kim_gdata:
+    :param kim_gdata:
         *undescribed*
+    :type kim_gdata: struct kim_data_s \*
 
 .. _`st_kim_start`:
 
@@ -64,8 +70,9 @@ st_kim_start
 
     called from ST Core upon 1st registration This involves toggling the chip enable gpio, reading the firmware version from chip, forming the fw file name based on the chip version, requesting the fw, parsing it and perform download(send/recv).
 
-    :param void \*kim_data:
+    :param kim_data:
         *undescribed*
+    :type kim_data: void \*
 
 .. _`st_kim_stop`:
 
@@ -76,8 +83,9 @@ st_kim_stop
 
     stop communication with chip. This can be called from ST Core/KIM, on the- (a) last un-register when chip need not be powered there-after, (b) upon failure to either install ldisc or download firmware. The function is responsible to (a) notify UIM about un-installation, (b) flush UART if the ldisc was installed. (c) reset BT_EN - pull down nshutdown at the end. (d) invoke platform's chip disabling routine.
 
-    :param void \*kim_data:
+    :param kim_data:
         *undescribed*
+    :type kim_data: void \*
 
 .. _`st_kim_ref`:
 
@@ -88,11 +96,13 @@ st_kim_ref
 
     reference the core's data This references the per-ST platform device in the arch/xx/ board-xx.c file. This would enable multiple such platform devices to exist on a given platform
 
-    :param struct st_data_s \*\*core_data:
+    :param core_data:
         *undescribed*
+    :type core_data: struct st_data_s \*\*
 
-    :param int id:
+    :param id:
         *undescribed*
+    :type id: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ atiixp_set_pio_mode
 
     set host controller for PIO mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`atiixp_set_pio_mode.description`:
 
@@ -32,11 +34,13 @@ atiixp_set_dma_mode
 
     set host controller for DMA mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`atiixp_set_dma_mode.description`:
 
@@ -55,11 +59,13 @@ atiixp_init_one
 
     called when a ATIIXP is found
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the atiixp device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         the matching pci id
+    :type id: const struct pci_device_id \*
 
 .. _`atiixp_init_one.description`:
 

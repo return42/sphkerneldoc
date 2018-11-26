@@ -10,20 +10,25 @@ timing_setup
 
     shared timing computation and load
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port being set up
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         drive being configured
+    :type adev: struct ata_device \*
 
-    :param int offset:
+    :param offset:
         port offset
+    :type offset: int
 
-    :param int speed:
+    :param speed:
         target speed
+    :type speed: int
 
-    :param int clock:
+    :param clock:
         clock multiplier (number of times 33MHz for this part)
+    :type clock: int
 
 .. _`timing_setup.description`:
 
@@ -44,11 +49,13 @@ amd_pre_reset
 
     perform reset handling
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`amd_pre_reset.description`:
 
@@ -67,8 +74,9 @@ amd_cable_detect
 
     report cable type
 
-    :param struct ata_port \*ap:
+    :param ap:
         port
+    :type ap: struct ata_port \*
 
 .. _`amd_cable_detect.description`:
 
@@ -86,8 +94,9 @@ amd_fifo_setup
 
     set the PIO FIFO for ATA/ATAPI
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
 .. _`amd_fifo_setup.description`:
 
@@ -108,11 +117,13 @@ amd33_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`amd33_set_piomode.description`:
 
@@ -130,11 +141,13 @@ amd33_set_dmamode
 
     set initial DMA mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`amd33_set_dmamode.description`:
 
@@ -153,11 +166,13 @@ nv_pre_reset
 
     cable detection
 
-    :param struct ata_link \*link:
+    :param link:
         *undescribed*
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         *undescribed*
+    :type deadline: unsigned long
 
 .. _`nv_pre_reset.description`:
 
@@ -176,11 +191,13 @@ nv100_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`nv100_set_piomode.description`:
 
@@ -198,11 +215,13 @@ nv100_set_dmamode
 
     set initial DMA mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`nv100_set_dmamode.description`:
 

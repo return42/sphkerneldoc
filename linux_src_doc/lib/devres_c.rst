@@ -10,14 +10,17 @@ devm_ioremap
 
     Managed \ :c:func:`ioremap`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Generic device to remap IO address for
+    :type dev: struct device \*
 
-    :param resource_size_t offset:
+    :param offset:
         Resource address to map
+    :type offset: resource_size_t
 
-    :param resource_size_t size:
+    :param size:
         Size of map
+    :type size: resource_size_t
 
 .. _`devm_ioremap.description`:
 
@@ -35,14 +38,17 @@ devm_ioremap_nocache
 
     Managed \ :c:func:`ioremap_nocache`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Generic device to remap IO address for
+    :type dev: struct device \*
 
-    :param resource_size_t offset:
+    :param offset:
         Resource address to map
+    :type offset: resource_size_t
 
-    :param resource_size_t size:
+    :param size:
         Size of map
+    :type size: resource_size_t
 
 .. _`devm_ioremap_nocache.description`:
 
@@ -61,14 +67,17 @@ devm_ioremap_wc
 
     Managed \ :c:func:`ioremap_wc`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Generic device to remap IO address for
+    :type dev: struct device \*
 
-    :param resource_size_t offset:
+    :param offset:
         Resource address to map
+    :type offset: resource_size_t
 
-    :param resource_size_t size:
+    :param size:
         Size of map
+    :type size: resource_size_t
 
 .. _`devm_ioremap_wc.description`:
 
@@ -86,11 +95,13 @@ devm_iounmap
 
     Managed \ :c:func:`iounmap`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Generic device to unmap for
+    :type dev: struct device \*
 
-    :param void __iomem \*addr:
+    :param addr:
         Address to unmap
+    :type addr: void __iomem \*
 
 .. _`devm_iounmap.description`:
 
@@ -108,11 +119,13 @@ devm_ioremap_resource
 
     check, request region, and ioremap resource
 
-    :param struct device \*dev:
+    :param dev:
         generic device to handle the resource for
+    :type dev: struct device \*
 
-    :param struct resource \*res:
+    :param res:
         resource to be handled
+    :type res: struct resource \*
 
 .. _`devm_ioremap_resource.description`:
 
@@ -140,14 +153,17 @@ devm_ioport_map
 
     Managed \ :c:func:`ioport_map`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Generic device to map ioport for
+    :type dev: struct device \*
 
-    :param unsigned long port:
+    :param port:
         Port to map
+    :type port: unsigned long
 
-    :param unsigned int nr:
+    :param nr:
         Number of ports to map
+    :type nr: unsigned int
 
 .. _`devm_ioport_map.description`:
 
@@ -166,11 +182,13 @@ devm_ioport_unmap
 
     Managed \ :c:func:`ioport_unmap`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Generic device to unmap for
+    :type dev: struct device \*
 
-    :param void __iomem \*addr:
+    :param addr:
         Address to unmap
+    :type addr: void __iomem \*
 
 .. _`devm_ioport_unmap.description`:
 
@@ -189,8 +207,9 @@ pcim_iomap_table
 
     access iomap allocation table
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to access iomap table for
+    :type pdev: struct pci_dev \*
 
 .. _`pcim_iomap_table.description`:
 
@@ -215,14 +234,17 @@ pcim_iomap
 
     Managed \ :c:func:`pcim_iomap`\ 
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to iomap for
+    :type pdev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR to iomap
+    :type bar: int
 
-    :param unsigned long maxlen:
+    :param maxlen:
         Maximum length of iomap
+    :type maxlen: unsigned long
 
 .. _`pcim_iomap.description`:
 
@@ -241,11 +263,13 @@ pcim_iounmap
 
     Managed \ :c:func:`pci_iounmap`\ 
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to iounmap for
+    :type pdev: struct pci_dev \*
 
-    :param void __iomem \*addr:
+    :param addr:
         Address to unmap
+    :type addr: void __iomem \*
 
 .. _`pcim_iounmap.description`:
 
@@ -263,14 +287,17 @@ pcim_iomap_regions
 
     Request and iomap PCI BARs
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to map IO resources for
+    :type pdev: struct pci_dev \*
 
-    :param int mask:
+    :param mask:
         Mask of BARs to request and iomap
+    :type mask: int
 
-    :param const char \*name:
+    :param name:
         Name used when requesting regions
+    :type name: const char \*
 
 .. _`pcim_iomap_regions.description`:
 
@@ -288,14 +315,17 @@ pcim_iomap_regions_request_all
 
     Request all BARs and iomap specified ones
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to map IO resources for
+    :type pdev: struct pci_dev \*
 
-    :param int mask:
+    :param mask:
         Mask of BARs to iomap
+    :type mask: int
 
-    :param const char \*name:
+    :param name:
         Name used when requesting regions
+    :type name: const char \*
 
 .. _`pcim_iomap_regions_request_all.description`:
 
@@ -313,11 +343,13 @@ pcim_iounmap_regions
 
     Unmap and release PCI BARs
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to map IO resources for
+    :type pdev: struct pci_dev \*
 
-    :param int mask:
+    :param mask:
         Mask of BARs to unmap and release
+    :type mask: int
 
 .. _`pcim_iounmap_regions.description`:
 

@@ -10,23 +10,29 @@ audit_resource
 
     audit setting resource limit
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile being enforced  (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param unsigned int resource:
+    :param resource:
         rlimit being auditing
+    :type resource: unsigned int
 
-    :param unsigned long value:
+    :param value:
         value being set
+    :type value: unsigned long
 
-    :param struct aa_label \*peer:
+    :param peer:
         *undescribed*
+    :type peer: struct aa_label \*
 
-    :param const char \*info:
+    :param info:
         *undescribed*
+    :type info: const char \*
 
-    :param int error:
+    :param error:
         error value
+    :type error: int
 
 .. _`audit_resource.return`:
 
@@ -44,8 +50,9 @@ aa_map_resource
 
     map compiled policy resource to internal #
 
-    :param int resource:
+    :param resource:
         flattened policy resource number
+    :type resource: int
 
 .. _`aa_map_resource.return`:
 
@@ -66,17 +73,21 @@ aa_task_setrlimit
 
     test permission to set an rlimit \ ``label``\  - label confining the task  (NOT NULL) \ ``task``\  - task the resource is being set on \ ``resource``\  - the resource being set \ ``new_rlim``\  - the new resource limit  (NOT NULL)
 
-    :param struct aa_label \*label:
+    :param label:
         *undescribed*
+    :type label: struct aa_label \*
 
-    :param struct task_struct \*task:
+    :param task:
         *undescribed*
+    :type task: struct task_struct \*
 
-    :param unsigned int resource:
+    :param resource:
         *undescribed*
+    :type resource: unsigned int
 
-    :param struct rlimit \*new_rlim:
+    :param new_rlim:
         *undescribed*
+    :type new_rlim: struct rlimit \*
 
 .. _`aa_task_setrlimit.description`:
 
@@ -101,11 +112,13 @@ Return
 
     apply new profile rlimits
 
-    :param struct aa_label \*old_l:
+    :param old_l:
         old label on task  (NOT NULL)
+    :type old_l: struct aa_label \*
 
-    :param struct aa_label \*new_l:
+    :param new_l:
         new label with rlimits to apply  (NOT NULL)
+    :type new_l: struct aa_label \*
 
 .. This file was automatic generated / don't edit.
 

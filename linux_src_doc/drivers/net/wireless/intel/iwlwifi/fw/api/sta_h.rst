@@ -742,7 +742,7 @@ rx_ba_window
     aggregation window size
 
 sp_length
-    the size of the SP as it appears in the WME IE
+    the size of the SP in actual number of frames
 
 uapsd_acs
     4 LS bits are trigger enabled ACs, 4 MS bits are the deliver

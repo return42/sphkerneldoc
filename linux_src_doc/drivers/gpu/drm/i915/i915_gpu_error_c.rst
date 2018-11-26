@@ -10,14 +10,17 @@ i915_capture_error_state
 
     capture an error record for later analysis
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         i915 device
+    :type i915: struct drm_i915_private \*
 
-    :param u32 engine_mask:
+    :param engine_mask:
         the mask of engines triggering the hang
+    :type engine_mask: u32
 
-    :param const char \*error_msg:
+    :param error_msg:
         a message to insert into the error capture header
+    :type error_msg: const char \*
 
 .. _`i915_capture_error_state.description`:
 

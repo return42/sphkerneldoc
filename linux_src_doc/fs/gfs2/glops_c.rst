@@ -10,14 +10,17 @@
 
     remove all buffers for a given lock from the AIL
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param bool fsync:
+    :param fsync:
         set when called from fsync (not all buffers will be clean)
+    :type fsync: bool
 
-    :param unsigned int nr_revokes:
+    :param nr_revokes:
         *undescribed*
+    :type nr_revokes: unsigned int
 
 .. _`__gfs2_ail_flush.description`:
 
@@ -35,8 +38,9 @@ rgrp_go_sync
 
     sync out the metadata for this glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
 .. _`rgrp_go_sync.description`:
 
@@ -56,11 +60,13 @@ rgrp_go_inval
 
     invalidate the metadata for this glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`rgrp_go_inval.description`:
 
@@ -79,8 +85,9 @@ inode_go_sync
 
     Sync the dirty data and/or metadata for an inode glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock protecting the inode
+    :type gl: struct gfs2_glock \*
 
 .. _`inode_go_inval`:
 
@@ -91,11 +98,13 @@ inode_go_inval
 
     prepare a inode glock to be released
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`inode_go_inval.description`:
 
@@ -115,8 +124,9 @@ inode_go_demote_ok
 
     Check to see if it's ok to unlock an inode glock
 
-    :param const struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: const struct gfs2_glock \*
 
 .. _`inode_go_demote_ok.return`:
 
@@ -134,8 +144,9 @@ gfs2_inode_refresh
 
     Refresh the incore copy of the dinode
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The GFS2 inode
+    :type ip: struct gfs2_inode \*
 
 .. _`gfs2_inode_refresh.return`:
 
@@ -153,8 +164,9 @@ inode_go_lock
 
     operation done after an inode lock is locked by a process
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         *undescribed*
+    :type gh: struct gfs2_holder \*
 
 .. _`inode_go_lock.return`:
 
@@ -172,11 +184,13 @@ inode_go_dump
 
     print information about an inode
 
-    :param struct seq_file \*seq:
+    :param seq:
         The iterator
+    :type seq: struct seq_file \*
 
-    :param const struct gfs2_glock \*gl:
+    :param gl:
         *undescribed*
+    :type gl: const struct gfs2_glock \*
 
 .. _`freeze_go_sync`:
 
@@ -187,8 +201,9 @@ freeze_go_sync
 
     promote/demote the freeze glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
 .. _`freeze_go_xmote_bh`:
 
@@ -199,11 +214,13 @@ freeze_go_xmote_bh
 
     After promoting/demoting the freeze glock
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         *undescribed*
+    :type gh: struct gfs2_holder \*
 
 .. _`freeze_go_demote_ok`:
 
@@ -212,8 +229,9 @@ freeze_go_demote_ok
 
 .. c:function:: int freeze_go_demote_ok(const struct gfs2_glock *gl)
 
-    :param const struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: const struct gfs2_glock \*
 
 .. _`freeze_go_demote_ok.description`:
 
@@ -231,11 +249,13 @@ iopen_go_callback
 
     schedule the dcache entry for the inode to be deleted
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         the glock
+    :type gl: struct gfs2_glock \*
 
-    :param bool remote:
+    :param remote:
         *undescribed*
+    :type remote: bool
 
 .. _`iopen_go_callback.description`:
 

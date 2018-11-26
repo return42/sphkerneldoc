@@ -10,14 +10,17 @@ octeon_droq_process_poll_pkts
 
     called before calling this routine.
 
-    :param struct octeon_device \*oct:
+    :param oct:
         *undescribed*
+    :type oct: struct octeon_device \*
 
-    :param struct octeon_droq \*droq:
+    :param droq:
         *undescribed*
+    :type droq: struct octeon_droq \*
 
-    :param u32 budget:
+    :param budget:
         *undescribed*
+    :type budget: u32
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ ccw_device_set_offline
 
     disable a ccw device for I/O
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         target ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_set_offline.description`:
 
@@ -44,8 +45,9 @@ ccw_device_set_online
 
     enable a ccw device for I/O
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         target ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_set_online.description`:
 
@@ -79,8 +81,9 @@ get_ccwdev_by_dev_id
 
     obtain device from a ccw device id
 
-    :param struct ccw_dev_id \*dev_id:
+    :param dev_id:
         id of the device to be searched
+    :type dev_id: struct ccw_dev_id \*
 
 .. _`get_ccwdev_by_dev_id.description`:
 
@@ -107,8 +110,9 @@ ccw_purge_blacklisted
 
     purge unused, blacklisted devices
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ccw_purge_blacklisted.description`:
 
@@ -126,11 +130,13 @@ io_subchannel_sch_event
 
     process subchannel event
 
-    :param struct subchannel \*sch:
+    :param sch:
         subchannel
+    :type sch: struct subchannel \*
 
-    :param int process:
+    :param process:
         non-zero if function is called in process context
+    :type process: int
 
 .. _`io_subchannel_sch_event.description`:
 
@@ -151,8 +157,9 @@ ccw_device_wait_idle
 
     busy wait for device to become idle
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_wait_idle.description`:
 
@@ -172,11 +179,13 @@ get_ccwdev_by_busid
 
     obtain device from a bus id
 
-    :param struct ccw_driver \*cdrv:
+    :param cdrv:
         driver the device is owned by
+    :type cdrv: struct ccw_driver \*
 
-    :param const char \*bus_id:
+    :param bus_id:
         bus id of the device to be searched
+    :type bus_id: const char \*
 
 .. _`get_ccwdev_by_busid.description`:
 
@@ -203,8 +212,9 @@ ccw_driver_register
 
     register a ccw driver
 
-    :param struct ccw_driver \*cdriver:
+    :param cdriver:
         driver to be registered
+    :type cdriver: struct ccw_driver \*
 
 .. _`ccw_driver_register.description`:
 
@@ -229,8 +239,9 @@ ccw_driver_unregister
 
     deregister a ccw driver
 
-    :param struct ccw_driver \*cdriver:
+    :param cdriver:
         driver to be deregistered
+    :type cdriver: struct ccw_driver \*
 
 .. _`ccw_driver_unregister.description`:
 
@@ -248,11 +259,13 @@ ccw_device_sched_todo
 
     schedule ccw device operation
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
-    :param enum cdev_todo todo:
+    :param todo:
         todo
+    :type todo: enum cdev_todo
 
 .. _`ccw_device_sched_todo.description`:
 
@@ -272,8 +285,9 @@ ccw_device_siosl
 
     initiate logging
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         ccw device
+    :type cdev: struct ccw_device \*
 
 .. _`ccw_device_siosl.description`:
 

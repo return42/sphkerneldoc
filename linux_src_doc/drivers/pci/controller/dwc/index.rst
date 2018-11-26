@@ -7,6 +7,5 @@ dwc
 .. toctree::
     :maxdepth: 1
 
-    pci-keystone-dw_c
     pci-keystone_c
     pcie-designware-ep_c

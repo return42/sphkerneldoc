@@ -10,14 +10,17 @@ avc_dump_av
 
     Display an access vector in human-readable form.
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         *undescribed*
+    :type ab: struct audit_buffer \*
 
-    :param u16 tclass:
+    :param tclass:
         target security class
+    :type tclass: u16
 
-    :param u32 av:
+    :param av:
         access vector
+    :type av: u32
 
 .. _`avc_dump_query`:
 
@@ -28,20 +31,25 @@ avc_dump_query
 
     Display a SID pair and a class in human-readable form.
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         *undescribed*
+    :type ab: struct audit_buffer \*
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 ssid:
+    :param ssid:
         source security identifier
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         target security identifier
+    :type tsid: u32
 
-    :param u16 tclass:
+    :param tclass:
         target security class
+    :type tclass: u16
 
 .. _`avc_init`:
 
@@ -52,8 +60,9 @@ avc_init
 
     Initialize the AVC.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`avc_init.description`:
 
@@ -71,17 +80,21 @@ avc_lookup
 
     Look up an AVC entry.
 
-    :param struct selinux_avc \*avc:
+    :param avc:
         *undescribed*
+    :type avc: struct selinux_avc \*
 
-    :param u32 ssid:
+    :param ssid:
         source security identifier
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         target security identifier
+    :type tsid: u32
 
-    :param u16 tclass:
+    :param tclass:
         target security class
+    :type tclass: u16
 
 .. _`avc_lookup.description`:
 
@@ -103,23 +116,29 @@ avc_insert
 
     Insert an AVC entry.
 
-    :param struct selinux_avc \*avc:
+    :param avc:
         *undescribed*
+    :type avc: struct selinux_avc \*
 
-    :param u32 ssid:
+    :param ssid:
         source security identifier
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         target security identifier
+    :type tsid: u32
 
-    :param u16 tclass:
+    :param tclass:
         target security class
+    :type tclass: u16
 
-    :param struct av_decision \*avd:
+    :param avd:
         resulting av decision
+    :type avd: struct av_decision \*
 
-    :param struct avc_xperms_node \*xp_node:
+    :param xp_node:
         resulting extended permissions
+    :type xp_node: struct avc_xperms_node \*
 
 .. _`avc_insert.description`:
 
@@ -131,7 +150,7 @@ Insert an AVC entry for the SID pair
 The access vectors and the sequence number are
 normally provided by the security server in
 response to a \ :c:func:`security_compute_av`\  call.  If the
-sequence number \ ``avd``\ ->seqno is not less than the latest
+sequence number \ ``avd->seqno``\  is not less than the latest
 revocation notification, then the function copies
 the access vectors into a cache entry, returns
 avc_node inserted. Otherwise, this function returns NULL.
@@ -145,11 +164,13 @@ avc_audit_pre_callback
 
     SELinux specific information will be called by generic audit code
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         the audit buffer
+    :type ab: struct audit_buffer \*
 
-    :param void \*a:
+    :param a:
         audit_data
+    :type a: void \*
 
 .. _`avc_audit_post_callback`:
 
@@ -160,11 +181,13 @@ avc_audit_post_callback
 
     SELinux specific information will be called by generic audit code
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         the audit buffer
+    :type ab: struct audit_buffer \*
 
-    :param void \*a:
+    :param a:
         audit_data
+    :type a: void \*
 
 .. _`avc_add_callback`:
 
@@ -178,8 +201,9 @@ avc_add_callback
     :param int (\*callback)(u32 event):
         callback function
 
-    :param u32 events:
+    :param events:
         security events
+    :type events: u32
 
 .. _`avc_add_callback.description`:
 
@@ -197,38 +221,49 @@ avc_update_node
 
 .. c:function:: int avc_update_node(struct selinux_avc *avc, u32 event, u32 perms, u8 driver, u8 xperm, u32 ssid, u32 tsid, u16 tclass, u32 seqno, struct extended_perms_decision *xpd, u32 flags)
 
-    :param struct selinux_avc \*avc:
+    :param avc:
         *undescribed*
+    :type avc: struct selinux_avc \*
 
-    :param u32 event:
+    :param event:
         Updating event
+    :type event: u32
 
-    :param u32 perms:
+    :param perms:
         Permission mask bits
+    :type perms: u32
 
-    :param u8 driver:
+    :param driver:
         *undescribed*
+    :type driver: u8
 
-    :param u8 xperm:
+    :param xperm:
         *undescribed*
+    :type xperm: u8
 
-    :param u32 ssid:
+    :param ssid:
         identifier of an AVC entry
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         *undescribed*
+    :type tsid: u32
 
-    :param u16 tclass:
+    :param tclass:
         *undescribed*
+    :type tclass: u16
 
-    :param u32 seqno:
+    :param seqno:
         sequence number when decision was made
+    :type seqno: u32
 
-    :param struct extended_perms_decision \*xpd:
+    :param xpd:
         extended_perms_decision to be added to the node
+    :type xpd: struct extended_perms_decision \*
 
-    :param u32 flags:
+    :param flags:
         *undescribed*
+    :type flags: u32
 
 .. _`avc_update_node.description`:
 
@@ -249,8 +284,9 @@ avc_flush
 
     Flush the cache
 
-    :param struct selinux_avc \*avc:
+    :param avc:
         *undescribed*
+    :type avc: struct selinux_avc \*
 
 .. _`avc_ss_reset`:
 
@@ -261,11 +297,13 @@ avc_ss_reset
 
     Flush the cache and revalidate migrated permissions.
 
-    :param struct selinux_avc \*avc:
+    :param avc:
         *undescribed*
+    :type avc: struct selinux_avc \*
 
-    :param u32 seqno:
+    :param seqno:
         policy sequence number
+    :type seqno: u32
 
 .. _`avc_has_perm_noaudit`:
 
@@ -276,26 +314,33 @@ avc_has_perm_noaudit
 
     Check permissions but perform no auditing.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 ssid:
+    :param ssid:
         source security identifier
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         target security identifier
+    :type tsid: u32
 
-    :param u16 tclass:
+    :param tclass:
         target security class
+    :type tclass: u16
 
-    :param u32 requested:
+    :param requested:
         requested permissions, interpreted based on \ ``tclass``\ 
+    :type requested: u32
 
-    :param unsigned int flags:
+    :param flags:
         AVC_STRICT or 0
+    :type flags: unsigned int
 
-    :param struct av_decision \*avd:
+    :param avd:
         access vector decisions
+    :type avd: struct av_decision \*
 
 .. _`avc_has_perm_noaudit.description`:
 
@@ -322,23 +367,29 @@ avc_has_perm
 
     Check permissions and perform any appropriate auditing.
 
-    :param struct selinux_state \*state:
+    :param state:
         *undescribed*
+    :type state: struct selinux_state \*
 
-    :param u32 ssid:
+    :param ssid:
         source security identifier
+    :type ssid: u32
 
-    :param u32 tsid:
+    :param tsid:
         target security identifier
+    :type tsid: u32
 
-    :param u16 tclass:
+    :param tclass:
         target security class
+    :type tclass: u16
 
-    :param u32 requested:
+    :param requested:
         requested permissions, interpreted based on \ ``tclass``\ 
+    :type requested: u32
 
-    :param struct common_audit_data \*auditdata:
+    :param auditdata:
         auxiliary audit data
+    :type auditdata: struct common_audit_data \*
 
 .. _`avc_has_perm.description`:
 

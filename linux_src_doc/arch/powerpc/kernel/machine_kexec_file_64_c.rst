@@ -10,8 +10,9 @@ arch_kexec_walk_mem
 
     call func(data) for each unreserved memory block
 
-    :param struct kexec_buf \*kbuf:
+    :param kbuf:
         Context info for the search. Also passed to \ ``func``\ .
+    :type kbuf: struct kexec_buf \*
 
     :param int (\*func)(struct resource \*, void \*):
         Function to call for each memory block.
@@ -42,20 +43,25 @@ setup_purgatory
 
     initialize the purgatory's global variables
 
-    :param struct kimage \*image:
+    :param image:
         kexec image.
+    :type image: struct kimage \*
 
-    :param const void \*slave_code:
+    :param slave_code:
         Slave code for the purgatory.
+    :type slave_code: const void \*
 
-    :param const void \*fdt:
+    :param fdt:
         Flattened device tree for the next kernel.
+    :type fdt: const void \*
 
-    :param unsigned long kernel_load_addr:
+    :param kernel_load_addr:
         Address where the kernel is loaded.
+    :type kernel_load_addr: unsigned long
 
-    :param unsigned long fdt_load_addr:
+    :param fdt_load_addr:
         Address where the flattened device tree is loaded.
+    :type fdt_load_addr: unsigned long
 
 .. _`setup_purgatory.return`:
 
@@ -73,14 +79,17 @@ delete_fdt_mem_rsv
 
     delete memory reservation with given address and size
 
-    :param void \*fdt:
+    :param fdt:
         *undescribed*
+    :type fdt: void \*
 
-    :param unsigned long start:
+    :param start:
         *undescribed*
+    :type start: unsigned long
 
-    :param unsigned long size:
+    :param size:
         *undescribed*
+    :type size: unsigned long
 
 .. _`delete_fdt_mem_rsv.return`:
 

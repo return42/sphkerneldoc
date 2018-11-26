@@ -10,14 +10,17 @@ mac_vmode_to_var
 
     converts vmode/cmode pair to var structure
 
-    :param int vmode:
+    :param vmode:
         MacOS video mode
+    :type vmode: int
 
-    :param int cmode:
+    :param cmode:
         MacOS color mode
+    :type cmode: int
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer video mode structure
+    :type var: struct fb_var_screeninfo \*
 
 .. _`mac_vmode_to_var.description`:
 
@@ -38,14 +41,17 @@ mac_var_to_vmode
 
     convert var structure to MacOS vmode/cmode pair
 
-    :param const struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer video mode structure
+    :type var: const struct fb_var_screeninfo \*
 
-    :param int \*vmode:
+    :param vmode:
         MacOS video mode
+    :type vmode: int \*
 
-    :param int \*cmode:
+    :param cmode:
         MacOS color mode
+    :type cmode: int \*
 
 .. _`mac_var_to_vmode.description`:
 
@@ -66,8 +72,9 @@ mac_map_monitor_sense
 
     Convert monitor sense to vmode
 
-    :param int sense:
+    :param sense:
         Macintosh monitor sense number
+    :type sense: int
 
 .. _`mac_map_monitor_sense.description`:
 
@@ -88,17 +95,21 @@ mac_find_mode
 
     find a video mode
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer user defined part of display
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
-    :param const char \*mode_option:
+    :param mode_option:
         video mode name (see mac_modedb[])
+    :type mode_option: const char \*
 
-    :param unsigned int default_bpp:
+    :param default_bpp:
         default color depth in bits per pixel
+    :type default_bpp: unsigned int
 
 .. _`mac_find_mode.description`:
 

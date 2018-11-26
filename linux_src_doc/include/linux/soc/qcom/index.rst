@@ -8,4 +8,5 @@ qcom
     :maxdepth: 1
 
     apr_h
+    llcc-qcom_h
     qmi_h

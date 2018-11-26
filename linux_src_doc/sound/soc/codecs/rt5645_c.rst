@@ -10,14 +10,17 @@ set_dmic_clk
 
     Set parameter of dmic.
 
-    :param struct snd_soc_dapm_widget \*w:
+    :param w:
         DAPM widget.
+    :type w: struct snd_soc_dapm_widget \*
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         The kcontrol of this widget.
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param int event:
+    :param event:
         Event id.
+    :type event: int
 
 .. _`rt5645_sel_asrc_clk_src`:
 
@@ -28,14 +31,17 @@ rt5645_sel_asrc_clk_src
 
     select ASRC clock source for a set of filters
 
-    :param struct snd_soc_component \*component:
+    :param component:
         SoC audio component device.
+    :type component: struct snd_soc_component \*
 
-    :param unsigned int filter_mask:
+    :param filter_mask:
         mask of filters.
+    :type filter_mask: unsigned int
 
-    :param unsigned int clk_src:
+    :param clk_src:
         clock source
+    :type clk_src: unsigned int
 
 .. _`rt5645_sel_asrc_clk_src.description`:
 

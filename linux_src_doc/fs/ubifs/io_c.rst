@@ -10,11 +10,13 @@ ubifs_ro_mode
 
     switch UBIFS to read read-only mode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int err:
+    :param err:
         error code which is the reason of switching to R/O mode
+    :type err: int
 
 .. _`ubifs_check_node`:
 
@@ -25,23 +27,29 @@ ubifs_check_node
 
     check node.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param const void \*buf:
+    :param buf:
         node to check
+    :type buf: const void \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset within the logical eraseblock
+    :type offs: int
 
-    :param int quiet:
+    :param quiet:
         print no messages
+    :type quiet: int
 
-    :param int must_chk_crc:
+    :param must_chk_crc:
         indicates whether to always check the CRC
+    :type must_chk_crc: int
 
 .. _`ubifs_check_node.description`:
 
@@ -54,11 +62,11 @@ feeds it a file-system image with incorrect nodes. For example, too large
 node length in the common header could cause UBIFS to read memory outside of
 allocated buffer when checking the CRC checksum.
 
-This function may skip data nodes CRC checking if \ ``c``\ ->no_chk_data_crc is
+This function may skip data nodes CRC checking if \ ``c->no_chk_data_crc``\  is
 true, which is controlled by corresponding UBIFS mount option. However, if
-\ ``must_chk_crc``\  is true, then \ ``c``\ ->no_chk_data_crc is ignored and CRC is
-checked. Similarly, if \ ``c``\ ->mounting or \ ``c``\ ->remounting_rw is true (we are
-mounting or re-mounting to R/W mode), \ ``c``\ ->no_chk_data_crc is ignored and CRC
+\ ``must_chk_crc``\  is true, then \ ``c->no_chk_data_crc``\  is ignored and CRC is
+checked. Similarly, if \ ``c->mounting``\  or \ ``c->remounting_rw``\  is true (we are
+mounting or re-mounting to R/W mode), \ ``c->no_chk_data_crc``\  is ignored and CRC
 is checked. This is because during mounting or re-mounting from R/O mode to
 R/W mode we may read journal nodes (when replying the journal or doing the
 recovery) and the journal nodes may potentially be corrupted, so checking is
@@ -76,14 +84,17 @@ ubifs_pad
 
     pad flash space.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer to put padding to
+    :type buf: void \*
 
-    :param int pad:
+    :param pad:
         how many bytes to pad
+    :type pad: int
 
 .. _`ubifs_pad.description`:
 
@@ -109,8 +120,50 @@ next_sqnum
 
     get next sequence number.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+.. _`ubifs_prepare_node_hmac`:
+
+ubifs_prepare_node_hmac
+=======================
+
+.. c:function:: int ubifs_prepare_node_hmac(struct ubifs_info *c, void *node, int len, int hmac_offs, int pad)
+
+    prepare node to be written to flash.
+
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param node:
+        the node to pad
+    :type node: void \*
+
+    :param len:
+        node length
+    :type len: int
+
+    :param hmac_offs:
+        offset of the HMAC in the node
+    :type hmac_offs: int
+
+    :param pad:
+        if the buffer has to be padded
+    :type pad: int
+
+.. _`ubifs_prepare_node_hmac.description`:
+
+Description
+-----------
+
+This function prepares node at \ ``node``\  to be written to the media - it
+calculates node CRC, fills the common header, and adds proper padding up to
+the next minimum I/O unit if \ ``pad``\  is not zero. if \ ``hmac_offs``\  is positive then
+a HMAC is inserted into the node at the given offset.
+
+This function returns 0 for success or a negative error code otherwise.
 
 .. _`ubifs_prepare_node`:
 
@@ -121,17 +174,21 @@ ubifs_prepare_node
 
     prepare node to be written to flash.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*node:
+    :param node:
         the node to pad
+    :type node: void \*
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
 
-    :param int pad:
+    :param pad:
         if the buffer has to be padded
+    :type pad: int
 
 .. _`ubifs_prepare_node.description`:
 
@@ -151,17 +208,21 @@ ubifs_prep_grp_node
 
     prepare node of a group to be written to flash.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*node:
+    :param node:
         the node to pad
+    :type node: void \*
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
 
-    :param int last:
+    :param last:
         indicates the last node of the group
+    :type last: int
 
 .. _`ubifs_prep_grp_node.description`:
 
@@ -180,8 +241,9 @@ wbuf_timer_callback_nolock
 
     write-buffer timer callback function.
 
-    :param struct hrtimer \*timer:
+    :param timer:
         timer data (write-buffer descriptor)
+    :type timer: struct hrtimer \*
 
 .. _`wbuf_timer_callback_nolock.description`:
 
@@ -195,12 +257,17 @@ This function is called when the write-buffer timer expires.
 new_wbuf_timer_nolock
 =====================
 
-.. c:function:: void new_wbuf_timer_nolock(struct ubifs_wbuf *wbuf)
+.. c:function:: void new_wbuf_timer_nolock(struct ubifs_info *c, struct ubifs_wbuf *wbuf)
 
     start new write-buffer timer.
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param wbuf:
         write-buffer descriptor
+    :type wbuf: struct ubifs_wbuf \*
 
 .. _`cancel_wbuf_timer_nolock`:
 
@@ -211,8 +278,9 @@ cancel_wbuf_timer_nolock
 
     cancel write-buffer timer.
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         write-buffer descriptor
+    :type wbuf: struct ubifs_wbuf \*
 
 .. _`ubifs_wbuf_sync_nolock`:
 
@@ -223,8 +291,9 @@ ubifs_wbuf_sync_nolock
 
     synchronize write-buffer.
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         write-buffer to synchronize
+    :type wbuf: struct ubifs_wbuf \*
 
 .. _`ubifs_wbuf_sync_nolock.description`:
 
@@ -234,10 +303,10 @@ Description
 This function synchronizes write-buffer \ ``buf``\  and returns zero in case of
 success or a negative error code in case of failure.
 
-Note, although write-buffers are of \ ``c``\ ->max_write_size, this function does
-not necessarily writes all \ ``c``\ ->max_write_size bytes to the flash. Instead,
+Note, although write-buffers are of \ ``c->max_write_size``\ , this function does
+not necessarily writes all \ ``c->max_write_size``\  bytes to the flash. Instead,
 if the write-buffer is only partially filled with data, only the used part
-of the write-buffer (aligned on \ ``c``\ ->min_io_size boundary) is synchronized.
+of the write-buffer (aligned on \ ``c->min_io_size``\  boundary) is synchronized.
 This way we waste less space.
 
 .. _`ubifs_wbuf_seek_nolock`:
@@ -249,14 +318,17 @@ ubifs_wbuf_seek_nolock
 
     seek write-buffer.
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         write-buffer
+    :type wbuf: struct ubifs_wbuf \*
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number to seek to
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         logical eraseblock offset to seek to
+    :type offs: int
 
 .. _`ubifs_wbuf_seek_nolock.description`:
 
@@ -276,8 +348,9 @@ ubifs_bg_wbufs_sync
 
     synchronize write-buffers.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_bg_wbufs_sync.description`:
 
@@ -297,14 +370,17 @@ ubifs_wbuf_write_nolock
 
     write data to flash via write-buffer.
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         write-buffer
+    :type wbuf: struct ubifs_wbuf \*
 
-    :param void \*buf:
+    :param buf:
         node to write
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
 
 .. _`ubifs_wbuf_write_nolock.description`:
 
@@ -321,6 +397,50 @@ This function returns zero in case of success and a negative error code in
 case of failure. If the node cannot be written because there is no more
 space in this logical eraseblock, \ ``-ENOSPC``\  is returned.
 
+.. _`ubifs_write_node_hmac`:
+
+ubifs_write_node_hmac
+=====================
+
+.. c:function:: int ubifs_write_node_hmac(struct ubifs_info *c, void *buf, int len, int lnum, int offs, int hmac_offs)
+
+    write node to the media.
+
+    :param c:
+        UBIFS file-system description object
+    :type c: struct ubifs_info \*
+
+    :param buf:
+        the node to write
+    :type buf: void \*
+
+    :param len:
+        node length
+    :type len: int
+
+    :param lnum:
+        logical eraseblock number
+    :type lnum: int
+
+    :param offs:
+        offset within the logical eraseblock
+    :type offs: int
+
+    :param hmac_offs:
+        offset of the HMAC within the node
+    :type hmac_offs: int
+
+.. _`ubifs_write_node_hmac.description`:
+
+Description
+-----------
+
+This function automatically fills node magic number, assigns sequence
+number, and calculates node CRC checksum. The length of the \ ``buf``\  buffer has
+to be aligned to the minimal I/O unit size. This function automatically
+appends padding node and padding bytes if needed. Returns zero in case of
+success and a negative error code in case of failure.
+
 .. _`ubifs_write_node`:
 
 ubifs_write_node
@@ -330,20 +450,25 @@ ubifs_write_node
 
     write node to the media.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         the node to write
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset within the logical eraseblock
+    :type offs: int
 
 .. _`ubifs_write_node.description`:
 
@@ -365,23 +490,29 @@ ubifs_read_node_wbuf
 
     read node from the media or write-buffer.
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         wbuf to check for un-written data
+    :type wbuf: struct ubifs_wbuf \*
 
-    :param void \*buf:
+    :param buf:
         buffer to read to
+    :type buf: void \*
 
-    :param int type:
+    :param type:
         node type
+    :type type: int
 
-    :param int len:
+    :param len:
         node length
+    :type len: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset within the logical eraseblock
+    :type offs: int
 
 .. _`ubifs_read_node_wbuf.description`:
 
@@ -403,23 +534,29 @@ ubifs_read_node
 
     read node.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param void \*buf:
+    :param buf:
         buffer to read to
+    :type buf: void \*
 
-    :param int type:
+    :param type:
         node type
+    :type type: int
 
-    :param int len:
+    :param len:
         node length (not aligned)
+    :type len: int
 
-    :param int lnum:
+    :param lnum:
         logical eraseblock number
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset within the logical eraseblock
+    :type offs: int
 
 .. _`ubifs_read_node.description`:
 
@@ -439,11 +576,13 @@ ubifs_wbuf_init
 
     initialize write-buffer.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         write-buffer to initialize
+    :type wbuf: struct ubifs_wbuf \*
 
 .. _`ubifs_wbuf_init.description`:
 
@@ -462,11 +601,13 @@ ubifs_wbuf_add_ino_nolock
 
     add an inode number into the wbuf inode array.
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         the write-buffer where to add
+    :type wbuf: struct ubifs_wbuf \*
 
-    :param ino_t inum:
+    :param inum:
         the inode number
+    :type inum: ino_t
 
 .. _`ubifs_wbuf_add_ino_nolock.description`:
 
@@ -484,11 +625,13 @@ wbuf_has_ino
 
     returns if the wbuf contains data from the inode.
 
-    :param struct ubifs_wbuf \*wbuf:
+    :param wbuf:
         the write-buffer
+    :type wbuf: struct ubifs_wbuf \*
 
-    :param ino_t inum:
+    :param inum:
         the inode number
+    :type inum: ino_t
 
 .. _`wbuf_has_ino.description`:
 
@@ -507,11 +650,13 @@ ubifs_sync_wbufs_by_inode
 
     synchronize write-buffers for an inode.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode to synchronize
+    :type inode: struct inode \*
 
 .. _`ubifs_sync_wbufs_by_inode.description`:
 

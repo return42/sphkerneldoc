@@ -10,8 +10,9 @@ atl1_check_options
 
     Range Checking for Command Line Parameters
 
-    :param struct atl1_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1_adapter \*
 
 .. _`atl1_check_options.description`:
 
@@ -32,8 +33,9 @@ atl1_sw_init
 
     Initialize general software structures (struct atl1_adapter)
 
-    :param struct atl1_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct atl1_adapter \*
 
 .. _`atl1_sw_init.description`:
 
@@ -53,8 +55,9 @@ atl1_setup_ring_resources
 
     allocate Tx / RX descriptor resources
 
-    :param struct atl1_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1_adapter \*
 
 .. _`atl1_setup_ring_resources.description`:
 
@@ -72,8 +75,9 @@ atl1_clean_rx_ring
 
     Free RFD Buffers
 
-    :param struct atl1_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1_adapter \*
 
 .. _`atl1_clean_tx_ring`:
 
@@ -84,8 +88,9 @@ atl1_clean_tx_ring
 
     Free Tx Buffers
 
-    :param struct atl1_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1_adapter \*
 
 .. _`atl1_free_ring_resources`:
 
@@ -96,8 +101,9 @@ atl1_free_ring_resources
 
     Free Tx / RX descriptor Resources
 
-    :param struct atl1_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1_adapter \*
 
 .. _`atl1_free_ring_resources.description`:
 
@@ -115,8 +121,9 @@ atl1_configure
 
     Configure Transmit&Receive Unit after Reset
 
-    :param struct atl1_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl1_adapter \*
 
 .. _`atl1_configure.description`:
 
@@ -134,8 +141,9 @@ atl1_alloc_rx_buffers
 
     Replace used receive buffers
 
-    :param struct atl1_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct atl1_adapter \*
 
 .. _`atl1_intr`:
 
@@ -146,11 +154,13 @@ atl1_intr
 
     Interrupt Handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a network interface device structure
+    :type data: void \*
 
 .. _`atl1_phy_config`:
 
@@ -161,8 +171,9 @@ atl1_phy_config
 
     Timer Call-back
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`atl1_change_mtu`:
 
@@ -173,11 +184,13 @@ atl1_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`atl1_change_mtu.description`:
 
@@ -195,8 +208,9 @@ atl1_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl1_open.description`:
 
@@ -220,8 +234,9 @@ atl1_close
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl1_close.description`:
 
@@ -244,11 +259,13 @@ atl1_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in atl1_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`atl1_probe.description`:
 
@@ -270,8 +287,9 @@ atl1_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`atl1_remove.description`:
 

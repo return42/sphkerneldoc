@@ -10,8 +10,9 @@ stm_find_device
 
     find stm device by name
 
-    :param const char \*buf:
+    :param buf:
         character buffer containing the name
+    :type buf: const char \*
 
 .. _`stm_find_device.description`:
 
@@ -40,8 +41,9 @@ stm_put_device
 
     drop references on the stm device
 
-    :param struct stm_device \*stm:
+    :param stm:
         stm device, previously acquired by \ :c:func:`stm_find_device`\ 
+    :type stm: struct stm_device \*
 
 .. _`stm_put_device.description`:
 
@@ -50,6 +52,39 @@ Description
 
 This drops the module reference and device reference taken by
 \ :c:func:`stm_find_device`\  or \ :c:func:`stm_char_open`\ .
+
+.. _`stm_data_write`:
+
+stm_data_write
+==============
+
+.. c:function:: ssize_t notrace stm_data_write(struct stm_data *data, unsigned int m, unsigned int c, bool ts_first, const void *buf, size_t count)
+
+    send the given payload as data packets
+
+    :param data:
+        stm driver's data
+    :type data: struct stm_data \*
+
+    :param m:
+        STP master
+    :type m: unsigned int
+
+    :param c:
+        STP channel
+    :type c: unsigned int
+
+    :param ts_first:
+        timestamp the first packet
+    :type ts_first: bool
+
+    :param buf:
+        data payload buffer
+    :type buf: const void \*
+
+    :param count:
+        data payload size
+    :type count: size_t
 
 .. _`stm_source_link_add`:
 
@@ -60,11 +95,13 @@ stm_source_link_add
 
     connect an stm_source device to an stm device
 
-    :param struct stm_source_device \*src:
+    :param src:
         stm_source device
+    :type src: struct stm_source_device \*
 
-    :param struct stm_device \*stm:
+    :param stm:
         stm device
+    :type stm: struct stm_device \*
 
 .. _`stm_source_link_add.description`:
 
@@ -90,11 +127,13 @@ Return
 
     detach stm_source from an stm device
 
-    :param struct stm_source_device \*src:
+    :param src:
         stm_source device
+    :type src: struct stm_source_device \*
 
-    :param struct stm_device \*stm:
+    :param stm:
         stm device
+    :type stm: struct stm_device \*
 
 .. _`__stm_source_link_drop.description`:
 
@@ -115,8 +154,9 @@ stm_source_link_drop
 
     detach stm_source from its stm device
 
-    :param struct stm_source_device \*src:
+    :param src:
         stm_source device
+    :type src: struct stm_source_device \*
 
 .. _`stm_source_link_drop.description`:
 
@@ -138,11 +178,13 @@ stm_source_register_device
 
     register an stm_source device
 
-    :param struct device \*parent:
+    :param parent:
         parent device
+    :type parent: struct device \*
 
-    :param struct stm_source_data \*data:
+    :param data:
         device description structure
+    :type data: struct stm_source_data \*
 
 .. _`stm_source_register_device.description`:
 
@@ -168,8 +210,9 @@ stm_source_unregister_device
 
     unregister an stm_source device
 
-    :param struct stm_source_data \*data:
+    :param data:
         device description that was used to register the device
+    :type data: struct stm_source_data \*
 
 .. _`stm_source_unregister_device.description`:
 

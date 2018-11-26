@@ -10,8 +10,9 @@ sane_reclaim
 
     is the usual dirty throttling mechanism operational?
 
-    :param struct scan_control \*sc:
+    :param sc:
         scan_control in question
+    :type sc: struct scan_control \*
 
 .. _`sane_reclaim.description`:
 
@@ -36,14 +37,17 @@ lruvec_lru_size
 
     Returns the number of pages on the given LRU list.
 
-    :param struct lruvec \*lruvec:
+    :param lruvec:
         lru vector
+    :type lruvec: struct lruvec \*
 
-    :param enum lru_list lru:
+    :param lru:
         lru to use
+    :type lru: enum lru_list
 
-    :param int zone_idx:
+    :param zone_idx:
         zones to consider (use MAX_NR_ZONES for the whole LRU list)
+    :type zone_idx: int
 
 .. _`shrink_slab`:
 
@@ -54,17 +58,21 @@ shrink_slab
 
     shrink slab caches
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation context
+    :type gfp_mask: gfp_t
 
-    :param int nid:
+    :param nid:
         node whose slab caches to target
+    :type nid: int
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memory cgroup whose slab caches to target
+    :type memcg: struct mem_cgroup \*
 
-    :param int priority:
+    :param priority:
         the reclaim priority
+    :type priority: int
 
 .. _`shrink_slab.description`:
 
@@ -76,10 +84,8 @@ Call the shrink functions to age shrinkable caches.
 \ ``nid``\  is passed along to shrinkers with SHRINKER_NUMA_AWARE set,
 unaware shrinkers will receive a node id of 0 instead.
 
-\ ``memcg``\  specifies the memory cgroup to target. If it is not NULL,
-only shrinkers with SHRINKER_MEMCG_AWARE set will be called to scan
-objects from the memory cgroup specified. Otherwise, only unaware
-shrinkers are called.
+\ ``memcg``\  specifies the memory cgroup to target. Unaware shrinkers
+are called only if it is the root cgroup.
 
 \ ``priority``\  is sc->priority, we take the number of objects and >> by priority
 in order to get the scan target.
@@ -95,8 +101,9 @@ putback_lru_page
 
     put previously isolated page onto appropriate LRU list
 
-    :param struct page \*page:
+    :param page:
         page to be put back to appropriate lru list
+    :type page: struct page \*
 
 .. _`putback_lru_page.description`:
 
@@ -117,8 +124,9 @@ isolate_lru_page
 
     tries to isolate a page from its LRU list
 
-    :param struct page \*page:
+    :param page:
         page to isolate from its LRU list
+    :type page: struct page \*
 
 .. _`isolate_lru_page.description`:
 
@@ -160,11 +168,13 @@ check_move_unevictable_pages
 
     check pages for evictability and move to appropriate zone lru list
 
-    :param struct page \*\*pages:
+    :param pages:
         array of pages to check
+    :type pages: struct page \*\*
 
-    :param int nr_pages:
+    :param nr_pages:
         number of pages to check
+    :type nr_pages: int
 
 .. _`check_move_unevictable_pages.description`:
 

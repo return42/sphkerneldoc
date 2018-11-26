@@ -10,8 +10,9 @@ rpcrdma_unmap_sendctx
 
     DMA-unmap Send buffers
 
-    :param struct rpcrdma_sendctx \*sc:
+    :param sc:
         sendctx containing SGEs to unmap
+    :type sc: struct rpcrdma_sendctx \*
 
 .. _`rpcrdma_prepare_send_sges`:
 
@@ -22,20 +23,25 @@ rpcrdma_prepare_send_sges
 
     Construct SGEs for a Send WR
 
-    :param struct rpcrdma_xprt \*r_xprt:
+    :param r_xprt:
         controlling transport
+    :type r_xprt: struct rpcrdma_xprt \*
 
-    :param struct rpcrdma_req \*req:
+    :param req:
         context of RPC Call being marshalled
+    :type req: struct rpcrdma_req \*
 
-    :param u32 hdrlen:
+    :param hdrlen:
         size of transport header, in bytes
+    :type hdrlen: u32
 
-    :param struct xdr_buf \*xdr:
+    :param xdr:
         xdr_buf containing RPC Call
+    :type xdr: struct xdr_buf \*
 
-    :param enum rpcrdma_chunktype rtype:
+    :param rtype:
         chunk type being encoded
+    :type rtype: enum rpcrdma_chunktype
 
 .. _`rpcrdma_prepare_send_sges.description`:
 
@@ -53,11 +59,13 @@ rpcrdma_marshal_req
 
     Marshal and send one RPC request
 
-    :param struct rpcrdma_xprt \*r_xprt:
+    :param r_xprt:
         controlling transport
+    :type r_xprt: struct rpcrdma_xprt \*
 
-    :param struct rpc_rqst \*rqst:
+    :param rqst:
         RPC request to be marshaled
+    :type rqst: struct rpc_rqst \*
 
 .. _`rpcrdma_marshal_req.description`:
 
@@ -91,17 +99,21 @@ rpcrdma_inline_fixup
 
     Scatter inline received data into rqst's iovecs
 
-    :param struct rpc_rqst \*rqst:
+    :param rqst:
         controlling RPC request
+    :type rqst: struct rpc_rqst \*
 
-    :param char \*srcp:
+    :param srcp:
         points to RPC message payload in receive buffer
+    :type srcp: char \*
 
-    :param int copy_len:
+    :param copy_len:
         remaining length of receive buffer content
+    :type copy_len: int
 
-    :param int pad:
+    :param pad:
         Write chunk pad bytes needed (zero for pure inline)
+    :type pad: int
 
 .. _`rpcrdma_inline_fixup.description`:
 

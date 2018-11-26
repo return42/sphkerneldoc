@@ -10,14 +10,17 @@ cc_copy_mac
 
     Copy MAC to temporary location
 
-    :param struct device \*dev:
+    :param dev:
         device object
+    :type dev: struct device \*
 
-    :param struct aead_request \*req:
+    :param req:
         aead request object
+    :type req: struct aead_request \*
 
-    :param enum cc_sg_cpy_direct dir:
+    :param dir:
         [IN] copy from/to sgl
+    :type dir: enum cc_sg_cpy_direct
 
 .. _`cc_get_sgl_nents`:
 
@@ -28,20 +31,25 @@ cc_get_sgl_nents
 
     Get scatterlist number of entries.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct scatterlist \*sg_list:
+    :param sg_list:
         SG list
+    :type sg_list: struct scatterlist \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         [IN] Total SGL data bytes.
+    :type nbytes: unsigned int
 
-    :param u32 \*lbytes:
+    :param lbytes:
         [OUT] Returns the amount of bytes at the last entry
+    :type lbytes: u32 \*
 
-    :param bool \*is_chained:
+    :param is_chained:
         *undescribed*
+    :type is_chained: bool \*
 
 .. _`cc_zero_sgl`:
 
@@ -52,11 +60,13 @@ cc_zero_sgl
 
     Zero scatter scatter list data.
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         *undescribed*
+    :type sgl: struct scatterlist \*
 
-    :param u32 data_len:
+    :param data_len:
         *undescribed*
+    :type data_len: u32
 
 .. _`cc_copy_sg_portion`:
 
@@ -67,23 +77,29 @@ cc_copy_sg_portion
 
     Copy scatter list data, from to_skip to end, to dest and vice versa
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param u8 \*dest:
+    :param dest:
         *undescribed*
+    :type dest: u8 \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         *undescribed*
+    :type sg: struct scatterlist \*
 
-    :param u32 to_skip:
+    :param to_skip:
         *undescribed*
+    :type to_skip: u32
 
-    :param u32 end:
+    :param end:
         *undescribed*
+    :type end: u32
 
-    :param enum cc_sg_cpy_direct direct:
+    :param direct:
         *undescribed*
+    :type direct: enum cc_sg_cpy_direct
 
 .. This file was automatic generated / don't edit.
 

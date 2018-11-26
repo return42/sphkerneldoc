@@ -10,20 +10,25 @@ gfs2_assert_withdraw_i
 
     Cause the machine to withdraw if \ ``assertion``\  is false
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         *undescribed*
+    :type sdp: struct gfs2_sbd \*
 
-    :param char \*assertion:
+    :param assertion:
         *undescribed*
+    :type assertion: char \*
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param char \*file:
+    :param file:
         *undescribed*
+    :type file: char \*
 
-    :param unsigned int line:
+    :param line:
         *undescribed*
+    :type line: unsigned int
 
 .. _`gfs2_assert_withdraw_i.return`:
 
@@ -42,20 +47,25 @@ gfs2_assert_warn_i
 
     Print a message to the console if \ ``assertion``\  is false
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         *undescribed*
+    :type sdp: struct gfs2_sbd \*
 
-    :param char \*assertion:
+    :param assertion:
         *undescribed*
+    :type assertion: char \*
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param char \*file:
+    :param file:
         *undescribed*
+    :type file: char \*
 
-    :param unsigned int line:
+    :param line:
         *undescribed*
+    :type line: unsigned int
 
 .. _`gfs2_assert_warn_i.return`:
 
@@ -74,20 +84,25 @@ gfs2_consist_i
 
     Flag a filesystem consistency error and withdraw
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         *undescribed*
+    :type sdp: struct gfs2_sbd \*
 
-    :param int cluster_wide:
+    :param cluster_wide:
         *undescribed*
+    :type cluster_wide: int
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param char \*file:
+    :param file:
         *undescribed*
+    :type file: char \*
 
-    :param unsigned int line:
+    :param line:
         *undescribed*
+    :type line: unsigned int
 
 .. _`gfs2_consist_i.return`:
 
@@ -106,20 +121,25 @@ gfs2_consist_inode_i
 
     Flag an inode consistency error and withdraw
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         *undescribed*
+    :type ip: struct gfs2_inode \*
 
-    :param int cluster_wide:
+    :param cluster_wide:
         *undescribed*
+    :type cluster_wide: int
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param char \*file:
+    :param file:
         *undescribed*
+    :type file: char \*
 
-    :param unsigned int line:
+    :param line:
         *undescribed*
+    :type line: unsigned int
 
 .. _`gfs2_consist_inode_i.return`:
 
@@ -138,20 +158,25 @@ gfs2_consist_rgrpd_i
 
     Flag a RG consistency error and withdraw
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         *undescribed*
+    :type rgd: struct gfs2_rgrpd \*
 
-    :param int cluster_wide:
+    :param cluster_wide:
         *undescribed*
+    :type cluster_wide: int
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param char \*file:
+    :param file:
         *undescribed*
+    :type file: char \*
 
-    :param unsigned int line:
+    :param line:
         *undescribed*
+    :type line: unsigned int
 
 .. _`gfs2_consist_rgrpd_i.return`:
 
@@ -170,23 +195,29 @@ gfs2_meta_check_ii
 
     Flag a magic number consistency error and withdraw
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         *undescribed*
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         *undescribed*
+    :type bh: struct buffer_head \*
 
-    :param const char \*type:
+    :param type:
         *undescribed*
+    :type type: const char \*
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param char \*file:
+    :param file:
         *undescribed*
+    :type file: char \*
 
-    :param unsigned int line:
+    :param line:
         *undescribed*
+    :type line: unsigned int
 
 .. _`gfs2_meta_check_ii.return`:
 
@@ -205,26 +236,33 @@ gfs2_metatype_check_ii
 
     Flag a metadata type consistency error and withdraw
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         *undescribed*
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         *undescribed*
+    :type bh: struct buffer_head \*
 
-    :param u16 type:
+    :param type:
         *undescribed*
+    :type type: u16
 
-    :param u16 t:
+    :param t:
         *undescribed*
+    :type t: u16
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param char \*file:
+    :param file:
         *undescribed*
+    :type file: char \*
 
-    :param unsigned int line:
+    :param line:
         *undescribed*
+    :type line: unsigned int
 
 .. _`gfs2_metatype_check_ii.return`:
 
@@ -243,17 +281,21 @@ gfs2_io_error_i
 
     Flag an I/O error and withdraw
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         *undescribed*
+    :type sdp: struct gfs2_sbd \*
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param char \*file:
+    :param file:
         *undescribed*
+    :type file: char \*
 
-    :param unsigned int line:
+    :param line:
         *undescribed*
+    :type line: unsigned int
 
 .. _`gfs2_io_error_i.return`:
 
@@ -268,32 +310,33 @@ Return
 gfs2_io_error_bh_i
 ==================
 
-.. c:function:: int gfs2_io_error_bh_i(struct gfs2_sbd *sdp, struct buffer_head *bh, const char *function, char *file, unsigned int line)
+.. c:function:: void gfs2_io_error_bh_i(struct gfs2_sbd *sdp, struct buffer_head *bh, const char *function, char *file, unsigned int line, bool withdraw)
 
-    Flag a buffer I/O error and withdraw
+    Flag a buffer I/O error
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         *undescribed*
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct buffer_head \*bh:
+    :param bh:
         *undescribed*
+    :type bh: struct buffer_head \*
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param char \*file:
+    :param file:
         *undescribed*
+    :type file: char \*
 
-    :param unsigned int line:
+    :param line:
         *undescribed*
+    :type line: unsigned int
 
-.. _`gfs2_io_error_bh_i.return`:
-
-Return
-------
-
--1 if this call withdrew the machine,
-0 if it was already withdrawn
+    :param withdraw:
+        withdraw the filesystem
+    :type withdraw: bool
 
 .. This file was automatic generated / don't edit.
 

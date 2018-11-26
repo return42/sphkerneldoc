@@ -10,14 +10,17 @@ fuse_aio_complete
 
     actual end of fuse request in IO request. Otherwise, if bytes_requested == bytes_transferred or rw == WRITE, the caller sets 'pos' to -1.
 
-    :param struct fuse_io_priv \*io:
+    :param io:
         *undescribed*
+    :type io: struct fuse_io_priv \*
 
-    :param int err:
+    :param err:
         *undescribed*
+    :type err: int
 
-    :param ssize_t pos:
+    :param pos:
         *undescribed*
+    :type pos: ssize_t
 
 .. _`fuse_aio_complete.an-example`:
 

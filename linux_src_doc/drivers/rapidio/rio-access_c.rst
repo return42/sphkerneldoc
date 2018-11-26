@@ -10,14 +10,17 @@ RIO_LOP_READ
 
     Generate rio_local_read_config_* functions
 
-    :param  size:
+    :param size:
         Size of configuration space read (8, 16, 32 bits)
+    :type size: 
 
-    :param  type:
+    :param type:
         C type of value argument
+    :type type: 
 
-    :param  len:
+    :param len:
         Length of configuration space read (1, 2, 4 bytes)
+    :type len: 
 
 .. _`rio_lop_read.description`:
 
@@ -36,14 +39,17 @@ RIO_LOP_WRITE
 
     Generate rio_local_write_config_* functions
 
-    :param  size:
+    :param size:
         Size of configuration space write (8, 16, 32 bits)
+    :type size: 
 
-    :param  type:
+    :param type:
         C type of value argument
+    :type type: 
 
-    :param  len:
+    :param len:
         Length of configuration space write (1, 2, 4 bytes)
+    :type len: 
 
 .. _`rio_lop_write.description`:
 
@@ -62,14 +68,17 @@ RIO_OP_READ
 
     Generate rio_mport_read_config_* functions
 
-    :param  size:
+    :param size:
         Size of configuration space read (8, 16, 32 bits)
+    :type size: 
 
-    :param  type:
+    :param type:
         C type of value argument
+    :type type: 
 
-    :param  len:
+    :param len:
         Length of configuration space read (1, 2, 4 bytes)
+    :type len: 
 
 .. _`rio_op_read.description`:
 
@@ -88,14 +97,17 @@ RIO_OP_WRITE
 
     Generate rio_mport_write_config_* functions
 
-    :param  size:
+    :param size:
         Size of configuration space write (8, 16, 32 bits)
+    :type size: 
 
-    :param  type:
+    :param type:
         C type of value argument
+    :type type: 
 
-    :param  len:
+    :param len:
         Length of configuration space write (1, 2, 4 bytes)
+    :type len: 
 
 .. _`rio_op_write.description`:
 
@@ -114,14 +126,17 @@ rio_mport_send_doorbell
 
     Send a doorbell message
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RIO master port
+    :type mport: struct rio_mport \*
 
-    :param u16 destid:
+    :param destid:
         RIO device destination ID
+    :type destid: u16
 
-    :param u16 data:
+    :param data:
         Doorbell message data
+    :type data: u16
 
 .. _`rio_mport_send_doorbell.description`:
 

@@ -10,14 +10,17 @@ snd_ac97_write
 
     write a value on the given register
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the ac97 instance
+    :type ac97: struct snd_ac97 \*
 
-    :param unsigned short reg:
+    :param reg:
         the register to change
+    :type reg: unsigned short
 
-    :param unsigned short value:
+    :param value:
         the value to set
+    :type value: unsigned short
 
 .. _`snd_ac97_write.description`:
 
@@ -39,11 +42,13 @@ snd_ac97_read
 
     read a value from the given register
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the ac97 instance
+    :type ac97: struct snd_ac97 \*
 
-    :param unsigned short reg:
+    :param reg:
         the register to read
+    :type reg: unsigned short
 
 .. _`snd_ac97_read.description`:
 
@@ -69,14 +74,17 @@ snd_ac97_write_cache
 
     write a value on the given register and update the cache
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the ac97 instance
+    :type ac97: struct snd_ac97 \*
 
-    :param unsigned short reg:
+    :param reg:
         the register to change
+    :type reg: unsigned short
 
-    :param unsigned short value:
+    :param value:
         the value to set
+    :type value: unsigned short
 
 .. _`snd_ac97_write_cache.description`:
 
@@ -96,14 +104,17 @@ snd_ac97_update
 
     update the value on the given register
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the ac97 instance
+    :type ac97: struct snd_ac97 \*
 
-    :param unsigned short reg:
+    :param reg:
         the register to change
+    :type reg: unsigned short
 
-    :param unsigned short value:
+    :param value:
         the value to set
+    :type value: unsigned short
 
 .. _`snd_ac97_update.description`:
 
@@ -130,17 +141,21 @@ snd_ac97_update_bits
 
     update the bits on the given register
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the ac97 instance
+    :type ac97: struct snd_ac97 \*
 
-    :param unsigned short reg:
+    :param reg:
         the register to change
+    :type reg: unsigned short
 
-    :param unsigned short mask:
+    :param mask:
         the bit-mask to change
+    :type mask: unsigned short
 
-    :param unsigned short value:
+    :param value:
         the value to set
+    :type value: unsigned short
 
 .. _`snd_ac97_update_bits.description`:
 
@@ -167,8 +182,9 @@ snd_ac97_get_short_name
 
     retrieve codec name
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the codec instance
+    :type ac97: struct snd_ac97 \*
 
 .. _`snd_ac97_get_short_name.return`:
 
@@ -186,20 +202,25 @@ snd_ac97_bus
 
     create an AC97 bus component
 
-    :param struct snd_card \*card:
+    :param card:
         the card instance
+    :type card: struct snd_card \*
 
-    :param int num:
+    :param num:
         the bus number
+    :type num: int
 
-    :param struct snd_ac97_bus_ops \*ops:
+    :param ops:
         the bus callbacks table
+    :type ops: struct snd_ac97_bus_ops \*
 
-    :param void \*private_data:
+    :param private_data:
         private data pointer for the new instance
+    :type private_data: void \*
 
-    :param struct snd_ac97_bus \*\*rbus:
+    :param rbus:
         the pointer to store the new AC97 bus instance.
+    :type rbus: struct snd_ac97_bus \*\*
 
 .. _`snd_ac97_bus.description`:
 
@@ -234,15 +255,18 @@ snd_ac97_mixer
 
     create an Codec97 component
 
-    :param struct snd_ac97_bus \*bus:
+    :param bus:
         the AC97 bus which codec is attached to
+    :type bus: struct snd_ac97_bus \*
 
-    :param struct snd_ac97_template \*template:
+    :param template:
         the template of ac97, including index, callbacks and
         the private data.
+    :type template: struct snd_ac97_template \*
 
-    :param struct snd_ac97 \*\*rac97:
+    :param rac97:
         the pointer to store the new ac97 instance.
+    :type rac97: struct snd_ac97 \*\*
 
 .. _`snd_ac97_mixer.description`:
 
@@ -275,14 +299,17 @@ snd_ac97_update_power
 
     update the powerdown register
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the codec instance
+    :type ac97: struct snd_ac97 \*
 
-    :param int reg:
+    :param reg:
         the rate register, e.g. AC97_PCM_FRONT_DAC_RATE
+    :type reg: int
 
-    :param int powerup:
+    :param powerup:
         non-zero when power up the part
+    :type powerup: int
 
 .. _`snd_ac97_update_power.description`:
 
@@ -307,8 +334,9 @@ snd_ac97_suspend
 
     General suspend function for AC97 codec
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the ac97 instance
+    :type ac97: struct snd_ac97 \*
 
 .. _`snd_ac97_suspend.description`:
 
@@ -326,8 +354,9 @@ snd_ac97_resume
 
     General resume function for AC97 codec
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the ac97 instance
+    :type ac97: struct snd_ac97 \*
 
 .. _`snd_ac97_resume.description`:
 
@@ -346,14 +375,17 @@ snd_ac97_tune_hardware
 
     tune up the hardware
 
-    :param struct snd_ac97 \*ac97:
+    :param ac97:
         the ac97 instance
+    :type ac97: struct snd_ac97 \*
 
-    :param const struct ac97_quirk \*quirk:
+    :param quirk:
         quirk list
+    :type quirk: const struct ac97_quirk \*
 
-    :param const char \*override:
+    :param override:
         explicit quirk value (overrides the list if non-NULL)
+    :type override: const char \*
 
 .. _`snd_ac97_tune_hardware.description`:
 

@@ -10,8 +10,9 @@ vchan_tx_desc_free
 
     free a reusable descriptor
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         the transfer
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`vchan_tx_desc_free.description`:
 

@@ -10,14 +10,17 @@ nilfs_ioctl_wrap_copy
 
     wrapping function of get/set metadata info
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param struct nilfs_argv \*argv:
+    :param argv:
         vector of arguments from userspace
+    :type argv: struct nilfs_argv \*
 
-    :param int dir:
+    :param dir:
         set of direction flags
+    :type dir: int
 
     :param ssize_t (\*dofunc)(struct the_nilfs \*, __u64 \*, int, void \*, size_t, size_t):
         concrete function of get/set metadata info
@@ -54,11 +57,13 @@ nilfs_ioctl_getflags
 
     ioctl to support lsattr
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param void __user \*argp:
+    :param argp:
         *undescribed*
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_setflags`:
 
@@ -69,14 +74,17 @@ nilfs_ioctl_setflags
 
     ioctl to support chattr
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param void __user \*argp:
+    :param argp:
         *undescribed*
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_getversion`:
 
@@ -87,11 +95,13 @@ nilfs_ioctl_getversion
 
     get info about a file's version (generation number)
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param void __user \*argp:
+    :param argp:
         *undescribed*
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_change_cpmode`:
 
@@ -102,17 +112,21 @@ nilfs_ioctl_change_cpmode
 
     change checkpoint mode (checkpoint/snapshot)
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl's request code
+    :type cmd: unsigned int
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_change_cpmode.description`:
 
@@ -145,17 +159,21 @@ nilfs_ioctl_delete_checkpoint
 
     remove checkpoint
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl's request code
+    :type cmd: unsigned int
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_delete_checkpoint.description`:
 
@@ -188,23 +206,29 @@ nilfs_ioctl_do_get_cpinfo
 
     callback method getting info about checkpoints
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param __u64 \*posp:
+    :param posp:
         pointer on array of checkpoint's numbers
+    :type posp: __u64 \*
 
-    :param int flags:
+    :param flags:
         checkpoint mode (checkpoint or snapshot)
+    :type flags: int
 
-    :param void \*buf:
+    :param buf:
         buffer for storing checkponts' info
+    :type buf: void \*
 
-    :param size_t size:
+    :param size:
         size in bytes of one checkpoint info item in array
+    :type size: size_t
 
-    :param size_t nmembs:
+    :param nmembs:
         number of checkpoints in array (numbers and infos)
+    :type nmembs: size_t
 
 .. _`nilfs_ioctl_do_get_cpinfo.description`:
 
@@ -231,17 +255,21 @@ nilfs_ioctl_get_cpstat
 
     get checkpoints statistics
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl's request code
+    :type cmd: unsigned int
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_get_cpstat.description`:
 
@@ -276,23 +304,29 @@ nilfs_ioctl_do_get_suinfo
 
     callback method getting segment usage info
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param __u64 \*posp:
+    :param posp:
         pointer on array of segment numbers
+    :type posp: __u64 \*
 
-    :param int flags:
+    :param flags:
         \*not used\*
+    :type flags: int
 
-    :param void \*buf:
+    :param buf:
         buffer for storing suinfo array
+    :type buf: void \*
 
-    :param size_t size:
+    :param size:
         size in bytes of one suinfo item in array
+    :type size: size_t
 
-    :param size_t nmembs:
+    :param nmembs:
         count of segment numbers and suinfos in array
+    :type nmembs: size_t
 
 .. _`nilfs_ioctl_do_get_suinfo.description`:
 
@@ -319,17 +353,21 @@ nilfs_ioctl_get_sustat
 
     get segment usage statistics
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl's request code
+    :type cmd: unsigned int
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_get_sustat.description`:
 
@@ -364,23 +402,29 @@ nilfs_ioctl_do_get_vinfo
 
     callback method getting virtual blocks info
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param __u64 \*posp:
+    :param posp:
         \*not used\*
+    :type posp: __u64 \*
 
-    :param int flags:
+    :param flags:
         \*not used\*
+    :type flags: int
 
-    :param void \*buf:
+    :param buf:
         buffer for storing array of nilfs_vinfo structures
+    :type buf: void \*
 
-    :param size_t size:
+    :param size:
         size in bytes of one vinfo item in array
+    :type size: size_t
 
-    :param size_t nmembs:
+    :param nmembs:
         count of vinfos in array
+    :type nmembs: size_t
 
 .. _`nilfs_ioctl_do_get_vinfo.description`:
 
@@ -407,23 +451,29 @@ nilfs_ioctl_do_get_bdescs
 
     callback method getting disk block descriptors
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param __u64 \*posp:
+    :param posp:
         \*not used\*
+    :type posp: __u64 \*
 
-    :param int flags:
+    :param flags:
         \*not used\*
+    :type flags: int
 
-    :param void \*buf:
+    :param buf:
         buffer for storing array of nilfs_bdesc structures
+    :type buf: void \*
 
-    :param size_t size:
+    :param size:
         size in bytes of one bdesc item in array
+    :type size: size_t
 
-    :param size_t nmembs:
+    :param nmembs:
         count of bdescs in array
+    :type nmembs: size_t
 
 .. _`nilfs_ioctl_do_get_bdescs.description`:
 
@@ -450,17 +500,21 @@ nilfs_ioctl_get_bdescs
 
     get disk block descriptors
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl's request code
+    :type cmd: unsigned int
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_get_bdescs.description`:
 
@@ -497,14 +551,17 @@ nilfs_ioctl_move_inode_block
 
     prepare data/node block for moving by GC
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct nilfs_vdesc \*vdesc:
+    :param vdesc:
         descriptor of virtual block number
+    :type vdesc: struct nilfs_vdesc \*
 
-    :param struct list_head \*buffers:
+    :param buffers:
         list of moving buffers
+    :type buffers: struct list_head \*
 
 .. _`nilfs_ioctl_move_inode_block.description`:
 
@@ -539,14 +596,17 @@ nilfs_ioctl_move_blocks
 
     move valid inode's blocks during garbage collection
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock object
+    :type sb: struct super_block \*
 
-    :param struct nilfs_argv \*argv:
+    :param argv:
         vector of arguments from userspace
+    :type argv: struct nilfs_argv \*
 
-    :param void \*buf:
+    :param buf:
         array of nilfs_vdesc structures
+    :type buf: void \*
 
 .. _`nilfs_ioctl_move_blocks.description`:
 
@@ -574,14 +634,17 @@ nilfs_ioctl_delete_checkpoints
 
     delete checkpoints
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param struct nilfs_argv \*argv:
+    :param argv:
         vector of arguments from userspace
+    :type argv: struct nilfs_argv \*
 
-    :param void \*buf:
+    :param buf:
         array of periods of checkpoints numbers
+    :type buf: void \*
 
 .. _`nilfs_ioctl_delete_checkpoints.description`:
 
@@ -615,14 +678,17 @@ nilfs_ioctl_free_vblocknrs
 
     free virtual block numbers
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param struct nilfs_argv \*argv:
+    :param argv:
         vector of arguments from userspace
+    :type argv: struct nilfs_argv \*
 
-    :param void \*buf:
+    :param buf:
         array of virtual block numbers
+    :type buf: void \*
 
 .. _`nilfs_ioctl_free_vblocknrs.description`:
 
@@ -630,7 +696,7 @@ Description
 -----------
 
 \ :c:func:`nilfs_ioctl_free_vblocknrs`\  function frees
-the virtual block numbers specified by \ ``buf``\  and \ ``argv``\ ->v_nmembs.
+the virtual block numbers specified by \ ``buf``\  and \ ``argv->v_nmembs``\ .
 
 .. _`nilfs_ioctl_free_vblocknrs.return-value`:
 
@@ -655,14 +721,17 @@ nilfs_ioctl_mark_blocks_dirty
 
     mark blocks dirty
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param struct nilfs_argv \*argv:
+    :param argv:
         vector of arguments from userspace
+    :type argv: struct nilfs_argv \*
 
-    :param void \*buf:
+    :param buf:
         array of block descriptors
+    :type buf: void \*
 
 .. _`nilfs_ioctl_mark_blocks_dirty.description`:
 
@@ -695,17 +764,21 @@ nilfs_ioctl_clean_segments
 
     clean segments
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl's request code
+    :type cmd: unsigned int
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_clean_segments.description`:
 
@@ -733,17 +806,21 @@ nilfs_ioctl_sync
 
     make a checkpoint
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl's request code
+    :type cmd: unsigned int
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_sync.description`:
 
@@ -784,14 +861,17 @@ nilfs_ioctl_resize
 
     resize NILFS2 volume
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_resize.return-value`:
 
@@ -809,11 +889,13 @@ nilfs_ioctl_trim_fs
 
     trim ioctl handle function
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_trim_fs.decription`:
 
@@ -840,11 +922,13 @@ nilfs_ioctl_set_alloc_range
 
     limit range of segments to be allocated
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_set_alloc_range.decription`:
 
@@ -871,20 +955,25 @@ nilfs_ioctl_get_info
 
     wrapping function of get metadata info
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl's request code
+    :type cmd: unsigned int
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
-    :param size_t membsz:
+    :param membsz:
         size of an item in bytes
+    :type membsz: size_t
 
     :param ssize_t (\*dofunc)(struct the_nilfs \*, __u64 \*, int, void \*, size_t, size_t):
         concrete function of getting metadata info
@@ -921,17 +1010,21 @@ nilfs_ioctl_set_suinfo
 
     set segment usage info
 
-    :param struct inode \*inode:
+    :param inode:
         inode object
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file object
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         ioctl's request code
+    :type cmd: unsigned int
 
-    :param void __user \*argp:
+    :param argp:
         pointer on argument from userspace
+    :type argp: void __user \*
 
 .. _`nilfs_ioctl_set_suinfo.description`:
 

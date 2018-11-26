@@ -10,11 +10,13 @@ ide_complete_pm_rq
 
     end the current Power Management request
 
-    :param ide_drive_t \*drive:
+    :param drive:
         target drive
+    :type drive: ide_drive_t \*
 
-    :param struct request \*rq:
+    :param rq:
         request
+    :type rq: struct request \*
 
 .. _`ide_complete_pm_rq.description`:
 

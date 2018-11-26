@@ -30,7 +30,8 @@ Definition
         WMI_10_4_TDLS_UAPSD_BUFFER_STA,
         WMI_10_4_TDLS_UAPSD_SLEEP_STA,
         WMI_10_4_TDLS_CONN_TRACKER_IN_HOST_MODE,
-        WMI_10_4_TDLS_EXPLICIT_MODE_ONLY
+        WMI_10_4_TDLS_EXPLICIT_MODE_ONLY,
+        WMI_10_4_TX_DATA_ACK_RSSI
     };
 
 .. _`wmi_10_4_feature_mask.constants`:
@@ -77,6 +78,9 @@ WMI_10_4_TDLS_CONN_TRACKER_IN_HOST_MODE
 
 WMI_10_4_TDLS_EXPLICIT_MODE_ONLY
     Explicit TDLS mode enable/disable
+
+WMI_10_4_TX_DATA_ACK_RSSI
+    Enable DATA ACK RSSI if firmware is capable
 
 .. This file was automatic generated / don't edit.
 

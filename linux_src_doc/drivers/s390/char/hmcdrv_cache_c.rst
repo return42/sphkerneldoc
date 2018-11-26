@@ -71,8 +71,9 @@ hmcdrv_cache_get
 
     looks for file data/content in read cache
 
-    :param const struct hmcdrv_ftp_cmdspec \*ftp:
+    :param ftp:
         pointer to FTP command specification
+    :type ftp: const struct hmcdrv_ftp_cmdspec \*
 
 .. _`hmcdrv_cache_get.return`:
 
@@ -91,11 +92,13 @@ hmcdrv_cache_do
 
     do a HMC drive CD/DVD transfer with cache update
 
-    :param const struct hmcdrv_ftp_cmdspec \*ftp:
+    :param ftp:
         pointer to FTP command specification
+    :type ftp: const struct hmcdrv_ftp_cmdspec \*
 
-    :param hmcdrv_cache_ftpfunc func:
+    :param func:
         FTP transfer function to be used
+    :type func: hmcdrv_cache_ftpfunc
 
 .. _`hmcdrv_cache_do.return`:
 
@@ -113,11 +116,13 @@ hmcdrv_cache_cmd
 
     perform a cached HMC drive CD/DVD transfer
 
-    :param const struct hmcdrv_ftp_cmdspec \*ftp:
+    :param ftp:
         pointer to FTP command specification
+    :type ftp: const struct hmcdrv_ftp_cmdspec \*
 
-    :param hmcdrv_cache_ftpfunc func:
+    :param func:
         FTP transfer function to be used
+    :type func: hmcdrv_cache_ftpfunc
 
 .. _`hmcdrv_cache_cmd.attention`:
 
@@ -143,8 +148,9 @@ hmcdrv_cache_startup
 
     startup of HMC drive cache
 
-    :param size_t cachesize:
+    :param cachesize:
         cache size
+    :type cachesize: size_t
 
 .. _`hmcdrv_cache_startup.return`:
 
@@ -162,8 +168,9 @@ hmcdrv_cache_shutdown
 
     shutdown of HMC drive cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

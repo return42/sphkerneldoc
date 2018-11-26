@@ -10,15 +10,18 @@ optee_from_msg_param
 
     convert from OPTEE_MSG parameters to struct tee_param
 
-    :param struct tee_param \*params:
+    :param params:
         subsystem internal parameter representation
+    :type params: struct tee_param \*
 
-    :param size_t num_params:
+    :param num_params:
         number of elements in the parameter arrays
+    :type num_params: size_t
 
-    :param const struct optee_msg_param \*msg_params:
+    :param msg_params:
         OPTEE_MSG parameters
         Returns 0 on success or <0 on failure
+    :type msg_params: const struct optee_msg_param \*
 
 .. _`optee_to_msg_param`:
 
@@ -29,15 +32,18 @@ optee_to_msg_param
 
     convert from struct tee_params to OPTEE_MSG parameters
 
-    :param struct optee_msg_param \*msg_params:
+    :param msg_params:
         OPTEE_MSG parameters
+    :type msg_params: struct optee_msg_param \*
 
-    :param size_t num_params:
+    :param num_params:
         number of elements in the parameter arrays
+    :type num_params: size_t
 
-    :param const struct tee_param \*params:
+    :param params:
         subsystem itnernal parameter representation
         Returns 0 on success or <0 on failure
+    :type params: const struct tee_param \*
 
 .. This file was automatic generated / don't edit.
 

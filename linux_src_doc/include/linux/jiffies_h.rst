@@ -10,8 +10,9 @@ msecs_to_jiffies
 
     - convert milliseconds to jiffies
 
-    :param const unsigned int m:
+    :param m:
         time in milliseconds
+    :type m: const unsigned int
 
 .. _`msecs_to_jiffies.conversion-is-done-as-follows`:
 
@@ -47,8 +48,9 @@ usecs_to_jiffies
 
     - convert microseconds to jiffies
 
-    :param const unsigned int u:
+    :param u:
         time in microseconds
+    :type u: const unsigned int
 
 .. _`usecs_to_jiffies.conversion-is-done-as-follows`:
 

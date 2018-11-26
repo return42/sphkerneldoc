@@ -10,14 +10,17 @@ amdgpu_cs_parser_fini
 
     clean parser states
 
-    :param struct amdgpu_cs_parser \*parser:
+    :param parser:
         parser structure holding parsing context.
+    :type parser: struct amdgpu_cs_parser \*
 
-    :param int error:
+    :param error:
         error number
+    :type error: int
 
-    :param bool backoff:
+    :param backoff:
         *undescribed*
+    :type backoff: bool
 
 .. _`amdgpu_cs_parser_fini.description`:
 
@@ -36,14 +39,17 @@ amdgpu_cs_wait_ioctl
 
     wait for a command submission to finish
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data from userspace
+    :type data: void \*
 
-    :param struct drm_file \*filp:
+    :param filp:
         file private
+    :type filp: struct drm_file \*
 
 .. _`amdgpu_cs_wait_ioctl.description`:
 
@@ -61,14 +67,17 @@ amdgpu_cs_get_fence
 
     helper to get fence from drm_amdgpu_fence
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device
+    :type adev: struct amdgpu_device \*
 
-    :param struct drm_file \*filp:
+    :param filp:
         file private
+    :type filp: struct drm_file \*
 
-    :param struct drm_amdgpu_fence \*user:
+    :param user:
         drm_amdgpu_fence copied from user space
+    :type user: struct drm_amdgpu_fence \*
 
 .. _`amdgpu_cs_wait_all_fences`:
 
@@ -79,17 +88,21 @@ amdgpu_cs_wait_all_fences
 
     wait on all fences to signal
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device
+    :type adev: struct amdgpu_device \*
 
-    :param struct drm_file \*filp:
+    :param filp:
         file private
+    :type filp: struct drm_file \*
 
-    :param union drm_amdgpu_wait_fences \*wait:
+    :param wait:
         wait parameters
+    :type wait: union drm_amdgpu_wait_fences \*
 
-    :param struct drm_amdgpu_fence \*fences:
+    :param fences:
         array of drm_amdgpu_fence
+    :type fences: struct drm_amdgpu_fence \*
 
 .. _`amdgpu_cs_wait_any_fence`:
 
@@ -100,17 +113,21 @@ amdgpu_cs_wait_any_fence
 
     wait on any fence to signal
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device
+    :type adev: struct amdgpu_device \*
 
-    :param struct drm_file \*filp:
+    :param filp:
         file private
+    :type filp: struct drm_file \*
 
-    :param union drm_amdgpu_wait_fences \*wait:
+    :param wait:
         wait parameters
+    :type wait: union drm_amdgpu_wait_fences \*
 
-    :param struct drm_amdgpu_fence \*fences:
+    :param fences:
         array of drm_amdgpu_fence
+    :type fences: struct drm_amdgpu_fence \*
 
 .. _`amdgpu_cs_wait_fences_ioctl`:
 
@@ -121,14 +138,17 @@ amdgpu_cs_wait_fences_ioctl
 
     wait for multiple command submissions to finish
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data from userspace
+    :type data: void \*
 
-    :param struct drm_file \*filp:
+    :param filp:
         file private
+    :type filp: struct drm_file \*
 
 .. _`amdgpu_cs_find_mapping`:
 
@@ -139,17 +159,21 @@ amdgpu_cs_find_mapping
 
     find bo_va for VM address
 
-    :param struct amdgpu_cs_parser \*parser:
+    :param parser:
         command submission parser context
+    :type parser: struct amdgpu_cs_parser \*
 
-    :param uint64_t addr:
+    :param addr:
         VM address
+    :type addr: uint64_t
 
-    :param struct amdgpu_bo \*\*bo:
+    :param bo:
         resulting BO of the mapping found
+    :type bo: struct amdgpu_bo \*\*
 
-    :param struct amdgpu_bo_va_mapping \*\*map:
+    :param map:
         *undescribed*
+    :type map: struct amdgpu_bo_va_mapping \*\*
 
 .. _`amdgpu_cs_find_mapping.description`:
 

@@ -125,8 +125,9 @@ vmw_view
 
     Convert a struct vmw_resource to a struct vmw_view
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the resource to convert.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_view.description`:
 
@@ -144,11 +145,13 @@ vmw_view_commit_notify
 
     Notify that a view operation has been committed to hardware from a user-supplied command stream.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the view resource.
+    :type res: struct vmw_resource \*
 
-    :param enum vmw_cmdbuf_res_state state:
+    :param state:
         Indicating whether a creation or removal has been committed.
+    :type state: enum vmw_cmdbuf_res_state
 
 .. _`vmw_view_create`:
 
@@ -159,8 +162,9 @@ vmw_view_create
 
     Create a hardware view.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the view resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_view_create.description`:
 
@@ -179,8 +183,9 @@ vmw_view_destroy
 
     Destroy a hardware view.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the view resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_view_destroy.description`:
 
@@ -199,8 +204,9 @@ vmw_hw_view_destroy
 
     Destroy a hardware view as part of resource cleanup.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the view resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_hw_view_destroy.description`:
 
@@ -218,11 +224,13 @@ vmw_view_key
 
     Compute a view key suitable for the cmdbuf resource manager
 
-    :param u32 user_key:
+    :param user_key:
         The user-space id used for the view.
+    :type user_key: u32
 
-    :param enum vmw_view_type view_type:
+    :param view_type:
         The view type.
+    :type view_type: enum vmw_view_type
 
 .. _`vmw_view_key.description`:
 
@@ -240,11 +248,13 @@ vmw_view_id_ok
 
     Basic view id and type range checks.
 
-    :param u32 user_key:
+    :param user_key:
         The user-space id used for the view.
+    :type user_key: u32
 
-    :param enum vmw_view_type view_type:
+    :param view_type:
         The view type.
+    :type view_type: enum vmw_view_type
 
 .. _`vmw_view_id_ok.description`:
 
@@ -263,8 +273,9 @@ vmw_view_res_free
 
     resource res_free callback for view resources
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to a struct vmw_resource
+    :type res: struct vmw_resource \*
 
 .. _`vmw_view_res_free.description`:
 
@@ -282,31 +293,39 @@ vmw_view_add
 
     Create a view resource and stage it for addition as a command buffer managed resource.
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         Pointer to the compat shader manager identifying the shader namespace.
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param struct vmw_resource \*ctx:
+    :param ctx:
         Pointer to a struct vmw_resource identifying the active context.
+    :type ctx: struct vmw_resource \*
 
-    :param struct vmw_resource \*srf:
+    :param srf:
         Pointer to a struct vmw_resource identifying the surface the view
         points to.
+    :type srf: struct vmw_resource \*
 
-    :param enum vmw_view_type view_type:
+    :param view_type:
         The view type deduced from the view create command.
+    :type view_type: enum vmw_view_type
 
-    :param u32 user_key:
+    :param user_key:
         The key that is used to identify the shader. The key is
         unique to the view type and to the context.
+    :type user_key: u32
 
-    :param const void \*cmd:
+    :param cmd:
         Pointer to the view create command in the command stream.
+    :type cmd: const void \*
 
-    :param size_t cmd_size:
+    :param cmd_size:
         Size of the view create command in the command stream.
+    :type cmd_size: size_t
 
-    :param struct list_head \*list:
+    :param list:
         Caller's list of staged command buffer resource actions.
+    :type list: struct list_head \*
 
 .. _`vmw_view_remove`:
 
@@ -317,23 +336,28 @@ vmw_view_remove
 
     Stage a view for removal.
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         Pointer to the view manager identifying the shader namespace.
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param u32 user_key:
+    :param user_key:
         The key that is used to identify the view. The key is
         unique to the view type.
+    :type user_key: u32
 
-    :param enum vmw_view_type view_type:
+    :param view_type:
         View type
+    :type view_type: enum vmw_view_type
 
-    :param struct list_head \*list:
+    :param list:
         Caller's list of staged command buffer resource actions.
+    :type list: struct list_head \*
 
-    :param struct vmw_resource \*\*res_p:
+    :param res_p:
         If the resource is in an already committed state, points to the
         struct vmw_resource on successful return. The pointer will be
         non ref-counted.
+    :type res_p: struct vmw_resource \*\*
 
 .. _`vmw_view_cotable_list_destroy`:
 
@@ -344,14 +368,17 @@ vmw_view_cotable_list_destroy
 
     Evict all views belonging to a cotable.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct list_head \*list:
+    :param list:
         List of views belonging to a cotable.
+    :type list: struct list_head \*
 
-    :param bool readback:
+    :param readback:
         Unused. Needed for function interface only.
+    :type readback: bool
 
 .. _`vmw_view_cotable_list_destroy.description`:
 
@@ -372,11 +399,13 @@ vmw_view_surface_list_destroy
 
     Evict all views pointing to a surface
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a device private struct.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct list_head \*list:
+    :param list:
         List of views pointing to a surface.
+    :type list: struct list_head \*
 
 .. _`vmw_view_surface_list_destroy.description`:
 
@@ -395,8 +424,9 @@ vmw_view_srf
 
     Return a non-refcounted pointer to the surface a view is pointing to.
 
-    :param struct vmw_resource \*res:
+    :param res:
         pointer to a view resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_view_srf.description`:
 
@@ -415,14 +445,17 @@ vmw_view_lookup
 
     Look up a view.
 
-    :param struct vmw_cmdbuf_res_manager \*man:
+    :param man:
         The context's cmdbuf ref manager.
+    :type man: struct vmw_cmdbuf_res_manager \*
 
-    :param enum vmw_view_type view_type:
+    :param view_type:
         The view type.
+    :type view_type: enum vmw_view_type
 
-    :param u32 user_key:
+    :param user_key:
         The view user id.
+    :type user_key: u32
 
 .. _`vmw_view_lookup.description`:
 

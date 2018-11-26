@@ -10,8 +10,9 @@ __blk_release_queue
 
     release a request queue when it is no longer needed
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the release_work member of the request queue to be released
+    :type work: struct work_struct \*
 
 .. _`__blk_release_queue.description`:
 
@@ -43,8 +44,9 @@ blk_register_queue
 
     register a block layer queue with sysfs
 
-    :param struct gendisk \*disk:
+    :param disk:
         Disk of which the request queue should be registered with sysfs.
+    :type disk: struct gendisk \*
 
 .. _`blk_unregister_queue`:
 
@@ -55,8 +57,9 @@ blk_unregister_queue
 
     counterpart of \ :c:func:`blk_register_queue`\ 
 
-    :param struct gendisk \*disk:
+    :param disk:
         Disk of which the request queue should be unregistered from sysfs.
+    :type disk: struct gendisk \*
 
 .. _`blk_unregister_queue.note`:
 

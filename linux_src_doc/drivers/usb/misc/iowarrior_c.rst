@@ -8,8 +8,9 @@ iowarrior_delete
 
 .. c:function:: void iowarrior_delete(struct iowarrior *dev)
 
-    :param struct iowarrior \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct iowarrior \*
 
 .. _`iowarrior_read`:
 
@@ -18,17 +19,21 @@ iowarrior_read
 
 .. c:function:: ssize_t iowarrior_read(struct file *file, char __user *buffer, size_t count, loff_t *ppos)
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param char __user \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         *undescribed*
+    :type ppos: loff_t \*
 
 .. _`iowarrior_ioctl`:
 
@@ -37,14 +42,17 @@ iowarrior_ioctl
 
 .. c:function:: long iowarrior_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         *undescribed*
+    :type arg: unsigned long
 
 .. _`iowarrior_open`:
 
@@ -53,11 +61,13 @@ iowarrior_open
 
 .. c:function:: int iowarrior_open(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
 .. _`iowarrior_release`:
 
@@ -66,11 +76,13 @@ iowarrior_release
 
 .. c:function:: int iowarrior_release(struct inode *inode, struct file *file)
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
 .. _`iowarrior_probe`:
 
@@ -79,11 +91,13 @@ iowarrior_probe
 
 .. c:function:: int iowarrior_probe(struct usb_interface *interface, const struct usb_device_id *id)
 
-    :param struct usb_interface \*interface:
+    :param interface:
         *undescribed*
+    :type interface: struct usb_interface \*
 
-    :param const struct usb_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct usb_device_id \*
 
 .. _`iowarrior_probe.description`:
 
@@ -100,8 +114,9 @@ iowarrior_disconnect
 
 .. c:function:: void iowarrior_disconnect(struct usb_interface *interface)
 
-    :param struct usb_interface \*interface:
+    :param interface:
         *undescribed*
+    :type interface: struct usb_interface \*
 
 .. _`iowarrior_disconnect.description`:
 

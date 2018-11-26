@@ -1,30 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/hfi1/verbs.c
 
-.. _`hfi1_copy_sge`:
-
-hfi1_copy_sge
-=============
-
-.. c:function:: void hfi1_copy_sge(struct rvt_sge_state *ss, void *data, u32 length, bool release, bool copy_last)
-
-    copy data to SGE memory
-
-    :param struct rvt_sge_state \*ss:
-        the SGE state
-
-    :param void \*data:
-        the data to copy
-
-    :param u32 length:
-        the length of the data
-
-    :param bool release:
-        boolean to release MR
-
-    :param bool copy_last:
-        do a separate copy of the last 8 bytes
-
 .. _`hfi1_ib_rcv`:
 
 hfi1_ib_rcv
@@ -34,8 +10,9 @@ hfi1_ib_rcv
 
     process an incoming packet
 
-    :param struct hfi1_packet \*packet:
+    :param packet:
         data packet information
+    :type packet: struct hfi1_packet \*
 
 .. _`hfi1_ib_rcv.description`:
 
@@ -53,14 +30,17 @@ update_tx_opstats
 
     record stats by opcode \ ``qp``\ ; the qp
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param struct hfi1_pkt_state \*ps:
+    :param ps:
         transmit packet state
+    :type ps: struct hfi1_pkt_state \*
 
-    :param u32 plen:
+    :param plen:
         the plen in dwords
+    :type plen: u32
 
 .. _`update_tx_opstats.description`:
 
@@ -79,22 +59,27 @@ egress_pkey_check
 
     check P_KEY of a packet
 
-    :param struct hfi1_pportdata \*ppd:
+    :param ppd:
         Physical IB port data
+    :type ppd: struct hfi1_pportdata \*
 
-    :param u32 slid:
+    :param slid:
         SLID for packet
+    :type slid: u32
 
-    :param u16 pkey:
+    :param pkey:
         *undescribed*
+    :type pkey: u16
 
-    :param u8 sc5:
+    :param sc5:
         SC for packet
+    :type sc5: u8
 
-    :param int8_t s_pkey_index:
+    :param s_pkey_index:
         It will be used for look up optimization for kernel contexts
         only. If it is negative value, then it means user contexts is calling this
         function.
+    :type s_pkey_index: int8_t
 
 .. _`egress_pkey_check.description`:
 
@@ -119,11 +104,13 @@ get_send_routine
 
     choose an egress routine
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct rvt_qp \*
 
-    :param struct hfi1_pkt_state \*ps:
+    :param ps:
         *undescribed*
+    :type ps: struct hfi1_pkt_state \*
 
 .. _`get_send_routine.description`:
 
@@ -142,11 +129,13 @@ hfi1_verbs_send
 
     send a packet
 
-    :param struct rvt_qp \*qp:
+    :param qp:
         the QP to send on
+    :type qp: struct rvt_qp \*
 
-    :param struct hfi1_pkt_state \*ps:
+    :param ps:
         the state of the packet to send
+    :type ps: struct hfi1_pkt_state \*
 
 .. _`hfi1_verbs_send.description`:
 
@@ -165,8 +154,9 @@ hfi1_fill_device_attr
 
     Fill in rvt dev info device attributes.
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the device data structure
+    :type dd: struct hfi1_devdata \*
 
 .. _`hfi1_get_npkeys`:
 
@@ -177,8 +167,9 @@ hfi1_get_npkeys
 
     return the size of the PKEY table for context 0
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the hfi1_ib device
+    :type dd: struct hfi1_devdata \*
 
 .. _`hfi1_register_ib_device`:
 
@@ -189,9 +180,10 @@ hfi1_register_ib_device
 
     register our device with the infiniband core
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the device data structure
         Return 0 if successful, errno if unsuccessful.
+    :type dd: struct hfi1_devdata \*
 
 .. This file was automatic generated / don't edit.
 

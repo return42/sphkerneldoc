@@ -10,14 +10,17 @@ nfc_fw_download_done
 
     inform that a firmware download was completed
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device to which firmware was downloaded
+    :type dev: struct nfc_dev \*
 
-    :param const char \*firmware_name:
+    :param firmware_name:
         The firmware filename
+    :type firmware_name: const char \*
 
-    :param u32 result:
+    :param result:
         The positive value of a standard errno value
+    :type result: u32
 
 .. _`nfc_dev_up`:
 
@@ -28,8 +31,9 @@ nfc_dev_up
 
     turn on the NFC device
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device to be turned on
+    :type dev: struct nfc_dev \*
 
 .. _`nfc_dev_up.description`:
 
@@ -47,8 +51,9 @@ nfc_dev_down
 
     turn off the NFC device
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device to be turned off
+    :type dev: struct nfc_dev \*
 
 .. _`nfc_start_poll`:
 
@@ -59,14 +64,17 @@ nfc_start_poll
 
     start polling for nfc targets
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device that must start polling
+    :type dev: struct nfc_dev \*
 
-    :param u32 im_protocols:
+    :param im_protocols:
         *undescribed*
+    :type im_protocols: u32
 
-    :param u32 tm_protocols:
+    :param tm_protocols:
         *undescribed*
+    :type tm_protocols: u32
 
 .. _`nfc_start_poll.description`:
 
@@ -85,8 +93,9 @@ nfc_stop_poll
 
     stop polling for nfc targets
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device that must stop polling
+    :type dev: struct nfc_dev \*
 
 .. _`nfc_activate_target`:
 
@@ -97,14 +106,17 @@ nfc_activate_target
 
     prepare the target for data exchange
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device that found the target
+    :type dev: struct nfc_dev \*
 
-    :param u32 target_idx:
+    :param target_idx:
         index of the target that must be activated
+    :type target_idx: u32
 
-    :param u32 protocol:
+    :param protocol:
         nfc protocol that will be used for data exchange
+    :type protocol: u32
 
 .. _`nfc_deactivate_target`:
 
@@ -115,14 +127,17 @@ nfc_deactivate_target
 
     deactivate a nfc target
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device that found the target
+    :type dev: struct nfc_dev \*
 
-    :param u32 target_idx:
+    :param target_idx:
         index of the target that must be deactivated
+    :type target_idx: u32
 
-    :param u8 mode:
+    :param mode:
         *undescribed*
+    :type mode: u8
 
 .. _`nfc_data_exchange`:
 
@@ -133,20 +148,25 @@ nfc_data_exchange
 
     transceive data
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device that found the target
+    :type dev: struct nfc_dev \*
 
-    :param u32 target_idx:
+    :param target_idx:
         index of the target
+    :type target_idx: u32
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data to be sent
+    :type skb: struct sk_buff \*
 
-    :param data_exchange_cb_t cb:
+    :param cb:
         callback called when the response is received
+    :type cb: data_exchange_cb_t
 
-    :param void \*cb_context:
+    :param cb_context:
         parameter for the callback function
+    :type cb_context: void \*
 
 .. _`nfc_data_exchange.description`:
 
@@ -164,20 +184,25 @@ nfc_alloc_send_skb
 
     allocate a skb for data exchange responses
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct nfc_dev \*
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
-    :param unsigned int size:
+    :param size:
         size to allocate
+    :type size: unsigned int
 
-    :param unsigned int \*err:
+    :param err:
         *undescribed*
+    :type err: unsigned int \*
 
 .. _`nfc_alloc_recv_skb`:
 
@@ -188,11 +213,13 @@ nfc_alloc_recv_skb
 
     allocate a skb for data exchange responses
 
-    :param unsigned int size:
+    :param size:
         size to allocate
+    :type size: unsigned int
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp flags
+    :type gfp: gfp_t
 
 .. _`nfc_targets_found`:
 
@@ -203,14 +230,17 @@ nfc_targets_found
 
     inform that targets were found
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device that found the targets
+    :type dev: struct nfc_dev \*
 
-    :param struct nfc_target \*targets:
+    :param targets:
         array of nfc targets found
+    :type targets: struct nfc_target \*
 
-    :param int n_targets:
+    :param n_targets:
         *undescribed*
+    :type n_targets: int
 
 .. _`nfc_targets_found.description`:
 
@@ -247,11 +277,13 @@ nfc_target_lost
 
     inform that an activated target went out of field
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device that had the activated target in field
+    :type dev: struct nfc_dev \*
 
-    :param u32 target_idx:
+    :param target_idx:
         the nfc index of the target
+    :type target_idx: u32
 
 .. _`nfc_target_lost.description`:
 
@@ -279,17 +311,21 @@ nfc_allocate_device
 
     allocate a new nfc device
 
-    :param struct nfc_ops \*ops:
+    :param ops:
         device operations
+    :type ops: struct nfc_ops \*
 
-    :param u32 supported_protocols:
+    :param supported_protocols:
         NFC protocols supported by the device
+    :type supported_protocols: u32
 
-    :param int tx_headroom:
+    :param tx_headroom:
         *undescribed*
+    :type tx_headroom: int
 
-    :param int tx_tailroom:
+    :param tx_tailroom:
         *undescribed*
+    :type tx_tailroom: int
 
 .. _`nfc_register_device`:
 
@@ -300,8 +336,9 @@ nfc_register_device
 
     register a nfc device in the nfc subsystem
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device to register
+    :type dev: struct nfc_dev \*
 
 .. _`nfc_unregister_device`:
 
@@ -312,8 +349,9 @@ nfc_unregister_device
 
     unregister a nfc device in the nfc subsystem
 
-    :param struct nfc_dev \*dev:
+    :param dev:
         The nfc device to unregister
+    :type dev: struct nfc_dev \*
 
 .. This file was automatic generated / don't edit.
 

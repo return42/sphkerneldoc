@@ -10,11 +10,13 @@ cbus_send_bit
 
     sends one bit over the bus
 
-    :param struct cbus_host \*host:
+    :param host:
         the host we're using
+    :type host: struct cbus_host \*
 
-    :param unsigned bit:
+    :param bit:
         one bit of information to send
+    :type bit: unsigned
 
 .. _`cbus_send_data`:
 
@@ -25,14 +27,17 @@ cbus_send_data
 
     sends \ ``len``\  amount of data over the bus
 
-    :param struct cbus_host \*host:
+    :param host:
         the host we're using
+    :type host: struct cbus_host \*
 
-    :param unsigned data:
+    :param data:
         the data to send
+    :type data: unsigned
 
-    :param unsigned len:
+    :param len:
         size of the transfer
+    :type len: unsigned
 
 .. _`cbus_receive_bit`:
 
@@ -43,8 +48,9 @@ cbus_receive_bit
 
     receives one bit from the bus
 
-    :param struct cbus_host \*host:
+    :param host:
         the host we're using
+    :type host: struct cbus_host \*
 
 .. _`cbus_receive_word`:
 
@@ -55,8 +61,9 @@ cbus_receive_word
 
     receives 16-bit word from the bus
 
-    :param struct cbus_host \*host:
+    :param host:
         the host we're using
+    :type host: struct cbus_host \*
 
 .. _`cbus_transfer`:
 
@@ -67,20 +74,25 @@ cbus_transfer
 
     transfers data over the bus
 
-    :param struct cbus_host \*host:
+    :param host:
         the host we're using
+    :type host: struct cbus_host \*
 
-    :param char rw:
+    :param rw:
         read/write flag
+    :type rw: char
 
-    :param unsigned dev:
+    :param dev:
         device address
+    :type dev: unsigned
 
-    :param unsigned reg:
+    :param reg:
         register address
+    :type reg: unsigned
 
-    :param unsigned data:
+    :param data:
         if \ ``rw``\  == I2C_SBUS_WRITE data to send otherwise 0
+    :type data: unsigned
 
 .. This file was automatic generated / don't edit.
 

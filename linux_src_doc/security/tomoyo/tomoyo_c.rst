@@ -10,11 +10,13 @@ tomoyo_cred_alloc_blank
 
     Target for \ :c:func:`security_cred_alloc_blank`\ .
 
-    :param struct cred \*new:
+    :param new:
         Pointer to "struct cred".
+    :type new: struct cred \*
 
-    :param gfp_t gfp:
+    :param gfp:
         Memory allocation flags.
+    :type gfp: gfp_t
 
 .. _`tomoyo_cred_alloc_blank.description`:
 
@@ -32,14 +34,17 @@ tomoyo_cred_prepare
 
     Target for \ :c:func:`security_prepare_creds`\ .
 
-    :param struct cred \*new:
+    :param new:
         Pointer to "struct cred".
+    :type new: struct cred \*
 
-    :param const struct cred \*old:
+    :param old:
         Pointer to "struct cred".
+    :type old: const struct cred \*
 
-    :param gfp_t gfp:
+    :param gfp:
         Memory allocation flags.
+    :type gfp: gfp_t
 
 .. _`tomoyo_cred_prepare.description`:
 
@@ -57,11 +62,13 @@ tomoyo_cred_transfer
 
     Target for \ :c:func:`security_transfer_creds`\ .
 
-    :param struct cred \*new:
+    :param new:
         Pointer to "struct cred".
+    :type new: struct cred \*
 
-    :param const struct cred \*old:
+    :param old:
         Pointer to "struct cred".
+    :type old: const struct cred \*
 
 .. _`tomoyo_cred_free`:
 
@@ -72,8 +79,9 @@ tomoyo_cred_free
 
     Target for \ :c:func:`security_cred_free`\ .
 
-    :param struct cred \*cred:
+    :param cred:
         Pointer to "struct cred".
+    :type cred: struct cred \*
 
 .. _`tomoyo_bprm_set_creds`:
 
@@ -84,8 +92,9 @@ tomoyo_bprm_set_creds
 
     Target for \ :c:func:`security_bprm_set_creds`\ .
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         Pointer to "struct linux_binprm".
+    :type bprm: struct linux_binprm \*
 
 .. _`tomoyo_bprm_set_creds.description`:
 
@@ -103,8 +112,9 @@ tomoyo_bprm_check_security
 
     Target for \ :c:func:`security_bprm_check`\ .
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         Pointer to "struct linux_binprm".
+    :type bprm: struct linux_binprm \*
 
 .. _`tomoyo_bprm_check_security.description`:
 
@@ -122,8 +132,9 @@ tomoyo_inode_getattr
 
     Target for \ :c:func:`security_inode_getattr`\ .
 
-    :param const struct path \*path:
+    :param path:
         *undescribed*
+    :type path: const struct path \*
 
 .. _`tomoyo_inode_getattr.description`:
 
@@ -141,8 +152,9 @@ tomoyo_path_truncate
 
     Target for \ :c:func:`security_path_truncate`\ .
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
 .. _`tomoyo_path_truncate.description`:
 
@@ -160,11 +172,13 @@ tomoyo_path_unlink
 
     Target for \ :c:func:`security_path_unlink`\ .
 
-    :param const struct path \*parent:
+    :param parent:
         Pointer to "struct path".
+    :type parent: const struct path \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         Pointer to "struct dentry".
+    :type dentry: struct dentry \*
 
 .. _`tomoyo_path_unlink.description`:
 
@@ -182,14 +196,17 @@ tomoyo_path_mkdir
 
     Target for \ :c:func:`security_path_mkdir`\ .
 
-    :param const struct path \*parent:
+    :param parent:
         Pointer to "struct path".
+    :type parent: const struct path \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         Pointer to "struct dentry".
+    :type dentry: struct dentry \*
 
-    :param umode_t mode:
+    :param mode:
         DAC permission mode.
+    :type mode: umode_t
 
 .. _`tomoyo_path_mkdir.description`:
 
@@ -207,11 +224,13 @@ tomoyo_path_rmdir
 
     Target for \ :c:func:`security_path_rmdir`\ .
 
-    :param const struct path \*parent:
+    :param parent:
         Pointer to "struct path".
+    :type parent: const struct path \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         Pointer to "struct dentry".
+    :type dentry: struct dentry \*
 
 .. _`tomoyo_path_rmdir.description`:
 
@@ -229,14 +248,17 @@ tomoyo_path_symlink
 
     Target for \ :c:func:`security_path_symlink`\ .
 
-    :param const struct path \*parent:
+    :param parent:
         Pointer to "struct path".
+    :type parent: const struct path \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         Pointer to "struct dentry".
+    :type dentry: struct dentry \*
 
-    :param const char \*old_name:
+    :param old_name:
         Symlink's content.
+    :type old_name: const char \*
 
 .. _`tomoyo_path_symlink.description`:
 
@@ -254,17 +276,21 @@ tomoyo_path_mknod
 
     Target for \ :c:func:`security_path_mknod`\ .
 
-    :param const struct path \*parent:
+    :param parent:
         Pointer to "struct path".
+    :type parent: const struct path \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         Pointer to "struct dentry".
+    :type dentry: struct dentry \*
 
-    :param umode_t mode:
+    :param mode:
         DAC permission mode.
+    :type mode: umode_t
 
-    :param unsigned int dev:
+    :param dev:
         Device attributes.
+    :type dev: unsigned int
 
 .. _`tomoyo_path_mknod.description`:
 
@@ -282,14 +308,17 @@ tomoyo_path_link
 
     Target for \ :c:func:`security_path_link`\ .
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         Pointer to "struct dentry".
+    :type old_dentry: struct dentry \*
 
-    :param const struct path \*new_dir:
+    :param new_dir:
         Pointer to "struct path".
+    :type new_dir: const struct path \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         Pointer to "struct dentry".
+    :type new_dentry: struct dentry \*
 
 .. _`tomoyo_path_link.description`:
 
@@ -307,17 +336,21 @@ tomoyo_path_rename
 
     Target for \ :c:func:`security_path_rename`\ .
 
-    :param const struct path \*old_parent:
+    :param old_parent:
         Pointer to "struct path".
+    :type old_parent: const struct path \*
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         Pointer to "struct dentry".
+    :type old_dentry: struct dentry \*
 
-    :param const struct path \*new_parent:
+    :param new_parent:
         Pointer to "struct path".
+    :type new_parent: const struct path \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         Pointer to "struct dentry".
+    :type new_dentry: struct dentry \*
 
 .. _`tomoyo_path_rename.description`:
 
@@ -335,14 +368,17 @@ tomoyo_file_fcntl
 
     Target for \ :c:func:`security_file_fcntl`\ .
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         Command for \ :c:func:`fcntl`\ .
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         Argument for \ ``cmd``\ .
+    :type arg: unsigned long
 
 .. _`tomoyo_file_fcntl.description`:
 
@@ -356,15 +392,13 @@ Returns 0 on success, negative value otherwise.
 tomoyo_file_open
 ================
 
-.. c:function:: int tomoyo_file_open(struct file *f, const struct cred *cred)
+.. c:function:: int tomoyo_file_open(struct file *f)
 
     Target for \ :c:func:`security_file_open`\ .
 
-    :param struct file \*f:
+    :param f:
         Pointer to "struct file".
-
-    :param const struct cred \*cred:
-        Pointer to "struct cred".
+    :type f: struct file \*
 
 .. _`tomoyo_file_open.description`:
 
@@ -382,14 +416,17 @@ tomoyo_file_ioctl
 
     Target for \ :c:func:`security_file_ioctl`\ .
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         Command for \ :c:func:`ioctl`\ .
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         Argument for \ ``cmd``\ .
+    :type arg: unsigned long
 
 .. _`tomoyo_file_ioctl.description`:
 
@@ -407,11 +444,13 @@ tomoyo_path_chmod
 
     Target for \ :c:func:`security_path_chmod`\ .
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
-    :param umode_t mode:
+    :param mode:
         DAC permission mode.
+    :type mode: umode_t
 
 .. _`tomoyo_path_chmod.description`:
 
@@ -429,14 +468,17 @@ tomoyo_path_chown
 
     Target for \ :c:func:`security_path_chown`\ .
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
-    :param kuid_t uid:
+    :param uid:
         Owner ID.
+    :type uid: kuid_t
 
-    :param kgid_t gid:
+    :param gid:
         Group ID.
+    :type gid: kgid_t
 
 .. _`tomoyo_path_chown.description`:
 
@@ -454,8 +496,9 @@ tomoyo_path_chroot
 
     Target for \ :c:func:`security_path_chroot`\ .
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
 .. _`tomoyo_path_chroot.description`:
 
@@ -473,20 +516,25 @@ tomoyo_sb_mount
 
     Target for \ :c:func:`security_sb_mount`\ .
 
-    :param const char \*dev_name:
+    :param dev_name:
         Name of device file. Maybe NULL.
+    :type dev_name: const char \*
 
-    :param const struct path \*path:
+    :param path:
         Pointer to "struct path".
+    :type path: const struct path \*
 
-    :param const char \*type:
+    :param type:
         Name of filesystem type. Maybe NULL.
+    :type type: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         Mount options.
+    :type flags: unsigned long
 
-    :param void \*data:
+    :param data:
         Optional data. Maybe NULL.
+    :type data: void \*
 
 .. _`tomoyo_sb_mount.description`:
 
@@ -504,11 +552,13 @@ tomoyo_sb_umount
 
     Target for \ :c:func:`security_sb_umount`\ .
 
-    :param struct vfsmount \*mnt:
+    :param mnt:
         Pointer to "struct vfsmount".
+    :type mnt: struct vfsmount \*
 
-    :param int flags:
+    :param flags:
         Unmount options.
+    :type flags: int
 
 .. _`tomoyo_sb_umount.description`:
 
@@ -526,11 +576,13 @@ tomoyo_sb_pivotroot
 
     Target for \ :c:func:`security_sb_pivotroot`\ .
 
-    :param const struct path \*old_path:
+    :param old_path:
         Pointer to "struct path".
+    :type old_path: const struct path \*
 
-    :param const struct path \*new_path:
+    :param new_path:
         Pointer to "struct path".
+    :type new_path: const struct path \*
 
 .. _`tomoyo_sb_pivotroot.description`:
 
@@ -548,11 +600,13 @@ tomoyo_socket_listen
 
     Check permission for \ :c:func:`listen`\ .
 
-    :param struct socket \*sock:
+    :param sock:
         Pointer to "struct socket".
+    :type sock: struct socket \*
 
-    :param int backlog:
+    :param backlog:
         Backlog parameter.
+    :type backlog: int
 
 .. _`tomoyo_socket_listen.description`:
 
@@ -570,14 +624,17 @@ tomoyo_socket_connect
 
     Check permission for \ :c:func:`connect`\ .
 
-    :param struct socket \*sock:
+    :param sock:
         Pointer to "struct socket".
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         Pointer to "struct sockaddr".
+    :type addr: struct sockaddr \*
 
-    :param int addr_len:
+    :param addr_len:
         Size of \ ``addr``\ .
+    :type addr_len: int
 
 .. _`tomoyo_socket_connect.description`:
 
@@ -595,14 +652,17 @@ tomoyo_socket_bind
 
     Check permission for \ :c:func:`bind`\ .
 
-    :param struct socket \*sock:
+    :param sock:
         Pointer to "struct socket".
+    :type sock: struct socket \*
 
-    :param struct sockaddr \*addr:
+    :param addr:
         Pointer to "struct sockaddr".
+    :type addr: struct sockaddr \*
 
-    :param int addr_len:
+    :param addr_len:
         Size of \ ``addr``\ .
+    :type addr_len: int
 
 .. _`tomoyo_socket_bind.description`:
 
@@ -620,14 +680,17 @@ tomoyo_socket_sendmsg
 
     Check permission for \ :c:func:`sendmsg`\ .
 
-    :param struct socket \*sock:
+    :param sock:
         Pointer to "struct socket".
+    :type sock: struct socket \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         Pointer to "struct msghdr".
+    :type msg: struct msghdr \*
 
-    :param int size:
+    :param size:
         Size of message.
+    :type size: int
 
 .. _`tomoyo_socket_sendmsg.description`:
 
@@ -645,8 +708,9 @@ tomoyo_init
 
     Register TOMOYO Linux as a LSM module.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_init.description`:
 

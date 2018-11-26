@@ -440,7 +440,7 @@ Definition
         size_t cacheline[SMEM_HOST_COUNT];
         u32 item_count;
         unsigned num_regions;
-        struct smem_region regions[0];
+        struct smem_region regions[];
     }
 
 .. _`qcom_smem.members`:
@@ -485,14 +485,17 @@ qcom_smem_alloc
 
     allocate space for a smem item
 
-    :param unsigned host:
+    :param host:
         remote processor id, or -1
+    :type host: unsigned
 
-    :param unsigned item:
+    :param item:
         smem item handle
+    :type item: unsigned
 
-    :param size_t size:
+    :param size:
         number of bytes to be allocated
+    :type size: size_t
 
 .. _`qcom_smem_alloc.description`:
 
@@ -511,14 +514,17 @@ qcom_smem_get
 
     resolve ptr of size of a smem item
 
-    :param unsigned host:
+    :param host:
         the remote processor, or -1
+    :type host: unsigned
 
-    :param unsigned item:
+    :param item:
         smem item handle
+    :type item: unsigned
 
-    :param size_t \*size:
+    :param size:
         pointer to be filled out with size of the item
+    :type size: size_t \*
 
 .. _`qcom_smem_get.description`:
 
@@ -537,8 +543,9 @@ qcom_smem_get_free_space
 
     retrieve amount of free space in a partition
 
-    :param unsigned host:
+    :param host:
         the remote processor identifying a partition, or -1
+    :type host: unsigned
 
 .. _`qcom_smem_get_free_space.description`:
 
@@ -557,8 +564,9 @@ qcom_smem_virt_to_phys
 
     return the physical address associated with an smem item pointer (previously returned by \ :c:func:`qcom_smem_get`\ 
 
-    :param void \*p:
+    :param p:
         the virtual address to convert
+    :type p: void \*
 
 .. _`qcom_smem_virt_to_phys.description`:
 

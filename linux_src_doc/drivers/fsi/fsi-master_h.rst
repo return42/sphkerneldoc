@@ -10,8 +10,9 @@ fsi_master_register
 
     the \ :c:func:`fsi_master_register`\  and \ :c:func:`fsi_master_unregister`\  functions will take ownership of the master, and ->dev in particular. The registration path performs a \ :c:func:`get_device`\ , which takes the first reference on the device. Similarly, the unregistration path performs a \ :c:func:`put_device`\ , which may well drop the last reference.
 
-    :param struct fsi_master \*master:
+    :param master:
         *undescribed*
+    :type master: struct fsi_master \*
 
 .. _`fsi_master_register.description`:
 

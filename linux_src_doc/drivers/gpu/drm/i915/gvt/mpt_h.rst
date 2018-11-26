@@ -21,14 +21,17 @@ intel_gvt_hypervisor_host_init
 
     init GVT-g host side
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param void \*gvt:
+    :param gvt:
         *undescribed*
+    :type gvt: void \*
 
-    :param const void \*ops:
+    :param ops:
         *undescribed*
+    :type ops: const void \*
 
 .. _`intel_gvt_hypervisor_host_init.return`:
 
@@ -46,11 +49,13 @@ intel_gvt_hypervisor_host_exit
 
     exit GVT-g host side
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param void \*gvt:
+    :param gvt:
         *undescribed*
+    :type gvt: void \*
 
 .. _`intel_gvt_hypervisor_attach_vgpu`:
 
@@ -61,8 +66,9 @@ intel_gvt_hypervisor_attach_vgpu
 
     call hypervisor to initialize vGPU related stuffs inside hypervisor.
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         *undescribed*
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_hypervisor_attach_vgpu.return`:
 
@@ -80,8 +86,9 @@ intel_gvt_hypervisor_detach_vgpu
 
     call hypervisor to release vGPU related stuffs inside hypervisor.
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         *undescribed*
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_hypervisor_detach_vgpu.return`:
 
@@ -99,8 +106,9 @@ intel_gvt_hypervisor_inject_msi
 
     inject a MSI interrupt into vGPU
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         *undescribed*
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_hypervisor_inject_msi.return`:
 
@@ -118,8 +126,9 @@ intel_gvt_hypervisor_virt_to_mfn
 
     translate a host VA into MFN
 
-    :param void \*p:
+    :param p:
         host kernel virtual address
+    :type p: void \*
 
 .. _`intel_gvt_hypervisor_virt_to_mfn.return`:
 
@@ -137,11 +146,13 @@ intel_gvt_hypervisor_enable_page_track
 
     track a guest page
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
+    :param gfn:
         the gfn of guest
+    :type gfn: unsigned long
 
 .. _`intel_gvt_hypervisor_enable_page_track.return`:
 
@@ -159,11 +170,13 @@ intel_gvt_hypervisor_disable_page_track
 
     untrack a guest page
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
+    :param gfn:
         the gfn of guest
+    :type gfn: unsigned long
 
 .. _`intel_gvt_hypervisor_disable_page_track.return`:
 
@@ -181,17 +194,21 @@ intel_gvt_hypervisor_read_gpa
 
     copy data from GPA to host data buffer
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gpa:
+    :param gpa:
         guest physical address
+    :type gpa: unsigned long
 
-    :param void \*buf:
+    :param buf:
         host data buffer
+    :type buf: void \*
 
-    :param unsigned long len:
+    :param len:
         data length
+    :type len: unsigned long
 
 .. _`intel_gvt_hypervisor_read_gpa.return`:
 
@@ -209,17 +226,21 @@ intel_gvt_hypervisor_write_gpa
 
     copy data from host data buffer to GPA
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gpa:
+    :param gpa:
         guest physical address
+    :type gpa: unsigned long
 
-    :param void \*buf:
+    :param buf:
         host data buffer
+    :type buf: void \*
 
-    :param unsigned long len:
+    :param len:
         data length
+    :type len: unsigned long
 
 .. _`intel_gvt_hypervisor_write_gpa.return`:
 
@@ -237,11 +258,13 @@ intel_gvt_hypervisor_gfn_to_mfn
 
     translate a GFN to MFN
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
+    :param gfn:
         *undescribed*
+    :type gfn: unsigned long
 
 .. _`intel_gvt_hypervisor_gfn_to_mfn.return`:
 
@@ -255,18 +278,25 @@ MFN on success, INTEL_GVT_INVALID_ADDR if failed.
 intel_gvt_hypervisor_dma_map_guest_page
 =======================================
 
-.. c:function:: int intel_gvt_hypervisor_dma_map_guest_page(struct intel_vgpu *vgpu, unsigned long gfn, dma_addr_t *dma_addr)
+.. c:function:: int intel_gvt_hypervisor_dma_map_guest_page(struct intel_vgpu *vgpu, unsigned long gfn, unsigned long size, dma_addr_t *dma_addr)
 
     setup dma map for guest page
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
-        *undescribed*
+    :param gfn:
+        guest pfn
+    :type gfn: unsigned long
 
-    :param dma_addr_t \*dma_addr:
+    :param size:
+        page size
+    :type size: unsigned long
+
+    :param dma_addr:
         retrieve allocated dma addr
+    :type dma_addr: dma_addr_t \*
 
 .. _`intel_gvt_hypervisor_dma_map_guest_page.return`:
 
@@ -284,11 +314,13 @@ intel_gvt_hypervisor_dma_unmap_guest_page
 
     cancel dma map for guest page
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         the mapped dma addr
+    :type dma_addr: dma_addr_t
 
 .. _`intel_gvt_hypervisor_map_gfn_to_mfn`:
 
@@ -299,20 +331,25 @@ intel_gvt_hypervisor_map_gfn_to_mfn
 
     map a GFN region to MFN
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
+    :param gfn:
         guest PFN
+    :type gfn: unsigned long
 
-    :param unsigned long mfn:
+    :param mfn:
         host PFN
+    :type mfn: unsigned long
 
-    :param unsigned int nr:
+    :param nr:
         amount of PFNs
+    :type nr: unsigned int
 
-    :param bool map:
+    :param map:
         map or unmap
+    :type map: bool
 
 .. _`intel_gvt_hypervisor_map_gfn_to_mfn.return`:
 
@@ -330,17 +367,21 @@ intel_gvt_hypervisor_set_trap_area
 
     Trap a guest PA region
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param u64 start:
+    :param start:
         the beginning of the guest physical address region
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         the end of the guest physical address region
+    :type end: u64
 
-    :param bool map:
+    :param map:
         map or unmap
+    :type map: bool
 
 .. _`intel_gvt_hypervisor_set_trap_area.return`:
 
@@ -358,8 +399,9 @@ intel_gvt_hypervisor_set_opregion
 
     Set opregion for guest
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_hypervisor_set_opregion.return`:
 
@@ -377,8 +419,9 @@ intel_gvt_hypervisor_get_vfio_device
 
     increase vfio device ref count
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_hypervisor_get_vfio_device.return`:
 
@@ -396,8 +439,9 @@ intel_gvt_hypervisor_put_vfio_device
 
     decrease vfio device ref count
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
 .. _`intel_gvt_hypervisor_put_vfio_device.return`:
 
@@ -415,11 +459,13 @@ intel_gvt_hypervisor_is_valid_gfn
 
     check if a visible gfn
 
-    :param struct intel_vgpu \*vgpu:
+    :param vgpu:
         a vGPU
+    :type vgpu: struct intel_vgpu \*
 
-    :param unsigned long gfn:
+    :param gfn:
         guest PFN
+    :type gfn: unsigned long
 
 .. _`intel_gvt_hypervisor_is_valid_gfn.return`:
 

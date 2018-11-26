@@ -10,8 +10,9 @@ ath10k_hw_qca6174_enable_pll_clock
 
     enable the qca6174 hw pll clock
 
-    :param struct ath10k \*ar:
+    :param ar:
         the ath10k blob
+    :type ar: struct ath10k \*
 
 .. _`ath10k_hw_qca6174_enable_pll_clock.description`:
 

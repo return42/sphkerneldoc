@@ -10,8 +10,9 @@ module_pcmcia_driver
 
     Helper macro for registering a pcmcia driver
 
-    :param  __pcmcia_driver:
+    :param __pcmcia_driver:
         pcmcia_driver struct
+    :type __pcmcia_driver: 
 
 .. _`module_pcmcia_driver.description`:
 

@@ -10,9 +10,10 @@ isci_register_sas_ha
 
     This method initializes various lldd specific members of the sas_ha struct and calls the libsas \ :c:func:`sas_register_ha`\  function.
 
-    :param struct isci_host \*isci_host:
+    :param isci_host:
         This parameter specifies the lldd specific wrapper for the
         libsas sas_ha struct.
+    :type isci_host: struct isci_host \*
 
 .. _`isci_register_sas_ha.description`:
 

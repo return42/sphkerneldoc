@@ -10,8 +10,9 @@ is_power_of_2
 
     check if a value is a power of two
 
-    :param unsigned long n:
+    :param n:
         the value to check
+    :type n: unsigned long
 
 .. _`is_power_of_2.description`:
 
@@ -37,8 +38,9 @@ __roundup_pow_of_two
 
     round up to nearest power of two
 
-    :param unsigned long n:
+    :param n:
         value to round up
+    :type n: unsigned long
 
 .. _`__rounddown_pow_of_two`:
 
@@ -49,8 +51,9 @@ __rounddown_pow_of_two
 
     round down to nearest power of two
 
-    :param unsigned long n:
+    :param n:
         value to round down
+    :type n: unsigned long
 
 .. _`const_ilog2`:
 
@@ -61,8 +64,9 @@ const_ilog2
 
     log base 2 of 32-bit or a 64-bit constant unsigned value
 
-    :param  n:
+    :param n:
         parameter
+    :type n: 
 
 .. _`const_ilog2.description`:
 
@@ -81,8 +85,9 @@ ilog2
 
     log base 2 of 32-bit or a 64-bit unsigned value
 
-    :param  n:
+    :param n:
         parameter
+    :type n: 
 
 .. _`ilog2.description`:
 
@@ -104,8 +109,9 @@ roundup_pow_of_two
 
     round the given value up to nearest power of two
 
-    :param  n:
+    :param n:
         parameter
+    :type n: 
 
 .. _`roundup_pow_of_two.description`:
 
@@ -125,8 +131,9 @@ rounddown_pow_of_two
 
     round the given value down to nearest power of two
 
-    :param  n:
+    :param n:
         parameter
+    :type n: 
 
 .. _`rounddown_pow_of_two.description`:
 
@@ -146,8 +153,9 @@ order_base_2
 
     calculate the (rounded up) base 2 order of the argument
 
-    :param  n:
+    :param n:
         parameter
+    :type n: 
 
 .. _`order_base_2.the-first-few-values-calculated-by-this-routine`:
 

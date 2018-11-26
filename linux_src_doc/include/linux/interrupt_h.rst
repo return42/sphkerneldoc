@@ -168,11 +168,13 @@ irq_set_affinity
 
     Set the irq affinity of a given irq
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt to set affinity
+    :type irq: unsigned int
 
-    :param const struct cpumask \*cpumask:
+    :param cpumask:
         cpumask
+    :type cpumask: const struct cpumask \*
 
 .. _`irq_set_affinity.description`:
 
@@ -190,11 +192,13 @@ irq_force_affinity
 
     Force the irq affinity of a given irq
 
-    :param unsigned int irq:
+    :param irq:
         Interrupt to set affinity
+    :type irq: unsigned int
 
-    :param const struct cpumask \*cpumask:
+    :param cpumask:
         cpumask
+    :type cpumask: const struct cpumask \*
 
 .. _`irq_force_affinity.description`:
 

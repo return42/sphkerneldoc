@@ -10,17 +10,21 @@
 
     Lookup DCO used by j-type DPLL
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         pointer to a DPLL struct clk
+    :type clk: struct clk_hw_omap \*
 
-    :param u8 \*dco:
+    :param dco:
         digital control oscillator selector
+    :type dco: u8 \*
 
-    :param u16 m:
+    :param m:
         DPLL multiplier to set
+    :type m: u16
 
-    :param u8 n:
+    :param n:
         DPLL divider to set
+    :type n: u8
 
 .. _`_lookup_dco.description`:
 
@@ -41,17 +45,21 @@ out in non-multi-OMAP builds for those chips?
 
     Calculate sigma delta divider for j-type DPLL
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         pointer to a DPLL struct clk
+    :type clk: struct clk_hw_omap \*
 
-    :param u8 \*sd_div:
+    :param sd_div:
         target sigma-delta divider
+    :type sd_div: u8 \*
 
-    :param u16 m:
+    :param m:
         DPLL multiplier to set
+    :type m: u16
 
-    :param u8 n:
+    :param n:
         DPLL divider to set
+    :type n: u8
 
 .. _`_lookup_sddiv.description`:
 
@@ -72,11 +80,13 @@ omap3_dpll_recalc
 
     recalculate DPLL rate
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         *undescribed*
+    :type parent_rate: unsigned long
 
 .. _`omap3_dpll_recalc.description`:
 
@@ -94,8 +104,9 @@ omap3_noncore_dpll_enable
 
     instruct a DPLL to enter bypass or lock mode
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
 .. _`omap3_noncore_dpll_enable.description`:
 
@@ -121,8 +132,9 @@ omap3_noncore_dpll_disable
 
     instruct a DPLL to enter low-power stop
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
 .. _`omap3_noncore_dpll_disable.description`:
 
@@ -141,11 +153,13 @@ omap3_noncore_dpll_determine_rate
 
     determine rate for a DPLL
 
-    :param struct clk_hw \*hw:
+    :param hw:
         pointer to the clock to determine rate for
+    :type hw: struct clk_hw \*
 
-    :param struct clk_rate_request \*req:
+    :param req:
         target rate request
+    :type req: struct clk_rate_request \*
 
 .. _`omap3_noncore_dpll_determine_rate.description`:
 
@@ -166,11 +180,13 @@ omap3_noncore_dpll_set_parent
 
     set parent for a DPLL clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         pointer to the clock to set parent for
+    :type hw: struct clk_hw \*
 
-    :param u8 index:
+    :param index:
         parent index to select
+    :type index: u8
 
 .. _`omap3_noncore_dpll_set_parent.description`:
 
@@ -189,14 +205,17 @@ omap3_noncore_dpll_set_rate
 
     set rate for a DPLL clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         pointer to the clock to set parent for
+    :type hw: struct clk_hw \*
 
-    :param unsigned long rate:
+    :param rate:
         target rate for the clock
+    :type rate: unsigned long
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         rate of the parent clock
+    :type parent_rate: unsigned long
 
 .. _`omap3_noncore_dpll_set_rate.description`:
 
@@ -217,17 +236,21 @@ omap3_noncore_dpll_set_rate_and_parent
 
     set rate and parent for a DPLL clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         pointer to the clock to set rate and parent for
+    :type hw: struct clk_hw \*
 
-    :param unsigned long rate:
+    :param rate:
         target rate for the DPLL
+    :type rate: unsigned long
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         clock rate of the DPLL parent
+    :type parent_rate: unsigned long
 
-    :param u8 index:
+    :param index:
         new parent index for the DPLL, 0 - reference, 1 - bypass
+    :type index: u8
 
 .. _`omap3_noncore_dpll_set_rate_and_parent.description`:
 
@@ -249,8 +272,9 @@ omap3_dpll_autoidle_read
 
     read a DPLL's autoidle bits
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* of the DPLL to read
+    :type clk: struct clk_hw_omap \*
 
 .. _`omap3_dpll_autoidle_read.description`:
 
@@ -270,8 +294,9 @@ omap3_dpll_allow_idle
 
     enable DPLL autoidle bits
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* of the DPLL to operate on
+    :type clk: struct clk_hw_omap \*
 
 .. _`omap3_dpll_allow_idle.description`:
 
@@ -292,8 +317,9 @@ omap3_dpll_deny_idle
 
     prevent DPLL from automatically idling
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* of the DPLL to operate on
+    :type clk: struct clk_hw_omap \*
 
 .. _`omap3_dpll_deny_idle.description`:
 
@@ -311,11 +337,13 @@ omap3_clkoutx2_recalc
 
     recalculate DPLL X2 output virtual clock rate
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         *undescribed*
+    :type parent_rate: unsigned long
 
 .. _`omap3_clkoutx2_recalc.description`:
 
@@ -324,6 +352,90 @@ Description
 
 Using parent clock DPLL data, look up DPLL state.  If locked, set our
 rate to the dpll_clk \* 2; otherwise, just use dpll_clk.
+
+.. _`omap3_core_dpll_save_context`:
+
+omap3_core_dpll_save_context
+============================
+
+.. c:function:: int omap3_core_dpll_save_context(struct clk_hw *hw)
+
+    Save the m and n values of the divider
+
+    :param hw:
+        pointer  struct clk_hw
+    :type hw: struct clk_hw \*
+
+.. _`omap3_core_dpll_save_context.description`:
+
+Description
+-----------
+
+Before the dpll registers are lost save the last rounded rate m and n
+and the enable mask.
+
+.. _`omap3_core_dpll_restore_context`:
+
+omap3_core_dpll_restore_context
+===============================
+
+.. c:function:: void omap3_core_dpll_restore_context(struct clk_hw *hw)
+
+    restore the m and n values of the divider
+
+    :param hw:
+        pointer  struct clk_hw
+    :type hw: struct clk_hw \*
+
+.. _`omap3_core_dpll_restore_context.description`:
+
+Description
+-----------
+
+Restore the last rounded rate m and n
+and the enable mask.
+
+.. _`omap3_noncore_dpll_save_context`:
+
+omap3_noncore_dpll_save_context
+===============================
+
+.. c:function:: int omap3_noncore_dpll_save_context(struct clk_hw *hw)
+
+    Save the m and n values of the divider
+
+    :param hw:
+        pointer  struct clk_hw
+    :type hw: struct clk_hw \*
+
+.. _`omap3_noncore_dpll_save_context.description`:
+
+Description
+-----------
+
+Before the dpll registers are lost save the last rounded rate m and n
+and the enable mask.
+
+.. _`omap3_noncore_dpll_restore_context`:
+
+omap3_noncore_dpll_restore_context
+==================================
+
+.. c:function:: void omap3_noncore_dpll_restore_context(struct clk_hw *hw)
+
+    restore the m and n values of the divider
+
+    :param hw:
+        pointer  struct clk_hw
+    :type hw: struct clk_hw \*
+
+.. _`omap3_noncore_dpll_restore_context.description`:
+
+Description
+-----------
+
+Restore the last rounded rate m and n
+and the enable mask.
 
 .. _`omap3_dpll4_set_rate`:
 
@@ -334,14 +446,17 @@ omap3_dpll4_set_rate
 
     set rate for omap3 per-dpll
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to change
+    :type hw: struct clk_hw \*
 
-    :param unsigned long rate:
+    :param rate:
         target rate for clock
+    :type rate: unsigned long
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         rate of the parent clock
+    :type parent_rate: unsigned long
 
 .. _`omap3_dpll4_set_rate.description`:
 
@@ -362,17 +477,21 @@ omap3_dpll4_set_rate_and_parent
 
     set rate and parent for omap3 per-dpll
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to change
+    :type hw: struct clk_hw \*
 
-    :param unsigned long rate:
+    :param rate:
         target rate for clock
+    :type rate: unsigned long
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         rate of the parent clock
+    :type parent_rate: unsigned long
 
-    :param u8 index:
+    :param index:
         parent index, 0 - reference clock, 1 - bypass clock
+    :type index: u8
 
 .. _`omap3_dpll4_set_rate_and_parent.description`:
 
@@ -393,14 +512,17 @@ omap3_dpll5_set_rate
 
     set rate for omap3 dpll5
 
-    :param struct clk_hw \*hw:
+    :param hw:
         clock to change
+    :type hw: struct clk_hw \*
 
-    :param unsigned long rate:
+    :param rate:
         target rate for clock
+    :type rate: unsigned long
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         rate of the parent clock
+    :type parent_rate: unsigned long
 
 .. _`omap3_dpll5_set_rate.description`:
 

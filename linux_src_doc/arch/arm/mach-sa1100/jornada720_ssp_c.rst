@@ -10,8 +10,9 @@ DEFINE_SPINLOCK
 
     sa1100/jornada720_ssp.c
 
-    :param  jornada_ssp_lock:
+    :param jornada_ssp_lock:
         *undescribed*
+    :type jornada_ssp_lock: 
 
 .. _`define_spinlock.description`:
 
@@ -36,8 +37,9 @@ jornada_ssp_reverse
 
     reverses input byte
 
-    :param u8 byte:
+    :param byte:
         *undescribed*
+    :type byte: u8
 
 .. _`jornada_ssp_reverse.description`:
 
@@ -56,8 +58,9 @@ jornada_ssp_byte
 
     waits for ready ssp bus and sends byte
 
-    :param u8 byte:
+    :param byte:
         *undescribed*
+    :type byte: u8
 
 .. _`jornada_ssp_byte.description`:
 
@@ -79,8 +82,9 @@ jornada_ssp_inout
 
     decide if input is command or trading byte
 
-    :param u8 byte:
+    :param byte:
         *undescribed*
+    :type byte: u8
 
 .. _`jornada_ssp_inout.description`:
 
@@ -99,8 +103,9 @@ jornada_ssp_start
 
     enable mcu
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`jornada_ssp_end`:
 
@@ -111,8 +116,9 @@ jornada_ssp_end
 
     disable mcu and turn off lock
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

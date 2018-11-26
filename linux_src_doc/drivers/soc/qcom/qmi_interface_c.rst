@@ -10,20 +10,25 @@ qmi_recv_new_server
 
     handler of NEW_SERVER control message
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         qmi handle
+    :type qmi: struct qmi_handle \*
 
-    :param unsigned int service:
+    :param service:
         service id of the new server
+    :type service: unsigned int
 
-    :param unsigned int instance:
+    :param instance:
         instance id of the new server
+    :type instance: unsigned int
 
-    :param unsigned int node:
+    :param node:
         node of the new server
+    :type node: unsigned int
 
-    :param unsigned int port:
+    :param port:
         port of the new server
+    :type port: unsigned int
 
 .. _`qmi_recv_new_server.description`:
 
@@ -42,14 +47,17 @@ qmi_recv_del_server
 
     handler of DEL_SERVER control message
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         qmi handle
+    :type qmi: struct qmi_handle \*
 
-    :param unsigned int node:
+    :param node:
         node of the dying server, a value of -1 matches all nodes
+    :type node: unsigned int
 
-    :param unsigned int port:
+    :param port:
         port of the dying server, a value of -1 matches all ports
+    :type port: unsigned int
 
 .. _`qmi_recv_del_server.description`:
 
@@ -68,11 +76,13 @@ qmi_recv_bye
 
     handler of BYE control message
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         qmi handle
+    :type qmi: struct qmi_handle \*
 
-    :param unsigned int node:
+    :param node:
         id of the dying node
+    :type node: unsigned int
 
 .. _`qmi_recv_bye.description`:
 
@@ -92,14 +102,17 @@ qmi_recv_del_client
 
     handler of DEL_CLIENT control message
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         qmi handle
+    :type qmi: struct qmi_handle \*
 
-    :param unsigned int node:
+    :param node:
         node of the dying client
+    :type node: unsigned int
 
-    :param unsigned int port:
+    :param port:
         port of the dying client
+    :type port: unsigned int
 
 .. _`qmi_recv_del_client.description`:
 
@@ -117,17 +130,21 @@ qmi_add_lookup
 
     register a new lookup with the name service
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         qmi handle
+    :type qmi: struct qmi_handle \*
 
-    :param unsigned int service:
+    :param service:
         service id of the request
+    :type service: unsigned int
 
-    :param unsigned int version:
+    :param version:
         version number of the request
+    :type version: unsigned int
 
-    :param unsigned int instance:
+    :param instance:
         instance id of the request
+    :type instance: unsigned int
 
 .. _`qmi_add_lookup.description`:
 
@@ -154,17 +171,21 @@ qmi_add_server
 
     register a service with the name service
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         qmi handle
+    :type qmi: struct qmi_handle \*
 
-    :param unsigned int service:
+    :param service:
         type of the service
+    :type service: unsigned int
 
-    :param unsigned int version:
+    :param version:
         version of the service
+    :type version: unsigned int
 
-    :param unsigned int instance:
+    :param instance:
         instance of the service
+    :type instance: unsigned int
 
 .. _`qmi_add_server.description`:
 
@@ -190,17 +211,21 @@ qmi_txn_init
 
     allocate transaction id within the given QMI handle
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         QMI handle
+    :type qmi: struct qmi_handle \*
 
-    :param struct qmi_txn \*txn:
+    :param txn:
         transaction context
+    :type txn: struct qmi_txn \*
 
-    :param struct qmi_elem_info \*ei:
+    :param ei:
         description of how to decode a matching response (optional)
+    :type ei: struct qmi_elem_info \*
 
-    :param void \*c_struct:
+    :param c_struct:
         pointer to the object to decode the response into (optional)
+    :type c_struct: void \*
 
 .. _`qmi_txn_init.description`:
 
@@ -230,11 +255,13 @@ qmi_txn_wait
 
     wait for a response on a transaction
 
-    :param struct qmi_txn \*txn:
+    :param txn:
         transaction handle
+    :type txn: struct qmi_txn \*
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout, in jiffies
+    :type timeout: unsigned long
 
 .. _`qmi_txn_wait.description`:
 
@@ -261,8 +288,9 @@ qmi_txn_cancel
 
     cancel an ongoing transaction
 
-    :param struct qmi_txn \*txn:
+    :param txn:
         transaction id
+    :type txn: struct qmi_txn \*
 
 .. _`qmi_invoke_handler`:
 
@@ -273,20 +301,25 @@ qmi_invoke_handler
 
     find and invoke a handler for a message
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         qmi handle
+    :type qmi: struct qmi_handle \*
 
-    :param struct sockaddr_qrtr \*sq:
+    :param sq:
         sockaddr of the sender
+    :type sq: struct sockaddr_qrtr \*
 
-    :param struct qmi_txn \*txn:
+    :param txn:
         transaction object for the message
+    :type txn: struct qmi_txn \*
 
-    :param const void \*buf:
+    :param buf:
         buffer containing the message
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         length of \ ``buf``\ 
+    :type len: size_t
 
 .. _`qmi_invoke_handler.description`:
 
@@ -304,8 +337,9 @@ qmi_handle_net_reset
 
     invoked to handle ENETRESET on a QMI handle
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         the QMI context
+    :type qmi: struct qmi_handle \*
 
 .. _`qmi_handle_net_reset.description`:
 
@@ -334,17 +368,21 @@ qmi_handle_init
 
     initialize a QMI client handle
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         QMI handle to initialize
+    :type qmi: struct qmi_handle \*
 
-    :param size_t recv_buf_size:
+    :param recv_buf_size:
         maximum size of incoming message
+    :type recv_buf_size: size_t
 
-    :param const struct qmi_ops \*ops:
+    :param ops:
         reference to callbacks for QRTR notifications
+    :type ops: const struct qmi_ops \*
 
-    :param const struct qmi_msg_handler \*handlers:
+    :param handlers:
         NULL-terminated list of QMI message handlers
+    :type handlers: const struct qmi_msg_handler \*
 
 .. _`qmi_handle_init.description`:
 
@@ -370,8 +408,9 @@ qmi_handle_release
 
     release the QMI client handle
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         QMI client handle
+    :type qmi: struct qmi_handle \*
 
 .. _`qmi_handle_release.description`:
 
@@ -389,29 +428,37 @@ qmi_send_message
 
     send a QMI message
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         QMI client handle
+    :type qmi: struct qmi_handle \*
 
-    :param struct sockaddr_qrtr \*sq:
+    :param sq:
         destination sockaddr
+    :type sq: struct sockaddr_qrtr \*
 
-    :param struct qmi_txn \*txn:
+    :param txn:
         transaction object to use for the message
+    :type txn: struct qmi_txn \*
 
-    :param int type:
+    :param type:
         type of message to send
+    :type type: int
 
-    :param int msg_id:
+    :param msg_id:
         message id
+    :type msg_id: int
 
-    :param size_t len:
+    :param len:
         max length of the QMI message
+    :type len: size_t
 
-    :param struct qmi_elem_info \*ei:
+    :param ei:
         QMI message description
+    :type ei: struct qmi_elem_info \*
 
-    :param const void \*c_struct:
+    :param c_struct:
         object to be encoded
+    :type c_struct: const void \*
 
 .. _`qmi_send_message.description`:
 
@@ -438,26 +485,33 @@ qmi_send_request
 
     send a request QMI message
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         QMI client handle
+    :type qmi: struct qmi_handle \*
 
-    :param struct sockaddr_qrtr \*sq:
+    :param sq:
         destination sockaddr
+    :type sq: struct sockaddr_qrtr \*
 
-    :param struct qmi_txn \*txn:
+    :param txn:
         transaction object to use for the message
+    :type txn: struct qmi_txn \*
 
-    :param int msg_id:
+    :param msg_id:
         message id
+    :type msg_id: int
 
-    :param size_t len:
+    :param len:
         max length of the QMI message
+    :type len: size_t
 
-    :param struct qmi_elem_info \*ei:
+    :param ei:
         QMI message description
+    :type ei: struct qmi_elem_info \*
 
-    :param const void \*c_struct:
+    :param c_struct:
         object to be encoded
+    :type c_struct: const void \*
 
 .. _`qmi_send_request.return`:
 
@@ -475,26 +529,33 @@ qmi_send_response
 
     send a response QMI message
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         QMI client handle
+    :type qmi: struct qmi_handle \*
 
-    :param struct sockaddr_qrtr \*sq:
+    :param sq:
         destination sockaddr
+    :type sq: struct sockaddr_qrtr \*
 
-    :param struct qmi_txn \*txn:
+    :param txn:
         transaction object to use for the message
+    :type txn: struct qmi_txn \*
 
-    :param int msg_id:
+    :param msg_id:
         message id
+    :type msg_id: int
 
-    :param size_t len:
+    :param len:
         max length of the QMI message
+    :type len: size_t
 
-    :param struct qmi_elem_info \*ei:
+    :param ei:
         QMI message description
+    :type ei: struct qmi_elem_info \*
 
-    :param const void \*c_struct:
+    :param c_struct:
         object to be encoded
+    :type c_struct: const void \*
 
 .. _`qmi_send_response.return`:
 
@@ -512,23 +573,29 @@ qmi_send_indication
 
     send an indication QMI message
 
-    :param struct qmi_handle \*qmi:
+    :param qmi:
         QMI client handle
+    :type qmi: struct qmi_handle \*
 
-    :param struct sockaddr_qrtr \*sq:
+    :param sq:
         destination sockaddr
+    :type sq: struct sockaddr_qrtr \*
 
-    :param int msg_id:
+    :param msg_id:
         message id
+    :type msg_id: int
 
-    :param size_t len:
+    :param len:
         max length of the QMI message
+    :type len: size_t
 
-    :param struct qmi_elem_info \*ei:
+    :param ei:
         QMI message description
+    :type ei: struct qmi_elem_info \*
 
-    :param const void \*c_struct:
+    :param c_struct:
         object to be encoded
+    :type c_struct: const void \*
 
 .. _`qmi_send_indication.return`:
 

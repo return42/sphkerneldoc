@@ -10,8 +10,9 @@ omap_i2c_bus_setup
 
     Process command line options for the I2C bus speed
 
-    :param char \*str:
+    :param str:
         String of options
+    :type str: char \*
 
 .. _`omap_i2c_bus_setup.description`:
 
@@ -39,17 +40,21 @@ omap_register_i2c_bus
 
     register I2C bus with device descriptors
 
-    :param int bus_id:
+    :param bus_id:
         bus id counting from number 1
+    :type bus_id: int
 
-    :param u32 clkrate:
+    :param clkrate:
         clock rate of the bus in kHz
+    :type clkrate: u32
 
-    :param struct i2c_board_info const \*info:
+    :param info:
         pointer into I2C device descriptor table or NULL
+    :type info: struct i2c_board_info const \*
 
-    :param unsigned len:
+    :param len:
         number of descriptors in the table
+    :type len: unsigned
 
 .. _`omap_register_i2c_bus.description`:
 

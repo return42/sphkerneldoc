@@ -10,11 +10,13 @@ regs_get_register
 
     get register value from its offset
 
-    :param struct pt_regs \*regs:
+    :param regs:
         pt_regs from which register value is gotten
+    :type regs: struct pt_regs \*
 
-    :param unsigned long offset:
+    :param offset:
         offset number of the register.
+    :type offset: unsigned long
 
 .. _`regs_get_register.description`:
 

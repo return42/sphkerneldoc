@@ -10,8 +10,9 @@ i40iw_nop_1
 
     insert a nop wqe and move head. no post work
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
 .. _`i40iw_qp_post_wr`:
 
@@ -22,8 +23,9 @@ i40iw_qp_post_wr
 
     post wr to hrdware
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
 .. _`i40iw_qp_ring_push_db`:
 
@@ -34,11 +36,13 @@ i40iw_qp_ring_push_db
 
     ring qp doorbell
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param u32 wqe_idx:
+    :param wqe_idx:
         wqe index
+    :type wqe_idx: u32
 
 .. _`i40iw_qp_get_next_send_wqe`:
 
@@ -49,20 +53,25 @@ i40iw_qp_get_next_send_wqe
 
     return next wqe ptr
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param u32 \*wqe_idx:
+    :param wqe_idx:
         return wqe index
+    :type wqe_idx: u32 \*
 
-    :param u8 wqe_size:
+    :param wqe_size:
         size of sq wqe
+    :type wqe_size: u8
 
-    :param u32 total_size:
+    :param total_size:
         *undescribed*
+    :type total_size: u32
 
-    :param u64 wr_id:
+    :param wr_id:
         *undescribed*
+    :type wr_id: u64
 
 .. _`i40iw_set_fragment`:
 
@@ -73,14 +82,17 @@ i40iw_set_fragment
 
     set fragment in wqe
 
-    :param u64 \*wqe:
+    :param wqe:
         wqe for setting fragment
+    :type wqe: u64 \*
 
-    :param u32 offset:
+    :param offset:
         offset value
+    :type offset: u32
 
-    :param struct i40iw_sge \*sge:
+    :param sge:
         sge length and stag
+    :type sge: struct i40iw_sge \*
 
 .. _`i40iw_qp_get_next_recv_wqe`:
 
@@ -91,11 +103,13 @@ i40iw_qp_get_next_recv_wqe
 
     get next qp's rcv wqe
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param u32 \*wqe_idx:
+    :param wqe_idx:
         return wqe index
+    :type wqe_idx: u32 \*
 
 .. _`i40iw_rdma_write`:
 
@@ -106,14 +120,17 @@ i40iw_rdma_write
 
     rdma write operation
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param struct i40iw_post_sq_info \*info:
+    :param info:
         post sq information
+    :type info: struct i40iw_post_sq_info \*
 
-    :param bool post_sq:
+    :param post_sq:
         flag to post sq
+    :type post_sq: bool
 
 .. _`i40iw_rdma_read`:
 
@@ -124,17 +141,21 @@ i40iw_rdma_read
 
     rdma read command
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param struct i40iw_post_sq_info \*info:
+    :param info:
         post sq information
+    :type info: struct i40iw_post_sq_info \*
 
-    :param bool inv_stag:
+    :param inv_stag:
         flag for inv_stag
+    :type inv_stag: bool
 
-    :param bool post_sq:
+    :param post_sq:
         flag to post sq
+    :type post_sq: bool
 
 .. _`i40iw_send`:
 
@@ -145,17 +166,21 @@ i40iw_send
 
     rdma send command
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param struct i40iw_post_sq_info \*info:
+    :param info:
         post sq information
+    :type info: struct i40iw_post_sq_info \*
 
-    :param u32 stag_to_inv:
+    :param stag_to_inv:
         stag_to_inv value
+    :type stag_to_inv: u32
 
-    :param bool post_sq:
+    :param post_sq:
         flag to post sq
+    :type post_sq: bool
 
 .. _`i40iw_inline_rdma_write`:
 
@@ -166,14 +191,17 @@ i40iw_inline_rdma_write
 
     inline rdma write operation
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param struct i40iw_post_sq_info \*info:
+    :param info:
         post sq information
+    :type info: struct i40iw_post_sq_info \*
 
-    :param bool post_sq:
+    :param post_sq:
         flag to post sq
+    :type post_sq: bool
 
 .. _`i40iw_inline_send`:
 
@@ -184,17 +212,21 @@ i40iw_inline_send
 
     inline send operation
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param struct i40iw_post_sq_info \*info:
+    :param info:
         post sq information
+    :type info: struct i40iw_post_sq_info \*
 
-    :param u32 stag_to_inv:
+    :param stag_to_inv:
         remote stag
+    :type stag_to_inv: u32
 
-    :param bool post_sq:
+    :param post_sq:
         flag to post sq
+    :type post_sq: bool
 
 .. _`i40iw_stag_local_invalidate`:
 
@@ -205,14 +237,17 @@ i40iw_stag_local_invalidate
 
     stag invalidate operation
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param struct i40iw_post_sq_info \*info:
+    :param info:
         post sq information
+    :type info: struct i40iw_post_sq_info \*
 
-    :param bool post_sq:
+    :param post_sq:
         flag to post sq
+    :type post_sq: bool
 
 .. _`i40iw_mw_bind`:
 
@@ -223,14 +258,17 @@ i40iw_mw_bind
 
     Memory Window bind operation
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param struct i40iw_post_sq_info \*info:
+    :param info:
         post sq information
+    :type info: struct i40iw_post_sq_info \*
 
-    :param bool post_sq:
+    :param post_sq:
         flag to post sq
+    :type post_sq: bool
 
 .. _`i40iw_post_receive`:
 
@@ -241,11 +279,13 @@ i40iw_post_receive
 
     post receive wqe
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param struct i40iw_post_rq_info \*info:
+    :param info:
         post rq information
+    :type info: struct i40iw_post_rq_info \*
 
 .. _`i40iw_cq_request_notification`:
 
@@ -256,11 +296,13 @@ i40iw_cq_request_notification
 
     cq notification request (door bell)
 
-    :param struct i40iw_cq_uk \*cq:
+    :param cq:
         hw cq
+    :type cq: struct i40iw_cq_uk \*
 
-    :param enum i40iw_completion_notify cq_notify:
+    :param cq_notify:
         notification type
+    :type cq_notify: enum i40iw_completion_notify
 
 .. _`i40iw_cq_post_entries`:
 
@@ -271,11 +313,13 @@ i40iw_cq_post_entries
 
     update tail in shadow memory
 
-    :param struct i40iw_cq_uk \*cq:
+    :param cq:
         hw cq
+    :type cq: struct i40iw_cq_uk \*
 
-    :param u8 count:
+    :param count:
         # of entries processed
+    :type count: u8
 
 .. _`i40iw_cq_poll_completion`:
 
@@ -286,11 +330,13 @@ i40iw_cq_poll_completion
 
     get cq completion info
 
-    :param struct i40iw_cq_uk \*cq:
+    :param cq:
         hw cq
+    :type cq: struct i40iw_cq_uk \*
 
-    :param struct i40iw_cq_poll_info \*info:
+    :param info:
         cq poll information returned
+    :type info: struct i40iw_cq_poll_info \*
 
 .. _`i40iw_get_wqe_shift`:
 
@@ -301,14 +347,17 @@ i40iw_get_wqe_shift
 
     get shift count for maximum wqe size
 
-    :param u32 sge:
+    :param sge:
         Maximum Scatter Gather Elements wqe
+    :type sge: u32
 
-    :param u32 inline_data:
+    :param inline_data:
         Maximum inline data size
+    :type inline_data: u32
 
-    :param u8 \*shift:
+    :param shift:
         Returns the shift needed based on sge
+    :type shift: u8 \*
 
 .. _`i40iw_get_wqe_shift.description`:
 
@@ -329,11 +378,13 @@ i40iw_qp_uk_init
 
     initialize shared qp
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp (user and kernel)
+    :type qp: struct i40iw_qp_uk \*
 
-    :param struct i40iw_qp_uk_init_info \*info:
+    :param info:
         qp initialization info
+    :type info: struct i40iw_qp_uk_init_info \*
 
 .. _`i40iw_qp_uk_init.description`:
 
@@ -356,11 +407,13 @@ i40iw_cq_uk_init
 
     initialize shared cq (user and kernel)
 
-    :param struct i40iw_cq_uk \*cq:
+    :param cq:
         hw cq
+    :type cq: struct i40iw_cq_uk \*
 
-    :param struct i40iw_cq_uk_init_info \*info:
+    :param info:
         hw cq initialization info
+    :type info: struct i40iw_cq_uk_init_info \*
 
 .. _`i40iw_device_init_uk`:
 
@@ -371,8 +424,9 @@ i40iw_device_init_uk
 
     setup routines for iwarp shared device
 
-    :param struct i40iw_dev_uk \*dev:
+    :param dev:
         iwarp shared (user and kernel)
+    :type dev: struct i40iw_dev_uk \*
 
 .. _`i40iw_clean_cq`:
 
@@ -383,11 +437,13 @@ i40iw_clean_cq
 
     clean cq entries \ ````\  queue completion context
 
-    :param void \*queue:
+    :param queue:
         *undescribed*
+    :type queue: void \*
 
-    :param struct i40iw_cq_uk \*cq:
+    :param cq:
         cq to clean
+    :type cq: struct i40iw_cq_uk \*
 
 .. _`i40iw_nop`:
 
@@ -398,17 +454,21 @@ i40iw_nop
 
     send a nop
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         hw qp ptr
+    :type qp: struct i40iw_qp_uk \*
 
-    :param u64 wr_id:
+    :param wr_id:
         work request id
+    :type wr_id: u64
 
-    :param bool signaled:
+    :param signaled:
         flag if signaled for completion
+    :type signaled: bool
 
-    :param bool post_sq:
+    :param post_sq:
         flag to post sq
+    :type post_sq: bool
 
 .. _`i40iw_fragcnt_to_wqesize_sq`:
 
@@ -419,11 +479,13 @@ i40iw_fragcnt_to_wqesize_sq
 
     calculate wqe size based on fragment count for SQ
 
-    :param u32 frag_cnt:
+    :param frag_cnt:
         number of fragments
+    :type frag_cnt: u32
 
-    :param u8 \*wqe_size:
+    :param wqe_size:
         size of sq wqe returned
+    :type wqe_size: u8 \*
 
 .. _`i40iw_fragcnt_to_wqesize_rq`:
 
@@ -434,11 +496,13 @@ i40iw_fragcnt_to_wqesize_rq
 
     calculate wqe size based on fragment count for RQ
 
-    :param u32 frag_cnt:
+    :param frag_cnt:
         number of fragments
+    :type frag_cnt: u32
 
-    :param u8 \*wqe_size:
+    :param wqe_size:
         size of rq wqe returned
+    :type wqe_size: u8 \*
 
 .. _`i40iw_inline_data_size_to_wqesize`:
 
@@ -449,11 +513,13 @@ i40iw_inline_data_size_to_wqesize
 
     based on inline data, wqe size
 
-    :param u32 data_size:
+    :param data_size:
         data size for inline
+    :type data_size: u32
 
-    :param u8 \*wqe_size:
+    :param wqe_size:
         size of sq wqe returned
+    :type wqe_size: u8 \*
 
 .. This file was automatic generated / don't edit.
 

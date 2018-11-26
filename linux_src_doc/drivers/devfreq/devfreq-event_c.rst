@@ -10,8 +10,9 @@ devfreq_event_enable_edev
 
     Enable the devfreq-event dev and increase the enable_count of devfreq-event dev.
 
-    :param struct devfreq_event_dev \*edev:
+    :param edev:
         the devfreq-event device
+    :type edev: struct devfreq_event_dev \*
 
 .. _`devfreq_event_enable_edev.description`:
 
@@ -31,8 +32,9 @@ devfreq_event_disable_edev
 
     Disable the devfreq-event dev and decrease the enable_count of the devfreq-event dev.
 
-    :param struct devfreq_event_dev \*edev:
+    :param edev:
         the devfreq-event device
+    :type edev: struct devfreq_event_dev \*
 
 .. _`devfreq_event_disable_edev.description`:
 
@@ -53,8 +55,9 @@ devfreq_event_is_enabled
 
     Check whether devfreq-event dev is enabled or not.
 
-    :param struct devfreq_event_dev \*edev:
+    :param edev:
         the devfreq-event device
+    :type edev: struct devfreq_event_dev \*
 
 .. _`devfreq_event_is_enabled.description`:
 
@@ -74,8 +77,9 @@ devfreq_event_set_event
 
     Set event to devfreq-event dev to start.
 
-    :param struct devfreq_event_dev \*edev:
+    :param edev:
         the devfreq-event device
+    :type edev: struct devfreq_event_dev \*
 
 .. _`devfreq_event_set_event.description`:
 
@@ -94,11 +98,13 @@ devfreq_event_get_event
 
     Get {load\|total}_count from devfreq-event dev.
 
-    :param struct devfreq_event_dev \*edev:
+    :param edev:
         the devfreq-event device
+    :type edev: struct devfreq_event_dev \*
 
-    :param struct devfreq_event_data \*edata:
+    :param edata:
         the calculated data of devfreq-event device
+    :type edata: struct devfreq_event_data \*
 
 .. _`devfreq_event_get_event.description`:
 
@@ -117,8 +123,9 @@ devfreq_event_reset_event
 
     Reset all opeations of devfreq-event dev.
 
-    :param struct devfreq_event_dev \*edev:
+    :param edev:
         the devfreq-event device
+    :type edev: struct devfreq_event_dev \*
 
 .. _`devfreq_event_reset_event.description`:
 
@@ -137,11 +144,13 @@ devfreq_event_get_edev_by_phandle
 
     Get the devfreq-event dev from devicetree.
 
-    :param struct device \*dev:
+    :param dev:
         the pointer to the given device
+    :type dev: struct device \*
 
-    :param int index:
+    :param index:
         the index into list of devfreq-event device
+    :type index: int
 
 .. _`devfreq_event_get_edev_by_phandle.description`:
 
@@ -159,8 +168,9 @@ devfreq_event_get_edev_count
 
     Get the count of devfreq-event dev
 
-    :param struct device \*dev:
+    :param dev:
         the pointer to the given device
+    :type dev: struct device \*
 
 .. _`devfreq_event_get_edev_count.description`:
 
@@ -178,12 +188,14 @@ devfreq_event_add_edev
 
     Add new devfreq-event device.
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the devfreq-event device being created
+    :type dev: struct device \*
 
-    :param struct devfreq_event_desc \*desc:
+    :param desc:
         the devfreq-event device's decriptor which include essential
         data for devfreq-event device.
+    :type desc: struct devfreq_event_desc \*
 
 .. _`devfreq_event_add_edev.description`:
 
@@ -202,8 +214,9 @@ devfreq_event_remove_edev
 
     Remove the devfreq-event device registered.
 
-    :param struct devfreq_event_dev \*edev:
+    :param edev:
         *undescribed*
+    :type edev: struct devfreq_event_dev \*
 
 .. _`devfreq_event_remove_edev.description`:
 
@@ -221,12 +234,14 @@ devm_devfreq_event_add_edev
 
     Resource-managed \ :c:func:`devfreq_event_add_edev`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the devfreq-event device being created
+    :type dev: struct device \*
 
-    :param struct devfreq_event_desc \*desc:
+    :param desc:
         the devfreq-event device's decriptor which include essential
         data for devfreq-event device.
+    :type desc: struct devfreq_event_desc \*
 
 .. _`devm_devfreq_event_add_edev.description`:
 
@@ -246,11 +261,13 @@ devm_devfreq_event_remove_edev
 
     Resource-managed \ :c:func:`devfreq_event_remove_edev`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device owning the devfreq-event device being created
+    :type dev: struct device \*
 
-    :param struct devfreq_event_dev \*edev:
+    :param edev:
         the devfreq-event device
+    :type edev: struct devfreq_event_dev \*
 
 .. _`devm_devfreq_event_remove_edev.description`:
 

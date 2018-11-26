@@ -102,11 +102,13 @@ ti_syscon_reset_assert
 
     assert device reset
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         reset controller entity
+    :type rcdev: struct reset_controller_dev \*
 
-    :param unsigned long id:
+    :param id:
         ID of the reset to be asserted
+    :type id: unsigned long
 
 .. _`ti_syscon_reset_assert.description`:
 
@@ -132,11 +134,13 @@ ti_syscon_reset_deassert
 
     deassert device reset
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         reset controller entity
+    :type rcdev: struct reset_controller_dev \*
 
-    :param unsigned long id:
+    :param id:
         ID of reset to be deasserted
+    :type id: unsigned long
 
 .. _`ti_syscon_reset_deassert.description`:
 
@@ -162,11 +166,13 @@ ti_syscon_reset_status
 
     check device reset status
 
-    :param struct reset_controller_dev \*rcdev:
+    :param rcdev:
         reset controller entity
+    :type rcdev: struct reset_controller_dev \*
 
-    :param unsigned long id:
+    :param id:
         ID of the reset for which the status is being requested
+    :type id: unsigned long
 
 .. _`ti_syscon_reset_status.description`:
 

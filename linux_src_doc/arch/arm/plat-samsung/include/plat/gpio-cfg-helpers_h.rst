@@ -10,14 +10,17 @@ s3c24xx_gpio_setpull_1up
 
     Pull configuration for choice of up or none.
 
-    :param struct samsung_gpio_chip \*chip:
+    :param chip:
         The gpio chip that is being configured.
+    :type chip: struct samsung_gpio_chip \*
 
-    :param unsigned int off:
+    :param off:
         The offset for the GPIO being configured.
+    :type off: unsigned int
 
-    :param samsung_gpio_pull_t pull:
+    :param pull:
         *undescribed*
+    :type pull: samsung_gpio_pull_t
 
 .. _`s3c24xx_gpio_setpull_1up.description`:
 
@@ -36,14 +39,17 @@ s3c24xx_gpio_setpull_1down
 
     Pull configuration for choice of down or none
 
-    :param struct samsung_gpio_chip \*chip:
+    :param chip:
         The gpio chip that is being configured
+    :type chip: struct samsung_gpio_chip \*
 
-    :param unsigned int off:
+    :param off:
         The offset for the GPIO being configured
+    :type off: unsigned int
 
-    :param samsung_gpio_pull_t pull:
+    :param pull:
         *undescribed*
+    :type pull: samsung_gpio_pull_t
 
 .. _`s3c24xx_gpio_setpull_1down.description`:
 
@@ -62,14 +68,17 @@ samsung_gpio_setpull_updown
 
     Pull configuration for choice of up, down or none
 
-    :param struct samsung_gpio_chip \*chip:
+    :param chip:
         The gpio chip that is being configured.
+    :type chip: struct samsung_gpio_chip \*
 
-    :param unsigned int off:
+    :param off:
         The offset for the GPIO being configured.
+    :type off: unsigned int
 
-    :param samsung_gpio_pull_t pull:
+    :param pull:
         *undescribed*
+    :type pull: samsung_gpio_pull_t
 
 .. _`samsung_gpio_setpull_updown.description`:
 
@@ -97,11 +106,13 @@ samsung_gpio_getpull_updown
 
     Get configuration for choice of up, down or none
 
-    :param struct samsung_gpio_chip \*chip:
+    :param chip:
         The gpio chip that the GPIO pin belongs to
+    :type chip: struct samsung_gpio_chip \*
 
-    :param unsigned int off:
+    :param off:
         The offset to the pin to get the configuration of.
+    :type off: unsigned int
 
 .. _`samsung_gpio_getpull_updown.description`:
 
@@ -120,11 +131,13 @@ s3c24xx_gpio_getpull_1up
 
     Get configuration for choice of up or none
 
-    :param struct samsung_gpio_chip \*chip:
+    :param chip:
         The gpio chip that the GPIO pin belongs to
+    :type chip: struct samsung_gpio_chip \*
 
-    :param unsigned int off:
+    :param off:
         The offset to the pin to get the configuration of.
+    :type off: unsigned int
 
 .. _`s3c24xx_gpio_getpull_1up.description`:
 
@@ -143,11 +156,13 @@ s3c24xx_gpio_getpull_1down
 
     Get configuration for choice of down or none
 
-    :param struct samsung_gpio_chip \*chip:
+    :param chip:
         The gpio chip that the GPIO pin belongs to
+    :type chip: struct samsung_gpio_chip \*
 
-    :param unsigned int off:
+    :param off:
         The offset to the pin to get the configuration of.
+    :type off: unsigned int
 
 .. _`s3c24xx_gpio_getpull_1down.description`:
 
@@ -166,14 +181,17 @@ s3c2443_gpio_setpull
 
     Pull configuration for s3c2443.
 
-    :param struct samsung_gpio_chip \*chip:
+    :param chip:
         The gpio chip that is being configured.
+    :type chip: struct samsung_gpio_chip \*
 
-    :param unsigned int off:
+    :param off:
         The offset for the GPIO being configured.
+    :type off: unsigned int
 
-    :param samsung_gpio_pull_t pull:
+    :param pull:
         *undescribed*
+    :type pull: samsung_gpio_pull_t
 
 .. _`s3c2443_gpio_setpull.description`:
 
@@ -201,11 +219,13 @@ s3c2443_gpio_getpull
 
     Get configuration for s3c2443 pull resistors
 
-    :param struct samsung_gpio_chip \*chip:
+    :param chip:
         The gpio chip that the GPIO pin belongs to.
+    :type chip: struct samsung_gpio_chip \*
 
-    :param unsigned int off:
+    :param off:
         The offset to the pin to get the configuration of.
+    :type off: unsigned int
 
 .. _`s3c2443_gpio_getpull.description`:
 

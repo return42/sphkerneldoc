@@ -10,11 +10,13 @@ ufshcd_dwc_program_clk_div
 
     This function programs the clk divider value. This value is needed to provide 1 microsecond tick to unipro layer.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         Private Structure pointer
+    :type hba: struct ufs_hba \*
 
-    :param u32 divider_val:
+    :param divider_val:
         clock divider value to be programmed
+    :type divider_val: u32
 
 .. _`ufshcd_dwc_link_is_up`:
 
@@ -25,8 +27,9 @@ ufshcd_dwc_link_is_up
 
     Check if link is up
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         private structure poitner
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_dwc_link_is_up.description`:
 
@@ -44,8 +47,9 @@ ufshcd_dwc_connection_setup
 
     This function configures both the local side (host) and the peer side (device) unipro attributes to establish the connection to application/ cport. This function is not required if the hardware is properly configured to have this connection setup on reset. But invoking this function does no harm and should be fine even working with any ufs device.
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         pointer to drivers private data
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_dwc_connection_setup.description`:
 
@@ -63,11 +67,13 @@ ufshcd_dwc_link_startup_notify
 
     UFS Host DWC specific link startup sequence
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         private structure poitner
+    :type hba: struct ufs_hba \*
 
-    :param enum ufs_notify_change_status status:
+    :param status:
         Callback notify status
+    :type status: enum ufs_notify_change_status
 
 .. _`ufshcd_dwc_link_startup_notify.description`:
 

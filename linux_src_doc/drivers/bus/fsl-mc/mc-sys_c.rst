@@ -17,11 +17,13 @@ mc_write_command
 
     writes a command to a Management Complex (MC) portal
 
-    :param struct fsl_mc_command __iomem \*portal:
+    :param portal:
         pointer to an MC portal
+    :type portal: struct fsl_mc_command __iomem \*
 
-    :param struct fsl_mc_command \*cmd:
+    :param cmd:
         pointer to a filled command
+    :type cmd: struct fsl_mc_command \*
 
 .. _`mc_read_response`:
 
@@ -32,11 +34,13 @@ mc_read_response
 
     reads the response for the last MC command from a Management Complex (MC) portal
 
-    :param struct fsl_mc_command __iomem \*portal:
+    :param portal:
         pointer to an MC portal
+    :type portal: struct fsl_mc_command __iomem \*
 
-    :param struct fsl_mc_command \*resp:
+    :param resp:
         pointer to command response buffer
+    :type resp: struct fsl_mc_command \*
 
 .. _`mc_read_response.description`:
 
@@ -54,14 +58,17 @@ mc_polling_wait_preemptible
 
     \ :c:func:`uslepp_range`\  is called between polling iterations.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         MC I/O object to be used
+    :type mc_io: struct fsl_mc_io \*
 
-    :param struct fsl_mc_command \*cmd:
+    :param cmd:
         command buffer to receive MC response
+    :type cmd: struct fsl_mc_command \*
 
-    :param enum mc_cmd_status \*mc_status:
+    :param mc_status:
         MC command completion status
+    :type mc_status: enum mc_cmd_status \*
 
 .. _`mc_polling_wait_atomic`:
 
@@ -72,14 +79,17 @@ mc_polling_wait_atomic
 
     \ :c:func:`udelay`\  is called between polling iterations.
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         MC I/O object to be used
+    :type mc_io: struct fsl_mc_io \*
 
-    :param struct fsl_mc_command \*cmd:
+    :param cmd:
         command buffer to receive MC response
+    :type cmd: struct fsl_mc_command \*
 
-    :param enum mc_cmd_status \*mc_status:
+    :param mc_status:
         MC command completion status
+    :type mc_status: enum mc_cmd_status \*
 
 .. _`mc_send_command`:
 
@@ -88,11 +98,13 @@ mc_send_command
 
 .. c:function:: int mc_send_command(struct fsl_mc_io *mc_io, struct fsl_mc_command *cmd)
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         MC I/O object to be used
+    :type mc_io: struct fsl_mc_io \*
 
-    :param struct fsl_mc_command \*cmd:
+    :param cmd:
         command to be sent
+    :type cmd: struct fsl_mc_command \*
 
 .. _`mc_send_command.description`:
 

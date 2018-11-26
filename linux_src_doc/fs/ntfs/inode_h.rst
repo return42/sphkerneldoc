@@ -10,8 +10,9 @@ NTFS_I
 
     return the ntfs inode given a vfs inode
 
-    :param struct inode \*inode:
+    :param inode:
         VFS inode
+    :type inode: struct inode \*
 
 .. _`ntfs_i.description`:
 

@@ -70,8 +70,9 @@ mpc52xx_gpt_from_irq
 
     Return the GPT device associated with an IRQ number
 
-    :param int irq:
+    :param irq:
         irq of timer.
+    :type irq: int
 
 .. _`mpc52xx_gpt_start_timer`:
 
@@ -82,14 +83,17 @@ mpc52xx_gpt_start_timer
 
     Set and enable the GPT timer
 
-    :param struct mpc52xx_gpt_priv \*gpt:
+    :param gpt:
         Pointer to gpt private data structure
+    :type gpt: struct mpc52xx_gpt_priv \*
 
-    :param u64 period:
+    :param period:
         period of timer in ns; max. ~130s \ ````\  33MHz IPB clock
+    :type period: u64
 
-    :param int continuous:
+    :param continuous:
         set to 1 to make timer continuous free running
+    :type continuous: int
 
 .. _`mpc52xx_gpt_start_timer.description`:
 
@@ -107,8 +111,9 @@ mpc52xx_gpt_stop_timer
 
     Stop a gpt
 
-    :param struct mpc52xx_gpt_priv \*gpt:
+    :param gpt:
         Pointer to gpt private data structure
+    :type gpt: struct mpc52xx_gpt_priv \*
 
 .. _`mpc52xx_gpt_stop_timer.description`:
 
@@ -126,8 +131,9 @@ mpc52xx_gpt_timer_period
 
     Read the timer period
 
-    :param struct mpc52xx_gpt_priv \*gpt:
+    :param gpt:
         Pointer to gpt private data structure
+    :type gpt: struct mpc52xx_gpt_priv \*
 
 .. _`mpc52xx_gpt_timer_period.description`:
 

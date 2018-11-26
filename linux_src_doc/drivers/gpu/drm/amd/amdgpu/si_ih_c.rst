@@ -10,8 +10,9 @@ si_ih_prescreen_iv
 
     prescreen an interrupt vector
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`si_ih_prescreen_iv.description`:
 

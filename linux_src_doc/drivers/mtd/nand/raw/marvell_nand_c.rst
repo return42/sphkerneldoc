@@ -8,11 +8,13 @@ TO_CYCLES
 
 .. c:function::  TO_CYCLES( ps,  period_ns)
 
-    :param  ps:
+    :param ps:
         Duration in pico-seconds
+    :type ps: 
 
-    :param  period_ns:
+    :param period_ns:
         Clock period in nano-seconds
+    :type period_ns: 
 
 .. _`to_cycles.description`:
 

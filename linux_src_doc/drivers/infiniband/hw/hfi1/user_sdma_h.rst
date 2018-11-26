@@ -10,26 +10,33 @@ ahg_header_set
 
     \ ``arr``\         - Array to save the descriptor to. \ ``idx``\         - Index of the array at which the descriptor will be saved. \ ``array_size``\  - Size of the array arr. \ ``dw``\          - Update index into the header in DWs. \ ``bit``\         - Start bit. \ ``width``\       - Field width. \ ``value``\       - 16 bits of immediate data to write into the field. Returns -ERANGE if idx is invalid. If successful, returns the next index (idx + 1) of the array to be used for the next descriptor.
 
-    :param u32 \*arr:
+    :param arr:
         *undescribed*
+    :type arr: u32 \*
 
-    :param int idx:
+    :param idx:
         *undescribed*
+    :type idx: int
 
-    :param size_t array_size:
+    :param array_size:
         *undescribed*
+    :type array_size: size_t
 
-    :param u8 dw:
+    :param dw:
         *undescribed*
+    :type dw: u8
 
-    :param u8 bit:
+    :param bit:
         *undescribed*
+    :type bit: u8
 
-    :param u8 width:
+    :param width:
         *undescribed*
+    :type width: u8
 
-    :param u16 value:
+    :param value:
         *undescribed*
+    :type value: u16
 
 .. This file was automatic generated / don't edit.
 

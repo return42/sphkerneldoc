@@ -22,6 +22,9 @@ Definition
         struct resource *mem_res;
         bool is_rc;
         u8 bus;
+        int phy_count;
+        struct phy **phy;
+        struct device_link **link;
     }
 
 .. _`cdns_pcie.members`:
@@ -40,6 +43,15 @@ is_rc
 
 bus
     In Root Complex mode, the bus number
+
+phy_count
+    *undescribed*
+
+phy
+    *undescribed*
+
+link
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

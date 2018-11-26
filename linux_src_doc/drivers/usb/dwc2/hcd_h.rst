@@ -636,8 +636,9 @@ dwc2_handle_hcd_intr
 
     Called on every hardware interrupt
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The DWC2 HCD
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_handle_hcd_intr.description`:
 
@@ -656,8 +657,9 @@ dwc2_hcd_stop
 
     Halts the DWC_otg host mode operation
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The DWC2 HCD
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hcd_is_b_host`:
 
@@ -668,8 +670,9 @@ dwc2_hcd_is_b_host
 
     Returns 1 if core currently is acting as B host, and 0 otherwise
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The DWC2 HCD
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hcd_dump_state`:
 
@@ -680,8 +683,9 @@ dwc2_hcd_dump_state
 
     Dumps hsotg state
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The DWC2 HCD
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_hcd_dump_state.note`:
 

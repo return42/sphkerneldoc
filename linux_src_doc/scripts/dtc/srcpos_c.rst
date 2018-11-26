@@ -8,14 +8,17 @@ try_open
 
 .. c:function:: char *try_open(const char *dirname, const char *fname, FILE **fp)
 
-    :param const char \*dirname:
+    :param dirname:
         *undescribed*
+    :type dirname: const char \*
 
-    :param const char \*fname:
+    :param fname:
         *undescribed*
+    :type fname: const char \*
 
-    :param FILE \*\*fp:
+    :param fp:
         *undescribed*
+    :type fp: FILE \*\*
 
 .. _`try_open.description`:
 
@@ -37,11 +40,13 @@ fopen_any_on_path
 
 .. c:function:: char *fopen_any_on_path(const char *fname, FILE **fp)
 
-    :param const char \*fname:
+    :param fname:
         *undescribed*
+    :type fname: const char \*
 
-    :param FILE \*\*fp:
+    :param fp:
         *undescribed*
+    :type fp: FILE \*\*
 
 .. _`fopen_any_on_path.description`:
 

@@ -10,8 +10,9 @@ omap_msdi_reset
 
     reset the MSDI IP block
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_msdi_reset.description`:
 

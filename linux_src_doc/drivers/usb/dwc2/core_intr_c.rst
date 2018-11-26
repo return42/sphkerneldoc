@@ -10,8 +10,9 @@ dwc2_handle_usb_port_intr
 
     handles OTG PRTINT interrupts. When the PRTINT interrupt fires, there are certain status bits in the Host Port that needs to get cleared.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_handle_mode_mismatch_intr`:
 
@@ -22,8 +23,9 @@ dwc2_handle_mode_mismatch_intr
 
     Logs a mode mismatch warning message
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_handle_otg_intr`:
 
@@ -34,8 +36,9 @@ dwc2_handle_otg_intr
 
     Handles the OTG Interrupts. It reads the OTG Interrupt Register (GOTGINT) to determine what interrupt has occurred.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_handle_conn_id_status_change_intr`:
 
@@ -46,8 +49,9 @@ dwc2_handle_conn_id_status_change_intr
 
     Handles the Connector ID Status Change Interrupt
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_handle_conn_id_status_change_intr.description`:
 
@@ -67,8 +71,9 @@ dwc2_handle_session_req_intr
 
     This interrupt indicates that a device is initiating the Session Request Protocol to request the host to turn on bus power so a new session can begin
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_handle_session_req_intr.description`:
 
@@ -88,8 +93,9 @@ dwc2_wakeup_from_lpm_l1
 
     Exit the device from LPM L1 state
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_handle_lpm_intr`:
 
@@ -100,8 +106,9 @@ dwc2_handle_lpm_intr
 
     GINTSTS_LPMTRANRCVD Interrupt handler
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
 .. This file was automatic generated / don't edit.
 

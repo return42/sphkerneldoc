@@ -10,17 +10,21 @@ gfs2_write_calc_reserv
 
     calculate number of blocks needed to write to a file
 
-    :param const struct gfs2_inode \*ip:
+    :param ip:
         the file
+    :type ip: const struct gfs2_inode \*
 
-    :param unsigned int len:
+    :param len:
         the number of bytes to be written to the file
+    :type len: unsigned int
 
-    :param unsigned int \*data_blocks:
+    :param data_blocks:
         returns the number of data blocks required
+    :type data_blocks: unsigned int \*
 
-    :param unsigned int \*ind_blocks:
+    :param ind_blocks:
         returns the number of indirect blocks required
+    :type ind_blocks: unsigned int \*
 
 .. This file was automatic generated / don't edit.
 

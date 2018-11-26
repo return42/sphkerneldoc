@@ -10,8 +10,9 @@ REPEAT_BYTE
 
     repeat the value \ ``x``\  multiple times as an unsigned long value
 
-    :param  x:
+    :param x:
         value to repeat
+    :type x: 
 
 .. _`repeat_byte.note`:
 
@@ -29,8 +30,59 @@ ARRAY_SIZE
 
     get the number of elements in array \ ``arr``\ 
 
-    :param  arr:
+    :param arr:
         array to be sized
+    :type arr: 
+
+.. _`round_up`:
+
+round_up
+========
+
+.. c:function::  round_up( x,  y)
+
+    round up to next specified power of 2
+
+    :param x:
+        the value to round
+    :type x: 
+
+    :param y:
+        multiple to round up to (must be a power of 2)
+    :type y: 
+
+.. _`round_up.description`:
+
+Description
+-----------
+
+Rounds \ ``x``\  up to next multiple of \ ``y``\  (which must be a power of 2).
+To perform arbitrary rounding up, use \ :c:func:`roundup`\  below.
+
+.. _`round_down`:
+
+round_down
+==========
+
+.. c:function::  round_down( x,  y)
+
+    round down to next specified power of 2
+
+    :param x:
+        the value to round
+    :type x: 
+
+    :param y:
+        multiple to round down to (must be a power of 2)
+    :type y: 
+
+.. _`round_down.description`:
+
+Description
+-----------
+
+Rounds \ ``x``\  down to next multiple of \ ``y``\  (which must be a power of 2).
+To perform arbitrary rounding down, use \ :c:func:`rounddown`\  below.
 
 .. _`field_sizeof`:
 
@@ -41,11 +93,13 @@ FIELD_SIZEOF
 
     get the size of a struct's field
 
-    :param  t:
+    :param t:
         the target struct
+    :type t: 
 
-    :param  f:
+    :param f:
         the target struct's field
+    :type f: 
 
 .. _`field_sizeof.return`:
 
@@ -54,6 +108,58 @@ Return
 
 the size of \ ``f``\  in the struct definition without having a
 declared instance of \ ``t``\ .
+
+.. _`roundup`:
+
+roundup
+=======
+
+.. c:function::  roundup( x,  y)
+
+    round up to the next specified multiple
+
+    :param x:
+        the value to up
+    :type x: 
+
+    :param y:
+        multiple to round up to
+    :type y: 
+
+.. _`roundup.description`:
+
+Description
+-----------
+
+Rounds \ ``x``\  up to next multiple of \ ``y``\ . If \ ``y``\  will always be a power
+of 2, consider using the faster \ :c:func:`round_up`\ .
+
+The `const' here prevents gcc-3.3 from calling __divdi3
+
+.. _`rounddown`:
+
+rounddown
+=========
+
+.. c:function::  rounddown( x,  y)
+
+    round down to next specified multiple
+
+    :param x:
+        the value to round
+    :type x: 
+
+    :param y:
+        multiple to round down to
+    :type y: 
+
+.. _`rounddown.description`:
+
+Description
+-----------
+
+Rounds \ ``x``\  down to next multiple of \ ``y``\ . If \ ``y``\  will always be a power
+of 2, consider using the faster \ :c:func:`round_down`\ .
 
 .. _`upper_32_bits`:
 
@@ -64,8 +170,9 @@ upper_32_bits
 
     return bits 32-63 of a number
 
-    :param  n:
+    :param n:
         the number we're accessing
+    :type n: 
 
 .. _`upper_32_bits.description`:
 
@@ -85,8 +192,9 @@ lower_32_bits
 
     return bits 0-31 of a number
 
-    :param  n:
+    :param n:
         the number we're accessing
+    :type n: 
 
 .. _`might_sleep`:
 
@@ -97,8 +205,9 @@ might_sleep
 
     annotation for functions that can sleep
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`might_sleep.description`:
 
@@ -121,10 +230,11 @@ abs
 
     return absolute value of an argument
 
-    :param  x:
+    :param x:
         the value.  If it is unsigned type, it is converted to signed type first.
         char is treated as if it was signed (regardless of whether it really is)
         but the macro's return type is preserved as char.
+    :type x: 
 
 .. _`abs.return`:
 
@@ -142,11 +252,13 @@ reciprocal_scale
 
     "scale" a value into range [0, ep_ro)
 
-    :param u32 val:
+    :param val:
         value
+    :type val: u32
 
-    :param u32 ep_ro:
+    :param ep_ro:
         right open interval endpoint
+    :type ep_ro: u32
 
 .. _`reciprocal_scale.description`:
 
@@ -176,20 +288,23 @@ kstrtoul
 
     convert a string to an unsigned long
 
-    :param const char \*s:
+    :param s:
         The start of the string. The string must be null-terminated, and may also
         include a single newline before its terminating null. The first character
         may also be a plus sign, but not a minus sign.
+    :type s: const char \*
 
-    :param unsigned int base:
+    :param base:
         The number base to use. The maximum supported base is 16. If base is
         given as 0, then the base of the string is automatically detected with the
         conventional semantics - If it begins with 0x the number will be parsed as a
         hexadecimal (case insensitive), if it otherwise begins with 0, it will be
         parsed as an octal number. Otherwise it will be parsed as a decimal.
+    :type base: unsigned int
 
-    :param unsigned long \*res:
+    :param res:
         Where to write the result of the conversion on success.
+    :type res: unsigned long \*
 
 .. _`kstrtoul.description`:
 
@@ -209,20 +324,23 @@ kstrtol
 
     convert a string to a long
 
-    :param const char \*s:
+    :param s:
         The start of the string. The string must be null-terminated, and may also
         include a single newline before its terminating null. The first character
         may also be a plus sign or a minus sign.
+    :type s: const char \*
 
-    :param unsigned int base:
+    :param base:
         The number base to use. The maximum supported base is 16. If base is
         given as 0, then the base of the string is automatically detected with the
         conventional semantics - If it begins with 0x the number will be parsed as a
         hexadecimal (case insensitive), if it otherwise begins with 0, it will be
         parsed as an octal number. Otherwise it will be parsed as a decimal.
+    :type base: unsigned int
 
-    :param long \*res:
+    :param res:
         Where to write the result of the conversion on success.
+    :type res: long \*
 
 .. _`kstrtol.description`:
 
@@ -242,8 +360,9 @@ trace_printk
 
     printf formatting in the ftrace buffer
 
-    :param  fmt:
+    :param fmt:
         the printf format for printing
+    :type fmt: 
 
     :param ellipsis ellipsis:
         variable arguments
@@ -287,8 +406,9 @@ trace_puts
 
     write a string into the ftrace buffer
 
-    :param  str:
+    :param str:
         the string to record
+    :type str: 
 
 .. _`trace_puts.note`:
 
@@ -329,11 +449,13 @@ min
 
     return minimum of two values of the same or compatible types
 
-    :param  x:
+    :param x:
         first value
+    :type x: 
 
-    :param  y:
+    :param y:
         second value
+    :type y: 
 
 .. _`max`:
 
@@ -344,11 +466,13 @@ max
 
     return maximum of two values of the same or compatible types
 
-    :param  x:
+    :param x:
         first value
+    :type x: 
 
-    :param  y:
+    :param y:
         second value
+    :type y: 
 
 .. _`min3`:
 
@@ -359,14 +483,17 @@ min3
 
     return minimum of three values
 
-    :param  x:
+    :param x:
         first value
+    :type x: 
 
-    :param  y:
+    :param y:
         second value
+    :type y: 
 
-    :param  z:
+    :param z:
         third value
+    :type z: 
 
 .. _`max3`:
 
@@ -377,14 +504,17 @@ max3
 
     return maximum of three values
 
-    :param  x:
+    :param x:
         first value
+    :type x: 
 
-    :param  y:
+    :param y:
         second value
+    :type y: 
 
-    :param  z:
+    :param z:
         third value
+    :type z: 
 
 .. _`min_not_zero`:
 
@@ -395,11 +525,13 @@ min_not_zero
 
     return the minimum that is _not_ zero, unless both are zero
 
-    :param  x:
+    :param x:
         value1
+    :type x: 
 
-    :param  y:
+    :param y:
         value2
+    :type y: 
 
 .. _`clamp`:
 
@@ -410,14 +542,17 @@ clamp
 
     return a value clamped to a given range with strict typechecking
 
-    :param  val:
+    :param val:
         current value
+    :type val: 
 
-    :param  lo:
+    :param lo:
         lowest allowable value
+    :type lo: 
 
-    :param  hi:
+    :param hi:
         highest allowable value
+    :type hi: 
 
 .. _`clamp.description`:
 
@@ -436,14 +571,17 @@ min_t
 
     return minimum of two values, using the specified type
 
-    :param  type:
+    :param type:
         data type to use
+    :type type: 
 
-    :param  x:
+    :param x:
         first value
+    :type x: 
 
-    :param  y:
+    :param y:
         second value
+    :type y: 
 
 .. _`max_t`:
 
@@ -454,14 +592,17 @@ max_t
 
     return maximum of two values, using the specified type
 
-    :param  type:
+    :param type:
         data type to use
+    :type type: 
 
-    :param  x:
+    :param x:
         first value
+    :type x: 
 
-    :param  y:
+    :param y:
         second value
+    :type y: 
 
 .. _`clamp_t`:
 
@@ -472,17 +613,21 @@ clamp_t
 
     return a value clamped to a given range using a given type
 
-    :param  type:
+    :param type:
         the type of variable to use
+    :type type: 
 
-    :param  val:
+    :param val:
         current value
+    :type val: 
 
-    :param  lo:
+    :param lo:
         minimum allowable value
+    :type lo: 
 
-    :param  hi:
+    :param hi:
         maximum allowable value
+    :type hi: 
 
 .. _`clamp_t.description`:
 
@@ -501,14 +646,17 @@ clamp_val
 
     return a value clamped to a given range using val's type
 
-    :param  val:
+    :param val:
         current value
+    :type val: 
 
-    :param  lo:
+    :param lo:
         minimum allowable value
+    :type lo: 
 
-    :param  hi:
+    :param hi:
         maximum allowable value
+    :type hi: 
 
 .. _`clamp_val.description`:
 
@@ -529,11 +677,13 @@ swap
 
     swap values of \ ``a``\  and \ ``b``\ 
 
-    :param  a:
+    :param a:
         first value
+    :type a: 
 
-    :param  b:
+    :param b:
         second value
+    :type b: 
 
 .. _`container_of`:
 
@@ -544,14 +694,17 @@ container_of
 
     cast a member of a structure out to the containing structure
 
-    :param  ptr:
+    :param ptr:
         the pointer to the member.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the container struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the member within the struct.
+    :type member: 
 
 .. _`container_of_safe`:
 
@@ -562,14 +715,17 @@ container_of_safe
 
     cast a member of a structure out to the containing structure
 
-    :param  ptr:
+    :param ptr:
         the pointer to the member.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the container struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the member within the struct.
+    :type member: 
 
 .. _`container_of_safe.description`:
 

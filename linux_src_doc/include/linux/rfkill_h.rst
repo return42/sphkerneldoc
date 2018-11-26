@@ -55,22 +55,27 @@ rfkill_alloc
 
 .. c:function:: struct rfkill *rfkill_alloc(const char *name, struct device *parent, const enum rfkill_type type, const struct rfkill_ops *ops, void *ops_data)
 
-    allocate rfkill structure
+    Allocate rfkill structure
 
-    :param const char \*name:
+    :param name:
         name of the struct -- the string is not copied internally
+    :type name: const char \*
 
-    :param struct device \*parent:
+    :param parent:
         device that has rf switch on it
+    :type parent: struct device \*
 
-    :param const enum rfkill_type type:
+    :param type:
         type of the switch (RFKILL_TYPE\_\*)
+    :type type: const enum rfkill_type
 
-    :param const struct rfkill_ops \*ops:
+    :param ops:
         rfkill methods
+    :type ops: const struct rfkill_ops \*
 
-    :param void \*ops_data:
+    :param ops_data:
         data passed to each method
+    :type ops_data: void \*
 
 .. _`rfkill_alloc.description`:
 
@@ -89,8 +94,9 @@ rfkill_register
 
     Register a rfkill structure.
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         rfkill structure to be registered
+    :type rfkill: struct rfkill \*
 
 .. _`rfkill_register.description`:
 
@@ -115,8 +121,9 @@ rfkill_pause_polling
 
 .. c:function:: void rfkill_pause_polling(struct rfkill *rfkill)
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         *undescribed*
+    :type rfkill: struct rfkill \*
 
 .. _`rfkill_pause_polling.description`:
 
@@ -141,15 +148,16 @@ rfkill_resume_polling
 
 .. c:function:: void rfkill_resume_polling(struct rfkill *rfkill)
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         *undescribed*
+    :type rfkill: struct rfkill \*
 
 .. _`rfkill_resume_polling.description`:
 
 Description
 -----------
 
-Pause polling -- say transmitter is off for other reasons.
+Resume polling
 
 .. _`rfkill_resume_polling.note`:
 
@@ -168,8 +176,9 @@ rfkill_unregister
 
     Unregister a rfkill structure.
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         rfkill structure to be unregistered
+    :type rfkill: struct rfkill \*
 
 .. _`rfkill_unregister.description`:
 
@@ -187,10 +196,11 @@ rfkill_destroy
 
 .. c:function:: void rfkill_destroy(struct rfkill *rfkill)
 
-    free rfkill structure
+    Free rfkill structure
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         rfkill structure to be destroyed
+    :type rfkill: struct rfkill \*
 
 .. _`rfkill_destroy.description`:
 
@@ -208,11 +218,13 @@ rfkill_set_hw_state
 
     Set the internal rfkill hardware block state
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         pointer to the rfkill class to modify.
+    :type rfkill: struct rfkill \*
 
-    :param bool blocked:
-        *undescribed*
+    :param blocked:
+        the current hardware block state to set
+    :type blocked: bool
 
 .. _`rfkill_set_hw_state.description`:
 
@@ -242,11 +254,13 @@ rfkill_set_sw_state
 
     Set the internal rfkill software block state
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         pointer to the rfkill class to modify.
+    :type rfkill: struct rfkill \*
 
-    :param bool blocked:
-        *undescribed*
+    :param blocked:
+        the current software block state to set
+    :type blocked: bool
 
 .. _`rfkill_set_sw_state.description`:
 
@@ -277,11 +291,13 @@ rfkill_init_sw_state
 
     Initialize persistent software block state
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         pointer to the rfkill class to modify.
+    :type rfkill: struct rfkill \*
 
-    :param bool blocked:
-        *undescribed*
+    :param blocked:
+        the current software block state to set
+    :type blocked: bool
 
 .. _`rfkill_init_sw_state.description`:
 
@@ -306,14 +322,17 @@ rfkill_set_states
 
     Set the internal rfkill block states
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         pointer to the rfkill class to modify.
+    :type rfkill: struct rfkill \*
 
-    :param bool sw:
+    :param sw:
         the current software block state to set
+    :type sw: bool
 
-    :param bool hw:
+    :param hw:
         the current hardware block state to set
+    :type hw: bool
 
 .. _`rfkill_set_states.description`:
 
@@ -330,10 +349,11 @@ rfkill_blocked
 
 .. c:function:: bool rfkill_blocked(struct rfkill *rfkill)
 
-    query rfkill block
+    Query rfkill block state
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         rfkill struct to query
+    :type rfkill: struct rfkill \*
 
 .. _`rfkill_find_type`:
 
@@ -342,17 +362,18 @@ rfkill_find_type
 
 .. c:function:: enum rfkill_type rfkill_find_type(const char *name)
 
-    Helpper for finding rfkill type by name
+    Helper for finding rfkill type by name
 
-    :param const char \*name:
+    :param name:
         the name of the type
+    :type name: const char \*
 
 .. _`rfkill_find_type.description`:
 
 Description
 -----------
 
-Returns enum rfkill_type that conrresponds the name.
+Returns enum rfkill_type that corresponds to the name.
 
 .. _`rfkill_get_led_trigger_name`:
 
@@ -363,8 +384,9 @@ rfkill_get_led_trigger_name
 
     Get the LED trigger name for the button's LED. This function might return a NULL pointer if registering of the LED trigger failed. Use this as "default_trigger" for the LED.
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         *undescribed*
+    :type rfkill: struct rfkill \*
 
 .. _`rfkill_set_led_trigger_name`:
 
@@ -373,13 +395,15 @@ rfkill_set_led_trigger_name
 
 .. c:function:: void rfkill_set_led_trigger_name(struct rfkill *rfkill, const char *name)
 
-    - set the LED trigger name
+    Set the LED trigger name
 
-    :param struct rfkill \*rfkill:
+    :param rfkill:
         rfkill struct
+    :type rfkill: struct rfkill \*
 
-    :param const char \*name:
+    :param name:
         LED trigger name
+    :type name: const char \*
 
 .. _`rfkill_set_led_trigger_name.description`:
 

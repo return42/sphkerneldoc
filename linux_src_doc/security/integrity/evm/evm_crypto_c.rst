@@ -10,11 +10,13 @@ evm_set_key
 
     set EVM HMAC key from the kernel
 
-    :param void \*key:
+    :param key:
         pointer to a buffer with the key data
+    :type key: void \*
 
-    :param size_t keylen:
+    :param keylen:
         *undescribed*
+    :type keylen: size_t
 
 .. _`evm_set_key.description`:
 

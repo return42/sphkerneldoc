@@ -63,11 +63,13 @@ stmpe_enable
 
     enable blocks on an STMPE device
 
-    :param struct stmpe \*stmpe:
+    :param stmpe:
         Device to work on
+    :type stmpe: struct stmpe \*
 
-    :param unsigned int blocks:
+    :param blocks:
         Mask of blocks (enum stmpe_block values) to enable
+    :type blocks: unsigned int
 
 .. _`stmpe_disable`:
 
@@ -78,11 +80,13 @@ stmpe_disable
 
     disable blocks on an STMPE device
 
-    :param struct stmpe \*stmpe:
+    :param stmpe:
         Device to work on
+    :type stmpe: struct stmpe \*
 
-    :param unsigned int blocks:
+    :param blocks:
         Mask of blocks (enum stmpe_block values) to enable
+    :type blocks: unsigned int
 
 .. _`stmpe_reg_read`:
 
@@ -93,11 +97,13 @@ stmpe_reg_read
 
     read a single STMPE register
 
-    :param struct stmpe \*stmpe:
+    :param stmpe:
         Device to read from
+    :type stmpe: struct stmpe \*
 
-    :param u8 reg:
+    :param reg:
         Register to read
+    :type reg: u8
 
 .. _`stmpe_reg_write`:
 
@@ -108,14 +114,17 @@ stmpe_reg_write
 
     write a single STMPE register
 
-    :param struct stmpe \*stmpe:
+    :param stmpe:
         Device to write to
+    :type stmpe: struct stmpe \*
 
-    :param u8 reg:
+    :param reg:
         Register to write
+    :type reg: u8
 
-    :param u8 val:
+    :param val:
         Value to write
+    :type val: u8
 
 .. _`stmpe_set_bits`:
 
@@ -126,17 +135,21 @@ stmpe_set_bits
 
     set the value of a bitfield in a STMPE register
 
-    :param struct stmpe \*stmpe:
+    :param stmpe:
         Device to write to
+    :type stmpe: struct stmpe \*
 
-    :param u8 reg:
+    :param reg:
         Register to write
+    :type reg: u8
 
-    :param u8 mask:
+    :param mask:
         Mask of bits to set
+    :type mask: u8
 
-    :param u8 val:
+    :param val:
         Value to set
+    :type val: u8
 
 .. _`stmpe_block_read`:
 
@@ -147,17 +160,21 @@ stmpe_block_read
 
     read multiple STMPE registers
 
-    :param struct stmpe \*stmpe:
+    :param stmpe:
         Device to read from
+    :type stmpe: struct stmpe \*
 
-    :param u8 reg:
+    :param reg:
         First register
+    :type reg: u8
 
-    :param u8 length:
+    :param length:
         Number of registers
+    :type length: u8
 
-    :param u8 \*values:
+    :param values:
         Buffer to write to
+    :type values: u8 \*
 
 .. _`stmpe_block_write`:
 
@@ -168,17 +185,21 @@ stmpe_block_write
 
     write multiple STMPE registers
 
-    :param struct stmpe \*stmpe:
+    :param stmpe:
         Device to write to
+    :type stmpe: struct stmpe \*
 
-    :param u8 reg:
+    :param reg:
         First register
+    :type reg: u8
 
-    :param u8 length:
+    :param length:
         Number of registers
+    :type length: u8
 
-    :param const u8 \*values:
+    :param values:
         Values to write
+    :type values: const u8 \*
 
 .. _`stmpe_set_altfunc`:
 
@@ -189,14 +210,17 @@ stmpe_set_altfunc
 
     set the alternate function for STMPE pins
 
-    :param struct stmpe \*stmpe:
+    :param stmpe:
         Device to configure
+    :type stmpe: struct stmpe \*
 
-    :param u32 pins:
+    :param pins:
         Bitmask of pins to affect
+    :type pins: u32
 
-    :param enum stmpe_block block:
+    :param block:
         block to enable alternate functions for
+    :type block: enum stmpe_block
 
 .. _`stmpe_set_altfunc.description`:
 

@@ -249,17 +249,21 @@ irq_domain_add_linear
 
     Allocate and register a linear revmap irq_domain.
 
-    :param struct device_node \*of_node:
+    :param of_node:
         pointer to interrupt controller's device tree node.
+    :type of_node: struct device_node \*
 
-    :param unsigned int size:
+    :param size:
         Number of interrupts in the domain.
+    :type size: unsigned int
 
-    :param const struct irq_domain_ops \*ops:
+    :param ops:
         map/unmap domain callbacks
+    :type ops: const struct irq_domain_ops \*
 
-    :param void \*host_data:
+    :param host_data:
         Controller private data pointer
+    :type host_data: void \*
 
 .. _`irq_linear_revmap`:
 
@@ -270,11 +274,13 @@ irq_linear_revmap
 
     Find a linux irq from a hw irq number.
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain owning this hardware interrupt
+    :type domain: struct irq_domain \*
 
-    :param irq_hw_number_t hwirq:
+    :param hwirq:
         hardware irq number in that domain space
+    :type hwirq: irq_hw_number_t
 
 .. _`irq_linear_revmap.description`:
 

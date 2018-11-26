@@ -10,17 +10,21 @@ dln2_event_cb_t
 
     event callback function signature
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
-    :param u16 echo:
+    :param echo:
         *undescribed*
+    :type echo: u16
 
-    :param const void \*data:
+    :param data:
         *undescribed*
+    :type data: const void \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
 .. _`dln2_event_cb_t.description`:
 
@@ -45,14 +49,17 @@ dln2_register_event_cb
 
     register a callback function for an event
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
-    :param u16 event:
+    :param event:
         *undescribed*
+    :type event: u16
 
-    :param dln2_event_cb_t event_cb:
+    :param event_cb:
         *undescribed*
+    :type event_cb: dln2_event_cb_t
 
 .. _`dln2_register_event_cb.description`:
 
@@ -74,11 +81,13 @@ dln2_unregister_event_cb
 
     unregister the callback function for an event
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
-    :param u16 event:
+    :param event:
         *undescribed*
+    :type event: u16
 
 .. _`dln2_unregister_event_cb.description`:
 
@@ -97,23 +106,29 @@ dln2_transfer
 
     issue a DLN2 command and wait for a response and the associated data
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
-    :param u16 cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: u16
 
-    :param const void \*obuf:
+    :param obuf:
         *undescribed*
+    :type obuf: const void \*
 
-    :param unsigned obuf_len:
+    :param obuf_len:
         *undescribed*
+    :type obuf_len: unsigned
 
-    :param void \*ibuf:
+    :param ibuf:
         *undescribed*
+    :type ibuf: void \*
 
-    :param unsigned \*ibuf_len:
+    :param ibuf_len:
         *undescribed*
+    :type ibuf_len: unsigned \*
 
 .. _`dln2_transfer.description`:
 
@@ -141,17 +156,21 @@ dln2_transfer_rx
 
     variant of \ ``dln2_transfer``\ () where TX buffer is not needed
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
-    :param u16 cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: u16
 
-    :param void \*ibuf:
+    :param ibuf:
         *undescribed*
+    :type ibuf: void \*
 
-    :param unsigned \*ibuf_len:
+    :param ibuf_len:
         *undescribed*
+    :type ibuf_len: unsigned \*
 
 .. _`dln2_transfer_rx.description`:
 
@@ -176,17 +195,21 @@ dln2_transfer_tx
 
     variant of \ ``dln2_transfer``\ () where RX buffer is not needed
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
-    :param u16 cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: u16
 
-    :param const void \*obuf:
+    :param obuf:
         *undescribed*
+    :type obuf: const void \*
 
-    :param unsigned obuf_len:
+    :param obuf_len:
         *undescribed*
+    :type obuf_len: unsigned
 
 .. _`dln2_transfer_tx.description`:
 

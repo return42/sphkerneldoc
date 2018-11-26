@@ -10,8 +10,9 @@ kvm_pgd_init
 
     Initialise KVM GPA page directory.
 
-    :param void \*page:
+    :param page:
         Pointer to page directory (PGD) for KVM GPA.
+    :type page: void \*
 
 .. _`kvm_pgd_init.description`:
 
@@ -33,8 +34,9 @@ kvm_pgd_alloc
 
     Allocate and initialise a KVM GPA page directory.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kvm_pgd_alloc.description`:
 
@@ -61,14 +63,17 @@ kvm_mips_walk_pgd
 
     Walk page table with optional allocation.
 
-    :param pgd_t \*pgd:
+    :param pgd:
         Page directory pointer.
+    :type pgd: pgd_t \*
 
-    :param struct kvm_mmu_memory_cache \*cache:
+    :param cache:
         MMU page cache to allocate new page tables from, or NULL.
+    :type cache: struct kvm_mmu_memory_cache \*
 
-    :param unsigned long addr:
+    :param addr:
         Address to index page table using.
+    :type addr: unsigned long
 
 .. _`kvm_mips_walk_pgd.description`:
 
@@ -97,14 +102,17 @@ kvm_mips_flush_gpa_pt
 
     Flush a range of guest physical addresses.
 
-    :param struct kvm \*kvm:
+    :param kvm:
         KVM pointer.
+    :type kvm: struct kvm \*
 
-    :param gfn_t start_gfn:
+    :param start_gfn:
         Guest frame number of first page in GPA range to flush.
+    :type start_gfn: gfn_t
 
-    :param gfn_t end_gfn:
+    :param end_gfn:
         Guest frame number of last page in GPA range to flush.
+    :type end_gfn: gfn_t
 
 .. _`kvm_mips_flush_gpa_pt.description`:
 
@@ -113,7 +121,7 @@ Description
 
 Flushes a range of GPA mappings from the GPA page tables.
 
-The caller must hold the \ ``kvm``\ ->mmu_lock spinlock.
+The caller must hold the \ ``kvm->mmu_lock``\  spinlock.
 
 .. _`kvm_mips_flush_gpa_pt.return`:
 
@@ -132,14 +140,17 @@ kvm_mips_mkclean_gpa_pt
 
     Make a range of guest physical addresses clean.
 
-    :param struct kvm \*kvm:
+    :param kvm:
         KVM pointer.
+    :type kvm: struct kvm \*
 
-    :param gfn_t start_gfn:
+    :param start_gfn:
         Guest frame number of first page in GPA range to flush.
+    :type start_gfn: gfn_t
 
-    :param gfn_t end_gfn:
+    :param end_gfn:
         Guest frame number of last page in GPA range to flush.
+    :type end_gfn: gfn_t
 
 .. _`kvm_mips_mkclean_gpa_pt.description`:
 
@@ -149,7 +160,7 @@ Description
 Make a range of GPA mappings clean so that guest writes will fault and
 trigger dirty page logging.
 
-The caller must hold the \ ``kvm``\ ->mmu_lock spinlock.
+The caller must hold the \ ``kvm->mmu_lock``\  spinlock.
 
 .. _`kvm_mips_mkclean_gpa_pt.return`:
 
@@ -169,18 +180,22 @@ kvm_arch_mmu_enable_log_dirty_pt_masked
 
     write protect dirty pages
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The KVM pointer
+    :type kvm: struct kvm \*
 
-    :param struct kvm_memory_slot \*slot:
+    :param slot:
         The memory slot associated with mask
+    :type slot: struct kvm_memory_slot \*
 
-    :param gfn_t gfn_offset:
+    :param gfn_offset:
         The gfn offset in memory slot
+    :type gfn_offset: gfn_t
 
-    :param unsigned long mask:
+    :param mask:
         The mask of dirty pages at offset 'gfn_offset' in this memory
         slot to be write protected
+    :type mask: unsigned long
 
 .. _`kvm_arch_mmu_enable_log_dirty_pt_masked.description`:
 
@@ -188,7 +203,7 @@ Description
 -----------
 
 Walks bits set in mask write protects the associated pte's. Caller must
-acquire \ ``kvm``\ ->mmu_lock.
+acquire \ ``kvm->mmu_lock``\ .
 
 .. _`_kvm_mips_map_page_fast`:
 
@@ -199,21 +214,26 @@ acquire \ ``kvm``\ ->mmu_lock.
 
     Fast path GPA fault handler.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         VCPU pointer.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gpa:
+    :param gpa:
         Guest physical address of fault.
+    :type gpa: unsigned long
 
-    :param bool write_fault:
+    :param write_fault:
         Whether the fault was due to a write.
+    :type write_fault: bool
 
-    :param pte_t \*out_entry:
+    :param out_entry:
         New PTE for \ ``gpa``\  (written on success unless NULL).
+    :type out_entry: pte_t \*
 
-    :param pte_t \*out_buddy:
+    :param out_buddy:
         New PTE for \ ``gpa``\ 's buddy (written on success unless
         NULL).
+    :type out_buddy: pte_t \*
 
 .. _`_kvm_mips_map_page_fast.description`:
 
@@ -243,21 +263,26 @@ kvm_mips_map_page
 
     Map a guest physical page.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         VCPU pointer.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gpa:
+    :param gpa:
         Guest physical address of fault.
+    :type gpa: unsigned long
 
-    :param bool write_fault:
+    :param write_fault:
         Whether the fault was due to a write.
+    :type write_fault: bool
 
-    :param pte_t \*out_entry:
+    :param out_entry:
         New PTE for \ ``gpa``\  (written on success unless NULL).
+    :type out_entry: pte_t \*
 
-    :param pte_t \*out_buddy:
+    :param out_buddy:
         New PTE for \ ``gpa``\ 's buddy (written on success unless
         NULL).
+    :type out_buddy: pte_t \*
 
 .. _`kvm_mips_map_page.description`:
 
@@ -293,8 +318,9 @@ kvm_mips_migrate_count
 
     Migrate timer.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_mips_migrate_count.description`:
 
@@ -317,14 +343,17 @@ kvm_trap_emul_gva_fault
 
     Safely attempt to handle a GVA access fault.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long gva:
+    :param gva:
         Guest virtual address to be accessed.
+    :type gva: unsigned long
 
-    :param bool write:
+    :param write:
         True if write attempted (must be dirtied and made writable).
+    :type write: bool
 
 .. _`kvm_trap_emul_gva_fault.description`:
 

@@ -10,23 +10,29 @@ mesh_path_error_tx
 
     Sends a PERR mesh management frame
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local mesh subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param u8 ttl:
+    :param ttl:
         allowed remaining hops
+    :type ttl: u8
 
-    :param const u8 \*target:
+    :param target:
         broken destination
+    :type target: const u8 \*
 
-    :param u32 target_sn:
+    :param target_sn:
         SN of the broken destination
+    :type target_sn: u32
 
-    :param u16 target_rcode:
+    :param target_rcode:
         reason code for this PERR
+    :type target_rcode: u16
 
-    :param const u8 \*ra:
+    :param ra:
         node this frame is addressed to
+    :type ra: const u8 \*
 
 .. _`mesh_path_error_tx.note`:
 
@@ -46,17 +52,21 @@ hwmp_route_info_get
 
     Update routing info to originator and transmitter
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local mesh subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct ieee80211_mgmt \*mgmt:
+    :param mgmt:
         mesh management frame
+    :type mgmt: struct ieee80211_mgmt \*
 
-    :param const u8 \*hwmp_ie:
+    :param hwmp_ie:
         hwmp information element (PREP or PREQ)
+    :type hwmp_ie: const u8 \*
 
-    :param enum mpath_frame_type action:
+    :param action:
         type of hwmp ie
+    :type action: enum mpath_frame_type
 
 .. _`hwmp_route_info_get.description`:
 
@@ -91,11 +101,13 @@ mesh_queue_preq
 
     queue a PREQ to a given destination
 
-    :param struct mesh_path \*mpath:
+    :param mpath:
         mesh path to discover
+    :type mpath: struct mesh_path \*
 
-    :param u8 flags:
+    :param flags:
         special attributes of the PREQ to be sent
+    :type flags: u8
 
 .. _`mesh_queue_preq.locking`:
 
@@ -113,8 +125,9 @@ mesh_path_start_discovery
 
     launch a path discovery from the PREQ queue
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local mesh subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
 .. _`mesh_nexthop_resolve`:
 
@@ -125,11 +138,13 @@ mesh_nexthop_resolve
 
     lookup next hop; conditionally start path discovery
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         network subif the frame will be sent through
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         802.11 frame to be sent
+    :type skb: struct sk_buff \*
 
 .. _`mesh_nexthop_resolve.description`:
 
@@ -156,11 +171,13 @@ mesh_nexthop_lookup
 
     put the appropriate next hop on a mesh frame. Calling this function is considered "using" the associated mpath, so preempt a path refresh if this mpath expires soon.
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         network subif the frame will be sent through
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         802.11 frame to be sent
+    :type skb: struct sk_buff \*
 
 .. _`mesh_nexthop_lookup.return`:
 

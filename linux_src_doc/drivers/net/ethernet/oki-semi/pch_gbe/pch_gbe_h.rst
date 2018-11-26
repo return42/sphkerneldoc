@@ -1,66 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/oki-semi/pch_gbe/pch_gbe.h
 
-.. _`pch_gbe_functions`:
-
-struct pch_gbe_functions
-========================
-
-.. c:type:: struct pch_gbe_functions
-
-    HAL APi function pointer
-
-.. _`pch_gbe_functions.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct pch_gbe_functions {
-        void (*get_bus_info) (struct pch_gbe_hw *);
-        s32 (*init_hw) (struct pch_gbe_hw *);
-        s32 (*read_phy_reg) (struct pch_gbe_hw *, u32, u16 *);
-        s32 (*write_phy_reg) (struct pch_gbe_hw *, u32, u16);
-        void (*reset_phy) (struct pch_gbe_hw *);
-        void (*sw_reset_phy) (struct pch_gbe_hw *);
-        void (*power_up_phy) (struct pch_gbe_hw *hw);
-        void (*power_down_phy) (struct pch_gbe_hw *hw);
-        s32 (*read_mac_addr) (struct pch_gbe_hw *);
-    }
-
-.. _`pch_gbe_functions.members`:
-
-Members
--------
-
-get_bus_info
-    for pch_gbe_hal_get_bus_info
-
-init_hw
-    for pch_gbe_hal_init_hw
-
-read_phy_reg
-    for pch_gbe_hal_read_phy_reg
-
-write_phy_reg
-    for pch_gbe_hal_write_phy_reg
-
-reset_phy
-    for pch_gbe_hal_phy_hw_reset
-
-sw_reset_phy
-    for pch_gbe_hal_phy_sw_reset
-
-power_up_phy
-    for pch_gbe_hal_power_up_phy
-
-power_down_phy
-    for pch_gbe_hal_power_down_phy
-
-read_mac_addr
-    for pch_gbe_hal_read_mac_addr
-
 .. _`pch_gbe_mac_info`:
 
 struct pch_gbe_mac_info

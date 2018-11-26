@@ -10,17 +10,21 @@ dwmac_pcs_isr
 
     TBI, RTBI, or SGMII PHY ISR
 
-    :param void __iomem \*ioaddr:
+    :param ioaddr:
         IO registers pointer
+    :type ioaddr: void __iomem \*
 
-    :param u32 reg:
+    :param reg:
         Base address of the AN Control Register.
+    :type reg: u32
 
-    :param unsigned int intr_status:
+    :param intr_status:
         GMAC core interrupt status
+    :type intr_status: unsigned int
 
-    :param struct stmmac_extra_stats \*x:
+    :param x:
         pointer to log these events as stats
+    :type x: struct stmmac_extra_stats \*
 
 .. _`dwmac_pcs_isr.description`:
 
@@ -39,14 +43,17 @@ dwmac_rane
 
     To restart ANE
 
-    :param void __iomem \*ioaddr:
+    :param ioaddr:
         IO registers pointer
+    :type ioaddr: void __iomem \*
 
-    :param u32 reg:
+    :param reg:
         Base address of the AN Control Register.
+    :type reg: u32
 
-    :param bool restart:
+    :param restart:
         to restart ANE
+    :type restart: bool
 
 .. _`dwmac_rane.description`:
 
@@ -64,20 +71,25 @@ dwmac_ctrl_ane
 
     To program the AN Control Register.
 
-    :param void __iomem \*ioaddr:
+    :param ioaddr:
         IO registers pointer
+    :type ioaddr: void __iomem \*
 
-    :param u32 reg:
+    :param reg:
         Base address of the AN Control Register.
+    :type reg: u32
 
-    :param bool ane:
+    :param ane:
         to enable the auto-negotiation
+    :type ane: bool
 
-    :param bool srgmi_ral:
+    :param srgmi_ral:
         to manage MAC-2-MAC SGMII connections.
+    :type srgmi_ral: bool
 
-    :param bool loopback:
+    :param loopback:
         to cause the PHY to loopback tx data into rx path.
+    :type loopback: bool
 
 .. _`dwmac_ctrl_ane.description`:
 
@@ -97,14 +109,17 @@ dwmac_get_adv_lp
 
     Get ADV and LP cap
 
-    :param void __iomem \*ioaddr:
+    :param ioaddr:
         IO registers pointer
+    :type ioaddr: void __iomem \*
 
-    :param u32 reg:
+    :param reg:
         Base address of the AN Control Register.
+    :type reg: u32
 
-    :param struct rgmii_adv \*adv_lp:
+    :param adv_lp:
         structure to store the adv,lp status
+    :type adv_lp: struct rgmii_adv \*
 
 .. _`dwmac_get_adv_lp.description`:
 

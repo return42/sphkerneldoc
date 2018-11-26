@@ -10,14 +10,17 @@ cik_get_allowed_info_register
 
     fetch the register for the info ioctl
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 reg:
+    :param reg:
         register offset in bytes
+    :type reg: u32
 
-    :param u32 \*val:
+    :param val:
         register value
+    :type val: u32 \*
 
 .. _`cik_get_allowed_info_register.description`:
 
@@ -35,8 +38,9 @@ cik_get_xclk
 
     get the xclk
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_get_xclk.description`:
 
@@ -55,11 +59,13 @@ cik_mm_rdoorbell
 
     read a doorbell dword
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 index:
+    :param index:
         doorbell index
+    :type index: u32
 
 .. _`cik_mm_rdoorbell.description`:
 
@@ -78,14 +84,17 @@ cik_mm_wdoorbell
 
     write a doorbell dword
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 index:
+    :param index:
         doorbell index
+    :type index: u32
 
-    :param u32 v:
+    :param v:
         value to write
+    :type v: u32
 
 .. _`cik_mm_wdoorbell.description`:
 
@@ -104,20 +113,25 @@ cik_srbm_select
 
     select specific register instances
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 me:
+    :param me:
         selected ME (micro engine)
+    :type me: u32
 
-    :param u32 pipe:
+    :param pipe:
         pipe
+    :type pipe: u32
 
-    :param u32 queue:
+    :param queue:
         queue
+    :type queue: u32
 
-    :param u32 vmid:
+    :param vmid:
         VMID
+    :type vmid: u32
 
 .. _`cik_srbm_select.description`:
 
@@ -137,8 +151,9 @@ ci_mc_load_microcode
 
     load MC ucode into the hw
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`ci_mc_load_microcode.description`:
 
@@ -157,8 +172,9 @@ cik_init_microcode
 
     load ucode images from disk
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_init_microcode.description`:
 
@@ -178,8 +194,9 @@ cik_tiling_mode_table_init
 
     init the hw tiling table
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_tiling_mode_table_init.description`:
 
@@ -201,14 +218,17 @@ cik_select_se_sh
 
     select which SE, SH to address
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 se_num:
+    :param se_num:
         shader engine to address
+    :type se_num: u32
 
-    :param u32 sh_num:
+    :param sh_num:
         sh block to address
+    :type sh_num: u32
 
 .. _`cik_select_se_sh.description`:
 
@@ -228,8 +248,9 @@ cik_create_bitmask
 
     create a bitmask
 
-    :param u32 bit_width:
+    :param bit_width:
         length of the mask
+    :type bit_width: u32
 
 .. _`cik_create_bitmask.description`:
 
@@ -248,14 +269,17 @@ cik_get_rb_disabled
 
     computes the mask of disabled RBs
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 max_rb_num_per_se:
+    :param max_rb_num_per_se:
         *undescribed*
+    :type max_rb_num_per_se: u32
 
-    :param u32 sh_per_se:
+    :param sh_per_se:
         number of SH blocks per SE for the asic
+    :type sh_per_se: u32
 
 .. _`cik_get_rb_disabled.description`:
 
@@ -274,17 +298,21 @@ cik_setup_rb
 
     setup the RBs on the asic
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 se_num:
+    :param se_num:
         number of SEs (shader engines) for the asic
+    :type se_num: u32
 
-    :param u32 sh_per_se:
+    :param sh_per_se:
         number of SH blocks per SE for the asic
+    :type sh_per_se: u32
 
-    :param u32 max_rb_num_per_se:
+    :param max_rb_num_per_se:
         *undescribed*
+    :type max_rb_num_per_se: u32
 
 .. _`cik_setup_rb.description`:
 
@@ -302,8 +330,9 @@ cik_gpu_init
 
     setup the 3D engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_gpu_init.description`:
 
@@ -322,8 +351,9 @@ cik_scratch_init
 
     setup driver info for CP scratch regs
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_scratch_init.description`:
 
@@ -350,11 +380,13 @@ cik_ring_test
 
     basic gfx ring test
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`cik_ring_test.description`:
 
@@ -375,11 +407,13 @@ cik_hdp_flush_cp_ring_emit
 
     emit an hdp flush on the cp
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param int ridx:
+    :param ridx:
         radeon ring index
+    :type ridx: int
 
 .. _`cik_hdp_flush_cp_ring_emit.description`:
 
@@ -397,11 +431,13 @@ cik_fence_gfx_ring_emit
 
     emit a fence on the gfx ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
 .. _`cik_fence_gfx_ring_emit.description`:
 
@@ -420,11 +456,13 @@ cik_fence_compute_ring_emit
 
     emit a fence on the compute ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_fence \*fence:
+    :param fence:
         radeon fence object
+    :type fence: struct radeon_fence \*
 
 .. _`cik_fence_compute_ring_emit.description`:
 
@@ -443,17 +481,21 @@ cik_semaphore_ring_emit
 
     emit a semaphore on the CP ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon ring buffer object
+    :type ring: struct radeon_ring \*
 
-    :param struct radeon_semaphore \*semaphore:
+    :param semaphore:
         radeon semaphore object
+    :type semaphore: struct radeon_semaphore \*
 
-    :param bool emit_wait:
+    :param emit_wait:
         Is this a sempahore wait?
+    :type emit_wait: bool
 
 .. _`cik_semaphore_ring_emit.description`:
 
@@ -472,20 +514,25 @@ cik_copy_cpdma
 
     copy pages using the CP DMA engine
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param uint64_t src_offset:
+    :param src_offset:
         src GPU address
+    :type src_offset: uint64_t
 
-    :param uint64_t dst_offset:
+    :param dst_offset:
         dst GPU address
+    :type dst_offset: uint64_t
 
-    :param unsigned num_gpu_pages:
+    :param num_gpu_pages:
         number of GPU pages to xfer
+    :type num_gpu_pages: unsigned
 
-    :param struct reservation_object \*resv:
+    :param resv:
         reservation object to sync to
+    :type resv: struct reservation_object \*
 
 .. _`cik_copy_cpdma.description`:
 
@@ -505,11 +552,13 @@ cik_ring_ib_execute
 
     emit an IB (Indirect Buffer) on the gfx ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         radeon indirect buffer object
+    :type ib: struct radeon_ib \*
 
 .. _`cik_ring_ib_execute.description`:
 
@@ -531,11 +580,13 @@ cik_ib_test
 
     basic gfx ring IB test
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`cik_ib_test.description`:
 
@@ -555,11 +606,13 @@ cik_cp_gfx_enable
 
     enable/disable the gfx CP MEs
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param bool enable:
+    :param enable:
         enable or disable the MEs
+    :type enable: bool
 
 .. _`cik_cp_gfx_enable.description`:
 
@@ -577,8 +630,9 @@ cik_cp_gfx_load_microcode
 
     load the gfx CP ME ucode
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_cp_gfx_load_microcode.description`:
 
@@ -597,8 +651,9 @@ cik_cp_gfx_start
 
     start the gfx ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_cp_gfx_start.description`:
 
@@ -618,8 +673,9 @@ cik_cp_gfx_fini
 
     stop the gfx ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_cp_gfx_fini.description`:
 
@@ -638,8 +694,9 @@ cik_cp_gfx_resume
 
     setup the gfx ring buffer registers
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_cp_gfx_resume.description`:
 
@@ -659,11 +716,13 @@ cik_cp_compute_enable
 
     enable/disable the compute CP MEs
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param bool enable:
+    :param enable:
         enable or disable the MEs
+    :type enable: bool
 
 .. _`cik_cp_compute_enable.description`:
 
@@ -681,8 +740,9 @@ cik_cp_compute_load_microcode
 
     load the compute CP ME ucode
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_cp_compute_load_microcode.description`:
 
@@ -701,8 +761,9 @@ cik_cp_compute_start
 
     start the compute queues
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_cp_compute_start.description`:
 
@@ -721,8 +782,9 @@ cik_cp_compute_fini
 
     stop the compute queues
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_cp_compute_fini.description`:
 
@@ -741,8 +803,9 @@ cik_cp_compute_resume
 
     setup the compute queue registers
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_cp_compute_resume.description`:
 
@@ -762,8 +825,9 @@ cik_gpu_check_soft_reset
 
     check which blocks are busy
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_gpu_check_soft_reset.description`:
 
@@ -783,11 +847,13 @@ cik_gpu_soft_reset
 
     soft reset GPU
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 reset_mask:
+    :param reset_mask:
         mask of which blocks to reset
+    :type reset_mask: u32
 
 .. _`cik_gpu_soft_reset.description`:
 
@@ -805,11 +871,13 @@ cik_asic_reset
 
     soft reset GPU
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param bool hard:
+    :param hard:
         force hard reset
+    :type hard: bool
 
 .. _`cik_asic_reset.description`:
 
@@ -829,11 +897,13 @@ cik_gfx_is_lockup
 
     check if the 3D engine is locked up
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`cik_gfx_is_lockup.description`:
 
@@ -852,8 +922,9 @@ cik_mc_program
 
     program the GPU memory controller
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_mc_program.description`:
 
@@ -872,8 +943,9 @@ cik_mc_init
 
     initialize the memory controller driver params
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_mc_init.description`:
 
@@ -893,8 +965,9 @@ cik_pcie_gart_tlb_flush
 
     gart tlb flush callback
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_pcie_gart_tlb_flush.description`:
 
@@ -912,8 +985,9 @@ cik_pcie_gart_enable
 
     gart enable
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_pcie_gart_enable.description`:
 
@@ -935,8 +1009,9 @@ cik_pcie_gart_disable
 
     gart disable
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_pcie_gart_disable.description`:
 
@@ -954,8 +1029,9 @@ cik_pcie_gart_fini
 
     vm fini callback
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_pcie_gart_fini.description`:
 
@@ -973,11 +1049,13 @@ cik_ib_parse
 
     vm ib_parse callback
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ib \*ib:
+    :param ib:
         indirect buffer pointer
+    :type ib: struct radeon_ib \*
 
 .. _`cik_ib_parse.description`:
 
@@ -995,8 +1073,9 @@ cik_vm_init
 
     cik vm init callback
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_vm_init.description`:
 
@@ -1016,8 +1095,9 @@ cik_vm_fini
 
     cik vm fini callback
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_vm_fini.description`:
 
@@ -1035,17 +1115,21 @@ cik_vm_decode_fault
 
     print human readable fault info
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 status:
+    :param status:
         VM_CONTEXT1_PROTECTION_FAULT_STATUS register value
+    :type status: u32
 
-    :param u32 addr:
+    :param addr:
         VM_CONTEXT1_PROTECTION_FAULT_ADDR register value
+    :type addr: u32
 
-    :param u32 mc_client:
+    :param mc_client:
         *undescribed*
+    :type mc_client: u32
 
 .. _`cik_vm_decode_fault.description`:
 
@@ -1063,17 +1147,21 @@ cik_vm_flush
 
     cik vm flush using the CP
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct radeon_ring \*
 
-    :param unsigned vm_id:
+    :param vm_id:
         *undescribed*
+    :type vm_id: unsigned
 
-    :param uint64_t pd_addr:
+    :param pd_addr:
         *undescribed*
+    :type pd_addr: uint64_t
 
 .. _`cik_vm_flush.description`:
 
@@ -1092,8 +1180,9 @@ cik_rlc_stop
 
     stop the RLC ME
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_rlc_stop.description`:
 
@@ -1111,8 +1200,9 @@ cik_rlc_start
 
     start the RLC ME
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_rlc_start.description`:
 
@@ -1130,8 +1220,9 @@ cik_rlc_resume
 
     setup the RLC hw
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_rlc_resume.description`:
 
@@ -1151,8 +1242,9 @@ cik_enable_interrupts
 
     Enable the interrupt ring buffer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_enable_interrupts.description`:
 
@@ -1170,8 +1262,9 @@ cik_disable_interrupts
 
     Disable the interrupt ring buffer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_disable_interrupts.description`:
 
@@ -1189,8 +1282,9 @@ cik_disable_interrupt_state
 
     Disable all interrupt sources
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_disable_interrupt_state.description`:
 
@@ -1208,8 +1302,9 @@ cik_irq_init
 
     init and enable the interrupt ring
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_irq_init.description`:
 
@@ -1231,8 +1326,9 @@ cik_irq_set
 
     enable/disable interrupt sources
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_irq_set.description`:
 
@@ -1252,8 +1348,9 @@ cik_irq_ack
 
     ack interrupt sources
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_irq_ack.description`:
 
@@ -1273,8 +1370,9 @@ cik_irq_disable
 
     disable interrupts
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_irq_disable.description`:
 
@@ -1292,8 +1390,9 @@ cik_irq_suspend
 
     disable interrupts for suspend
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_irq_suspend.description`:
 
@@ -1312,8 +1411,9 @@ cik_irq_fini
 
     tear down interrupt support
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_irq_fini.description`:
 
@@ -1333,8 +1433,9 @@ cik_get_ih_wptr
 
     get the IH ring buffer wptr
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_get_ih_wptr.description`:
 
@@ -1356,8 +1457,9 @@ cik_irq_process
 
     interrupt handler
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_irq_process.description`:
 
@@ -1378,8 +1480,9 @@ cik_startup
 
     program the asic to a functional state
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_startup.description`:
 
@@ -1399,8 +1502,9 @@ cik_resume
 
     resume the asic to a functional state
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_resume.description`:
 
@@ -1420,8 +1524,9 @@ cik_suspend
 
     suspend the asic
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_suspend.description`:
 
@@ -1441,8 +1546,9 @@ cik_init
 
     asic specific driver and hw init
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_init.description`:
 
@@ -1463,8 +1569,9 @@ cik_fini
 
     asic specific driver and hw fini
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_fini.description`:
 
@@ -1484,15 +1591,18 @@ dce8_line_buffer_adjust
 
     Set up the line buffer
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_crtc \*radeon_crtc:
+    :param radeon_crtc:
         the selected display controller
+    :type radeon_crtc: struct radeon_crtc \*
 
-    :param struct drm_display_mode \*mode:
+    :param mode:
         the current display mode on the selected display
         controller
+    :type mode: struct drm_display_mode \*
 
 .. _`dce8_line_buffer_adjust.description`:
 
@@ -1512,8 +1622,9 @@ cik_get_number_of_dram_channels
 
     get the number of dram channels
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_get_number_of_dram_channels.description`:
 
@@ -1533,8 +1644,9 @@ dce8_dram_bandwidth
 
     get the dram bandwidth
 
-    :param struct dce8_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce8_wm_params \*
 
 .. _`dce8_dram_bandwidth.description`:
 
@@ -1554,8 +1666,9 @@ dce8_dram_bandwidth_for_display
 
     get the dram bandwidth for display
 
-    :param struct dce8_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce8_wm_params \*
 
 .. _`dce8_dram_bandwidth_for_display.description`:
 
@@ -1575,8 +1688,9 @@ dce8_data_return_bandwidth
 
     get the data return bandwidth
 
-    :param struct dce8_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce8_wm_params \*
 
 .. _`dce8_data_return_bandwidth.description`:
 
@@ -1596,8 +1710,9 @@ dce8_dmif_request_bandwidth
 
     get the dmif bandwidth
 
-    :param struct dce8_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce8_wm_params \*
 
 .. _`dce8_dmif_request_bandwidth.description`:
 
@@ -1617,8 +1732,9 @@ dce8_available_bandwidth
 
     get the min available bandwidth
 
-    :param struct dce8_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce8_wm_params \*
 
 .. _`dce8_available_bandwidth.description`:
 
@@ -1638,8 +1754,9 @@ dce8_average_bandwidth
 
     get the average available bandwidth
 
-    :param struct dce8_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce8_wm_params \*
 
 .. _`dce8_average_bandwidth.description`:
 
@@ -1659,8 +1776,9 @@ dce8_latency_watermark
 
     get the latency watermark
 
-    :param struct dce8_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce8_wm_params \*
 
 .. _`dce8_latency_watermark.description`:
 
@@ -1680,8 +1798,9 @@ dce8_average_bandwidth_vs_dram_bandwidth_for_display
 
     check average and available dram bandwidth
 
-    :param struct dce8_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce8_wm_params \*
 
 .. _`dce8_average_bandwidth_vs_dram_bandwidth_for_display.description`:
 
@@ -1702,8 +1821,9 @@ dce8_average_bandwidth_vs_available_bandwidth
 
     check average and available bandwidth
 
-    :param struct dce8_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce8_wm_params \*
 
 .. _`dce8_average_bandwidth_vs_available_bandwidth.description`:
 
@@ -1724,8 +1844,9 @@ dce8_check_latency_hiding
 
     check latency hiding
 
-    :param struct dce8_wm_params \*wm:
+    :param wm:
         watermark calculation data
+    :type wm: struct dce8_wm_params \*
 
 .. _`dce8_check_latency_hiding.description`:
 
@@ -1745,17 +1866,21 @@ dce8_program_watermarks
 
     program display watermarks
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_crtc \*radeon_crtc:
+    :param radeon_crtc:
         the selected display controller
+    :type radeon_crtc: struct radeon_crtc \*
 
-    :param u32 lb_size:
+    :param lb_size:
         line buffer size
+    :type lb_size: u32
 
-    :param u32 num_heads:
+    :param num_heads:
         number of display controllers in use
+    :type num_heads: u32
 
 .. _`dce8_program_watermarks.description`:
 
@@ -1774,8 +1899,9 @@ dce8_bandwidth_update
 
     program display watermarks
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`dce8_bandwidth_update.description`:
 
@@ -1794,8 +1920,9 @@ cik_get_gpu_clock_counter
 
     return GPU clock counter snapshot
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`cik_get_gpu_clock_counter.description`:
 

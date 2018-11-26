@@ -10,11 +10,13 @@ brcmf_pno_start_sched_scan
 
     initiate scheduled scan on device.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interface object used.
+    :type ifp: struct brcmf_if \*
 
-    :param struct cfg80211_sched_scan_request \*req:
+    :param req:
         configuration parameters for scheduled scan.
+    :type req: struct cfg80211_sched_scan_request \*
 
 .. _`brcmf_pno_stop_sched_scan`:
 
@@ -25,11 +27,13 @@ brcmf_pno_stop_sched_scan
 
     terminate scheduled scan on device.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interface object used.
+    :type ifp: struct brcmf_if \*
 
-    :param u64 reqid:
+    :param reqid:
         unique identifier of scan to be stopped.
+    :type reqid: u64
 
 .. _`brcmf_pno_wiphy_params`:
 
@@ -40,11 +44,13 @@ brcmf_pno_wiphy_params
 
     fill scheduled scan parameters in wiphy instance.
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         wiphy instance to be used.
+    :type wiphy: struct wiphy \*
 
-    :param bool gscan:
+    :param gscan:
         indicates whether the device has support for g-scan feature.
+    :type gscan: bool
 
 .. _`brcmf_pno_attach`:
 
@@ -55,8 +61,9 @@ brcmf_pno_attach
 
     allocate and attach module information.
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         cfg80211 context used.
+    :type cfg: struct brcmf_cfg80211_info \*
 
 .. _`brcmf_pno_detach`:
 
@@ -67,8 +74,9 @@ brcmf_pno_detach
 
     detach and free module information.
 
-    :param struct brcmf_cfg80211_info \*cfg:
+    :param cfg:
         cfg80211 context used.
+    :type cfg: struct brcmf_cfg80211_info \*
 
 .. _`brcmf_pno_find_reqid_by_bucket`:
 
@@ -79,11 +87,13 @@ brcmf_pno_find_reqid_by_bucket
 
     find request id for given bucket index.
 
-    :param struct brcmf_pno_info \*pi:
+    :param pi:
         pno instance used.
+    :type pi: struct brcmf_pno_info \*
 
-    :param u32 bucket:
+    :param bucket:
         index of firmware bucket.
+    :type bucket: u32
 
 .. _`brcmf_pno_get_bucket_map`:
 
@@ -94,11 +104,13 @@ brcmf_pno_get_bucket_map
 
     determine bucket map for given netinfo.
 
-    :param struct brcmf_pno_info \*pi:
+    :param pi:
         pno instance used.
+    :type pi: struct brcmf_pno_info \*
 
-    :param struct brcmf_pno_net_info_le \*netinfo:
+    :param netinfo:
         netinfo to compare with bucket configuration.
+    :type netinfo: struct brcmf_pno_net_info_le \*
 
 .. This file was automatic generated / don't edit.
 

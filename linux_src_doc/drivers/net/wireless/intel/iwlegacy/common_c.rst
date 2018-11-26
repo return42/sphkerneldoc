@@ -10,8 +10,9 @@ il_eeprom_init
 
     read EEPROM contents
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il_eeprom_init.description`:
 
@@ -36,20 +37,25 @@ il_mod_ht40_chan_info
 
     Copy ht40 channel info into driver's il.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param enum nl80211_band band:
+    :param band:
         *undescribed*
+    :type band: enum nl80211_band
 
-    :param u16 channel:
+    :param channel:
         *undescribed*
+    :type channel: u16
 
-    :param const struct il_eeprom_channel \*eeprom_ch:
+    :param eeprom_ch:
         *undescribed*
+    :type eeprom_ch: const struct il_eeprom_channel \*
 
-    :param u8 clear_ht40_extension_channel:
+    :param clear_ht40_extension_channel:
         *undescribed*
+    :type clear_ht40_extension_channel: u8
 
 .. _`il_mod_ht40_chan_info.description`:
 
@@ -67,8 +73,9 @@ il_init_channel_map
 
     Set up driver's info for all possible channels
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il_get_channel_info`:
 
@@ -79,14 +86,17 @@ il_get_channel_info
 
     Find driver's ilate channel info
 
-    :param const struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: const struct il_priv \*
 
-    :param enum nl80211_band band:
+    :param band:
         *undescribed*
+    :type band: enum nl80211_band
 
-    :param u16 channel:
+    :param channel:
         *undescribed*
+    :type channel: u16
 
 .. _`il_get_channel_info.description`:
 
@@ -104,8 +114,9 @@ il_scan_cancel
 
     Cancel any currently executing HW scan
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il_scan_cancel_timeout`:
 
@@ -116,11 +127,13 @@ il_scan_cancel_timeout
 
     Cancel any currently executing HW scan
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param unsigned long ms:
+    :param ms:
         amount of time to wait (in milliseconds) for scan to abort
+    :type ms: unsigned long
 
 .. _`il_fill_probe_req`:
 
@@ -131,23 +144,29 @@ il_fill_probe_req
 
     fill in all required fields and IE for probe request
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct ieee80211_mgmt \*frame:
+    :param frame:
         *undescribed*
+    :type frame: struct ieee80211_mgmt \*
 
-    :param const u8 \*ta:
+    :param ta:
         *undescribed*
+    :type ta: const u8 \*
 
-    :param const u8 \*ies:
+    :param ies:
         *undescribed*
+    :type ies: const u8 \*
 
-    :param int ie_len:
+    :param ie_len:
         *undescribed*
+    :type ie_len: int
 
-    :param int left:
+    :param left:
         *undescribed*
+    :type left: int
 
 .. _`il_prep_station`:
 
@@ -158,17 +177,21 @@ il_prep_station
 
     Prepare station information for addition
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const u8 \*
 
-    :param bool is_ap:
+    :param is_ap:
         *undescribed*
+    :type is_ap: bool
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
 .. _`il_prep_station.description`:
 
@@ -184,20 +207,25 @@ il_add_station_common
 
 .. c:function:: int il_add_station_common(struct il_priv *il, const u8 *addr, bool is_ap, struct ieee80211_sta *sta, u8 *sta_id_r)
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const u8 \*
 
-    :param bool is_ap:
+    :param is_ap:
         *undescribed*
+    :type is_ap: bool
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
-    :param u8 \*sta_id_r:
+    :param sta_id_r:
         *undescribed*
+    :type sta_id_r: u8 \*
 
 .. _`il_sta_ucode_deactivate`:
 
@@ -208,11 +236,13 @@ il_sta_ucode_deactivate
 
     deactivate ucode status for a station
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u8 sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: u8
 
 .. _`il_sta_ucode_deactivate.description`:
 
@@ -230,14 +260,17 @@ il_remove_station
 
     Remove driver's knowledge of station.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param const u8 sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: const u8
 
-    :param const u8 \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const u8 \*
 
 .. _`il_clear_ucode_stations`:
 
@@ -248,8 +281,9 @@ il_clear_ucode_stations
 
     clear ucode station table bits
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il_clear_ucode_stations.description`:
 
@@ -270,8 +304,9 @@ il_restore_stations
 
     Restore driver known stations to device
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il_restore_stations.description`:
 
@@ -292,11 +327,13 @@ il_is_lq_table_valid
 
     Test one aspect of LQ cmd for validity
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_link_quality_cmd \*lq:
+    :param lq:
         *undescribed*
+    :type lq: struct il_link_quality_cmd \*
 
 .. _`il_is_lq_table_valid.description`:
 
@@ -320,18 +357,22 @@ il_send_lq_cmd
 
     Send link quality command
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_link_quality_cmd \*lq:
+    :param lq:
         *undescribed*
+    :type lq: struct il_link_quality_cmd \*
 
-    :param u8 flags:
+    :param flags:
         *undescribed*
+    :type flags: u8
 
-    :param bool init:
+    :param init:
         This command is sent as part of station initialization right
         after station has been added.
+    :type init: bool
 
 .. _`il_send_lq_cmd.description`:
 
@@ -352,8 +393,9 @@ il_rx_queue_space
 
     Return number of free slots available in queue.
 
-    :param const struct il_rx_queue \*q:
+    :param q:
         *undescribed*
+    :type q: const struct il_rx_queue \*
 
 .. _`il_rx_queue_update_write_ptr`:
 
@@ -364,11 +406,13 @@ il_rx_queue_update_write_ptr
 
     Update the write pointer for the RX queue
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_rx_queue \*q:
+    :param q:
         *undescribed*
+    :type q: struct il_rx_queue \*
 
 .. _`il_txq_update_write_ptr`:
 
@@ -379,11 +423,13 @@ il_txq_update_write_ptr
 
     Send new write idx to hardware
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_tx_queue \*txq:
+    :param txq:
         *undescribed*
+    :type txq: struct il_tx_queue \*
 
 .. _`il_tx_queue_unmap`:
 
@@ -394,11 +440,13 @@ il_tx_queue_unmap
 
     Unmap any remaining DMA mappings and free skb's
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param int txq_id:
+    :param txq_id:
         *undescribed*
+    :type txq_id: int
 
 .. _`il_tx_queue_free`:
 
@@ -409,11 +457,13 @@ il_tx_queue_free
 
     Deallocate DMA queue.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param int txq_id:
+    :param txq_id:
         *undescribed*
+    :type txq_id: int
 
 .. _`il_tx_queue_free.description`:
 
@@ -433,8 +483,9 @@ il_cmd_queue_unmap
 
     Unmap any remaining DMA mappings from command queue
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il_cmd_queue_free`:
 
@@ -445,8 +496,9 @@ il_cmd_queue_free
 
     Deallocate DMA queue.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il_cmd_queue_free.description`:
 
@@ -466,17 +518,21 @@ il_queue_init
 
     Initialize queue's high/low-water and read/write idxes
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_queue \*q:
+    :param q:
         *undescribed*
+    :type q: struct il_queue \*
 
-    :param int slots:
+    :param slots:
         *undescribed*
+    :type slots: int
 
-    :param u32 id:
+    :param id:
         *undescribed*
+    :type id: u32
 
 .. _`il_tx_queue_alloc`:
 
@@ -487,14 +543,17 @@ il_tx_queue_alloc
 
     Alloc driver data and TFD CB for one Tx/cmd queue
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_tx_queue \*txq:
+    :param txq:
         *undescribed*
+    :type txq: struct il_tx_queue \*
 
-    :param u32 id:
+    :param id:
         *undescribed*
+    :type id: u32
 
 .. _`il_tx_queue_init`:
 
@@ -505,11 +564,13 @@ il_tx_queue_init
 
     Allocate and initialize one tx/cmd queue
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u32 txq_id:
+    :param txq_id:
         *undescribed*
+    :type txq_id: u32
 
 .. _`il_enqueue_hcmd`:
 
@@ -520,11 +581,13 @@ il_enqueue_hcmd
 
     enqueue a uCode command
 
-    :param struct il_priv \*il:
+    :param il:
         device ilate data point
+    :type il: struct il_priv \*
 
-    :param struct il_host_cmd \*cmd:
+    :param cmd:
         a point to the ucode command structure
+    :type cmd: struct il_host_cmd \*
 
 .. _`il_enqueue_hcmd.description`:
 
@@ -544,17 +607,21 @@ il_hcmd_queue_reclaim
 
     Reclaim TX command queue entries already Tx'd
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param int txq_id:
+    :param txq_id:
         *undescribed*
+    :type txq_id: int
 
-    :param int idx:
+    :param idx:
         *undescribed*
+    :type idx: int
 
-    :param int cmd_idx:
+    :param cmd_idx:
         *undescribed*
+    :type cmd_idx: int
 
 .. _`il_hcmd_queue_reclaim.description`:
 
@@ -574,11 +641,13 @@ il_tx_cmd_complete
 
     Pull unused buffers off the queue and reclaim them
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct il_rx_buf \*rxb:
+    :param rxb:
         Rx buffer to reclaim
+    :type rxb: struct il_rx_buf \*
 
 .. _`il_tx_cmd_complete.description`:
 
@@ -598,8 +667,9 @@ il_init_geos
 
     Initialize mac80211's geo/channel info based from eeprom
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il_full_rxon_required`:
 
@@ -610,8 +680,9 @@ il_full_rxon_required
 
     check if full RXON (vs RXON_ASSOC) cmd is needed
 
-    :param struct il_priv \*il:
+    :param il:
         staging_rxon is compared to active_rxon
+    :type il: struct il_priv \*
 
 .. _`il_full_rxon_required.description`:
 
@@ -631,11 +702,13 @@ il_set_rxon_channel
 
     Set the band and channel values in staging RXON
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct ieee80211_channel \*ch:
+    :param ch:
         requested channel as a pointer to struct ieee80211_channel
+    :type ch: struct ieee80211_channel \*
 
 .. _`il_set_rxon_channel.note`:
 
@@ -654,8 +727,9 @@ il_irq_handle_error
 
     called for HW or SW error interrupt from card
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. _`il_mac_config`:
 
@@ -666,11 +740,13 @@ il_mac_config
 
     mac80211 config callback
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct ieee80211_hw \*
 
-    :param u32 changed:
+    :param changed:
         *undescribed*
+    :type changed: u32
 
 .. This file was automatic generated / don't edit.
 

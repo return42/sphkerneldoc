@@ -10,14 +10,17 @@ fat_msg
 
     print preformated FAT specific messages. Every thing what is not \ :c:func:`fat_fs_error`\  should be \ :c:func:`fat_msg`\ .
 
-    :param struct super_block \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct super_block \*
 
-    :param const char \*level:
+    :param level:
         *undescribed*
+    :type level: const char \*
 
-    :param const char \*fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments

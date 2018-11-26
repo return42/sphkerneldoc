@@ -10,26 +10,33 @@ tegra_cvb_add_opp_table
 
     build OPP table from Tegra CVB tables
 
-    :param struct device \*dev:
+    :param dev:
         the struct device \* for which the OPP table is built
+    :type dev: struct device \*
 
-    :param const struct cvb_table \*tables:
+    :param tables:
         array of CVB tables
+    :type tables: const struct cvb_table \*
 
-    :param size_t count:
+    :param count:
         size of the previously mentioned array
+    :type count: size_t
 
-    :param int process_id:
+    :param process_id:
         process id of the HW module
+    :type process_id: int
 
-    :param int speedo_id:
+    :param speedo_id:
         speedo id of the HW module
+    :type speedo_id: int
 
-    :param int speedo_value:
+    :param speedo_value:
         speedo value of the HW module
+    :type speedo_value: int
 
-    :param unsigned long max_freq:
+    :param max_freq:
         highest safe clock rate
+    :type max_freq: unsigned long
 
 .. _`tegra_cvb_add_opp_table.description`:
 

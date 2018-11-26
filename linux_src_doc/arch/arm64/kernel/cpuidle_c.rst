@@ -10,8 +10,9 @@ arm_cpuidle_suspend
 
     function to enter a low-power idle state
 
-    :param int index:
+    :param index:
         *undescribed*
+    :type index: int
 
 .. _`arm_cpuidle_suspend.return`:
 

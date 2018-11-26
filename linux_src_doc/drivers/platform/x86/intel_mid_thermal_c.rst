@@ -10,8 +10,9 @@ to_msic_die_temp
 
     converts adc_val to msic_die temperature
 
-    :param uint16_t adc_val:
+    :param adc_val:
         ADC value to be converted
+    :type adc_val: uint16_t
 
 .. _`to_msic_die_temp.description`:
 
@@ -29,14 +30,17 @@ is_valid_adc
 
     checks whether the adc code is within the defined range
 
-    :param uint16_t adc_val:
+    :param adc_val:
         *undescribed*
+    :type adc_val: uint16_t
 
-    :param uint16_t min:
+    :param min:
         minimum value for the sensor
+    :type min: uint16_t
 
-    :param uint16_t max:
+    :param max:
         maximum value for the sensor
+    :type max: uint16_t
 
 .. _`is_valid_adc.description`:
 
@@ -54,14 +58,17 @@ adc_to_temp
 
     converts the ADC code to temperature in C
 
-    :param int direct:
+    :param direct:
         true if ths channel is direct index
+    :type direct: int
 
-    :param uint16_t adc_val:
+    :param adc_val:
         the adc_val that needs to be converted
+    :type adc_val: uint16_t
 
-    :param int \*tp:
+    :param tp:
         temperature return value
+    :type tp: int \*
 
 .. _`adc_to_temp.description`:
 
@@ -84,11 +91,13 @@ mid_read_temp
 
     read sensors for temperature
 
-    :param struct thermal_zone_device \*tzd:
+    :param tzd:
         *undescribed*
+    :type tzd: struct thermal_zone_device \*
 
-    :param int \*temp:
+    :param temp:
         holds the current temperature for the sensor after reading
+    :type temp: int \*
 
 .. _`mid_read_temp.description`:
 
@@ -109,8 +118,9 @@ configure_adc
 
     enables/disables the ADC for conversion
 
-    :param int val:
+    :param val:
         zero: disables the ADC non-zero:enables the ADC
+    :type val: int
 
 .. _`configure_adc.description`:
 
@@ -130,8 +140,9 @@ set_up_therm_channel
 
     enable thermal channel for conversion
 
-    :param u16 base_addr:
+    :param base_addr:
         index of free msic ADC channel
+    :type base_addr: u16
 
 .. _`set_up_therm_channel.description`:
 
@@ -151,8 +162,9 @@ reset_stopbit
 
     sets the stop bit to 0 on the given channel
 
-    :param uint16_t addr:
+    :param addr:
         address of the channel
+    :type addr: uint16_t
 
 .. _`reset_stopbit.description`:
 
@@ -170,8 +182,9 @@ find_free_channel
 
     finds an empty channel for conversion
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`find_free_channel.description`:
 
@@ -207,8 +220,9 @@ mid_initialize_adc
 
     initializing the ADC
 
-    :param struct device \*dev:
+    :param dev:
         our device structure
+    :type dev: struct device \*
 
 .. _`mid_initialize_adc.description`:
 
@@ -226,8 +240,9 @@ initialize_sensor
 
     sets default temp and timer ranges
 
-    :param int index:
+    :param index:
         index of the sensor
+    :type index: int
 
 .. _`initialize_sensor.context`:
 
@@ -245,8 +260,9 @@ mid_thermal_resume
 
     resume routine
 
-    :param struct device \*dev:
+    :param dev:
         device structure
+    :type dev: struct device \*
 
 .. _`mid_thermal_resume.mid-thermal-resume`:
 
@@ -264,8 +280,9 @@ mid_thermal_suspend
 
     suspend routine
 
-    :param struct device \*dev:
+    :param dev:
         device structure
+    :type dev: struct device \*
 
 .. _`mid_thermal_suspend.description`:
 
@@ -284,11 +301,13 @@ read_curr_temp
 
     reads the current temperature and stores in temp
 
-    :param struct thermal_zone_device \*tzd:
+    :param tzd:
         *undescribed*
+    :type tzd: struct thermal_zone_device \*
 
-    :param int \*temp:
+    :param temp:
         holds the current temperature value after reading
+    :type temp: int \*
 
 .. _`read_curr_temp.description`:
 
@@ -306,8 +325,9 @@ mid_thermal_probe
 
     mfld thermal initialize
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`mid_thermal_probe.description`:
 
@@ -326,8 +346,9 @@ mid_thermal_remove
 
     mfld thermal finalize
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`mid_thermal_remove.description`:
 

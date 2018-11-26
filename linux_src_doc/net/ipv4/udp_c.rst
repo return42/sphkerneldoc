@@ -10,15 +10,18 @@ udp_lib_get_port
 
     UDP/-Lite port lookup for IPv4 and IPv6
 
-    :param struct sock \*sk:
+    :param sk:
         socket struct in question
+    :type sk: struct sock \*
 
-    :param unsigned short snum:
+    :param snum:
         port number to look up
+    :type snum: unsigned short
 
-    :param unsigned int hash2_nulladdr:
+    :param hash2_nulladdr:
         AF-dependent hash value in secondary hash chains,
         with NULL address
+    :type hash2_nulladdr: unsigned int
 
 .. _`udp4_hwcsum`:
 
@@ -29,15 +32,18 @@ udp4_hwcsum
 
     handle outgoing HW checksumming
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff containing the filled-in UDP header
         (checksum field must be zeroed out)
+    :type skb: struct sk_buff \*
 
-    :param __be32 src:
+    :param src:
         source IP address
+    :type src: __be32
 
-    :param __be32 dst:
+    :param dst:
         destination IP address
+    :type dst: __be32
 
 .. _`first_packet_length`:
 
@@ -48,8 +54,9 @@ first_packet_length
 
     return length of first packet in receive queue
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`first_packet_length.description`:
 
@@ -68,14 +75,17 @@ udp_poll
 
     wait for a UDP event. \ ``file``\  - file struct \ ``sock``\  - socket \ ``wait``\  - poll table
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param poll_table \*wait:
+    :param wait:
         *undescribed*
+    :type wait: poll_table \*
 
 .. _`udp_poll.description`:
 

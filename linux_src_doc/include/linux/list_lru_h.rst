@@ -10,11 +10,13 @@ list_lru_add
 
     add an element to the lru list's tail
 
-    :param struct list_lru \*lru:
+    :param lru:
         *undescribed*
+    :type lru: struct list_lru \*
 
-    :param struct list_head \*item:
+    :param item:
         the item to be added.
+    :type item: struct list_head \*
 
 .. _`list_lru_add.description`:
 
@@ -46,11 +48,13 @@ list_lru_del
 
     delete an element to the lru list
 
-    :param struct list_lru \*lru:
+    :param lru:
         *undescribed*
+    :type lru: struct list_lru \*
 
-    :param struct list_head \*item:
+    :param item:
         the item to be deleted.
+    :type item: struct list_head \*
 
 .. _`list_lru_del.description`:
 
@@ -77,14 +81,17 @@ list_lru_count_one
 
     return the number of objects currently held by \ ``lru``\ 
 
-    :param struct list_lru \*lru:
+    :param lru:
         the lru pointer.
+    :type lru: struct list_lru \*
 
-    :param int nid:
+    :param nid:
         the node id to count from.
+    :type nid: int
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         the cgroup to count from.
+    :type memcg: struct mem_cgroup \*
 
 .. _`list_lru_count_one.description`:
 
@@ -104,24 +111,30 @@ list_lru_walk_one
 
     walk a list_lru, isolating and disposing freeable items.
 
-    :param struct list_lru \*lru:
+    :param lru:
         the lru pointer.
+    :type lru: struct list_lru \*
 
-    :param int nid:
+    :param nid:
         the node id to scan from.
+    :type nid: int
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         the cgroup to scan from.
+    :type memcg: struct mem_cgroup \*
 
-    :param list_lru_walk_cb isolate:
+    :param isolate:
         callback function that is resposible for deciding what to do with
         the item currently being scanned
+    :type isolate: list_lru_walk_cb
 
-    :param void \*cb_arg:
+    :param cb_arg:
         opaque type that will be passed to \ ``isolate``\ 
+    :type cb_arg: void \*
 
-    :param unsigned long \*nr_to_walk:
+    :param nr_to_walk:
         how many items to scan.
+    :type nr_to_walk: unsigned long \*
 
 .. _`list_lru_walk_one.description`:
 
@@ -144,6 +157,48 @@ Return value
 ------------
 
 the number of objects effectively removed from the LRU.
+
+.. _`list_lru_walk_one_irq`:
+
+list_lru_walk_one_irq
+=====================
+
+.. c:function:: unsigned long list_lru_walk_one_irq(struct list_lru *lru, int nid, struct mem_cgroup *memcg, list_lru_walk_cb isolate, void *cb_arg, unsigned long *nr_to_walk)
+
+    walk a list_lru, isolating and disposing freeable items.
+
+    :param lru:
+        the lru pointer.
+    :type lru: struct list_lru \*
+
+    :param nid:
+        the node id to scan from.
+    :type nid: int
+
+    :param memcg:
+        the cgroup to scan from.
+    :type memcg: struct mem_cgroup \*
+
+    :param isolate:
+        callback function that is resposible for deciding what to do with
+        the item currently being scanned
+    :type isolate: list_lru_walk_cb
+
+    :param cb_arg:
+        opaque type that will be passed to \ ``isolate``\ 
+    :type cb_arg: void \*
+
+    :param nr_to_walk:
+        how many items to scan.
+    :type nr_to_walk: unsigned long \*
+
+.. _`list_lru_walk_one_irq.description`:
+
+Description
+-----------
+
+Same as \ ``list_lru_walk_one``\  except that the spinlock is acquired with
+\ :c:func:`spin_lock_irq`\ .
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ p80211_convert_to_ether
 
     conversion from 802.11 frame to ethernet frame
 
-    :param struct wlandevice \*wlandev:
+    :param wlandev:
         pointer to WLAN device
+    :type wlandev: struct wlandevice \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to socket buffer
+    :type skb: struct sk_buff \*
 
 .. _`p80211_convert_to_ether.return`:
 
@@ -34,8 +36,9 @@ p80211netdev_rx_bh
 
     deferred processing of all received frames
 
-    :param unsigned long arg:
+    :param arg:
         pointer to WLAN network device structure (cast to unsigned long)
+    :type arg: unsigned long
 
 .. This file was automatic generated / don't edit.
 

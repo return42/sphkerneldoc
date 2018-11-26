@@ -10,11 +10,13 @@ mei_txe_reg_read
 
     Reads 32bit data from the txe device
 
-    :param void __iomem \*base_addr:
+    :param base_addr:
         registers base address
+    :type base_addr: void __iomem \*
 
-    :param unsigned long offset:
+    :param offset:
         register offset
+    :type offset: unsigned long
 
 .. _`mei_txe_reg_read.return`:
 
@@ -32,14 +34,17 @@ mei_txe_reg_write
 
     Writes 32bit data to the txe device
 
-    :param void __iomem \*base_addr:
+    :param base_addr:
         registers base address
+    :type base_addr: void __iomem \*
 
-    :param unsigned long offset:
+    :param offset:
         register offset
+    :type offset: unsigned long
 
-    :param u32 value:
+    :param value:
         the value to write
+    :type value: u32
 
 .. _`mei_txe_sec_reg_read_silent`:
 
@@ -50,11 +55,13 @@ mei_txe_sec_reg_read_silent
 
     Reads 32bit data from the SeC BAR
 
-    :param struct mei_txe_hw \*hw:
+    :param hw:
         the txe hardware structure
+    :type hw: struct mei_txe_hw \*
 
-    :param unsigned long offset:
+    :param offset:
         register offset
+    :type offset: unsigned long
 
 .. _`mei_txe_sec_reg_read_silent.description`:
 
@@ -79,11 +86,13 @@ mei_txe_sec_reg_read
 
     Reads 32bit data from the SeC BAR
 
-    :param struct mei_txe_hw \*hw:
+    :param hw:
         the txe hardware structure
+    :type hw: struct mei_txe_hw \*
 
-    :param unsigned long offset:
+    :param offset:
         register offset
+    :type offset: unsigned long
 
 .. _`mei_txe_sec_reg_read.description`:
 
@@ -108,14 +117,17 @@ mei_txe_sec_reg_write_silent
 
     Writes 32bit data to the SeC BAR doesn't check for aliveness
 
-    :param struct mei_txe_hw \*hw:
+    :param hw:
         the txe hardware structure
+    :type hw: struct mei_txe_hw \*
 
-    :param unsigned long offset:
+    :param offset:
         register offset
+    :type offset: unsigned long
 
-    :param u32 value:
+    :param value:
         value to write
+    :type value: u32
 
 .. _`mei_txe_sec_reg_write_silent.description`:
 
@@ -133,14 +145,17 @@ mei_txe_sec_reg_write
 
     Writes 32bit data to the SeC BAR
 
-    :param struct mei_txe_hw \*hw:
+    :param hw:
         the txe hardware structure
+    :type hw: struct mei_txe_hw \*
 
-    :param unsigned long offset:
+    :param offset:
         register offset
+    :type offset: unsigned long
 
-    :param u32 value:
+    :param value:
         value to write
+    :type value: u32
 
 .. _`mei_txe_sec_reg_write.description`:
 
@@ -158,11 +173,13 @@ mei_txe_br_reg_read
 
     Reads 32bit data from the Bridge BAR
 
-    :param struct mei_txe_hw \*hw:
+    :param hw:
         the txe hardware structure
+    :type hw: struct mei_txe_hw \*
 
-    :param unsigned long offset:
+    :param offset:
         offset from which to read the data
+    :type offset: unsigned long
 
 .. _`mei_txe_br_reg_read.return`:
 
@@ -180,14 +197,17 @@ mei_txe_br_reg_write
 
     Writes 32bit data to the Bridge BAR
 
-    :param struct mei_txe_hw \*hw:
+    :param hw:
         the txe hardware structure
+    :type hw: struct mei_txe_hw \*
 
-    :param unsigned long offset:
+    :param offset:
         offset from which to write the data
+    :type offset: unsigned long
 
-    :param u32 value:
+    :param value:
         the byte to write
+    :type value: u32
 
 .. _`mei_txe_aliveness_set`:
 
@@ -198,11 +218,13 @@ mei_txe_aliveness_set
 
     request for aliveness change
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 req:
+    :param req:
         requested aliveness value
+    :type req: u32
 
 .. _`mei_txe_aliveness_set.description`:
 
@@ -236,8 +258,9 @@ mei_txe_aliveness_req_get
 
     get aliveness requested register value
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_aliveness_req_get.description`:
 
@@ -263,8 +286,9 @@ mei_txe_aliveness_get
 
     get aliveness response register value
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_aliveness_get.return`:
 
@@ -283,11 +307,13 @@ mei_txe_aliveness_poll
 
     waits for aliveness to settle
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 expected:
+    :param expected:
         expected aliveness value
+    :type expected: u32
 
 .. _`mei_txe_aliveness_poll.description`:
 
@@ -312,11 +338,13 @@ mei_txe_aliveness_wait
 
     waits for aliveness to settle
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 expected:
+    :param expected:
         expected aliveness value
+    :type expected: u32
 
 .. _`mei_txe_aliveness_wait.description`:
 
@@ -341,11 +369,13 @@ mei_txe_aliveness_set_sync
 
     sets an wait for aliveness to complete
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 req:
+    :param req:
         requested aliveness value
+    :type req: u32
 
 .. _`mei_txe_aliveness_set_sync.return`:
 
@@ -363,8 +393,9 @@ mei_txe_pg_in_transition
 
     is device now in pg transition
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_pg_in_transition.return`:
 
@@ -382,8 +413,9 @@ mei_txe_pg_is_enabled
 
     detect if PG is supported by HW
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_pg_is_enabled.return`:
 
@@ -401,8 +433,9 @@ mei_txe_pg_state
 
     translate aliveness register value to the mei power gating state
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_pg_state.return`:
 
@@ -420,8 +453,9 @@ mei_txe_input_ready_interrupt_enable
 
     sets the Input Ready Interrupt
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_input_doorbell_set`:
 
@@ -432,8 +466,9 @@ mei_txe_input_doorbell_set
 
     sets bit 0 in SEC_IPC_INPUT_DOORBELL.IPC_INPUT_DOORBELL.
 
-    :param struct mei_txe_hw \*hw:
+    :param hw:
         the txe hardware structure
+    :type hw: struct mei_txe_hw \*
 
 .. _`mei_txe_output_ready_set`:
 
@@ -444,8 +479,9 @@ mei_txe_output_ready_set
 
     Sets the SICR_SEC_IPC_OUTPUT_STATUS bit to 1
 
-    :param struct mei_txe_hw \*hw:
+    :param hw:
         the txe hardware structure
+    :type hw: struct mei_txe_hw \*
 
 .. _`mei_txe_is_input_ready`:
 
@@ -456,8 +492,9 @@ mei_txe_is_input_ready
 
     check if TXE is ready for receiving data
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_is_input_ready.return`:
 
@@ -475,8 +512,9 @@ mei_txe_intr_clear
 
     clear all interrupts
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_intr_disable`:
 
@@ -487,8 +525,9 @@ mei_txe_intr_disable
 
     disable all interrupts
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_intr_enable`:
 
@@ -499,8 +538,9 @@ mei_txe_intr_enable
 
     enable all interrupts
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_synchronize_irq`:
 
@@ -511,8 +551,9 @@ mei_txe_synchronize_irq
 
     wait for pending IRQ handlers
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_pending_interrupts`:
 
@@ -523,8 +564,9 @@ mei_txe_pending_interrupts
 
     check if there are pending interrupts only Aliveness, Input ready, and output doorbell are of relevance
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_pending_interrupts.description`:
 
@@ -550,14 +592,17 @@ mei_txe_input_payload_write
 
     write a dword to the host buffer at offset idx
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param unsigned long idx:
+    :param idx:
         index in the host buffer
+    :type idx: unsigned long
 
-    :param u32 value:
+    :param value:
         value
+    :type value: u32
 
 .. _`mei_txe_out_data_read`:
 
@@ -568,11 +613,13 @@ mei_txe_out_data_read
 
     read dword from the device buffer at offset idx
 
-    :param const struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: const struct mei_device \*
 
-    :param unsigned long idx:
+    :param idx:
         index in the device buffer
+    :type idx: unsigned long
 
 .. _`mei_txe_out_data_read.return`:
 
@@ -590,8 +637,9 @@ mei_txe_readiness_set_host_rdy
 
     set host readiness bit
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_readiness_clear`:
 
@@ -602,8 +650,9 @@ mei_txe_readiness_clear
 
     clear host readiness bit
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_readiness_get`:
 
@@ -614,8 +663,9 @@ mei_txe_readiness_get
 
     Reads and returns the HICR_SEC_IPC_READINESS register value
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_readiness_get.return`:
 
@@ -633,8 +683,9 @@ mei_txe_readiness_is_sec_rdy
 
     check readiness for HICR_SEC_IPC_READINESS_SEC_RDY
 
-    :param u32 readiness:
+    :param readiness:
         cached readiness state
+    :type readiness: u32
 
 .. _`mei_txe_readiness_is_sec_rdy.return`:
 
@@ -652,8 +703,9 @@ mei_txe_hw_is_ready
 
     check if the hw is ready
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_hw_is_ready.return`:
 
@@ -671,8 +723,9 @@ mei_txe_host_is_ready
 
     check if the host is ready
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_host_is_ready.return`:
 
@@ -690,8 +743,9 @@ mei_txe_readiness_wait
 
     wait till readiness settles
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_readiness_wait.return`:
 
@@ -709,11 +763,13 @@ mei_txe_fw_status
 
     read fw status register from pci config space
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
-    :param struct mei_fw_status \*fw_status:
+    :param fw_status:
         fw status register values
+    :type fw_status: struct mei_fw_status \*
 
 .. _`mei_txe_fw_status.return`:
 
@@ -731,8 +787,9 @@ mei_txe_hw_config
 
     configure hardware at the start of the devices
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_hw_config.description`:
 
@@ -747,44 +804,56 @@ once at the device probe time
 mei_txe_write
 =============
 
-.. c:function:: int mei_txe_write(struct mei_device *dev, struct mei_msg_hdr *header, const unsigned char *buf)
+.. c:function:: int mei_txe_write(struct mei_device *dev, const void *hdr, size_t hdr_len, const void *data, size_t data_len)
 
     writes a message to device.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_msg_hdr \*header:
+    :param hdr:
         header of message
+    :type hdr: const void \*
 
-    :param const unsigned char \*buf:
-        message buffer will be written
+    :param hdr_len:
+        header length in bytes - must multiplication of a slot (4bytes)
+    :type hdr_len: size_t
+
+    :param data:
+        payload
+    :type data: const void \*
+
+    :param data_len:
+        paylead length in bytes
+    :type data_len: size_t
 
 .. _`mei_txe_write.return`:
 
 Return
 ------
 
-0 if success, <0 - otherwise.
+0 if success, < 0 - otherwise.
 
-.. _`mei_txe_hbuf_max_len`:
+.. _`mei_txe_hbuf_depth`:
 
-mei_txe_hbuf_max_len
-====================
+mei_txe_hbuf_depth
+==================
 
-.. c:function:: size_t mei_txe_hbuf_max_len(const struct mei_device *dev)
+.. c:function:: u32 mei_txe_hbuf_depth(const struct mei_device *dev)
 
     mimics the me hbuf circular buffer
 
-    :param const struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: const struct mei_device \*
 
-.. _`mei_txe_hbuf_max_len.return`:
+.. _`mei_txe_hbuf_depth.return`:
 
 Return
 ------
 
-the PAYLOAD_SIZE - 4
+the TXE_HBUF_DEPTH
 
 .. _`mei_txe_hbuf_empty_slots`:
 
@@ -795,15 +864,16 @@ mei_txe_hbuf_empty_slots
 
     mimics the me hbuf circular buffer
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_hbuf_empty_slots.return`:
 
 Return
 ------
 
-always hbuf_depth
+always TXE_HBUF_DEPTH
 
 .. _`mei_txe_count_full_read_slots`:
 
@@ -814,8 +884,9 @@ mei_txe_count_full_read_slots
 
     mimics the me device circular buffer
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_count_full_read_slots.return`:
 
@@ -833,8 +904,9 @@ mei_txe_read_hdr
 
     read message header which is always in 4 first bytes
 
-    :param const struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: const struct mei_device \*
 
 .. _`mei_txe_read_hdr.return`:
 
@@ -852,14 +924,17 @@ mei_txe_read
 
     reads a message from the txe device.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param unsigned char \*buf:
+    :param buf:
         message buffer will be written
+    :type buf: unsigned char \*
 
-    :param unsigned long len:
+    :param len:
         message size will be read
+    :type len: unsigned long
 
 .. _`mei_txe_read.return`:
 
@@ -877,11 +952,13 @@ mei_txe_hw_reset
 
     resets host and fw.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param bool intr_enable:
+    :param intr_enable:
         if interrupt should be enabled after reset.
+    :type intr_enable: bool
 
 .. _`mei_txe_hw_reset.return`:
 
@@ -899,8 +976,9 @@ mei_txe_hw_start
 
     start the hardware after reset
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_txe_hw_start.return`:
 
@@ -918,11 +996,13 @@ mei_txe_check_and_ack_intrs
 
     translate multi BAR interrupt into single bit mask and acknowledge the interrupts
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param bool do_ack:
+    :param do_ack:
         acknowledge interrupts
+    :type do_ack: bool
 
 .. _`mei_txe_check_and_ack_intrs.return`:
 
@@ -940,11 +1020,13 @@ mei_txe_irq_quick_handler
 
     The ISR of the MEI device
 
-    :param int irq:
+    :param irq:
         The irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         pointer to the device structure
+    :type dev_id: void \*
 
 .. _`mei_txe_irq_quick_handler.return`:
 
@@ -963,11 +1045,13 @@ mei_txe_irq_thread_handler
 
     txe interrupt thread
 
-    :param int irq:
+    :param irq:
         The irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         pointer to the device structure
+    :type dev_id: void \*
 
 .. _`mei_txe_irq_thread_handler.return`:
 
@@ -985,8 +1069,9 @@ mei_txe_dev_init
 
     allocates and initializes txe hardware specific structure
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device
+    :type pdev: struct pci_dev \*
 
 .. _`mei_txe_dev_init.return`:
 
@@ -1004,14 +1089,17 @@ mei_txe_setup_satt2
 
     SATT2 configuration for DMA support.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param phys_addr_t addr:
+    :param addr:
         physical address start of the range
+    :type addr: phys_addr_t
 
-    :param u32 range:
+    :param range:
         physical range size
+    :type range: u32
 
 .. _`mei_txe_setup_satt2.return`:
 

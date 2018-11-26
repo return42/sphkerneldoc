@@ -10,8 +10,9 @@ samsung_gpio_pm_2bit_resume
 
     restore the given GPIO bank
 
-    :param struct samsung_gpio_chip \*chip:
+    :param chip:
         The chip information to resume.
+    :type chip: struct samsung_gpio_chip \*
 
 .. _`samsung_gpio_pm_2bit_resume.description`:
 
@@ -55,8 +56,9 @@ samsung_pm_save_gpio
 
     save gpio chip data for suspend
 
-    :param struct samsung_gpio_chip \*ourchip:
+    :param ourchip:
         The chip for suspend.
+    :type ourchip: struct samsung_gpio_chip \*
 
 .. _`samsung_pm_save_gpios`:
 
@@ -67,8 +69,9 @@ samsung_pm_save_gpios
 
     Save the state of the GPIO banks.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`samsung_pm_save_gpios.description`:
 
@@ -87,8 +90,9 @@ samsung_pm_resume_gpio
 
     restore gpio chip data after suspend
 
-    :param struct samsung_gpio_chip \*ourchip:
+    :param ourchip:
         The suspended chip.
+    :type ourchip: struct samsung_gpio_chip \*
 
 .. This file was automatic generated / don't edit.
 

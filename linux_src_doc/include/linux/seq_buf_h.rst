@@ -10,11 +10,13 @@ seq_buf_get_buf
 
     get buffer to write arbitrary data to
 
-    :param struct seq_buf \*s:
+    :param s:
         the seq_buf handle
+    :type s: struct seq_buf \*
 
-    :param char \*\*bufp:
+    :param bufp:
         the beginning of the buffer is stored here
+    :type bufp: char \*\*
 
 .. _`seq_buf_get_buf.description`:
 
@@ -33,11 +35,13 @@ seq_buf_commit
 
     commit data to the buffer
 
-    :param struct seq_buf \*s:
+    :param s:
         the seq_buf handle
+    :type s: struct seq_buf \*
 
-    :param int num:
+    :param num:
         the number of bytes to commit
+    :type num: int
 
 .. _`seq_buf_commit.description`:
 

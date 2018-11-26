@@ -10,11 +10,13 @@ configfs_create_dir
 
     create a directory for an config_item.
 
-    :param struct config_item \*item:
+    :param item:
         config_itemwe're creating directory for.
+    :type item: struct config_item \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         config_item's dentry.
+    :type dentry: struct dentry \*
 
 .. _`configfs_create_dir.note`:
 
@@ -33,8 +35,9 @@ configfs_remove_dir
 
     remove an config_item's directory.
 
-    :param struct config_item \*item:
+    :param item:
         config_item we're removing.
+    :type item: struct config_item \*
 
 .. _`configfs_remove_dir.description`:
 
@@ -56,11 +59,13 @@ configfs_register_group
 
     creates a parent-child relation between two groups
 
-    :param struct config_group \*parent_group:
+    :param parent_group:
         parent group
+    :type parent_group: struct config_group \*
 
-    :param struct config_group \*group:
+    :param group:
         child group
+    :type group: struct config_group \*
 
 .. _`configfs_register_group.description`:
 
@@ -86,8 +91,9 @@ configfs_unregister_group
 
     unregisters a child group from its parent
 
-    :param struct config_group \*group:
+    :param group:
         parent group to be unregistered
+    :type group: struct config_group \*
 
 .. _`configfs_unregister_group.description`:
 
@@ -105,14 +111,17 @@ configfs_register_default_group
 
     allocates and registers a child group
 
-    :param struct config_group \*parent_group:
+    :param parent_group:
         parent group
+    :type parent_group: struct config_group \*
 
-    :param const char \*name:
+    :param name:
         child group name
+    :type name: const char \*
 
-    :param const struct config_item_type \*item_type:
+    :param item_type:
         child item type description
+    :type item_type: const struct config_item_type \*
 
 .. _`configfs_register_default_group.description`:
 
@@ -138,8 +147,9 @@ configfs_unregister_default_group
 
     unregisters and frees a child group
 
-    :param struct config_group \*group:
+    :param group:
         the group to act on
+    :type group: struct config_group \*
 
 .. This file was automatic generated / don't edit.
 

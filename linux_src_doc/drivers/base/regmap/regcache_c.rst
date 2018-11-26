@@ -10,14 +10,17 @@ regcache_read
 
     Fetch the value of a given register from the cache.
 
-    :param struct regmap \*map:
+    :param map:
         map to configure.
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         The register index.
+    :type reg: unsigned int
 
-    :param unsigned int \*value:
+    :param value:
         The value to be returned.
+    :type value: unsigned int \*
 
 .. _`regcache_read.description`:
 
@@ -35,14 +38,17 @@ regcache_write
 
     Set the value of a given register in the cache.
 
-    :param struct regmap \*map:
+    :param map:
         map to configure.
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         The register index.
+    :type reg: unsigned int
 
-    :param unsigned int value:
+    :param value:
         The new register value.
+    :type value: unsigned int
 
 .. _`regcache_write.description`:
 
@@ -60,8 +66,9 @@ regcache_sync
 
     Sync the register cache with the hardware.
 
-    :param struct regmap \*map:
+    :param map:
         map to configure.
+    :type map: struct regmap \*
 
 .. _`regcache_sync.description`:
 
@@ -83,14 +90,17 @@ regcache_sync_region
 
     Sync part  of the register cache with the hardware.
 
-    :param struct regmap \*map:
+    :param map:
         map to sync.
+    :type map: struct regmap \*
 
-    :param unsigned int min:
+    :param min:
         first register to sync
+    :type min: unsigned int
 
-    :param unsigned int max:
+    :param max:
         last register to sync
+    :type max: unsigned int
 
 .. _`regcache_sync_region.description`:
 
@@ -111,14 +121,17 @@ regcache_drop_region
 
     Discard part of the register cache
 
-    :param struct regmap \*map:
+    :param map:
         map to operate on
+    :type map: struct regmap \*
 
-    :param unsigned int min:
+    :param min:
         first register to discard
+    :type min: unsigned int
 
-    :param unsigned int max:
+    :param max:
         last register to discard
+    :type max: unsigned int
 
 .. _`regcache_drop_region.description`:
 
@@ -138,11 +151,13 @@ regcache_cache_only
 
     Put a register map into cache only mode
 
-    :param struct regmap \*map:
+    :param map:
         map to configure
+    :type map: struct regmap \*
 
-    :param bool enable:
+    :param enable:
         flag if changes should be written to the hardware
+    :type enable: bool
 
 .. _`regcache_cache_only.description`:
 
@@ -164,8 +179,9 @@ regcache_mark_dirty
 
     Indicate that HW registers were reset to default values
 
-    :param struct regmap \*map:
+    :param map:
         map to mark
+    :type map: struct regmap \*
 
 .. _`regcache_mark_dirty.description`:
 
@@ -189,11 +205,13 @@ regcache_cache_bypass
 
     Put a register map into cache bypass mode
 
-    :param struct regmap \*map:
+    :param map:
         map to configure
+    :type map: struct regmap \*
 
-    :param bool enable:
+    :param enable:
         flag if changes should not be written to the cache
+    :type enable: bool
 
 .. _`regcache_cache_bypass.description`:
 

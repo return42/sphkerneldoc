@@ -258,11 +258,13 @@ mips_ejtag_fdc_put_chan
 
     Write out a block of channel data.
 
-    :param struct mips_ejtag_fdc_tty \*priv:
+    :param priv:
         Pointer to driver private data.
+    :type priv: struct mips_ejtag_fdc_tty \*
 
-    :param unsigned int chan:
+    :param chan:
         Channel number.
+    :type chan: unsigned int
 
 .. _`mips_ejtag_fdc_put_chan.description`:
 
@@ -288,15 +290,16 @@ mips_ejtag_fdc_put
 
     Kernel thread to write out channel data to FDC.
 
-    :param void \*arg:
+    :param arg:
         Driver pointer.
+    :type arg: void \*
 
 .. _`mips_ejtag_fdc_put.description`:
 
 Description
 -----------
 
-This kernel thread runs while \ ``priv``\ ->xmit_total != 0, and round robins the
+This kernel thread runs while \ ``priv->xmit_total``\  != 0, and round robins the
 channels writing out blocks of buffered data to the FDC TX FIFO.
 
 .. _`mips_ejtag_fdc_handle`:
@@ -308,8 +311,9 @@ mips_ejtag_fdc_handle
 
     Handle FDC events.
 
-    :param struct mips_ejtag_fdc_tty \*priv:
+    :param priv:
         Pointer to driver private data.
+    :type priv: struct mips_ejtag_fdc_tty \*
 
 .. _`mips_ejtag_fdc_handle.description`:
 
@@ -329,11 +333,13 @@ mips_ejtag_fdc_isr
 
     Interrupt handler.
 
-    :param int irq:
+    :param irq:
         IRQ number.
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to driver private data.
+    :type dev_id: void \*
 
 .. _`mips_ejtag_fdc_isr.description`:
 
@@ -361,8 +367,9 @@ mips_ejtag_fdc_tty_timer
 
     Poll FDC for incoming data.
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`mips_ejtag_fdc_tty_timer.description`:
 

@@ -10,8 +10,9 @@ l3mdev_master_ifindex_rcu
 
     get index of L3 master device
 
-    :param const struct net_device \*dev:
+    :param dev:
         targeted interface
+    :type dev: const struct net_device \*
 
 .. _`l3mdev_fib_table_rcu`:
 
@@ -22,8 +23,9 @@ l3mdev_fib_table_rcu
 
     get FIB table id associated with an L3 master interface
 
-    :param const struct net_device \*dev:
+    :param dev:
         targeted interface
+    :type dev: const struct net_device \*
 
 .. _`l3mdev_link_scope_lookup`:
 
@@ -34,11 +36,13 @@ l3mdev_link_scope_lookup
 
     IPv6 route lookup based on flow for link local and multicast addresses
 
-    :param struct net \*net:
+    :param net:
         network namespace for device index lookup
+    :type net: struct net \*
 
-    :param struct flowi6 \*fl6:
+    :param fl6:
         IPv6 flow struct for lookup
+    :type fl6: struct flowi6 \*
 
 .. _`l3mdev_fib_rule_match`:
 
@@ -49,14 +53,17 @@ l3mdev_fib_rule_match
 
     Determine if flowi references an L3 master device
 
-    :param struct net \*net:
+    :param net:
         network namespace for device index lookup
+    :type net: struct net \*
 
-    :param struct flowi \*fl:
+    :param fl:
         flow struct
+    :type fl: struct flowi \*
 
-    :param struct fib_lookup_arg \*arg:
+    :param arg:
         *undescribed*
+    :type arg: struct fib_lookup_arg \*
 
 .. This file was automatic generated / don't edit.
 

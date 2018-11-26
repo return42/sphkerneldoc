@@ -10,8 +10,9 @@ hex_to_bin
 
     convert a hex digit to its real value
 
-    :param char ch:
+    :param ch:
         ascii character represents hex digit
+    :type ch: char
 
 .. _`hex_to_bin.description`:
 
@@ -30,14 +31,17 @@ hex2bin
 
     convert an ascii hexadecimal string to its binary representation
 
-    :param u8 \*dst:
+    :param dst:
         binary result
+    :type dst: u8 \*
 
-    :param const char \*src:
+    :param src:
         ascii hexadecimal string
+    :type src: const char \*
 
-    :param size_t count:
+    :param count:
         result length
+    :type count: size_t
 
 .. _`hex2bin.description`:
 
@@ -55,14 +59,17 @@ bin2hex
 
     convert binary data to an ascii hexadecimal string
 
-    :param char \*dst:
+    :param dst:
         ascii hexadecimal result
+    :type dst: char \*
 
-    :param const void \*src:
+    :param src:
         binary data
+    :type src: const void \*
 
-    :param size_t count:
+    :param count:
         binary data length
+    :type count: size_t
 
 .. _`hex_dump_to_buffer`:
 
@@ -73,26 +80,33 @@ hex_dump_to_buffer
 
     convert a blob of data to "hex ASCII" in memory
 
-    :param const void \*buf:
+    :param buf:
         data blob to dump
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         number of bytes in the \ ``buf``\ 
+    :type len: size_t
 
-    :param int rowsize:
+    :param rowsize:
         number of bytes to print per line; must be 16 or 32
+    :type rowsize: int
 
-    :param int groupsize:
+    :param groupsize:
         number of bytes to print at a time (1, 2, 4, 8; default = 1)
+    :type groupsize: int
 
-    :param char \*linebuf:
+    :param linebuf:
         where to put the converted data
+    :type linebuf: char \*
 
-    :param size_t linebuflen:
+    :param linebuflen:
         total size of \ ``linebuf``\ , including space for terminating NUL
+    :type linebuflen: size_t
 
-    :param bool ascii:
+    :param ascii:
         include ASCII after the hex output
+    :type ascii: bool
 
 .. _`hex_dump_to_buffer.description`:
 
@@ -136,31 +150,39 @@ print_hex_dump
 
     print a text hex dump to syslog for a binary blob of data
 
-    :param const char \*level:
+    :param level:
         kernel log level (e.g. KERN_DEBUG)
+    :type level: const char \*
 
-    :param const char \*prefix_str:
+    :param prefix_str:
         string to prefix each line with;
         caller supplies trailing spaces for alignment if desired
+    :type prefix_str: const char \*
 
-    :param int prefix_type:
+    :param prefix_type:
         controls whether prefix of an offset, address, or none
         is printed (%DUMP_PREFIX_OFFSET, \ ``DUMP_PREFIX_ADDRESS``\ , \ ``DUMP_PREFIX_NONE``\ )
+    :type prefix_type: int
 
-    :param int rowsize:
+    :param rowsize:
         number of bytes to print per line; must be 16 or 32
+    :type rowsize: int
 
-    :param int groupsize:
+    :param groupsize:
         number of bytes to print at a time (1, 2, 4, 8; default = 1)
+    :type groupsize: int
 
-    :param const void \*buf:
+    :param buf:
         data blob to dump
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         number of bytes in the \ ``buf``\ 
+    :type len: size_t
 
-    :param bool ascii:
+    :param ascii:
         include ASCII after the hex output
+    :type ascii: bool
 
 .. _`print_hex_dump.description`:
 
@@ -206,19 +228,23 @@ print_hex_dump_bytes
 
     shorthand form of \ :c:func:`print_hex_dump`\  with default params
 
-    :param const char \*prefix_str:
+    :param prefix_str:
         string to prefix each line with;
         caller supplies trailing spaces for alignment if desired
+    :type prefix_str: const char \*
 
-    :param int prefix_type:
+    :param prefix_type:
         controls whether prefix of an offset, address, or none
         is printed (%DUMP_PREFIX_OFFSET, \ ``DUMP_PREFIX_ADDRESS``\ , \ ``DUMP_PREFIX_NONE``\ )
+    :type prefix_type: int
 
-    :param const void \*buf:
+    :param buf:
         data blob to dump
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         number of bytes in the \ ``buf``\ 
+    :type len: size_t
 
 .. _`print_hex_dump_bytes.description`:
 

@@ -10,14 +10,17 @@ mux_chip_alloc
 
     Allocate a mux-chip.
 
-    :param struct device \*dev:
+    :param dev:
         The parent device implementing the mux interface.
+    :type dev: struct device \*
 
-    :param unsigned int controllers:
+    :param controllers:
         The number of mux controllers to allocate for this chip.
+    :type controllers: unsigned int
 
-    :param size_t sizeof_priv:
+    :param sizeof_priv:
         Size of extra memory area for private use by the caller.
+    :type sizeof_priv: size_t
 
 .. _`mux_chip_alloc.description`:
 
@@ -48,8 +51,9 @@ mux_chip_register
 
     Register a mux-chip, thus readying the controllers for use.
 
-    :param struct mux_chip \*mux_chip:
+    :param mux_chip:
         The mux-chip to register.
+    :type mux_chip: struct mux_chip \*
 
 .. _`mux_chip_register.description`:
 
@@ -76,8 +80,9 @@ mux_chip_unregister
 
     Take the mux-chip off-line.
 
-    :param struct mux_chip \*mux_chip:
+    :param mux_chip:
         The mux-chip to unregister.
+    :type mux_chip: struct mux_chip \*
 
 .. _`mux_chip_unregister.description`:
 
@@ -97,8 +102,9 @@ mux_chip_free
 
     Free the mux-chip for good.
 
-    :param struct mux_chip \*mux_chip:
+    :param mux_chip:
         The mux-chip to free.
+    :type mux_chip: struct mux_chip \*
 
 .. _`mux_chip_free.description`:
 
@@ -116,14 +122,17 @@ devm_mux_chip_alloc
 
     Resource-managed version of \ :c:func:`mux_chip_alloc`\ .
 
-    :param struct device \*dev:
+    :param dev:
         The parent device implementing the mux interface.
+    :type dev: struct device \*
 
-    :param unsigned int controllers:
+    :param controllers:
         The number of mux controllers to allocate for this chip.
+    :type controllers: unsigned int
 
-    :param size_t sizeof_priv:
+    :param sizeof_priv:
         Size of extra memory area for private use by the caller.
+    :type sizeof_priv: size_t
 
 .. _`devm_mux_chip_alloc.description`:
 
@@ -148,11 +157,13 @@ devm_mux_chip_register
 
     Resource-managed version \ :c:func:`mux_chip_register`\ .
 
-    :param struct device \*dev:
+    :param dev:
         The parent device implementing the mux interface.
+    :type dev: struct device \*
 
-    :param struct mux_chip \*mux_chip:
+    :param mux_chip:
         The mux-chip to register.
+    :type mux_chip: struct mux_chip \*
 
 .. _`devm_mux_chip_register.description`:
 
@@ -177,8 +188,9 @@ mux_control_states
 
     Query the number of multiplexer states.
 
-    :param struct mux_control \*mux:
+    :param mux:
         The mux-control to query.
+    :type mux: struct mux_control \*
 
 .. _`mux_control_states.return`:
 
@@ -196,11 +208,13 @@ mux_control_select
 
     Select the given multiplexer state.
 
-    :param struct mux_control \*mux:
+    :param mux:
         The mux-control to request a change of state from.
+    :type mux: struct mux_control \*
 
-    :param unsigned int state:
+    :param state:
         The new requested state.
+    :type state: unsigned int
 
 .. _`mux_control_select.description`:
 
@@ -233,11 +247,13 @@ mux_control_try_select
 
     Try to select the given multiplexer state.
 
-    :param struct mux_control \*mux:
+    :param mux:
         The mux-control to request a change of state from.
+    :type mux: struct mux_control \*
 
-    :param unsigned int state:
+    :param state:
         The new requested state.
+    :type state: unsigned int
 
 .. _`mux_control_try_select.description`:
 
@@ -268,8 +284,9 @@ mux_control_deselect
 
     Deselect the previously selected multiplexer state.
 
-    :param struct mux_control \*mux:
+    :param mux:
         The mux-control to deselect.
+    :type mux: struct mux_control \*
 
 .. _`mux_control_deselect.description`:
 
@@ -298,11 +315,13 @@ mux_control_get
 
     Get the mux-control for a device.
 
-    :param struct device \*dev:
+    :param dev:
         The device that needs a mux-control.
+    :type dev: struct device \*
 
-    :param const char \*mux_name:
+    :param mux_name:
         The name identifying the mux-control.
+    :type mux_name: const char \*
 
 .. _`mux_control_get.return`:
 
@@ -320,8 +339,9 @@ mux_control_put
 
     Put away the mux-control for good.
 
-    :param struct mux_control \*mux:
+    :param mux:
         The mux-control to put away.
+    :type mux: struct mux_control \*
 
 .. _`mux_control_put.description`:
 
@@ -339,11 +359,13 @@ devm_mux_control_get
 
     Get the mux-control for a device, with resource management.
 
-    :param struct device \*dev:
+    :param dev:
         The device that needs a mux-control.
+    :type dev: struct device \*
 
-    :param const char \*mux_name:
+    :param mux_name:
         The name identifying the mux-control.
+    :type mux_name: const char \*
 
 .. _`devm_mux_control_get.return`:
 

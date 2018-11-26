@@ -143,10 +143,6 @@ writable and subject to validation by the driver.  They should use
 \ ``ETHTOOL_GSET``\  to get the current values before making specific
 changes and then applying them with \ ``ETHTOOL_SSET``\ .
 
-Drivers that implement \ :c:func:`set_settings`\  should validate all fields
-other than \ ``cmd``\  that are not described as read-only or deprecated,
-and must ignore all fields described as read-only.
-
 Deprecated fields should be ignored by both users and drivers.
 
 .. _`ethtool_drvinfo`:
@@ -1639,7 +1635,8 @@ m_ext
 
 ring_cookie
     RX ring/queue index to deliver to, or \ ``RX_CLS_FLOW_DISC``\ 
-    if packets should be discarded
+    if packets should be discarded, or \ ``RX_CLS_FLOW_WAKE``\  if the
+    packets should be used for Wake-on-LAN with \ ``WAKE_FILTER``\ 
 
 location
     Location of rule in the table.  Locations must be
@@ -2509,14 +2506,9 @@ Otherwise, attempts to write different values may be ignored or
 rejected.
 
 Deprecated \ ``ethtool_cmd``\  fields transceiver, maxtxpkt and maxrxpkt
-are not available in \ ``ethtool_link_settings``\ . Until all drivers are
-converted to ignore them or to the new \ ``ethtool_link_settings``\  API,
-for both queries and changes, users should always try
-\ ``ETHTOOL_GLINKSETTINGS``\  first, and if it fails with -ENOTSUPP stick
-only to \ ``ETHTOOL_GSET``\  and \ ``ETHTOOL_SSET``\  consistently. If it
-succeeds, then users should stick to \ ``ETHTOOL_GLINKSETTINGS``\  and
-\ ``ETHTOOL_SLINKSETTINGS``\  (which would support drivers implementing
-either \ ``ethtool_cmd``\  or \ ``ethtool_link_settings``\ ).
+are not available in \ ``ethtool_link_settings``\ . These fields will be
+always set to zero in \ ``ETHTOOL_GSET``\  reply and \ ``ETHTOOL_SSET``\  will
+fail if any of them is set to non-zero value.
 
 Users should assume that all fields not marked read-only are
 writable and subject to validation by the driver.  They should use

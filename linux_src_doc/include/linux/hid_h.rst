@@ -116,8 +116,8 @@ probe should return -errno on error, or 0 on success. During probe,
 input will not be passed to raw_event unless hid_device_io_start is
 called.
 
-raw_event and event should return 0 on no action performed, 1 when no
-further processing should be done and negative on error
+raw_event and event should return negative on error, any other value will
+pass the event on to .event() typically return 0 for success.
 
 input_mapping shall return a negative value to completely ignore this usage
 (e.g. doubled or invalid usage), zero to continue with parsing of this
@@ -138,8 +138,9 @@ module_hid_driver
 
     Helper macro for registering a HID driver
 
-    :param  __hid_driver:
+    :param __hid_driver:
         hid_driver struct
+    :type __hid_driver: 
 
 .. _`module_hid_driver.description`:
 
@@ -159,8 +160,9 @@ hid_device_io_start
 
     enable HID input during probe, remove
 
-    :param struct hid_device \*hid:
+    :param hid:
         *undescribed*
+    :type hid: struct hid_device \*
 
 .. _`hid_device_io_start.description`:
 
@@ -182,8 +184,9 @@ hid_device_io_stop
 
     disable HID input during probe, remove
 
-    :param struct hid_device \*hid:
+    :param hid:
         *undescribed*
+    :type hid: struct hid_device \*
 
 .. _`hid_device_io_stop.description`:
 
@@ -207,23 +210,29 @@ hid_map_usage
 
     map usage input bits
 
-    :param struct hid_input \*hidinput:
+    :param hidinput:
         hidinput which we are interested in
+    :type hidinput: struct hid_input \*
 
-    :param struct hid_usage \*usage:
+    :param usage:
         usage to fill in
+    :type usage: struct hid_usage \*
 
-    :param unsigned long \*\*bit:
+    :param bit:
         pointer to input->{}bit (out parameter)
+    :type bit: unsigned long \*\*
 
-    :param int \*max:
+    :param max:
         maximal valid usage->code to consider later (out parameter)
+    :type max: int \*
 
-    :param __u8 type:
+    :param type:
         input event type (EV_KEY, EV_REL, ...)
+    :type type: __u8
 
-    :param __u16 c:
+    :param c:
         code which corresponds to this usage and type
+    :type c: __u16
 
 .. _`hid_map_usage_clear`:
 
@@ -234,23 +243,29 @@ hid_map_usage_clear
 
     map usage input bits and clear the input bit
 
-    :param struct hid_input \*hidinput:
+    :param hidinput:
         *undescribed*
+    :type hidinput: struct hid_input \*
 
-    :param struct hid_usage \*usage:
+    :param usage:
         *undescribed*
+    :type usage: struct hid_usage \*
 
-    :param unsigned long \*\*bit:
+    :param bit:
         *undescribed*
+    :type bit: unsigned long \*\*
 
-    :param int \*max:
+    :param max:
         *undescribed*
+    :type max: int \*
 
-    :param __u8 type:
+    :param type:
         *undescribed*
+    :type type: __u8
 
-    :param __u16 c:
+    :param c:
         *undescribed*
+    :type c: __u16
 
 .. _`hid_map_usage_clear.description`:
 
@@ -269,8 +284,9 @@ hid_parse
 
     parse HW reports
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
 .. _`hid_parse.description`:
 
@@ -290,11 +306,13 @@ hid_hw_power
 
     requests underlying HW to go into given power mode
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
-    :param int level:
+    :param level:
         requested power level (one of \ ``PM_HINT``\ \_\* defines)
+    :type level: int
 
 .. _`hid_hw_power.description`:
 
@@ -313,14 +331,17 @@ hid_hw_request
 
     send report request to device
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
-    :param struct hid_report \*report:
+    :param report:
         report to send
+    :type report: struct hid_report \*
 
-    :param int reqtype:
+    :param reqtype:
         hid request type
+    :type reqtype: int
 
 .. _`hid_hw_raw_request`:
 
@@ -331,23 +352,29 @@ hid_hw_raw_request
 
     send report request to device
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
-    :param unsigned char reportnum:
+    :param reportnum:
         report ID
+    :type reportnum: unsigned char
 
-    :param __u8 \*buf:
+    :param buf:
         in/out data to transfer
+    :type buf: __u8 \*
 
-    :param size_t len:
+    :param len:
         length of buf
+    :type len: size_t
 
-    :param unsigned char rtype:
+    :param rtype:
         HID report type
+    :type rtype: unsigned char
 
-    :param int reqtype:
+    :param reqtype:
         HID_REQ_GET_REPORT or HID_REQ_SET_REPORT
+    :type reqtype: int
 
 .. _`hid_hw_raw_request.description`:
 
@@ -365,14 +392,17 @@ hid_hw_output_report
 
     send output report to device
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
-    :param __u8 \*buf:
+    :param buf:
         raw data to transfer
+    :type buf: __u8 \*
 
-    :param size_t len:
+    :param len:
         length of buf
+    :type len: size_t
 
 .. _`hid_hw_idle`:
 
@@ -383,17 +413,21 @@ hid_hw_idle
 
     send idle request to device
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
-    :param int report:
+    :param report:
         report to control
+    :type report: int
 
-    :param int idle:
+    :param idle:
         idle state
+    :type idle: int
 
-    :param int reqtype:
+    :param reqtype:
         hid request type
+    :type reqtype: int
 
 .. _`hid_hw_wait`:
 
@@ -404,8 +438,9 @@ hid_hw_wait
 
     wait for buffered io to complete
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         hid device
+    :type hdev: struct hid_device \*
 
 .. _`hid_report_len`:
 
@@ -416,8 +451,9 @@ hid_report_len
 
     calculate the report length
 
-    :param struct hid_report \*report:
+    :param report:
         the report we want to know the length
+    :type report: struct hid_report \*
 
 .. This file was automatic generated / don't edit.
 

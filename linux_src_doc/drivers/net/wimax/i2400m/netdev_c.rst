@@ -10,8 +10,9 @@ i2400m_netdev_setup
 
     Setup setup \ ``net_dev``\ 's i2400m private data
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
 .. _`i2400m_netdev_setup.description`:
 

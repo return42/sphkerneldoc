@@ -10,8 +10,9 @@ reserve_memory
 
     setup reserved memory areas
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`reserve_memory.description`:
 
@@ -31,8 +32,9 @@ find_initrd
 
     get initrd parameters from the boot parameter structure
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`find_initrd.description`:
 
@@ -51,8 +53,9 @@ early_console_setup
 
     setup debugging console
 
-    :param char \*cmdline:
+    :param cmdline:
         *undescribed*
+    :type cmdline: char \*
 
 .. _`early_console_setup.description`:
 

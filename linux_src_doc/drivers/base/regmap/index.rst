@@ -9,4 +9,5 @@ regmap
 
     regcache_c
     regmap-irq_c
+    regmap-sccb_c
     regmap_c

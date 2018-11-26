@@ -10,8 +10,9 @@ amdgpu_driver_unload_kms
 
     Main unload function for KMS.
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
 .. _`amdgpu_driver_unload_kms.description`:
 
@@ -30,11 +31,13 @@ amdgpu_driver_load_kms
 
     Main load function for KMS.
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param unsigned long flags:
+    :param flags:
         device flags
+    :type flags: unsigned long
 
 .. _`amdgpu_driver_load_kms.description`:
 
@@ -53,14 +56,17 @@ amdgpu_info_ioctl
 
     answer a device specific request.
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         request object
+    :type data: void \*
 
-    :param struct drm_file \*filp:
+    :param filp:
         drm filp
+    :type filp: struct drm_file \*
 
 .. _`amdgpu_info_ioctl.description`:
 
@@ -81,8 +87,9 @@ amdgpu_driver_lastclose_kms
 
     drm callback for last close
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
 .. _`amdgpu_driver_lastclose_kms.description`:
 
@@ -100,11 +107,13 @@ amdgpu_driver_open_kms
 
     drm callback for open
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file
+    :type file_priv: struct drm_file \*
 
 .. _`amdgpu_driver_open_kms.description`:
 
@@ -123,11 +132,13 @@ amdgpu_driver_postclose_kms
 
     drm callback for post close
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file
+    :type file_priv: struct drm_file \*
 
 .. _`amdgpu_driver_postclose_kms.description`:
 
@@ -145,11 +156,13 @@ amdgpu_get_vblank_counter_kms
 
     get frame count
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         crtc to get the frame count from
+    :type pipe: unsigned int
 
 .. _`amdgpu_get_vblank_counter_kms.description`:
 
@@ -168,11 +181,13 @@ amdgpu_enable_vblank_kms
 
     enable vblank interrupt
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         crtc to enable vblank interrupt for
+    :type pipe: unsigned int
 
 .. _`amdgpu_enable_vblank_kms.description`:
 
@@ -191,11 +206,13 @@ amdgpu_disable_vblank_kms
 
     disable vblank interrupt
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm dev pointer
+    :type dev: struct drm_device \*
 
-    :param unsigned int pipe:
+    :param pipe:
         crtc to disable vblank interrupt for
+    :type pipe: unsigned int
 
 .. _`amdgpu_disable_vblank_kms.description`:
 

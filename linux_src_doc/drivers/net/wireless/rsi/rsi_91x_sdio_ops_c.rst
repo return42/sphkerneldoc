@@ -8,11 +8,13 @@ rsi_sdio_master_access_msword
 
 .. c:function:: int rsi_sdio_master_access_msword(struct rsi_hw *adapter, u16 ms_word)
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         *undescribed*
+    :type adapter: struct rsi_hw \*
 
-    :param u16 ms_word:
+    :param ms_word:
         *undescribed*
+    :type ms_word: u16
 
 .. _`rsi_sdio_master_access_msword.description`:
 
@@ -40,8 +42,9 @@ rsi_process_pkt
 
     This Function reads rx_blocks register and figures out the size of the rx pkt.
 
-    :param struct rsi_common \*common:
+    :param common:
         Pointer to the driver private structure.
+    :type common: struct rsi_common \*
 
 .. _`rsi_process_pkt.return`:
 
@@ -59,8 +62,9 @@ rsi_init_sdio_slave_regs
 
     This function does the actual initialization of SDBUS slave registers.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
 .. _`rsi_init_sdio_slave_regs.return`:
 
@@ -78,8 +82,9 @@ rsi_interrupt_handler
 
     This function read and process SDIO interrupts.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
 .. _`rsi_interrupt_handler.return`:
 
@@ -97,8 +102,9 @@ rsi_sdio_determine_event_timeout
 
     This Function determines the event timeout duration.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
 .. _`rsi_sdio_determine_event_timeout.return`:
 

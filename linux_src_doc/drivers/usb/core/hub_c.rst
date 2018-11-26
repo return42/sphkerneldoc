@@ -10,17 +10,21 @@ usb_hub_set_port_power
 
     control hub port's power state
 
-    :param struct usb_device \*hdev:
+    :param hdev:
         USB device belonging to the usb hub
+    :type hdev: struct usb_device \*
 
-    :param struct usb_hub \*hub:
+    :param hub:
         target hub
+    :type hub: struct usb_hub \*
 
-    :param int port1:
+    :param port1:
         port index
+    :type port1: int
 
-    :param bool set:
+    :param set:
         expected status
+    :type set: bool
 
 .. _`usb_hub_set_port_power.description`:
 
@@ -46,8 +50,9 @@ usb_hub_clear_tt_buffer
 
     clear control/bulk TT state in high speed hub
 
-    :param struct urb \*urb:
+    :param urb:
         an URB associated with the failed or incomplete split transaction
+    :type urb: struct urb \*
 
 .. _`usb_hub_clear_tt_buffer.description`:
 
@@ -78,8 +83,9 @@ usb_remove_device
 
     disable a device's port on its parent hub
 
-    :param struct usb_device \*udev:
+    :param udev:
         device to be disabled and removed
+    :type udev: struct usb_device \*
 
 .. _`usb_remove_device.context`:
 
@@ -114,11 +120,13 @@ usb_set_device_state
 
     change a device's current state (usbcore, hcds)
 
-    :param struct usb_device \*udev:
+    :param udev:
         pointer to device whose state should be changed
+    :type udev: struct usb_device \*
 
-    :param enum usb_device_state new_state:
+    :param new_state:
         new state value to be stored
+    :type new_state: enum usb_device_state
 
 .. _`usb_set_device_state.description`:
 
@@ -150,8 +158,9 @@ usb_disconnect
 
     disconnect a device (usbcore-internal)
 
-    :param struct usb_device \*\*pdev:
+    :param pdev:
         pointer to device being disconnected
+    :type pdev: struct usb_device \*\*
 
 .. _`usb_disconnect.context`:
 
@@ -185,8 +194,9 @@ usb_enumerate_device_otg
 
     FIXME (usbcore-internal)
 
-    :param struct usb_device \*udev:
+    :param udev:
         newly addressed device (in ADDRESS state)
+    :type udev: struct usb_device \*
 
 .. _`usb_enumerate_device_otg.description`:
 
@@ -211,8 +221,9 @@ usb_enumerate_device
 
     Read device configs/intfs/otg (usbcore-internal)
 
-    :param struct usb_device \*udev:
+    :param udev:
         newly addressed device (in ADDRESS state)
+    :type udev: struct usb_device \*
 
 .. _`usb_enumerate_device.description`:
 
@@ -243,8 +254,9 @@ usb_new_device
 
     perform initial device setup (usbcore-internal)
 
-    :param struct usb_device \*udev:
+    :param udev:
         newly addressed device (in ADDRESS state)
+    :type udev: struct usb_device \*
 
 .. _`usb_new_device.description`:
 
@@ -281,8 +293,9 @@ usb_deauthorize_device
 
     deauthorize a device (usbcore-internal)
 
-    :param struct usb_device \*usb_dev:
+    :param usb_dev:
         USB device
+    :type usb_dev: struct usb_device \*
 
 .. _`usb_deauthorize_device.description`:
 
@@ -311,8 +324,9 @@ usb_root_hub_lost_power
 
     called by HCD if the root hub lost Vbus power
 
-    :param struct usb_device \*rhdev:
+    :param rhdev:
         struct usb_device for the root hub
+    :type rhdev: struct usb_device \*
 
 .. _`usb_root_hub_lost_power.description`:
 
@@ -335,8 +349,9 @@ usb_reset_and_verify_device
 
     perform a USB port reset to reinitialize a device
 
-    :param struct usb_device \*udev:
+    :param udev:
         device to reset (not in SUSPENDED or NOTATTACHED state)
+    :type udev: struct usb_device \*
 
 .. _`usb_reset_and_verify_device.description`:
 
@@ -391,8 +406,9 @@ usb_reset_device
 
     warn interface drivers and perform a USB port reset
 
-    :param struct usb_device \*udev:
+    :param udev:
         device to reset (not in SUSPENDED or NOTATTACHED state)
+    :type udev: struct usb_device \*
 
 .. _`usb_reset_device.description`:
 
@@ -434,8 +450,9 @@ usb_queue_reset_device
 
     Reset a USB device from an atomic context
 
-    :param struct usb_interface \*iface:
+    :param iface:
         USB interface belonging to the device to reset
+    :type iface: struct usb_interface \*
 
 .. _`usb_queue_reset_device.description`:
 
@@ -479,12 +496,14 @@ usb_hub_find_child
 
     Get the pointer of child device attached to the port which is specified by \ ``port1``\ .
 
-    :param struct usb_device \*hdev:
+    :param hdev:
         USB device belonging to the usb hub
+    :type hdev: struct usb_device \*
 
-    :param int port1:
+    :param port1:
         port num to indicate which port the child device
         is attached to.
+    :type port1: int
 
 .. _`usb_hub_find_child.description`:
 
@@ -511,11 +530,13 @@ usb_get_hub_port_acpi_handle
 
     Get the usb port's acpi handle
 
-    :param struct usb_device \*hdev:
+    :param hdev:
         USB device belonging to the usb hub
+    :type hdev: struct usb_device \*
 
-    :param int port1:
+    :param port1:
         port num of the port
+    :type port1: int
 
 .. _`usb_get_hub_port_acpi_handle.return`:
 

@@ -10,8 +10,9 @@ mpic_start_timer
 
     start hardware timer
 
-    :param struct mpic_timer \*handle:
+    :param handle:
         the timer to be started.
+    :type handle: struct mpic_timer \*
 
 .. _`mpic_start_timer.description`:
 
@@ -30,8 +31,9 @@ mpic_stop_timer
 
     stop hardware timer
 
-    :param struct mpic_timer \*handle:
+    :param handle:
         the timer to be stoped
+    :type handle: struct mpic_timer \*
 
 .. _`mpic_stop_timer.description`:
 
@@ -49,11 +51,13 @@ mpic_get_remain_time
 
     get timer time
 
-    :param struct mpic_timer \*handle:
+    :param handle:
         the timer to be selected.
+    :type handle: struct mpic_timer \*
 
-    :param time64_t \*time:
+    :param time:
         time for timer
+    :type time: time64_t \*
 
 .. _`mpic_get_remain_time.description`:
 
@@ -71,8 +75,9 @@ mpic_free_timer
 
     free hardware timer
 
-    :param struct mpic_timer \*handle:
+    :param handle:
         the timer to be removed.
+    :type handle: struct mpic_timer \*
 
 .. _`mpic_free_timer.description`:
 
@@ -97,14 +102,17 @@ mpic_request_timer
 
     get a hardware timer
 
-    :param irq_handler_t fn:
+    :param fn:
         interrupt handler function
+    :type fn: irq_handler_t
 
-    :param void \*dev:
+    :param dev:
         callback function of the data
+    :type dev: void \*
 
-    :param time64_t time:
+    :param time:
         time for timer
+    :type time: time64_t
 
 .. _`mpic_request_timer.description`:
 

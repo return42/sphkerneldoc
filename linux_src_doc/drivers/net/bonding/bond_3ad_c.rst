@@ -10,8 +10,9 @@
 
     get the port's bonding struct
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__get_bond_by_port.description`:
 
@@ -29,8 +30,9 @@ Return \ ``port``\ 's bonding struct, or \ ``NULL``\  if it can't be found.
 
     get the first aggregator in the bond
 
-    :param struct port \*port:
+    :param port:
         *undescribed*
+    :type port: struct port \*
 
 .. _`__get_first_agg.description`:
 
@@ -50,8 +52,9 @@ The caller must hold RCU or RTNL lock.
 
     see if we have a partner
 
-    :param struct aggregator \*agg:
+    :param agg:
         the agregator we're looking at
+    :type agg: struct aggregator \*
 
 .. _`__agg_has_partner.description`:
 
@@ -70,8 +73,9 @@ address for the partner). Return 0 if not.
 
     disable the port's slave
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__enable_port`:
 
@@ -82,8 +86,9 @@ address for the partner). Return 0 if not.
 
     enable the port's slave, if it's up
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__port_is_enabled`:
 
@@ -94,8 +99,9 @@ address for the partner). Return 0 if not.
 
     check if the port's slave is in active state
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__get_agg_selection_mode`:
 
@@ -106,8 +112,9 @@ address for the partner). Return 0 if not.
 
     get the aggregator selection mode
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__get_agg_selection_mode.description`:
 
@@ -125,8 +132,9 @@ Get the aggregator selection mode. Can be \ ``STABLE``\ , \ ``BANDWIDTH``\  or \
 
     check if the selection timer has expired
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__get_link_speed`:
 
@@ -137,8 +145,9 @@ Get the aggregator selection mode. Can be \ ``STABLE``\ , \ ``BANDWIDTH``\  or \
 
     get a port's speed
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__get_link_speed.description`:
 
@@ -170,8 +179,9 @@ Return \ ``port``\ 's speed in 802.3ad enum format. i.e. one of:
 
     get a port's duplex
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__get_duplex.description`:
 
@@ -191,11 +201,13 @@ Return \ ``port``\ 's duplex in 802.3ad bitmask format. i.e.:
 
     convert a given timer type to AD module ticks
 
-    :param u16 timer_type:
+    :param timer_type:
         which timer to operate
+    :type timer_type: u16
 
-    :param u16 par:
+    :param par:
         timer parameter. see below
+    :type par: u16
 
 .. _`__ad_timer_to_ticks.description`:
 
@@ -215,11 +227,13 @@ If \ ``timer_type``\  is \ ``periodic_timer``\ , \ ``par``\  is one of \ ``FAST_
 
     update a port's matched variable from a received lacpdu
 
-    :param struct lacpdu \*lacpdu:
+    :param lacpdu:
         the lacpdu we've received
+    :type lacpdu: struct lacpdu \*
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__choose_matched.description`:
 
@@ -258,11 +272,13 @@ recordPDU to "match" the LACPDU parameters to the stored values.
 
     record parameters from a received lacpdu
 
-    :param struct lacpdu \*lacpdu:
+    :param lacpdu:
         the lacpdu we've received
+    :type lacpdu: struct lacpdu \*
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__record_pdu.description`:
 
@@ -282,8 +298,9 @@ actor_oper_port_state.defaulted to FALSE.
 
     record default parameters
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__record_default.description`:
 
@@ -303,11 +320,13 @@ values and sets actor_oper_port_state.defaulted to TRUE.
 
     update a port's Selected variable from a received lacpdu
 
-    :param struct lacpdu \*lacpdu:
+    :param lacpdu:
         the lacpdu we've received
+    :type lacpdu: struct lacpdu \*
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__update_selected.description`:
 
@@ -331,8 +350,9 @@ set to out_of_sync. Otherwise, selected remains unchanged.
 
     update a port's Selected variable from Partner
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__update_default_selected.description`:
 
@@ -356,11 +376,13 @@ Selected remains unchanged.
 
     update a port's ntt variable from a received lacpdu
 
-    :param struct lacpdu \*lacpdu:
+    :param lacpdu:
         the lacpdu we've received
+    :type lacpdu: struct lacpdu \*
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`__update_ntt.description`:
 
@@ -383,8 +405,9 @@ then ntt is set to TRUE. Otherwise, ntt remains unchanged.
 
     check if all ports in an aggregator are ready
 
-    :param struct aggregator \*aggregator:
+    :param aggregator:
         the aggregator we're looking at
+    :type aggregator: struct aggregator \*
 
 .. _`__set_agg_ports_ready`:
 
@@ -395,11 +418,13 @@ then ntt is set to TRUE. Otherwise, ntt remains unchanged.
 
     set value of Ready bit in all ports of an aggregator
 
-    :param struct aggregator \*aggregator:
+    :param aggregator:
         the aggregator we're looking at
+    :type aggregator: struct aggregator \*
 
-    :param int val:
+    :param val:
         Should the ports' ready bit be set on or off
+    :type val: int
 
 .. _`__get_agg_bandwidth`:
 
@@ -410,8 +435,9 @@ then ntt is set to TRUE. Otherwise, ntt remains unchanged.
 
     get the total bandwidth of an aggregator
 
-    :param struct aggregator \*aggregator:
+    :param aggregator:
         the aggregator we're looking at
+    :type aggregator: struct aggregator \*
 
 .. _`__get_active_agg`:
 
@@ -422,8 +448,9 @@ then ntt is set to TRUE. Otherwise, ntt remains unchanged.
 
     get the current active aggregator
 
-    :param struct aggregator \*aggregator:
+    :param aggregator:
         the aggregator we're looking at
+    :type aggregator: struct aggregator \*
 
 .. _`__get_active_agg.description`:
 
@@ -441,8 +468,9 @@ Caller must hold RCU lock.
 
     update a port's lacpdu fields
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`ad_lacpdu_send`:
 
@@ -453,8 +481,9 @@ ad_lacpdu_send
 
     send out a lacpdu packet on a given port
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`ad_lacpdu_send.return`:
 
@@ -473,11 +502,13 @@ ad_marker_send
 
     send marker information/response on a given port
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
-    :param struct bond_marker \*marker:
+    :param marker:
         marker data to send
+    :type marker: struct bond_marker \*
 
 .. _`ad_marker_send.return`:
 
@@ -496,11 +527,13 @@ ad_mux_machine
 
     handle a port's mux state machine
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
-    :param bool \*update_slave_arr:
+    :param update_slave_arr:
         Does slave array need update?
+    :type update_slave_arr: bool \*
 
 .. _`ad_rx_machine`:
 
@@ -511,11 +544,13 @@ ad_rx_machine
 
     handle a port's rx State Machine
 
-    :param struct lacpdu \*lacpdu:
+    :param lacpdu:
         the lacpdu we've received
+    :type lacpdu: struct lacpdu \*
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`ad_rx_machine.description`:
 
@@ -535,8 +570,9 @@ ad_churn_machine
 
     handle port churn's state machine
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`ad_tx_machine`:
 
@@ -547,8 +583,9 @@ ad_tx_machine
 
     handle a port's tx state machine
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`ad_periodic_machine`:
 
@@ -559,8 +596,9 @@ ad_periodic_machine
 
     handle a port's periodic state machine
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`ad_periodic_machine.description`:
 
@@ -578,11 +616,13 @@ ad_port_selection_logic
 
     select aggregation groups
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
-    :param bool \*update_slave_arr:
+    :param update_slave_arr:
         Does slave array need update?
+    :type update_slave_arr: bool \*
 
 .. _`ad_port_selection_logic.description`:
 
@@ -602,11 +642,13 @@ ad_agg_selection_logic
 
     select an aggregation group for a team
 
-    :param struct aggregator \*agg:
+    :param agg:
         *undescribed*
+    :type agg: struct aggregator \*
 
-    :param bool \*update_slave_arr:
+    :param update_slave_arr:
         Does slave array need update?
+    :type update_slave_arr: bool \*
 
 .. _`ad_agg_selection_logic.description`:
 
@@ -662,8 +704,9 @@ ad_clear_agg
 
     clear a given aggregator's parameters
 
-    :param struct aggregator \*aggregator:
+    :param aggregator:
         the aggregator we're looking at
+    :type aggregator: struct aggregator \*
 
 .. _`ad_initialize_agg`:
 
@@ -674,8 +717,9 @@ ad_initialize_agg
 
     initialize a given aggregator's parameters
 
-    :param struct aggregator \*aggregator:
+    :param aggregator:
         the aggregator we're looking at
+    :type aggregator: struct aggregator \*
 
 .. _`ad_initialize_port`:
 
@@ -686,11 +730,13 @@ ad_initialize_port
 
     initialize a given port's parameters
 
-    :param struct port \*port:
+    :param port:
         *undescribed*
+    :type port: struct port \*
 
-    :param int lacp_fast:
+    :param lacp_fast:
         boolean. whether fast periodic should be used
+    :type lacp_fast: int
 
 .. _`ad_enable_collecting_distributing`:
 
@@ -701,11 +747,13 @@ ad_enable_collecting_distributing
 
     enable a port's transmit/receive
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
-    :param bool \*update_slave_arr:
+    :param update_slave_arr:
         Does slave array need update?
+    :type update_slave_arr: bool \*
 
 .. _`ad_enable_collecting_distributing.description`:
 
@@ -723,11 +771,13 @@ ad_disable_collecting_distributing
 
     disable a port's transmit/receive
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
-    :param bool \*update_slave_arr:
+    :param update_slave_arr:
         Does slave array need update?
+    :type update_slave_arr: bool \*
 
 .. _`ad_marker_info_received`:
 
@@ -738,11 +788,13 @@ ad_marker_info_received
 
     handle receive of a Marker information frame
 
-    :param struct bond_marker \*marker_info:
+    :param marker_info:
         Marker info received
+    :type marker_info: struct bond_marker \*
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`ad_marker_response_received`:
 
@@ -753,11 +805,13 @@ ad_marker_response_received
 
     handle receive of a marker response frame
 
-    :param struct bond_marker \*marker:
+    :param marker:
         marker PDU received
+    :type marker: struct bond_marker \*
 
-    :param struct port \*port:
+    :param port:
         the port we're looking at
+    :type port: struct port \*
 
 .. _`ad_marker_response_received.description`:
 
@@ -777,11 +831,13 @@ bond_3ad_initiate_agg_selection
 
     initate aggregator selection
 
-    :param struct bonding \*bond:
+    :param bond:
         bonding struct
+    :type bond: struct bonding \*
 
-    :param int timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: int
 
 .. _`bond_3ad_initiate_agg_selection.description`:
 
@@ -801,11 +857,13 @@ bond_3ad_initialize
 
     initialize a bond's 802.3ad parameters and structures
 
-    :param struct bonding \*bond:
+    :param bond:
         bonding struct to work on
+    :type bond: struct bonding \*
 
-    :param u16 tick_resolution:
+    :param tick_resolution:
         tick duration (millisecond resolution)
+    :type tick_resolution: u16
 
 .. _`bond_3ad_initialize.description`:
 
@@ -823,8 +881,9 @@ bond_3ad_bind_slave
 
     initialize a slave's port
 
-    :param struct slave \*slave:
+    :param slave:
         slave struct to work on
+    :type slave: struct slave \*
 
 .. _`bond_3ad_bind_slave.return`:
 
@@ -843,8 +902,9 @@ bond_3ad_unbind_slave
 
     deinitialize a slave's port
 
-    :param struct slave \*slave:
+    :param slave:
         slave struct to work on
+    :type slave: struct slave \*
 
 .. _`bond_3ad_unbind_slave.description`:
 
@@ -864,8 +924,9 @@ bond_3ad_update_ad_actor_settings
 
     reflect change of actor settings to ports
 
-    :param struct bonding \*bond:
+    :param bond:
         bonding struct to work on
+    :type bond: struct bonding \*
 
 .. _`bond_3ad_update_ad_actor_settings.description`:
 
@@ -884,8 +945,9 @@ bond_3ad_state_machine_handler
 
     handle state machines timeout
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`bond_3ad_state_machine_handler.description`:
 
@@ -910,14 +972,17 @@ bond_3ad_rx_indication
 
     handle a received frame
 
-    :param struct lacpdu \*lacpdu:
+    :param lacpdu:
         received lacpdu
+    :type lacpdu: struct lacpdu \*
 
-    :param struct slave \*slave:
+    :param slave:
         slave struct to work on
+    :type slave: struct slave \*
 
-    :param u16 length:
+    :param length:
         length of the data received
+    :type length: u16
 
 .. _`bond_3ad_rx_indication.description`:
 
@@ -937,11 +1002,13 @@ ad_update_actor_keys
 
     Update the oper / admin keys for a port based on its current speed and duplex settings.
 
-    :param struct port \*port:
+    :param port:
         the port we'are looking at
+    :type port: struct port \*
 
-    :param bool reset:
+    :param reset:
         Boolean to just reset the speed and the duplex part of the key
+    :type reset: bool
 
 .. _`ad_update_actor_keys.description`:
 
@@ -961,8 +1028,9 @@ bond_3ad_adapter_speed_duplex_changed
 
     handle a slave's speed / duplex change indication
 
-    :param struct slave \*slave:
+    :param slave:
         slave struct to work on
+    :type slave: struct slave \*
 
 .. _`bond_3ad_adapter_speed_duplex_changed.description`:
 
@@ -980,11 +1048,13 @@ bond_3ad_handle_link_change
 
     handle a slave's link status change indication
 
-    :param struct slave \*slave:
+    :param slave:
         slave struct to work on
+    :type slave: struct slave \*
 
-    :param char link:
+    :param link:
         *undescribed*
+    :type link: char
 
 .. _`bond_3ad_handle_link_change.description`:
 
@@ -1002,8 +1072,9 @@ bond_3ad_set_carrier
 
     set link state for bonding master \ ``bond``\  - bonding structure
 
-    :param struct bonding \*bond:
+    :param bond:
         *undescribed*
+    :type bond: struct bonding \*
 
 .. _`bond_3ad_set_carrier.description`:
 
@@ -1028,11 +1099,13 @@ change, nonzero if it does.
 
     get information of the active aggregator
 
-    :param struct bonding \*bond:
+    :param bond:
         bonding struct to work on
+    :type bond: struct bonding \*
 
-    :param struct ad_info \*ad_info:
+    :param ad_info:
         ad_info struct to fill with the bond's info
+    :type ad_info: struct ad_info \*
 
 .. _`__bond_3ad_get_active_agg_info.return`:
 
@@ -1051,8 +1124,9 @@ bond_3ad_update_lacp_rate
 
     change the lacp rate \ ``bond``\  - bonding struct
 
-    :param struct bonding \*bond:
+    :param bond:
         *undescribed*
+    :type bond: struct bonding \*
 
 .. _`bond_3ad_update_lacp_rate.description`:
 

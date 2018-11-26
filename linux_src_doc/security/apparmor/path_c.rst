@@ -10,20 +10,25 @@ d_namespace_path
 
     lookup a name associated with a given path
 
-    :param const struct path \*path:
+    :param path:
         path to lookup  (NOT NULL)
+    :type path: const struct path \*
 
-    :param char \*buf:
+    :param buf:
         buffer to store path to  (NOT NULL)
+    :type buf: char \*
 
-    :param char \*\*name:
+    :param name:
         Returns - pointer for start of path name with in \ ``buf``\  (NOT NULL)
+    :type name: char \*\*
 
-    :param int flags:
+    :param flags:
         flags controlling path lookup
+    :type flags: int
 
-    :param const char \*disconnected:
+    :param disconnected:
         string to prefix to disconnected paths
+    :type disconnected: const char \*
 
 .. _`d_namespace_path.description`:
 
@@ -50,23 +55,29 @@ aa_path_name
 
     get the pathname to a buffer ensure dir / is appended
 
-    :param const struct path \*path:
+    :param path:
         path the file  (NOT NULL)
+    :type path: const struct path \*
 
-    :param int flags:
+    :param flags:
         flags controlling path name generation
+    :type flags: int
 
-    :param char \*buffer:
+    :param buffer:
         buffer to put name in (NOT NULL)
+    :type buffer: char \*
 
-    :param const char \*\*name:
+    :param name:
         Returns - the generated path name if !error (NOT NULL)
+    :type name: const char \*\*
 
-    :param const char \*\*info:
+    :param info:
         Returns - information on why the path lookup failed (MAYBE NULL)
+    :type info: const char \*\*
 
-    :param const char \*disconnected:
+    :param disconnected:
         string to prepend to disconnected paths
+    :type disconnected: const char \*
 
 .. _`aa_path_name.description`:
 

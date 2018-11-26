@@ -306,6 +306,43 @@ Definition
         void (*cra_exit)(struct crypto_tfm *tfm);
         void (*cra_destroy)(struct crypto_alg *alg);
         struct module *cra_module;
+        union {
+            atomic_t encrypt_cnt;
+            atomic_t compress_cnt;
+            atomic_t generate_cnt;
+            atomic_t hash_cnt;
+            atomic_t setsecret_cnt;
+        } ;
+        union {
+            atomic64_t encrypt_tlen;
+            atomic64_t compress_tlen;
+            atomic64_t generate_tlen;
+            atomic64_t hash_tlen;
+        } ;
+        union {
+            atomic_t akcipher_err_cnt;
+            atomic_t cipher_err_cnt;
+            atomic_t compress_err_cnt;
+            atomic_t aead_err_cnt;
+            atomic_t hash_err_cnt;
+            atomic_t rng_err_cnt;
+            atomic_t kpp_err_cnt;
+        } ;
+        union {
+            atomic_t decrypt_cnt;
+            atomic_t decompress_cnt;
+            atomic_t seed_cnt;
+            atomic_t generate_public_key_cnt;
+        } ;
+        union {
+            atomic64_t decrypt_tlen;
+            atomic64_t decompress_tlen;
+        } ;
+        union {
+            atomic_t verify_cnt;
+            atomic_t compute_shared_secret_cnt;
+        } ;
+        atomic_t sign_cnt;
     }
 
 .. _`crypto_alg.members`:
@@ -429,10 +466,105 @@ cra_destroy
 cra_module
     Owner of this transformation implementation. Set to THIS_MODULE
 
+{unnamed_union}
+    anonymous
+
+encrypt_cnt
+    number of encrypt requests
+
+compress_cnt
+    number of compress requests
+
+generate_cnt
+    number of RNG generate requests
+
+hash_cnt
+    number of hash requests
+
+setsecret_cnt
+    number of setsecrey operation
+
+{unnamed_union}
+    anonymous
+
+encrypt_tlen
+    total data size handled by encrypt requests
+
+compress_tlen
+    total data size handled by compress requests
+
+generate_tlen
+    total data size of generated data by the RNG
+
+hash_tlen
+    total data size hashed
+
+{unnamed_union}
+    anonymous
+
+akcipher_err_cnt
+    number of error for akcipher requests
+
+cipher_err_cnt
+    number of error for akcipher requests
+
+compress_err_cnt
+    number of error for akcipher requests
+
+aead_err_cnt
+    number of error for akcipher requests
+
+hash_err_cnt
+    number of error for akcipher requests
+
+rng_err_cnt
+    number of error for akcipher requests
+
+kpp_err_cnt
+    number of error for akcipher requests
+
+{unnamed_union}
+    anonymous
+
+decrypt_cnt
+    number of decrypt requests
+
+decompress_cnt
+    number of decompress requests
+
+seed_cnt
+    number of times the rng was seeded
+
+generate_public_key_cnt
+    number of generate_public_key operation
+
+{unnamed_union}
+    anonymous
+
+decrypt_tlen
+    total data size handled by decrypt requests
+
+decompress_tlen
+    total data size handled by decompress requests
+
+{unnamed_union}
+    anonymous
+
+verify_cnt
+    number of verify operation
+
+compute_shared_secret_cnt
+    number of compute_shared_secret operation
+
+sign_cnt
+    number of sign requests
+
 .. _`crypto_alg.description`:
 
 Description
 -----------
+
+All following statistics are for this crypto_alg
 
 The struct crypto_alg describes a generic Crypto API algorithm and is common
 for all of the transformations. Any variable not documented here shall not
@@ -478,8 +610,9 @@ crypto_free_ablkcipher
 
     zeroize and free cipher handle
 
-    :param struct crypto_ablkcipher \*tfm:
+    :param tfm:
         cipher handle to be freed
+    :type tfm: struct crypto_ablkcipher \*
 
 .. _`crypto_has_ablkcipher`:
 
@@ -490,15 +623,18 @@ crypto_has_ablkcipher
 
     Search for the availability of an ablkcipher.
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         ablkcipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_has_ablkcipher.return`:
 
@@ -517,8 +653,9 @@ crypto_ablkcipher_ivsize
 
     obtain IV size
 
-    :param struct crypto_ablkcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_ablkcipher \*
 
 .. _`crypto_ablkcipher_ivsize.description`:
 
@@ -544,8 +681,9 @@ crypto_ablkcipher_blocksize
 
     obtain block size of cipher
 
-    :param struct crypto_ablkcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_ablkcipher \*
 
 .. _`crypto_ablkcipher_blocksize.description`:
 
@@ -572,14 +710,17 @@ crypto_ablkcipher_setkey
 
     set key for cipher
 
-    :param struct crypto_ablkcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_ablkcipher \*
 
-    :param const u8 \*key:
+    :param key:
         buffer holding the key
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         length of the key in bytes
+    :type keylen: unsigned int
 
 .. _`crypto_ablkcipher_setkey.description`:
 
@@ -610,8 +751,9 @@ crypto_ablkcipher_reqtfm
 
     obtain cipher handle from request
 
-    :param struct ablkcipher_request \*req:
+    :param req:
         ablkcipher_request out of which the cipher handle is to be obtained
+    :type req: struct ablkcipher_request \*
 
 .. _`crypto_ablkcipher_reqtfm.description`:
 
@@ -637,9 +779,10 @@ crypto_ablkcipher_encrypt
 
     encrypt plaintext
 
-    :param struct ablkcipher_request \*req:
+    :param req:
         reference to the ablkcipher_request handle that holds all information
         needed to perform the cipher operation
+    :type req: struct ablkcipher_request \*
 
 .. _`crypto_ablkcipher_encrypt.description`:
 
@@ -666,9 +809,10 @@ crypto_ablkcipher_decrypt
 
     decrypt ciphertext
 
-    :param struct ablkcipher_request \*req:
+    :param req:
         reference to the ablkcipher_request handle that holds all information
         needed to perform the cipher operation
+    :type req: struct ablkcipher_request \*
 
 .. _`crypto_ablkcipher_decrypt.description`:
 
@@ -707,8 +851,9 @@ crypto_ablkcipher_reqsize
 
     obtain size of the request data structure
 
-    :param struct crypto_ablkcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_ablkcipher \*
 
 .. _`crypto_ablkcipher_reqsize.return`:
 
@@ -726,11 +871,13 @@ ablkcipher_request_set_tfm
 
     update cipher handle reference in request
 
-    :param struct ablkcipher_request \*req:
+    :param req:
         request handle to be modified
+    :type req: struct ablkcipher_request \*
 
-    :param struct crypto_ablkcipher \*tfm:
+    :param tfm:
         cipher handle that shall be added to the request handle
+    :type tfm: struct crypto_ablkcipher \*
 
 .. _`ablkcipher_request_set_tfm.description`:
 
@@ -749,11 +896,13 @@ ablkcipher_request_alloc
 
     allocate request data structure
 
-    :param struct crypto_ablkcipher \*tfm:
+    :param tfm:
         cipher handle to be registered with the request
+    :type tfm: struct crypto_ablkcipher \*
 
-    :param gfp_t gfp:
+    :param gfp:
         memory allocation flag that is handed to kmalloc by the API call.
+    :type gfp: gfp_t
 
 .. _`ablkcipher_request_alloc.description`:
 
@@ -780,8 +929,9 @@ ablkcipher_request_free
 
     zeroize and free request data structure
 
-    :param struct ablkcipher_request \*req:
+    :param req:
         request data structure cipher handle to be freed
+    :type req: struct ablkcipher_request \*
 
 .. _`ablkcipher_request_set_callback`:
 
@@ -792,19 +942,22 @@ ablkcipher_request_set_callback
 
     set asynchronous callback function
 
-    :param struct ablkcipher_request \*req:
+    :param req:
         request handle
+    :type req: struct ablkcipher_request \*
 
-    :param u32 flags:
+    :param flags:
         specify zero or an ORing of the flags
         CRYPTO_TFM_REQ_MAY_BACKLOG the request queue may back log and
         increase the wait queue beyond the initial maximum size;
         CRYPTO_TFM_REQ_MAY_SLEEP the request processing may sleep
+    :type flags: u32
 
-    :param crypto_completion_t compl:
+    :param compl:
         callback function pointer to be registered with the request handle
+    :type compl: crypto_completion_t
 
-    :param void \*data:
+    :param data:
         The data pointer refers to memory that is not used by the kernel
         crypto API, but provided to the callback function for it to use. Here,
         the caller can provide a reference to memory the callback function can
@@ -813,6 +966,7 @@ ablkcipher_request_set_callback
         related functionality which can be referenced using this pointer. The
         callback function can access the memory via the "data" field in the
         crypto_async_request data structure provided to the callback function.
+    :type data: void \*
 
 .. _`ablkcipher_request_set_callback.description`:
 
@@ -836,21 +990,26 @@ ablkcipher_request_set_crypt
 
     set data buffers
 
-    :param struct ablkcipher_request \*req:
+    :param req:
         request handle
+    :type req: struct ablkcipher_request \*
 
-    :param struct scatterlist \*src:
+    :param src:
         source scatter / gather list
+    :type src: struct scatterlist \*
 
-    :param struct scatterlist \*dst:
+    :param dst:
         destination scatter / gather list
+    :type dst: struct scatterlist \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         number of bytes to process from \ ``src``\ 
+    :type nbytes: unsigned int
 
-    :param void \*iv:
+    :param iv:
         IV for the cipher operation which must comply with the IV size defined
         by crypto_ablkcipher_ivsize
+    :type iv: void \*
 
 .. _`ablkcipher_request_set_crypt.description`:
 
@@ -904,15 +1063,18 @@ crypto_alloc_blkcipher
 
     allocate synchronous block cipher handle
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         blkcipher cipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_alloc_blkcipher.description`:
 
@@ -940,8 +1102,9 @@ crypto_free_blkcipher
 
     zeroize and free the block cipher handle
 
-    :param struct crypto_blkcipher \*tfm:
+    :param tfm:
         cipher handle to be freed
+    :type tfm: struct crypto_blkcipher \*
 
 .. _`crypto_has_blkcipher`:
 
@@ -952,15 +1115,18 @@ crypto_has_blkcipher
 
     Search for the availability of a block cipher
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         block cipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_has_blkcipher.return`:
 
@@ -979,8 +1145,9 @@ crypto_blkcipher_name
 
     return the name / cra_name from the cipher handle
 
-    :param struct crypto_blkcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_blkcipher \*
 
 .. _`crypto_blkcipher_name.return`:
 
@@ -998,8 +1165,9 @@ crypto_blkcipher_ivsize
 
     obtain IV size
 
-    :param struct crypto_blkcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_blkcipher \*
 
 .. _`crypto_blkcipher_ivsize.description`:
 
@@ -1025,8 +1193,9 @@ crypto_blkcipher_blocksize
 
     obtain block size of cipher
 
-    :param struct crypto_blkcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_blkcipher \*
 
 .. _`crypto_blkcipher_blocksize.description`:
 
@@ -1053,14 +1222,17 @@ crypto_blkcipher_setkey
 
     set key for cipher
 
-    :param struct crypto_blkcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_blkcipher \*
 
-    :param const u8 \*key:
+    :param key:
         buffer holding the key
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         length of the key in bytes
+    :type keylen: unsigned int
 
 .. _`crypto_blkcipher_setkey.description`:
 
@@ -1091,18 +1263,22 @@ crypto_blkcipher_encrypt
 
     encrypt plaintext
 
-    :param struct blkcipher_desc \*desc:
+    :param desc:
         reference to the block cipher handle with meta data
+    :type desc: struct blkcipher_desc \*
 
-    :param struct scatterlist \*dst:
+    :param dst:
         scatter/gather list that is filled by the cipher operation with the
         ciphertext
+    :type dst: struct scatterlist \*
 
-    :param struct scatterlist \*src:
+    :param src:
         scatter/gather list that holds the plaintext
+    :type src: struct scatterlist \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         number of bytes of the plaintext to encrypt.
+    :type nbytes: unsigned int
 
 .. _`crypto_blkcipher_encrypt.description`:
 
@@ -1133,18 +1309,22 @@ crypto_blkcipher_encrypt_iv
 
     encrypt plaintext with dedicated IV
 
-    :param struct blkcipher_desc \*desc:
+    :param desc:
         reference to the block cipher handle with meta data
+    :type desc: struct blkcipher_desc \*
 
-    :param struct scatterlist \*dst:
+    :param dst:
         scatter/gather list that is filled by the cipher operation with the
         ciphertext
+    :type dst: struct scatterlist \*
 
-    :param struct scatterlist \*src:
+    :param src:
         scatter/gather list that holds the plaintext
+    :type src: struct scatterlist \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         number of bytes of the plaintext to encrypt.
+    :type nbytes: unsigned int
 
 .. _`crypto_blkcipher_encrypt_iv.description`:
 
@@ -1176,18 +1356,22 @@ crypto_blkcipher_decrypt
 
     decrypt ciphertext
 
-    :param struct blkcipher_desc \*desc:
+    :param desc:
         reference to the block cipher handle with meta data
+    :type desc: struct blkcipher_desc \*
 
-    :param struct scatterlist \*dst:
+    :param dst:
         scatter/gather list that is filled by the cipher operation with the
         plaintext
+    :type dst: struct scatterlist \*
 
-    :param struct scatterlist \*src:
+    :param src:
         scatter/gather list that holds the ciphertext
+    :type src: struct scatterlist \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         number of bytes of the ciphertext to decrypt.
+    :type nbytes: unsigned int
 
 .. _`crypto_blkcipher_decrypt.description`:
 
@@ -1216,18 +1400,22 @@ crypto_blkcipher_decrypt_iv
 
     decrypt ciphertext with dedicated IV
 
-    :param struct blkcipher_desc \*desc:
+    :param desc:
         reference to the block cipher handle with meta data
+    :type desc: struct blkcipher_desc \*
 
-    :param struct scatterlist \*dst:
+    :param dst:
         scatter/gather list that is filled by the cipher operation with the
         plaintext
+    :type dst: struct scatterlist \*
 
-    :param struct scatterlist \*src:
+    :param src:
         scatter/gather list that holds the ciphertext
+    :type src: struct scatterlist \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         number of bytes of the ciphertext to decrypt.
+    :type nbytes: unsigned int
 
 .. _`crypto_blkcipher_decrypt_iv.description`:
 
@@ -1256,14 +1444,17 @@ crypto_blkcipher_set_iv
 
     set IV for cipher
 
-    :param struct crypto_blkcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_blkcipher \*
 
-    :param const u8 \*src:
+    :param src:
         buffer holding the IV
+    :type src: const u8 \*
 
-    :param unsigned int len:
+    :param len:
         length of the IV in bytes
+    :type len: unsigned int
 
 .. _`crypto_blkcipher_set_iv.description`:
 
@@ -1282,14 +1473,17 @@ crypto_blkcipher_get_iv
 
     obtain IV from cipher
 
-    :param struct crypto_blkcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_blkcipher \*
 
-    :param u8 \*dst:
+    :param dst:
         buffer filled with the IV
+    :type dst: u8 \*
 
-    :param unsigned int len:
+    :param len:
         length of the buffer dst
+    :type len: unsigned int
 
 .. _`crypto_blkcipher_get_iv.description`:
 
@@ -1327,15 +1521,18 @@ crypto_alloc_cipher
 
     allocate single block cipher handle
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         single block cipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_alloc_cipher.description`:
 
@@ -1363,8 +1560,9 @@ crypto_free_cipher
 
     zeroize and free the single block cipher handle
 
-    :param struct crypto_cipher \*tfm:
+    :param tfm:
         cipher handle to be freed
+    :type tfm: struct crypto_cipher \*
 
 .. _`crypto_has_cipher`:
 
@@ -1375,15 +1573,18 @@ crypto_has_cipher
 
     Search for the availability of a single block cipher
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         single block cipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_has_cipher.return`:
 
@@ -1402,8 +1603,9 @@ crypto_cipher_blocksize
 
     obtain block size for cipher
 
-    :param struct crypto_cipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_cipher \*
 
 .. _`crypto_cipher_blocksize.description`:
 
@@ -1430,14 +1632,17 @@ crypto_cipher_setkey
 
     set key for cipher
 
-    :param struct crypto_cipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_cipher \*
 
-    :param const u8 \*key:
+    :param key:
         buffer holding the key
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         length of the key in bytes
+    :type keylen: unsigned int
 
 .. _`crypto_cipher_setkey.description`:
 
@@ -1468,14 +1673,17 @@ crypto_cipher_encrypt_one
 
     encrypt one block of plaintext
 
-    :param struct crypto_cipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_cipher \*
 
-    :param u8 \*dst:
+    :param dst:
         points to the buffer that will be filled with the ciphertext
+    :type dst: u8 \*
 
-    :param const u8 \*src:
+    :param src:
         buffer holding the plaintext to be encrypted
+    :type src: const u8 \*
 
 .. _`crypto_cipher_encrypt_one.description`:
 
@@ -1494,14 +1702,17 @@ crypto_cipher_decrypt_one
 
     decrypt one block of ciphertext
 
-    :param struct crypto_cipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_cipher \*
 
-    :param u8 \*dst:
+    :param dst:
         points to the buffer that will be filled with the plaintext
+    :type dst: u8 \*
 
-    :param const u8 \*src:
+    :param src:
         buffer holding the ciphertext to be decrypted
+    :type src: const u8 \*
 
 .. _`crypto_cipher_decrypt_one.description`:
 

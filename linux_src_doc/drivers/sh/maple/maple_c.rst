@@ -10,8 +10,9 @@ maple_driver_register
 
     register a maple driver
 
-    :param struct maple_driver \*drv:
+    :param drv:
         maple driver to be registered.
+    :type drv: struct maple_driver \*
 
 .. _`maple_driver_register.description`:
 
@@ -30,8 +31,9 @@ maple_driver_unregister
 
     unregister a maple driver.
 
-    :param struct maple_driver \*drv:
+    :param drv:
         maple driver to unregister.
+    :type drv: struct maple_driver \*
 
 .. _`maple_driver_unregister.description`:
 
@@ -50,17 +52,20 @@ maple_getcond_callback
 
     setup handling MAPLE_COMMAND_GETCOND
 
-    :param struct maple_device \*dev:
+    :param dev:
         device responding
+    :type dev: struct maple_device \*
 
     :param void (\*callback)(struct mapleq \*mq):
         handler callback
 
-    :param unsigned long interval:
+    :param interval:
         interval in jiffies between callbacks
+    :type interval: unsigned long
 
-    :param unsigned long function:
+    :param function:
         the function code for the device
+    :type function: unsigned long
 
 .. _`maple_add_packet`:
 
@@ -71,20 +76,25 @@ maple_add_packet
 
     add a single instruction to the maple bus queue
 
-    :param struct maple_device \*mdev:
+    :param mdev:
         maple device
+    :type mdev: struct maple_device \*
 
-    :param u32 function:
+    :param function:
         function on device being queried
+    :type function: u32
 
-    :param u32 command:
+    :param command:
         maple command to add
+    :type command: u32
 
-    :param size_t length:
+    :param length:
         length of command string (in 32 bit words)
+    :type length: size_t
 
-    :param void \*data:
+    :param data:
         remainder of command string
+    :type data: void \*
 
 .. This file was automatic generated / don't edit.
 

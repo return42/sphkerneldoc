@@ -10,14 +10,17 @@ optee_handle_rpc
 
     handle RPC from secure world
 
-    :param struct tee_context \*ctx:
+    :param ctx:
         context doing the RPC
+    :type ctx: struct tee_context \*
 
-    :param struct optee_rpc_param \*param:
+    :param param:
         value of registers for the RPC
+    :type param: struct optee_rpc_param \*
 
-    :param struct optee_call_ctx \*call_ctx:
+    :param call_ctx:
         call context. Preserved during one OP-TEE invocation
+    :type call_ctx: struct optee_call_ctx \*
 
 .. _`optee_handle_rpc.description`:
 

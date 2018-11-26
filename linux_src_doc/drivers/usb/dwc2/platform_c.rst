@@ -10,8 +10,9 @@ dwc2_lowlevel_hw_enable
 
     enable platform lowlevel hw resources
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_lowlevel_hw_enable.description`:
 
@@ -30,8 +31,9 @@ dwc2_lowlevel_hw_disable
 
     disable platform lowlevel hw resources
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The driver state
+    :type hsotg: struct dwc2_hsotg \*
 
 .. _`dwc2_lowlevel_hw_disable.description`:
 
@@ -50,8 +52,9 @@ dwc2_driver_remove
 
     Called when the DWC_otg core is unregistered with the DWC_otg driver
 
-    :param struct platform_device \*dev:
+    :param dev:
         Platform device
+    :type dev: struct platform_device \*
 
 .. _`dwc2_driver_remove.description`:
 
@@ -72,8 +75,9 @@ dwc2_driver_shutdown
 
     Called on device shutdown
 
-    :param struct platform_device \*dev:
+    :param dev:
         Platform device
+    :type dev: struct platform_device \*
 
 .. _`dwc2_driver_shutdown.description`:
 
@@ -87,6 +91,19 @@ at shutdown-time which may bring the system clock below the threshold
 of being able to handle the dwc2 interrupts. Disabling dwc2-irqs
 prevents reboots/poweroffs from getting stuck in such cases.
 
+.. _`dwc2_check_core_endianness`:
+
+dwc2_check_core_endianness
+==========================
+
+.. c:function:: bool dwc2_check_core_endianness(struct dwc2_hsotg *hsotg)
+
+    Returns true if core and AHB have opposite endianness.
+
+    :param hsotg:
+        Programming view of the DWC_otg controller.
+    :type hsotg: struct dwc2_hsotg \*
+
 .. _`dwc2_driver_probe`:
 
 dwc2_driver_probe
@@ -96,8 +113,9 @@ dwc2_driver_probe
 
     Called when the DWC_otg core is bound to the DWC_otg driver
 
-    :param struct platform_device \*dev:
+    :param dev:
         Platform device
+    :type dev: struct platform_device \*
 
 .. _`dwc2_driver_probe.description`:
 

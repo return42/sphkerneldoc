@@ -10,8 +10,9 @@ scm_driver_register
 
     register a scm driver
 
-    :param struct scm_driver \*scmdrv:
+    :param scmdrv:
         driver to be registered
+    :type scmdrv: struct scm_driver \*
 
 .. _`scm_driver_unregister`:
 
@@ -22,8 +23,9 @@ scm_driver_unregister
 
     deregister a scm driver
 
-    :param struct scm_driver \*scmdrv:
+    :param scmdrv:
         driver to be deregistered
+    :type scmdrv: struct scm_driver \*
 
 .. This file was automatic generated / don't edit.
 

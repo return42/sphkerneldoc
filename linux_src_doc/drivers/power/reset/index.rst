@@ -8,4 +8,5 @@ reset
     :maxdepth: 1
 
     keystone-reset_c
+    ltc2952-poweroff_c
     reboot-mode_c

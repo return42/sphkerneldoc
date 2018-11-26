@@ -25,17 +25,21 @@ drm_dp_dual_mode_read
 
     Read from the DP dual mode adaptor register(s)
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter for the DDC bus
+    :type adapter: struct i2c_adapter \*
 
-    :param u8 offset:
+    :param offset:
         register offset
+    :type offset: u8
 
-    :param void \*buffer:
+    :param buffer:
         buffer for return data
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         sizo of the buffer
+    :type size: size_t
 
 .. _`drm_dp_dual_mode_read.description`:
 
@@ -61,17 +65,21 @@ drm_dp_dual_mode_write
 
     Write to the DP dual mode adaptor register(s)
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter for the DDC bus
+    :type adapter: struct i2c_adapter \*
 
-    :param u8 offset:
+    :param offset:
         register offset
+    :type offset: u8
 
-    :param const void \*buffer:
+    :param buffer:
         buffer for write data
+    :type buffer: const void \*
 
-    :param size_t size:
+    :param size:
         sizo of the buffer
+    :type size: size_t
 
 .. _`drm_dp_dual_mode_write.description`:
 
@@ -97,8 +105,9 @@ drm_dp_dual_mode_detect
 
     Identify the DP dual mode adaptor
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter for the DDC bus
+    :type adapter: struct i2c_adapter \*
 
 .. _`drm_dp_dual_mode_detect.description`:
 
@@ -129,11 +138,13 @@ drm_dp_dual_mode_max_tmds_clock
 
     Max TMDS clock for DP dual mode adaptor
 
-    :param enum drm_dp_dual_mode_type type:
+    :param type:
         DP dual mode adaptor type
+    :type type: enum drm_dp_dual_mode_type
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter for the DDC bus
+    :type adapter: struct i2c_adapter \*
 
 .. _`drm_dp_dual_mode_max_tmds_clock.description`:
 
@@ -163,14 +174,17 @@ drm_dp_dual_mode_get_tmds_output
 
     Get the state of the TMDS output buffers in the DP dual mode adaptor
 
-    :param enum drm_dp_dual_mode_type type:
+    :param type:
         DP dual mode adaptor type
+    :type type: enum drm_dp_dual_mode_type
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter for the DDC bus
+    :type adapter: struct i2c_adapter \*
 
-    :param bool \*enabled:
+    :param enabled:
         current state of the TMDS output buffers
+    :type enabled: bool \*
 
 .. _`drm_dp_dual_mode_get_tmds_output.description`:
 
@@ -200,14 +214,17 @@ drm_dp_dual_mode_set_tmds_output
 
     Enable/disable TMDS output buffers in the DP dual mode adaptor
 
-    :param enum drm_dp_dual_mode_type type:
+    :param type:
         DP dual mode adaptor type
+    :type type: enum drm_dp_dual_mode_type
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C adapter for the DDC bus
+    :type adapter: struct i2c_adapter \*
 
-    :param bool enable:
+    :param enable:
         enable (as opposed to disable) the TMDS output buffers
+    :type enable: bool
 
 .. _`drm_dp_dual_mode_set_tmds_output.description`:
 
@@ -236,8 +253,9 @@ drm_dp_get_dual_mode_type_name
 
     Get the name of the DP dual mode adaptor type as a string
 
-    :param enum drm_dp_dual_mode_type type:
+    :param type:
         DP dual mode adaptor type
+    :type type: enum drm_dp_dual_mode_type
 
 .. _`drm_dp_get_dual_mode_type_name.return`:
 
@@ -255,11 +273,13 @@ drm_lspcon_get_mode
 
     Get LSPCON's current mode of operation by reading offset (0x80, 0x41)
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C-over-aux adapter
+    :type adapter: struct i2c_adapter \*
 
-    :param enum drm_lspcon_mode \*mode:
+    :param mode:
         current lspcon mode of operation output variable
+    :type mode: enum drm_lspcon_mode \*
 
 .. _`drm_lspcon_get_mode.return`:
 
@@ -278,11 +298,13 @@ drm_lspcon_set_mode
 
     Change LSPCON's mode of operation by writing offset (0x80, 0x40)
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         I2C-over-aux adapter
+    :type adapter: struct i2c_adapter \*
 
-    :param enum drm_lspcon_mode mode:
+    :param mode:
         required mode of operation
+    :type mode: enum drm_lspcon_mode
 
 .. _`drm_lspcon_set_mode.return`:
 

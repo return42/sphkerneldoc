@@ -10,8 +10,9 @@ of_reserved_mem_device_init
 
     assign reserved memory region to given device
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to the device to configure
+    :type dev: struct device \*
 
 .. _`of_reserved_mem_device_init.description`:
 

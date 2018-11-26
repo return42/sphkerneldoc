@@ -8,16 +8,19 @@
 
 .. c:function:: void __flush_cache_one(unsigned long addr, unsigned long phys, unsigned long exec_offset)
 
-    :param unsigned long addr:
+    :param addr:
         address in memory mapped cache array
+    :type addr: unsigned long
 
-    :param unsigned long phys:
+    :param phys:
         P1 address to flush (has to match tags if addr has 'A' bit
         set i.e. associative write)
+    :type phys: unsigned long
 
-    :param unsigned long exec_offset:
+    :param exec_offset:
         set to 0x20000000 if flush has to be executed from P2
         region else 0x0
+    :type exec_offset: unsigned long
 
 .. _`__flush_cache_one.description`:
 

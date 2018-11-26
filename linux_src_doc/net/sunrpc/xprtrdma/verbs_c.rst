@@ -1,6 +1,53 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/sunrpc/xprtrdma/verbs.c
 
+.. _`rpcrdma_disconnect_worker`:
+
+rpcrdma_disconnect_worker
+=========================
+
+.. c:function:: void rpcrdma_disconnect_worker(struct work_struct *work)
+
+    Force a disconnect
+
+    :param work:
+        endpoint to be disconnected
+    :type work: struct work_struct \*
+
+.. _`rpcrdma_disconnect_worker.description`:
+
+Description
+-----------
+
+Provider callbacks can possibly run in an IRQ context. This function
+is invoked in a worker thread to guarantee that disconnect wake-up
+calls are always done in process context.
+
+.. _`rpcrdma_qp_event_handler`:
+
+rpcrdma_qp_event_handler
+========================
+
+.. c:function:: void rpcrdma_qp_event_handler(struct ib_event *event, void *context)
+
+    Handle one QP event (error notification)
+
+    :param event:
+        details of the event
+    :type event: struct ib_event \*
+
+    :param context:
+        ep that owns QP where event occurred
+    :type context: void \*
+
+.. _`rpcrdma_qp_event_handler.description`:
+
+Description
+-----------
+
+Called from the RDMA provider (device driver) possibly in an interrupt
+context.
+
 .. _`rpcrdma_wc_send`:
 
 rpcrdma_wc_send
@@ -10,11 +57,13 @@ rpcrdma_wc_send
 
     Invoked by RDMA provider for each polled Send WC
 
-    :param struct ib_cq \*cq:
+    :param cq:
         completion queue (ignored)
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         completed WR
+    :type wc: struct ib_wc \*
 
 .. _`rpcrdma_wc_receive`:
 
@@ -25,11 +74,38 @@ rpcrdma_wc_receive
 
     Invoked by RDMA provider for each polled Receive WC
 
-    :param struct ib_cq \*cq:
+    :param cq:
         completion queue (ignored)
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         completed WR
+    :type wc: struct ib_wc \*
+
+.. _`rpcrdma_cm_event_handler`:
+
+rpcrdma_cm_event_handler
+========================
+
+.. c:function:: int rpcrdma_cm_event_handler(struct rdma_cm_id *id, struct rdma_cm_event *event)
+
+    Handle RDMA CM events
+
+    :param id:
+        rdma_cm_id on which an event has occurred
+    :type id: struct rdma_cm_id \*
+
+    :param event:
+        details of the event
+    :type event: struct rdma_cm_event \*
+
+.. _`rpcrdma_cm_event_handler.description`:
+
+Description
+-----------
+
+Called with \ ``id``\ 's mutex held. Returns 1 if caller should
+destroy \ ``id``\ , otherwise 0.
 
 .. _`rpcrdma_ia_open`:
 
@@ -40,8 +116,9 @@ rpcrdma_ia_open
 
     Open and initialize an Interface Adapter.
 
-    :param struct rpcrdma_xprt \*xprt:
+    :param xprt:
         transport with IA to (re)initialize
+    :type xprt: struct rpcrdma_xprt \*
 
 .. _`rpcrdma_ia_open.description`:
 
@@ -60,8 +137,9 @@ rpcrdma_ia_remove
 
     Handle device driver unload
 
-    :param struct rpcrdma_ia \*ia:
+    :param ia:
         interface adapter being removed
+    :type ia: struct rpcrdma_ia \*
 
 .. _`rpcrdma_ia_remove.description`:
 
@@ -80,8 +158,9 @@ rpcrdma_ia_close
 
     Clean up/close an IA.
 
-    :param struct rpcrdma_ia \*ia:
+    :param ia:
         interface adapter to close
+    :type ia: struct rpcrdma_ia \*
 
 .. _`rpcrdma_sendctx_get_locked`:
 
@@ -92,8 +171,9 @@ rpcrdma_sendctx_get_locked
 
     Acquire a send context
 
-    :param struct rpcrdma_buffer \*buf:
+    :param buf:
         transport buffers from which to acquire an unused context
+    :type buf: struct rpcrdma_buffer \*
 
 .. _`rpcrdma_sendctx_get_locked.description`:
 
@@ -123,8 +203,9 @@ rpcrdma_sendctx_put_locked
 
     Release a send context
 
-    :param struct rpcrdma_sendctx \*sc:
+    :param sc:
         send context to release
+    :type sc: struct rpcrdma_sendctx \*
 
 .. _`rpcrdma_sendctx_put_locked.usage`:
 
@@ -145,8 +226,9 @@ rpcrdma_mr_get
 
     Allocate an rpcrdma_mr object
 
-    :param struct rpcrdma_xprt \*r_xprt:
+    :param r_xprt:
         controlling transport
+    :type r_xprt: struct rpcrdma_xprt \*
 
 .. _`rpcrdma_mr_get.description`:
 
@@ -165,8 +247,9 @@ rpcrdma_mr_put
 
     Release an rpcrdma_mr object
 
-    :param struct rpcrdma_mr \*mr:
+    :param mr:
         object to release
+    :type mr: struct rpcrdma_mr \*
 
 .. _`rpcrdma_mr_unmap_and_put`:
 
@@ -177,8 +260,9 @@ rpcrdma_mr_unmap_and_put
 
     DMA unmap an MR and release it
 
-    :param struct rpcrdma_mr \*mr:
+    :param mr:
         object to release
+    :type mr: struct rpcrdma_mr \*
 
 .. _`rpcrdma_buffer_get`:
 
@@ -189,8 +273,9 @@ rpcrdma_buffer_get
 
     Get a request buffer
 
-    :param struct rpcrdma_buffer \*buffers:
+    :param buffers:
         Buffer pool from which to obtain a buffer
+    :type buffers: struct rpcrdma_buffer \*
 
 .. _`rpcrdma_buffer_get.description`:
 
@@ -208,8 +293,9 @@ rpcrdma_buffer_put
 
     Put request/reply buffers back into pool
 
-    :param struct rpcrdma_req \*req:
+    :param req:
         object to return
+    :type req: struct rpcrdma_req \*
 
 .. _`rpcrdma_alloc_regbuf`:
 
@@ -220,14 +306,17 @@ rpcrdma_alloc_regbuf
 
     allocate and DMA-map memory for SEND/RECV buffers
 
-    :param size_t size:
+    :param size:
         size of buffer to be allocated, in bytes
+    :type size: size_t
 
-    :param enum dma_data_direction direction:
+    :param direction:
         direction of data movement
+    :type direction: enum dma_data_direction
 
-    :param gfp_t flags:
+    :param flags:
         GFP flags
+    :type flags: gfp_t
 
 .. _`rpcrdma_alloc_regbuf.description`:
 
@@ -250,11 +339,13 @@ or Replies they may be registered externally via ro_map.
 
     DMA-map a regbuf
 
-    :param struct rpcrdma_ia \*ia:
+    :param ia:
         controlling rpcrdma_ia
+    :type ia: struct rpcrdma_ia \*
 
-    :param struct rpcrdma_regbuf \*rb:
+    :param rb:
         regbuf to be mapped
+    :type rb: struct rpcrdma_regbuf \*
 
 .. _`rpcrdma_free_regbuf`:
 
@@ -265,8 +356,9 @@ rpcrdma_free_regbuf
 
     deregister and free registered buffer
 
-    :param struct rpcrdma_regbuf \*rb:
+    :param rb:
         regbuf to be deregistered and freed
+    :type rb: struct rpcrdma_regbuf \*
 
 .. _`rpcrdma_post_recvs`:
 
@@ -277,11 +369,13 @@ rpcrdma_post_recvs
 
     Maybe post some Receive buffers
 
-    :param struct rpcrdma_xprt \*r_xprt:
+    :param r_xprt:
         controlling transport
+    :type r_xprt: struct rpcrdma_xprt \*
 
-    :param bool temp:
+    :param temp:
         when true, allocate temp rpcrdma_rep objects
+    :type temp: bool
 
 .. This file was automatic generated / don't edit.
 

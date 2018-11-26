@@ -10,8 +10,9 @@ link_report
 
     show link status and link speed/duplex
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`link_report.description`:
 
@@ -29,23 +30,29 @@ t3_os_link_changed
 
     handle link status changes
 
-    :param struct adapter \*adapter:
+    :param adapter:
         the adapter associated with the link change
+    :type adapter: struct adapter \*
 
-    :param int port_id:
+    :param port_id:
         the port index whose limk status has changed
+    :type port_id: int
 
-    :param int link_stat:
+    :param link_stat:
         the new status of the link
+    :type link_stat: int
 
-    :param int speed:
+    :param speed:
         the new speed setting
+    :type speed: int
 
-    :param int duplex:
+    :param duplex:
         the new duplex setting
+    :type duplex: int
 
-    :param int pause:
+    :param pause:
         the new flow-control setting
+    :type pause: int
 
 .. _`t3_os_link_changed.description`:
 
@@ -65,11 +72,13 @@ t3_os_phymod_changed
 
     handle PHY module changes
 
-    :param struct adapter \*adap:
+    :param adap:
         *undescribed*
+    :type adap: struct adapter \*
 
-    :param int port_id:
+    :param port_id:
         *undescribed*
+    :type port_id: int
 
 .. _`t3_os_phymod_changed.description`:
 
@@ -89,8 +98,9 @@ link_start
 
     enable a port
 
-    :param struct net_device \*dev:
+    :param dev:
         the device to enable
+    :type dev: struct net_device \*
 
 .. _`link_start.description`:
 
@@ -108,8 +118,9 @@ setup_rss
 
     configure RSS
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`setup_rss.description`:
 
@@ -132,8 +143,9 @@ setup_sge_qsets
 
     configure SGE Tx/Rx/response queues
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
 .. _`setup_sge_qsets.description`:
 
@@ -153,11 +165,13 @@ t3_synchronize_rx
 
     wait for current Rx processing on a port to complete
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param const struct port_info \*p:
+    :param p:
         the port
+    :type p: const struct port_info \*
 
 .. _`t3_synchronize_rx.description`:
 
@@ -177,8 +191,9 @@ cxgb_up
 
     enable the adapter
 
-    :param struct adapter \*adap:
+    :param adap:
         *undescribed*
+    :type adap: struct adapter \*
 
 .. _`cxgb_up.description`:
 
@@ -200,11 +215,13 @@ t3_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`t3_io_error_detected.description`:
 
@@ -223,8 +240,9 @@ t3_io_slot_reset
 
     called after the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`t3_io_slot_reset.description`:
 
@@ -242,8 +260,9 @@ t3_io_resume
 
     called when traffic can start flowing again.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`t3_io_resume.description`:
 

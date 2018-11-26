@@ -8,3 +8,4 @@ broadcom
     :maxdepth: 1
 
     phy-bcm-cygnus-pcie_c
+    phy-bcm-sr-pcie_c

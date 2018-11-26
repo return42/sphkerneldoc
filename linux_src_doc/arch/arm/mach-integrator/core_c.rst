@@ -10,8 +10,9 @@ cm_get
 
     get the value from the CM_CTRL register
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cm_control`:
 
@@ -22,11 +23,13 @@ cm_control
 
     update the CM_CTRL register.
 
-    :param u32 mask:
+    :param mask:
         bits to change
+    :type mask: u32
 
-    :param u32 set:
+    :param set:
         bits to set
+    :type set: u32
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ nfp_eth_read_ports
 
     retrieve port information
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
 .. _`nfp_eth_read_ports.description`:
 
@@ -37,8 +38,9 @@ nfp_eth_config_commit_end
 
     perform recorded configuration changes
 
-    :param struct nfp_nsp \*nsp:
+    :param nsp:
         NFP NSP handle returned from \ :c:func:`nfp_eth_config_start`\ 
+    :type nsp: struct nfp_nsp \*
 
 .. _`nfp_eth_config_commit_end.description`:
 
@@ -68,14 +70,17 @@ nfp_eth_set_mod_enable
 
     set PHY module enable control bit
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param unsigned int idx:
+    :param idx:
         NFP chip-wide port index
+    :type idx: unsigned int
 
-    :param bool enable:
+    :param enable:
         Desired state
+    :type enable: bool
 
 .. _`nfp_eth_set_mod_enable.description`:
 
@@ -103,14 +108,17 @@ nfp_eth_set_configured
 
     set PHY module configured control bit
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param unsigned int idx:
+    :param idx:
         NFP chip-wide port index
+    :type idx: unsigned int
 
-    :param bool configed:
+    :param configed:
         Desired state
+    :type configed: bool
 
 .. _`nfp_eth_set_configured.description`:
 
@@ -137,11 +145,13 @@ Return
 
     set PHY autonegotiation control bit
 
-    :param struct nfp_nsp \*nsp:
+    :param nsp:
         NFP NSP handle returned from \ :c:func:`nfp_eth_config_start`\ 
+    :type nsp: struct nfp_nsp \*
 
-    :param enum nfp_eth_aneg mode:
+    :param mode:
         Desired autonegotiation mode
+    :type mode: enum nfp_eth_aneg
 
 .. _`__nfp_eth_set_aneg.description`:
 
@@ -167,11 +177,13 @@ Return
 
     set PHY forward error correction control bit
 
-    :param struct nfp_nsp \*nsp:
+    :param nsp:
         NFP NSP handle returned from \ :c:func:`nfp_eth_config_start`\ 
+    :type nsp: struct nfp_nsp \*
 
-    :param enum nfp_eth_fec mode:
+    :param mode:
         Desired fec mode
+    :type mode: enum nfp_eth_fec
 
 .. _`__nfp_eth_set_fec.description`:
 
@@ -197,14 +209,17 @@ nfp_eth_set_fec
 
     set PHY forward error correction control mode
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handle
+    :type cpp: struct nfp_cpp \*
 
-    :param unsigned int idx:
+    :param idx:
         NFP chip-wide port index
+    :type idx: unsigned int
 
-    :param enum nfp_eth_fec mode:
+    :param mode:
         Desired fec mode
+    :type mode: enum nfp_eth_fec
 
 .. _`nfp_eth_set_fec.return`:
 
@@ -224,11 +239,13 @@ Return
 
     set interface speed/rate
 
-    :param struct nfp_nsp \*nsp:
+    :param nsp:
         NFP NSP handle returned from \ :c:func:`nfp_eth_config_start`\ 
+    :type nsp: struct nfp_nsp \*
 
-    :param unsigned int speed:
+    :param speed:
         Desired speed (per lane)
+    :type speed: unsigned int
 
 .. _`__nfp_eth_set_speed.description`:
 
@@ -256,11 +273,13 @@ Return
 
     set interface lane split
 
-    :param struct nfp_nsp \*nsp:
+    :param nsp:
         NFP NSP handle returned from \ :c:func:`nfp_eth_config_start`\ 
+    :type nsp: struct nfp_nsp \*
 
-    :param unsigned int lanes:
+    :param lanes:
         Desired lanes per port
+    :type lanes: unsigned int
 
 .. _`__nfp_eth_set_split.description`:
 

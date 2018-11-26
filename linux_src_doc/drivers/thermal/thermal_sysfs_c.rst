@@ -10,11 +10,13 @@ create_trip_attrs
 
     create attributes for trip points
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         the thermal zone device
+    :type tz: struct thermal_zone_device \*
 
-    :param int mask:
+    :param mask:
         Writeable trip point bitmap.
+    :type mask: int
 
 .. _`create_trip_attrs.description`:
 
@@ -40,8 +42,9 @@ destroy_trip_attrs
 
     destroy attributes for trip points
 
-    :param struct thermal_zone_device \*tz:
+    :param tz:
         the thermal zone device
+    :type tz: struct thermal_zone_device \*
 
 .. _`destroy_trip_attrs.description`:
 

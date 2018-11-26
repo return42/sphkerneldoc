@@ -10,14 +10,17 @@ percpu_counter_add_batch
 
     preemption disable. The latter is guaranteed by the fact that the slow path is explicitly protected by an irq-safe spinlock whereas the fast patch uses this_cpu_add which is irq-safe by definition. Hence there is no need muck with irq state before calling this one
 
-    :param struct percpu_counter \*fbc:
+    :param fbc:
         *undescribed*
+    :type fbc: struct percpu_counter \*
 
-    :param s64 amount:
+    :param amount:
         *undescribed*
+    :type amount: s64
 
-    :param s32 batch:
+    :param batch:
         *undescribed*
+    :type batch: s32
 
 .. This file was automatic generated / don't edit.
 

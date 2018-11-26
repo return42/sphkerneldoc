@@ -10,8 +10,9 @@ adf_init_etr_data
 
     Initialize transport rings for acceleration device
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_init_etr_data.description`:
 
@@ -38,8 +39,9 @@ adf_cleanup_etr_data
 
     Clear transport rings for acceleration device
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_cleanup_etr_data.description`:
 

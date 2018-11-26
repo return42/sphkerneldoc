@@ -10,11 +10,13 @@ amdgpu_gtt_mgr_init
 
     init GTT manager and DRM MM
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
-    :param unsigned long p_size:
+    :param p_size:
         maximum size of GTT
+    :type p_size: unsigned long
 
 .. _`amdgpu_gtt_mgr_init.description`:
 
@@ -32,8 +34,9 @@ amdgpu_gtt_mgr_fini
 
     free and destroy GTT manager
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
 .. _`amdgpu_gtt_mgr_fini.description`:
 
@@ -52,8 +55,9 @@ amdgpu_gtt_mgr_has_gart_addr
 
     Check if mem has address space
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         the mem object to check
+    :type mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_gtt_mgr_has_gart_addr.description`:
 
@@ -71,17 +75,21 @@ amdgpu_gtt_mgr_alloc
 
     allocate new ranges
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
-    :param struct ttm_buffer_object \*tbo:
+    :param tbo:
         TTM BO we need this range for
+    :type tbo: struct ttm_buffer_object \*
 
-    :param const struct ttm_place \*place:
+    :param place:
         placement flags and restrictions
+    :type place: const struct ttm_place \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         the resulting mem object
+    :type mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_gtt_mgr_alloc.description`:
 
@@ -99,17 +107,21 @@ amdgpu_gtt_mgr_new
 
     allocate a new node
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
-    :param struct ttm_buffer_object \*tbo:
+    :param tbo:
         TTM BO we need this range for
+    :type tbo: struct ttm_buffer_object \*
 
-    :param const struct ttm_place \*place:
+    :param place:
         placement flags and restrictions
+    :type place: const struct ttm_place \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         the resulting mem object
+    :type mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_gtt_mgr_new.description`:
 
@@ -127,11 +139,13 @@ amdgpu_gtt_mgr_del
 
     free ranges
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         TTM memory object
+    :type mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_gtt_mgr_del.description`:
 
@@ -149,8 +163,9 @@ amdgpu_gtt_mgr_usage
 
     return usage of GTT domain
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
 .. _`amdgpu_gtt_mgr_usage.description`:
 
@@ -168,11 +183,13 @@ amdgpu_gtt_mgr_debug
 
     dump VRAM table
 
-    :param struct ttm_mem_type_manager \*man:
+    :param man:
         TTM memory type manager
+    :type man: struct ttm_mem_type_manager \*
 
-    :param struct drm_printer \*printer:
+    :param printer:
         DRM printer to use
+    :type printer: struct drm_printer \*
 
 .. _`amdgpu_gtt_mgr_debug.description`:
 

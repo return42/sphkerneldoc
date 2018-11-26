@@ -42,18 +42,21 @@ drm_framebuffer.
 drm_mode_addfb
 ==============
 
-.. c:function:: int drm_mode_addfb(struct drm_device *dev, void *data, struct drm_file *file_priv)
+.. c:function:: int drm_mode_addfb(struct drm_device *dev, struct drm_mode_fb_cmd *or, struct drm_file *file_priv)
 
     add an FB to the graphics configuration
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device for the ioctl
+    :type dev: struct drm_device \*
 
-    :param void \*data:
-        data pointer for the ioctl
+    :param or:
+        pointer to request structure
+    :type or: struct drm_mode_fb_cmd \*
 
-    :param struct drm_file \*file_priv:
-        drm file for the ioctl call
+    :param file_priv:
+        drm file
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_addfb.description`:
 
@@ -63,7 +66,7 @@ Description
 Add a new FB to the specified CRTC, given a user request. This is the
 original addfb ioctl which only supported RGB formats.
 
-Called by the user via ioctl.
+Called by the user via ioctl, or by an in-kernel client.
 
 .. _`drm_mode_addfb.return`:
 
@@ -81,14 +84,17 @@ drm_mode_addfb2
 
     add an FB to the graphics configuration
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device for the ioctl
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data pointer for the ioctl
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file for the ioctl call
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_addfb2.description`:
 
@@ -113,27 +119,30 @@ Zero on success, negative errno on failure.
 drm_mode_rmfb
 =============
 
-.. c:function:: int drm_mode_rmfb(struct drm_device *dev, void *data, struct drm_file *file_priv)
+.. c:function:: int drm_mode_rmfb(struct drm_device *dev, u32 fb_id, struct drm_file *file_priv)
 
     remove an FB from the configuration
 
-    :param struct drm_device \*dev:
-        drm device for the ioctl
+    :param dev:
+        drm device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
-        data pointer for the ioctl
+    :param fb_id:
+        id of framebuffer to remove
+    :type fb_id: u32
 
-    :param struct drm_file \*file_priv:
-        drm file for the ioctl call
+    :param file_priv:
+        drm file
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_rmfb.description`:
 
 Description
 -----------
 
-Remove the FB specified by the user.
+Remove the specified FB.
 
-Called by the user via ioctl.
+Called by the user via ioctl, or by an in-kernel client.
 
 .. _`drm_mode_rmfb.return`:
 
@@ -151,14 +160,17 @@ drm_mode_getfb
 
     get FB info
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device for the ioctl
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data pointer for the ioctl
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file for the ioctl call
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_getfb.description`:
 
@@ -185,14 +197,17 @@ drm_mode_dirtyfb_ioctl
 
     flush frontbuffer rendering on an FB
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device for the ioctl
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         data pointer for the ioctl
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file for the ioctl call
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_dirtyfb_ioctl.description`:
 
@@ -225,8 +240,9 @@ drm_fb_release
 
     remove and free the FBs on this file
 
-    :param struct drm_file \*priv:
+    :param priv:
         drm file for the ioctl
+    :type priv: struct drm_file \*
 
 .. _`drm_fb_release.description`:
 
@@ -253,14 +269,17 @@ drm_framebuffer_init
 
     initialize a framebuffer
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         framebuffer to be initialized
+    :type fb: struct drm_framebuffer \*
 
-    :param const struct drm_framebuffer_funcs \*funcs:
+    :param funcs:
         ... with these functions
+    :type funcs: const struct drm_framebuffer_funcs \*
 
 .. _`drm_framebuffer_init.description`:
 
@@ -296,14 +315,17 @@ drm_framebuffer_lookup
 
     look up a drm framebuffer and grab a reference
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file to check for lease against.
+    :type file_priv: struct drm_file \*
 
-    :param uint32_t id:
+    :param id:
         id of the fb object
+    :type id: uint32_t
 
 .. _`drm_framebuffer_lookup.description`:
 
@@ -323,8 +345,9 @@ drm_framebuffer_unregister_private
 
     unregister a private fb from the lookup idr
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         fb to unregister
+    :type fb: struct drm_framebuffer \*
 
 .. _`drm_framebuffer_unregister_private.description`:
 
@@ -355,8 +378,9 @@ drm_framebuffer_cleanup
 
     remove a framebuffer object
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         framebuffer to remove
+    :type fb: struct drm_framebuffer \*
 
 .. _`drm_framebuffer_cleanup.description`:
 
@@ -385,8 +409,9 @@ drm_framebuffer_remove
 
     remove and unreference a framebuffer object
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         framebuffer to remove
+    :type fb: struct drm_framebuffer \*
 
 .. _`drm_framebuffer_remove.description`:
 
@@ -410,14 +435,17 @@ drm_framebuffer_plane_width
 
     width of the plane given the first plane
 
-    :param int width:
+    :param width:
         width of the first plane
+    :type width: int
 
-    :param const struct drm_framebuffer \*fb:
+    :param fb:
         the framebuffer
+    :type fb: const struct drm_framebuffer \*
 
-    :param int plane:
+    :param plane:
         plane index
+    :type plane: int
 
 .. _`drm_framebuffer_plane_width.return`:
 
@@ -435,14 +463,17 @@ drm_framebuffer_plane_height
 
     height of the plane given the first plane
 
-    :param int height:
+    :param height:
         height of the first plane
+    :type height: int
 
-    :param const struct drm_framebuffer \*fb:
+    :param fb:
         the framebuffer
+    :type fb: const struct drm_framebuffer \*
 
-    :param int plane:
+    :param plane:
         plane index
+    :type plane: int
 
 .. _`drm_framebuffer_plane_height.return`:
 

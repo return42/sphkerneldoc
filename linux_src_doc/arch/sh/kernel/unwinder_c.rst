@@ -10,8 +10,9 @@ select_unwinder
 
     Select the best registered stack unwinder.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`select_unwinder.description`:
 
@@ -32,8 +33,9 @@ unwinder_register
 
     Used to install new stack unwinder
 
-    :param struct unwinder \*u:
+    :param u:
         unwinder to be registered
+    :type u: struct unwinder \*
 
 .. _`unwinder_register.description`:
 

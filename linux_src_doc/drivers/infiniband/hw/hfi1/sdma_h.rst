@@ -145,8 +145,9 @@ sdma_empty
 
     idle engine test
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         *undescribed*
+    :type sde: struct sdma_engine \*
 
 .. _`sdma_empty.description`:
 
@@ -171,8 +172,9 @@ sdma_running
 
     state suitability test
 
-    :param struct sdma_engine \*engine:
+    :param engine:
         sdma engine
+    :type engine: struct sdma_engine \*
 
 .. _`sdma_running.description`:
 
@@ -198,26 +200,33 @@ sdma_txinit_ahg
 
     initialize an sdma_txreq struct with AHG
 
-    :param struct sdma_txreq \*tx:
+    :param tx:
         tx request to initialize
+    :type tx: struct sdma_txreq \*
 
-    :param u16 flags:
+    :param flags:
         flags to key last descriptor additions
+    :type flags: u16
 
-    :param u16 tlen:
+    :param tlen:
         total packet length (pbc + headers + data)
+    :type tlen: u16
 
-    :param u8 ahg_entry:
+    :param ahg_entry:
         ahg entry to use  (0 - 31)
+    :type ahg_entry: u8
 
-    :param u8 num_ahg:
+    :param num_ahg:
         ahg descriptor for first descriptor (0 - 9)
+    :type num_ahg: u8
 
-    :param u32 \*ahg:
+    :param ahg:
         array of AHG descriptors (up to 9 entries)
+    :type ahg: u32 \*
 
-    :param u8 ahg_hlen:
+    :param ahg_hlen:
         number of bytes from ASIC entry to use
+    :type ahg_hlen: u8
 
     :param void (\*cb)(struct sdma_txreq \*, int):
         callback
@@ -276,14 +285,17 @@ sdma_txinit
 
     initialize an sdma_txreq struct (no AHG)
 
-    :param struct sdma_txreq \*tx:
+    :param tx:
         tx request to initialize
+    :type tx: struct sdma_txreq \*
 
-    :param u16 flags:
+    :param flags:
         flags to key last descriptor additions
+    :type flags: u16
 
-    :param u16 tlen:
+    :param tlen:
         total packet length (pbc + headers + data)
+    :type tlen: u16
 
     :param void (\*cb)(struct sdma_txreq \*, int):
         callback pointer
@@ -325,20 +337,25 @@ sdma_txadd_page
 
     add a page to the sdma_txreq
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the device to use for mapping
+    :type dd: struct hfi1_devdata \*
 
-    :param struct sdma_txreq \*tx:
+    :param tx:
         tx request to which the page is added
+    :type tx: struct sdma_txreq \*
 
-    :param struct page \*page:
+    :param page:
         page to map
+    :type page: struct page \*
 
-    :param unsigned long offset:
+    :param offset:
         offset within the page
+    :type offset: unsigned long
 
-    :param u16 len:
+    :param len:
         length in bytes
+    :type len: u16
 
 .. _`sdma_txadd_page.description`:
 
@@ -366,17 +383,21 @@ sdma_txadd_daddr
 
     add a dma address to the sdma_txreq
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the device to use for mapping
+    :type dd: struct hfi1_devdata \*
 
-    :param struct sdma_txreq \*tx:
+    :param tx:
         sdma_txreq to which the page is added
+    :type tx: struct sdma_txreq \*
 
-    :param dma_addr_t addr:
+    :param addr:
         dma address mapped by caller
+    :type addr: dma_addr_t
 
-    :param u16 len:
+    :param len:
         length in bytes
+    :type len: u16
 
 .. _`sdma_txadd_daddr.description`:
 
@@ -404,17 +425,21 @@ sdma_txadd_kvaddr
 
     add a kernel virtual address to sdma_txreq
 
-    :param struct hfi1_devdata \*dd:
+    :param dd:
         the device to use for mapping
+    :type dd: struct hfi1_devdata \*
 
-    :param struct sdma_txreq \*tx:
+    :param tx:
         sdma_txreq to which the page is added
+    :type tx: struct sdma_txreq \*
 
-    :param void \*kvaddr:
+    :param kvaddr:
         the kernel virtual address
+    :type kvaddr: void \*
 
-    :param u16 len:
+    :param len:
         length in bytes
+    :type len: u16
 
 .. _`sdma_txadd_kvaddr.description`:
 
@@ -443,17 +468,21 @@ sdma_build_ahg_descriptor
 
     build ahg descriptor \ ``data``\  \ ``dwindex``\  \ ``startbit``\  \ ``bits``\ 
 
-    :param u16 data:
+    :param data:
         *undescribed*
+    :type data: u16
 
-    :param u8 dwindex:
+    :param dwindex:
         *undescribed*
+    :type dwindex: u8
 
-    :param u8 startbit:
+    :param startbit:
         *undescribed*
+    :type startbit: u8
 
-    :param u8 bits:
+    :param bits:
         *undescribed*
+    :type bits: u8
 
 .. _`sdma_build_ahg_descriptor.description`:
 
@@ -471,14 +500,17 @@ sdma_progress
 
     use seq number of detect head progress
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         sdma_engine to check
+    :type sde: struct sdma_engine \*
 
-    :param unsigned seq:
+    :param seq:
         base seq count
+    :type seq: unsigned
 
-    :param struct sdma_txreq \*tx:
+    :param tx:
         txreq for which we need to check descriptor availability
+    :type tx: struct sdma_txreq \*
 
 .. _`sdma_progress.description`:
 
@@ -502,11 +534,13 @@ sdma_iowait_schedule
 
     initialize wait structure
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         sdma_engine to schedule
+    :type sde: struct sdma_engine \*
 
-    :param struct iowait \*wait:
+    :param wait:
         wait struct to schedule
+    :type wait: struct iowait \*
 
 .. _`sdma_iowait_schedule.description`:
 
@@ -623,8 +657,9 @@ sdma_engine_progress_schedule
 
     schedule progress on engine
 
-    :param struct sdma_engine \*sde:
+    :param sde:
         sdma_engine to schedule progress
+    :type sde: struct sdma_engine \*
 
 .. _`sdma_engine_progress_schedule.description`:
 

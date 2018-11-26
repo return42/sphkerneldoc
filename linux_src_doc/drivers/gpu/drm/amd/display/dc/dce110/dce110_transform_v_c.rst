@@ -10,11 +10,13 @@ program_overscan
 
     void program_overscan
 
-    :param struct dce_transform \*xfm_dce:
+    :param xfm_dce:
         *undescribed*
+    :type xfm_dce: struct dce_transform \*
 
-    :param const struct scaler_data \*data:
+    :param data:
         *undescribed*
+    :type data: const struct scaler_data \*
 
 .. _`program_overscan.purpose`:
 

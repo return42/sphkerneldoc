@@ -10,11 +10,13 @@ s3c_pm_runcheck
 
     helper to check a resource on restore.
 
-    :param struct resource \*res:
+    :param res:
         The resource to check
+    :type res: struct resource \*
 
-    :param u32 \*val:
+    :param val:
         *undescribed*
+    :type val: u32 \*
 
 .. _`s3c_pm_runcheck.description`:
 
@@ -35,8 +37,9 @@ s3c_pm_check_restore
 
     memory check called on resume
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`s3c_pm_check_restore.description`:
 
@@ -55,8 +58,9 @@ s3c_pm_check_cleanup
 
     free memory resources
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`s3c_pm_check_cleanup.description`:
 

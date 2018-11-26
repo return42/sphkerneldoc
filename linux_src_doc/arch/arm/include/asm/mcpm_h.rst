@@ -10,8 +10,9 @@ mcpm_is_available
 
     returns whether MCPM is initialized and available
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mcpm_is_available.description`:
 
@@ -29,11 +30,13 @@ mcpm_cpu_power_up
 
     make given CPU in given cluster runable
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU number within given cluster
+    :type cpu: unsigned int
 
-    :param unsigned int cluster:
+    :param cluster:
         cluster number for the CPU
+    :type cluster: unsigned int
 
 .. _`mcpm_cpu_power_up.description`:
 
@@ -62,8 +65,9 @@ mcpm_cpu_power_down
 
     power the calling CPU down
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mcpm_cpu_power_down.description`:
 
@@ -97,11 +101,13 @@ mcpm_wait_for_cpu_powerdown
 
     wait for a specified CPU to halt, and make sure it is powered off
 
-    :param unsigned int cpu:
+    :param cpu:
         CPU number within given cluster
+    :type cpu: unsigned int
 
-    :param unsigned int cluster:
+    :param cluster:
         cluster number for the CPU
+    :type cluster: unsigned int
 
 .. _`mcpm_wait_for_cpu_powerdown.description`:
 
@@ -129,8 +135,9 @@ mcpm_cpu_suspend
 
     bring the calling CPU in a suspended state
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mcpm_cpu_suspend.description`:
 
@@ -161,8 +168,9 @@ mcpm_cpu_powered_up
 
     housekeeping workafter a CPU has been powered up
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mcpm_cpu_powered_up.description`:
 
@@ -184,8 +192,9 @@ mcpm_platform_register
 
     register platform specific power methods
 
-    :param const struct mcpm_platform_ops \*ops:
+    :param ops:
         mcpm_platform_ops structure to register
+    :type ops: const struct mcpm_platform_ops \*
 
 .. _`mcpm_platform_register.description`:
 

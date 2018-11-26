@@ -108,14 +108,17 @@ IIO_ENUM
 
     Initialize enum extended channel attribute
 
-    :param  _name:
+    :param _name:
         Attribute name
+    :type _name: 
 
-    :param  _shared:
+    :param _shared:
         Whether the attribute is shared between all channels
+    :type _shared: 
 
-    :param  _e:
+    :param _e:
         Pointer to an iio_enum struct
+    :type _e: 
 
 .. _`iio_enum.description`:
 
@@ -133,11 +136,13 @@ IIO_ENUM_AVAILABLE
 
     Initialize enum available extended channel attribute
 
-    :param  _name:
+    :param _name:
         Attribute name ("_available" will be appended to the name)
+    :type _name: 
 
-    :param  _e:
+    :param _e:
         Pointer to an iio_enum struct
+    :type _e: 
 
 .. _`iio_enum_available.description`:
 
@@ -185,11 +190,13 @@ IIO_MOUNT_MATRIX
 
     Initialize mount matrix extended channel attribute
 
-    :param  _shared:
+    :param _shared:
         Whether the attribute is shared between all channels
+    :type _shared: 
 
-    :param  _get:
+    :param _get:
         Pointer to an iio_get_mount_matrix_t accessor
+    :type _get: 
 
 .. _`iio_event_spec`:
 
@@ -425,11 +432,13 @@ iio_channel_has_info
 
     Checks whether a channel supports a info attribute
 
-    :param const struct iio_chan_spec \*chan:
+    :param chan:
         The channel to be queried
+    :type chan: const struct iio_chan_spec \*
 
-    :param enum iio_chan_info_enum type:
+    :param type:
         Type of the info attribute to be checked
+    :type type: enum iio_chan_info_enum
 
 .. _`iio_channel_has_info.description`:
 
@@ -448,11 +457,13 @@ iio_channel_has_available
 
     Checks if a channel has an available attribute
 
-    :param const struct iio_chan_spec \*chan:
+    :param chan:
         The channel to be queried
+    :type chan: const struct iio_chan_spec \*
 
-    :param enum iio_chan_info_enum type:
+    :param type:
         Type of the available attribute to be checked
+    :type type: enum iio_chan_info_enum
 
 .. _`iio_channel_has_available.description`:
 
@@ -812,8 +823,9 @@ iio_device_register
 
     register a device with the IIO subsystem
 
-    :param  indio_dev:
+    :param indio_dev:
         Device structure filled by the device driver
+    :type indio_dev: 
 
 .. _`devm_iio_device_register`:
 
@@ -824,11 +836,13 @@ devm_iio_device_register
 
     Resource-managed \ :c:func:`iio_device_register`\ 
 
-    :param  dev:
+    :param dev:
         Device to allocate iio_dev for
+    :type dev: 
 
-    :param  indio_dev:
+    :param indio_dev:
         Device structure filled by the device driver
+    :type indio_dev: 
 
 .. _`devm_iio_device_register.description`:
 
@@ -859,8 +873,9 @@ iio_device_put
 
     reference counted deallocation of struct device
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure containing the device
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_device_get_clock`:
 
@@ -871,8 +886,9 @@ iio_device_get_clock
 
     Retrieve current timestamping clock for the device
 
-    :param const struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure containing the device
+    :type indio_dev: const struct iio_dev \*
 
 .. _`dev_to_iio_dev`:
 
@@ -883,8 +899,9 @@ dev_to_iio_dev
 
     Get IIO device struct from a device struct
 
-    :param struct device \*dev:
+    :param dev:
         The device embedded in the IIO device
+    :type dev: struct device \*
 
 .. _`dev_to_iio_dev.note`:
 
@@ -902,8 +919,9 @@ iio_device_get
 
     increment reference count for the device
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_device_get.return`:
 
@@ -921,11 +939,13 @@ iio_device_set_drvdata
 
     Set device driver data
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure
+    :type indio_dev: struct iio_dev \*
 
-    :param void \*data:
+    :param data:
         Driver specific data
+    :type data: void \*
 
 .. _`iio_device_set_drvdata.description`:
 
@@ -944,8 +964,9 @@ iio_device_get_drvdata
 
     Get device driver data
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_device_get_drvdata.description`:
 
@@ -963,8 +984,9 @@ iio_buffer_enabled
 
     helper function to test if the buffer is enabled
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure for device
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_get_debugfs_dentry`:
 
@@ -975,8 +997,9 @@ iio_get_debugfs_dentry
 
     helper function to get the debugfs_dentry
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         IIO device structure for device
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_degree_to_rad`:
 
@@ -987,8 +1010,9 @@ IIO_DEGREE_TO_RAD
 
     Convert degree to rad
 
-    :param  deg:
+    :param deg:
         A value in degree
+    :type deg: 
 
 .. _`iio_degree_to_rad.description`:
 
@@ -1006,8 +1030,9 @@ IIO_RAD_TO_DEGREE
 
     Convert rad to degree
 
-    :param  rad:
+    :param rad:
         A value in rad
+    :type rad: 
 
 .. _`iio_rad_to_degree.description`:
 
@@ -1025,8 +1050,9 @@ IIO_G_TO_M_S_2
 
     Convert g to meter / second**2
 
-    :param  g:
+    :param g:
         A value in g
+    :type g: 
 
 .. _`iio_g_to_m_s_2.description`:
 
@@ -1044,8 +1070,9 @@ IIO_M_S_2_TO_G
 
     Convert meter / second**2 to g
 
-    :param  ms2:
+    :param ms2:
         A value in meter / second**2
+    :type ms2: 
 
 .. _`iio_m_s_2_to_g.description`:
 

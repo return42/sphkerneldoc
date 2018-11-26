@@ -10,14 +10,17 @@ bit_map_string_get
 
     find and set a bit string in bit map.
 
-    :param struct bit_map \*t:
+    :param t:
         the bit map.
+    :type t: struct bit_map \*
 
-    :param int len:
+    :param len:
         requested string length
+    :type len: int
 
-    :param int align:
+    :param align:
         requested alignment
+    :type align: int
 
 .. _`bit_map_string_get.description`:
 

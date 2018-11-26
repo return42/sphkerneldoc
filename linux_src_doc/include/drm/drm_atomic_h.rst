@@ -366,8 +366,9 @@ drm_crtc_commit_get
 
     acquire a reference to the CRTC commit
 
-    :param struct drm_crtc_commit \*commit:
+    :param commit:
         CRTC commit
+    :type commit: struct drm_crtc_commit \*
 
 .. _`drm_crtc_commit_get.description`:
 
@@ -392,8 +393,9 @@ drm_crtc_commit_put
 
     release a reference to the CRTC commmit
 
-    :param struct drm_crtc_commit \*commit:
+    :param commit:
         CRTC commit
+    :type commit: struct drm_crtc_commit \*
 
 .. _`drm_crtc_commit_put.description`:
 
@@ -412,8 +414,9 @@ drm_atomic_state_get
 
     acquire a reference to the atomic state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         The atomic state
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_state_get.description`:
 
@@ -431,8 +434,9 @@ drm_atomic_state_put
 
     release a reference to the atomic state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         The atomic state
+    :type state: struct drm_atomic_state \*
 
 .. _`drm_atomic_state_put.description`:
 
@@ -451,11 +455,13 @@ drm_atomic_get_existing_crtc_state
 
     get crtc state, if it exists
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         crtc to grab
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_atomic_get_existing_crtc_state.description`:
 
@@ -477,11 +483,13 @@ drm_atomic_get_old_crtc_state
 
     get old crtc state, if it exists
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         crtc to grab
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_atomic_get_old_crtc_state.description`:
 
@@ -500,11 +508,13 @@ drm_atomic_get_new_crtc_state
 
     get new crtc state, if it exists
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         crtc to grab
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_atomic_get_new_crtc_state.description`:
 
@@ -523,11 +533,13 @@ drm_atomic_get_existing_plane_state
 
     get plane state, if it exists
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to grab
+    :type plane: struct drm_plane \*
 
 .. _`drm_atomic_get_existing_plane_state.description`:
 
@@ -549,11 +561,13 @@ drm_atomic_get_old_plane_state
 
     get plane state, if it exists
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to grab
+    :type plane: struct drm_plane \*
 
 .. _`drm_atomic_get_old_plane_state.description`:
 
@@ -572,11 +586,13 @@ drm_atomic_get_new_plane_state
 
     get plane state, if it exists
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to grab
+    :type plane: struct drm_plane \*
 
 .. _`drm_atomic_get_new_plane_state.description`:
 
@@ -595,11 +611,13 @@ drm_atomic_get_existing_connector_state
 
     get connector state, if it exists
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to grab
+    :type connector: struct drm_connector \*
 
 .. _`drm_atomic_get_existing_connector_state.description`:
 
@@ -621,11 +639,13 @@ drm_atomic_get_old_connector_state
 
     get connector state, if it exists
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to grab
+    :type connector: struct drm_connector \*
 
 .. _`drm_atomic_get_old_connector_state.description`:
 
@@ -644,11 +664,13 @@ drm_atomic_get_new_connector_state
 
     get connector state, if it exists
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to grab
+    :type connector: struct drm_connector \*
 
 .. _`drm_atomic_get_new_connector_state.description`:
 
@@ -667,11 +689,13 @@ __drm_atomic_get_current_plane_state
 
     get current plane state
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         global atomic state object
+    :type state: struct drm_atomic_state \*
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to grab
+    :type plane: struct drm_plane \*
 
 .. _`__drm_atomic_get_current_plane_state.description`:
 
@@ -716,22 +740,27 @@ for_each_oldnew_connector_in_state
 
     iterate over all connectors in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  connector:
+    :param connector:
         \ :c:type:`struct drm_connector <drm_connector>`\  iteration cursor
+    :type connector: 
 
-    :param  old_connector_state:
+    :param old_connector_state:
         \ :c:type:`struct drm_connector_state <drm_connector_state>`\  iteration cursor for the
         old state
+    :type old_connector_state: 
 
-    :param  new_connector_state:
+    :param new_connector_state:
         \ :c:type:`struct drm_connector_state <drm_connector_state>`\  iteration cursor for the
         new state
+    :type new_connector_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_oldnew_connector_in_state.description`:
 
@@ -751,18 +780,22 @@ for_each_old_connector_in_state
 
     iterate over all connectors in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  connector:
+    :param connector:
         \ :c:type:`struct drm_connector <drm_connector>`\  iteration cursor
+    :type connector: 
 
-    :param  old_connector_state:
+    :param old_connector_state:
         \ :c:type:`struct drm_connector_state <drm_connector_state>`\  iteration cursor for the
         old state
+    :type old_connector_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_old_connector_in_state.description`:
 
@@ -782,18 +815,22 @@ for_each_new_connector_in_state
 
     iterate over all connectors in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  connector:
+    :param connector:
         \ :c:type:`struct drm_connector <drm_connector>`\  iteration cursor
+    :type connector: 
 
-    :param  new_connector_state:
+    :param new_connector_state:
         \ :c:type:`struct drm_connector_state <drm_connector_state>`\  iteration cursor for the
         new state
+    :type new_connector_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_new_connector_in_state.description`:
 
@@ -813,20 +850,25 @@ for_each_oldnew_crtc_in_state
 
     iterate over all CRTCs in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  crtc:
+    :param crtc:
         \ :c:type:`struct drm_crtc <drm_crtc>`\  iteration cursor
+    :type crtc: 
 
-    :param  old_crtc_state:
+    :param old_crtc_state:
         \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  iteration cursor for the old state
+    :type old_crtc_state: 
 
-    :param  new_crtc_state:
+    :param new_crtc_state:
         \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  iteration cursor for the new state
+    :type new_crtc_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_oldnew_crtc_in_state.description`:
 
@@ -846,17 +888,21 @@ for_each_old_crtc_in_state
 
     iterate over all CRTCs in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  crtc:
+    :param crtc:
         \ :c:type:`struct drm_crtc <drm_crtc>`\  iteration cursor
+    :type crtc: 
 
-    :param  old_crtc_state:
+    :param old_crtc_state:
         \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  iteration cursor for the old state
+    :type old_crtc_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_old_crtc_in_state.description`:
 
@@ -876,17 +922,21 @@ for_each_new_crtc_in_state
 
     iterate over all CRTCs in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  crtc:
+    :param crtc:
         \ :c:type:`struct drm_crtc <drm_crtc>`\  iteration cursor
+    :type crtc: 
 
-    :param  new_crtc_state:
+    :param new_crtc_state:
         \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  iteration cursor for the new state
+    :type new_crtc_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_new_crtc_in_state.description`:
 
@@ -906,20 +956,25 @@ for_each_oldnew_plane_in_state
 
     iterate over all planes in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  plane:
+    :param plane:
         \ :c:type:`struct drm_plane <drm_plane>`\  iteration cursor
+    :type plane: 
 
-    :param  old_plane_state:
+    :param old_plane_state:
         \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the old state
+    :type old_plane_state: 
 
-    :param  new_plane_state:
+    :param new_plane_state:
         \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the new state
+    :type new_plane_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_oldnew_plane_in_state.description`:
 
@@ -939,20 +994,25 @@ for_each_oldnew_plane_in_state_reverse
 
     iterate over all planes in an atomic update in reverse order
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  plane:
+    :param plane:
         \ :c:type:`struct drm_plane <drm_plane>`\  iteration cursor
+    :type plane: 
 
-    :param  old_plane_state:
+    :param old_plane_state:
         \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the old state
+    :type old_plane_state: 
 
-    :param  new_plane_state:
+    :param new_plane_state:
         \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the new state
+    :type new_plane_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_oldnew_plane_in_state_reverse.description`:
 
@@ -972,17 +1032,21 @@ for_each_old_plane_in_state
 
     iterate over all planes in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  plane:
+    :param plane:
         \ :c:type:`struct drm_plane <drm_plane>`\  iteration cursor
+    :type plane: 
 
-    :param  old_plane_state:
+    :param old_plane_state:
         \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the old state
+    :type old_plane_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_old_plane_in_state.description`:
 
@@ -1002,17 +1066,21 @@ for_each_new_plane_in_state
 
     iterate over all planes in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  plane:
+    :param plane:
         \ :c:type:`struct drm_plane <drm_plane>`\  iteration cursor
+    :type plane: 
 
-    :param  new_plane_state:
+    :param new_plane_state:
         \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the new state
+    :type new_plane_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_new_plane_in_state.description`:
 
@@ -1032,20 +1100,25 @@ for_each_oldnew_private_obj_in_state
 
     iterate over all private objects in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  obj:
+    :param obj:
         \ :c:type:`struct drm_private_obj <drm_private_obj>`\  iteration cursor
+    :type obj: 
 
-    :param  old_obj_state:
+    :param old_obj_state:
         \ :c:type:`struct drm_private_state <drm_private_state>`\  iteration cursor for the old state
+    :type old_obj_state: 
 
-    :param  new_obj_state:
+    :param new_obj_state:
         \ :c:type:`struct drm_private_state <drm_private_state>`\  iteration cursor for the new state
+    :type new_obj_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_oldnew_private_obj_in_state.description`:
 
@@ -1065,17 +1138,21 @@ for_each_old_private_obj_in_state
 
     iterate over all private objects in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  obj:
+    :param obj:
         \ :c:type:`struct drm_private_obj <drm_private_obj>`\  iteration cursor
+    :type obj: 
 
-    :param  old_obj_state:
+    :param old_obj_state:
         \ :c:type:`struct drm_private_state <drm_private_state>`\  iteration cursor for the old state
+    :type old_obj_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_old_private_obj_in_state.description`:
 
@@ -1095,17 +1172,21 @@ for_each_new_private_obj_in_state
 
     iterate over all private objects in an atomic update
 
-    :param  __state:
+    :param __state:
         \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
+    :type __state: 
 
-    :param  obj:
+    :param obj:
         \ :c:type:`struct drm_private_obj <drm_private_obj>`\  iteration cursor
+    :type obj: 
 
-    :param  new_obj_state:
+    :param new_obj_state:
         \ :c:type:`struct drm_private_state <drm_private_state>`\  iteration cursor for the new state
+    :type new_obj_state: 
 
-    :param  __i:
+    :param __i:
         int iteration cursor, for macro-internal use
+    :type __i: 
 
 .. _`for_each_new_private_obj_in_state.description`:
 
@@ -1125,8 +1206,9 @@ drm_atomic_crtc_needs_modeset
 
     compute combined modeset need
 
-    :param const struct drm_crtc_state \*state:
+    :param state:
         \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  for the CRTC
+    :type state: const struct drm_crtc_state \*
 
 .. _`drm_atomic_crtc_needs_modeset.description`:
 

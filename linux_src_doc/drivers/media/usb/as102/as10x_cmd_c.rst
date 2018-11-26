@@ -10,8 +10,9 @@ as10x_cmd_turn_on
 
     send turn on command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
 .. _`as10x_cmd_turn_on.description`:
 
@@ -29,8 +30,9 @@ as10x_cmd_turn_off
 
     send turn off command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
 .. _`as10x_cmd_turn_off.description`:
 
@@ -48,11 +50,13 @@ as10x_cmd_set_tune
 
     send set tune command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
-    :param struct as10x_tune_args \*ptune:
+    :param ptune:
         tune parameters
+    :type ptune: struct as10x_tune_args \*
 
 .. _`as10x_cmd_set_tune.description`:
 
@@ -70,11 +74,13 @@ as10x_cmd_get_tune_status
 
     send get tune status command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
-    :param struct as10x_tune_status \*pstatus:
+    :param pstatus:
         pointer to updated status structure of the current tune
+    :type pstatus: struct as10x_tune_status \*
 
 .. _`as10x_cmd_get_tune_status.description`:
 
@@ -92,11 +98,13 @@ as10x_cmd_get_tps
 
     send get TPS command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x handle
+    :type adap: struct as10x_bus_adapter_t \*
 
-    :param struct as10x_tps \*ptps:
+    :param ptps:
         pointer to TPS parameters structure
+    :type ptps: struct as10x_tps \*
 
 .. _`as10x_cmd_get_tps.description`:
 
@@ -114,11 +122,13 @@ as10x_cmd_get_demod_stats
 
     send get demod stats command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
-    :param struct as10x_demod_stats \*pdemod_stats:
+    :param pdemod_stats:
         pointer to demod stats parameters structure
+    :type pdemod_stats: struct as10x_demod_stats \*
 
 .. _`as10x_cmd_get_demod_stats.description`:
 
@@ -136,12 +146,14 @@ as10x_cmd_get_impulse_resp
 
     send get impulse response command to AS10x
 
-    :param struct as10x_bus_adapter_t \*adap:
+    :param adap:
         pointer to AS10x bus adapter
+    :type adap: struct as10x_bus_adapter_t \*
 
-    :param uint8_t \*is_ready:
+    :param is_ready:
         pointer to value indicating when impulse
         response data is ready
+    :type is_ready: uint8_t \*
 
 .. _`as10x_cmd_get_impulse_resp.description`:
 
@@ -159,14 +171,17 @@ as10x_cmd_build
 
     build AS10x command header
 
-    :param struct as10x_cmd_t \*pcmd:
+    :param pcmd:
         pointer to AS10x command buffer
+    :type pcmd: struct as10x_cmd_t \*
 
-    :param uint16_t xid:
+    :param xid:
         sequence id of the command
+    :type xid: uint16_t
 
-    :param uint16_t cmd_len:
+    :param cmd_len:
         length of the command
+    :type cmd_len: uint16_t
 
 .. _`as10x_rsp_parse`:
 
@@ -177,11 +192,13 @@ as10x_rsp_parse
 
     Parse command response
 
-    :param struct as10x_cmd_t \*prsp:
+    :param prsp:
         pointer to AS10x command buffer
+    :type prsp: struct as10x_cmd_t \*
 
-    :param uint16_t proc_id:
+    :param proc_id:
         id of the command
+    :type proc_id: uint16_t
 
 .. _`as10x_rsp_parse.description`:
 

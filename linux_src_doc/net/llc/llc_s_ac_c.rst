@@ -10,11 +10,13 @@ llc_sap_action_unitdata_ind
 
     forward UI PDU to network layer
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the event to forward
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_action_unitdata_ind.description`:
 
@@ -33,11 +35,13 @@ llc_sap_action_send_ui
 
     sends UI PDU resp to UNITDATA REQ to MAC layer
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the event to send
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_action_send_ui.description`:
 
@@ -57,11 +61,13 @@ llc_sap_action_send_xid_c
 
     send XID PDU as response to XID REQ
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the event to send
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_action_send_xid_c.description`:
 
@@ -81,11 +87,13 @@ llc_sap_action_send_xid_r
 
     send XID PDU resp to MAC for received XID
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the event to send
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_action_send_xid_r.description`:
 
@@ -104,11 +112,13 @@ llc_sap_action_send_test_c
 
     send TEST PDU to MAC in resp to TEST REQ
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the event to send
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_action_send_test_c.description`:
 
@@ -128,11 +138,13 @@ llc_sap_action_report_status
 
     report data link status to layer mgmt
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the event to send
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_action_report_status.description`:
 
@@ -151,11 +163,13 @@ llc_sap_action_xid_ind
 
     send XID PDU resp to net layer via XID IND
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the event to send
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_action_xid_ind.description`:
 
@@ -174,11 +188,13 @@ llc_sap_action_test_ind
 
     send TEST PDU to net layer via TEST IND
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP
+    :type sap: struct llc_sap \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the event to send
+    :type skb: struct sk_buff \*
 
 .. _`llc_sap_action_test_ind.description`:
 

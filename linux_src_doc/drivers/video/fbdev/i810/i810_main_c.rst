@@ -10,11 +10,13 @@ i810_screen_off
 
     turns off/on display
 
-    :param u8 __iomem \*mmio:
+    :param mmio:
         address of register space
+    :type mmio: u8 __iomem \*
 
-    :param u8 mode:
+    :param mode:
         on or off
+    :type mode: u8
 
 .. _`i810_screen_off.description`:
 
@@ -32,11 +34,13 @@ i810_dram_off
 
     turns off/on dram refresh
 
-    :param u8 __iomem \*mmio:
+    :param mmio:
         address of register space
+    :type mmio: u8 __iomem \*
 
-    :param u8 mode:
+    :param mode:
         on or off
+    :type mode: u8
 
 .. _`i810_dram_off.description`:
 
@@ -55,11 +59,13 @@ i810_protect_regs
 
     allows rw/ro mode of certain VGA registers
 
-    :param u8 __iomem \*mmio:
+    :param mmio:
         address of register space
+    :type mmio: u8 __iomem \*
 
-    :param int mode:
+    :param mode:
         protect/unprotect
+    :type mode: int
 
 .. _`i810_protect_regs.description`:
 
@@ -78,8 +84,9 @@ i810_load_pll
 
     loads values for the hardware PLL clock
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. _`i810_load_pll.description`:
 
@@ -97,8 +104,9 @@ i810_load_vga
 
     load standard VGA registers
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. _`i810_load_vga.description`:
 
@@ -116,8 +124,9 @@ i810_load_vgax
 
     load extended VGA registers
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. _`i810_load_vgax.description`:
 
@@ -135,8 +144,9 @@ i810_load_2d
 
     load grahics registers
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. _`i810_load_2d.description`:
 
@@ -154,8 +164,9 @@ i810_hires
 
     enables high resolution mode
 
-    :param u8 __iomem \*mmio:
+    :param mmio:
         address of register space
+    :type mmio: u8 __iomem \*
 
 .. _`i810_load_pitch`:
 
@@ -166,8 +177,9 @@ i810_load_pitch
 
     loads the characters per line of the display
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. _`i810_load_pitch.description`:
 
@@ -185,8 +197,9 @@ i810_load_color
 
     loads the color depth of the display
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. _`i810_load_color.description`:
 
@@ -204,8 +217,9 @@ i810_load_regs
 
     loads all registers for the mode
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. _`i810_load_regs.description`:
 
@@ -223,14 +237,17 @@ get_line_length
 
     calculates buffer pitch in bytes
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
-    :param int xres_virtual:
+    :param xres_virtual:
         virtual resolution of the frame
+    :type xres_virtual: int
 
-    :param int bpp:
+    :param bpp:
         bits per pixel
+    :type bpp: int
 
 .. _`get_line_length.description`:
 
@@ -248,17 +265,21 @@ i810_calc_dclk
 
     calculates the P, M, and N values of a pixelclock value
 
-    :param u32 freq:
+    :param freq:
         target pixelclock in picoseconds
+    :type freq: u32
 
-    :param u32 \*m:
+    :param m:
         where to write M register
+    :type m: u32 \*
 
-    :param u32 \*n:
+    :param n:
         where to write N register
+    :type n: u32 \*
 
-    :param u32 \*p:
+    :param p:
         where to write P register
+    :type p: u32 \*
 
 .. _`i810_calc_dclk.description`:
 
@@ -279,11 +300,13 @@ i810_enable_cursor
 
     show or hide the hardware cursor
 
-    :param u8 __iomem \*mmio:
+    :param mmio:
         address of register space
+    :type mmio: u8 __iomem \*
 
-    :param int mode:
+    :param mode:
         show (1) or hide (0)
+    :type mode: int
 
 .. _`i810_enable_cursor.description`:
 
@@ -301,8 +324,9 @@ i810_init_cursor
 
     initializes the cursor
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. _`i810_init_cursor.description`:
 
@@ -320,8 +344,9 @@ i810_round_off
 
     Round off values to capability of hardware
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         pointer to fb_var_screeninfo structure
+    :type var: struct fb_var_screeninfo \*
 
 .. _`i810_round_off.description`:
 
@@ -341,8 +366,9 @@ set_color_bitfields
 
     sets rgba fields
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         pointer to fb_var_screeninfo
+    :type var: struct fb_var_screeninfo \*
 
 .. _`set_color_bitfields.description`:
 
@@ -362,11 +388,13 @@ i810_check_params
 
     check if contents in var are valid
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         pointer to fb_var_screeninfo
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to fb_info
+    :type info: struct fb_info \*
 
 .. _`i810_check_params.description`:
 
@@ -386,11 +414,13 @@ encode_fix
 
     fill up fb_fix_screeninfo structure
 
-    :param struct fb_fix_screeninfo \*fix:
+    :param fix:
         pointer to fb_fix_screeninfo
+    :type fix: struct fb_fix_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to fb_info
+    :type info: struct fb_info \*
 
 .. _`encode_fix.description`:
 
@@ -408,11 +438,13 @@ decode_var
 
     modify par according to contents of var
 
-    :param const struct fb_var_screeninfo \*var:
+    :param var:
         pointer to fb_var_screeninfo
+    :type var: const struct fb_var_screeninfo \*
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par
+    :type par: struct i810fb_par \*
 
 .. _`decode_var.description`:
 
@@ -431,23 +463,29 @@ i810fb_getcolreg
 
     gets red, green and blue values of the hardware DAC
 
-    :param u8 regno:
+    :param regno:
         DAC index
+    :type regno: u8
 
-    :param u8 \*red:
+    :param red:
         red
+    :type red: u8 \*
 
-    :param u8 \*green:
+    :param green:
         green
+    :type green: u8 \*
 
-    :param u8 \*blue:
+    :param blue:
         blue
+    :type blue: u8 \*
 
-    :param u8 \*transp:
+    :param transp:
         transparency (alpha)
+    :type transp: u8 \*
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to fb_info
+    :type info: struct fb_info \*
 
 .. _`i810fb_getcolreg.description`:
 
@@ -464,8 +502,9 @@ i810_init_monspecs
 
 .. c:function:: void i810_init_monspecs(struct fb_info *info)
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to device specific info structure
+    :type info: struct fb_info \*
 
 .. _`i810_init_monspecs.description`:
 
@@ -484,11 +523,13 @@ i810_init_defaults
 
     initializes default values to use
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
-    :param struct fb_info \*info:
+    :param info:
         pointer to current fb_info structure
+    :type info: struct fb_info \*
 
 .. _`i810_init_device`:
 
@@ -499,8 +540,9 @@ i810_init_device
 
     initialize device
 
-    :param struct i810fb_par \*par:
+    :param par:
         pointer to i810fb_par structure
+    :type par: struct i810fb_par \*
 
 .. This file was automatic generated / don't edit.
 

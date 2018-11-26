@@ -10,8 +10,9 @@ r600_cs_packet_parse_vline
 
     parse userspace VLINE packet
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         *undescribed*
+    :type p: struct radeon_cs_parser \*
 
 .. _`r600_cs_packet_parse_vline.description`:
 
@@ -32,14 +33,17 @@ r600_cs_common_vline_parse
 
     common vline parser
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         *undescribed*
+    :type p: struct radeon_cs_parser \*
 
-    :param uint32_t \*vline_start_end:
+    :param vline_start_end:
         table of vline_start_end registers
+    :type vline_start_end: uint32_t \*
 
-    :param uint32_t \*vline_status:
+    :param vline_status:
         table of vline_status registers
+    :type vline_status: uint32_t \*
 
 .. _`r600_cs_common_vline_parse.description`:
 
@@ -70,14 +74,17 @@ r600_cs_check_reg
 
     check if register is authorized or not
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         *undescribed*
+    :type p: struct radeon_cs_parser \*
 
-    :param u32 reg:
+    :param reg:
         register we are testing
+    :type reg: u32
 
-    :param u32 idx:
+    :param idx:
         index into the cs buffer
+    :type idx: u32
 
 .. _`r600_cs_check_reg.description`:
 
@@ -97,26 +104,33 @@ r600_check_texture_resource
 
     check if register is authorized or not
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         parser structure holding parsing context
+    :type p: struct radeon_cs_parser \*
 
-    :param u32 idx:
+    :param idx:
         index into the cs buffer
+    :type idx: u32
 
-    :param struct radeon_bo \*texture:
+    :param texture:
         texture's bo structure
+    :type texture: struct radeon_bo \*
 
-    :param struct radeon_bo \*mipmap:
+    :param mipmap:
         mipmap's bo structure
+    :type mipmap: struct radeon_bo \*
 
-    :param u64 base_offset:
+    :param base_offset:
         *undescribed*
+    :type base_offset: u64
 
-    :param u64 mip_offset:
+    :param mip_offset:
         *undescribed*
+    :type mip_offset: u64
 
-    :param u32 tiling_flags:
+    :param tiling_flags:
         *undescribed*
+    :type tiling_flags: u32
 
 .. _`r600_check_texture_resource.description`:
 
@@ -135,11 +149,13 @@ r600_dma_cs_next_reloc
 
     parse next reloc
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         parser structure holding parsing context.
+    :type p: struct radeon_cs_parser \*
 
-    :param struct radeon_bo_list \*\*cs_reloc:
+    :param cs_reloc:
         reloc informations
+    :type cs_reloc: struct radeon_bo_list \*\*
 
 .. _`r600_dma_cs_next_reloc.description`:
 
@@ -158,8 +174,9 @@ r600_dma_cs_parse
 
     parse the DMA IB
 
-    :param struct radeon_cs_parser \*p:
+    :param p:
         parser structure holding parsing context.
+    :type p: struct radeon_cs_parser \*
 
 .. _`r600_dma_cs_parse.description`:
 

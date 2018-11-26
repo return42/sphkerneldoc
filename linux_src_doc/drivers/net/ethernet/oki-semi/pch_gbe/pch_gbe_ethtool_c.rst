@@ -10,11 +10,13 @@ pch_gbe_get_link_ksettings
 
     Get device-specific settings
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_link_ksettings \*ecmd:
+    :param ecmd:
         Ethtool command
+    :type ecmd: struct ethtool_link_ksettings \*
 
 .. _`pch_gbe_get_link_ksettings.return`:
 
@@ -39,11 +41,13 @@ pch_gbe_set_link_ksettings
 
     Set device-specific settings
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param const struct ethtool_link_ksettings \*ecmd:
+    :param ecmd:
         Ethtool command
+    :type ecmd: const struct ethtool_link_ksettings \*
 
 .. _`pch_gbe_set_link_ksettings.return`:
 
@@ -68,8 +72,9 @@ pch_gbe_get_regs_len
 
     Report the size of device registers
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`pch_gbe_get_regs_len.return`:
 
@@ -87,11 +92,13 @@ pch_gbe_get_drvinfo
 
     Report driver information
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_drvinfo \*drvinfo:
+    :param drvinfo:
         Driver information structure
+    :type drvinfo: struct ethtool_drvinfo \*
 
 .. _`pch_gbe_get_regs`:
 
@@ -102,14 +109,17 @@ pch_gbe_get_regs
 
     Get device registers
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_regs \*regs:
+    :param regs:
         Ethtool register structure
+    :type regs: struct ethtool_regs \*
 
-    :param void \*p:
+    :param p:
         Buffer pointer of read device register date
+    :type p: void \*
 
 .. _`pch_gbe_get_wol`:
 
@@ -120,11 +130,13 @@ pch_gbe_get_wol
 
     Report whether Wake-on-Lan is enabled
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_wolinfo \*wol:
+    :param wol:
         Wake-on-Lan information
+    :type wol: struct ethtool_wolinfo \*
 
 .. _`pch_gbe_set_wol`:
 
@@ -135,11 +147,13 @@ pch_gbe_set_wol
 
     Turn Wake-on-Lan on or off
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_wolinfo \*wol:
+    :param wol:
         Pointer of wake-on-Lan information straucture
+    :type wol: struct ethtool_wolinfo \*
 
 .. _`pch_gbe_set_wol.return`:
 
@@ -164,8 +178,9 @@ pch_gbe_nway_reset
 
     Restart autonegotiation
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`pch_gbe_nway_reset.return`:
 
@@ -190,11 +205,13 @@ pch_gbe_get_ringparam
 
     Report ring sizes
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_ringparam \*ring:
+    :param ring:
         Ring param structure
+    :type ring: struct ethtool_ringparam \*
 
 .. _`pch_gbe_set_ringparam`:
 
@@ -205,13 +222,15 @@ pch_gbe_set_ringparam
 
     Set ring sizes
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_ringparam \*ring:
+    :param ring:
         Ring param structure
         Returns
         0:                      Successful.
+    :type ring: struct ethtool_ringparam \*
 
 .. _`pch_gbe_set_ringparam.negative-value`:
 
@@ -229,11 +248,13 @@ pch_gbe_get_pauseparam
 
     Report pause parameters
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*pause:
+    :param pause:
         Pause parameters structure
+    :type pause: struct ethtool_pauseparam \*
 
 .. _`pch_gbe_set_pauseparam`:
 
@@ -244,11 +265,13 @@ pch_gbe_set_pauseparam
 
     Set pause parameters
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*pause:
+    :param pause:
         Pause parameters structure
+    :type pause: struct ethtool_pauseparam \*
 
 .. _`pch_gbe_set_pauseparam.return`:
 
@@ -273,14 +296,17 @@ pch_gbe_get_strings
 
     Return a set of strings that describe the requested objects
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param u32 stringset:
+    :param stringset:
         Select the stringset. [ETH_SS_TEST] [ETH_SS_STATS]
+    :type stringset: u32
 
-    :param u8 \*data:
+    :param data:
         Pointer of read string data.
+    :type data: u8 \*
 
 .. _`pch_gbe_get_ethtool_stats`:
 
@@ -291,14 +317,17 @@ pch_gbe_get_ethtool_stats
 
     Return statistics about the device
 
-    :param struct net_device \*netdev:
+    :param netdev:
         Network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_stats \*stats:
+    :param stats:
         Ethtool statue structure
+    :type stats: struct ethtool_stats \*
 
-    :param u64 \*data:
+    :param data:
         Pointer of read status area
+    :type data: u64 \*
 
 .. This file was automatic generated / don't edit.
 

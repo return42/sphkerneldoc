@@ -10,8 +10,9 @@ cnt32_to_63
 
     Expand a 32-bit counter to a 63-bit counter
 
-    :param  cnt_lo:
+    :param cnt_lo:
         The low part of the counter
+    :type cnt_lo: 
 
 .. _`cnt32_to_63.description`:
 

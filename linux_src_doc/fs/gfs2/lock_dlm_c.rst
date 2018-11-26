@@ -10,14 +10,17 @@ gfs2_update_stats
 
     Update time based stats
 
-    :param struct gfs2_lkstats \*s:
+    :param s:
         *undescribed*
+    :type s: struct gfs2_lkstats \*
 
-    :param unsigned index:
+    :param index:
         *undescribed*
+    :type index: unsigned
 
-    :param s64 sample:
+    :param sample:
         New data to include
+    :type sample: s64
 
 .. _`gfs2_update_stats.description`:
 
@@ -52,8 +55,9 @@ gfs2_update_reply_times
 
     Update locking statistics
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock to update
+    :type gl: struct gfs2_glock \*
 
 .. _`gfs2_update_reply_times.description`:
 
@@ -82,8 +86,9 @@ gfs2_update_request_times
 
     Update locking statistics
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock to update
+    :type gl: struct gfs2_glock \*
 
 .. _`gfs2_update_request_times.description`:
 

@@ -10,29 +10,36 @@ pci_bus_alloc_resource
 
     allocate a resource from a parent bus
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus
+    :type bus: struct pci_bus \*
 
-    :param struct resource \*res:
+    :param res:
         resource to allocate
+    :type res: struct resource \*
 
-    :param resource_size_t size:
+    :param size:
         size of resource to allocate
+    :type size: resource_size_t
 
-    :param resource_size_t align:
+    :param align:
         alignment of resource to allocate
+    :type align: resource_size_t
 
-    :param resource_size_t min:
+    :param min:
         minimum /proc/iomem address to allocate
+    :type min: resource_size_t
 
-    :param unsigned long type_mask:
+    :param type_mask:
         IORESOURCE_* type flags
+    :type type_mask: unsigned long
 
     :param resource_size_t (\*alignf)(void \*, const struct resource \*, resource_size_t, resource_size_t):
         resource alignment function
 
-    :param void \*alignf_data:
+    :param alignf_data:
         data argument for resource alignment function
+    :type alignf_data: void \*
 
 .. _`pci_bus_alloc_resource.description`:
 
@@ -52,8 +59,9 @@ pci_bus_add_device
 
     start driver for a single device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device to add
+    :type dev: struct pci_dev \*
 
 .. _`pci_bus_add_device.description`:
 
@@ -71,8 +79,9 @@ pci_bus_add_devices
 
     start driver for PCI devices
 
-    :param const struct pci_bus \*bus:
+    :param bus:
         bus to check for new devices
+    :type bus: const struct pci_bus \*
 
 .. _`pci_bus_add_devices.description`:
 

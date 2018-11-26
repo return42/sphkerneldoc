@@ -10,11 +10,13 @@ rs_program_fix_rate
 
     This is for debugging/testing only once the device start use fixed rate, we need to reload the module to being back the normal operation.
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_lq_sta \*lq_sta:
+    :param lq_sta:
         *undescribed*
+    :type lq_sta: struct iwl_lq_sta \*
 
 .. _`rs_collect_tx_data`:
 
@@ -25,17 +27,21 @@ rs_collect_tx_data
 
     Update the success/failure sliding window
 
-    :param struct iwl_scale_tbl_info \*tbl:
+    :param tbl:
         *undescribed*
+    :type tbl: struct iwl_scale_tbl_info \*
 
-    :param int scale_index:
+    :param scale_index:
         *undescribed*
+    :type scale_index: int
 
-    :param int attempts:
+    :param attempts:
         *undescribed*
+    :type attempts: int
 
-    :param int successes:
+    :param successes:
         *undescribed*
+    :type successes: int
 
 .. _`rs_collect_tx_data.description`:
 
@@ -55,8 +61,9 @@ rs_use_green
 
     field mode is valid if the station supports it and there are no non-GF stations present in the BSS.
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
 .. _`rs_get_supported_rates`:
 
@@ -67,14 +74,17 @@ rs_get_supported_rates
 
     get the available rates
 
-    :param struct iwl_lq_sta \*lq_sta:
+    :param lq_sta:
         *undescribed*
+    :type lq_sta: struct iwl_lq_sta \*
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         *undescribed*
+    :type hdr: struct ieee80211_hdr \*
 
-    :param enum iwl_table_type rate_type:
+    :param rate_type:
         *undescribed*
+    :type rate_type: enum iwl_table_type
 
 .. _`rs_get_supported_rates.description`:
 
@@ -93,14 +103,17 @@ rs_initialize_lq
 
     Initialize a station's hardware rate table
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
-    :param struct iwl_lq_sta \*lq_sta:
+    :param lq_sta:
         *undescribed*
+    :type lq_sta: struct iwl_lq_sta \*
 
 .. _`rs_initialize_lq.description`:
 

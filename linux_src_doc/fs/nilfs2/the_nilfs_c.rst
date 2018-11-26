@@ -10,8 +10,9 @@ alloc_nilfs
 
     allocate a nilfs object
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
 .. _`alloc_nilfs.return-value`:
 
@@ -30,8 +31,9 @@ destroy_nilfs
 
     destroy nilfs object
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object to be released
+    :type nilfs: struct the_nilfs \*
 
 .. _`nilfs_store_log_cursor`:
 
@@ -42,11 +44,13 @@ nilfs_store_log_cursor
 
     load log cursor from a super block
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param struct nilfs_super_block \*sbp:
+    :param sbp:
         buffer storing super block to be read
+    :type sbp: struct nilfs_super_block \*
 
 .. _`nilfs_store_log_cursor.description`:
 
@@ -67,11 +71,13 @@ load_nilfs
 
     load and recover the nilfs
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         the_nilfs structure to be released
+    :type nilfs: struct the_nilfs \*
 
-    :param struct super_block \*sb:
+    :param sb:
         super block isntance used to recover past segment
+    :type sb: struct super_block \*
 
 .. _`load_nilfs.description`:
 
@@ -91,11 +97,13 @@ nilfs_nrsvsegs
 
     calculate the number of reserved segments
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         nilfs object
+    :type nilfs: struct the_nilfs \*
 
-    :param unsigned long nsegs:
+    :param nsegs:
         total number of segments
+    :type nsegs: unsigned long
 
 .. _`init_nilfs`:
 
@@ -106,14 +114,17 @@ init_nilfs
 
     initialize a NILFS instance.
 
-    :param struct the_nilfs \*nilfs:
+    :param nilfs:
         the_nilfs structure
+    :type nilfs: struct the_nilfs \*
 
-    :param struct super_block \*sb:
+    :param sb:
         super block
+    :type sb: struct super_block \*
 
-    :param char \*data:
+    :param data:
         mount options
+    :type data: char \*
 
 .. _`init_nilfs.description`:
 

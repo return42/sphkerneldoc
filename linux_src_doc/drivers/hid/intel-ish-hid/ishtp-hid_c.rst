@@ -10,8 +10,9 @@ ishtp_hid_parse
 
     hid-core .parse() callback
 
-    :param struct hid_device \*hid:
+    :param hid:
         hid device instance
+    :type hid: struct hid_device \*
 
 .. _`ishtp_hid_parse.description`:
 
@@ -36,14 +37,17 @@ ishtp_hid_request
 
     hid-core .request() callback
 
-    :param struct hid_device \*hid:
+    :param hid:
         hid device instance
+    :type hid: struct hid_device \*
 
-    :param struct hid_report \*rep:
+    :param rep:
         pointer to hid_report
+    :type rep: struct hid_report \*
 
-    :param int reqtype:
+    :param reqtype:
         type of req. [GET\|SET]_REPORT
+    :type reqtype: int
 
 .. _`ishtp_hid_request.description`:
 
@@ -61,8 +65,9 @@ ishtp_wait_for_response
 
     hid-core .wait() callback
 
-    :param struct hid_device \*hid:
+    :param hid:
         hid device instance
+    :type hid: struct hid_device \*
 
 .. _`ishtp_wait_for_response.description`:
 
@@ -87,8 +92,9 @@ ishtp_hid_wakeup
 
     Wakeup caller
 
-    :param struct hid_device \*hid:
+    :param hid:
         hid device instance
+    :type hid: struct hid_device \*
 
 .. _`ishtp_hid_wakeup.description`:
 
@@ -106,11 +112,13 @@ ishtp_hid_probe
 
     hid register ll driver
 
-    :param unsigned int cur_hid_dev:
+    :param cur_hid_dev:
         Index of hid device calling to register
+    :type cur_hid_dev: unsigned int
 
-    :param struct ishtp_cl_data \*client_data:
+    :param client_data:
         Client data pointer
+    :type client_data: struct ishtp_cl_data \*
 
 .. _`ishtp_hid_probe.description`:
 
@@ -135,8 +143,9 @@ ishtp_hid_remove
 
     Remove registered hid device
 
-    :param struct ishtp_cl_data \*client_data:
+    :param client_data:
         client data pointer
+    :type client_data: struct ishtp_cl_data \*
 
 .. _`ishtp_hid_remove.description`:
 

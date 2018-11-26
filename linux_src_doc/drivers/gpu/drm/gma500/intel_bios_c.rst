@@ -10,8 +10,9 @@ psb_intel_init_bios
 
     initialize VBIOS settings & find VBT
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`psb_intel_init_bios.description`:
 
@@ -35,8 +36,9 @@ psb_intel_destroy_bios
 
 .. c:function:: void psb_intel_destroy_bios(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. This file was automatic generated / don't edit.
 

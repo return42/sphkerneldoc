@@ -10,11 +10,13 @@ mmc_request_done
 
     finish processing an MMC request
 
-    :param struct mmc_host \*host:
+    :param host:
         MMC host which completed request
+    :type host: struct mmc_host \*
 
-    :param struct mmc_request \*mrq:
+    :param mrq:
         MMC request which request
+    :type mrq: struct mmc_request \*
 
 .. _`mmc_request_done.description`:
 
@@ -33,11 +35,13 @@ mmc_cqe_request_done
 
     CQE has finished processing an MMC request
 
-    :param struct mmc_host \*host:
+    :param host:
         MMC host which completed request
+    :type host: struct mmc_host \*
 
-    :param struct mmc_request \*mrq:
+    :param mrq:
         MMC request which completed
+    :type mrq: struct mmc_request \*
 
 .. _`mmc_cqe_request_done.description`:
 
@@ -56,11 +60,13 @@ mmc_cqe_post_req
 
     CQE post process of a completed MMC request
 
-    :param struct mmc_host \*host:
+    :param host:
         MMC host
+    :type host: struct mmc_host \*
 
-    :param struct mmc_request \*mrq:
+    :param mrq:
         MMC request to be processed
+    :type mrq: struct mmc_request \*
 
 .. _`mmc_is_req_done`:
 
@@ -71,11 +77,13 @@ mmc_is_req_done
 
     Determine if a 'cap_cmd_during_tfr' request is done
 
-    :param struct mmc_host \*host:
+    :param host:
         MMC host
+    :type host: struct mmc_host \*
 
-    :param struct mmc_request \*mrq:
+    :param mrq:
         MMC request
+    :type mrq: struct mmc_request \*
 
 .. _`mmc_is_req_done.description`:
 
@@ -98,11 +106,13 @@ mmc_wait_for_req
 
     start a request and wait for completion
 
-    :param struct mmc_host \*host:
+    :param host:
         MMC host to start command
+    :type host: struct mmc_host \*
 
-    :param struct mmc_request \*mrq:
+    :param mrq:
         MMC request to start
+    :type mrq: struct mmc_request \*
 
 .. _`mmc_wait_for_req.description`:
 
@@ -125,14 +135,17 @@ mmc_wait_for_cmd
 
     start a command and wait for completion
 
-    :param struct mmc_host \*host:
+    :param host:
         MMC host to start command
+    :type host: struct mmc_host \*
 
-    :param struct mmc_command \*cmd:
+    :param cmd:
         MMC command to start
+    :type cmd: struct mmc_command \*
 
-    :param int retries:
+    :param retries:
         maximum number of retries
+    :type retries: int
 
 .. _`mmc_wait_for_cmd.description`:
 
@@ -152,11 +165,13 @@ mmc_set_data_timeout
 
     set the timeout for a data command
 
-    :param struct mmc_data \*data:
+    :param data:
         data phase for command
+    :type data: struct mmc_data \*
 
-    :param const struct mmc_card \*card:
+    :param card:
         the MMC card associated with the data transfer
+    :type card: const struct mmc_card \*
 
 .. _`mmc_set_data_timeout.description`:
 
@@ -175,11 +190,13 @@ mmc_align_data_size
 
     pads a transfer size to a more optimal value
 
-    :param struct mmc_card \*card:
+    :param card:
         the MMC card associated with the data transfer
+    :type card: struct mmc_card \*
 
-    :param unsigned int sz:
+    :param sz:
         original transfer size
+    :type sz: unsigned int
 
 .. _`mmc_align_data_size.description`:
 
@@ -204,15 +221,18 @@ single scatter gather entry.
 
     exclusively claim a host
 
-    :param struct mmc_host \*host:
+    :param host:
         mmc host to claim
+    :type host: struct mmc_host \*
 
-    :param struct mmc_ctx \*ctx:
+    :param ctx:
         context that claims the host or NULL in which case the default
         context will be used
+    :type ctx: struct mmc_ctx \*
 
-    :param atomic_t \*abort:
+    :param abort:
         whether or not the operation should be aborted
+    :type abort: atomic_t \*
 
 .. _`__mmc_claim_host.description`:
 
@@ -233,8 +253,9 @@ mmc_release_host
 
     release a host
 
-    :param struct mmc_host \*host:
+    :param host:
         mmc host to release
+    :type host: struct mmc_host \*
 
 .. _`mmc_release_host.description`:
 
@@ -253,11 +274,13 @@ mmc_vdd_to_ocrbitnum
 
     Convert a voltage to the OCR bit number
 
-    :param int vdd:
+    :param vdd:
         voltage (mV)
+    :type vdd: int
 
-    :param bool low_bits:
+    :param low_bits:
         prefer low bits in boundary cases
+    :type low_bits: bool
 
 .. _`mmc_vdd_to_ocrbitnum.description`:
 
@@ -283,11 +306,13 @@ mmc_vddrange_to_ocrmask
 
     Convert a voltage range to the OCR mask
 
-    :param int vdd_min:
+    :param vdd_min:
         minimum voltage value (mV)
+    :type vdd_min: int
 
-    :param int vdd_max:
+    :param vdd_max:
         maximum voltage value (mV)
+    :type vdd_max: int
 
 .. _`mmc_vddrange_to_ocrmask.description`:
 
@@ -315,11 +340,13 @@ mmc_of_parse_voltage
 
     return mask of supported voltages
 
-    :param struct device_node \*np:
+    :param np:
         The device node need to be parsed.
+    :type np: struct device_node \*
 
-    :param u32 \*mask:
+    :param mask:
         mask of voltages available for MMC/SD/SDIO
+    :type mask: u32 \*
 
 .. _`mmc_of_parse_voltage.description`:
 
@@ -339,14 +366,17 @@ mmc_ocrbitnum_to_vdd
 
     Convert a OCR bit number to its voltage
 
-    :param int vdd_bit:
+    :param vdd_bit:
         OCR bit number
+    :type vdd_bit: int
 
-    :param int \*min_uV:
+    :param min_uV:
         minimum voltage value (mV)
+    :type min_uV: int \*
 
-    :param int \*max_uV:
+    :param max_uV:
         maximum voltage value (mV)
+    :type max_uV: int \*
 
 .. _`mmc_ocrbitnum_to_vdd.description`:
 
@@ -365,8 +395,9 @@ mmc_regulator_get_ocrmask
 
     return mask of supported voltages
 
-    :param struct regulator \*supply:
+    :param supply:
         regulator to use
+    :type supply: struct regulator \*
 
 .. _`mmc_regulator_get_ocrmask.description`:
 
@@ -387,14 +418,17 @@ mmc_regulator_set_ocr
 
     set regulator to match host->ios voltage
 
-    :param struct mmc_host \*mmc:
+    :param mmc:
         the host to regulate
+    :type mmc: struct mmc_host \*
 
-    :param struct regulator \*supply:
+    :param supply:
         regulator to use
+    :type supply: struct regulator \*
 
-    :param unsigned short vdd_bit:
+    :param vdd_bit:
         zero for power off, else a bit number (host->ios.vdd)
+    :type vdd_bit: unsigned short
 
 .. _`mmc_regulator_set_ocr.description`:
 
@@ -416,11 +450,13 @@ mmc_regulator_set_vqmmc
 
     Set VQMMC as per the ios
 
-    :param struct mmc_host \*mmc:
+    :param mmc:
         *undescribed*
+    :type mmc: struct mmc_host \*
 
-    :param struct mmc_ios \*ios:
+    :param ios:
         *undescribed*
+    :type ios: struct mmc_ios \*
 
 .. _`mmc_regulator_set_vqmmc.description`:
 
@@ -450,8 +486,9 @@ mmc_regulator_get_supply
 
     try to get VMMC and VQMMC regulators for a host
 
-    :param struct mmc_host \*mmc:
+    :param mmc:
         the host to regulate
+    :type mmc: struct mmc_host \*
 
 .. _`mmc_regulator_get_supply.description`:
 
@@ -473,11 +510,13 @@ mmc_detect_change
 
     process change of state on a MMC socket
 
-    :param struct mmc_host \*host:
+    :param host:
         host which changed state.
+    :type host: struct mmc_host \*
 
-    :param unsigned long delay:
+    :param delay:
         optional delay to wait before detection (jiffies)
+    :type delay: unsigned long
 
 .. _`mmc_detect_change.description`:
 
@@ -498,17 +537,21 @@ mmc_erase
 
     erase sectors.
 
-    :param struct mmc_card \*card:
+    :param card:
         card to erase
+    :type card: struct mmc_card \*
 
-    :param unsigned int from:
+    :param from:
         first sector to erase
+    :type from: unsigned int
 
-    :param unsigned int nr:
+    :param nr:
         number of sectors to erase
+    :type nr: unsigned int
 
-    :param unsigned int arg:
+    :param arg:
         erase command argument (SD supports only \ ``MMC_ERASE_ARG``\ )
+    :type arg: unsigned int
 
 .. _`mmc_erase.description`:
 

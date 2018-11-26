@@ -10,17 +10,21 @@ ixgbe_dcb_config_rx_arbiter_82598
 
     Config Rx data arbiter
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*refill:
+    :param refill:
         refill credits index by traffic class
+    :type refill: u16 \*
 
-    :param u16 \*max:
+    :param max:
         max credits index by traffic class
+    :type max: u16 \*
 
-    :param u8 \*prio_type:
+    :param prio_type:
         priority type indexed by traffic class
+    :type prio_type: u8 \*
 
 .. _`ixgbe_dcb_config_rx_arbiter_82598.description`:
 
@@ -38,20 +42,25 @@ ixgbe_dcb_config_tx_desc_arbiter_82598
 
     Config Tx Desc. arbiter
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*refill:
+    :param refill:
         refill credits index by traffic class
+    :type refill: u16 \*
 
-    :param u16 \*max:
+    :param max:
         max credits index by traffic class
+    :type max: u16 \*
 
-    :param u8 \*bwg_id:
+    :param bwg_id:
         bandwidth grouping indexed by traffic class
+    :type bwg_id: u8 \*
 
-    :param u8 \*prio_type:
+    :param prio_type:
         priority type indexed by traffic class
+    :type prio_type: u8 \*
 
 .. _`ixgbe_dcb_config_tx_desc_arbiter_82598.description`:
 
@@ -69,20 +78,25 @@ ixgbe_dcb_config_tx_data_arbiter_82598
 
     Config Tx data arbiter
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u16 \*refill:
+    :param refill:
         refill credits index by traffic class
+    :type refill: u16 \*
 
-    :param u16 \*max:
+    :param max:
         max credits index by traffic class
+    :type max: u16 \*
 
-    :param u8 \*bwg_id:
+    :param bwg_id:
         bandwidth grouping indexed by traffic class
+    :type bwg_id: u8 \*
 
-    :param u8 \*prio_type:
+    :param prio_type:
         priority type indexed by traffic class
+    :type prio_type: u8 \*
 
 .. _`ixgbe_dcb_config_tx_data_arbiter_82598.description`:
 
@@ -100,11 +114,13 @@ ixgbe_dcb_config_pfc_82598
 
     Config priority flow control
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 pfc_en:
+    :param pfc_en:
         enabled pfc bitmask
+    :type pfc_en: u8
 
 .. _`ixgbe_dcb_config_pfc_82598.description`:
 
@@ -122,8 +138,9 @@ ixgbe_dcb_config_tc_stats_82598
 
     Configure traffic class statistics
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
 .. _`ixgbe_dcb_config_tc_stats_82598.description`:
 
@@ -142,23 +159,29 @@ ixgbe_dcb_hw_config_82598
 
     Config and enable DCB
 
-    :param struct ixgbe_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct ixgbe_hw \*
 
-    :param u8 pfc_en:
+    :param pfc_en:
         enabled pfc bitmask
+    :type pfc_en: u8
 
-    :param u16 \*refill:
+    :param refill:
         refill credits index by traffic class
+    :type refill: u16 \*
 
-    :param u16 \*max:
+    :param max:
         max credits index by traffic class
+    :type max: u16 \*
 
-    :param u8 \*bwg_id:
+    :param bwg_id:
         bandwidth grouping indexed by traffic class
+    :type bwg_id: u8 \*
 
-    :param u8 \*prio_type:
+    :param prio_type:
         priority type indexed by traffic class
+    :type prio_type: u8 \*
 
 .. _`ixgbe_dcb_hw_config_82598.description`:
 

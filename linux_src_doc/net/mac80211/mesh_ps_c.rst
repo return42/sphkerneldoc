@@ -10,8 +10,9 @@ mps_qos_null_get
 
     create pre-addressed QoS Null frame for mesh powersave
 
-    :param struct sta_info \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct sta_info \*
 
 .. _`mps_qos_null_tx`:
 
@@ -22,8 +23,9 @@ mps_qos_null_tx
 
     send a QoS Null to indicate link-specific power mode
 
-    :param struct sta_info \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct sta_info \*
 
 .. _`ieee80211_mps_local_status_update`:
 
@@ -34,8 +36,9 @@ ieee80211_mps_local_status_update
 
     track status of local link-specific PMs
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local mesh subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
 .. _`ieee80211_mps_local_status_update.description`:
 
@@ -54,12 +57,14 @@ ieee80211_mps_set_sta_local_pm
 
     set local PM towards a mesh STA
 
-    :param struct sta_info \*sta:
+    :param sta:
         mesh STA
+    :type sta: struct sta_info \*
 
-    :param enum nl80211_mesh_power_mode pm:
+    :param pm:
         the power mode to set
         Return BSS_CHANGED_BEACON if a beacon update is in order.
+    :type pm: enum nl80211_mesh_power_mode
 
 .. _`ieee80211_mps_set_frame_flags`:
 
@@ -70,14 +75,17 @@ ieee80211_mps_set_frame_flags
 
     set mesh PS flags in FC (and QoS Control)
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local mesh subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct sta_info \*sta:
+    :param sta:
         mesh STA
+    :type sta: struct sta_info \*
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         802.11 frame header
+    :type hdr: struct ieee80211_hdr \*
 
 .. _`ieee80211_mps_set_frame_flags.description`:
 
@@ -103,8 +111,9 @@ ieee80211_mps_sta_status_update
 
     update buffering status of neighbor STA
 
-    :param struct sta_info \*sta:
+    :param sta:
         mesh STA
+    :type sta: struct sta_info \*
 
 .. _`ieee80211_mps_sta_status_update.description`:
 
@@ -122,11 +131,13 @@ ieee80211_mps_rx_h_sta_process
 
     frame receive handler for mesh powersave
 
-    :param struct sta_info \*sta:
+    :param sta:
         STA info that transmitted the frame
+    :type sta: struct sta_info \*
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         IEEE 802.11 (QoS) Header
+    :type hdr: struct ieee80211_hdr \*
 
 .. _`mpsp_qos_null_append`:
 
@@ -137,11 +148,13 @@ mpsp_qos_null_append
 
     append QoS Null frame to MPSP skb queue if needed
 
-    :param struct sta_info \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct sta_info \*
 
-    :param struct sk_buff_head \*frames:
+    :param frames:
         *undescribed*
+    :type frames: struct sk_buff_head \*
 
 .. _`mpsp_qos_null_append.description`:
 
@@ -161,11 +174,13 @@ mps_frame_deliver
 
     transmit frames during mesh powersave
 
-    :param struct sta_info \*sta:
+    :param sta:
         STA info to transmit to
+    :type sta: struct sta_info \*
 
-    :param int n_frames:
+    :param n_frames:
         number of frames to transmit. -1 for all
+    :type n_frames: int
 
 .. _`ieee80211_mpsp_trigger_process`:
 
@@ -176,17 +191,21 @@ ieee80211_mpsp_trigger_process
 
     track status of mesh Peer Service Periods
 
-    :param u8 \*qc:
+    :param qc:
         QoS Control field
+    :type qc: u8 \*
 
-    :param struct sta_info \*sta:
+    :param sta:
         peer to start a MPSP with
+    :type sta: struct sta_info \*
 
-    :param bool tx:
+    :param tx:
         frame was transmitted by the local STA
+    :type tx: bool
 
-    :param bool acked:
+    :param acked:
         frame has been transmitted successfully
+    :type acked: bool
 
 .. _`ieee80211_mpsp_trigger_process.note`:
 
@@ -204,11 +223,13 @@ ieee80211_mps_frame_release
 
     release frames buffered due to mesh power save
 
-    :param struct sta_info \*sta:
+    :param sta:
         mesh STA
+    :type sta: struct sta_info \*
 
-    :param struct ieee802_11_elems \*elems:
+    :param elems:
         IEs of beacon or probe response
+    :type elems: struct ieee802_11_elems \*
 
 .. _`ieee80211_mps_frame_release.description`:
 

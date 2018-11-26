@@ -10,8 +10,9 @@ nfsd4_is_junction
 
     Test if an object could be an NFS junction
 
-    :param struct dentry \*dentry:
+    :param dentry:
         object to test
+    :type dentry: struct dentry \*
 
 .. _`nfsd4_is_junction.description`:
 

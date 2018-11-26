@@ -10,8 +10,9 @@ core_kernel_data
 
     tell if addr points to kernel data
 
-    :param unsigned long addr:
+    :param addr:
         address to test
+    :type addr: unsigned long
 
 .. _`core_kernel_data.description`:
 

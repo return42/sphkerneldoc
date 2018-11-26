@@ -10,8 +10,9 @@ cb_alloc
 
     add CardBus device
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         the pcmcia_socket where the CardBus device is located
+    :type s: struct pcmcia_socket \*
 
 .. _`cb_alloc.description`:
 
@@ -30,8 +31,9 @@ cb_free
 
     remove CardBus device
 
-    :param struct pcmcia_socket \*s:
+    :param s:
         the pcmcia_socket where the CardBus device was located
+    :type s: struct pcmcia_socket \*
 
 .. _`cb_free.description`:
 

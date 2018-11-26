@@ -10,14 +10,17 @@ crypto_memneq
 
     Compare two areas of memory without leaking timing information.
 
-    :param const void \*a:
+    :param a:
         One area of memory
+    :type a: const void \*
 
-    :param const void \*b:
+    :param b:
         Another area of memory
+    :type b: const void \*
 
-    :param size_t size:
+    :param size:
         The size of the area.
+    :type size: size_t
 
 .. _`crypto_memneq.description`:
 

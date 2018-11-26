@@ -82,14 +82,17 @@ IIO_DEV_ATTR_SAMP_FREQ
 
     sets any internal clock frequency
 
-    :param  _mode:
+    :param _mode:
         sysfs file mode/permissions
+    :type _mode: 
 
-    :param  _show:
+    :param _show:
         output method for the attribute
+    :type _show: 
 
-    :param  _store:
+    :param _store:
         input method for the attribute
+    :type _store: 
 
 .. _`iio_dev_attr_samp_freq_avail`:
 
@@ -100,8 +103,9 @@ IIO_DEV_ATTR_SAMP_FREQ_AVAIL
 
     list available sampling frequencies
 
-    :param  _show:
+    :param _show:
         output method for the attribute
+    :type _show: 
 
 .. _`iio_dev_attr_samp_freq_avail.description`:
 
@@ -119,8 +123,9 @@ IIO_CONST_ATTR_SAMP_FREQ_AVAIL
 
     list available sampling frequencies
 
-    :param  _string:
+    :param _string:
         frequency string for the attribute
+    :type _string: 
 
 .. _`iio_const_attr_samp_freq_avail.description`:
 
@@ -138,8 +143,9 @@ IIO_DEV_ATTR_INT_TIME_AVAIL
 
     list available integration times
 
-    :param  _show:
+    :param _show:
         output method for the attribute
+    :type _show: 
 
 .. _`iio_const_attr_int_time_avail`:
 
@@ -150,8 +156,9 @@ IIO_CONST_ATTR_INT_TIME_AVAIL
 
     list available integration times
 
-    :param  _string:
+    :param _string:
         frequency string for the attribute
+    :type _string: 
 
 .. _`iio_const_attr_int_time_avail.description`:
 

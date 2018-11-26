@@ -10,11 +10,13 @@ nd_is_uuid_unique
 
     verify that no other namespace has \ ``uuid``\ 
 
-    :param struct device \*dev:
+    :param dev:
         any device on a nvdimm_bus
+    :type dev: struct device \*
 
-    :param u8 \*uuid:
+    :param uuid:
         uuid to check
+    :type uuid: u8 \*
 
 .. _`shrink_dpa_allocation`:
 
@@ -25,14 +27,17 @@ shrink_dpa_allocation
 
     for each dimm in region free n bytes for label_id
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         the set of dimms to reclaim \ ``n``\  bytes from
+    :type nd_region: struct nd_region \*
 
-    :param struct nd_label_id \*label_id:
+    :param label_id:
         unique identifier for the namespace consuming this dpa range
+    :type label_id: struct nd_label_id \*
 
-    :param resource_size_t n:
+    :param n:
         number of bytes per-dimm to release
+    :type n: resource_size_t
 
 .. _`shrink_dpa_allocation.description`:
 
@@ -53,29 +58,37 @@ space_valid
 
     validate free dpa space against constraints
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         hosting region of the free space
+    :type nd_region: struct nd_region \*
 
-    :param struct nvdimm_drvdata \*ndd:
+    :param ndd:
         dimm device data for debug
+    :type ndd: struct nvdimm_drvdata \*
 
-    :param struct nd_label_id \*label_id:
+    :param label_id:
         namespace id to allocate space
+    :type label_id: struct nd_label_id \*
 
-    :param struct resource \*prev:
+    :param prev:
         potential allocation that precedes free space
+    :type prev: struct resource \*
 
-    :param struct resource \*next:
+    :param next:
         allocation that follows the given free space range
+    :type next: struct resource \*
 
-    :param struct resource \*exist:
+    :param exist:
         first allocation with same id in the mapping
+    :type exist: struct resource \*
 
-    :param resource_size_t n:
+    :param n:
         range that must satisfied for pmem allocations
+    :type n: resource_size_t
 
-    :param struct resource \*valid:
+    :param valid:
         free space range to validate
+    :type valid: struct resource \*
 
 .. _`space_valid.description`:
 
@@ -96,14 +109,17 @@ grow_dpa_allocation
 
     for each dimm allocate n bytes for \ ``label_id``\ 
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         the set of dimms to allocate \ ``n``\  more bytes from
+    :type nd_region: struct nd_region \*
 
-    :param struct nd_label_id \*label_id:
+    :param label_id:
         unique identifier for the namespace consuming this dpa range
+    :type label_id: struct nd_label_id \*
 
-    :param resource_size_t n:
+    :param n:
         number of bytes per-dimm to add to the existing allocation
+    :type n: resource_size_t
 
 .. _`grow_dpa_allocation.description`:
 
@@ -126,17 +142,21 @@ namespace_update_uuid
 
     check for a unique uuid and whether we're "renaming"
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         parent region so we can updates all dimms in the set
+    :type nd_region: struct nd_region \*
 
-    :param struct device \*dev:
+    :param dev:
         namespace type for generating label_id
+    :type dev: struct device \*
 
-    :param u8 \*new_uuid:
+    :param new_uuid:
         incoming uuid
+    :type new_uuid: u8 \*
 
-    :param u8 \*\*old_uuid:
+    :param old_uuid:
         reference to the uuid storage location in the namespace object
+    :type old_uuid: u8 \*\*
 
 .. _`create_namespace_pmem`:
 
@@ -147,14 +167,17 @@ create_namespace_pmem
 
     validate interleave set labelling, retrieve label0
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         region with mappings to validate
+    :type nd_region: struct nd_region \*
 
-    :param struct nd_namespace_index \*nsindex:
+    :param nsindex:
         *undescribed*
+    :type nsindex: struct nd_namespace_index \*
 
-    :param struct nd_namespace_label \*nd_label:
+    :param nd_label:
         target pmem namespace label to evaluate
+    :type nd_label: struct nd_namespace_label \*
 
 .. This file was automatic generated / don't edit.
 

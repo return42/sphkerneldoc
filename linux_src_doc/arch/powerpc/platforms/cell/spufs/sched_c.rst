@@ -10,11 +10,13 @@ spu_bind_context
 
     bind spu context to physical spu
 
-    :param struct spu \*spu:
+    :param spu:
         physical spu to bind to
+    :type spu: struct spu \*
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         context to bind
+    :type ctx: struct spu_context \*
 
 .. _`spu_unbind_context`:
 
@@ -25,11 +27,13 @@ spu_unbind_context
 
     unbind spu context from physical spu
 
-    :param struct spu \*spu:
+    :param spu:
         physical spu to unbind from
+    :type spu: struct spu \*
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         context to unbind
+    :type ctx: struct spu_context \*
 
 .. _`__spu_add_to_rq`:
 
@@ -40,8 +44,9 @@ spu_unbind_context
 
     add a context to the runqueue
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         context to add
+    :type ctx: struct spu_context \*
 
 .. _`find_victim`:
 
@@ -52,8 +57,9 @@ find_victim
 
     find a lower priority context to preempt
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         candidate context for running
+    :type ctx: struct spu_context \*
 
 .. _`find_victim.description`:
 
@@ -71,15 +77,18 @@ spu_unschedule
 
     remove a context from a spu, and possibly release it.
 
-    :param struct spu \*spu:
+    :param spu:
         The SPU to unschedule from
+    :type spu: struct spu \*
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         The context currently scheduled on the SPU
         \ ``free_spu``\     Whether to free the SPU for other contexts
+    :type ctx: struct spu_context \*
 
-    :param int free_spu:
+    :param free_spu:
         *undescribed*
+    :type free_spu: int
 
 .. _`spu_unschedule.description`:
 
@@ -102,11 +111,13 @@ spu_activate
 
     find a free spu for a context and execute it
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         spu context to schedule
+    :type ctx: struct spu_context \*
 
-    :param unsigned long flags:
+    :param flags:
         flags (currently ignored)
+    :type flags: unsigned long
 
 .. _`spu_activate.description`:
 
@@ -126,11 +137,13 @@ grab_runnable_context
 
     try to find a runnable context
 
-    :param int prio:
+    :param prio:
         *undescribed*
+    :type prio: int
 
-    :param int node:
+    :param node:
         *undescribed*
+    :type node: int
 
 .. _`grab_runnable_context.description`:
 
@@ -149,8 +162,9 @@ spu_deactivate
 
     unbind a context from it's physical spu
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         spu context to unbind
+    :type ctx: struct spu_context \*
 
 .. _`spu_deactivate.description`:
 
@@ -169,8 +183,9 @@ spu_yield
 
     yield a physical spu if others are waiting
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         spu context to yield
+    :type ctx: struct spu_context \*
 
 .. _`spu_yield.description`:
 
@@ -190,8 +205,9 @@ count_active_contexts
 
     count nr of active tasks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`count_active_contexts.description`:
 
@@ -213,8 +229,9 @@ spu_calc_load
 
     update the avenrun load estimates.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`spu_calc_load.description`:
 

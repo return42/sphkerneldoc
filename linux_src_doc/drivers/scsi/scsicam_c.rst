@@ -10,8 +10,9 @@ scsi_bios_ptable
 
     Read PC partition table out of first sector of device.
 
-    :param struct block_device \*dev:
+    :param dev:
         from this device
+    :type dev: struct block_device \*
 
 .. _`scsi_bios_ptable.description`:
 
@@ -37,14 +38,17 @@ scsicam_bios_param
 
     Determine geometry of a disk in cylinders/heads/sectors.
 
-    :param struct block_device \*bdev:
+    :param bdev:
         which device
+    :type bdev: struct block_device \*
 
-    :param sector_t capacity:
+    :param capacity:
         size of the disk in sectors
+    :type capacity: sector_t
 
-    :param int \*ip:
+    :param ip:
         return value: ip[0]=heads, ip[1]=sectors, ip[2]=cylinders
+    :type ip: int \*
 
 .. _`scsicam_bios_param.description`:
 
@@ -66,20 +70,25 @@ scsi_partsize
 
     Parse cylinders/heads/sectors from PC partition table
 
-    :param unsigned char \*buf:
+    :param buf:
         partition table, see \ :c:func:`scsi_bios_ptable`\ 
+    :type buf: unsigned char \*
 
-    :param unsigned long capacity:
+    :param capacity:
         size of the disk in sectors
+    :type capacity: unsigned long
 
-    :param unsigned int \*cyls:
+    :param cyls:
         put cylinders here
+    :type cyls: unsigned int \*
 
-    :param unsigned int \*hds:
+    :param hds:
         put heads here
+    :type hds: unsigned int \*
 
-    :param unsigned int \*secs:
+    :param secs:
         put sectors here
+    :type secs: unsigned int \*
 
 .. _`scsi_partsize.description`:
 

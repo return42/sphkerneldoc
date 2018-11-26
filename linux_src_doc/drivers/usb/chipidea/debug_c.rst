@@ -10,11 +10,13 @@ ci_device_show
 
     prints information about device capabilities and status
 
-    :param struct seq_file \*s:
+    :param s:
         *undescribed*
+    :type s: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`ci_port_test_show`:
 
@@ -25,11 +27,13 @@ ci_port_test_show
 
     reads port test mode
 
-    :param struct seq_file \*s:
+    :param s:
         *undescribed*
+    :type s: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`ci_port_test_write`:
 
@@ -40,17 +44,21 @@ ci_port_test_write
 
     writes port test mode
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param const char __user \*ubuf:
+    :param ubuf:
         *undescribed*
+    :type ubuf: const char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         *undescribed*
+    :type ppos: loff_t \*
 
 .. _`ci_qheads_show`:
 
@@ -61,11 +69,13 @@ ci_qheads_show
 
     DMA contents of all queue heads
 
-    :param struct seq_file \*s:
+    :param s:
         *undescribed*
+    :type s: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`ci_requests_show`:
 
@@ -76,11 +86,13 @@ ci_requests_show
 
     DMA contents of all requests currently queued (all endpts)
 
-    :param struct seq_file \*s:
+    :param s:
         *undescribed*
+    :type s: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`dbg_create_files`:
 
@@ -91,8 +103,9 @@ dbg_create_files
 
     initializes the attribute interface
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         device
+    :type ci: struct ci_hdrc \*
 
 .. _`dbg_create_files.description`:
 
@@ -110,8 +123,9 @@ dbg_remove_files
 
     destroys the attribute interface
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         device
+    :type ci: struct ci_hdrc \*
 
 .. This file was automatic generated / don't edit.
 

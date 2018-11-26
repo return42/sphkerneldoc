@@ -10,8 +10,9 @@ free_tty_struct
 
     free a disused tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty struct to free
+    :type tty: struct tty_struct \*
 
 .. _`free_tty_struct.description`:
 
@@ -36,8 +37,9 @@ tty_free_file
 
     free file->private_data
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
 .. _`tty_free_file.description`:
 
@@ -56,8 +58,9 @@ tty_name
 
     return tty naming
 
-    :param const struct tty_struct \*tty:
+    :param tty:
         tty structure
+    :type tty: const struct tty_struct \*
 
 .. _`tty_name.description`:
 
@@ -83,11 +86,13 @@ get_tty_driver
 
     find device of a tty
 
-    :param dev_t device:
+    :param device:
         *undescribed*
+    :type device: dev_t
 
-    :param int \*index:
+    :param index:
         returns the index of the tty
+    :type index: int \*
 
 .. _`get_tty_driver.description`:
 
@@ -113,11 +118,13 @@ tty_dev_name_to_number
 
     return dev_t for device name
 
-    :param const char \*name:
+    :param name:
         user space name of device under /dev
+    :type name: const char \*
 
-    :param dev_t \*number:
+    :param number:
         pointer to dev_t that this function will populate
+    :type number: dev_t \*
 
 .. _`tty_dev_name_to_number.description`:
 
@@ -146,11 +153,13 @@ tty_find_polling_driver
 
     find device of a polled tty
 
-    :param char \*name:
+    :param name:
         name string to match
+    :type name: char \*
 
-    :param int \*line:
+    :param line:
         pointer to resulting tty line nr
+    :type line: int \*
 
 .. _`tty_find_polling_driver.description`:
 
@@ -170,8 +179,9 @@ tty_wakeup
 
     request more data
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`tty_wakeup.description`:
 
@@ -191,11 +201,13 @@ to receive more output data.
 
     actual handler for hangup events
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param int exit_session:
+    :param exit_session:
         *undescribed*
+    :type exit_session: int
 
 .. _`__tty_hangup.description`:
 
@@ -233,8 +245,9 @@ tty_hangup
 
     trigger a hangup event
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to hangup
+    :type tty: struct tty_struct \*
 
 .. _`tty_hangup.description`:
 
@@ -253,8 +266,9 @@ tty_vhangup
 
     process vhangup
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to hangup
+    :type tty: struct tty_struct \*
 
 .. _`tty_vhangup.description`:
 
@@ -274,8 +288,9 @@ tty_vhangup_self
 
     process vhangup for own ctty
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tty_vhangup_self.description`:
 
@@ -293,8 +308,9 @@ tty_vhangup_session
 
     hangup session leader exit
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to hangup
+    :type tty: struct tty_struct \*
 
 .. _`tty_vhangup_session.description`:
 
@@ -316,8 +332,9 @@ tty_hung_up_p
 
     was tty hung up
 
-    :param struct file \*filp:
+    :param filp:
         file pointer of tty
+    :type filp: struct file \*
 
 .. _`tty_hung_up_p.description`:
 
@@ -336,8 +353,9 @@ loss
 
     propagate flow control
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to stop
+    :type tty: struct tty_struct \*
 
 .. _`__stop_tty.description`:
 
@@ -369,8 +387,9 @@ flow_lock
 
     propagate flow control
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to start
+    :type tty: struct tty_struct \*
 
 .. _`__start_tty.description`:
 
@@ -397,17 +416,21 @@ tty_read
 
     read method for tty device files
 
-    :param struct file \*file:
+    :param file:
         pointer to tty file
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         user buffer
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         size of user buffer
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         unused
+    :type ppos: loff_t \*
 
 .. _`tty_read.description`:
 
@@ -434,11 +457,13 @@ tty_write_message
 
     write a message to a certain tty, not just the console.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the destination tty_struct
+    :type tty: struct tty_struct \*
 
-    :param char \*msg:
+    :param msg:
         the message to write
+    :type msg: char \*
 
 .. _`tty_write_message.description`:
 
@@ -460,17 +485,21 @@ tty_write
 
     write method for tty device file
 
-    :param struct file \*file:
+    :param file:
         tty file pointer
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         user data to write
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         bytes to write
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         unused
+    :type ppos: loff_t \*
 
 .. _`tty_write.description`:
 
@@ -498,11 +527,13 @@ tty_send_xchar
 
     send priority character
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param char ch:
+    :param ch:
         *undescribed*
+    :type ch: char
 
 .. _`tty_send_xchar.description`:
 
@@ -527,14 +558,17 @@ pty_line_name
 
     generate name for a pty
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the tty driver in use
+    :type driver: struct tty_driver \*
 
-    :param int index:
+    :param index:
         the minor number
+    :type index: int
 
-    :param char \*p:
+    :param p:
         output buffer of at least 6 bytes
+    :type p: char \*
 
 .. _`pty_line_name.description`:
 
@@ -560,14 +594,17 @@ tty_line_name
 
     generate name for a tty
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the tty driver in use
+    :type driver: struct tty_driver \*
 
-    :param int index:
+    :param index:
         the minor number
+    :type index: int
 
-    :param char \*p:
+    :param p:
         output buffer of at least 7 bytes
+    :type p: char \*
 
 .. _`tty_line_name.description`:
 
@@ -593,14 +630,17 @@ tty_driver_lookup_tty
 
     find an existing tty, if any
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the driver for the tty
+    :type driver: struct tty_driver \*
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param int idx:
+    :param idx:
         the minor number
+    :type idx: int
 
 .. _`tty_driver_lookup_tty.description`:
 
@@ -626,8 +666,9 @@ tty_init_termios
 
     helper for termios setup
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty to set up
+    :type tty: struct tty_struct \*
 
 .. _`tty_init_termios.description`:
 
@@ -646,11 +687,13 @@ tty_driver_install_tty
 
     install a tty entry in the driver
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the driver for the tty
+    :type driver: struct tty_driver \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the tty
+    :type tty: struct tty_struct \*
 
 .. _`tty_driver_install_tty.description`:
 
@@ -678,11 +721,13 @@ tty_driver_remove_tty
 
     remove a tty from the driver tables
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the driver for the tty
+    :type driver: struct tty_driver \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`tty_driver_remove_tty.description`:
 
@@ -708,11 +753,13 @@ tty_init_dev
 
     initialise a tty device
 
-    :param struct tty_driver \*driver:
+    :param driver:
         tty driver we are opening a device on
+    :type driver: struct tty_driver \*
 
-    :param int idx:
+    :param idx:
         device index
+    :type idx: int
 
 .. _`tty_init_dev.description`:
 
@@ -749,8 +796,9 @@ tty_flush_works
 
     flush all works of a tty/pty pair
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device to flush works for (or either end of a pty pair)
+    :type tty: struct tty_struct \*
 
 .. _`tty_flush_works.description`:
 
@@ -768,8 +816,9 @@ release_one_tty
 
     release tty structure memory
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`release_one_tty.description`:
 
@@ -800,8 +849,9 @@ tty_kref_put
 
     release a tty kref
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
 .. _`tty_kref_put.description`:
 
@@ -820,11 +870,13 @@ release_tty
 
     release tty structure memory
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param int idx:
+    :param idx:
         *undescribed*
+    :type idx: int
 
 .. _`release_tty.description`:
 
@@ -852,11 +904,13 @@ tty_release_checks
 
     check a tty before real release
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to check
+    :type tty: struct tty_struct \*
 
-    :param int idx:
+    :param idx:
         index of the tty
+    :type idx: int
 
 .. _`tty_release_checks.description`:
 
@@ -875,8 +929,9 @@ tty_kclose
 
     closes tty opened by tty_kopen
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
 .. _`tty_kclose.description`:
 
@@ -896,11 +951,13 @@ tty_release_struct
 
     release a tty struct
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
-    :param int idx:
+    :param idx:
         index of the tty
+    :type idx: int
 
 .. _`tty_release_struct.description`:
 
@@ -919,11 +976,13 @@ tty_release
 
     vfs callback for close
 
-    :param struct inode \*inode:
+    :param inode:
         inode of tty
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file pointer for handle to tty
+    :type filp: struct file \*
 
 .. _`tty_release.description`:
 
@@ -956,11 +1015,13 @@ tty_open_current_tty
 
     get locked tty of current task
 
-    :param dev_t device:
+    :param device:
         device number
+    :type device: dev_t
 
-    :param struct file \*filp:
+    :param filp:
         file pointer to tty
+    :type filp: struct file \*
 
 .. _`tty_open_current_tty.description`:
 
@@ -981,14 +1042,17 @@ tty_lookup_driver
 
     lookup a tty driver for a given device file
 
-    :param dev_t device:
+    :param device:
         device number
+    :type device: dev_t
 
-    :param struct file \*filp:
+    :param filp:
         file pointer to tty
+    :type filp: struct file \*
 
-    :param int \*index:
+    :param index:
         index for the device in the \ ``return``\  driver
+    :type index: int \*
 
 .. _`tty_lookup_driver.description`:
 
@@ -1014,8 +1078,9 @@ tty_kopen
 
     open a tty device for kernel
 
-    :param dev_t device:
+    :param device:
         dev_t of device to open
+    :type device: dev_t
 
 .. _`tty_kopen.description`:
 
@@ -1046,14 +1111,17 @@ tty_open_by_driver
 
     open a tty device
 
-    :param dev_t device:
+    :param device:
         dev_t of device to open
+    :type device: dev_t
 
-    :param struct inode \*inode:
+    :param inode:
         inode of device file
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file pointer to tty
+    :type filp: struct file \*
 
 .. _`tty_open_by_driver.description`:
 
@@ -1083,11 +1151,13 @@ tty_open
 
     open a tty device
 
-    :param struct inode \*inode:
+    :param inode:
         inode of device file
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file pointer to tty
+    :type filp: struct file \*
 
 .. _`tty_open.description`:
 
@@ -1137,11 +1207,13 @@ tty_poll
 
     check tty status
 
-    :param struct file \*filp:
+    :param filp:
         file being polled
+    :type filp: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         poll wait structures to update
+    :type wait: poll_table \*
 
 .. _`tty_poll.description`:
 
@@ -1168,11 +1240,13 @@ tiocsti
 
     fake input character
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to fake input into
+    :type tty: struct tty_struct \*
 
-    :param char __user \*p:
+    :param p:
         pointer to character
+    :type p: char __user \*
 
 .. _`tiocsti.description`:
 
@@ -1208,11 +1282,13 @@ tiocgwinsz
 
     implement window query ioctl \ ``tty``\ ; tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param struct winsize __user \*arg:
+    :param arg:
         user buffer for result
+    :type arg: struct winsize __user \*
 
 .. _`tiocgwinsz.description`:
 
@@ -1238,11 +1314,13 @@ tty_do_resize
 
     resize event
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty being resized
+    :type tty: struct tty_struct \*
 
-    :param struct winsize \*ws:
+    :param ws:
         *undescribed*
+    :type ws: struct winsize \*
 
 .. _`tty_do_resize.description`:
 
@@ -1261,11 +1339,13 @@ tiocswinsz
 
     implement window size set ioctl \ ``tty``\ ; tty side of tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param struct winsize __user \*arg:
+    :param arg:
         user buffer for result
+    :type arg: struct winsize __user \*
 
 .. _`tiocswinsz.description`:
 
@@ -1294,8 +1374,9 @@ tioccons
 
     allow admin to move logical console
 
-    :param struct file \*file:
+    :param file:
         the file to become console
+    :type file: struct file \*
 
 .. _`tioccons.description`:
 
@@ -1311,37 +1392,6 @@ Locking
 
 uses redirect_lock to guard the redirect information
 
-.. _`fionbio`:
-
-fionbio
-=======
-
-.. c:function:: int fionbio(struct file *file, int __user *p)
-
-    non blocking ioctl
-
-    :param struct file \*file:
-        file to set blocking value
-
-    :param int __user \*p:
-        user parameter
-
-.. _`fionbio.description`:
-
-Description
------------
-
-Historical tty interfaces had a blocking control ioctl before
-the generic functionality existed. This piece of history is preserved
-in the expected tty API of posix OS's.
-
-.. _`fionbio.locking`:
-
-Locking
--------
-
-none, the open file handle ensures it won't go away.
-
 .. _`tiocsetd`:
 
 tiocsetd
@@ -1351,11 +1401,13 @@ tiocsetd
 
     set line discipline
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
-    :param int __user \*p:
+    :param p:
         pointer to user data
+    :type p: int __user \*
 
 .. _`tiocsetd.description`:
 
@@ -1380,11 +1432,13 @@ tiocgetd
 
     get line discipline
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
-    :param int __user \*p:
+    :param p:
         pointer to user data
+    :type p: int __user \*
 
 .. _`tiocgetd.description`:
 
@@ -1410,11 +1464,13 @@ send_break
 
     performed time break
 
-    :param struct tty_struct \*tty:
+    :param tty:
         device to break on
+    :type tty: struct tty_struct \*
 
-    :param unsigned int duration:
+    :param duration:
         timeout in mS
+    :type duration: unsigned int
 
 .. _`send_break.description`:
 
@@ -1440,11 +1496,13 @@ tty_tiocmget
 
     get modem status
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
-    :param int __user \*p:
+    :param p:
         pointer to result
+    :type p: int __user \*
 
 .. _`tty_tiocmget.description`:
 
@@ -1470,14 +1528,17 @@ tty_tiocmset
 
     set modem status
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty device
+    :type tty: struct tty_struct \*
 
-    :param unsigned int cmd:
+    :param cmd:
         command - clear bits, set bits or set all
+    :type cmd: unsigned int
 
-    :param unsigned __user \*p:
+    :param p:
         pointer to desired bits
+    :type p: unsigned __user \*
 
 .. _`tty_tiocmset.description`:
 
@@ -1501,11 +1562,13 @@ alloc_tty_struct
 
 .. c:function:: struct tty_struct *alloc_tty_struct(struct tty_driver *driver, int idx)
 
-    :param struct tty_driver \*driver:
+    :param driver:
         *undescribed*
+    :type driver: struct tty_driver \*
 
-    :param int idx:
+    :param idx:
         *undescribed*
+    :type idx: int
 
 .. _`alloc_tty_struct.description`:
 
@@ -1530,11 +1593,13 @@ tty_put_char
 
     write one character to a tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty
+    :type tty: struct tty_struct \*
 
-    :param unsigned char ch:
+    :param ch:
         character
+    :type ch: unsigned char
 
 .. _`tty_put_char.description`:
 
@@ -1561,16 +1626,19 @@ tty_register_device
 
     register a tty device
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the tty driver that describes the tty device
+    :type driver: struct tty_driver \*
 
-    :param unsigned index:
+    :param index:
         the index in the tty driver for this tty device
+    :type index: unsigned
 
-    :param struct device \*device:
+    :param device:
         a struct device that is associated with this tty device.
         This field is optional, if there is no known struct device
         for this tty device it can be set to NULL safely.
+    :type device: struct device \*
 
 .. _`tty_register_device.description`:
 
@@ -1601,22 +1669,27 @@ tty_register_device_attr
 
     register a tty device
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the tty driver that describes the tty device
+    :type driver: struct tty_driver \*
 
-    :param unsigned index:
+    :param index:
         the index in the tty driver for this tty device
+    :type index: unsigned
 
-    :param struct device \*device:
+    :param device:
         a struct device that is associated with this tty device.
         This field is optional, if there is no known struct device
         for this tty device it can be set to NULL safely.
+    :type device: struct device \*
 
-    :param void \*drvdata:
+    :param drvdata:
         Driver data to be set to device.
+    :type drvdata: void \*
 
-    :param const struct attribute_group \*\*attr_grp:
+    :param attr_grp:
         Attribute group to be set on device.
+    :type attr_grp: const struct attribute_group \*\*
 
 .. _`tty_register_device_attr.description`:
 
@@ -1647,11 +1720,13 @@ tty_unregister_device
 
     unregister a tty device
 
-    :param struct tty_driver \*driver:
+    :param driver:
         the tty driver that describes the tty device
+    :type driver: struct tty_driver \*
 
-    :param unsigned index:
+    :param index:
         the index in the tty driver for this tty device
+    :type index: unsigned
 
 .. _`tty_unregister_device.description`:
 
@@ -1677,14 +1752,17 @@ Locking
 
     - allocate tty driver
 
-    :param unsigned int lines:
+    :param lines:
         count of lines this driver can handle at most
+    :type lines: unsigned int
 
-    :param struct module \*owner:
+    :param owner:
         module which is responsible for this driver
+    :type owner: struct module \*
 
-    :param unsigned long flags:
+    :param flags:
         some of TTY_DRIVER\_\* flags, will be set in driver->flags
+    :type flags: unsigned long
 
 .. _`__tty_alloc_driver.description`:
 

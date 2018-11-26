@@ -10,14 +10,17 @@ radeon_sa_event
 
     Check if we can stop waiting
 
-    :param struct radeon_sa_manager \*sa_manager:
+    :param sa_manager:
         pointer to the sa_manager
+    :type sa_manager: struct radeon_sa_manager \*
 
-    :param unsigned size:
+    :param size:
         number of bytes we want to allocate
+    :type size: unsigned
 
-    :param unsigned align:
+    :param align:
         alignment we need to match
+    :type align: unsigned
 
 .. _`radeon_sa_event.description`:
 

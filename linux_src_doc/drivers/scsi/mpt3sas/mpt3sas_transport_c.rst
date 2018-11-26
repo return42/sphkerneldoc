@@ -10,11 +10,13 @@
 
     sas node search
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address of expander or sas host
+    :type sas_address: u64
 
 .. _`_transport_sas_node_find_by_sas_address.context`:
 
@@ -38,8 +40,9 @@ the sas_node object.
 
 .. c:function:: enum sas_linkrate _transport_convert_phy_link_rate(u8 link_rate)
 
-    :param u8 link_rate:
+    :param link_rate:
         link rate returned from mpt firmware
+    :type link_rate: u8
 
 .. _`_transport_convert_phy_link_rate.description`:
 
@@ -57,14 +60,17 @@ Convert link_rate from mpi fusion into sas_transport form.
 
     set identify for phys and end devices
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         device handle
+    :type handle: u16
 
-    :param struct sas_identify \*identify:
+    :param identify:
         sas identify info
+    :type identify: struct sas_identify \*
 
 .. _`_transport_set_identify.description`:
 
@@ -73,7 +79,12 @@ Description
 
 Populates sas identify info.
 
-Returns 0 for success, non-zero for failure.
+.. _`_transport_set_identify.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_transport_done`:
 
@@ -84,17 +95,21 @@ mpt3sas_transport_done
 
     internal transport layer callback handler.
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 smid:
+    :param smid:
         system request message index
+    :type smid: u16
 
-    :param u8 msix_index:
+    :param msix_index:
         MSIX table index supplied by the OS
+    :type msix_index: u8
 
-    :param u32 reply:
+    :param reply:
         reply message frame(lower 32bit addr)
+    :type reply: u32
 
 .. _`mpt3sas_transport_done.description`:
 
@@ -104,7 +119,12 @@ Description
 Callback handler when sending internal generated transport cmds.
 The callback index passed is \`ioc->transport_cb_idx\`
 
-Return 1 meaning mf should be freed from \_base_interrupt
+.. _`mpt3sas_transport_done.return`:
+
+Return
+------
+
+1 meaning mf should be freed from \_base_interrupt
 0 means the mf is freed from this function.
 
 .. _`_transport_expander_report_manufacture`:
@@ -116,14 +136,17 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
     obtain SMP report_manufacture
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         expander sas address
+    :type sas_address: u64
 
-    :param struct sas_expander_device \*edev:
+    :param edev:
         the sas_expander_device object
+    :type edev: struct sas_expander_device \*
 
 .. _`_transport_expander_report_manufacture.description`:
 
@@ -132,7 +155,12 @@ Description
 
 Fills in the sas_expander_device object when SMP port is created.
 
-Returns 0 for success, non-zero for failure.
+.. _`_transport_expander_report_manufacture.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`_transport_delete_port`:
 
@@ -143,18 +171,13 @@ Returns 0 for success, non-zero for failure.
 
     helper function to removing a port
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_port \*mpt3sas_port:
+    :param mpt3sas_port:
         mpt3sas per port object
-
-.. _`_transport_delete_port.description`:
-
-Description
------------
-
-Returns nothing.
+    :type mpt3sas_port: struct _sas_port \*
 
 .. _`_transport_delete_phy`:
 
@@ -165,21 +188,17 @@ Returns nothing.
 
     helper function to removing single phy from port
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_port \*mpt3sas_port:
+    :param mpt3sas_port:
         mpt3sas per port object
+    :type mpt3sas_port: struct _sas_port \*
 
-    :param struct _sas_phy \*mpt3sas_phy:
+    :param mpt3sas_phy:
         mpt3sas per phy object
-
-.. _`_transport_delete_phy.description`:
-
-Description
------------
-
-Returns nothing.
+    :type mpt3sas_phy: struct _sas_phy \*
 
 .. _`_transport_add_phy`:
 
@@ -190,21 +209,17 @@ Returns nothing.
 
     helper function to adding single phy to port
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_port \*mpt3sas_port:
+    :param mpt3sas_port:
         mpt3sas per port object
+    :type mpt3sas_port: struct _sas_port \*
 
-    :param struct _sas_phy \*mpt3sas_phy:
+    :param mpt3sas_phy:
         mpt3sas per phy object
-
-.. _`_transport_add_phy.description`:
-
-Description
------------
-
-Returns nothing.
+    :type mpt3sas_phy: struct _sas_phy \*
 
 .. _`_transport_add_phy_to_an_existing_port`:
 
@@ -215,24 +230,21 @@ Returns nothing.
 
     adding new phy to existing port
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_node \*sas_node:
+    :param sas_node:
         sas node object (either expander or sas host)
+    :type sas_node: struct _sas_node \*
 
-    :param struct _sas_phy \*mpt3sas_phy:
+    :param mpt3sas_phy:
         mpt3sas per phy object
+    :type mpt3sas_phy: struct _sas_phy \*
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address of device/expander were phy needs to be added to
-
-.. _`_transport_add_phy_to_an_existing_port.description`:
-
-Description
------------
-
-Returns nothing.
+    :type sas_address: u64
 
 .. _`_transport_del_phy_from_an_existing_port`:
 
@@ -243,21 +255,17 @@ Returns nothing.
 
     delete phy from existing port
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_node \*sas_node:
+    :param sas_node:
         sas node object (either expander or sas host)
+    :type sas_node: struct _sas_node \*
 
-    :param struct _sas_phy \*mpt3sas_phy:
+    :param mpt3sas_phy:
         mpt3sas per phy object
-
-.. _`_transport_del_phy_from_an_existing_port.description`:
-
-Description
------------
-
-Returns nothing.
+    :type mpt3sas_phy: struct _sas_phy \*
 
 .. _`_transport_sanity_check`:
 
@@ -268,14 +276,17 @@ Returns nothing.
 
     sanity check when adding a new port
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_node \*sas_node:
+    :param sas_node:
         sas node object (either expander or sas host)
+    :type sas_node: struct _sas_node \*
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address of device being added
+    :type sas_address: u64
 
 .. _`_transport_sanity_check.description`:
 
@@ -293,14 +304,17 @@ mpt3sas_transport_port_add
 
     insert port to the list
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u16 handle:
+    :param handle:
         handle of attached device
+    :type handle: u16
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address of parent expander or sas host
+    :type sas_address: u64
 
 .. _`mpt3sas_transport_port_add.context`:
 
@@ -316,7 +330,12 @@ Description
 
 Adding new port object to the sas_node->sas_port_list.
 
-Returns mpt3sas_port.
+.. _`mpt3sas_transport_port_add.return`:
+
+Return
+------
+
+mpt3sas_port.
 
 .. _`mpt3sas_transport_port_remove`:
 
@@ -327,14 +346,17 @@ mpt3sas_transport_port_remove
 
     remove port from the list
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address of attached device
+    :type sas_address: u64
 
-    :param u64 sas_address_parent:
+    :param sas_address_parent:
         sas address of parent expander or sas host
+    :type sas_address_parent: u64
 
 .. _`mpt3sas_transport_port_remove.context`:
 
@@ -351,8 +373,6 @@ Description
 Removing object and freeing associated memory from the
 ioc->sas_port_list.
 
-Return nothing.
-
 .. _`mpt3sas_transport_add_host_phy`:
 
 mpt3sas_transport_add_host_phy
@@ -362,24 +382,28 @@ mpt3sas_transport_add_host_phy
 
     report sas_host phy to transport
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_phy \*mpt3sas_phy:
+    :param mpt3sas_phy:
         mpt3sas per phy object
+    :type mpt3sas_phy: struct _sas_phy \*
 
-    :param Mpi2SasPhyPage0_t phy_pg0:
+    :param phy_pg0:
         sas phy page 0
+    :type phy_pg0: Mpi2SasPhyPage0_t
 
-    :param struct device \*parent_dev:
+    :param parent_dev:
         parent device class object
+    :type parent_dev: struct device \*
 
-.. _`mpt3sas_transport_add_host_phy.description`:
+.. _`mpt3sas_transport_add_host_phy.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_transport_add_expander_phy`:
 
@@ -390,24 +414,28 @@ mpt3sas_transport_add_expander_phy
 
     report expander phy to transport
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct _sas_phy \*mpt3sas_phy:
+    :param mpt3sas_phy:
         mpt3sas per phy object
+    :type mpt3sas_phy: struct _sas_phy \*
 
-    :param Mpi2ExpanderPage1_t expander_pg1:
+    :param expander_pg1:
         expander page 1
+    :type expander_pg1: Mpi2ExpanderPage1_t
 
-    :param struct device \*parent_dev:
+    :param parent_dev:
         parent device class object
+    :type parent_dev: struct device \*
 
-.. _`mpt3sas_transport_add_expander_phy.description`:
+.. _`mpt3sas_transport_add_expander_phy.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`mpt3sas_transport_update_links`:
 
@@ -418,27 +446,25 @@ mpt3sas_transport_update_links
 
     refreshing phy link changes
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param u64 sas_address:
+    :param sas_address:
         sas address of parent expander or sas host
+    :type sas_address: u64
 
-    :param u16 handle:
+    :param handle:
         attached device handle
+    :type handle: u16
 
-    :param u8 phy_number:
-        *undescribed*
+    :param phy_number:
+        phy number
+    :type phy_number: u8
 
-    :param u8 link_rate:
+    :param link_rate:
         new link rate
-
-.. _`mpt3sas_transport_update_links.description`:
-
-Description
------------
-
-Returns nothing.
+    :type link_rate: u8
 
 .. _`_transport_get_expander_phy_error_log`:
 
@@ -449,18 +475,20 @@ Returns nothing.
 
     return expander counters
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct sas_phy \*phy:
+    :param phy:
         The sas phy object
+    :type phy: struct sas_phy \*
 
-.. _`_transport_get_expander_phy_error_log.description`:
+.. _`_transport_get_expander_phy_error_log.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`_transport_get_linkerrors`:
 
@@ -471,15 +499,16 @@ Returns 0 for success, non-zero for failure.
 
     return phy counters for both hba and expanders
 
-    :param struct sas_phy \*phy:
+    :param phy:
         The sas phy object
+    :type phy: struct sas_phy \*
 
-.. _`_transport_get_linkerrors.description`:
+.. _`_transport_get_linkerrors.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`_transport_get_enclosure_identifier`:
 
@@ -488,11 +517,13 @@ Returns 0 for success, non-zero for failure.
 
 .. c:function:: int _transport_get_enclosure_identifier(struct sas_rphy *rphy, u64 *identifier)
 
-    :param struct sas_rphy \*rphy:
-        *undescribed*
+    :param rphy:
+        The sas phy object
+    :type rphy: struct sas_rphy \*
 
-    :param u64 \*identifier:
-        *undescribed*
+    :param identifier:
+        ?
+    :type identifier: u64 \*
 
 .. _`_transport_get_enclosure_identifier.description`:
 
@@ -500,7 +531,13 @@ Description
 -----------
 
 Obtain the enclosure logical id for an expander.
-Returns 0 for success, non-zero for failure.
+
+.. _`_transport_get_enclosure_identifier.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`_transport_get_bay_identifier`:
 
@@ -509,15 +546,16 @@ Returns 0 for success, non-zero for failure.
 
 .. c:function:: int _transport_get_bay_identifier(struct sas_rphy *rphy)
 
-    :param struct sas_rphy \*rphy:
-        *undescribed*
+    :param rphy:
+        The sas phy object
+    :type rphy: struct sas_rphy \*
 
-.. _`_transport_get_bay_identifier.description`:
+.. _`_transport_get_bay_identifier.return`:
 
-Description
------------
+Return
+------
 
-Returns the slot id for a device that resides inside an enclosure.
+the slot id for a device that resides inside an enclosure.
 
 .. _`_transport_expander_phy_control`:
 
@@ -528,21 +566,24 @@ Returns the slot id for a device that resides inside an enclosure.
 
     expander phy control
 
-    :param struct MPT3SAS_ADAPTER \*ioc:
+    :param ioc:
         per adapter object
+    :type ioc: struct MPT3SAS_ADAPTER \*
 
-    :param struct sas_phy \*phy:
+    :param phy:
         The sas phy object
+    :type phy: struct sas_phy \*
 
-    :param u8 phy_operation:
-        *undescribed*
+    :param phy_operation:
+        ?
+    :type phy_operation: u8
 
-.. _`_transport_expander_phy_control.description`:
+.. _`_transport_expander_phy_control.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`_transport_phy_reset`:
 
@@ -551,18 +592,20 @@ Returns 0 for success, non-zero for failure.
 
 .. c:function:: int _transport_phy_reset(struct sas_phy *phy, int hard_reset)
 
-    :param struct sas_phy \*phy:
+    :param phy:
         The sas phy object
+    :type phy: struct sas_phy \*
 
-    :param int hard_reset:
+    :param hard_reset:
         *undescribed*
+    :type hard_reset: int
 
-.. _`_transport_phy_reset.description`:
+.. _`_transport_phy_reset.return`:
 
-Description
------------
+Return
+------
 
-Returns 0 for success, non-zero for failure.
+0 for success, non-zero for failure.
 
 .. _`_transport_phy_enable`:
 
@@ -573,11 +616,13 @@ Returns 0 for success, non-zero for failure.
 
     enable/disable phys
 
-    :param struct sas_phy \*phy:
+    :param phy:
         The sas phy object
+    :type phy: struct sas_phy \*
 
-    :param int enable:
+    :param enable:
         enable phy when true
+    :type enable: int
 
 .. _`_transport_phy_enable.description`:
 
@@ -585,7 +630,13 @@ Description
 -----------
 
 Only support sas_host direct attached phys.
-Returns 0 for success, non-zero for failure.
+
+.. _`_transport_phy_enable.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`_transport_phy_speed`:
 
@@ -596,11 +647,13 @@ Returns 0 for success, non-zero for failure.
 
     set phy min/max link rates
 
-    :param struct sas_phy \*phy:
+    :param phy:
         The sas phy object
+    :type phy: struct sas_phy \*
 
-    :param struct sas_phy_linkrates \*rates:
+    :param rates:
         rates defined in sas_phy_linkrates
+    :type rates: struct sas_phy_linkrates \*
 
 .. _`_transport_phy_speed.description`:
 
@@ -608,7 +661,13 @@ Description
 -----------
 
 Only support sas_host direct attached phys.
-Returns 0 for success, non-zero for failure.
+
+.. _`_transport_phy_speed.return`:
+
+Return
+------
+
+0 for success, non-zero for failure.
 
 .. _`_transport_smp_handler`:
 
@@ -619,14 +678,17 @@ Returns 0 for success, non-zero for failure.
 
     transport portal for smp passthru
 
-    :param struct bsg_job \*job:
-        *undescribed*
+    :param job:
+        ?
+    :type job: struct bsg_job \*
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         shost object
+    :type shost: struct Scsi_Host \*
 
-    :param struct sas_rphy \*rphy:
+    :param rphy:
         sas transport rphy object
+    :type rphy: struct sas_rphy \*
 
 .. _`_transport_smp_handler.description`:
 

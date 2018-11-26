@@ -10,14 +10,17 @@
 
     copy to user with source-read error exception handling
 
-    :param const void \*addr:
+    :param addr:
         source kernel address
+    :type addr: const void \*
 
-    :param size_t bytes:
+    :param bytes:
         total transfer length
+    :type bytes: size_t
 
-    :param struct iov_iter \*i:
+    :param i:
         *undescribed*
+    :type i: struct iov_iter \*
 
 .. _`_copy_to_iter_mcsafe.description`:
 
@@ -53,14 +56,17 @@ See MCSAFE_TEST for self-test.
 
     write destination through cpu cache
 
-    :param void \*addr:
+    :param addr:
         destination kernel address
+    :type addr: void \*
 
-    :param size_t bytes:
+    :param bytes:
         total transfer length
+    :type bytes: size_t
 
-    :param struct iov_iter \*i:
+    :param i:
         *undescribed*
+    :type i: struct iov_iter \*
 
 .. _`_copy_from_iter_flushcache.description`:
 
@@ -75,6 +81,35 @@ all iterator types. The \_copy_from_iter_nocache() only attempts to
 bypass the cache for the ITER_IOVEC case, and on some archs may use
 instructions that strand dirty-data in the cache.
 
+.. _`iov_iter_discard`:
+
+iov_iter_discard
+================
+
+.. c:function:: void iov_iter_discard(struct iov_iter *i, unsigned int direction, size_t count)
+
+    Initialise an I/O iterator that discards data
+
+    :param i:
+        The iterator to initialise.
+    :type i: struct iov_iter \*
+
+    :param direction:
+        The direction of the transfer.
+    :type direction: unsigned int
+
+    :param count:
+        The size of the I/O buffer in bytes.
+    :type count: size_t
+
+.. _`iov_iter_discard.description`:
+
+Description
+-----------
+
+Set up an I/O iterator that just discards everything that's written to it.
+It's only available as a READ iterator.
+
 .. _`import_iovec`:
 
 import_iovec
@@ -84,24 +119,30 @@ import_iovec
 
     Copy an array of \ :c:type:`struct iovec <iovec>`\  from userspace into the kernel, check that it is valid, and initialize a new \ :c:type:`struct iov_iter <iov_iter>`\  iterator to access it.
 
-    :param int type:
+    :param type:
         One of \ ``READ``\  or \ ``WRITE``\ .
+    :type type: int
 
-    :param const struct iovec __user \*uvector:
+    :param uvector:
         Pointer to the userspace array.
+    :type uvector: const struct iovec __user \*
 
-    :param unsigned nr_segs:
+    :param nr_segs:
         Number of elements in userspace array.
+    :type nr_segs: unsigned
 
-    :param unsigned fast_segs:
+    :param fast_segs:
         Number of elements in \ ``iov``\ .
+    :type fast_segs: unsigned
 
-    :param struct iovec \*\*iov:
+    :param iov:
         (input and output parameter) Pointer to pointer to (usually small
         on-stack) kernel array.
+    :type iov: struct iovec \*\*
 
-    :param struct iov_iter \*i:
+    :param i:
         Pointer to iterator that will be initialized on success.
+    :type i: struct iov_iter \*
 
 .. _`import_iovec.description`:
 

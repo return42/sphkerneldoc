@@ -10,14 +10,17 @@ eeprom_93cx6_read
 
     Read a word from eeprom
 
-    :param struct eeprom_93cx6 \*eeprom:
+    :param eeprom:
         Pointer to eeprom structure
+    :type eeprom: struct eeprom_93cx6 \*
 
-    :param const u8 word:
+    :param word:
         Word index from where we should start reading
+    :type word: const u8
 
-    :param u16 \*data:
+    :param data:
         target pointer where the information will have to be stored
+    :type data: u16 \*
 
 .. _`eeprom_93cx6_read.description`:
 
@@ -36,17 +39,21 @@ eeprom_93cx6_multiread
 
     Read multiple words from eeprom
 
-    :param struct eeprom_93cx6 \*eeprom:
+    :param eeprom:
         Pointer to eeprom structure
+    :type eeprom: struct eeprom_93cx6 \*
 
-    :param const u8 word:
+    :param word:
         Word index from where we should start reading
+    :type word: const u8
 
-    :param __le16 \*data:
+    :param data:
         target pointer where the information will have to be stored
+    :type data: __le16 \*
 
-    :param const u16 words:
+    :param words:
         Number of words that should be read.
+    :type words: const u16
 
 .. _`eeprom_93cx6_multiread.description`:
 
@@ -68,14 +75,17 @@ eeprom_93cx6_readb
 
     Read a byte from eeprom
 
-    :param struct eeprom_93cx6 \*eeprom:
+    :param eeprom:
         Pointer to eeprom structure
+    :type eeprom: struct eeprom_93cx6 \*
 
-    :param const u8 byte:
+    :param byte:
         *undescribed*
+    :type byte: const u8
 
-    :param u8 \*data:
+    :param data:
         target pointer where the information will have to be stored
+    :type data: u8 \*
 
 .. _`eeprom_93cx6_readb.description`:
 
@@ -94,17 +104,21 @@ eeprom_93cx6_multireadb
 
     Read multiple bytes from eeprom
 
-    :param struct eeprom_93cx6 \*eeprom:
+    :param eeprom:
         Pointer to eeprom structure
+    :type eeprom: struct eeprom_93cx6 \*
 
-    :param const u8 byte:
+    :param byte:
         Index from where we should start reading
+    :type byte: const u8
 
-    :param u8 \*data:
+    :param data:
         target pointer where the information will have to be stored
+    :type data: u8 \*
 
-    :param const u16 bytes:
+    :param bytes:
         *undescribed*
+    :type bytes: const u16
 
 .. _`eeprom_93cx6_multireadb.description`:
 
@@ -123,11 +137,13 @@ eeprom_93cx6_wren
 
     set the write enable state
 
-    :param struct eeprom_93cx6 \*eeprom:
+    :param eeprom:
         Pointer to eeprom structure
+    :type eeprom: struct eeprom_93cx6 \*
 
-    :param bool enable:
+    :param enable:
         true to enable writes, otherwise disable writes
+    :type enable: bool
 
 .. _`eeprom_93cx6_wren.description`:
 
@@ -146,14 +162,17 @@ eeprom_93cx6_write
 
     write data to the EEPROM
 
-    :param struct eeprom_93cx6 \*eeprom:
+    :param eeprom:
         Pointer to eeprom structure
+    :type eeprom: struct eeprom_93cx6 \*
 
-    :param u8 addr:
+    :param addr:
         Address to write data to.
+    :type addr: u8
 
-    :param u16 data:
+    :param data:
         The data to write to address \ ``addr``\ .
+    :type data: u16
 
 .. _`eeprom_93cx6_write.description`:
 

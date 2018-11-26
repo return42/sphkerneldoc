@@ -10,11 +10,13 @@ gscps2_interrupt
 
     Interruption service routine
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*dev:
+    :param dev:
         *undescribed*
+    :type dev: void \*
 
 .. _`gscps2_interrupt.description`:
 
@@ -38,8 +40,9 @@ gscps2_probe
 
     Probes PS2 devices
 
-    :param struct parisc_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct parisc_device \*
 
 .. _`gscps2_remove`:
 
@@ -50,8 +53,9 @@ gscps2_remove
 
     Removes PS2 devices
 
-    :param struct parisc_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct parisc_device \*
 
 .. This file was automatic generated / don't edit.
 

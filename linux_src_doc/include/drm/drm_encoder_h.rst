@@ -194,12 +194,13 @@ appropriate for a given connector or set of connectors.
 drm_encoder_index
 =================
 
-.. c:function:: unsigned int drm_encoder_index(struct drm_encoder *encoder)
+.. c:function:: unsigned int drm_encoder_index(const struct drm_encoder *encoder)
 
     find the index of a registered encoder
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         encoder to find index for
+    :type encoder: const struct drm_encoder \*
 
 .. _`drm_encoder_index.description`:
 
@@ -208,6 +209,27 @@ Description
 
 Given a registered encoder, return the index of that encoder within a DRM
 device's list of encoders.
+
+.. _`drm_encoder_mask`:
+
+drm_encoder_mask
+================
+
+.. c:function:: u32 drm_encoder_mask(const struct drm_encoder *encoder)
+
+    find the mask of a registered ENCODER
+
+    :param encoder:
+        encoder to find mask for
+    :type encoder: const struct drm_encoder \*
+
+.. _`drm_encoder_mask.description`:
+
+Description
+-----------
+
+Given a registered encoder, return the mask bit of that encoder for an
+encoder's possible_clones field.
 
 .. _`drm_encoder_crtc_ok`:
 
@@ -218,11 +240,13 @@ drm_encoder_crtc_ok
 
     can a given crtc drive a given encoder?
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         encoder to test
+    :type encoder: struct drm_encoder \*
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         crtc to test
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_encoder_crtc_ok.description`:
 
@@ -240,14 +264,17 @@ drm_encoder_find
 
     find a \ :c:type:`struct drm_encoder <drm_encoder>`\ 
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file to check for lease against.
+    :type file_priv: struct drm_file \*
 
-    :param uint32_t id:
+    :param id:
         encoder id
+    :type id: uint32_t
 
 .. _`drm_encoder_find.description`:
 
@@ -266,14 +293,17 @@ drm_for_each_encoder_mask
 
     iterate over encoders specified by bitmask
 
-    :param  encoder:
+    :param encoder:
         the loop cursor
+    :type encoder: 
 
-    :param  dev:
+    :param dev:
         the DRM device
+    :type dev: 
 
-    :param  encoder_mask:
+    :param encoder_mask:
         bitmask of encoder indices
+    :type encoder_mask: 
 
 .. _`drm_for_each_encoder_mask.description`:
 
@@ -291,11 +321,13 @@ drm_for_each_encoder
 
     iterate over all encoders
 
-    :param  encoder:
+    :param encoder:
         the loop cursor
+    :type encoder: 
 
-    :param  dev:
+    :param dev:
         the DRM device
+    :type dev: 
 
 .. _`drm_for_each_encoder.description`:
 

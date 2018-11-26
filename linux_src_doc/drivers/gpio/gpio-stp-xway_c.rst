@@ -1,6 +1,30 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpio/gpio-stp-xway.c
 
+.. _`xway_stp_get`:
+
+xway_stp_get
+============
+
+.. c:function:: int xway_stp_get(struct gpio_chip *gc, unsigned int gpio)
+
+    gpio_chip->get - get gpios.
+
+    :param gc:
+        Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
+
+    :param gpio:
+        GPIO signal number.
+    :type gpio: unsigned int
+
+.. _`xway_stp_get.description`:
+
+Description
+-----------
+
+Gets the shadow value.
+
 .. _`xway_stp_set`:
 
 xway_stp_set
@@ -10,14 +34,17 @@ xway_stp_set
 
     gpio_chip->set - set gpios.
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
 
-    :param unsigned gpio:
+    :param gpio:
         GPIO signal number.
+    :type gpio: unsigned
 
-    :param int val:
+    :param val:
         Value to be written to specified signal.
+    :type val: int
 
 .. _`xway_stp_set.description`:
 
@@ -35,14 +62,17 @@ xway_stp_dir_out
 
     gpio_chip->dir_out - set gpio direction.
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
 
-    :param unsigned gpio:
+    :param gpio:
         GPIO signal number.
+    :type gpio: unsigned
 
-    :param int val:
+    :param val:
         Value to be written to specified signal.
+    :type val: int
 
 .. _`xway_stp_dir_out.description`:
 
@@ -60,11 +90,13 @@ xway_stp_request
 
     gpio_chip->request
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         Pointer to gpio_chip device structure.
+    :type gc: struct gpio_chip \*
 
-    :param unsigned gpio:
+    :param gpio:
         GPIO signal number.
+    :type gpio: unsigned
 
 .. _`xway_stp_request.description`:
 
@@ -82,8 +114,9 @@ xway_stp_hw_init
 
     Configure the STP unit and enable the clock gate
 
-    :param struct xway_stp \*chip:
+    :param chip:
         *undescribed*
+    :type chip: struct xway_stp \*
 
 .. This file was automatic generated / don't edit.
 

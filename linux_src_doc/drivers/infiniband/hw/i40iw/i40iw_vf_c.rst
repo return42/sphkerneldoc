@@ -10,17 +10,21 @@ i40iw_manage_vf_pble_bp
 
     manage vf pble
 
-    :param struct i40iw_sc_cqp \*cqp:
+    :param cqp:
         cqp for cqp' sq wqe
+    :type cqp: struct i40iw_sc_cqp \*
 
-    :param struct i40iw_manage_vf_pble_info \*info:
+    :param info:
         pble info
+    :type info: struct i40iw_manage_vf_pble_info \*
 
-    :param u64 scratch:
+    :param scratch:
         pointer for completion
+    :type scratch: u64
 
-    :param bool post_sq:
+    :param post_sq:
         to post and ring
+    :type post_sq: bool
 
 .. This file was automatic generated / don't edit.
 

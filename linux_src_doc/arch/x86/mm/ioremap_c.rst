@@ -10,11 +10,13 @@ ioremap_nocache
 
     map bus memory into CPU space
 
-    :param resource_size_t phys_addr:
+    :param phys_addr:
         bus address of the memory
+    :type phys_addr: resource_size_t
 
-    :param unsigned long size:
+    :param size:
         size of the resource to map
+    :type size: unsigned long
 
 .. _`ioremap_nocache.description`:
 
@@ -51,11 +53,13 @@ ioremap_uc
 
     map bus memory into CPU space as strongly uncachable
 
-    :param resource_size_t phys_addr:
+    :param phys_addr:
         bus address of the memory
+    :type phys_addr: resource_size_t
 
-    :param unsigned long size:
+    :param size:
         size of the resource to map
+    :type size: unsigned long
 
 .. _`ioremap_uc.description`:
 
@@ -95,11 +99,13 @@ ioremap_wc
 
     map memory into CPU space write combined
 
-    :param resource_size_t phys_addr:
+    :param phys_addr:
         bus address of the memory
+    :type phys_addr: resource_size_t
 
-    :param unsigned long size:
+    :param size:
         size of the resource to map
+    :type size: unsigned long
 
 .. _`ioremap_wc.description`:
 
@@ -120,11 +126,13 @@ ioremap_wt
 
     map memory into CPU space write through
 
-    :param resource_size_t phys_addr:
+    :param phys_addr:
         bus address of the memory
+    :type phys_addr: resource_size_t
 
-    :param unsigned long size:
+    :param size:
         size of the resource to map
+    :type size: unsigned long
 
 .. _`ioremap_wt.description`:
 
@@ -145,8 +153,9 @@ iounmap
 
     Free a IO remapping
 
-    :param volatile void __iomem \*addr:
+    :param addr:
         virtual address from ioremap\_\*
+    :type addr: volatile void __iomem \*
 
 .. _`iounmap.description`:
 

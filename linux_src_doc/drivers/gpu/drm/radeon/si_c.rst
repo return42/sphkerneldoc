@@ -10,14 +10,17 @@ si_get_allowed_info_register
 
     fetch the register for the info ioctl
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 reg:
+    :param reg:
         register offset in bytes
+    :type reg: u32
 
-    :param u32 \*val:
+    :param val:
         register value
+    :type val: u32 \*
 
 .. _`si_get_allowed_info_register.description`:
 
@@ -35,8 +38,9 @@ si_get_xclk
 
     get the xclk
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`si_get_xclk.description`:
 
@@ -55,11 +59,13 @@ si_gfx_is_lockup
 
     Check if the GFX engine is locked up
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param struct radeon_ring \*ring:
+    :param ring:
         radeon_ring structure holding ring information
+    :type ring: struct radeon_ring \*
 
 .. _`si_gfx_is_lockup.description`:
 
@@ -78,14 +84,17 @@ si_vm_decode_fault
 
     print human readable fault info
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
-    :param u32 status:
+    :param status:
         VM_CONTEXT1_PROTECTION_FAULT_STATUS register value
+    :type status: u32
 
-    :param u32 addr:
+    :param addr:
         VM_CONTEXT1_PROTECTION_FAULT_ADDR register value
+    :type addr: u32
 
 .. _`si_vm_decode_fault.description`:
 
@@ -103,8 +112,9 @@ si_get_gpu_clock_counter
 
     return GPU clock counter snapshot
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon_device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`si_get_gpu_clock_counter.description`:
 

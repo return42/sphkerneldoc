@@ -10,8 +10,9 @@ integrity_inode_get
 
     find or allocate an iint associated with an inode
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to the inode
+    :type inode: struct inode \*
 
 .. _`integrity_inode_get.description`:
 
@@ -29,8 +30,9 @@ integrity_inode_free
 
     called on security_inode_free
 
-    :param struct inode \*inode:
+    :param inode:
         pointer to the inode
+    :type inode: struct inode \*
 
 .. _`integrity_inode_free.description`:
 

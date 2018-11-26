@@ -10,11 +10,13 @@ inode_set_iversion_raw
 
     set i_version to the specified raw value
 
-    :param struct inode \*inode:
+    :param inode:
         inode to set
+    :type inode: struct inode \*
 
-    :param u64 val:
+    :param val:
         new i_version value to set
+    :type val: u64
 
 .. _`inode_set_iversion_raw.description`:
 
@@ -36,8 +38,9 @@ inode_peek_iversion_raw
 
     grab a "raw" iversion value
 
-    :param const struct inode \*inode:
+    :param inode:
         inode from which i_version should be read
+    :type inode: const struct inode \*
 
 .. _`inode_peek_iversion_raw.description`:
 
@@ -60,11 +63,13 @@ inode_set_iversion
 
     set i_version to a particular value
 
-    :param struct inode \*inode:
+    :param inode:
         inode to set
+    :type inode: struct inode \*
 
-    :param u64 val:
+    :param val:
         new i_version value to set
+    :type val: u64
 
 .. _`inode_set_iversion.description`:
 
@@ -87,11 +92,13 @@ inode_set_iversion_queried
 
     set i_version to a particular value as quereied
 
-    :param struct inode \*inode:
+    :param inode:
         inode to set
+    :type inode: struct inode \*
 
-    :param u64 val:
+    :param val:
         new i_version value to set
+    :type val: u64
 
 .. _`inode_set_iversion_queried.description`:
 
@@ -118,11 +125,13 @@ inode_maybe_inc_iversion
 
     increments i_version
 
-    :param struct inode \*inode:
+    :param inode:
         inode with the i_version that should be updated
+    :type inode: struct inode \*
 
-    :param bool force:
+    :param force:
         increment the counter even if it's not necessary?
+    :type force: bool
 
 .. _`inode_maybe_inc_iversion.description`:
 
@@ -150,8 +159,9 @@ inode_inc_iversion
 
     forcibly increment i_version
 
-    :param struct inode \*inode:
+    :param inode:
         inode that needs to be updated
+    :type inode: struct inode \*
 
 .. _`inode_inc_iversion.description`:
 
@@ -170,8 +180,9 @@ inode_iversion_need_inc
 
     is the i_version in need of being incremented?
 
-    :param struct inode \*inode:
+    :param inode:
         inode to check
+    :type inode: struct inode \*
 
 .. _`inode_iversion_need_inc.description`:
 
@@ -190,8 +201,9 @@ inode_inc_iversion_raw
 
     forcibly increment raw i_version
 
-    :param struct inode \*inode:
+    :param inode:
         inode that needs to be updated
+    :type inode: struct inode \*
 
 .. _`inode_inc_iversion_raw.description`:
 
@@ -214,8 +226,9 @@ inode_peek_iversion
 
     read i_version without flagging it to be incremented
 
-    :param const struct inode \*inode:
+    :param inode:
         inode from which i_version should be read
+    :type inode: const struct inode \*
 
 .. _`inode_peek_iversion.description`:
 
@@ -238,8 +251,9 @@ inode_query_iversion
 
     read i_version for later use
 
-    :param struct inode \*inode:
+    :param inode:
         inode from which i_version should be read
+    :type inode: struct inode \*
 
 .. _`inode_query_iversion.description`:
 
@@ -264,11 +278,13 @@ inode_eq_iversion_raw
 
     check whether the raw i_version counter has changed
 
-    :param const struct inode \*inode:
+    :param inode:
         inode to check
+    :type inode: const struct inode \*
 
-    :param u64 old:
+    :param old:
         old value to check against its i_version
+    :type old: u64
 
 .. _`inode_eq_iversion_raw.description`:
 
@@ -287,11 +303,13 @@ inode_eq_iversion
 
     check whether the i_version counter has changed
 
-    :param const struct inode \*inode:
+    :param inode:
         inode to check
+    :type inode: const struct inode \*
 
-    :param u64 old:
+    :param old:
         old value to check against its i_version
+    :type old: u64
 
 .. _`inode_eq_iversion.description`:
 

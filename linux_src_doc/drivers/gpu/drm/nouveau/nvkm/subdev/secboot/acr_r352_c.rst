@@ -101,17 +101,21 @@ acr_r352_generate_flcn_bl_desc
 
     generate generic BL descriptor for LS image
 
-    :param const struct nvkm_acr \*acr:
+    :param acr:
         *undescribed*
+    :type acr: const struct nvkm_acr \*
 
-    :param const struct ls_ucode_img \*img:
+    :param img:
         *undescribed*
+    :type img: const struct ls_ucode_img \*
 
-    :param u64 wpr_addr:
+    :param wpr_addr:
         *undescribed*
+    :type wpr_addr: u64
 
-    :param void \*_desc:
+    :param _desc:
         *undescribed*
+    :type _desc: void \*
 
 .. _`hsflcn_acr_desc`:
 
@@ -393,14 +397,17 @@ acr_r352_ls_ucode_img_load
 
     create a lsf_ucode_img and load it
 
-    :param const struct acr_r352 \*acr:
+    :param acr:
         *undescribed*
+    :type acr: const struct acr_r352 \*
 
-    :param const struct nvkm_secboot \*sb:
+    :param sb:
         *undescribed*
+    :type sb: const struct nvkm_secboot \*
 
-    :param enum nvkm_secboot_falcon falcon_id:
+    :param falcon_id:
         *undescribed*
+    :type falcon_id: enum nvkm_secboot_falcon
 
 .. _`acr_r352_ls_img_fill_headers`:
 
@@ -411,14 +418,17 @@ acr_r352_ls_img_fill_headers
 
     fill the WPR and LSB headers of an image
 
-    :param struct acr_r352 \*acr:
+    :param acr:
         ACR to use
+    :type acr: struct acr_r352 \*
 
-    :param struct ls_ucode_img_r352 \*img:
+    :param img:
         image to generate for
+    :type img: struct ls_ucode_img_r352 \*
 
-    :param u32 offset:
+    :param offset:
         offset in the WPR region where this image starts
+    :type offset: u32
 
 .. _`acr_r352_ls_img_fill_headers.description`:
 
@@ -444,11 +454,13 @@ acr_r352_ls_fill_headers
 
     fill WPR and LSB headers of all managed images
 
-    :param struct acr_r352 \*acr:
+    :param acr:
         *undescribed*
+    :type acr: struct acr_r352 \*
 
-    :param struct list_head \*imgs:
+    :param imgs:
         *undescribed*
+    :type imgs: struct list_head \*
 
 .. _`acr_r352_ls_write_wpr`:
 
@@ -459,17 +471,21 @@ acr_r352_ls_write_wpr
 
     write the WPR blob contents
 
-    :param struct acr_r352 \*acr:
+    :param acr:
         *undescribed*
+    :type acr: struct acr_r352 \*
 
-    :param struct list_head \*imgs:
+    :param imgs:
         *undescribed*
+    :type imgs: struct list_head \*
 
-    :param struct nvkm_gpuobj \*wpr_blob:
+    :param wpr_blob:
         *undescribed*
+    :type wpr_blob: struct nvkm_gpuobj \*
 
-    :param u64 wpr_addr:
+    :param wpr_addr:
         *undescribed*
+    :type wpr_addr: u64
 
 .. _`acr_r352_prepare_ls_blob`:
 
@@ -480,11 +496,13 @@ acr_r352_prepare_ls_blob
 
     prepare the LS blob
 
-    :param struct acr_r352 \*acr:
+    :param acr:
         *undescribed*
+    :type acr: struct acr_r352 \*
 
-    :param struct nvkm_secboot \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct nvkm_secboot \*
 
 .. _`acr_r352_prepare_ls_blob.description`:
 
@@ -505,23 +523,29 @@ acr_r352_prepare_hs_blob
 
     load and prepare a HS blob and BL descriptor
 
-    :param struct acr_r352 \*acr:
+    :param acr:
         *undescribed*
+    :type acr: struct acr_r352 \*
 
-    :param struct nvkm_secboot \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct nvkm_secboot \*
 
-    :param const char \*fw:
+    :param fw:
         *undescribed*
+    :type fw: const char \*
 
-    :param struct nvkm_gpuobj \*\*blob:
+    :param blob:
         *undescribed*
+    :type blob: struct nvkm_gpuobj \*\*
 
-    :param struct hsf_load_header \*load_header:
+    :param load_header:
         *undescribed*
+    :type load_header: struct hsf_load_header \*
 
-    :param bool patch:
+    :param patch:
         *undescribed*
+    :type patch: bool
 
 .. _`acr_r352_prepare_hs_blob.description`:
 
@@ -543,11 +567,13 @@ acr_r352_load_blobs
 
     load blobs common to all ACR V1 versions.
 
-    :param struct acr_r352 \*acr:
+    :param acr:
         *undescribed*
+    :type acr: struct acr_r352 \*
 
-    :param struct nvkm_secboot \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct nvkm_secboot \*
 
 .. _`acr_r352_load_blobs.description`:
 
@@ -567,17 +593,21 @@ acr_r352_load
 
     prepare HS falcon to run the specified blob, mapped.
 
-    :param struct nvkm_acr \*_acr:
+    :param _acr:
         *undescribed*
+    :type _acr: struct nvkm_acr \*
 
-    :param struct nvkm_falcon \*falcon:
+    :param falcon:
         *undescribed*
+    :type falcon: struct nvkm_falcon \*
 
-    :param struct nvkm_gpuobj \*blob:
+    :param blob:
         *undescribed*
+    :type blob: struct nvkm_gpuobj \*
 
-    :param u64 offset:
+    :param offset:
         *undescribed*
+    :type offset: u64
 
 .. _`acr_r352_load.description`:
 
@@ -595,11 +625,13 @@ acr_r352_wpr_is_set
 
     matches where it should be.
 
-    :param const struct acr_r352 \*acr:
+    :param acr:
         *undescribed*
+    :type acr: const struct acr_r352 \*
 
-    :param const struct nvkm_secboot \*sb:
+    :param sb:
         *undescribed*
+    :type sb: const struct nvkm_secboot \*
 
 .. _`acr_r352_reset_nopmu`:
 
@@ -610,14 +642,17 @@ acr_r352_reset_nopmu
 
     dummy reset method when no PMU firmware is loaded
 
-    :param struct acr_r352 \*acr:
+    :param acr:
         *undescribed*
+    :type acr: struct acr_r352 \*
 
-    :param struct nvkm_secboot \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct nvkm_secboot \*
 
-    :param unsigned long falcon_mask:
+    :param falcon_mask:
         *undescribed*
+    :type falcon_mask: unsigned long
 
 .. _`acr_r352_reset_nopmu.description`:
 
@@ -719,17 +754,21 @@ acr_r352_generate_pmu_bl_desc
 
     populate a DMEM BL descriptor for PMU LS image
 
-    :param const struct nvkm_acr \*acr:
+    :param acr:
         *undescribed*
+    :type acr: const struct nvkm_acr \*
 
-    :param const struct ls_ucode_img \*img:
+    :param img:
         *undescribed*
+    :type img: const struct ls_ucode_img \*
 
-    :param u64 wpr_addr:
+    :param wpr_addr:
         *undescribed*
+    :type wpr_addr: u64
 
-    :param void \*_desc:
+    :param _desc:
         *undescribed*
+    :type _desc: void \*
 
 .. This file was automatic generated / don't edit.
 

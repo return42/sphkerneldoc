@@ -10,8 +10,9 @@ spi_schedule_dv_device
 
     schedule domain validation to occur on the device
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         The device to validate
+    :type sdev: struct scsi_device \*
 
 .. _`spi_schedule_dv_device.description`:
 
@@ -32,8 +33,9 @@ spi_display_xfer_agreement
 
     Print the current target transfer agreement
 
-    :param struct scsi_target \*starget:
+    :param starget:
         The target for which to display the agreement
+    :type starget: struct scsi_target \*
 
 .. _`spi_display_xfer_agreement.description`:
 
@@ -53,11 +55,13 @@ spi_populate_tag_msg
 
     place a tag message in a buffer
 
-    :param unsigned char \*msg:
+    :param msg:
         pointer to the area to place the tag
+    :type msg: unsigned char \*
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         pointer to the scsi command for the tag
+    :type cmd: struct scsi_cmnd \*
 
 .. _`spi_populate_tag_msg.notes`:
 

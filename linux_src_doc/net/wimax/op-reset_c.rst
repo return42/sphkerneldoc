@@ -10,8 +10,9 @@ wimax_reset
 
     Reset a WiMAX device
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor
+    :type wimax_dev: struct wimax_dev \*
 
 .. _`wimax_reset.return`:
 

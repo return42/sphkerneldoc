@@ -10,11 +10,13 @@ ethqset2pinfo
 
     return port_info of an Ethernet Queue Set
 
-    :param struct adapter \*adap:
+    :param adap:
         the adapter
+    :type adap: struct adapter \*
 
-    :param int qset:
+    :param qset:
         Ethernet Queue Set
+    :type qset: int
 
 .. This file was automatic generated / don't edit.
 

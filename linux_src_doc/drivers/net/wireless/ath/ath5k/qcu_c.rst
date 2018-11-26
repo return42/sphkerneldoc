@@ -33,11 +33,13 @@ ath5k_hw_num_tx_pending
 
     Get number of pending frames for a  given queue
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int queue:
+    :param queue:
         One of enum ath5k_tx_queue_id
+    :type queue: unsigned int
 
 .. _`ath5k_hw_release_tx_queue`:
 
@@ -48,11 +50,13 @@ ath5k_hw_release_tx_queue
 
     Set a transmit queue inactive
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int queue:
+    :param queue:
         One of enum ath5k_tx_queue_id
+    :type queue: unsigned int
 
 .. _`ath5k_cw_validate`:
 
@@ -63,8 +67,9 @@ ath5k_cw_validate
 
     Make sure the given cw is valid
 
-    :param u16 cw_req:
+    :param cw_req:
         The contention window value to check
+    :type cw_req: u16
 
 .. _`ath5k_cw_validate.description`:
 
@@ -82,14 +87,17 @@ ath5k_hw_get_tx_queueprops
 
     Get properties for a transmit queue
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param int queue:
+    :param queue:
         One of enum ath5k_tx_queue_id
+    :type queue: int
 
-    :param struct ath5k_txq_info \*queue_info:
+    :param queue_info:
         The \ :c:type:`struct ath5k_txq_info <ath5k_txq_info>`\  to fill
+    :type queue_info: struct ath5k_txq_info \*
 
 .. _`ath5k_hw_set_tx_queueprops`:
 
@@ -100,14 +108,17 @@ ath5k_hw_set_tx_queueprops
 
     Set properties for a transmit queue
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param int queue:
+    :param queue:
         One of enum ath5k_tx_queue_id
+    :type queue: int
 
-    :param const struct ath5k_txq_info \*qinfo:
+    :param qinfo:
         The \ :c:type:`struct ath5k_txq_info <ath5k_txq_info>`\  to use
+    :type qinfo: const struct ath5k_txq_info \*
 
 .. _`ath5k_hw_set_tx_queueprops.description`:
 
@@ -125,14 +136,17 @@ ath5k_hw_setup_tx_queue
 
     Initialize a transmit queue
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum ath5k_tx_queue queue_type:
+    :param queue_type:
         One of enum ath5k_tx_queue
+    :type queue_type: enum ath5k_tx_queue
 
-    :param struct ath5k_txq_info \*queue_info:
+    :param queue_info:
         The \ :c:type:`struct ath5k_txq_info <ath5k_txq_info>`\  to use
+    :type queue_info: struct ath5k_txq_info \*
 
 .. _`ath5k_hw_setup_tx_queue.description`:
 
@@ -150,11 +164,13 @@ ath5k_hw_set_tx_retry_limits
 
     Set tx retry limits on DCU
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int queue:
+    :param queue:
         One of enum ath5k_tx_queue_id
+    :type queue: unsigned int
 
 .. _`ath5k_hw_set_tx_retry_limits.description`:
 
@@ -173,11 +189,13 @@ ath5k_hw_reset_tx_queue
 
     Initialize a single hw queue
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int queue:
+    :param queue:
         One of enum ath5k_tx_queue_id
+    :type queue: unsigned int
 
 .. _`ath5k_hw_reset_tx_queue.description`:
 
@@ -196,11 +214,13 @@ ath5k_hw_set_ifs_intervals
 
     Set global inter-frame spaces on DCU
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int slot_time:
+    :param slot_time:
         Slot time in us
+    :type slot_time: unsigned int
 
 .. _`ath5k_hw_set_ifs_intervals.description`:
 
@@ -219,8 +239,9 @@ ath5k_hw_init_queues
 
     Initialize tx queues
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_init_queues.description`:
 

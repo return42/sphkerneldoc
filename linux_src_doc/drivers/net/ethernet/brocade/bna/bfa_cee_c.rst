@@ -10,8 +10,9 @@ bfa_cee_attr_meminfo
 
     Returns the size of the DMA memory needed by CEE attributes
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bfa_cee_stats_meminfo`:
 
@@ -22,8 +23,9 @@ bfa_cee_stats_meminfo
 
     Returns the size of the DMA memory needed by CEE stats
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bfa_cee_get_attr_isr`:
 
@@ -34,11 +36,13 @@ bfa_cee_get_attr_isr
 
     CEE ISR for get-attributes responses from f/w
 
-    :param struct bfa_cee \*cee:
+    :param cee:
         Pointer to the CEE module
+    :type cee: struct bfa_cee \*
 
-    :param enum bfa_status status:
+    :param status:
         Return status from the f/w
+    :type status: enum bfa_status
 
 .. _`bfa_cee_get_stats_isr`:
 
@@ -49,11 +53,13 @@ bfa_cee_get_stats_isr
 
     CEE ISR for get-stats responses from f/w
 
-    :param struct bfa_cee \*cee:
+    :param cee:
         Pointer to the CEE module
+    :type cee: struct bfa_cee \*
 
-    :param enum bfa_status status:
+    :param status:
         Return status from the f/w
+    :type status: enum bfa_status
 
 .. _`bfa_cee_reset_stats_isr`:
 
@@ -62,11 +68,13 @@ bfa_cee_reset_stats_isr
 
 .. c:function:: void bfa_cee_reset_stats_isr(struct bfa_cee *cee, enum bfa_status status)
 
-    :param struct bfa_cee \*cee:
+    :param cee:
         *undescribed*
+    :type cee: struct bfa_cee \*
 
-    :param enum bfa_status status:
+    :param status:
         *undescribed*
+    :type status: enum bfa_status
 
 .. _`bfa_cee_reset_stats_isr.description`:
 
@@ -89,8 +97,9 @@ bfa_nw_cee_meminfo
 
     Returns the size of the DMA memory needed by CEE module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`bfa_nw_cee_mem_claim`:
 
@@ -101,14 +110,17 @@ bfa_nw_cee_mem_claim
 
     Initialized CEE DMA Memory
 
-    :param struct bfa_cee \*cee:
+    :param cee:
         CEE module pointer
+    :type cee: struct bfa_cee \*
 
-    :param u8 \*dma_kva:
+    :param dma_kva:
         Kernel Virtual Address of CEE DMA Memory
+    :type dma_kva: u8 \*
 
-    :param u64 dma_pa:
+    :param dma_pa:
         Physical Address of CEE DMA Memory
+    :type dma_pa: u64
 
 .. _`bfa_nw_cee_get_attr`:
 
@@ -119,17 +131,21 @@ bfa_nw_cee_get_attr
 
     Send the request to the f/w to fetch CEE attributes.
 
-    :param struct bfa_cee \*cee:
+    :param cee:
         Pointer to the CEE module data structure.
+    :type cee: struct bfa_cee \*
 
-    :param struct bfa_cee_attr \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct bfa_cee_attr \*
 
-    :param bfa_cee_get_attr_cbfn_t cbfn:
+    :param cbfn:
         *undescribed*
+    :type cbfn: bfa_cee_get_attr_cbfn_t
 
-    :param void \*cbarg:
+    :param cbarg:
         *undescribed*
+    :type cbarg: void \*
 
 .. _`bfa_nw_cee_get_attr.return`:
 
@@ -147,11 +163,13 @@ bfa_cee_isr
 
     Handles Mail-box interrupts for CEE module.
 
-    :param void \*cbarg:
+    :param cbarg:
         *undescribed*
+    :type cbarg: void \*
 
-    :param struct bfi_mbmsg \*m:
+    :param m:
         *undescribed*
+    :type m: struct bfi_mbmsg \*
 
 .. _`bfa_cee_notify`:
 
@@ -162,11 +180,13 @@ bfa_cee_notify
 
     CEE module heart-beat failure handler.
 
-    :param void \*arg:
+    :param arg:
         *undescribed*
+    :type arg: void \*
 
-    :param enum bfa_ioc_event event:
+    :param event:
         IOC event type
+    :type event: enum bfa_ioc_event
 
 .. _`bfa_nw_cee_attach`:
 
@@ -177,16 +197,19 @@ bfa_nw_cee_attach
 
     CEE module-attach API
 
-    :param struct bfa_cee \*cee:
+    :param cee:
         Pointer to the CEE module data structure
+    :type cee: struct bfa_cee \*
 
-    :param struct bfa_ioc \*ioc:
+    :param ioc:
         Pointer to the ioc module data structure
+    :type ioc: struct bfa_ioc \*
 
-    :param void \*dev:
+    :param dev:
         Pointer to the device driver module data structure.
         The device driver specific mbox ISR functions have
         this pointer as one of the parameters.
+    :type dev: void \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ set_channel
 
     Set NIC media channel
 
-    :param struct vnt_private \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct vnt_private \*
 
-    :param struct ieee80211_channel \*ch:
+    :param ch:
         *undescribed*
+    :type ch: struct ieee80211_channel \*
 
 .. _`set_channel.return-value`:
 

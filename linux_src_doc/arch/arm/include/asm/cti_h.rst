@@ -54,18 +54,22 @@ cti_init
 
     initialize the cti instance
 
-    :param struct cti \*cti:
+    :param cti:
         cti instance
+    :type cti: struct cti \*
 
-    :param void __iomem \*base:
+    :param base:
         mapped virtual address for the cti base
+    :type base: void __iomem \*
 
-    :param int irq:
+    :param irq:
         irq number for the cti
+    :type irq: int
 
-    :param int trig_out:
+    :param trig_out:
         triger out number which will cause
         the \ ``irq``\  happen
+    :type trig_out: int
 
 .. _`cti_init.description`:
 
@@ -84,17 +88,21 @@ cti_map_trigger
 
     use the \ ``chan``\  to map \ ``trig_in``\  to \ ``trig_out``\ 
 
-    :param struct cti \*cti:
+    :param cti:
         cti instance
+    :type cti: struct cti \*
 
-    :param int trig_in:
+    :param trig_in:
         trigger in number
+    :type trig_in: int
 
-    :param int trig_out:
+    :param trig_out:
         trigger out number
+    :type trig_out: int
 
-    :param int chan:
+    :param chan:
         *undescribed*
+    :type chan: int
 
 .. _`cti_map_trigger.description`:
 
@@ -113,8 +121,9 @@ cti_enable
 
     enable the cti module
 
-    :param struct cti \*cti:
+    :param cti:
         cti instance
+    :type cti: struct cti \*
 
 .. _`cti_enable.description`:
 
@@ -132,8 +141,9 @@ cti_disable
 
     disable the cti module
 
-    :param struct cti \*cti:
+    :param cti:
         cti instance
+    :type cti: struct cti \*
 
 .. _`cti_disable.description`:
 
@@ -151,8 +161,9 @@ cti_irq_ack
 
     clear the cti irq
 
-    :param struct cti \*cti:
+    :param cti:
         cti instance
+    :type cti: struct cti \*
 
 .. _`cti_irq_ack.description`:
 
@@ -170,8 +181,9 @@ cti_unlock
 
     unlock cti module
 
-    :param struct cti \*cti:
+    :param cti:
         cti instance
+    :type cti: struct cti \*
 
 .. _`cti_unlock.description`:
 
@@ -190,8 +202,9 @@ cti_lock
 
     lock cti module
 
-    :param struct cti \*cti:
+    :param cti:
         cti instance
+    :type cti: struct cti \*
 
 .. _`cti_lock.description`:
 

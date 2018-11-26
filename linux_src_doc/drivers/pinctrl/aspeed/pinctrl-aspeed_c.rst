@@ -8,14 +8,17 @@ aspeed_sig_desc_eval
 
 .. c:function:: int aspeed_sig_desc_eval(const struct aspeed_sig_desc *desc, bool enabled, struct regmap *map)
 
-    :param const struct aspeed_sig_desc \*desc:
+    :param desc:
         The signal descriptor of interest
+    :type desc: const struct aspeed_sig_desc \*
 
-    :param bool enabled:
+    :param enabled:
         True to query the enabled state, false to query disabled state
+    :type enabled: bool
 
-    :param struct regmap \*map:
-        *undescribed*
+    :param map:
+        The IP block's regmap instance
+    :type map: struct regmap \*
 
 .. _`aspeed_sig_desc_eval.return`:
 
@@ -45,14 +48,17 @@ aspeed_sig_expr_eval
 
 .. c:function:: int aspeed_sig_expr_eval(const struct aspeed_sig_expr *expr, bool enabled, struct regmap * const *maps)
 
-    :param const struct aspeed_sig_expr \*expr:
+    :param expr:
         An expression controlling the signal for a mux function on a pin
+    :type expr: const struct aspeed_sig_expr \*
 
-    :param bool enabled:
+    :param enabled:
         True to query the enabled state, false to query disabled state
+    :type enabled: bool
 
-    :param struct regmap \* const \*maps:
+    :param maps:
         The list of regmap instances
+    :type maps: struct regmap \* const \*
 
 .. _`aspeed_sig_expr_eval.return`:
 
@@ -82,16 +88,19 @@ aspeed_sig_expr_set
 
     all descriptors in the expression.
 
-    :param const struct aspeed_sig_expr \*expr:
+    :param expr:
         The expression associated with the function whose signal is to be
         configured
+    :type expr: const struct aspeed_sig_expr \*
 
-    :param bool enable:
+    :param enable:
         true to enable an function's signal through a pin's signal
         expression, false to disable the function's signal
+    :type enable: bool
 
-    :param struct regmap \* const \*maps:
+    :param maps:
         The list of regmap instances for pinmux register access.
+    :type maps: struct regmap \* const \*
 
 .. _`aspeed_sig_expr_set.return`:
 
@@ -108,11 +117,13 @@ aspeed_disable_sig
 
 .. c:function:: int aspeed_disable_sig(const struct aspeed_sig_expr **exprs, struct regmap * const *maps)
 
-    :param const struct aspeed_sig_expr \*\*exprs:
+    :param exprs:
         The list of signal expressions (from a priority level on a pin)
+    :type exprs: const struct aspeed_sig_expr \*\*
 
-    :param struct regmap \* const \*maps:
+    :param maps:
         The list of regmap instances for pinmux register access.
+    :type maps: struct regmap \* const \*
 
 .. _`aspeed_disable_sig.return`:
 
@@ -130,11 +141,13 @@ aspeed_find_expr_by_name
 
     requested function.
 
-    :param const struct aspeed_sig_expr \*\*exprs:
+    :param exprs:
         List of signal expressions (haystack)
+    :type exprs: const struct aspeed_sig_expr \*\*
 
-    :param const char \*name:
+    :param name:
         The name of the requested function (needle)
+    :type name: const char \*
 
 .. _`aspeed_find_expr_by_name.return`:
 

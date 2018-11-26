@@ -10,8 +10,9 @@ suspend_set_ops
 
     Set the global suspend method table.
 
-    :param const struct platform_suspend_ops \*ops:
+    :param ops:
         Suspend operations to use.
+    :type ops: const struct platform_suspend_ops \*
 
 .. _`suspend_valid_only_mem`:
 
@@ -22,8 +23,9 @@ suspend_valid_only_mem
 
     Generic memory-only valid callback.
 
-    :param suspend_state_t state:
+    :param state:
         *undescribed*
+    :type state: suspend_state_t
 
 .. _`suspend_valid_only_mem.description`:
 
@@ -43,8 +45,9 @@ suspend_prepare
 
     Prepare for entering system sleep state.
 
-    :param suspend_state_t state:
+    :param state:
         *undescribed*
+    :type state: suspend_state_t
 
 .. _`suspend_prepare.description`:
 
@@ -64,11 +67,13 @@ suspend_enter
 
     Make the system enter the given sleep state.
 
-    :param suspend_state_t state:
+    :param state:
         System sleep state to enter.
+    :type state: suspend_state_t
 
-    :param bool \*wakeup:
+    :param wakeup:
         Returns information that the sleep state should not be re-entered.
+    :type wakeup: bool \*
 
 .. _`suspend_enter.description`:
 
@@ -86,8 +91,9 @@ suspend_devices_and_enter
 
     Suspend devices and enter system sleep state.
 
-    :param suspend_state_t state:
+    :param state:
         System sleep state to enter.
+    :type state: suspend_state_t
 
 .. _`suspend_finish`:
 
@@ -98,8 +104,9 @@ suspend_finish
 
     Clean up before finishing the suspend sequence.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`suspend_finish.description`:
 
@@ -118,8 +125,9 @@ enter_state
 
     Do common work needed to enter system sleep state.
 
-    :param suspend_state_t state:
+    :param state:
         System sleep state to enter.
+    :type state: suspend_state_t
 
 .. _`enter_state.description`:
 
@@ -139,8 +147,9 @@ pm_suspend
 
     Externally visible function for suspending the system.
 
-    :param suspend_state_t state:
+    :param state:
         System sleep state to enter.
+    :type state: suspend_state_t
 
 .. _`pm_suspend.description`:
 

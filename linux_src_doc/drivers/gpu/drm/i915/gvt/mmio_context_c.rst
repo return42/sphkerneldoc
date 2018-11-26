@@ -1,18 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/gvt/mmio_context.c
 
-.. _`trvattl3ptrdw`:
-
-TRVATTL3PTRDW
-=============
-
-.. c:function::  TRVATTL3PTRDW( i)
-
-    Ref: https://01.org/linuxgraphics/documentation/hardware-specification-prms
-
-    :param  i:
-        *undescribed*
-
 .. _`intel_gvt_switch_mmio`:
 
 intel_gvt_switch_mmio
@@ -22,14 +10,17 @@ intel_gvt_switch_mmio
 
     switch mmio context of specific engine
 
-    :param struct intel_vgpu \*pre:
+    :param pre:
         the last vGPU that own the engine
+    :type pre: struct intel_vgpu \*
 
-    :param struct intel_vgpu \*next:
+    :param next:
         the vGPU to switch to
+    :type next: struct intel_vgpu \*
 
-    :param int ring_id:
+    :param ring_id:
         specify the engine
+    :type ring_id: int
 
 .. _`intel_gvt_switch_mmio.description`:
 
@@ -48,8 +39,9 @@ intel_gvt_init_engine_mmio_context
 
     Initiate the engine mmio list
 
-    :param struct intel_gvt \*gvt:
+    :param gvt:
         GVT device
+    :type gvt: struct intel_gvt \*
 
 .. This file was automatic generated / don't edit.
 

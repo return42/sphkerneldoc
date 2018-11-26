@@ -10,14 +10,17 @@ snd_pdacf_assign_resources
 
     initialize the hardware and card instance.
 
-    :param struct snd_pdacf \*pdacf:
+    :param pdacf:
         *undescribed*
+    :type pdacf: struct snd_pdacf \*
 
-    :param int port:
+    :param port:
         i/o port for the card
+    :type port: int
 
-    :param int irq:
+    :param irq:
         irq number for the card
+    :type irq: int
 
 .. _`snd_pdacf_assign_resources.description`:
 

@@ -10,8 +10,9 @@ host1x_syncpt_id
 
     retrieve syncpoint ID
 
-    :param struct host1x_syncpt \*sp:
+    :param sp:
         host1x syncpoint
+    :type sp: struct host1x_syncpt \*
 
 .. _`host1x_syncpt_id.description`:
 
@@ -31,11 +32,13 @@ host1x_syncpt_incr_max
 
     update the value sent to hardware
 
-    :param struct host1x_syncpt \*sp:
+    :param sp:
         host1x syncpoint
+    :type sp: struct host1x_syncpt \*
 
-    :param u32 incrs:
+    :param incrs:
         number of increments
+    :type incrs: u32
 
 .. _`host1x_syncpt_incr`:
 
@@ -46,8 +49,9 @@ host1x_syncpt_incr
 
     increment syncpoint value from CPU, updating cache
 
-    :param struct host1x_syncpt \*sp:
+    :param sp:
         host1x syncpoint
+    :type sp: struct host1x_syncpt \*
 
 .. _`host1x_syncpt_wait`:
 
@@ -58,17 +62,21 @@ host1x_syncpt_wait
 
     wait for a syncpoint to reach a given value
 
-    :param struct host1x_syncpt \*sp:
+    :param sp:
         host1x syncpoint
+    :type sp: struct host1x_syncpt \*
 
-    :param u32 thresh:
+    :param thresh:
         threshold
+    :type thresh: u32
 
-    :param long timeout:
+    :param timeout:
         maximum time to wait for the syncpoint to reach the given value
+    :type timeout: long
 
-    :param u32 \*value:
+    :param value:
         return location for the syncpoint value
+    :type value: u32 \*
 
 .. _`host1x_syncpt_request`:
 
@@ -79,11 +87,13 @@ host1x_syncpt_request
 
     request a syncpoint
 
-    :param struct host1x_client \*client:
+    :param client:
         client requesting the syncpoint
+    :type client: struct host1x_client \*
 
-    :param unsigned long flags:
+    :param flags:
         flags
+    :type flags: unsigned long
 
 .. _`host1x_syncpt_request.description`:
 
@@ -104,8 +114,9 @@ host1x_syncpt_free
 
     free a requested syncpoint
 
-    :param struct host1x_syncpt \*sp:
+    :param sp:
         host1x syncpoint
+    :type sp: struct host1x_syncpt \*
 
 .. _`host1x_syncpt_free.description`:
 
@@ -127,8 +138,9 @@ host1x_syncpt_read_max
 
     read maximum syncpoint value
 
-    :param struct host1x_syncpt \*sp:
+    :param sp:
         host1x syncpoint
+    :type sp: struct host1x_syncpt \*
 
 .. _`host1x_syncpt_read_max.description`:
 
@@ -147,8 +159,9 @@ host1x_syncpt_read_min
 
     read minimum syncpoint value
 
-    :param struct host1x_syncpt \*sp:
+    :param sp:
         host1x syncpoint
+    :type sp: struct host1x_syncpt \*
 
 .. _`host1x_syncpt_read_min.description`:
 
@@ -167,8 +180,9 @@ host1x_syncpt_read
 
     read the current syncpoint value
 
-    :param struct host1x_syncpt \*sp:
+    :param sp:
         host1x syncpoint
+    :type sp: struct host1x_syncpt \*
 
 .. _`host1x_syncpt_get`:
 
@@ -179,11 +193,13 @@ host1x_syncpt_get
 
     obtain a syncpoint by ID
 
-    :param struct host1x \*host:
+    :param host:
         host1x controller
+    :type host: struct host1x \*
 
-    :param unsigned int id:
+    :param id:
         syncpoint ID
+    :type id: unsigned int
 
 .. _`host1x_syncpt_get_base`:
 
@@ -194,8 +210,9 @@ host1x_syncpt_get_base
 
     obtain the wait base associated with a syncpoint
 
-    :param struct host1x_syncpt \*sp:
+    :param sp:
         host1x syncpoint
+    :type sp: struct host1x_syncpt \*
 
 .. _`host1x_syncpt_base_id`:
 
@@ -206,8 +223,9 @@ host1x_syncpt_base_id
 
     retrieve the ID of a syncpoint wait base
 
-    :param struct host1x_syncpt_base \*base:
+    :param base:
         host1x syncpoint wait base
+    :type base: struct host1x_syncpt_base \*
 
 .. This file was automatic generated / don't edit.
 

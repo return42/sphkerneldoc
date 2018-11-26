@@ -10,8 +10,9 @@ fadump_calculate_reserve_size
 
     reserve variable boot area 5% of System RAM
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fadump_calculate_reserve_size.description`:
 

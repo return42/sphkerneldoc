@@ -239,8 +239,9 @@ parport_ip32_dma_setup_context
 
     setup next DMA context
 
-    :param unsigned int limit:
+    :param limit:
         maximum data size for the context
+    :type limit: unsigned int
 
 .. _`parport_ip32_dma_setup_context.description`:
 
@@ -259,11 +260,13 @@ parport_ip32_dma_interrupt
 
     DMA interrupt handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         unused
+    :type dev_id: void \*
 
 .. _`parport_ip32_dma_start`:
 
@@ -274,14 +277,17 @@ parport_ip32_dma_start
 
     begins a DMA transfer
 
-    :param enum dma_data_direction dir:
+    :param dir:
         DMA direction: DMA_TO_DEVICE or DMA_FROM_DEVICE
+    :type dir: enum dma_data_direction
 
-    :param void \*addr:
+    :param addr:
         pointer to data buffer
+    :type addr: void \*
 
-    :param size_t count:
+    :param count:
         buffer size
+    :type count: size_t
 
 .. _`parport_ip32_dma_start.description`:
 
@@ -300,8 +306,9 @@ parport_ip32_dma_stop
 
     ends a running DMA transfer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`parport_ip32_dma_stop.description`:
 
@@ -320,8 +327,9 @@ parport_ip32_dma_get_residue
 
     get residue from last DMA transfer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`parport_ip32_dma_get_residue.description`:
 
@@ -339,8 +347,9 @@ parport_ip32_dma_register
 
     initialize DMA engine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`parport_ip32_dma_register.description`:
 
@@ -358,8 +367,9 @@ parport_ip32_dma_unregister
 
     release and free resources for DMA engine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`parport_ip32_wakeup`:
 
@@ -370,8 +380,9 @@ parport_ip32_wakeup
 
     wakes up code waiting for an interrupt
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_interrupt`:
 
@@ -382,11 +393,13 @@ parport_ip32_interrupt
 
     interrupt handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type dev_id: void \*
 
 .. _`parport_ip32_interrupt.description`:
 
@@ -405,8 +418,9 @@ parport_ip32_read_econtrol
 
     read contents of the ECR register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_write_econtrol`:
 
@@ -417,11 +431,13 @@ parport_ip32_write_econtrol
 
     write new contents to the ECR register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned int c:
+    :param c:
         new value to write
+    :type c: unsigned int
 
 .. _`parport_ip32_frob_econtrol`:
 
@@ -432,14 +448,17 @@ parport_ip32_frob_econtrol
 
     change bits from the ECR register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned int mask:
+    :param mask:
         bit mask of bits to change
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         new value for changed bits
+    :type val: unsigned int
 
 .. _`parport_ip32_frob_econtrol.description`:
 
@@ -458,11 +477,13 @@ parport_ip32_set_mode
 
     change mode of ECP port
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned int mode:
+    :param mode:
         new mode to write in ECR
+    :type mode: unsigned int
 
 .. _`parport_ip32_set_mode.description`:
 
@@ -481,8 +502,9 @@ parport_ip32_read_data
 
     return current contents of the DATA register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_write_data`:
 
@@ -493,11 +515,13 @@ parport_ip32_write_data
 
     set new contents for the DATA register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned char d:
+    :param d:
         new value to write
+    :type d: unsigned char
 
 .. _`parport_ip32_read_status`:
 
@@ -508,8 +532,9 @@ parport_ip32_read_status
 
     return current contents of the DSR register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`__parport_ip32_read_control`:
 
@@ -520,8 +545,9 @@ parport_ip32_read_status
 
     return cached contents of the DCR register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`__parport_ip32_write_control`:
 
@@ -532,11 +558,13 @@ parport_ip32_read_status
 
     set new contents for the DCR register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned int c:
+    :param c:
         new value to write
+    :type c: unsigned int
 
 .. _`__parport_ip32_frob_control`:
 
@@ -547,14 +575,17 @@ parport_ip32_read_status
 
     change bits from the DCR register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned int mask:
+    :param mask:
         bit mask of bits to change
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         new value for changed bits
+    :type val: unsigned int
 
 .. _`__parport_ip32_frob_control.description`:
 
@@ -574,8 +605,9 @@ parport_ip32_read_control
 
     return cached contents of the DCR register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_read_control.description`:
 
@@ -594,11 +626,13 @@ parport_ip32_write_control
 
     set new contents for the DCR register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned char c:
+    :param c:
         new value to write
+    :type c: unsigned char
 
 .. _`parport_ip32_write_control.description`:
 
@@ -617,14 +651,17 @@ parport_ip32_frob_control
 
     change bits from the DCR register
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned char mask:
+    :param mask:
         bit mask of bits to change
+    :type mask: unsigned char
 
-    :param unsigned char val:
+    :param val:
         new value for changed bits
+    :type val: unsigned char
 
 .. _`parport_ip32_frob_control.description`:
 
@@ -643,8 +680,9 @@ parport_ip32_disable_irq
 
     disable interrupts on the rising edge of nACK
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_enable_irq`:
 
@@ -655,8 +693,9 @@ parport_ip32_enable_irq
 
     enable interrupts on the rising edge of nACK
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_data_forward`:
 
@@ -667,8 +706,9 @@ parport_ip32_data_forward
 
     enable host-to-peripheral communications
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_data_forward.description`:
 
@@ -686,15 +726,16 @@ parport_ip32_data_reverse
 
     enable peripheral-to-host communications
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_data_reverse.description`:
 
 Description
 -----------
 
-Place the data bus in a high impedance state, if \ ``p``\ ->modes has the
+Place the data bus in a high impedance state, if \ ``p->modes``\  has the
 PARPORT_MODE_TRISTATE bit set.
 
 .. _`parport_ip32_init_state`:
@@ -706,11 +747,13 @@ parport_ip32_init_state
 
     for core parport code
 
-    :param struct pardevice \*dev:
+    :param dev:
         pointer to \ :c:type:`struct pardevice <pardevice>`\ 
+    :type dev: struct pardevice \*
 
-    :param struct parport_state \*s:
+    :param s:
         pointer to \ :c:type:`struct parport_state <parport_state>`\  to initialize
+    :type s: struct parport_state \*
 
 .. _`parport_ip32_save_state`:
 
@@ -721,11 +764,13 @@ parport_ip32_save_state
 
     for core parport code
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param struct parport_state \*s:
+    :param s:
         pointer to \ :c:type:`struct parport_state <parport_state>`\  to save state to
+    :type s: struct parport_state \*
 
 .. _`parport_ip32_restore_state`:
 
@@ -736,11 +781,13 @@ parport_ip32_restore_state
 
     for core parport code
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param struct parport_state \*s:
+    :param s:
         pointer to \ :c:type:`struct parport_state <parport_state>`\  to restore state from
+    :type s: struct parport_state \*
 
 .. _`parport_ip32_clear_epp_timeout`:
 
@@ -751,8 +798,9 @@ parport_ip32_clear_epp_timeout
 
     clear Timeout bit in EPP mode
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_clear_epp_timeout.description`:
 
@@ -770,20 +818,25 @@ parport_ip32_epp_read
 
     generic EPP read function
 
-    :param void __iomem \*eppreg:
+    :param eppreg:
         I/O register to read from
+    :type eppreg: void __iomem \*
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param void \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
-    :param int flags:
+    :param flags:
         may be PARPORT_EPP_FAST
+    :type flags: int
 
 .. _`parport_ip32_epp_write`:
 
@@ -794,20 +847,25 @@ parport_ip32_epp_write
 
     generic EPP write function
 
-    :param void __iomem \*eppreg:
+    :param eppreg:
         I/O register to write to
+    :type eppreg: void __iomem \*
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param const void \*buf:
+    :param buf:
         buffer of data to write
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
-    :param int flags:
+    :param flags:
         may be PARPORT_EPP_FAST
+    :type flags: int
 
 .. _`parport_ip32_epp_read_data`:
 
@@ -818,17 +876,21 @@ parport_ip32_epp_read_data
 
     read a block of data in EPP mode
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param void \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
-    :param int flags:
+    :param flags:
         may be PARPORT_EPP_FAST
+    :type flags: int
 
 .. _`parport_ip32_epp_write_data`:
 
@@ -839,17 +901,21 @@ parport_ip32_epp_write_data
 
     write a block of data in EPP mode
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param const void \*buf:
+    :param buf:
         buffer of data to write
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
-    :param int flags:
+    :param flags:
         may be PARPORT_EPP_FAST
+    :type flags: int
 
 .. _`parport_ip32_epp_read_addr`:
 
@@ -860,17 +926,21 @@ parport_ip32_epp_read_addr
 
     read a block of addresses in EPP mode
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param void \*buf:
+    :param buf:
         buffer to store read data
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
-    :param int flags:
+    :param flags:
         may be PARPORT_EPP_FAST
+    :type flags: int
 
 .. _`parport_ip32_epp_write_addr`:
 
@@ -881,17 +951,21 @@ parport_ip32_epp_write_addr
 
     write a block of addresses in EPP mode
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param const void \*buf:
+    :param buf:
         buffer of data to write
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
-    :param int flags:
+    :param flags:
         may be PARPORT_EPP_FAST
+    :type flags: int
 
 .. _`parport_ip32_fifo_wait_break`:
 
@@ -902,11 +976,13 @@ parport_ip32_fifo_wait_break
 
     check if the waiting function should return
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned long expire:
+    :param expire:
         timeout expiring date, in jiffies
+    :type expire: unsigned long
 
 .. _`parport_ip32_fifo_wait_break.description`:
 
@@ -929,8 +1005,9 @@ parport_ip32_fwp_wait_polling
 
     wait for FIFO to empty (polling)
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_fwp_wait_polling.description`:
 
@@ -950,8 +1027,9 @@ parport_ip32_fwp_wait_interrupt
 
     wait for FIFO to empty (interrupt-driven)
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_fwp_wait_interrupt.description`:
 
@@ -971,14 +1049,17 @@ parport_ip32_fifo_write_block_pio
 
     write a block of data (PIO mode)
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param const void \*buf:
+    :param buf:
         buffer of data to write
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
 .. _`parport_ip32_fifo_write_block_pio.description`:
 
@@ -999,14 +1080,17 @@ parport_ip32_fifo_write_block_dma
 
     write a block of data (DMA mode)
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param const void \*buf:
+    :param buf:
         buffer of data to write
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
 .. _`parport_ip32_fifo_write_block_dma.description`:
 
@@ -1027,14 +1111,17 @@ parport_ip32_fifo_write_block
 
     write a block of data
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param const void \*buf:
+    :param buf:
         buffer of data to write
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
 .. _`parport_ip32_fifo_write_block.description`:
 
@@ -1053,11 +1140,13 @@ parport_ip32_drain_fifo
 
     wait for FIFO to empty
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout, in jiffies
+    :type timeout: unsigned long
 
 .. _`parport_ip32_drain_fifo.description`:
 
@@ -1076,11 +1165,13 @@ parport_ip32_get_fifo_residue
 
     reset FIFO
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param unsigned int mode:
+    :param mode:
         current operation mode (ECR_MODE_PPF or ECR_MODE_ECP)
+    :type mode: unsigned int
 
 .. _`parport_ip32_get_fifo_residue.description`:
 
@@ -1098,17 +1189,21 @@ parport_ip32_compat_write_data
 
     write a block of data in SPP mode
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param const void \*buf:
+    :param buf:
         buffer of data to write
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
-    :param int flags:
+    :param flags:
         ignored
+    :type flags: int
 
 .. _`parport_ip32_ecp_write_data`:
 
@@ -1119,17 +1214,21 @@ parport_ip32_ecp_write_data
 
     write a block of data in ECP mode
 
-    :param struct parport \*p:
+    :param p:
         pointer to \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
-    :param const void \*buf:
+    :param buf:
         buffer of data to write
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         length of buffer \ ``buf``\ 
+    :type len: size_t
 
-    :param int flags:
+    :param flags:
         ignored
+    :type flags: int
 
 .. _`parport_ip32_ecp_supported`:
 
@@ -1140,8 +1239,9 @@ parport_ip32_ecp_supported
 
     check for an ECP port
 
-    :param struct parport \*p:
+    :param p:
         pointer to the \ :c:type:`struct parport <parport>`\  structure
+    :type p: struct parport \*
 
 .. _`parport_ip32_ecp_supported.description`:
 
@@ -1161,8 +1261,9 @@ parport_ip32_fifo_supported
 
     check for FIFO parameters
 
-    :param struct parport \*p:
+    :param p:
         pointer to the \ :c:type:`struct parport <parport>`\  structure
+    :type p: struct parport \*
 
 .. _`parport_ip32_fifo_supported.description`:
 
@@ -1182,17 +1283,21 @@ parport_ip32_make_isa_registers
 
     compute (ISA) register addresses
 
-    :param struct parport_ip32_regs \*regs:
+    :param regs:
         pointer to \ :c:type:`struct parport_ip32_regs <parport_ip32_regs>`\  to fill
+    :type regs: struct parport_ip32_regs \*
 
-    :param void __iomem \*base:
+    :param base:
         base address of standard and EPP registers
+    :type base: void __iomem \*
 
-    :param void __iomem \*base_hi:
+    :param base_hi:
         base address of ECP registers
+    :type base_hi: void __iomem \*
 
-    :param unsigned int regshift:
+    :param regshift:
         how much to shift register offset by
+    :type regshift: unsigned int
 
 .. _`parport_ip32_make_isa_registers.description`:
 
@@ -1212,8 +1317,9 @@ parport_ip32_probe_port
 
     probe and register IP32 built-in parallel port
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`parport_ip32_probe_port.description`:
 
@@ -1232,8 +1338,9 @@ parport_ip32_unregister_port
 
     unregister a parallel port
 
-    :param struct parport \*p:
+    :param p:
         pointer to the \ :c:type:`struct parport <parport>`\ 
+    :type p: struct parport \*
 
 .. _`parport_ip32_unregister_port.description`:
 
@@ -1252,8 +1359,9 @@ parport_ip32_init
 
     module initialization function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`parport_ip32_exit`:
 
@@ -1264,8 +1372,9 @@ parport_ip32_exit
 
     module termination function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

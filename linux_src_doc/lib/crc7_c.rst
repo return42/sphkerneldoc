@@ -10,14 +10,17 @@ crc7_be
 
     update the CRC7 for the data buffer
 
-    :param u8 crc:
+    :param crc:
         previous CRC7 value
+    :type crc: u8
 
-    :param const u8 \*buffer:
+    :param buffer:
         data pointer
+    :type buffer: const u8 \*
 
-    :param size_t len:
+    :param len:
         number of bytes in the buffer
+    :type len: size_t
 
 .. _`crc7_be.context`:
 

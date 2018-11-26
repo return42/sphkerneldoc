@@ -10,14 +10,17 @@ trace_s390_cio_stsch
 
     Store Subchannel instruction (STSCH) was performed
 
-    :param struct subchannel_id schid:
+    :param schid:
         Subchannel ID
+    :type schid: struct subchannel_id
 
-    :param struct schib \*schib:
+    :param schib:
         Subchannel-Information block
+    :type schib: struct schib \*
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_msch`:
 
@@ -28,14 +31,17 @@ trace_s390_cio_msch
 
     Modify Subchannel instruction (MSCH) was performed
 
-    :param struct subchannel_id schid:
+    :param schid:
         Subchannel ID
+    :type schid: struct subchannel_id
 
-    :param struct schib \*schib:
+    :param schib:
         Subchannel-Information block
+    :type schib: struct schib \*
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_tsch`:
 
@@ -46,14 +52,17 @@ trace_s390_cio_tsch
 
     Test Subchannel instruction (TSCH) was performed
 
-    :param struct subchannel_id schid:
+    :param schid:
         Subchannel ID
+    :type schid: struct subchannel_id
 
-    :param struct irb \*irb:
+    :param irb:
         Interruption-Response Block
+    :type irb: struct irb \*
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_tpi`:
 
@@ -64,11 +73,13 @@ trace_s390_cio_tpi
 
     Test Pending Interruption instruction (TPI) was performed
 
-    :param struct tpi_info \*addr:
+    :param addr:
         Address of the I/O interruption code or \ ``NULL``\ 
+    :type addr: struct tpi_info \*
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_ssch`:
 
@@ -79,14 +90,17 @@ trace_s390_cio_ssch
 
     Start Subchannel instruction (SSCH) was performed
 
-    :param struct subchannel_id schid:
+    :param schid:
         Subchannel ID
+    :type schid: struct subchannel_id
 
-    :param union orb \*orb:
+    :param orb:
         Operation-Request Block
+    :type orb: union orb \*
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_csch`:
 
@@ -97,11 +111,13 @@ trace_s390_cio_csch
 
     Clear Subchannel instruction (CSCH) was performed
 
-    :param struct subchannel_id schid:
+    :param schid:
         Subchannel ID
+    :type schid: struct subchannel_id
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_hsch`:
 
@@ -112,11 +128,13 @@ trace_s390_cio_hsch
 
     Halt Subchannel instruction (HSCH) was performed
 
-    :param struct subchannel_id schid:
+    :param schid:
         Subchannel ID
+    :type schid: struct subchannel_id
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_xsch`:
 
@@ -127,11 +145,13 @@ trace_s390_cio_xsch
 
     Cancel Subchannel instruction (XSCH) was performed
 
-    :param struct subchannel_id schid:
+    :param schid:
         Subchannel ID
+    :type schid: struct subchannel_id
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_rsch`:
 
@@ -142,11 +162,13 @@ trace_s390_cio_rsch
 
     Resume Subchannel instruction (RSCH) was performed
 
-    :param struct subchannel_id schid:
+    :param schid:
         Subchannel ID
+    :type schid: struct subchannel_id
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_rchp`:
 
@@ -157,11 +179,13 @@ trace_s390_cio_rchp
 
     Reset Channel Path (RCHP) instruction was performed
 
-    :param struct chp_id chpid:
+    :param chpid:
         Channel-Path Identifier
+    :type chpid: struct chp_id
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_chsc`:
 
@@ -172,11 +196,13 @@ trace_s390_cio_chsc
 
     Channel Subsystem Call (CHSC) instruction was performed
 
-    :param struct chsc_header \*chsc:
+    :param chsc:
         CHSC block
+    :type chsc: struct chsc_header \*
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. _`trace_s390_cio_interrupt`:
 
@@ -187,8 +213,9 @@ trace_s390_cio_interrupt
 
     An I/O interrupt occurred
 
-    :param struct tpi_info \*tpi_info:
+    :param tpi_info:
         Address of the I/O interruption code
+    :type tpi_info: struct tpi_info \*
 
 .. _`trace_s390_cio_adapter_int`:
 
@@ -199,8 +226,9 @@ trace_s390_cio_adapter_int
 
     An adapter interrupt occurred
 
-    :param struct tpi_info \*tpi_info:
+    :param tpi_info:
         Address of the I/O interruption code
+    :type tpi_info: struct tpi_info \*
 
 .. _`trace_s390_cio_stcrw`:
 
@@ -211,11 +239,13 @@ trace_s390_cio_stcrw
 
     Store Channel Report Word (STCRW) was performed
 
-    :param struct crw \*crw:
+    :param crw:
         Channel Report Word
+    :type crw: struct crw \*
 
-    :param int cc:
+    :param cc:
         Condition code
+    :type cc: int
 
 .. This file was automatic generated / don't edit.
 

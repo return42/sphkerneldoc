@@ -244,14 +244,17 @@ ks8851_wrreg16
 
     write 16bit register value to chip
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The chip state
+    :type ks: struct ks8851_net \*
 
-    :param unsigned reg:
+    :param reg:
         The register address
+    :type reg: unsigned
 
-    :param unsigned val:
+    :param val:
         The value to write
+    :type val: unsigned
 
 .. _`ks8851_wrreg16.description`:
 
@@ -269,14 +272,17 @@ ks8851_wrreg8
 
     write 8bit register value to chip
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The chip state
+    :type ks: struct ks8851_net \*
 
-    :param unsigned reg:
+    :param reg:
         The register address
+    :type reg: unsigned
 
-    :param unsigned val:
+    :param val:
         The value to write
+    :type val: unsigned
 
 .. _`ks8851_wrreg8.description`:
 
@@ -294,17 +300,21 @@ ks8851_rdreg
 
     issue read register command and return the data
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device state
+    :type ks: struct ks8851_net \*
 
-    :param unsigned op:
+    :param op:
         The register address and byte enables in message format.
+    :type op: unsigned
 
-    :param u8 \*rxb:
+    :param rxb:
         The RX buffer to return the result into
+    :type rxb: u8 \*
 
-    :param unsigned rxl:
+    :param rxl:
         The length of data expected.
+    :type rxl: unsigned
 
 .. _`ks8851_rdreg.description`:
 
@@ -323,11 +333,13 @@ ks8851_rdreg8
 
     read 8 bit register from device
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks8851_net \*
 
-    :param unsigned reg:
+    :param reg:
         The register address
+    :type reg: unsigned
 
 .. _`ks8851_rdreg8.description`:
 
@@ -345,11 +357,13 @@ ks8851_rdreg16
 
     read 16 bit register from device
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks8851_net \*
 
-    :param unsigned reg:
+    :param reg:
         The register address
+    :type reg: unsigned
 
 .. _`ks8851_rdreg16.description`:
 
@@ -367,11 +381,13 @@ ks8851_rdreg32
 
     read 32 bit register from device
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The chip information
+    :type ks: struct ks8851_net \*
 
-    :param unsigned reg:
+    :param reg:
         The register address
+    :type reg: unsigned
 
 .. _`ks8851_rdreg32.description`:
 
@@ -391,11 +407,13 @@ ks8851_soft_reset
 
     issue one of the soft reset to the device
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device state.
+    :type ks: struct ks8851_net \*
 
-    :param unsigned op:
+    :param op:
         The bit(s) to set in the GRR
+    :type op: unsigned
 
 .. _`ks8851_soft_reset.description`:
 
@@ -419,11 +437,13 @@ ks8851_set_powermode
 
     set power mode of the device
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device state
+    :type ks: struct ks8851_net \*
 
-    :param unsigned pwrmode:
+    :param pwrmode:
         The power mode value to write to KS_PMECR.
+    :type pwrmode: unsigned
 
 .. _`ks8851_set_powermode.description`:
 
@@ -441,8 +461,9 @@ ks8851_write_mac_addr
 
     write mac address to device registers
 
-    :param struct net_device \*dev:
+    :param dev:
         The network device
+    :type dev: struct net_device \*
 
 .. _`ks8851_write_mac_addr.description`:
 
@@ -463,8 +484,9 @@ ks8851_read_mac_addr
 
     read mac address from device registers
 
-    :param struct net_device \*dev:
+    :param dev:
         The network device
+    :type dev: struct net_device \*
 
 .. _`ks8851_read_mac_addr.description`:
 
@@ -482,8 +504,9 @@ ks8851_init_mac
 
     initialise the mac address
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device structure
+    :type ks: struct ks8851_net \*
 
 .. _`ks8851_init_mac.description`:
 
@@ -505,14 +528,17 @@ ks8851_rdfifo
 
     read data from the receive fifo
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device state.
+    :type ks: struct ks8851_net \*
 
-    :param u8 \*buff:
+    :param buff:
         The buffer address
+    :type buff: u8 \*
 
-    :param unsigned len:
+    :param len:
         The length of the data to read
+    :type len: unsigned
 
 .. _`ks8851_rdfifo.description`:
 
@@ -531,11 +557,13 @@ ks8851_dbg_dumpkkt
 
     dump initial packet contents to debug
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device state
+    :type ks: struct ks8851_net \*
 
-    :param u8 \*rxpkt:
+    :param rxpkt:
         The data for the received packet
+    :type rxpkt: u8 \*
 
 .. _`ks8851_dbg_dumpkkt.description`:
 
@@ -553,8 +581,9 @@ ks8851_rx_pkts
 
     receive packets from the host
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device information.
+    :type ks: struct ks8851_net \*
 
 .. _`ks8851_rx_pkts.description`:
 
@@ -574,11 +603,13 @@ ks8851_irq
 
     IRQ handler for dealing with interrupt requests
 
-    :param int irq:
+    :param irq:
         IRQ number
+    :type irq: int
 
-    :param void \*_ks:
+    :param _ks:
         cookie
+    :type _ks: void \*
 
 .. _`ks8851_irq.description`:
 
@@ -601,8 +632,9 @@ calc_txlen
 
     calculate size of message to send packet
 
-    :param unsigned len:
+    :param len:
         Length of data
+    :type len: unsigned
 
 .. _`calc_txlen.description`:
 
@@ -621,14 +653,17 @@ ks8851_wrpkt
 
     write packet to TX FIFO
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device state.
+    :type ks: struct ks8851_net \*
 
-    :param struct sk_buff \*txp:
+    :param txp:
         The sk_buff to transmit.
+    :type txp: struct sk_buff \*
 
-    :param bool irq:
+    :param irq:
         IRQ on completion of the packet.
+    :type irq: bool
 
 .. _`ks8851_wrpkt.description`:
 
@@ -649,11 +684,13 @@ ks8851_done_tx
 
     update and then free skbuff after transmitting
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device state
+    :type ks: struct ks8851_net \*
 
-    :param struct sk_buff \*txb:
+    :param txb:
         The buffer transmitted
+    :type txb: struct sk_buff \*
 
 .. _`ks8851_tx_work`:
 
@@ -664,8 +701,9 @@ ks8851_tx_work
 
     process tx packet(s)
 
-    :param struct work_struct \*work:
+    :param work:
         The work strucutre what was scheduled.
+    :type work: struct work_struct \*
 
 .. _`ks8851_tx_work.description`:
 
@@ -684,8 +722,9 @@ ks8851_net_open
 
     open network device
 
-    :param struct net_device \*dev:
+    :param dev:
         The network device being opened.
+    :type dev: struct net_device \*
 
 .. _`ks8851_net_open.description`:
 
@@ -704,8 +743,9 @@ ks8851_net_stop
 
     close network device
 
-    :param struct net_device \*dev:
+    :param dev:
         The device being closed.
+    :type dev: struct net_device \*
 
 .. _`ks8851_net_stop.description`:
 
@@ -725,11 +765,13 @@ ks8851_start_xmit
 
     transmit packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The buffer to transmit
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         The device used to transmit the packet.
+    :type dev: struct net_device \*
 
 .. _`ks8851_start_xmit.description`:
 
@@ -753,8 +795,9 @@ ks8851_rxctrl_work
 
     work handler to change rx mode
 
-    :param struct work_struct \*work:
+    :param work:
         The work structure this belongs to.
+    :type work: struct work_struct \*
 
 .. _`ks8851_rxctrl_work.description`:
 
@@ -779,8 +822,9 @@ ks8851_eeprom_claim
 
     claim device EEPROM and activate the interface
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The network device state.
+    :type ks: struct ks8851_net \*
 
 .. _`ks8851_eeprom_claim.description`:
 
@@ -799,8 +843,9 @@ ks8851_eeprom_release
 
     release the EEPROM interface
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device state
+    :type ks: struct ks8851_net \*
 
 .. _`ks8851_eeprom_release.description`:
 
@@ -818,8 +863,9 @@ ks8851_phy_reg
 
     convert MII register into a KS8851 register
 
-    :param int reg:
+    :param reg:
         MII register number.
+    :type reg: int
 
 .. _`ks8851_phy_reg.description`:
 
@@ -839,14 +885,17 @@ ks8851_phy_read
 
     MII interface PHY register read.
 
-    :param struct net_device \*dev:
+    :param dev:
         The network device the PHY is on.
+    :type dev: struct net_device \*
 
-    :param int phy_addr:
+    :param phy_addr:
         Address of PHY (ignored as we only have one)
+    :type phy_addr: int
 
-    :param int reg:
+    :param reg:
         The register to read.
+    :type reg: int
 
 .. _`ks8851_phy_read.description`:
 
@@ -871,8 +920,9 @@ ks8851_read_selftest
 
     read the selftest memory info.
 
-    :param struct ks8851_net \*ks:
+    :param ks:
         The device state
+    :type ks: struct ks8851_net \*
 
 .. _`ks8851_read_selftest.description`:
 

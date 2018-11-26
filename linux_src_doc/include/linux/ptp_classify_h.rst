@@ -10,8 +10,9 @@ ptp_classify_raw
 
     classify a PTP packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: const struct sk_buff \*
 
 .. _`ptp_classify_raw.description`:
 

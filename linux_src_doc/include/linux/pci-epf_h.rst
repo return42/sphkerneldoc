@@ -218,6 +218,7 @@ Definition
         struct pci_epf_header *header;
         struct pci_epf_bar bar[6];
         u8 msi_interrupts;
+        u16 msix_interrupts;
         u8 func_no;
         struct pci_epc *epc;
         struct pci_epf_driver *driver;
@@ -243,6 +244,9 @@ bar
 
 msi_interrupts
     number of MSI interrupts required by this function
+
+msix_interrupts
+    *undescribed*
 
 func_no
     unique function number within this endpoint device

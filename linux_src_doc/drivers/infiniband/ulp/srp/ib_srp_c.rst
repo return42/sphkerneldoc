@@ -10,8 +10,9 @@ srp_destroy_fr_pool
 
     free the resources owned by a pool
 
-    :param struct srp_fr_pool \*pool:
+    :param pool:
         Fast registration pool to be destroyed.
+    :type pool: struct srp_fr_pool \*
 
 .. _`srp_create_fr_pool`:
 
@@ -22,17 +23,21 @@ srp_create_fr_pool
 
     allocate and initialize a pool for fast registration
 
-    :param struct ib_device \*device:
+    :param device:
         IB device to allocate fast registration descriptors for.
+    :type device: struct ib_device \*
 
-    :param struct ib_pd \*pd:
+    :param pd:
         Protection domain associated with the FR descriptors.
+    :type pd: struct ib_pd \*
 
-    :param int pool_size:
+    :param pool_size:
         Number of descriptors to allocate.
+    :type pool_size: int
 
-    :param int max_page_list_len:
+    :param max_page_list_len:
         Maximum fast registration work request page list length.
+    :type max_page_list_len: int
 
 .. _`srp_fr_pool_get`:
 
@@ -43,8 +48,9 @@ srp_fr_pool_get
 
     obtain a descriptor suitable for fast registration
 
-    :param struct srp_fr_pool \*pool:
+    :param pool:
         Pool to obtain descriptor from.
+    :type pool: struct srp_fr_pool \*
 
 .. _`srp_fr_pool_put`:
 
@@ -55,14 +61,17 @@ srp_fr_pool_put
 
     put an FR descriptor back in the free list
 
-    :param struct srp_fr_pool \*pool:
+    :param pool:
         Pool the descriptor was allocated from.
+    :type pool: struct srp_fr_pool \*
 
-    :param struct srp_fr_desc \*\*desc:
+    :param desc:
         Pointer to an array of fast registration descriptor pointers.
+    :type desc: struct srp_fr_desc \*\*
 
-    :param int n:
+    :param n:
         Number of descriptors to put back.
+    :type n: int
 
 .. _`srp_fr_pool_put.note`:
 
@@ -81,8 +90,9 @@ srp_destroy_qp
 
     destroy an RDMA queue pair
 
-    :param struct srp_rdma_ch \*ch:
+    :param ch:
         SRP RDMA channel.
+    :type ch: struct srp_rdma_ch \*
 
 .. _`srp_destroy_qp.description`:
 
@@ -102,8 +112,9 @@ srp_del_scsi_host_attr
 
     Remove attributes defined in the host template.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         SCSI host whose attributes to remove from sysfs.
+    :type shost: struct Scsi_Host \*
 
 .. _`srp_del_scsi_host_attr.note`:
 
@@ -122,8 +133,9 @@ srp_connected_ch
 
     number of connected channels
 
-    :param struct srp_target_port \*target:
+    :param target:
         SRP target port.
+    :type target: struct srp_target_port \*
 
 .. _`srp_claim_req`:
 
@@ -134,18 +146,22 @@ srp_claim_req
 
     Take ownership of the scmnd associated with a request.
 
-    :param struct srp_rdma_ch \*ch:
+    :param ch:
         SRP RDMA channel.
+    :type ch: struct srp_rdma_ch \*
 
-    :param struct srp_request \*req:
+    :param req:
         SRP request.
+    :type req: struct srp_request \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         If not NULL, only take ownership for this SCSI device.
+    :type sdev: struct scsi_device \*
 
-    :param struct scsi_cmnd \*scmnd:
-        If NULL, take ownership of \ ``req``\ ->scmnd. If not NULL, only take
-        ownership of \ ``req``\ ->scmnd if it equals \ ``scmnd``\ .
+    :param scmnd:
+        If NULL, take ownership of \ ``req->scmnd``\ . If not NULL, only take
+        ownership of \ ``req->scmnd``\  if it equals \ ``scmnd``\ .
+    :type scmnd: struct scsi_cmnd \*
 
 .. _`srp_claim_req.return-value`:
 
@@ -163,17 +179,21 @@ srp_free_req
 
     Unmap data and adjust ch->req_lim.
 
-    :param struct srp_rdma_ch \*ch:
+    :param ch:
         SRP RDMA channel.
+    :type ch: struct srp_rdma_ch \*
 
-    :param struct srp_request \*req:
+    :param req:
         Request to be freed.
+    :type req: struct srp_request \*
 
-    :param struct scsi_cmnd \*scmnd:
+    :param scmnd:
         SCSI command associated with \ ``req``\ .
+    :type scmnd: struct scsi_cmnd \*
 
-    :param s32 req_lim_delta:
-        Amount to be added to \ ``target``\ ->req_lim.
+    :param req_lim_delta:
+        Amount to be added to \ ``target->req_lim``\ .
+    :type req_lim_delta: s32
 
 .. _`srp_map_data`:
 
@@ -184,14 +204,17 @@ srp_map_data
 
     map SCSI data buffer onto an SRP request
 
-    :param struct scsi_cmnd \*scmnd:
+    :param scmnd:
         SCSI command to map
+    :type scmnd: struct scsi_cmnd \*
 
-    :param struct srp_rdma_ch \*ch:
+    :param ch:
         SRP RDMA channel
+    :type ch: struct srp_rdma_ch \*
 
-    :param struct srp_request \*req:
+    :param req:
         SRP request
+    :type req: struct srp_request \*
 
 .. _`srp_map_data.description`:
 
@@ -210,8 +233,9 @@ srp_tl_err_work
 
     handle a transport layer error
 
-    :param struct work_struct \*work:
+    :param work:
         Work structure embedded in an SRP target port.
+    :type work: struct work_struct \*
 
 .. _`srp_tl_err_work.note`:
 
@@ -230,11 +254,13 @@ srp_change_queue_depth
 
     setting device queue depth
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device struct
+    :type sdev: struct scsi_device \*
 
-    :param int qdepth:
+    :param qdepth:
         requested queue depth
+    :type qdepth: int
 
 .. _`srp_change_queue_depth.description`:
 
@@ -252,11 +278,13 @@ srp_conn_unique
 
     check whether the connection to a target is unique
 
-    :param struct srp_host \*host:
+    :param host:
         SRP host.
+    :type host: struct srp_host \*
 
-    :param struct srp_target_port \*target:
+    :param target:
         SRP target port.
+    :type target: struct srp_target_port \*
 
 .. _`srp_parse_in`:
 
@@ -267,14 +295,17 @@ srp_parse_in
 
     parse an IP address and port number combination
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sockaddr_storage \*sa:
+    :param sa:
         *undescribed*
+    :type sa: struct sockaddr_storage \*
 
-    :param const char \*addr_port_str:
+    :param addr_port_str:
         *undescribed*
+    :type addr_port_str: const char \*
 
 .. _`srp_parse_in.parse-the-following-address-formats`:
 

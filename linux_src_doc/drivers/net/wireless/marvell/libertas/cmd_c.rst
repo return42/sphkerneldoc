@@ -10,15 +10,18 @@ lbs_cmd_copyback
 
     Simple callback that copies response back into command
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param unsigned long extra:
+    :param extra:
         A pointer to the original command structure for which
         'resp' is a response
+    :type extra: unsigned long
 
-    :param struct cmd_header \*resp:
+    :param resp:
         A pointer to the command response
+    :type resp: struct cmd_header \*
 
 .. _`lbs_cmd_copyback.return`:
 
@@ -36,14 +39,17 @@ lbs_cmd_async_callback
 
     Simple callback that ignores the result. Use this if you just want to send a command to the hardware, but don't care for the result.
 
-    :param struct lbs_private \*priv:
+    :param priv:
         ignored
+    :type priv: struct lbs_private \*
 
-    :param unsigned long extra:
+    :param extra:
         ignored
+    :type extra: unsigned long
 
-    :param struct cmd_header \*resp:
+    :param resp:
         ignored
+    :type resp: struct cmd_header \*
 
 .. _`lbs_cmd_async_callback.return`:
 
@@ -61,8 +67,9 @@ is_command_allowed_in_ps
 
     tests if a command is allowed in Power Save mode
 
-    :param u16 cmd:
+    :param cmd:
         the command ID
+    :type cmd: u16
 
 .. _`is_command_allowed_in_ps.return`:
 
@@ -80,8 +87,9 @@ lbs_update_hw_spec
 
     Updates the hardware details like MAC address and regulatory region
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
 .. _`lbs_update_hw_spec.return`:
 
@@ -99,15 +107,18 @@ lbs_set_ps_mode
 
     Sets the Power Save mode
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param u16 cmd_action:
+    :param cmd_action:
         The Power Save operation (PS_MODE_ACTION_ENTER_PS or
         PS_MODE_ACTION_EXIT_PS)
+    :type cmd_action: u16
 
-    :param bool block:
+    :param block:
         Whether to block on a response or not
+    :type block: bool
 
 .. _`lbs_set_ps_mode.return`:
 
@@ -125,14 +136,17 @@ lbs_set_snmp_mib
 
     Set an SNMP MIB value
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param u32 oid:
+    :param oid:
         The OID to set in the firmware
+    :type oid: u32
 
-    :param u16 val:
+    :param val:
         Value to set the OID to
+    :type val: u16
 
 .. _`lbs_set_snmp_mib.return`:
 
@@ -150,14 +164,17 @@ lbs_get_snmp_mib
 
     Get an SNMP MIB value
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param u32 oid:
+    :param oid:
         The OID to retrieve from the firmware
+    :type oid: u32
 
-    :param u16 \*out_val:
+    :param out_val:
         Location for the returned value
+    :type out_val: u16 \*
 
 .. _`lbs_get_snmp_mib.return`:
 
@@ -175,17 +192,21 @@ lbs_get_tx_power
 
     Get the min, max, and current TX power
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param s16 \*curlevel:
+    :param curlevel:
         Current power level in dBm
+    :type curlevel: s16 \*
 
-    :param s16 \*minlevel:
+    :param minlevel:
         Minimum supported power level in dBm (optional)
+    :type minlevel: s16 \*
 
-    :param s16 \*maxlevel:
+    :param maxlevel:
         Maximum supported power level in dBm (optional)
+    :type maxlevel: s16 \*
 
 .. _`lbs_get_tx_power.return`:
 
@@ -203,11 +224,13 @@ lbs_set_tx_power
 
     Set the TX power
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param s16 dbm:
+    :param dbm:
         The desired power level in dBm
+    :type dbm: s16
 
 .. _`lbs_set_tx_power.return`:
 
@@ -225,11 +248,13 @@ lbs_set_monitor_mode
 
     Enable or disable monitor mode (only implemented on OLPC usb8388 FW)
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param int enable:
+    :param enable:
         1 to enable monitor mode, 0 to disable
+    :type enable: int
 
 .. _`lbs_set_monitor_mode.return`:
 
@@ -247,8 +272,9 @@ lbs_get_channel
 
     Get the radio channel
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
 .. _`lbs_get_channel.return`:
 
@@ -266,11 +292,13 @@ lbs_set_channel
 
     Set the radio channel
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param u8 channel:
+    :param channel:
         The desired channel, or 0 to clear a locked channel
+    :type channel: u8
 
 .. _`lbs_set_channel.return`:
 
@@ -288,14 +316,17 @@ lbs_get_rssi
 
     Get current RSSI and noise floor
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param s8 \*rssi:
+    :param rssi:
         On successful return, signal level in mBm
+    :type rssi: s8 \*
 
-    :param s8 \*nf:
+    :param nf:
         On successful return, Noise floor
+    :type nf: s8 \*
 
 .. _`lbs_get_rssi.return`:
 
@@ -313,8 +344,9 @@ lbs_set_11d_domain_info
 
     Send regulatory and 802.11d domain information to the firmware
 
-    :param struct lbs_private \*priv:
+    :param priv:
         pointer to \ :c:type:`struct lbs_private <lbs_private>`\ 
+    :type priv: struct lbs_private \*
 
 .. _`lbs_set_11d_domain_info.return`:
 
@@ -332,18 +364,22 @@ lbs_get_reg
 
     Read a MAC, Baseband, or RF register
 
-    :param struct lbs_private \*priv:
+    :param priv:
         pointer to \ :c:type:`struct lbs_private <lbs_private>`\ 
+    :type priv: struct lbs_private \*
 
-    :param u16 reg:
+    :param reg:
         register command, one of CMD_MAC_REG_ACCESS,
         CMD_BBP_REG_ACCESS, or CMD_RF_REG_ACCESS
+    :type reg: u16
 
-    :param u16 offset:
+    :param offset:
         byte offset of the register to get
+    :type offset: u16
 
-    :param u32 \*value:
+    :param value:
         on success, the value of the register at 'offset'
+    :type value: u32 \*
 
 .. _`lbs_get_reg.return`:
 
@@ -361,18 +397,22 @@ lbs_set_reg
 
     Write a MAC, Baseband, or RF register
 
-    :param struct lbs_private \*priv:
+    :param priv:
         pointer to \ :c:type:`struct lbs_private <lbs_private>`\ 
+    :type priv: struct lbs_private \*
 
-    :param u16 reg:
+    :param reg:
         register command, one of CMD_MAC_REG_ACCESS,
         CMD_BBP_REG_ACCESS, or CMD_RF_REG_ACCESS
+    :type reg: u16
 
-    :param u16 offset:
+    :param offset:
         byte offset of the register to set
+    :type offset: u16
 
-    :param u32 value:
+    :param value:
         the value to write to the register at 'offset'
+    :type value: u32
 
 .. _`lbs_set_reg.return`:
 
@@ -390,8 +430,9 @@ lbs_allocate_cmd_buffer
 
     allocates the command buffer and links it to command free queue
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
 .. _`lbs_allocate_cmd_buffer.return`:
 
@@ -409,8 +450,9 @@ lbs_free_cmd_buffer
 
     free the command buffer
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
 .. _`lbs_free_cmd_buffer.return`:
 
@@ -428,8 +470,9 @@ lbs_get_free_cmd_node
 
     gets a free command node if available in command free queue
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
 .. _`lbs_get_free_cmd_node.return`:
 
@@ -448,8 +491,9 @@ lbs_execute_next_command
 
     execute next command in command pending queue. Will put firmware back to PS mode if applicable.
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
 .. _`lbs_execute_next_command.return`:
 
@@ -467,8 +511,9 @@ lbs_ps_confirm_sleep
 
     checks condition and prepares to send sleep confirm command to firmware if ok
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
 .. _`lbs_ps_confirm_sleep.return`:
 
@@ -486,23 +531,29 @@ lbs_set_tpc_cfg
 
     Configures the transmission power control functionality
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param int enable:
+    :param enable:
         Transmission power control enable
+    :type enable: int
 
-    :param int8_t p0:
+    :param p0:
         Power level when link quality is good (dBm).
+    :type p0: int8_t
 
-    :param int8_t p1:
+    :param p1:
         Power level when link quality is fair (dBm).
+    :type p1: int8_t
 
-    :param int8_t p2:
+    :param p2:
         Power level when link quality is poor (dBm).
+    :type p2: int8_t
 
-    :param int usesnr:
+    :param usesnr:
         Use Signal to Noise Ratio in TPC
+    :type usesnr: int
 
 .. _`lbs_set_tpc_cfg.return`:
 
@@ -520,20 +571,25 @@ lbs_set_power_adapt_cfg
 
     Configures the power adaptation settings
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param int enable:
+    :param enable:
         Power adaptation enable
+    :type enable: int
 
-    :param int8_t p0:
+    :param p0:
         Power level for 1, 2, 5.5 and 11 Mbps (dBm).
+    :type p0: int8_t
 
-    :param int8_t p1:
+    :param p1:
         Power level for 6, 9, 12, 18, 22, 24 and 36 Mbps (dBm).
+    :type p1: int8_t
 
-    :param int8_t p2:
+    :param p2:
         Power level for 48 and 54 Mbps (dBm).
+    :type p2: int8_t
 
 .. _`lbs_set_power_adapt_cfg.return`:
 

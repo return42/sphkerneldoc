@@ -10,14 +10,17 @@ of_get_regulator_init_data
 
     extract regulator_init_data structure info
 
-    :param struct device \*dev:
+    :param dev:
         device requesting for regulator_init_data
+    :type dev: struct device \*
 
-    :param struct device_node \*node:
+    :param node:
         regulator device node
+    :type node: struct device_node \*
 
-    :param const struct regulator_desc \*desc:
+    :param desc:
         regulator description
+    :type desc: const struct regulator_desc \*
 
 .. _`of_get_regulator_init_data.description`:
 
@@ -37,17 +40,21 @@ of_regulator_match
 
     extract multiple regulator init data from device tree.
 
-    :param struct device \*dev:
+    :param dev:
         device requesting the data
+    :type dev: struct device \*
 
-    :param struct device_node \*node:
+    :param node:
         parent device node of the regulators
+    :type node: struct device_node \*
 
-    :param struct of_regulator_match \*matches:
+    :param matches:
         match table for the regulators
+    :type matches: struct of_regulator_match \*
 
-    :param unsigned int num_matches:
+    :param num_matches:
         number of entries in match table
+    :type num_matches: unsigned int
 
 .. _`of_regulator_match.description`:
 
@@ -74,8 +81,9 @@ of_check_coupling_data
 
     Parse rdev's coupling properties and check data consistency \ ``rdev``\  - pointer to regulator_dev whose data is checked
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: struct regulator_dev \*
 
 .. _`of_check_coupling_data.function-checks-if-all-the-following-conditions-are-met`:
 
@@ -98,12 +106,14 @@ of_parse_coupled_regulator
 
     Get regulator_dev pointer from rdev's property
 
-    :param struct regulator_dev \*rdev:
+    :param rdev:
         Pointer to regulator_dev, whose DTS is used as a source to parse
         "regulator-coupled-with" property
+    :type rdev: struct regulator_dev \*
 
-    :param int index:
+    :param index:
         Index in phandles array
+    :type index: int
 
 .. _`of_parse_coupled_regulator.description`:
 

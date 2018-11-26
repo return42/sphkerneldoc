@@ -274,11 +274,13 @@ zynqmp_dma_update_desc_to_ctrlr
 
     Updates descriptor to the controller
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
-    :param struct zynqmp_dma_desc_sw \*desc:
+    :param desc:
         Transaction descriptor pointer
+    :type desc: struct zynqmp_dma_desc_sw \*
 
 .. _`zynqmp_dma_desc_config_eod`:
 
@@ -289,11 +291,13 @@ zynqmp_dma_desc_config_eod
 
     Mark the descriptor as end descriptor
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
-    :param void \*desc:
+    :param desc:
         Hw descriptor pointer
+    :type desc: void \*
 
 .. _`zynqmp_dma_config_sg_ll_desc`:
 
@@ -304,23 +308,29 @@ zynqmp_dma_config_sg_ll_desc
 
     Configure the linked list descriptor
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
-    :param struct zynqmp_dma_desc_ll \*sdesc:
+    :param sdesc:
         Hw descriptor pointer
+    :type sdesc: struct zynqmp_dma_desc_ll \*
 
-    :param dma_addr_t src:
+    :param src:
         Source buffer address
+    :type src: dma_addr_t
 
-    :param dma_addr_t dst:
+    :param dst:
         Destination buffer address
+    :type dst: dma_addr_t
 
-    :param size_t len:
+    :param len:
         Transfer length
+    :type len: size_t
 
-    :param struct zynqmp_dma_desc_ll \*prev:
+    :param prev:
         Previous hw descriptor pointer
+    :type prev: struct zynqmp_dma_desc_ll \*
 
 .. _`zynqmp_dma_init`:
 
@@ -331,8 +341,9 @@ zynqmp_dma_init
 
     Initialize the channel
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
 .. _`zynqmp_dma_tx_submit`:
 
@@ -343,8 +354,9 @@ zynqmp_dma_tx_submit
 
     Submit DMA transaction
 
-    :param struct dma_async_tx_descriptor \*tx:
+    :param tx:
         Async transaction descriptor pointer
+    :type tx: struct dma_async_tx_descriptor \*
 
 .. _`zynqmp_dma_tx_submit.return`:
 
@@ -362,8 +374,9 @@ zynqmp_dma_get_descriptor
 
     Get the sw descriptor from the pool
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
 .. _`zynqmp_dma_get_descriptor.return`:
 
@@ -381,11 +394,13 @@ zynqmp_dma_free_descriptor
 
     Issue pending transactions
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
-    :param struct zynqmp_dma_desc_sw \*sdesc:
+    :param sdesc:
         Transaction descriptor pointer
+    :type sdesc: struct zynqmp_dma_desc_sw \*
 
 .. _`zynqmp_dma_free_desc_list`:
 
@@ -396,11 +411,13 @@ zynqmp_dma_free_desc_list
 
     Free descriptors list
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
-    :param struct list_head \*list:
+    :param list:
         List to parse and delete the descriptor
+    :type list: struct list_head \*
 
 .. _`zynqmp_dma_alloc_chan_resources`:
 
@@ -411,8 +428,9 @@ zynqmp_dma_alloc_chan_resources
 
     Allocate channel resources
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
 .. _`zynqmp_dma_alloc_chan_resources.return`:
 
@@ -430,8 +448,9 @@ zynqmp_dma_start
 
     Start DMA channel
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
 .. _`zynqmp_dma_handle_ovfl_int`:
 
@@ -442,11 +461,13 @@ zynqmp_dma_handle_ovfl_int
 
     Process the overflow interrupt
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
-    :param u32 status:
+    :param status:
         Interrupt status value
+    :type status: u32
 
 .. _`zynqmp_dma_device_config`:
 
@@ -457,11 +478,13 @@ zynqmp_dma_device_config
 
     Zynqmp dma device configuration
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param struct dma_slave_config \*config:
+    :param config:
         DMA device config
+    :type config: struct dma_slave_config \*
 
 .. _`zynqmp_dma_device_config.return`:
 
@@ -479,8 +502,9 @@ zynqmp_dma_start_transfer
 
     Initiate the new transfer
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
 .. _`zynqmp_dma_chan_desc_cleanup`:
 
@@ -491,8 +515,9 @@ zynqmp_dma_chan_desc_cleanup
 
     Cleanup the completed descriptors
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel
+    :type chan: struct zynqmp_dma_chan \*
 
 .. _`zynqmp_dma_complete_descriptor`:
 
@@ -503,8 +528,9 @@ zynqmp_dma_complete_descriptor
 
     Mark the active descriptor as complete
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
 .. _`zynqmp_dma_issue_pending`:
 
@@ -515,8 +541,9 @@ zynqmp_dma_issue_pending
 
     Issue pending transactions
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel pointer
+    :type dchan: struct dma_chan \*
 
 .. _`zynqmp_dma_free_descriptors`:
 
@@ -527,8 +554,9 @@ zynqmp_dma_free_descriptors
 
     Free channel descriptors
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
 .. _`zynqmp_dma_free_chan_resources`:
 
@@ -539,8 +567,9 @@ zynqmp_dma_free_chan_resources
 
     Free channel resources
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel pointer
+    :type dchan: struct dma_chan \*
 
 .. _`zynqmp_dma_reset`:
 
@@ -551,8 +580,9 @@ zynqmp_dma_reset
 
     Reset the channel
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
 .. _`zynqmp_dma_irq_handler`:
 
@@ -563,11 +593,13 @@ zynqmp_dma_irq_handler
 
     ZynqMP DMA Interrupt handler
 
-    :param int irq:
+    :param irq:
         IRQ number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Pointer to the ZynqMP DMA channel structure
+    :type data: void \*
 
 .. _`zynqmp_dma_irq_handler.return`:
 
@@ -585,8 +617,9 @@ zynqmp_dma_do_tasklet
 
     Schedule completion tasklet
 
-    :param unsigned long data:
+    :param data:
         Pointer to the ZynqMP DMA channel structure
+    :type data: unsigned long
 
 .. _`zynqmp_dma_device_terminate_all`:
 
@@ -597,8 +630,9 @@ zynqmp_dma_device_terminate_all
 
     Aborts all transfers on a channel
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel pointer
+    :type dchan: struct dma_chan \*
 
 .. _`zynqmp_dma_device_terminate_all.return`:
 
@@ -616,20 +650,25 @@ zynqmp_dma_prep_memcpy
 
     prepare descriptors for memcpy transaction
 
-    :param struct dma_chan \*dchan:
+    :param dchan:
         DMA channel
+    :type dchan: struct dma_chan \*
 
-    :param dma_addr_t dma_dst:
+    :param dma_dst:
         Destination buffer address
+    :type dma_dst: dma_addr_t
 
-    :param dma_addr_t dma_src:
+    :param dma_src:
         Source buffer address
+    :type dma_src: dma_addr_t
 
-    :param size_t len:
+    :param len:
         Transfer length
+    :type len: size_t
 
-    :param ulong flags:
+    :param flags:
         transfer ack flags
+    :type flags: ulong
 
 .. _`zynqmp_dma_prep_memcpy.return`:
 
@@ -647,8 +686,9 @@ zynqmp_dma_chan_remove
 
     Channel remove function
 
-    :param struct zynqmp_dma_chan \*chan:
+    :param chan:
         ZynqMP DMA channel pointer
+    :type chan: struct zynqmp_dma_chan \*
 
 .. _`zynqmp_dma_chan_probe`:
 
@@ -659,11 +699,13 @@ zynqmp_dma_chan_probe
 
     Per Channel Probing
 
-    :param struct zynqmp_dma_device \*zdev:
+    :param zdev:
         Driver specific device structure
+    :type zdev: struct zynqmp_dma_device \*
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`zynqmp_dma_chan_probe.return`:
 
@@ -681,11 +723,13 @@ of_zynqmp_dma_xlate
 
     Translation function
 
-    :param struct of_phandle_args \*dma_spec:
+    :param dma_spec:
         Pointer to DMA specifier as found in the device tree
+    :type dma_spec: struct of_phandle_args \*
 
-    :param struct of_dma \*ofdma:
+    :param ofdma:
         Pointer to DMA controller data
+    :type ofdma: struct of_dma \*
 
 .. _`of_zynqmp_dma_xlate.return`:
 
@@ -703,8 +747,9 @@ zynqmp_dma_suspend
 
     Suspend method for the driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the device structure
+    :type dev: struct device \*
 
 .. _`zynqmp_dma_suspend.description`:
 
@@ -729,8 +774,9 @@ zynqmp_dma_resume
 
     Resume from suspend
 
-    :param struct device \*dev:
+    :param dev:
         Address of the device structure
+    :type dev: struct device \*
 
 .. _`zynqmp_dma_resume.description`:
 
@@ -755,8 +801,9 @@ zynqmp_dma_runtime_suspend
 
     Runtime suspend method for the driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the device structure
+    :type dev: struct device \*
 
 .. _`zynqmp_dma_runtime_suspend.description`:
 
@@ -781,8 +828,9 @@ zynqmp_dma_runtime_resume
 
     Runtime suspend method for the driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the device structure
+    :type dev: struct device \*
 
 .. _`zynqmp_dma_runtime_resume.description`:
 
@@ -807,8 +855,9 @@ zynqmp_dma_probe
 
     Driver probe function
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`zynqmp_dma_probe.return`:
 
@@ -826,8 +875,9 @@ zynqmp_dma_remove
 
     Driver remove function
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the platform_device structure
+    :type pdev: struct platform_device \*
 
 .. _`zynqmp_dma_remove.return`:
 

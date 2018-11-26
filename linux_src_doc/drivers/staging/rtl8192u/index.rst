@@ -7,5 +7,4 @@ rtl8192u
 .. toctree::
     :maxdepth: 1
 
-    ieee80211/index
     r8192U_core_c

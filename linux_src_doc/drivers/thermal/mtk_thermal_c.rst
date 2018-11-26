@@ -10,14 +10,17 @@ raw_to_mcelsius
 
     convert a raw ADC value to mcelsius
 
-    :param struct mtk_thermal \*mt:
+    :param mt:
         The thermal controller
+    :type mt: struct mtk_thermal \*
 
-    :param int sensno:
+    :param sensno:
         *undescribed*
+    :type sensno: int
 
-    :param s32 raw:
+    :param raw:
         raw ADC value
+    :type raw: s32
 
 .. _`raw_to_mcelsius.description`:
 
@@ -36,8 +39,9 @@ mtk_thermal_get_bank
 
     get bank
 
-    :param struct mtk_thermal_bank \*bank:
+    :param bank:
         The bank
+    :type bank: struct mtk_thermal_bank \*
 
 .. _`mtk_thermal_get_bank.description`:
 
@@ -56,8 +60,9 @@ mtk_thermal_put_bank
 
     release bank
 
-    :param struct mtk_thermal_bank \*bank:
+    :param bank:
         The bank
+    :type bank: struct mtk_thermal_bank \*
 
 .. _`mtk_thermal_put_bank.description`:
 
@@ -75,8 +80,9 @@ mtk_thermal_bank_temperature
 
     get the temperature of a bank
 
-    :param struct mtk_thermal_bank \*bank:
+    :param bank:
         The bank
+    :type bank: struct mtk_thermal_bank \*
 
 .. _`mtk_thermal_bank_temperature.description`:
 

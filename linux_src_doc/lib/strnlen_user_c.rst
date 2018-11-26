@@ -10,11 +10,13 @@ strnlen_user
 
     - Get the size of a user string INCLUDING final NUL.
 
-    :param const char __user \*str:
+    :param str:
         The string to measure.
+    :type str: const char __user \*
 
-    :param long count:
+    :param count:
         Maximum count (including NUL character)
+    :type count: long
 
 .. _`strnlen_user.context`:
 

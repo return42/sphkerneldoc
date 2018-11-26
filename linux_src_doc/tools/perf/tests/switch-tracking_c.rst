@@ -10,11 +10,13 @@ test__switch_tracking
 
     test using sched_switch and tracking events.
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
 .. _`test__switch_tracking.description`:
 

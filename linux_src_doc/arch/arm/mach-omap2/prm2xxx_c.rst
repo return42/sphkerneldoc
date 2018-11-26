@@ -10,8 +10,9 @@ omap2xxx_prm_read_reset_sources
 
     return the last SoC reset source
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2xxx_prm_read_reset_sources.description`:
 
@@ -30,8 +31,9 @@ omap2xxx_pwrst_to_common_pwrst
 
     convert OMAP2xxx pwrst to common pwrst
 
-    :param u8 omap2xxx_pwrst:
+    :param omap2xxx_pwrst:
         OMAP2xxx hardware power state to convert
+    :type omap2xxx_pwrst: u8
 
 .. _`omap2xxx_pwrst_to_common_pwrst.description`:
 
@@ -50,8 +52,9 @@ omap2xxx_prm_dpll_reset
 
     use DPLL reset to reboot the OMAP SoC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2xxx_prm_dpll_reset.description`:
 
@@ -70,14 +73,17 @@ omap2xxx_prm_clear_mod_irqs
 
     clear wakeup status bits for a module
 
-    :param s16 module:
+    :param module:
         PRM module to clear wakeups from
+    :type module: s16
 
-    :param u8 regs:
+    :param regs:
         register offset to clear
+    :type regs: u8
 
-    :param u32 wkst_mask:
+    :param wkst_mask:
         wakeup status mask to clear
+    :type wkst_mask: u32
 
 .. _`omap2xxx_prm_clear_mod_irqs.description`:
 

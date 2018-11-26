@@ -10,11 +10,13 @@ of_match_device
 
     Tell if a struct device matches an of_device_id list
 
-    :param const struct of_device_id \*matches:
+    :param matches:
         *undescribed*
+    :type matches: const struct of_device_id \*
 
-    :param const struct device \*dev:
+    :param dev:
         the of device structure to match against
+    :type dev: const struct device \*
 
 .. _`of_match_device.description`:
 
@@ -33,15 +35,18 @@ of_dma_configure
 
     Setup DMA configuration
 
-    :param struct device \*dev:
+    :param dev:
         Device to apply DMA configuration
+    :type dev: struct device \*
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to OF node having DMA configuration
+    :type np: struct device_node \*
 
-    :param bool force_dma:
+    :param force_dma:
         Whether device is to be set up by \ :c:func:`of_dma_configure`\  even if
         DMA capability is not explicitly described by firmware.
+    :type force_dma: bool
 
 .. _`of_dma_configure.description`:
 
@@ -55,26 +60,6 @@ If platform code needs to use its own special DMA configuration, it
 can use a platform bus notifier and handle BUS_NOTIFY_ADD_DEVICE events
 to fix up DMA configuration.
 
-.. _`of_dma_deconfigure`:
-
-of_dma_deconfigure
-==================
-
-.. c:function:: void of_dma_deconfigure(struct device *dev)
-
-    Clean up DMA configuration
-
-    :param struct device \*dev:
-        Device for which to clean up DMA configuration
-
-.. _`of_dma_deconfigure.description`:
-
-Description
------------
-
-Clean up all configuration performed by \ :c:func:`of_dma_configure_ops`\  and free all
-resources that have been allocated.
-
 .. _`of_device_modalias`:
 
 of_device_modalias
@@ -84,14 +69,17 @@ of_device_modalias
 
     Fill buffer with newline terminated modalias string
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param char \*str:
+    :param str:
         *undescribed*
+    :type str: char \*
 
-    :param ssize_t len:
+    :param len:
         *undescribed*
+    :type len: ssize_t
 
 .. _`of_device_uevent`:
 
@@ -102,11 +90,13 @@ of_device_uevent
 
     Display OF related uevent information
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct kobj_uevent_env \*env:
+    :param env:
         *undescribed*
+    :type env: struct kobj_uevent_env \*
 
 .. This file was automatic generated / don't edit.
 

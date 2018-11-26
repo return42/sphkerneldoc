@@ -10,14 +10,17 @@ edc_inc
 
     report a soft error and check if we are over the watermark
 
-    :param struct edc \*edc:
+    :param edc:
         pointer to error density counter.
+    :type edc: struct edc \*
 
-    :param u16 max_err:
+    :param max_err:
         maximum number of errors we can accept over the timeframe
+    :type max_err: u16
 
-    :param u16 timeframe:
+    :param timeframe:
         length of the timeframe (in jiffies).
+    :type timeframe: u16
 
 .. _`edc_inc.return`:
 

@@ -10,8 +10,9 @@ ipr_is_ioa_resource
 
     Determine if a resource is the IOA
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_is_ioa_resource.return-value`:
 
@@ -29,8 +30,9 @@ ipr_is_af_dasd_device
 
     Determine if a resource is an AF DASD
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_is_af_dasd_device.return-value`:
 
@@ -48,8 +50,9 @@ ipr_is_vset_device
 
     Determine if a resource is a VSET
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_is_vset_device.return-value`:
 
@@ -67,8 +70,9 @@ ipr_is_gscsi
 
     Determine if a resource is a generic scsi resource
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_is_gscsi.return-value`:
 
@@ -86,8 +90,9 @@ ipr_is_scsi_disk
 
     Determine if a resource is a SCSI disk
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_is_scsi_disk.return-value`:
 
@@ -105,8 +110,9 @@ ipr_is_gata
 
     Determine if a resource is a generic ATA resource
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_is_gata.return-value`:
 
@@ -124,8 +130,9 @@ ipr_is_naca_model
 
     Determine if a resource is using NACA queueing model
 
-    :param struct ipr_resource_entry \*res:
+    :param res:
         resource entry struct
+    :type res: struct ipr_resource_entry \*
 
 .. _`ipr_is_naca_model.return-value`:
 
@@ -143,8 +150,9 @@ ipr_is_device
 
     Determine if the hostrcb structure is related to a device
 
-    :param struct ipr_hostrcb \*hostrcb:
+    :param hostrcb:
         host resource control blocks struct
+    :type hostrcb: struct ipr_hostrcb \*
 
 .. _`ipr_is_device.return-value`:
 
@@ -162,8 +170,9 @@ ipr_sdt_is_fmt2
 
     Determine if a SDT address is in format 2
 
-    :param u32 sdt_word:
+    :param sdt_word:
         SDT address
+    :type sdt_word: u32
 
 .. _`ipr_sdt_is_fmt2.return-value`:
 

@@ -25,8 +25,9 @@ drm_sysfs_init
 
     initialize sysfs helpers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`drm_sysfs_init.description`:
 
@@ -54,8 +55,9 @@ drm_sysfs_destroy
 
     destroys DRM class
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`drm_sysfs_destroy.description`:
 
@@ -73,8 +75,9 @@ drm_sysfs_hotplug_event
 
     generate a DRM uevent
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_sysfs_hotplug_event.description`:
 
@@ -94,8 +97,9 @@ drm_class_device_register
 
     register new device with the DRM sysfs class
 
-    :param struct device \*dev:
+    :param dev:
         device to register
+    :type dev: struct device \*
 
 .. _`drm_class_device_register.description`:
 
@@ -115,8 +119,9 @@ drm_class_device_unregister
 
     unregister device with the DRM sysfs class
 
-    :param struct device \*dev:
+    :param dev:
         device to unregister
+    :type dev: struct device \*
 
 .. _`drm_class_device_unregister.description`:
 

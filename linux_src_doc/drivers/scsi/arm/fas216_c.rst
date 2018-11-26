@@ -10,11 +10,13 @@ fas216_get_last_msg
 
     retrive last message from the list
 
-    :param FAS216_Info \*info:
+    :param info:
         interface to search
+    :type info: FAS216_Info \*
 
-    :param int pos:
+    :param pos:
         current fifo position
+    :type pos: int
 
 .. _`fas216_get_last_msg.description`:
 
@@ -32,11 +34,13 @@ fas216_syncperiod
 
     calculate STP register value
 
-    :param FAS216_Info \*info:
+    :param info:
         state structure for interface connected to device
+    :type info: FAS216_Info \*
 
-    :param int ns:
+    :param ns:
         period in ns (between subsequent bytes)
+    :type ns: int
 
 .. _`fas216_syncperiod.description`:
 
@@ -55,11 +59,13 @@ fas216_set_sync
 
     setup FAS216 chip for specified transfer period.
 
-    :param FAS216_Info \*info:
+    :param info:
         state structure for interface connected to device
+    :type info: FAS216_Info \*
 
-    :param int target:
+    :param target:
         target
+    :type target: int
 
 .. _`fas216_set_sync.description`:
 
@@ -80,11 +86,13 @@ fas216_handlesync
 
     Handle a synchronous transfer message
 
-    :param FAS216_Info \*info:
+    :param info:
         state structure for interface
+    :type info: FAS216_Info \*
 
-    :param char \*msg:
+    :param msg:
         message from target
+    :type msg: char \*
 
 .. _`fas216_handlesync.description`:
 
@@ -102,11 +110,13 @@ fas216_updateptrs
 
     update data pointers after transfer suspended/paused
 
-    :param FAS216_Info \*info:
+    :param info:
         interface's local pointer to update
+    :type info: FAS216_Info \*
 
-    :param int bytes_transferred:
+    :param bytes_transferred:
         number of bytes transferred
+    :type bytes_transferred: int
 
 .. _`fas216_updateptrs.description`:
 
@@ -124,11 +134,13 @@ fas216_pio
 
     transfer data off of/on to card using programmed IO
 
-    :param FAS216_Info \*info:
+    :param info:
         interface to transfer data to/from
+    :type info: FAS216_Info \*
 
-    :param fasdmadir_t direction:
+    :param direction:
         direction to transfer data (DMA_OUT/DMA_IN)
+    :type direction: fasdmadir_t
 
 .. _`fas216_pio.description`:
 
@@ -153,8 +165,9 @@ fas216_cleanuptransfer
 
     clean up after a transfer has completed.
 
-    :param FAS216_Info \*info:
+    :param info:
         interface to clean up
+    :type info: FAS216_Info \*
 
 .. _`fas216_cleanuptransfer.description`:
 
@@ -173,8 +186,9 @@ fas216_transfer
 
     Perform a DMA/PIO transfer off of/on to card
 
-    :param FAS216_Info \*info:
+    :param info:
         interface from which device disconnected from
+    :type info: FAS216_Info \*
 
 .. _`fas216_transfer.description`:
 
@@ -192,8 +206,9 @@ fas216_stoptransfer
 
     Stop a DMA transfer onto / off of the card
 
-    :param FAS216_Info \*info:
+    :param info:
         interface from which device disconnected from
+    :type info: FAS216_Info \*
 
 .. _`fas216_stoptransfer.description`:
 
@@ -211,8 +226,9 @@ fas216_disconnect_intr
 
     handle device disconnection
 
-    :param FAS216_Info \*info:
+    :param info:
         interface from which device disconnected from
+    :type info: FAS216_Info \*
 
 .. _`fas216_disconnect_intr.description`:
 
@@ -230,8 +246,9 @@ fas216_reselected_intr
 
     start reconnection of a device
 
-    :param FAS216_Info \*info:
+    :param info:
         interface which was reselected
+    :type info: FAS216_Info \*
 
 .. _`fas216_reselected_intr.description`:
 
@@ -249,8 +266,9 @@ fas216_message
 
     handle a function done interrupt from FAS216 chip
 
-    :param FAS216_Info \*info:
+    :param info:
         interface which caused function done interrupt
+    :type info: FAS216_Info \*
 
 .. _`fas216_message.description`:
 
@@ -268,8 +286,9 @@ fas216_send_command
 
     send command after all message bytes have been sent
 
-    :param FAS216_Info \*info:
+    :param info:
         interface which caused bus service
+    :type info: FAS216_Info \*
 
 .. _`fas216_send_command.description`:
 
@@ -287,11 +306,13 @@ fas216_send_messageout
 
     handle bus service to send a message
 
-    :param FAS216_Info \*info:
+    :param info:
         interface which caused bus service
+    :type info: FAS216_Info \*
 
-    :param int start:
+    :param start:
         *undescribed*
+    :type start: int
 
 .. _`fas216_send_messageout.description`:
 
@@ -316,14 +337,17 @@ fas216_busservice_intr
 
     handle bus service interrupt from FAS216 chip
 
-    :param FAS216_Info \*info:
+    :param info:
         interface which caused bus service interrupt
+    :type info: FAS216_Info \*
 
-    :param unsigned int stat:
+    :param stat:
         Status register contents
+    :type stat: unsigned int
 
-    :param unsigned int is:
+    :param is:
         SCSI Status register contents
+    :type is: unsigned int
 
 .. _`fas216_busservice_intr.description`:
 
@@ -341,14 +365,17 @@ fas216_funcdone_intr
 
     handle a function done interrupt from FAS216 chip
 
-    :param FAS216_Info \*info:
+    :param info:
         interface which caused function done interrupt
+    :type info: FAS216_Info \*
 
-    :param unsigned int stat:
+    :param stat:
         Status register contents
+    :type stat: unsigned int
 
-    :param unsigned int is:
+    :param is:
         SCSI Status register contents
+    :type is: unsigned int
 
 .. _`fas216_funcdone_intr.description`:
 
@@ -366,8 +393,9 @@ fas216_intr
 
     handle interrupts to progress a command
 
-    :param FAS216_Info \*info:
+    :param info:
         interface to service
+    :type info: FAS216_Info \*
 
 .. _`fas216_intr.description`:
 
@@ -385,8 +413,9 @@ fas216_kick
 
     kick a command to the interface
 
-    :param FAS216_Info \*info:
+    :param info:
         our host interface to kick
+    :type info: FAS216_Info \*
 
 .. _`fas216_kick.description`:
 
@@ -411,14 +440,17 @@ fas216_rq_sns_done
 
     Finish processing automatic request sense command
 
-    :param FAS216_Info \*info:
+    :param info:
         interface that completed
+    :type info: FAS216_Info \*
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         command that completed
+    :type SCpnt: struct scsi_cmnd \*
 
-    :param unsigned int result:
+    :param result:
         driver byte of result
+    :type result: unsigned int
 
 .. _`fas216_rq_sns_done.description`:
 
@@ -436,14 +468,17 @@ fas216_std_done
 
     finish processing of standard command
 
-    :param FAS216_Info \*info:
+    :param info:
         interface that completed
+    :type info: FAS216_Info \*
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         command that completed
+    :type SCpnt: struct scsi_cmnd \*
 
-    :param unsigned int result:
+    :param result:
         driver byte of result
+    :type result: unsigned int
 
 .. _`fas216_std_done.description`:
 
@@ -461,11 +496,13 @@ fas216_done
 
     complete processing for current command
 
-    :param FAS216_Info \*info:
+    :param info:
         interface that completed
+    :type info: FAS216_Info \*
 
-    :param unsigned int result:
+    :param result:
         driver byte of result
+    :type result: unsigned int
 
 .. _`fas216_done.description`:
 
@@ -483,8 +520,9 @@ fas216_queue_command_lck
 
     queue a command for adapter to process.
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         Command to queue
+    :type SCpnt: struct scsi_cmnd \*
 
     :param void (\*done)(struct scsi_cmnd \*):
         done function to call once command is complete
@@ -519,8 +557,9 @@ fas216_internal_done
 
     trigger restart of a waiting thread in fas216_noqueue_command
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         Command to wake
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`fas216_internal_done.description`:
 
@@ -538,8 +577,9 @@ fas216_noqueue_command_lck
 
     process a command for the adapter.
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         Command to queue
+    :type SCpnt: struct scsi_cmnd \*
 
     :param void (\*done)(struct scsi_cmnd \*):
         *undescribed*
@@ -574,11 +614,13 @@ fas216_find_command
 
     decide how to abort a command
 
-    :param FAS216_Info \*info:
+    :param info:
         *undescribed*
+    :type info: FAS216_Info \*
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         command to abort
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`fas216_find_command.description`:
 
@@ -603,8 +645,9 @@ fas216_eh_abort
 
     abort this command
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         command to abort
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`fas216_eh_abort.description`:
 
@@ -636,8 +679,9 @@ fas216_eh_device_reset
 
     Reset the device associated with this command
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         command specifing device to reset
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`fas216_eh_device_reset.description`:
 
@@ -670,8 +714,9 @@ fas216_eh_bus_reset
 
     Reset the bus associated with the command
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         command specifing bus to reset
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`fas216_eh_bus_reset.description`:
 
@@ -703,8 +748,9 @@ fas216_init_chip
 
     Initialise FAS216 state after reset
 
-    :param FAS216_Info \*info:
+    :param info:
         state structure for interface
+    :type info: FAS216_Info \*
 
 .. _`fas216_init_chip.description`:
 
@@ -722,8 +768,9 @@ fas216_eh_host_reset
 
     Reset the host associated with this command
 
-    :param struct scsi_cmnd \*SCpnt:
+    :param SCpnt:
         command specifing host to reset
+    :type SCpnt: struct scsi_cmnd \*
 
 .. _`fas216_eh_host_reset.description`:
 
@@ -755,8 +802,9 @@ fas216_reset_state
 
     Initialise driver internal state
 
-    :param FAS216_Info \*info:
+    :param info:
         state to initialise
+    :type info: FAS216_Info \*
 
 .. _`fas216_reset_state.description`:
 
@@ -774,8 +822,9 @@ fas216_init
 
     initialise FAS/NCR/AMD SCSI structures.
 
-    :param struct Scsi_Host \*host:
+    :param host:
         a driver-specific filled-out structure
+    :type host: struct Scsi_Host \*
 
 .. _`fas216_init.description`:
 
@@ -800,11 +849,13 @@ fas216_add
 
     initialise FAS/NCR/AMD SCSI ic.
 
-    :param struct Scsi_Host \*host:
+    :param host:
         a driver-specific filled-out structure
+    :type host: struct Scsi_Host \*
 
-    :param struct device \*dev:
+    :param dev:
         parent device
+    :type dev: struct device \*
 
 .. _`fas216_add.description`:
 
@@ -829,8 +880,9 @@ fas216_release
 
     release all resources for FAS/NCR/AMD SCSI ic.
 
-    :param struct Scsi_Host \*host:
+    :param host:
         a driver-specific filled-out structure
+    :type host: struct Scsi_Host \*
 
 .. _`fas216_release.description`:
 

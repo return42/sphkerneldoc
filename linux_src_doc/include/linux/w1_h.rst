@@ -435,6 +435,7 @@ Definition
         struct list_head family_entry;
         u8 fid;
         struct w1_family_ops *fops;
+        const struct of_device_id *of_match_table;
         atomic_t refcnt;
     }
 
@@ -452,6 +453,9 @@ fid
 fops
     operations for this family
 
+of_match_table
+    *undescribed*
+
 refcnt
     reference counter
 
@@ -464,8 +468,9 @@ module_w1_family
 
     Helper macro for registering a 1-Wire families
 
-    :param  __w1_family:
+    :param __w1_family:
         w1_family struct
+    :type __w1_family: 
 
 .. _`module_w1_family.description`:
 

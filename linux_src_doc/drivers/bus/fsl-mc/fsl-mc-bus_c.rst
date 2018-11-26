@@ -133,12 +133,14 @@ fsl_mc_bus_match
 
     device to driver matching callback
 
-    :param struct device \*dev:
+    :param dev:
         the fsl-mc device to match against
+    :type dev: struct device \*
 
-    :param struct device_driver \*drv:
+    :param drv:
         the device driver to search for matching fsl-mc object type
         structures
+    :type drv: struct device_driver \*
 
 .. _`fsl_mc_bus_match.description`:
 
@@ -156,11 +158,13 @@ fsl_mc_bus_uevent
 
     callback invoked when a device is added
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct kobj_uevent_env \*env:
+    :param env:
         *undescribed*
+    :type env: struct kobj_uevent_env \*
 
 .. _`__fsl_mc_driver_register`:
 
@@ -171,11 +175,13 @@ fsl_mc_bus_uevent
 
     registers a child device driver with the MC bus
 
-    :param struct fsl_mc_driver \*mc_driver:
+    :param mc_driver:
         *undescribed*
+    :type mc_driver: struct fsl_mc_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         *undescribed*
+    :type owner: struct module \*
 
 .. _`__fsl_mc_driver_register.description`:
 
@@ -195,8 +201,9 @@ fsl_mc_driver_unregister
 
     unregisters a device driver from the MC bus
 
-    :param struct fsl_mc_driver \*mc_driver:
+    :param mc_driver:
         *undescribed*
+    :type mc_driver: struct fsl_mc_driver \*
 
 .. _`mc_get_version`:
 
@@ -207,14 +214,17 @@ mc_get_version
 
     Retrieves the Management Complex firmware version information
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to opaque I/O object
+    :type mc_io: struct fsl_mc_io \*
 
-    :param u32 cmd_flags:
+    :param cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
+    :type cmd_flags: u32
 
-    :param struct mc_version \*mc_ver_info:
+    :param mc_ver_info:
         Returned version information structure
+    :type mc_ver_info: struct mc_version \*
 
 .. _`mc_get_version.return`:
 
@@ -232,11 +242,13 @@ fsl_mc_get_root_dprc
 
     function to traverse to the root dprc
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device \*\*root_dprc_dev:
+    :param root_dprc_dev:
         *undescribed*
+    :type root_dprc_dev: struct device \*\*
 
 .. _`fsl_mc_is_root_dprc`:
 
@@ -247,8 +259,9 @@ fsl_mc_is_root_dprc
 
     function to check if a given device is a root dprc
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`fsl_mc_device_add`:
 
@@ -259,17 +272,21 @@ fsl_mc_device_add
 
     mc device to be visible in Linux
 
-    :param struct fsl_mc_obj_desc \*obj_desc:
+    :param obj_desc:
         *undescribed*
+    :type obj_desc: struct fsl_mc_obj_desc \*
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         *undescribed*
+    :type mc_io: struct fsl_mc_io \*
 
-    :param struct device \*parent_dev:
+    :param parent_dev:
         *undescribed*
+    :type parent_dev: struct device \*
 
-    :param struct fsl_mc_device \*\*new_mc_dev:
+    :param new_mc_dev:
         *undescribed*
+    :type new_mc_dev: struct fsl_mc_device \*\*
 
 .. _`fsl_mc_device_remove`:
 
@@ -280,8 +297,9 @@ fsl_mc_device_remove
 
     Remove an fsl-mc device from being visible to Linux
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         Pointer to an fsl-mc device
+    :type mc_dev: struct fsl_mc_device \*
 
 .. _`fsl_mc_bus_probe`:
 
@@ -292,8 +310,9 @@ fsl_mc_bus_probe
 
     callback invoked when the root MC bus is being added
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`fsl_mc_bus_remove`:
 
@@ -304,8 +323,9 @@ fsl_mc_bus_remove
 
     callback invoked when the root MC bus is being removed
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

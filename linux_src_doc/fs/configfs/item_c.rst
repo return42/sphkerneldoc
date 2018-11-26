@@ -10,8 +10,9 @@ config_item_init
 
     initialize item.
 
-    :param struct config_item \*item:
+    :param item:
         item in question.
+    :type item: struct config_item \*
 
 .. _`config_item_set_name`:
 
@@ -22,11 +23,13 @@ config_item_set_name
 
     Set the name of an item
 
-    :param struct config_item \*item:
+    :param item:
         item.
+    :type item: struct config_item \*
 
-    :param const char \*fmt:
+    :param fmt:
         The \ :c:func:`vsnprintf`\ 's format string.
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -37,8 +40,8 @@ Description
 -----------
 
 If strlen(name) >= CONFIGFS_ITEM_NAME_LEN, then use a
-dynamically allocated string that \ ``item``\ ->ci_name points to.
-Otherwise, use the static \ ``item``\ ->ci_namebuf array.
+dynamically allocated string that \ ``item->ci_name``\  points to.
+Otherwise, use the static \ ``item->ci_namebuf``\  array.
 
 .. _`config_item_put`:
 
@@ -49,8 +52,9 @@ config_item_put
 
     decrement refcount for item.
 
-    :param struct config_item \*item:
+    :param item:
         item.
+    :type item: struct config_item \*
 
 .. _`config_item_put.description`:
 
@@ -68,8 +72,9 @@ config_group_init
 
     initialize a group for use
 
-    :param struct config_group \*group:
+    :param group:
         config_group
+    :type group: struct config_group \*
 
 .. _`config_group_find_item`:
 
@@ -80,20 +85,22 @@ config_group_find_item
 
     search for item in group.
 
-    :param struct config_group \*group:
+    :param group:
         group we're looking in.
+    :type group: struct config_group \*
 
-    :param const char \*name:
+    :param name:
         item's name.
+    :type name: const char \*
 
 .. _`config_group_find_item.description`:
 
 Description
 -----------
 
-Iterate over \ ``group``\ ->cg_list, looking for a matching config_item.
+Iterate over \ ``group->cg_list``\ , looking for a matching config_item.
 If matching item is found take a reference and return the item.
-Caller must have locked group via \ ``group``\ ->cg_subsys->su_mtx.
+Caller must have locked group via \ ``group->cg_subsys->su_mtx``\ .
 
 .. This file was automatic generated / don't edit.
 

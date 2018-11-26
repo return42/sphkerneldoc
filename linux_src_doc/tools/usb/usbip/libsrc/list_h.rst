@@ -10,11 +10,13 @@ list_add
 
     add a new entry
 
-    :param struct list_head \*new:
+    :param new:
         new entry to be added
+    :type new: struct list_head \*
 
-    :param struct list_head \*head:
+    :param head:
         list head to add it after
+    :type head: struct list_head \*
 
 .. _`list_add.description`:
 
@@ -33,8 +35,9 @@ This is good for implementing stacks.
 
     deletes entry from list.
 
-    :param struct list_head \*entry:
+    :param entry:
         the element to delete from the list.
+    :type entry: struct list_head \*
 
 .. _`__list_del_entry.note`:
 
@@ -53,14 +56,17 @@ list_entry
 
     get the struct for this entry
 
-    :param  ptr:
+    :param ptr:
         the \ :c:type:`struct list_head <list_head>`\  pointer.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_for_each`:
 
@@ -71,11 +77,13 @@ list_for_each
 
     iterate over a list
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct list_head <list_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
 .. _`list_for_each_safe`:
 
@@ -86,14 +94,17 @@ list_for_each_safe
 
     iterate over a list safe against removal of list entry
 
-    :param  pos:
+    :param pos:
         the \ :c:type:`struct list_head <list_head>`\  to use as a loop cursor.
+    :type pos: 
 
-    :param  n:
+    :param n:
         another \ :c:type:`struct list_head <list_head>`\  to use as temporary storage
+    :type n: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
 .. _`container_of`:
 
@@ -104,14 +115,17 @@ container_of
 
     cast a member of a structure out to the containing structure
 
-    :param  ptr:
+    :param ptr:
         the pointer to the member.
+    :type ptr: 
 
-    :param  type:
+    :param type:
         the type of the container struct this is embedded in.
+    :type type: 
 
-    :param  member:
+    :param member:
         the name of the member within the struct.
+    :type member: 
 
 .. This file was automatic generated / don't edit.
 

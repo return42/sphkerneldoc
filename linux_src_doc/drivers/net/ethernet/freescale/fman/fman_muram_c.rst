@@ -8,11 +8,13 @@ fman_muram_init
 
 .. c:function:: struct muram_info *fman_muram_init(phys_addr_t base, size_t size)
 
-    :param phys_addr_t base:
+    :param base:
         Pointer to base of memory mapped FM-MURAM.
+    :type base: phys_addr_t
 
-    :param size_t size:
+    :param size:
         Size of the FM-MURAM partition.
+    :type size: size_t
 
 .. _`fman_muram_init.description`:
 
@@ -39,11 +41,13 @@ fman_muram_offset_to_vbase
 
 .. c:function:: unsigned long fman_muram_offset_to_vbase(struct muram_info *muram, unsigned long offset)
 
-    :param struct muram_info \*muram:
+    :param muram:
         FM-MURAM module pointer.
+    :type muram: struct muram_info \*
 
-    :param unsigned long offset:
+    :param offset:
         the offset of the memory block
+    :type offset: unsigned long
 
 .. _`fman_muram_offset_to_vbase.description`:
 
@@ -66,11 +70,13 @@ fman_muram_alloc
 
 .. c:function:: unsigned long fman_muram_alloc(struct muram_info *muram, size_t size)
 
-    :param struct muram_info \*muram:
+    :param muram:
         FM-MURAM module pointer.
+    :type muram: struct muram_info \*
 
-    :param size_t size:
+    :param size:
         Size of the memory to be allocated.
+    :type size: size_t
 
 .. _`fman_muram_alloc.description`:
 
@@ -93,14 +99,17 @@ fman_muram_free_mem
 
 .. c:function:: void fman_muram_free_mem(struct muram_info *muram, unsigned long offset, size_t size)
 
-    :param struct muram_info \*muram:
+    :param muram:
         *undescribed*
+    :type muram: struct muram_info \*
 
-    :param unsigned long offset:
+    :param offset:
         *undescribed*
+    :type offset: unsigned long
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`fman_muram_free_mem.muram`:
 

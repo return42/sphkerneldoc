@@ -25,7 +25,9 @@ Definition
         void (*unmap_addr)(struct pci_epc *epc, u8 func_no, phys_addr_t addr);
         int (*set_msi)(struct pci_epc *epc, u8 func_no, u8 interrupts);
         int (*get_msi)(struct pci_epc *epc, u8 func_no);
-        int (*raise_irq)(struct pci_epc *epc, u8 func_no, enum pci_epc_irq_type type, u8 interrupt_num);
+        int (*set_msix)(struct pci_epc *epc, u8 func_no, u16 interrupts);
+        int (*get_msix)(struct pci_epc *epc, u8 func_no);
+        int (*raise_irq)(struct pci_epc *epc, u8 func_no, enum pci_epc_irq_type type, u16 interrupt_num);
         int (*start)(struct pci_epc *epc);
         void (*stop)(struct pci_epc *epc);
         struct module *owner;
@@ -59,8 +61,16 @@ get_msi
     ops to get the number of MSI interrupts allocated by the RC from
     the MSI capability register
 
+set_msix
+    ops to set the requested number of MSI-X interrupts in the
+    MSI-X capability register
+
+get_msix
+    ops to get the number of MSI-X interrupts allocated by the RC
+    from the MSI-X capability register
+
 raise_irq
-    ops to raise a legacy or MSI interrupt
+    ops to raise a legacy, MSI or MSI-X interrupt
 
 start
     ops to start the PCI link

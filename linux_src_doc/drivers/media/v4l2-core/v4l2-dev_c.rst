@@ -10,8 +10,9 @@ get_index
 
     assign stream index number based on v4l2_dev
 
-    :param struct video_device \*vdev:
+    :param vdev:
         video_device to assign index number to, vdev->v4l2_dev should be assigned
+    :type vdev: struct video_device \*
 
 .. _`get_index.description`:
 
@@ -36,8 +37,9 @@ video_unregister_device
 
     unregister a video4linux device
 
-    :param struct video_device \*vdev:
+    :param vdev:
         the device to unregister
+    :type vdev: struct video_device \*
 
 .. _`video_unregister_device.description`:
 

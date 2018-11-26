@@ -62,20 +62,25 @@ cpg_div6_register
 
     Register a DIV6 clock
 
-    :param const char \*name:
+    :param name:
         Name of the DIV6 clock
+    :type name: const char \*
 
-    :param unsigned int num_parents:
+    :param num_parents:
         Number of parent clocks of the DIV6 clock (1, 4, or 8)
+    :type num_parents: unsigned int
 
-    :param const char \*\*parent_names:
+    :param parent_names:
         Array containing the names of the parent clocks
+    :type parent_names: const char \*\*
 
-    :param void __iomem \*reg:
+    :param reg:
         Mapped register used to control the DIV6 clock
+    :type reg: void __iomem \*
 
-    :param struct raw_notifier_head \*notifiers:
+    :param notifiers:
         Optional notifier chain to save/restore state for system resume
+    :type notifiers: struct raw_notifier_head \*
 
 .. This file was automatic generated / don't edit.
 

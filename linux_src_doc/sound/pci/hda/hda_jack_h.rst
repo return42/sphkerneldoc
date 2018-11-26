@@ -10,11 +10,13 @@ snd_hda_jack_detect
 
     Detect the jack
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         pin NID to check jack detection
+    :type nid: hda_nid_t
 
 .. This file was automatic generated / don't edit.
 

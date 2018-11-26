@@ -10,8 +10,9 @@ amdkfd_fence_enable_signaling
 
     This gets called when TTM wants to evict a KFD BO and schedules a job to move the BO. If fence is already signaled return true. If fence is not signaled schedule a evict KFD process work item.
 
-    :param struct dma_fence \*f:
+    :param f:
         *undescribed*
+    :type f: struct dma_fence \*
 
 .. _`amdkfd_fence_release`:
 
@@ -22,8 +23,9 @@ amdkfd_fence_release
 
     callback that fence can be freed
 
-    :param struct dma_fence \*f:
+    :param f:
         *undescribed*
+    :type f: struct dma_fence \*
 
 .. _`amdkfd_fence_release.description`:
 
@@ -42,11 +44,13 @@ amdkfd_fence_check_mm
 
     Check if \ ``mm``\  is same as that of the fence \ ``f``\  if same return TRUE else return FALSE.
 
-    :param struct dma_fence \*f:
+    :param f:
         [IN] fence
+    :type f: struct dma_fence \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         [IN] mm that needs to be verified
+    :type mm: struct mm_struct \*
 
 .. This file was automatic generated / don't edit.
 

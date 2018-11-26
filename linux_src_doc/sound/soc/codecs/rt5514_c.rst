@@ -10,11 +10,13 @@ rt5514_calc_dmic_clk
 
     Calculate the frequency divider parameter of dmic.
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
-    :param int rate:
+    :param rate:
         base clock rate.
+    :type rate: int
 
 .. _`rt5514_calc_dmic_clk.description`:
 

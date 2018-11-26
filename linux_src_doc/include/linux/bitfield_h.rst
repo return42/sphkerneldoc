@@ -10,11 +10,13 @@ FIELD_FIT
 
     check if value fits in the field
 
-    :param  _mask:
+    :param _mask:
         shifted mask defining the field's length and position
+    :type _mask: 
 
-    :param  _val:
+    :param _val:
         value to test against the field
+    :type _val: 
 
 .. _`field_fit.return`:
 
@@ -32,11 +34,13 @@ FIELD_PREP
 
     prepare a bitfield element
 
-    :param  _mask:
+    :param _mask:
         shifted mask defining the field's length and position
+    :type _mask: 
 
-    :param  _val:
+    :param _val:
         value to put in the field
+    :type _val: 
 
 .. _`field_prep.description`:
 
@@ -55,11 +59,13 @@ FIELD_GET
 
     extract a bitfield element
 
-    :param  _mask:
+    :param _mask:
         shifted mask defining the field's length and position
+    :type _mask: 
 
-    :param  _reg:
+    :param _reg:
         value of entire bitfield
+    :type _reg: 
 
 .. _`field_get.description`:
 

@@ -10,11 +10,13 @@ mesh_path_lookup
 
     look up a path in the mesh path table
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param const u8 \*dst:
+    :param dst:
         hardware address (ETH_ALEN length) of destination
+    :type dst: const u8 \*
 
 .. _`mesh_path_lookup.return`:
 
@@ -39,11 +41,13 @@ mesh_path_lookup_by_idx
 
     look up a path in the mesh path table by its index
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local subif, or NULL for all entries
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param int idx:
+    :param idx:
         index
+    :type idx: int
 
 .. _`mesh_path_lookup_by_idx.return`:
 
@@ -68,11 +72,13 @@ mpp_path_lookup_by_idx
 
     look up a path in the proxy path table by its index
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local subif, or NULL for all entries
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param int idx:
+    :param idx:
         index
+    :type idx: int
 
 .. _`mpp_path_lookup_by_idx.return`:
 
@@ -97,8 +103,9 @@ mesh_path_add_gate
 
     add the given mpath to a mesh gate to our path table
 
-    :param struct mesh_path \*mpath:
+    :param mpath:
         gate path to add to table
+    :type mpath: struct mesh_path \*
 
 .. _`mesh_gate_del`:
 
@@ -109,11 +116,13 @@ mesh_gate_del
 
     remove a mesh gate from the list of known gates
 
-    :param struct mesh_table \*tbl:
+    :param tbl:
         table which holds our list of known gates
+    :type tbl: struct mesh_table \*
 
-    :param struct mesh_path \*mpath:
+    :param mpath:
         gate mpath
+    :type mpath: struct mesh_path \*
 
 .. _`mesh_gate_num`:
 
@@ -124,8 +133,9 @@ mesh_gate_num
 
     number of gates known to this interface
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         subif data
+    :type sdata: struct ieee80211_sub_if_data \*
 
 .. _`mesh_path_add`:
 
@@ -136,11 +146,13 @@ mesh_path_add
 
     allocate and add a new path to the mesh path table
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param const u8 \*dst:
+    :param dst:
         destination address of the path (ETH_ALEN length)
+    :type dst: const u8 \*
 
 .. _`mesh_path_add.return`:
 
@@ -165,8 +177,9 @@ mesh_plink_broken
 
     deactivates paths and sends perr when a link breaks
 
-    :param struct sta_info \*sta:
+    :param sta:
         broken peer link
+    :type sta: struct sta_info \*
 
 .. _`mesh_plink_broken.description`:
 
@@ -185,8 +198,9 @@ mesh_path_flush_by_nexthop
 
     Deletes mesh paths if their next hop matches
 
-    :param struct sta_info \*sta:
+    :param sta:
         mesh peer to match
+    :type sta: struct sta_info \*
 
 .. _`mesh_path_flush_by_nexthop.rcu-notes`:
 
@@ -208,8 +222,9 @@ mesh_path_flush_by_iface
 
     Deletes all mesh paths associated with a given iface
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         interface data to match
+    :type sdata: struct ieee80211_sub_if_data \*
 
 .. _`mesh_path_flush_by_iface.description`:
 
@@ -227,14 +242,17 @@ table_path_del
 
     delete a path from the mesh or mpp table
 
-    :param struct mesh_table \*tbl:
+    :param tbl:
         mesh or mpp path table
+    :type tbl: struct mesh_table \*
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param const u8 \*addr:
+    :param addr:
         dst address (ETH_ALEN length)
+    :type addr: const u8 \*
 
 .. _`table_path_del.return`:
 
@@ -252,11 +270,13 @@ mesh_path_del
 
     delete a mesh path from the table
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         local subif
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param const u8 \*addr:
+    :param addr:
         dst address (ETH_ALEN length)
+    :type addr: const u8 \*
 
 .. _`mesh_path_del.return`:
 
@@ -274,8 +294,9 @@ mesh_path_tx_pending
 
     sends pending frames in a mesh path queue
 
-    :param struct mesh_path \*mpath:
+    :param mpath:
         mesh path to activate
+    :type mpath: struct mesh_path \*
 
 .. _`mesh_path_tx_pending.locking`:
 
@@ -294,8 +315,9 @@ mesh_path_send_to_gates
 
     sends pending frames to all known mesh gates
 
-    :param struct mesh_path \*mpath:
+    :param mpath:
         mesh path whose queue will be emptied
+    :type mpath: struct mesh_path \*
 
 .. _`mesh_path_send_to_gates.description`:
 
@@ -316,11 +338,13 @@ mesh_path_discard_frame
 
     discard a frame whose path could not be resolved
 
-    :param struct ieee80211_sub_if_data \*sdata:
+    :param sdata:
         network subif the frame was to be sent through
+    :type sdata: struct ieee80211_sub_if_data \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         frame to discard
+    :type skb: struct sk_buff \*
 
 .. _`mesh_path_discard_frame.locking`:
 
@@ -338,8 +362,9 @@ mesh_path_flush_pending
 
     free the pending queue of a mesh path
 
-    :param struct mesh_path \*mpath:
+    :param mpath:
         mesh path whose queue has to be freed
+    :type mpath: struct mesh_path \*
 
 .. _`mesh_path_flush_pending.locking`:
 
@@ -357,11 +382,13 @@ mesh_path_fix_nexthop
 
     force a specific next hop for a mesh path
 
-    :param struct mesh_path \*mpath:
+    :param mpath:
         the mesh path to modify
+    :type mpath: struct mesh_path \*
 
-    :param struct sta_info \*next_hop:
+    :param next_hop:
         the next hop to force
+    :type next_hop: struct sta_info \*
 
 .. _`mesh_path_fix_nexthop.locking`:
 

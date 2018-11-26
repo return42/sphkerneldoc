@@ -110,8 +110,9 @@ stm32f4_i2c_hw_config
 
     Prepare I2C block
 
-    :param struct stm32f4_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct stm32f4_i2c_dev \*
 
 .. _`stm32f4_i2c_write_byte`:
 
@@ -122,11 +123,13 @@ stm32f4_i2c_write_byte
 
     Write a byte in the data register
 
-    :param struct stm32f4_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct stm32f4_i2c_dev \*
 
-    :param u8 byte:
+    :param byte:
         Data to write in the register
+    :type byte: u8
 
 .. _`stm32f4_i2c_write_msg`:
 
@@ -137,8 +140,9 @@ stm32f4_i2c_write_msg
 
     Fill the data register in write mode
 
-    :param struct stm32f4_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct stm32f4_i2c_dev \*
 
 .. _`stm32f4_i2c_write_msg.description`:
 
@@ -156,8 +160,9 @@ stm32f4_i2c_handle_write
 
     Handle FIFO empty interrupt in case of write
 
-    :param struct stm32f4_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct stm32f4_i2c_dev \*
 
 .. _`stm32f4_i2c_handle_read`:
 
@@ -168,8 +173,9 @@ stm32f4_i2c_handle_read
 
     Handle FIFO empty interrupt in case of read
 
-    :param struct stm32f4_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct stm32f4_i2c_dev \*
 
 .. _`stm32f4_i2c_handle_read.description`:
 
@@ -187,8 +193,9 @@ stm32f4_i2c_handle_rx_done
 
     Handle byte transfer finished interrupt in case of read
 
-    :param struct stm32f4_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct stm32f4_i2c_dev \*
 
 .. _`stm32f4_i2c_handle_rx_done.description`:
 
@@ -207,8 +214,9 @@ stm32f4_i2c_handle_rx_addr
 
     Handle address matched interrupt in case of master receiver
 
-    :param struct stm32f4_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct stm32f4_i2c_dev \*
 
 .. _`stm32f4_i2c_isr_event`:
 
@@ -219,11 +227,13 @@ stm32f4_i2c_isr_event
 
     Interrupt routine for I2C bus event
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Controller's private data
+    :type data: void \*
 
 .. _`stm32f4_i2c_isr_error`:
 
@@ -234,11 +244,13 @@ stm32f4_i2c_isr_error
 
     Interrupt routine for I2C bus error
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         Controller's private data
+    :type data: void \*
 
 .. _`stm32f4_i2c_xfer_msg`:
 
@@ -249,17 +261,21 @@ stm32f4_i2c_xfer_msg
 
     Transfer a single I2C message
 
-    :param struct stm32f4_i2c_dev \*i2c_dev:
+    :param i2c_dev:
         Controller's private data
+    :type i2c_dev: struct stm32f4_i2c_dev \*
 
-    :param struct i2c_msg \*msg:
+    :param msg:
         I2C message to transfer
+    :type msg: struct i2c_msg \*
 
-    :param bool is_first:
+    :param is_first:
         first message of the sequence
+    :type is_first: bool
 
-    :param bool is_last:
+    :param is_last:
         last message of the sequence
+    :type is_last: bool
 
 .. _`stm32f4_i2c_xfer`:
 
@@ -270,14 +286,17 @@ stm32f4_i2c_xfer
 
     Transfer combined I2C message
 
-    :param struct i2c_adapter \*i2c_adap:
+    :param i2c_adap:
         Adapter pointer to the controller
+    :type i2c_adap: struct i2c_adapter \*
 
-    :param struct i2c_msg msgs:
+    :param msgs:
         Pointer to data to be written.
+    :type msgs: struct i2c_msg
 
-    :param int num:
+    :param num:
         Number of messages to be executed
+    :type num: int
 
 .. This file was automatic generated / don't edit.
 

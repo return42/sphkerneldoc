@@ -8,8 +8,9 @@ qla4xxx_is_intr_poll_mode
 
 .. c:function:: int qla4xxx_is_intr_poll_mode(struct scsi_qla_host *ha)
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_mailbox_command`:
 
@@ -20,20 +21,25 @@ qla4xxx_mailbox_command
 
     issues mailbox commands
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param uint8_t inCount:
+    :param inCount:
         number of mailbox registers to load.
+    :type inCount: uint8_t
 
-    :param uint8_t outCount:
+    :param outCount:
         number of mailbox registers to return.
+    :type outCount: uint8_t
 
-    :param uint32_t \*mbx_cmd:
+    :param mbx_cmd:
         data pointer for mailbox in registers.
+    :type mbx_cmd: uint32_t \*
 
-    :param uint32_t \*mbx_sts:
+    :param mbx_sts:
         data pointer for mailbox out registers.
+    :type mbx_sts: uint32_t \*
 
 .. _`qla4xxx_mailbox_command.description`:
 
@@ -53,11 +59,13 @@ qla4xxx_get_minidump_template
 
     Get the firmware template
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param dma_addr_t phys_addr:
+    :param phys_addr:
         dma address for template
+    :type phys_addr: dma_addr_t
 
 .. _`qla4xxx_get_minidump_template.description`:
 
@@ -76,8 +84,9 @@ qla4xxx_req_template_size
 
     Get minidump template size from firmware.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_initialize_fw_cb`:
 
@@ -88,8 +97,9 @@ qla4xxx_initialize_fw_cb
 
     initializes firmware control block.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_get_dhcp_ip_address`:
 
@@ -100,8 +110,9 @@ qla4xxx_get_dhcp_ip_address
 
     gets HBA ip address via DHCP
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_get_firmware_state`:
 
@@ -112,8 +123,9 @@ qla4xxx_get_firmware_state
 
     gets firmware state of HBA
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_get_firmware_status`:
 
@@ -124,8 +136,9 @@ qla4xxx_get_firmware_status
 
     retrieves firmware status
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_get_fwddb_entry`:
 
@@ -136,35 +149,45 @@ qla4xxx_get_fwddb_entry
 
     retrieves firmware ddb entry
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param uint16_t fw_ddb_index:
+    :param fw_ddb_index:
         Firmware's device database index
+    :type fw_ddb_index: uint16_t
 
-    :param struct dev_db_entry \*fw_ddb_entry:
+    :param fw_ddb_entry:
         Pointer to firmware's device database entry structure
+    :type fw_ddb_entry: struct dev_db_entry \*
 
-    :param dma_addr_t fw_ddb_entry_dma:
+    :param fw_ddb_entry_dma:
         *undescribed*
+    :type fw_ddb_entry_dma: dma_addr_t
 
-    :param uint32_t \*num_valid_ddb_entries:
+    :param num_valid_ddb_entries:
         Pointer to number of valid ddb entries
+    :type num_valid_ddb_entries: uint32_t \*
 
-    :param uint32_t \*next_ddb_index:
+    :param next_ddb_index:
         Pointer to next valid device database index
+    :type next_ddb_index: uint32_t \*
 
-    :param uint32_t \*fw_ddb_device_state:
+    :param fw_ddb_device_state:
         Pointer to device state
+    :type fw_ddb_device_state: uint32_t \*
 
-    :param uint32_t \*conn_err_detail:
+    :param conn_err_detail:
         *undescribed*
+    :type conn_err_detail: uint32_t \*
 
-    :param uint16_t \*tcp_source_port_num:
+    :param tcp_source_port_num:
         *undescribed*
+    :type tcp_source_port_num: uint16_t \*
 
-    :param uint16_t \*connection_id:
+    :param connection_id:
         *undescribed*
+    :type connection_id: uint16_t \*
 
 .. _`qla4xxx_set_ddb_entry`:
 
@@ -175,17 +198,21 @@ qla4xxx_set_ddb_entry
 
     sets a ddb entry.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param uint16_t fw_ddb_index:
+    :param fw_ddb_index:
         Firmware's device database index
+    :type fw_ddb_index: uint16_t
 
-    :param dma_addr_t fw_ddb_entry_dma:
+    :param fw_ddb_entry_dma:
         dma address of ddb entry
+    :type fw_ddb_entry_dma: dma_addr_t
 
-    :param uint32_t \*mbx_sts:
+    :param mbx_sts:
         mailbox 0 to be returned or NULL
+    :type mbx_sts: uint32_t \*
 
 .. _`qla4xxx_set_ddb_entry.description`:
 
@@ -204,8 +231,9 @@ qla4xxx_get_crash_record
 
     retrieves crash record.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_get_crash_record.description`:
 
@@ -223,8 +251,9 @@ qla4xxx_get_conn_event_log
 
     retrieves connection event log
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_abort_task`:
 
@@ -235,11 +264,13 @@ qla4xxx_abort_task
 
     issues Abort Task
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct srb \*srb:
+    :param srb:
         Pointer to srb entry
+    :type srb: struct srb \*
 
 .. _`qla4xxx_abort_task.description`:
 
@@ -259,14 +290,17 @@ qla4xxx_reset_lun
 
     issues LUN Reset
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct ddb_entry \*ddb_entry:
+    :param ddb_entry:
         Pointer to device database entry
+    :type ddb_entry: struct ddb_entry \*
 
-    :param uint64_t lun:
+    :param lun:
         lun number
+    :type lun: uint64_t
 
 .. _`qla4xxx_reset_lun.description`:
 
@@ -286,11 +320,13 @@ qla4xxx_reset_target
 
     issues target Reset
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param struct ddb_entry \*ddb_entry:
+    :param ddb_entry:
         *undescribed*
+    :type ddb_entry: struct ddb_entry \*
 
 .. _`qla4xxx_reset_target.description`:
 
@@ -310,8 +346,9 @@ qla4xxx_about_firmware
 
     gets FW, iscsi draft and boot loader version
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4xxx_about_firmware.description`:
 
@@ -331,20 +368,25 @@ qla4xxx_set_chap
 
     Make a chap entry at the given index
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param char \*username:
+    :param username:
         CHAP username to set
+    :type username: char \*
 
-    :param char \*password:
+    :param password:
         CHAP password to set
+    :type password: char \*
 
-    :param uint16_t idx:
+    :param idx:
         CHAP index at which to make the entry
+    :type idx: uint16_t
 
-    :param int bidi:
+    :param bidi:
         type of chap entry (chap_in or chap_out)
+    :type bidi: int
 
 .. _`qla4xxx_set_chap.description`:
 
@@ -369,20 +411,25 @@ qla4xxx_get_chap_index
 
     Get chap index given username and secret
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param char \*username:
+    :param username:
         CHAP username to be searched
+    :type username: char \*
 
-    :param char \*password:
+    :param password:
         CHAP password to be searched
+    :type password: char \*
 
-    :param int bidi:
+    :param bidi:
         Is this a BIDI CHAP
+    :type bidi: int
 
-    :param uint16_t \*chap_index:
+    :param chap_index:
         CHAP index to be returned
+    :type chap_index: uint16_t \*
 
 .. _`qla4xxx_get_chap_index.description`:
 
@@ -402,11 +449,13 @@ qla4_84xx_extend_idc_tmo
 
     Extend IDC Timeout.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param uint32_t ext_tmo:
+    :param ext_tmo:
         idc timeout value
+    :type ext_tmo: uint32_t
 
 .. _`qla4_84xx_extend_idc_tmo.description`:
 
@@ -424,11 +473,13 @@ qla4_8xxx_set_param
 
     set driver version in firmware.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
-    :param int param:
+    :param param:
         Parameter to set i.e driver version
+    :type param: int
 
 .. _`qla4_83xx_post_idc_ack`:
 
@@ -439,8 +490,9 @@ qla4_83xx_post_idc_ack
 
     post IDC ACK
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_83xx_post_idc_ack.description`:
 

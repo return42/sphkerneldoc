@@ -10,8 +10,9 @@
 
     I/O write barrier
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`___ia64_mmiowb.description`:
 

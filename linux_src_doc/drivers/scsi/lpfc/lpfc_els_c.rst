@@ -10,8 +10,9 @@ lpfc_els_chk_latt
 
     Check host link attention event for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_els_chk_latt.description`:
 
@@ -45,26 +46,33 @@ lpfc_prep_els_iocb
 
     Allocate and prepare a lpfc iocb data structure
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint8_t expectRsp:
+    :param expectRsp:
         flag indicating whether response is expected.
+    :type expectRsp: uint8_t
 
-    :param uint16_t cmdSize:
+    :param cmdSize:
         size of the ELS command.
+    :type cmdSize: uint16_t
 
-    :param uint8_t retry:
+    :param retry:
         number of retries to the command IOCB when it fails.
+    :type retry: uint8_t
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param uint32_t did:
+    :param did:
         destination identifier.
+    :type did: uint32_t
 
-    :param uint32_t elscmd:
+    :param elscmd:
         the ELS command code.
+    :type elscmd: uint32_t
 
 .. _`lpfc_prep_els_iocb.description`:
 
@@ -98,8 +106,9 @@ lpfc_issue_fabric_reglogin
 
     Issue fabric registration login for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_issue_fabric_reglogin.description`:
 
@@ -133,8 +142,9 @@ lpfc_issue_reg_vfi
 
     Register VFI for this vport's fabric login
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_issue_reg_vfi.description`:
 
@@ -157,8 +167,9 @@ lpfc_issue_unreg_vfi
 
     Unregister VFI for this vport's fabric login
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_issue_unreg_vfi.description`:
 
@@ -181,11 +192,13 @@ lpfc_check_clean_addr_bit
 
     Check whether assigned FCID is clean.
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct serv_parm \*sp:
+    :param sp:
         pointer to service parameter data structure.
+    :type sp: struct serv_parm \*
 
 .. _`lpfc_check_clean_addr_bit.description`:
 
@@ -213,17 +226,21 @@ lpfc_cmpl_els_flogi_fabric
 
     Completion function for flogi to a fabric port
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param struct serv_parm \*sp:
+    :param sp:
         pointer to service parameter data structure.
+    :type sp: struct serv_parm \*
 
-    :param IOCB_t \*irsp:
+    :param irsp:
         pointer to the IOCB within the lpfc response IOCB.
+    :type irsp: IOCB_t \*
 
 .. _`lpfc_cmpl_els_flogi_fabric.description`:
 
@@ -252,14 +269,17 @@ lpfc_cmpl_els_flogi_nport
 
     Completion function for flogi to an N_Port
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param struct serv_parm \*sp:
+    :param sp:
         pointer to service parameter data structure.
+    :type sp: struct serv_parm \*
 
 .. _`lpfc_cmpl_els_flogi_nport.description`:
 
@@ -295,14 +315,17 @@ lpfc_cmpl_els_flogi
 
     Completion callback function for flogi
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_flogi.description`:
 
@@ -335,14 +358,17 @@ lpfc_issue_els_flogi
 
     Issue an flogi iocb command for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param uint8_t retry:
+    :param retry:
         number of retries to the command IOCB.
+    :type retry: uint8_t
 
 .. _`lpfc_issue_els_flogi.description`:
 
@@ -374,8 +400,9 @@ lpfc_els_abort_flogi
 
     Abort all outstanding flogi iocbs
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_els_abort_flogi.description`:
 
@@ -401,8 +428,9 @@ lpfc_initial_flogi
 
     Issue an initial fabric login for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_initial_flogi.description`:
 
@@ -430,8 +458,9 @@ lpfc_initial_fdisc
 
     Issue an initial fabric discovery for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_initial_fdisc.description`:
 
@@ -459,8 +488,9 @@ lpfc_more_plogi
 
     Check and issue remaining plogis for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_more_plogi.description`:
 
@@ -483,14 +513,17 @@ lpfc_plogi_confirm_nport
 
     Confirm pologi wwpn matches stored ndlp
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param uint32_t \*prsp:
+    :param prsp:
         pointer to response IOCB payload.
+    :type prsp: uint32_t \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_plogi_confirm_nport.description`:
 
@@ -536,8 +569,9 @@ lpfc_end_rscn
 
     Check and handle more rscn for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_end_rscn.description`:
 
@@ -560,14 +594,17 @@ lpfc_cmpl_els_rrq
 
     Completion handled for els RRQs.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_rrq.description`:
 
@@ -588,14 +625,17 @@ lpfc_cmpl_els_plogi
 
     Completion callback function for plogi
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_plogi.description`:
 
@@ -625,14 +665,17 @@ lpfc_issue_els_plogi
 
     Issue an plogi iocb command for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint32_t did:
+    :param did:
         destination port identifier.
+    :type did: uint32_t
 
-    :param uint8_t retry:
+    :param retry:
         number of retries to the command IOCB.
+    :type retry: uint8_t
 
 .. _`lpfc_issue_els_plogi.description`:
 
@@ -663,14 +706,17 @@ lpfc_cmpl_els_prli
 
     Completion callback function for prli
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_prli.description`:
 
@@ -693,14 +739,17 @@ lpfc_issue_els_prli
 
     Issue a prli iocb command for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param uint8_t retry:
+    :param retry:
         number of retries to the command IOCB.
+    :type retry: uint8_t
 
 .. _`lpfc_issue_els_prli.description`:
 
@@ -731,8 +780,9 @@ lpfc_rscn_disc
 
     Perform rscn discovery for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_rscn_disc.description`:
 
@@ -756,8 +806,9 @@ lpfc_adisc_done
 
     Complete the adisc phase of discovery
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to lpfc_vport hba data structure that finished all ADISCs.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_adisc_done.description`:
 
@@ -779,8 +830,9 @@ lpfc_more_adisc
 
     Issue more adisc as needed
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_more_adisc.description`:
 
@@ -801,14 +853,17 @@ lpfc_cmpl_els_adisc
 
     Completion callback function for adisc
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_adisc.description`:
 
@@ -834,14 +889,17 @@ lpfc_issue_els_adisc
 
     Issue an address discover iocb to an node on a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param uint8_t retry:
+    :param retry:
         number of retries to the command IOCB.
+    :type retry: uint8_t
 
 .. _`lpfc_issue_els_adisc.description`:
 
@@ -871,14 +929,17 @@ lpfc_cmpl_els_logo
 
     Completion callback function for logo
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_logo.description`:
 
@@ -900,14 +961,17 @@ lpfc_issue_els_logo
 
     Issue a logo to an node on a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param uint8_t retry:
+    :param retry:
         number of retries to the command IOCB.
+    :type retry: uint8_t
 
 .. _`lpfc_issue_els_logo.description`:
 
@@ -937,14 +1001,17 @@ lpfc_cmpl_els_cmd
 
     Completion callback function for generic els command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_cmd.description`:
 
@@ -970,14 +1037,17 @@ lpfc_issue_els_scr
 
     Issue a scr to an node on a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint32_t nportid:
+    :param nportid:
         N_Port identifier to the remote node.
+    :type nportid: uint32_t
 
-    :param uint8_t retry:
+    :param retry:
         number of retries to the command IOCB.
+    :type retry: uint8_t
 
 .. _`lpfc_issue_els_scr.description`:
 
@@ -1009,14 +1079,17 @@ lpfc_issue_els_farpr
 
     Issue a farp to an node on a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint32_t nportid:
+    :param nportid:
         N_Port identifier to the remote node.
+    :type nportid: uint32_t
 
-    :param uint8_t retry:
+    :param retry:
         number of retries to the command IOCB.
+    :type retry: uint8_t
 
 .. _`lpfc_issue_els_farpr.description`:
 
@@ -1048,11 +1121,13 @@ lpfc_cancel_retry_delay_tmo
 
     Cancel the timer with delayed iocb-cmd retry
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*nlp:
+    :param nlp:
         pointer to a node-list data structure.
+    :type nlp: struct lpfc_nodelist \*
 
 .. _`lpfc_cancel_retry_delay_tmo.description`:
 
@@ -1075,8 +1150,9 @@ lpfc_els_retry_delay
 
     Timer function with a ndlp delayed function timer
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`lpfc_els_retry_delay.description`:
 
@@ -1102,8 +1178,9 @@ lpfc_els_retry_delay_handler
 
     Work thread handler for ndlp delayed function
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_retry_delay_handler.description`:
 
@@ -1124,14 +1201,17 @@ lpfc_els_retry
 
     Make retry decision on an els command iocb
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_els_retry.description`:
 
@@ -1168,11 +1248,13 @@ lpfc_els_free_data
 
     Free lpfc dma buffer and data structure with an iocb
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_dmabuf \*buf_ptr1:
+    :param buf_ptr1:
         pointer to the lpfc DMA buffer data structure.
+    :type buf_ptr1: struct lpfc_dmabuf \*
 
 .. _`lpfc_els_free_data.description`:
 
@@ -1197,11 +1279,13 @@ lpfc_els_free_bpl
 
     Free lpfc dma buffer and data structure with bpl
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_dmabuf \*buf_ptr:
+    :param buf_ptr:
         pointer to the lpfc dma buffer data structure.
+    :type buf_ptr: struct lpfc_dmabuf \*
 
 .. _`lpfc_els_free_bpl.description`:
 
@@ -1224,11 +1308,13 @@ lpfc_els_free_iocb
 
     Free a command iocb and its associated resources
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*elsiocb:
+    :param elsiocb:
         pointer to lpfc els command iocb data structure.
+    :type elsiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_els_free_iocb.description`:
 
@@ -1271,14 +1357,17 @@ lpfc_cmpl_els_logo_acc
 
     Completion callback function to logo acc response
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_logo_acc.description`:
 
@@ -1305,11 +1394,13 @@ lpfc_mbx_cmpl_dflt_rpi
 
     Completion callbk func for unreg dflt rpi mbox cmd
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_mbx_cmpl_dflt_rpi.description`:
 
@@ -1333,14 +1424,17 @@ lpfc_cmpl_els_rsp
 
     Completion callback function for els response iocb cmd
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_rsp.description`:
 
@@ -1366,20 +1460,25 @@ lpfc_els_rsp_acc
 
     Prepare and issue an acc response iocb command
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint32_t flag:
+    :param flag:
         the els command code to be accepted.
+    :type flag: uint32_t
 
-    :param struct lpfc_iocbq \*oldiocb:
+    :param oldiocb:
         pointer to the original lpfc command iocb data structure.
+    :type oldiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param LPFC_MBOXQ_t \*mbox:
+    :param mbox:
         pointer to the driver internal queue element for mailbox command.
+    :type mbox: LPFC_MBOXQ_t \*
 
 .. _`lpfc_els_rsp_acc.description`:
 
@@ -1412,20 +1511,25 @@ lpfc_els_rsp_reject
 
     Propare and issue a rjt response iocb command
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint32_t rejectError:
+    :param rejectError:
         *undescribed*
+    :type rejectError: uint32_t
 
-    :param struct lpfc_iocbq \*oldiocb:
+    :param oldiocb:
         pointer to the original lpfc command iocb data structure.
+    :type oldiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param LPFC_MBOXQ_t \*mbox:
+    :param mbox:
         pointer to the driver internal queue element for mailbox command.
+    :type mbox: LPFC_MBOXQ_t \*
 
 .. _`lpfc_els_rsp_reject.description`:
 
@@ -1455,14 +1559,17 @@ lpfc_els_rsp_adisc_acc
 
     Prepare and issue acc response to adisc iocb cmd
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*oldiocb:
+    :param oldiocb:
         pointer to the original lpfc command iocb data structure.
+    :type oldiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rsp_adisc_acc.description`:
 
@@ -1491,14 +1598,17 @@ lpfc_els_rsp_prli_acc
 
     Prepare and issue acc response to prli iocb cmd
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*oldiocb:
+    :param oldiocb:
         pointer to the original lpfc command iocb data structure.
+    :type oldiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rsp_prli_acc.description`:
 
@@ -1527,17 +1637,21 @@ lpfc_els_rsp_rnid_acc
 
     Issue rnid acc response iocb command
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint8_t format:
+    :param format:
         rnid command format.
+    :type format: uint8_t
 
-    :param struct lpfc_iocbq \*oldiocb:
+    :param oldiocb:
         pointer to the original lpfc command iocb data structure.
+    :type oldiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rsp_rnid_acc.description`:
 
@@ -1572,14 +1686,17 @@ lpfc_els_clear_rrq
 
     Clear the rq that this rrq describes.
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*iocb:
+    :param iocb:
         pointer to the lpfc command iocb data structure.
+    :type iocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_clear_rrq.description`:
 
@@ -1597,17 +1714,21 @@ lpfc_els_rsp_echo_acc
 
     Issue echo acc response
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint8_t \*data:
+    :param data:
         pointer to echo data to return in the accept.
+    :type data: uint8_t \*
 
-    :param struct lpfc_iocbq \*oldiocb:
+    :param oldiocb:
         pointer to the original lpfc command iocb data structure.
+    :type oldiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rsp_echo_acc.description`:
 
@@ -1627,8 +1748,9 @@ lpfc_els_disc_adisc
 
     Issue remaining adisc iocbs to npr nodes of a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_els_disc_adisc.description`:
 
@@ -1659,8 +1781,9 @@ lpfc_els_disc_plogi
 
     Issue plogi for all npr nodes of a vport before adisc
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_els_disc_plogi.description`:
 
@@ -1691,14 +1814,17 @@ lpfc_els_rcv_lcb
 
     Process an unsolicited LCB
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_lcb.description`:
 
@@ -1722,8 +1848,9 @@ lpfc_els_flush_rscn
 
     Clean up any rscn activities with a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_els_flush_rscn.description`:
 
@@ -1744,11 +1871,13 @@ lpfc_rscn_payload_check
 
     Check whether there is a pending rscn to a did
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint32_t did:
+    :param did:
         remote destination port identifier.
+    :type did: uint32_t
 
 .. _`lpfc_rscn_payload_check.description`:
 
@@ -1771,8 +1900,9 @@ lpfc_rscn_recovery_check
 
     Send recovery event to vport nodes matching rscn
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_rscn_recovery_check.description`:
 
@@ -1795,11 +1925,13 @@ lpfc_send_rscn_event
 
     Send an RSCN event to management application
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_send_rscn_event.description`:
 
@@ -1818,14 +1950,17 @@ lpfc_els_rcv_rscn
 
     Process an unsolicited rscn iocb
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_rscn.description`:
 
@@ -1857,8 +1992,9 @@ lpfc_els_handle_rscn
 
     Handle rscn for a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_els_handle_rscn.description`:
 
@@ -1886,14 +2022,17 @@ lpfc_els_rcv_flogi
 
     Process an unsolicited flogi iocb
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_flogi.description`:
 
@@ -1928,14 +2067,17 @@ lpfc_els_rcv_rnid
 
     Process an unsolicited rnid iocb
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_rnid.description`:
 
@@ -1961,14 +2103,17 @@ lpfc_els_rcv_echo
 
     Process an unsolicited echo iocb
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_echo.description`:
 
@@ -1987,14 +2132,17 @@ lpfc_els_rcv_lirr
 
     Process an unsolicited lirr iocb
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_lirr.description`:
 
@@ -2017,14 +2165,17 @@ lpfc_els_rcv_rrq
 
     Process an unsolicited rrq iocb
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_rrq.description`:
 
@@ -2050,11 +2201,13 @@ lpfc_els_rsp_rls_acc
 
     Completion callbk func for MBX_READ_LNK_STAT mbox cmd
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_els_rsp_rls_acc.description`:
 
@@ -2083,11 +2236,13 @@ lpfc_els_rsp_rps_acc
 
     Completion callbk func for MBX_READ_LNK_STAT mbox cmd
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_els_rsp_rps_acc.description`:
 
@@ -2116,14 +2271,17 @@ lpfc_els_rcv_rls
 
     Process an unsolicited rls iocb
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_rls.description`:
 
@@ -2151,14 +2309,17 @@ lpfc_els_rcv_rtv
 
     Process an unsolicited rtv iocb
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_rtv.description`:
 
@@ -2189,11 +2350,13 @@ lpfc_send_rrq
 
     Sends ELS RRQ if needed.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_node_rrq \*rrq:
+    :param rrq:
         pointer to the active rrq.
+    :type rrq: struct lpfc_node_rrq \*
 
 .. _`lpfc_send_rrq.description`:
 
@@ -2216,17 +2379,21 @@ lpfc_els_rsp_rpl_acc
 
     Issue an accept rpl els command
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param uint16_t cmdsize:
+    :param cmdsize:
         size of the ELS command.
+    :type cmdsize: uint16_t
 
-    :param struct lpfc_iocbq \*oldiocb:
+    :param oldiocb:
         pointer to the original lpfc command iocb data structure.
+    :type oldiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rsp_rpl_acc.description`:
 
@@ -2254,14 +2421,17 @@ lpfc_els_rcv_rpl
 
     Process an unsolicited rpl iocb
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_rpl.description`:
 
@@ -2287,14 +2457,17 @@ lpfc_els_rcv_farp
 
     Process an unsolicited farp request els command
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_farp.description`:
 
@@ -2334,14 +2507,17 @@ lpfc_els_rcv_farpr
 
     Process an unsolicited farp response iocb
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_farpr.description`:
 
@@ -2365,14 +2541,17 @@ lpfc_els_rcv_fan
 
     Process an unsolicited fan iocb command
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_nodelist \*fan_ndlp:
+    :param fan_ndlp:
         pointer to a node-list data structure.
+    :type fan_ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_els_rcv_fan.description`:
 
@@ -2401,8 +2580,9 @@ lpfc_els_timeout
 
     Handler funciton to the els timer
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`lpfc_els_timeout.description`:
 
@@ -2424,8 +2604,9 @@ lpfc_els_timeout_handler
 
     Process an els timeout event
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_els_timeout_handler.description`:
 
@@ -2446,8 +2627,9 @@ lpfc_els_flush_cmd
 
     Clean up the outstanding els commands to a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_els_flush_cmd.description`:
 
@@ -2479,8 +2661,9 @@ lpfc_els_flush_all_cmd
 
     Clean up all the outstanding els commands to a HBA
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_els_flush_all_cmd.description`:
 
@@ -2509,14 +2692,17 @@ lpfc_send_els_failure_event
 
     Posts an ELS command failure event
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         Pointer to hba context object.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocbp:
+    :param cmdiocbp:
         Pointer to command iocb which reported error.
+    :type cmdiocbp: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocbp:
+    :param rspiocbp:
         Pointer to response iocb which reported error.
+    :type rspiocbp: struct lpfc_iocbq \*
 
 .. _`lpfc_send_els_failure_event.description`:
 
@@ -2535,14 +2721,17 @@ lpfc_send_els_event
 
     Posts unsolicited els event
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         Pointer to vport object.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         Pointer FC node object.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param uint32_t \*payload:
+    :param payload:
         *undescribed*
+    :type payload: uint32_t \*
 
 .. _`lpfc_send_els_event.description`:
 
@@ -2561,17 +2750,21 @@ lpfc_els_unsol_buffer
 
     Process an unsolicited event data buffer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_sli_ring \*pring:
+    :param pring:
         pointer to a SLI ring.
+    :type pring: struct lpfc_sli_ring \*
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_iocbq \*elsiocb:
+    :param elsiocb:
         pointer to lpfc els command iocb data structure.
+    :type elsiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_els_unsol_buffer.description`:
 
@@ -2594,14 +2787,17 @@ lpfc_els_unsol_event
 
     Process an unsolicited event from an els sli ring
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_sli_ring \*pring:
+    :param pring:
         pointer to a SLI ring.
+    :type pring: struct lpfc_sli_ring \*
 
-    :param struct lpfc_iocbq \*elsiocb:
+    :param elsiocb:
         pointer to lpfc els iocb data structure.
+    :type elsiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_els_unsol_event.description`:
 
@@ -2623,11 +2819,13 @@ lpfc_do_scr_ns_plogi
 
     Issue a plogi to the name server for scr
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_do_scr_ns_plogi.description`:
 
@@ -2651,11 +2849,13 @@ lpfc_cmpl_reg_new_vport
 
     Completion callback function to register new vport
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param LPFC_MBOXQ_t \*pmb:
+    :param pmb:
         pointer to the driver internal queue element for mailbox command.
+    :type pmb: LPFC_MBOXQ_t \*
 
 .. _`lpfc_cmpl_reg_new_vport.description`:
 
@@ -2678,14 +2878,17 @@ lpfc_register_new_vport
 
     Register a new vport with a HBA
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a host virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_register_new_vport.description`:
 
@@ -2704,8 +2907,9 @@ lpfc_cancel_all_vport_retry_delay_timer
 
     Cancel all vport retry delay timer
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_cancel_all_vport_retry_delay_timer.description`:
 
@@ -2723,8 +2927,9 @@ lpfc_retry_pport_discovery
 
     Start timer to retry FLOGI.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_retry_pport_discovery.description`:
 
@@ -2744,14 +2949,17 @@ lpfc_fabric_login_reqd
 
     Check if FLOGI required.
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to FDISC command iocb.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to FDISC response iocb.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_fabric_login_reqd.description`:
 
@@ -2770,14 +2978,17 @@ lpfc_cmpl_els_fdisc
 
     Completion function for fdisc iocb command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_fdisc.description`:
 
@@ -2807,14 +3018,17 @@ lpfc_issue_els_fdisc
 
     Issue a fdisc iocb command
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
-    :param uint8_t retry:
+    :param retry:
         number of retries to the command IOCB.
+    :type retry: uint8_t
 
 .. _`lpfc_issue_els_fdisc.description`:
 
@@ -2844,14 +3058,17 @@ lpfc_cmpl_els_npiv_logo
 
     Completion function with vport logo
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_els_npiv_logo.description`:
 
@@ -2875,11 +3092,13 @@ lpfc_issue_els_npiv_logo
 
     Issue a logo off a vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_issue_els_npiv_logo.description`:
 
@@ -2906,8 +3125,9 @@ lpfc_fabric_block_timeout
 
     Handler function to the fabric block timer
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`lpfc_fabric_block_timeout.description`:
 
@@ -2930,8 +3150,9 @@ lpfc_resume_fabric_iocbs
 
     Issue a fabric iocb from driver internal list
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_resume_fabric_iocbs.description`:
 
@@ -2953,8 +3174,9 @@ lpfc_unblock_fabric_iocbs
 
     Unblock issuing fabric iocb command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_unblock_fabric_iocbs.description`:
 
@@ -2975,8 +3197,9 @@ lpfc_block_fabric_iocbs
 
     Block issuing fabric iocb command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_block_fabric_iocbs.description`:
 
@@ -2997,14 +3220,17 @@ lpfc_cmpl_fabric_iocb
 
     Completion callback function for fabric iocb
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*cmdiocb:
+    :param cmdiocb:
         pointer to lpfc command iocb data structure.
+    :type cmdiocb: struct lpfc_iocbq \*
 
-    :param struct lpfc_iocbq \*rspiocb:
+    :param rspiocb:
         pointer to lpfc response iocb data structure.
+    :type rspiocb: struct lpfc_iocbq \*
 
 .. _`lpfc_cmpl_fabric_iocb.description`:
 
@@ -3027,11 +3253,13 @@ lpfc_issue_fabric_iocb
 
     Issue a fabric iocb command
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct lpfc_iocbq \*iocb:
+    :param iocb:
         pointer to lpfc command iocb data structure.
+    :type iocb: struct lpfc_iocbq \*
 
 .. _`lpfc_issue_fabric_iocb.description`:
 
@@ -3066,8 +3294,9 @@ lpfc_fabric_abort_vport
 
     Abort a vport's iocbs from driver fabric iocb list
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to a virtual N_Port data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_fabric_abort_vport.description`:
 
@@ -3090,8 +3319,9 @@ lpfc_fabric_abort_nport
 
     Abort a ndlp's iocbs from driver fabric iocb list
 
-    :param struct lpfc_nodelist \*ndlp:
+    :param ndlp:
         pointer to a node-list data structure.
+    :type ndlp: struct lpfc_nodelist \*
 
 .. _`lpfc_fabric_abort_nport.description`:
 
@@ -3114,8 +3344,9 @@ lpfc_fabric_abort_hba
 
     Abort all iocbs on driver fabric iocb list
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
 .. _`lpfc_fabric_abort_hba.description`:
 
@@ -3138,8 +3369,9 @@ lpfc_sli4_vport_delete_els_xri_aborted
 
     Remove all ndlp references for vport
 
-    :param struct lpfc_vport \*vport:
+    :param vport:
         pointer to lpfc vport data structure.
+    :type vport: struct lpfc_vport \*
 
 .. _`lpfc_sli4_vport_delete_els_xri_aborted.description`:
 
@@ -3158,11 +3390,13 @@ lpfc_sli4_els_xri_aborted
 
     Slow-path process of els xri abort
 
-    :param struct lpfc_hba \*phba:
+    :param phba:
         pointer to lpfc hba data structure.
+    :type phba: struct lpfc_hba \*
 
-    :param struct sli4_wcqe_xri_aborted \*axri:
+    :param axri:
         pointer to the els xri abort wcqe structure.
+    :type axri: struct sli4_wcqe_xri_aborted \*
 
 .. _`lpfc_sli4_els_xri_aborted.description`:
 

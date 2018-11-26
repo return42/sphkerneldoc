@@ -10,14 +10,17 @@ driver_for_each_device
 
     Iterator for devices bound to a driver.
 
-    :param struct device_driver \*drv:
+    :param drv:
         Driver we're iterating.
+    :type drv: struct device_driver \*
 
-    :param struct device \*start:
+    :param start:
         Device to begin with
+    :type start: struct device \*
 
-    :param void \*data:
+    :param data:
         Data to pass to the callback.
+    :type data: void \*
 
     :param int (\*fn)(struct device \*, void \*):
         Function to call for each device.
@@ -38,14 +41,17 @@ driver_find_device
 
     device iterator for locating a particular device.
 
-    :param struct device_driver \*drv:
+    :param drv:
         The device's driver
+    :type drv: struct device_driver \*
 
-    :param struct device \*start:
+    :param start:
         Device to begin with
+    :type start: struct device \*
 
-    :param void \*data:
+    :param data:
         Data to pass to match function
+    :type data: void \*
 
     :param int (\*match)(struct device \*dev, void \*data):
         Callback function to check device
@@ -72,11 +78,13 @@ driver_create_file
 
     create sysfs file for driver.
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver.
+    :type drv: struct device_driver \*
 
-    :param const struct driver_attribute \*attr:
+    :param attr:
         driver attribute descriptor.
+    :type attr: const struct driver_attribute \*
 
 .. _`driver_remove_file`:
 
@@ -87,11 +95,13 @@ driver_remove_file
 
     remove sysfs file for driver.
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver.
+    :type drv: struct device_driver \*
 
-    :param const struct driver_attribute \*attr:
+    :param attr:
         driver attribute descriptor.
+    :type attr: const struct driver_attribute \*
 
 .. _`driver_register`:
 
@@ -102,8 +112,9 @@ driver_register
 
     register driver with bus
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver to register
+    :type drv: struct device_driver \*
 
 .. _`driver_register.description`:
 
@@ -123,8 +134,9 @@ driver_unregister
 
     remove driver from system.
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver.
+    :type drv: struct device_driver \*
 
 .. _`driver_unregister.description`:
 
@@ -142,11 +154,13 @@ driver_find
 
     locate driver on a bus by its name.
 
-    :param const char \*name:
+    :param name:
         name of the driver.
+    :type name: const char \*
 
-    :param struct bus_type \*bus:
+    :param bus:
         bus to scan for the driver.
+    :type bus: struct bus_type \*
 
 .. _`driver_find.description`:
 

@@ -17,10 +17,10 @@ hotplug
     pci_hotplug_core_c
     pciehp_core_c
     pciehp_ctrl_c
+    pciehp_h
     pciehp_hpc_c
-    pcihp_skeleton_c
+    pciehp_pci_c
     rpadlpar_core_c
     rpaphp_core_c
     rpaphp_pci_c
-    shpchp_core_c
     shpchp_ctrl_c

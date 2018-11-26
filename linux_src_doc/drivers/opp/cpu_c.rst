@@ -10,11 +10,13 @@ dev_pm_opp_init_cpufreq_table
 
     create a cpufreq table for a device
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param struct cpufreq_frequency_table \*\*table:
+    :param table:
         Cpufreq table returned back to caller
+    :type table: struct cpufreq_frequency_table \*\*
 
 .. _`dev_pm_opp_init_cpufreq_table.description`:
 
@@ -49,11 +51,13 @@ dev_pm_opp_free_cpufreq_table
 
     free the cpufreq table
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param struct cpufreq_frequency_table \*\*table:
+    :param table:
         table to free
+    :type table: struct cpufreq_frequency_table \*\*
 
 .. _`dev_pm_opp_free_cpufreq_table.description`:
 
@@ -71,8 +75,9 @@ dev_pm_opp_cpumask_remove_table
 
     Removes OPP table for \ ``cpumask``\ 
 
-    :param const struct cpumask \*cpumask:
+    :param cpumask:
         cpumask for which OPP table needs to be removed
+    :type cpumask: const struct cpumask \*
 
 .. _`dev_pm_opp_cpumask_remove_table.description`:
 
@@ -92,11 +97,13 @@ dev_pm_opp_set_sharing_cpus
 
     Mark OPP table as shared by few CPUs
 
-    :param struct device \*cpu_dev:
+    :param cpu_dev:
         CPU device for which we do this operation
+    :type cpu_dev: struct device \*
 
-    :param const struct cpumask \*cpumask:
+    :param cpumask:
         cpumask of the CPUs which share the OPP table with \ ``cpu_dev``\ 
+    :type cpumask: const struct cpumask \*
 
 .. _`dev_pm_opp_set_sharing_cpus.description`:
 
@@ -117,11 +124,13 @@ dev_pm_opp_get_sharing_cpus
 
     Get cpumask of CPUs sharing OPPs with \ ``cpu_dev``\ 
 
-    :param struct device \*cpu_dev:
+    :param cpu_dev:
         CPU device for which we do this operation
+    :type cpu_dev: struct device \*
 
-    :param struct cpumask \*cpumask:
+    :param cpumask:
         cpumask to update with information of sharing CPUs
+    :type cpumask: struct cpumask \*
 
 .. _`dev_pm_opp_get_sharing_cpus.description`:
 

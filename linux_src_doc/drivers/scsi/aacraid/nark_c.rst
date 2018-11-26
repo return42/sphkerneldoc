@@ -8,11 +8,13 @@ aac_nark_ioremap
 
 .. c:function:: int aac_nark_ioremap(struct aac_dev *dev, u32 size)
 
-    :param struct aac_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct aac_dev \*
 
-    :param u32 size:
+    :param size:
         mapping resize request
+    :type size: u32
 
 .. _`aac_nark_init`:
 
@@ -23,8 +25,9 @@ aac_nark_init
 
     initialize an NEMER/ARK Split Bar card
 
-    :param struct aac_dev \*dev:
+    :param dev:
         device to configure
+    :type dev: struct aac_dev \*
 
 .. This file was automatic generated / don't edit.
 

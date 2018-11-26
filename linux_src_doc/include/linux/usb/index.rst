@@ -19,5 +19,6 @@ usb
     pd_h
     role_h
     tcpm_h
+    typec_altmode_h
     typec_mux_h
     wusb_h

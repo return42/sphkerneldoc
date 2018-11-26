@@ -1,6 +1,83 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/target/target_core_transport.c
 
+.. _`transport_init_session`:
+
+transport_init_session
+======================
+
+.. c:function:: void transport_init_session(struct se_session *se_sess)
+
+    initialize a session object
+
+    :param se_sess:
+        Session object pointer.
+    :type se_sess: struct se_session \*
+
+.. _`transport_init_session.description`:
+
+Description
+-----------
+
+The caller must have zero-initialized \ ``se_sess``\  before calling this function.
+
+.. _`transport_alloc_session`:
+
+transport_alloc_session
+=======================
+
+.. c:function:: struct se_session *transport_alloc_session(enum target_prot_op sup_prot_ops)
+
+    allocate a session object and initialize it
+
+    :param sup_prot_ops:
+        bitmask that defines which T10-PI modes are supported.
+    :type sup_prot_ops: enum target_prot_op
+
+.. _`transport_alloc_session_tags`:
+
+transport_alloc_session_tags
+============================
+
+.. c:function:: int transport_alloc_session_tags(struct se_session *se_sess, unsigned int tag_num, unsigned int tag_size)
+
+    allocate target driver private data
+
+    :param se_sess:
+        Session pointer.
+    :type se_sess: struct se_session \*
+
+    :param tag_num:
+        Maximum number of in-flight commands between initiator and target.
+    :type tag_num: unsigned int
+
+    :param tag_size:
+        Size in bytes of the private data a target driver associates with
+        each command.
+    :type tag_size: unsigned int
+
+.. _`transport_init_session_tags`:
+
+transport_init_session_tags
+===========================
+
+.. c:function:: struct se_session *transport_init_session_tags(unsigned int tag_num, unsigned int tag_size, enum target_prot_op sup_prot_ops)
+
+    allocate a session and target driver private data
+
+    :param tag_num:
+        Maximum number of in-flight commands between initiator and target.
+    :type tag_num: unsigned int
+
+    :param tag_size:
+        Size in bytes of the private data a target driver associates with
+        each command.
+    :type tag_size: unsigned int
+
+    :param sup_prot_ops:
+        bitmask that defines which T10-PI modes are supported.
+    :type sup_prot_ops: enum target_prot_op
+
 .. _`target_submit_cmd_map_sgls`:
 
 target_submit_cmd_map_sgls
@@ -10,57 +87,72 @@ target_submit_cmd_map_sgls
 
     lookup unpacked lun and submit uninitialized se_cmd + use pre-allocated SGL memory.
 
-    :param struct se_cmd \*se_cmd:
+    :param se_cmd:
         command descriptor to submit
+    :type se_cmd: struct se_cmd \*
 
-    :param struct se_session \*se_sess:
+    :param se_sess:
         associated se_sess for endpoint
+    :type se_sess: struct se_session \*
 
-    :param unsigned char \*cdb:
+    :param cdb:
         pointer to SCSI CDB
+    :type cdb: unsigned char \*
 
-    :param unsigned char \*sense:
+    :param sense:
         pointer to SCSI sense buffer
+    :type sense: unsigned char \*
 
-    :param u64 unpacked_lun:
+    :param unpacked_lun:
         unpacked LUN to reference for struct se_lun
+    :type unpacked_lun: u64
 
-    :param u32 data_length:
+    :param data_length:
         fabric expected data transfer length
+    :type data_length: u32
 
-    :param int task_attr:
+    :param task_attr:
         SAM task attribute
+    :type task_attr: int
 
-    :param int data_dir:
+    :param data_dir:
         DMA data direction
+    :type data_dir: int
 
-    :param int flags:
+    :param flags:
         flags for command submission from target_sc_flags_tables
+    :type flags: int
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         struct scatterlist memory for unidirectional mapping
+    :type sgl: struct scatterlist \*
 
-    :param u32 sgl_count:
+    :param sgl_count:
         scatterlist count for unidirectional mapping
+    :type sgl_count: u32
 
-    :param struct scatterlist \*sgl_bidi:
+    :param sgl_bidi:
         struct scatterlist memory for bidirectional READ mapping
+    :type sgl_bidi: struct scatterlist \*
 
-    :param u32 sgl_bidi_count:
+    :param sgl_bidi_count:
         scatterlist count for bidirectional READ mapping
+    :type sgl_bidi_count: u32
 
-    :param struct scatterlist \*sgl_prot:
+    :param sgl_prot:
         struct scatterlist memory protection information
+    :type sgl_prot: struct scatterlist \*
 
-    :param u32 sgl_prot_count:
+    :param sgl_prot_count:
         scatterlist count for protection information
+    :type sgl_prot_count: u32
 
 .. _`target_submit_cmd_map_sgls.description`:
 
 Description
 -----------
 
-Task tags are supported if the caller has set \ ``se_cmd``\ ->tag.
+Task tags are supported if the caller has set \ ``se_cmd->tag``\ .
 
 Returns non zero to signal active I/O shutdown failure.  All other
 setup exceptions will be returned as a SCSI CHECK_CONDITION response,
@@ -78,39 +170,48 @@ target_submit_cmd
 
     lookup unpacked lun and submit uninitialized se_cmd
 
-    :param struct se_cmd \*se_cmd:
+    :param se_cmd:
         command descriptor to submit
+    :type se_cmd: struct se_cmd \*
 
-    :param struct se_session \*se_sess:
+    :param se_sess:
         associated se_sess for endpoint
+    :type se_sess: struct se_session \*
 
-    :param unsigned char \*cdb:
+    :param cdb:
         pointer to SCSI CDB
+    :type cdb: unsigned char \*
 
-    :param unsigned char \*sense:
+    :param sense:
         pointer to SCSI sense buffer
+    :type sense: unsigned char \*
 
-    :param u64 unpacked_lun:
+    :param unpacked_lun:
         unpacked LUN to reference for struct se_lun
+    :type unpacked_lun: u64
 
-    :param u32 data_length:
+    :param data_length:
         fabric expected data transfer length
+    :type data_length: u32
 
-    :param int task_attr:
+    :param task_attr:
         SAM task attribute
+    :type task_attr: int
 
-    :param int data_dir:
+    :param data_dir:
         DMA data direction
+    :type data_dir: int
 
-    :param int flags:
+    :param flags:
         flags for command submission from target_sc_flags_tables
+    :type flags: int
 
 .. _`target_submit_cmd.description`:
 
 Description
 -----------
 
-Task tags are supported if the caller has set \ ``se_cmd``\ ->tag.
+Task tags are supported if the caller has set \ ``se_cmd->tag``\ .
 
 Returns non zero to signal active I/O shutdown failure.  All other
 setup exceptions will be returned as a SCSI CHECK_CONDITION response,
@@ -130,32 +231,41 @@ target_submit_tmr
 
     lookup unpacked lun and submit uninitialized se_cmd for TMR CDBs
 
-    :param struct se_cmd \*se_cmd:
+    :param se_cmd:
         command descriptor to submit
+    :type se_cmd: struct se_cmd \*
 
-    :param struct se_session \*se_sess:
+    :param se_sess:
         associated se_sess for endpoint
+    :type se_sess: struct se_session \*
 
-    :param unsigned char \*sense:
+    :param sense:
         pointer to SCSI sense buffer
+    :type sense: unsigned char \*
 
-    :param u64 unpacked_lun:
+    :param unpacked_lun:
         unpacked LUN to reference for struct se_lun
+    :type unpacked_lun: u64
 
-    :param void \*fabric_tmr_ptr:
+    :param fabric_tmr_ptr:
         fabric context for TMR req
+    :type fabric_tmr_ptr: void \*
 
-    :param unsigned char tm_type:
+    :param tm_type:
         Type of TM request
+    :type tm_type: unsigned char
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp type for caller
+    :type gfp: gfp_t
 
-    :param u64 tag:
+    :param tag:
         referenced task tag for TMR_ABORT_TASK
+    :type tag: u64
 
-    :param int flags:
+    :param flags:
         submit cmd flags
+    :type flags: int
 
 .. _`target_submit_tmr.description`:
 
@@ -173,11 +283,13 @@ target_get_sess_cmd
 
     Add command to active ->sess_cmd_list
 
-    :param struct se_cmd \*se_cmd:
+    :param se_cmd:
         command descriptor to add
+    :type se_cmd: struct se_cmd \*
 
-    :param bool ack_kref:
+    :param ack_kref:
         Signal that fabric will perform an ack \ :c:func:`target_put_sess_cmd`\ 
+    :type ack_kref: bool
 
 .. _`target_put_sess_cmd`:
 
@@ -188,8 +300,9 @@ target_put_sess_cmd
 
     decrease the command reference count
 
-    :param struct se_cmd \*se_cmd:
+    :param se_cmd:
         command to drop a reference from
+    :type se_cmd: struct se_cmd \*
 
 .. _`target_put_sess_cmd.description`:
 
@@ -206,10 +319,11 @@ target_sess_cmd_list_set_waiting
 
 .. c:function:: void target_sess_cmd_list_set_waiting(struct se_session *se_sess)
 
-    Flag all commands in sess_cmd_list to complete cmd_wait_comp.  Set sess_tearing_down so no more commands are queued.
+    Set sess_tearing_down so no new commands are queued.
 
-    :param struct se_session \*se_sess:
+    :param se_sess:
         session to flag
+    :type se_sess: struct se_session \*
 
 .. _`target_wait_for_sess_cmds`:
 
@@ -218,10 +332,11 @@ target_wait_for_sess_cmds
 
 .. c:function:: void target_wait_for_sess_cmds(struct se_session *se_sess)
 
-    Wait for outstanding descriptors
+    Wait for outstanding commands
 
-    :param struct se_session \*se_sess:
+    :param se_sess:
         session to wait for active I/O
+    :type se_sess: struct se_session \*
 
 .. _`transport_wait_for_tasks`:
 
@@ -232,8 +347,37 @@ transport_wait_for_tasks
 
     set CMD_T_STOP and wait for t_transport_stop_comp
 
-    :param struct se_cmd \*cmd:
+    :param cmd:
         command to wait on
+    :type cmd: struct se_cmd \*
+
+.. _`translate_sense_reason`:
+
+translate_sense_reason
+======================
+
+.. c:function:: void translate_sense_reason(struct se_cmd *cmd, sense_reason_t reason)
+
+    translate a sense reason into T10 key, asc and ascq
+
+    :param cmd:
+        SCSI command in which the resulting sense buffer or SCSI status will
+        be stored.
+    :type cmd: struct se_cmd \*
+
+    :param reason:
+        LIO sense reason code. If this argument has the value
+        TCM_CHECK_CONDITION_UNIT_ATTENTION, try to dequeue a unit attention. If
+        dequeuing a unit attention fails due to multiple commands being processed
+        concurrently, set the command status to BUSY.
+    :type reason: sense_reason_t
+
+.. _`translate_sense_reason.return`:
+
+Return
+------
+
+0 upon success or -EINVAL if the sense buffer is too small.
 
 .. This file was automatic generated / don't edit.
 

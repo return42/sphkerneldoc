@@ -10,8 +10,9 @@ cps_pm_support_state
 
     determine whether the system supports a PM state
 
-    :param enum cps_pm_state state:
+    :param state:
         the state to test for support
+    :type state: enum cps_pm_state
 
 .. _`cps_pm_support_state.description`:
 
@@ -29,8 +30,9 @@ cps_pm_enter_state
 
     enter a PM state
 
-    :param enum cps_pm_state state:
+    :param state:
         the state to enter
+    :type state: enum cps_pm_state
 
 .. _`cps_pm_enter_state.description`:
 

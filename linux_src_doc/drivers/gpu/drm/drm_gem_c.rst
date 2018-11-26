@@ -10,8 +10,9 @@ drm_gem_init
 
     Initialize the GEM device fields
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_devic structure to initialize
+    :type dev: struct drm_device \*
 
 .. _`drm_gem_object_init`:
 
@@ -22,14 +23,17 @@ drm_gem_object_init
 
     initialize an allocated shmem-backed GEM object
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device the object should be initialized for
+    :type dev: struct drm_device \*
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         drm_gem_object to initialize
+    :type obj: struct drm_gem_object \*
 
-    :param size_t size:
+    :param size:
         object size
+    :type size: size_t
 
 .. _`drm_gem_object_init.description`:
 
@@ -48,14 +52,17 @@ drm_gem_private_object_init
 
     initialize an allocated private GEM object
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device the object should be initialized for
+    :type dev: struct drm_device \*
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         drm_gem_object to initialize
+    :type obj: struct drm_gem_object \*
 
-    :param size_t size:
+    :param size:
         object size
+    :type size: size_t
 
 .. _`drm_gem_private_object_init.description`:
 
@@ -75,8 +82,9 @@ drm_gem_object_handle_free
 
     release resources bound to userspace handles
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM object to clean up.
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_object_handle_free.description`:
 
@@ -98,11 +106,13 @@ drm_gem_handle_delete
 
     deletes the given file-private handle
 
-    :param struct drm_file \*filp:
+    :param filp:
         drm file-private structure to use for the handle look up
+    :type filp: struct drm_file \*
 
-    :param u32 handle:
+    :param handle:
         userspace handle to delete
+    :type handle: u32
 
 .. _`drm_gem_handle_delete.description`:
 
@@ -122,17 +132,21 @@ drm_gem_dumb_map_offset
 
     return the fake mmap offset for a gem object
 
-    :param struct drm_file \*file:
+    :param file:
         drm file-private structure containing the gem object
+    :type file: struct drm_file \*
 
-    :param struct drm_device \*dev:
+    :param dev:
         corresponding drm_device
+    :type dev: struct drm_device \*
 
-    :param u32 handle:
+    :param handle:
         gem object handle
+    :type handle: u32
 
-    :param u64 \*offset:
+    :param offset:
         return location for the fake mmap offset
+    :type offset: u64 \*
 
 .. _`drm_gem_dumb_map_offset.description`:
 
@@ -158,14 +172,17 @@ drm_gem_dumb_destroy
 
     dumb fb callback helper for gem based drivers
 
-    :param struct drm_file \*file:
+    :param file:
         drm file-private structure to remove the dumb handle from
+    :type file: struct drm_file \*
 
-    :param struct drm_device \*dev:
+    :param dev:
         corresponding drm_device
+    :type dev: struct drm_device \*
 
-    :param uint32_t handle:
+    :param handle:
         the dumb handle to remove
+    :type handle: uint32_t
 
 .. _`drm_gem_dumb_destroy.description`:
 
@@ -184,14 +201,17 @@ drm_gem_handle_create_tail
 
     internal functions to create a handle
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file-private structure to register the handle for
+    :type file_priv: struct drm_file \*
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         object to register
+    :type obj: struct drm_gem_object \*
 
-    :param u32 \*handlep:
+    :param handlep:
         pointer to return the created handle to the caller
+    :type handlep: u32 \*
 
 .. _`drm_gem_handle_create_tail.description`:
 
@@ -215,14 +235,17 @@ drm_gem_handle_create
 
     create a gem handle for an object
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file-private structure to register the handle for
+    :type file_priv: struct drm_file \*
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         object to register
+    :type obj: struct drm_gem_object \*
 
-    :param u32 \*handlep:
+    :param handlep:
         pionter to return the created handle to the caller
+    :type handlep: u32 \*
 
 .. _`drm_gem_handle_create.description`:
 
@@ -245,8 +268,9 @@ drm_gem_free_mmap_offset
 
     release a fake mmap offset for an object
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         obj in question
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_free_mmap_offset.description`:
 
@@ -268,11 +292,13 @@ drm_gem_create_mmap_offset_size
 
     create a fake mmap offset for an object
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         obj in question
+    :type obj: struct drm_gem_object \*
 
-    :param size_t size:
+    :param size:
         the virtual size
+    :type size: size_t
 
 .. _`drm_gem_create_mmap_offset_size.description`:
 
@@ -300,8 +326,9 @@ drm_gem_create_mmap_offset
 
     create a fake mmap offset for an object
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         obj in question
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_create_mmap_offset.description`:
 
@@ -327,8 +354,9 @@ drm_gem_get_pages
 
     helper to allocate backing pages for a GEM object from shmem
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         obj in question
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_get_pages.description`:
 
@@ -360,17 +388,21 @@ drm_gem_put_pages
 
     helper to free backing pages for a GEM object
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         obj in question
+    :type obj: struct drm_gem_object \*
 
-    :param struct page \*\*pages:
+    :param pages:
         pages to free
+    :type pages: struct page \*\*
 
-    :param bool dirty:
+    :param dirty:
         if true, pages will be marked as dirty
+    :type dirty: bool
 
-    :param bool accessed:
+    :param accessed:
         if true, the pages will be marked as accessed
+    :type accessed: bool
 
 .. _`drm_gem_object_lookup`:
 
@@ -381,11 +413,13 @@ drm_gem_object_lookup
 
     look up a GEM object from it's handle
 
-    :param struct drm_file \*filp:
+    :param filp:
         DRM file private date
+    :type filp: struct drm_file \*
 
-    :param u32 handle:
+    :param handle:
         userspace handle
+    :type handle: u32
 
 .. _`drm_gem_object_lookup.return`:
 
@@ -405,14 +439,17 @@ drm_gem_close_ioctl
 
     implementation of the GEM_CLOSE ioctl
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file-private structure
+    :type file_priv: struct drm_file \*
 
 .. _`drm_gem_close_ioctl.description`:
 
@@ -430,14 +467,17 @@ drm_gem_flink_ioctl
 
     implementation of the GEM_FLINK ioctl
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file-private structure
+    :type file_priv: struct drm_file \*
 
 .. _`drm_gem_flink_ioctl.description`:
 
@@ -458,14 +498,17 @@ drm_gem_open_ioctl
 
     implementation of the GEM_OPEN ioctl
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file-private structure
+    :type file_priv: struct drm_file \*
 
 .. _`drm_gem_open_ioctl.description`:
 
@@ -486,11 +529,13 @@ drm_gem_open
 
     initalizes GEM file-private structures at devnode open time
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device which is being opened by userspace
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_private:
+    :param file_private:
         drm file-private structure to set up
+    :type file_private: struct drm_file \*
 
 .. _`drm_gem_open.description`:
 
@@ -509,11 +554,13 @@ drm_gem_release
 
     release file-private GEM resources
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device which is being closed by userspace
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_private:
+    :param file_private:
         drm file-private structure to clean up
+    :type file_private: struct drm_file \*
 
 .. _`drm_gem_release.description`:
 
@@ -533,8 +580,9 @@ drm_gem_object_release
 
     release GEM buffer object resources
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM buffer object
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_object_release.description`:
 
@@ -553,8 +601,9 @@ drm_gem_object_free
 
     free a GEM object
 
-    :param struct kref \*kref:
+    :param kref:
         kref of the object to free
+    :type kref: struct kref \*
 
 .. _`drm_gem_object_free.description`:
 
@@ -575,8 +624,9 @@ drm_gem_object_put_unlocked
 
     drop a GEM buffer object reference
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM buffer object
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_object_put_unlocked.description`:
 
@@ -597,8 +647,9 @@ drm_gem_object_put
 
     release a GEM buffer object reference
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM buffer object
+    :type obj: struct drm_gem_object \*
 
 .. _`drm_gem_object_put.description`:
 
@@ -621,8 +672,9 @@ drm_gem_vm_open
 
     vma->ops->open implementation for GEM
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VM area structure
+    :type vma: struct vm_area_struct \*
 
 .. _`drm_gem_vm_open.description`:
 
@@ -641,8 +693,9 @@ drm_gem_vm_close
 
     vma->ops->close implementation for GEM
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VM area structure
+    :type vma: struct vm_area_struct \*
 
 .. _`drm_gem_vm_close.description`:
 
@@ -661,14 +714,17 @@ drm_gem_mmap_obj
 
     memory map a GEM object
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         the GEM object to map
+    :type obj: struct drm_gem_object \*
 
-    :param unsigned long obj_size:
+    :param obj_size:
         the object size to be mapped, in bytes
+    :type obj_size: unsigned long
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMA for the area to be mapped
+    :type vma: struct vm_area_struct \*
 
 .. _`drm_gem_mmap_obj.description`:
 
@@ -702,11 +758,13 @@ drm_gem_mmap
 
     memory map routine for GEM objects
 
-    :param struct file \*filp:
+    :param filp:
         DRM file pointer
+    :type filp: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         VMA for the area to be mapped
+    :type vma: struct vm_area_struct \*
 
 .. _`drm_gem_mmap.description`:
 

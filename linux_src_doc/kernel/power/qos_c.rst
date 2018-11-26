@@ -10,17 +10,21 @@ pm_qos_update_target
 
     manages the constraints list and calls the notifiers if needed
 
-    :param struct pm_qos_constraints \*c:
+    :param c:
         constraints data struct
+    :type c: struct pm_qos_constraints \*
 
-    :param struct plist_node \*node:
+    :param node:
         request to add to the list, to update or to remove
+    :type node: struct plist_node \*
 
-    :param enum pm_qos_req_action action:
+    :param action:
         action to take on the constraints list
+    :type action: enum pm_qos_req_action
 
-    :param int value:
+    :param value:
         value of the request to add or update
+    :type value: int
 
 .. _`pm_qos_update_target.description`:
 
@@ -39,11 +43,13 @@ pm_qos_flags_remove_req
 
     Remove device PM QoS flags request.
 
-    :param struct pm_qos_flags \*pqf:
+    :param pqf:
         Device PM QoS flags set to remove the request from.
+    :type pqf: struct pm_qos_flags \*
 
-    :param struct pm_qos_flags_request \*req:
+    :param req:
         Request to remove from the set.
+    :type req: struct pm_qos_flags_request \*
 
 .. _`pm_qos_update_flags`:
 
@@ -54,17 +60,21 @@ pm_qos_update_flags
 
     Update a set of PM QoS flags.
 
-    :param struct pm_qos_flags \*pqf:
+    :param pqf:
         Set of flags to update.
+    :type pqf: struct pm_qos_flags \*
 
-    :param struct pm_qos_flags_request \*req:
+    :param req:
         Request to add to the set, to modify, or to remove from the set.
+    :type req: struct pm_qos_flags_request \*
 
-    :param enum pm_qos_req_action action:
+    :param action:
         Action to take on the set.
+    :type action: enum pm_qos_req_action
 
-    :param s32 val:
+    :param val:
         Value of the request to add or modify.
+    :type val: s32
 
 .. _`pm_qos_update_flags.description`:
 
@@ -84,8 +94,9 @@ pm_qos_request
 
     returns current system wide qos expectation
 
-    :param int pm_qos_class:
+    :param pm_qos_class:
         identification of which qos value is requested
+    :type pm_qos_class: int
 
 .. _`pm_qos_request.description`:
 
@@ -103,8 +114,9 @@ pm_qos_work_fn
 
     the timeout handler of pm_qos_update_request_timeout
 
-    :param struct work_struct \*work:
+    :param work:
         work struct for the delayed work (timeout)
+    :type work: struct work_struct \*
 
 .. _`pm_qos_work_fn.description`:
 
@@ -122,14 +134,17 @@ pm_qos_add_request
 
     inserts new qos request into the list
 
-    :param struct pm_qos_request \*req:
+    :param req:
         pointer to a preallocated handle
+    :type req: struct pm_qos_request \*
 
-    :param int pm_qos_class:
+    :param pm_qos_class:
         identifies which list of qos request to use
+    :type pm_qos_class: int
 
-    :param s32 value:
+    :param value:
         defines the qos request
+    :type value: s32
 
 .. _`pm_qos_add_request.description`:
 
@@ -151,11 +166,13 @@ pm_qos_update_request
 
     modifies an existing qos request
 
-    :param struct pm_qos_request \*req:
+    :param req:
         handle to list element holding a pm_qos request to use
+    :type req: struct pm_qos_request \*
 
-    :param s32 new_value:
+    :param new_value:
         *undescribed*
+    :type new_value: s32
 
 .. _`pm_qos_update_request.description`:
 
@@ -176,14 +193,17 @@ pm_qos_update_request_timeout
 
     modifies an existing qos request temporarily.
 
-    :param struct pm_qos_request \*req:
+    :param req:
         handle to list element holding a pm_qos request to use
+    :type req: struct pm_qos_request \*
 
-    :param s32 new_value:
+    :param new_value:
         defines the temporal qos request
+    :type new_value: s32
 
-    :param unsigned long timeout_us:
+    :param timeout_us:
         the effective duration of this qos request in usecs.
+    :type timeout_us: unsigned long
 
 .. _`pm_qos_update_request_timeout.description`:
 
@@ -201,8 +221,9 @@ pm_qos_remove_request
 
     modifies an existing qos request
 
-    :param struct pm_qos_request \*req:
+    :param req:
         handle to request list element
+    :type req: struct pm_qos_request \*
 
 .. _`pm_qos_remove_request.description`:
 
@@ -222,11 +243,13 @@ pm_qos_add_notifier
 
     sets notification entry for changes to target value
 
-    :param int pm_qos_class:
+    :param pm_qos_class:
         identifies which qos target changes should be notified.
+    :type pm_qos_class: int
 
-    :param struct notifier_block \*notifier:
+    :param notifier:
         notifier block managed by caller.
+    :type notifier: struct notifier_block \*
 
 .. _`pm_qos_add_notifier.description`:
 
@@ -245,11 +268,13 @@ pm_qos_remove_notifier
 
     deletes notification entry from chain.
 
-    :param int pm_qos_class:
+    :param pm_qos_class:
         identifies which qos target changes are notified.
+    :type pm_qos_class: int
 
-    :param struct notifier_block \*notifier:
+    :param notifier:
         notifier block to be removed.
+    :type notifier: struct notifier_block \*
 
 .. _`pm_qos_remove_notifier.description`:
 

@@ -10,11 +10,13 @@ hns_ppe_common_get_cfg
 
     get ppe common config
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dasf device
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param int comm_index:
+    :param comm_index:
         *undescribed*
+    :type comm_index: int
 
 .. _`hns_ppe_common_get_cfg.comm_index`:
 
@@ -33,11 +35,13 @@ hns_ppe_checksum_hw
 
     set ppe checksum caculate
 
-    :param struct hns_ppe_cb \*ppe_cb:
+    :param ppe_cb:
         *undescribed*
+    :type ppe_cb: struct hns_ppe_cb \*
 
-    :param u32 value:
+    :param value:
         value
+    :type value: u32
 
 .. _`hns_ppe_set_qid`:
 
@@ -48,11 +52,13 @@ hns_ppe_set_qid
 
     set ppe qid
 
-    :param struct ppe_common_cb \*ppe_common:
+    :param ppe_common:
         ppe common device
+    :type ppe_common: struct ppe_common_cb \*
 
-    :param u32 qid:
+    :param qid:
         queue id
+    :type qid: u32
 
 .. _`hns_ppe_set_port_mode`:
 
@@ -63,11 +69,13 @@ hns_ppe_set_port_mode
 
     set port mode
 
-    :param struct hns_ppe_cb \*ppe_cb:
+    :param ppe_cb:
         *undescribed*
+    :type ppe_cb: struct hns_ppe_cb \*
 
-    :param enum ppe_port_mode mode:
+    :param mode:
         port mode
+    :type mode: enum ppe_port_mode
 
 .. _`hns_ppe_common_init_hw`:
 
@@ -78,8 +86,9 @@ hns_ppe_common_init_hw
 
     init ppe common device
 
-    :param struct ppe_common_cb \*ppe_common:
+    :param ppe_common:
         ppe common device
+    :type ppe_common: struct ppe_common_cb \*
 
 .. _`hns_ppe_common_init_hw.description`:
 
@@ -97,8 +106,9 @@ hns_ppe_init_hw
 
     init ppe
 
-    :param struct hns_ppe_cb \*ppe_cb:
+    :param ppe_cb:
         ppe device
+    :type ppe_cb: struct hns_ppe_cb \*
 
 .. _`hns_ppe_uninit_hw`:
 
@@ -109,8 +119,9 @@ hns_ppe_uninit_hw
 
     uninit ppe
 
-    :param struct hns_ppe_cb \*ppe_cb:
+    :param ppe_cb:
         *undescribed*
+    :type ppe_cb: struct hns_ppe_cb \*
 
 .. _`hns_ppe_reset_common`:
 
@@ -121,12 +132,14 @@ hns_ppe_reset_common
 
     reinit ppe/rcb hw
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dasf device
         retuen void
+    :type dsaf_dev: struct dsaf_device \*
 
-    :param u8 ppe_common_index:
+    :param ppe_common_index:
         *undescribed*
+    :type ppe_common_index: u8
 
 .. _`hns_ppe_get_strings`:
 
@@ -137,14 +150,17 @@ hns_ppe_get_strings
 
     get ppe srting
 
-    :param struct hns_ppe_cb \*ppe_cb:
+    :param ppe_cb:
         *undescribed*
+    :type ppe_cb: struct hns_ppe_cb \*
 
-    :param int stringset:
+    :param stringset:
         string set type
+    :type stringset: int
 
-    :param u8 \*data:
+    :param data:
         output string
+    :type data: u8 \*
 
 .. _`hns_ppe_init`:
 
@@ -155,9 +171,10 @@ hns_ppe_init
 
     init ppe device
 
-    :param struct dsaf_device \*dsaf_dev:
+    :param dsaf_dev:
         dasf device
         retuen 0 - success , negative --fail
+    :type dsaf_dev: struct dsaf_device \*
 
 .. This file was automatic generated / don't edit.
 

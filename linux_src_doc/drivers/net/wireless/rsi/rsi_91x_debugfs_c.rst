@@ -8,11 +8,13 @@ rsi_sdio_stats_read
 
 .. c:function:: int rsi_sdio_stats_read(struct seq_file *seq, void *data)
 
-    :param struct seq_file \*seq:
+    :param seq:
         *undescribed*
+    :type seq: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`rsi_sdio_stats_read.description`:
 
@@ -40,11 +42,13 @@ rsi_sdio_stats_open
 
     This funtion calls single open function of seq_file to open file and read contents from it.
 
-    :param struct inode \*inode:
+    :param inode:
         Pointer to the inode structure.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         Pointer to the file structure.
+    :type file: struct file \*
 
 .. _`rsi_sdio_stats_open.return`:
 
@@ -62,11 +66,13 @@ rsi_version_read
 
     This function gives driver and firmware version number.
 
-    :param struct seq_file \*seq:
+    :param seq:
         Pointer to the sequence file structure.
+    :type seq: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         Pointer to the data.
+    :type data: void \*
 
 .. _`rsi_version_read.return`:
 
@@ -84,11 +90,13 @@ rsi_version_open
 
     This funtion calls single open function of seq_file to open file and read contents from it.
 
-    :param struct inode \*inode:
+    :param inode:
         Pointer to the inode structure.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         Pointer to the file structure.
+    :type file: struct file \*
 
 .. _`rsi_version_open.return`:
 
@@ -106,11 +114,13 @@ rsi_stats_read
 
     This function return the status of the driver.
 
-    :param struct seq_file \*seq:
+    :param seq:
         Pointer to the sequence file structure.
+    :type seq: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         Pointer to the data.
+    :type data: void \*
 
 .. _`rsi_stats_read.return`:
 
@@ -128,11 +138,13 @@ rsi_stats_open
 
     This funtion calls single open function of seq_file to open file and read contents from it.
 
-    :param struct inode \*inode:
+    :param inode:
         Pointer to the inode structure.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         Pointer to the file structure.
+    :type file: struct file \*
 
 .. _`rsi_stats_open.return`:
 
@@ -150,11 +162,13 @@ rsi_debug_zone_read
 
     This function display the currently enabled debug zones.
 
-    :param struct seq_file \*seq:
+    :param seq:
         Pointer to the sequence file structure.
+    :type seq: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         Pointer to the data.
+    :type data: void \*
 
 .. _`rsi_debug_zone_read.return`:
 
@@ -172,11 +186,13 @@ rsi_debug_read
 
     This funtion calls single open function of seq_file to open file and read contents from it.
 
-    :param struct inode \*inode:
+    :param inode:
         Pointer to the inode structure.
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         Pointer to the file structure.
+    :type file: struct file \*
 
 .. _`rsi_debug_read.return`:
 
@@ -194,17 +210,21 @@ rsi_debug_zone_write
 
     This function writes into hal queues as per user requirement.
 
-    :param struct file \*filp:
+    :param filp:
         Pointer to the file structure.
+    :type filp: struct file \*
 
-    :param const char __user \*buff:
+    :param buff:
         Pointer to the character buffer.
+    :type buff: const char __user \*
 
-    :param size_t len:
+    :param len:
         Length of the data to be written into buffer.
+    :type len: size_t
 
-    :param loff_t \*data:
+    :param data:
         Pointer to the data.
+    :type data: loff_t \*
 
 .. _`rsi_debug_zone_write.return`:
 
@@ -222,8 +242,9 @@ rsi_init_dbgfs
 
     This function initializes the dbgfs entry.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
 .. _`rsi_init_dbgfs.return`:
 
@@ -241,8 +262,9 @@ rsi_remove_dbgfs
 
     Removes the previously created dbgfs file entries in the reverse order of creation.
 
-    :param struct rsi_hw \*adapter:
+    :param adapter:
         Pointer to the adapter structure.
+    :type adapter: struct rsi_hw \*
 
 .. _`rsi_remove_dbgfs.return`:
 

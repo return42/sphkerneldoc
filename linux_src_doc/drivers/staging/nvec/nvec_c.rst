@@ -42,14 +42,17 @@ nvec_register_notifier
 
     Register a notifier with nvec
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         A \ :c:type:`struct nvec_chip <nvec_chip>`\ 
+    :type nvec: struct nvec_chip \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         The notifier block to register
+    :type nb: struct notifier_block \*
 
-    :param unsigned int events:
+    :param events:
         *undescribed*
+    :type events: unsigned int
 
 .. _`nvec_register_notifier.description`:
 
@@ -69,11 +72,13 @@ nvec_unregister_notifier
 
     Unregister a notifier with nvec
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         A \ :c:type:`struct nvec_chip <nvec_chip>`\ 
+    :type nvec: struct nvec_chip \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         The notifier block to unregister
+    :type nb: struct notifier_block \*
 
 .. _`nvec_unregister_notifier.description`:
 
@@ -92,14 +97,17 @@ nvec_status_notifier
 
     The final notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         *undescribed*
+    :type nb: struct notifier_block \*
 
-    :param unsigned long event_type:
+    :param event_type:
         *undescribed*
+    :type event_type: unsigned long
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`nvec_status_notifier.description`:
 
@@ -116,11 +124,13 @@ nvec_msg_alloc
 
 .. c:function:: struct nvec_msg *nvec_msg_alloc(struct nvec_chip *nvec, enum nvec_msg_category category)
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         A \ :c:type:`struct nvec_chip <nvec_chip>`\ 
+    :type nvec: struct nvec_chip \*
 
-    :param enum nvec_msg_category category:
+    :param category:
         Pool category, see \ :c:type:`enum nvec_msg_category <nvec_msg_category>`\ 
+    :type category: enum nvec_msg_category
 
 .. _`nvec_msg_alloc.description`:
 
@@ -143,11 +153,13 @@ nvec_msg_free
 
 .. c:function:: void nvec_msg_free(struct nvec_chip *nvec, struct nvec_msg *msg)
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         A \ :c:type:`struct nvec_chip <nvec_chip>`\ 
+    :type nvec: struct nvec_chip \*
 
-    :param struct nvec_msg \*msg:
+    :param msg:
         A message (must be allocated by \ :c:func:`nvec_msg_alloc`\  and belong to \ ``nvec``\ )
+    :type msg: struct nvec_msg \*
 
 .. _`nvec_msg_free.description`:
 
@@ -165,8 +177,9 @@ nvec_msg_is_event
 
     Return \ ``true``\  if \ ``msg``\  is an event
 
-    :param struct nvec_msg \*msg:
+    :param msg:
         A message
+    :type msg: struct nvec_msg \*
 
 .. _`nvec_msg_size`:
 
@@ -177,8 +190,9 @@ nvec_msg_size
 
     Get the size of a message
 
-    :param struct nvec_msg \*msg:
+    :param msg:
         The message to get the size for
+    :type msg: struct nvec_msg \*
 
 .. _`nvec_msg_size.description`:
 
@@ -196,11 +210,13 @@ nvec_gpio_set_value
 
     Set the GPIO value
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         A \ :c:type:`struct nvec_chip <nvec_chip>`\ 
+    :type nvec: struct nvec_chip \*
 
-    :param int value:
+    :param value:
         The value to write (0 or 1)
+    :type value: int
 
 .. _`nvec_gpio_set_value.description`:
 
@@ -218,14 +234,17 @@ nvec_write_async
 
     Asynchronously write a message to NVEC
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         An nvec_chip instance
+    :type nvec: struct nvec_chip \*
 
-    :param const unsigned char \*data:
+    :param data:
         The message data, starting with the request type
+    :type data: const unsigned char \*
 
-    :param short size:
+    :param size:
         The size of \ ``data``\ 
+    :type size: short
 
 .. _`nvec_write_async.description`:
 
@@ -252,17 +271,21 @@ nvec_write_sync
 
     Write a message to nvec and read the response
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         An \ :c:type:`struct nvec_chip <nvec_chip>`\ 
+    :type nvec: struct nvec_chip \*
 
-    :param const unsigned char \*data:
+    :param data:
         The data to write
+    :type data: const unsigned char \*
 
-    :param short size:
+    :param size:
         The size of \ ``data``\ 
+    :type size: short
 
-    :param struct nvec_msg \*\*msg:
+    :param msg:
         The response message received
+    :type msg: struct nvec_msg \*\*
 
 .. _`nvec_write_sync.description`:
 
@@ -292,11 +315,13 @@ nvec_toggle_global_events
 
     enables or disables global event reporting
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         nvec handle
+    :type nvec: struct nvec_chip \*
 
-    :param bool state:
+    :param state:
         true for enable, false for disable
+    :type state: bool
 
 .. _`nvec_toggle_global_events.description`:
 
@@ -314,11 +339,13 @@ nvec_event_mask
 
     fill the command string with event bitfield ev: points to event command string
 
-    :param char \*ev:
+    :param ev:
         *undescribed*
+    :type ev: char \*
 
-    :param u32 mask:
+    :param mask:
         *undescribed*
+    :type mask: u32
 
 .. _`nvec_event_mask.mask`:
 
@@ -344,8 +371,9 @@ nvec_request_master
 
     Process outgoing messages
 
-    :param struct work_struct \*work:
+    :param work:
         A \ :c:type:`struct work_struct <work_struct>`\  (the tx_worker member of \ :c:type:`struct nvec_chip <nvec_chip>`\ )
+    :type work: struct work_struct \*
 
 .. _`nvec_request_master.description`:
 
@@ -365,11 +393,13 @@ parse_msg
 
     Print some information and call the notifiers on an RX message
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         A \ :c:type:`struct nvec_chip <nvec_chip>`\ 
+    :type nvec: struct nvec_chip \*
 
-    :param struct nvec_msg \*msg:
+    :param msg:
         A message received by \ ``nvec``\ 
+    :type msg: struct nvec_msg \*
 
 .. _`parse_msg.description`:
 
@@ -388,8 +418,9 @@ nvec_dispatch
 
     Process messages received from the EC
 
-    :param struct work_struct \*work:
+    :param work:
         A \ :c:type:`struct work_struct <work_struct>`\  (the tx_worker member of \ :c:type:`struct nvec_chip <nvec_chip>`\ )
+    :type work: struct work_struct \*
 
 .. _`nvec_dispatch.description`:
 
@@ -408,8 +439,9 @@ nvec_tx_completed
 
     Complete the current transfer
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         A \ :c:type:`struct nvec_chip <nvec_chip>`\ 
+    :type nvec: struct nvec_chip \*
 
 .. _`nvec_tx_completed.description`:
 
@@ -427,8 +459,9 @@ nvec_rx_completed
 
     Complete the current transfer
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         A \ :c:type:`struct nvec_chip <nvec_chip>`\ 
+    :type nvec: struct nvec_chip \*
 
 .. _`nvec_rx_completed.description`:
 
@@ -446,14 +479,17 @@ nvec_invalid_flags
 
     Send an error message about invalid flags and jump
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         The nvec device
+    :type nvec: struct nvec_chip \*
 
-    :param unsigned int status:
+    :param status:
         The status flags
+    :type status: unsigned int
 
-    :param bool reset:
+    :param reset:
         Whether we shall jump to state 0.
+    :type reset: bool
 
 .. _`nvec_tx_set`:
 
@@ -464,8 +500,9 @@ nvec_tx_set
 
     Set the message to transfer (nvec->tx)
 
-    :param struct nvec_chip \*nvec:
+    :param nvec:
         A \ :c:type:`struct nvec_chip <nvec_chip>`\ 
+    :type nvec: struct nvec_chip \*
 
 .. _`nvec_tx_set.description`:
 
@@ -485,11 +522,13 @@ nvec_interrupt
 
     Interrupt handler
 
-    :param int irq:
+    :param irq:
         The IRQ
+    :type irq: int
 
-    :param void \*dev:
+    :param dev:
         The nvec device
+    :type dev: void \*
 
 .. _`nvec_interrupt.description`:
 

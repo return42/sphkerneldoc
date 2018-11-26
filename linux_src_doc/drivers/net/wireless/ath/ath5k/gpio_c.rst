@@ -25,11 +25,13 @@ ath5k_hw_set_ledstate
 
     Set led state
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int state:
+    :param state:
         One of AR5K_LED\_\*
+    :type state: unsigned int
 
 .. _`ath5k_hw_set_ledstate.description`:
 
@@ -49,11 +51,13 @@ ath5k_hw_set_gpio_input
 
     Set GPIO inputs
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 gpio:
+    :param gpio:
         GPIO pin to set as input
+    :type gpio: u32
 
 .. _`ath5k_hw_set_gpio_output`:
 
@@ -64,11 +68,13 @@ ath5k_hw_set_gpio_output
 
     Set GPIO outputs
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 gpio:
+    :param gpio:
         The GPIO pin to set as output
+    :type gpio: u32
 
 .. _`ath5k_hw_get_gpio`:
 
@@ -79,11 +85,13 @@ ath5k_hw_get_gpio
 
     Get GPIO state
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 gpio:
+    :param gpio:
         The GPIO pin to read
+    :type gpio: u32
 
 .. _`ath5k_hw_set_gpio`:
 
@@ -94,14 +102,17 @@ ath5k_hw_set_gpio
 
     Set GPIO state
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 gpio:
+    :param gpio:
         The GPIO pin to set
+    :type gpio: u32
 
-    :param u32 val:
+    :param val:
         Value to set (boolean)
+    :type val: u32
 
 .. _`ath5k_hw_set_gpio_intr`:
 
@@ -112,14 +123,17 @@ ath5k_hw_set_gpio_intr
 
     Initialize the GPIO interrupt (RFKill switch)
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int gpio:
+    :param gpio:
         The GPIO pin to use
+    :type gpio: unsigned int
 
-    :param u32 interrupt_level:
+    :param interrupt_level:
         True to generate interrupt on active pin (high)
+    :type interrupt_level: u32
 
 .. _`ath5k_hw_set_gpio_intr.description`:
 

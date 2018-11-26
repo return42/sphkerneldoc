@@ -10,8 +10,9 @@ module_greybus_driver
 
     Helper macro for registering a Greybus driver
 
-    :param  __greybus_driver:
+    :param __greybus_driver:
         greybus_driver structure
+    :type __greybus_driver: 
 
 .. _`module_greybus_driver.description`:
 

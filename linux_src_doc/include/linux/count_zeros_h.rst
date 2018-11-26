@@ -10,8 +10,9 @@ count_leading_zeros
 
     Count the number of zeros from the MSB back
 
-    :param unsigned long x:
+    :param x:
         The value
+    :type x: unsigned long
 
 .. _`count_leading_zeros.description`:
 
@@ -33,8 +34,9 @@ count_trailing_zeros
 
     Count the number of zeros from the LSB forwards
 
-    :param unsigned long x:
+    :param x:
         The value
+    :type x: unsigned long
 
 .. _`count_trailing_zeros.description`:
 

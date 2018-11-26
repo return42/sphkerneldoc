@@ -60,11 +60,13 @@ an entry in aliases_lookup list.
 
 .. c:function:: struct property *__of_prop_dup(const struct property *prop, gfp_t allocflags)
 
-    :param const struct property \*prop:
+    :param prop:
         *undescribed*
+    :type prop: const struct property \*
 
-    :param gfp_t allocflags:
+    :param allocflags:
         *undescribed*
+    :type allocflags: gfp_t
 
 .. _`__of_prop_dup.description`:
 

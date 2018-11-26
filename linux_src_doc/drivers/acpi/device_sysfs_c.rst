@@ -10,14 +10,17 @@ create_pnp_modalias
 
     Create hid/cid(s) string for modalias and uevent
 
-    :param struct acpi_device \*acpi_dev:
+    :param acpi_dev:
         ACPI device object.
+    :type acpi_dev: struct acpi_device \*
 
-    :param char \*modalias:
+    :param modalias:
         Buffer to print into.
+    :type modalias: char \*
 
-    :param int size:
+    :param size:
         Size of the buffer.
+    :type size: int
 
 .. _`create_pnp_modalias.description`:
 
@@ -46,14 +49,17 @@ create_of_modalias
 
     Creates DT compatible string for modalias and uevent
 
-    :param struct acpi_device \*acpi_dev:
+    :param acpi_dev:
         ACPI device object.
+    :type acpi_dev: struct acpi_device \*
 
-    :param char \*modalias:
+    :param modalias:
         Buffer to print into.
+    :type modalias: char \*
 
-    :param int size:
+    :param size:
         Size of the buffer.
+    :type size: int
 
 .. _`create_of_modalias.description`:
 
@@ -73,11 +79,13 @@ acpi_device_uevent_modalias
 
     uevent modalias for ACPI-enumerated devices.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct kobj_uevent_env \*env:
+    :param env:
         *undescribed*
+    :type env: struct kobj_uevent_env \*
 
 .. _`acpi_device_uevent_modalias.description`:
 
@@ -98,14 +106,17 @@ acpi_device_modalias
 
     modalias sysfs attribute for ACPI-enumerated devices.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
-    :param int size:
+    :param size:
         *undescribed*
+    :type size: int
 
 .. _`acpi_device_modalias.description`:
 
@@ -126,8 +137,9 @@ acpi_device_setup_files
 
     Create sysfs attributes of an ACPI device.
 
-    :param struct acpi_device \*dev:
+    :param dev:
         ACPI device object.
+    :type dev: struct acpi_device \*
 
 .. _`acpi_device_remove_files`:
 
@@ -138,8 +150,9 @@ acpi_device_remove_files
 
     Remove sysfs attributes of an ACPI device.
 
-    :param struct acpi_device \*dev:
+    :param dev:
         ACPI device object.
+    :type dev: struct acpi_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -94,8 +94,9 @@ scif_open
 
     Create an endpoint
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`scif_open.return`:
 
@@ -124,11 +125,13 @@ scif_bind
 
     Bind an endpoint to a port
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param u16 pn:
+    :param pn:
         port number
+    :type pn: u16
 
 .. _`scif_bind.description`:
 
@@ -171,11 +174,13 @@ scif_listen
 
     Listen for connections on an endpoint
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param int backlog:
+    :param backlog:
         maximum pending connection requests
+    :type backlog: int
 
 .. _`scif_listen.description`:
 
@@ -221,11 +226,13 @@ scif_connect
 
     Initiate a connection on a port
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param struct scif_port_id \*dst:
+    :param dst:
         global id of port to which to connect
+    :type dst: struct scif_port_id \*
 
 .. _`scif_connect.description`:
 
@@ -283,17 +290,21 @@ scif_accept
 
     Accept a connection on an endpoint
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param struct scif_port_id \*peer:
+    :param peer:
         global id of port to which connected
+    :type peer: struct scif_port_id \*
 
-    :param scif_epd_t \*newepd:
+    :param newepd:
         new connected endpoint descriptor
+    :type newepd: scif_epd_t \*
 
-    :param int flags:
+    :param flags:
         flags
+    :type flags: int
 
 .. _`scif_accept.description`:
 
@@ -365,8 +376,9 @@ scif_close
 
     Close an endpoint
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
 .. _`scif_close.description`:
 
@@ -420,17 +432,21 @@ scif_send
 
     Send a message
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param void \*msg:
+    :param msg:
         message buffer address
+    :type msg: void \*
 
-    :param int len:
+    :param len:
         message length
+    :type len: int
 
-    :param int flags:
+    :param flags:
         blocking mode flags
+    :type flags: int
 
 .. _`scif_send.description`:
 
@@ -496,17 +512,21 @@ scif_recv
 
     Receive a message
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param void \*msg:
+    :param msg:
         message buffer address
+    :type msg: void \*
 
-    :param int len:
+    :param len:
         message buffer length
+    :type len: int
 
-    :param int flags:
+    :param flags:
         blocking mode flags
+    :type flags: int
 
 .. _`scif_recv.description`:
 
@@ -573,23 +593,29 @@ scif_register
 
     Mark a memory region for remote access.
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param void \*addr:
+    :param addr:
         starting virtual address
+    :type addr: void \*
 
-    :param size_t len:
+    :param len:
         length of range
+    :type len: size_t
 
-    :param off_t offset:
+    :param offset:
         offset of window
+    :type offset: off_t
 
-    :param int prot_flags:
+    :param prot_flags:
         read/write protection flags
+    :type prot_flags: int
 
-    :param int map_flags:
+    :param map_flags:
         mapping flags
+    :type map_flags: int
 
 .. _`scif_register.description`:
 
@@ -679,14 +705,17 @@ scif_unregister
 
     Mark a memory region for remote access.
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param off_t offset:
+    :param offset:
         start of range to unregister
+    :type offset: off_t
 
-    :param size_t len:
+    :param len:
         length of range to unregister
+    :type len: size_t
 
 .. _`scif_unregister.description`:
 
@@ -750,22 +779,27 @@ scif_readfrom
 
     Copy from a remote address space
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param off_t loffset:
+    :param loffset:
         offset in local registered address space to
         which to copy
+    :type loffset: off_t
 
-    :param size_t len:
+    :param len:
         length of range to copy
+    :type len: size_t
 
-    :param off_t roffset:
+    :param roffset:
         offset in remote registered address space
         from which to copy
+    :type roffset: off_t
 
-    :param int rma_flags:
+    :param rma_flags:
         transfer mode flags
+    :type rma_flags: int
 
 .. _`scif_readfrom.description`:
 
@@ -852,22 +886,27 @@ scif_writeto
 
     Copy to a remote address space
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param off_t loffset:
+    :param loffset:
         offset in local registered address space
         from which to copy
+    :type loffset: off_t
 
-    :param size_t len:
+    :param len:
         length of range to copy
+    :type len: size_t
 
-    :param off_t roffset:
+    :param roffset:
         offset in remote registered address space to
         which to copy
+    :type roffset: off_t
 
-    :param int rma_flags:
+    :param rma_flags:
         transfer mode flags
+    :type rma_flags: int
 
 .. _`scif_writeto.description`:
 
@@ -954,21 +993,26 @@ scif_vreadfrom
 
     Copy from a remote address space
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param void \*addr:
+    :param addr:
         address to which to copy
+    :type addr: void \*
 
-    :param size_t len:
+    :param len:
         length of range to copy
+    :type len: size_t
 
-    :param off_t roffset:
+    :param roffset:
         offset in remote registered address space
         from which to copy
+    :type roffset: off_t
 
-    :param int rma_flags:
+    :param rma_flags:
         transfer mode flags
+    :type rma_flags: int
 
 .. _`scif_vreadfrom.description`:
 
@@ -1060,21 +1104,26 @@ scif_vwriteto
 
     Copy to a remote address space
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param void \*addr:
+    :param addr:
         address from which to copy
+    :type addr: void \*
 
-    :param size_t len:
+    :param len:
         length of range to copy
+    :type len: size_t
 
-    :param off_t roffset:
+    :param roffset:
         offset in remote registered address space to
         which to copy
+    :type roffset: off_t
 
-    :param int rma_flags:
+    :param rma_flags:
         transfer mode flags
+    :type rma_flags: int
 
 .. _`scif_vwriteto.description`:
 
@@ -1166,14 +1215,17 @@ scif_fence_mark
 
     Mark previously issued RMAs
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param int flags:
+    :param flags:
         control flags
+    :type flags: int
 
-    :param int \*mark:
+    :param mark:
         marked value returned as output.
+    :type mark: int \*
 
 .. _`scif_fence_mark.description`:
 
@@ -1224,11 +1276,13 @@ scif_fence_wait
 
     Wait for completion of marked RMAs
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param int mark:
+    :param mark:
         mark request
+    :type mark: int
 
 .. _`scif_fence_wait.description`:
 
@@ -1269,23 +1323,29 @@ scif_fence_signal
 
     Request a memory update on completion of RMAs
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param off_t loff:
+    :param loff:
         local offset
+    :type loff: off_t
 
-    :param u64 lval:
+    :param lval:
         local value to write to loffset
+    :type lval: u64
 
-    :param off_t roff:
+    :param roff:
         remote offset
+    :type roff: off_t
 
-    :param u64 rval:
+    :param rval:
         remote value to write to roffset
+    :type rval: u64
 
-    :param int flags:
+    :param flags:
         flags
+    :type flags: int
 
 .. _`scif_fence_signal.description`:
 
@@ -1351,14 +1411,17 @@ scif_get_node_ids
 
     Return information about online nodes
 
-    :param u16 \*nodes:
+    :param nodes:
         array in which to return online node IDs
+    :type nodes: u16 \*
 
-    :param int len:
+    :param len:
         number of entries in the nodes array
+    :type len: int
 
-    :param u16 \*self:
+    :param self:
         address to place the node ID of the local node
+    :type self: u16 \*
 
 .. _`scif_get_node_ids.description`:
 
@@ -1393,20 +1456,25 @@ scif_pin_pages
 
     Pin a set of pages
 
-    :param void \*addr:
+    :param addr:
         Virtual address of range to pin
+    :type addr: void \*
 
-    :param size_t len:
+    :param len:
         Length of range to pin
+    :type len: size_t
 
-    :param int prot_flags:
+    :param prot_flags:
         Page protection flags
+    :type prot_flags: int
 
-    :param int map_flags:
+    :param map_flags:
         Page classification flags
+    :type map_flags: int
 
-    :param scif_pinned_pages_t \*pinned_pages:
+    :param pinned_pages:
         Handle to pinned pages
+    :type pinned_pages: scif_pinned_pages_t \*
 
 .. _`scif_pin_pages.description`:
 
@@ -1468,8 +1536,9 @@ scif_unpin_pages
 
     Unpin a set of pages
 
-    :param scif_pinned_pages_t pinned_pages:
+    :param pinned_pages:
         Handle to pinned pages to be unpinned
+    :type pinned_pages: scif_pinned_pages_t
 
 .. _`scif_unpin_pages.description`:
 
@@ -1510,17 +1579,21 @@ scif_register_pinned_pages
 
     Mark a memory region for remote access.
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param scif_pinned_pages_t pinned_pages:
+    :param pinned_pages:
         Handle to pinned pages
+    :type pinned_pages: scif_pinned_pages_t
 
-    :param off_t offset:
+    :param offset:
         Registered address space offset
+    :type offset: off_t
 
-    :param int map_flags:
+    :param map_flags:
         Flags which control where pages are mapped
+    :type map_flags: int
 
 .. _`scif_register_pinned_pages.description`:
 
@@ -1599,17 +1672,21 @@ scif_get_pages
 
     Add references to remote registered pages
 
-    :param scif_epd_t epd:
+    :param epd:
         endpoint descriptor
+    :type epd: scif_epd_t
 
-    :param off_t offset:
+    :param offset:
         remote registered offset
+    :type offset: off_t
 
-    :param size_t len:
+    :param len:
         length of range of pages
+    :type len: size_t
 
-    :param struct scif_range \*\*pages:
+    :param pages:
         returned scif_range structure
+    :type pages: struct scif_range \*\*
 
 .. _`scif_get_pages.description`:
 
@@ -1669,8 +1746,9 @@ scif_put_pages
 
     Remove references from remote registered pages
 
-    :param struct scif_range \*pages:
+    :param pages:
         pages to be returned
+    :type pages: struct scif_range \*
 
 .. _`scif_put_pages.description`:
 
@@ -1710,14 +1788,17 @@ scif_poll
 
     Wait for some event on an endpoint
 
-    :param struct scif_pollepd \*epds:
+    :param epds:
         Array of endpoint descriptors
+    :type epds: struct scif_pollepd \*
 
-    :param unsigned int nepds:
+    :param nepds:
         Length of epds
+    :type nepds: unsigned int
 
-    :param long timeout:
+    :param timeout:
         Upper limit on time for which \ :c:func:`scif_poll`\  will block
+    :type timeout: long
 
 .. _`scif_poll.description`:
 
@@ -1795,8 +1876,9 @@ scif_client_register
 
     Register a SCIF client
 
-    :param struct scif_client \*client:
+    :param client:
         client to be registered
+    :type client: struct scif_client \*
 
 .. _`scif_client_register.description`:
 
@@ -1825,8 +1907,9 @@ scif_client_unregister
 
     Unregister a SCIF client
 
-    :param struct scif_client \*client:
+    :param client:
         client to be unregistered
+    :type client: struct scif_client \*
 
 .. _`scif_client_unregister.description`:
 

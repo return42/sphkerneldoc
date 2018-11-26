@@ -10,11 +10,13 @@ hdmi_recommended_n
 
     Return N value recommended by HDMI specification
 
-    :param unsigned int freq:
+    :param freq:
         audio sample rate in Hz
+    :type freq: unsigned int
 
-    :param unsigned int clock:
+    :param clock:
         rounded TMDS clock in kHz
+    :type clock: unsigned int
 
 .. This file was automatic generated / don't edit.
 

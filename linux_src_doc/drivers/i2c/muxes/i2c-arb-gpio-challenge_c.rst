@@ -64,11 +64,13 @@ i2c_arbitrator_select
 
     claim the I2C bus
 
-    :param struct i2c_mux_core \*muxc:
+    :param muxc:
         *undescribed*
+    :type muxc: struct i2c_mux_core \*
 
-    :param u32 chan:
+    :param chan:
         *undescribed*
+    :type chan: u32
 
 .. _`i2c_arbitrator_select.description`:
 
@@ -86,11 +88,13 @@ i2c_arbitrator_deselect
 
     release the I2C bus
 
-    :param struct i2c_mux_core \*muxc:
+    :param muxc:
         *undescribed*
+    :type muxc: struct i2c_mux_core \*
 
-    :param u32 chan:
+    :param chan:
         *undescribed*
+    :type chan: u32
 
 .. _`i2c_arbitrator_deselect.description`:
 

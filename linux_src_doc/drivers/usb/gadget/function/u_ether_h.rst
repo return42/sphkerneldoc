@@ -10,11 +10,13 @@ gether_set_gadget
 
     initialize one ethernet-over-usb link with a gadget
 
-    :param struct net_device \*net:
+    :param net:
         device representing this link
+    :type net: struct net_device \*
 
-    :param struct usb_gadget \*g:
+    :param g:
         the gadget to initialize with
+    :type g: struct usb_gadget \*
 
 .. _`gether_set_gadget.description`:
 
@@ -32,11 +34,13 @@ gether_set_dev_addr
 
     initialize an ethernet-over-usb link with eth address
 
-    :param struct net_device \*net:
+    :param net:
         device representing this link
+    :type net: struct net_device \*
 
-    :param const char \*dev_addr:
+    :param dev_addr:
         eth address of this device
+    :type dev_addr: const char \*
 
 .. _`gether_set_dev_addr.description`:
 
@@ -56,14 +60,17 @@ gether_get_dev_addr
 
     get an ethernet-over-usb link eth address
 
-    :param struct net_device \*net:
+    :param net:
         device representing this link
+    :type net: struct net_device \*
 
-    :param char \*dev_addr:
+    :param dev_addr:
         place to store device's eth address
+    :type dev_addr: char \*
 
-    :param int len:
+    :param len:
         length of the \ ``dev_addr``\  buffer
+    :type len: int
 
 .. _`gether_get_dev_addr.description`:
 
@@ -82,11 +89,13 @@ gether_set_host_addr
 
     initialize an ethernet-over-usb link with host address
 
-    :param struct net_device \*net:
+    :param net:
         device representing this link
+    :type net: struct net_device \*
 
-    :param const char \*host_addr:
+    :param host_addr:
         eth address of the host
+    :type host_addr: const char \*
 
 .. _`gether_set_host_addr.description`:
 
@@ -106,14 +115,17 @@ gether_get_host_addr
 
     get an ethernet-over-usb link host address
 
-    :param struct net_device \*net:
+    :param net:
         device representing this link
+    :type net: struct net_device \*
 
-    :param char \*host_addr:
+    :param host_addr:
         place to store eth address of the host
+    :type host_addr: char \*
 
-    :param int len:
+    :param len:
         length of the \ ``host_addr``\  buffer
+    :type len: int
 
 .. _`gether_get_host_addr.description`:
 
@@ -132,14 +144,17 @@ gether_get_host_addr_cdc
 
     get an ethernet-over-usb link host address
 
-    :param struct net_device \*net:
+    :param net:
         device representing this link
+    :type net: struct net_device \*
 
-    :param char \*host_addr:
+    :param host_addr:
         place to store eth address of the host
+    :type host_addr: char \*
 
-    :param int len:
+    :param len:
         length of the \ ``host_addr``\  buffer
+    :type len: int
 
 .. _`gether_get_host_addr_cdc.description`:
 
@@ -159,11 +174,13 @@ gether_get_host_addr_u8
 
     get an ethernet-over-usb link host address
 
-    :param struct net_device \*net:
+    :param net:
         device representing this link
+    :type net: struct net_device \*
 
-    :param u8 host_mac:
+    :param host_mac:
         place to store the eth address of the host
+    :type host_mac: u8
 
 .. _`gether_get_host_addr_u8.description`:
 
@@ -182,11 +199,13 @@ gether_set_qmult
 
     initialize an ethernet-over-usb link with a multiplier
 
-    :param struct net_device \*net:
+    :param net:
         device representing this link
+    :type net: struct net_device \*
 
-    :param unsigned qmult:
+    :param qmult:
         queue multiplier
+    :type qmult: unsigned
 
 .. _`gether_set_qmult.description`:
 
@@ -205,8 +224,9 @@ gether_get_qmult
 
     get an ethernet-over-usb link multiplier
 
-    :param struct net_device \*net:
+    :param net:
         device representing this link
+    :type net: struct net_device \*
 
 .. _`gether_get_qmult.description`:
 
@@ -224,14 +244,17 @@ gether_get_ifname
 
     get an ethernet-over-usb link interface name
 
-    :param struct net_device \*net:
+    :param net:
         device representing this link
+    :type net: struct net_device \*
 
-    :param char \*name:
+    :param name:
         place to store the interface name
+    :type name: char \*
 
-    :param int len:
+    :param len:
         length of the \ ``name``\  buffer
+    :type len: int
 
 .. _`gether_get_ifname.description`:
 

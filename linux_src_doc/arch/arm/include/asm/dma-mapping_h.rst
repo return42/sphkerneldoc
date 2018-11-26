@@ -10,20 +10,25 @@ arm_dma_alloc
 
     allocate consistent memory for DMA
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer, or NULL for ISA and EISA-like devices
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         required memory size
+    :type size: size_t
 
-    :param dma_addr_t \*handle:
+    :param handle:
         bus-specific DMA address
+    :type handle: dma_addr_t \*
 
-    :param gfp_t gfp:
+    :param gfp:
         *undescribed*
+    :type gfp: gfp_t
 
-    :param unsigned long attrs:
+    :param attrs:
         optinal attributes that specific mapping properties
+    :type attrs: unsigned long
 
 .. _`arm_dma_alloc.description`:
 
@@ -43,20 +48,25 @@ arm_dma_free
 
     free memory allocated by arm_dma_alloc
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer, or NULL for ISA and EISA-like devices
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         size of memory originally requested in dma_alloc_coherent
+    :type size: size_t
 
-    :param void \*cpu_addr:
+    :param cpu_addr:
         CPU-view address returned from dma_alloc_coherent
+    :type cpu_addr: void \*
 
-    :param dma_addr_t handle:
+    :param handle:
         device-view address returned from dma_alloc_coherent
+    :type handle: dma_addr_t
 
-    :param unsigned long attrs:
+    :param attrs:
         optinal attributes that specific mapping properties
+    :type attrs: unsigned long
 
 .. _`arm_dma_free.description`:
 
@@ -78,23 +88,29 @@ arm_dma_mmap
 
     map a coherent DMA allocation into user space
 
-    :param struct device \*dev:
+    :param dev:
         valid struct device pointer, or NULL for ISA and EISA-like devices
+    :type dev: struct device \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vm_area_struct describing requested user mapping
+    :type vma: struct vm_area_struct \*
 
-    :param void \*cpu_addr:
+    :param cpu_addr:
         kernel CPU-view address returned from dma_alloc_coherent
+    :type cpu_addr: void \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         *undescribed*
+    :type dma_addr: dma_addr_t
 
-    :param size_t size:
+    :param size:
         size of memory originally requested in dma_alloc_coherent
+    :type size: size_t
 
-    :param unsigned long attrs:
+    :param attrs:
         optinal attributes that specific mapping properties
+    :type attrs: unsigned long
 
 .. _`arm_dma_mmap.description`:
 
@@ -115,11 +131,13 @@ dmabounce_register_dev
     :param int (\*)(struct device \*, dma_addr_t, size_t):
         *undescribed*
 
-    :param unsigned long:
+    :param long:
         *undescribed*
+    :type long: unsigned
 
-    :param unsigned long:
+    :param long:
         *undescribed*
+    :type long: unsigned
 
     :param int (\*)(struct device \*, dma_addr_t, size_t):
         *undescribed*
@@ -140,8 +158,9 @@ dmabounce_unregister_dev
 
 .. c:function:: void dmabounce_unregister_dev(struct device *)
 
-    :param struct device \*:
+    :param :
         *undescribed*
+    :type : struct device \*
 
 .. _`dmabounce_unregister_dev.description`:
 

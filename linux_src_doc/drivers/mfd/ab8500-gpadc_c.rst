@@ -114,8 +114,9 @@ ab8500_gpadc_get
 
     returns a reference to the primary AB8500 GPADC (i.e. the first GPADC in the instance list)
 
-    :param char \*name:
+    :param name:
         *undescribed*
+    :type name: char \*
 
 .. _`ab8500_gpadc_ad_to_voltage`:
 
@@ -126,14 +127,17 @@ ab8500_gpadc_ad_to_voltage
 
     Convert a raw ADC value to a voltage
 
-    :param struct ab8500_gpadc \*gpadc:
+    :param gpadc:
         *undescribed*
+    :type gpadc: struct ab8500_gpadc \*
 
-    :param u8 channel:
+    :param channel:
         *undescribed*
+    :type channel: u8
 
-    :param int ad_value:
+    :param ad_value:
         *undescribed*
+    :type ad_value: int
 
 .. _`ab8500_gpadc_sw_hw_convert`:
 
@@ -144,23 +148,29 @@ ab8500_gpadc_sw_hw_convert
 
     gpadc conversion
 
-    :param struct ab8500_gpadc \*gpadc:
+    :param gpadc:
         *undescribed*
+    :type gpadc: struct ab8500_gpadc \*
 
-    :param u8 channel:
+    :param channel:
         analog channel to be converted to digital data
+    :type channel: u8
 
-    :param u8 avg_sample:
+    :param avg_sample:
         number of ADC sample to average
+    :type avg_sample: u8
 
-    :param u8 trig_edge:
+    :param trig_edge:
         *undescribed*
+    :type trig_edge: u8
 
-    :param u8 trig_timer:
+    :param trig_timer:
         selected ADC trigger delay timer
+    :type trig_timer: u8
 
-    :param u8 conv_type:
+    :param conv_type:
         selected conversion type (HW or SW conversion)
+    :type conv_type: u8
 
 .. _`ab8500_gpadc_sw_hw_convert.description`:
 
@@ -179,23 +189,29 @@ ab8500_gpadc_read_raw
 
     gpadc read
 
-    :param struct ab8500_gpadc \*gpadc:
+    :param gpadc:
         *undescribed*
+    :type gpadc: struct ab8500_gpadc \*
 
-    :param u8 channel:
+    :param channel:
         analog channel to be read
+    :type channel: u8
 
-    :param u8 avg_sample:
+    :param avg_sample:
         number of ADC sample to average
+    :type avg_sample: u8
 
-    :param u8 trig_edge:
+    :param trig_edge:
         selected trig edge
+    :type trig_edge: u8
 
-    :param u8 trig_timer:
+    :param trig_timer:
         selected ADC trigger delay timer
+    :type trig_timer: u8
 
-    :param u8 conv_type:
+    :param conv_type:
         selected conversion type (HW or SW conversion)
+    :type conv_type: u8
 
 .. _`ab8500_gpadc_read_raw.description`:
 
@@ -214,11 +230,13 @@ ab8500_bm_gpadcconvend_handler
 
     isr for gpadc conversion completion
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*_gpadc:
+    :param _gpadc:
         *undescribed*
+    :type _gpadc: void \*
 
 .. _`ab8500_bm_gpadcconvend_handler.description`:
 
@@ -239,32 +257,41 @@ ab8540_gpadc_get_otp
 
     returns OTP values
 
-    :param struct ab8500_gpadc \*gpadc:
+    :param gpadc:
         *undescribed*
+    :type gpadc: struct ab8500_gpadc \*
 
-    :param u16 \*vmain_l:
+    :param vmain_l:
         *undescribed*
+    :type vmain_l: u16 \*
 
-    :param u16 \*vmain_h:
+    :param vmain_h:
         *undescribed*
+    :type vmain_h: u16 \*
 
-    :param u16 \*btemp_l:
+    :param btemp_l:
         *undescribed*
+    :type btemp_l: u16 \*
 
-    :param u16 \*btemp_h:
+    :param btemp_h:
         *undescribed*
+    :type btemp_h: u16 \*
 
-    :param u16 \*vbat_l:
+    :param vbat_l:
         *undescribed*
+    :type vbat_l: u16 \*
 
-    :param u16 \*vbat_h:
+    :param vbat_h:
         *undescribed*
+    :type vbat_h: u16 \*
 
-    :param u16 \*ibat_l:
+    :param ibat_l:
         *undescribed*
+    :type ibat_l: u16 \*
 
-    :param u16 \*ibat_h:
+    :param ibat_h:
         *undescribed*
+    :type ibat_h: u16 \*
 
 .. This file was automatic generated / don't edit.
 

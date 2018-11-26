@@ -241,15 +241,18 @@ crypto_alloc_skcipher
 
     allocate symmetric key cipher handle
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         skcipher cipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_alloc_skcipher.description`:
 
@@ -277,8 +280,9 @@ crypto_free_skcipher
 
     zeroize and free cipher handle
 
-    :param struct crypto_skcipher \*tfm:
+    :param tfm:
         cipher handle to be freed
+    :type tfm: struct crypto_skcipher \*
 
 .. _`crypto_has_skcipher`:
 
@@ -289,15 +293,18 @@ crypto_has_skcipher
 
     Search for the availability of an skcipher.
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         skcipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_has_skcipher.return`:
 
@@ -316,15 +323,18 @@ crypto_has_skcipher2
 
     Search for the availability of an skcipher.
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         skcipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the skcipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the skcipher
+    :type mask: u32
 
 .. _`crypto_has_skcipher2.return`:
 
@@ -343,8 +353,9 @@ crypto_skcipher_ivsize
 
     obtain IV size
 
-    :param struct crypto_skcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_skcipher \*
 
 .. _`crypto_skcipher_ivsize.description`:
 
@@ -370,8 +381,9 @@ crypto_skcipher_chunksize
 
     obtain chunk size
 
-    :param struct crypto_skcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_skcipher \*
 
 .. _`crypto_skcipher_chunksize.description`:
 
@@ -399,8 +411,9 @@ crypto_skcipher_walksize
 
     obtain walk size
 
-    :param struct crypto_skcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_skcipher \*
 
 .. _`crypto_skcipher_walksize.description`:
 
@@ -428,8 +441,9 @@ crypto_skcipher_blocksize
 
     obtain block size of cipher
 
-    :param struct crypto_skcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_skcipher \*
 
 .. _`crypto_skcipher_blocksize.description`:
 
@@ -456,14 +470,17 @@ crypto_skcipher_setkey
 
     set key for cipher
 
-    :param struct crypto_skcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_skcipher \*
 
-    :param const u8 \*key:
+    :param key:
         buffer holding the key
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         length of the key in bytes
+    :type keylen: unsigned int
 
 .. _`crypto_skcipher_setkey.description`:
 
@@ -494,8 +511,9 @@ crypto_skcipher_reqtfm
 
     obtain cipher handle from request
 
-    :param struct skcipher_request \*req:
+    :param req:
         skcipher_request out of which the cipher handle is to be obtained
+    :type req: struct skcipher_request \*
 
 .. _`crypto_skcipher_reqtfm.description`:
 
@@ -521,9 +539,10 @@ crypto_skcipher_encrypt
 
     encrypt plaintext
 
-    :param struct skcipher_request \*req:
+    :param req:
         reference to the skcipher_request handle that holds all information
         needed to perform the cipher operation
+    :type req: struct skcipher_request \*
 
 .. _`crypto_skcipher_encrypt.description`:
 
@@ -550,9 +569,10 @@ crypto_skcipher_decrypt
 
     decrypt ciphertext
 
-    :param struct skcipher_request \*req:
+    :param req:
         reference to the skcipher_request handle that holds all information
         needed to perform the cipher operation
+    :type req: struct skcipher_request \*
 
 .. _`crypto_skcipher_decrypt.description`:
 
@@ -591,8 +611,9 @@ crypto_skcipher_reqsize
 
     obtain size of the request data structure
 
-    :param struct crypto_skcipher \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_skcipher \*
 
 .. _`crypto_skcipher_reqsize.return`:
 
@@ -610,11 +631,13 @@ skcipher_request_set_tfm
 
     update cipher handle reference in request
 
-    :param struct skcipher_request \*req:
+    :param req:
         request handle to be modified
+    :type req: struct skcipher_request \*
 
-    :param struct crypto_skcipher \*tfm:
+    :param tfm:
         cipher handle that shall be added to the request handle
+    :type tfm: struct crypto_skcipher \*
 
 .. _`skcipher_request_set_tfm.description`:
 
@@ -633,11 +656,13 @@ skcipher_request_alloc
 
     allocate request data structure
 
-    :param struct crypto_skcipher \*tfm:
+    :param tfm:
         cipher handle to be registered with the request
+    :type tfm: struct crypto_skcipher \*
 
-    :param gfp_t gfp:
+    :param gfp:
         memory allocation flag that is handed to kmalloc by the API call.
+    :type gfp: gfp_t
 
 .. _`skcipher_request_alloc.description`:
 
@@ -664,8 +689,9 @@ skcipher_request_free
 
     zeroize and free request data structure
 
-    :param struct skcipher_request \*req:
+    :param req:
         request data structure cipher handle to be freed
+    :type req: struct skcipher_request \*
 
 .. _`skcipher_request_set_callback`:
 
@@ -676,19 +702,22 @@ skcipher_request_set_callback
 
     set asynchronous callback function
 
-    :param struct skcipher_request \*req:
+    :param req:
         request handle
+    :type req: struct skcipher_request \*
 
-    :param u32 flags:
+    :param flags:
         specify zero or an ORing of the flags
         CRYPTO_TFM_REQ_MAY_BACKLOG the request queue may back log and
         increase the wait queue beyond the initial maximum size;
         CRYPTO_TFM_REQ_MAY_SLEEP the request processing may sleep
+    :type flags: u32
 
-    :param crypto_completion_t compl:
+    :param compl:
         callback function pointer to be registered with the request handle
+    :type compl: crypto_completion_t
 
-    :param void \*data:
+    :param data:
         The data pointer refers to memory that is not used by the kernel
         crypto API, but provided to the callback function for it to use. Here,
         the caller can provide a reference to memory the callback function can
@@ -697,6 +726,7 @@ skcipher_request_set_callback
         related functionality which can be referenced using this pointer. The
         callback function can access the memory via the "data" field in the
         crypto_async_request data structure provided to the callback function.
+    :type data: void \*
 
 .. _`skcipher_request_set_callback.description`:
 
@@ -720,21 +750,26 @@ skcipher_request_set_crypt
 
     set data buffers
 
-    :param struct skcipher_request \*req:
+    :param req:
         request handle
+    :type req: struct skcipher_request \*
 
-    :param struct scatterlist \*src:
+    :param src:
         source scatter / gather list
+    :type src: struct scatterlist \*
 
-    :param struct scatterlist \*dst:
+    :param dst:
         destination scatter / gather list
+    :type dst: struct scatterlist \*
 
-    :param unsigned int cryptlen:
+    :param cryptlen:
         number of bytes to process from \ ``src``\ 
+    :type cryptlen: unsigned int
 
-    :param void \*iv:
+    :param iv:
         IV for the cipher operation which must comply with the IV size defined
         by crypto_skcipher_ivsize
+    :type iv: void \*
 
 .. _`skcipher_request_set_crypt.description`:
 

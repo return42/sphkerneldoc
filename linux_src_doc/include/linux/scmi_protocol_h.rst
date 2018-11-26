@@ -130,6 +130,7 @@ Definition
         int (*device_opps_add)(const struct scmi_handle *handle, struct device *dev);
         int (*freq_set)(const struct scmi_handle *handle, u32 domain, unsigned long rate, bool poll);
         int (*freq_get)(const struct scmi_handle *handle, u32 domain, unsigned long *rate, bool poll);
+        int (*est_power_get)(const struct scmi_handle *handle, u32 domain, unsigned long *rate, unsigned long *power);
     }
 
 .. _`scmi_perf_ops.members`:
@@ -165,6 +166,10 @@ freq_set
 freq_get
     gets the frequency for a given device using sustained frequency
     to sustained performance level mapping
+
+est_power_get
+    gets the estimated power cost for a given performance domain
+    at a given frequency
 
 .. _`scmi_power_ops`:
 
@@ -336,8 +341,9 @@ module_scmi_driver
 
     Helper macro for registering a scmi driver
 
-    :param  __scmi_driver:
+    :param __scmi_driver:
         scmi_driver structure
+    :type __scmi_driver: 
 
 .. _`module_scmi_driver.description`:
 

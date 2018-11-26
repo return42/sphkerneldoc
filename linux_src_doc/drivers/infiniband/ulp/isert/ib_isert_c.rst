@@ -10,8 +10,9 @@ isert_conn_terminate
 
     Initiate connection termination
 
-    :param struct isert_conn \*isert_conn:
+    :param isert_conn:
         isert connection struct
+    :type isert_conn: struct isert_conn \*
 
 .. _`isert_conn_terminate.notes`:
 
@@ -34,8 +35,9 @@ isert_put_unsol_pending_cmds
 
     Drop commands waiting for unsolicitate dataout
 
-    :param struct iscsi_conn \*conn:
+    :param conn:
         iscsi connection
+    :type conn: struct iscsi_conn \*
 
 .. _`isert_put_unsol_pending_cmds.description`:
 

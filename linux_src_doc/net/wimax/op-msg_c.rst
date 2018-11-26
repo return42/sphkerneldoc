@@ -10,20 +10,25 @@ wimax_msg_alloc
 
     Create a new skb for sending a message to userspace
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor
+    :type wimax_dev: struct wimax_dev \*
 
-    :param const char \*pipe_name:
+    :param pipe_name:
         "named pipe" the message will be sent to
+    :type pipe_name: const char \*
 
-    :param const void \*msg:
+    :param msg:
         pointer to the message data to send
+    :type msg: const void \*
 
-    :param size_t size:
+    :param size:
         size of the message to send (in bytes), including the header.
+    :type size: size_t
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         flags for memory allocation.
+    :type gfp_flags: gfp_t
 
 .. _`wimax_msg_alloc.return`:
 
@@ -70,11 +75,13 @@ wimax_msg_data_len
 
     Return a pointer and size of a message's payload
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Pointer to a message created with \ :c:func:`wimax_msg_alloc`\ 
+    :type msg: struct sk_buff \*
 
-    :param size_t \*size:
+    :param size:
         Pointer to where to store the message's size
+    :type size: size_t \*
 
 .. _`wimax_msg_data_len.description`:
 
@@ -92,8 +99,9 @@ wimax_msg_data
 
     Return a pointer to a message's payload
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Pointer to a message created with \ :c:func:`wimax_msg_alloc`\ 
+    :type msg: struct sk_buff \*
 
 .. _`wimax_msg_len`:
 
@@ -104,8 +112,9 @@ wimax_msg_len
 
     Return a message's payload length
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Pointer to a message created with \ :c:func:`wimax_msg_alloc`\ 
+    :type msg: struct sk_buff \*
 
 .. _`wimax_msg_send`:
 
@@ -116,12 +125,14 @@ wimax_msg_send
 
     Send a pre-allocated message to user space
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor
+    :type wimax_dev: struct wimax_dev \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         \ :c:type:`struct sk_buff <sk_buff>`\  returned by \ :c:func:`wimax_msg_alloc`\ . Note the
         ownership of \ ``skb``\  is transferred to this function.
+    :type skb: struct sk_buff \*
 
 .. _`wimax_msg_send.return`:
 
@@ -167,20 +178,25 @@ wimax_msg
 
     Send a message to user space
 
-    :param struct wimax_dev \*wimax_dev:
+    :param wimax_dev:
         WiMAX device descriptor (properly referenced)
+    :type wimax_dev: struct wimax_dev \*
 
-    :param const char \*pipe_name:
+    :param pipe_name:
         "named pipe" the message will be sent to
+    :type pipe_name: const char \*
 
-    :param const void \*buf:
+    :param buf:
         pointer to the message to send.
+    :type buf: const void \*
 
-    :param size_t size:
+    :param size:
         size of the buffer pointed to by \ ``buf``\  (in bytes).
+    :type size: size_t
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         flags for memory allocation.
+    :type gfp_flags: gfp_t
 
 .. _`wimax_msg.return`:
 

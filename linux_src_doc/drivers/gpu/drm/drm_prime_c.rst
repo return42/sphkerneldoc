@@ -6,18 +6,17 @@
 drm_gem_map_attach
 ==================
 
-.. c:function:: int drm_gem_map_attach(struct dma_buf *dma_buf, struct device *target_dev, struct dma_buf_attachment *attach)
+.. c:function:: int drm_gem_map_attach(struct dma_buf *dma_buf, struct dma_buf_attachment *attach)
 
     dma_buf attach implementation for GEM
 
-    :param struct dma_buf \*dma_buf:
+    :param dma_buf:
         buffer to attach device to
+    :type dma_buf: struct dma_buf \*
 
-    :param struct device \*target_dev:
-        not used
-
-    :param struct dma_buf_attachment \*attach:
+    :param attach:
         buffer attachment data
+    :type attach: struct dma_buf_attachment \*
 
 .. _`drm_gem_map_attach.description`:
 
@@ -39,11 +38,13 @@ drm_gem_map_detach
 
     dma_buf detach implementation for GEM
 
-    :param struct dma_buf \*dma_buf:
+    :param dma_buf:
         buffer to detach from
+    :type dma_buf: struct dma_buf \*
 
-    :param struct dma_buf_attachment \*attach:
+    :param attach:
         attachment to be detached
+    :type attach: struct dma_buf_attachment \*
 
 .. _`drm_gem_map_detach.description`:
 
@@ -62,11 +63,13 @@ drm_gem_map_dma_buf
 
     map_dma_buf implementation for GEM
 
-    :param struct dma_buf_attachment \*attach:
+    :param attach:
         attachment whose scatterlist is to be returned
+    :type attach: struct dma_buf_attachment \*
 
-    :param enum dma_data_direction dir:
+    :param dir:
         direction of DMA transfer
+    :type dir: enum dma_data_direction
 
 .. _`drm_gem_map_dma_buf.description`:
 
@@ -88,14 +91,17 @@ drm_gem_unmap_dma_buf
 
     unmap_dma_buf implementation for GEM
 
-    :param struct dma_buf_attachment \*attach:
+    :param attach:
         attachment to unmap buffer from
+    :type attach: struct dma_buf_attachment \*
 
-    :param struct sg_table \*sgt:
+    :param sgt:
         scatterlist info of the buffer to unmap
+    :type sgt: struct sg_table \*
 
-    :param enum dma_data_direction dir:
+    :param dir:
         direction of DMA transfer
+    :type dir: enum dma_data_direction
 
 .. _`drm_gem_unmap_dma_buf.description`:
 
@@ -114,11 +120,13 @@ drm_gem_dmabuf_export
 
     dma_buf export implementation for GEM
 
-    :param struct drm_device \*dev:
+    :param dev:
         parent device for the exported dmabuf
+    :type dev: struct drm_device \*
 
-    :param struct dma_buf_export_info \*exp_info:
+    :param exp_info:
         the export information used by \ :c:func:`dma_buf_export`\ 
+    :type exp_info: struct dma_buf_export_info \*
 
 .. _`drm_gem_dmabuf_export.description`:
 
@@ -141,8 +149,9 @@ drm_gem_dmabuf_release
 
     dma_buf release implementation for GEM
 
-    :param struct dma_buf \*dma_buf:
+    :param dma_buf:
         buffer to be released
+    :type dma_buf: struct dma_buf \*
 
 .. _`drm_gem_dmabuf_release.description`:
 
@@ -163,8 +172,9 @@ drm_gem_dmabuf_vmap
 
     dma_buf vmap implementation for GEM
 
-    :param struct dma_buf \*dma_buf:
+    :param dma_buf:
         buffer to be mapped
+    :type dma_buf: struct dma_buf \*
 
 .. _`drm_gem_dmabuf_vmap.description`:
 
@@ -185,11 +195,13 @@ drm_gem_dmabuf_vunmap
 
     dma_buf vunmap implementation for GEM
 
-    :param struct dma_buf \*dma_buf:
+    :param dma_buf:
         buffer to be unmapped
+    :type dma_buf: struct dma_buf \*
 
-    :param void \*vaddr:
+    :param vaddr:
         the virtual address of the buffer
+    :type vaddr: void \*
 
 .. _`drm_gem_dmabuf_vunmap.description`:
 
@@ -198,53 +210,6 @@ Description
 
 Releases a kernel virtual mapping. This can be used as the
 \ :c:type:`dma_buf_ops.vunmap <dma_buf_ops>`\  callback.
-
-.. _`drm_gem_dmabuf_kmap_atomic`:
-
-drm_gem_dmabuf_kmap_atomic
-==========================
-
-.. c:function:: void *drm_gem_dmabuf_kmap_atomic(struct dma_buf *dma_buf, unsigned long page_num)
-
-    map_atomic implementation for GEM
-
-    :param struct dma_buf \*dma_buf:
-        buffer to be mapped
-
-    :param unsigned long page_num:
-        page number within the buffer
-
-.. _`drm_gem_dmabuf_kmap_atomic.description`:
-
-Description
------------
-
-Not implemented. This can be used as the \ :c:type:`dma_buf_ops.map_atomic <dma_buf_ops>`\  callback.
-
-.. _`drm_gem_dmabuf_kunmap_atomic`:
-
-drm_gem_dmabuf_kunmap_atomic
-============================
-
-.. c:function:: void drm_gem_dmabuf_kunmap_atomic(struct dma_buf *dma_buf, unsigned long page_num, void *addr)
-
-    unmap_atomic implementation for GEM
-
-    :param struct dma_buf \*dma_buf:
-        buffer to be unmapped
-
-    :param unsigned long page_num:
-        page number within the buffer
-
-    :param void \*addr:
-        virtual address of the buffer
-
-.. _`drm_gem_dmabuf_kunmap_atomic.description`:
-
-Description
------------
-
-Not implemented. This can be used as the \ :c:type:`dma_buf_ops.unmap_atomic <dma_buf_ops>`\  callback.
 
 .. _`drm_gem_dmabuf_kmap`:
 
@@ -255,11 +220,13 @@ drm_gem_dmabuf_kmap
 
     map implementation for GEM
 
-    :param struct dma_buf \*dma_buf:
+    :param dma_buf:
         buffer to be mapped
+    :type dma_buf: struct dma_buf \*
 
-    :param unsigned long page_num:
+    :param page_num:
         page number within the buffer
+    :type page_num: unsigned long
 
 .. _`drm_gem_dmabuf_kmap.description`:
 
@@ -277,14 +244,17 @@ drm_gem_dmabuf_kunmap
 
     unmap implementation for GEM
 
-    :param struct dma_buf \*dma_buf:
+    :param dma_buf:
         buffer to be unmapped
+    :type dma_buf: struct dma_buf \*
 
-    :param unsigned long page_num:
+    :param page_num:
         page number within the buffer
+    :type page_num: unsigned long
 
-    :param void \*addr:
+    :param addr:
         virtual address of the buffer
+    :type addr: void \*
 
 .. _`drm_gem_dmabuf_kunmap.description`:
 
@@ -302,11 +272,13 @@ drm_gem_dmabuf_mmap
 
     dma_buf mmap implementation for GEM
 
-    :param struct dma_buf \*dma_buf:
+    :param dma_buf:
         buffer to be mapped
+    :type dma_buf: struct dma_buf \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         virtual address range
+    :type vma: struct vm_area_struct \*
 
 .. _`drm_gem_dmabuf_mmap.description`:
 
@@ -350,14 +322,17 @@ drm_gem_prime_export
 
     helper library implementation of the export callback
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device to export from
+    :type dev: struct drm_device \*
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM object to export
+    :type obj: struct drm_gem_object \*
 
-    :param int flags:
+    :param flags:
         flags like DRM_CLOEXEC and DRM_RDWR
+    :type flags: int
 
 .. _`drm_gem_prime_export.description`:
 
@@ -376,20 +351,25 @@ drm_gem_prime_handle_to_fd
 
     PRIME export function for GEM drivers
 
-    :param struct drm_device \*dev:
+    :param dev:
         dev to export the buffer from
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file-private structure
+    :type file_priv: struct drm_file \*
 
-    :param uint32_t handle:
+    :param handle:
         buffer handle to export
+    :type handle: uint32_t
 
-    :param uint32_t flags:
+    :param flags:
         flags like DRM_CLOEXEC
+    :type flags: uint32_t
 
-    :param int \*prime_fd:
+    :param prime_fd:
         pointer to storage for the fd id of the create dma-buf
+    :type prime_fd: int \*
 
 .. _`drm_gem_prime_handle_to_fd.description`:
 
@@ -410,14 +390,17 @@ drm_gem_prime_import_dev
 
     core implementation of the import callback
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device to import into
+    :type dev: struct drm_device \*
 
-    :param struct dma_buf \*dma_buf:
+    :param dma_buf:
         dma-buf object to import
+    :type dma_buf: struct dma_buf \*
 
-    :param struct device \*attach_dev:
+    :param attach_dev:
         struct device to dma_buf attach
+    :type attach_dev: struct device \*
 
 .. _`drm_gem_prime_import_dev.description`:
 
@@ -437,11 +420,13 @@ drm_gem_prime_import
 
     helper library implementation of the import callback
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device to import into
+    :type dev: struct drm_device \*
 
-    :param struct dma_buf \*dma_buf:
+    :param dma_buf:
         dma-buf object to import
+    :type dma_buf: struct dma_buf \*
 
 .. _`drm_gem_prime_import.description`:
 
@@ -460,17 +445,21 @@ drm_gem_prime_fd_to_handle
 
     PRIME import function for GEM drivers
 
-    :param struct drm_device \*dev:
+    :param dev:
         dev to export the buffer from
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file-private structure
+    :type file_priv: struct drm_file \*
 
-    :param int prime_fd:
+    :param prime_fd:
         fd id of the dma-buf which should be imported
+    :type prime_fd: int
 
-    :param uint32_t \*handle:
+    :param handle:
         pointer to storage for the handle of the imported buffer object
+    :type handle: uint32_t \*
 
 .. _`drm_gem_prime_fd_to_handle.description`:
 
@@ -491,11 +480,13 @@ drm_prime_pages_to_sg
 
     converts a page array into an sg list
 
-    :param struct page \*\*pages:
+    :param pages:
         pointer to the array of page pointers to convert
+    :type pages: struct page \*\*
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         length of the page vector
+    :type nr_pages: unsigned int
 
 .. _`drm_prime_pages_to_sg.description`:
 
@@ -515,17 +506,21 @@ drm_prime_sg_to_page_addr_arrays
 
     convert an sg table into a page array
 
-    :param struct sg_table \*sgt:
+    :param sgt:
         scatter-gather table to convert
+    :type sgt: struct sg_table \*
 
-    :param struct page \*\*pages:
+    :param pages:
         optional array of page pointers to store the page array in
+    :type pages: struct page \*\*
 
-    :param dma_addr_t \*addrs:
+    :param addrs:
         optional array to store the dma bus address of each page
+    :type addrs: dma_addr_t \*
 
-    :param int max_entries:
+    :param max_entries:
         size of both the passed-in arrays
+    :type max_entries: int
 
 .. _`drm_prime_sg_to_page_addr_arrays.description`:
 
@@ -544,11 +539,13 @@ drm_prime_gem_destroy
 
     helper to clean up a PRIME-imported GEM object
 
-    :param struct drm_gem_object \*obj:
+    :param obj:
         GEM object which was created from a dma-buf
+    :type obj: struct drm_gem_object \*
 
-    :param struct sg_table \*sg:
+    :param sg:
         the sg-table which was pinned at import time
+    :type sg: struct sg_table \*
 
 .. _`drm_prime_gem_destroy.description`:
 

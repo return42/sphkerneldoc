@@ -10,8 +10,9 @@ idt_setup_early_traps
 
     Initialize the idt table with early traps
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`idt_setup_early_traps.description`:
 
@@ -31,8 +32,9 @@ idt_setup_traps
 
     Initialize the idt table with default traps
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`idt_setup_early_pf`:
 
@@ -43,8 +45,9 @@ idt_setup_early_pf
 
     Initialize the idt table with early pagefault handler
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`idt_setup_early_pf.description`:
 
@@ -72,8 +75,9 @@ idt_setup_ist_traps
 
     Initialize the idt table with traps using IST
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`idt_setup_debugidt_traps`:
 
@@ -84,8 +88,9 @@ idt_setup_debugidt_traps
 
     Initialize the debug idt table with debug traps
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`idt_setup_apic_and_irq_gates`:
 
@@ -96,8 +101,9 @@ idt_setup_apic_and_irq_gates
 
     Setup APIC/SMP and normal interrupt gates
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`idt_setup_early_handler`:
 
@@ -108,8 +114,9 @@ idt_setup_early_handler
 
     Initializes the idt table with early handlers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`idt_invalidate`:
 
@@ -120,8 +127,9 @@ idt_invalidate
 
     Invalidate interrupt descriptor table
 
-    :param void \*addr:
+    :param addr:
         The virtual address of the 'invalid' IDT
+    :type addr: void \*
 
 .. This file was automatic generated / don't edit.
 

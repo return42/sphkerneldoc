@@ -10,8 +10,9 @@ cifs_toupper
 
     convert a wchar_t from lower to uppercase
 
-    :param wchar_t in:
+    :param in:
         character to convert from lower to uppercase
+    :type in: wchar_t
 
 .. _`cifs_toupper.description`:
 

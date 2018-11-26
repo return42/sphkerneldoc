@@ -8,8 +8,9 @@
 
 .. c:function:: cvmx_cmd_queue_result_t __cvmx_cmd_queue_init_state_ptr( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__cvmx_cmd_queue_init_state_ptr.description`:
 
@@ -27,17 +28,21 @@ cvmx_cmd_queue_initialize
 
     allocated and the hardware unit is configured to point to the new command queue.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Hardware command queue to initialize.
+    :type queue_id: cvmx_cmd_queue_id_t
 
-    :param int max_depth:
+    :param max_depth:
         Maximum outstanding commands that can be queued.
+    :type max_depth: int
 
-    :param int fpa_pool:
+    :param fpa_pool:
         FPA pool the command queues should come from.
+    :type fpa_pool: int
 
-    :param int pool_size:
+    :param pool_size:
         Size of each buffer in the FPA pool (bytes)
+    :type pool_size: int
 
 .. _`cvmx_cmd_queue_initialize.description`:
 
@@ -55,8 +60,9 @@ cvmx_cmd_queue_shutdown
 
     hardware connected to the queue must be stopped before this function is called.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Queue to shutdown
+    :type queue_id: cvmx_cmd_queue_id_t
 
 .. _`cvmx_cmd_queue_shutdown.description`:
 
@@ -74,8 +80,9 @@ cvmx_cmd_queue_length
 
     function may be relatively slow for some hardware units.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Hardware command queue to query
+    :type queue_id: cvmx_cmd_queue_id_t
 
 .. _`cvmx_cmd_queue_length.description`:
 
@@ -93,8 +100,9 @@ cvmx_cmd_queue_buffer
 
     function is to allow CVMX routine access t othe low level buffer for initial hardware setup. User applications should not call this function directly.
 
-    :param cvmx_cmd_queue_id_t queue_id:
+    :param queue_id:
         Command queue to query
+    :type queue_id: cvmx_cmd_queue_id_t
 
 .. _`cvmx_cmd_queue_buffer.description`:
 

@@ -10,8 +10,9 @@ octeon_i2c_wait
 
     wait for the IFLG to be set
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
 .. _`octeon_i2c_wait.description`:
 
@@ -29,8 +30,9 @@ octeon_i2c_hlc_wait
 
     wait for an HLC operation to complete
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
 .. _`octeon_i2c_hlc_wait.description`:
 
@@ -48,8 +50,9 @@ octeon_i2c_start
 
     send START to the bus
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
 .. _`octeon_i2c_start.description`:
 
@@ -67,20 +70,25 @@ octeon_i2c_read
 
     receive data from the bus via low-level controller
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
-    :param int target:
+    :param target:
         Target address
+    :type target: int
 
-    :param u8 \*data:
+    :param data:
         Pointer to the location to store the data
+    :type data: u8 \*
 
-    :param u16 \*rlength:
+    :param rlength:
         Length of the data
+    :type rlength: u16 \*
 
-    :param bool recv_len:
+    :param recv_len:
         flag for length byte
+    :type recv_len: bool
 
 .. _`octeon_i2c_read.description`:
 
@@ -100,17 +108,21 @@ octeon_i2c_write
 
     send data to the bus via low-level controller
 
-    :param struct octeon_i2c \*i2c:
+    :param i2c:
         The struct octeon_i2c
+    :type i2c: struct octeon_i2c \*
 
-    :param int target:
+    :param target:
         Target address
+    :type target: int
 
-    :param const u8 \*data:
+    :param data:
         Pointer to the data to be sent
+    :type data: const u8 \*
 
-    :param int length:
+    :param length:
         Length of the data
+    :type length: int
 
 .. _`octeon_i2c_write.description`:
 
@@ -130,14 +142,17 @@ octeon_i2c_xfer
 
     The driver's master_xfer function
 
-    :param struct i2c_adapter \*adap:
+    :param adap:
         Pointer to the i2c_adapter structure
+    :type adap: struct i2c_adapter \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         Pointer to the messages to be processed
+    :type msgs: struct i2c_msg \*
 
-    :param int num:
+    :param num:
         Length of the MSGS array
+    :type num: int
 
 .. _`octeon_i2c_xfer.description`:
 

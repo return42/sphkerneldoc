@@ -10,11 +10,13 @@ usb_hcd_msp_probe
 
     initialize PMC MSP-based HCDs
 
-    :param const struct hc_driver \*driver:
+    :param driver:
         *undescribed*
+    :type driver: const struct hc_driver \*
 
-    :param struct platform_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct platform_device \*
 
 .. _`usb_hcd_msp_probe.context`:
 
@@ -41,11 +43,13 @@ usb_hcd_msp_remove
 
     shutdown processing for PMC MSP-based HCDs
 
-    :param struct usb_hcd \*hcd:
+    :param hcd:
         *undescribed*
+    :type hcd: struct usb_hcd \*
 
-    :param struct platform_device \*dev:
+    :param dev:
         USB Host Controller being removed
+    :type dev: struct platform_device \*
 
 .. _`usb_hcd_msp_remove.context`:
 

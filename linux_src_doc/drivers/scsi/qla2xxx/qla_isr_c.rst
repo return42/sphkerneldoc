@@ -10,11 +10,13 @@ qla2100_intr_handler
 
     Process interrupts for the ISP2100 and ISP2200.
 
-    :param int irq:
-        *undescribed*
+    :param irq:
+        interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         SCSI driver HA context
+    :type dev_id: void \*
 
 .. _`qla2100_intr_handler.description`:
 
@@ -34,11 +36,13 @@ qla2300_intr_handler
 
     Process interrupts for the ISP23xx and ISP63xx.
 
-    :param int irq:
-        *undescribed*
+    :param irq:
+        interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         SCSI driver HA context
+    :type dev_id: void \*
 
 .. _`qla2300_intr_handler.description`:
 
@@ -58,11 +62,13 @@ qla2x00_mbx_completion
 
     Process mailbox command completions.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         SCSI driver HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param uint16_t mb0:
+    :param mb0:
         Mailbox0 register
+    :type mb0: uint16_t
 
 .. _`qla2x00_async_event`:
 
@@ -73,14 +79,17 @@ qla2x00_async_event
 
     Process aynchronous events.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         SCSI driver HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param struct rsp_que \*rsp:
+    :param rsp:
         response queue
+    :type rsp: struct rsp_que \*
 
-    :param uint16_t \*mb:
+    :param mb:
         Mailbox registers (0 - 3)
+    :type mb: uint16_t \*
 
 .. _`qla2x00_process_completed_request`:
 
@@ -91,14 +100,17 @@ qla2x00_process_completed_request
 
     Process a Fast Post response.
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         SCSI driver HA context
+    :type vha: struct scsi_qla_host \*
 
-    :param struct req_que \*req:
+    :param req:
         request queue
+    :type req: struct req_que \*
 
-    :param uint32_t index:
+    :param index:
         SRB index
+    :type index: uint32_t
 
 .. _`qla2x00_process_response_queue`:
 
@@ -109,8 +121,9 @@ qla2x00_process_response_queue
 
     Process response queue entries.
 
-    :param struct rsp_que \*rsp:
+    :param rsp:
         response queue
+    :type rsp: struct rsp_que \*
 
 .. _`qla2x00_status_entry`:
 
@@ -121,14 +134,17 @@ qla2x00_status_entry
 
     Process a Status IOCB entry.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         SCSI driver HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param struct rsp_que \*rsp:
+    :param rsp:
         response queue
+    :type rsp: struct rsp_que \*
 
-    :param void \*pkt:
+    :param pkt:
         Entry pointer
+    :type pkt: void \*
 
 .. _`qla2x00_status_cont_entry`:
 
@@ -139,11 +155,13 @@ qla2x00_status_cont_entry
 
     Process a Status Continuations entry.
 
-    :param struct rsp_que \*rsp:
+    :param rsp:
         response queue
+    :type rsp: struct rsp_que \*
 
-    :param sts_cont_entry_t \*pkt:
+    :param pkt:
         Entry pointer
+    :type pkt: sts_cont_entry_t \*
 
 .. _`qla2x00_status_cont_entry.description`:
 
@@ -161,15 +179,18 @@ qla2x00_error_entry
 
     Process an error entry.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         SCSI driver HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param struct rsp_que \*rsp:
+    :param rsp:
         response queue
+    :type rsp: struct rsp_que \*
 
-    :param sts_entry_t \*pkt:
+    :param pkt:
         Entry pointer
         return : 1=allow further error analysis. 0=no additional error analysis.
+    :type pkt: sts_entry_t \*
 
 .. _`qla24xx_mbx_completion`:
 
@@ -180,11 +201,13 @@ qla24xx_mbx_completion
 
     Process mailbox command completions.
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         SCSI driver HA context
+    :type vha: scsi_qla_host_t \*
 
-    :param uint16_t mb0:
+    :param mb0:
         Mailbox0 register
+    :type mb0: uint16_t
 
 .. _`qla24xx_process_response_queue`:
 
@@ -195,11 +218,13 @@ qla24xx_process_response_queue
 
     Process response queue entries.
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         SCSI driver HA context
+    :type vha: struct scsi_qla_host \*
 
-    :param struct rsp_que \*rsp:
+    :param rsp:
         response queue
+    :type rsp: struct rsp_que \*
 
 .. _`qla24xx_intr_handler`:
 
@@ -210,11 +235,13 @@ qla24xx_intr_handler
 
     Process interrupts for the ISP23xx and ISP24xx.
 
-    :param int irq:
-        *undescribed*
+    :param irq:
+        interrupt number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         SCSI driver HA context
+    :type dev_id: void \*
 
 .. _`qla24xx_intr_handler.description`:
 

@@ -10,11 +10,13 @@ create_local
 
     allocate and initialize a local LUN information structure
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param u8 \*wwid:
+    :param wwid:
         World Wide Node Name for LUN.
+    :type wwid: u8 \*
 
 .. _`create_local.return`:
 
@@ -32,11 +34,13 @@ create_global
 
     allocate and initialize a global LUN information structure
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param u8 \*wwid:
+    :param wwid:
         World Wide Node Name for LUN.
+    :type wwid: u8 \*
 
 .. _`create_global.return`:
 
@@ -54,11 +58,13 @@ lookup_local
 
     find a local LUN information structure by WWID
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
-    :param u8 \*wwid:
+    :param wwid:
         WWID associated with LUN.
+    :type wwid: u8 \*
 
 .. _`lookup_local.return`:
 
@@ -76,8 +82,9 @@ lookup_global
 
     find a global LUN information structure by WWID
 
-    :param u8 \*wwid:
+    :param wwid:
         WWID associated with LUN.
+    :type wwid: u8 \*
 
 .. _`lookup_global.return`:
 
@@ -95,11 +102,13 @@ find_and_create_lun
 
     find or create a local LUN information structure
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param u8 \*wwid:
+    :param wwid:
         WWID associated with LUN.
+    :type wwid: u8 \*
 
 .. _`find_and_create_lun.description`:
 
@@ -135,8 +144,9 @@ cxlflash_term_local_luns
 
     Delete all entries from local LUN list, free.
 
-    :param struct cxlflash_cfg \*cfg:
+    :param cfg:
         Internal structure associated with the host.
+    :type cfg: struct cxlflash_cfg \*
 
 .. _`cxlflash_list_init`:
 
@@ -147,8 +157,9 @@ cxlflash_list_init
 
     initializes the global LUN list
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cxlflash_term_global_luns`:
 
@@ -159,8 +170,9 @@ cxlflash_term_global_luns
 
     frees resources associated with global LUN list
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cxlflash_manage_lun`:
 
@@ -171,11 +183,13 @@ cxlflash_manage_lun
 
     handles LUN management activities
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         SCSI device associated with LUN.
+    :type sdev: struct scsi_device \*
 
-    :param struct dk_cxlflash_manage_lun \*manage:
+    :param manage:
         Manage ioctl data structure.
+    :type manage: struct dk_cxlflash_manage_lun \*
 
 .. _`cxlflash_manage_lun.description`:
 

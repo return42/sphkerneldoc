@@ -10,8 +10,9 @@ ehv_bc_init
 
     ePAPR hypervisor byte channel driver initialization
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ehv_bc_init.description`:
 

@@ -10,8 +10,9 @@ crypto_free_context
 
     Free crypto context to pool
 
-    :param void \*ctx:
+    :param ctx:
         context to free
+    :type ctx: void \*
 
 .. _`nitrox_common_sw_init`:
 
@@ -22,8 +23,9 @@ nitrox_common_sw_init
 
     allocate software resources.
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         NITROX device
+    :type ndev: struct nitrox_device \*
 
 .. _`nitrox_common_sw_init.description`:
 
@@ -48,8 +50,9 @@ nitrox_common_sw_cleanup
 
     free software resources.
 
-    :param struct nitrox_device \*ndev:
+    :param ndev:
         NITROX device
+    :type ndev: struct nitrox_device \*
 
 .. This file was automatic generated / don't edit.
 

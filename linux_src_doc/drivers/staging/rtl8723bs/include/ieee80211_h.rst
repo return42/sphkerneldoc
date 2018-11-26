@@ -68,14 +68,17 @@ for_each_ie
 
     iterate over continuous IEs
 
-    :param  ie:
+    :param ie:
         *undescribed*
+    :type ie: 
 
-    :param  buf:
+    :param buf:
         *undescribed*
+    :type buf: 
 
-    :param  buf_len:
+    :param buf_len:
         *undescribed*
+    :type buf_len: 
 
 .. This file was automatic generated / don't edit.
 

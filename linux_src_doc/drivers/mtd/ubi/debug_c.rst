@@ -10,17 +10,21 @@ ubi_dump_flash
 
     dump a region of flash.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         the physical eraseblock number to dump
+    :type pnum: int
 
-    :param int offset:
+    :param offset:
         the starting offset within the physical eraseblock to dump
+    :type offset: int
 
-    :param int len:
+    :param len:
         the length of the region to dump
+    :type len: int
 
 .. _`ubi_dump_ec_hdr`:
 
@@ -31,8 +35,9 @@ ubi_dump_ec_hdr
 
     dump an erase counter header.
 
-    :param const struct ubi_ec_hdr \*ec_hdr:
+    :param ec_hdr:
         the erase counter header to dump
+    :type ec_hdr: const struct ubi_ec_hdr \*
 
 .. _`ubi_dump_vid_hdr`:
 
@@ -43,8 +48,9 @@ ubi_dump_vid_hdr
 
     dump a volume identifier header.
 
-    :param const struct ubi_vid_hdr \*vid_hdr:
+    :param vid_hdr:
         the volume identifier header to dump
+    :type vid_hdr: const struct ubi_vid_hdr \*
 
 .. _`ubi_dump_vol_info`:
 
@@ -55,8 +61,9 @@ ubi_dump_vol_info
 
     dump volume information.
 
-    :param const struct ubi_volume \*vol:
+    :param vol:
         UBI volume description object
+    :type vol: const struct ubi_volume \*
 
 .. _`ubi_dump_vtbl_record`:
 
@@ -67,11 +74,13 @@ ubi_dump_vtbl_record
 
     dump a \ :c:type:`struct ubi_vtbl_record <ubi_vtbl_record>`\  object.
 
-    :param const struct ubi_vtbl_record \*r:
+    :param r:
         the object to dump
+    :type r: const struct ubi_vtbl_record \*
 
-    :param int idx:
+    :param idx:
         volume table index
+    :type idx: int
 
 .. _`ubi_dump_av`:
 
@@ -82,8 +91,9 @@ ubi_dump_av
 
     dump a \ :c:type:`struct ubi_ainf_volume <ubi_ainf_volume>`\  object.
 
-    :param const struct ubi_ainf_volume \*av:
+    :param av:
         the object to dump
+    :type av: const struct ubi_ainf_volume \*
 
 .. _`ubi_dump_aeb`:
 
@@ -94,11 +104,13 @@ ubi_dump_aeb
 
     dump a \ :c:type:`struct ubi_ainf_peb <ubi_ainf_peb>`\  object.
 
-    :param const struct ubi_ainf_peb \*aeb:
+    :param aeb:
         the object to dump
+    :type aeb: const struct ubi_ainf_peb \*
 
-    :param int type:
+    :param type:
         object type: 0 - not corrupted, 1 - corrupted
+    :type type: int
 
 .. _`ubi_dump_mkvol_req`:
 
@@ -109,8 +121,9 @@ ubi_dump_mkvol_req
 
     dump a \ :c:type:`struct ubi_mkvol_req <ubi_mkvol_req>`\  object.
 
-    :param const struct ubi_mkvol_req \*req:
+    :param req:
         the object to dump
+    :type req: const struct ubi_mkvol_req \*
 
 .. _`ubi_debugfs_init`:
 
@@ -121,8 +134,9 @@ ubi_debugfs_init
 
     create UBI debugfs directory.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ubi_debugfs_init.description`:
 
@@ -141,8 +155,9 @@ ubi_debugfs_exit
 
     remove UBI debugfs directory.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ubi_debugfs_init_dev`:
 
@@ -153,8 +168,9 @@ ubi_debugfs_init_dev
 
     initialize debugfs for an UBI device.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_debugfs_init_dev.description`:
 
@@ -173,8 +189,9 @@ ubi_debugfs_exit_dev
 
     free all debugfs files corresponding to device \ ``ubi``\ 
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_dbg_power_cut`:
 
@@ -185,11 +202,13 @@ ubi_dbg_power_cut
 
     emulate a power cut if it is time to do so
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int caller:
+    :param caller:
         Flags set to indicate from where the function is being called
+    :type caller: int
 
 .. _`ubi_dbg_power_cut.description`:
 

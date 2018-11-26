@@ -10,8 +10,9 @@ DEFINE_MUTEX
 
     C Multiplexer/DeMultiplexer Switch support
 
-    :param  switch_lock:
+    :param switch_lock:
         *undescribed*
+    :type switch_lock: 
 
 .. _`define_mutex.description`:
 
@@ -31,8 +32,9 @@ typec_switch_get
 
     Find USB Type-C orientation switch
 
-    :param struct device \*dev:
+    :param dev:
         The caller device
+    :type dev: struct device \*
 
 .. _`typec_switch_get.description`:
 
@@ -53,8 +55,9 @@ typec_switch_put
 
     Release USB Type-C orientation switch
 
-    :param struct typec_switch \*sw:
+    :param sw:
         USB Type-C orientation switch
+    :type sw: struct typec_switch \*
 
 .. _`typec_switch_put.description`:
 
@@ -72,8 +75,9 @@ typec_switch_register
 
     Register USB Type-C orientation switch
 
-    :param struct typec_switch \*sw:
+    :param sw:
         USB Type-C orientation switch
+    :type sw: struct typec_switch \*
 
 .. _`typec_switch_register.description`:
 
@@ -94,8 +98,9 @@ typec_switch_unregister
 
     Unregister USB Type-C orientation switch
 
-    :param struct typec_switch \*sw:
+    :param sw:
         USB Type-C orientation switch
+    :type sw: struct typec_switch \*
 
 .. _`typec_switch_unregister.description`:
 
@@ -109,12 +114,17 @@ Unregister switch that was registered with \ :c:func:`typec_switch_register`\ .
 typec_mux_get
 =============
 
-.. c:function:: struct typec_mux *typec_mux_get(struct device *dev)
+.. c:function:: struct typec_mux *typec_mux_get(struct device *dev, const char *name)
 
     Find USB Type-C Multiplexer
 
-    :param struct device \*dev:
+    :param dev:
         The caller device
+    :type dev: struct device \*
+
+    :param name:
+        Mux identifier
+    :type name: const char \*
 
 .. _`typec_mux_get.description`:
 
@@ -135,8 +145,9 @@ typec_mux_put
 
     Release handle to a Multiplexer
 
-    :param struct typec_mux \*mux:
+    :param mux:
         USB Type-C Connector Multiplexer/DeMultiplexer
+    :type mux: struct typec_mux \*
 
 .. _`typec_mux_put.description`:
 
@@ -154,8 +165,9 @@ typec_mux_register
 
     Register Multiplexer routing USB Type-C pins
 
-    :param struct typec_mux \*mux:
+    :param mux:
         USB Type-C Connector Multiplexer/DeMultiplexer
+    :type mux: struct typec_mux \*
 
 .. _`typec_mux_register.description`:
 
@@ -176,8 +188,9 @@ typec_mux_unregister
 
     Unregister Multiplexer Switch
 
-    :param struct typec_mux \*mux:
+    :param mux:
         USB Type-C Connector Multiplexer/DeMultiplexer
+    :type mux: struct typec_mux \*
 
 .. _`typec_mux_unregister.description`:
 

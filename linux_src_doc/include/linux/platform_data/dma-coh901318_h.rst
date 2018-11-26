@@ -10,11 +10,13 @@ coh901318_filter_id
 
     DMA channel filter function
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dma channel handle
+    :type chan: struct dma_chan \*
 
-    :param void \*chan_id:
+    :param chan_id:
         id of dma channel to be filter out
+    :type chan_id: void \*
 
 .. _`coh901318_filter_id.description`:
 

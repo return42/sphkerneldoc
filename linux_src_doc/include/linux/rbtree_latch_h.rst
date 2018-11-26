@@ -10,14 +10,17 @@ latch_tree_insert
 
     insert \ ``node``\  into the trees \ ``root``\ 
 
-    :param struct latch_tree_node \*node:
+    :param node:
         nodes to insert
+    :type node: struct latch_tree_node \*
 
-    :param struct latch_tree_root \*root:
+    :param root:
         trees to insert \ ``node``\  into
+    :type root: struct latch_tree_root \*
 
-    :param const struct latch_tree_ops \*ops:
+    :param ops:
         operators defining the node order
+    :type ops: const struct latch_tree_ops \*
 
 .. _`latch_tree_insert.description`:
 
@@ -42,14 +45,17 @@ latch_tree_erase
 
     removes \ ``node``\  from the trees \ ``root``\ 
 
-    :param struct latch_tree_node \*node:
+    :param node:
         nodes to remote
+    :type node: struct latch_tree_node \*
 
-    :param struct latch_tree_root \*root:
+    :param root:
         trees to remove \ ``node``\  from
+    :type root: struct latch_tree_root \*
 
-    :param const struct latch_tree_ops \*ops:
+    :param ops:
         operators defining the node order
+    :type ops: const struct latch_tree_ops \*
 
 .. _`latch_tree_erase.description`:
 
@@ -75,14 +81,17 @@ latch_tree_find
 
     find the node matching \ ``key``\  in the trees \ ``root``\ 
 
-    :param void \*key:
+    :param key:
         search key
+    :type key: void \*
 
-    :param struct latch_tree_root \*root:
+    :param root:
         trees to search for \ ``key``\ 
+    :type root: struct latch_tree_root \*
 
-    :param const struct latch_tree_ops \*ops:
+    :param ops:
         operators defining the node order
+    :type ops: const struct latch_tree_ops \*
 
 .. _`latch_tree_find.description`:
 

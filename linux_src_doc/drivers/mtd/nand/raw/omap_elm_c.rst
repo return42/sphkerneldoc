@@ -10,20 +10,25 @@ elm_config
 
     Configure ELM module
 
-    :param struct device \*dev:
+    :param dev:
         ELM device
+    :type dev: struct device \*
 
-    :param enum bch_ecc bch_type:
+    :param bch_type:
         Type of BCH ecc
+    :type bch_type: enum bch_ecc
 
-    :param int ecc_steps:
+    :param ecc_steps:
         *undescribed*
+    :type ecc_steps: int
 
-    :param int ecc_step_size:
+    :param ecc_step_size:
         *undescribed*
+    :type ecc_step_size: int
 
-    :param int ecc_syndrome_size:
+    :param ecc_syndrome_size:
         *undescribed*
+    :type ecc_syndrome_size: int
 
 .. _`elm_configure_page_mode`:
 
@@ -34,14 +39,17 @@ elm_configure_page_mode
 
     Enable/Disable page mode
 
-    :param struct elm_info \*info:
+    :param info:
         elm info
+    :type info: struct elm_info \*
 
-    :param int index:
+    :param index:
         index number of syndrome fragment vector
+    :type index: int
 
-    :param bool enable:
+    :param enable:
         enable/disable flag for page mode
+    :type enable: bool
 
 .. _`elm_configure_page_mode.description`:
 
@@ -59,14 +67,17 @@ elm_load_syndrome
 
     Load ELM syndrome reg
 
-    :param struct elm_info \*info:
+    :param info:
         elm info
+    :type info: struct elm_info \*
 
-    :param struct elm_errorvec \*err_vec:
+    :param err_vec:
         elm error vectors
+    :type err_vec: struct elm_errorvec \*
 
-    :param u8 \*ecc:
+    :param ecc:
         buffer with calculated ecc
+    :type ecc: u8 \*
 
 .. _`elm_load_syndrome.description`:
 
@@ -84,11 +95,13 @@ elm_start_processing
 
     start elm syndrome processing
 
-    :param struct elm_info \*info:
+    :param info:
         elm info
+    :type info: struct elm_info \*
 
-    :param struct elm_errorvec \*err_vec:
+    :param err_vec:
         elm error vectors
+    :type err_vec: struct elm_errorvec \*
 
 .. _`elm_start_processing.description`:
 
@@ -108,11 +121,13 @@ elm_error_correction
 
     locate correctable error position
 
-    :param struct elm_info \*info:
+    :param info:
         elm info
+    :type info: struct elm_info \*
 
-    :param struct elm_errorvec \*err_vec:
+    :param err_vec:
         elm error vectors
+    :type err_vec: struct elm_errorvec \*
 
 .. _`elm_error_correction.description`:
 
@@ -134,14 +149,17 @@ elm_decode_bch_error_page
 
     Locate error position
 
-    :param struct device \*dev:
+    :param dev:
         device pointer
+    :type dev: struct device \*
 
-    :param u8 \*ecc_calc:
+    :param ecc_calc:
         calculated ECC bytes from GPMC
+    :type ecc_calc: u8 \*
 
-    :param struct elm_errorvec \*err_vec:
+    :param err_vec:
         elm error vectors
+    :type err_vec: struct elm_errorvec \*
 
 .. _`elm_decode_bch_error_page.description`:
 
@@ -160,8 +178,9 @@ elm_context_save
 
     saves ELM configurations to preserve them across Hardware powered-down
 
-    :param struct elm_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct elm_info \*
 
 .. _`elm_context_restore`:
 
@@ -172,8 +191,9 @@ elm_context_restore
 
     writes configurations saved duing power-down back into ELM registers
 
-    :param struct elm_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct elm_info \*
 
 .. This file was automatic generated / don't edit.
 

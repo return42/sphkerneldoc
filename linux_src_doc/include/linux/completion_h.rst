@@ -10,8 +10,9 @@ DECLARE_COMPLETION
 
     declare and initialize a completion structure
 
-    :param  work:
+    :param work:
         identifier for the completion structure
+    :type work: 
 
 .. _`declare_completion.description`:
 
@@ -31,8 +32,9 @@ DECLARE_COMPLETION_ONSTACK
 
     declare and initialize a completion structure
 
-    :param  work:
+    :param work:
         identifier for the completion structure
+    :type work: 
 
 .. _`declare_completion_onstack.description`:
 
@@ -51,8 +53,9 @@ __init_completion
 
     Initialize a dynamically allocated completion
 
-    :param struct completion \*x:
+    :param x:
         pointer to completion structure that is to be initialized
+    :type x: struct completion \*
 
 .. _`__init_completion.description`:
 
@@ -71,8 +74,9 @@ reinit_completion
 
     reinitialize a completion structure
 
-    :param struct completion \*x:
+    :param x:
         pointer to completion structure that is to be reinitialized
+    :type x: struct completion \*
 
 .. _`reinit_completion.description`:
 

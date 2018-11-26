@@ -46,23 +46,29 @@ VMMOUSE_CMD
 
     specific bi-directional communication channel implementing the vmmouse protocol. Should never execute on bare metal hardware.
 
-    :param  cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: 
 
-    :param  in1:
+    :param in1:
         *undescribed*
+    :type in1: 
 
-    :param  out1:
+    :param out1:
         *undescribed*
+    :type out1: 
 
-    :param  out2:
+    :param out2:
         *undescribed*
+    :type out2: 
 
-    :param  out3:
+    :param out3:
         *undescribed*
+    :type out3: 
 
-    :param  out4:
+    :param out4:
         *undescribed*
+    :type out4: 
 
 .. _`vmmouse_report_button`:
 
@@ -73,23 +79,29 @@ vmmouse_report_button
 
     report button state on the correct input device
 
-    :param struct psmouse \*psmouse:
+    :param psmouse:
         Pointer to the psmouse struct
+    :type psmouse: struct psmouse \*
 
-    :param struct input_dev \*abs_dev:
+    :param abs_dev:
         The absolute input device
+    :type abs_dev: struct input_dev \*
 
-    :param struct input_dev \*rel_dev:
+    :param rel_dev:
         The relative input device
+    :type rel_dev: struct input_dev \*
 
-    :param struct input_dev \*pref_dev:
+    :param pref_dev:
         The preferred device for reporting
+    :type pref_dev: struct input_dev \*
 
-    :param unsigned int code:
+    :param code:
         Button code
+    :type code: unsigned int
 
-    :param int value:
+    :param value:
         Button value
+    :type value: int
 
 .. _`vmmouse_report_button.description`:
 
@@ -109,8 +121,9 @@ vmmouse_report_events
 
     process events on the vmmouse communications channel
 
-    :param struct psmouse \*psmouse:
+    :param psmouse:
         Pointer to the psmouse struct
+    :type psmouse: struct psmouse \*
 
 .. _`vmmouse_report_events.description`:
 
@@ -133,8 +146,9 @@ vmmouse_process_byte
 
     process data on the ps/2 channel
 
-    :param struct psmouse \*psmouse:
+    :param psmouse:
         Pointer to the psmouse struct
+    :type psmouse: struct psmouse \*
 
 .. _`vmmouse_process_byte.description`:
 
@@ -155,8 +169,9 @@ vmmouse_disable
 
     Disable vmmouse
 
-    :param struct psmouse \*psmouse:
+    :param psmouse:
         Pointer to the psmouse struct
+    :type psmouse: struct psmouse \*
 
 .. _`vmmouse_disable.description`:
 
@@ -174,8 +189,9 @@ vmmouse_enable
 
     Enable vmmouse and request absolute mode.
 
-    :param struct psmouse \*psmouse:
+    :param psmouse:
         Pointer to the psmouse struct
+    :type psmouse: struct psmouse \*
 
 .. _`vmmouse_enable.description`:
 
@@ -195,8 +211,9 @@ vmmouse_check_hypervisor
 
     Check if we're running on a supported hypervisor
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vmmouse_detect`:
 
@@ -207,11 +224,13 @@ vmmouse_detect
 
     Probe whether vmmouse is available
 
-    :param struct psmouse \*psmouse:
+    :param psmouse:
         Pointer to the psmouse struct
+    :type psmouse: struct psmouse \*
 
-    :param bool set_properties:
+    :param set_properties:
         Whether to set psmouse name and vendor
+    :type set_properties: bool
 
 .. _`vmmouse_detect.description`:
 
@@ -229,8 +248,9 @@ vmmouse_disconnect
 
     Take down vmmouse driver
 
-    :param struct psmouse \*psmouse:
+    :param psmouse:
         Pointer to the psmouse struct
+    :type psmouse: struct psmouse \*
 
 .. _`vmmouse_disconnect.description`:
 
@@ -248,8 +268,9 @@ vmmouse_reconnect
 
     Reset the ps/2 - and vmmouse connections
 
-    :param struct psmouse \*psmouse:
+    :param psmouse:
         Pointer to the psmouse struct
+    :type psmouse: struct psmouse \*
 
 .. _`vmmouse_reconnect.description`:
 
@@ -268,8 +289,9 @@ vmmouse_init
 
     Initialize the vmmouse driver
 
-    :param struct psmouse \*psmouse:
+    :param psmouse:
         Pointer to the psmouse struct
+    :type psmouse: struct psmouse \*
 
 .. _`vmmouse_init.description`:
 

@@ -10,8 +10,9 @@ ufshcd_pci_suspend
 
     suspend power management function
 
-    :param struct device \*dev:
+    :param dev:
         pointer to PCI device handle
+    :type dev: struct device \*
 
 .. _`ufshcd_pci_suspend.description`:
 
@@ -30,8 +31,9 @@ ufshcd_pci_resume
 
     resume power management function
 
-    :param struct device \*dev:
+    :param dev:
         pointer to PCI device handle
+    :type dev: struct device \*
 
 .. _`ufshcd_pci_resume.description`:
 
@@ -50,8 +52,9 @@ ufshcd_pci_shutdown
 
     main function to put the controller in reset state
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device handle
+    :type pdev: struct pci_dev \*
 
 .. _`ufshcd_pci_remove`:
 
@@ -62,8 +65,9 @@ ufshcd_pci_remove
 
     de-allocate PCI/SCSI host and host memory space data structure memory
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI handle
+    :type pdev: struct pci_dev \*
 
 .. _`ufshcd_pci_probe`:
 
@@ -74,11 +78,13 @@ ufshcd_pci_probe
 
     probe routine of the driver
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to PCI device handle
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         PCI device id
+    :type id: const struct pci_device_id \*
 
 .. _`ufshcd_pci_probe.description`:
 

@@ -50,8 +50,9 @@ p1022_rdk_machine_probe
 
     initialize the board
 
-    :param struct snd_soc_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct snd_soc_card \*
 
 .. _`p1022_rdk_machine_probe.description`:
 
@@ -71,8 +72,9 @@ p1022_rdk_startup
 
     program the board with various hardware parameters
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         *undescribed*
+    :type substream: struct snd_pcm_substream \*
 
 .. _`p1022_rdk_startup.description`:
 
@@ -92,8 +94,9 @@ p1022_rdk_machine_remove
 
     Remove the sound device
 
-    :param struct snd_soc_card \*card:
+    :param card:
         *undescribed*
+    :type card: struct snd_soc_card \*
 
 .. _`p1022_rdk_machine_remove.description`:
 
@@ -112,8 +115,9 @@ p1022_rdk_probe
 
     platform probe function for the machine driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`p1022_rdk_probe.description`:
 
@@ -133,8 +137,9 @@ p1022_rdk_remove
 
     remove the platform device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`p1022_rdk_remove.description`:
 
@@ -152,8 +157,9 @@ p1022_rdk_init
 
     machine driver initialization.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`p1022_rdk_init.description`:
 
@@ -171,8 +177,9 @@ p1022_rdk_exit
 
     machine driver exit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`p1022_rdk_exit.description`:
 

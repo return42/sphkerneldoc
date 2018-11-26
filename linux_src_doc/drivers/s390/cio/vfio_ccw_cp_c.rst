@@ -10,11 +10,13 @@ ccwchain_calc_length
 
     calculate the length of the ccw chain.
 
-    :param u64 iova:
+    :param iova:
         guest physical address of the target ccw chain
+    :type iova: u64
 
-    :param struct channel_program \*cp:
+    :param cp:
         channel_program on which to perform the operation
+    :type cp: struct channel_program \*
 
 .. _`ccwchain_calc_length.description`:
 
@@ -43,14 +45,17 @@ cp_init
 
     allocate ccwchains for a channel program.
 
-    :param struct channel_program \*cp:
+    :param cp:
         channel_program on which to perform the operation
+    :type cp: struct channel_program \*
 
-    :param struct device \*mdev:
+    :param mdev:
         the mediated device to perform pin/unpin operations
+    :type mdev: struct device \*
 
-    :param union orb \*orb:
+    :param orb:
         control block for the channel program from the guest
+    :type orb: union orb \*
 
 .. _`cp_init.description`:
 
@@ -58,7 +63,7 @@ Description
 -----------
 
 This creates one or more ccwchain(s), and copies the raw data of
-the target channel program from \ ``orb``\ ->cmd.iova to the new ccwchain(s).
+the target channel program from \ ``orb->cmd.iova``\  to the new ccwchain(s).
 
 .. _`cp_init.limitations`:
 
@@ -85,8 +90,9 @@ cp_free
 
     free resources for channel program.
 
-    :param struct channel_program \*cp:
+    :param cp:
         channel_program on which to perform the operation
+    :type cp: struct channel_program \*
 
 .. _`cp_free.description`:
 
@@ -106,8 +112,9 @@ cp_prefetch
 
     translate a guest physical address channel program to a real-device runnable channel program.
 
-    :param struct channel_program \*cp:
+    :param cp:
         channel_program on which to perform the operation
+    :type cp: struct channel_program \*
 
 .. _`cp_prefetch.description`:
 
@@ -164,14 +171,17 @@ cp_get_orb
 
     get the orb of the channel program
 
-    :param struct channel_program \*cp:
+    :param cp:
         channel_program on which to perform the operation
+    :type cp: struct channel_program \*
 
-    :param u32 intparm:
+    :param intparm:
         new intparm for the returned orb
+    :type intparm: u32
 
-    :param u8 lpm:
+    :param lpm:
         candidate value of the logical-path mask for the returned orb
+    :type lpm: u8
 
 .. _`cp_get_orb.description`:
 
@@ -191,12 +201,14 @@ cp_update_scsw
 
     update scsw for a channel program.
 
-    :param struct channel_program \*cp:
+    :param cp:
         channel_program on which to perform the operation
+    :type cp: struct channel_program \*
 
-    :param union scsw \*scsw:
+    :param scsw:
         I/O results of the channel program and also the target to be
         updated
+    :type scsw: union scsw \*
 
 .. _`cp_update_scsw.description`:
 
@@ -204,11 +216,11 @@ Description
 -----------
 
 \ ``scsw``\  contains the I/O results of the channel program that pointed
-to by \ ``cp``\ . However what \ ``scsw``\ ->cpa stores is a host physical
+to by \ ``cp``\ . However what \ ``scsw->cpa``\  stores is a host physical
 address, which is meaningless for the guest, which is waiting for
 the I/O results.
 
-This function updates \ ``scsw``\ ->cpa to its coressponding guest physical
+This function updates \ ``scsw->cpa``\  to its coressponding guest physical
 address.
 
 .. _`cp_iova_pinned`:
@@ -220,11 +232,13 @@ cp_iova_pinned
 
     check if an iova is pinned for a ccw chain.
 
-    :param struct channel_program \*cp:
+    :param cp:
         channel_program on which to perform the operation
+    :type cp: struct channel_program \*
 
-    :param u64 iova:
+    :param iova:
         the iova to check
+    :type iova: u64
 
 .. _`cp_iova_pinned.description`:
 

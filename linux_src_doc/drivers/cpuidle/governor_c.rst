@@ -10,8 +10,9 @@
 
     finds a governor of the specified name
 
-    :param const char \*str:
+    :param str:
         the name
+    :type str: const char \*
 
 .. _`__cpuidle_find_governor.description`:
 
@@ -29,9 +30,10 @@ cpuidle_switch_governor
 
     changes the governor
 
-    :param struct cpuidle_governor \*gov:
+    :param gov:
         the new target governor
         Must be called with cpuidle_lock acquired.
+    :type gov: struct cpuidle_governor \*
 
 .. _`cpuidle_register_governor`:
 
@@ -42,8 +44,9 @@ cpuidle_register_governor
 
     registers a governor
 
-    :param struct cpuidle_governor \*gov:
+    :param gov:
         the governor
+    :type gov: struct cpuidle_governor \*
 
 .. _`cpuidle_governor_latency_req`:
 
@@ -54,8 +57,9 @@ cpuidle_governor_latency_req
 
     Compute a latency constraint for CPU
 
-    :param unsigned int cpu:
+    :param cpu:
         Target CPU
+    :type cpu: unsigned int
 
 .. This file was automatic generated / don't edit.
 

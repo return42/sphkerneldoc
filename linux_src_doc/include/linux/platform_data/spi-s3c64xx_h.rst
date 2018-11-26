@@ -95,11 +95,13 @@ s3c64xx_spi0_set_platdata
     :param int (\*cfg_gpio)(void):
         Pointer to gpio setup function.
 
-    :param int src_clk_nr:
+    :param src_clk_nr:
         Clock the SPI controller is to use to generate SPI clocks.
+    :type src_clk_nr: int
 
-    :param int num_cs:
+    :param num_cs:
         Number of elements in the 'cs' array.
+    :type num_cs: int
 
 .. _`s3c64xx_spi0_set_platdata.description`:
 

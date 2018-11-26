@@ -10,14 +10,17 @@ acpi_register_lapic
 
     register a local apic and generates a logic cpu number
 
-    :param int id:
+    :param id:
         local apic id to register
+    :type id: int
 
-    :param u32 acpiid:
+    :param acpiid:
         ACPI id to register
+    :type acpiid: u32
 
-    :param u8 enabled:
+    :param enabled:
         this cpu is enabled or not
+    :type enabled: u8
 
 .. _`acpi_register_lapic.description`:
 
@@ -35,11 +38,13 @@ acpi_ioapic_registered
 
     Check whether IOAPIC assoicatied with \ ``gsi_base``\  has been registered
 
-    :param acpi_handle handle:
+    :param handle:
         ACPI handle of the IOAPIC deivce
+    :type handle: acpi_handle
 
-    :param u32 gsi_base:
+    :param gsi_base:
         GSI base associated with the IOAPIC
+    :type gsi_base: u32
 
 .. _`acpi_ioapic_registered.description`:
 

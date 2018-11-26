@@ -98,14 +98,17 @@ z3fold_create_pool
 
     create a new z3fold pool
 
-    :param const char \*name:
+    :param name:
         pool name
+    :type name: const char \*
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp flags when allocating the z3fold pool structure
+    :type gfp: gfp_t
 
-    :param const struct z3fold_ops \*ops:
+    :param ops:
         user-defined operations for the z3fold pool
+    :type ops: const struct z3fold_ops \*
 
 .. _`z3fold_create_pool.return`:
 
@@ -124,8 +127,9 @@ z3fold_destroy_pool
 
     destroys an existing z3fold pool
 
-    :param struct z3fold_pool \*pool:
+    :param pool:
         the z3fold pool to be destroyed
+    :type pool: struct z3fold_pool \*
 
 .. _`z3fold_destroy_pool.description`:
 
@@ -143,17 +147,21 @@ z3fold_alloc
 
     allocates a region of a given size
 
-    :param struct z3fold_pool \*pool:
+    :param pool:
         z3fold pool from which to allocate
+    :type pool: struct z3fold_pool \*
 
-    :param size_t size:
+    :param size:
         size in bytes of the desired allocation
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp flags used if the pool needs to grow
+    :type gfp: gfp_t
 
-    :param unsigned long \*handle:
+    :param handle:
         handle of the new allocation
+    :type handle: unsigned long \*
 
 .. _`z3fold_alloc.description`:
 
@@ -186,11 +194,13 @@ z3fold_free
 
     frees the allocation associated with the given handle
 
-    :param struct z3fold_pool \*pool:
+    :param pool:
         pool in which the allocation resided
+    :type pool: struct z3fold_pool \*
 
-    :param unsigned long handle:
+    :param handle:
         handle associated with the allocation returned by \ :c:func:`z3fold_alloc`\ 
+    :type handle: unsigned long
 
 .. _`z3fold_free.description`:
 
@@ -211,12 +221,14 @@ z3fold_reclaim_page
 
     evicts allocations from a pool page and frees it
 
-    :param struct z3fold_pool \*pool:
+    :param pool:
         pool from which a page will attempt to be evicted
+    :type pool: struct z3fold_pool \*
 
-    :param unsigned int retries:
+    :param retries:
         number of pages on the LRU list for which eviction will
         be attempted before failing
+    :type retries: unsigned int
 
 .. _`z3fold_reclaim_page.description`:
 
@@ -267,11 +279,13 @@ z3fold_map
 
     maps the allocation associated with the given handle
 
-    :param struct z3fold_pool \*pool:
+    :param pool:
         pool in which the allocation resides
+    :type pool: struct z3fold_pool \*
 
-    :param unsigned long handle:
+    :param handle:
         handle associated with the allocation to be mapped
+    :type handle: unsigned long
 
 .. _`z3fold_map.description`:
 
@@ -297,11 +311,13 @@ z3fold_unmap
 
     unmaps the allocation associated with the given handle
 
-    :param struct z3fold_pool \*pool:
+    :param pool:
         pool in which the allocation resides
+    :type pool: struct z3fold_pool \*
 
-    :param unsigned long handle:
+    :param handle:
         handle associated with the allocation to be unmapped
+    :type handle: unsigned long
 
 .. _`z3fold_get_pool_size`:
 
@@ -312,8 +328,9 @@ z3fold_get_pool_size
 
     gets the z3fold pool size in pages
 
-    :param struct z3fold_pool \*pool:
+    :param pool:
         pool whose size is being queried
+    :type pool: struct z3fold_pool \*
 
 .. _`z3fold_get_pool_size.return`:
 

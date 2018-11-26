@@ -10,11 +10,13 @@ cgroup_rstat_updated
 
     keep track of updated rstat_cpu
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         target cgroup
+    :type cgrp: struct cgroup \*
 
-    :param int cpu:
+    :param cpu:
         cpu on which rstat_cpu was updated
+    :type cpu: int
 
 .. _`cgroup_rstat_updated.description`:
 
@@ -34,14 +36,17 @@ cgroup_rstat_cpu_pop_updated
 
     iterate and dismantle rstat_cpu updated tree
 
-    :param struct cgroup \*pos:
+    :param pos:
         current position
+    :type pos: struct cgroup \*
 
-    :param struct cgroup \*root:
+    :param root:
         root of the tree to traversal
+    :type root: struct cgroup \*
 
-    :param int cpu:
+    :param cpu:
         target cpu
+    :type cpu: int
 
 .. _`cgroup_rstat_cpu_pop_updated.description`:
 
@@ -66,8 +71,9 @@ cgroup_rstat_flush
 
     flush stats in \ ``cgrp``\ 's subtree
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         target cgroup
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_rstat_flush.description`:
 
@@ -92,8 +98,9 @@ cgroup_rstat_flush_irqsafe
 
     irqsafe version of \ :c:func:`cgroup_rstat_flush`\ 
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         target cgroup
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_rstat_flush_irqsafe.description`:
 
@@ -111,8 +118,9 @@ cgroup_rstat_flush_hold
 
     flush stats in \ ``cgrp``\ 's subtree and hold
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         target cgroup
+    :type cgrp: struct cgroup \*
 
 .. _`cgroup_rstat_flush_hold.description`:
 
@@ -133,8 +141,9 @@ cgroup_rstat_flush_release
 
     release \ :c:func:`cgroup_rstat_flush_hold`\ 
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,17 +10,21 @@ cyapa_i2c_write
 
     Execute i2c block data write operation
 
-    :param struct cyapa \*cyapa:
+    :param cyapa:
         Handle to this driver
+    :type cyapa: struct cyapa \*
 
-    :param u8 reg:
+    :param reg:
         *undescribed*
+    :type reg: u8
 
-    :param size_t len:
+    :param len:
         number of bytes to write
+    :type len: size_t
 
-    :param const void \*values:
+    :param values:
         Data to be written
+    :type values: const void \*
 
 .. _`cyapa_i2c_write.description`:
 

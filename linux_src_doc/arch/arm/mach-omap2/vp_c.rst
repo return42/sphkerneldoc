@@ -10,8 +10,9 @@ omap_vp_enable
 
     API to enable a particular VP
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         pointer to the VDD whose VP is to be enabled.
+    :type voltdm: struct voltagedomain \*
 
 .. _`omap_vp_enable.description`:
 
@@ -30,8 +31,9 @@ omap_vp_disable
 
     API to disable a particular VP
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         pointer to the VDD whose VP is to be disabled.
+    :type voltdm: struct voltagedomain \*
 
 .. _`omap_vp_disable.description`:
 

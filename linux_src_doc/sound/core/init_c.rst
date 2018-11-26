@@ -10,11 +10,13 @@ snd_device_initialize
 
     Initialize struct device for sound devices
 
-    :param struct device \*dev:
+    :param dev:
         device to initialize
+    :type dev: struct device \*
 
-    :param struct snd_card \*card:
+    :param card:
         card to assign, optional
+    :type card: struct snd_card \*
 
 .. _`snd_card_new`:
 
@@ -25,23 +27,29 @@ snd_card_new
 
     create and initialize a soundcard structure
 
-    :param struct device \*parent:
+    :param parent:
         the parent device object
+    :type parent: struct device \*
 
-    :param int idx:
+    :param idx:
         card index (address) [0 ... (SNDRV_CARDS-1)]
+    :type idx: int
 
-    :param const char \*xid:
+    :param xid:
         card identification (ASCII string)
+    :type xid: const char \*
 
-    :param struct module \*module:
+    :param module:
         top level module for locking
+    :type module: struct module \*
 
-    :param int extra_size:
+    :param extra_size:
         allocate this extra size after the main soundcard structure
+    :type extra_size: int
 
-    :param struct snd_card \*\*card_ret:
+    :param card_ret:
         the pointer to store the created card instance
+    :type card_ret: struct snd_card \*\*
 
 .. _`snd_card_new.description`:
 
@@ -70,8 +78,9 @@ snd_card_disconnect
 
     disconnect all APIs from the file-operations (user space)
 
-    :param struct snd_card \*card:
+    :param card:
         soundcard structure
+    :type card: struct snd_card \*
 
 .. _`snd_card_disconnect.description`:
 
@@ -104,8 +113,9 @@ snd_card_disconnect_sync
 
     disconnect card and wait until files get closed
 
-    :param struct snd_card \*card:
+    :param card:
         card object to disconnect
+    :type card: struct snd_card \*
 
 .. _`snd_card_disconnect_sync.description`:
 
@@ -126,8 +136,9 @@ snd_card_free_when_closed
 
     Disconnect the card, free it later eventually
 
-    :param struct snd_card \*card:
+    :param card:
         soundcard structure
+    :type card: struct snd_card \*
 
 .. _`snd_card_free_when_closed.description`:
 
@@ -148,8 +159,9 @@ snd_card_free
 
     frees given soundcard structure
 
-    :param struct snd_card \*card:
+    :param card:
         soundcard structure
+    :type card: struct snd_card \*
 
 .. _`snd_card_free.description`:
 
@@ -179,11 +191,13 @@ snd_card_set_id
 
     set card identification name
 
-    :param struct snd_card \*card:
+    :param card:
         soundcard structure
+    :type card: struct snd_card \*
 
-    :param const char \*nid:
+    :param nid:
         new identification string
+    :type nid: const char \*
 
 .. _`snd_card_set_id.description`:
 
@@ -202,11 +216,13 @@ snd_card_add_dev_attr
 
     Append a new sysfs attribute group to card
 
-    :param struct snd_card \*card:
+    :param card:
         card instance
+    :type card: struct snd_card \*
 
-    :param const struct attribute_group \*group:
+    :param group:
         attribute group to append
+    :type group: const struct attribute_group \*
 
 .. _`snd_card_register`:
 
@@ -217,8 +233,9 @@ snd_card_register
 
     register the soundcard
 
-    :param struct snd_card \*card:
+    :param card:
         soundcard structure
+    :type card: struct snd_card \*
 
 .. _`snd_card_register.description`:
 
@@ -246,11 +263,13 @@ snd_component_add
 
     add a component string
 
-    :param struct snd_card \*card:
+    :param card:
         soundcard structure
+    :type card: struct snd_card \*
 
-    :param const char \*component:
+    :param component:
         the component id string
+    :type component: const char \*
 
 .. _`snd_component_add.description`:
 
@@ -276,11 +295,13 @@ snd_card_file_add
 
     add the file to the file list of the card
 
-    :param struct snd_card \*card:
+    :param card:
         soundcard structure
+    :type card: struct snd_card \*
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
 .. _`snd_card_file_add.description`:
 
@@ -307,11 +328,13 @@ snd_card_file_remove
 
     remove the file from the file list
 
-    :param struct snd_card \*card:
+    :param card:
         soundcard structure
+    :type card: struct snd_card \*
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
 .. _`snd_card_file_remove.description`:
 
@@ -340,11 +363,13 @@ snd_power_wait
 
     wait until the power-state is changed.
 
-    :param struct snd_card \*card:
+    :param card:
         soundcard structure
+    :type card: struct snd_card \*
 
-    :param unsigned int power_state:
+    :param power_state:
         expected power state
+    :type power_state: unsigned int
 
 .. _`snd_power_wait.description`:
 

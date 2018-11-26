@@ -8,32 +8,41 @@ dspio_scp
 
 .. c:function:: int dspio_scp(struct hda_codec *codec, int mod_id, int src_id, int req, int dir, const void *data, unsigned int len, void *reply, unsigned int *reply_len)
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param int mod_id:
+    :param mod_id:
         ID of the DSP module to send the command
+    :type mod_id: int
 
-    :param int src_id:
+    :param src_id:
         *undescribed*
+    :type src_id: int
 
-    :param int req:
+    :param req:
         ID of request to send to the DSP module
+    :type req: int
 
-    :param int dir:
+    :param dir:
         SET or GET
+    :type dir: int
 
-    :param const void \*data:
+    :param data:
         pointer to the data to send with the request, request specific
+    :type data: const void \*
 
-    :param unsigned int len:
+    :param len:
         length of the data, in bytes
+    :type len: unsigned int
 
-    :param void \*reply:
+    :param reply:
         point to the buffer to hold data returned for a reply
+    :type reply: void \*
 
-    :param unsigned int \*reply_len:
+    :param reply_len:
         length of the reply buffer returned from GET
+    :type reply_len: unsigned int \*
 
 .. _`dspio_scp.description`:
 
@@ -49,20 +58,25 @@ dsp_allocate_router_ports
 
 .. c:function:: int dsp_allocate_router_ports(struct hda_codec *codec, unsigned int num_chans, unsigned int ports_per_channel, unsigned int start_device, unsigned int *port_map)
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param unsigned int num_chans:
+    :param num_chans:
         number of channels in the stream
+    :type num_chans: unsigned int
 
-    :param unsigned int ports_per_channel:
+    :param ports_per_channel:
         number of ports per channel
+    :type ports_per_channel: unsigned int
 
-    :param unsigned int start_device:
+    :param start_device:
         start device
+    :type start_device: unsigned int
 
-    :param unsigned int \*port_map:
+    :param port_map:
         pointer to the port list to hold the allocated ports
+    :type port_map: unsigned int \*
 
 .. _`dsp_allocate_router_ports.description`:
 
@@ -80,27 +94,34 @@ dspxfr_one_seg
 
     allocated DMA engine.
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct dsp_image_seg \*fls:
+    :param fls:
         pointer to a fast load image
+    :type fls: const struct dsp_image_seg \*
 
-    :param unsigned int reloc:
+    :param reloc:
         Relocation address for loading single-segment overlays, or 0 for
         no relocation
+    :type reloc: unsigned int
 
-    :param struct dma_engine \*dma_engine:
+    :param dma_engine:
         pointer to DMA engine to be used for DSP download
+    :type dma_engine: struct dma_engine \*
 
-    :param unsigned int dma_chan:
+    :param dma_chan:
         The number of DMA channels used for DSP download
+    :type dma_chan: unsigned int
 
-    :param unsigned int port_map_mask:
+    :param port_map_mask:
         port mapping
+    :type port_map_mask: unsigned int
 
-    :param bool ovly:
+    :param ovly:
         TRUE if overlay format is required
+    :type ovly: bool
 
 .. _`dspxfr_one_seg.description`:
 
@@ -116,24 +137,30 @@ dspxfr_image
 
 .. c:function:: int dspxfr_image(struct hda_codec *codec, const struct dsp_image_seg *fls_data, unsigned int reloc, unsigned int sample_rate, unsigned short channels, bool ovly)
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct dsp_image_seg \*fls_data:
+    :param fls_data:
         pointer to a fast load image
+    :type fls_data: const struct dsp_image_seg \*
 
-    :param unsigned int reloc:
+    :param reloc:
         Relocation address for loading single-segment overlays, or 0 for
         no relocation
+    :type reloc: unsigned int
 
-    :param unsigned int sample_rate:
+    :param sample_rate:
         sampling rate of the stream used for DSP download
+    :type sample_rate: unsigned int
 
-    :param unsigned short channels:
+    :param channels:
         channels of the stream used for DSP download
+    :type channels: unsigned short
 
-    :param bool ovly:
+    :param ovly:
         TRUE if overlay format is required
+    :type ovly: bool
 
 .. _`dspxfr_image.description`:
 
@@ -151,25 +178,31 @@ dspload_image
 
     Download DSP from a DSP Image Fast Load structure.
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const struct dsp_image_seg \*fls:
+    :param fls:
         pointer to a fast load image
+    :type fls: const struct dsp_image_seg \*
 
-    :param bool ovly:
+    :param ovly:
         TRUE if overlay format is required
+    :type ovly: bool
 
-    :param unsigned int reloc:
+    :param reloc:
         Relocation address for loading single-segment overlays, or 0 for
         no relocation
+    :type reloc: unsigned int
 
-    :param bool autostart:
+    :param autostart:
         TRUE if DSP starts after loading; ignored if ovly is TRUE
+    :type autostart: bool
 
-    :param int router_chans:
+    :param router_chans:
         number of audio router channels to be allocated (0 means use
         internal defaults; max is 32)
+    :type router_chans: int
 
 .. _`dspload_image.description`:
 

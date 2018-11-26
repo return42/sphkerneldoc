@@ -10,21 +10,26 @@ partial_decompress
 
     decompresses part or all of a compressed buffer
 
-    :param void \*inbuf:
+    :param inbuf:
         input buffer
+    :type inbuf: void \*
 
-    :param unsigned long input_size:
+    :param input_size:
         length of the input buffer
+    :type input_size: unsigned long
 
-    :param void \*outbuf:
+    :param outbuf:
         input buffer
+    :type outbuf: void \*
 
-    :param unsigned long output_size:
+    :param output_size:
         length of the input buffer
         \ ``skip``\          number of output bytes to ignore
+    :type output_size: unsigned long
 
-    :param unsigned long _skip:
+    :param _skip:
         *undescribed*
+    :type _skip: unsigned long
 
 .. _`partial_decompress.description`:
 

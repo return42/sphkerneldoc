@@ -10,17 +10,21 @@ hns_mdio_write
 
     access phy register
 
-    :param struct mii_bus \*bus:
+    :param bus:
         mdio bus
+    :type bus: struct mii_bus \*
 
-    :param int phy_id:
+    :param phy_id:
         phy id
+    :type phy_id: int
 
-    :param int regnum:
+    :param regnum:
         register num
+    :type regnum: int
 
-    :param u16 data:
+    :param data:
         *undescribed*
+    :type data: u16
 
 .. _`hns_mdio_write.description`:
 
@@ -38,14 +42,17 @@ hns_mdio_read
 
     access phy register
 
-    :param struct mii_bus \*bus:
+    :param bus:
         mdio bus
+    :type bus: struct mii_bus \*
 
-    :param int phy_id:
+    :param phy_id:
         phy id
+    :type phy_id: int
 
-    :param int regnum:
+    :param regnum:
         register num
+    :type regnum: int
 
 .. _`hns_mdio_read.description`:
 
@@ -63,8 +70,9 @@ hns_mdio_reset
 
     reset mdio bus
 
-    :param struct mii_bus \*bus:
+    :param bus:
         mdio bus
+    :type bus: struct mii_bus \*
 
 .. _`hns_mdio_reset.description`:
 
@@ -82,8 +90,9 @@ hns_mdio_probe
 
     probe mdio device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         mdio platform device
+    :type pdev: struct platform_device \*
 
 .. _`hns_mdio_probe.description`:
 
@@ -101,8 +110,9 @@ hns_mdio_remove
 
     remove mdio device
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         mdio platform device
+    :type pdev: struct platform_device \*
 
 .. _`hns_mdio_remove.description`:
 

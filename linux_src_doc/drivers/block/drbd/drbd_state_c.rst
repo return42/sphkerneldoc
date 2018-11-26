@@ -10,14 +10,17 @@ cl_wide_st_chg
 
     true if the state change is a cluster wide one
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param union drbd_state os:
+    :param os:
         old (current) state.
+    :type os: union drbd_state
 
-    :param union drbd_state ns:
+    :param ns:
         new (wanted) state.
+    :type ns: union drbd_state
 
 .. _`drbd_force_state`:
 
@@ -28,14 +31,17 @@ drbd_force_state
 
     Impose a change which happens outside our control on our state
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param union drbd_state mask:
+    :param mask:
         mask of state bits to change.
+    :type mask: union drbd_state
 
-    :param union drbd_state val:
+    :param val:
         value of new state bits.
+    :type val: union drbd_state
 
 .. _`drbd_req_state`:
 
@@ -46,17 +52,21 @@ drbd_req_state
 
     Perform an eventually cluster wide state change
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param union drbd_state mask:
+    :param mask:
         mask of state bits to change.
+    :type mask: union drbd_state
 
-    :param union drbd_state val:
+    :param val:
         value of new state bits.
+    :type val: union drbd_state
 
-    :param enum chg_state_flags f:
+    :param f:
         flags
+    :type f: enum chg_state_flags
 
 .. _`drbd_req_state.description`:
 
@@ -75,17 +85,21 @@ Should not be called directly, use \ :c:func:`drbd_request_state`\  or
 
     Request a state change (with flags)
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param union drbd_state mask:
+    :param mask:
         mask of state bits to change.
+    :type mask: union drbd_state
 
-    :param union drbd_state val:
+    :param val:
         value of new state bits.
+    :type val: union drbd_state
 
-    :param enum chg_state_flags f:
+    :param f:
         flags
+    :type f: enum chg_state_flags
 
 .. _`_drbd_request_state.description`:
 
@@ -104,11 +118,13 @@ is_valid_state
 
     Returns an SS\_ error code if ns is not valid
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param union drbd_state ns:
+    :param ns:
         State to consider.
+    :type ns: union drbd_state
 
 .. _`is_valid_soft_transition`:
 
@@ -119,14 +135,17 @@ is_valid_soft_transition
 
     Returns an SS\_ error code if the state transition is not possible This function limits state transitions that may be declined by DRBD. I.e. user requests (aka soft transitions).
 
-    :param union drbd_state os:
+    :param os:
         old state.
+    :type os: union drbd_state
 
-    :param union drbd_state ns:
+    :param ns:
         new state.
+    :type ns: union drbd_state
 
-    :param struct drbd_connection \*connection:
+    :param connection:
         *undescribed*
+    :type connection: struct drbd_connection \*
 
 .. _`is_valid_transition`:
 
@@ -137,11 +156,13 @@ is_valid_transition
 
     Returns an SS\_ error code if the state transition is not possible This limits hard state transitions. Hard state transitions are facts there are imposed on DRBD by the environment. E.g. disk broke or network broke down. But those hard state transitions are still not allowed to do everything.
 
-    :param union drbd_state os:
+    :param os:
         old state.
+    :type os: union drbd_state
 
-    :param union drbd_state ns:
+    :param ns:
         new state.
+    :type ns: union drbd_state
 
 .. _`sanitize_state`:
 
@@ -152,17 +173,21 @@ sanitize_state
 
     Resolves implicitly necessary additional changes to a state transition
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param union drbd_state os:
+    :param os:
         old state.
+    :type os: union drbd_state
 
-    :param union drbd_state ns:
+    :param ns:
         new state.
+    :type ns: union drbd_state
 
-    :param enum sanitize_state_warnings \*warn:
+    :param warn:
         *undescribed*
+    :type warn: enum sanitize_state_warnings \*
 
 .. _`sanitize_state.description`:
 
@@ -181,17 +206,21 @@ to D_UNKNOWN. This rule and many more along those lines are in this function.
 
     Set a new DRBD state
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param union drbd_state ns:
+    :param ns:
         new state.
+    :type ns: union drbd_state
 
-    :param enum chg_state_flags flags:
+    :param flags:
         Flags
+    :type flags: enum chg_state_flags
 
-    :param struct completion \*done:
+    :param done:
         Optional completion, that will get completed after the \ :c:func:`after_state_ch`\  finished
+    :type done: struct completion \*
 
 .. _`_drbd_set_state.description`:
 
@@ -209,20 +238,25 @@ after_state_ch
 
     Perform after state change actions that may sleep
 
-    :param struct drbd_device \*device:
+    :param device:
         DRBD device.
+    :type device: struct drbd_device \*
 
-    :param union drbd_state os:
+    :param os:
         old state.
+    :type os: union drbd_state
 
-    :param union drbd_state ns:
+    :param ns:
         new state.
+    :type ns: union drbd_state
 
-    :param enum chg_state_flags flags:
+    :param flags:
         Flags
+    :type flags: enum chg_state_flags
 
-    :param struct drbd_state_change \*state_change:
+    :param state_change:
         *undescribed*
+    :type state_change: struct drbd_state_change \*
 
 .. This file was automatic generated / don't edit.
 

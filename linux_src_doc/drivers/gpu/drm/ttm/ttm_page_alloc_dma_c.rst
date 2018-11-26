@@ -8,11 +8,13 @@ ttm_dma_pool_shrink_scan
 
 .. c:function:: unsigned long ttm_dma_pool_shrink_scan(struct shrinker *shrink, struct shrink_control *sc)
 
-    :param struct shrinker \*shrink:
+    :param shrink:
         *undescribed*
+    :type shrink: struct shrinker \*
 
-    :param struct shrink_control \*sc:
+    :param sc:
         *undescribed*
+    :type sc: struct shrink_control \*
 
 .. _`ttm_dma_pool_shrink_scan.xxx`:
 

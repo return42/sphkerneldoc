@@ -10,20 +10,25 @@ tsi721_lcread
 
     read from local SREP config space
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port info
+    :type mport: struct rio_mport \*
 
-    :param int index:
+    :param index:
         ID of RapdiIO interface
+    :type index: int
 
-    :param u32 offset:
+    :param offset:
         Offset into configuration space
+    :type offset: u32
 
-    :param int len:
+    :param len:
         Length (in bytes) of the maintenance transaction
+    :type len: int
 
-    :param u32 \*data:
+    :param data:
         Value to be read into
+    :type data: u32 \*
 
 .. _`tsi721_lcread.description`:
 
@@ -42,20 +47,25 @@ tsi721_lcwrite
 
     write into local SREP config space
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port info
+    :type mport: struct rio_mport \*
 
-    :param int index:
+    :param index:
         ID of RapdiIO interface
+    :type index: int
 
-    :param u32 offset:
+    :param offset:
         Offset into configuration space
+    :type offset: u32
 
-    :param int len:
+    :param len:
         Length (in bytes) of the maintenance transaction
+    :type len: int
 
-    :param u32 data:
+    :param data:
         Value to be written
+    :type data: u32
 
 .. _`tsi721_lcwrite.description`:
 
@@ -74,29 +84,37 @@ tsi721_maint_dma
 
     Helper function to generate RapidIO maintenance transactions using designated Tsi721 DMA channel.
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
-    :param u32 sys_size:
+    :param sys_size:
         RapdiIO transport system size
+    :type sys_size: u32
 
-    :param u16 destid:
+    :param destid:
         Destination ID of transaction
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of hops to target device
+    :type hopcount: u8
 
-    :param u32 offset:
+    :param offset:
         Offset into configuration space
+    :type offset: u32
 
-    :param int len:
+    :param len:
         Length (in bytes) of the maintenance transaction
+    :type len: int
 
-    :param u32 \*data:
+    :param data:
         Location to be read from or write into
+    :type data: u32 \*
 
-    :param int do_wr:
+    :param do_wr:
         Operation flag (1 == MAINT_WR)
+    :type do_wr: int
 
 .. _`tsi721_maint_dma.description`:
 
@@ -115,26 +133,33 @@ tsi721_cread_dma
 
     Generate a RapidIO maintenance read transaction using Tsi721 BDMA engine.
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port control structure
+    :type mport: struct rio_mport \*
 
-    :param int index:
+    :param index:
         ID of RapdiIO interface
+    :type index: int
 
-    :param u16 destid:
+    :param destid:
         Destination ID of transaction
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of hops to target device
+    :type hopcount: u8
 
-    :param u32 offset:
+    :param offset:
         Offset into configuration space
+    :type offset: u32
 
-    :param int len:
+    :param len:
         Length (in bytes) of the maintenance transaction
+    :type len: int
 
-    :param u32 \*data:
+    :param data:
         *undescribed*
+    :type data: u32 \*
 
 .. _`tsi721_cread_dma.description`:
 
@@ -153,26 +178,33 @@ tsi721_cwrite_dma
 
     Generate a RapidIO maintenance write transaction using Tsi721 BDMA engine
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port control structure
+    :type mport: struct rio_mport \*
 
-    :param int index:
+    :param index:
         ID of RapdiIO interface
+    :type index: int
 
-    :param u16 destid:
+    :param destid:
         Destination ID of transaction
+    :type destid: u16
 
-    :param u8 hopcount:
+    :param hopcount:
         Number of hops to target device
+    :type hopcount: u8
 
-    :param u32 offset:
+    :param offset:
         Offset into configuration space
+    :type offset: u32
 
-    :param int len:
+    :param len:
         Length (in bytes) of the maintenance transaction
+    :type len: int
 
-    :param u32 data:
+    :param data:
         *undescribed*
+    :type data: u32
 
 .. _`tsi721_cwrite_dma.description`:
 
@@ -191,8 +223,9 @@ tsi721_pw_handler
 
     Tsi721 inbound port-write interrupt handler
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         tsi721 device private structure
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_pw_handler.description`:
 
@@ -212,11 +245,13 @@ tsi721_pw_enable
 
     enable/disable port-write interface init
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the port write unit
+    :type mport: struct rio_mport \*
 
-    :param int enable:
+    :param enable:
         1=enable; 0=disable port-write message handling
+    :type enable: int
 
 .. _`tsi721_dsend`:
 
@@ -227,17 +262,21 @@ tsi721_dsend
 
     Send a RapidIO doorbell
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port info
+    :type mport: struct rio_mport \*
 
-    :param int index:
+    :param index:
         ID of RapidIO interface
+    :type index: int
 
-    :param u16 destid:
+    :param destid:
         Destination ID of target device
+    :type destid: u16
 
-    :param u16 data:
+    :param data:
         16-bit info field of RapidIO doorbell
+    :type data: u16
 
 .. _`tsi721_dsend.description`:
 
@@ -255,8 +294,9 @@ tsi721_dbell_handler
 
     Tsi721 doorbell interrupt handler
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         tsi721 device-specific data structure
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_dbell_handler.description`:
 
@@ -276,11 +316,13 @@ tsi721_irqhandler
 
     Tsi721 interrupt handler
 
-    :param int irq:
+    :param irq:
         Linux interrupt number
+    :type irq: int
 
-    :param void \*ptr:
+    :param ptr:
         Pointer to interrupt-specific data (tsi721_device structure)
+    :type ptr: void \*
 
 .. _`tsi721_irqhandler.description`:
 
@@ -299,11 +341,13 @@ tsi721_omsg_msix
 
     MSI-X interrupt handler for outbound messaging
 
-    :param int irq:
+    :param irq:
         Linux interrupt number
+    :type irq: int
 
-    :param void \*ptr:
+    :param ptr:
         Pointer to interrupt-specific data (tsi721_device structure)
+    :type ptr: void \*
 
 .. _`tsi721_omsg_msix.description`:
 
@@ -321,11 +365,13 @@ tsi721_imsg_msix
 
     MSI-X interrupt handler for inbound messaging
 
-    :param int irq:
+    :param irq:
         Linux interrupt number
+    :type irq: int
 
-    :param void \*ptr:
+    :param ptr:
         Pointer to interrupt-specific data (tsi721_device structure)
+    :type ptr: void \*
 
 .. _`tsi721_imsg_msix.description`:
 
@@ -343,11 +389,13 @@ tsi721_srio_msix
 
     Tsi721 MSI-X SRIO MAC interrupt handler
 
-    :param int irq:
+    :param irq:
         Linux interrupt number
+    :type irq: int
 
-    :param void \*ptr:
+    :param ptr:
         Pointer to interrupt-specific data (tsi721_device structure)
+    :type ptr: void \*
 
 .. _`tsi721_srio_msix.description`:
 
@@ -365,11 +413,13 @@ tsi721_sr2pc_ch_msix
 
     Tsi721 MSI-X SR2PC Channel interrupt handler
 
-    :param int irq:
+    :param irq:
         Linux interrupt number
+    :type irq: int
 
-    :param void \*ptr:
+    :param ptr:
         Pointer to interrupt-specific data (tsi721_device structure)
+    :type ptr: void \*
 
 .. _`tsi721_sr2pc_ch_msix.description`:
 
@@ -395,8 +445,9 @@ tsi721_request_msix
 
     register interrupt service for MSI-X mode.
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         tsi721 device-specific data structure
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_request_msix.description`:
 
@@ -416,8 +467,9 @@ tsi721_enable_msix
 
     Attempts to enable MSI-X support for Tsi721.
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_enable_msix.description`:
 
@@ -436,8 +488,9 @@ tsi721_init_pc2sr_mapping
 
     initializes outbound (PCIe->SRIO) translation regions.
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_init_pc2sr_mapping.description`:
 
@@ -455,20 +508,25 @@ tsi721_rio_map_inb_mem
 
     - Mapping inbound memory region.
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port
+    :type mport: struct rio_mport \*
 
-    :param dma_addr_t lstart:
+    :param lstart:
         Local memory space start address.
+    :type lstart: dma_addr_t
 
-    :param u64 rstart:
+    :param rstart:
         RapidIO space start address.
+    :type rstart: u64
 
-    :param u64 size:
+    :param size:
         The mapping region size.
+    :type size: u64
 
-    :param u32 flags:
+    :param flags:
         Flags for mapping. 0 for using default flags.
+    :type flags: u32
 
 .. _`tsi721_rio_map_inb_mem.return`:
 
@@ -489,11 +547,13 @@ tsi721_rio_unmap_inb_mem
 
     - Unmapping inbound memory region.
 
-    :param struct rio_mport \*mport:
+    :param mport:
         RapidIO master port
+    :type mport: struct rio_mport \*
 
-    :param dma_addr_t lstart:
+    :param lstart:
         Local memory space start address.
+    :type lstart: dma_addr_t
 
 .. _`tsi721_init_sr2pc_mapping`:
 
@@ -504,8 +564,9 @@ tsi721_init_sr2pc_mapping
 
     initializes inbound (SRIO->PCIe) translation regions.
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_init_sr2pc_mapping.description`:
 
@@ -523,8 +584,9 @@ tsi721_port_write_init
 
     Inbound port write interface init
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_port_write_init.description`:
 
@@ -543,8 +605,9 @@ tsi721_bdma_maint_init
 
     Initialize maintenance request BDMA channel.
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_bdma_maint_init.description`:
 
@@ -564,20 +627,25 @@ tsi721_add_outb_message
 
     Add message to the Tsi721 outbound message queue
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port with outbound message queue
+    :type mport: struct rio_mport \*
 
-    :param struct rio_dev \*rdev:
+    :param rdev:
         Target of outbound message
+    :type rdev: struct rio_dev \*
 
-    :param int mbox:
+    :param mbox:
         Outbound mailbox
+    :type mbox: int
 
-    :param void \*buffer:
+    :param buffer:
         Message to add to outbound queue
+    :type buffer: void \*
 
-    :param size_t len:
+    :param len:
         Length of message
+    :type len: size_t
 
 .. _`tsi721_omsg_handler`:
 
@@ -588,11 +656,13 @@ tsi721_omsg_handler
 
     Outbound Message Interrupt Handler
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
-    :param int ch:
+    :param ch:
         number of OB MSG channel to service
+    :type ch: int
 
 .. _`tsi721_omsg_handler.description`:
 
@@ -610,17 +680,21 @@ tsi721_open_outb_mbox
 
     Initialize Tsi721 outbound mailbox
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing Outbound Messaging Engine
+    :type mport: struct rio_mport \*
 
-    :param void \*dev_id:
+    :param dev_id:
         Device specific pointer to pass on event
+    :type dev_id: void \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox to open
+    :type mbox: int
 
-    :param int entries:
+    :param entries:
         Number of entries in the outbound mailbox ring
+    :type entries: int
 
 .. _`tsi721_close_outb_mbox`:
 
@@ -631,11 +705,13 @@ tsi721_close_outb_mbox
 
     Close Tsi721 outbound mailbox
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the outbound message unit
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox to close
+    :type mbox: int
 
 .. _`tsi721_imsg_handler`:
 
@@ -646,11 +722,13 @@ tsi721_imsg_handler
 
     Inbound Message Interrupt Handler
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
-    :param int ch:
+    :param ch:
         inbound message channel number to service
+    :type ch: int
 
 .. _`tsi721_imsg_handler.description`:
 
@@ -668,17 +746,21 @@ tsi721_open_inb_mbox
 
     Initialize Tsi721 inbound mailbox
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the Inbound Messaging Engine
+    :type mport: struct rio_mport \*
 
-    :param void \*dev_id:
+    :param dev_id:
         Device specific pointer to pass on event
+    :type dev_id: void \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox to open
+    :type mbox: int
 
-    :param int entries:
+    :param entries:
         Number of entries in the inbound mailbox ring
+    :type entries: int
 
 .. _`tsi721_close_inb_mbox`:
 
@@ -689,11 +771,13 @@ tsi721_close_inb_mbox
 
     Shut down Tsi721 inbound mailbox
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the Inbound Messaging Engine
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         Mailbox to close
+    :type mbox: int
 
 .. _`tsi721_add_inb_buffer`:
 
@@ -704,14 +788,17 @@ tsi721_add_inb_buffer
 
     Add buffer to the Tsi721 inbound message queue
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the Inbound Messaging Engine
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         Inbound mailbox number
+    :type mbox: int
 
-    :param void \*buf:
+    :param buf:
         Buffer to add to inbound queue
+    :type buf: void \*
 
 .. _`tsi721_get_inb_message`:
 
@@ -722,11 +809,13 @@ tsi721_get_inb_message
 
     Fetch inbound message from the Tsi721 MSG Queue
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the Inbound Messaging Engine
+    :type mport: struct rio_mport \*
 
-    :param int mbox:
+    :param mbox:
         Inbound mailbox number
+    :type mbox: int
 
 .. _`tsi721_get_inb_message.description`:
 
@@ -744,8 +833,9 @@ tsi721_messages_init
 
     Initialization of Messaging Engine
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_messages_init.description`:
 
@@ -763,11 +853,13 @@ tsi721_query_mport
 
     Fetch inbound message from the Tsi721 MSG Queue
 
-    :param struct rio_mport \*mport:
+    :param mport:
         Master port implementing the Inbound Messaging Engine
+    :type mport: struct rio_mport \*
 
-    :param struct rio_mport_attr \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct rio_mport_attr \*
 
 .. _`tsi721_query_mport.description`:
 
@@ -785,8 +877,9 @@ tsi721_disable_ints
 
     disables all device interrupts
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_setup_mport`:
 
@@ -797,8 +890,9 @@ tsi721_setup_mport
 
     Setup Tsi721 as RapidIO subsystem master port
 
-    :param struct tsi721_device \*priv:
+    :param priv:
         pointer to tsi721 private data
+    :type priv: struct tsi721_device \*
 
 .. _`tsi721_setup_mport.description`:
 

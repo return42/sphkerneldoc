@@ -10,15 +10,18 @@ padata_do_parallel
 
     padata parallelization function
 
-    :param struct padata_instance \*pinst:
+    :param pinst:
         padata instance
+    :type pinst: struct padata_instance \*
 
-    :param struct padata_priv \*padata:
+    :param padata:
         object to be parallelized
+    :type padata: struct padata_priv \*
 
-    :param int cb_cpu:
+    :param cb_cpu:
         cpu the serialization callback function will run on,
         must be in the serial cpumask of padata(i.e. cpumask.cbcpu).
+    :type cb_cpu: int
 
 .. _`padata_do_parallel.description`:
 
@@ -44,8 +47,9 @@ padata_do_serial
 
     padata serialization function
 
-    :param struct padata_priv \*padata:
+    :param padata:
         object to be serialized.
+    :type padata: struct padata_priv \*
 
 .. _`padata_do_serial.description`:
 
@@ -64,11 +68,13 @@ padata_register_cpumask_notifier
 
     Registers a notifier that will be called if either pcpu or cbcpu or both cpumasks change.
 
-    :param struct padata_instance \*pinst:
+    :param pinst:
         A poineter to padata instance
+    :type pinst: struct padata_instance \*
 
-    :param struct notifier_block \*nblock:
+    :param nblock:
         A pointer to notifier block.
+    :type nblock: struct notifier_block \*
 
 .. _`padata_unregister_cpumask_notifier`:
 
@@ -79,11 +85,13 @@ padata_unregister_cpumask_notifier
 
     Unregisters cpumask notifier registered earlier  using padata_register_cpumask_notifier
 
-    :param struct padata_instance \*pinst:
+    :param pinst:
         A pointer to data instance.
+    :type pinst: struct padata_instance \*
 
-    :param struct notifier_block \*nblock:
+    :param nblock:
         *undescribed*
+    :type nblock: struct notifier_block \*
 
 .. _`padata_set_cpumask`:
 
@@ -94,15 +102,18 @@ padata_set_cpumask
 
     Sets specified by \ ``cpumask_type``\  cpumask to the value equivalent to \ ``cpumask``\ .
 
-    :param struct padata_instance \*pinst:
+    :param pinst:
         padata instance
+    :type pinst: struct padata_instance \*
 
-    :param int cpumask_type:
+    :param cpumask_type:
         PADATA_CPU_SERIAL or PADATA_CPU_PARALLEL corresponding
         to parallel and serial cpumasks respectively.
+    :type cpumask_type: int
 
-    :param cpumask_var_t cpumask:
+    :param cpumask:
         the cpumask to use
+    :type cpumask: cpumask_var_t
 
 .. _`padata_start`:
 
@@ -113,8 +124,9 @@ padata_start
 
     start the parallel processing
 
-    :param struct padata_instance \*pinst:
+    :param pinst:
         padata instance to start
+    :type pinst: struct padata_instance \*
 
 .. _`padata_stop`:
 
@@ -125,8 +137,9 @@ padata_stop
 
     stop the parallel processing
 
-    :param struct padata_instance \*pinst:
+    :param pinst:
         padata instance to stop
+    :type pinst: struct padata_instance \*
 
 .. _`padata_alloc`:
 
@@ -137,14 +150,17 @@ padata_alloc
 
     allocate and initialize a padata instance and specify cpumasks for serial and parallel workers.
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to use for the allocated padata instance
+    :type wq: struct workqueue_struct \*
 
-    :param const struct cpumask \*pcpumask:
+    :param pcpumask:
         cpumask that will be used for padata parallelization
+    :type pcpumask: const struct cpumask \*
 
-    :param const struct cpumask \*cbcpumask:
+    :param cbcpumask:
         cpumask that will be used for padata serialization
+    :type cbcpumask: const struct cpumask \*
 
 .. _`padata_alloc.description`:
 
@@ -162,8 +178,9 @@ padata_alloc_possible
 
     Allocate and initialize padata instance. Use the cpu_possible_mask for serial and parallel workers.
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to use for the allocated padata instance
+    :type wq: struct workqueue_struct \*
 
 .. _`padata_alloc_possible.description`:
 
@@ -181,8 +198,9 @@ padata_free
 
     free a padata instance
 
-    :param struct padata_instance \*pinst:
+    :param pinst:
         *undescribed*
+    :type pinst: struct padata_instance \*
 
 .. This file was automatic generated / don't edit.
 

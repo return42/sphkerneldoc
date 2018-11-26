@@ -10,11 +10,13 @@ snd_iprintf
 
     printf on the procfs buffer
 
-    :param  buf:
+    :param buf:
         the procfs buffer
+    :type buf: 
 
-    :param  fmt:
+    :param fmt:
         the printf format
+    :type fmt: 
 
 .. _`snd_iprintf.description`:
 

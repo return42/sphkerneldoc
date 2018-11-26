@@ -8,23 +8,29 @@ fsl_create_mc_io
 
 .. c:function:: int fsl_create_mc_io(struct device *dev, phys_addr_t mc_portal_phys_addr, u32 mc_portal_size, struct fsl_mc_device *dpmcp_dev, u32 flags, struct fsl_mc_io **new_mc_io)
 
-    :param struct device \*dev:
+    :param dev:
         device to be associated with the MC I/O object
+    :type dev: struct device \*
 
-    :param phys_addr_t mc_portal_phys_addr:
+    :param mc_portal_phys_addr:
         physical address of the MC portal to use
+    :type mc_portal_phys_addr: phys_addr_t
 
-    :param u32 mc_portal_size:
+    :param mc_portal_size:
         size in bytes of the MC portal
+    :type mc_portal_size: u32
 
-    :param struct fsl_mc_device \*dpmcp_dev:
+    :param dpmcp_dev:
         *undescribed*
+    :type dpmcp_dev: struct fsl_mc_device \*
 
-    :param u32 flags:
+    :param flags:
         flags for the new MC I/O object
+    :type flags: u32
 
-    :param struct fsl_mc_io \*\*new_mc_io:
+    :param new_mc_io:
         Area to return pointer to newly created MC I/O object
+    :type new_mc_io: struct fsl_mc_io \*\*
 
 .. _`fsl_create_mc_io.description`:
 
@@ -40,8 +46,9 @@ fsl_destroy_mc_io
 
 .. c:function:: void fsl_destroy_mc_io(struct fsl_mc_io *mc_io)
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         MC I/O object to destroy
+    :type mc_io: struct fsl_mc_io \*
 
 .. _`fsl_mc_portal_allocate`:
 
@@ -52,16 +59,19 @@ fsl_mc_portal_allocate
 
     Allocates an MC portal
 
-    :param struct fsl_mc_device \*mc_dev:
+    :param mc_dev:
         MC device for which the MC portal is to be allocated
+    :type mc_dev: struct fsl_mc_device \*
 
-    :param u16 mc_io_flags:
+    :param mc_io_flags:
         Flags for the fsl_mc_io object that wraps the allocated
         MC portal.
+    :type mc_io_flags: u16
 
-    :param struct fsl_mc_io \*\*new_mc_io:
+    :param new_mc_io:
         Pointer to area where the pointer to the fsl_mc_io object
         that wraps the allocated MC portal is to be returned
+    :type new_mc_io: struct fsl_mc_io \*\*
 
 .. _`fsl_mc_portal_allocate.description`:
 
@@ -82,8 +92,9 @@ fsl_mc_portal_free
 
     Returns an MC portal to the pool of free MC portals of a given MC bus
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to the fsl_mc_io object that wraps the MC portal to free
+    :type mc_io: struct fsl_mc_io \*
 
 .. _`fsl_mc_portal_reset`:
 
@@ -94,8 +105,9 @@ fsl_mc_portal_reset
 
     Resets the dpmcp object for a given fsl_mc_io object
 
-    :param struct fsl_mc_io \*mc_io:
+    :param mc_io:
         Pointer to the fsl_mc_io object that wraps the MC portal to free
+    :type mc_io: struct fsl_mc_io \*
 
 .. This file was automatic generated / don't edit.
 

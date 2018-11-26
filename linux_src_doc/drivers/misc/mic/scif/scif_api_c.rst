@@ -10,8 +10,9 @@
 
     Wakes up any blocking accepts. The endpoint will no longer accept new connections.
 
-    :param scif_epd_t epd:
+    :param epd:
         The end point returned from \ :c:func:`scif_open`\ 
+    :type epd: scif_epd_t
 
 .. _`scif_accept`:
 
@@ -22,17 +23,21 @@ scif_accept
 
     Accept a connection request from the remote node
 
-    :param scif_epd_t epd:
+    :param epd:
         *undescribed*
+    :type epd: scif_epd_t
 
-    :param struct scif_port_id \*peer:
+    :param peer:
         *undescribed*
+    :type peer: struct scif_port_id \*
 
-    :param scif_epd_t \*newepd:
+    :param newepd:
         *undescribed*
+    :type newepd: scif_epd_t \*
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`scif_accept.description`:
 
@@ -66,17 +71,21 @@ scif_user_send
 
     Send data to connection queue
 
-    :param scif_epd_t epd:
+    :param epd:
         The end point returned from \ :c:func:`scif_open`\ 
+    :type epd: scif_epd_t
 
-    :param void __user \*msg:
+    :param msg:
         Address to place data
+    :type msg: void __user \*
 
-    :param int len:
+    :param len:
         Length to receive
+    :type len: int
 
-    :param int flags:
+    :param flags:
         blocking or non blocking
+    :type flags: int
 
 .. _`scif_user_send.description`:
 
@@ -95,17 +104,21 @@ scif_user_recv
 
     Receive data from connection queue
 
-    :param scif_epd_t epd:
+    :param epd:
         The end point returned from \ :c:func:`scif_open`\ 
+    :type epd: scif_epd_t
 
-    :param void __user \*msg:
+    :param msg:
         Address to place data
+    :type msg: void __user \*
 
-    :param int len:
+    :param len:
         Length to receive
+    :type len: int
 
-    :param int flags:
+    :param flags:
         blocking or non blocking
+    :type flags: int
 
 .. _`scif_user_recv.description`:
 
@@ -124,17 +137,21 @@ scif_send
 
     Send data to connection queue
 
-    :param scif_epd_t epd:
+    :param epd:
         The end point returned from \ :c:func:`scif_open`\ 
+    :type epd: scif_epd_t
 
-    :param void \*msg:
+    :param msg:
         Address to place data
+    :type msg: void \*
 
-    :param int len:
+    :param len:
         Length to receive
+    :type len: int
 
-    :param int flags:
+    :param flags:
         blocking or non blocking
+    :type flags: int
 
 .. _`scif_send.description`:
 
@@ -153,17 +170,21 @@ scif_recv
 
     Receive data from connection queue
 
-    :param scif_epd_t epd:
+    :param epd:
         The end point returned from \ :c:func:`scif_open`\ 
+    :type epd: scif_epd_t
 
-    :param void \*msg:
+    :param msg:
         Address to place data
+    :type msg: void \*
 
-    :param int len:
+    :param len:
         Length to receive
+    :type len: int
 
-    :param int flags:
+    :param flags:
         blocking or non blocking
+    :type flags: int
 
 .. _`scif_recv.description`:
 
@@ -182,15 +203,18 @@ scif_poll
 
     Kernel mode SCIF poll
 
-    :param struct scif_pollepd \*ufds:
+    :param ufds:
         Array of scif_pollepd structures containing the end points
         and events to poll on
+    :type ufds: struct scif_pollepd \*
 
-    :param unsigned int nfds:
+    :param nfds:
         Size of the ufds array
+    :type nfds: unsigned int
 
-    :param long timeout_msecs:
+    :param timeout_msecs:
         Timeout in msecs, -ve implies infinite timeout
+    :type timeout_msecs: long
 
 .. _`scif_poll.description`:
 

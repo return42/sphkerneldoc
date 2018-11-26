@@ -10,14 +10,17 @@
 
     copy data from MMIO space, in 64-bit units
 
-    :param void \*to:
+    :param to:
         destination (must be 64-bit aligned)
+    :type to: void \*
 
-    :param const void __iomem \*from:
+    :param from:
         source, in MMIO space (must be 64-bit aligned)
+    :type from: const void __iomem \*
 
-    :param size_t count:
+    :param count:
         number of 64-bit quantities to copy
+    :type count: size_t
 
 .. _`__ioread64_copy.description`:
 

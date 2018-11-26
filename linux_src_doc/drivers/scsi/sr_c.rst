@@ -10,8 +10,9 @@ sr_kref_release
 
     Called to free the scsi_cd structure
 
-    :param struct kref \*kref:
+    :param kref:
         pointer to embedded kref
+    :type kref: struct kref \*
 
 .. _`sr_kref_release.description`:
 

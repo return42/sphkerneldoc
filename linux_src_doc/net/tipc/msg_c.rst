@@ -10,11 +10,13 @@ tipc_buf_acquire
 
     creates a TIPC message buffer
 
-    :param u32 size:
+    :param size:
         message size (including TIPC header)
+    :type size: u32
 
-    :param gfp_t gfp:
+    :param gfp:
         *undescribed*
+    :type gfp: gfp_t
 
 .. _`tipc_buf_acquire.description`:
 
@@ -40,23 +42,29 @@ tipc_msg_build
 
     create buffer chain containing specified header and data
 
-    :param struct tipc_msg \*mhdr:
+    :param mhdr:
         Message header, to be prepended to data
+    :type mhdr: struct tipc_msg \*
 
-    :param struct msghdr \*m:
+    :param m:
         User message
+    :type m: struct msghdr \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param int dsz:
+    :param dsz:
         Total length of user data
+    :type dsz: int
 
-    :param int pktmax:
+    :param pktmax:
         Max packet size that can be used
+    :type pktmax: int
 
-    :param struct sk_buff_head \*list:
+    :param list:
         Buffer or chain of buffers to be returned to caller
+    :type list: struct sk_buff_head \*
 
 .. _`tipc_msg_build.description`:
 
@@ -82,16 +90,19 @@ tipc_msg_bundle
 
     Append contents of a buffer to tail of an existing one
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer to append to ("bundle")
+    :type skb: struct sk_buff \*
 
-    :param struct tipc_msg \*msg:
+    :param msg:
         message to be appended
+    :type msg: struct tipc_msg \*
 
-    :param u32 mtu:
+    :param mtu:
         max allowable size for the bundle buffer
         Consumes buffer if successful
         Returns true if bundling could be performed, otherwise false
+    :type mtu: u32
 
 .. _`tipc_msg_extract`:
 
@@ -102,17 +113,20 @@ tipc_msg_extract
 
     extract bundled inner packet from buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to be extracted from.
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff \*\*iskb:
+    :param iskb:
         extracted inner buffer, to be returned
+    :type iskb: struct sk_buff \*\*
 
-    :param int \*pos:
+    :param pos:
         position in outer message of msg to be extracted.
         Returns position of next msg
         Consumes outer buffer when last packet extracted
         Returns true when when there is an extracted buffer, otherwise false
+    :type pos: int \*
 
 .. _`tipc_msg_make_bundle`:
 
@@ -123,18 +137,22 @@ tipc_msg_make_bundle
 
     Create bundle buf and append message to its tail
 
-    :param struct sk_buff \*\*skb:
+    :param skb:
         buffer to be created, appended to and returned in case of success
+    :type skb: struct sk_buff \*\*
 
-    :param struct tipc_msg \*msg:
+    :param msg:
         message to be appended
+    :type msg: struct tipc_msg \*
 
-    :param u32 mtu:
+    :param mtu:
         max allowable size for the bundle buffer, inclusive header
+    :type mtu: u32
 
-    :param u32 dnode:
+    :param dnode:
         destination node for message. (Not always present in header)
         Returns true if success, otherwise false
+    :type dnode: u32
 
 .. _`tipc_msg_reverse`:
 
@@ -145,16 +163,19 @@ tipc_msg_reverse
 
     swap source and destination addresses and add error code
 
-    :param u32 own_node:
+    :param own_node:
         originating node id for reversed message
+    :type own_node: u32
 
-    :param struct sk_buff \*\*skb:
-        buffer containing message to be reversed; may be replaced.
+    :param skb:
+        buffer containing message to be reversed; will be consumed
+    :type skb: struct sk_buff \*\*
 
-    :param int err:
+    :param err:
         error code to be set in message, if any
-        Consumes buffer at failure
+        Replaces consumed buffer with new one when successful
         Returns true if success, otherwise false
+    :type err: int
 
 .. _`tipc_msg_lookup_dest`:
 
@@ -165,16 +186,19 @@ tipc_msg_lookup_dest
 
     try to find new destination for named message
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer containing the message.
+    :type skb: struct sk_buff \*
 
-    :param int \*err:
+    :param err:
         error code to be used by caller if lookup fails
         Does not consume buffer
         Returns true if a destination is found, false otherwise
+    :type err: int \*
 
 .. This file was automatic generated / don't edit.
 

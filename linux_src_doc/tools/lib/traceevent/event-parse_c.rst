@@ -1,45 +1,49 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: tools/lib/traceevent/event-parse.c
 
-.. _`pevent_buffer_init`:
+.. _`tep_buffer_init`:
 
-pevent_buffer_init
-==================
+tep_buffer_init
+===============
 
-.. c:function:: void pevent_buffer_init(const char *buf, unsigned long long size)
+.. c:function:: void tep_buffer_init(const char *buf, unsigned long long size)
 
     init buffer for parsing
 
-    :param const char \*buf:
+    :param buf:
         buffer to parse
+    :type buf: const char \*
 
-    :param unsigned long long size:
+    :param size:
         the size of the buffer
+    :type size: unsigned long long
 
-.. _`pevent_buffer_init.description`:
+.. _`tep_buffer_init.description`:
 
 Description
 -----------
 
-For use with \ :c:func:`pevent_read_token`\ , this initializes the internal
-buffer that \ :c:func:`pevent_read_token`\  will parse.
+For use with \ :c:func:`tep_read_token`\ , this initializes the internal
+buffer that \ :c:func:`tep_read_token`\  will parse.
 
-.. _`pevent_pid_is_registered`:
+.. _`tep_pid_is_registered`:
 
-pevent_pid_is_registered
-========================
+tep_pid_is_registered
+=====================
 
-.. c:function:: int pevent_pid_is_registered(struct pevent *pevent, int pid)
+.. c:function:: int tep_pid_is_registered(struct tep_handle *pevent, int pid)
 
     return if a pid has a cmdline registered
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-    :param int pid:
+    :param pid:
         The pid to check if it has a cmdline registered with.
+    :type pid: int
 
-.. _`pevent_pid_is_registered.description`:
+.. _`tep_pid_is_registered.description`:
 
 Description
 -----------
@@ -47,25 +51,28 @@ Description
 Returns 1 if the pid has a cmdline mapped to it
 0 otherwise.
 
-.. _`pevent_register_comm`:
+.. _`tep_register_comm`:
 
-pevent_register_comm
-====================
+tep_register_comm
+=================
 
-.. c:function:: int pevent_register_comm(struct pevent *pevent, const char *comm, int pid)
+.. c:function:: int tep_register_comm(struct tep_handle *pevent, const char *comm, int pid)
 
     register a pid / comm mapping
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-    :param const char \*comm:
+    :param comm:
         the command line to register
+    :type comm: const char \*
 
-    :param int pid:
+    :param pid:
         the pid to map the command line to
+    :type pid: int
 
-.. _`pevent_register_comm.description`:
+.. _`tep_register_comm.description`:
 
 Description
 -----------
@@ -73,25 +80,28 @@ Description
 This adds a mapping to search for command line names with
 a given pid. The comm is duplicated.
 
-.. _`pevent_set_function_resolver`:
+.. _`tep_set_function_resolver`:
 
-pevent_set_function_resolver
-============================
+tep_set_function_resolver
+=========================
 
-.. c:function:: int pevent_set_function_resolver(struct pevent *pevent, pevent_func_resolver_t *func, void *priv)
+.. c:function:: int tep_set_function_resolver(struct tep_handle *pevent, tep_func_resolver_t *func, void *priv)
 
     set an alternative function resolver
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-    :param pevent_func_resolver_t \*func:
+    :param func:
         *undescribed*
+    :type func: tep_func_resolver_t \*
 
-    :param void \*priv:
+    :param priv:
         resolver function private state.
+    :type priv: void \*
 
-.. _`pevent_set_function_resolver.description`:
+.. _`tep_set_function_resolver.description`:
 
 Description
 -----------
@@ -100,19 +110,20 @@ Some tools may have already a way to resolve kernel functions, allow them to
 keep using it instead of duplicating all the entries inside
 pevent->funclist.
 
-.. _`pevent_reset_function_resolver`:
+.. _`tep_reset_function_resolver`:
 
-pevent_reset_function_resolver
-==============================
+tep_reset_function_resolver
+===========================
 
-.. c:function:: void pevent_reset_function_resolver(struct pevent *pevent)
+.. c:function:: void tep_reset_function_resolver(struct tep_handle *pevent)
 
     reset alternative function resolver
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-.. _`pevent_reset_function_resolver.description`:
+.. _`tep_reset_function_resolver.description`:
 
 Description
 -----------
@@ -120,22 +131,24 @@ Description
 Stop using whatever alternative resolver was set, use the default
 one instead.
 
-.. _`pevent_find_function`:
+.. _`tep_find_function`:
 
-pevent_find_function
-====================
+tep_find_function
+=================
 
-.. c:function:: const char *pevent_find_function(struct pevent *pevent, unsigned long long addr)
+.. c:function:: const char *tep_find_function(struct tep_handle *pevent, unsigned long long addr)
 
     find a function by a given address
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-    :param unsigned long long addr:
+    :param addr:
         the address to find the function with
+    :type addr: unsigned long long
 
-.. _`pevent_find_function.description`:
+.. _`tep_find_function.description`:
 
 Description
 -----------
@@ -144,52 +157,58 @@ Returns a pointer to the function stored that has the given
 address. Note, the address does not have to be exact, it
 will select the function that would contain the address.
 
-.. _`pevent_find_function_address`:
+.. _`tep_find_function_address`:
 
-pevent_find_function_address
-============================
+tep_find_function_address
+=========================
 
-.. c:function:: unsigned long long pevent_find_function_address(struct pevent *pevent, unsigned long long addr)
+.. c:function:: unsigned long long tep_find_function_address(struct tep_handle *pevent, unsigned long long addr)
 
     find a function address by a given address
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-    :param unsigned long long addr:
+    :param addr:
         the address to find the function with
+    :type addr: unsigned long long
 
-.. _`pevent_find_function_address.description`:
+.. _`tep_find_function_address.description`:
 
 Description
 -----------
 
 Returns the address the function starts at. This can be used in
-conjunction with pevent_find_function to print both the function
+conjunction with tep_find_function to print both the function
 name and the function offset.
 
-.. _`pevent_register_function`:
+.. _`tep_register_function`:
 
-pevent_register_function
-========================
+tep_register_function
+=====================
 
-.. c:function:: int pevent_register_function(struct pevent *pevent, char *func, unsigned long long addr, char *mod)
+.. c:function:: int tep_register_function(struct tep_handle *pevent, char *func, unsigned long long addr, char *mod)
 
     register a function with a given address
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-    :param char \*func:
+    :param func:
         *undescribed*
+    :type func: char \*
 
-    :param unsigned long long addr:
+    :param addr:
         the address the function starts at
+    :type addr: unsigned long long
 
-    :param char \*mod:
+    :param mod:
         the kernel module the function may be in (NULL for none)
+    :type mod: char \*
 
-.. _`pevent_register_function.description`:
+.. _`tep_register_function.description`:
 
 Description
 -----------
@@ -197,44 +216,48 @@ Description
 This registers a function name with an address and module.
 The \ ``func``\  passed in is duplicated.
 
-.. _`pevent_print_funcs`:
+.. _`tep_print_funcs`:
 
-pevent_print_funcs
-==================
+tep_print_funcs
+===============
 
-.. c:function:: void pevent_print_funcs(struct pevent *pevent)
+.. c:function:: void tep_print_funcs(struct tep_handle *pevent)
 
     print out the stored functions
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-.. _`pevent_print_funcs.description`:
+.. _`tep_print_funcs.description`:
 
 Description
 -----------
 
 This prints out the stored functions.
 
-.. _`pevent_register_print_string`:
+.. _`tep_register_print_string`:
 
-pevent_register_print_string
-============================
+tep_register_print_string
+=========================
 
-.. c:function:: int pevent_register_print_string(struct pevent *pevent, const char *fmt, unsigned long long addr)
+.. c:function:: int tep_register_print_string(struct tep_handle *pevent, const char *fmt, unsigned long long addr)
 
     register a string by its address
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-    :param const char \*fmt:
+    :param fmt:
         the string format to register
+    :type fmt: const char \*
 
-    :param unsigned long long addr:
+    :param addr:
         the address the string was located at
+    :type addr: unsigned long long
 
-.. _`pevent_register_print_string.description`:
+.. _`tep_register_print_string.description`:
 
 Description
 -----------
@@ -242,94 +265,100 @@ Description
 This registers a string by the address it was stored in the kernel.
 The \ ``fmt``\  passed in is duplicated.
 
-.. _`pevent_print_printk`:
+.. _`tep_print_printk`:
 
-pevent_print_printk
-===================
+tep_print_printk
+================
 
-.. c:function:: void pevent_print_printk(struct pevent *pevent)
+.. c:function:: void tep_print_printk(struct tep_handle *pevent)
 
     print out the stored strings
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-.. _`pevent_print_printk.description`:
+.. _`tep_print_printk.description`:
 
 Description
 -----------
 
 This prints the string formats that were stored.
 
-.. _`pevent_peek_char`:
+.. _`tep_peek_char`:
 
-pevent_peek_char
-================
+tep_peek_char
+=============
 
-.. c:function:: int pevent_peek_char( void)
+.. c:function:: int tep_peek_char( void)
 
     peek at the next character that will be read
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
-.. _`pevent_peek_char.description`:
+.. _`tep_peek_char.description`:
 
 Description
 -----------
 
 Returns the next character read, or -1 if end of buffer.
 
-.. _`pevent_read_token`:
+.. _`tep_read_token`:
 
-pevent_read_token
-=================
+tep_read_token
+==============
 
-.. c:function:: enum event_type pevent_read_token(char **tok)
+.. c:function:: enum tep_event_type tep_read_token(char **tok)
 
     access to utilites to use the pevent parser
 
-    :param char \*\*tok:
+    :param tok:
         The token to return
+    :type tok: char \*\*
 
-.. _`pevent_read_token.description`:
+.. _`tep_read_token.description`:
 
 Description
 -----------
 
 This will parse tokens from the string given by
-\ :c:func:`pevent_init_data`\ .
+\ :c:func:`tep_init_data`\ .
 
 Returns the token type.
 
-.. _`pevent_free_token`:
+.. _`tep_free_token`:
 
-pevent_free_token
-=================
+tep_free_token
+==============
 
-.. c:function:: void pevent_free_token(char *token)
+.. c:function:: void tep_free_token(char *token)
 
-    free a token returned by pevent_read_token
+    free a token returned by tep_read_token
 
-    :param char \*token:
+    :param token:
         the token to free
+    :type token: char \*
 
-.. _`pevent_find_common_field`:
+.. _`tep_find_common_field`:
 
-pevent_find_common_field
-========================
+tep_find_common_field
+=====================
 
-.. c:function:: struct format_field *pevent_find_common_field(struct event_format *event, const char *name)
+.. c:function:: struct tep_format_field *tep_find_common_field(struct tep_event_format *event, const char *name)
 
     return a common field by event
 
-    :param struct event_format \*event:
+    :param event:
         handle for the event
+    :type event: struct tep_event_format \*
 
-    :param const char \*name:
+    :param name:
         the name of the common field to return
+    :type name: const char \*
 
-.. _`pevent_find_common_field.description`:
+.. _`tep_find_common_field.description`:
 
 Description
 -----------
@@ -337,22 +366,24 @@ Description
 Returns a common field from the event by the given \ ``name``\ .
 This only searchs the common fields and not all field.
 
-.. _`pevent_find_field`:
+.. _`tep_find_field`:
 
-pevent_find_field
-=================
+tep_find_field
+==============
 
-.. c:function:: struct format_field *pevent_find_field(struct event_format *event, const char *name)
+.. c:function:: struct tep_format_field *tep_find_field(struct tep_event_format *event, const char *name)
 
     find a non-common field
 
-    :param struct event_format \*event:
+    :param event:
         handle for the event
+    :type event: struct tep_event_format \*
 
-    :param const char \*name:
+    :param name:
         the name of the non-common field
+    :type name: const char \*
 
-.. _`pevent_find_field.description`:
+.. _`tep_find_field.description`:
 
 Description
 -----------
@@ -360,22 +391,24 @@ Description
 Returns a non-common field by the given \ ``name``\ .
 This does not search common fields.
 
-.. _`pevent_find_any_field`:
+.. _`tep_find_any_field`:
 
-pevent_find_any_field
-=====================
+tep_find_any_field
+==================
 
-.. c:function:: struct format_field *pevent_find_any_field(struct event_format *event, const char *name)
+.. c:function:: struct tep_format_field *tep_find_any_field(struct tep_event_format *event, const char *name)
 
     find any field by name
 
-    :param struct event_format \*event:
+    :param event:
         handle for the event
+    :type event: struct tep_event_format \*
 
-    :param const char \*name:
+    :param name:
         the name of the field
+    :type name: const char \*
 
-.. _`pevent_find_any_field.description`:
+.. _`tep_find_any_field.description`:
 
 Description
 -----------
@@ -384,25 +417,28 @@ Returns a field by the given \ ``name``\ .
 This searchs the common field names first, then
 the non-common ones if a common one was not found.
 
-.. _`pevent_read_number`:
+.. _`tep_read_number`:
 
-pevent_read_number
-==================
+tep_read_number
+===============
 
-.. c:function:: unsigned long long pevent_read_number(struct pevent *pevent, const void *ptr, int size)
+.. c:function:: unsigned long long tep_read_number(struct tep_handle *pevent, const void *ptr, int size)
 
     read a number from data
 
-    :param struct pevent \*pevent:
+    :param pevent:
         handle for the pevent
+    :type pevent: struct tep_handle \*
 
-    :param const void \*ptr:
+    :param ptr:
         the raw data
+    :type ptr: const void \*
 
-    :param int size:
+    :param size:
         the size of the data that holds the number
+    :type size: int
 
-.. _`pevent_read_number.description`:
+.. _`tep_read_number.description`:
 
 Description
 -----------
@@ -410,25 +446,28 @@ Description
 Returns the number (converted to host) from the
 raw data.
 
-.. _`pevent_read_number_field`:
+.. _`tep_read_number_field`:
 
-pevent_read_number_field
-========================
+tep_read_number_field
+=====================
 
-.. c:function:: int pevent_read_number_field(struct format_field *field, const void *data, unsigned long long *value)
+.. c:function:: int tep_read_number_field(struct tep_format_field *field, const void *data, unsigned long long *value)
 
     read a number from data
 
-    :param struct format_field \*field:
+    :param field:
         a handle to the field
+    :type field: struct tep_format_field \*
 
-    :param const void \*data:
+    :param data:
         the raw data to read
+    :type data: const void \*
 
-    :param unsigned long long \*value:
+    :param value:
         the value to place the number in
+    :type value: unsigned long long \*
 
-.. _`pevent_read_number_field.description`:
+.. _`tep_read_number_field.description`:
 
 Description
 -----------
@@ -438,47 +477,52 @@ and translates it into \ ``value``\ .
 
 Returns 0 on success, -1 otherwise.
 
-.. _`pevent_find_event`:
+.. _`tep_find_event`:
 
-pevent_find_event
-=================
+tep_find_event
+==============
 
-.. c:function:: struct event_format *pevent_find_event(struct pevent *pevent, int id)
+.. c:function:: struct tep_event_format *tep_find_event(struct tep_handle *pevent, int id)
 
     find an event by given id
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param int id:
+    :param id:
         the id of the event
+    :type id: int
 
-.. _`pevent_find_event.description`:
+.. _`tep_find_event.description`:
 
 Description
 -----------
 
 Returns an event that has a given \ ``id``\ .
 
-.. _`pevent_find_event_by_name`:
+.. _`tep_find_event_by_name`:
 
-pevent_find_event_by_name
-=========================
+tep_find_event_by_name
+======================
 
-.. c:function:: struct event_format *pevent_find_event_by_name(struct pevent *pevent, const char *sys, const char *name)
+.. c:function:: struct tep_event_format *tep_find_event_by_name(struct tep_handle *pevent, const char *sys, const char *name)
 
     find an event by given name
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param const char \*sys:
+    :param sys:
         the system name to search for
+    :type sys: const char \*
 
-    :param const char \*name:
+    :param name:
         the name of the event to search for
+    :type name: const char \*
 
-.. _`pevent_find_event_by_name.description`:
+.. _`tep_find_event_by_name.description`:
 
 Description
 -----------
@@ -486,25 +530,28 @@ Description
 This returns an event with a given \ ``name``\  and under the system
 \ ``sys``\ . If \ ``sys``\  is NULL the first event with \ ``name``\  is returned.
 
-.. _`pevent_data_lat_fmt`:
+.. _`tep_data_lat_fmt`:
 
-pevent_data_lat_fmt
-===================
+tep_data_lat_fmt
+================
 
-.. c:function:: void pevent_data_lat_fmt(struct pevent *pevent, struct trace_seq *s, struct pevent_record *record)
+.. c:function:: void tep_data_lat_fmt(struct tep_handle *pevent, struct trace_seq *s, struct tep_record *record)
 
     parse the data for the latency format
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param struct trace_seq \*s:
+    :param s:
         the trace_seq to write to
+    :type s: struct trace_seq \*
 
-    :param struct pevent_record \*record:
+    :param record:
         the record to read from
+    :type record: struct tep_record \*
 
-.. _`pevent_data_lat_fmt.description`:
+.. _`tep_data_lat_fmt.description`:
 
 Description
 -----------
@@ -513,110 +560,120 @@ This parses out the Latency format (interrupts disabled,
 need rescheduling, in hard/soft interrupt, preempt count
 and lock depth) and places it into the trace_seq.
 
-.. _`pevent_data_type`:
+.. _`tep_data_type`:
 
-pevent_data_type
-================
+tep_data_type
+=============
 
-.. c:function:: int pevent_data_type(struct pevent *pevent, struct pevent_record *rec)
+.. c:function:: int tep_data_type(struct tep_handle *pevent, struct tep_record *rec)
 
     parse out the given event type
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param struct pevent_record \*rec:
+    :param rec:
         the record to read from
+    :type rec: struct tep_record \*
 
-.. _`pevent_data_type.description`:
+.. _`tep_data_type.description`:
 
 Description
 -----------
 
 This returns the event id from the \ ``rec``\ .
 
-.. _`pevent_data_event_from_type`:
+.. _`tep_data_event_from_type`:
 
-pevent_data_event_from_type
-===========================
+tep_data_event_from_type
+========================
 
-.. c:function:: struct event_format *pevent_data_event_from_type(struct pevent *pevent, int type)
+.. c:function:: struct tep_event_format *tep_data_event_from_type(struct tep_handle *pevent, int type)
 
     find the event by a given type
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param int type:
+    :param type:
         the type of the event.
+    :type type: int
 
-.. _`pevent_data_event_from_type.description`:
+.. _`tep_data_event_from_type.description`:
 
 Description
 -----------
 
 This returns the event form a given \ ``type``\ ;
 
-.. _`pevent_data_pid`:
+.. _`tep_data_pid`:
 
-pevent_data_pid
-===============
+tep_data_pid
+============
 
-.. c:function:: int pevent_data_pid(struct pevent *pevent, struct pevent_record *rec)
+.. c:function:: int tep_data_pid(struct tep_handle *pevent, struct tep_record *rec)
 
     parse the PID from record
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param struct pevent_record \*rec:
+    :param rec:
         the record to parse
+    :type rec: struct tep_record \*
 
-.. _`pevent_data_pid.description`:
+.. _`tep_data_pid.description`:
 
 Description
 -----------
 
 This returns the PID from a record.
 
-.. _`pevent_data_preempt_count`:
+.. _`tep_data_preempt_count`:
 
-pevent_data_preempt_count
-=========================
+tep_data_preempt_count
+======================
 
-.. c:function:: int pevent_data_preempt_count(struct pevent *pevent, struct pevent_record *rec)
+.. c:function:: int tep_data_preempt_count(struct tep_handle *pevent, struct tep_record *rec)
 
     parse the preempt count from the record
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param struct pevent_record \*rec:
+    :param rec:
         the record to parse
+    :type rec: struct tep_record \*
 
-.. _`pevent_data_preempt_count.description`:
+.. _`tep_data_preempt_count.description`:
 
 Description
 -----------
 
 This returns the preempt count from a record.
 
-.. _`pevent_data_flags`:
+.. _`tep_data_flags`:
 
-pevent_data_flags
-=================
+tep_data_flags
+==============
 
-.. c:function:: int pevent_data_flags(struct pevent *pevent, struct pevent_record *rec)
+.. c:function:: int tep_data_flags(struct tep_handle *pevent, struct tep_record *rec)
 
     parse the latency flags from the record
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param struct pevent_record \*rec:
+    :param rec:
         the record to parse
+    :type rec: struct tep_record \*
 
-.. _`pevent_data_flags.description`:
+.. _`tep_data_flags.description`:
 
 Description
 -----------
@@ -625,22 +682,24 @@ This returns the latency flags from a record.
 
 Use trace_flag_type enum for the flags (see event-parse.h).
 
-.. _`pevent_data_comm_from_pid`:
+.. _`tep_data_comm_from_pid`:
 
-pevent_data_comm_from_pid
-=========================
+tep_data_comm_from_pid
+======================
 
-.. c:function:: const char *pevent_data_comm_from_pid(struct pevent *pevent, int pid)
+.. c:function:: const char *tep_data_comm_from_pid(struct tep_handle *pevent, int pid)
 
     return the command line from PID
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param int pid:
+    :param pid:
         the PID of the task to search for
+    :type pid: int
 
-.. _`pevent_data_comm_from_pid.description`:
+.. _`tep_data_comm_from_pid.description`:
 
 Description
 -----------
@@ -648,25 +707,28 @@ Description
 This returns a pointer to the command line that has the given
 \ ``pid``\ .
 
-.. _`pevent_data_pid_from_comm`:
+.. _`tep_data_pid_from_comm`:
 
-pevent_data_pid_from_comm
-=========================
+tep_data_pid_from_comm
+======================
 
-.. c:function:: struct cmdline *pevent_data_pid_from_comm(struct pevent *pevent, const char *comm, struct cmdline *next)
+.. c:function:: struct cmdline *tep_data_pid_from_comm(struct tep_handle *pevent, const char *comm, struct cmdline *next)
 
     return the pid from a given comm
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param const char \*comm:
+    :param comm:
         the cmdline to find the pid from
+    :type comm: const char \*
 
-    :param struct cmdline \*next:
+    :param next:
         the cmdline structure to find the next comm
+    :type next: struct cmdline \*
 
-.. _`pevent_data_pid_from_comm.description`:
+.. _`tep_data_pid_from_comm.description`:
 
 Description
 -----------
@@ -678,22 +740,24 @@ a recurring call in the \ ``next``\  paramater, and then it will find the
 next pid.
 Also, it does a linear seach, so it may be slow.
 
-.. _`pevent_cmdline_pid`:
+.. _`tep_cmdline_pid`:
 
-pevent_cmdline_pid
-==================
+tep_cmdline_pid
+===============
 
-.. c:function:: int pevent_cmdline_pid(struct pevent *pevent, struct cmdline *cmdline)
+.. c:function:: int tep_cmdline_pid(struct tep_handle *pevent, struct cmdline *cmdline)
 
     return the pid associated to a given cmdline
 
-    :param struct pevent \*pevent:
+    :param pevent:
         *undescribed*
+    :type pevent: struct tep_handle \*
 
-    :param struct cmdline \*cmdline:
+    :param cmdline:
         The cmdline structure to get the pid from
+    :type cmdline: struct cmdline \*
 
-.. _`pevent_cmdline_pid.description`:
+.. _`tep_cmdline_pid.description`:
 
 Description
 -----------
@@ -701,25 +765,28 @@ Description
 Returns the pid for a give cmdline. If \ ``cmdline``\  is NULL, then
 -1 is returned.
 
-.. _`pevent_event_info`:
+.. _`tep_event_info`:
 
-pevent_event_info
-=================
+tep_event_info
+==============
 
-.. c:function:: void pevent_event_info(struct trace_seq *s, struct event_format *event, struct pevent_record *record)
+.. c:function:: void tep_event_info(struct trace_seq *s, struct tep_event_format *event, struct tep_record *record)
 
     parse the data into the print format
 
-    :param struct trace_seq \*s:
+    :param s:
         the trace_seq to write to
+    :type s: struct trace_seq \*
 
-    :param struct event_format \*event:
+    :param event:
         the handle to the event
+    :type event: struct tep_event_format \*
 
-    :param struct pevent_record \*record:
+    :param record:
         the record to read from
+    :type record: struct tep_record \*
 
-.. _`pevent_event_info.description`:
+.. _`tep_event_info.description`:
 
 Description
 -----------
@@ -727,22 +794,24 @@ Description
 This parses the raw \ ``data``\  using the given \ ``event``\  information and
 writes the print format into the trace_seq.
 
-.. _`pevent_find_event_by_record`:
+.. _`tep_find_event_by_record`:
 
-pevent_find_event_by_record
-===========================
+tep_find_event_by_record
+========================
 
-.. c:function:: struct event_format *pevent_find_event_by_record(struct pevent *pevent, struct pevent_record *record)
+.. c:function:: struct tep_event_format *tep_find_event_by_record(struct tep_handle *pevent, struct tep_record *record)
 
     return the event from a given record
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param struct pevent_record \*record:
+    :param record:
         The record to get the event from
+    :type record: struct tep_record \*
 
-.. _`pevent_find_event_by_record.description`:
+.. _`tep_find_event_by_record.description`:
 
 Description
 -----------
@@ -750,106 +819,120 @@ Description
 Returns the associated event for a given record, or NULL if non is
 is found.
 
-.. _`pevent_print_event_task`:
+.. _`tep_print_event_task`:
 
-pevent_print_event_task
-=======================
+tep_print_event_task
+====================
 
-.. c:function:: void pevent_print_event_task(struct pevent *pevent, struct trace_seq *s, struct event_format *event, struct pevent_record *record)
+.. c:function:: void tep_print_event_task(struct tep_handle *pevent, struct trace_seq *s, struct tep_event_format *event, struct tep_record *record)
 
     Write the event task comm, pid and CPU
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param struct trace_seq \*s:
+    :param s:
         the trace_seq to write to
+    :type s: struct trace_seq \*
 
-    :param struct event_format \*event:
+    :param event:
         the handle to the record's event
+    :type event: struct tep_event_format \*
 
-    :param struct pevent_record \*record:
+    :param record:
         The record to get the event from
+    :type record: struct tep_record \*
 
-.. _`pevent_print_event_task.description`:
+.. _`tep_print_event_task.description`:
 
 Description
 -----------
 
 Writes the tasks comm, pid and CPU to \ ``s``\ .
 
-.. _`pevent_print_event_time`:
+.. _`tep_print_event_time`:
 
-pevent_print_event_time
-=======================
+tep_print_event_time
+====================
 
-.. c:function:: void pevent_print_event_time(struct pevent *pevent, struct trace_seq *s, struct event_format *event, struct pevent_record *record, bool use_trace_clock)
+.. c:function:: void tep_print_event_time(struct tep_handle *pevent, struct trace_seq *s, struct tep_event_format *event, struct tep_record *record, bool use_trace_clock)
 
     Write the event timestamp
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param struct trace_seq \*s:
+    :param s:
         the trace_seq to write to
+    :type s: struct trace_seq \*
 
-    :param struct event_format \*event:
+    :param event:
         the handle to the record's event
+    :type event: struct tep_event_format \*
 
-    :param struct pevent_record \*record:
+    :param record:
         The record to get the event from
+    :type record: struct tep_record \*
 
-    :param bool use_trace_clock:
-        Set to parse according to the \ ``pevent``\ ->trace_clock
+    :param use_trace_clock:
+        Set to parse according to the \ ``pevent->trace_clock``\ 
+    :type use_trace_clock: bool
 
-.. _`pevent_print_event_time.description`:
+.. _`tep_print_event_time.description`:
 
 Description
 -----------
 
 Writes the timestamp of the record into \ ``s``\ .
 
-.. _`pevent_print_event_data`:
+.. _`tep_print_event_data`:
 
-pevent_print_event_data
-=======================
+tep_print_event_data
+====================
 
-.. c:function:: void pevent_print_event_data(struct pevent *pevent, struct trace_seq *s, struct event_format *event, struct pevent_record *record)
+.. c:function:: void tep_print_event_data(struct tep_handle *pevent, struct trace_seq *s, struct tep_event_format *event, struct tep_record *record)
 
     Write the event data section
 
-    :param struct pevent \*pevent:
+    :param pevent:
         a handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param struct trace_seq \*s:
+    :param s:
         the trace_seq to write to
+    :type s: struct trace_seq \*
 
-    :param struct event_format \*event:
+    :param event:
         the handle to the record's event
+    :type event: struct tep_event_format \*
 
-    :param struct pevent_record \*record:
+    :param record:
         The record to get the event from
+    :type record: struct tep_record \*
 
-.. _`pevent_print_event_data.description`:
+.. _`tep_print_event_data.description`:
 
 Description
 -----------
 
 Writes the parsing of the record's data to \ ``s``\ .
 
-.. _`pevent_event_common_fields`:
+.. _`tep_event_common_fields`:
 
-pevent_event_common_fields
-==========================
+tep_event_common_fields
+=======================
 
-.. c:function:: struct format_field **pevent_event_common_fields(struct event_format *event)
+.. c:function:: struct tep_format_field **tep_event_common_fields(struct tep_event_format *event)
 
     return a list of common fields for an event
 
-    :param struct event_format \*event:
+    :param event:
         the event to return the common fields of.
+    :type event: struct tep_event_format \*
 
-.. _`pevent_event_common_fields.description`:
+.. _`tep_event_common_fields.description`:
 
 Description
 -----------
@@ -857,19 +940,20 @@ Description
 Returns an allocated array of fields. The last item in the array is NULL.
 The array must be freed with \ :c:func:`free`\ .
 
-.. _`pevent_event_fields`:
+.. _`tep_event_fields`:
 
-pevent_event_fields
-===================
+tep_event_fields
+================
 
-.. c:function:: struct format_field **pevent_event_fields(struct event_format *event)
+.. c:function:: struct tep_format_field **tep_event_fields(struct tep_event_format *event)
 
     return a list of event specific fields for an event
 
-    :param struct event_format \*event:
+    :param event:
         the event to return the fields of.
+    :type event: struct tep_event_format \*
 
-.. _`pevent_event_fields.description`:
+.. _`tep_event_fields.description`:
 
 Description
 -----------
@@ -877,28 +961,32 @@ Description
 Returns an allocated array of fields. The last item in the array is NULL.
 The array must be freed with \ :c:func:`free`\ .
 
-.. _`pevent_parse_header_page`:
+.. _`tep_parse_header_page`:
 
-pevent_parse_header_page
-========================
+tep_parse_header_page
+=====================
 
-.. c:function:: int pevent_parse_header_page(struct pevent *pevent, char *buf, unsigned long size, int long_size)
+.. c:function:: int tep_parse_header_page(struct tep_handle *pevent, char *buf, unsigned long size, int long_size)
 
     parse the data stored in the header page
 
-    :param struct pevent \*pevent:
+    :param pevent:
         the handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param char \*buf:
+    :param buf:
         the buffer storing the header page format string
+    :type buf: char \*
 
-    :param unsigned long size:
+    :param size:
         the size of \ ``buf``\ 
+    :type size: unsigned long
 
-    :param int long_size:
+    :param long_size:
         the long size to use if there is no header
+    :type long_size: int
 
-.. _`pevent_parse_header_page.description`:
+.. _`tep_parse_header_page.description`:
 
 Description
 -----------
@@ -908,71 +996,81 @@ ring buffer used. The \ ``buf``\  should be copied from
 
 /sys/kernel/debug/tracing/events/header_page
 
-.. _`__pevent_parse_format`:
+.. _`__tep_parse_format`:
 
-\__pevent_parse_format
-======================
-
-.. c:function:: enum pevent_errno __pevent_parse_format(struct event_format **eventp, struct pevent *pevent, const char *buf, unsigned long size, const char *sys)
-
-    parse the event format
-
-    :param struct event_format \*\*eventp:
-        *undescribed*
-
-    :param struct pevent \*pevent:
-        *undescribed*
-
-    :param const char \*buf:
-        the buffer storing the event format string
-
-    :param unsigned long size:
-        the size of \ ``buf``\ 
-
-    :param const char \*sys:
-        the system the event belongs to
-
-.. _`__pevent_parse_format.description`:
-
-Description
------------
-
-This parses the event format and creates an event structure
-to quickly parse raw data for a given event.
-
-.. _`__pevent_parse_format.these-files-currently-come-from`:
-
-These files currently come from
--------------------------------
-
-
-/sys/kernel/debug/tracing/events/.../.../format
-
-.. _`pevent_parse_format`:
-
-pevent_parse_format
+\__tep_parse_format
 ===================
 
-.. c:function:: enum pevent_errno pevent_parse_format(struct pevent *pevent, struct event_format **eventp, const char *buf, unsigned long size, const char *sys)
+.. c:function:: enum tep_errno __tep_parse_format(struct tep_event_format **eventp, struct tep_handle *pevent, const char *buf, unsigned long size, const char *sys)
 
     parse the event format
 
-    :param struct pevent \*pevent:
-        the handle to the pevent
+    :param eventp:
+        *undescribed*
+    :type eventp: struct tep_event_format \*\*
 
-    :param struct event_format \*\*eventp:
+    :param pevent:
+        *undescribed*
+    :type pevent: struct tep_handle \*
+
+    :param buf:
+        the buffer storing the event format string
+    :type buf: const char \*
+
+    :param size:
+        the size of \ ``buf``\ 
+    :type size: unsigned long
+
+    :param sys:
+        the system the event belongs to
+    :type sys: const char \*
+
+.. _`__tep_parse_format.description`:
+
+Description
+-----------
+
+This parses the event format and creates an event structure
+to quickly parse raw data for a given event.
+
+.. _`__tep_parse_format.these-files-currently-come-from`:
+
+These files currently come from
+-------------------------------
+
+
+/sys/kernel/debug/tracing/events/.../.../format
+
+.. _`tep_parse_format`:
+
+tep_parse_format
+================
+
+.. c:function:: enum tep_errno tep_parse_format(struct tep_handle *pevent, struct tep_event_format **eventp, const char *buf, unsigned long size, const char *sys)
+
+    parse the event format
+
+    :param pevent:
+        the handle to the pevent
+    :type pevent: struct tep_handle \*
+
+    :param eventp:
         returned format
+    :type eventp: struct tep_event_format \*\*
 
-    :param const char \*buf:
+    :param buf:
         the buffer storing the event format string
+    :type buf: const char \*
 
-    :param unsigned long size:
+    :param size:
         the size of \ ``buf``\ 
+    :type size: unsigned long
 
-    :param const char \*sys:
+    :param sys:
         the system the event belongs to
+    :type sys: const char \*
 
-.. _`pevent_parse_format.description`:
+.. _`tep_parse_format.description`:
 
 Description
 -----------
@@ -980,7 +1078,7 @@ Description
 This parses the event format and creates an event structure
 to quickly parse raw data for a given event.
 
-.. _`pevent_parse_format.these-files-currently-come-from`:
+.. _`tep_parse_format.these-files-currently-come-from`:
 
 These files currently come from
 -------------------------------
@@ -988,28 +1086,32 @@ These files currently come from
 
 /sys/kernel/debug/tracing/events/.../.../format
 
-.. _`pevent_parse_event`:
+.. _`tep_parse_event`:
 
-pevent_parse_event
-==================
+tep_parse_event
+===============
 
-.. c:function:: enum pevent_errno pevent_parse_event(struct pevent *pevent, const char *buf, unsigned long size, const char *sys)
+.. c:function:: enum tep_errno tep_parse_event(struct tep_handle *pevent, const char *buf, unsigned long size, const char *sys)
 
     parse the event format
 
-    :param struct pevent \*pevent:
+    :param pevent:
         the handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param const char \*buf:
+    :param buf:
         the buffer storing the event format string
+    :type buf: const char \*
 
-    :param unsigned long size:
+    :param size:
         the size of \ ``buf``\ 
+    :type size: unsigned long
 
-    :param const char \*sys:
+    :param sys:
         the system the event belongs to
+    :type sys: const char \*
 
-.. _`pevent_parse_event.description`:
+.. _`tep_parse_event.description`:
 
 Description
 -----------
@@ -1017,7 +1119,7 @@ Description
 This parses the event format and creates an event structure
 to quickly parse raw data for a given event.
 
-.. _`pevent_parse_event.these-files-currently-come-from`:
+.. _`tep_parse_event.these-files-currently-come-from`:
 
 These files currently come from
 -------------------------------
@@ -1025,34 +1127,40 @@ These files currently come from
 
 /sys/kernel/debug/tracing/events/.../.../format
 
-.. _`pevent_get_field_raw`:
+.. _`tep_get_field_raw`:
 
-pevent_get_field_raw
-====================
+tep_get_field_raw
+=================
 
-.. c:function:: void *pevent_get_field_raw(struct trace_seq *s, struct event_format *event, const char *name, struct pevent_record *record, int *len, int err)
+.. c:function:: void *tep_get_field_raw(struct trace_seq *s, struct tep_event_format *event, const char *name, struct tep_record *record, int *len, int err)
 
     return the raw pointer into the data field
 
-    :param struct trace_seq \*s:
+    :param s:
         The seq to print to on error
+    :type s: struct trace_seq \*
 
-    :param struct event_format \*event:
+    :param event:
         the event that the field is for
+    :type event: struct tep_event_format \*
 
-    :param const char \*name:
+    :param name:
         The name of the field
+    :type name: const char \*
 
-    :param struct pevent_record \*record:
+    :param record:
         The record with the field name.
+    :type record: struct tep_record \*
 
-    :param int \*len:
+    :param len:
         place to store the field length.
+    :type len: int \*
 
-    :param int err:
+    :param err:
         print default error if failed.
+    :type err: int
 
-.. _`pevent_get_field_raw.description`:
+.. _`tep_get_field_raw.description`:
 
 Description
 -----------
@@ -1062,201 +1170,235 @@ the length of the field in \ ``len``\ .
 
 On failure, it returns NULL.
 
-.. _`pevent_get_field_val`:
+.. _`tep_get_field_val`:
 
-pevent_get_field_val
-====================
+tep_get_field_val
+=================
 
-.. c:function:: int pevent_get_field_val(struct trace_seq *s, struct event_format *event, const char *name, struct pevent_record *record, unsigned long long *val, int err)
+.. c:function:: int tep_get_field_val(struct trace_seq *s, struct tep_event_format *event, const char *name, struct tep_record *record, unsigned long long *val, int err)
 
     find a field and return its value
 
-    :param struct trace_seq \*s:
+    :param s:
         The seq to print to on error
+    :type s: struct trace_seq \*
 
-    :param struct event_format \*event:
+    :param event:
         the event that the field is for
+    :type event: struct tep_event_format \*
 
-    :param const char \*name:
+    :param name:
         The name of the field
+    :type name: const char \*
 
-    :param struct pevent_record \*record:
+    :param record:
         The record with the field name.
+    :type record: struct tep_record \*
 
-    :param unsigned long long \*val:
+    :param val:
         place to store the value of the field.
+    :type val: unsigned long long \*
 
-    :param int err:
+    :param err:
         print default error if failed.
+    :type err: int
 
-.. _`pevent_get_field_val.description`:
+.. _`tep_get_field_val.description`:
 
 Description
 -----------
 
 Returns 0 on success -1 on field not found.
 
-.. _`pevent_get_common_field_val`:
+.. _`tep_get_common_field_val`:
 
-pevent_get_common_field_val
-===========================
+tep_get_common_field_val
+========================
 
-.. c:function:: int pevent_get_common_field_val(struct trace_seq *s, struct event_format *event, const char *name, struct pevent_record *record, unsigned long long *val, int err)
+.. c:function:: int tep_get_common_field_val(struct trace_seq *s, struct tep_event_format *event, const char *name, struct tep_record *record, unsigned long long *val, int err)
 
     find a common field and return its value
 
-    :param struct trace_seq \*s:
+    :param s:
         The seq to print to on error
+    :type s: struct trace_seq \*
 
-    :param struct event_format \*event:
+    :param event:
         the event that the field is for
+    :type event: struct tep_event_format \*
 
-    :param const char \*name:
+    :param name:
         The name of the field
+    :type name: const char \*
 
-    :param struct pevent_record \*record:
+    :param record:
         The record with the field name.
+    :type record: struct tep_record \*
 
-    :param unsigned long long \*val:
+    :param val:
         place to store the value of the field.
+    :type val: unsigned long long \*
 
-    :param int err:
+    :param err:
         print default error if failed.
+    :type err: int
 
-.. _`pevent_get_common_field_val.description`:
+.. _`tep_get_common_field_val.description`:
 
 Description
 -----------
 
 Returns 0 on success -1 on field not found.
 
-.. _`pevent_get_any_field_val`:
+.. _`tep_get_any_field_val`:
 
-pevent_get_any_field_val
-========================
+tep_get_any_field_val
+=====================
 
-.. c:function:: int pevent_get_any_field_val(struct trace_seq *s, struct event_format *event, const char *name, struct pevent_record *record, unsigned long long *val, int err)
+.. c:function:: int tep_get_any_field_val(struct trace_seq *s, struct tep_event_format *event, const char *name, struct tep_record *record, unsigned long long *val, int err)
 
     find a any field and return its value
 
-    :param struct trace_seq \*s:
+    :param s:
         The seq to print to on error
+    :type s: struct trace_seq \*
 
-    :param struct event_format \*event:
+    :param event:
         the event that the field is for
+    :type event: struct tep_event_format \*
 
-    :param const char \*name:
+    :param name:
         The name of the field
+    :type name: const char \*
 
-    :param struct pevent_record \*record:
+    :param record:
         The record with the field name.
+    :type record: struct tep_record \*
 
-    :param unsigned long long \*val:
+    :param val:
         place to store the value of the field.
+    :type val: unsigned long long \*
 
-    :param int err:
+    :param err:
         print default error if failed.
+    :type err: int
 
-.. _`pevent_get_any_field_val.description`:
+.. _`tep_get_any_field_val.description`:
 
 Description
 -----------
 
 Returns 0 on success -1 on field not found.
 
-.. _`pevent_print_num_field`:
+.. _`tep_print_num_field`:
 
-pevent_print_num_field
-======================
+tep_print_num_field
+===================
 
-.. c:function:: int pevent_print_num_field(struct trace_seq *s, const char *fmt, struct event_format *event, const char *name, struct pevent_record *record, int err)
+.. c:function:: int tep_print_num_field(struct trace_seq *s, const char *fmt, struct tep_event_format *event, const char *name, struct tep_record *record, int err)
 
     print a field and a format
 
-    :param struct trace_seq \*s:
+    :param s:
         The seq to print to
+    :type s: struct trace_seq \*
 
-    :param const char \*fmt:
+    :param fmt:
         The printf format to print the field with.
+    :type fmt: const char \*
 
-    :param struct event_format \*event:
+    :param event:
         the event that the field is for
+    :type event: struct tep_event_format \*
 
-    :param const char \*name:
+    :param name:
         The name of the field
+    :type name: const char \*
 
-    :param struct pevent_record \*record:
+    :param record:
         The record with the field name.
+    :type record: struct tep_record \*
 
-    :param int err:
+    :param err:
         print default error if failed.
+    :type err: int
 
-.. _`pevent_print_num_field.return`:
+.. _`tep_print_num_field.return`:
 
 Return
 ------
 
 0 on success, -1 field not found, or 1 if buffer is full.
 
-.. _`pevent_print_func_field`:
+.. _`tep_print_func_field`:
 
-pevent_print_func_field
-=======================
+tep_print_func_field
+====================
 
-.. c:function:: int pevent_print_func_field(struct trace_seq *s, const char *fmt, struct event_format *event, const char *name, struct pevent_record *record, int err)
+.. c:function:: int tep_print_func_field(struct trace_seq *s, const char *fmt, struct tep_event_format *event, const char *name, struct tep_record *record, int err)
 
     print a field and a format for function pointers
 
-    :param struct trace_seq \*s:
+    :param s:
         The seq to print to
+    :type s: struct trace_seq \*
 
-    :param const char \*fmt:
+    :param fmt:
         The printf format to print the field with.
+    :type fmt: const char \*
 
-    :param struct event_format \*event:
+    :param event:
         the event that the field is for
+    :type event: struct tep_event_format \*
 
-    :param const char \*name:
+    :param name:
         The name of the field
+    :type name: const char \*
 
-    :param struct pevent_record \*record:
+    :param record:
         The record with the field name.
+    :type record: struct tep_record \*
 
-    :param int err:
+    :param err:
         print default error if failed.
+    :type err: int
 
-.. _`pevent_print_func_field.return`:
+.. _`tep_print_func_field.return`:
 
 Return
 ------
 
 0 on success, -1 field not found, or 1 if buffer is full.
 
-.. _`pevent_register_print_function`:
+.. _`tep_register_print_function`:
 
-pevent_register_print_function
-==============================
+tep_register_print_function
+===========================
 
-.. c:function:: int pevent_register_print_function(struct pevent *pevent, pevent_func_handler func, enum pevent_func_arg_type ret_type, char *name,  ...)
+.. c:function:: int tep_register_print_function(struct tep_handle *pevent, tep_func_handler func, enum tep_func_arg_type ret_type, char *name,  ...)
 
     register a helper function
 
-    :param struct pevent \*pevent:
+    :param pevent:
         the handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param pevent_func_handler func:
+    :param func:
         the function to process the helper function
+    :type func: tep_func_handler
 
-    :param enum pevent_func_arg_type ret_type:
+    :param ret_type:
         the return type of the helper function
+    :type ret_type: enum tep_func_arg_type
 
-    :param char \*name:
+    :param name:
         the name of the helper function
+    :type name: char \*
 
     :param ellipsis ellipsis:
         variable arguments
 
-.. _`pevent_register_print_function.description`:
+.. _`tep_register_print_function.description`:
 
 Description
 -----------
@@ -1265,28 +1407,31 @@ Some events may have helper functions in the print format arguments.
 This allows a plugin to dynamically create a way to process one
 of these functions.
 
-The \ ``parameters``\  is a variable list of pevent_func_arg_type enums that
-must end with PEVENT_FUNC_ARG_VOID.
+The \ ``parameters``\  is a variable list of tep_func_arg_type enums that
+must end with TEP_FUNC_ARG_VOID.
 
-.. _`pevent_unregister_print_function`:
+.. _`tep_unregister_print_function`:
 
-pevent_unregister_print_function
-================================
+tep_unregister_print_function
+=============================
 
-.. c:function:: int pevent_unregister_print_function(struct pevent *pevent, pevent_func_handler func, char *name)
+.. c:function:: int tep_unregister_print_function(struct tep_handle *pevent, tep_func_handler func, char *name)
 
     unregister a helper function
 
-    :param struct pevent \*pevent:
+    :param pevent:
         the handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param pevent_func_handler func:
+    :param func:
         the function to process the helper function
+    :type func: tep_func_handler
 
-    :param char \*name:
+    :param name:
         the name of the helper function
+    :type name: char \*
 
-.. _`pevent_unregister_print_function.description`:
+.. _`tep_unregister_print_function.description`:
 
 Description
 -----------
@@ -1295,34 +1440,40 @@ This function removes existing print handler for function \ ``name``\ .
 
 Returns 0 if the handler was removed successully, -1 otherwise.
 
-.. _`pevent_register_event_handler`:
+.. _`tep_register_event_handler`:
 
-pevent_register_event_handler
-=============================
+tep_register_event_handler
+==========================
 
-.. c:function:: int pevent_register_event_handler(struct pevent *pevent, int id, const char *sys_name, const char *event_name, pevent_event_handler_func func, void *context)
+.. c:function:: int tep_register_event_handler(struct tep_handle *pevent, int id, const char *sys_name, const char *event_name, tep_event_handler_func func, void *context)
 
     register a way to parse an event
 
-    :param struct pevent \*pevent:
+    :param pevent:
         the handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param int id:
+    :param id:
         the id of the event to register
+    :type id: int
 
-    :param const char \*sys_name:
+    :param sys_name:
         the system name the event belongs to
+    :type sys_name: const char \*
 
-    :param const char \*event_name:
+    :param event_name:
         the name of the event
+    :type event_name: const char \*
 
-    :param pevent_event_handler_func func:
+    :param func:
         the function to call to parse the event information
+    :type func: tep_event_handler_func
 
-    :param void \*context:
+    :param context:
         the data to be passed to \ ``func``\ 
+    :type context: void \*
 
-.. _`pevent_register_event_handler.description`:
+.. _`tep_register_event_handler.description`:
 
 Description
 -----------
@@ -1335,34 +1486,40 @@ for an event to be used to parse the data instead.
 If \ ``id``\  is >= 0, then it is used to find the event.
 else \ ``sys_name``\  and \ ``event_name``\  are used.
 
-.. _`pevent_unregister_event_handler`:
+.. _`tep_unregister_event_handler`:
 
-pevent_unregister_event_handler
-===============================
+tep_unregister_event_handler
+============================
 
-.. c:function:: int pevent_unregister_event_handler(struct pevent *pevent, int id, const char *sys_name, const char *event_name, pevent_event_handler_func func, void *context)
+.. c:function:: int tep_unregister_event_handler(struct tep_handle *pevent, int id, const char *sys_name, const char *event_name, tep_event_handler_func func, void *context)
 
     unregister an existing event handler
 
-    :param struct pevent \*pevent:
+    :param pevent:
         the handle to the pevent
+    :type pevent: struct tep_handle \*
 
-    :param int id:
+    :param id:
         the id of the event to unregister
+    :type id: int
 
-    :param const char \*sys_name:
+    :param sys_name:
         the system name the handler belongs to
+    :type sys_name: const char \*
 
-    :param const char \*event_name:
+    :param event_name:
         the name of the event handler
+    :type event_name: const char \*
 
-    :param pevent_event_handler_func func:
+    :param func:
         the function to call to parse the event information
+    :type func: tep_event_handler_func
 
-    :param void \*context:
+    :param context:
         the data to be passed to \ ``func``\ 
+    :type context: void \*
 
-.. _`pevent_unregister_event_handler.description`:
+.. _`tep_unregister_event_handler.description`:
 
 Description
 -----------
@@ -1374,29 +1531,31 @@ else \ ``sys_name``\  and \ ``event_name``\  are used.
 
 Returns 0 if handler was removed successfully, -1 if event was not found.
 
-.. _`pevent_alloc`:
+.. _`tep_alloc`:
 
-pevent_alloc
-============
+tep_alloc
+=========
 
-.. c:function:: struct pevent *pevent_alloc( void)
+.. c:function:: struct tep_handle *tep_alloc( void)
 
     create a pevent handle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
-.. _`pevent_free`:
+.. _`tep_free`:
 
-pevent_free
-===========
+tep_free
+========
 
-.. c:function:: void pevent_free(struct pevent *pevent)
+.. c:function:: void tep_free(struct tep_handle *pevent)
 
     free a pevent handle
 
-    :param struct pevent \*pevent:
+    :param pevent:
         the pevent handle to free
+    :type pevent: struct tep_handle \*
 
 .. This file was automatic generated / don't edit.
 

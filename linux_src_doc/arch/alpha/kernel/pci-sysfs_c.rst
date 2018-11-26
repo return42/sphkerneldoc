@@ -10,17 +10,21 @@ pci_mmap_resource
 
     map a PCI resource into user memory space
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject for mapping
+    :type kobj: struct kobject \*
 
-    :param struct bin_attribute \*attr:
+    :param attr:
         struct bin_attribute for the file being mapped
+    :type attr: struct bin_attribute \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         struct vm_area_struct passed into the mmap
+    :type vma: struct vm_area_struct \*
 
-    :param int sparse:
+    :param sparse:
         address space type
+    :type sparse: int
 
 .. _`pci_mmap_resource.description`:
 
@@ -38,8 +42,9 @@ pci_remove_resource_files
 
     cleanup resource files
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`pci_remove_resource_files.description`:
 
@@ -58,8 +63,9 @@ pci_create_resource_files
 
     create resource files in sysfs for \ ``dev``\ 
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`pci_create_resource_files.description`:
 
@@ -77,11 +83,13 @@ pci_adjust_legacy_attr
 
     adjustment of legacy file attributes
 
-    :param struct pci_bus \*bus:
+    :param bus:
         *undescribed*
+    :type bus: struct pci_bus \*
 
-    :param enum pci_mmap_state mmap_type:
+    :param mmap_type:
         I/O port or memory
+    :type mmap_type: enum pci_mmap_state
 
 .. _`pci_adjust_legacy_attr.description`:
 

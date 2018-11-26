@@ -10,20 +10,25 @@ rpcb_register
 
     set or unset a port registration with the local rpcbind svc
 
-    :param struct net \*net:
+    :param net:
         target network namespace
+    :type net: struct net \*
 
-    :param u32 prog:
+    :param prog:
         RPC program number to bind
+    :type prog: u32
 
-    :param u32 vers:
+    :param vers:
         RPC version number to bind
+    :type vers: u32
 
-    :param int prot:
+    :param prot:
         transport protocol to register
+    :type prot: int
 
-    :param unsigned short port:
+    :param port:
         port value to register
+    :type port: unsigned short
 
 .. _`rpcb_register.description`:
 
@@ -64,20 +69,25 @@ rpcb_v4_register
 
     set or unset a port registration with the local rpcbind
 
-    :param struct net \*net:
+    :param net:
         target network namespace
+    :type net: struct net \*
 
-    :param const u32 program:
+    :param program:
         RPC program number of service to (un)register
+    :type program: const u32
 
-    :param const u32 version:
+    :param version:
         RPC version number of service to (un)register
+    :type version: const u32
 
-    :param const struct sockaddr \*address:
+    :param address:
         address family, IP address, and port to (un)register
+    :type address: const struct sockaddr \*
 
-    :param const char \*netid:
+    :param netid:
         netid of transport protocol to (un)register
+    :type netid: const char \*
 
 .. _`rpcb_v4_register.description`:
 
@@ -129,8 +139,9 @@ rpcb_getport_async
 
     obtain the port for a given RPC service on a given host
 
-    :param struct rpc_task \*task:
+    :param task:
         task that is waiting for portmapper request
+    :type task: struct rpc_task \*
 
 .. _`rpcb_getport_async.description`:
 

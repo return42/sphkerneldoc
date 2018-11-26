@@ -10,11 +10,13 @@ test__keep_tracking
 
     test using a dummy software event to keep tracking.
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
 .. _`test__keep_tracking.description`:
 

@@ -178,14 +178,17 @@ qrtr_endpoint_post
 
     post incoming data
 
-    :param struct qrtr_endpoint \*ep:
+    :param ep:
         endpoint handle
+    :type ep: struct qrtr_endpoint \*
 
-    :param const void \*data:
+    :param data:
         data pointer
+    :type data: const void \*
 
-    :param size_t len:
+    :param len:
         size of data in bytes
+    :type len: size_t
 
 .. _`qrtr_endpoint_post.return`:
 
@@ -203,8 +206,9 @@ qrtr_alloc_ctrl_packet
 
     allocate control packet skb
 
-    :param struct qrtr_ctrl_pkt \*\*pkt:
+    :param pkt:
         reference to qrtr_ctrl_pkt pointer
+    :type pkt: struct qrtr_ctrl_pkt \*\*
 
 .. _`qrtr_alloc_ctrl_packet.description`:
 
@@ -225,11 +229,13 @@ qrtr_endpoint_register
 
     register a new endpoint
 
-    :param struct qrtr_endpoint \*ep:
+    :param ep:
         endpoint to register
+    :type ep: struct qrtr_endpoint \*
 
-    :param unsigned int nid:
+    :param nid:
         desired node id; may be QRTR_EP_NID_AUTO for auto-assignment
+    :type nid: unsigned int
 
 .. _`qrtr_endpoint_register.return`:
 
@@ -249,8 +255,9 @@ qrtr_endpoint_unregister
 
     unregister endpoint
 
-    :param struct qrtr_endpoint \*ep:
+    :param ep:
         endpoint to unregister
+    :type ep: struct qrtr_endpoint \*
 
 .. This file was automatic generated / don't edit.
 

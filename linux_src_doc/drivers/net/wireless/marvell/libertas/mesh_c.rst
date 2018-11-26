@@ -10,14 +10,17 @@ lbs_anycast_get
 
     Get function for sysfs attribute anycast_mask
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where data will be returned
+    :type buf: char \*
 
 .. _`lbs_anycast_set`:
 
@@ -28,17 +31,21 @@ lbs_anycast_set
 
     Set function for sysfs attribute anycast_mask
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer that contains new attribute value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`lbs_prb_rsp_limit_get`:
 
@@ -49,14 +56,17 @@ lbs_prb_rsp_limit_get
 
     Get function for sysfs attribute prb_rsp_limit
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where data will be returned
+    :type buf: char \*
 
 .. _`lbs_prb_rsp_limit_set`:
 
@@ -67,17 +77,21 @@ lbs_prb_rsp_limit_set
 
     Set function for sysfs attribute prb_rsp_limit
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer that contains new attribute value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`lbs_mesh_get`:
 
@@ -88,14 +102,17 @@ lbs_mesh_get
 
     Get function for sysfs attribute mesh
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where data will be returned
+    :type buf: char \*
 
 .. _`lbs_mesh_set`:
 
@@ -106,17 +123,21 @@ lbs_mesh_set
 
     Set function for sysfs attribute mesh
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer that contains new attribute value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`bootflag_get`:
 
@@ -127,14 +148,17 @@ bootflag_get
 
     Get function for sysfs attribute bootflag
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where data will be returned
+    :type buf: char \*
 
 .. _`bootflag_set`:
 
@@ -145,17 +169,21 @@ bootflag_set
 
     Set function for sysfs attribute bootflag
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer that contains new attribute value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`boottime_get`:
 
@@ -166,14 +194,17 @@ boottime_get
 
     Get function for sysfs attribute boottime
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where data will be returned
+    :type buf: char \*
 
 .. _`boottime_set`:
 
@@ -184,17 +215,21 @@ boottime_set
 
     Set function for sysfs attribute boottime
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer that contains new attribute value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`channel_get`:
 
@@ -205,14 +240,17 @@ channel_get
 
     Get function for sysfs attribute channel
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where data will be returned
+    :type buf: char \*
 
 .. _`channel_set`:
 
@@ -223,17 +261,21 @@ channel_set
 
     Set function for sysfs attribute channel
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer that contains new attribute value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`mesh_id_get`:
 
@@ -244,14 +286,17 @@ mesh_id_get
 
     Get function for sysfs attribute mesh_id
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where data will be returned
+    :type buf: char \*
 
 .. _`mesh_id_set`:
 
@@ -262,17 +307,21 @@ mesh_id_set
 
     Set function for sysfs attribute mesh_id
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer that contains new attribute value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`protocol_id_get`:
 
@@ -283,14 +332,17 @@ protocol_id_get
 
     Get function for sysfs attribute protocol_id
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where data will be returned
+    :type buf: char \*
 
 .. _`protocol_id_set`:
 
@@ -301,17 +353,21 @@ protocol_id_set
 
     Set function for sysfs attribute protocol_id
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer that contains new attribute value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`metric_id_get`:
 
@@ -322,14 +378,17 @@ metric_id_get
 
     Get function for sysfs attribute metric_id
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where data will be returned
+    :type buf: char \*
 
 .. _`metric_id_set`:
 
@@ -340,17 +399,21 @@ metric_id_set
 
     Set function for sysfs attribute metric_id
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer that contains new attribute value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`capability_get`:
 
@@ -361,14 +424,17 @@ capability_get
 
     Get function for sysfs attribute capability
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where data will be returned
+    :type buf: char \*
 
 .. _`capability_set`:
 
@@ -379,17 +445,21 @@ capability_set
 
     Set function for sysfs attribute capability
 
-    :param struct device \*dev:
+    :param dev:
         the \ :c:type:`struct device <device>`\ 
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attributes
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         buffer that contains new attribute value
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`lbs_mesh_stop`:
 
@@ -400,8 +470,9 @@ lbs_mesh_stop
 
     close the mshX interface
 
-    :param struct net_device \*dev:
+    :param dev:
         A pointer to \ :c:type:`struct net_device <net_device>`\  structure
+    :type dev: struct net_device \*
 
 .. _`lbs_mesh_stop.return`:
 
@@ -419,8 +490,9 @@ lbs_mesh_dev_open
 
     open the mshX interface
 
-    :param struct net_device \*dev:
+    :param dev:
         A pointer to \ :c:type:`struct net_device <net_device>`\  structure
+    :type dev: struct net_device \*
 
 .. _`lbs_mesh_dev_open.return`:
 
@@ -438,8 +510,9 @@ lbs_add_mesh
 
     add mshX interface
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to the \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
 .. _`lbs_add_mesh.return`:
 

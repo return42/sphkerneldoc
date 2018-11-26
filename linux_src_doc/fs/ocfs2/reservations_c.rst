@@ -10,11 +10,13 @@ ocfs2_find_resv_lhs
 
     find the window which contains goal
 
-    :param struct ocfs2_reservation_map \*resmap:
+    :param resmap:
         reservation map to search
+    :type resmap: struct ocfs2_reservation_map \*
 
-    :param unsigned int goal:
+    :param goal:
         which bit to search for
+    :type goal: unsigned int
 
 .. _`ocfs2_find_resv_lhs.description`:
 

@@ -10,8 +10,9 @@ setup_machine_fdt
 
     Machine setup when an dtb was passed to the kernel
 
-    :param void \*dt:
+    :param dt:
         virtual address pointer to dt blob
+    :type dt: void \*
 
 .. _`setup_machine_fdt.description`:
 

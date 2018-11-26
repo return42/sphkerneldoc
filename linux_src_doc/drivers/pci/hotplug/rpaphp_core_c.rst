@@ -10,11 +10,13 @@ set_attention_status
 
     set attention LED
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         target \ :c:type:`struct hotplug_slot <hotplug_slot>`\ 
+    :type hotplug_slot: struct hotplug_slot \*
 
-    :param u8 value:
+    :param value:
         LED control value
+    :type value: u8
 
 .. _`set_attention_status.description`:
 
@@ -34,11 +36,13 @@ get_power_status
 
     get power status of a slot
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         slot to get status
+    :type hotplug_slot: struct hotplug_slot \*
 
-    :param u8 \*value:
+    :param value:
         pointer to store status
+    :type value: u8 \*
 
 .. _`get_attention_status`:
 
@@ -49,11 +53,13 @@ get_attention_status
 
     get attention LED status
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         slot to get status
+    :type hotplug_slot: struct hotplug_slot \*
 
-    :param u8 \*value:
+    :param value:
         pointer to store status
+    :type value: u8 \*
 
 .. _`is_php_dn`:
 
@@ -64,20 +70,25 @@ is_php_dn
 
     return 1 if this is a hotpluggable pci slot, else 0
 
-    :param struct device_node \*dn:
+    :param dn:
         target \ :c:type:`struct device_node <device_node>`\ 
+    :type dn: struct device_node \*
 
-    :param const int \*\*indexes:
+    :param indexes:
         passed to \ :c:func:`get_children_props`\ 
+    :type indexes: const int \*\*
 
-    :param const int \*\*names:
+    :param names:
         passed to \ :c:func:`get_children_props`\ 
+    :type names: const int \*\*
 
-    :param const int \*\*types:
+    :param types:
         returned from \ :c:func:`get_children_props`\ 
+    :type types: const int \*\*
 
-    :param const int \*\*power_domains:
+    :param power_domains:
         *undescribed*
+    :type power_domains: const int \*\*
 
 .. _`is_php_dn.description`:
 
@@ -98,8 +109,9 @@ rpaphp_add_slot
 
     - declare a hotplug slot to the hotplug subsystem.
 
-    :param struct device_node \*dn:
+    :param dn:
         device node of slot
+    :type dn: struct device_node \*
 
 .. _`rpaphp_add_slot.description`:
 

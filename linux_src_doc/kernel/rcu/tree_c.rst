@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/rcu/tree.c
 
+.. _`rcu_is_cpu_rrupt_from_idle`:
+
+rcu_is_cpu_rrupt_from_idle
+==========================
+
+.. c:function:: int rcu_is_cpu_rrupt_from_idle( void)
+
+    see if idle or immediately interrupted from idle
+
+    :param void:
+        no arguments
+    :type void: 
+
+.. _`rcu_is_cpu_rrupt_from_idle.description`:
+
+Description
+-----------
+
+If the current CPU is idle or running at a first-level (not nested)
+interrupt from idle, return true.  The caller must have at least
+disabled preemption.
+
 .. _`rcu_idle_enter`:
 
 rcu_idle_enter
@@ -10,8 +32,9 @@ rcu_idle_enter
 
     inform RCU that current CPU is entering idle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_idle_enter.description`:
 
@@ -35,8 +58,9 @@ rcu_user_enter
 
     inform RCU that we are resuming userspace.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_user_enter.description`:
 
@@ -60,18 +84,14 @@ rcu_nmi_exit
 
     inform RCU of exit from NMI context
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_nmi_exit.description`:
 
 Description
 -----------
-
-If we are returning from the outermost NMI handler that interrupted an
-RCU-idle period, update rdtp->dynticks and rdtp->dynticks_nmi_nesting
-to let the RCU grace-period handling know that the CPU is back to
-being RCU-idle.
 
 If you add or remove a call to \ :c:func:`rcu_nmi_exit`\ , be sure to test
 with CONFIG_RCU_EQS_DEBUG=y.
@@ -85,8 +105,9 @@ rcu_irq_exit
 
     inform RCU that current CPU is exiting irq towards idle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_irq_exit.description`:
 
@@ -118,8 +139,9 @@ rcu_idle_exit
 
     inform RCU that current CPU is leaving idle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_idle_exit.description`:
 
@@ -141,8 +163,9 @@ rcu_user_exit
 
     inform RCU that we are exiting userspace.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_user_exit.description`:
 
@@ -155,6 +178,33 @@ run a RCU read side critical section anytime.
 If you add or remove a call to \ :c:func:`rcu_user_exit`\ , be sure to test with
 CONFIG_RCU_EQS_DEBUG=y.
 
+.. _`rcu_nmi_enter_common`:
+
+rcu_nmi_enter_common
+====================
+
+.. c:function:: void rcu_nmi_enter_common(bool irq)
+
+    inform RCU of entry to NMI context
+
+    :param irq:
+        Is this call from rcu_irq_enter?
+    :type irq: bool
+
+.. _`rcu_nmi_enter_common.description`:
+
+Description
+-----------
+
+If the CPU was idle from RCU's viewpoint, update rdp->dynticks and
+rdp->dynticks_nmi_nesting to let the RCU grace-period handling know
+that the CPU is active.  This implementation permits nested NMIs, as
+long as the nesting level does not overflow an int.  (You will probably
+run out of stack space first.)
+
+If you add or remove a call to \ :c:func:`rcu_nmi_enter_common`\ , be sure to test
+with CONFIG_RCU_EQS_DEBUG=y.
+
 .. _`rcu_nmi_enter`:
 
 rcu_nmi_enter
@@ -164,22 +214,9 @@ rcu_nmi_enter
 
     inform RCU of entry to NMI context
 
-    :param  void:
+    :param void:
         no arguments
-
-.. _`rcu_nmi_enter.description`:
-
-Description
------------
-
-If the CPU was idle from RCU's viewpoint, update rdtp->dynticks and
-rdtp->dynticks_nmi_nesting to let the RCU grace-period handling know
-that the CPU is active.  This implementation permits nested NMIs, as
-long as the nesting level does not overflow an int.  (You will probably
-run out of stack space first.)
-
-If you add or remove a call to \ :c:func:`rcu_nmi_enter`\ , be sure to test
-with CONFIG_RCU_EQS_DEBUG=y.
+    :type void: 
 
 .. _`rcu_irq_enter`:
 
@@ -190,8 +227,9 @@ rcu_irq_enter
 
     inform RCU that current CPU is entering irq away from idle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_irq_enter.description`:
 
@@ -226,8 +264,9 @@ rcu_is_watching
 
     see if RCU thinks that the current CPU is idle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_is_watching.description`:
 
@@ -239,27 +278,6 @@ CPU can safely enter RCU read-side critical sections.  In other words,
 if the current CPU is in its idle loop and is neither in an interrupt
 or NMI handler, return true.
 
-.. _`rcu_is_cpu_rrupt_from_idle`:
-
-rcu_is_cpu_rrupt_from_idle
-==========================
-
-.. c:function:: int rcu_is_cpu_rrupt_from_idle( void)
-
-    see if idle or immediately interrupted from idle
-
-    :param  void:
-        no arguments
-
-.. _`rcu_is_cpu_rrupt_from_idle.description`:
-
-Description
------------
-
-If the current CPU is idle or running at a first-level (not nested)
-interrupt from idle, return true.  The caller must have at least
-disabled preemption.
-
 .. _`rcu_cpu_stall_reset`:
 
 rcu_cpu_stall_reset
@@ -269,8 +287,9 @@ rcu_cpu_stall_reset
 
     prevent further stall warnings in current grace period
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_cpu_stall_reset.description`:
 
@@ -283,152 +302,57 @@ RCU grace periods.
 
 The caller must disable hard irqs.
 
-.. _`call_rcu_sched`:
+.. _`call_rcu`:
 
-call_rcu_sched
-==============
+call_rcu
+========
 
-.. c:function:: void call_rcu_sched(struct rcu_head *head, rcu_callback_t func)
+.. c:function:: void call_rcu(struct rcu_head *head, rcu_callback_t func)
 
-    Queue an RCU for invocation after sched grace period.
+    Queue an RCU callback for invocation after a grace period.
 
-    :param struct rcu_head \*head:
+    :param head:
         structure to be used for queueing the RCU updates.
+    :type head: struct rcu_head \*
 
-    :param rcu_callback_t func:
+    :param func:
         actual callback function to be invoked after the grace period
+    :type func: rcu_callback_t
 
-.. _`call_rcu_sched.description`:
+.. _`call_rcu.description`:
 
 Description
 -----------
 
 The callback function will be invoked some time after a full grace
-period elapses, in other words after all currently executing RCU
-read-side critical sections have completed. \ :c:func:`call_rcu_sched`\  assumes
-that the read-side critical sections end on enabling of preemption
-or on voluntary preemption.
-RCU read-side critical sections are delimited by:
+period elapses, in other words after all pre-existing RCU read-side
+critical sections have completed.  However, the callback function
+might well execute concurrently with RCU read-side critical sections
+that started after \ :c:func:`call_rcu`\  was invoked.  RCU read-side critical
+sections are delimited by \ :c:func:`rcu_read_lock`\  and \ :c:func:`rcu_read_unlock`\ , and
+may be nested.  In addition, regions of code across which interrupts,
+preemption, or softirqs have been disabled also serve as RCU read-side
+critical sections.  This includes hardware interrupt handlers, softirq
+handlers, and NMI handlers.
 
-- \ :c:func:`rcu_read_lock_sched`\  and \ :c:func:`rcu_read_unlock_sched`\ , OR
-- anything that disables preemption.
+Note that all CPUs must agree that the grace period extended beyond
+all pre-existing RCU read-side critical section.  On systems with more
+than one CPU, this means that when "func()" is invoked, each CPU is
+guaranteed to have executed a full memory barrier since the end of its
+last RCU read-side critical section whose beginning preceded the call
+to \ :c:func:`call_rcu`\ .  It also means that each CPU executing an RCU read-side
+critical section that continues beyond the start of "func()" must have
+executed a memory barrier after the \ :c:func:`call_rcu`\  but before the beginning
+of that RCU read-side critical section.  Note that these guarantees
+include CPUs that are offline, idle, or executing in user mode, as
+well as CPUs that are executing in the kernel.
 
- These may be nested.
-
-See the description of \ :c:func:`call_rcu`\  for more detailed information on
-memory ordering guarantees.
-
-.. _`call_rcu_bh`:
-
-call_rcu_bh
-===========
-
-.. c:function:: void call_rcu_bh(struct rcu_head *head, rcu_callback_t func)
-
-    Queue an RCU for invocation after a quicker grace period.
-
-    :param struct rcu_head \*head:
-        structure to be used for queueing the RCU updates.
-
-    :param rcu_callback_t func:
-        actual callback function to be invoked after the grace period
-
-.. _`call_rcu_bh.description`:
-
-Description
------------
-
-The callback function will be invoked some time after a full grace
-period elapses, in other words after all currently executing RCU
-read-side critical sections have completed. \ :c:func:`call_rcu_bh`\  assumes
-that the read-side critical sections end on completion of a softirq
-handler. This means that read-side critical sections in process
-context must not be interrupted by softirqs. This interface is to be
-used when most of the read-side critical sections are in softirq context.
-RCU read-side critical sections are delimited by:
-
-- \ :c:func:`rcu_read_lock`\  and  \ :c:func:`rcu_read_unlock`\ , if in interrupt context, OR
-- \ :c:func:`rcu_read_lock_bh`\  and \ :c:func:`rcu_read_unlock_bh`\ , if in process context.
-
-These may be nested.
-
-See the description of \ :c:func:`call_rcu`\  for more detailed information on
-memory ordering guarantees.
-
-.. _`synchronize_sched`:
-
-synchronize_sched
-=================
-
-.. c:function:: void synchronize_sched( void)
-
-    wait until an rcu-sched grace period has elapsed.
-
-    :param  void:
-        no arguments
-
-.. _`synchronize_sched.description`:
-
-Description
------------
-
-Control will return to the caller some time after a full rcu-sched
-grace period has elapsed, in other words after all currently executing
-rcu-sched read-side critical sections have completed.   These read-side
-critical sections are delimited by \ :c:func:`rcu_read_lock_sched`\  and
-\ :c:func:`rcu_read_unlock_sched`\ , and may be nested.  Note that \ :c:func:`preempt_disable`\ ,
-\ :c:func:`local_irq_disable`\ , and so on may be used in place of
-\ :c:func:`rcu_read_lock_sched`\ .
-
-This means that all preempt_disable code sequences, including NMI and
-non-threaded hardware-interrupt handlers, in progress on entry will
-have completed before this primitive returns.  However, this does not
-guarantee that softirq handlers will have completed, since in some
-kernels, these handlers can run in process context, and can block.
-
-Note that this guarantee implies further memory-ordering guarantees.
-On systems with more than one CPU, when \ :c:func:`synchronize_sched`\  returns,
-each CPU is guaranteed to have executed a full memory barrier since the
-end of its last RCU-sched read-side critical section whose beginning
-preceded the call to \ :c:func:`synchronize_sched`\ .  In addition, each CPU having
-an RCU read-side critical section that extends beyond the return from
-\ :c:func:`synchronize_sched`\  is guaranteed to have executed a full memory barrier
-after the beginning of \ :c:func:`synchronize_sched`\  and before the beginning of
-that RCU read-side critical section.  Note that these guarantees include
-CPUs that are offline, idle, or executing in user mode, as well as CPUs
-that are executing in the kernel.
-
-Furthermore, if CPU A invoked \ :c:func:`synchronize_sched`\ , which returned
-to its caller on CPU B, then both CPU A and CPU B are guaranteed
-to have executed a full memory barrier during the execution of
-\ :c:func:`synchronize_sched`\  -- even if CPU A and CPU B are the same CPU (but
-again only if the system has more than one CPU).
-
-.. _`synchronize_rcu_bh`:
-
-synchronize_rcu_bh
-==================
-
-.. c:function:: void synchronize_rcu_bh( void)
-
-    wait until an rcu_bh grace period has elapsed.
-
-    :param  void:
-        no arguments
-
-.. _`synchronize_rcu_bh.description`:
-
-Description
------------
-
-Control will return to the caller some time after a full rcu_bh grace
-period has elapsed, in other words after all currently executing rcu_bh
-read-side critical sections have completed.  RCU read-side critical
-sections are delimited by \ :c:func:`rcu_read_lock_bh`\  and \ :c:func:`rcu_read_unlock_bh`\ ,
-and may be nested.
-
-See the description of \ :c:func:`synchronize_sched`\  for more detailed information
-on memory ordering guarantees.
+Furthermore, if CPU A invoked \ :c:func:`call_rcu`\  and CPU B invoked the
+resulting RCU callback function "func()", then both CPU A and CPU B are
+guaranteed to execute a full memory barrier during the time interval
+between the call to \ :c:func:`call_rcu`\  and the invocation of "func()" -- even
+if CPU A and CPU B are the same CPU (but again only if the system has
+more than one CPU).
 
 .. _`get_state_synchronize_rcu`:
 
@@ -439,8 +363,9 @@ get_state_synchronize_rcu
 
     Snapshot current RCU state
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`get_state_synchronize_rcu.description`:
 
@@ -460,8 +385,9 @@ cond_synchronize_rcu
 
     Conditionally wait for an RCU grace period
 
-    :param unsigned long oldstate:
+    :param oldstate:
         return value from earlier call to \ :c:func:`get_state_synchronize_rcu`\ 
+    :type oldstate: unsigned long
 
 .. _`cond_synchronize_rcu.description`:
 
@@ -477,76 +403,28 @@ counter wrap is harmless.  If the counter wraps, we have waited for
 more than 2 billion grace periods (and way more on a 64-bit system!),
 so waiting for one additional grace period should be just fine.
 
-.. _`get_state_synchronize_sched`:
+.. _`rcu_barrier`:
 
-get_state_synchronize_sched
-===========================
+rcu_barrier
+===========
 
-.. c:function:: unsigned long get_state_synchronize_sched( void)
+.. c:function:: void rcu_barrier( void)
 
-    Snapshot current RCU-sched state
+    Wait until all in-flight \ :c:func:`call_rcu`\  callbacks complete.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
-.. _`get_state_synchronize_sched.description`:
+.. _`rcu_barrier.description`:
 
 Description
 -----------
 
-Returns a cookie that is used by a later call to \ :c:func:`cond_synchronize_sched`\ 
-to determine whether or not a full grace period has elapsed in the
-meantime.
-
-.. _`cond_synchronize_sched`:
-
-cond_synchronize_sched
-======================
-
-.. c:function:: void cond_synchronize_sched(unsigned long oldstate)
-
-    Conditionally wait for an RCU-sched grace period
-
-    :param unsigned long oldstate:
-        return value from earlier call to \ :c:func:`get_state_synchronize_sched`\ 
-
-.. _`cond_synchronize_sched.description`:
-
-Description
------------
-
-If a full RCU-sched grace period has elapsed since the earlier call to
-\ :c:func:`get_state_synchronize_sched`\ , just return.  Otherwise, invoke
-\ :c:func:`synchronize_sched`\  to wait for a full grace period.
-
-Yes, this function does not take counter wrap into account.  But
-counter wrap is harmless.  If the counter wraps, we have waited for
-more than 2 billion grace periods (and way more on a 64-bit system!),
-so waiting for one additional grace period should be just fine.
-
-.. _`rcu_barrier_bh`:
-
-rcu_barrier_bh
-==============
-
-.. c:function:: void rcu_barrier_bh( void)
-
-    Wait until all in-flight \ :c:func:`call_rcu_bh`\  callbacks complete.
-
-    :param  void:
-        no arguments
-
-.. _`rcu_barrier_sched`:
-
-rcu_barrier_sched
-=================
-
-.. c:function:: void rcu_barrier_sched( void)
-
-    Wait for in-flight \ :c:func:`call_rcu_sched`\  callbacks.
-
-    :param  void:
-        no arguments
+Note that this primitive does not necessarily wait for an RCU grace period
+to complete.  For example, if there are no RCU callbacks queued anywhere
+in the system, then \ :c:func:`rcu_barrier`\  is within its rights to return
+immediately, without waiting for anything, much less an RCU grace period.
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ ath5k_set_coverage_class
 
     Set IEEE 802.11 coverage class
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         struct ieee80211_hw pointer
+    :type hw: struct ieee80211_hw \*
 
-    :param s16 coverage_class:
+    :param coverage_class:
         IEEE 802.11 coverage class number
+    :type coverage_class: s16
 
 .. _`ath5k_set_coverage_class.description`:
 

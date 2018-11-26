@@ -10,17 +10,21 @@ vmw_find_first_diff
 
     find the first difference between dst and src
 
-    :param const u8 \*dst:
+    :param dst:
         The destination address
+    :type dst: const u8 \*
 
-    :param const u8 \*src:
+    :param src:
         The source address
+    :type src: const u8 \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to compare
+    :type size: size_t
 
-    :param size_t granularity:
+    :param granularity:
         The granularity needed for the return value in bytes.
+    :type granularity: size_t
 
 .. _`vmw_find_first_diff.return`:
 
@@ -40,17 +44,21 @@ vmw_find_last_diff
 
     find the last difference between dst and src
 
-    :param const u8 \*dst:
+    :param dst:
         The destination address
+    :type dst: const u8 \*
 
-    :param const u8 \*src:
+    :param src:
         The source address
+    :type src: const u8 \*
 
-    :param size_t size:
+    :param size:
         Number of bytes to compare
+    :type size: size_t
 
-    :param size_t granularity:
+    :param granularity:
         The granularity needed for the return value in bytes.
+    :type granularity: size_t
 
 .. _`vmw_find_last_diff.return`:
 
@@ -69,17 +77,21 @@ vmw_memcpy
 
     A wrapper around kernel memcpy with allowing to plug it into a struct vmw_diff_cpy.
 
-    :param struct vmw_diff_cpy \*diff:
+    :param diff:
         The struct vmw_diff_cpy closure argument (unused).
+    :type diff: struct vmw_diff_cpy \*
 
-    :param u8 \*dest:
+    :param dest:
         The copy destination.
+    :type dest: u8 \*
 
-    :param const u8 \*src:
+    :param src:
         The copy source.
+    :type src: const u8 \*
 
-    :param size_t n:
+    :param n:
         Number of bytes to copy.
+    :type n: size_t
 
 .. _`vmw_adjust_rect`:
 
@@ -90,12 +102,14 @@ vmw_adjust_rect
 
     Adjust rectangle coordinates for newly found difference
 
-    :param struct vmw_diff_cpy \*diff:
+    :param diff:
         The struct vmw_diff_cpy used to track the modified bounding box.
+    :type diff: struct vmw_diff_cpy \*
 
-    :param size_t diff_offs:
-        The offset from \ ``diff``\ ->line_offset where the difference was
+    :param diff_offs:
+        The offset from \ ``diff->line_offset``\  where the difference was
         found.
+    :type diff_offs: size_t
 
 .. _`vmw_diff_memcpy`:
 
@@ -106,27 +120,31 @@ vmw_diff_memcpy
 
     memcpy that creates a bounding box of modified content.
 
-    :param struct vmw_diff_cpy \*diff:
+    :param diff:
         The struct vmw_diff_cpy used to track the modified bounding box.
+    :type diff: struct vmw_diff_cpy \*
 
-    :param u8 \*dest:
+    :param dest:
         The copy destination.
+    :type dest: u8 \*
 
-    :param const u8 \*src:
+    :param src:
         The copy source.
+    :type src: const u8 \*
 
-    :param size_t n:
+    :param n:
         Number of bytes to copy.
+    :type n: size_t
 
 .. _`vmw_diff_memcpy.description`:
 
 Description
 -----------
 
-In order to correctly track the modified content, the field \ ``diff``\ ->line must
-be pre-loaded with the current line number, the field \ ``diff``\ ->line_offset must
+In order to correctly track the modified content, the field \ ``diff->line``\  must
+be pre-loaded with the current line number, the field \ ``diff->line_offset``\  must
 be pre-loaded with the line offset in bytes where the copy starts, and
-finally the field \ ``diff``\ ->cpp need to be preloaded with the number of bytes
+finally the field \ ``diff->cpp``\  need to be preloaded with the number of bytes
 per unit in the horizontal direction of the area we're examining.
 Typically bytes per pixel.
 This is needed to know the needed granularity of the difference computing
@@ -210,17 +228,21 @@ vmw_bo_cpu_blit_line
 
     Blit part of a line from one bo to another.
 
-    :param struct vmw_bo_blit_line_data \*d:
+    :param d:
         Blit data as described above.
+    :type d: struct vmw_bo_blit_line_data \*
 
-    :param u32 dst_offset:
+    :param dst_offset:
         Destination copy start offset from start of bo.
+    :type dst_offset: u32
 
-    :param u32 src_offset:
+    :param src_offset:
         Source copy start offset from start of bo.
+    :type src_offset: u32
 
-    :param u32 bytes_to_copy:
+    :param bytes_to_copy:
         Number of bytes to copy in this line.
+    :type bytes_to_copy: u32
 
 .. _`vmw_bo_cpu_blit`:
 
@@ -231,32 +253,41 @@ vmw_bo_cpu_blit
 
     in-kernel cpu blit.
 
-    :param struct ttm_buffer_object \*dst:
+    :param dst:
         Destination buffer object.
+    :type dst: struct ttm_buffer_object \*
 
-    :param u32 dst_offset:
+    :param dst_offset:
         Destination offset of blit start in bytes.
+    :type dst_offset: u32
 
-    :param u32 dst_stride:
+    :param dst_stride:
         Destination stride in bytes.
+    :type dst_stride: u32
 
-    :param struct ttm_buffer_object \*src:
+    :param src:
         Source buffer object.
+    :type src: struct ttm_buffer_object \*
 
-    :param u32 src_offset:
+    :param src_offset:
         Source offset of blit start in bytes.
+    :type src_offset: u32
 
-    :param u32 src_stride:
+    :param src_stride:
         Source stride in bytes.
+    :type src_stride: u32
 
-    :param u32 w:
+    :param w:
         Width of blit.
+    :type w: u32
 
-    :param u32 h:
+    :param h:
         Height of blit.
+    :type h: u32
 
-    :param struct vmw_diff_cpy \*diff:
+    :param diff:
         *undescribed*
+    :type diff: struct vmw_diff_cpy \*
 
 .. _`vmw_bo_cpu_blit.return`:
 

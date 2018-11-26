@@ -8,29 +8,37 @@ pagefault_data_segments
 
 .. c:function:: int pagefault_data_segments(struct mlx5_ib_dev *dev, struct mlx5_pagefault *pfault, struct mlx5_ib_qp *qp, void *wqe, void *wqe_end, u32 *bytes_mapped, u32 *total_wqe_bytes, int receive_queue)
 
-    :param struct mlx5_ib_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct mlx5_ib_dev \*
 
-    :param struct mlx5_pagefault \*pfault:
+    :param pfault:
         *undescribed*
+    :type pfault: struct mlx5_pagefault \*
 
-    :param struct mlx5_ib_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct mlx5_ib_qp \*
 
-    :param void \*wqe:
+    :param wqe:
         *undescribed*
+    :type wqe: void \*
 
-    :param void \*wqe_end:
+    :param wqe_end:
         *undescribed*
+    :type wqe_end: void \*
 
-    :param u32 \*bytes_mapped:
+    :param bytes_mapped:
         *undescribed*
+    :type bytes_mapped: u32 \*
 
-    :param u32 \*total_wqe_bytes:
+    :param total_wqe_bytes:
         *undescribed*
+    :type total_wqe_bytes: u32 \*
 
-    :param int receive_queue:
+    :param receive_queue:
         *undescribed*
+    :type receive_queue: int
 
 .. _`pagefault_data_segments.description`:
 

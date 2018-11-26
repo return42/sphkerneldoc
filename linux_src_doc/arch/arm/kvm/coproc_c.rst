@@ -10,11 +10,13 @@ kvm_handle_cp15_64
 
     - handles a mrrc/mcrr trap on a guest CP15 access
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_run \*run:
+    :param run:
         The kvm_run struct
+    :type run: struct kvm_run \*
 
 .. _`kvm_handle_cp14_64`:
 
@@ -25,11 +27,13 @@ kvm_handle_cp14_64
 
     - handles a mrrc/mcrr trap on a guest CP14 access
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_run \*run:
+    :param run:
         The kvm_run struct
+    :type run: struct kvm_run \*
 
 .. _`kvm_handle_cp15_32`:
 
@@ -40,11 +44,13 @@ kvm_handle_cp15_32
 
     - handles a mrc/mcr trap on a guest CP15 access
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_run \*run:
+    :param run:
         The kvm_run struct
+    :type run: struct kvm_run \*
 
 .. _`kvm_handle_cp14_32`:
 
@@ -55,11 +61,13 @@ kvm_handle_cp14_32
 
     - handles a mrc/mcr trap on a guest CP14 access
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_run \*run:
+    :param run:
         The kvm_run struct
+    :type run: struct kvm_run \*
 
 .. _`kvm_reset_coprocs`:
 
@@ -70,8 +78,9 @@ kvm_reset_coprocs
 
     sets cp15 registers to reset value
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_reset_coprocs.description`:
 

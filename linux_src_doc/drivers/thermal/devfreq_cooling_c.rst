@@ -84,11 +84,13 @@ partition_enable_opps
 
     disable all opps above a given state
 
-    :param struct devfreq_cooling_device \*dfc:
+    :param dfc:
         Pointer to devfreq we are operating on
+    :type dfc: struct devfreq_cooling_device \*
 
-    :param unsigned long cdev_state:
+    :param cdev_state:
         cooling device state we're setting
+    :type cdev_state: unsigned long
 
 .. _`partition_enable_opps.description`:
 
@@ -107,11 +109,13 @@ freq_get_state
 
     get the cooling state corresponding to a frequency
 
-    :param struct devfreq_cooling_device \*dfc:
+    :param dfc:
         Pointer to devfreq cooling device
+    :type dfc: struct devfreq_cooling_device \*
 
-    :param unsigned long freq:
+    :param freq:
         frequency in Hz
+    :type freq: unsigned long
 
 .. _`freq_get_state.return`:
 
@@ -130,11 +134,13 @@ get_static_power
 
     calculate the static power
 
-    :param struct devfreq_cooling_device \*dfc:
+    :param dfc:
         Pointer to devfreq cooling device
+    :type dfc: struct devfreq_cooling_device \*
 
-    :param unsigned long freq:
+    :param freq:
         Frequency in Hz
+    :type freq: unsigned long
 
 .. _`get_static_power.description`:
 
@@ -155,14 +161,17 @@ get_dynamic_power
 
     calculate the dynamic power
 
-    :param struct devfreq_cooling_device \*dfc:
+    :param dfc:
         Pointer to devfreq cooling device
+    :type dfc: struct devfreq_cooling_device \*
 
-    :param unsigned long freq:
+    :param freq:
         Frequency in Hz
+    :type freq: unsigned long
 
-    :param unsigned long voltage:
+    :param voltage:
         Voltage in millivolts
+    :type voltage: unsigned long
 
 .. _`get_dynamic_power.description`:
 
@@ -184,8 +193,9 @@ devfreq_cooling_gen_tables
 
     Generate power and freq tables.
 
-    :param struct devfreq_cooling_device \*dfc:
+    :param dfc:
         Pointer to devfreq cooling device.
+    :type dfc: struct devfreq_cooling_device \*
 
 .. _`devfreq_cooling_gen_tables.generate-power-and-frequency-tables`:
 
@@ -220,14 +230,17 @@ of_devfreq_cooling_register_power
 
     Register devfreq cooling device, with OF and power information.
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to OF device_node.
+    :type np: struct device_node \*
 
-    :param struct devfreq \*df:
+    :param df:
         Pointer to devfreq device.
+    :type df: struct devfreq \*
 
-    :param struct devfreq_cooling_power \*dfc_power:
+    :param dfc_power:
         Pointer to devfreq_cooling_power.
+    :type dfc_power: struct devfreq_cooling_power \*
 
 .. _`of_devfreq_cooling_register_power.description`:
 
@@ -251,11 +264,13 @@ of_devfreq_cooling_register
 
     Register devfreq cooling device, with OF information.
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to OF device_node.
+    :type np: struct device_node \*
 
-    :param struct devfreq \*df:
+    :param df:
         Pointer to devfreq device.
+    :type df: struct devfreq \*
 
 .. _`devfreq_cooling_register`:
 
@@ -266,8 +281,9 @@ devfreq_cooling_register
 
     Register devfreq cooling device.
 
-    :param struct devfreq \*df:
+    :param df:
         Pointer to devfreq device.
+    :type df: struct devfreq \*
 
 .. _`devfreq_cooling_unregister`:
 
@@ -278,8 +294,9 @@ devfreq_cooling_unregister
 
     Unregister devfreq cooling device.
 
-    :param struct thermal_cooling_device \*cdev:
+    :param cdev:
         *undescribed*
+    :type cdev: struct thermal_cooling_device \*
 
 .. This file was automatic generated / don't edit.
 

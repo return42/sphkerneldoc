@@ -8,8 +8,9 @@
 
 .. c:function::  _I40E_TRACE_NAME( trace_name)
 
-    :param  trace_name:
+    :param trace_name:
         *undescribed*
+    :type trace_name: 
 
 .. _`_i40e_trace_name.like`:
 

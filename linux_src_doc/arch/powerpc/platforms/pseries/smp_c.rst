@@ -10,8 +10,9 @@ smp_startup_cpu
 
     start the given cpu
 
-    :param unsigned int lcpu:
+    :param lcpu:
         *undescribed*
+    :type lcpu: unsigned int
 
 .. _`smp_startup_cpu.description`:
 

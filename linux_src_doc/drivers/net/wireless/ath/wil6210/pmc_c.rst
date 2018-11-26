@@ -10,14 +10,17 @@ wil_pmc_alloc
 
     ring) and the required number of descriptors of required size. Initialize the descriptors as required by pmc dma. The descriptors' buffers dwords are initialized to hold dword's serial number in the lsw and reserved value PCM_DATA_INVALID_DW_VAL in the msw.
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param int num_descriptors:
+    :param num_descriptors:
         *undescribed*
+    :type num_descriptors: int
 
-    :param int descriptor_size:
+    :param descriptor_size:
         *undescribed*
+    :type descriptor_size: int
 
 .. _`wil_pmc_free`:
 
@@ -28,11 +31,13 @@ wil_pmc_free
 
     ring and release all buffers. At the end release the p-ring memory
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
-    :param int send_pmc_cmd:
+    :param send_pmc_cmd:
         *undescribed*
+    :type send_pmc_cmd: int
 
 .. _`wil_pmc_last_cmd_status`:
 
@@ -43,8 +48,9 @@ wil_pmc_last_cmd_status
 
     alloc/free/read. 0 - success or negative errno
 
-    :param struct wil6210_priv \*wil:
+    :param wil:
         *undescribed*
+    :type wil: struct wil6210_priv \*
 
 .. _`wil_pmc_read`:
 
@@ -55,17 +61,21 @@ wil_pmc_read
 
     depends on descriptor size configured during alloc request.
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
-    :param loff_t \*f_pos:
+    :param f_pos:
         *undescribed*
+    :type f_pos: loff_t \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@
 
     find opp_table struct using device pointer
 
-    :param struct device \*dev:
+    :param dev:
         device pointer used to lookup OPP table
+    :type dev: struct device \*
 
 .. _`_find_opp_table.description`:
 
@@ -39,8 +40,9 @@ dev_pm_opp_get_voltage
 
     Gets the voltage corresponding to an opp
 
-    :param struct dev_pm_opp \*opp:
+    :param opp:
         opp for which voltage has to be returned for
+    :type opp: struct dev_pm_opp \*
 
 .. _`dev_pm_opp_get_voltage.return`:
 
@@ -61,8 +63,9 @@ dev_pm_opp_get_freq
 
     Gets the frequency corresponding to an available opp
 
-    :param struct dev_pm_opp \*opp:
+    :param opp:
         opp for which frequency has to be returned for
+    :type opp: struct dev_pm_opp \*
 
 .. _`dev_pm_opp_get_freq.return`:
 
@@ -81,8 +84,9 @@ dev_pm_opp_is_turbo
 
     Returns if opp is turbo OPP or not
 
-    :param struct dev_pm_opp \*opp:
+    :param opp:
         opp for which turbo mode is being verified
+    :type opp: struct dev_pm_opp \*
 
 .. _`dev_pm_opp_is_turbo.description`:
 
@@ -109,8 +113,9 @@ dev_pm_opp_get_max_clock_latency
 
     Get max clock latency in nanoseconds
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
 .. _`dev_pm_opp_get_max_clock_latency.return`:
 
@@ -128,8 +133,9 @@ dev_pm_opp_get_max_volt_latency
 
     Get max voltage latency in nanoseconds
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
 .. _`dev_pm_opp_get_max_volt_latency.return`:
 
@@ -147,8 +153,9 @@ dev_pm_opp_get_max_transition_latency
 
     Get max transition latency in nanoseconds
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
 .. _`dev_pm_opp_get_max_transition_latency.return`:
 
@@ -167,8 +174,9 @@ dev_pm_opp_get_suspend_opp_freq
 
     Get frequency of suspend opp in Hz
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
 .. _`dev_pm_opp_get_suspend_opp_freq.return`:
 
@@ -187,8 +195,9 @@ dev_pm_opp_get_opp_count
 
     Get number of opps available in the opp table
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
 .. _`dev_pm_opp_get_opp_count.return`:
 
@@ -207,14 +216,17 @@ dev_pm_opp_find_freq_exact
 
     search for an exact frequency
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param unsigned long freq:
+    :param freq:
         frequency to search for
+    :type freq: unsigned long
 
-    :param bool available:
+    :param available:
         true/false - match for available opp
+    :type available: bool
 
 .. _`dev_pm_opp_find_freq_exact.return`:
 
@@ -270,11 +282,13 @@ dev_pm_opp_find_freq_ceil
 
     Search for an rounded ceil freq
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param unsigned long \*freq:
+    :param freq:
         Start frequency
+    :type freq: unsigned long \*
 
 .. _`dev_pm_opp_find_freq_ceil.description`:
 
@@ -325,11 +339,13 @@ dev_pm_opp_find_freq_floor
 
     Search for a rounded floor freq
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param unsigned long \*freq:
+    :param freq:
         Start frequency
+    :type freq: unsigned long \*
 
 .. _`dev_pm_opp_find_freq_floor.description`:
 
@@ -380,11 +396,13 @@ dev_pm_opp_set_rate
 
     Configure new OPP based on frequency
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param unsigned long target_freq:
+    :param target_freq:
         frequency to achieve
+    :type target_freq: unsigned long
 
 .. _`dev_pm_opp_set_rate.description`:
 
@@ -403,11 +421,13 @@ dev_pm_opp_remove
 
     Remove an OPP from OPP table
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param unsigned long freq:
+    :param freq:
         OPP to remove with matching 'freq'
+    :type freq: unsigned long
 
 .. _`dev_pm_opp_remove.description`:
 
@@ -425,20 +445,25 @@ This function removes an opp from the opp table.
 
     Allocate a OPP based on v1 bindings.
 
-    :param struct opp_table \*opp_table:
+    :param opp_table:
         OPP table
+    :type opp_table: struct opp_table \*
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param unsigned long freq:
+    :param freq:
         Frequency in Hz for this OPP
+    :type freq: unsigned long
 
-    :param long u_volt:
+    :param u_volt:
         Voltage in uVolts for this OPP
+    :type u_volt: long
 
-    :param bool dynamic:
+    :param dynamic:
         Dynamically added OPPs.
+    :type dynamic: bool
 
 .. _`_opp_add_v1.description`:
 
@@ -477,14 +502,17 @@ dev_pm_opp_set_supported_hw
 
     Set supported platforms
 
-    :param struct device \*dev:
+    :param dev:
         Device for which supported-hw has to be set.
+    :type dev: struct device \*
 
-    :param const u32 \*versions:
+    :param versions:
         Array of hierarchy of versions to match.
+    :type versions: const u32 \*
 
-    :param unsigned int count:
+    :param count:
         Number of elements in the array.
+    :type count: unsigned int
 
 .. _`dev_pm_opp_set_supported_hw.description`:
 
@@ -505,8 +533,9 @@ dev_pm_opp_put_supported_hw
 
     Releases resources blocked for supported hw
 
-    :param struct opp_table \*opp_table:
+    :param opp_table:
         OPP table returned by \ :c:func:`dev_pm_opp_set_supported_hw`\ .
+    :type opp_table: struct opp_table \*
 
 .. _`dev_pm_opp_put_supported_hw.description`:
 
@@ -526,11 +555,13 @@ dev_pm_opp_set_prop_name
 
     Set prop-extn name
 
-    :param struct device \*dev:
+    :param dev:
         Device for which the prop-name has to be set.
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name to postfix to properties.
+    :type name: const char \*
 
 .. _`dev_pm_opp_set_prop_name.description`:
 
@@ -551,8 +582,9 @@ dev_pm_opp_put_prop_name
 
     Releases resources blocked for prop-name
 
-    :param struct opp_table \*opp_table:
+    :param opp_table:
         OPP table returned by \ :c:func:`dev_pm_opp_set_prop_name`\ .
+    :type opp_table: struct opp_table \*
 
 .. _`dev_pm_opp_put_prop_name.description`:
 
@@ -572,14 +604,17 @@ dev_pm_opp_set_regulators
 
     Set regulator names for the device
 
-    :param struct device \*dev:
+    :param dev:
         Device for which regulator name is being set.
+    :type dev: struct device \*
 
-    :param const char \* const names:
+    :param names:
         Array of pointers to the names of the regulator.
+    :type names: const char \* const
 
-    :param unsigned int count:
+    :param count:
         Number of regulators.
+    :type count: unsigned int
 
 .. _`dev_pm_opp_set_regulators.description`:
 
@@ -601,8 +636,9 @@ dev_pm_opp_put_regulators
 
     Releases resources blocked for regulator
 
-    :param struct opp_table \*opp_table:
+    :param opp_table:
         OPP table returned from \ :c:func:`dev_pm_opp_set_regulators`\ .
+    :type opp_table: struct opp_table \*
 
 .. _`dev_pm_opp_set_clkname`:
 
@@ -613,11 +649,13 @@ dev_pm_opp_set_clkname
 
     Set clk name for the device
 
-    :param struct device \*dev:
+    :param dev:
         Device for which clk name is being set.
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         Clk name.
+    :type name: const char \*
 
 .. _`dev_pm_opp_set_clkname.description`:
 
@@ -640,8 +678,9 @@ dev_pm_opp_put_clkname
 
     Releases resources blocked for clk.
 
-    :param struct opp_table \*opp_table:
+    :param opp_table:
         OPP table returned from \ :c:func:`dev_pm_opp_set_clkname`\ .
+    :type opp_table: struct opp_table \*
 
 .. _`dev_pm_opp_register_set_opp_helper`:
 
@@ -652,8 +691,9 @@ dev_pm_opp_register_set_opp_helper
 
     Register custom set OPP helper
 
-    :param struct device \*dev:
+    :param dev:
         Device for which the helper is getting registered.
+    :type dev: struct device \*
 
     :param int (\*set_opp)(struct dev_pm_set_opp_data \*data):
         Custom set OPP helper.
@@ -677,8 +717,9 @@ dev_pm_opp_unregister_set_opp_helper
 
     Releases resources blocked for set_opp helper
 
-    :param struct opp_table \*opp_table:
+    :param opp_table:
         OPP table returned from \ :c:func:`dev_pm_opp_register_set_opp_helper`\ .
+    :type opp_table: struct opp_table \*
 
 .. _`dev_pm_opp_unregister_set_opp_helper.description`:
 
@@ -696,14 +737,17 @@ dev_pm_opp_add
 
     Add an OPP table from a table definitions
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param unsigned long freq:
+    :param freq:
         Frequency in Hz for this OPP
+    :type freq: unsigned long
 
-    :param unsigned long u_volt:
+    :param u_volt:
         Voltage in uVolts for this OPP
+    :type u_volt: unsigned long
 
 .. _`dev_pm_opp_add.description`:
 
@@ -734,14 +778,17 @@ Duplicate OPPs (both freq and volt are same) and !opp->available
 
     helper to set the availability of an opp
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param unsigned long freq:
+    :param freq:
         OPP frequency to modify availability
+    :type freq: unsigned long
 
-    :param bool availability_req:
+    :param availability_req:
         availability status requested for this opp
+    :type availability_req: bool
 
 .. _`_opp_set_availability.description`:
 
@@ -769,11 +816,13 @@ dev_pm_opp_enable
 
     Enable a specific OPP
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param unsigned long freq:
+    :param freq:
         OPP frequency to enable
+    :type freq: unsigned long
 
 .. _`dev_pm_opp_enable.description`:
 
@@ -802,11 +851,13 @@ dev_pm_opp_disable
 
     Disable a specific OPP
 
-    :param struct device \*dev:
+    :param dev:
         device for which we do this operation
+    :type dev: struct device \*
 
-    :param unsigned long freq:
+    :param freq:
         OPP frequency to disable
+    :type freq: unsigned long
 
 .. _`dev_pm_opp_disable.description`:
 
@@ -836,11 +887,13 @@ dev_pm_opp_register_notifier
 
     Register OPP notifier for the device
 
-    :param struct device \*dev:
+    :param dev:
         Device for which notifier needs to be registered
+    :type dev: struct device \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Notifier block to be registered
+    :type nb: struct notifier_block \*
 
 .. _`dev_pm_opp_register_notifier.return`:
 
@@ -858,11 +911,13 @@ dev_pm_opp_unregister_notifier
 
     Unregister OPP notifier for the device
 
-    :param struct device \*dev:
+    :param dev:
         Device for which notifier needs to be unregistered
+    :type dev: struct device \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         Notifier block to be unregistered
+    :type nb: struct notifier_block \*
 
 .. _`dev_pm_opp_unregister_notifier.return`:
 
@@ -880,8 +935,9 @@ dev_pm_opp_remove_table
 
     Free all OPPs associated with the device
 
-    :param struct device \*dev:
+    :param dev:
         device pointer used to lookup OPP table.
+    :type dev: struct device \*
 
 .. _`dev_pm_opp_remove_table.description`:
 

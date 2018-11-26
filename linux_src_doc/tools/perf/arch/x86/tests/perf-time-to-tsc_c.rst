@@ -10,11 +10,13 @@ test__perf_time_to_tsc
 
     test converting perf time to TSC.
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
-    :param int subtest __maybe_unused:
+    :param __maybe_unused:
         *undescribed*
+    :type __maybe_unused: int subtest
 
 .. _`test__perf_time_to_tsc.description`:
 

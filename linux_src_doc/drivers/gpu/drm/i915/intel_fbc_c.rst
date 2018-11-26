@@ -28,8 +28,9 @@ intel_fbc_is_active
 
     Is FBC active?
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_fbc_is_active.description`:
 
@@ -50,8 +51,9 @@ __intel_fbc_disable
 
     disable FBC
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`__intel_fbc_disable.description`:
 
@@ -70,11 +72,13 @@ intel_fbc_choose_crtc
 
     select a CRTC to enable FBC on
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param struct intel_atomic_state \*state:
+    :param state:
         the atomic state structure
+    :type state: struct intel_atomic_state \*
 
 .. _`intel_fbc_choose_crtc.description`:
 
@@ -97,14 +101,17 @@ intel_fbc_enable
 
     tries to enable FBC on the CRTC
 
-    :param struct intel_crtc \*crtc:
+    :param crtc:
         the CRTC
+    :type crtc: struct intel_crtc \*
 
-    :param struct intel_crtc_state \*crtc_state:
+    :param crtc_state:
         corresponding \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  for \ ``crtc``\ 
+    :type crtc_state: struct intel_crtc_state \*
 
-    :param struct intel_plane_state \*plane_state:
+    :param plane_state:
         corresponding \ :c:type:`struct drm_plane_state <drm_plane_state>`\  for the primary plane of \ ``crtc``\ 
+    :type plane_state: struct intel_plane_state \*
 
 .. _`intel_fbc_enable.description`:
 
@@ -125,8 +132,9 @@ intel_fbc_disable
 
     disable FBC if it's associated with crtc
 
-    :param struct intel_crtc \*crtc:
+    :param crtc:
         the CRTC
+    :type crtc: struct intel_crtc \*
 
 .. _`intel_fbc_disable.description`:
 
@@ -144,8 +152,9 @@ intel_fbc_global_disable
 
     globally disable FBC
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_fbc_global_disable.description`:
 
@@ -163,8 +172,9 @@ intel_fbc_handle_fifo_underrun_irq
 
     disable FBC when we get a FIFO underrun
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_fbc_handle_fifo_underrun_irq.description`:
 
@@ -190,8 +200,9 @@ intel_fbc_init_pipe_state
 
     initialize FBC's CRTC visibility tracking
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_fbc_init_pipe_state.description`:
 
@@ -211,8 +222,9 @@ intel_fbc_init
 
     Initialize FBC
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         the i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_fbc_init.description`:
 

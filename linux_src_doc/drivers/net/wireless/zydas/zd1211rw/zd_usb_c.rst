@@ -10,8 +10,9 @@ zd_usb_disable_tx
 
     disable transmission
 
-    :param struct zd_usb \*usb:
+    :param usb:
         the zd1211rw-private USB structure
+    :type usb: struct zd_usb \*
 
 .. _`zd_usb_disable_tx.description`:
 
@@ -29,8 +30,9 @@ zd_usb_enable_tx
 
     enables transmission
 
-    :param struct zd_usb \*usb:
+    :param usb:
         a \ :c:type:`struct zd_usb <zd_usb>`\  pointer
+    :type usb: struct zd_usb \*
 
 .. _`zd_usb_enable_tx.description`:
 
@@ -49,8 +51,9 @@ tx_urb_complete
 
     completes the execution of an URB
 
-    :param struct urb \*urb:
+    :param urb:
         a URB
+    :type urb: struct urb \*
 
 .. _`tx_urb_complete.description`:
 
@@ -69,11 +72,13 @@ zd_usb_tx
 
     initiates transfer of a frame of the device
 
-    :param struct zd_usb \*usb:
+    :param usb:
         the zd1211rw-private USB structure
+    :type usb: struct zd_usb \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         a \ :c:type:`struct sk_buff <sk_buff>`\  pointer
+    :type skb: struct sk_buff \*
 
 .. _`zd_usb_tx.description`:
 

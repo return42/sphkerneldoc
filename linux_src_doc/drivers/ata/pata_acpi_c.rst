@@ -10,11 +10,13 @@ pacpi_pre_reset
 
     check for 40/80 pin
 
-    :param struct ata_link \*link:
+    :param link:
         *undescribed*
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`pacpi_pre_reset.description`:
 
@@ -32,8 +34,9 @@ pacpi_cable_detect
 
     cable type detection
 
-    :param struct ata_port \*ap:
+    :param ap:
         port to detect
+    :type ap: struct ata_port \*
 
 .. _`pacpi_cable_detect.description`:
 
@@ -51,11 +54,13 @@ pacpi_discover_modes
 
     filter non ACPI modes
 
-    :param struct ata_port \*ap:
+    :param ap:
         *undescribed*
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`pacpi_discover_modes.description`:
 
@@ -74,11 +79,13 @@ pacpi_mode_filter
 
     mode filter for ACPI
 
-    :param struct ata_device \*adev:
+    :param adev:
         device
+    :type adev: struct ata_device \*
 
-    :param unsigned long mask:
+    :param mask:
         mask of valid modes
+    :type mask: unsigned long
 
 .. _`pacpi_mode_filter.description`:
 
@@ -97,11 +104,13 @@ pacpi_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`pacpi_set_dmamode`:
 
@@ -112,11 +121,13 @@ pacpi_set_dmamode
 
     set initial DMA mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`pacpi_qc_issue`:
 
@@ -127,8 +138,9 @@ pacpi_qc_issue
 
     command issue
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         command pending
+    :type qc: struct ata_queued_cmd \*
 
 .. _`pacpi_qc_issue.description`:
 
@@ -148,8 +160,9 @@ pacpi_port_start
 
     port setup
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port being set up
+    :type ap: struct ata_port \*
 
 .. _`pacpi_port_start.description`:
 
@@ -167,11 +180,13 @@ pacpi_init_one
 
     Register ACPI ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct pci_device_id \*
 
 .. _`pacpi_init_one.description`:
 

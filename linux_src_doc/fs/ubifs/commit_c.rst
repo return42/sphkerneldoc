@@ -10,8 +10,9 @@ do_commit
 
     commit the journal.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`do_commit.description`:
 
@@ -31,8 +32,9 @@ run_bg_commit
 
     run background commit if it is needed.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`run_bg_commit.description`:
 
@@ -51,8 +53,9 @@ ubifs_bg_thread
 
     UBIFS background thread function.
 
-    :param void \*info:
+    :param info:
         points to the file-system description object
+    :type info: void \*
 
 .. _`ubifs_bg_thread.description`:
 
@@ -76,8 +79,9 @@ ubifs_commit_required
 
     set commit state to "required".
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_commit_required.description`:
 
@@ -96,8 +100,9 @@ ubifs_request_bg_commit
 
     notify the background thread to do a commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_request_bg_commit.description`:
 
@@ -116,8 +121,9 @@ wait_for_commit
 
     wait for commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`wait_for_commit.description`:
 
@@ -135,8 +141,9 @@ ubifs_run_commit
 
     run or wait for commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_run_commit.description`:
 
@@ -155,8 +162,9 @@ ubifs_gc_should_commit
 
     determine if it is time for GC to run commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_gc_should_commit.description`:
 
@@ -222,11 +230,13 @@ dbg_old_index_check_init
 
     get information for the next old index check.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zroot:
+    :param zroot:
         root of the index
+    :type zroot: struct ubifs_zbranch \*
 
 .. _`dbg_old_index_check_init.description`:
 
@@ -247,11 +257,13 @@ dbg_check_old_index
 
     check the old copy of the index.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_zbranch \*zroot:
+    :param zroot:
         root of the new index
+    :type zroot: struct ubifs_zbranch \*
 
 .. _`dbg_check_old_index.description`:
 

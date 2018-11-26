@@ -10,8 +10,9 @@ cvm_oct_free_work
 
     Free a work queue entry
 
-    :param void \*work_queue_entry:
+    :param work_queue_entry:
         Work queue entry to free
+    :type work_queue_entry: void \*
 
 .. _`cvm_oct_free_work.description`:
 
@@ -29,8 +30,9 @@ cvm_oct_common_get_stats
 
     get the low level ethernet statistics
 
-    :param struct net_device \*dev:
+    :param dev:
         Device to get the statistics from
+    :type dev: struct net_device \*
 
 .. _`cvm_oct_common_get_stats.description`:
 
@@ -48,11 +50,13 @@ cvm_oct_common_change_mtu
 
     change the link MTU
 
-    :param struct net_device \*dev:
+    :param dev:
         Device to change
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         The new MTU
+    :type new_mtu: int
 
 .. _`cvm_oct_common_change_mtu.description`:
 
@@ -70,8 +74,9 @@ cvm_oct_common_set_multicast_list
 
     set the multicast list
 
-    :param struct net_device \*dev:
+    :param dev:
         Device to work on
+    :type dev: struct net_device \*
 
 .. _`cvm_oct_common_set_mac_address`:
 
@@ -82,11 +87,13 @@ cvm_oct_common_set_mac_address
 
     set the hardware MAC address for a device
 
-    :param struct net_device \*dev:
+    :param dev:
         The device in question.
+    :type dev: struct net_device \*
 
-    :param void \*addr:
+    :param addr:
         Socket address.
+    :type addr: void \*
 
 .. _`cvm_oct_common_set_mac_address.description`:
 
@@ -104,8 +111,9 @@ cvm_oct_common_init
 
     per network device initialization
 
-    :param struct net_device \*dev:
+    :param dev:
         Device to initialize
+    :type dev: struct net_device \*
 
 .. _`cvm_oct_common_init.description`:
 

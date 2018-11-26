@@ -10,11 +10,13 @@ new_vmap_block
 
     allocates new vmap_block and occupies 2^order pages in this block. Of course pages number can't exceed VMAP_BBMAP_BITS
 
-    :param unsigned int order:
+    :param order:
         how many 2^order pages should be occupied in newly allocated block
+    :type order: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         flags for the page level allocator
+    :type gfp_mask: gfp_t
 
 .. _`new_vmap_block.return`:
 
@@ -32,8 +34,9 @@ vm_unmap_aliases
 
     unmap outstanding lazy aliases in the vmap layer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vm_unmap_aliases.description`:
 
@@ -59,11 +62,13 @@ vm_unmap_ram
 
     unmap linear kernel address space set up by vm_map_ram
 
-    :param const void \*mem:
+    :param mem:
         the pointer returned by vm_map_ram
+    :type mem: const void \*
 
-    :param unsigned int count:
+    :param count:
         the count passed to that vm_map_ram call (cannot unmap partial)
+    :type count: unsigned int
 
 .. _`vm_map_ram`:
 
@@ -74,17 +79,21 @@ vm_map_ram
 
     map pages linearly into kernel virtual address (vmalloc space)
 
-    :param struct page \*\*pages:
+    :param pages:
         an array of pointers to the pages to be mapped
+    :type pages: struct page \*\*
 
-    :param unsigned int count:
+    :param count:
         number of pages
+    :type count: unsigned int
 
-    :param int node:
+    :param node:
         prefer to allocate data structures on this node
+    :type node: int
 
-    :param pgprot_t prot:
+    :param prot:
         memory protection to use. PAGE_KERNEL for regular RAM
+    :type prot: pgprot_t
 
 .. _`vm_map_ram.description`:
 
@@ -113,8 +122,9 @@ vm_area_add_early
 
     add vmap area early during boot
 
-    :param struct vm_struct \*vm:
+    :param vm:
         vm_struct to add
+    :type vm: struct vm_struct \*
 
 .. _`vm_area_add_early.description`:
 
@@ -122,7 +132,7 @@ Description
 -----------
 
 This function is used to add fixed kernel vm area to vmlist before
-\ :c:func:`vmalloc_init`\  is called.  \ ``vm``\ ->addr, \ ``vm``\ ->size, and \ ``vm``\ ->flags
+\ :c:func:`vmalloc_init`\  is called.  \ ``vm->addr``\ , \ ``vm->size``\ , and \ ``vm->flags``\ 
 should contain proper values and the other fields should be zero.
 
 DO NOT USE THIS FUNCTION UNLESS YOU KNOW WHAT YOU'RE DOING.
@@ -136,11 +146,13 @@ vm_area_register_early
 
     register vmap area early during boot
 
-    :param struct vm_struct \*vm:
+    :param vm:
         vm_struct to register
+    :type vm: struct vm_struct \*
 
-    :param size_t align:
+    :param align:
         requested alignment
+    :type align: size_t
 
 .. _`vm_area_register_early.description`:
 
@@ -148,7 +160,7 @@ Description
 -----------
 
 This function is used to register kernel vm area before
-\ :c:func:`vmalloc_init`\  is called.  \ ``vm``\ ->size and \ ``vm``\ ->flags should contain
+\ :c:func:`vmalloc_init`\  is called.  \ ``vm->size``\  and \ ``vm->flags``\  should contain
 proper values on entry and other fields should be zero.  On return,
 vm->addr contains the allocated address.
 
@@ -163,17 +175,21 @@ map_kernel_range_noflush
 
     map kernel VM area with the specified pages
 
-    :param unsigned long addr:
+    :param addr:
         start of the VM area to map
+    :type addr: unsigned long
 
-    :param unsigned long size:
+    :param size:
         size of the VM area to map
+    :type size: unsigned long
 
-    :param pgprot_t prot:
+    :param prot:
         page protection flags to use
+    :type prot: pgprot_t
 
-    :param struct page \*\*pages:
+    :param pages:
         pages to map
+    :type pages: struct page \*\*
 
 .. _`map_kernel_range_noflush.description`:
 
@@ -209,11 +225,13 @@ unmap_kernel_range_noflush
 
     unmap kernel VM area
 
-    :param unsigned long addr:
+    :param addr:
         start of the VM area to unmap
+    :type addr: unsigned long
 
-    :param unsigned long size:
+    :param size:
         size of the VM area to unmap
+    :type size: unsigned long
 
 .. _`unmap_kernel_range_noflush.description`:
 
@@ -242,11 +260,13 @@ unmap_kernel_range
 
     unmap kernel VM area and flush cache and TLB
 
-    :param unsigned long addr:
+    :param addr:
         start of the VM area to unmap
+    :type addr: unsigned long
 
-    :param unsigned long size:
+    :param size:
         size of the VM area to unmap
+    :type size: unsigned long
 
 .. _`unmap_kernel_range.description`:
 
@@ -265,11 +285,13 @@ get_vm_area
 
     reserve a contiguous kernel virtual area
 
-    :param unsigned long size:
+    :param size:
         size of the area
+    :type size: unsigned long
 
-    :param unsigned long flags:
+    :param flags:
         \ ``VM_IOREMAP``\  for I/O mappings or VM_ALLOC
+    :type flags: unsigned long
 
 .. _`get_vm_area.description`:
 
@@ -289,8 +311,9 @@ find_vm_area
 
     find a continuous kernel virtual area
 
-    :param const void \*addr:
+    :param addr:
         base address
+    :type addr: const void \*
 
 .. _`find_vm_area.description`:
 
@@ -310,8 +333,9 @@ remove_vm_area
 
     find and remove a continuous kernel virtual area
 
-    :param const void \*addr:
+    :param addr:
         base address
+    :type addr: const void \*
 
 .. _`remove_vm_area.description`:
 
@@ -331,8 +355,9 @@ vfree_atomic
 
     release memory allocated by \ :c:func:`vmalloc`\ 
 
-    :param const void \*addr:
+    :param addr:
         memory base address
+    :type addr: const void \*
 
 .. _`vfree_atomic.description`:
 
@@ -351,8 +376,9 @@ vfree
 
     release memory allocated by \ :c:func:`vmalloc`\ 
 
-    :param const void \*addr:
+    :param addr:
         memory base address
+    :type addr: const void \*
 
 .. _`vfree.description`:
 
@@ -366,6 +392,8 @@ Description
      Must not be called in NMI context (strictly speaking, only if we don't
      have CONFIG_ARCH_HAVE_NMI_SAFE_CMPXCHG, but making the calling
      conventions for \ :c:func:`vfree`\  arch-depenedent would be a really bad idea)
+
+     May sleep if called *not* from interrupt context.
 
 .. _`vfree.note`:
 
@@ -383,8 +411,9 @@ vunmap
 
     release virtual mapping obtained by \ :c:func:`vmap`\ 
 
-    :param const void \*addr:
+    :param addr:
         memory base address
+    :type addr: const void \*
 
 .. _`vunmap.description`:
 
@@ -405,17 +434,21 @@ vmap
 
     map an array of pages into virtually contiguous space
 
-    :param struct page \*\*pages:
+    :param pages:
         array of page pointers
+    :type pages: struct page \*\*
 
-    :param unsigned int count:
+    :param count:
         number of pages to map
+    :type count: unsigned int
 
-    :param unsigned long flags:
+    :param flags:
         vm_area->flags
+    :type flags: unsigned long
 
-    :param pgprot_t prot:
+    :param prot:
         page protection for the mapping
+    :type prot: pgprot_t
 
 .. _`vmap.description`:
 
@@ -434,32 +467,41 @@ __vmalloc_node_range
 
     allocate virtually contiguous memory
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
-    :param unsigned long align:
+    :param align:
         desired alignment
+    :type align: unsigned long
 
-    :param unsigned long start:
+    :param start:
         vm area range start
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         vm area range end
+    :type end: unsigned long
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         flags for the page level allocator
+    :type gfp_mask: gfp_t
 
-    :param pgprot_t prot:
+    :param prot:
         protection mask for the allocated pages
+    :type prot: pgprot_t
 
-    :param unsigned long vm_flags:
+    :param vm_flags:
         additional vm area flags (e.g. \ ``VM_NO_GUARD``\ )
+    :type vm_flags: unsigned long
 
-    :param int node:
+    :param node:
         node to use for allocation or NUMA_NO_NODE
+    :type node: int
 
-    :param const void \*caller:
+    :param caller:
         caller's return address
+    :type caller: const void \*
 
 .. _`__vmalloc_node_range.description`:
 
@@ -479,23 +521,29 @@ __vmalloc_node
 
     allocate virtually contiguous memory
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
-    :param unsigned long align:
+    :param align:
         desired alignment
+    :type align: unsigned long
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         flags for the page level allocator
+    :type gfp_mask: gfp_t
 
-    :param pgprot_t prot:
+    :param prot:
         protection mask for the allocated pages
+    :type prot: pgprot_t
 
-    :param int node:
+    :param node:
         node to use for allocation or NUMA_NO_NODE
+    :type node: int
 
-    :param const void \*caller:
+    :param caller:
         caller's return address
+    :type caller: const void \*
 
 .. _`__vmalloc_node.description`:
 
@@ -521,10 +569,11 @@ vmalloc
 
     allocate virtually contiguous memory
 
-    :param unsigned long size:
+    :param size:
         allocation size
         Allocate enough pages to cover \ ``size``\  from the page level
         allocator and map them into contiguous kernel virtual space.
+    :type size: unsigned long
 
 .. _`vmalloc.description`:
 
@@ -543,11 +592,12 @@ vzalloc
 
     allocate virtually contiguous memory with zero fill
 
-    :param unsigned long size:
+    :param size:
         allocation size
         Allocate enough pages to cover \ ``size``\  from the page level
         allocator and map them into contiguous kernel virtual space.
         The memory allocated is set to zero.
+    :type size: unsigned long
 
 .. _`vzalloc.description`:
 
@@ -566,8 +616,9 @@ vmalloc_user
 
     allocate zeroed virtually contiguous memory for userspace
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
 .. _`vmalloc_user.description`:
 
@@ -586,11 +637,13 @@ vmalloc_node
 
     allocate memory on a specific node
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
-    :param int node:
+    :param node:
         numa node
+    :type node: int
 
 .. _`vmalloc_node.description`:
 
@@ -612,11 +665,13 @@ vzalloc_node
 
     allocate memory on a specific node with zero fill
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
-    :param int node:
+    :param node:
         numa node
+    :type node: int
 
 .. _`vzalloc_node.description`:
 
@@ -639,8 +694,9 @@ vmalloc_exec
 
     allocate virtually contiguous, executable memory
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
 .. _`vmalloc_exec.description`:
 
@@ -663,8 +719,9 @@ vmalloc_32
 
     allocate virtually contiguous memory (32bit addressable)
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
 .. _`vmalloc_32.description`:
 
@@ -683,8 +740,9 @@ vmalloc_32_user
 
     allocate zeroed virtually contiguous 32bit memory
 
-    :param unsigned long size:
+    :param size:
         allocation size
+    :type size: unsigned long
 
 .. _`vmalloc_32_user.description`:
 
@@ -703,14 +761,17 @@ vread
 
     read vmalloc area in a safe way.
 
-    :param char \*buf:
+    :param buf:
         buffer for reading data
+    :type buf: char \*
 
-    :param char \*addr:
+    :param addr:
         vm address.
+    :type addr: char \*
 
-    :param unsigned long count:
+    :param count:
         number of bytes to be read.
+    :type count: unsigned long
 
 .. _`vread.description`:
 
@@ -749,14 +810,17 @@ vwrite
 
     write vmalloc area in a safe way.
 
-    :param char \*buf:
+    :param buf:
         buffer for source data
+    :type buf: char \*
 
-    :param char \*addr:
+    :param addr:
         vm address.
+    :type addr: char \*
 
-    :param unsigned long count:
+    :param count:
         number of bytes to be read.
+    :type count: unsigned long
 
 .. _`vwrite.description`:
 
@@ -796,17 +860,21 @@ remap_vmalloc_range_partial
 
     map vmalloc pages to userspace
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vma to cover
+    :type vma: struct vm_area_struct \*
 
-    :param unsigned long uaddr:
+    :param uaddr:
         target user address to start at
+    :type uaddr: unsigned long
 
-    :param void \*kaddr:
+    :param kaddr:
         virtual address of vmalloc kernel memory
+    :type kaddr: void \*
 
-    :param unsigned long size:
+    :param size:
         size of map area
+    :type size: unsigned long
 
 .. _`remap_vmalloc_range_partial.return`:
 
@@ -831,14 +899,17 @@ remap_vmalloc_range
 
     map vmalloc pages to userspace
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vma to cover (map full range of vma)
+    :type vma: struct vm_area_struct \*
 
-    :param void \*addr:
+    :param addr:
         vmalloc memory
+    :type addr: void \*
 
-    :param unsigned long pgoff:
+    :param pgoff:
         number of pages into addr before first page to map
+    :type pgoff: unsigned long
 
 .. _`remap_vmalloc_range.return`:
 
@@ -862,11 +933,13 @@ alloc_vm_area
 
     allocate a range of kernel address space
 
-    :param size_t size:
+    :param size:
         size of the area
+    :type size: size_t
 
-    :param pte_t \*\*ptes:
+    :param ptes:
         returns the PTEs for the address space
+    :type ptes: pte_t \*\*
 
 .. _`alloc_vm_area.return`:
 
@@ -891,14 +964,17 @@ pvm_find_next_prev
 
     find the next and prev vmap_area surrounding \ ``end``\ 
 
-    :param unsigned long end:
+    :param end:
         target address
+    :type end: unsigned long
 
-    :param struct vmap_area \*\*pnext:
+    :param pnext:
         out arg for the next vmap_area
+    :type pnext: struct vmap_area \*\*
 
-    :param struct vmap_area \*\*pprev:
+    :param pprev:
         out arg for the previous vmap_area
+    :type pprev: struct vmap_area \*\*
 
 .. _`pvm_find_next_prev.return`:
 
@@ -920,14 +996,17 @@ pvm_determine_end
 
     find the highest aligned address between two vmap_areas
 
-    :param struct vmap_area \*\*pnext:
+    :param pnext:
         in/out arg for the next vmap_area
+    :type pnext: struct vmap_area \*\*
 
-    :param struct vmap_area \*\*pprev:
+    :param pprev:
         in/out arg for the previous vmap_area
+    :type pprev: struct vmap_area \*\*
 
-    :param unsigned long align:
+    :param align:
         alignment
+    :type align: unsigned long
 
 .. _`pvm_determine_end.return`:
 
@@ -953,17 +1032,21 @@ pcpu_get_vm_areas
 
     allocate vmalloc areas for percpu allocator
 
-    :param const unsigned long \*offsets:
+    :param offsets:
         array containing offset of each area
+    :type offsets: const unsigned long \*
 
-    :param const size_t \*sizes:
+    :param sizes:
         array containing size of each area
+    :type sizes: const size_t \*
 
-    :param int nr_vms:
+    :param nr_vms:
         the number of areas to allocate
+    :type nr_vms: int
 
-    :param size_t align:
+    :param align:
         alignment, all entries in \ ``offsets``\  and \ ``sizes``\  must be aligned to this
+    :type align: size_t
 
 .. _`pcpu_get_vm_areas.return`:
 
@@ -996,11 +1079,13 @@ pcpu_free_vm_areas
 
     free vmalloc areas for percpu allocator
 
-    :param struct vm_struct \*\*vms:
+    :param vms:
         vm_struct pointer array returned by \ :c:func:`pcpu_get_vm_areas`\ 
+    :type vms: struct vm_struct \*\*
 
-    :param int nr_vms:
+    :param nr_vms:
         the number of allocated areas
+    :type nr_vms: int
 
 .. _`pcpu_free_vm_areas.description`:
 

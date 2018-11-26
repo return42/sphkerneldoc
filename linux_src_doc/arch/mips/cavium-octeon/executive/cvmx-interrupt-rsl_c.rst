@@ -10,8 +10,9 @@
 
     CN58XX.
 
-    :param int block:
+    :param block:
         Interface to enable 0-1
+    :type block: int
 
 .. _`__cvmx_interrupt_gmxx_enable`:
 
@@ -20,8 +21,9 @@
 
 .. c:function:: void __cvmx_interrupt_gmxx_enable(int interface)
 
-    :param int interface:
+    :param interface:
         Interface to enable
+    :type interface: int
 
 .. This file was automatic generated / don't edit.
 

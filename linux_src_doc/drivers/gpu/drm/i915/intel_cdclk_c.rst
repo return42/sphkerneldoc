@@ -39,8 +39,9 @@ skl_init_cdclk
 
     Initialize CDCLK on SKL
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`skl_init_cdclk.description`:
 
@@ -61,8 +62,9 @@ skl_uninit_cdclk
 
     Uninitialize CDCLK on SKL
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`skl_uninit_cdclk.description`:
 
@@ -81,8 +83,9 @@ bxt_init_cdclk
 
     Initialize CDCLK on BXT
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`bxt_init_cdclk.description`:
 
@@ -103,8 +106,9 @@ bxt_uninit_cdclk
 
     Uninitialize CDCLK on BXT
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`bxt_uninit_cdclk.description`:
 
@@ -123,8 +127,9 @@ icl_init_cdclk
 
     Initialize CDCLK on ICL
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`icl_init_cdclk.description`:
 
@@ -145,8 +150,9 @@ icl_uninit_cdclk
 
     Uninitialize CDCLK on ICL
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`icl_uninit_cdclk.description`:
 
@@ -165,8 +171,9 @@ cnl_init_cdclk
 
     Initialize CDCLK on CNL
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`cnl_init_cdclk.description`:
 
@@ -187,8 +194,9 @@ cnl_uninit_cdclk
 
     Uninitialize CDCLK on CNL
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`cnl_uninit_cdclk.description`:
 
@@ -207,11 +215,13 @@ intel_cdclk_needs_modeset
 
     Determine if two CDCLK states require a modeset on all pipes
 
-    :param const struct intel_cdclk_state \*a:
+    :param a:
         first CDCLK state
+    :type a: const struct intel_cdclk_state \*
 
-    :param const struct intel_cdclk_state \*b:
+    :param b:
         second CDCLK state
+    :type b: const struct intel_cdclk_state \*
 
 .. _`intel_cdclk_needs_modeset.return`:
 
@@ -229,11 +239,13 @@ intel_cdclk_changed
 
     Determine if two CDCLK states are different
 
-    :param const struct intel_cdclk_state \*a:
+    :param a:
         first CDCLK state
+    :type a: const struct intel_cdclk_state \*
 
-    :param const struct intel_cdclk_state \*b:
+    :param b:
         second CDCLK state
+    :type b: const struct intel_cdclk_state \*
 
 .. _`intel_cdclk_changed.return`:
 
@@ -251,11 +263,13 @@ intel_set_cdclk
 
     Push the CDCLK state to the hardware
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param const struct intel_cdclk_state \*cdclk_state:
+    :param cdclk_state:
         new CDCLK state
+    :type cdclk_state: const struct intel_cdclk_state \*
 
 .. _`intel_set_cdclk.description`:
 
@@ -274,8 +288,9 @@ intel_update_max_cdclk
 
     Determine the maximum support CDCLK frequency
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_update_max_cdclk.description`:
 
@@ -295,8 +310,9 @@ intel_update_cdclk
 
     Determine the current CDCLK frequency
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_update_cdclk.description`:
 
@@ -314,8 +330,9 @@ intel_update_rawclk
 
     Determine the current RAWCLK frequency
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_update_rawclk.description`:
 
@@ -334,8 +351,9 @@ intel_init_cdclk_hooks
 
     Initialize CDCLK related modesetting hooks
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ dce110_enable_accelerated_mode
 
     1. Power down all DC HW blocks 2. Disable VGA engine on all controllers 3. Enable power gating for controller 4. Set acc_mode_change bit (VBIOS will clear this bit when going to FSDOS)
 
-    :param struct dc \*dc:
+    :param dc:
         *undescribed*
+    :type dc: struct dc \*
 
-    :param struct dc_state \*context:
+    :param context:
         *undescribed*
+    :type context: struct dc_state \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ amdgpu_gfx_create_bitmask
 
     create a bitmask
 
-    :param u32 bit_width:
+    :param bit_width:
         length of the mask
+    :type bit_width: u32
 
 .. _`amdgpu_gfx_create_bitmask.description`:
 

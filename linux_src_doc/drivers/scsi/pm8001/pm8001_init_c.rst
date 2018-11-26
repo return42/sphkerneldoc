@@ -10,11 +10,13 @@ pm8001_phy_init
 
     initiate our adapter phys \ ``pm8001_ha``\ : our hba structure. \ ``phy_id``\ : phy id.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         *undescribed*
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param int phy_id:
+    :param phy_id:
         *undescribed*
+    :type phy_id: int
 
 .. _`pm8001_free`:
 
@@ -25,8 +27,9 @@ pm8001_free
 
     free hba \ ``pm8001_ha``\ :   our hba structure.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         *undescribed*
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_tasklet`:
 
@@ -37,8 +40,9 @@ pm8001_tasklet
 
     x interrupt handler
 
-    :param unsigned long opaque:
+    :param opaque:
         the passed general host adapter struct
+    :type opaque: unsigned long
 
 .. _`pm8001_tasklet.note`:
 
@@ -56,12 +60,14 @@ pm8001_interrupt_handler_msix
 
     main MSIX interrupt handler. It obtains the vector number and calls the equivalent bottom half or services directly.
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*opaque:
+    :param opaque:
         the passed outbound queue/vector. Host structure is
         retrieved from the same.
+    :type opaque: void \*
 
 .. _`pm8001_interrupt_handler_intx`:
 
@@ -72,11 +78,13 @@ pm8001_interrupt_handler_intx
 
     main INTx interrupt handler.
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         sas_ha structure. The HBA is retrieved from sas_has structure.
+    :type dev_id: void \*
 
 .. _`pm8001_alloc`:
 
@@ -87,11 +95,13 @@ pm8001_alloc
 
     initiate our hba structure and 6 DMAs area.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba structure.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         *undescribed*
+    :type ent: const struct pci_device_id \*
 
 .. _`pm8001_ioremap`:
 
@@ -102,8 +112,9 @@ pm8001_ioremap
 
     remap the pci high physical address to kernal virtual address so that we can access them.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba structure.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_pci_alloc`:
 
@@ -114,14 +125,17 @@ pm8001_pci_alloc
 
     initialize our ha card structure
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device.
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         ent
+    :type ent: const struct pci_device_id \*
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host struct which has been initialized before.
+    :type shost: struct Scsi_Host \*
 
 .. _`pci_go_44`:
 
@@ -132,8 +146,9 @@ pci_go_44
 
     pm8001 specified, its DMA is 44 bit rather than 64 bit
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device.
+    :type pdev: struct pci_dev \*
 
 .. _`pm8001_prep_sas_ha_init`:
 
@@ -144,11 +159,13 @@ pm8001_prep_sas_ha_init
 
     allocate memory in general hba struct && init them.
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host which has been allocated outside.
+    :type shost: struct Scsi_Host \*
 
-    :param const struct pm8001_chip_info \*chip_info:
+    :param chip_info:
         our ha struct.
+    :type chip_info: const struct pm8001_chip_info \*
 
 .. _`pm8001_post_sas_ha_init`:
 
@@ -159,11 +176,13 @@ pm8001_post_sas_ha_init
 
     initialize general hba struct defined in libsas
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         scsi host which has been allocated outside
+    :type shost: struct Scsi_Host \*
 
-    :param const struct pm8001_chip_info \*chip_info:
+    :param chip_info:
         our ha struct.
+    :type chip_info: const struct pm8001_chip_info \*
 
 .. _`pm8001_init_sas_add`:
 
@@ -174,8 +193,9 @@ pm8001_init_sas_add
 
     initialize sas address
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         *undescribed*
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_init_sas_add.description`:
 
@@ -194,11 +214,13 @@ pm8001_get_internal_phy_settings
 
     Retrieves the internal PHY settings
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our adapter
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_mpi3_phy_pg_trx_config \*phycfg:
+    :param phycfg:
         PHY config page to populate
+    :type phycfg: struct pm8001_mpi3_phy_pg_trx_config \*
 
 .. _`pm8001_get_external_phy_settings`:
 
@@ -209,11 +231,13 @@ pm8001_get_external_phy_settings
 
     Retrieves the external PHY settings
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our adapter
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param struct pm8001_mpi3_phy_pg_trx_config \*phycfg:
+    :param phycfg:
         PHY config page to populate
+    :type phycfg: struct pm8001_mpi3_phy_pg_trx_config \*
 
 .. _`pm8001_get_phy_mask`:
 
@@ -224,11 +248,13 @@ pm8001_get_phy_mask
 
     Retrieves the mask that denotes if a PHY is int/ext
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our adapter
+    :type pm8001_ha: struct pm8001_hba_info \*
 
-    :param int \*phymask:
+    :param phymask:
         The PHY mask
+    :type phymask: int \*
 
 .. _`pm8001_set_phy_settings_ven_117c_12g`:
 
@@ -239,8 +265,9 @@ pm8001_set_phy_settings_ven_117c_12G
 
     Configure ATTO 12Gb PHY settings
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our adapter
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_configure_phy_settings`:
 
@@ -251,8 +278,9 @@ pm8001_configure_phy_settings
 
     Configures PHY settings based on vendor ID.
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         our hba.
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_setup_msix`:
 
@@ -263,8 +291,9 @@ pm8001_setup_msix
 
     enable MSI-X interrupt
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         *undescribed*
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_request_irq`:
 
@@ -275,8 +304,9 @@ pm8001_request_irq
 
     register interrupt
 
-    :param struct pm8001_hba_info \*pm8001_ha:
+    :param pm8001_ha:
         *undescribed*
+    :type pm8001_ha: struct pm8001_hba_info \*
 
 .. _`pm8001_pci_probe`:
 
@@ -287,11 +317,13 @@ pm8001_pci_probe
 
     probe supported device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pci device which kernel has been prepared for.
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         pci device id
+    :type ent: const struct pci_device_id \*
 
 .. _`pm8001_pci_probe.description`:
 
@@ -311,11 +343,13 @@ pm8001_pci_suspend
 
     power management suspend main entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t state:
+    :param state:
         PM state change to (usually PCI_D3)
+    :type state: pm_message_t
 
 .. _`pm8001_pci_suspend.description`:
 
@@ -333,8 +367,9 @@ pm8001_pci_resume
 
     power management resume main entry point
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device struct
+    :type pdev: struct pci_dev \*
 
 .. _`pm8001_pci_resume.description`:
 
@@ -352,8 +387,9 @@ pm8001_init
 
     initialize scsi transport template
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

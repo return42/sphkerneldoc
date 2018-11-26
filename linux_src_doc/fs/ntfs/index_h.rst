@@ -10,8 +10,9 @@ ntfs_index_entry_flush_dcache_page
 
     \ :c:func:`flush_dcache_page`\  for index entries
 
-    :param ntfs_index_context \*ictx:
+    :param ictx:
         ntfs index context describing the index entry
+    :type ictx: ntfs_index_context \*
 
 .. _`ntfs_index_entry_flush_dcache_page.description`:
 
@@ -38,8 +39,9 @@ ntfs_index_entry_mark_dirty
 
     mark an index entry dirty
 
-    :param ntfs_index_context \*ictx:
+    :param ictx:
         ntfs index context describing the index entry
+    :type ictx: ntfs_index_context \*
 
 .. _`ntfs_index_entry_mark_dirty.description`:
 

@@ -10,11 +10,13 @@ cifs_build_devname
 
     build a devicename from a UNC and optional prepath
 
-    :param char \*nodename:
+    :param nodename:
         pointer to UNC string
+    :type nodename: char \*
 
-    :param const char \*prepath:
+    :param prepath:
         pointer to prefixpath (or NULL if there isn't one)
+    :type prepath: const char \*
 
 .. _`cifs_build_devname.description`:
 
@@ -37,17 +39,21 @@ cifs_compose_mount_options
 
     creates mount options for refferral
 
-    :param const char \*sb_mountdata:
+    :param sb_mountdata:
         parent/root DFS mount options (template)
+    :type sb_mountdata: const char \*
 
-    :param const char \*fullpath:
+    :param fullpath:
         full path in UNC format
+    :type fullpath: const char \*
 
-    :param const struct dfs_info3_param \*ref:
+    :param ref:
         server's referral
+    :type ref: const struct dfs_info3_param \*
 
-    :param char \*\*devname:
+    :param devname:
         pointer for saving device name
+    :type devname: char \*\*
 
 .. _`cifs_compose_mount_options.description`:
 
@@ -74,17 +80,21 @@ cifs_dfs_do_refmount
 
     mounts specified path using provided refferal
 
-    :param struct dentry \*mntpt:
+    :param mntpt:
         *undescribed*
+    :type mntpt: struct dentry \*
 
-    :param struct cifs_sb_info \*cifs_sb:
+    :param cifs_sb:
         parent/root superblock
+    :type cifs_sb: struct cifs_sb_info \*
 
-    :param const char \*fullpath:
+    :param fullpath:
         full path in UNC format
+    :type fullpath: const char \*
 
-    :param const struct dfs_info3_param \*ref:
+    :param ref:
         server's referral
+    :type ref: const struct dfs_info3_param \*
 
 .. This file was automatic generated / don't edit.
 

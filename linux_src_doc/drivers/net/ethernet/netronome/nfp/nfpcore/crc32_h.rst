@@ -10,11 +10,13 @@ crc32_posix_end
 
     Finalize POSIX CRC32 working state
 
-    :param u32 crc:
+    :param crc:
         Current CRC32 working state
+    :type crc: u32
 
-    :param size_t total_len:
+    :param total_len:
         Total length of data that was CRC32'd
+    :type total_len: size_t
 
 .. _`crc32_posix_end.return`:
 

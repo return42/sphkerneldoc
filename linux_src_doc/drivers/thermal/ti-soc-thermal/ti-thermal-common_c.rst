@@ -10,14 +10,17 @@ ti_thermal_hotspot_temperature
 
     returns sensor extrapolated temperature
 
-    :param int t:
+    :param t:
         omap sensor temperature
+    :type t: int
 
-    :param int s:
+    :param s:
         omap sensor slope value
+    :type s: int
 
-    :param int c:
+    :param c:
         omap sensor const value
+    :type c: int
 
 .. This file was automatic generated / don't edit.
 

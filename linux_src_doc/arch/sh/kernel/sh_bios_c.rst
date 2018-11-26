@@ -10,8 +10,9 @@ sh_bios_vbr_reload
 
     Re-load the system VBR from the BIOS vector.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sh_bios_vbr_reload.description`:
 

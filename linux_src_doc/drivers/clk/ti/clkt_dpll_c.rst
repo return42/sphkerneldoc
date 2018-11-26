@@ -10,8 +10,9 @@
 
     check if DPLL is in bypass mode or not
 
-    :param u32 v:
+    :param v:
         bitfield value of the DPLL enable
+    :type v: u32
 
 .. _`_omap2_dpll_is_in_bypass.description`:
 
@@ -30,8 +31,9 @@ omap2_get_dpll_rate
 
     returns the current DPLL CLKOUT rate
 
-    :param struct clk_hw_omap \*clk:
+    :param clk:
         struct clk \* of a DPLL
+    :type clk: struct clk_hw_omap \*
 
 .. _`omap2_get_dpll_rate.description`:
 
@@ -57,14 +59,17 @@ omap2_dpll_round_rate
 
     round a target rate for an OMAP DPLL
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
-    :param unsigned long target_rate:
+    :param target_rate:
         desired DPLL clock rate
+    :type target_rate: unsigned long
 
-    :param unsigned long \*parent_rate:
+    :param parent_rate:
         *undescribed*
+    :type parent_rate: unsigned long \*
 
 .. _`omap2_dpll_round_rate.description`:
 

@@ -10,8 +10,9 @@ trace_trigger_soft_disabled
 
     do triggers and test if soft disabled
 
-    :param struct trace_event_file \*file:
+    :param file:
         The file pointer of the event to test
+    :type file: struct trace_event_file \*
 
 .. _`trace_trigger_soft_disabled.description`:
 

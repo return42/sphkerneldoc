@@ -10,8 +10,9 @@ omap2_sms_save_context
 
     Save SMS registers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2_sms_save_context.description`:
 
@@ -29,8 +30,9 @@ omap2_sms_restore_context
 
     Restore SMS registers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap2_sms_restore_context.description`:
 
@@ -48,14 +50,17 @@ omap2_sdrc_get_params
 
     return SDRC register values for a given clock rate
 
-    :param unsigned long r:
+    :param r:
         SDRC clock rate (in Hz)
+    :type r: unsigned long
 
-    :param struct omap_sdrc_params \*\*sdrc_cs0:
+    :param sdrc_cs0:
         chip select 0 ram timings \*\*
+    :type sdrc_cs0: struct omap_sdrc_params \*\*
 
-    :param struct omap_sdrc_params \*\*sdrc_cs1:
+    :param sdrc_cs1:
         chip select 1 ram timings \*\*
+    :type sdrc_cs1: struct omap_sdrc_params \*\*
 
 .. _`omap2_sdrc_get_params.description`:
 
@@ -98,11 +103,13 @@ omap2_sdrc_init
 
     initialize SMS, SDRC devices on boot
 
-    :param struct omap_sdrc_params \*sdrc_cs0:
+    :param sdrc_cs0:
         *undescribed*
+    :type sdrc_cs0: struct omap_sdrc_params \*
 
-    :param struct omap_sdrc_params \*sdrc_cs1:
+    :param sdrc_cs1:
         *undescribed*
+    :type sdrc_cs1: struct omap_sdrc_params \*
 
 .. _`omap2_sdrc_init.description`:
 

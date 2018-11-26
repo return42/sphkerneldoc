@@ -10,11 +10,13 @@ kvm_handle_wfx
 
     handle a wait-for-interrupts or wait-for-event instruction executed by a guest
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         the vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_run \*run:
+    :param run:
         *undescribed*
+    :type run: struct kvm_run \*
 
 .. _`kvm_handle_wfx.wfe`:
 
@@ -42,11 +44,13 @@ kvm_handle_guest_debug
 
     handle a debug exception instruction
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         the vcpu pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_run \*run:
+    :param run:
         access to the kvm_run structure for results
+    :type run: struct kvm_run \*
 
 .. _`kvm_handle_guest_debug.description`:
 

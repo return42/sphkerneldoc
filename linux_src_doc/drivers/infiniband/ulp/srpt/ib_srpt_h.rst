@@ -602,9 +602,9 @@ Definition
         struct mutex sdev_mutex;
         bool use_srq;
         struct srpt_recv_ioctx **ioctx_ring;
-        struct srpt_port port[2];
         struct ib_event_handler event_handler;
         struct list_head list;
+        struct srpt_port port[];
     }
 
 .. _`srpt_device.members`:
@@ -639,14 +639,14 @@ use_srq
 ioctx_ring
     Per-HCA SRQ.
 
-port
-    Information about the ports owned by this HCA.
-
 event_handler
     Per-HCA asynchronous IB event handler.
 
 list
     Node in srpt_dev_list.
+
+port
+    Information about the ports owned by this HCA.
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ vpfe_schedule_next_buffer
 
     set next buffer address for capture
 
-    :param struct vpfe_device \*vpfe:
+    :param vpfe:
         ptr to vpfe device
+    :type vpfe: struct vpfe_device \*
 
 .. _`vpfe_schedule_next_buffer.description`:
 

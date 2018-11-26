@@ -46,7 +46,7 @@ uV_step
 Description
 -----------
 
-Specify a range of voltages for \ :c:func:`regulator_map_linar_range`\  and
+Specify a range of voltages for \ :c:func:`regulator_map_linear_range`\  and
 \ :c:func:`regulator_list_linear_range`\ .
 
 .. _`regulator_ops`:
@@ -97,7 +97,7 @@ Definition
         int (*set_suspend_enable) (struct regulator_dev *);
         int (*set_suspend_disable) (struct regulator_dev *);
         int (*set_suspend_mode) (struct regulator_dev *, unsigned int mode);
-        int (*resume_early)(struct regulator_dev *rdev);
+        int (*resume)(struct regulator_dev *rdev);
         int (*set_pull_down) (struct regulator_dev *);
     }
 
@@ -225,7 +225,7 @@ set_suspend_mode
     Set the operating mode for the regulator when the
     system is suspended.
 
-resume_early
+resume
     *undescribed*
 
 set_pull_down
@@ -276,8 +276,11 @@ Definition
         unsigned int ramp_delay;
         int min_dropout_uV;
         const struct regulator_linear_range *linear_ranges;
+        const unsigned int *linear_range_selectors;
         int n_linear_ranges;
         const unsigned int *volt_table;
+        unsigned int vsel_range_reg;
+        unsigned int vsel_range_mask;
         unsigned int vsel_reg;
         unsigned int vsel_mask;
         unsigned int csel_reg;
@@ -379,11 +382,24 @@ min_dropout_uV
 linear_ranges
     A constant table of possible voltage ranges.
 
+linear_range_selectors
+    A constant table of voltage range selectors.
+    If pickable ranges are used each range must
+    have corresponding selector here.
+
 n_linear_ranges
-    Number of entries in the \ ``linear_ranges``\  table.
+    Number of entries in the \ ``linear_ranges``\  (and in
+    linear_range_selectors if used) table(s).
 
 volt_table
     Voltage mapping table (if table based mapping)
+
+vsel_range_reg
+    Register for range selector when using pickable ranges
+    and regulator_regmap_X_voltage_X_pickable functions.
+
+vsel_range_mask
+    Mask for register bitfield used for range selector
 
 vsel_reg
     Register for selector when using regulator_regmap_X_voltage_

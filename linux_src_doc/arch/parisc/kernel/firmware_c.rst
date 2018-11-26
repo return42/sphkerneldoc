@@ -10,8 +10,9 @@ f_extend
 
     Convert PDC addresses to kernel addresses.
 
-    :param unsigned long address:
+    :param address:
         Address returned from PDC.
+    :type address: unsigned long
 
 .. _`f_extend.description`:
 
@@ -30,8 +31,9 @@ convert_to_wide
 
     Convert the return buffer addresses into kernel addresses.
 
-    :param unsigned long \*addr:
+    :param addr:
         *undescribed*
+    :type addr: unsigned long \*
 
 .. _`convert_to_wide.description`:
 
@@ -51,8 +53,9 @@ set_firmware_width
 
     Determine if the firmware is wide or narrow.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`set_firmware_width.description`:
 
@@ -71,8 +74,9 @@ pdc_emergency_unlock
 
     Unlock the linux pdc lock
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pdc_emergency_unlock.description`:
 
@@ -91,8 +95,9 @@ pdc_add_valid
 
     Verify address can be accessed without causing a HPMC.
 
-    :param unsigned long address:
+    :param address:
         Address to be verified.
+    :type address: unsigned long
 
 .. _`pdc_add_valid.description`:
 
@@ -113,8 +118,9 @@ pdc_instr
 
     Get instruction that invokes PDCE_CHECK in HPMC handler.
 
-    :param unsigned int \*instr:
+    :param instr:
         Pointer to variable which will get instruction opcode.
+    :type instr: unsigned int \*
 
 .. _`pdc_instr.description`:
 
@@ -132,14 +138,17 @@ pdc_chassis_info
 
     Return chassis information.
 
-    :param struct pdc_chassis_info \*chassis_info:
+    :param chassis_info:
         The memory buffer address.
+    :type chassis_info: struct pdc_chassis_info \*
 
-    :param void \*led_info:
+    :param led_info:
         *undescribed*
+    :type led_info: void \*
 
-    :param unsigned long len:
+    :param len:
         The size of the memory buffer address.
+    :type len: unsigned long
 
 .. _`pdc_chassis_info.description`:
 
@@ -157,11 +166,13 @@ pdc_pat_chassis_send_log
 
     Sends a PDC PAT CHASSIS log message.
 
-    :param unsigned long state:
+    :param state:
         *undescribed*
+    :type state: unsigned long
 
-    :param unsigned long data:
+    :param data:
         *undescribed*
+    :type data: unsigned long
 
 .. _`pdc_pat_chassis_send_log.description`:
 
@@ -179,8 +190,9 @@ pdc_chassis_disp
 
     Updates chassis code
 
-    :param unsigned long disp:
+    :param disp:
         *undescribed*
+    :type disp: unsigned long
 
 .. _`pdc_chassis_warn`:
 
@@ -191,8 +203,9 @@ pdc_chassis_warn
 
     Fetches chassis warnings
 
-    :param unsigned long \*warn:
+    :param warn:
         *undescribed*
+    :type warn: unsigned long \*
 
 .. _`pdc_coproc_cfg`:
 
@@ -203,8 +216,9 @@ pdc_coproc_cfg
 
     To identify coprocessors attached to the processor.
 
-    :param struct pdc_coproc_cfg \*pdc_coproc_info:
+    :param pdc_coproc_info:
         Return buffer address.
+    :type pdc_coproc_info: struct pdc_coproc_cfg \*
 
 .. _`pdc_coproc_cfg.description`:
 
@@ -223,20 +237,25 @@ pdc_iodc_read
 
     Read data from the modules IODC.
 
-    :param unsigned long \*actcnt:
+    :param actcnt:
         The actual number of bytes.
+    :type actcnt: unsigned long \*
 
-    :param unsigned long hpa:
+    :param hpa:
         The HPA of the module for the iodc read.
+    :type hpa: unsigned long
 
-    :param unsigned int index:
+    :param index:
         The iodc entry point.
+    :type index: unsigned int
 
-    :param void \*iodc_data:
+    :param iodc_data:
         A buffer memory for the iodc options.
+    :type iodc_data: void \*
 
-    :param unsigned int iodc_data_size:
+    :param iodc_data_size:
         Size of the memory buffer.
+    :type iodc_data_size: unsigned int
 
 .. _`pdc_iodc_read.description`:
 
@@ -255,14 +274,17 @@ pdc_system_map_find_mods
 
     Locate unarchitected modules.
 
-    :param struct pdc_system_map_mod_info \*pdc_mod_info:
+    :param pdc_mod_info:
         Return buffer address.
+    :type pdc_mod_info: struct pdc_system_map_mod_info \*
 
-    :param struct pdc_module_path \*mod_path:
+    :param mod_path:
         pointer to dev path structure.
+    :type mod_path: struct pdc_module_path \*
 
-    :param long mod_index:
+    :param mod_index:
         fixed address module index.
+    :type mod_index: long
 
 .. _`pdc_system_map_find_mods.description`:
 
@@ -281,14 +303,17 @@ pdc_system_map_find_addrs
 
     Retrieve additional address ranges.
 
-    :param struct pdc_system_map_addr_info \*pdc_addr_info:
+    :param pdc_addr_info:
         Return buffer address.
+    :type pdc_addr_info: struct pdc_system_map_addr_info \*
 
-    :param long mod_index:
+    :param mod_index:
         Fixed address module index.
+    :type mod_index: long
 
-    :param long addr_index:
+    :param addr_index:
         Address range index.
+    :type addr_index: long
 
 .. _`pdc_system_map_find_addrs.description`:
 
@@ -307,8 +332,9 @@ pdc_model_info
 
     Return model information about the processor.
 
-    :param struct pdc_model \*model:
+    :param model:
         The return buffer.
+    :type model: struct pdc_model \*
 
 .. _`pdc_model_info.description`:
 
@@ -326,8 +352,9 @@ pdc_model_sysmodel
 
     Get the system model name.
 
-    :param char \*name:
+    :param name:
         A char array of at least 81 characters.
+    :type name: char \*
 
 .. _`pdc_model_sysmodel.description`:
 
@@ -347,11 +374,13 @@ pdc_model_versions
 
     Identify the version number of each processor.
 
-    :param unsigned long \*versions:
+    :param versions:
         *undescribed*
+    :type versions: unsigned long \*
 
-    :param int id:
+    :param id:
         The id of the processor to check.
+    :type id: int
 
 .. _`pdc_model_versions.description`:
 
@@ -372,8 +401,9 @@ pdc_model_cpuid
 
     Returns the CPU_ID.
 
-    :param unsigned long \*cpu_id:
+    :param cpu_id:
         The return buffer.
+    :type cpu_id: unsigned long \*
 
 .. _`pdc_model_cpuid.description`:
 
@@ -392,8 +422,9 @@ pdc_model_capabilities
 
     Returns the platform capabilities.
 
-    :param unsigned long \*capabilities:
+    :param capabilities:
         The return buffer.
+    :type capabilities: unsigned long \*
 
 .. _`pdc_model_capabilities.description`:
 
@@ -412,8 +443,9 @@ pdc_cache_info
 
     Return cache and TLB information.
 
-    :param struct pdc_cache_info \*cache_info:
+    :param cache_info:
         The return buffer.
+    :type cache_info: struct pdc_cache_info \*
 
 .. _`pdc_cache_info.description`:
 
@@ -431,8 +463,9 @@ pdc_spaceid_bits
 
     Return whether Space ID hashing is turned on.
 
-    :param unsigned long \*space_bits:
+    :param space_bits:
         Should be 0, if not, bad mojo!
+    :type space_bits: unsigned long \*
 
 .. _`pdc_spaceid_bits.description`:
 
@@ -450,8 +483,9 @@ pdc_btlb_info
 
     Return block TLB information.
 
-    :param struct pdc_btlb_info \*btlb:
+    :param btlb:
         The return buffer.
+    :type btlb: struct pdc_btlb_info \*
 
 .. _`pdc_btlb_info.description`:
 
@@ -469,11 +503,13 @@ pdc_mem_map_hpa
 
     Find fixed module information.
 
-    :param struct pdc_memory_map \*address:
+    :param address:
         The return buffer
+    :type address: struct pdc_memory_map \*
 
-    :param struct pdc_module_path \*mod_path:
+    :param mod_path:
         pointer to dev path structure.
+    :type mod_path: struct pdc_module_path \*
 
 .. _`pdc_mem_map_hpa.description`:
 
@@ -496,11 +532,13 @@ pdc_lan_station_id
 
     Get the LAN address.
 
-    :param char \*lan_addr:
+    :param lan_addr:
         The return buffer.
+    :type lan_addr: char \*
 
-    :param unsigned long hpa:
+    :param hpa:
         The network device HPA.
+    :type hpa: unsigned long
 
 .. _`pdc_lan_station_id.description`:
 
@@ -518,14 +556,17 @@ pdc_stable_read
 
     Read data from Stable Storage.
 
-    :param unsigned long staddr:
+    :param staddr:
         Stable Storage address to access.
+    :type staddr: unsigned long
 
-    :param void \*memaddr:
+    :param memaddr:
         The memory address where Stable Storage data shall be copied.
+    :type memaddr: void \*
 
-    :param unsigned long count:
+    :param count:
         number of bytes to transfer. count is multiple of 4.
+    :type count: unsigned long
 
 .. _`pdc_stable_read.description`:
 
@@ -545,14 +586,17 @@ pdc_stable_write
 
     Write data to Stable Storage.
 
-    :param unsigned long staddr:
+    :param staddr:
         Stable Storage address to access.
+    :type staddr: unsigned long
 
-    :param void \*memaddr:
+    :param memaddr:
         The memory address where Stable Storage data shall be read from.
+    :type memaddr: void \*
 
-    :param unsigned long count:
+    :param count:
         number of bytes to transfer. count is multiple of 4.
+    :type count: unsigned long
 
 .. _`pdc_stable_write.description`:
 
@@ -572,8 +616,9 @@ pdc_stable_get_size
 
     Get Stable Storage size in bytes.
 
-    :param unsigned long \*size:
+    :param size:
         pointer where the size will be stored.
+    :type size: unsigned long \*
 
 .. _`pdc_stable_get_size.description`:
 
@@ -594,8 +639,9 @@ pdc_stable_verify_contents
 
     Checks that Stable Storage contents are valid.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pdc_stable_verify_contents.description`:
 
@@ -614,8 +660,9 @@ pdc_stable_initialize
 
     Sets Stable Storage contents to zero and initialize the validity indicator.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pdc_stable_initialize.description`:
 
@@ -633,11 +680,13 @@ pdc_get_initiator
 
     Get the SCSI Interface Card params (SCSI ID, SDTR, SE or LVD)
 
-    :param struct hardware_path \*hwpath:
+    :param hwpath:
         fully bc.mod style path to the device.
+    :type hwpath: struct hardware_path \*
 
-    :param struct pdc_initiator \*initiator:
+    :param initiator:
         the array to return the result into
+    :type initiator: struct pdc_initiator \*
 
 .. _`pdc_get_initiator.description`:
 
@@ -662,11 +711,13 @@ pdc_pci_irt_size
 
     Get the number of entries in the interrupt routing table.
 
-    :param unsigned long \*num_entries:
+    :param num_entries:
         The return value.
+    :type num_entries: unsigned long \*
 
-    :param unsigned long hpa:
+    :param hpa:
         The HPA for the device.
+    :type hpa: unsigned long
 
 .. _`pdc_pci_irt_size.description`:
 
@@ -686,14 +737,17 @@ pdc_pci_irt
 
     Get the PCI interrupt routing table.
 
-    :param unsigned long num_entries:
+    :param num_entries:
         The number of entries in the table.
+    :type num_entries: unsigned long
 
-    :param unsigned long hpa:
+    :param hpa:
         The Hard Physical Address of the device.
+    :type hpa: unsigned long
 
-    :param void \*tbl:
+    :param tbl:
         *undescribed*
+    :type tbl: void \*
 
 .. _`pdc_pci_irt.description`:
 
@@ -712,11 +766,13 @@ pdc_pci_config_read
 
     read PCI config space. \ ``hpa``\          token from PDC to indicate which PCI device \ ``pci_addr``\     configuration space address to read from
 
-    :param void \*hpa:
+    :param hpa:
         *undescribed*
+    :type hpa: void \*
 
-    :param unsigned long cfg_addr:
+    :param cfg_addr:
         *undescribed*
+    :type cfg_addr: unsigned long
 
 .. _`pdc_pci_config_read.description`:
 
@@ -734,14 +790,17 @@ pdc_pci_config_write
 
     read PCI config space. \ ``hpa``\          token from PDC to indicate which PCI device \ ``pci_addr``\     configuration space address to write \ ``val``\          value we want in the 32-bit register
 
-    :param void \*hpa:
+    :param hpa:
         *undescribed*
+    :type hpa: void \*
 
-    :param unsigned long cfg_addr:
+    :param cfg_addr:
         *undescribed*
+    :type cfg_addr: unsigned long
 
-    :param unsigned int val:
+    :param val:
         *undescribed*
+    :type val: unsigned int
 
 .. _`pdc_pci_config_write.description`:
 
@@ -759,8 +818,9 @@ pdc_tod_read
 
     Read the Time-Of-Day clock.
 
-    :param struct pdc_tod \*tod:
+    :param tod:
         The return buffer:
+    :type tod: struct pdc_tod \*
 
 .. _`pdc_tod_read.description`:
 
@@ -778,11 +838,13 @@ pdc_tod_set
 
     Set the Time-Of-Day clock.
 
-    :param unsigned long sec:
+    :param sec:
         The number of seconds since epoch.
+    :type sec: unsigned long
 
-    :param unsigned long usec:
+    :param usec:
         The number of micro seconds.
+    :type usec: unsigned long
 
 .. _`pdc_tod_set.description`:
 
@@ -800,11 +862,13 @@ pdc_iodc_print
 
     Console print using IODC.
 
-    :param const unsigned char \*str:
+    :param str:
         the string to output.
+    :type str: const unsigned char \*
 
-    :param unsigned count:
+    :param count:
         length of str
+    :type count: unsigned
 
 .. _`pdc_iodc_print.note-that-only-these-special-chars-are-architected-for-console-iodc-io`:
 
@@ -824,8 +888,9 @@ pdc_iodc_getc
 
     Read a character (non-blocking) from the PDC console.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pdc_iodc_getc.description`:
 
@@ -844,8 +909,9 @@ pdc_pat_cell_get_number
 
     Returns the cell number.
 
-    :param struct pdc_pat_cell_num \*cell_info:
+    :param cell_info:
         The return buffer.
+    :type cell_info: struct pdc_pat_cell_num \*
 
 .. _`pdc_pat_cell_get_number.description`:
 
@@ -864,20 +930,25 @@ pdc_pat_cell_module
 
     Retrieve the cell's module information.
 
-    :param unsigned long \*actcnt:
+    :param actcnt:
         The number of bytes written to mem_addr.
+    :type actcnt: unsigned long \*
 
-    :param unsigned long ploc:
+    :param ploc:
         The physical location.
+    :type ploc: unsigned long
 
-    :param unsigned long mod:
+    :param mod:
         The module index.
+    :type mod: unsigned long
 
-    :param unsigned long view_type:
+    :param view_type:
         The view of the address type.
+    :type view_type: unsigned long
 
-    :param void \*mem_addr:
+    :param mem_addr:
         The return buffer.
+    :type mem_addr: void \*
 
 .. _`pdc_pat_cell_module.description`:
 
@@ -886,6 +957,38 @@ Description
 
 This PDC call returns information about each module attached to the cell
 at the specified location.
+
+.. _`pdc_pat_cell_info`:
+
+pdc_pat_cell_info
+=================
+
+.. c:function:: int pdc_pat_cell_info(struct pdc_pat_cell_info_rtn_block *info, unsigned long *actcnt, unsigned long offset, unsigned long cell_number)
+
+    Retrieve the cell's information.
+
+    :param info:
+        The pointer to a struct pdc_pat_cell_info_rtn_block.
+    :type info: struct pdc_pat_cell_info_rtn_block \*
+
+    :param actcnt:
+        The number of bytes which should be written to info.
+    :type actcnt: unsigned long \*
+
+    :param offset:
+        offset of the structure.
+    :type offset: unsigned long
+
+    :param cell_number:
+        The cell number which should be asked, or -1 for current cell.
+    :type cell_number: unsigned long
+
+.. _`pdc_pat_cell_info.description`:
+
+Description
+-----------
+
+This PDC call returns information about the given cell (or all cells).
 
 .. _`pdc_pat_cpu_get_number`:
 
@@ -896,11 +999,13 @@ pdc_pat_cpu_get_number
 
     Retrieve the cpu number.
 
-    :param struct pdc_pat_cpu_num \*cpu_info:
+    :param cpu_info:
         The return buffer.
+    :type cpu_info: struct pdc_pat_cpu_num \*
 
-    :param unsigned long hpa:
+    :param hpa:
         The Hard Physical Address of the CPU.
+    :type hpa: unsigned long
 
 .. _`pdc_pat_cpu_get_number.description`:
 
@@ -918,11 +1023,13 @@ pdc_pat_get_irt_size
 
     Retrieve the number of entries in the cell's interrupt table.
 
-    :param unsigned long \*num_entries:
+    :param num_entries:
         The return value.
+    :type num_entries: unsigned long \*
 
-    :param unsigned long cell_num:
+    :param cell_num:
         The target cell.
+    :type cell_num: unsigned long
 
 .. _`pdc_pat_get_irt_size.description`:
 
@@ -941,11 +1048,13 @@ pdc_pat_get_irt
 
     Retrieve the cell's interrupt table.
 
-    :param void \*r_addr:
+    :param r_addr:
         The return buffer.
+    :type r_addr: void \*
 
-    :param unsigned long cell_num:
+    :param cell_num:
         The target cell.
+    :type cell_num: unsigned long
 
 .. _`pdc_pat_get_irt.description`:
 
@@ -963,17 +1072,42 @@ pdc_pat_pd_get_addr_map
 
     Retrieve information about memory address ranges.
 
-    :param unsigned long \*actual_len:
+    :param actual_len:
         *undescribed*
+    :type actual_len: unsigned long \*
 
-    :param void \*mem_addr:
+    :param mem_addr:
         Pointer to the memory buffer.
+    :type mem_addr: void \*
 
-    :param unsigned long count:
+    :param count:
         The number of bytes to read from the buffer.
+    :type count: unsigned long
 
-    :param unsigned long offset:
+    :param offset:
         The offset with respect to the beginning of the buffer.
+    :type offset: unsigned long
+
+.. _`pdc_pat_pd_get_pdc_revisions`:
+
+pdc_pat_pd_get_pdc_revisions
+============================
+
+.. c:function:: int pdc_pat_pd_get_pdc_revisions(unsigned long *legacy_rev, unsigned long *pat_rev, unsigned long *pdc_cap)
+
+    Retrieve PDC interface revisions.
+
+    :param legacy_rev:
+        The legacy revision.
+    :type legacy_rev: unsigned long \*
+
+    :param pat_rev:
+        The PAT revision.
+    :type pat_rev: unsigned long \*
+
+    :param pdc_cap:
+        The PDC capabilities.
+    :type pdc_cap: unsigned long \*
 
 .. _`pdc_pat_io_pci_cfg_read`:
 
@@ -984,14 +1118,17 @@ pdc_pat_io_pci_cfg_read
 
     Read PCI configuration space.
 
-    :param unsigned long pci_addr:
+    :param pci_addr:
         PCI configuration space address for which the read request is being made.
+    :type pci_addr: unsigned long
 
-    :param int pci_size:
+    :param pci_size:
         Size of read in bytes. Valid values are 1, 2, and 4.
+    :type pci_size: int
 
-    :param u32 \*mem_addr:
+    :param mem_addr:
         Pointer to return memory buffer.
+    :type mem_addr: u32 \*
 
 .. _`pdc_pat_io_pci_cfg_write`:
 
@@ -1002,14 +1139,17 @@ pdc_pat_io_pci_cfg_write
 
     Retrieve information about memory address ranges.
 
-    :param unsigned long pci_addr:
+    :param pci_addr:
         PCI configuration space address for which the write  request is being made.
+    :type pci_addr: unsigned long
 
-    :param int pci_size:
+    :param pci_size:
         Size of write in bytes. Valid values are 1, 2, and 4.
+    :type pci_size: int
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
 .. _`pdc_pat_mem_pdt_info`:
 
@@ -1020,8 +1160,9 @@ pdc_pat_mem_pdt_info
 
     Retrieve information about page deallocation table
 
-    :param struct pdc_pat_mem_retinfo \*rinfo:
+    :param rinfo:
         memory pdt information
+    :type rinfo: struct pdc_pat_mem_retinfo \*
 
 .. _`pdc_pat_mem_pdt_cell_info`:
 
@@ -1032,11 +1173,13 @@ pdc_pat_mem_pdt_cell_info
 
     Retrieve information about page deallocation table of a cell
 
-    :param struct pdc_pat_mem_cell_pdt_retinfo \*rinfo:
+    :param rinfo:
         memory pdt information
+    :type rinfo: struct pdc_pat_mem_cell_pdt_retinfo \*
 
-    :param unsigned long cell:
+    :param cell:
         cell number
+    :type cell: unsigned long
 
 .. _`pdc_pat_mem_read_cell_pdt`:
 
@@ -1047,14 +1190,17 @@ pdc_pat_mem_read_cell_pdt
 
     Read PDT entries from (old) PAT firmware
 
-    :param struct pdc_pat_mem_read_pd_retinfo \*pret:
+    :param pret:
         array of PDT entries
+    :type pret: struct pdc_pat_mem_read_pd_retinfo \*
 
-    :param unsigned long \*pdt_entries_ptr:
+    :param pdt_entries_ptr:
         ptr to hold number of PDT entries
+    :type pdt_entries_ptr: unsigned long \*
 
-    :param unsigned long max_entries:
+    :param max_entries:
         maximum number of entries to be read
+    :type max_entries: unsigned long
 
 .. _`pdc_pat_mem_read_pd_pdt`:
 
@@ -1065,17 +1211,21 @@ pdc_pat_mem_read_pd_pdt
 
     Read PDT entries from (newer) PAT firmware
 
-    :param struct pdc_pat_mem_read_pd_retinfo \*pret:
+    :param pret:
         array of PDT entries
+    :type pret: struct pdc_pat_mem_read_pd_retinfo \*
 
-    :param unsigned long \*pdt_entries_ptr:
+    :param pdt_entries_ptr:
         ptr to hold number of PDT entries
+    :type pdt_entries_ptr: unsigned long \*
 
-    :param unsigned long count:
+    :param count:
         number of bytes to read
+    :type count: unsigned long
 
-    :param unsigned long offset:
+    :param offset:
         offset to start (in bytes)
+    :type offset: unsigned long
 
 .. _`pdc_pat_mem_get_dimm_phys_location`:
 
@@ -1086,11 +1236,13 @@ pdc_pat_mem_get_dimm_phys_location
 
     Get physical DIMM slot via PAT firmware
 
-    :param struct pdc_pat_mem_phys_mem_location \*pret:
+    :param pret:
         ptr to hold returned information
+    :type pret: struct pdc_pat_mem_phys_mem_location \*
 
-    :param unsigned long phys_addr:
+    :param phys_addr:
         physical address to examine
+    :type phys_addr: unsigned long
 
 .. This file was automatic generated / don't edit.
 

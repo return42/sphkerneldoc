@@ -10,17 +10,21 @@ rtc_device_register
 
     register w/ RTC class
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param struct device \*dev:
+    :param dev:
         the device to register
+    :type dev: struct device \*
 
-    :param const struct rtc_class_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: const struct rtc_class_ops \*
 
-    :param struct module \*owner:
+    :param owner:
         *undescribed*
+    :type owner: struct module \*
 
 .. _`rtc_device_register.description`:
 
@@ -41,8 +45,9 @@ rtc_device_unregister
 
     removes the previously registered RTC class device
 
-    :param struct rtc_device \*rtc:
+    :param rtc:
         the RTC class device to destroy
+    :type rtc: struct rtc_device \*
 
 .. _`devm_rtc_device_register`:
 
@@ -53,17 +58,21 @@ devm_rtc_device_register
 
     resource managed \ :c:func:`rtc_device_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device to register
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         the name of the device
+    :type name: const char \*
 
-    :param const struct rtc_class_ops \*ops:
+    :param ops:
         the rtc operations structure
+    :type ops: const struct rtc_class_ops \*
 
-    :param struct module \*owner:
+    :param owner:
         the module owner
+    :type owner: struct module \*
 
 .. _`devm_rtc_device_register.description`:
 
@@ -85,11 +94,13 @@ devm_rtc_device_unregister
 
     resource managed \ :c:func:`devm_rtc_device_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device to unregister
+    :type dev: struct device \*
 
-    :param struct rtc_device \*rtc:
+    :param rtc:
         the RTC class device to unregister
+    :type rtc: struct rtc_device \*
 
 .. _`devm_rtc_device_unregister.description`:
 

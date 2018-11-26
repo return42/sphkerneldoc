@@ -1,19 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: ipc/util.h
 
-.. _`ipc_get_maxid`:
+.. _`ipc_get_maxidx`:
 
-ipc_get_maxid
-=============
+ipc_get_maxidx
+==============
 
-.. c:function:: int ipc_get_maxid(struct ipc_ids *ids)
+.. c:function:: int ipc_get_maxidx(struct ipc_ids *ids)
 
-    get the last assigned id
+    get the highest assigned index
 
-    :param struct ipc_ids \*ids:
+    :param ids:
         ipc identifier set
+    :type ids: struct ipc_ids \*
 
-.. _`ipc_get_maxid.description`:
+.. _`ipc_get_maxidx.description`:
 
 Description
 -----------

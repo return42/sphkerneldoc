@@ -90,14 +90,17 @@ s3c_i2sv2_probe
 
     probe for i2s device helper
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         The ASoC DAI structure supplied to the original probe.
+    :type dai: struct snd_soc_dai \*
 
-    :param struct s3c_i2sv2_info \*i2s:
+    :param i2s:
         Our local i2s structure to fill in.
+    :type i2s: struct s3c_i2sv2_info \*
 
-    :param unsigned long base:
+    :param base:
         The base address for the registers.
+    :type base: unsigned long
 
 .. _`s3c_i2sv2_cleanup`:
 
@@ -108,11 +111,13 @@ s3c_i2sv2_cleanup
 
     cleanup resources allocated in s3c_i2sv2_probe
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         The ASoC DAI structure supplied to the original probe.
+    :type dai: struct snd_soc_dai \*
 
-    :param struct s3c_i2sv2_info \*i2s:
+    :param i2s:
         Our local i2s structure to fill in.
+    :type i2s: struct s3c_i2sv2_info \*
 
 .. _`s3c_i2sv2_register_component`:
 
@@ -123,17 +128,21 @@ s3c_i2sv2_register_component
 
     register component and dai with soc core
 
-    :param struct device \*dev:
+    :param dev:
         DAI device
+    :type dev: struct device \*
 
-    :param int id:
+    :param id:
         DAI ID
+    :type id: int
 
-    :param const struct snd_soc_component_driver \*cmp_drv:
+    :param cmp_drv:
         *undescribed*
+    :type cmp_drv: const struct snd_soc_component_driver \*
 
-    :param struct snd_soc_dai_driver \*dai_drv:
+    :param dai_drv:
         *undescribed*
+    :type dai_drv: struct snd_soc_dai_driver \*
 
 .. _`s3c_i2sv2_register_component.description`:
 

@@ -10,18 +10,22 @@ get_user_pages_fast
 
     pin user pages in memory
 
-    :param unsigned long start:
+    :param start:
         starting user address
+    :type start: unsigned long
 
-    :param int nr_pages:
+    :param nr_pages:
         number of pages from start to pin
+    :type nr_pages: int
 
-    :param int write:
+    :param write:
         whether pages will be written to
+    :type write: int
 
-    :param struct page \*\*pages:
+    :param pages:
         array that receives pointers to the pages pinned.
         Should be at least nr_pages long.
+    :type pages: struct page \*\*
 
 .. _`get_user_pages_fast.description`:
 

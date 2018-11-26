@@ -1,127 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/intel/ice/ice_main.c
 
-.. _`ice_get_free_slot`:
+.. _`ice_get_tx_pending`:
 
-ice_get_free_slot
-=================
+ice_get_tx_pending
+==================
 
-.. c:function:: int ice_get_free_slot(void *array, int size, int curr)
+.. c:function:: u32 ice_get_tx_pending(struct ice_ring *ring)
 
-    get the next non-NULL location index in array
+    returns number of Tx descriptors not processed
 
-    :param void \*array:
-        array to search
+    :param ring:
+        the ring of descriptors
+    :type ring: struct ice_ring \*
 
-    :param int size:
-        size of the array
+.. _`ice_check_for_hang_subtask`:
 
-    :param int curr:
-        last known occupied index to be used as a search hint
+ice_check_for_hang_subtask
+==========================
 
-.. _`ice_get_free_slot.description`:
+.. c:function:: void ice_check_for_hang_subtask(struct ice_pf *pf)
 
-Description
------------
+    check for and recover hung queues
 
-void \* is being used to keep the functionality generic. This lets us use this
-function on any array of pointers.
-
-.. _`ice_search_res`:
-
-ice_search_res
-==============
-
-.. c:function:: int ice_search_res(struct ice_res_tracker *res, u16 needed, u16 id)
-
-    Search the tracker for a block of resources
-
-    :param struct ice_res_tracker \*res:
-        pointer to the resource
-
-    :param u16 needed:
-        size of the block needed
-
-    :param u16 id:
-        identifier to track owner
-        Returns the base item index of the block, or -ENOMEM for error
-
-.. _`ice_get_res`:
-
-ice_get_res
-===========
-
-.. c:function:: int ice_get_res(struct ice_pf *pf, struct ice_res_tracker *res, u16 needed, u16 id)
-
-    get a block of resources
-
-    :param struct ice_pf \*pf:
-        board private structure
-
-    :param struct ice_res_tracker \*res:
-        pointer to the resource
-
-    :param u16 needed:
-        size of the block needed
-
-    :param u16 id:
-        identifier to track owner
-
-.. _`ice_get_res.description`:
-
-Description
------------
-
-Returns the base item index of the block, or -ENOMEM for error
-The search_hint trick and lack of advanced fit-finding only works
-because we're highly likely to have all the same sized requests.
-Linear search time and any fragmentation should be minimal.
-
-.. _`ice_free_res`:
-
-ice_free_res
-============
-
-.. c:function:: int ice_free_res(struct ice_res_tracker *res, u16 index, u16 id)
-
-    free a block of resources
-
-    :param struct ice_res_tracker \*res:
-        pointer to the resource
-
-    :param u16 index:
-        starting index previously returned by ice_get_res
-
-    :param u16 id:
-        identifier to track owner
-        Returns number of resources freed
-
-.. _`ice_add_mac_to_list`:
-
-ice_add_mac_to_list
-===================
-
-.. c:function:: int ice_add_mac_to_list(struct ice_vsi *vsi, struct list_head *add_list, const u8 *macaddr)
-
-    Add a mac address filter entry to the list
-
-    :param struct ice_vsi \*vsi:
-        the VSI to be forwarded to
-
-    :param struct list_head \*add_list:
-        pointer to the list which contains MAC filter entries
-
-    :param const u8 \*macaddr:
-        the MAC address to be added.
-
-.. _`ice_add_mac_to_list.description`:
-
-Description
------------
-
-Adds mac address filter entry to the temp list
-
-Returns 0 on success or ENOMEM on failure.
+    :param pf:
+        pointer to PF struct
+    :type pf: struct ice_pf \*
 
 .. _`ice_add_mac_to_sync_list`:
 
@@ -132,11 +36,13 @@ ice_add_mac_to_sync_list
 
     creates list of mac addresses to be synced
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the net device on which the sync is happening
+    :type netdev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         mac address to sync
+    :type addr: const u8 \*
 
 .. _`ice_add_mac_to_sync_list.description`:
 
@@ -157,11 +63,13 @@ ice_add_mac_to_unsync_list
 
     creates list of mac addresses to be unsynced
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the net device on which the unsync is happening
+    :type netdev: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         mac address to unsync
+    :type addr: const u8 \*
 
 .. _`ice_add_mac_to_unsync_list.description`:
 
@@ -173,29 +81,6 @@ functions (like \__dev_uc_unsync, \__dev_mc_unsync, etc). This function only
 populates the tmp_unsync_list, which is later used by ice_remove_mac to
 delete the mac filters from the hardware.
 
-.. _`ice_free_fltr_list`:
-
-ice_free_fltr_list
-==================
-
-.. c:function:: void ice_free_fltr_list(struct device *dev, struct list_head *h)
-
-    free filter lists helper
-
-    :param struct device \*dev:
-        pointer to the device struct
-
-    :param struct list_head \*h:
-        pointer to the list head to be freed
-
-.. _`ice_free_fltr_list.description`:
-
-Description
------------
-
-Helper function to free filter lists previously created using
-ice_add_mac_to_list
-
 .. _`ice_vsi_fltr_changed`:
 
 ice_vsi_fltr_changed
@@ -205,8 +90,9 @@ ice_vsi_fltr_changed
 
     check if filter state changed
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         VSI to be checked
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_vsi_fltr_changed.description`:
 
@@ -224,8 +110,9 @@ ice_vsi_sync_fltr
 
     Update the VSI filter list to the HW
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         ptr to the VSI
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_vsi_sync_fltr.description`:
 
@@ -243,20 +130,9 @@ ice_sync_fltr_subtask
 
     Sync the VSI filter list with HW
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
-
-.. _`ice_is_reset_recovery_pending`:
-
-ice_is_reset_recovery_pending
-=============================
-
-.. c:function:: bool ice_is_reset_recovery_pending(unsigned long int *state)
-
-    schedule a reset
-
-    :param unsigned long int \*state:
-        pf state field
+    :type pf: struct ice_pf \*
 
 .. _`ice_prepare_for_reset`:
 
@@ -267,8 +143,9 @@ ice_prepare_for_reset
 
     prep for the core to reset
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_prepare_for_reset.description`:
 
@@ -286,12 +163,14 @@ ice_do_reset
 
     Initiate one of many types of resets
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
 
-    :param enum ice_reset_req reset_type:
+    :param reset_type:
         reset type requested
         before this function was called.
+    :type reset_type: enum ice_reset_req
 
 .. _`ice_reset_subtask`:
 
@@ -302,20 +181,9 @@ ice_reset_subtask
 
     Set up for resetting the device and driver
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
-
-.. _`ice_watchdog_subtask`:
-
-ice_watchdog_subtask
-====================
-
-.. c:function:: void ice_watchdog_subtask(struct ice_pf *pf)
-
-    periodic tasks not using event driven scheduling
-
-    :param struct ice_pf \*pf:
-        board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_print_link_msg`:
 
@@ -326,30 +194,13 @@ ice_print_link_msg
 
     print link up or down message
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI whose link status is being queried
+    :type vsi: struct ice_vsi \*
 
-    :param bool isup:
+    :param isup:
         boolean for if the link is now up or down
-
-.. _`ice_init_link_events`:
-
-ice_init_link_events
-====================
-
-.. c:function:: int ice_init_link_events(struct ice_port_info *pi)
-
-    enable/initialize link events
-
-    :param struct ice_port_info \*pi:
-        pointer to the port_info instance
-
-.. _`ice_init_link_events.description`:
-
-Description
------------
-
-Returns -EIO on failure, 0 on success
+    :type isup: bool
 
 .. _`ice_vsi_link_event`:
 
@@ -360,11 +211,13 @@ ice_vsi_link_event
 
     update the vsi's netdev
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the vsi on which the link event occurred
+    :type vsi: struct ice_vsi \*
 
-    :param bool link_up:
+    :param link_up:
         whether or not the vsi needs to be set up or down
+    :type link_up: bool
 
 .. _`ice_link_event`:
 
@@ -375,11 +228,13 @@ ice_link_event
 
     process the link event
 
-    :param struct ice_pf \*pf:
+    :param pf:
         pf that the link event is associated with
+    :type pf: struct ice_pf \*
 
-    :param struct ice_port_info \*pi:
+    :param pi:
         port_info for the port that the link event is associated with
+    :type pi: struct ice_port_info \*
 
 .. _`ice_link_event.description`:
 
@@ -389,25 +244,18 @@ Description
 Returns -EIO if \ :c:func:`ice_get_link_status`\  fails
 Returns 0 on success
 
-.. _`ice_handle_link_event`:
+.. _`ice_watchdog_subtask`:
 
-ice_handle_link_event
-=====================
+ice_watchdog_subtask
+====================
 
-.. c:function:: int ice_handle_link_event(struct ice_pf *pf)
+.. c:function:: void ice_watchdog_subtask(struct ice_pf *pf)
 
-    handle link event via ARQ
+    periodic tasks not using event driven scheduling
 
-    :param struct ice_pf \*pf:
-        pf that the link event is associated with
-
-.. _`ice_handle_link_event.description`:
-
-Description
------------
-
-Return -EINVAL if port_info is null
-Return status on succes
+    :param pf:
+        board private structure
+    :type pf: struct ice_pf \*
 
 .. _`__ice_clean_ctrlq`:
 
@@ -418,11 +266,37 @@ Return status on succes
 
     helper function to clean controlq rings
 
-    :param struct ice_pf \*pf:
+    :param pf:
         ptr to struct ice_pf
+    :type pf: struct ice_pf \*
 
-    :param enum ice_ctl_q q_type:
+    :param q_type:
         specific Control queue type
+    :type q_type: enum ice_ctl_q
+
+.. _`ice_ctrlq_pending`:
+
+ice_ctrlq_pending
+=================
+
+.. c:function:: bool ice_ctrlq_pending(struct ice_hw *hw, struct ice_ctl_q_info *cq)
+
+    check if there is a difference between ntc and ntu
+
+    :param hw:
+        pointer to hardware info
+    :type hw: struct ice_hw \*
+
+    :param cq:
+        control queue information
+    :type cq: struct ice_ctl_q_info \*
+
+.. _`ice_ctrlq_pending.description`:
+
+Description
+-----------
+
+returns true if there are pending messages in a queue, false if there aren't
 
 .. _`ice_clean_adminq_subtask`:
 
@@ -433,8 +307,22 @@ ice_clean_adminq_subtask
 
     clean the AdminQ rings
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
+
+.. _`ice_clean_mailboxq_subtask`:
+
+ice_clean_mailboxq_subtask
+==========================
+
+.. c:function:: void ice_clean_mailboxq_subtask(struct ice_pf *pf)
+
+    clean the MailboxQ rings
+
+    :param pf:
+        board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_service_task_schedule`:
 
@@ -445,8 +333,9 @@ ice_service_task_schedule
 
     schedule the service task to wake up
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_service_task_schedule.description`:
 
@@ -464,8 +353,22 @@ ice_service_task_complete
 
     finish up the service task
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
+
+.. _`ice_service_task_stop`:
+
+ice_service_task_stop
+=====================
+
+.. c:function:: void ice_service_task_stop(struct ice_pf *pf)
+
+    stop service task and cancel works
+
+    :param pf:
+        board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_service_timer`:
 
@@ -476,8 +379,29 @@ ice_service_timer
 
     timer callback to schedule service task
 
-    :param struct timer_list \*t:
+    :param t:
         pointer to timer_list
+    :type t: struct timer_list \*
+
+.. _`ice_handle_mdd_event`:
+
+ice_handle_mdd_event
+====================
+
+.. c:function:: void ice_handle_mdd_event(struct ice_pf *pf)
+
+    handle malicious driver detect event
+
+    :param pf:
+        pointer to the PF structure
+    :type pf: struct ice_pf \*
+
+.. _`ice_handle_mdd_event.description`:
+
+Description
+-----------
+
+Called from service task. OICR interrupt handler indicates MDD event
 
 .. _`ice_service_task`:
 
@@ -488,8 +412,9 @@ ice_service_task
 
     manage and run subtasks
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work_struct contained by the PF struct
+    :type work: struct work_struct \*
 
 .. _`ice_set_ctrlq_len`:
 
@@ -500,8 +425,9 @@ ice_set_ctrlq_len
 
     helper function to set controlq length
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw instance
+    :type hw: struct ice_hw \*
 
 .. _`ice_irq_affinity_notify`:
 
@@ -512,11 +438,13 @@ ice_irq_affinity_notify
 
     Callback for affinity changes
 
-    :param struct irq_affinity_notify \*notify:
+    :param notify:
         context as to what irq was changed
+    :type notify: struct irq_affinity_notify \*
 
-    :param const cpumask_t \*mask:
+    :param mask:
         the new affinity mask
+    :type mask: const cpumask_t \*
 
 .. _`ice_irq_affinity_notify.description`:
 
@@ -535,8 +463,9 @@ ice_irq_affinity_release
 
     Callback for affinity notifier release
 
-    :param struct kref __always_unused \*ref:
+    :param ref:
         internal core kernel usage
+    :type ref: struct kref __always_unused \*
 
 .. _`ice_irq_affinity_release.description`:
 
@@ -547,18 +476,6 @@ This is a callback function used by the irq_set_affinity_notifier function
 to inform the current notification subscriber that they will no longer
 receive notifications.
 
-.. _`ice_vsi_dis_irq`:
-
-ice_vsi_dis_irq
-===============
-
-.. c:function:: void ice_vsi_dis_irq(struct ice_vsi *vsi)
-
-    Mask off queue interrupt generation on the VSI
-
-    :param struct ice_vsi \*vsi:
-        the VSI being un-configured
-
 .. _`ice_vsi_ena_irq`:
 
 ice_vsi_ena_irq
@@ -568,20 +485,9 @@ ice_vsi_ena_irq
 
     Enable IRQ for the given VSI
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI being configured
-
-.. _`ice_vsi_delete`:
-
-ice_vsi_delete
-==============
-
-.. c:function:: void ice_vsi_delete(struct ice_vsi *vsi)
-
-    delete a VSI from the switch
-
-    :param struct ice_vsi \*vsi:
-        pointer to VSI being removed
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_vsi_req_irq_msix`:
 
@@ -592,152 +498,13 @@ ice_vsi_req_irq_msix
 
     get MSI-X vectors from the OS for the VSI
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct ice_vsi \*
 
-    :param char \*basename:
+    :param basename:
         name for the vector
-
-.. _`ice_vsi_set_rss_params`:
-
-ice_vsi_set_rss_params
-======================
-
-.. c:function:: void ice_vsi_set_rss_params(struct ice_vsi *vsi)
-
-    Setup RSS capabilities per VSI type
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-.. _`ice_vsi_setup_q_map`:
-
-ice_vsi_setup_q_map
-===================
-
-.. c:function:: void ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
-
-    Setup a VSI queue map
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-    :param struct ice_vsi_ctx \*ctxt:
-        VSI context structure
-
-.. _`ice_set_dflt_vsi_ctx`:
-
-ice_set_dflt_vsi_ctx
-====================
-
-.. c:function:: void ice_set_dflt_vsi_ctx(struct ice_vsi_ctx *ctxt)
-
-    Set default VSI context before adding a VSI
-
-    :param struct ice_vsi_ctx \*ctxt:
-        the VSI context being set
-
-.. _`ice_set_dflt_vsi_ctx.description`:
-
-Description
------------
-
-This initializes a default VSI context for all sections except the Queues.
-
-.. _`ice_set_rss_vsi_ctx`:
-
-ice_set_rss_vsi_ctx
-===================
-
-.. c:function:: void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
-
-    Set RSS VSI context before adding a VSI
-
-    :param struct ice_vsi_ctx \*ctxt:
-        the VSI context being set
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-.. _`ice_vsi_add`:
-
-ice_vsi_add
-===========
-
-.. c:function:: int ice_vsi_add(struct ice_vsi *vsi)
-
-    Create a new VSI or fetch preallocated VSI
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-.. _`ice_vsi_add.description`:
-
-Description
------------
-
-This initializes a VSI context depending on the VSI type to be added and
-passes it down to the add_vsi aq command to create a new VSI.
-
-.. _`ice_vsi_release_msix`:
-
-ice_vsi_release_msix
-====================
-
-.. c:function:: void ice_vsi_release_msix(struct ice_vsi *vsi)
-
-    Clear the queue to Interrupt mapping in HW
-
-    :param struct ice_vsi \*vsi:
-        the VSI being cleaned up
-
-.. _`ice_vsi_clear_rings`:
-
-ice_vsi_clear_rings
-===================
-
-.. c:function:: void ice_vsi_clear_rings(struct ice_vsi *vsi)
-
-    Deallocates the Tx and Rx rings for VSI
-
-    :param struct ice_vsi \*vsi:
-        the VSI having rings deallocated
-
-.. _`ice_vsi_alloc_rings`:
-
-ice_vsi_alloc_rings
-===================
-
-.. c:function:: int ice_vsi_alloc_rings(struct ice_vsi *vsi)
-
-    Allocates Tx and Rx rings for the VSI
-
-    :param struct ice_vsi \*vsi:
-        VSI which is having rings allocated
-
-.. _`ice_vsi_free_irq`:
-
-ice_vsi_free_irq
-================
-
-.. c:function:: void ice_vsi_free_irq(struct ice_vsi *vsi)
-
-    Free the irq association with the OS
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-.. _`ice_vsi_cfg_msix`:
-
-ice_vsi_cfg_msix
-================
-
-.. c:function:: void ice_vsi_cfg_msix(struct ice_vsi *vsi)
-
-    MSIX mode Interrupt Config in the HW
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
+    :type basename: char \*
 
 .. _`ice_ena_misc_vector`:
 
@@ -748,8 +515,9 @@ ice_ena_misc_vector
 
     enable the non-queue interrupts
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_misc_intr`:
 
@@ -760,117 +528,13 @@ ice_misc_intr
 
     misc interrupt handler
 
-    :param int __always_unused irq:
+    :param irq:
         interrupt number
+    :type irq: int __always_unused
 
-    :param void \*data:
+    :param data:
         pointer to a q_vector
-
-.. _`ice_vsi_map_rings_to_vectors`:
-
-ice_vsi_map_rings_to_vectors
-============================
-
-.. c:function:: void ice_vsi_map_rings_to_vectors(struct ice_vsi *vsi)
-
-    Map VSI rings to interrupt vectors
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-.. _`ice_vsi_map_rings_to_vectors.description`:
-
-Description
------------
-
-This function maps descriptor rings to the queue-specific vectors allotted
-through the MSI-X enabling code. On a constrained vector budget, we map Tx
-and Rx rings to the vector as "efficiently" as possible.
-
-.. _`ice_vsi_set_num_qs`:
-
-ice_vsi_set_num_qs
-==================
-
-.. c:function:: void ice_vsi_set_num_qs(struct ice_vsi *vsi)
-
-    Set num queues, descriptors and vectors for a VSI
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-.. _`ice_vsi_set_num_qs.description`:
-
-Description
------------
-
-Return 0 on success and a negative value on error
-
-.. _`ice_vsi_alloc_arrays`:
-
-ice_vsi_alloc_arrays
-====================
-
-.. c:function:: int ice_vsi_alloc_arrays(struct ice_vsi *vsi, bool alloc_qvectors)
-
-    Allocate queue and vector pointer arrays for the vsi
-
-    :param struct ice_vsi \*vsi:
-        VSI pointer
-
-    :param bool alloc_qvectors:
-        a bool to specify if q_vectors need to be allocated.
-
-.. _`ice_vsi_alloc_arrays.on-error`:
-
-On error
---------
-
-returns error code (negative)
-
-.. _`ice_vsi_alloc_arrays.on-success`:
-
-On success
-----------
-
-returns 0
-
-.. _`ice_msix_clean_rings`:
-
-ice_msix_clean_rings
-====================
-
-.. c:function:: irqreturn_t ice_msix_clean_rings(int __always_unused irq, void *data)
-
-    MSIX mode Interrupt Handler
-
-    :param int __always_unused irq:
-        interrupt number
-
-    :param void \*data:
-        pointer to a q_vector
-
-.. _`ice_vsi_alloc`:
-
-ice_vsi_alloc
-=============
-
-.. c:function:: struct ice_vsi *ice_vsi_alloc(struct ice_pf *pf, enum ice_vsi_type type)
-
-    Allocates the next available struct vsi in the PF
-
-    :param struct ice_pf \*pf:
-        board private structure
-
-    :param enum ice_vsi_type type:
-        type of VSI
-
-.. _`ice_vsi_alloc.description`:
-
-Description
------------
-
-returns a pointer to a VSI on success, NULL on failure.
+    :type data: void \*
 
 .. _`ice_free_irq_msix_misc`:
 
@@ -881,8 +545,9 @@ ice_free_irq_msix_misc
 
     Unroll misc vector setup
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_req_irq_msix_misc`:
 
@@ -893,8 +558,9 @@ ice_req_irq_msix_misc
 
     Setup the misc vector to handle non queue events
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_req_irq_msix_misc.description`:
 
@@ -905,101 +571,40 @@ This sets up the handler for MSIX 0, which is used to manage the
 non-queue interrupts, e.g. AdminQ and errors.  This is not used
 when in MSI or Legacy interrupt mode.
 
-.. _`ice_vsi_get_qs_contig`:
+.. _`ice_napi_del`:
 
-ice_vsi_get_qs_contig
-=====================
+ice_napi_del
+============
 
-.. c:function:: int ice_vsi_get_qs_contig(struct ice_vsi *vsi)
+.. c:function:: void ice_napi_del(struct ice_vsi *vsi)
 
-    Assign a contiguous chunk of queues to VSI
+    Remove NAPI handler for the VSI
 
-    :param struct ice_vsi \*vsi:
-        the VSI getting queues
+    :param vsi:
+        VSI for which NAPI handler is to be removed
+    :type vsi: struct ice_vsi \*
 
-.. _`ice_vsi_get_qs_contig.description`:
+.. _`ice_napi_add`:
 
-Description
------------
+ice_napi_add
+============
 
-Return 0 on success and a negative value on error
+.. c:function:: void ice_napi_add(struct ice_vsi *vsi)
 
-.. _`ice_vsi_get_qs_scatter`:
+    register NAPI handler for the VSI
 
-ice_vsi_get_qs_scatter
-======================
+    :param vsi:
+        VSI for which NAPI handler is to be registered
+    :type vsi: struct ice_vsi \*
 
-.. c:function:: int ice_vsi_get_qs_scatter(struct ice_vsi *vsi)
-
-    Assign a scattered queues to VSI
-
-    :param struct ice_vsi \*vsi:
-        the VSI getting queues
-
-.. _`ice_vsi_get_qs_scatter.description`:
+.. _`ice_napi_add.description`:
 
 Description
 -----------
 
-Return 0 on success and a negative value on error
-
-.. _`ice_vsi_get_qs`:
-
-ice_vsi_get_qs
-==============
-
-.. c:function:: int ice_vsi_get_qs(struct ice_vsi *vsi)
-
-    Assign queues from PF to VSI
-
-    :param struct ice_vsi \*vsi:
-        the VSI to assign queues to
-
-.. _`ice_vsi_get_qs.description`:
-
-Description
------------
-
-Returns 0 on success and a negative value on error
-
-.. _`ice_vsi_put_qs`:
-
-ice_vsi_put_qs
-==============
-
-.. c:function:: void ice_vsi_put_qs(struct ice_vsi *vsi)
-
-    Release queues from VSI to PF
-
-    :param struct ice_vsi \*vsi:
-        the VSI thats going to release queues
-
-.. _`ice_free_q_vector`:
-
-ice_free_q_vector
-=================
-
-.. c:function:: void ice_free_q_vector(struct ice_vsi *vsi, int v_idx)
-
-    Free memory allocated for a specific interrupt vector
-
-    :param struct ice_vsi \*vsi:
-        VSI having the memory freed
-
-    :param int v_idx:
-        index of the vector to be freed
-
-.. _`ice_vsi_free_q_vectors`:
-
-ice_vsi_free_q_vectors
-======================
-
-.. c:function:: void ice_vsi_free_q_vectors(struct ice_vsi *vsi)
-
-    Free memory allocated for interrupt vectors
-
-    :param struct ice_vsi \*vsi:
-        the VSI having memory freed
+This function is only called in the driver's load path. Registering the NAPI
+handler is done in \ :c:func:`ice_vsi_alloc_q_vector`\  for all other cases (i.e. resume,
+reset/rebuild, etc.)
 
 .. _`ice_cfg_netdev`:
 
@@ -1008,10 +613,11 @@ ice_cfg_netdev
 
 .. c:function:: int ice_cfg_netdev(struct ice_vsi *vsi)
 
-    Setup the netdev flags
+    Allocate, configure and register a netdev
 
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
+    :param vsi:
+        the VSI associated with the new netdev
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_cfg_netdev.description`:
 
@@ -1019,108 +625,6 @@ Description
 -----------
 
 Returns 0 on success, negative value on failure
-
-.. _`ice_vsi_free_arrays`:
-
-ice_vsi_free_arrays
-===================
-
-.. c:function:: void ice_vsi_free_arrays(struct ice_vsi *vsi, bool free_qvectors)
-
-    clean up vsi resources
-
-    :param struct ice_vsi \*vsi:
-        pointer to VSI being cleared
-
-    :param bool free_qvectors:
-        bool to specify if q_vectors should be deallocated
-
-.. _`ice_vsi_clear`:
-
-ice_vsi_clear
-=============
-
-.. c:function:: int ice_vsi_clear(struct ice_vsi *vsi)
-
-    clean up and deallocate the provided vsi
-
-    :param struct ice_vsi \*vsi:
-        pointer to VSI being cleared
-
-.. _`ice_vsi_clear.description`:
-
-Description
------------
-
-This deallocates the vsi's queue resources, removes it from the PF's
-VSI array if necessary, and deallocates the VSI
-
-Returns 0 on success, negative on failure
-
-.. _`ice_vsi_alloc_q_vector`:
-
-ice_vsi_alloc_q_vector
-======================
-
-.. c:function:: int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, int v_idx)
-
-    Allocate memory for a single interrupt vector
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-    :param int v_idx:
-        index of the vector in the vsi struct
-
-.. _`ice_vsi_alloc_q_vector.description`:
-
-Description
------------
-
-We allocate one q_vector.  If allocation fails we return -ENOMEM.
-
-.. _`ice_vsi_alloc_q_vectors`:
-
-ice_vsi_alloc_q_vectors
-=======================
-
-.. c:function:: int ice_vsi_alloc_q_vectors(struct ice_vsi *vsi)
-
-    Allocate memory for interrupt vectors
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-.. _`ice_vsi_alloc_q_vectors.description`:
-
-Description
------------
-
-We allocate one q_vector per queue interrupt.  If allocation fails we
-return -ENOMEM.
-
-.. _`ice_vsi_setup_vector_base`:
-
-ice_vsi_setup_vector_base
-=========================
-
-.. c:function:: int ice_vsi_setup_vector_base(struct ice_vsi *vsi)
-
-    Set up the base vector for the given VSI
-
-    :param struct ice_vsi \*vsi:
-        ptr to the VSI
-
-.. _`ice_vsi_setup_vector_base.description`:
-
-Description
------------
-
-This should only be called after \ :c:func:`ice_vsi_alloc`\  which allocates the
-corresponding SW VSI structure and initializes num_queue_pairs for the
-newly allocated VSI.
-
-Returns 0 on success or negative on failure
 
 .. _`ice_fill_rss_lut`:
 
@@ -1131,90 +635,42 @@ ice_fill_rss_lut
 
     Fill the RSS lookup table with default values
 
-    :param u8 \*lut:
+    :param lut:
         Lookup table
+    :type lut: u8 \*
 
-    :param u16 rss_table_size:
+    :param rss_table_size:
         Lookup table size
+    :type rss_table_size: u16
 
-    :param u16 rss_size:
+    :param rss_size:
         Range of queue number for hashing
+    :type rss_size: u16
 
-.. _`ice_vsi_cfg_rss`:
+.. _`ice_pf_vsi_setup`:
 
-ice_vsi_cfg_rss
-===============
-
-.. c:function:: int ice_vsi_cfg_rss(struct ice_vsi *vsi)
-
-    Configure RSS params for a VSI
-
-    :param struct ice_vsi \*vsi:
-        VSI to be configured
-
-.. _`ice_vsi_reinit_setup`:
-
-ice_vsi_reinit_setup
-====================
-
-.. c:function:: int ice_vsi_reinit_setup(struct ice_vsi *vsi)
-
-    return resource and reallocate resource for a VSI
-
-    :param struct ice_vsi \*vsi:
-        pointer to the ice_vsi
-
-.. _`ice_vsi_reinit_setup.description`:
-
-Description
------------
-
-This reallocates the VSIs queue resources
-
-Returns 0 on success and negative value on failure
-
-.. _`ice_vsi_setup`:
-
-ice_vsi_setup
-=============
-
-.. c:function:: struct ice_vsi *ice_vsi_setup(struct ice_pf *pf, enum ice_vsi_type type, struct ice_port_info *pi)
-
-    Set up a VSI by a given type
-
-    :param struct ice_pf \*pf:
-        board private structure
-
-    :param enum ice_vsi_type type:
-        VSI type
-
-    :param struct ice_port_info \*pi:
-        pointer to the port_info instance
-
-.. _`ice_vsi_setup.description`:
-
-Description
------------
-
-This allocates the sw VSI structure and its queue resources.
-
-Returns pointer to the successfully allocated and configure VSI sw struct on
-success, otherwise returns NULL on failure.
-
-.. _`ice_vsi_add_vlan`:
-
-ice_vsi_add_vlan
+ice_pf_vsi_setup
 ================
 
-.. c:function:: int ice_vsi_add_vlan(struct ice_vsi *vsi, u16 vid)
+.. c:function:: struct ice_vsi *ice_pf_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi)
 
-    Add vsi membership for given vlan
+    Set up a PF VSI
 
-    :param struct ice_vsi \*vsi:
-        the vsi being configured
+    :param pf:
+        board private structure
+    :type pf: struct ice_pf \*
 
-    :param u16 vid:
-        vlan id to be added
+    :param pi:
+        pointer to the port_info instance
+    :type pi: struct ice_port_info \*
+
+.. _`ice_pf_vsi_setup.description`:
+
+Description
+-----------
+
+Returns pointer to the successfully allocated VSI sw struct on success,
+otherwise returns NULL on failure.
 
 .. _`ice_vlan_rx_add_vid`:
 
@@ -1225,14 +681,17 @@ ice_vlan_rx_add_vid
 
     Add a vlan id filter to HW offload
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface to be adjusted
+    :type netdev: struct net_device \*
 
-    :param __always_unused __be16 proto:
+    :param proto:
         unused protocol
+    :type proto: __always_unused __be16
 
-    :param u16 vid:
+    :param vid:
         vlan id to be added
+    :type vid: u16
 
 .. _`ice_vlan_rx_add_vid.description`:
 
@@ -1240,21 +699,6 @@ Description
 -----------
 
 net_device_ops implementation for adding vlan ids
-
-.. _`ice_vsi_kill_vlan`:
-
-ice_vsi_kill_vlan
-=================
-
-.. c:function:: void ice_vsi_kill_vlan(struct ice_vsi *vsi, u16 vid)
-
-    Remove VSI membership for a given VLAN
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-    :param u16 vid:
-        VLAN id to be removed
 
 .. _`ice_vlan_rx_kill_vid`:
 
@@ -1265,14 +709,17 @@ ice_vlan_rx_kill_vid
 
     Remove a vlan id filter from HW offload
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface to be adjusted
+    :type netdev: struct net_device \*
 
-    :param __always_unused __be16 proto:
+    :param proto:
         unused protocol
+    :type proto: __always_unused __be16
 
-    :param u16 vid:
+    :param vid:
         vlan id to be removed
+    :type vid: u16
 
 .. _`ice_vlan_rx_kill_vid.description`:
 
@@ -1290,8 +737,9 @@ ice_setup_pf_sw
 
     Setup the HW switch on startup or after reset
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_setup_pf_sw.description`:
 
@@ -1309,8 +757,9 @@ ice_determine_q_usage
 
     Calculate queue distribution
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_determine_q_usage.description`:
 
@@ -1328,8 +777,9 @@ ice_deinit_pf
 
     Unrolls initialziations done by ice_init_pf
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure to initialize
+    :type pf: struct ice_pf \*
 
 .. _`ice_init_pf`:
 
@@ -1340,8 +790,9 @@ ice_init_pf
 
     Initialize general software structures (struct ice_pf)
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure to initialize
+    :type pf: struct ice_pf \*
 
 .. _`ice_ena_msix_range`:
 
@@ -1352,8 +803,9 @@ ice_ena_msix_range
 
     Request a range of MSIX vectors from the OS
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
 
 .. _`ice_ena_msix_range.description`:
 
@@ -1372,20 +824,9 @@ ice_dis_msix
 
     Disable MSI-X interrupt setup in OS
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
-
-.. _`ice_init_interrupt_scheme`:
-
-ice_init_interrupt_scheme
-=========================
-
-.. c:function:: int ice_init_interrupt_scheme(struct ice_pf *pf)
-
-    Determine proper interrupt scheme
-
-    :param struct ice_pf \*pf:
-        board private structure to initialize
+    :type pf: struct ice_pf \*
 
 .. _`ice_clear_interrupt_scheme`:
 
@@ -1396,8 +837,44 @@ ice_clear_interrupt_scheme
 
     Undo things done by ice_init_interrupt_scheme
 
-    :param struct ice_pf \*pf:
+    :param pf:
         board private structure
+    :type pf: struct ice_pf \*
+
+.. _`ice_init_interrupt_scheme`:
+
+ice_init_interrupt_scheme
+=========================
+
+.. c:function:: int ice_init_interrupt_scheme(struct ice_pf *pf)
+
+    Determine proper interrupt scheme
+
+    :param pf:
+        board private structure to initialize
+    :type pf: struct ice_pf \*
+
+.. _`ice_verify_cacheline_size`:
+
+ice_verify_cacheline_size
+=========================
+
+.. c:function:: void ice_verify_cacheline_size(struct ice_pf *pf)
+
+    verify driver's assumption of 64 Byte cache lines
+
+    :param pf:
+        pointer to the PF structure
+    :type pf: struct ice_pf \*
+
+.. _`ice_verify_cacheline_size.description`:
+
+Description
+-----------
+
+There is no error returned here because the driver should be able to handle
+128 Byte cache lines, so we only print a warning in case issues are seen,
+specifically with Tx.
 
 .. _`ice_probe`:
 
@@ -1408,11 +885,13 @@ ice_probe
 
     Device initialization routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id __always_unused \*ent:
+    :param ent:
         entry in ice_pci_tbl
+    :type ent: const struct pci_device_id __always_unused \*
 
 .. _`ice_probe.description`:
 
@@ -1430,8 +909,9 @@ ice_remove
 
     Device removal routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`ice_module_init`:
 
@@ -1442,8 +922,9 @@ ice_module_init
 
     Driver registration routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ice_module_init.description`:
 
@@ -1462,8 +943,9 @@ ice_module_exit
 
     Driver exit cleanup routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ice_module_exit.description`:
 
@@ -1482,11 +964,13 @@ ice_set_mac_address
 
     NDO callback to set mac address
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*pi:
+    :param pi:
         pointer to an address structure
+    :type pi: void \*
 
 .. _`ice_set_mac_address.description`:
 
@@ -1504,8 +988,9 @@ ice_set_rx_mode
 
     NDO callback to set the netdev filters
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ice_fdb_add`:
 
@@ -1516,23 +1001,29 @@ ice_fdb_add
 
     add an entry to the hardware database
 
-    :param struct ndmsg \*ndm:
+    :param ndm:
         the input from the stack
+    :type ndm: struct ndmsg \*
 
-    :param struct nlattr __always_unused  \*tb:
+    :param tb:
         pointer to array of nladdr (unused)
+    :type tb: struct nlattr __always_unused  \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the net device pointer
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         the MAC address entry being added
+    :type addr: const unsigned char \*
 
-    :param u16 vid:
+    :param vid:
         VLAN id
+    :type vid: u16
 
-    :param u16 flags:
+    :param flags:
         instructions from stack about fdb operation
+    :type flags: u16
 
 .. _`ice_fdb_del`:
 
@@ -1543,47 +1034,25 @@ ice_fdb_del
 
     delete an entry from the hardware database
 
-    :param struct ndmsg \*ndm:
+    :param ndm:
         the input from the stack
+    :type ndm: struct ndmsg \*
 
-    :param __always_unused struct nlattr  \*tb:
+    :param tb:
         pointer to array of nladdr (unused)
+    :type tb: __always_unused struct nlattr  \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the net device pointer
+    :type dev: struct net_device \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         the MAC address entry being added
+    :type addr: const unsigned char \*
 
-    :param __always_unused u16 vid:
+    :param vid:
         VLAN id
-
-.. _`ice_vsi_manage_vlan_insertion`:
-
-ice_vsi_manage_vlan_insertion
-=============================
-
-.. c:function:: int ice_vsi_manage_vlan_insertion(struct ice_vsi *vsi)
-
-    Manage VLAN insertion for the VSI for Tx
-
-    :param struct ice_vsi \*vsi:
-        the vsi being changed
-
-.. _`ice_vsi_manage_vlan_stripping`:
-
-ice_vsi_manage_vlan_stripping
-=============================
-
-.. c:function:: int ice_vsi_manage_vlan_stripping(struct ice_vsi *vsi, bool ena)
-
-    Manage VLAN stripping for the VSI for Rx
-
-    :param struct ice_vsi \*vsi:
-        the vsi being changed
-
-    :param bool ena:
-        boolean value indicating if this is a enable or disable request
+    :type vid: __always_unused u16
 
 .. _`ice_set_features`:
 
@@ -1594,11 +1063,13 @@ ice_set_features
 
     set the netdev feature flags
 
-    :param struct net_device \*netdev:
+    :param netdev:
         ptr to the netdev being adjusted
+    :type netdev: struct net_device \*
 
-    :param netdev_features_t features:
+    :param features:
         the feature set that the stack is suggesting
+    :type features: netdev_features_t
 
 .. _`ice_vsi_vlan_setup`:
 
@@ -1609,104 +1080,9 @@ ice_vsi_vlan_setup
 
     Setup vlan offload properties on a VSI
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         VSI to setup vlan properties for
-
-.. _`ice_restore_vlan`:
-
-ice_restore_vlan
-================
-
-.. c:function:: int ice_restore_vlan(struct ice_vsi *vsi)
-
-    Reinstate VLANs when vsi/netdev comes back up
-
-    :param struct ice_vsi \*vsi:
-        the VSI being brought back up
-
-.. _`ice_setup_tx_ctx`:
-
-ice_setup_tx_ctx
-================
-
-.. c:function:: void ice_setup_tx_ctx(struct ice_ring *ring, struct ice_tlan_ctx *tlan_ctx, u16 pf_q)
-
-    setup a struct ice_tlan_ctx instance
-
-    :param struct ice_ring \*ring:
-        The Tx ring to configure
-
-    :param struct ice_tlan_ctx \*tlan_ctx:
-        Pointer to the Tx LAN queue context structure to be initialized
-
-    :param u16 pf_q:
-        queue index in the PF space
-
-.. _`ice_setup_tx_ctx.description`:
-
-Description
------------
-
-Configure the Tx descriptor ring in TLAN context.
-
-.. _`ice_vsi_cfg_txqs`:
-
-ice_vsi_cfg_txqs
-================
-
-.. c:function:: int ice_vsi_cfg_txqs(struct ice_vsi *vsi)
-
-    Configure the VSI for Tx
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-.. _`ice_vsi_cfg_txqs.description`:
-
-Description
------------
-
-Return 0 on success and a negative value on error
-Configure the Tx VSI for operation.
-
-.. _`ice_setup_rx_ctx`:
-
-ice_setup_rx_ctx
-================
-
-.. c:function:: int ice_setup_rx_ctx(struct ice_ring *ring)
-
-    Configure a receive ring context
-
-    :param struct ice_ring \*ring:
-        The Rx ring to configure
-
-.. _`ice_setup_rx_ctx.description`:
-
-Description
------------
-
-Configure the Rx descriptor ring in RLAN context.
-
-.. _`ice_vsi_cfg_rxqs`:
-
-ice_vsi_cfg_rxqs
-================
-
-.. c:function:: int ice_vsi_cfg_rxqs(struct ice_vsi *vsi)
-
-    Configure the VSI for Rx
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-.. _`ice_vsi_cfg_rxqs.description`:
-
-Description
------------
-
-Return 0 on success and a negative value on error
-Configure the Rx VSI for operation.
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_vsi_cfg`:
 
@@ -1717,8 +1093,9 @@ ice_vsi_cfg
 
     Setup the VSI
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_vsi_cfg.description`:
 
@@ -1726,112 +1103,6 @@ Description
 -----------
 
 Return 0 on success and negative value on error
-
-.. _`ice_vsi_stop_tx_rings`:
-
-ice_vsi_stop_tx_rings
-=====================
-
-.. c:function:: int ice_vsi_stop_tx_rings(struct ice_vsi *vsi)
-
-    Disable Tx rings
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-.. _`ice_pf_rxq_wait`:
-
-ice_pf_rxq_wait
-===============
-
-.. c:function:: int ice_pf_rxq_wait(struct ice_pf *pf, int pf_q, bool ena)
-
-    Wait for a PF's Rx queue to be enabled or disabled
-
-    :param struct ice_pf \*pf:
-        the PF being configured
-
-    :param int pf_q:
-        the PF queue
-
-    :param bool ena:
-        enable or disable state of the queue
-
-.. _`ice_pf_rxq_wait.description`:
-
-Description
------------
-
-This routine will wait for the given Rx queue of the PF to reach the
-enabled or disabled state.
-Returns -ETIMEDOUT in case of failing to reach the requested state after
-multiple retries; else will return 0 in case of success.
-
-.. _`ice_vsi_ctrl_rx_rings`:
-
-ice_vsi_ctrl_rx_rings
-=====================
-
-.. c:function:: int ice_vsi_ctrl_rx_rings(struct ice_vsi *vsi, bool ena)
-
-    Start or stop a VSI's rx rings
-
-    :param struct ice_vsi \*vsi:
-        the VSI being configured
-
-    :param bool ena:
-        start or stop the rx rings
-
-.. _`ice_vsi_start_rx_rings`:
-
-ice_vsi_start_rx_rings
-======================
-
-.. c:function:: int ice_vsi_start_rx_rings(struct ice_vsi *vsi)
-
-    start VSI's rx rings
-
-    :param struct ice_vsi \*vsi:
-        the VSI whose rings are to be started
-
-.. _`ice_vsi_start_rx_rings.description`:
-
-Description
------------
-
-Returns 0 on success and a negative value on error
-
-.. _`ice_vsi_stop_rx_rings`:
-
-ice_vsi_stop_rx_rings
-=====================
-
-.. c:function:: int ice_vsi_stop_rx_rings(struct ice_vsi *vsi)
-
-    stop VSI's rx rings
-
-    :param struct ice_vsi \*vsi:
-        the VSI
-
-.. _`ice_vsi_stop_rx_rings.description`:
-
-Description
------------
-
-Returns 0 on success and a negative value on error
-
-.. _`ice_vsi_stop_tx_rx_rings`:
-
-ice_vsi_stop_tx_rx_rings
-========================
-
-.. c:function:: int ice_vsi_stop_tx_rx_rings(struct ice_vsi *vsi)
-
-    stop VSI's tx and rx rings
-
-    :param struct ice_vsi \*vsi:
-        the VSI
-        Returns 0 on success and a negative value on error
 
 .. _`ice_napi_enable_all`:
 
@@ -1842,8 +1113,9 @@ ice_napi_enable_all
 
     Enable NAPI for all q_vectors in the VSI
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI being configured
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_up_complete`:
 
@@ -1854,8 +1126,9 @@ ice_up_complete
 
     Finish the last steps of bringing up a connection
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         The VSI being configured
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_up_complete.description`:
 
@@ -1873,8 +1146,9 @@ ice_up
 
     Bring the connection back up after being down
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         VSI being configured
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_fetch_u64_stats_per_ring`:
 
@@ -1885,14 +1159,17 @@ ice_fetch_u64_stats_per_ring
 
     get packets and bytes stats per ring
 
-    :param struct ice_ring \*ring:
+    :param ring:
         Tx or Rx ring to read stats from
+    :type ring: struct ice_ring \*
 
-    :param u64 \*pkts:
+    :param pkts:
         packets stats counter
+    :type pkts: u64 \*
 
-    :param u64 \*bytes:
+    :param bytes:
         bytes stats counter
+    :type bytes: u64 \*
 
 .. _`ice_fetch_u64_stats_per_ring.description`:
 
@@ -1901,69 +1178,6 @@ Description
 
 This function fetches stats from the ring considering the atomic operations
 that needs to be performed to read u64 values in 32 bit machine.
-
-.. _`ice_stat_update40`:
-
-ice_stat_update40
-=================
-
-.. c:function:: void ice_stat_update40(struct ice_hw *hw, u32 hireg, u32 loreg, bool prev_stat_loaded, u64 *prev_stat, u64 *cur_stat)
-
-    read 40 bit stat from the chip and update stat values
-
-    :param struct ice_hw \*hw:
-        ptr to the hardware info
-
-    :param u32 hireg:
-        high 32 bit HW register to read from
-
-    :param u32 loreg:
-        low 32 bit HW register to read from
-
-    :param bool prev_stat_loaded:
-        bool to specify if previous stats are loaded
-
-    :param u64 \*prev_stat:
-        ptr to previous loaded stat value
-
-    :param u64 \*cur_stat:
-        ptr to current stat value
-
-.. _`ice_stat_update32`:
-
-ice_stat_update32
-=================
-
-.. c:function:: void ice_stat_update32(struct ice_hw *hw, u32 reg, bool prev_stat_loaded, u64 *prev_stat, u64 *cur_stat)
-
-    read 32 bit stat from the chip and update stat values
-
-    :param struct ice_hw \*hw:
-        ptr to the hardware info
-
-    :param u32 reg:
-        HW register to read from
-
-    :param bool prev_stat_loaded:
-        bool to specify if previous stats are loaded
-
-    :param u64 \*prev_stat:
-        ptr to previous loaded stat value
-
-    :param u64 \*cur_stat:
-        ptr to current stat value
-
-.. _`ice_update_eth_stats`:
-
-ice_update_eth_stats
-====================
-
-.. c:function:: void ice_update_eth_stats(struct ice_vsi *vsi)
-
-    Update VSI-specific ethernet statistics counters
-
-    :param struct ice_vsi \*vsi:
-        the VSI to be updated
 
 .. _`ice_update_vsi_ring_stats`:
 
@@ -1974,8 +1188,9 @@ ice_update_vsi_ring_stats
 
     Update VSI stats counters
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI to be updated
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_update_vsi_stats`:
 
@@ -1986,8 +1201,9 @@ ice_update_vsi_stats
 
     Update VSI stats counters
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI to be updated
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_update_pf_stats`:
 
@@ -1998,8 +1214,9 @@ ice_update_pf_stats
 
     Update PF port stats counters
 
-    :param struct ice_pf \*pf:
+    :param pf:
         PF whose stats needs to be updated
+    :type pf: struct ice_pf \*
 
 .. _`ice_get_stats64`:
 
@@ -2010,31 +1227,13 @@ ice_get_stats64
 
     get statistics for network device structure
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct rtnl_link_stats64 \*stats:
+    :param stats:
         main device statistics structure
-
-.. _`ice_netpoll`:
-
-ice_netpoll
-===========
-
-.. c:function:: void ice_netpoll(struct net_device *netdev)
-
-    polling "interrupt" handler
-
-    :param struct net_device \*netdev:
-        network interface device structure
-
-.. _`ice_netpoll.description`:
-
-Description
------------
-
-Used by netconsole to send skbs without having to re-enable interrupts.
-This is not called in the normal interrupt path.
+    :type stats: struct rtnl_link_stats64 \*
 
 .. _`ice_napi_disable_all`:
 
@@ -2045,8 +1244,9 @@ ice_napi_disable_all
 
     Disable NAPI for all q_vectors in the VSI
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         VSI having NAPI disabled
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_down`:
 
@@ -2057,8 +1257,9 @@ ice_down
 
     Shutdown the connection
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         The VSI being stopped
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_vsi_setup_tx_rings`:
 
@@ -2069,8 +1270,9 @@ ice_vsi_setup_tx_rings
 
     Allocate VSI Tx queue resources
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         VSI having resources allocated
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_vsi_setup_tx_rings.description`:
 
@@ -2088,8 +1290,9 @@ ice_vsi_setup_rx_rings
 
     Allocate VSI Rx queue resources
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         VSI having resources allocated
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_vsi_setup_rx_rings.description`:
 
@@ -2107,11 +1310,13 @@ ice_vsi_req_irq
 
     Request IRQ from the OS
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         The VSI IRQ is being requested for
+    :type vsi: struct ice_vsi \*
 
-    :param char \*basename:
+    :param basename:
         name for the vector
+    :type basename: char \*
 
 .. _`ice_vsi_req_irq.description`:
 
@@ -2119,30 +1324,6 @@ Description
 -----------
 
 Return 0 on success and a negative value on error
-
-.. _`ice_vsi_free_tx_rings`:
-
-ice_vsi_free_tx_rings
-=====================
-
-.. c:function:: void ice_vsi_free_tx_rings(struct ice_vsi *vsi)
-
-    Free Tx resources for VSI queues
-
-    :param struct ice_vsi \*vsi:
-        the VSI having resources freed
-
-.. _`ice_vsi_free_rx_rings`:
-
-ice_vsi_free_rx_rings
-=====================
-
-.. c:function:: void ice_vsi_free_rx_rings(struct ice_vsi *vsi)
-
-    Free Rx resources for VSI queues
-
-    :param struct ice_vsi \*vsi:
-        the VSI having resources freed
 
 .. _`ice_vsi_open`:
 
@@ -2153,8 +1334,9 @@ ice_vsi_open
 
     Called when a network interface is made active
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI to open
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_vsi_open.description`:
 
@@ -2165,48 +1347,18 @@ Initialization of the VSI
 
 Returns 0 on success, negative value on error
 
-.. _`ice_vsi_close`:
+.. _`ice_vsi_release_all`:
 
-ice_vsi_close
-=============
+ice_vsi_release_all
+===================
 
-.. c:function:: void ice_vsi_close(struct ice_vsi *vsi)
+.. c:function:: void ice_vsi_release_all(struct ice_pf *pf)
 
-    Shut down a VSI
+    Delete all VSIs
 
-    :param struct ice_vsi \*vsi:
-        the VSI being shut down
-
-.. _`ice_rss_clean`:
-
-ice_rss_clean
-=============
-
-.. c:function:: void ice_rss_clean(struct ice_vsi *vsi)
-
-    Delete RSS related VSI structures that hold user inputs
-
-    :param struct ice_vsi \*vsi:
-        the VSI being removed
-
-.. _`ice_vsi_release`:
-
-ice_vsi_release
-===============
-
-.. c:function:: int ice_vsi_release(struct ice_vsi *vsi)
-
-    Delete a VSI and free its resources
-
-    :param struct ice_vsi \*vsi:
-        the VSI being removed
-
-.. _`ice_vsi_release.description`:
-
-Description
------------
-
-Returns 0 on success or < 0 on error
+    :param pf:
+        PF from which all VSIs are being removed
+    :type pf: struct ice_pf \*
 
 .. _`ice_dis_vsi`:
 
@@ -2217,20 +1369,22 @@ ice_dis_vsi
 
     pause a VSI
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI being paused
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_ena_vsi`:
 
 ice_ena_vsi
 ===========
 
-.. c:function:: void ice_ena_vsi(struct ice_vsi *vsi)
+.. c:function:: int ice_ena_vsi(struct ice_vsi *vsi)
 
     resume a VSI
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         the VSI being resume
+    :type vsi: struct ice_vsi \*
 
 .. _`ice_pf_dis_all_vsi`:
 
@@ -2241,20 +1395,48 @@ ice_pf_dis_all_vsi
 
     Pause all VSIs on a PF
 
-    :param struct ice_pf \*pf:
+    :param pf:
         the PF
+    :type pf: struct ice_pf \*
 
 .. _`ice_pf_ena_all_vsi`:
 
 ice_pf_ena_all_vsi
 ==================
 
-.. c:function:: void ice_pf_ena_all_vsi(struct ice_pf *pf)
+.. c:function:: int ice_pf_ena_all_vsi(struct ice_pf *pf)
 
     Resume all VSIs on a PF
 
-    :param struct ice_pf \*pf:
+    :param pf:
         the PF
+    :type pf: struct ice_pf \*
+
+.. _`ice_vsi_rebuild_all`:
+
+ice_vsi_rebuild_all
+===================
+
+.. c:function:: int ice_vsi_rebuild_all(struct ice_pf *pf)
+
+    rebuild all VSIs in pf
+
+    :param pf:
+        the PF
+    :type pf: struct ice_pf \*
+
+.. _`ice_vsi_replay_all`:
+
+ice_vsi_replay_all
+==================
+
+.. c:function:: int ice_vsi_replay_all(struct ice_pf *pf)
+
+    replay all VSIs configuration in the PF
+
+    :param pf:
+        the PF
+    :type pf: struct ice_pf \*
 
 .. _`ice_rebuild`:
 
@@ -2265,8 +1447,9 @@ ice_rebuild
 
     rebuild after reset
 
-    :param struct ice_pf \*pf:
+    :param pf:
         pf to rebuild
+    :type pf: struct ice_pf \*
 
 .. _`ice_change_mtu`:
 
@@ -2277,11 +1460,13 @@ ice_change_mtu
 
     NDO callback to change the MTU
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`ice_change_mtu.description`:
 
@@ -2299,17 +1484,21 @@ ice_set_rss
 
     Set RSS keys and lut
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         Pointer to VSI structure
+    :type vsi: struct ice_vsi \*
 
-    :param u8 \*seed:
+    :param seed:
         RSS hash seed
+    :type seed: u8 \*
 
-    :param u8 \*lut:
+    :param lut:
         Lookup table
+    :type lut: u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         Lookup table size
+    :type lut_size: u16
 
 .. _`ice_set_rss.description`:
 
@@ -2327,17 +1516,21 @@ ice_get_rss
 
     Get RSS keys and lut
 
-    :param struct ice_vsi \*vsi:
+    :param vsi:
         Pointer to VSI structure
+    :type vsi: struct ice_vsi \*
 
-    :param u8 \*seed:
+    :param seed:
         Buffer to store the keys
+    :type seed: u8 \*
 
-    :param u8 \*lut:
+    :param lut:
         Buffer to store the lookup table entries
+    :type lut: u8 \*
 
-    :param u16 lut_size:
+    :param lut_size:
         Size of buffer to store the lookup table entries
+    :type lut_size: u16
 
 .. _`ice_get_rss.description`:
 
@@ -2345,6 +1538,114 @@ Description
 -----------
 
 Returns 0 on success, negative on failure
+
+.. _`ice_bridge_getlink`:
+
+ice_bridge_getlink
+==================
+
+.. c:function:: int ice_bridge_getlink(struct sk_buff *skb, u32 pid, u32 seq, struct net_device *dev, u32 filter_mask, int nlflags)
+
+    Get the hardware bridge mode
+
+    :param skb:
+        skb buff
+    :type skb: struct sk_buff \*
+
+    :param pid:
+        process id
+    :type pid: u32
+
+    :param seq:
+        RTNL message seq
+    :type seq: u32
+
+    :param dev:
+        the netdev being configured
+    :type dev: struct net_device \*
+
+    :param filter_mask:
+        filter mask passed in
+    :type filter_mask: u32
+
+    :param nlflags:
+        netlink flags passed in
+    :type nlflags: int
+
+.. _`ice_bridge_getlink.description`:
+
+Description
+-----------
+
+Return the bridge mode (VEB/VEPA)
+
+.. _`ice_vsi_update_bridge_mode`:
+
+ice_vsi_update_bridge_mode
+==========================
+
+.. c:function:: int ice_vsi_update_bridge_mode(struct ice_vsi *vsi, u16 bmode)
+
+    Update VSI for switching bridge mode (VEB/VEPA)
+
+    :param vsi:
+        Pointer to VSI structure
+    :type vsi: struct ice_vsi \*
+
+    :param bmode:
+        Hardware bridge mode (VEB/VEPA)
+    :type bmode: u16
+
+.. _`ice_vsi_update_bridge_mode.description`:
+
+Description
+-----------
+
+Returns 0 on success, negative on failure
+
+.. _`ice_bridge_setlink`:
+
+ice_bridge_setlink
+==================
+
+.. c:function:: int ice_bridge_setlink(struct net_device *dev, struct nlmsghdr *nlh, u16 __always_unused flags)
+
+    Set the hardware bridge mode
+
+    :param dev:
+        the netdev being configured
+    :type dev: struct net_device \*
+
+    :param nlh:
+        RTNL message
+    :type nlh: struct nlmsghdr \*
+
+    :param flags:
+        bridge setlink flags
+    :type flags: u16 __always_unused
+
+.. _`ice_bridge_setlink.description`:
+
+Description
+-----------
+
+Sets the bridge mode (VEB/VEPA) of the switch to which the netdev (VSI) is
+hooked up to. Iterates through the PF VSI list and sets the loopback mode (if
+not already set for all VSIs connected to this switch. And also update the
+unicast switch filter rules for the corresponding switch of the netdev.
+
+.. _`ice_tx_timeout`:
+
+ice_tx_timeout
+==============
+
+.. c:function:: void ice_tx_timeout(struct net_device *netdev)
+
+    Respond to a Tx Hang
+
+    :param netdev:
+        network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ice_open`:
 
@@ -2355,8 +1656,9 @@ ice_open
 
     Called when a network interface becomes active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ice_open.description`:
 
@@ -2380,8 +1682,9 @@ ice_stop
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`ice_stop.description`:
 
@@ -2403,14 +1706,17 @@ ice_features_check
 
     Validate encapsulated packet conforms to limits
 
-    :param struct sk_buff \*skb:
+    :param skb:
         skb buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device __always_unused \*netdev:
+    :param netdev:
         This port's netdev
+    :type netdev: struct net_device __always_unused \*
 
-    :param netdev_features_t features:
+    :param features:
         Offload features that the stack believes apply
+    :type features: netdev_features_t
 
 .. This file was automatic generated / don't edit.
 

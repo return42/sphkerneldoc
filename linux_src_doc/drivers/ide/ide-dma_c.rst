@@ -10,8 +10,9 @@ ide_dma_intr
 
     IDE DMA interrupt handler
 
-    :param ide_drive_t \*drive:
+    :param drive:
         the drive the interrupt is for
+    :type drive: ide_drive_t \*
 
 .. _`ide_dma_intr.description`:
 
@@ -30,11 +31,13 @@ ide_dma_map_sg
 
     map IDE scatter gather for DMA I/O
 
-    :param ide_drive_t \*drive:
+    :param drive:
         the drive to map the DMA table for
+    :type drive: ide_drive_t \*
 
-    :param struct ide_cmd \*cmd:
+    :param cmd:
         command
+    :type cmd: struct ide_cmd \*
 
 .. _`ide_dma_map_sg.description`:
 
@@ -55,11 +58,13 @@ ide_dma_unmap_sg
 
     clean up DMA mapping
 
-    :param ide_drive_t \*drive:
+    :param drive:
         The drive to unmap
+    :type drive: ide_drive_t \*
 
-    :param struct ide_cmd \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct ide_cmd \*
 
 .. _`ide_dma_unmap_sg.description`:
 
@@ -81,8 +86,9 @@ ide_dma_off_quietly
 
     Generic DMA kill
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to control
+    :type drive: ide_drive_t \*
 
 .. _`ide_dma_off_quietly.description`:
 
@@ -100,8 +106,9 @@ ide_dma_off
 
     disable DMA on a device
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to disable DMA on
+    :type drive: ide_drive_t \*
 
 .. _`ide_dma_off.description`:
 
@@ -120,8 +127,9 @@ ide_dma_on
 
     Enable DMA on a device
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive to enable DMA on
+    :type drive: ide_drive_t \*
 
 .. _`ide_dma_on.description`:
 
@@ -139,11 +147,13 @@ ide_find_dma_mode
 
     compute DMA speed
 
-    :param ide_drive_t \*drive:
+    :param drive:
         IDE device
+    :type drive: ide_drive_t \*
 
-    :param u8 req_mode:
+    :param req_mode:
         requested mode
+    :type req_mode: u8
 
 .. _`ide_find_dma_mode.description`:
 

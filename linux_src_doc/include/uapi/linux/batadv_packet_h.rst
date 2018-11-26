@@ -10,8 +10,9 @@ batadv_tp_is_error
 
     Check throughput meter return code for error
 
-    :param  n:
+    :param n:
         throughput meter return code
+    :type n: 
 
 .. _`batadv_tp_is_error.return`:
 

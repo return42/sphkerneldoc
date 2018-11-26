@@ -8,8 +8,9 @@ tcm_deinit
 
 .. c:function:: void tcm_deinit(struct tcm *tcm)
 
-    :param struct tcm \*tcm:
+    :param tcm:
         *undescribed*
+    :type tcm: struct tcm \*
 
 .. _`tcm_deinit.description`:
 
@@ -30,26 +31,33 @@ tcm_reserve_2d
 
 .. c:function:: s32 tcm_reserve_2d(struct tcm *tcm, u16 width, u16 height, u16 align, s16 offset, u16 slot_bytes, struct tcm_area *area)
 
-    :param struct tcm \*tcm:
+    :param tcm:
         *undescribed*
+    :type tcm: struct tcm \*
 
-    :param u16 width:
+    :param width:
         *undescribed*
+    :type width: u16
 
-    :param u16 height:
+    :param height:
         *undescribed*
+    :type height: u16
 
-    :param u16 align:
+    :param align:
         *undescribed*
+    :type align: u16
 
-    :param s16 offset:
+    :param offset:
         *undescribed*
+    :type offset: s16
 
-    :param u16 slot_bytes:
+    :param slot_bytes:
         *undescribed*
+    :type slot_bytes: u16
 
-    :param struct tcm_area \*area:
+    :param area:
         *undescribed*
+    :type area: struct tcm_area \*
 
 .. _`tcm_reserve_2d.description`:
 
@@ -81,14 +89,17 @@ tcm_reserve_1d
 
 .. c:function:: s32 tcm_reserve_1d(struct tcm *tcm, u32 slots, struct tcm_area *area)
 
-    :param struct tcm \*tcm:
+    :param tcm:
         *undescribed*
+    :type tcm: struct tcm \*
 
-    :param u32 slots:
+    :param slots:
         *undescribed*
+    :type slots: u32
 
-    :param struct tcm_area \*area:
+    :param area:
         *undescribed*
+    :type area: struct tcm_area \*
 
 .. _`tcm_reserve_1d.description`:
 
@@ -112,8 +123,9 @@ tcm_free
 
 .. c:function:: s32 tcm_free(struct tcm_area *area)
 
-    :param struct tcm_area \*area:
+    :param area:
         *undescribed*
+    :type area: struct tcm_area \*
 
 .. _`tcm_free.description`:
 
@@ -139,11 +151,13 @@ tcm_slice
 
     it in the 'slice' parameter.  The 'parent' parameter will get modified to contain the remaining portion of the area.  If the whole parent area can fit in a 2D slice, its tcm pointer is set to NULL to mark that it is no longer a valid area.
 
-    :param struct tcm_area \*parent:
+    :param parent:
         *undescribed*
+    :type parent: struct tcm_area \*
 
-    :param struct tcm_area \*slice:
+    :param slice:
         *undescribed*
+    :type slice: struct tcm_area \*
 
 .. _`tcm_slice.description`:
 
@@ -162,14 +176,17 @@ tcm_for_each_slice
 
     syntactically as a for(;;) statement.
 
-    :param  var:
+    :param var:
         *undescribed*
+    :type var: 
 
-    :param  area:
+    :param area:
         *undescribed*
+    :type area: 
 
-    :param  safe:
+    :param safe:
         *undescribed*
+    :type safe: 
 
 .. _`tcm_for_each_slice.description`:
 

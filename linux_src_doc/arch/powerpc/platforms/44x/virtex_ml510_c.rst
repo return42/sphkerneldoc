@@ -8,8 +8,9 @@ ml510_ali_quirk
 
 .. c:function:: void ml510_ali_quirk(struct pci_dev *dev)
 
-    :param struct pci_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct pci_dev \*
 
 .. This file was automatic generated / don't edit.
 

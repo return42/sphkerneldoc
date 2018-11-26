@@ -10,14 +10,17 @@ sk_filter_trim_cap
 
     run a packet through a socket filter
 
-    :param struct sock \*sk:
+    :param sk:
         sock associated with \ :c:type:`struct sk_buff <sk_buff>`\ 
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to filter
+    :type skb: struct sk_buff \*
 
-    :param unsigned int cap:
+    :param cap:
         limit on how short the eBPF program may trim the packet
+    :type cap: unsigned int
 
 .. _`sk_filter_trim_cap.description`:
 
@@ -39,20 +42,25 @@ bpf_convert_filter
 
     convert filter program
 
-    :param struct sock_filter \*prog:
+    :param prog:
         the user passed filter program
+    :type prog: struct sock_filter \*
 
-    :param int len:
+    :param len:
         the length of the user passed filter program
+    :type len: int
 
-    :param struct bpf_prog \*new_prog:
+    :param new_prog:
         allocated 'struct bpf_prog' or NULL
+    :type new_prog: struct bpf_prog \*
 
-    :param int \*new_len:
+    :param new_len:
         pointer to store length of converted program
+    :type new_len: int \*
 
-    :param bool \*seen_ld_abs:
+    :param seen_ld_abs:
         bool whether we've seen ld_abs/ind
+    :type seen_ld_abs: bool \*
 
 .. _`bpf_convert_filter.description`:
 
@@ -84,11 +92,13 @@ bpf_check_classic
 
     verify socket filter code
 
-    :param const struct sock_filter \*filter:
+    :param filter:
         filter to verify
+    :type filter: const struct sock_filter \*
 
-    :param unsigned int flen:
+    :param flen:
         length of filter
+    :type flen: unsigned int
 
 .. _`bpf_check_classic.description`:
 
@@ -113,8 +123,9 @@ sk_filter_release_rcu
 
     Release a socket filter by rcu_head
 
-    :param struct rcu_head \*rcu:
+    :param rcu:
         rcu_head that contains the sk_filter to free
+    :type rcu: struct rcu_head \*
 
 .. _`sk_filter_release`:
 
@@ -125,8 +136,9 @@ sk_filter_release
 
     release a socket filter
 
-    :param struct sk_filter \*fp:
+    :param fp:
         filter to remove
+    :type fp: struct sk_filter \*
 
 .. _`sk_filter_release.description`:
 
@@ -144,11 +156,13 @@ bpf_prog_create
 
     create an unattached filter
 
-    :param struct bpf_prog \*\*pfp:
+    :param pfp:
         the unattached filter that is created
+    :type pfp: struct bpf_prog \*\*
 
-    :param struct sock_fprog_kern \*fprog:
+    :param fprog:
         the filter program
+    :type fprog: struct sock_fprog_kern \*
 
 .. _`bpf_prog_create.description`:
 
@@ -169,17 +183,21 @@ bpf_prog_create_from_user
 
     create an unattached filter from user buffer
 
-    :param struct bpf_prog \*\*pfp:
+    :param pfp:
         the unattached filter that is created
+    :type pfp: struct bpf_prog \*\*
 
-    :param struct sock_fprog \*fprog:
+    :param fprog:
         the filter program
+    :type fprog: struct sock_fprog \*
 
-    :param bpf_aux_classic_check_t trans:
+    :param trans:
         post-classic verifier transformation handler
+    :type trans: bpf_aux_classic_check_t
 
-    :param bool save_orig:
+    :param save_orig:
         save classic BPF program
+    :type save_orig: bool
 
 .. _`bpf_prog_create_from_user.description`:
 
@@ -199,11 +217,13 @@ sk_attach_filter
 
     attach a socket filter
 
-    :param struct sock_fprog \*fprog:
+    :param fprog:
         the filter program
+    :type fprog: struct sock_fprog \*
 
-    :param struct sock \*sk:
+    :param sk:
         the socket to use
+    :type sk: struct sock \*
 
 .. _`sk_attach_filter.description`:
 

@@ -107,8 +107,9 @@ drm_syncobj_get
 
     acquire a syncobj reference
 
-    :param struct drm_syncobj \*obj:
+    :param obj:
         sync object
+    :type obj: struct drm_syncobj \*
 
 .. _`drm_syncobj_get.description`:
 
@@ -127,8 +128,9 @@ drm_syncobj_put
 
     release a reference to a sync object.
 
-    :param struct drm_syncobj \*obj:
+    :param obj:
         sync object.
+    :type obj: struct drm_syncobj \*
 
 .. _`drm_syncobj_fence_get`:
 
@@ -139,8 +141,9 @@ drm_syncobj_fence_get
 
     get a reference to a fence in a sync object
 
-    :param struct drm_syncobj \*syncobj:
+    :param syncobj:
         sync object.
+    :type syncobj: struct drm_syncobj \*
 
 .. _`drm_syncobj_fence_get.description`:
 

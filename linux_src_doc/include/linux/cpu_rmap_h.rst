@@ -57,8 +57,9 @@ alloc_irq_cpu_rmap
 
     allocate CPU affinity reverse-map for IRQs
 
-    :param unsigned int size:
+    :param size:
         Number of objects to be mapped
+    :type size: unsigned int
 
 .. _`alloc_irq_cpu_rmap.description`:
 

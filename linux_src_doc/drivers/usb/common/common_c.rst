@@ -10,12 +10,14 @@ of_usb_get_dr_mode_by_phy
 
     Get dual role mode for the controller device which is associated with the given phy device_node
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to the given phy device_node
+    :type np: struct device_node \*
 
-    :param int arg0:
+    :param arg0:
         phandle args[0] for phy's with #phy-cells >= 1, or -1 for
         phys which do not have phy-cells
+    :type arg0: int
 
 .. _`of_usb_get_dr_mode_by_phy.description`:
 
@@ -35,8 +37,9 @@ of_usb_host_tpl_support
 
     to get if Targeted Peripheral List is supported for given targeted hosts (non-PC hosts)
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to the given device_node
+    :type np: struct device_node \*
 
 .. _`of_usb_host_tpl_support.description`:
 
@@ -54,11 +57,13 @@ of_usb_update_otg_caps
 
     to update usb otg capabilities according to the passed properties in DT.
 
-    :param struct device_node \*np:
+    :param np:
         Pointer to the given device_node
+    :type np: struct device_node \*
 
-    :param struct usb_otg_caps \*otg_caps:
+    :param otg_caps:
         Pointer to the target usb_otg_caps to be set
+    :type otg_caps: struct usb_otg_caps \*
 
 .. _`of_usb_update_otg_caps.description`:
 
@@ -66,6 +71,36 @@ Description
 -----------
 
 The function updates the otg capabilities
+
+.. _`usb_of_get_companion_dev`:
+
+usb_of_get_companion_dev
+========================
+
+.. c:function:: struct device *usb_of_get_companion_dev(struct device *dev)
+
+    Find the companion device
+
+    :param dev:
+        the device pointer to find a companion
+    :type dev: struct device \*
+
+.. _`usb_of_get_companion_dev.description`:
+
+Description
+-----------
+
+Find the companion device from platform bus.
+
+Takes a reference to the returned struct device which needs to be dropped
+after use.
+
+.. _`usb_of_get_companion_dev.return`:
+
+Return
+------
+
+On success, a pointer to the companion device, \ ``NULL``\  on failure.
 
 .. This file was automatic generated / don't edit.
 

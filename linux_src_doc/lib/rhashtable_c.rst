@@ -10,8 +10,9 @@ rhashtable_shrink
 
     Shrink hash table while allowing concurrent lookups
 
-    :param struct rhashtable \*ht:
+    :param ht:
         the hash table to shrink
+    :type ht: struct rhashtable \*
 
 .. _`rhashtable_shrink.description`:
 
@@ -39,11 +40,13 @@ rhashtable_walk_enter
 
     Initialise an iterator
 
-    :param struct rhashtable \*ht:
+    :param ht:
         Table to walk over
+    :type ht: struct rhashtable \*
 
-    :param struct rhashtable_iter \*iter:
+    :param iter:
         Hash table Iterator
+    :type iter: struct rhashtable_iter \*
 
 .. _`rhashtable_walk_enter.description`:
 
@@ -75,8 +78,9 @@ rhashtable_walk_exit
 
     Free an iterator
 
-    :param struct rhashtable_iter \*iter:
+    :param iter:
         Hash table Iterator
+    :type iter: struct rhashtable_iter \*
 
 .. _`rhashtable_walk_exit.description`:
 
@@ -94,8 +98,9 @@ rhashtable_walk_start_check
 
     Start a hash table walk
 
-    :param struct rhashtable_iter \*iter:
+    :param iter:
         Hash table iterator
+    :type iter: struct rhashtable_iter \*
 
 .. _`rhashtable_walk_start_check.description`:
 
@@ -125,8 +130,9 @@ resize events and always continue.
 
     Find the next element in a table (or the first one in case of a new walk).
 
-    :param struct rhashtable_iter \*iter:
+    :param iter:
         Hash table iterator
+    :type iter: struct rhashtable_iter \*
 
 .. _`__rhashtable_walk_find_next.description`:
 
@@ -146,8 +152,9 @@ rhashtable_walk_next
 
     Return the next object and advance the iterator
 
-    :param struct rhashtable_iter \*iter:
+    :param iter:
         Hash table iterator
+    :type iter: struct rhashtable_iter \*
 
 .. _`rhashtable_walk_next.description`:
 
@@ -171,8 +178,9 @@ rhashtable_walk_peek
 
     Return the next object but don't advance the iterator
 
-    :param struct rhashtable_iter \*iter:
+    :param iter:
         Hash table iterator
+    :type iter: struct rhashtable_iter \*
 
 .. _`rhashtable_walk_peek.description`:
 
@@ -193,8 +201,9 @@ rhashtable_walk_stop
 
     Finish a hash table walk
 
-    :param struct rhashtable_iter \*iter:
+    :param iter:
         Hash table iterator
+    :type iter: struct rhashtable_iter \*
 
 .. _`rhashtable_walk_stop.description`:
 
@@ -213,11 +222,13 @@ rhashtable_init
 
     initialize a new hash table
 
-    :param struct rhashtable \*ht:
+    :param ht:
         hash table to be initialized
+    :type ht: struct rhashtable \*
 
-    :param const struct rhashtable_params \*params:
+    :param params:
         configuration parameters
+    :type params: const struct rhashtable_params \*
 
 .. _`rhashtable_init.description`:
 
@@ -244,7 +255,6 @@ struct rhashtable_params params = {
 .key_offset = offsetof(struct test_obj, key),
 .key_len = sizeof(int),
 .hashfn = jhash,
-.nulls_base = (1U << RHT_BASE_SHIFT),
 };
 
 .. _`rhashtable_init.configuration-example-2`:
@@ -280,11 +290,13 @@ rhltable_init
 
     initialize a new hash list table
 
-    :param struct rhltable \*hlt:
+    :param hlt:
         hash list table to be initialized
+    :type hlt: struct rhltable \*
 
-    :param const struct rhashtable_params \*params:
+    :param params:
         configuration parameters
+    :type params: const struct rhashtable_params \*
 
 .. _`rhltable_init.description`:
 
@@ -304,14 +316,16 @@ rhashtable_free_and_destroy
 
     free elements and destroy hash table
 
-    :param struct rhashtable \*ht:
+    :param ht:
         the hash table to destroy
+    :type ht: struct rhashtable \*
 
     :param void (\*free_fn)(void \*ptr, void \*arg):
         callback to release resources of element
 
-    :param void \*arg:
+    :param arg:
         pointer passed to free_fn
+    :type arg: void \*
 
 .. _`rhashtable_free_and_destroy.description`:
 

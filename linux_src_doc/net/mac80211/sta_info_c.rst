@@ -47,11 +47,13 @@ sta_info_free
 
     free STA
 
-    :param struct ieee80211_local \*local:
+    :param local:
         pointer to the global information
+    :type local: struct ieee80211_local \*
 
-    :param struct sta_info \*sta:
+    :param sta:
         STA info to free
+    :type sta: struct sta_info \*
 
 .. _`sta_info_free.description`:
 

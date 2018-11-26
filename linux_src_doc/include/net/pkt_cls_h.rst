@@ -10,8 +10,9 @@ tcf_exts_has_actions
 
     check if at least one action is present
 
-    :param struct tcf_exts \*exts:
+    :param exts:
         tc filter extensions handle
+    :type exts: struct tcf_exts \*
 
 .. _`tcf_exts_has_actions.description`:
 
@@ -29,8 +30,9 @@ tcf_exts_has_one_action
 
     check if exactly one action is present
 
-    :param struct tcf_exts \*exts:
+    :param exts:
         tc filter extensions handle
+    :type exts: struct tcf_exts \*
 
 .. _`tcf_exts_has_one_action.description`:
 
@@ -48,14 +50,17 @@ tcf_exts_exec
 
     execute tc filter extensions
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer
+    :type skb: struct sk_buff \*
 
-    :param struct tcf_exts \*exts:
+    :param exts:
         tc filter extensions handle
+    :type exts: struct tcf_exts \*
 
-    :param struct tcf_result \*res:
+    :param res:
         desired result
+    :type res: struct tcf_result \*
 
 .. _`tcf_exts_exec.description`:
 
@@ -244,14 +249,17 @@ tcf_em_tree_match
 
     evaulate an ematch tree
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer of the packet in question
+    :type skb: struct sk_buff \*
 
-    :param struct tcf_ematch_tree \*tree:
+    :param tree:
         ematch tree to be used for evaluation
+    :type tree: struct tcf_ematch_tree \*
 
-    :param struct tcf_pkt_info \*info:
+    :param info:
         packet information examined by classifier
+    :type info: struct tcf_pkt_info \*
 
 .. _`tcf_em_tree_match.description`:
 

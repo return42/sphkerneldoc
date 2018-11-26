@@ -8,11 +8,13 @@ ecryptfs_init_lower_file
 
 .. c:function:: int ecryptfs_init_lower_file(struct dentry *dentry, struct file **lower_file)
 
-    :param struct dentry \*dentry:
+    :param dentry:
         *undescribed*
+    :type dentry: struct dentry \*
 
-    :param struct file \*\*lower_file:
+    :param lower_file:
         *undescribed*
+    :type lower_file: struct file \*\*
 
 .. _`ecryptfs_init_lower_file.description`:
 
@@ -42,14 +44,17 @@ ecryptfs_parse_options
 
 .. c:function:: int ecryptfs_parse_options(struct ecryptfs_sb_info *sbi, char *options, uid_t *check_ruid)
 
-    :param struct ecryptfs_sb_info \*sbi:
+    :param sbi:
         *undescribed*
+    :type sbi: struct ecryptfs_sb_info \*
 
-    :param char \*options:
+    :param options:
         The options passed to the kernel
+    :type options: char \*
 
-    :param uid_t \*check_ruid:
+    :param check_ruid:
         set to 1 if device uid should be checked against the ruid
+    :type check_ruid: uid_t \*
 
 .. _`ecryptfs_parse_options.parse-mount-options`:
 
@@ -78,17 +83,21 @@ ecryptfs_mount
 
     \ ``fs_type``\  \ ``flags``\ 
 
-    :param struct file_system_type \*fs_type:
+    :param fs_type:
         *undescribed*
+    :type fs_type: struct file_system_type \*
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
-    :param const char \*dev_name:
+    :param dev_name:
         The path to mount over
+    :type dev_name: const char \*
 
-    :param void \*raw_data:
+    :param raw_data:
         The options passed into the kernel
+    :type raw_data: void \*
 
 .. _`ecryptfs_kill_block_super`:
 
@@ -97,8 +106,9 @@ ecryptfs_kill_block_super
 
 .. c:function:: void ecryptfs_kill_block_super(struct super_block *sb)
 
-    :param struct super_block \*sb:
+    :param sb:
         The ecryptfs super block
+    :type sb: struct super_block \*
 
 .. _`ecryptfs_kill_block_super.description`:
 
@@ -114,8 +124,9 @@ inode_info_init_once
 
 .. c:function:: void inode_info_init_once(void *vptr)
 
-    :param void \*vptr:
+    :param vptr:
         *undescribed*
+    :type vptr: void \*
 
 .. _`inode_info_init_once.description`:
 
@@ -131,8 +142,9 @@ ecryptfs_init_kmem_caches
 
 .. c:function:: int ecryptfs_init_kmem_caches( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ecryptfs_init_kmem_caches.description`:
 

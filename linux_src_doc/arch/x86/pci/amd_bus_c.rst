@@ -10,8 +10,9 @@ early_root_info_init
 
     called before pcibios_scan_root and pci_scan_bus fills the mp_bus_to_cpumask array based according to the LDT Bus Number Registers found in the northbridge.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

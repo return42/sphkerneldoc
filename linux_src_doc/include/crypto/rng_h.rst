@@ -78,15 +78,18 @@ crypto_alloc_rng
 
     - allocate RNG handle
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         message digest cipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_alloc_rng.description`:
 
@@ -120,8 +123,9 @@ crypto_rng_alg
 
     obtain name of RNG
 
-    :param struct crypto_rng \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_rng \*
 
 .. _`crypto_rng_alg.description`:
 
@@ -146,8 +150,9 @@ crypto_free_rng
 
     zeroize and free RNG handle
 
-    :param struct crypto_rng \*tfm:
+    :param tfm:
         cipher handle to be freed
+    :type tfm: struct crypto_rng \*
 
 .. _`crypto_rng_generate`:
 
@@ -158,20 +163,25 @@ crypto_rng_generate
 
     get random number
 
-    :param struct crypto_rng \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_rng \*
 
-    :param const u8 \*src:
+    :param src:
         Input buffer holding additional data, may be NULL
+    :type src: const u8 \*
 
-    :param unsigned int slen:
+    :param slen:
         Length of additional data
+    :type slen: unsigned int
 
-    :param u8 \*dst:
+    :param dst:
         output buffer holding the random numbers
+    :type dst: u8 \*
 
-    :param unsigned int dlen:
+    :param dlen:
         length of the output buffer
+    :type dlen: unsigned int
 
 .. _`crypto_rng_generate.description`:
 
@@ -198,14 +208,17 @@ crypto_rng_get_bytes
 
     get random number
 
-    :param struct crypto_rng \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_rng \*
 
-    :param u8 \*rdata:
+    :param rdata:
         output buffer holding the random numbers
+    :type rdata: u8 \*
 
-    :param unsigned int dlen:
+    :param dlen:
         length of the output buffer
+    :type dlen: unsigned int
 
 .. _`crypto_rng_get_bytes.description`:
 
@@ -231,14 +244,17 @@ crypto_rng_reset
 
     re-initialize the RNG
 
-    :param struct crypto_rng \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_rng \*
 
-    :param const u8 \*seed:
+    :param seed:
         seed input data
+    :type seed: const u8 \*
 
-    :param unsigned int slen:
+    :param slen:
         length of the seed input data
+    :type slen: unsigned int
 
 .. _`crypto_rng_reset.description`:
 
@@ -270,8 +286,9 @@ crypto_rng_seedsize
 
     obtain seed size of RNG
 
-    :param struct crypto_rng \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_rng \*
 
 .. _`crypto_rng_seedsize.description`:
 

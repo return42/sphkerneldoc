@@ -10,8 +10,9 @@ stm32_dfsdm_get_buff_cb
 
     register a callback that will be called when DMA transfer period is achieved.
 
-    :param struct iio_dev \*iio_dev:
+    :param iio_dev:
         Handle to IIO device.
+    :type iio_dev: struct iio_dev \*
 
     :param int (\*cb)(const void \*data, size_t size, void \*private):
         Pointer to callback function:
@@ -19,8 +20,9 @@ stm32_dfsdm_get_buff_cb
         - size: size in byte of the data buffer
         - private: pointer to consumer private structure.
 
-    :param void \*private:
+    :param private:
         Pointer to consumer private structure.
+    :type private: void \*
 
 .. _`stm32_dfsdm_release_buff_cb`:
 
@@ -31,8 +33,9 @@ stm32_dfsdm_release_buff_cb
 
     unregister buffer callback
 
-    :param struct iio_dev \*iio_dev:
+    :param iio_dev:
         Handle to IIO device.
+    :type iio_dev: struct iio_dev \*
 
 .. This file was automatic generated / don't edit.
 

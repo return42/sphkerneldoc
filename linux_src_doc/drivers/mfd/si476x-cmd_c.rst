@@ -10,28 +10,35 @@ si476x_core_send_command
 
     sends a command to si476x and waits its response
 
-    :param struct si476x_core \*core:
+    :param core:
         si476x_device structure for the device we are
         communicating with
+    :type core: struct si476x_core \*
 
-    :param const u8 command:
+    :param command:
         command id
+    :type command: const u8
 
-    :param const u8 args:
+    :param args:
         command arguments we are sending
+    :type args: const u8
 
-    :param const int argn:
+    :param argn:
         actual size of \ ``args``\ 
+    :type argn: const int
 
-    :param u8 resp:
+    :param resp:
         *undescribed*
+    :type resp: u8
 
-    :param const int respn:
+    :param respn:
         actual size of \ ``response``\ 
+    :type respn: const int
 
-    :param const int usecs:
+    :param usecs:
         amount of time to wait before reading the response (in
         usecs)
+    :type usecs: const int
 
 .. _`si476x_core_send_command.description`:
 
@@ -50,12 +57,14 @@ si476x_core_cmd_func_info
 
     send 'FUNC_INFO' command to the device
 
-    :param struct si476x_core \*core:
+    :param core:
         device to send the command to
+    :type core: struct si476x_core \*
 
-    :param struct si476x_func_info \*info:
+    :param info:
         struct si476x_func_info to fill all the information
         returned by the command
+    :type info: struct si476x_func_info \*
 
 .. _`si476x_core_cmd_func_info.description`:
 
@@ -77,14 +86,17 @@ si476x_core_cmd_set_property
 
     send 'SET_PROPERTY' command to the device
 
-    :param struct si476x_core \*core:
+    :param core:
         device to send the command to
+    :type core: struct si476x_core \*
 
-    :param u16 property:
+    :param property:
         property address
+    :type property: u16
 
-    :param u16 value:
+    :param value:
         property value
+    :type value: u16
 
 .. _`si476x_core_cmd_set_property.description`:
 
@@ -103,11 +115,13 @@ si476x_core_cmd_get_property
 
     send 'GET_PROPERTY' command to the device
 
-    :param struct si476x_core \*core:
+    :param core:
         device to send the command to
+    :type core: struct si476x_core \*
 
-    :param u16 property:
+    :param property:
         property address
+    :type property: u16
 
 .. _`si476x_core_cmd_get_property.description`:
 
@@ -126,26 +140,29 @@ si476x_core_cmd_dig_audio_pin_cfg
 
     send 'DIG_AUDIO_PIN_CFG' command to the device
 
-    :param struct si476x_core \*core:
+    :param core:
         device to send the command to
+    :type core: struct si476x_core \*
 
-    :param enum si476x_dclk_config dclk:
+    :param dclk:
         DCLK pin function configuration:
         #SI476X_DCLK_NOOP     - do not modify the behaviour
         #SI476X_DCLK_TRISTATE - put the pin in tristate condition,
         enable 1MOhm pulldown
         #SI476X_DCLK_DAUDIO   - set the pin to be a part of digital
         audio interface
+    :type dclk: enum si476x_dclk_config
 
-    :param enum si476x_dfs_config dfs:
+    :param dfs:
         DFS pin function configuration:
         #SI476X_DFS_NOOP      - do not modify the behaviour
         #SI476X_DFS_TRISTATE  - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_DFS_DAUDIO    - set the pin to be a part of digital
         audio interface
+    :type dfs: enum si476x_dfs_config
 
-    :param enum si476x_dout_config dout:
+    :param dout:
         SI476X_DOUT_NOOP       - do not modify the behaviour
         SI476X_DOUT_TRISTATE   - put the pin in tristate condition,
         enable 1MOhm pulldown
@@ -153,8 +170,9 @@ si476x_core_cmd_dig_audio_pin_cfg
         port 1
         SI476X_DOUT_I2S_INPUT  - set this pin to be digital in on I2S
         port 1
+    :type dout: enum si476x_dout_config
 
-    :param enum si476x_xout_config xout:
+    :param xout:
         SI476X_XOUT_NOOP        - do not modify the behaviour
         SI476X_XOUT_TRISTATE    - put the pin in tristate condition,
         enable 1MOhm pulldown
@@ -164,6 +182,7 @@ si476x_core_cmd_dig_audio_pin_cfg
         selects the mode of the I2S audio
         combiner (analog or HD)
         [SI4761/63/65/67 Only]
+    :type xout: enum si476x_xout_config
 
 .. _`si476x_core_cmd_dig_audio_pin_cfg.description`:
 
@@ -181,34 +200,39 @@ si476x_core_cmd_zif_pin_cfg
 
     send 'ZIF_PIN_CFG_COMMAND' \ ``core``\  - device to send the command to
 
-    :param struct si476x_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct si476x_core \*
 
-    :param enum si476x_iqclk_config iqclk:
+    :param iqclk:
         SI476X_IQCLK_NOOP     - do not modify the behaviour
         SI476X_IQCLK_TRISTATE - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_IQCLK_IQ       - set pin to be a part of I/Q interace
         in master mode
+    :type iqclk: enum si476x_iqclk_config
 
-    :param enum si476x_iqfs_config iqfs:
+    :param iqfs:
         SI476X_IQFS_NOOP     - do not modify the behaviour
         SI476X_IQFS_TRISTATE - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_IQFS_IQ       - set pin to be a part of I/Q interace
         in master mode
+    :type iqfs: enum si476x_iqfs_config
 
-    :param enum si476x_iout_config iout:
+    :param iout:
         SI476X_IOUT_NOOP     - do not modify the behaviour
         SI476X_IOUT_TRISTATE - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_IOUT_OUTPUT   - set pin to be I out
+    :type iout: enum si476x_iout_config
 
-    :param enum si476x_qout_config qout:
+    :param qout:
         SI476X_QOUT_NOOP     - do not modify the behaviour
         SI476X_QOUT_TRISTATE - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_QOUT_OUTPUT   - set pin to be Q out
+    :type qout: enum si476x_qout_config
 
 .. _`si476x_core_cmd_zif_pin_cfg.description`:
 
@@ -226,34 +250,38 @@ si476x_core_cmd_ic_link_gpo_ctl_pin_cfg
 
     send 'IC_LINK_GPIO_CTL_PIN_CFG' comand to the device \ ``core``\  - device to send the command to
 
-    :param struct si476x_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct si476x_core \*
 
-    :param enum si476x_icin_config icin:
+    :param icin:
         SI476X_ICIN_NOOP      - do not modify the behaviour
         SI476X_ICIN_TRISTATE  - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_ICIN_GPO1_HIGH - set pin to be an output, drive it high
         SI476X_ICIN_GPO1_LOW  - set pin to be an output, drive it low
         SI476X_ICIN_IC_LINK   - set the pin to be a part of Inter-Chip link
+    :type icin: enum si476x_icin_config
 
-    :param enum si476x_icip_config icip:
+    :param icip:
         SI476X_ICIP_NOOP      - do not modify the behaviour
         SI476X_ICIP_TRISTATE  - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_ICIP_GPO1_HIGH - set pin to be an output, drive it high
         SI476X_ICIP_GPO1_LOW  - set pin to be an output, drive it low
         SI476X_ICIP_IC_LINK   - set the pin to be a part of Inter-Chip link
+    :type icip: enum si476x_icip_config
 
-    :param enum si476x_icon_config icon:
+    :param icon:
         SI476X_ICON_NOOP     - do not modify the behaviour
         SI476X_ICON_TRISTATE - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_ICON_I2S      - set the pin to be a part of audio
         interface in slave mode (DCLK)
         SI476X_ICON_IC_LINK  - set the pin to be a part of Inter-Chip link
+    :type icon: enum si476x_icon_config
 
-    :param enum si476x_icop_config icop:
+    :param icop:
         SI476X_ICOP_NOOP     - do not modify the behaviour
         SI476X_ICOP_TRISTATE - put the pin in tristate condition,
         enable 1MOhm pulldown
@@ -261,6 +289,7 @@ si476x_core_cmd_ic_link_gpo_ctl_pin_cfg
         interface in slave mode (DOUT)
         [Si4761/63/65/67 Only]
         SI476X_ICOP_IC_LINK  - set the pin to be a part of Inter-Chip link
+    :type icop: enum si476x_icop_config
 
 .. _`si476x_core_cmd_ic_link_gpo_ctl_pin_cfg.description`:
 
@@ -278,15 +307,17 @@ si476x_core_cmd_ana_audio_pin_cfg
 
     send 'ANA_AUDIO_PIN_CFG' to the device \ ``core``\  - device to send the command to
 
-    :param struct si476x_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct si476x_core \*
 
-    :param enum si476x_lrout_config lrout:
+    :param lrout:
         SI476X_LROUT_NOOP     - do not modify the behaviour
         SI476X_LROUT_TRISTATE - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_LROUT_AUDIO    - set pin to be audio output
         SI476X_LROUT_MPX      - set pin to be MPX output
+    :type lrout: enum si476x_lrout_config
 
 .. _`si476x_core_cmd_ana_audio_pin_cfg.description`:
 
@@ -304,22 +335,25 @@ si476x_core_cmd_intb_pin_cfg_a10
 
     send 'INTB_PIN_CFG' command to the device \ ``core``\  - device to send the command to
 
-    :param struct si476x_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct si476x_core \*
 
-    :param enum si476x_intb_config intb:
+    :param intb:
         SI476X_INTB_NOOP     - do not modify the behaviour
         SI476X_INTB_TRISTATE - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_INTB_DAUDIO   - set pin to be a part of digital
         audio interface in slave mode
         SI476X_INTB_IRQ      - set pin to be an interrupt request line
+    :type intb: enum si476x_intb_config
 
-    :param enum si476x_a1_config a1:
+    :param a1:
         SI476X_A1_NOOP     - do not modify the behaviour
         SI476X_A1_TRISTATE - put the pin in tristate condition,
         enable 1MOhm pulldown
         SI476X_A1_IRQ      - set pin to be an interrupt request line
+    :type a1: enum si476x_a1_config
 
 .. _`si476x_core_cmd_intb_pin_cfg_a10.description`:
 
@@ -337,14 +371,17 @@ si476x_core_cmd_am_rsq_status
 
     send 'AM_RSQ_STATUS' command to the device \ ``core``\   - device to send the command to \ ``rsqack``\  - if set command clears RSQINT, SNRINT, SNRLINT, RSSIHINT, RSSSILINT, BLENDINT, MULTHINT and MULTLINT \ ``attune``\  - when set the values in the status report are the values that were calculated at tune \ ``cancel``\  - abort ongoing seek/tune opertation \ ``stcack``\  - clear the STCINT bin in status register \ ``report``\  - all signal quality information retured by the command (if NULL then the output of the command is ignored)
 
-    :param struct si476x_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct si476x_core \*
 
-    :param struct si476x_rsq_status_args \*rsqargs:
+    :param rsqargs:
         *undescribed*
+    :type rsqargs: struct si476x_rsq_status_args \*
 
-    :param struct si476x_rsq_status_report \*report:
+    :param report:
         *undescribed*
+    :type report: struct si476x_rsq_status_report \*
 
 .. _`si476x_core_cmd_am_rsq_status.description`:
 
@@ -362,14 +399,17 @@ si476x_core_cmd_fm_seek_start
 
     send 'FM_SEEK_START' command to the device \ ``core``\   - device to send the command to \ ``seekup``\  - if set the direction of the search is 'up' \ ``wrap``\    - if set seek wraps when hitting band limit
 
-    :param struct si476x_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct si476x_core \*
 
-    :param bool seekup:
+    :param seekup:
         *undescribed*
+    :type seekup: bool
 
-    :param bool wrap:
+    :param wrap:
         *undescribed*
+    :type wrap: bool
 
 .. _`si476x_core_cmd_fm_seek_start.description`:
 
@@ -391,20 +431,25 @@ si476x_core_cmd_fm_rds_status
 
     send 'FM_RDS_STATUS' command to the device \ ``core``\  - device to send the command to \ ``status_only``\  - if set the data is not removed from RDSFIFO, RDSFIFOUSED is not decremented and data in all the rest RDS data contains the last valid info received \ ``mtfifo``\  if set the command clears RDS receive FIFO \ ``intack``\  if set the command clards the RDSINT bit.
 
-    :param struct si476x_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct si476x_core \*
 
-    :param bool status_only:
+    :param status_only:
         *undescribed*
+    :type status_only: bool
 
-    :param bool mtfifo:
+    :param mtfifo:
         *undescribed*
+    :type mtfifo: bool
 
-    :param bool intack:
+    :param intack:
         *undescribed*
+    :type intack: bool
 
-    :param struct si476x_rds_status_report \*report:
+    :param report:
         *undescribed*
+    :type report: struct si476x_rds_status_report \*
 
 .. _`si476x_core_cmd_fm_rds_status.description`:
 
@@ -422,8 +467,9 @@ si476x_core_cmd_fm_phase_div_status
 
     get the phase diversity status
 
-    :param struct si476x_core \*core:
+    :param core:
         si476x device
+    :type core: struct si476x_core \*
 
 .. _`si476x_core_cmd_fm_phase_div_status.description`:
 
@@ -444,14 +490,17 @@ si476x_core_cmd_am_seek_start
 
     send 'FM_SEEK_START' command to the device \ ``core``\   - device to send the command to \ ``seekup``\  - if set the direction of the search is 'up' \ ``wrap``\    - if set seek wraps when hitting band limit
 
-    :param struct si476x_core \*core:
+    :param core:
         *undescribed*
+    :type core: struct si476x_core \*
 
-    :param bool seekup:
+    :param seekup:
         *undescribed*
+    :type seekup: bool
 
-    :param bool wrap:
+    :param wrap:
         *undescribed*
+    :type wrap: bool
 
 .. _`si476x_core_cmd_am_seek_start.description`:
 

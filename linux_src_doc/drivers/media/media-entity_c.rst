@@ -10,11 +10,13 @@ dev_dbg_obj
 
     Prints in debug mode a change on some object
 
-    :param const char \*event_name:
+    :param event_name:
         Name of the event to report. Could be \__func__
+    :type event_name: const char \*
 
-    :param struct media_gobj \*gobj:
+    :param gobj:
         Pointer to the object
+    :type gobj: struct media_gobj \*
 
 .. _`dev_dbg_obj.description`:
 
@@ -33,11 +35,13 @@ media_graph_walk_init
 
     Allocate resources for graph walk
 
-    :param struct media_graph \*graph:
+    :param graph:
         Media graph structure that will be used to walk the graph
+    :type graph: struct media_graph \*
 
-    :param struct media_device \*mdev:
+    :param mdev:
         Media device
+    :type mdev: struct media_device \*
 
 .. _`media_graph_walk_init.description`:
 
@@ -59,8 +63,9 @@ media_graph_walk_cleanup
 
     Release resources related to graph walking
 
-    :param struct media_graph \*graph:
+    :param graph:
         Media graph structure that was used to walk the graph
+    :type graph: struct media_graph \*
 
 .. This file was automatic generated / don't edit.
 

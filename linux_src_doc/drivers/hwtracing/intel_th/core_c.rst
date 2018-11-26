@@ -10,11 +10,13 @@ intel_th_output_enable
 
     find and enable a device for a given output type
 
-    :param struct intel_th \*th:
+    :param th:
         Intel TH instance
+    :type th: struct intel_th \*
 
-    :param unsigned int otype:
+    :param otype:
         output type
+    :type otype: unsigned int
 
 .. _`intel_th_output_enable.description`:
 
@@ -34,20 +36,25 @@ intel_th_alloc
 
     allocate a new Intel TH device and its subdevices
 
-    :param struct device \*dev:
+    :param dev:
         parent device
+    :type dev: struct device \*
 
-    :param struct intel_th_drvdata \*drvdata:
+    :param drvdata:
         *undescribed*
+    :type drvdata: struct intel_th_drvdata \*
 
-    :param struct resource \*devres:
+    :param devres:
         parent's resources
+    :type devres: struct resource \*
 
-    :param unsigned int ndevres:
+    :param ndevres:
         number of resources
+    :type ndevres: unsigned int
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
 .. _`intel_th_trace_enable`:
 
@@ -58,8 +65,9 @@ intel_th_trace_enable
 
     enable tracing for an output device
 
-    :param struct intel_th_device \*thdev:
+    :param thdev:
         output device that requests tracing be enabled
+    :type thdev: struct intel_th_device \*
 
 .. _`intel_th_trace_disable`:
 
@@ -70,8 +78,9 @@ intel_th_trace_disable
 
     disable tracing for an output device
 
-    :param struct intel_th_device \*thdev:
+    :param thdev:
         output device that requests tracing be disabled
+    :type thdev: struct intel_th_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -70,14 +70,17 @@ diag_ftp_handler
 
     FTP services IRQ handler
 
-    :param struct ext_code extirq:
+    :param extirq:
         external interrupt (sub-) code
+    :type extirq: struct ext_code
 
-    :param unsigned int param32:
+    :param param32:
         32-bit interruption parameter from \ :c:type:`struct diag_ftp_ldfpl <diag_ftp_ldfpl>`\ 
+    :type param32: unsigned int
 
-    :param unsigned long param64:
+    :param param64:
         unused (for 64-bit interrupt parameters)
+    :type param64: unsigned long
 
 .. _`diag_ftp_2c4`:
 
@@ -88,11 +91,13 @@ diag_ftp_2c4
 
     DIAGNOSE X'2C4' service call
 
-    :param struct diag_ftp_ldfpl \*fpl:
+    :param fpl:
         pointer to prepared LDFPL
+    :type fpl: struct diag_ftp_ldfpl \*
 
-    :param enum hmcdrv_ftp_cmdid cmd:
+    :param cmd:
         FTP command to be executed
+    :type cmd: enum hmcdrv_ftp_cmdid
 
 .. _`diag_ftp_2c4.description`:
 
@@ -122,11 +127,13 @@ diag_ftp_cmd
 
     executes a DIAG X'2C4' FTP command, targeting a HMC
 
-    :param const struct hmcdrv_ftp_cmdspec \*ftp:
+    :param ftp:
         pointer to FTP command specification
+    :type ftp: const struct hmcdrv_ftp_cmdspec \*
 
-    :param size_t \*fsize:
+    :param fsize:
         return of file size (or NULL if undesirable)
+    :type fsize: size_t \*
 
 .. _`diag_ftp_cmd.attention`:
 
@@ -152,8 +159,9 @@ diag_ftp_startup
 
     startup of FTP services, when running on z/VM
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`diag_ftp_startup.return`:
 
@@ -171,8 +179,9 @@ diag_ftp_shutdown
 
     shutdown of FTP services, when running on z/VM
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

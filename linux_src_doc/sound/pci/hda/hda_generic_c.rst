@@ -10,8 +10,9 @@ snd_hda_gen_spec_init
 
     initialize hda_gen_spec struct
 
-    :param struct hda_gen_spec \*spec:
+    :param spec:
         hda_gen_spec object to initialize
+    :type spec: struct hda_gen_spec \*
 
 .. _`snd_hda_gen_spec_init.description`:
 
@@ -29,14 +30,17 @@ snd_hda_gen_add_kctl
 
     Add a new kctl_new struct from the template
 
-    :param struct hda_gen_spec \*spec:
+    :param spec:
         hda_gen_spec object
+    :type spec: struct hda_gen_spec \*
 
-    :param const char \*name:
+    :param name:
         name string to override the template, NULL if unchanged
+    :type name: const char \*
 
-    :param const struct snd_kcontrol_new \*temp:
+    :param temp:
         template for the new kctl
+    :type temp: const struct snd_kcontrol_new \*
 
 .. _`snd_hda_gen_add_kctl.description`:
 
@@ -57,11 +61,13 @@ snd_hda_get_path_idx
 
     get the index number corresponding to the path instance
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct nid_path \*path:
+    :param path:
         nid_path object
+    :type path: struct nid_path \*
 
 .. _`snd_hda_get_path_idx.description`:
 
@@ -80,11 +86,13 @@ snd_hda_get_path_from_idx
 
     get the path instance corresponding to the given index number
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param int idx:
+    :param idx:
         the path index
+    :type idx: int
 
 .. _`snd_hda_add_new_path`:
 
@@ -95,17 +103,21 @@ snd_hda_add_new_path
 
     parse the path between the given NIDs and add to the path list
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t from_nid:
+    :param from_nid:
         the NID where the path start from
+    :type from_nid: hda_nid_t
 
-    :param hda_nid_t to_nid:
+    :param to_nid:
         the NID where the path ends at
+    :type to_nid: hda_nid_t
 
-    :param int anchor_nid:
+    :param anchor_nid:
         the anchor indication, see \ :c:func:`snd_hda_parse_nid_path`\ 
+    :type anchor_nid: int
 
 .. _`snd_hda_add_new_path.description`:
 
@@ -123,17 +135,21 @@ snd_hda_activate_path
 
     activate or deactivate the given path
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct nid_path \*path:
+    :param path:
         the path to activate/deactivate
+    :type path: struct nid_path \*
 
-    :param bool enable:
+    :param enable:
         flag to activate or not
+    :type enable: bool
 
-    :param bool add_aamix:
+    :param add_aamix:
         enable the input from aamix NID
+    :type add_aamix: bool
 
 .. _`snd_hda_activate_path.description`:
 
@@ -141,6 +157,34 @@ Description
 -----------
 
 If \ ``add_aamix``\  is set, enable the input from aa-mix NID as well (if any).
+
+.. _`snd_hda_gen_add_micmute_led`:
+
+snd_hda_gen_add_micmute_led
+===========================
+
+.. c:function:: int snd_hda_gen_add_micmute_led(struct hda_codec *codec, void (*hook)(struct hda_codec *))
+
+    helper for setting up mic mute LED hook
+
+    :param codec:
+        the HDA codec
+    :type codec: struct hda_codec \*
+
+    :param void (\*hook)(struct hda_codec \*):
+        the callback for updating LED
+
+.. _`snd_hda_gen_add_micmute_led.description`:
+
+Description
+-----------
+
+Called from the codec drivers for offering the mic mute LED controls.
+When established, it sets up cap_sync_hook and triggers the callback at
+each time when the capture mixer switch changes.  The callback is supposed
+to update the LED accordingly.
+
+Returns 0 if the hook is established or a negative error code.
 
 .. _`snd_hda_gen_fix_pin_power`:
 
@@ -151,11 +195,13 @@ snd_hda_gen_fix_pin_power
 
     Fix the power of the given pin widget to D0
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t pin:
+    :param pin:
         NID of pin to fix
+    :type pin: hda_nid_t
 
 .. _`snd_hda_gen_update_outputs`:
 
@@ -166,8 +212,9 @@ snd_hda_gen_update_outputs
 
     Toggle outputs muting
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_gen_update_outputs.description`:
 
@@ -185,11 +232,13 @@ snd_hda_gen_hp_automute
 
     standard HP-automute helper
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_jack_callback \*jack:
+    :param jack:
         jack object, NULL for the whole
+    :type jack: struct hda_jack_callback \*
 
 .. _`snd_hda_gen_line_automute`:
 
@@ -200,11 +249,13 @@ snd_hda_gen_line_automute
 
     standard line-out-automute helper
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_jack_callback \*jack:
+    :param jack:
         jack object, NULL for the whole
+    :type jack: struct hda_jack_callback \*
 
 .. _`snd_hda_gen_mic_autoswitch`:
 
@@ -215,11 +266,13 @@ snd_hda_gen_mic_autoswitch
 
     standard mic auto-switch helper
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct hda_jack_callback \*jack:
+    :param jack:
         jack object, NULL for the whole
+    :type jack: struct hda_jack_callback \*
 
 .. _`snd_hda_gen_path_power_filter`:
 
@@ -230,14 +283,17 @@ snd_hda_gen_path_power_filter
 
     power_filter hook to make inactive widgets into power down
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to evalute
+    :type nid: hda_nid_t
 
-    :param unsigned int power_state:
+    :param power_state:
         target power state
+    :type power_state: unsigned int
 
 .. _`snd_hda_gen_stream_pm`:
 
@@ -248,14 +304,17 @@ snd_hda_gen_stream_pm
 
     Stream power management callback
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         audio widget
+    :type nid: hda_nid_t
 
-    :param bool on:
+    :param on:
         power on/off flag
+    :type on: bool
 
 .. _`snd_hda_gen_stream_pm.description`:
 
@@ -273,11 +332,13 @@ snd_hda_gen_parse_auto_config
 
     Parse the given BIOS configuration and set up the hda_gen_spec
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param struct auto_pin_cfg \*cfg:
+    :param cfg:
         Parsed pin configuration
+    :type cfg: struct auto_pin_cfg \*
 
 .. _`snd_hda_gen_parse_auto_config.description`:
 
@@ -296,8 +357,9 @@ snd_hda_gen_build_controls
 
     Build controls from the parsed results
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_gen_build_controls.description`:
 
@@ -315,8 +377,9 @@ snd_hda_gen_build_pcms
 
     build PCM streams based on the parsed results
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_gen_build_pcms.description`:
 
@@ -334,8 +397,9 @@ snd_hda_gen_init
 
     initialize the generic spec
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_gen_init.description`:
 
@@ -353,8 +417,9 @@ snd_hda_gen_free
 
     free the generic spec
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
 .. _`snd_hda_gen_free.description`:
 
@@ -372,11 +437,13 @@ snd_hda_gen_check_power_status
 
     check the loopback power save state
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param hda_nid_t nid:
+    :param nid:
         NID to inspect
+    :type nid: hda_nid_t
 
 .. _`snd_hda_gen_check_power_status.description`:
 

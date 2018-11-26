@@ -10,20 +10,25 @@ ir_create_table
 
     initializes a scancode table
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the rc_dev device
+    :type dev: struct rc_dev \*
 
-    :param struct rc_map \*rc_map:
+    :param rc_map:
         the rc_map to initialize
+    :type rc_map: struct rc_map \*
 
-    :param const char \*name:
+    :param name:
         name to assign to the table
+    :type name: const char \*
 
-    :param u64 rc_proto:
+    :param rc_proto:
         ir type to assign to the new table
+    :type rc_proto: u64
 
-    :param size_t size:
+    :param size:
         initial size of the table
+    :type size: size_t
 
 .. _`ir_create_table.description`:
 
@@ -49,8 +54,9 @@ ir_free_table
 
     frees memory allocated by a scancode table
 
-    :param struct rc_map \*rc_map:
+    :param rc_map:
         the table whose mappings need to be freed
+    :type rc_map: struct rc_map \*
 
 .. _`ir_free_table.description`:
 
@@ -69,14 +75,17 @@ ir_resize_table
 
     resizes a scancode table if necessary
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the rc_dev device
+    :type dev: struct rc_dev \*
 
-    :param struct rc_map \*rc_map:
+    :param rc_map:
         the rc_map to resize
+    :type rc_map: struct rc_map \*
 
-    :param gfp_t gfp_flags:
+    :param gfp_flags:
         gfp flags to use when allocating memory
+    :type gfp_flags: gfp_t
 
 .. _`ir_resize_table.description`:
 
@@ -102,17 +111,21 @@ ir_update_mapping
 
     set a keycode in the scancode->keycode table
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev device descriptor
+    :type dev: struct rc_dev \*
 
-    :param struct rc_map \*rc_map:
+    :param rc_map:
         scancode table to be adjusted
+    :type rc_map: struct rc_map \*
 
-    :param unsigned int index:
+    :param index:
         index of the mapping that needs to be updated
+    :type index: unsigned int
 
-    :param unsigned int new_keycode:
+    :param new_keycode:
         the desired keycode
+    :type new_keycode: unsigned int
 
 .. _`ir_update_mapping.description`:
 
@@ -138,18 +151,22 @@ ir_establish_scancode
 
     set a keycode in the scancode->keycode table
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev device descriptor
+    :type dev: struct rc_dev \*
 
-    :param struct rc_map \*rc_map:
+    :param rc_map:
         scancode table to be searched
+    :type rc_map: struct rc_map \*
 
-    :param unsigned int scancode:
+    :param scancode:
         the desired scancode
+    :type scancode: unsigned int
 
-    :param bool resize:
+    :param resize:
         controls whether we allowed to resize the table to
         accommodate not yet present scancodes
+    :type resize: bool
 
 .. _`ir_establish_scancode.description`:
 
@@ -177,14 +194,17 @@ ir_setkeycode
 
     set a keycode in the scancode->keycode table
 
-    :param struct input_dev \*idev:
+    :param idev:
         the struct input_dev device descriptor
+    :type idev: struct input_dev \*
 
-    :param const struct input_keymap_entry \*ke:
+    :param ke:
         Input keymap entry
+    :type ke: const struct input_keymap_entry \*
 
-    :param unsigned int \*old_keycode:
+    :param old_keycode:
         result
+    :type old_keycode: unsigned int \*
 
 .. _`ir_setkeycode.description`:
 
@@ -209,11 +229,13 @@ ir_setkeytable
 
     sets several entries in the scancode->keycode table
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev device descriptor
+    :type dev: struct rc_dev \*
 
-    :param const struct rc_map \*from:
+    :param from:
         the struct rc_map to copy entries from
+    :type from: const struct rc_map \*
 
 .. _`ir_setkeytable.description`:
 
@@ -238,11 +260,13 @@ ir_lookup_by_scancode
 
     locate mapping by scancode
 
-    :param const struct rc_map \*rc_map:
+    :param rc_map:
         the struct rc_map to search
+    :type rc_map: const struct rc_map \*
 
-    :param unsigned int scancode:
+    :param scancode:
         scancode to look for in the table
+    :type scancode: unsigned int
 
 .. _`ir_lookup_by_scancode.description`:
 
@@ -268,11 +292,13 @@ ir_getkeycode
 
     get a keycode from the scancode->keycode table
 
-    :param struct input_dev \*idev:
+    :param idev:
         the struct input_dev device descriptor
+    :type idev: struct input_dev \*
 
-    :param struct input_keymap_entry \*ke:
+    :param ke:
         Input keymap entry
+    :type ke: struct input_keymap_entry \*
 
 .. _`ir_getkeycode.description`:
 
@@ -297,11 +323,13 @@ rc_g_keycode_from_table
 
     gets the keycode that corresponds to a scancode
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
-    :param u32 scancode:
+    :param scancode:
         the scancode to look for
+    :type scancode: u32
 
 .. _`rc_g_keycode_from_table.description`:
 
@@ -328,11 +356,13 @@ ir_do_keyup
 
     internal function to signal the release of a keypress
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
-    :param bool sync:
+    :param sync:
         whether or not to call input_sync
+    :type sync: bool
 
 .. _`ir_do_keyup.description`:
 
@@ -351,8 +381,9 @@ rc_keyup
 
     signals the release of a keypress
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
 .. _`rc_keyup.description`:
 
@@ -371,8 +402,9 @@ ir_timer_keyup
 
     generates a keyup event after a timeout
 
-    :param struct timer_list \*t:
+    :param t:
         a pointer to the struct timer_list
+    :type t: struct timer_list \*
 
 .. _`ir_timer_keyup.description`:
 
@@ -391,8 +423,9 @@ ir_timer_repeat
 
     generates a repeat event after a timeout
 
-    :param struct timer_list \*t:
+    :param t:
         a pointer to the struct timer_list
+    :type t: struct timer_list \*
 
 .. _`ir_timer_repeat.description`:
 
@@ -411,8 +444,9 @@ rc_repeat
 
     signals that a key is still pressed
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
 .. _`rc_repeat.description`:
 
@@ -432,20 +466,25 @@ ir_do_keydown
 
     internal function to process a keypress
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
-    :param enum rc_proto protocol:
+    :param protocol:
         the protocol of the keypress
+    :type protocol: enum rc_proto
 
-    :param u32 scancode:
+    :param scancode:
         the scancode of the keypress
+    :type scancode: u32
 
-    :param u32 keycode:
+    :param keycode:
         the keycode of the keypress
+    :type keycode: u32
 
-    :param u8 toggle:
+    :param toggle:
         the toggle value of the keypress
+    :type toggle: u8
 
 .. _`ir_do_keydown.description`:
 
@@ -464,18 +503,22 @@ rc_keydown
 
     generates input event for a key press
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
-    :param enum rc_proto protocol:
+    :param protocol:
         the protocol for the keypress
+    :type protocol: enum rc_proto
 
-    :param u32 scancode:
+    :param scancode:
         the scancode for the keypress
+    :type scancode: u32
 
-    :param u8 toggle:
+    :param toggle:
         the toggle value (protocol dependent, if the protocol doesn't
         support toggle values, this should be set to zero)
+    :type toggle: u8
 
 .. _`rc_keydown.description`:
 
@@ -494,18 +537,22 @@ rc_keydown_notimeout
 
     generates input event for a key press without an automatic keyup event at a later time
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
-    :param enum rc_proto protocol:
+    :param protocol:
         the protocol for the keypress
+    :type protocol: enum rc_proto
 
-    :param u32 scancode:
+    :param scancode:
         the scancode for the keypress
+    :type scancode: u32
 
-    :param u8 toggle:
+    :param toggle:
         the toggle value (protocol dependent, if the protocol doesn't
         support toggle values, this should be set to zero)
+    :type toggle: u8
 
 .. _`rc_keydown_notimeout.description`:
 
@@ -524,11 +571,13 @@ rc_validate_scancode
 
     checks that a scancode is valid for a protocol. For nec, it should do the opposite of \ :c:func:`ir_nec_bytes_to_scancode`\ 
 
-    :param enum rc_proto proto:
+    :param proto:
         protocol
+    :type proto: enum rc_proto
 
-    :param u32 scancode:
+    :param scancode:
         scancode
+    :type scancode: u32
 
 .. _`rc_validate_filter`:
 
@@ -539,11 +588,13 @@ rc_validate_filter
 
     checks that the scancode and mask are valid and provides sensible defaults
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev descriptor of the device
+    :type dev: struct rc_dev \*
 
-    :param struct rc_scancode_filter \*filter:
+    :param filter:
         the scancode and mask
+    :type filter: struct rc_scancode_filter \*
 
 .. _`rc_validate_filter.return`:
 
@@ -597,14 +648,17 @@ show_protocols
 
     shows the current IR protocol(s)
 
-    :param struct device \*device:
+    :param device:
         the device descriptor
+    :type device: struct device \*
 
-    :param struct device_attribute \*mattr:
+    :param mattr:
         the device attribute struct
+    :type mattr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         a pointer to the output buffer
+    :type buf: char \*
 
 .. _`show_protocols.description`:
 
@@ -628,14 +682,17 @@ parse_protocol_change
 
     parses a protocol change request
 
-    :param struct rc_dev \*dev:
+    :param dev:
         rc_dev device
+    :type dev: struct rc_dev \*
 
-    :param u64 \*protocols:
+    :param protocols:
         pointer to the bitmask of current protocols
+    :type protocols: u64 \*
 
-    :param const char \*buf:
+    :param buf:
         pointer to the buffer with a list of changes
+    :type buf: const char \*
 
 .. _`parse_protocol_change.description`:
 
@@ -657,17 +714,21 @@ store_protocols
 
     changes the current/wakeup IR protocol(s)
 
-    :param struct device \*device:
+    :param device:
         the device descriptor
+    :type device: struct device \*
 
-    :param struct device_attribute \*mattr:
+    :param mattr:
         the device attribute struct
+    :type mattr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         a pointer to the input buffer
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         length of the input buffer
+    :type len: size_t
 
 .. _`store_protocols.description`:
 
@@ -691,14 +752,17 @@ show_filter
 
     shows the current scancode filter value or mask
 
-    :param struct device \*device:
+    :param device:
         the device descriptor
+    :type device: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         the device attribute struct
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         a pointer to the output buffer
+    :type buf: char \*
 
 .. _`show_filter.description`:
 
@@ -725,17 +789,21 @@ store_filter
 
     changes the scancode filter value
 
-    :param struct device \*device:
+    :param device:
         the device descriptor
+    :type device: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         the device attribute struct
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         a pointer to the input buffer
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         length of the input buffer
+    :type len: size_t
 
 .. _`store_filter.description`:
 
@@ -763,14 +831,17 @@ show_wakeup_protocols
 
     shows the wakeup IR protocol
 
-    :param struct device \*device:
+    :param device:
         the device descriptor
+    :type device: struct device \*
 
-    :param struct device_attribute \*mattr:
+    :param mattr:
         the device attribute struct
+    :type mattr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         a pointer to the output buffer
+    :type buf: char \*
 
 .. _`show_wakeup_protocols.description`:
 
@@ -794,17 +865,21 @@ store_wakeup_protocols
 
     changes the wakeup IR protocol(s)
 
-    :param struct device \*device:
+    :param device:
         the device descriptor
+    :type device: struct device \*
 
-    :param struct device_attribute \*mattr:
+    :param mattr:
         the device attribute struct
+    :type mattr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         a pointer to the input buffer
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         length of the input buffer
+    :type len: size_t
 
 .. _`store_wakeup_protocols.description`:
 

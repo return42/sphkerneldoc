@@ -10,17 +10,20 @@ switchdev_trans_item_enqueue
 
     Enqueue data item to transaction queue
 
-    :param struct switchdev_trans \*trans:
+    :param trans:
         transaction
+    :type trans: struct switchdev_trans \*
 
-    :param void \*data:
+    :param data:
         pointer to data being queued
+    :type data: void \*
 
     :param void (\*destructor)(void const \*):
         data destructor
 
-    :param struct switchdev_trans_item \*tritem:
+    :param tritem:
         transaction item being queued
+    :type tritem: struct switchdev_trans_item \*
 
 .. _`switchdev_trans_item_enqueue.description`:
 
@@ -41,8 +44,9 @@ switchdev_trans_item_dequeue
 
     Dequeue data item from transaction queue
 
-    :param struct switchdev_trans \*trans:
+    :param trans:
         transaction
+    :type trans: struct switchdev_trans \*
 
 .. _`switchdev_deferred_process`:
 
@@ -53,8 +57,9 @@ switchdev_deferred_process
 
     Process ops in deferred queue
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`switchdev_deferred_process.description`:
 
@@ -73,11 +78,13 @@ switchdev_port_attr_get
 
     Get port attribute
 
-    :param struct net_device \*dev:
+    :param dev:
         port device
+    :type dev: struct net_device \*
 
-    :param struct switchdev_attr \*attr:
+    :param attr:
         attribute to get
+    :type attr: struct switchdev_attr \*
 
 .. _`switchdev_port_attr_set`:
 
@@ -88,11 +95,13 @@ switchdev_port_attr_set
 
     Set port attribute
 
-    :param struct net_device \*dev:
+    :param dev:
         port device
+    :type dev: struct net_device \*
 
-    :param const struct switchdev_attr \*attr:
+    :param attr:
         attribute to set
+    :type attr: const struct switchdev_attr \*
 
 .. _`switchdev_port_attr_set.description`:
 
@@ -115,11 +124,13 @@ switchdev_port_obj_add
 
     Add port object
 
-    :param struct net_device \*dev:
+    :param dev:
         port device
+    :type dev: struct net_device \*
 
-    :param const struct switchdev_obj \*obj:
+    :param obj:
         object to add
+    :type obj: const struct switchdev_obj \*
 
 .. _`switchdev_port_obj_add.description`:
 
@@ -142,11 +153,13 @@ switchdev_port_obj_del
 
     Delete port object
 
-    :param struct net_device \*dev:
+    :param dev:
         port device
+    :type dev: struct net_device \*
 
-    :param const struct switchdev_obj \*obj:
+    :param obj:
         object to delete
+    :type obj: const struct switchdev_obj \*
 
 .. _`switchdev_port_obj_del.description`:
 
@@ -165,8 +178,9 @@ register_switchdev_notifier
 
     Register notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier_block
+    :type nb: struct notifier_block \*
 
 .. _`register_switchdev_notifier.description`:
 
@@ -184,8 +198,9 @@ unregister_switchdev_notifier
 
     Unregister notifier
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier_block
+    :type nb: struct notifier_block \*
 
 .. _`unregister_switchdev_notifier.description`:
 
@@ -203,14 +218,17 @@ call_switchdev_notifiers
 
     Call notifiers
 
-    :param unsigned long val:
+    :param val:
         value passed unmodified to notifier function
+    :type val: unsigned long
 
-    :param struct net_device \*dev:
+    :param dev:
         port device
+    :type dev: struct net_device \*
 
-    :param struct switchdev_notifier_info \*info:
+    :param info:
         notifier information data
+    :type info: struct switchdev_notifier_info \*
 
 .. _`call_switchdev_notifiers.description`:
 

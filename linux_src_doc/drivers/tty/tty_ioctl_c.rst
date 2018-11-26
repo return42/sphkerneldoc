@@ -10,8 +10,9 @@ tty_chars_in_buffer
 
     characters pending
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`tty_chars_in_buffer.description`:
 
@@ -31,8 +32,9 @@ tty_write_room
 
     write queue space
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`tty_write_room.description`:
 
@@ -54,8 +56,9 @@ tty_driver_flush_buffer
 
     discard internal buffer
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`tty_driver_flush_buffer.description`:
 
@@ -75,8 +78,9 @@ tty_throttle
 
     flow control
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`tty_throttle.description`:
 
@@ -97,8 +101,9 @@ tty_unthrottle
 
     flow control
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`tty_unthrottle.description`:
 
@@ -122,8 +127,9 @@ tty_throttle_safe
 
     flow control
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`tty_throttle_safe.description`:
 
@@ -146,8 +152,9 @@ tty_unthrottle_safe
 
     flow control
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
 .. _`tty_unthrottle_safe.description`:
 
@@ -170,11 +177,13 @@ tty_wait_until_sent
 
     wait for I/O to finish
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty we are waiting for
+    :type tty: struct tty_struct \*
 
-    :param long timeout:
+    :param timeout:
         how long we will wait
+    :type timeout: long
 
 .. _`tty_wait_until_sent.description`:
 
@@ -200,11 +209,13 @@ tty_termios_copy_hw
 
     copy hardware settings
 
-    :param struct ktermios \*new:
+    :param new:
         New termios
+    :type new: struct ktermios \*
 
-    :param struct ktermios \*old:
+    :param old:
         Old termios
+    :type old: struct ktermios \*
 
 .. _`tty_termios_copy_hw.description`:
 
@@ -225,11 +236,13 @@ tty_termios_hw_change
 
     check for setting change
 
-    :param const struct ktermios \*a:
+    :param a:
         termios
+    :type a: const struct ktermios \*
 
-    :param const struct ktermios \*b:
+    :param b:
         termios to compare
+    :type b: const struct ktermios \*
 
 .. _`tty_termios_hw_change.description`:
 
@@ -248,11 +261,13 @@ tty_set_termios
 
     update termios values
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to update
+    :type tty: struct tty_struct \*
 
-    :param struct ktermios \*new_termios:
+    :param new_termios:
         desired new value
+    :type new_termios: struct ktermios \*
 
 .. _`tty_set_termios.description`:
 
@@ -278,14 +293,17 @@ set_termios
 
     set termios values for a tty
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal device
+    :type tty: struct tty_struct \*
 
-    :param void __user \*arg:
+    :param arg:
         user data
+    :type arg: void __user \*
 
-    :param int opt:
+    :param opt:
         option information
+    :type opt: int
 
 .. _`set_termios.description`:
 
@@ -311,14 +329,17 @@ set_termiox
 
     set termiox fields if possible
 
-    :param struct tty_struct \*tty:
+    :param tty:
         terminal
+    :type tty: struct tty_struct \*
 
-    :param void __user \*arg:
+    :param arg:
         termiox structure from user
+    :type arg: void __user \*
 
-    :param int opt:
+    :param opt:
         option flags for ioctl type
+    :type opt: int
 
 .. _`set_termiox.description`:
 
@@ -337,11 +358,13 @@ set_sgttyb
 
     set legacy terminal values
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty structure
+    :type tty: struct tty_struct \*
 
-    :param struct sgttyb __user \*sgttyb:
+    :param sgttyb:
         pointer to old style terminal structure
+    :type sgttyb: struct sgttyb __user \*
 
 .. _`set_sgttyb.description`:
 
@@ -367,11 +390,13 @@ tty_change_softcar
 
     carrier change ioctl helper
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty to update
+    :type tty: struct tty_struct \*
 
-    :param int arg:
+    :param arg:
         enable/disable CLOCAL
+    :type arg: int
 
 .. _`tty_change_softcar.description`:
 
@@ -390,17 +415,21 @@ tty_mode_ioctl
 
     mode related ioctls
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty for the ioctl
+    :type tty: struct tty_struct \*
 
-    :param struct file \*file:
+    :param file:
         file pointer for the tty
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         command
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         ioctl argument
+    :type arg: unsigned long
 
 .. _`tty_mode_ioctl.description`:
 

@@ -10,8 +10,9 @@ qla4_82xx_idc_lock
 
     hw_lock
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_82xx_idc_lock.description`:
 
@@ -30,11 +31,13 @@ qla4_82xx_pinit_from_rom
 
     to put the ISP into operational state
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         *undescribed*
+    :type ha: struct scsi_qla_host \*
 
-    :param int verbose:
+    :param verbose:
         *undescribed*
+    :type verbose: int
 
 .. _`qla4_8xxx_ms_mem_write_128b`:
 
@@ -45,17 +48,21 @@ qla4_8xxx_ms_mem_write_128b
 
     Writes data to MS/off-chip memory
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         Pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param uint64_t addr:
+    :param addr:
         Flash address to write to
+    :type addr: uint64_t
 
-    :param uint32_t \*data:
+    :param data:
         Data to be written
+    :type data: uint32_t \*
 
-    :param uint32_t count:
+    :param count:
         word_count to be written
+    :type count: uint32_t
 
 .. _`qla4_8xxx_ms_mem_write_128b.return`:
 
@@ -74,8 +81,9 @@ qla4_8xxx_collect_md_data
 
     Retrieve firmware minidump data.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_8xxx_uevent_emit`:
 
@@ -86,11 +94,13 @@ qla4_8xxx_uevent_emit
 
     Send uevent when the firmware dump is ready.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
-    :param u32 code:
+    :param code:
         *undescribed*
+    :type code: u32
 
 .. _`qla4_8xxx_device_bootstrap`:
 
@@ -101,8 +111,9 @@ qla4_8xxx_device_bootstrap
 
     Initialize device, set DEV_READY, start fw
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_8xxx_device_bootstrap.note`:
 
@@ -120,8 +131,9 @@ qla4_82xx_need_reset_handler
 
     Code to start reset sequence
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_82xx_need_reset_handler.note`:
 
@@ -139,8 +151,9 @@ qla4_8xxx_need_qsnt_handler
 
     Code to start qsnt
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to adapter structure
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_8xxx_device_state_handler`:
 
@@ -151,8 +164,9 @@ qla4_8xxx_device_state_handler
 
     Adapter state machine
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_8xxx_device_state_handler.note`:
 
@@ -168,17 +182,21 @@ qla4_82xx_read_optrom_data
 
 .. c:function:: uint8_t *qla4_82xx_read_optrom_data(struct scsi_qla_host *ha, uint8_t *buf, uint32_t offset, uint32_t length)
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         *undescribed*
+    :type ha: struct scsi_qla_host \*
 
-    :param uint8_t \*buf:
+    :param buf:
         *undescribed*
+    :type buf: uint8_t \*
 
-    :param uint32_t offset:
+    :param offset:
         *undescribed*
+    :type offset: uint32_t
 
-    :param uint32_t length:
+    :param length:
         *undescribed*
+    :type length: uint32_t
 
 .. _`qla4_8xxx_stop_firmware`:
 
@@ -189,8 +207,9 @@ qla4_8xxx_stop_firmware
 
     stops firmware on specified adapter instance
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_8xxx_stop_firmware.remarks`:
 
@@ -210,8 +229,9 @@ qla4_82xx_isp_reset
 
     Resets ISP and aborts all outstanding commands.
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. _`qla4_8xxx_get_sys_info`:
 
@@ -222,8 +242,9 @@ qla4_8xxx_get_sys_info
 
     get adapter MAC address(es) and serial number
 
-    :param struct scsi_qla_host \*ha:
+    :param ha:
         pointer to host adapter structure.
+    :type ha: struct scsi_qla_host \*
 
 .. This file was automatic generated / don't edit.
 

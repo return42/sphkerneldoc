@@ -10,17 +10,21 @@ ath9k_dfs_process_phyerr
 
     process radar PHY error
 
-    :param struct ath_softc \*sc:
+    :param sc:
         ath_softc
+    :type sc: struct ath_softc \*
 
-    :param void \*data:
+    :param data:
         RX payload data
+    :type data: void \*
 
-    :param struct ath_rx_status \*rs:
+    :param rs:
         RX status after processing descriptor
+    :type rs: struct ath_rx_status \*
 
-    :param u64 mactime:
+    :param mactime:
         receive time
+    :type mactime: u64
 
 .. _`ath9k_dfs_process_phyerr.description`:
 

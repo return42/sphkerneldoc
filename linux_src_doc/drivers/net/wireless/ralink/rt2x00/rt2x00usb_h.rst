@@ -126,29 +126,37 @@ rt2x00usb_vendor_request
 
     Send register command to device
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const u8 request:
+    :param request:
         USB vendor command (See \ :c:type:`enum rt2x00usb_vendor_request <rt2x00usb_vendor_request>`\ )
+    :type request: const u8
 
-    :param const u8 requesttype:
+    :param requesttype:
         Request type \ :c:type:`struct USB_VENDOR_REQUEST <USB_VENDOR_REQUEST>`\ \_\*
+    :type requesttype: const u8
 
-    :param const u16 offset:
+    :param offset:
         Register offset to perform action on
+    :type offset: const u16
 
-    :param const u16 value:
+    :param value:
         Value to write to device
+    :type value: const u16
 
-    :param void \*buffer:
+    :param buffer:
         Buffer where information will be read/written to by device
+    :type buffer: void \*
 
-    :param const u16 buffer_length:
+    :param buffer_length:
         Size of \ :c:type:`struct buffer <buffer>`\ 
+    :type buffer_length: const u16
 
-    :param const int timeout:
+    :param timeout:
         Operation timeout
+    :type timeout: const int
 
 .. _`rt2x00usb_vendor_request.description`:
 
@@ -169,23 +177,29 @@ rt2x00usb_vendor_request_buff
 
     Send register command to device (buffered)
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const u8 request:
+    :param request:
         USB vendor command (See \ :c:type:`enum rt2x00usb_vendor_request <rt2x00usb_vendor_request>`\ )
+    :type request: const u8
 
-    :param const u8 requesttype:
+    :param requesttype:
         Request type \ :c:type:`struct USB_VENDOR_REQUEST <USB_VENDOR_REQUEST>`\ \_\*
+    :type requesttype: const u8
 
-    :param const u16 offset:
+    :param offset:
         Register offset to perform action on
+    :type offset: const u16
 
-    :param void \*buffer:
+    :param buffer:
         Buffer where information will be read/written to by device
+    :type buffer: void \*
 
-    :param const u16 buffer_length:
+    :param buffer_length:
         Size of \ :c:type:`struct buffer <buffer>`\ 
+    :type buffer_length: const u16
 
 .. _`rt2x00usb_vendor_request_buff.description`:
 
@@ -209,26 +223,33 @@ rt2x00usb_vendor_req_buff_lock
 
     Send register command to device (buffered)
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const u8 request:
+    :param request:
         USB vendor command (See \ :c:type:`enum rt2x00usb_vendor_request <rt2x00usb_vendor_request>`\ )
+    :type request: const u8
 
-    :param const u8 requesttype:
+    :param requesttype:
         Request type \ :c:type:`struct USB_VENDOR_REQUEST <USB_VENDOR_REQUEST>`\ \_\*
+    :type requesttype: const u8
 
-    :param const u16 offset:
+    :param offset:
         Register offset to perform action on
+    :type offset: const u16
 
-    :param void \*buffer:
+    :param buffer:
         Buffer where information will be read/written to by device
+    :type buffer: void \*
 
-    :param const u16 buffer_length:
+    :param buffer_length:
         Size of \ :c:type:`struct buffer <buffer>`\ 
+    :type buffer_length: const u16
 
-    :param const int timeout:
+    :param timeout:
         Operation timeout
+    :type timeout: const int
 
 .. _`rt2x00usb_vendor_req_buff_lock.description`:
 
@@ -247,20 +268,25 @@ rt2x00usb_vendor_request_sw
 
     Send single register command to device
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const u8 request:
+    :param request:
         USB vendor command (See \ :c:type:`enum rt2x00usb_vendor_request <rt2x00usb_vendor_request>`\ )
+    :type request: const u8
 
-    :param const u16 offset:
+    :param offset:
         Register offset to perform action on
+    :type offset: const u16
 
-    :param const u16 value:
+    :param value:
         Value to write to device
+    :type value: const u16
 
-    :param const int timeout:
+    :param timeout:
         Operation timeout
+    :type timeout: const int
 
 .. _`rt2x00usb_vendor_request_sw.description`:
 
@@ -280,14 +306,17 @@ rt2x00usb_eeprom_read
 
     Read eeprom from device
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param __le16 \*eeprom:
+    :param eeprom:
         Pointer to eeprom array to store the information in
+    :type eeprom: __le16 \*
 
-    :param const u16 length:
+    :param length:
         Number of bytes to read from the eeprom
+    :type length: const u16
 
 .. _`rt2x00usb_eeprom_read.description`:
 
@@ -307,11 +336,13 @@ rt2x00usb_register_read
 
     Read 32bit register word
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Device pointer, see \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const unsigned int offset:
+    :param offset:
         Register offset
+    :type offset: const unsigned int
 
 .. _`rt2x00usb_register_read.description`:
 
@@ -330,11 +361,13 @@ rt2x00usb_register_read_lock
 
     Read 32bit register word
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Device pointer, see \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const unsigned int offset:
+    :param offset:
         Register offset
+    :type offset: const unsigned int
 
 .. _`rt2x00usb_register_read_lock.description`:
 
@@ -353,17 +386,21 @@ rt2x00usb_register_multiread
 
     Read 32bit register words
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Device pointer, see \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const unsigned int offset:
+    :param offset:
         Register offset
+    :type offset: const unsigned int
 
-    :param void \*value:
+    :param value:
         Pointer to where register contents should be stored
+    :type value: void \*
 
-    :param const u32 length:
+    :param length:
         Length of the data
+    :type length: const u32
 
 .. _`rt2x00usb_register_multiread.description`:
 
@@ -382,14 +419,17 @@ rt2x00usb_register_write
 
     Write 32bit register word
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Device pointer, see \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const unsigned int offset:
+    :param offset:
         Register offset
+    :type offset: const unsigned int
 
-    :param u32 value:
+    :param value:
         Data which should be written
+    :type value: u32
 
 .. _`rt2x00usb_register_write.description`:
 
@@ -408,14 +448,17 @@ rt2x00usb_register_write_lock
 
     Write 32bit register word
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Device pointer, see \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const unsigned int offset:
+    :param offset:
         Register offset
+    :type offset: const unsigned int
 
-    :param u32 value:
+    :param value:
         Data which should be written
+    :type value: u32
 
 .. _`rt2x00usb_register_write_lock.description`:
 
@@ -434,17 +477,21 @@ rt2x00usb_register_multiwrite
 
     Write 32bit register words
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Device pointer, see \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const unsigned int offset:
+    :param offset:
         Register offset
+    :type offset: const unsigned int
 
-    :param const void \*value:
+    :param value:
         Data which should be written
+    :type value: const void \*
 
-    :param const u32 length:
+    :param length:
         Length of the data
+    :type length: const u32
 
 .. _`rt2x00usb_register_multiwrite.description`:
 
@@ -463,17 +510,21 @@ rt2x00usb_regbusy_read
 
     Read from register with busy check
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Device pointer, see \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const unsigned int offset:
+    :param offset:
         Register offset
+    :type offset: const unsigned int
 
-    :param const struct rt2x00_field32 field:
+    :param field:
         Field to check if register is busy
+    :type field: const struct rt2x00_field32
 
-    :param u32 \*reg:
+    :param reg:
         Pointer to where register contents should be stored
+    :type reg: u32 \*
 
 .. _`rt2x00usb_regbusy_read.description`:
 
@@ -495,11 +546,13 @@ rt2x00usb_register_read_async
 
     Asynchronously read 32bit register word
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Device pointer, see \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const unsigned int offset:
+    :param offset:
         Register offset
+    :type offset: const unsigned int
 
     :param bool (\*callback)(struct rt2x00_dev\*, int, u32):
         Functon to call when read completes.
@@ -598,8 +651,9 @@ rt2x00usb_kick_queue
 
     Kick data queue
 
-    :param struct data_queue \*queue:
+    :param queue:
         Data queue to kick
+    :type queue: struct data_queue \*
 
 .. _`rt2x00usb_kick_queue.description`:
 
@@ -618,11 +672,13 @@ rt2x00usb_flush_queue
 
     Flush data queue
 
-    :param struct data_queue \*queue:
+    :param queue:
         Data queue to stop
+    :type queue: struct data_queue \*
 
-    :param bool drop:
+    :param drop:
         True to drop all pending frames.
+    :type drop: bool
 
 .. _`rt2x00usb_flush_queue.description`:
 
@@ -642,8 +698,9 @@ rt2x00usb_watchdog
 
     Watchdog for USB communication
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ 
+    :type rt2x00dev: struct rt2x00_dev \*
 
 .. _`rt2x00usb_watchdog.description`:
 

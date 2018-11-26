@@ -10,11 +10,13 @@ cosm_log_buf_show
 
     Display MIC kernel log buffer
 
-    :param struct seq_file \*s:
+    :param s:
         *undescribed*
+    :type s: struct seq_file \*
 
-    :param void \*unused:
+    :param unused:
         *undescribed*
+    :type unused: void \*
 
 .. _`cosm_log_buf_show.description`:
 
@@ -33,11 +35,13 @@ cosm_force_reset_show
 
     Force MIC reset
 
-    :param struct seq_file \*s:
+    :param s:
         *undescribed*
+    :type s: struct seq_file \*
 
-    :param void \*pos:
+    :param pos:
         *undescribed*
+    :type pos: void \*
 
 .. _`cosm_force_reset_show.description`:
 

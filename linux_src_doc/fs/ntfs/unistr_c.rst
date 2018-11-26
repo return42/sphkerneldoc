@@ -10,26 +10,33 @@ ntfs_are_names_equal
 
     compare two Unicode names for equality
 
-    :param const ntfschar \*s1:
+    :param s1:
         name to compare to \ ``s2``\ 
+    :type s1: const ntfschar \*
 
-    :param size_t s1_len:
+    :param s1_len:
         length in Unicode characters of \ ``s1``\ 
+    :type s1_len: size_t
 
-    :param const ntfschar \*s2:
+    :param s2:
         name to compare to \ ``s1``\ 
+    :type s2: const ntfschar \*
 
-    :param size_t s2_len:
+    :param s2_len:
         length in Unicode characters of \ ``s2``\ 
+    :type s2_len: size_t
 
-    :param const IGNORE_CASE_BOOL ic:
+    :param ic:
         ignore case bool
+    :type ic: const IGNORE_CASE_BOOL
 
-    :param const ntfschar \*upcase:
+    :param upcase:
         upcase table (only if \ ``ic``\  == IGNORE_CASE)
+    :type upcase: const ntfschar \*
 
-    :param const u32 upcase_size:
+    :param upcase_size:
         length in Unicode characters of \ ``upcase``\  (if present)
+    :type upcase_size: const u32
 
 .. _`ntfs_are_names_equal.description`:
 
@@ -49,29 +56,37 @@ ntfs_collate_names
 
     collate two Unicode names
 
-    :param const ntfschar \*name1:
+    :param name1:
         first Unicode name to compare
+    :type name1: const ntfschar \*
 
-    :param const u32 name1_len:
+    :param name1_len:
         *undescribed*
+    :type name1_len: const u32
 
-    :param const ntfschar \*name2:
+    :param name2:
         second Unicode name to compare
+    :type name2: const ntfschar \*
 
-    :param const u32 name2_len:
+    :param name2_len:
         *undescribed*
+    :type name2_len: const u32
 
-    :param const int err_val:
+    :param err_val:
         if \ ``name1``\  contains an invalid character return this value
+    :type err_val: const int
 
-    :param const IGNORE_CASE_BOOL ic:
+    :param ic:
         either CASE_SENSITIVE or IGNORE_CASE
+    :type ic: const IGNORE_CASE_BOOL
 
-    :param const ntfschar \*upcase:
+    :param upcase:
         upcase table (ignored if \ ``ic``\  is CASE_SENSITIVE)
+    :type upcase: const ntfschar \*
 
-    :param const u32 upcase_len:
+    :param upcase_len:
         upcase table size (ignored if \ ``ic``\  is CASE_SENSITIVE)
+    :type upcase_len: const u32
 
 .. _`ntfs_collate_names.ntfs_collate_names-collates-two-unicode-names-and-returns`:
 
@@ -100,14 +115,17 @@ ntfs_ucsncmp
 
     compare two little endian Unicode strings
 
-    :param const ntfschar \*s1:
+    :param s1:
         first string
+    :type s1: const ntfschar \*
 
-    :param const ntfschar \*s2:
+    :param s2:
         second string
+    :type s2: const ntfschar \*
 
-    :param size_t n:
+    :param n:
         maximum unicode characters to compare
+    :type n: size_t
 
 .. _`ntfs_ucsncmp.description`:
 
@@ -131,20 +149,25 @@ ntfs_ucsncasecmp
 
     compare two little endian Unicode strings, ignoring case
 
-    :param const ntfschar \*s1:
+    :param s1:
         first string
+    :type s1: const ntfschar \*
 
-    :param const ntfschar \*s2:
+    :param s2:
         second string
+    :type s2: const ntfschar \*
 
-    :param size_t n:
+    :param n:
         maximum unicode characters to compare
+    :type n: size_t
 
-    :param const ntfschar \*upcase:
+    :param upcase:
         upcase table
+    :type upcase: const ntfschar \*
 
-    :param const u32 upcase_size:
+    :param upcase_size:
         upcase table size in Unicode characters
+    :type upcase_size: const u32
 
 .. _`ntfs_ucsncasecmp.description`:
 
@@ -170,17 +193,21 @@ ntfs_nlstoucs
 
     convert NLS string to little endian Unicode string
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume which we are working with
+    :type vol: const ntfs_volume \*
 
-    :param const char \*ins:
+    :param ins:
         input NLS string buffer
+    :type ins: const char \*
 
-    :param const int ins_len:
+    :param ins_len:
         length of input string in bytes
+    :type ins_len: const int
 
-    :param ntfschar \*\*outs:
+    :param outs:
         on return contains the allocated output Unicode string buffer
+    :type outs: ntfschar \*\*
 
 .. _`ntfs_nlstoucs.description`:
 
@@ -212,20 +239,25 @@ ntfs_ucstonls
 
     convert little endian Unicode string to NLS string
 
-    :param const ntfs_volume \*vol:
+    :param vol:
         ntfs volume which we are working with
+    :type vol: const ntfs_volume \*
 
-    :param const ntfschar \*ins:
+    :param ins:
         input Unicode string buffer
+    :type ins: const ntfschar \*
 
-    :param const int ins_len:
+    :param ins_len:
         length of input string in Unicode characters
+    :type ins_len: const int
 
-    :param unsigned char \*\*outs:
+    :param outs:
         on return contains the (allocated) output NLS string buffer
+    :type outs: unsigned char \*\*
 
-    :param int outs_len:
+    :param outs_len:
         length of output string buffer in bytes
+    :type outs_len: int
 
 .. _`ntfs_ucstonls.description`:
 

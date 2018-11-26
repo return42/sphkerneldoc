@@ -10,11 +10,13 @@ intel_connector_update_modes
 
     update connector from edid
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector device to use
+    :type connector: struct drm_connector \*
 
-    :param struct edid \*edid:
+    :param edid:
         previously read EDID information
+    :type edid: struct edid \*
 
 .. _`intel_ddc_get_modes`:
 
@@ -25,11 +27,13 @@ intel_ddc_get_modes
 
     get modelist from monitor
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector device to use
+    :type connector: struct drm_connector \*
 
-    :param struct i2c_adapter \*adapter:
+    :param adapter:
         i2c adapter
+    :type adapter: struct i2c_adapter \*
 
 .. _`intel_ddc_get_modes.description`:
 

@@ -10,8 +10,9 @@ zpool_register_driver
 
     register a zpool implementation.
 
-    :param struct zpool_driver \*driver:
+    :param driver:
         driver to register
+    :type driver: struct zpool_driver \*
 
 .. _`zpool_unregister_driver`:
 
@@ -22,8 +23,9 @@ zpool_unregister_driver
 
     unregister a zpool implementation.
 
-    :param struct zpool_driver \*driver:
+    :param driver:
         driver to unregister.
+    :type driver: struct zpool_driver \*
 
 .. _`zpool_unregister_driver.description`:
 
@@ -45,8 +47,9 @@ zpool_has_pool
 
     Check if the pool driver is available
 
-    :param char \*type:
+    :param type:
         The type of the zpool to check (e.g. zbud, zsmalloc)
+    :type type: char \*
 
 .. _`zpool_has_pool.description`:
 
@@ -81,17 +84,21 @@ zpool_create_pool
 
     Create a new zpool
 
-    :param const char \*type:
+    :param type:
         The type of the zpool to create (e.g. zbud, zsmalloc)
+    :type type: const char \*
 
-    :param const char \*name:
+    :param name:
         The name of the zpool (e.g. zram0, zswap)
+    :type name: const char \*
 
-    :param gfp_t gfp:
+    :param gfp:
         The GFP flags to use when allocating the pool.
+    :type gfp: gfp_t
 
-    :param const struct zpool_ops \*ops:
+    :param ops:
         The optional ops callback.
+    :type ops: const struct zpool_ops \*
 
 .. _`zpool_create_pool.description`:
 
@@ -122,8 +129,9 @@ zpool_destroy_pool
 
     Destroy a zpool
 
-    :param struct zpool \*zpool:
+    :param zpool:
         The zpool to destroy.
+    :type zpool: struct zpool \*
 
 .. _`zpool_destroy_pool.description`:
 
@@ -146,8 +154,9 @@ zpool_get_type
 
     Get the type of the zpool
 
-    :param struct zpool \*zpool:
+    :param zpool:
         The zpool to check
+    :type zpool: struct zpool \*
 
 .. _`zpool_get_type.description`:
 
@@ -174,17 +183,21 @@ zpool_malloc
 
     Allocate memory
 
-    :param struct zpool \*zpool:
+    :param zpool:
         The zpool to allocate from.
+    :type zpool: struct zpool \*
 
-    :param size_t size:
+    :param size:
         The amount of memory to allocate.
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         The GFP flags to use when allocating memory.
+    :type gfp: gfp_t
 
-    :param unsigned long \*handle:
+    :param handle:
         Pointer to the handle to set
+    :type handle: unsigned long \*
 
 .. _`zpool_malloc.description`:
 
@@ -214,11 +227,13 @@ zpool_free
 
     Free previously allocated memory
 
-    :param struct zpool \*zpool:
+    :param zpool:
         The zpool that allocated the memory.
+    :type zpool: struct zpool \*
 
-    :param unsigned long handle:
+    :param handle:
         The handle to the memory to free.
+    :type handle: unsigned long
 
 .. _`zpool_free.description`:
 
@@ -243,14 +258,17 @@ zpool_shrink
 
     Shrink the pool size
 
-    :param struct zpool \*zpool:
+    :param zpool:
         The zpool to shrink.
+    :type zpool: struct zpool \*
 
-    :param unsigned int pages:
+    :param pages:
         The number of pages to shrink the pool.
+    :type pages: unsigned int
 
-    :param unsigned int \*reclaimed:
+    :param reclaimed:
         The number of pages successfully evicted.
+    :type reclaimed: unsigned int \*
 
 .. _`zpool_shrink.description`:
 
@@ -282,14 +300,17 @@ zpool_map_handle
 
     Map a previously allocated handle into memory
 
-    :param struct zpool \*zpool:
+    :param zpool:
         The zpool that the handle was allocated from
+    :type zpool: struct zpool \*
 
-    :param unsigned long handle:
+    :param handle:
         The handle to map
+    :type handle: unsigned long
 
-    :param enum zpool_mapmode mapmode:
+    :param mapmode:
         How the memory should be mapped
+    :type mapmode: enum zpool_mapmode
 
 .. _`zpool_map_handle.description`:
 
@@ -326,11 +347,13 @@ zpool_unmap_handle
 
     Unmap a previously mapped handle
 
-    :param struct zpool \*zpool:
+    :param zpool:
         The zpool that the handle was allocated from
+    :type zpool: struct zpool \*
 
-    :param unsigned long handle:
+    :param handle:
         The handle to unmap
+    :type handle: unsigned long
 
 .. _`zpool_unmap_handle.description`:
 
@@ -351,8 +374,9 @@ zpool_get_total_size
 
     The total size of the pool
 
-    :param struct zpool \*zpool:
+    :param zpool:
         The zpool to check
+    :type zpool: struct zpool \*
 
 .. _`zpool_get_total_size.description`:
 
@@ -377,8 +401,9 @@ zpool_evictable
 
     Test if zpool is potentially evictable
 
-    :param struct zpool \*zpool:
+    :param zpool:
         The zpool to test
+    :type zpool: struct zpool \*
 
 .. _`zpool_evictable.description`:
 

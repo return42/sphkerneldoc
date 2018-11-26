@@ -10,14 +10,17 @@ mdp5_ctl_set_encoder_state
 
     set the encoder state
 
-    :param struct mdp5_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct mdp5_ctl \*
 
-    :param struct mdp5_pipeline \*pipeline:
+    :param pipeline:
         *undescribed*
+    :type pipeline: struct mdp5_pipeline \*
 
-    :param bool enabled:
+    :param enabled:
         *undescribed*
+    :type enabled: bool
 
 .. _`mdp5_ctl_set_encoder_state.note`:
 
@@ -35,17 +38,21 @@ mdp5_ctl_commit
 
     Register Flush
 
-    :param struct mdp5_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct mdp5_ctl \*
 
-    :param struct mdp5_pipeline \*pipeline:
+    :param pipeline:
         *undescribed*
+    :type pipeline: struct mdp5_pipeline \*
 
-    :param u32 flush_mask:
+    :param flush_mask:
         *undescribed*
+    :type flush_mask: u32
 
-    :param bool start:
+    :param start:
         *undescribed*
+    :type start: bool
 
 .. _`mdp5_ctl_commit.description`:
 

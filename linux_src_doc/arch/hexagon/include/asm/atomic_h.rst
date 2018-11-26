@@ -10,8 +10,9 @@ atomic_read
 
     reads a word, atomically
 
-    :param  v:
+    :param v:
         pointer to atomic value
+    :type v: 
 
 .. _`atomic_read.description`:
 
@@ -29,11 +30,13 @@ atomic_xchg
 
     atomic
 
-    :param  v:
+    :param v:
         pointer to memory to change
+    :type v: 
 
-    :param  new:
+    :param new:
         new value (technically passed in a register -- see xchg)
+    :type new: 
 
 .. _`atomic_cmpxchg`:
 
@@ -44,14 +47,17 @@ atomic_cmpxchg
 
     atomic compare-and-exchange values
 
-    :param atomic_t \*v:
+    :param v:
         pointer to value to change
+    :type v: atomic_t \*
 
-    :param int old:
+    :param old:
         desired old value to match
+    :type old: int
 
-    :param int new:
+    :param new:
         new value to put in
+    :type new: int
 
 .. _`atomic_cmpxchg.description`:
 
@@ -69,25 +75,28 @@ Remember V2 had that bug with dotnew predicate set by memw_locked.
 
 "old" is "expected" old val, \__oldval is actual old value
 
-.. _`__atomic_add_unless`:
+.. _`atomic_fetch_add_unless`:
 
-\__atomic_add_unless
-====================
+atomic_fetch_add_unless
+=======================
 
-.. c:function:: int __atomic_add_unless(atomic_t *v, int a, int u)
+.. c:function:: int atomic_fetch_add_unless(atomic_t *v, int a, int u)
 
     add unless the number is a given value
 
-    :param atomic_t \*v:
+    :param v:
         pointer to value
+    :type v: atomic_t \*
 
-    :param int a:
+    :param a:
         amount to add
+    :type a: int
 
-    :param int u:
+    :param u:
         unless value is equal to u
+    :type u: int
 
-.. _`__atomic_add_unless.description`:
+.. _`atomic_fetch_add_unless.description`:
 
 Description
 -----------

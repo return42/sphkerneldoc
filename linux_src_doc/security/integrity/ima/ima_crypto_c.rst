@@ -10,14 +10,17 @@ ima_alloc_pages
 
     Allocate contiguous pages.
 
-    :param loff_t max_size:
+    :param max_size:
         Maximum amount of memory to allocate.
+    :type max_size: loff_t
 
-    :param size_t \*allocated_size:
+    :param allocated_size:
         Returned size of actual allocation.
+    :type allocated_size: size_t \*
 
-    :param int last_warn:
+    :param last_warn:
         Should the min_size allocation warn or not.
+    :type last_warn: int
 
 .. _`ima_alloc_pages.description`:
 
@@ -42,11 +45,13 @@ ima_free_pages
 
     Free pages allocated by \ :c:func:`ima_alloc_pages`\ .
 
-    :param void \*ptr:
+    :param ptr:
         Pointer to allocated pages.
+    :type ptr: void \*
 
-    :param size_t size:
+    :param size:
         Size of allocated buffer.
+    :type size: size_t
 
 .. This file was automatic generated / don't edit.
 

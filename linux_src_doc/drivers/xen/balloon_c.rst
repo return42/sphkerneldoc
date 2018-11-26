@@ -10,12 +10,14 @@ alloc_xenballooned_pages
 
     get pages that have been ballooned out
 
-    :param int nr_pages:
+    :param nr_pages:
         Number of pages to get
+    :type nr_pages: int
 
-    :param struct page \*\*pages:
+    :param pages:
         pages returned
         \ ``return``\  0 on success, error otherwise
+    :type pages: struct page \*\*
 
 .. _`free_xenballooned_pages`:
 
@@ -26,11 +28,13 @@ free_xenballooned_pages
 
     return pages retrieved with get_ballooned_pages
 
-    :param int nr_pages:
+    :param nr_pages:
         Number of pages
+    :type nr_pages: int
 
-    :param struct page \*\*pages:
+    :param pages:
         pages to return
+    :type pages: struct page \*\*
 
 .. This file was automatic generated / don't edit.
 

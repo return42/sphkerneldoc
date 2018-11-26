@@ -10,11 +10,13 @@ of_clk_set_defaults
 
     parse and set assigned clocks configuration
 
-    :param struct device_node \*node:
+    :param node:
         device node to apply clock settings for
+    :type node: struct device_node \*
 
-    :param bool clk_supplier:
+    :param clk_supplier:
         true if clocks supplied by \ ``node``\  should also be considered
+    :type clk_supplier: bool
 
 .. _`of_clk_set_defaults.description`:
 

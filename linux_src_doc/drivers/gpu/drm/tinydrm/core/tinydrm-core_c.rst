@@ -31,14 +31,17 @@ tinydrm_gem_cma_prime_import_sg_table
 
     Produce a CMA GEM object from another driver's scatter/gather table of pinned pages
 
-    :param struct drm_device \*drm:
+    :param drm:
         DRM device to import into
+    :type drm: struct drm_device \*
 
-    :param struct dma_buf_attachment \*attach:
+    :param attach:
         DMA-BUF attachment
+    :type attach: struct dma_buf_attachment \*
 
-    :param struct sg_table \*sgt:
+    :param sgt:
         Scatter/gather table of pinned pages
+    :type sgt: struct sg_table \*
 
 .. _`tinydrm_gem_cma_prime_import_sg_table.description`:
 
@@ -69,8 +72,9 @@ tinydrm_gem_cma_free_object
 
     Free resources associated with a CMA GEM object
 
-    :param struct drm_gem_object \*gem_obj:
+    :param gem_obj:
         GEM object to free
+    :type gem_obj: struct drm_gem_object \*
 
 .. _`tinydrm_gem_cma_free_object.description`:
 
@@ -92,17 +96,21 @@ devm_tinydrm_init
 
     Initialize tinydrm device
 
-    :param struct device \*parent:
+    :param parent:
         Parent device object
+    :type parent: struct device \*
 
-    :param struct tinydrm_device \*tdev:
+    :param tdev:
         tinydrm device
+    :type tdev: struct tinydrm_device \*
 
-    :param const struct drm_framebuffer_funcs \*fb_funcs:
+    :param fb_funcs:
         Framebuffer functions
+    :type fb_funcs: const struct drm_framebuffer_funcs \*
 
-    :param struct drm_driver \*driver:
+    :param driver:
         DRM driver
+    :type driver: struct drm_driver \*
 
 .. _`devm_tinydrm_init.description`:
 
@@ -111,7 +119,7 @@ Description
 
 This function initializes \ ``tdev``\ , the underlying DRM device and it's
 mode_config. Resources will be automatically freed on driver detach (devres)
-using \ :c:func:`drm_mode_config_cleanup`\  and \ :c:func:`drm_dev_unref`\ .
+using \ :c:func:`drm_mode_config_cleanup`\  and \ :c:func:`drm_dev_put`\ .
 
 .. _`devm_tinydrm_init.return`:
 
@@ -129,8 +137,9 @@ devm_tinydrm_register
 
     Register tinydrm device
 
-    :param struct tinydrm_device \*tdev:
+    :param tdev:
         tinydrm device
+    :type tdev: struct tinydrm_device \*
 
 .. _`devm_tinydrm_register.description`:
 
@@ -157,8 +166,9 @@ tinydrm_shutdown
 
     Shutdown tinydrm
 
-    :param struct tinydrm_device \*tdev:
+    :param tdev:
         tinydrm device
+    :type tdev: struct tinydrm_device \*
 
 .. _`tinydrm_shutdown.description`:
 

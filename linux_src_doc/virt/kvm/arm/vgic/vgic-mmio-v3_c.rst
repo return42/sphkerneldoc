@@ -10,8 +10,9 @@ vgic_register_redist_iodev
 
     register a single redist iodev
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU to which the redistributor belongs
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`vgic_register_redist_iodev.description`:
 
@@ -32,18 +33,22 @@ vgic_v3_insert_redist_region
 
     Insert a new redistributor region
 
-    :param struct kvm \*kvm:
+    :param kvm:
         kvm handle
+    :type kvm: struct kvm \*
 
-    :param uint32_t index:
+    :param index:
         redist region index
+    :type index: uint32_t
 
-    :param gpa_t base:
+    :param base:
         base of the new rdist region
+    :type base: gpa_t
 
-    :param uint32_t count:
+    :param count:
         number of redistributors the region is made of (0 in the old style
         single region, whose size is induced from the number of vcpus)
+    :type count: uint32_t
 
 .. _`vgic_v3_insert_redist_region.description`:
 
@@ -61,15 +66,21 @@ Return 0 on success, < 0 otherwise
 vgic_v3_dispatch_sgi
 ====================
 
-.. c:function:: void vgic_v3_dispatch_sgi(struct kvm_vcpu *vcpu, u64 reg)
+.. c:function:: void vgic_v3_dispatch_sgi(struct kvm_vcpu *vcpu, u64 reg, bool allow_group1)
 
     handle SGI requests from VCPUs
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU requesting a SGI
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u64 reg:
-        The value written into the ICC_SGI1R_EL1 register by that VCPU
+    :param reg:
+        The value written into ICC_{ASGI1,SGI0,SGI1}R by that VCPU
+    :type reg: u64
+
+    :param allow_group1:
+        Does the sysreg access allow generation of G1 SGIs
+    :type allow_group1: bool
 
 .. _`vgic_v3_dispatch_sgi.description`:
 

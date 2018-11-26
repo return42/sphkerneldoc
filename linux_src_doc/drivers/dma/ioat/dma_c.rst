@@ -10,11 +10,13 @@ ioat_dma_do_interrupt
 
     handler used for single vector interrupt mode
 
-    :param int irq:
+    :param irq:
         interrupt id
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         interrupt data
+    :type data: void \*
 
 .. _`ioat_dma_do_interrupt_msix`:
 
@@ -25,11 +27,13 @@ ioat_dma_do_interrupt_msix
 
     handler used for vector-per-channel interrupt mode
 
-    :param int irq:
+    :param irq:
         interrupt id
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         interrupt data
+    :type data: void \*
 
 .. _`ioat_update_pending`:
 
@@ -40,8 +44,9 @@ ioat_update_pending
 
     log pending descriptors
 
-    :param struct ioatdma_chan \*ioat_chan:
+    :param ioat_chan:
         *undescribed*
+    :type ioat_chan: struct ioatdma_chan \*
 
 .. _`ioat_update_pending.description`:
 
@@ -60,11 +65,13 @@ ioat_check_space_lock
 
     verify space and grab ring producer lock
 
-    :param struct ioatdma_chan \*ioat_chan:
+    :param ioat_chan:
         *undescribed*
+    :type ioat_chan: struct ioatdma_chan \*
 
-    :param int num_descs:
+    :param num_descs:
         allocation length
+    :type num_descs: int
 
 .. _`__cleanup`:
 
@@ -75,11 +82,13 @@ ioat_check_space_lock
 
     reclaim used descriptors
 
-    :param struct ioatdma_chan \*ioat_chan:
+    :param ioat_chan:
         *undescribed*
+    :type ioat_chan: struct ioatdma_chan \*
 
-    :param dma_addr_t phys_complete:
+    :param phys_complete:
         *undescribed*
+    :type phys_complete: dma_addr_t
 
 .. This file was automatic generated / don't edit.
 

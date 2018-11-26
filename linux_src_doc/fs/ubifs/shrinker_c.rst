@@ -10,17 +10,21 @@ shrink_tnc
 
     shrink TNC tree.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int nr:
+    :param nr:
         number of znodes to free
+    :type nr: int
 
-    :param int age:
+    :param age:
         the age of znodes to free
+    :type age: int
 
-    :param int \*contention:
+    :param contention:
         if any contention, this is set to \ ``1``\ 
+    :type contention: int \*
 
 .. _`shrink_tnc.description`:
 
@@ -39,14 +43,17 @@ shrink_tnc_trees
 
     shrink UBIFS TNC trees.
 
-    :param int nr:
+    :param nr:
         number of znodes to free
+    :type nr: int
 
-    :param int age:
+    :param age:
         the age of znodes to free
+    :type age: int
 
-    :param int \*contention:
+    :param contention:
         if any contention, this is set to \ ``1``\ 
+    :type contention: int \*
 
 .. _`shrink_tnc_trees.description`:
 
@@ -66,8 +73,9 @@ kick_a_thread
 
     kick a background thread to start commit.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kick_a_thread.description`:
 

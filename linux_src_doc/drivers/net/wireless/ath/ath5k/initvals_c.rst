@@ -81,17 +81,21 @@ ath5k_hw_ini_registers
 
     Write initial register dump common for all modes
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int size:
+    :param size:
         Dump size
+    :type size: unsigned int
 
-    :param const struct ath5k_ini \*ini_regs:
+    :param ini_regs:
         The array of \ :c:type:`struct ath5k_ini <ath5k_ini>`\ 
+    :type ini_regs: const struct ath5k_ini \*
 
-    :param bool skip_pcu:
+    :param skip_pcu:
         Skip PCU registers
+    :type skip_pcu: bool
 
 .. _`ath5k_hw_ini_mode_registers`:
 
@@ -102,17 +106,21 @@ ath5k_hw_ini_mode_registers
 
     Write initial mode-specific register dump
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int size:
+    :param size:
         Dump size
+    :type size: unsigned int
 
-    :param const struct ath5k_ini_mode \*ini_mode:
+    :param ini_mode:
         The array of \ :c:type:`struct ath5k_ini_mode <ath5k_ini_mode>`\ 
+    :type ini_mode: const struct ath5k_ini_mode \*
 
-    :param u8 mode:
+    :param mode:
         One of enum ath5k_driver_mode
+    :type mode: u8
 
 .. _`ath5k_hw_write_initvals`:
 
@@ -123,14 +131,17 @@ ath5k_hw_write_initvals
 
     Write initial chip-specific register dump
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u8 mode:
+    :param mode:
         One of enum ath5k_driver_mode
+    :type mode: u8
 
-    :param bool skip_pcu:
+    :param skip_pcu:
         Skip PCU registers
+    :type skip_pcu: bool
 
 .. _`ath5k_hw_write_initvals.description`:
 

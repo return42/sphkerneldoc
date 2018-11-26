@@ -21,6 +21,7 @@ Definition
         const struct pmc_bit_map *pfear_sts;
         const struct pmc_bit_map *mphy_sts;
         const struct pmc_bit_map *pll_sts;
+        const struct pmc_bit_map **slps0_dbg_maps;
         const u32 slp_s0_offset;
         const u32 ltr_ignore_offset;
         const int regmap_length;
@@ -28,6 +29,7 @@ Definition
         const int ppfear_buckets;
         const u32 pm_cfg_offset;
         const int pm_read_disable_bit;
+        const u32 slps0_dbg_offset;
     }
 
 .. _`pmc_reg_map.members`:
@@ -43,6 +45,9 @@ mphy_sts
 
 pll_sts
     Maps name of PLL to corresponding bit status
+
+slps0_dbg_maps
+    Array of SLP_S0_DBG\* registers containing debug info
 
 slp_s0_offset
     PWRMBASE offset to read SLP_S0 residency
@@ -65,6 +70,9 @@ pm_cfg_offset
 
 pm_read_disable_bit
     Bit index to read PMC_READ_DISABLE
+
+slps0_dbg_offset
+    PWRMBASE offset to SLP_S0_DEBUG_REG\*
 
 .. _`pmc_reg_map.description`:
 

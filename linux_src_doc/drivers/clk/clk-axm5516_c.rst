@@ -74,11 +74,13 @@ axxia_pllclk_recalc
 
     Calculate the PLL generated clock rate given the parent clock rate.
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         *undescribed*
+    :type parent_rate: unsigned long
 
 .. _`axxia_divclk`:
 
@@ -129,11 +131,13 @@ axxia_divclk_recalc_rate
 
     Calculate clock divider output rage
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
-    :param unsigned long parent_rate:
+    :param parent_rate:
         *undescribed*
+    :type parent_rate: unsigned long
 
 .. _`axxia_clkmux`:
 
@@ -184,8 +188,9 @@ axxia_clkmux_get_parent
 
     Return the index of selected parent clock
 
-    :param struct clk_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct clk_hw \*
 
 .. This file was automatic generated / don't edit.
 

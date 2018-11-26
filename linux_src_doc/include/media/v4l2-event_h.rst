@@ -155,14 +155,17 @@ v4l2_event_dequeue
 
     Dequeue events from video device.
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to struct v4l2_fh
+    :type fh: struct v4l2_fh \*
 
-    :param struct v4l2_event \*event:
+    :param event:
         pointer to struct v4l2_event
+    :type event: struct v4l2_event \*
 
-    :param int nonblocking:
+    :param nonblocking:
         if not zero, waits for an event to arrive
+    :type nonblocking: int
 
 .. _`v4l2_event_queue`:
 
@@ -173,11 +176,13 @@ v4l2_event_queue
 
     Queue events to video device.
 
-    :param struct video_device \*vdev:
+    :param vdev:
         pointer to \ :c:type:`struct video_device <video_device>`\ 
+    :type vdev: struct video_device \*
 
-    :param const struct v4l2_event \*ev:
+    :param ev:
         pointer to \ :c:type:`struct v4l2_event <v4l2_event>`\ 
+    :type ev: const struct v4l2_event \*
 
 .. _`v4l2_event_queue.description`:
 
@@ -199,11 +204,13 @@ v4l2_event_queue_fh
 
     Queue events to video device.
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
-    :param const struct v4l2_event \*ev:
+    :param ev:
         pointer to \ :c:type:`struct v4l2_event <v4l2_event>`\ 
+    :type ev: const struct v4l2_event \*
 
 .. _`v4l2_event_queue_fh.description`:
 
@@ -226,8 +233,9 @@ v4l2_event_pending
 
     Check if an event is available
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
 .. _`v4l2_event_pending.description`:
 
@@ -245,17 +253,21 @@ v4l2_event_subscribe
 
     Subscribes to an event
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
-    :param const struct v4l2_event_subscription \*sub:
+    :param sub:
         pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+    :type sub: const struct v4l2_event_subscription \*
 
-    :param unsigned int elems:
+    :param elems:
         size of the events queue
+    :type elems: unsigned int
 
-    :param const struct v4l2_subscribed_event_ops \*ops:
+    :param ops:
         pointer to \ :c:type:`struct v4l2_subscribed_event_ops <v4l2_subscribed_event_ops>`\ 
+    :type ops: const struct v4l2_subscribed_event_ops \*
 
 .. _`v4l2_event_subscribe.description`:
 
@@ -276,11 +288,13 @@ v4l2_event_unsubscribe
 
     Unsubscribes to an event
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
-    :param const struct v4l2_event_subscription \*sub:
+    :param sub:
         pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+    :type sub: const struct v4l2_event_subscription \*
 
 .. _`v4l2_event_unsubscribe_all`:
 
@@ -291,8 +305,9 @@ v4l2_event_unsubscribe_all
 
     Unsubscribes to all events
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
 .. _`v4l2_event_subdev_unsubscribe`:
 
@@ -303,14 +318,17 @@ v4l2_event_subdev_unsubscribe
 
     Subdev variant of \ :c:func:`v4l2_event_unsubscribe`\ 
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
-    :param struct v4l2_event_subscription \*sub:
+    :param sub:
         pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+    :type sub: struct v4l2_event_subscription \*
 
 .. _`v4l2_event_subdev_unsubscribe.description`:
 
@@ -331,11 +349,13 @@ v4l2_src_change_event_subscribe
 
     helper function that calls \ :c:func:`v4l2_event_subscribe`\  if the event is \ ``V4L2_EVENT_SOURCE_CHANGE``\ .
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to struct v4l2_fh
+    :type fh: struct v4l2_fh \*
 
-    :param const struct v4l2_event_subscription \*sub:
+    :param sub:
         pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+    :type sub: const struct v4l2_event_subscription \*
 
 .. _`v4l2_src_change_event_subdev_subscribe`:
 
@@ -346,14 +366,17 @@ v4l2_src_change_event_subdev_subscribe
 
     Variant of \ :c:func:`v4l2_event_subscribe`\ , meant to subscribe only events of the type \ ``V4L2_EVENT_SOURCE_CHANGE``\ .
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_fh \*fh:
+    :param fh:
         pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+    :type fh: struct v4l2_fh \*
 
-    :param struct v4l2_event_subscription \*sub:
+    :param sub:
         pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+    :type sub: struct v4l2_event_subscription \*
 
 .. This file was automatic generated / don't edit.
 

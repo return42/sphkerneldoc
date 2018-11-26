@@ -10,8 +10,9 @@ nfs4_slot_tbl_drain_complete
 
     wake waiters when drain is complete \ ``tbl``\  - controlling slot table
 
-    :param struct nfs4_slot_table \*tbl:
+    :param tbl:
         *undescribed*
+    :type tbl: struct nfs4_slot_table \*
 
 .. _`nfs4_shutdown_slot_table`:
 
@@ -22,8 +23,9 @@ nfs4_shutdown_slot_table
 
     release resources attached to a slot table
 
-    :param struct nfs4_slot_table \*tbl:
+    :param tbl:
         slot table to shut down
+    :type tbl: struct nfs4_slot_table \*
 
 .. _`nfs4_setup_slot_table`:
 
@@ -34,14 +36,17 @@ nfs4_setup_slot_table
 
     prepare a stand-alone slot table for use
 
-    :param struct nfs4_slot_table \*tbl:
+    :param tbl:
         slot table to set up
+    :type tbl: struct nfs4_slot_table \*
 
-    :param unsigned int max_reqs:
+    :param max_reqs:
         maximum number of requests allowed
+    :type max_reqs: unsigned int
 
-    :param const char \*queue:
+    :param queue:
         name to give RPC wait queue
+    :type queue: const char \*
 
 .. _`nfs4_setup_slot_table.description`:
 

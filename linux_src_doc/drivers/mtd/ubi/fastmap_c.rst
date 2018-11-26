@@ -10,8 +10,9 @@ init_seen
 
     allocate memory for used for debugging.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`free_seen`:
 
@@ -22,8 +23,9 @@ free_seen
 
     free the seen logic integer array.
 
-    :param unsigned long \*seen:
-        integer array of \ ``ubi``\ ->peb_count size
+    :param seen:
+        integer array of \ ``ubi->peb_count``\  size
+    :type seen: unsigned long \*
 
 .. _`set_seen`:
 
@@ -34,14 +36,17 @@ set_seen
 
     mark a PEB as seen.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         The PEB to be makred as seen
+    :type pnum: int
 
-    :param unsigned long \*seen:
-        integer array of \ ``ubi``\ ->peb_count size
+    :param seen:
+        integer array of \ ``ubi->peb_count``\  size
+    :type seen: unsigned long \*
 
 .. _`self_check_seen`:
 
@@ -52,11 +57,13 @@ self_check_seen
 
     check whether all PEB have been seen by fastmap.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param unsigned long \*seen:
-        integer array of \ ``ubi``\ ->peb_count size
+    :param seen:
+        integer array of \ ``ubi->peb_count``\  size
+    :type seen: unsigned long \*
 
 .. _`ubi_calc_fm_size`:
 
@@ -67,8 +74,9 @@ ubi_calc_fm_size
 
     calculates the fastmap size in bytes for an UBI device.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`new_fm_vbuf`:
 
@@ -79,11 +87,13 @@ new_fm_vbuf
 
     allocate a new volume header for fastmap usage.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         the VID of the new header
+    :type vol_id: int
 
 .. _`new_fm_vbuf.description`:
 
@@ -102,20 +112,25 @@ add_aeb
 
     create and add a attach erase block to a given list.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         UBI attach info object
+    :type ai: struct ubi_attach_info \*
 
-    :param struct list_head \*list:
+    :param list:
         the target list
+    :type list: struct list_head \*
 
-    :param int pnum:
+    :param pnum:
         PEB number of the new attach erase block
+    :type pnum: int
 
-    :param int ec:
+    :param ec:
         erease counter of the new LEB
+    :type ec: int
 
-    :param int scrub:
+    :param scrub:
         scrub this PEB after attaching
+    :type scrub: int
 
 .. _`add_aeb.description`:
 
@@ -133,23 +148,29 @@ add_vol
 
     create and add a new volume to ubi_attach_info.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         ubi_attach_info object
+    :type ai: struct ubi_attach_info \*
 
-    :param int vol_id:
+    :param vol_id:
         VID of the new volume
+    :type vol_id: int
 
-    :param int used_ebs:
+    :param used_ebs:
         number of used EBS
+    :type used_ebs: int
 
-    :param int data_pad:
+    :param data_pad:
         data padding value of the new volume
+    :type data_pad: int
 
-    :param u8 vol_type:
+    :param vol_type:
         volume type
+    :type vol_type: u8
 
-    :param int last_eb_bytes:
+    :param last_eb_bytes:
         number of bytes in the last LEB
+    :type last_eb_bytes: int
 
 .. _`add_vol.description`:
 
@@ -168,14 +189,17 @@ assign_aeb_to_av
 
     assigns a SEB to a given ainf_volume and removes it from it's original list.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         ubi_attach_info object
+    :type ai: struct ubi_attach_info \*
 
-    :param struct ubi_ainf_peb \*aeb:
+    :param aeb:
         the to be assigned SEB
+    :type aeb: struct ubi_ainf_peb \*
 
-    :param struct ubi_ainf_volume \*av:
+    :param av:
         target scan volume
+    :type av: struct ubi_ainf_volume \*
 
 .. _`update_vol`:
 
@@ -186,20 +210,25 @@ update_vol
 
     inserts or updates a LEB which was found a pool.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         the UBI device object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attach info object
+    :type ai: struct ubi_attach_info \*
 
-    :param struct ubi_ainf_volume \*av:
+    :param av:
         the volume this LEB belongs to
+    :type av: struct ubi_ainf_volume \*
 
-    :param struct ubi_vid_hdr \*new_vh:
+    :param new_vh:
         the volume header derived from new_aeb
+    :type new_vh: struct ubi_vid_hdr \*
 
-    :param struct ubi_ainf_peb \*new_aeb:
+    :param new_aeb:
         the AEB to be examined
+    :type new_aeb: struct ubi_ainf_peb \*
 
 .. _`update_vol.description`:
 
@@ -217,17 +246,21 @@ process_pool_aeb
 
     we found a non-empty PEB in a pool.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attach info object
+    :type ai: struct ubi_attach_info \*
 
-    :param struct ubi_vid_hdr \*new_vh:
+    :param new_vh:
         the volume header derived from new_aeb
+    :type new_vh: struct ubi_vid_hdr \*
 
-    :param struct ubi_ainf_peb \*new_aeb:
+    :param new_aeb:
         the AEB to be examined
+    :type new_aeb: struct ubi_ainf_peb \*
 
 .. _`process_pool_aeb.description`:
 
@@ -245,11 +278,13 @@ unmap_peb
 
     unmap a PEB. If fastmap detects a free PEB in the pool it has to check whether this PEB has been unmapped after writing the fastmap.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         UBI attach info object
+    :type ai: struct ubi_attach_info \*
 
-    :param int pnum:
+    :param pnum:
         The PEB to be unmapped
+    :type pnum: int
 
 .. _`scan_pool`:
 
@@ -260,23 +295,29 @@ scan_pool
 
     scans a pool for changed (no longer empty PEBs).
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         attach info object
+    :type ai: struct ubi_attach_info \*
 
-    :param __be32 \*pebs:
+    :param pebs:
         an array of all PEB numbers in the to be scanned pool
+    :type pebs: __be32 \*
 
-    :param int pool_size:
+    :param pool_size:
         size of the pool (number of entries in \ ``pebs``\ )
+    :type pool_size: int
 
-    :param unsigned long long \*max_sqnum:
+    :param max_sqnum:
         pointer to the maximal sequence number
+    :type max_sqnum: unsigned long long \*
 
-    :param struct list_head \*free:
-        list of PEBs which are most likely free (and go into \ ``ai``\ ->free)
+    :param free:
+        list of PEBs which are most likely free (and go into \ ``ai->free``\ )
+    :type free: struct list_head \*
 
 .. _`scan_pool.description`:
 
@@ -295,8 +336,9 @@ count_fastmap_pebs
 
     Counts the PEBs found by fastmap.
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         The UBI attach info object
+    :type ai: struct ubi_attach_info \*
 
 .. _`ubi_attach_fastmap`:
 
@@ -307,14 +349,17 @@ ubi_attach_fastmap
 
     creates ubi_attach_info from a fastmap.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         UBI attach info object
+    :type ai: struct ubi_attach_info \*
 
-    :param struct ubi_fastmap_layout \*fm:
+    :param fm:
         the fastmap to be attached
+    :type fm: struct ubi_fastmap_layout \*
 
 .. _`ubi_attach_fastmap.description`:
 
@@ -333,8 +378,9 @@ find_fm_anchor
 
     find the most recent Fastmap superblock (anchor)
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         UBI attach info to be filled
+    :type ai: struct ubi_attach_info \*
 
 .. _`ubi_scan_fastmap`:
 
@@ -345,15 +391,18 @@ ubi_scan_fastmap
 
     scan the fastmap.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_attach_info \*ai:
+    :param ai:
         UBI attach info to be filled
+    :type ai: struct ubi_attach_info \*
 
-    :param struct ubi_attach_info \*scan_ai:
+    :param scan_ai:
         UBI attach info from the first 64 PEBs,
         used to find the most recent Fastmap data structure
+    :type scan_ai: struct ubi_attach_info \*
 
 .. _`ubi_scan_fastmap.description`:
 
@@ -373,11 +422,13 @@ ubi_write_fastmap
 
     writes a fastmap.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_fastmap_layout \*new_fm:
+    :param new_fm:
         the to be written fastmap
+    :type new_fm: struct ubi_fastmap_layout \*
 
 .. _`ubi_write_fastmap.description`:
 
@@ -395,11 +446,13 @@ erase_block
 
     Manually erase a PEB.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device object
+    :type ubi: struct ubi_device \*
 
-    :param int pnum:
+    :param pnum:
         PEB to be erased
+    :type pnum: int
 
 .. _`erase_block.description`:
 
@@ -417,8 +470,9 @@ invalidate_fastmap
 
     destroys a fastmap.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device object
+    :type ubi: struct ubi_device \*
 
 .. _`invalidate_fastmap.description`:
 
@@ -442,11 +496,13 @@ return_fm_pebs
 
     returns all PEBs used by a fastmap back to the WL sub-system.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_fastmap_layout \*fm:
+    :param fm:
         fastmap layout object
+    :type fm: struct ubi_fastmap_layout \*
 
 .. _`ubi_update_fastmap`:
 
@@ -457,8 +513,9 @@ ubi_update_fastmap
 
     will be called by UBI if a volume changes or a fastmap pool becomes full.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device object
+    :type ubi: struct ubi_device \*
 
 .. _`ubi_update_fastmap.description`:
 

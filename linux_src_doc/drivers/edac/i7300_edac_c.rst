@@ -10,14 +10,17 @@ get_err_from_table
 
     Gets the error message from a table
 
-    :param const char  \*table:
+    :param table:
         table name (array of char \*)
+    :type table: const char  \*
 
-    :param int size:
+    :param size:
         number of elements at the table
+    :type size: int
 
-    :param int pos:
+    :param pos:
         position of the element to be returned
+    :type pos: int
 
 .. _`get_err_from_table.description`:
 
@@ -39,8 +42,9 @@ i7300_process_error_global
 
     Retrieve the hardware error information from the hardware global error registers and sends it to dmesg
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
 .. _`i7300_process_fbd_error`:
 
@@ -51,8 +55,9 @@ i7300_process_fbd_error
 
     Retrieve the hardware error information from the FBD error registers and sends it via EDAC error API calls
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
 .. _`i7300_check_error`:
 
@@ -63,8 +68,9 @@ i7300_check_error
 
     Calls the error checking subroutines
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
 .. _`i7300_clear_error`:
 
@@ -75,8 +81,9 @@ i7300_clear_error
 
     Clears the error registers
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
 .. _`i7300_enable_error_reporting`:
 
@@ -87,8 +94,9 @@ i7300_enable_error_reporting
 
     Enable the memory reporting logic at the hardware
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
 .. _`decode_mtr`:
 
@@ -99,23 +107,29 @@ decode_mtr
 
     Decodes the MTR descriptor, filling the edac structs
 
-    :param struct i7300_pvt \*pvt:
+    :param pvt:
         pointer to the private data struct used by i7300 driver
+    :type pvt: struct i7300_pvt \*
 
-    :param int slot:
+    :param slot:
         DIMM slot (0 to 7)
+    :type slot: int
 
-    :param int ch:
+    :param ch:
         Channel number within the branch (0 or 1)
+    :type ch: int
 
-    :param int branch:
+    :param branch:
         Branch number (0 or 1)
+    :type branch: int
 
-    :param struct i7300_dimm_info \*dinfo:
+    :param dinfo:
         Pointer to DIMM info where dimm size is stored
+    :type dinfo: struct i7300_dimm_info \*
 
-    :param struct dimm_info \*dimm:
+    :param dimm:
         *undescribed*
+    :type dimm: struct dimm_info \*
 
 .. _`print_dimm_size`:
 
@@ -126,8 +140,9 @@ print_dimm_size
 
     Prints dump of the memory organization
 
-    :param struct i7300_pvt \*pvt:
+    :param pvt:
         pointer to the private data struct used by i7300 driver
+    :type pvt: struct i7300_pvt \*
 
 .. _`print_dimm_size.description`:
 
@@ -145,8 +160,9 @@ i7300_init_csrows
 
     Initialize the 'csrows' table within the mci control structure with the addressing of memory.
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
 .. _`decode_mir`:
 
@@ -157,11 +173,13 @@ decode_mir
 
     Decodes Memory Interleave Register (MIR) info
 
-    :param int mir_no:
+    :param mir_no:
         *undescribed*
+    :type mir_no: int
 
-    :param u16 mir:
+    :param mir:
         array with the MIR data cached on the driver
+    :type mir: u16
 
 .. _`i7300_get_mc_regs`:
 
@@ -172,8 +190,9 @@ i7300_get_mc_regs
 
     Get the contents of the MC enumeration registers
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
 .. _`i7300_get_mc_regs.description`:
 
@@ -191,8 +210,9 @@ i7300_put_devices
 
     Release the PCI devices
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
 .. _`i7300_get_devices`:
 
@@ -203,8 +223,9 @@ i7300_get_devices
 
     Find and perform 'get' operation on the MCH's device/functions we want to reference for this driver
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
 .. _`i7300_get_devices.i7300-devices-used-by-this-driver`:
 
@@ -236,11 +257,13 @@ i7300_init_one
 
     Probe for one instance of the device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         struct pci_dev pointer
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         struct pci_device_id pointer - currently unused
+    :type id: const struct pci_device_id \*
 
 .. _`i7300_remove_one`:
 
@@ -251,8 +274,9 @@ i7300_remove_one
 
     Remove the driver
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         struct pci_dev pointer
+    :type pdev: struct pci_dev \*
 
 .. _`i7300_init`:
 
@@ -263,8 +287,9 @@ i7300_init
 
     Registers the driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i7300_exit`:
 
@@ -275,8 +300,9 @@ i7300_exit
 
     Unregisters the driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

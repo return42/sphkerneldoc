@@ -311,8 +311,9 @@ iwlagn_rate_control_register
 
     Register the rate control algorithm callbacks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iwlagn_rate_control_register.description`:
 
@@ -334,8 +335,9 @@ iwlagn_rate_control_unregister
 
     Unregister the rate control callbacks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iwlagn_rate_control_unregister.description`:
 

@@ -10,8 +10,9 @@ kernfs_root
 
     find out the kernfs_root a kernfs_node belongs to
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         kernfs_node of interest
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_root.description`:
 

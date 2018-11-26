@@ -10,17 +10,21 @@ ev_int_set_config
 
     configure the specified interrupt
 
-    :param unsigned int interrupt:
+    :param interrupt:
         the interrupt number
+    :type interrupt: unsigned int
 
-    :param uint32_t config:
+    :param config:
         configuration for this interrupt
+    :type config: uint32_t
 
-    :param unsigned int priority:
+    :param priority:
         interrupt priority
+    :type priority: unsigned int
 
-    :param uint32_t destination:
+    :param destination:
         destination CPU number
+    :type destination: uint32_t
 
 .. _`ev_int_set_config.description`:
 
@@ -38,17 +42,21 @@ ev_int_get_config
 
     return the config of the specified interrupt
 
-    :param unsigned int interrupt:
+    :param interrupt:
         the interrupt number
+    :type interrupt: unsigned int
 
-    :param uint32_t \*config:
+    :param config:
         returned configuration for this interrupt
+    :type config: uint32_t \*
 
-    :param unsigned int \*priority:
+    :param priority:
         returned interrupt priority
+    :type priority: unsigned int \*
 
-    :param uint32_t \*destination:
+    :param destination:
         returned destination CPU number
+    :type destination: uint32_t \*
 
 .. _`ev_int_get_config.description`:
 
@@ -66,11 +74,13 @@ ev_int_set_mask
 
     sets the mask for the specified interrupt source
 
-    :param unsigned int interrupt:
+    :param interrupt:
         the interrupt number
+    :type interrupt: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         0=enable interrupts, 1=disable interrupts
+    :type mask: unsigned int
 
 .. _`ev_int_set_mask.description`:
 
@@ -88,11 +98,13 @@ ev_int_get_mask
 
     returns the mask for the specified interrupt source
 
-    :param unsigned int interrupt:
+    :param interrupt:
         the interrupt number
+    :type interrupt: unsigned int
 
-    :param unsigned int \*mask:
+    :param mask:
         returned mask for this interrupt (0=enabled, 1=disabled)
+    :type mask: unsigned int \*
 
 .. _`ev_int_get_mask.description`:
 
@@ -110,8 +122,9 @@ ev_int_eoi
 
     signal the end of interrupt processing
 
-    :param unsigned int interrupt:
+    :param interrupt:
         the interrupt number
+    :type interrupt: unsigned int
 
 .. _`ev_int_eoi.description`:
 
@@ -133,14 +146,17 @@ ev_byte_channel_send
 
     send characters to a byte stream
 
-    :param unsigned int handle:
+    :param handle:
         byte stream handle
+    :type handle: unsigned int
 
-    :param unsigned int \*count:
+    :param count:
         (input) num of chars to send, (output) num chars sent
+    :type count: unsigned int \*
 
-    :param const char buffer:
+    :param buffer:
         pointer to a 16-byte buffer
+    :type buffer: const char
 
 .. _`ev_byte_channel_send.description`:
 
@@ -161,14 +177,17 @@ ev_byte_channel_receive
 
     fetch characters from a byte channel
 
-    :param unsigned int handle:
+    :param handle:
         byte channel handle
+    :type handle: unsigned int
 
-    :param unsigned int \*count:
+    :param count:
         (input) max num of chars to receive, (output) num chars received
+    :type count: unsigned int \*
 
-    :param char buffer:
+    :param buffer:
         pointer to a 16-byte buffer
+    :type buffer: char
 
 .. _`ev_byte_channel_receive.description`:
 
@@ -190,14 +209,17 @@ ev_byte_channel_poll
 
     returns the status of the byte channel buffers
 
-    :param unsigned int handle:
+    :param handle:
         byte channel handle
+    :type handle: unsigned int
 
-    :param unsigned int \*rx_count:
+    :param rx_count:
         returned count of bytes in receive queue
+    :type rx_count: unsigned int \*
 
-    :param unsigned int \*tx_count:
+    :param tx_count:
         returned count of free space in transmit queue
+    :type tx_count: unsigned int \*
 
 .. _`ev_byte_channel_poll.description`:
 
@@ -219,11 +241,13 @@ ev_int_iack
 
     acknowledge an interrupt
 
-    :param unsigned int handle:
+    :param handle:
         handle to the target interrupt controller
+    :type handle: unsigned int
 
-    :param unsigned int \*vector:
+    :param vector:
         returned interrupt vector
+    :type vector: unsigned int \*
 
 .. _`ev_int_iack.description`:
 
@@ -246,8 +270,9 @@ ev_doorbell_send
 
     send a doorbell to another partition
 
-    :param unsigned int handle:
+    :param handle:
         doorbell send handle
+    :type handle: unsigned int
 
 .. _`ev_doorbell_send.description`:
 
@@ -265,8 +290,9 @@ ev_idle
 
     - wait for next interrupt on this core
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ev_idle.description`:
 

@@ -21,6 +21,7 @@ Definition
         struct device *dev;
         struct gpio_chip gc;
         void __iomem *base;
+        struct clk *clk;
     }
 
 .. _`ftgpio_gpio.members`:
@@ -35,7 +36,10 @@ gc
     gpiochip for this instance
 
 base
-    *undescribed*
+    remapped I/O-memory base
+
+clk
+    silicon clock
 
 .. This file was automatic generated / don't edit.
 

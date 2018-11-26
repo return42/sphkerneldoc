@@ -10,11 +10,13 @@ ip_mc_check_igmp
 
     checks whether this is a sane IGMP packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb to validate
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff \*\*skb_trimmed:
+    :param skb_trimmed:
         to store an skb pointer trimmed to IPv4 packet tail (optional)
+    :type skb_trimmed: struct sk_buff \*\*
 
 .. _`ip_mc_check_igmp.description`:
 

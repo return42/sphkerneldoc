@@ -10,8 +10,9 @@ driver_deferred_probe_trigger
 
     Kick off re-probing deferred devices
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`driver_deferred_probe_trigger.description`:
 
@@ -42,8 +43,9 @@ device_block_probing
 
     Block/defere device's probes
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`device_block_probing.description`:
 
@@ -61,8 +63,9 @@ device_unblock_probing
 
     Unblock/enable device's probes
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`device_unblock_probing.description`:
 
@@ -71,6 +74,31 @@ Description
 
      It will restore normal behavior and trigger re-probing of deferred
 devices.
+
+.. _`driver_deferred_probe_check_state`:
+
+driver_deferred_probe_check_state
+=================================
+
+.. c:function:: int driver_deferred_probe_check_state(struct device *dev)
+
+    Check deferred probe state
+
+    :param dev:
+        device to check
+    :type dev: struct device \*
+
+.. _`driver_deferred_probe_check_state.description`:
+
+Description
+-----------
+
+Returns -ENODEV if init is done and all built-in drivers have had a chance
+to probe (i.e. initcalls are done), -ETIMEDOUT if deferred probe debug
+timeout has expired, or -EPROBE_DEFER if none of those conditions are met.
+
+Drivers or subsystems can opt-in to calling this function instead of directly
+returning -EPROBE_DEFER.
 
 .. _`deferred_probe_initcall`:
 
@@ -81,8 +109,9 @@ deferred_probe_initcall
 
     Enable probing of deferred devices
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`deferred_probe_initcall.description`:
 
@@ -102,8 +131,9 @@ device_is_bound
 
     Check if device is bound to a driver
 
-    :param struct device \*dev:
+    :param dev:
         device to check
+    :type dev: struct device \*
 
 .. _`device_is_bound.description`:
 
@@ -124,8 +154,9 @@ device_bind_driver
 
     bind a driver to one device.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
 .. _`device_bind_driver.description`:
 
@@ -133,7 +164,7 @@ Description
 -----------
 
 Allow manual attachment of a driver to a device.
-Caller must have already set \ ``dev``\ ->driver.
+Caller must have already set \ ``dev->driver``\ .
 
 Note that this does not modify the bus reference count
 nor take the bus's rwsem. Please verify those are accounted
@@ -151,8 +182,9 @@ driver_probe_done
 
     Determine if the probe sequence is finished or not.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`driver_probe_done.description`:
 
@@ -170,8 +202,9 @@ wait_for_device_probe
 
     Wait for device probing to be completed.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`driver_probe_device`:
 
@@ -182,11 +215,13 @@ driver_probe_device
 
     attempt to bind device & driver together
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver to bind a device to
+    :type drv: struct device_driver \*
 
-    :param struct device \*dev:
+    :param dev:
         device to try to bind to the driver
+    :type dev: struct device \*
 
 .. _`driver_probe_device.description`:
 
@@ -197,7 +232,7 @@ This function returns -ENODEV if the device is not registered,
 1 if the device is bound successfully and 0 otherwise.
 
 This function must be called with \ ``dev``\  lock held.  When called for a
-USB interface, \ ``dev``\ ->parent lock must be held as well.
+USB interface, \ ``dev->parent``\  lock must be held as well.
 
 If the device has a parent, runtime-resume the parent before driver probing.
 
@@ -210,8 +245,9 @@ device_attach
 
     try to attach device to a driver.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
 .. _`device_attach.description`:
 
@@ -226,7 +262,7 @@ Returns 1 if the device was bound to a driver;
 0 if no matching driver was found;
 -ENODEV if the device is not registered.
 
-When called for a USB interface, \ ``dev``\ ->parent lock must be held.
+When called for a USB interface, \ ``dev->parent``\  lock must be held.
 
 .. _`driver_attach`:
 
@@ -237,8 +273,9 @@ driver_attach
 
     try to bind driver to devices.
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver.
+    :type drv: struct device_driver \*
 
 .. _`driver_attach.description`:
 
@@ -247,7 +284,7 @@ Description
 
 Walk the list of devices that the bus has on it and try to
 match the driver with each one.  If \ :c:func:`driver_probe_device`\ 
-returns 0 and the \ ``dev``\ ->driver is set, we've found a
+returns 0 and the \ ``dev->driver``\  is set, we've found a
 compatible pair.
 
 .. _`device_release_driver`:
@@ -259,8 +296,9 @@ device_release_driver
 
     manually detach device from driver.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
 .. _`device_release_driver.description`:
 
@@ -268,11 +306,11 @@ Description
 -----------
 
 Manually detach device from driver.
-When called for a USB interface, \ ``dev``\ ->parent lock must be held.
+When called for a USB interface, \ ``dev->parent``\  lock must be held.
 
-If this function is to be called with \ ``dev``\ ->parent lock held, ensure that
+If this function is to be called with \ ``dev->parent``\  lock held, ensure that
 the device's consumers are unbound in advance or that their locks can be
-acquired under the \ ``dev``\ ->parent lock.
+acquired under the \ ``dev->parent``\  lock.
 
 .. _`driver_detach`:
 
@@ -283,8 +321,9 @@ driver_detach
 
     detach driver from all devices it controls.
 
-    :param struct device_driver \*drv:
+    :param drv:
         driver.
+    :type drv: struct device_driver \*
 
 .. This file was automatic generated / don't edit.
 

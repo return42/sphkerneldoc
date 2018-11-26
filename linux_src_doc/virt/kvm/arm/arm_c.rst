@@ -10,8 +10,9 @@ kvm_arm_get_running_vcpu
 
     get the vcpu running on the current CPU. Must be called from non-preemptible context
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kvm_get_running_vcpus`:
 
@@ -22,8 +23,9 @@ kvm_get_running_vcpus
 
     get the per-CPU array of currently running vcpus.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kvm_arch_init_vm`:
 
@@ -34,11 +36,13 @@ kvm_arch_init_vm
 
     initializes a VM data structure
 
-    :param struct kvm \*kvm:
+    :param kvm:
         pointer to the KVM struct
+    :type kvm: struct kvm \*
 
-    :param unsigned long type:
+    :param type:
         *undescribed*
+    :type type: unsigned long
 
 .. _`kvm_arch_destroy_vm`:
 
@@ -49,8 +53,9 @@ kvm_arch_destroy_vm
 
     destroy the VM data structure
 
-    :param struct kvm \*kvm:
+    :param kvm:
         pointer to the KVM struct
+    :type kvm: struct kvm \*
 
 .. _`kvm_arch_vcpu_runnable`:
 
@@ -61,8 +66,9 @@ kvm_arch_vcpu_runnable
 
     determine if the vcpu can be scheduled
 
-    :param struct kvm_vcpu \*v:
+    :param v:
         The VCPU pointer
+    :type v: struct kvm_vcpu \*
 
 .. _`kvm_arch_vcpu_runnable.description`:
 
@@ -81,8 +87,9 @@ need_new_vmid_gen
 
     check that the VMID is still valid
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The VM's VMID to check
+    :type kvm: struct kvm \*
 
 .. _`need_new_vmid_gen.description`:
 
@@ -106,8 +113,9 @@ update_vttbr
 
     Update the VTTBR with a valid VMID before the guest runs \ ``kvm``\  The guest that we are about to run
 
-    :param struct kvm \*kvm:
+    :param kvm:
         *undescribed*
+    :type kvm: struct kvm \*
 
 .. _`update_vttbr.description`:
 
@@ -127,11 +135,13 @@ kvm_arch_vcpu_ioctl_run
 
     the main VCPU run function to execute guest code
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param struct kvm_run \*run:
+    :param run:
         The kvm_run structure pointer used for userspace state exchange
+    :type run: struct kvm_run \*
 
 .. _`kvm_arch_vcpu_ioctl_run.description`:
 
@@ -153,11 +163,13 @@ kvm_vm_ioctl_get_dirty_log
 
     get and clear the log of dirty pages in a slot
 
-    :param struct kvm \*kvm:
+    :param kvm:
         kvm instance
+    :type kvm: struct kvm \*
 
-    :param struct kvm_dirty_log \*log:
+    :param log:
         slot id and address to which we copy the log
+    :type log: struct kvm_dirty_log \*
 
 .. _`kvm_vm_ioctl_get_dirty_log.description`:
 
@@ -187,8 +199,9 @@ init_hyp_mode
 
     mode on all online CPUs
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kvm_arch_init`:
 
@@ -199,8 +212,9 @@ kvm_arch_init
 
     mode and memory mappings on all CPUs.
 
-    :param void \*opaque:
+    :param opaque:
         *undescribed*
+    :type opaque: void \*
 
 .. This file was automatic generated / don't edit.
 

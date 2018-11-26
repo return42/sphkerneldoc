@@ -10,11 +10,13 @@ hidinput_calc_abs_res
 
     calculate an absolute axis resolution
 
-    :param const struct hid_field \*field:
+    :param field:
         the HID report field to calculate resolution for
+    :type field: const struct hid_field \*
 
-    :param __u16 code:
+    :param code:
         axis code
+    :type code: __u16
 
 .. _`hidinput_calc_abs_res.the-formula-is`:
 

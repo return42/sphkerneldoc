@@ -10,20 +10,25 @@ svc_register
 
     register an RPC service with the local portmapper
 
-    :param const struct svc_serv \*serv:
+    :param serv:
         svc_serv struct for the service to register
+    :type serv: const struct svc_serv \*
 
-    :param struct net \*net:
+    :param net:
         net namespace for the service to register
+    :type net: struct net \*
 
-    :param const int family:
+    :param family:
         protocol family of service's listener socket
+    :type family: const int
 
-    :param const unsigned short proto:
+    :param proto:
         transport protocol number to advertise
+    :type proto: const unsigned short
 
-    :param const unsigned short port:
+    :param port:
         port to advertise
+    :type port: const unsigned short
 
 .. _`svc_register.description`:
 
@@ -37,51 +42,66 @@ Service is registered for any address in the passed-in protocol family
 svc_fill_write_vector
 =====================
 
-.. c:function:: unsigned int svc_fill_write_vector(struct svc_rqst *rqstp, struct kvec *first, size_t total)
+.. c:function:: unsigned int svc_fill_write_vector(struct svc_rqst *rqstp, struct page **pages, struct kvec *first, size_t total)
 
     Construct data argument for VFS write call
 
-    :param struct svc_rqst \*rqstp:
+    :param rqstp:
         svc_rqst to operate on
+    :type rqstp: struct svc_rqst \*
 
-    :param struct kvec \*first:
+    :param pages:
+        list of pages containing data payload
+    :type pages: struct page \*\*
+
+    :param first:
         buffer containing first section of write payload
+    :type first: struct kvec \*
 
-    :param size_t total:
+    :param total:
         total number of bytes of write payload
+    :type total: size_t
 
 .. _`svc_fill_write_vector.description`:
 
 Description
 -----------
 
-Returns the number of elements populated in the data argument array.
+Fills in rqstp::rq_vec, and returns the number of elements.
 
 .. _`svc_fill_symlink_pathname`:
 
 svc_fill_symlink_pathname
 =========================
 
-.. c:function:: char *svc_fill_symlink_pathname(struct svc_rqst *rqstp, struct kvec *first, size_t total)
+.. c:function:: char *svc_fill_symlink_pathname(struct svc_rqst *rqstp, struct kvec *first, void *p, size_t total)
 
     Construct pathname argument for VFS symlink call
 
-    :param struct svc_rqst \*rqstp:
+    :param rqstp:
         svc_rqst to operate on
+    :type rqstp: struct svc_rqst \*
 
-    :param struct kvec \*first:
+    :param first:
         buffer containing first section of pathname
+    :type first: struct kvec \*
 
-    :param size_t total:
+    :param p:
+        buffer containing remaining section of pathname
+    :type p: void \*
+
+    :param total:
         total length of the pathname argument
+    :type total: size_t
 
 .. _`svc_fill_symlink_pathname.description`:
 
 Description
 -----------
 
-Returns pointer to a NUL-terminated string, or an ERR_PTR. The buffer is
-released automatically when \ ``rqstp``\  is recycled.
+The VFS symlink API demands a NUL-terminated pathname in mapped memory.
+Returns pointer to a NUL-terminated string, or an ERR_PTR. Caller must free
+the returned string.
 
 .. This file was automatic generated / don't edit.
 

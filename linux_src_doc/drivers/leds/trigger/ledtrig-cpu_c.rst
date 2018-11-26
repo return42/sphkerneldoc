@@ -10,8 +10,9 @@ ledtrig_cpu
 
     emit a CPU event as a trigger
 
-    :param enum cpu_led_event ledevt:
+    :param ledevt:
         *undescribed*
+    :type ledevt: enum cpu_led_event
 
 .. _`ledtrig_cpu.description`:
 

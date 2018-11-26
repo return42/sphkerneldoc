@@ -10,8 +10,9 @@ generate_random_uuid
 
     generate a random UUID
 
-    :param unsigned char uuid:
+    :param uuid:
         where to put the generated UUID
+    :type uuid: unsigned char
 
 .. _`generate_random_uuid.description`:
 
@@ -32,8 +33,9 @@ uuid_is_valid
 
     checks if a UUID string is valid
 
-    :param const char \*uuid:
+    :param uuid:
         UUID string to check
+    :type uuid: const char \*
 
 .. _`uuid_is_valid.it-checks-if-the-uuid-string-is-following-the-format`:
 

@@ -10,8 +10,9 @@ icq_to_bic
 
     convert iocontext queue structure to bfq_io_cq.
 
-    :param struct io_cq \*icq:
+    :param icq:
         the iocontext queue.
+    :type icq: struct io_cq \*
 
 .. _`bfq_bic_lookup`:
 
@@ -22,14 +23,17 @@ bfq_bic_lookup
 
     search into \ ``ioc``\  a bic associated to \ ``bfqd``\ .
 
-    :param struct bfq_data \*bfqd:
+    :param bfqd:
         the lookup key.
+    :type bfqd: struct bfq_data \*
 
-    :param struct io_context \*ioc:
+    :param ioc:
         the io_context of the process doing I/O.
+    :type ioc: struct io_context \*
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue.
+    :type q: struct request_queue \*
 
 .. _`bfq_updated_next_req`:
 
@@ -40,11 +44,13 @@ bfq_updated_next_req
 
     update the queue after a new next_rq selection.
 
-    :param struct bfq_data \*bfqd:
+    :param bfqd:
         the device data the queue belongs to.
+    :type bfqd: struct bfq_data \*
 
-    :param struct bfq_queue \*bfqq:
+    :param bfqq:
         the queue to update.
+    :type bfqq: struct bfq_queue \*
 
 .. _`bfq_updated_next_req.description`:
 
@@ -66,14 +72,17 @@ rounds to actually get it dispatched.
 
     try to adapt the budget to the \ ``bfqq``\  behavior.
 
-    :param struct bfq_data \*bfqd:
+    :param bfqd:
         device data.
+    :type bfqd: struct bfq_data \*
 
-    :param struct bfq_queue \*bfqq:
+    :param bfqq:
         queue to update.
+    :type bfqq: struct bfq_queue \*
 
-    :param enum bfqq_expiration reason:
+    :param reason:
         reason for expiration.
+    :type reason: enum bfqq_expiration
 
 .. _`__bfq_bfqq_recalc_budget.description`:
 
@@ -92,17 +101,21 @@ bfq_bfqq_expire
 
     expire a queue.
 
-    :param struct bfq_data \*bfqd:
+    :param bfqd:
         device owning the queue.
+    :type bfqd: struct bfq_data \*
 
-    :param struct bfq_queue \*bfqq:
+    :param bfqq:
         the queue to expire.
+    :type bfqq: struct bfq_queue \*
 
-    :param bool compensate:
+    :param compensate:
         if true, compensate for the time spent idling.
+    :type compensate: bool
 
-    :param enum bfqq_expiration reason:
+    :param reason:
         the reason causing the expiration.
+    :type reason: enum bfqq_expiration
 
 .. _`bfq_bfqq_expire.description`:
 

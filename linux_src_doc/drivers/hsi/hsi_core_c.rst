@@ -10,8 +10,9 @@ hsi_port_unregister_clients
 
     Unregister an HSI port
 
-    :param struct hsi_port \*port:
+    :param port:
         The HSI port to unregister
+    :type port: struct hsi_port \*
 
 .. _`hsi_unregister_controller`:
 
@@ -22,8 +23,9 @@ hsi_unregister_controller
 
     Unregister an HSI controller
 
-    :param struct hsi_controller \*hsi:
+    :param hsi:
         The HSI controller to register
+    :type hsi: struct hsi_controller \*
 
 .. _`hsi_register_controller`:
 
@@ -34,8 +36,9 @@ hsi_register_controller
 
     Register an HSI controller and its ports
 
-    :param struct hsi_controller \*hsi:
+    :param hsi:
         The HSI controller to register
+    :type hsi: struct hsi_controller \*
 
 .. _`hsi_register_controller.description`:
 
@@ -53,8 +56,9 @@ hsi_register_client_driver
 
     Register an HSI client to the HSI bus
 
-    :param struct hsi_client_driver \*drv:
+    :param drv:
         HSI client driver to register
+    :type drv: struct hsi_client_driver \*
 
 .. _`hsi_register_client_driver.description`:
 
@@ -72,8 +76,9 @@ hsi_put_controller
 
     Free an HSI controller
 
-    :param struct hsi_controller \*hsi:
+    :param hsi:
         Pointer to the HSI controller to freed
+    :type hsi: struct hsi_controller \*
 
 .. _`hsi_put_controller.description`:
 
@@ -93,11 +98,13 @@ hsi_alloc_controller
 
     Allocate an HSI controller and its ports
 
-    :param unsigned int n_ports:
+    :param n_ports:
         Number of ports on the HSI controller
+    :type n_ports: unsigned int
 
-    :param gfp_t flags:
+    :param flags:
         Kernel allocation flags
+    :type flags: gfp_t
 
 .. _`hsi_alloc_controller.description`:
 
@@ -115,8 +122,9 @@ hsi_free_msg
 
     Free an HSI message
 
-    :param struct hsi_msg \*msg:
+    :param msg:
         Pointer to the HSI message
+    :type msg: struct hsi_msg \*
 
 .. _`hsi_free_msg.description`:
 
@@ -134,11 +142,13 @@ hsi_alloc_msg
 
     Allocate an HSI message
 
-    :param unsigned int nents:
+    :param nents:
         Number of memory entries
+    :type nents: unsigned int
 
-    :param gfp_t flags:
+    :param flags:
         Kernel allocation flags
+    :type flags: gfp_t
 
 .. _`hsi_alloc_msg.description`:
 
@@ -160,11 +170,13 @@ hsi_async
 
     Submit an HSI transfer to the controller
 
-    :param struct hsi_client \*cl:
+    :param cl:
         HSI client sending the transfer
+    :type cl: struct hsi_client \*
 
-    :param struct hsi_msg \*msg:
+    :param msg:
         The HSI transfer passed to controller
+    :type msg: struct hsi_msg \*
 
 .. _`hsi_async.description`:
 
@@ -194,11 +206,13 @@ hsi_claim_port
 
     Claim the HSI client's port
 
-    :param struct hsi_client \*cl:
+    :param cl:
         HSI client that wants to claim its port
+    :type cl: struct hsi_client \*
 
-    :param unsigned int share:
+    :param share:
         Flag to indicate if the client wants to share the port or not.
+    :type share: unsigned int
 
 .. _`hsi_claim_port.description`:
 
@@ -216,8 +230,9 @@ hsi_release_port
 
     Release the HSI client's port
 
-    :param struct hsi_client \*cl:
+    :param cl:
         HSI client which previously claimed its port
+    :type cl: struct hsi_client \*
 
 .. _`hsi_register_port_event`:
 
@@ -228,8 +243,9 @@ hsi_register_port_event
 
     Register a client to receive port events
 
-    :param struct hsi_client \*cl:
+    :param cl:
         HSI client that wants to receive port events
+    :type cl: struct hsi_client \*
 
     :param void (\*handler)(struct hsi_client \*, unsigned long):
         Event handler callback
@@ -255,8 +271,9 @@ hsi_unregister_port_event
 
     Stop receiving port events for a client
 
-    :param struct hsi_client \*cl:
+    :param cl:
         HSI client that wants to stop receiving port events
+    :type cl: struct hsi_client \*
 
 .. _`hsi_unregister_port_event.description`:
 
@@ -277,11 +294,13 @@ hsi_event
 
     Notifies clients about port events
 
-    :param struct hsi_port \*port:
+    :param port:
         Port where the event occurred
+    :type port: struct hsi_port \*
 
-    :param unsigned long event:
+    :param event:
         The event type
+    :type event: unsigned long
 
 .. _`hsi_event.description`:
 
@@ -311,11 +330,13 @@ hsi_get_channel_id_by_name
 
     acquire channel id by channel name
 
-    :param struct hsi_client \*cl:
+    :param cl:
         HSI client, which uses the channel
+    :type cl: struct hsi_client \*
 
-    :param char \*name:
+    :param name:
         name the channel is known under
+    :type name: char \*
 
 .. _`hsi_get_channel_id_by_name.description`:
 

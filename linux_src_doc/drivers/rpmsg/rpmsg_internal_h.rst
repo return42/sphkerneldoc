@@ -120,8 +120,9 @@ rpmsg_chrdev_register_device
 
     register chrdev device based on rpdev
 
-    :param struct rpmsg_device \*rpdev:
+    :param rpdev:
         prepared rpdev to be used for creating endpoints
+    :type rpdev: struct rpmsg_device \*
 
 .. _`rpmsg_chrdev_register_device.description`:
 

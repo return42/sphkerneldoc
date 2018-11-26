@@ -10,8 +10,9 @@ pr_fmt
 
     Copyright (c) 2003-2004      Joern Engel <joern@wh.fh-wedel.de>
 
-    :param  fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: 
 
 .. _`pr_fmt.usage`:
 

@@ -10,11 +10,13 @@ EEH_POSSIBLE_ERROR
 
     - test for possible MMIO failure.
 
-    :param  val:
+    :param val:
         *undescribed*
+    :type val: 
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
 .. _`eeh_possible_error.description`:
 

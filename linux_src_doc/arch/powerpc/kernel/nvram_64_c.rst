@@ -10,8 +10,9 @@ nvram_pstore_write
 
     pstore write callback for nvram
 
-    :param struct pstore_record \*record:
+    :param record:
         pstore record to write, with \ ``id``\  to be set
+    :type record: struct pstore_record \*
 
 .. _`nvram_pstore_write.description`:
 
@@ -31,16 +32,19 @@ nvram_remove_partition
 
     Remove one or more partitions in nvram
 
-    :param const char \*name:
+    :param name:
         name of the partition to remove, or NULL for a
         signature only match
+    :type name: const char \*
 
-    :param int sig:
+    :param sig:
         signature of the partition(s) to remove
+    :type sig: int
 
-    :param const char  \*exceptions:
+    :param exceptions:
         When removing all partitions with a matching signature,
         leave these alone.
+    :type exceptions: const char  \*
 
 .. _`nvram_create_partition`:
 
@@ -51,17 +55,21 @@ nvram_create_partition
 
     Create a partition in nvram
 
-    :param const char \*name:
+    :param name:
         name of the partition to create
+    :type name: const char \*
 
-    :param int sig:
+    :param sig:
         signature of the partition to create
+    :type sig: int
 
-    :param int req_size:
+    :param req_size:
         size of data to allocate in bytes
+    :type req_size: int
 
-    :param int min_size:
+    :param min_size:
         minimum acceptable size (0 means req_size)
+    :type min_size: int
 
 .. _`nvram_create_partition.description`:
 
@@ -83,10 +91,11 @@ nvram_get_partition_size
 
     Get the data size of an nvram partition
 
-    :param loff_t data_index:
+    :param data_index:
         This is the offset of the start of the data of
         the partition. The same value that is returned by
         \ :c:func:`nvram_create_partition`\ .
+    :type data_index: loff_t
 
 .. _`nvram_find_partition`:
 
@@ -97,14 +106,17 @@ nvram_find_partition
 
     Find an nvram partition by signature and name
 
-    :param const char \*name:
+    :param name:
         Name of the partition or NULL for any name
+    :type name: const char \*
 
-    :param int sig:
+    :param sig:
         Signature to test against
+    :type sig: int
 
-    :param int \*out_size:
+    :param out_size:
         if non-NULL, returns the size of the data part of the partition
+    :type out_size: int \*
 
 .. This file was automatic generated / don't edit.
 

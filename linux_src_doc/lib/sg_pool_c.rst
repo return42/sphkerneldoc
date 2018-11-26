@@ -10,11 +10,13 @@ sg_free_table_chained
 
     Free a previously mapped sg table
 
-    :param struct sg_table \*table:
+    :param table:
         The sg table header to use
+    :type table: struct sg_table \*
 
-    :param bool first_chunk:
+    :param first_chunk:
         was first_chunk not NULL in sg_alloc_table_chained?
+    :type first_chunk: bool
 
 .. _`sg_free_table_chained.description`:
 
@@ -33,14 +35,17 @@ sg_alloc_table_chained
 
     Allocate and chain SGLs in an sg table
 
-    :param struct sg_table \*table:
+    :param table:
         The sg table header to use
+    :type table: struct sg_table \*
 
-    :param int nents:
+    :param nents:
         Number of entries in sg list
+    :type nents: int
 
-    :param struct scatterlist \*first_chunk:
+    :param first_chunk:
         first SGL
+    :type first_chunk: struct scatterlist \*
 
 .. _`sg_alloc_table_chained.description`:
 

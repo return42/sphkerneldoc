@@ -10,8 +10,9 @@ intel_dp_is_edp
 
     is the given port attached to an eDP panel (either CPU or PCH)
 
-    :param struct intel_dp \*intel_dp:
+    :param intel_dp:
         DP struct
+    :type intel_dp: struct intel_dp \*
 
 .. _`intel_dp_is_edp.description`:
 
@@ -30,14 +31,17 @@ intel_dp_set_drrs_state
 
     program registers for RR switch to take effect
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param const struct intel_crtc_state \*crtc_state:
+    :param crtc_state:
         a pointer to the active intel_crtc_state
+    :type crtc_state: const struct intel_crtc_state \*
 
-    :param int refresh_rate:
+    :param refresh_rate:
         RR to be programmed
+    :type refresh_rate: int
 
 .. _`intel_dp_set_drrs_state.description`:
 
@@ -60,11 +64,13 @@ intel_edp_drrs_enable
 
     init drrs struct if supported
 
-    :param struct intel_dp \*intel_dp:
+    :param intel_dp:
         DP struct
+    :type intel_dp: struct intel_dp \*
 
-    :param const struct intel_crtc_state \*crtc_state:
+    :param crtc_state:
         A pointer to the active crtc state.
+    :type crtc_state: const struct intel_crtc_state \*
 
 .. _`intel_edp_drrs_enable.description`:
 
@@ -82,11 +88,13 @@ intel_edp_drrs_disable
 
     Disable DRRS
 
-    :param struct intel_dp \*intel_dp:
+    :param intel_dp:
         DP struct
+    :type intel_dp: struct intel_dp \*
 
-    :param const struct intel_crtc_state \*old_crtc_state:
+    :param old_crtc_state:
         Pointer to old crtc_state.
+    :type old_crtc_state: const struct intel_crtc_state \*
 
 .. _`intel_edp_drrs_invalidate`:
 
@@ -97,11 +105,13 @@ intel_edp_drrs_invalidate
 
     Disable Idleness DRRS
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param unsigned int frontbuffer_bits:
+    :param frontbuffer_bits:
         frontbuffer plane tracking bits
+    :type frontbuffer_bits: unsigned int
 
 .. _`intel_edp_drrs_invalidate.description`:
 
@@ -122,11 +132,13 @@ intel_edp_drrs_flush
 
     Restart Idleness DRRS
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param unsigned int frontbuffer_bits:
+    :param frontbuffer_bits:
         frontbuffer plane tracking bits
+    :type frontbuffer_bits: unsigned int
 
 .. _`intel_edp_drrs_flush.description`:
 
@@ -187,11 +199,13 @@ intel_dp_drrs_init
 
     Init basic DRRS work and mutex.
 
-    :param struct intel_connector \*connector:
+    :param connector:
         eDP connector
+    :type connector: struct intel_connector \*
 
-    :param struct drm_display_mode \*fixed_mode:
+    :param fixed_mode:
         preferred mode of panel
+    :type fixed_mode: struct drm_display_mode \*
 
 .. _`intel_dp_drrs_init.description`:
 

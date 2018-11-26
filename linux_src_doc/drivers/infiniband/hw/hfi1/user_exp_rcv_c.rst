@@ -8,23 +8,29 @@ unpin_rcv_pages
 
 .. c:function:: void unpin_rcv_pages(struct hfi1_filedata *fd, struct tid_user_buf *tidbuf, struct tid_rb_node *node, unsigned int idx, unsigned int npages, bool mapped)
 
-    :param struct hfi1_filedata \*fd:
+    :param fd:
         *undescribed*
+    :type fd: struct hfi1_filedata \*
 
-    :param struct tid_user_buf \*tidbuf:
+    :param tidbuf:
         *undescribed*
+    :type tidbuf: struct tid_user_buf \*
 
-    :param struct tid_rb_node \*node:
+    :param node:
         *undescribed*
+    :type node: struct tid_rb_node \*
 
-    :param unsigned int idx:
+    :param idx:
         *undescribed*
+    :type idx: unsigned int
 
-    :param unsigned int npages:
+    :param npages:
         *undescribed*
+    :type npages: unsigned int
 
-    :param bool mapped:
+    :param mapped:
         *undescribed*
+    :type mapped: bool
 
 .. _`unpin_rcv_pages.description`:
 
@@ -46,11 +52,13 @@ pin_rcv_pages
 
 .. c:function:: int pin_rcv_pages(struct hfi1_filedata *fd, struct tid_user_buf *tidbuf)
 
-    :param struct hfi1_filedata \*fd:
+    :param fd:
         *undescribed*
+    :type fd: struct hfi1_filedata \*
 
-    :param struct tid_user_buf \*tidbuf:
+    :param tidbuf:
         *undescribed*
+    :type tidbuf: struct tid_user_buf \*
 
 .. _`program_rcvarray`:
 
@@ -61,34 +69,42 @@ program_rcvarray
 
     program an RcvArray group with receive buffers
 
-    :param struct hfi1_filedata \*fd:
+    :param fd:
         filedata pointer
+    :type fd: struct hfi1_filedata \*
 
-    :param struct tid_user_buf \*tbuf:
+    :param tbuf:
         pointer to struct tid_user_buf that has the user buffer starting
         virtual address, buffer length, page pointers, pagesets (array of
         struct tid_pageset holding information on physically contiguous
         chunks from the user buffer), and other fields.
+    :type tbuf: struct tid_user_buf \*
 
-    :param struct tid_group \*grp:
+    :param grp:
         RcvArray group
+    :type grp: struct tid_group \*
 
-    :param unsigned int start:
+    :param start:
         starting index into sets array
+    :type start: unsigned int
 
-    :param u16 count:
+    :param count:
         number of struct tid_pageset's to program
+    :type count: u16
 
-    :param u32 \*tidlist:
+    :param tidlist:
         the array of u32 elements when the information about the
         programmed RcvArray entries is to be encoded.
+    :type tidlist: u32 \*
 
-    :param unsigned int \*tididx:
+    :param tididx:
         starting offset into tidlist
+    :type tididx: unsigned int \*
 
-    :param unsigned int \*pmapped:
+    :param pmapped:
         (output parameter) number of pages programmed into the RcvArray
         entries.
+    :type pmapped: unsigned int \*
 
 .. _`program_rcvarray.description`:
 

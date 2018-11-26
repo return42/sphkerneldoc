@@ -70,17 +70,21 @@ BATADV_DBG_ALL
 
     Store debug output with(out) ratelimiting
 
-    :param  type:
+    :param type:
         type of debug message
+    :type type: 
 
-    :param  bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: 
 
-    :param  ratelimited:
+    :param ratelimited:
         whether output should be rate limited
+    :type ratelimited: 
 
-    :param  fmt:
+    :param fmt:
         format string
+    :type fmt: 
 
 .. _`batadv_dbg`:
 
@@ -91,11 +95,13 @@ batadv_dbg
 
     Store debug output without ratelimiting
 
-    :param  type:
+    :param type:
         type of debug message
+    :type type: 
 
-    :param  bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: 
 
 .. _`batadv_dbg_ratelimited`:
 
@@ -106,11 +112,13 @@ batadv_dbg_ratelimited
 
     Store debug output with ratelimiting
 
-    :param  type:
+    :param type:
         type of debug message
+    :type type: 
 
-    :param  bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: 
 
 .. _`batadv_info`:
 
@@ -121,11 +129,13 @@ batadv_info
 
     Store message in debug buffer and print it to kmsg buffer
 
-    :param  net_dev:
+    :param net_dev:
         the soft interface net device
+    :type net_dev: 
 
-    :param  fmt:
+    :param fmt:
         format string
+    :type fmt: 
 
 .. _`batadv_err`:
 
@@ -136,11 +146,13 @@ batadv_err
 
     Store error in debug buffer and print it to kmsg buffer
 
-    :param  net_dev:
+    :param net_dev:
         the soft interface net device
+    :type net_dev: 
 
-    :param  fmt:
+    :param fmt:
         format string
+    :type fmt: 
 
 .. This file was automatic generated / don't edit.
 

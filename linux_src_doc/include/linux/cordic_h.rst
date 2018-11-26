@@ -42,8 +42,9 @@ cordic_calc_iq
 
     calculates the i/q coordinate for given angle.
 
-    :param s32 theta:
+    :param theta:
         angle in degrees for which i/q coordinate is to be calculated.
+    :type theta: s32
 
 .. _`cordic_calc_iq.description`:
 

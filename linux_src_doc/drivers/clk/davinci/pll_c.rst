@@ -54,23 +54,29 @@ davinci_pll_div_register
 
     common \*DIV clock implementation
 
-    :param struct device \*dev:
+    :param dev:
         The PLL platform device or NULL
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         the clock name
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         the parent clock name
+    :type parent_name: const char \*
 
-    :param void __iomem \*reg:
+    :param reg:
         the \*DIV register
+    :type reg: void __iomem \*
 
-    :param bool fixed:
+    :param fixed:
         if true, the divider is a fixed value
+    :type fixed: bool
 
-    :param u32 flags:
+    :param flags:
         bitmap of CLK\_\* flags from clock-provider.h
+    :type flags: u32
 
 .. _`davinci_pll_clk_register`:
 
@@ -81,20 +87,25 @@ davinci_pll_clk_register
 
     Register a PLL clock
 
-    :param struct device \*dev:
+    :param dev:
         The PLL platform device or NULL
+    :type dev: struct device \*
 
-    :param const struct davinci_pll_clk_info \*info:
+    :param info:
         The device-specific clock info
+    :type info: const struct davinci_pll_clk_info \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         The parent clock name
+    :type parent_name: const char \*
 
-    :param void __iomem \*base:
+    :param base:
         The PLL's memory region
+    :type base: void __iomem \*
 
-    :param struct regmap \*cfgchip:
+    :param cfgchip:
         CFGCHIP syscon regmap for info->unlock_reg or NULL
+    :type cfgchip: struct regmap \*
 
 .. _`davinci_pll_clk_register.description`:
 
@@ -126,14 +137,17 @@ davinci_pll_auxclk_register
 
     Register bypass clock (AUXCLK)
 
-    :param struct device \*dev:
+    :param dev:
         The PLL platform device or NULL
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         The clock name
+    :type name: const char \*
 
-    :param void __iomem \*base:
+    :param base:
         The PLL memory region
+    :type base: void __iomem \*
 
 .. _`davinci_pll_sysclkbp_clk_register`:
 
@@ -144,14 +158,17 @@ davinci_pll_sysclkbp_clk_register
 
     Register bypass divider clock (SYSCLKBP)
 
-    :param struct device \*dev:
+    :param dev:
         The PLL platform device or NULL
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         The clock name
+    :type name: const char \*
 
-    :param void __iomem \*base:
+    :param base:
         The PLL memory region
+    :type base: void __iomem \*
 
 .. _`davinci_pll_obsclk_register`:
 
@@ -162,14 +179,17 @@ davinci_pll_obsclk_register
 
     Register oscillator divider clock (OBSCLK)
 
-    :param struct device \*dev:
+    :param dev:
         The PLL platform device or NULL
+    :type dev: struct device \*
 
-    :param const struct davinci_pll_obsclk_info \*info:
+    :param info:
         The clock info
+    :type info: const struct davinci_pll_obsclk_info \*
 
-    :param void __iomem \*base:
+    :param base:
         The PLL memory region
+    :type base: void __iomem \*
 
 .. _`davinci_pll_sysclk_register`:
 
@@ -180,14 +200,17 @@ davinci_pll_sysclk_register
 
     Register divider clocks (SYSCLKn)
 
-    :param struct device \*dev:
+    :param dev:
         The PLL platform device or NULL
+    :type dev: struct device \*
 
-    :param const struct davinci_pll_sysclk_info \*info:
+    :param info:
         The clock info
+    :type info: const struct davinci_pll_sysclk_info \*
 
-    :param void __iomem \*base:
+    :param base:
         The PLL memory region
+    :type base: void __iomem \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ timer_setup
 
     prepare a timer for first use
 
-    :param  timer:
+    :param timer:
         the timer in question
+    :type timer: 
 
-    :param  callback:
+    :param callback:
         the function to call when timer expires
+    :type callback: 
 
-    :param  flags:
+    :param flags:
         any TIMER\_\* flags
+    :type flags: 
 
 .. _`timer_setup.description`:
 
@@ -37,8 +40,9 @@ timer_pending
 
     is a timer pending?
 
-    :param const struct timer_list \*timer:
+    :param timer:
         the timer in question
+    :type timer: const struct timer_list \*
 
 .. _`timer_pending.description`:
 

@@ -10,11 +10,13 @@ snd_hda_get_hint
 
     Look for hint string
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const char \*key:
+    :param key:
         the hint key string
+    :type key: const char \*
 
 .. _`snd_hda_get_hint.description`:
 
@@ -33,11 +35,13 @@ snd_hda_get_bool_hint
 
     Get a boolean hint value
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const char \*key:
+    :param key:
         the hint key string
+    :type key: const char \*
 
 .. _`snd_hda_get_bool_hint.description`:
 
@@ -57,14 +61,17 @@ snd_hda_get_int_hint
 
     Get an integer hint value
 
-    :param struct hda_codec \*codec:
+    :param codec:
         the HDA codec
+    :type codec: struct hda_codec \*
 
-    :param const char \*key:
+    :param key:
         the hint key string
+    :type key: const char \*
 
-    :param int \*valp:
+    :param valp:
         pointer to store a value
+    :type valp: int \*
 
 .. _`snd_hda_get_int_hint.description`:
 
@@ -84,14 +91,17 @@ snd_hda_load_patch
 
     load a "patch" firmware file and parse it
 
-    :param struct hda_bus \*bus:
+    :param bus:
         HD-audio bus
+    :type bus: struct hda_bus \*
 
-    :param size_t fw_size:
+    :param fw_size:
         the firmware byte size
+    :type fw_size: size_t
 
-    :param const void \*fw_buf:
+    :param fw_buf:
         the firmware data
+    :type fw_buf: const void \*
 
 .. This file was automatic generated / don't edit.
 

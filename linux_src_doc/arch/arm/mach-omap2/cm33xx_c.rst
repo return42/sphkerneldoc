@@ -10,11 +10,13 @@
 
     read a CM\_\*\_CLKCTRL register; mask & shift IDLEST bitfield
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
 .. _`_clkctrl_idlest.description`:
 
@@ -33,11 +35,13 @@ bit 0.
 
     can module registers be accessed without causing an abort?
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
 .. _`_is_module_ready.description`:
 
@@ -56,14 +60,17 @@ Returns true if the module's CM\_\*\_CLKCTRL.IDLEST bitfield is either
 
     write \ ``c``\  to a CM_CLKSTCTRL.CLKTRCTRL register bitfield
 
-    :param u8 c:
+    :param c:
         CLKTRCTRL register bitfield (LSB = bit 0, i.e., unshifted)
+    :type c: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`_clktrctrl_write.description`:
 
@@ -82,11 +89,13 @@ am33xx_cm_is_clkdm_in_hwsup
 
     is a clockdomain in hwsup idle mode?
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`am33xx_cm_is_clkdm_in_hwsup.description`:
 
@@ -105,11 +114,13 @@ am33xx_cm_clkdm_enable_hwsup
 
     put a clockdomain in hwsup-idle mode
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`am33xx_cm_clkdm_enable_hwsup.description`:
 
@@ -128,11 +139,13 @@ am33xx_cm_clkdm_disable_hwsup
 
     put a clockdomain in swsup-idle mode
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`am33xx_cm_clkdm_disable_hwsup.description`:
 
@@ -152,11 +165,13 @@ am33xx_cm_clkdm_force_sleep
 
     try to put a clockdomain into idle
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`am33xx_cm_clkdm_force_sleep.description`:
 
@@ -175,11 +190,13 @@ am33xx_cm_clkdm_force_wakeup
 
     try to take a clockdomain out of idle
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 cdoffs:
+    :param cdoffs:
         Clockdomain register offset (\*\_CDOFFS macro)
+    :type cdoffs: u16
 
 .. _`am33xx_cm_clkdm_force_wakeup.description`:
 
@@ -198,17 +215,21 @@ am33xx_cm_wait_module_ready
 
     wait for a module to be in 'func' state
 
-    :param u8 part:
+    :param part:
         PRCM partition, ignored for AM33xx
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: s16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
-    :param u8 bit_shift:
+    :param bit_shift:
         bit shift for the register, ignored for AM33xx
+    :type bit_shift: u8
 
 .. _`am33xx_cm_wait_module_ready.description`:
 
@@ -229,17 +250,21 @@ am33xx_cm_wait_module_idle
 
     wait for a module to be in 'disabled' state
 
-    :param u8 part:
+    :param part:
         CM partition, ignored for AM33xx
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: s16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
-    :param u8 bit_shift:
+    :param bit_shift:
         bit shift for the register, ignored for AM33xx
+    :type bit_shift: u8
 
 .. _`am33xx_cm_wait_module_idle.description`:
 
@@ -259,17 +284,21 @@ am33xx_cm_module_enable
 
     Enable the modulemode inside CLKCTRL
 
-    :param u8 mode:
+    :param mode:
         Module mode (SW or HW)
+    :type mode: u8
 
-    :param u8 part:
+    :param part:
         CM partition, ignored for AM33xx
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
 .. _`am33xx_cm_module_enable.description`:
 
@@ -287,14 +316,17 @@ am33xx_cm_module_disable
 
     Disable the module inside CLKCTRL
 
-    :param u8 part:
+    :param part:
         CM partition, ignored for AM33xx
+    :type part: u8
 
-    :param u16 inst:
+    :param inst:
         CM instance register offset (\*\_INST macro)
+    :type inst: u16
 
-    :param u16 clkctrl_offs:
+    :param clkctrl_offs:
         Module clock control register offset (\*\_CLKCTRL macro)
+    :type clkctrl_offs: u16
 
 .. _`am33xx_cm_module_disable.description`:
 
@@ -312,8 +344,9 @@ am33xx_clkdm_save_context
 
     Save the clockdomain transition context
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         The clockdomain pointer whose context needs to be saved
+    :type clkdm: struct clockdomain \*
 
 .. _`am33xx_clkdm_save_context.description`:
 
@@ -331,8 +364,9 @@ am33xx_clkdm_restore_context
 
     Restore the clockdomain transition context
 
-    :param struct clockdomain \*clkdm:
+    :param clkdm:
         The clockdomain pointer whose context needs to be restored
+    :type clkdm: struct clockdomain \*
 
 .. _`am33xx_clkdm_restore_context.description`:
 

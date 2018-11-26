@@ -281,8 +281,9 @@ oa_buffer_check_unlocked
 
     check for data and update tail ptr state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`oa_buffer_check_unlocked.description`:
 
@@ -328,20 +329,25 @@ append_oa_status
 
     Appends a status record to a userspace \ :c:func:`read`\  buffer.
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
-    :param char __user \*buf:
+    :param buf:
         destination buffer given by userspace
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         the number of bytes userspace wants to read
+    :type count: size_t
 
-    :param size_t \*offset:
+    :param offset:
         (inout): the current position for writing into \ ``buf``\ 
+    :type offset: size_t \*
 
-    :param enum drm_i915_perf_record_type type:
+    :param type:
         The kind of status to report to userspace
+    :type type: enum drm_i915_perf_record_type
 
 .. _`append_oa_status.description`:
 
@@ -369,20 +375,25 @@ append_oa_sample
 
     Copies single OA report into userspace \ :c:func:`read`\  buffer.
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
-    :param char __user \*buf:
+    :param buf:
         destination buffer given by userspace
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         the number of bytes userspace wants to read
+    :type count: size_t
 
-    :param size_t \*offset:
+    :param offset:
         (inout): the current position for writing into \ ``buf``\ 
+    :type offset: size_t \*
 
-    :param const u8 \*report:
+    :param report:
         A single OA report to (optionally) include as part of the sample
+    :type report: const u8 \*
 
 .. _`append_oa_sample.description`:
 
@@ -410,17 +421,21 @@ gen8_append_oa_reports
 
 .. c:function:: int gen8_append_oa_reports(struct i915_perf_stream *stream, char __user *buf, size_t count, size_t *offset)
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
-    :param char __user \*buf:
+    :param buf:
         destination buffer given by userspace
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         the number of bytes userspace wants to read
+    :type count: size_t
 
-    :param size_t \*offset:
+    :param offset:
         (inout): the current position for writing into \ ``buf``\ 
+    :type offset: size_t \*
 
 .. _`gen8_append_oa_reports.description`:
 
@@ -459,17 +474,21 @@ gen8_oa_read
 
     copy status records then buffered OA reports
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
-    :param char __user \*buf:
+    :param buf:
         destination buffer given by userspace
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         the number of bytes userspace wants to read
+    :type count: size_t
 
-    :param size_t \*offset:
+    :param offset:
         (inout): the current position for writing into \ ``buf``\ 
+    :type offset: size_t \*
 
 .. _`gen8_oa_read.description`:
 
@@ -501,17 +520,21 @@ gen7_append_oa_reports
 
 .. c:function:: int gen7_append_oa_reports(struct i915_perf_stream *stream, char __user *buf, size_t count, size_t *offset)
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
-    :param char __user \*buf:
+    :param buf:
         destination buffer given by userspace
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         the number of bytes userspace wants to read
+    :type count: size_t
 
-    :param size_t \*offset:
+    :param offset:
         (inout): the current position for writing into \ ``buf``\ 
+    :type offset: size_t \*
 
 .. _`gen7_append_oa_reports.description`:
 
@@ -550,17 +573,21 @@ gen7_oa_read
 
     copy status records then buffered OA reports
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
-    :param char __user \*buf:
+    :param buf:
         destination buffer given by userspace
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         the number of bytes userspace wants to read
+    :type count: size_t
 
-    :param size_t \*offset:
+    :param offset:
         (inout): the current position for writing into \ ``buf``\ 
+    :type offset: size_t \*
 
 .. _`gen7_oa_read.description`:
 
@@ -590,8 +617,9 @@ i915_oa_wait_unlocked
 
     handles blocking IO until OA data available
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
 .. _`i915_oa_wait_unlocked.description`:
 
@@ -627,14 +655,17 @@ i915_oa_poll_wait
 
     call \ :c:func:`poll_wait`\  for an OA stream \ :c:func:`poll`\ 
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
-    :param struct file \*file:
+    :param file:
         An i915 perf stream file
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         \ :c:func:`poll`\  state table
+    :type wait: poll_table \*
 
 .. _`i915_oa_poll_wait.description`:
 
@@ -654,17 +685,21 @@ i915_oa_read
 
     just calls through to \ :c:type:`i915_oa_ops->read <i915_oa_ops>`\ 
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
-    :param char __user \*buf:
+    :param buf:
         destination buffer given by userspace
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         the number of bytes userspace wants to read
+    :type count: size_t
 
-    :param size_t \*offset:
+    :param offset:
         (inout): the current position for writing into \ ``buf``\ 
+    :type offset: size_t \*
 
 .. _`i915_oa_read.description`:
 
@@ -690,8 +725,9 @@ oa_get_render_ctx_id
 
     determine and hold ctx hw id
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
 .. _`oa_get_render_ctx_id.description`:
 
@@ -718,8 +754,9 @@ oa_put_render_ctx_id
 
     counterpart to oa_get_render_ctx_id releases hold
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915-perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
 .. _`oa_put_render_ctx_id.description`:
 
@@ -738,8 +775,9 @@ i915_oa_stream_enable
 
     handle `I915_PERF_IOCTL_ENABLE` for OA stream
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915 perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
 .. _`i915_oa_stream_enable.description`:
 
@@ -760,8 +798,9 @@ i915_oa_stream_disable
 
     handle `I915_PERF_IOCTL_DISABLE` for OA stream
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915 perf stream opened for OA metrics
+    :type stream: struct i915_perf_stream \*
 
 .. _`i915_oa_stream_disable.description`:
 
@@ -781,14 +820,17 @@ i915_oa_stream_init
 
     validate combined props for OA stream and init
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915 perf stream
+    :type stream: struct i915_perf_stream \*
 
-    :param struct drm_i915_perf_open_param \*param:
+    :param param:
         The open parameters passed to `DRM_I915_PERF_OPEN`
+    :type param: struct drm_i915_perf_open_param \*
 
-    :param struct perf_open_properties \*props:
+    :param props:
         The property state that configures stream (individually validated)
+    :type props: struct perf_open_properties \*
 
 .. _`i915_oa_stream_init.description`:
 
@@ -821,20 +863,25 @@ i915_perf_read_locked
 
     \ :c:type:`i915_perf_stream_ops->read <i915_perf_stream_ops>`\  with error normalisation
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915 perf stream
+    :type stream: struct i915_perf_stream \*
 
-    :param struct file \*file:
+    :param file:
         An i915 perf stream file
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         destination buffer given by userspace
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         the number of bytes userspace wants to read
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         (inout) file seek position (unused)
+    :type ppos: loff_t \*
 
 .. _`i915_perf_read_locked.description`:
 
@@ -877,17 +924,21 @@ i915_perf_read
 
     handles \ :c:func:`read`\  FOP for i915 perf stream FDs
 
-    :param struct file \*file:
+    :param file:
         An i915 perf stream file
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         destination buffer given by userspace
+    :type buf: char __user \*
 
-    :param size_t count:
+    :param count:
         the number of bytes userspace wants to read
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         (inout) file seek position (unused)
+    :type ppos: loff_t \*
 
 .. _`i915_perf_read.description`:
 
@@ -919,17 +970,21 @@ i915_perf_poll_locked
 
     \ :c:func:`poll_wait`\  with a suitable wait queue for stream
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915 perf stream
+    :type stream: struct i915_perf_stream \*
 
-    :param struct file \*file:
+    :param file:
         An i915 perf stream file
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         \ :c:func:`poll`\  state table
+    :type wait: poll_table \*
 
 .. _`i915_perf_poll_locked.description`:
 
@@ -964,11 +1019,13 @@ i915_perf_poll
 
     call \ :c:func:`poll_wait`\  with a suitable wait queue for stream
 
-    :param struct file \*file:
+    :param file:
         An i915 perf stream file
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         \ :c:func:`poll`\  state table
+    :type wait: poll_table \*
 
 .. _`i915_perf_poll.description`:
 
@@ -1002,8 +1059,9 @@ i915_perf_enable_locked
 
     handle `I915_PERF_IOCTL_ENABLE` ioctl
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         A disabled i915 perf stream
+    :type stream: struct i915_perf_stream \*
 
 .. _`i915_perf_enable_locked.description`:
 
@@ -1025,8 +1083,9 @@ i915_perf_disable_locked
 
     handle `I915_PERF_IOCTL_DISABLE` ioctl
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An enabled i915 perf stream
+    :type stream: struct i915_perf_stream \*
 
 .. _`i915_perf_disable_locked.description`:
 
@@ -1057,14 +1116,17 @@ i915_perf_ioctl_locked
 
     support \ :c:func:`ioctl`\  usage with i915 perf stream FDs
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915 perf stream
+    :type stream: struct i915_perf_stream \*
 
-    :param unsigned int cmd:
+    :param cmd:
         the ioctl request
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         the ioctl data
+    :type arg: unsigned long
 
 .. _`i915_perf_ioctl_locked.note`:
 
@@ -1091,14 +1153,17 @@ i915_perf_ioctl
 
     support \ :c:func:`ioctl`\  usage with i915 perf stream FDs
 
-    :param struct file \*file:
+    :param file:
         An i915 perf stream file
+    :type file: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         the ioctl request
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         the ioctl data
+    :type arg: unsigned long
 
 .. _`i915_perf_ioctl.description`:
 
@@ -1124,8 +1189,9 @@ i915_perf_destroy_locked
 
     destroy an i915 perf stream
 
-    :param struct i915_perf_stream \*stream:
+    :param stream:
         An i915 perf stream
+    :type stream: struct i915_perf_stream \*
 
 .. _`i915_perf_destroy_locked.description`:
 
@@ -1152,11 +1218,13 @@ i915_perf_release
 
     handles userspace \ :c:func:`close`\  of a stream file
 
-    :param struct inode \*inode:
+    :param inode:
         anonymous inode associated with file
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         An i915 perf stream file
+    :type file: struct file \*
 
 .. _`i915_perf_release.description`:
 
@@ -1183,17 +1251,21 @@ i915_perf_open_ioctl_locked
 
     DRM \ :c:func:`ioctl`\  for userspace to open a stream FD
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param struct drm_i915_perf_open_param \*param:
+    :param param:
         The open parameters passed to 'DRM_I915_PERF_OPEN`
+    :type param: struct drm_i915_perf_open_param \*
 
-    :param struct perf_open_properties \*props:
+    :param props:
         individually validated u64 property value pairs
+    :type props: struct perf_open_properties \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file
+    :type file: struct drm_file \*
 
 .. _`i915_perf_open_ioctl_locked.description`:
 
@@ -1236,17 +1308,21 @@ read_properties_unlocked
 
     validate + copy userspace stream open properties
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param u64 __user \*uprops:
+    :param uprops:
         The array of u64 key value pairs given by userspace
+    :type uprops: u64 __user \*
 
-    :param u32 n_props:
+    :param n_props:
         The number of key value pairs expected in \ ``uprops``\ 
+    :type n_props: u32
 
-    :param struct perf_open_properties \*props:
+    :param props:
         The stream configuration built up while validating properties
+    :type props: struct perf_open_properties \*
 
 .. _`read_properties_unlocked.description`:
 
@@ -1270,14 +1346,17 @@ i915_perf_open_ioctl
 
     DRM \ :c:func:`ioctl`\  for userspace to open a stream FD
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data copied from userspace (unvalidated)
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file
+    :type file: struct drm_file \*
 
 .. _`i915_perf_open_ioctl.description`:
 
@@ -1316,8 +1395,9 @@ i915_perf_register
 
     exposes i915-perf to userspace
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_perf_register.description`:
 
@@ -1337,8 +1417,9 @@ i915_perf_unregister
 
     hide i915-perf from userspace
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_perf_unregister.description`:
 
@@ -1359,15 +1440,18 @@ i915_perf_add_config_ioctl
 
     DRM \ :c:func:`ioctl`\  for userspace to add a new OA config
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data (pointer to struct drm_i915_perf_oa_config) copied from
         userspace (unvalidated)
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file
+    :type file: struct drm_file \*
 
 .. _`i915_perf_add_config_ioctl.description`:
 
@@ -1394,14 +1478,17 @@ i915_perf_remove_config_ioctl
 
     DRM \ :c:func:`ioctl`\  for userspace to remove an OA config
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data (pointer to u64 integer) copied from userspace
+    :type data: void \*
 
-    :param struct drm_file \*file:
+    :param file:
         drm file
+    :type file: struct drm_file \*
 
 .. _`i915_perf_remove_config_ioctl.description`:
 
@@ -1427,8 +1514,9 @@ i915_perf_init
 
     initialize i915-perf state on module load
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_perf_init.description`:
 
@@ -1454,8 +1542,9 @@ i915_perf_fini
 
     Counter part to \ :c:func:`i915_perf_init`\ 
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. This file was automatic generated / don't edit.
 

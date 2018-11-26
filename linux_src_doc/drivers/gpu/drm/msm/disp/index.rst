@@ -7,4 +7,5 @@ disp
 .. toctree::
     :maxdepth: 1
 
+    dpu1/index
     mdp5/index

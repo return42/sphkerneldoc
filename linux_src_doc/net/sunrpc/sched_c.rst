@@ -10,14 +10,17 @@ __rpc_do_wake_up_task_on_wq
 
     wake up a single rpc_task
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue on which to run task
+    :type wq: struct workqueue_struct \*
 
-    :param struct rpc_wait_queue \*queue:
+    :param queue:
         wait queue
+    :type queue: struct rpc_wait_queue \*
 
-    :param struct rpc_task \*task:
+    :param task:
         task to be woken up
+    :type task: struct rpc_task \*
 
 .. _`__rpc_do_wake_up_task_on_wq.description`:
 
@@ -25,6 +28,35 @@ Description
 -----------
 
 Caller must hold queue->lock, and have cleared the task queued flag.
+
+.. _`rpc_wake_up_queued_task_set_status`:
+
+rpc_wake_up_queued_task_set_status
+==================================
+
+.. c:function:: void rpc_wake_up_queued_task_set_status(struct rpc_wait_queue *queue, struct rpc_task *task, int status)
+
+    wake up a task and set task->tk_status
+
+    :param queue:
+        pointer to rpc_wait_queue
+    :type queue: struct rpc_wait_queue \*
+
+    :param task:
+        pointer to rpc_task
+    :type task: struct rpc_task \*
+
+    :param status:
+        integer error value
+    :type status: int
+
+.. _`rpc_wake_up_queued_task_set_status.description`:
+
+Description
+-----------
+
+If \ ``task``\  is queued on \ ``queue``\ , then it is woken up, and \ ``task->tk_status``\  is
+set to the value of \ ``status``\ .
 
 .. _`rpc_wake_up`:
 
@@ -35,8 +67,9 @@ rpc_wake_up
 
     wake up all rpc_tasks
 
-    :param struct rpc_wait_queue \*queue:
+    :param queue:
         rpc_wait_queue on which the tasks are sleeping
+    :type queue: struct rpc_wait_queue \*
 
 .. _`rpc_wake_up.description`:
 
@@ -54,11 +87,13 @@ rpc_wake_up_status
 
     wake up all rpc_tasks and set their status value.
 
-    :param struct rpc_wait_queue \*queue:
+    :param queue:
         rpc_wait_queue on which the tasks are sleeping
+    :type queue: struct rpc_wait_queue \*
 
-    :param int status:
+    :param status:
         status value to set
+    :type status: int
 
 .. _`rpc_wake_up_status.description`:
 
@@ -76,8 +111,9 @@ rpc_malloc
 
     allocate RPC buffer resources
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC task
+    :type task: struct rpc_task \*
 
 .. _`rpc_malloc.description`:
 
@@ -109,8 +145,9 @@ rpc_free
 
     free RPC buffer resources allocated via rpc_malloc
 
-    :param struct rpc_task \*task:
+    :param task:
         RPC task
+    :type task: struct rpc_task \*
 
 .. This file was automatic generated / don't edit.
 

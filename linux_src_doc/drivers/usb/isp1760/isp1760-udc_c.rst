@@ -10,8 +10,9 @@ isp1760_udc_select_ep
 
     Select an endpoint for register access
 
-    :param struct isp1760_ep \*ep:
+    :param ep:
         The endpoint
+    :type ep: struct isp1760_ep \*
 
 .. _`isp1760_udc_select_ep.description`:
 

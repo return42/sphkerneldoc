@@ -10,14 +10,17 @@ ms_sensors_reset
 
     Reset function
 
-    :param void \*cli:
+    :param cli:
         pointer to device client
+    :type cli: void \*
 
-    :param u8 cmd:
+    :param cmd:
         reset cmd. Depends on device in use
+    :type cmd: u8
 
-    :param unsigned int delay:
+    :param delay:
         usleep minimal delay after reset command is issued
+    :type delay: unsigned int
 
 .. _`ms_sensors_reset.description`:
 
@@ -42,14 +45,17 @@ ms_sensors_read_prom_word
 
     PROM word read function
 
-    :param void \*cli:
+    :param cli:
         pointer to device client
+    :type cli: void \*
 
-    :param int cmd:
+    :param cmd:
         PROM read cmd. Depends on device and prom id
+    :type cmd: int
 
-    :param u16 \*word:
+    :param word:
         pointer to word destination value
+    :type word: u16 \*
 
 .. _`ms_sensors_read_prom_word.description`:
 
@@ -74,20 +80,25 @@ ms_sensors_convert_and_read
 
     ADC conversion & read function
 
-    :param void \*cli:
+    :param cli:
         pointer to device client
+    :type cli: void \*
 
-    :param u8 conv:
+    :param conv:
         ADC conversion command. Depends on device in use
+    :type conv: u8
 
-    :param u8 rd:
+    :param rd:
         ADC read command. Depends on device in use
+    :type rd: u8
 
-    :param unsigned int delay:
+    :param delay:
         usleep minimal delay after conversion command is issued
+    :type delay: unsigned int
 
-    :param u32 \*adc:
+    :param adc:
         pointer to ADC destination value
+    :type adc: u32 \*
 
 .. _`ms_sensors_convert_and_read.description`:
 
@@ -115,8 +126,9 @@ ms_sensors_crc_valid
 
     CRC check function
 
-    :param u32 value:
+    :param value:
         input and CRC compare value
+    :type value: u32
 
 .. _`ms_sensors_crc_valid.description`:
 
@@ -144,11 +156,13 @@ ms_sensors_read_serial
 
     Serial number read function
 
-    :param struct i2c_client \*client:
+    :param client:
         *undescribed*
+    :type client: struct i2c_client \*
 
-    :param u64 \*sn:
+    :param sn:
         pointer to 64-bits destination value
+    :type sn: u64 \*
 
 .. _`ms_sensors_read_serial.description`:
 
@@ -188,11 +202,13 @@ ms_sensors_write_resolution
 
     Set resolution function
 
-    :param struct ms_ht_dev \*dev_data:
+    :param dev_data:
         pointer to temperature/humidity device data
+    :type dev_data: struct ms_ht_dev \*
 
-    :param u8 i:
+    :param i:
         resolution index to set
+    :type i: u8
 
 .. _`ms_sensors_write_resolution.description`:
 
@@ -219,11 +235,13 @@ ms_sensors_show_battery_low
 
     Show device battery low indicator
 
-    :param struct ms_ht_dev \*dev_data:
+    :param dev_data:
         pointer to temperature/humidity device data
+    :type dev_data: struct ms_ht_dev \*
 
-    :param char \*buf:
+    :param buf:
         pointer to char buffer to write result
+    :type buf: char \*
 
 .. _`ms_sensors_show_battery_low.description`:
 
@@ -250,11 +268,13 @@ ms_sensors_show_heater
 
     Show device heater
 
-    :param struct ms_ht_dev \*dev_data:
+    :param dev_data:
         pointer to temperature/humidity device data
+    :type dev_data: struct ms_ht_dev \*
 
-    :param char \*buf:
+    :param buf:
         pointer to char buffer to write result
+    :type buf: char \*
 
 .. _`ms_sensors_show_heater.description`:
 
@@ -281,14 +301,17 @@ ms_sensors_write_heater
 
     Write device heater
 
-    :param struct ms_ht_dev \*dev_data:
+    :param dev_data:
         pointer to temperature/humidity device data
+    :type dev_data: struct ms_ht_dev \*
 
-    :param const char \*buf:
+    :param buf:
         pointer to char buffer from user space
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         length of buf
+    :type len: size_t
 
 .. _`ms_sensors_write_heater.description`:
 
@@ -315,11 +338,13 @@ ms_sensors_ht_read_temperature
 
     Read temperature
 
-    :param struct ms_ht_dev \*dev_data:
+    :param dev_data:
         pointer to temperature/humidity device data
+    :type dev_data: struct ms_ht_dev \*
 
-    :param s32 \*temperature:
+    :param temperature:
         pointer to temperature destination value
+    :type temperature: s32 \*
 
 .. _`ms_sensors_ht_read_temperature.description`:
 
@@ -346,11 +371,13 @@ ms_sensors_ht_read_humidity
 
     Read humidity
 
-    :param struct ms_ht_dev \*dev_data:
+    :param dev_data:
         pointer to temperature/humidity device data
+    :type dev_data: struct ms_ht_dev \*
 
-    :param u32 \*humidity:
+    :param humidity:
         pointer to humidity destination value
+    :type humidity: u32 \*
 
 .. _`ms_sensors_ht_read_humidity.description`:
 
@@ -377,11 +404,13 @@ ms_sensors_tp_crc_valid
 
     CRC check function for Temperature and pressure devices. This function is only used when reading PROM coefficients
 
-    :param u16 \*prom:
+    :param prom:
         pointer to PROM coefficients array
+    :type prom: u16 \*
 
-    :param u8 len:
+    :param len:
         length of PROM coefficients array
+    :type len: u8
 
 .. _`ms_sensors_tp_crc_valid.return`:
 
@@ -399,8 +428,9 @@ ms_sensors_tp_read_prom
 
     prom coeff read function
 
-    :param struct ms_tp_dev \*dev_data:
+    :param dev_data:
         pointer to temperature/pressure device data
+    :type dev_data: struct ms_tp_dev \*
 
 .. _`ms_sensors_tp_read_prom.description`:
 
@@ -426,14 +456,17 @@ ms_sensors_read_temp_and_pressure
 
     read temp and pressure
 
-    :param struct ms_tp_dev \*dev_data:
+    :param dev_data:
         pointer to temperature/pressure device data
+    :type dev_data: struct ms_tp_dev \*
 
-    :param int \*temperature:
+    :param temperature:
         pointer to temperature destination value
+    :type temperature: int \*
 
-    :param unsigned int \*pressure:
+    :param pressure:
         pointer to pressure destination value
+    :type pressure: unsigned int \*
 
 .. _`ms_sensors_read_temp_and_pressure.description`:
 

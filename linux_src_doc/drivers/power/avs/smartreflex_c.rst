@@ -10,8 +10,9 @@ sr_configure_errgen
 
     Configures the SmartReflex to perform AVS using the error generator module.
 
-    :param struct omap_sr \*sr:
+    :param sr:
         SR module to be configured.
+    :type sr: struct omap_sr \*
 
 .. _`sr_configure_errgen.description`:
 
@@ -34,8 +35,9 @@ sr_disable_errgen
 
     Disables SmartReflex AVS module's errgen component
 
-    :param struct omap_sr \*sr:
+    :param sr:
         SR module to be configured.
+    :type sr: struct omap_sr \*
 
 .. _`sr_disable_errgen.description`:
 
@@ -56,8 +58,9 @@ sr_configure_minmax
 
     Configures the SmartReflex to perform AVS using the minmaxavg module.
 
-    :param struct omap_sr \*sr:
+    :param sr:
         SR module to be configured.
+    :type sr: struct omap_sr \*
 
 .. _`sr_configure_minmax.description`:
 
@@ -80,13 +83,15 @@ sr_enable
 
     Enables the smartreflex module.
 
-    :param struct omap_sr \*sr:
+    :param sr:
         pointer to which the SR module to be configured belongs to.
+    :type sr: struct omap_sr \*
 
-    :param unsigned long volt:
+    :param volt:
         The voltage at which the Voltage domain associated with
         the smartreflex module is operating at.
         This is required only to program the correct Ntarget value.
+    :type volt: unsigned long
 
 .. _`sr_enable.description`:
 
@@ -106,8 +111,9 @@ sr_disable
 
     Disables the smartreflex module.
 
-    :param struct omap_sr \*sr:
+    :param sr:
         pointer to which the SR module to be configured belongs to.
+    :type sr: struct omap_sr \*
 
 .. _`sr_disable.description`:
 
@@ -126,8 +132,9 @@ sr_register_class
 
     API to register a smartreflex class parameters.
 
-    :param struct omap_sr_class_data \*class_data:
+    :param class_data:
         The structure containing various sr class specific data.
+    :type class_data: struct omap_sr_class_data \*
 
 .. _`sr_register_class.description`:
 
@@ -147,8 +154,9 @@ omap_sr_enable
 
     API to enable SR clocks and to call into the registered smartreflex class enable API.
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         VDD pointer to which the SR module to be configured belongs to.
+    :type voltdm: struct voltagedomain \*
 
 .. _`omap_sr_enable.description`:
 
@@ -169,8 +177,9 @@ omap_sr_disable
 
     API to disable SR without resetting the voltage processor voltage
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         VDD pointer to which the SR module to be configured belongs to.
+    :type voltdm: struct voltagedomain \*
 
 .. _`omap_sr_disable.description`:
 
@@ -192,8 +201,9 @@ omap_sr_disable_reset_volt
 
     API to disable SR and reset the voltage processor voltage
 
-    :param struct voltagedomain \*voltdm:
+    :param voltdm:
         VDD pointer to which the SR module to be configured belongs to.
+    :type voltdm: struct voltagedomain \*
 
 .. _`omap_sr_disable_reset_volt.description`:
 
@@ -215,8 +225,9 @@ omap_sr_register_pmic
 
     API to register pmic specific info.
 
-    :param struct omap_sr_pmic_data \*pmic_data:
+    :param pmic_data:
         The structure containing pmic specific data.
+    :type pmic_data: struct omap_sr_pmic_data \*
 
 .. _`omap_sr_register_pmic.description`:
 

@@ -10,8 +10,9 @@ atmel_smc_cs_conf_init
 
     initialize a SMC CS conf
 
-    :param struct atmel_smc_cs_conf \*conf:
+    :param conf:
         the SMC CS conf to initialize
+    :type conf: struct atmel_smc_cs_conf \*
 
 .. _`atmel_smc_cs_conf_init.description`:
 
@@ -29,20 +30,25 @@ atmel_smc_cs_encode_ncycles
 
     encode a number of MCK clk cycles in the format expected by the SMC engine
 
-    :param unsigned int ncycles:
+    :param ncycles:
         number of MCK clk cycles
+    :type ncycles: unsigned int
 
-    :param unsigned int msbpos:
+    :param msbpos:
         position of the MSB part of the timing field
+    :type msbpos: unsigned int
 
-    :param unsigned int msbwidth:
+    :param msbwidth:
         width of the MSB part of the timing field
+    :type msbwidth: unsigned int
 
-    :param unsigned int msbfactor:
+    :param msbfactor:
         factor applied to the MSB
+    :type msbfactor: unsigned int
 
-    :param unsigned int \*encodedval:
+    :param encodedval:
         param used to store the encoding result
+    :type encodedval: unsigned int \*
 
 .. _`atmel_smc_cs_encode_ncycles.description`:
 
@@ -66,15 +72,18 @@ atmel_smc_cs_conf_set_timing
 
     set the SMC CS conf Txx parameter to a specific value
 
-    :param struct atmel_smc_cs_conf \*conf:
+    :param conf:
         SMC CS conf descriptor
+    :type conf: struct atmel_smc_cs_conf \*
 
-    :param unsigned int shift:
+    :param shift:
         the position of the Txx field in the TIMINGS register
+    :type shift: unsigned int
 
-    :param unsigned int ncycles:
+    :param ncycles:
         value (expressed in MCK clk cycles) to assign to this Txx
         parameter
+    :type ncycles: unsigned int
 
 .. _`atmel_smc_cs_conf_set_timing.description`:
 
@@ -83,7 +92,7 @@ Description
 
 This function encodes the \ ``ncycles``\  value as described in the datasheet
 (section "SMC Timings Register"), and then stores the result in the
-\ ``conf``\ ->timings field at \ ``shift``\  position.
+\ ``conf->timings``\  field at \ ``shift``\  position.
 
 Returns -EINVAL if shift is invalid, -ERANGE if ncycles does not fit in
 the field, and 0 otherwise.
@@ -97,15 +106,18 @@ atmel_smc_cs_conf_set_setup
 
     set the SMC CS conf xx_SETUP parameter to a specific value
 
-    :param struct atmel_smc_cs_conf \*conf:
+    :param conf:
         SMC CS conf descriptor
+    :type conf: struct atmel_smc_cs_conf \*
 
-    :param unsigned int shift:
+    :param shift:
         the position of the xx_SETUP field in the SETUP register
+    :type shift: unsigned int
 
-    :param unsigned int ncycles:
+    :param ncycles:
         value (expressed in MCK clk cycles) to assign to this xx_SETUP
         parameter
+    :type ncycles: unsigned int
 
 .. _`atmel_smc_cs_conf_set_setup.description`:
 
@@ -114,7 +126,7 @@ Description
 
 This function encodes the \ ``ncycles``\  value as described in the datasheet
 (section "SMC Setup Register"), and then stores the result in the
-\ ``conf``\ ->setup field at \ ``shift``\  position.
+\ ``conf->setup``\  field at \ ``shift``\  position.
 
 Returns -EINVAL if \ ``shift``\  is invalid, -ERANGE if \ ``ncycles``\  does not fit in
 the field, and 0 otherwise.
@@ -128,15 +140,18 @@ atmel_smc_cs_conf_set_pulse
 
     set the SMC CS conf xx_PULSE parameter to a specific value
 
-    :param struct atmel_smc_cs_conf \*conf:
+    :param conf:
         SMC CS conf descriptor
+    :type conf: struct atmel_smc_cs_conf \*
 
-    :param unsigned int shift:
+    :param shift:
         the position of the xx_PULSE field in the PULSE register
+    :type shift: unsigned int
 
-    :param unsigned int ncycles:
+    :param ncycles:
         value (expressed in MCK clk cycles) to assign to this xx_PULSE
         parameter
+    :type ncycles: unsigned int
 
 .. _`atmel_smc_cs_conf_set_pulse.description`:
 
@@ -145,7 +160,7 @@ Description
 
 This function encodes the \ ``ncycles``\  value as described in the datasheet
 (section "SMC Pulse Register"), and then stores the result in the
-\ ``conf``\ ->setup field at \ ``shift``\  position.
+\ ``conf->setup``\  field at \ ``shift``\  position.
 
 Returns -EINVAL if \ ``shift``\  is invalid, -ERANGE if \ ``ncycles``\  does not fit in
 the field, and 0 otherwise.
@@ -159,15 +174,18 @@ atmel_smc_cs_conf_set_cycle
 
     set the SMC CS conf xx_CYCLE parameter to a specific value
 
-    :param struct atmel_smc_cs_conf \*conf:
+    :param conf:
         SMC CS conf descriptor
+    :type conf: struct atmel_smc_cs_conf \*
 
-    :param unsigned int shift:
+    :param shift:
         the position of the xx_CYCLE field in the CYCLE register
+    :type shift: unsigned int
 
-    :param unsigned int ncycles:
+    :param ncycles:
         value (expressed in MCK clk cycles) to assign to this xx_CYCLE
         parameter
+    :type ncycles: unsigned int
 
 .. _`atmel_smc_cs_conf_set_cycle.description`:
 
@@ -176,7 +194,7 @@ Description
 
 This function encodes the \ ``ncycles``\  value as described in the datasheet
 (section "SMC Cycle Register"), and then stores the result in the
-\ ``conf``\ ->setup field at \ ``shift``\  position.
+\ ``conf->setup``\  field at \ ``shift``\  position.
 
 Returns -EINVAL if \ ``shift``\  is invalid, -ERANGE if \ ``ncycles``\  does not fit in
 the field, and 0 otherwise.
@@ -190,15 +208,18 @@ atmel_smc_cs_conf_apply
 
     apply an SMC CS conf
 
-    :param struct regmap \*regmap:
+    :param regmap:
         the SMC regmap
+    :type regmap: struct regmap \*
 
-    :param int cs:
+    :param cs:
         the CS id
         \ ``conf``\  the SMC CS conf to apply
+    :type cs: int
 
-    :param const struct atmel_smc_cs_conf \*conf:
+    :param conf:
         *undescribed*
+    :type conf: const struct atmel_smc_cs_conf \*
 
 .. _`atmel_smc_cs_conf_apply.description`:
 
@@ -217,18 +238,22 @@ atmel_hsmc_cs_conf_apply
 
     apply an SMC CS conf
 
-    :param struct regmap \*regmap:
+    :param regmap:
         the HSMC regmap
+    :type regmap: struct regmap \*
 
-    :param const struct atmel_hsmc_reg_layout \*layout:
+    :param layout:
         the layout of registers
         \ ``conf``\  the SMC CS conf to apply
+    :type layout: const struct atmel_hsmc_reg_layout \*
 
-    :param int cs:
+    :param cs:
         the CS id
+    :type cs: int
 
-    :param const struct atmel_smc_cs_conf \*conf:
+    :param conf:
         *undescribed*
+    :type conf: const struct atmel_smc_cs_conf \*
 
 .. _`atmel_hsmc_cs_conf_apply.description`:
 
@@ -247,14 +272,17 @@ atmel_smc_cs_conf_get
 
     retrieve the current SMC CS conf
 
-    :param struct regmap \*regmap:
+    :param regmap:
         the SMC regmap
+    :type regmap: struct regmap \*
 
-    :param int cs:
+    :param cs:
         the CS id
+    :type cs: int
 
-    :param struct atmel_smc_cs_conf \*conf:
+    :param conf:
         the SMC CS conf object to store the current conf
+    :type conf: struct atmel_smc_cs_conf \*
 
 .. _`atmel_smc_cs_conf_get.description`:
 
@@ -273,17 +301,21 @@ atmel_hsmc_cs_conf_get
 
     retrieve the current SMC CS conf
 
-    :param struct regmap \*regmap:
+    :param regmap:
         the HSMC regmap
+    :type regmap: struct regmap \*
 
-    :param const struct atmel_hsmc_reg_layout \*layout:
+    :param layout:
         the layout of registers
+    :type layout: const struct atmel_hsmc_reg_layout \*
 
-    :param int cs:
+    :param cs:
         the CS id
+    :type cs: int
 
-    :param struct atmel_smc_cs_conf \*conf:
+    :param conf:
         the SMC CS conf object to store the current conf
+    :type conf: struct atmel_smc_cs_conf \*
 
 .. _`atmel_hsmc_cs_conf_get.description`:
 
@@ -302,8 +334,9 @@ atmel_hsmc_get_reg_layout
 
     retrieve the layout of HSMC registers
 
-    :param struct device_node \*np:
+    :param np:
         the HSMC regmap
+    :type np: struct device_node \*
 
 .. _`atmel_hsmc_get_reg_layout.description`:
 

@@ -449,11 +449,13 @@ input_set_events_per_packet
 
     tell handlers about the driver event rate
 
-    :param struct input_dev \*dev:
+    :param dev:
         the input device used by the driver
+    :type dev: struct input_dev \*
 
-    :param int n_events:
+    :param n_events:
         the average number of events between calls to \ :c:func:`input_sync`\ 
+    :type n_events: int
 
 .. _`input_set_events_per_packet.description`:
 

@@ -21,29 +21,37 @@ clk_hw_register_gate
 
     register a gate clock with the clock framework
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this clock
+    :type name: const char \*
 
-    :param const char \*parent_name:
+    :param parent_name:
         name of this clock's parent
+    :type parent_name: const char \*
 
-    :param unsigned long flags:
+    :param flags:
         framework-specific flags for this clock
+    :type flags: unsigned long
 
-    :param void __iomem \*reg:
+    :param reg:
         register address to control gating of this clock
+    :type reg: void __iomem \*
 
-    :param u8 bit_idx:
+    :param bit_idx:
         which bit in the register controls gating of this clock
+    :type bit_idx: u8
 
-    :param u8 clk_gate_flags:
+    :param clk_gate_flags:
         gate-specific flags for this clock
+    :type clk_gate_flags: u8
 
-    :param spinlock_t \*lock:
+    :param lock:
         shared register lock for this clock
+    :type lock: spinlock_t \*
 
 .. This file was automatic generated / don't edit.
 

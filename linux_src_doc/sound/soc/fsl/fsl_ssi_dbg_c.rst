@@ -8,11 +8,13 @@ SIER_SHOW
 
 .. c:function::  SIER_SHOW( flag,  name)
 
-    :param  flag:
+    :param flag:
         *undescribed*
+    :type flag: 
 
-    :param  name:
+    :param name:
         *undescribed*
+    :type name: 
 
 .. _`sier_show.description`:
 
@@ -28,11 +30,13 @@ fsl_ssi_stats_show
 
 .. c:function:: int fsl_ssi_stats_show(struct seq_file *s, void *unused)
 
-    :param struct seq_file \*s:
+    :param s:
         *undescribed*
+    :type s: struct seq_file \*
 
-    :param void \*unused:
+    :param unused:
         *undescribed*
+    :type unused: void \*
 
 .. _`fsl_ssi_stats_show.description`:
 

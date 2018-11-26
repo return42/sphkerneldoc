@@ -10,8 +10,9 @@ ccp_present
 
     check if a CCP device is present
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ccp_present.description`:
 
@@ -29,8 +30,9 @@ ccp_version
 
     get the version of the CCP
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ccp_version.description`:
 
@@ -48,8 +50,9 @@ ccp_enqueue_cmd
 
     queue an operation for processing by the CCP
 
-    :param struct ccp_cmd \*cmd:
+    :param cmd:
         ccp_cmd struct to be processed
+    :type cmd: struct ccp_cmd \*
 
 .. _`ccp_enqueue_cmd.description`:
 

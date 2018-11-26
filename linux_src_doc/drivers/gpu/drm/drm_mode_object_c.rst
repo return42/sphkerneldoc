@@ -10,14 +10,17 @@ drm_mode_object_add
 
     allocate a new modeset identifier
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_mode_object \*obj:
+    :param obj:
         object pointer, used to generate unique ID
+    :type obj: struct drm_mode_object \*
 
-    :param uint32_t obj_type:
+    :param obj_type:
         object type
+    :type obj_type: uint32_t
 
 .. _`drm_mode_object_add.description`:
 
@@ -43,11 +46,13 @@ drm_mode_object_unregister
 
     free a modeset identifer
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_mode_object \*object:
+    :param object:
         object to free
+    :type object: struct drm_mode_object \*
 
 .. _`drm_mode_object_unregister.description`:
 
@@ -69,8 +74,9 @@ drm_mode_object_lease_required
 
     check types which must be leased to be used
 
-    :param uint32_t type:
+    :param type:
         type of object
+    :type type: uint32_t
 
 .. _`drm_mode_object_lease_required.description`:
 
@@ -89,17 +95,21 @@ drm_mode_object_find
 
     look up a drm object with static lifetime
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file
+    :type file_priv: struct drm_file \*
 
-    :param uint32_t id:
+    :param id:
         id of the mode object
+    :type id: uint32_t
 
-    :param uint32_t type:
+    :param type:
         type of the mode object
+    :type type: uint32_t
 
 .. _`drm_mode_object_find.description`:
 
@@ -119,8 +129,9 @@ drm_mode_object_put
 
     release a mode object reference
 
-    :param struct drm_mode_object \*obj:
+    :param obj:
         DRM mode object
+    :type obj: struct drm_mode_object \*
 
 .. _`drm_mode_object_put.description`:
 
@@ -140,8 +151,9 @@ drm_mode_object_get
 
     acquire a mode object reference
 
-    :param struct drm_mode_object \*obj:
+    :param obj:
         DRM mode object
+    :type obj: struct drm_mode_object \*
 
 .. _`drm_mode_object_get.description`:
 
@@ -161,14 +173,17 @@ drm_object_attach_property
 
     attach a property to a modeset object
 
-    :param struct drm_mode_object \*obj:
+    :param obj:
         drm modeset object
+    :type obj: struct drm_mode_object \*
 
-    :param struct drm_property \*property:
+    :param property:
         property to attach
+    :type property: struct drm_property \*
 
-    :param uint64_t init_val:
+    :param init_val:
         initial value of the property
+    :type init_val: uint64_t
 
 .. _`drm_object_attach_property.description`:
 
@@ -188,14 +203,17 @@ drm_object_property_set_value
 
     set the value of a property
 
-    :param struct drm_mode_object \*obj:
+    :param obj:
         drm mode object to set property value for
+    :type obj: struct drm_mode_object \*
 
-    :param struct drm_property \*property:
+    :param property:
         property to set
+    :type property: struct drm_property \*
 
-    :param uint64_t val:
+    :param val:
         value the property should be set to
+    :type val: uint64_t
 
 .. _`drm_object_property_set_value.description`:
 
@@ -228,14 +246,17 @@ drm_object_property_get_value
 
     retrieve the value of a property
 
-    :param struct drm_mode_object \*obj:
+    :param obj:
         drm mode object to get property value from
+    :type obj: struct drm_mode_object \*
 
-    :param struct drm_property \*property:
+    :param property:
         property to retrieve
+    :type property: struct drm_property \*
 
-    :param uint64_t \*val:
+    :param val:
         storage for the property value
+    :type val: uint64_t \*
 
 .. _`drm_object_property_get_value.description`:
 
@@ -266,14 +287,17 @@ drm_mode_obj_get_properties_ioctl
 
     get the current value of a object's property
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file info
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_obj_get_properties_ioctl.description`:
 

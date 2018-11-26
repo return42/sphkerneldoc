@@ -10,8 +10,9 @@ i2400m_bm_cmd_prepare
 
     mode command for delivery
 
-    :param struct i2400m_bootrom_header \*cmd:
+    :param cmd:
         pointer to bootrom header to prepare
+    :type cmd: struct i2400m_bootrom_header \*
 
 .. _`i2400m_bm_cmd_prepare.description`:
 
@@ -34,31 +35,37 @@ i2400m_bm_cmd
 
     Execute a boot mode command
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         *undescribed*
+    :type i2400m: struct i2400m \*
 
-    :param const struct i2400m_bootrom_header \*cmd:
+    :param cmd:
         buffer containing the command data (pointing at the header).
         This data can be ANYWHERE (for USB, we will copy it to an
         specific buffer). Make sure everything is in proper little
         endian.
+    :type cmd: const struct i2400m_bootrom_header \*
 
-    :param size_t cmd_size:
+    :param cmd_size:
         size of the command. Will be auto padded to the
         bus-specific drivers padding requirements.
+    :type cmd_size: size_t
 
-    :param struct i2400m_bootrom_header \*ack:
+    :param ack:
         buffer where to place the acknowledgement. If it is a regular
         command response, all fields will be returned with the right,
         native endianess.
+    :type ack: struct i2400m_bootrom_header \*
 
-    :param size_t ack_size:
+    :param ack_size:
         size of \ ``ack``\ , 16 aligned; you need to provide at least
         sizeof(\*ack) bytes and then enough to contain the return data
         from the command
+    :type ack_size: size_t
 
-    :param int flags:
+    :param flags:
         see I2400M_BM_CMD\_\* above.
+    :type flags: int
 
 .. _`i2400m_bm_cmd.description`:
 
@@ -101,23 +108,29 @@ i2400m_download_chunk
 
     write a single chunk of data to the device's memory
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
-    :param const void \*chunk:
+    :param chunk:
         *undescribed*
+    :type chunk: const void \*
 
-    :param size_t __chunk_len:
+    :param __chunk_len:
         *undescribed*
+    :type __chunk_len: size_t
 
-    :param unsigned long addr:
+    :param addr:
         address in the device memory space
+    :type addr: unsigned long
 
-    :param unsigned int direct:
+    :param direct:
         bootrom write mode
+    :type direct: unsigned int
 
-    :param unsigned int do_csum:
+    :param do_csum:
         should a checksum validation be performed
+    :type do_csum: unsigned int
 
 .. _`i2400m_bootrom_init`:
 
@@ -128,11 +141,13 @@ i2400m_bootrom_init
 
     Reboots a powered device into boot mode
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
-    :param enum i2400m_bri flags:
+    :param flags:
         *undescribed*
+    :type flags: enum i2400m_bri
 
 .. _`i2400m_bootrom_init.i2400m_bri_soft`:
 
@@ -205,11 +220,13 @@ i2400m_dev_bootstrap
 
     Bring the device to a known state and upload firmware
 
-    :param struct i2400m \*i2400m:
+    :param i2400m:
         device descriptor
+    :type i2400m: struct i2400m \*
 
-    :param enum i2400m_bri flags:
+    :param flags:
         *undescribed*
+    :type flags: enum i2400m_bri
 
 .. _`i2400m_dev_bootstrap.return`:
 

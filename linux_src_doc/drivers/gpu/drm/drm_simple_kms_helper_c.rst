@@ -26,11 +26,13 @@ drm_simple_display_pipe_attach_bridge
 
     Attach a bridge to the display pipe
 
-    :param struct drm_simple_display_pipe \*pipe:
+    :param pipe:
         simple display pipe object
+    :type pipe: struct drm_simple_display_pipe \*
 
-    :param struct drm_bridge \*bridge:
+    :param bridge:
         bridge to attach
+    :type bridge: struct drm_bridge \*
 
 .. _`drm_simple_display_pipe_attach_bridge.description`:
 
@@ -59,26 +61,33 @@ drm_simple_display_pipe_init
 
     Initialize a simple display pipeline
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_simple_display_pipe \*pipe:
+    :param pipe:
         simple display pipe object to initialize
+    :type pipe: struct drm_simple_display_pipe \*
 
-    :param const struct drm_simple_display_pipe_funcs \*funcs:
+    :param funcs:
         callbacks for the display pipe (optional)
+    :type funcs: const struct drm_simple_display_pipe_funcs \*
 
-    :param const uint32_t \*formats:
+    :param formats:
         array of supported formats (DRM_FORMAT\_\*)
+    :type formats: const uint32_t \*
 
-    :param unsigned int format_count:
+    :param format_count:
         number of elements in \ ``formats``\ 
+    :type format_count: unsigned int
 
-    :param const uint64_t \*format_modifiers:
+    :param format_modifiers:
         array of formats modifiers
+    :type format_modifiers: const uint64_t \*
 
-    :param struct drm_connector \*connector:
+    :param connector:
         connector to attach and register (optional)
+    :type connector: struct drm_connector \*
 
 .. _`drm_simple_display_pipe_init.description`:
 

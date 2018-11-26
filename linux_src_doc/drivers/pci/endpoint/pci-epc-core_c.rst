@@ -10,8 +10,9 @@ pci_epc_put
 
     release the PCI endpoint controller
 
-    :param struct pci_epc \*epc:
+    :param epc:
         epc returned by \ :c:func:`pci_epc_get`\ 
+    :type epc: struct pci_epc \*
 
 .. _`pci_epc_put.description`:
 
@@ -29,8 +30,9 @@ pci_epc_get
 
     get the PCI endpoint controller
 
-    :param const char \*epc_name:
+    :param epc_name:
         device name of the endpoint controller
+    :type epc_name: const char \*
 
 .. _`pci_epc_get.description`:
 
@@ -49,8 +51,9 @@ pci_epc_stop
 
     stop the PCI link
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the link of the EPC device that has to be stopped
+    :type epc: struct pci_epc \*
 
 .. _`pci_epc_stop.description`:
 
@@ -68,8 +71,9 @@ pci_epc_start
 
     start the PCI link
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the link of \*this\* EPC device has to be started
+    :type epc: struct pci_epc \*
 
 .. _`pci_epc_start.description`:
 
@@ -83,28 +87,32 @@ Invoke to start the PCI link
 pci_epc_raise_irq
 =================
 
-.. c:function:: int pci_epc_raise_irq(struct pci_epc *epc, u8 func_no, enum pci_epc_irq_type type, u8 interrupt_num)
+.. c:function:: int pci_epc_raise_irq(struct pci_epc *epc, u8 func_no, enum pci_epc_irq_type type, u16 interrupt_num)
 
     interrupt the host system
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device which has to interrupt the host
+    :type epc: struct pci_epc \*
 
-    :param u8 func_no:
+    :param func_no:
         the endpoint function number in the EPC device
+    :type func_no: u8
 
-    :param enum pci_epc_irq_type type:
-        specify the type of interrupt; legacy or MSI
+    :param type:
+        specify the type of interrupt; legacy, MSI or MSI-X
+    :type type: enum pci_epc_irq_type
 
-    :param u8 interrupt_num:
-        the MSI interrupt number
+    :param interrupt_num:
+        the MSI or MSI-X interrupt number
+    :type interrupt_num: u16
 
 .. _`pci_epc_raise_irq.description`:
 
 Description
 -----------
 
-Invoke to raise an MSI or legacy interrupt
+Invoke to raise an legacy, MSI or MSI-X interrupt
 
 .. _`pci_epc_get_msi`:
 
@@ -115,11 +123,13 @@ pci_epc_get_msi
 
     get the number of MSI interrupt numbers allocated
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device to which MSI interrupts was requested
+    :type epc: struct pci_epc \*
 
-    :param u8 func_no:
+    :param func_no:
         the endpoint function number in the EPC device
+    :type func_no: u8
 
 .. _`pci_epc_get_msi.description`:
 
@@ -137,14 +147,17 @@ pci_epc_set_msi
 
     set the number of MSI interrupt numbers required
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device on which MSI has to be configured
+    :type epc: struct pci_epc \*
 
-    :param u8 func_no:
+    :param func_no:
         the endpoint function number in the EPC device
+    :type func_no: u8
 
-    :param u8 interrupts:
+    :param interrupts:
         number of MSI interrupts required by the EPF
+    :type interrupts: u8
 
 .. _`pci_epc_set_msi.description`:
 
@@ -152,6 +165,58 @@ Description
 -----------
 
 Invoke to set the required number of MSI interrupts.
+
+.. _`pci_epc_get_msix`:
+
+pci_epc_get_msix
+================
+
+.. c:function:: int pci_epc_get_msix(struct pci_epc *epc, u8 func_no)
+
+    get the number of MSI-X interrupt numbers allocated
+
+    :param epc:
+        the EPC device to which MSI-X interrupts was requested
+    :type epc: struct pci_epc \*
+
+    :param func_no:
+        the endpoint function number in the EPC device
+    :type func_no: u8
+
+.. _`pci_epc_get_msix.description`:
+
+Description
+-----------
+
+Invoke to get the number of MSI-X interrupts allocated by the RC
+
+.. _`pci_epc_set_msix`:
+
+pci_epc_set_msix
+================
+
+.. c:function:: int pci_epc_set_msix(struct pci_epc *epc, u8 func_no, u16 interrupts)
+
+    set the number of MSI-X interrupt numbers required
+
+    :param epc:
+        the EPC device on which MSI-X has to be configured
+    :type epc: struct pci_epc \*
+
+    :param func_no:
+        the endpoint function number in the EPC device
+    :type func_no: u8
+
+    :param interrupts:
+        number of MSI-X interrupts required by the EPF
+    :type interrupts: u16
+
+.. _`pci_epc_set_msix.description`:
+
+Description
+-----------
+
+Invoke to set the required number of MSI-X interrupts.
 
 .. _`pci_epc_unmap_addr`:
 
@@ -162,14 +227,17 @@ pci_epc_unmap_addr
 
     unmap CPU address from PCI address
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device on which address is allocated
+    :type epc: struct pci_epc \*
 
-    :param u8 func_no:
+    :param func_no:
         the endpoint function number in the EPC device
+    :type func_no: u8
 
-    :param phys_addr_t phys_addr:
+    :param phys_addr:
         physical address of the local system
+    :type phys_addr: phys_addr_t
 
 .. _`pci_epc_unmap_addr.description`:
 
@@ -187,20 +255,25 @@ pci_epc_map_addr
 
     map CPU address to PCI address
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device on which address is allocated
+    :type epc: struct pci_epc \*
 
-    :param u8 func_no:
+    :param func_no:
         the endpoint function number in the EPC device
+    :type func_no: u8
 
-    :param phys_addr_t phys_addr:
+    :param phys_addr:
         physical address of the local system
+    :type phys_addr: phys_addr_t
 
-    :param u64 pci_addr:
+    :param pci_addr:
         PCI address to which the physical address should be mapped
+    :type pci_addr: u64
 
-    :param size_t size:
+    :param size:
         the size of the allocation
+    :type size: size_t
 
 .. _`pci_epc_map_addr.description`:
 
@@ -218,14 +291,17 @@ pci_epc_clear_bar
 
     reset the BAR
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device for which the BAR has to be cleared
+    :type epc: struct pci_epc \*
 
-    :param u8 func_no:
+    :param func_no:
         the endpoint function number in the EPC device
+    :type func_no: u8
 
-    :param struct pci_epf_bar \*epf_bar:
+    :param epf_bar:
         the struct epf_bar that contains the BAR information
+    :type epf_bar: struct pci_epf_bar \*
 
 .. _`pci_epc_clear_bar.description`:
 
@@ -243,14 +319,17 @@ pci_epc_set_bar
 
     configure BAR in order for host to assign PCI addr space
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device on which BAR has to be configured
+    :type epc: struct pci_epc \*
 
-    :param u8 func_no:
+    :param func_no:
         the endpoint function number in the EPC device
+    :type func_no: u8
 
-    :param struct pci_epf_bar \*epf_bar:
+    :param epf_bar:
         the struct epf_bar that contains the BAR information
+    :type epf_bar: struct pci_epf_bar \*
 
 .. _`pci_epc_set_bar.description`:
 
@@ -268,14 +347,17 @@ pci_epc_write_header
 
     write standard configuration header
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device to which the configuration header should be written
+    :type epc: struct pci_epc \*
 
-    :param u8 func_no:
+    :param func_no:
         the endpoint function number in the EPC device
+    :type func_no: u8
 
-    :param struct pci_epf_header \*header:
+    :param header:
         standard configuration header fields
+    :type header: struct pci_epf_header \*
 
 .. _`pci_epc_write_header.description`:
 
@@ -296,11 +378,13 @@ pci_epc_add_epf
 
     bind PCI endpoint function to an endpoint controller
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device to which the endpoint function should be added
+    :type epc: struct pci_epc \*
 
-    :param struct pci_epf \*epf:
+    :param epf:
         the endpoint function to be added
+    :type epf: struct pci_epf \*
 
 .. _`pci_epc_add_epf.description`:
 
@@ -320,11 +404,13 @@ pci_epc_remove_epf
 
     remove PCI endpoint function from endpoint controller
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device from which the endpoint function should be removed
+    :type epc: struct pci_epc \*
 
-    :param struct pci_epf \*epf:
+    :param epf:
         the endpoint function to be removed
+    :type epf: struct pci_epf \*
 
 .. _`pci_epc_remove_epf.description`:
 
@@ -342,8 +428,9 @@ pci_epc_linkup
 
     Notify the EPF device that EPC device has established a connection with the Root Complex.
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device which has established link with the host
+    :type epc: struct pci_epc \*
 
 .. _`pci_epc_linkup.description`:
 
@@ -362,8 +449,9 @@ pci_epc_destroy
 
     destroy the EPC device
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device that has to be destroyed
+    :type epc: struct pci_epc \*
 
 .. _`pci_epc_destroy.description`:
 
@@ -381,11 +469,13 @@ devm_pci_epc_destroy
 
     destroy the EPC device
 
-    :param struct device \*dev:
+    :param dev:
         device that wants to destroy the EPC
+    :type dev: struct device \*
 
-    :param struct pci_epc \*epc:
+    :param epc:
         the EPC device that has to be destroyed
+    :type epc: struct pci_epc \*
 
 .. _`devm_pci_epc_destroy.description`:
 
@@ -404,14 +494,17 @@ pci_epc and destroy the EPC device.
 
     create a new endpoint controller (EPC) device
 
-    :param struct device \*dev:
+    :param dev:
         device that is creating the new EPC
+    :type dev: struct device \*
 
-    :param const struct pci_epc_ops \*ops:
+    :param ops:
         function pointers for performing EPC operations
+    :type ops: const struct pci_epc_ops \*
 
-    :param struct module \*owner:
+    :param owner:
         the owner of the module that creates the EPC device
+    :type owner: struct module \*
 
 .. _`__pci_epc_create.description`:
 
@@ -429,14 +522,17 @@ Invoke to create a new EPC device and add it to pci_epc class.
 
     create a new endpoint controller (EPC) device
 
-    :param struct device \*dev:
+    :param dev:
         device that is creating the new EPC
+    :type dev: struct device \*
 
-    :param const struct pci_epc_ops \*ops:
+    :param ops:
         function pointers for performing EPC operations
+    :type ops: const struct pci_epc_ops \*
 
-    :param struct module \*owner:
+    :param owner:
         the owner of the module that creates the EPC device
+    :type owner: struct module \*
 
 .. _`__devm_pci_epc_create.description`:
 

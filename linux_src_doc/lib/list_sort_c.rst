@@ -10,11 +10,13 @@ list_sort
 
     sort a list
 
-    :param void \*priv:
+    :param priv:
         private data, opaque to \ :c:func:`list_sort`\ , passed to \ ``cmp``\ 
+    :type priv: void \*
 
-    :param struct list_head \*head:
+    :param head:
         the list to sort
+    :type head: struct list_head \*
 
     :param int (\*cmp)(void \*priv, struct list_head \*a, struct list_head \*b):
         the elements comparison function

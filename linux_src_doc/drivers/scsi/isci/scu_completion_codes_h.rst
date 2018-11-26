@@ -24,8 +24,9 @@ SCU_COMPLETION_TYPE
 
 .. c:function::  SCU_COMPLETION_TYPE( type)
 
-    :param  type:
+    :param type:
         *undescribed*
+    :type type: 
 
 .. _`scu_completion_type.description`:
 
@@ -55,8 +56,9 @@ SCU_GET_COMPLETION_TYPE
 
 .. c:function::  SCU_GET_COMPLETION_TYPE( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_get_completion_type.description`:
 
@@ -72,8 +74,9 @@ SCU_GET_COMPLETION_STATUS
 
 .. c:function::  SCU_GET_COMPLETION_STATUS( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_get_completion_status.description`:
 
@@ -89,8 +92,9 @@ SCU_GET_COMPLETION_TL_STATUS
 
 .. c:function::  SCU_GET_COMPLETION_TL_STATUS( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_get_completion_tl_status.description`:
 
@@ -106,8 +110,9 @@ SCU_MAKE_COMPLETION_STATUS
 
 .. c:function::  SCU_MAKE_COMPLETION_STATUS( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_make_completion_status.description`:
 
@@ -125,8 +130,9 @@ SCU_NORMALIZE_COMPLETION_STATUS
 
 .. c:function::  SCU_NORMALIZE_COMPLETION_STATUS( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_normalize_completion_status.description`:
 
@@ -143,8 +149,9 @@ SCU_GET_COMPLETION_SDMA_STATUS
 
 .. c:function::  SCU_GET_COMPLETION_SDMA_STATUS( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_get_completion_sdma_status.description`:
 
@@ -160,8 +167,9 @@ SCU_GET_COMPLETION_PEG
 
 .. c:function::  SCU_GET_COMPLETION_PEG( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_get_completion_peg.description`:
 
@@ -177,8 +185,9 @@ SCU_GET_COMPLETION_PORT
 
 .. c:function::  SCU_GET_COMPLETION_PORT( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_get_completion_port.description`:
 
@@ -194,8 +203,9 @@ SCU_GET_PROTOCOL_ENGINE_INDEX
 
 .. c:function::  SCU_GET_PROTOCOL_ENGINE_INDEX( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_get_protocol_engine_index.description`:
 
@@ -211,8 +221,9 @@ SCU_GET_COMPLETION_INDEX
 
 .. c:function::  SCU_GET_COMPLETION_INDEX( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_get_completion_index.description`:
 
@@ -229,8 +240,9 @@ SCU_GET_FRAME_INDEX
 
 .. c:function::  SCU_GET_FRAME_INDEX( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_get_frame_index.description`:
 
@@ -247,8 +259,9 @@ SCU_GET_FRAME_ERROR
 
 .. c:function::  SCU_GET_FRAME_ERROR( completion_code)
 
-    :param  completion_code:
+    :param completion_code:
         *undescribed*
+    :type completion_code: 
 
 .. _`scu_get_frame_error.description`:
 

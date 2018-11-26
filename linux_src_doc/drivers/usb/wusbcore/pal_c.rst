@@ -10,8 +10,9 @@ wusbhc_pal_register
 
     register the WUSB HC as a UWB PAL
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         the WUSB HC
+    :type wusbhc: struct wusbhc \*
 
 .. _`wusbhc_pal_unregister`:
 
@@ -22,8 +23,9 @@ wusbhc_pal_unregister
 
     unregister the WUSB HC as a UWB PAL
 
-    :param struct wusbhc \*wusbhc:
+    :param wusbhc:
         the WUSB HC
+    :type wusbhc: struct wusbhc \*
 
 .. This file was automatic generated / don't edit.
 

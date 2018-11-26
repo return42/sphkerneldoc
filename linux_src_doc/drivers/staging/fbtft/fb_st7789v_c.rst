@@ -87,8 +87,9 @@ init_display
 
     initialize the display controller
 
-    :param struct fbtft_par \*par:
+    :param par:
         FBTFT parameter object
+    :type par: struct fbtft_par \*
 
 .. _`init_display.description`:
 
@@ -118,8 +119,9 @@ set_var
 
     apply LCD properties like rotation and BGR mode
 
-    :param struct fbtft_par \*par:
+    :param par:
         FBTFT parameter object
+    :type par: struct fbtft_par \*
 
 .. _`set_var.return`:
 
@@ -137,11 +139,13 @@ set_gamma
 
     set gamma curves
 
-    :param struct fbtft_par \*par:
+    :param par:
         FBTFT parameter object
+    :type par: struct fbtft_par \*
 
-    :param u32 \*curves:
+    :param curves:
         gamma curves
+    :type curves: u32 \*
 
 .. _`set_gamma.description`:
 
@@ -170,11 +174,13 @@ blank
 
     blank the display
 
-    :param struct fbtft_par \*par:
+    :param par:
         FBTFT parameter object
+    :type par: struct fbtft_par \*
 
-    :param bool on:
+    :param on:
         whether to enable or disable blanking the display
+    :type on: bool
 
 .. _`blank.return`:
 

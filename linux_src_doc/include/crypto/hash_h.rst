@@ -261,15 +261,18 @@ crypto_alloc_ahash
 
     allocate ahash cipher handle
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         ahash cipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_alloc_ahash.description`:
 
@@ -297,8 +300,9 @@ crypto_free_ahash
 
     zeroize and free the ahash handle
 
-    :param struct crypto_ahash \*tfm:
+    :param tfm:
         cipher handle to be freed
+    :type tfm: struct crypto_ahash \*
 
 .. _`crypto_has_ahash`:
 
@@ -309,15 +313,18 @@ crypto_has_ahash
 
     Search for the availability of an ahash.
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         ahash
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the ahash
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the ahash
+    :type mask: u32
 
 .. _`crypto_has_ahash.return`:
 
@@ -336,8 +343,9 @@ crypto_ahash_blocksize
 
     obtain block size for cipher
 
-    :param struct crypto_ahash \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_ahash \*
 
 .. _`crypto_ahash_blocksize.description`:
 
@@ -363,8 +371,9 @@ crypto_ahash_digestsize
 
     obtain message digest size
 
-    :param struct crypto_ahash \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_ahash \*
 
 .. _`crypto_ahash_digestsize.description`:
 
@@ -390,8 +399,9 @@ crypto_ahash_statesize
 
     obtain size of the ahash state
 
-    :param struct crypto_ahash \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_ahash \*
 
 .. _`crypto_ahash_statesize.description`:
 
@@ -418,9 +428,10 @@ crypto_ahash_reqtfm
 
     obtain cipher handle from request
 
-    :param struct ahash_request \*req:
+    :param req:
         asynchronous request handle that contains the reference to the ahash
         cipher handle
+    :type req: struct ahash_request \*
 
 .. _`crypto_ahash_reqtfm.description`:
 
@@ -446,8 +457,9 @@ crypto_ahash_reqsize
 
     obtain size of the request data structure
 
-    :param struct crypto_ahash \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_ahash \*
 
 .. _`crypto_ahash_reqsize.return`:
 
@@ -465,14 +477,17 @@ crypto_ahash_setkey
 
     set key for cipher handle
 
-    :param struct crypto_ahash \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_ahash \*
 
-    :param const u8 \*key:
+    :param key:
         buffer holding the key
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         length of the key in bytes
+    :type keylen: unsigned int
 
 .. _`crypto_ahash_setkey.description`:
 
@@ -498,9 +513,10 @@ crypto_ahash_finup
 
     update and finalize message digest
 
-    :param struct ahash_request \*req:
+    :param req:
         reference to the ahash_request handle that holds all information
         needed to perform the cipher operation
+    :type req: struct ahash_request \*
 
 .. _`crypto_ahash_finup.description`:
 
@@ -527,9 +543,10 @@ crypto_ahash_final
 
     calculate message digest
 
-    :param struct ahash_request \*req:
+    :param req:
         reference to the ahash_request handle that holds all information
         needed to perform the cipher operation
+    :type req: struct ahash_request \*
 
 .. _`crypto_ahash_final.description`:
 
@@ -559,9 +576,10 @@ crypto_ahash_digest
 
     calculate message digest for a buffer
 
-    :param struct ahash_request \*req:
+    :param req:
         reference to the ahash_request handle that holds all information
         needed to perform the cipher operation
+    :type req: struct ahash_request \*
 
 .. _`crypto_ahash_digest.description`:
 
@@ -588,11 +606,13 @@ crypto_ahash_export
 
     extract current message digest state
 
-    :param struct ahash_request \*req:
+    :param req:
         reference to the ahash_request handle whose state is exported
+    :type req: struct ahash_request \*
 
-    :param void \*out:
+    :param out:
         output buffer of sufficient size that can hold the hash state
+    :type out: void \*
 
 .. _`crypto_ahash_export.description`:
 
@@ -619,11 +639,13 @@ crypto_ahash_import
 
     import message digest state
 
-    :param struct ahash_request \*req:
+    :param req:
         reference to ahash_request handle the state is imported into
+    :type req: struct ahash_request \*
 
-    :param const void \*in:
+    :param in:
         buffer holding the state
+    :type in: const void \*
 
 .. _`crypto_ahash_import.description`:
 
@@ -650,9 +672,10 @@ crypto_ahash_init
 
     (re)initialize message digest handle
 
-    :param struct ahash_request \*req:
+    :param req:
         ahash_request handle that already is initialized with all necessary
         data using the ahash_request_* API functions
+    :type req: struct ahash_request \*
 
 .. _`crypto_ahash_init.description`:
 
@@ -679,9 +702,10 @@ crypto_ahash_update
 
     add data to message digest for processing
 
-    :param struct ahash_request \*req:
+    :param req:
         ahash_request handle that was previously initialized with the
         crypto_ahash_init call.
+    :type req: struct ahash_request \*
 
 .. _`crypto_ahash_update.description`:
 
@@ -720,11 +744,13 @@ ahash_request_set_tfm
 
     update cipher handle reference in request
 
-    :param struct ahash_request \*req:
+    :param req:
         request handle to be modified
+    :type req: struct ahash_request \*
 
-    :param struct crypto_ahash \*tfm:
+    :param tfm:
         cipher handle that shall be added to the request handle
+    :type tfm: struct crypto_ahash \*
 
 .. _`ahash_request_set_tfm.description`:
 
@@ -743,11 +769,13 @@ ahash_request_alloc
 
     allocate request data structure
 
-    :param struct crypto_ahash \*tfm:
+    :param tfm:
         cipher handle to be registered with the request
+    :type tfm: struct crypto_ahash \*
 
-    :param gfp_t gfp:
+    :param gfp:
         memory allocation flag that is handed to kmalloc by the API call.
+    :type gfp: gfp_t
 
 .. _`ahash_request_alloc.description`:
 
@@ -775,8 +803,9 @@ ahash_request_free
 
     zeroize and free the request data structure
 
-    :param struct ahash_request \*req:
+    :param req:
         request data structure cipher handle to be freed
+    :type req: struct ahash_request \*
 
 .. _`ahash_request_set_callback`:
 
@@ -787,19 +816,22 @@ ahash_request_set_callback
 
     set asynchronous callback function
 
-    :param struct ahash_request \*req:
+    :param req:
         request handle
+    :type req: struct ahash_request \*
 
-    :param u32 flags:
+    :param flags:
         specify zero or an ORing of the flags
         CRYPTO_TFM_REQ_MAY_BACKLOG the request queue may back log and
         increase the wait queue beyond the initial maximum size;
         CRYPTO_TFM_REQ_MAY_SLEEP the request processing may sleep
+    :type flags: u32
 
-    :param crypto_completion_t compl:
+    :param compl:
         callback function pointer to be registered with the request handle
+    :type compl: crypto_completion_t
 
-    :param void \*data:
+    :param data:
         The data pointer refers to memory that is not used by the kernel
         crypto API, but provided to the callback function for it to use. Here,
         the caller can provide a reference to memory the callback function can
@@ -808,6 +840,7 @@ ahash_request_set_callback
         related functionality which can be referenced using this pointer. The
         callback function can access the memory via the "data" field in the
         \ :c:type:`struct crypto_async_request <crypto_async_request>`\  data structure provided to the callback function.
+    :type data: void \*
 
 .. _`ahash_request_set_callback.description`:
 
@@ -831,19 +864,23 @@ ahash_request_set_crypt
 
     set data buffers
 
-    :param struct ahash_request \*req:
+    :param req:
         ahash_request handle to be updated
+    :type req: struct ahash_request \*
 
-    :param struct scatterlist \*src:
+    :param src:
         source scatter/gather list
+    :type src: struct scatterlist \*
 
-    :param u8 \*result:
+    :param result:
         buffer that is filled with the message digest -- the caller must
         ensure that the buffer has sufficient space by, for example, calling
         \ :c:func:`crypto_ahash_digestsize`\ 
+    :type result: u8 \*
 
-    :param unsigned int nbytes:
+    :param nbytes:
         number of bytes to process from the source scatter/gather list
+    :type nbytes: unsigned int
 
 .. _`ahash_request_set_crypt.description`:
 
@@ -877,15 +914,18 @@ crypto_alloc_shash
 
     allocate message digest handle
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         message digest cipher
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the cipher
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the cipher
+    :type mask: u32
 
 .. _`crypto_alloc_shash.description`:
 
@@ -913,8 +953,9 @@ crypto_free_shash
 
     zeroize and free the message digest handle
 
-    :param struct crypto_shash \*tfm:
+    :param tfm:
         cipher handle to be freed
+    :type tfm: struct crypto_shash \*
 
 .. _`crypto_shash_blocksize`:
 
@@ -925,8 +966,9 @@ crypto_shash_blocksize
 
     obtain block size for cipher
 
-    :param struct crypto_shash \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_shash \*
 
 .. _`crypto_shash_blocksize.description`:
 
@@ -952,8 +994,9 @@ crypto_shash_digestsize
 
     obtain message digest size
 
-    :param struct crypto_shash \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_shash \*
 
 .. _`crypto_shash_digestsize.description`:
 
@@ -979,8 +1022,9 @@ crypto_shash_descsize
 
     obtain the operational state size
 
-    :param struct crypto_shash \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_shash \*
 
 .. _`crypto_shash_descsize.description`:
 
@@ -1012,14 +1056,17 @@ crypto_shash_setkey
 
     set key for message digest
 
-    :param struct crypto_shash \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_shash \*
 
-    :param const u8 \*key:
+    :param key:
         buffer holding the key
+    :type key: const u8 \*
 
-    :param unsigned int keylen:
+    :param keylen:
         length of the key in bytes
+    :type keylen: unsigned int
 
 .. _`crypto_shash_setkey.description`:
 
@@ -1046,17 +1093,21 @@ crypto_shash_digest
 
     calculate message digest for buffer
 
-    :param struct shash_desc \*desc:
+    :param desc:
         see \ :c:func:`crypto_shash_final`\ 
+    :type desc: struct shash_desc \*
 
-    :param const u8 \*data:
+    :param data:
         see \ :c:func:`crypto_shash_update`\ 
+    :type data: const u8 \*
 
-    :param unsigned int len:
+    :param len:
         see \ :c:func:`crypto_shash_update`\ 
+    :type len: unsigned int
 
-    :param u8 \*out:
+    :param out:
         see \ :c:func:`crypto_shash_final`\ 
+    :type out: u8 \*
 
 .. _`crypto_shash_digest.description`:
 
@@ -1084,11 +1135,13 @@ crypto_shash_export
 
     extract operational state for message digest
 
-    :param struct shash_desc \*desc:
+    :param desc:
         reference to the operational state handle whose state is exported
+    :type desc: struct shash_desc \*
 
-    :param void \*out:
+    :param out:
         output buffer of sufficient size that can hold the hash state
+    :type out: void \*
 
 .. _`crypto_shash_export.description`:
 
@@ -1115,11 +1168,13 @@ crypto_shash_import
 
     import operational state
 
-    :param struct shash_desc \*desc:
+    :param desc:
         reference to the operational state handle the state imported into
+    :type desc: struct shash_desc \*
 
-    :param const void \*in:
+    :param in:
         buffer holding the state
+    :type in: const void \*
 
 .. _`crypto_shash_import.description`:
 
@@ -1146,8 +1201,9 @@ crypto_shash_init
 
     (re)initialize message digest
 
-    :param struct shash_desc \*desc:
+    :param desc:
         operational state handle that is already filled
+    :type desc: struct shash_desc \*
 
 .. _`crypto_shash_init.description`:
 
@@ -1175,14 +1231,17 @@ crypto_shash_update
 
     add data to message digest for processing
 
-    :param struct shash_desc \*desc:
+    :param desc:
         operational state handle that is already initialized
+    :type desc: struct shash_desc \*
 
-    :param const u8 \*data:
+    :param data:
         input data to be added to the message digest
+    :type data: const u8 \*
 
-    :param unsigned int len:
+    :param len:
         length of the input data
+    :type len: unsigned int
 
 .. _`crypto_shash_update.description`:
 
@@ -1208,11 +1267,13 @@ crypto_shash_final
 
     calculate message digest
 
-    :param struct shash_desc \*desc:
+    :param desc:
         operational state handle that is already filled with data
+    :type desc: struct shash_desc \*
 
-    :param u8 \*out:
+    :param out:
         output buffer filled with the message digest
+    :type out: u8 \*
 
 .. _`crypto_shash_final.description`:
 
@@ -1241,17 +1302,21 @@ crypto_shash_finup
 
     calculate message digest of buffer
 
-    :param struct shash_desc \*desc:
+    :param desc:
         see \ :c:func:`crypto_shash_final`\ 
+    :type desc: struct shash_desc \*
 
-    :param const u8 \*data:
+    :param data:
         see \ :c:func:`crypto_shash_update`\ 
+    :type data: const u8 \*
 
-    :param unsigned int len:
+    :param len:
         see \ :c:func:`crypto_shash_update`\ 
+    :type len: unsigned int
 
-    :param u8 \*out:
+    :param out:
         see \ :c:func:`crypto_shash_final`\ 
+    :type out: u8 \*
 
 .. _`crypto_shash_finup.description`:
 

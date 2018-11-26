@@ -10,14 +10,17 @@
 
     report failure condition on a filesystem
 
-    :param struct super_block \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct super_block \*
 
-    :param const char \*function:
+    :param function:
         *undescribed*
+    :type function: const char \*
 
-    :param const char \*fmt:
+    :param fmt:
         *undescribed*
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -46,8 +49,9 @@ nilfs_cleanup_super
 
     write filesystem state for cleanup
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance to be unmounted or degraded to read-only
+    :type sb: struct super_block \*
 
 .. _`nilfs_cleanup_super.description`:
 
@@ -67,11 +71,13 @@ nilfs_move_2nd_super
 
     relocate secondary super block
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
-    :param loff_t sb2off:
+    :param sb2off:
         new offset of the secondary super block (in bytes)
+    :type sb2off: loff_t
 
 .. _`nilfs_resize_fs`:
 
@@ -82,11 +88,13 @@ nilfs_resize_fs
 
     resize the filesystem
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
-    :param __u64 newsize:
+    :param newsize:
         new size of the filesystem (in bytes)
+    :type newsize: __u64
 
 .. _`nilfs_tree_is_busy`:
 
@@ -97,8 +105,9 @@ nilfs_tree_is_busy
 
     try to shrink dentries of a checkpoint
 
-    :param struct dentry \*root_dentry:
+    :param root_dentry:
         root dentry of the tree to be shrunk
+    :type root_dentry: struct dentry \*
 
 .. _`nilfs_tree_is_busy.description`:
 
@@ -116,14 +125,17 @@ nilfs_fill_super
 
     initialize a super block instance
 
-    :param struct super_block \*sb:
+    :param sb:
         super_block
+    :type sb: struct super_block \*
 
-    :param void \*data:
+    :param data:
         mount options
+    :type data: void \*
 
-    :param int silent:
+    :param silent:
         silent mode flag
+    :type silent: int
 
 .. _`nilfs_fill_super.description`:
 
@@ -142,11 +154,13 @@ nilfs_identify
 
     pre-read mount options needed to identify mount instance
 
-    :param char \*data:
+    :param data:
         mount options
+    :type data: char \*
 
-    :param struct nilfs_super_data \*sd:
+    :param sd:
         nilfs_super_data
+    :type sd: struct nilfs_super_data \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,20 +10,25 @@ iwl_prep_station
 
     Prepare station information for addition
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
-    :param const u8 \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const u8 \*
 
-    :param bool is_ap:
+    :param is_ap:
         *undescribed*
+    :type is_ap: bool
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
 .. _`iwl_prep_station.description`:
 
@@ -39,23 +44,29 @@ iwl_add_station_common
 
 .. c:function:: int iwl_add_station_common(struct iwl_priv *priv, struct iwl_rxon_context *ctx, const u8 *addr, bool is_ap, struct ieee80211_sta *sta, u8 *sta_id_r)
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
-    :param const u8 \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const u8 \*
 
-    :param bool is_ap:
+    :param is_ap:
         *undescribed*
+    :type is_ap: bool
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
-    :param u8 \*sta_id_r:
+    :param sta_id_r:
         *undescribed*
+    :type sta_id_r: u8 \*
 
 .. _`iwl_sta_ucode_deactivate`:
 
@@ -66,11 +77,13 @@ iwl_sta_ucode_deactivate
 
     deactivate ucode status for a station
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param u8 sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: u8
 
 .. _`iwl_remove_station`:
 
@@ -81,14 +94,17 @@ iwl_remove_station
 
     Remove driver's knowledge of station.
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param const u8 sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: const u8
 
-    :param const u8 \*addr:
+    :param addr:
         *undescribed*
+    :type addr: const u8 \*
 
 .. _`iwl_clear_ucode_stations`:
 
@@ -99,11 +115,13 @@ iwl_clear_ucode_stations
 
     clear ucode station table bits
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
 .. _`iwl_clear_ucode_stations.description`:
 
@@ -124,11 +142,13 @@ iwl_restore_stations
 
     Restore driver known stations to device
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
 .. _`iwl_restore_stations.description`:
 
@@ -149,14 +169,17 @@ is_lq_table_valid
 
     Test one aspect of LQ cmd for validity
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
-    :param struct iwl_link_quality_cmd \*lq:
+    :param lq:
         *undescribed*
+    :type lq: struct iwl_link_quality_cmd \*
 
 .. _`is_lq_table_valid.description`:
 
@@ -180,21 +203,26 @@ iwl_send_lq_cmd
 
     Send link quality command
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
-    :param struct iwl_link_quality_cmd \*lq:
+    :param lq:
         *undescribed*
+    :type lq: struct iwl_link_quality_cmd \*
 
-    :param u8 flags:
+    :param flags:
         *undescribed*
+    :type flags: u8
 
-    :param bool init:
+    :param init:
         This command is sent as part of station initialization right
         after station has been added.
+    :type init: bool
 
 .. _`iwl_send_lq_cmd.description`:
 
@@ -215,11 +243,13 @@ iwlagn_alloc_bcast_station
 
     add broadcast station into driver's station table.
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
 .. _`iwlagn_alloc_bcast_station.description`:
 
@@ -239,11 +269,13 @@ iwl_update_bcast_station
 
     update broadcast station's LQ command
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
 .. _`iwl_update_bcast_station.description`:
 
@@ -262,14 +294,17 @@ iwl_sta_tx_modify_enable_tid
 
     Enable Tx for this TID in station table
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param int sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: int
 
-    :param int tid:
+    :param tid:
         *undescribed*
+    :type tid: int
 
 .. This file was automatic generated / don't edit.
 

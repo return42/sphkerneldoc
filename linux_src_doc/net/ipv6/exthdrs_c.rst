@@ -10,17 +10,21 @@ ipv6_renew_options
 
     replace a specific ext hdr with a new one.
 
-    :param struct sock \*sk:
+    :param sk:
         sock from which to allocate memory
+    :type sk: struct sock \*
 
-    :param struct ipv6_txoptions \*opt:
+    :param opt:
         original options
+    :type opt: struct ipv6_txoptions \*
 
-    :param int newtype:
+    :param newtype:
         option type to replace in \ ``opt``\ 
+    :type newtype: int
 
-    :param struct ipv6_opt_hdr \*newopt:
+    :param newopt:
         new option of type \ ``newtype``\  to replace (user-mem)
+    :type newopt: struct ipv6_opt_hdr \*
 
 .. _`ipv6_renew_options.description`:
 
@@ -48,14 +52,17 @@ fl6_update_dst
 
     update flowi destination address with info given by srcrt option, if any.
 
-    :param struct flowi6 \*fl6:
+    :param fl6:
         flowi6 for which daddr is to be updated
+    :type fl6: struct flowi6 \*
 
-    :param const struct ipv6_txoptions \*opt:
+    :param opt:
         struct ipv6_txoptions in which to look for srcrt opt
+    :type opt: const struct ipv6_txoptions \*
 
-    :param struct in6_addr \*orig:
+    :param orig:
         copy of original daddr address if modified
+    :type orig: struct in6_addr \*
 
 .. _`fl6_update_dst.description`:
 

@@ -10,8 +10,9 @@ mmgrab
 
     Pin a \ :c:type:`struct mm_struct <mm_struct>`\ .
 
-    :param struct mm_struct \*mm:
+    :param mm:
         The \ :c:type:`struct mm_struct <mm_struct>`\  to pin.
+    :type mm: struct mm_struct \*
 
 .. _`mmgrab.description`:
 
@@ -40,8 +41,9 @@ mmget
 
     Pin the address space associated with a \ :c:type:`struct mm_struct <mm_struct>`\ .
 
-    :param struct mm_struct \*mm:
+    :param mm:
         The address space to pin.
+    :type mm: struct mm_struct \*
 
 .. _`mmget.description`:
 
@@ -69,8 +71,9 @@ memalloc_noio_save
 
     Marks implicit GFP_NOIO allocation scope.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`memalloc_noio_save.description`:
 
@@ -94,8 +97,9 @@ memalloc_noio_restore
 
     Ends the implicit GFP_NOIO scope.
 
-    :param unsigned int flags:
+    :param flags:
         Flags to restore.
+    :type flags: unsigned int
 
 .. _`memalloc_noio_restore.description`:
 
@@ -115,8 +119,9 @@ memalloc_nofs_save
 
     Marks implicit GFP_NOFS allocation scope.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`memalloc_nofs_save.description`:
 
@@ -140,8 +145,9 @@ memalloc_nofs_restore
 
     Ends the implicit GFP_NOFS scope.
 
-    :param unsigned int flags:
+    :param flags:
         Flags to restore.
+    :type flags: unsigned int
 
 .. _`memalloc_nofs_restore.description`:
 
@@ -151,6 +157,56 @@ Description
 Ends the implicit GFP_NOFS scope started by memalloc_nofs_save function.
 Always make sure that that the given flags is the return value from the
 pairing memalloc_nofs_save call.
+
+.. _`memalloc_use_memcg`:
+
+memalloc_use_memcg
+==================
+
+.. c:function:: void memalloc_use_memcg(struct mem_cgroup *memcg)
+
+    Starts the remote memcg charging scope.
+
+    :param memcg:
+        memcg to charge.
+    :type memcg: struct mem_cgroup \*
+
+.. _`memalloc_use_memcg.description`:
+
+Description
+-----------
+
+This function marks the beginning of the remote memcg charging scope. All the
+__GFP_ACCOUNT allocations till the end of the scope will be charged to the
+given memcg.
+
+.. _`memalloc_use_memcg.note`:
+
+NOTE
+----
+
+This function is not nesting safe.
+
+.. _`memalloc_unuse_memcg`:
+
+memalloc_unuse_memcg
+====================
+
+.. c:function:: void memalloc_unuse_memcg( void)
+
+    Ends the remote memcg charging scope.
+
+    :param void:
+        no arguments
+    :type void: 
+
+.. _`memalloc_unuse_memcg.description`:
+
+Description
+-----------
+
+This function marks the end of the remote memcg charging scope started by
+\ :c:func:`memalloc_use_memcg`\ .
 
 .. This file was automatic generated / don't edit.
 

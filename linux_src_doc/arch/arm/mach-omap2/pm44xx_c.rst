@@ -42,8 +42,9 @@ omap_default_idle
 
     OMAP4 default ilde routine.'
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap_default_idle.description`:
 
@@ -63,8 +64,9 @@ omap4plus_init_static_deps
 
     Initialize a static dependency map
 
-    :param const struct static_dep_map \*map:
+    :param map:
         Mapping of clock domains
+    :type map: const struct static_dep_map \*
 
 .. _`omap4_pm_init_early`:
 
@@ -75,8 +77,9 @@ omap4_pm_init_early
 
     Does early initialization necessary for OMAP4+ devices
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap4_pm_init_early.description`:
 
@@ -94,8 +97,9 @@ omap4_pm_init
 
     Init routine for OMAP4+ devices
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap4_pm_init.description`:
 

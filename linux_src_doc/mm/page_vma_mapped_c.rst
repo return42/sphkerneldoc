@@ -8,27 +8,28 @@ check_pte
 
 .. c:function:: bool check_pte(struct page_vma_mapped_walk *pvmw)
 
-    check if \ ``pvmw``\ ->page is mapped at the \ ``pvmw``\ ->pte
+    check if \ ``pvmw->page``\  is mapped at the \ ``pvmw->pte``\ 
 
-    :param struct page_vma_mapped_walk \*pvmw:
+    :param pvmw:
         *undescribed*
+    :type pvmw: struct page_vma_mapped_walk \*
 
 .. _`check_pte.description`:
 
 Description
 -----------
 
-\ :c:func:`page_vma_mapped_walk`\  found a place where \ ``pvmw``\ ->page is \*potentially\*
+\ :c:func:`page_vma_mapped_walk`\  found a place where \ ``pvmw->page``\  is \*potentially\*
 mapped. \ :c:func:`check_pte`\  has to validate this.
 
-\ ``pvmw``\ ->pte may point to empty PTE, swap PTE or PTE pointing to arbitrary
+\ ``pvmw->pte``\  may point to empty PTE, swap PTE or PTE pointing to arbitrary
 page.
 
-If PVMW_MIGRATION flag is set, returns true if \ ``pvmw``\ ->pte contains migration
-entry that points to \ ``pvmw``\ ->page or any subpage in case of THP.
+If PVMW_MIGRATION flag is set, returns true if \ ``pvmw->pte``\  contains migration
+entry that points to \ ``pvmw->page``\  or any subpage in case of THP.
 
-If PVMW_MIGRATION flag is not set, returns true if \ ``pvmw``\ ->pte points to
-\ ``pvmw``\ ->page or any subpage in case of THP.
+If PVMW_MIGRATION flag is not set, returns true if \ ``pvmw->pte``\  points to
+\ ``pvmw->page``\  or any subpage in case of THP.
 
 Otherwise, return false.
 
@@ -39,31 +40,32 @@ page_vma_mapped_walk
 
 .. c:function:: bool page_vma_mapped_walk(struct page_vma_mapped_walk *pvmw)
 
-    check if \ ``pvmw``\ ->page is mapped in \ ``pvmw``\ ->vma at \ ``pvmw``\ ->address
+    check if \ ``pvmw->page``\  is mapped in \ ``pvmw->vma``\  at \ ``pvmw->address``\ 
 
-    :param struct page_vma_mapped_walk \*pvmw:
+    :param pvmw:
         pointer to struct page_vma_mapped_walk. page, vma, address and flags
         must be set. pmd, pte and ptl must be NULL.
+    :type pvmw: struct page_vma_mapped_walk \*
 
 .. _`page_vma_mapped_walk.description`:
 
 Description
 -----------
 
-Returns true if the page is mapped in the vma. \ ``pvmw``\ ->pmd and \ ``pvmw``\ ->pte point
-to relevant page table entries. \ ``pvmw``\ ->ptl is locked. \ ``pvmw``\ ->address is
+Returns true if the page is mapped in the vma. \ ``pvmw->pmd``\  and \ ``pvmw->pte``\  point
+to relevant page table entries. \ ``pvmw->ptl``\  is locked. \ ``pvmw->address``\  is
 adjusted if needed (for PTE-mapped THPs).
 
-If \ ``pvmw``\ ->pmd is set but \ ``pvmw``\ ->pte is not, you have found PMD-mapped page
+If \ ``pvmw->pmd``\  is set but \ ``pvmw->pte``\  is not, you have found PMD-mapped page
 (usually THP). For PTE-mapped THP, you should run \ :c:func:`page_vma_mapped_walk`\  in
 a loop to find all PTEs that map the THP.
 
-For HugeTLB pages, \ ``pvmw``\ ->pte is set to the relevant page table entry
-regardless of which page table level the page is mapped at. \ ``pvmw``\ ->pmd is
+For HugeTLB pages, \ ``pvmw->pte``\  is set to the relevant page table entry
+regardless of which page table level the page is mapped at. \ ``pvmw->pmd``\  is
 NULL.
 
 Retruns false if there are no more page table entries for the page in
-the vma. \ ``pvmw``\ ->ptl is unlocked and \ ``pvmw``\ ->pte is unmapped.
+the vma. \ ``pvmw->ptl``\  is unlocked and \ ``pvmw->pte``\  is unmapped.
 
 If you need to stop the walk before \ :c:func:`page_vma_mapped_walk`\  returned false,
 use \ :c:func:`page_vma_mapped_walk_done`\ . It will do the housekeeping.
@@ -77,11 +79,13 @@ page_mapped_in_vma
 
     check whether a page is really mapped in a VMA
 
-    :param struct page \*page:
+    :param page:
         the page to test
+    :type page: struct page \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         the VMA to test
+    :type vma: struct vm_area_struct \*
 
 .. _`page_mapped_in_vma.description`:
 

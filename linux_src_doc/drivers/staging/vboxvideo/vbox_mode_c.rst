@@ -6,33 +6,13 @@
 vbox_do_modeset
 ===============
 
-.. c:function:: void vbox_do_modeset(struct drm_crtc *crtc, const struct drm_display_mode *mode)
+.. c:function:: void vbox_do_modeset(struct drm_crtc *crtc)
 
     mode set and tell the host we support advanced graphics functions.
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
-
-    :param const struct drm_display_mode \*mode:
-        *undescribed*
-
-.. _`vbox_set_edid`:
-
-vbox_set_edid
-=============
-
-.. c:function:: void vbox_set_edid(struct drm_connector *connector, int width, int height)
-
-    unique serial number for the virtual monitor to try to persuade Unity that different modes correspond to different monitors and it should not try to force the same resolution on them.
-
-    :param struct drm_connector \*connector:
-        *undescribed*
-
-    :param int width:
-        *undescribed*
-
-    :param int height:
-        *undescribed*
+    :type crtc: struct drm_crtc \*
 
 .. _`copy_cursor_image`:
 
@@ -43,20 +23,46 @@ copy_cursor_image
 
     does not support ARGB cursors.  The mask is a 1BPP bitmap with the bit set if the corresponding alpha value in the ARGB image is greater than 0xF0.
 
-    :param u8 \*src:
+    :param src:
         *undescribed*
+    :type src: u8 \*
 
-    :param u8 \*dst:
+    :param dst:
         *undescribed*
+    :type dst: u8 \*
 
-    :param u32 width:
+    :param width:
         *undescribed*
+    :type width: u32
 
-    :param u32 height:
+    :param height:
         *undescribed*
+    :type height: u32
 
-    :param size_t mask_size:
+    :param mask_size:
         *undescribed*
+    :type mask_size: size_t
+
+.. _`vbox_set_edid`:
+
+vbox_set_edid
+=============
+
+.. c:function:: void vbox_set_edid(struct drm_connector *connector, int width, int height)
+
+    unique serial number for the virtual monitor to try to persuade Unity that different modes correspond to different monitors and it should not try to force the same resolution on them.
+
+    :param connector:
+        *undescribed*
+    :type connector: struct drm_connector \*
+
+    :param width:
+        *undescribed*
+    :type width: int
+
+    :param height:
+        *undescribed*
+    :type height: int
 
 .. This file was automatic generated / don't edit.
 

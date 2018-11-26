@@ -10,14 +10,17 @@ svc_print_addr
 
     Format rq_addr field for printing
 
-    :param struct svc_rqst \*rqstp:
+    :param rqstp:
         svc_rqst struct containing address to print
+    :type rqstp: struct svc_rqst \*
 
-    :param char \*buf:
+    :param buf:
         target buffer for formatted address
+    :type buf: char \*
 
-    :param size_t len:
+    :param len:
         length of target buffer
+    :type len: size_t
 
 .. _`svc_reserve`:
 
@@ -28,11 +31,13 @@ svc_reserve
 
     change the space reserved for the reply to a request.
 
-    :param struct svc_rqst \*rqstp:
+    :param rqstp:
         The request in question
+    :type rqstp: struct svc_rqst \*
 
-    :param int space:
+    :param space:
         new max space to reserve
+    :type space: int
 
 .. _`svc_reserve.description`:
 
@@ -52,20 +57,25 @@ svc_find_xprt
 
     find an RPC transport instance
 
-    :param struct svc_serv \*serv:
+    :param serv:
         pointer to svc_serv to search
+    :type serv: struct svc_serv \*
 
-    :param const char \*xcl_name:
+    :param xcl_name:
         C string containing transport's class name
+    :type xcl_name: const char \*
 
-    :param struct net \*net:
+    :param net:
         owner net pointer
+    :type net: struct net \*
 
-    :param const sa_family_t af:
+    :param af:
         Address family of transport's local address
+    :type af: const sa_family_t
 
-    :param const unsigned short port:
+    :param port:
         transport's IP port number
+    :type port: const unsigned short
 
 .. _`svc_find_xprt.description`:
 
@@ -89,14 +99,17 @@ svc_xprt_names
 
     format a buffer with a list of transport names
 
-    :param struct svc_serv \*serv:
+    :param serv:
         pointer to an RPC service
+    :type serv: struct svc_serv \*
 
-    :param char \*buf:
+    :param buf:
         pointer to a buffer to be filled in
+    :type buf: char \*
 
-    :param const int buflen:
+    :param buflen:
         length of buffer to be filled in
+    :type buflen: const int
 
 .. _`svc_xprt_names.description`:
 

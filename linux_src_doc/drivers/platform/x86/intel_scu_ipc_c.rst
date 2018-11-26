@@ -10,11 +10,13 @@ intel_scu_ipc_ioread8
 
     read a word via the SCU
 
-    :param u16 addr:
+    :param addr:
         register on SCU
+    :type addr: u16
 
-    :param u8 \*data:
+    :param data:
         return pointer for read byte
+    :type data: u8 \*
 
 .. _`intel_scu_ipc_ioread8.description`:
 
@@ -35,11 +37,13 @@ intel_scu_ipc_ioread16
 
     read a word via the SCU
 
-    :param u16 addr:
+    :param addr:
         register on SCU
+    :type addr: u16
 
-    :param u16 \*data:
+    :param data:
         return pointer for read word
+    :type data: u16 \*
 
 .. _`intel_scu_ipc_ioread16.description`:
 
@@ -60,11 +64,13 @@ intel_scu_ipc_ioread32
 
     read a dword via the SCU
 
-    :param u16 addr:
+    :param addr:
         register on SCU
+    :type addr: u16
 
-    :param u32 \*data:
+    :param data:
         return pointer for read dword
+    :type data: u32 \*
 
 .. _`intel_scu_ipc_ioread32.description`:
 
@@ -85,11 +91,13 @@ intel_scu_ipc_iowrite8
 
     write a byte via the SCU
 
-    :param u16 addr:
+    :param addr:
         register on SCU
+    :type addr: u16
 
-    :param u8 data:
+    :param data:
         byte to write
+    :type data: u8
 
 .. _`intel_scu_ipc_iowrite8.description`:
 
@@ -110,11 +118,13 @@ intel_scu_ipc_iowrite16
 
     write a word via the SCU
 
-    :param u16 addr:
+    :param addr:
         register on SCU
+    :type addr: u16
 
-    :param u16 data:
+    :param data:
         word to write
+    :type data: u16
 
 .. _`intel_scu_ipc_iowrite16.description`:
 
@@ -135,11 +145,13 @@ intel_scu_ipc_iowrite32
 
     write a dword via the SCU
 
-    :param u16 addr:
+    :param addr:
         register on SCU
+    :type addr: u16
 
-    :param u32 data:
+    :param data:
         dword to write
+    :type data: u32
 
 .. _`intel_scu_ipc_iowrite32.description`:
 
@@ -160,14 +172,17 @@ intel_scu_ipc_readv
 
     read a set of registers
 
-    :param u16 \*addr:
+    :param addr:
         register list
+    :type addr: u16 \*
 
-    :param u8 \*data:
+    :param data:
         bytes to return
+    :type data: u8 \*
 
-    :param int len:
+    :param len:
         length of array
+    :type len: int
 
 .. _`intel_scu_ipc_readv.description`:
 
@@ -190,14 +205,17 @@ intel_scu_ipc_writev
 
     write a set of registers
 
-    :param u16 \*addr:
+    :param addr:
         register list
+    :type addr: u16 \*
 
-    :param u8 \*data:
+    :param data:
         bytes to write
+    :type data: u8 \*
 
-    :param int len:
+    :param len:
         length of array
+    :type len: int
 
 .. _`intel_scu_ipc_writev.description`:
 
@@ -220,14 +238,17 @@ intel_scu_ipc_update_register
 
     r/m/w a register
 
-    :param u16 addr:
+    :param addr:
         register address
+    :type addr: u16
 
-    :param u8 bits:
+    :param bits:
         bits to update
+    :type bits: u8
 
-    :param u8 mask:
+    :param mask:
         mask of bits to update
+    :type mask: u8
 
 .. _`intel_scu_ipc_update_register.description`:
 
@@ -252,11 +273,13 @@ intel_scu_ipc_simple_command
 
     send a simple command
 
-    :param int cmd:
+    :param cmd:
         command
+    :type cmd: int
 
-    :param int sub:
+    :param sub:
         sub type
+    :type sub: int
 
 .. _`intel_scu_ipc_simple_command.description`:
 
@@ -279,23 +302,29 @@ intel_scu_ipc_command
 
     command with data
 
-    :param int cmd:
+    :param cmd:
         command
+    :type cmd: int
 
-    :param int sub:
+    :param sub:
         sub type
+    :type sub: int
 
-    :param u32 \*in:
+    :param in:
         input data
+    :type in: u32 \*
 
-    :param int inlen:
+    :param inlen:
         input length in dwords
+    :type inlen: int
 
-    :param u32 \*out:
+    :param out:
         output data
+    :type out: u32 \*
 
-    :param int outlen:
+    :param outlen:
         *undescribed*
+    :type outlen: int
 
 .. _`intel_scu_ipc_command.description`:
 
@@ -314,29 +343,37 @@ intel_scu_ipc_raw_command
 
     IPC command with data and pointers
 
-    :param int cmd:
+    :param cmd:
         IPC command code.
+    :type cmd: int
 
-    :param int sub:
+    :param sub:
         IPC command sub type.
+    :type sub: int
 
-    :param u8 \*in:
+    :param in:
         input data of this IPC command.
+    :type in: u8 \*
 
-    :param int inlen:
+    :param inlen:
         input data length in dwords.
+    :type inlen: int
 
-    :param u32 \*out:
+    :param out:
         output data of this IPC command.
+    :type out: u32 \*
 
-    :param int outlen:
+    :param outlen:
         output data length in dwords.
+    :type outlen: int
 
-    :param u32 dptr:
+    :param dptr:
         data writing to DPTR register.
+    :type dptr: u32
 
-    :param u32 sptr:
+    :param sptr:
         data writing to SPTR register.
+    :type sptr: u32
 
 .. _`intel_scu_ipc_raw_command.description`:
 
@@ -361,11 +398,13 @@ intel_scu_ipc_i2c_cntrl
 
     I2C read/write operations
 
-    :param u32 addr:
+    :param addr:
         I2C address + command bits
+    :type addr: u32
 
-    :param u32 \*data:
+    :param data:
         data to read/write
+    :type data: u32 \*
 
 .. _`intel_scu_ipc_i2c_cntrl.description`:
 
@@ -388,11 +427,13 @@ ipc_probe
 
     probe an Intel SCU IPC
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         the PCI device matching
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         entry in the match table
+    :type id: const struct pci_device_id \*
 
 .. _`ipc_probe.description`:
 

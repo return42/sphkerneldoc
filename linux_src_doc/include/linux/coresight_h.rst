@@ -3,8 +3,8 @@
 
 .. _`coresight_dev_subtype`:
 
-struct coresight_dev_subtype
-============================
+union coresight_dev_subtype
+===========================
 
 .. c:type:: struct coresight_dev_subtype
 
@@ -17,10 +17,13 @@ Definition
 
 .. code-block:: c
 
-    struct coresight_dev_subtype {
-        enum coresight_dev_subtype_sink sink_subtype;
-        enum coresight_dev_subtype_link link_subtype;
+    union coresight_dev_subtype {
+        struct {
+            enum coresight_dev_subtype_sink sink_subtype;
+            enum coresight_dev_subtype_link link_subtype;
+        } ;
         enum coresight_dev_subtype_source source_subtype;
+        enum coresight_dev_subtype_helper helper_subtype;
     }
 
 .. _`coresight_dev_subtype.members`:
@@ -28,14 +31,24 @@ Definition
 Members
 -------
 
+{unnamed_struct}
+    anonymous
+
 sink_subtype
     type of sink this component is, as defined
+    by \ ``coresight_dev_subtype_sink``\ .
 
 link_subtype
     type of link this component is, as defined
+    by \ ``coresight_dev_subtype_link``\ .
 
 source_subtype
     type of source this component is, as defined
+    by \ ``coresight_dev_subtype_source``\ .
+
+helper_subtype
+    type of helper this component is, as defined
+    by \ ``coresight_dev_subtype_helper``\ .
 
 .. _`coresight_platform_data`:
 
@@ -57,11 +70,8 @@ Definition
         int cpu;
         const char *name;
         int nr_inport;
-        int *outports;
-        const char **child_names;
-        int *child_ports;
         int nr_outport;
-        struct clk *clk;
+        struct coresight_connection *conns;
     }
 
 .. _`coresight_platform_data.members`:
@@ -78,20 +88,11 @@ name
 nr_inport
     number of input ports for this component.
 
-outports
-    list of remote endpoint port number.
-
-child_names
-    name of all child components connected to this device.
-
-child_ports
-    child component port number the current component is
-
 nr_outport
     number of output ports for this component.
 
-clk
-    The clock this component is associated to.
+conns
+    Array of nr_outport connections from this component
 
 .. _`coresight_desc`:
 
@@ -111,7 +112,7 @@ Definition
 
     struct coresight_desc {
         enum coresight_dev_type type;
-        struct coresight_dev_subtype subtype;
+        union coresight_dev_subtype subtype;
         const struct coresight_ops *ops;
         struct coresight_platform_data *pdata;
         struct device *dev;
@@ -202,7 +203,7 @@ Definition
         int nr_inport;
         int nr_outport;
         enum coresight_dev_type type;
-        struct coresight_dev_subtype subtype;
+        union coresight_dev_subtype subtype;
         const struct coresight_ops *ops;
         struct device dev;
         atomic_t *refcnt;
@@ -266,13 +267,11 @@ Definition
 .. code-block:: c
 
     struct coresight_ops_sink {
-        int (*enable)(struct coresight_device *csdev, u32 mode);
+        int (*enable)(struct coresight_device *csdev, u32 mode, void *data);
         void (*disable)(struct coresight_device *csdev);
         void *(*alloc_buffer)(struct coresight_device *csdev, int cpu, void **pages, int nr_pages, bool overwrite);
         void (*free_buffer)(void *config);
-        int (*set_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle, void *sink_config);
-        unsigned long (*reset_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle, void *sink_config);
-        void (*update_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle, void *sink_config);
+        unsigned long (*update_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle, void *sink_config);
     }
 
 .. _`coresight_ops_sink.members`:
@@ -291,12 +290,6 @@ alloc_buffer
 
 free_buffer
     release memory allocated in \ ``get_config``\ .
-
-set_buffer
-    initialises buffer mechanic before a trace session.
-
-reset_buffer
-    finalises buffer mechanic after a trace session.
 
 update_buffer
     update buffer pointers after a trace session.
@@ -374,6 +367,46 @@ enable
 
 disable
     disables tracing for a source.
+
+.. _`coresight_ops_helper`:
+
+struct coresight_ops_helper
+===========================
+
+.. c:type:: struct coresight_ops_helper
+
+    Operations for a helper device.
+
+.. _`coresight_ops_helper.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct coresight_ops_helper {
+        int (*enable)(struct coresight_device *csdev, void *data);
+        int (*disable)(struct coresight_device *csdev, void *data);
+    }
+
+.. _`coresight_ops_helper.members`:
+
+Members
+-------
+
+enable
+    Enable the device
+
+disable
+    Disable the device
+
+.. _`coresight_ops_helper.description`:
+
+Description
+-----------
+
+All operations could pass in a device specific data, which could
+help the helper device to determine what to do.
 
 .. This file was automatic generated / don't edit.
 

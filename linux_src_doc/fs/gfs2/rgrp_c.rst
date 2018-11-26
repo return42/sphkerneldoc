@@ -10,26 +10,42 @@ gfs2_setbit
 
     Set a bit in the bitmaps
 
-    :param const struct gfs2_rbm \*rbm:
+    :param rbm:
         The position of the bit to set
+    :type rbm: const struct gfs2_rbm \*
 
-    :param bool do_clone:
+    :param do_clone:
         Also set the clone bitmap, if it exists
+    :type do_clone: bool
 
-    :param unsigned char new_state:
+    :param new_state:
         the new state of the block
+    :type new_state: unsigned char
 
 .. _`gfs2_testbit`:
 
 gfs2_testbit
 ============
 
-.. c:function:: u8 gfs2_testbit(const struct gfs2_rbm *rbm)
+.. c:function:: u8 gfs2_testbit(const struct gfs2_rbm *rbm, bool use_clone)
 
     test a bit in the bitmaps
 
-    :param const struct gfs2_rbm \*rbm:
+    :param rbm:
         The bit to test
+    :type rbm: const struct gfs2_rbm \*
+
+    :param use_clone:
+        If true, test the clone bitmap, not the official bitmap.
+    :type use_clone: bool
+
+.. _`gfs2_testbit.description`:
+
+Description
+-----------
+
+Some callers like gfs2_unaligned_extlen need to test the clone bitmaps,
+not the "real" bitmaps, to avoid allocating recently freed blocks.
 
 .. _`gfs2_testbit.return`:
 
@@ -45,14 +61,17 @@ gfs2_bit_search
 
 .. c:function:: u64 gfs2_bit_search(const __le64 *ptr, u64 mask, u8 state)
 
-    :param const __le64 \*ptr:
+    :param ptr:
         Pointer to bitmap data
+    :type ptr: const __le64 \*
 
-    :param u64 mask:
+    :param mask:
         Mask to use (normally 0x55555.... but adjusted for search start)
+    :type mask: u64
 
-    :param u8 state:
+    :param state:
         The state we are searching for
+    :type state: u8
 
 .. _`gfs2_bit_search.description`:
 
@@ -79,14 +98,17 @@ rs_cmp
 
     multi-block reservation range compare
 
-    :param u64 blk:
+    :param blk:
         absolute file system block number of the new reservation
+    :type blk: u64
 
-    :param u32 len:
+    :param len:
         number of blocks in the new reservation
+    :type len: u32
 
-    :param struct gfs2_blkreserv \*rs:
+    :param rs:
         existing reservation to compare against
+    :type rs: struct gfs2_blkreserv \*
 
 .. _`rs_cmp.return`:
 
@@ -106,17 +128,21 @@ gfs2_bitfit
 
     Search an rgrp's bitmap buffer to find a bit-pair representing a block in a given allocation state.
 
-    :param const u8 \*buf:
+    :param buf:
         the buffer that holds the bitmaps
+    :type buf: const u8 \*
 
-    :param const unsigned int len:
+    :param len:
         the length (in bytes) of the buffer
+    :type len: const unsigned int
 
-    :param u32 goal:
+    :param goal:
         start search at this block's bit-pair (within \ ``buffer``\ )
+    :type goal: u32
 
-    :param u8 state:
+    :param state:
         GFS2_BLKST_XXX the state of the block we're looking for.
+    :type state: u8
 
 .. _`gfs2_bitfit.description`:
 
@@ -149,11 +175,13 @@ gfs2_rbm_from_block
 
     Set the rbm based upon rgd and block number
 
-    :param struct gfs2_rbm \*rbm:
+    :param rbm:
         The rbm with rgd already set correctly
+    :type rbm: struct gfs2_rbm \*
 
-    :param u64 block:
+    :param block:
         The block number (filesystem relative)
+    :type block: u64
 
 .. _`gfs2_rbm_from_block.description`:
 
@@ -181,8 +209,9 @@ gfs2_rbm_incr
 
     increment an rbm structure
 
-    :param struct gfs2_rbm \*rbm:
+    :param rbm:
         The rbm with rgd already set correctly
+    :type rbm: struct gfs2_rbm \*
 
 .. _`gfs2_rbm_incr.description`:
 
@@ -209,14 +238,17 @@ gfs2_unaligned_extlen
 
     Look for free blocks which are not byte aligned
 
-    :param struct gfs2_rbm \*rbm:
+    :param rbm:
         Position to search (value/result)
+    :type rbm: struct gfs2_rbm \*
 
-    :param u32 n_unaligned:
+    :param n_unaligned:
         Number of unaligned blocks to check
+    :type n_unaligned: u32
 
-    :param u32 \*len:
+    :param len:
         Decremented for each block found (terminate on zero)
+    :type len: u32 \*
 
 .. _`gfs2_unaligned_extlen.return`:
 
@@ -234,11 +266,13 @@ gfs2_free_extlen
 
     Return extent length of free blocks
 
-    :param const struct gfs2_rbm \*rrbm:
+    :param rrbm:
         Starting position
+    :type rrbm: const struct gfs2_rbm \*
 
-    :param u32 len:
+    :param len:
         Max length to check
+    :type len: u32
 
 .. _`gfs2_free_extlen.description`:
 
@@ -268,17 +302,21 @@ gfs2_bitcount
 
     count the number of bits in a certain state
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         the resource group descriptor
+    :type rgd: struct gfs2_rgrpd \*
 
-    :param const u8 \*buffer:
+    :param buffer:
         the buffer that holds the bitmaps
+    :type buffer: const u8 \*
 
-    :param unsigned int buflen:
+    :param buflen:
         the length (in bytes) of the buffer
+    :type buflen: unsigned int
 
-    :param u8 state:
+    :param state:
         the state of the block we're looking for
+    :type state: u8
 
 .. _`gfs2_bitcount.return`:
 
@@ -296,8 +334,9 @@ gfs2_rgrp_verify
 
     Verify that a resource group is consistent
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         the rgrp
+    :type rgd: struct gfs2_rgrpd \*
 
 .. _`gfs2_blk2rgrpd`:
 
@@ -308,14 +347,17 @@ gfs2_blk2rgrpd
 
     Find resource group for a given data/meta block number
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param u64 blk:
+    :param blk:
         The data block number
+    :type blk: u64
 
-    :param bool exact:
+    :param exact:
         True if this needs to be an exact match
+    :type exact: bool
 
 .. _`gfs2_blk2rgrpd.description`:
 
@@ -345,8 +387,9 @@ gfs2_rgrpd_get_first
 
     get the first Resource Group in the filesystem
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_rgrpd_get_first.return`:
 
@@ -364,8 +407,9 @@ gfs2_rgrpd_get_next
 
     get the next RG
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         the resource group descriptor
+    :type rgd: struct gfs2_rgrpd \*
 
 .. _`gfs2_rgrpd_get_next.return`:
 
@@ -383,8 +427,9 @@ gfs2_rsqa_alloc
 
     make sure we have a reservation assigned to the inode plus a quota allocations data structure, if necessary
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode for this reservation
+    :type ip: struct gfs2_inode \*
 
 .. _`__rs_deltree`:
 
@@ -395,8 +440,9 @@ gfs2_rsqa_alloc
 
     remove a multi-block reservation from the rgd tree
 
-    :param struct gfs2_blkreserv \*rs:
+    :param rs:
         The reservation to remove
+    :type rs: struct gfs2_blkreserv \*
 
 .. _`gfs2_rs_deltree`:
 
@@ -407,8 +453,9 @@ gfs2_rs_deltree
 
     remove a multi-block reservation from the rgd tree
 
-    :param struct gfs2_blkreserv \*rs:
+    :param rs:
         The reservation to remove
+    :type rs: struct gfs2_blkreserv \*
 
 .. _`gfs2_rsqa_delete`:
 
@@ -419,11 +466,13 @@ gfs2_rsqa_delete
 
     delete a multi-block reservation and quota allocation
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The inode for this reservation
+    :type ip: struct gfs2_inode \*
 
-    :param atomic_t \*wcount:
+    :param wcount:
         The inode's write count, or NULL
+    :type wcount: atomic_t \*
 
 .. _`return_all_reservations`:
 
@@ -434,8 +483,9 @@ return_all_reservations
 
     return all reserved blocks back to the rgrp.
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         the rgrp that needs its space back
+    :type rgd: struct gfs2_rgrpd \*
 
 .. _`return_all_reservations.description`:
 
@@ -455,8 +505,9 @@ compute_bitstructs
 
     Compute the bitmap sizes
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         The resource group descriptor
+    :type rgd: struct gfs2_rgrpd \*
 
 .. _`compute_bitstructs.description`:
 
@@ -481,8 +532,9 @@ gfs2_ri_total
 
     Total up the file system space, according to the rindex.
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
 .. _`read_rindex_entry`:
 
@@ -493,8 +545,9 @@ read_rindex_entry
 
     Pull in a new resource index entry from the disk
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         Pointer to the rindex inode
+    :type ip: struct gfs2_inode \*
 
 .. _`read_rindex_entry.return`:
 
@@ -512,8 +565,9 @@ set_rgrp_preferences
 
     Run all the rgrps, selecting some we prefer to use
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
 .. _`set_rgrp_preferences.description`:
 
@@ -533,8 +587,9 @@ gfs2_ri_update
 
     Pull in a new resource index from the disk
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         pointer to the rindex inode
+    :type ip: struct gfs2_inode \*
 
 .. _`gfs2_ri_update.return`:
 
@@ -552,8 +607,9 @@ gfs2_rindex_update
 
     Update the rindex if required
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_rindex_update.description`:
 
@@ -586,8 +642,9 @@ gfs2_rgrp_bh_get
 
     Read in a RG's header and bitmaps
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         the struct gfs2_rgrpd describing the RG to read in
+    :type rgd: struct gfs2_rgrpd \*
 
 .. _`gfs2_rgrp_bh_get.description`:
 
@@ -595,7 +652,7 @@ Description
 -----------
 
 Read in all of a Resource Group's header and bitmap blocks.
-Caller must eventually call \ :c:func:`gfs2_rgrp_relse`\  to free the bitmaps.
+Caller must eventually call \ :c:func:`gfs2_rgrp_brelse`\  to free the bitmaps.
 
 .. _`gfs2_rgrp_bh_get.return`:
 
@@ -613,8 +670,9 @@ gfs2_rgrp_brelse
 
     Release RG bitmaps read in with \ :c:func:`gfs2_rgrp_bh_get`\ 
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         The resource group
+    :type rgd: struct gfs2_rgrpd \*
 
 .. _`gfs2_rgrp_go_unlock`:
 
@@ -625,8 +683,9 @@ gfs2_rgrp_go_unlock
 
     Unlock a rgrp glock
 
-    :param struct gfs2_holder \*gh:
+    :param gh:
         The glock holder for the resource group
+    :type gh: struct gfs2_holder \*
 
 .. _`gfs2_fitrim`:
 
@@ -637,11 +696,13 @@ gfs2_fitrim
 
     Generate discard requests for unused bits of the filesystem
 
-    :param struct file \*filp:
+    :param filp:
         Any file on the filesystem
+    :type filp: struct file \*
 
-    :param void __user \*argp:
+    :param argp:
         Pointer to the arguments (also used to pass result)
+    :type argp: void __user \*
 
 .. _`gfs2_fitrim.return`:
 
@@ -659,8 +720,39 @@ rs_insert
 
     insert a new multi-block reservation into the rgrp's rb_tree
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode structure
+    :type ip: struct gfs2_inode \*
+
+.. _`rgd_free`:
+
+rgd_free
+========
+
+.. c:function:: u32 rgd_free(struct gfs2_rgrpd *rgd, struct gfs2_blkreserv *rs)
+
+    return the number of free blocks we can allocate.
+
+    :param rgd:
+        the resource group
+    :type rgd: struct gfs2_rgrpd \*
+
+    :param rs:
+        *undescribed*
+    :type rs: struct gfs2_blkreserv \*
+
+.. _`rgd_free.description`:
+
+Description
+-----------
+
+This function returns the number of free blocks for an rgrp.
+That's the clone-free blocks (blocks that are free, not including those
+still being used for unlinked files that haven't been deleted.)
+
+It also subtracts any blocks reserved by someone else, but does not
+include free blocks that are still part of our current reservation,
+because obviously we can (and will) allocate them.
 
 .. _`rg_mblk_search`:
 
@@ -671,14 +763,17 @@ rg_mblk_search
 
     find a group of multiple free blocks to form a reservation
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         the resource group descriptor
+    :type rgd: struct gfs2_rgrpd \*
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         pointer to the inode for which we're reserving blocks
+    :type ip: struct gfs2_inode \*
 
-    :param const struct gfs2_alloc_parms \*ap:
+    :param ap:
         the allocation parameters
+    :type ap: const struct gfs2_alloc_parms \*
 
 .. _`gfs2_next_unreserved_block`:
 
@@ -689,17 +784,21 @@ gfs2_next_unreserved_block
 
     Return next block that is not reserved
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         The resource group
+    :type rgd: struct gfs2_rgrpd \*
 
-    :param u64 block:
+    :param block:
         The starting block
+    :type block: u64
 
-    :param u32 length:
+    :param length:
         The required length
+    :type length: u32
 
-    :param const struct gfs2_inode \*ip:
+    :param ip:
         Ignore any reservations for this inode
+    :type ip: const struct gfs2_inode \*
 
 .. _`gfs2_next_unreserved_block.description`:
 
@@ -720,17 +819,21 @@ gfs2_reservation_check_and_update
 
     Check for reservations during block alloc
 
-    :param struct gfs2_rbm \*rbm:
+    :param rbm:
         The current position in the resource group
+    :type rbm: struct gfs2_rbm \*
 
-    :param const struct gfs2_inode \*ip:
+    :param ip:
         The inode for which we are searching for blocks
+    :type ip: const struct gfs2_inode \*
 
-    :param u32 minext:
+    :param minext:
         The minimum extent length
+    :type minext: u32
 
-    :param struct gfs2_extent \*maxext:
+    :param maxext:
         A pointer to the maximum extent structure
+    :type maxext: struct gfs2_extent \*
 
 .. _`gfs2_reservation_check_and_update.description`:
 
@@ -759,22 +862,27 @@ gfs2_rbm_find
 
     Look for blocks of a particular state
 
-    :param struct gfs2_rbm \*rbm:
+    :param rbm:
         Value/result starting position and final position
+    :type rbm: struct gfs2_rbm \*
 
-    :param u8 state:
+    :param state:
         The state which we want to find
+    :type state: u8
 
-    :param u32 \*minext:
+    :param minext:
         Pointer to the requested extent length (NULL for a single block)
         This is updated to be the actual reservation size.
+    :type minext: u32 \*
 
-    :param const struct gfs2_inode \*ip:
+    :param ip:
         If set, check for reservations
+    :type ip: const struct gfs2_inode \*
 
-    :param bool nowrap:
+    :param nowrap:
         Stop looking at the end of the rgrp, rather than wrapping
         around until we've reached the starting point.
+    :type nowrap: bool
 
 .. _`gfs2_rbm_find.side-effects`:
 
@@ -802,14 +910,17 @@ try_rgrp_unlink
 
     Look for any unlinked, allocated, but unused inodes
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         The rgrp
+    :type rgd: struct gfs2_rgrpd \*
 
-    :param u64 \*last_unlinked:
+    :param last_unlinked:
         block address of the last dinode we unlinked
+    :type last_unlinked: u64 \*
 
-    :param u64 skip:
+    :param skip:
         block address we should explicitly not unlink
+    :type skip: u64
 
 .. _`try_rgrp_unlink.return`:
 
@@ -828,11 +939,13 @@ gfs2_rgrp_congested
 
     Use stats to figure out whether an rgrp is congested
 
-    :param const struct gfs2_rgrpd \*rgd:
+    :param rgd:
         The rgrp in question
+    :type rgd: const struct gfs2_rgrpd \*
 
-    :param int loops:
+    :param loops:
         An indication of how picky we can be (0=very, 1=less so)
+    :type loops: int
 
 .. _`gfs2_rgrp_congested.description`:
 
@@ -872,11 +985,13 @@ gfs2_rgrp_used_recently
 
 .. c:function:: bool gfs2_rgrp_used_recently(const struct gfs2_blkreserv *rs, u64 msecs)
 
-    :param const struct gfs2_blkreserv \*rs:
+    :param rs:
         The block reservation with the rgrp to test
+    :type rs: const struct gfs2_blkreserv \*
 
-    :param u64 msecs:
+    :param msecs:
         The time limit in milliseconds
+    :type msecs: u64
 
 .. _`gfs2_rgrp_used_recently.return`:
 
@@ -894,8 +1009,9 @@ fast_to_acquire
 
     determine if a resource group will be fast to acquire
 
-    :param struct gfs2_rgrpd \*rgd:
+    :param rgd:
         *undescribed*
+    :type rgd: struct gfs2_rgrpd \*
 
 .. _`fast_to_acquire.description`:
 
@@ -914,11 +1030,13 @@ gfs2_inplace_reserve
 
     Reserve space in the filesystem
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode to reserve space for
+    :type ip: struct gfs2_inode \*
 
-    :param struct gfs2_alloc_parms \*ap:
+    :param ap:
         the allocation parameters
+    :type ap: struct gfs2_alloc_parms \*
 
 .. _`gfs2_inplace_reserve.description`:
 
@@ -928,7 +1046,7 @@ Description
 We try our best to find an rgrp that has at least ap->target blocks
 available. After a couple of passes (loops == 2), the prospects of finding
 such an rgrp diminish. At this stage, we return the first rgrp that has
-atleast ap->min_target blocks available. Either way, we set ap->allowed to
+at least ap->min_target blocks available. Either way, we set ap->allowed to
 the number of blocks available in the chosen rgrp.
 
 .. _`gfs2_inplace_reserve.return`:
@@ -949,8 +1067,9 @@ gfs2_inplace_release
 
     release an inplace reservation
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode the reservation was taken out on
+    :type ip: struct gfs2_inode \*
 
 .. _`gfs2_inplace_release.description`:
 
@@ -958,28 +1077,6 @@ Description
 -----------
 
 Release a reservation made by \ :c:func:`gfs2_inplace_reserve`\ .
-
-.. _`gfs2_get_block_type`:
-
-gfs2_get_block_type
-===================
-
-.. c:function:: unsigned char gfs2_get_block_type(struct gfs2_rgrpd *rgd, u64 block)
-
-    Check a block in a RG is of given type
-
-    :param struct gfs2_rgrpd \*rgd:
-        the resource group holding the block
-
-    :param u64 block:
-        the block number
-
-.. _`gfs2_get_block_type.return`:
-
-Return
-------
-
-The block type (GFS2_BLKST\_\*)
 
 .. _`gfs2_alloc_extent`:
 
@@ -990,14 +1087,17 @@ gfs2_alloc_extent
 
     allocate an extent from a given bitmap
 
-    :param const struct gfs2_rbm \*rbm:
+    :param rbm:
         the resource group information
+    :type rbm: const struct gfs2_rbm \*
 
-    :param bool dinode:
+    :param dinode:
         TRUE if the first block we allocate is for a dinode
+    :type dinode: bool
 
-    :param unsigned int \*n:
+    :param n:
         The extent length (value/result)
+    :type n: unsigned int \*
 
 .. _`gfs2_alloc_extent.description`:
 
@@ -1012,28 +1112,29 @@ Set the found bits to \ ``new_state``\  to change block's allocation state.
 rgblk_free
 ==========
 
-.. c:function:: struct gfs2_rgrpd *rgblk_free(struct gfs2_sbd *sdp, u64 bstart, u32 blen, unsigned char new_state)
+.. c:function:: void rgblk_free(struct gfs2_sbd *sdp, struct gfs2_rgrpd *rgd, u64 bstart, u32 blen, unsigned char new_state)
 
     Change alloc state of given block(s)
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param u64 bstart:
+    :param rgd:
+        the resource group the blocks are in
+    :type rgd: struct gfs2_rgrpd \*
+
+    :param bstart:
         the start of a run of blocks to free
+    :type bstart: u64
 
-    :param u32 blen:
+    :param blen:
         the length of the block run (all must lie within ONE RG!)
+    :type blen: u32
 
-    :param unsigned char new_state:
+    :param new_state:
         GFS2_BLKST_XXX the after-allocation block state
-
-.. _`rgblk_free.return`:
-
-Return
-------
-
-Resource group containing the block(s)
+    :type new_state: unsigned char
 
 .. _`gfs2_rgrp_dump`:
 
@@ -1044,11 +1145,13 @@ gfs2_rgrp_dump
 
     print out an rgrp
 
-    :param struct seq_file \*seq:
+    :param seq:
         The iterator
+    :type seq: struct seq_file \*
 
-    :param const struct gfs2_glock \*gl:
+    :param gl:
         The glock in question
+    :type gl: const struct gfs2_glock \*
 
 .. _`gfs2_adjust_reservation`:
 
@@ -1059,14 +1162,17 @@ gfs2_adjust_reservation
 
     Adjust (or remove) a reservation after allocation
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         The inode we have just allocated blocks for
+    :type ip: struct gfs2_inode \*
 
-    :param const struct gfs2_rbm \*rbm:
+    :param rbm:
         The start of the allocated blocks
+    :type rbm: const struct gfs2_rbm \*
 
-    :param unsigned len:
+    :param len:
         The extent length
+    :type len: unsigned
 
 .. _`gfs2_adjust_reservation.description`:
 
@@ -1086,14 +1192,17 @@ gfs2_set_alloc_start
 
     Set starting point for block allocation
 
-    :param struct gfs2_rbm \*rbm:
+    :param rbm:
         The rbm which will be set to the required location
+    :type rbm: struct gfs2_rbm \*
 
-    :param const struct gfs2_inode \*ip:
+    :param ip:
         The gfs2 inode
+    :type ip: const struct gfs2_inode \*
 
-    :param bool dinode:
+    :param dinode:
         Flag to say if allocation includes a new inode
+    :type dinode: bool
 
 .. _`gfs2_set_alloc_start.description`:
 
@@ -1113,20 +1222,25 @@ gfs2_alloc_blocks
 
     Allocate one or more blocks of data and/or a dinode
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode to allocate the block for
+    :type ip: struct gfs2_inode \*
 
-    :param u64 \*bn:
+    :param bn:
         Used to return the starting block number
+    :type bn: u64 \*
 
-    :param unsigned int \*nblocks:
+    :param nblocks:
         requested number of blocks/extent length (value/result)
+    :type nblocks: unsigned int \*
 
-    :param bool dinode:
+    :param dinode:
         1 if we're allocating a dinode block, else 0
+    :type dinode: bool
 
-    :param u64 \*generation:
+    :param generation:
         the generation number of the inode
+    :type generation: u64 \*
 
 .. _`gfs2_alloc_blocks.return`:
 
@@ -1140,39 +1254,54 @@ Return
 \__gfs2_free_blocks
 ===================
 
-.. c:function:: void __gfs2_free_blocks(struct gfs2_inode *ip, u64 bstart, u32 blen, int meta)
+.. c:function:: void __gfs2_free_blocks(struct gfs2_inode *ip, struct gfs2_rgrpd *rgd, u64 bstart, u32 blen, int meta)
 
     free a contiguous run of block(s)
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode these blocks are being freed from
+    :type ip: struct gfs2_inode \*
 
-    :param u64 bstart:
+    :param rgd:
+        the resource group the blocks are in
+    :type rgd: struct gfs2_rgrpd \*
+
+    :param bstart:
         first block of a run of contiguous blocks
+    :type bstart: u64
 
-    :param u32 blen:
+    :param blen:
         the length of the block run
+    :type blen: u32
 
-    :param int meta:
+    :param meta:
         1 if the blocks represent metadata
+    :type meta: int
 
 .. _`gfs2_free_meta`:
 
 gfs2_free_meta
 ==============
 
-.. c:function:: void gfs2_free_meta(struct gfs2_inode *ip, u64 bstart, u32 blen)
+.. c:function:: void gfs2_free_meta(struct gfs2_inode *ip, struct gfs2_rgrpd *rgd, u64 bstart, u32 blen)
 
     free a contiguous run of data block(s)
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode these blocks are being freed from
+    :type ip: struct gfs2_inode \*
 
-    :param u64 bstart:
+    :param rgd:
+        the resource group the blocks are in
+    :type rgd: struct gfs2_rgrpd \*
+
+    :param bstart:
         first block of a run of contiguous blocks
+    :type bstart: u64
 
-    :param u32 blen:
+    :param blen:
         the length of the block run
+    :type blen: u32
 
 .. _`gfs2_check_blk_type`:
 
@@ -1183,14 +1312,17 @@ gfs2_check_blk_type
 
     Check the type of a block
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param u64 no_addr:
+    :param no_addr:
         The block number to check
+    :type no_addr: u64
 
-    :param unsigned int type:
+    :param type:
         The block type we are looking for
+    :type type: unsigned int
 
 .. _`gfs2_check_blk_type.return`:
 
@@ -1210,14 +1342,17 @@ gfs2_rlist_add
 
     add a RG to a list of RGs
 
-    :param struct gfs2_inode \*ip:
+    :param ip:
         the inode
+    :type ip: struct gfs2_inode \*
 
-    :param struct gfs2_rgrp_list \*rlist:
+    :param rlist:
         the list of resource groups
+    :type rlist: struct gfs2_rgrp_list \*
 
-    :param u64 block:
+    :param block:
         the block
+    :type block: u64
 
 .. _`gfs2_rlist_add.description`:
 
@@ -1238,15 +1373,13 @@ Don't use NOFAIL
 gfs2_rlist_alloc
 ================
 
-.. c:function:: void gfs2_rlist_alloc(struct gfs2_rgrp_list *rlist, unsigned int state)
+.. c:function:: void gfs2_rlist_alloc(struct gfs2_rgrp_list *rlist)
 
     all RGs have been added to the rlist, now allocate and initialize an array of glock holders for them
 
-    :param struct gfs2_rgrp_list \*rlist:
+    :param rlist:
         the list of resource groups
-
-    :param unsigned int state:
-        the lock state to acquire the RG lock in
+    :type rlist: struct gfs2_rgrp_list \*
 
 .. _`gfs2_rlist_alloc.fixme`:
 
@@ -1264,8 +1397,9 @@ gfs2_rlist_free
 
     free a resource group list
 
-    :param struct gfs2_rgrp_list \*rlist:
+    :param rlist:
         the list of resource groups
+    :type rlist: struct gfs2_rgrp_list \*
 
 .. This file was automatic generated / don't edit.
 

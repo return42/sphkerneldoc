@@ -10,8 +10,9 @@ bio_reset
 
     reinitialize a bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio to reset
+    :type bio: struct bio \*
 
 .. _`bio_reset.description`:
 
@@ -32,11 +33,13 @@ bio_chain
 
     chain bio completions
 
-    :param struct bio \*bio:
+    :param bio:
         the target bio
+    :type bio: struct bio \*
 
-    :param struct bio \*parent:
+    :param parent:
         the \ ``bio``\ 's parent bio
+    :type parent: struct bio \*
 
 .. _`bio_chain.description`:
 
@@ -58,14 +61,17 @@ bio_alloc_bioset
 
     allocate a bio for I/O
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         the GFP_* mask given to the slab allocator
+    :type gfp_mask: gfp_t
 
-    :param unsigned int nr_iovecs:
+    :param nr_iovecs:
         number of iovecs to pre-allocate
+    :type nr_iovecs: unsigned int
 
-    :param struct bio_set \*bs:
+    :param bs:
         the bio_set to allocate from.
+    :type bs: struct bio_set \*
 
 .. _`bio_alloc_bioset.description`:
 
@@ -113,8 +119,9 @@ bio_put
 
     release a reference to a bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio to release reference to
+    :type bio: struct bio \*
 
 .. _`bio_put.description`:
 
@@ -133,11 +140,13 @@ __bio_clone_fast
 
     clone a bio that shares the original bio's biovec
 
-    :param struct bio \*bio:
+    :param bio:
         destination bio
+    :type bio: struct bio \*
 
-    :param struct bio \*bio_src:
+    :param bio_src:
         bio to clone
+    :type bio_src: struct bio \*
 
 .. _`__bio_clone_fast.description`:
 
@@ -159,14 +168,17 @@ bio_clone_fast
 
     clone a bio that shares the original bio's biovec
 
-    :param struct bio \*bio:
+    :param bio:
         bio to clone
+    :type bio: struct bio \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation priority
+    :type gfp_mask: gfp_t
 
-    :param struct bio_set \*bs:
+    :param bs:
         bio_set to allocate from
+    :type bs: struct bio_set \*
 
 .. _`bio_clone_fast.description`:
 
@@ -174,32 +186,6 @@ Description
 -----------
 
      Like __bio_clone_fast, only also allocates the returned bio
-
-.. _`bio_clone_bioset`:
-
-bio_clone_bioset
-================
-
-.. c:function:: struct bio *bio_clone_bioset(struct bio *bio_src, gfp_t gfp_mask, struct bio_set *bs)
-
-    clone a bio
-
-    :param struct bio \*bio_src:
-        bio to clone
-
-    :param gfp_t gfp_mask:
-        allocation priority
-
-    :param struct bio_set \*bs:
-        bio_set to allocate from
-
-.. _`bio_clone_bioset.description`:
-
-Description
------------
-
-     Clone bio. Caller will own the returned bio, but not the actual data it
-     points to. Reference count of returned bio will be one.
 
 .. _`bio_add_pc_page`:
 
@@ -210,20 +196,25 @@ bio_add_pc_page
 
     attempt to add page to bio
 
-    :param struct request_queue \*q:
+    :param q:
         the target queue
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         destination bio
+    :type bio: struct bio \*
 
-    :param struct page \*page:
+    :param page:
         page to add
+    :type page: struct page \*
 
-    :param unsigned int len:
+    :param len:
         vec entry length
+    :type len: unsigned int
 
-    :param unsigned int offset:
+    :param offset:
         vec entry offset
+    :type offset: unsigned int
 
 .. _`bio_add_pc_page.description`:
 
@@ -246,17 +237,21 @@ __bio_try_merge_page
 
     try appending data to an existing bvec.
 
-    :param struct bio \*bio:
+    :param bio:
         destination bio
+    :type bio: struct bio \*
 
-    :param struct page \*page:
+    :param page:
         page to add
+    :type page: struct page \*
 
-    :param unsigned int len:
+    :param len:
         length of the data to add
+    :type len: unsigned int
 
-    :param unsigned int off:
+    :param off:
         offset of the data in \ ``page``\ 
+    :type off: unsigned int
 
 .. _`__bio_try_merge_page.description`:
 
@@ -278,17 +273,21 @@ __bio_add_page
 
     add page to a bio in a new segment
 
-    :param struct bio \*bio:
+    :param bio:
         destination bio
+    :type bio: struct bio \*
 
-    :param struct page \*page:
+    :param page:
         page to add
+    :type page: struct page \*
 
-    :param unsigned int len:
+    :param len:
         length of the data to add
+    :type len: unsigned int
 
-    :param unsigned int off:
+    :param off:
         offset of the data in \ ``page``\ 
+    :type off: unsigned int
 
 .. _`__bio_add_page.description`:
 
@@ -307,17 +306,21 @@ bio_add_page
 
     attempt to add page to bio
 
-    :param struct bio \*bio:
+    :param bio:
         destination bio
+    :type bio: struct bio \*
 
-    :param struct page \*page:
+    :param page:
         page to add
+    :type page: struct page \*
 
-    :param unsigned int len:
+    :param len:
         vec entry length
+    :type len: unsigned int
 
-    :param unsigned int offset:
+    :param offset:
         vec entry offset
+    :type offset: unsigned int
 
 .. _`bio_add_page.description`:
 
@@ -336,11 +339,13 @@ __bio_iov_iter_get_pages
 
     pin user or kernel pages and add them to a bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio to add pages to
+    :type bio: struct bio \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         iov iterator describing the region to be mapped
+    :type iter: struct iov_iter \*
 
 .. _`__bio_iov_iter_get_pages.description`:
 
@@ -361,11 +366,13 @@ bio_iov_iter_get_pages
 
     pin user or kernel pages and add them to a bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio to add pages to
+    :type bio: struct bio \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         iov iterator describing the region to be mapped
+    :type iter: struct iov_iter \*
 
 .. _`bio_iov_iter_get_pages.description`:
 
@@ -388,8 +395,9 @@ submit_bio_wait
 
     submit a bio, and wait until it completes
 
-    :param struct bio \*bio:
+    :param bio:
         The \ :c:type:`struct bio <bio>`\  which describes the I/O
+    :type bio: struct bio \*
 
 .. _`submit_bio_wait.description`:
 
@@ -412,11 +420,13 @@ bio_advance
 
     increment/complete a bio by some number of bytes
 
-    :param struct bio \*bio:
+    :param bio:
         bio to advance
+    :type bio: struct bio \*
 
-    :param unsigned bytes:
+    :param bytes:
         number of bytes to complete
+    :type bytes: unsigned
 
 .. _`bio_advance.description`:
 
@@ -438,11 +448,13 @@ bio_copy_data
 
     copy contents of data buffers from one bio to another
 
-    :param struct bio \*dst:
+    :param dst:
         destination bio
+    :type dst: struct bio \*
 
-    :param struct bio \*src:
+    :param src:
         source bio
+    :type src: struct bio \*
 
 .. _`bio_copy_data.description`:
 
@@ -461,11 +473,13 @@ bio_list_copy_data
 
     copy contents of data buffers from one chain of bios to another
 
-    :param struct bio \*dst:
+    :param dst:
         destination bio list
+    :type dst: struct bio \*
 
-    :param struct bio \*src:
+    :param src:
         source bio list
+    :type src: struct bio \*
 
 .. _`bio_list_copy_data.description`:
 
@@ -485,11 +499,13 @@ bio_copy_from_iter
 
     copy all pages from iov_iter to bio
 
-    :param struct bio \*bio:
+    :param bio:
         The \ :c:type:`struct bio <bio>`\  which describes the I/O as destination
+    :type bio: struct bio \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         iov_iter as source
+    :type iter: struct iov_iter \*
 
 .. _`bio_copy_from_iter.description`:
 
@@ -508,11 +524,13 @@ bio_copy_to_iter
 
     copy all pages from bio to iov_iter
 
-    :param struct bio \*bio:
+    :param bio:
         The \ :c:type:`struct bio <bio>`\  which describes the I/O as source
+    :type bio: struct bio \*
 
-    :param struct iov_iter iter:
+    :param iter:
         iov_iter as destination
+    :type iter: struct iov_iter
 
 .. _`bio_copy_to_iter.description`:
 
@@ -531,8 +549,9 @@ bio_uncopy_user
 
     finish previously mapped bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio being terminated
+    :type bio: struct bio \*
 
 .. _`bio_uncopy_user.description`:
 
@@ -551,17 +570,21 @@ bio_copy_user_iov
 
     copy user data to bio
 
-    :param struct request_queue \*q:
+    :param q:
         destination block queue
+    :type q: struct request_queue \*
 
-    :param struct rq_map_data \*map_data:
+    :param map_data:
         pointer to the rq_map_data holding pages (if necessary)
+    :type map_data: struct rq_map_data \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         iovec iterator
+    :type iter: struct iov_iter \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags
+    :type gfp_mask: gfp_t
 
 .. _`bio_copy_user_iov.description`:
 
@@ -581,14 +604,17 @@ bio_map_user_iov
 
     map user iovec into bio
 
-    :param struct request_queue \*q:
+    :param q:
         the struct request_queue for the bio
+    :type q: struct request_queue \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         iovec iterator
+    :type iter: struct iov_iter \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags
+    :type gfp_mask: gfp_t
 
 .. _`bio_map_user_iov.description`:
 
@@ -607,8 +633,9 @@ bio_unmap_user
 
     unmap a bio
 
-    :param struct bio \*bio:
+    :param bio:
         the bio being unmapped
+    :type bio: struct bio \*
 
 .. _`bio_unmap_user.description`:
 
@@ -629,17 +656,21 @@ bio_map_kern
 
     map kernel address into bio
 
-    :param struct request_queue \*q:
+    :param q:
         the struct request_queue for the bio
+    :type q: struct request_queue \*
 
-    :param void \*data:
+    :param data:
         pointer to buffer to map
+    :type data: void \*
 
-    :param unsigned int len:
+    :param len:
         length in bytes
+    :type len: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation flags for bio allocation
+    :type gfp_mask: gfp_t
 
 .. _`bio_map_kern.description`:
 
@@ -658,20 +689,25 @@ bio_copy_kern
 
     copy kernel address into bio
 
-    :param struct request_queue \*q:
+    :param q:
         the struct request_queue for the bio
+    :type q: struct request_queue \*
 
-    :param void \*data:
+    :param data:
         pointer to buffer to copy
+    :type data: void \*
 
-    :param unsigned int len:
+    :param len:
         length in bytes
+    :type len: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation flags for bio and page allocation
+    :type gfp_mask: gfp_t
 
-    :param int reading:
+    :param reading:
         data direction is READ
+    :type reading: int
 
 .. _`bio_copy_kern.description`:
 
@@ -690,8 +726,9 @@ bio_endio
 
     end I/O on a bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio
+    :type bio: struct bio \*
 
 .. _`bio_endio.description`:
 
@@ -716,17 +753,21 @@ bio_split
 
     split a bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio to split
+    :type bio: struct bio \*
 
-    :param int sectors:
+    :param sectors:
         number of sectors to split from the front of \ ``bio``\ 
+    :type sectors: int
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp mask
+    :type gfp: gfp_t
 
-    :param struct bio_set \*bs:
+    :param bs:
         bio set to allocate from
+    :type bs: struct bio_set \*
 
 .. _`bio_split.description`:
 
@@ -749,14 +790,17 @@ bio_trim
 
     trim a bio
 
-    :param struct bio \*bio:
+    :param bio:
         bio to trim
+    :type bio: struct bio \*
 
-    :param int offset:
+    :param offset:
         number of sectors to trim from the front of \ ``bio``\ 
+    :type offset: int
 
-    :param int size:
+    :param size:
         size we want to trim \ ``bio``\  to, in sectors
+    :type size: int
 
 .. _`bioset_init`:
 
@@ -767,18 +811,22 @@ bioset_init
 
     Initialize a bio_set
 
-    :param struct bio_set \*bs:
+    :param bs:
         pool to initialize
+    :type bs: struct bio_set \*
 
-    :param unsigned int pool_size:
+    :param pool_size:
         Number of bio and bio_vecs to cache in the mempool
+    :type pool_size: unsigned int
 
-    :param unsigned int front_pad:
+    :param front_pad:
         Number of bytes to allocate in front of the returned bio
+    :type front_pad: unsigned int
 
-    :param int flags:
+    :param flags:
         Flags to modify behavior, currently \ ``BIOSET_NEED_BVECS``\ 
         and \ ``BIOSET_NEED_RESCUER``\ 
+    :type flags: int
 
 .. _`bioset_init.description`:
 
@@ -796,6 +844,31 @@ Description
    If \ ``BIOSET_NEED_RESCUER``\  is set, a workqueue is created which can be used to
    dispatch queued requests when the mempool runs out of space.
 
+.. _`bio_associate_blkcg_from_page`:
+
+bio_associate_blkcg_from_page
+=============================
+
+.. c:function:: int bio_associate_blkcg_from_page(struct bio *bio, struct page *page)
+
+    associate a bio with the page's blkcg
+
+    :param bio:
+        target bio
+    :type bio: struct bio \*
+
+    :param page:
+        the page to lookup the blkcg from
+    :type page: struct page \*
+
+.. _`bio_associate_blkcg_from_page.description`:
+
+Description
+-----------
+
+Associate \ ``bio``\  with the blkcg from \ ``page``\ 's owning memcg.  This works like
+every other associate function wrt references.
+
 .. _`bio_associate_blkcg`:
 
 bio_associate_blkcg
@@ -805,11 +878,13 @@ bio_associate_blkcg
 
     associate a bio with the specified blkcg
 
-    :param struct bio \*bio:
+    :param bio:
         target bio
+    :type bio: struct bio \*
 
-    :param struct cgroup_subsys_state \*blkcg_css:
+    :param blkcg_css:
         css of the blkcg to associate
+    :type blkcg_css: struct cgroup_subsys_state \*
 
 .. _`bio_associate_blkcg.description`:
 
@@ -823,6 +898,32 @@ This function takes an extra reference of \ ``blkcg_css``\  which will be put
 when \ ``bio``\  is released.  The caller must own \ ``bio``\  and is responsible for
 synchronizing calls to this function.
 
+.. _`bio_associate_blkg`:
+
+bio_associate_blkg
+==================
+
+.. c:function:: int bio_associate_blkg(struct bio *bio, struct blkcg_gq *blkg)
+
+    associate a bio with the specified blkg
+
+    :param bio:
+        target bio
+    :type bio: struct bio \*
+
+    :param blkg:
+        the blkg to associate
+    :type blkg: struct blkcg_gq \*
+
+.. _`bio_associate_blkg.description`:
+
+Description
+-----------
+
+Associate \ ``bio``\  with the blkg specified by \ ``blkg``\ .  This is the queue specific
+blkcg information associated with the \ ``bio``\ , a reference will be taken on the
+\ ``blkg``\  and will be freed when the bio is freed.
+
 .. _`bio_disassociate_task`:
 
 bio_disassociate_task
@@ -832,8 +933,9 @@ bio_disassociate_task
 
     undo \ :c:func:`bio_associate_current`\ 
 
-    :param struct bio \*bio:
+    :param bio:
         target bio
+    :type bio: struct bio \*
 
 .. _`bio_clone_blkcg_association`:
 
@@ -844,11 +946,13 @@ bio_clone_blkcg_association
 
     clone blkcg association from src to dst bio
 
-    :param struct bio \*dst:
+    :param dst:
         destination bio
+    :type dst: struct bio \*
 
-    :param struct bio \*src:
+    :param src:
         source bio
+    :type src: struct bio \*
 
 .. This file was automatic generated / don't edit.
 

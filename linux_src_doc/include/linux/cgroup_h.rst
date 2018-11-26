@@ -10,8 +10,9 @@ cgroup_subsys_enabled
 
     fast test on whether a subsys is enabled
 
-    :param  ss:
+    :param ss:
         subsystem in question
+    :type ss: 
 
 .. _`cgroup_subsys_on_dfl`:
 
@@ -22,8 +23,9 @@ cgroup_subsys_on_dfl
 
     fast test on whether a subsys is on default hierarchy
 
-    :param  ss:
+    :param ss:
         subsystem in question
+    :type ss: 
 
 .. _`css_for_each_child`:
 
@@ -34,11 +36,13 @@ css_for_each_child
 
     iterate through children of a css
 
-    :param  pos:
+    :param pos:
         the css \* to use as the loop cursor
+    :type pos: 
 
-    :param  parent:
+    :param parent:
         css whose children to walk
+    :type parent: 
 
 .. _`css_for_each_child.description`:
 
@@ -67,11 +71,13 @@ css_for_each_descendant_pre
 
     pre-order walk of a css's descendants
 
-    :param  pos:
+    :param pos:
         the css \* to use as the loop cursor
+    :type pos: 
 
-    :param  css:
+    :param css:
         *undescribed*
+    :type css: 
 
 .. _`css_for_each_descendant_pre.description`:
 
@@ -119,7 +125,7 @@ still result in the correct state.  It's guaranateed that at least one
 inheritance happens for any css after the latest update to its parent.
 
 If checking parent's state requires locking the parent, each inheriting
-iteration should lock and unlock both \ ``pos``\ ->parent and \ ``pos``\ .
+iteration should lock and unlock both \ ``pos->parent``\  and \ ``pos``\ .
 
 Alternatively, a subsystem may choose to use a single global lock to
 synchronize ->css_online() and ->css_offline() against tree-walking
@@ -138,11 +144,13 @@ css_for_each_descendant_post
 
     post-order walk of a css's descendants
 
-    :param  pos:
+    :param pos:
         the css \* to use as the loop cursor
+    :type pos: 
 
-    :param  css:
+    :param css:
         css whose descendants to walk
+    :type css: 
 
 .. _`css_for_each_descendant_post.description`:
 
@@ -172,14 +180,17 @@ cgroup_taskset_for_each
 
     iterate cgroup_taskset
 
-    :param  task:
+    :param task:
         the loop cursor
+    :type task: 
 
-    :param  dst_css:
+    :param dst_css:
         the destination css
+    :type dst_css: 
 
-    :param  tset:
+    :param tset:
         taskset to iterate
+    :type tset: 
 
 .. _`cgroup_taskset_for_each.description`:
 
@@ -207,14 +218,17 @@ cgroup_taskset_for_each_leader
 
     iterate group leaders in a cgroup_taskset
 
-    :param  leader:
+    :param leader:
         the loop cursor
+    :type leader: 
 
-    :param  dst_css:
+    :param dst_css:
         the destination css
+    :type dst_css: 
 
-    :param  tset:
+    :param tset:
         taskset to iterate
+    :type tset: 
 
 .. _`cgroup_taskset_for_each_leader.description`:
 
@@ -233,8 +247,9 @@ css_get
 
     obtain a reference on the specified css
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         target css
+    :type css: struct cgroup_subsys_state \*
 
 .. _`css_get.description`:
 
@@ -252,11 +267,13 @@ css_get_many
 
     obtain references on the specified css
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         target css
+    :type css: struct cgroup_subsys_state \*
 
-    :param unsigned int n:
+    :param n:
         number of references to get
+    :type n: unsigned int
 
 .. _`css_get_many.description`:
 
@@ -274,8 +291,9 @@ css_tryget
 
     try to obtain a reference on the specified css
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         target css
+    :type css: struct cgroup_subsys_state \*
 
 .. _`css_tryget.description`:
 
@@ -298,8 +316,9 @@ css_tryget_online
 
     try to obtain a reference on the specified css if online
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         target css
+    :type css: struct cgroup_subsys_state \*
 
 .. _`css_tryget_online.description`:
 
@@ -321,8 +340,9 @@ css_is_dying
 
     test whether the specified css is dying
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         target css
+    :type css: struct cgroup_subsys_state \*
 
 .. _`css_is_dying.description`:
 
@@ -349,8 +369,9 @@ css_put
 
     put a css reference
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         target css
+    :type css: struct cgroup_subsys_state \*
 
 .. _`css_put.description`:
 
@@ -368,11 +389,13 @@ css_put_many
 
     put css references
 
-    :param struct cgroup_subsys_state \*css:
+    :param css:
         target css
+    :type css: struct cgroup_subsys_state \*
 
-    :param unsigned int n:
+    :param n:
         number of references to put
+    :type n: unsigned int
 
 .. _`css_put_many.description`:
 
@@ -390,14 +413,17 @@ task_css_check
 
     obtain css for (task, subsys) w/ extra access conds
 
-    :param  task:
+    :param task:
         the target task
+    :type task: 
 
-    :param  subsys_id:
+    :param subsys_id:
         the target subsystem ID
+    :type subsys_id: 
 
-    :param  __c:
+    :param __c:
         extra condition expression to be passed to \ :c:func:`rcu_dereference_check`\ 
+    :type __c: 
 
 .. _`task_css_check.description`:
 
@@ -416,8 +442,9 @@ task_css_set
 
     obtain a task's css_set
 
-    :param struct task_struct \*task:
+    :param task:
         the task to obtain css_set for
+    :type task: struct task_struct \*
 
 .. _`task_css_set.description`:
 
@@ -435,11 +462,13 @@ task_css
 
     obtain css for (task, subsys)
 
-    :param struct task_struct \*task:
+    :param task:
         the target task
+    :type task: struct task_struct \*
 
-    :param int subsys_id:
+    :param subsys_id:
         the target subsystem ID
+    :type subsys_id: int
 
 .. _`task_css.description`:
 
@@ -457,11 +486,13 @@ task_get_css
 
     find and get the css for (task, subsys)
 
-    :param struct task_struct \*task:
+    :param task:
         the target task
+    :type task: struct task_struct \*
 
-    :param int subsys_id:
+    :param subsys_id:
         the target subsystem ID
+    :type subsys_id: int
 
 .. _`task_get_css.description`:
 
@@ -481,11 +512,13 @@ task_css_is_root
 
     test whether a task belongs to the root css
 
-    :param struct task_struct \*task:
+    :param task:
         the target task
+    :type task: struct task_struct \*
 
-    :param int subsys_id:
+    :param subsys_id:
         the target subsystem ID
+    :type subsys_id: int
 
 .. _`task_css_is_root.description`:
 
@@ -504,11 +537,13 @@ cgroup_is_descendant
 
     test ancestry
 
-    :param struct cgroup \*cgrp:
+    :param cgrp:
         the cgroup to be tested
+    :type cgrp: struct cgroup \*
 
-    :param struct cgroup \*ancestor:
+    :param ancestor:
         possible ancestor of \ ``cgrp``\ 
+    :type ancestor: struct cgroup \*
 
 .. _`cgroup_is_descendant.description`:
 
@@ -519,6 +554,34 @@ Test whether \ ``cgrp``\  is a descendant of \ ``ancestor``\ .  It also returns 
 if \ ``cgrp``\  == \ ``ancestor``\ .  This function is safe to call as long as \ ``cgrp``\ 
 and \ ``ancestor``\  are accessible.
 
+.. _`cgroup_ancestor`:
+
+cgroup_ancestor
+===============
+
+.. c:function:: struct cgroup *cgroup_ancestor(struct cgroup *cgrp, int ancestor_level)
+
+    find ancestor of cgroup
+
+    :param cgrp:
+        cgroup to find ancestor of
+    :type cgrp: struct cgroup \*
+
+    :param ancestor_level:
+        level of ancestor to find starting from root
+    :type ancestor_level: int
+
+.. _`cgroup_ancestor.description`:
+
+Description
+-----------
+
+Find ancestor of cgroup at specified level starting from root if it exists
+and return pointer to it. Return NULL if \ ``cgrp``\  doesn't have ancestor at
+\ ``ancestor_level``\ .
+
+This function is safe to call as long as \ ``cgrp``\  is accessible.
+
 .. _`task_under_cgroup_hierarchy`:
 
 task_under_cgroup_hierarchy
@@ -528,11 +591,13 @@ task_under_cgroup_hierarchy
 
     test task's membership of cgroup ancestry
 
-    :param struct task_struct \*task:
+    :param task:
         the task to be tested
+    :type task: struct task_struct \*
 
-    :param struct cgroup \*ancestor:
+    :param ancestor:
         possible ancestor of \ ``task``\ 's cgroup
+    :type ancestor: struct cgroup \*
 
 .. _`task_under_cgroup_hierarchy.description`:
 

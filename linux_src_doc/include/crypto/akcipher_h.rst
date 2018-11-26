@@ -192,15 +192,18 @@ crypto_alloc_akcipher
 
     allocate AKCIPHER tfm handle
 
-    :param const char \*alg_name:
+    :param alg_name:
         is the cra_name / name or cra_driver_name / driver name of the
         public key algorithm e.g. "rsa"
+    :type alg_name: const char \*
 
-    :param u32 type:
+    :param type:
         specifies the type of the algorithm
+    :type type: u32
 
-    :param u32 mask:
+    :param mask:
         specifies the mask for the algorithm
+    :type mask: u32
 
 .. _`crypto_alloc_akcipher.description`:
 
@@ -228,8 +231,9 @@ crypto_free_akcipher
 
     free AKCIPHER tfm handle
 
-    :param struct crypto_akcipher \*tfm:
+    :param tfm:
         AKCIPHER tfm handle allocated with \ :c:func:`crypto_alloc_akcipher`\ 
+    :type tfm: struct crypto_akcipher \*
 
 .. _`akcipher_request_alloc`:
 
@@ -240,11 +244,13 @@ akcipher_request_alloc
 
     allocates public key request
 
-    :param struct crypto_akcipher \*tfm:
+    :param tfm:
         AKCIPHER tfm handle allocated with \ :c:func:`crypto_alloc_akcipher`\ 
+    :type tfm: struct crypto_akcipher \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`akcipher_request_alloc.return`:
 
@@ -262,8 +268,9 @@ akcipher_request_free
 
     zeroize and free public key request
 
-    :param struct akcipher_request \*req:
+    :param req:
         request to free
+    :type req: struct akcipher_request \*
 
 .. _`akcipher_request_set_callback`:
 
@@ -274,17 +281,21 @@ akcipher_request_set_callback
 
     Sets an asynchronous callback.
 
-    :param struct akcipher_request \*req:
+    :param req:
         request that the callback will be set for
+    :type req: struct akcipher_request \*
 
-    :param u32 flgs:
+    :param flgs:
         specify for instance if the operation may backlog
+    :type flgs: u32
 
-    :param crypto_completion_t cmpl:
+    :param cmpl:
         callback which will be called
+    :type cmpl: crypto_completion_t
 
-    :param void \*data:
+    :param data:
         private data used by the caller
+    :type data: void \*
 
 .. _`akcipher_request_set_callback.description`:
 
@@ -303,20 +314,25 @@ akcipher_request_set_crypt
 
     Sets request parameters
 
-    :param struct akcipher_request \*req:
+    :param req:
         public key request
+    :type req: struct akcipher_request \*
 
-    :param struct scatterlist \*src:
+    :param src:
         ptr to input scatter list
+    :type src: struct scatterlist \*
 
-    :param struct scatterlist \*dst:
+    :param dst:
         ptr to output scatter list
+    :type dst: struct scatterlist \*
 
-    :param unsigned int src_len:
+    :param src_len:
         size of the src input scatter list to be processed
+    :type src_len: unsigned int
 
-    :param unsigned int dst_len:
+    :param dst_len:
         size of the dst output scatter list
+    :type dst_len: unsigned int
 
 .. _`akcipher_request_set_crypt.description`:
 
@@ -334,8 +350,9 @@ crypto_akcipher_maxsize
 
     Get len for output buffer
 
-    :param struct crypto_akcipher \*tfm:
+    :param tfm:
         AKCIPHER tfm handle allocated with \ :c:func:`crypto_alloc_akcipher`\ 
+    :type tfm: struct crypto_akcipher \*
 
 .. _`crypto_akcipher_maxsize.description`:
 
@@ -356,8 +373,9 @@ crypto_akcipher_encrypt
 
     Invoke public key encrypt operation
 
-    :param struct akcipher_request \*req:
+    :param req:
         asymmetric key request
+    :type req: struct akcipher_request \*
 
 .. _`crypto_akcipher_encrypt.description`:
 
@@ -383,8 +401,9 @@ crypto_akcipher_decrypt
 
     Invoke public key decrypt operation
 
-    :param struct akcipher_request \*req:
+    :param req:
         asymmetric key request
+    :type req: struct akcipher_request \*
 
 .. _`crypto_akcipher_decrypt.description`:
 
@@ -410,8 +429,9 @@ crypto_akcipher_sign
 
     Invoke public key sign operation
 
-    :param struct akcipher_request \*req:
+    :param req:
         asymmetric key request
+    :type req: struct akcipher_request \*
 
 .. _`crypto_akcipher_sign.description`:
 
@@ -437,8 +457,9 @@ crypto_akcipher_verify
 
     Invoke public key verify operation
 
-    :param struct akcipher_request \*req:
+    :param req:
         asymmetric key request
+    :type req: struct akcipher_request \*
 
 .. _`crypto_akcipher_verify.description`:
 
@@ -464,14 +485,17 @@ crypto_akcipher_set_pub_key
 
     Invoke set public key operation
 
-    :param struct crypto_akcipher \*tfm:
+    :param tfm:
         tfm handle
+    :type tfm: struct crypto_akcipher \*
 
-    :param const void \*key:
+    :param key:
         BER encoded public key
+    :type key: const void \*
 
-    :param unsigned int keylen:
+    :param keylen:
         length of the key
+    :type keylen: unsigned int
 
 .. _`crypto_akcipher_set_pub_key.description`:
 
@@ -497,14 +521,17 @@ crypto_akcipher_set_priv_key
 
     Invoke set private key operation
 
-    :param struct crypto_akcipher \*tfm:
+    :param tfm:
         tfm handle
+    :type tfm: struct crypto_akcipher \*
 
-    :param const void \*key:
+    :param key:
         BER encoded private key
+    :type key: const void \*
 
-    :param unsigned int keylen:
+    :param keylen:
         length of the key
+    :type keylen: unsigned int
 
 .. _`crypto_akcipher_set_priv_key.description`:
 

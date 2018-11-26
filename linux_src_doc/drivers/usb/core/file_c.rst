@@ -10,11 +10,13 @@ usb_register_dev
 
     register a USB device, and ask for a minor number
 
-    :param struct usb_interface \*intf:
+    :param intf:
         pointer to the usb_interface that is being registered
+    :type intf: struct usb_interface \*
 
-    :param struct usb_class_driver \*class_driver:
+    :param class_driver:
         pointer to the usb_class_driver for this device
+    :type class_driver: struct usb_class_driver \*
 
 .. _`usb_register_dev.description`:
 
@@ -49,11 +51,13 @@ usb_deregister_dev
 
     deregister a USB device's dynamic minor.
 
-    :param struct usb_interface \*intf:
+    :param intf:
         pointer to the usb_interface that is being deregistered
+    :type intf: struct usb_interface \*
 
-    :param struct usb_class_driver \*class_driver:
+    :param class_driver:
         pointer to the usb_class_driver for this device
+    :type class_driver: struct usb_class_driver \*
 
 .. _`usb_deregister_dev.description`:
 

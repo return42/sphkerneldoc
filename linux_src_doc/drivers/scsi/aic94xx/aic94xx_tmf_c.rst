@@ -10,8 +10,9 @@ asd_abort_task
 
     - ABORT TASK TMF
 
-    :param struct sas_task \*task:
+    :param task:
         the task to be aborted
+    :type task: struct sas_task \*
 
 .. _`asd_abort_task.description`:
 
@@ -62,17 +63,21 @@ asd_initiate_ssp_tmf
 
     - send a TMF to an I_T_L or I_T_L_Q nexus
 
-    :param struct domain_device \*dev:
+    :param dev:
         pointer to struct domain_device of interest
+    :type dev: struct domain_device \*
 
-    :param u8 \*lun:
+    :param lun:
         pointer to u8[8] which is the LUN
+    :type lun: u8 \*
 
-    :param int tmf:
+    :param tmf:
         the TMF to be performed (see sas_task.h or the SAS spec)
+    :type tmf: int
 
-    :param int index:
+    :param index:
         the transaction context of the task to be queried if QT TMF
+    :type index: int
 
 .. _`asd_initiate_ssp_tmf.description`:
 
@@ -101,8 +106,9 @@ asd_query_task
 
     - send a QUERY TASK TMF to an I_T_L_Q nexus
 
-    :param struct sas_task \*task:
+    :param task:
         *undescribed*
+    :type task: struct sas_task \*
 
 .. _`asd_query_task.task`:
 

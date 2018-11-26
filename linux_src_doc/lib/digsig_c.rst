@@ -10,20 +10,25 @@ digsig_verify
 
     digital signature verification with public key
 
-    :param struct key \*keyring:
+    :param keyring:
         keyring to search key in
+    :type keyring: struct key \*
 
-    :param const char \*sig:
+    :param sig:
         digital signature
+    :type sig: const char \*
 
-    :param int siglen:
+    :param siglen:
         length of the signature
+    :type siglen: int
 
-    :param const char \*data:
+    :param data:
         data
+    :type data: const char \*
 
-    :param int datalen:
+    :param datalen:
         length of the data
+    :type datalen: int
 
 .. _`digsig_verify.description`:
 

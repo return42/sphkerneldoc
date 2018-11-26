@@ -8,14 +8,17 @@ fmc_sdb_dump_recursive
 
 .. c:function:: void fmc_sdb_dump_recursive(struct fmc_device *fmc, struct seq_file *s, const struct sdb_array *arr)
 
-    :param struct fmc_device \*fmc:
+    :param fmc:
         *undescribed*
+    :type fmc: struct fmc_device \*
 
-    :param struct seq_file \*s:
+    :param s:
         *undescribed*
+    :type s: struct seq_file \*
 
-    :param const struct sdb_array \*arr:
+    :param arr:
         *undescribed*
+    :type arr: const struct sdb_array \*
 
 .. This file was automatic generated / don't edit.
 

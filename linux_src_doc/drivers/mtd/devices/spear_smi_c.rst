@@ -134,11 +134,13 @@ spear_smi_read_sr
 
     Read status register of flash through SMI
 
-    :param struct spear_smi \*dev:
+    :param dev:
         structure of SMI information.
+    :type dev: struct spear_smi \*
 
-    :param u32 bank:
+    :param bank:
         bank to which flash is connected
+    :type bank: u32
 
 .. _`spear_smi_read_sr.description`:
 
@@ -157,14 +159,17 @@ spear_smi_wait_till_ready
 
     wait till flash is ready
 
-    :param struct spear_smi \*dev:
+    :param dev:
         structure of SMI information.
+    :type dev: struct spear_smi \*
 
-    :param u32 bank:
+    :param bank:
         flash corresponding to this bank
+    :type bank: u32
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout for busy wait condition
+    :type timeout: unsigned long
 
 .. _`spear_smi_wait_till_ready.description`:
 
@@ -183,11 +188,13 @@ spear_smi_int_handler
 
     SMI Interrupt Handler.
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         structure of SMI device, embedded in dev_id.
+    :type dev_id: void \*
 
 .. _`spear_smi_int_handler.description`:
 
@@ -206,8 +213,9 @@ spear_smi_hw_init
 
     initializes the smi controller.
 
-    :param struct spear_smi \*dev:
+    :param dev:
         structure of smi device
+    :type dev: struct spear_smi \*
 
 .. _`spear_smi_hw_init.description`:
 
@@ -225,8 +233,9 @@ get_flash_index
 
     match chip id from a flash list.
 
-    :param u32 flash_id:
+    :param flash_id:
         a valid nor flash chip id obtained from board.
+    :type flash_id: u32
 
 .. _`get_flash_index.description`:
 
@@ -246,11 +255,13 @@ spear_smi_write_enable
 
     Enable the flash to do write operation
 
-    :param struct spear_smi \*dev:
+    :param dev:
         structure of SMI device
+    :type dev: struct spear_smi \*
 
-    :param u32 bank:
+    :param bank:
         enable write for flash connected to this bank
+    :type bank: u32
 
 .. _`spear_smi_write_enable.description`:
 
@@ -269,17 +280,21 @@ spear_smi_erase_sector
 
     erase one sector of flash
 
-    :param struct spear_smi \*dev:
+    :param dev:
         structure of SMI information
+    :type dev: struct spear_smi \*
 
-    :param u32 bank:
+    :param bank:
         bank to which this command needs to be send
+    :type bank: u32
 
-    :param u32 command:
+    :param command:
         erase command to be send
+    :type command: u32
 
-    :param u32 bytes:
+    :param bytes:
         size of command
+    :type bytes: u32
 
 .. _`spear_smi_erase_sector.description`:
 
@@ -299,11 +314,13 @@ spear_mtd_erase
 
     perform flash erase operation as requested by user
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         Provides the memory characteristics
+    :type mtd: struct mtd_info \*
 
-    :param struct erase_info \*e_info:
+    :param e_info:
         Provides the erase information
+    :type e_info: struct erase_info \*
 
 .. _`spear_mtd_erase.description`:
 
@@ -322,20 +339,25 @@ spear_mtd_read
 
     performs flash read operation as requested by the user
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD information of the memory bank
+    :type mtd: struct mtd_info \*
 
-    :param loff_t from:
+    :param from:
         Address from which to start read
+    :type from: loff_t
 
-    :param size_t len:
+    :param len:
         Number of bytes to be read
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         Fills the Number of bytes actually read
+    :type retlen: size_t \*
 
-    :param u8 \*buf:
+    :param buf:
         Fills this after reading
+    :type buf: u8 \*
 
 .. _`spear_mtd_read.description`:
 
@@ -355,20 +377,25 @@ spear_mtd_write
 
     performs write operation as requested by the user.
 
-    :param struct mtd_info \*mtd:
+    :param mtd:
         MTD information of the memory bank.
+    :type mtd: struct mtd_info \*
 
-    :param loff_t to:
+    :param to:
         Address to write.
+    :type to: loff_t
 
-    :param size_t len:
+    :param len:
         Number of bytes to be written.
+    :type len: size_t
 
-    :param size_t \*retlen:
+    :param retlen:
         Number of bytes actually wrote.
+    :type retlen: size_t \*
 
-    :param const u8 \*buf:
+    :param buf:
         Buffer from which the data to be taken.
+    :type buf: const u8 \*
 
 .. _`spear_mtd_write.description`:
 
@@ -389,11 +416,13 @@ spear_smi_probe_flash
 
     Detects the NOR Flash chip.
 
-    :param struct spear_smi \*dev:
+    :param dev:
         structure of SMI information.
+    :type dev: struct spear_smi \*
 
-    :param u32 bank:
+    :param bank:
         bank on which flash must be probed
+    :type bank: u32
 
 .. _`spear_smi_probe_flash.description`:
 
@@ -413,8 +442,9 @@ spear_smi_probe
 
     Entry routine
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`spear_smi_probe.description`:
 
@@ -435,8 +465,9 @@ spear_smi_remove
 
     Exit routine
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`spear_smi_remove.description`:
 

@@ -54,8 +54,9 @@ acpi_gtdt_map_ppi
 
     Map the PPIs of per-cpu arch_timer.
 
-    :param int type:
+    :param type:
         the type of PPI.
+    :type type: int
 
 .. _`acpi_gtdt_map_ppi.note`:
 
@@ -82,8 +83,9 @@ acpi_gtdt_c3stop
 
     Got c3stop info from GTDT according to the type of PPI.
 
-    :param int type:
+    :param type:
         the type of PPI.
+    :type type: int
 
 .. _`acpi_gtdt_c3stop.return`:
 
@@ -102,14 +104,16 @@ acpi_gtdt_init
 
     Get the info of GTDT table to prepare for further init.
 
-    :param struct acpi_table_header \*table:
+    :param table:
         The pointer to GTDT table.
+    :type table: struct acpi_table_header \*
 
-    :param int \*platform_timer_count:
+    :param platform_timer_count:
         It points to a integer variable which is used
         for storing the number of platform timers.
         This pointer could be NULL, if the caller
         doesn't need this info.
+    :type platform_timer_count: int \*
 
 .. _`acpi_gtdt_init.return`:
 
@@ -127,14 +131,16 @@ acpi_arch_timer_mem_init
 
     Get the info of all GT blocks in GTDT table.
 
-    :param struct arch_timer_mem \*timer_mem:
+    :param timer_mem:
         The pointer to the array of struct arch_timer_mem for returning
         the result of parsing. The element number of this array should
         be platform_timer_count(the total number of platform timers).
+    :type timer_mem: struct arch_timer_mem \*
 
-    :param int \*timer_count:
+    :param timer_count:
         It points to a integer variable which is used for storing the
         number of GT blocks we have parsed.
+    :type timer_count: int \*
 
 .. _`acpi_arch_timer_mem_init.return`:
 

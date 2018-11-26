@@ -10,8 +10,9 @@ img_ir_control
 
     Convert control struct to control register value.
 
-    :param const struct img_ir_control \*control:
+    :param control:
         Control data
+    :type control: const struct img_ir_control \*
 
 .. _`img_ir_control.return`:
 
@@ -29,20 +30,25 @@ img_ir_timing_range_convert
 
     Convert microsecond range.
 
-    :param struct img_ir_timing_range \*out:
+    :param out:
         Output timing range in clock cycles with a shift.
+    :type out: struct img_ir_timing_range \*
 
-    :param const struct img_ir_timing_range \*in:
+    :param in:
         Input timing range in microseconds.
+    :type in: const struct img_ir_timing_range \*
 
-    :param unsigned int tolerance:
+    :param tolerance:
         Tolerance as a fraction of 128 (roughly percent).
+    :type tolerance: unsigned int
 
-    :param unsigned long clock_hz:
+    :param clock_hz:
         IR clock rate in Hz.
+    :type clock_hz: unsigned long
 
-    :param unsigned int shift:
+    :param shift:
         Shift of output units.
+    :type shift: unsigned int
 
 .. _`img_ir_timing_range_convert.description`:
 
@@ -62,20 +68,25 @@ img_ir_symbol_timing
 
     Convert symbol timing struct to register value.
 
-    :param const struct img_ir_symbol_timing \*timing:
+    :param timing:
         Symbol timing data
+    :type timing: const struct img_ir_symbol_timing \*
 
-    :param unsigned int tolerance:
+    :param tolerance:
         Timing tolerance where 0-128 represents 0-100%
+    :type tolerance: unsigned int
 
-    :param unsigned long clock_hz:
+    :param clock_hz:
         Frequency of source clock in Hz
+    :type clock_hz: unsigned long
 
-    :param unsigned int pd_shift:
+    :param pd_shift:
         Shift to apply to symbol period
+    :type pd_shift: unsigned int
 
-    :param unsigned int w_shift:
+    :param w_shift:
         Shift to apply to symbol width
+    :type w_shift: unsigned int
 
 .. _`img_ir_symbol_timing.return`:
 
@@ -93,11 +104,13 @@ img_ir_free_timing
 
     Convert free time timing struct to register value.
 
-    :param const struct img_ir_free_timing \*timing:
+    :param timing:
         Free symbol timing data
+    :type timing: const struct img_ir_free_timing \*
 
-    :param unsigned long clock_hz:
+    :param clock_hz:
         Source clock frequency in Hz
+    :type clock_hz: unsigned long
 
 .. _`img_ir_free_timing.return`:
 
@@ -115,11 +128,13 @@ img_ir_free_timing_dynamic
 
     Update free time register value.
 
-    :param u32 st_ft:
+    :param st_ft:
         Static free time register value from img_ir_free_timing.
+    :type st_ft: u32
 
-    :param struct img_ir_filter \*filter:
+    :param filter:
         Current filter which may additionally restrict min/max len.
+    :type filter: struct img_ir_filter \*
 
 .. _`img_ir_free_timing_dynamic.return`:
 
@@ -137,17 +152,21 @@ img_ir_timings_convert
 
     Convert timings to register values
 
-    :param struct img_ir_timing_regvals \*regs:
+    :param regs:
         Output timing register values
+    :type regs: struct img_ir_timing_regvals \*
 
-    :param const struct img_ir_timings \*timings:
+    :param timings:
         Input timing data
+    :type timings: const struct img_ir_timings \*
 
-    :param unsigned int tolerance:
+    :param tolerance:
         Timing tolerance where 0-128 represents 0-100%
+    :type tolerance: unsigned int
 
-    :param unsigned int clock_hz:
+    :param clock_hz:
         Source clock frequency in Hz
+    :type clock_hz: unsigned int
 
 .. _`img_ir_decoder_preprocess`:
 
@@ -158,8 +177,9 @@ img_ir_decoder_preprocess
 
     Preprocess timings in decoder.
 
-    :param struct img_ir_decoder \*decoder:
+    :param decoder:
         Decoder to be preprocessed.
+    :type decoder: struct img_ir_decoder \*
 
 .. _`img_ir_decoder_preprocess.description`:
 
@@ -178,14 +198,17 @@ img_ir_decoder_convert
 
     Generate internal timings in decoder.
 
-    :param const struct img_ir_decoder \*decoder:
+    :param decoder:
         Decoder to be converted to internal timings.
+    :type decoder: const struct img_ir_decoder \*
 
-    :param struct img_ir_reg_timings \*reg_timings:
+    :param reg_timings:
         Timing register values.
+    :type reg_timings: struct img_ir_reg_timings \*
 
-    :param unsigned int clock_hz:
+    :param clock_hz:
         IR clock rate in Hz.
+    :type clock_hz: unsigned int
 
 .. _`img_ir_decoder_convert.description`:
 
@@ -204,14 +227,17 @@ img_ir_write_timings
 
     Write timings to the hardware now
 
-    :param struct img_ir_priv \*priv:
+    :param priv:
         IR private data
+    :type priv: struct img_ir_priv \*
 
-    :param struct img_ir_timing_regvals \*regs:
+    :param regs:
         Timing register values to write
+    :type regs: struct img_ir_timing_regvals \*
 
-    :param enum rc_filter_type type:
+    :param type:
         RC filter type (RC_FILTER\_\*)
+    :type type: enum rc_filter_type
 
 .. _`img_ir_write_timings.description`:
 
@@ -231,14 +257,17 @@ img_ir_set_decoder
 
     Set the current decoder.
 
-    :param struct img_ir_priv \*priv:
+    :param priv:
         IR private data.
+    :type priv: struct img_ir_priv \*
 
-    :param const struct img_ir_decoder \*decoder:
+    :param decoder:
         Decoder to use with immediate effect.
+    :type decoder: const struct img_ir_decoder \*
 
-    :param u64 proto:
+    :param proto:
         Protocol bitmap (or 0 to use decoder->type).
+    :type proto: u64
 
 .. _`img_ir_decoder_compatible`:
 
@@ -249,11 +278,13 @@ img_ir_decoder_compatible
 
     Find whether a decoder will work with a device.
 
-    :param struct img_ir_priv \*priv:
+    :param priv:
         IR private data.
+    :type priv: struct img_ir_priv \*
 
-    :param const struct img_ir_decoder \*dec:
+    :param dec:
         Decoder to check.
+    :type dec: const struct img_ir_decoder \*
 
 .. _`img_ir_decoder_compatible.return`:
 
@@ -271,8 +302,9 @@ img_ir_allowed_protos
 
     Get allowed protocols from global decoder list.
 
-    :param struct img_ir_priv \*priv:
+    :param priv:
         IR private data.
+    :type priv: struct img_ir_priv \*
 
 .. _`img_ir_allowed_protos.return`:
 
@@ -290,8 +322,9 @@ img_ir_enable_wake
 
     Switch to wake mode.
 
-    :param struct img_ir_priv \*priv:
+    :param priv:
         IR private data.
+    :type priv: struct img_ir_priv \*
 
 .. _`img_ir_enable_wake.return`:
 
@@ -309,8 +342,9 @@ img_ir_disable_wake
 
     Switch out of wake mode.
 
-    :param struct img_ir_priv \*priv:
+    :param priv:
         IR private data
+    :type priv: struct img_ir_priv \*
 
 .. _`img_ir_disable_wake.return`:
 
@@ -329,8 +363,9 @@ img_ir_probe_hw_caps
 
     Probe capabilities of the hardware.
 
-    :param struct img_ir_priv \*priv:
+    :param priv:
         IR private data.
+    :type priv: struct img_ir_priv \*
 
 .. This file was automatic generated / don't edit.
 

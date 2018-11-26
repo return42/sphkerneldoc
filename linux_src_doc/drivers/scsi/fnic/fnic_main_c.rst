@@ -10,8 +10,9 @@ fnic_get_mac
 
     get assigned data MAC address for FIP code.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         local port.
+    :type lport: struct fc_lport \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ is_hpet_enabled
 
     check whether the hpet timer interrupt is enabled
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hpet_enable`:
 
@@ -22,8 +23,9 @@ hpet_enable
 
     Try to setup the HPET timer. Returns 1 on success.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

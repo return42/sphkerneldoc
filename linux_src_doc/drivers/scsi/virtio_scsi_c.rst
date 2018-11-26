@@ -10,11 +10,13 @@ virtscsi_complete_cmd
 
     finish a scsi_cmd and invoke scsi_done
 
-    :param struct virtio_scsi \*vscsi:
+    :param vscsi:
         *undescribed*
+    :type vscsi: struct virtio_scsi \*
 
-    :param void \*buf:
+    :param buf:
         *undescribed*
+    :type buf: void \*
 
 .. _`virtscsi_complete_cmd.description`:
 
@@ -32,17 +34,21 @@ virtscsi_add_cmd
 
     add a virtio_scsi_cmd to a virtqueue
 
-    :param struct virtqueue \*vq:
+    :param vq:
         the struct virtqueue we're talking about
+    :type vq: struct virtqueue \*
 
-    :param struct virtio_scsi_cmd \*cmd:
+    :param cmd:
         command structure
+    :type cmd: struct virtio_scsi_cmd \*
 
-    :param size_t req_size:
+    :param req_size:
         size of the request buffer
+    :type req_size: size_t
 
-    :param size_t resp_size:
+    :param resp_size:
         size of the response buffer
+    :type resp_size: size_t
 
 .. _`virtscsi_change_queue_depth`:
 
@@ -53,11 +59,13 @@ virtscsi_change_queue_depth
 
     Change a virtscsi target's queue depth
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Virtscsi target whose queue depth to change
+    :type sdev: struct scsi_device \*
 
-    :param int qdepth:
+    :param qdepth:
         New queue depth
+    :type qdepth: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ test_and_clear_bit
 
     clear a bit and return its old value
 
-    :param int nr:
+    :param nr:
         bit number to clear
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         pointer to memory
+    :type addr: volatile void \*
 
 .. _`test_and_set_bit`:
 
@@ -25,11 +27,13 @@ test_and_set_bit
 
     set a bit and return its old value
 
-    :param int nr:
+    :param nr:
         bit number to set
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         pointer to memory
+    :type addr: volatile void \*
 
 .. _`test_and_change_bit`:
 
@@ -40,11 +44,13 @@ test_and_change_bit
 
     toggle a bit and return its old value
 
-    :param int nr:
+    :param nr:
         bit number to set
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         pointer to memory
+    :type addr: volatile void \*
 
 .. This file was automatic generated / don't edit.
 

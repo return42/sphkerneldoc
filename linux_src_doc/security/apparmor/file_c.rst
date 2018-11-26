@@ -10,11 +10,13 @@ audit_file_mask
 
     convert mask to permission string
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         *undescribed*
+    :type ab: struct audit_buffer \*
 
-    :param u32 mask:
+    :param mask:
         permission mask to convert
+    :type mask: u32
 
 .. _`file_audit_cb`:
 
@@ -25,11 +27,13 @@ file_audit_cb
 
     call back for file specific audit fields
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         audit_buffer  (NOT NULL)
+    :type ab: struct audit_buffer \*
 
-    :param void \*va:
+    :param va:
         audit struct to audit values of  (NOT NULL)
+    :type va: void \*
 
 .. _`aa_audit_file`:
 
@@ -40,35 +44,45 @@ aa_audit_file
 
     handle the auditing of file operations
 
-    :param struct aa_profile \*profile:
+    :param profile:
         the profile being enforced  (NOT NULL)
+    :type profile: struct aa_profile \*
 
-    :param struct aa_perms \*perms:
+    :param perms:
         the permissions computed for the request (NOT NULL)
+    :type perms: struct aa_perms \*
 
-    :param const char \*op:
+    :param op:
         operation being mediated
+    :type op: const char \*
 
-    :param u32 request:
+    :param request:
         permissions requested
+    :type request: u32
 
-    :param const char \*name:
+    :param name:
         name of object being mediated (MAYBE NULL)
+    :type name: const char \*
 
-    :param const char \*target:
+    :param target:
         name of target (MAYBE NULL)
+    :type target: const char \*
 
-    :param struct aa_label \*tlabel:
+    :param tlabel:
         target label (MAY BE NULL)
+    :type tlabel: struct aa_label \*
 
-    :param kuid_t ouid:
+    :param ouid:
         object uid
+    :type ouid: kuid_t
 
-    :param const char \*info:
+    :param info:
         extra information message (MAYBE NULL)
+    :type info: const char \*
 
-    :param int error:
+    :param error:
         0 if operation allowed else failure error code
+    :type error: int
 
 .. _`aa_audit_file.return`:
 
@@ -86,8 +100,9 @@ is_deleted
 
     test if a file has been completely unlinked
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry of file to test for deletion  (NOT NULL)
+    :type dentry: struct dentry \*
 
 .. _`is_deleted.return`:
 
@@ -105,8 +120,9 @@ map_old_perms
 
     map old file perms layout to the new layout
 
-    :param u32 old:
+    :param old:
         permission set in old mapping
+    :type old: u32
 
 .. _`map_old_perms.return`:
 
@@ -124,14 +140,17 @@ aa_compute_fperms
 
     convert dfa compressed perms to internal perms
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         dfa to compute perms for   (NOT NULL)
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int state:
+    :param state:
         state in dfa
+    :type state: unsigned int
 
-    :param struct path_cond \*cond:
+    :param cond:
         conditions to consider  (NOT NULL)
+    :type cond: struct path_cond \*
 
 .. _`aa_compute_fperms.todo`:
 
@@ -157,20 +176,25 @@ aa_str_perms
 
     find permission that match \ ``name``\ 
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         to match against  (MAYBE NULL)
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int start:
+    :param start:
         *undescribed*
+    :type start: unsigned int
 
-    :param const char \*name:
+    :param name:
         string to match against dfa  (NOT NULL)
+    :type name: const char \*
 
-    :param struct path_cond \*cond:
+    :param cond:
         conditions to consider for permission set computation  (NOT NULL)
+    :type cond: struct path_cond \*
 
-    :param struct aa_perms \*perms:
+    :param perms:
         Returns - the permissions found when matching \ ``name``\ 
+    :type perms: struct aa_perms \*
 
 .. _`aa_str_perms.return`:
 
@@ -188,23 +212,29 @@ aa_path_perm
 
     do permissions check & audit for \ ``path``\ 
 
-    :param const char \*op:
+    :param op:
         operation being checked
+    :type op: const char \*
 
-    :param struct aa_label \*label:
+    :param label:
         profile being enforced  (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param const struct path \*path:
+    :param path:
         path to check permissions of  (NOT NULL)
+    :type path: const struct path \*
 
-    :param int flags:
+    :param flags:
         any additional path flags beyond what the profile specifies
+    :type flags: int
 
-    :param u32 request:
+    :param request:
         requested permissions
+    :type request: u32
 
-    :param struct path_cond \*cond:
+    :param cond:
         conditional info for this request  (NOT NULL)
+    :type cond: struct path_cond \*
 
 .. _`aa_path_perm.return`:
 
@@ -222,11 +252,13 @@ xindex_is_subset
 
     helper for aa_path_link
 
-    :param u32 link:
+    :param link:
         link permission set
+    :type link: u32
 
-    :param u32 target:
+    :param target:
         target permission set
+    :type target: u32
 
 .. _`xindex_is_subset.description`:
 
@@ -253,17 +285,21 @@ aa_path_link
 
     Handle hard link permission check
 
-    :param struct aa_label \*label:
+    :param label:
         the label being enforced  (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         the target dentry  (NOT NULL)
+    :type old_dentry: struct dentry \*
 
-    :param const struct path \*new_dir:
+    :param new_dir:
         directory the new link will be created in  (NOT NULL)
+    :type new_dir: const struct path \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         the link being created  (NOT NULL)
+    :type new_dentry: struct dentry \*
 
 .. _`aa_path_link.description`:
 
@@ -295,17 +331,21 @@ aa_file_perm
 
     do permission revalidation check & audit for \ ``file``\ 
 
-    :param const char \*op:
+    :param op:
         operation being checked
+    :type op: const char \*
 
-    :param struct aa_label \*label:
+    :param label:
         label being enforced   (NOT NULL)
+    :type label: struct aa_label \*
 
-    :param struct file \*file:
+    :param file:
         file to revalidate access permissions on  (NOT NULL)
+    :type file: struct file \*
 
-    :param u32 request:
+    :param request:
         requested permissions
+    :type request: u32
 
 .. _`aa_file_perm.return`:
 

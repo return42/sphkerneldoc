@@ -10,11 +10,13 @@ look_up_OID
 
     Find an OID registration for the specified data
 
-    :param const void \*data:
+    :param data:
         Binary representation of the OID
+    :type data: const void \*
 
-    :param size_t datasize:
+    :param datasize:
         Size of the binary representation
+    :type datasize: size_t
 
 .. _`sprint_oid`:
 
@@ -25,14 +27,17 @@ sprint_OID
 
     Print an Object Identifier into a buffer
 
-    :param enum OID oid:
+    :param oid:
         The OID to print
+    :type oid: enum OID
 
-    :param char \*buffer:
+    :param buffer:
         The buffer to render into
+    :type buffer: char \*
 
-    :param size_t bufsize:
+    :param bufsize:
         The size of the buffer
+    :type bufsize: size_t
 
 .. _`sprint_oid.description`:
 

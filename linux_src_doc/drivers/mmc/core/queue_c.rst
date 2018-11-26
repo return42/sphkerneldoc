@@ -10,14 +10,17 @@
 
     initialize the MMC-specific per-request data
 
-    :param struct mmc_queue \*mq:
+    :param mq:
         *undescribed*
+    :type mq: struct mmc_queue \*
 
-    :param struct request \*req:
+    :param req:
         the request
+    :type req: struct request \*
 
-    :param gfp_t gfp:
+    :param gfp:
         memory allocation policy
+    :type gfp: gfp_t
 
 .. _`mmc_init_queue`:
 
@@ -28,17 +31,21 @@ mmc_init_queue
 
     initialise a queue structure.
 
-    :param struct mmc_queue \*mq:
+    :param mq:
         mmc queue
+    :type mq: struct mmc_queue \*
 
-    :param struct mmc_card \*card:
+    :param card:
         mmc card to attach this queue
+    :type card: struct mmc_card \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         queue lock
+    :type lock: spinlock_t \*
 
-    :param const char \*subname:
+    :param subname:
         partition subname
+    :type subname: const char \*
 
 .. _`mmc_init_queue.description`:
 

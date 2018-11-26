@@ -10,8 +10,9 @@ msm_gem_shrinker_init
 
     Initialize msm shrinker
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`msm_gem_shrinker_init.description`:
 
@@ -29,8 +30,9 @@ msm_gem_shrinker_cleanup
 
     Clean up msm shrinker
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`msm_gem_shrinker_cleanup.description`:
 

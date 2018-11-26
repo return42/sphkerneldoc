@@ -10,8 +10,9 @@ ilog2
 
     log of base 2 of 32-bit or a 64-bit unsigned value \ ``n``\  - parameter
 
-    :param  n:
+    :param n:
         *undescribed*
+    :type n: 
 
 .. _`ilog2.description`:
 
@@ -33,8 +34,9 @@ roundup_pow_of_two
 
     round the given value up to nearest power of two \ ``n``\  - parameter
 
-    :param  n:
+    :param n:
         *undescribed*
+    :type n: 
 
 .. _`roundup_pow_of_two.description`:
 
@@ -54,8 +56,9 @@ rounddown_pow_of_two
 
     round the given value down to nearest power of two \ ``n``\  - parameter
 
-    :param  n:
+    :param n:
         *undescribed*
+    :type n: 
 
 .. _`rounddown_pow_of_two.description`:
 

@@ -10,8 +10,9 @@ smp_setup_cpu_maps
 
     initialize the following cpu maps: cpu_possible_mask cpu_present_mask
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`smp_setup_cpu_maps.description`:
 

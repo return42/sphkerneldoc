@@ -126,7 +126,7 @@ wcid
     *undescribed*
 
 lock
-    protects \ ``wcid``\ ->tx_rate.
+    protects \ ``wcid->tx_rate``\ .
 
 mac_lock
     locks out mac80211's tx status and rx paths.

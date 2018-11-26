@@ -10,8 +10,9 @@ i915_request_global_seqno
 
     report the current global seqno \ ``request``\  - the request
 
-    :param const struct i915_request \*request:
+    :param request:
         *undescribed*
+    :type request: const struct i915_request \*
 
 .. _`i915_request_global_seqno.description`:
 
@@ -39,11 +40,36 @@ i915_seqno_passed
 
 .. c:function:: bool i915_seqno_passed(u32 seq1, u32 seq2)
 
-    :param u32 seq1:
+    :param seq1:
         *undescribed*
+    :type seq1: u32
 
-    :param u32 seq2:
+    :param seq2:
         *undescribed*
+    :type seq2: u32
+
+.. _`i915_request_started`:
+
+i915_request_started
+====================
+
+.. c:function:: bool i915_request_started(const struct i915_request *rq)
+
+    check if the request has begun being executed
+
+    :param rq:
+        the request
+    :type rq: const struct i915_request \*
+
+.. _`i915_request_started.description`:
+
+Description
+-----------
+
+Returns true if the request has been submitted to hardware, and the hardware
+has advanced passed the end of the previous request and so should be either
+currently processing the request (though it may be preempted and so
+not necessarily the next request to complete) or have completed the request.
 
 .. _`init_request_active`:
 
@@ -54,11 +80,13 @@ init_request_active
 
     prepares the activity tracker for use \ ``active``\  - the active tracker \ ``func``\  - a callback when then the tracker is retired (becomes idle), can be NULL
 
-    :param struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: struct i915_gem_active \*
 
-    :param i915_gem_retire_fn retire:
+    :param retire:
         *undescribed*
+    :type retire: i915_gem_retire_fn
 
 .. _`init_request_active.description`:
 
@@ -79,11 +107,13 @@ i915_gem_active_set
 
     updates the tracker to watch the current request \ ``active``\  - the active tracker \ ``request``\  - the request to watch
 
-    :param struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: struct i915_gem_active \*
 
-    :param struct i915_request \*request:
+    :param request:
         *undescribed*
+    :type request: struct i915_request \*
 
 .. _`i915_gem_active_set.description`:
 
@@ -103,14 +133,17 @@ i915_gem_active_set_retire_fn
 
     updates the retirement callback \ ``active``\  - the active tracker \ ``fn``\  - the routine called when the request is retired \ ``mutex``\  - struct_mutex used to guard retirements
 
-    :param struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: struct i915_gem_active \*
 
-    :param i915_gem_retire_fn fn:
+    :param fn:
         *undescribed*
+    :type fn: i915_gem_retire_fn
 
-    :param struct mutex \*mutex:
+    :param mutex:
         *undescribed*
+    :type mutex: struct mutex \*
 
 .. _`i915_gem_active_set_retire_fn.description`:
 
@@ -130,11 +163,13 @@ i915_gem_active_raw
 
     return the active request \ ``active``\  - the active tracker
 
-    :param const struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: const struct i915_gem_active \*
 
-    :param struct mutex \*mutex:
+    :param mutex:
         *undescribed*
+    :type mutex: struct mutex \*
 
 .. _`i915_gem_active_raw.description`:
 
@@ -154,11 +189,13 @@ i915_gem_active_peek
 
     report the active request being monitored \ ``active``\  - the active tracker
 
-    :param const struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: const struct i915_gem_active \*
 
-    :param struct mutex \*mutex:
+    :param mutex:
         *undescribed*
+    :type mutex: struct mutex \*
 
 .. _`i915_gem_active_peek.description`:
 
@@ -178,11 +215,13 @@ i915_gem_active_get
 
     return a reference to the active request \ ``active``\  - the active tracker
 
-    :param const struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: const struct i915_gem_active \*
 
-    :param struct mutex \*mutex:
+    :param mutex:
         *undescribed*
+    :type mutex: struct mutex \*
 
 .. _`i915_gem_active_get.description`:
 
@@ -201,8 +240,9 @@ if the active tracker is idle. The caller must hold struct_mutex.
 
     return a reference to the active request \ ``active``\  - the active tracker
 
-    :param const struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: const struct i915_gem_active \*
 
 .. _`__i915_gem_active_get_rcu.description`:
 
@@ -222,8 +262,9 @@ i915_gem_active_get_unlocked
 
     return a reference to the active request \ ``active``\  - the active tracker
 
-    :param const struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: const struct i915_gem_active \*
 
 .. _`i915_gem_active_get_unlocked.description`:
 
@@ -245,8 +286,9 @@ i915_gem_active_isset
 
     report whether the active tracker is assigned \ ``active``\  - the active tracker
 
-    :param const struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: const struct i915_gem_active \*
 
 .. _`i915_gem_active_isset.description`:
 
@@ -266,11 +308,13 @@ i915_gem_active_wait
 
     waits until the request is completed \ ``active``\  - the active request on which to wait \ ``flags``\  - how to wait \ ``timeout``\  - how long to wait at most \ ``rps``\  - userspace client to charge for a waitboost
 
-    :param const struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: const struct i915_gem_active \*
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`i915_gem_active_wait.description`:
 
@@ -301,11 +345,13 @@ i915_gem_active_retire
 
     waits until the request is retired \ ``active``\  - the active request on which to wait
 
-    :param struct i915_gem_active \*active:
+    :param active:
         *undescribed*
+    :type active: struct i915_gem_active \*
 
-    :param struct mutex \*mutex:
+    :param mutex:
         *undescribed*
+    :type mutex: struct mutex \*
 
 .. _`i915_gem_active_retire.description`:
 

@@ -10,11 +10,13 @@
 
     add a profiles to list and label tree
 
-    :param struct list_head \*list:
+    :param list:
         list to add it to  (NOT NULL)
+    :type list: struct list_head \*
 
-    :param struct aa_profile \*profile:
+    :param profile:
         the profile to add  (NOT NULL)
+    :type profile: struct aa_profile \*
 
 .. _`__add_profile.description`:
 
@@ -39,8 +41,9 @@ namespace lock be held, or list not be shared
 
     remove a profile from the list it is on
 
-    :param struct aa_profile \*profile:
+    :param profile:
         the profile to remove  (NOT NULL)
+    :type profile: struct aa_profile \*
 
 .. _`__list_remove_profile.description`:
 
@@ -69,8 +72,9 @@ namespace lock be held, or list not have been live
 
     remove old profile, and children
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to be replaced  (NOT NULL)
+    :type profile: struct aa_profile \*
 
 .. _`__remove_profile.requires`:
 
@@ -88,8 +92,9 @@ namespace list lock be held, or list not be shared
 
     remove all profiles on the list and put refs
 
-    :param struct list_head \*head:
+    :param head:
         list of profiles  (NOT NULL)
+    :type head: struct list_head \*
 
 .. _`__aa_profile_list_release.requires`:
 
@@ -107,11 +112,13 @@ aa_free_data
 
     free a data blob
 
-    :param void \*ptr:
+    :param ptr:
         data to free
+    :type ptr: void \*
 
-    :param void \*arg:
+    :param arg:
         unused
+    :type arg: void \*
 
 .. _`aa_free_profile`:
 
@@ -122,8 +129,9 @@ aa_free_profile
 
     free a profile
 
-    :param struct aa_profile \*profile:
+    :param profile:
         the profile to free  (MAYBE NULL)
+    :type profile: struct aa_profile \*
 
 .. _`aa_free_profile.description`:
 
@@ -145,14 +153,17 @@ aa_alloc_profile
 
     allocate, initialize and return a new profile
 
-    :param const char \*hname:
+    :param hname:
         name of the profile  (NOT NULL)
+    :type hname: const char \*
 
-    :param struct aa_proxy \*proxy:
+    :param proxy:
         *undescribed*
+    :type proxy: struct aa_proxy \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation type
+    :type gfp: gfp_t
 
 .. _`aa_alloc_profile.return`:
 
@@ -170,14 +181,17 @@ refcount profile or NULL on failure
 
     find a profile on \ ``head``\  list using substring of \ ``name``\ 
 
-    :param struct list_head \*head:
+    :param head:
         list to search  (NOT NULL)
+    :type head: struct list_head \*
 
-    :param const char \*name:
+    :param name:
         name of profile (NOT NULL)
+    :type name: const char \*
 
-    :param int len:
+    :param len:
         length of \ ``name``\  substring to match
+    :type len: int
 
 .. _`__strn_find_child.requires`:
 
@@ -202,11 +216,13 @@ unrefcounted profile ptr, or NULL if not found
 
     find a profile on \ ``head``\  list with a name matching \ ``name``\ 
 
-    :param struct list_head \*head:
+    :param head:
         list to search  (NOT NULL)
+    :type head: struct list_head \*
 
-    :param const char \*name:
+    :param name:
         name of profile (NOT NULL)
+    :type name: const char \*
 
 .. _`__find_child.requires`:
 
@@ -231,11 +247,13 @@ aa_find_child
 
     find a profile by \ ``name``\  in \ ``parent``\ 
 
-    :param struct aa_profile \*parent:
+    :param parent:
         profile to search  (NOT NULL)
+    :type parent: struct aa_profile \*
 
-    :param const char \*name:
+    :param name:
         profile name to search for  (NOT NULL)
+    :type name: const char \*
 
 .. _`aa_find_child.return`:
 
@@ -253,11 +271,13 @@ a refcounted profile or NULL if not found
 
     lookup the parent of a profile of name \ ``hname``\ 
 
-    :param struct aa_ns \*ns:
+    :param ns:
         namespace to lookup profile in  (NOT NULL)
+    :type ns: struct aa_ns \*
 
-    :param const char \*hname:
+    :param hname:
         hierarchical profile name to find parent of  (NOT NULL)
+    :type hname: const char \*
 
 .. _`__lookup_parent.description`:
 
@@ -291,14 +311,17 @@ unrefcounted policy or NULL if not found
 
     lookup the profile matching \ ``hname``\ 
 
-    :param struct aa_policy \*base:
+    :param base:
         base list to start looking up profile name from  (NOT NULL)
+    :type base: struct aa_policy \*
 
-    :param const char \*hname:
+    :param hname:
         hierarchical profile name  (NOT NULL)
+    :type hname: const char \*
 
-    :param size_t n:
+    :param n:
         length of \ ``hname``\ 
+    :type n: size_t
 
 .. _`__lookupn_profile.requires`:
 
@@ -325,14 +348,17 @@ aa_lookupn_profile
 
     find a profile by its full or partial name
 
-    :param struct aa_ns \*ns:
+    :param ns:
         the namespace to start from (NOT NULL)
+    :type ns: struct aa_ns \*
 
-    :param const char \*hname:
+    :param hname:
         name to do lookup on.  Does not contain namespace prefix (NOT NULL)
+    :type hname: const char \*
 
-    :param size_t n:
+    :param n:
         size of \ ``hname``\ 
+    :type n: size_t
 
 .. _`aa_lookupn_profile.return`:
 
@@ -350,17 +376,21 @@ aa_new_null_profile
 
     create or find a null-X learning profile
 
-    :param struct aa_profile \*parent:
+    :param parent:
         profile that caused this profile to be created (NOT NULL)
+    :type parent: struct aa_profile \*
 
-    :param bool hat:
+    :param hat:
         true if the null- learning profile is a hat
+    :type hat: bool
 
-    :param const char \*base:
+    :param base:
         name to base the null profile off of
+    :type base: const char \*
 
-    :param gfp_t gfp:
+    :param gfp:
         type of allocation
+    :type gfp: gfp_t
 
 .. _`aa_new_null_profile.description`:
 
@@ -392,14 +422,17 @@ replacement_allowed
 
     test to see if replacement is allowed
 
-    :param struct aa_profile \*profile:
+    :param profile:
         profile to test if it can be replaced  (MAYBE NULL)
+    :type profile: struct aa_profile \*
 
-    :param int noreplace:
+    :param noreplace:
         true if replacement shouldn't be allowed but addition is okay
+    :type noreplace: int
 
-    :param const char \*\*info:
+    :param info:
         Returns - info about why replacement failed (NOT NULL)
+    :type info: const char \*\*
 
 .. _`replacement_allowed.return`:
 
@@ -417,23 +450,29 @@ audit_policy
 
     Do auditing of policy changes
 
-    :param struct aa_label \*label:
+    :param label:
         label to check if it can manage policy
+    :type label: struct aa_label \*
 
-    :param const char \*op:
+    :param op:
         policy operation being performed
+    :type op: const char \*
 
-    :param const char \*ns_name:
+    :param ns_name:
         name of namespace being manipulated
+    :type ns_name: const char \*
 
-    :param const char \*name:
+    :param name:
         name of profile being manipulated (NOT NULL)
+    :type name: const char \*
 
-    :param const char \*info:
+    :param info:
         any extra information to be audited (MAYBE NULL)
+    :type info: const char \*
 
-    :param int error:
+    :param error:
         error code
+    :type error: int
 
 .. _`audit_policy.return`:
 
@@ -451,8 +490,9 @@ policy_view_capable
 
     check if viewing policy in at \ ``ns``\  is allowed ns: namespace being viewed by current task (may be NULL)
 
-    :param struct aa_ns \*ns:
+    :param ns:
         *undescribed*
+    :type ns: struct aa_ns \*
 
 .. _`policy_view_capable.return`:
 
@@ -473,14 +513,17 @@ aa_may_manage_policy
 
     can the current task manage policy
 
-    :param struct aa_label \*label:
+    :param label:
         label to check if it can manage policy
+    :type label: struct aa_label \*
 
-    :param struct aa_ns \*ns:
+    :param ns:
         *undescribed*
+    :type ns: struct aa_ns \*
 
-    :param u32 mask:
+    :param mask:
         *undescribed*
+    :type mask: u32
 
 .. _`aa_may_manage_policy.return`:
 
@@ -498,11 +541,13 @@ Return
 
     replace \ ``old``\  with \ ``new``\  on a list
 
-    :param struct aa_profile \*old:
+    :param old:
         profile to be replaced  (NOT NULL)
+    :type old: struct aa_profile \*
 
-    :param struct aa_profile \*new:
+    :param new:
         profile to replace \ ``old``\  with  (NOT NULL)
+    :type new: struct aa_profile \*
 
 .. _`__replace_profile.description`:
 
@@ -530,20 +575,25 @@ namespace list lock be held, or list not be shared
 
     lookup replacement information for a profile \ ``ns``\  - namespace the lookup occurs in \ ``hname``\  - name of profile to lookup \ ``noreplace``\  - true if not replacing an existing profile
 
-    :param struct aa_ns \*ns:
+    :param ns:
         *undescribed*
+    :type ns: struct aa_ns \*
 
-    :param const char \*hname:
+    :param hname:
         *undescribed*
+    :type hname: const char \*
 
-    :param bool noreplace:
+    :param noreplace:
         *undescribed*
+    :type noreplace: bool
 
-    :param struct aa_profile \*\*p:
+    :param p:
         profile to be replaced
+    :type p: struct aa_profile \*\*
 
-    :param const char \*\*info:
+    :param info:
         info string on why lookup failed
+    :type info: const char \*\*
 
 .. _`__lookup_replace.return`:
 
@@ -561,17 +611,21 @@ aa_replace_profiles
 
     replace profile(s) on the profile list
 
-    :param struct aa_ns \*policy_ns:
+    :param policy_ns:
         namespace load is occurring on
+    :type policy_ns: struct aa_ns \*
 
-    :param struct aa_label \*label:
+    :param label:
         label that is attempting to load/replace policy
+    :type label: struct aa_label \*
 
-    :param u32 mask:
+    :param mask:
         permission mask
+    :type mask: u32
 
-    :param struct aa_loaddata \*udata:
+    :param udata:
         serialized data stream  (NOT NULL)
+    :type udata: struct aa_loaddata \*
 
 .. _`aa_replace_profiles.description`:
 
@@ -599,17 +653,21 @@ aa_remove_profiles
 
     remove profile(s) from the system
 
-    :param struct aa_ns \*policy_ns:
+    :param policy_ns:
         namespace the remove is being done from
+    :type policy_ns: struct aa_ns \*
 
-    :param struct aa_label \*subj:
+    :param subj:
         label attempting to remove policy
+    :type subj: struct aa_label \*
 
-    :param char \*fqname:
+    :param fqname:
         name of the profile or namespace to remove  (NOT NULL)
+    :type fqname: char \*
 
-    :param size_t size:
+    :param size:
         size of the name
+    :type size: size_t
 
 .. _`aa_remove_profiles.description`:
 

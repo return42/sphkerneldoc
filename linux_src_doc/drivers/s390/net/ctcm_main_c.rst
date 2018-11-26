@@ -10,11 +10,13 @@ ctcm_unpack_skb
 
     upper layers.
 
-    :param struct channel \*ch:
+    :param ch:
         *undescribed*
+    :type ch: struct channel \*
 
-    :param struct sk_buff \*pskb:
+    :param pskb:
         *undescribed*
+    :type pskb: struct sk_buff \*
 
 .. _`ctcm_unpack_skb.description`:
 
@@ -31,8 +33,9 @@ channel_free
 
 .. c:function:: void channel_free(struct channel *ch)
 
-    :param struct channel \*ch:
+    :param ch:
         *undescribed*
+    :type ch: struct channel \*
 
 .. _`channel_free.description`:
 
@@ -48,8 +51,9 @@ channel_remove
 
 .. c:function:: void channel_remove(struct channel *ch)
 
-    :param struct channel \*ch:
+    :param ch:
         *undescribed*
+    :type ch: struct channel \*
 
 .. _`channel_remove.description`:
 
@@ -65,14 +69,17 @@ channel_get
 
 .. c:function:: struct channel *channel_get(enum ctcm_channel_types type, char *id, int direction)
 
-    :param enum ctcm_channel_types type:
+    :param type:
         *undescribed*
+    :type type: enum ctcm_channel_types
 
-    :param char \*id:
+    :param id:
         *undescribed*
+    :type id: char \*
 
-    :param int direction:
+    :param direction:
         *undescribed*
+    :type direction: int
 
 .. _`channel_get.description`:
 
@@ -92,11 +99,13 @@ ccw_unit_check
 
 .. c:function:: void ccw_unit_check(struct channel *ch, __u8 sense)
 
-    :param struct channel \*ch:
+    :param ch:
         *undescribed*
+    :type ch: struct channel \*
 
-    :param __u8 sense:
+    :param sense:
         *undescribed*
+    :type sense: __u8
 
 .. _`ccw_unit_check.description`:
 
@@ -115,8 +124,9 @@ ctcm_open
 
     Called from generic network layer when ifconfig up is run.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`ctcm_open.description`:
 
@@ -136,8 +146,9 @@ ctcm_close
 
     Called from generic network layer when ifconfig down is run.
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`ctcm_close.description`:
 
@@ -157,11 +168,13 @@ ctcm_transmit_skb
 
     This is a helper function for \ :c:func:`ctcm_tx`\ .
 
-    :param struct channel \*ch:
+    :param ch:
         *undescribed*
+    :type ch: struct channel \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
 .. _`ctcm_transmit_skb.description`:
 
@@ -184,11 +197,13 @@ ctcm_tx
 
     Called from generic network device layer.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`ctcm_tx.description`:
 
@@ -209,11 +224,13 @@ ctcm_change_mtu
 
 .. c:function:: int ctcm_change_mtu(struct net_device *dev, int new_mtu)
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         *undescribed*
+    :type new_mtu: int
 
 .. _`ctcm_change_mtu.description`:
 
@@ -235,8 +252,9 @@ ctcm_stats
 
 .. c:function:: struct net_device_stats *ctcm_stats(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`ctcm_stats.description`:
 
@@ -254,14 +272,17 @@ ctcm_irq_handler
 
 .. c:function:: void ctcm_irq_handler(struct ccw_device *cdev, unsigned long intparm, struct irb *irb)
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         *undescribed*
+    :type cdev: struct ccw_device \*
 
-    :param unsigned long intparm:
+    :param intparm:
         *undescribed*
+    :type intparm: unsigned long
 
-    :param struct irb \*irb:
+    :param irb:
         *undescribed*
+    :type irb: struct irb \*
 
 .. _`ctcm_irq_handler.description`:
 
@@ -281,8 +302,9 @@ ctcm_probe_device
 
     Add ctcm private data.
 
-    :param struct ccwgroup_device \*cgdev:
+    :param cgdev:
         *undescribed*
+    :type cgdev: struct ccwgroup_device \*
 
 .. _`ctcm_probe_device.description`:
 
@@ -302,14 +324,17 @@ add_channel
 
     Keeps the channel list sorted.
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         *undescribed*
+    :type cdev: struct ccw_device \*
 
-    :param enum ctcm_channel_types type:
+    :param type:
         *undescribed*
+    :type type: enum ctcm_channel_types
 
-    :param struct ctcm_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct ctcm_priv \*
 
 .. _`add_channel.description`:
 
@@ -329,8 +354,9 @@ ctcm_shutdown_device
 
 .. c:function:: int ctcm_shutdown_device(struct ccwgroup_device *cgdev)
 
-    :param struct ccwgroup_device \*cgdev:
+    :param cgdev:
         *undescribed*
+    :type cgdev: struct ccwgroup_device \*
 
 .. _`ctcm_shutdown_device.description`:
 
@@ -350,8 +376,9 @@ ctcm_init
 
     This is called just after the module is loaded.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ctcm_init.description`:
 

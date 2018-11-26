@@ -50,11 +50,13 @@ valuable
 
     determine whether LEB properties are valuable.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties
+    :type lprops: const struct ubifs_lprops \*
 
 .. _`valuable.description`:
 
@@ -73,17 +75,21 @@ scan_for_dirty_cb
 
     dirty space scan callback.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to scan
+    :type lprops: const struct ubifs_lprops \*
 
-    :param int in_tree:
+    :param in_tree:
         whether the LEB properties are in main memory
+    :type in_tree: int
 
-    :param struct scan_data \*data:
+    :param data:
         information passed to and from the caller of the scan
+    :type data: struct scan_data \*
 
 .. _`scan_for_dirty_cb.description`:
 
@@ -104,18 +110,22 @@ scan_for_dirty
 
     find a data LEB with free space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int min_space:
+    :param min_space:
         minimum amount free plus dirty space the returned LEB has to
         have
+    :type min_space: int
 
-    :param int pick_free:
+    :param pick_free:
         if it is OK to return a free or freeable LEB
+    :type pick_free: int
 
-    :param int exclude_index:
+    :param exclude_index:
         whether to exclude index LEBs
+    :type exclude_index: int
 
 .. _`scan_for_dirty.description`:
 
@@ -134,18 +144,22 @@ ubifs_find_dirty_leb
 
     find a dirty LEB for the Garbage Collector.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_lprops \*ret_lp:
+    :param ret_lp:
         LEB properties are returned here on exit
+    :type ret_lp: struct ubifs_lprops \*
 
-    :param int min_space:
+    :param min_space:
         minimum amount free plus dirty space the returned LEB has to
         have
+    :type min_space: int
 
-    :param int pick_free:
+    :param pick_free:
         controls whether it is OK to pick empty or index LEBs
+    :type pick_free: int
 
 .. _`ubifs_find_dirty_leb.description`:
 
@@ -185,17 +199,21 @@ scan_for_free_cb
 
     free space scan callback.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to scan
+    :type lprops: const struct ubifs_lprops \*
 
-    :param int in_tree:
+    :param in_tree:
         whether the LEB properties are in main memory
+    :type in_tree: int
 
-    :param struct scan_data \*data:
+    :param data:
         information passed to and from the caller of the scan
+    :type data: struct scan_data \*
 
 .. _`scan_for_free_cb.description`:
 
@@ -216,17 +234,21 @@ do_find_free_space
 
     find a data LEB with free space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int min_space:
+    :param min_space:
         minimum amount of free space required
+    :type min_space: int
 
-    :param int pick_free:
+    :param pick_free:
         whether it is OK to scan for empty LEBs
+    :type pick_free: int
 
-    :param int squeeze:
+    :param squeeze:
         whether to try to find space in a non-empty LEB first
+    :type squeeze: int
 
 .. _`do_find_free_space.description`:
 
@@ -245,17 +267,21 @@ ubifs_find_free_space
 
     find a data LEB with free space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int min_space:
+    :param min_space:
         minimum amount of required free space
+    :type min_space: int
 
-    :param int \*offs:
+    :param offs:
         contains offset of where free space starts on exit
+    :type offs: int \*
 
-    :param int squeeze:
+    :param squeeze:
         whether to try to find space in a non-empty LEB first
+    :type squeeze: int
 
 .. _`ubifs_find_free_space.description`:
 
@@ -280,17 +306,21 @@ scan_for_idx_cb
 
     callback used by the scan for a free LEB for the index.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to scan
+    :type lprops: const struct ubifs_lprops \*
 
-    :param int in_tree:
+    :param in_tree:
         whether the LEB properties are in main memory
+    :type in_tree: int
 
-    :param struct scan_data \*data:
+    :param data:
         information passed to and from the caller of the scan
+    :type data: struct scan_data \*
 
 .. _`scan_for_idx_cb.description`:
 
@@ -311,8 +341,9 @@ scan_for_leb_for_idx
 
     scan for a free LEB for the index.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_find_free_leb_for_idx`:
 
@@ -323,8 +354,9 @@ ubifs_find_free_leb_for_idx
 
     find a free LEB for the index.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_find_free_leb_for_idx.description`:
 
@@ -352,8 +384,9 @@ ubifs_save_dirty_idx_lnums
 
     save an array of the most dirty index LEB nos.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_save_dirty_idx_lnums.description`:
 
@@ -373,17 +406,21 @@ scan_dirty_idx_cb
 
     callback used by the scan for a dirty index LEB.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param const struct ubifs_lprops \*lprops:
+    :param lprops:
         LEB properties to scan
+    :type lprops: const struct ubifs_lprops \*
 
-    :param int in_tree:
+    :param in_tree:
         whether the LEB properties are in main memory
+    :type in_tree: int
 
-    :param struct scan_data \*data:
+    :param data:
         information passed to and from the caller of the scan
+    :type data: struct scan_data \*
 
 .. _`scan_dirty_idx_cb.description`:
 
@@ -404,8 +441,9 @@ find_dirty_idx_leb
 
     find a dirty index LEB.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`find_dirty_idx_leb.description`:
 
@@ -427,8 +465,9 @@ get_idx_gc_leb
 
     try to get a LEB number from trivial GC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`find_dirtiest_idx_leb`:
 
@@ -439,8 +478,9 @@ find_dirtiest_idx_leb
 
     find dirtiest index LEB from dirtiest array.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_find_dirty_idx_leb`:
 
@@ -451,8 +491,9 @@ ubifs_find_dirty_idx_leb
 
     try to find dirtiest index LEB as at last commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_find_dirty_idx_leb.description`:
 

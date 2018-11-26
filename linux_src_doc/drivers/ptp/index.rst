@@ -8,3 +8,4 @@ ptp
     :maxdepth: 1
 
     ptp_pch_c
+    ptp_qoriq_c

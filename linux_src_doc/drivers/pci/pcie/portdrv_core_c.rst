@@ -10,8 +10,9 @@ release_pcie_device
 
     free PCI Express port service device structure
 
-    :param struct device \*dev:
+    :param dev:
         Port service device to release
+    :type dev: struct device \*
 
 .. _`release_pcie_device.description`:
 
@@ -30,14 +31,17 @@ pcie_port_enable_irq_vec
 
     try to set up MSI-X or MSI as interrupt mode for given port
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI Express port to handle
+    :type dev: struct pci_dev \*
 
-    :param int \*irqs:
+    :param irqs:
         Array of interrupt vectors to populate
+    :type irqs: int \*
 
-    :param int mask:
+    :param mask:
         Bitmask of port capabilities returned by \ :c:func:`get_port_device_capability`\ 
+    :type mask: int
 
 .. _`pcie_port_enable_irq_vec.return-value`:
 
@@ -55,14 +59,17 @@ pcie_init_service_irqs
 
     initialize irqs for PCI Express port services
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI Express port to handle
+    :type dev: struct pci_dev \*
 
-    :param int \*irqs:
+    :param irqs:
         Array of irqs to populate
+    :type irqs: int \*
 
-    :param int mask:
+    :param mask:
         Bitmask of port capabilities returned by \ :c:func:`get_port_device_capability`\ 
+    :type mask: int
 
 .. _`pcie_init_service_irqs.return-value`:
 
@@ -80,8 +87,9 @@ get_port_device_capability
 
     discover capabilities of a PCI Express port
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI Express port to examine
+    :type dev: struct pci_dev \*
 
 .. _`get_port_device_capability.description`:
 
@@ -108,14 +116,17 @@ pcie_device_init
 
     allocate and initialize PCI Express port service device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI Express port to associate the service device with
+    :type pdev: struct pci_dev \*
 
-    :param int service:
+    :param service:
         Type of service to associate with the service device
+    :type service: int
 
-    :param int irq:
+    :param irq:
         Interrupt vector to associate with the service device
+    :type irq: int
 
 .. _`pcie_port_device_register`:
 
@@ -126,8 +137,9 @@ pcie_port_device_register
 
     register PCI Express port
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI Express port to register
+    :type dev: struct pci_dev \*
 
 .. _`pcie_port_device_register.description`:
 
@@ -146,8 +158,9 @@ pcie_port_device_suspend
 
     suspend port services associated with a PCIe port
 
-    :param struct device \*dev:
+    :param dev:
         PCI Express port to handle
+    :type dev: struct device \*
 
 .. _`pcie_port_device_resume`:
 
@@ -158,8 +171,35 @@ pcie_port_device_resume
 
     resume port services associated with a PCIe port
 
-    :param struct device \*dev:
+    :param dev:
         PCI Express port to handle
+    :type dev: struct device \*
+
+.. _`pcie_port_device_runtime_suspend`:
+
+pcie_port_device_runtime_suspend
+================================
+
+.. c:function:: int pcie_port_device_runtime_suspend(struct device *dev)
+
+    runtime suspend port services
+
+    :param dev:
+        PCI Express port to handle
+    :type dev: struct device \*
+
+.. _`pcie_port_device_runtime_resume`:
+
+pcie_port_device_runtime_resume
+===============================
+
+.. c:function:: int pcie_port_device_runtime_resume(struct device *dev)
+
+    runtime resume port services
+
+    :param dev:
+        PCI Express port to handle
+    :type dev: struct device \*
 
 .. _`pcie_port_find_service`:
 
@@ -170,11 +210,13 @@ pcie_port_find_service
 
     find the service driver
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI Express port the service is associated with
+    :type dev: struct pci_dev \*
 
-    :param u32 service:
+    :param service:
         Service to find
+    :type service: u32
 
 .. _`pcie_port_find_service.description`:
 
@@ -192,11 +234,13 @@ pcie_port_find_device
 
     find the struct device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI Express port the service is associated with
+    :type dev: struct pci_dev \*
 
-    :param u32 service:
+    :param service:
         For the service to find
+    :type service: u32
 
 .. _`pcie_port_find_device.description`:
 
@@ -214,8 +258,9 @@ pcie_port_device_remove
 
     unregister PCI Express port service devices
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI Express port the service devices to unregister are associated with
+    :type dev: struct pci_dev \*
 
 .. _`pcie_port_device_remove.description`:
 
@@ -234,8 +279,9 @@ pcie_port_probe_service
 
     probe driver for given PCI Express port service
 
-    :param struct device \*dev:
+    :param dev:
         PCI Express port service device to probe against
+    :type dev: struct device \*
 
 .. _`pcie_port_probe_service.description`:
 
@@ -255,8 +301,9 @@ pcie_port_remove_service
 
     detach driver from given PCI Express port service
 
-    :param struct device \*dev:
+    :param dev:
         PCI Express port service device to handle
+    :type dev: struct device \*
 
 .. _`pcie_port_remove_service.description`:
 
@@ -277,8 +324,9 @@ pcie_port_shutdown_service
 
     shut down given PCI Express port service
 
-    :param struct device \*dev:
+    :param dev:
         PCI Express port service device to handle
+    :type dev: struct device \*
 
 .. _`pcie_port_shutdown_service.description`:
 
@@ -299,8 +347,9 @@ pcie_port_service_register
 
     register PCI Express port service driver
 
-    :param struct pcie_port_service_driver \*new:
+    :param new:
         PCI Express port service driver to register
+    :type new: struct pcie_port_service_driver \*
 
 .. _`pcie_port_service_unregister`:
 
@@ -311,8 +360,9 @@ pcie_port_service_unregister
 
     unregister PCI Express port service driver
 
-    :param struct pcie_port_service_driver \*drv:
+    :param drv:
         PCI Express port service driver to unregister
+    :type drv: struct pcie_port_service_driver \*
 
 .. This file was automatic generated / don't edit.
 

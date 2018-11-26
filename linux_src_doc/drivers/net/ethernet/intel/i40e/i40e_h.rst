@@ -10,8 +10,9 @@ i40e_addr_to_hkey
 
     Convert a 6-byte MAC Address to a u64 hash key
 
-    :param const u8 \*macaddr:
+    :param macaddr:
         the MAC Address as the base key
+    :type macaddr: const u8 \*
 
 .. _`i40e_addr_to_hkey.description`:
 
@@ -29,8 +30,9 @@ i40e_nvm_version_str
 
     format the NVM version strings
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         ptr to the hardware info
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_netdev_to_pf`:
 
@@ -41,8 +43,9 @@ i40e_netdev_to_pf
 
     Retrieve the PF struct for given netdev
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the corresponding netdev
+    :type netdev: struct net_device \*
 
 .. _`i40e_netdev_to_pf.description`:
 
@@ -60,8 +63,9 @@ i40e_get_fd_cnt_all
 
     get the total FD filter space available
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the PF struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_read_fd_input_set`:
 
@@ -72,11 +76,13 @@ i40e_read_fd_input_set
 
     reads value of flow director input set register
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the PF struct
+    :type pf: struct i40e_pf \*
 
-    :param u16 addr:
+    :param addr:
         register addr
+    :type addr: u16
 
 .. _`i40e_read_fd_input_set.description`:
 
@@ -95,14 +101,17 @@ i40e_write_fd_input_set
 
     writes value into flow director input set register
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the PF struct
+    :type pf: struct i40e_pf \*
 
-    :param u16 addr:
+    :param addr:
         register addr
+    :type addr: u16
 
-    :param u64 val:
+    :param val:
         value to be written
+    :type val: u64
 
 .. _`i40e_write_fd_input_set.description`:
 
@@ -121,11 +130,13 @@ i40e_find_vsi_by_type
 
     Find and return Flow Director VSI
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF to search for VSI
+    :type pf: struct i40e_pf \*
 
-    :param u16 type:
+    :param type:
         Value indicating type of VSI we are looking for
+    :type type: u16
 
 .. _`i40e_irq_dynamic_enable`:
 
@@ -136,11 +147,13 @@ i40e_irq_dynamic_enable
 
     Enable default interrupt generation settings
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to a vsi
+    :type vsi: struct i40e_vsi \*
 
-    :param int vector:
+    :param vector:
         enable a particular Hw Interrupt vector, without base_vector
+    :type vector: int
 
 .. This file was automatic generated / don't edit.
 

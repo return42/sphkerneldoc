@@ -10,17 +10,21 @@ rtw_get_wps_ie
 
     Search WPS IE from a series of ies
 
-    :param u8 \*in_ie:
+    :param in_ie:
         Address of ies to search
+    :type in_ie: u8 \*
 
-    :param uint in_len:
+    :param in_len:
         Length limit from in_ie
+    :type in_len: uint
 
-    :param u8 \*wps_ie:
+    :param wps_ie:
         If not NULL and WPS IE is found, WPS IE will be copied to the buf starting from wps_ie
+    :type wps_ie: u8 \*
 
-    :param uint \*wps_ielen:
+    :param wps_ielen:
         If not NULL and WPS IE is found, will set to the length of the entire WPS IE
+    :type wps_ielen: uint \*
 
 .. _`rtw_get_wps_ie.return`:
 
@@ -38,20 +42,25 @@ rtw_get_wps_attr
 
     Search a specific WPS attribute from a given WPS IE
 
-    :param u8 \*wps_ie:
+    :param wps_ie:
         Address of WPS IE to search
+    :type wps_ie: u8 \*
 
-    :param uint wps_ielen:
+    :param wps_ielen:
         Length limit from wps_ie
+    :type wps_ielen: uint
 
-    :param u16 target_attr_id:
+    :param target_attr_id:
         The attribute ID of WPS attribute to search
+    :type target_attr_id: u16
 
-    :param u8 \*buf_attr:
+    :param buf_attr:
         If not NULL and the WPS attribute is found, WPS attribute will be copied to the buf starting from buf_attr
+    :type buf_attr: u8 \*
 
-    :param u32 \*len_attr:
+    :param len_attr:
         If not NULL and the WPS attribute is found, will set to the length of the entire WPS attribute
+    :type len_attr: u32 \*
 
 .. _`rtw_get_wps_attr.return`:
 
@@ -69,20 +78,25 @@ rtw_get_wps_attr_content
 
     Search a specific WPS attribute content from a given WPS IE
 
-    :param u8 \*wps_ie:
+    :param wps_ie:
         Address of WPS IE to search
+    :type wps_ie: u8 \*
 
-    :param uint wps_ielen:
+    :param wps_ielen:
         Length limit from wps_ie
+    :type wps_ielen: uint
 
-    :param u16 target_attr_id:
+    :param target_attr_id:
         The attribute ID of WPS attribute to search
+    :type target_attr_id: u16
 
-    :param u8 \*buf_content:
+    :param buf_content:
         If not NULL and the WPS attribute is found, WPS attribute content will be copied to the buf starting from buf_content
+    :type buf_content: u8 \*
 
-    :param uint \*len_content:
+    :param len_content:
         If not NULL and the WPS attribute is found, will set to the length of the WPS attribute content
+    :type len_content: uint \*
 
 .. _`rtw_get_wps_attr_content.return`:
 
@@ -100,17 +114,21 @@ rtw_ieee802_11_parse_elems
 
     Parse information elements in management frames
 
-    :param u8 \*start:
+    :param start:
         Pointer to the start of ies
+    :type start: u8 \*
 
-    :param uint len:
+    :param len:
         Length of IE buffer in octets
+    :type len: uint
 
-    :param struct rtw_ieee802_11_elems \*elems:
+    :param elems:
         Data structure for parsed elements
+    :type elems: struct rtw_ieee802_11_elems \*
 
-    :param int show_errors:
+    :param show_errors:
         Whether to show parsing errors in debug log
+    :type show_errors: int
 
 .. _`rtw_ieee802_11_parse_elems.return`:
 

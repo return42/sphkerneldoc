@@ -246,7 +246,8 @@ FW_GET_ITEM_CMD
     uses \ :c:type:`struct iwl_fw_get_item_cmd <iwl_fw_get_item_cmd>`\ 
 
 TX_CMD
-    uses \ :c:type:`struct iwl_tx_cmd <iwl_tx_cmd>`\  or \ :c:type:`struct iwl_tx_cmd_gen2 <iwl_tx_cmd_gen2>`\ ,     response in \ :c:type:`struct iwl_mvm_tx_resp <iwl_mvm_tx_resp>`\  or
+    uses \ :c:type:`struct iwl_tx_cmd <iwl_tx_cmd>`\  or \ :c:type:`struct iwl_tx_cmd_gen2 <iwl_tx_cmd_gen2>`\  or     \ :c:type:`struct iwl_tx_cmd_gen3 <iwl_tx_cmd_gen3>`\ ,
+    response in \ :c:type:`struct iwl_mvm_tx_resp <iwl_mvm_tx_resp>`\  or
     \ :c:type:`struct iwl_mvm_tx_resp_v3 <iwl_mvm_tx_resp_v3>`\ 
 
 TXPATH_FLUSH
@@ -383,7 +384,8 @@ EOSP_NOTIFICATION
     \ :c:type:`struct iwl_mvm_eosp_notification <iwl_mvm_eosp_notification>`\ 
 
 REDUCE_TX_POWER_CMD
-    \ :c:type:`struct iwl_dev_tx_power_cmd_v3 <iwl_dev_tx_power_cmd_v3>`\  or \ :c:type:`struct iwl_dev_tx_power_cmd <iwl_dev_tx_power_cmd>`\ 
+    \ :c:type:`struct iwl_dev_tx_power_cmd_v3 <iwl_dev_tx_power_cmd_v3>`\  or \ :c:type:`struct iwl_dev_tx_power_cmd_v4 <iwl_dev_tx_power_cmd_v4>`\ 
+    or \ :c:type:`struct iwl_dev_tx_power_cmd <iwl_dev_tx_power_cmd>`\ 
 
 CARD_STATE_NOTIFICATION
     Card state (RF/CT kill) notification,
@@ -514,8 +516,7 @@ Definition
 
     enum iwl_system_subcmd_ids {
         SHARED_MEM_CFG_CMD,
-        INIT_EXTENDED_CFG_CMD,
-        FSEQ_VER_MISMATCH_NTF
+        INIT_EXTENDED_CFG_CMD
     };
 
 .. _`iwl_system_subcmd_ids.constants`:
@@ -529,10 +530,6 @@ SHARED_MEM_CFG_CMD
 
 INIT_EXTENDED_CFG_CMD
     \ :c:type:`struct iwl_init_extended_cfg_cmd <iwl_init_extended_cfg_cmd>`\ 
-
-FSEQ_VER_MISMATCH_NTF
-    Notification about fseq version     mismatch during init.  The format is specified in
-    \ :c:type:`struct iwl_fseq_ver_mismatch_ntf <iwl_fseq_ver_mismatch_ntf>`\ .
 
 .. This file was automatic generated / don't edit.
 

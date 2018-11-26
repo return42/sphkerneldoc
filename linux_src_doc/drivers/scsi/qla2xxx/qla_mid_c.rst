@@ -10,11 +10,13 @@ qla24xx_control_vp
 
     Enable a virtual port for given host
 
-    :param scsi_qla_host_t \*vha:
+    :param vha:
         adapter block pointer
+    :type vha: scsi_qla_host_t \*
 
-    :param int cmd:
+    :param cmd:
         command type to be sent for enable virtual port
+    :type cmd: int
 
 .. _`qla24xx_control_vp.return`:
 

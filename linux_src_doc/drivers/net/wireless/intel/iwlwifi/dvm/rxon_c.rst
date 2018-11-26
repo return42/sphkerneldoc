@@ -10,14 +10,17 @@ iwl_set_rxon_channel
 
     Set the band and channel values in staging RXON
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct ieee80211_channel \*ch:
+    :param ch:
         requested channel as a pointer to struct ieee80211_channel
+    :type ch: struct ieee80211_channel \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
 .. _`iwl_set_rxon_channel.note`:
 
@@ -36,11 +39,13 @@ iwl_full_rxon_required
 
     check if full RXON (vs RXON_ASSOC) cmd is needed
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         staging_rxon is compared to active_rxon
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
 .. _`iwl_full_rxon_required.description`:
 
@@ -60,11 +65,13 @@ iwlagn_commit_rxon
 
     commit staging_rxon to hardware
 
-    :param struct iwl_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct iwl_priv \*
 
-    :param struct iwl_rxon_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct iwl_rxon_context \*
 
 .. _`iwlagn_commit_rxon.description`:
 

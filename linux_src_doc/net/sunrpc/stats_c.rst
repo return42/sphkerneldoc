@@ -10,8 +10,9 @@ rpc_alloc_iostats
 
     allocate an rpc_iostats structure
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         RPC program, version, and xprt
+    :type clnt: struct rpc_clnt \*
 
 .. _`rpc_free_iostats`:
 
@@ -22,8 +23,9 @@ rpc_free_iostats
 
     release an rpc_iostats structure
 
-    :param struct rpc_iostats \*stats:
+    :param stats:
         doomed rpc_iostats structure
+    :type stats: struct rpc_iostats \*
 
 .. _`rpc_count_iostats_metrics`:
 
@@ -34,11 +36,13 @@ rpc_count_iostats_metrics
 
     tally up per-task stats
 
-    :param const struct rpc_task \*task:
+    :param task:
         completed rpc_task
+    :type task: const struct rpc_task \*
 
-    :param struct rpc_iostats \*op_metrics:
+    :param op_metrics:
         stat structure for OP that will accumulate stats from \ ``task``\ 
+    :type op_metrics: struct rpc_iostats \*
 
 .. _`rpc_count_iostats`:
 
@@ -49,11 +53,13 @@ rpc_count_iostats
 
     tally up per-task stats
 
-    :param const struct rpc_task \*task:
+    :param task:
         completed rpc_task
+    :type task: const struct rpc_task \*
 
-    :param struct rpc_iostats \*stats:
+    :param stats:
         array of stat structures
+    :type stats: struct rpc_iostats \*
 
 .. _`rpc_count_iostats.description`:
 

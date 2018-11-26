@@ -52,8 +52,9 @@ DEFINE_DRM_GEM_CMA_FOPS
 
     macro to generate file operations for CMA drivers
 
-    :param  name:
+    :param name:
         name for the generated structure
+    :type name: 
 
 .. _`define_drm_gem_cma_fops.description`:
 

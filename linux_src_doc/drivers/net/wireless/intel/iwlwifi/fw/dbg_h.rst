@@ -33,5 +33,37 @@ len
 trig_desc
     the description of the dump
 
+.. _`iwl_fw_dbg_params`:
+
+struct iwl_fw_dbg_params
+========================
+
+.. c:type:: struct iwl_fw_dbg_params
+
+    register values to restore
+
+.. _`iwl_fw_dbg_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_fw_dbg_params {
+        u32 in_sample;
+        u32 out_ctrl;
+    }
+
+.. _`iwl_fw_dbg_params.members`:
+
+Members
+-------
+
+in_sample
+    DBGC_IN_SAMPLE value
+
+out_ctrl
+    DBGC_OUT_CTRL value
+
 .. This file was automatic generated / don't edit.
 

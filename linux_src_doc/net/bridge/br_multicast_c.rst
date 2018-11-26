@@ -10,11 +10,13 @@ br_multicast_list_adjacent
 
     Returns snooped multicast addresses
 
-    :param struct net_device \*dev:
+    :param dev:
         The bridge port adjacent to which to retrieve addresses
+    :type dev: struct net_device \*
 
-    :param struct list_head \*br_ip_list:
+    :param br_ip_list:
         The list to store found, snooped multicast IP addresses in
+    :type br_ip_list: struct list_head \*
 
 .. _`br_multicast_list_adjacent.description`:
 
@@ -46,11 +48,13 @@ br_multicast_has_querier_anywhere
 
     Checks for a querier on a bridge
 
-    :param struct net_device \*dev:
+    :param dev:
         The bridge port providing the bridge on which to check for a querier
+    :type dev: struct net_device \*
 
-    :param int proto:
+    :param proto:
         The protocol family to check for: IGMP -> ETH_P_IP, MLD -> ETH_P_IPV6
+    :type proto: int
 
 .. _`br_multicast_has_querier_anywhere.description`:
 
@@ -70,11 +74,13 @@ br_multicast_has_querier_adjacent
 
     Checks for a querier behind a bridge port
 
-    :param struct net_device \*dev:
+    :param dev:
         The bridge port adjacent to which to check for a querier
+    :type dev: struct net_device \*
 
-    :param int proto:
+    :param proto:
         The protocol family to check for: IGMP -> ETH_P_IP, MLD -> ETH_P_IPV6
+    :type proto: int
 
 .. _`br_multicast_has_querier_adjacent.description`:
 

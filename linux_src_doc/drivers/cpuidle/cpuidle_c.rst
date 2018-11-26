@@ -10,8 +10,9 @@ cpuidle_play_dead
 
     cpu off-lining
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuidle_play_dead.description`:
 
@@ -29,8 +30,9 @@ cpuidle_use_deepest_state
 
     Set/clear governor override flag.
 
-    :param bool enable:
+    :param enable:
         New value of the flag.
+    :type enable: bool
 
 .. _`cpuidle_use_deepest_state.description`:
 
@@ -49,11 +51,13 @@ cpuidle_find_deepest_state
 
     Find the deepest available idle state.
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver for the given CPU.
+    :type drv: struct cpuidle_driver \*
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle device for the given CPU.
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_enter_s2idle`:
 
@@ -64,11 +68,13 @@ cpuidle_enter_s2idle
 
     Enter an idle state suitable for suspend-to-idle.
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver for the given CPU.
+    :type drv: struct cpuidle_driver \*
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle device for the given CPU.
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_enter_s2idle.description`:
 
@@ -87,14 +93,17 @@ cpuidle_enter_state
 
     enter the state and update stats
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle device for this cpu
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver for this cpu
+    :type drv: struct cpuidle_driver \*
 
-    :param int index:
+    :param index:
         index into the states table in \ ``drv``\  of the state to enter
+    :type index: int
 
 .. _`cpuidle_select`:
 
@@ -105,14 +114,17 @@ cpuidle_select
 
     ask the cpuidle framework to choose an idle state
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         the cpuidle driver
+    :type drv: struct cpuidle_driver \*
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the cpuidle device
+    :type dev: struct cpuidle_device \*
 
-    :param bool \*stop_tick:
+    :param stop_tick:
         indication on whether or not to stop the tick
+    :type stop_tick: bool \*
 
 .. _`cpuidle_select.description`:
 
@@ -134,14 +146,17 @@ cpuidle_enter
 
     enter into the specified idle state
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         the cpuidle driver tied with the cpu
+    :type drv: struct cpuidle_driver \*
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the cpuidle device
+    :type dev: struct cpuidle_device \*
 
-    :param int index:
+    :param index:
         the index in the idle state table
+    :type index: int
 
 .. _`cpuidle_enter.description`:
 
@@ -160,11 +175,13 @@ cpuidle_reflect
 
     tell the underlying governor what was the state we were in
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the cpuidle device
+    :type dev: struct cpuidle_device \*
 
-    :param int index:
+    :param index:
         the index in the idle state table
+    :type index: int
 
 .. _`cpuidle_install_idle_handler`:
 
@@ -175,8 +192,9 @@ cpuidle_install_idle_handler
 
     installs the cpuidle idle loop handler
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuidle_uninstall_idle_handler`:
 
@@ -187,8 +205,9 @@ cpuidle_uninstall_idle_handler
 
     uninstalls the cpuidle idle loop handler
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuidle_pause_and_lock`:
 
@@ -199,8 +218,9 @@ cpuidle_pause_and_lock
 
     temporarily disables CPUIDLE
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuidle_resume_and_unlock`:
 
@@ -211,8 +231,9 @@ cpuidle_resume_and_unlock
 
     resumes CPUIDLE operation
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cpuidle_enable_device`:
 
@@ -223,8 +244,9 @@ cpuidle_enable_device
 
     enables idle PM for a CPU
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the CPU
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_enable_device.description`:
 
@@ -243,8 +265,9 @@ cpuidle_disable_device
 
     disables idle PM for a CPU
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the CPU
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_disable_device.description`:
 
@@ -263,8 +286,9 @@ cpuidle_resume_and_unlock when used externally.
 
     internal register function called before register and enable routines
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the cpu
+    :type dev: struct cpuidle_device \*
 
 .. _`__cpuidle_register_device.description`:
 
@@ -282,8 +306,9 @@ cpuidle_register_device
 
     registers a CPU's idle PM feature
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the cpu
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_unregister_device`:
 
@@ -294,8 +319,9 @@ cpuidle_unregister_device
 
     unregisters a CPU's idle PM feature
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         the cpu
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_unregister`:
 
@@ -306,8 +332,9 @@ cpuidle_unregister
 
     unregister a driver and the devices. This function can be used only if the driver has been previously registered through the cpuidle_register function.
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         a valid pointer to a struct cpuidle_driver
+    :type drv: struct cpuidle_driver \*
 
 .. _`cpuidle_register`:
 
@@ -318,11 +345,13 @@ cpuidle_register
 
     registers the driver and the cpu devices with the coupled_cpus passed as parameter. This function is used for all common initialization pattern there are in the arch specific drivers. The devices is globally defined in this file.
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         a valid pointer to a struct cpuidle_driver
+    :type drv: struct cpuidle_driver \*
 
-    :param const struct cpumask \*const coupled_cpus:
+    :param coupled_cpus:
         a cpumask for the coupled states
+    :type coupled_cpus: const struct cpumask \*const
 
 .. _`cpuidle_register.description`:
 
@@ -340,8 +369,9 @@ cpuidle_init
 
     core initializer
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ cs5536_cable_detect
 
     detect cable type
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         Port to detect on
+    :type hwif: ide_hwif_t \*
 
 .. _`cs5536_cable_detect.description`:
 
@@ -31,11 +32,13 @@ cs5536_set_pio_mode
 
     PIO timing setup
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         ATA port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         ATA device
+    :type drive: ide_drive_t \*
 
 .. _`cs5536_set_dma_mode`:
 
@@ -46,11 +49,13 @@ cs5536_set_dma_mode
 
     DMA timing setup
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         ATA port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         ATA device
+    :type drive: ide_drive_t \*
 
 .. _`cs5536_init_one`:
 
@@ -59,11 +64,13 @@ cs5536_init_one
 
 .. c:function:: int cs5536_init_one(struct pci_dev *dev, const struct pci_device_id *id)
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         Entry in match table
+    :type id: const struct pci_device_id \*
 
 .. This file was automatic generated / don't edit.
 

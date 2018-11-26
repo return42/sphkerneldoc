@@ -10,14 +10,17 @@ __class_create
 
     create a struct class structure
 
-    :param struct module \*owner:
+    :param owner:
         pointer to the module that is to "own" this struct class
+    :type owner: struct module \*
 
-    :param const char \*name:
+    :param name:
         pointer to a string for the name of this class.
+    :type name: const char \*
 
-    :param struct lock_class_key \*key:
+    :param key:
         the lock_class_key for this class; used by mutex lock debugging
+    :type key: struct lock_class_key \*
 
 .. _`__class_create.description`:
 
@@ -41,8 +44,9 @@ class_destroy
 
     destroys a struct class structure
 
-    :param struct class \*cls:
+    :param cls:
         pointer to the struct class that is to be destroyed
+    :type cls: struct class \*
 
 .. _`class_destroy.description`:
 
@@ -61,17 +65,21 @@ class_dev_iter_init
 
     initialize class device iterator
 
-    :param struct class_dev_iter \*iter:
+    :param iter:
         class iterator to initialize
+    :type iter: struct class_dev_iter \*
 
-    :param struct class \*class:
+    :param class:
         the class we wanna iterate over
+    :type class: struct class \*
 
-    :param struct device \*start:
+    :param start:
         the device to start iterating from, if any
+    :type start: struct device \*
 
-    :param const struct device_type \*type:
+    :param type:
         device_type of the devices to iterate over, NULL for all
+    :type type: const struct device_type \*
 
 .. _`class_dev_iter_init.description`:
 
@@ -92,8 +100,9 @@ class_dev_iter_next
 
     iterate to the next device
 
-    :param struct class_dev_iter \*iter:
+    :param iter:
         class iterator to proceed
+    :type iter: struct class_dev_iter \*
 
 .. _`class_dev_iter_next.description`:
 
@@ -117,8 +126,9 @@ class_dev_iter_exit
 
     finish iteration
 
-    :param struct class_dev_iter \*iter:
+    :param iter:
         class iterator to finish
+    :type iter: struct class_dev_iter \*
 
 .. _`class_dev_iter_exit.description`:
 
@@ -137,14 +147,17 @@ class_for_each_device
 
     device iterator
 
-    :param struct class \*class:
+    :param class:
         the class we're iterating
+    :type class: struct class \*
 
-    :param struct device \*start:
+    :param start:
         the device to start with in the list, if any.
+    :type start: struct device \*
 
-    :param void \*data:
+    :param data:
         data for the callback
+    :type data: void \*
 
     :param int (\*fn)(struct device \*, void \*):
         function to be called for each device
@@ -174,14 +187,17 @@ class_find_device
 
     device iterator for locating a particular device
 
-    :param struct class \*class:
+    :param class:
         the class we're iterating
+    :type class: struct class \*
 
-    :param struct device \*start:
+    :param start:
         Device to begin with
+    :type start: struct device \*
 
-    :param const void \*data:
+    :param data:
         data for the match function
+    :type data: const void \*
 
     :param int (\*match)(struct device \*, const void \*):
         function to check device
@@ -213,8 +229,9 @@ class_compat_register
 
     register a compatibility class
 
-    :param const char \*name:
+    :param name:
         the name of the class
+    :type name: const char \*
 
 .. _`class_compat_register.description`:
 
@@ -233,8 +250,9 @@ class_compat_unregister
 
     unregister a compatibility class
 
-    :param struct class_compat \*cls:
+    :param cls:
         the class to unregister
+    :type cls: struct class_compat \*
 
 .. _`class_compat_create_link`:
 
@@ -245,14 +263,17 @@ class_compat_create_link
 
     create a compatibility class device link to a bus device
 
-    :param struct class_compat \*cls:
+    :param cls:
         the compatibility class
+    :type cls: struct class_compat \*
 
-    :param struct device \*dev:
+    :param dev:
         the target bus device
+    :type dev: struct device \*
 
-    :param struct device \*device_link:
+    :param device_link:
         an optional device to which a "device" link should be created
+    :type device_link: struct device \*
 
 .. _`class_compat_remove_link`:
 
@@ -263,15 +284,18 @@ class_compat_remove_link
 
     remove a compatibility class device link to a bus device
 
-    :param struct class_compat \*cls:
+    :param cls:
         the compatibility class
+    :type cls: struct class_compat \*
 
-    :param struct device \*dev:
+    :param dev:
         the target bus device
+    :type dev: struct device \*
 
-    :param struct device \*device_link:
+    :param device_link:
         an optional device to which a "device" link was previously
         created
+    :type device_link: struct device \*
 
 .. This file was automatic generated / don't edit.
 

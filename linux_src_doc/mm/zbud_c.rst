@@ -82,11 +82,13 @@ zbud_create_pool
 
     create a new zbud pool
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp flags when allocating the zbud pool structure
+    :type gfp: gfp_t
 
-    :param const struct zbud_ops \*ops:
+    :param ops:
         user-defined operations for the zbud pool
+    :type ops: const struct zbud_ops \*
 
 .. _`zbud_create_pool.return`:
 
@@ -105,8 +107,9 @@ zbud_destroy_pool
 
     destroys an existing zbud pool
 
-    :param struct zbud_pool \*pool:
+    :param pool:
         the zbud pool to be destroyed
+    :type pool: struct zbud_pool \*
 
 .. _`zbud_destroy_pool.description`:
 
@@ -124,17 +127,21 @@ zbud_alloc
 
     allocates a region of a given size
 
-    :param struct zbud_pool \*pool:
+    :param pool:
         zbud pool from which to allocate
+    :type pool: struct zbud_pool \*
 
-    :param size_t size:
+    :param size:
         size in bytes of the desired allocation
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp flags used if the pool needs to grow
+    :type gfp: gfp_t
 
-    :param unsigned long \*handle:
+    :param handle:
         handle of the new allocation
+    :type handle: unsigned long \*
 
 .. _`zbud_alloc.description`:
 
@@ -167,11 +174,13 @@ zbud_free
 
     frees the allocation associated with the given handle
 
-    :param struct zbud_pool \*pool:
+    :param pool:
         pool in which the allocation resided
+    :type pool: struct zbud_pool \*
 
-    :param unsigned long handle:
+    :param handle:
         handle associated with the allocation returned by \ :c:func:`zbud_alloc`\ 
+    :type handle: unsigned long
 
 .. _`zbud_free.description`:
 
@@ -192,12 +201,14 @@ zbud_reclaim_page
 
     evicts allocations from a pool page and frees it
 
-    :param struct zbud_pool \*pool:
+    :param pool:
         pool from which a page will attempt to be evicted
+    :type pool: struct zbud_pool \*
 
-    :param unsigned int retries:
+    :param retries:
         number of pages on the LRU list for which eviction will
         be attempted before failing
+    :type retries: unsigned int
 
 .. _`zbud_reclaim_page.description`:
 
@@ -247,11 +258,13 @@ zbud_map
 
     maps the allocation associated with the given handle
 
-    :param struct zbud_pool \*pool:
+    :param pool:
         pool in which the allocation resides
+    :type pool: struct zbud_pool \*
 
-    :param unsigned long handle:
+    :param handle:
         handle associated with the allocation to be mapped
+    :type handle: unsigned long
 
 .. _`zbud_map.description`:
 
@@ -279,11 +292,13 @@ zbud_unmap
 
     maps the allocation associated with the given handle
 
-    :param struct zbud_pool \*pool:
+    :param pool:
         pool in which the allocation resides
+    :type pool: struct zbud_pool \*
 
-    :param unsigned long handle:
+    :param handle:
         handle associated with the allocation to be unmapped
+    :type handle: unsigned long
 
 .. _`zbud_get_pool_size`:
 
@@ -294,8 +309,9 @@ zbud_get_pool_size
 
     gets the zbud pool size in pages
 
-    :param struct zbud_pool \*pool:
+    :param pool:
         pool whose size is being queried
+    :type pool: struct zbud_pool \*
 
 .. _`zbud_get_pool_size.return`:
 

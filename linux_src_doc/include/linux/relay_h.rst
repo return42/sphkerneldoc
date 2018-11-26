@@ -10,14 +10,17 @@ relay_write
 
     write data into the channel
 
-    :param struct rchan \*chan:
+    :param chan:
         relay channel
+    :type chan: struct rchan \*
 
-    :param const void \*data:
+    :param data:
         data to be written
+    :type data: const void \*
 
-    :param size_t length:
+    :param length:
         number of bytes to write
+    :type length: size_t
 
 .. _`relay_write.description`:
 
@@ -40,14 +43,17 @@ interrupt context.
 
     write data into the channel
 
-    :param struct rchan \*chan:
+    :param chan:
         relay channel
+    :type chan: struct rchan \*
 
-    :param const void \*data:
+    :param data:
         data to be written
+    :type data: const void \*
 
-    :param size_t length:
+    :param length:
         number of bytes to write
+    :type length: size_t
 
 .. _`__relay_write.description`:
 
@@ -69,11 +75,13 @@ relay_reserve
 
     reserve slot in channel buffer
 
-    :param struct rchan \*chan:
+    :param chan:
         relay channel
+    :type chan: struct rchan \*
 
-    :param size_t length:
+    :param length:
         number of bytes to reserve
+    :type length: size_t
 
 .. _`relay_reserve.description`:
 
@@ -95,11 +103,13 @@ subbuf_start_reserve
 
     reserve bytes at the start of a sub-buffer
 
-    :param struct rchan_buf \*buf:
+    :param buf:
         relay channel buffer
+    :type buf: struct rchan_buf \*
 
-    :param size_t length:
+    :param length:
         number of bytes to reserve
+    :type length: size_t
 
 .. _`subbuf_start_reserve.description`:
 

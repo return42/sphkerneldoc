@@ -159,8 +159,9 @@ amdtp_stream_running
 
     check stream is running or not
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_stream_running.description`:
 
@@ -178,8 +179,9 @@ amdtp_streaming_error
 
     check for streaming error
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_streaming_error.description`:
 
@@ -198,8 +200,9 @@ amdtp_stream_pcm_running
 
     check PCM substream is running or not
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
 .. _`amdtp_stream_pcm_running.description`:
 
@@ -217,11 +220,13 @@ amdtp_stream_pcm_trigger
 
     start/stop playback from a PCM device
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
-    :param struct snd_pcm_substream \*pcm:
+    :param pcm:
         the PCM device to be started, or \ ``NULL``\  to stop the current device
+    :type pcm: struct snd_pcm_substream \*
 
 .. _`amdtp_stream_pcm_trigger.description`:
 
@@ -241,11 +246,13 @@ amdtp_stream_wait_callback
 
     sleep till callbacked or timeout
 
-    :param struct amdtp_stream \*s:
+    :param s:
         the AMDTP stream
+    :type s: struct amdtp_stream \*
 
-    :param unsigned int timeout:
+    :param timeout:
         msec till timeout
+    :type timeout: unsigned int
 
 .. _`amdtp_stream_wait_callback.description`:
 

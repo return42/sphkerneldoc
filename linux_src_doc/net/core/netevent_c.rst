@@ -10,8 +10,9 @@ register_netevent_notifier
 
     register a netevent notifier block
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier
+    :type nb: struct notifier_block \*
 
 .. _`register_netevent_notifier.description`:
 
@@ -32,8 +33,9 @@ unregister_netevent_notifier
 
     unregister a netevent notifier block
 
-    :param struct notifier_block \*nb:
+    :param nb:
         notifier
+    :type nb: struct notifier_block \*
 
 .. _`unregister_netevent_notifier.description`:
 
@@ -54,11 +56,13 @@ call_netevent_notifiers
 
     call all netevent notifier blocks
 
-    :param unsigned long val:
+    :param val:
         value passed unmodified to notifier function
+    :type val: unsigned long
 
-    :param void \*v:
+    :param v:
         pointer passed unmodified to notifier function
+    :type v: void \*
 
 .. _`call_netevent_notifiers.description`:
 

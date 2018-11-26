@@ -10,14 +10,17 @@ event_triggers_call
 
     Call triggers associated with a trace event
 
-    :param struct trace_event_file \*file:
+    :param file:
         The trace_event_file associated with the event
+    :type file: struct trace_event_file \*
 
-    :param void \*rec:
+    :param rec:
         The trace entry for the event, NULL for unconditional invocation
+    :type rec: void \*
 
-    :param struct ring_buffer_event \*event:
+    :param event:
         *undescribed*
+    :type event: struct ring_buffer_event \*
 
 .. _`event_triggers_call.description`:
 
@@ -57,11 +60,13 @@ event_triggers_post_call
 
     Call 'post_triggers' for a trace event
 
-    :param struct trace_event_file \*file:
+    :param file:
         The trace_event_file associated with the event
+    :type file: struct trace_event_file \*
 
-    :param enum event_trigger_type tt:
+    :param tt:
         enum event_trigger_type containing a set bit for each trigger to invoke
+    :type tt: enum event_trigger_type
 
 .. _`event_triggers_post_call.description`:
 
@@ -84,17 +89,21 @@ event_trigger_print
 
     Generic event_trigger_ops \ ``print``\  implementation
 
-    :param const char \*name:
+    :param name:
         The name of the event trigger
+    :type name: const char \*
 
-    :param struct seq_file \*m:
+    :param m:
         The seq_file being printed to
+    :type m: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         Trigger-specific data
+    :type data: void \*
 
-    :param char \*filter_str:
+    :param filter_str:
         filter_str to print, if present
+    :type filter_str: char \*
 
 .. _`event_trigger_print.description`:
 
@@ -122,11 +131,13 @@ event_trigger_init
 
     Generic event_trigger_ops \ ``init``\  implementation
 
-    :param struct event_trigger_ops \*ops:
+    :param ops:
         The trigger ops associated with the trigger
+    :type ops: struct event_trigger_ops \*
 
-    :param struct event_trigger_data \*data:
+    :param data:
         Trigger-specific data
+    :type data: struct event_trigger_data \*
 
 .. _`event_trigger_init.description`:
 
@@ -154,11 +165,13 @@ event_trigger_free
 
     Generic event_trigger_ops \ ``free``\  implementation
 
-    :param struct event_trigger_ops \*ops:
+    :param ops:
         The trigger ops associated with the trigger
+    :type ops: struct event_trigger_ops \*
 
-    :param struct event_trigger_data \*data:
+    :param data:
         Trigger-specific data
+    :type data: struct event_trigger_data \*
 
 .. _`event_trigger_free.description`:
 
@@ -179,8 +192,9 @@ clear_event_triggers
 
     Clear all triggers associated with a trace array
 
-    :param struct trace_array \*tr:
+    :param tr:
         The trace array to clear
+    :type tr: struct trace_array \*
 
 .. _`clear_event_triggers.description`:
 
@@ -205,8 +219,9 @@ update_cond_flag
 
     Set or reset the TRIGGER_COND bit
 
-    :param struct trace_event_file \*file:
+    :param file:
         The trace_event_file associated with the event
+    :type file: struct trace_event_file \*
 
 .. _`update_cond_flag.description`:
 
@@ -228,17 +243,21 @@ register_trigger
 
     Generic event_command \ ``reg``\  implementation
 
-    :param char \*glob:
+    :param glob:
         The raw string used to register the trigger
+    :type glob: char \*
 
-    :param struct event_trigger_ops \*ops:
+    :param ops:
         The trigger ops associated with the trigger
+    :type ops: struct event_trigger_ops \*
 
-    :param struct event_trigger_data \*data:
+    :param data:
         Trigger-specific data to associate with the trigger
+    :type data: struct event_trigger_data \*
 
-    :param struct trace_event_file \*file:
+    :param file:
         The trace_event_file associated with the event
+    :type file: struct trace_event_file \*
 
 .. _`register_trigger.description`:
 
@@ -266,17 +285,21 @@ unregister_trigger
 
     Generic event_command \ ``unreg``\  implementation
 
-    :param char \*glob:
+    :param glob:
         The raw string used to register the trigger
+    :type glob: char \*
 
-    :param struct event_trigger_ops \*ops:
+    :param ops:
         The trigger ops associated with the trigger
+    :type ops: struct event_trigger_ops \*
 
-    :param struct event_trigger_data \*test:
+    :param test:
         Trigger-specific data used to find the trigger to remove
+    :type test: struct event_trigger_data \*
 
-    :param struct trace_event_file \*file:
+    :param file:
         The trace_event_file associated with the event
+    :type file: struct trace_event_file \*
 
 .. _`unregister_trigger.description`:
 
@@ -297,20 +320,25 @@ event_trigger_callback
 
     Generic event_command \ ``func``\  implementation
 
-    :param struct event_command \*cmd_ops:
+    :param cmd_ops:
         The command ops, used for trigger registration
+    :type cmd_ops: struct event_command \*
 
-    :param struct trace_event_file \*file:
+    :param file:
         The trace_event_file associated with the event
+    :type file: struct trace_event_file \*
 
-    :param char \*glob:
+    :param glob:
         The raw string used to register the trigger
+    :type glob: char \*
 
-    :param char \*cmd:
+    :param cmd:
         The cmd portion of the string used to register the trigger
+    :type cmd: char \*
 
-    :param char \*param:
+    :param param:
         The params portion of the string used to register the trigger
+    :type param: char \*
 
 .. _`event_trigger_callback.description`:
 
@@ -339,14 +367,17 @@ set_trigger_filter
 
     Generic event_command \ ``set_filter``\  implementation
 
-    :param char \*filter_str:
+    :param filter_str:
         The filter string for the trigger, NULL to remove filter
+    :type filter_str: char \*
 
-    :param struct event_trigger_data \*trigger_data:
+    :param trigger_data:
         Trigger-specific data
+    :type trigger_data: struct event_trigger_data \*
 
-    :param struct trace_event_file \*file:
+    :param file:
         The trace_event_file associated with the event
+    :type file: struct trace_event_file \*
 
 .. _`set_trigger_filter.description`:
 
@@ -377,8 +408,9 @@ find_named_trigger
 
     Find the common named trigger associated with \ ``name``\ 
 
-    :param const char \*name:
+    :param name:
         The name of the set of named triggers to find the common data for
+    :type name: const char \*
 
 .. _`find_named_trigger.description`:
 
@@ -409,8 +441,9 @@ is_named_trigger
 
     determine if a given trigger is a named trigger
 
-    :param struct event_trigger_data \*test:
+    :param test:
         The trigger data to test
+    :type test: struct event_trigger_data \*
 
 .. _`is_named_trigger.return`:
 
@@ -428,11 +461,13 @@ save_named_trigger
 
     save the trigger in the named trigger list
 
-    :param const char \*name:
+    :param name:
         The name of the named trigger set
+    :type name: const char \*
 
-    :param struct event_trigger_data \*data:
+    :param data:
         The trigger data to save
+    :type data: struct event_trigger_data \*
 
 .. _`save_named_trigger.return`:
 
@@ -450,8 +485,9 @@ del_named_trigger
 
     delete a trigger from the named trigger list
 
-    :param struct event_trigger_data \*data:
+    :param data:
         The trigger data to delete
+    :type data: struct event_trigger_data \*
 
 .. _`pause_named_trigger`:
 
@@ -462,8 +498,9 @@ pause_named_trigger
 
     Pause all named triggers with the same name
 
-    :param struct event_trigger_data \*data:
+    :param data:
         The trigger data of a named trigger to pause
+    :type data: struct event_trigger_data \*
 
 .. _`pause_named_trigger.description`:
 
@@ -484,8 +521,9 @@ unpause_named_trigger
 
     Un-pause all named triggers with the same name
 
-    :param struct event_trigger_data \*data:
+    :param data:
         The trigger data of a named trigger to unpause
+    :type data: struct event_trigger_data \*
 
 .. _`unpause_named_trigger.description`:
 
@@ -506,11 +544,13 @@ set_named_trigger_data
 
     Associate common named trigger data
 
-    :param struct event_trigger_data \*data:
+    :param data:
         The trigger data of a named trigger to unpause
+    :type data: struct event_trigger_data \*
 
-    :param struct event_trigger_data \*named_data:
+    :param named_data:
         *undescribed*
+    :type named_data: struct event_trigger_data \*
 
 .. _`set_named_trigger_data.description`:
 

@@ -10,11 +10,13 @@ qid_eq
 
     Test to see if to kquid values are the same
 
-    :param struct kqid left:
+    :param left:
         A qid value
+    :type left: struct kqid
 
-    :param struct kqid right:
+    :param right:
         Another quid value
+    :type right: struct kqid
 
 .. _`qid_eq.description`:
 
@@ -32,11 +34,13 @@ qid_lt
 
     Test to see if one qid value is less than another
 
-    :param struct kqid left:
+    :param left:
         The possibly lesser qid value
+    :type left: struct kqid
 
-    :param struct kqid right:
+    :param right:
         The possibly greater qid value
+    :type right: struct kqid
 
 .. _`qid_lt.description`:
 
@@ -54,11 +58,13 @@ from_kqid
 
     Create a qid from a kqid user-namespace pair.
 
-    :param struct user_namespace \*targ:
+    :param targ:
         The user namespace we want a qid in.
+    :type targ: struct user_namespace \*
 
-    :param struct kqid kqid:
+    :param kqid:
         The kernel internal quota identifier to start with.
+    :type kqid: struct kqid
 
 .. _`from_kqid.description`:
 
@@ -81,11 +87,13 @@ from_kqid_munged
 
     Create a qid from a kqid user-namespace pair.
 
-    :param struct user_namespace \*targ:
+    :param targ:
         The user namespace we want a qid in.
+    :type targ: struct user_namespace \*
 
-    :param struct kqid kqid:
+    :param kqid:
         The kernel internal quota identifier to start with.
+    :type kqid: struct kqid
 
 .. _`from_kqid_munged.description`:
 
@@ -114,8 +122,9 @@ qid_valid
 
     Report if a valid value is stored in a kqid.
 
-    :param struct kqid qid:
+    :param qid:
         The kernel internal quota identifier to test.
+    :type qid: struct kqid
 
 .. This file was automatic generated / don't edit.
 

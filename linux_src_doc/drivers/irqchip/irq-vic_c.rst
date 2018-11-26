@@ -74,8 +74,9 @@ vic_init2
 
     common initialisation code
 
-    :param void __iomem \*base:
+    :param base:
         Base of the VIC.
+    :type base: void __iomem \*
 
 .. _`vic_init2.description`:
 
@@ -94,8 +95,9 @@ vic_pm_init
 
     initicall to register VIC pm
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vic_pm_init.description`:
 
@@ -115,23 +117,29 @@ vic_register
 
     Register a VIC.
 
-    :param void __iomem \*base:
+    :param base:
         The base address of the VIC.
+    :type base: void __iomem \*
 
-    :param unsigned int parent_irq:
+    :param parent_irq:
         The parent IRQ if cascaded, else 0.
+    :type parent_irq: unsigned int
 
-    :param unsigned int irq:
+    :param irq:
         The base IRQ for the VIC.
+    :type irq: unsigned int
 
-    :param u32 valid_sources:
+    :param valid_sources:
         bitmask of valid interrupts
+    :type valid_sources: u32
 
-    :param u32 resume_sources:
+    :param resume_sources:
         bitmask of interrupts allowed for resume sources.
+    :type resume_sources: u32
 
-    :param struct device_node \*node:
+    :param node:
         The device tree node associated with the VIC.
+    :type node: struct device_node \*
 
 .. _`vic_register.description`:
 
@@ -153,17 +161,21 @@ vic_init
 
     initialise a vectored interrupt controller
 
-    :param void __iomem \*base:
+    :param base:
         iomem base address
+    :type base: void __iomem \*
 
-    :param unsigned int irq_start:
+    :param irq_start:
         starting interrupt number, must be muliple of 32
+    :type irq_start: unsigned int
 
-    :param u32 vic_sources:
+    :param vic_sources:
         bitmask of interrupt sources to allow
+    :type vic_sources: u32
 
-    :param u32 resume_sources:
+    :param resume_sources:
         bitmask of interrupt sources to allow for resume
+    :type resume_sources: u32
 
 .. _`vic_init_cascaded`:
 
@@ -174,17 +186,21 @@ vic_init_cascaded
 
     initialise a cascaded vectored interrupt controller
 
-    :param void __iomem \*base:
+    :param base:
         iomem base address
+    :type base: void __iomem \*
 
-    :param unsigned int parent_irq:
+    :param parent_irq:
         the parent IRQ we're cascaded off
+    :type parent_irq: unsigned int
 
-    :param u32 vic_sources:
+    :param vic_sources:
         bitmask of interrupt sources to allow
+    :type vic_sources: u32
 
-    :param u32 resume_sources:
+    :param resume_sources:
         bitmask of interrupt sources to allow for resume
+    :type resume_sources: u32
 
 .. _`vic_init_cascaded.description`:
 

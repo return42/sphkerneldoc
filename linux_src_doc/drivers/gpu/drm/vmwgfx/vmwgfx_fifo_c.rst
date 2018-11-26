@@ -8,11 +8,13 @@ vmw_local_fifo_reserve
 
 .. c:function:: void *vmw_local_fifo_reserve(struct vmw_private *dev_priv, uint32_t bytes)
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         *undescribed*
+    :type dev_priv: struct vmw_private \*
 
-    :param uint32_t bytes:
+    :param bytes:
         *undescribed*
+    :type bytes: uint32_t
 
 .. _`vmw_local_fifo_reserve.description`:
 
@@ -39,11 +41,13 @@ vmw_fifo_commit_flush
 
     Commit fifo space and flush any buffered commands.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param uint32_t bytes:
+    :param bytes:
         Number of bytes to commit.
+    :type bytes: uint32_t
 
 .. _`vmw_fifo_flush`:
 
@@ -54,11 +58,13 @@ vmw_fifo_flush
 
     Flush any buffered commands and make sure command processing starts.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param bool interruptible:
+    :param interruptible:
         Whether to wait interruptible if function needs to sleep.
+    :type interruptible: bool
 
 .. _`vmw_fifo_emit_dummy_legacy_query`:
 
@@ -69,11 +75,13 @@ vmw_fifo_emit_dummy_legacy_query
 
     emits a dummy query to the fifo using legacy query commands.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         The device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param uint32_t cid:
+    :param cid:
         The hardware context id used for the query.
+    :type cid: uint32_t
 
 .. _`vmw_fifo_emit_dummy_legacy_query.description`:
 
@@ -91,11 +99,13 @@ vmw_fifo_emit_dummy_gb_query
 
     emits a dummy query to the fifo using guest-backed resource query commands.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         The device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param uint32_t cid:
+    :param cid:
         The hardware context id used for the query.
+    :type cid: uint32_t
 
 .. _`vmw_fifo_emit_dummy_gb_query.description`:
 
@@ -113,11 +123,13 @@ vmw_fifo_emit_dummy_query
 
     emits a dummy query to the fifo using appropriate resource query commands.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         The device private structure.
+    :type dev_priv: struct vmw_private \*
 
-    :param uint32_t cid:
+    :param cid:
         The hardware context id used for the query.
+    :type cid: uint32_t
 
 .. _`vmw_fifo_emit_dummy_query.description`:
 

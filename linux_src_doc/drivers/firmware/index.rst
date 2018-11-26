@@ -10,7 +10,7 @@ firmware
     arm_scmi/index
     efi/index
     meson/index
-    dcdbas_c
+    xilinx/index
     dmi_scan_c
     edd_c
     memmap_c

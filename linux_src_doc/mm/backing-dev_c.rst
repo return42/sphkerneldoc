@@ -10,14 +10,17 @@ wb_congested_get_create
 
     get or create a wb_congested
 
-    :param struct backing_dev_info \*bdi:
+    :param bdi:
         associated bdi
+    :type bdi: struct backing_dev_info \*
 
-    :param int blkcg_id:
+    :param blkcg_id:
         ID of the associated blkcg
+    :type blkcg_id: int
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation mask
+    :type gfp: gfp_t
 
 .. _`wb_congested_get_create.description`:
 
@@ -37,8 +40,9 @@ wb_congested_put
 
     put a wb_congested
 
-    :param struct bdi_writeback_congested \*congested:
+    :param congested:
         wb_congested to put
+    :type congested: struct bdi_writeback_congested \*
 
 .. _`wb_congested_put.description`:
 
@@ -56,14 +60,17 @@ wb_get_create
 
     get wb for a given memcg, create if necessary
 
-    :param struct backing_dev_info \*bdi:
+    :param bdi:
         target bdi
+    :type bdi: struct backing_dev_info \*
 
-    :param struct cgroup_subsys_state \*memcg_css:
+    :param memcg_css:
         cgroup_subsys_state of the target memcg (must have positive ref)
+    :type memcg_css: struct cgroup_subsys_state \*
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation mask to use
+    :type gfp: gfp_t
 
 .. _`wb_get_create.description`:
 
@@ -97,8 +104,9 @@ wb_memcg_offline
 
     kill all wb's associated with a memcg being offlined
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg being offlined
+    :type memcg: struct mem_cgroup \*
 
 .. _`wb_memcg_offline.description`:
 
@@ -116,8 +124,9 @@ wb_blkcg_offline
 
     kill all wb's associated with a blkcg being offlined
 
-    :param struct blkcg \*blkcg:
+    :param blkcg:
         blkcg being offlined
+    :type blkcg: struct blkcg \*
 
 .. _`wb_blkcg_offline.description`:
 
@@ -135,11 +144,13 @@ congestion_wait
 
     wait for a backing_dev to become uncongested
 
-    :param int sync:
+    :param sync:
         SYNC or ASYNC IO
+    :type sync: int
 
-    :param long timeout:
+    :param timeout:
         timeout in jiffies
+    :type timeout: long
 
 .. _`congestion_wait.description`:
 
@@ -159,11 +170,13 @@ wait_iff_congested
 
     Conditionally wait for a backing_dev to become uncongested or a pgdat to complete writes
 
-    :param int sync:
+    :param sync:
         SYNC or ASYNC IO
+    :type sync: int
 
-    :param long timeout:
+    :param timeout:
         timeout in jiffies
+    :type timeout: long
 
 .. _`wait_iff_congested.description`:
 

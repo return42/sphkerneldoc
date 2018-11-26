@@ -8,8 +8,9 @@ uwb_est_create
 
 .. c:function:: int uwb_est_create( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`uwb_est_create.description`:
 
@@ -32,8 +33,9 @@ uwb_est_grow
 
 .. c:function:: int uwb_est_grow( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`uwb_est_grow.description`:
 
@@ -49,28 +51,34 @@ uwb_est_register
 
 .. c:function:: int uwb_est_register(u8 type, u8 event_high, u16 vendor, u16 product, const struct uwb_est_entry *entry, size_t entries)
 
-    :param u8 type:
+    :param type:
         *undescribed*
+    :type type: u8
 
-    :param u8 event_high:
+    :param event_high:
         *undescribed*
+    :type event_high: u8
 
-    :param u16 vendor:
+    :param vendor:
         vendor code for matching against the device (0x0000 and
         0xffff mean any); use 0x0000 to force all to match without
         checking possible vendor specific ones, 0xfffff to match
         after checking vendor specific ones.
+    :type vendor: u16
 
-    :param u16 product:
+    :param product:
         product code from that vendor; same matching rules, use
         0x0000 for not allowing vendor specific matches, 0xffff
         for allowing.
+    :type product: u16
 
-    :param const struct uwb_est_entry \*entry:
+    :param entry:
         *undescribed*
+    :type entry: const struct uwb_est_entry \*
 
-    :param size_t entries:
+    :param entries:
         *undescribed*
+    :type entries: size_t
 
 .. _`uwb_est_register.description`:
 
@@ -95,23 +103,29 @@ uwb_est_unregister
 
 .. c:function:: int uwb_est_unregister(u8 type, u8 event_high, u16 vendor, u16 product, const struct uwb_est_entry *entry, size_t entries)
 
-    :param u8 type:
+    :param type:
         *undescribed*
+    :type type: u8
 
-    :param u8 event_high:
+    :param event_high:
         *undescribed*
+    :type event_high: u8
 
-    :param u16 vendor:
+    :param vendor:
         *undescribed*
+    :type vendor: u16
 
-    :param u16 product:
+    :param product:
         *undescribed*
+    :type product: u16
 
-    :param const struct uwb_est_entry \*entry:
+    :param entry:
         *undescribed*
+    :type entry: const struct uwb_est_entry \*
 
-    :param size_t entries:
+    :param entries:
         *undescribed*
+    :type entries: size_t
 
 .. _`uwb_est_unregister.description`:
 
@@ -135,20 +149,25 @@ uwb_est_get_size
 
 .. c:function:: ssize_t uwb_est_get_size(struct uwb_rc *uwb_rc, struct uwb_est *est, u8 event_low, const struct uwb_rceb *rceb, size_t rceb_size)
 
-    :param struct uwb_rc \*uwb_rc:
+    :param uwb_rc:
         *undescribed*
+    :type uwb_rc: struct uwb_rc \*
 
-    :param struct uwb_est \*est:
+    :param est:
         *undescribed*
+    :type est: struct uwb_est \*
 
-    :param u8 event_low:
+    :param event_low:
         *undescribed*
+    :type event_low: u8
 
-    :param const struct uwb_rceb \*rceb:
+    :param rceb:
         pointer to the buffer with the event
+    :type rceb: const struct uwb_rceb \*
 
-    :param size_t rceb_size:
+    :param rceb_size:
         size of the area pointed to by \ ``rceb``\  in bytes.
+    :type rceb_size: size_t
 
 .. _`uwb_est_get_size.description`:
 
@@ -169,14 +188,17 @@ uwb_est_find_size
 
 .. c:function:: ssize_t uwb_est_find_size(struct uwb_rc *rc, const struct uwb_rceb *rceb, size_t rceb_size)
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         *undescribed*
+    :type rc: struct uwb_rc \*
 
-    :param const struct uwb_rceb \*rceb:
+    :param rceb:
         pointer to the buffer with the event
+    :type rceb: const struct uwb_rceb \*
 
-    :param size_t rceb_size:
+    :param rceb_size:
         size of the area pointed to by \ ``rceb``\  in bytes.
+    :type rceb_size: size_t
 
 .. _`uwb_est_find_size.description`:
 

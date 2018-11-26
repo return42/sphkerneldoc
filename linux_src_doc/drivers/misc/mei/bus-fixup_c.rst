@@ -10,8 +10,9 @@ number_of_connections
 
     determine whether an client be on the bus according number of connections
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me clients device
+    :type cldev: struct mei_cl_device \*
 
 .. _`number_of_connections.we-support-only-clients`:
 
@@ -30,8 +31,9 @@ blacklist
 
     blacklist a client from the bus
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me clients device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_wd`:
 
@@ -42,8 +44,9 @@ mei_wd
 
     wd client on the bus, change protocol version as the API has changed.
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me clients device
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_nfc_if_version`:
 
@@ -54,11 +57,13 @@ mei_nfc_if_version
 
     get NFC interface version
 
-    :param struct mei_cl \*cl:
+    :param cl:
         host client (nfc info)
+    :type cl: struct mei_cl \*
 
-    :param struct mei_nfc_if_version \*ver:
+    :param ver:
         NFC interface version to be filled in
+    :type ver: struct mei_nfc_if_version \*
 
 .. _`mei_nfc_if_version.return`:
 
@@ -76,8 +81,9 @@ mei_nfc_radio_name
 
     derive nfc radio name from the interface version
 
-    :param struct mei_nfc_if_version \*ver:
+    :param ver:
         NFC radio version
+    :type ver: struct mei_nfc_if_version \*
 
 .. _`mei_nfc_radio_name.return`:
 
@@ -95,8 +101,9 @@ mei_nfc
 
     The nfc fixup function. The function retrieves nfc radio name and set is as device attribute so we can load the proper device driver for it
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device (nfc)
+    :type cldev: struct mei_cl_device \*
 
 .. _`mei_cl_bus_dev_fixup`:
 
@@ -107,8 +114,9 @@ mei_cl_bus_dev_fixup
 
     run fixup handlers
 
-    :param struct mei_cl_device \*cldev:
+    :param cldev:
         me client device
+    :type cldev: struct mei_cl_device \*
 
 .. This file was automatic generated / don't edit.
 

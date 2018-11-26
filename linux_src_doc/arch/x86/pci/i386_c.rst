@@ -10,8 +10,9 @@ fs_initcall
 
     give a chance for motherboard reserve resources
 
-    :param  pcibios_assign_resources:
+    :param pcibios_assign_resources:
         *undescribed*
+    :type pcibios_assign_resources: 
 
 .. This file was automatic generated / don't edit.
 

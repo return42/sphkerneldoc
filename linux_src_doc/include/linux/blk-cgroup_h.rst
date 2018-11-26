@@ -1,6 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/blk-cgroup.h
 
+.. _`bio_issue_as_root_blkg`:
+
+bio_issue_as_root_blkg
+======================
+
+.. c:function:: bool bio_issue_as_root_blkg(struct bio *bio)
+
+    see if this bio needs to be issued as root blkg
+
+    :param bio:
+        *undescribed*
+    :type bio: struct bio \*
+
+.. _`bio_issue_as_root_blkg.description`:
+
+Description
+-----------
+
+In order to avoid priority inversions we sometimes need to issue a bio as if
+it were attached to the root blkg, and then backcharge to the actual owning
+blkg.  The idea is we do \ :c:func:`bio_blkcg`\  to look up the actual context for the
+bio and attach the appropriate blkg to the bio.  Then we call this helper and
+if it is true run with the root blkg for that queue and then do any
+backcharging to the originating cgroup once the io is complete.
+
 .. _`blkcg_parent`:
 
 blkcg_parent
@@ -10,8 +35,9 @@ blkcg_parent
 
     get the parent of a blkcg
 
-    :param struct blkcg \*blkcg:
+    :param blkcg:
         blkcg of interest
+    :type blkcg: struct blkcg \*
 
 .. _`blkcg_parent.description`:
 
@@ -29,14 +55,17 @@ Return the parent blkcg of \ ``blkcg``\ .  Can be called anytime.
 
     internal version of \ :c:func:`blkg_lookup`\ 
 
-    :param struct blkcg \*blkcg:
+    :param blkcg:
         blkcg of interest
+    :type blkcg: struct blkcg \*
 
-    :param struct request_queue \*q:
+    :param q:
         request_queue of interest
+    :type q: struct request_queue \*
 
-    :param bool update_hint:
+    :param update_hint:
         whether to update lookup hint with the result or not
+    :type update_hint: bool
 
 .. _`__blkg_lookup.description`:
 
@@ -46,7 +75,7 @@ Description
 This is internal version and shouldn't be used by policy
 implementations.  Looks up blkgs for the \ ``blkcg``\  - \ ``q``\  pair regardless of
 \ ``q``\ 's bypass state.  If \ ``update_hint``\  is \ ``true``\ , the caller should be
-holding \ ``q``\ ->queue_lock and lookup hint is updated on success.
+holding \ ``q->queue_lock``\  and lookup hint is updated on success.
 
 .. _`blkg_lookup`:
 
@@ -57,11 +86,13 @@ blkg_lookup
 
     lookup blkg for the specified blkcg - q pair
 
-    :param struct blkcg \*blkcg:
+    :param blkcg:
         blkcg of interest
+    :type blkcg: struct blkcg \*
 
-    :param struct request_queue \*q:
+    :param q:
         request_queue of interest
+    :type q: struct request_queue \*
 
 .. _`blkg_lookup.description`:
 
@@ -72,6 +103,26 @@ Lookup blkg for the \ ``blkcg``\  - \ ``q``\  pair.  This function should be cal
 under RCU read lock and is guaranteed to return \ ``NULL``\  if \ ``q``\  is bypassing
 - see \ :c:func:`blk_queue_bypass_start`\  for details.
 
+.. _`blk_queue_root_blkg`:
+
+blk_queue_root_blkg
+===================
+
+.. c:function:: struct blkcg_gq *blk_queue_root_blkg(struct request_queue *q)
+
+    return blkg for the (blkcg_root, \ ``q``\ ) pair
+
+    :param q:
+        request_queue of interest
+    :type q: struct request_queue \*
+
+.. _`blk_queue_root_blkg.description`:
+
+Description
+-----------
+
+Lookup blkg for \ ``q``\  at the root level. See also \ :c:func:`blkg_lookup`\ .
+
 .. _`blkg_to_pd`:
 
 blkg_to_pd
@@ -81,11 +132,13 @@ blkg_to_pd
 
     get policy private data
 
-    :param struct blkcg_gq \*blkg:
+    :param blkg:
         blkg of interest
+    :type blkg: struct blkcg_gq \*
 
-    :param struct blkcg_policy \*pol:
+    :param pol:
         policy of interest
+    :type pol: struct blkcg_policy \*
 
 .. _`blkg_to_pd.description`:
 
@@ -103,8 +156,9 @@ pd_to_blkg
 
     get blkg associated with policy private data
 
-    :param struct blkg_policy_data \*pd:
+    :param pd:
         policy private data of interest
+    :type pd: struct blkg_policy_data \*
 
 .. _`pd_to_blkg.description`:
 
@@ -112,6 +166,50 @@ Description
 -----------
 
 \ ``pd``\  is policy private data.  Determine the blkg it's associated with.
+
+.. _`blkcg_cgwb_get`:
+
+blkcg_cgwb_get
+==============
+
+.. c:function:: void blkcg_cgwb_get(struct blkcg *blkcg)
+
+    get a reference for blkcg->cgwb_list
+
+    :param blkcg:
+        blkcg of interest
+    :type blkcg: struct blkcg \*
+
+.. _`blkcg_cgwb_get.description`:
+
+Description
+-----------
+
+This is used to track the number of active wb's related to a blkcg.
+
+.. _`blkcg_cgwb_put`:
+
+blkcg_cgwb_put
+==============
+
+.. c:function:: void blkcg_cgwb_put(struct blkcg *blkcg)
+
+    put a reference for \ ``blkcg->cgwb_list``\ 
+
+    :param blkcg:
+        blkcg of interest
+    :type blkcg: struct blkcg \*
+
+.. _`blkcg_cgwb_put.description`:
+
+Description
+-----------
+
+This is used to track the number of active wb's related to a blkcg.
+When this count goes to zero, all active wb has finished so the
+blkcg can continue destruction by calling \ :c:func:`blkcg_destroy_blkgs`\ .
+This work may occur in \ :c:func:`cgwb_release_workfn`\  on the cgwb_release
+workqueue.
 
 .. _`blkg_path`:
 
@@ -122,14 +220,17 @@ blkg_path
 
     format cgroup path of blkg
 
-    :param struct blkcg_gq \*blkg:
+    :param blkg:
         blkg of interest
+    :type blkg: struct blkcg_gq \*
 
-    :param char \*buf:
+    :param buf:
         target buffer
+    :type buf: char \*
 
-    :param int buflen:
+    :param buflen:
         target buffer length
+    :type buflen: int
 
 .. _`blkg_path.description`:
 
@@ -147,8 +248,9 @@ blkg_get
 
     get a blkg reference
 
-    :param struct blkcg_gq \*blkg:
+    :param blkg:
         blkg to get
+    :type blkg: struct blkcg_gq \*
 
 .. _`blkg_get.description`:
 
@@ -156,6 +258,27 @@ Description
 -----------
 
 The caller should be holding an existing reference.
+
+.. _`blkg_try_get`:
+
+blkg_try_get
+============
+
+.. c:function:: struct blkcg_gq *blkg_try_get(struct blkcg_gq *blkg)
+
+    try and get a blkg reference
+
+    :param blkg:
+        blkg to get
+    :type blkg: struct blkcg_gq \*
+
+.. _`blkg_try_get.description`:
+
+Description
+-----------
+
+This is for use when doing an RCU lookup of the blkg.  We may be in the midst
+of freeing this blkg, so we can only use it if the refcnt is not zero.
 
 .. _`blkg_put`:
 
@@ -166,8 +289,9 @@ blkg_put
 
     put a blkg reference
 
-    :param struct blkcg_gq \*blkg:
+    :param blkg:
         blkg to put
+    :type blkg: struct blkcg_gq \*
 
 .. _`blkg_for_each_descendant_pre`:
 
@@ -178,14 +302,17 @@ blkg_for_each_descendant_pre
 
     pre-order walk of a blkg's descendants
 
-    :param  d_blkg:
+    :param d_blkg:
         loop cursor pointing to the current descendant
+    :type d_blkg: 
 
-    :param  pos_css:
+    :param pos_css:
         used for iteration
+    :type pos_css: 
 
-    :param  p_blkg:
+    :param p_blkg:
         target blkg to walk descendants of
+    :type p_blkg: 
 
 .. _`blkg_for_each_descendant_pre.description`:
 
@@ -207,14 +334,17 @@ blkg_for_each_descendant_post
 
     post-order walk of a blkg's descendants
 
-    :param  d_blkg:
+    :param d_blkg:
         loop cursor pointing to the current descendant
+    :type d_blkg: 
 
-    :param  pos_css:
+    :param pos_css:
         used for iteration
+    :type pos_css: 
 
-    :param  p_blkg:
+    :param p_blkg:
         target blkg to walk descendants of
+    :type p_blkg: 
 
 .. _`blkg_for_each_descendant_post.description`:
 
@@ -234,11 +364,13 @@ blk_get_rl
 
     get request_list to use
 
-    :param struct request_queue \*q:
+    :param q:
         request_queue of interest
+    :type q: struct request_queue \*
 
-    :param struct bio \*bio:
+    :param bio:
         bio which will be attached to the allocated request (may be \ ``NULL``\ )
+    :type bio: struct bio \*
 
 .. _`blk_get_rl.description`:
 
@@ -259,8 +391,9 @@ blk_put_rl
 
     put request_list
 
-    :param struct request_list \*rl:
+    :param rl:
         request_list to put
+    :type rl: struct request_list \*
 
 .. _`blk_put_rl.description`:
 
@@ -279,11 +412,13 @@ blk_rq_set_rl
 
     associate a request with a request_list
 
-    :param struct request \*rq:
+    :param rq:
         request of interest
+    :type rq: struct request \*
 
-    :param struct request_list \*rl:
+    :param rl:
         target request_list
+    :type rl: struct request_list \*
 
 .. _`blk_rq_set_rl.description`:
 
@@ -302,8 +437,9 @@ blk_rq_rl
 
     return the request_list a request came from
 
-    :param struct request \*rq:
+    :param rq:
         request of interest
+    :type rq: struct request \*
 
 .. _`blk_rq_rl.description`:
 
@@ -321,11 +457,13 @@ blk_queue_for_each_rl
 
     iterate through all request_lists of a request_queue
 
-    :param  rl:
+    :param rl:
         *undescribed*
+    :type rl: 
 
-    :param  q:
+    :param q:
         *undescribed*
+    :type q: 
 
 .. _`blk_queue_for_each_rl.description`:
 
@@ -343,11 +481,13 @@ blkg_stat_add
 
     add a value to a blkg_stat
 
-    :param struct blkg_stat \*stat:
+    :param stat:
         target blkg_stat
+    :type stat: struct blkg_stat \*
 
-    :param uint64_t val:
+    :param val:
         value to add
+    :type val: uint64_t
 
 .. _`blkg_stat_add.description`:
 
@@ -366,8 +506,9 @@ blkg_stat_read
 
     read the current value of a blkg_stat
 
-    :param struct blkg_stat \*stat:
+    :param stat:
         blkg_stat to read
+    :type stat: struct blkg_stat \*
 
 .. _`blkg_stat_reset`:
 
@@ -378,8 +519,9 @@ blkg_stat_reset
 
     reset a blkg_stat
 
-    :param struct blkg_stat \*stat:
+    :param stat:
         blkg_stat to reset
+    :type stat: struct blkg_stat \*
 
 .. _`blkg_stat_add_aux`:
 
@@ -390,11 +532,13 @@ blkg_stat_add_aux
 
     add a blkg_stat into another's aux count
 
-    :param struct blkg_stat \*to:
+    :param to:
         the destination blkg_stat
+    :type to: struct blkg_stat \*
 
-    :param struct blkg_stat \*from:
+    :param from:
         the source
+    :type from: struct blkg_stat \*
 
 .. _`blkg_stat_add_aux.description`:
 
@@ -412,14 +556,17 @@ blkg_rwstat_add
 
     add a value to a blkg_rwstat
 
-    :param struct blkg_rwstat \*rwstat:
+    :param rwstat:
         target blkg_rwstat
+    :type rwstat: struct blkg_rwstat \*
 
-    :param unsigned int op:
+    :param op:
         REQ_OP and flags
+    :type op: unsigned int
 
-    :param uint64_t val:
+    :param val:
         value to add
+    :type val: uint64_t
 
 .. _`blkg_rwstat_add.description`:
 
@@ -438,8 +585,9 @@ blkg_rwstat_read
 
     read the current values of a blkg_rwstat
 
-    :param struct blkg_rwstat \*rwstat:
+    :param rwstat:
         blkg_rwstat to read
+    :type rwstat: struct blkg_rwstat \*
 
 .. _`blkg_rwstat_read.description`:
 
@@ -457,8 +605,9 @@ blkg_rwstat_total
 
     read the total count of a blkg_rwstat
 
-    :param struct blkg_rwstat \*rwstat:
+    :param rwstat:
         blkg_rwstat to read
+    :type rwstat: struct blkg_rwstat \*
 
 .. _`blkg_rwstat_total.description`:
 
@@ -478,8 +627,9 @@ blkg_rwstat_reset
 
     reset a blkg_rwstat
 
-    :param struct blkg_rwstat \*rwstat:
+    :param rwstat:
         blkg_rwstat to reset
+    :type rwstat: struct blkg_rwstat \*
 
 .. _`blkg_rwstat_add_aux`:
 
@@ -490,11 +640,13 @@ blkg_rwstat_add_aux
 
     add a blkg_rwstat into another's aux count
 
-    :param struct blkg_rwstat \*to:
+    :param to:
         the destination blkg_rwstat
+    :type to: struct blkg_rwstat \*
 
-    :param struct blkg_rwstat \*from:
+    :param from:
         the source
+    :type from: struct blkg_rwstat \*
 
 .. _`blkg_rwstat_add_aux.description`:
 

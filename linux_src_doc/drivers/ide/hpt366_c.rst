@@ -10,11 +10,13 @@ hpt3xxn_set_clock
 
     perform clock switching dance
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         hwif to switch
+    :type hwif: ide_hwif_t \*
 
-    :param u8 mode:
+    :param mode:
         clocking mode (0x21 for write, 0x23 otherwise)
+    :type mode: u8
 
 .. _`hpt3xxn_set_clock.description`:
 
@@ -32,11 +34,13 @@ hpt3xxn_rw_disk
 
     prepare for I/O
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive for command
+    :type drive: ide_drive_t \*
 
-    :param struct request \*rq:
+    :param rq:
         block request structure
+    :type rq: struct request \*
 
 .. _`hpt3xxn_rw_disk.description`:
 
@@ -55,14 +59,17 @@ hpt37x_calibrate_dpll
 
     calibrate the DPLL
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param u16 f_low:
+    :param f_low:
         *undescribed*
+    :type f_low: u16
 
-    :param u16 f_high:
+    :param f_high:
         *undescribed*
+    :type f_high: u16
 
 .. _`hpt37x_calibrate_dpll.description`:
 
@@ -81,11 +88,13 @@ hpt366_init_one
 
     called when an HPT366 is found
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the hpt366 device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         the matching pci id
+    :type id: const struct pci_device_id \*
 
 .. _`hpt366_init_one.description`:
 

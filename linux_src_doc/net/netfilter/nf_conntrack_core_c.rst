@@ -13,8 +13,9 @@ nf_ct_iterate_destroy
     :param int (\*iter)(struct nf_conn \*i, void \*data):
         callback to invoke for each conntrack
 
-    :param void \*data:
+    :param data:
         data to pass to \ ``iter``\ 
+    :type data: void \*
 
 .. _`nf_ct_iterate_destroy.description`:
 

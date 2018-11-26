@@ -10,8 +10,9 @@ as3645a_set_current
 
     Set flash configuration registers
 
-    :param struct as3645a \*flash:
+    :param flash:
         The flash
+    :type flash: struct as3645a \*
 
 .. _`as3645a_set_current.description`:
 
@@ -33,14 +34,17 @@ as3645a_set_control
 
     Set flash control register
 
-    :param struct as3645a \*flash:
+    :param flash:
         The flash
+    :type flash: struct as3645a \*
 
-    :param enum as_mode mode:
+    :param mode:
         Desired output mode
+    :type mode: enum as_mode
 
-    :param bool on:
+    :param on:
         Desired output state
+    :type on: bool
 
 .. _`as3645a_set_control.description`:
 

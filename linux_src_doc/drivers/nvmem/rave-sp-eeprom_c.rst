@@ -156,17 +156,21 @@ rave_sp_eeprom_io
 
     Low-level part of EEPROM page access
 
-    :param struct rave_sp_eeprom \*eeprom:
+    :param eeprom:
         EEPROM device to write to
+    :type eeprom: struct rave_sp_eeprom \*
 
-    :param enum rave_sp_eeprom_access_type type:
+    :param type:
         EEPROM access type (read or write)
+    :type type: enum rave_sp_eeprom_access_type
 
-    :param u16 idx:
+    :param idx:
         number of the EEPROM page
+    :type idx: u16
 
-    :param struct rave_sp_eeprom_page \*page:
+    :param page:
         Data to write or buffer to store result (via page->data)
+    :type page: struct rave_sp_eeprom_page \*
 
 .. _`rave_sp_eeprom_io.description`:
 
@@ -189,20 +193,25 @@ rave_sp_eeprom_page_access
 
     Access single EEPROM page
 
-    :param struct rave_sp_eeprom \*eeprom:
+    :param eeprom:
         EEPROM device to access
+    :type eeprom: struct rave_sp_eeprom \*
 
-    :param enum rave_sp_eeprom_access_type type:
+    :param type:
         Access type to perform (read or write)
+    :type type: enum rave_sp_eeprom_access_type
 
-    :param unsigned int offset:
+    :param offset:
         Offset within EEPROM to access
+    :type offset: unsigned int
 
-    :param u8 \*data:
+    :param data:
         Data buffer
+    :type data: u8 \*
 
-    :param size_t data_len:
+    :param data_len:
         Size of the data buffer
+    :type data_len: size_t
 
 .. _`rave_sp_eeprom_page_access.description`:
 
@@ -225,20 +234,25 @@ rave_sp_eeprom_access
 
     Access EEPROM data
 
-    :param struct rave_sp_eeprom \*eeprom:
+    :param eeprom:
         EEPROM device to access
+    :type eeprom: struct rave_sp_eeprom \*
 
-    :param enum rave_sp_eeprom_access_type type:
+    :param type:
         Access type to perform (read or write)
+    :type type: enum rave_sp_eeprom_access_type
 
-    :param unsigned int offset:
+    :param offset:
         Offset within EEPROM to access
+    :type offset: unsigned int
 
-    :param u8 \*data:
+    :param data:
         Data buffer
+    :type data: u8 \*
 
-    :param unsigned int data_len:
+    :param data_len:
         Size of the data buffer
+    :type data_len: unsigned int
 
 .. _`rave_sp_eeprom_access.description`:
 

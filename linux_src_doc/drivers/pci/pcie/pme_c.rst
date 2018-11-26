@@ -10,11 +10,13 @@ pcie_pme_interrupt_enable
 
     Enable/disable PCIe PME interrupt generation.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCIe root port or event collector.
+    :type dev: struct pci_dev \*
 
-    :param bool enable:
+    :param enable:
         Enable or disable the interrupt.
+    :type enable: bool
 
 .. _`pcie_pme_walk_bus`:
 
@@ -25,8 +27,9 @@ pcie_pme_walk_bus
 
     Scan a PCI bus for devices asserting PME#.
 
-    :param struct pci_bus \*bus:
+    :param bus:
         PCI bus to scan.
+    :type bus: struct pci_bus \*
 
 .. _`pcie_pme_walk_bus.description`:
 
@@ -44,11 +47,13 @@ pcie_pme_from_pci_bridge
 
     Check if PCIe-PCI bridge generated a PME.
 
-    :param struct pci_bus \*bus:
+    :param bus:
         Secondary bus of the bridge.
+    :type bus: struct pci_bus \*
 
-    :param u8 devfn:
+    :param devfn:
         Device/function number to check.
+    :type devfn: u8
 
 .. _`pcie_pme_from_pci_bridge.description`:
 
@@ -68,11 +73,13 @@ pcie_pme_handle_request
 
     Find device that generated PME and handle it.
 
-    :param struct pci_dev \*port:
+    :param port:
         Root port or event collector that generated the PME interrupt.
+    :type port: struct pci_dev \*
 
-    :param u16 req_id:
+    :param req_id:
         PCIe Requester ID of the device that generated the PME.
+    :type req_id: u16
 
 .. _`pcie_pme_work_fn`:
 
@@ -83,8 +90,9 @@ pcie_pme_work_fn
 
     Work handler for PCIe PME interrupt.
 
-    :param struct work_struct \*work:
+    :param work:
         Work structure giving access to service data.
+    :type work: struct work_struct \*
 
 .. _`pcie_pme_irq`:
 
@@ -95,11 +103,13 @@ pcie_pme_irq
 
     Interrupt handler for PCIe root port PME interrupt.
 
-    :param int irq:
+    :param irq:
         Interrupt vector.
+    :type irq: int
 
-    :param void \*context:
+    :param context:
         Interrupt context pointer.
+    :type context: void \*
 
 .. _`pcie_pme_can_wakeup`:
 
@@ -110,11 +120,13 @@ pcie_pme_can_wakeup
 
     Set the wakeup capability flag.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to handle.
+    :type dev: struct pci_dev \*
 
-    :param void \*ign:
+    :param ign:
         Ignored.
+    :type ign: void \*
 
 .. _`pcie_pme_mark_devices`:
 
@@ -125,8 +137,9 @@ pcie_pme_mark_devices
 
     Set the wakeup flag for devices below a port.
 
-    :param struct pci_dev \*port:
+    :param port:
         PCIe root port or event collector to handle.
+    :type port: struct pci_dev \*
 
 .. _`pcie_pme_mark_devices.description`:
 
@@ -146,8 +159,9 @@ pcie_pme_probe
 
     Initialize PCIe PME service for given root port.
 
-    :param struct pcie_device \*srv:
+    :param srv:
         PCIe service to initialize.
+    :type srv: struct pcie_device \*
 
 .. _`pcie_pme_suspend`:
 
@@ -158,8 +172,9 @@ pcie_pme_suspend
 
     Suspend PCIe PME service device.
 
-    :param struct pcie_device \*srv:
+    :param srv:
         PCIe service device to suspend.
+    :type srv: struct pcie_device \*
 
 .. _`pcie_pme_resume`:
 
@@ -170,8 +185,9 @@ pcie_pme_resume
 
     Resume PCIe PME service device. \ ``srv``\  - PCIe service device to resume.
 
-    :param struct pcie_device \*srv:
+    :param srv:
         *undescribed*
+    :type srv: struct pcie_device \*
 
 .. _`pcie_pme_remove`:
 
@@ -182,20 +198,22 @@ pcie_pme_remove
 
     Prepare PCIe PME service device for removal. \ ``srv``\  - PCIe service device to remove.
 
-    :param struct pcie_device \*srv:
+    :param srv:
         *undescribed*
+    :type srv: struct pcie_device \*
 
-.. _`pcie_pme_service_init`:
+.. _`pcie_pme_init`:
 
-pcie_pme_service_init
-=====================
+pcie_pme_init
+=============
 
-.. c:function:: int pcie_pme_service_init( void)
+.. c:function:: int pcie_pme_init( void)
 
     Register the PCIe PME service driver.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

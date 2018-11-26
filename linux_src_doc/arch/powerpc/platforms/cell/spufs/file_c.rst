@@ -8,17 +8,21 @@ spu_switch_log_notify
 
 .. c:function:: void spu_switch_log_notify(struct spu *spu, struct spu_context *ctx, u32 type, u32 val)
 
-    :param struct spu \*spu:
+    :param spu:
         *undescribed*
+    :type spu: struct spu \*
 
-    :param struct spu_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct spu_context \*
 
-    :param u32 type:
+    :param type:
         *undescribed*
+    :type type: u32
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
 .. _`spu_switch_log_notify.description`:
 

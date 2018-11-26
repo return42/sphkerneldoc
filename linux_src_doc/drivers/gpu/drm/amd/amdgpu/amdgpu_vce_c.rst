@@ -10,11 +10,13 @@ amdgpu_vce_sw_init
 
     allocate memory, load vce firmware
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param unsigned long size:
+    :param size:
         *undescribed*
+    :type size: unsigned long
 
 .. _`amdgpu_vce_sw_init.description`:
 
@@ -32,8 +34,9 @@ amdgpu_vce_sw_fini
 
     free memory
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_vce_sw_fini.description`:
 
@@ -41,6 +44,19 @@ Description
 -----------
 
 Last step on VCE teardown, free firmware memory
+
+.. _`amdgpu_vce_entity_init`:
+
+amdgpu_vce_entity_init
+======================
+
+.. c:function:: int amdgpu_vce_entity_init(struct amdgpu_device *adev)
+
+    init entity
+
+    :param adev:
+        amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_vce_suspend`:
 
@@ -51,8 +67,9 @@ amdgpu_vce_suspend
 
     unpin VCE fw memory
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_vce_resume`:
 
@@ -63,8 +80,9 @@ amdgpu_vce_resume
 
     pin VCE fw memory
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_vce_idle_work_handler`:
 
@@ -75,8 +93,9 @@ amdgpu_vce_idle_work_handler
 
     power off VCE
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work structure
+    :type work: struct work_struct \*
 
 .. _`amdgpu_vce_idle_work_handler.description`:
 
@@ -94,8 +113,9 @@ amdgpu_vce_ring_begin_use
 
     power up VCE
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu ring
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_vce_ring_begin_use.description`:
 
@@ -113,8 +133,9 @@ amdgpu_vce_ring_end_use
 
     power VCE down
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         amdgpu ring
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_vce_ring_end_use.description`:
 
@@ -132,11 +153,13 @@ amdgpu_vce_free_handles
 
     free still open VCE handles
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param struct drm_file \*filp:
+    :param filp:
         drm file pointer
+    :type filp: struct drm_file \*
 
 .. _`amdgpu_vce_free_handles.description`:
 
@@ -154,14 +177,17 @@ amdgpu_vce_get_create_msg
 
     generate a VCE create msg
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring we should submit the msg to
+    :type ring: struct amdgpu_ring \*
 
-    :param uint32_t handle:
+    :param handle:
         VCE session handle to use
+    :type handle: uint32_t
 
-    :param struct dma_fence \*\*fence:
+    :param fence:
         optional fence to return
+    :type fence: struct dma_fence \*\*
 
 .. _`amdgpu_vce_get_create_msg.description`:
 
@@ -179,17 +205,21 @@ amdgpu_vce_get_destroy_msg
 
     generate a VCE destroy msg
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring we should submit the msg to
+    :type ring: struct amdgpu_ring \*
 
-    :param uint32_t handle:
+    :param handle:
         VCE session handle to use
+    :type handle: uint32_t
 
-    :param bool direct:
+    :param direct:
         *undescribed*
+    :type direct: bool
 
-    :param struct dma_fence \*\*fence:
+    :param fence:
         optional fence to return
+    :type fence: struct dma_fence \*\*
 
 .. _`amdgpu_vce_get_destroy_msg.description`:
 
@@ -207,23 +237,29 @@ amdgpu_vce_validate_bo
 
     make sure not to cross 4GB boundary
 
-    :param struct amdgpu_cs_parser \*p:
+    :param p:
         parser context
+    :type p: struct amdgpu_cs_parser \*
 
-    :param uint32_t ib_idx:
+    :param ib_idx:
         *undescribed*
+    :type ib_idx: uint32_t
 
-    :param int lo:
+    :param lo:
         address of lower dword
+    :type lo: int
 
-    :param int hi:
+    :param hi:
         address of higher dword
+    :type hi: int
 
-    :param unsigned size:
+    :param size:
         minimum size
+    :type size: unsigned
 
-    :param int32_t index:
+    :param index:
         bs/fb index
+    :type index: int32_t
 
 .. _`amdgpu_vce_validate_bo.description`:
 
@@ -241,23 +277,29 @@ amdgpu_vce_cs_reloc
 
     command submission relocation
 
-    :param struct amdgpu_cs_parser \*p:
+    :param p:
         parser context
+    :type p: struct amdgpu_cs_parser \*
 
-    :param uint32_t ib_idx:
+    :param ib_idx:
         *undescribed*
+    :type ib_idx: uint32_t
 
-    :param int lo:
+    :param lo:
         address of lower dword
+    :type lo: int
 
-    :param int hi:
+    :param hi:
         address of higher dword
+    :type hi: int
 
-    :param unsigned size:
+    :param size:
         minimum size
+    :type size: unsigned
 
-    :param uint32_t index:
+    :param index:
         *undescribed*
+    :type index: uint32_t
 
 .. _`amdgpu_vce_cs_reloc.description`:
 
@@ -275,14 +317,17 @@ amdgpu_vce_validate_handle
 
     validate stream handle
 
-    :param struct amdgpu_cs_parser \*p:
+    :param p:
         parser context
+    :type p: struct amdgpu_cs_parser \*
 
-    :param uint32_t handle:
+    :param handle:
         handle to validate
+    :type handle: uint32_t
 
-    :param uint32_t \*allocated:
+    :param allocated:
         allocated a new handle?
+    :type allocated: uint32_t \*
 
 .. _`amdgpu_vce_validate_handle.description`:
 
@@ -301,11 +346,13 @@ amdgpu_vce_ring_parse_cs
 
     parse and validate the command stream
 
-    :param struct amdgpu_cs_parser \*p:
+    :param p:
         parser context
+    :type p: struct amdgpu_cs_parser \*
 
-    :param uint32_t ib_idx:
+    :param ib_idx:
         *undescribed*
+    :type ib_idx: uint32_t
 
 .. _`amdgpu_vce_ring_parse_cs_vm`:
 
@@ -316,11 +363,13 @@ amdgpu_vce_ring_parse_cs_vm
 
     parse the command stream in VM mode
 
-    :param struct amdgpu_cs_parser \*p:
+    :param p:
         parser context
+    :type p: struct amdgpu_cs_parser \*
 
-    :param uint32_t ib_idx:
+    :param ib_idx:
         *undescribed*
+    :type ib_idx: uint32_t
 
 .. _`amdgpu_vce_ring_emit_ib`:
 
@@ -331,17 +380,21 @@ amdgpu_vce_ring_emit_ib
 
     execute indirect buffer
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         engine to use
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_ib \*ib:
+    :param ib:
         the IB to execute
+    :type ib: struct amdgpu_ib \*
 
-    :param unsigned vmid:
+    :param vmid:
         *undescribed*
+    :type vmid: unsigned
 
-    :param bool ctx_switch:
+    :param ctx_switch:
         *undescribed*
+    :type ctx_switch: bool
 
 .. _`amdgpu_vce_ring_emit_fence`:
 
@@ -352,17 +405,21 @@ amdgpu_vce_ring_emit_fence
 
     add a fence command to the ring
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         engine to use
+    :type ring: struct amdgpu_ring \*
 
-    :param u64 addr:
+    :param addr:
         *undescribed*
+    :type addr: u64
 
-    :param u64 seq:
+    :param seq:
         *undescribed*
+    :type seq: u64
 
-    :param unsigned flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned
 
 .. _`amdgpu_vce_ring_test_ring`:
 
@@ -373,8 +430,9 @@ amdgpu_vce_ring_test_ring
 
     test if VCE ring is working
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         the engine to test on
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_vce_ring_test_ib`:
 
@@ -385,11 +443,13 @@ amdgpu_vce_ring_test_ib
 
     test if VCE IBs are working
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         the engine to test on
+    :type ring: struct amdgpu_ring \*
 
-    :param long timeout:
+    :param timeout:
         *undescribed*
+    :type timeout: long
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ tzic_enable_wake
 
     enable wakeup interrupt
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tzic_enable_wake.description`:
 

@@ -1,6 +1,257 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/intel/i40e/i40e_ethtool.c
 
+.. _`i40e_stats`:
+
+struct i40e_stats
+=================
+
+.. c:type:: struct i40e_stats
+
+    definition for an ethtool statistic
+
+.. _`i40e_stats.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct i40e_stats {
+        char stat_string[ETH_GSTRING_LEN];
+        int sizeof_stat;
+        int stat_offset;
+    }
+
+.. _`i40e_stats.members`:
+
+Members
+-------
+
+stat_string
+    statistic name to display in ethtool -S output
+
+sizeof_stat
+    the \ :c:func:`sizeof`\  the stat, must be no greater than sizeof(u64)
+
+stat_offset
+    \ :c:func:`offsetof`\  the stat from a base pointer
+
+.. _`i40e_stats.description`:
+
+Description
+-----------
+
+This structure defines a statistic to be added to the ethtool stats buffer.
+It defines a statistic as offset from a common base pointer. Stats should
+be defined in constant arrays using the I40E_STAT macro, with every element
+of the array using the same \_type for calculating the sizeof_stat and
+stat_offset.
+
+The \ ``sizeof_stat``\  is expected to be sizeof(u8), sizeof(u16), sizeof(u32) or
+sizeof(u64). Other sizes are not expected and will produce a WARN_ONCE from
+the \ :c:func:`i40e_add_ethtool_stat`\  helper function.
+
+The \ ``stat_string``\  is interpreted as a format string, allowing formatted
+values to be inserted while looping over multiple structures for a given
+statistics array. Thus, every statistic string in an array should have the
+same type and number of format specifiers, to be formatted by variadic
+arguments to the \ :c:func:`i40e_add_stat_string`\  helper function.
+
+.. _`i40e_add_one_ethtool_stat`:
+
+i40e_add_one_ethtool_stat
+=========================
+
+.. c:function:: void i40e_add_one_ethtool_stat(u64 *data, void *pointer, const struct i40e_stats *stat)
+
+    copy the stat into the supplied buffer
+
+    :param data:
+        location to store the stat value
+    :type data: u64 \*
+
+    :param pointer:
+        basis for where to copy from
+    :type pointer: void \*
+
+    :param stat:
+        the stat definition
+    :type stat: const struct i40e_stats \*
+
+.. _`i40e_add_one_ethtool_stat.description`:
+
+Description
+-----------
+
+Copies the stat data defined by the pointer and stat structure pair into
+the memory supplied as data. Used to implement i40e_add_ethtool_stats and
+i40e_add_queue_stats. If the pointer is null, data will be zero'd.
+
+.. _`__i40e_add_ethtool_stats`:
+
+\__i40e_add_ethtool_stats
+=========================
+
+.. c:function:: void __i40e_add_ethtool_stats(u64 **data, void *pointer, const struct i40e_stats stats, const unsigned int size)
+
+    copy stats into the ethtool supplied buffer
+
+    :param data:
+        ethtool stats buffer
+    :type data: u64 \*\*
+
+    :param pointer:
+        location to copy stats from
+    :type pointer: void \*
+
+    :param stats:
+        array of stats to copy
+    :type stats: const struct i40e_stats
+
+    :param size:
+        the size of the stats definition
+    :type size: const unsigned int
+
+.. _`__i40e_add_ethtool_stats.description`:
+
+Description
+-----------
+
+Copy the stats defined by the stats array using the pointer as a base into
+the data buffer supplied by ethtool. Updates the data pointer to point to
+the next empty location for successive calls to \__i40e_add_ethtool_stats.
+If pointer is null, set the data values to zero and update the pointer to
+skip these stats.
+
+.. _`i40e_add_ethtool_stats`:
+
+i40e_add_ethtool_stats
+======================
+
+.. c:function::  i40e_add_ethtool_stats( data,  pointer,  stats)
+
+    copy stats into ethtool supplied buffer
+
+    :param data:
+        ethtool stats buffer
+    :type data: 
+
+    :param pointer:
+        location where stats are stored
+    :type pointer: 
+
+    :param stats:
+        static const array of stat definitions
+    :type stats: 
+
+.. _`i40e_add_ethtool_stats.description`:
+
+Description
+-----------
+
+Macro to ease the use of \__i40e_add_ethtool_stats by taking a static
+constant stats array and passing the \ :c:func:`ARRAY_SIZE`\ . This avoids typos by
+ensuring that we pass the size associated with the given stats array.
+
+The parameter \ ``stats``\  is evaluated twice, so parameters with side effects
+should be avoided.
+
+.. _`i40e_add_queue_stats`:
+
+i40e_add_queue_stats
+====================
+
+.. c:function:: void i40e_add_queue_stats(u64 **data, struct i40e_ring *ring)
+
+    copy queue statistics into supplied buffer
+
+    :param data:
+        ethtool stats buffer
+    :type data: u64 \*\*
+
+    :param ring:
+        the ring to copy
+    :type ring: struct i40e_ring \*
+
+.. _`i40e_add_queue_stats.description`:
+
+Description
+-----------
+
+Queue statistics must be copied while protected by
+u64_stats_fetch_begin_irq, so we can't directly use i40e_add_ethtool_stats.
+Assumes that queue stats are defined in i40e_gstrings_queue_stats. If the
+ring pointer is null, zero out the queue stat values and update the data
+pointer. Otherwise safely copy the stats from the ring into the supplied
+buffer and update the data pointer when finished.
+
+This function expects to be called while under \ :c:func:`rcu_read_lock`\ .
+
+.. _`__i40e_add_stat_strings`:
+
+\__i40e_add_stat_strings
+========================
+
+.. c:function:: void __i40e_add_stat_strings(u8 **p, const struct i40e_stats stats, const unsigned int size,  ...)
+
+    copy stat strings into ethtool buffer
+
+    :param p:
+        ethtool supplied buffer
+    :type p: u8 \*\*
+
+    :param stats:
+        stat definitions array
+    :type stats: const struct i40e_stats
+
+    :param size:
+        size of the stats array
+    :type size: const unsigned int
+
+    :param ellipsis ellipsis:
+        variable arguments
+
+.. _`__i40e_add_stat_strings.description`:
+
+Description
+-----------
+
+Format and copy the strings described by stats into the buffer pointed at
+by p.
+
+.. _`i40e_add_stat_strings`:
+
+i40e_add_stat_strings
+=====================
+
+.. c:function::  i40e_add_stat_strings( p,  stats,  ...)
+
+    copy stat strings into ethtool buffer
+
+    :param p:
+        ethtool supplied buffer
+    :type p: 
+
+    :param stats:
+        stat definitions array
+    :type stats: 
+
+    :param ellipsis ellipsis:
+        variable arguments
+
+.. _`i40e_add_stat_strings.description`:
+
+Description
+-----------
+
+Format and copy the strings described by the const static stats value into
+the buffer pointed at by p.
+
+The parameter \ ``stats``\  is evaluated twice, so parameters with side effects
+should be avoided. Additionally, stats must be an array such that
+ARRAY_SIZE can be called on it.
+
 .. _`i40e_partition_setting_complaint`:
 
 i40e_partition_setting_complaint
@@ -10,8 +261,9 @@ i40e_partition_setting_complaint
 
     generic complaint for MFP restriction
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_phy_type_to_ethtool`:
 
@@ -22,11 +274,13 @@ i40e_phy_type_to_ethtool
 
     convert the phy_types to ethtool link modes
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         PF struct with phy_types
+    :type pf: struct i40e_pf \*
 
-    :param struct ethtool_link_ksettings \*ks:
+    :param ks:
         ethtool link ksettings struct to fill out
+    :type ks: struct ethtool_link_ksettings \*
 
 .. _`i40e_get_settings_link_up`:
 
@@ -37,17 +291,21 @@ i40e_get_settings_link_up
 
     Get the Link settings for when link is up
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         hw structure
+    :type hw: struct i40e_hw \*
 
-    :param struct ethtool_link_ksettings \*ks:
+    :param ks:
         ethtool ksettings to fill in
+    :type ks: struct ethtool_link_ksettings \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to physical function struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_get_settings_link_down`:
 
@@ -58,14 +316,17 @@ i40e_get_settings_link_down
 
     Get the Link settings for when link is down
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         hw structure
+    :type hw: struct i40e_hw \*
 
-    :param struct ethtool_link_ksettings \*ks:
+    :param ks:
         ethtool ksettings to fill in
+    :type ks: struct ethtool_link_ksettings \*
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to physical function struct
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_get_settings_link_down.description`:
 
@@ -83,11 +344,13 @@ i40e_get_link_ksettings
 
     Get Link Speed and Duplex settings
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_link_ksettings \*ks:
+    :param ks:
         ethtool ksettings
+    :type ks: struct ethtool_link_ksettings \*
 
 .. _`i40e_get_link_ksettings.description`:
 
@@ -105,11 +368,13 @@ i40e_set_link_ksettings
 
     Set Speed and Duplex
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param const struct ethtool_link_ksettings \*ks:
+    :param ks:
         ethtool ksettings
+    :type ks: const struct ethtool_link_ksettings \*
 
 .. _`i40e_set_link_ksettings.description`:
 
@@ -127,11 +392,13 @@ i40e_get_pauseparam
 
     Get Flow Control status
 
-    :param struct net_device \*netdev:
+    :param netdev:
         netdevice structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*pause:
+    :param pause:
         buffer to return pause parameters
+    :type pause: struct ethtool_pauseparam \*
 
 .. _`i40e_get_pauseparam.description`:
 
@@ -149,11 +416,13 @@ i40e_set_pauseparam
 
     Set Flow Control parameter
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*pause:
+    :param pause:
         return tx/rx flow control status
+    :type pause: struct ethtool_pauseparam \*
 
 .. _`i40e_get_stats_count`:
 
@@ -164,8 +433,9 @@ i40e_get_stats_count
 
     return the stats count for a device
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdev to return the count for
+    :type netdev: struct net_device \*
 
 .. _`i40e_get_stats_count.description`:
 
@@ -182,6 +452,32 @@ values such as the \*current\* number of queues, or runtime flags.
 If a statistic is not always enabled, return it as part of the count
 anyways, always return its string, and report its value as zero.
 
+.. _`i40e_get_pfc_stats`:
+
+i40e_get_pfc_stats
+==================
+
+.. c:function:: struct i40e_pfc_stats i40e_get_pfc_stats(struct i40e_pf *pf, unsigned int i)
+
+    copy HW PFC statistics to formatted structure
+
+    :param pf:
+        the PF device structure
+    :type pf: struct i40e_pf \*
+
+    :param i:
+        the priority value to copy
+    :type i: unsigned int
+
+.. _`i40e_get_pfc_stats.description`:
+
+Description
+-----------
+
+The PFC stats are found as arrays in pf->stats, which is not easy to pass
+into i40e_add_ethtool_stats. Produce a formatted i40e_pfc_stats structure
+of the PFC stats for the given priority.
+
 .. _`i40e_get_ethtool_stats`:
 
 i40e_get_ethtool_stats
@@ -191,14 +487,17 @@ i40e_get_ethtool_stats
 
     copy stat values into supplied buffer
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdev to collect stats for
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_stats \*stats:
+    :param stats:
         ethtool stats command structure
+    :type stats: struct ethtool_stats \*
 
-    :param u64 \*data:
+    :param data:
         ethtool supplied buffer
+    :type data: u64 \*
 
 .. _`i40e_get_ethtool_stats.description`:
 
@@ -222,11 +521,13 @@ i40e_get_stat_strings
 
     copy stat strings into supplied buffer
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdev to collect strings for
+    :type netdev: struct net_device \*
 
-    :param u8 \*data:
+    :param data:
         supplied buffer to copy strings into
+    :type data: u8 \*
 
 .. _`i40e_get_stat_strings.description`:
 
@@ -247,11 +548,13 @@ i40e_set_wol
 
     set the WakeOnLAN configuration
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdev in question
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_wolinfo \*wol:
+    :param wol:
         the ethtool WoL setting data
+    :type wol: struct ethtool_wolinfo \*
 
 .. _`__i40e_get_coalesce`:
 
@@ -262,14 +565,17 @@ i40e_set_wol
 
     get per-queue coalesce settings
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdev to check
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_coalesce \*ec:
+    :param ec:
         ethtool coalesce data structure
+    :type ec: struct ethtool_coalesce \*
 
-    :param int queue:
+    :param queue:
         which queue to pick
+    :type queue: int
 
 .. _`__i40e_get_coalesce.description`:
 
@@ -289,11 +595,13 @@ i40e_get_coalesce
 
     get a netdev's coalesce settings
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdev to check
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_coalesce \*ec:
+    :param ec:
         ethtool coalesce data structure
+    :type ec: struct ethtool_coalesce \*
 
 .. _`i40e_get_coalesce.description`:
 
@@ -313,14 +621,17 @@ i40e_get_per_queue_coalesce
 
     gets coalesce settings for particular queue
 
-    :param struct net_device \*netdev:
+    :param netdev:
         netdev structure
+    :type netdev: struct net_device \*
 
-    :param u32 queue:
+    :param queue:
         the particular queue to read
+    :type queue: u32
 
-    :param struct ethtool_coalesce \*ec:
+    :param ec:
         ethtool's coalesce settings
+    :type ec: struct ethtool_coalesce \*
 
 .. _`i40e_get_per_queue_coalesce.description`:
 
@@ -338,14 +649,17 @@ i40e_set_itr_per_queue
 
     set ITR values for specific queue
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the VSI to set values for
+    :type vsi: struct i40e_vsi \*
 
-    :param struct ethtool_coalesce \*ec:
+    :param ec:
         coalesce settings from ethtool
+    :type ec: struct ethtool_coalesce \*
 
-    :param int queue:
+    :param queue:
         the queue to modify
+    :type queue: int
 
 .. _`i40e_set_itr_per_queue.description`:
 
@@ -363,14 +677,17 @@ Change the ITR settings for a specific queue.
 
     set coalesce settings for particular queue
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdev to change
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_coalesce \*ec:
+    :param ec:
         ethtool coalesce settings
+    :type ec: struct ethtool_coalesce \*
 
-    :param int queue:
+    :param queue:
         the queue to change
+    :type queue: int
 
 .. _`__i40e_set_coalesce.description`:
 
@@ -388,11 +705,13 @@ i40e_set_coalesce
 
     set coalesce settings for every queue on the netdev
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdev to change
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_coalesce \*ec:
+    :param ec:
         ethtool coalesce settings
+    :type ec: struct ethtool_coalesce \*
 
 .. _`i40e_set_coalesce.description`:
 
@@ -410,14 +729,17 @@ i40e_set_per_queue_coalesce
 
     set specific queue's coalesce settings
 
-    :param struct net_device \*netdev:
+    :param netdev:
         the netdev to change
+    :type netdev: struct net_device \*
 
-    :param u32 queue:
+    :param queue:
         the queue to change
+    :type queue: u32
 
-    :param struct ethtool_coalesce \*ec:
+    :param ec:
         ethtool's coalesce settings
+    :type ec: struct ethtool_coalesce \*
 
 .. _`i40e_set_per_queue_coalesce.description`:
 
@@ -435,11 +757,13 @@ i40e_get_rss_hash_opts
 
     Get RSS hash Input Set for each flow type
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the physical function struct
+    :type pf: struct i40e_pf \*
 
-    :param struct ethtool_rxnfc \*cmd:
+    :param cmd:
         ethtool rxnfc command
+    :type cmd: struct ethtool_rxnfc \*
 
 .. _`i40e_get_rss_hash_opts.description`:
 
@@ -457,11 +781,13 @@ i40e_check_mask
 
     Check whether a mask field is set
 
-    :param u64 mask:
+    :param mask:
         the full mask value
+    :type mask: u64
 
-    :param u64 field:
+    :param field:
         mask of the field to check
+    :type field: u64
 
 .. _`i40e_check_mask.description`:
 
@@ -480,11 +806,13 @@ i40e_parse_rx_flow_user_data
 
     Deconstruct user-defined data
 
-    :param struct ethtool_rx_flow_spec \*fsp:
+    :param fsp:
         pointer to rx flow specification
+    :type fsp: struct ethtool_rx_flow_spec \*
 
-    :param struct i40e_rx_flow_userdef \*data:
+    :param data:
         pointer to userdef data structure for storage
+    :type data: struct i40e_rx_flow_userdef \*
 
 .. _`i40e_parse_rx_flow_user_data.description`:
 
@@ -513,11 +841,13 @@ i40e_fill_rx_flow_user_data
 
     Fill in user-defined data field
 
-    :param struct ethtool_rx_flow_spec \*fsp:
+    :param fsp:
         pointer to rx_flow specification
+    :type fsp: struct ethtool_rx_flow_spec \*
 
-    :param struct i40e_rx_flow_userdef \*data:
+    :param data:
         pointer to return userdef data
+    :type data: struct i40e_rx_flow_userdef \*
 
 .. _`i40e_fill_rx_flow_user_data.description`:
 
@@ -536,14 +866,17 @@ i40e_get_ethtool_fdir_all
 
     Populates the rule count of a command
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Pointer to the physical function struct
+    :type pf: struct i40e_pf \*
 
-    :param struct ethtool_rxnfc \*cmd:
+    :param cmd:
         The command to get or set Rx flow classification rules
+    :type cmd: struct ethtool_rxnfc \*
 
-    :param u32 \*rule_locs:
+    :param rule_locs:
         Array of used rule locations
+    :type rule_locs: u32 \*
 
 .. _`i40e_get_ethtool_fdir_all.description`:
 
@@ -564,11 +897,13 @@ i40e_get_ethtool_fdir_entry
 
     Look up a filter based on Rx flow
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Pointer to the physical function struct
+    :type pf: struct i40e_pf \*
 
-    :param struct ethtool_rxnfc \*cmd:
+    :param cmd:
         The command to get or set Rx flow classification rules
+    :type cmd: struct ethtool_rxnfc \*
 
 .. _`i40e_get_ethtool_fdir_entry.description`:
 
@@ -589,14 +924,17 @@ i40e_get_rxnfc
 
     command to get RX flow classification rules
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_rxnfc \*cmd:
+    :param cmd:
         ethtool rxnfc command
+    :type cmd: struct ethtool_rxnfc \*
 
-    :param u32 \*rule_locs:
+    :param rule_locs:
         pointer to store rule data
+    :type rule_locs: u32 \*
 
 .. _`i40e_get_rxnfc.description`:
 
@@ -614,11 +952,13 @@ i40e_get_rss_hash_bits
 
     Read RSS Hash bits from register
 
-    :param struct ethtool_rxnfc \*nfc:
+    :param nfc:
         pointer to user request
+    :type nfc: struct ethtool_rxnfc \*
 
-    :param u64 i_setc:
+    :param i_setc:
         bits currently set
+    :type i_setc: u64
 
 .. _`i40e_get_rss_hash_bits.description`:
 
@@ -636,11 +976,13 @@ i40e_set_rss_hash_opt
 
     Enable/Disable flow types for RSS hash
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the physical function struct
+    :type pf: struct i40e_pf \*
 
-    :param struct ethtool_rxnfc \*nfc:
+    :param nfc:
         ethtool rxnfc command
+    :type nfc: struct ethtool_rxnfc \*
 
 .. _`i40e_set_rss_hash_opt.description`:
 
@@ -658,17 +1000,21 @@ i40e_update_ethtool_fdir_entry
 
     Updates the fdir filter entry
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_fdir_filter \*input:
+    :param input:
         The filter to update or NULL to indicate deletion
+    :type input: struct i40e_fdir_filter \*
 
-    :param u16 sw_idx:
+    :param sw_idx:
         Software index to the filter
+    :type sw_idx: u16
 
-    :param struct ethtool_rxnfc \*cmd:
+    :param cmd:
         The command to get or set Rx flow classification rules
+    :type cmd: struct ethtool_rxnfc \*
 
 .. _`i40e_update_ethtool_fdir_entry.description`:
 
@@ -689,8 +1035,9 @@ i40e_prune_flex_pit_list
 
     Cleanup unused entries in FLX_PIT table
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to PF structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_prune_flex_pit_list.description`:
 
@@ -710,11 +1057,13 @@ i40e_del_fdir_entry
 
     Deletes a Flow Director filter entry
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         Pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct ethtool_rxnfc \*cmd:
+    :param cmd:
         The command to get or set Rx flow classification rules
+    :type cmd: struct ethtool_rxnfc \*
 
 .. _`i40e_del_fdir_entry.description`:
 
@@ -735,8 +1084,9 @@ i40e_unused_pit_index
 
     Find an unused PIT index for given list
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         the PF data structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_unused_pit_index.description`:
 
@@ -757,11 +1107,13 @@ i40e_find_flex_offset
 
     Find an existing flex src_offset
 
-    :param struct list_head \*flex_pit_list:
+    :param flex_pit_list:
         L3 or L4 flex PIT list
+    :type flex_pit_list: struct list_head \*
 
-    :param u16 src_offset:
+    :param src_offset:
         new src_offset to find
+    :type src_offset: u16
 
 .. _`i40e_find_flex_offset.description`:
 
@@ -781,14 +1133,17 @@ i40e_add_flex_offset
 
     Add src_offset to flex PIT table list
 
-    :param struct list_head \*flex_pit_list:
+    :param flex_pit_list:
         L3 or L4 flex PIT list
+    :type flex_pit_list: struct list_head \*
 
-    :param u16 src_offset:
+    :param src_offset:
         new src_offset to add
+    :type src_offset: u16
 
-    :param u8 pit_index:
+    :param pit_index:
         the PIT index to program
+    :type pit_index: u8
 
 .. _`i40e_add_flex_offset.description`:
 
@@ -811,14 +1166,17 @@ Returns 0 on success, and negative value on error.
 
     Re-program specific FLX_PIT table
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         Pointer to the PF structure
+    :type pf: struct i40e_pf \*
 
-    :param struct list_head \*flex_pit_list:
+    :param flex_pit_list:
         list of flexible src offsets in use
+    :type flex_pit_list: struct list_head \*
 
-    :param int flex_pit_start:
+    :param flex_pit_start:
         index to first entry for this section of the table
+    :type flex_pit_start: int
 
 .. _`__i40e_reprogram_flex_pit.description`:
 
@@ -849,8 +1207,9 @@ i40e_reprogram_flex_pit
 
     Reprogram all FLX_PIT tables after input set change
 
-    :param struct i40e_pf \*pf:
+    :param pf:
         pointer to the PF structure
+    :type pf: struct i40e_pf \*
 
 .. _`i40e_reprogram_flex_pit.description`:
 
@@ -869,8 +1228,9 @@ i40e_flow_str
 
     Converts a flow_type into a human readable string
 
-    :param struct ethtool_rx_flow_spec \*fsp:
+    :param fsp:
         the flow specification
+    :type fsp: struct ethtool_rx_flow_spec \*
 
 .. _`i40e_flow_str.description`:
 
@@ -889,8 +1249,9 @@ i40e_pit_index_to_mask
 
     Return the FLEX mask for a given PIT index
 
-    :param int pit_index:
+    :param pit_index:
         PIT index to convert
+    :type pit_index: int
 
 .. _`i40e_pit_index_to_mask.description`:
 
@@ -909,14 +1270,17 @@ i40e_print_input_set
 
     Show changes between two input sets
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         the vsi being configured
+    :type vsi: struct i40e_vsi \*
 
-    :param u64 old:
+    :param old:
         the old input set
+    :type old: u64
 
-    :param u64 new:
+    :param new:
         the new input set
+    :type new: u64
 
 .. _`i40e_print_input_set.description`:
 
@@ -936,14 +1300,17 @@ i40e_check_fdir_input_set
 
     Check that a given rx_flow_spec mask is valid
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct ethtool_rx_flow_spec \*fsp:
+    :param fsp:
         pointer to Rx flow specification
+    :type fsp: struct ethtool_rx_flow_spec \*
 
-    :param struct i40e_rx_flow_userdef \*userdef:
+    :param userdef:
         userdefined data from flow specification
+    :type userdef: struct i40e_rx_flow_userdef \*
 
 .. _`i40e_check_fdir_input_set.description`:
 
@@ -978,11 +1345,13 @@ i40e_match_fdir_filter
 
     Return true of two filters match
 
-    :param struct i40e_fdir_filter \*a:
+    :param a:
         pointer to filter struct
+    :type a: struct i40e_fdir_filter \*
 
-    :param struct i40e_fdir_filter \*b:
+    :param b:
         pointer to filter struct
+    :type b: struct i40e_fdir_filter \*
 
 .. _`i40e_match_fdir_filter.description`:
 
@@ -1003,11 +1372,13 @@ i40e_disallow_matching_filters
 
     Check that new filters differ
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct i40e_fdir_filter \*input:
+    :param input:
         new filter to check
+    :type input: struct i40e_fdir_filter \*
 
 .. _`i40e_disallow_matching_filters.description`:
 
@@ -1048,11 +1419,13 @@ i40e_add_fdir_ethtool
 
     Add/Remove Flow Director filters
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         pointer to the targeted VSI
+    :type vsi: struct i40e_vsi \*
 
-    :param struct ethtool_rxnfc \*cmd:
+    :param cmd:
         command to get or set RX flow classification rules
+    :type cmd: struct ethtool_rxnfc \*
 
 .. _`i40e_add_fdir_ethtool.description`:
 
@@ -1071,11 +1444,13 @@ i40e_set_rxnfc
 
     command to set RX flow classification rules
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_rxnfc \*cmd:
+    :param cmd:
         ethtool rxnfc command
+    :type cmd: struct ethtool_rxnfc \*
 
 .. _`i40e_set_rxnfc.description`:
 
@@ -1093,8 +1468,9 @@ i40e_max_channels
 
     get Max number of combined channels supported
 
-    :param struct i40e_vsi \*vsi:
+    :param vsi:
         vsi pointer
+    :type vsi: struct i40e_vsi \*
 
 .. _`i40e_get_channels`:
 
@@ -1105,11 +1481,13 @@ i40e_get_channels
 
     Get the current channels enabled and max supported etc.
 
-    :param struct net_device \*dev:
+    :param dev:
         network interface device structure
+    :type dev: struct net_device \*
 
-    :param struct ethtool_channels \*ch:
+    :param ch:
         ethtool channels structure
+    :type ch: struct ethtool_channels \*
 
 .. _`i40e_get_channels.description`:
 
@@ -1130,11 +1508,13 @@ i40e_set_channels
 
     Set the new channels count.
 
-    :param struct net_device \*dev:
+    :param dev:
         network interface device structure
+    :type dev: struct net_device \*
 
-    :param struct ethtool_channels \*ch:
+    :param ch:
         ethtool channels structure
+    :type ch: struct ethtool_channels \*
 
 .. _`i40e_set_channels.description`:
 
@@ -1153,8 +1533,9 @@ i40e_get_rxfh_key_size
 
     get the RSS hash key size
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`i40e_get_rxfh_key_size.description`:
 
@@ -1172,8 +1553,9 @@ i40e_get_rxfh_indir_size
 
     get the rx flow hash indirection table size
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`i40e_get_rxfh_indir_size.description`:
 
@@ -1191,17 +1573,21 @@ i40e_get_rxfh
 
     get the rx flow hash indirection table
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param u32 \*indir:
+    :param indir:
         indirection table
+    :type indir: u32 \*
 
-    :param u8 \*key:
+    :param key:
         hash key
+    :type key: u8 \*
 
-    :param u8 \*hfunc:
+    :param hfunc:
         hash function
+    :type hfunc: u8 \*
 
 .. _`i40e_get_rxfh.description`:
 
@@ -1220,17 +1606,21 @@ i40e_set_rxfh
 
     set the rx flow hash indirection table
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param const u32 \*indir:
+    :param indir:
         indirection table
+    :type indir: const u32 \*
 
-    :param const u8 \*key:
+    :param key:
         hash key
+    :type key: const u8 \*
 
-    :param const u8 hfunc:
+    :param hfunc:
         hash function to use
+    :type hfunc: const u8
 
 .. _`i40e_set_rxfh.description`:
 
@@ -1249,8 +1639,9 @@ i40e_get_priv_flags
 
     report device private flags
 
-    :param struct net_device \*dev:
+    :param dev:
         network interface device structure
+    :type dev: struct net_device \*
 
 .. _`i40e_get_priv_flags.description`:
 
@@ -1272,11 +1663,13 @@ i40e_set_priv_flags
 
     set private flags
 
-    :param struct net_device \*dev:
+    :param dev:
         network interface device structure
+    :type dev: struct net_device \*
 
-    :param u32 flags:
+    :param flags:
         bit flags to be set
+    :type flags: u32
 
 .. _`i40e_get_module_info`:
 
@@ -1287,11 +1680,13 @@ i40e_get_module_info
 
     get (Q)SFP+ module type info
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_modinfo \*modinfo:
+    :param modinfo:
         module EEPROM size and layout information structure
+    :type modinfo: struct ethtool_modinfo \*
 
 .. _`i40e_get_module_eeprom`:
 
@@ -1302,14 +1697,17 @@ i40e_get_module_eeprom
 
     fills buffer with (Q)SFP+ module memory contents
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_eeprom \*ee:
+    :param ee:
         EEPROM dump request structure
+    :type ee: struct ethtool_eeprom \*
 
-    :param u8 \*data:
+    :param data:
         buffer to be filled with EEPROM contents
+    :type data: u8 \*
 
 .. This file was automatic generated / don't edit.
 

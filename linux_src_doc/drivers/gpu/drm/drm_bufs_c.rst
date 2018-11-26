@@ -10,23 +10,29 @@ drm_addmap_core
 
     non-root process.
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param resource_size_t offset:
+    :param offset:
         *undescribed*
+    :type offset: resource_size_t
 
-    :param unsigned int size:
+    :param size:
         *undescribed*
+    :type size: unsigned int
 
-    :param enum drm_map_type type:
+    :param type:
         *undescribed*
+    :type type: enum drm_map_type
 
-    :param enum drm_map_flags flags:
+    :param flags:
         *undescribed*
+    :type flags: enum drm_map_flags
 
-    :param struct drm_map_list \*\*maplist:
+    :param maplist:
         *undescribed*
+    :type maplist: struct drm_map_list \*\*
 
 .. _`drm_addmap_core.description`:
 
@@ -46,14 +52,17 @@ drm_legacy_addmap_ioctl
 
     non-root process.
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_addmap_ioctl.description`:
 
@@ -75,11 +84,13 @@ drm_legacy_rmmap_locked
 
     isn't in use.
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_local_map \*map:
+    :param map:
         *undescribed*
+    :type map: struct drm_local_map \*
 
 .. _`drm_legacy_rmmap_locked.description`:
 
@@ -99,11 +110,13 @@ drm_cleanup_buf_error
 
 .. c:function:: void drm_cleanup_buf_error(struct drm_device *dev, struct drm_buf_entry *entry)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_buf_entry \*entry:
+    :param entry:
         *undescribed*
+    :type entry: struct drm_buf_entry \*
 
 .. _`drm_cleanup_buf_error.description`:
 
@@ -122,11 +135,13 @@ drm_legacy_addbufs_agp
 
 .. c:function:: int drm_legacy_addbufs_agp(struct drm_device *dev, struct drm_buf_desc *request)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_buf_desc \*request:
+    :param request:
         *undescribed*
+    :type request: struct drm_buf_desc \*
 
 .. _`drm_legacy_addbufs_agp.description`:
 
@@ -148,14 +163,17 @@ drm_legacy_addbufs
 
 .. c:function:: int drm_legacy_addbufs(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_addbufs.description`:
 
@@ -180,14 +198,17 @@ PCI memory respectively.
 
 .. c:function:: int __drm_legacy_infobufs(struct drm_device *dev, void *data, int *p, int (*f)(void *, int, struct drm_buf_entry *))
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param int \*p:
+    :param p:
         *undescribed*
+    :type p: int \*
 
     :param int (\*f)(void \*, int, struct drm_buf_entry \*):
         *undescribed*
@@ -218,14 +239,17 @@ drm_legacy_markbufs
 
 .. c:function:: int drm_legacy_markbufs(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_markbufs.description`:
 
@@ -250,14 +274,17 @@ drm_legacy_freebufs
 
 .. c:function:: int drm_legacy_freebufs(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_legacy_freebufs.description`:
 
@@ -282,23 +309,28 @@ This function is primarily used for debugging.
 
     virtual space (ioctl).
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param int \*p:
+    :param p:
         *undescribed*
+    :type p: int \*
 
-    :param void __user \*\*v:
+    :param v:
         *undescribed*
+    :type v: void __user \*\*
 
     :param int (\*f)(void \*, int, unsigned long, struct drm_buf \*):
         *undescribed*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`__drm_legacy_mapbufs.description`:
 

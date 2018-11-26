@@ -10,11 +10,13 @@ smu7_fan_ctrl_set_static_mode
 
     \ ``param``\     hwmgr  the address of the powerplay hardware manager. mode    the fan control mode, 0 default, 1 by percent, 5, by RPM \ ``exception``\  Should always succeed.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param uint32_t mode:
+    :param mode:
         *undescribed*
+    :type mode: uint32_t
 
 .. _`smu7_fan_ctrl_set_default_mode`:
 
@@ -25,8 +27,9 @@ smu7_fan_ctrl_set_default_mode
 
     \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``exception``\  Should always succeed.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`smu7_fan_ctrl_set_fan_speed_percent`:
 
@@ -37,11 +40,13 @@ smu7_fan_ctrl_set_fan_speed_percent
 
     \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``param``\     speed is the percentage value (0% - 100%) to be set. \ ``exception``\  Fails is the 100% setting appears to be 0.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param uint32_t speed:
+    :param speed:
         *undescribed*
+    :type speed: uint32_t
 
 .. _`smu7_fan_ctrl_reset_fan_speed_to_default`:
 
@@ -52,8 +57,9 @@ smu7_fan_ctrl_reset_fan_speed_to_default
 
     \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``exception``\  Always succeeds.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`smu7_fan_ctrl_set_fan_speed_rpm`:
 
@@ -64,11 +70,13 @@ smu7_fan_ctrl_set_fan_speed_rpm
 
     \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``param``\     speed is the percentage value (min - max) to be set. \ ``exception``\  Fails is the speed not lie between min and max.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param uint32_t speed:
+    :param speed:
         *undescribed*
+    :type speed: uint32_t
 
 .. _`smu7_thermal_get_temperature`:
 
@@ -77,8 +85,9 @@ smu7_thermal_get_temperature
 
 .. c:function:: int smu7_thermal_get_temperature(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`smu7_thermal_get_temperature.description`:
 
@@ -94,14 +103,17 @@ smu7_thermal_set_temperature_range
 
 .. c:function:: int smu7_thermal_set_temperature_range(struct pp_hwmgr *hwmgr, int low_temp, int high_temp)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param int low_temp:
+    :param low_temp:
         *undescribed*
+    :type low_temp: int
 
-    :param int high_temp:
+    :param high_temp:
         *undescribed*
+    :type high_temp: int
 
 .. _`smu7_thermal_set_temperature_range.description`:
 
@@ -121,8 +133,9 @@ smu7_thermal_initialize
 
     time setting registers
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`smu7_thermal_initialize.description`:
 
@@ -138,8 +151,9 @@ smu7_thermal_enable_alert
 
 .. c:function:: void smu7_thermal_enable_alert(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`smu7_thermal_enable_alert.description`:
 
@@ -157,8 +171,9 @@ smu7_thermal_disable_alert
 
     \ ``param``\     hwmgr The address of the hardware manager.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`smu7_thermal_stop_thermal_controller`:
 
@@ -169,8 +184,9 @@ smu7_thermal_stop_thermal_controller
 
     Currently just disables alerts. \ ``param``\     hwmgr The address of the hardware manager.
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`smu7_thermal_start_smc_fan_control`:
 
@@ -181,8 +197,9 @@ smu7_thermal_start_smc_fan_control
 
     \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. This file was automatic generated / don't edit.
 

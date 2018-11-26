@@ -10,8 +10,9 @@ sst_acpi_remove
 
     remove function
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`sst_acpi_remove.description`:
 

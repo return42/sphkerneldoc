@@ -10,11 +10,13 @@ rpcauth_get_pseudoflavor
 
     check if security flavor is supported
 
-    :param rpc_authflavor_t flavor:
+    :param flavor:
         a security flavor
+    :type flavor: rpc_authflavor_t
 
-    :param struct rpcsec_gss_info \*info:
+    :param info:
         a GSS mech OID, quality of protection, and service value
+    :type info: struct rpcsec_gss_info \*
 
 .. _`rpcauth_get_pseudoflavor.description`:
 
@@ -34,11 +36,13 @@ rpcauth_get_gssinfo
 
     find GSS tuple matching a GSS pseudoflavor
 
-    :param rpc_authflavor_t pseudoflavor:
+    :param pseudoflavor:
         GSS pseudoflavor to match
+    :type pseudoflavor: rpc_authflavor_t
 
-    :param struct rpcsec_gss_info \*info:
+    :param info:
         rpcsec_gss_info structure to fill in
+    :type info: struct rpcsec_gss_info \*
 
 .. _`rpcauth_get_gssinfo.description`:
 
@@ -57,11 +61,13 @@ rpcauth_list_flavors
 
     discover registered flavors and pseudoflavors
 
-    :param rpc_authflavor_t \*array:
+    :param array:
         array to fill in
+    :type array: rpc_authflavor_t \*
 
-    :param int size:
+    :param size:
         size of "array"
+    :type size: int
 
 .. _`rpcauth_list_flavors.description`:
 

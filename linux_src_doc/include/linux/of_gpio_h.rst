@@ -6,15 +6,17 @@
 of_gpio_named_count
 ===================
 
-.. c:function:: int of_gpio_named_count(struct device_node *np, const char*propname)
+.. c:function:: int of_gpio_named_count(struct device_node *np, const char* propname)
 
     Count GPIOs for a device
 
-    :param struct device_node \*np:
+    :param np:
         device node to count GPIOs for
+    :type np: struct device_node \*
 
-    :param const char\*propname:
+    :param propname:
         property name containing gpio specifier(s)
+    :type propname: const char\*
 
 .. _`of_gpio_named_count.description`:
 
@@ -52,8 +54,9 @@ of_gpio_count
 
     Count GPIOs for a device
 
-    :param struct device_node \*np:
+    :param np:
         device node to count GPIOs for
+    :type np: struct device_node \*
 
 .. _`of_gpio_count.description`:
 
@@ -71,14 +74,17 @@ of_get_named_gpio
 
     Get a GPIO number to use with GPIO API
 
-    :param struct device_node \*np:
+    :param np:
         device node to get GPIO from
+    :type np: struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         Name of property containing gpio specifier(s)
+    :type propname: const char \*
 
-    :param int index:
+    :param index:
         index of the GPIO
+    :type index: int
 
 .. _`of_get_named_gpio.description`:
 
@@ -97,11 +103,13 @@ of_get_gpio
 
     Get a GPIO number to use with GPIO API
 
-    :param struct device_node \*np:
+    :param np:
         device node to get GPIO from
+    :type np: struct device_node \*
 
-    :param int index:
+    :param index:
         index of the GPIO
+    :type index: int
 
 .. _`of_get_gpio.description`:
 

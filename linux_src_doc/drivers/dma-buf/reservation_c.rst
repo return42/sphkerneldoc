@@ -22,8 +22,9 @@ reservation_object_reserve_shared
 
     Reserve space to add a shared fence to a reservation_object.
 
-    :param struct reservation_object \*obj:
+    :param obj:
         reservation object
+    :type obj: struct reservation_object \*
 
 .. _`reservation_object_reserve_shared.description`:
 
@@ -45,11 +46,13 @@ reservation_object_add_shared_fence
 
     Add a fence to a shared slot
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
-    :param struct dma_fence \*fence:
+    :param fence:
         the shared fence to add
+    :type fence: struct dma_fence \*
 
 .. _`reservation_object_add_shared_fence.description`:
 
@@ -68,11 +71,13 @@ reservation_object_add_excl_fence
 
     Add an exclusive fence.
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
-    :param struct dma_fence \*fence:
+    :param fence:
         the shared fence to add
+    :type fence: struct dma_fence \*
 
 .. _`reservation_object_add_excl_fence.description`:
 
@@ -90,11 +95,13 @@ reservation_object_copy_fences
 
     Copy all fences from src to dst.
 
-    :param struct reservation_object \*dst:
+    :param dst:
         the destination reservation object
+    :type dst: struct reservation_object \*
 
-    :param struct reservation_object \*src:
+    :param src:
         the source reservation object
+    :type src: struct reservation_object \*
 
 .. _`reservation_object_copy_fences.description`:
 
@@ -112,18 +119,22 @@ reservation_object_get_fences_rcu
 
     Get an object's shared and exclusive fences without update side lock held
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
-    :param struct dma_fence \*\*pfence_excl:
+    :param pfence_excl:
         the returned exclusive fence (or NULL)
+    :type pfence_excl: struct dma_fence \*\*
 
-    :param unsigned \*pshared_count:
+    :param pshared_count:
         the number of shared fences returned
+    :type pshared_count: unsigned \*
 
-    :param struct dma_fence \*\*\*pshared:
+    :param pshared:
         the array of shared fence ptrs returned (array is krealloc'd to
         the required size, and must be freed by caller)
+    :type pshared: struct dma_fence \*\*\*
 
 .. _`reservation_object_get_fences_rcu.description`:
 
@@ -143,17 +154,21 @@ reservation_object_wait_timeout_rcu
 
     Wait on reservation's objects shared and/or exclusive fences.
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
-    :param bool wait_all:
+    :param wait_all:
         if true, wait on all fences, else wait on just exclusive fence
+    :type wait_all: bool
 
-    :param bool intr:
+    :param intr:
         if true, do interruptible wait
+    :type intr: bool
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout value in jiffies or zero to return immediately
+    :type timeout: unsigned long
 
 .. _`reservation_object_wait_timeout_rcu.description`:
 
@@ -173,12 +188,14 @@ reservation_object_test_signaled_rcu
 
     Test if a reservation object's fences have been signaled.
 
-    :param struct reservation_object \*obj:
+    :param obj:
         the reservation object
+    :type obj: struct reservation_object \*
 
-    :param bool test_all:
+    :param test_all:
         if true, test all fences, otherwise only test the exclusive
         fence
+    :type test_all: bool
 
 .. _`reservation_object_test_signaled_rcu.description`:
 

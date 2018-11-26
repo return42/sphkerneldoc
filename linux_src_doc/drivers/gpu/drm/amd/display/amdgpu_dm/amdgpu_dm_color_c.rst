@@ -10,14 +10,17 @@
 
     of the lut - whether or not it's legacy.
 
-    :param struct drm_color_lut \*lut:
+    :param lut:
         *undescribed*
+    :type lut: struct drm_color_lut \*
 
-    :param struct dc_gamma \*gamma:
+    :param gamma:
         *undescribed*
+    :type gamma: struct dc_gamma \*
 
-    :param bool is_legacy:
+    :param is_legacy:
         *undescribed*
+    :type is_legacy: bool
 
 .. _`amdgpu_dm_set_regamma_lut`:
 
@@ -28,8 +31,9 @@ amdgpu_dm_set_regamma_lut
 
     Set regamma lut for the given CRTC.
 
-    :param struct dm_crtc_state \*crtc:
+    :param crtc:
         amdgpu_dm crtc state
+    :type crtc: struct dm_crtc_state \*
 
 .. _`amdgpu_dm_set_regamma_lut.description`:
 
@@ -56,8 +60,9 @@ amdgpu_dm_set_ctm
 
     Set the color transform matrix for the given CRTC.
 
-    :param struct dm_crtc_state \*crtc:
+    :param crtc:
         amdgpu_dm crtc state
+    :type crtc: struct dm_crtc_state \*
 
 .. _`amdgpu_dm_set_ctm.description`:
 
@@ -77,11 +82,13 @@ amdgpu_dm_set_degamma_lut
 
     Set degamma lut for the given CRTC.
 
-    :param struct drm_crtc_state \*crtc_state:
+    :param crtc_state:
         *undescribed*
+    :type crtc_state: struct drm_crtc_state \*
 
-    :param struct dc_plane_state \*dc_plane_state:
+    :param dc_plane_state:
         *undescribed*
+    :type dc_plane_state: struct dc_plane_state \*
 
 .. _`amdgpu_dm_set_degamma_lut.description`:
 
@@ -92,16 +99,16 @@ Update the underlying dc_stream_state's input transfer function (ITF) in
 preparation for hardware commit. If no lut is specified by user, we default
 to SRGB degamma.
 
-Currently, we only support degamma bypass, or preprogrammed SRGB degamma.
-Programmable degamma is not supported, and an attempt to do so will return
--EINVAL.
+We support degamma bypass, predefined SRGB, and custom degamma
 
 .. _`amdgpu_dm_set_degamma_lut.return`:
 
 Return
 ------
 
-0 on success, -EINVAL if custom degamma curve is given.
+0 on success
+-EINVAL if crtc_state has a degamma_lut of invalid size
+-ENOMEM if gamma allocation fails
 
 .. This file was automatic generated / don't edit.
 

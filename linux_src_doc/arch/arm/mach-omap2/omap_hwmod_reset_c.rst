@@ -10,8 +10,9 @@ omap_hwmod_aess_preprogram
 
     enable AESS internal autogating
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_aess_preprogram.description`:
 
@@ -32,8 +33,9 @@ omap_rtc_wait_not_busy
 
     Wait for the RTC BUSY flag
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_rtc_wait_not_busy.description`:
 
@@ -54,8 +56,9 @@ omap_hwmod_rtc_unlock
 
     Unlock the Kicker mechanism.
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_rtc_unlock.description`:
 
@@ -76,8 +79,9 @@ omap_hwmod_rtc_lock
 
     Lock the Kicker mechanism.
 
-    :param struct omap_hwmod \*oh:
+    :param oh:
         struct omap_hwmod \*
+    :type oh: struct omap_hwmod \*
 
 .. _`omap_hwmod_rtc_lock.description`:
 

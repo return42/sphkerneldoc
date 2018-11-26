@@ -10,8 +10,9 @@ calipso_cache_entry_free
 
     Frees a cache entry
 
-    :param struct calipso_map_cache_entry \*entry:
+    :param entry:
         the entry to free
+    :type entry: struct calipso_map_cache_entry \*
 
 .. _`calipso_cache_entry_free.description`:
 
@@ -30,11 +31,13 @@ calipso_map_cache_hash
 
     Hashing function for the CALIPSO cache
 
-    :param const unsigned char \*key:
+    :param key:
         the hash key
+    :type key: const unsigned char \*
 
-    :param u32 key_len:
+    :param key_len:
         the length of the key in bytes
+    :type key_len: u32
 
 .. _`calipso_map_cache_hash.description`:
 
@@ -52,8 +55,9 @@ calipso_cache_init
 
     Initialize the CALIPSO cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`calipso_cache_init.description`:
 
@@ -73,8 +77,9 @@ calipso_cache_invalidate
 
     Invalidates the current CALIPSO cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`calipso_cache_invalidate.description`:
 
@@ -93,14 +98,17 @@ calipso_cache_check
 
     Check the CALIPSO cache for a label mapping
 
-    :param const unsigned char \*key:
+    :param key:
         the buffer to check
+    :type key: const unsigned char \*
 
-    :param u32 key_len:
+    :param key_len:
         buffer length in bytes
+    :type key_len: u32
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attribute struct to use
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`calipso_cache_check.description`:
 
@@ -135,11 +143,13 @@ calipso_cache_add
 
     Add an entry to the CALIPSO cache
 
-    :param const unsigned char \*calipso_ptr:
+    :param calipso_ptr:
         the CALIPSO option
+    :type calipso_ptr: const unsigned char \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the packet's security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`calipso_cache_add.description`:
 
@@ -163,8 +173,9 @@ calipso_doi_search
 
     Searches for a DOI definition
 
-    :param u32 doi:
+    :param doi:
         the DOI to search for
+    :type doi: u32
 
 .. _`calipso_doi_search.description`:
 
@@ -184,11 +195,13 @@ calipso_doi_add
 
     Add a new DOI to the CALIPSO protocol engine
 
-    :param struct calipso_doi \*doi_def:
+    :param doi_def:
         the DOI structure
+    :type doi_def: struct calipso_doi \*
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         NetLabel audit information
+    :type audit_info: struct netlbl_audit \*
 
 .. _`calipso_doi_add.description`:
 
@@ -197,7 +210,7 @@ Description
 
 The caller defines a new DOI for use by the CALIPSO engine and calls this
 function to add it to the list of acceptable domains.  The caller must
-ensure that the mapping table specified in \ ``doi_def``\ ->map meets all of the
+ensure that the mapping table specified in \ ``doi_def->map``\  meets all of the
 requirements of the mapping type (see calipso.h for details).  Returns
 zero on success and non-zero on failure.
 
@@ -210,8 +223,9 @@ calipso_doi_free
 
     Frees a DOI definition
 
-    :param struct calipso_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: struct calipso_doi \*
 
 .. _`calipso_doi_free.description`:
 
@@ -229,8 +243,9 @@ calipso_doi_free_rcu
 
     Frees a DOI definition via the RCU pointer
 
-    :param struct rcu_head \*entry:
+    :param entry:
         the entry's RCU field
+    :type entry: struct rcu_head \*
 
 .. _`calipso_doi_free_rcu.description`:
 
@@ -250,11 +265,13 @@ calipso_doi_remove
 
     Remove an existing DOI from the CALIPSO protocol engine
 
-    :param u32 doi:
+    :param doi:
         the DOI value
+    :type doi: u32
 
-    :param struct netlbl_audit \*audit_info:
+    :param audit_info:
         *undescribed*
+    :type audit_info: struct netlbl_audit \*
 
 .. _`calipso_doi_remove.description`:
 
@@ -274,8 +291,9 @@ calipso_doi_getdef
 
     Returns a reference to a valid DOI definition
 
-    :param u32 doi:
+    :param doi:
         the DOI value
+    :type doi: u32
 
 .. _`calipso_doi_getdef.description`:
 
@@ -295,8 +313,9 @@ calipso_doi_putdef
 
     Releases a reference for the given DOI definition
 
-    :param struct calipso_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: struct calipso_doi \*
 
 .. _`calipso_doi_putdef.description`:
 
@@ -314,14 +333,16 @@ calipso_doi_walk
 
     Iterate through the DOI definitions
 
-    :param u32 \*skip_cnt:
+    :param skip_cnt:
         skip past this number of DOI definitions, updated
+    :type skip_cnt: u32 \*
 
     :param int (\*callback)(struct calipso_doi \*doi_def, void \*arg):
         callback for each DOI definition
 
-    :param void \*cb_arg:
+    :param cb_arg:
         argument for the callback function
+    :type cb_arg: void \*
 
 .. _`calipso_doi_walk.description`:
 
@@ -342,11 +363,13 @@ calipso_validate
 
     Validate a CALIPSO option
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
-    :param const unsigned char \*option:
+    :param option:
         the start of the option
+    :type option: const unsigned char \*
 
 .. _`calipso_validate.description`:
 
@@ -372,17 +395,21 @@ calipso_map_cat_hton
 
     Perform a category mapping from host to network
 
-    :param const struct calipso_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct calipso_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
-    :param unsigned char \*net_cat:
+    :param net_cat:
         the zero'd out category bitmap in network/CALIPSO format
+    :type net_cat: unsigned char \*
 
-    :param u32 net_cat_len:
+    :param net_cat_len:
         the length of the CALIPSO bitmap in bytes
+    :type net_cat_len: u32
 
 .. _`calipso_map_cat_hton.description`:
 
@@ -402,17 +429,21 @@ calipso_map_cat_ntoh
 
     Perform a category mapping from network to host
 
-    :param const struct calipso_doi \*doi_def:
+    :param doi_def:
         the DOI definition
+    :type doi_def: const struct calipso_doi \*
 
-    :param const unsigned char \*net_cat:
+    :param net_cat:
         the category bitmap in network/CALIPSO format
+    :type net_cat: const unsigned char \*
 
-    :param u32 net_cat_len:
+    :param net_cat_len:
         the length of the CALIPSO bitmap in bytes
+    :type net_cat_len: u32
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`calipso_map_cat_ntoh.description`:
 
@@ -432,14 +463,17 @@ calipso_pad_write
 
     Writes pad bytes in TLV format
 
-    :param unsigned char \*buf:
+    :param buf:
         the buffer
+    :type buf: unsigned char \*
 
-    :param unsigned int offset:
+    :param offset:
         offset from start of buffer to write padding
+    :type offset: unsigned int
 
-    :param unsigned int count:
+    :param count:
         number of pad bytes to write
+    :type count: unsigned int
 
 .. _`calipso_pad_write.description`:
 
@@ -458,20 +492,25 @@ calipso_genopt
 
     Generate a CALIPSO option
 
-    :param unsigned char \*buf:
+    :param buf:
         the option buffer
+    :type buf: unsigned char \*
 
-    :param u32 start:
+    :param start:
         offset from which to write
+    :type start: u32
 
-    :param u32 buf_len:
+    :param buf_len:
         the size of opt_buf
+    :type buf_len: u32
 
-    :param const struct calipso_doi \*doi_def:
+    :param doi_def:
         the CALIPSO DOI to use
+    :type doi_def: const struct calipso_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`calipso_genopt.description`:
 
@@ -492,11 +531,13 @@ calipso_opt_update
 
     Replaces socket's hop options with a new set
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
-    :param struct ipv6_opt_hdr \*hop:
+    :param hop:
         new hop options
+    :type hop: struct ipv6_opt_hdr \*
 
 .. _`calipso_opt_update.description`:
 
@@ -515,11 +556,13 @@ calipso_tlv_len
 
     Returns the length of the TLV
 
-    :param struct ipv6_opt_hdr \*opt:
+    :param opt:
         the option header
+    :type opt: struct ipv6_opt_hdr \*
 
-    :param unsigned int offset:
+    :param offset:
         offset of the TLV within the header
+    :type offset: unsigned int
 
 .. _`calipso_tlv_len.description`:
 
@@ -539,14 +582,17 @@ calipso_opt_find
 
     Finds the CALIPSO option in an IPv6 hop options header
 
-    :param struct ipv6_opt_hdr \*hop:
+    :param hop:
         the hop options header
+    :type hop: struct ipv6_opt_hdr \*
 
-    :param unsigned int \*start:
+    :param start:
         on return holds the offset of any leading padding
+    :type start: unsigned int \*
 
-    :param unsigned int \*end:
+    :param end:
         on return holds the offset of the first non-pad TLV after CALIPSO
+    :type end: unsigned int \*
 
 .. _`calipso_opt_find.description`:
 
@@ -576,14 +622,17 @@ calipso_opt_insert
 
     Inserts a CALIPSO option into an IPv6 hop opt hdr
 
-    :param struct ipv6_opt_hdr \*hop:
+    :param hop:
         the original hop options header
+    :type hop: struct ipv6_opt_hdr \*
 
-    :param const struct calipso_doi \*doi_def:
+    :param doi_def:
         the CALIPSO DOI to use
+    :type doi_def: const struct calipso_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the specific security attributes of the socket
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`calipso_opt_insert.description`:
 
@@ -605,11 +654,13 @@ calipso_opt_del
 
     Removes the CALIPSO option from an option header
 
-    :param struct ipv6_opt_hdr \*hop:
+    :param hop:
         the original header
+    :type hop: struct ipv6_opt_hdr \*
 
-    :param struct ipv6_opt_hdr \*\*new:
+    :param new:
         the new header
+    :type new: struct ipv6_opt_hdr \*\*
 
 .. _`calipso_opt_del.description`:
 
@@ -632,11 +683,13 @@ calipso_opt_getattr
 
     Get the security attributes from a memory block
 
-    :param const unsigned char \*calipso:
+    :param calipso:
         the CALIPSO option
+    :type calipso: const unsigned char \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`calipso_opt_getattr.description`:
 
@@ -655,11 +708,13 @@ calipso_sock_getattr
 
     Get the security attributes from a sock
 
-    :param struct sock \*sk:
+    :param sk:
         the sock
+    :type sk: struct sock \*
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`calipso_sock_getattr.description`:
 
@@ -680,14 +735,17 @@ calipso_sock_setattr
 
     Add a CALIPSO option to a socket
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
-    :param const struct calipso_doi \*doi_def:
+    :param doi_def:
         the CALIPSO DOI to use
+    :type doi_def: const struct calipso_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the specific security attributes of the socket
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`calipso_sock_setattr.description`:
 
@@ -709,8 +767,9 @@ calipso_sock_delattr
 
     Delete the CALIPSO option from a socket
 
-    :param struct sock \*sk:
+    :param sk:
         the socket
+    :type sk: struct sock \*
 
 .. _`calipso_sock_delattr.description`:
 
@@ -728,14 +787,17 @@ calipso_req_setattr
 
     Add a CALIPSO option to a connection request socket
 
-    :param struct request_sock \*req:
+    :param req:
         the connection request socket
+    :type req: struct request_sock \*
 
-    :param const struct calipso_doi \*doi_def:
+    :param doi_def:
         the CALIPSO DOI to use
+    :type doi_def: const struct calipso_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the specific security attributes of the socket
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`calipso_req_setattr.description`:
 
@@ -755,8 +817,9 @@ calipso_req_delattr
 
     Delete the CALIPSO option from a request socket
 
-    :param struct request_sock \*req:
+    :param req:
         *undescribed*
+    :type req: struct request_sock \*
 
 .. _`calipso_req_delattr.description`:
 
@@ -774,8 +837,9 @@ calipso_skbuff_optptr
 
     Find the CALIPSO option in the packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: const struct sk_buff \*
 
 .. _`calipso_skbuff_optptr.description`:
 
@@ -794,14 +858,17 @@ calipso_skbuff_setattr
 
     Set the CALIPSO option on a packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
-    :param const struct calipso_doi \*doi_def:
+    :param doi_def:
         the CALIPSO DOI to use
+    :type doi_def: const struct calipso_doi \*
 
-    :param const struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the security attributes
+    :type secattr: const struct netlbl_lsm_secattr \*
 
 .. _`calipso_skbuff_setattr.description`:
 
@@ -820,8 +887,9 @@ calipso_skbuff_delattr
 
     Delete any CALIPSO options from a packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the packet
+    :type skb: struct sk_buff \*
 
 .. _`calipso_skbuff_delattr.description`:
 
@@ -840,8 +908,9 @@ calipso_init
 
     Initialize the CALIPSO module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`calipso_init.description`:
 

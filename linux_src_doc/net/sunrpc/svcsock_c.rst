@@ -10,17 +10,21 @@ svc_addsock
 
     add a listener socket to an RPC service
 
-    :param struct svc_serv \*serv:
+    :param serv:
         pointer to RPC service to which to add a new listener
+    :type serv: struct svc_serv \*
 
-    :param const int fd:
+    :param fd:
         file descriptor of the new listener
+    :type fd: const int
 
-    :param char \*name_return:
+    :param name_return:
         pointer to buffer to fill in with name of listener
+    :type name_return: char \*
 
-    :param const size_t len:
+    :param len:
         size of the buffer
+    :type len: const size_t
 
 .. _`svc_addsock.description`:
 

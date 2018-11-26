@@ -10,14 +10,17 @@ numa_add_memblk
 
     Set node id to memblk
 
-    :param int nid:
+    :param nid:
         NUMA node ID of the new memblk
+    :type nid: int
 
-    :param u64 start:
+    :param start:
         Start address of the new memblk
+    :type start: u64
 
-    :param u64 end:
+    :param end:
         End address of the new memblk
+    :type end: u64
 
 .. _`numa_add_memblk.return`:
 
@@ -33,14 +36,17 @@ setup_node_data
 
 .. c:function:: void setup_node_data(int nid, u64 start_pfn, u64 end_pfn)
 
-    :param int nid:
+    :param nid:
         *undescribed*
+    :type nid: int
 
-    :param u64 start_pfn:
+    :param start_pfn:
         *undescribed*
+    :type start_pfn: u64
 
-    :param u64 end_pfn:
+    :param end_pfn:
         *undescribed*
+    :type end_pfn: u64
 
 .. _`numa_free_distance`:
 
@@ -49,8 +55,9 @@ numa_free_distance
 
 .. c:function:: void numa_free_distance( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`numa_free_distance.description`:
 
@@ -68,14 +75,17 @@ numa_set_distance
 
     Set inter node NUMA distance from node to node.
 
-    :param int from:
+    :param from:
         the 'from' node to set distance
+    :type from: int
 
-    :param int to:
+    :param to:
         the 'to'  node to set distance
+    :type to: int
 
-    :param int distance:
+    :param distance:
         NUMA distance
+    :type distance: int
 
 .. _`numa_set_distance.description`:
 
@@ -95,11 +105,13 @@ or \ ``distance``\  doesn't make sense, the call is ignored.
 
 .. c:function:: int __node_distance(int from, int to)
 
-    :param int from:
+    :param from:
         *undescribed*
+    :type from: int
 
-    :param int to:
+    :param to:
         *undescribed*
+    :type to: int
 
 .. _`dummy_numa_init`:
 
@@ -110,8 +122,9 @@ dummy_numa_init
 
     Fallback dummy NUMA init
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dummy_numa_init.description`:
 
@@ -133,8 +146,9 @@ arm64_numa_init
 
     Initialize NUMA
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`arm64_numa_init.description`:
 

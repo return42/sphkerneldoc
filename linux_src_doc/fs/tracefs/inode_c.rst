@@ -10,25 +10,30 @@ tracefs_create_file
 
     create a file in the tracefs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the file to create.
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         the permission that the file should have.
+    :type mode: umode_t
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is NULL, then the
         file will be created in the root of the tracefs filesystem.
+    :type parent: struct dentry \*
 
-    :param void \*data:
+    :param data:
         a pointer to something that the caller will want to get to later
         on.  The inode.i_private pointer will point to this value on
         the \ :c:func:`open`\  call.
+    :type data: void \*
 
-    :param const struct file_operations \*fops:
+    :param fops:
         a pointer to a struct file_operations that should be used for
         this file.
+    :type fops: const struct file_operations \*
 
 .. _`tracefs_create_file.description`:
 
@@ -57,14 +62,16 @@ tracefs_create_dir
 
     create a directory in the tracefs filesystem
 
-    :param const char \*name:
+    :param name:
         a pointer to a string containing the name of the directory to
         create.
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         a pointer to the parent dentry for this file.  This should be a
         directory dentry if set.  If this parameter is NULL, then the
         directory will be created in the root of the tracefs filesystem.
+    :type parent: struct dentry \*
 
 .. _`tracefs_create_dir.description`:
 
@@ -89,11 +96,13 @@ tracefs_create_instance_dir
 
     create the tracing instances directory
 
-    :param const char \*name:
+    :param name:
         The name of the instances directory to create
+    :type name: const char \*
 
-    :param struct dentry \*parent:
+    :param parent:
         The parent directory that the instances directory will exist
+    :type parent: struct dentry \*
 
     :param int (\*mkdir)(const char \*name):
         The function to call when a mkdir is performed.
@@ -125,9 +134,10 @@ tracefs_remove
 
     removes a file or directory from the tracefs filesystem
 
-    :param struct dentry \*dentry:
+    :param dentry:
         a pointer to a the dentry of the file or directory to be
         removed.
+    :type dentry: struct dentry \*
 
 .. _`tracefs_remove.description`:
 
@@ -147,8 +157,9 @@ tracefs_remove_recursive
 
     recursively removes a directory
 
-    :param struct dentry \*dentry:
+    :param dentry:
         a pointer to a the dentry of the directory to be removed.
+    :type dentry: struct dentry \*
 
 .. _`tracefs_remove_recursive.description`:
 
@@ -168,8 +179,9 @@ tracefs_initialized
 
     Tells whether tracefs has been registered
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

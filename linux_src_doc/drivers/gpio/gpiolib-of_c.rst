@@ -10,17 +10,21 @@ of_get_named_gpiod_flags
 
     Get a GPIO descriptor and flags for GPIO API
 
-    :param struct device_node \*np:
+    :param np:
         device node to get GPIO from
+    :type np: struct device_node \*
 
-    :param const char \*propname:
+    :param propname:
         property name containing gpio specifier(s)
+    :type propname: const char \*
 
-    :param int index:
+    :param index:
         index of the GPIO
+    :type index: int
 
-    :param enum of_gpio_flags \*flags:
+    :param flags:
         a flags pointer to fill in
+    :type flags: enum of_gpio_flags \*
 
 .. _`of_get_named_gpiod_flags.description`:
 
@@ -40,24 +44,30 @@ of_parse_own_gpio
 
     Get a GPIO hog descriptor, names and flags for GPIO API
 
-    :param struct device_node \*np:
+    :param np:
         device node to get GPIO from
+    :type np: struct device_node \*
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         GPIO chip whose hog is parsed
+    :type chip: struct gpio_chip \*
 
-    :param unsigned int idx:
+    :param idx:
         Index of the GPIO to parse
+    :type idx: unsigned int
 
-    :param const char \*\*name:
+    :param name:
         GPIO line name
+    :type name: const char \*\*
 
-    :param enum gpio_lookup_flags \*lflags:
+    :param lflags:
         gpio_lookup_flags - returned from \ :c:func:`of_find_gpio`\  or
         \ :c:func:`of_parse_own_gpio`\ 
+    :type lflags: enum gpio_lookup_flags \*
 
-    :param enum gpiod_flags \*dflags:
+    :param dflags:
         gpiod_flags - optional GPIO initialization flags
+    :type dflags: enum gpiod_flags \*
 
 .. _`of_parse_own_gpio.description`:
 
@@ -76,8 +86,9 @@ of_gpiochip_scan_gpios
 
     Scan gpio-controller for gpio definitions
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         gpio chip to act on
+    :type chip: struct gpio_chip \*
 
 .. _`of_gpiochip_scan_gpios.description`:
 
@@ -97,14 +108,17 @@ of_gpio_simple_xlate
 
     translate gpiospec to the GPIO number and flags
 
-    :param struct gpio_chip \*gc:
+    :param gc:
         pointer to the gpio_chip structure
+    :type gc: struct gpio_chip \*
 
-    :param const struct of_phandle_args \*gpiospec:
+    :param gpiospec:
         GPIO specifier as found in the device tree
+    :type gpiospec: const struct of_phandle_args \*
 
-    :param u32 \*flags:
+    :param flags:
         a flags pointer to fill in
+    :type flags: u32 \*
 
 .. _`of_gpio_simple_xlate.description`:
 
@@ -124,14 +138,17 @@ of_mm_gpiochip_add_data
 
     Add memory mapped GPIO chip (bank)
 
-    :param struct device_node \*np:
+    :param np:
         device node of the GPIO chip
+    :type np: struct device_node \*
 
-    :param struct of_mm_gpio_chip \*mm_gc:
+    :param mm_gc:
         pointer to the of_mm_gpio_chip allocated structure
+    :type mm_gc: struct of_mm_gpio_chip \*
 
-    :param void \*data:
+    :param data:
         driver data to store in the struct gpio_chip
+    :type data: void \*
 
 .. _`of_mm_gpiochip_add_data.to-use-this-function-you-should-allocate-and-fill-mm_gc-with`:
 
@@ -160,8 +177,9 @@ of_mm_gpiochip_remove
 
     Remove memory mapped GPIO chip (bank)
 
-    :param struct of_mm_gpio_chip \*mm_gc:
+    :param mm_gc:
         pointer to the of_mm_gpio_chip allocated structure
+    :type mm_gc: struct of_mm_gpio_chip \*
 
 .. This file was automatic generated / don't edit.
 

@@ -8,11 +8,13 @@ rockchip_drm_wait_vact_end
 
 .. c:function:: int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout)
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC to enable line flag
+    :type crtc: struct drm_crtc \*
 
-    :param unsigned int mstimeout:
+    :param mstimeout:
         millisecond for timeout
+    :type mstimeout: unsigned int
 
 .. _`rockchip_drm_wait_vact_end.description`:
 

@@ -8,8 +8,9 @@ qla2x00_lock_nvram_access
 
 .. c:function:: void qla2x00_lock_nvram_access(struct qla_hw_data *ha)
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
 .. _`qla2x00_unlock_nvram_access`:
 
@@ -18,8 +19,9 @@ qla2x00_unlock_nvram_access
 
 .. c:function:: void qla2x00_unlock_nvram_access(struct qla_hw_data *ha)
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
 .. _`qla2x00_nv_write`:
 
@@ -30,11 +32,13 @@ qla2x00_nv_write
 
     Prepare for NVRAM read/write operation.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint16_t data:
+    :param data:
         Serial interface selector
+    :type data: uint16_t
 
 .. _`qla2x00_nvram_request`:
 
@@ -45,11 +49,13 @@ qla2x00_nvram_request
 
     Sends read command to NVRAM and gets data from NVRAM.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint32_t nv_cmd:
+    :param nv_cmd:
         NVRAM command
+    :type nv_cmd: uint32_t
 
 .. _`qla2x00_nvram_request.bit-definitions-for-nvram-command`:
 
@@ -73,11 +79,13 @@ qla2x00_get_nvram_word
 
     Calculates word position in NVRAM and calls the request routine to get the word from NVRAM.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint32_t addr:
+    :param addr:
         Address in NVRAM to read
+    :type addr: uint32_t
 
 .. _`qla2x00_get_nvram_word.description`:
 
@@ -95,8 +103,9 @@ qla2x00_nv_deselect
 
     Deselect NVRAM operations.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
 .. _`qla2x00_write_nvram_word`:
 
@@ -107,14 +116,17 @@ qla2x00_write_nvram_word
 
     Write NVRAM data.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint32_t addr:
+    :param addr:
         Address in NVRAM to write
+    :type addr: uint32_t
 
-    :param uint16_t data:
+    :param data:
         word to program
+    :type data: uint16_t
 
 .. _`qla2x00_clear_nvram_protection`:
 
@@ -123,8 +135,9 @@ qla2x00_clear_nvram_protection
 
 .. c:function:: int qla2x00_clear_nvram_protection(struct qla_hw_data *ha)
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
 .. _`qla2x00_flash_enable`:
 
@@ -135,8 +148,9 @@ qla2x00_flash_enable
 
     Setup flash for reading and writing.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
 .. _`qla2x00_flash_disable`:
 
@@ -147,8 +161,9 @@ qla2x00_flash_disable
 
     Disable flash and allow RISC to run.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
 .. _`qla2x00_read_flash_byte`:
 
@@ -159,11 +174,13 @@ qla2x00_read_flash_byte
 
     Reads a byte from flash
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint32_t addr:
+    :param addr:
         Address in flash to read
+    :type addr: uint32_t
 
 .. _`qla2x00_read_flash_byte.description`:
 
@@ -183,14 +200,17 @@ qla2x00_write_flash_byte
 
     Write a byte to flash
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint32_t addr:
+    :param addr:
         Address in flash to write
+    :type addr: uint32_t
 
-    :param uint8_t data:
+    :param data:
         Data to write
+    :type data: uint8_t
 
 .. _`qla2x00_poll_flash`:
 
@@ -201,20 +221,25 @@ qla2x00_poll_flash
 
     Polls flash for completion.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint32_t addr:
+    :param addr:
         Address in flash to poll
+    :type addr: uint32_t
 
-    :param uint8_t poll_data:
+    :param poll_data:
         Data to be polled
+    :type poll_data: uint8_t
 
-    :param uint8_t man_id:
+    :param man_id:
         Flash manufacturer ID
+    :type man_id: uint8_t
 
-    :param uint8_t flash_id:
+    :param flash_id:
         Flash ID
+    :type flash_id: uint8_t
 
 .. _`qla2x00_poll_flash.description`:
 
@@ -237,20 +262,25 @@ qla2x00_program_flash_address
 
     Programs a flash address
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint32_t addr:
+    :param addr:
         Address in flash to program
+    :type addr: uint32_t
 
-    :param uint8_t data:
+    :param data:
         Data to be written in flash
+    :type data: uint8_t
 
-    :param uint8_t man_id:
+    :param man_id:
         Flash manufacturer ID
+    :type man_id: uint8_t
 
-    :param uint8_t flash_id:
+    :param flash_id:
         Flash ID
+    :type flash_id: uint8_t
 
 .. _`qla2x00_program_flash_address.description`:
 
@@ -268,14 +298,17 @@ qla2x00_erase_flash
 
     Erase the flash.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint8_t man_id:
+    :param man_id:
         Flash manufacturer ID
+    :type man_id: uint8_t
 
-    :param uint8_t flash_id:
+    :param flash_id:
         Flash ID
+    :type flash_id: uint8_t
 
 .. _`qla2x00_erase_flash.description`:
 
@@ -293,20 +326,25 @@ qla2x00_erase_flash_sector
 
     Erase a flash sector.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint32_t addr:
+    :param addr:
         Flash sector to erase
+    :type addr: uint32_t
 
-    :param uint32_t sec_mask:
+    :param sec_mask:
         Sector address mask
+    :type sec_mask: uint32_t
 
-    :param uint8_t man_id:
+    :param man_id:
         Flash manufacturer ID
+    :type man_id: uint8_t
 
-    :param uint8_t flash_id:
+    :param flash_id:
         Flash ID
+    :type flash_id: uint8_t
 
 .. _`qla2x00_erase_flash_sector.description`:
 
@@ -324,14 +362,17 @@ qla2x00_get_flash_manufacturer
 
     Read manufacturer ID from flash chip.
 
-    :param struct qla_hw_data \*ha:
-        *undescribed*
+    :param ha:
+        host adapter
+    :type ha: struct qla_hw_data \*
 
-    :param uint8_t \*man_id:
+    :param man_id:
         Flash manufacturer ID
+    :type man_id: uint8_t \*
 
-    :param uint8_t \*flash_id:
+    :param flash_id:
         Flash ID
+    :type flash_id: uint8_t \*
 
 .. _`qla2x00_get_fcode_version`:
 
@@ -342,11 +383,13 @@ qla2x00_get_fcode_version
 
     Determine an FCODE image's version.
 
-    :param struct qla_hw_data \*ha:
+    :param ha:
         HA context
+    :type ha: struct qla_hw_data \*
 
-    :param uint32_t pcids:
+    :param pcids:
         Pointer to the FCODE PCI data structure
+    :type pcids: uint32_t
 
 .. _`qla2x00_get_fcode_version.description`:
 

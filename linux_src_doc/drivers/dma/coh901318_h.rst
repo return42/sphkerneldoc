@@ -58,17 +58,21 @@ coh901318_pool_create
 
     Creates an dma pool for lli:s
 
-    :param struct coh901318_pool \*pool:
+    :param pool:
         pool handle
+    :type pool: struct coh901318_pool \*
 
-    :param struct device \*dev:
+    :param dev:
         dma device
+    :type dev: struct device \*
 
-    :param size_t lli_nbr:
+    :param lli_nbr:
         number of lli:s in the pool
+    :type lli_nbr: size_t
 
-    :param size_t align:
+    :param align:
         *undescribed*
+    :type align: size_t
 
 .. _`coh901318_pool_destroy`:
 
@@ -79,9 +83,10 @@ coh901318_pool_destroy
 
     Destroys the dma pool
 
-    :param struct coh901318_pool \*pool:
+    :param pool:
         pool handle
         returns 0 on success otherwise none zero
+    :type pool: struct coh901318_pool \*
 
 .. _`coh901318_lli_alloc`:
 
@@ -92,11 +97,13 @@ coh901318_lli_alloc
 
     Allocates a linked list
 
-    :param struct coh901318_pool \*pool:
+    :param pool:
         pool handle
+    :type pool: struct coh901318_pool \*
 
-    :param unsigned int len:
+    :param len:
         length to list
+    :type len: unsigned int
 
 .. _`coh901318_lli_alloc.return`:
 
@@ -114,11 +121,13 @@ coh901318_lli_free
 
     Returns the linked list items to the pool
 
-    :param struct coh901318_pool \*pool:
+    :param pool:
         pool handle
+    :type pool: struct coh901318_pool \*
 
-    :param struct coh901318_lli \*\*lli:
+    :param lli:
         reference to lli pointer to be freed
+    :type lli: struct coh901318_lli \*\*
 
 .. _`coh901318_lli_fill_memcpy`:
 
@@ -129,27 +138,34 @@ coh901318_lli_fill_memcpy
 
     Prepares the lli:s for dma memcpy
 
-    :param struct coh901318_pool \*pool:
+    :param pool:
         pool handle
+    :type pool: struct coh901318_pool \*
 
-    :param struct coh901318_lli \*lli:
+    :param lli:
         allocated lli
+    :type lli: struct coh901318_lli \*
 
-    :param dma_addr_t src:
+    :param src:
         src address
+    :type src: dma_addr_t
 
-    :param unsigned int size:
+    :param size:
         transfer size
+    :type size: unsigned int
 
-    :param dma_addr_t dst:
+    :param dst:
         destination address
+    :type dst: dma_addr_t
 
-    :param u32 ctrl_chained:
+    :param ctrl_chained:
         ctrl for chained lli
+    :type ctrl_chained: u32
 
-    :param u32 ctrl_last:
+    :param ctrl_last:
         ctrl for the last lli
         returns number of CPU interrupts for the lli, negative on error.
+    :type ctrl_last: u32
 
 .. _`coh901318_lli_fill_single`:
 
@@ -160,30 +176,38 @@ coh901318_lli_fill_single
 
     Prepares the lli:s for dma single transfer
 
-    :param struct coh901318_pool \*pool:
+    :param pool:
         pool handle
+    :type pool: struct coh901318_pool \*
 
-    :param struct coh901318_lli \*lli:
+    :param lli:
         allocated lli
+    :type lli: struct coh901318_lli \*
 
-    :param dma_addr_t buf:
+    :param buf:
         transfer buffer
+    :type buf: dma_addr_t
 
-    :param unsigned int size:
+    :param size:
         transfer size
+    :type size: unsigned int
 
-    :param dma_addr_t dev_addr:
+    :param dev_addr:
         address of periphal
+    :type dev_addr: dma_addr_t
 
-    :param u32 ctrl_chained:
+    :param ctrl_chained:
         ctrl for chained lli
+    :type ctrl_chained: u32
 
-    :param u32 ctrl_last:
+    :param ctrl_last:
         ctrl for the last lli
+    :type ctrl_last: u32
 
-    :param enum dma_transfer_direction dir:
+    :param dir:
         direction of transfer (to or from device)
         returns number of CPU interrupts for the lli, negative on error.
+    :type dir: enum dma_transfer_direction
 
 .. _`coh901318_lli_fill_sg`:
 
@@ -194,36 +218,46 @@ coh901318_lli_fill_sg
 
     Prepares the lli:s for dma scatter list transfer
 
-    :param struct coh901318_pool \*pool:
+    :param pool:
         pool handle
+    :type pool: struct coh901318_pool \*
 
-    :param struct coh901318_lli \*lli:
+    :param lli:
         allocated lli
+    :type lli: struct coh901318_lli \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatter gather list
+    :type sg: struct scatterlist \*
 
-    :param unsigned int nents:
+    :param nents:
         number of entries in sg
+    :type nents: unsigned int
 
-    :param dma_addr_t dev_addr:
+    :param dev_addr:
         address of periphal
+    :type dev_addr: dma_addr_t
 
-    :param u32 ctrl_chained:
+    :param ctrl_chained:
         ctrl for chained lli
+    :type ctrl_chained: u32
 
-    :param u32 ctrl:
+    :param ctrl:
         ctrl of middle lli
+    :type ctrl: u32
 
-    :param u32 ctrl_last:
+    :param ctrl_last:
         ctrl for the last lli
+    :type ctrl_last: u32
 
-    :param enum dma_transfer_direction dir:
+    :param dir:
         direction of transfer (to or from device)
+    :type dir: enum dma_transfer_direction
 
-    :param u32 ctrl_irq_mask:
+    :param ctrl_irq_mask:
         ctrl mask for CPU interrupt
         returns number of CPU interrupts for the lli, negative on error.
+    :type ctrl_irq_mask: u32
 
 .. This file was automatic generated / don't edit.
 

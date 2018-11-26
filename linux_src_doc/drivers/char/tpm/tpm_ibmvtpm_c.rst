@@ -10,14 +10,17 @@ tpm_ibmvtpm_recv
 
     Receive data after send
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         tpm chip struct
+    :type chip: struct tpm_chip \*
 
-    :param u8 \*buf:
+    :param buf:
         buffer to read
+    :type buf: u8 \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`tpm_ibmvtpm_recv.return`:
 
@@ -35,14 +38,17 @@ tpm_ibmvtpm_send
 
     Send tpm request
 
-    :param struct tpm_chip \*chip:
+    :param chip:
         tpm chip struct
+    :type chip: struct tpm_chip \*
 
-    :param u8 \*buf:
+    :param buf:
         buffer contains data to send
+    :type buf: u8 \*
 
-    :param size_t count:
+    :param count:
         size of buffer
+    :type count: size_t
 
 .. _`tpm_ibmvtpm_send.return`:
 
@@ -60,8 +66,9 @@ ibmvtpm_crq_get_rtce_size
 
     Send a CRQ request to get rtce size
 
-    :param struct ibmvtpm_dev \*ibmvtpm:
+    :param ibmvtpm:
         vtpm device struct
+    :type ibmvtpm: struct ibmvtpm_dev \*
 
 .. _`ibmvtpm_crq_get_rtce_size.return`:
 
@@ -80,8 +87,9 @@ ibmvtpm_crq_get_version
 
     Send a CRQ request to get vtpm version - Note that this is vtpm version and not tpm version
 
-    :param struct ibmvtpm_dev \*ibmvtpm:
+    :param ibmvtpm:
         vtpm device struct
+    :type ibmvtpm: struct ibmvtpm_dev \*
 
 .. _`ibmvtpm_crq_get_version.return`:
 
@@ -100,8 +108,9 @@ ibmvtpm_crq_send_init_complete
 
     Send a CRQ initialize complete message
 
-    :param struct ibmvtpm_dev \*ibmvtpm:
+    :param ibmvtpm:
         vtpm device struct
+    :type ibmvtpm: struct ibmvtpm_dev \*
 
 .. _`ibmvtpm_crq_send_init_complete.return`:
 
@@ -120,8 +129,9 @@ ibmvtpm_crq_send_init
 
     Send a CRQ initialize message
 
-    :param struct ibmvtpm_dev \*ibmvtpm:
+    :param ibmvtpm:
         vtpm device struct
+    :type ibmvtpm: struct ibmvtpm_dev \*
 
 .. _`ibmvtpm_crq_send_init.return`:
 
@@ -140,8 +150,9 @@ tpm_ibmvtpm_remove
 
     ibm vtpm remove entry point
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         vio device struct
+    :type vdev: struct vio_dev \*
 
 .. _`tpm_ibmvtpm_remove.return`:
 
@@ -159,8 +170,9 @@ tpm_ibmvtpm_get_desired_dma
 
     Get DMA size needed by this driver
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         vio device struct
+    :type vdev: struct vio_dev \*
 
 .. _`tpm_ibmvtpm_get_desired_dma.return`:
 
@@ -178,8 +190,9 @@ tpm_ibmvtpm_suspend
 
     Suspend
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
 .. _`tpm_ibmvtpm_suspend.return`:
 
@@ -197,8 +210,9 @@ ibmvtpm_reset_crq
 
     Reset CRQ
 
-    :param struct ibmvtpm_dev \*ibmvtpm:
+    :param ibmvtpm:
         ibm vtpm struct
+    :type ibmvtpm: struct ibmvtpm_dev \*
 
 .. _`ibmvtpm_reset_crq.return`:
 
@@ -217,8 +231,9 @@ tpm_ibmvtpm_resume
 
     Resume from suspend
 
-    :param struct device \*dev:
+    :param dev:
         device struct
+    :type dev: struct device \*
 
 .. _`tpm_ibmvtpm_resume.return`:
 
@@ -236,8 +251,9 @@ ibmvtpm_crq_get_next
 
     Get next responded crq
 
-    :param struct ibmvtpm_dev \*ibmvtpm:
+    :param ibmvtpm:
         vtpm device struct
+    :type ibmvtpm: struct ibmvtpm_dev \*
 
 .. _`ibmvtpm_crq_get_next.return`:
 
@@ -255,11 +271,13 @@ ibmvtpm_crq_process
 
     Process responded crq
 
-    :param struct ibmvtpm_crq \*crq:
+    :param crq:
         crq to be processed
+    :type crq: struct ibmvtpm_crq \*
 
-    :param struct ibmvtpm_dev \*ibmvtpm:
+    :param ibmvtpm:
         vtpm device struct
+    :type ibmvtpm: struct ibmvtpm_dev \*
 
 .. _`ibmvtpm_interrupt`:
 
@@ -270,11 +288,13 @@ ibmvtpm_interrupt
 
     Interrupt handler
 
-    :param int irq:
+    :param irq:
         irq number to handle
+    :type irq: int
 
-    :param void \*vtpm_instance:
+    :param vtpm_instance:
         vtpm that received interrupt
+    :type vtpm_instance: void \*
 
 .. _`ibmvtpm_interrupt.return`:
 
@@ -292,11 +312,13 @@ tpm_ibmvtpm_probe
 
     ibm vtpm initialize entry point
 
-    :param struct vio_dev \*vio_dev:
+    :param vio_dev:
         vio device struct
+    :type vio_dev: struct vio_dev \*
 
-    :param const struct vio_device_id \*id:
+    :param id:
         vio device id struct
+    :type id: const struct vio_device_id \*
 
 .. _`tpm_ibmvtpm_probe.return`:
 
@@ -315,8 +337,9 @@ ibmvtpm_module_init
 
     Initialize ibm vtpm module.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ibmvtpm_module_init.return`:
 
@@ -336,8 +359,9 @@ ibmvtpm_module_exit
 
     Tear down ibm vtpm module.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

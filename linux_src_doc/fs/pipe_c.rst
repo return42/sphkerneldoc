@@ -10,11 +10,13 @@ generic_pipe_buf_steal
 
     attempt to take ownership of a \ :c:type:`struct pipe_buffer <pipe_buffer>`\ 
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         the pipe that the buffer belongs to
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct pipe_buffer \*buf:
+    :param buf:
         the buffer to attempt to steal
+    :type buf: struct pipe_buffer \*
 
 .. _`generic_pipe_buf_steal.description`:
 
@@ -36,11 +38,13 @@ generic_pipe_buf_get
 
     get a reference to a \ :c:type:`struct pipe_buffer <pipe_buffer>`\ 
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         the pipe that the buffer belongs to
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct pipe_buffer \*buf:
+    :param buf:
         the buffer to get a reference to
+    :type buf: struct pipe_buffer \*
 
 .. _`generic_pipe_buf_get.description`:
 
@@ -60,11 +64,13 @@ generic_pipe_buf_confirm
 
     verify contents of the pipe buffer
 
-    :param struct pipe_inode_info \*info:
+    :param info:
         the pipe that the buffer belongs to
+    :type info: struct pipe_inode_info \*
 
-    :param struct pipe_buffer \*buf:
+    :param buf:
         the buffer to confirm
+    :type buf: struct pipe_buffer \*
 
 .. _`generic_pipe_buf_confirm.description`:
 
@@ -83,11 +89,13 @@ generic_pipe_buf_release
 
     put a reference to a \ :c:type:`struct pipe_buffer <pipe_buffer>`\ 
 
-    :param struct pipe_inode_info \*pipe:
+    :param pipe:
         the pipe that the buffer belongs to
+    :type pipe: struct pipe_inode_info \*
 
-    :param struct pipe_buffer \*buf:
+    :param buf:
         the buffer to put a reference to
+    :type buf: struct pipe_buffer \*
 
 .. _`generic_pipe_buf_release.description`:
 

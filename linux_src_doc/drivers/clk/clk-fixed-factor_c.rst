@@ -10,8 +10,9 @@ of_fixed_factor_clk_setup
 
     Setup function for simple fixed factor clock
 
-    :param struct device_node \*node:
+    :param node:
         *undescribed*
+    :type node: struct device_node \*
 
 .. This file was automatic generated / don't edit.
 

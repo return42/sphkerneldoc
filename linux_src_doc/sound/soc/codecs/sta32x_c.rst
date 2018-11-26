@@ -10,17 +10,21 @@ sta32x_set_dai_sysclk
 
     configure MCLK
 
-    :param struct snd_soc_dai \*codec_dai:
+    :param codec_dai:
         the codec DAI
+    :type codec_dai: struct snd_soc_dai \*
 
-    :param int clk_id:
+    :param clk_id:
         the clock ID (ignored)
+    :type clk_id: int
 
-    :param unsigned int freq:
+    :param freq:
         the MCLK input frequency
+    :type freq: unsigned int
 
-    :param int dir:
+    :param dir:
         the clock direction (ignored)
+    :type dir: int
 
 .. _`sta32x_set_dai_sysclk.description`:
 
@@ -48,11 +52,13 @@ sta32x_set_dai_fmt
 
     configure the codec for the selected audio format
 
-    :param struct snd_soc_dai \*codec_dai:
+    :param codec_dai:
         the codec DAI
+    :type codec_dai: struct snd_soc_dai \*
 
-    :param unsigned int fmt:
+    :param fmt:
         a SND_SOC_DAIFMT_x value indicating the data format
+    :type fmt: unsigned int
 
 .. _`sta32x_set_dai_fmt.description`:
 
@@ -71,14 +77,17 @@ sta32x_hw_params
 
     program the STA32X with the given hardware parameters.
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the audio stream
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         the hardware parameters to set
+    :type params: struct snd_pcm_hw_params \*
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         the SOC DAI (ignored)
+    :type dai: struct snd_soc_dai \*
 
 .. _`sta32x_hw_params.description`:
 
@@ -97,11 +106,13 @@ sta32x_set_bias_level
 
     DAPM callback
 
-    :param struct snd_soc_component \*component:
+    :param component:
         the component device
+    :type component: struct snd_soc_component \*
 
-    :param enum snd_soc_bias_level level:
+    :param level:
         DAPM power level
+    :type level: enum snd_soc_bias_level
 
 .. _`sta32x_set_bias_level.description`:
 

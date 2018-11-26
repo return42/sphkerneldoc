@@ -10,23 +10,29 @@ bnx2x_set_mac_one
 
     configure a single MAC address
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param u8 \*mac:
+    :param mac:
         MAC to configure
+    :type mac: u8 \*
 
-    :param struct bnx2x_vlan_mac_obj \*obj:
+    :param obj:
         MAC object handle
+    :type obj: struct bnx2x_vlan_mac_obj \*
 
-    :param bool set:
+    :param set:
         if 'true' add a new MAC, otherwise - delete
+    :type set: bool
 
-    :param int mac_type:
+    :param mac_type:
         the type of the MAC to configure (e.g. ETH, UC list)
+    :type mac_type: int
 
-    :param unsigned long \*ramrod_flags:
+    :param ramrod_flags:
         RAMROD_XXX flags (e.g. RAMROD_CONT, RAMROD_COMP_WAIT)
+    :type ramrod_flags: unsigned long \*
 
 .. _`bnx2x_set_mac_one.description`:
 
@@ -50,17 +56,21 @@ bnx2x_del_all_macs
 
     delete all MACs configured for the specific MAC object
 
-    :param struct bnx2x \*bp:
+    :param bp:
         driver handle
+    :type bp: struct bnx2x \*
 
-    :param struct bnx2x_vlan_mac_obj \*mac_obj:
+    :param mac_obj:
         MAC object handle
+    :type mac_obj: struct bnx2x_vlan_mac_obj \*
 
-    :param int mac_type:
+    :param mac_type:
         type of the MACs to clear (BNX2X_XXX_MAC)
+    :type mac_type: int
 
-    :param bool wait_for_comp:
+    :param wait_for_comp:
         if 'true' block until completion
+    :type wait_for_comp: bool
 
 .. _`bnx2x_del_all_macs.description`:
 

@@ -18,15 +18,13 @@ Definition
 .. code-block:: c
 
     struct dma_buf_ops {
-        int (*attach)(struct dma_buf *, struct device *, struct dma_buf_attachment *);
+        int (*attach)(struct dma_buf *, struct dma_buf_attachment *);
         void (*detach)(struct dma_buf *, struct dma_buf_attachment *);
         struct sg_table * (*map_dma_buf)(struct dma_buf_attachment *, enum dma_data_direction);
         void (*unmap_dma_buf)(struct dma_buf_attachment *,struct sg_table *, enum dma_data_direction);
         void (*release)(struct dma_buf *);
         int (*begin_cpu_access)(struct dma_buf *, enum dma_data_direction);
         int (*end_cpu_access)(struct dma_buf *, enum dma_data_direction);
-        void *(*map_atomic)(struct dma_buf *, unsigned long);
-        void (*unmap_atomic)(struct dma_buf *, unsigned long, void *);
         void *(*map)(struct dma_buf *, unsigned long);
         void (*unmap)(struct dma_buf *, unsigned long, void *);
         int (*mmap)(struct dma_buf *, struct vm_area_struct *vma);
@@ -42,11 +40,11 @@ Members
 attach
 
     This is called from \ :c:func:`dma_buf_attach`\  to make sure that a given
-    \ :c:type:`struct device <device>`\  can access the provided \ :c:type:`struct dma_buf <dma_buf>`\ . Exporters which support
-    buffer objects in special locations like VRAM or device-specific
-    carveout areas should check whether the buffer could be move to
-    system memory (or directly accessed by the provided device), and
-    otherwise need to fail the attach operation.
+    \ :c:type:`dma_buf_attachment.dev <dma_buf_attachment>`\  can access the provided \ :c:type:`struct dma_buf <dma_buf>`\ . Exporters
+    which support buffer objects in special locations like VRAM or
+    device-specific carveout areas should check whether the buffer could
+    be move to system memory (or directly accessed by the provided
+    device), and otherwise need to fail the attach operation.
 
     The exporter should also in general check whether the current
     allocation fullfills the DMA constraints of the new device. If this
@@ -167,17 +165,8 @@ end_cpu_access
     -ERESTARTSYS or -EINTR when the call has been interrupted and needs
     to be restarted.
 
-map_atomic
-    maps a page from the buffer into kernel address
-    space, users may not block until the subsequent unmap call.
-    This callback must not sleep.
-
-unmap_atomic
-    [optional] unmaps a atomically mapped page from the buffer.
-    This Callback must not sleep.
-
 map
-    maps a page from the buffer into kernel address space.
+    [optional] maps a page from the buffer into kernel address space.
 
 unmap
     [optional] unmaps a page from the buffer.
@@ -448,8 +437,9 @@ DEFINE_DMA_BUF_EXPORT_INFO
 
     helper macro for exporters
 
-    :param  name:
+    :param name:
         export-info name
+    :type name: 
 
 .. _`define_dma_buf_export_info.description`:
 
@@ -468,8 +458,9 @@ get_dma_buf
 
     convenience wrapper for get_file.
 
-    :param struct dma_buf \*dmabuf:
+    :param dmabuf:
         [in]    pointer to dma_buf
+    :type dmabuf: struct dma_buf \*
 
 .. _`get_dma_buf.description`:
 

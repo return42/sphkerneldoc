@@ -10,11 +10,13 @@ jmicron_pre_reset
 
     check for 40/80 pin
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`jmicron_pre_reset.description`:
 
@@ -37,11 +39,13 @@ jmicron_init_one
 
     Register Jmicron ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct pci_device_id \*
 
 .. _`jmicron_init_one.description`:
 

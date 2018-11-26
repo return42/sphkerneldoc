@@ -10,17 +10,21 @@ batadv_send_skb_via_tt
 
     send an skb via TT lookup
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the payload to send
+    :type skb: struct sk_buff \*
 
-    :param u8 \*dst_hint:
+    :param dst_hint:
         can be used to override the destination contained in the skb
+    :type dst_hint: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the vid to be used to search the translation table
+    :type vid: unsigned short
 
 .. _`batadv_send_skb_via_tt.description`:
 
@@ -47,20 +51,25 @@ batadv_send_skb_via_tt_4addr
 
     send an skb via TT lookup
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the payload to send
+    :type skb: struct sk_buff \*
 
-    :param int packet_subtype:
+    :param packet_subtype:
         the unicast 4addr packet subtype to use
+    :type packet_subtype: int
 
-    :param u8 \*dst_hint:
+    :param dst_hint:
         can be used to override the destination contained in the skb
+    :type dst_hint: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the vid to be used to search the translation table
+    :type vid: unsigned short
 
 .. _`batadv_send_skb_via_tt_4addr.description`:
 

@@ -10,11 +10,13 @@ v9fs_parse_options
 
     parse mount options into session structure
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         existing v9fs session information
+    :type v9ses: struct v9fs_session_info \*
 
-    :param char \*opts:
+    :param opts:
         *undescribed*
+    :type opts: char \*
 
 .. _`v9fs_parse_options.description`:
 
@@ -32,14 +34,17 @@ v9fs_session_init
 
     initialize session
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         session information structure
+    :type v9ses: struct v9fs_session_info \*
 
-    :param const char \*dev_name:
+    :param dev_name:
         device being mounted
+    :type dev_name: const char \*
 
-    :param char \*data:
+    :param data:
         options
+    :type data: char \*
 
 .. _`v9fs_session_close`:
 
@@ -50,8 +55,9 @@ v9fs_session_close
 
     shutdown a session
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         session information structure
+    :type v9ses: struct v9fs_session_info \*
 
 .. _`v9fs_session_cancel`:
 
@@ -62,8 +68,9 @@ v9fs_session_cancel
 
     terminate a session
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         session to terminate
+    :type v9ses: struct v9fs_session_info \*
 
 .. _`v9fs_session_cancel.description`:
 
@@ -81,8 +88,9 @@ v9fs_session_begin_cancel
 
     Begin terminate of a session
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         session to terminate
+    :type v9ses: struct v9fs_session_info \*
 
 .. _`v9fs_session_begin_cancel.description`:
 
@@ -100,14 +108,17 @@ caches_show
 
     list caches associated with a session
 
-    :param struct kobject \*kobj:
+    :param kobj:
         *undescribed*
+    :type kobj: struct kobject \*
 
-    :param struct kobj_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct kobj_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`caches_show.description`:
 
@@ -125,8 +136,9 @@ v9fs_sysfs_init
 
     Initialize the v9fs sysfs interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`v9fs_sysfs_cleanup`:
 
@@ -137,8 +149,9 @@ v9fs_sysfs_cleanup
 
     Unregister the v9fs sysfs interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`v9fs_init_inode_cache`:
 
@@ -149,8 +162,9 @@ v9fs_init_inode_cache
 
     initialize a cache for 9P Returns 0 on success.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`v9fs_destroy_inode_cache`:
 
@@ -161,8 +175,9 @@ v9fs_destroy_inode_cache
 
     destroy the cache of 9P inode
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`init_v9fs`:
 
@@ -173,8 +188,9 @@ init_v9fs
 
     Initialize module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`exit_v9fs`:
 
@@ -185,8 +201,9 @@ exit_v9fs
 
     shutdown module
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

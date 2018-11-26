@@ -10,8 +10,9 @@ get_tod_clock_monotonic
 
     returns current time in clock rate units
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`get_tod_clock_monotonic.description`:
 
@@ -33,8 +34,9 @@ tod_to_ns
 
     convert a TOD format value to nanoseconds
 
-    :param unsigned long long todval:
+    :param todval:
         to be converted TOD format value
+    :type todval: unsigned long long
 
 .. _`tod_to_ns.return`:
 
@@ -70,11 +72,13 @@ tod_after
 
     compare two 64 bit TOD values
 
-    :param unsigned long long a:
+    :param a:
         first 64 bit TOD timestamp
+    :type a: unsigned long long
 
-    :param unsigned long long b:
+    :param b:
         second 64 bit TOD timestamp
+    :type b: unsigned long long
 
 .. _`tod_after.return`:
 
@@ -92,11 +96,13 @@ tod_after_eq
 
     compare two 64 bit TOD values
 
-    :param unsigned long long a:
+    :param a:
         first 64 bit TOD timestamp
+    :type a: unsigned long long
 
-    :param unsigned long long b:
+    :param b:
         second 64 bit TOD timestamp
+    :type b: unsigned long long
 
 .. _`tod_after_eq.return`:
 

@@ -1385,6 +1385,7 @@ Definition
         struct sdw_defer defer_msg;
         unsigned int clk_stop_timeout;
         u32 bank_switch_timeout;
+        bool multi_link;
     }
 
 .. _`sdw_bus.members`:
@@ -1436,6 +1437,11 @@ clk_stop_timeout
 
 bank_switch_timeout
     Bank switch timeout computed
+
+multi_link
+    Store bus property that indicates if multi links
+    are supported. This flag is populated by drivers after reading
+    appropriate firmware (ACPI/DT).
 
 .. This file was automatic generated / don't edit.
 

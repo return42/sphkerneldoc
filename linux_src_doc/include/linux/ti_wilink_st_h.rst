@@ -247,14 +247,17 @@ st_int_write
 
     point this to tty->driver->write or tty->ops->write depending upon the kernel version
 
-    :param struct st_data_s:
+    :param st_data_s:
         *undescribed*
+    :type st_data_s: struct
 
-    :param const unsigned char:
+    :param char:
         *undescribed*
+    :type char: const unsigned
 
-    :param  int:
+    :param int:
         *undescribed*
+    :type int: 
 
 .. _`st_write`:
 
@@ -265,8 +268,9 @@ st_write
 
     internal write function, passed onto protocol drivers via the write function ptr of protocol struct
 
-    :param struct sk_buff \*:
+    :param :
         *undescribed*
+    :type : struct sk_buff \*
 
 .. _`chip_version`:
 
@@ -412,8 +416,9 @@ st_kim_start
 
     registered, these need to communicate with UIM to request ldisc installed, read chip_version, download relevant fw
 
-    :param void \*:
+    :param :
         *undescribed*
+    :type : void \*
 
 .. _`bts_header`:
 
@@ -540,8 +545,9 @@ st_ll_enable
 
     called by ST Core
 
-    :param struct st_data_s \*:
+    :param :
         *undescribed*
+    :type : struct st_data_s \*
 
 .. _`st_ll_getstate`:
 
@@ -552,8 +558,9 @@ st_ll_getstate
 
     of the chip.
 
-    :param struct st_data_s \*:
+    :param :
         *undescribed*
+    :type : struct st_data_s \*
 
 .. _`ti_st_plat_data`:
 

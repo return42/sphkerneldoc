@@ -10,17 +10,21 @@
 
     Allocate a fwnode_handle suitable for identifying an irq domain
 
-    :param unsigned int type:
+    :param type:
         Type of irqchip_fwnode. See linux/irqdomain.h
+    :type type: unsigned int
 
-    :param int id:
+    :param id:
         Optional user provided id if name != NULL
+    :type id: int
 
-    :param const char \*name:
+    :param name:
         Optional user provided domain name
+    :type name: const char \*
 
-    :param void \*data:
+    :param data:
         Optional user-provided data
+    :type data: void \*
 
 .. _`__irq_domain_alloc_fwnode.description`:
 
@@ -49,8 +53,9 @@ irq_domain_free_fwnode
 
     Free a non-OF-backed fwnode_handle
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         *undescribed*
+    :type fwnode: struct fwnode_handle \*
 
 .. _`irq_domain_free_fwnode.description`:
 
@@ -68,24 +73,30 @@ Free a fwnode_handle allocated with irq_domain_alloc_fwnode.
 
     Allocate a new irq_domain data structure
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         firmware node for the interrupt controller
+    :type fwnode: struct fwnode_handle \*
 
-    :param int size:
+    :param size:
         Size of linear map; 0 for radix mapping only
+    :type size: int
 
-    :param irq_hw_number_t hwirq_max:
+    :param hwirq_max:
         Maximum number of interrupts supported by controller
+    :type hwirq_max: irq_hw_number_t
 
-    :param int direct_max:
+    :param direct_max:
         Maximum value of direct maps; Use ~0 for no limit; 0 for no
         direct mapping
+    :type direct_max: int
 
-    :param const struct irq_domain_ops \*ops:
+    :param ops:
         domain callbacks
+    :type ops: const struct irq_domain_ops \*
 
-    :param void \*host_data:
+    :param host_data:
         Controller private data pointer
+    :type host_data: void \*
 
 .. _`__irq_domain_add.description`:
 
@@ -104,8 +115,9 @@ irq_domain_remove
 
     Remove an irq domain.
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain to remove
+    :type domain: struct irq_domain \*
 
 .. _`irq_domain_remove.description`:
 
@@ -125,22 +137,27 @@ irq_domain_add_simple
 
     Register an irq_domain and optionally map a range of irqs
 
-    :param struct device_node \*of_node:
+    :param of_node:
         pointer to interrupt controller's device tree node.
+    :type of_node: struct device_node \*
 
-    :param unsigned int size:
+    :param size:
         total number of irqs in mapping
+    :type size: unsigned int
 
-    :param unsigned int first_irq:
+    :param first_irq:
         first number of irq block assigned to the domain,
         pass zero to assign irqs on-the-fly. If first_irq is non-zero, then
         pre-map all of the irqs in the domain to virqs starting at first_irq.
+    :type first_irq: unsigned int
 
-    :param const struct irq_domain_ops \*ops:
+    :param ops:
         domain callbacks
+    :type ops: const struct irq_domain_ops \*
 
-    :param void \*host_data:
+    :param host_data:
         Controller private data pointer
+    :type host_data: void \*
 
 .. _`irq_domain_add_simple.description`:
 
@@ -164,25 +181,31 @@ irq_domain_add_legacy
 
     Allocate and register a legacy revmap irq_domain.
 
-    :param struct device_node \*of_node:
+    :param of_node:
         pointer to interrupt controller's device tree node.
+    :type of_node: struct device_node \*
 
-    :param unsigned int size:
+    :param size:
         total number of irqs in legacy mapping
+    :type size: unsigned int
 
-    :param unsigned int first_irq:
+    :param first_irq:
         first number of irq block assigned to the domain
+    :type first_irq: unsigned int
 
-    :param irq_hw_number_t first_hwirq:
+    :param first_hwirq:
         first hwirq number to use for the translation. Should normally
         be '0', but a positive integer can be used if the effective
         hwirqs numbering does not begin at zero.
+    :type first_hwirq: irq_hw_number_t
 
-    :param const struct irq_domain_ops \*ops:
+    :param ops:
         map/unmap domain callbacks
+    :type ops: const struct irq_domain_ops \*
 
-    :param void \*host_data:
+    :param host_data:
         Controller private data pointer
+    :type host_data: void \*
 
 .. _`irq_domain_add_legacy.note`:
 
@@ -202,11 +225,13 @@ irq_find_matching_fwspec
 
     Locates a domain for a given fwspec
 
-    :param struct irq_fwspec \*fwspec:
+    :param fwspec:
         FW specifier for an interrupt
+    :type fwspec: struct irq_fwspec \*
 
-    :param enum irq_domain_bus_token bus_token:
+    :param bus_token:
         domain-specific data
+    :type bus_token: enum irq_domain_bus_token
 
 .. _`irq_domain_check_msi_remap`:
 
@@ -217,8 +242,9 @@ irq_domain_check_msi_remap
 
     Check whether all MSI irq domains implement IRQ remapping
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`irq_domain_check_msi_remap.return`:
 
@@ -237,8 +263,9 @@ irq_set_default_host
 
     Set a "default" irq domain
 
-    :param struct irq_domain \*domain:
+    :param domain:
         default domain pointer
+    :type domain: struct irq_domain \*
 
 .. _`irq_set_default_host.description`:
 
@@ -259,8 +286,9 @@ irq_create_direct_mapping
 
     Allocate an irq for direct mapping
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain to allocate the irq for or NULL for default domain
+    :type domain: struct irq_domain \*
 
 .. _`irq_create_direct_mapping.description`:
 
@@ -282,11 +310,13 @@ irq_create_mapping
 
     Map a hardware interrupt into linux irq space
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain owning this hardware interrupt or NULL for default domain
+    :type domain: struct irq_domain \*
 
-    :param irq_hw_number_t hwirq:
+    :param hwirq:
         hardware irq number in that domain space
+    :type hwirq: irq_hw_number_t
 
 .. _`irq_create_mapping.description`:
 
@@ -307,17 +337,21 @@ irq_create_strict_mappings
 
     Map a range of hw irqs to fixed linux irqs
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain owning the interrupt range
+    :type domain: struct irq_domain \*
 
-    :param unsigned int irq_base:
+    :param irq_base:
         beginning of linux IRQ range
+    :type irq_base: unsigned int
 
-    :param irq_hw_number_t hwirq_base:
+    :param hwirq_base:
         beginning of hardware IRQ range
+    :type hwirq_base: irq_hw_number_t
 
-    :param int count:
+    :param count:
         Number of interrupts to map
+    :type count: int
 
 .. _`irq_create_strict_mappings.description`:
 
@@ -344,8 +378,9 @@ irq_dispose_mapping
 
     Unmap an interrupt
 
-    :param unsigned int virq:
+    :param virq:
         linux irq number of the interrupt to unmap
+    :type virq: unsigned int
 
 .. _`irq_find_mapping`:
 
@@ -354,13 +389,15 @@ irq_find_mapping
 
 .. c:function:: unsigned int irq_find_mapping(struct irq_domain *domain, irq_hw_number_t hwirq)
 
-    Find a linux irq from an hw irq number.
+    Find a linux irq from a hw irq number.
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain owning this hardware interrupt
+    :type domain: struct irq_domain \*
 
-    :param irq_hw_number_t hwirq:
+    :param hwirq:
         hardware irq number in that domain space
+    :type hwirq: irq_hw_number_t
 
 .. _`irq_domain_xlate_onecell`:
 
@@ -371,23 +408,29 @@ irq_domain_xlate_onecell
 
     Generic xlate for direct one cell bindings
 
-    :param struct irq_domain \*d:
+    :param d:
         *undescribed*
+    :type d: struct irq_domain \*
 
-    :param struct device_node \*ctrlr:
+    :param ctrlr:
         *undescribed*
+    :type ctrlr: struct device_node \*
 
-    :param const u32 \*intspec:
+    :param intspec:
         *undescribed*
+    :type intspec: const u32 \*
 
-    :param unsigned int intsize:
+    :param intsize:
         *undescribed*
+    :type intsize: unsigned int
 
-    :param unsigned long \*out_hwirq:
+    :param out_hwirq:
         *undescribed*
+    :type out_hwirq: unsigned long \*
 
-    :param unsigned int \*out_type:
+    :param out_type:
         *undescribed*
+    :type out_type: unsigned int \*
 
 .. _`irq_domain_xlate_onecell.description`:
 
@@ -406,23 +449,29 @@ irq_domain_xlate_twocell
 
     Generic xlate for direct two cell bindings
 
-    :param struct irq_domain \*d:
+    :param d:
         *undescribed*
+    :type d: struct irq_domain \*
 
-    :param struct device_node \*ctrlr:
+    :param ctrlr:
         *undescribed*
+    :type ctrlr: struct device_node \*
 
-    :param const u32 \*intspec:
+    :param intspec:
         *undescribed*
+    :type intspec: const u32 \*
 
-    :param unsigned int intsize:
+    :param intsize:
         *undescribed*
+    :type intsize: unsigned int
 
-    :param irq_hw_number_t \*out_hwirq:
+    :param out_hwirq:
         *undescribed*
+    :type out_hwirq: irq_hw_number_t \*
 
-    :param unsigned int \*out_type:
+    :param out_type:
         *undescribed*
+    :type out_type: unsigned int \*
 
 .. _`irq_domain_xlate_twocell.description`:
 
@@ -442,23 +491,29 @@ irq_domain_xlate_onetwocell
 
     Generic xlate for one or two cell bindings
 
-    :param struct irq_domain \*d:
+    :param d:
         *undescribed*
+    :type d: struct irq_domain \*
 
-    :param struct device_node \*ctrlr:
+    :param ctrlr:
         *undescribed*
+    :type ctrlr: struct device_node \*
 
-    :param const u32 \*intspec:
+    :param intspec:
         *undescribed*
+    :type intspec: const u32 \*
 
-    :param unsigned int intsize:
+    :param intsize:
         *undescribed*
+    :type intsize: unsigned int
 
-    :param unsigned long \*out_hwirq:
+    :param out_hwirq:
         *undescribed*
+    :type out_hwirq: unsigned long \*
 
-    :param unsigned int \*out_type:
+    :param out_type:
         *undescribed*
+    :type out_type: unsigned int \*
 
 .. _`irq_domain_xlate_onetwocell.description`:
 
@@ -487,23 +542,29 @@ irq_domain_create_hierarchy
 
     Add a irqdomain into the hierarchy
 
-    :param struct irq_domain \*parent:
+    :param parent:
         Parent irq domain to associate with the new domain
+    :type parent: struct irq_domain \*
 
-    :param unsigned int flags:
+    :param flags:
         Irq domain flags associated to the domain
+    :type flags: unsigned int
 
-    :param unsigned int size:
+    :param size:
         Size of the domain. See below
+    :type size: unsigned int
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Optional fwnode of the interrupt controller
+    :type fwnode: struct fwnode_handle \*
 
-    :param const struct irq_domain_ops \*ops:
+    :param ops:
         Pointer to the interrupt domain callbacks
+    :type ops: const struct irq_domain_ops \*
 
-    :param void \*host_data:
+    :param host_data:
         Controller private data pointer
+    :type host_data: void \*
 
 .. _`irq_domain_create_hierarchy.description`:
 
@@ -525,11 +586,13 @@ irq_domain_get_irq_data
 
     Get irq_data associated with \ ``virq``\  and \ ``domain``\ 
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain to match
+    :type domain: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         IRQ number to get irq_data
+    :type virq: unsigned int
 
 .. _`irq_domain_set_hwirq_and_chip`:
 
@@ -540,20 +603,25 @@ irq_domain_set_hwirq_and_chip
 
     Set hwirq and irqchip of \ ``virq``\  at \ ``domain``\ 
 
-    :param struct irq_domain \*domain:
+    :param domain:
         Interrupt domain to match
+    :type domain: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         IRQ number
+    :type virq: unsigned int
 
-    :param irq_hw_number_t hwirq:
+    :param hwirq:
         The hwirq number
+    :type hwirq: irq_hw_number_t
 
-    :param struct irq_chip \*chip:
+    :param chip:
         The associated interrupt chip
+    :type chip: struct irq_chip \*
 
-    :param void \*chip_data:
+    :param chip_data:
         The associated chip data
+    :type chip_data: void \*
 
 .. _`irq_domain_set_info`:
 
@@ -564,29 +632,37 @@ irq_domain_set_info
 
     Set the complete data for a \ ``virq``\  in \ ``domain``\ 
 
-    :param struct irq_domain \*domain:
+    :param domain:
         Interrupt domain to match
+    :type domain: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         IRQ number
+    :type virq: unsigned int
 
-    :param irq_hw_number_t hwirq:
+    :param hwirq:
         The hardware interrupt number
+    :type hwirq: irq_hw_number_t
 
-    :param struct irq_chip \*chip:
+    :param chip:
         The associated interrupt chip
+    :type chip: struct irq_chip \*
 
-    :param void \*chip_data:
+    :param chip_data:
         The associated interrupt chip data
+    :type chip_data: void \*
 
-    :param irq_flow_handler_t handler:
+    :param handler:
         The interrupt flow handler
+    :type handler: irq_flow_handler_t
 
-    :param void \*handler_data:
+    :param handler_data:
         The interrupt flow handler data
+    :type handler_data: void \*
 
-    :param const char \*handler_name:
+    :param handler_name:
         The interrupt handler name
+    :type handler_name: const char \*
 
 .. _`irq_domain_reset_irq_data`:
 
@@ -597,8 +673,9 @@ irq_domain_reset_irq_data
 
     Clear hwirq, chip and chip_data in \ ``irq_data``\ 
 
-    :param struct irq_data \*irq_data:
+    :param irq_data:
         The pointer to irq_data
+    :type irq_data: struct irq_data \*
 
 .. _`irq_domain_free_irqs_common`:
 
@@ -609,14 +686,17 @@ irq_domain_free_irqs_common
 
     Clear irq_data and free the parent
 
-    :param struct irq_domain \*domain:
+    :param domain:
         Interrupt domain to match
+    :type domain: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         IRQ number to start with
+    :type virq: unsigned int
 
-    :param unsigned int nr_irqs:
+    :param nr_irqs:
         The number of irqs to free
+    :type nr_irqs: unsigned int
 
 .. _`irq_domain_free_irqs_top`:
 
@@ -627,14 +707,17 @@ irq_domain_free_irqs_top
 
     Clear handler and handler data, clear irqdata and free parent
 
-    :param struct irq_domain \*domain:
+    :param domain:
         Interrupt domain to match
+    :type domain: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         IRQ number to start with
+    :type virq: unsigned int
 
-    :param unsigned int nr_irqs:
+    :param nr_irqs:
         The number of irqs to free
+    :type nr_irqs: unsigned int
 
 .. _`__irq_domain_alloc_irqs`:
 
@@ -645,26 +728,33 @@ irq_domain_free_irqs_top
 
     Allocate IRQs from domain
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain to allocate from
+    :type domain: struct irq_domain \*
 
-    :param int irq_base:
+    :param irq_base:
         allocate specified IRQ nubmer if irq_base >= 0
+    :type irq_base: int
 
-    :param unsigned int nr_irqs:
+    :param nr_irqs:
         number of IRQs to allocate
+    :type nr_irqs: unsigned int
 
-    :param int node:
+    :param node:
         NUMA node id for memory allocation
+    :type node: int
 
-    :param void \*arg:
+    :param arg:
         domain specific argument
+    :type arg: void \*
 
-    :param bool realloc:
+    :param realloc:
         IRQ descriptors have already been allocated if true
+    :type realloc: bool
 
-    :param const struct cpumask \*affinity:
+    :param affinity:
         Optional irq affinity mask for multiqueue devices
+    :type affinity: const struct cpumask \*
 
 .. _`__irq_domain_alloc_irqs.description`:
 
@@ -692,14 +782,17 @@ irq_domain_push_irq
 
     Push a domain in to the top of a hierarchy.
 
-    :param struct irq_domain \*domain:
+    :param domain:
         Domain to push.
+    :type domain: struct irq_domain \*
 
-    :param int virq:
+    :param virq:
         Irq to push the domain in to.
+    :type virq: int
 
-    :param void \*arg:
+    :param arg:
         Passed to the irq_domain_ops \ :c:func:`alloc`\  function.
+    :type arg: void \*
 
 .. _`irq_domain_push_irq.description`:
 
@@ -720,11 +813,13 @@ irq_domain_pop_irq
 
     Remove a domain from the top of a hierarchy.
 
-    :param struct irq_domain \*domain:
+    :param domain:
         Domain to remove.
+    :type domain: struct irq_domain \*
 
-    :param int virq:
+    :param virq:
         Irq to remove the domain from.
+    :type virq: int
 
 .. _`irq_domain_pop_irq.description`:
 
@@ -743,11 +838,13 @@ irq_domain_free_irqs
 
     Free IRQ number and associated data structures
 
-    :param unsigned int virq:
+    :param virq:
         base IRQ number
+    :type virq: unsigned int
 
-    :param unsigned int nr_irqs:
+    :param nr_irqs:
         number of IRQs to free
+    :type nr_irqs: unsigned int
 
 .. _`irq_domain_alloc_irqs_parent`:
 
@@ -758,17 +855,21 @@ irq_domain_alloc_irqs_parent
 
     Allocate interrupts from parent domain
 
-    :param struct irq_domain \*domain:
+    :param domain:
         *undescribed*
+    :type domain: struct irq_domain \*
 
-    :param unsigned int irq_base:
+    :param irq_base:
         Base IRQ number
+    :type irq_base: unsigned int
 
-    :param unsigned int nr_irqs:
+    :param nr_irqs:
         Number of IRQs to allocate
+    :type nr_irqs: unsigned int
 
-    :param void \*arg:
+    :param arg:
         Allocation data (arch/domain specific)
+    :type arg: void \*
 
 .. _`irq_domain_alloc_irqs_parent.description`:
 
@@ -787,14 +888,17 @@ irq_domain_free_irqs_parent
 
     Free interrupts from parent domain
 
-    :param struct irq_domain \*domain:
+    :param domain:
         *undescribed*
+    :type domain: struct irq_domain \*
 
-    :param unsigned int irq_base:
+    :param irq_base:
         Base IRQ number
+    :type irq_base: unsigned int
 
-    :param unsigned int nr_irqs:
+    :param nr_irqs:
         Number of IRQs to free
+    :type nr_irqs: unsigned int
 
 .. _`irq_domain_free_irqs_parent.description`:
 
@@ -813,11 +917,13 @@ irq_domain_activate_irq
 
     Call domain_ops->activate recursively to activate interrupt
 
-    :param struct irq_data \*irq_data:
+    :param irq_data:
         Outermost irq_data associated with interrupt
+    :type irq_data: struct irq_data \*
 
-    :param bool reserve:
+    :param reserve:
         If set only reserve an interrupt vector instead of assigning one
+    :type reserve: bool
 
 .. _`irq_domain_activate_irq.description`:
 
@@ -836,8 +942,9 @@ irq_domain_deactivate_irq
 
     Call domain_ops->deactivate recursively to deactivate interrupt
 
-    :param struct irq_data \*irq_data:
+    :param irq_data:
         outermost irq_data associated with interrupt
+    :type irq_data: struct irq_data \*
 
 .. _`irq_domain_deactivate_irq.description`:
 
@@ -856,8 +963,9 @@ irq_domain_hierarchical_is_msi_remap
 
     Check if the domain or any parent has MSI remapping support
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain pointer
+    :type domain: struct irq_domain \*
 
 .. _`irq_domain_get_irq_data`:
 
@@ -868,11 +976,13 @@ irq_domain_get_irq_data
 
     Get irq_data associated with \ ``virq``\  and \ ``domain``\ 
 
-    :param struct irq_domain \*domain:
+    :param domain:
         domain to match
+    :type domain: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         IRQ number to get irq_data
+    :type virq: unsigned int
 
 .. _`irq_domain_set_info`:
 
@@ -883,29 +993,37 @@ irq_domain_set_info
 
     Set the complete data for a \ ``virq``\  in \ ``domain``\ 
 
-    :param struct irq_domain \*domain:
+    :param domain:
         Interrupt domain to match
+    :type domain: struct irq_domain \*
 
-    :param unsigned int virq:
+    :param virq:
         IRQ number
+    :type virq: unsigned int
 
-    :param irq_hw_number_t hwirq:
+    :param hwirq:
         The hardware interrupt number
+    :type hwirq: irq_hw_number_t
 
-    :param struct irq_chip \*chip:
+    :param chip:
         The associated interrupt chip
+    :type chip: struct irq_chip \*
 
-    :param void \*chip_data:
+    :param chip_data:
         The associated interrupt chip data
+    :type chip_data: void \*
 
-    :param irq_flow_handler_t handler:
+    :param handler:
         The interrupt flow handler
+    :type handler: irq_flow_handler_t
 
-    :param void \*handler_data:
+    :param handler_data:
         The interrupt flow handler data
+    :type handler_data: void \*
 
-    :param const char \*handler_name:
+    :param handler_name:
         The interrupt handler name
+    :type handler_name: const char \*
 
 .. This file was automatic generated / don't edit.
 

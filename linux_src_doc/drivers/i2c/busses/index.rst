@@ -13,6 +13,7 @@ busses
     i2c-cadence_c
     i2c-cbus-gpio_c
     i2c-cros-ec-tunnel_c
+    i2c-designware-common_c
     i2c-designware-core_h
     i2c-designware-master_c
     i2c-designware-slave_c

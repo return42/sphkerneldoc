@@ -8,14 +8,17 @@ cyapa_i2c_pip_write
 
 .. c:function:: ssize_t cyapa_i2c_pip_write(struct cyapa *cyapa, u8 *buf, size_t size)
 
-    :param struct cyapa \*cyapa:
+    :param cyapa:
         *undescribed*
+    :type cyapa: struct cyapa \*
 
-    :param u8 \*buf:
+    :param buf:
         *undescribed*
+    :type buf: u8 \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
 .. _`cyapa_empty_pip_output_data`:
 
@@ -26,17 +29,21 @@ cyapa_empty_pip_output_data
 
     before send any command, otherwise, the interrupt line will be blocked.
 
-    :param struct cyapa \*cyapa:
+    :param cyapa:
         *undescribed*
+    :type cyapa: struct cyapa \*
 
-    :param u8 \*buf:
+    :param buf:
         *undescribed*
+    :type buf: u8 \*
 
-    :param int \*len:
+    :param len:
         *undescribed*
+    :type len: int \*
 
-    :param cb_sort func:
+    :param func:
         *undescribed*
+    :type func: cb_sort
 
 .. This file was automatic generated / don't edit.
 

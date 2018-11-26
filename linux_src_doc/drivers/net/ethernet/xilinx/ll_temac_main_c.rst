@@ -8,11 +8,13 @@ temac_indirect_in32
 
 .. c:function:: u32 temac_indirect_in32(struct temac_local *lp, int reg)
 
-    :param struct temac_local \*lp:
+    :param lp:
         *undescribed*
+    :type lp: struct temac_local \*
 
-    :param int reg:
+    :param reg:
         *undescribed*
+    :type reg: int
 
 .. _`temac_indirect_in32.description`:
 
@@ -28,14 +30,17 @@ temac_indirect_out32
 
 .. c:function:: void temac_indirect_out32(struct temac_local *lp, int reg, u32 value)
 
-    :param struct temac_local \*lp:
+    :param lp:
         *undescribed*
+    :type lp: struct temac_local \*
 
-    :param int reg:
+    :param reg:
         *undescribed*
+    :type reg: int
 
-    :param u32 value:
+    :param value:
         *undescribed*
+    :type value: u32
 
 .. _`temac_indirect_out32.description`:
 
@@ -53,11 +58,13 @@ temac_dma_in32
 
     Memory mapped DMA read, this function expects a register input that is based on DCR word addresses which are then converted to memory mapped byte addresses
 
-    :param struct temac_local \*lp:
+    :param lp:
         *undescribed*
+    :type lp: struct temac_local \*
 
-    :param int reg:
+    :param reg:
         *undescribed*
+    :type reg: int
 
 .. _`temac_dma_out32`:
 
@@ -68,14 +75,17 @@ temac_dma_out32
 
     Memory mapped DMA read, this function expects a register input that is based on DCR word addresses which are then converted to memory mapped byte addresses
 
-    :param struct temac_local \*lp:
+    :param lp:
         *undescribed*
+    :type lp: struct temac_local \*
 
-    :param int reg:
+    :param reg:
         *undescribed*
+    :type reg: int
 
-    :param u32 value:
+    :param value:
         *undescribed*
+    :type value: u32
 
 .. _`temac_dma_dcr_in`:
 
@@ -86,11 +96,13 @@ temac_dma_dcr_in
 
     DCR based DMA read
 
-    :param struct temac_local \*lp:
+    :param lp:
         *undescribed*
+    :type lp: struct temac_local \*
 
-    :param int reg:
+    :param reg:
         *undescribed*
+    :type reg: int
 
 .. _`temac_dma_dcr_out`:
 
@@ -101,14 +113,17 @@ temac_dma_dcr_out
 
     DCR based DMA write
 
-    :param struct temac_local \*lp:
+    :param lp:
         *undescribed*
+    :type lp: struct temac_local \*
 
-    :param int reg:
+    :param reg:
         *undescribed*
+    :type reg: int
 
-    :param u32 value:
+    :param value:
         *undescribed*
+    :type value: u32
 
 .. _`temac_dcr_setup`:
 
@@ -119,14 +134,17 @@ temac_dcr_setup
 
     If the DMA is DCR based, then setup the address and I/O  functions
 
-    :param struct temac_local \*lp:
+    :param lp:
         *undescribed*
+    :type lp: struct temac_local \*
 
-    :param struct platform_device \*op:
+    :param op:
         *undescribed*
+    :type op: struct platform_device \*
 
-    :param struct device_node \*np:
+    :param np:
         *undescribed*
+    :type np: struct device_node \*
 
 .. _`temac_dma_bd_release`:
 
@@ -137,8 +155,9 @@ temac_dma_bd_release
 
     Release buffer descriptor rings
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
 .. _`temac_dma_bd_init`:
 
@@ -149,8 +168,9 @@ temac_dma_bd_init
 
     Setup buffer descriptor rings
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
 .. _`temac_setoptions`:
 
@@ -159,11 +179,13 @@ temac_setoptions
 
 .. c:function:: u32 temac_setoptions(struct net_device *ndev, u32 options)
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
-    :param u32 options:
+    :param options:
         *undescribed*
+    :type options: u32
 
 .. This file was automatic generated / don't edit.
 

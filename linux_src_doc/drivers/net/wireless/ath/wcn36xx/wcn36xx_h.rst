@@ -30,6 +30,7 @@ Definition
         u8 self_sta_index;
         u8 self_dpu_desc_index;
         u8 self_ucast_dpu_sign;
+        struct list_head sta_list;
     }
 
 .. _`wcn36xx_vif.members`:
@@ -75,6 +76,9 @@ self_dpu_desc_index
 self_ucast_dpu_sign
     *undescribed*
 
+sta_list
+    *undescribed*
+
 .. _`wcn36xx_sta`:
 
 struct wcn36xx_sta
@@ -92,6 +96,7 @@ Definition
 .. code-block:: c
 
     struct wcn36xx_sta {
+        struct list_head list;
         struct wcn36xx_vif *vif;
         u16 aid;
         u16 tid;
@@ -111,6 +116,9 @@ Definition
 
 Members
 -------
+
+list
+    *undescribed*
 
 vif
     *undescribed*

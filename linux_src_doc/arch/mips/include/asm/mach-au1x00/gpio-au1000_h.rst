@@ -10,8 +10,9 @@ alchemy_gpio2_enable_int
 
     Enable a GPIO2 pins' shared irq contribution.
 
-    :param int gpio2:
+    :param gpio2:
         The GPIO2 pin to activate (200...215).
+    :type gpio2: int
 
 .. _`alchemy_gpio2_enable_int.description`:
 
@@ -50,8 +51,9 @@ alchemy_gpio2_disable_int
 
     Disable a GPIO2 pins' shared irq contribution.
 
-    :param int gpio2:
+    :param gpio2:
         The GPIO2 pin to activate (200...215).
+    :type gpio2: int
 
 .. _`alchemy_gpio2_disable_int.description`:
 
@@ -69,8 +71,9 @@ alchemy_gpio2_enable
 
     Activate GPIO2 block.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`alchemy_gpio2_enable.description`:
 
@@ -89,8 +92,9 @@ alchemy_gpio2_disable
 
     disable GPIO2 block.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`alchemy_gpio2_disable.description`:
 

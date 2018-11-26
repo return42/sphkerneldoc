@@ -8,14 +8,17 @@ report_error
 
 .. c:function:: void report_error(const char *name, int namelen, int err)
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param int namelen:
+    :param namelen:
         *undescribed*
+    :type namelen: int
 
-    :param int err:
+    :param err:
         *undescribed*
+    :type err: int
 
 .. _`report_error.description`:
 
@@ -33,20 +36,25 @@ encode_value
 
 .. c:function:: int encode_value(struct display_info *disp, char **arg, int arg_count, char **valuep, int *value_len)
 
-    :param struct display_info \*disp:
+    :param disp:
         *undescribed*
+    :type disp: struct display_info \*
 
-    :param char \*\*arg:
+    :param arg:
         *undescribed*
+    :type arg: char \*\*
 
-    :param int arg_count:
+    :param arg_count:
         *undescribed*
+    :type arg_count: int
 
-    :param char \*\*valuep:
+    :param valuep:
         *undescribed*
+    :type valuep: char \*\*
 
-    :param int \*value_len:
+    :param value_len:
         *undescribed*
+    :type value_len: int \*
 
 .. _`encode_value.description`:
 
@@ -66,11 +74,13 @@ create_paths
 
 .. c:function:: int create_paths(void *blob, const char *in_path)
 
-    :param void \*blob:
+    :param blob:
         *undescribed*
+    :type blob: void \*
 
-    :param const char \*in_path:
+    :param in_path:
         *undescribed*
+    :type in_path: const char \*
 
 .. _`create_paths.description`:
 
@@ -91,11 +101,13 @@ create_node
 
 .. c:function:: int create_node(void *blob, const char *node_name)
 
-    :param void \*blob:
+    :param blob:
         *undescribed*
+    :type blob: void \*
 
-    :param const char \*node_name:
+    :param node_name:
         *undescribed*
+    :type node_name: const char \*
 
 .. _`create_node.description`:
 

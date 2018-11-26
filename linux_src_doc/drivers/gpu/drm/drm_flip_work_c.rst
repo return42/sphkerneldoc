@@ -10,11 +10,13 @@ drm_flip_work_allocate_task
 
     allocate a flip-work task
 
-    :param void \*data:
+    :param data:
         data associated to the task
+    :type data: void \*
 
-    :param gfp_t flags:
+    :param flags:
         allocator flags
+    :type flags: gfp_t
 
 .. _`drm_flip_work_allocate_task.description`:
 
@@ -32,11 +34,13 @@ drm_flip_work_queue_task
 
     queue a specific task
 
-    :param struct drm_flip_work \*work:
+    :param work:
         the flip-work
+    :type work: struct drm_flip_work \*
 
-    :param struct drm_flip_task \*task:
+    :param task:
         the task to handle
+    :type task: struct drm_flip_task \*
 
 .. _`drm_flip_work_queue_task.description`:
 
@@ -55,11 +59,13 @@ drm_flip_work_queue
 
     queue work
 
-    :param struct drm_flip_work \*work:
+    :param work:
         the flip-work
+    :type work: struct drm_flip_work \*
 
-    :param void \*val:
+    :param val:
         the value to queue
+    :type val: void \*
 
 .. _`drm_flip_work_queue.description`:
 
@@ -78,11 +84,13 @@ drm_flip_work_commit
 
     commit queued work
 
-    :param struct drm_flip_work \*work:
+    :param work:
         the flip-work
+    :type work: struct drm_flip_work \*
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         the work-queue to run the queued work on
+    :type wq: struct workqueue_struct \*
 
 .. _`drm_flip_work_commit.description`:
 
@@ -103,14 +111,17 @@ drm_flip_work_init
 
     initialize flip-work
 
-    :param struct drm_flip_work \*work:
+    :param work:
         the flip-work to initialize
+    :type work: struct drm_flip_work \*
 
-    :param const char \*name:
+    :param name:
         debug name
+    :type name: const char \*
 
-    :param drm_flip_func_t func:
+    :param func:
         the callback work function
+    :type func: drm_flip_func_t
 
 .. _`drm_flip_work_init.description`:
 
@@ -128,8 +139,9 @@ drm_flip_work_cleanup
 
     cleans up flip-work
 
-    :param struct drm_flip_work \*work:
+    :param work:
         the flip-work to cleanup
+    :type work: struct drm_flip_work \*
 
 .. _`drm_flip_work_cleanup.description`:
 

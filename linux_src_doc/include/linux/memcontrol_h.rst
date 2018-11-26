@@ -10,11 +10,13 @@ mem_cgroup_lruvec
 
     get the lru list vector for a node or a memcg zone
 
-    :param struct pglist_data \*pgdat:
+    :param pgdat:
         *undescribed*
+    :type pgdat: struct pglist_data \*
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg of the wanted lruvec
+    :type memcg: struct mem_cgroup \*
 
 .. _`mem_cgroup_lruvec.description`:
 
@@ -34,8 +36,9 @@ parent_mem_cgroup
 
     find the accounting parent of a memcg
 
-    :param struct mem_cgroup \*memcg:
+    :param memcg:
         memcg whose parent to find
+    :type memcg: struct mem_cgroup \*
 
 .. _`parent_mem_cgroup.description`:
 
@@ -54,14 +57,17 @@ controller is in legacy no-hierarchy mode.
 
     update page state statistics
 
-    :param struct page \*page:
+    :param page:
         the page
+    :type page: struct page \*
 
-    :param int idx:
+    :param idx:
         page state item to account
+    :type idx: int
 
-    :param int val:
+    :param val:
         number of pages (positive or negative)
+    :type val: int
 
 .. _`__mod_memcg_page_state.description`:
 

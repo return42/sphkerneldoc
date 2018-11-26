@@ -10,14 +10,17 @@ gfs2_struct2blk
 
     compute stuff
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param unsigned int nstruct:
+    :param nstruct:
         the number of structures
+    :type nstruct: unsigned int
 
-    :param unsigned int ssize:
+    :param ssize:
         the size of the structures
+    :type ssize: unsigned int
 
 .. _`gfs2_struct2blk.description`:
 
@@ -43,8 +46,9 @@ gfs2_remove_from_ail
 
     Remove an entry from the ail lists, updating counters
 
-    :param struct gfs2_bufdata \*bd:
+    :param bd:
         The gfs2_bufdata to remove
+    :type bd: struct gfs2_bufdata \*
 
 .. _`gfs2_remove_from_ail.description`:
 
@@ -58,18 +62,25 @@ The ail lock \_must\_ be held when calling this function
 gfs2_ail1_start_one
 ===================
 
-.. c:function:: int gfs2_ail1_start_one(struct gfs2_sbd *sdp, struct writeback_control *wbc, struct gfs2_trans *tr)
+.. c:function:: int gfs2_ail1_start_one(struct gfs2_sbd *sdp, struct writeback_control *wbc, struct gfs2_trans *tr, bool *withdraw)
 
     Start I/O on a part of the AIL
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback control structure
+    :type wbc: struct writeback_control \*
 
-    :param struct gfs2_trans \*tr:
+    :param tr:
         *undescribed*
+    :type tr: struct gfs2_trans \*
+
+    :param withdraw:
+        *undescribed*
+    :type withdraw: bool \*
 
 .. _`gfs2_ail1_flush`:
 
@@ -80,11 +91,13 @@ gfs2_ail1_flush
 
     start writeback of some ail1 entries
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The super block
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         The writeback control structure
+    :type wbc: struct writeback_control \*
 
 .. _`gfs2_ail1_flush.description`:
 
@@ -103,23 +116,30 @@ gfs2_ail1_start
 
     start writeback of all ail1 entries
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The superblock
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_ail1_empty_one`:
 
 gfs2_ail1_empty_one
 ===================
 
-.. c:function:: void gfs2_ail1_empty_one(struct gfs2_sbd *sdp, struct gfs2_trans *tr)
+.. c:function:: void gfs2_ail1_empty_one(struct gfs2_sbd *sdp, struct gfs2_trans *tr, bool *withdraw)
 
     Check whether or not a trans in the AIL has been synced
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_trans \*tr:
+    :param tr:
         *undescribed*
+    :type tr: struct gfs2_trans \*
+
+    :param withdraw:
+        *undescribed*
+    :type withdraw: bool \*
 
 .. _`gfs2_ail1_empty`:
 
@@ -130,8 +150,9 @@ gfs2_ail1_empty
 
     Try to empty the ail1 lists
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The superblock
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_ail1_empty.description`:
 
@@ -149,11 +170,13 @@ gfs2_ail2_empty_one
 
     Check whether or not a trans in the AIL has been synced
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_trans \*tr:
+    :param tr:
         *undescribed*
+    :type tr: struct gfs2_trans \*
 
 .. _`gfs2_log_release`:
 
@@ -164,11 +187,13 @@ gfs2_log_release
 
     Release a given number of log blocks
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param unsigned int blks:
+    :param blks:
         The number of blocks
+    :type blks: unsigned int
 
 .. _`gfs2_log_reserve`:
 
@@ -179,11 +204,13 @@ gfs2_log_reserve
 
     Make a log reservation
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param unsigned int blks:
+    :param blks:
         The number of blocks to reserve
+    :type blks: unsigned int
 
 .. _`gfs2_log_reserve.description`:
 
@@ -218,14 +245,17 @@ log_distance
 
     Compute distance between two journal blocks
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param unsigned int newer:
+    :param newer:
         The most recent journal block of the pair
+    :type newer: unsigned int
 
-    :param unsigned int older:
+    :param older:
         The older journal block of the pair
+    :type older: unsigned int
 
 .. _`log_distance.description`:
 
@@ -251,8 +281,9 @@ calc_reserved
 
     Calculate the number of blocks to reserve when refunding a transaction's unused buffers.
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
 .. _`calc_reserved.description`:
 
@@ -293,23 +324,29 @@ gfs2_write_log_header
 
     Write a journal log header buffer at sd_log_flush_head
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         journal descriptor of the journal to which we are writing
+    :type jd: struct gfs2_jdesc \*
 
-    :param u64 seq:
+    :param seq:
         sequence number
+    :type seq: u64
 
-    :param u32 tail:
+    :param tail:
         tail of the log
+    :type tail: u32
 
-    :param u32 flags:
+    :param flags:
         log header flags GFS2_LOG_HEAD\_\*
+    :type flags: u32
 
-    :param int op_flags:
+    :param op_flags:
         flags to pass to the bio
+    :type op_flags: int
 
 .. _`gfs2_write_log_header.return`:
 
@@ -327,11 +364,13 @@ log_write_header
 
     Get and initialize a journal header buffer
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         The GFS2 superblock
+    :type sdp: struct gfs2_sbd \*
 
-    :param u32 flags:
+    :param flags:
         The log header flags, including log header origin
+    :type flags: u32
 
 .. _`log_write_header.return`:
 
@@ -349,14 +388,17 @@ gfs2_log_flush
 
     flush incore transaction(s)
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_glock \*gl:
+    :param gl:
         The glock structure to flush.  If NULL, flush the whole incore log
+    :type gl: struct gfs2_glock \*
 
-    :param u32 flags:
+    :param flags:
         The log header flags: GFS2_LOG_HEAD_FLUSH\_\* and debug flags
+    :type flags: u32
 
 .. _`gfs2_merge_trans`:
 
@@ -367,11 +409,13 @@ gfs2_merge_trans
 
     Merge a new transaction into a cached transaction
 
-    :param struct gfs2_trans \*old:
+    :param old:
         Original transaction to be expanded
+    :type old: struct gfs2_trans \*
 
-    :param struct gfs2_trans \*new:
+    :param new:
         New transaction to be merged
+    :type new: struct gfs2_trans \*
 
 .. _`gfs2_log_commit`:
 
@@ -382,11 +426,13 @@ gfs2_log_commit
 
     Commit a transaction to the log
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
-    :param struct gfs2_trans \*tr:
+    :param tr:
         the transaction
+    :type tr: struct gfs2_trans \*
 
 .. _`gfs2_log_commit.description`:
 
@@ -416,8 +462,9 @@ gfs2_log_shutdown
 
     write a shutdown header into a journal
 
-    :param struct gfs2_sbd \*sdp:
+    :param sdp:
         the filesystem
+    :type sdp: struct gfs2_sbd \*
 
 .. _`gfs2_logd`:
 
@@ -428,8 +475,9 @@ gfs2_logd
 
     Update log tail as Active Items get flushed to in-place blocks
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`gfs2_logd.description`:
 

@@ -10,12 +10,14 @@ xxxfb_open
 
     Optional function. Called when the framebuffer is first accessed.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
-    :param int user:
+    :param user:
         tell us if the userland (value=1) or the console is accessing
         the framebuffer.
+    :type user: int
 
 .. _`xxxfb_open.description`:
 
@@ -38,12 +40,14 @@ xxxfb_release
 
     Optional function. Called when the framebuffer device is closed.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
-    :param int user:
+    :param user:
         tell us if the userland (value=1) or the console is accessing
         the framebuffer.
+    :type user: int
 
 .. _`xxxfb_release.description`:
 
@@ -66,11 +70,13 @@ xxxfb_check_var
 
     Optional function. Validates a var passed in.
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer variable screen structure
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`xxxfb_check_var.description`:
 
@@ -127,8 +133,9 @@ xxxfb_set_par
 
     Optional function. Alters the hardware state.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`xxxfb_set_par.description`:
 
@@ -179,23 +186,29 @@ xxxfb_setcolreg
 
     Optional function. Sets a color register.
 
-    :param unsigned regno:
+    :param regno:
         Which register in the CLUT we are programming
+    :type regno: unsigned
 
-    :param unsigned red:
+    :param red:
         The red value which can be up to 16 bits wide
+    :type red: unsigned
 
-    :param unsigned green:
+    :param green:
         The green value which can be up to 16 bits wide
+    :type green: unsigned
 
-    :param unsigned blue:
+    :param blue:
         The blue value which can be up to 16 bits wide.
+    :type blue: unsigned
 
-    :param unsigned transp:
+    :param transp:
         If supported, the alpha value which can be up to 16 bits wide.
+    :type transp: unsigned
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. _`xxxfb_setcolreg.description`:
 
@@ -224,11 +237,13 @@ xxxfb_pan_display
 
     NOT a required function. Pans the display.
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer variable screen structure
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`xxxfb_pan_display.description`:
 
@@ -250,11 +265,13 @@ xxxfb_blank
 
     NOT a required function. Blanks the display.
 
-    :param int blank_mode:
+    :param blank_mode:
         the blank mode we want.
+    :type blank_mode: int
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`xxxfb_blank.description`:
 
@@ -285,12 +302,14 @@ xxxfb_fillrect
 
     REQUIRED function. Can use generic routines if non acclerated hardware and packed pixel based. Draws a rectangle on the screen.
 
-    :param struct fb_info \*p:
+    :param p:
         *undescribed*
+    :type p: struct fb_info \*
 
-    :param const struct fb_fillrect \*region:
+    :param region:
         The structure representing the rectangular region we
         wish to draw to.
+    :type region: const struct fb_fillrect \*
 
 .. _`xxxfb_fillrect.description`:
 
@@ -310,12 +329,14 @@ xxxfb_copyarea
 
     REQUIRED function. Can use generic routines if non acclerated hardware and packed pixel based. Copies one area of the screen to another area.
 
-    :param struct fb_info \*p:
+    :param p:
         *undescribed*
+    :type p: struct fb_info \*
 
-    :param const struct fb_copyarea \*area:
+    :param area:
         Structure providing the data to copy the framebuffer contents
         from one region to another.
+    :type area: const struct fb_copyarea \*
 
 .. _`xxxfb_copyarea.description`:
 
@@ -334,11 +355,13 @@ xxxfb_imageblit
 
     REQUIRED function. Can use generic routines if non acclerated hardware and packed pixel based. Copies a image from system memory to the screen.
 
-    :param struct fb_info \*p:
+    :param p:
         *undescribed*
+    :type p: struct fb_info \*
 
-    :param const struct fb_image \*image:
+    :param image:
         structure defining the image.
+    :type image: const struct fb_image \*
 
 .. _`xxxfb_imageblit.description`:
 
@@ -358,11 +381,13 @@ xxxfb_cursor
 
     OPTIONAL. If your hardware lacks support for a cursor, leave this field NULL.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
-    :param struct fb_cursor \*cursor:
+    :param cursor:
         structure defining the cursor to draw.
+    :type cursor: struct fb_cursor \*
 
 .. _`xxxfb_cursor.description`:
 
@@ -383,8 +408,9 @@ xxxfb_sync
 
     NOT a required function. Normally the accel engine for a graphics card take a specific amount of time. Often we have to wait for the accelerator to finish its operation before we can write to the framebuffer so we can have consistent display output.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`xxxfb_sync.description`:
 
@@ -403,11 +429,13 @@ xxxfb_suspend
 
     Optional but recommended function. Suspend the device.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param pm_message_t msg:
+    :param msg:
         the suspend event code.
+    :type msg: pm_message_t
 
 .. _`xxxfb_suspend.description`:
 
@@ -425,8 +453,9 @@ xxxfb_resume
 
     Optional but recommended function. Resume the device.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`xxxfb_resume.description`:
 
@@ -444,11 +473,13 @@ xxxfb_suspend
 
     Optional but recommended function. Suspend the device.
 
-    :param struct platform_device \*dev:
+    :param dev:
         platform device
+    :type dev: struct platform_device \*
 
-    :param pm_message_t msg:
+    :param msg:
         the suspend event code.
+    :type msg: pm_message_t
 
 .. _`xxxfb_suspend.description`:
 
@@ -466,8 +497,9 @@ xxxfb_resume
 
     Optional but recommended function. Resume the device.
 
-    :param struct platform_dev \*dev:
+    :param dev:
         platform device
+    :type dev: struct platform_dev \*
 
 .. _`xxxfb_resume.description`:
 

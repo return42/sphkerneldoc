@@ -825,6 +825,7 @@ Definition
         u32 directions;
         u32 max_burst;
         bool cmd_pause;
+        bool cmd_resume;
         bool cmd_terminate;
         enum dma_residue_granularity residue_granularity;
         bool descriptor_reuse;
@@ -853,7 +854,11 @@ max_burst
     max burst capability per-transfer
 
 cmd_pause
-    true, if pause and thereby resume is supported
+    true, if pause is supported (i.e. for reading residue or
+    for resume later)
+
+cmd_resume
+    true, if resume is supported
 
 cmd_terminate
     true, if terminate cmd is supported
@@ -874,11 +879,13 @@ dma_filter_fn
 
     callback filter for dma_request_channel
 
-    :param struct dma_chan \*chan:
+    :param chan:
         channel to be reviewed
+    :type chan: struct dma_chan \*
 
-    :param void \*filter_param:
+    :param filter_param:
         opaque parameter passed through dma_request_channel
+    :type filter_param: void \*
 
 .. _`dma_filter_fn.description`:
 
@@ -1350,8 +1357,9 @@ dmaengine_terminate_all
 
     Terminate all active DMA transfers
 
-    :param struct dma_chan \*chan:
+    :param chan:
         The channel for which to terminate the transfers
+    :type chan: struct dma_chan \*
 
 .. _`dmaengine_terminate_all.description`:
 
@@ -1370,8 +1378,9 @@ dmaengine_terminate_async
 
     Terminate all active DMA transfers
 
-    :param struct dma_chan \*chan:
+    :param chan:
         The channel for which to terminate the transfers
+    :type chan: struct dma_chan \*
 
 .. _`dmaengine_terminate_async.description`:
 
@@ -1404,8 +1413,9 @@ dmaengine_synchronize
 
     Synchronize DMA channel termination
 
-    :param struct dma_chan \*chan:
+    :param chan:
         The channel to synchronize
+    :type chan: struct dma_chan \*
 
 .. _`dmaengine_synchronize.description`:
 
@@ -1435,8 +1445,9 @@ dmaengine_terminate_sync
 
     Terminate all active DMA transfers
 
-    :param struct dma_chan \*chan:
+    :param chan:
         The channel for which to terminate the transfers
+    :type chan: struct dma_chan \*
 
 .. _`dmaengine_terminate_sync.description`:
 
@@ -1462,8 +1473,9 @@ dma_async_issue_pending
 
     flush pending transactions to HW
 
-    :param struct dma_chan \*chan:
+    :param chan:
         target DMA channel
+    :type chan: struct dma_chan \*
 
 .. _`dma_async_issue_pending.description`:
 
@@ -1482,17 +1494,21 @@ dma_async_is_tx_complete
 
     poll for transaction completion
 
-    :param struct dma_chan \*chan:
+    :param chan:
         DMA channel
+    :type chan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         transaction identifier to check status of
+    :type cookie: dma_cookie_t
 
-    :param dma_cookie_t \*last:
+    :param last:
         returns last completed cookie, can be NULL
+    :type last: dma_cookie_t \*
 
-    :param dma_cookie_t \*used:
+    :param used:
         returns last issued cookie, can be NULL
+    :type used: dma_cookie_t \*
 
 .. _`dma_async_is_tx_complete.description`:
 
@@ -1512,14 +1528,17 @@ dma_async_is_complete
 
     test a cookie against chan state
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         transaction identifier to test status of
+    :type cookie: dma_cookie_t
 
-    :param dma_cookie_t last_complete:
+    :param last_complete:
         last know completed transaction
+    :type last_complete: dma_cookie_t
 
-    :param dma_cookie_t last_used:
+    :param last_used:
         last cookie value handed out
+    :type last_used: dma_cookie_t
 
 .. _`dma_async_is_complete.description`:
 

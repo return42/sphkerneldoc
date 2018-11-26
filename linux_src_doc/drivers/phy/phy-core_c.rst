@@ -10,14 +10,17 @@ phy_create_lookup
 
     allocate and register PHY/device association
 
-    :param struct phy \*phy:
+    :param phy:
         the phy of the association
+    :type phy: struct phy \*
 
-    :param const char \*con_id:
+    :param con_id:
         connection ID string on device
+    :type con_id: const char \*
 
-    :param const char \*dev_id:
+    :param dev_id:
         the device of the association
+    :type dev_id: const char \*
 
 .. _`phy_create_lookup.description`:
 
@@ -35,14 +38,17 @@ phy_remove_lookup
 
     find and remove PHY/device association
 
-    :param struct phy \*phy:
+    :param phy:
         the phy of the association
+    :type phy: struct phy \*
 
-    :param const char \*con_id:
+    :param con_id:
         connection ID string on device
+    :type con_id: const char \*
 
-    :param const char \*dev_id:
+    :param dev_id:
         the device of the association
+    :type dev_id: const char \*
 
 .. _`phy_remove_lookup.description`:
 
@@ -61,11 +67,13 @@ Finds and unregisters phy_lookup entry that was created with
 
     lookup and obtain a reference to a phy by phandle
 
-    :param struct device_node \*np:
+    :param np:
         device_node for which to get the phy
+    :type np: struct device_node \*
 
-    :param int index:
+    :param index:
         the index of the phy
+    :type index: int
 
 .. _`_of_phy_get.description`:
 
@@ -87,11 +95,13 @@ of_phy_get
 
     lookup and obtain a reference to a phy using a device_node.
 
-    :param struct device_node \*np:
+    :param np:
         device_node for which to get the phy
+    :type np: struct device_node \*
 
-    :param const char \*con_id:
+    :param con_id:
         name of the phy from device's point of view
+    :type con_id: const char \*
 
 .. _`of_phy_get.description`:
 
@@ -111,8 +121,9 @@ phy_put
 
     release the PHY
 
-    :param struct phy \*phy:
+    :param phy:
         the phy returned by \ :c:func:`phy_get`\ 
+    :type phy: struct phy \*
 
 .. _`phy_put.description`:
 
@@ -130,11 +141,13 @@ devm_phy_put
 
     release the PHY
 
-    :param struct device \*dev:
+    :param dev:
         device that wants to release this phy
+    :type dev: struct device \*
 
-    :param struct phy \*phy:
+    :param phy:
         the phy returned by \ :c:func:`devm_phy_get`\ 
+    :type phy: struct phy \*
 
 .. _`devm_phy_put.description`:
 
@@ -153,11 +166,13 @@ of_phy_simple_xlate
 
     returns the phy instance from phy provider
 
-    :param struct device \*dev:
+    :param dev:
         the PHY provider device
+    :type dev: struct device \*
 
-    :param struct of_phandle_args \*args:
+    :param args:
         of_phandle_args (not used here)
+    :type args: struct of_phandle_args \*
 
 .. _`of_phy_simple_xlate.description`:
 
@@ -178,12 +193,14 @@ phy_get
 
     lookup and obtain a reference to a phy.
 
-    :param struct device \*dev:
+    :param dev:
         device that requests this phy
+    :type dev: struct device \*
 
-    :param const char \*string:
+    :param string:
         the phy name as given in the dt data or the name of the controller
         port for non-dt case
+    :type string: const char \*
 
 .. _`phy_get.description`:
 
@@ -203,12 +220,14 @@ phy_optional_get
 
     lookup and obtain a reference to an optional phy.
 
-    :param struct device \*dev:
+    :param dev:
         device that requests this phy
+    :type dev: struct device \*
 
-    :param const char \*string:
+    :param string:
         the phy name as given in the dt data or the name of the controller
         port for non-dt case
+    :type string: const char \*
 
 .. _`phy_optional_get.description`:
 
@@ -228,12 +247,14 @@ devm_phy_get
 
     lookup and obtain a reference to a phy.
 
-    :param struct device \*dev:
+    :param dev:
         device that requests this phy
+    :type dev: struct device \*
 
-    :param const char \*string:
+    :param string:
         the phy name as given in the dt data or phy device name
         for non-dt case
+    :type string: const char \*
 
 .. _`devm_phy_get.description`:
 
@@ -253,12 +274,14 @@ devm_phy_optional_get
 
     lookup and obtain a reference to an optional phy.
 
-    :param struct device \*dev:
+    :param dev:
         device that requests this phy
+    :type dev: struct device \*
 
-    :param const char \*string:
+    :param string:
         the phy name as given in the dt data or phy device name
         for non-dt case
+    :type string: const char \*
 
 .. _`devm_phy_optional_get.description`:
 
@@ -281,14 +304,17 @@ devm_of_phy_get
 
     lookup and obtain a reference to a phy.
 
-    :param struct device \*dev:
+    :param dev:
         device that requests this phy
+    :type dev: struct device \*
 
-    :param struct device_node \*np:
+    :param np:
         node containing the phy
+    :type np: struct device_node \*
 
-    :param const char \*con_id:
+    :param con_id:
         name of the phy from device's point of view
+    :type con_id: const char \*
 
 .. _`devm_of_phy_get.description`:
 
@@ -308,14 +334,17 @@ devm_of_phy_get_by_index
 
     lookup and obtain a reference to a phy by index.
 
-    :param struct device \*dev:
+    :param dev:
         device that requests this phy
+    :type dev: struct device \*
 
-    :param struct device_node \*np:
+    :param np:
         node containing the phy
+    :type np: struct device_node \*
 
-    :param int index:
+    :param index:
         index of the phy
+    :type index: int
 
 .. _`devm_of_phy_get_by_index.description`:
 
@@ -336,14 +365,17 @@ phy_create
 
     create a new phy
 
-    :param struct device \*dev:
+    :param dev:
         device that is creating the new phy
+    :type dev: struct device \*
 
-    :param struct device_node \*node:
+    :param node:
         device node of the phy
+    :type node: struct device_node \*
 
-    :param const struct phy_ops \*ops:
+    :param ops:
         function pointers for performing phy operations
+    :type ops: const struct phy_ops \*
 
 .. _`phy_create.description`:
 
@@ -361,14 +393,17 @@ devm_phy_create
 
     create a new phy
 
-    :param struct device \*dev:
+    :param dev:
         device that is creating the new phy
+    :type dev: struct device \*
 
-    :param struct device_node \*node:
+    :param node:
         device node of the phy
+    :type node: struct device_node \*
 
-    :param const struct phy_ops \*ops:
+    :param ops:
         function pointers for performing phy operations
+    :type ops: const struct phy_ops \*
 
 .. _`devm_phy_create.description`:
 
@@ -389,8 +424,9 @@ phy_destroy
 
     destroy the phy
 
-    :param struct phy \*phy:
+    :param phy:
         the phy to be destroyed
+    :type phy: struct phy \*
 
 .. _`phy_destroy.description`:
 
@@ -408,11 +444,13 @@ devm_phy_destroy
 
     destroy the PHY
 
-    :param struct device \*dev:
+    :param dev:
         device that wants to release this phy
+    :type dev: struct device \*
 
-    :param struct phy \*phy:
+    :param phy:
         the phy returned by \ :c:func:`devm_phy_get`\ 
+    :type phy: struct phy \*
 
 .. _`devm_phy_destroy.description`:
 
@@ -431,14 +469,17 @@ to destroy the phy.
 
     create/register phy provider with the framework
 
-    :param struct device \*dev:
+    :param dev:
         struct device of the phy provider
+    :type dev: struct device \*
 
-    :param struct device_node \*children:
+    :param children:
         device node containing children (if different from dev->of_node)
+    :type children: struct device_node \*
 
-    :param struct module \*owner:
+    :param owner:
         the module owner containing of_xlate
+    :type owner: struct module \*
 
     :param struct phy \* (\*of_xlate)(struct device \*dev, struct of_phandle_args \*args):
         function pointer to obtain phy instance from phy provider
@@ -468,14 +509,17 @@ error code is returned.
 
     create/register phy provider with the framework
 
-    :param struct device \*dev:
+    :param dev:
         struct device of the phy provider
+    :type dev: struct device \*
 
-    :param struct device_node \*children:
+    :param children:
         *undescribed*
+    :type children: struct device_node \*
 
-    :param struct module \*owner:
+    :param owner:
         the module owner containing of_xlate
+    :type owner: struct module \*
 
     :param struct phy \* (\*of_xlate)(struct device \*dev, struct of_phandle_args \*args):
         function pointer to obtain phy instance from phy provider
@@ -500,8 +544,9 @@ of_phy_provider_unregister
 
     unregister phy provider from the framework
 
-    :param struct phy_provider \*phy_provider:
+    :param phy_provider:
         phy provider returned by \ :c:func:`of_phy_provider_register`\ 
+    :type phy_provider: struct phy_provider \*
 
 .. _`of_phy_provider_unregister.description`:
 
@@ -519,11 +564,13 @@ devm_of_phy_provider_unregister
 
     remove phy provider from the framework
 
-    :param struct device \*dev:
+    :param dev:
         struct device of the phy provider
+    :type dev: struct device \*
 
-    :param struct phy_provider \*phy_provider:
+    :param phy_provider:
         *undescribed*
+    :type phy_provider: struct phy_provider \*
 
 .. _`devm_of_phy_provider_unregister.description`:
 
@@ -542,8 +589,9 @@ phy_release
 
     release the phy
 
-    :param struct device \*dev:
+    :param dev:
         the dev member within phy
+    :type dev: struct device \*
 
 .. _`phy_release.description`:
 

@@ -10,17 +10,21 @@ copy_to_dmem
 
     We cannot use \ :c:func:`memcpy_toio`\  because the hardware requires 32bit writes
 
-    :param struct imx21 \*imx21:
+    :param imx21:
         *undescribed*
+    :type imx21: struct imx21 \*
 
-    :param int dmem_offset:
+    :param dmem_offset:
         *undescribed*
+    :type dmem_offset: int
 
-    :param void \*src:
+    :param src:
         *undescribed*
+    :type src: void \*
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
 .. This file was automatic generated / don't edit.
 

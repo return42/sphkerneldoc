@@ -10,11 +10,13 @@ clflush_cache_range
 
     flush a cache range with clflush
 
-    :param void \*vaddr:
+    :param vaddr:
         virtual start address
+    :type vaddr: void \*
 
-    :param unsigned int size:
+    :param size:
         number of bytes to flush
+    :type size: unsigned int
 
 .. _`clflush_cache_range.description`:
 

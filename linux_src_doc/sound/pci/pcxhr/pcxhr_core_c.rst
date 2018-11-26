@@ -10,11 +10,13 @@ pcxhr_init_rmh
 
     initialize the RMH instance
 
-    :param struct pcxhr_rmh \*rmh:
+    :param rmh:
         the rmh pointer to be initialized
+    :type rmh: struct pcxhr_rmh \*
 
-    :param int cmd:
+    :param cmd:
         the rmh command to be set
+    :type cmd: int
 
 .. This file was automatic generated / don't edit.
 

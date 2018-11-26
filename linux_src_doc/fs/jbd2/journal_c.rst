@@ -10,9 +10,10 @@ jbd2_journal_force_commit_nested
 
     transaction.  This is used for forcing out undo-protected data which contains bitmaps, when the fs is running out of space.
 
-    :param journal_t \*journal:
+    :param journal:
         journal to force
         Returns true if progress was made.
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_force_commit`:
 
@@ -23,8 +24,9 @@ jbd2_journal_force_commit
 
     force any uncommitted transactions
 
-    :param journal_t \*journal:
+    :param journal:
         journal to force
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_force_commit.description`:
 
@@ -43,20 +45,25 @@ jbd2_journal_init_dev
 
     creates and initialises a journal structure
 
-    :param struct block_device \*bdev:
+    :param bdev:
         Block device on which to create the journal
+    :type bdev: struct block_device \*
 
-    :param struct block_device \*fs_dev:
+    :param fs_dev:
         Device which hold journalled filesystem for this journal.
+    :type fs_dev: struct block_device \*
 
-    :param unsigned long long start:
+    :param start:
         Block nr Start of journal.
+    :type start: unsigned long long
 
-    :param int len:
+    :param len:
         Length of the journal in blocks.
+    :type len: int
 
-    :param int blocksize:
+    :param blocksize:
         blocksize of journalling device
+    :type blocksize: int
 
 .. _`jbd2_journal_init_dev.return`:
 
@@ -77,8 +84,9 @@ jbd2_journal_init_inode
 
     creates a journal which maps to a inode.
 
-    :param struct inode \*inode:
+    :param inode:
         An inode to create the journal in
+    :type inode: struct inode \*
 
 .. _`jbd2_journal_init_inode.description`:
 
@@ -98,17 +106,21 @@ jbd2_journal_update_sb_log_tail
 
     Update log tail in journal sb on disk.
 
-    :param journal_t \*journal:
+    :param journal:
         The journal to update.
+    :type journal: journal_t \*
 
-    :param tid_t tail_tid:
+    :param tail_tid:
         TID of the new transaction at the tail of the log
+    :type tail_tid: tid_t
 
-    :param unsigned long tail_block:
+    :param tail_block:
         The first block of the transaction at the tail of the log
+    :type tail_block: unsigned long
 
-    :param int write_op:
+    :param write_op:
         With which operation should we write the journal sb
+    :type write_op: int
 
 .. _`jbd2_journal_update_sb_log_tail.description`:
 
@@ -127,11 +139,13 @@ jbd2_mark_journal_empty
 
     Mark on disk journal as empty.
 
-    :param journal_t \*journal:
+    :param journal:
         The journal to update.
+    :type journal: journal_t \*
 
-    :param int write_op:
+    :param write_op:
         With which operation should we write the journal sb
+    :type write_op: int
 
 .. _`jbd2_mark_journal_empty.description`:
 
@@ -150,8 +164,9 @@ jbd2_journal_update_sb_errno
 
     Update error in the journal.
 
-    :param journal_t \*journal:
+    :param journal:
         The journal to update.
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_update_sb_errno.description`:
 
@@ -170,8 +185,9 @@ jbd2_journal_load
 
     Read journal from disk.
 
-    :param journal_t \*journal:
+    :param journal:
         Journal to act on.
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_load.description`:
 
@@ -191,8 +207,9 @@ jbd2_journal_destroy
 
     Release a journal_t structure.
 
-    :param journal_t \*journal:
+    :param journal:
         Journal to act on.
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_destroy.description`:
 
@@ -212,17 +229,21 @@ jbd2_journal_check_used_features
 
     Check if features specified are used.
 
-    :param journal_t \*journal:
+    :param journal:
         Journal to check.
+    :type journal: journal_t \*
 
-    :param unsigned long compat:
+    :param compat:
         bitmask of compatible features
+    :type compat: unsigned long
 
-    :param unsigned long ro:
+    :param ro:
         bitmask of features that force read-only mount
+    :type ro: unsigned long
 
-    :param unsigned long incompat:
+    :param incompat:
         bitmask of incompatible features
+    :type incompat: unsigned long
 
 .. _`jbd2_journal_check_used_features.description`:
 
@@ -241,17 +262,21 @@ jbd2_journal_check_available_features
 
     Check feature set in journalling layer
 
-    :param journal_t \*journal:
+    :param journal:
         Journal to check.
+    :type journal: journal_t \*
 
-    :param unsigned long compat:
+    :param compat:
         bitmask of compatible features
+    :type compat: unsigned long
 
-    :param unsigned long ro:
+    :param ro:
         bitmask of features that force read-only mount
+    :type ro: unsigned long
 
-    :param unsigned long incompat:
+    :param incompat:
         bitmask of incompatible features
+    :type incompat: unsigned long
 
 .. _`jbd2_journal_check_available_features.description`:
 
@@ -270,17 +295,21 @@ jbd2_journal_set_features
 
     Mark a given journal feature in the superblock
 
-    :param journal_t \*journal:
+    :param journal:
         Journal to act on.
+    :type journal: journal_t \*
 
-    :param unsigned long compat:
+    :param compat:
         bitmask of compatible features
+    :type compat: unsigned long
 
-    :param unsigned long ro:
+    :param ro:
         bitmask of features that force read-only mount
+    :type ro: unsigned long
 
-    :param unsigned long incompat:
+    :param incompat:
         bitmask of incompatible features
+    :type incompat: unsigned long
 
 .. _`jbd2_journal_set_features.description`:
 
@@ -299,8 +328,9 @@ jbd2_journal_flush
 
     Flush journal
 
-    :param journal_t \*journal:
+    :param journal:
         Journal to act on.
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_flush.description`:
 
@@ -320,11 +350,13 @@ jbd2_journal_wipe
 
     Wipe journal contents
 
-    :param journal_t \*journal:
+    :param journal:
         Journal to act on.
+    :type journal: journal_t \*
 
-    :param int write:
+    :param write:
         flag (see below)
+    :type write: int
 
 .. _`jbd2_journal_wipe.description`:
 
@@ -347,12 +379,14 @@ jbd2_journal_abort
 
     Shutdown the journal immediately.
 
-    :param journal_t \*journal:
+    :param journal:
         the journal to shutdown.
+    :type journal: journal_t \*
 
-    :param int errno:
+    :param errno:
         an error number to record in the journal indicating
         the reason for the shutdown.
+    :type errno: int
 
 .. _`jbd2_journal_abort.description`:
 
@@ -406,8 +440,9 @@ jbd2_journal_errno
 
     returns the journal's error state.
 
-    :param journal_t \*journal:
+    :param journal:
         journal to examine.
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_errno.description`:
 
@@ -430,8 +465,9 @@ jbd2_journal_clear_err
 
     clears the journal's error state
 
-    :param journal_t \*journal:
+    :param journal:
         journal to act on.
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_clear_err.description`:
 
@@ -450,8 +486,9 @@ jbd2_journal_ack_err
 
     Ack journal err.
 
-    :param journal_t \*journal:
+    :param journal:
         journal to act on.
+    :type journal: journal_t \*
 
 .. _`jbd2_journal_ack_err.description`:
 

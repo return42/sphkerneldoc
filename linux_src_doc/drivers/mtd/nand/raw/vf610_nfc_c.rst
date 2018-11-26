@@ -8,17 +8,21 @@ vf610_nfc_rd_from_sram
 
 .. c:function:: void vf610_nfc_rd_from_sram(void *dst, const void __iomem *src, size_t len, bool fix_endian)
 
-    :param void \*dst:
+    :param dst:
         destination address in regular memory
+    :type dst: void \*
 
-    :param const void __iomem \*src:
+    :param src:
         source address in SRAM buffer
+    :type src: const void __iomem \*
 
-    :param size_t len:
+    :param len:
         bytes to copy
+    :type len: size_t
 
-    :param bool fix_endian:
+    :param fix_endian:
         Fix endianness if required
+    :type fix_endian: bool
 
 .. _`vf610_nfc_rd_from_sram.description`:
 
@@ -44,17 +48,21 @@ vf610_nfc_wr_to_sram
 
 .. c:function:: void vf610_nfc_wr_to_sram(void __iomem *dst, const void *src, size_t len, bool fix_endian)
 
-    :param void __iomem \*dst:
+    :param dst:
         destination address in SRAM buffer
+    :type dst: void __iomem \*
 
-    :param const void \*src:
+    :param src:
         source address in regular memory
+    :type src: const void \*
 
-    :param size_t len:
+    :param len:
         bytes to copy
+    :type len: size_t
 
-    :param bool fix_endian:
+    :param fix_endian:
         Fix endianness if required
+    :type fix_endian: bool
 
 .. _`vf610_nfc_wr_to_sram.description`:
 

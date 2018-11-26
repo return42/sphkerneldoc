@@ -42,8 +42,9 @@ vmw_stream
 
     Typecast a struct vmw_resource to a struct vmw_stream.
 
-    :param struct vmw_resource \*res:
+    :param res:
         Pointer to the struct vmw_resource.
+    :type res: struct vmw_resource \*
 
 .. _`vmw_stream.return`:
 
@@ -61,14 +62,17 @@ vmw_stream_unref_ioctl
 
     Ioctl to unreference a user-space handle to a struct vmw_stream.
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to the drm device.
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         The ioctl argument
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to a struct drm_file identifying the caller.
+    :type file_priv: struct drm_file \*
 
 .. _`vmw_stream_unref_ioctl.return`:
 
@@ -87,14 +91,17 @@ vmw_stream_claim_ioctl
 
     Ioctl to claim a struct vmw_stream overlay.
 
-    :param struct drm_device \*dev:
+    :param dev:
         Pointer to the drm device.
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         The ioctl argument
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         Pointer to a struct drm_file identifying the caller.
+    :type file_priv: struct drm_file \*
 
 .. _`vmw_stream_claim_ioctl.return`:
 
@@ -113,18 +120,22 @@ vmw_user_stream_lookup
 
     Look up a struct vmw_user_stream from a handle.
 
-    :param struct vmw_private \*dev_priv:
+    :param dev_priv:
         Pointer to a struct vmw_private.
+    :type dev_priv: struct vmw_private \*
 
-    :param struct ttm_object_file \*tfile:
+    :param tfile:
         struct ttm_object_file identifying the caller.
+    :type tfile: struct ttm_object_file \*
 
-    :param uint32_t \*inout_id:
+    :param inout_id:
         In: The user-space handle. Out: The stream id.
+    :type inout_id: uint32_t \*
 
-    :param struct vmw_resource \*\*out:
+    :param out:
         On output contains a refcounted pointer to the embedded
         struct vmw_resource.
+    :type out: struct vmw_resource \*\*
 
 .. _`vmw_user_stream_lookup.return`:
 

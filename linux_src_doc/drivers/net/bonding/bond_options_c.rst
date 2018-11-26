@@ -10,11 +10,13 @@ bond_opt_parse
 
     parse option value
 
-    :param const struct bond_option \*opt:
+    :param opt:
         the option to parse against
+    :type opt: const struct bond_option \*
 
-    :param struct bond_opt_value \*val:
+    :param val:
         value to parse
+    :type val: struct bond_opt_value \*
 
 .. _`bond_opt_parse.description`:
 
@@ -24,7 +26,7 @@ Description
 This function tries to extract the value from \ ``val``\  and check if it's
 a possible match for the option and returns NULL if a match isn't found,
 or the struct_opt_value that matched. It also strips the new line from
-\ ``val``\ ->string if it's present.
+\ ``val->string``\  if it's present.
 
 .. _`__bond_opt_set`:
 
@@ -35,14 +37,17 @@ or the struct_opt_value that matched. It also strips the new line from
 
     set a bonding option
 
-    :param struct bonding \*bond:
+    :param bond:
         target bond device
+    :type bond: struct bonding \*
 
-    :param unsigned int option:
+    :param option:
         option to set
+    :type option: unsigned int
 
-    :param struct bond_opt_value \*val:
+    :param val:
         value to set it to
+    :type val: struct bond_opt_value \*
 
 .. _`__bond_opt_set.description`:
 
@@ -62,14 +67,17 @@ must be obtained before calling this function.
 
     set a bonding option
 
-    :param struct bonding \*bond:
+    :param bond:
         target bond device
+    :type bond: struct bonding \*
 
-    :param unsigned int option:
+    :param option:
         option to set
+    :type option: unsigned int
 
-    :param struct bond_opt_value \*val:
+    :param val:
         value to set it to
+    :type val: struct bond_opt_value \*
 
 .. _`__bond_opt_set_notify.description`:
 
@@ -90,14 +98,17 @@ bond_opt_tryset_rtnl
 
     try to acquire rtnl and call \__bond_opt_set
 
-    :param struct bonding \*bond:
+    :param bond:
         target bond device
+    :type bond: struct bonding \*
 
-    :param unsigned int option:
+    :param option:
         option to set
+    :type option: unsigned int
 
-    :param char \*buf:
+    :param buf:
         value to set it to
+    :type buf: char \*
 
 .. _`bond_opt_tryset_rtnl.description`:
 
@@ -116,8 +127,9 @@ bond_opt_get
 
     get a pointer to an option
 
-    :param unsigned int option:
+    :param option:
         option for which to return a pointer
+    :type option: unsigned int
 
 .. _`bond_opt_get.description`:
 

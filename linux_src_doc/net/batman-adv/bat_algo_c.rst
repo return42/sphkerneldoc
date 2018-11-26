@@ -10,8 +10,9 @@ batadv_algo_init
 
     Initialize batman-adv algorithm management data structures
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_algo_register`:
 
@@ -22,8 +23,9 @@ batadv_algo_register
 
     Register callbacks for a mesh algorithm
 
-    :param struct batadv_algo_ops \*bat_algo_ops:
+    :param bat_algo_ops:
         mesh algorithm callbacks to add
+    :type bat_algo_ops: struct batadv_algo_ops \*
 
 .. _`batadv_algo_register.return`:
 
@@ -41,11 +43,13 @@ batadv_algo_select
 
     Select algorithm of soft interface
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param char \*name:
+    :param name:
         name of the algorithm to select
+    :type name: char \*
 
 .. _`batadv_algo_select.description`:
 
@@ -74,11 +78,13 @@ batadv_algo_seq_print_text
 
     Print the supported algorithms in a seq file
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq file to print on
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_algo_seq_print_text.return`:
 
@@ -96,17 +102,21 @@ batadv_algo_dump_entry
 
     fill in information about one supported routing algorithm
 
-    :param struct sk_buff \*msg:
+    :param msg:
         netlink message to be sent back
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port to reply to
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of message
+    :type seq: u32
 
-    :param struct batadv_algo_ops \*bat_algo_ops:
+    :param bat_algo_ops:
         Algorithm to be dumped
+    :type bat_algo_ops: struct batadv_algo_ops \*
 
 .. _`batadv_algo_dump_entry.return`:
 
@@ -124,11 +134,13 @@ batadv_algo_dump
 
     fill in information about supported routing algorithms
 
-    :param struct sk_buff \*msg:
+    :param msg:
         netlink message to be sent back
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Parameters to the netlink request
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_algo_dump.return`:
 

@@ -10,8 +10,9 @@ module_init
 
     driver initialization entry point
 
-    :param  x:
+    :param x:
         function to be run at kernel boot time or module insertion
+    :type x: 
 
 .. _`module_init.description`:
 
@@ -31,8 +32,9 @@ module_exit
 
     driver exit entry point
 
-    :param  x:
+    :param x:
         function to be run when driver is removed
+    :type x: 
 
 .. _`module_exit.description`:
 

@@ -10,8 +10,9 @@ acpiphp_register_attention
 
     set attention LED callback
 
-    :param struct acpiphp_attention_info \*info:
+    :param info:
         must be completely filled with LED callbacks
+    :type info: struct acpiphp_attention_info \*
 
 .. _`acpiphp_register_attention.description`:
 
@@ -31,8 +32,9 @@ acpiphp_unregister_attention
 
     unset attention LED callback
 
-    :param struct acpiphp_attention_info \*info:
+    :param info:
         must match the pointer used to register
+    :type info: struct acpiphp_attention_info \*
 
 .. _`acpiphp_unregister_attention.description`:
 
@@ -52,8 +54,9 @@ enable_slot
 
     power on and enable a slot
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         slot to enable
+    :type hotplug_slot: struct hotplug_slot \*
 
 .. _`enable_slot.description`:
 
@@ -71,8 +74,9 @@ disable_slot
 
     disable and power off a slot
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         slot to disable
+    :type hotplug_slot: struct hotplug_slot \*
 
 .. _`disable_slot.description`:
 
@@ -90,11 +94,13 @@ set_attention_status
 
     set attention LED
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         slot to set attention LED on
+    :type hotplug_slot: struct hotplug_slot \*
 
-    :param u8 status:
+    :param status:
         value to set attention LED to (0 or 1)
+    :type status: u8
 
 .. _`set_attention_status.description`:
 
@@ -114,11 +120,13 @@ get_power_status
 
     get power status of a slot
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         slot to get status
+    :type hotplug_slot: struct hotplug_slot \*
 
-    :param u8 \*value:
+    :param value:
         pointer to store status
+    :type value: u8 \*
 
 .. _`get_power_status.description`:
 
@@ -137,11 +145,13 @@ get_attention_status
 
     get attention LED status
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         slot to get status from
+    :type hotplug_slot: struct hotplug_slot \*
 
-    :param u8 \*value:
+    :param value:
         returns with value of attention LED
+    :type value: u8 \*
 
 .. _`get_attention_status.description`:
 
@@ -162,11 +172,13 @@ get_latch_status
 
     get latch status of a slot
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         slot to get status
+    :type hotplug_slot: struct hotplug_slot \*
 
-    :param u8 \*value:
+    :param value:
         pointer to store status
+    :type value: u8 \*
 
 .. _`get_latch_status.description`:
 
@@ -185,11 +197,13 @@ get_adapter_status
 
     get adapter status of a slot
 
-    :param struct hotplug_slot \*hotplug_slot:
+    :param hotplug_slot:
         slot to get status
+    :type hotplug_slot: struct hotplug_slot \*
 
-    :param u8 \*value:
+    :param value:
         pointer to store status
+    :type value: u8 \*
 
 .. _`get_adapter_status.description`:
 
@@ -198,18 +212,6 @@ Description
 
 ACPI doesn't provide any formal means to access adapter status.
 Instead, we fake adapter status from \_STA.
-
-.. _`release_slot`:
-
-release_slot
-============
-
-.. c:function:: void release_slot(struct hotplug_slot *hotplug_slot)
-
-    free up the memory used by a slot
-
-    :param struct hotplug_slot \*hotplug_slot:
-        slot to free
 
 .. This file was automatic generated / don't edit.
 

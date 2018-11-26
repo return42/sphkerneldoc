@@ -10,11 +10,13 @@ brcmf_feat_debugfs_read
 
     expose feature info to debugfs.
 
-    :param struct seq_file \*seq:
+    :param seq:
         sequence for debugfs entry.
+    :type seq: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         raw data pointer.
+    :type data: void \*
 
 .. _`brcmf_feat_iovar_int_get`:
 
@@ -25,14 +27,17 @@ brcmf_feat_iovar_int_get
 
     determine feature through iovar query.
 
-    :param struct brcmf_if \*ifp:
+    :param ifp:
         interface to query.
+    :type ifp: struct brcmf_if \*
 
-    :param enum brcmf_feat_id id:
+    :param id:
         feature id.
+    :type id: enum brcmf_feat_id
 
-    :param char \*name:
+    :param name:
         iovar name.
+    :type name: char \*
 
 .. _`brcmf_feat_fwcap_debugfs_read`:
 
@@ -43,11 +48,13 @@ brcmf_feat_fwcap_debugfs_read
 
     expose firmware capabilities to debugfs.
 
-    :param struct seq_file \*seq:
+    :param seq:
         sequence for debugfs entry.
+    :type seq: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         raw data pointer.
+    :type data: void \*
 
 .. This file was automatic generated / don't edit.
 

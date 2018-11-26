@@ -10,11 +10,13 @@ blk_queue_find_tag
 
     find a request by its tag and queue
 
-    :param struct request_queue \*q:
+    :param q:
         The request queue for the device
+    :type q: struct request_queue \*
 
-    :param int tag:
+    :param tag:
         The tag of the request
+    :type tag: int
 
 .. _`blk_queue_find_tag.notes`:
 
@@ -35,8 +37,9 @@ blk_free_tags
 
     release a given set of tag maintenance info
 
-    :param struct blk_queue_tag \*bqt:
+    :param bqt:
         the tag map to free
+    :type bqt: struct blk_queue_tag \*
 
 .. _`blk_free_tags.description`:
 
@@ -55,8 +58,9 @@ __blk_queue_free_tags
 
     release tag maintenance info
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
 .. _`__blk_queue_free_tags.notes`:
 
@@ -75,8 +79,9 @@ blk_queue_free_tags
 
     release tag maintenance info
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
 .. _`blk_queue_free_tags.notes`:
 
@@ -95,11 +100,13 @@ blk_init_tags
 
     initialize the tag info for an external tag map
 
-    :param int depth:
+    :param depth:
         the maximum queue depth supported
+    :type depth: int
 
-    :param int alloc_policy:
+    :param alloc_policy:
         tag allocation policy
+    :type alloc_policy: int
 
 .. _`blk_queue_init_tags`:
 
@@ -110,17 +117,21 @@ blk_queue_init_tags
 
     initialize the queue tag info
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param int depth:
+    :param depth:
         the maximum queue depth supported
+    :type depth: int
 
-    :param struct blk_queue_tag \*tags:
+    :param tags:
         the tag to use
+    :type tags: struct blk_queue_tag \*
 
-    :param int alloc_policy:
+    :param alloc_policy:
         tag allocation policy
+    :type alloc_policy: int
 
 .. _`blk_queue_init_tags.description`:
 
@@ -139,11 +150,13 @@ blk_queue_resize_tags
 
     change the queueing depth
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param int new_depth:
+    :param new_depth:
         the new max command queueing depth
+    :type new_depth: int
 
 .. _`blk_queue_resize_tags.notes`:
 
@@ -161,11 +174,13 @@ blk_queue_end_tag
 
     end tag operations for a request
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         the request that has completed
+    :type rq: struct request \*
 
 .. _`blk_queue_end_tag.description`:
 
@@ -186,11 +201,13 @@ blk_queue_start_tag
 
     find a free tag and assign it
 
-    :param struct request_queue \*q:
+    :param q:
         the request queue for the device
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         the block request that needs tagging
+    :type rq: struct request \*
 
 .. _`blk_queue_start_tag.description`:
 

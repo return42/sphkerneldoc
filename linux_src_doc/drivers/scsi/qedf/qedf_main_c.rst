@@ -10,11 +10,13 @@ qedf_xmit
 
     qedf FCoE frame transmit function
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_frame \*fp:
+    :param fp:
         *undescribed*
+    :type fp: struct fc_frame \*
 
 .. _`qedf_rport_event_handler`:
 
@@ -25,14 +27,17 @@ qedf_rport_event_handler
 
     initiated target login. qedf can proceed with initiating the session establishment.
 
-    :param struct fc_lport \*lport:
+    :param lport:
         *undescribed*
+    :type lport: struct fc_lport \*
 
-    :param struct fc_rport_priv \*rdata:
+    :param rdata:
         *undescribed*
+    :type rdata: struct fc_rport_priv \*
 
-    :param enum fc_rport_event event:
+    :param event:
         *undescribed*
+    :type event: enum fc_rport_event
 
 .. _`qedf_fcoe_reset`:
 
@@ -43,8 +48,9 @@ qedf_fcoe_reset
 
     Resets the fcoe
 
-    :param struct Scsi_Host \*shost:
+    :param shost:
         shost the reset is from
+    :type shost: struct Scsi_Host \*
 
 .. _`qedf_fcoe_reset.return`:
 

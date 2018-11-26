@@ -10,17 +10,21 @@ skb_panic
 
     private function for out-of-line support
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: struct sk_buff \*
 
-    :param unsigned int sz:
+    :param sz:
         size
+    :type sz: unsigned int
 
-    :param void \*addr:
+    :param addr:
         address
+    :type addr: void \*
 
-    :param const char msg:
+    :param msg:
         skb_over_panic or skb_under_panic
+    :type msg: const char
 
 .. _`skb_panic.description`:
 
@@ -41,20 +45,24 @@ __alloc_skb
 
     allocate a network buffer
 
-    :param unsigned int size:
+    :param size:
         size to allocate
+    :type size: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation mask
+    :type gfp_mask: gfp_t
 
-    :param int flags:
+    :param flags:
         If SKB_ALLOC_FCLONE is set, allocate from fclone cache
         instead of head cache and allocate a cloned (child) skb.
         If SKB_ALLOC_RX is set, __GFP_MEMALLOC will be used for
         allocations in case the data is required for writeback
+    :type flags: int
 
-    :param int node:
+    :param node:
         numa node to allocate memory on
+    :type node: int
 
 .. _`__alloc_skb.description`:
 
@@ -77,11 +85,13 @@ __build_skb
 
     build a network buffer
 
-    :param void \*data:
+    :param data:
         data buffer provided by caller
+    :type data: void \*
 
-    :param unsigned int frag_size:
+    :param frag_size:
         size of data, or 0 if head was kmalloced
+    :type frag_size: unsigned int
 
 .. _`__build_skb.description`:
 
@@ -111,8 +121,9 @@ netdev_alloc_frag
 
     allocate a page fragment
 
-    :param unsigned int fragsz:
+    :param fragsz:
         fragment size
+    :type fragsz: unsigned int
 
 .. _`netdev_alloc_frag.description`:
 
@@ -131,14 +142,17 @@ __netdev_alloc_skb
 
     allocate an skbuff for rx on a specific device
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to receive on
+    :type dev: struct net_device \*
 
-    :param unsigned int len:
+    :param len:
         length to allocate
+    :type len: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         get_free_pages mask, passed to alloc_skb
+    :type gfp_mask: gfp_t
 
 .. _`__netdev_alloc_skb.description`:
 
@@ -161,14 +175,17 @@ __napi_alloc_skb
 
     allocate skbuff for rx in a specific NAPI instance
 
-    :param struct napi_struct \*napi:
+    :param napi:
         napi instance this buffer was allocated for
+    :type napi: struct napi_struct \*
 
-    :param unsigned int len:
+    :param len:
         length to allocate
+    :type len: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         get_free_pages mask, passed to alloc_skb and alloc_pages
+    :type gfp_mask: gfp_t
 
 .. _`__napi_alloc_skb.description`:
 
@@ -191,8 +208,9 @@ __kfree_skb
 
     private function
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: struct sk_buff \*
 
 .. _`__kfree_skb.description`:
 
@@ -212,8 +230,9 @@ kfree_skb
 
     free an sk_buff
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to free
+    :type skb: struct sk_buff \*
 
 .. _`kfree_skb.description`:
 
@@ -232,8 +251,9 @@ skb_tx_error
 
     report an sk_buff xmit error
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer that triggered an error
+    :type skb: struct sk_buff \*
 
 .. _`skb_tx_error.description`:
 
@@ -252,8 +272,9 @@ consume_skb
 
     free an skbuff
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to free
+    :type skb: struct sk_buff \*
 
 .. _`consume_skb.description`:
 
@@ -273,8 +294,9 @@ __consume_stateless_skb
 
     free an skbuff, assuming it is stateless
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to free
+    :type skb: struct sk_buff \*
 
 .. _`__consume_stateless_skb.description`:
 
@@ -293,11 +315,13 @@ skb_morph
 
     morph one skb into another
 
-    :param struct sk_buff \*dst:
+    :param dst:
         the skb to receive the contents
+    :type dst: struct sk_buff \*
 
-    :param struct sk_buff \*src:
+    :param src:
         the skb to supply the contents
+    :type src: struct sk_buff \*
 
 .. _`skb_morph.description`:
 
@@ -318,11 +342,13 @@ skb_copy_ubufs
 
     copy userspace skb frags buffers to kernel
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb to modify
+    :type skb: struct sk_buff \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation priority
+    :type gfp_mask: gfp_t
 
 .. _`skb_copy_ubufs.description`:
 
@@ -348,11 +374,13 @@ skb_clone
 
     duplicate an sk_buff
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to clone
+    :type skb: struct sk_buff \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation priority
+    :type gfp_mask: gfp_t
 
 .. _`skb_clone.description`:
 
@@ -376,11 +404,13 @@ skb_copy
 
     create private copy of an sk_buff
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to copy
+    :type skb: const struct sk_buff \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation priority
+    :type gfp_mask: gfp_t
 
 .. _`skb_copy.description`:
 
@@ -407,19 +437,23 @@ __pskb_copy_fclone
 
     create copy of an sk_buff with private head.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to copy
+    :type skb: struct sk_buff \*
 
-    :param int headroom:
+    :param headroom:
         headroom of new skb
+    :type headroom: int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation priority
+    :type gfp_mask: gfp_t
 
-    :param bool fclone:
+    :param fclone:
         if true allocate the copy of the skb from the fclone
         cache instead of the head cache; it is recommended to set this
         to true for the cases where the copy will likely be cloned
+    :type fclone: bool
 
 .. _`__pskb_copy_fclone.description`:
 
@@ -442,17 +476,21 @@ pskb_expand_head
 
     reallocate header of \ :c:type:`struct sk_buff <sk_buff>`\ 
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to reallocate
+    :type skb: struct sk_buff \*
 
-    :param int nhead:
+    :param nhead:
         room to add at head
+    :type nhead: int
 
-    :param int ntail:
+    :param ntail:
         room to add at tail
+    :type ntail: int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation priority
+    :type gfp_mask: gfp_t
 
 .. _`pskb_expand_head.description`:
 
@@ -476,17 +514,21 @@ skb_copy_expand
 
     copy and expand sk_buff
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         buffer to copy
+    :type skb: const struct sk_buff \*
 
-    :param int newheadroom:
+    :param newheadroom:
         new free bytes at head
+    :type newheadroom: int
 
-    :param int newtailroom:
+    :param newtailroom:
         new free bytes at tail
+    :type newtailroom: int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation priority
+    :type gfp_mask: gfp_t
 
 .. _`skb_copy_expand.description`:
 
@@ -513,14 +555,17 @@ __skb_pad
 
     zero pad the tail of an skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to pad
+    :type skb: struct sk_buff \*
 
-    :param int pad:
+    :param pad:
         space to pad
+    :type pad: int
 
-    :param bool free_on_error:
+    :param free_on_error:
         free buffer on error
+    :type free_on_error: bool
 
 .. _`__skb_pad.description`:
 
@@ -543,14 +588,17 @@ pskb_put
 
     add data to the tail of a potentially fragmented buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         start of the buffer to use
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff \*tail:
+    :param tail:
         tail fragment of the buffer to use
+    :type tail: struct sk_buff \*
 
-    :param int len:
+    :param len:
         amount of data to add
+    :type len: int
 
 .. _`pskb_put.description`:
 
@@ -572,11 +620,13 @@ skb_put
 
     add data to a buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to use
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         amount of data to add
+    :type len: unsigned int
 
 .. _`skb_put.description`:
 
@@ -596,11 +646,13 @@ skb_push
 
     add data to the start of a buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to use
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         amount of data to add
+    :type len: unsigned int
 
 .. _`skb_push.description`:
 
@@ -620,11 +672,13 @@ skb_pull
 
     remove data from the start of a buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to use
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         amount of data to remove
+    :type len: unsigned int
 
 .. _`skb_pull.description`:
 
@@ -645,11 +699,13 @@ skb_trim
 
     remove end from a buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to alter
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         new length
+    :type len: unsigned int
 
 .. _`skb_trim.description`:
 
@@ -669,11 +725,13 @@ __pskb_pull_tail
 
     advance tail of skb header
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to reallocate
+    :type skb: struct sk_buff \*
 
-    :param int delta:
+    :param delta:
         number of bytes to advance tail
+    :type delta: int
 
 .. _`__pskb_pull_tail.description`:
 
@@ -701,17 +759,21 @@ skb_copy_bits
 
     copy bits from skb to kernel buffer
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         source skb
+    :type skb: const struct sk_buff \*
 
-    :param int offset:
+    :param offset:
         offset in source
+    :type offset: int
 
-    :param void \*to:
+    :param to:
         destination buffer
+    :type to: void \*
 
-    :param int len:
+    :param len:
         number of bytes to copy
+    :type len: int
 
 .. _`skb_copy_bits.description`:
 
@@ -735,17 +797,21 @@ skb_store_bits
 
     store bits from kernel buffer to skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         destination buffer
+    :type skb: struct sk_buff \*
 
-    :param int offset:
+    :param offset:
         offset in destination
+    :type offset: int
 
-    :param const void \*from:
+    :param from:
         source buffer
+    :type from: const void \*
 
-    :param int len:
+    :param len:
         number of bytes to copy
+    :type len: int
 
 .. _`skb_store_bits.description`:
 
@@ -765,17 +831,21 @@ skb_zerocopy
 
     Zero copy skb to skb
 
-    :param struct sk_buff \*to:
+    :param to:
         destination buffer
+    :type to: struct sk_buff \*
 
-    :param struct sk_buff \*from:
+    :param from:
         source buffer
+    :type from: struct sk_buff \*
 
-    :param int len:
+    :param len:
         number of bytes to copy from source buffer
+    :type len: int
 
-    :param int hlen:
+    :param hlen:
         size of linear headroom in destination buffer
+    :type hlen: int
 
 .. _`skb_zerocopy.description`:
 
@@ -806,8 +876,9 @@ skb_dequeue
 
     remove from the head of the queue
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to dequeue from
+    :type list: struct sk_buff_head \*
 
 .. _`skb_dequeue.description`:
 
@@ -827,8 +898,9 @@ skb_dequeue_tail
 
     remove from the tail of the queue
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to dequeue from
+    :type list: struct sk_buff_head \*
 
 .. _`skb_dequeue_tail.description`:
 
@@ -848,8 +920,9 @@ skb_queue_purge
 
     empty a list
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to empty
+    :type list: struct sk_buff_head \*
 
 .. _`skb_queue_purge.description`:
 
@@ -865,12 +938,14 @@ Description
 skb_rbtree_purge
 ================
 
-.. c:function:: void skb_rbtree_purge(struct rb_root *root)
+.. c:function:: unsigned int skb_rbtree_purge(struct rb_root *root)
 
     empty a skb rbtree
 
-    :param struct rb_root \*root:
+    :param root:
         root of the rbtree to empty
+        Return value: the sum of truesizes of all purged skbs.
+    :type root: struct rb_root \*
 
 .. _`skb_rbtree_purge.description`:
 
@@ -891,11 +966,13 @@ skb_queue_head
 
     queue a buffer at the list head
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to use
+    :type list: struct sk_buff_head \*
 
-    :param struct sk_buff \*newsk:
+    :param newsk:
         buffer to queue
+    :type newsk: struct sk_buff \*
 
 .. _`skb_queue_head.description`:
 
@@ -917,11 +994,13 @@ skb_queue_tail
 
     queue a buffer at the list tail
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to use
+    :type list: struct sk_buff_head \*
 
-    :param struct sk_buff \*newsk:
+    :param newsk:
         buffer to queue
+    :type newsk: struct sk_buff \*
 
 .. _`skb_queue_tail.description`:
 
@@ -943,11 +1022,13 @@ skb_unlink
 
     remove a buffer from a list
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to remove
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to use
+    :type list: struct sk_buff_head \*
 
 .. _`skb_unlink.description`:
 
@@ -968,14 +1049,17 @@ skb_append
 
     append a buffer
 
-    :param struct sk_buff \*old:
+    :param old:
         buffer to insert after
+    :type old: struct sk_buff \*
 
-    :param struct sk_buff \*newsk:
+    :param newsk:
         buffer to insert
+    :type newsk: struct sk_buff \*
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to use
+    :type list: struct sk_buff_head \*
 
 .. _`skb_append.description`:
 
@@ -995,14 +1079,17 @@ skb_insert
 
     insert a buffer
 
-    :param struct sk_buff \*old:
+    :param old:
         buffer to insert before
+    :type old: struct sk_buff \*
 
-    :param struct sk_buff \*newsk:
+    :param newsk:
         buffer to insert
+    :type newsk: struct sk_buff \*
 
-    :param struct sk_buff_head \*list:
+    :param list:
         list to use
+    :type list: struct sk_buff_head \*
 
 .. _`skb_insert.description`:
 
@@ -1024,14 +1111,17 @@ skb_split
 
     Split fragmented skb to two parts at length len.
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer to split
+    :type skb: struct sk_buff \*
 
-    :param struct sk_buff \*skb1:
+    :param skb1:
         the buffer to receive the second part
+    :type skb1: struct sk_buff \*
 
-    :param const u32 len:
+    :param len:
         new length for skb
+    :type len: const u32
 
 .. _`skb_shift`:
 
@@ -1042,14 +1132,17 @@ skb_shift
 
     Shifts paged data partially from skb to another
 
-    :param struct sk_buff \*tgt:
+    :param tgt:
         buffer into which tail data gets added
+    :type tgt: struct sk_buff \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer from which the paged data comes from
+    :type skb: struct sk_buff \*
 
-    :param int shiftlen:
+    :param shiftlen:
         shift up to this many bytes
+    :type shiftlen: int
 
 .. _`skb_shift.description`:
 
@@ -1077,17 +1170,21 @@ skb_prepare_seq_read
 
     Prepare a sequential read of skb data
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer to read
+    :type skb: struct sk_buff \*
 
-    :param unsigned int from:
+    :param from:
         lower offset of data to be read
+    :type from: unsigned int
 
-    :param unsigned int to:
+    :param to:
         upper offset of data to be read
+    :type to: unsigned int
 
-    :param struct skb_seq_state \*st:
+    :param st:
         state variable
+    :type st: struct skb_seq_state \*
 
 .. _`skb_prepare_seq_read.description`:
 
@@ -1106,14 +1203,17 @@ skb_seq_read
 
     Sequentially read skb data
 
-    :param unsigned int consumed:
+    :param consumed:
         number of bytes consumed by the caller so far
+    :type consumed: unsigned int
 
-    :param const u8 \*\*data:
+    :param data:
         destination pointer for data to be returned
+    :type data: const u8 \*\*
 
-    :param struct skb_seq_state \*st:
+    :param st:
         state variable
+    :type st: struct skb_seq_state \*
 
 .. _`skb_seq_read.description`:
 
@@ -1148,8 +1248,9 @@ skb_abort_seq_read
 
     Abort a sequential read of skb data
 
-    :param struct skb_seq_state \*st:
+    :param st:
         state variable
+    :type st: struct skb_seq_state \*
 
 .. _`skb_abort_seq_read.description`:
 
@@ -1168,17 +1269,21 @@ skb_find_text
 
     Find a text pattern in skb data
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer to look in
+    :type skb: struct sk_buff \*
 
-    :param unsigned int from:
+    :param from:
         search offset
+    :type from: unsigned int
 
-    :param unsigned int to:
+    :param to:
         search limit
+    :type to: unsigned int
 
-    :param struct ts_config \*config:
+    :param config:
         textsearch configuration
+    :type config: struct ts_config \*
 
 .. _`skb_find_text.description`:
 
@@ -1190,38 +1295,6 @@ textsearch configuration. Use \ :c:func:`textsearch_next`\  to retrieve
 subsequent occurrences of the pattern. Returns the offset
 to the first occurrence or UINT_MAX if no match was found.
 
-.. _`skb_append_datato_frags`:
-
-skb_append_datato_frags
-=======================
-
-.. c:function:: int skb_append_datato_frags(struct sock *sk, struct sk_buff *skb, int (*getfrag)(void *from, char *to, int offset, int len, int odd, struct sk_buff *skb), void *from, int length)
-
-    append the user data to a skb
-
-    :param struct sock \*sk:
-        sock  structure
-
-    :param struct sk_buff \*skb:
-        skb structure to be appended with user data.
-
-    :param int (\*getfrag)(void \*from, char \*to, int offset, int len, int odd, struct sk_buff \*skb):
-        call back function to be used for getting the user data
-
-    :param void \*from:
-        pointer to user message iov
-
-    :param int length:
-        length of the iov message
-
-.. _`skb_append_datato_frags.description`:
-
-Description
------------
-
-This procedure append the user data in the fragment part
-of the skb if any page alloc fails user this procedure returns  -ENOMEM
-
 .. _`skb_pull_rcsum`:
 
 skb_pull_rcsum
@@ -1231,11 +1304,13 @@ skb_pull_rcsum
 
     pull skb and update receive checksum
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to update
+    :type skb: struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         length of data pulled
+    :type len: unsigned int
 
 .. _`skb_pull_rcsum.description`:
 
@@ -1257,11 +1332,13 @@ skb_segment
 
     Perform protocol segmentation on skb.
 
-    :param struct sk_buff \*head_skb:
+    :param head_skb:
         buffer to segment
+    :type head_skb: struct sk_buff \*
 
-    :param netdev_features_t features:
+    :param features:
         features for the output path (see dev->features)
+    :type features: netdev_features_t
 
 .. _`skb_segment.description`:
 
@@ -1281,17 +1358,21 @@ skb_to_sgvec
 
     Fill a scatter-gather list from a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Socket buffer containing the buffers to be mapped
+    :type skb: struct sk_buff \*
 
-    :param struct scatterlist \*sg:
+    :param sg:
         The scatter-gather list to map into
+    :type sg: struct scatterlist \*
 
-    :param int offset:
+    :param offset:
         The offset into the buffer's contents to start mapping
+    :type offset: int
 
-    :param int len:
+    :param len:
         Length of buffer space to be mapped
+    :type len: int
 
 .. _`skb_to_sgvec.description`:
 
@@ -1312,14 +1393,17 @@ skb_cow_data
 
     Check that a socket buffer's data buffers are writable
 
-    :param struct sk_buff \*skb:
+    :param skb:
         The socket buffer to check.
+    :type skb: struct sk_buff \*
 
-    :param int tailbits:
+    :param tailbits:
         Amount of trailing space to be added
+    :type tailbits: int
 
-    :param struct sk_buff \*\*trailer:
+    :param trailer:
         Returned pointer to the skb where the \ ``tailbits``\  space begins
+    :type trailer: struct sk_buff \*\*
 
 .. _`skb_cow_data.description`:
 
@@ -1346,8 +1430,9 @@ skb_clone_sk
 
     create clone of skb, and take reference to socket
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb to clone
+    :type skb: struct sk_buff \*
 
 .. _`skb_clone_sk.description`:
 
@@ -1372,14 +1457,17 @@ skb_partial_csum_set
 
     set up and verify partial csum values for packet
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb to set
+    :type skb: struct sk_buff \*
 
-    :param u16 start:
+    :param start:
         the number of bytes after skb->data to start checksumming.
+    :type start: u16
 
-    :param u16 off:
+    :param off:
         the offset from start to place the checksum.
+    :type off: u16
 
 .. _`skb_partial_csum_set.description`:
 
@@ -1401,11 +1489,13 @@ skb_checksum_setup
 
     set up partial checksum offset
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb to set up
+    :type skb: struct sk_buff \*
 
-    :param bool recalculate:
+    :param recalculate:
         if true the pseudo-header checksum will be recalculated
+    :type recalculate: bool
 
 .. _`skb_checksum_maybe_trim`:
 
@@ -1416,11 +1506,13 @@ skb_checksum_maybe_trim
 
     maybe trims the given skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb to check
+    :type skb: struct sk_buff \*
 
-    :param unsigned int transport_len:
+    :param transport_len:
         the data length beyond the network header
+    :type transport_len: unsigned int
 
 .. _`skb_checksum_maybe_trim.description`:
 
@@ -1444,11 +1536,13 @@ skb_checksum_trimmed
 
     validate checksum of an skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the skb to check
+    :type skb: struct sk_buff \*
 
-    :param unsigned int transport_len:
+    :param transport_len:
         the data length beyond the network header
+    :type transport_len: unsigned int
 
     :param __sum16(\*skb_chkf)(struct sk_buff \*skb):
         checksum function to use
@@ -1476,17 +1570,21 @@ skb_try_coalesce
 
     try to merge skb to prior one
 
-    :param struct sk_buff \*to:
+    :param to:
         prior buffer
+    :type to: struct sk_buff \*
 
-    :param struct sk_buff \*from:
+    :param from:
         buffer to add
+    :type from: struct sk_buff \*
 
-    :param bool \*fragstolen:
+    :param fragstolen:
         pointer to boolean
+    :type fragstolen: bool \*
 
-    :param int \*delta_truesize:
+    :param delta_truesize:
         how much more was allocated than was requested
+    :type delta_truesize: int \*
 
 .. _`skb_scrub_packet`:
 
@@ -1497,11 +1595,13 @@ skb_scrub_packet
 
     scrub an skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer to clean
+    :type skb: struct sk_buff \*
 
-    :param bool xnet:
+    :param xnet:
         packet is crossing netns
+    :type xnet: bool
 
 .. _`skb_scrub_packet.description`:
 
@@ -1524,8 +1624,9 @@ skb_gso_transport_seglen
 
     Return length of individual segments of a gso packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         GSO skb
+    :type skb: const struct sk_buff \*
 
 .. _`skb_gso_transport_seglen.description`:
 
@@ -1546,8 +1647,9 @@ skb_gso_network_seglen
 
     Return length of individual segments of a gso packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         GSO skb
+    :type skb: const struct sk_buff \*
 
 .. _`skb_gso_network_seglen.description`:
 
@@ -1568,8 +1670,9 @@ skb_gso_mac_seglen
 
     Return length of individual segments of a gso packet
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         GSO skb
+    :type skb: const struct sk_buff \*
 
 .. _`skb_gso_mac_seglen.description`:
 
@@ -1589,15 +1692,18 @@ skb_gso_size_check
 
     check the skb size, considering GSO_BY_FRAGS
 
-    :param const struct sk_buff \*skb:
-        *undescribed*
+    :param skb:
+        GSO skb
+    :type skb: const struct sk_buff \*
 
-    :param unsigned int seg_len:
+    :param seg_len:
         The segmented length (from skb_gso_*_seglen). In the
         GSO_BY_FRAGS case this will be [header sizes + GSO_BY_FRAGS].
+    :type seg_len: unsigned int
 
-    :param unsigned int max_len:
+    :param max_len:
         The maximum permissible length.
+    :type max_len: unsigned int
 
 .. _`skb_gso_size_check.description`:
 
@@ -1628,11 +1734,13 @@ skb_gso_validate_network_len
 
     Will a split GSO skb fit into a given MTU?
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         GSO skb
+    :type skb: const struct sk_buff \*
 
-    :param unsigned int mtu:
+    :param mtu:
         MTU to validate against
+    :type mtu: unsigned int
 
 .. _`skb_gso_validate_network_len.description`:
 
@@ -1652,11 +1760,13 @@ skb_gso_validate_mac_len
 
     Will a split GSO skb fit in a given length?
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         GSO skb
+    :type skb: const struct sk_buff \*
 
-    :param unsigned int len:
+    :param len:
         length to validate against
+    :type len: unsigned int
 
 .. _`skb_gso_validate_mac_len.description`:
 
@@ -1675,20 +1785,25 @@ alloc_skb_with_frags
 
     allocate skb with page frags
 
-    :param unsigned long header_len:
+    :param header_len:
         size of linear part
+    :type header_len: unsigned long
 
-    :param unsigned long data_len:
+    :param data_len:
         needed length in frags
+    :type data_len: unsigned long
 
-    :param int max_page_order:
+    :param max_page_order:
         max page order desired.
+    :type max_page_order: int
 
-    :param int \*errcode:
+    :param errcode:
         pointer to error code if any
+    :type errcode: int \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation mask
+    :type gfp_mask: gfp_t
 
 .. _`alloc_skb_with_frags.description`:
 
@@ -1706,8 +1821,9 @@ skb_condense
 
     try to get rid of fragments/frag_list if possible
 
-    :param struct sk_buff \*skb:
+    :param skb:
         buffer
+    :type skb: struct sk_buff \*
 
 .. _`skb_condense.description`:
 

@@ -10,11 +10,13 @@ opa_vnic_vema_report_event
 
     sent trap to report the specified event
 
-    :param struct opa_vnic_adapter \*adapter:
+    :param adapter:
         vnic port adapter
+    :type adapter: struct opa_vnic_adapter \*
 
-    :param u8 event:
+    :param event:
         event to be reported
+    :type event: u8
 
 .. _`opa_vnic_vema_report_event.description`:
 
@@ -32,11 +34,13 @@ opa_vnic_get_summary_counters
 
     get summary counters
 
-    :param struct opa_vnic_adapter \*adapter:
+    :param adapter:
         vnic port adapter
+    :type adapter: struct opa_vnic_adapter \*
 
-    :param struct opa_veswport_summary_counters \*cntrs:
+    :param cntrs:
         pointer to destination summary counters structure
+    :type cntrs: struct opa_veswport_summary_counters \*
 
 .. _`opa_vnic_get_summary_counters.description`:
 
@@ -55,11 +59,13 @@ opa_vnic_get_error_counters
 
     get error counters
 
-    :param struct opa_vnic_adapter \*adapter:
+    :param adapter:
         vnic port adapter
+    :type adapter: struct opa_vnic_adapter \*
 
-    :param struct opa_veswport_error_counters \*cntrs:
+    :param cntrs:
         pointer to destination error counters structure
+    :type cntrs: struct opa_veswport_error_counters \*
 
 .. _`opa_vnic_get_error_counters.description`:
 
@@ -78,11 +84,13 @@ opa_vnic_get_vesw_info
 
     - Get the vesw information
 
-    :param struct opa_vnic_adapter \*adapter:
+    :param adapter:
         vnic port adapter
+    :type adapter: struct opa_vnic_adapter \*
 
-    :param struct opa_vesw_info \*info:
+    :param info:
         pointer to destination vesw info structure
+    :type info: struct opa_vesw_info \*
 
 .. _`opa_vnic_get_vesw_info.description`:
 
@@ -101,11 +109,13 @@ opa_vnic_set_vesw_info
 
     - Set the vesw information
 
-    :param struct opa_vnic_adapter \*adapter:
+    :param adapter:
         vnic port adapter
+    :type adapter: struct opa_vnic_adapter \*
 
-    :param struct opa_vesw_info \*info:
+    :param info:
         pointer to vesw info structure
+    :type info: struct opa_vesw_info \*
 
 .. _`opa_vnic_set_vesw_info.description`:
 
@@ -125,11 +135,13 @@ opa_vnic_get_per_veswport_info
 
     - Get the vesw per port information
 
-    :param struct opa_vnic_adapter \*adapter:
+    :param adapter:
         vnic port adapter
+    :type adapter: struct opa_vnic_adapter \*
 
-    :param struct opa_per_veswport_info \*info:
+    :param info:
         pointer to destination vport info structure
+    :type info: struct opa_per_veswport_info \*
 
 .. _`opa_vnic_get_per_veswport_info.description`:
 
@@ -149,11 +161,13 @@ opa_vnic_set_per_veswport_info
 
     - Set vesw per port information
 
-    :param struct opa_vnic_adapter \*adapter:
+    :param adapter:
         vnic port adapter
+    :type adapter: struct opa_vnic_adapter \*
 
-    :param struct opa_per_veswport_info \*info:
+    :param info:
         pointer to vport info structure
+    :type info: struct opa_per_veswport_info \*
 
 .. _`opa_vnic_set_per_veswport_info.description`:
 
@@ -173,11 +187,13 @@ opa_vnic_query_mcast_macs
 
     query multicast mac list
 
-    :param struct opa_vnic_adapter \*adapter:
+    :param adapter:
         vnic port adapter
+    :type adapter: struct opa_vnic_adapter \*
 
-    :param struct opa_veswport_iface_macs \*macs:
+    :param macs:
         pointer mac list
+    :type macs: struct opa_veswport_iface_macs \*
 
 .. _`opa_vnic_query_mcast_macs.description`:
 
@@ -196,11 +212,13 @@ opa_vnic_query_ucast_macs
 
     query unicast mac list
 
-    :param struct opa_vnic_adapter \*adapter:
+    :param adapter:
         vnic port adapter
+    :type adapter: struct opa_vnic_adapter \*
 
-    :param struct opa_veswport_iface_macs \*macs:
+    :param macs:
         pointer mac list
+    :type macs: struct opa_veswport_iface_macs \*
 
 .. _`opa_vnic_query_ucast_macs.description`:
 

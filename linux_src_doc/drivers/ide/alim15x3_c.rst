@@ -10,11 +10,13 @@ ali_set_pio_mode
 
     set host controller for PIO mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`ali_set_pio_mode.description`:
 
@@ -32,8 +34,9 @@ ali_udma_filter
 
     compute UDMA mask
 
-    :param ide_drive_t \*drive:
+    :param drive:
         IDE device
+    :type drive: ide_drive_t \*
 
 .. _`ali_udma_filter.description`:
 
@@ -60,11 +63,13 @@ ali_set_dma_mode
 
     set host controller for DMA mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`ali_set_dma_mode.description`:
 
@@ -82,11 +87,13 @@ ali_dma_check
 
     DMA check
 
-    :param ide_drive_t \*drive:
+    :param drive:
         target device
+    :type drive: ide_drive_t \*
 
-    :param struct ide_cmd \*cmd:
+    :param cmd:
         command
+    :type cmd: struct ide_cmd \*
 
 .. _`ali_dma_check.description`:
 
@@ -104,8 +111,9 @@ init_chipset_ali15x3
 
     Initialise an ALi IDE controller
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`init_chipset_ali15x3.description`:
 
@@ -124,8 +132,9 @@ ali_cable_detect
 
     cable detection
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         IDE interface
+    :type hwif: ide_hwif_t \*
 
 .. _`ali_cable_detect.description`:
 
@@ -144,8 +153,9 @@ init_hwif_ali15x3
 
     Initialize the ALI IDE x86 stuff
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         interface to configure
+    :type hwif: ide_hwif_t \*
 
 .. _`init_hwif_ali15x3.description`:
 
@@ -165,11 +175,13 @@ init_dma_ali15x3
 
     set up DMA on ALi15x3
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         IDE interface
+    :type hwif: ide_hwif_t \*
 
-    :param const struct ide_port_info \*d:
+    :param d:
         IDE port info
+    :type d: const struct ide_port_info \*
 
 .. _`init_dma_ali15x3.description`:
 
@@ -187,11 +199,13 @@ alim15x3_init_one
 
     set up an ALi15x3 IDE controller
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device to set up
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct pci_device_id \*
 
 .. _`alim15x3_init_one.description`:
 

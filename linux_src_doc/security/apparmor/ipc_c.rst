@@ -10,11 +10,13 @@ audit_ptrace_mask
 
     convert mask to permission string
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         *undescribed*
+    :type ab: struct audit_buffer \*
 
-    :param u32 mask:
+    :param mask:
         permission mask to convert
+    :type mask: u32
 
 .. _`aa_may_ptrace`:
 
@@ -25,14 +27,17 @@ aa_may_ptrace
 
     test if tracer task can trace the tracee
 
-    :param struct aa_label \*tracer:
+    :param tracer:
         label of the task doing the tracing  (NOT NULL)
+    :type tracer: struct aa_label \*
 
-    :param struct aa_label \*tracee:
+    :param tracee:
         task label to be traced
+    :type tracee: struct aa_label \*
 
-    :param u32 request:
+    :param request:
         permission request
+    :type request: u32
 
 .. _`aa_may_ptrace.return`:
 
@@ -50,11 +55,13 @@ audit_signal_mask
 
     convert mask to permission string
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         *undescribed*
+    :type ab: struct audit_buffer \*
 
-    :param u32 mask:
+    :param mask:
         permission mask to convert
+    :type mask: u32
 
 .. _`audit_signal_cb`:
 
@@ -65,11 +72,13 @@ audit_signal_cb
 
     call back for signal specific audit fields
 
-    :param struct audit_buffer \*ab:
+    :param ab:
         audit_buffer  (NOT NULL)
+    :type ab: struct audit_buffer \*
 
-    :param void \*va:
+    :param va:
         audit struct to audit values of  (NOT NULL)
+    :type va: void \*
 
 .. This file was automatic generated / don't edit.
 

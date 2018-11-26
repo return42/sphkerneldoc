@@ -7,5 +7,4 @@ vc04_services
 .. toctree::
     :maxdepth: 1
 
-    bcm2835-audio/index
     interface/index

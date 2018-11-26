@@ -10,14 +10,17 @@ __parport_register_driver
 
     register a parallel port device driver
 
-    :param struct parport_driver \*drv:
+    :param drv:
         structure describing the driver
+    :type drv: struct parport_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         owner module of drv
+    :type owner: struct module \*
 
-    :param const char \*mod_name:
+    :param mod_name:
         module name string
+    :type mod_name: const char \*
 
 .. _`__parport_register_driver.description`:
 
@@ -63,9 +66,10 @@ parport_unregister_driver
 
     deregister a parallel port device driver
 
-    :param struct parport_driver \*drv:
+    :param drv:
         structure describing the driver that was given to
         \ :c:func:`parport_register_driver`\ 
+    :type drv: struct parport_driver \*
 
 .. _`parport_unregister_driver.description`:
 
@@ -92,8 +96,9 @@ parport_get_port
 
     increment a port's reference count
 
-    :param struct parport \*port:
+    :param port:
         the port
+    :type port: struct parport \*
 
 .. _`parport_get_port.description`:
 
@@ -112,8 +117,9 @@ parport_put_port
 
     decrement a port's reference count
 
-    :param struct parport \*port:
+    :param port:
         the port
+    :type port: struct parport \*
 
 .. _`parport_put_port.description`:
 
@@ -133,17 +139,21 @@ parport_register_port
 
     register a parallel port
 
-    :param unsigned long base:
+    :param base:
         base I/O address
+    :type base: unsigned long
 
-    :param int irq:
+    :param irq:
         IRQ line
+    :type irq: int
 
-    :param int dma:
+    :param dma:
         DMA channel
+    :type dma: int
 
-    :param struct parport_operations \*ops:
+    :param ops:
         pointer to the port driver's port operations structure
+    :type ops: struct parport_operations \*
 
 .. _`parport_register_port.description`:
 
@@ -180,8 +190,9 @@ parport_announce_port
 
     tell device drivers about a parallel port
 
-    :param struct parport \*port:
+    :param port:
         parallel port to announce
+    :type port: struct parport \*
 
 .. _`parport_announce_port.description`:
 
@@ -204,8 +215,9 @@ parport_remove_port
 
     deregister a parallel port
 
-    :param struct parport \*port:
+    :param port:
         parallel port to deregister
+    :type port: struct parport \*
 
 .. _`parport_remove_port.description`:
 
@@ -235,11 +247,13 @@ parport_register_device
 
     register a device on a parallel port
 
-    :param struct parport \*port:
+    :param port:
         port to which the device is attached
+    :type port: struct parport \*
 
-    :param const char \*name:
+    :param name:
         a name to refer to the device
+    :type name: const char \*
 
     :param int (\*pf)(void \*):
         preemption callback
@@ -250,11 +264,13 @@ parport_register_device
     :param void (\*irq_func)(void \*):
         interrupt handler
 
-    :param int flags:
+    :param flags:
         registration flags
+    :type flags: int
 
-    :param void \*handle:
+    :param handle:
         data for callback functions
+    :type handle: void \*
 
 .. _`parport_register_device.description`:
 
@@ -328,8 +344,9 @@ parport_unregister_device
 
     deregister a device on a parallel port
 
-    :param struct pardevice \*dev:
+    :param dev:
         pointer to structure representing device
+    :type dev: struct pardevice \*
 
 .. _`parport_unregister_device.description`:
 
@@ -347,8 +364,9 @@ parport_find_number
 
     find a parallel port by number
 
-    :param int number:
+    :param number:
         parallel port number
+    :type number: int
 
 .. _`parport_find_number.description`:
 
@@ -371,8 +389,9 @@ parport_find_base
 
     find a parallel port by base address
 
-    :param unsigned long base:
+    :param base:
         base I/O address
+    :type base: unsigned long
 
 .. _`parport_find_base.description`:
 
@@ -395,8 +414,9 @@ parport_claim
 
     claim access to a parallel port device
 
-    :param struct pardevice \*dev:
+    :param dev:
         pointer to structure representing a device on the port
+    :type dev: struct pardevice \*
 
 .. _`parport_claim.description`:
 
@@ -419,8 +439,9 @@ parport_claim_or_block
 
     claim access to a parallel port device
 
-    :param struct pardevice \*dev:
+    :param dev:
         pointer to structure representing a device on the port
+    :type dev: struct pardevice \*
 
 .. _`parport_claim_or_block.description`:
 
@@ -441,8 +462,9 @@ parport_release
 
     give up access to a parallel port device
 
-    :param struct pardevice \*dev:
+    :param dev:
         pointer to structure representing parallel port device
+    :type dev: struct pardevice \*
 
 .. _`parport_release.description`:
 

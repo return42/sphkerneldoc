@@ -10,8 +10,9 @@ lis3lv02d_acpi_init
 
     ACPI \_INI method: initialize the device.
 
-    :param struct lis3lv02d \*lis3:
+    :param lis3:
         pointer to the device struct
+    :type lis3: struct lis3lv02d \*
 
 .. _`lis3lv02d_acpi_init.description`:
 
@@ -29,14 +30,17 @@ lis3lv02d_acpi_read
 
     ACPI ALRD method: read a register
 
-    :param struct lis3lv02d \*lis3:
+    :param lis3:
         pointer to the device struct
+    :type lis3: struct lis3lv02d \*
 
-    :param int reg:
+    :param reg:
         the register to read
+    :type reg: int
 
-    :param u8 \*ret:
+    :param ret:
         result of the operation
+    :type ret: u8 \*
 
 .. _`lis3lv02d_acpi_read.description`:
 
@@ -54,14 +58,17 @@ lis3lv02d_acpi_write
 
     ACPI ALWR method: write to a register
 
-    :param struct lis3lv02d \*lis3:
+    :param lis3:
         pointer to the device struct
+    :type lis3: struct lis3lv02d \*
 
-    :param int reg:
+    :param reg:
         the register to write to
+    :type reg: int
 
-    :param u8 val:
+    :param val:
         the value to write
+    :type val: u8
 
 .. _`lis3lv02d_acpi_write.description`:
 

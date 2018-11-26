@@ -56,8 +56,9 @@ work_pending
 
     Find out whether a work item is currently pending
 
-    :param  work:
+    :param work:
         The work item in question
+    :type work: 
 
 .. _`delayed_work_pending`:
 
@@ -68,8 +69,9 @@ delayed_work_pending
 
     Find out whether a delayable work item is currently pending
 
-    :param  w:
+    :param w:
         The work item in question
+    :type w: 
 
 .. _`alloc_workqueue`:
 
@@ -80,14 +82,17 @@ alloc_workqueue
 
     allocate a workqueue
 
-    :param  fmt:
+    :param fmt:
         printf format for the name of the workqueue
+    :type fmt: 
 
-    :param  flags:
+    :param flags:
         WQ_* flags
+    :type flags: 
 
-    :param  max_active:
+    :param max_active:
         max in-flight work items, 0 for default
+    :type max_active: 
 
 .. _`alloc_workqueue.description`:
 
@@ -117,11 +122,13 @@ alloc_ordered_workqueue
 
     allocate an ordered workqueue
 
-    :param  fmt:
+    :param fmt:
         printf format for the name of the workqueue
+    :type fmt: 
 
-    :param  flags:
+    :param flags:
         WQ_* flags (only WQ_FREEZABLE and WQ_MEM_RECLAIM are meaningful)
+    :type flags: 
 
 .. _`alloc_ordered_workqueue.description`:
 
@@ -148,11 +155,13 @@ queue_work
 
     queue work on a workqueue
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to use
+    :type wq: struct workqueue_struct \*
 
-    :param struct work_struct \*work:
+    :param work:
         work to queue
+    :type work: struct work_struct \*
 
 .. _`queue_work.description`:
 
@@ -173,14 +182,17 @@ queue_delayed_work
 
     queue work on a workqueue after delay
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to use
+    :type wq: struct workqueue_struct \*
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         delayable work to queue
+    :type dwork: struct delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait before queueing
+    :type delay: unsigned long
 
 .. _`queue_delayed_work.description`:
 
@@ -198,14 +210,17 @@ mod_delayed_work
 
     modify delay of or queue a delayed work
 
-    :param struct workqueue_struct \*wq:
+    :param wq:
         workqueue to use
+    :type wq: struct workqueue_struct \*
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         work to queue
+    :type dwork: struct delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait before queueing
+    :type delay: unsigned long
 
 .. _`mod_delayed_work.description`:
 
@@ -223,11 +238,13 @@ schedule_work_on
 
     put work task on a specific cpu
 
-    :param int cpu:
+    :param cpu:
         cpu to put the work task on
+    :type cpu: int
 
-    :param struct work_struct \*work:
+    :param work:
         job to be done
+    :type work: struct work_struct \*
 
 .. _`schedule_work_on.description`:
 
@@ -245,8 +262,9 @@ schedule_work
 
     put work task in global workqueue
 
-    :param struct work_struct \*work:
+    :param work:
         job to be done
+    :type work: struct work_struct \*
 
 .. _`schedule_work.description`:
 
@@ -269,8 +287,9 @@ flush_scheduled_work
 
     ensure that any scheduled work has run to completion.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`flush_scheduled_work.description`:
 
@@ -312,14 +331,17 @@ schedule_delayed_work_on
 
     queue work in global workqueue on CPU after delay
 
-    :param int cpu:
+    :param cpu:
         cpu to use
+    :type cpu: int
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         job to be done
+    :type dwork: struct delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait
+    :type delay: unsigned long
 
 .. _`schedule_delayed_work_on.description`:
 
@@ -338,11 +360,13 @@ schedule_delayed_work
 
     put work task in global workqueue after delay
 
-    :param struct delayed_work \*dwork:
+    :param dwork:
         job to be done
+    :type dwork: struct delayed_work \*
 
-    :param unsigned long delay:
+    :param delay:
         number of jiffies to wait or 0 for immediate execution
+    :type delay: unsigned long
 
 .. _`schedule_delayed_work.description`:
 

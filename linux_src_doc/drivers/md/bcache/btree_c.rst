@@ -10,17 +10,21 @@ btree
 
     recurse down the btree on a specified key
 
-    :param  fn:
+    :param fn:
         function to call, which will be passed the child node
+    :type fn: 
 
-    :param  key:
+    :param key:
         key to recurse on
+    :type key: 
 
-    :param  b:
+    :param b:
         parent btree node
+    :type b: 
 
-    :param  op:
+    :param op:
         pointer to struct btree_op
+    :type op: 
 
     :param ellipsis ellipsis:
         variable arguments
@@ -34,14 +38,17 @@ btree_root
 
     call a function on the root of the btree
 
-    :param  fn:
+    :param fn:
         function to call, which will be passed the child node
+    :type fn: 
 
-    :param  c:
+    :param c:
         cache set
+    :type c: 
 
-    :param  op:
+    :param op:
         pointer to struct btree_op
+    :type op: 
 
     :param ellipsis ellipsis:
         variable arguments

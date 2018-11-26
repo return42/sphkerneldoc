@@ -515,8 +515,9 @@ il_clear_driver_stations
 
     clear knowledge of all stations from driver
 
-    :param struct il_priv \*il:
+    :param il:
         iwl il struct
+    :type il: struct il_priv \*
 
 .. _`il_clear_driver_stations.description`:
 
@@ -537,11 +538,13 @@ il_sta_id_or_broadcast
 
     return sta_id or broadcast sta
 
-    :param struct il_priv \*il:
+    :param il:
         iwl il
+    :type il: struct il_priv \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         mac80211 station
+    :type sta: struct ieee80211_sta \*
 
 .. _`il_sta_id_or_broadcast.description`:
 
@@ -562,11 +565,13 @@ il_queue_inc_wrap
 
     increment queue idx, wrap back to beginning \ ``idx``\  -- current idx \ ``n_bd``\  -- total number of entries in queue (must be power of 2)
 
-    :param int idx:
+    :param idx:
         *undescribed*
+    :type idx: int
 
-    :param int n_bd:
+    :param n_bd:
         *undescribed*
+    :type n_bd: int
 
 .. _`il_queue_dec_wrap`:
 
@@ -577,11 +582,13 @@ il_queue_dec_wrap
 
     decrement queue idx, wrap back to end \ ``idx``\  -- current idx \ ``n_bd``\  -- total number of entries in queue (must be power of 2)
 
-    :param int idx:
+    :param idx:
         *undescribed*
+    :type idx: int
 
-    :param int n_bd:
+    :param n_bd:
         *undescribed*
+    :type n_bd: int
 
 .. _`il_beacon_time_mask_low`:
 
@@ -592,11 +599,13 @@ il_beacon_time_mask_low
 
     mask of lower 32 bit of beacon time \ ``il``\  -- pointer to il_priv data structure \ ``tsf_bits``\  -- number of bits need to shift for masking)
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u16 tsf_bits:
+    :param tsf_bits:
         *undescribed*
+    :type tsf_bits: u16
 
 .. _`il_beacon_time_mask_high`:
 
@@ -607,11 +616,13 @@ il_beacon_time_mask_high
 
     mask of higher 32 bit of beacon time \ ``il``\  -- pointer to il_priv data structure \ ``tsf_bits``\  -- number of bits need to shift for masking)
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param u16 tsf_bits:
+    :param tsf_bits:
         *undescribed*
+    :type tsf_bits: u16
 
 .. _`il_rb_status`:
 
@@ -1069,11 +1080,13 @@ il3945_rate_scale_init
 
     Initialize the rate scale table based on assoc info
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct ieee80211_hw \*
 
-    :param s32 sta_id:
+    :param sta_id:
         *undescribed*
+    :type sta_id: s32
 
 .. _`il3945_rate_scale_init.description`:
 
@@ -1092,8 +1105,9 @@ il4965_rate_control_register
 
     Register the rate control algorithm callbacks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`il4965_rate_control_register.description`:
 
@@ -1115,8 +1129,9 @@ il4965_rate_control_unregister
 
     Unregister the rate control callbacks
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`il4965_rate_control_unregister.description`:
 

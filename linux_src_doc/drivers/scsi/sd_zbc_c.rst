@@ -10,14 +10,17 @@ sd_zbc_parse_report
 
     Convert a zone descriptor to a struct blk_zone,
 
-    :param struct scsi_disk \*sdkp:
+    :param sdkp:
         The disk the report originated from
+    :type sdkp: struct scsi_disk \*
 
-    :param u8 \*buf:
+    :param buf:
         Address of the report zone descriptor
+    :type buf: u8 \*
 
-    :param struct blk_zone \*zone:
+    :param zone:
         the destination zone structure
+    :type zone: struct blk_zone \*
 
 .. _`sd_zbc_parse_report.description`:
 
@@ -26,75 +29,81 @@ Description
 
 All LBA sized values are converted to 512B sectors unit.
 
+.. _`sd_zbc_do_report_zones`:
+
+sd_zbc_do_report_zones
+======================
+
+.. c:function:: int sd_zbc_do_report_zones(struct scsi_disk *sdkp, unsigned char *buf, unsigned int buflen, sector_t lba, bool partial)
+
+    Issue a REPORT ZONES scsi command.
+
+    :param sdkp:
+        The target disk
+    :type sdkp: struct scsi_disk \*
+
+    :param buf:
+        Buffer to use for the reply
+    :type buf: unsigned char \*
+
+    :param buflen:
+        the buffer size
+    :type buflen: unsigned int
+
+    :param lba:
+        Start LBA of the report
+    :type lba: sector_t
+
+    :param partial:
+        Do partial report
+    :type partial: bool
+
+.. _`sd_zbc_do_report_zones.description`:
+
+Description
+-----------
+
+For internal use during device validation.
+Using partial=true can significantly speed up execution of a report zones
+command because the disk does not have to count all possible report matching
+zones and will only report the count of zones fitting in the command reply
+buffer.
+
 .. _`sd_zbc_report_zones`:
 
 sd_zbc_report_zones
 ===================
 
-.. c:function:: int sd_zbc_report_zones(struct scsi_disk *sdkp, unsigned char *buf, unsigned int buflen, sector_t lba)
+.. c:function:: int sd_zbc_report_zones(struct gendisk *disk, sector_t sector, struct blk_zone *zones, unsigned int *nr_zones, gfp_t gfp_mask)
 
-    Issue a REPORT ZONES scsi command.
+    Disk report zones operation.
 
-    :param struct scsi_disk \*sdkp:
+    :param disk:
         The target disk
+    :type disk: struct gendisk \*
 
-    :param unsigned char \*buf:
-        Buffer to use for the reply
+    :param sector:
+        Start 512B sector of the report
+    :type sector: sector_t
 
-    :param unsigned int buflen:
-        the buffer size
+    :param zones:
+        Array of zone descriptors
+    :type zones: struct blk_zone \*
 
-    :param sector_t lba:
-        Start LBA of the report
+    :param nr_zones:
+        Number of descriptors in the array
+    :type nr_zones: unsigned int \*
+
+    :param gfp_mask:
+        Memory allocation mask
+    :type gfp_mask: gfp_t
 
 .. _`sd_zbc_report_zones.description`:
 
 Description
 -----------
 
-For internal use during device validation.
-
-.. _`sd_zbc_setup_report_cmnd`:
-
-sd_zbc_setup_report_cmnd
-========================
-
-.. c:function:: int sd_zbc_setup_report_cmnd(struct scsi_cmnd *cmd)
-
-    Prepare a REPORT ZONES scsi command
-
-    :param struct scsi_cmnd \*cmd:
-        The command to setup
-
-.. _`sd_zbc_setup_report_cmnd.description`:
-
-Description
------------
-
-Call in \ :c:func:`sd_init_command`\  for a REQ_OP_ZONE_REPORT request.
-
-.. _`sd_zbc_report_zones_complete`:
-
-sd_zbc_report_zones_complete
-============================
-
-.. c:function:: void sd_zbc_report_zones_complete(struct scsi_cmnd *scmd, unsigned int good_bytes)
-
-    Process a REPORT ZONES scsi command reply.
-
-    :param struct scsi_cmnd \*scmd:
-        The completed report zones command
-
-    :param unsigned int good_bytes:
-        reply size in bytes
-
-.. _`sd_zbc_report_zones_complete.description`:
-
-Description
------------
-
-Convert all reported zone descriptors to struct blk_zone. The conversion
-is done in-place, directly in the request specified sg buffer.
+Execute a report zones command on the target disk.
 
 .. _`sd_zbc_zone_sectors`:
 
@@ -105,8 +114,9 @@ sd_zbc_zone_sectors
 
     Get the device zone size in number of 512B sectors.
 
-    :param struct scsi_disk \*sdkp:
+    :param sdkp:
         The target disk
+    :type sdkp: struct scsi_disk \*
 
 .. _`sd_zbc_setup_reset_cmnd`:
 
@@ -117,8 +127,9 @@ sd_zbc_setup_reset_cmnd
 
     Prepare a RESET WRITE POINTER scsi command.
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         the command to setup
+    :type cmd: struct scsi_cmnd \*
 
 .. _`sd_zbc_setup_reset_cmnd.description`:
 
@@ -136,14 +147,17 @@ sd_zbc_complete
 
     ZBC command post processing.
 
-    :param struct scsi_cmnd \*cmd:
+    :param cmd:
         Completed command
+    :type cmd: struct scsi_cmnd \*
 
-    :param unsigned int good_bytes:
+    :param good_bytes:
         Command reply bytes
+    :type good_bytes: unsigned int
 
-    :param struct scsi_sense_hdr \*sshdr:
+    :param sshdr:
         command sense header
+    :type sshdr: struct scsi_sense_hdr \*
 
 .. _`sd_zbc_complete.description`:
 
@@ -153,150 +167,60 @@ Description
 Called from \ :c:func:`sd_done`\ . Process report zones reply and handle reset zone
 and write commands errors.
 
-.. _`sd_zbc_read_zoned_characteristics`:
+.. _`sd_zbc_check_zoned_characteristics`:
 
-sd_zbc_read_zoned_characteristics
-=================================
+sd_zbc_check_zoned_characteristics
+==================================
 
-.. c:function:: int sd_zbc_read_zoned_characteristics(struct scsi_disk *sdkp, unsigned char *buf)
+.. c:function:: int sd_zbc_check_zoned_characteristics(struct scsi_disk *sdkp, unsigned char *buf)
 
-    Read zoned block device characteristics
+    Check zoned block device characteristics
 
-    :param struct scsi_disk \*sdkp:
+    :param sdkp:
         Target disk
+    :type sdkp: struct scsi_disk \*
 
-    :param unsigned char \*buf:
+    :param buf:
         Buffer where to store the VPD page data
+    :type buf: unsigned char \*
 
-.. _`sd_zbc_read_zoned_characteristics.description`:
+.. _`sd_zbc_check_zoned_characteristics.description`:
 
 Description
 -----------
 
-Read VPD page B6.
+Read VPD page B6, get information and check that reads are unconstrained.
 
-.. _`sd_zbc_check_capacity`:
+.. _`sd_zbc_check_zones`:
 
-sd_zbc_check_capacity
-=====================
+sd_zbc_check_zones
+==================
 
-.. c:function:: int sd_zbc_check_capacity(struct scsi_disk *sdkp, unsigned char *buf)
+.. c:function:: int sd_zbc_check_zones(struct scsi_disk *sdkp, u32 *zblocks)
 
-    Check reported capacity.
+    Check the device capacity and zone sizes
 
-    :param struct scsi_disk \*sdkp:
+    :param sdkp:
         Target disk
+    :type sdkp: struct scsi_disk \*
 
-    :param unsigned char \*buf:
-        Buffer to use for commands
+    :param zblocks:
+        *undescribed*
+    :type zblocks: u32 \*
 
-.. _`sd_zbc_check_capacity.description`:
-
-Description
------------
-
-ZBC drive may report only the capacity of the first conventional zones at
-LBA 0. This is indicated by the RC_BASIS field of the read capacity reply.
-Check this here. If the disk reported only its conventional zones capacity,
-get the total capacity by doing a report zones.
-
-.. _`sd_zbc_check_zone_size`:
-
-sd_zbc_check_zone_size
-======================
-
-.. c:function:: s64 sd_zbc_check_zone_size(struct scsi_disk *sdkp)
-
-    Check the device zone sizes
-
-    :param struct scsi_disk \*sdkp:
-        Target disk
-
-.. _`sd_zbc_check_zone_size.description`:
+.. _`sd_zbc_check_zones.description`:
 
 Description
 -----------
 
-Check that all zones of the device are equal. The last zone can however
-be smaller. The zone size must also be a power of two number of LBAs.
+Check that the device capacity as reported by READ CAPACITY matches the
+max_lba value (plus one)of the report zones command reply. Also check that
+all zones of the device have an equal size, only allowing the last zone of
+the disk to have a smaller size (runt zone). The zone size must also be a
+power of two.
 
 Returns the zone size in number of blocks upon success or an error code
 upon failure.
-
-.. _`sd_zbc_alloc_zone_bitmap`:
-
-sd_zbc_alloc_zone_bitmap
-========================
-
-.. c:function:: unsigned long *sd_zbc_alloc_zone_bitmap(u32 nr_zones, int numa_node)
-
-    Allocate a zone bitmap (one bit per zone).
-
-    :param u32 nr_zones:
-        Number of zones to allocate space for.
-
-    :param int numa_node:
-        NUMA node to allocate the memory from.
-
-.. _`sd_zbc_get_seq_zones`:
-
-sd_zbc_get_seq_zones
-====================
-
-.. c:function:: sector_t sd_zbc_get_seq_zones(struct scsi_disk *sdkp, unsigned char *buf, unsigned int buflen, u32 zone_shift, unsigned long *seq_zones_bitmap)
-
-    Parse report zones reply to identify sequential zones
-
-    :param struct scsi_disk \*sdkp:
-        disk used
-
-    :param unsigned char \*buf:
-        report reply buffer
-
-    :param unsigned int buflen:
-        length of \ ``buf``\ 
-
-    :param u32 zone_shift:
-        logarithm base 2 of the number of blocks in a zone
-
-    :param unsigned long \*seq_zones_bitmap:
-        bitmap of sequential zones to set
-
-.. _`sd_zbc_get_seq_zones.description`:
-
-Description
------------
-
-Parse reported zone descriptors in \ ``buf``\  to identify sequential zones and
-set the reported zone bit in \ ``seq_zones_bitmap``\  accordingly.
-Since read-only and offline zones cannot be written, do not
-mark them as sequential in the bitmap.
-Return the LBA after the last zone reported.
-
-.. _`sd_zbc_setup_seq_zones_bitmap`:
-
-sd_zbc_setup_seq_zones_bitmap
-=============================
-
-.. c:function:: unsigned long *sd_zbc_setup_seq_zones_bitmap(struct scsi_disk *sdkp, u32 zone_shift, u32 nr_zones)
-
-    Initialize a seq zone bitmap.
-
-    :param struct scsi_disk \*sdkp:
-        target disk
-
-    :param u32 zone_shift:
-        logarithm base 2 of the number of blocks in a zone
-
-    :param u32 nr_zones:
-        number of zones to set up a seq zone bitmap for
-
-.. _`sd_zbc_setup_seq_zones_bitmap.description`:
-
-Description
------------
-
-Allocate a zone bitmap and initialize it by identifying sequential zones.
 
 .. This file was automatic generated / don't edit.
 

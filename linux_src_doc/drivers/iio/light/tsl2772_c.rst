@@ -10,8 +10,9 @@ tsl2772_get_lux
 
     Reads and calculates current lux value.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         pointer to IIO device
+    :type indio_dev: struct iio_dev \*
 
 .. _`tsl2772_get_lux.description`:
 
@@ -34,8 +35,9 @@ tsl2772_get_prox
 
     Reads proximity data registers and updates chip->prox_data.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         pointer to IIO device
+    :type indio_dev: struct iio_dev \*
 
 .. _`tsl2772_defaults`:
 
@@ -46,8 +48,9 @@ tsl2772_defaults
 
     Populates the device nominal operating parameters with those provided by a 'platform' data struct or with prefined defaults.
 
-    :param struct tsl2772_chip \*chip:
+    :param chip:
         pointer to device structure.
+    :type chip: struct tsl2772_chip \*
 
 .. _`tsl2772_als_calibrate`:
 
@@ -58,8 +61,9 @@ tsl2772_als_calibrate
 
     Obtain single reading and calculate the als_gain_trim.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         pointer to IIO device
+    :type indio_dev: struct iio_dev \*
 
 .. _`tsl2772_invoke_change`:
 
@@ -70,8 +74,9 @@ tsl2772_invoke_change
 
     power cycle the device to implement the user parameters
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         pointer to IIO device
+    :type indio_dev: struct iio_dev \*
 
 .. _`tsl2772_invoke_change.description`:
 

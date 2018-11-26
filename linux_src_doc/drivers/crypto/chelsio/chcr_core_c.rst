@@ -8,8 +8,9 @@ LIST_HEAD
 
 .. c:function::  LIST_HEAD( uld_ctx_list)
 
-    :param  uld_ctx_list:
+    :param uld_ctx_list:
         *undescribed*
+    :type uld_ctx_list: 
 
 .. _`list_head.description`:
 

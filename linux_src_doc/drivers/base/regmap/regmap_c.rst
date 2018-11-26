@@ -10,14 +10,17 @@ devm_regmap_field_alloc
 
     Allocate and initialise a register field.
 
-    :param struct device \*dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: struct device \*
 
-    :param struct regmap \*regmap:
+    :param regmap:
         regmap bank in which this register field is located.
+    :type regmap: struct regmap \*
 
-    :param struct reg_field reg_field:
+    :param reg_field:
         Register field with in the bank.
+    :type reg_field: struct reg_field
 
 .. _`devm_regmap_field_alloc.description`:
 
@@ -37,11 +40,13 @@ devm_regmap_field_free
 
     Free a register field allocated using devm_regmap_field_alloc.
 
-    :param struct device \*dev:
+    :param dev:
         Device that will be interacted with
+    :type dev: struct device \*
 
-    :param struct regmap_field \*field:
+    :param field:
         regmap field which should be freed.
+    :type field: struct regmap_field \*
 
 .. _`devm_regmap_field_free.description`:
 
@@ -61,11 +66,13 @@ regmap_field_alloc
 
     Allocate and initialise a register field.
 
-    :param struct regmap \*regmap:
+    :param regmap:
         regmap bank in which this register field is located.
+    :type regmap: struct regmap \*
 
-    :param struct reg_field reg_field:
+    :param reg_field:
         Register field with in the bank.
+    :type reg_field: struct reg_field
 
 .. _`regmap_field_alloc.description`:
 
@@ -85,8 +92,9 @@ regmap_field_free
 
     Free register field allocated using regmap_field_alloc.
 
-    :param struct regmap_field \*field:
+    :param field:
         regmap field which should be freed.
+    :type field: struct regmap_field \*
 
 .. _`regmap_reinit_cache`:
 
@@ -97,11 +105,13 @@ regmap_reinit_cache
 
     Reinitialise the current register cache
 
-    :param struct regmap \*map:
+    :param map:
         Register map to operate on.
+    :type map: struct regmap \*
 
-    :param const struct regmap_config \*config:
+    :param config:
         New configuration.  Only the cache data will be used.
+    :type config: const struct regmap_config \*
 
 .. _`regmap_reinit_cache.description`:
 
@@ -125,8 +135,9 @@ regmap_exit
 
     Free a previously allocated register map
 
-    :param struct regmap \*map:
+    :param map:
         Register map to operate on.
+    :type map: struct regmap \*
 
 .. _`dev_get_regmap`:
 
@@ -137,11 +148,13 @@ dev_get_regmap
 
     Obtain the regmap (if any) for a device
 
-    :param struct device \*dev:
+    :param dev:
         Device to retrieve the map for
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         Optional name for the register map, usually NULL.
+    :type name: const char \*
 
 .. _`dev_get_regmap.description`:
 
@@ -163,8 +176,9 @@ regmap_get_device
 
     Obtain the device from a regmap
 
-    :param struct regmap \*map:
+    :param map:
         Register map to operate on.
+    :type map: struct regmap \*
 
 .. _`regmap_get_device.description`:
 
@@ -182,8 +196,9 @@ regmap_can_raw_write
 
     Test if \ :c:func:`regmap_raw_write`\  is supported
 
-    :param struct regmap \*map:
+    :param map:
         Map to check.
+    :type map: struct regmap \*
 
 .. _`regmap_get_raw_read_max`:
 
@@ -194,8 +209,9 @@ regmap_get_raw_read_max
 
     Get the maximum size we can read
 
-    :param struct regmap \*map:
+    :param map:
         Map to check.
+    :type map: struct regmap \*
 
 .. _`regmap_get_raw_write_max`:
 
@@ -206,8 +222,9 @@ regmap_get_raw_write_max
 
     Get the maximum size we can read
 
-    :param struct regmap \*map:
+    :param map:
         Map to check.
+    :type map: struct regmap \*
 
 .. _`regmap_write`:
 
@@ -218,14 +235,17 @@ regmap_write
 
     Write a value to a single register
 
-    :param struct regmap \*map:
+    :param map:
         Register map to write to
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to write to
+    :type reg: unsigned int
 
-    :param unsigned int val:
+    :param val:
         Value to be written
+    :type val: unsigned int
 
 .. _`regmap_write.description`:
 
@@ -244,14 +264,17 @@ regmap_write_async
 
     Write a value to a single register asynchronously
 
-    :param struct regmap \*map:
+    :param map:
         Register map to write to
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to write to
+    :type reg: unsigned int
 
-    :param unsigned int val:
+    :param val:
         Value to be written
+    :type val: unsigned int
 
 .. _`regmap_write_async.description`:
 
@@ -270,18 +293,22 @@ regmap_raw_write
 
     Write raw values to one or more registers
 
-    :param struct regmap \*map:
+    :param map:
         Register map to write to
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         Initial register to write to
+    :type reg: unsigned int
 
-    :param const void \*val:
+    :param val:
         Block of data to be written, laid out for direct transmission to the
         device
+    :type val: const void \*
 
-    :param size_t val_len:
+    :param val_len:
         Length of data pointed to by val.
+    :type val_len: size_t
 
 .. _`regmap_raw_write.description`:
 
@@ -295,6 +322,48 @@ device.  No formatting will be done on the data provided.
 A value of zero will be returned on success, a negative errno will
 be returned in error cases.
 
+.. _`regmap_noinc_write`:
+
+regmap_noinc_write
+==================
+
+.. c:function:: int regmap_noinc_write(struct regmap *map, unsigned int reg, const void *val, size_t val_len)
+
+    Write data from a register without incrementing the register number
+
+    :param map:
+        Register map to write to
+    :type map: struct regmap \*
+
+    :param reg:
+        Register to write to
+    :type reg: unsigned int
+
+    :param val:
+        Pointer to data buffer
+    :type val: const void \*
+
+    :param val_len:
+        Length of output buffer in bytes.
+    :type val_len: size_t
+
+.. _`regmap_noinc_write.description`:
+
+Description
+-----------
+
+The regmap API usually assumes that bulk bus write operations will write a
+range of registers. Some devices have certain registers for which a write
+operation can write to an internal FIFO.
+
+The target register must be volatile but registers after it can be
+completely unrelated cacheable registers.
+
+This will attempt multiple writes as required to write val_len bytes.
+
+A value of zero will be returned on success, a negative errno will be
+returned in error cases.
+
 .. _`regmap_field_update_bits_base`:
 
 regmap_field_update_bits_base
@@ -304,23 +373,29 @@ regmap_field_update_bits_base
 
     Perform a read/modify/write cycle a register field.
 
-    :param struct regmap_field \*field:
+    :param field:
         Register field to write to
+    :type field: struct regmap_field \*
 
-    :param unsigned int mask:
+    :param mask:
         Bitmask to change
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         Value to be written
+    :type val: unsigned int
 
-    :param bool \*change:
+    :param change:
         Boolean indicating if a write was done
+    :type change: bool \*
 
-    :param bool async:
+    :param async:
         Boolean indicating asynchronously
+    :type async: bool
 
-    :param bool force:
+    :param force:
         Boolean indicating use force update
+    :type force: bool
 
 .. _`regmap_field_update_bits_base.description`:
 
@@ -342,26 +417,33 @@ regmap_fields_update_bits_base
 
     Perform a read/modify/write cycle a register field with port ID
 
-    :param struct regmap_field \*field:
+    :param field:
         Register field to write to
+    :type field: struct regmap_field \*
 
-    :param unsigned int id:
+    :param id:
         port ID
+    :type id: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         Bitmask to change
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         Value to be written
+    :type val: unsigned int
 
-    :param bool \*change:
+    :param change:
         Boolean indicating if a write was done
+    :type change: bool \*
 
-    :param bool async:
+    :param async:
         Boolean indicating asynchronously
+    :type async: bool
 
-    :param bool force:
+    :param force:
         Boolean indicating use force update
+    :type force: bool
 
 .. _`regmap_fields_update_bits_base.description`:
 
@@ -380,17 +462,21 @@ regmap_bulk_write
 
     Write multiple registers to the device
 
-    :param struct regmap \*map:
+    :param map:
         Register map to write to
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         First register to be write from
+    :type reg: unsigned int
 
-    :param const void \*val:
+    :param val:
         Block of data to be written, in native register size for device
+    :type val: const void \*
 
-    :param size_t val_count:
+    :param val_count:
         Number of registers to write
+    :type val_count: size_t
 
 .. _`regmap_bulk_write.description`:
 
@@ -412,14 +498,17 @@ regmap_multi_reg_write
 
     Write multiple registers to the device
 
-    :param struct regmap \*map:
+    :param map:
         Register map to write to
+    :type map: struct regmap \*
 
-    :param const struct reg_sequence \*regs:
+    :param regs:
         Array of structures containing register,value to be written
+    :type regs: const struct reg_sequence \*
 
-    :param int num_regs:
+    :param num_regs:
         Number of registers to write
+    :type num_regs: int
 
 .. _`regmap_multi_reg_write.description`:
 
@@ -447,14 +536,17 @@ regmap_multi_reg_write_bypassed
 
     Write multiple registers to the device but not the cache
 
-    :param struct regmap \*map:
+    :param map:
         Register map to write to
+    :type map: struct regmap \*
 
-    :param const struct reg_sequence \*regs:
+    :param regs:
         Array of structures containing register,value to be written
+    :type regs: const struct reg_sequence \*
 
-    :param int num_regs:
+    :param num_regs:
         Number of registers to write
+    :type num_regs: int
 
 .. _`regmap_multi_reg_write_bypassed.description`:
 
@@ -480,18 +572,22 @@ regmap_raw_write_async
 
     Write raw values to one or more registers asynchronously
 
-    :param struct regmap \*map:
+    :param map:
         Register map to write to
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         Initial register to write to
+    :type reg: unsigned int
 
-    :param const void \*val:
+    :param val:
         Block of data to be written, laid out for direct transmission to the
         device.  Must be valid until \ :c:func:`regmap_async_complete`\  is called.
+    :type val: const void \*
 
-    :param size_t val_len:
+    :param val_len:
         Length of data pointed to by val.
+    :type val_len: size_t
 
 .. _`regmap_raw_write_async.description`:
 
@@ -519,14 +615,17 @@ regmap_read
 
     Read a value from a single register
 
-    :param struct regmap \*map:
+    :param map:
         Register map to read from
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to be read from
+    :type reg: unsigned int
 
-    :param unsigned int \*val:
+    :param val:
         Pointer to store read value
+    :type val: unsigned int \*
 
 .. _`regmap_read.description`:
 
@@ -545,17 +644,21 @@ regmap_raw_read
 
     Read raw data from the device
 
-    :param struct regmap \*map:
+    :param map:
         Register map to read from
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         First register to be read from
+    :type reg: unsigned int
 
-    :param void \*val:
+    :param val:
         Pointer to store read value
+    :type val: void \*
 
-    :param size_t val_len:
+    :param val_len:
         Size of data to read
+    :type val_len: size_t
 
 .. _`regmap_raw_read.description`:
 
@@ -564,6 +667,48 @@ Description
 
 A value of zero will be returned on success, a negative errno will
 be returned in error cases.
+
+.. _`regmap_noinc_read`:
+
+regmap_noinc_read
+=================
+
+.. c:function:: int regmap_noinc_read(struct regmap *map, unsigned int reg, void *val, size_t val_len)
+
+    Read data from a register without incrementing the register number
+
+    :param map:
+        Register map to read from
+    :type map: struct regmap \*
+
+    :param reg:
+        Register to read from
+    :type reg: unsigned int
+
+    :param val:
+        Pointer to data buffer
+    :type val: void \*
+
+    :param val_len:
+        Length of output buffer in bytes.
+    :type val_len: size_t
+
+.. _`regmap_noinc_read.description`:
+
+Description
+-----------
+
+The regmap API usually assumes that bulk bus read operations will read a
+range of registers. Some devices have certain registers for which a read
+operation read will read from an internal FIFO.
+
+The target register must be volatile but registers after it can be
+completely unrelated cacheable registers.
+
+This will attempt multiple reads as required to read val_len bytes.
+
+A value of zero will be returned on success, a negative errno will be
+returned in error cases.
 
 .. _`regmap_field_read`:
 
@@ -574,11 +719,13 @@ regmap_field_read
 
     Read a value to a single register field
 
-    :param struct regmap_field \*field:
+    :param field:
         Register field to read from
+    :type field: struct regmap_field \*
 
-    :param unsigned int \*val:
+    :param val:
         Pointer to store read value
+    :type val: unsigned int \*
 
 .. _`regmap_field_read.description`:
 
@@ -597,14 +744,17 @@ regmap_fields_read
 
     Read a value to a single register field with port ID
 
-    :param struct regmap_field \*field:
+    :param field:
         Register field to read from
+    :type field: struct regmap_field \*
 
-    :param unsigned int id:
+    :param id:
         port ID
+    :type id: unsigned int
 
-    :param unsigned int \*val:
+    :param val:
         Pointer to store read value
+    :type val: unsigned int \*
 
 .. _`regmap_fields_read.description`:
 
@@ -623,17 +773,21 @@ regmap_bulk_read
 
     Read multiple registers from the device
 
-    :param struct regmap \*map:
+    :param map:
         Register map to read from
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         First register to be read from
+    :type reg: unsigned int
 
-    :param void \*val:
+    :param val:
         Pointer to store read value, in native register size for device
+    :type val: void \*
 
-    :param size_t val_count:
+    :param val_count:
         Number of registers to read
+    :type val_count: size_t
 
 .. _`regmap_bulk_read.description`:
 
@@ -652,26 +806,33 @@ regmap_update_bits_base
 
     Perform a read/modify/write cycle on a register
 
-    :param struct regmap \*map:
+    :param map:
         Register map to update
+    :type map: struct regmap \*
 
-    :param unsigned int reg:
+    :param reg:
         Register to update
+    :type reg: unsigned int
 
-    :param unsigned int mask:
+    :param mask:
         Bitmask to change
+    :type mask: unsigned int
 
-    :param unsigned int val:
+    :param val:
         New value for bitmask
+    :type val: unsigned int
 
-    :param bool \*change:
+    :param change:
         Boolean indicating if a write was done
+    :type change: bool \*
 
-    :param bool async:
+    :param async:
         Boolean indicating asynchronously
+    :type async: bool
 
-    :param bool force:
+    :param force:
         Boolean indicating use force update
+    :type force: bool
 
 .. _`regmap_update_bits_base.description`:
 
@@ -702,8 +863,9 @@ regmap_async_complete
 
     Ensure all asynchronous I/O has completed.
 
-    :param struct regmap \*map:
+    :param map:
         Map to operate on.
+    :type map: struct regmap \*
 
 .. _`regmap_async_complete.description`:
 
@@ -722,14 +884,17 @@ regmap_register_patch
 
     Register and apply register updates to be applied on device initialistion
 
-    :param struct regmap \*map:
+    :param map:
         Register map to apply updates to.
+    :type map: struct regmap \*
 
-    :param const struct reg_sequence \*regs:
+    :param regs:
         Values to update.
+    :type regs: const struct reg_sequence \*
 
-    :param int num_regs:
+    :param num_regs:
         Number of entries in regs.
+    :type num_regs: int
 
 .. _`regmap_register_patch.description`:
 
@@ -754,8 +919,9 @@ regmap_get_val_bytes
 
     Report the size of a register value
 
-    :param struct regmap \*map:
+    :param map:
         Register map to operate on.
+    :type map: struct regmap \*
 
 .. _`regmap_get_val_bytes.description`:
 
@@ -774,8 +940,9 @@ regmap_get_max_register
 
     Report the max register value
 
-    :param struct regmap \*map:
+    :param map:
         Register map to operate on.
+    :type map: struct regmap \*
 
 .. _`regmap_get_max_register.description`:
 
@@ -794,8 +961,9 @@ regmap_get_reg_stride
 
     Report the register address stride
 
-    :param struct regmap \*map:
+    :param map:
         Register map to operate on.
+    :type map: struct regmap \*
 
 .. _`regmap_get_reg_stride.description`:
 

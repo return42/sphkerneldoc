@@ -10,14 +10,17 @@ crypto_finalize_request
 
     finalize one request if the request is done
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct crypto_async_request \*req:
+    :param req:
         the request need to be finalized
+    :type req: struct crypto_async_request \*
 
-    :param int err:
+    :param err:
         error number
+    :type err: int
 
 .. _`crypto_pump_requests`:
 
@@ -28,11 +31,13 @@ crypto_pump_requests
 
     dequeue one request from engine queue to process
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param bool in_kthread:
+    :param in_kthread:
         true if we are in the context of the request pump thread
+    :type in_kthread: bool
 
 .. _`crypto_pump_requests.description`:
 
@@ -52,14 +57,17 @@ crypto_transfer_request
 
     transfer the new request into the engine queue
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct crypto_async_request \*req:
+    :param req:
         the request need to be listed into the engine queue
+    :type req: struct crypto_async_request \*
 
-    :param bool need_pump:
+    :param need_pump:
         *undescribed*
+    :type need_pump: bool
 
 .. _`crypto_transfer_request_to_engine`:
 
@@ -70,11 +78,13 @@ crypto_transfer_request_to_engine
 
     transfer one request to list into the engine queue
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct crypto_async_request \*req:
+    :param req:
         the request need to be listed into the engine queue
+    :type req: struct crypto_async_request \*
 
 .. _`crypto_transfer_ablkcipher_request_to_engine`:
 
@@ -85,11 +95,13 @@ crypto_transfer_ablkcipher_request_to_engine
 
     transfer one ablkcipher_request to list into the engine queue
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct ablkcipher_request \*req:
+    :param req:
         the request need to be listed into the engine queue
+    :type req: struct ablkcipher_request \*
 
 .. _`crypto_transfer_ablkcipher_request_to_engine.todo`:
 
@@ -107,11 +119,13 @@ crypto_transfer_aead_request_to_engine
 
     transfer one aead_request to list into the engine queue
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct aead_request \*req:
+    :param req:
         the request need to be listed into the engine queue
+    :type req: struct aead_request \*
 
 .. _`crypto_transfer_akcipher_request_to_engine`:
 
@@ -122,11 +136,13 @@ crypto_transfer_akcipher_request_to_engine
 
     transfer one akcipher_request to list into the engine queue
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct akcipher_request \*req:
+    :param req:
         the request need to be listed into the engine queue
+    :type req: struct akcipher_request \*
 
 .. _`crypto_transfer_hash_request_to_engine`:
 
@@ -137,11 +153,13 @@ crypto_transfer_hash_request_to_engine
 
     transfer one ahash_request to list into the engine queue
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct ahash_request \*req:
+    :param req:
         the request need to be listed into the engine queue
+    :type req: struct ahash_request \*
 
 .. _`crypto_transfer_skcipher_request_to_engine`:
 
@@ -152,11 +170,13 @@ crypto_transfer_skcipher_request_to_engine
 
     transfer one skcipher_request to list into the engine queue
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct skcipher_request \*req:
+    :param req:
         the request need to be listed into the engine queue
+    :type req: struct skcipher_request \*
 
 .. _`crypto_finalize_ablkcipher_request`:
 
@@ -167,14 +187,17 @@ crypto_finalize_ablkcipher_request
 
     finalize one ablkcipher_request if the request is done
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct ablkcipher_request \*req:
+    :param req:
         the request need to be finalized
+    :type req: struct ablkcipher_request \*
 
-    :param int err:
+    :param err:
         error number
+    :type err: int
 
 .. _`crypto_finalize_ablkcipher_request.todo`:
 
@@ -192,14 +215,17 @@ crypto_finalize_aead_request
 
     finalize one aead_request if the request is done
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct aead_request \*req:
+    :param req:
         the request need to be finalized
+    :type req: struct aead_request \*
 
-    :param int err:
+    :param err:
         error number
+    :type err: int
 
 .. _`crypto_finalize_akcipher_request`:
 
@@ -210,14 +236,17 @@ crypto_finalize_akcipher_request
 
     finalize one akcipher_request if the request is done
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct akcipher_request \*req:
+    :param req:
         the request need to be finalized
+    :type req: struct akcipher_request \*
 
-    :param int err:
+    :param err:
         error number
+    :type err: int
 
 .. _`crypto_finalize_hash_request`:
 
@@ -228,14 +257,17 @@ crypto_finalize_hash_request
 
     finalize one ahash_request if the request is done
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct ahash_request \*req:
+    :param req:
         the request need to be finalized
+    :type req: struct ahash_request \*
 
-    :param int err:
+    :param err:
         error number
+    :type err: int
 
 .. _`crypto_finalize_skcipher_request`:
 
@@ -246,14 +278,17 @@ crypto_finalize_skcipher_request
 
     finalize one skcipher_request if the request is done
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine
+    :type engine: struct crypto_engine \*
 
-    :param struct skcipher_request \*req:
+    :param req:
         the request need to be finalized
+    :type req: struct skcipher_request \*
 
-    :param int err:
+    :param err:
         error number
+    :type err: int
 
 .. _`crypto_engine_start`:
 
@@ -264,8 +299,9 @@ crypto_engine_start
 
     start the hardware engine
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine need to be started
+    :type engine: struct crypto_engine \*
 
 .. _`crypto_engine_start.description`:
 
@@ -283,8 +319,9 @@ crypto_engine_stop
 
     stop the hardware engine
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine need to be stopped
+    :type engine: struct crypto_engine \*
 
 .. _`crypto_engine_stop.description`:
 
@@ -302,11 +339,13 @@ crypto_engine_alloc_init
 
     allocate crypto hardware engine structure and initialize it.
 
-    :param struct device \*dev:
+    :param dev:
         the device attached with one hardware engine
+    :type dev: struct device \*
 
-    :param bool rt:
+    :param rt:
         whether this queue is set to run as a realtime task
+    :type rt: bool
 
 .. _`crypto_engine_alloc_init.description`:
 
@@ -331,8 +370,9 @@ crypto_engine_exit
 
     free the resources of hardware engine when exit
 
-    :param struct crypto_engine \*engine:
+    :param engine:
         the hardware engine need to be freed
+    :type engine: struct crypto_engine \*
 
 .. _`crypto_engine_exit.description`:
 

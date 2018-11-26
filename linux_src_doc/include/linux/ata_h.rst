@@ -10,8 +10,9 @@ ata_id_major_version
 
     get ATA level of drive
 
-    :param const u16 \*id:
+    :param id:
         Identify data
+    :type id: const u16 \*
 
 .. _`ata_id_major_version.caveats`:
 

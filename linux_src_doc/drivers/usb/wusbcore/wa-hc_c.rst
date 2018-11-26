@@ -8,14 +8,17 @@ wa_create
 
 .. c:function:: int wa_create(struct wahc *wa, struct usb_interface *iface, kernel_ulong_t quirks)
 
-    :param struct wahc \*wa:
+    :param wa:
         *undescribed*
+    :type wa: struct wahc \*
 
-    :param struct usb_interface \*iface:
+    :param iface:
         *undescribed*
+    :type iface: struct usb_interface \*
 
-    :param kernel_ulong_t quirks:
+    :param quirks:
         *undescribed*
+    :type quirks: kernel_ulong_t
 
 .. _`wa_create.description`:
 
@@ -34,8 +37,9 @@ wa_reset_all
 
     reset the WA device
 
-    :param struct wahc \*wa:
+    :param wa:
         the WA to be reset
+    :type wa: struct wahc \*
 
 .. _`wa_reset_all.description`:
 

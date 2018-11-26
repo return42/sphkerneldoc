@@ -10,8 +10,9 @@ intel_sst_remove
 
     PCI remove function
 
-    :param struct pci_dev \*pci:
+    :param pci:
         PCI device structure
+    :type pci: struct pci_dev \*
 
 .. _`intel_sst_remove.description`:
 

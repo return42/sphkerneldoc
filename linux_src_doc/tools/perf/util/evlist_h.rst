@@ -10,11 +10,13 @@
 
     iterate thru all the evsels
 
-    :param  list:
+    :param list:
         list_head instance to iterate
+    :type list: 
 
-    :param  evsel:
+    :param evsel:
         struct evsel iterator
+    :type evsel: 
 
 .. _`evlist__for_each_entry`:
 
@@ -25,11 +27,13 @@ evlist__for_each_entry
 
     iterate thru all the evsels
 
-    :param  evlist:
+    :param evlist:
         evlist instance to iterate
+    :type evlist: 
 
-    :param  evsel:
+    :param evsel:
         struct evsel iterator
+    :type evsel: 
 
 .. _`__evlist__for_each_entry_continue`:
 
@@ -40,11 +44,13 @@ evlist__for_each_entry
 
     continue iteration thru all the evsels
 
-    :param  list:
+    :param list:
         list_head instance to iterate
+    :type list: 
 
-    :param  evsel:
+    :param evsel:
         struct evsel iterator
+    :type evsel: 
 
 .. _`evlist__for_each_entry_continue`:
 
@@ -55,11 +61,13 @@ evlist__for_each_entry_continue
 
     continue iteration thru all the evsels
 
-    :param  evlist:
+    :param evlist:
         evlist instance to iterate
+    :type evlist: 
 
-    :param  evsel:
+    :param evsel:
         struct evsel iterator
+    :type evsel: 
 
 .. _`__evlist__for_each_entry_reverse`:
 
@@ -70,11 +78,13 @@ evlist__for_each_entry_continue
 
     iterate thru all the evsels in reverse order
 
-    :param  list:
+    :param list:
         list_head instance to iterate
+    :type list: 
 
-    :param  evsel:
+    :param evsel:
         struct evsel iterator
+    :type evsel: 
 
 .. _`evlist__for_each_entry_reverse`:
 
@@ -85,11 +95,13 @@ evlist__for_each_entry_reverse
 
     iterate thru all the evsels in reverse order
 
-    :param  evlist:
+    :param evlist:
         evlist instance to iterate
+    :type evlist: 
 
-    :param  evsel:
+    :param evsel:
         struct evsel iterator
+    :type evsel: 
 
 .. _`__evlist__for_each_entry_safe`:
 
@@ -100,14 +112,17 @@ evlist__for_each_entry_reverse
 
     safely iterate thru all the evsels
 
-    :param  list:
+    :param list:
         list_head instance to iterate
+    :type list: 
 
-    :param  tmp:
+    :param tmp:
         struct evsel temp iterator
+    :type tmp: 
 
-    :param  evsel:
+    :param evsel:
         struct evsel iterator
+    :type evsel: 
 
 .. _`evlist__for_each_entry_safe`:
 
@@ -118,14 +133,17 @@ evlist__for_each_entry_safe
 
     safely iterate thru all the evsels
 
-    :param  evlist:
+    :param evlist:
         evlist instance to iterate
+    :type evlist: 
 
-    :param  tmp:
+    :param tmp:
         struct evsel temp iterator
+    :type tmp: 
 
-    :param  evsel:
+    :param evsel:
         struct evsel iterator
+    :type evsel: 
 
 .. This file was automatic generated / don't edit.
 

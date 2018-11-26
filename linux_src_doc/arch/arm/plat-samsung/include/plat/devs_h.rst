@@ -10,14 +10,17 @@ s3c_set_platdata
 
     helper for setting platform data
 
-    :param void \*pd:
+    :param pd:
         The default platform data for this device.
+    :type pd: void \*
 
-    :param size_t pdsize:
+    :param pdsize:
         The size of the platform data.
+    :type pdsize: size_t
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to the device to fill in.
+    :type pdev: struct platform_device \*
 
 .. _`s3c_set_platdata.description`:
 

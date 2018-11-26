@@ -8,8 +8,9 @@ str_psstate
 
 .. c:function:: char *str_psstate(enum ps_state state)
 
-    :param enum ps_state state:
+    :param state:
         *undescribed*
+    :type state: enum ps_state
 
 .. _`str_psstate.description`:
 

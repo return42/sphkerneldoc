@@ -10,38 +10,49 @@ fw_send_request
 
     submit a request packet for transmission
 
-    :param struct fw_card \*card:
+    :param card:
         interface to send the request at
+    :type card: struct fw_card \*
 
-    :param struct fw_transaction \*t:
+    :param t:
         transaction instance to which the request belongs
+    :type t: struct fw_transaction \*
 
-    :param int tcode:
+    :param tcode:
         transaction code
+    :type tcode: int
 
-    :param int destination_id:
+    :param destination_id:
         destination node ID, consisting of bus_ID and phy_ID
+    :type destination_id: int
 
-    :param int generation:
+    :param generation:
         bus generation in which request and response are valid
+    :type generation: int
 
-    :param int speed:
+    :param speed:
         transmission speed
+    :type speed: int
 
-    :param unsigned long long offset:
+    :param offset:
         48bit wide offset into destination's address space
+    :type offset: unsigned long long
 
-    :param void \*payload:
+    :param payload:
         data payload for the request subaction
+    :type payload: void \*
 
-    :param size_t length:
+    :param length:
         length of the payload, in bytes
+    :type length: size_t
 
-    :param fw_transaction_callback_t callback:
+    :param callback:
         function to be called when the transaction is completed
+    :type callback: fw_transaction_callback_t
 
-    :param void \*callback_data:
+    :param callback_data:
         data to be passed to the transaction completion callback
+    :type callback_data: void \*
 
 .. _`fw_send_request.description`:
 
@@ -77,12 +88,7 @@ specific rcodes (%RCODE_CANCELLED, \ ``RCODE_BUSY``\ , \ ``RCODE_GENERATION``\ ,
 \ ``RCODE_NO_ACK``\ ) denote transaction timeout, busy responder, stale request
 generation, or missing ACK respectively.
 
-.. _`fw_send_request.note-some-timing-corner-cases`:
-
-Note some timing corner cases
------------------------------
-
-\ :c:func:`fw_send_request`\  may complete much earlier
+Note some timing corner cases:  \ :c:func:`fw_send_request`\  may complete much earlier
 than when the request packet actually hits the wire.  On the other hand,
 transaction completion and hence execution of \ ``callback``\  may happen even
 before \ :c:func:`fw_send_request`\  returns.
@@ -96,29 +102,37 @@ fw_run_transaction
 
     send request and sleep until transaction is completed
 
-    :param struct fw_card \*card:
-        *undescribed*
+    :param card:
+        card interface for this request
+    :type card: struct fw_card \*
 
-    :param int tcode:
-        *undescribed*
+    :param tcode:
+        transaction code
+    :type tcode: int
 
-    :param int destination_id:
-        *undescribed*
+    :param destination_id:
+        destination node ID, consisting of bus_ID and phy_ID
+    :type destination_id: int
 
-    :param int generation:
-        *undescribed*
+    :param generation:
+        bus generation in which request and response are valid
+    :type generation: int
 
-    :param int speed:
-        *undescribed*
+    :param speed:
+        transmission speed
+    :type speed: int
 
-    :param unsigned long long offset:
-        *undescribed*
+    :param offset:
+        48bit wide offset into destination's address space
+    :type offset: unsigned long long
 
-    :param void \*payload:
-        *undescribed*
+    :param payload:
+        data payload for the request subaction
+    :type payload: void \*
 
-    :param size_t length:
-        *undescribed*
+    :param length:
+        length of the payload, in bytes
+    :type length: size_t
 
 .. _`fw_run_transaction.description`:
 
@@ -139,11 +153,13 @@ fw_core_add_address_handler
 
     register for incoming requests
 
-    :param struct fw_address_handler \*handler:
+    :param handler:
         callback
+    :type handler: struct fw_address_handler \*
 
-    :param const struct fw_address_region \*region:
+    :param region:
         region in the IEEE 1212 node space address range
+    :type region: const struct fw_address_region \*
 
 .. _`fw_core_add_address_handler.description`:
 
@@ -157,13 +173,7 @@ the specified callback is invoked.  The parameters passed to the callback
 give the details of the particular request.
 
 To be called in process context.
-
-.. _`fw_core_add_address_handler.return-value`:
-
-Return value
-------------
-
-0 on success, non-zero otherwise.
+Return value:  0 on success, non-zero otherwise.
 
 The start offset of the handler's address region is determined by
 \ :c:func:`fw_core_add_address_handler`\  and is returned in handler->offset.
@@ -179,8 +189,9 @@ fw_core_remove_address_handler
 
     unregister an address handler
 
-    :param struct fw_address_handler \*handler:
-        *undescribed*
+    :param handler:
+        callback
+    :type handler: struct fw_address_handler \*
 
 .. _`fw_core_remove_address_handler.description`:
 
@@ -189,7 +200,7 @@ Description
 
 To be called in process context.
 
-When \ :c:func:`fw_core_remove_address_handler`\  returns, \ ``handler``\ ->callback() is
+When \ :c:func:`fw_core_remove_address_handler`\  returns, \ ``handler->callback``\ () is
 guaranteed to not run on any CPU anymore.
 
 .. _`fw_get_request_speed`:
@@ -201,8 +212,9 @@ fw_get_request_speed
 
     returns speed at which the \ ``request``\  was received
 
-    :param struct fw_request \*request:
-        *undescribed*
+    :param request:
+        firewire request data
+    :type request: struct fw_request \*
 
 .. _`fw_rcode_string`:
 
@@ -213,8 +225,9 @@ fw_rcode_string
 
     convert a firewire result code to an error description
 
-    :param int rcode:
+    :param rcode:
         the result code
+    :type rcode: int
 
 .. This file was automatic generated / don't edit.
 

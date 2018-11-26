@@ -10,11 +10,13 @@ set_mm_exe_file
 
     change a reference to the mm's executable file
 
-    :param struct mm_struct \*mm:
+    :param mm:
         *undescribed*
+    :type mm: struct mm_struct \*
 
-    :param struct file \*new_exe_file:
+    :param new_exe_file:
         *undescribed*
+    :type new_exe_file: struct file \*
 
 .. _`set_mm_exe_file.description`:
 
@@ -44,8 +46,9 @@ get_mm_exe_file
 
     acquire a reference to the mm's executable file
 
-    :param struct mm_struct \*mm:
+    :param mm:
         *undescribed*
+    :type mm: struct mm_struct \*
 
 .. _`get_mm_exe_file.description`:
 
@@ -64,8 +67,9 @@ get_task_exe_file
 
     acquire a reference to the task's executable file
 
-    :param struct task_struct \*task:
+    :param task:
         *undescribed*
+    :type task: struct task_struct \*
 
 .. _`get_task_exe_file.description`:
 
@@ -85,8 +89,9 @@ get_task_mm
 
     acquire a reference to the task's mm
 
-    :param struct task_struct \*task:
+    :param task:
         *undescribed*
+    :type task: struct task_struct \*
 
 .. _`get_task_mm.description`:
 

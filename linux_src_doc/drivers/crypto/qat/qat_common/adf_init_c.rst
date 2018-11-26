@@ -10,8 +10,9 @@ adf_dev_init
 
     Init data structures and services for the given accel device
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_dev_init.description`:
 
@@ -37,8 +38,9 @@ adf_dev_start
 
     Start acceleration service for the given accel device
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_dev_start.description`:
 
@@ -65,8 +67,9 @@ adf_dev_stop
 
     Stop acceleration service for the given accel device
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_dev_stop.description`:
 
@@ -93,8 +96,9 @@ adf_dev_shutdown
 
     shutdown acceleration services and data strucutures
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_dev_shutdown.description`:
 

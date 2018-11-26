@@ -10,8 +10,9 @@ phy_print_status
 
     Convenience function to print out the current phy status
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_clear_interrupt`:
 
@@ -22,8 +23,9 @@ phy_clear_interrupt
 
     Ack the phy device's interrupt
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_clear_interrupt.description`:
 
@@ -44,11 +46,13 @@ phy_config_interrupt
 
     configure the PHY device for the requested interrupts
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 interrupts:
+    :param interrupts:
         interrupt flags to configure for this \ ``phydev``\ 
+    :type interrupts: u32
 
 .. _`phy_config_interrupt.description`:
 
@@ -66,8 +70,9 @@ phy_restart_aneg
 
     restart auto-negotiation
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_restart_aneg.description`:
 
@@ -86,8 +91,9 @@ phy_aneg_done
 
     return auto-negotiation status
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_aneg_done.description`:
 
@@ -107,14 +113,17 @@ phy_find_valid
 
     find a PHY setting that matches the requested parameters
 
-    :param int speed:
+    :param speed:
         desired speed
+    :type speed: int
 
-    :param int duplex:
+    :param duplex:
         desired duplex
+    :type duplex: int
 
-    :param u32 supported:
+    :param supported:
         mask of supported link modes
+    :type supported: u32
 
 .. _`phy_find_valid.description`:
 
@@ -137,14 +146,17 @@ phy_supported_speeds
 
     return all speeds currently supported by a phy device
 
-    :param struct phy_device \*phy:
+    :param phy:
         The phy device to return supported speeds of.
+    :type phy: struct phy_device \*
 
-    :param unsigned int \*speeds:
+    :param speeds:
         buffer to store supported speeds in.
+    :type speeds: unsigned int \*
 
-    :param unsigned int size:
+    :param size:
         size of speeds buffer.
+    :type size: unsigned int
 
 .. _`phy_supported_speeds.description`:
 
@@ -164,14 +176,17 @@ phy_check_valid
 
     check if there is a valid PHY setting which matches speed, duplex, and feature mask
 
-    :param int speed:
+    :param speed:
         speed to match
+    :type speed: int
 
-    :param int duplex:
+    :param duplex:
         duplex to match
+    :type duplex: int
 
-    :param u32 features:
+    :param features:
         A mask of the valid settings
+    :type features: u32
 
 .. _`phy_check_valid.description`:
 
@@ -189,8 +204,9 @@ phy_sanitize_settings
 
     make sure the PHY is set to supported speed and duplex
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_sanitize_settings.description`:
 
@@ -210,11 +226,13 @@ phy_ethtool_sset
 
     generic ethtool sset function, handles all the details
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param struct ethtool_cmd \*cmd:
+    :param cmd:
         ethtool_cmd
+    :type cmd: struct ethtool_cmd \*
 
 .. _`phy_ethtool_sset.a-few-notes-about-parameter-checking`:
 
@@ -237,14 +255,17 @@ phy_mii_ioctl
 
     generic PHY MII ioctl interface
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         \ :c:type:`struct ifreq <ifreq>`\  for socket ioctl's
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         ioctl cmd to execute
+    :type cmd: int
 
 .. _`phy_mii_ioctl.description`:
 
@@ -255,31 +276,6 @@ Note that this function is currently incompatible with the
 PHYCONTROL layer.  It changes registers without regard to
 current state.  Use at own risk.
 
-.. _`phy_start_aneg_priv`:
-
-phy_start_aneg_priv
-===================
-
-.. c:function:: int phy_start_aneg_priv(struct phy_device *phydev, bool sync)
-
-    start auto-negotiation for this PHY device
-
-    :param struct phy_device \*phydev:
-        the phy_device struct
-
-    :param bool sync:
-        indicate whether we should wait for the workqueue cancelation
-
-.. _`phy_start_aneg_priv.description`:
-
-Description
------------
-
-Sanitizes the settings (if we're not autonegotiating
-  them), and then calls the driver's config_aneg function.
-  If the PHYCONTROL Layer is operating, we change the state to
-  reflect the beginning of Auto-negotiation or forcing.
-
 .. _`phy_start_aneg`:
 
 phy_start_aneg
@@ -289,8 +285,9 @@ phy_start_aneg
 
     start auto-negotiation for this PHY device
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_start_aneg.description`:
 
@@ -302,6 +299,56 @@ Sanitizes the settings (if we're not autonegotiating
   If the PHYCONTROL Layer is operating, we change the state to
   reflect the beginning of Auto-negotiation or forcing.
 
+.. _`phy_speed_down`:
+
+phy_speed_down
+==============
+
+.. c:function:: int phy_speed_down(struct phy_device *phydev, bool sync)
+
+    set speed to lowest speed supported by both link partners
+
+    :param phydev:
+        the phy_device struct
+    :type phydev: struct phy_device \*
+
+    :param sync:
+        perform action synchronously
+    :type sync: bool
+
+.. _`phy_speed_down.description`:
+
+Description
+-----------
+
+Typically used to save energy when waiting for a WoL packet
+
+WARNING: Setting sync to false may cause the system being unable to suspend
+in case the PHY generates an interrupt when finishing the autonegotiation.
+This interrupt may wake up the system immediately after suspend.
+Therefore use sync = false only if you're sure it's safe with the respective
+network chip.
+
+.. _`phy_speed_up`:
+
+phy_speed_up
+============
+
+.. c:function:: int phy_speed_up(struct phy_device *phydev)
+
+    (re)set advertised speeds to all supported speeds
+
+    :param phydev:
+        the phy_device struct
+    :type phydev: struct phy_device \*
+
+.. _`phy_speed_up.description`:
+
+Description
+-----------
+
+Used to revert the effect of phy_speed_down
+
 .. _`phy_start_machine`:
 
 phy_start_machine
@@ -311,8 +358,9 @@ phy_start_machine
 
     start PHY state machine tracking
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_start_machine.description`:
 
@@ -330,15 +378,13 @@ The PHY infrastructure can run a state machine
 phy_trigger_machine
 ===================
 
-.. c:function:: void phy_trigger_machine(struct phy_device *phydev, bool sync)
+.. c:function:: void phy_trigger_machine(struct phy_device *phydev)
 
     trigger the state machine to run
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
-
-    :param bool sync:
-        indicate whether we should wait for the workqueue cancelation
+    :type phydev: struct phy_device \*
 
 .. _`phy_trigger_machine.description`:
 
@@ -357,8 +403,9 @@ phy_stop_machine
 
     stop the PHY state machine tracking
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_stop_machine.description`:
 
@@ -378,8 +425,9 @@ phy_error
 
     enter HALTED state for this PHY device
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_error.description`:
 
@@ -400,8 +448,9 @@ phy_disable_interrupts
 
     Disable the PHY interrupts from the PHY side
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_change`:
 
@@ -412,8 +461,9 @@ phy_change
 
     Called by the phy_interrupt to handle PHY changes
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         phy_device struct that interrupted
+    :type phydev: struct phy_device \*
 
 .. _`phy_change_work`:
 
@@ -424,8 +474,9 @@ phy_change_work
 
     Scheduled by the phy_mac_interrupt to handle PHY changes
 
-    :param struct work_struct \*work:
+    :param work:
         work_struct that describes the work to be done
+    :type work: struct work_struct \*
 
 .. _`phy_interrupt`:
 
@@ -436,11 +487,13 @@ phy_interrupt
 
     PHY interrupt handler
 
-    :param int irq:
+    :param irq:
         interrupt line
+    :type irq: int
 
-    :param void \*phy_dat:
+    :param phy_dat:
         phy_device pointer
+    :type phy_dat: void \*
 
 .. _`phy_interrupt.description`:
 
@@ -459,8 +512,9 @@ phy_enable_interrupts
 
     Enable the interrupts from the PHY side
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_start_interrupts`:
 
@@ -471,8 +525,9 @@ phy_start_interrupts
 
     request and enable interrupts for a PHY device
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_start_interrupts.description`:
 
@@ -494,8 +549,9 @@ phy_stop_interrupts
 
     disable interrupts from a PHY device
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_stop`:
 
@@ -506,8 +562,9 @@ phy_stop
 
     Bring down the PHY link, and stop checking the status
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_start`:
 
@@ -518,8 +575,9 @@ phy_start
 
     start or restart a PHY device
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_start.description`:
 
@@ -541,8 +599,9 @@ phy_state_machine
 
     Handle the state machine
 
-    :param struct work_struct \*work:
+    :param work:
         work_struct that describes the work to be done
+    :type work: struct work_struct \*
 
 .. _`phy_mac_interrupt`:
 
@@ -553,8 +612,9 @@ phy_mac_interrupt
 
     MAC says the link has changed
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         phy_device struct with changed link
+    :type phydev: struct phy_device \*
 
 .. _`phy_mac_interrupt.description`:
 
@@ -573,11 +633,13 @@ phy_init_eee
 
     init and check the EEE feature
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param bool clk_stop_enable:
+    :param clk_stop_enable:
         PHY may stop the clock during LPI
+    :type clk_stop_enable: bool
 
 .. _`phy_init_eee.description`:
 
@@ -598,8 +660,9 @@ phy_get_eee_err
 
     report the EEE wake error count
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_get_eee_err.description`:
 
@@ -618,11 +681,13 @@ phy_ethtool_get_eee
 
     get EEE supported and status
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param struct ethtool_eee \*data:
+    :param data:
         ethtool_eee data
+    :type data: struct ethtool_eee \*
 
 .. _`phy_ethtool_get_eee.description`:
 
@@ -641,11 +706,13 @@ phy_ethtool_set_eee
 
     set EEE supported and status
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         target phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param struct ethtool_eee \*data:
+    :param data:
         ethtool_eee data
+    :type data: struct ethtool_eee \*
 
 .. _`phy_ethtool_set_eee.description`:
 

@@ -10,16 +10,19 @@ pti_write_to_aperture
 
     The private write function to PTI HW.
 
-    :param struct pti_masterchannel \*mc:
+    :param mc:
         The 'aperture'. It's part of a write address that holds
         a master and channel ID.
+    :type mc: struct pti_masterchannel \*
 
-    :param u8 \*buf:
+    :param buf:
         Data being written to the HW that will ultimately be seen
         in a debugging tool (Fido, Lauterbach).
+    :type buf: u8 \*
 
-    :param int len:
+    :param len:
         Size of buffer.
+    :type len: int
 
 .. _`pti_write_to_aperture.description`:
 
@@ -43,13 +46,15 @@ pti_control_frame_built_and_sent
 
     control frame build and send function.
 
-    :param struct pti_masterchannel \*mc:
+    :param mc:
         The master / channel structure on which the function
         built a control frame.
+    :type mc: struct pti_masterchannel \*
 
-    :param const char \*thread_name:
+    :param thread_name:
         The thread name associated with the master / channel or
         'NULL' if using the 'current' global variable.
+    :type thread_name: const char \*
 
 .. _`pti_control_frame_built_and_sent.description`:
 
@@ -74,16 +79,19 @@ pti_write_full_frame_to_aperture
 
     high level function to write to PTI.
 
-    :param struct pti_masterchannel \*mc:
+    :param mc:
         The 'aperture'. It's part of a write address that holds
         a master and channel ID.
+    :type mc: struct pti_masterchannel \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         Data being written to the HW that will ultimately be seen
         in a debugging tool (Fido, Lauterbach).
+    :type buf: const unsigned char \*
 
-    :param int len:
+    :param len:
         Size of buffer.
+    :type len: int
 
 .. _`pti_write_full_frame_to_aperture.description`:
 
@@ -103,20 +111,24 @@ get_id
 
     Allocate a master and channel ID.
 
-    :param u8 \*id_array:
+    :param id_array:
         an array of bits representing what channel
         id's are allocated for writing.
+    :type id_array: u8 \*
 
-    :param int max_ids:
+    :param max_ids:
         The max amount of available write IDs to use.
+    :type max_ids: int
 
-    :param int base_id:
+    :param base_id:
         The starting SW channel ID, based on the Intel
         PTI arch.
+    :type base_id: int
 
-    :param const char \*thread_name:
+    :param thread_name:
         The thread name associated with the master / channel or
         'NULL' if using the 'current' global variable.
+    :type thread_name: const char \*
 
 .. _`get_id.return`:
 
@@ -139,7 +151,7 @@ pti_request_masterchannel
 
     Kernel API function used to allocate a master, channel ID address to write to PTI HW.
 
-    :param u8 type:
+    :param type:
         0- request Application  master, channel aperture ID
         write address.
         1- request OS master, channel aperture ID write
@@ -147,10 +159,12 @@ pti_request_masterchannel
         2- request Modem master, channel aperture ID
         write address.
         Other values, error.
+    :type type: u8
 
-    :param const char \*thread_name:
+    :param thread_name:
         The thread name associated with the master / channel or
         'NULL' if using the 'current' global variable.
+    :type thread_name: const char \*
 
 .. _`pti_request_masterchannel.return`:
 
@@ -169,9 +183,10 @@ pti_release_masterchannel
 
     Kernel API function used to release a master, channel ID address used to write to PTI HW.
 
-    :param struct pti_masterchannel \*mc:
+    :param mc:
         master, channel apeture ID address to be released.  This
         will de-allocate the structure via \ :c:func:`kfree`\ .
+    :type mc: struct pti_masterchannel \*
 
 .. _`pti_writedata`:
 
@@ -182,17 +197,20 @@ pti_writedata
 
     Kernel API function used to write trace debugging data to PTI HW.
 
-    :param struct pti_masterchannel \*mc:
+    :param mc:
         Master, channel aperture ID address to write to.
         Null value will return with no write occurring.
+    :type mc: struct pti_masterchannel \*
 
-    :param u8 \*buf:
+    :param buf:
         Trace debuging data to write to the PTI HW.
         Null value will return with no write occurring.
+    :type buf: u8 \*
 
-    :param int count:
+    :param count:
         Size of buf. Value of 0 or a negative number will
         return with no write occuring.
+    :type count: int
 
 .. _`pti_tty_driver_open`:
 
@@ -203,11 +221,13 @@ pti_tty_driver_open
 
     Open an Application master, channel aperture ID to the PTI device via tty device.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty interface.
+    :type tty: struct tty_struct \*
 
-    :param struct file \*filp:
+    :param filp:
         filp interface pased to \ :c:func:`tty_port_open`\  call.
+    :type filp: struct file \*
 
 .. _`pti_tty_driver_open.return`:
 
@@ -235,11 +255,13 @@ pti_tty_driver_close
 
     close tty device and release Application master, channel aperture ID to the PTI device via tty device.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty interface.
+    :type tty: struct tty_struct \*
 
-    :param struct file \*filp:
+    :param filp:
         filp interface pased to \ :c:func:`tty_port_close`\  call.
+    :type filp: struct file \*
 
 .. _`pti_tty_driver_close.description`:
 
@@ -259,11 +281,13 @@ pti_tty_install
 
     Used to set up specific master-channels to tty ports for organizational purposes when tracing viewed from debuging tools.
 
-    :param struct tty_driver \*driver:
+    :param driver:
         tty driver information.
+    :type driver: struct tty_driver \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty struct containing pti information.
+    :type tty: struct tty_struct \*
 
 .. _`pti_tty_install.return`:
 
@@ -282,8 +306,9 @@ pti_tty_cleanup
 
     Used to de-allocate master-channel resources tied to tty's of this driver.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         tty struct containing pti information.
+    :type tty: struct tty_struct \*
 
 .. _`pti_tty_driver_write`:
 
@@ -294,14 +319,17 @@ pti_tty_driver_write
 
     Write trace debugging data through the char interface to the PTI HW.  Part of the misc device implementation.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const unsigned char \*
 
-    :param int len:
+    :param len:
         # of byte to write.
+    :type len: int
 
 .. _`pti_tty_driver_write.return`:
 
@@ -320,8 +348,9 @@ pti_tty_write_room
 
     Always returns 2048.
 
-    :param struct tty_struct \*tty:
+    :param tty:
         contains tty info of the pti driver.
+    :type tty: struct tty_struct \*
 
 .. _`pti_char_open`:
 
@@ -332,12 +361,14 @@ pti_char_open
 
     Open an Application master, channel aperture ID to the PTI device. Part of the misc device implementation.
 
-    :param struct inode \*inode:
+    :param inode:
         not used.
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         Output- will have a masterchannel struct set containing
         the allocated application PTI aperture write address.
+    :type filp: struct file \*
 
 .. _`pti_char_open.return`:
 
@@ -356,12 +387,14 @@ pti_char_release
 
     Close a char channel to the PTI device. Part of the misc device implementation.
 
-    :param struct inode \*inode:
+    :param inode:
         Not used in this implementaiton.
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         Contains private_data that contains the master, channel
         ID to be released by the PTI device.
+    :type filp: struct file \*
 
 .. _`pti_char_release.return`:
 
@@ -379,18 +412,22 @@ pti_char_write
 
     Write trace debugging data through the char interface to the PTI HW.  Part of the misc device implementation.
 
-    :param struct file \*filp:
+    :param filp:
         Contains private data which is used to obtain
         master, channel write ID.
+    :type filp: struct file \*
 
-    :param const char __user \*data:
+    :param data:
         trace data to be written.
+    :type data: const char __user \*
 
-    :param size_t len:
+    :param len:
         # of byte to write.
+    :type len: size_t
 
-    :param loff_t \*ppose:
+    :param ppose:
         Not used in this function implementation.
+    :type ppose: loff_t \*
 
 .. _`pti_char_write.return`:
 
@@ -420,14 +457,17 @@ pti_console_write
 
     Write to the console that has been acquired.
 
-    :param struct console \*c:
+    :param c:
         Not used in this implementaiton.
+    :type c: struct console \*
 
-    :param const char \*buf:
+    :param buf:
         Data to be written.
+    :type buf: const char \*
 
-    :param unsigned len:
+    :param len:
         Length of buf.
+    :type len: unsigned
 
 .. _`pti_console_device`:
 
@@ -438,11 +478,13 @@ pti_console_device
 
     Return the driver tty structure and set the associated index implementation.
 
-    :param struct console \*c:
+    :param c:
         Console device of the driver.
+    :type c: struct console \*
 
-    :param int \*index:
+    :param index:
         index associated with c.
+    :type index: int \*
 
 .. _`pti_console_device.return`:
 
@@ -461,11 +503,13 @@ pti_console_setup
 
     Initialize console variables used by the driver.
 
-    :param struct console \*c:
+    :param c:
         Not used.
+    :type c: struct console \*
 
-    :param char \*opts:
+    :param opts:
         Not used.
+    :type opts: char \*
 
 .. _`pti_console_setup.return`:
 
@@ -483,11 +527,13 @@ pti_port_activate
 
     Used to start/initialize any items upon first opening of \ :c:func:`tty_port`\ .
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         *undescribed*
+    :type tty: struct tty_struct \*
 
 .. _`pti_port_activate.description`:
 
@@ -522,8 +568,9 @@ pti_port_shutdown
 
     Used to stop/shutdown any items upon the last tty port close.
 
-    :param struct tty_port \*port:
+    :param port:
         *undescribed*
+    :type port: struct tty_port \*
 
 .. _`pti_port_shutdown.description`:
 
@@ -550,11 +597,13 @@ pti_pci_probe
 
     Used to detect pti on the pci bus and set things up in the driver.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         *undescribed*
+    :type ent: const struct pci_device_id \*
 
 .. _`pti_pci_probe.description`:
 
@@ -581,8 +630,9 @@ pti_pci_remove
 
     Driver exit method to remove PTI from PCI bus.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         variable containing pci info of PTI.
+    :type pdev: struct pci_dev \*
 
 .. _`pti_exit`:
 
@@ -593,8 +643,9 @@ pti_exit
 
     Unregisters this module as a tty and pci driver.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

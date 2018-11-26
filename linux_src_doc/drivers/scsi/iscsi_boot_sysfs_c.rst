@@ -10,14 +10,17 @@ iscsi_boot_create_target
 
     create boot target sysfs dir
 
-    :param struct iscsi_boot_kset \*boot_kset:
+    :param boot_kset:
         boot kset
+    :type boot_kset: struct iscsi_boot_kset \*
 
-    :param int index:
+    :param index:
         the target id
+    :type index: int
 
-    :param void \*data:
+    :param data:
         driver specific data for target
+    :type data: void \*
 
     :param ssize_t (\*show)(void \*data, int type, char \*buf):
         attr show function
@@ -45,14 +48,17 @@ iscsi_boot_create_initiator
 
     create boot initiator sysfs dir
 
-    :param struct iscsi_boot_kset \*boot_kset:
+    :param boot_kset:
         boot kset
+    :type boot_kset: struct iscsi_boot_kset \*
 
-    :param int index:
+    :param index:
         the initiator id
+    :type index: int
 
-    :param void \*data:
+    :param data:
         driver specific data
+    :type data: void \*
 
     :param ssize_t (\*show)(void \*data, int type, char \*buf):
         attr show function
@@ -80,14 +86,17 @@ iscsi_boot_create_ethernet
 
     create boot ethernet sysfs dir
 
-    :param struct iscsi_boot_kset \*boot_kset:
+    :param boot_kset:
         boot kset
+    :type boot_kset: struct iscsi_boot_kset \*
 
-    :param int index:
+    :param index:
         the ethernet device id
+    :type index: int
 
-    :param void \*data:
+    :param data:
         driver specific data
+    :type data: void \*
 
     :param ssize_t (\*show)(void \*data, int type, char \*buf):
         attr show function
@@ -115,14 +124,17 @@ iscsi_boot_create_acpitbl
 
     create boot acpi table sysfs dir
 
-    :param struct iscsi_boot_kset \*boot_kset:
+    :param boot_kset:
         boot kset
+    :type boot_kset: struct iscsi_boot_kset \*
 
-    :param int index:
+    :param index:
         not used
+    :type index: int
 
-    :param void \*data:
+    :param data:
         driver specific data
+    :type data: void \*
 
     :param ssize_t (\*show)(void \*data, int type, char \*buf):
         attr show function
@@ -150,8 +162,9 @@ iscsi_boot_create_kset
 
     creates root sysfs tree
 
-    :param const char \*set_name:
+    :param set_name:
         name of root dir
+    :type set_name: const char \*
 
 .. _`iscsi_boot_create_host_kset`:
 
@@ -162,8 +175,9 @@ iscsi_boot_create_host_kset
 
     creates root sysfs tree for a scsi host
 
-    :param unsigned int hostno:
+    :param hostno:
         host number of scsi host
+    :type hostno: unsigned int
 
 .. _`iscsi_boot_destroy_kset`:
 
@@ -174,8 +188,9 @@ iscsi_boot_destroy_kset
 
     destroy kset and kobjects under it
 
-    :param struct iscsi_boot_kset \*boot_kset:
+    :param boot_kset:
         boot kset
+    :type boot_kset: struct iscsi_boot_kset \*
 
 .. _`iscsi_boot_destroy_kset.description`:
 

@@ -10,8 +10,9 @@ tomoyo_yesno
 
     Return "yes" or "no".
 
-    :param const unsigned int value:
+    :param value:
         Bool value.
+    :type value: const unsigned int
 
 .. _`tomoyo_addprintf`:
 
@@ -22,14 +23,17 @@ tomoyo_addprintf
 
     \ :c:func:`strncat`\ -like-snprintf().
 
-    :param char \*buffer:
+    :param buffer:
         Buffer to write to. Must be '\0'-terminated.
+    :type buffer: char \*
 
-    :param int len:
+    :param len:
         Size of \ ``buffer``\ .
+    :type len: int
 
-    :param const char \*fmt:
+    :param fmt:
         The \ :c:func:`printf`\ 's format string, followed by parameters.
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -50,8 +54,9 @@ tomoyo_flush
 
     Flush queued string to userspace's buffer.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_flush.description`:
 
@@ -69,11 +74,13 @@ tomoyo_set_string
 
     Queue string to "struct tomoyo_io_buffer" structure.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const char \*string:
+    :param string:
         String to print.
+    :type string: const char \*
 
 .. _`tomoyo_set_string.description`:
 
@@ -93,11 +100,13 @@ tomoyo_io_printf
 
     \ :c:func:`printf`\  to "struct tomoyo_io_buffer" structure.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const char \*fmt:
+    :param fmt:
         The \ :c:func:`printf`\ 's format string, followed by parameters.
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -111,8 +120,9 @@ tomoyo_set_space
 
     Put a space to "struct tomoyo_io_buffer" structure.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_set_space.description`:
 
@@ -130,8 +140,9 @@ tomoyo_set_lf
 
     Put a line feed to "struct tomoyo_io_buffer" structure.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_set_lf.description`:
 
@@ -149,8 +160,9 @@ tomoyo_set_slash
 
     Put a shash to "struct tomoyo_io_buffer" structure.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_set_slash.description`:
 
@@ -168,8 +180,9 @@ tomoyo_init_policy_namespace
 
     Initialize namespace.
 
-    :param struct tomoyo_policy_namespace \*ns:
+    :param ns:
         Pointer to "struct tomoyo_policy_namespace".
+    :type ns: struct tomoyo_policy_namespace \*
 
 .. _`tomoyo_init_policy_namespace.description`:
 
@@ -187,8 +200,9 @@ tomoyo_print_namespace
 
     Print namespace header.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_print_namespace.description`:
 
@@ -206,11 +220,13 @@ tomoyo_print_name_union
 
     Print a tomoyo_name_union.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const struct tomoyo_name_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_name_union".
+    :type ptr: const struct tomoyo_name_union \*
 
 .. _`tomoyo_print_name_union_quoted`:
 
@@ -221,11 +237,13 @@ tomoyo_print_name_union_quoted
 
     Print a tomoyo_name_union with a quote.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const struct tomoyo_name_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_name_union".
+    :type ptr: const struct tomoyo_name_union \*
 
 .. _`tomoyo_print_name_union_quoted.description`:
 
@@ -243,11 +261,13 @@ tomoyo_print_number_union_nospace
 
     Print a tomoyo_number_union without a space.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const struct tomoyo_number_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_number_union".
+    :type ptr: const struct tomoyo_number_union \*
 
 .. _`tomoyo_print_number_union_nospace.description`:
 
@@ -265,11 +285,13 @@ tomoyo_print_number_union
 
     Print a tomoyo_number_union.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const struct tomoyo_number_union \*ptr:
+    :param ptr:
         Pointer to "struct tomoyo_number_union".
+    :type ptr: const struct tomoyo_number_union \*
 
 .. _`tomoyo_print_number_union.description`:
 
@@ -287,11 +309,13 @@ tomoyo_assign_profile
 
     Create a new profile.
 
-    :param struct tomoyo_policy_namespace \*ns:
+    :param ns:
         Pointer to "struct tomoyo_policy_namespace".
+    :type ns: struct tomoyo_policy_namespace \*
 
-    :param const unsigned int profile:
+    :param profile:
         Profile number to create.
+    :type profile: const unsigned int
 
 .. _`tomoyo_assign_profile.description`:
 
@@ -309,11 +333,13 @@ tomoyo_profile
 
     Find a profile.
 
-    :param const struct tomoyo_policy_namespace \*ns:
+    :param ns:
         Pointer to "struct tomoyo_policy_namespace".
+    :type ns: const struct tomoyo_policy_namespace \*
 
-    :param const u8 profile:
+    :param profile:
         Profile number to find.
+    :type profile: const u8
 
 .. _`tomoyo_profile.description`:
 
@@ -331,11 +357,13 @@ tomoyo_find_yesno
 
     Find values for specified keyword.
 
-    :param const char \*string:
+    :param string:
         String to check.
+    :type string: const char \*
 
-    :param const char \*find:
+    :param find:
         Name of keyword.
+    :type find: const char \*
 
 .. _`tomoyo_find_yesno.description`:
 
@@ -353,14 +381,17 @@ tomoyo_set_uint
 
     Set value for specified preference.
 
-    :param unsigned int \*i:
+    :param i:
         Pointer to "unsigned int".
+    :type i: unsigned int \*
 
-    :param const char \*string:
+    :param string:
         String to check.
+    :type string: const char \*
 
-    :param const char \*find:
+    :param find:
         Name of keyword.
+    :type find: const char \*
 
 .. _`tomoyo_set_uint.description`:
 
@@ -378,14 +409,17 @@ tomoyo_set_mode
 
     Set mode for specified profile.
 
-    :param char \*name:
+    :param name:
         Name of functionality.
+    :type name: char \*
 
-    :param const char \*value:
+    :param value:
         Mode for \ ``name``\ .
+    :type value: const char \*
 
-    :param struct tomoyo_profile \*profile:
+    :param profile:
         Pointer to "struct tomoyo_profile".
+    :type profile: struct tomoyo_profile \*
 
 .. _`tomoyo_set_mode.description`:
 
@@ -403,8 +437,9 @@ tomoyo_write_profile
 
     Write profile table.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_write_profile.description`:
 
@@ -422,11 +457,13 @@ tomoyo_print_config
 
     Print mode for specified functionality.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const u8 config:
+    :param config:
         Mode for that functionality.
+    :type config: const u8
 
 .. _`tomoyo_print_config.description`:
 
@@ -446,8 +483,9 @@ tomoyo_read_profile
 
     Read profile table.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_read_profile.description`:
 
@@ -465,11 +503,13 @@ tomoyo_same_manager
 
     Check for duplicated "struct tomoyo_manager" entry.
 
-    :param const struct tomoyo_acl_head \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_head".
+    :type a: const struct tomoyo_acl_head \*
 
-    :param const struct tomoyo_acl_head \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_head".
+    :type b: const struct tomoyo_acl_head \*
 
 .. _`tomoyo_same_manager.description`:
 
@@ -487,11 +527,13 @@ tomoyo_update_manager_entry
 
     Add a manager entry.
 
-    :param const char \*manager:
+    :param manager:
         The path to manager or the domainnamme.
+    :type manager: const char \*
 
-    :param const bool is_delete:
+    :param is_delete:
         True if it is a delete request.
+    :type is_delete: const bool
 
 .. _`tomoyo_update_manager_entry.description`:
 
@@ -511,8 +553,9 @@ tomoyo_write_manager
 
     Write manager policy.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_write_manager.description`:
 
@@ -532,8 +575,9 @@ tomoyo_read_manager
 
     Read manager policy.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_read_manager.description`:
 
@@ -551,8 +595,9 @@ tomoyo_manager
 
     Check whether the current process is a policy manager.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_manager.description`:
 
@@ -573,11 +618,13 @@ tomoyo_select_domain
 
     Parse select command.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const char \*data:
+    :param data:
         String to parse.
+    :type data: const char \*
 
 .. _`tomoyo_select_domain.description`:
 
@@ -597,11 +644,13 @@ tomoyo_same_task_acl
 
     Check for duplicated "struct tomoyo_task_acl" entry.
 
-    :param const struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: const struct tomoyo_acl_info \*
 
-    :param const struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_same_task_acl.description`:
 
@@ -619,8 +668,9 @@ tomoyo_write_task
 
     Update task related list.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_write_task.description`:
 
@@ -640,8 +690,9 @@ tomoyo_delete_domain
 
     Delete a domain.
 
-    :param char \*domainname:
+    :param domainname:
         The name of domain.
+    :type domainname: char \*
 
 .. _`tomoyo_delete_domain.description`:
 
@@ -661,17 +712,21 @@ tomoyo_write_domain2
 
     Write domain policy.
 
-    :param struct tomoyo_policy_namespace \*ns:
+    :param ns:
         Pointer to "struct tomoyo_policy_namespace".
+    :type ns: struct tomoyo_policy_namespace \*
 
-    :param struct list_head \*list:
+    :param list:
         Pointer to "struct list_head".
+    :type list: struct list_head \*
 
-    :param char \*data:
+    :param data:
         Policy to be interpreted.
+    :type data: char \*
 
-    :param const bool is_delete:
+    :param is_delete:
         True if it is a delete request.
+    :type is_delete: const bool
 
 .. _`tomoyo_write_domain2.description`:
 
@@ -691,8 +746,9 @@ tomoyo_write_domain
 
     Write domain policy.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_write_domain.description`:
 
@@ -712,11 +768,13 @@ tomoyo_print_condition
 
     Print condition part.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const struct tomoyo_condition \*cond:
+    :param cond:
         Pointer to "struct tomoyo_condition".
+    :type cond: const struct tomoyo_condition \*
 
 .. _`tomoyo_print_condition.description`:
 
@@ -734,11 +792,13 @@ tomoyo_set_group
 
     Print "acl_group " header keyword and category name.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const char \*category:
+    :param category:
         Category name.
+    :type category: const char \*
 
 .. _`tomoyo_set_group.description`:
 
@@ -756,11 +816,13 @@ tomoyo_print_entry
 
     Print an ACL entry.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param struct tomoyo_acl_info \*acl:
+    :param acl:
         Pointer to an ACL entry.
+    :type acl: struct tomoyo_acl_info \*
 
 .. _`tomoyo_print_entry.description`:
 
@@ -778,11 +840,13 @@ tomoyo_read_domain2
 
     Read domain policy.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param struct list_head \*list:
+    :param list:
         Pointer to "struct list_head".
+    :type list: struct list_head \*
 
 .. _`tomoyo_read_domain2.description`:
 
@@ -802,8 +866,9 @@ tomoyo_read_domain
 
     Read domain policy.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_read_domain.description`:
 
@@ -821,8 +886,9 @@ tomoyo_write_pid
 
     Specify PID to obtain domainname.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_write_pid.description`:
 
@@ -840,8 +906,9 @@ tomoyo_read_pid
 
     Get domainname of the specified PID.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_read_pid.description`:
 
@@ -862,8 +929,9 @@ tomoyo_write_exception
 
     Write exception policy.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_write_exception.description`:
 
@@ -883,11 +951,13 @@ tomoyo_read_group
 
     Read "struct tomoyo_path_group"/"struct tomoyo_number_group"/"struct tomoyo_address_group" list.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const int idx:
+    :param idx:
         Index number.
+    :type idx: const int
 
 .. _`tomoyo_read_group.description`:
 
@@ -907,11 +977,13 @@ tomoyo_read_policy
 
     Read "struct tomoyo_..._entry" list.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const int idx:
+    :param idx:
         Index number.
+    :type idx: const int
 
 .. _`tomoyo_read_policy.description`:
 
@@ -931,8 +1003,9 @@ tomoyo_read_exception
 
     Read exception policy.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_read_exception.description`:
 
@@ -950,8 +1023,9 @@ tomoyo_truncate
 
     Truncate a line.
 
-    :param char \*str:
+    :param str:
         String to truncate.
+    :type str: char \*
 
 .. _`tomoyo_truncate.description`:
 
@@ -969,11 +1043,13 @@ tomoyo_add_entry
 
     Add an ACL to current thread's domain. Used by learning mode.
 
-    :param struct tomoyo_domain_info \*domain:
+    :param domain:
         Pointer to "struct tomoyo_domain_info".
+    :type domain: struct tomoyo_domain_info \*
 
-    :param char \*header:
+    :param header:
         Lines containing ACL.
+    :type header: char \*
 
 .. _`tomoyo_add_entry.description`:
 
@@ -991,11 +1067,13 @@ tomoyo_supervisor
 
     Ask for the supervisor's decision.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
-    :param const char \*fmt:
+    :param fmt:
         The \ :c:func:`printf`\ 's format string, followed by parameters.
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -1019,8 +1097,9 @@ tomoyo_find_domain_by_qid
 
     Get domain by query id.
 
-    :param unsigned int serial:
+    :param serial:
         Query ID assigned by \ :c:func:`tomoyo_supervisor`\ .
+    :type serial: unsigned int
 
 .. _`tomoyo_find_domain_by_qid.description`:
 
@@ -1038,11 +1117,13 @@ tomoyo_poll_query
 
     \ :c:func:`poll`\  for /sys/kernel/security/tomoyo/query.
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         Pointer to "poll_table".
+    :type wait: poll_table \*
 
 .. _`tomoyo_poll_query.description`:
 
@@ -1062,8 +1143,9 @@ tomoyo_read_query
 
     Read access requests which violated policy in enforcing mode.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_write_answer`:
 
@@ -1074,8 +1156,9 @@ tomoyo_write_answer
 
     Write the supervisor's decision.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_write_answer.description`:
 
@@ -1093,8 +1176,9 @@ tomoyo_read_version
 
     Get version.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_read_version.description`:
 
@@ -1112,8 +1196,9 @@ tomoyo_update_stat
 
     Update statistic counters.
 
-    :param const u8 index:
+    :param index:
         Index for policy type.
+    :type index: const u8
 
 .. _`tomoyo_update_stat.description`:
 
@@ -1131,8 +1216,9 @@ tomoyo_read_stat
 
     Read statistic data.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_read_stat.description`:
 
@@ -1150,8 +1236,9 @@ tomoyo_write_stat
 
     Set memory quota.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_write_stat.description`:
 
@@ -1169,11 +1256,13 @@ tomoyo_open_control
 
     \ :c:func:`open`\  for /sys/kernel/security/tomoyo/ interface.
 
-    :param const u8 type:
+    :param type:
         Type of interface.
+    :type type: const u8
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
 .. _`tomoyo_open_control.description`:
 
@@ -1191,11 +1280,13 @@ tomoyo_poll_control
 
     \ :c:func:`poll`\  for /sys/kernel/security/tomoyo/ interface.
 
-    :param struct file \*file:
+    :param file:
         Pointer to "struct file".
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         Pointer to "poll_table". Maybe NULL.
+    :type wait: poll_table \*
 
 .. _`tomoyo_poll_control.description`:
 
@@ -1214,8 +1305,9 @@ tomoyo_set_namespace_cursor
 
     Set namespace to read.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_set_namespace_cursor.description`:
 
@@ -1233,8 +1325,9 @@ tomoyo_has_more_namespace
 
     Check for unread namespaces.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_has_more_namespace.description`:
 
@@ -1252,14 +1345,17 @@ tomoyo_read_control
 
     \ :c:func:`read`\  for /sys/kernel/security/tomoyo/ interface.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param char __user \*buffer:
+    :param buffer:
         Poiner to buffer to write to.
+    :type buffer: char __user \*
 
-    :param const int buffer_len:
+    :param buffer_len:
         Size of \ ``buffer``\ .
+    :type buffer_len: const int
 
 .. _`tomoyo_read_control.description`:
 
@@ -1277,11 +1373,13 @@ tomoyo_parse_policy
 
     Parse a policy line.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Poiter to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param char \*line:
+    :param line:
         Line to parse.
+    :type line: char \*
 
 .. _`tomoyo_parse_policy.description`:
 
@@ -1301,14 +1399,17 @@ tomoyo_write_control
 
     \ :c:func:`write`\  for /sys/kernel/security/tomoyo/ interface.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
-    :param const char __user \*buffer:
+    :param buffer:
         Pointer to buffer to read from.
+    :type buffer: const char __user \*
 
-    :param const int buffer_len:
+    :param buffer_len:
         Size of \ ``buffer``\ .
+    :type buffer_len: const int
 
 .. _`tomoyo_write_control.description`:
 
@@ -1326,8 +1427,9 @@ tomoyo_close_control
 
     \ :c:func:`close`\  for /sys/kernel/security/tomoyo/ interface.
 
-    :param struct tomoyo_io_buffer \*head:
+    :param head:
         Pointer to "struct tomoyo_io_buffer".
+    :type head: struct tomoyo_io_buffer \*
 
 .. _`tomoyo_check_profile`:
 
@@ -1338,8 +1440,9 @@ tomoyo_check_profile
 
     Check all profiles currently assigned to domains are defined.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_load_builtin_policy`:
 
@@ -1350,8 +1453,9 @@ tomoyo_load_builtin_policy
 
     Load built-in policy.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tomoyo_load_builtin_policy.description`:
 

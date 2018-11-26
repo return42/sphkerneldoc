@@ -10,8 +10,9 @@ kprobe_handle_illslot
 
     containing a kprobe, remove the probe.
 
-    :param unsigned long pc:
+    :param pc:
         *undescribed*
+    :type pc: unsigned long
 
 .. _`kprobe_handle_illslot.description`:
 

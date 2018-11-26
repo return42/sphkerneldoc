@@ -10,11 +10,13 @@ soc_camera_apply_board_flags
 
     apply platform SOCAM_SENSOR_INVERT\_\* flags
 
-    :param struct soc_camera_subdev_desc \*ssdd:
+    :param ssdd:
         camera platform parameters
+    :type ssdd: struct soc_camera_subdev_desc \*
 
-    :param const struct v4l2_mbus_config \*cfg:
+    :param cfg:
         media bus configuration
+    :type cfg: const struct v4l2_mbus_config \*
 
 .. This file was automatic generated / don't edit.
 

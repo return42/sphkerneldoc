@@ -7,6 +7,7 @@ ixgbevf
 .. toctree::
     :maxdepth: 1
 
+    ipsec_c
     ixgbevf_main_c
     mbx_c
     vf_c

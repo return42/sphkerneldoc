@@ -150,10 +150,10 @@ flags
         properties are not exposed to legacy userspace.
 
     DRM_MODE_PROP_IMMUTABLE
-        Set for properties where userspace cannot be changed by
+        Set for properties whose values cannot be changed by
         userspace. The kernel is allowed to update the value of these
         properties. This is generally used to expose probe state to
-        usersapce, e.g. the EDID, or the connector path property on DP
+        userspace, e.g. the EDID, or the connector path property on DP
         MST sinks.
 
 name
@@ -272,11 +272,13 @@ drm_property_type_is
 
     check the type of a property
 
-    :param struct drm_property \*property:
+    :param property:
         property to check
+    :type property: struct drm_property \*
 
-    :param uint32_t type:
+    :param type:
         property type to compare with
+    :type type: uint32_t
 
 .. _`drm_property_type_is.description`:
 
@@ -295,14 +297,17 @@ drm_property_find
 
     find property object
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file to check for lease against.
+    :type file_priv: struct drm_file \*
 
-    :param uint32_t id:
+    :param id:
         property object id
+    :type id: uint32_t
 
 .. _`drm_property_find.description`:
 

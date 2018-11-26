@@ -10,8 +10,9 @@ kvm_inject_vabt
 
     inject an async abort / SError into the guest
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU to receive the exception
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_inject_vabt.description`:
 

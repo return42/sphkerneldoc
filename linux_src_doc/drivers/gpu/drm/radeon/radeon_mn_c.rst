@@ -10,8 +10,9 @@ radeon_mn_destroy
 
     destroy the rmn
 
-    :param struct work_struct \*work:
+    :param work:
         previously sheduled work item
+    :type work: struct work_struct \*
 
 .. _`radeon_mn_destroy.description`:
 
@@ -29,11 +30,13 @@ radeon_mn_release
 
     callback to notify about mm destruction
 
-    :param struct mmu_notifier \*mn:
+    :param mn:
         the mm this callback is about
+    :type mn: struct mmu_notifier \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         *undescribed*
+    :type mm: struct mm_struct \*
 
 .. _`radeon_mn_release.description`:
 
@@ -47,21 +50,29 @@ Shedule a work item to lazy destroy our notifier.
 radeon_mn_invalidate_range_start
 ================================
 
-.. c:function:: void radeon_mn_invalidate_range_start(struct mmu_notifier *mn, struct mm_struct *mm, unsigned long start, unsigned long end)
+.. c:function:: int radeon_mn_invalidate_range_start(struct mmu_notifier *mn, struct mm_struct *mm, unsigned long start, unsigned long end, bool blockable)
 
     callback to notify about mm change
 
-    :param struct mmu_notifier \*mn:
+    :param mn:
         the mm this callback is about
+    :type mn: struct mmu_notifier \*
 
-    :param struct mm_struct \*mm:
+    :param mm:
         *undescribed*
+    :type mm: struct mm_struct \*
 
-    :param unsigned long start:
+    :param start:
         start of updated range
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         end of updated range
+    :type end: unsigned long
+
+    :param blockable:
+        *undescribed*
+    :type blockable: bool
 
 .. _`radeon_mn_invalidate_range_start.description`:
 
@@ -80,8 +91,9 @@ radeon_mn_get
 
     create notifier context
 
-    :param struct radeon_device \*rdev:
+    :param rdev:
         radeon device pointer
+    :type rdev: struct radeon_device \*
 
 .. _`radeon_mn_get.description`:
 
@@ -99,11 +111,13 @@ radeon_mn_register
 
     register a BO for notifier updates
 
-    :param struct radeon_bo \*bo:
+    :param bo:
         radeon buffer object
+    :type bo: struct radeon_bo \*
 
-    :param unsigned long addr:
+    :param addr:
         userptr addr we should monitor
+    :type addr: unsigned long
 
 .. _`radeon_mn_register.description`:
 
@@ -122,8 +136,9 @@ radeon_mn_unregister
 
     unregister a BO for notifier updates
 
-    :param struct radeon_bo \*bo:
+    :param bo:
         radeon buffer object
+    :type bo: struct radeon_bo \*
 
 .. _`radeon_mn_unregister.description`:
 

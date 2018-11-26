@@ -10,8 +10,9 @@ hwicap_command_desync
 
     Send a DESYNC command to the ICAP port.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`hwicap_command_desync.return`:
 
@@ -33,15 +34,18 @@ hwicap_get_configuration_register
 
     Query a configuration register.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
-    :param u32 reg:
+    :param reg:
         a constant which represents the configuration
         register value to be returned.
+    :type reg: u32
 
-    :param u32 \*reg_data:
+    :param reg_data:
         returns the value of the register.
+    :type reg_data: u32 \*
 
 .. _`hwicap_get_configuration_register.examples`:
 

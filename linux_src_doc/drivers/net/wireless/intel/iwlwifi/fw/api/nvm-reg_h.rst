@@ -298,7 +298,7 @@ Definition
         __le32 flags;
         __le16 nvm_version;
         u8 board_type;
-        u8 reserved;
+        u8 n_hw_addrs;
     }
 
 .. _`iwl_nvm_get_info_general.members`:
@@ -315,8 +315,8 @@ nvm_version
 board_type
     board type
 
-reserved
-    reserved
+n_hw_addrs
+    number of reserved MAC addresses
 
 .. _`iwl_nvm_mac_sku_flags`:
 
@@ -542,42 +542,6 @@ Members
 reserved
     reserved
 
-.. _`iwl_mcc_update_cmd_v1`:
-
-struct iwl_mcc_update_cmd_v1
-============================
-
-.. c:type:: struct iwl_mcc_update_cmd_v1
-
-    Request the device to update geographic regulatory profile according to the given MCC (Mobile Country Code). The MCC is two letter-code, ascii upper case[A-Z] or '00' for world domain. 'ZZ' MCC will be used to switch to NVM default profile; in this case, the MCC in the cmd response will be the relevant MCC in the NVM.
-
-.. _`iwl_mcc_update_cmd_v1.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_mcc_update_cmd_v1 {
-        __le16 mcc;
-        u8 source_id;
-        u8 reserved;
-    }
-
-.. _`iwl_mcc_update_cmd_v1.members`:
-
-Members
--------
-
-mcc
-    given mobile country code
-
-source_id
-    the source from where we got the MCC, see iwl_mcc_source
-
-reserved
-    reserved for alignment
-
 .. _`iwl_mcc_update_cmd`:
 
 struct iwl_mcc_update_cmd
@@ -622,56 +586,6 @@ key
 reserved2
     reserved
 
-.. _`iwl_mcc_update_resp_v1`:
-
-struct iwl_mcc_update_resp_v1
-=============================
-
-.. c:type:: struct iwl_mcc_update_resp_v1
-
-    response to MCC_UPDATE_CMD. Contains the new channel control profile map, if changed, and the new MCC (mobile country code). The new MCC may be different than what was requested in MCC_UPDATE_CMD.
-
-.. _`iwl_mcc_update_resp_v1.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_mcc_update_resp_v1 {
-        __le32 status;
-        __le16 mcc;
-        u8 cap;
-        u8 source_id;
-        __le32 n_channels;
-        __le32 channels[0];
-    }
-
-.. _`iwl_mcc_update_resp_v1.members`:
-
-Members
--------
-
-status
-    see \ :c:type:`enum iwl_mcc_update_status <iwl_mcc_update_status>`\ 
-
-mcc
-    the new applied MCC
-
-cap
-    capabilities for all channels which matches the MCC
-
-source_id
-    the MCC source, see iwl_mcc_source
-
-n_channels
-    number of channels in \ ``channels_data``\  (may be 14, 39, 50 or 51
-    channels, depending on platform)
-
-channels
-    channel control data map, DWORD for each channel. Only the first
-    16bits are used.
-
 .. _`iwl_geo_information`:
 
 enum iwl_geo_information
@@ -705,6 +619,64 @@ GEO_WMM_ETSI_5GHZ_INFO
     this geo profile limits the WMM params
     for the 5 GHz band.
 
+.. _`iwl_mcc_update_resp_v3`:
+
+struct iwl_mcc_update_resp_v3
+=============================
+
+.. c:type:: struct iwl_mcc_update_resp_v3
+
+    response to MCC_UPDATE_CMD. Contains the new channel control profile map, if changed, and the new MCC (mobile country code). The new MCC may be different than what was requested in MCC_UPDATE_CMD.
+
+.. _`iwl_mcc_update_resp_v3.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mcc_update_resp_v3 {
+        __le32 status;
+        __le16 mcc;
+        u8 cap;
+        u8 source_id;
+        __le16 time;
+        __le16 geo_info;
+        __le32 n_channels;
+        __le32 channels[0];
+    }
+
+.. _`iwl_mcc_update_resp_v3.members`:
+
+Members
+-------
+
+status
+    see \ :c:type:`enum iwl_mcc_update_status <iwl_mcc_update_status>`\ 
+
+mcc
+    the new applied MCC
+
+cap
+    capabilities for all channels which matches the MCC
+
+source_id
+    the MCC source, see iwl_mcc_source
+
+time
+    time elapsed from the MCC test start (in units of 30 seconds)
+
+geo_info
+    geographic specific profile information
+    see \ :c:type:`enum iwl_geo_information <iwl_geo_information>`\ .
+
+n_channels
+    number of channels in \ ``channels_data``\ .
+
+channels
+    channel control data map, DWORD for each channel. Only the first
+    16bits are used.
+
 .. _`iwl_mcc_update_resp`:
 
 struct iwl_mcc_update_resp
@@ -724,10 +696,11 @@ Definition
     struct iwl_mcc_update_resp {
         __le32 status;
         __le16 mcc;
-        u8 cap;
-        u8 source_id;
+        __le16 cap;
         __le16 time;
         __le16 geo_info;
+        u8 source_id;
+        u8 reserved[3];
         __le32 n_channels;
         __le32 channels[0];
     }
@@ -746,19 +719,21 @@ mcc
 cap
     capabilities for all channels which matches the MCC
 
-source_id
-    the MCC source, see iwl_mcc_source
-
 time
-    time elapsed from the MCC test start (in 30 seconds TU)
+    time elapsed from the MCC test start (in units of 30 seconds)
 
 geo_info
     geographic specific profile information
     see \ :c:type:`enum iwl_geo_information <iwl_geo_information>`\ .
 
+source_id
+    the MCC source, see iwl_mcc_source
+
+reserved
+    for four bytes alignment.
+
 n_channels
-    number of channels in \ ``channels_data``\  (may be 14, 39, 50 or 51
-    channels, depending on platform)
+    number of channels in \ ``channels_data``\ .
 
 channels
     channel control data map, DWORD for each channel. Only the first

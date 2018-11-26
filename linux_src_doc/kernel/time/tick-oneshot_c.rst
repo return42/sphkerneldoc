@@ -8,11 +8,13 @@ tick_program_event
 
 .. c:function:: int tick_program_event(ktime_t expires, int force)
 
-    :param ktime_t expires:
+    :param expires:
         *undescribed*
+    :type expires: ktime_t
 
-    :param int force:
+    :param force:
         *undescribed*
+    :type force: int
 
 .. _`tick_resume_oneshot`:
 
@@ -23,8 +25,9 @@ tick_resume_oneshot
 
     resume oneshot mode
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_setup_oneshot`:
 
@@ -35,14 +38,16 @@ tick_setup_oneshot
 
     setup the event device for oneshot mode (hres or nohz)
 
-    :param struct clock_event_device \*newdev:
+    :param newdev:
         *undescribed*
+    :type newdev: struct clock_event_device \*
 
     :param void (\*handler)(struct clock_event_device \*):
         *undescribed*
 
-    :param ktime_t next_event:
+    :param next_event:
         *undescribed*
+    :type next_event: ktime_t
 
 .. _`tick_switch_to_oneshot`:
 
@@ -65,8 +70,9 @@ tick_oneshot_mode_active
 
     check whether the system is in oneshot mode
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_oneshot_mode_active.description`:
 
@@ -84,8 +90,9 @@ tick_init_highres
 
     switch to high resolution mode
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tick_init_highres.description`:
 

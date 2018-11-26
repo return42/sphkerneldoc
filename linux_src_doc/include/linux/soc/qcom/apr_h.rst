@@ -10,8 +10,9 @@ module_apr_driver
 
     Helper macro for registering a aprbus driver
 
-    :param  __apr_driver:
+    :param __apr_driver:
         *undescribed*
+    :type __apr_driver: 
 
 .. _`module_apr_driver.description`:
 

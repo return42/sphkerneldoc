@@ -10,8 +10,9 @@ usb_init_urb
 
     initializes a urb so that it can be used by a USB driver
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to the urb to initialize
+    :type urb: struct urb \*
 
 .. _`usb_init_urb.description`:
 
@@ -37,12 +38,14 @@ usb_alloc_urb
 
     creates a new urb for a USB driver to use
 
-    :param int iso_packets:
+    :param iso_packets:
         number of iso packets for this urb
+    :type iso_packets: int
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         the type of memory to allocate, see \ :c:func:`kmalloc`\  for a list of
         valid options for this.
+    :type mem_flags: gfp_t
 
 .. _`usb_alloc_urb.description`:
 
@@ -73,8 +76,9 @@ usb_free_urb
 
     frees the memory used by a urb when all users of it are finished
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to the urb to free, may be NULL
+    :type urb: struct urb \*
 
 .. _`usb_free_urb.description`:
 
@@ -101,8 +105,9 @@ usb_get_urb
 
     increments the reference count of the urb
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to the urb to modify, may be NULL
+    :type urb: struct urb \*
 
 .. _`usb_get_urb.description`:
 
@@ -129,11 +134,13 @@ usb_anchor_urb
 
     anchors an URB while it is processed
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to the urb to anchor
+    :type urb: struct urb \*
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         pointer to the anchor
+    :type anchor: struct usb_anchor \*
 
 .. _`usb_anchor_urb.description`:
 
@@ -152,8 +159,9 @@ usb_unanchor_urb
 
     unanchors an URB
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to the urb to anchor
+    :type urb: struct urb \*
 
 .. _`usb_unanchor_urb.description`:
 
@@ -171,8 +179,9 @@ usb_urb_ep_type_check
 
     sanity check of endpoint in the given urb
 
-    :param const struct urb \*urb:
+    :param urb:
         urb to be checked
+    :type urb: const struct urb \*
 
 .. _`usb_urb_ep_type_check.description`:
 
@@ -192,12 +201,14 @@ usb_submit_urb
 
     issue an asynchronous transfer request for an endpoint
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to the urb describing the request
+    :type urb: struct urb \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         the type of memory to allocate, see \ :c:func:`kmalloc`\  for a list
         of valid options for this.
+    :type mem_flags: gfp_t
 
 .. _`usb_submit_urb.description`:
 
@@ -359,9 +370,10 @@ usb_unlink_urb
 
     abort/cancel a transfer request for an endpoint
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to urb describing a previously submitted request,
         may be NULL
+    :type urb: struct urb \*
 
 .. _`usb_unlink_urb.description`:
 
@@ -386,7 +398,7 @@ callback during unlink. Therefore when drivers call \ :c:func:`usb_unlink_urb`\ 
 must not hold any locks that may be taken by the completion function.
 Success is indicated by returning -EINPROGRESS, at which time the URB will
 probably not yet have been given back to the device driver. When it is
-eventually called, the completion function will see \ ``urb``\ ->status ==
+eventually called, the completion function will see \ ``urb->status``\  ==
 -ECONNRESET.
 Failure is indicated by \ :c:func:`usb_unlink_urb`\  returning any other value.
 Unlinking will fail when \ ``urb``\  is not currently "linked" (i.e., it was
@@ -454,9 +466,10 @@ usb_kill_urb
 
     cancel a transfer request and wait for it to finish
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to URB describing a previously submitted request,
         may be NULL
+    :type urb: struct urb \*
 
 .. _`usb_kill_urb.description`:
 
@@ -494,9 +507,10 @@ usb_poison_urb
 
     reliably kill a transfer and prevent further use of an URB
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to URB describing a previously submitted request,
         may be NULL
+    :type urb: struct urb \*
 
 .. _`usb_poison_urb.description`:
 
@@ -534,8 +548,9 @@ usb_block_urb
 
     reliably prevent further use of an URB
 
-    :param struct urb \*urb:
+    :param urb:
         pointer to URB to be blocked, may be NULL
+    :type urb: struct urb \*
 
 .. _`usb_block_urb.description`:
 
@@ -559,8 +574,9 @@ usb_kill_anchored_urbs
 
     cancel transfer requests en masse
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         anchor the requests are bound to
+    :type anchor: struct usb_anchor \*
 
 .. _`usb_kill_anchored_urbs.description`:
 
@@ -582,8 +598,9 @@ usb_poison_anchored_urbs
 
     cease all traffic from an anchor
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         anchor the requests are bound to
+    :type anchor: struct usb_anchor \*
 
 .. _`usb_poison_anchored_urbs.description`:
 
@@ -606,8 +623,9 @@ usb_unpoison_anchored_urbs
 
     let an anchor be used successfully again
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         anchor the requests are bound to
+    :type anchor: struct usb_anchor \*
 
 .. _`usb_unpoison_anchored_urbs.description`:
 
@@ -626,8 +644,9 @@ usb_unlink_anchored_urbs
 
     asynchronously cancel transfer requests en masse
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         anchor the requests are bound to
+    :type anchor: struct usb_anchor \*
 
 .. _`usb_unlink_anchored_urbs.description`:
 
@@ -649,8 +668,9 @@ usb_anchor_suspend_wakeups
 
 .. c:function:: void usb_anchor_suspend_wakeups(struct usb_anchor *anchor)
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         the anchor you want to suspend wakeups on
+    :type anchor: struct usb_anchor \*
 
 .. _`usb_anchor_suspend_wakeups.description`:
 
@@ -668,8 +688,9 @@ usb_anchor_resume_wakeups
 
 .. c:function:: void usb_anchor_resume_wakeups(struct usb_anchor *anchor)
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         the anchor you want to resume wakeups on
+    :type anchor: struct usb_anchor \*
 
 .. _`usb_anchor_resume_wakeups.description`:
 
@@ -688,11 +709,13 @@ usb_wait_anchor_empty_timeout
 
     wait for an anchor to be unused
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         the anchor you want to become unused
+    :type anchor: struct usb_anchor \*
 
-    :param unsigned int timeout:
+    :param timeout:
         how long you are willing to wait in milliseconds
+    :type timeout: unsigned int
 
 .. _`usb_wait_anchor_empty_timeout.description`:
 
@@ -718,8 +741,9 @@ usb_get_from_anchor
 
     get an anchor's oldest urb
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         the anchor whose urb you want
+    :type anchor: struct usb_anchor \*
 
 .. _`usb_get_from_anchor.description`:
 
@@ -746,8 +770,9 @@ usb_scuttle_anchored_urbs
 
     unanchor all an anchor's urbs
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         the anchor whose urbs you want to unanchor
+    :type anchor: struct usb_anchor \*
 
 .. _`usb_scuttle_anchored_urbs.description`:
 
@@ -765,8 +790,9 @@ usb_anchor_empty
 
     is an anchor empty
 
-    :param struct usb_anchor \*anchor:
+    :param anchor:
         the anchor you want to query
+    :type anchor: struct usb_anchor \*
 
 .. _`usb_anchor_empty.return`:
 

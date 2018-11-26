@@ -262,11 +262,13 @@ pch_set_station_address
 
     This API sets the station address used by IEEE 1588 hardware when looking at PTP traffic on the  ethernet interface
 
-    :param u8 \*addr:
+    :param addr:
         dress which contain the column separated address to be used.
+    :type addr: u8 \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. This file was automatic generated / don't edit.
 

@@ -1,6 +1,94 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/media/platform/vsp1/vsp1_dl.c
 
+.. _`vsp1_dl_ext_header`:
+
+struct vsp1_dl_ext_header
+=========================
+
+.. c:type:: struct vsp1_dl_ext_header
+
+    Extended display list header
+
+.. _`vsp1_dl_ext_header.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vsp1_dl_ext_header {
+        u32 padding;
+        u16 pre_ext_dl_num_cmd;
+        u16 flags;
+        u32 pre_ext_dl_plist;
+        u32 post_ext_dl_num_cmd;
+        u32 post_ext_dl_plist;
+    }
+
+.. _`vsp1_dl_ext_header.members`:
+
+Members
+-------
+
+padding
+    padding zero bytes for alignment
+
+pre_ext_dl_num_cmd
+    number of pre-extended command bodies to parse
+
+flags
+    enables or disables execution of the pre and post command
+
+pre_ext_dl_plist
+    start address of pre-extended display list bodies
+
+post_ext_dl_num_cmd
+    number of post-extended command bodies to parse
+
+post_ext_dl_plist
+    start address of post-extended display list bodies
+
+.. _`vsp1_pre_ext_dl_body`:
+
+struct vsp1_pre_ext_dl_body
+===========================
+
+.. c:type:: struct vsp1_pre_ext_dl_body
+
+    Pre Extended Display List Body
+
+.. _`vsp1_pre_ext_dl_body.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vsp1_pre_ext_dl_body {
+        u32 opcode;
+        u32 flags;
+        u32 address_set;
+        u32 reserved;
+    }
+
+.. _`vsp1_pre_ext_dl_body.members`:
+
+Members
+-------
+
+opcode
+    Extended display list command operation code
+
+flags
+    Pre-extended command flags. These are specific to each command
+
+address_set
+    Source address set pointer. Must have 16-byte alignment
+
+reserved
+    Zero bits for alignment.
+
 .. _`vsp1_dl_body`:
 
 struct vsp1_dl_body
@@ -22,7 +110,6 @@ Definition
         struct list_head free;
         refcount_t refcnt;
         struct vsp1_dl_body_pool *pool;
-        struct vsp1_device *vsp1;
         struct vsp1_dl_entry *entries;
         dma_addr_t dma;
         size_t size;
@@ -42,13 +129,10 @@ free
     entry in the pool free body list
 
 refcnt
-    *undescribed*
+    reference tracking for the body
 
 pool
     pool to which this body belongs
-
-vsp1
-    the VSP1 device
 
 entries
     array of entries
@@ -117,6 +201,58 @@ lock
 vsp1
     the VSP1 device
 
+.. _`vsp1_dl_cmd_pool`:
+
+struct vsp1_dl_cmd_pool
+=======================
+
+.. c:type:: struct vsp1_dl_cmd_pool
+
+    Display List commands pool
+
+.. _`vsp1_dl_cmd_pool.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vsp1_dl_cmd_pool {
+        dma_addr_t dma;
+        size_t size;
+        void *mem;
+        struct vsp1_dl_ext_cmd *cmds;
+        struct list_head free;
+        spinlock_t lock;
+        struct vsp1_device *vsp1;
+    }
+
+.. _`vsp1_dl_cmd_pool.members`:
+
+Members
+-------
+
+dma
+    DMA address of the entries
+
+size
+    size of the full DMA memory pool in bytes
+
+mem
+    CPU memory pointer for the pool
+
+cmds
+    Array of command structures for the pool
+
+free
+    Free pool entries
+
+lock
+    Protects the free list
+
+vsp1
+    the VSP1 device
+
 .. _`vsp1_dl_list`:
 
 struct vsp1_dl_list
@@ -137,9 +273,12 @@ Definition
         struct list_head list;
         struct vsp1_dl_manager *dlm;
         struct vsp1_dl_header *header;
+        struct vsp1_dl_ext_header *extension;
         dma_addr_t dma;
         struct vsp1_dl_body *body0;
         struct list_head bodies;
+        struct vsp1_dl_ext_cmd *pre_cmd;
+        struct vsp1_dl_ext_cmd *post_cmd;
         bool has_chain;
         struct list_head chain;
         bool internal;
@@ -157,7 +296,10 @@ dlm
     the display list manager
 
 header
-    display list header, NULL for headerless lists
+    display list header
+
+extension
+    extended display list header. NULL for normal lists
 
 dma
     DMA address for the header
@@ -167,6 +309,12 @@ body0
 
 bodies
     list of extra display list bodies
+
+pre_cmd
+    pre command to be issued through extended dl header
+
+post_cmd
+    post command to be issued through extended dl header
 
 has_chain
     if true, indicates that there's a partition chain
@@ -195,7 +343,6 @@ Definition
 
     struct vsp1_dl_manager {
         unsigned int index;
-        enum vsp1_dl_mode mode;
         bool singleshot;
         struct vsp1_device *vsp1;
         spinlock_t lock;
@@ -204,6 +351,7 @@ Definition
         struct vsp1_dl_list *queued;
         struct vsp1_dl_list *pending;
         struct vsp1_dl_body_pool *pool;
+        struct vsp1_dl_cmd_pool *cmdpool;
     }
 
 .. _`vsp1_dl_manager.members`:
@@ -213,9 +361,6 @@ Members
 
 index
     index of the related WPF
-
-mode
-    display list operation mode (header or headerless)
 
 singleshot
     execute the display list in single-shot mode
@@ -241,6 +386,9 @@ pending
 pool
     body pool for the display list bodies
 
+cmdpool
+    commands pool for extended display list
+
 .. _`vsp1_dl_body_pool_create`:
 
 vsp1_dl_body_pool_create
@@ -250,17 +398,21 @@ vsp1_dl_body_pool_create
 
     Create a pool of bodies from a single allocation
 
-    :param struct vsp1_device \*vsp1:
+    :param vsp1:
         The VSP1 device
+    :type vsp1: struct vsp1_device \*
 
-    :param unsigned int num_bodies:
+    :param num_bodies:
         The number of bodies to allocate
+    :type num_bodies: unsigned int
 
-    :param unsigned int num_entries:
+    :param num_entries:
         The maximum number of entries that a body can contain
+    :type num_entries: unsigned int
 
-    :param size_t extra_size:
+    :param extra_size:
         Extra allocation provided for the bodies
+    :type extra_size: size_t
 
 .. _`vsp1_dl_body_pool_create.description`:
 
@@ -281,8 +433,9 @@ vsp1_dl_body_pool_destroy
 
     Release a body pool
 
-    :param struct vsp1_dl_body_pool \*pool:
+    :param pool:
         The body pool
+    :type pool: struct vsp1_dl_body_pool \*
 
 .. _`vsp1_dl_body_pool_destroy.description`:
 
@@ -300,8 +453,9 @@ vsp1_dl_body_get
 
     Obtain a body from a pool
 
-    :param struct vsp1_dl_body_pool \*pool:
+    :param pool:
         The body pool
+    :type pool: struct vsp1_dl_body_pool \*
 
 .. _`vsp1_dl_body_get.description`:
 
@@ -321,8 +475,9 @@ vsp1_dl_body_put
 
     Return a body back to its pool
 
-    :param struct vsp1_dl_body \*dlb:
+    :param dlb:
         The display list body
+    :type dlb: struct vsp1_dl_body \*
 
 .. _`vsp1_dl_body_put.description`:
 
@@ -340,14 +495,17 @@ vsp1_dl_body_write
 
     Write a register to a display list body
 
-    :param struct vsp1_dl_body \*dlb:
+    :param dlb:
         The body
+    :type dlb: struct vsp1_dl_body \*
 
-    :param u32 reg:
+    :param reg:
         The register address
+    :type reg: u32
 
-    :param u32 data:
+    :param data:
         The register value
+    :type data: u32
 
 .. _`vsp1_dl_body_write.description`:
 
@@ -358,6 +516,38 @@ Write the given register and value to the display list body. The maximum
 number of entries that can be written in a body is specified when the body is
 allocated by \ :c:func:`vsp1_dl_body_alloc`\ .
 
+.. _`vsp1_dl_cmd_pool_create`:
+
+vsp1_dl_cmd_pool_create
+=======================
+
+.. c:function:: struct vsp1_dl_cmd_pool *vsp1_dl_cmd_pool_create(struct vsp1_device *vsp1, enum vsp1_extcmd_type type, unsigned int num_cmds)
+
+    Create a pool of commands from a single allocation
+
+    :param vsp1:
+        The VSP1 device
+    :type vsp1: struct vsp1_device \*
+
+    :param type:
+        The command pool type
+    :type type: enum vsp1_extcmd_type
+
+    :param num_cmds:
+        The number of commands to allocate
+    :type num_cmds: unsigned int
+
+.. _`vsp1_dl_cmd_pool_create.description`:
+
+Description
+-----------
+
+Allocate a pool of commands each with enough memory to contain the private
+data of each command. The allocation sizes are dependent upon the command
+type.
+
+Return a pointer to the pool on success or NULL if memory can't be allocated.
+
 .. _`vsp1_dl_list_get`:
 
 vsp1_dl_list_get
@@ -367,8 +557,9 @@ vsp1_dl_list_get
 
     Get a free display list
 
-    :param struct vsp1_dl_manager \*dlm:
+    :param dlm:
         The display list manager
+    :type dlm: struct vsp1_dl_manager \*
 
 .. _`vsp1_dl_list_get.description`:
 
@@ -388,8 +579,9 @@ vsp1_dl_list_put
 
     Release a display list
 
-    :param struct vsp1_dl_list \*dl:
+    :param dl:
         The display list
+    :type dl: struct vsp1_dl_list \*
 
 .. _`vsp1_dl_list_put.description`:
 
@@ -410,8 +602,9 @@ vsp1_dl_list_get_body0
 
     Obtain the default body for the display list
 
-    :param struct vsp1_dl_list \*dl:
+    :param dl:
         The display list
+    :type dl: struct vsp1_dl_list \*
 
 .. _`vsp1_dl_list_get_body0.description`:
 
@@ -430,11 +623,13 @@ vsp1_dl_list_add_body
 
     Add a body to the display list
 
-    :param struct vsp1_dl_list \*dl:
+    :param dl:
         The display list
+    :type dl: struct vsp1_dl_list \*
 
-    :param struct vsp1_dl_body \*dlb:
+    :param dlb:
         The body
+    :type dlb: struct vsp1_dl_body \*
 
 .. _`vsp1_dl_list_add_body.description`:
 
@@ -452,9 +647,6 @@ list, but is not allowed to add new entries to the body.
 The reference must be explicitly released by a call to \ :c:func:`vsp1_dl_body_put`\ 
 when the body isn't needed anymore.
 
-Additional bodies are only usable for display lists in header mode.
-Attempting to add a body to a header-less display list will return an error.
-
 .. _`vsp1_dl_list_add_chain`:
 
 vsp1_dl_list_add_chain
@@ -464,11 +656,13 @@ vsp1_dl_list_add_chain
 
     Add a display list to a chain
 
-    :param struct vsp1_dl_list \*head:
+    :param head:
         The head display list
+    :type head: struct vsp1_dl_list \*
 
-    :param struct vsp1_dl_list \*dl:
+    :param dl:
         The new display list
+    :type dl: struct vsp1_dl_list \*
 
 .. _`vsp1_dl_list_add_chain.description`:
 
@@ -484,9 +678,6 @@ Adding a display list to a chain passes ownership of the display list to
 the head display list item. The chain is released when the head dl item is
 put back with \__vsp1_dl_list_put().
 
-Chained display lists are only usable in header mode. Attempts to add a
-display list to a chain in header-less mode will return an error.
-
 .. _`vsp1_dlm_irq_frame_end`:
 
 vsp1_dlm_irq_frame_end
@@ -496,8 +687,9 @@ vsp1_dlm_irq_frame_end
 
     Display list handler for the frame end interrupt
 
-    :param struct vsp1_dl_manager \*dlm:
+    :param dlm:
         the display list manager
+    :type dlm: struct vsp1_dl_manager \*
 
 .. _`vsp1_dlm_irq_frame_end.description`:
 
@@ -510,7 +702,7 @@ The VSP1_DL_FRAME_END_COMPLETED flag indicates that the previous display list
 has completed at frame end. If the flag is not returned display list
 completion has been delayed by one frame because the display list commit
 raced with the frame end interrupt. The function always returns with the flag
-set in header mode as display list processing is then not continuous and
+set in single-shot mode as display list processing is then not continuous and
 races never occur.
 
 The VSP1_DL_FRAME_END_INTERNAL flag indicates that the previous display list

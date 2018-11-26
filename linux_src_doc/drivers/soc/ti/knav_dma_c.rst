@@ -10,14 +10,17 @@ knav_dma_open_channel
 
     try to setup an exclusive slave channel
 
-    :param struct device \*dev:
+    :param dev:
         pointer to client device structure
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         slave channel name
+    :type name: const char \*
 
-    :param struct knav_dma_cfg \*config:
+    :param config:
         dma configuration parameters
+    :type config: struct knav_dma_cfg \*
 
 .. _`knav_dma_open_channel.description`:
 
@@ -35,8 +38,9 @@ knav_dma_close_channel
 
     Destroy a dma channel
 
-    :param void \*channel:
+    :param channel:
         *undescribed*
+    :type channel: void \*
 
 .. _`knav_dma_close_channel.channel`:
 

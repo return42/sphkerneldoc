@@ -10,8 +10,9 @@ rtl819x_ifcheck_resetornot
 
     ask OS to reset driver
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
 .. _`rtl819x_ifcheck_resetornot.description`:
 
@@ -42,11 +43,13 @@ UpdateRxPktTimeStamp8190
 
     UpdateRxPktTimeStamp
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ieee80211_rx_stats \*stats:
+    :param stats:
         *undescribed*
+    :type stats: struct ieee80211_rx_stats \*
 
 .. _`updaterxpkttimestamp8190.overview`:
 
@@ -88,11 +91,13 @@ UpdateReceivedRateHistogramStatistics8190
 
     UpdateReceivedRateHistogramStatistics
 
-    :param struct net_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct net_device \*
 
-    :param struct ieee80211_rx_stats \*stats:
+    :param stats:
         *undescribed*
+    :type stats: struct ieee80211_rx_stats \*
 
 .. _`updatereceivedratehistogramstatistics8190.overview`:
 

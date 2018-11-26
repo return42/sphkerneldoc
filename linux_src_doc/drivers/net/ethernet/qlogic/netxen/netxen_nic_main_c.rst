@@ -10,11 +10,13 @@ netxen_config_master
 
     configure addresses based on master
 
-    :param struct net_device \*dev:
+    :param dev:
         netxen device
+    :type dev: struct net_device \*
 
-    :param unsigned long event:
+    :param event:
         netdev event
+    :type event: unsigned long
 
 .. This file was automatic generated / don't edit.
 

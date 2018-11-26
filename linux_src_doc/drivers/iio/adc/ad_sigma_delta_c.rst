@@ -10,11 +10,13 @@ ad_sd_set_comm
 
     Set communications register
 
-    :param struct ad_sigma_delta \*sigma_delta:
+    :param sigma_delta:
         The sigma delta device
+    :type sigma_delta: struct ad_sigma_delta \*
 
-    :param uint8_t comm:
+    :param comm:
         New value for the communications register
+    :type comm: uint8_t
 
 .. _`ad_sd_write_reg`:
 
@@ -25,17 +27,21 @@ ad_sd_write_reg
 
     Write a register
 
-    :param struct ad_sigma_delta \*sigma_delta:
+    :param sigma_delta:
         The sigma delta device
+    :type sigma_delta: struct ad_sigma_delta \*
 
-    :param unsigned int reg:
+    :param reg:
         Address of the register
+    :type reg: unsigned int
 
-    :param unsigned int size:
+    :param size:
         Size of the register (0-3)
+    :type size: unsigned int
 
-    :param unsigned int val:
+    :param val:
         Value to write to the register
+    :type val: unsigned int
 
 .. _`ad_sd_write_reg.description`:
 
@@ -53,17 +59,21 @@ ad_sd_read_reg
 
     Read a register
 
-    :param struct ad_sigma_delta \*sigma_delta:
+    :param sigma_delta:
         The sigma delta device
+    :type sigma_delta: struct ad_sigma_delta \*
 
-    :param unsigned int reg:
+    :param reg:
         Address of the register
+    :type reg: unsigned int
 
-    :param unsigned int size:
+    :param size:
         Size of the register (1-4)
+    :type size: unsigned int
 
-    :param unsigned int \*val:
+    :param val:
         Read value
+    :type val: unsigned int \*
 
 .. _`ad_sd_read_reg.description`:
 
@@ -81,11 +91,13 @@ ad_sd_reset
 
     Reset the serial interface
 
-    :param struct ad_sigma_delta \*sigma_delta:
+    :param sigma_delta:
         The sigma delta device
+    :type sigma_delta: struct ad_sigma_delta \*
 
-    :param unsigned int reset_length:
+    :param reset_length:
         Number of SCLKs with DIN = 1
+    :type reset_length: unsigned int
 
 .. _`ad_sd_reset.description`:
 
@@ -103,14 +115,17 @@ ad_sd_calibrate_all
 
     Performs channel calibration
 
-    :param struct ad_sigma_delta \*sigma_delta:
+    :param sigma_delta:
         The sigma delta device
+    :type sigma_delta: struct ad_sigma_delta \*
 
-    :param const struct ad_sd_calib_data \*cb:
+    :param cb:
         Array of channels and calibration type to perform
+    :type cb: const struct ad_sd_calib_data \*
 
-    :param unsigned int n:
+    :param n:
         Number of items in cb
+    :type n: unsigned int
 
 .. _`ad_sd_calibrate_all.description`:
 
@@ -128,14 +143,17 @@ ad_sigma_delta_single_conversion
 
     Performs a single data conversion
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param const struct iio_chan_spec \*chan:
+    :param chan:
         The conversion is done for this channel
+    :type chan: const struct iio_chan_spec \*
 
-    :param int \*val:
+    :param val:
         Pointer to the location where to store the read value
+    :type val: int \*
 
 .. _`ad_sigma_delta_single_conversion.return`:
 
@@ -153,11 +171,13 @@ ad_sd_validate_trigger
 
     validate_trigger callback for ad_sigma_delta devices
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         The new trigger
+    :type trig: struct iio_trigger \*
 
 .. _`ad_sd_validate_trigger.return`:
 
@@ -174,8 +194,9 @@ ad_sd_setup_buffer_and_trigger
 
 .. c:function:: int ad_sd_setup_buffer_and_trigger(struct iio_dev *indio_dev)
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device
+    :type indio_dev: struct iio_dev \*
 
 .. _`ad_sd_cleanup_buffer_and_trigger`:
 
@@ -184,8 +205,9 @@ ad_sd_cleanup_buffer_and_trigger
 
 .. c:function:: void ad_sd_cleanup_buffer_and_trigger(struct iio_dev *indio_dev)
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device
+    :type indio_dev: struct iio_dev \*
 
 .. _`ad_sd_init`:
 
@@ -196,17 +218,21 @@ ad_sd_init
 
     Initializes a ad_sigma_delta struct
 
-    :param struct ad_sigma_delta \*sigma_delta:
+    :param sigma_delta:
         The ad_sigma_delta device
+    :type sigma_delta: struct ad_sigma_delta \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device which the Sigma Delta device is used for
+    :type indio_dev: struct iio_dev \*
 
-    :param struct spi_device \*spi:
+    :param spi:
         The SPI device for the ad_sigma_delta device
+    :type spi: struct spi_device \*
 
-    :param const struct ad_sigma_delta_info \*info:
+    :param info:
         Device specific callbacks and options
+    :type info: const struct ad_sigma_delta_info \*
 
 .. _`ad_sd_init.description`:
 

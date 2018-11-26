@@ -10,8 +10,9 @@ setup_cgroup_environment
 
     Setup the cgroup environment
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`setup_cgroup_environment.description`:
 
@@ -29,12 +30,13 @@ to setup the cgroup environment. If setup is successful, 0 is returned.
 join_cgroup
 ===========
 
-.. c:function:: int join_cgroup(char *path)
+.. c:function:: int join_cgroup(const char *path)
 
     Join a cgroup
 
-    :param char \*path:
+    :param path:
         The cgroup path, relative to the workdir, to join
+    :type path: const char \*
 
 .. _`join_cgroup.description`:
 
@@ -57,8 +59,9 @@ cleanup_cgroup_environment
 
     Cleanup Cgroup Testing Environment
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`cleanup_cgroup_environment.description`:
 
@@ -80,12 +83,13 @@ On failure, it will print an error to stderr, and try to continue.
 create_and_get_cgroup
 =====================
 
-.. c:function:: int create_and_get_cgroup(char *path)
+.. c:function:: int create_and_get_cgroup(const char *path)
 
     Create a cgroup, relative to workdir, and get the FD
 
-    :param char \*path:
+    :param path:
         The cgroup path, relative to the workdir, to join
+    :type path: const char \*
 
 .. _`create_and_get_cgroup.description`:
 
@@ -103,12 +107,13 @@ If there is a failure, it prints the error to stderr.
 get_cgroup_id
 =============
 
-.. c:function:: unsigned long long get_cgroup_id(char *path)
+.. c:function:: unsigned long long get_cgroup_id(const char *path)
 
     Get cgroup id for a particular cgroup path
 
-    :param char \*path:
+    :param path:
         The cgroup path, relative to the workdir, to join
+    :type path: const char \*
 
 .. _`get_cgroup_id.description`:
 

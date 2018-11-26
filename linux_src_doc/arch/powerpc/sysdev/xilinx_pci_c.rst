@@ -10,8 +10,9 @@ xilinx_pci_fixup_bridge
 
     Block Xilinx PHB configuration.
 
-    :param struct pci_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct pci_dev \*
 
 .. _`xilinx_pci_exclude_device`:
 
@@ -22,14 +23,17 @@ xilinx_pci_exclude_device
 
     Don't do config access for non-root bus
 
-    :param struct pci_controller \*hose:
+    :param hose:
         *undescribed*
+    :type hose: struct pci_controller \*
 
-    :param u_char bus:
+    :param bus:
         *undescribed*
+    :type bus: u_char
 
-    :param u8 devfn:
+    :param devfn:
         *undescribed*
+    :type devfn: u8
 
 .. _`xilinx_pci_exclude_device.description`:
 
@@ -48,8 +52,9 @@ xilinx_pci_init
 
     Find and register a Xilinx PCI host bridge
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

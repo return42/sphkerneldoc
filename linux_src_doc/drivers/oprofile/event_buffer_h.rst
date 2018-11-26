@@ -10,8 +10,9 @@ add_event_entry
 
     The data passed is free-form, but typically consists of file offsets, dcookies, context information, and ESCAPE codes.
 
-    :param unsigned long data:
+    :param data:
         *undescribed*
+    :type data: unsigned long
 
 .. This file was automatic generated / don't edit.
 

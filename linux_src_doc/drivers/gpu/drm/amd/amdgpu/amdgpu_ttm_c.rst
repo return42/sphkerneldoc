@@ -10,8 +10,9 @@ amdgpu_ttm_mem_global_init
 
     Initialize and acquire reference to memory object
 
-    :param struct drm_global_reference \*ref:
+    :param ref:
         Object for initialization.
+    :type ref: struct drm_global_reference \*
 
 .. _`amdgpu_ttm_mem_global_init.description`:
 
@@ -30,8 +31,9 @@ amdgpu_ttm_mem_global_release
 
     Drop reference to a memory object
 
-    :param struct drm_global_reference \*ref:
+    :param ref:
         Object being removed
+    :type ref: struct drm_global_reference \*
 
 .. _`amdgpu_ttm_mem_global_release.description`:
 
@@ -50,9 +52,9 @@ amdgpu_ttm_global_init
 
     Initialize global TTM memory reference structures.
 
-    :param struct amdgpu_device \*adev:
-        AMDGPU device for which the global structures need to be
-        registered.
+    :param adev:
+        AMDGPU device for which the global structures need to be registered.
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_ttm_global_init.description`:
 
@@ -71,15 +73,17 @@ amdgpu_init_mem_type
 
     Initialize a memory manager for a specific type of memory request.
 
-    :param struct ttm_bo_device \*bdev:
-        The TTM BO device object (contains a reference to
-        amdgpu_device)
+    :param bdev:
+        The TTM BO device object (contains a reference to amdgpu_device)
+    :type bdev: struct ttm_bo_device \*
 
-    :param uint32_t type:
+    :param type:
         The type of memory requested
+    :type type: uint32_t
 
-    :param struct ttm_mem_type_manager \*man:
-        *undescribed*
+    :param man:
+        The memory type manager for each domain
+    :type man: struct ttm_mem_type_manager \*
 
 .. _`amdgpu_init_mem_type.description`:
 
@@ -98,11 +102,13 @@ amdgpu_evict_flags
 
     Compute placement flags
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object to evict
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct ttm_placement \*placement:
+    :param placement:
         Possible destination(s) for evicted BO
+    :type placement: struct ttm_placement \*
 
 .. _`amdgpu_evict_flags.description`:
 
@@ -120,11 +126,13 @@ amdgpu_verify_access
 
     Verify access for a mmap call
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object to map
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct file \*filp:
+    :param filp:
         The file pointer from the process performing the mmap
+    :type filp: struct file \*
 
 .. _`amdgpu_verify_access.description`:
 
@@ -143,19 +151,20 @@ amdgpu_move_null
 
     Register memory for a buffer object
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The bo to assign the memory to
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct ttm_mem_reg \*new_mem:
+    :param new_mem:
         The memory to be assigned.
+    :type new_mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_move_null.description`:
 
 Description
 -----------
 
-Assign the memory from new_mem to the memory of the buffer object
-bo.
+Assign the memory from new_mem to the memory of the buffer object bo.
 
 .. _`amdgpu_mm_node_addr`:
 
@@ -166,14 +175,17 @@ amdgpu_mm_node_addr
 
     Compute the GPU relative offset of a GTT buffer.
 
-    :param struct ttm_buffer_object \*bo:
-        *undescribed*
+    :param bo:
+        The bo to assign the memory to.
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct drm_mm_node \*mm_node:
-        *undescribed*
+    :param mm_node:
+        Memory manager node for drm allocator.
+    :type mm_node: struct drm_mm_node \*
 
-    :param struct ttm_mem_reg \*mem:
-        *undescribed*
+    :param mem:
+        The region where the bo resides.
+    :type mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_find_mm_node`:
 
@@ -184,11 +196,13 @@ amdgpu_find_mm_node
 
     Helper function finds the drm_mm_node corresponding to \ ``offset``\ . It also modifies the offset to be within the drm_mm_node returned
 
-    :param struct ttm_mem_reg \*mem:
-        *undescribed*
+    :param mem:
+        The region where the bo resides.
+    :type mem: struct ttm_mem_reg \*
 
-    :param unsigned long \*offset:
-        *undescribed*
+    :param offset:
+        The offset that drm_mm_node is used for finding.
+    :type offset: unsigned long \*
 
 .. _`amdgpu_ttm_copy_mem_to_mem`:
 
@@ -199,23 +213,29 @@ amdgpu_ttm_copy_mem_to_mem
 
     Helper function for copy
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
-    :param struct amdgpu_copy_mem \*src:
+    :param src:
         *undescribed*
+    :type src: struct amdgpu_copy_mem \*
 
-    :param struct amdgpu_copy_mem \*dst:
+    :param dst:
         *undescribed*
+    :type dst: struct amdgpu_copy_mem \*
 
-    :param uint64_t size:
+    :param size:
         *undescribed*
+    :type size: uint64_t
 
-    :param struct reservation_object \*resv:
+    :param resv:
         *undescribed*
+    :type resv: struct reservation_object \*
 
-    :param struct dma_fence \*\*f:
+    :param f:
         Returns the last fence if multiple jobs are submitted.
+    :type f: struct dma_fence \*\*
 
 .. _`amdgpu_ttm_copy_mem_to_mem.description`:
 
@@ -235,28 +255,33 @@ amdgpu_move_blit
 
     Copy an entire buffer to another buffer
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool evict:
+    :param evict:
         *undescribed*
+    :type evict: bool
 
-    :param bool no_wait_gpu:
+    :param no_wait_gpu:
         *undescribed*
+    :type no_wait_gpu: bool
 
-    :param struct ttm_mem_reg \*new_mem:
+    :param new_mem:
         *undescribed*
+    :type new_mem: struct ttm_mem_reg \*
 
-    :param struct ttm_mem_reg \*old_mem:
+    :param old_mem:
         *undescribed*
+    :type old_mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_move_blit.description`:
 
 Description
 -----------
 
-This is a helper called by \ :c:func:`amdgpu_bo_move`\  and
-\ :c:func:`amdgpu_move_vram_ram`\  to help move buffers to and from VRAM.
+This is a helper called by \ :c:func:`amdgpu_bo_move`\  and \ :c:func:`amdgpu_move_vram_ram`\  to
+help move buffers to and from VRAM.
 
 .. _`amdgpu_move_vram_ram`:
 
@@ -267,17 +292,21 @@ amdgpu_move_vram_ram
 
     Copy VRAM buffer to RAM buffer
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool evict:
+    :param evict:
         *undescribed*
+    :type evict: bool
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
-    :param struct ttm_mem_reg \*new_mem:
+    :param new_mem:
         *undescribed*
+    :type new_mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_move_vram_ram.description`:
 
@@ -295,17 +324,21 @@ amdgpu_move_ram_vram
 
     Copy buffer from RAM to VRAM
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool evict:
+    :param evict:
         *undescribed*
+    :type evict: bool
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
-    :param struct ttm_mem_reg \*new_mem:
+    :param new_mem:
         *undescribed*
+    :type new_mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_move_ram_vram.description`:
 
@@ -323,17 +356,21 @@ amdgpu_bo_move
 
     Move a buffer object to a new memory location
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool evict:
+    :param evict:
         *undescribed*
+    :type evict: bool
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
-    :param struct ttm_mem_reg \*new_mem:
+    :param new_mem:
         *undescribed*
+    :type new_mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_bo_move.description`:
 
@@ -351,11 +388,13 @@ amdgpu_ttm_io_mem_reserve
 
     Reserve a block of memory during a fault
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         *undescribed*
+    :type bdev: struct ttm_bo_device \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         *undescribed*
+    :type mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_ttm_io_mem_reserve.description`:
 
@@ -373,11 +412,13 @@ amdgpu_ttm_tt_get_user_pages
 
     Pin pages of memory pointed to by a USERPTR pointer to memory
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
-    :param struct page \*\*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct page \*\*
 
 .. _`amdgpu_ttm_tt_get_user_pages.description`:
 
@@ -397,18 +438,20 @@ amdgpu_ttm_tt_set_user_pages
 
     Copy pages in, putting old pages as necessary.
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
-    :param struct page \*\*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct page \*\*
 
 .. _`amdgpu_ttm_tt_set_user_pages.description`:
 
 Description
 -----------
 
-Called by \ :c:func:`amdgpu_cs_list_validate`\ .  This creates the page list
+Called by \ :c:func:`amdgpu_cs_list_validate`\ . This creates the page list
 that backs user memory and will ultimately be mapped into the device
 address space.
 
@@ -421,8 +464,9 @@ amdgpu_ttm_tt_mark_user_pages
 
     Mark pages as dirty
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
 .. _`amdgpu_ttm_tt_mark_user_pages.description`:
 
@@ -440,8 +484,9 @@ amdgpu_ttm_tt_pin_userptr
 
     prepare the sg table with the user pages
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
 .. _`amdgpu_ttm_tt_pin_userptr.description`:
 
@@ -459,8 +504,9 @@ amdgpu_ttm_tt_unpin_userptr
 
     Unpin and unmap userptr pages
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
 .. _`amdgpu_ttm_backend_bind`:
 
@@ -471,11 +517,13 @@ amdgpu_ttm_backend_bind
 
     Bind GTT memory
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
-    :param struct ttm_mem_reg \*bo_mem:
+    :param bo_mem:
         *undescribed*
+    :type bo_mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_ttm_backend_bind.description`:
 
@@ -494,8 +542,9 @@ amdgpu_ttm_alloc_gart
 
     Allocate GART memory for buffer object
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
 .. _`amdgpu_ttm_recover_gart`:
 
@@ -506,8 +555,9 @@ amdgpu_ttm_recover_gart
 
     Rebind GTT pages
 
-    :param struct ttm_buffer_object \*tbo:
+    :param tbo:
         *undescribed*
+    :type tbo: struct ttm_buffer_object \*
 
 .. _`amdgpu_ttm_recover_gart.description`:
 
@@ -526,8 +576,9 @@ amdgpu_ttm_backend_unbind
 
     Unbind GTT mapped pages
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
 .. _`amdgpu_ttm_backend_unbind.description`:
 
@@ -546,11 +597,13 @@ amdgpu_ttm_tt_create
 
     Create a ttm_tt object for a given BO
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object to create a GTT ttm_tt object around
+    :type bo: struct ttm_buffer_object \*
 
-    :param uint32_t page_flags:
+    :param page_flags:
         *undescribed*
+    :type page_flags: uint32_t
 
 .. _`amdgpu_ttm_tt_create.description`:
 
@@ -568,11 +621,13 @@ amdgpu_ttm_tt_populate
 
     Map GTT pages visible to the device
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct ttm_operation_ctx \*
 
 .. _`amdgpu_ttm_tt_populate.description`:
 
@@ -591,8 +646,9 @@ amdgpu_ttm_tt_unpopulate
 
     unmap GTT pages and unpopulate page arrays
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
 .. _`amdgpu_ttm_tt_unpopulate.description`:
 
@@ -611,14 +667,17 @@ amdgpu_ttm_tt_set_userptr
 
     Initialize userptr GTT ttm_tt for the current task
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         The ttm_tt object to bind this userptr object to
+    :type ttm: struct ttm_tt \*
 
-    :param uint64_t addr:
+    :param addr:
         The address in the current tasks VM space to use
+    :type addr: uint64_t
 
-    :param uint32_t flags:
+    :param flags:
         Requirements of userptr object.
+    :type flags: uint32_t
 
 .. _`amdgpu_ttm_tt_set_userptr.description`:
 
@@ -637,8 +696,9 @@ amdgpu_ttm_tt_get_usermm
 
     Return memory manager for ttm_tt object
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
 .. _`amdgpu_ttm_tt_affect_userptr`:
 
@@ -649,14 +709,17 @@ amdgpu_ttm_tt_affect_userptr
 
     Determine if a ttm_tt object lays inside an address range for the current task.
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
-    :param unsigned long start:
+    :param start:
         *undescribed*
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         *undescribed*
+    :type end: unsigned long
 
 .. _`amdgpu_ttm_tt_userptr_invalidated`:
 
@@ -667,11 +730,13 @@ amdgpu_ttm_tt_userptr_invalidated
 
     Has the ttm_tt object been invalidated?
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
-    :param int \*last_invalidated:
+    :param last_invalidated:
         *undescribed*
+    :type last_invalidated: int \*
 
 .. _`amdgpu_ttm_tt_userptr_needs_pages`:
 
@@ -682,8 +747,9 @@ amdgpu_ttm_tt_userptr_needs_pages
 
     Have the pages backing this ttm_tt object been invalidated since the last time they've been set?
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
 
 .. _`amdgpu_ttm_tt_is_readonly`:
 
@@ -694,8 +760,33 @@ amdgpu_ttm_tt_is_readonly
 
     Is the ttm_tt object read only?
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         *undescribed*
+    :type ttm: struct ttm_tt \*
+
+.. _`amdgpu_ttm_tt_pde_flags`:
+
+amdgpu_ttm_tt_pde_flags
+=======================
+
+.. c:function:: uint64_t amdgpu_ttm_tt_pde_flags(struct ttm_tt *ttm, struct ttm_mem_reg *mem)
+
+    Compute PDE flags for ttm_tt object
+
+    :param ttm:
+        The ttm_tt object to compute the flags for
+    :type ttm: struct ttm_tt \*
+
+    :param mem:
+        The memory registry backing this ttm_tt object
+    :type mem: struct ttm_mem_reg \*
+
+.. _`amdgpu_ttm_tt_pde_flags.description`:
+
+Description
+-----------
+
+Figure out the flags to use for a VM PDE (Page Directory Entry).
 
 .. _`amdgpu_ttm_tt_pte_flags`:
 
@@ -706,14 +797,18 @@ amdgpu_ttm_tt_pte_flags
 
     Compute PTE flags for ttm_tt object
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
-    :param struct ttm_tt \*ttm:
+    :param ttm:
         The ttm_tt object to compute the flags for
+    :type ttm: struct ttm_tt \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         The memory registry backing this ttm_tt object
+        Figure out the flags to use for a VM PTE (Page Table Entry).
+    :type mem: struct ttm_mem_reg \*
 
 .. _`amdgpu_ttm_bo_eviction_valuable`:
 
@@ -724,21 +819,22 @@ amdgpu_ttm_bo_eviction_valuable
 
     Check to see if we can evict a buffer object.
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         *undescribed*
+    :type bo: struct ttm_buffer_object \*
 
-    :param const struct ttm_place \*place:
+    :param place:
         *undescribed*
+    :type place: const struct ttm_place \*
 
 .. _`amdgpu_ttm_bo_eviction_valuable.description`:
 
 Description
 -----------
 
-Return true if eviction is sensible.  Called by
-\ :c:func:`ttm_mem_evict_first`\  on behalf of \ :c:func:`ttm_bo_mem_force_space`\ 
-which tries to evict buffer objects until it can find space
-for a new object and by \ :c:func:`ttm_bo_force_list_clean`\  which is
+Return true if eviction is sensible. Called by \ :c:func:`ttm_mem_evict_first`\  on
+behalf of \ :c:func:`ttm_bo_mem_force_space`\  which tries to evict buffer objects until
+it can find space for a new object and by \ :c:func:`ttm_bo_force_list_clean`\  which is
 used to clean out a memory space.
 
 .. _`amdgpu_ttm_access_memory`:
@@ -750,20 +846,25 @@ amdgpu_ttm_access_memory
 
     Read or Write memory that backs a buffer object.
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object to read/write
+    :type bo: struct ttm_buffer_object \*
 
-    :param unsigned long offset:
+    :param offset:
         Offset into buffer object
+    :type offset: unsigned long
 
-    :param void \*buf:
+    :param buf:
         Secondary buffer to write/read from
+    :type buf: void \*
 
-    :param int len:
+    :param len:
         Length in bytes of access
+    :type len: int
 
-    :param int write:
+    :param write:
         true if writing
+    :type write: int
 
 .. _`amdgpu_ttm_access_memory.description`:
 
@@ -782,8 +883,9 @@ amdgpu_ttm_fw_reserve_vram_fini
 
     free fw reserved vram
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_ttm_fw_reserve_vram_fini.description`:
 
@@ -801,8 +903,9 @@ amdgpu_ttm_fw_reserve_vram_init
 
     create bo vram reservation from fw
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_ttm_fw_reserve_vram_init.description`:
 
@@ -820,8 +923,9 @@ amdgpu_ttm_init
 
     Init the memory management (ttm) as well as various gtt/vram related fields.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_ttm_init.description`:
 
@@ -842,8 +946,9 @@ amdgpu_ttm_late_init
 
     Handle any late initialization for amdgpu_ttm
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_ttm_fini`:
 
@@ -854,8 +959,9 @@ amdgpu_ttm_fini
 
     De-initialize the TTM memory pools
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_ttm_set_buffer_funcs_status`:
 
@@ -866,11 +972,13 @@ amdgpu_ttm_set_buffer_funcs_status
 
     enable/disable use of buffer functions
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
-    :param bool enable:
+    :param enable:
         true when we can use buffer functions.
+    :type enable: bool
 
 .. _`amdgpu_ttm_set_buffer_funcs_status.description`:
 
@@ -889,17 +997,21 @@ amdgpu_ttm_vram_read
 
     Linear read access to VRAM
 
-    :param struct file \*f:
+    :param f:
         *undescribed*
+    :type f: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         *undescribed*
+    :type pos: loff_t \*
 
 .. _`amdgpu_ttm_vram_read.description`:
 
@@ -917,17 +1029,21 @@ amdgpu_ttm_vram_write
 
     Linear write access to VRAM
 
-    :param struct file \*f:
+    :param f:
         *undescribed*
+    :type f: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char __user \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         *undescribed*
+    :type pos: loff_t \*
 
 .. _`amdgpu_ttm_vram_write.description`:
 
@@ -945,17 +1061,21 @@ amdgpu_ttm_gtt_read
 
     Linear read access to GTT memory
 
-    :param struct file \*f:
+    :param f:
         *undescribed*
+    :type f: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         *undescribed*
+    :type pos: loff_t \*
 
 .. _`amdgpu_iomem_read`:
 
@@ -966,17 +1086,21 @@ amdgpu_iomem_read
 
     Virtual read access to GPU mapped memory
 
-    :param struct file \*f:
+    :param f:
         *undescribed*
+    :type f: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         *undescribed*
+    :type pos: loff_t \*
 
 .. _`amdgpu_iomem_read.description`:
 
@@ -996,17 +1120,21 @@ amdgpu_iomem_write
 
     Virtual write access to GPU mapped memory
 
-    :param struct file \*f:
+    :param f:
         *undescribed*
+    :type f: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char __user \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param loff_t \*pos:
+    :param pos:
         *undescribed*
+    :type pos: loff_t \*
 
 .. _`amdgpu_iomem_write.description`:
 

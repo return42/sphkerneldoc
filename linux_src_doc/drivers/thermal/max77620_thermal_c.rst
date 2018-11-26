@@ -10,11 +10,13 @@ max77620_thermal_read_temp
 
     Read PMIC die temperatue.
 
-    :param void \*data:
+    :param data:
         Device specific data.
+    :type data: void \*
 
-    :param int \*temp:
+    :param temp:
         *undescribed*
+    :type temp: int \*
 
 .. _`max77620_thermal_read_temp.temp`:
 

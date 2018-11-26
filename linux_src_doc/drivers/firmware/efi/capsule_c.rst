@@ -10,8 +10,9 @@ efi_capsule_pending
 
     has a capsule been passed to the firmware?
 
-    :param int \*reset_type:
+    :param reset_type:
         store the type of EFI reset if capsule is pending
+    :type reset_type: int \*
 
 .. _`efi_capsule_pending.description`:
 
@@ -41,17 +42,21 @@ efi_capsule_supported
 
     does the firmware support the capsule?
 
-    :param efi_guid_t guid:
+    :param guid:
         vendor guid of capsule
+    :type guid: efi_guid_t
 
-    :param u32 flags:
+    :param flags:
         capsule flags
+    :type flags: u32
 
-    :param size_t size:
+    :param size:
         size of capsule data
+    :type size: size_t
 
-    :param int \*reset:
+    :param reset:
         the reset type required for this capsule
+    :type reset: int \*
 
 .. _`efi_capsule_supported.description`:
 
@@ -73,14 +78,17 @@ efi_capsule_update_locked
 
     pass a single capsule to the firmware
 
-    :param efi_capsule_header_t \*capsule:
+    :param capsule:
         capsule to send to the firmware
+    :type capsule: efi_capsule_header_t \*
 
-    :param struct page \*\*sg_pages:
+    :param sg_pages:
         array of scatter gather (block descriptor) pages
+    :type sg_pages: struct page \*\*
 
-    :param int reset:
+    :param reset:
         the reset type required for \ ``capsule``\ 
+    :type reset: int
 
 .. _`efi_capsule_update_locked.description`:
 
@@ -105,11 +113,13 @@ efi_capsule_update
 
     send a capsule to the firmware
 
-    :param efi_capsule_header_t \*capsule:
+    :param capsule:
         capsule to send to firmware
+    :type capsule: efi_capsule_header_t \*
 
-    :param phys_addr_t \*pages:
+    :param pages:
         an array of capsule data pages
+    :type pages: phys_addr_t \*
 
 .. _`efi_capsule_update.description`:
 

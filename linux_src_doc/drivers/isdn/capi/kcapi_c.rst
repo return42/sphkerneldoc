@@ -10,14 +10,17 @@ capi_ctr_handle_message
 
     handle incoming CAPI message
 
-    :param struct capi_ctr \*ctr:
+    :param ctr:
         controller descriptor structure.
+    :type ctr: struct capi_ctr \*
 
-    :param u16 appl:
+    :param appl:
         application ID.
+    :type appl: u16
 
-    :param struct sk_buff \*skb:
+    :param skb:
         message.
+    :type skb: struct sk_buff \*
 
 .. _`capi_ctr_handle_message.description`:
 
@@ -35,8 +38,9 @@ capi_ctr_ready
 
     signal CAPI controller ready
 
-    :param struct capi_ctr \*ctr:
+    :param ctr:
         controller descriptor structure.
+    :type ctr: struct capi_ctr \*
 
 .. _`capi_ctr_ready.description`:
 
@@ -54,8 +58,9 @@ capi_ctr_down
 
     signal CAPI controller not ready
 
-    :param struct capi_ctr \*ctr:
+    :param ctr:
         controller descriptor structure.
+    :type ctr: struct capi_ctr \*
 
 .. _`capi_ctr_down.description`:
 
@@ -74,8 +79,9 @@ capi_ctr_suspend_output
 
     suspend controller
 
-    :param struct capi_ctr \*ctr:
+    :param ctr:
         controller descriptor structure.
+    :type ctr: struct capi_ctr \*
 
 .. _`capi_ctr_suspend_output.description`:
 
@@ -101,8 +107,9 @@ capi_ctr_resume_output
 
     resume controller
 
-    :param struct capi_ctr \*ctr:
+    :param ctr:
         controller descriptor structure.
+    :type ctr: struct capi_ctr \*
 
 .. _`capi_ctr_resume_output.description`:
 
@@ -128,8 +135,9 @@ attach_capi_ctr
 
     register CAPI controller
 
-    :param struct capi_ctr \*ctr:
+    :param ctr:
         controller descriptor structure.
+    :type ctr: struct capi_ctr \*
 
 .. _`attach_capi_ctr.description`:
 
@@ -154,8 +162,9 @@ detach_capi_ctr
 
     unregister CAPI controller
 
-    :param struct capi_ctr \*ctr:
+    :param ctr:
         controller descriptor structure.
+    :type ctr: struct capi_ctr \*
 
 .. _`detach_capi_ctr.description`:
 
@@ -181,8 +190,9 @@ register_capi_driver
 
     register CAPI driver
 
-    :param struct capi_driver \*driver:
+    :param driver:
         driver descriptor structure.
+    :type driver: struct capi_driver \*
 
 .. _`register_capi_driver.description`:
 
@@ -200,8 +210,9 @@ unregister_capi_driver
 
     unregister CAPI driver
 
-    :param struct capi_driver \*driver:
+    :param driver:
         driver descriptor structure.
+    :type driver: struct capi_driver \*
 
 .. _`unregister_capi_driver.description`:
 
@@ -219,8 +230,9 @@ capi20_isinstalled
 
     CAPI 2.0 operation CAPI_INSTALLED
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`capi20_isinstalled.return-value`:
 
@@ -239,8 +251,9 @@ capi20_register
 
     CAPI 2.0 operation CAPI_REGISTER
 
-    :param struct capi20_appl \*ap:
+    :param ap:
         CAPI application descriptor structure.
+    :type ap: struct capi20_appl \*
 
 .. _`capi20_register.description`:
 
@@ -248,9 +261,9 @@ Description
 -----------
 
 Register an application's presence with CAPI.
-A unique application ID is assigned and stored in \ ``ap``\ ->applid.
+A unique application ID is assigned and stored in \ ``ap->applid``\ .
 After this function returns successfully, the message receive
-callback function \ ``ap``\ ->recv_message() may be called at any time
+callback function \ ``ap->recv_message``\ () may be called at any time
 until \ :c:func:`capi20_release`\  has been called for the same \ ``ap``\ .
 
 .. _`capi20_register.return-value`:
@@ -269,8 +282,9 @@ capi20_release
 
     CAPI 2.0 operation CAPI_RELEASE
 
-    :param struct capi20_appl \*ap:
+    :param ap:
         CAPI application descriptor structure.
+    :type ap: struct capi20_appl \*
 
 .. _`capi20_release.description`:
 
@@ -279,7 +293,7 @@ Description
 
 Terminate an application's registration with CAPI.
 After this function returns successfully, the message receive
-callback function \ ``ap``\ ->recv_message() will no longer be called.
+callback function \ ``ap->recv_message``\ () will no longer be called.
 
 .. _`capi20_release.return-value`:
 
@@ -297,11 +311,13 @@ capi20_put_message
 
     CAPI 2.0 operation CAPI_PUT_MESSAGE
 
-    :param struct capi20_appl \*ap:
+    :param ap:
         CAPI application descriptor structure.
+    :type ap: struct capi20_appl \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         CAPI message.
+    :type skb: struct sk_buff \*
 
 .. _`capi20_put_message.description`:
 
@@ -326,11 +342,13 @@ capi20_get_manufacturer
 
     CAPI 2.0 operation CAPI_GET_MANUFACTURER
 
-    :param u32 contr:
+    :param contr:
         controller number.
+    :type contr: u32
 
-    :param u8 \*buf:
+    :param buf:
         result buffer (64 bytes).
+    :type buf: u8 \*
 
 .. _`capi20_get_manufacturer.description`:
 
@@ -356,11 +374,13 @@ capi20_get_version
 
     CAPI 2.0 operation CAPI_GET_VERSION
 
-    :param u32 contr:
+    :param contr:
         controller number.
+    :type contr: u32
 
-    :param struct capi_version \*verp:
+    :param verp:
         result structure.
+    :type verp: struct capi_version \*
 
 .. _`capi20_get_version.description`:
 
@@ -386,11 +406,13 @@ capi20_get_serial
 
     CAPI 2.0 operation CAPI_GET_SERIAL_NUMBER
 
-    :param u32 contr:
+    :param contr:
         controller number.
+    :type contr: u32
 
-    :param u8 \*serial:
+    :param serial:
         result buffer (8 bytes).
+    :type serial: u8 \*
 
 .. _`capi20_get_serial.description`:
 
@@ -416,11 +438,13 @@ capi20_get_profile
 
     CAPI 2.0 operation CAPI_GET_PROFILE
 
-    :param u32 contr:
+    :param contr:
         controller number.
+    :type contr: u32
 
-    :param struct capi_profile \*profp:
+    :param profp:
         result structure.
+    :type profp: struct capi_profile \*
 
 .. _`capi20_get_profile.description`:
 
@@ -446,11 +470,13 @@ capi20_manufacturer
 
     CAPI 2.0 operation CAPI_MANUFACTURER
 
-    :param unsigned long cmd:
+    :param cmd:
         command.
+    :type cmd: unsigned long
 
-    :param void __user \*data:
+    :param data:
         parameter.
+    :type data: void __user \*
 
 .. _`capi20_manufacturer.description`:
 

@@ -86,7 +86,7 @@ Definition
         struct nfp_net_tx_buf *txbufs;
         struct nfp_net_tx_desc *txds;
         dma_addr_t dma;
-        unsigned int size;
+        size_t size;
         bool is_xdp;
     }
 
@@ -193,12 +193,12 @@ Definition
         u32 rd_p;
         u32 idx;
         int fl_qcidx;
-        unsigned int size;
         u8 __iomem *qcp_fl;
         struct nfp_net_rx_buf *rxbufs;
         struct nfp_net_rx_desc *rxds;
-        dma_addr_t dma;
         struct xdp_rxq_info xdp_rxq;
+        dma_addr_t dma;
+        size_t size;
     }
 
 .. _`nfp_net_rx_ring.members`:
@@ -224,9 +224,6 @@ idx
 fl_qcidx
     Queue Controller Peripheral (QCP) queue index for the freelist
 
-size
-    Size, in bytes, of the FL/RX ring (needed to free)
-
 qcp_fl
     Pointer to base of the QCP freelist queue
 
@@ -236,11 +233,14 @@ rxbufs
 rxds
     Virtual address of FL/RX ring in host memory
 
+xdp_rxq
+    RX-ring info avail for XDP
+
 dma
     DMA address of the FL/RX ring
 
-xdp_rxq
-    RX-ring info avail for XDP
+size
+    Size, in bytes, of the FL/RX ring (needed to free)
 
 .. _`nfp_net_r_vector`:
 
@@ -430,7 +430,6 @@ Definition
         struct device *dev;
         struct net_device *netdev;
         u8 is_vf:1;
-        u8 bpf_offload_xdp:1;
         u8 chained_metadata_format:1;
         u8 rx_dma_dir;
         u8 rx_offset;
@@ -463,9 +462,6 @@ netdev
 
 is_vf
     Is the driver attached to a VF?
-
-bpf_offload_xdp
-    Offloaded BPF program is XDP
 
 chained_metadata_format
     Firemware will use new metadata format
@@ -544,8 +540,8 @@ Definition
         u32 rss_cfg;
         u8 rss_key[NFP_NET_CFG_RSS_KEY_SZ];
         u8 rss_itbl[NFP_NET_CFG_RSS_ITBL_SZ];
-        u32 xdp_flags;
-        struct bpf_prog *xdp_prog;
+        struct xdp_attachment_info xdp;
+        struct xdp_attachment_info xdp_hw;
         unsigned int max_tx_rings;
         unsigned int max_rx_rings;
         int stride_tx;
@@ -618,11 +614,11 @@ rss_key
 rss_itbl
     RSS indirection table
 
-xdp_flags
-    Flags with which XDP prog was loaded
+xdp
+    Information about the driver XDP program
 
-xdp_prog
-    XDP prog (for ctrl path, both DRV and HW modes)
+xdp_hw
+    Information about the HW XDP program
 
 max_tx_rings
     Maximum number of TX rings supported by the Firmware
@@ -748,11 +744,13 @@ nfp_qcp_rd_ptr_add
 
     Add the value to the read pointer of a queue
 
-    :param u8 __iomem \*q:
+    :param q:
         Base address for queue structure
+    :type q: u8 __iomem \*
 
-    :param u32 val:
+    :param val:
         Value to add to the queue pointer
+    :type val: u32
 
 .. _`nfp_qcp_rd_ptr_add.description`:
 
@@ -770,11 +768,13 @@ nfp_qcp_wr_ptr_add
 
     Add the value to the write pointer of a queue
 
-    :param u8 __iomem \*q:
+    :param q:
         Base address for queue structure
+    :type q: u8 __iomem \*
 
-    :param u32 val:
+    :param val:
         Value to add to the queue pointer
+    :type val: u32
 
 .. _`nfp_qcp_wr_ptr_add.description`:
 
@@ -792,8 +792,9 @@ nfp_qcp_rd_ptr_read
 
     Read the current read pointer value for a queue
 
-    :param u8 __iomem \*q:
+    :param q:
         Base address for queue structure
+    :type q: u8 __iomem \*
 
 .. _`nfp_qcp_rd_ptr_read.return`:
 
@@ -811,8 +812,9 @@ nfp_qcp_wr_ptr_read
 
     Read the current write pointer value for a queue
 
-    :param u8 __iomem \*q:
+    :param q:
         Base address for queue structure
+    :type q: u8 __iomem \*
 
 .. _`nfp_qcp_wr_ptr_read.return`:
 

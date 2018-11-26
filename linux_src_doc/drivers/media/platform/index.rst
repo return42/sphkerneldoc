@@ -8,6 +8,8 @@ platform
     :maxdepth: 1
 
     am437x/index
+    coda/index
+    cros-ec-cec/index
     davinci/index
     exynos-gsc/index
     exynos4-is/index

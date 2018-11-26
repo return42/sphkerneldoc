@@ -10,9 +10,10 @@ is_connect_status
 
     return true if status is 'connected'
 
-    :param u32 status:
+    :param status:
         high bit is used as FORCE_DISCONNECT, low bits used for
         connect status.
+    :type status: u32
 
 .. _`is_disconnect_status`:
 
@@ -23,9 +24,10 @@ is_disconnect_status
 
     return true if status is 'disconnected'
 
-    :param u32 status:
+    :param status:
         high bit is used as FORCE_DISCONNECT, low bits used for
         disconnect status.
+    :type status: u32
 
 .. This file was automatic generated / don't edit.
 

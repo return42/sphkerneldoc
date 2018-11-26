@@ -405,11 +405,13 @@ drm_crtc_helper_add
 
     sets the helper vtable for a crtc
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM CRTC
+    :type crtc: struct drm_crtc \*
 
-    :param const struct drm_crtc_helper_funcs \*funcs:
+    :param funcs:
         helper vtable to set for \ ``crtc``\ 
+    :type funcs: const struct drm_crtc_helper_funcs \*
 
 .. _`drm_encoder_helper_funcs`:
 
@@ -715,11 +717,13 @@ drm_encoder_helper_add
 
     sets the helper vtable for an encoder
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         DRM encoder
+    :type encoder: struct drm_encoder \*
 
-    :param const struct drm_encoder_helper_funcs \*funcs:
+    :param funcs:
         helper vtable to set for \ ``encoder``\ 
+    :type funcs: const struct drm_encoder_helper_funcs \*
 
 .. _`drm_connector_helper_funcs`:
 
@@ -744,6 +748,7 @@ Definition
         struct drm_encoder *(*best_encoder)(struct drm_connector *connector);
         struct drm_encoder *(*atomic_best_encoder)(struct drm_connector *connector, struct drm_connector_state *connector_state);
         int (*atomic_check)(struct drm_connector *connector, struct drm_connector_state *state);
+        void (*atomic_commit)(struct drm_connector *connector, struct drm_connector_state *state);
     }
 
 .. _`drm_connector_helper_funcs.members`:
@@ -755,7 +760,7 @@ get_modes
 
     This function should fill in all modes currently valid for the sink
     into the \ :c:type:`drm_connector.probed_modes <drm_connector>`\  list. It should also update the
-    EDID property by calling \ :c:func:`drm_mode_connector_update_edid_property`\ .
+    EDID property by calling \ :c:func:`drm_connector_update_edid_property`\ .
 
     The usual way to implement this is to cache the EDID retrieved in the
     probe callback somewhere in the driver-private connector structure.
@@ -924,6 +929,17 @@ atomic_check
     attempt to obtain another state object ran into a \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>`\ 
     deadlock.
 
+atomic_commit
+
+    This hook is to be used by drivers implementing writeback connectors
+    that need a point when to commit the writeback job to the hardware.
+    The writeback_job to commit is available in
+    \ :c:type:`drm_connector_state.writeback_job <drm_connector_state>`\ .
+
+    This hook is optional.
+
+    This callback is used by the atomic modeset helpers.
+
 .. _`drm_connector_helper_funcs.description`:
 
 Description
@@ -941,11 +957,13 @@ drm_connector_helper_add
 
     sets the helper vtable for a connector
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector
+    :type connector: struct drm_connector \*
 
-    :param const struct drm_connector_helper_funcs \*funcs:
+    :param funcs:
         helper vtable to set for \ ``connector``\ 
+    :type funcs: const struct drm_connector_helper_funcs \*
 
 .. _`drm_plane_helper_funcs`:
 
@@ -1145,11 +1163,13 @@ drm_plane_helper_add
 
     sets the helper vtable for a plane
 
-    :param struct drm_plane \*plane:
+    :param plane:
         DRM plane
+    :type plane: struct drm_plane \*
 
-    :param const struct drm_plane_helper_funcs \*funcs:
+    :param funcs:
         helper vtable to set for \ ``plane``\ 
+    :type funcs: const struct drm_plane_helper_funcs \*
 
 .. _`drm_mode_config_helper_funcs`:
 

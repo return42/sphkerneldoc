@@ -10,11 +10,13 @@ ef4_mdio_set_link_ksettings
 
     Set (some of) the PHY settings over MDIO.
 
-    :param struct ef4_nic \*efx:
+    :param efx:
         Efx NIC
+    :type efx: struct ef4_nic \*
 
-    :param const struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         New settings
+    :type cmd: const struct ethtool_link_ksettings \*
 
 .. _`ef4_mdio_an_reconfigure`:
 
@@ -25,8 +27,9 @@ ef4_mdio_an_reconfigure
 
     Push advertising flags and restart autonegotiation
 
-    :param struct ef4_nic \*efx:
+    :param efx:
         Efx NIC
+    :type efx: struct ef4_nic \*
 
 .. This file was automatic generated / don't edit.
 

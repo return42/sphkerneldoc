@@ -10,11 +10,13 @@ dns_resolve_server_name_to_ip
 
     Resolve UNC server name to ip address.
 
-    :param const char \*unc:
+    :param unc:
         UNC path specifying the server (with '/' as delimiter)
+    :type unc: const char \*
 
-    :param char \*\*ip_addr:
+    :param ip_addr:
         Where to return the IP address.
+    :type ip_addr: char \*\*
 
 .. _`dns_resolve_server_name_to_ip.description`:
 

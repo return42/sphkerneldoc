@@ -10,8 +10,9 @@ kvm_cma_reserve
 
     reserve area for kvm hash pagetable
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`kvm_cma_reserve.description`:
 

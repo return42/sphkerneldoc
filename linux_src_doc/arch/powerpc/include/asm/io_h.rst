@@ -10,11 +10,13 @@ ioremap
 
     map bus memory into CPU space
 
-    :param phys_addr_t address:
+    :param address:
         bus address of the memory
+    :type address: phys_addr_t
 
-    :param unsigned long size:
+    :param size:
         size of the resource to map
+    :type size: unsigned long
 
 .. _`ioremap.description`:
 
@@ -43,6 +45,10 @@ also be hooked by the platform via ppc_md.
 
 \* ioremap_wc enables write combining
 
+\* ioremap_wt enables write through
+
+\* ioremap_coherent maps coherent cached memory
+
 \* iounmap undoes such a mapping and can be hooked
 
 \* \__ioremap_at (and the pending \__iounmap_at) are low level functions to
@@ -68,8 +74,9 @@ virt_to_phys
 
     map virtual addresses to physical
 
-    :param volatile void \*address:
+    :param address:
         address to remap
+    :type address: volatile void \*
 
 .. _`virt_to_phys.description`:
 
@@ -93,8 +100,9 @@ phys_to_virt
 
     map physical address to virtual
 
-    :param unsigned long address:
+    :param address:
         address to remap
+    :type address: unsigned long
 
 .. _`phys_to_virt.description`:
 

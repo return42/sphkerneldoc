@@ -10,11 +10,13 @@ irq_of_parse_and_map
 
     Parse and map an interrupt into linux virq space
 
-    :param struct device_node \*dev:
+    :param dev:
         Device node of the device whose interrupt is to be mapped
+    :type dev: struct device_node \*
 
-    :param int index:
+    :param index:
         Index of the interrupt to map
+    :type index: int
 
 .. _`irq_of_parse_and_map.description`:
 
@@ -33,8 +35,9 @@ of_irq_find_parent
 
     Given a device node, find its interrupt parent node
 
-    :param struct device_node \*child:
+    :param child:
         pointer to device node
+    :type child: struct device_node \*
 
 .. _`of_irq_find_parent.description`:
 
@@ -53,11 +56,13 @@ of_irq_parse_raw
 
     Low level interrupt tree parsing
 
-    :param const __be32 \*addr:
+    :param addr:
         address specifier (start of "reg" property of the device) in be32 format
+    :type addr: const __be32 \*
 
-    :param struct of_phandle_args \*out_irq:
+    :param out_irq:
         structure of_phandle_args updated by this function
+    :type out_irq: struct of_phandle_args \*
 
 .. _`of_irq_parse_raw.description`:
 
@@ -82,14 +87,17 @@ of_irq_parse_one
 
     Resolve an interrupt for a device
 
-    :param struct device_node \*device:
+    :param device:
         the device whose interrupt is to be resolved
+    :type device: struct device_node \*
 
-    :param int index:
+    :param index:
         index of the interrupt to resolve
+    :type index: int
 
-    :param struct of_phandle_args \*out_irq:
+    :param out_irq:
         structure of_irq filled by this function
+    :type out_irq: struct of_phandle_args \*
 
 .. _`of_irq_parse_one.description`:
 
@@ -109,14 +117,17 @@ of_irq_to_resource
 
     Decode a node's IRQ and return it as a resource
 
-    :param struct device_node \*dev:
+    :param dev:
         pointer to device tree node
+    :type dev: struct device_node \*
 
-    :param int index:
+    :param index:
         zero-based index of the irq
+    :type index: int
 
-    :param struct resource \*r:
+    :param r:
         pointer to resource structure to return result into.
+    :type r: struct resource \*
 
 .. _`of_irq_get`:
 
@@ -127,11 +138,13 @@ of_irq_get
 
     Decode a node's IRQ and return it as a Linux IRQ number
 
-    :param struct device_node \*dev:
+    :param dev:
         pointer to device tree node
+    :type dev: struct device_node \*
 
-    :param int index:
+    :param index:
         zero-based index of the IRQ
+    :type index: int
 
 .. _`of_irq_get.description`:
 
@@ -151,11 +164,13 @@ of_irq_get_byname
 
     Decode a node's IRQ and return it as a Linux IRQ number
 
-    :param struct device_node \*dev:
+    :param dev:
         pointer to device tree node
+    :type dev: struct device_node \*
 
-    :param const char \*name:
+    :param name:
         IRQ name
+    :type name: const char \*
 
 .. _`of_irq_get_byname.description`:
 
@@ -175,8 +190,9 @@ of_irq_count
 
     Count the number of IRQs a node uses
 
-    :param struct device_node \*dev:
+    :param dev:
         pointer to device tree node
+    :type dev: struct device_node \*
 
 .. _`of_irq_to_resource_table`:
 
@@ -187,14 +203,17 @@ of_irq_to_resource_table
 
     Fill in resource table with node's IRQ info
 
-    :param struct device_node \*dev:
+    :param dev:
         pointer to device tree node
+    :type dev: struct device_node \*
 
-    :param struct resource \*res:
+    :param res:
         array of resources to fill in
+    :type res: struct resource \*
 
-    :param int nr_irqs:
+    :param nr_irqs:
         the number of IRQs (and upper bound for num of \ ``res``\  elements)
+    :type nr_irqs: int
 
 .. _`of_irq_to_resource_table.description`:
 
@@ -212,8 +231,9 @@ of_irq_init
 
     Scan and init matching interrupt controllers in DT
 
-    :param const struct of_device_id \*matches:
+    :param matches:
         0 terminated array of nodes to match and init function to call
+    :type matches: const struct of_device_id \*
 
 .. _`of_irq_init.description`:
 
@@ -232,14 +252,17 @@ of_msi_map_rid
 
     Map a MSI requester ID for a device.
 
-    :param struct device \*dev:
+    :param dev:
         device for which the mapping is to be done.
+    :type dev: struct device \*
 
-    :param struct device_node \*msi_np:
+    :param msi_np:
         device node of the expected msi controller.
+    :type msi_np: struct device_node \*
 
-    :param u32 rid_in:
+    :param rid_in:
         unmapped MSI requester ID for the device.
+    :type rid_in: u32
 
 .. _`of_msi_map_rid.description`:
 
@@ -260,11 +283,13 @@ of_msi_map_get_device_domain
 
     Use msi-map to find the relevant MSI domain
 
-    :param struct device \*dev:
+    :param dev:
         device for which the mapping is to be done.
+    :type dev: struct device \*
 
-    :param u32 rid:
+    :param rid:
         Requester ID for the device.
+    :type rid: u32
 
 .. _`of_msi_map_get_device_domain.description`:
 
@@ -290,14 +315,17 @@ of_msi_get_domain
 
     Use msi-parent to find the relevant MSI domain
 
-    :param struct device \*dev:
+    :param dev:
         device for which the domain is requested
+    :type dev: struct device \*
 
-    :param struct device_node \*np:
+    :param np:
         device node for \ ``dev``\ 
+    :type np: struct device_node \*
 
-    :param enum irq_domain_bus_token token:
+    :param token:
         bus type for this domain
+    :type token: enum irq_domain_bus_token
 
 .. _`of_msi_get_domain.description`:
 
@@ -323,11 +351,13 @@ of_msi_configure
 
     Set the msi_domain field of a device
 
-    :param struct device \*dev:
+    :param dev:
         device structure to associate with an MSI irq domain
+    :type dev: struct device \*
 
-    :param struct device_node \*np:
+    :param np:
         device node for that device
+    :type np: struct device_node \*
 
 .. This file was automatic generated / don't edit.
 

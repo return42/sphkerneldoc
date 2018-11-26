@@ -397,11 +397,13 @@ s3c_fb_validate_win_bpp
 
     validate the bits-per-pixel for this mode.
 
-    :param struct s3c_fb_win \*win:
+    :param win:
         The device window.
+    :type win: struct s3c_fb_win \*
 
-    :param unsigned int bpp:
+    :param bpp:
         The bit depth.
+    :type bpp: unsigned int
 
 .. _`s3c_fb_check_var`:
 
@@ -412,11 +414,13 @@ s3c_fb_check_var
 
     framebuffer layer request to verify a given mode.
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         The screen information to verify.
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         The framebuffer device.
+    :type info: struct fb_info \*
 
 .. _`s3c_fb_check_var.description`:
 
@@ -435,11 +439,13 @@ s3c_fb_calc_pixclk
 
     calculate the divider to create the pixel clock.
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         The hardware state.
+    :type sfb: struct s3c_fb \*
 
-    :param unsigned int pixclk:
+    :param pixclk:
         *undescribed*
+    :type pixclk: unsigned int
 
 .. _`s3c_fb_calc_pixclk.description`:
 
@@ -458,11 +464,13 @@ s3c_fb_align_word
 
     align pixel count to word boundary
 
-    :param unsigned int bpp:
+    :param bpp:
         The number of bits per pixel
+    :type bpp: unsigned int
 
-    :param unsigned int pix:
+    :param pix:
         The value to be aligned.
+    :type pix: unsigned int
 
 .. _`s3c_fb_align_word.description`:
 
@@ -481,11 +489,13 @@ vidosd_set_size
 
     set OSD size for a window
 
-    :param struct s3c_fb_win \*win:
+    :param win:
         the window to set OSD size for
+    :type win: struct s3c_fb_win \*
 
-    :param u32 size:
+    :param size:
         OSD size register value
+    :type size: u32
 
 .. _`vidosd_set_alpha`:
 
@@ -496,11 +506,13 @@ vidosd_set_alpha
 
     set alpha transparency for a window
 
-    :param struct s3c_fb_win \*win:
+    :param win:
         the window to set OSD size for
+    :type win: struct s3c_fb_win \*
 
-    :param u32 alpha:
+    :param alpha:
         alpha register value
+    :type alpha: u32
 
 .. _`shadow_protect_win`:
 
@@ -511,11 +523,13 @@ shadow_protect_win
 
     disable updating values from shadow registers at vsync
 
-    :param struct s3c_fb_win \*win:
+    :param win:
         window to protect registers for
+    :type win: struct s3c_fb_win \*
 
-    :param bool protect:
+    :param protect:
         1 to protect (disable updates)
+    :type protect: bool
 
 .. _`s3c_fb_enable`:
 
@@ -526,11 +540,13 @@ s3c_fb_enable
 
     Set the state of the main LCD output
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         The main framebuffer state.
+    :type sfb: struct s3c_fb \*
 
-    :param int enable:
+    :param enable:
         The state to set.
+    :type enable: int
 
 .. _`s3c_fb_set_par`:
 
@@ -541,8 +557,9 @@ s3c_fb_set_par
 
     framebuffer request to set new framebuffer state.
 
-    :param struct fb_info \*info:
+    :param info:
         The framebuffer to change.
+    :type info: struct fb_info \*
 
 .. _`s3c_fb_set_par.description`:
 
@@ -560,17 +577,21 @@ s3c_fb_update_palette
 
     set or schedule a palette update.
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         The hardware information.
+    :type sfb: struct s3c_fb \*
 
-    :param struct s3c_fb_win \*win:
+    :param win:
         The window being updated.
+    :type win: struct s3c_fb_win \*
 
-    :param unsigned int reg:
+    :param reg:
         The palette index being changed.
+    :type reg: unsigned int
 
-    :param u32 value:
+    :param value:
         The computed palette value.
+    :type value: u32
 
 .. _`s3c_fb_update_palette.description`:
 
@@ -593,23 +614,29 @@ s3c_fb_setcolreg
 
     framebuffer layer request to change palette.
 
-    :param unsigned regno:
+    :param regno:
         The palette index to change.
+    :type regno: unsigned
 
-    :param unsigned red:
+    :param red:
         The red field for the palette data.
+    :type red: unsigned
 
-    :param unsigned green:
+    :param green:
         The green field for the palette data.
+    :type green: unsigned
 
-    :param unsigned blue:
+    :param blue:
         The blue field for the palette data.
+    :type blue: unsigned
 
-    :param unsigned transp:
+    :param transp:
         *undescribed*
+    :type transp: unsigned
 
-    :param struct fb_info \*info:
+    :param info:
         The framebuffer being changed.
+    :type info: struct fb_info \*
 
 .. _`s3c_fb_blank`:
 
@@ -620,11 +647,13 @@ s3c_fb_blank
 
     blank or unblank the given window
 
-    :param int blank_mode:
+    :param blank_mode:
         The blank state from FB_BLANK\_\*
+    :type blank_mode: int
 
-    :param struct fb_info \*info:
+    :param info:
         The framebuffer to blank.
+    :type info: struct fb_info \*
 
 .. _`s3c_fb_blank.description`:
 
@@ -642,11 +671,13 @@ s3c_fb_pan_display
 
     Pan the display.
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         The screen information to verify.
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         The framebuffer device.
+    :type info: struct fb_info \*
 
 .. _`s3c_fb_pan_display.description`:
 
@@ -667,8 +698,9 @@ s3c_fb_enable_irq
 
     enable framebuffer interrupts
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         main hardware state
+    :type sfb: struct s3c_fb \*
 
 .. _`s3c_fb_disable_irq`:
 
@@ -679,8 +711,9 @@ s3c_fb_disable_irq
 
     disable framebuffer interrupts
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         main hardware state
+    :type sfb: struct s3c_fb \*
 
 .. _`s3c_fb_wait_for_vsync`:
 
@@ -691,11 +724,13 @@ s3c_fb_wait_for_vsync
 
     sleep until next VSYNC interrupt or timeout
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         main hardware state
+    :type sfb: struct s3c_fb \*
 
-    :param u32 crtc:
+    :param crtc:
         head index.
+    :type crtc: u32
 
 .. _`s3c_fb_missing_pixclock`:
 
@@ -706,8 +741,9 @@ s3c_fb_missing_pixclock
 
     calculates pixel clock
 
-    :param struct fb_videomode \*mode:
+    :param mode:
         The video mode to change.
+    :type mode: struct fb_videomode \*
 
 .. _`s3c_fb_missing_pixclock.description`:
 
@@ -725,11 +761,13 @@ s3c_fb_alloc_memory
 
     allocate display memory for framebuffer window
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         The base resources for the hardware.
+    :type sfb: struct s3c_fb \*
 
-    :param struct s3c_fb_win \*win:
+    :param win:
         The window to initialise memory for.
+    :type win: struct s3c_fb_win \*
 
 .. _`s3c_fb_alloc_memory.description`:
 
@@ -747,11 +785,13 @@ s3c_fb_free_memory
 
     free the display memory for the given window
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         The base resources for the hardware.
+    :type sfb: struct s3c_fb \*
 
-    :param struct s3c_fb_win \*win:
+    :param win:
         The window to free the display memory for.
+    :type win: struct s3c_fb_win \*
 
 .. _`s3c_fb_free_memory.description`:
 
@@ -769,11 +809,13 @@ s3c_fb_release_win
 
     release resources for a framebuffer window.
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         *undescribed*
+    :type sfb: struct s3c_fb \*
 
-    :param struct s3c_fb_win \*win:
+    :param win:
         The window to cleanup the resources for.
+    :type win: struct s3c_fb_win \*
 
 .. _`s3c_fb_release_win.description`:
 
@@ -792,17 +834,21 @@ s3c_fb_probe_win
 
     register an hardware window
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         The base resources for the hardware
+    :type sfb: struct s3c_fb \*
 
-    :param unsigned int win_no:
+    :param win_no:
         *undescribed*
+    :type win_no: unsigned int
 
-    :param struct s3c_fb_win_variant \*variant:
+    :param variant:
         The variant information for this window.
+    :type variant: struct s3c_fb_win_variant \*
 
-    :param struct s3c_fb_win \*\*res:
+    :param res:
         Pointer to where to place the resultant window.
+    :type res: struct s3c_fb_win \*\*
 
 .. _`s3c_fb_probe_win.description`:
 
@@ -821,8 +867,9 @@ s3c_fb_set_rgb_timing
 
     set video timing for rgb interface.
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         The base resources for the hardware.
+    :type sfb: struct s3c_fb \*
 
 .. _`s3c_fb_set_rgb_timing.description`:
 
@@ -840,11 +887,13 @@ s3c_fb_clear_win
 
     clear hardware window registers.
 
-    :param struct s3c_fb \*sfb:
+    :param sfb:
         The base resources for the hardware.
+    :type sfb: struct s3c_fb \*
 
-    :param int win:
+    :param win:
         The window to process.
+    :type win: int
 
 .. _`s3c_fb_clear_win.description`:
 
@@ -862,8 +911,9 @@ s3c_fb_remove
 
     Cleanup on module finalisation
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         The platform device we are bound to.
+    :type pdev: struct platform_device \*
 
 .. _`s3c_fb_remove.description`:
 

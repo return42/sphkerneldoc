@@ -10,11 +10,13 @@ alloc_ep_req
 
     returns a usb_request allocated by the gadget driver and allocates the request's buffer.
 
-    :param struct usb_ep \*ep:
+    :param ep:
         the endpoint to allocate a usb_request
+    :type ep: struct usb_ep \*
 
-    :param size_t len:
+    :param len:
         usb_requests's buffer suggested size
+    :type len: size_t
 
 .. _`alloc_ep_req.description`:
 

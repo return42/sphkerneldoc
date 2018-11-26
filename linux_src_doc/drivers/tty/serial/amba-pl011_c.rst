@@ -10,17 +10,21 @@ pl011_console_match
 
     non-standard console matching
 
-    :param struct console \*co:
+    :param co:
         registering console
+    :type co: struct console \*
 
-    :param char \*name:
+    :param name:
         name from console command line
+    :type name: char \*
 
-    :param int idx:
+    :param idx:
         index from console command line
+    :type idx: int
 
-    :param char \*options:
+    :param options:
         ptr to option string from console command line
+    :type options: char \*
 
 .. _`pl011_console_match.only-attempts-to-match-console-command-lines-of-the-form`:
 

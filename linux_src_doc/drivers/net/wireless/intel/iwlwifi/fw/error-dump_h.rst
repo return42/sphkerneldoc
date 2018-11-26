@@ -34,6 +34,7 @@ Definition
         IWL_FW_ERROR_DUMP_INTERNAL_TXF,
         IWL_FW_ERROR_DUMP_EXTERNAL,
         IWL_FW_ERROR_DUMP_MEM_CFG,
+        IWL_FW_ERROR_DUMP_D3_DEBUG_DATA,
         IWL_FW_ERROR_DUMP_MAX
     };
 
@@ -98,6 +99,9 @@ IWL_FW_ERROR_DUMP_MEM_CFG
     the addresses and sizes of fifos in the smem,
     which we get from the fw after ALIVE. The content is structured as
     \ :c:type:`struct iwl_fw_error_dump_smem_cfg <iwl_fw_error_dump_smem_cfg>`\ .
+
+IWL_FW_ERROR_DUMP_D3_DEBUG_DATA
+    *undescribed*
 
 IWL_FW_ERROR_DUMP_MAX
     *undescribed*
@@ -555,8 +559,9 @@ iwl_fw_error_next_data
 
     advance fw error dump data pointer
 
-    :param struct iwl_fw_error_dump_data \*data:
+    :param data:
         previous data block
+    :type data: struct iwl_fw_error_dump_data \*
 
 .. _`iwl_fw_error_next_data.return`:
 
@@ -597,6 +602,7 @@ Definition
         FW_DBG_TRIGGER_TX_LATENCY,
         FW_DBG_TRIGGER_TDLS,
         FW_DBG_TRIGGER_TX_STATUS,
+        FW_DBG_TRIGGER_NO_ALIVE,
         FW_DBG_TRIGGER_MAX
     };
 
@@ -658,6 +664,9 @@ FW_DBG_TRIGGER_TDLS
 FW_DBG_TRIGGER_TX_STATUS
     trigger log collection upon tx status when
     the firmware sends a tx reply.
+
+FW_DBG_TRIGGER_NO_ALIVE
+    trigger log collection if alive flow fails
 
 FW_DBG_TRIGGER_MAX
     *undescribed*

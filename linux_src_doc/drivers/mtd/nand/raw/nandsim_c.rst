@@ -10,8 +10,9 @@ nandsim_debugfs_create
 
     initialize debugfs
 
-    :param struct nandsim \*dev:
+    :param dev:
         nandsim device description object
+    :type dev: struct nandsim \*
 
 .. _`nandsim_debugfs_create.description`:
 

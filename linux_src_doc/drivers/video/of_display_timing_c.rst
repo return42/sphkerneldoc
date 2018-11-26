@@ -10,14 +10,17 @@ parse_timing_property
 
     parse timing_entry from device_node
 
-    :param const struct device_node \*np:
+    :param np:
         device_node with the property
+    :type np: const struct device_node \*
 
-    :param const char \*name:
+    :param name:
         name of the property
+    :type name: const char \*
 
-    :param struct timing_entry \*result:
+    :param result:
         will be set to the return value
+    :type result: struct timing_entry \*
 
 .. _`parse_timing_property.description`:
 
@@ -36,11 +39,13 @@ of_parse_display_timing
 
     parse display_timing entry from device_node
 
-    :param const struct device_node \*np:
+    :param np:
         device_node with the properties
+    :type np: const struct device_node \*
 
-    :param struct display_timing \*dt:
+    :param dt:
         *undescribed*
+    :type dt: struct display_timing \*
 
 .. _`of_get_display_timing`:
 
@@ -51,14 +56,17 @@ of_get_display_timing
 
     parse a display_timing entry
 
-    :param const struct device_node \*np:
+    :param np:
         device_node with the timing subnode
+    :type np: const struct device_node \*
 
-    :param const char \*name:
+    :param name:
         name of the timing node
+    :type name: const char \*
 
-    :param struct display_timing \*dt:
+    :param dt:
         display_timing struct to fill
+    :type dt: struct display_timing \*
 
 .. _`of_get_display_timings`:
 
@@ -69,8 +77,9 @@ of_get_display_timings
 
     parse all display_timing entries from a device_node
 
-    :param const struct device_node \*np:
+    :param np:
         device_node with the subnodes
+    :type np: const struct device_node \*
 
 .. This file was automatic generated / don't edit.
 

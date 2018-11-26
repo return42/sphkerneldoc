@@ -10,11 +10,13 @@ aac_get_config_status
 
     check the adapter configuration
 
-    :param struct aac_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct aac_dev \*
 
-    :param int commit_flag:
+    :param commit_flag:
         *undescribed*
+    :type commit_flag: int
 
 .. _`aac_get_config_status.description`:
 
@@ -32,8 +34,9 @@ aac_get_containers
 
     list containers
 
-    :param struct aac_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct aac_dev \*
 
 .. _`aac_get_containers.description`:
 
@@ -51,8 +54,9 @@ aac_get_container_name
 
     get container name, none blocking.
 
-    :param struct scsi_cmnd \*scsicmd:
+    :param scsicmd:
         *undescribed*
+    :type scsicmd: struct scsi_cmnd \*
 
 .. _`aac_probe_container_callback1`:
 
@@ -63,8 +67,9 @@ aac_probe_container_callback1
 
     query a logical volume
 
-    :param struct scsi_cmnd \*scsicmd:
+    :param scsicmd:
         *undescribed*
+    :type scsicmd: struct scsi_cmnd \*
 
 .. _`aac_probe_container_callback1.description`:
 
@@ -83,11 +88,13 @@ inqstrcpy
 
     string merge
 
-    :param char \*a:
+    :param a:
         string to copy from
+    :type a: char \*
 
-    :param char \*b:
+    :param b:
         string to copy to
+    :type b: char \*
 
 .. _`inqstrcpy.description`:
 
@@ -106,8 +113,9 @@ aac_get_container_serial
 
     get container serial, none blocking.
 
-    :param struct scsi_cmnd \*scsicmd:
+    :param scsicmd:
         *undescribed*
+    :type scsicmd: struct scsi_cmnd \*
 
 .. _`aac_get_safw_ciss_luns`:
 
@@ -116,8 +124,9 @@ aac_get_safw_ciss_luns
 
 .. c:function:: int aac_get_safw_ciss_luns(struct aac_dev *dev)
 
-    :param struct aac_dev \*dev:
+    :param dev:
         aac_dev structure
+    :type dev: struct aac_dev \*
 
 .. _`aac_get_safw_ciss_luns.description`:
 
@@ -136,8 +145,9 @@ aac_set_safw_attr_all_targets
 
     update current hba map with data from FW
 
-    :param struct aac_dev \*dev:
+    :param dev:
         aac_dev structure
+    :type dev: struct aac_dev \*
 
 .. _`aac_set_safw_attr_all_targets.description`:
 
@@ -155,8 +165,9 @@ aac_scsi_cmd
 
     Process SCSI command
 
-    :param struct scsi_cmnd \*scsicmd:
+    :param scsicmd:
         SCSI command block
+    :type scsicmd: struct scsi_cmnd \*
 
 .. _`aac_scsi_cmd.description`:
 

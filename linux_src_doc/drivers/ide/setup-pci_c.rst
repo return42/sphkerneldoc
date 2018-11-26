@@ -10,11 +10,13 @@ ide_setup_pci_baseregs
 
     place a PCI IDE controller native
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device of interface to switch native
+    :type dev: struct pci_dev \*
 
-    :param const char \*name:
+    :param name:
         Name of interface
+    :type name: const char \*
 
 .. _`ide_setup_pci_baseregs.description`:
 
@@ -42,11 +44,13 @@ ide_pci_dma_base
 
     setup BMIBA
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         IDE interface
+    :type hwif: ide_hwif_t \*
 
-    :param const struct ide_port_info \*d:
+    :param d:
         IDE port info
+    :type d: const struct ide_port_info \*
 
 .. _`ide_pci_dma_base.description`:
 
@@ -64,14 +68,17 @@ ide_pci_enable
 
     do PCI enables
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param int bars:
+    :param bars:
         PCI BARs mask
+    :type bars: int
 
-    :param const struct ide_port_info \*d:
+    :param d:
         IDE port info
+    :type d: const struct ide_port_info \*
 
 .. _`ide_pci_enable.description`:
 
@@ -94,11 +101,13 @@ ide_pci_configure
 
     configure an unconfigured device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct ide_port_info \*d:
+    :param d:
         IDE port info
+    :type d: const struct ide_port_info \*
 
 .. _`ide_pci_configure.description`:
 
@@ -117,14 +126,17 @@ ide_pci_check_iomem
 
     check a register is I/O
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct ide_port_info \*d:
+    :param d:
         IDE port info
+    :type d: const struct ide_port_info \*
 
-    :param int bar:
+    :param bar:
         BAR number
+    :type bar: int
 
 .. _`ide_pci_check_iomem.description`:
 
@@ -143,17 +155,21 @@ ide_hw_configure
 
     configure a struct ide_hw instance
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device holding interface
+    :type dev: struct pci_dev \*
 
-    :param const struct ide_port_info \*d:
+    :param d:
         IDE port info
+    :type d: const struct ide_port_info \*
 
-    :param unsigned int port:
+    :param port:
         port number
+    :type port: unsigned int
 
-    :param struct ide_hw \*hw:
+    :param hw:
         struct ide_hw instance corresponding to this port
+    :type hw: struct ide_hw \*
 
 .. _`ide_hw_configure.description`:
 
@@ -175,11 +191,13 @@ ide_hwif_setup_dma
 
     configure DMA interface
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         IDE interface
+    :type hwif: ide_hwif_t \*
 
-    :param const struct ide_port_info \*d:
+    :param d:
         IDE port info
+    :type d: const struct ide_port_info \*
 
 .. _`ide_hwif_setup_dma.description`:
 
@@ -199,17 +217,21 @@ ide_setup_pci_controller
 
     set up IDE PCI
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param int bars:
+    :param bars:
         PCI BARs mask
+    :type bars: int
 
-    :param const struct ide_port_info \*d:
+    :param d:
         IDE port info
+    :type d: const struct ide_port_info \*
 
-    :param int noisy:
+    :param noisy:
         verbose flag
+    :type noisy: int
 
 .. _`ide_setup_pci_controller.description`:
 
@@ -229,17 +251,21 @@ ide_pci_setup_ports
 
     configure ports/devices on PCI IDE
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct ide_port_info \*d:
+    :param d:
         IDE port info
+    :type d: const struct ide_port_info \*
 
-    :param struct ide_hw \*hw:
+    :param hw:
         struct ide_hw instances corresponding to this PCI IDE device
+    :type hw: struct ide_hw \*
 
-    :param struct ide_hw \*\*hws:
+    :param hws:
         struct ide_hw pointers table to update
+    :type hws: struct ide_hw \*\*
 
 .. _`ide_pci_setup_ports.description`:
 

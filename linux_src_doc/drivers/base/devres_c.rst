@@ -10,17 +10,21 @@ devres_alloc_node
 
     Allocate device resource data
 
-    :param dr_release_t release:
+    :param release:
         Release function devres will be associated with
+    :type release: dr_release_t
 
-    :param size_t size:
+    :param size:
         Allocation size
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         Allocation flags
+    :type gfp: gfp_t
 
-    :param int nid:
+    :param nid:
         NUMA node
+    :type nid: int
 
 .. _`devres_alloc_node.description`:
 
@@ -47,23 +51,28 @@ devres_for_each_res
 
     Resource iterator
 
-    :param struct device \*dev:
+    :param dev:
         Device to iterate resource from
+    :type dev: struct device \*
 
-    :param dr_release_t release:
+    :param release:
         Look for resources associated with this release function
+    :type release: dr_release_t
 
-    :param dr_match_t match:
+    :param match:
         Match function (optional)
+    :type match: dr_match_t
 
-    :param void \*match_data:
+    :param match_data:
         Data for the match function
+    :type match_data: void \*
 
     :param void (\*fn)(struct device \*, void \*, void \*):
         Function to be called for each matched resource.
 
-    :param void \*data:
+    :param data:
         Data for \ ``fn``\ , the 3rd parameter of \ ``fn``\ 
+    :type data: void \*
 
 .. _`devres_for_each_res.description`:
 
@@ -89,8 +98,9 @@ devres_free
 
     Free device resource data
 
-    :param void \*res:
+    :param res:
         Pointer to devres data to free
+    :type res: void \*
 
 .. _`devres_free.description`:
 
@@ -108,11 +118,13 @@ devres_add
 
     Register device resource
 
-    :param struct device \*dev:
+    :param dev:
         Device to add resource to
+    :type dev: struct device \*
 
-    :param void \*res:
+    :param res:
         Resource to register
+    :type res: void \*
 
 .. _`devres_add.description`:
 
@@ -132,17 +144,21 @@ devres_find
 
     Find device resource
 
-    :param struct device \*dev:
+    :param dev:
         Device to lookup resource from
+    :type dev: struct device \*
 
-    :param dr_release_t release:
+    :param release:
         Look for resources associated with this release function
+    :type release: dr_release_t
 
-    :param dr_match_t match:
+    :param match:
         Match function (optional)
+    :type match: dr_match_t
 
-    :param void \*match_data:
+    :param match_data:
         Data for the match function
+    :type match_data: void \*
 
 .. _`devres_find.description`:
 
@@ -169,17 +185,21 @@ devres_get
 
     Find devres, if non-existent, add one atomically
 
-    :param struct device \*dev:
+    :param dev:
         Device to lookup or add devres for
+    :type dev: struct device \*
 
-    :param void \*new_res:
+    :param new_res:
         Pointer to new initialized devres to add if not found
+    :type new_res: void \*
 
-    :param dr_match_t match:
+    :param match:
         Match function (optional)
+    :type match: dr_match_t
 
-    :param void \*match_data:
+    :param match_data:
         Data for the match function
+    :type match_data: void \*
 
 .. _`devres_get.description`:
 
@@ -206,17 +226,21 @@ devres_remove
 
     Find a device resource and remove it
 
-    :param struct device \*dev:
+    :param dev:
         Device to find resource from
+    :type dev: struct device \*
 
-    :param dr_release_t release:
+    :param release:
         Look for resources associated with this release function
+    :type release: dr_release_t
 
-    :param dr_match_t match:
+    :param match:
         Match function (optional)
+    :type match: dr_match_t
 
-    :param void \*match_data:
+    :param match_data:
         Data for the match function
+    :type match_data: void \*
 
 .. _`devres_remove.description`:
 
@@ -244,17 +268,21 @@ devres_destroy
 
     Find a device resource and destroy it
 
-    :param struct device \*dev:
+    :param dev:
         Device to find resource from
+    :type dev: struct device \*
 
-    :param dr_release_t release:
+    :param release:
         Look for resources associated with this release function
+    :type release: dr_release_t
 
-    :param dr_match_t match:
+    :param match:
         Match function (optional)
+    :type match: dr_match_t
 
-    :param void \*match_data:
+    :param match_data:
         Data for the match function
+    :type match_data: void \*
 
 .. _`devres_destroy.description`:
 
@@ -285,17 +313,21 @@ devres_release
 
     Find a device resource and destroy it, calling release
 
-    :param struct device \*dev:
+    :param dev:
         Device to find resource from
+    :type dev: struct device \*
 
-    :param dr_release_t release:
+    :param release:
         Look for resources associated with this release function
+    :type release: dr_release_t
 
-    :param dr_match_t match:
+    :param match:
         Match function (optional)
+    :type match: dr_match_t
 
-    :param void \*match_data:
+    :param match_data:
         Data for the match function
+    :type match_data: void \*
 
 .. _`devres_release.description`:
 
@@ -323,8 +355,9 @@ devres_release_all
 
     Release all managed resources
 
-    :param struct device \*dev:
+    :param dev:
         Device to release resources for
+    :type dev: struct device \*
 
 .. _`devres_release_all.description`:
 
@@ -343,14 +376,17 @@ devres_open_group
 
     Open a new devres group
 
-    :param struct device \*dev:
+    :param dev:
         Device to open devres group for
+    :type dev: struct device \*
 
-    :param void \*id:
+    :param id:
         Separator ID
+    :type id: void \*
 
-    :param gfp_t gfp:
+    :param gfp:
         Allocation flags
+    :type gfp: gfp_t
 
 .. _`devres_open_group.description`:
 
@@ -377,11 +413,13 @@ devres_close_group
 
     Close a devres group
 
-    :param struct device \*dev:
+    :param dev:
         Device to close devres group for
+    :type dev: struct device \*
 
-    :param void \*id:
+    :param id:
         ID of target group, can be NULL
+    :type id: void \*
 
 .. _`devres_close_group.description`:
 
@@ -400,11 +438,13 @@ devres_remove_group
 
     Remove a devres group
 
-    :param struct device \*dev:
+    :param dev:
         Device to remove group for
+    :type dev: struct device \*
 
-    :param void \*id:
+    :param id:
         ID of target group, can be NULL
+    :type id: void \*
 
 .. _`devres_remove_group.description`:
 
@@ -424,11 +464,13 @@ devres_release_group
 
     Release resources in a devres group
 
-    :param struct device \*dev:
+    :param dev:
         Device to release group for
+    :type dev: struct device \*
 
-    :param void \*id:
+    :param id:
         ID of target group, can be NULL
+    :type id: void \*
 
 .. _`devres_release_group.description`:
 
@@ -455,14 +497,16 @@ devm_add_action
 
     add a custom action to list of managed resources
 
-    :param struct device \*dev:
+    :param dev:
         Device that owns the action
+    :type dev: struct device \*
 
     :param void (\*action)(void \*):
         Function that should be called
 
-    :param void \*data:
+    :param data:
         Pointer to data passed to \ ``action``\  implementation
+    :type data: void \*
 
 .. _`devm_add_action.description`:
 
@@ -481,14 +525,16 @@ devm_remove_action
 
     removes previously added custom action
 
-    :param struct device \*dev:
+    :param dev:
         Device that owns the action
+    :type dev: struct device \*
 
     :param void (\*action)(void \*):
         Function implementing the action
 
-    :param void \*data:
+    :param data:
         Pointer to data passed to \ ``action``\  implementation
+    :type data: void \*
 
 .. _`devm_remove_action.description`:
 
@@ -507,14 +553,17 @@ devm_kmalloc
 
     Resource-managed kmalloc
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate memory for
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         Allocation size
+    :type size: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         Allocation gfp flags
+    :type gfp: gfp_t
 
 .. _`devm_kmalloc.description`:
 
@@ -541,15 +590,18 @@ devm_kstrdup
 
     Allocate resource managed space and copy an existing string into that.
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate memory for
+    :type dev: struct device \*
 
-    :param const char \*s:
+    :param s:
         the string to duplicate
+    :type s: const char \*
 
-    :param gfp_t gfp:
+    :param gfp:
         the GFP mask used in the \ :c:func:`devm_kmalloc`\  call when
         allocating memory
+    :type gfp: gfp_t
 
 .. _`devm_kstrdup.return`:
 
@@ -557,6 +609,43 @@ Return
 ------
 
 Pointer to allocated string on success, NULL on failure.
+
+.. _`devm_kstrdup_const`:
+
+devm_kstrdup_const
+==================
+
+.. c:function:: const char *devm_kstrdup_const(struct device *dev, const char *s, gfp_t gfp)
+
+    resource managed conditional string duplication
+
+    :param dev:
+        device for which to duplicate the string
+    :type dev: struct device \*
+
+    :param s:
+        the string to duplicate
+    :type s: const char \*
+
+    :param gfp:
+        the GFP mask used in the \ :c:func:`kmalloc`\  call when allocating memory
+    :type gfp: gfp_t
+
+.. _`devm_kstrdup_const.description`:
+
+Description
+-----------
+
+Strings allocated by devm_kstrdup_const will be automatically freed when
+the associated device is detached.
+
+.. _`devm_kstrdup_const.return`:
+
+Return
+------
+
+Source string if it is in .rodata section otherwise it falls back to
+devm_kstrdup.
 
 .. _`devm_kvasprintf`:
 
@@ -567,18 +656,22 @@ devm_kvasprintf
 
     Allocate resource managed space and format a string into that.
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate memory for
+    :type dev: struct device \*
 
-    :param gfp_t gfp:
+    :param gfp:
         the GFP mask used in the \ :c:func:`devm_kmalloc`\  call when
         allocating memory
+    :type gfp: gfp_t
 
-    :param const char \*fmt:
+    :param fmt:
         The \ :c:func:`printf`\ -style format string
+    :type fmt: const char \*
 
-    :param va_list ap:
+    :param ap:
         Arguments for the format string
+    :type ap: va_list
 
 .. _`devm_kvasprintf.return`:
 
@@ -596,15 +689,18 @@ devm_kasprintf
 
     Allocate resource managed space and format a string into that.
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate memory for
+    :type dev: struct device \*
 
-    :param gfp_t gfp:
+    :param gfp:
         the GFP mask used in the \ :c:func:`devm_kmalloc`\  call when
         allocating memory
+    :type gfp: gfp_t
 
-    :param const char \*fmt:
+    :param fmt:
         The \ :c:func:`printf`\ -style format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         Arguments for the format string
@@ -621,15 +717,17 @@ Pointer to allocated string on success, NULL on failure.
 devm_kfree
 ==========
 
-.. c:function:: void devm_kfree(struct device *dev, void *p)
+.. c:function:: void devm_kfree(struct device *dev, const void *p)
 
     Resource-managed kfree
 
-    :param struct device \*dev:
+    :param dev:
         Device this memory belongs to
+    :type dev: struct device \*
 
-    :param void \*p:
+    :param p:
         Memory to free
+    :type p: const void \*
 
 .. _`devm_kfree.description`:
 
@@ -647,17 +745,21 @@ devm_kmemdup
 
     Resource-managed kmemdup
 
-    :param struct device \*dev:
+    :param dev:
         Device this memory belongs to
+    :type dev: struct device \*
 
-    :param const void \*src:
+    :param src:
         Memory region to duplicate
+    :type src: const void \*
 
-    :param size_t len:
+    :param len:
         Memory region length
+    :type len: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         GFP mask to use
+    :type gfp: gfp_t
 
 .. _`devm_kmemdup.description`:
 
@@ -675,14 +777,17 @@ devm_get_free_pages
 
     Resource-managed __get_free_pages
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate memory for
+    :type dev: struct device \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         Allocation gfp flags
+    :type gfp_mask: gfp_t
 
-    :param unsigned int order:
+    :param order:
         Allocation size is (1 << order) pages
+    :type order: unsigned int
 
 .. _`devm_get_free_pages.description`:
 
@@ -708,11 +813,13 @@ devm_free_pages
 
     Resource-managed free_pages
 
-    :param struct device \*dev:
+    :param dev:
         Device this memory belongs to
+    :type dev: struct device \*
 
-    :param unsigned long addr:
+    :param addr:
         Memory to free
+    :type addr: unsigned long
 
 .. _`devm_free_pages.description`:
 
@@ -731,14 +838,17 @@ __devm_alloc_percpu
 
     Resource-managed alloc_percpu
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate per-cpu memory for
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         Size of per-cpu memory to allocate
+    :type size: size_t
 
-    :param size_t align:
+    :param align:
         Alignment of per-cpu memory to allocate
+    :type align: size_t
 
 .. _`__devm_alloc_percpu.description`:
 
@@ -764,11 +874,13 @@ devm_free_percpu
 
     Resource-managed free_percpu
 
-    :param struct device \*dev:
+    :param dev:
         Device this memory belongs to
+    :type dev: struct device \*
 
-    :param void __percpu \*pdata:
+    :param pdata:
         Per-cpu memory to free
+    :type pdata: void __percpu \*
 
 .. _`devm_free_percpu.description`:
 

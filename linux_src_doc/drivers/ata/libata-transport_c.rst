@@ -10,8 +10,9 @@ ata_is_port
 
     -  check if a struct device represents a ATA port
 
-    :param const struct device \*dev:
+    :param dev:
         device to check
+    :type dev: const struct device \*
 
 .. _`ata_is_port.return`:
 
@@ -29,8 +30,9 @@ ata_tport_delete
 
     -  remove ATA PORT
 
-    :param struct ata_port \*ap:
+    :param ap:
         *undescribed*
+    :type ap: struct ata_port \*
 
 .. _`ata_tport_delete.description`:
 
@@ -48,8 +50,9 @@ ata_is_link
 
     -  check if a struct device represents a ATA link
 
-    :param const struct device \*dev:
+    :param dev:
         device to check
+    :type dev: const struct device \*
 
 .. _`ata_is_link.return`:
 
@@ -67,8 +70,9 @@ ata_tlink_delete
 
     -  remove ATA LINK
 
-    :param struct ata_link \*link:
+    :param link:
         *undescribed*
+    :type link: struct ata_link \*
 
 .. _`ata_tlink_delete.description`:
 
@@ -86,8 +90,9 @@ ata_tlink_add
 
     -  initialize a transport ATA link structure
 
-    :param struct ata_link \*link:
+    :param link:
         allocated ata_link structure.
+    :type link: struct ata_link \*
 
 .. _`ata_tlink_add.description`:
 
@@ -108,8 +113,9 @@ ata_is_ata_dev
 
     -  check if a struct device represents a ATA device
 
-    :param const struct device \*dev:
+    :param dev:
         device to check
+    :type dev: const struct device \*
 
 .. _`ata_is_ata_dev.return`:
 
@@ -127,8 +133,9 @@ ata_tdev_free
 
     -  free a ATA LINK
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA PHY to free
+    :type dev: struct ata_device \*
 
 .. _`ata_tdev_free.description`:
 
@@ -154,8 +161,9 @@ ata_tdev_delete
 
     -  remove ATA device
 
-    :param struct ata_device \*ata_dev:
+    :param ata_dev:
         *undescribed*
+    :type ata_dev: struct ata_device \*
 
 .. _`ata_tdev_delete.description`:
 
@@ -173,8 +181,9 @@ ata_tdev_add
 
     -  initialize a transport ATA device structure.
 
-    :param struct ata_device \*ata_dev:
+    :param ata_dev:
         ata_dev structure.
+    :type ata_dev: struct ata_device \*
 
 .. _`ata_tdev_add.description`:
 
@@ -195,8 +204,9 @@ ata_attach_transport
 
     -  instantiate ATA transport template
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ata_release_transport`:
 
@@ -207,8 +217,9 @@ ata_release_transport
 
     -  release ATA transport template instance
 
-    :param struct scsi_transport_template \*t:
+    :param t:
         transport template instance
+    :type t: struct scsi_transport_template \*
 
 .. This file was automatic generated / don't edit.
 

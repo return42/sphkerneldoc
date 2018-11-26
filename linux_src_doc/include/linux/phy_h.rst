@@ -10,14 +10,17 @@ phy_supported_speeds
 
     return all speeds currently supported by a phy device
 
-    :param struct phy_device \*phy:
+    :param phy:
         The phy device to return supported speeds of.
+    :type phy: struct phy_device \*
 
-    :param unsigned int \*speeds:
+    :param speeds:
         buffer to store supported speeds in.
+    :type speeds: unsigned int \*
 
-    :param unsigned int size:
+    :param size:
         size of speeds buffer.
+    :type size: unsigned int
 
 .. _`phy_supported_speeds.description`:
 
@@ -38,8 +41,9 @@ phy_modes
 
     into the device tree binding of 'phy-mode', so that Ethernet device driver can get phy interface from device tree.
 
-    :param phy_interface_t interface:
+    :param interface:
         *undescribed*
+    :type interface: phy_interface_t
 
 .. _`phy_c45_device_ids`:
 
@@ -82,14 +86,17 @@ phy_read_mmd
 
     Convenience function for reading a register from an MMD on a given PHY.
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         The phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param int devad:
+    :param devad:
         The MMD to read from
+    :type devad: int
 
-    :param u32 regnum:
+    :param regnum:
         The register on the MMD to read
+    :type regnum: u32
 
 .. _`phy_read_mmd.description`:
 
@@ -107,11 +114,13 @@ phy_read
 
     Convenience function for reading a given PHY register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 regnum:
+    :param regnum:
         register number to read
+    :type regnum: u32
 
 .. _`phy_read.note`:
 
@@ -131,11 +140,13 @@ to conclude the operation.
 
     convenience function for reading a given PHY register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 regnum:
+    :param regnum:
         register number to read
+    :type regnum: u32
 
 .. _`__phy_read.description`:
 
@@ -153,14 +164,17 @@ phy_write
 
     Convenience function for writing a given PHY register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 regnum:
+    :param regnum:
         register number to write
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         value to write to \ ``regnum``\ 
+    :type val: u16
 
 .. _`phy_write.note`:
 
@@ -180,14 +194,17 @@ to conclude the operation.
 
     Convenience function for writing a given PHY register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 regnum:
+    :param regnum:
         register number to write
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         value to write to \ ``regnum``\ 
+    :type val: u16
 
 .. _`__phy_write.description`:
 
@@ -205,14 +222,17 @@ The caller must have taken the MDIO bus lock.
 
     Convenience function for setting bits in a PHY register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 regnum:
+    :param regnum:
         register number to write
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         bits to set
+    :type val: u16
 
 .. _`__phy_set_bits.description`:
 
@@ -230,14 +250,17 @@ The caller must have taken the MDIO bus lock.
 
     Convenience function for clearing bits in a PHY register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 regnum:
+    :param regnum:
         register number to write
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         bits to clear
+    :type val: u16
 
 .. _`__phy_clear_bits.description`:
 
@@ -255,14 +278,17 @@ phy_set_bits
 
     Convenience function for setting bits in a PHY register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 regnum:
+    :param regnum:
         register number to write
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         bits to set
+    :type val: u16
 
 .. _`phy_clear_bits`:
 
@@ -273,14 +299,17 @@ phy_clear_bits
 
     Convenience function for clearing bits in a PHY register
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param u32 regnum:
+    :param regnum:
         register number to write
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         bits to clear
+    :type val: u16
 
 .. _`phy_interrupt_is_valid`:
 
@@ -291,8 +320,9 @@ phy_interrupt_is_valid
 
     Convenience function for testing a given PHY irq
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_interrupt_is_valid.note`:
 
@@ -301,6 +331,19 @@ NOTE
 
 must be kept in sync with addition/removal of PHY_POLL and
 PHY_IGNORE_INTERRUPT
+
+.. _`phy_polling_mode`:
+
+phy_polling_mode
+================
+
+.. c:function:: bool phy_polling_mode(struct phy_device *phydev)
+
+    Convenience function for testing whether polling is used to detect PHY status changes
+
+    :param phydev:
+        the phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_is_internal`:
 
@@ -311,8 +354,9 @@ phy_is_internal
 
     Convenience function for testing if a PHY is internal
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_interface_mode_is_rgmii`:
 
@@ -323,8 +367,9 @@ phy_interface_mode_is_rgmii
 
     Convenience function for testing if a PHY interface mode is RGMII (all variants)
 
-    :param phy_interface_t mode:
+    :param mode:
         the phy_interface_t enum
+    :type mode: phy_interface_t
 
 .. _`phy_interface_mode_is_8023z`:
 
@@ -335,8 +380,9 @@ phy_interface_mode_is_8023z
 
     does the phy interface mode use 802.3z negotiation
 
-    :param phy_interface_t mode:
+    :param mode:
         one of \ :c:type:`enum phy_interface_t <phy_interface_t>`\ 
+    :type mode: phy_interface_t
 
 .. _`phy_interface_mode_is_8023z.description`:
 
@@ -355,8 +401,9 @@ phy_interface_is_rgmii
 
     Convenience function for testing if a PHY interface is RGMII (all variants)
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         the phy_device struct
+    :type phydev: struct phy_device \*
 
 .. _`phy_write_mmd`:
 
@@ -367,17 +414,21 @@ phy_write_mmd
 
     Convenience function for writing a register on an MMD on a given PHY.
 
-    :param struct phy_device \*phydev:
+    :param phydev:
         The phy_device struct
+    :type phydev: struct phy_device \*
 
-    :param int devad:
+    :param devad:
         The MMD to read from
+    :type devad: int
 
-    :param u32 regnum:
+    :param regnum:
         The register on the MMD to read
+    :type regnum: u32
 
-    :param u16 val:
+    :param val:
         value to write to \ ``regnum``\ 
+    :type val: u16
 
 .. _`phy_write_mmd.description`:
 
@@ -395,11 +446,13 @@ phy_module_driver
 
     Helper macro for registering PHY drivers
 
-    :param  __phy_drivers:
+    :param __phy_drivers:
         array of PHY drivers to register
+    :type __phy_drivers: 
 
-    :param  __count:
+    :param __count:
         *undescribed*
+    :type __count: 
 
 .. _`phy_module_driver.description`:
 

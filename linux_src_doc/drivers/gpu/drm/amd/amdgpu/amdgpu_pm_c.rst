@@ -6,12 +6,15 @@
 power_dpm_state
 ===============
 
-This is a legacy interface and is only provided for backwards compatibility.
-The amdgpu driver provides a sysfs API for adjusting certain power
-related parameters.  The file power_dpm_state is used for this.
+The power_dpm_state file is a legacy interface and is only provided for
+backwards compatibility. The amdgpu driver provides a sysfs API for adjusting
+certain power related parameters.  The file power_dpm_state is used for this.
 It accepts the following arguments:
+
 - battery
+
 - balanced
+
 - performance
 
 battery
@@ -40,14 +43,21 @@ power_dpm_force_performance_level
 The amdgpu driver provides a sysfs API for adjusting certain power
 related parameters.  The file power_dpm_force_performance_level is
 used for this.  It accepts the following arguments:
+
 - auto
+
 - low
+
 - high
+
 - manual
-- GPU fan
+
 - profile_standard
+
 - profile_min_sclk
+
 - profile_min_mclk
+
 - profile_peak
 
 auto
@@ -104,9 +114,14 @@ The amdgpu driver provides a sysfs API for adjusting the clocks and voltages
 in each power level within a power state.  The pp_od_clk_voltage is used for
 this.
 
+< For Vega10 and previous ASICs >
+
 Reading the file will display:
+
 - a list of engine clock levels and voltages labeled OD_SCLK
+
 - a list of memory clock levels and voltages labeled OD_MCLK
+
 - a list of valid ranges for sclk, mclk, and voltage labeled OD_RANGE
 
 To manually adjust these settings, first select manual using
@@ -117,6 +132,44 @@ at 820 mV; "m 0 350 810" will update mclk level 0 to be 350 MHz at
 810 mV.  When you have edited all of the states as needed, write
 "c" (commit) to the file to commit your changes.  If you want to reset to the
 default power levels, write "r" (reset) to the file to reset them.
+
+
+< For Vega20 >
+
+Reading the file will display:
+
+- minimum and maximum engine clock labeled OD_SCLK
+
+- maximum memory clock labeled OD_MCLK
+
+- three <frequency, voltage> points labeled OD_VDDC_CURVE.
+  They can be used to calibrate the sclk voltage curve.
+
+- a list of valid ranges for sclk, mclk, and voltage curve points
+  labeled OD_RANGE
+
+To manually adjust these settings:
+
+- First select manual using power_dpm_force_performance_level
+
+- For clock frequency setting, enter a new value by writing a
+  string that contains "s/m index clock" to the file. The index
+  should be 0 if to set minimum clock. And 1 if to set maximum
+  clock. E.g., "s 0 500" will update minimum sclk to be 500 MHz.
+  "m 1 800" will update maximum mclk to be 800Mhz.
+
+  For sclk voltage curve, enter the new values by writing a
+  string that contains "vc point clock voltage" to the file. The
+  points are indexed by 0, 1 and 2. E.g., "vc 0 300 600" will
+  update point1 with clock set as 300Mhz and voltage as
+  600mV. "vc 2 1000 1000" will update point3 with clock set
+  as 1000Mhz and voltage 1000mV.
+
+- When you have edited all of the states as needed, write "c" (commit)
+  to the file to commit your changes
+
+- If you want to reset to the default power levels, write "r" (reset)
+  to the file to reset them
 
 .. _`pp_dpm_sclk-pp_dpm_mclk-pp_dpm_pcie`:
 
@@ -156,42 +209,76 @@ starting with the number of the custom profile along with a setting
 for each heuristic parameter.  Due to differences across asic families
 the heuristic parameters vary from family to family.
 
+.. _`busy_percent`:
+
+busy_percent
+============
+
+The amdgpu driver provides a sysfs API for reading how busy the GPU
+is as a percentage.  The file gpu_busy_percent is used for this.
+The SMU firmware computes a percentage of load based on the
+aggregate activity level in the IP cores.
+
 .. _`hwmon`:
 
 hwmon
 =====
 
 The amdgpu driver exposes the following sensor interfaces:
+
 - GPU temperature (via the on-die sensor)
+
 - GPU voltage
+
 - Northbridge voltage (APUs only)
+
 - GPU power
+
 - GPU fan
 
 hwmon interfaces for GPU temperature:
+
 - temp1_input: the on die GPU temperature in millidegrees Celsius
+
 - temp1_crit: temperature critical max value in millidegrees Celsius
+
 - temp1_crit_hyst: temperature hysteresis for critical limit in millidegrees Celsius
 
 hwmon interfaces for GPU voltage:
+
 - in0_input: the voltage on the GPU in millivolts
+
 - in1_input: the voltage on the Northbridge in millivolts
 
 hwmon interfaces for GPU power:
+
 - power1_average: average power used by the GPU in microWatts
+
 - power1_cap_min: minimum cap supported in microWatts
+
 - power1_cap_max: maximum cap supported in microWatts
+
 - power1_cap: selected power cap in microWatts
 
 hwmon interfaces for GPU fan:
+
 - pwm1: pulse width modulation fan level (0-255)
-- pwm1_enable: pulse width modulation fan control method
-0: no fan speed control
-1: manual fan speed control using pwm interface
-2: automatic fan speed control
+
+- pwm1_enable: pulse width modulation fan control method (0: no fan speed control, 1: manual fan speed control using pwm interface, 2: automatic fan speed control)
+
 - pwm1_min: pulse width modulation fan control minimum level (0)
+
 - pwm1_max: pulse width modulation fan control maximum level (255)
+
+- fan1_min: an minimum value Unit: revolution/min (RPM)
+
+- fan1_max: an maxmum value Unit: revolution/max (RPM)
+
 - fan1_input: fan speed in RPM
+
+- fan[1-*]_target: Desired fan speed Unit: revolution/min (RPM)
+
+- fan[1-*]_enable: Enable or disable the sensors.1: Enable 0: Disable
 
 You can use hwmon tools like sensors to view this information on your system.
 

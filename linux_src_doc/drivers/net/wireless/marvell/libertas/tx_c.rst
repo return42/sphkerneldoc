@@ -10,8 +10,9 @@ convert_radiotap_rate_to_mv
 
     converts Tx/Rx rates from IEEE80211_RADIOTAP_RATE units (500 Kb/s) into Marvell WLAN format (see Table 8 in Section 3.2.1)
 
-    :param u8 rate:
+    :param rate:
         Input rate
+    :type rate: u8
 
 .. _`convert_radiotap_rate_to_mv.return`:
 
@@ -29,11 +30,13 @@ lbs_hard_start_xmit
 
     checks the conditions and sends packet to IF layer if everything is ok
 
-    :param struct sk_buff \*skb:
+    :param skb:
         A pointer to skb which includes TX packet
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         A pointer to the \ :c:type:`struct net_device <net_device>`\ 
+    :type dev: struct net_device \*
 
 .. _`lbs_hard_start_xmit.return`:
 
@@ -51,11 +54,13 @@ lbs_send_tx_feedback
 
     sends to the host the last transmitted packet, filling the radiotap headers with transmission information.
 
-    :param struct lbs_private \*priv:
+    :param priv:
         A pointer to \ :c:type:`struct lbs_private <lbs_private>`\  structure
+    :type priv: struct lbs_private \*
 
-    :param u32 try_count:
+    :param try_count:
         A 32-bit value containing transmission retry status.
+    :type try_count: u32
 
 .. _`lbs_send_tx_feedback.return`:
 

@@ -10,8 +10,9 @@ ipw_alive
 
     Reads debug register from domain0. If card is present, pre-defined value should be found there.
 
-    :param struct ipw_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct ipw_priv \*
 
 .. _`ipw_alive.description`:
 
@@ -28,8 +29,9 @@ ipw_rx_queue_space
 
 .. c:function:: int ipw_rx_queue_space(const struct ipw_rx_queue *q)
 
-    :param const struct ipw_rx_queue \*q:
+    :param q:
         *undescribed*
+    :type q: const struct ipw_rx_queue \*
 
 .. _`ipw_rx_queue_space.description`:
 
@@ -62,26 +64,33 @@ ipw_queue_init
 
 .. c:function:: void ipw_queue_init(struct ipw_priv *priv, struct clx2_queue *q, int count, u32 read, u32 write, u32 base, u32 size)
 
-    :param struct ipw_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct ipw_priv \*
 
-    :param struct clx2_queue \*q:
+    :param q:
         *undescribed*
+    :type q: struct clx2_queue \*
 
-    :param int count:
+    :param count:
         *undescribed*
+    :type count: int
 
-    :param u32 read:
+    :param read:
         *undescribed*
+    :type read: u32
 
-    :param u32 write:
+    :param write:
         *undescribed*
+    :type write: u32
 
-    :param u32 base:
+    :param base:
         *undescribed*
+    :type base: u32
 
-    :param u32 size:
+    :param size:
         *undescribed*
+    :type size: u32
 
 .. _`ipw_queue_init.description`:
 
@@ -108,11 +117,13 @@ ipw_queue_tx_free_tfd
 
     >q.last_used]. Do NOT advance any indexes
 
-    :param struct ipw_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct ipw_priv \*
 
-    :param struct clx2_tx_queue \*txq:
+    :param txq:
         *undescribed*
+    :type txq: struct clx2_tx_queue \*
 
 .. _`ipw_queue_tx_free_tfd.description`:
 
@@ -129,11 +140,13 @@ ipw_queue_tx_free
 
 .. c:function:: void ipw_queue_tx_free(struct ipw_priv *priv, struct clx2_tx_queue *txq)
 
-    :param struct ipw_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct ipw_priv \*
 
-    :param struct clx2_tx_queue \*txq:
+    :param txq:
         *undescribed*
+    :type txq: struct clx2_tx_queue \*
 
 .. _`ipw_queue_tx_free.description`:
 
@@ -153,8 +166,9 @@ ipw_tx_queue_free
 
 .. c:function:: void ipw_tx_queue_free(struct ipw_priv *priv)
 
-    :param struct ipw_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct ipw_priv \*
 
 .. _`ipw_tx_queue_free.description`:
 
@@ -172,11 +186,13 @@ ipw_rx_notification
 
     Called from interrupt routine
 
-    :param struct ipw_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct ipw_priv \*
 
-    :param struct ipw_rx_notification \*notif:
+    :param notif:
         *undescribed*
+    :type notif: struct ipw_rx_notification \*
 
 .. _`ipw_queue_reset`:
 
@@ -185,8 +201,9 @@ ipw_queue_reset
 
 .. c:function:: int ipw_queue_reset(struct ipw_priv *priv)
 
-    :param struct ipw_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct ipw_priv \*
 
 .. _`ipw_queue_reset.description`:
 
@@ -203,14 +220,17 @@ ipw_queue_tx_reclaim
 
 .. c:function:: int ipw_queue_tx_reclaim(struct ipw_priv *priv, struct clx2_tx_queue *txq, int qindex)
 
-    :param struct ipw_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct ipw_priv \*
 
-    :param struct clx2_tx_queue \*txq:
+    :param txq:
         *undescribed*
+    :type txq: struct clx2_tx_queue \*
 
-    :param int qindex:
+    :param qindex:
         *undescribed*
+    :type qindex: int
 
 .. _`ipw_queue_tx_reclaim.description`:
 
@@ -234,14 +254,16 @@ ipw_sw_reset
 
 .. c:function:: int ipw_sw_reset(struct ipw_priv *priv, int option)
 
-    :param struct ipw_priv \*priv:
+    :param priv:
         *undescribed*
+    :type priv: struct ipw_priv \*
 
-    :param int option:
+    :param option:
         options to control different reset behaviour
         0 = reset everything except the 'disable' module_param
         1 = reset everything and print out driver info (for probe only)
         2 = reset everything
+    :type option: int
 
 .. This file was automatic generated / don't edit.
 

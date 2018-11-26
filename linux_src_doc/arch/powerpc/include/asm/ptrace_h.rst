@@ -10,11 +10,13 @@ regs_get_register
 
     get register value from its offset
 
-    :param struct pt_regs \*regs:
+    :param regs:
         pt_regs from which register value is gotten
+    :type regs: struct pt_regs \*
 
-    :param unsigned int offset:
+    :param offset:
         offset number of the register.
+    :type offset: unsigned int
 
 .. _`regs_get_register.description`:
 
@@ -34,11 +36,13 @@ regs_within_kernel_stack
 
     check the address in the stack
 
-    :param struct pt_regs \*regs:
+    :param regs:
         pt_regs which contains kernel stack pointer.
+    :type regs: struct pt_regs \*
 
-    :param unsigned long addr:
+    :param addr:
         address which is checked.
+    :type addr: unsigned long
 
 .. _`regs_within_kernel_stack.description`:
 
@@ -57,11 +61,13 @@ regs_get_kernel_stack_nth
 
     get Nth entry of the stack
 
-    :param struct pt_regs \*regs:
+    :param regs:
         pt_regs which contains kernel stack pointer.
+    :type regs: struct pt_regs \*
 
-    :param unsigned int n:
+    :param n:
         stack entry number.
+    :type n: unsigned int
 
 .. _`regs_get_kernel_stack_nth.description`:
 

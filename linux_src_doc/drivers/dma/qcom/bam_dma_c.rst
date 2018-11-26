@@ -10,14 +10,17 @@ bam_addr
 
     returns BAM register address
 
-    :param struct bam_device \*bdev:
+    :param bdev:
         bam device
+    :type bdev: struct bam_device \*
 
-    :param u32 pipe:
+    :param pipe:
         pipe instance (ignored when register doesn't have multiple instances)
+    :type pipe: u32
 
-    :param enum bam_reg reg:
+    :param reg:
         register enum
+    :type reg: enum bam_reg
 
 .. _`bam_reset_channel`:
 
@@ -28,8 +31,9 @@ bam_reset_channel
 
     Reset individual BAM DMA channel
 
-    :param struct bam_chan \*bchan:
+    :param bchan:
         bam channel
+    :type bchan: struct bam_chan \*
 
 .. _`bam_reset_channel.description`:
 
@@ -47,11 +51,13 @@ bam_chan_init_hw
 
     Initialize channel hardware
 
-    :param struct bam_chan \*bchan:
+    :param bchan:
         bam channel
+    :type bchan: struct bam_chan \*
 
-    :param enum dma_transfer_direction dir:
+    :param dir:
         DMA transfer direction
+    :type dir: enum dma_transfer_direction
 
 .. _`bam_chan_init_hw.description`:
 
@@ -69,8 +75,9 @@ bam_alloc_chan
 
     Allocate channel resources for DMA channel.
 
-    :param struct dma_chan \*chan:
+    :param chan:
         specified channel
+    :type chan: struct dma_chan \*
 
 .. _`bam_alloc_chan.description`:
 
@@ -88,8 +95,9 @@ bam_free_chan
 
     Frees dma resources associated with specific channel
 
-    :param struct dma_chan \*chan:
+    :param chan:
         specified channel
+    :type chan: struct dma_chan \*
 
 .. _`bam_free_chan.description`:
 
@@ -107,11 +115,13 @@ bam_slave_config
 
     set slave configuration for channel
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dma channel
+    :type chan: struct dma_chan \*
 
-    :param struct dma_slave_config \*cfg:
+    :param cfg:
         slave configuration
+    :type cfg: struct dma_slave_config \*
 
 .. _`bam_slave_config.description`:
 
@@ -129,23 +139,29 @@ bam_prep_slave_sg
 
     Prep slave sg transaction
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dma channel
+    :type chan: struct dma_chan \*
 
-    :param struct scatterlist \*sgl:
+    :param sgl:
         scatter gather list
+    :type sgl: struct scatterlist \*
 
-    :param unsigned int sg_len:
+    :param sg_len:
         length of sg
+    :type sg_len: unsigned int
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         DMA transfer direction
+    :type direction: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         DMA flags
+    :type flags: unsigned long
 
-    :param void \*context:
+    :param context:
         transfer context (unused)
+    :type context: void \*
 
 .. _`bam_dma_terminate_all`:
 
@@ -156,8 +172,9 @@ bam_dma_terminate_all
 
     terminate all transactions on a channel
 
-    :param struct dma_chan \*chan:
+    :param chan:
         bam dma channel
+    :type chan: struct dma_chan \*
 
 .. _`bam_dma_terminate_all.description`:
 
@@ -176,8 +193,9 @@ bam_pause
 
     Pause DMA channel
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dma channel
+    :type chan: struct dma_chan \*
 
 .. _`bam_resume`:
 
@@ -188,8 +206,9 @@ bam_resume
 
     Resume DMA channel operations
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dma channel
+    :type chan: struct dma_chan \*
 
 .. _`process_channel_irqs`:
 
@@ -200,8 +219,9 @@ process_channel_irqs
 
     processes the channel interrupts
 
-    :param struct bam_device \*bdev:
+    :param bdev:
         bam controller
+    :type bdev: struct bam_device \*
 
 .. _`process_channel_irqs.description`:
 
@@ -219,11 +239,13 @@ bam_dma_irq
 
     irq handler for bam controller
 
-    :param int irq:
+    :param irq:
         IRQ of interrupt
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         callback data
+    :type data: void \*
 
 .. _`bam_dma_irq.description`:
 
@@ -241,14 +263,17 @@ bam_tx_status
 
     returns status of transaction
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dma channel
+    :type chan: struct dma_chan \*
 
-    :param dma_cookie_t cookie:
+    :param cookie:
         transaction cookie
+    :type cookie: dma_cookie_t
 
-    :param struct dma_tx_state \*txstate:
+    :param txstate:
         DMA transaction state
+    :type txstate: struct dma_tx_state \*
 
 .. _`bam_tx_status.description`:
 
@@ -264,11 +289,13 @@ bam_apply_new_config
 
 .. c:function:: void bam_apply_new_config(struct bam_chan *bchan, enum dma_transfer_direction dir)
 
-    :param struct bam_chan \*bchan:
+    :param bchan:
         bam dma channel
+    :type bchan: struct bam_chan \*
 
-    :param enum dma_transfer_direction dir:
+    :param dir:
         DMA direction
+    :type dir: enum dma_transfer_direction
 
 .. _`bam_start_dma`:
 
@@ -279,8 +306,9 @@ bam_start_dma
 
     start next transaction
 
-    :param struct bam_chan \*bchan:
+    :param bchan:
         bam dma channel
+    :type bchan: struct bam_chan \*
 
 .. _`dma_tasklet`:
 
@@ -291,8 +319,9 @@ dma_tasklet
 
     DMA IRQ tasklet
 
-    :param unsigned long data:
+    :param data:
         tasklet argument (bam controller structure)
+    :type data: unsigned long
 
 .. _`dma_tasklet.description`:
 
@@ -310,8 +339,9 @@ bam_issue_pending
 
     starts pending transactions
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dma channel
+    :type chan: struct dma_chan \*
 
 .. _`bam_issue_pending.description`:
 
@@ -329,8 +359,9 @@ bam_dma_free_desc
 
     free descriptor memory
 
-    :param struct virt_dma_desc \*vd:
+    :param vd:
         virtual descriptor
+    :type vd: struct virt_dma_desc \*
 
 .. _`bam_init`:
 
@@ -339,8 +370,9 @@ bam_init
 
 .. c:function:: int bam_init(struct bam_device *bdev)
 
-    :param struct bam_device \*bdev:
+    :param bdev:
         bam device
+    :type bdev: struct bam_device \*
 
 .. _`bam_init.description`:
 

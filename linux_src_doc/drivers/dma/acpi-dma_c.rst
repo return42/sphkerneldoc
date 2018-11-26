@@ -10,14 +10,17 @@ acpi_dma_parse_resource_group
 
     match device and parse resource group
 
-    :param const struct acpi_csrt_group \*grp:
+    :param grp:
         CSRT resource group
+    :type grp: const struct acpi_csrt_group \*
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device to match with
+    :type adev: struct acpi_device \*
 
-    :param struct acpi_dma \*adma:
+    :param adma:
         struct acpi_dma of the given DMA controller
+    :type adma: struct acpi_dma \*
 
 .. _`acpi_dma_parse_resource_group.description`:
 
@@ -44,11 +47,13 @@ acpi_dma_parse_csrt
 
     parse CSRT to exctract additional DMA resources
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device to match with
+    :type adev: struct acpi_device \*
 
-    :param struct acpi_dma \*adma:
+    :param adma:
         struct acpi_dma of the given DMA controller
+    :type adma: struct acpi_dma \*
 
 .. _`acpi_dma_parse_csrt.description`:
 
@@ -72,8 +77,9 @@ acpi_dma_controller_register
 
     Register a DMA controller to ACPI DMA helpers
 
-    :param struct device \*dev:
+    :param dev:
         struct device of DMA controller
+    :type dev: struct device \*
 
     :param struct dma_chan \*(\*acpi_dma_xlate)(struct acpi_dma_spec \*, struct acpi_dma \*):
         translation function which converts a dma specifier
@@ -81,8 +87,9 @@ acpi_dma_controller_register
         \ ``data``\                 pointer to controller specific data to be used by
         translation function
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`acpi_dma_controller_register.description`:
 
@@ -108,8 +115,9 @@ acpi_dma_controller_free
 
     Remove a DMA controller from ACPI DMA helpers list
 
-    :param struct device \*dev:
+    :param dev:
         struct device of DMA controller
+    :type dev: struct device \*
 
 .. _`acpi_dma_controller_free.description`:
 
@@ -134,15 +142,17 @@ devm_acpi_dma_controller_register
 
     resource managed \ :c:func:`acpi_dma_controller_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this DMA controller
+    :type dev: struct device \*
 
     :param struct dma_chan \*(\*acpi_dma_xlate)(struct acpi_dma_spec \*, struct acpi_dma \*):
         translation function
         \ ``data``\                 pointer to controller specific data
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`devm_acpi_dma_controller_register.description`:
 
@@ -169,8 +179,9 @@ devm_acpi_dma_controller_free
 
     resource managed \ :c:func:`acpi_dma_controller_free`\ 
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`devm_acpi_dma_controller_free.description`:
 
@@ -191,11 +202,13 @@ acpi_dma_update_dma_spec
 
     prepare dma specifier to pass to translation function
 
-    :param struct acpi_dma \*adma:
+    :param adma:
         struct acpi_dma of DMA controller
+    :type adma: struct acpi_dma \*
 
-    :param struct acpi_dma_spec \*dma_spec:
+    :param dma_spec:
         dma specifier to update
+    :type dma_spec: struct acpi_dma_spec \*
 
 .. _`acpi_dma_update_dma_spec.description`:
 
@@ -226,11 +239,13 @@ acpi_dma_parse_fixed_dma
 
     Parse FixedDMA ACPI resources to a DMA specifier
 
-    :param struct acpi_resource \*res:
+    :param res:
         struct acpi_resource to get FixedDMA resources from
+    :type res: struct acpi_resource \*
 
-    :param void \*data:
+    :param data:
         pointer to a helper struct acpi_dma_parser_data
+    :type data: void \*
 
 .. _`acpi_dma_request_slave_chan_by_index`:
 
@@ -241,11 +256,13 @@ acpi_dma_request_slave_chan_by_index
 
     Get the DMA slave channel
 
-    :param struct device \*dev:
+    :param dev:
         struct device to get DMA request from
+    :type dev: struct device \*
 
-    :param size_t index:
+    :param index:
         index of FixedDMA descriptor for \ ``dev``\ 
+    :type index: size_t
 
 .. _`acpi_dma_request_slave_chan_by_index.return`:
 
@@ -263,11 +280,13 @@ acpi_dma_request_slave_chan_by_name
 
     Get the DMA slave channel
 
-    :param struct device \*dev:
+    :param dev:
         struct device to get DMA request from
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         represents corresponding FixedDMA descriptor for \ ``dev``\ 
+    :type name: const char \*
 
 .. _`acpi_dma_request_slave_chan_by_name.description`:
 
@@ -298,11 +317,13 @@ acpi_dma_simple_xlate
 
     Simple ACPI DMA engine translation helper
 
-    :param struct acpi_dma_spec \*dma_spec:
+    :param dma_spec:
         pointer to ACPI DMA specifier
+    :type dma_spec: struct acpi_dma_spec \*
 
-    :param struct acpi_dma \*adma:
+    :param adma:
         pointer to ACPI DMA controller data
+    :type adma: struct acpi_dma \*
 
 .. _`acpi_dma_simple_xlate.description`:
 

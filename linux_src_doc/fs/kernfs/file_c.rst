@@ -10,17 +10,21 @@ kernfs_fop_read
 
     kernfs vfs read callback
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param char __user \*user_buf:
+    :param user_buf:
         data to write
+    :type user_buf: char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         starting offset
+    :type ppos: loff_t \*
 
 .. _`kernfs_fop_write`:
 
@@ -31,17 +35,21 @@ kernfs_fop_write
 
     kernfs vfs write callback
 
-    :param struct file \*file:
+    :param file:
         file pointer
+    :type file: struct file \*
 
-    :param const char __user \*user_buf:
+    :param user_buf:
         data to write
+    :type user_buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         number of bytes
+    :type count: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         starting offset
+    :type ppos: loff_t \*
 
 .. _`kernfs_fop_write.description`:
 
@@ -66,18 +74,20 @@ kernfs_get_open_node
 
     get or create kernfs_open_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         target kernfs_node
+    :type kn: struct kernfs_node \*
 
-    :param struct kernfs_open_file \*of:
+    :param of:
         kernfs_open_file for this instance of open
+    :type of: struct kernfs_open_file \*
 
 .. _`kernfs_get_open_node.description`:
 
 Description
 -----------
 
-If \ ``kn``\ ->attr.open exists, increment its reference count; otherwise,
+If \ ``kn->attr.open``\  exists, increment its reference count; otherwise,
 create one.  \ ``of``\  is chained to the files list.
 
 .. _`kernfs_get_open_node.locking`:
@@ -103,18 +113,20 @@ kernfs_put_open_node
 
     put kernfs_open_node
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         target kernfs_nodet
+    :type kn: struct kernfs_node \*
 
-    :param struct kernfs_open_file \*of:
+    :param of:
         associated kernfs_open_file
+    :type of: struct kernfs_open_file \*
 
 .. _`kernfs_put_open_node.description`:
 
 Description
 -----------
 
-Put \ ``kn``\ ->attr.open and unlink \ ``of``\  from the files list.  If
+Put \ ``kn->attr.open``\  and unlink \ ``of``\  from the files list.  If
 reference count reaches zero, disassociate and free it.
 
 .. _`kernfs_put_open_node.locking`:
@@ -133,8 +145,9 @@ kernfs_notify
 
     notify a kernfs file
 
-    :param struct kernfs_node \*kn:
+    :param kn:
         file to notify
+    :type kn: struct kernfs_node \*
 
 .. _`kernfs_notify.description`:
 
@@ -149,33 +162,49 @@ context.
 \__kernfs_create_file
 =====================
 
-.. c:function:: struct kernfs_node *__kernfs_create_file(struct kernfs_node *parent, const char *name, umode_t mode, loff_t size, const struct kernfs_ops *ops, void *priv, const void *ns, struct lock_class_key *key)
+.. c:function:: struct kernfs_node *__kernfs_create_file(struct kernfs_node *parent, const char *name, umode_t mode, kuid_t uid, kgid_t gid, loff_t size, const struct kernfs_ops *ops, void *priv, const void *ns, struct lock_class_key *key)
 
     kernfs internal function to create a file
 
-    :param struct kernfs_node \*parent:
+    :param parent:
         directory to create the file in
+    :type parent: struct kernfs_node \*
 
-    :param const char \*name:
+    :param name:
         name of the file
+    :type name: const char \*
 
-    :param umode_t mode:
+    :param mode:
         mode of the file
+    :type mode: umode_t
 
-    :param loff_t size:
+    :param uid:
+        uid of the file
+    :type uid: kuid_t
+
+    :param gid:
+        gid of the file
+    :type gid: kgid_t
+
+    :param size:
         size of the file
+    :type size: loff_t
 
-    :param const struct kernfs_ops \*ops:
+    :param ops:
         kernfs operations for the file
+    :type ops: const struct kernfs_ops \*
 
-    :param void \*priv:
+    :param priv:
         private data for the file
+    :type priv: void \*
 
-    :param const void \*ns:
+    :param ns:
         optional namespace tag of the file
+    :type ns: const void \*
 
-    :param struct lock_class_key \*key:
+    :param key:
         lockdep key for the file's active_ref, \ ``NULL``\  to disable lockdep
+    :type key: struct lock_class_key \*
 
 .. _`__kernfs_create_file.description`:
 

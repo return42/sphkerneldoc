@@ -10,14 +10,17 @@ omap3_enter_idle
 
     Programs OMAP3 to enter the specified state
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle device
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver
+    :type drv: struct cpuidle_driver \*
 
-    :param int index:
+    :param index:
         the index of state to be entered
+    :type index: int
 
 .. _`next_valid_state`:
 
@@ -28,14 +31,17 @@ next_valid_state
 
     Find next valid C-state
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle device
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver
+    :type drv: struct cpuidle_driver \*
 
-    :param int index:
+    :param index:
         Index of currently selected c-state
+    :type index: int
 
 .. _`next_valid_state.description`:
 
@@ -58,14 +64,17 @@ omap3_enter_idle_bm
 
     Checks for any bus activity
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle device
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         cpuidle driver
+    :type drv: struct cpuidle_driver \*
 
-    :param int index:
+    :param index:
         array index of target state to be programmed
+    :type index: int
 
 .. _`omap3_enter_idle_bm.description`:
 
@@ -84,8 +93,9 @@ omap3_idle_init
 
     Init routine for OMAP3 idle
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap3_idle_init.description`:
 

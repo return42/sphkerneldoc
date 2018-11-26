@@ -10,11 +10,13 @@ drm_atomic_crtc_for_each_plane
 
     iterate over planes currently attached to CRTC
 
-    :param  plane:
+    :param plane:
         the loop cursor
+    :type plane: 
 
-    :param  crtc:
+    :param crtc:
         the crtc whose planes are iterated
+    :type crtc: 
 
 .. _`drm_atomic_crtc_for_each_plane.description`:
 
@@ -36,11 +38,13 @@ drm_atomic_crtc_state_for_each_plane
 
     iterate over attached planes in new state
 
-    :param  plane:
+    :param plane:
         the loop cursor
+    :type plane: 
 
-    :param  crtc_state:
+    :param crtc_state:
         the incoming crtc-state
+    :type crtc_state: 
 
 .. _`drm_atomic_crtc_state_for_each_plane.description`:
 
@@ -61,14 +65,17 @@ drm_atomic_crtc_state_for_each_plane_state
 
     iterate over attached planes in new state
 
-    :param  plane:
+    :param plane:
         the loop cursor
+    :type plane: 
 
-    :param  plane_state:
+    :param plane_state:
         loop cursor for the plane's state, must be const
+    :type plane_state: 
 
-    :param  crtc_state:
+    :param crtc_state:
         the incoming crtc-state
+    :type crtc_state: 
 
 .. _`drm_atomic_crtc_state_for_each_plane_state.description`:
 
@@ -93,11 +100,13 @@ drm_atomic_plane_disabling
 
     check whether a plane is being disabled
 
-    :param struct drm_plane_state \*old_plane_state:
+    :param old_plane_state:
         old atomic plane state
+    :type old_plane_state: struct drm_plane_state \*
 
-    :param struct drm_plane_state \*new_plane_state:
+    :param new_plane_state:
         new atomic plane state
+    :type new_plane_state: struct drm_plane_state \*
 
 .. _`drm_atomic_plane_disabling.description`:
 

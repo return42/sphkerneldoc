@@ -10,11 +10,13 @@ update_tg_load_avg
 
     update the tg's load avg
 
-    :param struct cfs_rq \*cfs_rq:
+    :param cfs_rq:
         the cfs_rq whose avg changed
+    :type cfs_rq: struct cfs_rq \*
 
-    :param int force:
+    :param force:
         update regardless of how small the difference
+    :type force: int
 
 .. _`update_tg_load_avg.description`:
 
@@ -40,11 +42,13 @@ update_cfs_rq_load_avg
 
     update the cfs_rq's load/util averages
 
-    :param u64 now:
+    :param now:
         current time, as per \ :c:func:`cfs_rq_clock_task`\ 
+    :type now: u64
 
-    :param struct cfs_rq \*cfs_rq:
+    :param cfs_rq:
         cfs_rq to update
+    :type cfs_rq: struct cfs_rq \*
 
 .. _`update_cfs_rq_load_avg.description`:
 
@@ -71,14 +75,17 @@ attach_entity_load_avg
 
     attach this entity to its cfs_rq load avg
 
-    :param struct cfs_rq \*cfs_rq:
+    :param cfs_rq:
         cfs_rq to attach to
+    :type cfs_rq: struct cfs_rq \*
 
-    :param struct sched_entity \*se:
+    :param se:
         sched_entity to attach
+    :type se: struct sched_entity \*
 
-    :param int flags:
-        *undescribed*
+    :param flags:
+        migration hints
+    :type flags: int
 
 .. _`attach_entity_load_avg.description`:
 
@@ -97,11 +104,13 @@ detach_entity_load_avg
 
     detach this entity from its cfs_rq load avg
 
-    :param struct cfs_rq \*cfs_rq:
+    :param cfs_rq:
         cfs_rq to detach from
+    :type cfs_rq: struct cfs_rq \*
 
-    :param struct sched_entity \*se:
+    :param se:
         sched_entity to detach
+    :type se: struct sched_entity \*
 
 .. _`detach_entity_load_avg.description`:
 
@@ -120,14 +129,17 @@ cpu_load_update
 
     update the rq->cpu_load[] statistics
 
-    :param struct rq \*this_rq:
+    :param this_rq:
         The rq to update statistics for
+    :type this_rq: struct rq \*
 
-    :param unsigned long this_load:
+    :param this_load:
         The current load
+    :type this_load: unsigned long
 
-    :param unsigned long pending_updates:
+    :param pending_updates:
         The number of missed updates
+    :type pending_updates: unsigned long
 
 .. _`cpu_load_update.description`:
 
@@ -174,8 +186,9 @@ cpu_util
 
 .. c:function:: unsigned long cpu_util(int cpu)
 
-    :param int cpu:
+    :param cpu:
         the CPU to get the utilization of
+    :type cpu: int
 
 .. _`cpu_util.description`:
 
@@ -230,11 +243,13 @@ get_sd_load_idx
 
     Obtain the load index for a given sched domain.
 
-    :param struct sched_domain \*sd:
+    :param sd:
         The sched_domain whose load_idx is to be obtained.
+    :type sd: struct sched_domain \*
 
-    :param enum cpu_idle_type idle:
+    :param idle:
         The idle status of the CPU for whose sd load_idx is obtained.
+    :type idle: enum cpu_idle_type
 
 .. _`get_sd_load_idx.return`:
 
@@ -252,23 +267,29 @@ update_sg_lb_stats
 
     Update sched_group's statistics for load balancing.
 
-    :param struct lb_env \*env:
+    :param env:
         The load balancing environment.
+    :type env: struct lb_env \*
 
-    :param struct sched_group \*group:
+    :param group:
         sched_group whose statistics are to be updated.
+    :type group: struct sched_group \*
 
-    :param int load_idx:
+    :param load_idx:
         Load index of sched_domain of this_cpu for load calc.
+    :type load_idx: int
 
-    :param int local_group:
+    :param local_group:
         Does group contain this_cpu.
+    :type local_group: int
 
-    :param struct sg_lb_stats \*sgs:
+    :param sgs:
         variable to hold the statistics for this group.
+    :type sgs: struct sg_lb_stats \*
 
-    :param bool \*overload:
-        Indicate more than one runnable task for any CPU.
+    :param overload:
+        Indicate pullable load (e.g. >1 runnable task).
+    :type overload: bool \*
 
 .. _`update_sd_pick_busiest`:
 
@@ -279,17 +300,21 @@ update_sd_pick_busiest
 
     return 1 on busiest group
 
-    :param struct lb_env \*env:
+    :param env:
         The load balancing environment.
+    :type env: struct lb_env \*
 
-    :param struct sd_lb_stats \*sds:
+    :param sds:
         sched_domain statistics
+    :type sds: struct sd_lb_stats \*
 
-    :param struct sched_group \*sg:
+    :param sg:
         sched_group candidate to be checked for being the busiest
+    :type sg: struct sched_group \*
 
-    :param struct sg_lb_stats \*sgs:
+    :param sgs:
         sched_group statistics
+    :type sgs: struct sg_lb_stats \*
 
 .. _`update_sd_pick_busiest.description`:
 
@@ -316,11 +341,13 @@ update_sd_lb_stats
 
     Update sched_domain's statistics for load balancing.
 
-    :param struct lb_env \*env:
+    :param env:
         The load balancing environment.
+    :type env: struct lb_env \*
 
-    :param struct sd_lb_stats \*sds:
+    :param sds:
         variable to hold the statistics for this sched_domain.
+    :type sds: struct sd_lb_stats \*
 
 .. _`check_asym_packing`:
 
@@ -331,11 +358,13 @@ check_asym_packing
 
     Check to see if the group is packed into the sched domain.
 
-    :param struct lb_env \*env:
+    :param env:
         The load balancing environment.
+    :type env: struct lb_env \*
 
-    :param struct sd_lb_stats \*sds:
+    :param sds:
         Statistics of the sched_domain which is to be packed
+    :type sds: struct sd_lb_stats \*
 
 .. _`check_asym_packing.description`:
 
@@ -372,11 +401,13 @@ fix_small_imbalance
 
     Calculate the minor imbalance that exists amongst the groups of a sched_domain, during load balancing.
 
-    :param struct lb_env \*env:
+    :param env:
         The load balancing environment.
+    :type env: struct lb_env \*
 
-    :param struct sd_lb_stats \*sds:
+    :param sds:
         Statistics of the sched_domain whose imbalance is to be calculated.
+    :type sds: struct sd_lb_stats \*
 
 .. _`calculate_imbalance`:
 
@@ -387,11 +418,13 @@ calculate_imbalance
 
     Calculate the amount of imbalance present within the groups of a given sched_domain during load balance.
 
-    :param struct lb_env \*env:
+    :param env:
         load balance environment
+    :type env: struct lb_env \*
 
-    :param struct sd_lb_stats \*sds:
+    :param sds:
         statistics of the sched_domain whose imbalance is to be calculated.
+    :type sds: struct sd_lb_stats \*
 
 .. _`find_busiest_group`:
 
@@ -402,8 +435,9 @@ find_busiest_group
 
     Returns the busiest group within the sched_domain if there is an imbalance.
 
-    :param struct lb_env \*env:
+    :param env:
         The load balancing environment.
+    :type env: struct lb_env \*
 
 .. _`find_busiest_group.description`:
 

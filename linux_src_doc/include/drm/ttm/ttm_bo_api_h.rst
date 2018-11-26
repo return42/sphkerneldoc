@@ -355,6 +355,19 @@ Description
 Context for TTM operations like changing buffer placement or general memory
 allocation.
 
+.. _`ttm_bo_get`:
+
+ttm_bo_get
+==========
+
+.. c:function:: void ttm_bo_get(struct ttm_buffer_object *bo)
+
+    reference a struct ttm_buffer_object
+
+    :param bo:
+        The buffer object.
+    :type bo: struct ttm_buffer_object \*
+
 .. _`ttm_bo_reference`:
 
 ttm_bo_reference
@@ -364,8 +377,9 @@ ttm_bo_reference
 
     reference a struct ttm_buffer_object
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object.
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_bo_reference.description`:
 
@@ -373,6 +387,36 @@ Description
 -----------
 
 Returns a refcounted pointer to a buffer object.
+
+This function is deprecated. Use \ ``ttm_bo_get``\  instead.
+
+.. _`ttm_bo_get_unless_zero`:
+
+ttm_bo_get_unless_zero
+======================
+
+.. c:function:: struct ttm_buffer_object *ttm_bo_get_unless_zero(struct ttm_buffer_object *bo)
+
+    reference a struct ttm_buffer_object unless its refcount has already reached zero.
+
+    :param bo:
+        The buffer object.
+    :type bo: struct ttm_buffer_object \*
+
+.. _`ttm_bo_get_unless_zero.description`:
+
+Description
+-----------
+
+Used to reference a TTM buffer object in lookups where the object is removed
+from the lookup structure during the destructor and for RCU lookups.
+
+.. _`ttm_bo_get_unless_zero.return`:
+
+Return
+------
+
+\ ``bo``\  if the referencing was successful, NULL otherwise.
 
 .. _`ttm_bo_wait`:
 
@@ -383,14 +427,17 @@ ttm_bo_wait
 
     wait for buffer idle.
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool interruptible:
+    :param interruptible:
         Use interruptible wait.
+    :type interruptible: bool
 
-    :param bool no_wait:
+    :param no_wait:
         Return immediately if buffer is busy.
+    :type no_wait: bool
 
 .. _`ttm_bo_wait.description`:
 
@@ -419,14 +466,17 @@ ttm_bo_mem_compat
 
     Check if proposed placement is compatible with a bo
 
-    :param struct ttm_placement \*placement:
+    :param placement:
         Return immediately if buffer is busy.
+    :type placement: struct ttm_placement \*
 
-    :param struct ttm_mem_reg \*mem:
+    :param mem:
         The struct ttm_mem_reg indicating the region where the bo resides
+    :type mem: struct ttm_mem_reg \*
 
-    :param uint32_t \*new_flags:
+    :param new_flags:
         Describes compatible placement found
+    :type new_flags: uint32_t \*
 
 .. _`ttm_bo_mem_compat.description`:
 
@@ -442,14 +492,17 @@ ttm_bo_validate
 
 .. c:function:: int ttm_bo_validate(struct ttm_buffer_object *bo, struct ttm_placement *placement, struct ttm_operation_ctx *ctx)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param struct ttm_placement \*placement:
+    :param placement:
         Proposed placement for the buffer object.
+    :type placement: struct ttm_placement \*
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         validation parameters.
+    :type ctx: struct ttm_operation_ctx \*
 
 .. _`ttm_bo_validate.description`:
 
@@ -464,6 +517,24 @@ Returns
 -EBUSY if no_wait is true and buffer busy.
 -ERESTARTSYS if interrupted by a signal.
 
+.. _`ttm_bo_put`:
+
+ttm_bo_put
+==========
+
+.. c:function:: void ttm_bo_put(struct ttm_buffer_object *bo)
+
+    :param bo:
+        The buffer object.
+    :type bo: struct ttm_buffer_object \*
+
+.. _`ttm_bo_put.description`:
+
+Description
+-----------
+
+Unreference a buffer object.
+
 .. _`ttm_bo_unref`:
 
 ttm_bo_unref
@@ -471,8 +542,9 @@ ttm_bo_unref
 
 .. c:function:: void ttm_bo_unref(struct ttm_buffer_object **bo)
 
-    :param struct ttm_buffer_object \*\*bo:
+    :param bo:
         The buffer object.
+    :type bo: struct ttm_buffer_object \*\*
 
 .. _`ttm_bo_unref.description`:
 
@@ -481,6 +553,8 @@ Description
 
 Unreference and clear a pointer to a buffer object.
 
+This function is deprecated. Use \ ``ttm_bo_put``\  instead.
+
 .. _`ttm_bo_add_to_lru`:
 
 ttm_bo_add_to_lru
@@ -488,8 +562,9 @@ ttm_bo_add_to_lru
 
 .. c:function:: void ttm_bo_add_to_lru(struct ttm_buffer_object *bo)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object.
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_bo_add_to_lru.description`:
 
@@ -508,8 +583,9 @@ ttm_bo_del_from_lru
 
 .. c:function:: void ttm_bo_del_from_lru(struct ttm_buffer_object *bo)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object.
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_bo_del_from_lru.description`:
 
@@ -526,10 +602,15 @@ avoid recursive reservation from lru lists.
 ttm_bo_move_to_lru_tail
 =======================
 
-.. c:function:: void ttm_bo_move_to_lru_tail(struct ttm_buffer_object *bo)
+.. c:function:: void ttm_bo_move_to_lru_tail(struct ttm_buffer_object *bo, struct ttm_lru_bulk_move *bulk)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object.
+    :type bo: struct ttm_buffer_object \*
+
+    :param bulk:
+        optional bulk move structure to remember BO positions
+    :type bulk: struct ttm_lru_bulk_move \*
 
 .. _`ttm_bo_move_to_lru_tail.description`:
 
@@ -540,6 +621,25 @@ Move this BO to the tail of all lru lists used to lookup and reserve an
 object. This function must be called with struct ttm_bo_global::lru_lock
 held, and is used to make a BO less likely to be considered for eviction.
 
+.. _`ttm_bo_bulk_move_lru_tail`:
+
+ttm_bo_bulk_move_lru_tail
+=========================
+
+.. c:function:: void ttm_bo_bulk_move_lru_tail(struct ttm_lru_bulk_move *bulk)
+
+    :param bulk:
+        bulk move structure
+    :type bulk: struct ttm_lru_bulk_move \*
+
+.. _`ttm_bo_bulk_move_lru_tail.description`:
+
+Description
+-----------
+
+Bulk move BOs to the LRU tail, only valid to use when driver makes sure that
+BO order never changes. Should be called with ttm_bo_global::lru_lock held.
+
 .. _`ttm_bo_lock_delayed_workqueue`:
 
 ttm_bo_lock_delayed_workqueue
@@ -547,8 +647,9 @@ ttm_bo_lock_delayed_workqueue
 
 .. c:function:: int ttm_bo_lock_delayed_workqueue(struct ttm_bo_device *bdev)
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         *undescribed*
+    :type bdev: struct ttm_bo_device \*
 
 .. _`ttm_bo_lock_delayed_workqueue.description`:
 
@@ -566,11 +667,13 @@ ttm_bo_unlock_delayed_workqueue
 
 .. c:function:: void ttm_bo_unlock_delayed_workqueue(struct ttm_bo_device *bdev, int resched)
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         *undescribed*
+    :type bdev: struct ttm_bo_device \*
 
-    :param int resched:
+    :param resched:
         *undescribed*
+    :type resched: int
 
 .. _`ttm_bo_unlock_delayed_workqueue.description`:
 
@@ -586,11 +689,13 @@ ttm_bo_eviction_valuable
 
 .. c:function:: bool ttm_bo_eviction_valuable(struct ttm_buffer_object *bo, const struct ttm_place *place)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object to evict
+    :type bo: struct ttm_buffer_object \*
 
-    :param const struct ttm_place \*place:
+    :param place:
         the placement we need to make room for
+    :type place: const struct ttm_place \*
 
 .. _`ttm_bo_eviction_valuable.description`:
 
@@ -606,11 +711,13 @@ ttm_bo_synccpu_write_grab
 
 .. c:function:: int ttm_bo_synccpu_write_grab(struct ttm_buffer_object *bo, bool no_wait)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object:
+    :type bo: struct ttm_buffer_object \*
 
-    :param bool no_wait:
+    :param no_wait:
         Return immediately if buffer is busy.
+    :type no_wait: bool
 
 .. _`ttm_bo_synccpu_write_grab.description`:
 
@@ -632,8 +739,9 @@ ttm_bo_synccpu_write_release
 
 .. c:function:: void ttm_bo_synccpu_write_release(struct ttm_buffer_object *bo)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object.
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_bo_synccpu_write_release.description`:
 
@@ -649,14 +757,17 @@ ttm_bo_acc_size
 
 .. c:function:: size_t ttm_bo_acc_size(struct ttm_bo_device *bdev, unsigned long bo_size, unsigned struct_size)
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         Pointer to a ttm_bo_device struct.
+    :type bdev: struct ttm_bo_device \*
 
-    :param unsigned long bo_size:
+    :param bo_size:
         size of the buffer object in byte.
+    :type bo_size: unsigned long
 
-    :param unsigned struct_size:
+    :param struct_size:
         size of the structure holding buffer object datas
+    :type struct_size: unsigned
 
 .. _`ttm_bo_acc_size.description`:
 
@@ -672,35 +783,45 @@ ttm_bo_init_reserved
 
 .. c:function:: int ttm_bo_init_reserved(struct ttm_bo_device *bdev, struct ttm_buffer_object *bo, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, struct ttm_operation_ctx *ctx, size_t acc_size, struct sg_table *sg, struct reservation_object *resv, void (*destroy)(struct ttm_buffer_object *))
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         Pointer to a ttm_bo_device struct.
+    :type bdev: struct ttm_bo_device \*
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         Pointer to a ttm_buffer_object to be initialized.
+    :type bo: struct ttm_buffer_object \*
 
-    :param unsigned long size:
+    :param size:
         Requested size of buffer object.
+    :type size: unsigned long
 
-    :param enum ttm_bo_type type:
+    :param type:
         Requested type of buffer object.
+    :type type: enum ttm_bo_type
 
-    :param struct ttm_placement \*placement:
+    :param placement:
         *undescribed*
+    :type placement: struct ttm_placement \*
 
-    :param uint32_t page_alignment:
+    :param page_alignment:
         Data alignment in pages.
+    :type page_alignment: uint32_t
 
-    :param struct ttm_operation_ctx \*ctx:
+    :param ctx:
         TTM operation context for memory allocation.
+    :type ctx: struct ttm_operation_ctx \*
 
-    :param size_t acc_size:
+    :param acc_size:
         Accounted size for this object.
+    :type acc_size: size_t
 
-    :param struct sg_table \*sg:
+    :param sg:
         *undescribed*
+    :type sg: struct sg_table \*
 
-    :param struct reservation_object \*resv:
+    :param resv:
         Pointer to a reservation_object, or NULL to let ttm allocate one.
+    :type resv: struct reservation_object \*
 
     :param void (\*destroy)(struct ttm_buffer_object \*):
         Destroy function. Use NULL for \ :c:func:`kfree`\ .
@@ -737,35 +858,45 @@ ttm_bo_init
 
 .. c:function:: int ttm_bo_init(struct ttm_bo_device *bdev, struct ttm_buffer_object *bo, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, bool interrubtible, size_t acc_size, struct sg_table *sg, struct reservation_object *resv, void (*destroy)(struct ttm_buffer_object *))
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         Pointer to a ttm_bo_device struct.
+    :type bdev: struct ttm_bo_device \*
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         Pointer to a ttm_buffer_object to be initialized.
+    :type bo: struct ttm_buffer_object \*
 
-    :param unsigned long size:
+    :param size:
         Requested size of buffer object.
+    :type size: unsigned long
 
-    :param enum ttm_bo_type type:
+    :param type:
         Requested type of buffer object.
+    :type type: enum ttm_bo_type
 
-    :param struct ttm_placement \*placement:
+    :param placement:
         *undescribed*
+    :type placement: struct ttm_placement \*
 
-    :param uint32_t page_alignment:
+    :param page_alignment:
         Data alignment in pages.
+    :type page_alignment: uint32_t
 
-    :param bool interrubtible:
+    :param interrubtible:
         *undescribed*
+    :type interrubtible: bool
 
-    :param size_t acc_size:
+    :param acc_size:
         Accounted size for this object.
+    :type acc_size: size_t
 
-    :param struct sg_table \*sg:
+    :param sg:
         *undescribed*
+    :type sg: struct sg_table \*
 
-    :param struct reservation_object \*resv:
+    :param resv:
         Pointer to a reservation_object, or NULL to let ttm allocate one.
+    :type resv: struct reservation_object \*
 
     :param void (\*destroy)(struct ttm_buffer_object \*):
         Destroy function. Use NULL for \ :c:func:`kfree`\ .
@@ -800,27 +931,34 @@ ttm_bo_create
 
 .. c:function:: int ttm_bo_create(struct ttm_bo_device *bdev, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, bool interruptible, struct ttm_buffer_object **p_bo)
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         Pointer to a ttm_bo_device struct.
+    :type bdev: struct ttm_bo_device \*
 
-    :param unsigned long size:
+    :param size:
         Requested size of buffer object.
+    :type size: unsigned long
 
-    :param enum ttm_bo_type type:
+    :param type:
         Requested type of buffer object.
+    :type type: enum ttm_bo_type
 
-    :param struct ttm_placement \*placement:
+    :param placement:
         Initial placement.
+    :type placement: struct ttm_placement \*
 
-    :param uint32_t page_alignment:
+    :param page_alignment:
         Data alignment in pages.
+    :type page_alignment: uint32_t
 
-    :param bool interruptible:
+    :param interruptible:
         If needing to sleep while waiting for GPU resources,
         sleep interruptible.
+    :type interruptible: bool
 
-    :param struct ttm_buffer_object \*\*p_bo:
+    :param p_bo:
         On successful completion \*p_bo points to the created object.
+    :type p_bo: struct ttm_buffer_object \*\*
 
 .. _`ttm_bo_create.description`:
 
@@ -841,14 +979,17 @@ ttm_bo_init_mm
 
 .. c:function:: int ttm_bo_init_mm(struct ttm_bo_device *bdev, unsigned type, unsigned long p_size)
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         Pointer to a ttm_bo_device struct.
+    :type bdev: struct ttm_bo_device \*
 
-    :param unsigned type:
+    :param type:
         *undescribed*
+    :type type: unsigned
 
-    :param unsigned long p_size:
+    :param p_size:
         size managed area in pages.
+    :type p_size: unsigned long
 
 .. _`ttm_bo_init_mm.description`:
 
@@ -881,11 +1022,13 @@ ttm_bo_clean_mm
 
 .. c:function:: int ttm_bo_clean_mm(struct ttm_bo_device *bdev, unsigned mem_type)
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         Pointer to a ttm_bo_device struct.
+    :type bdev: struct ttm_bo_device \*
 
-    :param unsigned mem_type:
+    :param mem_type:
         The memory type.
+    :type mem_type: unsigned
 
 .. _`ttm_bo_clean_mm.description`:
 
@@ -923,11 +1066,13 @@ ttm_bo_evict_mm
 
 .. c:function:: int ttm_bo_evict_mm(struct ttm_bo_device *bdev, unsigned mem_type)
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         Pointer to a ttm_bo_device struct.
+    :type bdev: struct ttm_bo_device \*
 
-    :param unsigned mem_type:
+    :param mem_type:
         The memory type.
+    :type mem_type: unsigned
 
 .. _`ttm_bo_evict_mm.description`:
 
@@ -957,12 +1102,14 @@ ttm_kmap_obj_virtual
 
 .. c:function:: void *ttm_kmap_obj_virtual(struct ttm_bo_kmap_obj *map, bool *is_iomem)
 
-    :param struct ttm_bo_kmap_obj \*map:
+    :param map:
         A struct ttm_bo_kmap_obj returned from ttm_bo_kmap.
+    :type map: struct ttm_bo_kmap_obj \*
 
-    :param bool \*is_iomem:
+    :param is_iomem:
         Pointer to an integer that on return indicates 1 if the
         virtual map is io memory, 0 if normal memory.
+    :type is_iomem: bool \*
 
 .. _`ttm_kmap_obj_virtual.description`:
 
@@ -980,17 +1127,21 @@ ttm_bo_kmap
 
 .. c:function:: int ttm_bo_kmap(struct ttm_buffer_object *bo, unsigned long start_page, unsigned long num_pages, struct ttm_bo_kmap_obj *map)
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The buffer object.
+    :type bo: struct ttm_buffer_object \*
 
-    :param unsigned long start_page:
+    :param start_page:
         The first page to map.
+    :type start_page: unsigned long
 
-    :param unsigned long num_pages:
+    :param num_pages:
         Number of pages to map.
+    :type num_pages: unsigned long
 
-    :param struct ttm_bo_kmap_obj \*map:
+    :param map:
         pointer to a struct ttm_bo_kmap_obj representing the map.
+    :type map: struct ttm_bo_kmap_obj \*
 
 .. _`ttm_bo_kmap.description`:
 
@@ -1012,8 +1163,9 @@ ttm_bo_kunmap
 
 .. c:function:: void ttm_bo_kunmap(struct ttm_bo_kmap_obj *map)
 
-    :param struct ttm_bo_kmap_obj \*map:
+    :param map:
         Object describing the map to unmap.
+    :type map: struct ttm_bo_kmap_obj \*
 
 .. _`ttm_bo_kunmap.description`:
 
@@ -1031,12 +1183,14 @@ ttm_fbdev_mmap
 
     mmap fbdev memory backed by a ttm buffer object.
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vma as input from the fbdev mmap method.
+    :type vma: struct vm_area_struct \*
 
-    :param struct ttm_buffer_object \*bo:
+    :param bo:
         The bo backing the address space. The address space will
         have the same size as the bo, and start at offset 0.
+    :type bo: struct ttm_buffer_object \*
 
 .. _`ttm_fbdev_mmap.description`:
 
@@ -1055,14 +1209,17 @@ ttm_bo_mmap
 
     mmap out of the ttm device address space.
 
-    :param struct file \*filp:
+    :param filp:
         filp as input from the mmap method.
+    :type filp: struct file \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vma as input from the mmap method.
+    :type vma: struct vm_area_struct \*
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         Pointer to the ttm_bo_device with the address space manager.
+    :type bdev: struct ttm_bo_device \*
 
 .. _`ttm_bo_mmap.description`:
 
@@ -1079,27 +1236,34 @@ ttm_bo_io
 
 .. c:function:: ssize_t ttm_bo_io(struct ttm_bo_device *bdev, struct file *filp, const char __user *wbuf, char __user *rbuf, size_t count, loff_t *f_pos, bool write)
 
-    :param struct ttm_bo_device \*bdev:
+    :param bdev:
         Pointer to the struct ttm_bo_device.
+    :type bdev: struct ttm_bo_device \*
 
-    :param struct file \*filp:
+    :param filp:
         Pointer to the struct file attempting to read / write.
+    :type filp: struct file \*
 
-    :param const char __user \*wbuf:
+    :param wbuf:
         User-space pointer to address of buffer to write. NULL on read.
+    :type wbuf: const char __user \*
 
-    :param char __user \*rbuf:
+    :param rbuf:
         User-space pointer to address of buffer to read into.
         Null on write.
+    :type rbuf: char __user \*
 
-    :param size_t count:
+    :param count:
         Number of bytes to read / write.
+    :type count: size_t
 
-    :param loff_t \*f_pos:
+    :param f_pos:
         Pointer to current file position.
+    :type f_pos: loff_t \*
 
-    :param bool write:
+    :param write:
         1 for read, 0 for write.
+    :type write: bool
 
 .. _`ttm_bo_io.description`:
 

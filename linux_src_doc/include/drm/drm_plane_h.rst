@@ -25,9 +25,11 @@ Definition
         int32_t crtc_x;
         int32_t crtc_y;
         uint32_t crtc_w, crtc_h;
-        uint32_t src_x, src_y;
+        uint32_t src_x;
+        uint32_t src_y;
         uint32_t src_h, src_w;
         u16 alpha;
+        uint16_t pixel_blend_mode;
         unsigned int rotation;
         unsigned int zpos;
         unsigned int normalized_zpos;
@@ -66,7 +68,7 @@ fence
     preserved.
 
     Drivers should store any implicit fence in this from their
-    \ :c:type:`drm_plane_helper.prepare_fb <drm_plane_helper>`\  callback. See \ :c:func:`drm_gem_fb_prepare_fb`\ 
+    \ :c:type:`drm_plane_helper_funcs.prepare_fb <drm_plane_helper_funcs>`\  callback. See \ :c:func:`drm_gem_fb_prepare_fb`\ 
     and \ :c:func:`drm_gem_fb_simple_display_pipe_prepare_fb`\  for suitable helpers.
 
 crtc_x
@@ -86,12 +88,10 @@ crtc_h
     height of visible portion of plane on crtc
 
 src_x
-    left position of visible portion of plane within
-    plane (in 16.16)
+    left position of visible portion of plane within plane (in16.16 fixed point).
 
 src_y
-    upper position of visible portion of plane within
-    plane (in 16.16)
+    upper position of visible portion of plane within plane (in16.16 fixed point).
 
 src_h
     height of visible portion of plane (in 16.16)
@@ -100,23 +100,35 @@ src_w
     width of visible portion of plane (in 16.16)
 
 alpha
-    opacity of the plane
+    Opacity of the plane with 0 as completely transparent and 0xffff as
+    completely opaque. See \ :c:func:`drm_plane_create_alpha_property`\  for more
+    details.
+
+pixel_blend_mode
+    The alpha blending equation selection, describing how the pixels from
+    the current plane are composited with the background. Value can be
+    one of DRM_MODE_BLEND_*
 
 rotation
-    rotation of the plane
+    Rotation of the plane. See \ :c:func:`drm_plane_create_rotation_property`\  for
+    more details.
 
 zpos
-    priority of the given plane on crtc (optional)
-    Note that multiple active planes on the same crtc can have an identical
-    zpos value. The rule to solving the conflict is to compare the plane
-    object IDs; the plane with a higher ID must be stacked on top of a
-    plane with a lower ID.
+    Priority of the given plane on crtc (optional).
+
+    Note that multiple active planes on the same crtc can have an
+    identical zpos value. The rule to solving the conflict is to compare
+    the plane object IDs; the plane with a higher ID must be stacked on
+    top of a plane with a lower ID.
+
+    See \ :c:func:`drm_plane_create_zpos_property`\  and
+    \ :c:func:`drm_plane_create_zpos_immutable_property`\  for more details.
 
 normalized_zpos
-    normalized value of zpos: unique, range from 0 to N-1
-    where N is the number of active planes for given crtc. Note that
-    the driver must set drm_mode_config.normalize_zpos or call
-    \ :c:func:`drm_atomic_normalize_zpos`\  to update this before it can be trusted.
+    Normalized value of zpos: unique, range from 0 to N-1 where N is the
+    number of active planes for given crtc. Note that the driver must set
+    \ :c:type:`drm_mode_config.normalize_zpos <drm_mode_config>`\  or call \ :c:func:`drm_atomic_normalize_zpos`\  to
+    update this before it can be trusted.
 
 color_encoding
 
@@ -144,6 +156,17 @@ commit
 
 state
     backpointer to global drm_atomic_state
+
+.. _`drm_plane_state.description`:
+
+Description
+-----------
+
+Please not that the destination coordinates \ ``crtc_x``\ , \ ``crtc_y``\ , \ ``crtc_h``\  and
+\ ``crtc_w``\  and the source coordinates \ ``src_x``\ , \ ``src_y``\ , \ ``src_h``\  and \ ``src_w``\  are the
+raw coordinates provided by userspace. Drivers should use
+\ :c:func:`drm_atomic_helper_check_plane_state`\  and only use the derived rectangles in
+\ ``src``\  and \ ``dst``\  to program the hardware.
 
 .. _`drm_plane_funcs`:
 
@@ -258,6 +281,8 @@ atomic_duplicate_state
     cleaned up by calling the \ ``atomic_destroy_state``\  hook in this
     structure.
 
+    This callback is mandatory for atomic drivers.
+
     Atomic drivers which don't subclass \ :c:type:`struct drm_plane_state <drm_plane_state>`\  should use
     \ :c:func:`drm_atomic_helper_plane_duplicate_state`\ . Drivers that subclass the
     state structure to extend it with driver-private state should use
@@ -281,6 +306,8 @@ atomic_destroy_state
 
     Destroy a state duplicated with \ ``atomic_duplicate_state``\  and release
     or unreference all resources it references
+
+    This callback is mandatory for atomic drivers.
 
 atomic_set_property
 
@@ -373,7 +400,10 @@ format_mod_supported
     This optional hook is used for the DRM to determine if the given
     format/modifier combination is valid for the plane. This allows the
     DRM to generate the correct format bitmask (which formats apply to
-    which modifier).
+    which modifier), and to valdiate modifiers at atomic_check time.
+
+    If not present, then any modifier in the plane's modifier
+    list is allowed with any of the plane's formats.
 
     Returns:
 
@@ -485,6 +515,7 @@ Definition
         struct drm_property *alpha_property;
         struct drm_property *zpos_property;
         struct drm_property *rotation_property;
+        struct drm_property *blend_mode_property;
         struct drm_property *color_encoding_property;
         struct drm_property *color_range_property;
     }
@@ -498,7 +529,10 @@ dev
     DRM device this plane belongs to
 
 head
-    for list management
+
+    List of all planes on \ ``dev``\ , linked from \ :c:type:`drm_mode_config.plane_list <drm_mode_config>`\ .
+    Invariant over the lifetime of \ ``dev``\  and therefore does not need
+    locking.
 
 name
     human readable name, can be overwritten by the driver
@@ -515,42 +549,48 @@ base
     base mode object
 
 possible_crtcs
-    pipes this plane can be bound to
+    pipes this plane can be bound to constructed \ :c:func:`fromdrm_crtc_mask`\ 
 
 format_types
     array of formats supported by this plane
 
 format_count
-    number of formats supported
+    Size of the array pointed at by \ ``format_types``\ .
 
 format_default
-    driver hasn't supplied supported formats for the plane
+    driver hasn't supplied supported formats for theplane. Used by the drm_plane_init compatibility wrapper only.
 
 modifiers
     array of modifiers supported by this plane
 
 modifier_count
-    number of modifiers supported
+    Size of the array pointed at by \ ``modifier_count``\ .
 
 crtc
-    Currently bound CRTC, only really meaningful for non-atomicdrivers.  Atomic drivers should instead check \ :c:type:`drm_plane_state.crtc <drm_plane_state>`\ .
+
+    Currently bound CRTC, only meaningful for non-atomic drivers. For
+    atomic drivers this is forced to be NULL, atomic drivers should
+    instead check \ :c:type:`drm_plane_state.crtc <drm_plane_state>`\ .
 
 fb
-    Currently bound framebuffer, only really meaningful fornon-atomic drivers.  Atomic drivers should instead check
-    \ :c:type:`drm_plane_state.fb <drm_plane_state>`\ .
+
+    Currently bound framebuffer, only meaningful for non-atomic drivers.
+    For atomic drivers this is forced to be NULL, atomic drivers should
+    instead check \ :c:type:`drm_plane_state.fb <drm_plane_state>`\ .
 
 old_fb
-    Temporary tracking of the old fb while a modeset is ongoing. Used by
-    \ :c:func:`drm_mode_set_config_internal`\  to implement correct refcounting.
+
+    Temporary tracking of the old fb while a modeset is ongoing. Only
+    used by non-atomic drivers, forced to be NULL for atomic drivers.
 
 funcs
-    helper functions
+    plane control functions
 
 properties
     property tracking for this plane
 
 type
-    type of plane (overlay, primary, cursor)
+    Type of plane, see \ :c:type:`enum drm_plane_type <drm_plane_type>`\  for details.
 
 index
     Position inside the mode_config.list, can be used as an arrayindex. It is invariant over the lifetime of the plane.
@@ -571,13 +611,22 @@ state
     \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\ .
 
 alpha_property
-    alpha property for this plane
+    Optional alpha property for this plane. See
+    \ :c:func:`drm_plane_create_alpha_property`\ .
 
 zpos_property
-    zpos property for this plane
+    Optional zpos property for this plane. See
+    \ :c:func:`drm_plane_create_zpos_property`\ .
 
 rotation_property
-    rotation property for this plane
+    Optional rotation property for this plane. See
+    \ :c:func:`drm_plane_create_rotation_property`\ .
+
+blend_mode_property
+    Optional "pixel blend mode" enum property for this plane.
+    Blend mode property represents the alpha blending equation selection,
+    describing how the pixels from the current plane are composited with
+    the background.
 
 color_encoding_property
 
@@ -591,17 +640,29 @@ color_range_property
     color range for non RGB formats.
     See \ :c:func:`drm_plane_create_color_properties`\ .
 
+.. _`drm_plane.description`:
+
+Description
+-----------
+
+Planes represent the scanout hardware of a display block. They receive their
+input data from a \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  and feed it to a \ :c:type:`struct drm_crtc <drm_crtc>`\ . Planes control
+the color conversion, see `Plane Composition Properties`_ for more details,
+and are also involved in the color conversion of input pixels, see `Color
+Management Properties`_ for details on that.
+
 .. _`drm_plane_index`:
 
 drm_plane_index
 ===============
 
-.. c:function:: unsigned int drm_plane_index(struct drm_plane *plane)
+.. c:function:: unsigned int drm_plane_index(const struct drm_plane *plane)
 
     find the index of a registered plane
 
-    :param struct drm_plane \*plane:
+    :param plane:
         plane to find index for
+    :type plane: const struct drm_plane \*
 
 .. _`drm_plane_index.description`:
 
@@ -610,6 +671,19 @@ Description
 
 Given a registered plane, return the index of that plane within a DRM
 device's list of planes.
+
+.. _`drm_plane_mask`:
+
+drm_plane_mask
+==============
+
+.. c:function:: u32 drm_plane_mask(const struct drm_plane *plane)
+
+    find the mask of a registered plane
+
+    :param plane:
+        plane to find mask for
+    :type plane: const struct drm_plane \*
 
 .. _`drm_plane_find`:
 
@@ -620,14 +694,17 @@ drm_plane_find
 
     find a \ :c:type:`struct drm_plane <drm_plane>`\ 
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         drm file to check for lease against.
+    :type file_priv: struct drm_file \*
 
-    :param uint32_t id:
+    :param id:
         plane id
+    :type id: uint32_t
 
 .. _`drm_plane_find.description`:
 
@@ -646,14 +723,17 @@ drm_for_each_plane_mask
 
     iterate over planes specified by bitmask
 
-    :param  plane:
+    :param plane:
         the loop cursor
+    :type plane: 
 
-    :param  dev:
+    :param dev:
         the DRM device
+    :type dev: 
 
-    :param  plane_mask:
+    :param plane_mask:
         bitmask of plane indices
+    :type plane_mask: 
 
 .. _`drm_for_each_plane_mask.description`:
 
@@ -671,11 +751,13 @@ drm_for_each_legacy_plane
 
     iterate over all planes for legacy userspace
 
-    :param  plane:
+    :param plane:
         the loop cursor
+    :type plane: 
 
-    :param  dev:
+    :param dev:
         the DRM device
+    :type dev: 
 
 .. _`drm_for_each_legacy_plane.description`:
 
@@ -695,11 +777,13 @@ drm_for_each_plane
 
     iterate over all planes
 
-    :param  plane:
+    :param plane:
         the loop cursor
+    :type plane: 
 
-    :param  dev:
+    :param dev:
         the DRM device
+    :type dev: 
 
 .. _`drm_for_each_plane.description`:
 

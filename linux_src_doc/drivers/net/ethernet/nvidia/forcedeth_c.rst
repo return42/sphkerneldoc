@@ -10,8 +10,9 @@ nv_update_linkspeed
 
     Setup the MAC according to the link partner
 
-    :param struct net_device \*dev:
+    :param dev:
         Network device to be configured
+    :type dev: struct net_device \*
 
 .. _`nv_update_linkspeed.description`:
 

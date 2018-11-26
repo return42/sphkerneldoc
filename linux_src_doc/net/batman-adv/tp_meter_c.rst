@@ -64,11 +64,13 @@ batadv_tp_session_cookie
 
     generate session cookie based on session ids
 
-    :param const u8 session:
+    :param session:
         TP session identifier
+    :type session: const u8
 
-    :param u8 icmp_uid:
+    :param icmp_uid:
         icmp pseudo uid of the tp session
+    :type icmp_uid: u8
 
 .. _`batadv_tp_session_cookie.return`:
 
@@ -86,14 +88,17 @@ batadv_tp_cwnd
 
     compute the new cwnd size
 
-    :param u32 base:
+    :param base:
         base cwnd size value
+    :type base: u32
 
-    :param u32 increment:
+    :param increment:
         the value to add to base to get the new size
+    :type increment: u32
 
-    :param u32 min:
+    :param min:
         minumim cwnd value (usually MSS)
+    :type min: u32
 
 .. _`batadv_tp_cwnd.description`:
 
@@ -120,11 +125,13 @@ batadv_tp_update_cwnd
 
     update the Congestion Windows
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session
+    :type tp_vars: struct batadv_tp_vars \*
 
-    :param u32 mss:
+    :param mss:
         maximum segment size of transmission
+    :type mss: u32
 
 .. _`batadv_tp_update_cwnd.description`:
 
@@ -145,11 +152,13 @@ batadv_tp_update_rto
 
     calculate new retransmission timeout
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session
+    :type tp_vars: struct batadv_tp_vars \*
 
-    :param u32 new_rtt:
+    :param new_rtt:
         new roundtrip time in msec
+    :type new_rtt: u32
 
 .. _`batadv_tp_batctl_notify`:
 
@@ -160,23 +169,29 @@ batadv_tp_batctl_notify
 
     send client status result to client
 
-    :param enum batadv_tp_meter_reason reason:
+    :param reason:
         reason for tp meter session stop
+    :type reason: enum batadv_tp_meter_reason
 
-    :param const u8 \*dst:
+    :param dst:
         destination of tp_meter session
+    :type dst: const u8 \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param unsigned long start_time:
+    :param start_time:
         start of transmission in jiffies
+    :type start_time: unsigned long
 
-    :param u64 total_sent:
+    :param total_sent:
         bytes acked to the receiver
+    :type total_sent: u64
 
-    :param u32 cookie:
+    :param cookie:
         cookie of tp_meter session
+    :type cookie: u32
 
 .. _`batadv_tp_batctl_error_notify`:
 
@@ -187,17 +202,21 @@ batadv_tp_batctl_error_notify
 
     send client error result to client
 
-    :param enum batadv_tp_meter_reason reason:
+    :param reason:
         reason for tp meter session stop
+    :type reason: enum batadv_tp_meter_reason
 
-    :param const u8 \*dst:
+    :param dst:
         destination of tp_meter session
+    :type dst: const u8 \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u32 cookie:
+    :param cookie:
         cookie of tp_meter session
+    :type cookie: u32
 
 .. _`batadv_tp_list_find`:
 
@@ -208,11 +227,13 @@ batadv_tp_list_find
 
     find a tp_vars object in the global list
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*dst:
+    :param dst:
         the other endpoint MAC address to look for
+    :type dst: const u8 \*
 
 .. _`batadv_tp_list_find.description`:
 
@@ -238,14 +259,17 @@ batadv_tp_list_find_session
 
     find tp_vars session object in the global list
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*dst:
+    :param dst:
         the other endpoint MAC address to look for
+    :type dst: const u8 \*
 
-    :param const u8 \*session:
+    :param session:
         session identifier
+    :type session: const u8 \*
 
 .. _`batadv_tp_list_find_session.description`:
 
@@ -272,8 +296,9 @@ batadv_tp_vars_release
 
     release batadv_tp_vars from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the batadv_tp_vars
+    :type ref: struct kref \*
 
 .. _`batadv_tp_vars_put`:
 
@@ -284,8 +309,9 @@ batadv_tp_vars_put
 
     decrement the batadv_tp_vars refcounter and possibly release it
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session to be free'd
+    :type tp_vars: struct batadv_tp_vars \*
 
 .. _`batadv_tp_sender_cleanup`:
 
@@ -296,11 +322,13 @@ batadv_tp_sender_cleanup
 
     cleanup sender data and drop and timer
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session to cleanup
+    :type tp_vars: struct batadv_tp_vars \*
 
 .. _`batadv_tp_sender_end`:
 
@@ -311,11 +339,13 @@ batadv_tp_sender_end
 
     print info about ended session and inform client
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session
+    :type tp_vars: struct batadv_tp_vars \*
 
 .. _`batadv_tp_sender_shutdown`:
 
@@ -326,11 +356,13 @@ batadv_tp_sender_shutdown
 
     let sender thread/timer stop gracefully
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session
+    :type tp_vars: struct batadv_tp_vars \*
 
-    :param enum batadv_tp_meter_reason reason:
+    :param reason:
         reason for tp meter session stop
+    :type reason: enum batadv_tp_meter_reason
 
 .. _`batadv_tp_sender_finish`:
 
@@ -341,8 +373,9 @@ batadv_tp_sender_finish
 
     stop sender session after test_length was reached
 
-    :param struct work_struct \*work:
+    :param work:
         delayed work reference of the related tp_vars
+    :type work: struct work_struct \*
 
 .. _`batadv_tp_reset_sender_timer`:
 
@@ -353,8 +386,9 @@ batadv_tp_reset_sender_timer
 
     reschedule the sender timer
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private TP meter data for this session
+    :type tp_vars: struct batadv_tp_vars \*
 
 .. _`batadv_tp_reset_sender_timer.description`:
 
@@ -372,8 +406,9 @@ batadv_tp_sender_timeout
 
     timer that fires in case of packet loss
 
-    :param struct timer_list \*t:
+    :param t:
         address to timer_list inside tp_vars
+    :type t: struct timer_list \*
 
 .. _`batadv_tp_sender_timeout.description`:
 
@@ -393,14 +428,17 @@ batadv_tp_fill_prerandom
 
     Fill buffer with prefetched random bytes
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private TP meter data for this session
+    :type tp_vars: struct batadv_tp_vars \*
 
-    :param u8 \*buf:
+    :param buf:
         Buffer to fill with bytes
+    :type buf: u8 \*
 
-    :param size_t nbytes:
+    :param nbytes:
         amount of pseudorandom bytes
+    :type nbytes: size_t
 
 .. _`batadv_tp_send_msg`:
 
@@ -411,29 +449,37 @@ batadv_tp_send_msg
 
     send a single message
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private TP meter data for this session
+    :type tp_vars: struct batadv_tp_vars \*
 
-    :param const u8 \*src:
+    :param src:
         source mac address
+    :type src: const u8 \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator of the destination
+    :type orig_node: struct batadv_orig_node \*
 
-    :param u32 seqno:
+    :param seqno:
         sequence number of this packet
+    :type seqno: u32
 
-    :param size_t len:
+    :param len:
         length of the entire packet
+    :type len: size_t
 
-    :param const u8 \*session:
+    :param session:
         session identifier
+    :type session: const u8 \*
 
-    :param int uid:
+    :param uid:
         local ICMP "socket" index
+    :type uid: int
 
-    :param u32 timestamp:
+    :param timestamp:
         timestamp in jiffies which is replied in ack
+    :type timestamp: u32
 
 .. _`batadv_tp_send_msg.description`:
 
@@ -460,11 +506,13 @@ batadv_tp_recv_ack
 
     ACK receiving function
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the buffer containing the received packet
+    :type skb: const struct sk_buff \*
 
 .. _`batadv_tp_recv_ack.description`:
 
@@ -482,11 +530,13 @@ batadv_tp_avail
 
     check if congestion window is not full
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session
+    :type tp_vars: struct batadv_tp_vars \*
 
-    :param size_t payload_len:
+    :param payload_len:
         size of the payload of a single message
+    :type payload_len: size_t
 
 .. _`batadv_tp_avail.return`:
 
@@ -504,11 +554,13 @@ batadv_tp_wait_available
 
     wait until congestion window becomes free or timeout is reached
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session
+    :type tp_vars: struct batadv_tp_vars \*
 
-    :param size_t plen:
+    :param plen:
         size of the payload of a single message
+    :type plen: size_t
 
 .. _`batadv_tp_wait_available.return`:
 
@@ -529,8 +581,9 @@ batadv_tp_send
 
     main sending thread of a tp meter session
 
-    :param void \*arg:
+    :param arg:
         address of the related tp_vars
+    :type arg: void \*
 
 .. _`batadv_tp_send.return`:
 
@@ -548,8 +601,9 @@ batadv_tp_start_kthread
 
     start new thread which manages the tp meter sender
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session
+    :type tp_vars: struct batadv_tp_vars \*
 
 .. _`batadv_tp_start`:
 
@@ -560,17 +614,21 @@ batadv_tp_start
 
     start a new tp meter session
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*dst:
+    :param dst:
         the receiver MAC address
+    :type dst: const u8 \*
 
-    :param u32 test_length:
+    :param test_length:
         test length in milliseconds
+    :type test_length: u32
 
-    :param u32 \*cookie:
+    :param cookie:
         session cookie
+    :type cookie: u32 \*
 
 .. _`batadv_tp_stop`:
 
@@ -581,14 +639,17 @@ batadv_tp_stop
 
     stop currently running tp meter session
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*dst:
+    :param dst:
         the receiver MAC address
+    :type dst: const u8 \*
 
-    :param u8 return_value:
+    :param return_value:
         reason for tp meter session stop
+    :type return_value: u8
 
 .. _`batadv_tp_reset_receiver_timer`:
 
@@ -599,8 +660,9 @@ batadv_tp_reset_receiver_timer
 
     reset the receiver shutdown timer
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session
+    :type tp_vars: struct batadv_tp_vars \*
 
 .. _`batadv_tp_reset_receiver_timer.description`:
 
@@ -618,8 +680,9 @@ batadv_tp_receiver_shutdown
 
     stop a tp meter receiver when timeout is reached without received ack
 
-    :param struct timer_list \*t:
+    :param t:
         address to timer_list inside tp_vars
+    :type t: struct timer_list \*
 
 .. _`batadv_tp_send_ack`:
 
@@ -630,23 +693,29 @@ batadv_tp_send_ack
 
     send an ACK packet
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*dst:
+    :param dst:
         the mac address of the destination originator
+    :type dst: const u8 \*
 
-    :param u32 seq:
+    :param seq:
         the sequence number to ACK
+    :type seq: u32
 
-    :param __be32 timestamp:
+    :param timestamp:
         the timestamp to echo back in the ACK
+    :type timestamp: __be32
 
-    :param const u8 \*session:
+    :param session:
         session identifier
+    :type session: const u8 \*
 
-    :param int socket_index:
+    :param socket_index:
         local ICMP socket identifier
+    :type socket_index: int
 
 .. _`batadv_tp_send_ack.return`:
 
@@ -665,11 +734,13 @@ batadv_tp_handle_out_of_order
 
     store an out of order packet
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session
+    :type tp_vars: struct batadv_tp_vars \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the buffer containing the received packet
+    :type skb: const struct sk_buff \*
 
 .. _`batadv_tp_handle_out_of_order.description`:
 
@@ -696,8 +767,9 @@ batadv_tp_ack_unordered
 
     update number received bytes in current stream without gaps
 
-    :param struct batadv_tp_vars \*tp_vars:
+    :param tp_vars:
         the private data of the current TP meter session
+    :type tp_vars: struct batadv_tp_vars \*
 
 .. _`batadv_tp_init_recv`:
 
@@ -708,11 +780,13 @@ batadv_tp_init_recv
 
     return matching or create new receiver tp_vars
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const struct batadv_icmp_tp_packet \*icmp:
+    :param icmp:
         received icmp tp msg
+    :type icmp: const struct batadv_icmp_tp_packet \*
 
 .. _`batadv_tp_init_recv.return`:
 
@@ -730,11 +804,13 @@ batadv_tp_recv_msg
 
     process a single data message
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the buffer containing the received packet
+    :type skb: const struct sk_buff \*
 
 .. _`batadv_tp_recv_msg.description`:
 
@@ -752,11 +828,13 @@ batadv_tp_meter_recv
 
     main TP Meter receiving function
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the buffer containing the received packet
+    :type skb: struct sk_buff \*
 
 .. _`batadv_tp_meter_init`:
 
@@ -767,8 +845,9 @@ batadv_tp_meter_init
 
     initialize global tp_meter structures
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

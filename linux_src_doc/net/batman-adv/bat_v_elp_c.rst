@@ -10,8 +10,9 @@ batadv_v_elp_start_timer
 
     restart timer for ELP periodic work
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface for which the timer has to be reset
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_v_elp_get_throughput`:
 
@@ -22,8 +23,9 @@ batadv_v_elp_get_throughput
 
     get the throughput towards a neighbour
 
-    :param struct batadv_hardif_neigh_node \*neigh:
+    :param neigh:
         the neighbour for which the throughput has to be obtained
+    :type neigh: struct batadv_hardif_neigh_node \*
 
 .. _`batadv_v_elp_get_throughput.return`:
 
@@ -42,8 +44,9 @@ batadv_v_elp_throughput_metric_update
 
     worker updating the throughput metric of a single hop neighbour
 
-    :param struct work_struct \*work:
+    :param work:
         the work queue item
+    :type work: struct work_struct \*
 
 .. _`batadv_v_elp_wifi_neigh_probe`:
 
@@ -54,8 +57,9 @@ batadv_v_elp_wifi_neigh_probe
 
     send link probing packets to a neighbour
 
-    :param struct batadv_hardif_neigh_node \*neigh:
+    :param neigh:
         the neighbour to probe
+    :type neigh: struct batadv_hardif_neigh_node \*
 
 .. _`batadv_v_elp_wifi_neigh_probe.description`:
 
@@ -83,8 +87,9 @@ batadv_v_elp_periodic_work
 
     ELP periodic task per interface
 
-    :param struct work_struct \*work:
+    :param work:
         work queue item
+    :type work: struct work_struct \*
 
 .. _`batadv_v_elp_periodic_work.description`:
 
@@ -102,8 +107,9 @@ batadv_v_elp_iface_enable
 
     setup the ELP interface private resources
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         interface for which the data has to be prepared
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_v_elp_iface_enable.return`:
 
@@ -121,8 +127,9 @@ batadv_v_elp_iface_disable
 
     release ELP interface private resources
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         interface for which the resources have to be released
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_v_elp_iface_activate`:
 
@@ -133,11 +140,13 @@ batadv_v_elp_iface_activate
 
     update the ELP buffer belonging to the given hard-interface
 
-    :param struct batadv_hard_iface \*primary_iface:
+    :param primary_iface:
         the new primary interface
+    :type primary_iface: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         interface holding the to-be-updated buffer
+    :type hard_iface: struct batadv_hard_iface \*
 
 .. _`batadv_v_elp_primary_iface_set`:
 
@@ -148,8 +157,9 @@ batadv_v_elp_primary_iface_set
 
     change internal data to reflect the new primary interface
 
-    :param struct batadv_hard_iface \*primary_iface:
+    :param primary_iface:
         the new primary interface
+    :type primary_iface: struct batadv_hard_iface \*
 
 .. _`batadv_v_elp_neigh_update`:
 
@@ -160,17 +170,21 @@ batadv_v_elp_neigh_update
 
     update an ELP neighbour node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*neigh_addr:
+    :param neigh_addr:
         the neighbour interface address
+    :type neigh_addr: u8 \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface the packet was received through
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_elp_packet \*elp_packet:
+    :param elp_packet:
         the received ELP packet
+    :type elp_packet: struct batadv_elp_packet \*
 
 .. _`batadv_v_elp_neigh_update.description`:
 
@@ -189,11 +203,13 @@ batadv_v_elp_packet_recv
 
     main ELP packet handler
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the received packet
+    :type skb: struct sk_buff \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface this packet was received through
+    :type if_incoming: struct batadv_hard_iface \*
 
 .. _`batadv_v_elp_packet_recv.return`:
 

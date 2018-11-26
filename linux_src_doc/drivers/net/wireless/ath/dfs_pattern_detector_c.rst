@@ -46,8 +46,9 @@ get_dfs_domain_radar_types
 
     get radar types for a given DFS domain \ ``param``\  domain DFS domain \ ``return``\  radar_types ptr on success, NULL if DFS domain is not supported
 
-    :param enum nl80211_dfs_regions region:
+    :param region:
         *undescribed*
+    :type region: enum nl80211_dfs_regions
 
 .. _`channel_detector`:
 
@@ -103,11 +104,13 @@ channel_detector_get
 
     get channel detector for given frequency \ ``param``\  dpd instance pointer \ ``param``\  freq frequency in MHz \ ``return``\  pointer to channel detector on success, NULL otherwise
 
-    :param struct dfs_pattern_detector \*dpd:
+    :param dpd:
         *undescribed*
+    :type dpd: struct dfs_pattern_detector \*
 
-    :param u16 freq:
+    :param freq:
         *undescribed*
+    :type freq: u16
 
 .. _`channel_detector_get.description`:
 

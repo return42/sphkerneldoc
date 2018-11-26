@@ -14,35 +14,6 @@ callback function to create a cma backed framebuffer.
 
 An fbdev framebuffer backed by cma is also available by calling
 \ :c:func:`drm_fb_cma_fbdev_init`\ . \ :c:func:`drm_fb_cma_fbdev_fini`\  tears it down.
-If the \ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\  callback is set, fb_deferred_io will be
-set up automatically. \ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\  is called by
-\ :c:func:`drm_fb_helper_deferred_io`\  in process context (&struct delayed_work).
-
-Example fbdev deferred io code::
-
-    static int driver_fb_dirty(struct drm_framebuffer *fb,
-                               struct drm_file *file_priv,
-                               unsigned flags, unsigned color,
-                               struct drm_clip_rect *clips,
-                               unsigned num_clips)
-    {
-        struct drm_gem_cma_object *cma = drm_fb_cma_get_gem_obj(fb, 0);
-        ... push changes ...
-        return 0;
-    }
-
-    static struct drm_framebuffer_funcs driver_fb_funcs = {
-        .destroy       = drm_gem_fb_destroy,
-        .create_handle = drm_gem_fb_create_handle,
-        .dirty         = driver_fb_dirty,
-    };
-
-Initialize::
-
-    fbdev = drm_fb_cma_fbdev_init_with_funcs(dev, 16,
-                                          dev->mode_config.num_crtc,
-                                          dev->mode_config.num_connector,
-                                          &driver_fb_funcs);
 
 .. _`drm_fb_cma_get_gem_obj`:
 
@@ -53,11 +24,13 @@ drm_fb_cma_get_gem_obj
 
     Get CMA GEM object for framebuffer
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         The framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param unsigned int plane:
+    :param plane:
         Which plane
+    :type plane: unsigned int
 
 .. _`drm_fb_cma_get_gem_obj.description`:
 
@@ -77,15 +50,18 @@ drm_fb_cma_get_gem_addr
 
     Get physical address for framebuffer
 
-    :param struct drm_framebuffer \*fb:
+    :param fb:
         The framebuffer
+    :type fb: struct drm_framebuffer \*
 
-    :param struct drm_plane_state \*state:
+    :param state:
         Which state of drm plane
+    :type state: struct drm_plane_state \*
 
-    :param unsigned int plane:
+    :param plane:
         Which plane
         Return the CMA GEM address for given framebuffer.
+    :type plane: unsigned int
 
 .. _`drm_fb_cma_get_gem_addr.description`:
 
@@ -93,37 +69,6 @@ Description
 -----------
 
 This function will usually be called from the PLANE callback functions.
-
-.. _`drm_fb_cma_fbdev_init_with_funcs`:
-
-drm_fb_cma_fbdev_init_with_funcs
-================================
-
-.. c:function:: int drm_fb_cma_fbdev_init_with_funcs(struct drm_device *dev, unsigned int preferred_bpp, unsigned int max_conn_count, const struct drm_framebuffer_funcs *funcs)
-
-    Allocate and initialize fbdev emulation
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int preferred_bpp:
-        Preferred bits per pixel for the device.
-        \ ``dev``\ ->mode_config.preferred_depth is used if this is zero.
-
-    :param unsigned int max_conn_count:
-        Maximum number of connectors.
-        \ ``dev``\ ->mode_config.num_connector is used if this is zero.
-
-    :param const struct drm_framebuffer_funcs \*funcs:
-        Framebuffer functions, in particular a custom \ :c:func:`dirty`\  callback.
-        Can be NULL.
-
-.. _`drm_fb_cma_fbdev_init_with_funcs.return`:
-
-Return
-------
-
-Zero on success or negative error code on failure.
 
 .. _`drm_fb_cma_fbdev_init`:
 
@@ -134,16 +79,19 @@ drm_fb_cma_fbdev_init
 
     Allocate and initialize fbdev emulation
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param unsigned int preferred_bpp:
+    :param preferred_bpp:
         Preferred bits per pixel for the device.
-        \ ``dev``\ ->mode_config.preferred_depth is used if this is zero.
+        \ ``dev->mode_config.preferred_depth``\  is used if this is zero.
+    :type preferred_bpp: unsigned int
 
-    :param unsigned int max_conn_count:
+    :param max_conn_count:
         Maximum number of connectors.
-        \ ``dev``\ ->mode_config.num_connector is used if this is zero.
+        \ ``dev->mode_config.num_connector``\  is used if this is zero.
+    :type max_conn_count: unsigned int
 
 .. _`drm_fb_cma_fbdev_init.return`:
 
@@ -161,36 +109,9 @@ drm_fb_cma_fbdev_fini
 
     Teardown fbdev emulation
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
-
-.. _`drm_fbdev_cma_init_with_funcs`:
-
-drm_fbdev_cma_init_with_funcs
-=============================
-
-.. c:function:: struct drm_fbdev_cma *drm_fbdev_cma_init_with_funcs(struct drm_device *dev, unsigned int preferred_bpp, unsigned int max_conn_count, const struct drm_framebuffer_funcs *funcs)
-
-    Allocate and initializes a drm_fbdev_cma struct
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int preferred_bpp:
-        Preferred bits per pixel for the device
-
-    :param unsigned int max_conn_count:
-        Maximum number of connectors
-
-    :param const struct drm_framebuffer_funcs \*funcs:
-        fb helper functions, in particular a custom \ :c:func:`dirty`\  callback
-
-.. _`drm_fbdev_cma_init_with_funcs.description`:
-
-Description
------------
-
-Returns a newly allocated drm_fbdev_cma struct or a ERR_PTR.
+    :type dev: struct drm_device \*
 
 .. _`drm_fbdev_cma_init`:
 
@@ -201,14 +122,17 @@ drm_fbdev_cma_init
 
     Allocate and initializes a drm_fbdev_cma struct
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param unsigned int preferred_bpp:
+    :param preferred_bpp:
         Preferred bits per pixel for the device
+    :type preferred_bpp: unsigned int
 
-    :param unsigned int max_conn_count:
+    :param max_conn_count:
         Maximum number of connectors
+    :type max_conn_count: unsigned int
 
 .. _`drm_fbdev_cma_init.description`:
 
@@ -226,8 +150,9 @@ drm_fbdev_cma_fini
 
     Free drm_fbdev_cma struct
 
-    :param struct drm_fbdev_cma \*fbdev_cma:
+    :param fbdev_cma:
         The drm_fbdev_cma struct
+    :type fbdev_cma: struct drm_fbdev_cma \*
 
 .. _`drm_fbdev_cma_restore_mode`:
 
@@ -238,8 +163,9 @@ drm_fbdev_cma_restore_mode
 
     Restores initial framebuffer mode
 
-    :param struct drm_fbdev_cma \*fbdev_cma:
+    :param fbdev_cma:
         The drm_fbdev_cma struct, may be NULL
+    :type fbdev_cma: struct drm_fbdev_cma \*
 
 .. _`drm_fbdev_cma_restore_mode.description`:
 
@@ -257,8 +183,9 @@ drm_fbdev_cma_hotplug_event
 
     Poll for hotpulug events
 
-    :param struct drm_fbdev_cma \*fbdev_cma:
+    :param fbdev_cma:
         The drm_fbdev_cma struct, may be NULL
+    :type fbdev_cma: struct drm_fbdev_cma \*
 
 .. _`drm_fbdev_cma_hotplug_event.description`:
 
@@ -267,29 +194,6 @@ Description
 
 This function is usually called from the \ :c:type:`drm_mode_config.output_poll_changed <drm_mode_config>`\ 
 callback.
-
-.. _`drm_fbdev_cma_set_suspend`:
-
-drm_fbdev_cma_set_suspend
-=========================
-
-.. c:function:: void drm_fbdev_cma_set_suspend(struct drm_fbdev_cma *fbdev_cma, bool state)
-
-    wrapper around drm_fb_helper_set_suspend
-
-    :param struct drm_fbdev_cma \*fbdev_cma:
-        The drm_fbdev_cma struct, may be NULL
-
-    :param bool state:
-        desired state, zero to resume, non-zero to suspend
-
-.. _`drm_fbdev_cma_set_suspend.description`:
-
-Description
------------
-
-Calls drm_fb_helper_set_suspend, which is a wrapper around
-fb_set_suspend implemented by fbdev core.
 
 .. _`drm_fbdev_cma_set_suspend_unlocked`:
 
@@ -300,11 +204,13 @@ drm_fbdev_cma_set_suspend_unlocked
 
     wrapper around drm_fb_helper_set_suspend_unlocked
 
-    :param struct drm_fbdev_cma \*fbdev_cma:
+    :param fbdev_cma:
         The drm_fbdev_cma struct, may be NULL
+    :type fbdev_cma: struct drm_fbdev_cma \*
 
-    :param bool state:
+    :param state:
         desired state, zero to resume, non-zero to suspend
+    :type state: bool
 
 .. _`drm_fbdev_cma_set_suspend_unlocked.description`:
 

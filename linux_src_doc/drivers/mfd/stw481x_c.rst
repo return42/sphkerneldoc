@@ -10,11 +10,13 @@ stw481x_get_pctl_reg
 
     get a power control register
 
-    :param struct stw481x \*stw481x:
+    :param stw481x:
         handle to the stw481x chip
+    :type stw481x: struct stw481x \*
 
-    :param u8 reg:
+    :param reg:
         power control register to fetch
+    :type reg: u8
 
 .. _`stw481x_get_pctl_reg.description`:
 

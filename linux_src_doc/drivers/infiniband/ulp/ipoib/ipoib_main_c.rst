@@ -8,8 +8,9 @@ ipoib_get_master_net_dev
 
 .. c:function:: struct net_device *ipoib_get_master_net_dev(struct net_device *dev)
 
-    :param struct net_device \*dev:
+    :param dev:
         base IPoIB net_device
+    :type dev: struct net_device \*
 
 .. _`ipoib_get_master_net_dev.description`:
 
@@ -28,11 +29,13 @@ ipoib_get_net_dev_match_addr
 
     the given net_device.
 
-    :param const struct sockaddr \*addr:
+    :param addr:
         IP address to look for.
+    :type addr: const struct sockaddr \*
 
-    :param struct net_device \*dev:
+    :param dev:
         base IPoIB net_device
+    :type dev: struct net_device \*
 
 .. _`ipoib_get_net_dev_match_addr.description`:
 

@@ -10,14 +10,17 @@ aa_strneq
 
     compare null terminated \ ``str``\  to a non null terminated substring
 
-    :param const char \*str:
+    :param str:
         a null terminated string
+    :type str: const char \*
 
-    :param const char \*sub:
+    :param sub:
         a substring, not necessarily null terminated
+    :type sub: const char \*
 
-    :param int len:
+    :param len:
         length of \ ``sub``\  to compare
+    :type len: int
 
 .. _`aa_strneq.description`:
 
@@ -35,11 +38,13 @@ aa_dfa_null_transition
 
     step to next state after null character
 
-    :param struct aa_dfa \*dfa:
+    :param dfa:
         the dfa to match against
+    :type dfa: struct aa_dfa \*
 
-    :param unsigned int start:
+    :param start:
         the state of the dfa to start matching in
+    :type start: unsigned int
 
 .. _`aa_dfa_null_transition.description`:
 
@@ -59,8 +64,9 @@ basename
 
     find the last component of an hname
 
-    :param const char \*hname:
+    :param hname:
         *undescribed*
+    :type hname: const char \*
 
 .. _`basename.return`:
 
@@ -78,11 +84,13 @@ the tail (base profile name) name component of an hname
 
     find a policy by \ ``name``\  on a policy list
 
-    :param struct list_head \*head:
+    :param head:
         list to search  (NOT NULL)
+    :type head: struct list_head \*
 
-    :param const char \*name:
+    :param name:
         name to search for  (NOT NULL)
+    :type name: const char \*
 
 .. _`__policy_find.requires`:
 
@@ -107,14 +115,17 @@ unrefcounted policy that match \ ``name``\  or NULL if not found
 
     find a policy that's name matches \ ``len``\  chars of \ ``str``\ 
 
-    :param struct list_head \*head:
+    :param head:
         list to search  (NOT NULL)
+    :type head: struct list_head \*
 
-    :param const char \*str:
+    :param str:
         string to search for  (NOT NULL)
+    :type str: const char \*
 
-    :param int len:
+    :param len:
         length of match required
+    :type len: int
 
 .. _`__policy_strn_find.requires`:
 

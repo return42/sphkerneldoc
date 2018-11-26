@@ -10,18 +10,22 @@ zd_mac_tx_status
 
     reports tx status of a packet if required \ ``hw``\  - a \ :c:type:`struct ieee80211_hw <ieee80211_hw>`\  pointer \ ``skb``\  - a sk-buffer
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct ieee80211_hw \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param int ackssi:
+    :param ackssi:
         ACK signal strength
         \ ``success``\  - True for successful transmission of the frame
+    :type ackssi: int
 
-    :param struct tx_status \*tx_status:
+    :param tx_status:
         *undescribed*
+    :type tx_status: struct tx_status \*
 
 .. _`zd_mac_tx_status.description`:
 
@@ -43,8 +47,9 @@ zd_mac_tx_failed
 
     callback for failed frames
 
-    :param struct urb \*urb:
+    :param urb:
         *undescribed*
+    :type urb: struct urb \*
 
 .. _`zd_mac_tx_failed.description`:
 
@@ -64,11 +69,13 @@ zd_mac_tx_to_dev
 
     callback for USB layer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         a \ :c:type:`struct sk_buff <sk_buff>`\  pointer
+    :type skb: struct sk_buff \*
 
-    :param int error:
+    :param error:
         error value, 0 if transmission successful
+    :type error: int
 
 .. _`zd_mac_tx_to_dev.description`:
 
@@ -89,14 +96,17 @@ zd_op_tx
 
     transmits a network frame to the device
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_tx_control \*control:
+    :param control:
         the control structure
+    :type control: struct ieee80211_tx_control \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer
+    :type skb: struct sk_buff \*
 
 .. _`zd_op_tx.description`:
 
@@ -116,14 +126,17 @@ filter_ack
 
     filters incoming packets for acknowledgements
 
-    :param struct ieee80211_hw \*hw:
+    :param hw:
         *undescribed*
+    :type hw: struct ieee80211_hw \*
 
-    :param struct ieee80211_hdr \*rx_hdr:
+    :param rx_hdr:
         received header
+    :type rx_hdr: struct ieee80211_hdr \*
 
-    :param struct ieee80211_rx_status \*stats:
+    :param stats:
         the status for the received packet
+    :type stats: struct ieee80211_rx_status \*
 
 .. _`filter_ack.description`:
 

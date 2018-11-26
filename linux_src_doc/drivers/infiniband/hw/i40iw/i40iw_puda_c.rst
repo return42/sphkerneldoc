@@ -10,8 +10,9 @@ i40iw_puda_get_listbuf
 
     get buffer from puda list
 
-    :param struct list_head \*list:
+    :param list:
         list to use for buffers (ILQ or IEQ)
+    :type list: struct list_head \*
 
 .. _`i40iw_puda_get_bufpool`:
 
@@ -22,8 +23,9 @@ i40iw_puda_get_bufpool
 
     return buffer from resource
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         resource to use for buffer
+    :type rsrc: struct i40iw_puda_rsrc \*
 
 .. _`i40iw_puda_ret_bufpool`:
 
@@ -34,11 +36,13 @@ i40iw_puda_ret_bufpool
 
     return buffer to rsrc list
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         resource to use for buffer
+    :type rsrc: struct i40iw_puda_rsrc \*
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         buffe to return to resouce
+    :type buf: struct i40iw_puda_buf \*
 
 .. _`i40iw_puda_post_recvbuf`:
 
@@ -49,17 +53,21 @@ i40iw_puda_post_recvbuf
 
     set wqe for rcv buffer
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         resource ptr
+    :type rsrc: struct i40iw_puda_rsrc \*
 
-    :param u32 wqe_idx:
+    :param wqe_idx:
         wqe index to use
+    :type wqe_idx: u32
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         puda buffer for rcv q
+    :type buf: struct i40iw_puda_buf \*
 
-    :param bool initial:
+    :param initial:
         flag if during init time
+    :type initial: bool
 
 .. _`i40iw_puda_replenish_rq`:
 
@@ -70,11 +78,13 @@ i40iw_puda_replenish_rq
 
     post rcv buffers
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         resource to use for buffer
+    :type rsrc: struct i40iw_puda_rsrc \*
 
-    :param bool initial:
+    :param initial:
         flag if during init time
+    :type initial: bool
 
 .. _`i40iw_puda_alloc_buf`:
 
@@ -85,11 +95,13 @@ i40iw_puda_alloc_buf
 
     allocate mem for buffer
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         iwarp device
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 length:
+    :param length:
         length of buffer
+    :type length: u32
 
 .. _`i40iw_puda_dele_buf`:
 
@@ -100,11 +112,13 @@ i40iw_puda_dele_buf
 
     delete buffer back to system
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         iwarp device
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         buffer to free
+    :type buf: struct i40iw_puda_buf \*
 
 .. _`i40iw_puda_get_next_send_wqe`:
 
@@ -115,11 +129,13 @@ i40iw_puda_get_next_send_wqe
 
     return next wqe for processing
 
-    :param struct i40iw_qp_uk \*qp:
+    :param qp:
         puda qp for wqe
+    :type qp: struct i40iw_qp_uk \*
 
-    :param u32 \*wqe_idx:
+    :param wqe_idx:
         wqe index for caller
+    :type wqe_idx: u32 \*
 
 .. _`i40iw_puda_poll_info`:
 
@@ -130,11 +146,13 @@ i40iw_puda_poll_info
 
     poll cq for completion
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         cq for poll
+    :type cq: struct i40iw_sc_cq \*
 
-    :param struct i40iw_puda_completion_info \*info:
+    :param info:
         info return for successful completion
+    :type info: struct i40iw_puda_completion_info \*
 
 .. _`i40iw_puda_poll_completion`:
 
@@ -145,14 +163,17 @@ i40iw_puda_poll_completion
 
     processes completion for cq
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         iwarp device
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         cq getting interrupt
+    :type cq: struct i40iw_sc_cq \*
 
-    :param u32 \*compl_err:
+    :param compl_err:
         return any completion err
+    :type compl_err: u32 \*
 
 .. _`i40iw_puda_send`:
 
@@ -163,11 +184,13 @@ i40iw_puda_send
 
     complete send wqe for transmit
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         puda qp for send
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_puda_send_info \*info:
+    :param info:
         buffer information for transmit
+    :type info: struct i40iw_puda_send_info \*
 
 .. _`i40iw_puda_send_buf`:
 
@@ -178,11 +201,13 @@ i40iw_puda_send_buf
 
     transmit puda buffer
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         resource to use for buffer
+    :type rsrc: struct i40iw_puda_rsrc \*
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         puda buffer to transmit
+    :type buf: struct i40iw_puda_buf \*
 
 .. _`i40iw_puda_qp_setctx`:
 
@@ -193,8 +218,9 @@ i40iw_puda_qp_setctx
 
     during init, set qp's context
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         qp's resource
+    :type rsrc: struct i40iw_puda_rsrc \*
 
 .. _`i40iw_puda_qp_wqe`:
 
@@ -205,11 +231,13 @@ i40iw_puda_qp_wqe
 
     setup wqe for qp create
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         *undescribed*
+    :type qp: struct i40iw_sc_qp \*
 
 .. _`i40iw_puda_qp_create`:
 
@@ -220,8 +248,9 @@ i40iw_puda_qp_create
 
     create qp for resource
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         resource to use for buffer
+    :type rsrc: struct i40iw_puda_rsrc \*
 
 .. _`i40iw_puda_cq_wqe`:
 
@@ -232,11 +261,13 @@ i40iw_puda_cq_wqe
 
     setup wqe for cq create
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_sc_cq \*cq:
+    :param cq:
         *undescribed*
+    :type cq: struct i40iw_sc_cq \*
 
 .. _`i40iw_puda_cq_create`:
 
@@ -247,8 +278,9 @@ i40iw_puda_cq_create
 
     create cq for resource
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         resource for which cq to create
+    :type rsrc: struct i40iw_puda_rsrc \*
 
 .. _`i40iw_puda_free_qp`:
 
@@ -259,8 +291,9 @@ i40iw_puda_free_qp
 
     free qp for resource
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         resource for which qp to free
+    :type rsrc: struct i40iw_puda_rsrc \*
 
 .. _`i40iw_puda_free_cq`:
 
@@ -271,8 +304,9 @@ i40iw_puda_free_cq
 
     free cq for resource
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         resource for which cq to free
+    :type rsrc: struct i40iw_puda_rsrc \*
 
 .. _`i40iw_puda_dele_resources`:
 
@@ -283,14 +317,17 @@ i40iw_puda_dele_resources
 
     delete all resources during close
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         *undescribed*
+    :type vsi: struct i40iw_sc_vsi \*
 
-    :param enum puda_resource_type type:
+    :param type:
         type of resource to dele
+    :type type: enum puda_resource_type
 
-    :param bool reset:
+    :param reset:
         true if reset chip
+    :type reset: bool
 
 .. _`i40iw_puda_allocbufs`:
 
@@ -301,11 +338,13 @@ i40iw_puda_allocbufs
 
     allocate buffers for resource
 
-    :param struct i40iw_puda_rsrc \*rsrc:
+    :param rsrc:
         resource for buffer allocation
+    :type rsrc: struct i40iw_puda_rsrc \*
 
-    :param u32 count:
+    :param count:
         number of buffers to create
+    :type count: u32
 
 .. _`i40iw_puda_create_rsrc`:
 
@@ -316,11 +355,13 @@ i40iw_puda_create_rsrc
 
     create resouce (ilq or ieq)
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         *undescribed*
+    :type vsi: struct i40iw_sc_vsi \*
 
-    :param struct i40iw_puda_rsrc_info \*info:
+    :param info:
         resource information
+    :type info: struct i40iw_puda_rsrc_info \*
 
 .. _`i40iw_ilq_putback_rcvbuf`:
 
@@ -331,11 +372,13 @@ i40iw_ilq_putback_rcvbuf
 
     ilq buffer to put back on rq
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         ilq's qp resource
+    :type qp: struct i40iw_sc_qp \*
 
-    :param u32 wqe_idx:
+    :param wqe_idx:
         wqe index of completed rcvbuf
+    :type wqe_idx: u32
 
 .. _`i40iw_ieq_get_fpdu_length`:
 
@@ -346,8 +389,9 @@ i40iw_ieq_get_fpdu_length
 
     given length return fpdu length
 
-    :param u16 length:
+    :param length:
         length if fpdu
+    :type length: u16
 
 .. _`i40iw_ieq_copy_to_txbuf`:
 
@@ -358,20 +402,25 @@ i40iw_ieq_copy_to_txbuf
 
     copydata from rcv buf to tx buf
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         rcv buffer with partial
+    :type buf: struct i40iw_puda_buf \*
 
-    :param struct i40iw_puda_buf \*txbuf:
+    :param txbuf:
         tx buffer for sendign back
+    :type txbuf: struct i40iw_puda_buf \*
 
-    :param u16 buf_offset:
+    :param buf_offset:
         rcv buffer offset to copy from
+    :type buf_offset: u16
 
-    :param u32 txbuf_offset:
+    :param txbuf_offset:
         at offset in tx buf to copy
+    :type txbuf_offset: u32
 
-    :param u32 length:
+    :param length:
         length of data to copy
+    :type length: u32
 
 .. _`i40iw_ieq_setup_tx_buf`:
 
@@ -382,11 +431,13 @@ i40iw_ieq_setup_tx_buf
 
     setup tx buffer for partial handling
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         reeive buffer with partial
+    :type buf: struct i40iw_puda_buf \*
 
-    :param struct i40iw_puda_buf \*txbuf:
+    :param txbuf:
         buffer to prepare
+    :type txbuf: struct i40iw_puda_buf \*
 
 .. _`i40iw_ieq_check_first_buf`:
 
@@ -397,11 +448,13 @@ i40iw_ieq_check_first_buf
 
     check if rcv buffer's seq is in range
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         receive exception buffer
+    :type buf: struct i40iw_puda_buf \*
 
-    :param u32 fps:
+    :param fps:
         first partial sequence number
+    :type fps: u32
 
 .. _`i40iw_ieq_compl_pfpdu`:
 
@@ -412,20 +465,25 @@ i40iw_ieq_compl_pfpdu
 
     write txbuf with full fpdu
 
-    :param struct i40iw_puda_rsrc \*ieq:
+    :param ieq:
         ieq resource
+    :type ieq: struct i40iw_puda_rsrc \*
 
-    :param struct list_head \*rxlist:
+    :param rxlist:
         ieq's received buffer list
+    :type rxlist: struct list_head \*
 
-    :param struct list_head \*pbufl:
+    :param pbufl:
         temporary list for buffers for fpddu
+    :type pbufl: struct list_head \*
 
-    :param struct i40iw_puda_buf \*txbuf:
+    :param txbuf:
         tx buffer for fpdu
+    :type txbuf: struct i40iw_puda_buf \*
 
-    :param u16 fpdu_len:
+    :param fpdu_len:
         total length of fpdu
+    :type fpdu_len: u16
 
 .. _`i40iw_ieq_create_pbufl`:
 
@@ -436,20 +494,25 @@ i40iw_ieq_create_pbufl
 
     create buffer list for single fpdu
 
-    :param struct i40iw_pfpdu \*pfpdu:
+    :param pfpdu:
         *undescribed*
+    :type pfpdu: struct i40iw_pfpdu \*
 
-    :param struct list_head \*rxlist:
+    :param rxlist:
         resource list for receive ieq buffes
+    :type rxlist: struct list_head \*
 
-    :param struct list_head \*pbufl:
+    :param pbufl:
         temp. list for buffers for fpddu
+    :type pbufl: struct list_head \*
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         first receive buffer
+    :type buf: struct i40iw_puda_buf \*
 
-    :param u16 fpdu_len:
+    :param fpdu_len:
         total length of fpdu
+    :type fpdu_len: u16
 
 .. _`i40iw_ieq_handle_partial`:
 
@@ -460,17 +523,21 @@ i40iw_ieq_handle_partial
 
     process partial fpdu buffer
 
-    :param struct i40iw_puda_rsrc \*ieq:
+    :param ieq:
         ieq resource
+    :type ieq: struct i40iw_puda_rsrc \*
 
-    :param struct i40iw_pfpdu \*pfpdu:
+    :param pfpdu:
         partial management per user qp
+    :type pfpdu: struct i40iw_pfpdu \*
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         receive buffer
+    :type buf: struct i40iw_puda_buf \*
 
-    :param u16 fpdu_len:
+    :param fpdu_len:
         fpdu len in the buffer
+    :type fpdu_len: u16
 
 .. _`i40iw_ieq_process_buf`:
 
@@ -481,14 +548,17 @@ i40iw_ieq_process_buf
 
     process buffer rcvd for ieq
 
-    :param struct i40iw_puda_rsrc \*ieq:
+    :param ieq:
         ieq resource
+    :type ieq: struct i40iw_puda_rsrc \*
 
-    :param struct i40iw_pfpdu \*pfpdu:
+    :param pfpdu:
         partial management per user qp
+    :type pfpdu: struct i40iw_pfpdu \*
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         receive buffer
+    :type buf: struct i40iw_puda_buf \*
 
 .. _`i40iw_ieq_process_fpdus`:
 
@@ -499,11 +569,13 @@ i40iw_ieq_process_fpdus
 
     process fpdu's buffers on its list
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         qp for which partial fpdus
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_puda_rsrc \*ieq:
+    :param ieq:
         ieq resource
+    :type ieq: struct i40iw_puda_rsrc \*
 
 .. _`i40iw_ieq_handle_exception`:
 
@@ -514,14 +586,17 @@ i40iw_ieq_handle_exception
 
     handle qp's exception
 
-    :param struct i40iw_puda_rsrc \*ieq:
+    :param ieq:
         ieq resource
+    :type ieq: struct i40iw_puda_rsrc \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         qp receiving excpetion
+    :type qp: struct i40iw_sc_qp \*
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         receive buffer
+    :type buf: struct i40iw_puda_buf \*
 
 .. _`i40iw_ieq_receive`:
 
@@ -532,11 +607,13 @@ i40iw_ieq_receive
 
     received exception buffer
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         *undescribed*
+    :type vsi: struct i40iw_sc_vsi \*
 
-    :param struct i40iw_puda_buf \*buf:
+    :param buf:
         exception buffer received
+    :type buf: struct i40iw_puda_buf \*
 
 .. _`i40iw_ieq_tx_compl`:
 
@@ -547,11 +624,13 @@ i40iw_ieq_tx_compl
 
     put back after sending completed exception buffer
 
-    :param struct i40iw_sc_vsi \*vsi:
+    :param vsi:
         pointer to the vsi structure
+    :type vsi: struct i40iw_sc_vsi \*
 
-    :param void \*sqwrid:
+    :param sqwrid:
         pointer to puda buffer
+    :type sqwrid: void \*
 
 .. _`i40iw_ieq_cleanup_qp`:
 
@@ -562,11 +641,13 @@ i40iw_ieq_cleanup_qp
 
     qp is being destroyed
 
-    :param struct i40iw_puda_rsrc \*ieq:
+    :param ieq:
         ieq resource
+    :type ieq: struct i40iw_puda_rsrc \*
 
-    :param struct i40iw_sc_qp \*qp:
+    :param qp:
         all pending fpdu buffers
+    :type qp: struct i40iw_sc_qp \*
 
 .. This file was automatic generated / don't edit.
 

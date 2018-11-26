@@ -10,8 +10,9 @@ pci_devs_phb_init_dynamic
 
     setup pci devices under this PHB
 
-    :param struct pci_controller \*phb:
+    :param phb:
         *undescribed*
+    :type phb: struct pci_controller \*
 
 .. _`pci_devs_phb_init_dynamic.phb`:
 
@@ -33,8 +34,9 @@ pci_devs_phb_init
 
     Initialize phbs and pci devs under them.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`pci_devs_phb_init.description`:
 

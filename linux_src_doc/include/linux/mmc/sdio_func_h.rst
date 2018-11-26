@@ -10,11 +10,13 @@ SDIO_DEVICE
 
     macro used to describe a specific SDIO device
 
-    :param  vend:
+    :param vend:
         the 16 bit manufacturer code
+    :type vend: 
 
-    :param  dev:
+    :param dev:
         the 16 bit function id
+    :type dev: 
 
 .. _`sdio_device.description`:
 
@@ -33,8 +35,9 @@ SDIO_DEVICE_CLASS
 
     macro used to describe a specific SDIO device class
 
-    :param  dev_class:
+    :param dev_class:
         the 8 bit standard interface code
+    :type dev_class: 
 
 .. _`sdio_device_class.description`:
 

@@ -86,11 +86,13 @@ get_channel
 
     get pointer to channel
 
-    :param struct most_interface \*iface:
+    :param iface:
         interface structure
+    :type iface: struct most_interface \*
 
-    :param int channel_id:
+    :param channel_id:
         channel ID
+    :type channel_id: int
 
 .. _`get_channel.description`:
 
@@ -111,11 +113,13 @@ copy_data
 
     implements data copying function
 
-    :param struct channel \*channel:
+    :param channel:
         channel
+    :type channel: struct channel \*
 
-    :param struct mbo \*mbo:
+    :param mbo:
         MBO from core
+    :type mbo: struct mbo \*
 
 .. _`copy_data.description`:
 
@@ -133,8 +137,9 @@ playback_thread
 
     function implements the playback thread
 
-    :param void \*data:
+    :param data:
         private data
+    :type data: void \*
 
 .. _`playback_thread.description`:
 
@@ -156,8 +161,9 @@ pcm_open
 
     implements open callback function for PCM middle layer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         pointer to ALSA PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`pcm_open.description`:
 
@@ -178,8 +184,9 @@ pcm_close
 
     implements close callback function for PCM middle layer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         sub-stream pointer
+    :type substream: struct snd_pcm_substream \*
 
 .. _`pcm_close.description`:
 
@@ -201,11 +208,13 @@ pcm_hw_params
 
     implements hw_params callback function for PCM middle layer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         sub-stream pointer
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*hw_params:
+    :param hw_params:
         contains the hardware parameters set by the application
+    :type hw_params: struct snd_pcm_hw_params \*
 
 .. _`pcm_hw_params.description`:
 
@@ -228,8 +237,9 @@ pcm_hw_free
 
     implements hw_free callback function for PCM middle layer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         substream pointer
+    :type substream: struct snd_pcm_substream \*
 
 .. _`pcm_hw_free.description`:
 
@@ -250,8 +260,9 @@ pcm_prepare
 
     implements prepare callback function for PCM middle layer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         substream pointer
+    :type substream: struct snd_pcm_substream \*
 
 .. _`pcm_prepare.description`:
 
@@ -272,11 +283,13 @@ pcm_trigger
 
     implements trigger callback function for PCM middle layer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         substream pointer
+    :type substream: struct snd_pcm_substream \*
 
-    :param int cmd:
+    :param cmd:
         action to perform
+    :type cmd: int
 
 .. _`pcm_trigger.description`:
 
@@ -297,8 +310,9 @@ pcm_pointer
 
     implements pointer callback function for PCM middle layer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         substream pointer
+    :type substream: struct snd_pcm_substream \*
 
 .. _`pcm_pointer.description`:
 
@@ -318,18 +332,22 @@ audio_probe_channel
 
     probe function of the driver module
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface instance
+    :type iface: struct most_interface \*
 
-    :param int channel_id:
+    :param channel_id:
         channel index/ID
+    :type channel_id: int
 
-    :param struct most_channel_config \*cfg:
+    :param cfg:
         pointer to actual channel configuration
+    :type cfg: struct most_channel_config \*
 
-    :param char \*arg_list:
+    :param arg_list:
         string that provides the name of the device to be created in /dev
         plus the desired audio resolution
+    :type arg_list: char \*
 
 .. _`audio_probe_channel.description`:
 
@@ -349,11 +367,13 @@ audio_disconnect_channel
 
     function to disconnect a channel
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface instance
+    :type iface: struct most_interface \*
 
-    :param int channel_id:
+    :param channel_id:
         channel index
+    :type channel_id: int
 
 .. _`audio_disconnect_channel.description`:
 
@@ -373,8 +393,9 @@ audio_rx_completion
 
     completion handler for rx channels
 
-    :param struct mbo \*mbo:
+    :param mbo:
         pointer to buffer object that has completed
+    :type mbo: struct mbo \*
 
 .. _`audio_rx_completion.description`:
 
@@ -395,11 +416,13 @@ audio_tx_completion
 
     completion handler for tx channels
 
-    :param struct most_interface \*iface:
+    :param iface:
         pointer to interface instance
+    :type iface: struct most_interface \*
 
-    :param int channel_id:
+    :param channel_id:
         channel index/ID
+    :type channel_id: int
 
 .. _`audio_tx_completion.description`:
 

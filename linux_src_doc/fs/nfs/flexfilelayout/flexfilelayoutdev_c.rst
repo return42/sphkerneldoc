@@ -10,14 +10,17 @@ nfs4_ff_layout_prepare_ds
 
     prepare a DS connection for an RPC call
 
-    :param struct pnfs_layout_segment \*lseg:
+    :param lseg:
         the layout segment we're operating on
+    :type lseg: struct pnfs_layout_segment \*
 
-    :param u32 ds_idx:
+    :param ds_idx:
         index of the DS to use
+    :type ds_idx: u32
 
-    :param bool fail_return:
+    :param fail_return:
         return layout on connect failure?
+    :type fail_return: bool
 
 .. _`nfs4_ff_layout_prepare_ds.description`:
 
@@ -44,17 +47,21 @@ nfs4_ff_find_or_create_ds_client
 
     in the nfs_client cl_ds_clients list.
 
-    :param struct pnfs_layout_segment \*lseg:
+    :param lseg:
         *undescribed*
+    :type lseg: struct pnfs_layout_segment \*
 
-    :param u32 ds_idx:
+    :param ds_idx:
         *undescribed*
+    :type ds_idx: u32
 
-    :param struct nfs_client \*ds_clp:
+    :param ds_clp:
         *undescribed*
+    :type ds_clp: struct nfs_client \*
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
 .. This file was automatic generated / don't edit.
 

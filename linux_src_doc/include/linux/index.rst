@@ -14,6 +14,7 @@ linux
     clk/index
     dma/index
     extcon/index
+    firmware/index
     fpga/index
     fsl/index
     gpio/index
@@ -66,6 +67,7 @@ linux
     blk-cgroup_h
     blk-mq_h
     blk_types_h
+    blkdev_h
     blktrace_api_h
     btree_h
     buffer_head_h
@@ -93,7 +95,6 @@ linux
     cpu_rmap_h
     cpufreq_h
     cpuhotplug_h
-    cpuidle_h
     cpumask_h
     crc32_h
     crc8_h
@@ -135,6 +136,7 @@ linux
     gameport_h
     genalloc_h
     genetlink_h
+    gfp_h
     gpio_h
     gpio_keys_h
     hashtable_h
@@ -235,6 +237,7 @@ linux
     ntb_h
     nvme-fc-driver_h
     nvme-rdma_h
+    nvmem-consumer_h
     nvmem-provider_h
     of_device_h
     of_gpio_h
@@ -289,7 +292,6 @@ linux
     rculist_nulls_h
     rcupdate_h
     rcupdate_wait_h
-    rcutree_h
     refcount_h
     regmap_h
     regset_h
@@ -299,6 +301,7 @@ linux
     reset-controller_h
     reset_h
     rfkill_h
+    rhashtable-types_h
     rhashtable_h
     ring_buffer_h
     rio_drv_h
@@ -358,7 +361,6 @@ linux
     time_h
     timecounter_h
     timekeeper_internal_h
-    timekeeping32_h
     timekeeping_h
     timer_h
     timerqueue_h
@@ -388,6 +390,7 @@ linux
     workqueue_h
     writeback_h
     ww_mutex_h
+    xarray_h
     xxhash_h
     xz_h
     zpool_h

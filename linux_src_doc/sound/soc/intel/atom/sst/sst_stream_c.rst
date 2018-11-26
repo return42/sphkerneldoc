@@ -10,11 +10,13 @@ sst_realloc_stream
 
     Send msg for (re-)allocating a stream using the \ ``sst_drv_ctx``\   intel_sst_drv context pointer
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         *undescribed*
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
-    :param int str_id:
+    :param str_id:
         stream ID
+    :type str_id: int
 
 .. _`sst_realloc_stream.description`:
 
@@ -40,11 +42,13 @@ sst_start_stream
 
     Send msg for a starting stream
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         *undescribed*
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
-    :param int str_id:
+    :param str_id:
         stream ID
+    :type str_id: int
 
 .. _`sst_start_stream.description`:
 
@@ -63,11 +67,13 @@ sst_pause_stream
 
     Send msg for a pausing stream
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         *undescribed*
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
-    :param int str_id:
+    :param str_id:
         stream ID
+    :type str_id: int
 
 .. _`sst_pause_stream.description`:
 
@@ -86,11 +92,13 @@ sst_resume_stream
 
     Send msg for resuming stream
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         *undescribed*
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
-    :param int str_id:
+    :param str_id:
         stream ID
+    :type str_id: int
 
 .. _`sst_resume_stream.description`:
 
@@ -109,11 +117,13 @@ sst_drop_stream
 
     Send msg for stopping stream
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         *undescribed*
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
-    :param int str_id:
+    :param str_id:
         stream ID
+    :type str_id: int
 
 .. _`sst_drop_stream.description`:
 
@@ -132,14 +142,17 @@ sst_drain_stream
 
     Send msg for draining stream
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         *undescribed*
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
-    :param int str_id:
+    :param str_id:
         stream ID
+    :type str_id: int
 
-    :param bool partial_drain:
+    :param partial_drain:
         *undescribed*
+    :type partial_drain: bool
 
 .. _`sst_drain_stream.description`:
 
@@ -158,11 +171,13 @@ sst_free_stream
 
     Frees a stream
 
-    :param struct intel_sst_drv \*sst_drv_ctx:
+    :param sst_drv_ctx:
         *undescribed*
+    :type sst_drv_ctx: struct intel_sst_drv \*
 
-    :param int str_id:
+    :param str_id:
         stream ID
+    :type str_id: int
 
 .. _`sst_free_stream.description`:
 

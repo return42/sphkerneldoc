@@ -10,11 +10,13 @@ nvm_remove_tgt
 
     Removes a target from the media manager
 
-    :param struct nvm_dev \*dev:
+    :param dev:
         device
+    :type dev: struct nvm_dev \*
 
-    :param struct nvm_ioctl_remove \*remove:
+    :param remove:
         ioctl structure with target name to remove.
+    :type remove: struct nvm_ioctl_remove \*
 
 .. _`nvm_remove_tgt.return`:
 

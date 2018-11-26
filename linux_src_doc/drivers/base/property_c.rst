@@ -10,11 +10,13 @@ device_property_present
 
     check if a property of a device is present
 
-    :param struct device \*dev:
+    :param dev:
         Device whose property is being checked
+    :type dev: struct device \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
 .. _`device_property_present.description`:
 
@@ -32,11 +34,13 @@ fwnode_property_present
 
     check if a property of a firmware node is present
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node whose property to check
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
 .. _`device_property_read_u8_array`:
 
@@ -47,17 +51,21 @@ device_property_read_u8_array
 
     return a u8 array property of a device
 
-    :param struct device \*dev:
+    :param dev:
         Device to get the property of
+    :type dev: struct device \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param u8 \*val:
+    :param val:
         The values are stored here or \ ``NULL``\  to return the number of values
+    :type val: u8 \*
 
-    :param size_t nval:
+    :param nval:
         Size of the \ ``val``\  array
+    :type nval: size_t
 
 .. _`device_property_read_u8_array.description`:
 
@@ -89,17 +97,21 @@ device_property_read_u16_array
 
     return a u16 array property of a device
 
-    :param struct device \*dev:
+    :param dev:
         Device to get the property of
+    :type dev: struct device \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param u16 \*val:
+    :param val:
         The values are stored here or \ ``NULL``\  to return the number of values
+    :type val: u16 \*
 
-    :param size_t nval:
+    :param nval:
         Size of the \ ``val``\  array
+    :type nval: size_t
 
 .. _`device_property_read_u16_array.description`:
 
@@ -131,17 +143,21 @@ device_property_read_u32_array
 
     return a u32 array property of a device
 
-    :param struct device \*dev:
+    :param dev:
         Device to get the property of
+    :type dev: struct device \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param u32 \*val:
+    :param val:
         The values are stored here or \ ``NULL``\  to return the number of values
+    :type val: u32 \*
 
-    :param size_t nval:
+    :param nval:
         Size of the \ ``val``\  array
+    :type nval: size_t
 
 .. _`device_property_read_u32_array.description`:
 
@@ -173,17 +189,21 @@ device_property_read_u64_array
 
     return a u64 array property of a device
 
-    :param struct device \*dev:
+    :param dev:
         Device to get the property of
+    :type dev: struct device \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param u64 \*val:
+    :param val:
         The values are stored here or \ ``NULL``\  to return the number of values
+    :type val: u64 \*
 
-    :param size_t nval:
+    :param nval:
         Size of the \ ``val``\  array
+    :type nval: size_t
 
 .. _`device_property_read_u64_array.description`:
 
@@ -215,17 +235,21 @@ device_property_read_string_array
 
     return a string array property of device
 
-    :param struct device \*dev:
+    :param dev:
         Device to get the property of
+    :type dev: struct device \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param const char \*\*val:
+    :param val:
         The values are stored here or \ ``NULL``\  to return the number of values
+    :type val: const char \*\*
 
-    :param size_t nval:
+    :param nval:
         Size of the \ ``val``\  array
+    :type nval: size_t
 
 .. _`device_property_read_string_array.description`:
 
@@ -257,14 +281,17 @@ device_property_read_string
 
     return a string property of a device
 
-    :param struct device \*dev:
+    :param dev:
         Device to get the property of
+    :type dev: struct device \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param const char \*\*val:
+    :param val:
         The value is stored here
+    :type val: const char \*\*
 
 .. _`device_property_read_string.description`:
 
@@ -294,14 +321,17 @@ device_property_match_string
 
     find a string in an array and return index
 
-    :param struct device \*dev:
+    :param dev:
         Device to get the property of
+    :type dev: struct device \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property holding the array
+    :type propname: const char \*
 
-    :param const char \*string:
+    :param string:
         String to look for
+    :type string: const char \*
 
 .. _`device_property_match_string.description`:
 
@@ -331,17 +361,21 @@ fwnode_property_read_u8_array
 
     return a u8 array property of firmware node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to get the property of
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param u8 \*val:
+    :param val:
         The values are stored here or \ ``NULL``\  to return the number of values
+    :type val: u8 \*
 
-    :param size_t nval:
+    :param nval:
         Size of the \ ``val``\  array
+    :type nval: size_t
 
 .. _`fwnode_property_read_u8_array.description`:
 
@@ -373,17 +407,21 @@ fwnode_property_read_u16_array
 
     return a u16 array property of firmware node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to get the property of
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param u16 \*val:
+    :param val:
         The values are stored here or \ ``NULL``\  to return the number of values
+    :type val: u16 \*
 
-    :param size_t nval:
+    :param nval:
         Size of the \ ``val``\  array
+    :type nval: size_t
 
 .. _`fwnode_property_read_u16_array.description`:
 
@@ -415,17 +453,21 @@ fwnode_property_read_u32_array
 
     return a u32 array property of firmware node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to get the property of
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param u32 \*val:
+    :param val:
         The values are stored here or \ ``NULL``\  to return the number of values
+    :type val: u32 \*
 
-    :param size_t nval:
+    :param nval:
         Size of the \ ``val``\  array
+    :type nval: size_t
 
 .. _`fwnode_property_read_u32_array.description`:
 
@@ -457,17 +499,21 @@ fwnode_property_read_u64_array
 
     return a u64 array property firmware node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to get the property of
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param u64 \*val:
+    :param val:
         The values are stored here or \ ``NULL``\  to return the number of values
+    :type val: u64 \*
 
-    :param size_t nval:
+    :param nval:
         Size of the \ ``val``\  array
+    :type nval: size_t
 
 .. _`fwnode_property_read_u64_array.description`:
 
@@ -499,17 +545,21 @@ fwnode_property_read_string_array
 
     return string array property of a node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to get the property of
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param const char \*\*val:
+    :param val:
         The values are stored here or \ ``NULL``\  to return the number of values
+    :type val: const char \*\*
 
-    :param size_t nval:
+    :param nval:
         Size of the \ ``val``\  array
+    :type nval: size_t
 
 .. _`fwnode_property_read_string_array.description`:
 
@@ -541,14 +591,17 @@ fwnode_property_read_string
 
     return a string property of a firmware node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to get the property of
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param const char \*\*val:
+    :param val:
         The value is stored here
+    :type val: const char \*\*
 
 .. _`fwnode_property_read_string.description`:
 
@@ -578,14 +631,17 @@ fwnode_property_match_string
 
     find a string in an array and return index
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to get the property of
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property holding the array
+    :type propname: const char \*
 
-    :param const char \*string:
+    :param string:
         String to look for
+    :type string: const char \*
 
 .. _`fwnode_property_match_string.description`:
 
@@ -615,25 +671,31 @@ fwnode_property_get_reference_args
 
     Find a reference with arguments
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node where to look for the reference
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*prop:
+    :param prop:
         The name of the property
+    :type prop: const char \*
 
-    :param const char \*nargs_prop:
+    :param nargs_prop:
         The name of the property telling the number of
         arguments in the referred node. NULL if \ ``nargs``\  is known,
         otherwise \ ``nargs``\  is ignored. Only relevant on OF.
+    :type nargs_prop: const char \*
 
-    :param unsigned int nargs:
+    :param nargs:
         Number of arguments. Ignored if \ ``nargs_prop``\  is non-NULL.
+    :type nargs: unsigned int
 
-    :param unsigned int index:
+    :param index:
         Index of the reference, from zero onwards.
+    :type index: unsigned int
 
-    :param struct fwnode_reference_args \*args:
+    :param args:
         Result structure with reference and integer arguments.
+    :type args: struct fwnode_reference_args \*
 
 .. _`fwnode_property_get_reference_args.description`:
 
@@ -665,8 +727,9 @@ property_entries_dup
 
     duplicate array of properties
 
-    :param const struct property_entry \*properties:
+    :param properties:
         array of properties to copy
+    :type properties: const struct property_entry \*
 
 .. _`property_entries_dup.description`:
 
@@ -685,8 +748,9 @@ property_entries_free
 
     free previously allocated array of properties
 
-    :param const struct property_entry \*properties:
+    :param properties:
         array of properties to destroy
+    :type properties: const struct property_entry \*
 
 .. _`property_entries_free.description`:
 
@@ -705,8 +769,9 @@ pset_free_set
 
     releases memory allocated for copied property set
 
-    :param struct property_set \*pset:
+    :param pset:
         Property set to release
+    :type pset: struct property_set \*
 
 .. _`pset_free_set.description`:
 
@@ -725,8 +790,9 @@ pset_copy_set
 
     copies property set
 
-    :param const struct property_set \*pset:
+    :param pset:
         Property set to copy
+    :type pset: const struct property_set \*
 
 .. _`pset_copy_set.description`:
 
@@ -753,8 +819,9 @@ device_remove_properties
 
     Remove properties from a device object.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose properties to remove.
+    :type dev: struct device \*
 
 .. _`device_remove_properties.description`:
 
@@ -774,11 +841,13 @@ device_add_properties
 
     Add a collection of properties to a device object.
 
-    :param struct device \*dev:
+    :param dev:
         Device to add properties to.
+    :type dev: struct device \*
 
-    :param const struct property_entry \*properties:
+    :param properties:
         Collection of properties to add.
+    :type properties: const struct property_entry \*
 
 .. _`device_add_properties.description`:
 
@@ -798,8 +867,9 @@ fwnode_get_next_parent
 
     Iterate to the node's parent
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware whose parent is retrieved
+    :type fwnode: struct fwnode_handle \*
 
 .. _`fwnode_get_next_parent.description`:
 
@@ -822,8 +892,9 @@ fwnode_get_parent
 
     Return parent firwmare node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware whose parent is retrieved
+    :type fwnode: const struct fwnode_handle \*
 
 .. _`fwnode_get_parent.description`:
 
@@ -842,11 +913,13 @@ fwnode_get_next_child_node
 
     Return the next child node handle for a node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to find the next child node for.
+    :type fwnode: const struct fwnode_handle \*
 
-    :param struct fwnode_handle \*child:
+    :param child:
         Handle to one of the node's child nodes or a \ ``NULL``\  handle.
+    :type child: struct fwnode_handle \*
 
 .. _`fwnode_get_next_available_child_node`:
 
@@ -857,11 +930,13 @@ fwnode_get_next_available_child_node
 
     Return the next available child node handle for a node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to find the next child node for.
+    :type fwnode: const struct fwnode_handle \*
 
-    :param struct fwnode_handle \*child:
+    :param child:
         Handle to one of the node's child nodes or a \ ``NULL``\  handle.
+    :type child: struct fwnode_handle \*
 
 .. _`device_get_next_child_node`:
 
@@ -872,11 +947,13 @@ device_get_next_child_node
 
     Return the next child node handle for a device
 
-    :param struct device \*dev:
+    :param dev:
         Device to find the next child node for.
+    :type dev: struct device \*
 
-    :param struct fwnode_handle \*child:
+    :param child:
         Handle to one of the device's child nodes or a null handle.
+    :type child: struct fwnode_handle \*
 
 .. _`fwnode_get_named_child_node`:
 
@@ -887,11 +964,13 @@ fwnode_get_named_child_node
 
     Return first matching named child node handle
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to find the named child node for.
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*childname:
+    :param childname:
         String to match child node name against.
+    :type childname: const char \*
 
 .. _`device_get_named_child_node`:
 
@@ -902,11 +981,13 @@ device_get_named_child_node
 
     Return first matching named child node handle
 
-    :param struct device \*dev:
+    :param dev:
         Device to find the named child node for.
+    :type dev: struct device \*
 
-    :param const char \*childname:
+    :param childname:
         String to match child node name against.
+    :type childname: const char \*
 
 .. _`fwnode_handle_get`:
 
@@ -917,8 +998,9 @@ fwnode_handle_get
 
     Obtain a reference to a device node
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Pointer to the device node to obtain the reference to.
+    :type fwnode: struct fwnode_handle \*
 
 .. _`fwnode_handle_get.description`:
 
@@ -936,8 +1018,9 @@ fwnode_handle_put
 
     Drop reference to a device node
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Pointer to the device node to drop the reference to.
+    :type fwnode: struct fwnode_handle \*
 
 .. _`fwnode_handle_put.description`:
 
@@ -957,8 +1040,9 @@ fwnode_device_is_available
 
     check if a device is available for use
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Pointer to the fwnode of the device.
+    :type fwnode: const struct fwnode_handle \*
 
 .. _`device_get_child_node_count`:
 
@@ -969,8 +1053,9 @@ device_get_child_node_count
 
     return the number of child nodes for device
 
-    :param struct device \*dev:
+    :param dev:
         Device to cound the child nodes for
+    :type dev: struct device \*
 
 .. _`fwnode_get_phy_mode`:
 
@@ -981,8 +1066,9 @@ fwnode_get_phy_mode
 
     Get phy mode for given firmware node
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Pointer to the given node
+    :type fwnode: struct fwnode_handle \*
 
 .. _`fwnode_get_phy_mode.description`:
 
@@ -1002,8 +1088,9 @@ device_get_phy_mode
 
     Get phy mode for given device
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to the given device
+    :type dev: struct device \*
 
 .. _`device_get_phy_mode.description`:
 
@@ -1023,14 +1110,17 @@ fwnode_get_mac_address
 
     Get the MAC from the firmware node
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Pointer to the firmware node
+    :type fwnode: struct fwnode_handle \*
 
-    :param char \*addr:
+    :param addr:
         Address of buffer to store the MAC in
+    :type addr: char \*
 
-    :param int alen:
+    :param alen:
         Length of the buffer pointed to by addr, should be ETH_ALEN
+    :type alen: int
 
 .. _`fwnode_get_mac_address.description`:
 
@@ -1063,14 +1153,17 @@ device_get_mac_address
 
     Get the MAC for a given device
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to the device
+    :type dev: struct device \*
 
-    :param char \*addr:
+    :param addr:
         Address of buffer to store the MAC in
+    :type addr: char \*
 
-    :param int alen:
+    :param alen:
         Length of the buffer pointed to by addr, should be ETH_ALEN
+    :type alen: int
 
 .. _`fwnode_irq_get`:
 
@@ -1081,11 +1174,13 @@ fwnode_irq_get
 
     Get IRQ directly from a fwnode
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         Pointer to the firmware node
+    :type fwnode: struct fwnode_handle \*
 
-    :param unsigned int index:
+    :param index:
         Zero-based index of the IRQ
+    :type index: unsigned int
 
 .. _`fwnode_irq_get.description`:
 
@@ -1104,11 +1199,13 @@ fwnode_graph_get_next_endpoint
 
     Get next endpoint firmware node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Pointer to the parent firmware node
+    :type fwnode: const struct fwnode_handle \*
 
-    :param struct fwnode_handle \*prev:
+    :param prev:
         Previous endpoint node or \ ``NULL``\  to get the first
+    :type prev: struct fwnode_handle \*
 
 .. _`fwnode_graph_get_next_endpoint.description`:
 
@@ -1127,8 +1224,9 @@ fwnode_graph_get_port_parent
 
     Return the device fwnode of a port endpoint
 
-    :param const struct fwnode_handle \*endpoint:
+    :param endpoint:
         Endpoint firmware node of the port
+    :type endpoint: const struct fwnode_handle \*
 
 .. _`fwnode_graph_get_port_parent.return`:
 
@@ -1146,8 +1244,9 @@ fwnode_graph_get_remote_port_parent
 
     Return fwnode of a remote device
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Endpoint firmware node pointing to the remote endpoint
+    :type fwnode: const struct fwnode_handle \*
 
 .. _`fwnode_graph_get_remote_port_parent.description`:
 
@@ -1165,8 +1264,9 @@ fwnode_graph_get_remote_port
 
     Return fwnode of a remote port
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Endpoint firmware node pointing to the remote endpoint
+    :type fwnode: const struct fwnode_handle \*
 
 .. _`fwnode_graph_get_remote_port.description`:
 
@@ -1184,8 +1284,9 @@ fwnode_graph_get_remote_endpoint
 
     Return fwnode of a remote endpoint
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Endpoint firmware node pointing to the remote endpoint
+    :type fwnode: const struct fwnode_handle \*
 
 .. _`fwnode_graph_get_remote_endpoint.description`:
 
@@ -1203,14 +1304,17 @@ fwnode_graph_get_remote_node
 
     get remote parent node for given port/endpoint
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         pointer to parent fwnode_handle containing graph port/endpoint
+    :type fwnode: const struct fwnode_handle \*
 
-    :param u32 port_id:
+    :param port_id:
         identifier of the parent port node
+    :type port_id: u32
 
-    :param u32 endpoint_id:
+    :param endpoint_id:
         identifier of the endpoint node
+    :type endpoint_id: u32
 
 .. _`fwnode_graph_get_remote_node.return`:
 
@@ -1229,11 +1333,13 @@ fwnode_graph_parse_endpoint
 
     parse common endpoint node properties
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         pointer to endpoint fwnode_handle
+    :type fwnode: const struct fwnode_handle \*
 
-    :param struct fwnode_endpoint \*endpoint:
+    :param endpoint:
         pointer to the fwnode endpoint data structure
+    :type endpoint: struct fwnode_endpoint \*
 
 .. _`fwnode_graph_parse_endpoint.description`:
 

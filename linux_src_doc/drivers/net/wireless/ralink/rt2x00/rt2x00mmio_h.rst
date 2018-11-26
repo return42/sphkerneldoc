@@ -10,17 +10,21 @@ rt2x00mmio_regbusy_read
 
     Read from register with busy check
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Device pointer, see \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
-    :param const unsigned int offset:
+    :param offset:
         Register offset
+    :type offset: const unsigned int
 
-    :param const struct rt2x00_field32 field:
+    :param field:
         Field to check if register is busy
+    :type field: const struct rt2x00_field32
 
-    :param u32 \*reg:
+    :param reg:
         Pointer to where register contents should be stored
+    :type reg: u32 \*
 
 .. _`rt2x00mmio_regbusy_read.description`:
 
@@ -74,8 +78,9 @@ rt2x00mmio_rxdone
 
     Handle RX done events
 
-    :param struct rt2x00_dev \*rt2x00dev:
+    :param rt2x00dev:
         Device pointer, see \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
+    :type rt2x00dev: struct rt2x00_dev \*
 
 .. _`rt2x00mmio_rxdone.description`:
 
@@ -94,11 +99,13 @@ rt2x00mmio_flush_queue
 
     Flush data queue
 
-    :param struct data_queue \*queue:
+    :param queue:
         Data queue to stop
+    :type queue: struct data_queue \*
 
-    :param bool drop:
+    :param drop:
         True to drop all pending frames.
+    :type drop: bool
 
 .. _`rt2x00mmio_flush_queue.description`:
 

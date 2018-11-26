@@ -10,8 +10,9 @@ atmel_lcdfb_alloc_video_memory
 
     Allocate framebuffer memory
 
-    :param struct atmel_lcdfb_info \*sinfo:
+    :param sinfo:
         the frame buffer to allocate memory for
+    :type sinfo: struct atmel_lcdfb_info \*
 
 .. _`atmel_lcdfb_alloc_video_memory.description`:
 
@@ -30,11 +31,13 @@ atmel_lcdfb_check_var
 
     Validates a var passed in.
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer variable screen structure
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`atmel_lcdfb_check_var.description`:
 
@@ -68,8 +71,9 @@ atmel_lcdfb_set_par
 
     Alters the hardware state.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`atmel_lcdfb_set_par.description`:
 
@@ -94,23 +98,29 @@ atmel_lcdfb_setcolreg
 
     Optional function. Sets a color register.
 
-    :param unsigned int regno:
+    :param regno:
         Which register in the CLUT we are programming
+    :type regno: unsigned int
 
-    :param unsigned int red:
+    :param red:
         The red value which can be up to 16 bits wide
+    :type red: unsigned int
 
-    :param unsigned int green:
+    :param green:
         The green value which can be up to 16 bits wide
+    :type green: unsigned int
 
-    :param unsigned int blue:
+    :param blue:
         The blue value which can be up to 16 bits wide.
+    :type blue: unsigned int
 
-    :param unsigned int transp:
+    :param transp:
         If supported the alpha value which can be up to 16 bits wide.
+    :type transp: unsigned int
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. _`atmel_lcdfb_setcolreg.description`:
 

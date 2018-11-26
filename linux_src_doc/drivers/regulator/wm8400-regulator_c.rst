@@ -10,14 +10,17 @@ wm8400_register_regulator
 
     enable software control of a WM8400 regulator
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param int reg:
+    :param reg:
         *undescribed*
+    :type reg: int
 
-    :param struct regulator_init_data \*initdata:
+    :param initdata:
         *undescribed*
+    :type initdata: struct regulator_init_data \*
 
 .. _`wm8400_register_regulator.description`:
 

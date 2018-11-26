@@ -10,8 +10,9 @@ longrun_get_policy
 
     get the current LongRun policy
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         struct cpufreq_policy where current policy is written into
+    :type policy: struct cpufreq_policy \*
 
 .. _`longrun_get_policy.description`:
 
@@ -30,8 +31,9 @@ longrun_set_policy
 
     sets a new CPUFreq policy
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         new policy
+    :type policy: struct cpufreq_policy \*
 
 .. _`longrun_set_policy.description`:
 
@@ -50,8 +52,9 @@ longrun_verify_policy
 
     verifies a new CPUFreq policy
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         the policy to verify
+    :type policy: struct cpufreq_policy \*
 
 .. _`longrun_verify_policy.description`:
 
@@ -70,11 +73,13 @@ longrun_determine_freqs
 
     determines the lowest and highest possible core frequency
 
-    :param unsigned int \*low_freq:
+    :param low_freq:
         an int to put the lowest frequency into
+    :type low_freq: unsigned int \*
 
-    :param unsigned int \*high_freq:
+    :param high_freq:
         an int to put the highest frequency into
+    :type high_freq: unsigned int \*
 
 .. _`longrun_determine_freqs.description`:
 
@@ -100,8 +105,9 @@ longrun_init
 
     initializes the Transmeta Crusoe LongRun CPUFreq driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`longrun_init.description`:
 
@@ -119,8 +125,9 @@ longrun_exit
 
     unregisters LongRun support
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

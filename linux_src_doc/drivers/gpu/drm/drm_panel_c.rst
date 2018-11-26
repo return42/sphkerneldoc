@@ -19,8 +19,9 @@ drm_panel_init
 
     initialize a panel
 
-    :param struct drm_panel \*panel:
+    :param panel:
         DRM panel
+    :type panel: struct drm_panel \*
 
 .. _`drm_panel_init.description`:
 
@@ -39,8 +40,9 @@ drm_panel_add
 
     add a panel to the global registry
 
-    :param struct drm_panel \*panel:
+    :param panel:
         panel to add
+    :type panel: struct drm_panel \*
 
 .. _`drm_panel_add.description`:
 
@@ -66,8 +68,9 @@ drm_panel_remove
 
     remove a panel from the global registry
 
-    :param struct drm_panel \*panel:
+    :param panel:
         DRM panel
+    :type panel: struct drm_panel \*
 
 .. _`drm_panel_remove.description`:
 
@@ -85,11 +88,13 @@ drm_panel_attach
 
     attach a panel to a connector
 
-    :param struct drm_panel \*panel:
+    :param panel:
         DRM panel
+    :type panel: struct drm_panel \*
 
-    :param struct drm_connector \*connector:
+    :param connector:
         DRM connector
+    :type connector: struct drm_connector \*
 
 .. _`drm_panel_attach.description`:
 
@@ -100,6 +105,9 @@ After obtaining a pointer to a DRM panel a display driver calls this
 function to attach a panel to a connector.
 
 An error is returned if the panel is already attached to another connector.
+
+When unloading, the driver should detach from the panel by calling
+\ :c:func:`drm_panel_detach`\ .
 
 .. _`drm_panel_attach.return`:
 
@@ -117,8 +125,9 @@ drm_panel_detach
 
     detach a panel from a connector
 
-    :param struct drm_panel \*panel:
+    :param panel:
         DRM panel
+    :type panel: struct drm_panel \*
 
 .. _`drm_panel_detach.description`:
 
@@ -127,6 +136,9 @@ Description
 
 Detaches a panel from the connector it is attached to. If a panel is not
 attached to any connector this is effectively a no-op.
+
+This function should not be called by the panel device itself. It
+is only for the drm device that called \ :c:func:`drm_panel_attach`\ .
 
 .. _`drm_panel_detach.return`:
 
@@ -144,8 +156,9 @@ of_drm_find_panel
 
     look up a panel using a device tree node
 
-    :param const struct device_node \*np:
+    :param np:
         device tree node of the panel
+    :type np: const struct device_node \*
 
 .. _`of_drm_find_panel.description`:
 
@@ -161,7 +174,17 @@ Return
 ------
 
 A pointer to the panel registered for the specified device tree
-node or NULL if no panel matching the device tree node can be found.
+node or an \ :c:func:`ERR_PTR`\  if no panel matching the device tree node can be found.
+
+.. _`of_drm_find_panel.possible-error-codes-returned-by-this-function`:
+
+Possible error codes returned by this function
+----------------------------------------------
+
+
+- EPROBE_DEFER: the panel device has not been probed yet, and the caller
+  should retry later
+- ENODEV: the device is not available (status != "okay" or "ok")
 
 .. This file was automatic generated / don't edit.
 

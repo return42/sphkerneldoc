@@ -42,8 +42,9 @@ ds2482_calculate_config
 
     \ ``param``\  conf the raw config value \ ``return``\  the value w/ complements that can be written to register
 
-    :param u8 conf:
+    :param conf:
         *undescribed*
+    :type conf: u8
 
 .. _`ds2482_select_register`:
 
@@ -54,11 +55,13 @@ ds2482_select_register
 
     \ ``param``\  pdev          The ds2482 client pointer \ ``param``\  read_ptr      see DS2482_PTR_CODE_xxx above \ ``return``\  -1 on failure, 0 on success
 
-    :param struct ds2482_data \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct ds2482_data \*
 
-    :param u8 read_ptr:
+    :param read_ptr:
         *undescribed*
+    :type read_ptr: u8
 
 .. _`ds2482_send_cmd`:
 
@@ -69,11 +72,13 @@ ds2482_send_cmd
 
     \ ``param``\  pdev  The ds2482 client pointer \ ``param``\  cmd   DS2482_CMD_RESET, DS2482_CMD_1WIRE_RESET, DS2482_CMD_1WIRE_READ_BYTE \ ``return``\  -1 on failure, 0 on success
 
-    :param struct ds2482_data \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct ds2482_data \*
 
-    :param u8 cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: u8
 
 .. _`ds2482_send_cmd_data`:
 
@@ -84,14 +89,17 @@ ds2482_send_cmd_data
 
     \ ``param``\  pdev  The ds2482 client pointer \ ``param``\  cmd   DS2482_CMD_WRITE_CONFIG, DS2482_CMD_1WIRE_SINGLE_BIT, DS2482_CMD_1WIRE_WRITE_BYTE, DS2482_CMD_1WIRE_TRIPLET \ ``param``\  byte  The data to send \ ``return``\  -1 on failure, 0 on success
 
-    :param struct ds2482_data \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct ds2482_data \*
 
-    :param u8 cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: u8
 
-    :param u8 byte:
+    :param byte:
         *undescribed*
+    :type byte: u8
 
 .. _`ds2482_wait_1wire_idle`:
 
@@ -102,8 +110,9 @@ ds2482_wait_1wire_idle
 
     wire interface is idle (not busy)
 
-    :param struct ds2482_data \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct ds2482_data \*
 
 .. _`ds2482_wait_1wire_idle.description`:
 
@@ -122,11 +131,13 @@ ds2482_set_channel
 
     The 1-wire interface must be idle before calling this function.
 
-    :param struct ds2482_data \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct ds2482_data \*
 
-    :param u8 channel:
+    :param channel:
         *undescribed*
+    :type channel: u8
 
 .. _`ds2482_set_channel.description`:
 
@@ -146,11 +157,13 @@ ds2482_w1_touch_bit
 
     bit function, which writes a 0 or 1 and reads the level.
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param u8 bit:
+    :param bit:
         *undescribed*
+    :type bit: u8
 
 .. _`ds2482_w1_touch_bit.description`:
 
@@ -166,11 +179,13 @@ ds2482_w1_triplet
 
 .. c:function:: u8 ds2482_w1_triplet(void *data, u8 dbit)
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param u8 dbit:
+    :param dbit:
         *undescribed*
+    :type dbit: u8
 
 .. _`ds2482_w1_triplet.the-bit-written-is-determined-by-the-two-reads`:
 
@@ -190,11 +205,13 @@ ds2482_w1_write_byte
 
 .. c:function:: void ds2482_w1_write_byte(void *data, u8 byte)
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param u8 byte:
+    :param byte:
         *undescribed*
+    :type byte: u8
 
 .. _`ds2482_w1_write_byte.description`:
 
@@ -211,8 +228,9 @@ ds2482_w1_read_byte
 
 .. c:function:: u8 ds2482_w1_read_byte(void *data)
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`ds2482_w1_read_byte.description`:
 
@@ -231,8 +249,9 @@ ds2482_w1_reset_bus
 
     wire interface
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`ds2482_w1_reset_bus.description`:
 

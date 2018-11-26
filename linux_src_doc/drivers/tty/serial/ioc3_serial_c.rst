@@ -10,11 +10,13 @@ set_baud
 
     Baud rate setting code
 
-    :param struct ioc3_port \*port:
+    :param port:
         port to set
+    :type port: struct ioc3_port \*
 
-    :param int baud:
+    :param baud:
         baud rate to use
+    :type baud: int
 
 .. _`get_ioc3_port`:
 
@@ -25,8 +27,9 @@ get_ioc3_port
 
     given a uart port, return the control structure
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         uart port to find
+    :type the_port: struct uart_port \*
 
 .. _`port_init`:
 
@@ -37,8 +40,9 @@ port_init
 
     Initialize the sio and ioc3 hardware for a given port called per port from attach...
 
-    :param struct ioc3_port \*port:
+    :param port:
         port to initialize
+    :type port: struct ioc3_port \*
 
 .. _`enable_intrs`:
 
@@ -49,11 +53,13 @@ enable_intrs
 
     enable interrupts
 
-    :param struct ioc3_port \*port:
+    :param port:
         port to enable
+    :type port: struct ioc3_port \*
 
-    :param uint32_t mask:
+    :param mask:
         mask to use
+    :type mask: uint32_t
 
 .. _`local_open`:
 
@@ -64,8 +70,9 @@ local_open
 
     local open a port
 
-    :param struct ioc3_port \*port:
+    :param port:
         port to open
+    :type port: struct ioc3_port \*
 
 .. _`set_rx_timeout`:
 
@@ -76,11 +83,13 @@ set_rx_timeout
 
     Set rx timeout and threshold values.
 
-    :param struct ioc3_port \*port:
+    :param port:
         port to use
+    :type port: struct ioc3_port \*
 
-    :param int timeout:
+    :param timeout:
         timeout value in ticks
+    :type timeout: int
 
 .. _`config_port`:
 
@@ -91,23 +100,29 @@ config_port
 
     config the hardware
 
-    :param struct ioc3_port \*port:
+    :param port:
         port to config
+    :type port: struct ioc3_port \*
 
-    :param int baud:
+    :param baud:
         baud rate for the port
+    :type baud: int
 
-    :param int byte_size:
+    :param byte_size:
         data size
+    :type byte_size: int
 
-    :param int stop_bits:
+    :param stop_bits:
         number of stop bits
+    :type stop_bits: int
 
-    :param int parenb:
+    :param parenb:
         parity enable ?
+    :type parenb: int
 
-    :param int parodd:
+    :param parodd:
         odd parity ?
+    :type parodd: int
 
 .. _`do_write`:
 
@@ -118,14 +133,17 @@ do_write
 
     Write bytes to the port.  Returns the number of bytes actually written. Called from transmit_chars
 
-    :param struct ioc3_port \*port:
+    :param port:
         port to use
+    :type port: struct ioc3_port \*
 
-    :param char \*buf:
+    :param buf:
         the stuff to write
+    :type buf: char \*
 
-    :param int len:
+    :param len:
         how many bytes in 'buf'
+    :type len: int
 
 .. _`disable_intrs`:
 
@@ -136,11 +154,13 @@ disable_intrs
 
     disable interrupts
 
-    :param struct ioc3_port \*port:
+    :param port:
         port to enable
+    :type port: struct ioc3_port \*
 
-    :param uint32_t mask:
+    :param mask:
         mask to use
+    :type mask: uint32_t
 
 .. _`set_notification`:
 
@@ -151,14 +171,17 @@ set_notification
 
     Modify event notification
 
-    :param struct ioc3_port \*port:
+    :param port:
         port to use
+    :type port: struct ioc3_port \*
 
-    :param int mask:
+    :param mask:
         events mask
+    :type mask: int
 
-    :param int set_on:
+    :param set_on:
         set ?
+    :type set_on: int
 
 .. _`set_mcr`:
 
@@ -169,14 +192,17 @@ set_mcr
 
     set the master control reg
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         port to use
+    :type the_port: struct uart_port \*
 
-    :param int mask1:
+    :param mask1:
         mcr mask
+    :type mask1: int
 
-    :param int mask2:
+    :param mask2:
         shadow mask
+    :type mask2: int
 
 .. _`ioc3_set_proto`:
 
@@ -187,11 +213,13 @@ ioc3_set_proto
 
     set the protocol for the port
 
-    :param struct ioc3_port \*port:
+    :param port:
         port to use
+    :type port: struct ioc3_port \*
 
-    :param int proto:
+    :param proto:
         protocol to use
+    :type proto: int
 
 .. _`transmit_chars`:
 
@@ -202,8 +230,9 @@ transmit_chars
 
     upper level write, called with the_port->lock
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         port to write
+    :type the_port: struct uart_port \*
 
 .. _`ioc3_change_speed`:
 
@@ -214,14 +243,17 @@ ioc3_change_speed
 
     change the speed of the port
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         port to change
+    :type the_port: struct uart_port \*
 
-    :param struct ktermios \*new_termios:
+    :param new_termios:
         new termios settings
+    :type new_termios: struct ktermios \*
 
-    :param struct ktermios \*old_termios:
+    :param old_termios:
         old termios settings
+    :type old_termios: struct ktermios \*
 
 .. _`ic3_startup_local`:
 
@@ -232,8 +264,9 @@ ic3_startup_local
 
     Start up the serial port - returns >= 0 if no errors
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         Port to operate on
+    :type the_port: struct uart_port \*
 
 .. _`do_read`:
 
@@ -244,14 +277,17 @@ do_read
 
     Read in bytes from the port.  Return the number of bytes actually read.
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         port to use
+    :type the_port: struct uart_port \*
 
-    :param char \*buf:
+    :param buf:
         place to put the stuff we read
+    :type buf: char \*
 
-    :param int len:
+    :param len:
         how big 'buf' is
+    :type len: int
 
 .. _`receive_chars`:
 
@@ -262,8 +298,9 @@ receive_chars
 
     upper level read.
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         port to read from
+    :type the_port: struct uart_port \*
 
 .. _`ioc3uart_intr_one`:
 
@@ -274,14 +311,17 @@ ioc3uart_intr_one
 
     lowest level (per port) interrupt handler.
 
-    :param struct ioc3_submodule \*is:
+    :param is:
         submodule
+    :type is: struct ioc3_submodule \*
 
-    :param struct ioc3_driver_data \*idd:
+    :param idd:
         driver data
+    :type idd: struct ioc3_driver_data \*
 
-    :param unsigned int pending:
+    :param pending:
         interrupts to handle
+    :type pending: unsigned int
 
 .. _`ioc3uart_intr`:
 
@@ -292,14 +332,17 @@ ioc3uart_intr
 
     field all serial interrupts
 
-    :param struct ioc3_submodule \*is:
+    :param is:
         submodule
+    :type is: struct ioc3_submodule \*
 
-    :param struct ioc3_driver_data \*idd:
+    :param idd:
         driver data
+    :type idd: struct ioc3_driver_data \*
 
-    :param unsigned int pending:
+    :param pending:
         interrupts to handle
+    :type pending: unsigned int
 
 .. _`ic3_type`:
 
@@ -308,8 +351,9 @@ ic3_type
 
 .. c:function:: const char *ic3_type(struct uart_port *the_port)
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic3_tx_empty`:
 
@@ -320,8 +364,9 @@ ic3_tx_empty
 
     Is the transmitter empty?
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic3_stop_tx`:
 
@@ -332,8 +377,9 @@ ic3_stop_tx
 
     stop the transmitter
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic3_stop_rx`:
 
@@ -344,8 +390,9 @@ ic3_stop_rx
 
     stop the receiver
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`null_void_function`:
 
@@ -354,8 +401,9 @@ null_void_function
 
 .. c:function:: void null_void_function(struct uart_port *the_port)
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic3_shutdown`:
 
@@ -366,8 +414,9 @@ ic3_shutdown
 
     shut down the port - free irq and disable
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic3_set_mctrl`:
 
@@ -378,11 +427,13 @@ ic3_set_mctrl
 
     set control lines (dtr, rts, etc)
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
-    :param unsigned int mctrl:
+    :param mctrl:
         Lines to set/unset
+    :type mctrl: unsigned int
 
 .. _`ic3_get_mctrl`:
 
@@ -393,8 +444,9 @@ ic3_get_mctrl
 
     get control line info
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic3_start_tx`:
 
@@ -405,8 +457,9 @@ ic3_start_tx
 
     Start transmitter. Called with the_port->lock
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic3_break_ctl`:
 
@@ -417,11 +470,13 @@ ic3_break_ctl
 
     handle breaks
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
-    :param int break_state:
+    :param break_state:
         Break state
+    :type break_state: int
 
 .. _`ic3_startup`:
 
@@ -432,8 +487,9 @@ ic3_startup
 
     Start up the serial port - always return 0 (We're always on)
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic3_set_termios`:
 
@@ -444,14 +500,17 @@ ic3_set_termios
 
     set termios stuff
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
-    :param struct ktermios \*termios:
+    :param termios:
         Old
+    :type termios: struct ktermios \*
 
-    :param struct ktermios \*old_termios:
+    :param old_termios:
         *undescribed*
+    :type old_termios: struct ktermios \*
 
 .. _`ic3_request_port`:
 
@@ -462,8 +521,9 @@ ic3_request_port
 
     allocate resources for port - no op....
 
-    :param struct uart_port \*port:
+    :param port:
         port to operate on
+    :type port: struct uart_port \*
 
 .. _`ioc3_serial_core_attach`:
 
@@ -474,11 +534,13 @@ ioc3_serial_core_attach
 
     register with serial core This is done during pci probing
 
-    :param struct ioc3_submodule \*is:
+    :param is:
         submodule struct for this
+    :type is: struct ioc3_submodule \*
 
-    :param struct ioc3_driver_data \*idd:
+    :param idd:
         handle for this card
+    :type idd: struct ioc3_driver_data \*
 
 .. _`ioc3uart_remove`:
 
@@ -489,11 +551,13 @@ ioc3uart_remove
 
     register detach function
 
-    :param struct ioc3_submodule \*is:
+    :param is:
         submodule struct for this submodule
+    :type is: struct ioc3_submodule \*
 
-    :param struct ioc3_driver_data \*idd:
+    :param idd:
         ioc3 driver data for this submodule
+    :type idd: struct ioc3_driver_data \*
 
 .. _`ioc3uart_probe`:
 
@@ -504,11 +568,13 @@ ioc3uart_probe
 
     card probe function called from shim driver
 
-    :param struct ioc3_submodule \*is:
+    :param is:
         submodule struct for this submodule
+    :type is: struct ioc3_submodule \*
 
-    :param struct ioc3_driver_data \*idd:
+    :param idd:
         ioc3 driver data for this card
+    :type idd: struct ioc3_driver_data \*
 
 .. _`ioc3uart_init`:
 
@@ -519,8 +585,9 @@ ioc3uart_init
 
     module init called,
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

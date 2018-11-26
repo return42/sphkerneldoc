@@ -10,8 +10,9 @@ v9fs_cached_dentry_delete
 
     called when dentry refcount equals 0
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         dentry in question
+    :type dentry: const struct dentry \*
 
 .. _`v9fs_dentry_release`:
 
@@ -22,8 +23,9 @@ v9fs_dentry_release
 
     called when dentry is going to be freed
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry that is being release
+    :type dentry: struct dentry \*
 
 .. This file was automatic generated / don't edit.
 

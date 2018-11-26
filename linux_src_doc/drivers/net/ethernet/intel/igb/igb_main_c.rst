@@ -10,8 +10,9 @@ igb_get_i2c_data
 
     Reads the I2C SDA data bit
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`igb_get_i2c_data.description`:
 
@@ -29,11 +30,13 @@ igb_set_i2c_data
 
     Sets the I2C data bit
 
-    :param void \*data:
+    :param data:
         pointer to hardware structure
+    :type data: void \*
 
-    :param int state:
+    :param state:
         I2C data value (0 or 1) to set
+    :type state: int
 
 .. _`igb_set_i2c_data.description`:
 
@@ -51,11 +54,13 @@ igb_set_i2c_clk
 
     Sets the I2C SCL clock
 
-    :param void \*data:
+    :param data:
         pointer to hardware structure
+    :type data: void \*
 
-    :param int state:
+    :param state:
         state to set clock
+    :type state: int
 
 .. _`igb_set_i2c_clk.description`:
 
@@ -73,8 +78,9 @@ igb_get_i2c_clk
 
     Gets the I2C SCL clock state
 
-    :param void \*data:
+    :param data:
         pointer to hardware structure
+    :type data: void \*
 
 .. _`igb_get_i2c_clk.description`:
 
@@ -92,8 +98,9 @@ igb_get_hw_dev
 
     return device
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct e1000_hw \*
 
 .. _`igb_get_hw_dev.description`:
 
@@ -111,8 +118,9 @@ igb_init_module
 
     Driver Registration Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`igb_init_module.description`:
 
@@ -131,8 +139,9 @@ igb_exit_module
 
     Driver Exit Cleanup Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`igb_exit_module.description`:
 
@@ -151,8 +160,9 @@ igb_cache_ring_register
 
     Descriptor ring to register mapping
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_cache_ring_register.description`:
 
@@ -171,17 +181,21 @@ igb_write_ivar
 
     configure ivar for given MSI-X vector
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct e1000_hw \*
 
-    :param int msix_vector:
+    :param msix_vector:
         vector number we are allocating to a given ring
+    :type msix_vector: int
 
-    :param int index:
+    :param index:
         row index of IVAR register to write within IVAR table
+    :type index: int
 
-    :param int offset:
+    :param offset:
         column offset of in IVAR, should be multiple of 8
+    :type offset: int
 
 .. _`igb_write_ivar.description`:
 
@@ -202,8 +216,9 @@ igb_configure_msix
 
     Configure MSI-X hardware
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_configure_msix.description`:
 
@@ -222,8 +237,9 @@ igb_request_msix
 
     Initialize MSI-X interrupts
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_request_msix.description`:
 
@@ -242,11 +258,13 @@ igb_free_q_vector
 
     Free memory allocated for specific interrupt vector
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
-    :param int v_idx:
+    :param v_idx:
         Index of vector to be freed
+    :type v_idx: int
 
 .. _`igb_free_q_vector.description`:
 
@@ -264,11 +282,13 @@ igb_reset_q_vector
 
     Reset config for interrupt vector
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
-    :param int v_idx:
+    :param v_idx:
         Index of vector to be reset
+    :type v_idx: int
 
 .. _`igb_reset_q_vector.description`:
 
@@ -287,8 +307,9 @@ igb_free_q_vectors
 
     Free memory allocated for interrupt vectors
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_free_q_vectors.description`:
 
@@ -308,8 +329,9 @@ igb_clear_interrupt_scheme
 
     reset the device to a state of no interrupts
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_clear_interrupt_scheme.description`:
 
@@ -328,11 +350,13 @@ igb_set_interrupt_capability
 
     set MSI or MSI-X if supported
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
-    :param bool msix:
+    :param msix:
         boolean value of MSIX capability
+    :type msix: bool
 
 .. _`igb_set_interrupt_capability.description`:
 
@@ -351,26 +375,33 @@ igb_alloc_q_vector
 
     Allocate memory for a single interrupt vector
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
-    :param int v_count:
+    :param v_count:
         q_vectors allocated on adapter, used for ring interleaving
+    :type v_count: int
 
-    :param int v_idx:
+    :param v_idx:
         index of vector in adapter struct
+    :type v_idx: int
 
-    :param int txr_count:
+    :param txr_count:
         total number of Tx rings to allocate
+    :type txr_count: int
 
-    :param int txr_idx:
+    :param txr_idx:
         index of first Tx ring to allocate
+    :type txr_idx: int
 
-    :param int rxr_count:
+    :param rxr_count:
         total number of Rx rings to allocate
+    :type rxr_count: int
 
-    :param int rxr_idx:
+    :param rxr_idx:
         index of first Rx ring to allocate
+    :type rxr_idx: int
 
 .. _`igb_alloc_q_vector.description`:
 
@@ -388,8 +419,9 @@ igb_alloc_q_vectors
 
     Allocate memory for interrupt vectors
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_alloc_q_vectors.description`:
 
@@ -408,11 +440,13 @@ igb_init_interrupt_scheme
 
     initialize interrupts, allocate queues/vectors
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
-    :param bool msix:
+    :param msix:
         boolean value of MSIX capability
+    :type msix: bool
 
 .. _`igb_init_interrupt_scheme.description`:
 
@@ -430,8 +464,9 @@ igb_request_irq
 
     initialize interrupts
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_request_irq.description`:
 
@@ -450,8 +485,9 @@ igb_irq_disable
 
     Mask off interrupt generation on the NIC
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_irq_enable`:
 
@@ -462,8 +498,9 @@ igb_irq_enable
 
     Enable default interrupt generation settings
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_release_hw_control`:
 
@@ -474,8 +511,9 @@ igb_release_hw_control
 
     release control of the h/w to f/w
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_release_hw_control.description`:
 
@@ -495,8 +533,9 @@ igb_get_hw_control
 
     get control of the h/w from f/w
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_get_hw_control.description`:
 
@@ -507,44 +546,55 @@ igb_get_hw_control sets CTRL_EXT:DRV_LOAD bit.
 For ASF and Pass Through versions of f/w this means that
 the driver is loaded.
 
-.. _`igb_configure_cbs`:
+.. _`igb_config_tx_modes`:
 
-igb_configure_cbs
-=================
+igb_config_tx_modes
+===================
 
-.. c:function:: void igb_configure_cbs(struct igb_adapter *adapter, int queue, bool enable, int idleslope, int sendslope, int hicredit, int locredit)
+.. c:function:: void igb_config_tx_modes(struct igb_adapter *adapter, int queue)
 
-    Configure Credit-Based Shaper (CBS)
+    Configure "Qav Tx mode" features on igb
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         pointer to adapter struct
+    :type adapter: struct igb_adapter \*
 
-    :param int queue:
+    :param queue:
         queue number
+    :type queue: int
 
-    :param bool enable:
-        true = enable CBS, false = disable CBS
-
-    :param int idleslope:
-        idleSlope in kbps
-
-    :param int sendslope:
-        sendSlope in kbps
-
-    :param int hicredit:
-        hiCredit in bytes
-
-    :param int locredit:
-        loCredit in bytes
-
-.. _`igb_configure_cbs.description`:
+.. _`igb_config_tx_modes.description`:
 
 Description
 -----------
 
-Configure CBS for a given hardware queue. When disabling, idleslope,
-sendslope, hicredit, locredit arguments are ignored. Returns 0 if
-success. Negative otherwise.
+Configure CBS and Launchtime for a given hardware queue.
+Parameters are retrieved from the correct Tx ring, so
+\ :c:func:`igb_save_cbs_params`\  and \ :c:func:`igb_save_txtime_params`\  should be used
+for setting those correctly prior to this function being called.
+
+.. _`igb_setup_tx_mode`:
+
+igb_setup_tx_mode
+=================
+
+.. c:function:: void igb_setup_tx_mode(struct igb_adapter *adapter)
+
+    Switch to/from Qav Tx mode when applicable
+
+    :param adapter:
+        pointer to adapter struct
+    :type adapter: struct igb_adapter \*
+
+.. _`igb_setup_tx_mode.description`:
+
+Description
+-----------
+
+Configure TQAVCTRL register switching the controller's Tx mode
+if FQTSS mode is enabled or disabled. Additionally, will issue
+a call to \ :c:func:`igb_config_tx_modes`\  per queue so any previously saved
+Tx parameters are applied.
 
 .. _`igb_configure`:
 
@@ -555,8 +605,9 @@ igb_configure
 
     configure the hardware for RX and TX
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         private board structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_power_up_link`:
 
@@ -567,8 +618,9 @@ igb_power_up_link
 
     Power up the phy/serdes link
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_power_down_link`:
 
@@ -579,8 +631,9 @@ igb_power_down_link
 
     Power down the phy/serdes link
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         address of board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_check_swap_media`:
 
@@ -589,8 +642,9 @@ igb_check_swap_media
 
 .. c:function:: void igb_check_swap_media(struct igb_adapter *adapter)
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         address of the board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_up`:
 
@@ -601,8 +655,9 @@ igb_up
 
     Open the interface and prepare it to handle traffic
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_set_fw_version`:
 
@@ -613,8 +668,9 @@ igb_set_fw_version
 
     Configure version string for ethtool
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         adapter struct
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_init_mas`:
 
@@ -625,8 +681,9 @@ igb_init_mas
 
     init Media Autosense feature if enabled in the NVM
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         adapter struct
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_init_i2c`:
 
@@ -637,8 +694,9 @@ igb_init_i2c
 
     Init I2C interface
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         pointer to adapter structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_probe`:
 
@@ -649,11 +707,13 @@ igb_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in igb_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`igb_probe.description`:
 
@@ -675,8 +735,9 @@ igb_remove_i2c
 
     Cleanup  I2C interface
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         pointer to adapter structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_remove`:
 
@@ -687,8 +748,9 @@ igb_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`igb_remove.description`:
 
@@ -709,8 +771,9 @@ igb_probe_vfs
 
     Initialize vf data storage and add VFs to pci config space
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_probe_vfs.description`:
 
@@ -731,8 +794,9 @@ igb_sw_init
 
     Initialize general software structures (struct igb_adapter)
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_sw_init.description`:
 
@@ -752,11 +816,13 @@ OS network device settings (MTU size).
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param bool resuming:
+    :param resuming:
         *undescribed*
+    :type resuming: bool
 
 .. _`__igb_open.description`:
 
@@ -780,11 +846,13 @@ and the stack is notified that the interface is ready.
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param bool suspending:
+    :param suspending:
         *undescribed*
+    :type suspending: bool
 
 .. _`__igb_close.description`:
 
@@ -807,8 +875,9 @@ igb_setup_tx_resources
 
     allocate Tx resources (Descriptors)
 
-    :param struct igb_ring \*tx_ring:
+    :param tx_ring:
         tx descriptor ring (for a specific queue) to setup
+    :type tx_ring: struct igb_ring \*
 
 .. _`igb_setup_tx_resources.description`:
 
@@ -826,8 +895,9 @@ igb_setup_all_tx_resources
 
     wrapper to allocate Tx resources (Descriptors) for all queues
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_setup_all_tx_resources.description`:
 
@@ -845,8 +915,9 @@ igb_setup_tctl
 
     configure the transmit control registers
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_configure_tx_ring`:
 
@@ -857,11 +928,13 @@ igb_configure_tx_ring
 
     Configure transmit ring after Reset
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
-    :param struct igb_ring \*ring:
+    :param ring:
         tx ring to configure
+    :type ring: struct igb_ring \*
 
 .. _`igb_configure_tx_ring.description`:
 
@@ -879,8 +952,9 @@ igb_configure_tx
 
     Configure transmit Unit after Reset
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_configure_tx.description`:
 
@@ -898,8 +972,9 @@ igb_setup_rx_resources
 
     allocate Rx resources (Descriptors)
 
-    :param struct igb_ring \*rx_ring:
+    :param rx_ring:
         Rx descriptor ring (for a specific queue) to setup
+    :type rx_ring: struct igb_ring \*
 
 .. _`igb_setup_rx_resources.description`:
 
@@ -917,8 +992,9 @@ igb_setup_all_rx_resources
 
     wrapper to allocate Rx resources (Descriptors) for all queues
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_setup_all_rx_resources.description`:
 
@@ -936,8 +1012,9 @@ igb_setup_mrqc
 
     configure the multiple receive queue control registers
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_setup_rctl`:
 
@@ -948,8 +1025,9 @@ igb_setup_rctl
 
     configure the receive control registers
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_configure_rx_ring`:
 
@@ -960,11 +1038,13 @@ igb_configure_rx_ring
 
     Configure a receive ring after Reset
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
-    :param struct igb_ring \*ring:
+    :param ring:
         receive ring to be configured
+    :type ring: struct igb_ring \*
 
 .. _`igb_configure_rx_ring.description`:
 
@@ -982,8 +1062,9 @@ igb_configure_rx
 
     Configure receive Unit after Reset
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_configure_rx.description`:
 
@@ -1001,8 +1082,9 @@ igb_free_tx_resources
 
     Free Tx Resources per Queue
 
-    :param struct igb_ring \*tx_ring:
+    :param tx_ring:
         Tx descriptor ring for a specific queue
+    :type tx_ring: struct igb_ring \*
 
 .. _`igb_free_tx_resources.description`:
 
@@ -1020,8 +1102,9 @@ igb_free_all_tx_resources
 
     Free Tx Resources for All Queues
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_free_all_tx_resources.description`:
 
@@ -1039,8 +1122,9 @@ igb_clean_tx_ring
 
     Free Tx Buffers
 
-    :param struct igb_ring \*tx_ring:
+    :param tx_ring:
         ring to be cleaned
+    :type tx_ring: struct igb_ring \*
 
 .. _`igb_clean_all_tx_rings`:
 
@@ -1051,8 +1135,9 @@ igb_clean_all_tx_rings
 
     Free Tx Buffers for all queues
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_free_rx_resources`:
 
@@ -1063,8 +1148,9 @@ igb_free_rx_resources
 
     Free Rx Resources
 
-    :param struct igb_ring \*rx_ring:
+    :param rx_ring:
         ring to clean the resources from
+    :type rx_ring: struct igb_ring \*
 
 .. _`igb_free_rx_resources.description`:
 
@@ -1082,8 +1168,9 @@ igb_free_all_rx_resources
 
     Free Rx Resources for All Queues
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_free_all_rx_resources.description`:
 
@@ -1101,8 +1188,9 @@ igb_clean_rx_ring
 
     Free Rx Buffers per Queue
 
-    :param struct igb_ring \*rx_ring:
+    :param rx_ring:
         ring to free buffers from
+    :type rx_ring: struct igb_ring \*
 
 .. _`igb_clean_all_rx_rings`:
 
@@ -1113,8 +1201,9 @@ igb_clean_all_rx_rings
 
     Free Rx Buffers for all queues
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_set_mac`:
 
@@ -1125,11 +1214,13 @@ igb_set_mac
 
     Change the Ethernet Address of the NIC
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         pointer to an address structure
+    :type p: void \*
 
 .. _`igb_set_mac.description`:
 
@@ -1147,8 +1238,9 @@ igb_write_mc_addr_list
 
     write multicast addresses to MTA
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`igb_write_mc_addr_list.description`:
 
@@ -1175,8 +1267,9 @@ igb_set_rx_mode
 
     Secondary Unicast, Multicast and Promiscuous mode set
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`igb_set_rx_mode.description`:
 
@@ -1197,8 +1290,9 @@ igb_has_link
 
     check shared code for link and determine up/down
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         pointer to driver private info
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_check_lvmmc`:
 
@@ -1209,8 +1303,9 @@ igb_check_lvmmc
 
     check for malformed packets received and indicated in LVMMC register
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         pointer to adapter
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_watchdog`:
 
@@ -1221,8 +1316,9 @@ igb_watchdog
 
     Timer Call-back
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`igb_update_ring_itr`:
 
@@ -1233,8 +1329,9 @@ igb_update_ring_itr
 
     update the dynamic ITR value based on packet size
 
-    :param struct igb_q_vector \*q_vector:
+    :param q_vector:
         pointer to q_vector
+    :type q_vector: struct igb_q_vector \*
 
 .. _`igb_update_ring_itr.description`:
 
@@ -1267,11 +1364,13 @@ igb_update_itr
 
     update the dynamic ITR value based on statistics
 
-    :param struct igb_q_vector \*q_vector:
+    :param q_vector:
         pointer to q_vector
+    :type q_vector: struct igb_q_vector \*
 
-    :param struct igb_ring_container \*ring_container:
+    :param ring_container:
         ring info to update the itr for
+    :type ring_container: struct igb_ring_container \*
 
 .. _`igb_update_itr.description`:
 
@@ -1304,8 +1403,9 @@ igb_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`igb_get_stats64`:
 
@@ -1316,11 +1416,13 @@ igb_get_stats64
 
     Get System Network Statistics
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param struct rtnl_link_stats64 \*stats:
+    :param stats:
         rtnl_link_stats64 pointer
+    :type stats: struct rtnl_link_stats64 \*
 
 .. _`igb_change_mtu`:
 
@@ -1331,11 +1433,13 @@ igb_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`igb_change_mtu.description`:
 
@@ -1353,8 +1457,9 @@ igb_update_stats
 
     Update the board statistics counters
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
 .. _`igb_set_uta`:
 
@@ -1365,11 +1470,13 @@ igb_set_uta
 
     Set unicast filter table address
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igb_adapter \*
 
-    :param bool set:
+    :param set:
         boolean indicating if we are setting or clearing bits
+    :type set: bool
 
 .. _`igb_set_uta.description`:
 
@@ -1391,11 +1498,13 @@ igb_intr_msi
 
     Interrupt Handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a network interface device structure
+    :type data: void \*
 
 .. _`igb_intr`:
 
@@ -1406,11 +1515,13 @@ igb_intr
 
     Legacy Interrupt Handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a network interface device structure
+    :type data: void \*
 
 .. _`igb_poll`:
 
@@ -1421,11 +1532,13 @@ igb_poll
 
     NAPI Rx polling callback
 
-    :param struct napi_struct \*napi:
+    :param napi:
         napi polling structure
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         count of how many packets we should handle
+    :type budget: int
 
 .. _`igb_clean_tx_irq`:
 
@@ -1436,11 +1549,13 @@ igb_clean_tx_irq
 
     Reclaim resources after transmit completes
 
-    :param struct igb_q_vector \*q_vector:
+    :param q_vector:
         pointer to q_vector containing needed info
+    :type q_vector: struct igb_q_vector \*
 
-    :param int napi_budget:
+    :param napi_budget:
         Used to determine if we are in netpoll
+    :type napi_budget: int
 
 .. _`igb_clean_tx_irq.description`:
 
@@ -1458,11 +1573,13 @@ igb_reuse_rx_page
 
     page flip buffer and store it back on the ring
 
-    :param struct igb_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to store buffers on
+    :type rx_ring: struct igb_ring \*
 
-    :param struct igb_rx_buffer \*old_buff:
+    :param old_buff:
         donor buffer to have page reused
+    :type old_buff: struct igb_rx_buffer \*
 
 .. _`igb_reuse_rx_page.description`:
 
@@ -1480,17 +1597,21 @@ igb_add_rx_frag
 
     Add contents of Rx buffer to sk_buff
 
-    :param struct igb_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring to transact packets on
+    :type rx_ring: struct igb_ring \*
 
-    :param struct igb_rx_buffer \*rx_buffer:
+    :param rx_buffer:
         buffer containing page to add
+    :type rx_buffer: struct igb_rx_buffer \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff to place the data into
+    :type skb: struct sk_buff \*
 
-    :param unsigned int size:
+    :param size:
         size of buffer to be added
+    :type size: unsigned int
 
 .. _`igb_add_rx_frag.description`:
 
@@ -1508,11 +1629,13 @@ igb_is_non_eop
 
     process handling of non-EOP buffers
 
-    :param struct igb_ring \*rx_ring:
+    :param rx_ring:
         Rx ring being processed
+    :type rx_ring: struct igb_ring \*
 
-    :param union e1000_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         Rx descriptor for current buffer
+    :type rx_desc: union e1000_adv_rx_desc \*
 
 .. _`igb_is_non_eop.description`:
 
@@ -1533,14 +1656,17 @@ igb_cleanup_headers
 
     Correct corrupted or empty headers
 
-    :param struct igb_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct igb_ring \*
 
-    :param union e1000_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union e1000_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being fixed
+    :type skb: struct sk_buff \*
 
 .. _`igb_cleanup_headers.description`:
 
@@ -1564,14 +1690,17 @@ igb_process_skb_fields
 
     Populate skb header fields from Rx descriptor
 
-    :param struct igb_ring \*rx_ring:
+    :param rx_ring:
         rx descriptor ring packet is being transacted on
+    :type rx_ring: struct igb_ring \*
 
-    :param union e1000_adv_rx_desc \*rx_desc:
+    :param rx_desc:
         pointer to the EOP Rx descriptor
+    :type rx_desc: union e1000_adv_rx_desc \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to current skb being populated
+    :type skb: struct sk_buff \*
 
 .. _`igb_process_skb_fields.description`:
 
@@ -1591,11 +1720,13 @@ igb_alloc_rx_buffers
 
     Replace used receive buffers; packet split
 
-    :param struct igb_ring \*rx_ring:
+    :param rx_ring:
         *undescribed*
+    :type rx_ring: struct igb_ring \*
 
-    :param u16 cleaned_count:
+    :param cleaned_count:
         *undescribed*
+    :type cleaned_count: u16
 
 .. _`igb_mii_ioctl`:
 
@@ -1604,14 +1735,17 @@ igb_mii_ioctl
 
 .. c:function:: int igb_mii_ioctl(struct net_device *netdev, struct ifreq *ifr, int cmd)
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         *undescribed*
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
 .. _`igb_ioctl`:
 
@@ -1620,14 +1754,17 @@ igb_ioctl
 
 .. c:function:: int igb_ioctl(struct net_device *netdev, struct ifreq *ifr, int cmd)
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         *undescribed*
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: int
 
 .. _`igb_io_error_detected`:
 
@@ -1638,11 +1775,13 @@ igb_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`igb_io_error_detected.description`:
 
@@ -1661,8 +1800,9 @@ igb_io_slot_reset
 
     called after the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`igb_io_slot_reset.description`:
 
@@ -1681,8 +1821,9 @@ igb_io_resume
 
     called when traffic can start flowing again.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`igb_io_resume.description`:
 
@@ -1702,11 +1843,13 @@ igb_rar_set_index
 
     Sync RAL[index] and RAH[index] registers with MAC table
 
-    :param struct igb_adapter \*adapter:
+    :param adapter:
         Pointer to adapter structure
+    :type adapter: struct igb_adapter \*
 
-    :param u32 index:
+    :param index:
         Index of the RAR entry which need to be synced with MAC table
+    :type index: u32
 
 .. _`igb_read_i2c_byte`:
 
@@ -1717,17 +1860,21 @@ igb_read_i2c_byte
 
     Reads 8 bit word over I2C
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to read
+    :type byte_offset: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address
+    :type dev_addr: u8
 
-    :param u8 \*data:
+    :param data:
         value read
+    :type data: u8 \*
 
 .. _`igb_read_i2c_byte.description`:
 
@@ -1746,17 +1893,21 @@ igb_write_i2c_byte
 
     Writes 8 bit word over I2C
 
-    :param struct e1000_hw \*hw:
+    :param hw:
         pointer to hardware structure
+    :type hw: struct e1000_hw \*
 
-    :param u8 byte_offset:
+    :param byte_offset:
         byte offset to write
+    :type byte_offset: u8
 
-    :param u8 dev_addr:
+    :param dev_addr:
         device address
+    :type dev_addr: u8
 
-    :param u8 data:
+    :param data:
         value to write
+    :type data: u8
 
 .. _`igb_write_i2c_byte.description`:
 

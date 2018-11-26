@@ -10,8 +10,9 @@ watchdog_nmi_stop
 
     Stop the watchdog for reconfiguration
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`watchdog_nmi_stop.the-reconfiguration-steps-are`:
 
@@ -31,8 +32,9 @@ watchdog_nmi_start
 
     Start the watchdog after reconfiguration
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`watchdog_nmi_start.description`:
 
@@ -61,8 +63,9 @@ lockup_detector_update_enable
 
     Update the sysctl enable bit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`lockup_detector_update_enable.description`:
 
@@ -77,12 +80,13 @@ can't race with \ :c:func:`watchdog_nmi_disable`\ .
 touch_softlockup_watchdog_sched
 ===============================
 
-.. c:function:: void touch_softlockup_watchdog_sched( void)
+.. c:function:: notrace void touch_softlockup_watchdog_sched( void)
 
     touch watchdog on scheduler stalls
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`touch_softlockup_watchdog_sched.description`:
 
@@ -103,8 +107,9 @@ lockup_detector_cleanup
 
     Cleanup after cpu hotplug or sysctl changes
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`lockup_detector_cleanup.description`:
 
@@ -122,8 +127,9 @@ lockup_detector_soft_poweroff
 
     Interface to stop lockup detector(s)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`lockup_detector_soft_poweroff.description`:
 

@@ -10,14 +10,17 @@ write_qp_ctxts
 
     write the qp ctxt to HW
 
-    :param struct hinic_func_to_io \*func_to_io:
+    :param func_to_io:
         func to io channel that holds the IO components
+    :type func_to_io: struct hinic_func_to_io \*
 
-    :param u16 base_qpn:
+    :param base_qpn:
         first qp number
+    :type base_qpn: u16
 
-    :param u16 num_qps:
+    :param num_qps:
         number of qps to write
+    :type num_qps: u16
 
 .. _`write_qp_ctxts.description`:
 
@@ -35,20 +38,25 @@ init_qp
 
     Initialize a Queue Pair
 
-    :param struct hinic_func_to_io \*func_to_io:
+    :param func_to_io:
         func to io channel that holds the IO components
+    :type func_to_io: struct hinic_func_to_io \*
 
-    :param struct hinic_qp \*qp:
+    :param qp:
         pointer to the qp to initialize
+    :type qp: struct hinic_qp \*
 
-    :param int q_id:
+    :param q_id:
         the id of the qp
+    :type q_id: int
 
-    :param struct msix_entry \*sq_msix_entry:
+    :param sq_msix_entry:
         msix entry for sq
+    :type sq_msix_entry: struct msix_entry \*
 
-    :param struct msix_entry \*rq_msix_entry:
+    :param rq_msix_entry:
         msix entry for rq
+    :type rq_msix_entry: struct msix_entry \*
 
 .. _`init_qp.description`:
 
@@ -66,11 +74,13 @@ destroy_qp
 
     Clean the resources of a Queue Pair
 
-    :param struct hinic_func_to_io \*func_to_io:
+    :param func_to_io:
         func to io channel that holds the IO components
+    :type func_to_io: struct hinic_func_to_io \*
 
-    :param struct hinic_qp \*qp:
+    :param qp:
         pointer to the qp to clean
+    :type qp: struct hinic_qp \*
 
 .. _`hinic_io_create_qps`:
 
@@ -81,20 +91,25 @@ hinic_io_create_qps
 
     Create Queue Pairs
 
-    :param struct hinic_func_to_io \*func_to_io:
+    :param func_to_io:
         func to io channel that holds the IO components
+    :type func_to_io: struct hinic_func_to_io \*
 
-    :param u16 base_qpn:
+    :param base_qpn:
         base qp number
+    :type base_qpn: u16
 
-    :param int num_qps:
+    :param num_qps:
         number queue pairs to create
+    :type num_qps: int
 
-    :param struct msix_entry \*sq_msix_entries:
+    :param sq_msix_entries:
         *undescribed*
+    :type sq_msix_entries: struct msix_entry \*
 
-    :param struct msix_entry \*rq_msix_entries:
+    :param rq_msix_entries:
         *undescribed*
+    :type rq_msix_entries: struct msix_entry \*
 
 .. _`hinic_io_create_qps.description`:
 
@@ -112,11 +127,13 @@ hinic_io_destroy_qps
 
     Destroy the IO Queue Pairs
 
-    :param struct hinic_func_to_io \*func_to_io:
+    :param func_to_io:
         func to io channel that holds the IO components
+    :type func_to_io: struct hinic_func_to_io \*
 
-    :param int num_qps:
+    :param num_qps:
         number queue pairs to destroy
+    :type num_qps: int
 
 .. _`hinic_io_init`:
 
@@ -127,20 +144,25 @@ hinic_io_init
 
     Initialize the IO components
 
-    :param struct hinic_func_to_io \*func_to_io:
+    :param func_to_io:
         func to io channel that holds the IO components
+    :type func_to_io: struct hinic_func_to_io \*
 
-    :param struct hinic_hwif \*hwif:
+    :param hwif:
         HW interface for accessing IO
+    :type hwif: struct hinic_hwif \*
 
-    :param u16 max_qps:
+    :param max_qps:
         maximum QPs in HW
+    :type max_qps: u16
 
-    :param int num_ceqs:
+    :param num_ceqs:
         number completion event queues
+    :type num_ceqs: int
 
-    :param struct msix_entry \*ceq_msix_entries:
+    :param ceq_msix_entries:
         msix entries for ceqs
+    :type ceq_msix_entries: struct msix_entry \*
 
 .. _`hinic_io_init.description`:
 
@@ -158,8 +180,9 @@ hinic_io_free
 
     Free the IO components
 
-    :param struct hinic_func_to_io \*func_to_io:
+    :param func_to_io:
         func to io channel that holds the IO components
+    :type func_to_io: struct hinic_func_to_io \*
 
 .. This file was automatic generated / don't edit.
 

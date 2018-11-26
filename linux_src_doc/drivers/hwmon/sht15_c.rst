@@ -162,14 +162,17 @@ sht15_crc8
 
     compute crc8
 
-    :param struct sht15_data \*data:
+    :param data:
         sht15 specific data.
+    :type data: struct sht15_data \*
 
-    :param const u8 \*value:
+    :param value:
         sht15 retrieved data.
+    :type value: const u8 \*
 
-    :param int len:
+    :param len:
         Length of retrieved data
+    :type len: int
 
 .. _`sht15_crc8.description`:
 
@@ -187,8 +190,9 @@ sht15_connection_reset
 
     reset the comms interface
 
-    :param struct sht15_data \*data:
+    :param data:
         sht15 specific data
+    :type data: struct sht15_data \*
 
 .. _`sht15_connection_reset.description`:
 
@@ -206,11 +210,13 @@ sht15_send_bit
 
     send an individual bit to the device
 
-    :param struct sht15_data \*data:
+    :param data:
         device state data
+    :type data: struct sht15_data \*
 
-    :param int val:
+    :param val:
         value of bit to be sent
+    :type val: int
 
 .. _`sht15_transmission_start`:
 
@@ -221,8 +227,9 @@ sht15_transmission_start
 
     specific sequence for new transmission
 
-    :param struct sht15_data \*data:
+    :param data:
         device state data
+    :type data: struct sht15_data \*
 
 .. _`sht15_transmission_start.description`:
 
@@ -242,11 +249,13 @@ sht15_send_byte
 
     send a single byte to the device
 
-    :param struct sht15_data \*data:
+    :param data:
         device state
+    :type data: struct sht15_data \*
 
-    :param u8 byte:
+    :param byte:
         value to be sent
+    :type byte: u8
 
 .. _`sht15_wait_for_response`:
 
@@ -257,8 +266,9 @@ sht15_wait_for_response
 
     checks for ack from device
 
-    :param struct sht15_data \*data:
+    :param data:
         device state
+    :type data: struct sht15_data \*
 
 .. _`sht15_send_cmd`:
 
@@ -269,11 +279,13 @@ sht15_send_cmd
 
     Sends a command to the device.
 
-    :param struct sht15_data \*data:
+    :param data:
         device state
+    :type data: struct sht15_data \*
 
-    :param u8 cmd:
+    :param cmd:
         command byte to be sent
+    :type cmd: u8
 
 .. _`sht15_send_cmd.description`:
 
@@ -292,8 +304,9 @@ sht15_soft_reset
 
     send a soft reset command
 
-    :param struct sht15_data \*data:
+    :param data:
         sht15 specific data.
+    :type data: struct sht15_data \*
 
 .. _`sht15_soft_reset.description`:
 
@@ -311,8 +324,9 @@ sht15_ack
 
     send a ack
 
-    :param struct sht15_data \*data:
+    :param data:
         sht15 specific data.
+    :type data: struct sht15_data \*
 
 .. _`sht15_ack.description`:
 
@@ -331,8 +345,9 @@ sht15_end_transmission
 
     notify device of end of transmission
 
-    :param struct sht15_data \*data:
+    :param data:
         device state.
+    :type data: struct sht15_data \*
 
 .. _`sht15_end_transmission.description`:
 
@@ -350,8 +365,9 @@ sht15_read_byte
 
     Read a byte back from the device
 
-    :param struct sht15_data \*data:
+    :param data:
         device state.
+    :type data: struct sht15_data \*
 
 .. _`sht15_send_status`:
 
@@ -362,11 +378,13 @@ sht15_send_status
 
     write the status register byte
 
-    :param struct sht15_data \*data:
+    :param data:
         sht15 specific data.
+    :type data: struct sht15_data \*
 
-    :param u8 status:
+    :param status:
         the byte to set the status register with.
+    :type status: u8
 
 .. _`sht15_send_status.description`:
 
@@ -384,8 +402,9 @@ sht15_update_status
 
     get updated status register from device if too old
 
-    :param struct sht15_data \*data:
+    :param data:
         device instance specific data.
+    :type data: struct sht15_data \*
 
 .. _`sht15_update_status.description`:
 
@@ -403,15 +422,18 @@ sht15_measurement
 
     get a new value from device
 
-    :param struct sht15_data \*data:
+    :param data:
         device instance specific data
+    :type data: struct sht15_data \*
 
-    :param int command:
+    :param command:
         command sent to request value
+    :type command: int
 
-    :param int timeout_msecs:
+    :param timeout_msecs:
         timeout after which comms are assumed
         to have failed are reset.
+    :type timeout_msecs: int
 
 .. _`sht15_update_measurements`:
 
@@ -422,8 +444,9 @@ sht15_update_measurements
 
     get updated measures from device if too old
 
-    :param struct sht15_data \*data:
+    :param data:
         device state
+    :type data: struct sht15_data \*
 
 .. _`sht15_calc_temp`:
 
@@ -434,8 +457,9 @@ sht15_calc_temp
 
     convert the raw reading to a temperature
 
-    :param struct sht15_data \*data:
+    :param data:
         device state
+    :type data: struct sht15_data \*
 
 .. _`sht15_calc_temp.description`:
 
@@ -453,8 +477,9 @@ sht15_calc_humid
 
     using last temperature convert raw to humid
 
-    :param struct sht15_data \*data:
+    :param data:
         device state
+    :type data: struct sht15_data \*
 
 .. _`sht15_calc_humid.description`:
 
@@ -476,14 +501,17 @@ sht15_show_status
 
     show status information in sysfs
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         sysfs buffer where information is written to.
+    :type buf: char \*
 
 .. _`sht15_show_status.description`:
 
@@ -503,17 +531,21 @@ sht15_store_heater
 
     change heater state via sysfs
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute.
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         sysfs buffer to read the new heater state from.
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         length of the data.
+    :type count: size_t
 
 .. _`sht15_store_heater.description`:
 
@@ -532,14 +564,17 @@ sht15_show_temp
 
     show temperature measurement value in sysfs
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         sysfs buffer where measurement values are written to.
+    :type buf: char \*
 
 .. _`sht15_show_temp.description`:
 
@@ -558,14 +593,17 @@ sht15_show_humidity
 
     show humidity measurement value in sysfs
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         sysfs buffer where measurement values are written to.
+    :type buf: char \*
 
 .. _`sht15_show_humidity.description`:
 
@@ -584,14 +622,17 @@ sht15_invalidate_voltage
 
     mark supply voltage invalid when notified by reg
 
-    :param struct notifier_block \*nb:
+    :param nb:
         associated notification structure
+    :type nb: struct notifier_block \*
 
-    :param unsigned long event:
+    :param event:
         voltage regulator state change event code
+    :type event: unsigned long
 
-    :param void \*ignored:
+    :param ignored:
         function parameter - ignored here
+    :type ignored: void \*
 
 .. _`sht15_invalidate_voltage.description`:
 

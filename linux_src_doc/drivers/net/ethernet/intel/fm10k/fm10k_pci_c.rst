@@ -10,8 +10,9 @@ fm10k_macvlan_schedule
 
     Schedule MAC/VLAN queue task
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         fm10k private interface structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_macvlan_schedule.description`:
 
@@ -30,8 +31,9 @@ fm10k_stop_macvlan_task
 
     Stop the MAC/VLAN queue monitor
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         fm10k private interface structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_stop_macvlan_task.description`:
 
@@ -50,8 +52,9 @@ fm10k_resume_macvlan_task
 
     Restart the MAC/VLAN queue monitor
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         fm10k private interface structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_resume_macvlan_task.description`:
 
@@ -70,8 +73,9 @@ fm10k_service_timer
 
     Timer Call-back
 
-    :param struct timer_list \*t:
+    :param t:
         pointer to timer data
+    :type t: struct timer_list \*
 
 .. _`fm10k_prepare_for_reset`:
 
@@ -82,8 +86,9 @@ fm10k_prepare_for_reset
 
     Prepare the driver and device for a pending reset
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         fm10k private data structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_prepare_for_reset.description`:
 
@@ -103,8 +108,9 @@ fm10k_configure_swpri_map
 
     Configure Receive SWPRI to PC mapping
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_configure_swpri_map.description`:
 
@@ -122,8 +128,9 @@ fm10k_watchdog_update_host_state
 
     Update the link status based on host.
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_mbx_subtask`:
 
@@ -134,8 +141,9 @@ fm10k_mbx_subtask
 
     Process upstream and downstream mailboxes
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_mbx_subtask.description`:
 
@@ -153,8 +161,9 @@ fm10k_watchdog_host_is_ready
 
     Update netdev status based on host ready
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_watchdog_host_not_ready`:
 
@@ -165,8 +174,9 @@ fm10k_watchdog_host_not_ready
 
     Update netdev status based on host not ready
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_update_stats`:
 
@@ -177,8 +187,9 @@ fm10k_update_stats
 
     Update the board statistics counters.
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_watchdog_flush_tx`:
 
@@ -189,8 +200,9 @@ fm10k_watchdog_flush_tx
 
     flush queues on host not ready
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         pointer to the device interface structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_watchdog_subtask`:
 
@@ -201,8 +213,9 @@ fm10k_watchdog_subtask
 
     check and bring link up
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         pointer to the device interface structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_check_hang_subtask`:
 
@@ -213,8 +226,9 @@ fm10k_check_hang_subtask
 
     check for hung queues and dropped interrupts
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         pointer to the device interface structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_check_hang_subtask.description`:
 
@@ -235,8 +249,9 @@ fm10k_service_task
 
     manages and runs subtasks
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work_struct containing our data
+    :type work: struct work_struct \*
 
 .. _`fm10k_macvlan_task`:
 
@@ -247,8 +262,9 @@ fm10k_macvlan_task
 
     send queued MAC/VLAN requests to switch manager
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to work_struct containing our data
+    :type work: struct work_struct \*
 
 .. _`fm10k_macvlan_task.description`:
 
@@ -271,11 +287,13 @@ fm10k_configure_tx_ring
 
     Configure Tx ring after Reset
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
-    :param struct fm10k_ring \*ring:
+    :param ring:
         structure containing ring specific data
+    :type ring: struct fm10k_ring \*
 
 .. _`fm10k_configure_tx_ring.description`:
 
@@ -293,11 +311,13 @@ fm10k_enable_tx_ring
 
     Verify Tx ring is enabled after configuration
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
-    :param struct fm10k_ring \*ring:
+    :param ring:
         structure containing ring specific data
+    :type ring: struct fm10k_ring \*
 
 .. _`fm10k_enable_tx_ring.description`:
 
@@ -315,8 +335,9 @@ fm10k_configure_tx
 
     Configure Transmit Unit after Reset
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_configure_tx.description`:
 
@@ -334,11 +355,13 @@ fm10k_configure_rx_ring
 
     Configure Rx ring after Reset
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
-    :param struct fm10k_ring \*ring:
+    :param ring:
         structure containing ring specific data
+    :type ring: struct fm10k_ring \*
 
 .. _`fm10k_configure_rx_ring.description`:
 
@@ -356,8 +379,9 @@ fm10k_update_rx_drop_en
 
     Configures the drop enable bits for Rx rings
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_update_rx_drop_en.description`:
 
@@ -375,8 +399,9 @@ fm10k_configure_dglort
 
     Configure Receive DGLORT after reset
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_configure_dglort.description`:
 
@@ -394,8 +419,9 @@ fm10k_configure_rx
 
     Configure Receive Unit after Reset
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_configure_rx.description`:
 
@@ -403,26 +429,6 @@ Description
 -----------
 
 Configure the Rx unit of the MAC after a reset.
-
-.. _`fm10k_netpoll`:
-
-fm10k_netpoll
-=============
-
-.. c:function:: void fm10k_netpoll(struct net_device *netdev)
-
-    A Polling 'interrupt' handler
-
-    :param struct net_device \*netdev:
-        network interface device structure
-
-.. _`fm10k_netpoll.description`:
-
-Description
------------
-
-This is used by netconsole to send skbs without having to re-enable
-interrupts. It's not called while the normal interrupt routine is executing.
 
 .. _`fm10k_qv_free_irq`:
 
@@ -433,8 +439,9 @@ fm10k_qv_free_irq
 
     release interrupts associated with queue vectors
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_qv_free_irq.description`:
 
@@ -452,8 +459,9 @@ fm10k_qv_request_irq
 
     initialize interrupts for queue vectors
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         board private structure
+    :type interface: struct fm10k_intfc \*
 
 .. _`fm10k_qv_request_irq.description`:
 
@@ -472,11 +480,13 @@ fm10k_sw_init
 
     Initialize general software structures
 
-    :param struct fm10k_intfc \*interface:
+    :param interface:
         host interface private structure to initialize
+    :type interface: struct fm10k_intfc \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         PCI device ID entry
+    :type ent: const struct pci_device_id \*
 
 .. _`fm10k_sw_init.description`:
 
@@ -496,11 +506,13 @@ fm10k_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in fm10k_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`fm10k_probe.description`:
 
@@ -522,8 +534,9 @@ fm10k_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`fm10k_remove.description`:
 
@@ -544,8 +557,9 @@ fm10k_resume
 
     Generic PM resume hook
 
-    :param struct device \*dev:
+    :param dev:
         generic device structure
+    :type dev: struct device \*
 
 .. _`fm10k_resume.description`:
 
@@ -565,8 +579,9 @@ fm10k_suspend
 
     Generic PM suspend hook
 
-    :param struct device \*dev:
+    :param dev:
         generic device structure
+    :type dev: struct device \*
 
 .. _`fm10k_suspend.description`:
 
@@ -586,11 +601,13 @@ fm10k_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`fm10k_io_error_detected.description`:
 
@@ -609,8 +626,9 @@ fm10k_io_slot_reset
 
     called after the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`fm10k_io_slot_reset.description`:
 
@@ -628,8 +646,9 @@ fm10k_io_resume
 
     called when traffic can start flowing again.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`fm10k_io_resume.description`:
 
@@ -648,8 +667,9 @@ fm10k_io_reset_prepare
 
     called when PCI function is about to be reset
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`fm10k_io_reset_prepare.description`:
 
@@ -668,8 +688,9 @@ fm10k_io_reset_done
 
     called when PCI function has finished resetting
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`fm10k_io_reset_done.description`:
 
@@ -688,8 +709,9 @@ fm10k_register_pci_driver
 
     register driver interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fm10k_register_pci_driver.description`:
 
@@ -707,8 +729,9 @@ fm10k_unregister_pci_driver
 
     unregister driver interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fm10k_unregister_pci_driver.description`:
 

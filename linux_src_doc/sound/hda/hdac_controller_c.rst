@@ -10,8 +10,9 @@ snd_hdac_bus_init_cmd_io
 
     set up CORB/RIRB buffers
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
 .. _`snd_hdac_bus_stop_cmd_io`:
 
@@ -22,8 +23,9 @@ snd_hdac_bus_stop_cmd_io
 
     clean up CORB/RIRB buffers
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
 .. _`snd_hdac_bus_send_cmd`:
 
@@ -34,11 +36,13 @@ snd_hdac_bus_send_cmd
 
     send a command verb via CORB
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
-    :param unsigned int val:
+    :param val:
         encoded verb value to send
+    :type val: unsigned int
 
 .. _`snd_hdac_bus_send_cmd.description`:
 
@@ -56,8 +60,9 @@ snd_hdac_bus_update_rirb
 
     retrieve RIRB entries
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
 .. _`snd_hdac_bus_update_rirb.description`:
 
@@ -75,14 +80,17 @@ snd_hdac_bus_get_response
 
     receive a response via RIRB
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
-    :param unsigned int addr:
+    :param addr:
         codec address
+    :type addr: unsigned int
 
-    :param unsigned int \*res:
+    :param res:
         pointer to store the value, NULL when not needed
+    :type res: unsigned int \*
 
 .. _`snd_hdac_bus_get_response.description`:
 
@@ -100,8 +108,9 @@ snd_hdac_bus_parse_capabilities
 
     parse capability structure
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         the pointer to bus object
+    :type bus: struct hdac_bus \*
 
 .. _`snd_hdac_bus_parse_capabilities.description`:
 
@@ -119,8 +128,9 @@ snd_hdac_bus_enter_link_reset
 
     enter link reset
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
 .. _`snd_hdac_bus_enter_link_reset.description`:
 
@@ -138,8 +148,9 @@ snd_hdac_bus_exit_link_reset
 
     exit link reset
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
 .. _`snd_hdac_bus_exit_link_reset.description`:
 
@@ -157,11 +168,13 @@ snd_hdac_bus_init_chip
 
     reset and start the controller registers
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
-    :param bool full_reset:
+    :param full_reset:
         Do full reset
+    :type full_reset: bool
 
 .. _`snd_hdac_bus_stop_chip`:
 
@@ -172,8 +185,9 @@ snd_hdac_bus_stop_chip
 
     disable the whole IRQ and I/Os
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
 .. _`snd_hdac_bus_handle_stream_irq`:
 
@@ -184,11 +198,13 @@ snd_hdac_bus_handle_stream_irq
 
     interrupt handler for streams
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
-    :param unsigned int status:
+    :param status:
         INTSTS register value
+    :type status: unsigned int
 
     :param void (\*ack)(struct hdac_bus \*, struct hdac_stream \*):
         *undescribed*
@@ -209,8 +225,9 @@ snd_hdac_bus_alloc_stream_pages
 
     allocate BDL and other buffers
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
 .. _`snd_hdac_bus_alloc_stream_pages.description`:
 
@@ -229,8 +246,9 @@ snd_hdac_bus_free_stream_pages
 
     release BDL and other buffers
 
-    :param struct hdac_bus \*bus:
+    :param bus:
         HD-audio core bus
+    :type bus: struct hdac_bus \*
 
 .. This file was automatic generated / don't edit.
 

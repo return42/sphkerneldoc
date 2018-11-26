@@ -12,6 +12,7 @@ raw
     au1550nd_c
     cafe_nand_c
     fsmc_nand_c
+    internals_h
     jz4780_bch_c
     jz4780_bch_h
     marvell_nand_c
@@ -21,6 +22,7 @@ raw
     nand_ecc_c
     nand_hynix_c
     nand_ids_c
+    nand_legacy_c
     nand_timings_c
     nandsim_c
     omap2_c

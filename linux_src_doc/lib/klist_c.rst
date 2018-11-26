@@ -10,8 +10,9 @@ klist_init
 
     Initialize a klist structure.
 
-    :param struct klist \*k:
+    :param k:
         The klist we're initializing.
+    :type k: struct klist \*
 
     :param void (\*get)(struct klist_node \*):
         The get function for the embedding object (NULL if none)
@@ -39,11 +40,13 @@ klist_add_head
 
     Initialize a klist_node and add it to front.
 
-    :param struct klist_node \*n:
+    :param n:
         node we're adding.
+    :type n: struct klist_node \*
 
-    :param struct klist \*k:
+    :param k:
         klist it's going on.
+    :type k: struct klist \*
 
 .. _`klist_add_tail`:
 
@@ -54,11 +57,13 @@ klist_add_tail
 
     Initialize a klist_node and add it to back.
 
-    :param struct klist_node \*n:
+    :param n:
         node we're adding.
+    :type n: struct klist_node \*
 
-    :param struct klist \*k:
+    :param k:
         klist it's going on.
+    :type k: struct klist \*
 
 .. _`klist_add_behind`:
 
@@ -69,11 +74,13 @@ klist_add_behind
 
     Init a klist_node and add it after an existing node
 
-    :param struct klist_node \*n:
+    :param n:
         node we're adding.
+    :type n: struct klist_node \*
 
-    :param struct klist_node \*pos:
+    :param pos:
         node to put \ ``n``\  after
+    :type pos: struct klist_node \*
 
 .. _`klist_add_before`:
 
@@ -84,11 +91,13 @@ klist_add_before
 
     Init a klist_node and add it before an existing node
 
-    :param struct klist_node \*n:
+    :param n:
         node we're adding.
+    :type n: struct klist_node \*
 
-    :param struct klist_node \*pos:
+    :param pos:
         node to put \ ``n``\  after
+    :type pos: struct klist_node \*
 
 .. _`klist_del`:
 
@@ -99,8 +108,9 @@ klist_del
 
     Decrement the reference count of node and try to remove.
 
-    :param struct klist_node \*n:
+    :param n:
         node we're deleting.
+    :type n: struct klist_node \*
 
 .. _`klist_remove`:
 
@@ -111,8 +121,9 @@ klist_remove
 
     Decrement the refcount of node and wait for it to go away.
 
-    :param struct klist_node \*n:
+    :param n:
         node we're removing.
+    :type n: struct klist_node \*
 
 .. _`klist_node_attached`:
 
@@ -123,8 +134,9 @@ klist_node_attached
 
     Say whether a node is bound to a list or not.
 
-    :param struct klist_node \*n:
+    :param n:
         Node that we're testing.
+    :type n: struct klist_node \*
 
 .. _`klist_iter_init_node`:
 
@@ -135,14 +147,17 @@ klist_iter_init_node
 
     Initialize a klist_iter structure.
 
-    :param struct klist \*k:
+    :param k:
         klist we're iterating.
+    :type k: struct klist \*
 
-    :param struct klist_iter \*i:
+    :param i:
         klist_iter we're filling.
+    :type i: struct klist_iter \*
 
-    :param struct klist_node \*n:
+    :param n:
         node to start with.
+    :type n: struct klist_node \*
 
 .. _`klist_iter_init_node.description`:
 
@@ -161,11 +176,13 @@ klist_iter_init
 
     Iniitalize a klist_iter structure.
 
-    :param struct klist \*k:
+    :param k:
         klist we're iterating.
+    :type k: struct klist \*
 
-    :param struct klist_iter \*i:
+    :param i:
         klist_iter structure we're filling.
+    :type i: struct klist_iter \*
 
 .. _`klist_iter_init.description`:
 
@@ -183,8 +200,9 @@ klist_iter_exit
 
     Finish a list iteration.
 
-    :param struct klist_iter \*i:
+    :param i:
         Iterator structure.
+    :type i: struct klist_iter \*
 
 .. _`klist_iter_exit.description`:
 
@@ -204,8 +222,9 @@ klist_prev
 
     Ante up prev node in list.
 
-    :param struct klist_iter \*i:
+    :param i:
         Iterator structure.
+    :type i: struct klist_iter \*
 
 .. _`klist_prev.description`:
 
@@ -225,8 +244,9 @@ klist_next
 
     Ante up next node in list.
 
-    :param struct klist_iter \*i:
+    :param i:
         Iterator structure.
+    :type i: struct klist_iter \*
 
 .. _`klist_next.description`:
 

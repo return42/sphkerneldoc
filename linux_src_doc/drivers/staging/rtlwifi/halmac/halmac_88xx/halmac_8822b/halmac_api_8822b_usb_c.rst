@@ -10,14 +10,16 @@ halmac_mac_power_switch_8822b_usb
 
     switch mac power
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_mac_power halmac_power:
+    :param halmac_power:
         power state
         Author : KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_power: enum halmac_mac_power
 
 .. _`halmac_phy_cfg_8822b_usb`:
 
@@ -28,14 +30,16 @@ halmac_phy_cfg_8822b_usb
 
     phy config
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : KaiYuan Chang
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
-    :param enum halmac_intf_phy_platform platform:
+    :param platform:
         *undescribed*
+    :type platform: enum halmac_intf_phy_platform
 
 .. _`halmac_interface_integration_tuning_8822b_usb`:
 
@@ -46,11 +50,12 @@ halmac_interface_integration_tuning_8822b_usb
 
     usb interface fine tuning
 
-    :param struct halmac_adapter \*halmac_adapter:
+    :param halmac_adapter:
         the adapter of halmac
         Author : Ivan
         Return : enum halmac_ret_status
         More details of status code can be found in prototype document
+    :type halmac_adapter: struct halmac_adapter \*
 
 .. This file was automatic generated / don't edit.
 

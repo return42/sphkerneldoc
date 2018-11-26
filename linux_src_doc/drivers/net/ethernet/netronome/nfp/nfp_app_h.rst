@@ -25,6 +25,8 @@ Definition
         int (*init)(struct nfp_app *app);
         void (*clean)(struct nfp_app *app);
         const char *(*extra_cap)(struct nfp_app *app, struct nfp_net *nn);
+        int (*ndo_init)(struct nfp_app *app, struct net_device *netdev);
+        void (*ndo_uninit)(struct nfp_app *app, struct net_device *netdev);
         int (*vnic_alloc)(struct nfp_app *app, struct nfp_net *nn, unsigned int id);
         void (*vnic_free)(struct nfp_app *app, struct nfp_net *nn);
         int (*vnic_init)(struct nfp_app *app, struct nfp_net *nn);
@@ -42,6 +44,7 @@ Definition
         int (*start)(struct nfp_app *app);
         void (*stop)(struct nfp_app *app);
         void (*ctrl_msg_rx)(struct nfp_app *app, struct sk_buff *skb);
+        void (*ctrl_msg_rx_raw)(struct nfp_app *app, const void *data, unsigned int len);
         int (*setup_tc)(struct nfp_app *app, struct net_device *netdev, enum tc_setup_type type, void *type_data);
         int (*bpf)(struct nfp_app *app, struct nfp_net *nn, struct netdev_bpf *xdp);
         int (*xdp_offload)(struct nfp_app *app, struct nfp_net *nn,struct bpf_prog *prog, struct netlink_ext_ack *extack);
@@ -79,6 +82,12 @@ clean
 
 extra_cap
     extra capabilities string
+
+ndo_init
+    vNIC and repr netdev .ndo_init
+
+ndo_uninit
+    vNIC and repr netdev .ndo_unint
 
 vnic_alloc
     allocate vNICs (assign port types, etc.)
@@ -131,6 +140,9 @@ stop
 
 ctrl_msg_rx
     control message handler
+
+ctrl_msg_rx_raw
+    handler for control messages from data queues
 
 setup_tc
     setup TC ndo
@@ -186,6 +198,7 @@ Definition
         struct nfp_net *ctrl;
         struct nfp_reprs __rcu *reprs[NFP_REPR_TYPE_MAX + 1];
         const struct nfp_app_type *type;
+        unsigned int ctrl_mtu;
         void *priv;
     }
 
@@ -211,6 +224,9 @@ reprs
 
 type
     pointer to const application ops and info
+
+ctrl_mtu
+    MTU to set on the control vNIC (set in .init())
 
 priv
     app-specific priv data

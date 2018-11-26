@@ -10,14 +10,17 @@ get_log_header
 
     read the log header for a given segment
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         the journal
+    :type jd: struct gfs2_jdesc \*
 
-    :param unsigned int blk:
+    :param blk:
         the block to look at
+    :type blk: unsigned int
 
-    :param struct gfs2_log_header_host \*head:
+    :param head:
         *undescribed*
+    :type head: struct gfs2_log_header_host \*
 
 .. _`get_log_header.description`:
 
@@ -45,14 +48,17 @@ find_good_lh
 
     find a good log header
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         the journal
+    :type jd: struct gfs2_jdesc \*
 
-    :param unsigned int \*blk:
+    :param blk:
         the segment to start searching from
+    :type blk: unsigned int \*
 
-    :param struct gfs2_log_header_host \*head:
+    :param head:
         *undescribed*
+    :type head: struct gfs2_log_header_host \*
 
 .. _`find_good_lh.description`:
 
@@ -78,11 +84,13 @@ jhead_scan
 
     make sure we've found the head of the log
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         the journal
+    :type jd: struct gfs2_jdesc \*
 
-    :param struct gfs2_log_header_host \*head:
+    :param head:
         this is filled in with the log descriptor of the head
+    :type head: struct gfs2_log_header_host \*
 
 .. _`jhead_scan.description`:
 
@@ -108,11 +116,13 @@ gfs2_find_jhead
 
     find the head of a log
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         the journal
+    :type jd: struct gfs2_jdesc \*
 
-    :param struct gfs2_log_header_host \*head:
+    :param head:
         the log descriptor for the head of the log is returned here
+    :type head: struct gfs2_log_header_host \*
 
 .. _`gfs2_find_jhead.description`:
 
@@ -138,17 +148,21 @@ foreach_descriptor
 
     go through the active part of the log
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         the journal
+    :type jd: struct gfs2_jdesc \*
 
-    :param unsigned int start:
+    :param start:
         the first log header in the active region
+    :type start: unsigned int
 
-    :param unsigned int end:
+    :param end:
         the last log header (don't process the contents of this entry))
+    :type end: unsigned int
 
-    :param int pass:
+    :param pass:
         *undescribed*
+    :type pass: int
 
 .. _`foreach_descriptor.description`:
 
@@ -174,11 +188,13 @@ clean_journal
 
     mark a dirty journal as being clean
 
-    :param struct gfs2_jdesc \*jd:
+    :param jd:
         the journal
+    :type jd: struct gfs2_jdesc \*
 
-    :param struct gfs2_log_header_host \*head:
+    :param head:
         the head journal to start from
+    :type head: struct gfs2_log_header_host \*
 
 .. _`clean_journal.return`:
 

@@ -10,8 +10,9 @@ itcw_get_tcw
 
     return pointer to tcw associated with the itcw
 
-    :param struct itcw \*itcw:
+    :param itcw:
         address of the itcw
+    :type itcw: struct itcw \*
 
 .. _`itcw_get_tcw.description`:
 
@@ -29,16 +30,19 @@ itcw_calc_size
 
     return the size of an itcw with the given parameters
 
-    :param int intrg:
+    :param intrg:
         if non-zero, add an interrogate tcw
+    :type intrg: int
 
-    :param int max_tidaws:
+    :param max_tidaws:
         maximum number of tidaws to be used for data addressing or zero
         if no tida is to be used.
+    :type max_tidaws: int
 
-    :param int intrg_max_tidaws:
+    :param intrg_max_tidaws:
         maximum number of tidaws to be used for data addressing
         by the interrogate tcw, if specified
+    :type intrg_max_tidaws: int
 
 .. _`itcw_calc_size.description`:
 
@@ -61,26 +65,32 @@ itcw_init
 
     initialize incremental tcw data structure
 
-    :param void \*buffer:
+    :param buffer:
         address of buffer to use for data structures
+    :type buffer: void \*
 
-    :param size_t size:
+    :param size:
         number of bytes in buffer
+    :type size: size_t
 
-    :param int op:
+    :param op:
         \ ``ITCW_OP_READ``\  for a read operation tcw, \ ``ITCW_OP_WRITE``\  for a write
         operation tcw
+    :type op: int
 
-    :param int intrg:
+    :param intrg:
         if non-zero, add and initialize an interrogate tcw
+    :type intrg: int
 
-    :param int max_tidaws:
+    :param max_tidaws:
         maximum number of tidaws to be used for data addressing or zero
         if no tida is to be used.
+    :type max_tidaws: int
 
-    :param int intrg_max_tidaws:
+    :param intrg_max_tidaws:
         maximum number of tidaws to be used for data addressing
         by the interrogate tcw, if specified
+    :type intrg_max_tidaws: int
 
 .. _`itcw_init.description`:
 
@@ -114,23 +124,29 @@ itcw_add_dcw
 
     add a dcw to the itcw
 
-    :param struct itcw \*itcw:
+    :param itcw:
         address of the itcw
+    :type itcw: struct itcw \*
 
-    :param u8 cmd:
+    :param cmd:
         the dcw command
+    :type cmd: u8
 
-    :param u8 flags:
+    :param flags:
         flags for the dcw
+    :type flags: u8
 
-    :param void \*cd:
+    :param cd:
         address of control data for this dcw or NULL if none is required
+    :type cd: void \*
 
-    :param u8 cd_count:
+    :param cd_count:
         number of control data bytes for this dcw
+    :type cd_count: u8
 
-    :param u32 count:
+    :param count:
         number of data bytes for this dcw
+    :type count: u32
 
 .. _`itcw_add_dcw.description`:
 
@@ -159,17 +175,21 @@ itcw_add_tidaw
 
     add a tidaw to the itcw
 
-    :param struct itcw \*itcw:
+    :param itcw:
         address of the itcw
+    :type itcw: struct itcw \*
 
-    :param u8 flags:
+    :param flags:
         flags for the new tidaw
+    :type flags: u8
 
-    :param void \*addr:
+    :param addr:
         address value for the new tidaw
+    :type addr: void \*
 
-    :param u32 count:
+    :param count:
         count value for the new tidaw
+    :type count: u32
 
 .. _`itcw_add_tidaw.description`:
 
@@ -199,15 +219,18 @@ itcw_set_data
 
     set data address and tida flag of the itcw
 
-    :param struct itcw \*itcw:
+    :param itcw:
         address of the itcw
+    :type itcw: struct itcw \*
 
-    :param void \*addr:
+    :param addr:
         the data address
+    :type addr: void \*
 
-    :param int use_tidal:
+    :param use_tidal:
         zero of the data address specifies a contiguous block of data,
         non-zero if it specifies a list if tidaws.
+    :type use_tidal: int
 
 .. _`itcw_set_data.description`:
 
@@ -227,8 +250,9 @@ itcw_finalize
 
     calculate length and count fields of the itcw
 
-    :param struct itcw \*itcw:
+    :param itcw:
         address of the itcw
+    :type itcw: struct itcw \*
 
 .. _`itcw_finalize.description`:
 

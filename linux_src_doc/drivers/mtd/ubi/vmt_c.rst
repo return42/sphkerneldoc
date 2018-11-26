@@ -10,22 +10,24 @@ ubi_create_volume
 
     create volume.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_mkvol_req \*req:
+    :param req:
         volume creation request
+    :type req: struct ubi_mkvol_req \*
 
 .. _`ubi_create_volume.description`:
 
 Description
 -----------
 
-This function creates volume described by \ ``req``\ . If \ ``req``\ ->vol_id id
+This function creates volume described by \ ``req``\ . If \ ``req->vol_id``\  id
 \ ``UBI_VOL_NUM_AUTO``\ , this function automatically assign ID to the new volume
-and saves it in \ ``req``\ ->vol_id. Returns zero in case of success and a negative
+and saves it in \ ``req->vol_id``\ . Returns zero in case of success and a negative
 error code in case of failure. Note, the caller has to have the
-\ ``ubi``\ ->device_mutex locked.
+\ ``ubi->device_mutex``\  locked.
 
 .. _`ubi_remove_volume`:
 
@@ -36,11 +38,13 @@ ubi_remove_volume
 
     remove volume.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int no_vtbl:
+    :param no_vtbl:
         do not change volume table if not zero
+    :type no_vtbl: int
 
 .. _`ubi_remove_volume.description`:
 
@@ -49,7 +53,7 @@ Description
 
 This function removes volume described by \ ``desc``\ . The volume has to be opened
 in "exclusive" mode. Returns zero in case of success and a negative error
-code in case of failure. The caller has to have the \ ``ubi``\ ->device_mutex
+code in case of failure. The caller has to have the \ ``ubi->device_mutex``\ 
 locked.
 
 .. _`ubi_resize_volume`:
@@ -61,11 +65,13 @@ ubi_resize_volume
 
     re-size volume.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int reserved_pebs:
+    :param reserved_pebs:
         new size in physical eraseblocks
+    :type reserved_pebs: int
 
 .. _`ubi_resize_volume.description`:
 
@@ -74,7 +80,7 @@ Description
 
 This function re-sizes the volume and returns zero in case of success, and a
 negative error code in case of failure. The caller has to have the
-\ ``ubi``\ ->device_mutex locked.
+\ ``ubi->device_mutex``\  locked.
 
 .. _`ubi_rename_volumes`:
 
@@ -85,11 +91,13 @@ ubi_rename_volumes
 
     re-name UBI volumes.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct list_head \*rename_list:
+    :param rename_list:
         list of \ :c:type:`struct ubi_rename_entry <ubi_rename_entry>`\  objects
+    :type rename_list: struct list_head \*
 
 .. _`ubi_rename_volumes.description`:
 
@@ -109,11 +117,13 @@ ubi_add_volume
 
     add volume.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
 .. _`ubi_add_volume.description`:
 
@@ -133,11 +143,13 @@ ubi_free_volume
 
     free volume.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_volume \*vol:
+    :param vol:
         volume description object
+    :type vol: struct ubi_volume \*
 
 .. _`ubi_free_volume.description`:
 
@@ -156,11 +168,13 @@ self_check_volume
 
     check volume information.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param int vol_id:
+    :param vol_id:
         volume ID
+    :type vol_id: int
 
 .. _`self_check_volume.description`:
 
@@ -178,8 +192,9 @@ self_check_volumes
 
     check information about all volumes.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
 .. _`self_check_volumes.description`:
 

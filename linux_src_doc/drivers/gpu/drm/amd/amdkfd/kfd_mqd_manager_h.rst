@@ -23,6 +23,7 @@ Definition
         int (*destroy_mqd)(struct mqd_manager *mm, void *mqd,enum kfd_preempt_type type,unsigned int timeout, uint32_t pipe_id, uint32_t queue_id);
         void (*uninit_mqd)(struct mqd_manager *mm, void *mqd, struct kfd_mem_obj *mqd_mem_obj);
         bool (*is_occupied)(struct mqd_manager *mm, void *mqd,uint64_t queue_address, uint32_t pipe_id, uint32_t queue_id);
+        int (*get_wave_state)(struct mqd_manager *mm, void *mqd,void __user *ctl_stack,u32 *ctl_stack_used_size, u32 *save_area_used_size);
     #if defined(CONFIG_DEBUG_FS)
         int (*debugfs_show_mqd)(struct seq_file *m, void *data);
     #endif
@@ -54,6 +55,10 @@ uninit_mqd
 
 is_occupied
     Checks if the relevant HQD slot is occupied.
+
+get_wave_state
+    Retrieves context save state and optionally copies the
+    control stack, if kept in the MQD, to the given userspace address.
 
 debugfs_show_mqd
     *undescribed*

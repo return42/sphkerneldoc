@@ -23,6 +23,8 @@ Definition
         __u32 field;
         struct v4l2_timecode timecode;
         __u32 sequence;
+        __s32 request_fd;
+        struct vb2_plane planes[VB2_MAX_PLANES];
     }
 
 .. _`vb2_v4l2_buffer.members`:
@@ -46,6 +48,12 @@ timecode
 sequence
     sequence count of this frame.
 
+request_fd
+    the request_fd associated with this buffer
+
+planes
+    plane information (userptr/fd, length, bytesused, data_offset).
+
 .. _`vb2_v4l2_buffer.description`:
 
 Description
@@ -63,12 +71,14 @@ vb2_reqbufs
 
     Wrapper for \ :c:func:`vb2_core_reqbufs`\  that also verifies the memory and type values.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param struct v4l2_requestbuffers \*req:
+    :param req:
         \ :c:type:`struct v4l2_requestbuffers <v4l2_requestbuffers>`\  passed from userspace to
         \ :c:type:`v4l2_ioctl_ops->vidioc_reqbufs <v4l2_ioctl_ops>`\  handler in driver.
+    :type req: struct v4l2_requestbuffers \*
 
 .. _`vb2_create_bufs`:
 
@@ -79,28 +89,36 @@ vb2_create_bufs
 
     Wrapper for \ :c:func:`vb2_core_create_bufs`\  that also verifies the memory and type values.
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param struct v4l2_create_buffers \*create:
+    :param create:
         creation parameters, passed from userspace to
         \ :c:type:`v4l2_ioctl_ops->vidioc_create_bufs <v4l2_ioctl_ops>`\  handler in driver
+    :type create: struct v4l2_create_buffers \*
 
 .. _`vb2_prepare_buf`:
 
 vb2_prepare_buf
 ===============
 
-.. c:function:: int vb2_prepare_buf(struct vb2_queue *q, struct v4l2_buffer *b)
+.. c:function:: int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev, struct v4l2_buffer *b)
 
     Pass ownership of a buffer from userspace to the kernel
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param struct v4l2_buffer \*b:
+    :param mdev:
+        pointer to \ :c:type:`struct media_device <media_device>`\ , may be NULL.
+    :type mdev: struct media_device \*
+
+    :param b:
         buffer structure passed from userspace to
         \ :c:type:`v4l2_ioctl_ops->vidioc_prepare_buf <v4l2_ioctl_ops>`\  handler in driver
+    :type b: struct v4l2_buffer \*
 
 .. _`vb2_prepare_buf.description`:
 
@@ -119,6 +137,8 @@ This function
 #) verifies the passed buffer,
 #) calls \ :c:type:`vb2_ops->buf_prepare <vb2_ops>`\  callback in the driver (if provided),
    in which driver-specific buffer initialization can be performed.
+#) if \ ``b->request_fd``\  is non-zero and \ ``mdev->ops->req_queue``\  is set,
+   then bind the prepared buffer to the request.
 
 The return values from this function are intended to be directly returned
 from \ :c:type:`v4l2_ioctl_ops->vidioc_prepare_buf <v4l2_ioctl_ops>`\  handler in driver.
@@ -128,16 +148,22 @@ from \ :c:type:`v4l2_ioctl_ops->vidioc_prepare_buf <v4l2_ioctl_ops>`\  handler i
 vb2_qbuf
 ========
 
-.. c:function:: int vb2_qbuf(struct vb2_queue *q, struct v4l2_buffer *b)
+.. c:function:: int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev, struct v4l2_buffer *b)
 
     Queue a buffer from userspace
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param struct v4l2_buffer \*b:
+    :param mdev:
+        pointer to \ :c:type:`struct media_device <media_device>`\ , may be NULL.
+    :type mdev: struct media_device \*
+
+    :param b:
         buffer structure passed from userspace to
         \ :c:type:`v4l2_ioctl_ops->vidioc_qbuf <v4l2_ioctl_ops>`\  handler in driver
+    :type b: struct v4l2_buffer \*
 
 .. _`vb2_qbuf.description`:
 
@@ -153,6 +179,8 @@ This function
 
 
 #) verifies the passed buffer;
+#) if \ ``b->request_fd``\  is non-zero and \ ``mdev->ops->req_queue``\  is set,
+   then bind the buffer to the request.
 #) if necessary, calls \ :c:type:`vb2_ops->buf_prepare <vb2_ops>`\  callback in the driver
    (if provided), in which driver-specific buffer initialization can
    be performed;
@@ -171,12 +199,14 @@ vb2_expbuf
 
     Export a buffer as a file descriptor
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param struct v4l2_exportbuffer \*eb:
+    :param eb:
         export buffer structure passed from userspace to
         \ :c:type:`v4l2_ioctl_ops->vidioc_expbuf <v4l2_ioctl_ops>`\  handler in driver
+    :type eb: struct v4l2_exportbuffer \*
 
 .. _`vb2_expbuf.description`:
 
@@ -195,17 +225,20 @@ vb2_dqbuf
 
     Dequeue a buffer to the userspace
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param struct v4l2_buffer \*b:
+    :param b:
         buffer structure passed from userspace to
         \ :c:type:`v4l2_ioctl_ops->vidioc_dqbuf <v4l2_ioctl_ops>`\  handler in driver
+    :type b: struct v4l2_buffer \*
 
-    :param bool nonblocking:
+    :param nonblocking:
         if true, this call will not sleep waiting for a buffer if no
         buffers ready for dequeuing are present. Normally the driver
         would be passing (&file->f_flags & \ ``O_NONBLOCK``\ ) here
+    :type nonblocking: bool
 
 .. _`vb2_dqbuf.description`:
 
@@ -240,12 +273,14 @@ vb2_streamon
 
     start streaming
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param enum v4l2_buf_type type:
+    :param type:
         type argument passed from userspace to vidioc_streamon handler,
         as defined by \ :c:type:`enum v4l2_buf_type <v4l2_buf_type>`\ .
+    :type type: enum v4l2_buf_type
 
 .. _`vb2_streamon.description`:
 
@@ -275,11 +310,13 @@ vb2_streamoff
 
     stop streaming
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param enum v4l2_buf_type type:
+    :param type:
         type argument passed from userspace to vidioc_streamoff handler
+    :type type: enum v4l2_buf_type
 
 .. _`vb2_streamoff.description`:
 
@@ -311,8 +348,9 @@ vb2_queue_init
 
     initialize a videobuf2 queue
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_queue_init.description`:
 
@@ -335,8 +373,9 @@ vb2_queue_release
 
     stop streaming, release the queue and free memory
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
 .. _`vb2_queue_release.description`:
 
@@ -356,14 +395,17 @@ vb2_poll
 
     implements poll userspace operation
 
-    :param struct vb2_queue \*q:
+    :param q:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
+    :type q: struct vb2_queue \*
 
-    :param struct file \*file:
+    :param file:
         file argument passed to the poll file operation handler
+    :type file: struct file \*
 
-    :param poll_table \*wait:
+    :param wait:
         wait argument passed to the poll file operation handler
+    :type wait: poll_table \*
 
 .. _`vb2_poll.description`:
 
@@ -392,8 +434,9 @@ vb2_ops_wait_prepare
 
     helper function to lock a struct \ :c:type:`struct vb2_queue <vb2_queue>`\ 
 
-    :param struct vb2_queue \*vq:
+    :param vq:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\ 
+    :type vq: struct vb2_queue \*
 
 .. _`vb2_ops_wait_prepare.description`:
 
@@ -411,8 +454,9 @@ vb2_ops_wait_finish
 
     helper function to unlock a struct \ :c:type:`struct vb2_queue <vb2_queue>`\ 
 
-    :param struct vb2_queue \*vq:
+    :param vq:
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\ 
+    :type vq: struct vb2_queue \*
 
 .. _`vb2_ops_wait_finish.description`:
 

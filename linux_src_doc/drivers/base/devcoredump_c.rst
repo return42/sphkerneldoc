@@ -10,17 +10,21 @@ dev_coredumpv
 
     create device coredump with vmalloc data
 
-    :param struct device \*dev:
+    :param dev:
         the struct device for the crashed device
+    :type dev: struct device \*
 
-    :param void \*data:
+    :param data:
         vmalloc data containing the device coredump
+    :type data: void \*
 
-    :param size_t datalen:
+    :param datalen:
         length of the data
+    :type datalen: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`dev_coredumpv.description`:
 
@@ -39,8 +43,9 @@ devcd_free_sgtable
 
     free all the memory of the given scatterlist table (i.e. both pages and scatterlist instances)
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`devcd_free_sgtable.note`:
 
@@ -60,21 +65,26 @@ devcd_read_from_sgtable
 
     copy data from sg_table to a given buffer and return the number of bytes read
 
-    :param char \*buffer:
+    :param buffer:
         the buffer to copy the data to it
+    :type buffer: char \*
 
-    :param loff_t offset:
+    :param offset:
         start copy from \ ``offset``\ @ bytes from the head of the data
         in the given scatterlist
+    :type offset: loff_t
 
-    :param size_t buf_len:
+    :param buf_len:
         the length of the buffer
+    :type buf_len: size_t
 
-    :param void \*data:
+    :param data:
         the scatterlist table to copy from
+    :type data: void \*
 
-    :param size_t data_len:
+    :param data_len:
         the length of the data in the sg_table
+    :type data_len: size_t
 
 .. _`dev_coredumpm`:
 
@@ -85,20 +95,25 @@ dev_coredumpm
 
     create device coredump with read/free methods
 
-    :param struct device \*dev:
+    :param dev:
         the struct device for the crashed device
+    :type dev: struct device \*
 
-    :param struct module \*owner:
+    :param owner:
         the module that contains the read/free functions, use \ ``THIS_MODULE``\ 
+    :type owner: struct module \*
 
-    :param void \*data:
+    :param data:
         data cookie for the \ ``read``\ /@free functions
+    :type data: void \*
 
-    :param size_t datalen:
+    :param datalen:
         length of the data
+    :type datalen: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
     :param ssize_t (\*read)(char \*buffer, loff_t offset, size_t count, void \*data, size_t datalen):
         function to read from the given buffer
@@ -125,17 +140,21 @@ dev_coredumpsg
 
     create device coredump that uses scatterlist as data parameter
 
-    :param struct device \*dev:
+    :param dev:
         the struct device for the crashed device
+    :type dev: struct device \*
 
-    :param struct scatterlist \*table:
+    :param table:
         the dump data
+    :type table: struct scatterlist \*
 
-    :param size_t datalen:
+    :param datalen:
         length of the data
+    :type datalen: size_t
 
-    :param gfp_t gfp:
+    :param gfp:
         allocation flags
+    :type gfp: gfp_t
 
 .. _`dev_coredumpsg.description`:
 

@@ -10,11 +10,13 @@ generic_fillattr
 
     Fill in the basic attributes from the inode struct
 
-    :param struct inode \*inode:
+    :param inode:
         Inode to use as the source
+    :type inode: struct inode \*
 
-    :param struct kstat \*stat:
+    :param stat:
         Where to fill in the attributes
+    :type stat: struct kstat \*
 
 .. _`generic_fillattr.description`:
 
@@ -34,17 +36,21 @@ vfs_getattr_nosec
 
     getattr without security checks
 
-    :param const struct path \*path:
+    :param path:
         file to get attributes from
+    :type path: const struct path \*
 
-    :param struct kstat \*stat:
+    :param stat:
         structure to return attributes in
+    :type stat: struct kstat \*
 
-    :param u32 request_mask:
+    :param request_mask:
         STATX_xxx flags indicating what the caller wants
+    :type request_mask: u32
 
-    :param unsigned int query_flags:
+    :param query_flags:
         Query mode (KSTAT_QUERY_FLAGS)
+    :type query_flags: unsigned int
 
 .. _`vfs_getattr_nosec.description`:
 
@@ -66,17 +72,21 @@ vfs_statx_fd
 
     Get the enhanced basic attributes by file descriptor
 
-    :param unsigned int fd:
+    :param fd:
         The file descriptor referring to the file of interest
+    :type fd: unsigned int
 
-    :param struct kstat \*stat:
+    :param stat:
         The result structure to fill in.
+    :type stat: struct kstat \*
 
-    :param u32 request_mask:
+    :param request_mask:
         STATX_xxx flags indicating what the caller wants
+    :type request_mask: u32
 
-    :param unsigned int query_flags:
+    :param query_flags:
         Query mode (KSTAT_QUERY_FLAGS)
+    :type query_flags: unsigned int
 
 .. _`vfs_statx_fd.description`:
 
@@ -97,20 +107,25 @@ vfs_statx
 
     Get basic and extra attributes by filename
 
-    :param int dfd:
+    :param dfd:
         A file descriptor representing the base dir for a relative filename
+    :type dfd: int
 
-    :param const char __user \*filename:
+    :param filename:
         The name of the file of interest
+    :type filename: const char __user \*
 
-    :param int flags:
+    :param flags:
         Flags to control the query
+    :type flags: int
 
-    :param struct kstat \*stat:
+    :param stat:
         The result structure to fill in.
+    :type stat: struct kstat \*
 
-    :param u32 request_mask:
+    :param request_mask:
         STATX_xxx flags indicating what the caller wants
+    :type request_mask: u32
 
 .. _`vfs_statx.description`:
 
@@ -133,20 +148,25 @@ sys_statx
 
     System call to get enhanced stats
 
-    :param int dfd:
-        Base directory to pathwalk from \*or\* fd to stat.
+    :param dfd:
+        Base directory to pathwalk from *or* fd to stat.
+    :type dfd: int
 
-    :param const char __user \*filename:
+    :param filename:
         File to stat or "" with AT_EMPTY_PATH
+    :type filename: const char __user \*
 
-    :param unsigned flags:
-        AT\_\* flags to control pathwalk.
+    :param flags:
+        AT_* flags to control pathwalk.
+    :type flags: unsigned
 
-    :param unsigned int mask:
+    :param mask:
         Parts of statx struct actually required.
+    :type mask: unsigned int
 
-    :param struct statx __user \*buffer:
+    :param buffer:
         Result buffer.
+    :type buffer: struct statx __user \*
 
 .. _`sys_statx.description`:
 

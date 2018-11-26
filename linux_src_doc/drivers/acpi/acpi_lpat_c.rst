@@ -10,12 +10,14 @@ acpi_lpat_raw_to_temp
 
     Return temperature from raw value through LPAT conversion table
 
-    :param struct acpi_lpat_conversion_table \*lpat_table:
+    :param lpat_table:
         the temperature_raw mapping table structure
+    :type lpat_table: struct acpi_lpat_conversion_table \*
 
-    :param int raw:
+    :param raw:
         the raw value, used as a key to get the temerature from the
         above mapping table
+    :type raw: int
 
 .. _`acpi_lpat_raw_to_temp.description`:
 
@@ -34,12 +36,14 @@ acpi_lpat_temp_to_raw
 
     Return raw value from temperature through LPAT conversion table
 
-    :param struct acpi_lpat_conversion_table \*lpat_table:
+    :param lpat_table:
         the temperature_raw mapping table
+    :type lpat_table: struct acpi_lpat_conversion_table \*
 
-    :param int temp:
+    :param temp:
         the temperature, used as a key to get the raw value from the
         above mapping table
+    :type temp: int
 
 .. _`acpi_lpat_temp_to_raw.description`:
 
@@ -58,8 +62,9 @@ acpi_lpat_get_conversion_table
 
     Parse ACPI LPAT table if present.
 
-    :param acpi_handle handle:
+    :param handle:
         Handle to acpi device
+    :type handle: acpi_handle
 
 .. _`acpi_lpat_get_conversion_table.description`:
 
@@ -80,8 +85,9 @@ acpi_lpat_free_conversion_table
 
     Free LPAT table.
 
-    :param struct acpi_lpat_conversion_table \*lpat_table:
+    :param lpat_table:
         the temperature_raw mapping table structure
+    :type lpat_table: struct acpi_lpat_conversion_table \*
 
 .. _`acpi_lpat_free_conversion_table.description`:
 

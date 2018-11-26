@@ -10,11 +10,13 @@ batadv_compare_tt
 
     check if two TT entries are the same
 
-    :param const struct hlist_node \*node:
+    :param node:
         the list element pointer of the first TT entry
+    :type node: const struct hlist_node \*
 
-    :param const void \*data2:
+    :param data2:
         pointer to the tt_common_entry of the second TT entry
+    :type data2: const void \*
 
 .. _`batadv_compare_tt.description`:
 
@@ -40,11 +42,13 @@ batadv_choose_tt
 
     return the index of the tt entry in the hash table
 
-    :param const void \*data:
+    :param data:
         pointer to the tt_common_entry object to map
+    :type data: const void \*
 
-    :param u32 size:
+    :param size:
         the size of the hash table
+    :type size: u32
 
 .. _`batadv_choose_tt.return`:
 
@@ -63,14 +67,17 @@ batadv_tt_hash_find
 
     look for a client in the given hash table
 
-    :param struct batadv_hashtable \*hash:
+    :param hash:
         the hash table to search
+    :type hash: struct batadv_hashtable \*
 
-    :param const u8 \*addr:
+    :param addr:
         the mac address of the client to look for
+    :type addr: const u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_tt_hash_find.return`:
 
@@ -89,14 +96,17 @@ batadv_tt_local_hash_find
 
     search the local table for a given client
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         the mac address of the client to look for
+    :type addr: const u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_tt_local_hash_find.return`:
 
@@ -115,14 +125,17 @@ batadv_tt_global_hash_find
 
     search the global table for a given client
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         the mac address of the client to look for
+    :type addr: const u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_tt_global_hash_find.return`:
 
@@ -141,8 +154,9 @@ batadv_tt_local_entry_free_rcu
 
     free the tt_local_entry
 
-    :param struct rcu_head \*rcu:
+    :param rcu:
         rcu pointer of the tt_local_entry
+    :type rcu: struct rcu_head \*
 
 .. _`batadv_tt_local_entry_release`:
 
@@ -153,8 +167,9 @@ batadv_tt_local_entry_release
 
     release tt_local_entry from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the nc_node
+    :type ref: struct kref \*
 
 .. _`batadv_tt_local_entry_put`:
 
@@ -165,8 +180,9 @@ batadv_tt_local_entry_put
 
     decrement the tt_local_entry refcounter and possibly release it
 
-    :param struct batadv_tt_local_entry \*tt_local_entry:
+    :param tt_local_entry:
         tt_local_entry to be free'd
+    :type tt_local_entry: struct batadv_tt_local_entry \*
 
 .. _`batadv_tt_global_entry_free_rcu`:
 
@@ -177,8 +193,9 @@ batadv_tt_global_entry_free_rcu
 
     free the tt_global_entry
 
-    :param struct rcu_head \*rcu:
+    :param rcu:
         rcu pointer of the tt_global_entry
+    :type rcu: struct rcu_head \*
 
 .. _`batadv_tt_global_entry_release`:
 
@@ -189,8 +206,9 @@ batadv_tt_global_entry_release
 
     release tt_global_entry from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the nc_node
+    :type ref: struct kref \*
 
 .. _`batadv_tt_global_entry_put`:
 
@@ -201,8 +219,9 @@ batadv_tt_global_entry_put
 
     decrement the tt_global_entry refcounter and possibly release it
 
-    :param struct batadv_tt_global_entry \*tt_global_entry:
+    :param tt_global_entry:
         tt_global_entry to be free'd
+    :type tt_global_entry: struct batadv_tt_global_entry \*
 
 .. _`batadv_tt_global_hash_count`:
 
@@ -213,14 +232,17 @@ batadv_tt_global_hash_count
 
     count the number of orig entries
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         the mac address of the client to count entries for
+    :type addr: const u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_tt_global_hash_count.return`:
 
@@ -239,14 +261,17 @@ batadv_tt_local_size_mod
 
     change the size by v of the local table identified by vid
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN identifier of the sub-table to change
+    :type vid: unsigned short
 
-    :param int v:
+    :param v:
         the amount to sum to the local table size
+    :type v: int
 
 .. _`batadv_tt_local_size_inc`:
 
@@ -257,11 +282,13 @@ batadv_tt_local_size_inc
 
     increase by one the local table size for the given vid
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_tt_local_size_dec`:
 
@@ -272,11 +299,13 @@ batadv_tt_local_size_dec
 
     decrease by one the local table size for the given vid
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_tt_global_size_mod`:
 
@@ -287,14 +316,17 @@ batadv_tt_global_size_mod
 
     change the size by v of the global table for orig_node identified by vid
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator for which the table has to be modified
+    :type orig_node: struct batadv_orig_node \*
 
-    :param unsigned short vid:
+    :param vid:
         the VLAN identifier
+    :type vid: unsigned short
 
-    :param int v:
+    :param v:
         the amount to sum to the global table size
+    :type v: int
 
 .. _`batadv_tt_global_size_inc`:
 
@@ -305,11 +337,13 @@ batadv_tt_global_size_inc
 
     increase by one the global table size for the given vid
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator which global table size has to be decreased
+    :type orig_node: struct batadv_orig_node \*
 
-    :param unsigned short vid:
+    :param vid:
         the vlan identifier
+    :type vid: unsigned short
 
 .. _`batadv_tt_global_size_dec`:
 
@@ -320,11 +354,13 @@ batadv_tt_global_size_dec
 
     decrease by one the global table size for the given vid
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator which global table size has to be decreased
+    :type orig_node: struct batadv_orig_node \*
 
-    :param unsigned short vid:
+    :param vid:
         the vlan identifier
+    :type vid: unsigned short
 
 .. _`batadv_tt_orig_list_entry_free_rcu`:
 
@@ -335,8 +371,9 @@ batadv_tt_orig_list_entry_free_rcu
 
     free the orig_entry
 
-    :param struct rcu_head \*rcu:
+    :param rcu:
         rcu pointer of the orig_entry
+    :type rcu: struct rcu_head \*
 
 .. _`batadv_tt_orig_list_entry_release`:
 
@@ -347,8 +384,9 @@ batadv_tt_orig_list_entry_release
 
     release tt orig entry from lists and queue for free after rcu grace period
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the tt orig entry
+    :type ref: struct kref \*
 
 .. _`batadv_tt_orig_list_entry_put`:
 
@@ -359,8 +397,9 @@ batadv_tt_orig_list_entry_put
 
     decrement the tt orig entry refcounter and possibly release it
 
-    :param struct batadv_tt_orig_list_entry \*orig_entry:
+    :param orig_entry:
         tt orig entry to be free'd
+    :type orig_entry: struct batadv_tt_orig_list_entry \*
 
 .. _`batadv_tt_local_event`:
 
@@ -371,14 +410,17 @@ batadv_tt_local_event
 
     store a local TT event (ADD/DEL)
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tt_local_entry \*tt_local_entry:
+    :param tt_local_entry:
         the TT entry involved in the event
+    :type tt_local_entry: struct batadv_tt_local_entry \*
 
-    :param u8 event_flags:
+    :param event_flags:
         flags to store in the event structure
+    :type event_flags: u8
 
 .. _`batadv_tt_len`:
 
@@ -389,8 +431,9 @@ batadv_tt_len
 
     compute length in bytes of given number of tt changes
 
-    :param int changes_num:
+    :param changes_num:
         number of tt changes
+    :type changes_num: int
 
 .. _`batadv_tt_len.return`:
 
@@ -408,8 +451,9 @@ batadv_tt_entries
 
     compute the number of entries fitting in tt_len bytes
 
-    :param u16 tt_len:
+    :param tt_len:
         available space
+    :type tt_len: u16
 
 .. _`batadv_tt_entries.return`:
 
@@ -427,8 +471,9 @@ batadv_tt_local_table_transmit_size
 
     calculates the local translation table size when transmitted over the air
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_tt_local_table_transmit_size.return`:
 
@@ -446,22 +491,27 @@ batadv_tt_local_add
 
     add a new client to the local table or update an existing client
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         netdev struct of the mesh interface
+    :type soft_iface: struct net_device \*
 
-    :param const u8 \*addr:
+    :param addr:
         the mac address of the client to add
+    :type addr: const u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
-    :param int ifindex:
+    :param ifindex:
         index of the interface where the client is connected to (useful to
         identify wireless clients)
+    :type ifindex: int
 
-    :param u32 mark:
+    :param mark:
         the value contained in the skb->mark field of the received packet (if
         any)
+    :type mark: u32
 
 .. _`batadv_tt_local_add.return`:
 
@@ -479,17 +529,20 @@ batadv_tt_prepare_tvlv_global_data
 
     prepare the TVLV TT header to send within a TT Response directed to another node
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator for which the TT data has to be prepared
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_tvlv_tt_data \*\*tt_data:
+    :param tt_data:
         uninitialised pointer to the address of the TVLV buffer
+    :type tt_data: struct batadv_tvlv_tt_data \*\*
 
-    :param struct batadv_tvlv_tt_change \*\*tt_change:
+    :param tt_change:
         uninitialised pointer to the address of the area where the TT
         changed can be stored
+    :type tt_change: struct batadv_tvlv_tt_change \*\*
 
-    :param s32 \*tt_len:
+    :param tt_len:
         pointer to the length to reserve to the tt_change. if -1 this
         function reserves the amount of space needed to send the entire global TT
         table. In case of success the value is updated with the real amount of
@@ -497,6 +550,7 @@ batadv_tt_prepare_tvlv_global_data
         Allocate the needed amount of memory for the entire TT TVLV and write its
         header made up by one tvlv_tt_data object and a series of tvlv_tt_vlan_data
         objects, one per active VLAN served by the originator node.
+    :type tt_len: s32 \*
 
 .. _`batadv_tt_prepare_tvlv_global_data.return`:
 
@@ -514,21 +568,25 @@ batadv_tt_prepare_tvlv_local_data
 
     allocate and prepare the TT TVLV for this node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tvlv_tt_data \*\*tt_data:
+    :param tt_data:
         uninitialised pointer to the address of the TVLV buffer
+    :type tt_data: struct batadv_tvlv_tt_data \*\*
 
-    :param struct batadv_tvlv_tt_change \*\*tt_change:
+    :param tt_change:
         uninitialised pointer to the address of the area where the TT
         changes can be stored
+    :type tt_change: struct batadv_tvlv_tt_change \*\*
 
-    :param s32 \*tt_len:
+    :param tt_len:
         pointer to the length to reserve to the tt_change. if -1 this
         function reserves the amount of space needed to send the entire local TT
         table. In case of success the value is updated with the real amount of
         reserved bytes
+    :type tt_len: s32 \*
 
 .. _`batadv_tt_prepare_tvlv_local_data.description`:
 
@@ -555,8 +613,9 @@ batadv_tt_tvlv_container_update
 
     update the translation table tvlv container after local tt changes have been committed
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_tt_local_seq_print_text`:
 
@@ -567,11 +626,13 @@ batadv_tt_local_seq_print_text
 
     Print the local tt table in a seq file
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq file to print on
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_tt_local_seq_print_text.return`:
 
@@ -589,20 +650,25 @@ batadv_tt_local_dump_entry
 
     Dump one TT local entry into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tt_common_entry \*common:
+    :param common:
         tt local & tt global common data
+    :type common: struct batadv_tt_common_entry \*
 
 .. _`batadv_tt_local_dump_entry.return`:
 
@@ -620,23 +686,29 @@ batadv_tt_local_dump_bucket
 
     Dump one TT local bucket into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct hlist_head \*head:
+    :param head:
         Pointer to the list containing the local tt entries
+    :type head: struct hlist_head \*
 
-    :param int \*idx_s:
+    :param idx_s:
         Number of entries to skip
+    :type idx_s: int \*
 
 .. _`batadv_tt_local_dump_bucket.return`:
 
@@ -654,11 +726,13 @@ batadv_tt_local_dump
 
     Dump TT local entries into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Parameters from query
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_tt_local_dump.return`:
 
@@ -676,20 +750,25 @@ batadv_tt_local_remove
 
     logically remove an entry from the local table
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         the MAC address of the client to remove
+    :type addr: const u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
-    :param const char \*message:
+    :param message:
         message to append to the log on deletion
+    :type message: const char \*
 
-    :param bool roaming:
+    :param roaming:
         true if the deletion is due to a roaming event
+    :type roaming: bool
 
 .. _`batadv_tt_local_remove.return`:
 
@@ -707,15 +786,18 @@ batadv_tt_local_purge_list
 
     purge inactive tt local entries
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct hlist_head \*head:
+    :param head:
         pointer to the list containing the local tt entries
+    :type head: struct hlist_head \*
 
-    :param int timeout:
+    :param timeout:
         parameter deciding whether a given tt local entry is considered
         inactive or not
+    :type timeout: int
 
 .. _`batadv_tt_local_purge`:
 
@@ -726,12 +808,14 @@ batadv_tt_local_purge
 
     purge inactive tt local entries
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param int timeout:
+    :param timeout:
         parameter deciding whether a given tt local entry is considered
         inactive or not
+    :type timeout: int
 
 .. _`batadv_tt_global_orig_entry_find`:
 
@@ -742,12 +826,14 @@ batadv_tt_global_orig_entry_find
 
     find a TT orig_list_entry
 
-    :param const struct batadv_tt_global_entry \*entry:
+    :param entry:
         the TT global entry where the orig_list_entry has to be
         extracted from
+    :type entry: const struct batadv_tt_global_entry \*
 
-    :param const struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator for which the orig_list_entry has to be found
+    :type orig_node: const struct batadv_orig_node \*
 
 .. _`batadv_tt_global_orig_entry_find.description`:
 
@@ -773,15 +859,18 @@ batadv_tt_global_entry_has_orig
 
     check if a TT global entry is also handled by a given originator
 
-    :param const struct batadv_tt_global_entry \*entry:
+    :param entry:
         the TT global entry to check
+    :type entry: const struct batadv_tt_global_entry \*
 
-    :param const struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator to search in the list
+    :type orig_node: const struct batadv_orig_node \*
 
-    :param u8 \*flags:
+    :param flags:
         a pointer to store TT flags for the given \ ``entry``\  received
         from \ ``orig_node``\ 
+    :type flags: u8 \*
 
 .. _`batadv_tt_global_entry_has_orig.description`:
 
@@ -806,8 +895,9 @@ batadv_tt_global_sync_flags
 
     update TT sync flags
 
-    :param struct batadv_tt_global_entry \*tt_global:
+    :param tt_global:
         the TT global entry to update sync flags in
+    :type tt_global: struct batadv_tt_global_entry \*
 
 .. _`batadv_tt_global_sync_flags.description`:
 
@@ -826,17 +916,21 @@ batadv_tt_global_orig_entry_add
 
     add or update a TT orig entry
 
-    :param struct batadv_tt_global_entry \*tt_global:
+    :param tt_global:
         the TT global entry to add an orig entry in
+    :type tt_global: struct batadv_tt_global_entry \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator to add an orig entry for
+    :type orig_node: struct batadv_orig_node \*
 
-    :param int ttvn:
+    :param ttvn:
         translation table version number of this changeset
+    :type ttvn: int
 
-    :param u8 flags:
+    :param flags:
         TT sync flags
+    :type flags: u8
 
 .. _`batadv_tt_global_add`:
 
@@ -847,23 +941,29 @@ batadv_tt_global_add
 
     add a new TT global entry or update an existing one
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator announcing the client
+    :type orig_node: struct batadv_orig_node \*
 
-    :param const unsigned char \*tt_addr:
+    :param tt_addr:
         the mac address of the non-mesh client
+    :type tt_addr: const unsigned char \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
-    :param u16 flags:
+    :param flags:
         TT flags that have to be set for this non-mesh client
+    :type flags: u16
 
-    :param u8 ttvn:
+    :param ttvn:
         the tt version number ever announcing this non-mesh client
+    :type ttvn: u8
 
 .. _`batadv_tt_global_add.description`:
 
@@ -894,11 +994,13 @@ batadv_transtable_best_orig
 
     Get best originator list entry from tt entry
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tt_global_entry \*tt_global_entry:
+    :param tt_global_entry:
         global translation table entry to be analyzed
+    :type tt_global_entry: struct batadv_tt_global_entry \*
 
 .. _`batadv_transtable_best_orig.description`:
 
@@ -923,14 +1025,17 @@ batadv_tt_global_print_entry
 
     print all orig nodes who announce the address for this global entry
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tt_global_entry \*tt_global_entry:
+    :param tt_global_entry:
         global translation table entry to be printed
+    :type tt_global_entry: struct batadv_tt_global_entry \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         debugfs table seq_file struct
+    :type seq: struct seq_file \*
 
 .. _`batadv_tt_global_print_entry.description`:
 
@@ -948,11 +1053,13 @@ batadv_tt_global_seq_print_text
 
     Print the global tt table in a seq file
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq file to print on
+    :type seq: struct seq_file \*
 
-    :param void \*offset:
+    :param offset:
         not used
+    :type offset: void \*
 
 .. _`batadv_tt_global_seq_print_text.return`:
 
@@ -970,23 +1077,29 @@ batadv_tt_global_dump_subentry
 
     Dump all TT local entries into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_tt_common_entry \*common:
+    :param common:
         tt local & tt global common data
+    :type common: struct batadv_tt_common_entry \*
 
-    :param struct batadv_tt_orig_list_entry \*orig:
+    :param orig:
         Originator node announcing a non-mesh client
+    :type orig: struct batadv_tt_orig_list_entry \*
 
-    :param bool best:
+    :param best:
         Is the best originator for the TT entry
+    :type best: bool
 
 .. _`batadv_tt_global_dump_subentry.return`:
 
@@ -1004,23 +1117,29 @@ batadv_tt_global_dump_entry
 
     Dump one TT global entry into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tt_common_entry \*common:
+    :param common:
         tt local & tt global common data
+    :type common: struct batadv_tt_common_entry \*
 
-    :param int \*sub_s:
+    :param sub_s:
         Number of entries to skip
+    :type sub_s: int \*
 
 .. _`batadv_tt_global_dump_entry.description`:
 
@@ -1045,26 +1164,33 @@ batadv_tt_global_dump_bucket
 
     Dump one TT local bucket into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct hlist_head \*head:
+    :param head:
         Pointer to the list containing the global tt entries
+    :type head: struct hlist_head \*
 
-    :param int \*idx_s:
+    :param idx_s:
         Number of entries to skip
+    :type idx_s: int \*
 
-    :param int \*sub:
+    :param sub:
         Number of entries to skip
+    :type sub: int \*
 
 .. _`batadv_tt_global_dump_bucket.return`:
 
@@ -1082,11 +1208,13 @@ batadv_tt_global_dump
 
     Dump TT global entries into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Parameters from query
+    :type cb: struct netlink_callback \*
 
 .. _`batadv_tt_global_dump.return`:
 
@@ -1104,11 +1232,13 @@ Error code, or length of message on success
 
     remove and free an orig_entry
 
-    :param struct batadv_tt_global_entry \*tt_global_entry:
+    :param tt_global_entry:
         the global entry to remove the orig_entry from
+    :type tt_global_entry: struct batadv_tt_global_entry \*
 
-    :param struct batadv_tt_orig_list_entry \*orig_entry:
+    :param orig_entry:
         the orig entry to remove and free
+    :type orig_entry: struct batadv_tt_orig_list_entry \*
 
 .. _`_batadv_tt_global_del_orig_entry.description`:
 
@@ -1130,17 +1260,21 @@ batadv_tt_global_del_orig_node
 
     remove orig_node from a global tt entry
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tt_global_entry \*tt_global_entry:
+    :param tt_global_entry:
         the global entry to remove the orig_node from
+    :type tt_global_entry: struct batadv_tt_global_entry \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator announcing the client
+    :type orig_node: struct batadv_orig_node \*
 
-    :param const char \*message:
+    :param message:
         message to append to the log on deletion
+    :type message: const char \*
 
 .. _`batadv_tt_global_del_orig_node.description`:
 
@@ -1159,24 +1293,30 @@ batadv_tt_global_del
 
     remove a client from the global table
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         an originator serving this client
+    :type orig_node: struct batadv_orig_node \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         the mac address of the client
+    :type addr: const unsigned char \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
-    :param const char \*message:
+    :param message:
         a message explaining the reason for deleting the client to print
         for debugging purpose
+    :type message: const char \*
 
-    :param bool roaming:
+    :param roaming:
         true if the deletion has been triggered by a roaming event
+    :type roaming: bool
 
 .. _`batadv_tt_global_del_orig`:
 
@@ -1187,18 +1327,22 @@ batadv_tt_global_del_orig
 
     remove all the TT global entries belonging to the given originator matching the provided vid
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the originator owning the entries to remove
+    :type orig_node: struct batadv_orig_node \*
 
-    :param s32 match_vid:
+    :param match_vid:
         the VLAN identifier to match. If negative all the entries will be
         removed
+    :type match_vid: s32
 
-    :param const char \*message:
+    :param message:
         debug message to print as "reason"
+    :type message: const char \*
 
 .. _`batadv_transtable_search`:
 
@@ -1209,17 +1353,21 @@ batadv_transtable_search
 
     get the mesh destination for a given client
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*src:
+    :param src:
         mac address of the source client
+    :type src: const u8 \*
 
-    :param const u8 \*addr:
+    :param addr:
         mac address of the destination client
+    :type addr: const u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_transtable_search.return`:
 
@@ -1242,14 +1390,17 @@ batadv_tt_global_crc
 
     calculates the checksum of the local table belonging to the given orig_node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator for which the CRC should be computed
+    :type orig_node: struct batadv_orig_node \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier for which the CRC32 has to be computed
+    :type vid: unsigned short
 
 .. _`batadv_tt_global_crc.description`:
 
@@ -1287,11 +1438,13 @@ batadv_tt_local_crc
 
     calculates the checksum of the local table
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier for which the CRC32 has to be computed
+    :type vid: unsigned short
 
 .. _`batadv_tt_local_crc.description`:
 
@@ -1317,8 +1470,9 @@ batadv_tt_req_node_release
 
     free tt_req node entry
 
-    :param struct kref \*ref:
+    :param ref:
         kref pointer of the tt req_node entry
+    :type ref: struct kref \*
 
 .. _`batadv_tt_req_node_put`:
 
@@ -1329,8 +1483,9 @@ batadv_tt_req_node_put
 
     decrement the tt_req_node refcounter and possibly release it
 
-    :param struct batadv_tt_req_node \*tt_req_node:
+    :param tt_req_node:
         tt_req_node to be free'd
+    :type tt_req_node: struct batadv_tt_req_node \*
 
 .. _`batadv_tt_req_node_new`:
 
@@ -1341,11 +1496,13 @@ batadv_tt_req_node_new
 
     search and possibly create a tt_req_node object
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node this request is being issued for
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_tt_req_node_new.return`:
 
@@ -1364,14 +1521,17 @@ batadv_tt_local_valid
 
     verify local tt entry and get flags
 
-    :param const void \*entry_ptr:
+    :param entry_ptr:
         to be checked local tt entry
+    :type entry_ptr: const void \*
 
-    :param const void \*data_ptr:
+    :param data_ptr:
         not used but definition required to satisfy the callback prototype
+    :type data_ptr: const void \*
 
-    :param u8 \*flags:
+    :param flags:
         a pointer to store TT flags for this client to
+    :type flags: u8 \*
 
 .. _`batadv_tt_local_valid.description`:
 
@@ -1397,14 +1557,17 @@ batadv_tt_global_valid
 
     verify global tt entry and get flags
 
-    :param const void \*entry_ptr:
+    :param entry_ptr:
         to be checked global tt entry
+    :type entry_ptr: const void \*
 
-    :param const void \*data_ptr:
+    :param data_ptr:
         an orig_node object (may be NULL)
+    :type data_ptr: const void \*
 
-    :param u8 \*flags:
+    :param flags:
         a pointer to store TT flags for this client to
+    :type flags: u8 \*
 
 .. _`batadv_tt_global_valid.description`:
 
@@ -1431,23 +1594,28 @@ batadv_tt_tvlv_generate
 
     fill the tvlv buff with the tt entries from the specified tt hash
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hashtable \*hash:
+    :param hash:
         hash table containing the tt entries
+    :type hash: struct batadv_hashtable \*
 
-    :param void \*tvlv_buff:
+    :param tvlv_buff:
         pointer to the buffer to fill with the TT data
+    :type tvlv_buff: void \*
 
-    :param u16 tt_len:
+    :param tt_len:
         expected tvlv tt data buffer length in number of bytes
+    :type tt_len: u16
 
     :param bool (\*valid_cb)(const void \*, const void \*, u8 \*flags):
         function to filter tt change entries and to return TT flags
 
-    :param void \*cb_data:
+    :param cb_data:
         data passed to the filter function as argument
+    :type cb_data: void \*
 
 .. _`batadv_tt_tvlv_generate.description`:
 
@@ -1466,14 +1634,17 @@ batadv_tt_global_check_crc
 
     check if all the CRCs are correct
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         originator for which the CRCs have to be checked
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_tvlv_tt_vlan_data \*tt_vlan:
+    :param tt_vlan:
         pointer to the first tvlv VLAN entry
+    :type tt_vlan: struct batadv_tvlv_tt_vlan_data \*
 
-    :param u16 num_vlan:
+    :param num_vlan:
         number of tvlv VLAN entries
+    :type num_vlan: u16
 
 .. _`batadv_tt_global_check_crc.return`:
 
@@ -1492,8 +1663,9 @@ batadv_tt_local_update_crc
 
     update all the local CRCs
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_tt_global_update_crc`:
 
@@ -1504,11 +1676,13 @@ batadv_tt_global_update_crc
 
     update all the global CRCs for this orig_node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig_node for which the CRCs have to be updated
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_send_tt_request`:
 
@@ -1519,24 +1693,30 @@ batadv_send_tt_request
 
     send a TT Request message to a given node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*dst_orig_node:
+    :param dst_orig_node:
         the destination of the message
+    :type dst_orig_node: struct batadv_orig_node \*
 
-    :param u8 ttvn:
+    :param ttvn:
         the version number that the source of the message is looking for
+    :type ttvn: u8
 
-    :param struct batadv_tvlv_tt_vlan_data \*tt_vlan:
+    :param tt_vlan:
         pointer to the first tvlv VLAN object to request
+    :type tt_vlan: struct batadv_tvlv_tt_vlan_data \*
 
-    :param u16 num_vlan:
+    :param num_vlan:
         number of tvlv VLAN entries
+    :type num_vlan: u16
 
-    :param bool full_table:
+    :param full_table:
         ask for the entire translation table if true, while only for the
         last TT diff otherwise
+    :type full_table: bool
 
 .. _`batadv_send_tt_request.return`:
 
@@ -1554,17 +1734,21 @@ batadv_send_other_tt_response
 
     send reply to tt request concerning another node's translation table
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tvlv_tt_data \*tt_data:
+    :param tt_data:
         tt data containing the tt request information
+    :type tt_data: struct batadv_tvlv_tt_data \*
 
-    :param u8 \*req_src:
+    :param req_src:
         mac address of tt request sender
+    :type req_src: u8 \*
 
-    :param u8 \*req_dst:
+    :param req_dst:
         mac address of tt request recipient
+    :type req_dst: u8 \*
 
 .. _`batadv_send_other_tt_response.return`:
 
@@ -1582,14 +1766,17 @@ batadv_send_my_tt_response
 
     send reply to tt request concerning this node's translation table
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tvlv_tt_data \*tt_data:
+    :param tt_data:
         tt data containing the tt request information
+    :type tt_data: struct batadv_tvlv_tt_data \*
 
-    :param u8 \*req_src:
+    :param req_src:
         mac address of tt request sender
+    :type req_src: u8 \*
 
 .. _`batadv_send_my_tt_response.return`:
 
@@ -1607,17 +1794,21 @@ batadv_send_tt_response
 
     send reply to tt request
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tvlv_tt_data \*tt_data:
+    :param tt_data:
         tt data containing the tt request information
+    :type tt_data: struct batadv_tvlv_tt_data \*
 
-    :param u8 \*req_src:
+    :param req_src:
         mac address of tt request sender
+    :type req_src: u8 \*
 
-    :param u8 \*req_dst:
+    :param req_dst:
         mac address of tt request recipient
+    :type req_dst: u8 \*
 
 .. _`batadv_send_tt_response.return`:
 
@@ -1635,14 +1826,17 @@ batadv_is_my_client
 
     check if a client is served by the local node
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         the mac address of the client to check
+    :type addr: const u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_is_my_client.return`:
 
@@ -1660,17 +1854,21 @@ batadv_handle_tt_response
 
     process incoming tt reply
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_tvlv_tt_data \*tt_data:
+    :param tt_data:
         tt data containing the tt request information
+    :type tt_data: struct batadv_tvlv_tt_data \*
 
-    :param u8 \*resp_src:
+    :param resp_src:
         mac address of tt reply sender
+    :type resp_src: u8 \*
 
-    :param u16 num_entries:
+    :param num_entries:
         number of tt change entries appended to the tt data
+    :type num_entries: u16
 
 .. _`batadv_tt_check_roam_count`:
 
@@ -1681,11 +1879,13 @@ batadv_tt_check_roam_count
 
     check if a client has roamed too frequently
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*client:
+    :param client:
         mac address of the roaming client
+    :type client: u8 \*
 
 .. _`batadv_tt_check_roam_count.description`:
 
@@ -1712,17 +1912,21 @@ batadv_send_roam_adv
 
     send a roaming advertisement message
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*client:
+    :param client:
         mac address of the roaming client
+    :type client: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         message destination
+    :type orig_node: struct batadv_orig_node \*
 
 .. _`batadv_send_roam_adv.description`:
 
@@ -1743,8 +1947,9 @@ batadv_tt_free
 
     Free translation table of soft interface
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_tt_local_set_flags`:
 
@@ -1755,17 +1960,21 @@ batadv_tt_local_set_flags
 
     set or unset the specified flags on the local table and possibly count them in the TT size
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u16 flags:
+    :param flags:
         the flag to switch
+    :type flags: u16
 
-    :param bool enable:
+    :param enable:
         whether to set or unset the flag
+    :type enable: bool
 
-    :param bool count:
+    :param count:
         whether to increase the TT size by the number of changed entries
+    :type count: bool
 
 .. _`batadv_tt_local_commit_changes_nolock`:
 
@@ -1776,8 +1985,9 @@ batadv_tt_local_commit_changes_nolock
 
     commit all pending local tt changes which have been queued in the time since the last commit
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_tt_local_commit_changes_nolock.description`:
 
@@ -1795,8 +2005,9 @@ batadv_tt_local_commit_changes
 
     commit all pending local tt changes which have been queued in the time since the last commit
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_is_ap_isolated`:
 
@@ -1807,17 +2018,21 @@ batadv_is_ap_isolated
 
     Check if packet from upper layer should be dropped
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*src:
+    :param src:
         source mac address of packet
+    :type src: u8 \*
 
-    :param u8 \*dst:
+    :param dst:
         destination mac address of packet
+    :type dst: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         vlan id of packet
+    :type vid: unsigned short
 
 .. _`batadv_is_ap_isolated.return`:
 
@@ -1835,26 +2050,33 @@ batadv_tt_update_orig
 
     update global translation table with new tt information received via ogms
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig_node of the ogm
+    :type orig_node: struct batadv_orig_node \*
 
-    :param const void \*tt_buff:
+    :param tt_buff:
         pointer to the first tvlv VLAN entry
+    :type tt_buff: const void \*
 
-    :param u16 tt_num_vlan:
+    :param tt_num_vlan:
         number of tvlv VLAN entries
+    :type tt_num_vlan: u16
 
-    :param struct batadv_tvlv_tt_change \*tt_change:
+    :param tt_change:
         pointer to the first entry in the TT buffer
+    :type tt_change: struct batadv_tvlv_tt_change \*
 
-    :param u16 tt_num_changes:
+    :param tt_num_changes:
         number of tt changes inside the tt buffer
+    :type tt_num_changes: u16
 
-    :param u8 ttvn:
+    :param ttvn:
         translation table version number of this changeset
+    :type ttvn: u8
 
 .. _`batadv_tt_global_client_is_roaming`:
 
@@ -1865,14 +2087,17 @@ batadv_tt_global_client_is_roaming
 
     check if a client is marked as roaming
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*addr:
+    :param addr:
         the mac address of the client to check
+    :type addr: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_tt_global_client_is_roaming.return`:
 
@@ -1892,14 +2117,17 @@ batadv_tt_local_client_is_roaming
 
     tells whether the client is roaming
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*addr:
+    :param addr:
         the mac address of the local client to query
+    :type addr: u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN identifier
+    :type vid: unsigned short
 
 .. _`batadv_tt_local_client_is_roaming.return`:
 
@@ -1919,17 +2147,21 @@ batadv_tt_add_temporary_global_entry
 
     Add temporary entry to global TT
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         orig node which the temporary entry should be associated with
+    :type orig_node: struct batadv_orig_node \*
 
-    :param const unsigned char \*addr:
+    :param addr:
         mac address of the client
+    :type addr: const unsigned char \*
 
-    :param unsigned short vid:
+    :param vid:
         VLAN id of the new temporary global translation table
+    :type vid: unsigned short
 
 .. _`batadv_tt_add_temporary_global_entry.return`:
 
@@ -1947,8 +2179,9 @@ batadv_tt_local_resize_to_mtu
 
     resize the local translation table fit the maximum packet size that can be transported through the mesh
 
-    :param struct net_device \*soft_iface:
+    :param soft_iface:
         netdev struct of the mesh interface
+    :type soft_iface: struct net_device \*
 
 .. _`batadv_tt_local_resize_to_mtu.description`:
 
@@ -1967,20 +2200,25 @@ batadv_tt_tvlv_ogm_handler_v1
 
     process incoming tt tvlv container
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig:
+    :param orig:
         the orig_node of the ogm
+    :type orig: struct batadv_orig_node \*
 
-    :param u8 flags:
+    :param flags:
         flags indicating the tvlv state (see batadv_tvlv_handler_flags)
+    :type flags: u8
 
-    :param void \*tvlv_value:
+    :param tvlv_value:
         tvlv buffer containing the gateway data
+    :type tvlv_value: void \*
 
-    :param u16 tvlv_value_len:
+    :param tvlv_value_len:
         tvlv buffer length
+    :type tvlv_value_len: u16
 
 .. _`batadv_tt_tvlv_unicast_handler_v1`:
 
@@ -1991,20 +2229,25 @@ batadv_tt_tvlv_unicast_handler_v1
 
     process incoming (unicast) tt tvlv container
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*src:
+    :param src:
         mac address of tt tvlv sender
+    :type src: u8 \*
 
-    :param u8 \*dst:
+    :param dst:
         mac address of tt tvlv recipient
+    :type dst: u8 \*
 
-    :param void \*tvlv_value:
+    :param tvlv_value:
         tvlv buffer containing the tt data
+    :type tvlv_value: void \*
 
-    :param u16 tvlv_value_len:
+    :param tvlv_value_len:
         tvlv buffer length
+    :type tvlv_value_len: u16
 
 .. _`batadv_tt_tvlv_unicast_handler_v1.return`:
 
@@ -2023,20 +2266,25 @@ batadv_roam_tvlv_unicast_handler_v1
 
     process incoming tt roam tvlv container
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param u8 \*src:
+    :param src:
         mac address of tt tvlv sender
+    :type src: u8 \*
 
-    :param u8 \*dst:
+    :param dst:
         mac address of tt tvlv recipient
+    :type dst: u8 \*
 
-    :param void \*tvlv_value:
+    :param tvlv_value:
         tvlv buffer containing the tt data
+    :type tvlv_value: void \*
 
-    :param u16 tvlv_value_len:
+    :param tvlv_value_len:
         tvlv buffer length
+    :type tvlv_value_len: u16
 
 .. _`batadv_roam_tvlv_unicast_handler_v1.return`:
 
@@ -2055,8 +2303,9 @@ batadv_tt_init
 
     initialise the translation table internals
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_tt_init.return`:
 
@@ -2074,14 +2323,17 @@ batadv_tt_global_is_isolated
 
     check if a client is marked as isolated
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         the mac address of the client
+    :type addr: const u8 \*
 
-    :param unsigned short vid:
+    :param vid:
         the identifier of the VLAN where this client is connected
+    :type vid: unsigned short
 
 .. _`batadv_tt_global_is_isolated.return`:
 
@@ -2100,8 +2352,9 @@ batadv_tt_cache_init
 
     Initialize tt memory object cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_tt_cache_init.return`:
 
@@ -2119,8 +2372,9 @@ batadv_tt_cache_destroy
 
     Destroy tt memory object cache
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

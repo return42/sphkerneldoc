@@ -8,8 +8,9 @@ vega10_get_evv_voltages
 
 .. c:function:: int vega10_get_evv_voltages(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega10_get_evv_voltages.description`:
 
@@ -26,14 +27,17 @@ vega10_patch_with_vdd_leakage
 
 .. c:function:: void vega10_patch_with_vdd_leakage(struct pp_hwmgr *hwmgr, uint16_t *voltage, struct vega10_leakage_voltage *leakage_table)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param uint16_t \*voltage:
+    :param voltage:
         *undescribed*
+    :type voltage: uint16_t \*
 
-    :param struct vega10_leakage_voltage \*leakage_table:
+    :param leakage_table:
         *undescribed*
+    :type leakage_table: struct vega10_leakage_voltage \*
 
 .. _`vega10_patch_with_vdd_leakage.description`:
 
@@ -51,14 +55,17 @@ vega10_patch_lookup_table_with_leakage
 
 .. c:function:: int vega10_patch_lookup_table_with_leakage(struct pp_hwmgr *hwmgr, phm_ppt_v1_voltage_lookup_table *lookup_table, struct vega10_leakage_voltage *leakage_table)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param phm_ppt_v1_voltage_lookup_table \*lookup_table:
+    :param lookup_table:
         *undescribed*
+    :type lookup_table: phm_ppt_v1_voltage_lookup_table \*
 
-    :param struct vega10_leakage_voltage \*leakage_table:
+    :param leakage_table:
         *undescribed*
+    :type leakage_table: struct vega10_leakage_voltage \*
 
 .. _`vega10_patch_lookup_table_with_leakage.description`:
 
@@ -77,11 +84,13 @@ vega10_trim_voltage_table
 
 .. c:function:: int vega10_trim_voltage_table(struct pp_hwmgr *hwmgr, struct pp_atomfwctrl_voltage_table *vol_table)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param struct pp_atomfwctrl_voltage_table \*vol_table:
+    :param vol_table:
         *undescribed*
+    :type vol_table: struct pp_atomfwctrl_voltage_table \*
 
 .. _`vega10_trim_voltage_table.description`:
 
@@ -99,8 +108,9 @@ vega10_construct_voltage_tables
 
 .. c:function:: int vega10_construct_voltage_tables(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega10_construct_voltage_tables.description`:
 
@@ -117,17 +127,21 @@ vega10_populate_single_gfx_level
 
 .. c:function:: int vega10_populate_single_gfx_level(struct pp_hwmgr *hwmgr, uint32_t gfx_clock, PllSetting_t *current_gfxclk_level, uint32_t *acg_freq)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
-    :param uint32_t gfx_clock:
+    :param gfx_clock:
         *undescribed*
+    :type gfx_clock: uint32_t
 
-    :param PllSetting_t \*current_gfxclk_level:
+    :param current_gfxclk_level:
         *undescribed*
+    :type current_gfxclk_level: PllSetting_t \*
 
-    :param uint32_t \*acg_freq:
+    :param acg_freq:
         *undescribed*
+    :type acg_freq: uint32_t \*
 
 .. _`vega10_populate_single_gfx_level.description`:
 
@@ -145,8 +159,9 @@ vega10_populate_all_graphic_levels
 
 .. c:function:: int vega10_populate_all_graphic_levels(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega10_populate_all_graphic_levels.description`:
 
@@ -162,8 +177,9 @@ vega10_init_smc_table
 
 .. c:function:: int vega10_init_smc_table(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega10_init_smc_table.description`:
 

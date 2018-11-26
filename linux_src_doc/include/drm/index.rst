@@ -11,11 +11,12 @@ drm
     i2c/index
     tinydrm/index
     ttm/index
-    drmP_h
     drm_atomic_h
     drm_atomic_helper_h
+    drm_audio_component_h
     drm_auth_h
     drm_bridge_h
+    drm_client_h
     drm_color_mgmt_h
     drm_connector_h
     drm_crtc_h
@@ -55,4 +56,5 @@ drm
     drm_syncobj_h
     drm_vblank_h
     drm_vma_manager_h
+    gpu_scheduler_h
     i915_component_h

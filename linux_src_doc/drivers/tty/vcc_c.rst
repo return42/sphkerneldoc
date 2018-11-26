@@ -10,8 +10,9 @@ vcc_table_add
 
     Add VCC port to the VCC table
 
-    :param struct vcc_port \*port:
+    :param port:
         pointer to the VCC port
+    :type port: struct vcc_port \*
 
 .. _`vcc_table_add.return`:
 
@@ -30,8 +31,9 @@ vcc_table_remove
 
     Removes a VCC port from the VCC table
 
-    :param unsigned long index:
+    :param index:
         Index into the VCC table
+    :type index: unsigned long
 
 .. _`vcc_get`:
 
@@ -42,11 +44,13 @@ vcc_get
 
     Gets a reference to VCC port
 
-    :param unsigned long index:
+    :param index:
         Index into the VCC table
+    :type index: unsigned long
 
-    :param bool excl:
+    :param excl:
         Indicates if an exclusive access is requested
+    :type excl: bool
 
 .. _`vcc_get.return`:
 
@@ -65,11 +69,13 @@ vcc_put
 
     Returns a reference to VCC port
 
-    :param struct vcc_port \*port:
+    :param port:
         pointer to VCC port
+    :type port: struct vcc_port \*
 
-    :param bool excl:
+    :param excl:
         Indicates if the returned reference is an exclusive reference
+    :type excl: bool
 
 .. _`vcc_put.note`:
 
@@ -88,8 +94,9 @@ vcc_get_ne
 
     Get a non-exclusive reference to VCC port
 
-    :param unsigned long index:
+    :param index:
         Index into the VCC table
+    :type index: unsigned long
 
 .. _`vcc_get_ne.description`:
 
@@ -115,11 +122,13 @@ vcc_event
 
     LDC event processing engine
 
-    :param void \*arg:
+    :param arg:
         VCC private data
+    :type arg: void \*
 
-    :param int event:
+    :param event:
         LDC event
+    :type event: int
 
 .. _`vcc_event.description`:
 
@@ -137,11 +146,13 @@ vcc_probe
 
     Initialize VCC port
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         Pointer to VIO device of the new VCC port
+    :type vdev: struct vio_dev \*
 
-    :param const struct vio_device_id \*id:
+    :param id:
         VIO device ID
+    :type id: const struct vio_device_id \*
 
 .. _`vcc_probe.description`:
 
@@ -169,8 +180,9 @@ vcc_remove
 
     Terminate a VCC port
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         Pointer to VIO device of the VCC port
+    :type vdev: struct vio_dev \*
 
 .. _`vcc_remove.description`:
 

@@ -25,8 +25,8 @@ Definition
         struct miscdevice miscdev;
         spinlock_t spinlock;
         local_t reading;
-        local_t mode;
         u8 *buf;
+        u32 mode;
         u32 buffer_depth;
         u32 trigger_cntr;
     }
@@ -57,11 +57,11 @@ spinlock
 reading
     synchronise user space access to etb buffer.
 
-mode
-    this ETB is being used.
-
 buf
     area of memory where ETB buffer content gets sent.
+
+mode
+    this ETB is being used.
 
 buffer_depth
     size of \ ``buf``\ .

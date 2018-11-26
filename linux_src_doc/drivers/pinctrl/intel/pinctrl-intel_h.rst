@@ -19,10 +19,10 @@ Definition
 
     struct intel_pingroup {
         const char *name;
-        const unsigned *pins;
+        const unsigned int *pins;
         size_t npins;
         unsigned short mode;
-        const unsigned *modes;
+        const unsigned int *modes;
     }
 
 .. _`intel_pingroup.members`:
@@ -99,11 +99,11 @@ Definition
 .. code-block:: c
 
     struct intel_padgroup {
-        unsigned reg_num;
-        unsigned base;
-        unsigned size;
+        unsigned int reg_num;
+        unsigned int base;
+        unsigned int size;
         int gpio_base;
-        unsigned padown_num;
+        unsigned int padown_num;
     }
 
 .. _`intel_padgroup.members`:
@@ -152,17 +152,17 @@ Definition
 .. code-block:: c
 
     struct intel_community {
-        unsigned barno;
-        unsigned padown_offset;
-        unsigned padcfglock_offset;
-        unsigned hostown_offset;
-        unsigned is_offset;
-        unsigned ie_offset;
-        unsigned pin_base;
-        unsigned gpp_size;
-        unsigned gpp_num_padown_regs;
+        unsigned int barno;
+        unsigned int padown_offset;
+        unsigned int padcfglock_offset;
+        unsigned int hostown_offset;
+        unsigned int is_offset;
+        unsigned int ie_offset;
+        unsigned int pin_base;
+        unsigned int gpp_size;
+        unsigned int gpp_num_padown_regs;
         size_t npins;
-        unsigned features;
+        unsigned int features;
         const struct intel_padgroup *gpps;
         size_t ngpps;
         void __iomem *regs;
@@ -247,16 +247,19 @@ PIN_GROUP
 
     Declare a pin group
 
-    :param  n:
+    :param n:
         Name of the group
+    :type n: 
 
-    :param  p:
+    :param p:
         An array of pins this group consists
+    :type p: 
 
-    :param  m:
+    :param m:
         Mode which the pins are put when this group is active. Can be either
         a single integer or an array of integers in which case mode is per
         pin.
+    :type m: 
 
 .. _`intel_pinctrl_soc_data`:
 

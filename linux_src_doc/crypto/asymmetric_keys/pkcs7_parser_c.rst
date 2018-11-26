@@ -10,8 +10,9 @@ pkcs7_free_message
 
     Free a PKCS#7 message
 
-    :param struct pkcs7_message \*pkcs7:
+    :param pkcs7:
         The PKCS#7 message to free
+    :type pkcs7: struct pkcs7_message \*
 
 .. _`pkcs7_parse_message`:
 
@@ -22,11 +23,13 @@ pkcs7_parse_message
 
     Parse a PKCS#7 message
 
-    :param const void \*data:
+    :param data:
         The raw binary ASN.1 encoded message to be parsed
+    :type data: const void \*
 
-    :param size_t datalen:
+    :param datalen:
         The size of the encoded message
+    :type datalen: size_t
 
 .. _`pkcs7_get_content_data`:
 
@@ -37,17 +40,21 @@ pkcs7_get_content_data
 
     Get access to the PKCS#7 content
 
-    :param const struct pkcs7_message \*pkcs7:
+    :param pkcs7:
         The preparsed PKCS#7 message to access
+    :type pkcs7: const struct pkcs7_message \*
 
-    :param const void \*\*_data:
+    :param _data:
         Place to return a pointer to the data
+    :type _data: const void \*\*
 
-    :param size_t \*_data_len:
+    :param _data_len:
         Place to return the data length
+    :type _data_len: size_t \*
 
-    :param size_t \*_headerlen:
+    :param _headerlen:
         Size of ASN.1 header not included in \_data
+    :type _headerlen: size_t \*
 
 .. _`pkcs7_get_content_data.description`:
 

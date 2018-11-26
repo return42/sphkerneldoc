@@ -10,20 +10,25 @@ asd_ddbsite_update_word
 
     - atomically update a word in a ddb site
 
-    :param struct asd_ha_struct \*asd_ha:
+    :param asd_ha:
         pointer to host adapter structure
+    :type asd_ha: struct asd_ha_struct \*
 
-    :param u16 ddb_site_no:
+    :param ddb_site_no:
         the DDB site number
+    :type ddb_site_no: u16
 
-    :param u16 offs:
+    :param offs:
         the offset into the DDB
+    :type offs: u16
 
-    :param u16 oldval:
+    :param oldval:
         old value found in that offset
+    :type oldval: u16
 
-    :param u16 newval:
+    :param newval:
         the new value to replace it
+    :type newval: u16
 
 .. _`asd_ddbsite_update_word.description`:
 

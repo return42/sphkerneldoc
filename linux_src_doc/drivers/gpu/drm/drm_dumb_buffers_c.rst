@@ -36,14 +36,17 @@ drm_mode_mmap_dumb_ioctl
 
     create an mmap offset for a dumb backing storage buffer
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         ioctl data
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         DRM file info
+    :type file_priv: struct drm_file \*
 
 .. _`drm_mode_mmap_dumb_ioctl.description`:
 

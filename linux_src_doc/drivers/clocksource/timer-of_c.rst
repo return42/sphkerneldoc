@@ -10,8 +10,9 @@ timer_of_irq_exit
 
     Release the interrupt
 
-    :param struct of_timer_irq \*of_irq:
+    :param of_irq:
         an of_timer_irq structure pointer
+    :type of_irq: struct of_timer_irq \*
 
 .. _`timer_of_irq_exit.description`:
 
@@ -29,11 +30,13 @@ timer_of_irq_init
 
     Request the interrupt
 
-    :param struct device_node \*np:
+    :param np:
         a device tree node pointer
+    :type np: struct device_node \*
 
-    :param struct of_timer_irq \*of_irq:
+    :param of_irq:
         an of_timer_irq structure pointer
+    :type of_irq: struct of_timer_irq \*
 
 .. _`timer_of_irq_init.description`:
 
@@ -60,8 +63,9 @@ timer_of_clk_exit
 
     Release the clock resources
 
-    :param struct of_timer_clk \*of_clk:
+    :param of_clk:
         a of_timer_clk structure pointer
+    :type of_clk: struct of_timer_clk \*
 
 .. _`timer_of_clk_exit.description`:
 
@@ -79,11 +83,13 @@ timer_of_clk_init
 
     Initialize the clock resources
 
-    :param struct device_node \*np:
+    :param np:
         a device tree node pointer
+    :type np: struct device_node \*
 
-    :param struct of_timer_clk \*of_clk:
+    :param of_clk:
         a of_timer_clk structure pointer
+    :type of_clk: struct of_timer_clk \*
 
 .. _`timer_of_clk_init.description`:
 
@@ -103,8 +109,9 @@ timer_of_cleanup
 
     release timer_of ressources
 
-    :param struct timer_of \*to:
+    :param to:
         timer_of structure
+    :type to: struct timer_of \*
 
 .. _`timer_of_cleanup.description`:
 

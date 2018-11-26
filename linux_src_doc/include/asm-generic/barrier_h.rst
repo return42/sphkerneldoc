@@ -10,8 +10,9 @@ smp_acquire__after_ctrl_dep
 
     Provide ACQUIRE ordering after a control dependency
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`smp_acquire__after_ctrl_dep.description`:
 
@@ -33,11 +34,13 @@ smp_cond_load_relaxed
 
     (Spin) wait for cond with no ordering guarantees
 
-    :param  ptr:
+    :param ptr:
         pointer to the variable to wait on
+    :type ptr: 
 
-    :param  cond_expr:
+    :param cond_expr:
         *undescribed*
+    :type cond_expr: 
 
 .. _`smp_cond_load_relaxed.description`:
 
@@ -58,11 +61,13 @@ smp_cond_load_acquire
 
     (Spin) wait for cond with ACQUIRE ordering
 
-    :param  ptr:
+    :param ptr:
         pointer to the variable to wait on
+    :type ptr: 
 
-    :param  cond_expr:
+    :param cond_expr:
         *undescribed*
+    :type cond_expr: 
 
 .. _`smp_cond_load_acquire.description`:
 

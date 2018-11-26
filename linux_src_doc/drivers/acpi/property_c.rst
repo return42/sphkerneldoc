@@ -10,17 +10,21 @@ acpi_data_get_property
 
     return an ACPI property with given name
 
-    :param const struct acpi_device_data \*data:
+    :param data:
         ACPI device deta object to get the property from
+    :type data: const struct acpi_device_data \*
 
-    :param const char \*name:
+    :param name:
         Name of the property
+    :type name: const char \*
 
-    :param acpi_object_type type:
+    :param type:
         Expected property type
+    :type type: acpi_object_type
 
-    :param const union acpi_object \*\*obj:
+    :param obj:
         Location to store the property value (if not \ ``NULL``\ )
+    :type obj: const union acpi_object \*\*
 
 .. _`acpi_data_get_property.description`:
 
@@ -52,17 +56,21 @@ acpi_dev_get_property
 
     return an ACPI property with given name.
 
-    :param const struct acpi_device \*adev:
+    :param adev:
         ACPI device to get the property from.
+    :type adev: const struct acpi_device \*
 
-    :param const char \*name:
+    :param name:
         Name of the property.
+    :type name: const char \*
 
-    :param acpi_object_type type:
+    :param type:
         Expected property type.
+    :type type: acpi_object_type
 
-    :param const union acpi_object \*\*obj:
+    :param obj:
         Location to store the property value (if not \ ``NULL``\ ).
+    :type obj: const union acpi_object \*\*
 
 .. _`acpi_node_prop_get`:
 
@@ -73,14 +81,17 @@ acpi_node_prop_get
 
     return an ACPI property with given name.
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to get the property from.
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property.
+    :type propname: const char \*
 
-    :param void \*\*valptr:
+    :param valptr:
         Location to store a pointer to the property value (if not \ ``NULL``\ ).
+    :type valptr: void \*\*
 
 .. _`acpi_data_get_property_array`:
 
@@ -91,17 +102,21 @@ acpi_data_get_property_array
 
     return an ACPI array property with given name
 
-    :param const struct acpi_device_data \*data:
+    :param data:
         *undescribed*
+    :type data: const struct acpi_device_data \*
 
-    :param const char \*name:
+    :param name:
         Name of the property
+    :type name: const char \*
 
-    :param acpi_object_type type:
+    :param type:
         Expected type of array elements
+    :type type: acpi_object_type
 
-    :param const union acpi_object \*\*obj:
+    :param obj:
         Location to store a pointer to the property value (if not NULL)
+    :type obj: const union acpi_object \*\*
 
 .. _`acpi_data_get_property_array.description`:
 
@@ -130,24 +145,29 @@ doesn't match \ ``type``\ .
 \__acpi_node_get_property_reference
 ===================================
 
-.. c:function:: int __acpi_node_get_property_reference(const struct fwnode_handle *fwnode, const char *propname, size_t index, size_t num_args, struct acpi_reference_args *args)
+.. c:function:: int __acpi_node_get_property_reference(const struct fwnode_handle *fwnode, const char *propname, size_t index, size_t num_args, struct fwnode_reference_args *args)
 
     returns handle to the referenced object
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to get the property from
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property
+    :type propname: const char \*
 
-    :param size_t index:
+    :param index:
         Index of the reference to return
+    :type index: size_t
 
-    :param size_t num_args:
+    :param num_args:
         Maximum number of arguments after each reference
+    :type num_args: size_t
 
-    :param struct acpi_reference_args \*args:
+    :param args:
         Location to store the returned reference with optional arguments
+    :type args: struct fwnode_reference_args \*
 
 .. _`__acpi_node_get_property_reference.description`:
 
@@ -156,8 +176,8 @@ Description
 
 Find property with \ ``name``\ , verifify that it is a package containing at least
 one object reference and if so, store the ACPI device object pointer to the
-target object in \ ``args``\ ->adev.  If the reference includes arguments, store
-them in the \ ``args``\ ->args[] array.
+target object in \ ``args->adev``\ .  If the reference includes arguments, store
+them in the \ ``args->args``\ [] array.
 
 If there's more than one reference in the property value package, \ ``index``\  is
 used to select the one to return.
@@ -200,20 +220,25 @@ acpi_node_prop_read
 
     retrieve the value of an ACPI property with given name.
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to get the property from.
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*propname:
+    :param propname:
         Name of the property.
+    :type propname: const char \*
 
-    :param enum dev_prop_type proptype:
+    :param proptype:
         Expected property type.
+    :type proptype: enum dev_prop_type
 
-    :param void \*val:
+    :param val:
         Location to store the property value (if not \ ``NULL``\ ).
+    :type val: void \*
 
-    :param size_t nval:
+    :param nval:
         Size of the array pointed to by \ ``val``\ .
+    :type nval: size_t
 
 .. _`acpi_node_prop_read.description`:
 
@@ -233,11 +258,13 @@ acpi_get_next_subnode
 
     Return the next child node handle for a fwnode
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node to find the next child node for.
+    :type fwnode: const struct fwnode_handle \*
 
-    :param struct fwnode_handle \*child:
+    :param child:
         Handle to one of the device's child nodes or a null handle.
+    :type child: struct fwnode_handle \*
 
 .. _`acpi_node_get_parent`:
 
@@ -248,8 +275,9 @@ acpi_node_get_parent
 
     Return parent fwnode of this fwnode
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Firmware node whose parent to get
+    :type fwnode: const struct fwnode_handle \*
 
 .. _`acpi_node_get_parent.description`:
 
@@ -268,11 +296,13 @@ acpi_graph_get_next_endpoint
 
     Get next endpoint ACPI firmware node
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Pointer to the parent firmware node
+    :type fwnode: const struct fwnode_handle \*
 
-    :param struct fwnode_handle \*prev:
+    :param prev:
         Previous endpoint node or \ ``NULL``\  to get the first
+    :type prev: struct fwnode_handle \*
 
 .. _`acpi_graph_get_next_endpoint.description`:
 
@@ -280,8 +310,8 @@ Description
 -----------
 
 Looks up next endpoint ACPI firmware node below a given \ ``fwnode``\ . Returns
-\ ``NULL``\  if there is no next endpoint, \ :c:func:`ERR_PTR`\  in case of error. In case
-of success the next endpoint is returned.
+\ ``NULL``\  if there is no next endpoint or in case of error. In case of success
+the next endpoint is returned.
 
 .. _`acpi_graph_get_child_prop_value`:
 
@@ -292,14 +322,17 @@ acpi_graph_get_child_prop_value
 
     Return a child with a given property value
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         device fwnode
+    :type fwnode: const struct fwnode_handle \*
 
-    :param const char \*prop_name:
+    :param prop_name:
         The name of the property to look for
+    :type prop_name: const char \*
 
-    :param unsigned int val:
+    :param val:
         the desired property value
+    :type val: unsigned int
 
 .. _`acpi_graph_get_child_prop_value.description`:
 
@@ -314,30 +347,20 @@ the child node on success, NULL otherwise.
 acpi_graph_get_remote_endpoint
 ==============================
 
-.. c:function:: int acpi_graph_get_remote_endpoint(const struct fwnode_handle *__fwnode, struct fwnode_handle **parent, struct fwnode_handle **port, struct fwnode_handle **endpoint)
+.. c:function:: struct fwnode_handle *acpi_graph_get_remote_endpoint(const struct fwnode_handle *__fwnode)
 
     Parses and returns remote end of an endpoint
 
-    :param const struct fwnode_handle \*__fwnode:
+    :param __fwnode:
         *undescribed*
-
-    :param struct fwnode_handle \*\*parent:
-        Firmware node of remote port parent is filled here if not \ ``NULL``\ 
-
-    :param struct fwnode_handle \*\*port:
-        Firmware node of remote port is filled here if not \ ``NULL``\ 
-
-    :param struct fwnode_handle \*\*endpoint:
-        Firmware node of remote endpoint is filled here if not \ ``NULL``\ 
+    :type __fwnode: const struct fwnode_handle \*
 
 .. _`acpi_graph_get_remote_endpoint.description`:
 
 Description
 -----------
 
-Function parses remote end of ACPI firmware remote endpoint and fills in
-fields requested by the caller. Returns \ ``0``\  in case of success and
-negative errno otherwise.
+Returns the remote endpoint corresponding to \ ``__fwnode``\ . NULL on error.
 
 .. This file was automatic generated / don't edit.
 

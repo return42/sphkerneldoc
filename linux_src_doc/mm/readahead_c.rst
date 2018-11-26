@@ -10,18 +10,21 @@ read_cache_pages
 
     populate an address space with some pages & start reads against them
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space
+    :type mapping: struct address_space \*
 
-    :param struct list_head \*pages:
+    :param pages:
         The address of a list_head which contains the target pages.  These
         pages have their ->index populated and are otherwise uninitialised.
+    :type pages: struct list_head \*
 
     :param int (\*filler)(void \*, struct page \*):
         callback routine for filling a single page.
 
-    :param void \*data:
+    :param data:
         private data for the callback routine.
+    :type data: void \*
 
 .. _`read_cache_pages.description`:
 
@@ -39,21 +42,26 @@ page_cache_sync_readahead
 
     generic file readahead
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address_space which holds the pagecache and I/O vectors
+    :type mapping: struct address_space \*
 
-    :param struct file_ra_state \*ra:
+    :param ra:
         file_ra_state which holds the readahead state
+    :type ra: struct file_ra_state \*
 
-    :param struct file \*filp:
+    :param filp:
         passed on to ->readpage() and ->readpages()
+    :type filp: struct file \*
 
-    :param pgoff_t offset:
+    :param offset:
         start offset into \ ``mapping``\ , in pagecache page-sized units
+    :type offset: pgoff_t
 
-    :param unsigned long req_size:
+    :param req_size:
         hint: total size of the read which the caller is performing in
         pagecache pages
+    :type req_size: unsigned long
 
 .. _`page_cache_sync_readahead.description`:
 
@@ -74,24 +82,30 @@ page_cache_async_readahead
 
     file readahead for marked pages
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address_space which holds the pagecache and I/O vectors
+    :type mapping: struct address_space \*
 
-    :param struct file_ra_state \*ra:
+    :param ra:
         file_ra_state which holds the readahead state
+    :type ra: struct file_ra_state \*
 
-    :param struct file \*filp:
+    :param filp:
         passed on to ->readpage() and ->readpages()
+    :type filp: struct file \*
 
-    :param struct page \*page:
+    :param page:
         the page at \ ``offset``\  which has the PG_readahead flag set
+    :type page: struct page \*
 
-    :param pgoff_t offset:
+    :param offset:
         start offset into \ ``mapping``\ , in pagecache page-sized units
+    :type offset: pgoff_t
 
-    :param unsigned long req_size:
+    :param req_size:
         hint: total size of the read which the caller is performing in
         pagecache pages
+    :type req_size: unsigned long
 
 .. _`page_cache_async_readahead.description`:
 

@@ -10,8 +10,9 @@ ishtp_recv
 
     process ishtp message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_recv.description`:
 
@@ -32,20 +33,24 @@ ishtp_send_msg
 
     Send ishtp message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_msg_hdr \*hdr:
+    :param hdr:
         Message header
+    :type hdr: struct ishtp_msg_hdr \*
 
-    :param void \*msg:
+    :param msg:
         Message contents
+    :type msg: void \*
 
     :param void(\*ipc_send_compl)(void \*):
         completion callback
 
-    :param void \*ipc_send_compl_prm:
+    :param ipc_send_compl_prm:
         completion callback parameter
+    :type ipc_send_compl_prm: void \*
 
 .. _`ishtp_send_msg.description`:
 
@@ -71,14 +76,17 @@ ishtp_write_message
 
     Send ishtp single fragment message
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
-    :param struct ishtp_msg_hdr \*hdr:
+    :param hdr:
         Message header
+    :type hdr: struct ishtp_msg_hdr \*
 
-    :param unsigned char \*buf:
+    :param buf:
         message data
+    :type buf: unsigned char \*
 
 .. _`ishtp_write_message.description`:
 
@@ -104,11 +112,13 @@ ishtp_fw_cl_by_uuid
 
     locate index of fw client
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
-    :param const uuid_le \*uuid:
+    :param uuid:
         uuid of the client to search
+    :type uuid: const uuid_le \*
 
 .. _`ishtp_fw_cl_by_uuid.description`:
 
@@ -124,6 +134,37 @@ Return
 
 fw client index or -ENOENT if not found
 
+.. _`ishtp_fw_cl_get_client`:
+
+ishtp_fw_cl_get_client
+======================
+
+.. c:function:: struct ishtp_fw_client *ishtp_fw_cl_get_client(struct ishtp_device *dev, const uuid_le *uuid)
+
+    return client information to client
+
+    :param dev:
+        the ishtp device structure
+    :type dev: struct ishtp_device \*
+
+    :param uuid:
+        uuid of the client to search
+    :type uuid: const uuid_le \*
+
+.. _`ishtp_fw_cl_get_client.description`:
+
+Description
+-----------
+
+Search firmware client using UUID and reture related client information.
+
+.. _`ishtp_fw_cl_get_client.return`:
+
+Return
+------
+
+pointer of client information on success, NULL on failure.
+
 .. _`ishtp_fw_cl_by_id`:
 
 ishtp_fw_cl_by_id
@@ -133,11 +174,13 @@ ishtp_fw_cl_by_id
 
     return index to fw_clients for client_id
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         the ishtp device structure
+    :type dev: struct ishtp_device \*
 
-    :param uint8_t client_id:
+    :param client_id:
         fw client id to search
+    :type client_id: uint8_t
 
 .. _`ishtp_fw_cl_by_id.description`:
 
@@ -162,8 +205,9 @@ ishtp_cl_device_probe
 
     Bus \ :c:func:`probe`\  callback
 
-    :param struct device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct device \*
 
 .. _`ishtp_cl_device_probe.description`:
 
@@ -188,8 +232,9 @@ ishtp_cl_device_remove
 
     Bus \ :c:func:`remove`\  callback
 
-    :param struct device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct device \*
 
 .. _`ishtp_cl_device_remove.description`:
 
@@ -216,8 +261,9 @@ ishtp_cl_device_suspend
 
     Bus suspend callback
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
 .. _`ishtp_cl_device_suspend.description`:
 
@@ -242,8 +288,9 @@ ishtp_cl_device_resume
 
     Bus resume callback
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
 .. _`ishtp_cl_device_resume.description`:
 
@@ -268,8 +315,9 @@ ishtp_cl_device_reset
 
     Reset callback
 
-    :param struct ishtp_cl_device \*device:
+    :param device:
         ishtp client device instance
+    :type device: struct ishtp_cl_device \*
 
 .. _`ishtp_cl_device_reset.description`:
 
@@ -295,14 +343,17 @@ ishtp_bus_add_device
 
     Function to create device on bus
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
-    :param uuid_le uuid:
+    :param uuid:
         uuid of the client
+    :type uuid: uuid_le
 
-    :param char \*name:
+    :param name:
         Name of the client
+    :type name: char \*
 
 .. _`ishtp_bus_add_device.description`:
 
@@ -328,8 +379,9 @@ ishtp_bus_remove_device
 
     Function to relase device on bus
 
-    :param struct ishtp_cl_device \*device:
+    :param device:
         client device instance
+    :type device: struct ishtp_cl_device \*
 
 .. _`ishtp_bus_remove_device.description`:
 
@@ -350,11 +402,13 @@ Called only during error in pci driver init path.
 
     Client driver register
 
-    :param struct ishtp_cl_driver \*driver:
+    :param driver:
         the client driver instance
+    :type driver: struct ishtp_cl_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         Owner of this driver module
+    :type owner: struct module \*
 
 .. _`__ishtp_cl_driver_register.description`:
 
@@ -380,8 +434,9 @@ ishtp_cl_driver_unregister
 
     Client driver unregister
 
-    :param struct ishtp_cl_driver \*driver:
+    :param driver:
         the client driver instance
+    :type driver: struct ishtp_cl_driver \*
 
 .. _`ishtp_cl_driver_unregister.description`:
 
@@ -399,8 +454,9 @@ ishtp_bus_event_work
 
     event work function
 
-    :param struct work_struct \*work:
+    :param work:
         work struct pointer
+    :type work: struct work_struct \*
 
 .. _`ishtp_bus_event_work.description`:
 
@@ -420,8 +476,9 @@ ishtp_cl_bus_rx_event
 
     schedule event work
 
-    :param struct ishtp_cl_device \*device:
+    :param device:
         client device instance
+    :type device: struct ishtp_cl_device \*
 
 .. _`ishtp_cl_bus_rx_event.description`:
 
@@ -440,8 +497,9 @@ ishtp_register_event_cb
 
     Register callback
 
-    :param struct ishtp_cl_device \*device:
+    :param device:
         client device instance
+    :type device: struct ishtp_cl_device \*
 
     :param void (\*event_cb)(struct ishtp_cl_device \*):
         Event processor for an client
@@ -469,8 +527,9 @@ ishtp_get_device
 
     update usage count for the device
 
-    :param struct ishtp_cl_device \*cl_device:
+    :param cl_device:
         client device instance
+    :type cl_device: struct ishtp_cl_device \*
 
 .. _`ishtp_get_device.description`:
 
@@ -488,8 +547,9 @@ ishtp_put_device
 
     decrement usage count for the device
 
-    :param struct ishtp_cl_device \*cl_device:
+    :param cl_device:
         client device instance
+    :type cl_device: struct ishtp_cl_device \*
 
 .. _`ishtp_put_device.description`:
 
@@ -497,6 +557,57 @@ Description
 -----------
 
 Decrement the usage count. The device can be deleted is count = 0
+
+.. _`ishtp_set_drvdata`:
+
+ishtp_set_drvdata
+=================
+
+.. c:function:: void ishtp_set_drvdata(struct ishtp_cl_device *cl_device, void *data)
+
+    set client driver data
+
+    :param cl_device:
+        client device instance
+    :type cl_device: struct ishtp_cl_device \*
+
+    :param data:
+        driver data need to be set
+    :type data: void \*
+
+.. _`ishtp_set_drvdata.description`:
+
+Description
+-----------
+
+Set client driver data to cl_device->driver_data.
+
+.. _`ishtp_get_drvdata`:
+
+ishtp_get_drvdata
+=================
+
+.. c:function:: void *ishtp_get_drvdata(struct ishtp_cl_device *cl_device)
+
+    get client driver data
+
+    :param cl_device:
+        client device instance
+    :type cl_device: struct ishtp_cl_device \*
+
+.. _`ishtp_get_drvdata.description`:
+
+Description
+-----------
+
+Get client driver data from cl_device->driver_data.
+
+.. _`ishtp_get_drvdata.return`:
+
+Return
+------
+
+pointer of driver data
 
 .. _`ishtp_bus_new_client`:
 
@@ -507,8 +618,9 @@ ishtp_bus_new_client
 
     Create a new client
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ISHTP device instance
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_bus_new_client.description`:
 
@@ -534,8 +646,9 @@ ishtp_cl_device_bind
 
     bind a device
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         ishtp client device
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_device_bind.description`:
 
@@ -560,11 +673,13 @@ ishtp_bus_remove_all_clients
 
     Remove all clients
 
-    :param struct ishtp_device \*ishtp_dev:
+    :param ishtp_dev:
         ishtp device
+    :type ishtp_dev: struct ishtp_device \*
 
-    :param bool warm_reset:
+    :param warm_reset:
         Reset due to FW reset dure to errors or S3 suspend
+    :type warm_reset: bool
 
 .. _`ishtp_bus_remove_all_clients.description`:
 
@@ -585,8 +700,9 @@ ishtp_reset_handler
 
     IPC reset handler
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_reset_handler.description`:
 
@@ -604,8 +720,9 @@ ishtp_reset_compl_handler
 
     Reset completion handler
 
-    :param struct ishtp_device \*dev:
+    :param dev:
         ishtp device
+    :type dev: struct ishtp_device \*
 
 .. _`ishtp_reset_compl_handler.description`:
 
@@ -624,8 +741,9 @@ ishtp_use_dma_transfer
 
     Function to use DMA
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ishtp_use_dma_transfer.description`:
 
@@ -645,8 +763,9 @@ ishtp_bus_register
 
     Function to register bus
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ishtp_bus_register.description`:
 
@@ -671,8 +790,9 @@ ishtp_bus_unregister
 
     Function to unregister bus
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ishtp_bus_unregister.description`:
 

@@ -10,8 +10,9 @@ dccp_feat_index
 
     Hash function to map feature number into array position Returns consecutive array index or -1 if the feature is not understood.
 
-    :param u8 feat_num:
+    :param feat_num:
         *undescribed*
+    :type feat_num: u8
 
 .. _`dccp_feat_activate`:
 
@@ -22,17 +23,21 @@ dccp_feat_activate
 
     Activate feature value on socket
 
-    :param struct sock \*sk:
+    :param sk:
         fully connected DCCP socket (after handshake is complete)
+    :type sk: struct sock \*
 
-    :param u8 feat_num:
+    :param feat_num:
         feature to activate, one of \ ``dccp_feature_numbers``\ 
+    :type feat_num: u8
 
-    :param bool local:
+    :param local:
         whether local (1) or remote (0) \ ``feat_num``\  is meant
+    :type local: bool
 
-    :param dccp_feat_val const \*fval:
+    :param fval:
         the value (SP or NN) to activate, or NULL to use the default value
+    :type fval: dccp_feat_val const \*
 
 .. _`dccp_feat_activate.description`:
 
@@ -50,14 +55,17 @@ dccp_feat_entry_new
 
     Central list update routine (called by all others)
 
-    :param struct list_head \*head:
+    :param head:
         list to add to
+    :type head: struct list_head \*
 
-    :param u8 feat:
+    :param feat:
         feature number
+    :type feat: u8
 
-    :param bool local:
+    :param local:
         whether the local (1) or remote feature with number \ ``feat``\  is meant
+    :type local: bool
 
 .. _`dccp_feat_entry_new.description`:
 
@@ -75,20 +83,25 @@ dccp_feat_push_change
 
     Add/overwrite a Change option in the list
 
-    :param struct list_head \*fn_list:
+    :param fn_list:
         feature-negotiation list to update
+    :type fn_list: struct list_head \*
 
-    :param u8 feat:
+    :param feat:
         one of \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u8 local:
+    :param local:
         whether local (1) or remote (0) \ ``feat_num``\  is meant
+    :type local: u8
 
-    :param u8 mandatory:
+    :param mandatory:
         whether to use Mandatory feature negotiation options
+    :type mandatory: u8
 
-    :param dccp_feat_val \*fval:
+    :param fval:
         pointer to NN/SP value to be inserted (will be copied)
+    :type fval: dccp_feat_val \*
 
 .. _`dccp_feat_push_confirm`:
 
@@ -99,17 +112,21 @@ dccp_feat_push_confirm
 
     Add a Confirm entry to the FN list
 
-    :param struct list_head \*fn_list:
+    :param fn_list:
         feature-negotiation list to add to
+    :type fn_list: struct list_head \*
 
-    :param u8 feat:
+    :param feat:
         one of \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u8 local:
+    :param local:
         whether local (1) or remote (0) \ ``feat_num``\  is being confirmed
+    :type local: u8
 
-    :param dccp_feat_val \*fval:
+    :param fval:
         pointer to NN/SP value to be inserted or NULL
+    :type fval: dccp_feat_val \*
 
 .. _`dccp_feat_push_confirm.description`:
 
@@ -127,8 +144,9 @@ dccp_feat_valid_nn_length
 
     Enforce length constraints on NN options Length is between 0 and \ ``DCCP_OPTVAL_MAXLEN``\ . Used for outgoing packets only, incoming options are accepted as long as their values are valid.
 
-    :param u8 feat_num:
+    :param feat_num:
         *undescribed*
+    :type feat_num: u8
 
 .. _`dccp_feat_insert_opts`:
 
@@ -139,14 +157,17 @@ dccp_feat_insert_opts
 
     Generate FN options from current list state
 
-    :param struct dccp_sock \*dp:
+    :param dp:
         for client during handshake and general negotiation
+    :type dp: struct dccp_sock \*
 
-    :param struct dccp_request_sock \*dreq:
+    :param dreq:
         used by the server only (all Changes/Confirms in LISTEN/RESPOND)
+    :type dreq: struct dccp_request_sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         next sk_buff to be sent to the peer
+    :type skb: struct sk_buff \*
 
 .. _`__feat_register_nn`:
 
@@ -157,17 +178,21 @@ dccp_feat_insert_opts
 
     Register new NN value on socket
 
-    :param struct list_head \*fn:
+    :param fn:
         feature-negotiation list to register with
+    :type fn: struct list_head \*
 
-    :param u8 feat:
+    :param feat:
         an NN feature from \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u8 mandatory:
+    :param mandatory:
         use Mandatory option if 1
+    :type mandatory: u8
 
-    :param u64 nn_val:
+    :param nn_val:
         value to register (restricted to 4 bytes)
+    :type nn_val: u64
 
 .. _`__feat_register_nn.description`:
 
@@ -185,23 +210,29 @@ Note that NN features are local by definition (RFC 4340, 6.3.2).
 
     Register new SP value/list on socket
 
-    :param struct list_head \*fn:
+    :param fn:
         feature-negotiation list to register with
+    :type fn: struct list_head \*
 
-    :param u8 feat:
+    :param feat:
         an SP feature from \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u8 is_local:
+    :param is_local:
         whether the local (1) or the remote (0) \ ``feat``\  is meant
+    :type is_local: u8
 
-    :param u8 mandatory:
+    :param mandatory:
         use Mandatory option if 1
+    :type mandatory: u8
 
-    :param u8 const \*sp_val:
+    :param sp_val:
         SP value followed by optional preference list
+    :type sp_val: u8 const \*
 
-    :param u8 sp_len:
+    :param sp_len:
         length of \ ``sp_val``\  in bytes
+    :type sp_len: u8
 
 .. _`dccp_feat_register_sp`:
 
@@ -212,20 +243,25 @@ dccp_feat_register_sp
 
     Register requests to change SP feature values
 
-    :param struct sock \*sk:
+    :param sk:
         client or listening socket
+    :type sk: struct sock \*
 
-    :param u8 feat:
+    :param feat:
         one of \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u8 is_local:
+    :param is_local:
         whether the local (1) or remote (0) \ ``feat``\  is meant
+    :type is_local: u8
 
-    :param u8 const \*list:
+    :param list:
         array of preferred values, in descending order of preference
+    :type list: u8 const \*
 
-    :param u8 len:
+    :param len:
         length of \ ``list``\  in bytes
+    :type len: u8
 
 .. _`dccp_feat_nn_get`:
 
@@ -236,11 +272,13 @@ dccp_feat_nn_get
 
     Query current/pending value of NN feature
 
-    :param struct sock \*sk:
+    :param sk:
         DCCP socket of an established connection
+    :type sk: struct sock \*
 
-    :param u8 feat:
+    :param feat:
         NN feature number from \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
 .. _`dccp_feat_nn_get.description`:
 
@@ -259,14 +297,17 @@ dccp_feat_signal_nn_change
 
     Update NN values for an established connection
 
-    :param struct sock \*sk:
+    :param sk:
         DCCP socket of an established connection
+    :type sk: struct sock \*
 
-    :param u8 feat:
+    :param feat:
         NN feature number from \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u64 nn_val:
+    :param nn_val:
         the new value to use
+    :type nn_val: u64
 
 .. _`dccp_feat_signal_nn_change.description`:
 
@@ -284,14 +325,17 @@ dccp_feat_propagate_ccid
 
     Resolve dependencies of features on choice of CCID
 
-    :param struct list_head \*fn:
+    :param fn:
         feature-negotiation list to update
+    :type fn: struct list_head \*
 
-    :param u8 id:
+    :param id:
         CCID number to track
+    :type id: u8
 
-    :param bool is_local:
+    :param is_local:
         whether TX CCID (1) or RX CCID (0) is meant
+    :type is_local: bool
 
 .. _`dccp_feat_propagate_ccid.description`:
 
@@ -309,8 +353,9 @@ dccp_feat_finalise_settings
 
     Finalise settings before starting negotiation
 
-    :param struct dccp_sock \*dp:
+    :param dp:
         client or listening socket (settings will be inherited)
+    :type dp: struct dccp_sock \*
 
 .. _`dccp_feat_finalise_settings.description`:
 
@@ -330,8 +375,9 @@ dccp_feat_server_ccid_dependencies
 
     Resolve CCID-dependent features It is the server which resolves the dependencies once the CCID has been fully negotiated. If no CCID has been negotiated, it uses the default CCID.
 
-    :param struct dccp_request_sock \*dreq:
+    :param dreq:
         *undescribed*
+    :type dreq: struct dccp_request_sock \*
 
 .. _`dccp_feat_prefer`:
 
@@ -342,14 +388,17 @@ dccp_feat_prefer
 
     Move preferred entry to the start of array Reorder the \ ``array_len``\  elements in \ ``array``\  so that \ ``preferred_value``\  comes first. Returns >0 to indicate that \ ``preferred_value``\  does occur in \ ``array``\ .
 
-    :param u8 preferred_value:
+    :param preferred_value:
         *undescribed*
+    :type preferred_value: u8
 
-    :param u8 \*array:
+    :param array:
         *undescribed*
+    :type array: u8 \*
 
-    :param u8 array_len:
+    :param array_len:
         *undescribed*
+    :type array_len: u8
 
 .. _`dccp_feat_reconcile`:
 
@@ -360,22 +409,27 @@ dccp_feat_reconcile
 
     Reconcile SP preference lists
 
-    :param dccp_feat_val \*fv:
+    :param fv:
         SP list to reconcile into
+    :type fv: dccp_feat_val \*
 
-    :param u8 \*arr:
+    :param arr:
         received SP preference list
+    :type arr: u8 \*
 
-    :param u8 len:
+    :param len:
         length of \ ``arr``\  in bytes
+    :type len: u8
 
-    :param bool is_server:
+    :param is_server:
         whether this side is the server (and \ ``fv``\  is the server's list)
+    :type is_server: bool
 
-    :param bool reorder:
+    :param reorder:
         whether to reorder the list in \ ``fv``\  after reconciling with \ ``arr``\ 
         When successful, > 0 is returned and the reconciled list is in \ ``fval``\ .
         A value of 0 means that negotiation failed (no shared entry).
+    :type reorder: bool
 
 .. _`dccp_feat_change_recv`:
 
@@ -386,26 +440,33 @@ dccp_feat_change_recv
 
     Process incoming ChangeL/R options
 
-    :param struct list_head \*fn:
+    :param fn:
         feature-negotiation list to update
+    :type fn: struct list_head \*
 
-    :param u8 is_mandatory:
+    :param is_mandatory:
         whether the Change was preceded by a Mandatory option
+    :type is_mandatory: u8
 
-    :param u8 opt:
+    :param opt:
         \ ``DCCPO_CHANGE_L``\  or \ ``DCCPO_CHANGE_R``\ 
+    :type opt: u8
 
-    :param u8 feat:
+    :param feat:
         one of \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u8 \*val:
+    :param val:
         NN value or SP value/preference list
+    :type val: u8 \*
 
-    :param u8 len:
+    :param len:
         length of \ ``val``\  in bytes
+    :type len: u8
 
-    :param const bool server:
+    :param server:
         whether this node is the server (1) or the client (0)
+    :type server: const bool
 
 .. _`dccp_feat_confirm_recv`:
 
@@ -416,26 +477,33 @@ dccp_feat_confirm_recv
 
     Process received Confirm options
 
-    :param struct list_head \*fn:
+    :param fn:
         feature-negotiation list to update
+    :type fn: struct list_head \*
 
-    :param u8 is_mandatory:
+    :param is_mandatory:
         whether \ ``opt``\  was preceded by a Mandatory option
+    :type is_mandatory: u8
 
-    :param u8 opt:
+    :param opt:
         \ ``DCCPO_CONFIRM_L``\  or \ ``DCCPO_CONFIRM_R``\ 
+    :type opt: u8
 
-    :param u8 feat:
+    :param feat:
         one of \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u8 \*val:
+    :param val:
         NN value or SP value/preference list
+    :type val: u8 \*
 
-    :param u8 len:
+    :param len:
         length of \ ``val``\  in bytes
+    :type len: u8
 
-    :param const bool server:
+    :param server:
         whether this node is server (1) or client (0)
+    :type server: const bool
 
 .. _`dccp_feat_handle_nn_established`:
 
@@ -446,23 +514,29 @@ dccp_feat_handle_nn_established
 
     Fast-path reception of NN options
 
-    :param struct sock \*sk:
+    :param sk:
         socket of an established DCCP connection
+    :type sk: struct sock \*
 
-    :param u8 mandatory:
+    :param mandatory:
         whether \ ``opt``\  was preceded by a Mandatory option
+    :type mandatory: u8
 
-    :param u8 opt:
+    :param opt:
         \ ``DCCPO_CHANGE_L``\  \| \ ``DCCPO_CONFIRM_R``\  (NN only)
+    :type opt: u8
 
-    :param u8 feat:
+    :param feat:
         NN number, one of \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u8 \*val:
+    :param val:
         NN value
+    :type val: u8 \*
 
-    :param u8 len:
+    :param len:
         length of \ ``val``\  in bytes
+    :type len: u8
 
 .. _`dccp_feat_handle_nn_established.description`:
 
@@ -487,26 +561,33 @@ dccp_feat_parse_options
 
     Process Feature-Negotiation Options
 
-    :param struct sock \*sk:
+    :param sk:
         for general use and used by the client during connection setup
+    :type sk: struct sock \*
 
-    :param struct dccp_request_sock \*dreq:
+    :param dreq:
         used by the server during connection setup
+    :type dreq: struct dccp_request_sock \*
 
-    :param u8 mandatory:
+    :param mandatory:
         whether \ ``opt``\  was preceded by a Mandatory option
+    :type mandatory: u8
 
-    :param u8 opt:
+    :param opt:
         \ ``DCCPO_CHANGE_L``\  \| \ ``DCCPO_CHANGE_R``\  \| \ ``DCCPO_CONFIRM_L``\  \| \ ``DCCPO_CONFIRM_R``\ 
+    :type opt: u8
 
-    :param u8 feat:
+    :param feat:
         one of \ ``dccp_feature_numbers``\ 
+    :type feat: u8
 
-    :param u8 \*val:
+    :param val:
         value contents of \ ``opt``\ 
+    :type val: u8 \*
 
-    :param u8 len:
+    :param len:
         length of \ ``val``\  in bytes
+    :type len: u8
 
 .. _`dccp_feat_parse_options.description`:
 
@@ -524,8 +605,9 @@ dccp_feat_init
 
     Seed feature negotiation with host-specific defaults This initialises global defaults, depending on the value of the sysctls. These can later be overridden by registering changes via setsockopt calls. The last link in the chain is finalise_settings, to make sure that between here and the start of actual feature negotiation no inconsistencies enter.
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`dccp_feat_init.description`:
 

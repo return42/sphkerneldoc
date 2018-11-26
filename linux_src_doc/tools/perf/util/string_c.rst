@@ -10,8 +10,9 @@ argv_free
 
     free an argv \ ``argv``\  - the argument vector to be freed
 
-    :param char \*\*argv:
+    :param argv:
         *undescribed*
+    :type argv: char \*\*
 
 .. _`argv_free.description`:
 
@@ -29,11 +30,13 @@ argv_split
 
     split a string at whitespace, returning an argv
 
-    :param const char \*str:
+    :param str:
         the string to be split
+    :type str: const char \*
 
-    :param int \*argcp:
+    :param argcp:
         returned argument count
+    :type argcp: int \*
 
 .. _`argv_split.description`:
 
@@ -56,11 +59,13 @@ strglobmatch
 
     glob expression pattern matching
 
-    :param const char \*str:
+    :param str:
         the target string to match
+    :type str: const char \*
 
-    :param const char \*pat:
+    :param pat:
         the pattern string to match
+    :type pat: const char \*
 
 .. _`strglobmatch.description`:
 
@@ -88,11 +93,13 @@ strlazymatch
 
     matching pattern strings lazily with glob pattern
 
-    :param const char \*str:
+    :param str:
         the target string to match
+    :type str: const char \*
 
-    :param const char \*pat:
+    :param pat:
         the pattern string to match
+    :type pat: const char \*
 
 .. _`strlazymatch.description`:
 
@@ -111,11 +118,13 @@ strtailcmp
 
     Compare the tail of two strings
 
-    :param const char \*s1:
+    :param s1:
         1st string to be compared
+    :type s1: const char \*
 
-    :param const char \*s2:
+    :param s2:
         2nd string to be compared
+    :type s2: const char \*
 
 .. _`strtailcmp.description`:
 
@@ -133,14 +142,17 @@ strxfrchar
 
     Locate and replace character in \ ``s``\ 
 
-    :param char \*s:
+    :param s:
         The string to be searched/changed.
+    :type s: char \*
 
-    :param char from:
+    :param from:
         Source character to be replaced.
+    :type from: char
 
-    :param char to:
+    :param to:
         Destination character.
+    :type to: char
 
 .. _`strxfrchar.description`:
 
@@ -158,8 +170,9 @@ ltrim
 
     Removes leading whitespace from \ ``s``\ .
 
-    :param char \*s:
+    :param s:
         The string to be stripped.
+    :type s: char \*
 
 .. _`ltrim.description`:
 
@@ -177,8 +190,9 @@ rtrim
 
     Removes trailing whitespace from \ ``s``\ .
 
-    :param char \*s:
+    :param s:
         The string to be stripped.
+    :type s: char \*
 
 .. _`rtrim.description`:
 

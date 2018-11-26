@@ -10,11 +10,13 @@ acpi_lpss_save_ctx
 
     Save the private registers of LPSS device
 
-    :param struct device \*dev:
+    :param dev:
         LPSS device
+    :type dev: struct device \*
 
-    :param struct lpss_private_data \*pdata:
+    :param pdata:
         pointer to the private data of the LPSS device
+    :type pdata: struct lpss_private_data \*
 
 .. _`acpi_lpss_save_ctx.description`:
 
@@ -34,11 +36,13 @@ acpi_lpss_restore_ctx
 
     Restore the private registers of LPSS device
 
-    :param struct device \*dev:
+    :param dev:
         LPSS device
+    :type dev: struct device \*
 
-    :param struct lpss_private_data \*pdata:
+    :param pdata:
         pointer to the private data of the LPSS device
+    :type pdata: struct lpss_private_data \*
 
 .. _`acpi_lpss_restore_ctx.description`:
 

@@ -10,14 +10,17 @@ list_entry_is_past_end
 
     check if a previous loop cursor is off list end
 
-    :param  pos:
+    :param pos:
         the type \* previously used as a loop cursor.
+    :type pos: 
 
-    :param  head:
+    :param head:
         the head for your list.
+    :type head: 
 
-    :param  member:
+    :param member:
         the name of the list_head within the struct.
+    :type member: 
 
 .. _`list_entry_is_past_end.description`:
 

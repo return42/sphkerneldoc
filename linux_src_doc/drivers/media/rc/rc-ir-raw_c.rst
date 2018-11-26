@@ -10,11 +10,13 @@ ir_raw_event_store
 
     pass a pulse/space duration to the raw ir decoders
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev device descriptor
+    :type dev: struct rc_dev \*
 
-    :param struct ir_raw_event \*ev:
+    :param ev:
         the struct ir_raw_event descriptor of the pulse/space
+    :type ev: struct ir_raw_event \*
 
 .. _`ir_raw_event_store.description`:
 
@@ -35,11 +37,13 @@ ir_raw_event_store_edge
 
     notify raw ir decoders of the start of a pulse/space
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev device descriptor
+    :type dev: struct rc_dev \*
 
-    :param bool pulse:
+    :param pulse:
         true for pulse, false for space
+    :type pulse: bool
 
 .. _`ir_raw_event_store_edge.description`:
 
@@ -61,11 +65,13 @@ ir_raw_event_store_with_filter
 
     pass next pulse/space to decoders with some processing
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev device descriptor
+    :type dev: struct rc_dev \*
 
-    :param struct ir_raw_event \*ev:
+    :param ev:
         the event that has occurred
+    :type ev: struct ir_raw_event \*
 
 .. _`ir_raw_event_store_with_filter.description`:
 
@@ -88,11 +94,13 @@ ir_raw_event_set_idle
 
     provide hint to rc-core when the device is idle or not
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev device descriptor
+    :type dev: struct rc_dev \*
 
-    :param bool idle:
+    :param idle:
         whether the device is idle or not
+    :type idle: bool
 
 .. _`ir_raw_event_handle`:
 
@@ -103,8 +111,9 @@ ir_raw_event_handle
 
     schedules the decoding of stored ir data
 
-    :param struct rc_dev \*dev:
+    :param dev:
         the struct rc_dev device descriptor
+    :type dev: struct rc_dev \*
 
 .. _`ir_raw_event_handle.description`:
 
@@ -122,21 +131,26 @@ ir_raw_gen_manchester
 
     Encode data with Manchester (bi-phase) modulation.
 
-    :param struct ir_raw_event \*\*ev:
+    :param ev:
         Pointer to pointer to next free event. \*@ev is incremented for
         each raw event filled.
+    :type ev: struct ir_raw_event \*\*
 
-    :param unsigned int max:
+    :param max:
         Maximum number of raw events to fill.
+    :type max: unsigned int
 
-    :param const struct ir_raw_timings_manchester \*timings:
+    :param timings:
         Manchester modulation timings.
+    :type timings: const struct ir_raw_timings_manchester \*
 
-    :param unsigned int n:
+    :param n:
         Number of bits of data.
+    :type n: unsigned int
 
-    :param u64 data:
+    :param data:
         Data bits to encode.
+    :type data: u64
 
 .. _`ir_raw_gen_manchester.description`:
 
@@ -166,21 +180,26 @@ ir_raw_gen_pd
 
     Encode data to raw events with pulse-distance modulation.
 
-    :param struct ir_raw_event \*\*ev:
+    :param ev:
         Pointer to pointer to next free event. \*@ev is incremented for
         each raw event filled.
+    :type ev: struct ir_raw_event \*\*
 
-    :param unsigned int max:
+    :param max:
         Maximum number of raw events to fill.
+    :type max: unsigned int
 
-    :param const struct ir_raw_timings_pd \*timings:
+    :param timings:
         Pulse distance modulation timings.
+    :type timings: const struct ir_raw_timings_pd \*
 
-    :param unsigned int n:
+    :param n:
         Number of bits of data.
+    :type n: unsigned int
 
-    :param u64 data:
+    :param data:
         Data bits to encode.
+    :type data: u64
 
 .. _`ir_raw_gen_pd.description`:
 
@@ -210,21 +229,26 @@ ir_raw_gen_pl
 
     Encode data to raw events with pulse-length modulation.
 
-    :param struct ir_raw_event \*\*ev:
+    :param ev:
         Pointer to pointer to next free event. \*@ev is incremented for
         each raw event filled.
+    :type ev: struct ir_raw_event \*\*
 
-    :param unsigned int max:
+    :param max:
         Maximum number of raw events to fill.
+    :type max: unsigned int
 
-    :param const struct ir_raw_timings_pl \*timings:
+    :param timings:
         Pulse distance modulation timings.
+    :type timings: const struct ir_raw_timings_pl \*
 
-    :param unsigned int n:
+    :param n:
         Number of bits of data.
+    :type n: unsigned int
 
-    :param u64 data:
+    :param data:
         Data bits to encode.
+    :type data: u64
 
 .. _`ir_raw_gen_pl.description`:
 
@@ -254,17 +278,21 @@ ir_raw_encode_scancode
 
     Encode a scancode as raw events
 
-    :param enum rc_proto protocol:
+    :param protocol:
         protocol
+    :type protocol: enum rc_proto
 
-    :param u32 scancode:
+    :param scancode:
         scancode filter describing a single scancode
+    :type scancode: u32
 
-    :param struct ir_raw_event \*events:
+    :param events:
         array of raw events to write into
+    :type events: struct ir_raw_event \*
 
-    :param unsigned int max:
+    :param max:
         max number of raw events
+    :type max: unsigned int
 
 .. _`ir_raw_encode_scancode.description`:
 
@@ -293,8 +321,9 @@ ir_raw_edge_handle
 
     Handle \ :c:func:`ir_raw_event_store_edge`\  processing
 
-    :param struct timer_list \*t:
+    :param t:
         timer_list
+    :type t: struct timer_list \*
 
 .. _`ir_raw_edge_handle.description`:
 
@@ -316,8 +345,9 @@ ir_raw_encode_carrier
 
     Get carrier used for protocol
 
-    :param enum rc_proto protocol:
+    :param protocol:
         protocol
+    :type protocol: enum rc_proto
 
 .. _`ir_raw_encode_carrier.description`:
 

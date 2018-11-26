@@ -10,8 +10,9 @@ rcu_read_lock_sched_held
 
     might we be in RCU-sched read-side critical section?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_read_lock_sched_held.description`:
 
@@ -55,8 +56,9 @@ rcu_expedite_gp
 
     Expedite future RCU grace periods
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_expedite_gp.description`:
 
@@ -76,8 +78,9 @@ rcu_unexpedite_gp
 
     Cancel prior \ :c:func:`rcu_expedite_gp`\  invocation
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_unexpedite_gp.description`:
 
@@ -99,8 +102,9 @@ rcu_read_lock_held
 
     might we be in RCU read-side critical section?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_read_lock_held.description`:
 
@@ -133,8 +137,9 @@ rcu_read_lock_bh_held
 
     might we be in RCU-bh read-side critical section?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_read_lock_bh_held.description`:
 
@@ -150,7 +155,7 @@ section.
 
 Check \ :c:func:`debug_lockdep_rcu_enabled`\  to prevent false positives during boot.
 
-Note that \ :c:func:`rcu_read_lock`\  is disallowed if the CPU is either idle or
+Note that \ :c:func:`rcu_read_lock_bh`\  is disallowed if the CPU is either idle or
 offline from an RCU perspective, so check for those as well.
 
 .. _`wakeme_after_rcu`:
@@ -162,8 +167,9 @@ wakeme_after_rcu
 
     Callback function to awaken a task after grace period
 
-    :param struct rcu_head \*head:
+    :param head:
         Pointer to rcu_head member within rcu_synchronize structure
+    :type head: struct rcu_head \*
 
 .. _`wakeme_after_rcu.description`:
 
@@ -181,8 +187,9 @@ init_rcu_head_on_stack
 
     initialize on-stack rcu_head for debugobjects
 
-    :param struct rcu_head \*head:
+    :param head:
         pointer to rcu_head structure to be initialized
+    :type head: struct rcu_head \*
 
 .. _`init_rcu_head_on_stack.description`:
 
@@ -204,8 +211,9 @@ destroy_rcu_head_on_stack
 
     destroy on-stack rcu_head for debugobjects
 
-    :param struct rcu_head \*head:
+    :param head:
         pointer to rcu_head structure to be initialized
+    :type head: struct rcu_head \*
 
 .. _`destroy_rcu_head_on_stack.description`:
 
@@ -228,11 +236,13 @@ call_rcu_tasks
 
     Queue an RCU for invocation task-based grace period
 
-    :param struct rcu_head \*rhp:
+    :param rhp:
         structure to be used for queueing the RCU updates.
+    :type rhp: struct rcu_head \*
 
-    :param rcu_callback_t func:
+    :param func:
         actual callback function to be invoked after the grace period
+    :type func: rcu_callback_t
 
 .. _`call_rcu_tasks.description`:
 
@@ -243,11 +253,11 @@ The callback function will be invoked some time after a full grace
 period elapses, in other words after all currently executing RCU
 read-side critical sections have completed. \ :c:func:`call_rcu_tasks`\  assumes
 that the read-side critical sections end at a voluntary context
-switch (not a preemption!), entry into idle, or transition to usermode
-execution.  As such, there are no read-side primitives analogous to
-\ :c:func:`rcu_read_lock`\  and \ :c:func:`rcu_read_unlock`\  because this primitive is intended
-to determine that all tasks have passed through a safe state, not so
-much for data-strcuture synchronization.
+switch (not a preemption!), \ :c:func:`cond_resched_rcu_qs`\ , entry into idle,
+or transition to usermode execution.  As such, there are no read-side
+primitives analogous to \ :c:func:`rcu_read_lock`\  and \ :c:func:`rcu_read_unlock`\  because
+this primitive is intended to determine that all tasks have passed
+through a safe state, not so much for data-strcuture synchronization.
 
 See the description of \ :c:func:`call_rcu`\  for more detailed information on
 memory ordering guarantees.
@@ -261,8 +271,9 @@ synchronize_rcu_tasks
 
     wait until an rcu-tasks grace period has elapsed.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`synchronize_rcu_tasks.description`:
 
@@ -308,8 +319,9 @@ rcu_barrier_tasks
 
     Wait for in-flight \ :c:func:`call_rcu_tasks`\  callbacks.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`rcu_barrier_tasks.description`:
 

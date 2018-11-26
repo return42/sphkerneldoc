@@ -8,8 +8,9 @@ restore_ELCR
 
 .. c:function:: void restore_ELCR(char *trigger)
 
-    :param char \*trigger:
+    :param trigger:
         *undescribed*
+    :type trigger: char \*
 
 .. This file was automatic generated / don't edit.
 

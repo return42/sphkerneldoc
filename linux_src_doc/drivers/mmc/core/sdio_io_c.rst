@@ -10,8 +10,9 @@ sdio_claim_host
 
     exclusively claim a bus for a certain SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function that will be accessed
+    :type func: struct sdio_func \*
 
 .. _`sdio_claim_host.description`:
 
@@ -30,8 +31,9 @@ sdio_release_host
 
     release a bus for a certain SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function that was accessed
+    :type func: struct sdio_func \*
 
 .. _`sdio_release_host.description`:
 
@@ -50,8 +52,9 @@ sdio_enable_func
 
     enables a SDIO function for usage
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to enable
+    :type func: struct sdio_func \*
 
 .. _`sdio_enable_func.description`:
 
@@ -70,8 +73,9 @@ sdio_disable_func
 
     disable a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to disable
+    :type func: struct sdio_func \*
 
 .. _`sdio_disable_func.description`:
 
@@ -90,11 +94,13 @@ sdio_set_block_size
 
     set the block size of an SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to change
+    :type func: struct sdio_func \*
 
-    :param unsigned blksz:
+    :param blksz:
         new block size or 0 to use the default.
+    :type blksz: unsigned
 
 .. _`sdio_set_block_size.description`:
 
@@ -123,11 +129,13 @@ sdio_align_size
 
     pads a transfer size to a more optimal value
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function
+    :type func: struct sdio_func \*
 
-    :param unsigned int sz:
+    :param sz:
         original transfer size
+    :type sz: unsigned int
 
 .. _`sdio_align_size.description`:
 
@@ -152,14 +160,17 @@ sdio_readb
 
     read a single byte from a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param unsigned int addr:
+    :param addr:
         address to read
+    :type addr: unsigned int
 
-    :param int \*err_ret:
+    :param err_ret:
         optional status value from transfer
+    :type err_ret: int \*
 
 .. _`sdio_readb.description`:
 
@@ -179,17 +190,21 @@ sdio_writeb
 
     write a single byte to a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param u8 b:
+    :param b:
         byte to write
+    :type b: u8
 
-    :param unsigned int addr:
+    :param addr:
         address to write to
+    :type addr: unsigned int
 
-    :param int \*err_ret:
+    :param err_ret:
         optional status value from transfer
+    :type err_ret: int \*
 
 .. _`sdio_writeb.description`:
 
@@ -209,17 +224,21 @@ sdio_writeb_readb
 
     write and read a byte from SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param u8 write_byte:
+    :param write_byte:
         byte to write
+    :type write_byte: u8
 
-    :param unsigned int addr:
+    :param addr:
         address to write to
+    :type addr: unsigned int
 
-    :param int \*err_ret:
+    :param err_ret:
         optional status value from transfer
+    :type err_ret: int \*
 
 .. _`sdio_writeb_readb.description`:
 
@@ -241,17 +260,21 @@ sdio_memcpy_fromio
 
     read a chunk of memory from a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param void \*dst:
+    :param dst:
         buffer to store the data
+    :type dst: void \*
 
-    :param unsigned int addr:
+    :param addr:
         address to begin reading from
+    :type addr: unsigned int
 
-    :param int count:
+    :param count:
         number of bytes to read
+    :type count: int
 
 .. _`sdio_memcpy_fromio.description`:
 
@@ -270,17 +293,21 @@ sdio_memcpy_toio
 
     write a chunk of memory to a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param unsigned int addr:
+    :param addr:
         address to start writing to
+    :type addr: unsigned int
 
-    :param void \*src:
+    :param src:
         buffer that contains the data to write
+    :type src: void \*
 
-    :param int count:
+    :param count:
         number of bytes to write
+    :type count: int
 
 .. _`sdio_memcpy_toio.description`:
 
@@ -299,17 +326,21 @@ sdio_readsb
 
     read from a FIFO on a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param void \*dst:
+    :param dst:
         buffer to store the data
+    :type dst: void \*
 
-    :param unsigned int addr:
+    :param addr:
         address of (single byte) FIFO
+    :type addr: unsigned int
 
-    :param int count:
+    :param count:
         number of bytes to read
+    :type count: int
 
 .. _`sdio_readsb.description`:
 
@@ -328,17 +359,21 @@ sdio_writesb
 
     write to a FIFO of a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param unsigned int addr:
+    :param addr:
         address of (single byte) FIFO
+    :type addr: unsigned int
 
-    :param void \*src:
+    :param src:
         buffer that contains the data to write
+    :type src: void \*
 
-    :param int count:
+    :param count:
         number of bytes to write
+    :type count: int
 
 .. _`sdio_writesb.description`:
 
@@ -357,14 +392,17 @@ sdio_readw
 
     read a 16 bit integer from a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param unsigned int addr:
+    :param addr:
         address to read
+    :type addr: unsigned int
 
-    :param int \*err_ret:
+    :param err_ret:
         optional status value from transfer
+    :type err_ret: int \*
 
 .. _`sdio_readw.description`:
 
@@ -384,17 +422,21 @@ sdio_writew
 
     write a 16 bit integer to a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param u16 b:
+    :param b:
         integer to write
+    :type b: u16
 
-    :param unsigned int addr:
+    :param addr:
         address to write to
+    :type addr: unsigned int
 
-    :param int \*err_ret:
+    :param err_ret:
         optional status value from transfer
+    :type err_ret: int \*
 
 .. _`sdio_writew.description`:
 
@@ -414,14 +456,17 @@ sdio_readl
 
     read a 32 bit integer from a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param unsigned int addr:
+    :param addr:
         address to read
+    :type addr: unsigned int
 
-    :param int \*err_ret:
+    :param err_ret:
         optional status value from transfer
+    :type err_ret: int \*
 
 .. _`sdio_readl.description`:
 
@@ -442,17 +487,21 @@ sdio_writel
 
     write a 32 bit integer to a SDIO function
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function to access
+    :type func: struct sdio_func \*
 
-    :param u32 b:
+    :param b:
         integer to write
+    :type b: u32
 
-    :param unsigned int addr:
+    :param addr:
         address to write to
+    :type addr: unsigned int
 
-    :param int \*err_ret:
+    :param err_ret:
         optional status value from transfer
+    :type err_ret: int \*
 
 .. _`sdio_writel.description`:
 
@@ -472,14 +521,17 @@ sdio_f0_readb
 
     read a single byte from SDIO function 0
 
-    :param struct sdio_func \*func:
+    :param func:
         an SDIO function of the card
+    :type func: struct sdio_func \*
 
-    :param unsigned int addr:
+    :param addr:
         address to read
+    :type addr: unsigned int
 
-    :param int \*err_ret:
+    :param err_ret:
         optional status value from transfer
+    :type err_ret: int \*
 
 .. _`sdio_f0_readb.description`:
 
@@ -499,17 +551,21 @@ sdio_f0_writeb
 
     write a single byte to SDIO function 0
 
-    :param struct sdio_func \*func:
+    :param func:
         an SDIO function of the card
+    :type func: struct sdio_func \*
 
-    :param unsigned char b:
+    :param b:
         byte to write
+    :type b: unsigned char
 
-    :param unsigned int addr:
+    :param addr:
         address to write to
+    :type addr: unsigned int
 
-    :param int \*err_ret:
+    :param err_ret:
         optional status value from transfer
+    :type err_ret: int \*
 
 .. _`sdio_f0_writeb.description`:
 
@@ -532,8 +588,9 @@ sdio_get_host_pm_caps
 
     get host power management capabilities
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function attached to host
+    :type func: struct sdio_func \*
 
 .. _`sdio_get_host_pm_caps.description`:
 
@@ -555,11 +612,13 @@ sdio_set_host_pm_flags
 
     set wanted host power management capabilities
 
-    :param struct sdio_func \*func:
+    :param func:
         SDIO function attached to host
+    :type func: struct sdio_func \*
 
-    :param mmc_pm_flag_t flags:
+    :param flags:
         *undescribed*
+    :type flags: mmc_pm_flag_t
 
 .. _`sdio_set_host_pm_flags.description`:
 

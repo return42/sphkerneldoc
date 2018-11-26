@@ -18,9 +18,16 @@ Definition
 .. code-block:: c
 
     struct nla_policy {
-        u16 type;
+        u8 type;
+        u8 validation_type;
         u16 len;
-        void *validation_data;
+        union {
+            const void *validation_data;
+            struct {
+                s16 min, max;
+            } ;
+            int (*validate)(const struct nlattr *attr, struct netlink_ext_ack *extack);
+        } ;
     }
 
 .. _`nla_policy.members`:
@@ -31,10 +38,27 @@ Members
 type
     Type of attribute or NLA_UNSPEC
 
+validation_type
+    type of attribute validation done in addition to
+    type-specific validation (e.g. range, function call), see
+    \ :c:type:`enum nla_policy_validation <nla_policy_validation>`\ 
+
 len
     Type specific length of payload
 
+{unnamed_union}
+    anonymous
+
 validation_data
+    *undescribed*
+
+{unnamed_struct}
+    anonymous
+
+max
+    *undescribed*
+
+validate
     *undescribed*
 
 .. _`nla_policy.description`:
@@ -50,9 +74,11 @@ NLA_STRING           Maximum length of string
 NLA_NUL_STRING       Maximum length of string (excluding NUL)
 NLA_FLAG             Unused
 NLA_BINARY           Maximum length of attribute payload
-NLA_NESTED           Don't use \`len' field -- length verification is
-done by checking len of nested header (or empty)
-NLA_NESTED_COMPAT    Minimum length of structure payload
+NLA_NESTED,
+NLA_NESTED_ARRAY     Length verification is done by checking len of
+nested header (or empty); len field is used if
+validation_data is also used, for the max attr
+number in the nested policy.
 NLA_U8, NLA_U16,
 NLA_U32, NLA_U64,
 NLA_S8, NLA_S16,
@@ -60,8 +86,63 @@ NLA_S32, NLA_S64,
 NLA_MSECS            Leaving the length field zero will verify the
 given type fits, using it verifies minimum length
 just like "All other"
-NLA_BITFIELD32      A 32-bit bitmap/bitselector attribute
+NLA_BITFIELD32       Unused
+NLA_REJECT           Unused
+NLA_EXACT_LEN        Attribute must have exactly this length, otherwise
+it is rejected.
+NLA_EXACT_LEN_WARN   Attribute should have exactly this length, a warning
+is logged if it is longer, shorter is rejected.
 All other            Minimum length of attribute payload
+
+Meaning of \`validation_data' field:
+NLA_BITFIELD32       This is a 32-bit bitmap/bitselector attribute and
+validation data must point to a u32 value of valid
+flags
+NLA_REJECT           This attribute is always rejected and validation data
+may point to a string to report as the error instead
+of the generic one in extended ACK.
+NLA_NESTED           Points to a nested policy to validate, must also set
+\`len' to the max attribute number.
+Note that \ :c:func:`nla_parse`\  will validate, but of course not
+parse, the nested sub-policies.
+NLA_NESTED_ARRAY     Points to a nested policy to validate, must also set
+\`len' to the max attribute number. The difference to
+NLA_NESTED is the structure - NLA_NESTED has the
+nested attributes directly inside, while an array has
+the nested attributes at another level down and the
+attributes directly in the nesting don't matter.
+All other            Unused - but note that it's a union
+
+Meaning of \`min' and \`max' fields, use via NLA_POLICY_MIN, NLA_POLICY_MAX
+
+.. _`nla_policy.and-nla_policy_range`:
+
+and NLA_POLICY_RANGE
+--------------------
+
+NLA_U8,
+NLA_U16,
+NLA_U32,
+NLA_U64,
+NLA_S8,
+NLA_S16,
+NLA_S32,
+NLA_S64              These are used depending on the validation_type
+field, if that is min/max/range then the minimum,
+maximum and both are used (respectively) to check
+the value of the integer attribute.
+Note that in the interest of code simplicity and
+struct size both limits are s16, so you cannot
+enforce a range that doesn't fall within the range
+of s16 - do that as usual in the code instead.
+All other            Unused - but note that it's a union
+
+Meaning of \`validate' field, use via NLA_POLICY_VALIDATE_FN:
+NLA_BINARY           Validation function called for the attribute,
+not compatible with use of the validation_data
+as in NLA_BITFIELD32, NLA_REJECT, NLA_NESTED and
+NLA_NESTED_ARRAY.
+All other            Unused - but note that it's a union
 
 .. _`nla_policy.example`:
 
@@ -127,8 +208,9 @@ nlmsg_msg_size
 
     length of netlink message not including padding
 
-    :param int payload:
+    :param payload:
         length of message payload
+    :type payload: int
 
 .. _`nlmsg_total_size`:
 
@@ -139,8 +221,9 @@ nlmsg_total_size
 
     length of netlink message including padding
 
-    :param int payload:
+    :param payload:
         length of message payload
+    :type payload: int
 
 .. _`nlmsg_padlen`:
 
@@ -151,8 +234,9 @@ nlmsg_padlen
 
     length of padding at the message's tail
 
-    :param int payload:
+    :param payload:
         length of message payload
+    :type payload: int
 
 .. _`nlmsg_data`:
 
@@ -163,8 +247,9 @@ nlmsg_data
 
     head of message payload
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: const struct nlmsghdr \*
 
 .. _`nlmsg_len`:
 
@@ -175,8 +260,9 @@ nlmsg_len
 
     length of message payload
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: const struct nlmsghdr \*
 
 .. _`nlmsg_attrdata`:
 
@@ -187,11 +273,13 @@ nlmsg_attrdata
 
     head of attributes data
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: const struct nlmsghdr \*
 
-    :param int hdrlen:
+    :param hdrlen:
         length of family specific header
+    :type hdrlen: int
 
 .. _`nlmsg_attrlen`:
 
@@ -202,11 +290,13 @@ nlmsg_attrlen
 
     length of attributes data
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: const struct nlmsghdr \*
 
-    :param int hdrlen:
+    :param hdrlen:
         length of family specific header
+    :type hdrlen: int
 
 .. _`nlmsg_ok`:
 
@@ -217,11 +307,13 @@ nlmsg_ok
 
     check if the netlink message fits into the remaining bytes
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: const struct nlmsghdr \*
 
-    :param int remaining:
+    :param remaining:
         number of bytes remaining in message stream
+    :type remaining: int
 
 .. _`nlmsg_next`:
 
@@ -232,11 +324,13 @@ nlmsg_next
 
     next netlink message in message stream
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: const struct nlmsghdr \*
 
-    :param int \*remaining:
+    :param remaining:
         number of bytes remaining in message stream
+    :type remaining: int \*
 
 .. _`nlmsg_next.description`:
 
@@ -255,23 +349,29 @@ nlmsg_parse
 
     parse attributes of a netlink message
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: const struct nlmsghdr \*
 
-    :param int hdrlen:
+    :param hdrlen:
         length of family specific header
+    :type hdrlen: int
 
-    :param struct nlattr  \*tb:
+    :param tb:
         destination array with maxtype+1 elements
+    :type tb: struct nlattr  \*
 
-    :param int maxtype:
+    :param maxtype:
         maximum attribute type to be expected
+    :type maxtype: int
 
-    :param const struct nla_policy \*policy:
+    :param policy:
         validation policy
+    :type policy: const struct nla_policy \*
 
-    :param struct netlink_ext_ack \*extack:
+    :param extack:
         extended ACK report struct
+    :type extack: struct netlink_ext_ack \*
 
 .. _`nlmsg_parse.description`:
 
@@ -289,14 +389,17 @@ nlmsg_find_attr
 
     find a specific attribute in a netlink message
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: const struct nlmsghdr \*
 
-    :param int hdrlen:
+    :param hdrlen:
         length of familiy specific header
+    :type hdrlen: int
 
-    :param int attrtype:
+    :param attrtype:
         type of attribute to look for
+    :type attrtype: int
 
 .. _`nlmsg_find_attr.description`:
 
@@ -314,20 +417,25 @@ nlmsg_validate
 
     validate a netlink message including attributes
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlinket message header
+    :type nlh: const struct nlmsghdr \*
 
-    :param int hdrlen:
+    :param hdrlen:
         length of familiy specific header
+    :type hdrlen: int
 
-    :param int maxtype:
+    :param maxtype:
         maximum attribute type to be expected
+    :type maxtype: int
 
-    :param const struct nla_policy \*policy:
+    :param policy:
         validation policy
+    :type policy: const struct nla_policy \*
 
-    :param struct netlink_ext_ack \*extack:
+    :param extack:
         extended ACK report struct
+    :type extack: struct netlink_ext_ack \*
 
 .. _`nlmsg_report`:
 
@@ -338,8 +446,9 @@ nlmsg_report
 
     need to report back to application?
 
-    :param const struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: const struct nlmsghdr \*
 
 .. _`nlmsg_report.description`:
 
@@ -357,17 +466,21 @@ nlmsg_for_each_attr
 
     iterate over a stream of attributes
 
-    :param  pos:
+    :param pos:
         loop counter, set to current attribute
+    :type pos: 
 
-    :param  nlh:
+    :param nlh:
         netlink message header
+    :type nlh: 
 
-    :param  hdrlen:
+    :param hdrlen:
         length of familiy specific header
+    :type hdrlen: 
 
-    :param  rem:
+    :param rem:
         initialized to len, holds bytes currently remaining in stream
+    :type rem: 
 
 .. _`nlmsg_put`:
 
@@ -378,23 +491,29 @@ nlmsg_put
 
     Add a new netlink message to an skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to store message in
+    :type skb: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink PORTID of requesting application
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         sequence number of message
+    :type seq: u32
 
-    :param int type:
+    :param type:
         message type
+    :type type: int
 
-    :param int payload:
+    :param payload:
         length of message payload
+    :type payload: int
 
-    :param int flags:
+    :param flags:
         message flags
+    :type flags: int
 
 .. _`nlmsg_put.description`:
 
@@ -413,20 +532,25 @@ nlmsg_put_answer
 
     Add a new callback based netlink message to an skb
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to store message in
+    :type skb: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         netlink callback
+    :type cb: struct netlink_callback \*
 
-    :param int type:
+    :param type:
         message type
+    :type type: int
 
-    :param int payload:
+    :param payload:
         length of message payload
+    :type payload: int
 
-    :param int flags:
+    :param flags:
         message flags
+    :type flags: int
 
 .. _`nlmsg_put_answer.description`:
 
@@ -445,11 +569,13 @@ nlmsg_new
 
     Allocate a new netlink message
 
-    :param size_t payload:
+    :param payload:
         size of the message payload
+    :type payload: size_t
 
-    :param gfp_t flags:
+    :param flags:
         the type of memory to allocate.
+    :type flags: gfp_t
 
 .. _`nlmsg_new.description`:
 
@@ -468,11 +594,13 @@ nlmsg_end
 
     Finalize a netlink message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer the message is stored in
+    :type skb: struct sk_buff \*
 
-    :param struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: struct nlmsghdr \*
 
 .. _`nlmsg_end.description`:
 
@@ -492,8 +620,9 @@ nlmsg_get_pos
 
     return current position in netlink message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer the message is stored in
+    :type skb: struct sk_buff \*
 
 .. _`nlmsg_get_pos.description`:
 
@@ -511,11 +640,13 @@ nlmsg_trim
 
     Trim message to a mark
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer the message is stored in
+    :type skb: struct sk_buff \*
 
-    :param const void \*mark:
+    :param mark:
         mark to trim to
+    :type mark: const void \*
 
 .. _`nlmsg_trim.description`:
 
@@ -533,11 +664,13 @@ nlmsg_cancel
 
     Cancel construction of a netlink message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer the message is stored in
+    :type skb: struct sk_buff \*
 
-    :param struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header
+    :type nlh: struct nlmsghdr \*
 
 .. _`nlmsg_cancel.description`:
 
@@ -556,8 +689,9 @@ nlmsg_free
 
     free a netlink message
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer of netlink message
+    :type skb: struct sk_buff \*
 
 .. _`nlmsg_multicast`:
 
@@ -568,20 +702,25 @@ nlmsg_multicast
 
     multicast a netlink message
 
-    :param struct sock \*sk:
+    :param sk:
         netlink socket to spread messages to
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         netlink message as socket buffer
+    :type skb: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         own netlink portid to avoid sending to yourself
+    :type portid: u32
 
-    :param unsigned int group:
+    :param group:
         multicast group id
+    :type group: unsigned int
 
-    :param gfp_t flags:
+    :param flags:
         allocation flags
+    :type flags: gfp_t
 
 .. _`nlmsg_unicast`:
 
@@ -592,14 +731,17 @@ nlmsg_unicast
 
     unicast a netlink message
 
-    :param struct sock \*sk:
+    :param sk:
         netlink socket to spread message to
+    :type sk: struct sock \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         netlink message as socket buffer
+    :type skb: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         netlink portid of the destination socket
+    :type portid: u32
 
 .. _`nlmsg_for_each_msg`:
 
@@ -610,17 +752,21 @@ nlmsg_for_each_msg
 
     iterate over a stream of messages
 
-    :param  pos:
+    :param pos:
         loop counter, set to current message
+    :type pos: 
 
-    :param  head:
+    :param head:
         head of message stream
+    :type head: 
 
-    :param  len:
+    :param len:
         length of message stream
+    :type len: 
 
-    :param  rem:
+    :param rem:
         initialized to len, holds bytes currently remaining in stream
+    :type rem: 
 
 .. _`nl_dump_check_consistent`:
 
@@ -631,11 +777,13 @@ nl_dump_check_consistent
 
     check if sequence is consistent and advertise if not
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         netlink callback structure that stores the sequence number
+    :type cb: struct netlink_callback \*
 
-    :param struct nlmsghdr \*nlh:
+    :param nlh:
         netlink message header to write the flag to
+    :type nlh: struct nlmsghdr \*
 
 .. _`nl_dump_check_consistent.description`:
 
@@ -661,8 +809,9 @@ nla_attr_size
 
     length of attribute not including padding
 
-    :param int payload:
+    :param payload:
         length of payload
+    :type payload: int
 
 .. _`nla_total_size`:
 
@@ -673,8 +822,9 @@ nla_total_size
 
     total length of attribute including padding
 
-    :param int payload:
+    :param payload:
         length of payload
+    :type payload: int
 
 .. _`nla_padlen`:
 
@@ -685,8 +835,9 @@ nla_padlen
 
     length of padding at the tail of attribute
 
-    :param int payload:
+    :param payload:
         length of payload
+    :type payload: int
 
 .. _`nla_type`:
 
@@ -697,8 +848,9 @@ nla_type
 
     attribute type
 
-    :param const struct nlattr \*nla:
+    :param nla:
         netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_data`:
 
@@ -709,8 +861,9 @@ nla_data
 
     head of payload
 
-    :param const struct nlattr \*nla:
+    :param nla:
         netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_len`:
 
@@ -721,8 +874,9 @@ nla_len
 
     length of payload
 
-    :param const struct nlattr \*nla:
+    :param nla:
         netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_ok`:
 
@@ -733,11 +887,13 @@ nla_ok
 
     check if the netlink attribute fits into the remaining bytes
 
-    :param const struct nlattr \*nla:
+    :param nla:
         netlink attribute
+    :type nla: const struct nlattr \*
 
-    :param int remaining:
+    :param remaining:
         number of bytes remaining in attribute stream
+    :type remaining: int
 
 .. _`nla_next`:
 
@@ -748,11 +904,13 @@ nla_next
 
     next netlink attribute in attribute stream
 
-    :param const struct nlattr \*nla:
+    :param nla:
         netlink attribute
+    :type nla: const struct nlattr \*
 
-    :param int \*remaining:
+    :param remaining:
         number of bytes remaining in attribute stream
+    :type remaining: int \*
 
 .. _`nla_next.description`:
 
@@ -771,11 +929,13 @@ nla_find_nested
 
     find attribute in a set of nested attributes
 
-    :param const struct nlattr \*nla:
+    :param nla:
         attribute containing the nested attributes
+    :type nla: const struct nlattr \*
 
-    :param int attrtype:
+    :param attrtype:
         type of attribute to look for
+    :type attrtype: int
 
 .. _`nla_find_nested.description`:
 
@@ -793,20 +953,25 @@ nla_parse_nested
 
     parse nested attributes
 
-    :param struct nlattr  \*tb:
+    :param tb:
         destination array with maxtype+1 elements
+    :type tb: struct nlattr  \*
 
-    :param int maxtype:
+    :param maxtype:
         maximum attribute type to be expected
+    :type maxtype: int
 
-    :param const struct nlattr \*nla:
+    :param nla:
         attribute containing the nested attributes
+    :type nla: const struct nlattr \*
 
-    :param const struct nla_policy \*policy:
+    :param policy:
         validation policy
+    :type policy: const struct nla_policy \*
 
-    :param struct netlink_ext_ack \*extack:
+    :param extack:
         extended ACK report struct
+    :type extack: struct netlink_ext_ack \*
 
 .. _`nla_parse_nested.description`:
 
@@ -824,14 +989,17 @@ nla_put_u8
 
     Add a u8 netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param u8 value:
+    :param value:
         numeric value
+    :type value: u8
 
 .. _`nla_put_u16`:
 
@@ -842,14 +1010,17 @@ nla_put_u16
 
     Add a u16 netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param u16 value:
+    :param value:
         numeric value
+    :type value: u16
 
 .. _`nla_put_be16`:
 
@@ -860,14 +1031,17 @@ nla_put_be16
 
     Add a \__be16 netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param __be16 value:
+    :param value:
         numeric value
+    :type value: __be16
 
 .. _`nla_put_net16`:
 
@@ -878,14 +1052,17 @@ nla_put_net16
 
     Add 16-bit network byte order netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param __be16 value:
+    :param value:
         numeric value
+    :type value: __be16
 
 .. _`nla_put_le16`:
 
@@ -896,14 +1073,17 @@ nla_put_le16
 
     Add a \__le16 netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param __le16 value:
+    :param value:
         numeric value
+    :type value: __le16
 
 .. _`nla_put_u32`:
 
@@ -914,14 +1094,17 @@ nla_put_u32
 
     Add a u32 netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param u32 value:
+    :param value:
         numeric value
+    :type value: u32
 
 .. _`nla_put_be32`:
 
@@ -932,14 +1115,17 @@ nla_put_be32
 
     Add a \__be32 netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param __be32 value:
+    :param value:
         numeric value
+    :type value: __be32
 
 .. _`nla_put_net32`:
 
@@ -950,14 +1136,17 @@ nla_put_net32
 
     Add 32-bit network byte order netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param __be32 value:
+    :param value:
         numeric value
+    :type value: __be32
 
 .. _`nla_put_le32`:
 
@@ -968,14 +1157,17 @@ nla_put_le32
 
     Add a \__le32 netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param __le32 value:
+    :param value:
         numeric value
+    :type value: __le32
 
 .. _`nla_put_u64_64bit`:
 
@@ -986,17 +1178,21 @@ nla_put_u64_64bit
 
     Add a u64 netlink attribute to a skb and align it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param u64 value:
+    :param value:
         numeric value
+    :type value: u64
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`nla_put_be64`:
 
@@ -1007,17 +1203,21 @@ nla_put_be64
 
     Add a \__be64 netlink attribute to a socket buffer and align it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param __be64 value:
+    :param value:
         numeric value
+    :type value: __be64
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`nla_put_net64`:
 
@@ -1028,17 +1228,21 @@ nla_put_net64
 
     Add 64-bit network byte order nlattr to a skb and align it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param __be64 value:
+    :param value:
         numeric value
+    :type value: __be64
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`nla_put_le64`:
 
@@ -1049,17 +1253,21 @@ nla_put_le64
 
     Add a \__le64 netlink attribute to a socket buffer and align it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param __le64 value:
+    :param value:
         numeric value
+    :type value: __le64
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`nla_put_s8`:
 
@@ -1070,14 +1278,17 @@ nla_put_s8
 
     Add a s8 netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param s8 value:
+    :param value:
         numeric value
+    :type value: s8
 
 .. _`nla_put_s16`:
 
@@ -1088,14 +1299,17 @@ nla_put_s16
 
     Add a s16 netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param s16 value:
+    :param value:
         numeric value
+    :type value: s16
 
 .. _`nla_put_s32`:
 
@@ -1106,14 +1320,17 @@ nla_put_s32
 
     Add a s32 netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param s32 value:
+    :param value:
         numeric value
+    :type value: s32
 
 .. _`nla_put_s64`:
 
@@ -1124,17 +1341,21 @@ nla_put_s64
 
     Add a s64 netlink attribute to a socket buffer and align it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param s64 value:
+    :param value:
         numeric value
+    :type value: s64
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`nla_put_string`:
 
@@ -1145,14 +1366,17 @@ nla_put_string
 
     Add a string netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param const char \*str:
+    :param str:
         NUL terminated string
+    :type str: const char \*
 
 .. _`nla_put_flag`:
 
@@ -1163,11 +1387,13 @@ nla_put_flag
 
     Add a flag netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
 .. _`nla_put_msecs`:
 
@@ -1178,17 +1404,21 @@ nla_put_msecs
 
     Add a msecs netlink attribute to a skb and align it
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param unsigned long njiffies:
+    :param njiffies:
         number of jiffies to convert to msecs
+    :type njiffies: unsigned long
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`nla_put_in_addr`:
 
@@ -1199,14 +1429,17 @@ nla_put_in_addr
 
     Add an IPv4 address netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param __be32 addr:
+    :param addr:
         IPv4 address
+    :type addr: __be32
 
 .. _`nla_put_in6_addr`:
 
@@ -1217,14 +1450,17 @@ nla_put_in6_addr
 
     Add an IPv6 address netlink attribute to a socket buffer
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attribute to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type
+    :type attrtype: int
 
-    :param const struct in6_addr \*addr:
+    :param addr:
         IPv6 address
+    :type addr: const struct in6_addr \*
 
 .. _`nla_get_u32`:
 
@@ -1235,8 +1471,9 @@ nla_get_u32
 
     return payload of u32 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         u32 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_be32`:
 
@@ -1247,8 +1484,9 @@ nla_get_be32
 
     return payload of \__be32 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         \__be32 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_le32`:
 
@@ -1259,8 +1497,9 @@ nla_get_le32
 
     return payload of \__le32 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         \__le32 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_u16`:
 
@@ -1271,8 +1510,9 @@ nla_get_u16
 
     return payload of u16 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         u16 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_be16`:
 
@@ -1283,8 +1523,9 @@ nla_get_be16
 
     return payload of \__be16 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         \__be16 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_le16`:
 
@@ -1295,8 +1536,9 @@ nla_get_le16
 
     return payload of \__le16 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         \__le16 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_u8`:
 
@@ -1307,8 +1549,9 @@ nla_get_u8
 
     return payload of u8 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         u8 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_u64`:
 
@@ -1319,8 +1562,9 @@ nla_get_u64
 
     return payload of u64 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         u64 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_be64`:
 
@@ -1331,8 +1575,9 @@ nla_get_be64
 
     return payload of \__be64 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         \__be64 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_le64`:
 
@@ -1343,8 +1588,9 @@ nla_get_le64
 
     return payload of \__le64 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         \__le64 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_s32`:
 
@@ -1355,8 +1601,9 @@ nla_get_s32
 
     return payload of s32 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         s32 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_s16`:
 
@@ -1367,8 +1614,9 @@ nla_get_s16
 
     return payload of s16 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         s16 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_s8`:
 
@@ -1379,8 +1627,9 @@ nla_get_s8
 
     return payload of s8 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         s8 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_s64`:
 
@@ -1391,8 +1640,9 @@ nla_get_s64
 
     return payload of s64 attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         s64 netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_flag`:
 
@@ -1403,8 +1653,9 @@ nla_get_flag
 
     return payload of flag attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         flag netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_msecs`:
 
@@ -1415,8 +1666,9 @@ nla_get_msecs
 
     return payload of msecs attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         msecs netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_msecs.description`:
 
@@ -1434,8 +1686,9 @@ nla_get_in_addr
 
     return payload of IPv4 address attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         IPv4 address netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_in6_addr`:
 
@@ -1446,8 +1699,9 @@ nla_get_in6_addr
 
     return payload of IPv6 address attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         IPv6 address netlink attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_get_bitfield32`:
 
@@ -1458,8 +1712,9 @@ nla_get_bitfield32
 
     return payload of 32 bitfield attribute
 
-    :param const struct nlattr \*nla:
+    :param nla:
         nla_bitfield32 attribute
+    :type nla: const struct nlattr \*
 
 .. _`nla_memdup`:
 
@@ -1470,11 +1725,13 @@ nla_memdup
 
     duplicate attribute memory (kmemdup)
 
-    :param const struct nlattr \*src:
+    :param src:
         netlink attribute to duplicate from
+    :type src: const struct nlattr \*
 
-    :param gfp_t gfp:
+    :param gfp:
         GFP mask
+    :type gfp: gfp_t
 
 .. _`nla_nest_start`:
 
@@ -1485,11 +1742,13 @@ nla_nest_start
 
     Start a new level of nested attributes
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer to add attributes to
+    :type skb: struct sk_buff \*
 
-    :param int attrtype:
+    :param attrtype:
         attribute type of container
+    :type attrtype: int
 
 .. _`nla_nest_start.description`:
 
@@ -1507,11 +1766,13 @@ nla_nest_end
 
     Finalize nesting of attributes
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer the attributes are stored in
+    :type skb: struct sk_buff \*
 
-    :param struct nlattr \*start:
+    :param start:
         container attribute
+    :type start: struct nlattr \*
 
 .. _`nla_nest_end.description`:
 
@@ -1532,11 +1793,13 @@ nla_nest_cancel
 
     Cancel nesting of attributes
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer the message is stored in
+    :type skb: struct sk_buff \*
 
-    :param struct nlattr \*start:
+    :param start:
         container attribute
+    :type start: struct nlattr \*
 
 .. _`nla_nest_cancel.description`:
 
@@ -1555,17 +1818,21 @@ nla_validate_nested
 
     Validate a stream of nested attributes
 
-    :param const struct nlattr \*start:
+    :param start:
         container attribute
+    :type start: const struct nlattr \*
 
-    :param int maxtype:
+    :param maxtype:
         maximum attribute type to be expected
+    :type maxtype: int
 
-    :param const struct nla_policy \*policy:
+    :param policy:
         validation policy
+    :type policy: const struct nla_policy \*
 
-    :param struct netlink_ext_ack \*extack:
+    :param extack:
         extended ACK report struct
+    :type extack: struct netlink_ext_ack \*
 
 .. _`nla_validate_nested.description`:
 
@@ -1587,8 +1854,9 @@ nla_need_padding_for_64bit
 
     test 64-bit alignment of the next attribute
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer the message is stored in
+    :type skb: struct sk_buff \*
 
 .. _`nla_need_padding_for_64bit.description`:
 
@@ -1607,11 +1875,13 @@ nla_align_64bit
 
     64-bit align the \ :c:func:`nla_data`\  of next attribute
 
-    :param struct sk_buff \*skb:
+    :param skb:
         socket buffer the message is stored in
+    :type skb: struct sk_buff \*
 
-    :param int padattr:
+    :param padattr:
         attribute type for the padding
+    :type padattr: int
 
 .. _`nla_align_64bit.description`:
 
@@ -1634,8 +1904,9 @@ nla_total_size_64bit
 
     total length of attribute including padding
 
-    :param int payload:
+    :param payload:
         length of payload
+    :type payload: int
 
 .. _`nla_for_each_attr`:
 
@@ -1646,17 +1917,21 @@ nla_for_each_attr
 
     iterate over a stream of attributes
 
-    :param  pos:
+    :param pos:
         loop counter, set to current attribute
+    :type pos: 
 
-    :param  head:
+    :param head:
         head of attribute stream
+    :type head: 
 
-    :param  len:
+    :param len:
         length of attribute stream
+    :type len: 
 
-    :param  rem:
+    :param rem:
         initialized to len, holds bytes currently remaining in stream
+    :type rem: 
 
 .. _`nla_for_each_nested`:
 
@@ -1667,14 +1942,17 @@ nla_for_each_nested
 
     iterate over nested attributes
 
-    :param  pos:
+    :param pos:
         loop counter, set to current attribute
+    :type pos: 
 
-    :param  nla:
+    :param nla:
         attribute containing the nested attributes
+    :type nla: 
 
-    :param  rem:
+    :param rem:
         initialized to len, holds bytes currently remaining in stream
+    :type rem: 
 
 .. _`nla_is_last`:
 
@@ -1685,11 +1963,13 @@ nla_is_last
 
     Test if attribute is last in stream
 
-    :param const struct nlattr \*nla:
+    :param nla:
         attribute to test
+    :type nla: const struct nlattr \*
 
-    :param int rem:
+    :param rem:
         bytes remaining in stream
+    :type rem: int
 
 .. This file was automatic generated / don't edit.
 

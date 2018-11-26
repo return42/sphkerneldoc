@@ -10,8 +10,9 @@ zcrypt_card_register
 
     Register a crypto card device.
 
-    :param struct zcrypt_card \*zc:
+    :param zc:
         Pointer to a crypto card device
+    :type zc: struct zcrypt_card \*
 
 .. _`zcrypt_card_register.description`:
 
@@ -29,8 +30,9 @@ zcrypt_card_unregister
 
     Unregister a crypto card device.
 
-    :param struct zcrypt_card \*zc:
+    :param zc:
         Pointer to crypto card device
+    :type zc: struct zcrypt_card \*
 
 .. _`zcrypt_card_unregister.description`:
 

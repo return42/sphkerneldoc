@@ -10,17 +10,21 @@ edac_mc_alloc
 
     Allocate and partially fill a struct \ :c:type:`struct mem_ctl_info <mem_ctl_info>`\ .
 
-    :param unsigned mc_num:
+    :param mc_num:
         Memory controller number
+    :type mc_num: unsigned
 
-    :param unsigned n_layers:
+    :param n_layers:
         Number of MC hierarchy layers
+    :type n_layers: unsigned
 
-    :param struct edac_mc_layer \*layers:
+    :param layers:
         Describes each layer as seen by the Memory Controller
+    :type layers: struct edac_mc_layer \*
 
-    :param unsigned sz_pvt:
+    :param sz_pvt:
         size of private storage needed
+    :type sz_pvt: unsigned
 
 .. _`edac_mc_alloc.description`:
 
@@ -59,8 +63,9 @@ edac_get_owner
 
     Return the owner's mod_name of EDAC MC
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`edac_get_owner.return`:
 
@@ -78,8 +83,9 @@ edac_mc_free
 
     Frees a previously allocated \ ``mci``\  structure
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         pointer to a struct mem_ctl_info structure
+    :type mci: struct mem_ctl_info \*
 
 .. _`edac_has_mcs`:
 
@@ -90,8 +96,9 @@ edac_has_mcs
 
     Check if any MCs have been allocated.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`edac_has_mcs.return`:
 
@@ -110,8 +117,9 @@ edac_mc_find
 
     Search for a mem_ctl_info structure whose index is \ ``idx``\ .
 
-    :param int idx:
+    :param idx:
         index to be seek
+    :type idx: int
 
 .. _`edac_mc_find.description`:
 
@@ -130,8 +138,9 @@ find_mci_by_dev
 
     Scan list of controllers looking for the one that manages the \ ``dev``\  device.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to a struct device related with the MCI
+    :type dev: struct device \*
 
 .. _`find_mci_by_dev.return`:
 
@@ -150,8 +159,9 @@ edac_mc_del_mc
 
     Remove sysfs entries for mci structure associated with \ ``dev``\  and remove mci structure from global list.
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to struct \ :c:type:`struct device <device>`\  representing mci structure to remove.
+    :type dev: struct device \*
 
 .. _`edac_mc_del_mc.return`:
 
@@ -169,11 +179,13 @@ edac_mc_find_csrow_by_page
 
     Ancillary routine to identify what csrow contains a memory page.
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         pointer to a struct mem_ctl_info structure
+    :type mci: struct mem_ctl_info \*
 
-    :param unsigned long page:
+    :param page:
         memory page to find
+    :type page: unsigned long
 
 .. _`edac_mc_find_csrow_by_page.return`:
 
@@ -191,14 +203,17 @@ edac_raw_mc_handle_error
 
     Reports a memory event to userspace without doing anything to discover the error location.
 
-    :param const enum hw_event_mc_err_type type:
+    :param type:
         severity of the error (CE/UE/Fatal)
+    :type type: const enum hw_event_mc_err_type
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         a struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
-    :param struct edac_raw_error_desc \*e:
+    :param e:
         error description
+    :type e: struct edac_raw_error_desc \*
 
 .. _`edac_raw_mc_handle_error.description`:
 
@@ -218,41 +233,52 @@ edac_mc_handle_error
 
     Reports a memory event to userspace.
 
-    :param const enum hw_event_mc_err_type type:
+    :param type:
         severity of the error (CE/UE/Fatal)
+    :type type: const enum hw_event_mc_err_type
 
-    :param struct mem_ctl_info \*mci:
+    :param mci:
         a struct mem_ctl_info pointer
+    :type mci: struct mem_ctl_info \*
 
-    :param const u16 error_count:
+    :param error_count:
         Number of errors of the same type
+    :type error_count: const u16
 
-    :param const unsigned long page_frame_number:
+    :param page_frame_number:
         mem page where the error occurred
+    :type page_frame_number: const unsigned long
 
-    :param const unsigned long offset_in_page:
+    :param offset_in_page:
         offset of the error inside the page
+    :type offset_in_page: const unsigned long
 
-    :param const unsigned long syndrome:
+    :param syndrome:
         ECC syndrome
+    :type syndrome: const unsigned long
 
-    :param const int top_layer:
+    :param top_layer:
         Memory layer[0] position
+    :type top_layer: const int
 
-    :param const int mid_layer:
+    :param mid_layer:
         Memory layer[1] position
+    :type mid_layer: const int
 
-    :param const int low_layer:
+    :param low_layer:
         Memory layer[2] position
+    :type low_layer: const int
 
-    :param const char \*msg:
+    :param msg:
         Message meaningful to the end users that
         explains the event
+    :type msg: const char \*
 
-    :param const char \*other_detail:
+    :param other_detail:
         Technical details about the event that
         may help hardware manufacturers and
         EDAC developers to analyse the event
+    :type other_detail: const char \*
 
 .. This file was automatic generated / don't edit.
 

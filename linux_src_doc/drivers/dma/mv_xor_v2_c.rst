@@ -105,6 +105,7 @@ Definition
         int desc_size;
         unsigned int npendings;
         unsigned int hw_queue_idx;
+        struct msi_desc *msi_desc;
     }
 
 .. _`mv_xor_v2_device.members`:
@@ -156,6 +157,9 @@ npendings
     been called, but not yet issue_pending)
 
 hw_queue_idx
+    *undescribed*
+
+msi_desc
     *undescribed*
 
 .. _`mv_xor_v2_sw_desc`:

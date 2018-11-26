@@ -10,8 +10,9 @@ cb710_sg_dwiter_read_next_block
 
     get next 32-bit word from sg buffer
 
-    :param struct sg_mapping_iter \*miter:
+    :param miter:
         sg mapping iterator used for reading
+    :type miter: struct sg_mapping_iter \*
 
 .. _`cb710_sg_dwiter_read_next_block.description`:
 
@@ -47,11 +48,13 @@ cb710_sg_dwiter_write_next_block
 
     write next 32-bit word to sg buffer
 
-    :param struct sg_mapping_iter \*miter:
+    :param miter:
         sg mapping iterator used for writing
+    :type miter: struct sg_mapping_iter \*
 
-    :param uint32_t data:
+    :param data:
         *undescribed*
+    :type data: uint32_t
 
 .. _`cb710_sg_dwiter_write_next_block.description`:
 

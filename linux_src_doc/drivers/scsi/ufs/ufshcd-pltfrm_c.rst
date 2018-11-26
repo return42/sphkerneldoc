@@ -10,8 +10,9 @@ ufshcd_parse_regulator_info
 
     get regulator info from device tree
 
-    :param struct ufs_hba \*hba:
+    :param hba:
         per adapter instance
+    :type hba: struct ufs_hba \*
 
 .. _`ufshcd_parse_regulator_info.description`:
 
@@ -32,8 +33,9 @@ ufshcd_pltfrm_suspend
 
     suspend power management function
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device handle
+    :type dev: struct device \*
 
 .. _`ufshcd_pltfrm_suspend.description`:
 
@@ -52,8 +54,9 @@ ufshcd_pltfrm_resume
 
     resume power management function
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device handle
+    :type dev: struct device \*
 
 .. _`ufshcd_pltfrm_resume.description`:
 
@@ -72,11 +75,13 @@ ufshcd_pltfrm_init
 
     probe routine of the driver
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         pointer to Platform device handle
+    :type pdev: struct platform_device \*
 
-    :param struct ufs_hba_variant_ops \*vops:
+    :param vops:
         pointer to variant ops
+    :type vops: struct ufs_hba_variant_ops \*
 
 .. _`ufshcd_pltfrm_init.description`:
 

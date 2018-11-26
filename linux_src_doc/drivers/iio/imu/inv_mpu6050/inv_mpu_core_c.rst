@@ -10,11 +10,13 @@ inv_mpu6050_set_lpf_regs
 
     set low pass filter registers, chip dependent
 
-    :param struct inv_mpu6050_state \*st:
+    :param st:
         *undescribed*
+    :type st: struct inv_mpu6050_state \*
 
-    :param enum inv_mpu6050_filter_e val:
+    :param val:
         *undescribed*
+    :type val: enum inv_mpu6050_filter_e
 
 .. _`inv_mpu6050_set_lpf_regs.description`:
 
@@ -33,8 +35,9 @@ inv_mpu6050_init_config
 
     Initialize hardware, disable FIFO.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         *undescribed*
+    :type indio_dev: struct iio_dev \*
 
 .. _`inv_mpu6050_init_config.fsr`:
 
@@ -73,11 +76,13 @@ inv_mpu6050_set_lpf
 
     set low pass filer based on fifo rate.
 
-    :param struct inv_mpu6050_state \*st:
+    :param st:
         *undescribed*
+    :type st: struct inv_mpu6050_state \*
 
-    :param int rate:
+    :param rate:
         *undescribed*
+    :type rate: int
 
 .. _`inv_mpu6050_set_lpf.description`:
 
@@ -101,17 +106,21 @@ inv_mpu6050_fifo_rate_store
 
     Set fifo rate.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: const char \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`inv_fifo_rate_show`:
 
@@ -122,14 +131,17 @@ inv_fifo_rate_show
 
     Get the current sampling rate.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`inv_attr_show`:
 
@@ -140,14 +152,17 @@ inv_attr_show
 
     calling this function will show current parameters.
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         *undescribed*
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: char \*
 
 .. _`inv_attr_show.description`:
 
@@ -167,11 +182,13 @@ inv_mpu6050_validate_trigger
 
     validate_trigger callback for invensense MPU6050 device.
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device
+    :type indio_dev: struct iio_dev \*
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         The new trigger
+    :type trig: struct iio_trigger \*
 
 .. _`inv_mpu6050_validate_trigger.return`:
 
@@ -190,8 +207,9 @@ inv_check_and_setup_chip
 
     check and setup chip.
 
-    :param struct inv_mpu6050_state \*st:
+    :param st:
         *undescribed*
+    :type st: struct inv_mpu6050_state \*
 
 .. This file was automatic generated / don't edit.
 

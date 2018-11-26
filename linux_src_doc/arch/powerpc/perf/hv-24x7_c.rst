@@ -10,20 +10,25 @@ get_count_from_result
 
     get event count from all result elements in result
 
-    :param struct perf_event \*event:
+    :param event:
         Event associated with \ ``res``\ .
+    :type event: struct perf_event \*
 
-    :param struct hv_24x7_data_result_buffer \*resb:
+    :param resb:
         Result buffer containing \ ``res``\ .
+    :type resb: struct hv_24x7_data_result_buffer \*
 
-    :param struct hv_24x7_result \*res:
+    :param res:
         Result to work on.
+    :type res: struct hv_24x7_result \*
 
-    :param u64 \*countp:
+    :param countp:
         Output variable containing the event count.
+    :type countp: u64 \*
 
-    :param struct hv_24x7_result \*\*next:
+    :param next:
         Optional output variable pointing to the next result in \ ``resb``\ .
+    :type next: struct hv_24x7_result \*\*
 
 .. _`get_count_from_result.description`:
 

@@ -10,8 +10,9 @@ sis190_default_phy
 
     Select default PHY for sis190 mac.
 
-    :param struct net_device \*dev:
+    :param dev:
         the net device to probe for
+    :type dev: struct net_device \*
 
 .. _`sis190_default_phy.description`:
 
@@ -31,8 +32,9 @@ sis190_mii_probe
 
     Probe MII PHY for sis190
 
-    :param struct net_device \*dev:
+    :param dev:
         the net device to probe for
+    :type dev: struct net_device \*
 
 .. _`sis190_mii_probe.description`:
 
@@ -52,11 +54,13 @@ sis190_get_mac_addr_from_apc
 
     Get MAC address for SiS96x model
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device
+    :type pdev: struct pci_dev \*
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to get address for
+    :type dev: struct net_device \*
 
 .. _`sis190_get_mac_addr_from_apc.description`:
 
@@ -65,7 +69,7 @@ Description
 
 SiS96x model, use APC CMOS RAM to store MAC address.
 APC CMOS RAM is accessed through ISA bridge.
-MAC address is read into \ ``net_dev``\ ->dev_addr.
+MAC address is read into \ ``net_dev->dev_addr``\ .
 
 .. _`sis190_init_rxfilter`:
 
@@ -76,8 +80,9 @@ sis190_init_rxfilter
 
     Initialize the Rx filter
 
-    :param struct net_device \*dev:
+    :param dev:
         network device to initialize
+    :type dev: struct net_device \*
 
 .. _`sis190_init_rxfilter.description`:
 

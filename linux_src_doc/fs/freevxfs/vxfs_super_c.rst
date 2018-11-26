@@ -10,8 +10,9 @@ vxfs_put_super
 
     free superblock resources
 
-    :param struct super_block \*sbp:
+    :param sbp:
         VFS superblock.
+    :type sbp: struct super_block \*
 
 .. _`vxfs_put_super.description`:
 
@@ -30,11 +31,13 @@ vxfs_statfs
 
     get filesystem information
 
-    :param struct dentry \*dentry:
+    :param dentry:
         VFS dentry to locate superblock
+    :type dentry: struct dentry \*
 
-    :param struct kstatfs \*bufp:
+    :param bufp:
         output buffer
+    :type bufp: struct kstatfs \*
 
 .. _`vxfs_statfs.description`:
 
@@ -74,14 +77,17 @@ vxfs_fill_super
 
     read superblock into memory and initialize filesystem
 
-    :param struct super_block \*sbp:
+    :param sbp:
         VFS superblock (to fill)
+    :type sbp: struct super_block \*
 
-    :param void \*dp:
+    :param dp:
         fs private mount data
+    :type dp: void \*
 
-    :param int silent:
+    :param silent:
         do not complain loudly when sth is wrong
+    :type silent: int
 
 .. _`vxfs_fill_super.description`:
 
@@ -103,7 +109,7 @@ The superblock on success, else \ ``NULL``\ .
 Locking
 -------
 
-We are under \ ``sbp``\ ->s_lock.
+We are under \ ``sbp->s_lock``\ .
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ trace_seq_init
 
     initialize the trace_seq structure
 
-    :param struct trace_seq \*s:
+    :param s:
         a pointer to the trace_seq structure to initialize
+    :type s: struct trace_seq \*
 
 .. _`trace_seq_reset`:
 
@@ -22,8 +23,9 @@ trace_seq_reset
 
     re-initialize the trace_seq structure
 
-    :param struct trace_seq \*s:
+    :param s:
         a pointer to the trace_seq structure to reset
+    :type s: struct trace_seq \*
 
 .. _`trace_seq_destroy`:
 
@@ -34,8 +36,9 @@ trace_seq_destroy
 
     free up memory of a trace_seq
 
-    :param struct trace_seq \*s:
+    :param s:
         a pointer to the trace_seq to free the buffer
+    :type s: struct trace_seq \*
 
 .. _`trace_seq_destroy.description`:
 
@@ -53,11 +56,13 @@ trace_seq_printf
 
     sequence printing of trace information
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const char \*fmt:
+    :param fmt:
         printf format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -85,14 +90,17 @@ trace_seq_vprintf
 
     sequence printing of trace information
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const char \*fmt:
+    :param fmt:
         printf format string
+    :type fmt: const char \*
 
-    :param va_list args:
+    :param args:
         *undescribed*
+    :type args: va_list
 
 .. _`trace_seq_vprintf.description`:
 
@@ -114,11 +122,13 @@ trace_seq_puts
 
     trace sequence printing of simple string
 
-    :param struct trace_seq \*s:
+    :param s:
         trace sequence descriptor
+    :type s: struct trace_seq \*
 
-    :param const char \*str:
+    :param str:
         simple string to record
+    :type str: const char \*
 
 .. _`trace_seq_puts.description`:
 

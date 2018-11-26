@@ -10,20 +10,25 @@ ib_umem_get
 
     Pin and DMA map userspace memory.
 
-    :param struct ib_ucontext \*context:
+    :param context:
         userspace context to pin memory for
+    :type context: struct ib_ucontext \*
 
-    :param unsigned long addr:
+    :param addr:
         userspace virtual address to start at
+    :type addr: unsigned long
 
-    :param size_t size:
+    :param size:
         length of region to pin
+    :type size: size_t
 
-    :param int access:
+    :param access:
         IB_ACCESS_xxx flags for memory being pinned
+    :type access: int
 
-    :param int dmasync:
+    :param dmasync:
         flush in-flight DMA when the memory region is written
+    :type dmasync: int
 
 .. _`ib_umem_get.description`:
 
@@ -42,8 +47,9 @@ ib_umem_release
 
     release memory pinned with ib_umem_get
 
-    :param struct ib_umem \*umem:
+    :param umem:
         umem struct to release
+    :type umem: struct ib_umem \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ regs_query_register_offset
 
     query register offset from its name
 
-    :param const char \*name:
+    :param name:
         the name of a register
+    :type name: const char \*
 
 .. _`regs_query_register_offset.description`:
 
@@ -30,8 +31,9 @@ regs_query_register_name
 
     query register name from its offset
 
-    :param unsigned int offset:
+    :param offset:
         the offset of a register in struct pt_regs.
+    :type offset: unsigned int
 
 .. _`regs_query_register_name.description`:
 
@@ -50,11 +52,13 @@ tm_cgpr_active
 
     get active number of registers in CGPR
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
 .. _`tm_cgpr_active.description`:
 
@@ -73,23 +77,29 @@ tm_cgpr_get
 
     get CGPR registers
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         The buffer position.
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of bytes to copy.
+    :type count: unsigned int
 
-    :param void \*kbuf:
+    :param kbuf:
         Kernel buffer to copy from.
+    :type kbuf: void \*
 
-    :param void __user \*ubuf:
+    :param ubuf:
         User buffer to copy into.
+    :type ubuf: void __user \*
 
 .. _`tm_cgpr_get.description`:
 
@@ -116,11 +126,13 @@ tm_cfpr_active
 
     get active number of registers in CFPR
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
 .. _`tm_cfpr_active.description`:
 
@@ -139,23 +151,29 @@ tm_cfpr_get
 
     get CFPR registers
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         The buffer position.
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of bytes to copy.
+    :type count: unsigned int
 
-    :param void \*kbuf:
+    :param kbuf:
         Kernel buffer to copy from.
+    :type kbuf: void \*
 
-    :param void __user \*ubuf:
+    :param ubuf:
         User buffer to copy into.
+    :type ubuf: void __user \*
 
 .. _`tm_cfpr_get.description`:
 
@@ -183,23 +201,29 @@ tm_cfpr_set
 
     set CFPR registers
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         The buffer position.
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of bytes to copy.
+    :type count: unsigned int
 
-    :param const void \*kbuf:
+    :param kbuf:
         Kernel buffer to copy into.
+    :type kbuf: const void \*
 
-    :param const void __user \*ubuf:
+    :param ubuf:
         User buffer to copy from.
+    :type ubuf: const void __user \*
 
 .. _`tm_cfpr_set.description`:
 
@@ -227,11 +251,13 @@ tm_cvmx_active
 
     get active number of registers in CVMX
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
 .. _`tm_cvmx_active.description`:
 
@@ -250,23 +276,29 @@ tm_cvmx_get
 
     get CMVX registers
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         The buffer position.
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of bytes to copy.
+    :type count: unsigned int
 
-    :param void \*kbuf:
+    :param kbuf:
         Kernel buffer to copy from.
+    :type kbuf: void \*
 
-    :param void __user \*ubuf:
+    :param ubuf:
         User buffer to copy into.
+    :type ubuf: void __user \*
 
 .. _`tm_cvmx_get.description`:
 
@@ -295,23 +327,29 @@ tm_cvmx_set
 
     set CMVX registers
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         The buffer position.
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of bytes to copy.
+    :type count: unsigned int
 
-    :param const void \*kbuf:
+    :param kbuf:
         Kernel buffer to copy into.
+    :type kbuf: const void \*
 
-    :param const void __user \*ubuf:
+    :param ubuf:
         User buffer to copy from.
+    :type ubuf: const void __user \*
 
 .. _`tm_cvmx_set.description`:
 
@@ -340,11 +378,13 @@ tm_cvsx_active
 
     get active number of registers in CVSX
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
 .. _`tm_cvsx_active.description`:
 
@@ -363,23 +403,29 @@ tm_cvsx_get
 
     get CVSX registers
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         The buffer position.
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of bytes to copy.
+    :type count: unsigned int
 
-    :param void \*kbuf:
+    :param kbuf:
         Kernel buffer to copy from.
+    :type kbuf: void \*
 
-    :param void __user \*ubuf:
+    :param ubuf:
         User buffer to copy into.
+    :type ubuf: void __user \*
 
 .. _`tm_cvsx_get.description`:
 
@@ -406,23 +452,29 @@ tm_cvsx_set
 
     set CFPR registers
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         The buffer position.
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of bytes to copy.
+    :type count: unsigned int
 
-    :param const void \*kbuf:
+    :param kbuf:
         Kernel buffer to copy into.
+    :type kbuf: const void \*
 
-    :param const void __user \*ubuf:
+    :param ubuf:
         User buffer to copy from.
+    :type ubuf: const void __user \*
 
 .. _`tm_cvsx_set.description`:
 
@@ -449,11 +501,13 @@ tm_spr_active
 
     get active number of registers in TM SPR
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
 .. _`tm_spr_active.description`:
 
@@ -472,23 +526,29 @@ tm_spr_get
 
     get the TM related SPR registers
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         The buffer position.
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of bytes to copy.
+    :type count: unsigned int
 
-    :param void \*kbuf:
+    :param kbuf:
         Kernel buffer to copy from.
+    :type kbuf: void \*
 
-    :param void __user \*ubuf:
+    :param ubuf:
         User buffer to copy into.
+    :type ubuf: void __user \*
 
 .. _`tm_spr_get.description`:
 
@@ -513,23 +573,29 @@ tm_spr_set
 
     set the TM related SPR registers
 
-    :param struct task_struct \*target:
+    :param target:
         The target task.
+    :type target: struct task_struct \*
 
-    :param const struct user_regset \*regset:
+    :param regset:
         The user regset structure.
+    :type regset: const struct user_regset \*
 
-    :param unsigned int pos:
+    :param pos:
         The buffer position.
+    :type pos: unsigned int
 
-    :param unsigned int count:
+    :param count:
         Number of bytes to copy.
+    :type count: unsigned int
 
-    :param const void \*kbuf:
+    :param kbuf:
         Kernel buffer to copy into.
+    :type kbuf: const void \*
 
-    :param const void __user \*ubuf:
+    :param ubuf:
         User buffer to copy from.
+    :type ubuf: const void __user \*
 
 .. _`tm_spr_set.description`:
 
@@ -554,8 +620,9 @@ do_syscall_trace_enter
 
     Do syscall tracing on kernel entry.
 
-    :param struct pt_regs \*regs:
+    :param regs:
         the pt_regs of the task to trace (current)
+    :type regs: struct pt_regs \*
 
 .. _`do_syscall_trace_enter.description`:
 

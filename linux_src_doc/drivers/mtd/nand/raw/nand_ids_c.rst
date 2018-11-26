@@ -10,8 +10,9 @@ nand_get_manufacturer
 
     Get manufacturer information from the manufacturer ID
 
-    :param u8 id:
+    :param id:
         manufacturer ID
+    :type id: u8
 
 .. _`nand_get_manufacturer.description`:
 

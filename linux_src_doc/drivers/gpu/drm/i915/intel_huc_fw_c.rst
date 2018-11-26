@@ -26,8 +26,9 @@ intel_huc_fw_init_early
 
     initializes HuC firmware struct
 
-    :param struct intel_huc \*huc:
+    :param huc:
         intel_huc struct
+    :type huc: struct intel_huc \*
 
 .. _`intel_huc_fw_init_early.description`:
 
@@ -45,11 +46,13 @@ huc_fw_xfer
 
     DMA's the firmware
 
-    :param struct intel_uc_fw \*huc_fw:
+    :param huc_fw:
         the firmware descriptor
+    :type huc_fw: struct intel_uc_fw \*
 
-    :param struct i915_vma \*vma:
+    :param vma:
         the firmware image (bound into the GGTT)
+    :type vma: struct i915_vma \*
 
 .. _`huc_fw_xfer.description`:
 
@@ -74,8 +77,9 @@ intel_huc_fw_upload
 
     load HuC uCode to device
 
-    :param struct intel_huc \*huc:
+    :param huc:
         intel_huc structure
+    :type huc: struct intel_huc \*
 
 .. _`intel_huc_fw_upload.description`:
 

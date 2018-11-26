@@ -76,8 +76,9 @@ ti_sci_dev_id
 
     get prepopulated ti_sci id from struct dev
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device associated with this genpd
+    :type dev: struct device \*
 
 .. _`ti_sci_dev_id.description`:
 
@@ -95,8 +96,9 @@ ti_sci_dev_to_sci_handle
 
     get pointer to ti_sci_handle
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device associated with this genpd
+    :type dev: struct device \*
 
 .. _`ti_sci_dev_to_sci_handle.description`:
 
@@ -115,8 +117,9 @@ ti_sci_dev_start
 
     genpd device start hook called to turn device on
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device associated with this genpd to be powered on
+    :type dev: struct device \*
 
 .. _`ti_sci_dev_stop`:
 
@@ -127,8 +130,9 @@ ti_sci_dev_stop
 
     genpd device stop hook called to turn device off
 
-    :param struct device \*dev:
+    :param dev:
         pointer to device associated with this genpd to be powered off
+    :type dev: struct device \*
 
 .. This file was automatic generated / don't edit.
 

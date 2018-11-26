@@ -10,8 +10,9 @@ radeon_get_pll_use_mask
 
     look up a mask of which pplls are in use
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`radeon_get_pll_use_mask.description`:
 
@@ -29,8 +30,9 @@ radeon_get_shared_dp_ppll
 
     return the PPLL used by another crtc for DP
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`radeon_get_shared_dp_ppll.description`:
 
@@ -50,8 +52,9 @@ radeon_get_shared_nondp_ppll
 
     return the PPLL used by another non-DP crtc
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`radeon_get_shared_nondp_ppll.description`:
 
@@ -70,8 +73,9 @@ radeon_atom_pick_pll
 
     Allocate a PPLL for use by the crtc.
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         drm crtc
+    :type crtc: struct drm_crtc \*
 
 .. _`radeon_atom_pick_pll.description`:
 

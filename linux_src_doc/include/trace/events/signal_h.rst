@@ -6,24 +6,29 @@
 trace_signal_generate
 =====================
 
-.. c:function:: void trace_signal_generate(int sig, struct siginfo *info, struct task_struct *task, int group, int result)
+.. c:function:: void trace_signal_generate(int sig, struct kernel_siginfo *info, struct task_struct *task, int group, int result)
 
     called when a signal is generated
 
-    :param int sig:
+    :param sig:
         signal number
+    :type sig: int
 
-    :param struct siginfo \*info:
+    :param info:
         pointer to struct siginfo
+    :type info: struct kernel_siginfo \*
 
-    :param struct task_struct \*task:
+    :param task:
         pointer to struct task_struct
+    :type task: struct task_struct \*
 
-    :param int group:
+    :param group:
         shared or private
+    :type group: int
 
-    :param int result:
+    :param result:
         TRACE_SIGNAL_*
+    :type result: int
 
 .. _`trace_signal_generate.description`:
 
@@ -41,18 +46,21 @@ means that si_code is SI_KERNEL.
 trace_signal_deliver
 ====================
 
-.. c:function:: void trace_signal_deliver(int sig, struct siginfo *info, struct k_sigaction *ka)
+.. c:function:: void trace_signal_deliver(int sig, struct kernel_siginfo *info, struct k_sigaction *ka)
 
     called when a signal is delivered
 
-    :param int sig:
+    :param sig:
         signal number
+    :type sig: int
 
-    :param struct siginfo \*info:
+    :param info:
         pointer to struct siginfo
+    :type info: struct kernel_siginfo \*
 
-    :param struct k_sigaction \*ka:
+    :param ka:
         pointer to struct k_sigaction
+    :type ka: struct k_sigaction \*
 
 .. _`trace_signal_deliver.description`:
 

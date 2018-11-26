@@ -10,8 +10,9 @@ get_link_speed
 
     determine whether 12.5G or 25G speed
 
-    :param u16 link_speed:
+    :param link_speed:
         the speed of active link
+    :type link_speed: u16
 
 .. _`get_link_speed.description`:
 
@@ -35,14 +36,17 @@ convert_xmit_counter
 
     calculate flit times for given xmit counter value
 
-    :param u64 xmit_wait_val:
+    :param xmit_wait_val:
         current xmit counter value
+    :type xmit_wait_val: u64
 
-    :param u16 link_width:
+    :param link_width:
         width of active link
+    :type link_width: u16
 
-    :param u16 link_speed:
+    :param link_speed:
         speed of active link
+    :type link_speed: u16
 
 .. This file was automatic generated / don't edit.
 

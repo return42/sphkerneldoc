@@ -10,11 +10,13 @@ ib_create_fmr_pool
 
     Create an FMR pool
 
-    :param struct ib_pd \*pd:
+    :param pd:
         Protection domain for FMRs
+    :type pd: struct ib_pd \*
 
-    :param struct ib_fmr_pool_param \*params:
+    :param params:
         FMR pool parameters
+    :type params: struct ib_fmr_pool_param \*
 
 .. _`ib_create_fmr_pool.description`:
 
@@ -33,8 +35,9 @@ ib_destroy_fmr_pool
 
     Free FMR pool
 
-    :param struct ib_fmr_pool \*pool:
+    :param pool:
         FMR pool to free
+    :type pool: struct ib_fmr_pool \*
 
 .. _`ib_destroy_fmr_pool.description`:
 
@@ -52,8 +55,9 @@ ib_flush_fmr_pool
 
     Invalidate all unmapped FMRs
 
-    :param struct ib_fmr_pool \*pool:
+    :param pool:
         FMR pool to flush
+    :type pool: struct ib_fmr_pool \*
 
 .. _`ib_flush_fmr_pool.description`:
 
@@ -71,17 +75,21 @@ ib_fmr_pool_map_phys
 
     Map an FMR from an FMR pool.
 
-    :param struct ib_fmr_pool \*pool_handle:
+    :param pool_handle:
         FMR pool to allocate FMR from
+    :type pool_handle: struct ib_fmr_pool \*
 
-    :param u64 \*page_list:
+    :param page_list:
         List of pages to map
+    :type page_list: u64 \*
 
-    :param int list_len:
+    :param list_len:
         Number of pages in \ ``page_list``\ 
+    :type list_len: int
 
-    :param u64 io_virtual_address:
+    :param io_virtual_address:
         I/O virtual address for new FMR
+    :type io_virtual_address: u64
 
 .. _`ib_fmr_pool_unmap`:
 
@@ -92,8 +100,9 @@ ib_fmr_pool_unmap
 
     Unmap FMR
 
-    :param struct ib_pool_fmr \*fmr:
+    :param fmr:
         FMR to unmap
+    :type fmr: struct ib_pool_fmr \*
 
 .. _`ib_fmr_pool_unmap.description`:
 

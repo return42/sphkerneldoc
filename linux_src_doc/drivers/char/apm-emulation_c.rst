@@ -10,8 +10,9 @@ apm_queue_event
 
     queue an APM event for kapmd
 
-    :param apm_event_t event:
+    :param event:
         APM event
+    :type event: apm_event_t
 
 .. _`apm_queue_event.description`:
 

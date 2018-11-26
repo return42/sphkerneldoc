@@ -10,8 +10,9 @@ blk_path_error
 
     returns true if error may be path related
 
-    :param blk_status_t error:
+    :param error:
         status the request was completed with
+    :type error: blk_status_t
 
 .. _`blk_path_error.description`:
 

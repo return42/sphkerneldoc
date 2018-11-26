@@ -8,23 +8,29 @@ update_buffer_lossy
 
 .. c:function:: int update_buffer_lossy(unsigned int mtu, u8 pfc_en, u8 *buffer, u32 xoff, struct mlx5e_port_buffer *port_buffer, bool *change)
 
-    :param unsigned int mtu:
+    :param mtu:
         *undescribed*
+    :type mtu: unsigned int
 
-    :param u8 pfc_en:
+    :param pfc_en:
         *undescribed*
+    :type pfc_en: u8
 
-    :param u8 \*buffer:
+    :param buffer:
         *undescribed*
+    :type buffer: u8 \*
 
-    :param u32 xoff:
+    :param xoff:
         *undescribed*
+    :type xoff: u32
 
-    :param struct mlx5e_port_buffer \*port_buffer:
+    :param port_buffer:
         *undescribed*
+    :type port_buffer: struct mlx5e_port_buffer \*
 
-    :param bool \*change:
+    :param change:
         *undescribed*
+    :type change: bool \*
 
 .. _`update_buffer_lossy.mtu`:
 

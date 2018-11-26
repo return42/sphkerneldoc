@@ -10,8 +10,9 @@ buffer_icap_get_status
 
     Get the contents of the status register.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`buffer_icap_get_status.description`:
 
@@ -39,11 +40,13 @@ buffer_icap_get_bram
 
     Reads data from the storage buffer bram.
 
-    :param void __iomem \*base_address:
+    :param base_address:
         contains the base address of the component.
+    :type base_address: void __iomem \*
 
-    :param u32 offset:
+    :param offset:
         The word offset from which the data should be read.
+    :type offset: u32
 
 .. _`buffer_icap_get_bram.description`:
 
@@ -62,8 +65,9 @@ buffer_icap_busy
 
     Return true if the icap device is busy
 
-    :param void __iomem \*base_address:
+    :param base_address:
         is the base address of the device
+    :type base_address: void __iomem \*
 
 .. _`buffer_icap_busy.description`:
 
@@ -83,11 +87,13 @@ buffer_icap_set_size
 
     Set the size register.
 
-    :param void __iomem \*base_address:
+    :param base_address:
         is the base address of the device
+    :type base_address: void __iomem \*
 
-    :param u32 data:
+    :param data:
         The size in bytes.
+    :type data: u32
 
 .. _`buffer_icap_set_size.description`:
 
@@ -106,11 +112,13 @@ buffer_icap_set_offset
 
     Set the bram offset register.
 
-    :param void __iomem \*base_address:
+    :param base_address:
         contains the base address of the device.
+    :type base_address: void __iomem \*
 
-    :param u32 data:
+    :param data:
         is the value to be written to the data register.
+    :type data: u32
 
 .. _`buffer_icap_set_offset.description`:
 
@@ -129,11 +137,13 @@ buffer_icap_set_rnc
 
     Set the RNC (Readback not Configure) register.
 
-    :param void __iomem \*base_address:
+    :param base_address:
         contains the base address of the device.
+    :type base_address: void __iomem \*
 
-    :param u32 data:
+    :param data:
         is the value to be written to the data register.
+    :type data: u32
 
 .. _`buffer_icap_set_rnc.description`:
 
@@ -154,14 +164,17 @@ buffer_icap_set_bram
 
     Write data to the storage buffer bram.
 
-    :param void __iomem \*base_address:
+    :param base_address:
         contains the base address of the component.
+    :type base_address: void __iomem \*
 
-    :param u32 offset:
+    :param offset:
         The word offset at which the data should be written.
+    :type offset: u32
 
-    :param u32 data:
+    :param data:
         The value to be written to the bram offset.
+    :type data: u32
 
 .. _`buffer_icap_set_bram.description`:
 
@@ -180,15 +193,18 @@ buffer_icap_device_read
 
     Transfer bytes from ICAP to the storage buffer.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
-    :param u32 offset:
+    :param offset:
         The storage buffer start address.
+    :type offset: u32
 
-    :param u32 count:
+    :param count:
         The number of words (32 bit) to read from the
         device (ICAP).
+    :type count: u32
 
 .. _`buffer_icap_device_write`:
 
@@ -199,15 +215,18 @@ buffer_icap_device_write
 
     Transfer bytes from ICAP to the storage buffer.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
-    :param u32 offset:
+    :param offset:
         The storage buffer start address.
+    :type offset: u32
 
-    :param u32 count:
+    :param count:
         The number of words (32 bit) to read from the
         device (ICAP).
+    :type count: u32
 
 .. _`buffer_icap_reset`:
 
@@ -218,8 +237,9 @@ buffer_icap_reset
 
     Reset the logic of the icap device.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
 .. _`buffer_icap_reset.description`:
 
@@ -239,14 +259,17 @@ buffer_icap_set_configuration
 
     Load a partial bitstream from system memory.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
-    :param u32 \*data:
+    :param data:
         Kernel address of the partial bitstream.
+    :type data: u32 \*
 
-    :param u32 size:
+    :param size:
         the size of the partial bitstream in 32 bit words.
+    :type size: u32
 
 .. _`buffer_icap_get_configuration`:
 
@@ -257,14 +280,17 @@ buffer_icap_get_configuration
 
     Read configuration data from the device.
 
-    :param struct hwicap_drvdata \*drvdata:
+    :param drvdata:
         a pointer to the drvdata.
+    :type drvdata: struct hwicap_drvdata \*
 
-    :param u32 \*data:
+    :param data:
         Address of the data representing the partial bitstream
+    :type data: u32 \*
 
-    :param u32 size:
+    :param size:
         the size of the partial bitstream in 32 bit words.
+    :type size: u32
 
 .. This file was automatic generated / don't edit.
 

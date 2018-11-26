@@ -6,12 +6,13 @@
 vpbe_current_encoder_info
 =========================
 
-.. c:function:: struct encoder_config_info*vpbe_current_encoder_info(struct vpbe_device *vpbe_dev)
+.. c:function:: struct encoder_config_info* vpbe_current_encoder_info(struct vpbe_device *vpbe_dev)
 
     Get config info for current encoder
 
-    :param struct vpbe_device \*vpbe_dev:
+    :param vpbe_dev:
         vpbe device ptr
+    :type vpbe_dev: struct vpbe_device \*
 
 .. _`vpbe_current_encoder_info.description`:
 
@@ -29,11 +30,13 @@ vpbe_find_encoder_sd_index
 
     Given a name find encoder sd index
 
-    :param struct vpbe_config \*cfg:
+    :param cfg:
         ptr to vpbe cfg
+    :type cfg: struct vpbe_config \*
 
-    :param int index:
+    :param index:
         index used by application
+    :type index: int
 
 .. _`vpbe_find_encoder_sd_index.description`:
 
@@ -51,11 +54,13 @@ vpbe_g_cropcap
 
     Get crop capabilities of the display
 
-    :param struct vpbe_device \*vpbe_dev:
+    :param vpbe_dev:
         vpbe device ptr
+    :type vpbe_dev: struct vpbe_device \*
 
-    :param struct v4l2_cropcap \*cropcap:
+    :param cropcap:
         cropcap is a ptr to struct v4l2_cropcap
+    :type cropcap: struct v4l2_cropcap \*
 
 .. _`vpbe_g_cropcap.description`:
 
@@ -74,11 +79,13 @@ vpbe_enum_outputs
 
     enumerate outputs
 
-    :param struct vpbe_device \*vpbe_dev:
+    :param vpbe_dev:
         vpbe device ptr
+    :type vpbe_dev: struct vpbe_device \*
 
-    :param struct v4l2_output \*output:
+    :param output:
         ptr to v4l2_output structure
+    :type output: struct v4l2_output \*
 
 .. _`vpbe_enum_outputs.description`:
 
@@ -97,11 +104,13 @@ vpbe_set_output
 
     Set output
 
-    :param struct vpbe_device \*vpbe_dev:
+    :param vpbe_dev:
         vpbe device ptr
+    :type vpbe_dev: struct vpbe_device \*
 
-    :param int index:
+    :param index:
         index of output
+    :type index: int
 
 .. _`vpbe_set_output.description`:
 
@@ -119,8 +128,9 @@ vpbe_get_output
 
     Get output
 
-    :param struct vpbe_device \*vpbe_dev:
+    :param vpbe_dev:
         vpbe device ptr
+    :type vpbe_dev: struct vpbe_device \*
 
 .. _`vpbe_get_output.description`:
 
@@ -138,11 +148,13 @@ vpbe_initialize
 
     Initialize the vpbe display controller
 
-    :param struct device \*dev:
+    :param dev:
         Master and slave device ptr
+    :type dev: struct device \*
 
-    :param struct vpbe_device \*vpbe_dev:
+    :param vpbe_dev:
         vpbe device ptr
+    :type vpbe_dev: struct vpbe_device \*
 
 .. _`vpbe_initialize.description`:
 
@@ -165,11 +177,13 @@ vpbe_deinitialize
 
     de-initialize the vpbe display controller
 
-    :param struct device \*dev:
+    :param dev:
         Master and slave device ptr
+    :type dev: struct device \*
 
-    :param struct vpbe_device \*vpbe_dev:
+    :param vpbe_dev:
         vpbe device ptr
+    :type vpbe_dev: struct vpbe_device \*
 
 .. _`vpbe_deinitialize.description`:
 

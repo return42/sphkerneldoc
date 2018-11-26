@@ -10,18 +10,22 @@ get_vaddr_frames
 
     map virtual addresses to pfns
 
-    :param unsigned long start:
+    :param start:
         starting user address
+    :type start: unsigned long
 
-    :param unsigned int nr_frames:
+    :param nr_frames:
         number of pages / pfns from start to map
+    :type nr_frames: unsigned int
 
-    :param unsigned int gup_flags:
+    :param gup_flags:
         flags modifying lookup behaviour
+    :type gup_flags: unsigned int
 
-    :param struct frame_vector \*vec:
+    :param vec:
         structure which receives pages / pfns of the addresses mapped.
         It should have space for at least nr_frames entries.
+    :type vec: struct frame_vector \*
 
 .. _`get_vaddr_frames.description`:
 
@@ -52,8 +56,9 @@ put_vaddr_frames
 
     drop references to pages if \ :c:func:`get_vaddr_frames`\  acquired them
 
-    :param struct frame_vector \*vec:
+    :param vec:
         frame vector to put
+    :type vec: struct frame_vector \*
 
 .. _`put_vaddr_frames.description`:
 
@@ -73,8 +78,9 @@ frame_vector_to_pages
 
     convert frame vector to contain page pointers
 
-    :param struct frame_vector \*vec:
+    :param vec:
         frame vector to convert
+    :type vec: struct frame_vector \*
 
 .. _`frame_vector_to_pages.description`:
 
@@ -94,8 +100,9 @@ frame_vector_to_pfns
 
     convert frame vector to contain pfns
 
-    :param struct frame_vector \*vec:
+    :param vec:
         frame vector to convert
+    :type vec: struct frame_vector \*
 
 .. _`frame_vector_to_pfns.description`:
 
@@ -113,8 +120,9 @@ frame_vector_create
 
     allocate & initialize structure for pinned pfns
 
-    :param unsigned int nr_frames:
+    :param nr_frames:
         number of pfns slots we should reserve
+    :type nr_frames: unsigned int
 
 .. _`frame_vector_create.description`:
 
@@ -133,8 +141,9 @@ frame_vector_destroy
 
     free memory allocated to carry frame vector
 
-    :param struct frame_vector \*vec:
+    :param vec:
         Frame vector to free
+    :type vec: struct frame_vector \*
 
 .. _`frame_vector_destroy.description`:
 

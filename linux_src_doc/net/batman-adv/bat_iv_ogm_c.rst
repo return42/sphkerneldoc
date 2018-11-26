@@ -50,14 +50,17 @@ batadv_ring_buffer_set
 
     update the ring buffer with the given value
 
-    :param u8 lq_recv:
+    :param lq_recv:
         pointer to the ring buffer
+    :type lq_recv: u8
 
-    :param u8 \*lq_index:
+    :param lq_index:
         index to store the value at
+    :type lq_index: u8 \*
 
-    :param u8 value:
+    :param value:
         value to store in the ring buffer
+    :type value: u8
 
 .. _`batadv_ring_buffer_avg`:
 
@@ -68,8 +71,9 @@ batadv_ring_buffer_avg
 
     compute the average of all non-zero values stored in the given ring buffer
 
-    :param const u8 lq_recv:
+    :param lq_recv:
         pointer to the ring buffer
+    :type lq_recv: const u8
 
 .. _`batadv_ring_buffer_avg.return`:
 
@@ -77,101 +81,6 @@ Return
 ------
 
 computed average value.
-
-.. _`batadv_iv_ogm_orig_free`:
-
-batadv_iv_ogm_orig_free
-=======================
-
-.. c:function:: void batadv_iv_ogm_orig_free(struct batadv_orig_node *orig_node)
-
-    free the private resources allocated for this orig_node
-
-    :param struct batadv_orig_node \*orig_node:
-        the orig_node for which the resources have to be free'd
-
-.. _`batadv_iv_ogm_orig_add_if`:
-
-batadv_iv_ogm_orig_add_if
-=========================
-
-.. c:function:: int batadv_iv_ogm_orig_add_if(struct batadv_orig_node *orig_node, unsigned int max_if_num)
-
-    change the private structures of the orig_node to include the new hard-interface
-
-    :param struct batadv_orig_node \*orig_node:
-        the orig_node that has to be changed
-
-    :param unsigned int max_if_num:
-        the current amount of interfaces
-
-.. _`batadv_iv_ogm_orig_add_if.return`:
-
-Return
-------
-
-0 on success, a negative error code otherwise.
-
-.. _`batadv_iv_ogm_drop_bcast_own_entry`:
-
-batadv_iv_ogm_drop_bcast_own_entry
-==================================
-
-.. c:function:: void batadv_iv_ogm_drop_bcast_own_entry(struct batadv_orig_node *orig_node, unsigned int max_if_num, unsigned int del_if_num)
-
-    drop section of bcast_own
-
-    :param struct batadv_orig_node \*orig_node:
-        the orig_node that has to be changed
-
-    :param unsigned int max_if_num:
-        the current amount of interfaces
-
-    :param unsigned int del_if_num:
-        the index of the interface being removed
-
-.. _`batadv_iv_ogm_drop_bcast_own_sum_entry`:
-
-batadv_iv_ogm_drop_bcast_own_sum_entry
-======================================
-
-.. c:function:: void batadv_iv_ogm_drop_bcast_own_sum_entry(struct batadv_orig_node *orig_node, unsigned int max_if_num, unsigned int del_if_num)
-
-    drop section of bcast_own_sum
-
-    :param struct batadv_orig_node \*orig_node:
-        the orig_node that has to be changed
-
-    :param unsigned int max_if_num:
-        the current amount of interfaces
-
-    :param unsigned int del_if_num:
-        the index of the interface being removed
-
-.. _`batadv_iv_ogm_orig_del_if`:
-
-batadv_iv_ogm_orig_del_if
-=========================
-
-.. c:function:: int batadv_iv_ogm_orig_del_if(struct batadv_orig_node *orig_node, unsigned int max_if_num, unsigned int del_if_num)
-
-    change the private structures of the orig_node to exclude the removed interface
-
-    :param struct batadv_orig_node \*orig_node:
-        the orig_node that has to be changed
-
-    :param unsigned int max_if_num:
-        the current amount of interfaces
-
-    :param unsigned int del_if_num:
-        the index of the interface being removed
-
-.. _`batadv_iv_ogm_orig_del_if.return`:
-
-Return
-------
-
-0 on success, a negative error code otherwise.
 
 .. _`batadv_iv_ogm_orig_get`:
 
@@ -182,11 +91,13 @@ batadv_iv_ogm_orig_get
 
     retrieve or create (if does not exist) an originator
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param const u8 \*addr:
+    :param addr:
         mac address of the originator
+    :type addr: const u8 \*
 
 .. _`batadv_iv_ogm_orig_get.return`:
 
@@ -206,14 +117,17 @@ batadv_iv_ogm_aggr_packet
 
     checks if there is another OGM attached
 
-    :param int buff_pos:
+    :param buff_pos:
         current position in the skb
+    :type buff_pos: int
 
-    :param int packet_len:
+    :param packet_len:
         total length of the skb
+    :type packet_len: int
 
-    :param __be16 tvlv_len:
+    :param tvlv_len:
         tvlv length of the previously considered OGM
+    :type tvlv_len: __be16
 
 .. _`batadv_iv_ogm_aggr_packet.return`:
 
@@ -231,29 +145,37 @@ batadv_iv_ogm_can_aggregate
 
     find out if an OGM can be aggregated on an existing forward packet
 
-    :param const struct batadv_ogm_packet \*new_bat_ogm_packet:
+    :param new_bat_ogm_packet:
         OGM packet to be aggregated
+    :type new_bat_ogm_packet: const struct batadv_ogm_packet \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param int packet_len:
+    :param packet_len:
         (total) length of the OGM
+    :type packet_len: int
 
-    :param unsigned long send_time:
+    :param send_time:
         timestamp (jiffies) when the packet is to be sent
+    :type send_time: unsigned long
 
-    :param bool directlink:
+    :param directlink:
         true if this is a direct link packet
+    :type directlink: bool
 
-    :param const struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         interface where the packet was received
+    :type if_incoming: const struct batadv_hard_iface \*
 
-    :param const struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         interface for which the retransmission should be considered
+    :type if_outgoing: const struct batadv_hard_iface \*
 
-    :param const struct batadv_forw_packet \*forw_packet:
+    :param forw_packet:
         the forwarded packet which should be checked
+    :type forw_packet: const struct batadv_forw_packet \*
 
 .. _`batadv_iv_ogm_can_aggregate.return`:
 
@@ -271,26 +193,33 @@ batadv_iv_ogm_aggregate_new
 
     create a new aggregated packet and add this packet to it.
 
-    :param const unsigned char \*packet_buff:
+    :param packet_buff:
         pointer to the OGM
+    :type packet_buff: const unsigned char \*
 
-    :param int packet_len:
+    :param packet_len:
         (total) length of the OGM
+    :type packet_len: int
 
-    :param unsigned long send_time:
+    :param send_time:
         timestamp (jiffies) when the packet is to be sent
+    :type send_time: unsigned long
 
-    :param bool direct_link:
+    :param direct_link:
         whether this OGM has direct link status
+    :type direct_link: bool
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         interface where the packet was received
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         interface for which the retransmission should be considered
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param int own_packet:
+    :param own_packet:
         true if it is a self-generated ogm
+    :type own_packet: int
 
 .. _`batadv_iv_ogm_queue_add`:
 
@@ -301,26 +230,33 @@ batadv_iv_ogm_queue_add
 
     queue up an OGM for transmission
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param unsigned char \*packet_buff:
+    :param packet_buff:
         pointer to the OGM
+    :type packet_buff: unsigned char \*
 
-    :param int packet_len:
+    :param packet_len:
         (total) length of the OGM
+    :type packet_len: int
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         interface where the packet was received
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         interface for which the retransmission should be considered
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param int own_packet:
+    :param own_packet:
         true if it is a self-generated ogm
+    :type own_packet: int
 
-    :param unsigned long send_time:
+    :param send_time:
         timestamp (jiffies) when the packet is to be sent
+    :type send_time: unsigned long
 
 .. _`batadv_iv_ogm_slide_own_bcast_window`:
 
@@ -331,8 +267,36 @@ batadv_iv_ogm_slide_own_bcast_window
 
     bitshift own OGM broadcast windows for the given interface
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         the interface for which the windows have to be shifted
+    :type hard_iface: struct batadv_hard_iface \*
+
+.. _`batadv_iv_orig_ifinfo_sum`:
+
+batadv_iv_orig_ifinfo_sum
+=========================
+
+.. c:function:: u8 batadv_iv_orig_ifinfo_sum(struct batadv_orig_node *orig_node, struct batadv_hard_iface *if_outgoing)
+
+    Get bcast_own sum for originator over iterface
+
+    :param orig_node:
+        originator which reproadcasted the OGMs directly
+    :type orig_node: struct batadv_orig_node \*
+
+    :param if_outgoing:
+        interface which transmitted the original OGM and received the
+        direct rebroadcast
+    :type if_outgoing: struct batadv_hard_iface \*
+
+.. _`batadv_iv_orig_ifinfo_sum.return`:
+
+Return
+------
+
+Number of replied (rebroadcasted) OGMs which were transmitted by
+an originator and directly (without intermediate hop) received by a specific
+interface
 
 .. _`batadv_iv_ogm_orig_update`:
 
@@ -343,29 +307,37 @@ batadv_iv_ogm_orig_update
 
     use OGM to update corresponding data in an originator
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig node who originally emitted the ogm packet
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_orig_ifinfo \*orig_ifinfo:
+    :param orig_ifinfo:
         ifinfo for the outgoing interface of the orig_node
+    :type orig_ifinfo: struct batadv_orig_ifinfo \*
 
-    :param const struct ethhdr \*ethhdr:
+    :param ethhdr:
         Ethernet header of the OGM
+    :type ethhdr: const struct ethhdr \*
 
-    :param const struct batadv_ogm_packet \*batadv_ogm_packet:
+    :param batadv_ogm_packet:
         the ogm packet
+    :type batadv_ogm_packet: const struct batadv_ogm_packet \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         interface where the packet was received
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         interface for which the retransmission should be considered
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param enum batadv_dup_status dup_status:
+    :param dup_status:
         the duplicate status of this ogm packet.
+    :type dup_status: enum batadv_dup_status
 
 .. _`batadv_iv_ogm_calc_tq`:
 
@@ -376,20 +348,25 @@ batadv_iv_ogm_calc_tq
 
     calculate tq for current received ogm packet
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig node who originally emitted the ogm packet
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_orig_node \*orig_neigh_node:
+    :param orig_neigh_node:
         the orig node struct of the neighbor who sent the packet
+    :type orig_neigh_node: struct batadv_orig_node \*
 
-    :param struct batadv_ogm_packet \*batadv_ogm_packet:
+    :param batadv_ogm_packet:
         the ogm packet
+    :type batadv_ogm_packet: struct batadv_ogm_packet \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         interface where the packet was received
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         interface for which the retransmission should be considered
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_iv_ogm_calc_tq.return`:
 
@@ -407,17 +384,21 @@ batadv_iv_ogm_update_seqnos
 
     process a batman packet for all interfaces, adjust the sequence number and find out whether it is a duplicate
 
-    :param const struct ethhdr \*ethhdr:
+    :param ethhdr:
         ethernet header of the packet
+    :type ethhdr: const struct ethhdr \*
 
-    :param const struct batadv_ogm_packet \*batadv_ogm_packet:
+    :param batadv_ogm_packet:
         OGM packet to be considered
+    :type batadv_ogm_packet: const struct batadv_ogm_packet \*
 
-    :param const struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         interface on which the OGM packet was received
+    :type if_incoming: const struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         interface for which the retransmission should be considered
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_iv_ogm_update_seqnos.return`:
 
@@ -435,20 +416,50 @@ batadv_iv_ogm_process_per_outif
 
     process a batman iv OGM for an outgoing interface
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the skb containing the OGM
+    :type skb: const struct sk_buff \*
 
-    :param int ogm_offset:
+    :param ogm_offset:
         offset from skb->data to start of ogm header
+    :type ogm_offset: int
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the (cached) orig node for the originator of this OGM
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface where this packet was received
+    :type if_incoming: struct batadv_hard_iface \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the interface for which the packet should be considered
+    :type if_outgoing: struct batadv_hard_iface \*
+
+.. _`batadv_iv_ogm_process_reply`:
+
+batadv_iv_ogm_process_reply
+===========================
+
+.. c:function:: void batadv_iv_ogm_process_reply(struct batadv_ogm_packet *ogm_packet, struct batadv_hard_iface *if_incoming, struct batadv_orig_node *orig_node, u32 if_incoming_seqno)
+
+    Check OGM for direct reply and process it
+
+    :param ogm_packet:
+        rebroadcast OGM packet to process
+    :type ogm_packet: struct batadv_ogm_packet \*
+
+    :param if_incoming:
+        the interface where this packet was received
+    :type if_incoming: struct batadv_hard_iface \*
+
+    :param orig_node:
+        originator which reproadcasted the OGMs
+    :type orig_node: struct batadv_orig_node \*
+
+    :param if_incoming_seqno:
+        OGM sequence number when rebroadcast was received
+    :type if_incoming_seqno: u32
 
 .. _`batadv_iv_ogm_process`:
 
@@ -459,14 +470,17 @@ batadv_iv_ogm_process
 
     process an incoming batman iv OGM
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         the skb containing the OGM
+    :type skb: const struct sk_buff \*
 
-    :param int ogm_offset:
+    :param ogm_offset:
         offset to the OGM which should be processed (for aggregates)
+    :type ogm_offset: int
 
-    :param struct batadv_hard_iface \*if_incoming:
+    :param if_incoming:
         the interface where this packet was receved
+    :type if_incoming: struct batadv_hard_iface \*
 
 .. _`batadv_iv_ogm_orig_print_neigh`:
 
@@ -477,14 +491,17 @@ batadv_iv_ogm_orig_print_neigh
 
     print neighbors for the originator table
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         the orig_node for which the neighbors are printed
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         outgoing interface for these entries
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         debugfs table seq_file struct
+    :type seq: struct seq_file \*
 
 .. _`batadv_iv_ogm_orig_print_neigh.description`:
 
@@ -502,14 +519,17 @@ batadv_iv_ogm_orig_print
 
     print the originator table
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         debugfs table seq_file struct
+    :type seq: struct seq_file \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         the outgoing interface for which this should be printed
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_iv_ogm_neigh_get_tq_avg`:
 
@@ -520,14 +540,17 @@ batadv_iv_ogm_neigh_get_tq_avg
 
     Get the TQ average for a neighbour on a given outgoing interface.
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         Neighbour of interest
+    :type neigh_node: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         Outgoing interface of interest
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param u8 \*tq_avg:
+    :param tq_avg:
         Pointer of where to store the TQ average
+    :type tq_avg: u8 \*
 
 .. _`batadv_iv_ogm_neigh_get_tq_avg.return`:
 
@@ -545,29 +568,37 @@ batadv_iv_ogm_orig_dump_subentry
 
     Dump an originator subentry into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         Limit dump to entries with this outgoing interface
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         Originator to dump
+    :type orig_node: struct batadv_orig_node \*
 
-    :param struct batadv_neigh_node \*neigh_node:
+    :param neigh_node:
         Single hops neighbour
+    :type neigh_node: struct batadv_neigh_node \*
 
-    :param bool best:
+    :param best:
         Is the best originator
+    :type best: bool
 
 .. _`batadv_iv_ogm_orig_dump_subentry.return`:
 
@@ -585,26 +616,33 @@ batadv_iv_ogm_orig_dump_entry
 
     Dump an originator entry into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         Limit dump to entries with this outgoing interface
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param struct batadv_orig_node \*orig_node:
+    :param orig_node:
         Originator to dump
+    :type orig_node: struct batadv_orig_node \*
 
-    :param int \*sub_s:
+    :param sub_s:
         Number of sub entries to skip
+    :type sub_s: int \*
 
 .. _`batadv_iv_ogm_orig_dump_entry.description`:
 
@@ -629,29 +667,37 @@ batadv_iv_ogm_orig_dump_bucket
 
     Dump an originator bucket into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         Limit dump to entries with this outgoing interface
+    :type if_outgoing: struct batadv_hard_iface \*
 
-    :param struct hlist_head \*head:
+    :param head:
         Bucket to be dumped
+    :type head: struct hlist_head \*
 
-    :param int \*idx_s:
+    :param idx_s:
         Number of entries to be skipped
+    :type idx_s: int \*
 
-    :param int \*sub:
+    :param sub:
         Number of sub entries to be skipped
+    :type sub: int \*
 
 .. _`batadv_iv_ogm_orig_dump_bucket.return`:
 
@@ -669,17 +715,21 @@ batadv_iv_ogm_orig_dump
 
     Dump the originators into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Control block containing additional options
+    :type cb: struct netlink_callback \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*if_outgoing:
+    :param if_outgoing:
         Limit dump to entries with this outgoing interface
+    :type if_outgoing: struct batadv_hard_iface \*
 
 .. _`batadv_iv_hardif_neigh_print`:
 
@@ -690,11 +740,13 @@ batadv_iv_hardif_neigh_print
 
     print a single hop neighbour node
 
-    :param struct seq_file \*seq:
+    :param seq:
         neighbour table seq_file struct
+    :type seq: struct seq_file \*
 
-    :param struct batadv_hardif_neigh_node \*hardif_neigh:
+    :param hardif_neigh:
         hardif neighbour information
+    :type hardif_neigh: struct batadv_hardif_neigh_node \*
 
 .. _`batadv_iv_neigh_print`:
 
@@ -705,11 +757,13 @@ batadv_iv_neigh_print
 
     print the single hop neighbour list
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct seq_file \*seq:
+    :param seq:
         neighbour table seq_file struct
+    :type seq: struct seq_file \*
 
 .. _`batadv_iv_ogm_neigh_diff`:
 
@@ -720,20 +774,25 @@ batadv_iv_ogm_neigh_diff
 
     calculate tq difference of two neighbors
 
-    :param struct batadv_neigh_node \*neigh1:
+    :param neigh1:
         the first neighbor object of the comparison
+    :type neigh1: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing1:
+    :param if_outgoing1:
         outgoing interface for the first neighbor
+    :type if_outgoing1: struct batadv_hard_iface \*
 
-    :param struct batadv_neigh_node \*neigh2:
+    :param neigh2:
         the second neighbor object of the comparison
+    :type neigh2: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing2:
+    :param if_outgoing2:
         outgoing interface for the second neighbor
+    :type if_outgoing2: struct batadv_hard_iface \*
 
-    :param int \*diff:
+    :param diff:
         pointer to integer receiving the calculated difference
+    :type diff: int \*
 
 .. _`batadv_iv_ogm_neigh_diff.description`:
 
@@ -760,17 +819,21 @@ batadv_iv_ogm_neigh_dump_neigh
 
     Dump a neighbour into a netlink message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_hardif_neigh_node \*hardif_neigh:
+    :param hardif_neigh:
         Neighbour to be dumped
+    :type hardif_neigh: struct batadv_hardif_neigh_node \*
 
 .. _`batadv_iv_ogm_neigh_dump_neigh.return`:
 
@@ -788,23 +851,29 @@ batadv_iv_ogm_neigh_dump_hardif
 
     Dump the neighbours of a hard interface into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*hard_iface:
+    :param hard_iface:
         Hard interface to dump the neighbours for
+    :type hard_iface: struct batadv_hard_iface \*
 
-    :param int \*idx_s:
+    :param idx_s:
         Number of entries to skip
+    :type idx_s: int \*
 
 .. _`batadv_iv_ogm_neigh_dump_hardif.description`:
 
@@ -829,17 +898,21 @@ batadv_iv_ogm_neigh_dump
 
     Dump the neighbours into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Control block containing additional options
+    :type cb: struct netlink_callback \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_hard_iface \*single_hardif:
+    :param single_hardif:
         Limit dump to this hard interfaace
+    :type single_hardif: struct batadv_hard_iface \*
 
 .. _`batadv_iv_ogm_neigh_cmp`:
 
@@ -850,17 +923,21 @@ batadv_iv_ogm_neigh_cmp
 
     compare the metrics of two neighbors
 
-    :param struct batadv_neigh_node \*neigh1:
+    :param neigh1:
         the first neighbor object of the comparison
+    :type neigh1: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing1:
+    :param if_outgoing1:
         outgoing interface for the first neighbor
+    :type if_outgoing1: struct batadv_hard_iface \*
 
-    :param struct batadv_neigh_node \*neigh2:
+    :param neigh2:
         the second neighbor object of the comparison
+    :type neigh2: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing2:
+    :param if_outgoing2:
         outgoing interface for the second neighbor
+    :type if_outgoing2: struct batadv_hard_iface \*
 
 .. _`batadv_iv_ogm_neigh_cmp.return`:
 
@@ -879,17 +956,21 @@ batadv_iv_ogm_neigh_is_sob
 
     check if neigh1 is similarly good or better than neigh2 from the metric prospective
 
-    :param struct batadv_neigh_node \*neigh1:
+    :param neigh1:
         the first neighbor object of the comparison
+    :type neigh1: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing1:
+    :param if_outgoing1:
         outgoing interface for the first neighbor
+    :type if_outgoing1: struct batadv_hard_iface \*
 
-    :param struct batadv_neigh_node \*neigh2:
+    :param neigh2:
         the second neighbor object of the comparison
+    :type neigh2: struct batadv_neigh_node \*
 
-    :param struct batadv_hard_iface \*if_outgoing2:
+    :param if_outgoing2:
         outgoing interface for the second neighbor
+    :type if_outgoing2: struct batadv_hard_iface \*
 
 .. _`batadv_iv_ogm_neigh_is_sob.return`:
 
@@ -908,8 +989,9 @@ batadv_iv_init_sel_class
 
     initialize GW selection class
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         the bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_iv_gw_dump_entry`:
 
@@ -920,20 +1002,25 @@ batadv_iv_gw_dump_entry
 
     Dump a gateway into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param u32 portid:
+    :param portid:
         Port making netlink request
+    :type portid: u32
 
-    :param u32 seq:
+    :param seq:
         Sequence number of netlink message
+    :type seq: u32
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
-    :param struct batadv_gw_node \*gw_node:
+    :param gw_node:
         Gateway to be dumped
+    :type gw_node: struct batadv_gw_node \*
 
 .. _`batadv_iv_gw_dump_entry.return`:
 
@@ -951,14 +1038,17 @@ batadv_iv_gw_dump
 
     Dump gateways into a message
 
-    :param struct sk_buff \*msg:
+    :param msg:
         Netlink message to dump into
+    :type msg: struct sk_buff \*
 
-    :param struct netlink_callback \*cb:
+    :param cb:
         Control block containing additional options
+    :type cb: struct netlink_callback \*
 
-    :param struct batadv_priv \*bat_priv:
+    :param bat_priv:
         The bat priv with all the soft interface information
+    :type bat_priv: struct batadv_priv \*
 
 .. _`batadv_iv_init`:
 
@@ -969,8 +1059,9 @@ batadv_iv_init
 
     B.A.T.M.A.N. IV initialization function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`batadv_iv_init.return`:
 

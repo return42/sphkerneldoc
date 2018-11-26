@@ -10,8 +10,9 @@ dax_layout_busy_page
 
     find first pinned page in \ ``mapping``\ 
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space to scan for a page with ref count > 1
+    :type mapping: struct address_space \*
 
 .. _`dax_layout_busy_page.description`:
 
@@ -38,14 +39,17 @@ dax_iomap_rw
 
     Perform I/O to a DAX file
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         The control block for this I/O
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         The addresses to do I/O from or to
+    :type iter: struct iov_iter \*
 
-    :param const struct iomap_ops \*ops:
+    :param ops:
         iomap ops passed from the file system
+    :type ops: const struct iomap_ops \*
 
 .. _`dax_iomap_rw.description`:
 
@@ -65,20 +69,25 @@ dax_iomap_fault
 
     handle a page fault on a DAX file
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         The description of the fault
+    :type vmf: struct vm_fault \*
 
-    :param enum page_entry_size pe_size:
+    :param pe_size:
         Size of the page to fault in
+    :type pe_size: enum page_entry_size
 
-    :param pfn_t \*pfnp:
+    :param pfnp:
         PFN to insert for synchronous faults if fsync is required
+    :type pfnp: pfn_t \*
 
-    :param int \*iomap_errp:
+    :param iomap_errp:
         Storage for detailed error code in case of error
+    :type iomap_errp: int \*
 
-    :param const struct iomap_ops \*ops:
+    :param ops:
         Iomap ops passed from the file system
+    :type ops: const struct iomap_ops \*
 
 .. _`dax_iomap_fault.description`:
 
@@ -90,33 +99,6 @@ their fault handler for DAX files. \ :c:func:`dax_iomap_fault`\  assumes the cal
 has done all the necessary locking for page fault to proceed
 successfully.
 
-.. _`dax_insert_pfn_mkwrite`:
-
-dax_insert_pfn_mkwrite
-======================
-
-.. c:function:: vm_fault_t dax_insert_pfn_mkwrite(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t pfn)
-
-    insert PTE or PMD entry into page tables
-
-    :param struct vm_fault \*vmf:
-        The description of the fault
-
-    :param enum page_entry_size pe_size:
-        Size of entry to be inserted
-
-    :param pfn_t pfn:
-        PFN to insert
-
-.. _`dax_insert_pfn_mkwrite.description`:
-
-Description
------------
-
-This function inserts writeable PTE or PMD entry into page tables for mmaped
-DAX file.  It takes care of marking corresponding radix tree entry as dirty
-as well.
-
 .. _`dax_finish_sync_fault`:
 
 dax_finish_sync_fault
@@ -126,14 +108,17 @@ dax_finish_sync_fault
 
     finish synchronous page fault
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         The description of the fault
+    :type vmf: struct vm_fault \*
 
-    :param enum page_entry_size pe_size:
+    :param pe_size:
         Size of entry to be inserted
+    :type pe_size: enum page_entry_size
 
-    :param pfn_t pfn:
+    :param pfn:
         PFN to insert
+    :type pfn: pfn_t
 
 .. _`dax_finish_sync_fault.description`:
 

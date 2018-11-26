@@ -10,11 +10,13 @@ of_get_min_tck
 
     extract min timing values for ddr
 
-    :param struct device_node \*np:
+    :param np:
         pointer to ddr device tree node
+    :type np: struct device_node \*
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
 .. _`of_get_min_tck.description`:
 
@@ -35,18 +37,22 @@ of_get_ddr_timings
 
     extracts the ddr timings and updates no of frequencies available.
 
-    :param struct device_node \*np_ddr:
+    :param np_ddr:
         Pointer to ddr device tree node
+    :type np_ddr: struct device_node \*
 
-    :param struct device \*dev:
+    :param dev:
         Device requesting for ddr timings
+    :type dev: struct device \*
 
-    :param u32 device_type:
+    :param device_type:
         Type of ddr(LPDDR2 S2/S4)
+    :type device_type: u32
 
-    :param u32 \*nr_frequencies:
+    :param nr_frequencies:
         No of frequencies available for ddr
         (updated by this function)
+    :type nr_frequencies: u32 \*
 
 .. _`of_get_ddr_timings.description`:
 

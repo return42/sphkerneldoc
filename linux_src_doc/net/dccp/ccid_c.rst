@@ -10,11 +10,13 @@ ccid_get_builtin_ccids
 
     Populate a list of built-in CCIDs
 
-    :param u8 \*\*ccid_array:
+    :param ccid_array:
         pointer to copy into
+    :type ccid_array: u8 \*\*
 
-    :param u8 \*array_len:
+    :param array_len:
         value to return length into
+    :type array_len: u8 \*
 
 .. _`ccid_get_builtin_ccids.description`:
 

@@ -20,11 +20,6 @@ for example) or scalar (bitmap_weight, for example) results
 carefully filter out these unused bits from impacting their
 results.
 
-These operations actually hold to a slightly stronger rule:
-if you don't input any bitmaps to these ops that have some
-unused bits set, then they won't output any set unused bits
-in output bitmaps.
-
 The byte ordering of bitmaps is more natural on little
 endian architectures.  See the big-endian headers
 include/asm-ppc64/bitops.h and include/asm-s390/bitops.h
@@ -39,17 +34,21 @@ __bitmap_shift_right
 
     logical right shift of the bits in a bitmap
 
-    :param unsigned long \*dst:
+    :param dst:
         destination bitmap
+    :type dst: unsigned long \*
 
-    :param const unsigned long \*src:
+    :param src:
         source bitmap
+    :type src: const unsigned long \*
 
-    :param unsigned shift:
+    :param shift:
         shift by this many bits
+    :type shift: unsigned
 
-    :param unsigned nbits:
+    :param nbits:
         bitmap size, in bits
+    :type nbits: unsigned
 
 .. _`__bitmap_shift_right.description`:
 
@@ -69,17 +68,21 @@ __bitmap_shift_left
 
     logical left shift of the bits in a bitmap
 
-    :param unsigned long \*dst:
+    :param dst:
         destination bitmap
+    :type dst: unsigned long \*
 
-    :param const unsigned long \*src:
+    :param src:
         source bitmap
+    :type src: const unsigned long \*
 
-    :param unsigned int shift:
+    :param shift:
         shift by this many bits
+    :type shift: unsigned int
 
-    :param unsigned int nbits:
+    :param nbits:
         bitmap size, in bits
+    :type nbits: unsigned int
 
 .. _`__bitmap_shift_left.description`:
 
@@ -99,23 +102,29 @@ bitmap_find_next_zero_area_off
 
     find a contiguous aligned zero area
 
-    :param unsigned long \*map:
+    :param map:
         The address to base the search on
+    :type map: unsigned long \*
 
-    :param unsigned long size:
+    :param size:
         The bitmap size in bits
+    :type size: unsigned long
 
-    :param unsigned long start:
+    :param start:
         The bitnumber to start searching at
+    :type start: unsigned long
 
-    :param unsigned int nr:
+    :param nr:
         The number of zeroed bits we're looking for
+    :type nr: unsigned int
 
-    :param unsigned long align_mask:
+    :param align_mask:
         Alignment mask for zero area
+    :type align_mask: unsigned long
 
-    :param unsigned long align_offset:
+    :param align_offset:
         Alignment offset for zero area.
+    :type align_offset: unsigned long
 
 .. _`bitmap_find_next_zero_area_off.description`:
 
@@ -135,21 +144,26 @@ __bitmap_parse
 
     convert an ASCII hex string into a bitmap.
 
-    :param const char \*buf:
+    :param buf:
         pointer to buffer containing string.
+    :type buf: const char \*
 
-    :param unsigned int buflen:
+    :param buflen:
         buffer size in bytes.  If string is smaller than this
         then it must be terminated with a \0.
+    :type buflen: unsigned int
 
-    :param int is_user:
+    :param is_user:
         location of buffer, 0 indicates kernel space
+    :type is_user: int
 
-    :param unsigned long \*maskp:
+    :param maskp:
         pointer to bitmap array that will contain result.
+    :type maskp: unsigned long \*
 
-    :param int nmaskbits:
+    :param nmaskbits:
         size of bitmap, in bits.
+    :type nmaskbits: int
 
 .. _`__bitmap_parse.description`:
 
@@ -172,18 +186,22 @@ bitmap_parse_user
 
     convert an ASCII hex string in a user buffer into a bitmap
 
-    :param const char __user \*ubuf:
+    :param ubuf:
         pointer to user buffer containing string.
+    :type ubuf: const char __user \*
 
-    :param unsigned int ulen:
+    :param ulen:
         buffer size in bytes.  If string is smaller than this
         then it must be terminated with a \0.
+    :type ulen: unsigned int
 
-    :param unsigned long \*maskp:
+    :param maskp:
         pointer to bitmap array that will contain result.
+    :type maskp: unsigned long \*
 
-    :param int nmaskbits:
+    :param nmaskbits:
         size of bitmap, in bits.
+    :type nmaskbits: int
 
 .. _`bitmap_parse_user.description`:
 
@@ -205,17 +223,21 @@ bitmap_print_to_pagebuf
 
     convert bitmap to list or hex format ASCII string
 
-    :param bool list:
+    :param list:
         indicates whether the bitmap must be list
+    :type list: bool
 
-    :param char \*buf:
+    :param buf:
         page aligned buffer into which string is placed
+    :type buf: char \*
 
-    :param const unsigned long \*maskp:
+    :param maskp:
         pointer to bitmap to convert
+    :type maskp: const unsigned long \*
 
-    :param int nmaskbits:
+    :param nmaskbits:
         size of bitmap, in bits
+    :type nmaskbits: int
 
 .. _`bitmap_print_to_pagebuf.description`:
 
@@ -226,9 +248,10 @@ Output format is a comma-separated list of decimal numbers and
 ranges if list is specified or hex digits grouped into comma-separated
 sets of 8 digits/set. Returns the number of characters written to buf.
 
-It is assumed that \ ``buf``\  is a pointer into a PAGE_SIZE area and that
-sufficient storage remains at \ ``buf``\  to accommodate the
-\ :c:func:`bitmap_print_to_pagebuf`\  output.
+It is assumed that \ ``buf``\  is a pointer into a PAGE_SIZE, page-aligned
+area and that sufficient storage remains at \ ``buf``\  to accommodate the
+\ :c:func:`bitmap_print_to_pagebuf`\  output. Returns the number of characters
+actually printed to \ ``buf``\ , excluding terminating '\0'.
 
 .. _`__bitmap_parselist`:
 
@@ -239,21 +262,26 @@ __bitmap_parselist
 
     convert list format ASCII string to bitmap
 
-    :param const char \*buf:
+    :param buf:
         read nul-terminated user string from this buffer
+    :type buf: const char \*
 
-    :param unsigned int buflen:
+    :param buflen:
         buffer size in bytes.  If string is smaller than this
         then it must be terminated with a \0.
+    :type buflen: unsigned int
 
-    :param int is_user:
+    :param is_user:
         location of buffer, 0 indicates kernel space
+    :type is_user: int
 
-    :param unsigned long \*maskp:
+    :param maskp:
         write resulting mask here
+    :type maskp: unsigned long \*
 
-    :param int nmaskbits:
+    :param nmaskbits:
         number of bits in mask to be written
+    :type nmaskbits: int
 
 .. _`__bitmap_parselist.description`:
 
@@ -288,18 +316,22 @@ bitmap_parselist_user
 
 .. c:function:: int bitmap_parselist_user(const char __user *ubuf, unsigned int ulen, unsigned long *maskp, int nmaskbits)
 
-    :param const char __user \*ubuf:
+    :param ubuf:
         pointer to user buffer containing string.
+    :type ubuf: const char __user \*
 
-    :param unsigned int ulen:
+    :param ulen:
         buffer size in bytes.  If string is smaller than this
         then it must be terminated with a \0.
+    :type ulen: unsigned int
 
-    :param unsigned long \*maskp:
+    :param maskp:
         pointer to bitmap array that will contain result.
+    :type maskp: unsigned long \*
 
-    :param int nmaskbits:
+    :param nmaskbits:
         size of bitmap, in bits.
+    :type nmaskbits: int
 
 .. _`bitmap_parselist_user.description`:
 
@@ -321,14 +353,17 @@ bitmap_pos_to_ord
 
     find ordinal of set bit at given position in bitmap
 
-    :param const unsigned long \*buf:
+    :param buf:
         pointer to a bitmap
+    :type buf: const unsigned long \*
 
-    :param unsigned int pos:
+    :param pos:
         a bit position in \ ``buf``\  (0 <= \ ``pos``\  < \ ``nbits``\ )
+    :type pos: unsigned int
 
-    :param unsigned int nbits:
+    :param nbits:
         number of valid bit positions in \ ``buf``\ 
+    :type nbits: unsigned int
 
 .. _`bitmap_pos_to_ord.description`:
 
@@ -356,14 +391,17 @@ bitmap_ord_to_pos
 
     find position of n-th set bit in bitmap
 
-    :param const unsigned long \*buf:
+    :param buf:
         pointer to bitmap
+    :type buf: const unsigned long \*
 
-    :param unsigned int ord:
+    :param ord:
         ordinal bit position (n-th set bit, n >= 0)
+    :type ord: unsigned int
 
-    :param unsigned int nbits:
+    :param nbits:
         number of valid bit positions in \ ``buf``\ 
+    :type nbits: unsigned int
 
 .. _`bitmap_ord_to_pos.description`:
 
@@ -391,20 +429,25 @@ bitmap_remap
 
     Apply map defined by a pair of bitmaps to another bitmap
 
-    :param unsigned long \*dst:
+    :param dst:
         remapped result
+    :type dst: unsigned long \*
 
-    :param const unsigned long \*src:
+    :param src:
         subset to be remapped
+    :type src: const unsigned long \*
 
-    :param const unsigned long \*old:
+    :param old:
         defines domain of map
+    :type old: const unsigned long \*
 
-    :param const unsigned long \*new:
+    :param new:
         defines range of map
+    :type new: const unsigned long \*
 
-    :param unsigned int nbits:
+    :param nbits:
         number of bits in each of these bitmaps
+    :type nbits: unsigned int
 
 .. _`bitmap_remap.description`:
 
@@ -444,17 +487,21 @@ bitmap_bitremap
 
     Apply map defined by a pair of bitmaps to a single bit
 
-    :param int oldbit:
+    :param oldbit:
         bit position to be mapped
+    :type oldbit: int
 
-    :param const unsigned long \*old:
+    :param old:
         defines domain of map
+    :type old: const unsigned long \*
 
-    :param const unsigned long \*new:
+    :param new:
         defines range of map
+    :type new: const unsigned long \*
 
-    :param int bits:
+    :param bits:
         number of bits in each of these bitmaps
+    :type bits: int
 
 .. _`bitmap_bitremap.description`:
 
@@ -489,17 +536,21 @@ bitmap_onto
 
     translate one bitmap relative to another
 
-    :param unsigned long \*dst:
+    :param dst:
         resulting translated bitmap
+    :type dst: unsigned long \*
 
-    :param const unsigned long \*orig:
+    :param orig:
         original untranslated bitmap
+    :type orig: const unsigned long \*
 
-    :param const unsigned long \*relmap:
+    :param relmap:
         bitmap relative to which translated
+    :type relmap: const unsigned long \*
 
-    :param unsigned int bits:
+    :param bits:
         number of bits in each of these bitmaps
+    :type bits: unsigned int
 
 .. _`bitmap_onto.description`:
 
@@ -614,17 +665,21 @@ bitmap_fold
 
     fold larger bitmap into smaller, modulo specified size
 
-    :param unsigned long \*dst:
+    :param dst:
         resulting smaller bitmap
+    :type dst: unsigned long \*
 
-    :param const unsigned long \*orig:
+    :param orig:
         original larger bitmap
+    :type orig: const unsigned long \*
 
-    :param unsigned int sz:
+    :param sz:
         specified size
+    :type sz: unsigned int
 
-    :param unsigned int nbits:
+    :param nbits:
         number of bits in each of these bitmaps
+    :type nbits: unsigned int
 
 .. _`bitmap_fold.description`:
 
@@ -644,14 +699,17 @@ bitmap_find_free_region
 
     find a contiguous aligned mem region
 
-    :param unsigned long \*bitmap:
+    :param bitmap:
         array of unsigned longs corresponding to the bitmap
+    :type bitmap: unsigned long \*
 
-    :param unsigned int bits:
+    :param bits:
         number of bits in the bitmap
+    :type bits: unsigned int
 
-    :param int order:
+    :param order:
         region size (log base 2 of number of bits) to find
+    :type order: int
 
 .. _`bitmap_find_free_region.description`:
 
@@ -675,14 +733,17 @@ bitmap_release_region
 
     release allocated bitmap region
 
-    :param unsigned long \*bitmap:
+    :param bitmap:
         array of unsigned longs corresponding to the bitmap
+    :type bitmap: unsigned long \*
 
-    :param unsigned int pos:
+    :param pos:
         beginning of bit region to release
+    :type pos: unsigned int
 
-    :param int order:
+    :param order:
         region size (log base 2 of number of bits) to release
+    :type order: int
 
 .. _`bitmap_release_region.description`:
 
@@ -703,14 +764,17 @@ bitmap_allocate_region
 
     allocate bitmap region
 
-    :param unsigned long \*bitmap:
+    :param bitmap:
         array of unsigned longs corresponding to the bitmap
+    :type bitmap: unsigned long \*
 
-    :param unsigned int pos:
+    :param pos:
         beginning of bit region to allocate
+    :type pos: unsigned int
 
-    :param int order:
+    :param order:
         region size (log base 2 of number of bits) to allocate
+    :type order: int
 
 .. _`bitmap_allocate_region.description`:
 
@@ -731,14 +795,17 @@ bitmap_copy_le
 
     copy a bitmap, putting the bits into little-endian order.
 
-    :param unsigned long \*dst:
+    :param dst:
         destination buffer
+    :type dst: unsigned long \*
 
-    :param const unsigned long \*src:
+    :param src:
         bitmap to copy
+    :type src: const unsigned long \*
 
-    :param unsigned int nbits:
+    :param nbits:
         number of bits in the bitmap
+    :type nbits: unsigned int
 
 .. _`bitmap_copy_le.description`:
 
@@ -756,14 +823,17 @@ bitmap_from_arr32
 
     copy the contents of u32 array of bits to bitmap
 
-    :param unsigned long \*bitmap:
+    :param bitmap:
         array of unsigned longs, the destination bitmap
+    :type bitmap: unsigned long \*
 
-    :param const u32 \*buf:
+    :param buf:
         array of u32 (in host byte order), the source bitmap
+    :type buf: const u32 \*
 
-    :param unsigned int nbits:
+    :param nbits:
         number of bits in \ ``bitmap``\ 
+    :type nbits: unsigned int
 
 .. _`bitmap_to_arr32`:
 
@@ -774,14 +844,17 @@ bitmap_to_arr32
 
     copy the contents of bitmap to a u32 array of bits
 
-    :param u32 \*buf:
+    :param buf:
         array of u32 (in host byte order), the dest bitmap
+    :type buf: u32 \*
 
-    :param const unsigned long \*bitmap:
+    :param bitmap:
         array of unsigned longs, the source bitmap
+    :type bitmap: const unsigned long \*
 
-    :param unsigned int nbits:
+    :param nbits:
         number of bits in \ ``bitmap``\ 
+    :type nbits: unsigned int
 
 .. This file was automatic generated / don't edit.
 

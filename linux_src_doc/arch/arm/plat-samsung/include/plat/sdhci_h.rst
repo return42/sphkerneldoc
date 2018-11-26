@@ -10,8 +10,9 @@ s3c_sdhci0_set_platdata
 
     Set platform data for S3C SDHCI device.
 
-    :param struct s3c_sdhci_platdata \*pd:
+    :param pd:
         Platform data to register to device.
+    :type pd: struct s3c_sdhci_platdata \*
 
 .. _`s3c_sdhci0_set_platdata.description`:
 

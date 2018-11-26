@@ -10,11 +10,13 @@ memweight
 
     count the total number of bits set in memory area
 
-    :param const void \*ptr:
+    :param ptr:
         pointer to the start of the area
+    :type ptr: const void \*
 
-    :param size_t bytes:
+    :param bytes:
         the size of the area
+    :type bytes: size_t
 
 .. This file was automatic generated / don't edit.
 

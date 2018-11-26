@@ -10,8 +10,9 @@ uwb_radio_start
 
     request that the radio be started
 
-    :param struct uwb_pal \*pal:
+    :param pal:
         the PAL making the request.
+    :type pal: struct uwb_pal \*
 
 .. _`uwb_radio_start.description`:
 
@@ -30,8 +31,9 @@ uwb_radio_stop
 
     request that the radio be stopped.
 
-    :param struct uwb_pal \*pal:
+    :param pal:
         the PAL making the request.
+    :type pal: struct uwb_pal \*
 
 .. _`uwb_radio_stop.description`:
 

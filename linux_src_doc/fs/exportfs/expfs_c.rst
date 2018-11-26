@@ -10,14 +10,17 @@ get_name
 
     default export_operations->get_name function
 
-    :param const struct path \*path:
+    :param path:
         the directory in which to find a name
+    :type path: const struct path \*
 
-    :param char \*name:
+    :param name:
         a pointer to a \ ``NAME_MAX``\ +1 char buffer to store the name
+    :type name: char \*
 
-    :param struct dentry \*child:
+    :param child:
         the dentry for the child directory.
+    :type child: struct dentry \*
 
 .. _`get_name.description`:
 
@@ -36,17 +39,21 @@ export_encode_fh
 
     default export_operations->encode_fh function
 
-    :param struct inode \*inode:
+    :param inode:
         the object to encode
+    :type inode: struct inode \*
 
-    :param struct fid \*fid:
+    :param fid:
         where to store the file handle fragment
+    :type fid: struct fid \*
 
-    :param int \*max_len:
+    :param max_len:
         maximum length to store there
+    :type max_len: int \*
 
-    :param struct inode \*parent:
+    :param parent:
         parent directory inode, if wanted
+    :type parent: struct inode \*
 
 .. _`export_encode_fh.description`:
 

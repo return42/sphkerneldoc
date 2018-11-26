@@ -30,11 +30,13 @@ intel_get_shared_dpll_by_id
 
     get a DPLL given its id
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum intel_dpll_id id:
+    :param id:
         pll id
+    :type id: enum intel_dpll_id
 
 .. _`intel_get_shared_dpll_by_id.return`:
 
@@ -52,11 +54,13 @@ intel_get_shared_dpll_id
 
     get the id of a DPLL
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param struct intel_shared_dpll \*pll:
+    :param pll:
         the DPLL
+    :type pll: struct intel_shared_dpll \*
 
 .. _`intel_get_shared_dpll_id.return`:
 
@@ -74,8 +78,9 @@ intel_prepare_shared_dpll
 
     call a dpll's prepare hook
 
-    :param struct intel_crtc \*crtc:
+    :param crtc:
         CRTC which has a shared dpll
+    :type crtc: struct intel_crtc \*
 
 .. _`intel_prepare_shared_dpll.description`:
 
@@ -94,8 +99,9 @@ intel_enable_shared_dpll
 
     enable a CRTC's shared DPLL
 
-    :param struct intel_crtc \*crtc:
+    :param crtc:
         CRTC which has a shared DPLL
+    :type crtc: struct intel_crtc \*
 
 .. _`intel_enable_shared_dpll.description`:
 
@@ -113,8 +119,9 @@ intel_disable_shared_dpll
 
     disable a CRTC's shared DPLL
 
-    :param struct intel_crtc \*crtc:
+    :param crtc:
         CRTC which has a shared DPLL
+    :type crtc: struct intel_crtc \*
 
 .. _`intel_disable_shared_dpll.description`:
 
@@ -132,8 +139,9 @@ intel_shared_dpll_swap_state
 
     make atomic DPLL configuration effective
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state
+    :type state: struct drm_atomic_state \*
 
 .. _`intel_shared_dpll_swap_state.description`:
 
@@ -156,8 +164,9 @@ intel_shared_dpll_init
 
     Initialize shared DPLLs
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm device
+    :type dev: struct drm_device \*
 
 .. _`intel_shared_dpll_init.description`:
 
@@ -175,14 +184,17 @@ intel_get_shared_dpll
 
     get a shared DPLL for CRTC and encoder combination
 
-    :param struct intel_crtc \*crtc:
+    :param crtc:
         CRTC
+    :type crtc: struct intel_crtc \*
 
-    :param struct intel_crtc_state \*crtc_state:
+    :param crtc_state:
         atomic state for \ ``crtc``\ 
+    :type crtc_state: struct intel_crtc_state \*
 
-    :param struct intel_encoder \*encoder:
+    :param encoder:
         encoder
+    :type encoder: struct intel_encoder \*
 
 .. _`intel_get_shared_dpll.description`:
 
@@ -211,14 +223,17 @@ intel_release_shared_dpll
 
     end use of DPLL by CRTC in atomic state
 
-    :param struct intel_shared_dpll \*dpll:
+    :param dpll:
         dpll in use by \ ``crtc``\ 
+    :type dpll: struct intel_shared_dpll \*
 
-    :param struct intel_crtc \*crtc:
+    :param crtc:
         crtc
+    :type crtc: struct intel_crtc \*
 
-    :param struct drm_atomic_state \*state:
+    :param state:
         atomic state
+    :type state: struct drm_atomic_state \*
 
 .. _`intel_release_shared_dpll.description`:
 
@@ -238,11 +253,13 @@ intel_dpll_dump_hw_state
 
     write hw_state to dmesg
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 drm device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param struct intel_dpll_hw_state \*hw_state:
+    :param hw_state:
         hw state to be written to the log
+    :type hw_state: struct intel_dpll_hw_state \*
 
 .. _`intel_dpll_dump_hw_state.description`:
 

@@ -10,8 +10,9 @@ get_exclusive
 
     get exclusive access to an UBI volume.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
 .. _`get_exclusive.description`:
 
@@ -31,11 +32,13 @@ revoke_exclusive
 
     revoke exclusive mode.
 
-    :param struct ubi_volume_desc \*desc:
+    :param desc:
         volume descriptor
+    :type desc: struct ubi_volume_desc \*
 
-    :param int mode:
+    :param mode:
         new mode to switch to
+    :type mode: int
 
 .. _`verify_mkvol_req`:
 
@@ -46,11 +49,13 @@ verify_mkvol_req
 
     verify volume creation request.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param const struct ubi_mkvol_req \*req:
+    :param req:
         the request to check
+    :type req: const struct ubi_mkvol_req \*
 
 .. _`verify_mkvol_req.description`:
 
@@ -68,11 +73,13 @@ verify_rsvol_req
 
     verify volume re-size request.
 
-    :param const struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: const struct ubi_device \*
 
-    :param const struct ubi_rsvol_req \*req:
+    :param req:
         the request to check
+    :type req: const struct ubi_rsvol_req \*
 
 .. _`verify_rsvol_req.description`:
 
@@ -90,11 +97,13 @@ rename_volumes
 
     rename UBI volumes.
 
-    :param struct ubi_device \*ubi:
+    :param ubi:
         UBI device description object
+    :type ubi: struct ubi_device \*
 
-    :param struct ubi_rnvol_req \*req:
+    :param req:
         volumes re-name request
+    :type req: struct ubi_rnvol_req \*
 
 .. _`rename_volumes.description`:
 

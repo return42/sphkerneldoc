@@ -10,14 +10,17 @@ zfcp_dbf_hba_fsf_res
 
     trace event for fsf responses
 
-    :param char \*tag:
+    :param tag:
         tag indicating which kind of unsolicited status has been received
+    :type tag: char \*
 
-    :param int level:
+    :param level:
         *undescribed*
+    :type level: int
 
-    :param struct zfcp_fsf_req \*req:
+    :param req:
         request for which a response was received
+    :type req: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_hba_fsf_uss`:
 
@@ -28,11 +31,13 @@ zfcp_dbf_hba_fsf_uss
 
     trace event for an unsolicited status buffer
 
-    :param char \*tag:
+    :param tag:
         tag indicating which kind of unsolicited status has been received
+    :type tag: char \*
 
-    :param struct zfcp_fsf_req \*req:
+    :param req:
         request providing the unsolicited status
+    :type req: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_hba_bit_err`:
 
@@ -43,11 +48,13 @@ zfcp_dbf_hba_bit_err
 
     trace event for bit error conditions
 
-    :param char \*tag:
+    :param tag:
         tag indicating which kind of unsolicited status has been received
+    :type tag: char \*
 
-    :param struct zfcp_fsf_req \*req:
+    :param req:
         request which caused the bit_error condition
+    :type req: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_hba_def_err`:
 
@@ -58,17 +65,21 @@ zfcp_dbf_hba_def_err
 
     trace event for deferred error messages
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         pointer to struct zfcp_adapter
+    :type adapter: struct zfcp_adapter \*
 
-    :param u64 req_id:
+    :param req_id:
         request id which caused the deferred error message
+    :type req_id: u64
 
-    :param u16 scount:
+    :param scount:
         number of sbals incl. the signaling sbal
+    :type scount: u16
 
-    :param void \*\*pl:
+    :param pl:
         array of all involved sbals
+    :type pl: void \*\*
 
 .. _`zfcp_dbf_hba_basic`:
 
@@ -79,11 +90,13 @@ zfcp_dbf_hba_basic
 
     trace event for basic adapter events
 
-    :param char \*tag:
+    :param tag:
         *undescribed*
+    :type tag: char \*
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         pointer to struct zfcp_adapter
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_dbf_rec_trig`:
 
@@ -94,23 +107,29 @@ zfcp_dbf_rec_trig
 
     trace event related to triggered recovery
 
-    :param char \*tag:
+    :param tag:
         identifier for event
+    :type tag: char \*
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         adapter on which the erp_action should run
+    :type adapter: struct zfcp_adapter \*
 
-    :param struct zfcp_port \*port:
+    :param port:
         remote port involved in the erp_action
+    :type port: struct zfcp_port \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device involved in the erp_action
+    :type sdev: struct scsi_device \*
 
-    :param u8 want:
+    :param want:
         wanted erp_action
+    :type want: u8
 
-    :param u8 need:
+    :param need:
         required erp_action
+    :type need: u8
 
 .. _`zfcp_dbf_rec_trig.description`:
 
@@ -128,23 +147,29 @@ zfcp_dbf_rec_trig_lock
 
     trace event related to triggered recovery with lock
 
-    :param char \*tag:
+    :param tag:
         identifier for event
+    :type tag: char \*
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         adapter on which the erp_action should run
+    :type adapter: struct zfcp_adapter \*
 
-    :param struct zfcp_port \*port:
+    :param port:
         remote port involved in the erp_action
+    :type port: struct zfcp_port \*
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         scsi device involved in the erp_action
+    :type sdev: struct scsi_device \*
 
-    :param u8 want:
+    :param want:
         wanted erp_action
+    :type want: u8
 
-    :param u8 need:
+    :param need:
         required erp_action
+    :type need: u8
 
 .. _`zfcp_dbf_rec_trig_lock.description`:
 
@@ -162,14 +187,17 @@ zfcp_dbf_rec_run_lvl
 
     trace event related to running recovery
 
-    :param int level:
+    :param level:
         trace level to be used for event
+    :type level: int
 
-    :param char \*tag:
+    :param tag:
         identifier for event
+    :type tag: char \*
 
-    :param struct zfcp_erp_action \*erp:
+    :param erp:
         erp_action running
+    :type erp: struct zfcp_erp_action \*
 
 .. _`zfcp_dbf_rec_run`:
 
@@ -180,11 +208,13 @@ zfcp_dbf_rec_run
 
     trace event related to running recovery
 
-    :param char \*tag:
+    :param tag:
         identifier for event
+    :type tag: char \*
 
-    :param struct zfcp_erp_action \*erp:
+    :param erp:
         erp_action running
+    :type erp: struct zfcp_erp_action \*
 
 .. _`zfcp_dbf_rec_run_wka`:
 
@@ -195,14 +225,17 @@ zfcp_dbf_rec_run_wka
 
     trace wka port event with info like running recovery
 
-    :param char \*tag:
+    :param tag:
         identifier for event
+    :type tag: char \*
 
-    :param struct zfcp_fc_wka_port \*wka_port:
+    :param wka_port:
         well known address port
+    :type wka_port: struct zfcp_fc_wka_port \*
 
-    :param u64 req_id:
+    :param req_id:
         request ID to correlate with potential HBA trace record
+    :type req_id: u64
 
 .. _`zfcp_dbf_san_req`:
 
@@ -213,14 +246,17 @@ zfcp_dbf_san_req
 
     trace event for issued SAN request
 
-    :param char \*tag:
+    :param tag:
         identifier for event
+    :type tag: char \*
 
-    :param struct zfcp_fsf_req \*fsf:
+    :param fsf:
         *undescribed*
+    :type fsf: struct zfcp_fsf_req \*
 
-    :param u32 d_id:
+    :param d_id:
         *undescribed*
+    :type d_id: u32
 
 .. _`zfcp_dbf_san_req.d_id`:
 
@@ -238,11 +274,13 @@ zfcp_dbf_san_res
 
     trace event for received SAN request
 
-    :param char \*tag:
+    :param tag:
         identifier for event
+    :type tag: char \*
 
-    :param struct zfcp_fsf_req \*fsf:
+    :param fsf:
         *undescribed*
+    :type fsf: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_san_in_els`:
 
@@ -253,11 +291,13 @@ zfcp_dbf_san_in_els
 
     trace event for incoming ELS
 
-    :param char \*tag:
+    :param tag:
         identifier for event
+    :type tag: char \*
 
-    :param struct zfcp_fsf_req \*fsf:
+    :param fsf:
         *undescribed*
+    :type fsf: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_scsi_common`:
 
@@ -268,20 +308,25 @@ zfcp_dbf_scsi_common
 
     Common trace event helper for scsi.
 
-    :param char \*tag:
+    :param tag:
         Identifier for event.
+    :type tag: char \*
 
-    :param int level:
+    :param level:
         trace level of event.
+    :type level: int
 
-    :param struct scsi_device \*sdev:
+    :param sdev:
         Pointer to SCSI device as context for this event.
+    :type sdev: struct scsi_device \*
 
-    :param struct scsi_cmnd \*sc:
+    :param sc:
         Pointer to SCSI command, or NULL with task management function (TMF).
+    :type sc: struct scsi_cmnd \*
 
-    :param struct zfcp_fsf_req \*fsf:
+    :param fsf:
         Pointer to FSF request, or NULL.
+    :type fsf: struct zfcp_fsf_req \*
 
 .. _`zfcp_dbf_scsi_eh`:
 
@@ -292,17 +337,21 @@ zfcp_dbf_scsi_eh
 
     Trace event for special cases of scsi_eh callbacks.
 
-    :param char \*tag:
+    :param tag:
         Identifier for event.
+    :type tag: char \*
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         Pointer to zfcp adapter as context for this event.
+    :type adapter: struct zfcp_adapter \*
 
-    :param unsigned int scsi_id:
+    :param scsi_id:
         SCSI ID/target to indicate scope of task management function (TMF).
+    :type scsi_id: unsigned int
 
-    :param int ret:
+    :param ret:
         Return value of calling function.
+    :type ret: int
 
 .. _`zfcp_dbf_scsi_eh.this-scsi-trace-variant-does-not-depend-on-any-of`:
 
@@ -320,8 +369,9 @@ zfcp_dbf_adapter_register
 
     registers debug feature for an adapter
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         pointer to adapter for which debug features should be registered
+    :type adapter: struct zfcp_adapter \*
 
 .. _`zfcp_dbf_adapter_register.return`:
 
@@ -339,8 +389,9 @@ zfcp_dbf_adapter_unregister
 
     unregisters debug feature for an adapter
 
-    :param struct zfcp_adapter \*adapter:
+    :param adapter:
         pointer to adapter for which debug features should be unregistered
+    :type adapter: struct zfcp_adapter \*
 
 .. This file was automatic generated / don't edit.
 

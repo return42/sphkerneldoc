@@ -10,8 +10,9 @@ nilfs_forget_buffer
 
     discard dirty state
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer head of the buffer to be discarded
+    :type bh: struct buffer_head \*
 
 .. _`nilfs_copy_buffer`:
 
@@ -22,11 +23,13 @@ nilfs_copy_buffer
 
     - copy buffer data and flags
 
-    :param struct buffer_head \*dbh:
+    :param dbh:
         destination buffer
+    :type dbh: struct buffer_head \*
 
-    :param struct buffer_head \*sbh:
+    :param sbh:
         source buffer
+    :type sbh: struct buffer_head \*
 
 .. _`nilfs_page_buffers_clean`:
 
@@ -37,8 +40,9 @@ nilfs_page_buffers_clean
 
     check if a page has dirty buffers or not.
 
-    :param struct page \*page:
+    :param page:
         page to be checked
+    :type page: struct page \*
 
 .. _`nilfs_page_buffers_clean.description`:
 
@@ -57,14 +61,17 @@ nilfs_copy_page
 
     - copy the page with buffers
 
-    :param struct page \*dst:
+    :param dst:
         destination page
+    :type dst: struct page \*
 
-    :param struct page \*src:
+    :param src:
         source page
+    :type src: struct page \*
 
-    :param int copy_dirty:
+    :param copy_dirty:
         flag whether to copy dirty states on the page's buffer heads.
+    :type copy_dirty: int
 
 .. _`nilfs_copy_page.description`:
 
@@ -84,18 +91,20 @@ nilfs_copy_back_pages
 
     - copy back pages to original cache from shadow cache
 
-    :param struct address_space \*dmap:
+    :param dmap:
         destination page cache
+    :type dmap: struct address_space \*
 
-    :param struct address_space \*smap:
+    :param smap:
         source page cache
+    :type smap: struct address_space \*
 
 .. _`nilfs_copy_back_pages.description`:
 
 Description
 -----------
 
-No pages must no be added to the cache during this process.
+No pages must be added to the cache during this process.
 This must be ensured by the caller.
 
 .. _`nilfs_clear_dirty_pages`:
@@ -107,11 +116,13 @@ nilfs_clear_dirty_pages
 
     discard dirty pages in address space
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space with dirty pages for discarding
+    :type mapping: struct address_space \*
 
-    :param bool silent:
+    :param silent:
         suppress [true] or print [false] warning messages
+    :type silent: bool
 
 .. _`nilfs_clear_dirty_page`:
 
@@ -122,11 +133,13 @@ nilfs_clear_dirty_page
 
     discard dirty page
 
-    :param struct page \*page:
+    :param page:
         dirty page that will be discarded
+    :type page: struct page \*
 
-    :param bool silent:
+    :param silent:
         suppress [true] or print [false] warning messages
+    :type silent: bool
 
 .. _`nilfs_find_uncommitted_extent`:
 
@@ -137,14 +150,17 @@ nilfs_find_uncommitted_extent
 
     find extent of uncommitted data
 
-    :param struct inode \*inode:
+    :param inode:
         inode
+    :type inode: struct inode \*
 
-    :param sector_t start_blk:
+    :param start_blk:
         start block offset (in)
+    :type start_blk: sector_t
 
-    :param sector_t \*blkoff:
+    :param blkoff:
         start offset of the found extent (out)
+    :type blkoff: sector_t \*
 
 .. _`nilfs_find_uncommitted_extent.description`:
 

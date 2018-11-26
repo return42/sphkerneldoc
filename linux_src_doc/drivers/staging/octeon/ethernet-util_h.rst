@@ -10,8 +10,9 @@ cvm_oct_get_buffer_ptr
 
     convert packet data address to pointer
 
-    :param union cvmx_buf_ptr packet_ptr:
+    :param packet_ptr:
         Packet data hardware address
+    :type packet_ptr: union cvmx_buf_ptr
 
 .. _`cvm_oct_get_buffer_ptr.description`:
 
@@ -29,8 +30,9 @@ INTERFACE
 
     convert IPD port to logical interface
 
-    :param int ipd_port:
+    :param ipd_port:
         Port to check
+    :type ipd_port: int
 
 .. _`interface.description`:
 
@@ -48,8 +50,9 @@ INDEX
 
     convert IPD/PKO port number to the port's interface index
 
-    :param int ipd_port:
+    :param ipd_port:
         Port to check
+    :type ipd_port: int
 
 .. _`index.description`:
 

@@ -10,14 +10,17 @@ cvm_oct_fill_hw_skbuff
 
     fill the supplied hardware pool with skbuffs
 
-    :param int pool:
+    :param pool:
         Pool to allocate an skbuff for
+    :type pool: int
 
-    :param int size:
+    :param size:
         Size of the buffer needed for the pool
+    :type size: int
 
-    :param int elements:
+    :param elements:
         Number of buffers to allocate
+    :type elements: int
 
 .. _`cvm_oct_fill_hw_skbuff.description`:
 
@@ -35,14 +38,17 @@ cvm_oct_free_hw_skbuff
 
     free hardware pool skbuffs
 
-    :param int pool:
+    :param pool:
         Pool to allocate an skbuff for
+    :type pool: int
 
-    :param int size:
+    :param size:
         Size of the buffer needed for the pool
+    :type size: int
 
-    :param int elements:
+    :param elements:
         Number of buffers to allocate
+    :type elements: int
 
 .. _`cvm_oct_fill_hw_memory`:
 
@@ -53,14 +59,17 @@ cvm_oct_fill_hw_memory
 
     fill a hardware pool with memory.
 
-    :param int pool:
+    :param pool:
         Pool to populate
+    :type pool: int
 
-    :param int size:
+    :param size:
         Size of each buffer in the pool
+    :type size: int
 
-    :param int elements:
+    :param elements:
         Number of buffers to allocate
+    :type elements: int
 
 .. _`cvm_oct_fill_hw_memory.description`:
 
@@ -78,14 +87,17 @@ cvm_oct_free_hw_memory
 
     Free memory allocated by cvm_oct_fill_hw_memory
 
-    :param int pool:
+    :param pool:
         FPA pool to free
+    :type pool: int
 
-    :param int size:
+    :param size:
         Size of each buffer in the pool
+    :type size: int
 
-    :param int elements:
+    :param elements:
         Number of buffers that should be in the pool
+    :type elements: int
 
 .. This file was automatic generated / don't edit.
 

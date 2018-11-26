@@ -10,20 +10,25 @@ chash_table_alloc
 
     Allocate closed hash table
 
-    :param struct chash_table \*table:
+    :param table:
         Pointer to the table structure
+    :type table: struct chash_table \*
 
-    :param u8 bits:
+    :param bits:
         Table size will be 2^bits entries
+    :type bits: u8
 
-    :param u8 key_size:
+    :param key_size:
         Size of hash keys in bytes, 4 or 8
+    :type key_size: u8
 
-    :param unsigned int value_size:
+    :param value_size:
         Size of data values in bytes, can be 0
+    :type value_size: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         *undescribed*
+    :type gfp_mask: gfp_t
 
 .. _`chash_table_free`:
 
@@ -34,8 +39,9 @@ chash_table_free
 
     Free closed hash table
 
-    :param struct chash_table \*table:
+    :param table:
         Pointer to the table structure
+    :type table: struct chash_table \*
 
 .. _`chash_table_find`:
 
@@ -46,14 +52,17 @@ chash_table_find
 
     Helper for looking up a hash table entry
 
-    :param struct chash_iter \*iter:
+    :param iter:
         Pointer to hash table iterator
+    :type iter: struct chash_iter \*
 
-    :param u64 key:
+    :param key:
         Key of the entry to find
+    :type key: u64
 
-    :param bool for_removal:
+    :param for_removal:
         set to true if the element will be removed soon
+    :type for_removal: bool
 
 .. _`chash_table_find.description`:
 
@@ -86,20 +95,25 @@ chash_self_test
 
     Run a self-test of the hash table implementation
 
-    :param u8 bits:
+    :param bits:
         Table size will be 2^bits entries
+    :type bits: u8
 
-    :param u8 key_size:
+    :param key_size:
         Size of hash keys in bytes, 4 or 8
+    :type key_size: u8
 
-    :param int min_fill:
+    :param min_fill:
         Minimum fill level during the test
+    :type min_fill: int
 
-    :param int max_fill:
+    :param max_fill:
         Maximum fill level during the test
+    :type max_fill: int
 
-    :param u64 iterations:
+    :param iterations:
         Number of test iterations
+    :type iterations: u64
 
 .. _`chash_self_test.description`:
 

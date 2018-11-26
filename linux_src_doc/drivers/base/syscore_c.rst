@@ -10,8 +10,9 @@ register_syscore_ops
 
     Register a set of system core operations.
 
-    :param struct syscore_ops \*ops:
+    :param ops:
         System core operations to register.
+    :type ops: struct syscore_ops \*
 
 .. _`unregister_syscore_ops`:
 
@@ -22,8 +23,9 @@ unregister_syscore_ops
 
     Unregister a set of system core operations.
 
-    :param struct syscore_ops \*ops:
+    :param ops:
         System core operations to unregister.
+    :type ops: struct syscore_ops \*
 
 .. _`syscore_suspend`:
 
@@ -34,8 +36,9 @@ syscore_suspend
 
     Execute all the registered system core suspend callbacks.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`syscore_suspend.description`:
 
@@ -53,8 +56,9 @@ syscore_resume
 
     Execute all the registered system core resume callbacks.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`syscore_resume.description`:
 
@@ -72,8 +76,9 @@ syscore_shutdown
 
     Execute all the registered system core shutdown callbacks.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

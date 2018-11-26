@@ -10,14 +10,17 @@ xdr_skb_read_bits
 
     copy some data bits from skb to internal buffer
 
-    :param struct xdr_skb_reader \*desc:
+    :param desc:
         sk_buff copy helper
+    :type desc: struct xdr_skb_reader \*
 
-    :param void \*to:
+    :param to:
         copy destination
+    :type to: void \*
 
-    :param size_t len:
+    :param len:
         number of bytes to copy
+    :type len: size_t
 
 .. _`xdr_skb_read_bits.description`:
 
@@ -36,14 +39,17 @@ xdr_skb_read_and_csum_bits
 
     copy and checksum from skb to buffer
 
-    :param struct xdr_skb_reader \*desc:
+    :param desc:
         sk_buff copy helper
+    :type desc: struct xdr_skb_reader \*
 
-    :param void \*to:
+    :param to:
         copy destination
+    :type to: void \*
 
-    :param size_t len:
+    :param len:
         number of bytes to copy
+    :type len: size_t
 
 .. _`xdr_skb_read_and_csum_bits.description`:
 
@@ -61,17 +67,21 @@ xdr_partial_copy_from_skb
 
     copy data out of an skb
 
-    :param struct xdr_buf \*xdr:
+    :param xdr:
         target XDR buffer
+    :type xdr: struct xdr_buf \*
 
-    :param unsigned int base:
+    :param base:
         starting offset
+    :type base: unsigned int
 
-    :param struct xdr_skb_reader \*desc:
+    :param desc:
         sk_buff copy helper
+    :type desc: struct xdr_skb_reader \*
 
-    :param xdr_skb_read_actor copy_actor:
+    :param copy_actor:
         virtual method for copying data
+    :type copy_actor: xdr_skb_read_actor
 
 .. _`csum_partial_copy_to_xdr`:
 
@@ -82,11 +92,13 @@ csum_partial_copy_to_xdr
 
     checksum and copy data
 
-    :param struct xdr_buf \*xdr:
+    :param xdr:
         target XDR buffer
+    :type xdr: struct xdr_buf \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         source skb
+    :type skb: struct sk_buff \*
 
 .. _`csum_partial_copy_to_xdr.description`:
 

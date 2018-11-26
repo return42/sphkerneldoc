@@ -10,8 +10,9 @@ adf_vf2pf_init
 
     send init msg to PF
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration VF device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_vf2pf_init.description`:
 
@@ -36,8 +37,9 @@ adf_vf2pf_shutdown
 
     send shutdown msg to PF
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration VF device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_vf2pf_shutdown.description`:
 

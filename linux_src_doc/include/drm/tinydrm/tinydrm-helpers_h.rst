@@ -10,8 +10,9 @@ tinydrm_machine_little_endian
 
     Machine is little endian
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`tinydrm_machine_little_endian.return`:
 
@@ -29,11 +30,13 @@ tinydrm_dbg_spi_message
 
     Dump SPI message
 
-    :param struct spi_device \*spi:
+    :param spi:
         SPI device
+    :type spi: struct spi_device \*
 
-    :param struct spi_message \*m:
+    :param m:
         SPI message
+    :type m: struct spi_message \*
 
 .. _`tinydrm_dbg_spi_message.description`:
 

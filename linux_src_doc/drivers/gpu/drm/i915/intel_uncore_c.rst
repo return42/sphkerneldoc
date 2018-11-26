@@ -10,11 +10,13 @@ intel_uncore_forcewake_get
 
     grab forcewake domain references
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum forcewake_domains fw_domains:
+    :param fw_domains:
         forcewake domains to get reference on
+    :type fw_domains: enum forcewake_domains
 
 .. _`intel_uncore_forcewake_get.description`:
 
@@ -38,8 +40,9 @@ intel_uncore_forcewake_user_get
 
     claim forcewake on behalf of userspace
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_uncore_forcewake_user_get.description`:
 
@@ -59,8 +62,9 @@ intel_uncore_forcewake_user_put
 
     release forcewake on behalf of userspace
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_uncore_forcewake_user_put.description`:
 
@@ -79,11 +83,13 @@ intel_uncore_forcewake_get__locked
 
     grab forcewake domain references
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum forcewake_domains fw_domains:
+    :param fw_domains:
         forcewake domains to get reference on
+    :type fw_domains: enum forcewake_domains
 
 .. _`intel_uncore_forcewake_get__locked.description`:
 
@@ -102,11 +108,13 @@ intel_uncore_forcewake_put
 
     release a forcewake domain reference
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum forcewake_domains fw_domains:
+    :param fw_domains:
         forcewake domains to put references
+    :type fw_domains: enum forcewake_domains
 
 .. _`intel_uncore_forcewake_put.description`:
 
@@ -125,11 +133,13 @@ intel_uncore_forcewake_put__locked
 
     grab forcewake domain references
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum forcewake_domains fw_domains:
+    :param fw_domains:
         forcewake domains to get reference on
+    :type fw_domains: enum forcewake_domains
 
 .. _`intel_uncore_forcewake_put__locked.description`:
 
@@ -144,15 +154,21 @@ on the caller to explicitly handle the dev_priv->uncore.lock spinlock.
 gen6_reset_engines
 ==================
 
-.. c:function:: int gen6_reset_engines(struct drm_i915_private *dev_priv, unsigned engine_mask)
+.. c:function:: int gen6_reset_engines(struct drm_i915_private *dev_priv, unsigned int engine_mask, unsigned int retry)
 
     reset individual engines
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param unsigned engine_mask:
+    :param engine_mask:
         mask of \ :c:func:`intel_ring_flag`\  engines or ALL_ENGINES for full reset
+    :type engine_mask: unsigned int
+
+    :param retry:
+        the count of of previous attempts to reset.
+    :type retry: unsigned int
 
 .. _`gen6_reset_engines.description`:
 
@@ -177,15 +193,17 @@ Returns 0 on success, nonzero on error.
 gen11_reset_engines
 ===================
 
-.. c:function:: int gen11_reset_engines(struct drm_i915_private *dev_priv, unsigned engine_mask)
+.. c:function:: int gen11_reset_engines(struct drm_i915_private *dev_priv, unsigned int engine_mask)
 
     reset individual engines
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param unsigned engine_mask:
+    :param engine_mask:
         mask of \ :c:func:`intel_ring_flag`\  engines or ALL_ENGINES for full reset
+    :type engine_mask: unsigned int
 
 .. _`gen11_reset_engines.description`:
 
@@ -214,26 +232,33 @@ __intel_wait_for_register_fw
 
     wait until register matches expected state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         the i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param i915_reg_t reg:
+    :param reg:
         the register to read
+    :type reg: i915_reg_t
 
-    :param u32 mask:
+    :param mask:
         mask to apply to register value
+    :type mask: u32
 
-    :param u32 value:
+    :param value:
         :
+    :type value: u32
 
-    :param unsigned int fast_timeout_us:
+    :param fast_timeout_us:
         fast timeout in microsecond for atomic/tight wait
+    :type fast_timeout_us: unsigned int
 
-    :param unsigned int slow_timeout_ms:
+    :param slow_timeout_ms:
         slow timeout in millisecond
+    :type slow_timeout_ms: unsigned int
 
-    :param u32 \*out_value:
+    :param out_value:
         optional placeholder to hold registry value
+    :type out_value: u32 \*
 
 .. _`__intel_wait_for_register_fw.description`:
 
@@ -264,26 +289,33 @@ __intel_wait_for_register
 
     wait until register matches expected state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         the i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param i915_reg_t reg:
+    :param reg:
         the register to read
+    :type reg: i915_reg_t
 
-    :param u32 mask:
+    :param mask:
         mask to apply to register value
+    :type mask: u32
 
-    :param u32 value:
+    :param value:
         :
+    :type value: u32
 
-    :param unsigned int fast_timeout_us:
+    :param fast_timeout_us:
         fast timeout in microsecond for atomic/tight wait
+    :type fast_timeout_us: unsigned int
 
-    :param unsigned int slow_timeout_ms:
+    :param slow_timeout_ms:
         slow timeout in millisecond
+    :type slow_timeout_ms: unsigned int
 
-    :param u32 \*out_value:
+    :param out_value:
         optional placeholder to hold registry value
+    :type out_value: u32 \*
 
 .. _`__intel_wait_for_register.description`:
 
@@ -307,14 +339,17 @@ intel_uncore_forcewake_for_reg
 
     which forcewake domains are needed to access a register
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         pointer to struct drm_i915_private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param i915_reg_t reg:
+    :param reg:
         register in question
+    :type reg: i915_reg_t
 
-    :param unsigned int op:
+    :param op:
         operation bitmask of FW_REG_READ and/or FW_REG_WRITE
+    :type op: unsigned int
 
 .. _`intel_uncore_forcewake_for_reg.description`:
 

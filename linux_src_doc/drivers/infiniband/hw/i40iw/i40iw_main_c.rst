@@ -10,8 +10,9 @@ i40iw_find_i40e_handler
 
     find a handler given a client info
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         pointer to a client info
+    :type ldev: struct i40e_info \*
 
 .. _`i40iw_find_netdev`:
 
@@ -22,8 +23,9 @@ i40iw_find_netdev
 
     find a handler given a netdev
 
-    :param struct net_device \*netdev:
+    :param netdev:
         pointer to net_device
+    :type netdev: struct net_device \*
 
 .. _`i40iw_add_handler`:
 
@@ -34,8 +36,9 @@ i40iw_add_handler
 
     add a handler to the list
 
-    :param struct i40iw_handler \*hdl:
+    :param hdl:
         handler to be added to the handler list
+    :type hdl: struct i40iw_handler \*
 
 .. _`i40iw_del_handler`:
 
@@ -46,8 +49,9 @@ i40iw_del_handler
 
     delete a handler from the list
 
-    :param struct i40iw_handler \*hdl:
+    :param hdl:
         handler to be deleted from the handler list
+    :type hdl: struct i40iw_handler \*
 
 .. _`i40iw_enable_intr`:
 
@@ -58,11 +62,13 @@ i40iw_enable_intr
 
     set up device interrupts
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 msix_id:
+    :param msix_id:
         id of the interrupt to be enabled
+    :type msix_id: u32
 
 .. _`i40iw_dpc`:
 
@@ -73,8 +79,9 @@ i40iw_dpc
 
     tasklet for aeq and ceq 0
 
-    :param unsigned long data:
+    :param data:
         iwarp device
+    :type data: unsigned long
 
 .. _`i40iw_ceq_dpc`:
 
@@ -85,8 +92,9 @@ i40iw_ceq_dpc
 
     dpc handler for CEQ
 
-    :param unsigned long data:
+    :param data:
         data points to CEQ
+    :type data: unsigned long
 
 .. _`i40iw_irq_handler`:
 
@@ -97,11 +105,13 @@ i40iw_irq_handler
 
     interrupt handler for aeq and ceq0
 
-    :param int irq:
+    :param irq:
         Interrupt request number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         iwarp device
+    :type data: void \*
 
 .. _`i40iw_destroy_cqp`:
 
@@ -112,11 +122,13 @@ i40iw_destroy_cqp
 
     destroy control qp
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param bool free_hwcqp:
+    :param free_hwcqp:
         *undescribed*
+    :type free_hwcqp: bool
 
 .. _`i40iw_destroy_cqp.description`:
 
@@ -135,14 +147,17 @@ i40iw_disable_irq
 
     disable device interrupts
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_msix_vector \*msix_vec:
+    :param msix_vec:
         *undescribed*
+    :type msix_vec: struct i40iw_msix_vector \*
 
-    :param void \*dev_id:
+    :param dev_id:
         parameter to pass to free_irq (used during irq setup)
+    :type dev_id: void \*
 
 .. _`i40iw_disable_irq.description`:
 
@@ -160,8 +175,9 @@ i40iw_destroy_aeq
 
     destroy aeq
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_destroy_aeq.description`:
 
@@ -181,11 +197,13 @@ i40iw_destroy_ceq
 
     destroy ceq
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_ceq \*iwceq:
+    :param iwceq:
         ceq to be destroyed
+    :type iwceq: struct i40iw_ceq \*
 
 .. _`i40iw_destroy_ceq.description`:
 
@@ -204,8 +222,9 @@ i40iw_dele_ceqs
 
     destroy all ceq's
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_dele_ceqs.description`:
 
@@ -224,8 +243,9 @@ i40iw_destroy_ccq
 
     destroy control cq
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_destroy_ccq.description`:
 
@@ -244,20 +264,25 @@ i40iw_close_hmc_objects_type
 
     delete hmc objects of a given type
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct i40iw_sc_dev \*
 
-    :param enum i40iw_hmc_rsrc_type obj_type:
+    :param obj_type:
         the hmc object type to be deleted
+    :type obj_type: enum i40iw_hmc_rsrc_type
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         *undescribed*
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param bool is_pf:
+    :param is_pf:
         true if the function is PF otherwise false
+    :type is_pf: bool
 
-    :param bool reset:
+    :param reset:
         true if called before reset
+    :type reset: bool
 
 .. _`i40iw_del_hmc_objects`:
 
@@ -268,18 +293,22 @@ i40iw_del_hmc_objects
 
     remove all device hmc objects
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         iwarp device
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_info \*hmc_info:
+    :param hmc_info:
         hmc_info to free
+    :type hmc_info: struct i40iw_hmc_info \*
 
-    :param bool is_pf:
+    :param is_pf:
         true if hmc_info belongs to PF, not vf nor allocated
         by PF on behalf of VF
+    :type is_pf: bool
 
-    :param bool reset:
+    :param reset:
         true if called before reset
+    :type reset: bool
 
 .. _`i40iw_ceq_handler`:
 
@@ -290,11 +319,13 @@ i40iw_ceq_handler
 
     interrupt handler for ceq
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         ceq pointer
+    :type data: void \*
 
 .. _`i40iw_create_hmc_obj_type`:
 
@@ -305,11 +336,13 @@ i40iw_create_hmc_obj_type
 
     create hmc object of a given type
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         hardware control device structure
+    :type dev: struct i40iw_sc_dev \*
 
-    :param struct i40iw_hmc_create_obj_info \*info:
+    :param info:
         information for the hmc object to create
+    :type info: struct i40iw_hmc_create_obj_info \*
 
 .. _`i40iw_create_hmc_objs`:
 
@@ -320,11 +353,13 @@ i40iw_create_hmc_objs
 
     create all hmc objects for the device
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param bool is_pf:
+    :param is_pf:
         true if the function is PF otherwise false
+    :type is_pf: bool
 
 .. _`i40iw_create_hmc_objs.description`:
 
@@ -343,17 +378,21 @@ i40iw_obj_aligned_mem
 
     get aligned memory from device allocated memory
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_dma_mem \*memptr:
+    :param memptr:
         points to the memory addresses
+    :type memptr: struct i40iw_dma_mem \*
 
-    :param u32 size:
+    :param size:
         size of memory needed
+    :type size: u32
 
-    :param u32 mask:
+    :param mask:
         mask for the aligned memory
+    :type mask: u32
 
 .. _`i40iw_obj_aligned_mem.description`:
 
@@ -373,8 +412,9 @@ i40iw_create_cqp
 
     create control qp
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_create_cqp.description`:
 
@@ -393,8 +433,9 @@ i40iw_create_ccq
 
     create control cq
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_create_ccq.description`:
 
@@ -413,17 +454,21 @@ i40iw_configure_ceq_vector
 
     set up the msix interrupt vector for ceq
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_ceq \*iwceq:
+    :param iwceq:
         ceq associated with the vector
+    :type iwceq: struct i40iw_ceq \*
 
-    :param u32 ceq_id:
+    :param ceq_id:
         the id number of the iwceq
+    :type ceq_id: u32
 
-    :param struct i40iw_msix_vector \*msix_vec:
+    :param msix_vec:
         interrupt vector information
+    :type msix_vec: struct i40iw_msix_vector \*
 
 .. _`i40iw_configure_ceq_vector.description`:
 
@@ -442,14 +487,17 @@ i40iw_create_ceq
 
     create completion event queue
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40iw_ceq \*iwceq:
+    :param iwceq:
         pointer to the ceq resources to be created
+    :type iwceq: struct i40iw_ceq \*
 
-    :param u32 ceq_id:
+    :param ceq_id:
         the id number of the iwceq
+    :type ceq_id: u32
 
 .. _`i40iw_create_ceq.description`:
 
@@ -468,11 +516,13 @@ i40iw_setup_ceqs
 
     manage the device ceq's and their interrupt resources
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         i40e lan device
+    :type ldev: struct i40e_info \*
 
 .. _`i40iw_setup_ceqs.description`:
 
@@ -492,8 +542,9 @@ i40iw_configure_aeq_vector
 
     set up the msix vector for aeq
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_configure_aeq_vector.description`:
 
@@ -512,8 +563,9 @@ i40iw_create_aeq
 
     create async event queue
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_create_aeq.description`:
 
@@ -532,8 +584,9 @@ i40iw_setup_aeq
 
     set up the device aeq
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_setup_aeq.description`:
 
@@ -552,8 +605,9 @@ i40iw_initialize_ilq
 
     create iwarp local queue for cm
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_initialize_ilq.description`:
 
@@ -571,8 +625,9 @@ i40iw_initialize_ieq
 
     create iwarp exception queue
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_initialize_ieq.description`:
 
@@ -590,8 +645,9 @@ i40iw_reinitialize_ieq
 
     destroy and re-create ieq
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         iwarp device
+    :type dev: struct i40iw_sc_dev \*
 
 .. _`i40iw_hmc_setup`:
 
@@ -602,8 +658,9 @@ i40iw_hmc_setup
 
     create hmc objects for the device
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_hmc_setup.description`:
 
@@ -623,8 +680,9 @@ i40iw_del_init_mem
 
     deallocate memory resources
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_del_macip_entry`:
 
@@ -635,11 +693,13 @@ i40iw_del_macip_entry
 
     remove a mac ip address entry from the hw table
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param u8 idx:
+    :param idx:
         the index of the mac ip address to delete
+    :type idx: u8
 
 .. _`i40iw_add_mac_ipaddr_entry`:
 
@@ -650,14 +710,17 @@ i40iw_add_mac_ipaddr_entry
 
     add a mac ip address entry to the hw table
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         pointer to mac address
+    :type mac_addr: u8 \*
 
-    :param u8 idx:
+    :param idx:
         the index of the mac ip address to add
+    :type idx: u8
 
 .. _`i40iw_alloc_local_mac_ipaddr_entry`:
 
@@ -668,11 +731,13 @@ i40iw_alloc_local_mac_ipaddr_entry
 
     allocate a mac ip address entry
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param u16 \*mac_ip_tbl_idx:
+    :param mac_ip_tbl_idx:
         the index of the new mac ip address
+    :type mac_ip_tbl_idx: u16 \*
 
 .. _`i40iw_alloc_local_mac_ipaddr_entry.description`:
 
@@ -692,11 +757,13 @@ i40iw_alloc_set_mac_ipaddr
 
     set up a mac ip address table entry
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param u8 \*macaddr:
+    :param macaddr:
         pointer to mac address
+    :type macaddr: u8 \*
 
 .. _`i40iw_alloc_set_mac_ipaddr.description`:
 
@@ -715,8 +782,9 @@ i40iw_add_ipv6_addr
 
     add ipv6 address to the hw arp table
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_add_ipv4_addr`:
 
@@ -727,8 +795,9 @@ i40iw_add_ipv4_addr
 
     add ipv4 address to the hw arp table
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_add_mac_ip`:
 
@@ -739,8 +808,9 @@ i40iw_add_mac_ip
 
     add mac and ip addresses
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_add_mac_ip.description`:
 
@@ -760,8 +830,9 @@ i40iw_wait_pe_ready
 
     Check if firmware is ready
 
-    :param struct i40iw_hw \*hw:
+    :param hw:
         provides access to registers
+    :type hw: struct i40iw_hw \*
 
 .. _`i40iw_initialize_dev`:
 
@@ -772,11 +843,13 @@ i40iw_initialize_dev
 
     initialize device
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         lan device information
+    :type ldev: struct i40e_info \*
 
 .. _`i40iw_initialize_dev.description`:
 
@@ -796,8 +869,9 @@ i40iw_register_notifiers
 
     register tcp ip notifiers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i40iw_unregister_notifiers`:
 
@@ -808,8 +882,9 @@ i40iw_unregister_notifiers
 
     unregister tcp ip notifiers
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i40iw_save_msix_info`:
 
@@ -820,11 +895,13 @@ i40iw_save_msix_info
 
     copy msix vector information to iwarp device
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         lan device information
+    :type ldev: struct i40e_info \*
 
 .. _`i40iw_save_msix_info.description`:
 
@@ -843,8 +920,9 @@ i40iw_deinit_device
 
     clean up the device resources
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_deinit_device.description`:
 
@@ -863,14 +941,17 @@ i40iw_setup_init_state
 
     set up the initial device struct
 
-    :param struct i40iw_handler \*hdl:
+    :param hdl:
         handler for iwarp device - one per instance
+    :type hdl: struct i40iw_handler \*
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         lan device information
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         iwarp client information, provided during registration
+    :type client: struct i40e_client \*
 
 .. _`i40iw_setup_init_state.description`:
 
@@ -890,8 +971,9 @@ i40iw_get_used_rsrc
 
     determine resources used internally
 
-    :param struct i40iw_device \*iwdev:
+    :param iwdev:
         iwarp device
+    :type iwdev: struct i40iw_device \*
 
 .. _`i40iw_get_used_rsrc.description`:
 
@@ -909,11 +991,13 @@ i40iw_open
 
     client interface operation open for iwarp/uda device
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         lan device information
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         iwarp client information, provided during registration
+    :type client: struct i40e_client \*
 
 .. _`i40iw_open.description`:
 
@@ -934,8 +1018,9 @@ i40iw_l2params_worker
 
     worker for l2 params change
 
-    :param struct work_struct \*work:
+    :param work:
         work pointer for l2 params
+    :type work: struct work_struct \*
 
 .. _`i40iw_l2param_change`:
 
@@ -946,14 +1031,17 @@ i40iw_l2param_change
 
     handle qs handles for qos and mss change
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         lan device information
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         client for paramater change
+    :type client: struct i40e_client \*
 
-    :param struct i40e_params \*params:
+    :param params:
         new parameters from L2
+    :type params: struct i40e_params \*
 
 .. _`i40iw_close`:
 
@@ -964,14 +1052,17 @@ i40iw_close
 
     client interface operation close for iwarp/uda device
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         lan device information
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         client to close
+    :type client: struct i40e_client \*
 
-    :param bool reset:
+    :param reset:
         *undescribed*
+    :type reset: bool
 
 .. _`i40iw_close.description`:
 
@@ -990,14 +1081,17 @@ i40iw_vf_reset
 
     process VF reset
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         lan device information
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         client interface instance
+    :type client: struct i40e_client \*
 
-    :param u32 vf_id:
+    :param vf_id:
         virtual function id
+    :type vf_id: u32
 
 .. _`i40iw_vf_reset.description`:
 
@@ -1016,14 +1110,17 @@ i40iw_vf_enable
 
     enable a number of VFs
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         lan device information
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         client interface instance
+    :type client: struct i40e_client \*
 
-    :param u32 num_vfs:
+    :param num_vfs:
         number of VFs for the PF
+    :type num_vfs: u32
 
 .. _`i40iw_vf_enable.description`:
 
@@ -1041,14 +1138,17 @@ i40iw_vf_capable
 
     check if VF capable
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         lan device information
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         client interface instance
+    :type client: struct i40e_client \*
 
-    :param u32 vf_id:
+    :param vf_id:
         virtual function id
+    :type vf_id: u32
 
 .. _`i40iw_vf_capable.description`:
 
@@ -1067,20 +1167,25 @@ i40iw_virtchnl_receive
 
     receive a message through the virtual channel
 
-    :param struct i40e_info \*ldev:
+    :param ldev:
         lan device information
+    :type ldev: struct i40e_info \*
 
-    :param struct i40e_client \*client:
+    :param client:
         client interface instance
+    :type client: struct i40e_client \*
 
-    :param u32 vf_id:
+    :param vf_id:
         virtual function id associated with the message
+    :type vf_id: u32
 
-    :param u8 \*msg:
+    :param msg:
         message buffer pointer
+    :type msg: u8 \*
 
-    :param u16 len:
+    :param len:
         length of the message
+    :type len: u16
 
 .. _`i40iw_virtchnl_receive.description`:
 
@@ -1099,10 +1204,11 @@ i40iw_vf_clear_to_send
 
     wait to send virtual channel message
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         iwarp device \*
         Wait for until virtual channel is clear
         before sending the next message
+    :type dev: struct i40iw_sc_dev \*
 
 .. _`i40iw_vf_clear_to_send.description`:
 
@@ -1121,17 +1227,21 @@ i40iw_virtchnl_send
 
     send a message through the virtual channel
 
-    :param struct i40iw_sc_dev \*dev:
+    :param dev:
         iwarp device
+    :type dev: struct i40iw_sc_dev \*
 
-    :param u32 vf_id:
+    :param vf_id:
         virtual function id associated with the message
+    :type vf_id: u32
 
-    :param u8 \*msg:
+    :param msg:
         virtual channel message buffer pointer
+    :type msg: u8 \*
 
-    :param u16 len:
+    :param len:
         length of the message
+    :type len: u16
 
 .. _`i40iw_virtchnl_send.description`:
 
@@ -1150,8 +1260,9 @@ i40iw_init_module
 
     driver initialization function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i40iw_init_module.description`:
 
@@ -1170,8 +1281,9 @@ i40iw_exit_module
 
     driver exit clean up function
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i40iw_exit_module.description`:
 

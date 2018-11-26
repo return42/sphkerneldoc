@@ -10,20 +10,25 @@ xen_pcibk_get_pcifront_dev
 
     AER handling. Get guest domain/bus/devfn in xen_pcibk before sending aer request to pcifront, so that guest could identify device, coopearte with xen_pcibk to finish aer recovery job if device driver has the capability
 
-    :param struct pci_dev \*pcidev:
+    :param pcidev:
         *undescribed*
+    :type pcidev: struct pci_dev \*
 
-    :param struct xen_pcibk_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct xen_pcibk_device \*
 
-    :param unsigned int \*domain:
+    :param domain:
         *undescribed*
+    :type domain: unsigned int \*
 
-    :param unsigned int \*bus:
+    :param bus:
         *undescribed*
+    :type bus: unsigned int \*
 
-    :param unsigned int \*devfn:
+    :param devfn:
         *undescribed*
+    :type devfn: unsigned int \*
 
 .. This file was automatic generated / don't edit.
 

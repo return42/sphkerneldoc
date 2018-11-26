@@ -10,14 +10,17 @@ wm8994_mic_detect
 
     Enable microphone detection via the WM8994 IRQ
 
-    :param struct snd_soc_component \*component:
+    :param component:
         WM8994 component
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         jack to report detection events on
+    :type jack: struct snd_soc_jack \*
 
-    :param int micbias:
+    :param micbias:
         microphone bias to detect on
+    :type micbias: int
 
 .. _`wm8994_mic_detect.description`:
 
@@ -41,23 +44,29 @@ wm8958_mic_detect
 
     Enable microphone detection via the WM8958 IRQ
 
-    :param struct snd_soc_component \*component:
+    :param component:
         WM8958 component
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         jack to report detection events on
+    :type jack: struct snd_soc_jack \*
 
-    :param wm1811_micdet_cb det_cb:
+    :param det_cb:
         *undescribed*
+    :type det_cb: wm1811_micdet_cb
 
-    :param void \*det_cb_data:
+    :param det_cb_data:
         *undescribed*
+    :type det_cb_data: void \*
 
-    :param wm1811_mic_id_cb id_cb:
+    :param id_cb:
         *undescribed*
+    :type id_cb: wm1811_mic_id_cb
 
-    :param void \*id_cb_data:
+    :param id_cb_data:
         *undescribed*
+    :type id_cb_data: void \*
 
 .. _`wm8958_mic_detect.description`:
 

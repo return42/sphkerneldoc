@@ -10,14 +10,17 @@ wait_task_stopped
 
     Wait for \ ``TASK_STOPPED``\  or \ ``TASK_TRACED``\ 
 
-    :param struct wait_opts \*wo:
+    :param wo:
         wait options
+    :type wo: struct wait_opts \*
 
-    :param int ptrace:
+    :param ptrace:
         is the wait for ptrace
+    :type ptrace: int
 
-    :param struct task_struct \*p:
+    :param p:
         task to wait for
+    :type p: struct task_struct \*
 
 .. _`wait_task_stopped.description`:
 
@@ -32,7 +35,7 @@ Context
 -------
 
 read_lock(&tasklist_lock), which is released if return value is
-non-zero.  Also, grabs and releases \ ``p``\ ->sighand->siglock.
+non-zero.  Also, grabs and releases \ ``p->sighand->siglock``\ .
 
 .. _`wait_task_stopped.return`:
 

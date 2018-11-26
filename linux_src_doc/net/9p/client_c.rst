@@ -10,11 +10,13 @@ parse_opts
 
     parse mount options into client structure
 
-    :param char \*opts:
+    :param opts:
         options string passed from mount
+    :type opts: char \*
 
-    :param struct p9_client \*clnt:
+    :param clnt:
         existing v9fs client information
+    :type clnt: struct p9_client \*
 
 .. _`parse_opts.description`:
 
@@ -28,31 +30,35 @@ Return 0 upon success, -ERRNO upon failure
 p9_tag_alloc
 ============
 
-.. c:function:: struct p9_req_t *p9_tag_alloc(struct p9_client *c, u16 tag, unsigned int max_size)
+.. c:function:: struct p9_req_t *p9_tag_alloc(struct p9_client *c, int8_t type, unsigned int max_size)
 
-    lookup/allocate a request by tag
+    Allocate a new request.
 
-    :param struct p9_client \*c:
-        client session to lookup tag within
+    :param c:
+        Client session.
+    :type c: struct p9_client \*
 
-    :param u16 tag:
-        numeric id for transaction
+    :param type:
+        Transaction type.
+    :type type: int8_t
 
-    :param unsigned int max_size:
-        *undescribed*
+    :param max_size:
+        Maximum packet size for this request.
+    :type max_size: unsigned int
 
-.. _`p9_tag_alloc.description`:
+.. _`p9_tag_alloc.context`:
 
-Description
------------
+Context
+-------
 
-this is a simple array lookup, but will grow the
-request_slots as necessary to accommodate transaction
-ids which did not previously have a slot.
+Process context.
 
-this code relies on the client spinlock to manage locks, its
-possible we should switch to something else, but I'd rather
-stick with something low-overhead for the common case.
+.. _`p9_tag_alloc.return`:
+
+Return
+------
+
+Pointer to new request.
 
 .. _`p9_tag_lookup`:
 
@@ -61,32 +67,53 @@ p9_tag_lookup
 
 .. c:function:: struct p9_req_t *p9_tag_lookup(struct p9_client *c, u16 tag)
 
-    lookup a request by tag
+    Look up a request by tag.
 
-    :param struct p9_client \*c:
-        client session to lookup tag within
+    :param c:
+        Client session.
+    :type c: struct p9_client \*
 
-    :param u16 tag:
-        numeric id for transaction
+    :param tag:
+        Transaction ID.
+    :type tag: u16
 
-.. _`p9_tag_init`:
+.. _`p9_tag_lookup.context`:
 
-p9_tag_init
-===========
+Context
+-------
 
-.. c:function:: int p9_tag_init(struct p9_client *c)
+Any context.
 
-    setup tags structure and contents
+.. _`p9_tag_lookup.return`:
 
-    :param struct p9_client \*c:
-        v9fs client struct
+Return
+------
 
-.. _`p9_tag_init.description`:
+A request, or \ ``NULL``\  if there is no request with that tag.
 
-Description
------------
+.. _`p9_tag_remove`:
 
-This initializes the tags structure for each client instance.
+p9_tag_remove
+=============
+
+.. c:function:: int p9_tag_remove(struct p9_client *c, struct p9_req_t *r)
+
+    Remove a tag.
+
+    :param c:
+        Client session.
+    :type c: struct p9_client \*
+
+    :param r:
+        Request of reference.
+    :type r: struct p9_req_t \*
+
+.. _`p9_tag_remove.context`:
+
+Context
+-------
+
+Any context.
 
 .. _`p9_tag_cleanup`:
 
@@ -97,8 +124,9 @@ p9_tag_cleanup
 
     cleans up tags structure and reclaims resources
 
-    :param struct p9_client \*c:
+    :param c:
         v9fs client struct
+    :type c: struct p9_client \*
 
 .. _`p9_tag_cleanup.description`:
 
@@ -106,21 +134,6 @@ Description
 -----------
 
 This frees resources associated with the tags structure
-
-.. _`p9_free_req`:
-
-p9_free_req
-===========
-
-.. c:function:: void p9_free_req(struct p9_client *c, struct p9_req_t *r)
-
-    free a request and clean-up as necessary c: client state r: request to release
-
-    :param struct p9_client \*c:
-        *undescribed*
-
-    :param struct p9_req_t \*r:
-        *undescribed*
 
 .. _`p9_client_cb`:
 
@@ -131,14 +144,17 @@ p9_client_cb
 
     call back from transport to client c: client state
 
-    :param struct p9_client \*c:
+    :param c:
         *undescribed*
+    :type c: struct p9_client \*
 
-    :param struct p9_req_t \*req:
+    :param req:
         *undescribed*
+    :type req: struct p9_req_t \*
 
-    :param int status:
+    :param status:
         *undescribed*
+    :type status: int
 
 .. _`p9_client_cb.req`:
 
@@ -156,20 +172,25 @@ p9_parse_header
 
     parse header arguments out of a packet
 
-    :param struct p9_fcall \*pdu:
+    :param pdu:
         packet to parse
+    :type pdu: struct p9_fcall \*
 
-    :param int32_t \*size:
+    :param size:
         size of packet
+    :type size: int32_t \*
 
-    :param int8_t \*type:
+    :param type:
         type of request
+    :type type: int8_t \*
 
-    :param int16_t \*tag:
+    :param tag:
         tag of packet
+    :type tag: int16_t \*
 
-    :param int rewind:
+    :param rewind:
         set if we need to rewind offset afterwards
+    :type rewind: int
 
 .. _`p9_check_errors`:
 
@@ -180,11 +201,13 @@ p9_check_errors
 
     check 9p packet for error return and process it
 
-    :param struct p9_client \*c:
+    :param c:
         current client instance
+    :type c: struct p9_client \*
 
-    :param struct p9_req_t \*req:
+    :param req:
         request to parse and check for error conditions
+    :type req: struct p9_req_t \*
 
 .. _`p9_check_errors.description`:
 
@@ -205,17 +228,21 @@ p9_check_zc_errors
 
     check 9p packet for error return and process it
 
-    :param struct p9_client \*c:
+    :param c:
         current client instance
+    :type c: struct p9_client \*
 
-    :param struct p9_req_t \*req:
+    :param req:
         request to parse and check for error conditions
+    :type req: struct p9_req_t \*
 
-    :param struct iov_iter \*uidata:
+    :param uidata:
         *undescribed*
+    :type uidata: struct iov_iter \*
 
-    :param int in_hdrlen:
+    :param in_hdrlen:
         Size of response protocol buffer.
+    :type in_hdrlen: int
 
 .. _`p9_check_zc_errors.description`:
 
@@ -236,11 +263,13 @@ p9_client_flush
 
     flush (cancel) a request
 
-    :param struct p9_client \*c:
+    :param c:
         client state
+    :type c: struct p9_client \*
 
-    :param struct p9_req_t \*oldreq:
+    :param oldreq:
         request to cancel
+    :type oldreq: struct p9_req_t \*
 
 .. _`p9_client_flush.description`:
 
@@ -261,14 +290,17 @@ p9_client_rpc
 
     issue a request and wait for a response
 
-    :param struct p9_client \*c:
+    :param c:
         client session
+    :type c: struct p9_client \*
 
-    :param int8_t type:
+    :param type:
         type of request
+    :type type: int8_t
 
-    :param const char \*fmt:
+    :param fmt:
         protocol format string (see protocol.c)
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -278,7 +310,7 @@ p9_client_rpc
 Description
 -----------
 
-Returns request structure (which client must free using p9_free_req)
+Returns request structure (which client must free using p9_tag_remove)
 
 .. _`p9_client_zc_rpc`:
 
@@ -289,29 +321,37 @@ p9_client_zc_rpc
 
     issue a request and wait for a response
 
-    :param struct p9_client \*c:
+    :param c:
         client session
+    :type c: struct p9_client \*
 
-    :param int8_t type:
+    :param type:
         type of request
+    :type type: int8_t
 
-    :param struct iov_iter \*uidata:
+    :param uidata:
         destination for zero copy read
+    :type uidata: struct iov_iter \*
 
-    :param struct iov_iter \*uodata:
+    :param uodata:
         source for zero copy write
+    :type uodata: struct iov_iter \*
 
-    :param int inlen:
+    :param inlen:
         read buffer size
+    :type inlen: int
 
-    :param int olen:
+    :param olen:
         write buffer size
+    :type olen: int
 
-    :param int in_hdrlen:
+    :param in_hdrlen:
         *undescribed*
+    :type in_hdrlen: int
 
-    :param const char \*fmt:
+    :param fmt:
         protocol format string (see protocol.c)
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -321,7 +361,7 @@ p9_client_zc_rpc
 Description
 -----------
 
-Returns request structure (which client must free using p9_free_req)
+Returns request structure (which client must free using p9_tag_remove)
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@
 
     returns the hamming weight of a N-bit word
 
-    :param unsigned int w:
+    :param w:
         *undescribed*
+    :type w: unsigned int
 
 .. _`__sw_hweight32.description`:
 

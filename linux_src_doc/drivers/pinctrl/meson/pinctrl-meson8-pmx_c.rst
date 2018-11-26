@@ -10,14 +10,17 @@ meson8_pmx_disable_other_groups
 
     disable other groups using a given pin
 
-    :param struct meson_pinctrl \*pc:
+    :param pc:
         meson pin controller device
+    :type pc: struct meson_pinctrl \*
 
-    :param unsigned int pin:
+    :param pin:
         number of the pin
+    :type pin: unsigned int
 
-    :param int sel_group:
+    :param sel_group:
         index of the selected group, or -1 if none
+    :type sel_group: int
 
 .. _`meson8_pmx_disable_other_groups.description`:
 

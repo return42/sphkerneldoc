@@ -10,8 +10,9 @@ parse_mpp_data
 
     Parse out data returned from h_get_mpp
 
-    :param struct seq_file \*m:
+    :param m:
         *undescribed*
+    :type m: struct seq_file \*
 
 .. _`parse_mpp_x_data`:
 
@@ -22,8 +23,9 @@ parse_mpp_x_data
 
     Parse out data returned from h_get_mpp_x
 
-    :param struct seq_file \*m:
+    :param m:
         *undescribed*
+    :type m: struct seq_file \*
 
 .. _`update_mpp`:
 
@@ -32,11 +34,13 @@ update_mpp
 
 .. c:function:: ssize_t update_mpp(u64 *entitlement, u8 *weight)
 
-    :param u64 \*entitlement:
+    :param entitlement:
         *undescribed*
+    :type entitlement: u64 \*
 
-    :param u8 \*weight:
+    :param weight:
         *undescribed*
+    :type weight: u8 \*
 
 .. _`update_mpp.description`:
 

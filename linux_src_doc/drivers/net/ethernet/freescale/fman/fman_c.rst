@@ -8,23 +8,28 @@ fman_register_intr
 
 .. c:function:: void fman_register_intr(struct fman *fman, enum fman_event_modules module, u8 mod_id, enum fman_intr_type intr_type, void (*isr_cb)(void *src_arg), void *src_arg)
 
-    :param struct fman \*fman:
+    :param fman:
         A Pointer to FMan device
+    :type fman: struct fman \*
 
-    :param enum fman_event_modules module:
+    :param module:
         *undescribed*
+    :type module: enum fman_event_modules
 
-    :param u8 mod_id:
+    :param mod_id:
         Module id (if more than 1 exists, '0' if not)
+    :type mod_id: u8
 
-    :param enum fman_intr_type intr_type:
+    :param intr_type:
         Interrupt type (error/normal) selection.
+    :type intr_type: enum fman_intr_type
 
     :param void (\*isr_cb)(void \*src_arg):
         *undescribed*
 
-    :param void \*src_arg:
+    :param src_arg:
         *undescribed*
+    :type src_arg: void \*
 
 .. _`fman_register_intr.description`:
 
@@ -47,17 +52,21 @@ fman_unregister_intr
 
 .. c:function:: void fman_unregister_intr(struct fman *fman, enum fman_event_modules module, u8 mod_id, enum fman_intr_type intr_type)
 
-    :param struct fman \*fman:
+    :param fman:
         A Pointer to FMan device
+    :type fman: struct fman \*
 
-    :param enum fman_event_modules module:
+    :param module:
         *undescribed*
+    :type module: enum fman_event_modules
 
-    :param u8 mod_id:
+    :param mod_id:
         Module id (if more than 1 exists, '0' if not)
+    :type mod_id: u8
 
-    :param enum fman_intr_type intr_type:
+    :param intr_type:
         Interrupt type (error/normal) selection.
+    :type intr_type: enum fman_intr_type
 
 .. _`fman_unregister_intr.description`:
 
@@ -80,11 +89,13 @@ fman_set_port_params
 
 .. c:function:: int fman_set_port_params(struct fman *fman, struct fman_port_init_params *port_params)
 
-    :param struct fman \*fman:
+    :param fman:
         A Pointer to FMan device
+    :type fman: struct fman \*
 
-    :param struct fman_port_init_params \*port_params:
+    :param port_params:
         Port parameters
+    :type port_params: struct fman_port_init_params \*
 
 .. _`fman_set_port_params.description`:
 
@@ -107,11 +118,13 @@ fman_reset_mac
 
 .. c:function:: int fman_reset_mac(struct fman *fman, u8 mac_id)
 
-    :param struct fman \*fman:
+    :param fman:
         A Pointer to FMan device
+    :type fman: struct fman \*
 
-    :param u8 mac_id:
+    :param mac_id:
         MAC id to be reset
+    :type mac_id: u8
 
 .. _`fman_reset_mac.description`:
 
@@ -134,14 +147,17 @@ fman_set_mac_max_frame
 
 .. c:function:: int fman_set_mac_max_frame(struct fman *fman, u8 mac_id, u16 mfl)
 
-    :param struct fman \*fman:
+    :param fman:
         A Pointer to FMan device
+    :type fman: struct fman \*
 
-    :param u8 mac_id:
+    :param mac_id:
         MAC id
+    :type mac_id: u8
 
-    :param u16 mfl:
+    :param mfl:
         Maximum frame length
+    :type mfl: u16
 
 .. _`fman_set_mac_max_frame.description`:
 
@@ -164,8 +180,9 @@ fman_get_clock_freq
 
 .. c:function:: u16 fman_get_clock_freq(struct fman *fman)
 
-    :param struct fman \*fman:
+    :param fman:
         A Pointer to FMan device
+    :type fman: struct fman \*
 
 .. _`fman_get_clock_freq.description`:
 
@@ -188,8 +205,9 @@ fman_get_bmi_max_fifo_size
 
 .. c:function:: u32 fman_get_bmi_max_fifo_size(struct fman *fman)
 
-    :param struct fman \*fman:
+    :param fman:
         A Pointer to FMan device
+    :type fman: struct fman \*
 
 .. _`fman_get_bmi_max_fifo_size.description`:
 
@@ -214,11 +232,13 @@ fman_get_revision
 
     \ ``fman``\                 - Pointer to the FMan module \ ``rev_info``\             - A structure of revision information parameters.
 
-    :param struct fman \*fman:
+    :param fman:
         *undescribed*
+    :type fman: struct fman \*
 
-    :param struct fman_rev_info \*rev_info:
+    :param rev_info:
         *undescribed*
+    :type rev_info: struct fman_rev_info \*
 
 .. _`fman_get_revision.description`:
 
@@ -243,11 +263,13 @@ fman_get_qman_channel_id
 
 .. c:function:: u32 fman_get_qman_channel_id(struct fman *fman, u32 port_id)
 
-    :param struct fman \*fman:
+    :param fman:
         A Pointer to FMan device
+    :type fman: struct fman \*
 
-    :param u32 port_id:
+    :param port_id:
         Port id
+    :type port_id: u32
 
 .. _`fman_get_qman_channel_id.description`:
 
@@ -270,8 +292,9 @@ fman_get_mem_region
 
 .. c:function:: struct resource *fman_get_mem_region(struct fman *fman)
 
-    :param struct fman \*fman:
+    :param fman:
         A Pointer to FMan device
+    :type fman: struct fman \*
 
 .. _`fman_get_mem_region.description`:
 
@@ -294,8 +317,9 @@ fman_get_max_frm
 
 .. c:function:: u16 fman_get_max_frm( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fman_get_max_frm.return`:
 
@@ -311,8 +335,9 @@ fman_get_rx_extra_headroom
 
 .. c:function:: int fman_get_rx_extra_headroom( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fman_get_rx_extra_headroom.return`:
 
@@ -328,8 +353,9 @@ fman_bind
 
 .. c:function:: struct fman *fman_bind(struct device *fm_dev)
 
-    :param struct device \*fm_dev:
+    :param fm_dev:
         *undescribed*
+    :type fm_dev: struct device \*
 
 .. _`fman_bind.description`:
 

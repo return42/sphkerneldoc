@@ -10,11 +10,13 @@ devprop_gpiochip_set_names
 
     Set GPIO line names using device properties
 
-    :param struct gpio_chip \*chip:
+    :param chip:
         GPIO chip whose lines should be named, if possible
+    :type chip: struct gpio_chip \*
 
-    :param const struct fwnode_handle \*fwnode:
+    :param fwnode:
         Property Node containing the gpio-line-names property
+    :type fwnode: const struct fwnode_handle \*
 
 .. _`devprop_gpiochip_set_names.description`:
 

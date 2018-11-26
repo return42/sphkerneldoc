@@ -10,11 +10,13 @@ cifs_setup_ipc
 
     helper to setup the IPC tcon for the session
 
-    :param struct cifs_ses \*ses:
+    :param ses:
         *undescribed*
+    :type ses: struct cifs_ses \*
 
-    :param struct smb_vol \*volume_info:
+    :param volume_info:
         *undescribed*
+    :type volume_info: struct smb_vol \*
 
 .. _`cifs_setup_ipc.description`:
 
@@ -33,8 +35,9 @@ cifs_free_ipc
 
     helper to release the session IPC tcon
 
-    :param struct cifs_ses \*ses:
+    :param ses:
         *undescribed*
+    :type ses: struct cifs_ses \*
 
 .. _`cifs_free_ipc.description`:
 
@@ -52,11 +55,13 @@ cifs_get_smb_ses
 
     get a session matching \ ``volume_info``\  data from \ ``server``\ 
 
-    :param struct TCP_Server_Info \*server:
+    :param server:
         *undescribed*
+    :type server: struct TCP_Server_Info \*
 
-    :param struct smb_vol \*volume_info:
+    :param volume_info:
         *undescribed*
+    :type volume_info: struct smb_vol \*
 
 .. _`cifs_get_smb_ses.description`:
 
@@ -76,11 +81,13 @@ cifs_get_tcon
 
     get a tcon matching \ ``volume_info``\  data from \ ``ses``\ 
 
-    :param struct cifs_ses \*ses:
+    :param ses:
         *undescribed*
+    :type ses: struct cifs_ses \*
 
-    :param struct smb_vol \*volume_info:
+    :param volume_info:
         *undescribed*
+    :type volume_info: struct smb_vol \*
 
 .. _`cifs_get_tcon.description`:
 

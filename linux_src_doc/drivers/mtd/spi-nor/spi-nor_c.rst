@@ -1,6 +1,226 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mtd/spi-nor/spi-nor.c
 
+.. _`spi_nor_div_by_erase_size`:
+
+spi_nor_div_by_erase_size
+=========================
+
+.. c:function:: u64 spi_nor_div_by_erase_size(const struct spi_nor_erase_type *erase, u64 dividend, u32 *remainder)
+
+    calculate remainder and update new dividend
+
+    :param erase:
+        pointer to a structure that describes a SPI NOR erase type
+    :type erase: const struct spi_nor_erase_type \*
+
+    :param dividend:
+        dividend value
+    :type dividend: u64
+
+    :param remainder:
+        pointer to u32 remainder (will be updated)
+    :type remainder: u32 \*
+
+.. _`spi_nor_div_by_erase_size.return`:
+
+Return
+------
+
+the result of the division
+
+.. _`spi_nor_find_best_erase_type`:
+
+spi_nor_find_best_erase_type
+============================
+
+.. c:function:: const struct spi_nor_erase_type *spi_nor_find_best_erase_type(const struct spi_nor_erase_map *map, const struct spi_nor_erase_region *region, u64 addr, u32 len)
+
+    find the best erase type for the given offset in the serial flash memory and the number of bytes to erase. The region in which the address fits is expected to be provided.
+
+    :param map:
+        the erase map of the SPI NOR
+    :type map: const struct spi_nor_erase_map \*
+
+    :param region:
+        pointer to a structure that describes a SPI NOR erase region
+    :type region: const struct spi_nor_erase_region \*
+
+    :param addr:
+        offset in the serial flash memory
+    :type addr: u64
+
+    :param len:
+        number of bytes to erase
+    :type len: u32
+
+.. _`spi_nor_find_best_erase_type.return`:
+
+Return
+------
+
+a pointer to the best fitted erase type, NULL otherwise.
+
+.. _`spi_nor_region_next`:
+
+spi_nor_region_next
+===================
+
+.. c:function:: struct spi_nor_erase_region *spi_nor_region_next(struct spi_nor_erase_region *region)
+
+    get the next spi nor region
+
+    :param region:
+        pointer to a structure that describes a SPI NOR erase region
+    :type region: struct spi_nor_erase_region \*
+
+.. _`spi_nor_region_next.return`:
+
+Return
+------
+
+the next spi nor region or NULL if last region.
+
+.. _`spi_nor_find_erase_region`:
+
+spi_nor_find_erase_region
+=========================
+
+.. c:function:: struct spi_nor_erase_region *spi_nor_find_erase_region(const struct spi_nor_erase_map *map, u64 addr)
+
+    find the region of the serial flash memory in which the offset fits
+
+    :param map:
+        the erase map of the SPI NOR
+    :type map: const struct spi_nor_erase_map \*
+
+    :param addr:
+        offset in the serial flash memory
+    :type addr: u64
+
+.. _`spi_nor_find_erase_region.return`:
+
+Return
+------
+
+a pointer to the spi_nor_erase_region struct, ERR_PTR(-errno)
+otherwise.
+
+.. _`spi_nor_init_erase_cmd`:
+
+spi_nor_init_erase_cmd
+======================
+
+.. c:function:: struct spi_nor_erase_command *spi_nor_init_erase_cmd(const struct spi_nor_erase_region *region, const struct spi_nor_erase_type *erase)
+
+    initialize an erase command
+
+    :param region:
+        pointer to a structure that describes a SPI NOR erase region
+    :type region: const struct spi_nor_erase_region \*
+
+    :param erase:
+        pointer to a structure that describes a SPI NOR erase type
+    :type erase: const struct spi_nor_erase_type \*
+
+.. _`spi_nor_init_erase_cmd.return`:
+
+Return
+------
+
+the pointer to the allocated erase command, ERR_PTR(-errno)
+otherwise.
+
+.. _`spi_nor_destroy_erase_cmd_list`:
+
+spi_nor_destroy_erase_cmd_list
+==============================
+
+.. c:function:: void spi_nor_destroy_erase_cmd_list(struct list_head *erase_list)
+
+    destroy erase command list
+
+    :param erase_list:
+        list of erase commands
+    :type erase_list: struct list_head \*
+
+.. _`spi_nor_init_erase_cmd_list`:
+
+spi_nor_init_erase_cmd_list
+===========================
+
+.. c:function:: int spi_nor_init_erase_cmd_list(struct spi_nor *nor, struct list_head *erase_list, u64 addr, u32 len)
+
+    initialize erase command list
+
+    :param nor:
+        pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
+
+    :param erase_list:
+        list of erase commands to be executed once we validate that the
+        erase can be performed
+    :type erase_list: struct list_head \*
+
+    :param addr:
+        offset in the serial flash memory
+    :type addr: u64
+
+    :param len:
+        number of bytes to erase
+    :type len: u32
+
+.. _`spi_nor_init_erase_cmd_list.description`:
+
+Description
+-----------
+
+Builds the list of best fitted erase commands and verifies if the erase can
+be performed.
+
+.. _`spi_nor_init_erase_cmd_list.return`:
+
+Return
+------
+
+0 on success, -errno otherwise.
+
+.. _`spi_nor_erase_multi_sectors`:
+
+spi_nor_erase_multi_sectors
+===========================
+
+.. c:function:: int spi_nor_erase_multi_sectors(struct spi_nor *nor, u64 addr, u32 len)
+
+    perform a non-uniform erase
+
+    :param nor:
+        pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
+
+    :param addr:
+        offset in the serial flash memory
+    :type addr: u64
+
+    :param len:
+        number of bytes to erase
+    :type len: u32
+
+.. _`spi_nor_erase_multi_sectors.description`:
+
+Description
+-----------
+
+Build a list of best fitted erase commands and execute it once we validate
+that the erase can be performed.
+
+.. _`spi_nor_erase_multi_sectors.return`:
+
+Return
+------
+
+0 on success, -errno otherwise.
+
 .. _`macronix_quad_enable`:
 
 macronix_quad_enable
@@ -10,8 +230,9 @@ macronix_quad_enable
 
     set QE bit in Status Register.
 
-    :param struct spi_nor \*nor:
+    :param nor:
         pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
 
 .. _`macronix_quad_enable.description`:
 
@@ -38,8 +259,9 @@ spansion_quad_enable
 
     set QE bit in Configuraiton Register.
 
-    :param struct spi_nor \*nor:
+    :param nor:
         pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
 
 .. _`spansion_quad_enable.description`:
 
@@ -85,8 +307,9 @@ spansion_no_read_cr_quad_enable
 
     set QE bit in Configuration Register.
 
-    :param struct spi_nor \*nor:
+    :param nor:
         pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
 
 .. _`spansion_no_read_cr_quad_enable.description`:
 
@@ -116,8 +339,9 @@ spansion_read_cr_quad_enable
 
     set QE bit in Configuration Register.
 
-    :param struct spi_nor \*nor:
+    :param nor:
         pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
 
 .. _`spansion_read_cr_quad_enable.description`:
 
@@ -147,8 +371,9 @@ sr2_bit7_quad_enable
 
     set QE bit in Status Register 2.
 
-    :param struct spi_nor \*nor:
+    :param nor:
         pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
 
 .. _`sr2_bit7_quad_enable.description`:
 
@@ -168,6 +393,38 @@ Return
 
 0 on success, -errno otherwise.
 
+.. _`spi_nor_read_raw`:
+
+spi_nor_read_raw
+================
+
+.. c:function:: int spi_nor_read_raw(struct spi_nor *nor, u32 addr, size_t len, u8 *buf)
+
+    raw read of serial flash memory. read_opcode, addr_width and read_dummy members of the struct spi_nor should be previously set.
+
+    :param nor:
+        pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
+
+    :param addr:
+        offset in the serial flash memory
+    :type addr: u32
+
+    :param len:
+        number of bytes to read
+    :type len: size_t
+
+    :param buf:
+        buffer where the data is copied into (dma-safe memory)
+    :type buf: u8 \*
+
+.. _`spi_nor_read_raw.return`:
+
+Return
+------
+
+0 on success, -errno otherwise.
+
 .. _`spi_nor_read_sfdp`:
 
 spi_nor_read_sfdp
@@ -177,17 +434,21 @@ spi_nor_read_sfdp
 
     read Serial Flash Discoverable Parameters.
 
-    :param struct spi_nor \*nor:
+    :param nor:
         pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
 
-    :param u32 addr:
+    :param addr:
         offset in the SFDP area to start reading data from
+    :type addr: u32
 
-    :param size_t len:
+    :param len:
         number of bytes to read
+    :type len: size_t
 
-    :param void \*buf:
+    :param buf:
         buffer where the SFDP data are copied into (dma-safe memory)
+    :type buf: void \*
 
 .. _`spi_nor_read_sfdp.description`:
 
@@ -214,17 +475,21 @@ spi_nor_read_sfdp_dma_unsafe
 
     read Serial Flash Discoverable Parameters.
 
-    :param struct spi_nor \*nor:
+    :param nor:
         pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
 
-    :param u32 addr:
+    :param addr:
         offset in the SFDP area to start reading data from
+    :type addr: u32
 
-    :param size_t len:
+    :param len:
         number of bytes to read
+    :type len: size_t
 
-    :param void \*buf:
+    :param buf:
         buffer where the SFDP data are copied into
+    :type buf: void \*
 
 .. _`spi_nor_read_sfdp_dma_unsafe.description`:
 
@@ -242,6 +507,177 @@ Return
 -ENOMEM if \ :c:func:`kmalloc`\  fails, the return code of \ :c:func:`spi_nor_read_sfdp`\ 
 otherwise.
 
+.. _`spi_nor_set_erase_type`:
+
+spi_nor_set_erase_type
+======================
+
+.. c:function:: void spi_nor_set_erase_type(struct spi_nor_erase_type *erase, u32 size, u8 opcode)
+
+    set a SPI NOR erase type
+
+    :param erase:
+        pointer to a structure that describes a SPI NOR erase type
+    :type erase: struct spi_nor_erase_type \*
+
+    :param size:
+        the size of the sector/block erased by the erase type
+    :type size: u32
+
+    :param opcode:
+        the SPI command op code to erase the sector/block
+    :type opcode: u8
+
+.. _`spi_nor_set_erase_settings_from_bfpt`:
+
+spi_nor_set_erase_settings_from_bfpt
+====================================
+
+.. c:function:: void spi_nor_set_erase_settings_from_bfpt(struct spi_nor_erase_type *erase, u32 size, u8 opcode, u8 i)
+
+    set erase type settings from BFPT
+
+    :param erase:
+        pointer to a structure that describes a SPI NOR erase type
+    :type erase: struct spi_nor_erase_type \*
+
+    :param size:
+        the size of the sector/block erased by the erase type
+    :type size: u32
+
+    :param opcode:
+        the SPI command op code to erase the sector/block
+    :type opcode: u8
+
+    :param i:
+        erase type index as sorted in the Basic Flash Parameter Table
+    :type i: u8
+
+.. _`spi_nor_set_erase_settings_from_bfpt.description`:
+
+Description
+-----------
+
+The supported Erase Types will be sorted at init in ascending order, with
+the smallest Erase Type size being the first member in the erase_type array
+of the spi_nor_erase_map structure. Save the Erase Type index as sorted in
+the Basic Flash Parameter Table since it will be used later on to
+synchronize with the supported Erase Types defined in SFDP optional tables.
+
+.. _`spi_nor_map_cmp_erase_type`:
+
+spi_nor_map_cmp_erase_type
+==========================
+
+.. c:function:: int spi_nor_map_cmp_erase_type(const void *l, const void *r)
+
+    compare the map's erase types by size
+
+    :param l:
+        member in the left half of the map's erase_type array
+    :type l: const void \*
+
+    :param r:
+        member in the right half of the map's erase_type array
+    :type r: const void \*
+
+.. _`spi_nor_map_cmp_erase_type.description`:
+
+Description
+-----------
+
+Comparison function used in the \ :c:func:`sort`\  call to sort in ascending order the
+map's erase types, the smallest erase type size being the first member in the
+sorted erase_type array.
+
+.. _`spi_nor_map_cmp_erase_type.return`:
+
+Return
+------
+
+the result of \ ``l->size``\  - \ ``r->size``\ 
+
+.. _`spi_nor_sort_erase_mask`:
+
+spi_nor_sort_erase_mask
+=======================
+
+.. c:function:: u8 spi_nor_sort_erase_mask(struct spi_nor_erase_map *map, u8 erase_mask)
+
+    sort erase mask
+
+    :param map:
+        the erase map of the SPI NOR
+    :type map: struct spi_nor_erase_map \*
+
+    :param erase_mask:
+        the erase type mask to be sorted
+    :type erase_mask: u8
+
+.. _`spi_nor_sort_erase_mask.description`:
+
+Description
+-----------
+
+Replicate the sort done for the map's erase types in BFPT: sort the erase
+mask in ascending order with the smallest erase type size starting from
+BIT(0) in the sorted erase mask.
+
+.. _`spi_nor_sort_erase_mask.return`:
+
+Return
+------
+
+sorted erase mask.
+
+.. _`spi_nor_regions_sort_erase_types`:
+
+spi_nor_regions_sort_erase_types
+================================
+
+.. c:function:: void spi_nor_regions_sort_erase_types(struct spi_nor_erase_map *map)
+
+    sort erase types in each region
+
+    :param map:
+        the erase map of the SPI NOR
+    :type map: struct spi_nor_erase_map \*
+
+.. _`spi_nor_regions_sort_erase_types.description`:
+
+Description
+-----------
+
+Function assumes that the erase types defined in the erase map are already
+sorted in ascending order, with the smallest erase type size being the first
+member in the erase_type array. It replicates the sort done for the map's
+erase types. Each region's erase bitmask will indicate which erase types are
+supported from the sorted erase types defined in the erase map.
+Sort the all region's erase type at init in order to speed up the process of
+finding the best erase command at runtime.
+
+.. _`spi_nor_init_uniform_erase_map`:
+
+spi_nor_init_uniform_erase_map
+==============================
+
+.. c:function:: void spi_nor_init_uniform_erase_map(struct spi_nor_erase_map *map, u8 erase_mask, u64 flash_size)
+
+    Initialize uniform erase map
+
+    :param map:
+        the erase map of the SPI NOR
+    :type map: struct spi_nor_erase_map \*
+
+    :param erase_mask:
+        bitmask encoding erase types that can erase the entire
+        flash memory
+    :type erase_mask: u8
+
+    :param flash_size:
+        the spi nor flash memory size
+    :type flash_size: u64
+
 .. _`spi_nor_parse_bfpt`:
 
 spi_nor_parse_bfpt
@@ -251,16 +687,19 @@ spi_nor_parse_bfpt
 
     read and parse the Basic Flash Parameter Table.
 
-    :param struct spi_nor \*nor:
+    :param nor:
         pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
 
-    :param const struct sfdp_parameter_header \*bfpt_header:
+    :param bfpt_header:
         pointer to the 'struct sfdp_parameter_header' describing
         the Basic Flash Parameter Table length and version
+    :type bfpt_header: const struct sfdp_parameter_header \*
 
-    :param struct spi_nor_flash_parameter \*params:
+    :param params:
         pointer to the 'struct spi_nor_flash_parameter' to be
         filled
+    :type params: struct spi_nor_flash_parameter \*
 
 .. _`spi_nor_parse_bfpt.description`:
 
@@ -294,6 +733,153 @@ Return
 
 0 on success, -errno otherwise.
 
+.. _`spi_nor_smpt_addr_width`:
+
+spi_nor_smpt_addr_width
+=======================
+
+.. c:function:: u8 spi_nor_smpt_addr_width(const struct spi_nor *nor, const u32 settings)
+
+    return the address width used in the configuration detection command.
+
+    :param nor:
+        pointer to a 'struct spi_nor'
+    :type nor: const struct spi_nor \*
+
+    :param settings:
+        configuration detection command descriptor, dword1
+    :type settings: const u32
+
+.. _`spi_nor_smpt_read_dummy`:
+
+spi_nor_smpt_read_dummy
+=======================
+
+.. c:function:: u8 spi_nor_smpt_read_dummy(const struct spi_nor *nor, const u32 settings)
+
+    return the configuration detection command read latency, in clock cycles.
+
+    :param nor:
+        pointer to a 'struct spi_nor'
+    :type nor: const struct spi_nor \*
+
+    :param settings:
+        configuration detection command descriptor, dword1
+    :type settings: const u32
+
+.. _`spi_nor_smpt_read_dummy.return`:
+
+Return
+------
+
+the number of dummy cycles for an SMPT read
+
+.. _`spi_nor_get_map_in_use`:
+
+spi_nor_get_map_in_use
+======================
+
+.. c:function:: const u32 *spi_nor_get_map_in_use(struct spi_nor *nor, const u32 *smpt, u8 smpt_len)
+
+    get the configuration map in use
+
+    :param nor:
+        pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
+
+    :param smpt:
+        pointer to the sector map parameter table
+    :type smpt: const u32 \*
+
+    :param smpt_len:
+        sector map parameter table length
+    :type smpt_len: u8
+
+.. _`spi_nor_get_map_in_use.return`:
+
+Return
+------
+
+pointer to the map in use, ERR_PTR(-errno) otherwise.
+
+.. _`spi_nor_region_check_overlay`:
+
+spi_nor_region_check_overlay
+============================
+
+.. c:function:: void spi_nor_region_check_overlay(struct spi_nor_erase_region *region, const struct spi_nor_erase_type *erase, const u8 erase_type)
+
+    set overlay bit when the region is overlaid
+
+    :param region:
+        pointer to a structure that describes a SPI NOR erase region
+    :type region: struct spi_nor_erase_region \*
+
+    :param erase:
+        pointer to a structure that describes a SPI NOR erase type
+    :type erase: const struct spi_nor_erase_type \*
+
+    :param erase_type:
+        erase type bitmask
+    :type erase_type: const u8
+
+.. _`spi_nor_init_non_uniform_erase_map`:
+
+spi_nor_init_non_uniform_erase_map
+==================================
+
+.. c:function:: int spi_nor_init_non_uniform_erase_map(struct spi_nor *nor, const u32 *smpt)
+
+    initialize the non-uniform erase map
+
+    :param nor:
+        pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
+
+    :param smpt:
+        pointer to the sector map parameter table
+    :type smpt: const u32 \*
+
+.. _`spi_nor_init_non_uniform_erase_map.return`:
+
+Return
+------
+
+0 on success, -errno otherwise.
+
+.. _`spi_nor_parse_smpt`:
+
+spi_nor_parse_smpt
+==================
+
+.. c:function:: int spi_nor_parse_smpt(struct spi_nor *nor, const struct sfdp_parameter_header *smpt_header)
+
+    parse Sector Map Parameter Table
+
+    :param nor:
+        pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
+
+    :param smpt_header:
+        sector map parameter table header
+    :type smpt_header: const struct sfdp_parameter_header \*
+
+.. _`spi_nor_parse_smpt.description`:
+
+Description
+-----------
+
+This table is optional, but when available, we parse it to identify the
+location and size of sectors within the main data array of the flash memory
+device and to identify which Erase Types are supported by each sector.
+
+.. _`spi_nor_parse_smpt.return`:
+
+Return
+------
+
+0 on success, -errno otherwise.
+
 .. _`spi_nor_parse_sfdp`:
 
 spi_nor_parse_sfdp
@@ -303,12 +889,14 @@ spi_nor_parse_sfdp
 
     parse the Serial Flash Discoverable Parameters.
 
-    :param struct spi_nor \*nor:
+    :param nor:
         pointer to a 'struct spi_nor'
+    :type nor: struct spi_nor \*
 
-    :param struct spi_nor_flash_parameter \*params:
+    :param params:
         pointer to the 'struct spi_nor_flash_parameter' to be
         filled
+    :type params: struct spi_nor_flash_parameter \*
 
 .. _`spi_nor_parse_sfdp.description`:
 
@@ -327,6 +915,40 @@ Return
 ------
 
 0 on success, -errno otherwise.
+
+.. _`spi_nor_select_uniform_erase`:
+
+spi_nor_select_uniform_erase
+============================
+
+.. c:function:: const struct spi_nor_erase_type *spi_nor_select_uniform_erase(struct spi_nor_erase_map *map, const u32 wanted_size)
+
+    select optimum uniform erase type
+
+    :param map:
+        the erase map of the SPI NOR
+    :type map: struct spi_nor_erase_map \*
+
+    :param wanted_size:
+        the erase type size to search for. Contains the value of
+        info->sector_size or of the "small sector" size in case
+        CONFIG_MTD_SPI_NOR_USE_4K_SECTORS is defined.
+    :type wanted_size: const u32
+
+.. _`spi_nor_select_uniform_erase.description`:
+
+Description
+-----------
+
+Once the optimum uniform sector erase command is found, disable all the
+other.
+
+.. _`spi_nor_select_uniform_erase.return`:
+
+Return
+------
+
+pointer to erase type on success, NULL otherwise.
 
 .. This file was automatic generated / don't edit.
 

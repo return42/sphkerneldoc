@@ -246,8 +246,9 @@ netlbl_secattr_cache_alloc
 
     Allocate and initialize a secattr cache
 
-    :param gfp_t flags:
+    :param flags:
         the memory allocation flags
+    :type flags: gfp_t
 
 .. _`netlbl_secattr_cache_alloc.description`:
 
@@ -266,8 +267,9 @@ netlbl_secattr_cache_free
 
     Frees a netlbl_lsm_cache struct
 
-    :param struct netlbl_lsm_cache \*cache:
+    :param cache:
         the struct to free
+    :type cache: struct netlbl_lsm_cache \*
 
 .. _`netlbl_secattr_cache_free.description`:
 
@@ -285,8 +287,9 @@ netlbl_catmap_alloc
 
     Allocate a LSM secattr catmap
 
-    :param gfp_t flags:
+    :param flags:
         memory allocation flags
+    :type flags: gfp_t
 
 .. _`netlbl_catmap_alloc.description`:
 
@@ -305,8 +308,9 @@ netlbl_catmap_free
 
     Free a LSM secattr catmap
 
-    :param struct netlbl_lsm_catmap \*catmap:
+    :param catmap:
         the category bitmap
+    :type catmap: struct netlbl_lsm_catmap \*
 
 .. _`netlbl_catmap_free.description`:
 
@@ -324,8 +328,9 @@ netlbl_secattr_init
 
     Initialize a netlbl_lsm_secattr struct
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the struct to initialize
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`netlbl_secattr_init.description`:
 
@@ -343,8 +348,9 @@ netlbl_secattr_destroy
 
     Clears a netlbl_lsm_secattr struct
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the struct to clear
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`netlbl_secattr_destroy.description`:
 
@@ -363,8 +369,9 @@ netlbl_secattr_alloc
 
     Allocate and initialize a netlbl_lsm_secattr struct
 
-    :param gfp_t flags:
+    :param flags:
         the memory allocation flags
+    :type flags: gfp_t
 
 .. _`netlbl_secattr_alloc.description`:
 
@@ -383,8 +390,9 @@ netlbl_secattr_free
 
     Frees a netlbl_lsm_secattr struct
 
-    :param struct netlbl_lsm_secattr \*secattr:
+    :param secattr:
         the struct to free
+    :type secattr: struct netlbl_lsm_secattr \*
 
 .. _`netlbl_secattr_free.description`:
 

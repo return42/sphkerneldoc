@@ -10,15 +10,18 @@ usb_driver_claim_interface
 
     bind a driver to an interface
 
-    :param struct usb_driver \*driver:
+    :param driver:
         the driver to be bound
+    :type driver: struct usb_driver \*
 
-    :param struct usb_interface \*iface:
+    :param iface:
         the interface to which it will be bound; must be in the
         usb device's active configuration
+    :type iface: struct usb_interface \*
 
-    :param void \*priv:
+    :param priv:
         driver data associated with that interface
+    :type priv: void \*
 
 .. _`usb_driver_claim_interface.description`:
 
@@ -54,11 +57,13 @@ usb_driver_release_interface
 
     unbind a driver from an interface
 
-    :param struct usb_driver \*driver:
+    :param driver:
         the driver to be unbound
+    :type driver: struct usb_driver \*
 
-    :param struct usb_interface \*iface:
+    :param iface:
         the interface from which it will be unbound
+    :type iface: struct usb_interface \*
 
 .. _`usb_driver_release_interface.description`:
 
@@ -83,11 +88,13 @@ usb_match_id
 
     find first usb_device_id matching device or interface
 
-    :param struct usb_interface \*interface:
+    :param interface:
         the interface of interest
+    :type interface: struct usb_interface \*
 
-    :param const struct usb_device_id \*id:
+    :param id:
         array of usb_device_id structures, terminated by zero entry
+    :type id: const struct usb_device_id \*
 
 .. _`usb_match_id.description`:
 
@@ -184,11 +191,13 @@ usb_register_device_driver
 
     register a USB device (not interface) driver
 
-    :param struct usb_device_driver \*new_udriver:
+    :param new_udriver:
         USB operations for the device driver
+    :type new_udriver: struct usb_device_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         module owner of this driver.
+    :type owner: struct module \*
 
 .. _`usb_register_device_driver.description`:
 
@@ -215,8 +224,9 @@ usb_deregister_device_driver
 
     unregister a USB device (not interface) driver
 
-    :param struct usb_device_driver \*udriver:
+    :param udriver:
         USB operations of the device driver to unregister
+    :type udriver: struct usb_device_driver \*
 
 .. _`usb_deregister_device_driver.context`:
 
@@ -241,14 +251,17 @@ usb_register_driver
 
     register a USB interface driver
 
-    :param struct usb_driver \*new_driver:
+    :param new_driver:
         USB operations for the interface driver
+    :type new_driver: struct usb_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         module owner of this driver.
+    :type owner: struct module \*
 
-    :param const char \*mod_name:
+    :param mod_name:
         module name string
+    :type mod_name: const char \*
 
 .. _`usb_register_driver.description`:
 
@@ -284,8 +297,9 @@ usb_deregister
 
     unregister a USB interface driver
 
-    :param struct usb_driver \*driver:
+    :param driver:
         USB operations of the interface driver to unregister
+    :type driver: struct usb_driver \*
 
 .. _`usb_deregister.context`:
 
@@ -319,11 +333,13 @@ usb_suspend_both
 
     suspend a USB device and its interfaces
 
-    :param struct usb_device \*udev:
+    :param udev:
         the usb_device to suspend
+    :type udev: struct usb_device \*
 
-    :param pm_message_t msg:
+    :param msg:
         Power Management message describing this state transition
+    :type msg: pm_message_t
 
 .. _`usb_suspend_both.description`:
 
@@ -366,11 +382,13 @@ usb_resume_both
 
     resume a USB device and its interfaces
 
-    :param struct usb_device \*udev:
+    :param udev:
         the usb_device to resume
+    :type udev: struct usb_device \*
 
-    :param pm_message_t msg:
+    :param msg:
         Power Management message describing this state transition
+    :type msg: pm_message_t
 
 .. _`usb_resume_both.description`:
 
@@ -406,8 +424,9 @@ usb_enable_autosuspend
 
     allow a USB device to be autosuspended
 
-    :param struct usb_device \*udev:
+    :param udev:
         the USB device which may be autosuspended
+    :type udev: struct usb_device \*
 
 .. _`usb_enable_autosuspend.description`:
 
@@ -429,8 +448,9 @@ usb_disable_autosuspend
 
     prevent a USB device from being autosuspended
 
-    :param struct usb_device \*udev:
+    :param udev:
         the USB device which may not be autosuspended
+    :type udev: struct usb_device \*
 
 .. _`usb_disable_autosuspend.description`:
 
@@ -451,8 +471,9 @@ usb_autosuspend_device
 
     delayed autosuspend of a USB device and its interfaces
 
-    :param struct usb_device \*udev:
+    :param udev:
         the usb_device to autosuspend
+    :type udev: struct usb_device \*
 
 .. _`usb_autosuspend_device.description`:
 
@@ -480,8 +501,9 @@ usb_autoresume_device
 
     immediately autoresume a USB device and its interfaces
 
-    :param struct usb_device \*udev:
+    :param udev:
         the usb_device to autoresume
+    :type udev: struct usb_device \*
 
 .. _`usb_autoresume_device.description`:
 
@@ -518,8 +540,9 @@ usb_autopm_put_interface
 
     decrement a USB interface's PM-usage counter
 
-    :param struct usb_interface \*intf:
+    :param intf:
         the usb_interface whose counter should be decremented
+    :type intf: struct usb_interface \*
 
 .. _`usb_autopm_put_interface.description`:
 
@@ -546,8 +569,9 @@ usb_autopm_put_interface_async
 
     decrement a USB interface's PM-usage counter
 
-    :param struct usb_interface \*intf:
+    :param intf:
         the usb_interface whose counter should be decremented
+    :type intf: struct usb_interface \*
 
 .. _`usb_autopm_put_interface_async.description`:
 
@@ -574,8 +598,9 @@ usb_autopm_put_interface_no_suspend
 
     decrement a USB interface's PM-usage counter
 
-    :param struct usb_interface \*intf:
+    :param intf:
         the usb_interface whose counter should be decremented
+    :type intf: struct usb_interface \*
 
 .. _`usb_autopm_put_interface_no_suspend.description`:
 
@@ -596,8 +621,9 @@ usb_autopm_get_interface
 
     increment a USB interface's PM-usage counter
 
-    :param struct usb_interface \*intf:
+    :param intf:
         the usb_interface whose counter should be incremented
+    :type intf: struct usb_interface \*
 
 .. _`usb_autopm_get_interface.description`:
 
@@ -633,8 +659,9 @@ usb_autopm_get_interface_async
 
     increment a USB interface's PM-usage counter
 
-    :param struct usb_interface \*intf:
+    :param intf:
         the usb_interface whose counter should be incremented
+    :type intf: struct usb_interface \*
 
 .. _`usb_autopm_get_interface_async.description`:
 
@@ -668,8 +695,9 @@ usb_autopm_get_interface_no_resume
 
     increment a USB interface's PM-usage counter
 
-    :param struct usb_interface \*intf:
+    :param intf:
         the usb_interface whose counter should be incremented
+    :type intf: struct usb_interface \*
 
 .. _`usb_autopm_get_interface_no_resume.description`:
 

@@ -10,20 +10,25 @@ dwc2_update_urb_state
 
     Updates the state of the URB after a Transfer Complete interrupt on the host channel. Updates the actual_length field of the URB based on the number of bytes transferred via the host channel. Sets the URB status if the data transfer is finished.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Programming view of host channel
+    :type chan: struct dwc2_host_chan \*
 
-    :param int chnum:
+    :param chnum:
         Channel number
+    :type chnum: int
 
-    :param struct dwc2_hcd_urb \*urb:
+    :param urb:
         Processing URB
+    :type urb: struct dwc2_hcd_urb \*
 
-    :param struct dwc2_qtd \*qtd:
+    :param qtd:
         Queue transfer descriptor
+    :type qtd: struct dwc2_qtd \*
 
 .. _`dwc2_update_urb_state.return`:
 
@@ -42,20 +47,25 @@ dwc2_update_isoc_urb_state
 
     Updates the state of an Isochronous URB when the transfer is stopped for any reason. The fields of the current entry in the frame descriptor array are set based on the transfer state and the input halt_status. Completes the Isochronous URB if all the URB frames have been completed.
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         Programming view of the DWC_otg controller
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         Programming view of host channel
+    :type chan: struct dwc2_host_chan \*
 
-    :param int chnum:
+    :param chnum:
         Channel number
+    :type chnum: int
 
-    :param struct dwc2_qtd \*qtd:
+    :param qtd:
         Queue transfer descriptor
+    :type qtd: struct dwc2_qtd \*
 
-    :param enum dwc2_halt_status halt_status:
+    :param halt_status:
         Reason for halting a host channel
+    :type halt_status: enum dwc2_halt_status
 
 .. _`dwc2_update_isoc_urb_state.return`:
 
@@ -74,19 +84,23 @@ dwc2_release_channel
 
     Releases a host channel for use by other transfers
 
-    :param struct dwc2_hsotg \*hsotg:
+    :param hsotg:
         The HCD state structure
+    :type hsotg: struct dwc2_hsotg \*
 
-    :param struct dwc2_host_chan \*chan:
+    :param chan:
         The host channel to release
+    :type chan: struct dwc2_host_chan \*
 
-    :param struct dwc2_qtd \*qtd:
+    :param qtd:
         The QTD associated with the host channel. This QTD may be
         freed if the transfer is complete or an error has occurred.
+    :type qtd: struct dwc2_qtd \*
 
-    :param enum dwc2_halt_status halt_status:
+    :param halt_status:
         Reason the channel is being released. This status
         determines the actions taken by this function.
+    :type halt_status: enum dwc2_halt_status
 
 .. _`dwc2_release_channel.description`:
 

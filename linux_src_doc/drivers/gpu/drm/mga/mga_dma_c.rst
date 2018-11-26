@@ -8,11 +8,13 @@ mga_do_agp_dma_bootstrap
 
 .. c:function:: int mga_do_agp_dma_bootstrap(struct drm_device *dev, drm_mga_dma_bootstrap_t *dma_bs)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param drm_mga_dma_bootstrap_t \*dma_bs:
+    :param dma_bs:
         *undescribed*
+    :type dma_bs: drm_mga_dma_bootstrap_t \*
 
 .. _`mga_do_agp_dma_bootstrap.description`:
 
@@ -38,11 +40,13 @@ mga_do_pci_dma_bootstrap
 
 .. c:function:: int mga_do_pci_dma_bootstrap(struct drm_device *dev, drm_mga_dma_bootstrap_t *dma_bs)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param drm_mga_dma_bootstrap_t \*dma_bs:
+    :param dma_bs:
         *undescribed*
+    :type dma_bs: drm_mga_dma_bootstrap_t \*
 
 .. _`mga_do_pci_dma_bootstrap.description`:
 
@@ -67,8 +71,9 @@ mga_driver_unload
 
 .. c:function:: void mga_driver_unload(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`mga_driver_lastclose`:
 
@@ -77,8 +82,9 @@ mga_driver_lastclose
 
 .. c:function:: void mga_driver_lastclose(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. This file was automatic generated / don't edit.
 

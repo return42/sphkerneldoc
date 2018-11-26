@@ -10,12 +10,14 @@ dvb_frontend_swzigzag_autotune
 
     Performs automatic twiddling of frontend parameters.
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         The frontend concerned.
+    :type fe: struct dvb_frontend \*
 
-    :param int check_wrapped:
+    :param check_wrapped:
         Checks if an iteration has completed.
         DO NOT SET ON THE FIRST ATTEMPT.
+    :type check_wrapped: int
 
 .. _`dvb_frontend_swzigzag_autotune.return`:
 
@@ -33,14 +35,17 @@ dtv_get_frontend
 
     calls a callback for retrieving DTV parameters
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         struct dvb_frontend pointer
+    :type fe: struct dvb_frontend \*
 
-    :param struct dtv_frontend_properties \*c:
+    :param c:
         struct dtv_frontend_properties pointer (DVBv5 cache)
+    :type c: struct dtv_frontend_properties \*
 
-    :param struct dvb_frontend_parameters \*p_out:
+    :param p_out:
         struct dvb_frontend_parameters pointer (DVBv3 FE struct)
+    :type p_out: struct dvb_frontend_parameters \*
 
 .. _`dtv_get_frontend.description`:
 
@@ -60,11 +65,13 @@ emulate_delivery_system
 
     emulate a DVBv5 delivery system with a DVBv3 type
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         struct frontend;
+    :type fe: struct dvb_frontend \*
 
-    :param u32 delsys:
+    :param delsys:
         DVBv5 type that will be used for emulation
+    :type delsys: u32
 
 .. _`emulate_delivery_system.description`:
 
@@ -85,11 +92,13 @@ dvbv5_set_delivery_system
 
     Sets the delivery system for a DVBv5 API call
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         frontend struct
+    :type fe: struct dvb_frontend \*
 
-    :param u32 desired_system:
+    :param desired_system:
         delivery system requested by the user
+    :type desired_system: u32
 
 .. _`dvbv5_set_delivery_system.description`:
 
@@ -122,8 +131,9 @@ dvbv3_set_delivery_system
 
     Sets the delivery system for a DVBv3 API call
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         frontend struct
+    :type fe: struct dvb_frontend \*
 
 .. _`dvbv3_set_delivery_system.description`:
 
@@ -172,17 +182,21 @@ dtv_property_process_set
 
     Sets a single DTV property
 
-    :param struct dvb_frontend \*fe:
+    :param fe:
         Pointer to \ :c:type:`struct dvb_frontend <dvb_frontend>`\ 
+    :type fe: struct dvb_frontend \*
 
-    :param struct file \*file:
+    :param file:
         Pointer to \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param u32 cmd:
+    :param cmd:
         Digital TV command
+    :type cmd: u32
 
-    :param u32 data:
+    :param data:
         An unsigned 32-bits number
+    :type data: u32
 
 .. _`dtv_property_process_set.description`:
 

@@ -10,11 +10,13 @@ fm10k_tlv_msg_init
 
     Initialize message block for TLV data storage
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message block
+    :type msg: u32 \*
 
-    :param u16 msg_id:
+    :param msg_id:
         Message ID indicating message type
+    :type msg_id: u16
 
 .. _`fm10k_tlv_msg_init.description`:
 
@@ -32,14 +34,17 @@ fm10k_tlv_attr_put_null_string
 
     Place null terminated string on message
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message block
+    :type msg: u32 \*
 
-    :param u16 attr_id:
+    :param attr_id:
         Attribute ID
+    :type attr_id: u16
 
-    :param const unsigned char \*string:
+    :param string:
         Pointer to string to be stored in attribute
+    :type string: const unsigned char \*
 
 .. _`fm10k_tlv_attr_put_null_string.description`:
 
@@ -59,11 +64,13 @@ fm10k_tlv_attr_get_null_string
 
     Get null terminated string from attribute
 
-    :param u32 \*attr:
+    :param attr:
         Pointer to attribute
+    :type attr: u32 \*
 
-    :param unsigned char \*string:
+    :param string:
         Pointer to location of destination string
+    :type string: unsigned char \*
 
 .. _`fm10k_tlv_attr_get_null_string.description`:
 
@@ -83,17 +90,21 @@ fm10k_tlv_attr_put_mac_vlan
 
     Store MAC/VLAN attribute in message
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message block
+    :type msg: u32 \*
 
-    :param u16 attr_id:
+    :param attr_id:
         Attribute ID
+    :type attr_id: u16
 
-    :param const u8 \*mac_addr:
+    :param mac_addr:
         MAC address to be stored
+    :type mac_addr: const u8 \*
 
-    :param u16 vlan:
+    :param vlan:
         VLAN to be stored
+    :type vlan: u16
 
 .. _`fm10k_tlv_attr_put_mac_vlan.description`:
 
@@ -113,14 +124,17 @@ fm10k_tlv_attr_get_mac_vlan
 
     Get MAC/VLAN stored in attribute
 
-    :param u32 \*attr:
+    :param attr:
         Pointer to attribute
+    :type attr: u32 \*
 
-    :param u8 \*mac_addr:
+    :param mac_addr:
         location of buffer to store MAC address
+    :type mac_addr: u8 \*
 
-    :param u16 \*vlan:
+    :param vlan:
         location of buffer to store VLAN
+    :type vlan: u16 \*
 
 .. _`fm10k_tlv_attr_get_mac_vlan.description`:
 
@@ -140,11 +154,13 @@ fm10k_tlv_attr_put_bool
 
     Add header indicating value "true"
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message block
+    :type msg: u32 \*
 
-    :param u16 attr_id:
+    :param attr_id:
         Attribute ID
+    :type attr_id: u16
 
 .. _`fm10k_tlv_attr_put_bool.description`:
 
@@ -165,17 +181,21 @@ fm10k_tlv_attr_put_value
 
     Store integer value attribute in message
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message block
+    :type msg: u32 \*
 
-    :param u16 attr_id:
+    :param attr_id:
         Attribute ID
+    :type attr_id: u16
 
-    :param s64 value:
+    :param value:
         Value to be written
+    :type value: s64
 
-    :param u32 len:
+    :param len:
         Size of value
+    :type len: u32
 
 .. _`fm10k_tlv_attr_put_value.description`:
 
@@ -195,14 +215,17 @@ fm10k_tlv_attr_get_value
 
     Get integer value stored in attribute
 
-    :param u32 \*attr:
+    :param attr:
         Pointer to attribute
+    :type attr: u32 \*
 
-    :param void \*value:
+    :param value:
         Pointer to destination buffer
+    :type value: void \*
 
-    :param u32 len:
+    :param len:
         Size of value
+    :type len: u32
 
 .. _`fm10k_tlv_attr_get_value.description`:
 
@@ -223,17 +246,21 @@ fm10k_tlv_attr_put_le_struct
 
     Store little endian structure in message
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message block
+    :type msg: u32 \*
 
-    :param u16 attr_id:
+    :param attr_id:
         Attribute ID
+    :type attr_id: u16
 
-    :param const void \*le_struct:
+    :param le_struct:
         Pointer to structure to be written
+    :type le_struct: const void \*
 
-    :param u32 len:
+    :param len:
         Size of le_struct
+    :type len: u32
 
 .. _`fm10k_tlv_attr_put_le_struct.description`:
 
@@ -253,14 +280,17 @@ fm10k_tlv_attr_get_le_struct
 
     Get little endian struct form attribute
 
-    :param u32 \*attr:
+    :param attr:
         Pointer to attribute
+    :type attr: u32 \*
 
-    :param void \*le_struct:
+    :param le_struct:
         Pointer to structure to be written
+    :type le_struct: void \*
 
-    :param u32 len:
+    :param len:
         Size of structure
+    :type len: u32
 
 .. _`fm10k_tlv_attr_get_le_struct.description`:
 
@@ -281,11 +311,13 @@ fm10k_tlv_attr_nest_start
 
     Start a set of nested attributes
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message block
+    :type msg: u32 \*
 
-    :param u16 attr_id:
+    :param attr_id:
         Attribute ID
+    :type attr_id: u16
 
 .. _`fm10k_tlv_attr_nest_start.description`:
 
@@ -307,8 +339,9 @@ fm10k_tlv_attr_nest_stop
 
     Stop a set of nested attributes
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message block
+    :type msg: u32 \*
 
 .. _`fm10k_tlv_attr_nest_stop.description`:
 
@@ -329,11 +362,13 @@ fm10k_tlv_attr_validate
 
     Validate attribute metadata
 
-    :param u32 \*attr:
+    :param attr:
         Pointer to attribute
+    :type attr: u32 \*
 
-    :param const struct fm10k_tlv_attr \*tlv_attr:
+    :param tlv_attr:
         Type and length info for attribute
+    :type tlv_attr: const struct fm10k_tlv_attr \*
 
 .. _`fm10k_tlv_attr_validate.description`:
 
@@ -355,14 +390,17 @@ fm10k_tlv_attr_parse
 
     Parses stream of attribute data
 
-    :param u32 \*attr:
+    :param attr:
         Pointer to attribute list
+    :type attr: u32 \*
 
-    :param u32 \*\*results:
+    :param results:
         Pointer array to store pointers to attributes
+    :type results: u32 \*\*
 
-    :param const struct fm10k_tlv_attr \*tlv_attr:
+    :param tlv_attr:
         Type and length info for attributes
+    :type tlv_attr: const struct fm10k_tlv_attr \*
 
 .. _`fm10k_tlv_attr_parse.description`:
 
@@ -385,17 +423,21 @@ fm10k_tlv_msg_parse
 
     Parses message header and calls function handler
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         Pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message
+    :type msg: u32 \*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         Pointer to mailbox information structure
+    :type mbx: struct fm10k_mbx_info \*
 
-    :param const struct fm10k_msg_data \*data:
+    :param data:
         Pointer to message handler data structure
+    :type data: const struct fm10k_msg_data \*
 
 .. _`fm10k_tlv_msg_parse.description`:
 
@@ -417,14 +459,17 @@ fm10k_tlv_msg_error
 
     Default handler for unrecognized TLV message IDs
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         Pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param u32 \*\*results:
+    :param results:
         Pointer array to message, results[0] is pointer to message
+    :type results: u32 \*\*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         Unused mailbox pointer
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_tlv_msg_error.description`:
 
@@ -444,11 +489,13 @@ fm10k_tlv_msg_test_generate_data
 
     Stuff message with data
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message
+    :type msg: u32 \*
 
-    :param u32 attr_flags:
+    :param attr_flags:
         List of flags indicating what attributes to add
+    :type attr_flags: u32
 
 .. _`fm10k_tlv_msg_test_generate_data.description`:
 
@@ -466,11 +513,13 @@ fm10k_tlv_msg_test_create
 
     Create a test message testing all attributes
 
-    :param u32 \*msg:
+    :param msg:
         Pointer to message
+    :type msg: u32 \*
 
-    :param u32 attr_flags:
+    :param attr_flags:
         List of flags indicating what attributes to add
+    :type attr_flags: u32
 
 .. _`fm10k_tlv_msg_test_create.description`:
 
@@ -489,14 +538,17 @@ fm10k_tlv_msg_test
 
     Validate all results on test message receive
 
-    :param struct fm10k_hw \*hw:
+    :param hw:
         Pointer to hardware structure
+    :type hw: struct fm10k_hw \*
 
-    :param u32 \*\*results:
+    :param results:
         Pointer array to attributes in the message
+    :type results: u32 \*\*
 
-    :param struct fm10k_mbx_info \*mbx:
+    :param mbx:
         Pointer to mailbox information structure
+    :type mbx: struct fm10k_mbx_info \*
 
 .. _`fm10k_tlv_msg_test.description`:
 

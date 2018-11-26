@@ -10,8 +10,9 @@ psb_spank
 
     reset the 2D engine
 
-    :param struct drm_psb_private \*dev_priv:
+    :param dev_priv:
         our PSB DRM device
+    :type dev_priv: struct drm_psb_private \*
 
 .. _`psb_spank.description`:
 
@@ -31,11 +32,13 @@ psb_2d_wait_available
 
     wait for FIFO room
 
-    :param struct drm_psb_private \*dev_priv:
+    :param dev_priv:
         our DRM device
+    :type dev_priv: struct drm_psb_private \*
 
-    :param unsigned size:
+    :param size:
         size (in dwords) of the command we want to issue
+    :type size: unsigned
 
 .. _`psb_2d_wait_available.description`:
 
@@ -54,14 +57,17 @@ psbfb_2d_submit
 
     submit a 2D command
 
-    :param struct drm_psb_private \*dev_priv:
+    :param dev_priv:
         our DRM device
+    :type dev_priv: struct drm_psb_private \*
 
-    :param uint32_t \*cmdbuf:
+    :param cmdbuf:
         command to issue
+    :type cmdbuf: uint32_t \*
 
-    :param unsigned size:
+    :param size:
         length (in dwords)
+    :type size: unsigned
 
 .. _`psbfb_2d_submit.description`:
 
@@ -80,11 +86,13 @@ psb_accel_2d_copy_direction
 
     compute blit order
 
-    :param int xdir:
+    :param xdir:
         X direction of move
+    :type xdir: int
 
-    :param int ydir:
+    :param ydir:
         Y direction of move
+    :type ydir: int
 
 .. _`psb_accel_2d_copy_direction.description`:
 
@@ -103,7 +111,7 @@ psb_accel_2d_copy
 
     accelerated 2D copy
 
-    :param struct drm_psb_private \*dev_priv:
+    :param dev_priv:
         our DRM device
         \ ``src_offset``\  in bytes
         \ ``src_stride``\  in bytes
@@ -117,42 +125,55 @@ psb_accel_2d_copy
         \ ``dst_y``\  offset in pixels
         \ ``size_x``\  of the copied area
         \ ``size_y``\  of the copied area
+    :type dev_priv: struct drm_psb_private \*
 
-    :param uint32_t src_offset:
+    :param src_offset:
         *undescribed*
+    :type src_offset: uint32_t
 
-    :param uint32_t src_stride:
+    :param src_stride:
         *undescribed*
+    :type src_stride: uint32_t
 
-    :param uint32_t src_format:
+    :param src_format:
         *undescribed*
+    :type src_format: uint32_t
 
-    :param uint32_t dst_offset:
+    :param dst_offset:
         *undescribed*
+    :type dst_offset: uint32_t
 
-    :param uint32_t dst_stride:
+    :param dst_stride:
         *undescribed*
+    :type dst_stride: uint32_t
 
-    :param uint32_t dst_format:
+    :param dst_format:
         *undescribed*
+    :type dst_format: uint32_t
 
-    :param uint16_t src_x:
+    :param src_x:
         *undescribed*
+    :type src_x: uint16_t
 
-    :param uint16_t src_y:
+    :param src_y:
         *undescribed*
+    :type src_y: uint16_t
 
-    :param uint16_t dst_x:
+    :param dst_x:
         *undescribed*
+    :type dst_x: uint16_t
 
-    :param uint16_t dst_y:
+    :param dst_y:
         *undescribed*
+    :type dst_y: uint16_t
 
-    :param uint16_t size_x:
+    :param size_x:
         *undescribed*
+    :type size_x: uint16_t
 
-    :param uint16_t size_y:
+    :param size_y:
         *undescribed*
+    :type size_y: uint16_t
 
 .. _`psb_accel_2d_copy.description`:
 
@@ -170,11 +191,13 @@ psbfb_copyarea_accel
 
     copyarea acceleration for /dev/fb
 
-    :param struct fb_info \*info:
+    :param info:
         our framebuffer
+    :type info: struct fb_info \*
 
-    :param const struct fb_copyarea \*a:
+    :param a:
         copyarea parameters from the framebuffer core
+    :type a: const struct fb_copyarea \*
 
 .. _`psbfb_copyarea_accel.description`:
 
@@ -192,11 +215,13 @@ psbfb_copyarea
 
     2D copy interface
 
-    :param struct fb_info \*info:
+    :param info:
         our framebuffer
+    :type info: struct fb_info \*
 
-    :param const struct fb_copyarea \*region:
+    :param region:
         region to copy
+    :type region: const struct fb_copyarea \*
 
 .. _`psbfb_copyarea.description`:
 
@@ -215,8 +240,9 @@ psbfb_sync
 
     synchronize 2D
 
-    :param struct fb_info \*info:
+    :param info:
         our framebuffer
+    :type info: struct fb_info \*
 
 .. _`psbfb_sync.description`:
 

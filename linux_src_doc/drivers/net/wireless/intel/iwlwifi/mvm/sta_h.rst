@@ -288,7 +288,6 @@ Definition
         u16 txq_id;
         u16 ssn;
         u16 tx_time;
-        bool is_tid_active;
         unsigned long tpt_meas_start;
         u32 tx_count_last;
         u32 tx_count;
@@ -333,11 +332,6 @@ ssn
 
 tx_time
     medium time consumed by this A-MPDU
-
-is_tid_active
-    has this TID sent traffic in the last
-    \ ``IWL_MVM_DQA_QUEUE_TIMEOUT``\  time period. If \ ``txq_id``\  is invalid, this
-    field should be ignored.
 
 tpt_meas_start
     time of the throughput measurements start, is reset every HZ
@@ -402,7 +396,7 @@ Definition
         u32 tfd_queue_msk;
         u32 mac_id_n_color;
         u16 tid_disable_agg;
-        u8 max_agg_bufsize;
+        u16 max_agg_bufsize;
         enum iwl_sta_type sta_type;
         enum ieee80211_sta_state sta_state;
         bool bt_reduced_txpower;
@@ -579,19 +573,23 @@ iwl_mvm_sta_send_to_fw
 
 .. c:function:: int iwl_mvm_sta_send_to_fw(struct iwl_mvm *mvm, struct ieee80211_sta *sta, bool update, unsigned int flags)
 
-    :param struct iwl_mvm \*mvm:
+    :param mvm:
         the iwl_mvm\* to use
+    :type mvm: struct iwl_mvm \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         the STA
+    :type sta: struct ieee80211_sta \*
 
-    :param bool update:
+    :param update:
         this is true if the FW is being updated about a STA it already knows
         about. Otherwise (if this is a new STA), this should be false.
+    :type update: bool
 
-    :param unsigned int flags:
+    :param flags:
         if update==true, this marks what is being changed via ORs of values
         from enum iwl_sta_modify_flag. Otherwise, this is ignored.
+    :type flags: unsigned int
 
 .. This file was automatic generated / don't edit.
 

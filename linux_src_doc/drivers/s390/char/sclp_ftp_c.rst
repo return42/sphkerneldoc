@@ -10,11 +10,13 @@ sclp_ftp_txcb
 
     Diagnostic Test FTP services SCLP command callback
 
-    :param struct sclp_req \*req:
+    :param req:
         *undescribed*
+    :type req: struct sclp_req \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`sclp_ftp_rxcb`:
 
@@ -25,8 +27,9 @@ sclp_ftp_rxcb
 
     Diagnostic Test FTP services receiver event callback
 
-    :param struct evbuf_header \*evbuf:
+    :param evbuf:
         *undescribed*
+    :type evbuf: struct evbuf_header \*
 
 .. _`sclp_ftp_et7`:
 
@@ -37,8 +40,9 @@ sclp_ftp_et7
 
     start a Diagnostic Test FTP Service SCLP request
 
-    :param const struct hmcdrv_ftp_cmdspec \*ftp:
+    :param ftp:
         pointer to FTP descriptor
+    :type ftp: const struct hmcdrv_ftp_cmdspec \*
 
 .. _`sclp_ftp_et7.return`:
 
@@ -56,11 +60,13 @@ sclp_ftp_cmd
 
     executes a HMC related SCLP Diagnose (ET7) FTP command
 
-    :param const struct hmcdrv_ftp_cmdspec \*ftp:
+    :param ftp:
         pointer to FTP command specification
+    :type ftp: const struct hmcdrv_ftp_cmdspec \*
 
-    :param size_t \*fsize:
+    :param fsize:
         return of file size (or NULL if undesirable)
+    :type fsize: size_t \*
 
 .. _`sclp_ftp_cmd.attention`:
 
@@ -86,8 +92,9 @@ sclp_ftp_startup
 
     startup of FTP services, when running on LPAR
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`sclp_ftp_shutdown`:
 
@@ -98,8 +105,9 @@ sclp_ftp_shutdown
 
     shutdown of FTP services, when running on LPAR
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

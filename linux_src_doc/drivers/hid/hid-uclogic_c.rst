@@ -10,8 +10,9 @@ uclogic_tablet_enable
 
     functional tablet mode and determine device parameters.
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         HID device
+    :type hdev: struct hid_device \*
 
 .. _`uclogic_button_enable`:
 
@@ -20,8 +21,9 @@ uclogic_button_enable
 
 .. c:function:: int uclogic_button_enable(struct hid_device *hdev)
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         HID device
+    :type hdev: struct hid_device \*
 
 .. This file was automatic generated / don't edit.
 

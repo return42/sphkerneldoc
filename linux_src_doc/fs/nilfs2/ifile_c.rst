@@ -42,14 +42,17 @@ nilfs_ifile_create_inode
 
     create a new disk inode
 
-    :param struct inode \*ifile:
+    :param ifile:
         ifile inode
+    :type ifile: struct inode \*
 
-    :param ino_t \*out_ino:
+    :param out_ino:
         pointer to a variable to store inode number
+    :type out_ino: ino_t \*
 
-    :param struct buffer_head \*\*out_bh:
+    :param out_bh:
         buffer_head contains newly allocated disk inode
+    :type out_bh: struct buffer_head \*\*
 
 .. _`nilfs_ifile_create_inode.return-value`:
 
@@ -77,11 +80,13 @@ nilfs_ifile_delete_inode
 
     delete a disk inode
 
-    :param struct inode \*ifile:
+    :param ifile:
         ifile inode
+    :type ifile: struct inode \*
 
-    :param ino_t ino:
+    :param ino:
         inode number
+    :type ino: ino_t
 
 .. _`nilfs_ifile_delete_inode.return-value`:
 
@@ -106,14 +111,17 @@ nilfs_ifile_count_free_inodes
 
     calculate free inodes count
 
-    :param struct inode \*ifile:
+    :param ifile:
         ifile inode
+    :type ifile: struct inode \*
 
-    :param u64 \*nmaxinodes:
+    :param nmaxinodes:
         current maximum of available inodes count [out]
+    :type nmaxinodes: u64 \*
 
-    :param u64 \*nfreeinodes:
+    :param nfreeinodes:
         free inodes count [out]
+    :type nfreeinodes: u64 \*
 
 .. _`nilfs_ifile_read`:
 
@@ -124,20 +132,25 @@ nilfs_ifile_read
 
     read or get ifile inode
 
-    :param struct super_block \*sb:
+    :param sb:
         super block instance
+    :type sb: struct super_block \*
 
-    :param struct nilfs_root \*root:
+    :param root:
         root object
+    :type root: struct nilfs_root \*
 
-    :param size_t inode_size:
+    :param inode_size:
         size of an inode
+    :type inode_size: size_t
 
-    :param struct nilfs_inode \*raw_inode:
+    :param raw_inode:
         on-disk ifile inode
+    :type raw_inode: struct nilfs_inode \*
 
-    :param struct inode \*\*inodep:
+    :param inodep:
         buffer to store the inode
+    :type inodep: struct inode \*\*
 
 .. This file was automatic generated / don't edit.
 

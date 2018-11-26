@@ -8,8 +8,9 @@ il_dbgfs_unregister
 
 .. c:function:: void il_dbgfs_unregister(struct il_priv *il)
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
 .. This file was automatic generated / don't edit.
 

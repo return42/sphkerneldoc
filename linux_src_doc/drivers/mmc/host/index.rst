@@ -11,7 +11,7 @@ host
     cqhci_c
     dw_mmc-exynos_c
     dw_mmc_h
-    mmci_c
+    mmci_h
     s3cmci_c
     sdhci-msm_c
     sdhci-of-arasan_c

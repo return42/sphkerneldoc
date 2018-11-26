@@ -10,8 +10,9 @@ wb_domain_size_changed
 
     memory available to a wb_domain has changed
 
-    :param struct wb_domain \*dom:
+    :param dom:
         wb_domain of interest
+    :type dom: struct wb_domain \*
 
 .. _`wb_domain_size_changed.description`:
 
@@ -35,11 +36,13 @@ inode_attach_wb
 
     associate an inode with its wb
 
-    :param struct inode \*inode:
+    :param inode:
         inode of interest
+    :type inode: struct inode \*
 
-    :param struct page \*page:
+    :param page:
         page being dirtied (may be NULL)
+    :type page: struct page \*
 
 .. _`inode_attach_wb.description`:
 
@@ -48,7 +51,7 @@ Description
 
 If \ ``inode``\  doesn't have its wb, associate it with the wb matching the
 memcg of \ ``page``\  or, if \ ``page``\  is NULL, \ ``current``\ .  May be called w/ or w/o
-\ ``inode``\ ->i_lock.
+\ ``inode->i_lock``\ .
 
 .. _`inode_detach_wb`:
 
@@ -59,8 +62,9 @@ inode_detach_wb
 
     disassociate an inode from its wb
 
-    :param struct inode \*inode:
+    :param inode:
         inode of interest
+    :type inode: struct inode \*
 
 .. _`inode_detach_wb.description`:
 
@@ -78,11 +82,13 @@ wbc_attach_fdatawrite_inode
 
     associate wbc and inode for fdatawrite
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         writeback_control of interest
+    :type wbc: struct writeback_control \*
 
-    :param struct inode \*inode:
+    :param inode:
         target inode
+    :type inode: struct inode \*
 
 .. _`wbc_attach_fdatawrite_inode.description`:
 
@@ -102,11 +108,13 @@ wbc_init_bio
 
     writeback specific initializtion of bio
 
-    :param struct writeback_control \*wbc:
+    :param wbc:
         writeback_control for the writeback in progress
+    :type wbc: struct writeback_control \*
 
-    :param struct bio \*bio:
+    :param bio:
         bio to be initialized
+    :type bio: struct bio \*
 
 .. _`wbc_init_bio.description`:
 

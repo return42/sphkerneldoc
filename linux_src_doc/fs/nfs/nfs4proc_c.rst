@@ -10,8 +10,9 @@ nfs41_check_expired_locks
 
     possibly free a lock stateid
 
-    :param struct nfs4_state \*state:
+    :param state:
         NFSv4 state for an inode
+    :type state: struct nfs4_state \*
 
 .. _`nfs41_check_expired_locks.description`:
 
@@ -30,8 +31,9 @@ nfs41_check_open_stateid
 
     possibly free an open stateid
 
-    :param struct nfs4_state \*state:
+    :param state:
         NFSv4 state for an inode
+    :type state: struct nfs4_state \*
 
 .. _`nfs41_check_open_stateid.description`:
 
@@ -50,17 +52,21 @@ nfs4_proc_get_rootfh
 
     get file handle for server's pseudoroot
 
-    :param struct nfs_server \*server:
+    :param server:
         initialized nfs_server handle
+    :type server: struct nfs_server \*
 
-    :param struct nfs_fh \*fhandle:
+    :param fhandle:
         we fill in the pseudo-fs root file handle
+    :type fhandle: struct nfs_fh \*
 
-    :param struct nfs_fsinfo \*info:
+    :param info:
         we fill in an FSINFO struct
+    :type info: struct nfs_fsinfo \*
 
-    :param bool auth_probe:
+    :param auth_probe:
         probe the auth flavours
+    :type auth_probe: bool
 
 .. _`nfs4_proc_get_rootfh.description`:
 
@@ -78,20 +84,25 @@ nfs4_proc_setclientid
 
     Negotiate client ID
 
-    :param struct nfs_client \*clp:
+    :param clp:
         state data structure
+    :type clp: struct nfs_client \*
 
-    :param u32 program:
+    :param program:
         RPC program for NFSv4 callback service
+    :type program: u32
 
-    :param unsigned short port:
+    :param port:
         IP port number for NFS4 callback service
+    :type port: unsigned short
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         RPC credential to use for this call
+    :type cred: struct rpc_cred \*
 
-    :param struct nfs4_setclientid_res \*res:
+    :param res:
         where to place the result
+    :type res: struct nfs4_setclientid_res \*
 
 .. _`nfs4_proc_setclientid.description`:
 
@@ -109,14 +120,17 @@ nfs4_proc_setclientid_confirm
 
     Confirm client ID
 
-    :param struct nfs_client \*clp:
+    :param clp:
         state data structure
+    :type clp: struct nfs_client \*
 
-    :param struct nfs4_setclientid_res \*arg:
+    :param arg:
         *undescribed*
+    :type arg: struct nfs4_setclientid_res \*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         RPC credential to use for this call
+    :type cred: struct rpc_cred \*
 
 .. _`nfs4_proc_setclientid_confirm.description`:
 
@@ -134,17 +148,21 @@ nfs4_proc_get_locations
 
     discover locations for a migrated FSID
 
-    :param struct inode \*inode:
+    :param inode:
         inode on FSID that is migrating
+    :type inode: struct inode \*
 
-    :param struct nfs4_fs_locations \*locations:
+    :param locations:
         result of query
+    :type locations: struct nfs4_fs_locations \*
 
-    :param struct page \*page:
+    :param page:
         buffer
+    :type page: struct page \*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         credential to use for this operation
+    :type cred: struct rpc_cred \*
 
 .. _`nfs4_proc_get_locations.description`:
 
@@ -170,11 +188,13 @@ nfs4_proc_fsid_present
 
     Is this FSID present or absent on server?
 
-    :param struct inode \*inode:
+    :param inode:
         inode on FSID to check
+    :type inode: struct inode \*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         credential to use for this operation
+    :type cred: struct rpc_cred \*
 
 .. _`nfs4_proc_fsid_present.description`:
 
@@ -199,17 +219,21 @@ negative errno if a local failure occurred.
 
     cl_rpcclient is using krb5i/p, use the integrity protected cl_rpcclient and the machine credential as per RFC3530bis and RFC5661 Security Considerations sections. Otherwise, just use the user cred with the filesystem's rpc_client.
 
-    :param struct inode \*dir:
+    :param dir:
         *undescribed*
+    :type dir: struct inode \*
 
-    :param const struct qstr \*name:
+    :param name:
         *undescribed*
+    :type name: const struct qstr \*
 
-    :param struct nfs4_secinfo_flavors \*flavors:
+    :param flavors:
         *undescribed*
+    :type flavors: struct nfs4_secinfo_flavors \*
 
-    :param bool use_integrity:
+    :param use_integrity:
         *undescribed*
+    :type use_integrity: bool
 
 .. _`nfs4_test_session_trunk`:
 
@@ -218,14 +242,17 @@ nfs4_test_session_trunk
 
 .. c:function:: int nfs4_test_session_trunk(struct rpc_clnt *clnt, struct rpc_xprt *xprt, void *data)
 
-    :param struct rpc_clnt \*clnt:
+    :param clnt:
         struct rpc_clnt to get new transport
+    :type clnt: struct rpc_clnt \*
 
-    :param struct rpc_xprt \*xprt:
+    :param xprt:
         the rpc_xprt to test
+    :type xprt: struct rpc_xprt \*
 
-    :param void \*data:
+    :param data:
         call data for \_nfs4_proc_exchange_id.
+    :type data: void \*
 
 .. _`nfs4_test_session_trunk.description`:
 
@@ -249,20 +276,25 @@ Upon success, add the new transport to the rpc_clnt
 
     possible) as per RFC3530bis and RFC5661 Security Considerations sections
 
-    :param struct nfs_server \*server:
+    :param server:
         *undescribed*
+    :type server: struct nfs_server \*
 
-    :param struct nfs_fh \*fhandle:
+    :param fhandle:
         *undescribed*
+    :type fhandle: struct nfs_fh \*
 
-    :param struct nfs_fsinfo \*info:
+    :param info:
         *undescribed*
+    :type info: struct nfs_fsinfo \*
 
-    :param struct nfs4_secinfo_flavors \*flavors:
+    :param flavors:
         *undescribed*
+    :type flavors: struct nfs4_secinfo_flavors \*
 
-    :param bool use_integrity:
+    :param use_integrity:
         *undescribed*
+    :type use_integrity: bool
 
 .. _`nfs41_test_stateid`:
 
@@ -273,14 +305,17 @@ nfs41_test_stateid
 
     perform a TEST_STATEID operation
 
-    :param struct nfs_server \*server:
+    :param server:
         server / transport on which to perform the operation
+    :type server: struct nfs_server \*
 
-    :param nfs4_stateid \*stateid:
+    :param stateid:
         state ID to test
+    :type stateid: nfs4_stateid \*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         credential
+    :type cred: struct rpc_cred \*
 
 .. _`nfs41_test_stateid.description`:
 
@@ -300,17 +335,21 @@ nfs41_free_stateid
 
     perform a FREE_STATEID operation
 
-    :param struct nfs_server \*server:
+    :param server:
         server / transport on which to perform the operation
+    :type server: struct nfs_server \*
 
-    :param const nfs4_stateid \*stateid:
+    :param stateid:
         state ID to release
+    :type stateid: const nfs4_stateid \*
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         credential
+    :type cred: struct rpc_cred \*
 
-    :param bool privileged:
+    :param privileged:
         *undescribed*
+    :type privileged: bool
 
 .. _`nfs41_free_stateid.note`:
 

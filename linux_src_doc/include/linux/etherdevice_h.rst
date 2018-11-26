@@ -10,8 +10,9 @@ is_link_local_ether_addr
 
     Determine if given Ethernet address is link-local
 
-    :param const u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: const u8 \*
 
 .. _`is_link_local_ether_addr.description`:
 
@@ -32,8 +33,9 @@ is_zero_ether_addr
 
     Determine if give Ethernet address is all zeros.
 
-    :param const u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: const u8 \*
 
 .. _`is_zero_ether_addr.description`:
 
@@ -53,8 +55,9 @@ is_multicast_ether_addr
 
     Determine if the Ethernet address is a multicast.
 
-    :param const u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: const u8 \*
 
 .. _`is_multicast_ether_addr.description`:
 
@@ -73,8 +76,9 @@ is_local_ether_addr
 
     Determine if the Ethernet address is locally-assigned one (IEEE 802).
 
-    :param const u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: const u8 \*
 
 .. _`is_local_ether_addr.description`:
 
@@ -92,8 +96,9 @@ is_broadcast_ether_addr
 
     Determine if the Ethernet address is broadcast
 
-    :param const u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: const u8 \*
 
 .. _`is_broadcast_ether_addr.description`:
 
@@ -113,8 +118,9 @@ is_unicast_ether_addr
 
     Determine if the Ethernet address is unicast
 
-    :param const u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: const u8 \*
 
 .. _`is_unicast_ether_addr.description`:
 
@@ -132,8 +138,9 @@ is_valid_ether_addr
 
     Determine if the given Ethernet address is valid
 
-    :param const u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: const u8 \*
 
 .. _`is_valid_ether_addr.description`:
 
@@ -156,8 +163,9 @@ eth_proto_is_802_3
 
     Determine if a given Ethertype/length is a protocol
 
-    :param __be16 proto:
+    :param proto:
         Ethertype/length value to be tested
+    :type proto: __be16
 
 .. _`eth_proto_is_802_3.description`:
 
@@ -177,8 +185,9 @@ eth_random_addr
 
     Generate software assigned random Ethernet address
 
-    :param u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: u8 \*
 
 .. _`eth_random_addr.description`:
 
@@ -197,8 +206,9 @@ eth_broadcast_addr
 
     Assign broadcast address
 
-    :param u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: u8 \*
 
 .. _`eth_broadcast_addr.description`:
 
@@ -216,8 +226,9 @@ eth_zero_addr
 
     Assign zero address
 
-    :param u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: u8 \*
 
 .. _`eth_zero_addr.description`:
 
@@ -235,8 +246,9 @@ eth_hw_addr_random
 
     Generate software assigned random Ethernet and set device flag
 
-    :param struct net_device \*dev:
+    :param dev:
         pointer to net_device structure
+    :type dev: struct net_device \*
 
 .. _`eth_hw_addr_random.description`:
 
@@ -256,11 +268,13 @@ ether_addr_copy
 
     Copy an Ethernet address
 
-    :param u8 \*dst:
+    :param dst:
         Pointer to a six-byte array Ethernet address destination
+    :type dst: u8 \*
 
-    :param const u8 \*src:
+    :param src:
         Pointer to a six-byte array Ethernet address source
+    :type src: const u8 \*
 
 .. _`ether_addr_copy.description`:
 
@@ -278,11 +292,13 @@ eth_hw_addr_inherit
 
     Copy dev_addr from another net_device
 
-    :param struct net_device \*dst:
+    :param dst:
         pointer to net_device to copy dev_addr to
+    :type dst: struct net_device \*
 
-    :param struct net_device \*src:
+    :param src:
         pointer to net_device to copy dev_addr from
+    :type src: struct net_device \*
 
 .. _`eth_hw_addr_inherit.description`:
 
@@ -301,11 +317,13 @@ ether_addr_equal
 
     Compare two Ethernet addresses
 
-    :param const u8 \*addr1:
+    :param addr1:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr1: const u8 \*
 
-    :param const u8 \*addr2:
+    :param addr2:
         Pointer other six-byte array containing the Ethernet address
+    :type addr2: const u8 \*
 
 .. _`ether_addr_equal.description`:
 
@@ -325,11 +343,13 @@ ether_addr_equal_64bits
 
     Compare two Ethernet addresses
 
-    :param const u8 addr1:
+    :param addr1:
         Pointer to an array of 8 bytes
+    :type addr1: const u8
 
-    :param const u8 addr2:
+    :param addr2:
         Pointer to an other array of 8 bytes
+    :type addr2: const u8
 
 .. _`ether_addr_equal_64bits.description`:
 
@@ -353,11 +373,13 @@ ether_addr_equal_unaligned
 
     Compare two not u16 aligned Ethernet addresses
 
-    :param const u8 \*addr1:
+    :param addr1:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr1: const u8 \*
 
-    :param const u8 \*addr2:
+    :param addr2:
         Pointer other six-byte array containing the Ethernet address
+    :type addr2: const u8 \*
 
 .. _`ether_addr_equal_unaligned.description`:
 
@@ -377,14 +399,17 @@ ether_addr_equal_masked
 
     Compare two Ethernet addresses with a mask
 
-    :param const u8 \*addr1:
+    :param addr1:
         Pointer to a six-byte array containing the 1st Ethernet address
+    :type addr1: const u8 \*
 
-    :param const u8 \*addr2:
+    :param addr2:
         Pointer to a six-byte array containing the 2nd Ethernet address
+    :type addr2: const u8 \*
 
-    :param const u8 \*mask:
+    :param mask:
         Pointer to a six-byte array containing the Ethernet address bitmask
+    :type mask: const u8 \*
 
 .. _`ether_addr_equal_masked.description`:
 
@@ -404,8 +429,9 @@ ether_addr_to_u64
 
     Convert an Ethernet address into a u64 value.
 
-    :param const u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: const u8 \*
 
 .. _`ether_addr_to_u64.description`:
 
@@ -423,11 +449,13 @@ u64_to_ether_addr
 
     Convert a u64 to an Ethernet address.
 
-    :param u64 u:
+    :param u:
         u64 to convert to an Ethernet MAC address
+    :type u: u64
 
-    :param u8 \*addr:
+    :param addr:
         Pointer to a six-byte array to contain the Ethernet address
+    :type addr: u8 \*
 
 .. _`eth_addr_dec`:
 
@@ -438,8 +466,9 @@ eth_addr_dec
 
     Decrement the given MAC address
 
-    :param u8 \*addr:
+    :param addr:
         Pointer to a six-byte array containing Ethernet address to decrement
+    :type addr: u8 \*
 
 .. _`is_etherdev_addr`:
 
@@ -450,11 +479,13 @@ is_etherdev_addr
 
     Tell if given Ethernet address belongs to the device.
 
-    :param const struct net_device \*dev:
+    :param dev:
         Pointer to a device structure
+    :type dev: const struct net_device \*
 
-    :param const u8 addr:
+    :param addr:
         Pointer to a six-byte array containing the Ethernet address
+    :type addr: const u8
 
 .. _`is_etherdev_addr.description`:
 
@@ -476,11 +507,13 @@ compare_ether_header
 
     Compare two Ethernet headers
 
-    :param const void \*a:
+    :param a:
         Pointer to Ethernet header
+    :type a: const void \*
 
-    :param const void \*b:
+    :param b:
         Pointer to Ethernet header
+    :type b: const void \*
 
 .. _`compare_ether_header.description`:
 
@@ -502,8 +535,9 @@ eth_skb_pad
 
     Pad buffer to mininum number of octets for Ethernet frame
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Buffer to pad
+    :type skb: struct sk_buff \*
 
 .. _`eth_skb_pad.description`:
 

@@ -123,11 +123,15 @@ data.buswidth
 data.dir
     direction of the transfer
 
+data.nbytes
+    number of data bytes to send/receive. Can be zero if the
+    operation does not involve transferring data
+
 data.buf.in
-    input buffer
+    input buffer (must be DMA-able)
 
 data.buf.out
-    output buffer
+    output buffer (must be DMA-able)
 
 .. _`spi_mem`:
 
@@ -148,6 +152,7 @@ Definition
     struct spi_mem {
         struct spi_device *spi;
         void *drvpriv;
+        const char *name;
     }
 
 .. _`spi_mem.members`:
@@ -159,7 +164,10 @@ spi
     the underlying SPI device
 
 drvpriv
-    spi_mem_drviver private data
+    spi_mem_driver private data
+
+name
+    name of the SPI memory device
 
 .. _`spi_mem.description`:
 

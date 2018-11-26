@@ -10,11 +10,13 @@
 
     check if a specific CPACF function is available
 
-    :param unsigned int opcode:
+    :param opcode:
         the opcode of the crypto instruction
+    :type opcode: unsigned int
 
-    :param cpacf_mask_t \*mask:
+    :param mask:
         *undescribed*
+    :type mask: cpacf_mask_t \*
 
 .. _`__cpacf_query.description`:
 
@@ -35,20 +37,25 @@ cpacf_km
 
     executes the KM (CIPHER MESSAGE) instruction
 
-    :param unsigned long func:
+    :param func:
         the function code passed to KM; see CPACF_KM_xxx defines
+    :type func: unsigned long
 
-    :param void \*param:
+    :param param:
         address of parameter block; see POP for details on each func
+    :type param: void \*
 
-    :param u8 \*dest:
+    :param dest:
         address of destination memory area
+    :type dest: u8 \*
 
-    :param const u8 \*src:
+    :param src:
         address of source memory area
+    :type src: const u8 \*
 
-    :param long src_len:
+    :param src_len:
         length of src operand in bytes
+    :type src_len: long
 
 .. _`cpacf_km.description`:
 
@@ -67,20 +74,25 @@ cpacf_kmc
 
     executes the KMC (CIPHER MESSAGE WITH CHAINING) instruction
 
-    :param unsigned long func:
+    :param func:
         the function code passed to KM; see CPACF_KMC_xxx defines
+    :type func: unsigned long
 
-    :param void \*param:
+    :param param:
         address of parameter block; see POP for details on each func
+    :type param: void \*
 
-    :param u8 \*dest:
+    :param dest:
         address of destination memory area
+    :type dest: u8 \*
 
-    :param const u8 \*src:
+    :param src:
         address of source memory area
+    :type src: const u8 \*
 
-    :param long src_len:
+    :param src_len:
         length of src operand in bytes
+    :type src_len: long
 
 .. _`cpacf_kmc.description`:
 
@@ -99,17 +111,21 @@ cpacf_kimd
 
     executes the KIMD (COMPUTE INTERMEDIATE MESSAGE DIGEST) instruction
 
-    :param unsigned long func:
+    :param func:
         the function code passed to KM; see CPACF_KIMD_xxx defines
+    :type func: unsigned long
 
-    :param void \*param:
+    :param param:
         address of parameter block; see POP for details on each func
+    :type param: void \*
 
-    :param const u8 \*src:
+    :param src:
         address of source memory area
+    :type src: const u8 \*
 
-    :param long src_len:
+    :param src_len:
         length of src operand in bytes
+    :type src_len: long
 
 .. _`cpacf_klmd`:
 
@@ -120,17 +136,21 @@ cpacf_klmd
 
     executes the KLMD (COMPUTE LAST MESSAGE DIGEST) instruction
 
-    :param unsigned long func:
+    :param func:
         the function code passed to KM; see CPACF_KLMD_xxx defines
+    :type func: unsigned long
 
-    :param void \*param:
+    :param param:
         address of parameter block; see POP for details on each func
+    :type param: void \*
 
-    :param const u8 \*src:
+    :param src:
         address of source memory area
+    :type src: const u8 \*
 
-    :param long src_len:
+    :param src_len:
         length of src operand in bytes
+    :type src_len: long
 
 .. _`cpacf_kmac`:
 
@@ -141,17 +161,21 @@ cpacf_kmac
 
     executes the KMAC (COMPUTE MESSAGE AUTHENTICATION CODE) instruction
 
-    :param unsigned long func:
+    :param func:
         the function code passed to KM; see CPACF_KMAC_xxx defines
+    :type func: unsigned long
 
-    :param void \*param:
+    :param param:
         address of parameter block; see POP for details on each func
+    :type param: void \*
 
-    :param const u8 \*src:
+    :param src:
         address of source memory area
+    :type src: const u8 \*
 
-    :param long src_len:
+    :param src_len:
         length of src operand in bytes
+    :type src_len: long
 
 .. _`cpacf_kmac.description`:
 
@@ -169,23 +193,29 @@ cpacf_kmctr
 
     executes the KMCTR (CIPHER MESSAGE WITH COUNTER) instruction
 
-    :param unsigned long func:
+    :param func:
         the function code passed to KMCTR; see CPACF_KMCTR_xxx defines
+    :type func: unsigned long
 
-    :param void \*param:
+    :param param:
         address of parameter block; see POP for details on each func
+    :type param: void \*
 
-    :param u8 \*dest:
+    :param dest:
         address of destination memory area
+    :type dest: u8 \*
 
-    :param const u8 \*src:
+    :param src:
         address of source memory area
+    :type src: const u8 \*
 
-    :param long src_len:
+    :param src_len:
         length of src operand in bytes
+    :type src_len: long
 
-    :param u8 \*counter:
+    :param counter:
         address of counter value
+    :type counter: u8 \*
 
 .. _`cpacf_kmctr.description`:
 
@@ -204,23 +234,29 @@ cpacf_prno
 
     executes the PRNO (PERFORM RANDOM NUMBER OPERATION) instruction
 
-    :param unsigned long func:
+    :param func:
         the function code passed to PRNO; see CPACF_PRNO_xxx defines
+    :type func: unsigned long
 
-    :param void \*param:
+    :param param:
         address of parameter block; see POP for details on each func
+    :type param: void \*
 
-    :param u8 \*dest:
+    :param dest:
         address of destination memory area
+    :type dest: u8 \*
 
-    :param unsigned long dest_len:
+    :param dest_len:
         size of destination memory area in bytes
+    :type dest_len: unsigned long
 
-    :param const u8 \*seed:
+    :param seed:
         address of seed data
+    :type seed: const u8 \*
 
-    :param unsigned long seed_len:
+    :param seed_len:
         size of seed data in bytes
+    :type seed_len: unsigned long
 
 .. _`cpacf_trng`:
 
@@ -231,17 +267,21 @@ cpacf_trng
 
     executes the TRNG subfunction of the PRNO instruction
 
-    :param u8 \*ucbuf:
+    :param ucbuf:
         buffer for unconditioned data
+    :type ucbuf: u8 \*
 
-    :param unsigned long ucbuf_len:
+    :param ucbuf_len:
         amount of unconditioned data to fetch in bytes
+    :type ucbuf_len: unsigned long
 
-    :param u8 \*cbuf:
+    :param cbuf:
         buffer for conditioned data
+    :type cbuf: u8 \*
 
-    :param unsigned long cbuf_len:
+    :param cbuf_len:
         amount of conditioned data to fetch in bytes
+    :type cbuf_len: unsigned long
 
 .. _`cpacf_pcc`:
 
@@ -252,11 +292,13 @@ cpacf_pcc
 
     executes the PCC (PERFORM CRYPTOGRAPHIC COMPUTATION) instruction
 
-    :param unsigned long func:
+    :param func:
         the function code passed to PCC; see CPACF_KM_xxx defines
+    :type func: unsigned long
 
-    :param void \*param:
+    :param param:
         address of parameter block; see POP for details on each func
+    :type param: void \*
 
 .. _`cpacf_pckmo`:
 
@@ -267,11 +309,13 @@ cpacf_pckmo
 
     executes the PCKMO (PERFORM CRYPTOGRAPHIC KEY MANAGEMENT) instruction
 
-    :param long func:
+    :param func:
         the function code passed to PCKMO; see CPACF_PCKMO_xxx defines
+    :type func: long
 
-    :param void \*param:
+    :param param:
         address of parameter block; see POP for details on each func
+    :type param: void \*
 
 .. _`cpacf_pckmo.description`:
 
@@ -289,26 +333,33 @@ cpacf_kma
 
     executes the KMA (CIPHER MESSAGE WITH AUTHENTICATION) instruction
 
-    :param unsigned long func:
+    :param func:
         the function code passed to KMA; see CPACF_KMA_xxx defines
+    :type func: unsigned long
 
-    :param void \*param:
+    :param param:
         address of parameter block; see POP for details on each func
+    :type param: void \*
 
-    :param u8 \*dest:
+    :param dest:
         address of destination memory area
+    :type dest: u8 \*
 
-    :param const u8 \*src:
+    :param src:
         address of source memory area
+    :type src: const u8 \*
 
-    :param unsigned long src_len:
+    :param src_len:
         length of src operand in bytes
+    :type src_len: unsigned long
 
-    :param const u8 \*aad:
+    :param aad:
         address of additional authenticated data memory area
+    :type aad: const u8 \*
 
-    :param unsigned long aad_len:
+    :param aad_len:
         length of aad operand in bytes
+    :type aad_len: unsigned long
 
 .. This file was automatic generated / don't edit.
 

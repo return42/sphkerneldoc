@@ -10,11 +10,13 @@ mei_me_reg_read
 
     Reads 32bit data from the mei device
 
-    :param const struct mei_me_hw \*hw:
+    :param hw:
         the me hardware structure
+    :type hw: const struct mei_me_hw \*
 
-    :param unsigned long offset:
+    :param offset:
         offset from which to read the data
+    :type offset: unsigned long
 
 .. _`mei_me_reg_read.return`:
 
@@ -32,14 +34,17 @@ mei_me_reg_write
 
     Writes 32bit data to the mei device
 
-    :param const struct mei_me_hw \*hw:
+    :param hw:
         the me hardware structure
+    :type hw: const struct mei_me_hw \*
 
-    :param unsigned long offset:
+    :param offset:
         offset from which to write the data
+    :type offset: unsigned long
 
-    :param u32 value:
+    :param value:
         register value to write (u32)
+    :type value: u32
 
 .. _`mei_me_mecbrw_read`:
 
@@ -50,8 +55,9 @@ mei_me_mecbrw_read
 
     Reads 32bit data from ME circular buffer read window register
 
-    :param const struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: const struct mei_device \*
 
 .. _`mei_me_mecbrw_read.return`:
 
@@ -69,11 +75,13 @@ mei_me_hcbww_write
 
     write 32bit data to the host circular buffer
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 data:
+    :param data:
         32bit data to be written to the host circular buffer
+    :type data: u32
 
 .. _`mei_me_mecsr_read`:
 
@@ -84,8 +92,9 @@ mei_me_mecsr_read
 
     Reads 32bit data from the ME CSR
 
-    :param const struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: const struct mei_device \*
 
 .. _`mei_me_mecsr_read.return`:
 
@@ -103,8 +112,9 @@ mei_hcsr_read
 
     Reads 32bit data from the host CSR
 
-    :param const struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: const struct mei_device \*
 
 .. _`mei_hcsr_read.return`:
 
@@ -122,11 +132,13 @@ mei_hcsr_write
 
     writes H_CSR register to the mei device
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 reg:
+    :param reg:
         new register value
+    :type reg: u32
 
 .. _`mei_hcsr_set`:
 
@@ -137,11 +149,13 @@ mei_hcsr_set
 
     writes H_CSR register to the mei device, and ignores the H_IS bit for it is write-one-to-zero.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 reg:
+    :param reg:
         new register value
+    :type reg: u32
 
 .. _`mei_hcsr_set_hig`:
 
@@ -152,8 +166,9 @@ mei_hcsr_set_hig
 
     set host interrupt (set H_IG)
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_d0i3c_read`:
 
@@ -164,8 +179,9 @@ mei_me_d0i3c_read
 
     Reads 32bit data from the D0I3C register
 
-    :param const struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: const struct mei_device \*
 
 .. _`mei_me_d0i3c_read.return`:
 
@@ -183,11 +199,13 @@ mei_me_d0i3c_write
 
     writes H_D0I3C register to device
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 reg:
+    :param reg:
         new register value
+    :type reg: u32
 
 .. _`mei_me_fw_status`:
 
@@ -198,11 +216,13 @@ mei_me_fw_status
 
     read fw status register from pci config space
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
-    :param struct mei_fw_status \*fw_status:
+    :param fw_status:
         fw status register values
+    :type fw_status: struct mei_fw_status \*
 
 .. _`mei_me_fw_status.return`:
 
@@ -220,8 +240,9 @@ mei_me_hw_config
 
     configure hw dependent settings
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_me_pg_state`:
 
@@ -232,8 +253,9 @@ mei_me_pg_state
 
     translate internal pg state to the mei power gating state
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_me_pg_state.return`:
 
@@ -251,11 +273,13 @@ me_intr_disable
 
     disables mei device interrupts using supplied hcsr register value.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 hcsr:
+    :param hcsr:
         supplied hcsr register value
+    :type hcsr: u32
 
 .. _`me_intr_clear`:
 
@@ -266,11 +290,13 @@ me_intr_clear
 
     clear and stop interrupts
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 hcsr:
+    :param hcsr:
         supplied hcsr register value
+    :type hcsr: u32
 
 .. _`mei_me_intr_clear`:
 
@@ -281,8 +307,9 @@ mei_me_intr_clear
 
     clear and stop interrupts
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_intr_enable`:
 
@@ -293,8 +320,9 @@ mei_me_intr_enable
 
     enables mei device interrupts
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_intr_disable`:
 
@@ -305,8 +333,9 @@ mei_me_intr_disable
 
     disables mei device interrupts
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_synchronize_irq`:
 
@@ -317,8 +346,9 @@ mei_me_synchronize_irq
 
     wait for pending IRQ handlers
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_hw_reset_release`:
 
@@ -329,8 +359,9 @@ mei_me_hw_reset_release
 
     release device from the reset
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_host_set_ready`:
 
@@ -341,8 +372,9 @@ mei_me_host_set_ready
 
     enable device
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_me_host_is_ready`:
 
@@ -353,8 +385,9 @@ mei_me_host_is_ready
 
     check whether the host has turned ready
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_me_host_is_ready.return`:
 
@@ -372,8 +405,9 @@ mei_me_hw_is_ready
 
     check whether the me(hw) has turned ready
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_me_hw_is_ready.return`:
 
@@ -391,8 +425,9 @@ mei_me_hw_is_resetting
 
     check whether the me(hw) is in reset
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_me_hw_is_resetting.return`:
 
@@ -410,8 +445,9 @@ mei_me_hw_ready_wait
 
     wait until the me(hw) has turned ready or timeout is reached
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_me_hw_ready_wait.return`:
 
@@ -429,8 +465,9 @@ mei_me_hw_start
 
     hw start routine
 
-    :param struct mei_device \*dev:
+    :param dev:
         mei device
+    :type dev: struct mei_device \*
 
 .. _`mei_me_hw_start.return`:
 
@@ -448,8 +485,9 @@ mei_hbuf_filled_slots
 
     gets number of device filled buffer slots
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_hbuf_filled_slots.return`:
 
@@ -467,8 +505,9 @@ mei_me_hbuf_is_empty
 
     checks if host buffer is empty.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_hbuf_is_empty.return`:
 
@@ -486,8 +525,9 @@ mei_me_hbuf_empty_slots
 
     counts write empty slots.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_hbuf_empty_slots.return`:
 
@@ -496,49 +536,61 @@ Return
 
 -EOVERFLOW if overflow, otherwise empty slots count
 
-.. _`mei_me_hbuf_max_len`:
+.. _`mei_me_hbuf_depth`:
 
-mei_me_hbuf_max_len
-===================
+mei_me_hbuf_depth
+=================
 
-.. c:function:: size_t mei_me_hbuf_max_len(const struct mei_device *dev)
+.. c:function:: u32 mei_me_hbuf_depth(const struct mei_device *dev)
 
-    returns size of hw buffer.
+    returns depth of the hw buffer.
 
-    :param const struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: const struct mei_device \*
 
-.. _`mei_me_hbuf_max_len.return`:
+.. _`mei_me_hbuf_depth.return`:
 
 Return
 ------
 
-size of hw buffer in bytes
+size of hw buffer in slots
 
 .. _`mei_me_hbuf_write`:
 
 mei_me_hbuf_write
 =================
 
-.. c:function:: int mei_me_hbuf_write(struct mei_device *dev, struct mei_msg_hdr *header, const unsigned char *buf)
+.. c:function:: int mei_me_hbuf_write(struct mei_device *dev, const void *hdr, size_t hdr_len, const void *data, size_t data_len)
 
     writes a message to host hw buffer.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param struct mei_msg_hdr \*header:
-        mei HECI header of message
+    :param hdr:
+        header of message
+    :type hdr: const void \*
 
-    :param const unsigned char \*buf:
-        message payload will be written
+    :param hdr_len:
+        header length in bytes: must be multiplication of a slot (4bytes)
+    :type hdr_len: size_t
+
+    :param data:
+        payload
+    :type data: const void \*
+
+    :param data_len:
+        payload length in bytes
+    :type data_len: size_t
 
 .. _`mei_me_hbuf_write.return`:
 
 Return
 ------
 
--EIO if write has failed
+0 if success, < 0 - otherwise.
 
 .. _`mei_me_count_full_read_slots`:
 
@@ -549,8 +601,9 @@ mei_me_count_full_read_slots
 
     counts read full slots.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_count_full_read_slots.return`:
 
@@ -568,14 +621,17 @@ mei_me_read_slots
 
     reads a message from mei device.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         message buffer will be written
+    :type buffer: unsigned char \*
 
-    :param unsigned long buffer_length:
+    :param buffer_length:
         message size will be read
+    :type buffer_length: unsigned long
 
 .. _`mei_me_read_slots.return`:
 
@@ -593,8 +649,9 @@ mei_me_pg_set
 
     write pg enter register
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_pg_unset`:
 
@@ -605,8 +662,9 @@ mei_me_pg_unset
 
     write pg exit register
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_pg_legacy_enter_sync`:
 
@@ -617,8 +675,9 @@ mei_me_pg_legacy_enter_sync
 
     perform legacy pg entry procedure
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_pg_legacy_enter_sync.return`:
 
@@ -636,8 +695,9 @@ mei_me_pg_legacy_exit_sync
 
     perform legacy pg exit procedure
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_pg_legacy_exit_sync.return`:
 
@@ -655,8 +715,9 @@ mei_me_pg_in_transition
 
     is device now in pg transition
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_pg_in_transition.return`:
 
@@ -674,8 +735,9 @@ mei_me_pg_is_enabled
 
     detect if PG is supported by HW
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_pg_is_enabled.return`:
 
@@ -693,11 +755,13 @@ mei_me_d0i3_set
 
     write d0i3 register bit on mei device.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param bool intr:
+    :param intr:
         ask for interrupt
+    :type intr: bool
 
 .. _`mei_me_d0i3_set.return`:
 
@@ -715,8 +779,9 @@ mei_me_d0i3_unset
 
     clean d0i3 register bit on mei device.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_d0i3_unset.return`:
 
@@ -734,8 +799,9 @@ mei_me_d0i3_enter_sync
 
     perform d0i3 entry procedure
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_d0i3_enter_sync.return`:
 
@@ -753,8 +819,9 @@ mei_me_d0i3_enter
 
     perform d0i3 entry procedure no hbm PG handshake no waiting for confirmation; runs with interrupts disabled
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_d0i3_enter.return`:
 
@@ -772,8 +839,9 @@ mei_me_d0i3_exit_sync
 
     perform d0i3 exit procedure
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_d0i3_exit_sync.return`:
 
@@ -791,8 +859,9 @@ mei_me_pg_legacy_intr
 
     perform legacy pg processing in interrupt thread handler
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_d0i3_intr`:
 
@@ -803,11 +872,13 @@ mei_me_d0i3_intr
 
     perform d0i3 processing in interrupt thread handler
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 intr_source:
+    :param intr_source:
         interrupt source
+    :type intr_source: u32
 
 .. _`mei_me_pg_intr`:
 
@@ -818,11 +889,13 @@ mei_me_pg_intr
 
     perform pg processing in interrupt thread handler
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param u32 intr_source:
+    :param intr_source:
         interrupt source
+    :type intr_source: u32
 
 .. _`mei_me_pg_enter_sync`:
 
@@ -833,8 +906,9 @@ mei_me_pg_enter_sync
 
     perform runtime pm entry procedure
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_pg_enter_sync.return`:
 
@@ -852,8 +926,9 @@ mei_me_pg_exit_sync
 
     perform runtime pm exit procedure
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
 .. _`mei_me_pg_exit_sync.return`:
 
@@ -871,11 +946,13 @@ mei_me_hw_reset
 
     resets fw via mei csr register.
 
-    :param struct mei_device \*dev:
+    :param dev:
         the device structure
+    :type dev: struct mei_device \*
 
-    :param bool intr_enable:
+    :param intr_enable:
         if interrupt should be enabled after reset.
+    :type intr_enable: bool
 
 .. _`mei_me_hw_reset.return`:
 
@@ -893,11 +970,13 @@ mei_me_irq_quick_handler
 
     The ISR of the MEI device
 
-    :param int irq:
+    :param irq:
         The irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         pointer to the device structure
+    :type dev_id: void \*
 
 .. _`mei_me_irq_quick_handler.return`:
 
@@ -915,11 +994,13 @@ mei_me_irq_thread_handler
 
     function called after ISR to handle the interrupt processing.
 
-    :param int irq:
+    :param irq:
         The irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         pointer to the device structure
+    :type dev_id: void \*
 
 .. _`mei_me_irq_thread_handler.return`:
 
@@ -937,11 +1018,13 @@ mei_me_dev_init
 
     allocates and initializes the mei device structure
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         The pci device structure
+    :type pdev: struct pci_dev \*
 
-    :param const struct mei_cfg \*cfg:
+    :param cfg:
         per device generation config
+    :type cfg: const struct mei_cfg \*
 
 .. _`mei_me_dev_init.return`:
 

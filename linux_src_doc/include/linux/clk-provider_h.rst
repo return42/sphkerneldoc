@@ -48,6 +48,38 @@ best_parent_hw
     The most appropriate parent clock that fulfills the
     requested constraints.
 
+.. _`clk_duty`:
+
+struct clk_duty
+===============
+
+.. c:type:: struct clk_duty
+
+    Struture encoding the duty cycle ratio of a clock
+
+.. _`clk_duty.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct clk_duty {
+        unsigned int num;
+        unsigned int den;
+    }
+
+.. _`clk_duty.members`:
+
+Members
+-------
+
+num
+    Numerator of the duty cycle ratio
+
+den
+    Denominator of the duty cycle ratio
+
 .. _`clk_ops`:
 
 struct clk_ops
@@ -73,6 +105,8 @@ Definition
         void (*disable)(struct clk_hw *hw);
         int (*is_enabled)(struct clk_hw *hw);
         void (*disable_unused)(struct clk_hw *hw);
+        int (*save_context)(struct clk_hw *hw);
+        void (*restore_context)(struct clk_hw *hw);
         unsigned long (*recalc_rate)(struct clk_hw *hw, unsigned long parent_rate);
         long (*round_rate)(struct clk_hw *hw, unsigned long rate, unsigned long *parent_rate);
         int (*determine_rate)(struct clk_hw *hw, struct clk_rate_request *req);
@@ -83,6 +117,8 @@ Definition
         unsigned long (*recalc_accuracy)(struct clk_hw *hw, unsigned long parent_accuracy);
         int (*get_phase)(struct clk_hw *hw);
         int (*set_phase)(struct clk_hw *hw, int degrees);
+        int (*get_duty_cycle)(struct clk_hw *hw, struct clk_duty *duty);
+        int (*set_duty_cycle)(struct clk_hw *hw, struct clk_duty *duty);
         void (*init)(struct clk_hw *hw);
         void (*debug_init)(struct clk_hw *hw, struct dentry *dentry);
     }
@@ -134,6 +170,13 @@ disable_unused
     clk_disable_unused for gate clocks with special needs.
     Called with enable_lock held.  This function must not
     sleep.
+
+save_context
+    Save the context of the clock in prepration for poweroff.
+
+restore_context
+    Restore the context of the clock after a restoration
+    of power.
 
 recalc_rate
     *undescribed*
@@ -203,6 +246,17 @@ set_phase
     Shift the phase this clock signal in degrees specified
     by the second argument. Valid values for degrees are
     0-359. Return 0 on success, otherwise -EERROR.
+
+get_duty_cycle
+    Queries the hardware to get the current duty cycle ratio
+    of a clock. Returned values denominator cannot be 0 and must be
+    superior or equal to the numerator.
+
+set_duty_cycle
+    Apply the duty cycle ratio to this clock signal specified by
+    the numerator (2nd argurment) and denominator (3rd  argument).
+    Argument must be a valid ratio (denominator > 0
+    and >= numerator) Return 0 on success, otherwise -EERROR.
 
 init
     Perform platform-specific initialization magic.
@@ -787,11 +841,13 @@ clk_register
 
     allocate a new clock, register it and return an opaque cookie
 
-    :param struct device \*dev:
+    :param dev:
         device that is registering this clock
+    :type dev: struct device \*
 
-    :param struct clk_hw \*hw:
+    :param hw:
         link to hardware-specific clock data
+    :type hw: struct clk_hw \*
 
 .. _`clk_register.description`:
 

@@ -10,8 +10,9 @@ cm3232_reg_init
 
     Initialize CM3232
 
-    :param struct cm3232_chip \*chip:
+    :param chip:
         pointer of struct cm3232_chip.
+    :type chip: struct cm3232_chip \*
 
 .. _`cm3232_reg_init.description`:
 
@@ -36,14 +37,17 @@ cm3232_read_als_it
 
     Get sensor integration time
 
-    :param struct cm3232_chip \*chip:
+    :param chip:
         pointer of struct cm3232_chip
+    :type chip: struct cm3232_chip \*
 
-    :param int \*val:
+    :param val:
         pointer of int to load the integration (sec).
+    :type val: int \*
 
-    :param int \*val2:
+    :param val2:
         pointer of int to load the integration time (microsecond).
+    :type val2: int \*
 
 .. _`cm3232_read_als_it.description`:
 
@@ -68,14 +72,17 @@ cm3232_write_als_it
 
     Write sensor integration time
 
-    :param struct cm3232_chip \*chip:
+    :param chip:
         pointer of struct cm3232_chip.
+    :type chip: struct cm3232_chip \*
 
-    :param int val:
+    :param val:
         integration time in second.
+    :type val: int
 
-    :param int val2:
+    :param val2:
         integration time in microsecond.
+    :type val2: int
 
 .. _`cm3232_write_als_it.description`:
 
@@ -100,8 +107,9 @@ cm3232_get_lux
 
     report current lux value
 
-    :param struct cm3232_chip \*chip:
+    :param chip:
         pointer of struct cm3232_chip.
+    :type chip: struct cm3232_chip \*
 
 .. _`cm3232_get_lux.description`:
 
@@ -127,14 +135,17 @@ cm3232_get_it_available
 
     Get available ALS IT value
 
-    :param struct device \*dev:
+    :param dev:
         pointer of struct device.
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         pointer of struct device_attribute.
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         pointer of return string buffer.
+    :type buf: char \*
 
 .. _`cm3232_get_it_available.description`:
 

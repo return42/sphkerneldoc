@@ -10,8 +10,9 @@ ohci_hcd_s3c2410_probe
 
     initialize S3C2410-based HCDs
 
-    :param struct platform_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct platform_device \*
 
 .. _`ohci_hcd_s3c2410_probe.context`:
 

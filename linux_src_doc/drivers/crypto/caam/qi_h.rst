@@ -10,17 +10,20 @@ caam_drv_ctx_init
 
     Initialise a CAAM/QI driver context
 
-    :param struct device \*qidev:
+    :param qidev:
         *undescribed*
+    :type qidev: struct device \*
 
-    :param int \*cpu:
+    :param cpu:
         CPU where the application prefers to the driver to receive CAAM
         responses. The request completion callback would be issued from this
         CPU.
+    :type cpu: int \*
 
-    :param u32 \*sh_desc:
+    :param sh_desc:
         shared descriptor pointer to be attached with CAAM/QI driver
         context.
+    :type sh_desc: u32 \*
 
 .. _`caam_drv_ctx_init.description`:
 
@@ -43,11 +46,13 @@ caam_qi_enqueue
 
     Submit a request to QI backend driver.
 
-    :param struct device \*qidev:
+    :param qidev:
         device pointer for QI backend
+    :type qidev: struct device \*
 
-    :param struct caam_drv_req \*req:
+    :param req:
         CAAM QI request structure
+    :type req: struct caam_drv_req \*
 
 .. _`caam_qi_enqueue.description`:
 
@@ -67,8 +72,9 @@ caam_drv_ctx_busy
 
     Check if there are too many jobs pending with CAAM or too many CAAM responses are pending to be processed.
 
-    :param struct caam_drv_ctx \*drv_ctx:
+    :param drv_ctx:
         driver context for which job is to be submitted
+    :type drv_ctx: struct caam_drv_ctx \*
 
 .. _`caam_drv_ctx_busy.description`:
 
@@ -86,11 +92,13 @@ caam_drv_ctx_update
 
     Update QI driver context
 
-    :param struct caam_drv_ctx \*drv_ctx:
+    :param drv_ctx:
         driver context to be updated
+    :type drv_ctx: struct caam_drv_ctx \*
 
-    :param u32 \*sh_desc:
+    :param sh_desc:
         new shared descriptor pointer to be updated in QI driver context
+    :type sh_desc: u32 \*
 
 .. _`caam_drv_ctx_update.description`:
 
@@ -110,8 +118,9 @@ caam_drv_ctx_rel
 
     Release a QI driver context
 
-    :param struct caam_drv_ctx \*drv_ctx:
+    :param drv_ctx:
         context to be released
+    :type drv_ctx: struct caam_drv_ctx \*
 
 .. _`qi_cache_alloc`:
 
@@ -122,8 +131,9 @@ qi_cache_alloc
 
     Allocate buffers from CAAM-QI cache
 
-    :param gfp_t flags:
+    :param flags:
         flags that would be used for the equivalent malloc(..) call
+    :type flags: gfp_t
 
 .. _`qi_cache_alloc.description`:
 
@@ -146,8 +156,9 @@ qi_cache_free
 
     Frees buffers allocated from CAAM-QI cache
 
-    :param void \*obj:
+    :param obj:
         object previously allocated using \ :c:func:`qi_cache_alloc`\ 
+    :type obj: void \*
 
 .. _`qi_cache_free.description`:
 

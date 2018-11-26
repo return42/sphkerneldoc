@@ -10,8 +10,9 @@ RAW_NOTIFIER_HEAD
 
     define ae chain head
 
-    :param  ae_chain:
+    :param ae_chain:
         *undescribed*
+    :type ae_chain: 
 
 .. _`hnae_ae_register`:
 
@@ -22,11 +23,13 @@ hnae_ae_register
 
     register a AE engine to hnae framework
 
-    :param struct hnae_ae_dev \*hdev:
+    :param hdev:
         the hnae ae engine device
+    :type hdev: struct hnae_ae_dev \*
 
-    :param struct module \*owner:
+    :param owner:
         the module who provides this dev
+    :type owner: struct module \*
 
 .. _`hnae_ae_register.note`:
 
@@ -44,8 +47,9 @@ hnae_ae_unregister
 
     unregisters a HNAE AE engine
 
-    :param struct hnae_ae_dev \*hdev:
+    :param hdev:
         *undescribed*
+    :type hdev: struct hnae_ae_dev \*
 
 .. This file was automatic generated / don't edit.
 

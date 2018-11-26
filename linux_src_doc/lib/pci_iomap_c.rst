@@ -10,17 +10,21 @@ pci_iomap_range
 
     create a virtual mapping cookie for a PCI BAR
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device that owns the BAR
+    :type dev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR number
+    :type bar: int
 
-    :param unsigned long offset:
+    :param offset:
         map memory at the given offset in BAR
+    :type offset: unsigned long
 
-    :param unsigned long maxlen:
+    :param maxlen:
         max length of the memory to map
+    :type maxlen: unsigned long
 
 .. _`pci_iomap_range.description`:
 
@@ -44,17 +48,21 @@ pci_iomap_wc_range
 
     create a virtual WC mapping cookie for a PCI BAR
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device that owns the BAR
+    :type dev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR number
+    :type bar: int
 
-    :param unsigned long offset:
+    :param offset:
         map memory at the given offset in BAR
+    :type offset: unsigned long
 
-    :param unsigned long maxlen:
+    :param maxlen:
         max length of the memory to map
+    :type maxlen: unsigned long
 
 .. _`pci_iomap_wc_range.description`:
 
@@ -79,14 +87,17 @@ pci_iomap
 
     create a virtual mapping cookie for a PCI BAR
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device that owns the BAR
+    :type dev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR number
+    :type bar: int
 
-    :param unsigned long maxlen:
+    :param maxlen:
         length of the memory to map
+    :type maxlen: unsigned long
 
 .. _`pci_iomap.description`:
 
@@ -110,14 +121,17 @@ pci_iomap_wc
 
     create a virtual WC mapping cookie for a PCI BAR
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device that owns the BAR
+    :type dev: struct pci_dev \*
 
-    :param int bar:
+    :param bar:
         BAR number
+    :type bar: int
 
-    :param unsigned long maxlen:
+    :param maxlen:
         length of the memory to map
+    :type maxlen: unsigned long
 
 .. _`pci_iomap_wc.description`:
 

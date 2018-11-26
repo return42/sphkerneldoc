@@ -10,8 +10,9 @@ svc_rdma_destroy_rw_ctxts
 
     Free accumulated R/W contexts
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         transport about to be destroyed
+    :type rdma: struct svcxprt_rdma \*
 
 .. _`svc_rdma_write_done`:
 
@@ -22,11 +23,13 @@ svc_rdma_write_done
 
     Write chunk completion
 
-    :param struct ib_cq \*cq:
+    :param cq:
         controlling Completion Queue
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         Work Completion
+    :type wc: struct ib_wc \*
 
 .. _`svc_rdma_write_done.description`:
 
@@ -44,11 +47,13 @@ svc_rdma_wc_read_done
 
     Handle completion of an RDMA Read ctx
 
-    :param struct ib_cq \*cq:
+    :param cq:
         controlling Completion Queue
+    :type cq: struct ib_cq \*
 
-    :param struct ib_wc \*wc:
+    :param wc:
         Work Completion
+    :type wc: struct ib_wc \*
 
 .. _`svc_rdma_send_write_chunk`:
 
@@ -59,14 +64,17 @@ svc_rdma_send_write_chunk
 
     Write all segments in a Write chunk
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         controlling RDMA transport
+    :type rdma: struct svcxprt_rdma \*
 
-    :param __be32 \*wr_ch:
+    :param wr_ch:
         Write chunk provided by client
+    :type wr_ch: __be32 \*
 
-    :param struct xdr_buf \*xdr:
+    :param xdr:
         xdr_buf containing the data payload
+    :type xdr: struct xdr_buf \*
 
 .. _`svc_rdma_send_write_chunk.description`:
 
@@ -89,17 +97,21 @@ svc_rdma_send_reply_chunk
 
     Write all segments in the Reply chunk
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         controlling RDMA transport
+    :type rdma: struct svcxprt_rdma \*
 
-    :param __be32 \*rp_ch:
+    :param rp_ch:
         Reply chunk provided by client
+    :type rp_ch: __be32 \*
 
-    :param bool writelist:
+    :param writelist:
         true if client provided a Write list
+    :type writelist: bool
 
-    :param struct xdr_buf \*xdr:
+    :param xdr:
         xdr_buf containing an RPC Reply
+    :type xdr: struct xdr_buf \*
 
 .. _`svc_rdma_send_reply_chunk.description`:
 
@@ -122,17 +134,21 @@ svc_rdma_recv_read_chunk
 
     Pull a Read chunk from the client
 
-    :param struct svcxprt_rdma \*rdma:
+    :param rdma:
         controlling RDMA transport
+    :type rdma: struct svcxprt_rdma \*
 
-    :param struct svc_rqst \*rqstp:
+    :param rqstp:
         set of pages to use as Read sink buffers
+    :type rqstp: struct svc_rqst \*
 
-    :param struct svc_rdma_recv_ctxt \*head:
+    :param head:
         pages under I/O collect here
+    :type head: struct svc_rdma_recv_ctxt \*
 
-    :param __be32 \*p:
+    :param p:
         pointer to start of Read chunk
+    :type p: __be32 \*
 
 .. _`svc_rdma_recv_read_chunk.return`:
 

@@ -10,11 +10,13 @@ p9_release_pages
 
     Release pages after the transaction.
 
-    :param struct page \*\*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct page \*\*
 
-    :param int nr_pages:
+    :param nr_pages:
         *undescribed*
+    :type nr_pages: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ pch_gbe_validate_option
 
     Validate option
 
-    :param int \*value:
+    :param value:
         value
+    :type value: int \*
 
-    :param const struct pch_gbe_option \*opt:
+    :param opt:
         option
+    :type opt: const struct pch_gbe_option \*
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_validate_option.return`:
 
@@ -42,8 +45,9 @@ pch_gbe_check_copper_options
 
     Range Checking for Link Options, Copper Version
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. _`pch_gbe_check_options`:
 
@@ -54,8 +58,9 @@ pch_gbe_check_options
 
     Range Checking for Command Line Parameters
 
-    :param struct pch_gbe_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct pch_gbe_adapter \*
 
 .. This file was automatic generated / don't edit.
 

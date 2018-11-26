@@ -10,14 +10,17 @@ sata_pmp_read
 
     read PMP register
 
-    :param struct ata_link \*link:
+    :param link:
         link to read PMP register for
+    :type link: struct ata_link \*
 
-    :param int reg:
+    :param reg:
         register to read
+    :type reg: int
 
-    :param u32 \*r_val:
+    :param r_val:
         resulting value
+    :type r_val: u32 \*
 
 .. _`sata_pmp_read.description`:
 
@@ -49,14 +52,17 @@ sata_pmp_write
 
     write PMP register
 
-    :param struct ata_link \*link:
+    :param link:
         link to write PMP register for
+    :type link: struct ata_link \*
 
-    :param int reg:
+    :param reg:
         register to write
+    :type reg: int
 
-    :param u32 val:
+    :param val:
         *undescribed*
+    :type val: u32
 
 .. _`sata_pmp_write.description`:
 
@@ -88,8 +94,9 @@ sata_pmp_qc_defer_cmd_switch
 
     qc_defer for command switching PMP
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         ATA command in question
+    :type qc: struct ata_queued_cmd \*
 
 .. _`sata_pmp_qc_defer_cmd_switch.description`:
 
@@ -122,14 +129,17 @@ sata_pmp_scr_read
 
     read PSCR
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to read PSCR for
+    :type link: struct ata_link \*
 
-    :param int reg:
+    :param reg:
         PSCR to read
+    :type reg: int
 
-    :param u32 \*r_val:
+    :param r_val:
         resulting value
+    :type r_val: u32 \*
 
 .. _`sata_pmp_scr_read.description`:
 
@@ -162,14 +172,17 @@ sata_pmp_scr_write
 
     write PSCR
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link to write PSCR for
+    :type link: struct ata_link \*
 
-    :param int reg:
+    :param reg:
         PSCR to write
+    :type reg: int
 
-    :param u32 val:
+    :param val:
         value to be written
+    :type val: u32
 
 .. _`sata_pmp_scr_write.description`:
 
@@ -202,14 +215,17 @@ sata_pmp_set_lpm
 
     configure LPM for a PMP link
 
-    :param struct ata_link \*link:
+    :param link:
         PMP link to configure LPM for
+    :type link: struct ata_link \*
 
-    :param enum ata_lpm_policy policy:
+    :param policy:
         target LPM policy
+    :type policy: enum ata_lpm_policy
 
-    :param unsigned hints:
+    :param hints:
         LPM hints
+    :type hints: unsigned
 
 .. _`sata_pmp_set_lpm.description`:
 
@@ -242,11 +258,13 @@ sata_pmp_read_gscr
 
     read GSCR block of SATA PMP
 
-    :param struct ata_device \*dev:
+    :param dev:
         PMP device
+    :type dev: struct ata_device \*
 
-    :param u32 \*gscr:
+    :param gscr:
         buffer to read GSCR block into
+    :type gscr: u32 \*
 
 .. _`sata_pmp_read_gscr.description`:
 
@@ -279,8 +297,9 @@ sata_pmp_attach
 
     attach a SATA PMP device
 
-    :param struct ata_device \*dev:
+    :param dev:
         SATA PMP device to attach
+    :type dev: struct ata_device \*
 
 .. _`sata_pmp_attach.description`:
 
@@ -313,8 +332,9 @@ sata_pmp_detach
 
     detach a SATA PMP device
 
-    :param struct ata_device \*dev:
+    :param dev:
         SATA PMP device to detach
+    :type dev: struct ata_device \*
 
 .. _`sata_pmp_detach.description`:
 
@@ -340,11 +360,13 @@ sata_pmp_same_pmp
 
     does new GSCR matches the configured PMP?
 
-    :param struct ata_device \*dev:
+    :param dev:
         PMP device to compare against
+    :type dev: struct ata_device \*
 
-    :param const u32 \*new_gscr:
+    :param new_gscr:
         GSCR block of the new device
+    :type new_gscr: const u32 \*
 
 .. _`sata_pmp_same_pmp.description`:
 
@@ -377,11 +399,13 @@ sata_pmp_revalidate
 
     revalidate SATA PMP
 
-    :param struct ata_device \*dev:
+    :param dev:
         PMP device to revalidate
+    :type dev: struct ata_device \*
 
-    :param unsigned int new_class:
+    :param new_class:
         new class code
+    :type new_class: unsigned int
 
 .. _`sata_pmp_revalidate.description`:
 
@@ -414,8 +438,9 @@ sata_pmp_revalidate_quick
 
     revalidate SATA PMP quickly
 
-    :param struct ata_device \*dev:
+    :param dev:
         PMP device to revalidate
+    :type dev: struct ata_device \*
 
 .. _`sata_pmp_revalidate_quick.description`:
 
@@ -447,20 +472,25 @@ sata_pmp_eh_recover_pmp
 
     recover PMP
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port PMP is attached to
+    :type ap: struct ata_port \*
 
-    :param ata_prereset_fn_t prereset:
+    :param prereset:
         prereset method (can be NULL)
+    :type prereset: ata_prereset_fn_t
 
-    :param ata_reset_fn_t softreset:
+    :param softreset:
         softreset method
+    :type softreset: ata_reset_fn_t
 
-    :param ata_reset_fn_t hardreset:
+    :param hardreset:
         hardreset method
+    :type hardreset: ata_reset_fn_t
 
-    :param ata_postreset_fn_t postreset:
+    :param postreset:
         postreset method (can be NULL)
+    :type postreset: ata_postreset_fn_t
 
 .. _`sata_pmp_eh_recover_pmp.description`:
 
@@ -495,8 +525,9 @@ sata_pmp_eh_recover
 
     recover PMP-enabled port
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port to recover
+    :type ap: struct ata_port \*
 
 .. _`sata_pmp_eh_recover.description`:
 
@@ -531,8 +562,9 @@ sata_pmp_error_handler
 
     do standard error handling for PMP-enabled host
 
-    :param struct ata_port \*ap:
+    :param ap:
         host port to handle error for
+    :type ap: struct ata_port \*
 
 .. _`sata_pmp_error_handler.description`:
 

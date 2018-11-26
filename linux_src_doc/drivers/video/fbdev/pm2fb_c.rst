@@ -10,8 +10,9 @@ pm2fb_set_par
 
     Alters the hardware state.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`pm2fb_set_par.description`:
 
@@ -30,23 +31,29 @@ pm2fb_setcolreg
 
     Sets a color register.
 
-    :param unsigned regno:
+    :param regno:
         boolean, 0 copy local, 1 \ :c:func:`get_user`\  function
+    :type regno: unsigned
 
-    :param unsigned red:
+    :param red:
         frame buffer colormap structure
+    :type red: unsigned
 
-    :param unsigned green:
+    :param green:
         The green value which can be up to 16 bits wide
+    :type green: unsigned
 
-    :param unsigned blue:
+    :param blue:
         The blue value which can be up to 16 bits wide.
+    :type blue: unsigned
 
-    :param unsigned transp:
+    :param transp:
         If supported the alpha value which can be up to 16 bits wide.
+    :type transp: unsigned
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. _`pm2fb_setcolreg.description`:
 
@@ -68,11 +75,13 @@ pm2fb_pan_display
 
     Pans the display.
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer variable screen structure
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`pm2fb_pan_display.description`:
 
@@ -94,11 +103,13 @@ pm2fb_blank
 
     Blanks the display.
 
-    :param int blank_mode:
+    :param blank_mode:
         the blank mode we want.
+    :type blank_mode: int
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`pm2fb_blank.description`:
 
@@ -122,11 +133,13 @@ pm2fb_probe
 
 .. c:function:: int pm2fb_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct pci_device_id \*
 
 .. _`pm2fb_probe.description`:
 
@@ -145,8 +158,9 @@ pm2fb_remove
 
 .. c:function:: void pm2fb_remove(struct pci_dev *pdev)
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct pci_dev \*
 
 .. _`pm2fb_remove.description`:
 
@@ -164,8 +178,9 @@ pm2fb_setup
 
 .. c:function:: int pm2fb_setup(char *options)
 
-    :param char \*options:
+    :param options:
         *undescribed*
+    :type options: char \*
 
 .. _`pm2fb_setup.description`:
 

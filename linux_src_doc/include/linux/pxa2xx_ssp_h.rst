@@ -10,14 +10,17 @@ pxa_ssp_write_reg
 
     Write to a SSP register
 
-    :param struct ssp_device \*dev:
+    :param dev:
         SSP device to access
+    :type dev: struct ssp_device \*
 
-    :param u32 reg:
+    :param reg:
         Register to write to
+    :type reg: u32
 
-    :param u32 val:
+    :param val:
         Value to be written.
+    :type val: u32
 
 .. _`pxa_ssp_read_reg`:
 
@@ -28,11 +31,13 @@ pxa_ssp_read_reg
 
     Read from a SSP register
 
-    :param struct ssp_device \*dev:
+    :param dev:
         SSP device to access
+    :type dev: struct ssp_device \*
 
-    :param u32 reg:
+    :param reg:
         Register to read from
+    :type reg: u32
 
 .. This file was automatic generated / don't edit.
 

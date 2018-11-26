@@ -10,8 +10,9 @@ fscache_get_retrieval
 
     Get an extra reference on a retrieval operation
 
-    :param struct fscache_retrieval \*op:
+    :param op:
         The retrieval operation to get a reference on
+    :type op: struct fscache_retrieval \*
 
 .. _`fscache_get_retrieval.description`:
 
@@ -29,8 +30,9 @@ fscache_enqueue_retrieval
 
     Enqueue a retrieval operation for processing
 
-    :param struct fscache_retrieval \*op:
+    :param op:
         The retrieval operation affected
+    :type op: struct fscache_retrieval \*
 
 .. _`fscache_enqueue_retrieval.description`:
 
@@ -48,11 +50,13 @@ fscache_retrieval_complete
 
     Record (partial) completion of a retrieval
 
-    :param struct fscache_retrieval \*op:
+    :param op:
         The retrieval operation affected
+    :type op: struct fscache_retrieval \*
 
-    :param int n_pages:
+    :param n_pages:
         The number of pages to account for
+    :type n_pages: int
 
 .. _`fscache_put_retrieval`:
 
@@ -63,8 +67,9 @@ fscache_put_retrieval
 
     Drop a reference to a retrieval operation
 
-    :param struct fscache_retrieval \*op:
+    :param op:
         The retrieval operation affected
+    :type op: struct fscache_retrieval \*
 
 .. _`fscache_put_retrieval.description`:
 
@@ -82,8 +87,9 @@ fscache_object_destroyed
 
     Note destruction of an object in a cache
 
-    :param struct fscache_cache \*cache:
+    :param cache:
         The cache from which the object came
+    :type cache: struct fscache_cache \*
 
 .. _`fscache_object_destroyed.description`:
 
@@ -101,8 +107,9 @@ fscache_object_lookup_error
 
     Note an object encountered an error
 
-    :param struct fscache_object \*object:
+    :param object:
         The object on which the error was encountered
+    :type object: struct fscache_object \*
 
 .. _`fscache_object_lookup_error.description`:
 
@@ -121,11 +128,13 @@ fscache_set_store_limit
 
     Set the maximum size to be stored in an object
 
-    :param struct fscache_object \*object:
+    :param object:
         The object to set the maximum on
+    :type object: struct fscache_object \*
 
-    :param loff_t i_size:
+    :param i_size:
         The limit to set in bytes
+    :type i_size: loff_t
 
 .. _`fscache_set_store_limit.description`:
 
@@ -147,14 +156,17 @@ fscache_end_io
 
     End a retrieval operation on a page
 
-    :param struct fscache_retrieval \*op:
+    :param op:
         The FS-Cache operation covering the retrieval
+    :type op: struct fscache_retrieval \*
 
-    :param struct page \*page:
+    :param page:
         The page that was to be fetched
+    :type page: struct page \*
 
-    :param int error:
+    :param error:
         The error code (0 if successful)
+    :type error: int
 
 .. _`fscache_end_io.description`:
 
@@ -173,8 +185,9 @@ fscache_use_cookie
 
     Request usage of cookie attached to an object
 
-    :param struct fscache_object \*object:
+    :param object:
         Object description
+    :type object: struct fscache_object \*
 
 .. _`fscache_use_cookie.description`:
 
@@ -193,8 +206,9 @@ fscache_unuse_cookie
 
     Cease usage of cookie attached to an object
 
-    :param struct fscache_object \*object:
+    :param object:
         Object description
+    :type object: struct fscache_object \*
 
 .. _`fscache_unuse_cookie.description`:
 

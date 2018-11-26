@@ -254,11 +254,13 @@ ab8500_power_supply_changed
 
     a wrapper with local extentions for power_supply_changed
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
-    :param struct power_supply \*psy:
+    :param psy:
         pointer to power_supply_that have changed.
+    :type psy: struct power_supply \*
 
 .. _`ab8500_charger_get_ac_voltage`:
 
@@ -269,8 +271,9 @@ ab8500_charger_get_ac_voltage
 
     get ac charger voltage
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
 .. _`ab8500_charger_get_ac_voltage.description`:
 
@@ -288,8 +291,9 @@ ab8500_charger_ac_cv
 
     check if the main charger is in CV mode
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
 .. _`ab8500_charger_ac_cv.description`:
 
@@ -307,8 +311,9 @@ ab8500_charger_get_vbus_voltage
 
     get vbus voltage
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
 .. _`ab8500_charger_get_vbus_voltage.description`:
 
@@ -327,8 +332,9 @@ ab8500_charger_get_usb_current
 
     get usb charger current
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
 .. _`ab8500_charger_get_usb_current.description`:
 
@@ -347,8 +353,9 @@ ab8500_charger_get_ac_current
 
     get ac charger current
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
 .. _`ab8500_charger_get_ac_current.description`:
 
@@ -367,8 +374,9 @@ ab8500_charger_usb_cv
 
     check if the usb charger is in CV mode
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
 .. _`ab8500_charger_usb_cv.description`:
 
@@ -386,11 +394,13 @@ ab8500_charger_detect_chargers
 
     Detect the connected chargers
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
-    :param bool probe:
+    :param probe:
         if probe, don't delay and wait for HW
+    :type probe: bool
 
 .. _`ab8500_charger_detect_chargers.description`:
 
@@ -418,11 +428,13 @@ ab8500_charger_max_usb_curr
 
     get the max curr for the USB type
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
-    :param enum ab8500_charger_link_status link_status:
+    :param link_status:
         the identified USB type
+    :type link_status: enum ab8500_charger_link_status
 
 .. _`ab8500_charger_max_usb_curr.description`:
 
@@ -442,8 +454,9 @@ ab8500_charger_read_usb_type
 
     read the type of usb connected
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
 .. _`ab8500_charger_read_usb_type.description`:
 
@@ -462,8 +475,9 @@ ab8500_charger_detect_usb_type
 
     get the type of usb connected
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
 .. _`ab8500_charger_detect_usb_type.description`:
 
@@ -482,8 +496,9 @@ ab8500_charger_get_usb_cur
 
     get usb current
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structre
+    :type di: struct ab8500_charger \*
 
 .. _`ab8500_charger_get_usb_cur.description`:
 
@@ -504,11 +519,13 @@ ab8500_charger_check_continue_stepping
 
     Check to allow stepping
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
-    :param int reg:
+    :param reg:
         select what charger register to check
+    :type reg: int
 
 .. _`ab8500_charger_check_continue_stepping.description`:
 
@@ -528,14 +545,17 @@ ab8500_charger_set_current
 
     set charger current
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
-    :param int ich:
+    :param ich:
         charger current, in mA
+    :type ich: int
 
-    :param int reg:
+    :param reg:
         select what charger register to set
+    :type reg: int
 
 .. _`ab8500_charger_set_current.description`:
 
@@ -558,11 +578,13 @@ ab8500_charger_set_vbus_in_curr
 
     set VBUS input current limit
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
-    :param int ich_in:
+    :param ich_in:
         charger input current limit
+    :type ich_in: int
 
 .. _`ab8500_charger_set_vbus_in_curr.description`:
 
@@ -581,11 +603,13 @@ ab8500_charger_set_main_in_curr
 
     set main charger input current
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
-    :param int ich_in:
+    :param ich_in:
         input charger current, in mA
+    :type ich_in: int
 
 .. _`ab8500_charger_set_main_in_curr.description`:
 
@@ -604,11 +628,13 @@ ab8500_charger_set_output_curr
 
     set charger output current
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
-    :param int ich_out:
+    :param ich_out:
         output charger current, in mA
+    :type ich_out: int
 
 .. _`ab8500_charger_set_output_curr.description`:
 
@@ -627,11 +653,13 @@ ab8500_charger_led_en
 
     turn on/off chargign led
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
-    :param int on:
+    :param on:
         flag to turn on/off the chargign led
+    :type on: int
 
 .. _`ab8500_charger_led_en.description`:
 
@@ -650,17 +678,21 @@ ab8500_charger_ac_en
 
     enable or disable ac charging
 
-    :param struct ux500_charger \*charger:
+    :param charger:
         *undescribed*
+    :type charger: struct ux500_charger \*
 
-    :param int enable:
+    :param enable:
         enable/disable flag
+    :type enable: int
 
-    :param int vset:
+    :param vset:
         charging voltage
+    :type vset: int
 
-    :param int iset:
+    :param iset:
         charging current
+    :type iset: int
 
 .. _`ab8500_charger_ac_en.description`:
 
@@ -679,17 +711,21 @@ ab8500_charger_usb_en
 
     enable usb charging
 
-    :param struct ux500_charger \*charger:
+    :param charger:
         *undescribed*
+    :type charger: struct ux500_charger \*
 
-    :param int enable:
+    :param enable:
         enable/disable flag
+    :type enable: int
 
-    :param int vset:
+    :param vset:
         charging voltage
+    :type vset: int
 
-    :param int ich_out:
+    :param ich_out:
         charger output current
+    :type ich_out: int
 
 .. _`ab8500_charger_usb_en.description`:
 
@@ -708,14 +744,17 @@ ab8500_charger_usb_check_enable
 
     enable usb charging
 
-    :param struct ux500_charger \*charger:
+    :param charger:
         pointer to the ux500_charger structure
+    :type charger: struct ux500_charger \*
 
-    :param int vset:
+    :param vset:
         charging voltage
+    :type vset: int
 
-    :param int iset:
+    :param iset:
         charger output current
+    :type iset: int
 
 .. _`ab8500_charger_usb_check_enable.description`:
 
@@ -734,14 +773,17 @@ ab8500_charger_ac_check_enable
 
     enable usb charging
 
-    :param struct ux500_charger \*charger:
+    :param charger:
         pointer to the ux500_charger structure
+    :type charger: struct ux500_charger \*
 
-    :param int vset:
+    :param vset:
         charging voltage
+    :type vset: int
 
-    :param int iset:
+    :param iset:
         charger output current
+    :type iset: int
 
 .. _`ab8500_charger_ac_check_enable.description`:
 
@@ -760,8 +802,9 @@ ab8500_charger_watchdog_kick
 
     kick charger watchdog
 
-    :param struct ux500_charger \*charger:
+    :param charger:
         *undescribed*
+    :type charger: struct ux500_charger \*
 
 .. _`ab8500_charger_watchdog_kick.description`:
 
@@ -780,11 +823,13 @@ ab8500_charger_update_charger_current
 
     update charger current
 
-    :param struct ux500_charger \*charger:
+    :param charger:
         *undescribed*
+    :type charger: struct ux500_charger \*
 
-    :param int ich_out:
+    :param ich_out:
         *undescribed*
+    :type ich_out: int
 
 .. _`ab8500_charger_update_charger_current.description`:
 
@@ -803,8 +848,9 @@ ab8500_charger_check_vbat_work
 
     keep vbus current within spec \ ``work``\         pointer to the work_struct structure
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`ab8500_charger_check_vbat_work.description`:
 
@@ -825,8 +871,9 @@ ab8500_charger_check_hw_failure_work
 
     check main charger failure
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_charger_check_hw_failure_work.description`:
 
@@ -844,8 +891,9 @@ ab8500_charger_kick_watchdog_work
 
     kick the watchdog
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_charger_kick_watchdog_work.description`:
 
@@ -871,8 +919,9 @@ ab8500_charger_ac_work
 
     work to get and set main charger status
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_charger_ac_work.description`:
 
@@ -890,8 +939,9 @@ ab8500_charger_detect_usb_type_work
 
     work to detect USB type
 
-    :param struct work_struct \*work:
+    :param work:
         Pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_charger_detect_usb_type_work.description`:
 
@@ -909,8 +959,9 @@ ab8500_charger_usb_link_attach_work
 
     work to detect USB type
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_charger_usb_link_attach_work.description`:
 
@@ -928,8 +979,9 @@ ab8500_charger_usb_link_status_work
 
     work to detect USB type
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_charger_usb_link_status_work.description`:
 
@@ -947,8 +999,9 @@ ab8500_charger_check_usbchargernotok_work
 
     check USB chg not ok status
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_charger_check_usbchargernotok_work.description`:
 
@@ -966,8 +1019,9 @@ ab8500_charger_check_main_thermal_prot_work
 
     check main thermal status
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_charger_check_main_thermal_prot_work.description`:
 
@@ -985,8 +1039,9 @@ ab8500_charger_check_usb_thermal_prot_work
 
     check usb thermal status
 
-    :param struct work_struct \*work:
+    :param work:
         pointer to the work_struct structure
+    :type work: struct work_struct \*
 
 .. _`ab8500_charger_check_usb_thermal_prot_work.description`:
 
@@ -1004,11 +1059,13 @@ ab8500_charger_mainchunplugdet_handler
 
     main charger unplugged
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_mainchunplugdet_handler.description`:
 
@@ -1026,11 +1083,13 @@ ab8500_charger_mainchplugdet_handler
 
     main charger plugged
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_mainchplugdet_handler.description`:
 
@@ -1048,11 +1107,13 @@ ab8500_charger_mainextchnotok_handler
 
     main charger not ok
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_mainextchnotok_handler.description`:
 
@@ -1070,11 +1131,13 @@ ab8500_charger_mainchthprotr_handler
 
     Die temp is above main charger thermal protection threshold
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_mainchthprotr_handler.description`:
 
@@ -1092,11 +1155,13 @@ ab8500_charger_mainchthprotf_handler
 
     Die temp is below main charger thermal protection threshold
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_mainchthprotf_handler.description`:
 
@@ -1114,11 +1179,13 @@ ab8500_charger_vbusdetf_handler
 
     VBUS falling detected
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_vbusdetf_handler.description`:
 
@@ -1136,11 +1203,13 @@ ab8500_charger_vbusdetr_handler
 
     VBUS rising detected
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_vbusdetr_handler.description`:
 
@@ -1158,11 +1227,13 @@ ab8500_charger_usblinkstatus_handler
 
     USB link status has changed
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_usblinkstatus_handler.description`:
 
@@ -1180,11 +1251,13 @@ ab8500_charger_usbchthprotr_handler
 
     Die temp is above usb charger thermal protection threshold
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_usbchthprotr_handler.description`:
 
@@ -1202,11 +1275,13 @@ ab8500_charger_usbchthprotf_handler
 
     Die temp is below usb charger thermal protection threshold
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_usbchthprotf_handler.description`:
 
@@ -1224,11 +1299,13 @@ ab8500_charger_usbchargernotokr_handler
 
     USB charger not ok detected
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_usbchargernotokr_handler.description`:
 
@@ -1246,11 +1323,13 @@ ab8500_charger_chwdexp_handler
 
     Charger watchdog expired
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_chwdexp_handler.description`:
 
@@ -1268,11 +1347,13 @@ ab8500_charger_vbuschdropend_handler
 
     VBUS drop removed
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_vbuschdropend_handler.description`:
 
@@ -1290,11 +1371,13 @@ ab8500_charger_vbusovv_handler
 
     VBUS overvoltage detected
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*_di:
+    :param _di:
         pointer to the ab8500_charger structure
+    :type _di: void \*
 
 .. _`ab8500_charger_vbusovv_handler.description`:
 
@@ -1312,14 +1395,17 @@ ab8500_charger_ac_get_property
 
     get the ac/mains properties
 
-    :param struct power_supply \*psy:
+    :param psy:
         pointer to the power_supply structure
+    :type psy: struct power_supply \*
 
-    :param enum power_supply_property psp:
+    :param psp:
         pointer to the power_supply_property structure
+    :type psp: enum power_supply_property
 
-    :param union power_supply_propval \*val:
+    :param val:
         pointer to the power_supply_propval union
+    :type val: union power_supply_propval \*
 
 .. _`ab8500_charger_ac_get_property.description`:
 
@@ -1361,14 +1447,17 @@ ab8500_charger_usb_get_property
 
     get the usb properties
 
-    :param struct power_supply \*psy:
+    :param psy:
         pointer to the power_supply structure
+    :type psy: struct power_supply \*
 
-    :param enum power_supply_property psp:
+    :param psp:
         pointer to the power_supply_property structure
+    :type psp: enum power_supply_property
 
-    :param union power_supply_propval \*val:
+    :param val:
         pointer to the power_supply_propval union
+    :type val: union power_supply_propval \*
 
 .. _`ab8500_charger_usb_get_property.description`:
 
@@ -1410,8 +1499,9 @@ ab8500_charger_init_hw_registers
 
     Set up charger related registers
 
-    :param struct ab8500_charger \*di:
+    :param di:
         pointer to the ab8500_charger structure
+    :type di: struct ab8500_charger \*
 
 .. _`ab8500_charger_init_hw_registers.description`:
 

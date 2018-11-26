@@ -10,11 +10,13 @@ tgafb_check_var
 
     Optional function.  Validates a var passed in.
 
-    :param struct fb_var_screeninfo \*var:
+    :param var:
         frame buffer variable screen structure
+    :type var: struct fb_var_screeninfo \*
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`tgafb_set_par`:
 
@@ -25,8 +27,9 @@ tgafb_set_par
 
     Optional function.  Alters the hardware state.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`tgafb_setcolreg`:
 
@@ -37,23 +40,29 @@ tgafb_setcolreg
 
     Optional function. Sets a color register.
 
-    :param unsigned regno:
+    :param regno:
         boolean, 0 copy local, 1 \ :c:func:`get_user`\  function
+    :type regno: unsigned
 
-    :param unsigned red:
+    :param red:
         frame buffer colormap structure
+    :type red: unsigned
 
-    :param unsigned green:
+    :param green:
         The green value which can be up to 16 bits wide
+    :type green: unsigned
 
-    :param unsigned blue:
+    :param blue:
         The blue value which can be up to 16 bits wide.
+    :type blue: unsigned
 
-    :param unsigned transp:
+    :param transp:
         If supported the alpha value which can be up to 16 bits wide.
+    :type transp: unsigned
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. _`tgafb_blank`:
 
@@ -64,11 +73,13 @@ tgafb_blank
 
     Optional function.  Blanks the display.
 
-    :param int blank:
+    :param blank:
         *undescribed*
+    :type blank: int
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
 .. _`tgafb_imageblit`:
 
@@ -79,11 +90,13 @@ tgafb_imageblit
 
     REQUIRED function. Can use generic routines if non acclerated hardware and packed pixel based. Copies a image from system memory to the screen.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
-    :param const struct fb_image \*image:
+    :param image:
         structure defining the image.
+    :type image: const struct fb_image \*
 
 .. _`tgafb_fillrect`:
 
@@ -94,11 +107,13 @@ tgafb_fillrect
 
     REQUIRED function. Can use generic routines if non acclerated hardware and packed pixel based. Draws a rectangle on the screen.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
-    :param const struct fb_fillrect \*rect:
+    :param rect:
         structure defining the rectagle and operation.
+    :type rect: const struct fb_fillrect \*
 
 .. _`copyarea_line_8bpp`:
 
@@ -109,20 +124,25 @@ copyarea_line_8bpp
 
     REQUIRED function. Can use generic routines if non acclerated hardware and packed pixel based. Copies on area of the screen to another area.
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer structure that represents a single frame buffer
+    :type info: struct fb_info \*
 
-    :param u32 dy:
+    :param dy:
         *undescribed*
+    :type dy: u32
 
-    :param u32 sy:
+    :param sy:
         *undescribed*
+    :type sy: u32
 
-    :param u32 height:
+    :param height:
         *undescribed*
+    :type height: u32
 
-    :param u32 width:
+    :param width:
         *undescribed*
+    :type width: u32
 
 .. This file was automatic generated / don't edit.
 

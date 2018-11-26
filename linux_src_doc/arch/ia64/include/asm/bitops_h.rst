@@ -10,11 +10,13 @@ set_bit
 
     Atomically set a bit in memory
 
-    :param int nr:
+    :param nr:
         the bit to set
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile void \*
 
 .. _`set_bit.description`:
 
@@ -42,11 +44,13 @@ bit 0 is the LSB of addr; bit 32 is the LSB of (addr+1).
 
     Set a bit in memory
 
-    :param int nr:
+    :param nr:
         the bit to set
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile void \*
 
 .. _`__set_bit.description`:
 
@@ -66,11 +70,13 @@ clear_bit
 
     Clears a bit in memory
 
-    :param int nr:
+    :param nr:
         Bit to clear
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile void \*
 
 .. _`clear_bit.description`:
 
@@ -91,11 +97,13 @@ clear_bit_unlock
 
     Clears a bit in memory with release
 
-    :param int nr:
+    :param nr:
         Bit to clear
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile void \*
 
 .. _`clear_bit_unlock.description`:
 
@@ -114,11 +122,13 @@ contain a memory barrier suitable for unlock type operations.
 
     Non-atomically clears a bit in memory with release
 
-    :param int nr:
+    :param nr:
         Bit to clear
+    :type nr: int
 
-    :param void \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: void \*
 
 .. _`__clear_bit_unlock.description`:
 
@@ -137,11 +147,13 @@ with release semantics. See also \ :c:func:`arch_spin_unlock`\ .
 
     Clears a bit in memory (non-atomic version)
 
-    :param int nr:
+    :param nr:
         the bit to clear
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile void \*
 
 .. _`__clear_bit.description`:
 
@@ -161,11 +173,13 @@ change_bit
 
     Toggle a bit in memory
 
-    :param int nr:
+    :param nr:
         Bit to toggle
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         Address to start counting from
+    :type addr: volatile void \*
 
 .. _`change_bit.description`:
 
@@ -185,11 +199,13 @@ restricted to acting on a single-word quantity.
 
     Toggle a bit in memory
 
-    :param int nr:
+    :param nr:
         the bit to toggle
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         the address to start counting from
+    :type addr: volatile void \*
 
 .. _`__change_bit.description`:
 
@@ -209,11 +225,13 @@ test_and_set_bit
 
     Set a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to set
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile void \*
 
 .. _`test_and_set_bit.description`:
 
@@ -248,11 +266,13 @@ This is the same as test_and_set_bit on ia64
 
     Set a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to set
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile void \*
 
 .. _`__test_and_set_bit.description`:
 
@@ -272,11 +292,13 @@ test_and_clear_bit
 
     Clear a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to clear
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile void \*
 
 .. _`test_and_clear_bit.description`:
 
@@ -295,11 +317,13 @@ It also implies the acquisition side of the memory barrier.
 
     Clear a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to clear
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile void \*
 
 .. _`__test_and_clear_bit.description`:
 
@@ -319,11 +343,13 @@ test_and_change_bit
 
     Change a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to change
+    :type nr: int
 
-    :param volatile void \*addr:
+    :param addr:
         Address to count from
+    :type addr: volatile void \*
 
 .. _`test_and_change_bit.description`:
 
@@ -342,11 +368,13 @@ It also implies the acquisition side of the memory barrier.
 
     Change a bit and return its old value
 
-    :param int nr:
+    :param nr:
         Bit to change
+    :type nr: int
 
-    :param void \*addr:
+    :param addr:
         Address to count from
+    :type addr: void \*
 
 .. _`__test_and_change_bit.description`:
 
@@ -364,8 +392,9 @@ ffz
 
     find the first zero bit in a long word
 
-    :param unsigned long x:
+    :param x:
         The long word to find the bit in
+    :type x: unsigned long
 
 .. _`ffz.description`:
 
@@ -384,8 +413,9 @@ Undefined if no zero exists, so code should check against ~0UL first...
 
     find first bit in word.
 
-    :param unsigned long x:
+    :param x:
         The word to search
+    :type x: unsigned long
 
 .. _`__ffs.description`:
 

@@ -10,17 +10,21 @@ tegra_bpmp_serialize_i2c_msg
 
     [addr little-endian][flags little-endian][len little-endian][data if write] [addr little-endian][flags little-endian][len little-endian][data if write] ...
 
-    :param struct tegra_bpmp_i2c \*i2c:
+    :param i2c:
         *undescribed*
+    :type i2c: struct tegra_bpmp_i2c \*
 
-    :param struct mrq_i2c_request \*request:
+    :param request:
         *undescribed*
+    :type request: struct mrq_i2c_request \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         *undescribed*
+    :type msgs: struct i2c_msg \*
 
-    :param unsigned int num:
+    :param num:
         *undescribed*
+    :type num: unsigned int
 
 .. _`tegra_bpmp_serialize_i2c_msg.description`:
 
@@ -44,17 +48,21 @@ tegra_bpmp_i2c_deserialize
 
     > CPU direction is composed of sequential blocks for those messages that have I2C_M_RD. So, for example, if you have:
 
-    :param struct tegra_bpmp_i2c \*i2c:
+    :param i2c:
         *undescribed*
+    :type i2c: struct tegra_bpmp_i2c \*
 
-    :param struct mrq_i2c_response \*response:
+    :param response:
         *undescribed*
+    :type response: struct mrq_i2c_response \*
 
-    :param struct i2c_msg \*msgs:
+    :param msgs:
         *undescribed*
+    :type msgs: struct i2c_msg \*
 
-    :param unsigned int num:
+    :param num:
         *undescribed*
+    :type num: unsigned int
 
 .. _`tegra_bpmp_i2c_deserialize.description`:
 

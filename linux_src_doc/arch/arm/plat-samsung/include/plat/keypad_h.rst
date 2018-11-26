@@ -10,8 +10,9 @@ samsung_keypad_set_platdata
 
     Set platform data for Samsung Keypad device.
 
-    :param struct samsung_keypad_platdata \*pd:
+    :param pd:
         Platform data to register to device.
+    :type pd: struct samsung_keypad_platdata \*
 
 .. _`samsung_keypad_set_platdata.description`:
 

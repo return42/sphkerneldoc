@@ -10,20 +10,25 @@ mlx4_ACCESS_REG
 
     Generic access reg command.
 
-    :param struct mlx4_dev \*dev:
+    :param dev:
         mlx4_dev.
+    :type dev: struct mlx4_dev \*
 
-    :param u16 reg_id:
+    :param reg_id:
         register ID to access.
+    :type reg_id: u16
 
-    :param enum mlx4_access_reg_method method:
+    :param method:
         Access method Read/Write.
+    :type method: enum mlx4_access_reg_method
 
-    :param u16 reg_len:
+    :param reg_len:
         register length to Read/Write in bytes.
+    :type reg_len: u16
 
-    :param void \*reg_data:
+    :param reg_data:
         reg_data pointer to Read/Write From/To.
+    :type reg_data: void \*
 
 .. _`mlx4_access_reg.description`:
 
@@ -43,14 +48,17 @@ mlx4_ACCESS_PTYS_REG
 
     Access PTYs (Port Type and Speed) register
 
-    :param struct mlx4_dev \*dev:
+    :param dev:
         mlx4_dev.
+    :type dev: struct mlx4_dev \*
 
-    :param enum mlx4_access_reg_method method:
+    :param method:
         Access method Read/Write.
+    :type method: enum mlx4_access_reg_method
 
-    :param struct mlx4_ptys_reg \*ptys_reg:
+    :param ptys_reg:
         PTYS register data pointer.
+    :type ptys_reg: struct mlx4_ptys_reg \*
 
 .. _`mlx4_access_ptys_reg.description`:
 

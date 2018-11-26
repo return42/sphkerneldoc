@@ -49,11 +49,13 @@ altera_gpio_irq_set_type
 
     just checks if the requested set_type matches the synthesized IRQ type
 
-    :param struct irq_data \*d:
+    :param d:
         *undescribed*
+    :type d: struct irq_data \*
 
-    :param unsigned int type:
+    :param type:
         *undescribed*
+    :type type: unsigned int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ ich_pata_cable_detect
 
     Probe host controller cable detect info
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port for which cable detect info is desired
+    :type ap: struct ata_port \*
 
 .. _`ich_pata_cable_detect.description`:
 
@@ -37,11 +38,13 @@ piix_pata_prereset
 
     prereset for PATA host controller
 
-    :param struct ata_link \*link:
+    :param link:
         Target link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`piix_pata_prereset.locking`:
 
@@ -59,11 +62,13 @@ piix_set_piomode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Drive in question
+    :type adev: struct ata_device \*
 
 .. _`piix_set_piomode.description`:
 
@@ -88,14 +93,17 @@ do_pata_set_dmamode
 
     Initialize host controller PATA PIO timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         Drive in question
+    :type adev: struct ata_device \*
 
-    :param int isich:
+    :param isich:
         set if the chip is an ICH device
+    :type isich: int
 
 .. _`do_pata_set_dmamode.description`:
 
@@ -120,11 +128,13 @@ piix_set_dmamode
 
     Initialize host controller PATA DMA timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         um
+    :type adev: struct ata_device \*
 
 .. _`piix_set_dmamode.description`:
 
@@ -149,11 +159,13 @@ ich_set_dmamode
 
     Initialize host controller PATA DMA timings
 
-    :param struct ata_port \*ap:
+    :param ap:
         Port whose timings we are configuring
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         um
+    :type adev: struct ata_device \*
 
 .. _`ich_set_dmamode.description`:
 
@@ -178,8 +190,9 @@ piix_check_450nx_errata
 
     Check for problem 450NX setup
 
-    :param struct pci_dev \*ata_dev:
+    :param ata_dev:
         the PCI device to check
+    :type ata_dev: struct pci_dev \*
 
 .. _`piix_check_450nx_errata.description`:
 
@@ -198,11 +211,13 @@ piix_init_one
 
     Register PIIX ATA PCI device with kernel services
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to register
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         Entry in piix_pci_tbl matching with \ ``pdev``\ 
+    :type ent: const struct pci_device_id \*
 
 .. _`piix_init_one.description`:
 

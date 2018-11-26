@@ -23,3 +23,4 @@ rdma
     rdma_vt_h
     rdmavt_qp_h
     restrack_h
+    uverbs_ioctl_h

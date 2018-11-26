@@ -18,6 +18,7 @@ pci
     irq_c
     msi_c
     of_c
+    p2pdma_c
     pci-acpi_c
     pci-driver_c
     pci-sysfs_c

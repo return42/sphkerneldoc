@@ -10,11 +10,13 @@ edac_pci_alloc_ctl_info
 
     The \ :c:func:`alloc`\  function for the 'edac_pci' control info structure.
 
-    :param unsigned int sz_pvt:
+    :param sz_pvt:
         size of the private info at struct \ :c:type:`struct edac_pci_ctl_info <edac_pci_ctl_info>`\ 
+    :type sz_pvt: unsigned int
 
-    :param const char \*edac_pci_name:
+    :param edac_pci_name:
         name of the PCI device
+    :type edac_pci_name: const char \*
 
 .. _`edac_pci_alloc_ctl_info.description`:
 
@@ -40,8 +42,9 @@ edac_pci_free_ctl_info
 
     Last action on the pci control structure.
 
-    :param struct edac_pci_ctl_info \*pci:
+    :param pci:
         pointer to struct \ :c:type:`struct edac_pci_ctl_info <edac_pci_ctl_info>`\ 
+    :type pci: struct edac_pci_ctl_info \*
 
 .. _`edac_pci_free_ctl_info.description`:
 
@@ -62,8 +65,9 @@ edac_pci_alloc_index
 
     Allocate a unique PCI index number
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`edac_pci_alloc_index.return`:
 
@@ -81,12 +85,14 @@ edac_pci_add_device
 
     Insert the 'edac_dev' structure into the edac_pci global list and create sysfs entries associated with edac_pci structure.
 
-    :param struct edac_pci_ctl_info \*pci:
+    :param pci:
         pointer to the edac_device structure to be added to the list
+    :type pci: struct edac_pci_ctl_info \*
 
-    :param int edac_idx:
+    :param edac_idx:
         A unique numeric identifier to be assigned to the
         'edac_pci' structure.
+    :type edac_idx: int
 
 .. _`edac_pci_add_device.return`:
 
@@ -104,9 +110,10 @@ edac_pci_del_device
 
     Remove sysfs entries for specified edac_pci structure and then remove edac_pci structure from global list
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to 'struct device' representing edac_pci structure
         to remove
+    :type dev: struct device \*
 
 .. _`edac_pci_del_device.return`:
 
@@ -125,11 +132,13 @@ edac_pci_create_generic_ctl
 
     A generic constructor for a PCI parity polling device Some systems have more than one domain of PCI busses. For systems with one domain, then this API will provide for a generic poller.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to struct \ :c:type:`struct device <device>`\ ;
+    :type dev: struct device \*
 
-    :param const char \*mod_name:
+    :param mod_name:
         name of the PCI device
+    :type mod_name: const char \*
 
 .. _`edac_pci_create_generic_ctl.description`:
 
@@ -156,8 +165,9 @@ edac_pci_release_generic_ctl
 
     The release function of a generic EDAC PCI polling device
 
-    :param struct edac_pci_ctl_info \*pci:
+    :param pci:
         pointer to struct \ :c:type:`struct edac_pci_ctl_info <edac_pci_ctl_info>`\ 
+    :type pci: struct edac_pci_ctl_info \*
 
 .. _`edac_pci_create_sysfs`:
 
@@ -168,8 +178,9 @@ edac_pci_create_sysfs
 
     Create the controls/attributes for the specified EDAC PCI device
 
-    :param struct edac_pci_ctl_info \*pci:
+    :param pci:
         pointer to struct \ :c:type:`struct edac_pci_ctl_info <edac_pci_ctl_info>`\ 
+    :type pci: struct edac_pci_ctl_info \*
 
 .. _`edac_pci_remove_sysfs`:
 
@@ -180,8 +191,9 @@ edac_pci_remove_sysfs
 
     remove the controls and attributes for this EDAC PCI device
 
-    :param struct edac_pci_ctl_info \*pci:
+    :param pci:
         pointer to struct \ :c:type:`struct edac_pci_ctl_info <edac_pci_ctl_info>`\ 
+    :type pci: struct edac_pci_ctl_info \*
 
 .. This file was automatic generated / don't edit.
 

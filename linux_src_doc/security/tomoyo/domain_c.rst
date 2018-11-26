@@ -10,14 +10,17 @@ tomoyo_update_policy
 
     Update an entry for exception policy.
 
-    :param struct tomoyo_acl_head \*new_entry:
+    :param new_entry:
         Pointer to "struct tomoyo_acl_info".
+    :type new_entry: struct tomoyo_acl_head \*
 
-    :param const int size:
+    :param size:
         Size of \ ``new_entry``\  in bytes.
+    :type size: const int
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
     :param bool (\*check_duplicate)(const struct tomoyo_acl_head \*, const struct tomoyo_acl_head \*):
         Callback function to find duplicated entry.
@@ -40,11 +43,13 @@ tomoyo_same_acl_head
 
     Check for duplicated "struct tomoyo_acl_info" entry.
 
-    :param const struct tomoyo_acl_info \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_info".
+    :type a: const struct tomoyo_acl_info \*
 
-    :param const struct tomoyo_acl_info \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_info".
+    :type b: const struct tomoyo_acl_info \*
 
 .. _`tomoyo_same_acl_head.description`:
 
@@ -62,14 +67,17 @@ tomoyo_update_domain
 
     Update an entry for domain policy.
 
-    :param struct tomoyo_acl_info \*new_entry:
+    :param new_entry:
         Pointer to "struct tomoyo_acl_info".
+    :type new_entry: struct tomoyo_acl_info \*
 
-    :param const int size:
+    :param size:
         Size of \ ``new_entry``\  in bytes.
+    :type size: const int
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
     :param bool (\*check_duplicate)(const struct tomoyo_acl_info \*, const struct tomoyo_acl_info \*):
         Callback function to find duplicated entry.
@@ -95,8 +103,9 @@ tomoyo_check_acl
 
     Do permission check.
 
-    :param struct tomoyo_request_info \*r:
+    :param r:
         Pointer to "struct tomoyo_request_info".
+    :type r: struct tomoyo_request_info \*
 
     :param bool (\*check_entry)(struct tomoyo_request_info \*, const struct tomoyo_acl_info \*):
         Callback function to check type specific parameters.
@@ -119,8 +128,9 @@ tomoyo_last_word
 
     Get last component of a domainname.
 
-    :param const char \*name:
+    :param name:
         Domainname to check.
+    :type name: const char \*
 
 .. _`tomoyo_last_word.description`:
 
@@ -138,11 +148,13 @@ tomoyo_same_transition_control
 
     Check for duplicated "struct tomoyo_transition_control" entry.
 
-    :param const struct tomoyo_acl_head \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_head".
+    :type a: const struct tomoyo_acl_head \*
 
-    :param const struct tomoyo_acl_head \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_head".
+    :type b: const struct tomoyo_acl_head \*
 
 .. _`tomoyo_same_transition_control.description`:
 
@@ -160,11 +172,13 @@ tomoyo_write_transition_control
 
     Write "struct tomoyo_transition_control" list.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
-    :param const u8 type:
+    :param type:
         Type of this entry.
+    :type type: const u8
 
 .. _`tomoyo_write_transition_control.description`:
 
@@ -182,20 +196,25 @@ tomoyo_scan_transition
 
     Try to find specific domain transition type.
 
-    :param const struct list_head \*list:
+    :param list:
         Pointer to "struct list_head".
+    :type list: const struct list_head \*
 
-    :param const struct tomoyo_path_info \*domainname:
+    :param domainname:
         The name of current domain.
+    :type domainname: const struct tomoyo_path_info \*
 
-    :param const struct tomoyo_path_info \*program:
+    :param program:
         The name of requested program.
+    :type program: const struct tomoyo_path_info \*
 
-    :param const char \*last_name:
+    :param last_name:
         The last component of \ ``domainname``\ .
+    :type last_name: const char \*
 
-    :param const enum tomoyo_transition_type type:
+    :param type:
         One of values in "enum tomoyo_transition_type".
+    :type type: const enum tomoyo_transition_type
 
 .. _`tomoyo_scan_transition.description`:
 
@@ -215,14 +234,17 @@ tomoyo_transition_type
 
     Get domain transition type.
 
-    :param const struct tomoyo_policy_namespace \*ns:
+    :param ns:
         Pointer to "struct tomoyo_policy_namespace".
+    :type ns: const struct tomoyo_policy_namespace \*
 
-    :param const struct tomoyo_path_info \*domainname:
+    :param domainname:
         The name of current domain.
+    :type domainname: const struct tomoyo_path_info \*
 
-    :param const struct tomoyo_path_info \*program:
+    :param program:
         The name of requested program.
+    :type program: const struct tomoyo_path_info \*
 
 .. _`tomoyo_transition_type.description`:
 
@@ -246,11 +268,13 @@ tomoyo_same_aggregator
 
     Check for duplicated "struct tomoyo_aggregator" entry.
 
-    :param const struct tomoyo_acl_head \*a:
+    :param a:
         Pointer to "struct tomoyo_acl_head".
+    :type a: const struct tomoyo_acl_head \*
 
-    :param const struct tomoyo_acl_head \*b:
+    :param b:
         Pointer to "struct tomoyo_acl_head".
+    :type b: const struct tomoyo_acl_head \*
 
 .. _`tomoyo_same_aggregator.description`:
 
@@ -268,8 +292,9 @@ tomoyo_write_aggregator
 
     Write "struct tomoyo_aggregator" list.
 
-    :param struct tomoyo_acl_param \*param:
+    :param param:
         Pointer to "struct tomoyo_acl_param".
+    :type param: struct tomoyo_acl_param \*
 
 .. _`tomoyo_write_aggregator.description`:
 
@@ -289,11 +314,13 @@ tomoyo_find_namespace
 
     Find specified namespace.
 
-    :param const char \*name:
+    :param name:
         Name of namespace to find.
+    :type name: const char \*
 
-    :param const unsigned int len:
+    :param len:
         Length of \ ``name``\ .
+    :type len: const unsigned int
 
 .. _`tomoyo_find_namespace.description`:
 
@@ -314,8 +341,9 @@ tomoyo_assign_namespace
 
     Create a new namespace.
 
-    :param const char \*domainname:
+    :param domainname:
         Name of namespace to create.
+    :type domainname: const char \*
 
 .. _`tomoyo_assign_namespace.description`:
 
@@ -336,8 +364,9 @@ tomoyo_namespace_jump
 
     Check for namespace jump.
 
-    :param const char \*domainname:
+    :param domainname:
         Name of domain.
+    :type domainname: const char \*
 
 .. _`tomoyo_namespace_jump.description`:
 
@@ -355,11 +384,13 @@ tomoyo_assign_domain
 
     Create a domain or a namespace.
 
-    :param const char \*domainname:
+    :param domainname:
         The name of domain.
+    :type domainname: const char \*
 
-    :param const bool transit:
+    :param transit:
         True if transit to domain found or created.
+    :type transit: const bool
 
 .. _`tomoyo_assign_domain.description`:
 
@@ -379,8 +410,9 @@ tomoyo_environ
 
     Check permission for environment variable names.
 
-    :param struct tomoyo_execve \*ee:
+    :param ee:
         Pointer to "struct tomoyo_execve".
+    :type ee: struct tomoyo_execve \*
 
 .. _`tomoyo_environ.description`:
 
@@ -398,8 +430,9 @@ tomoyo_find_next_domain
 
     Find a domain.
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         Pointer to "struct linux_binprm".
+    :type bprm: struct linux_binprm \*
 
 .. _`tomoyo_find_next_domain.description`:
 
@@ -419,14 +452,17 @@ tomoyo_dump_page
 
     Dump a page to buffer.
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         Pointer to "struct linux_binprm".
+    :type bprm: struct linux_binprm \*
 
-    :param unsigned long pos:
+    :param pos:
         Location to dump.
+    :type pos: unsigned long
 
-    :param struct tomoyo_page_dump \*dump:
+    :param dump:
         Poiner to "struct tomoyo_page_dump".
+    :type dump: struct tomoyo_page_dump \*
 
 .. _`tomoyo_dump_page.description`:
 

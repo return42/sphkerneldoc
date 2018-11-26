@@ -10,11 +10,13 @@ mbcs_completion_intr_handler
 
     Primary completion handler.
 
-    :param int irq:
+    :param irq:
         irq
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         soft struct for device
+    :type arg: void \*
 
 .. _`mbcs_intr_alloc`:
 
@@ -25,8 +27,9 @@ mbcs_intr_alloc
 
     Allocate interrupts.
 
-    :param struct cx_dev \*dev:
+    :param dev:
         device pointer
+    :type dev: struct cx_dev \*
 
 .. _`mbcs_intr_dealloc`:
 
@@ -37,8 +40,9 @@ mbcs_intr_dealloc
 
     Remove interrupts.
 
-    :param struct cx_dev \*dev:
+    :param dev:
         device pointer
+    :type dev: struct cx_dev \*
 
 .. _`mbcs_probe`:
 
@@ -49,11 +53,13 @@ mbcs_probe
 
     Initialize for device
 
-    :param struct cx_dev \*dev:
+    :param dev:
         device pointer
+    :type dev: struct cx_dev \*
 
-    :param const struct cx_device_id \*id:
+    :param id:
         *undescribed*
+    :type id: const struct cx_device_id \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@
 
     disable the watchdog on the given CPU
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`__booke_wdt_disable.description`:
 

@@ -10,14 +10,17 @@ vxfs_find_entry
 
     find a mathing directory entry for a dentry
 
-    :param struct inode \*ip:
+    :param ip:
         directory inode
+    :type ip: struct inode \*
 
-    :param struct dentry \*dp:
+    :param dp:
         dentry for which we want to find a direct
+    :type dp: struct dentry \*
 
-    :param struct page \*\*ppp:
+    :param ppp:
         gets filled with the page the return value sits in
+    :type ppp: struct page \*\*
 
 .. _`vxfs_find_entry.description`:
 
@@ -44,11 +47,13 @@ vxfs_inode_by_name
 
     find inode number for dentry
 
-    :param struct inode \*dip:
+    :param dip:
         directory to search in
+    :type dip: struct inode \*
 
-    :param struct dentry \*dp:
+    :param dp:
         dentry we search for
+    :type dp: struct dentry \*
 
 .. _`vxfs_inode_by_name.description`:
 
@@ -74,14 +79,17 @@ vxfs_lookup
 
     lookup pathname component
 
-    :param struct inode \*dip:
+    :param dip:
         dir in which we lookup
+    :type dip: struct inode \*
 
-    :param struct dentry \*dp:
+    :param dp:
         dentry we lookup
+    :type dp: struct dentry \*
 
-    :param unsigned int flags:
+    :param flags:
         lookup flags
+    :type flags: unsigned int
 
 .. _`vxfs_lookup.description`:
 
@@ -108,11 +116,13 @@ vxfs_readdir
 
     read a directory
 
-    :param struct file \*fp:
+    :param fp:
         the directory to read
+    :type fp: struct file \*
 
-    :param struct dir_context \*ctx:
+    :param ctx:
         *undescribed*
+    :type ctx: struct dir_context \*
 
 .. _`vxfs_readdir.description`:
 

@@ -10,11 +10,13 @@ acpi_parse_spcr
 
     parse ACPI SPCR table and add preferred console
 
-    :param bool enable_earlycon:
+    :param enable_earlycon:
         set up earlycon for the console specified by the table
+    :type enable_earlycon: bool
 
-    :param bool enable_console:
+    :param enable_console:
         setup the console specified by the table.
+    :type enable_console: bool
 
 .. _`acpi_parse_spcr.description`:
 

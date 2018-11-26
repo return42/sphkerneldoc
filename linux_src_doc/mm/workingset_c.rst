@@ -10,18 +10,20 @@ workingset_eviction
 
     note the eviction of a page from memory
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space the page was backing
+    :type mapping: struct address_space \*
 
-    :param struct page \*page:
+    :param page:
         the page being evicted
+    :type page: struct page \*
 
 .. _`workingset_eviction.description`:
 
 Description
 -----------
 
-Returns a shadow entry to be stored in \ ``mapping``\ ->i_pages in place
+Returns a shadow entry to be stored in \ ``mapping->i_pages``\  in place
 of the evicted \ ``page``\  so that a later refault can be detected.
 
 .. _`workingset_refault`:
@@ -29,12 +31,17 @@ of the evicted \ ``page``\  so that a later refault can be detected.
 workingset_refault
 ==================
 
-.. c:function:: bool workingset_refault(void *shadow)
+.. c:function:: void workingset_refault(struct page *page, void *shadow)
 
     evaluate the refault of a previously evicted page
 
-    :param void \*shadow:
+    :param page:
+        the freshly allocated replacement page
+    :type page: struct page \*
+
+    :param shadow:
         shadow entry of the evicted page
+    :type shadow: void \*
 
 .. _`workingset_refault.description`:
 
@@ -43,8 +50,6 @@ Description
 
 Calculates and evaluates the refault distance of the previously
 evicted page in the context of the node it was allocated in.
-
-Returns \ ``true``\  if the page should be activated, \ ``false``\  otherwise.
 
 .. _`workingset_activation`:
 
@@ -55,8 +60,9 @@ workingset_activation
 
     note a page activation
 
-    :param struct page \*page:
+    :param page:
         page that is being activated
+    :type page: struct page \*
 
 .. This file was automatic generated / don't edit.
 

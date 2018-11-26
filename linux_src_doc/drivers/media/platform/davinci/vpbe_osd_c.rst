@@ -10,17 +10,21 @@
 
     field inversion fix for DM6446
 
-    :param struct osd_state \*sd:
+    :param sd:
         ptr to struct osd_state
+    :type sd: struct osd_state \*
 
-    :param int field_inversion:
+    :param field_inversion:
         inversion flag
+    :type field_inversion: int
 
-    :param unsigned long fb_base_phys:
+    :param fb_base_phys:
         frame buffer address
+    :type fb_base_phys: unsigned long
 
-    :param const struct osd_layer_config \*lconfig:
+    :param lconfig:
         ptr to layer config
+    :type lconfig: const struct osd_layer_config \*
 
 .. _`_osd_dm6446_vid0_pingpong.description`:
 
@@ -50,14 +54,17 @@ try_layer_config
 
     Try a specific configuration for the layer
 
-    :param struct osd_state \*sd:
+    :param sd:
         ptr to struct osd_state
+    :type sd: struct osd_state \*
 
-    :param enum osd_layer layer:
+    :param layer:
         layer to configure
+    :type layer: enum osd_layer
 
-    :param struct osd_layer_config \*lconfig:
+    :param lconfig:
         layer configuration to try
+    :type lconfig: struct osd_layer_config \*
 
 .. _`try_layer_config.description`:
 

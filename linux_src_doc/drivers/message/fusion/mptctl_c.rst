@@ -10,11 +10,13 @@ mptctl_syscall_down
 
     Down the MPT adapter syscall semaphore.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter
+    :type ioc: MPT_ADAPTER \*
 
-    :param int nonblock:
+    :param nonblock:
         boolean, non-zero if O_NONBLOCK is set
+    :type nonblock: int
 
 .. _`mptctl_syscall_down.description`:
 

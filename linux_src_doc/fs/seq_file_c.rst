@@ -10,11 +10,13 @@ seq_open
 
     initialize sequential file
 
-    :param struct file \*file:
+    :param file:
         file we initialize
+    :type file: struct file \*
 
-    :param const struct seq_operations \*op:
+    :param op:
         method table describing the sequence
+    :type op: const struct seq_operations \*
 
 .. _`seq_open.description`:
 
@@ -22,9 +24,9 @@ Description
 -----------
 
      \ :c:func:`seq_open`\  sets \ ``file``\ , associating it with a sequence described
-     by \ ``op``\ .  \ ``op``\ ->start() sets the iterator up and returns the first
-     element of sequence. \ ``op``\ ->stop() shuts it down.  \ ``op``\ ->next()
-     returns the next element of sequence.  \ ``op``\ ->show() prints element
+     by \ ``op``\ .  \ ``op->start``\ () sets the iterator up and returns the first
+     element of sequence. \ ``op->stop``\ () shuts it down.  \ ``op->next``\ ()
+     returns the next element of sequence.  \ ``op->show``\ () prints element
      into the buffer.  In case of error ->start() and ->next() return
      ERR_PTR(error).  In the end of sequence they return \ ``NULL``\ . ->show()
      returns 0 in case of success and negative number in case of error.
@@ -36,7 +38,7 @@ Note
 ----
 
 \ :c:func:`seq_open`\  will allocate a struct seq_file and store its
-     pointer in \ ``file``\ ->private_data. This pointer should not be modified.
+     pointer in \ ``file->private_data``\ . This pointer should not be modified.
 
 .. _`seq_read`:
 
@@ -47,17 +49,21 @@ seq_read
 
     ->read() method for sequential files.
 
-    :param struct file \*file:
+    :param file:
         the file to read from
+    :type file: struct file \*
 
-    :param char __user \*buf:
+    :param buf:
         the buffer to read to
+    :type buf: char __user \*
 
-    :param size_t size:
+    :param size:
         the maximum number of bytes to read
+    :type size: size_t
 
-    :param loff_t \*ppos:
+    :param ppos:
         the current position in the file
+    :type ppos: loff_t \*
 
 .. _`seq_read.description`:
 
@@ -75,14 +81,17 @@ seq_lseek
 
     ->llseek() method for sequential files.
 
-    :param struct file \*file:
+    :param file:
         the file in question
+    :type file: struct file \*
 
-    :param loff_t offset:
+    :param offset:
         new position
+    :type offset: loff_t
 
-    :param int whence:
+    :param whence:
         0 for absolute, 1 for relative position
+    :type whence: int
 
 .. _`seq_lseek.description`:
 
@@ -100,11 +109,13 @@ seq_release
 
     free the structures associated with sequential file.
 
-    :param struct inode \*inode:
+    :param inode:
         its inode
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file in question
+    :type file: struct file \*
 
 .. _`seq_release.description`:
 
@@ -123,14 +134,17 @@ seq_escape
 
     print string into buffer, escaping some characters
 
-    :param struct seq_file \*m:
+    :param m:
         target buffer
+    :type m: struct seq_file \*
 
-    :param const char \*s:
+    :param s:
         string
+    :type s: const char \*
 
-    :param const char \*esc:
+    :param esc:
         set of characters that need escaping
+    :type esc: const char \*
 
 .. _`seq_escape.description`:
 
@@ -150,14 +164,17 @@ mangle_path
 
     mangle and copy path to buffer beginning
 
-    :param char \*s:
+    :param s:
         buffer start
+    :type s: char \*
 
-    :param const char \*p:
+    :param p:
         beginning of path in above buffer
+    :type p: const char \*
 
-    :param const char \*esc:
+    :param esc:
         set of characters that need escaping
+    :type esc: const char \*
 
 .. _`mangle_path.description`:
 
@@ -178,14 +195,17 @@ seq_path
 
     seq_file interface to print a pathname
 
-    :param struct seq_file \*m:
+    :param m:
         the seq_file handle
+    :type m: struct seq_file \*
 
-    :param const struct path \*path:
+    :param path:
         the struct path to print
+    :type path: const struct path \*
 
-    :param const char \*esc:
+    :param esc:
         set of characters to escape in the output
+    :type esc: const char \*
 
 .. _`seq_path.description`:
 
@@ -204,14 +224,17 @@ seq_file_path
 
     seq_file interface to print a pathname of a file
 
-    :param struct seq_file \*m:
+    :param m:
         the seq_file handle
+    :type m: struct seq_file \*
 
-    :param struct file \*file:
+    :param file:
         the struct file to print
+    :type file: struct file \*
 
-    :param const char \*esc:
+    :param esc:
         set of characters to escape in the output
+    :type esc: const char \*
 
 .. _`seq_file_path.description`:
 
@@ -229,17 +252,21 @@ seq_put_decimal_ull_width
 
     only 'unsigned long long' is supported.
 
-    :param struct seq_file \*m:
+    :param m:
         seq_file identifying the buffer to which data should be written
+    :type m: struct seq_file \*
 
-    :param const char \*delimiter:
+    :param delimiter:
         a string which is printed before the number
+    :type delimiter: const char \*
 
-    :param unsigned long long num:
+    :param num:
         the number
+    :type num: unsigned long long
 
-    :param unsigned int width:
+    :param width:
         a minimum field width
+    :type width: unsigned int
 
 .. _`seq_put_decimal_ull_width.description`:
 
@@ -259,17 +286,21 @@ seq_put_hex_ll
 
     put a number in hexadecimal notation
 
-    :param struct seq_file \*m:
+    :param m:
         seq_file identifying the buffer to which data should be written
+    :type m: struct seq_file \*
 
-    :param const char \*delimiter:
+    :param delimiter:
         a string which is printed before the number
+    :type delimiter: const char \*
 
-    :param unsigned long long v:
+    :param v:
         the number
+    :type v: unsigned long long
 
-    :param unsigned int width:
+    :param width:
         a minimum field width
+    :type width: unsigned int
 
 .. _`seq_put_hex_ll.description`:
 
@@ -290,14 +321,17 @@ seq_write
 
     write arbitrary data to buffer
 
-    :param struct seq_file \*seq:
+    :param seq:
         seq_file identifying the buffer to which data should be written
+    :type seq: struct seq_file \*
 
-    :param const void \*data:
+    :param data:
         data address
+    :type data: const void \*
 
-    :param size_t len:
+    :param len:
         number of bytes
+    :type len: size_t
 
 .. _`seq_write.description`:
 
@@ -315,11 +349,13 @@ seq_pad
 
     write padding spaces to buffer
 
-    :param struct seq_file \*m:
+    :param m:
         seq_file identifying the buffer to which data should be written
+    :type m: struct seq_file \*
 
-    :param char c:
+    :param c:
         the byte to append after padding if non-zero
+    :type c: char
 
 .. _`seq_hlist_start`:
 
@@ -330,11 +366,13 @@ seq_hlist_start
 
     start an iteration of a hlist
 
-    :param struct hlist_head \*head:
+    :param head:
         the head of the hlist
+    :type head: struct hlist_head \*
 
-    :param loff_t pos:
+    :param pos:
         the start position of the sequence
+    :type pos: loff_t
 
 .. _`seq_hlist_start.description`:
 
@@ -352,11 +390,13 @@ seq_hlist_start_head
 
     start an iteration of a hlist
 
-    :param struct hlist_head \*head:
+    :param head:
         the head of the hlist
+    :type head: struct hlist_head \*
 
-    :param loff_t pos:
+    :param pos:
         the start position of the sequence
+    :type pos: loff_t
 
 .. _`seq_hlist_start_head.description`:
 
@@ -375,14 +415,17 @@ seq_hlist_next
 
     move to the next position of the hlist
 
-    :param void \*v:
+    :param v:
         the current iterator
+    :type v: void \*
 
-    :param struct hlist_head \*head:
+    :param head:
         the head of the hlist
+    :type head: struct hlist_head \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         the current position
+    :type ppos: loff_t \*
 
 .. _`seq_hlist_next.description`:
 
@@ -400,11 +443,13 @@ seq_hlist_start_rcu
 
     start an iteration of a hlist protected by RCU
 
-    :param struct hlist_head \*head:
+    :param head:
         the head of the hlist
+    :type head: struct hlist_head \*
 
-    :param loff_t pos:
+    :param pos:
         the start position of the sequence
+    :type pos: loff_t
 
 .. _`seq_hlist_start_rcu.description`:
 
@@ -426,11 +471,13 @@ seq_hlist_start_head_rcu
 
     start an iteration of a hlist protected by RCU
 
-    :param struct hlist_head \*head:
+    :param head:
         the head of the hlist
+    :type head: struct hlist_head \*
 
-    :param loff_t pos:
+    :param pos:
         the start position of the sequence
+    :type pos: loff_t
 
 .. _`seq_hlist_start_head_rcu.description`:
 
@@ -453,14 +500,17 @@ seq_hlist_next_rcu
 
     move to the next position of the hlist protected by RCU
 
-    :param void \*v:
+    :param v:
         the current iterator
+    :type v: void \*
 
-    :param struct hlist_head \*head:
+    :param head:
         the head of the hlist
+    :type head: struct hlist_head \*
 
-    :param loff_t \*ppos:
+    :param ppos:
         the current position
+    :type ppos: loff_t \*
 
 .. _`seq_hlist_next_rcu.description`:
 
@@ -482,14 +532,17 @@ seq_hlist_start_percpu
 
     start an iteration of a percpu hlist array
 
-    :param struct hlist_head __percpu \*head:
+    :param head:
         pointer to percpu array of struct hlist_heads
+    :type head: struct hlist_head __percpu \*
 
-    :param int \*cpu:
+    :param cpu:
         pointer to cpu "cursor"
+    :type cpu: int \*
 
-    :param loff_t pos:
+    :param pos:
         start position of sequence
+    :type pos: loff_t
 
 .. _`seq_hlist_start_percpu.description`:
 
@@ -507,17 +560,21 @@ seq_hlist_next_percpu
 
     move to the next position of the percpu hlist array
 
-    :param void \*v:
+    :param v:
         pointer to current hlist_node
+    :type v: void \*
 
-    :param struct hlist_head __percpu \*head:
+    :param head:
         pointer to percpu array of struct hlist_heads
+    :type head: struct hlist_head __percpu \*
 
-    :param int \*cpu:
+    :param cpu:
         pointer to cpu "cursor"
+    :type cpu: int \*
 
-    :param loff_t \*pos:
+    :param pos:
         start position of sequence
+    :type pos: loff_t \*
 
 .. _`seq_hlist_next_percpu.description`:
 

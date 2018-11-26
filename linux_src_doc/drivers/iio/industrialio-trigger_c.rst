@@ -10,15 +10,18 @@ iio_trigger_read_name
 
     retrieve useful identifying name
 
-    :param struct device \*dev:
+    :param dev:
         device associated with the iio_trigger
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         pointer to the device_attribute structure that is
         being processed
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer to print the name into
+    :type buf: char \*
 
 .. _`iio_trigger_read_name.return`:
 
@@ -37,15 +40,18 @@ iio_trigger_read_current
 
     trigger consumer sysfs query current trigger
 
-    :param struct device \*dev:
+    :param dev:
         device associated with an industrial I/O device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         pointer to the device_attribute structure that
         is being processed
+    :type attr: struct device_attribute \*
 
-    :param char \*buf:
+    :param buf:
         buffer where the current trigger name will be printed into
+    :type buf: char \*
 
 .. _`iio_trigger_read_current.description`:
 
@@ -72,17 +78,21 @@ iio_trigger_write_current
 
     trigger consumer sysfs set current trigger
 
-    :param struct device \*dev:
+    :param dev:
         device associated with an industrial I/O device
+    :type dev: struct device \*
 
-    :param struct device_attribute \*attr:
+    :param attr:
         device attribute that is being processed
+    :type attr: struct device_attribute \*
 
-    :param const char \*buf:
+    :param buf:
         string buffer that holds the name of the trigger
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         length of the trigger name held by buf
+    :type len: size_t
 
 .. _`iio_trigger_write_current.description`:
 
@@ -110,14 +120,16 @@ devm_iio_trigger_alloc
 
     Resource-managed \ :c:func:`iio_trigger_alloc`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device to allocate iio_trigger for
+    :type dev: struct device \*
 
-    :param const char \*fmt:
+    :param fmt:
         trigger name format. If it includes format
         specifiers, the additional arguments following
         format are formatted and inserted in the resulting
         string replacing their respective specifiers.
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -149,11 +161,13 @@ devm_iio_trigger_free
 
     Resource-managed \ :c:func:`iio_trigger_free`\ 
 
-    :param struct device \*dev:
+    :param dev:
         Device this iio_dev belongs to
+    :type dev: struct device \*
 
-    :param struct iio_trigger \*iio_trig:
+    :param iio_trig:
         the iio_trigger associated with the device
+    :type iio_trig: struct iio_trigger \*
 
 .. _`devm_iio_trigger_free.description`:
 
@@ -171,14 +185,17 @@ __devm_iio_trigger_register
 
     Resource-managed \ :c:func:`iio_trigger_register`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device this trigger was allocated for
+    :type dev: struct device \*
 
-    :param struct iio_trigger \*trig_info:
+    :param trig_info:
         trigger to register
+    :type trig_info: struct iio_trigger \*
 
-    :param struct module \*this_mod:
+    :param this_mod:
         module registering the trigger
+    :type this_mod: struct module \*
 
 .. _`__devm_iio_trigger_register.description`:
 
@@ -209,11 +226,13 @@ devm_iio_trigger_unregister
 
     Resource-managed \ :c:func:`iio_trigger_unregister`\ 
 
-    :param struct device \*dev:
+    :param dev:
         device this iio_trigger belongs to
+    :type dev: struct device \*
 
-    :param struct iio_trigger \*trig_info:
+    :param trig_info:
         the trigger associated with the device
+    :type trig_info: struct iio_trigger \*
 
 .. _`devm_iio_trigger_unregister.description`:
 
@@ -231,11 +250,13 @@ iio_trigger_validate_own_device
 
     Check if a trigger and IIO device belong to the same device
 
-    :param struct iio_trigger \*trig:
+    :param trig:
         The IIO trigger to check
+    :type trig: struct iio_trigger \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         the IIO device to check
+    :type indio_dev: struct iio_dev \*
 
 .. _`iio_trigger_validate_own_device.description`:
 

@@ -8,14 +8,17 @@ ROUND
 
 .. c:function::  ROUND( i,  d,  s)
 
-    :param  i:
+    :param i:
         *undescribed*
+    :type i: 
 
-    :param  d:
+    :param d:
         *undescribed*
+    :type d: 
 
-    :param  s:
+    :param s:
         *undescribed*
+    :type s: 
 
 .. _`round.description`:
 

@@ -10,8 +10,9 @@ af_alg_alloc_tsgl
 
     allocate the TX SGL
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`af_alg_alloc_tsgl.description`:
 
@@ -29,14 +30,17 @@ af_alg_count_tsgl
 
     Count number of TX SG entries
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param size_t bytes:
+    :param bytes:
         *undescribed*
+    :type bytes: size_t
 
-    :param size_t offset:
+    :param offset:
         *undescribed*
+    :type offset: size_t
 
 .. _`af_alg_count_tsgl.description`:
 
@@ -60,17 +64,21 @@ af_alg_pull_tsgl
 
     Release the specified buffers from TX SGL
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param size_t used:
+    :param used:
         *undescribed*
+    :type used: size_t
 
-    :param struct scatterlist \*dst:
+    :param dst:
         *undescribed*
+    :type dst: struct scatterlist \*
 
-    :param size_t dst_offset:
+    :param dst_offset:
         *undescribed*
+    :type dst_offset: size_t
 
 .. _`af_alg_pull_tsgl.description`:
 
@@ -98,8 +106,9 @@ af_alg_free_areq_sgls
 
     Release TX and RX SGLs of the request
 
-    :param struct af_alg_async_req \*areq:
+    :param areq:
         *undescribed*
+    :type areq: struct af_alg_async_req \*
 
 .. _`af_alg_free_areq_sgls.description`:
 
@@ -117,11 +126,13 @@ af_alg_wait_for_wmem
 
     wait for availability of writable memory
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`af_alg_wait_for_wmem.description`:
 
@@ -141,8 +152,9 @@ af_alg_wmem_wakeup
 
     wakeup caller when writable memory is available
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`af_alg_wmem_wakeup.description`:
 
@@ -160,11 +172,13 @@ af_alg_wait_for_data
 
     wait for availability of TX data
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param unsigned flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned
 
 .. _`af_alg_wait_for_data.description`:
 
@@ -184,8 +198,9 @@ af_alg_data_wakeup
 
     wakeup caller when new data can be sent to kernel
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`af_alg_data_wakeup.description`:
 
@@ -203,17 +218,21 @@ af_alg_sendmsg
 
     implementation of sendmsg system call handler
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         *undescribed*
+    :type msg: struct msghdr \*
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param unsigned int ivsize:
+    :param ivsize:
         *undescribed*
+    :type ivsize: unsigned int
 
 .. _`af_alg_sendmsg.description`:
 
@@ -242,20 +261,25 @@ af_alg_sendpage
 
     sendpage system call handler
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param size_t size:
+    :param size:
         *undescribed*
+    :type size: size_t
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
 .. _`af_alg_sendpage.description`:
 
@@ -273,8 +297,9 @@ af_alg_free_resources
 
     release resources required for crypto request
 
-    :param struct af_alg_async_req \*areq:
+    :param areq:
         *undescribed*
+    :type areq: struct af_alg_async_req \*
 
 .. _`af_alg_async_cb`:
 
@@ -285,11 +310,13 @@ af_alg_async_cb
 
     AIO callback handler
 
-    :param struct crypto_async_request \*_req:
+    :param _req:
         *undescribed*
+    :type _req: struct crypto_async_request \*
 
-    :param int err:
+    :param err:
         *undescribed*
+    :type err: int
 
 .. _`af_alg_async_cb.description`:
 
@@ -311,14 +338,17 @@ af_alg_poll
 
     poll system call handler
 
-    :param struct file \*file:
+    :param file:
         *undescribed*
+    :type file: struct file \*
 
-    :param struct socket \*sock:
+    :param sock:
         *undescribed*
+    :type sock: struct socket \*
 
-    :param poll_table \*wait:
+    :param wait:
         *undescribed*
+    :type wait: poll_table \*
 
 .. _`af_alg_alloc_areq`:
 
@@ -329,11 +359,13 @@ af_alg_alloc_areq
 
     allocate struct af_alg_async_req
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param unsigned int areqlen:
+    :param areqlen:
         *undescribed*
+    :type areqlen: unsigned int
 
 .. _`af_alg_alloc_areq.description`:
 
@@ -353,23 +385,29 @@ af_alg_get_rsgl
 
     create the RX SGL for the output data from the crypto operation
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param struct msghdr \*msg:
+    :param msg:
         *undescribed*
+    :type msg: struct msghdr \*
 
-    :param int flags:
+    :param flags:
         *undescribed*
+    :type flags: int
 
-    :param struct af_alg_async_req \*areq:
+    :param areq:
         *undescribed*
+    :type areq: struct af_alg_async_req \*
 
-    :param size_t maxsize:
+    :param maxsize:
         *undescribed*
+    :type maxsize: size_t
 
-    :param size_t \*outlen:
+    :param outlen:
         *undescribed*
+    :type outlen: size_t \*
 
 .. _`af_alg_get_rsgl.description`:
 

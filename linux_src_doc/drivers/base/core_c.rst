@@ -10,11 +10,13 @@ device_is_dependent
 
     Check if one device depends on another one
 
-    :param struct device \*dev:
+    :param dev:
         Device to check dependencies for.
+    :type dev: struct device \*
 
-    :param void \*target:
+    :param target:
         Device to check against.
+    :type target: void \*
 
 .. _`device_is_dependent.description`:
 
@@ -33,8 +35,9 @@ device_pm_move_to_tail
 
     Move set of devices to the end of device lists
 
-    :param struct device \*dev:
+    :param dev:
         Device to move
+    :type dev: struct device \*
 
 .. _`device_pm_move_to_tail.description`:
 
@@ -55,14 +58,17 @@ device_link_add
 
     Create a link between two devices.
 
-    :param struct device \*consumer:
+    :param consumer:
         Consumer end of the link.
+    :type consumer: struct device \*
 
-    :param struct device \*supplier:
+    :param supplier:
         Supplier end of the link.
+    :type supplier: struct device \*
 
-    :param u32 flags:
+    :param flags:
         Link flags.
+    :type flags: u32
 
 .. _`device_link_add.description`:
 
@@ -77,10 +83,10 @@ be forced into the active metastate and reference-counted upon the creation
 of the link.  If DL_FLAG_PM_RUNTIME is not set, DL_FLAG_RPM_ACTIVE will be
 ignored.
 
-If the DL_FLAG_AUTOREMOVE is set, the link will be removed automatically
-when the consumer device driver unbinds from it.  The combination of both
-DL_FLAG_AUTOREMOVE and DL_FLAG_STATELESS set is invalid and will cause NULL
-to be returned.
+If the DL_FLAG_AUTOREMOVE_CONSUMER is set, the link will be removed
+automatically when the consumer device driver unbinds from it.
+The combination of both DL_FLAG_AUTOREMOVE_CONSUMER and DL_FLAG_STATELESS
+set is invalid and will cause NULL to be returned.
 
 A side effect of the link creation is re-ordering of dpm_list and the
 devices_kset list by moving the consumer device and all devices depending
@@ -100,8 +106,9 @@ device_link_del
 
     Delete a link between two devices.
 
-    :param struct device_link \*link:
+    :param link:
         Device link to delete.
+    :type link: struct device_link \*
 
 .. _`device_link_del.description`:
 
@@ -113,6 +120,31 @@ PM.  If the link was added multiple times, it needs to be deleted as often.
 Care is required for hotplugged devices:  Their links are purged on removal
 and calling \ :c:func:`device_link_del`\  is then no longer allowed.
 
+.. _`device_link_remove`:
+
+device_link_remove
+==================
+
+.. c:function:: void device_link_remove(void *consumer, struct device *supplier)
+
+    remove a link between two devices.
+
+    :param consumer:
+        Consumer end of the link.
+    :type consumer: void \*
+
+    :param supplier:
+        Supplier end of the link.
+    :type supplier: struct device \*
+
+.. _`device_link_remove.description`:
+
+Description
+-----------
+
+The caller must ensure proper synchronization of this function with runtime
+PM.
+
 .. _`device_links_check_suppliers`:
 
 device_links_check_suppliers
@@ -122,8 +154,9 @@ device_links_check_suppliers
 
     Check presence of supplier drivers.
 
-    :param struct device \*dev:
+    :param dev:
         Consumer device.
+    :type dev: struct device \*
 
 .. _`device_links_check_suppliers.description`:
 
@@ -151,8 +184,9 @@ device_links_driver_bound
 
     Update device links after probing its driver.
 
-    :param struct device \*dev:
+    :param dev:
         Device to update the links for.
+    :type dev: struct device \*
 
 .. _`device_links_driver_bound.description`:
 
@@ -175,8 +209,9 @@ __device_links_no_driver
 
     Update links of a device without a driver.
 
-    :param struct device \*dev:
+    :param dev:
         Device without a drvier.
+    :type dev: struct device \*
 
 .. _`__device_links_no_driver.description`:
 
@@ -200,8 +235,9 @@ device_links_driver_cleanup
 
     Update links after driver removal.
 
-    :param struct device \*dev:
+    :param dev:
         Device whose driver has just gone away.
+    :type dev: struct device \*
 
 .. _`device_links_driver_cleanup.description`:
 
@@ -223,8 +259,9 @@ device_links_busy
 
     Check if there are any busy links to consumers.
 
-    :param struct device \*dev:
+    :param dev:
         Device to check.
+    :type dev: struct device \*
 
 .. _`device_links_busy.description`:
 
@@ -250,8 +287,9 @@ device_links_unbind_consumers
 
     Force unbind consumers of the given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to unbind the consumers of.
+    :type dev: struct device \*
 
 .. _`device_links_unbind_consumers.description`:
 
@@ -278,8 +316,9 @@ device_links_purge
 
     Delete existing links to other devices.
 
-    :param struct device \*dev:
+    :param dev:
         Target device.
+    :type dev: struct device \*
 
 .. _`dev_driver_string`:
 
@@ -290,8 +329,9 @@ dev_driver_string
 
     Return a device's driver name, if at all possible
 
-    :param const struct device \*dev:
+    :param dev:
         struct device to get the name of
+    :type dev: const struct device \*
 
 .. _`dev_driver_string.description`:
 
@@ -312,8 +352,9 @@ device_release
 
     free device structure.
 
-    :param struct kobject \*kobj:
+    :param kobj:
         device's kobject.
+    :type kobj: struct kobject \*
 
 .. _`device_release.description`:
 
@@ -333,11 +374,13 @@ devm_device_add_group
 
     given a device, create a managed attribute group
 
-    :param struct device \*dev:
+    :param dev:
         The device to create the group for
+    :type dev: struct device \*
 
-    :param const struct attribute_group \*grp:
+    :param grp:
         The attribute group to create
+    :type grp: const struct attribute_group \*
 
 .. _`devm_device_add_group.description`:
 
@@ -358,11 +401,13 @@ devm_device_remove_group
 
     remove a managed group from a device
 
-    :param struct device \*dev:
+    :param dev:
         device to remove the group from
+    :type dev: struct device \*
 
-    :param const struct attribute_group \*grp:
+    :param grp:
         group to remove
+    :type grp: const struct attribute_group \*
 
 .. _`devm_device_remove_group.description`:
 
@@ -381,11 +426,13 @@ devm_device_add_groups
 
     create a bunch of managed attribute groups
 
-    :param struct device \*dev:
+    :param dev:
         The device to create the group for
+    :type dev: struct device \*
 
-    :param const struct attribute_group \*\*groups:
+    :param groups:
         The attribute groups to create, NULL terminated
+    :type groups: const struct attribute_group \*\*
 
 .. _`devm_device_add_groups.description`:
 
@@ -409,11 +456,13 @@ devm_device_remove_groups
 
     remove a list of managed groups
 
-    :param struct device \*dev:
+    :param dev:
         The device for the groups to be removed from
+    :type dev: struct device \*
 
-    :param const struct attribute_group \*\*groups:
+    :param groups:
         NULL terminated list of groups to be removed
+    :type groups: const struct attribute_group \*\*
 
 .. _`devm_device_remove_groups.description`:
 
@@ -431,11 +480,13 @@ devices_kset_move_before
 
     Move device in the devices_kset's list.
 
-    :param struct device \*deva:
+    :param deva:
         Device to move.
+    :type deva: struct device \*
 
-    :param struct device \*devb:
+    :param devb:
         Device \ ``deva``\  should come before.
+    :type devb: struct device \*
 
 .. _`devices_kset_move_after`:
 
@@ -446,11 +497,13 @@ devices_kset_move_after
 
     Move device in the devices_kset's list.
 
-    :param struct device \*deva:
+    :param deva:
         Device to move
+    :type deva: struct device \*
 
-    :param struct device \*devb:
+    :param devb:
         Device \ ``deva``\  should come after.
+    :type devb: struct device \*
 
 .. _`devices_kset_move_last`:
 
@@ -461,8 +514,9 @@ devices_kset_move_last
 
     move the device to the end of devices_kset's list.
 
-    :param struct device \*dev:
+    :param dev:
         device to move
+    :type dev: struct device \*
 
 .. _`device_create_file`:
 
@@ -473,11 +527,13 @@ device_create_file
 
     create sysfs attribute file for device.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
-    :param const struct device_attribute \*attr:
+    :param attr:
         device attribute descriptor.
+    :type attr: const struct device_attribute \*
 
 .. _`device_remove_file`:
 
@@ -488,11 +544,13 @@ device_remove_file
 
     remove sysfs attribute file.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
-    :param const struct device_attribute \*attr:
+    :param attr:
         device attribute descriptor.
+    :type attr: const struct device_attribute \*
 
 .. _`device_remove_file_self`:
 
@@ -503,11 +561,13 @@ device_remove_file_self
 
     remove sysfs attribute file from its own method.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
-    :param const struct device_attribute \*attr:
+    :param attr:
         device attribute descriptor.
+    :type attr: const struct device_attribute \*
 
 .. _`device_remove_file_self.description`:
 
@@ -525,11 +585,13 @@ device_create_bin_file
 
     create sysfs binary attribute file for device.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
-    :param const struct bin_attribute \*attr:
+    :param attr:
         device binary attribute descriptor.
+    :type attr: const struct bin_attribute \*
 
 .. _`device_remove_bin_file`:
 
@@ -540,11 +602,13 @@ device_remove_bin_file
 
     remove sysfs binary attribute file
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
-    :param const struct bin_attribute \*attr:
+    :param attr:
         device binary attribute descriptor.
+    :type attr: const struct bin_attribute \*
 
 .. _`device_initialize`:
 
@@ -555,8 +619,9 @@ device_initialize
 
     init device structure.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
 .. _`device_initialize.description`:
 
@@ -593,11 +658,13 @@ dev_set_name
 
     set a device name
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param const char \*fmt:
+    :param fmt:
         format string for the device's name
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -611,8 +678,9 @@ device_to_dev_kobj
 
     select a /sys/dev/ directory for the device
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
 .. _`device_to_dev_kobj.description`:
 
@@ -635,8 +703,9 @@ device_add
 
     add device to device hierarchy.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
 .. _`device_add.description`:
 
@@ -675,8 +744,9 @@ device_register
 
     register a device with the system.
 
-    :param struct device \*dev:
+    :param dev:
         pointer to the device structure
+    :type dev: struct device \*
 
 .. _`device_register.description`:
 
@@ -711,8 +781,9 @@ get_device
 
     increment reference count for device.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
 .. _`get_device.description`:
 
@@ -732,8 +803,9 @@ put_device
 
     decrement reference count.
 
-    :param struct device \*dev:
+    :param dev:
         device in question.
+    :type dev: struct device \*
 
 .. _`device_del`:
 
@@ -744,8 +816,9 @@ device_del
 
     delete device from system.
 
-    :param struct device \*dev:
+    :param dev:
         device.
+    :type dev: struct device \*
 
 .. _`device_del.description`:
 
@@ -775,8 +848,9 @@ device_unregister
 
     unregister device from system.
 
-    :param struct device \*dev:
+    :param dev:
         device going away.
+    :type dev: struct device \*
 
 .. _`device_unregister.description`:
 
@@ -799,20 +873,25 @@ device_get_devnode
 
     path of device node file
 
-    :param struct device \*dev:
+    :param dev:
         device
+    :type dev: struct device \*
 
-    :param umode_t \*mode:
+    :param mode:
         returned file access mode
+    :type mode: umode_t \*
 
-    :param kuid_t \*uid:
+    :param uid:
         returned file owner
+    :type uid: kuid_t \*
 
-    :param kgid_t \*gid:
+    :param gid:
         returned file group
+    :type gid: kgid_t \*
 
-    :param const char \*\*tmp:
+    :param tmp:
         possibly allocated string
+    :type tmp: const char \*\*
 
 .. _`device_get_devnode.description`:
 
@@ -833,11 +912,13 @@ device_for_each_child
 
     device child iterator.
 
-    :param struct device \*parent:
+    :param parent:
         parent struct device.
+    :type parent: struct device \*
 
-    :param void \*data:
+    :param data:
         data for the callback.
+    :type data: void \*
 
     :param int (\*fn)(struct device \*dev, void \*data):
         function to be called for each device.
@@ -862,11 +943,13 @@ device_for_each_child_reverse
 
     device child iterator in reversed order.
 
-    :param struct device \*parent:
+    :param parent:
         parent struct device.
+    :type parent: struct device \*
 
-    :param void \*data:
+    :param data:
         data for the callback.
+    :type data: void \*
 
     :param int (\*fn)(struct device \*dev, void \*data):
         function to be called for each device.
@@ -891,11 +974,13 @@ device_find_child
 
     device iterator for locating a particular device.
 
-    :param struct device \*parent:
+    :param parent:
         parent struct device
+    :type parent: struct device \*
 
-    :param void \*data:
+    :param data:
         Data to pass to match function
+    :type data: void \*
 
     :param int (\*match)(struct device \*dev, void \*data):
         Callback function to check device
@@ -930,8 +1015,9 @@ device_offline
 
     Prepare the device for hot-removal.
 
-    :param struct device \*dev:
+    :param dev:
         Device to be put offline.
+    :type dev: struct device \*
 
 .. _`device_offline.description`:
 
@@ -954,8 +1040,9 @@ device_online
 
     Put the device back online after successful \ :c:func:`device_offline`\ .
 
-    :param struct device \*dev:
+    :param dev:
         Device to be put back online.
+    :type dev: struct device \*
 
 .. _`device_online.description`:
 
@@ -977,11 +1064,13 @@ __root_device_register
 
     allocate and register a root device
 
-    :param const char \*name:
+    :param name:
         root device name
+    :type name: const char \*
 
-    :param struct module \*owner:
+    :param owner:
         owner module of the root device, usually THIS_MODULE
+    :type owner: struct module \*
 
 .. _`__root_device_register.description`:
 
@@ -1019,8 +1108,9 @@ root_device_unregister
 
     unregister and free a root device
 
-    :param struct device \*dev:
+    :param dev:
         device going away
+    :type dev: struct device \*
 
 .. _`root_device_unregister.description`:
 
@@ -1039,23 +1129,29 @@ device_create_vargs
 
     creates a device and registers it with sysfs
 
-    :param struct class \*class:
+    :param class:
         pointer to the struct class that this device should be registered to
+    :type class: struct class \*
 
-    :param struct device \*parent:
+    :param parent:
         pointer to the parent struct device of this new device, if any
+    :type parent: struct device \*
 
-    :param dev_t devt:
+    :param devt:
         the dev_t for the char device to be added
+    :type devt: dev_t
 
-    :param void \*drvdata:
+    :param drvdata:
         the data to be added to the device for callbacks
+    :type drvdata: void \*
 
-    :param const char \*fmt:
+    :param fmt:
         string for the device's name
+    :type fmt: const char \*
 
-    :param va_list args:
+    :param args:
         va_list for the device's name
+    :type args: va_list
 
 .. _`device_create_vargs.description`:
 
@@ -1092,20 +1188,25 @@ device_create
 
     creates a device and registers it with sysfs
 
-    :param struct class \*class:
+    :param class:
         pointer to the struct class that this device should be registered to
+    :type class: struct class \*
 
-    :param struct device \*parent:
+    :param parent:
         pointer to the parent struct device of this new device, if any
+    :type parent: struct device \*
 
-    :param dev_t devt:
+    :param devt:
         the dev_t for the char device to be added
+    :type devt: dev_t
 
-    :param void \*drvdata:
+    :param drvdata:
         the data to be added to the device for callbacks
+    :type drvdata: void \*
 
-    :param const char \*fmt:
+    :param fmt:
         string for the device's name
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -1145,23 +1246,29 @@ device_create_with_groups
 
     creates a device and registers it with sysfs
 
-    :param struct class \*class:
+    :param class:
         pointer to the struct class that this device should be registered to
+    :type class: struct class \*
 
-    :param struct device \*parent:
+    :param parent:
         pointer to the parent struct device of this new device, if any
+    :type parent: struct device \*
 
-    :param dev_t devt:
+    :param devt:
         the dev_t for the char device to be added
+    :type devt: dev_t
 
-    :param void \*drvdata:
+    :param drvdata:
         the data to be added to the device for callbacks
+    :type drvdata: void \*
 
-    :param const struct attribute_group \*\*groups:
+    :param groups:
         NULL-terminated list of attribute groups to be created
+    :type groups: const struct attribute_group \*\*
 
-    :param const char \*fmt:
+    :param fmt:
         string for the device's name
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -1203,11 +1310,13 @@ device_destroy
 
     removes a device that was created with \ :c:func:`device_create`\ 
 
-    :param struct class \*class:
+    :param class:
         pointer to the struct class that this device was registered with
+    :type class: struct class \*
 
-    :param dev_t devt:
+    :param devt:
         the dev_t of the device that was previously registered
+    :type devt: dev_t
 
 .. _`device_destroy.description`:
 
@@ -1226,11 +1335,13 @@ device_rename
 
     renames a device
 
-    :param struct device \*dev:
+    :param dev:
         the pointer to the struct device to be renamed
+    :type dev: struct device \*
 
-    :param const char \*new_name:
+    :param new_name:
         the new name of the device
+    :type new_name: const char \*
 
 .. _`device_rename.description`:
 
@@ -1290,14 +1401,17 @@ device_move
 
     moves a device to a new parent
 
-    :param struct device \*dev:
+    :param dev:
         the pointer to the struct device to be moved
+    :type dev: struct device \*
 
-    :param struct device \*new_parent:
+    :param new_parent:
         the new parent of the device (can be NULL)
+    :type new_parent: struct device \*
 
-    :param enum dpm_order dpm_order:
+    :param dpm_order:
         how to reorder the dpm_list
+    :type dpm_order: enum dpm_order
 
 .. _`device_shutdown`:
 
@@ -1308,8 +1422,9 @@ device_shutdown
 
     call ->shutdown() on each device to shutdown.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`set_primary_fwnode`:
 
@@ -1320,11 +1435,13 @@ set_primary_fwnode
 
     Change the primary firmware node of a given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         New primary firmware node of the device.
+    :type fwnode: struct fwnode_handle \*
 
 .. _`set_primary_fwnode.description`:
 
@@ -1343,11 +1460,13 @@ set_secondary_fwnode
 
     Change the secondary firmware node of a given device.
 
-    :param struct device \*dev:
+    :param dev:
         Device to handle.
+    :type dev: struct device \*
 
-    :param struct fwnode_handle \*fwnode:
+    :param fwnode:
         New secondary firmware node of the device.
+    :type fwnode: struct fwnode_handle \*
 
 .. _`set_secondary_fwnode.description`:
 
@@ -1367,11 +1486,13 @@ device_set_of_node_from_dev
 
     reuse device-tree node of another device
 
-    :param struct device \*dev:
+    :param dev:
         device whose device-tree node is being set
+    :type dev: struct device \*
 
-    :param const struct device \*dev2:
+    :param dev2:
         device whose device-tree node is being reused
+    :type dev2: const struct device \*
 
 .. _`device_set_of_node_from_dev.description`:
 

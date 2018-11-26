@@ -10,20 +10,25 @@ dma_pool_create
 
     Creates a pool of consistent memory blocks, for dma.
 
-    :param const char \*name:
+    :param name:
         name of pool, for diagnostics
+    :type name: const char \*
 
-    :param struct device \*dev:
+    :param dev:
         device that will be doing the DMA
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         size of the blocks in this pool.
+    :type size: size_t
 
-    :param size_t align:
+    :param align:
         alignment requirement for blocks; must be a power of two
+    :type align: size_t
 
-    :param size_t boundary:
+    :param boundary:
         returned blocks won't cross this power of two boundary
+    :type boundary: size_t
 
 .. _`dma_pool_create.context`:
 
@@ -58,8 +63,9 @@ dma_pool_destroy
 
     destroys a pool of dma memory blocks.
 
-    :param struct dma_pool \*pool:
+    :param pool:
         dma pool that will be destroyed
+    :type pool: struct dma_pool \*
 
 .. _`dma_pool_destroy.context`:
 
@@ -85,14 +91,17 @@ dma_pool_alloc
 
     get a block of consistent memory
 
-    :param struct dma_pool \*pool:
+    :param pool:
         dma pool that will produce the block
+    :type pool: struct dma_pool \*
 
-    :param gfp_t mem_flags:
+    :param mem_flags:
         GFP_* bitmask
+    :type mem_flags: gfp_t
 
-    :param dma_addr_t \*handle:
+    :param handle:
         pointer to dma address of block
+    :type handle: dma_addr_t \*
 
 .. _`dma_pool_alloc.description`:
 
@@ -112,14 +121,17 @@ dma_pool_free
 
     put block back into dma pool
 
-    :param struct dma_pool \*pool:
+    :param pool:
         the dma pool holding the block
+    :type pool: struct dma_pool \*
 
-    :param void \*vaddr:
+    :param vaddr:
         virtual address of block
+    :type vaddr: void \*
 
-    :param dma_addr_t dma:
+    :param dma:
         dma address of block
+    :type dma: dma_addr_t
 
 .. _`dma_pool_free.description`:
 
@@ -138,20 +150,25 @@ dmam_pool_create
 
     Managed \ :c:func:`dma_pool_create`\ 
 
-    :param const char \*name:
+    :param name:
         name of pool, for diagnostics
+    :type name: const char \*
 
-    :param struct device \*dev:
+    :param dev:
         device that will be doing the DMA
+    :type dev: struct device \*
 
-    :param size_t size:
+    :param size:
         size of the blocks in this pool.
+    :type size: size_t
 
-    :param size_t align:
+    :param align:
         alignment requirement for blocks; must be a power of two
+    :type align: size_t
 
-    :param size_t allocation:
+    :param allocation:
         returned blocks won't cross this boundary (or zero)
+    :type allocation: size_t
 
 .. _`dmam_pool_create.description`:
 
@@ -170,8 +187,9 @@ dmam_pool_destroy
 
     Managed \ :c:func:`dma_pool_destroy`\ 
 
-    :param struct dma_pool \*pool:
+    :param pool:
         dma pool that will be destroyed
+    :type pool: struct dma_pool \*
 
 .. _`dmam_pool_destroy.description`:
 

@@ -10,11 +10,13 @@ acpi_dev_resource_memory
 
     Extract ACPI memory resource information.
 
-    :param struct acpi_resource \*ares:
+    :param ares:
         Input ACPI resource object.
+    :type ares: struct acpi_resource \*
 
-    :param struct resource \*res:
+    :param res:
         Output generic resource object.
+    :type res: struct resource \*
 
 .. _`acpi_dev_resource_memory.description`:
 
@@ -43,11 +45,13 @@ acpi_dev_resource_io
 
     Extract ACPI I/O resource information.
 
-    :param struct acpi_resource \*ares:
+    :param ares:
         Input ACPI resource object.
+    :type ares: struct acpi_resource \*
 
-    :param struct resource \*res:
+    :param res:
         Output generic resource object.
+    :type res: struct resource \*
 
 .. _`acpi_dev_resource_io.description`:
 
@@ -76,11 +80,13 @@ acpi_dev_resource_address_space
 
     Extract ACPI address space information.
 
-    :param struct acpi_resource \*ares:
+    :param ares:
         Input ACPI resource object.
+    :type ares: struct acpi_resource \*
 
-    :param struct resource_win \*win:
+    :param win:
         Output generic resource object.
+    :type win: struct resource_win \*
 
 .. _`acpi_dev_resource_address_space.description`:
 
@@ -110,11 +116,13 @@ acpi_dev_resource_ext_address_space
 
     Extract ACPI address space information.
 
-    :param struct acpi_resource \*ares:
+    :param ares:
         Input ACPI resource object.
+    :type ares: struct acpi_resource \*
 
-    :param struct resource_win \*win:
+    :param win:
         Output generic resource object.
+    :type win: struct resource_win \*
 
 .. _`acpi_dev_resource_ext_address_space.description`:
 
@@ -144,14 +152,17 @@ acpi_dev_irq_flags
 
     Determine IRQ resource flags.
 
-    :param u8 triggering:
+    :param triggering:
         Triggering type as provided by ACPI.
+    :type triggering: u8
 
-    :param u8 polarity:
+    :param polarity:
         Interrupt polarity as provided by ACPI.
+    :type polarity: u8
 
-    :param u8 shareable:
+    :param shareable:
         Whether or not the interrupt is shareable.
+    :type shareable: u8
 
 .. _`acpi_dev_get_irq_type`:
 
@@ -162,11 +173,13 @@ acpi_dev_get_irq_type
 
     Determine irq type.
 
-    :param int triggering:
+    :param triggering:
         Triggering type as provided by ACPI.
+    :type triggering: int
 
-    :param int polarity:
+    :param polarity:
         Interrupt polarity as provided by ACPI.
+    :type polarity: int
 
 .. _`acpi_dev_resource_interrupt`:
 
@@ -177,14 +190,17 @@ acpi_dev_resource_interrupt
 
     Extract ACPI interrupt resource information.
 
-    :param struct acpi_resource \*ares:
+    :param ares:
         Input ACPI resource object.
+    :type ares: struct acpi_resource \*
 
-    :param int index:
+    :param index:
         Index into the array of GSIs represented by the resource.
+    :type index: int
 
-    :param struct resource \*res:
+    :param res:
         Output generic resource object.
+    :type res: struct resource \*
 
 .. _`acpi_dev_resource_interrupt.description`:
 
@@ -217,8 +233,9 @@ acpi_dev_free_resource_list
 
     Free resource from \ ``acpi_dev_get_resources``\ ().
 
-    :param struct list_head \*list:
+    :param list:
         The head of the resource list to free.
+    :type list: struct list_head \*
 
 .. _`acpi_dev_get_resources`:
 
@@ -229,17 +246,20 @@ acpi_dev_get_resources
 
     Get current resources of a device.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device node to get the resources for.
+    :type adev: struct acpi_device \*
 
-    :param struct list_head \*list:
+    :param list:
         Head of the resultant list of resources (must be empty).
+    :type list: struct list_head \*
 
     :param int (\*preproc)(struct acpi_resource \*, void \*):
         The caller's preprocessing routine.
 
-    :param void \*preproc_data:
+    :param preproc_data:
         Pointer passed to the caller's preprocessing routine.
+    :type preproc_data: void \*
 
 .. _`acpi_dev_get_resources.description`:
 
@@ -272,11 +292,13 @@ acpi_dev_get_dma_resources
 
     Get current DMA resources of a device.
 
-    :param struct acpi_device \*adev:
+    :param adev:
         ACPI device node to get the resources for.
+    :type adev: struct acpi_device \*
 
-    :param struct list_head \*list:
+    :param list:
         Head of the resultant list of resources (must be empty).
+    :type list: struct list_head \*
 
 .. _`acpi_dev_get_dma_resources.description`:
 
@@ -303,11 +325,13 @@ acpi_dev_filter_resource_type
 
     Filter ACPI resource according to resource types
 
-    :param struct acpi_resource \*ares:
+    :param ares:
         Input ACPI resource object.
+    :type ares: struct acpi_resource \*
 
-    :param unsigned long types:
+    :param types:
         Valid resource types of IORESOURCE_XXX
+    :type types: unsigned long
 
 .. _`acpi_dev_filter_resource_type.description`:
 
@@ -326,8 +350,9 @@ acpi_resource_consumer
 
     Find the ACPI device that consumes \ ``res``\ .
 
-    :param struct resource \*res:
+    :param res:
         Resource to search for.
+    :type res: struct resource \*
 
 .. _`acpi_resource_consumer.description`:
 

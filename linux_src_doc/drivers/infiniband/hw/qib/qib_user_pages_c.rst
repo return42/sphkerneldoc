@@ -10,14 +10,17 @@ qib_map_page
 
     a safety wrapper around \ :c:func:`pci_map_page`\ 
 
-    :param struct pci_dev \*hwdev:
+    :param hwdev:
         *undescribed*
+    :type hwdev: struct pci_dev \*
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
-    :param dma_addr_t \*daddr:
+    :param daddr:
         *undescribed*
+    :type daddr: dma_addr_t \*
 
 .. _`qib_map_page.description`:
 
@@ -43,14 +46,17 @@ qib_get_user_pages
 
     lock user pages into memory
 
-    :param unsigned long start_page:
+    :param start_page:
         the start page
+    :type start_page: unsigned long
 
-    :param size_t num_pages:
+    :param num_pages:
         the number of pages
+    :type num_pages: size_t
 
-    :param struct page \*\*p:
+    :param p:
         the output page structures
+    :type p: struct page \*\*
 
 .. _`qib_get_user_pages.description`:
 

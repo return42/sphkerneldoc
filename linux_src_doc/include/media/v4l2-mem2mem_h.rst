@@ -21,8 +21,6 @@ Definition
         void (*device_run)(void *priv);
         int (*job_ready)(void *priv);
         void (*job_abort)(void *priv);
-        void (*lock)(void *priv);
-        void (*unlock)(void *priv);
     }
 
 .. _`v4l2_m2m_ops.members`:
@@ -46,7 +44,7 @@ job_ready
     This method may not sleep.
 
 job_abort
-    required. Informs the driver that it has to abort the currently
+    optional. Informs the driver that it has to abort the currently
     running transaction as soon as possible (i.e. as soon as it can
     stop the device safely; e.g. in the next interrupt handler),
     even if the transaction would not have been finished by then.
@@ -54,14 +52,6 @@ job_abort
     \ :c:func:`v4l2_m2m_job_finish`\  (as if the transaction ended normally).
     This function does not have to (and will usually not) wait
     until the device enters a state when it can be stopped.
-
-lock
-    optional. Define a driver's own lock callback, instead of using
-    \ :c:type:`v4l2_m2m_ctx->q_lock <v4l2_m2m_ctx>`\ .
-
-unlock
-    optional. Define a driver's own unlock callback, instead of
-    using \ :c:type:`v4l2_m2m_ctx->q_lock <v4l2_m2m_ctx>`\ .
 
 .. _`v4l2_m2m_queue_ctx`:
 
@@ -221,8 +211,9 @@ v4l2_m2m_get_curr_priv
 
     return driver private data for the currently running instance or NULL if no instance is running
 
-    :param struct v4l2_m2m_dev \*m2m_dev:
+    :param m2m_dev:
         opaque pointer to the internal data to handle M2M context
+    :type m2m_dev: struct v4l2_m2m_dev \*
 
 .. _`v4l2_m2m_get_vq`:
 
@@ -233,11 +224,13 @@ v4l2_m2m_get_vq
 
     return vb2_queue for the given type
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param enum v4l2_buf_type type:
+    :param type:
         type of the V4L2 buffer, as defined by enum \ :c:type:`struct v4l2_buf_type <v4l2_buf_type>`\ 
+    :type type: enum v4l2_buf_type
 
 .. _`v4l2_m2m_try_schedule`:
 
@@ -248,8 +241,9 @@ v4l2_m2m_try_schedule
 
     check whether an instance is ready to be added to the pending job queue and add it if so.
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_try_schedule.there-are-three-basic-requirements-an-instance-has-to-meet-to-be-able-to-run`:
 
@@ -279,11 +273,13 @@ v4l2_m2m_job_finish
 
     inform the framework that a job has been finished and have it clean up
 
-    :param struct v4l2_m2m_dev \*m2m_dev:
+    :param m2m_dev:
         opaque pointer to the internal data to handle M2M context
+    :type m2m_dev: struct v4l2_m2m_dev \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_job_finish.description`:
 
@@ -307,14 +303,17 @@ v4l2_m2m_reqbufs
 
     multi-queue-aware REQBUFS multiplexer
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct v4l2_requestbuffers \*reqbufs:
+    :param reqbufs:
         pointer to struct \ :c:type:`struct v4l2_requestbuffers <v4l2_requestbuffers>`\ 
+    :type reqbufs: struct v4l2_requestbuffers \*
 
 .. _`v4l2_m2m_querybuf`:
 
@@ -325,14 +324,17 @@ v4l2_m2m_querybuf
 
     multi-queue-aware QUERYBUF multiplexer
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct v4l2_buffer \*buf:
+    :param buf:
         pointer to struct \ :c:type:`struct v4l2_buffer <v4l2_buffer>`\ 
+    :type buf: struct v4l2_buffer \*
 
 .. _`v4l2_m2m_querybuf.description`:
 
@@ -350,14 +352,17 @@ v4l2_m2m_qbuf
 
     enqueue a source or destination buffer, depending on the type
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct v4l2_buffer \*buf:
+    :param buf:
         pointer to struct \ :c:type:`struct v4l2_buffer <v4l2_buffer>`\ 
+    :type buf: struct v4l2_buffer \*
 
 .. _`v4l2_m2m_dqbuf`:
 
@@ -368,14 +373,17 @@ v4l2_m2m_dqbuf
 
     dequeue a source or destination buffer, depending on the type
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct v4l2_buffer \*buf:
+    :param buf:
         pointer to struct \ :c:type:`struct v4l2_buffer <v4l2_buffer>`\ 
+    :type buf: struct v4l2_buffer \*
 
 .. _`v4l2_m2m_prepare_buf`:
 
@@ -386,14 +394,17 @@ v4l2_m2m_prepare_buf
 
     prepare a source or destination buffer, depending on the type
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct v4l2_buffer \*buf:
+    :param buf:
         pointer to struct \ :c:type:`struct v4l2_buffer <v4l2_buffer>`\ 
+    :type buf: struct v4l2_buffer \*
 
 .. _`v4l2_m2m_create_bufs`:
 
@@ -404,14 +415,17 @@ v4l2_m2m_create_bufs
 
     create a source or destination buffer, depending on the type
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct v4l2_create_buffers \*create:
+    :param create:
         pointer to struct \ :c:type:`struct v4l2_create_buffers <v4l2_create_buffers>`\ 
+    :type create: struct v4l2_create_buffers \*
 
 .. _`v4l2_m2m_expbuf`:
 
@@ -422,14 +436,17 @@ v4l2_m2m_expbuf
 
     export a source or destination buffer, depending on the type
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct v4l2_exportbuffer \*eb:
+    :param eb:
         pointer to struct \ :c:type:`struct v4l2_exportbuffer <v4l2_exportbuffer>`\ 
+    :type eb: struct v4l2_exportbuffer \*
 
 .. _`v4l2_m2m_streamon`:
 
@@ -440,14 +457,17 @@ v4l2_m2m_streamon
 
     turn on streaming for a video queue
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param enum v4l2_buf_type type:
+    :param type:
         type of the V4L2 buffer, as defined by enum \ :c:type:`struct v4l2_buf_type <v4l2_buf_type>`\ 
+    :type type: enum v4l2_buf_type
 
 .. _`v4l2_m2m_streamoff`:
 
@@ -458,14 +478,17 @@ v4l2_m2m_streamoff
 
     turn off streaming for a video queue
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param enum v4l2_buf_type type:
+    :param type:
         type of the V4L2 buffer, as defined by enum \ :c:type:`struct v4l2_buf_type <v4l2_buf_type>`\ 
+    :type type: enum v4l2_buf_type
 
 .. _`v4l2_m2m_poll`:
 
@@ -476,14 +499,17 @@ v4l2_m2m_poll
 
     poll replacement, for destination buffers only
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct poll_table_struct \*wait:
+    :param wait:
         pointer to struct \ :c:type:`struct poll_table_struct <poll_table_struct>`\ 
+    :type wait: struct poll_table_struct \*
 
 .. _`v4l2_m2m_poll.description`:
 
@@ -504,14 +530,17 @@ v4l2_m2m_mmap
 
     source and destination queues-aware mmap multiplexer
 
-    :param struct file \*file:
+    :param file:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type file: struct file \*
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         pointer to struct \ :c:type:`struct vm_area_struct <vm_area_struct>`\ 
+    :type vma: struct vm_area_struct \*
 
 .. _`v4l2_m2m_mmap.description`:
 
@@ -534,8 +563,9 @@ v4l2_m2m_init
 
     initialize per-driver m2m data
 
-    :param const struct v4l2_m2m_ops \*m2m_ops:
+    :param m2m_ops:
         pointer to struct v4l2_m2m_ops
+    :type m2m_ops: const struct v4l2_m2m_ops \*
 
 .. _`v4l2_m2m_init.description`:
 
@@ -560,8 +590,9 @@ v4l2_m2m_release
 
     cleans up and frees a m2m_dev structure
 
-    :param struct v4l2_m2m_dev \*m2m_dev:
+    :param m2m_dev:
         opaque pointer to the internal data to handle M2M context
+    :type m2m_dev: struct v4l2_m2m_dev \*
 
 .. _`v4l2_m2m_release.description`:
 
@@ -579,11 +610,13 @@ v4l2_m2m_ctx_init
 
     allocate and initialize a m2m context
 
-    :param struct v4l2_m2m_dev \*m2m_dev:
+    :param m2m_dev:
         opaque pointer to the internal data to handle M2M context
+    :type m2m_dev: struct v4l2_m2m_dev \*
 
-    :param void \*drv_priv:
+    :param drv_priv:
         driver's instance private data
+    :type drv_priv: void \*
 
     :param int (\*queue_init)(void \*priv, struct vb2_queue \*src_vq, struct vb2_queue \*dst_vq):
         a callback for queue type-specific initialization function
@@ -605,8 +638,9 @@ v4l2_m2m_ctx_release
 
     release m2m context
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_ctx_release.description`:
 
@@ -624,11 +658,13 @@ v4l2_m2m_buf_queue
 
     add a buffer to the proper ready buffers list.
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct vb2_v4l2_buffer \*vbuf:
+    :param vbuf:
         pointer to struct \ :c:type:`struct vb2_v4l2_buffer <vb2_v4l2_buffer>`\ 
+    :type vbuf: struct vb2_v4l2_buffer \*
 
 .. _`v4l2_m2m_buf_queue.description`:
 
@@ -646,8 +682,9 @@ v4l2_m2m_num_src_bufs_ready
 
     return the number of source buffers ready for use
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_num_dst_bufs_ready`:
 
@@ -658,8 +695,9 @@ v4l2_m2m_num_dst_bufs_ready
 
     return the number of destination buffers ready for use
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_next_buf`:
 
@@ -670,8 +708,9 @@ v4l2_m2m_next_buf
 
     return next buffer from the list of ready buffers
 
-    :param struct v4l2_m2m_queue_ctx \*q_ctx:
+    :param q_ctx:
         pointer to struct \ ``v4l2_m2m_queue_ctx``\ 
+    :type q_ctx: struct v4l2_m2m_queue_ctx \*
 
 .. _`v4l2_m2m_next_src_buf`:
 
@@ -682,8 +721,9 @@ v4l2_m2m_next_src_buf
 
     return next source buffer from the list of ready buffers
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_next_dst_buf`:
 
@@ -694,8 +734,48 @@ v4l2_m2m_next_dst_buf
 
     return next destination buffer from the list of ready buffers
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
+
+.. _`v4l2_m2m_last_buf`:
+
+v4l2_m2m_last_buf
+=================
+
+.. c:function:: void *v4l2_m2m_last_buf(struct v4l2_m2m_queue_ctx *q_ctx)
+
+    return last buffer from the list of ready buffers
+
+    :param q_ctx:
+        pointer to struct \ ``v4l2_m2m_queue_ctx``\ 
+    :type q_ctx: struct v4l2_m2m_queue_ctx \*
+
+.. _`v4l2_m2m_last_src_buf`:
+
+v4l2_m2m_last_src_buf
+=====================
+
+.. c:function:: void *v4l2_m2m_last_src_buf(struct v4l2_m2m_ctx *m2m_ctx)
+
+    return last destination buffer from the list of ready buffers
+
+    :param m2m_ctx:
+        m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
+
+.. _`v4l2_m2m_last_dst_buf`:
+
+v4l2_m2m_last_dst_buf
+=====================
+
+.. c:function:: void *v4l2_m2m_last_dst_buf(struct v4l2_m2m_ctx *m2m_ctx)
+
+    return last destination buffer from the list of ready buffers
+
+    :param m2m_ctx:
+        m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_for_each_dst_buf`:
 
@@ -706,11 +786,13 @@ v4l2_m2m_for_each_dst_buf
 
     iterate over a list of destination ready buffers
 
-    :param  m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: 
 
-    :param  b:
+    :param b:
         current buffer of type struct v4l2_m2m_buffer
+    :type b: 
 
 .. _`v4l2_m2m_for_each_src_buf`:
 
@@ -721,11 +803,13 @@ v4l2_m2m_for_each_src_buf
 
     iterate over a list of source ready buffers
 
-    :param  m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: 
 
-    :param  b:
+    :param b:
         current buffer of type struct v4l2_m2m_buffer
+    :type b: 
 
 .. _`v4l2_m2m_for_each_dst_buf_safe`:
 
@@ -736,14 +820,17 @@ v4l2_m2m_for_each_dst_buf_safe
 
     iterate over a list of destination ready buffers safely
 
-    :param  m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: 
 
-    :param  b:
+    :param b:
         current buffer of type struct v4l2_m2m_buffer
+    :type b: 
 
-    :param  n:
+    :param n:
         used as temporary storage
+    :type n: 
 
 .. _`v4l2_m2m_for_each_src_buf_safe`:
 
@@ -754,14 +841,17 @@ v4l2_m2m_for_each_src_buf_safe
 
     iterate over a list of source ready buffers safely
 
-    :param  m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: 
 
-    :param  b:
+    :param b:
         current buffer of type struct v4l2_m2m_buffer
+    :type b: 
 
-    :param  n:
+    :param n:
         used as temporary storage
+    :type n: 
 
 .. _`v4l2_m2m_get_src_vq`:
 
@@ -772,8 +862,9 @@ v4l2_m2m_get_src_vq
 
     return vb2_queue for source buffers
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_get_dst_vq`:
 
@@ -784,8 +875,9 @@ v4l2_m2m_get_dst_vq
 
     return vb2_queue for destination buffers
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_buf_remove`:
 
@@ -796,8 +888,9 @@ v4l2_m2m_buf_remove
 
     take off a buffer from the list of ready buffers and return it
 
-    :param struct v4l2_m2m_queue_ctx \*q_ctx:
+    :param q_ctx:
         pointer to struct \ ``v4l2_m2m_queue_ctx``\ 
+    :type q_ctx: struct v4l2_m2m_queue_ctx \*
 
 .. _`v4l2_m2m_src_buf_remove`:
 
@@ -808,8 +901,9 @@ v4l2_m2m_src_buf_remove
 
     take off a source buffer from the list of ready buffers and return it
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_dst_buf_remove`:
 
@@ -820,8 +914,9 @@ v4l2_m2m_dst_buf_remove
 
     take off a destination buffer from the list of ready buffers and return it
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
 .. _`v4l2_m2m_buf_remove_by_buf`:
 
@@ -832,11 +927,13 @@ v4l2_m2m_buf_remove_by_buf
 
     take off exact buffer from the list of ready buffers
 
-    :param struct v4l2_m2m_queue_ctx \*q_ctx:
+    :param q_ctx:
         pointer to struct \ ``v4l2_m2m_queue_ctx``\ 
+    :type q_ctx: struct v4l2_m2m_queue_ctx \*
 
-    :param struct vb2_v4l2_buffer \*vbuf:
+    :param vbuf:
         the buffer to be removed
+    :type vbuf: struct vb2_v4l2_buffer \*
 
 .. _`v4l2_m2m_src_buf_remove_by_buf`:
 
@@ -847,11 +944,13 @@ v4l2_m2m_src_buf_remove_by_buf
 
     take off exact source buffer from the list of ready buffers
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct vb2_v4l2_buffer \*vbuf:
+    :param vbuf:
         the buffer to be removed
+    :type vbuf: struct vb2_v4l2_buffer \*
 
 .. _`v4l2_m2m_dst_buf_remove_by_buf`:
 
@@ -862,11 +961,13 @@ v4l2_m2m_dst_buf_remove_by_buf
 
     take off exact destination buffer from the list of ready buffers
 
-    :param struct v4l2_m2m_ctx \*m2m_ctx:
+    :param m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+    :type m2m_ctx: struct v4l2_m2m_ctx \*
 
-    :param struct vb2_v4l2_buffer \*vbuf:
+    :param vbuf:
         the buffer to be removed
+    :type vbuf: struct vb2_v4l2_buffer \*
 
 .. This file was automatic generated / don't edit.
 

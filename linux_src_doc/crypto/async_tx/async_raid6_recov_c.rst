@@ -10,23 +10,29 @@ async_raid6_2data_recov
 
     asynchronously calculate two missing data blocks
 
-    :param int disks:
+    :param disks:
         number of disks in the RAID-6 array
+    :type disks: int
 
-    :param size_t bytes:
+    :param bytes:
         block size
+    :type bytes: size_t
 
-    :param int faila:
+    :param faila:
         first failed drive index
+    :type faila: int
 
-    :param int failb:
+    :param failb:
         second failed drive index
+    :type failb: int
 
-    :param struct page \*\*blocks:
+    :param blocks:
         array of source pointers where the last two entries are p and q
+    :type blocks: struct page \*\*
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         submission/completion modifiers
+    :type submit: struct async_submit_ctl \*
 
 .. _`async_raid6_datap_recov`:
 
@@ -37,20 +43,25 @@ async_raid6_datap_recov
 
     asynchronously calculate a data and the 'p' block
 
-    :param int disks:
+    :param disks:
         number of disks in the RAID-6 array
+    :type disks: int
 
-    :param size_t bytes:
+    :param bytes:
         block size
+    :type bytes: size_t
 
-    :param int faila:
+    :param faila:
         failed drive index
+    :type faila: int
 
-    :param struct page \*\*blocks:
+    :param blocks:
         array of source pointers where the last two entries are p and q
+    :type blocks: struct page \*\*
 
-    :param struct async_submit_ctl \*submit:
+    :param submit:
         submission/completion modifiers
+    :type submit: struct async_submit_ctl \*
 
 .. This file was automatic generated / don't edit.
 

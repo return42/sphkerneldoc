@@ -10,8 +10,9 @@ int_sqrt
 
     computes the integer square root
 
-    :param unsigned long x:
+    :param x:
         integer of which to calculate the sqrt
+    :type x: unsigned long
 
 .. _`int_sqrt.computes`:
 
@@ -29,8 +30,9 @@ int_sqrt64
 
     strongly typed int_sqrt function when minimum 64 bit input is expected.
 
-    :param u64 x:
+    :param x:
         64bit integer of which to calculate the sqrt
+    :type x: u64
 
 .. This file was automatic generated / don't edit.
 

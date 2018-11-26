@@ -10,11 +10,13 @@ ns2bc
 
     Nanoseconds to byte clock cycles
 
-    :param struct dw_mipi_dsi \*dsi:
+    :param dsi:
         *undescribed*
+    :type dsi: struct dw_mipi_dsi \*
 
-    :param int ns:
+    :param ns:
         *undescribed*
+    :type ns: int
 
 .. _`ns2ui`:
 
@@ -25,11 +27,13 @@ ns2ui
 
     Nanoseconds to UI time periods
 
-    :param struct dw_mipi_dsi \*dsi:
+    :param dsi:
         *undescribed*
+    :type dsi: struct dw_mipi_dsi \*
 
-    :param int ns:
+    :param ns:
         *undescribed*
+    :type ns: int
 
 .. This file was automatic generated / don't edit.
 

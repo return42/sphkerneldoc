@@ -10,11 +10,13 @@ adf_enable_aer
 
     Enable Advance Error Reporting for acceleration device
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
-    :param struct pci_driver \*adf:
+    :param adf:
         PCI device driver owning the given acceleration device.
+    :type adf: struct pci_driver \*
 
 .. _`adf_enable_aer.description`:
 
@@ -41,8 +43,9 @@ adf_disable_aer
 
     Enable Advance Error Reporting for acceleration device
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`adf_disable_aer.description`:
 

@@ -10,11 +10,13 @@ array_index_mask_nospec
 
     generate a mask that is ~0UL when the bounds check succeeds and 0 otherwise
 
-    :param unsigned long index:
+    :param index:
         array element index
+    :type index: unsigned long
 
-    :param unsigned long size:
+    :param size:
         number of elements in array
+    :type size: unsigned long
 
 .. _`array_index_mask_nospec.return`:
 

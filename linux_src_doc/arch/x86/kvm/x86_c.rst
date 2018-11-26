@@ -10,11 +10,13 @@ kvm_vm_ioctl_get_dirty_log
 
     get and clear the log of dirty pages in a slot
 
-    :param struct kvm \*kvm:
+    :param kvm:
         kvm instance
+    :type kvm: struct kvm \*
 
-    :param struct kvm_dirty_log \*log:
+    :param log:
         slot id and address to which we copy the log
+    :type log: struct kvm_dirty_log \*
 
 .. _`kvm_vm_ioctl_get_dirty_log.description`:
 

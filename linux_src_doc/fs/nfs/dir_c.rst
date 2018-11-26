@@ -10,8 +10,9 @@ nfs_force_lookup_revalidate
 
     Mark the directory as having changed \ ``dir``\  - pointer to directory inode
 
-    :param struct inode \*dir:
+    :param dir:
         *undescribed*
+    :type dir: struct inode \*
 
 .. _`nfs_force_lookup_revalidate.description`:
 

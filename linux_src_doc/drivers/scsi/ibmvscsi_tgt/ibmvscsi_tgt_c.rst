@@ -10,8 +10,9 @@ connection_broken
 
     Determine if the connection to the client is good
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`connection_broken.description`:
 
@@ -38,8 +39,9 @@ ibmvscsis_unregister_command_q
 
     Helper Function-Unregister Command Queue
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_unregister_command_q.description`:
 
@@ -77,11 +79,13 @@ ibmvscsis_delete_client_info
 
     Helper function to Delete Client Info
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param bool client_closed:
+    :param client_closed:
         True if client closed its queue
+    :type client_closed: bool
 
 .. _`ibmvscsis_delete_client_info.description`:
 
@@ -106,8 +110,9 @@ ibmvscsis_free_command_q
 
     Free Command Queue
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_free_command_q.description`:
 
@@ -148,14 +153,17 @@ ibmvscsis_cmd_q_dequeue
 
     Get valid Command element
 
-    :param uint mask:
+    :param mask:
         Mask to use in case index wraps
+    :type mask: uint
 
-    :param uint \*current_index:
+    :param current_index:
         Current index into command queue
+    :type current_index: uint \*
 
-    :param struct viosrp_crq \*base_addr:
+    :param base_addr:
         Pointer to start of command queue
+    :type base_addr: struct viosrp_crq \*
 
 .. _`ibmvscsis_cmd_q_dequeue.description`:
 
@@ -181,11 +189,13 @@ ibmvscsis_send_init_message
 
     send initialize message to the client
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param u8 format:
+    :param format:
         Which Init Message format to send
+    :type format: u8
 
 .. _`ibmvscsis_send_init_message.execution-environment`:
 
@@ -203,12 +213,14 @@ ibmvscsis_check_init_msg
 
     Check init message valid
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param uint \*format:
+    :param format:
         Pointer to return format of Init Message, if any.
         Set to UNUSED_FORMAT if no Init Message in queue.
+    :type format: uint \*
 
 .. _`ibmvscsis_check_init_msg.description`:
 
@@ -234,8 +246,9 @@ ibmvscsis_disconnect
 
     Helper function to disconnect
 
-    :param struct work_struct \*work:
+    :param work:
         Pointer to work_struct, gives access to our adapter structure
+    :type work: struct work_struct \*
 
 .. _`ibmvscsis_disconnect.description`:
 
@@ -264,14 +277,17 @@ ibmvscsis_post_disconnect
 
     Schedule the disconnect
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param uint new_state:
+    :param new_state:
         State to move to after disconnecting
+    :type new_state: uint
 
-    :param uint flag_bits:
+    :param flag_bits:
         Flags to turn on in adapter structure
+    :type flag_bits: uint
 
 .. _`ibmvscsis_post_disconnect.description`:
 
@@ -298,8 +314,9 @@ ibmvscsis_handle_init_compl_msg
 
     Respond to an Init Complete Message
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_handle_init_compl_msg.description`:
 
@@ -317,8 +334,9 @@ ibmvscsis_handle_init_msg
 
     Respond to an Init Message
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_handle_init_msg.description`:
 
@@ -336,11 +354,13 @@ ibmvscsis_init_msg
 
     Respond to an init message
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct viosrp_crq \*crq:
+    :param crq:
         Pointer to CRQ element containing the Init Message
+    :type crq: struct viosrp_crq \*
 
 .. _`ibmvscsis_init_msg.execution-environment`:
 
@@ -358,8 +378,9 @@ ibmvscsis_establish_new_q
 
     Establish new CRQ queue
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_establish_new_q.description`:
 
@@ -377,8 +398,9 @@ ibmvscsis_reset_queue
 
     Reset CRQ Queue
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_reset_queue.description`:
 
@@ -413,11 +435,13 @@ ibmvscsis_free_cmd_resources
 
     Free command resources
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct ibmvscsis_cmd \*cmd:
+    :param cmd:
         Command which is not longer in use
+    :type cmd: struct ibmvscsis_cmd \*
 
 .. _`ibmvscsis_free_cmd_resources.description`:
 
@@ -435,14 +459,16 @@ ibmvscsis_ready_for_suspend
 
     Helper function to call VIOCTL
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param bool idle:
+    :param idle:
         Indicates whether we were called from adapter_idle.  This
         is important to know if we need to do a disconnect, since if
         we're called from adapter_idle, we're still processing the
         current disconnect, so we can't just call post_disconnect.
+    :type idle: bool
 
 .. _`ibmvscsis_ready_for_suspend.description`:
 
@@ -468,11 +494,13 @@ ibmvscsis_trans_event
 
     Handle a Transport Event
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct viosrp_crq \*crq:
+    :param crq:
         Pointer to CRQ entry containing the Transport Event
+    :type crq: struct viosrp_crq \*
 
 .. _`ibmvscsis_trans_event.description`:
 
@@ -498,8 +526,9 @@ ibmvscsis_poll_cmd_q
 
     Poll Command Queue
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_poll_cmd_q.description`:
 
@@ -525,8 +554,9 @@ ibmvscsis_free_cmd_qs
 
     Free elements in queue
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_free_cmd_qs.description`:
 
@@ -552,8 +582,9 @@ ibmvscsis_get_free_cmd
 
     Get free command from list
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_get_free_cmd.description`:
 
@@ -571,8 +602,9 @@ ibmvscsis_adapter_idle
 
     Helper function to handle idle adapter
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_adapter_idle.description`:
 
@@ -601,14 +633,17 @@ ibmvscsis_copy_crq_packet
 
     Copy CRQ Packet
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct ibmvscsis_cmd \*cmd:
+    :param cmd:
         Pointer to command element to use to process the request
+    :type cmd: struct ibmvscsis_cmd \*
 
-    :param struct viosrp_crq \*crq:
+    :param crq:
         Pointer to CRQ entry containing the request
+    :type crq: struct viosrp_crq \*
 
 .. _`ibmvscsis_copy_crq_packet.description`:
 
@@ -634,11 +669,13 @@ ibmvscsis_adapter_info
 
     Service an Adapter Info MAnagement Data gram
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct iu_entry \*iue:
+    :param iue:
         Information Unit containing the Adapter Info MAD request
+    :type iue: struct iu_entry \*
 
 .. _`ibmvscsis_adapter_info.execution-environment`:
 
@@ -656,11 +693,13 @@ ibmvscsis_cap_mad
 
     Service a Capabilities MAnagement Data gram
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct iu_entry \*iue:
+    :param iue:
         Information Unit containing the Capabilities MAD request
+    :type iue: struct iu_entry \*
 
 .. _`ibmvscsis_cap_mad.note`:
 
@@ -686,11 +725,13 @@ ibmvscsis_process_mad
 
     Service a MAnagement Data gram
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct iu_entry \*iue:
+    :param iue:
         Information Unit containing the MAD request
+    :type iue: struct iu_entry \*
 
 .. _`ibmvscsis_process_mad.description`:
 
@@ -708,11 +749,13 @@ srp_snd_msg_failed
 
     Handle an error when sending a response
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param long rc:
+    :param rc:
         The return code from the h_send_crq command
+    :type rc: long
 
 .. _`srp_snd_msg_failed.description`:
 
@@ -730,8 +773,9 @@ ibmvscsis_send_messages
 
     Send a Response
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_send_messages.description`:
 
@@ -758,11 +802,13 @@ ibmvscsis_mad
 
     Service a MAnagement Data gram.
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct viosrp_crq \*crq:
+    :param crq:
         Pointer to the CRQ entry containing the MAD request
+    :type crq: struct viosrp_crq \*
 
 .. _`ibmvscsis_mad.execution-environment`:
 
@@ -780,11 +826,13 @@ ibmvscsis_login_rsp
 
     Create/copy a login response notice to the client
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct ibmvscsis_cmd \*cmd:
+    :param cmd:
         Pointer to the command for the SRP Login request
+    :type cmd: struct ibmvscsis_cmd \*
 
 .. _`ibmvscsis_login_rsp.execution-environment`:
 
@@ -802,14 +850,17 @@ ibmvscsis_srp_login_rej
 
     Create/copy a login rejection notice to client
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct ibmvscsis_cmd \*cmd:
+    :param cmd:
         Pointer to the command for the SRP Login request
+    :type cmd: struct ibmvscsis_cmd \*
 
-    :param u32 reason:
+    :param reason:
         The reason the SRP Login is being rejected, per SRP protocol
+    :type reason: u32
 
 .. _`ibmvscsis_srp_login_rej.execution-environment`:
 
@@ -827,14 +878,17 @@ ibmvscsis_srp_login
 
     Process an SRP Login Request
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct ibmvscsis_cmd \*cmd:
+    :param cmd:
         Command element to use to process the SRP Login request
+    :type cmd: struct ibmvscsis_cmd \*
 
-    :param struct viosrp_crq \*crq:
+    :param crq:
         Pointer to CRQ entry containing the SRP Login request
+    :type crq: struct viosrp_crq \*
 
 .. _`ibmvscsis_srp_login.execution-environment`:
 
@@ -852,14 +906,17 @@ ibmvscsis_srp_i_logout
 
     Helper Function to close I_T Nexus
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct ibmvscsis_cmd \*cmd:
+    :param cmd:
         Command element to use to process the Implicit Logout request
+    :type cmd: struct ibmvscsis_cmd \*
 
-    :param struct viosrp_crq \*crq:
+    :param crq:
         Pointer to CRQ entry containing the Implicit Logout request
+    :type crq: struct viosrp_crq \*
 
 .. _`ibmvscsis_srp_i_logout.description`:
 
@@ -885,8 +942,9 @@ ibmvscsis_ping_response
 
     Respond to a ping request
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_ping_response.description`:
 
@@ -915,11 +973,13 @@ ibmvscsis_parse_command
 
     Parse an element taken from the cmd rsp queue.
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct viosrp_crq \*crq:
+    :param crq:
         Pointer to CRQ element containing the SRP request
+    :type crq: struct viosrp_crq \*
 
 .. _`ibmvscsis_parse_command.description`:
 
@@ -946,11 +1006,13 @@ ibmvscsis_parse_cmd
 
     Parse SRP Command
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct ibmvscsis_cmd \*cmd:
+    :param cmd:
         Pointer to command element with SRP command
+    :type cmd: struct ibmvscsis_cmd \*
 
 .. _`ibmvscsis_parse_cmd.description`:
 
@@ -982,11 +1044,13 @@ ibmvscsis_parse_task
 
     Parse SRP Task Management Request
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct ibmvscsis_cmd \*cmd:
+    :param cmd:
         Pointer to command element with SRP task management request
+    :type cmd: struct ibmvscsis_cmd \*
 
 .. _`ibmvscsis_parse_task.description`:
 
@@ -1019,8 +1083,9 @@ ibmvscsis_service_wait_q
 
     Service Waiting Queue
 
-    :param struct hrtimer \*timer:
+    :param timer:
         Pointer to timer which has expired
+    :type timer: struct hrtimer \*
 
 .. _`ibmvscsis_service_wait_q.description`:
 
@@ -1049,8 +1114,9 @@ ibmvscsis_enable_change_state
 
     Set new state based on enabled status
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_enable_change_state.description`:
 
@@ -1071,12 +1137,14 @@ ibmvscsis_create_command_q
 
     Create Command Queue
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param int num_cmds:
+    :param num_cmds:
         Currently unused.  In the future, may be used to determine
         the size of the CRQ.
+    :type num_cmds: int
 
 .. _`ibmvscsis_create_command_q.description`:
 
@@ -1102,8 +1170,9 @@ ibmvscsis_destroy_command_q
 
     Destroy Command Queue
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
 .. _`ibmvscsis_destroy_command_q.description`:
 
@@ -1128,15 +1197,18 @@ srp_build_response
 
     Build an SRP response buffer
 
-    :param struct scsi_info \*vscsi:
+    :param vscsi:
         Pointer to our adapter structure
+    :type vscsi: struct scsi_info \*
 
-    :param struct ibmvscsis_cmd \*cmd:
+    :param cmd:
         Pointer to command for which to send the response
+    :type cmd: struct ibmvscsis_cmd \*
 
-    :param uint \*len_p:
+    :param len_p:
         Where to return the length of the IU response sent.  This
         is needed to construct the CRQ response.
+    :type len_p: uint \*
 
 .. _`srp_build_response.description`:
 
@@ -1154,8 +1226,9 @@ ibmvscsis_handle_crq
 
     Handle CRQ
 
-    :param unsigned long data:
+    :param data:
         Pointer to our adapter structure
+    :type data: unsigned long
 
 .. _`ibmvscsis_handle_crq.description`:
 

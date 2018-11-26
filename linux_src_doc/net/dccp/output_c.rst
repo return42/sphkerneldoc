@@ -10,8 +10,9 @@ dccp_determine_ccmps
 
     Find out about CCID-specific packet-size limits We only consider the HC-sender CCID for setting the CCMPS (RFC 4340, 14.), since the RX CCID is restricted to feedback packets (Acks), which are small in comparison with the data traffic. A value of 0 means "no current CCMPS".
 
-    :param const struct dccp_sock \*dp:
+    :param dp:
         *undescribed*
+    :type dp: const struct dccp_sock \*
 
 .. _`dccp_wait_for_ccid`:
 
@@ -22,11 +23,13 @@ dccp_wait_for_ccid
 
     Await CCID send permission
 
-    :param struct sock \*sk:
+    :param sk:
         socket to wait for
+    :type sk: struct sock \*
 
-    :param unsigned long delay:
+    :param delay:
         timeout in jiffies
+    :type delay: unsigned long
 
 .. _`dccp_wait_for_ccid.description`:
 
@@ -44,8 +47,9 @@ dccp_xmit_packet
 
     Send data packet under control of CCID Transmits next-queued payload and informs CCID to account for the packet.
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`dccp_flush_write_queue`:
 
@@ -56,11 +60,13 @@ dccp_flush_write_queue
 
     Drain queue at end of connection Since dccp_sendmsg queues packets without waiting for them to be sent, it may happen that the TX queue is not empty at the end of a connection. We give the HC-sender CCID a grace period of up to \ ``time_budget``\  jiffies. If this function returns with a non-empty write queue, it will be purged later.
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
-    :param long \*time_budget:
+    :param time_budget:
         *undescribed*
+    :type time_budget: long \*
 
 .. _`dccp_retransmit_skb`:
 
@@ -71,8 +77,9 @@ dccp_retransmit_skb
 
     Retransmit Request, Close, or CloseReq packets
 
-    :param struct sock \*sk:
+    :param sk:
         *undescribed*
+    :type sk: struct sock \*
 
 .. _`dccp_retransmit_skb.there-are-only-four-retransmittable-packet-types-in-dccp`:
 

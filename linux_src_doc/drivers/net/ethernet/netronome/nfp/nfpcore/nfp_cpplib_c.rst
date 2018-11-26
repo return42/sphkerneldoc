@@ -10,17 +10,21 @@ nfp_cpp_readl
 
     Read a u32 word from a CPP location
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP device handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 cpp_id:
+    :param cpp_id:
         CPP ID for operation
+    :type cpp_id: u32
 
-    :param unsigned long long address:
+    :param address:
         Address for operation
+    :type address: unsigned long long
 
-    :param u32 \*value:
+    :param value:
         Pointer to read buffer
+    :type value: u32 \*
 
 .. _`nfp_cpp_readl.return`:
 
@@ -38,17 +42,21 @@ nfp_cpp_writel
 
     Write a u32 word to a CPP location
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP device handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 cpp_id:
+    :param cpp_id:
         CPP ID for operation
+    :type cpp_id: u32
 
-    :param unsigned long long address:
+    :param address:
         Address for operation
+    :type address: unsigned long long
 
-    :param u32 value:
+    :param value:
         Value to write
+    :type value: u32
 
 .. _`nfp_cpp_writel.return`:
 
@@ -66,17 +74,21 @@ nfp_cpp_readq
 
     Read a u64 word from a CPP location
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP device handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 cpp_id:
+    :param cpp_id:
         CPP ID for operation
+    :type cpp_id: u32
 
-    :param unsigned long long address:
+    :param address:
         Address for operation
+    :type address: unsigned long long
 
-    :param u64 \*value:
+    :param value:
         Pointer to read buffer
+    :type value: u64 \*
 
 .. _`nfp_cpp_readq.return`:
 
@@ -94,17 +106,21 @@ nfp_cpp_writeq
 
     Write a u64 word to a CPP location
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         CPP device handle
+    :type cpp: struct nfp_cpp \*
 
-    :param u32 cpp_id:
+    :param cpp_id:
         CPP ID for operation
+    :type cpp_id: u32
 
-    :param unsigned long long address:
+    :param address:
         Address for operation
+    :type address: unsigned long long
 
-    :param u64 value:
+    :param value:
         Value to write
+    :type value: u64
 
 .. _`nfp_cpp_writeq.return`:
 
@@ -118,30 +134,33 @@ Return
 nfp_cpp_map_area
 ================
 
-.. c:function:: u8 __iomem *nfp_cpp_map_area(struct nfp_cpp *cpp, const char *name, int domain, int target, u64 addr, unsigned long size, struct nfp_cpp_area **area)
+.. c:function:: u8 __iomem *nfp_cpp_map_area(struct nfp_cpp *cpp, const char *name, u32 cpp_id, u64 addr, unsigned long size, struct nfp_cpp_area **area)
 
     Helper function to map an area
 
-    :param struct nfp_cpp \*cpp:
+    :param cpp:
         NFP CPP handler
+    :type cpp: struct nfp_cpp \*
 
-    :param const char \*name:
+    :param name:
         Name for the area
+    :type name: const char \*
 
-    :param int domain:
-        CPP domain
+    :param cpp_id:
+        CPP ID for operation
+    :type cpp_id: u32
 
-    :param int target:
-        CPP target
-
-    :param u64 addr:
+    :param addr:
         CPP address
+    :type addr: u64
 
-    :param unsigned long size:
+    :param size:
         Size of the area
+    :type size: unsigned long
 
-    :param struct nfp_cpp_area \*\*area:
+    :param area:
         Area handle (output)
+    :type area: struct nfp_cpp_area \*\*
 
 .. _`nfp_cpp_map_area.description`:
 

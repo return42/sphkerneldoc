@@ -6,57 +6,75 @@
 __nand_calculate_ecc
 ====================
 
-.. c:function:: void __nand_calculate_ecc(const unsigned char *buf, unsigned int eccsize, unsigned char *code)
+.. c:function:: void __nand_calculate_ecc(const unsigned char *buf, unsigned int eccsize, unsigned char *code, bool sm_order)
 
     [NAND Interface] Calculate 3-byte ECC for 256/512-byte block
 
-    :param const unsigned char \*buf:
+    :param buf:
         input buffer with raw data
+    :type buf: const unsigned char \*
 
-    :param unsigned int eccsize:
+    :param eccsize:
         data bytes per ECC step (256 or 512)
+    :type eccsize: unsigned int
 
-    :param unsigned char \*code:
+    :param code:
         output buffer with ECC
+    :type code: unsigned char \*
+
+    :param sm_order:
+        Smart Media byte ordering
+    :type sm_order: bool
 
 .. _`nand_calculate_ecc`:
 
 nand_calculate_ecc
 ==================
 
-.. c:function:: int nand_calculate_ecc(struct mtd_info *mtd, const unsigned char *buf, unsigned char *code)
+.. c:function:: int nand_calculate_ecc(struct nand_chip *chip, const unsigned char *buf, unsigned char *code)
 
     [NAND Interface] Calculate 3-byte ECC for 256/512-byte block
 
-    :param struct mtd_info \*mtd:
-        MTD block structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param const unsigned char \*buf:
+    :param buf:
         input buffer with raw data
+    :type buf: const unsigned char \*
 
-    :param unsigned char \*code:
+    :param code:
         output buffer with ECC
+    :type code: unsigned char \*
 
 .. _`__nand_correct_data`:
 
 __nand_correct_data
 ===================
 
-.. c:function:: int __nand_correct_data(unsigned char *buf, unsigned char *read_ecc, unsigned char *calc_ecc, unsigned int eccsize)
+.. c:function:: int __nand_correct_data(unsigned char *buf, unsigned char *read_ecc, unsigned char *calc_ecc, unsigned int eccsize, bool sm_order)
 
     [NAND Interface] Detect and correct bit error(s)
 
-    :param unsigned char \*buf:
+    :param buf:
         raw data read from the chip
+    :type buf: unsigned char \*
 
-    :param unsigned char \*read_ecc:
+    :param read_ecc:
         ECC from the chip
+    :type read_ecc: unsigned char \*
 
-    :param unsigned char \*calc_ecc:
+    :param calc_ecc:
         the ECC calculated from raw data
+    :type calc_ecc: unsigned char \*
 
-    :param unsigned int eccsize:
+    :param eccsize:
         data bytes per ECC step (256 or 512)
+    :type eccsize: unsigned int
+
+    :param sm_order:
+        Smart Media byte order
+    :type sm_order: bool
 
 .. _`__nand_correct_data.description`:
 
@@ -70,21 +88,25 @@ Detect and correct a 1 bit error for eccsize byte block
 nand_correct_data
 =================
 
-.. c:function:: int nand_correct_data(struct mtd_info *mtd, unsigned char *buf, unsigned char *read_ecc, unsigned char *calc_ecc)
+.. c:function:: int nand_correct_data(struct nand_chip *chip, unsigned char *buf, unsigned char *read_ecc, unsigned char *calc_ecc)
 
     [NAND Interface] Detect and correct bit error(s)
 
-    :param struct mtd_info \*mtd:
-        MTD block structure
+    :param chip:
+        NAND chip object
+    :type chip: struct nand_chip \*
 
-    :param unsigned char \*buf:
+    :param buf:
         raw data read from the chip
+    :type buf: unsigned char \*
 
-    :param unsigned char \*read_ecc:
+    :param read_ecc:
         ECC from the chip
+    :type read_ecc: unsigned char \*
 
-    :param unsigned char \*calc_ecc:
+    :param calc_ecc:
         the ECC calculated from raw data
+    :type calc_ecc: unsigned char \*
 
 .. _`nand_correct_data.description`:
 

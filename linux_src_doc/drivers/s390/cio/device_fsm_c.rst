@@ -10,11 +10,13 @@ ccw_device_notify
 
     inform the device's driver about an event
 
-    :param struct ccw_device \*cdev:
+    :param cdev:
         device for which an event occurred
+    :type cdev: struct ccw_device \*
 
-    :param int event:
+    :param event:
         event that occurred
+    :type event: int
 
 .. _`ccw_device_notify.return`:
 

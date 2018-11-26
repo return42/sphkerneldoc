@@ -10,11 +10,13 @@ amdgpu_fence_write
 
     write a fence value
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring the fence is associated with
+    :type ring: struct amdgpu_ring \*
 
-    :param u32 seq:
+    :param seq:
         sequence number to write
+    :type seq: u32
 
 .. _`amdgpu_fence_write.description`:
 
@@ -32,8 +34,9 @@ amdgpu_fence_read
 
     read a fence value
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring the fence is associated with
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_fence_read.description`:
 
@@ -52,14 +55,17 @@ amdgpu_fence_emit
 
     emit a fence on the requested ring
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring the fence is associated with
+    :type ring: struct amdgpu_ring \*
 
-    :param struct dma_fence \*\*f:
+    :param f:
         resulting fence object
+    :type f: struct dma_fence \*\*
 
-    :param unsigned flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned
 
 .. _`amdgpu_fence_emit.description`:
 
@@ -78,11 +84,13 @@ amdgpu_fence_emit_polling
 
     emit a fence on the requeste ring
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring the fence is associated with
+    :type ring: struct amdgpu_ring \*
 
-    :param uint32_t \*s:
+    :param s:
         resulting sequence number
+    :type s: uint32_t \*
 
 .. _`amdgpu_fence_emit_polling.description`:
 
@@ -102,8 +110,9 @@ amdgpu_fence_schedule_fallback
 
     schedule fallback check
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         pointer to struct amdgpu_ring
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_fence_schedule_fallback.description`:
 
@@ -117,12 +126,13 @@ Start a timer as fallback to our interrupts.
 amdgpu_fence_process
 ====================
 
-.. c:function:: void amdgpu_fence_process(struct amdgpu_ring *ring)
+.. c:function:: bool amdgpu_fence_process(struct amdgpu_ring *ring)
 
     check for fence activity
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         pointer to struct amdgpu_ring
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_fence_process.description`:
 
@@ -133,6 +143,8 @@ Checks the current fence value and calculates the last
 signalled fence value. Wakes the fence queue if the
 sequence number has increased.
 
+Returns true if fence was processed
+
 .. _`amdgpu_fence_fallback`:
 
 amdgpu_fence_fallback
@@ -142,8 +154,9 @@ amdgpu_fence_fallback
 
     fallback for hardware interrupts
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`amdgpu_fence_fallback.description`:
 
@@ -161,8 +174,9 @@ amdgpu_fence_wait_empty
 
     wait for all fences to signal
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_fence_wait_empty.description`:
 
@@ -181,14 +195,17 @@ amdgpu_fence_wait_polling
 
     busy wait for givn sequence number
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring index the fence is associated with
+    :type ring: struct amdgpu_ring \*
 
-    :param uint32_t wait_seq:
+    :param wait_seq:
         sequence number to wait
+    :type wait_seq: uint32_t
 
-    :param signed long timeout:
+    :param timeout:
         the timeout for waiting in usecs
+    :type timeout: signed long
 
 .. _`amdgpu_fence_wait_polling.description`:
 
@@ -207,8 +224,9 @@ amdgpu_fence_count_emitted
 
     get the count of emitted fences
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring the fence is associated with
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_fence_count_emitted.description`:
 
@@ -228,14 +246,17 @@ amdgpu_fence_driver_start_ring
 
     make the fence driver ready for use on the requested ring.
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring to start the fence driver on
+    :type ring: struct amdgpu_ring \*
 
-    :param struct amdgpu_irq_src \*irq_src:
+    :param irq_src:
         interrupt source to use for this ring
+    :type irq_src: struct amdgpu_irq_src \*
 
-    :param unsigned irq_type:
+    :param irq_type:
         interrupt type to use for this ring
+    :type irq_type: unsigned
 
 .. _`amdgpu_fence_driver_start_ring.description`:
 
@@ -256,11 +277,13 @@ amdgpu_fence_driver_init_ring
 
     init the fence driver for the requested ring.
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         ring to init the fence driver on
+    :type ring: struct amdgpu_ring \*
 
-    :param unsigned num_hw_submission:
+    :param num_hw_submission:
         number of entries on the hardware queue
+    :type num_hw_submission: unsigned
 
 .. _`amdgpu_fence_driver_init_ring.description`:
 
@@ -279,8 +302,9 @@ amdgpu_fence_driver_init
 
     init the fence driver for all possible rings.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_fence_driver_init.description`:
 
@@ -302,8 +326,9 @@ amdgpu_fence_driver_fini
 
     tear down the fence driver for all possible rings.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_fence_driver_fini.description`:
 
@@ -321,8 +346,9 @@ amdgpu_fence_driver_suspend
 
     suspend the fence driver for all possible rings.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_fence_driver_suspend.description`:
 
@@ -340,8 +366,9 @@ amdgpu_fence_driver_resume
 
     resume the fence driver for all possible rings.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_fence_driver_resume.description`:
 
@@ -363,8 +390,9 @@ amdgpu_fence_driver_force_completion
 
     force signal latest fence of ring
 
-    :param struct amdgpu_ring \*ring:
+    :param ring:
         fence of the ring to signal
+    :type ring: struct amdgpu_ring \*
 
 .. _`amdgpu_fence_enable_signaling`:
 
@@ -375,8 +403,9 @@ amdgpu_fence_enable_signaling
 
     enable signalling on fence
 
-    :param struct dma_fence \*f:
+    :param f:
         *undescribed*
+    :type f: struct dma_fence \*
 
 .. _`amdgpu_fence_enable_signaling.description`:
 
@@ -396,8 +425,9 @@ amdgpu_fence_free
 
     free up the fence memory
 
-    :param struct rcu_head \*rcu:
+    :param rcu:
         RCU callback head
+    :type rcu: struct rcu_head \*
 
 .. _`amdgpu_fence_free.description`:
 
@@ -415,8 +445,9 @@ amdgpu_fence_release
 
     callback that fence can be freed
 
-    :param struct dma_fence \*f:
+    :param f:
         *undescribed*
+    :type f: struct dma_fence \*
 
 .. _`amdgpu_fence_release.description`:
 
@@ -435,11 +466,13 @@ amdgpu_debugfs_gpu_recover
 
     manually trigger a gpu reset & recover
 
-    :param struct seq_file \*m:
+    :param m:
         *undescribed*
+    :type m: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`amdgpu_debugfs_gpu_recover.description`:
 

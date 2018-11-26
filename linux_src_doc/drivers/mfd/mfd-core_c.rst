@@ -10,26 +10,33 @@ devm_mfd_add_devices
 
     Resource managed version of \ :c:func:`mfd_add_devices`\ 
 
-    :param struct device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct device \*
 
-    :param int id:
+    :param id:
         *undescribed*
+    :type id: int
 
-    :param const struct mfd_cell \*cells:
+    :param cells:
         *undescribed*
+    :type cells: const struct mfd_cell \*
 
-    :param int n_devs:
+    :param n_devs:
         *undescribed*
+    :type n_devs: int
 
-    :param struct resource \*mem_base:
+    :param mem_base:
         *undescribed*
+    :type mem_base: struct resource \*
 
-    :param int irq_base:
+    :param irq_base:
         *undescribed*
+    :type irq_base: int
 
-    :param struct irq_domain \*domain:
+    :param domain:
         *undescribed*
+    :type domain: struct irq_domain \*
 
 .. _`devm_mfd_add_devices.description`:
 

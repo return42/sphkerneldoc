@@ -10,8 +10,9 @@ opal_event_request
 
     Request an event
 
-    :param unsigned int opal_event_nr:
+    :param opal_event_nr:
         the opal event number to request
+    :type opal_event_nr: unsigned int
 
 .. _`opal_event_request.description`:
 

@@ -10,11 +10,13 @@ sunxi_ccu_set_mmc_timing_mode
 
     Configure the MMC clock timing mode
 
-    :param struct clk \*clk:
+    :param clk:
         clock to be configured
+    :type clk: struct clk \*
 
-    :param bool new_mode:
+    :param new_mode:
         true for new timing mode introduced in A83T and later
+    :type new_mode: bool
 
 .. _`sunxi_ccu_set_mmc_timing_mode.description`:
 
@@ -33,8 +35,9 @@ sunxi_ccu_get_mmc_timing_mode
 
     Get the current MMC clock timing mode
 
-    :param struct clk \*clk:
+    :param clk:
         clock to query
+    :type clk: struct clk \*
 
 .. _`sunxi_ccu_get_mmc_timing_mode.description`:
 

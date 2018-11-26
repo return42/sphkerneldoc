@@ -31,6 +31,7 @@ Definition
         unsigned long irq_flags;
         struct clk *bus_clk;
         struct clk *can_clk;
+        struct xcan_devtype_data devtype;
     }
 
 .. _`xcan_priv.members`:
@@ -77,6 +78,9 @@ bus_clk
 can_clk
     Pointer to struct clk
 
+devtype
+    Device type specific constants
+
 .. _`xcan_write_reg_le`:
 
 xcan_write_reg_le
@@ -86,14 +90,17 @@ xcan_write_reg_le
 
     Write a value to the device register little endian
 
-    :param const struct xcan_priv \*priv:
+    :param priv:
         Driver private data structure
+    :type priv: const struct xcan_priv \*
 
-    :param enum xcan_reg reg:
+    :param reg:
         Register offset
+    :type reg: enum xcan_reg
 
-    :param u32 val:
+    :param val:
         Value to write at the Register offset
+    :type val: u32
 
 .. _`xcan_write_reg_le.description`:
 
@@ -111,11 +118,13 @@ xcan_read_reg_le
 
     Read a value from the device register little endian
 
-    :param const struct xcan_priv \*priv:
+    :param priv:
         Driver private data structure
+    :type priv: const struct xcan_priv \*
 
-    :param enum xcan_reg reg:
+    :param reg:
         Register offset
+    :type reg: enum xcan_reg
 
 .. _`xcan_read_reg_le.description`:
 
@@ -140,14 +149,17 @@ xcan_write_reg_be
 
     Write a value to the device register big endian
 
-    :param const struct xcan_priv \*priv:
+    :param priv:
         Driver private data structure
+    :type priv: const struct xcan_priv \*
 
-    :param enum xcan_reg reg:
+    :param reg:
         Register offset
+    :type reg: enum xcan_reg
 
-    :param u32 val:
+    :param val:
         Value to write at the Register offset
+    :type val: u32
 
 .. _`xcan_write_reg_be.description`:
 
@@ -165,11 +177,13 @@ xcan_read_reg_be
 
     Read a value from the device register big endian
 
-    :param const struct xcan_priv \*priv:
+    :param priv:
         Driver private data structure
+    :type priv: const struct xcan_priv \*
 
-    :param enum xcan_reg reg:
+    :param reg:
         Register offset
+    :type reg: enum xcan_reg
 
 .. _`xcan_read_reg_be.description`:
 
@@ -185,6 +199,26 @@ Return
 
 value read from the CAN register
 
+.. _`xcan_rx_int_mask`:
+
+xcan_rx_int_mask
+================
+
+.. c:function:: u32 xcan_rx_int_mask(const struct xcan_priv *priv)
+
+    Get the mask for the receive interrupt
+
+    :param priv:
+        Driver private data structure
+    :type priv: const struct xcan_priv \*
+
+.. _`xcan_rx_int_mask.return`:
+
+Return
+------
+
+The receive interrupt mask used by the driver on this HW
+
 .. _`set_reset_mode`:
 
 set_reset_mode
@@ -194,8 +228,9 @@ set_reset_mode
 
     Resets the CAN device mode
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`set_reset_mode.description`:
 
@@ -221,8 +256,9 @@ xcan_set_bittiming
 
     CAN set bit timing routine
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`xcan_set_bittiming.description`:
 
@@ -247,8 +283,9 @@ xcan_chip_start
 
     This the drivers start routine
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`xcan_chip_start.description`:
 
@@ -275,11 +312,13 @@ xcan_do_set_mode
 
     This sets the mode of the driver
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
-    :param enum can_mode mode:
+    :param mode:
         Tells the mode of the driver
+    :type mode: enum can_mode
 
 .. _`xcan_do_set_mode.description`:
 
@@ -296,6 +335,75 @@ Return
 
 0 on success and failure value on error
 
+.. _`xcan_write_frame`:
+
+xcan_write_frame
+================
+
+.. c:function:: void xcan_write_frame(struct xcan_priv *priv, struct sk_buff *skb, int frame_offset)
+
+    Write a frame to HW
+
+    :param priv:
+        *undescribed*
+    :type priv: struct xcan_priv \*
+
+    :param skb:
+        sk_buff pointer that contains data to be Txed
+    :type skb: struct sk_buff \*
+
+    :param frame_offset:
+        Register offset to write the frame to
+    :type frame_offset: int
+
+.. _`xcan_start_xmit_fifo`:
+
+xcan_start_xmit_fifo
+====================
+
+.. c:function:: int xcan_start_xmit_fifo(struct sk_buff *skb, struct net_device *ndev)
+
+    Starts the transmission (FIFO mode)
+
+    :param skb:
+        *undescribed*
+    :type skb: struct sk_buff \*
+
+    :param ndev:
+        *undescribed*
+    :type ndev: struct net_device \*
+
+.. _`xcan_start_xmit_fifo.return`:
+
+Return
+------
+
+0 on success, -ENOSPC if FIFO is full.
+
+.. _`xcan_start_xmit_mailbox`:
+
+xcan_start_xmit_mailbox
+=======================
+
+.. c:function:: int xcan_start_xmit_mailbox(struct sk_buff *skb, struct net_device *ndev)
+
+    Starts the transmission (mailbox mode)
+
+    :param skb:
+        *undescribed*
+    :type skb: struct sk_buff \*
+
+    :param ndev:
+        *undescribed*
+    :type ndev: struct net_device \*
+
+.. _`xcan_start_xmit_mailbox.return`:
+
+Return
+------
+
+0 on success, -ENOSPC if there is no space
+
 .. _`xcan_start_xmit`:
 
 xcan_start_xmit
@@ -305,39 +413,44 @@ xcan_start_xmit
 
     Starts the transmission
 
-    :param struct sk_buff \*skb:
+    :param skb:
         sk_buff pointer that contains data to be Txed
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`xcan_start_xmit.description`:
 
 Description
 -----------
 
-This function is invoked from upper layers to initiate transmission. This
-function uses the next available free txbuff and populates their fields to
-start the transmission.
+This function is invoked from upper layers to initiate transmission.
 
 .. _`xcan_start_xmit.return`:
 
 Return
 ------
 
-0 on success and failure value on error
+NETDEV_TX_OK on success and NETDEV_TX_BUSY when the tx queue is full
 
 .. _`xcan_rx`:
 
 xcan_rx
 =======
 
-.. c:function:: int xcan_rx(struct net_device *ndev)
+.. c:function:: int xcan_rx(struct net_device *ndev, int frame_base)
 
     Is called from CAN isr to complete the received frame  processing
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
+
+    :param frame_base:
+        Register offset to the frame to be read
+    :type frame_base: int
 
 .. _`xcan_rx.description`:
 
@@ -364,8 +477,9 @@ xcan_current_error_state
 
     Get current error state from HW
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`xcan_current_error_state.description`:
 
@@ -392,14 +506,17 @@ xcan_set_error_state
 
     Set new CAN error state
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
-    :param enum can_state new_state:
+    :param new_state:
         The new CAN state to be set
+    :type new_state: enum can_state
 
-    :param struct can_frame \*cf:
+    :param cf:
         Error frame to be populated or NULL
+    :type cf: struct can_frame \*
 
 .. _`xcan_set_error_state.description`:
 
@@ -418,8 +535,9 @@ xcan_update_error_state_after_rxtx
 
     Update CAN error state after RX/TX
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`xcan_update_error_state_after_rxtx.description`:
 
@@ -439,11 +557,13 @@ xcan_err_interrupt
 
     error frame Isr
 
-    :param struct net_device \*ndev:
+    :param ndev:
         net_device pointer
+    :type ndev: struct net_device \*
 
-    :param u32 isr:
+    :param isr:
         interrupt status register value
+    :type isr: u32
 
 .. _`xcan_err_interrupt.description`:
 
@@ -463,11 +583,13 @@ xcan_state_interrupt
 
     It will check the state of the CAN device
 
-    :param struct net_device \*ndev:
+    :param ndev:
         net_device pointer
+    :type ndev: struct net_device \*
 
-    :param u32 isr:
+    :param isr:
         interrupt status register value
+    :type isr: u32
 
 .. _`xcan_state_interrupt.description`:
 
@@ -476,6 +598,26 @@ Description
 
 This will checks the state of the CAN device
 and puts the device into appropriate state.
+
+.. _`xcan_rx_fifo_get_next_frame`:
+
+xcan_rx_fifo_get_next_frame
+===========================
+
+.. c:function:: int xcan_rx_fifo_get_next_frame(struct xcan_priv *priv)
+
+    Get register offset of next RX frame
+
+    :param priv:
+        *undescribed*
+    :type priv: struct xcan_priv \*
+
+.. _`xcan_rx_fifo_get_next_frame.return`:
+
+Return
+------
+
+Register offset of the next frame in RX FIFO.
 
 .. _`xcan_rx_poll`:
 
@@ -486,11 +628,13 @@ xcan_rx_poll
 
     Poll routine for rx packets (NAPI)
 
-    :param struct napi_struct \*napi:
+    :param napi:
         napi structure pointer
+    :type napi: struct napi_struct \*
 
-    :param int quota:
+    :param quota:
         Max number of rx packets to be processed.
+    :type quota: int
 
 .. _`xcan_rx_poll.description`:
 
@@ -516,11 +660,13 @@ xcan_tx_interrupt
 
     Tx Done Isr
 
-    :param struct net_device \*ndev:
+    :param ndev:
         net_device pointer
+    :type ndev: struct net_device \*
 
-    :param u32 isr:
+    :param isr:
         Interrupt status register value
+    :type isr: u32
 
 .. _`xcan_interrupt`:
 
@@ -531,11 +677,13 @@ xcan_interrupt
 
     CAN Isr
 
-    :param int irq:
+    :param irq:
         irq number
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         device id poniter
+    :type dev_id: void \*
 
 .. _`xcan_interrupt.description`:
 
@@ -561,8 +709,9 @@ xcan_chip_stop
 
     Driver stop routine
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`xcan_chip_stop.description`:
 
@@ -581,8 +730,9 @@ xcan_open
 
     Driver open routine
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`xcan_open.description`:
 
@@ -607,8 +757,9 @@ xcan_close
 
     Driver close routine
 
-    :param struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: struct net_device \*
 
 .. _`xcan_close.return`:
 
@@ -626,11 +777,13 @@ xcan_get_berr_counter
 
     error counter routine
 
-    :param const struct net_device \*ndev:
+    :param ndev:
         Pointer to net_device structure
+    :type ndev: const struct net_device \*
 
-    :param struct can_berr_counter \*bec:
+    :param bec:
         Pointer to can_berr_counter structure
+    :type bec: struct can_berr_counter \*
 
 .. _`xcan_get_berr_counter.description`:
 
@@ -655,8 +808,9 @@ xcan_suspend
 
     Suspend method for the driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the device structure
+    :type dev: struct device \*
 
 .. _`xcan_suspend.description`:
 
@@ -681,8 +835,9 @@ xcan_resume
 
     Resume from suspend
 
-    :param struct device \*dev:
+    :param dev:
         Address of the device structure
+    :type dev: struct device \*
 
 .. _`xcan_resume.description`:
 
@@ -707,8 +862,9 @@ xcan_runtime_suspend
 
     Runtime suspend method for the driver
 
-    :param struct device \*dev:
+    :param dev:
         Address of the device structure
+    :type dev: struct device \*
 
 .. _`xcan_runtime_suspend.description`:
 
@@ -733,8 +889,9 @@ xcan_runtime_resume
 
     Runtime resume from suspend
 
-    :param struct device \*dev:
+    :param dev:
         Address of the device structure
+    :type dev: struct device \*
 
 .. _`xcan_runtime_resume.description`:
 
@@ -759,8 +916,9 @@ xcan_probe
 
     Platform registration call
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Handle to the platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`xcan_probe.description`:
 
@@ -786,8 +944,9 @@ xcan_remove
 
     Unregister the device after releasing the resources
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Handle to the platform device structure
+    :type pdev: struct platform_device \*
 
 .. _`xcan_remove.description`:
 

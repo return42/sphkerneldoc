@@ -10,8 +10,9 @@ rcar_fcp_get
 
     Find and acquire a reference to an FCP instance
 
-    :param const struct device_node \*np:
+    :param np:
         Device node of the FCP instance
+    :type np: const struct device_node \*
 
 .. _`rcar_fcp_get.description`:
 
@@ -33,8 +34,9 @@ rcar_fcp_put
 
     Release a reference to an FCP instance
 
-    :param struct rcar_fcp_device \*fcp:
+    :param fcp:
         The FCP instance
+    :type fcp: struct rcar_fcp_device \*
 
 .. _`rcar_fcp_put.description`:
 
@@ -52,8 +54,9 @@ rcar_fcp_enable
 
     Enable an FCP
 
-    :param struct rcar_fcp_device \*fcp:
+    :param fcp:
         The FCP instance
+    :type fcp: struct rcar_fcp_device \*
 
 .. _`rcar_fcp_enable.description`:
 
@@ -77,8 +80,9 @@ rcar_fcp_disable
 
     Disable an FCP
 
-    :param struct rcar_fcp_device \*fcp:
+    :param fcp:
         The FCP instance
+    :type fcp: struct rcar_fcp_device \*
 
 .. _`rcar_fcp_disable.description`:
 

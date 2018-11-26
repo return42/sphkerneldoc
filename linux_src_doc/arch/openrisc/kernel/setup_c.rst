@@ -8,8 +8,9 @@ or32_early_setup
 
 .. c:function:: void or32_early_setup(void *fdt)
 
-    :param void \*fdt:
+    :param fdt:
         *undescribed*
+    :type fdt: void \*
 
 .. _`or32_early_setup.description`:
 

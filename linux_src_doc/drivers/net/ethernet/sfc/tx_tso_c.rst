@@ -102,17 +102,21 @@ efx_tx_queue_insert
 
     push descriptors onto the TX queue
 
-    :param struct efx_tx_queue \*tx_queue:
+    :param tx_queue:
         Efx TX queue
+    :type tx_queue: struct efx_tx_queue \*
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         DMA address of fragment
+    :type dma_addr: dma_addr_t
 
-    :param unsigned int len:
+    :param len:
         Length of fragment
+    :type len: unsigned int
 
-    :param struct efx_tx_buffer \*\*final_buffer:
+    :param final_buffer:
         The final buffer inserted into the queue
+    :type final_buffer: struct efx_tx_buffer \*\*
 
 .. _`efx_tx_queue_insert.description`:
 
@@ -130,14 +134,17 @@ tso_fill_packet_with_fragment
 
     form descriptors for the current fragment
 
-    :param struct efx_tx_queue \*tx_queue:
+    :param tx_queue:
         Efx TX queue
+    :type tx_queue: struct efx_tx_queue \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         Socket buffer
+    :type skb: const struct sk_buff \*
 
-    :param struct tso_state \*st:
+    :param st:
         TSO state
+    :type st: struct tso_state \*
 
 .. _`tso_fill_packet_with_fragment.description`:
 
@@ -156,14 +163,17 @@ tso_start_new_packet
 
     generate a new header and prepare for the new packet
 
-    :param struct efx_tx_queue \*tx_queue:
+    :param tx_queue:
         Efx TX queue
+    :type tx_queue: struct efx_tx_queue \*
 
-    :param const struct sk_buff \*skb:
+    :param skb:
         Socket buffer
+    :type skb: const struct sk_buff \*
 
-    :param struct tso_state \*st:
+    :param st:
         TSO state
+    :type st: struct tso_state \*
 
 .. _`tso_start_new_packet.description`:
 
@@ -182,15 +192,18 @@ efx_enqueue_skb_tso
 
     segment and transmit a TSO socket buffer
 
-    :param struct efx_tx_queue \*tx_queue:
+    :param tx_queue:
         Efx TX queue
+    :type tx_queue: struct efx_tx_queue \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         Socket buffer
+    :type skb: struct sk_buff \*
 
-    :param bool \*data_mapped:
+    :param data_mapped:
         Did we map the data? Always set to true
         by this on success.
+    :type data_mapped: bool \*
 
 .. _`efx_enqueue_skb_tso.context`:
 

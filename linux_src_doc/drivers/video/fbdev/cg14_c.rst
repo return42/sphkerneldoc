@@ -10,23 +10,29 @@ cg14_setcolreg
 
     Optional function. Sets a color register.
 
-    :param unsigned regno:
+    :param regno:
         boolean, 0 copy local, 1 \ :c:func:`get_user`\  function
+    :type regno: unsigned
 
-    :param unsigned red:
+    :param red:
         frame buffer colormap structure
+    :type red: unsigned
 
-    :param unsigned green:
+    :param green:
         The green value which can be up to 16 bits wide
+    :type green: unsigned
 
-    :param unsigned blue:
+    :param blue:
         The blue value which can be up to 16 bits wide.
+    :type blue: unsigned
 
-    :param unsigned transp:
+    :param transp:
         If supported the alpha value which can be up to 16 bits wide.
+    :type transp: unsigned
 
-    :param struct fb_info \*info:
+    :param info:
         frame buffer info structure
+    :type info: struct fb_info \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,20 +10,25 @@ parse_next_property
 
     process the next property from raw input buffer
 
-    :param char \*buf:
+    :param buf:
         input buffer, must be nul-terminated
+    :type buf: char \*
 
-    :param char \*end:
+    :param end:
         end of the input buffer + 1, for validation
+    :type end: char \*
 
-    :param char \*\*name:
+    :param name:
         return value; set to property name in buf
+    :type name: char \*\*
 
-    :param int \*length:
+    :param length:
         return value; set to length of value
+    :type length: int \*
 
-    :param unsigned char \*\*value:
+    :param value:
         return value; set to the property value in buf
+    :type value: unsigned char \*\*
 
 .. _`parse_next_property.description`:
 
@@ -43,17 +48,21 @@ ofdt_write
 
     perform operations on the Open Firmware device tree
 
-    :param struct file \*file:
+    :param file:
         not used
+    :type file: struct file \*
 
-    :param const char __user \*buf:
+    :param buf:
         command and arguments
+    :type buf: const char __user \*
 
-    :param size_t count:
+    :param count:
         size of the command buffer
+    :type count: size_t
 
-    :param loff_t \*off:
+    :param off:
         not used
+    :type off: loff_t \*
 
 .. _`ofdt_write.description`:
 

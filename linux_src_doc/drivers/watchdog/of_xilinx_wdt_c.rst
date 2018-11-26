@@ -10,8 +10,9 @@ xwdt_suspend
 
     Suspend the device.
 
-    :param struct device \*dev:
+    :param dev:
         handle to the device structure.
+    :type dev: struct device \*
 
 .. _`xwdt_suspend.return`:
 
@@ -29,8 +30,9 @@ xwdt_resume
 
     Resume the device.
 
-    :param struct device \*dev:
+    :param dev:
         handle to the device structure.
+    :type dev: struct device \*
 
 .. _`xwdt_resume.return`:
 

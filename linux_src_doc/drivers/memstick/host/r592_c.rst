@@ -10,8 +10,9 @@ memstick_debug_get_tpc_name
 
     debug helper that returns string for a TPC number
 
-    :param int tpc:
+    :param tpc:
         *undescribed*
+    :type tpc: int
 
 .. This file was automatic generated / don't edit.
 

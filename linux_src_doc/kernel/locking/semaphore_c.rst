@@ -10,8 +10,9 @@ down
 
     acquire the semaphore
 
-    :param struct semaphore \*sem:
+    :param sem:
         the semaphore to be acquired
+    :type sem: struct semaphore \*
 
 .. _`down.description`:
 
@@ -34,8 +35,9 @@ down_interruptible
 
     acquire the semaphore unless interrupted
 
-    :param struct semaphore \*sem:
+    :param sem:
         the semaphore to be acquired
+    :type sem: struct semaphore \*
 
 .. _`down_interruptible.description`:
 
@@ -56,8 +58,9 @@ down_killable
 
     acquire the semaphore unless killed
 
-    :param struct semaphore \*sem:
+    :param sem:
         the semaphore to be acquired
+    :type sem: struct semaphore \*
 
 .. _`down_killable.description`:
 
@@ -79,8 +82,9 @@ down_trylock
 
     try to acquire the semaphore, without waiting
 
-    :param struct semaphore \*sem:
+    :param sem:
         the semaphore to be acquired
+    :type sem: struct semaphore \*
 
 .. _`down_trylock.description`:
 
@@ -110,11 +114,13 @@ down_timeout
 
     acquire the semaphore within a specified time
 
-    :param struct semaphore \*sem:
+    :param sem:
         the semaphore to be acquired
+    :type sem: struct semaphore \*
 
-    :param long timeout:
+    :param timeout:
         how long to wait before failing
+    :type timeout: long
 
 .. _`down_timeout.description`:
 
@@ -135,8 +141,9 @@ up
 
     release the semaphore
 
-    :param struct semaphore \*sem:
+    :param sem:
         the semaphore to release
+    :type sem: struct semaphore \*
 
 .. _`up.description`:
 

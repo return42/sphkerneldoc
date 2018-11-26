@@ -10,8 +10,9 @@ vio_cmo_num_OF_devs
 
     Count the number of OF devices that have DMA windows
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vio_cmo_alloc`:
 
@@ -22,11 +23,13 @@ vio_cmo_alloc
 
     allocate IO memory for CMO-enable devices
 
-    :param struct vio_dev \*viodev:
+    :param viodev:
         VIO device requesting IO memory
+    :type viodev: struct vio_dev \*
 
-    :param size_t size:
+    :param size:
         size of allocation requested
+    :type size: size_t
 
 .. _`vio_cmo_alloc.description`:
 
@@ -54,11 +57,13 @@ vio_cmo_dealloc
 
     deallocate IO memory from CMO-enable devices
 
-    :param struct vio_dev \*viodev:
+    :param viodev:
         VIO device freeing IO memory
+    :type viodev: struct vio_dev \*
 
-    :param size_t size:
+    :param size:
         size of deallocation
+    :type size: size_t
 
 .. _`vio_cmo_dealloc.description`:
 
@@ -80,8 +85,9 @@ vio_cmo_entitlement_update
 
     Manage system entitlement changes
 
-    :param size_t new_entitlement:
+    :param new_entitlement:
         new system entitlement to attempt to accommodate
+    :type new_entitlement: size_t
 
 .. _`vio_cmo_entitlement_update.description`:
 
@@ -108,8 +114,9 @@ vio_cmo_balance
 
     Balance entitlement among devices
 
-    :param struct work_struct \*work:
+    :param work:
         work queue structure for this operation
+    :type work: struct work_struct \*
 
 .. _`vio_cmo_balance.description`:
 
@@ -141,11 +148,13 @@ vio_cmo_set_dev_desired
 
     Set desired entitlement for a device
 
-    :param struct vio_dev \*viodev:
+    :param viodev:
         struct vio_dev for device to alter
+    :type viodev: struct vio_dev \*
 
-    :param size_t desired:
+    :param desired:
         new desired entitlement level in bytes
+    :type desired: size_t
 
 .. _`vio_cmo_set_dev_desired.description`:
 
@@ -165,8 +174,9 @@ vio_cmo_bus_probe
 
     Handle CMO specific bus probe activities
 
-    :param struct vio_dev \*viodev:
+    :param viodev:
         *undescribed*
+    :type viodev: struct vio_dev \*
 
 .. _`vio_cmo_bus_probe.description`:
 
@@ -197,8 +207,9 @@ vio_cmo_bus_remove
 
     Handle CMO specific bus removal activities
 
-    :param struct vio_dev \*viodev:
+    :param viodev:
         *undescribed*
+    :type viodev: struct vio_dev \*
 
 .. _`vio_cmo_bus_remove.description`:
 
@@ -221,8 +232,9 @@ vio_cmo_bus_init
 
     CMO entitlement initialization at bus init time
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vio_cmo_bus_init.description`:
 
@@ -242,11 +254,13 @@ vio_h_cop_sync
 
     Perform a synchronous PFO co-processor operation
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         *undescribed*
+    :type vdev: struct vio_dev \*
 
-    :param struct vio_pfo_op \*op:
+    :param op:
         *undescribed*
+    :type op: struct vio_pfo_op \*
 
 .. _`vio_h_cop_sync.description`:
 
@@ -288,11 +302,13 @@ vio_match_device
 
     - Tell if a VIO device has a matching VIO device id structure.
 
-    :param const struct vio_device_id \*ids:
+    :param ids:
         array of VIO device id structures to search in
+    :type ids: const struct vio_device_id \*
 
-    :param const struct vio_dev \*dev:
+    :param dev:
         the VIO device structure to match against
+    :type dev: const struct vio_dev \*
 
 .. _`vio_match_device.description`:
 
@@ -312,14 +328,17 @@ vio_device_id structure or NULL if there is no match.
 
     - Register a new vio driver
 
-    :param struct vio_driver \*viodrv:
+    :param viodrv:
         The vio_driver structure to be registered.
+    :type viodrv: struct vio_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         *undescribed*
+    :type owner: struct module \*
 
-    :param const char \*mod_name:
+    :param mod_name:
         *undescribed*
+    :type mod_name: const char \*
 
 .. _`vio_unregister_driver`:
 
@@ -330,8 +349,9 @@ vio_unregister_driver
 
     Remove registration of vio driver.
 
-    :param struct vio_driver \*viodrv:
+    :param viodrv:
         The vio_driver struct to be removed form registration
+    :type viodrv: struct vio_driver \*
 
 .. _`vio_register_device_node`:
 
@@ -342,8 +362,9 @@ vio_register_device_node
 
     - Register a new vio device.
 
-    :param struct device_node \*of_node:
+    :param of_node:
         The OF node for this device.
+    :type of_node: struct device_node \*
 
 .. _`vio_register_device_node.description`:
 
@@ -364,8 +385,9 @@ vio_bus_init
 
     - Initialize the virtual IO bus
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`vio_get_attribute`:
 
@@ -376,14 +398,17 @@ vio_get_attribute
 
     - get attribute for virtual device
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         The vio device to get property.
+    :type vdev: struct vio_dev \*
 
-    :param char \*which:
+    :param which:
         The property/attribute to be extracted.
+    :type which: char \*
 
-    :param int \*length:
+    :param length:
         Pointer to length of returned data size (unused if NULL).
+    :type length: int \*
 
 .. _`vio_get_attribute.description`:
 
@@ -402,8 +427,9 @@ vio_find_node
 
     find an already-registered vio_dev
 
-    :param struct device_node \*vnode:
+    :param vnode:
         device_node of the virtual device we're looking for
+    :type vnode: struct device_node \*
 
 .. _`vio_find_node.description`:
 

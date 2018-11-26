@@ -10,8 +10,9 @@ nvdimm_init_nsarea
 
     determine the geometry of a dimm's namespace area
 
-    :param struct nvdimm_drvdata \*ndd:
+    :param ndd:
         *undescribed*
+    :type ndd: struct nvdimm_drvdata \*
 
 .. _`nd_blk_available_dpa`:
 
@@ -22,8 +23,9 @@ nd_blk_available_dpa
 
     account the unused dpa of BLK region
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         *undescribed*
+    :type nd_region: struct nd_region \*
 
 .. _`nd_blk_available_dpa.description`:
 
@@ -34,6 +36,23 @@ Unlike PMEM, BLK namespaces can occupy discontiguous DPA ranges, but
 we arrange for them to never start at an lower dpa than the last
 PMEM allocation in an aliased region.
 
+.. _`nd_pmem_max_contiguous_dpa`:
+
+nd_pmem_max_contiguous_dpa
+==========================
+
+.. c:function:: resource_size_t nd_pmem_max_contiguous_dpa(struct nd_region *nd_region, struct nd_mapping *nd_mapping)
+
+    For the given dimm+region, return the max contiguous unallocated dpa range.
+
+    :param nd_region:
+        constrain available space check to this reference region
+    :type nd_region: struct nd_region \*
+
+    :param nd_mapping:
+        container of dpa-resource-root + labels
+    :type nd_mapping: struct nd_mapping \*
+
 .. _`nd_pmem_available_dpa`:
 
 nd_pmem_available_dpa
@@ -43,14 +62,17 @@ nd_pmem_available_dpa
 
     for the given dimm+region account unallocated dpa
 
-    :param struct nd_region \*nd_region:
+    :param nd_region:
         constrain available space check to this reference region
+    :type nd_region: struct nd_region \*
 
-    :param struct nd_mapping \*nd_mapping:
+    :param nd_mapping:
         container of dpa-resource-root + labels
+    :type nd_mapping: struct nd_mapping \*
 
-    :param resource_size_t \*overlap:
+    :param overlap:
         calculate available space assuming this level of overlap
+    :type overlap: resource_size_t \*
 
 .. _`nd_pmem_available_dpa.description`:
 
@@ -75,11 +97,13 @@ nvdimm_allocated_dpa
 
     sum up the dpa currently allocated to this label_id
 
-    :param struct nvdimm_drvdata \*ndd:
+    :param ndd:
         *undescribed*
+    :type ndd: struct nvdimm_drvdata \*
 
-    :param struct nd_label_id \*label_id:
+    :param label_id:
         dpa resource name of the form {pmem\|blk}-<human readable uuid>
+    :type label_id: struct nd_label_id \*
 
 .. This file was automatic generated / don't edit.
 

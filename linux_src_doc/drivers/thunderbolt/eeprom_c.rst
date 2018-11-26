@@ -10,11 +10,13 @@ tb_eeprom_ctl_write
 
     write control word
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param struct tb_eeprom_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_eeprom_ctl \*
 
 .. _`tb_eeprom_ctl_read`:
 
@@ -25,11 +27,13 @@ tb_eeprom_ctl_read
 
     read control word
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param struct tb_eeprom_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_eeprom_ctl \*
 
 .. _`tb_eeprom_active`:
 
@@ -40,11 +44,13 @@ tb_eeprom_active
 
     enable rom access
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param bool enable:
+    :param enable:
         *undescribed*
+    :type enable: bool
 
 .. _`tb_eeprom_active.warning`:
 
@@ -63,14 +69,17 @@ tb_eeprom_transfer
 
     transfer one bit
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param struct tb_eeprom_ctl \*ctl:
+    :param ctl:
         *undescribed*
+    :type ctl: struct tb_eeprom_ctl \*
 
-    :param enum tb_eeprom_transfer direction:
+    :param direction:
         *undescribed*
+    :type direction: enum tb_eeprom_transfer
 
 .. _`tb_eeprom_transfer.description`:
 
@@ -89,11 +98,13 @@ tb_eeprom_out
 
     write one byte to the bus
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param u8 val:
+    :param val:
         *undescribed*
+    :type val: u8
 
 .. _`tb_eeprom_in`:
 
@@ -104,11 +115,13 @@ tb_eeprom_in
 
     read one byte from the bus
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param u8 \*val:
+    :param val:
         *undescribed*
+    :type val: u8 \*
 
 .. _`tb_eeprom_read_n`:
 
@@ -119,17 +132,21 @@ tb_eeprom_read_n
 
     read count bytes from offset into val
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param u16 offset:
+    :param offset:
         *undescribed*
+    :type offset: u16
 
-    :param u8 \*val:
+    :param val:
         *undescribed*
+    :type val: u8 \*
 
-    :param size_t count:
+    :param count:
         *undescribed*
+    :type count: size_t
 
 .. _`tb_eeprom_get_drom_offset`:
 
@@ -140,11 +157,13 @@ tb_eeprom_get_drom_offset
 
     get drom offset within eeprom
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param u16 \*offset:
+    :param offset:
         *undescribed*
+    :type offset: u16 \*
 
 .. _`tb_drom_read_uid_only`:
 
@@ -155,11 +174,13 @@ tb_drom_read_uid_only
 
     read uid directly from drom
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param u64 \*uid:
+    :param uid:
         *undescribed*
+    :type uid: u64 \*
 
 .. _`tb_drom_read_uid_only.description`:
 
@@ -178,8 +199,9 @@ tb_drom_parse_entries
 
     parse the linked list of drom entries
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
 .. _`tb_drom_parse_entries.description`:
 
@@ -197,11 +219,13 @@ tb_drom_copy_efi
 
     copy drom supplied by EFI to sw->drom if present
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
-    :param u16 \*size:
+    :param size:
         *undescribed*
+    :type size: u16 \*
 
 .. _`tb_drom_read`:
 
@@ -212,8 +236,9 @@ tb_drom_read
 
     copy drom to sw->drom and parse it
 
-    :param struct tb_switch \*sw:
+    :param sw:
         *undescribed*
+    :type sw: struct tb_switch \*
 
 .. This file was automatic generated / don't edit.
 

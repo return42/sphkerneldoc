@@ -10,8 +10,9 @@ syscfg_reset_probe
 
     platform device probe function used by syscfg reset controller drivers. This registers a reset controller configured by the OF match data for the compatible device which should be of type "struct syscfg_reset_controller_data".
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         platform device
+    :type pdev: struct platform_device \*
 
 .. This file was automatic generated / don't edit.
 

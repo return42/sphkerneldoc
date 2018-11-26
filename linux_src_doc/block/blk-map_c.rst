@@ -10,20 +10,25 @@ blk_rq_map_user_iov
 
     map user data to a request, for passthrough requests
 
-    :param struct request_queue \*q:
+    :param q:
         request queue where request should be inserted
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         request to map data to
+    :type rq: struct request \*
 
-    :param struct rq_map_data \*map_data:
+    :param map_data:
         pointer to the rq_map_data holding pages (if necessary)
+    :type map_data: struct rq_map_data \*
 
-    :param const struct iov_iter \*iter:
+    :param iter:
         iovec iterator
+    :type iter: const struct iov_iter \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags
+    :type gfp_mask: gfp_t
 
 .. _`blk_rq_map_user_iov.description`:
 
@@ -56,8 +61,9 @@ blk_rq_unmap_user
 
     unmap a request with user data
 
-    :param struct bio \*bio:
+    :param bio:
         start of bio list
+    :type bio: struct bio \*
 
 .. _`blk_rq_unmap_user.description`:
 
@@ -77,20 +83,25 @@ blk_rq_map_kern
 
     map kernel data to a request, for passthrough requests
 
-    :param struct request_queue \*q:
+    :param q:
         request queue where request should be inserted
+    :type q: struct request_queue \*
 
-    :param struct request \*rq:
+    :param rq:
         request to fill
+    :type rq: struct request \*
 
-    :param void \*kbuf:
+    :param kbuf:
         the kernel buffer
+    :type kbuf: void \*
 
-    :param unsigned int len:
+    :param len:
         length of user data
+    :type len: unsigned int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags
+    :type gfp_mask: gfp_t
 
 .. _`blk_rq_map_kern.description`:
 

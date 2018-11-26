@@ -10,14 +10,17 @@ nouveau_compat_ioctl
 
     bit process running under a 64-bit kernel performs an ioctl on /dev/dri/card<n>.
 
-    :param struct file \*filp:
+    :param filp:
         *undescribed*
+    :type filp: struct file \*
 
-    :param unsigned int cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: unsigned int
 
-    :param unsigned long arg:
+    :param arg:
         *undescribed*
+    :type arg: unsigned long
 
 .. _`nouveau_compat_ioctl.description`:
 

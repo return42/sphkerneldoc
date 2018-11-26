@@ -51,17 +51,21 @@ DECLARE_CHASH_TABLE
 
     macro to declare a closed hash table
 
-    :param  table:
+    :param table:
         name of the declared hash table
+    :type table: 
 
-    :param  bts:
+    :param bts:
         Table size will be 2^bits entries
+    :type bts: 
 
-    :param  key_sz:
+    :param key_sz:
         Size of hash keys in bytes, 4 or 8
+    :type key_sz: 
 
-    :param  val_sz:
+    :param val_sz:
         Size of data values in bytes, can be 0
+    :type val_sz: 
 
 .. _`declare_chash_table.description`:
 
@@ -92,17 +96,21 @@ DEFINE_CHASH_TABLE
 
     macro to define and initialize a closed hash table
 
-    :param  tbl:
+    :param tbl:
         name of the declared hash table
+    :type tbl: 
 
-    :param  bts:
+    :param bts:
         Table size will be 2^bits entries
+    :type bts: 
 
-    :param  key_sz:
+    :param key_sz:
         Size of hash keys in bytes, 4 or 8
+    :type key_sz: 
 
-    :param  val_sz:
+    :param val_sz:
         Size of data values in bytes, can be 0
+    :type val_sz: 
 
 .. _`define_chash_table.note`:
 
@@ -120,17 +128,21 @@ INIT_CHASH_TABLE
 
     Initialize a hash table declared by DECLARE_CHASH_TABLE
 
-    :param  tbl:
+    :param tbl:
         name of the declared hash table
+    :type tbl: 
 
-    :param  bts:
+    :param bts:
         Table size will be 2^bits entries
+    :type bts: 
 
-    :param  key_sz:
+    :param key_sz:
         Size of hash keys in bytes, 4 or 8
+    :type key_sz: 
 
-    :param  val_sz:
+    :param val_sz:
         Size of data values in bytes, can be 0
+    :type val_sz: 
 
 .. _`chash_table_dump_stats`:
 
@@ -141,8 +153,9 @@ chash_table_dump_stats
 
     Dump statistics of a closed hash table
 
-    :param  tbl:
+    :param tbl:
         Pointer to the table structure
+    :type tbl: 
 
 .. _`chash_table_dump_stats.description`:
 
@@ -162,8 +175,9 @@ chash_table_reset_stats
 
     Reset statistics of a closed hash table
 
-    :param  tbl:
+    :param tbl:
         Pointer to the table structure
+    :type tbl: 
 
 .. _`chash_table_copy_in`:
 
@@ -174,14 +188,17 @@ chash_table_copy_in
 
     Copy a new value into the hash table
 
-    :param  tbl:
+    :param tbl:
         Pointer to the table structure
+    :type tbl: 
 
-    :param  key:
+    :param key:
         Key of the entry to add or update
+    :type key: 
 
-    :param  value:
+    :param value:
         Pointer to value to copy, may be NULL
+    :type value: 
 
 .. _`chash_table_copy_in.description`:
 
@@ -203,14 +220,17 @@ chash_table_copy_out
 
     Copy a value out of the hash table
 
-    :param  tbl:
+    :param tbl:
         Pointer to the table structure
+    :type tbl: 
 
-    :param  key:
+    :param key:
         Key of the entry to find
+    :type key: 
 
-    :param  value:
+    :param value:
         Pointer to value to copy, may be NULL
+    :type value: 
 
 .. _`chash_table_copy_out.description`:
 
@@ -230,14 +250,17 @@ chash_table_remove
 
     Remove an entry from the hash table
 
-    :param  tbl:
+    :param tbl:
         Pointer to the table structure
+    :type tbl: 
 
-    :param  key:
+    :param key:
         Key of the entry to find
+    :type key: 
 
-    :param  value:
+    :param value:
         Pointer to value to copy, may be NULL
+    :type value: 
 
 .. _`chash_table_remove.description`:
 
@@ -258,11 +281,13 @@ CHASH_ITER_INIT
 
     Initialize a hash table iterator
 
-    :param  table:
+    :param table:
         *undescribed*
+    :type table: 
 
-    :param  s:
+    :param s:
         Initial slot number
+    :type s: 
 
 .. _`chash_iter_set`:
 
@@ -273,11 +298,13 @@ CHASH_ITER_SET
 
     Set hash table iterator to new slot
 
-    :param  iter:
+    :param iter:
         Iterator
+    :type iter: 
 
-    :param  s:
+    :param s:
         Slot number
+    :type s: 
 
 .. _`chash_iter_inc`:
 
@@ -288,8 +315,9 @@ CHASH_ITER_INC
 
     Increment hash table iterator
 
-    :param  iter:
+    :param iter:
         *undescribed*
+    :type iter: 
 
 .. _`chash_iter_inc.description`:
 

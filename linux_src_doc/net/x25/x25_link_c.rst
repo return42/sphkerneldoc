@@ -10,8 +10,9 @@
 
     remove neighbour from x25_neigh_list \ ``nb``\  - neigh to remove
 
-    :param struct x25_neigh \*nb:
+    :param nb:
         *undescribed*
+    :type nb: struct x25_neigh \*
 
 .. _`__x25_remove_neigh.description`:
 

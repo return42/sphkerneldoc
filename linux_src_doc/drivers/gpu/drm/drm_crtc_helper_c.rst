@@ -42,8 +42,9 @@ drm_helper_encoder_in_use
 
     check if a given encoder is in use
 
-    :param struct drm_encoder \*encoder:
+    :param encoder:
         encoder to check
+    :type encoder: struct drm_encoder \*
 
 .. _`drm_helper_encoder_in_use.description`:
 
@@ -70,8 +71,9 @@ drm_helper_crtc_in_use
 
     check if a given CRTC is in a mode_config
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC to check
+    :type crtc: struct drm_crtc \*
 
 .. _`drm_helper_crtc_in_use.description`:
 
@@ -98,8 +100,9 @@ drm_helper_disable_unused_functions
 
     disable unused objects
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_helper_disable_unused_functions.description`:
 
@@ -134,20 +137,25 @@ drm_crtc_helper_set_mode
 
     internal helper to set a mode
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         CRTC to program
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_display_mode \*mode:
+    :param mode:
         mode to use
+    :type mode: struct drm_display_mode \*
 
-    :param int x:
+    :param x:
         horizontal offset into the surface
+    :type x: int
 
-    :param int y:
+    :param y:
         vertical offset into the surface
+    :type y: int
 
-    :param struct drm_framebuffer \*old_fb:
+    :param old_fb:
         old framebuffer, for cleanup
+    :type old_fb: struct drm_framebuffer \*
 
 .. _`drm_crtc_helper_set_mode.description`:
 
@@ -179,11 +187,13 @@ drm_crtc_helper_set_config
 
     set a new config from userspace
 
-    :param struct drm_mode_set \*set:
+    :param set:
         mode set configuration
+    :type set: struct drm_mode_set \*
 
-    :param struct drm_modeset_acquire_ctx \*ctx:
+    :param ctx:
         lock acquire context, not used here
+    :type ctx: struct drm_modeset_acquire_ctx \*
 
 .. _`drm_crtc_helper_set_config.description`:
 
@@ -236,11 +246,13 @@ drm_helper_connector_dpms
 
     connector dpms helper implementation
 
-    :param struct drm_connector \*connector:
+    :param connector:
         affected connector
+    :type connector: struct drm_connector \*
 
-    :param int mode:
+    :param mode:
         DPMS mode
+    :type mode: int
 
 .. _`drm_helper_connector_dpms.description`:
 
@@ -276,8 +288,9 @@ drm_helper_resume_force_mode
 
     force-restore mode setting configuration
 
-    :param struct drm_device \*dev:
+    :param dev:
         drm_device which should be restored
+    :type dev: struct drm_device \*
 
 .. _`drm_helper_resume_force_mode.description`:
 
@@ -319,23 +332,29 @@ drm_helper_crtc_mode_set
 
     mode_set implementation for atomic plane helpers
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM CRTC
+    :type crtc: struct drm_crtc \*
 
-    :param struct drm_display_mode \*mode:
+    :param mode:
         DRM display mode which userspace requested
+    :type mode: struct drm_display_mode \*
 
-    :param struct drm_display_mode \*adjusted_mode:
+    :param adjusted_mode:
         DRM display mode adjusted by ->mode_fixup callbacks
+    :type adjusted_mode: struct drm_display_mode \*
 
-    :param int x:
+    :param x:
         x offset of the CRTC scanout area on the underlying framebuffer
+    :type x: int
 
-    :param int y:
+    :param y:
         y offset of the CRTC scanout area on the underlying framebuffer
+    :type y: int
 
-    :param struct drm_framebuffer \*old_fb:
+    :param old_fb:
         previous framebuffer
+    :type old_fb: struct drm_framebuffer \*
 
 .. _`drm_helper_crtc_mode_set.description`:
 
@@ -359,17 +378,21 @@ drm_helper_crtc_mode_set_base
 
     mode_set_base implementation for atomic plane helpers
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         DRM CRTC
+    :type crtc: struct drm_crtc \*
 
-    :param int x:
+    :param x:
         x offset of the CRTC scanout area on the underlying framebuffer
+    :type x: int
 
-    :param int y:
+    :param y:
         y offset of the CRTC scanout area on the underlying framebuffer
+    :type y: int
 
-    :param struct drm_framebuffer \*old_fb:
+    :param old_fb:
         previous framebuffer
+    :type old_fb: struct drm_framebuffer \*
 
 .. _`drm_helper_crtc_mode_set_base.description`:
 

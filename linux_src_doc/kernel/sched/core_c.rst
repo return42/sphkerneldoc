@@ -10,8 +10,9 @@ task_curr
 
     is this task currently executing on a CPU?
 
-    :param const struct task_struct \*p:
+    :param p:
         the task in question.
+    :type p: const struct task_struct \*
 
 .. _`task_curr.return`:
 
@@ -29,33 +30,39 @@ try_to_wake_up
 
     wake up a thread
 
-    :param struct task_struct \*p:
+    :param p:
         the thread to be awakened
+    :type p: struct task_struct \*
 
-    :param unsigned int state:
+    :param state:
         the mask of task states that can be woken
+    :type state: unsigned int
 
-    :param int wake_flags:
+    :param wake_flags:
         wake modifier flags (WF_*)
+    :type wake_flags: int
 
 .. _`try_to_wake_up.description`:
 
 Description
 -----------
 
-If (@state & \ ``p``\ ->state) \ ``p``\ ->state = TASK_RUNNING.
+If (@state & \ ``p->state``\ ) \ ``p->state``\  = TASK_RUNNING.
 
 If the task was not queued/runnable, also place it back on a runqueue.
 
 Atomic against \ :c:func:`schedule`\  which would dequeue a task, also see
 \ :c:func:`set_current_state`\ .
 
+This function executes a full memory barrier before accessing the task
+state; see \ :c:func:`set_current_state`\ .
+
 .. _`try_to_wake_up.return`:
 
 Return
 ------
 
-\ ``true``\  if \ ``p``\ ->state changes (an actual wakeup was done),
+\ ``true``\  if \ ``p->state``\  changes (an actual wakeup was done),
         \ ``false``\  otherwise.
 
 .. _`try_to_wake_up_local`:
@@ -67,11 +74,13 @@ try_to_wake_up_local
 
     try to wake up a local task with rq lock held
 
-    :param struct task_struct \*p:
+    :param p:
         the thread to be awakened
+    :type p: struct task_struct \*
 
-    :param struct rq_flags \*rf:
+    :param rf:
         request-queue flags for pinning
+    :type rf: struct rq_flags \*
 
 .. _`try_to_wake_up_local.description`:
 
@@ -91,8 +100,9 @@ wake_up_process
 
     Wake up a specific process
 
-    :param struct task_struct \*p:
+    :param p:
         The process to be woken up.
+    :type p: struct task_struct \*
 
 .. _`wake_up_process.description`:
 
@@ -109,8 +119,7 @@ Return
 
 1 if the process was woken up, 0 if it was already running.
 
-It may be assumed that this function implies a write memory barrier before
-changing the task state if and only if any tasks are woken up.
+This function executes a full memory barrier before accessing the task state.
 
 .. _`preempt_notifier_register`:
 
@@ -121,8 +130,9 @@ preempt_notifier_register
 
     tell me when current is being preempted & rescheduled
 
-    :param struct preempt_notifier \*notifier:
+    :param notifier:
         notifier struct to register
+    :type notifier: struct preempt_notifier \*
 
 .. _`preempt_notifier_unregister`:
 
@@ -133,8 +143,9 @@ preempt_notifier_unregister
 
     no longer interested in preemption notifications
 
-    :param struct preempt_notifier \*notifier:
+    :param notifier:
         notifier struct to unregister
+    :type notifier: struct preempt_notifier \*
 
 .. _`preempt_notifier_unregister.description`:
 
@@ -152,14 +163,17 @@ prepare_task_switch
 
     prepare to switch tasks
 
-    :param struct rq \*rq:
+    :param rq:
         the runqueue preparing to switch
+    :type rq: struct rq \*
 
-    :param struct task_struct \*prev:
+    :param prev:
         the current task that is being switched out
+    :type prev: struct task_struct \*
 
-    :param struct task_struct \*next:
+    :param next:
         the task we are going to switch to.
+    :type next: struct task_struct \*
 
 .. _`prepare_task_switch.description`:
 
@@ -182,8 +196,9 @@ finish_task_switch
 
     clean up after a task-switch
 
-    :param struct task_struct \*prev:
+    :param prev:
         the thread we just switched away from.
+    :type prev: struct task_struct \*
 
 .. _`finish_task_switch.description`:
 
@@ -214,8 +229,9 @@ schedule_tail
 
     first thing a freshly forked thread must call.
 
-    :param struct task_struct \*prev:
+    :param prev:
         the thread we just switched away from.
+    :type prev: struct task_struct \*
 
 .. _`schedule_preempt_disabled`:
 
@@ -226,8 +242,9 @@ schedule_preempt_disabled
 
     called with preemption disabled
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`schedule_preempt_disabled.description`:
 
@@ -245,8 +262,9 @@ preempt_schedule_notrace
 
     preempt_schedule called by tracing
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`preempt_schedule_notrace.description`:
 
@@ -273,8 +291,9 @@ task_prio
 
     return the priority value of a given task.
 
-    :param const struct task_struct \*p:
+    :param p:
         the task in question.
+    :type p: const struct task_struct \*
 
 .. _`task_prio.return`:
 
@@ -294,8 +313,9 @@ idle_cpu
 
     is a given CPU idle currently?
 
-    :param int cpu:
+    :param cpu:
         the processor in question.
+    :type cpu: int
 
 .. _`idle_cpu.return`:
 
@@ -313,8 +333,9 @@ available_idle_cpu
 
     is a given CPU idle for enqueuing work.
 
-    :param int cpu:
+    :param cpu:
         the CPU in question.
+    :type cpu: int
 
 .. _`available_idle_cpu.return`:
 
@@ -332,8 +353,9 @@ idle_task
 
     return the idle task for a given CPU.
 
-    :param int cpu:
+    :param cpu:
         the processor in question.
+    :type cpu: int
 
 .. _`idle_task.return`:
 
@@ -351,8 +373,9 @@ find_process_by_pid
 
     find a process with a matching PID value.
 
-    :param pid_t pid:
+    :param pid:
         the pid in question.
+    :type pid: pid_t
 
 .. _`find_process_by_pid.description`:
 
@@ -370,14 +393,17 @@ sched_setscheduler
 
     change the scheduling policy and/or RT priority of a thread.
 
-    :param struct task_struct \*p:
+    :param p:
         the task in question.
+    :type p: struct task_struct \*
 
-    :param int policy:
+    :param policy:
         new policy.
+    :type policy: int
 
-    :param const struct sched_param \*param:
+    :param param:
         structure containing the new RT priority.
+    :type param: const struct sched_param \*
 
 .. _`sched_setscheduler.return`:
 
@@ -397,14 +423,17 @@ sched_setscheduler_nocheck
 
     change the scheduling policy and/or RT priority of a thread from kernelspace.
 
-    :param struct task_struct \*p:
+    :param p:
         the task in question.
+    :type p: struct task_struct \*
 
-    :param int policy:
+    :param policy:
         new policy.
+    :type policy: int
 
-    :param const struct sched_param \*param:
+    :param param:
         structure containing the new RT priority.
+    :type param: const struct sched_param \*
 
 .. _`sched_setscheduler_nocheck.description`:
 
@@ -432,14 +461,17 @@ sys_sched_setscheduler
 
     set/change the scheduler policy and RT priority
 
-    :param pid_t pid:
+    :param pid:
         the pid in question.
+    :type pid: pid_t
 
-    :param int policy:
+    :param policy:
         new policy.
+    :type policy: int
 
-    :param struct sched_param __user \*param:
+    :param param:
         structure containing the new RT priority.
+    :type param: struct sched_param __user \*
 
 .. _`sys_sched_setscheduler.return`:
 
@@ -457,11 +489,13 @@ sys_sched_setparam
 
     set/change the RT priority of a thread
 
-    :param pid_t pid:
+    :param pid:
         the pid in question.
+    :type pid: pid_t
 
-    :param struct sched_param __user \*param:
+    :param param:
         structure containing the new RT priority.
+    :type param: struct sched_param __user \*
 
 .. _`sys_sched_setparam.return`:
 
@@ -479,14 +513,17 @@ sys_sched_setattr
 
     same as above, but with extended sched_attr
 
-    :param pid_t pid:
+    :param pid:
         the pid in question.
+    :type pid: pid_t
 
-    :param struct sched_attr __user \*uattr:
+    :param uattr:
         structure containing the extended parameters.
+    :type uattr: struct sched_attr __user \*
 
-    :param unsigned int flags:
+    :param flags:
         for future extension.
+    :type flags: unsigned int
 
 .. _`sys_sched_getscheduler`:
 
@@ -497,8 +534,9 @@ sys_sched_getscheduler
 
     get the policy (scheduling class) of a thread
 
-    :param pid_t pid:
+    :param pid:
         the pid in question.
+    :type pid: pid_t
 
 .. _`sys_sched_getscheduler.return`:
 
@@ -517,11 +555,13 @@ sys_sched_getparam
 
     get the RT priority of a thread
 
-    :param pid_t pid:
+    :param pid:
         the pid in question.
+    :type pid: pid_t
 
-    :param struct sched_param __user \*param:
+    :param param:
         structure containing the RT priority.
+    :type param: struct sched_param __user \*
 
 .. _`sys_sched_getparam.return`:
 
@@ -540,17 +580,21 @@ sys_sched_getattr
 
     similar to sched_getparam, but with sched_attr
 
-    :param pid_t pid:
+    :param pid:
         the pid in question.
+    :type pid: pid_t
 
-    :param struct sched_attr __user \*uattr:
+    :param uattr:
         structure containing the extended parameters.
+    :type uattr: struct sched_attr __user \*
 
-    :param unsigned int size:
+    :param size:
         sizeof(attr) for fwd/bwd comp.
+    :type size: unsigned int
 
-    :param unsigned int flags:
+    :param flags:
         for future extension.
+    :type flags: unsigned int
 
 .. _`sys_sched_setaffinity`:
 
@@ -561,14 +605,17 @@ sys_sched_setaffinity
 
     set the CPU affinity of a process
 
-    :param pid_t pid:
+    :param pid:
         pid of the process
+    :type pid: pid_t
 
-    :param unsigned int len:
+    :param len:
         length in bytes of the bitmask pointed to by user_mask_ptr
+    :type len: unsigned int
 
-    :param unsigned long __user \*user_mask_ptr:
+    :param user_mask_ptr:
         user-space pointer to the new CPU mask
+    :type user_mask_ptr: unsigned long __user \*
 
 .. _`sys_sched_setaffinity.return`:
 
@@ -586,14 +633,17 @@ sys_sched_getaffinity
 
     get the CPU affinity of a process
 
-    :param pid_t pid:
+    :param pid:
         pid of the process
+    :type pid: pid_t
 
-    :param unsigned int len:
+    :param len:
         length in bytes of the bitmask pointed to by user_mask_ptr
+    :type len: unsigned int
 
-    :param unsigned long __user \*user_mask_ptr:
+    :param user_mask_ptr:
         user-space pointer to hold the current CPU mask
+    :type user_mask_ptr: unsigned long __user \*
 
 .. _`sys_sched_getaffinity.return`:
 
@@ -612,8 +662,9 @@ do_sched_yield
 
     yield the current processor to other threads.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`do_sched_yield.description`:
 
@@ -639,8 +690,9 @@ yield
 
     yield the current processor to other threads.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`yield.description`:
 
@@ -679,11 +731,13 @@ yield_to
 
     yield the current processor to another thread in your thread group, or accelerate that thread toward the processor it's on.
 
-    :param struct task_struct \*p:
+    :param p:
         target task
+    :type p: struct task_struct \*
 
-    :param bool preempt:
+    :param preempt:
         whether task preemption is allowed or not
+    :type preempt: bool
 
 .. _`yield_to.description`:
 
@@ -711,8 +765,9 @@ sys_sched_get_priority_max
 
     return maximum RT priority.
 
-    :param int policy:
+    :param policy:
         scheduling class.
+    :type policy: int
 
 .. _`sys_sched_get_priority_max.return`:
 
@@ -732,8 +787,9 @@ sys_sched_get_priority_min
 
     return minimum RT priority.
 
-    :param int policy:
+    :param policy:
         scheduling class.
+    :type policy: int
 
 .. _`sys_sched_get_priority_min.return`:
 
@@ -749,15 +805,17 @@ On failure, a negative error code is returned.
 sys_sched_rr_get_interval
 =========================
 
-.. c:function:: long sys_sched_rr_get_interval(pid_t pid, struct timespec __user *interval)
+.. c:function:: long sys_sched_rr_get_interval(pid_t pid, struct __kernel_timespec __user *interval)
 
     return the default timeslice of a process.
 
-    :param pid_t pid:
+    :param pid:
         pid of the process.
+    :type pid: pid_t
 
-    :param struct timespec __user \*interval:
+    :param interval:
         userspace pointer to the timeslice value.
+    :type interval: struct __kernel_timespec __user \*
 
 .. _`sys_sched_rr_get_interval.description`:
 
@@ -784,11 +842,13 @@ init_idle
 
     set up an idle thread for a given CPU
 
-    :param struct task_struct \*idle:
+    :param idle:
         task in question
+    :type idle: struct task_struct \*
 
-    :param int cpu:
+    :param cpu:
         CPU the idle task belongs to
+    :type cpu: int
 
 .. _`init_idle.note`:
 
@@ -807,8 +867,9 @@ curr_task
 
     return the current task for a given CPU.
 
-    :param int cpu:
+    :param cpu:
         the processor in question.
+    :type cpu: int
 
 .. _`curr_task.description`:
 
@@ -833,11 +894,13 @@ ia64_set_curr_task
 
     set the current task for a given CPU.
 
-    :param int cpu:
+    :param cpu:
         the processor in question.
+    :type cpu: int
 
-    :param struct task_struct \*p:
+    :param p:
         the task pointer to set.
+    :type p: struct task_struct \*
 
 .. _`ia64_set_curr_task.description`:
 

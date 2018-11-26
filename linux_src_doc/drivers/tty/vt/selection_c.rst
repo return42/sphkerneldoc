@@ -10,8 +10,9 @@ clear_selection
 
     remove current selection
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`clear_selection.description`:
 
@@ -30,8 +31,9 @@ sel_loadlut
 
     load the LUT table
 
-    :param char __user \*p:
+    :param p:
         user table
+    :type p: char __user \*
 
 .. _`sel_loadlut.description`:
 
@@ -50,11 +52,13 @@ set_selection
 
     set the current selection.
 
-    :param const struct tiocl_selection __user \*sel:
+    :param sel:
         user selection info
+    :type sel: const struct tiocl_selection __user \*
 
-    :param struct tty_struct \*tty:
+    :param tty:
         the console tty
+    :type tty: struct tty_struct \*
 
 .. _`set_selection.description`:
 

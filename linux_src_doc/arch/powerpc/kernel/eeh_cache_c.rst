@@ -10,8 +10,9 @@ eeh_addr_cache_get_dev
 
     Get device, given only address
 
-    :param unsigned long addr:
+    :param addr:
         mmio (PIO) phys address or i/o port number
+    :type addr: unsigned long
 
 .. _`eeh_addr_cache_get_dev.description`:
 
@@ -32,8 +33,9 @@ eeh_addr_cache_insert_dev
 
     Add a device to the address cache
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device whose I/O addresses we are interested in.
+    :type dev: struct pci_dev \*
 
 .. _`eeh_addr_cache_insert_dev.description`:
 
@@ -53,8 +55,9 @@ eeh_addr_cache_rmv_dev
 
     remove pci device from addr cache
 
-    :param struct pci_dev \*dev:
+    :param dev:
         device to remove
+    :type dev: struct pci_dev \*
 
 .. _`eeh_addr_cache_rmv_dev.description`:
 
@@ -75,8 +78,9 @@ eeh_addr_cache_build
 
     Build a cache of I/O addresses
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`eeh_addr_cache_build.description`:
 

@@ -57,8 +57,9 @@ guc_submit
 
     Submit commands through GuC
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         engine associated with the commands
+    :type engine: struct intel_engine_cs \*
 
 .. _`guc_submit.description`:
 
@@ -77,21 +78,25 @@ guc_client_alloc
 
     Allocate an intel_guc_client
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         driver private data structure
+    :type dev_priv: struct drm_i915_private \*
 
-    :param u32 engines:
+    :param engines:
         The set of engines to enable for this client
+    :type engines: u32
 
-    :param u32 priority:
+    :param priority:
         four levels priority _CRITICAL, _HIGH, _NORMAL and _LOW
         The kernel client to replace ExecList submission is created with
         NORMAL priority. Priority of a client for scheduler can be HIGH,
         while a preemption context can use CRITICAL.
+    :type priority: u32
 
-    :param struct i915_gem_context \*ctx:
+    :param ctx:
         the context that owns the client (we use the default render
         context)
+    :type ctx: struct i915_gem_context \*
 
 .. _`guc_client_alloc.return`:
 

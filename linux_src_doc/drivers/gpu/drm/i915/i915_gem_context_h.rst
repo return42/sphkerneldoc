@@ -27,23 +27,27 @@ Definition
         struct llist_node free_link;
         struct kref ref;
         struct rcu_head rcu;
+        unsigned long user_flags;
+    #define UCONTEXT_NO_ZEROMAP 0
+    #define UCONTEXT_NO_ERROR_CAPTURE 1
+    #define UCONTEXT_BANNABLE 2
         unsigned long flags;
-    #define CONTEXT_NO_ZEROMAP BIT(0)
-    #define CONTEXT_NO_ERROR_CAPTURE 1
-    #define CONTEXT_CLOSED 2
-    #define CONTEXT_BANNABLE 3
-    #define CONTEXT_BANNED 4
-    #define CONTEXT_FORCE_SINGLE_SUBMISSION 5
+    #define CONTEXT_BANNED 0
+    #define CONTEXT_CLOSED 1
+    #define CONTEXT_FORCE_SINGLE_SUBMISSION 2
         unsigned int hw_id;
+        atomic_t hw_id_pin_count;
+        struct list_head hw_id_link;
         u32 user_handle;
         struct i915_sched_attr sched;
-        u32 ggtt_offset_bias;
         struct intel_context {
+            struct i915_gem_context *gem_context;
             struct i915_vma *state;
             struct intel_ring *ring;
             u32 *lrc_reg_state;
             u64 lrc_desc;
             int pin_count;
+            const struct intel_context_ops *ops;
         } __engine[I915_NUM_ENGINES];
         u32 ring_size;
         u32 desc_template;
@@ -106,6 +110,9 @@ ref
 rcu
     rcu_head for deferred freeing.
 
+user_flags
+    small set of booleans controlled by the user
+
 flags
     small set of booleans
 
@@ -116,15 +123,24 @@ hw_id
     \ :c:type:`drm_i915_private.context_hw_ida <drm_i915_private>`\  is used to assign a unqiue
     id for the lifetime of the context.
 
+    \ ``hw_id_pin_count``\ : - number of times this context had been pinned
+    for use (should be, at most, once per engine).
+
+    \ ``hw_id_link``\ : - all contexts with an assigned id are tracked
+    for possible repossession.
+
+hw_id_pin_count
+    *undescribed*
+
+hw_id_link
+    *undescribed*
+
 user_handle
     userspace identifier
     A unique per-file identifier is generated from
     \ :c:type:`drm_i915_file_private.contexts <drm_i915_file_private>`\ .
 
 sched
-    *undescribed*
-
-ggtt_offset_bias
     *undescribed*
 
 \__engine

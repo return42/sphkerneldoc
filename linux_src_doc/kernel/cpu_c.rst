@@ -8,20 +8,25 @@ cpuhp_invoke_callback
 
 .. c:function:: int cpuhp_invoke_callback(unsigned int cpu, enum cpuhp_state state, bool bringup, struct hlist_node *node, struct hlist_node **lastp)
 
-    :param unsigned int cpu:
+    :param cpu:
         The cpu for which the callback should be invoked
+    :type cpu: unsigned int
 
-    :param enum cpuhp_state state:
+    :param state:
         The state to do callbacks for
+    :type state: enum cpuhp_state
 
-    :param bool bringup:
+    :param bringup:
         True if the bringup callback should be invoked
+    :type bringup: bool
 
-    :param struct hlist_node \*node:
+    :param node:
         For multi-instance, do a single entry callback for install/remove
+    :type node: struct hlist_node \*
 
-    :param struct hlist_node \*\*lastp:
+    :param lastp:
         For multi-instance rollback, remember how far we got
+    :type lastp: struct hlist_node \*\*
 
 .. _`cpuhp_invoke_callback.description`:
 
@@ -39,8 +44,9 @@ clear_tasks_mm_cpumask
 
     Safely clear tasks' mm_cpumask for a CPU
 
-    :param int cpu:
+    :param cpu:
         a CPU id
+    :type cpu: int
 
 .. _`clear_tasks_mm_cpumask.description`:
 
@@ -64,8 +70,9 @@ notify_cpu_starting
 
     Invoke the callbacks on the starting CPU
 
-    :param unsigned int cpu:
+    :param cpu:
         cpu that just started
+    :type cpu: unsigned int
 
 .. _`notify_cpu_starting.description`:
 
@@ -84,15 +91,18 @@ enables interrupts and before the "boot" cpu returns from \__cpu_up().
 
     Setup the callbacks for an hotplug machine state
 
-    :param enum cpuhp_state state:
+    :param state:
         The state to setup
+    :type state: enum cpuhp_state
 
-    :param const char \*name:
+    :param name:
         *undescribed*
+    :type name: const char \*
 
-    :param bool invoke:
+    :param invoke:
         If true, the startup function is invoked for cpus where
         cpu state >= \ ``state``\ 
+    :type invoke: bool
 
     :param int (\*startup)(unsigned int cpu):
         startup callback function
@@ -100,9 +110,10 @@ enables interrupts and before the "boot" cpu returns from \__cpu_up().
     :param int (\*teardown)(unsigned int cpu):
         teardown callback function
 
-    :param bool multi_instance:
+    :param multi_instance:
         State is set up for multiple instances which get
         added afterwards.
+    :type multi_instance: bool
 
 .. _`__cpuhp_setup_state_cpuslocked.description`:
 
@@ -135,12 +146,14 @@ proper (negative) error code
 
     Remove the callbacks for an hotplug machine state
 
-    :param enum cpuhp_state state:
+    :param state:
         The state to remove
+    :type state: enum cpuhp_state
 
-    :param bool invoke:
+    :param invoke:
         If true, the teardown function is invoked for cpus where
         cpu state >= \ ``state``\ 
+    :type invoke: bool
 
 .. _`__cpuhp_remove_state_cpuslocked.description`:
 

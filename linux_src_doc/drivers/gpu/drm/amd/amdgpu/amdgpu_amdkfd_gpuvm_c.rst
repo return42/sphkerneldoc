@@ -10,14 +10,17 @@ reserve_bo_and_vm
 
     reserve a BO and a VM unconditionally.
 
-    :param struct kgd_mem \*mem:
+    :param mem:
         KFD BO structure.
+    :type mem: struct kgd_mem \*
 
-    :param struct amdgpu_vm \*vm:
+    :param vm:
         the VM to reserve.
+    :type vm: struct amdgpu_vm \*
 
-    :param struct bo_vm_reservation_context \*ctx:
+    :param ctx:
         the struct that will be used in \ :c:func:`unreserve_bo_and_vms`\ .
+    :type ctx: struct bo_vm_reservation_context \*
 
 .. _`reserve_bo_and_cond_vms`:
 
@@ -28,18 +31,22 @@ reserve_bo_and_cond_vms
 
     reserve a BO and some VMs conditionally
 
-    :param struct kgd_mem \*mem:
+    :param mem:
         KFD BO structure.
+    :type mem: struct kgd_mem \*
 
-    :param struct amdgpu_vm \*vm:
+    :param vm:
         the VM to reserve. If NULL, then all VMs associated with the BO
         is used. Otherwise, a single VM associated with the BO.
+    :type vm: struct amdgpu_vm \*
 
-    :param enum bo_vm_match map_type:
+    :param map_type:
         the mapping status that will be used to filter the VMs.
+    :type map_type: enum bo_vm_match
 
-    :param struct bo_vm_reservation_context \*ctx:
+    :param ctx:
         the struct that will be used in \ :c:func:`unreserve_bo_and_vms`\ .
+    :type ctx: struct bo_vm_reservation_context \*
 
 .. _`reserve_bo_and_cond_vms.description`:
 
@@ -57,14 +64,17 @@ unreserve_bo_and_vms
 
     Unreserve BO and VMs from a reservation context
 
-    :param struct bo_vm_reservation_context \*ctx:
+    :param ctx:
         Reservation context to unreserve
+    :type ctx: struct bo_vm_reservation_context \*
 
-    :param bool wait:
+    :param wait:
         Optionally wait for a sync object representing pending VM updates
+    :type wait: bool
 
-    :param bool intr:
+    :param intr:
         Whether the wait is interruptible
+    :type intr: bool
 
 .. _`unreserve_bo_and_vms.description`:
 

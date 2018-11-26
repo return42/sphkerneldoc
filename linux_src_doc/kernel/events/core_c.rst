@@ -10,14 +10,17 @@ task_function_call
 
     call a function on the cpu on which a task runs
 
-    :param struct task_struct \*p:
+    :param p:
         the task to evaluate
+    :type p: struct task_struct \*
 
-    :param remote_function_f func:
+    :param func:
         the function to be called
+    :type func: remote_function_f
 
-    :param void \*info:
+    :param info:
         the function call argument
+    :type info: void \*
 
 .. _`task_function_call.description`:
 
@@ -45,14 +48,17 @@ cpu_function_call
 
     call a function on the cpu
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
-    :param remote_function_f func:
+    :param func:
         the function to be called
+    :type func: remote_function_f
 
-    :param void \*info:
+    :param info:
         the function call argument
+    :type info: void \*
 
 .. _`cpu_function_call.description`:
 
@@ -77,20 +83,25 @@ sys_perf_event_open
 
     open a performance event, associate it to a task/cpu
 
-    :param struct perf_event_attr __user \*attr_uptr:
+    :param attr_uptr:
         event_id type attributes for monitoring/sampling
+    :type attr_uptr: struct perf_event_attr __user \*
 
-    :param pid_t pid:
+    :param pid:
         target pid
+    :type pid: pid_t
 
-    :param int cpu:
+    :param cpu:
         target cpu
+    :type cpu: int
 
-    :param int group_fd:
+    :param group_fd:
         group leader event fd
+    :type group_fd: int
 
-    :param unsigned long flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned long
 
 .. _`perf_event_create_kernel_counter`:
 
@@ -99,20 +110,25 @@ perf_event_create_kernel_counter
 
 .. c:function:: struct perf_event *perf_event_create_kernel_counter(struct perf_event_attr *attr, int cpu, struct task_struct *task, perf_overflow_handler_t overflow_handler, void *context)
 
-    :param struct perf_event_attr \*attr:
+    :param attr:
         attributes of the counter to create
+    :type attr: struct perf_event_attr \*
 
-    :param int cpu:
+    :param cpu:
         cpu in which the counter is bound
+    :type cpu: int
 
-    :param struct task_struct \*task:
+    :param task:
         task to profile (NULL for percpu)
+    :type task: struct task_struct \*
 
-    :param perf_overflow_handler_t overflow_handler:
+    :param overflow_handler:
         *undescribed*
+    :type overflow_handler: perf_overflow_handler_t
 
-    :param void \*context:
+    :param context:
         *undescribed*
+    :type context: void \*
 
 .. This file was automatic generated / don't edit.
 

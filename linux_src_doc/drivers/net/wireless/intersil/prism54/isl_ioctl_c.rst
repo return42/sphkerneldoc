@@ -10,11 +10,13 @@ prism54_mib_mode_helper
 
     MIB change mode helper function
 
-    :param islpci_private \*priv:
+    :param priv:
         *undescribed*
+    :type priv: islpci_private \*
 
-    :param u32 iw_mode:
+    :param iw_mode:
         new mode (%IW_MODE\_\*)
+    :type iw_mode: u32
 
 .. _`prism54_mib_mode_helper.description`:
 
@@ -36,8 +38,9 @@ prism54_mib_init
 
     fill MIB cache with defaults
 
-    :param islpci_private \*priv:
+    :param priv:
         *undescribed*
+    :type priv: islpci_private \*
 
 .. _`prism54_mib_init.description`:
 

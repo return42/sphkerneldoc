@@ -152,11 +152,13 @@ vimc_propagate_frame
 
     propagate a frame through the topology
 
-    :param struct media_pad \*src:
+    :param src:
         the source pad where the frame is being originated
+    :type src: struct media_pad \*
 
-    :param const void \*frame:
+    :param frame:
         the frame to be propagated
+    :type frame: const void \*
 
 .. _`vimc_propagate_frame.description`:
 
@@ -175,11 +177,13 @@ vimc_pads_init
 
     initialize pads
 
-    :param u16 num_pads:
+    :param num_pads:
         number of pads to initialize
+    :type num_pads: u16
 
-    :param const unsigned long \*pads_flag:
+    :param pads_flag:
         *undescribed*
+    :type pads_flag: const unsigned long \*
 
 .. _`vimc_pads_init.description`:
 
@@ -197,8 +201,9 @@ vimc_pads_cleanup
 
     free pads
 
-    :param struct media_pad \*pads:
+    :param pads:
         pointer to the pads
+    :type pads: struct media_pad \*
 
 .. _`vimc_pads_cleanup.description`:
 
@@ -216,11 +221,13 @@ vimc_pipeline_s_stream
 
     start stream through the pipeline
 
-    :param struct media_entity \*ent:
+    :param ent:
         the pointer to struct media_entity for the node
+    :type ent: struct media_entity \*
 
-    :param int enable:
+    :param enable:
         1 to start the stream and 0 to stop
+    :type enable: int
 
 .. _`vimc_pipeline_s_stream.description`:
 
@@ -239,8 +246,9 @@ vimc_pix_map_by_index
 
     get vimc_pix_map struct by its index
 
-    :param unsigned int i:
+    :param i:
         index of the vimc_pix_map struct in vimc_pix_map_list
+    :type i: unsigned int
 
 .. _`vimc_pix_map_by_code`:
 
@@ -251,8 +259,9 @@ vimc_pix_map_by_code
 
     get vimc_pix_map struct by media bus code
 
-    :param u32 code:
+    :param code:
         media bus format code defined by MEDIA_BUS_FMT\_\* macros
+    :type code: u32
 
 .. _`vimc_pix_map_by_pixelformat`:
 
@@ -263,8 +272,9 @@ vimc_pix_map_by_pixelformat
 
     get vimc_pix_map struct by v4l2 pixel format
 
-    :param u32 pixelformat:
+    :param pixelformat:
         pixel format devined by V4L2_PIX_FMT\_\* macros
+    :type pixelformat: u32
 
 .. _`vimc_ent_sd_register`:
 
@@ -275,30 +285,38 @@ vimc_ent_sd_register
 
     initialize and register a subdev node
 
-    :param struct vimc_ent_device \*ved:
+    :param ved:
         the vimc_ent_device struct to be initialize
+    :type ved: struct vimc_ent_device \*
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         the v4l2_subdev struct to be initialize and registered
+    :type sd: struct v4l2_subdev \*
 
-    :param struct v4l2_device \*v4l2_dev:
+    :param v4l2_dev:
         the v4l2 device to register the v4l2_subdev
+    :type v4l2_dev: struct v4l2_device \*
 
-    :param const char \*const name:
+    :param name:
         name of the sub-device. Please notice that the name must be
         unique.
+    :type name: const char \*const
 
-    :param u32 function:
+    :param function:
         media entity function defined by MEDIA_ENT_F\_\* macros
+    :type function: u32
 
-    :param u16 num_pads:
+    :param num_pads:
         number of pads to initialize
+    :type num_pads: u16
 
-    :param const unsigned long \*pads_flag:
+    :param pads_flag:
         flags to use in each pad
+    :type pads_flag: const unsigned long \*
 
-    :param const struct v4l2_subdev_ops \*sd_ops:
+    :param sd_ops:
         pointer to \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ .
+    :type sd_ops: const struct v4l2_subdev_ops \*
 
 .. _`vimc_ent_sd_register.description`:
 
@@ -317,11 +335,13 @@ vimc_ent_sd_unregister
 
     cleanup and unregister a subdev node
 
-    :param struct vimc_ent_device \*ved:
+    :param ved:
         the vimc_ent_device struct to be cleaned up
+    :type ved: struct vimc_ent_device \*
 
-    :param struct v4l2_subdev \*sd:
+    :param sd:
         the v4l2_subdev struct to be unregistered
+    :type sd: struct v4l2_subdev \*
 
 .. _`vimc_ent_sd_unregister.description`:
 
@@ -340,8 +360,9 @@ vimc_link_validate
 
     validates a media link
 
-    :param struct media_link \*link:
+    :param link:
         pointer to \ :c:type:`struct media_link <media_link>`\ 
+    :type link: struct media_link \*
 
 .. _`vimc_link_validate.description`:
 

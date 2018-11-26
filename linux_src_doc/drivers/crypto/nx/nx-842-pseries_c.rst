@@ -10,20 +10,25 @@ nx842_pseries_compress
 
     Compress data using the 842 algorithm
 
-    :param const unsigned char \*in:
+    :param in:
         Pointer to input buffer
+    :type in: const unsigned char \*
 
-    :param unsigned int inlen:
+    :param inlen:
         Length of input buffer
+    :type inlen: unsigned int
 
-    :param unsigned char \*out:
+    :param out:
         Pointer to output buffer
+    :type out: unsigned char \*
 
-    :param unsigned int \*outlen:
+    :param outlen:
         Length of output buffer
+    :type outlen: unsigned int \*
 
-    :param void \*wmem:
+    :param wmem:
         *undescribed*
+    :type wmem: void \*
 
 .. _`nx842_pseries_compress.description`:
 
@@ -58,20 +63,25 @@ nx842_pseries_decompress
 
     Decompress data using the 842 algorithm
 
-    :param const unsigned char \*in:
+    :param in:
         Pointer to input buffer
+    :type in: const unsigned char \*
 
-    :param unsigned int inlen:
+    :param inlen:
         Length of input buffer
+    :type inlen: unsigned int
 
-    :param unsigned char \*out:
+    :param out:
         Pointer to output buffer
+    :type out: unsigned char \*
 
-    :param unsigned int \*outlen:
+    :param outlen:
         Length of output buffer
+    :type outlen: unsigned int \*
 
-    :param void \*wmem:
+    :param wmem:
         *undescribed*
+    :type wmem: void \*
 
 .. _`nx842_pseries_decompress.description`:
 
@@ -107,8 +117,9 @@ nx842_OF_set_defaults
 
     - Set default (disabled) values for devdata
 
-    :param struct nx842_devdata \*devdata:
+    :param devdata:
         *undescribed*
+    :type devdata: struct nx842_devdata \*
 
 .. _`nx842_of_set_defaults.description`:
 
@@ -134,8 +145,9 @@ nx842_OF_upd_status
 
     - Check the device info from OF status prop
 
-    :param struct property \*prop:
+    :param prop:
         *undescribed*
+    :type prop: struct property \*
 
 .. _`nx842_of_upd_status.description`:
 
@@ -166,11 +178,13 @@ nx842_OF_upd_maxsglen
 
     - Update the device info from OF maxsglen prop
 
-    :param struct nx842_devdata \*devdata:
+    :param devdata:
         *undescribed*
+    :type devdata: struct nx842_devdata \*
 
-    :param struct property \*prop:
+    :param prop:
         *undescribed*
+    :type prop: struct property \*
 
 .. _`nx842_of_upd_maxsglen.description`:
 
@@ -215,11 +229,13 @@ nx842_OF_upd_maxsyncop
 
     - Update the device info from OF maxsyncop prop
 
-    :param struct nx842_devdata \*devdata:
+    :param devdata:
         *undescribed*
+    :type devdata: struct nx842_devdata \*
 
-    :param struct property \*prop:
+    :param prop:
         *undescribed*
+    :type prop: struct property \*
 
 .. _`nx842_of_upd_maxsyncop.description`:
 
@@ -273,14 +289,17 @@ nx842_OF_notifier
 
     Process updates to OF properties for the device
 
-    :param struct notifier_block \*np:
+    :param np:
         notifier block
+    :type np: struct notifier_block \*
 
-    :param unsigned long action:
+    :param action:
         notifier action
+    :type action: unsigned long
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`nx842_of_notifier.return`:
 

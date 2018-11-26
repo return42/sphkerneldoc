@@ -10,8 +10,9 @@ em28xx_free_device
 
     Free em28xx device
 
-    :param struct kref \*ref:
+    :param ref:
         struct kref for em28xx device
+    :type ref: struct kref \*
 
 .. _`em28xx_free_device.description`:
 

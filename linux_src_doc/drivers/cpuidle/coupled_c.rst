@@ -130,11 +130,13 @@ cpuidle_coupled_parallel_barrier
 
     synchronize all online coupled cpus
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         cpuidle_device of the calling cpu
+    :type dev: struct cpuidle_device \*
 
-    :param atomic_t \*a:
+    :param a:
         atomic variable to hold the barrier
+    :type a: atomic_t \*
 
 .. _`cpuidle_coupled_parallel_barrier.description`:
 
@@ -163,11 +165,13 @@ cpuidle_state_is_coupled
 
     check if a state is part of a coupled set
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         struct cpuidle_driver for the platform
+    :type drv: struct cpuidle_driver \*
 
-    :param int state:
+    :param state:
         index of the target state in drv->states
+    :type state: int
 
 .. _`cpuidle_state_is_coupled.description`:
 
@@ -185,8 +189,9 @@ cpuidle_coupled_state_verify
 
     check if the coupled states are correctly set.
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         struct cpuidle_driver for the platform
+    :type drv: struct cpuidle_driver \*
 
 .. _`cpuidle_coupled_state_verify.description`:
 
@@ -205,8 +210,9 @@ cpuidle_coupled_set_ready
 
     mark a cpu as ready
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_set_not_ready`:
 
@@ -217,8 +223,9 @@ cpuidle_coupled_set_not_ready
 
     mark a cpu as not ready
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_set_not_ready.description`:
 
@@ -244,8 +251,9 @@ cpuidle_coupled_no_cpus_ready
 
     check if no cpus in a coupled set are ready
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_no_cpus_ready.description`:
 
@@ -263,8 +271,9 @@ cpuidle_coupled_cpus_ready
 
     check if all cpus in a coupled set are ready
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_cpus_ready.description`:
 
@@ -282,8 +291,9 @@ cpuidle_coupled_cpus_waiting
 
     check if all cpus in a coupled set are waiting
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_cpus_waiting.description`:
 
@@ -301,8 +311,9 @@ cpuidle_coupled_no_cpus_waiting
 
     check if no cpus in coupled set are waiting
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_no_cpus_waiting.description`:
 
@@ -320,11 +331,13 @@ cpuidle_coupled_get_state
 
     determine the deepest idle state
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         struct cpuidle_device for this cpu
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_get_state.description`:
 
@@ -342,8 +355,9 @@ cpuidle_coupled_poke
 
     wake up a cpu that may be waiting
 
-    :param int cpu:
+    :param cpu:
         target cpu
+    :type cpu: int
 
 .. _`cpuidle_coupled_poke.description`:
 
@@ -367,11 +381,13 @@ cpuidle_coupled_poke_others
 
     wake up all other cpus that may be waiting
 
-    :param int this_cpu:
+    :param this_cpu:
         *undescribed*
+    :type this_cpu: int
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_poke_others.description`:
 
@@ -389,14 +405,17 @@ cpuidle_coupled_set_waiting
 
     mark this cpu as in the wait loop
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
-    :param int next_state:
+    :param next_state:
         the index in drv->states of the requested state for this cpu
+    :type next_state: int
 
 .. _`cpuidle_coupled_set_waiting.description`:
 
@@ -415,11 +434,13 @@ cpuidle_coupled_set_not_waiting
 
     mark this cpu as leaving the wait loop
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_set_not_waiting.description`:
 
@@ -437,11 +458,13 @@ cpuidle_coupled_set_done
 
     mark this cpu as leaving the ready loop
 
-    :param int cpu:
+    :param cpu:
         the current cpu
+    :type cpu: int
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the current cpu
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_set_done.description`:
 
@@ -461,8 +484,9 @@ cpuidle_coupled_clear_pokes
 
     spin until the poke interrupt is processed \ ``cpu``\  - this cpu
 
-    :param int cpu:
+    :param cpu:
         *undescribed*
+    :type cpu: int
 
 .. _`cpuidle_coupled_clear_pokes.description`:
 
@@ -487,14 +511,17 @@ cpuidle_enter_state_coupled
 
     attempt to enter a state with coupled cpus
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         struct cpuidle_device for the current cpu
+    :type dev: struct cpuidle_device \*
 
-    :param struct cpuidle_driver \*drv:
+    :param drv:
         struct cpuidle_driver for the platform
+    :type drv: struct cpuidle_driver \*
 
-    :param int next_state:
+    :param next_state:
         index of the requested state in drv->states
+    :type next_state: int
 
 .. _`cpuidle_enter_state_coupled.description`:
 
@@ -523,8 +550,9 @@ cpuidle_coupled_register_device
 
     register a coupled cpuidle device
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         struct cpuidle_device for the current cpu
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_coupled_register_device.description`:
 
@@ -544,8 +572,9 @@ cpuidle_coupled_unregister_device
 
     unregister a coupled cpuidle device
 
-    :param struct cpuidle_device \*dev:
+    :param dev:
         struct cpuidle_device for the current cpu
+    :type dev: struct cpuidle_device \*
 
 .. _`cpuidle_coupled_unregister_device.description`:
 
@@ -565,8 +594,9 @@ cpuidle_coupled_prevent_idle
 
     prevent cpus from entering a coupled state
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the cpu that is changing state
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_prevent_idle.description`:
 
@@ -585,8 +615,9 @@ cpuidle_coupled_allow_idle
 
     allows cpus to enter a coupled state
 
-    :param struct cpuidle_coupled \*coupled:
+    :param coupled:
         the struct coupled that contains the cpu that is changing state
+    :type coupled: struct cpuidle_coupled \*
 
 .. _`cpuidle_coupled_allow_idle.description`:
 

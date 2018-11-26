@@ -46,8 +46,9 @@ zd1301_demod_get_dvb_frontend
 
     Get pointer to DVB frontend
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to platform device
+    :type pdev: struct platform_device \*
 
 .. _`zd1301_demod_get_dvb_frontend.return`:
 
@@ -65,8 +66,9 @@ zd1301_demod_get_i2c_adapter
 
     Get pointer to I2C adapter
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         Pointer to platform device
+    :type pdev: struct platform_device \*
 
 .. _`zd1301_demod_get_i2c_adapter.return`:
 
@@ -84,8 +86,9 @@ zd1301_demod_get_dvb_frontend
 
     Attach a zd1301 frontend
 
-    :param struct platform_device \*dev:
+    :param dev:
         Pointer to platform device
+    :type dev: struct platform_device \*
 
 .. _`zd1301_demod_get_dvb_frontend.return`:
 

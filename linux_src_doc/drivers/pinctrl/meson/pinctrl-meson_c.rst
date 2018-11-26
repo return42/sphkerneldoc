@@ -10,14 +10,17 @@ meson_get_bank
 
     find the bank containing a given pin
 
-    :param struct meson_pinctrl \*pc:
+    :param pc:
         the pinctrl instance
+    :type pc: struct meson_pinctrl \*
 
-    :param unsigned int pin:
+    :param pin:
         the pin number
+    :type pin: unsigned int
 
-    :param struct meson_bank \*\*bank:
+    :param bank:
         the found bank
+    :type bank: struct meson_bank \*\*
 
 .. _`meson_get_bank.return`:
 
@@ -35,20 +38,25 @@ meson_calc_reg_and_bit
 
     calculate register and bit for a pin
 
-    :param struct meson_bank \*bank:
+    :param bank:
         the bank containing the pin
+    :type bank: struct meson_bank \*
 
-    :param unsigned int pin:
+    :param pin:
         the pin number
+    :type pin: unsigned int
 
-    :param enum meson_reg_type reg_type:
+    :param reg_type:
         the type of register needed (pull-enable, pull, etc...)
+    :type reg_type: enum meson_reg_type
 
-    :param unsigned int \*reg:
+    :param reg:
         the computed register offset
+    :type reg: unsigned int \*
 
-    :param unsigned int \*bit:
+    :param bit:
         the computed bit
+    :type bit: unsigned int \*
 
 .. This file was automatic generated / don't edit.
 

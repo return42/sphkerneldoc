@@ -10,17 +10,21 @@ csio_shost_init
 
     Create and initialize the lnode module.
 
-    :param struct csio_hw \*hw:
+    :param hw:
         The HW module.
+    :type hw: struct csio_hw \*
 
-    :param struct device \*dev:
+    :param dev:
         The device associated with this invocation.
+    :type dev: struct device \*
 
-    :param bool probe:
+    :param probe:
         Called from probe context or not?
+    :type probe: bool
 
-    :param struct csio_lnode \*pln:
+    :param pln:
         *undescribed*
+    :type pln: struct csio_lnode \*
 
 .. _`csio_shost_init.description`:
 
@@ -41,8 +45,9 @@ csio_shost_exit
 
     De-instantiate the shost.
 
-    :param struct csio_lnode \*ln:
+    :param ln:
         The lnode module corresponding to the shost.
+    :type ln: struct csio_lnode \*
 
 .. This file was automatic generated / don't edit.
 

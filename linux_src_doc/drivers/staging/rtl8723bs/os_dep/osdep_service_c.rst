@@ -10,8 +10,9 @@ rtw_cbuf_full
 
     test if cbuf is full
 
-    :param struct rtw_cbuf \*cbuf:
+    :param cbuf:
         pointer of struct rtw_cbuf
+    :type cbuf: struct rtw_cbuf \*
 
 .. _`rtw_cbuf_full.return`:
 
@@ -29,8 +30,9 @@ rtw_cbuf_empty
 
     test if cbuf is empty
 
-    :param struct rtw_cbuf \*cbuf:
+    :param cbuf:
         pointer of struct rtw_cbuf
+    :type cbuf: struct rtw_cbuf \*
 
 .. _`rtw_cbuf_empty.return`:
 
@@ -48,11 +50,13 @@ rtw_cbuf_push
 
     push a pointer into cbuf
 
-    :param struct rtw_cbuf \*cbuf:
+    :param cbuf:
         pointer of struct rtw_cbuf
+    :type cbuf: struct rtw_cbuf \*
 
-    :param void \*buf:
+    :param buf:
         pointer to push in
+    :type buf: void \*
 
 .. _`rtw_cbuf_push.description`:
 
@@ -77,8 +81,9 @@ rtw_cbuf_pop
 
     pop a pointer from cbuf
 
-    :param struct rtw_cbuf \*cbuf:
+    :param cbuf:
         pointer of struct rtw_cbuf
+    :type cbuf: struct rtw_cbuf \*
 
 .. _`rtw_cbuf_pop.description`:
 
@@ -103,8 +108,9 @@ rtw_cbuf_alloc
 
     allocte a rtw_cbuf with given size and do initialization
 
-    :param u32 size:
+    :param size:
         size of pointer
+    :type size: u32
 
 .. _`rtw_cbuf_alloc.return`:
 

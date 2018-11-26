@@ -10,11 +10,13 @@ get_image_page
 
     Allocate a page for a hibernation image.
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         GFP mask for the allocation.
+    :type gfp_mask: gfp_t
 
-    :param int safe_needed:
+    :param safe_needed:
         Get pages that were not used before hibernation (restore only)
+    :type safe_needed: int
 
 .. _`get_image_page.description`:
 
@@ -38,11 +40,13 @@ free_image_page
 
     Free a page allocated for hibernation image.
 
-    :param void \*addr:
+    :param addr:
         Address of the page to free.
+    :type addr: void \*
 
-    :param int clear_nosave_free:
+    :param clear_nosave_free:
         If set, clear the PageNosaveFree bit for the page.
+    :type clear_nosave_free: int
 
 .. _`free_image_page.description`:
 
@@ -115,17 +119,21 @@ alloc_rtree_node
 
     Allocate a new node and add it to the radix tree.
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         *undescribed*
+    :type gfp_mask: gfp_t
 
-    :param int safe_needed:
+    :param safe_needed:
         *undescribed*
+    :type safe_needed: int
 
-    :param struct chain_allocator \*ca:
+    :param ca:
         *undescribed*
+    :type ca: struct chain_allocator \*
 
-    :param struct list_head \*list:
+    :param list:
         *undescribed*
+    :type list: struct list_head \*
 
 .. _`alloc_rtree_node.description`:
 
@@ -145,17 +153,21 @@ add_rtree_block
 
     Add a new leave node to the radix tree.
 
-    :param struct mem_zone_bm_rtree \*zone:
+    :param zone:
         *undescribed*
+    :type zone: struct mem_zone_bm_rtree \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         *undescribed*
+    :type gfp_mask: gfp_t
 
-    :param int safe_needed:
+    :param safe_needed:
         *undescribed*
+    :type safe_needed: int
 
-    :param struct chain_allocator \*ca:
+    :param ca:
         *undescribed*
+    :type ca: struct chain_allocator \*
 
 .. _`add_rtree_block.description`:
 
@@ -175,20 +187,25 @@ create_zone_bm_rtree
 
     Create a radix tree for one zone.
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         *undescribed*
+    :type gfp_mask: gfp_t
 
-    :param int safe_needed:
+    :param safe_needed:
         *undescribed*
+    :type safe_needed: int
 
-    :param struct chain_allocator \*ca:
+    :param ca:
         *undescribed*
+    :type ca: struct chain_allocator \*
 
-    :param unsigned long start:
+    :param start:
         *undescribed*
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         *undescribed*
+    :type end: unsigned long
 
 .. _`create_zone_bm_rtree.description`:
 
@@ -208,11 +225,13 @@ free_zone_bm_rtree
 
     Free the memory of the radix tree.
 
-    :param struct mem_zone_bm_rtree \*zone:
+    :param zone:
         *undescribed*
+    :type zone: struct mem_zone_bm_rtree \*
 
-    :param int clear_nosave_free:
+    :param clear_nosave_free:
         *undescribed*
+    :type clear_nosave_free: int
 
 .. _`free_zone_bm_rtree.description`:
 
@@ -232,8 +251,9 @@ free_mem_extents
 
     Free a list of memory extents.
 
-    :param struct list_head \*list:
+    :param list:
         List of extents to free.
+    :type list: struct list_head \*
 
 .. _`create_mem_extents`:
 
@@ -244,11 +264,13 @@ create_mem_extents
 
     Create a list of memory extents.
 
-    :param struct list_head \*list:
+    :param list:
         List to put the extents into.
+    :type list: struct list_head \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         Mask to use for memory allocations.
+    :type gfp_mask: gfp_t
 
 .. _`create_mem_extents.description`:
 
@@ -266,14 +288,17 @@ memory_bm_create
 
     Allocate memory for a memory bitmap.
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         *undescribed*
+    :type bm: struct memory_bitmap \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         *undescribed*
+    :type gfp_mask: gfp_t
 
-    :param int safe_needed:
+    :param safe_needed:
         *undescribed*
+    :type safe_needed: int
 
 .. _`memory_bm_free`:
 
@@ -284,11 +309,13 @@ memory_bm_free
 
     Free memory occupied by the memory bitmap.
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         Memory bitmap.
+    :type bm: struct memory_bitmap \*
 
-    :param int clear_nosave_free:
+    :param clear_nosave_free:
         *undescribed*
+    :type clear_nosave_free: int
 
 .. _`memory_bm_find_bit`:
 
@@ -299,17 +326,21 @@ memory_bm_find_bit
 
     Find the bit for a given PFN in a memory bitmap.
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         *undescribed*
+    :type bm: struct memory_bitmap \*
 
-    :param unsigned long pfn:
+    :param pfn:
         *undescribed*
+    :type pfn: unsigned long
 
-    :param void \*\*addr:
+    :param addr:
         *undescribed*
+    :type addr: void \*\*
 
-    :param unsigned int \*bit_nr:
+    :param bit_nr:
         *undescribed*
+    :type bit_nr: unsigned int \*
 
 .. _`memory_bm_find_bit.description`:
 
@@ -331,8 +362,9 @@ memory_bm_next_pfn
 
     Find the next set bit in a memory bitmap.
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         Memory bitmap.
+    :type bm: struct memory_bitmap \*
 
 .. _`memory_bm_next_pfn.description`:
 
@@ -355,14 +387,17 @@ this function for the given memory bitmap.
 
     Register a region of unsaveable memory.
 
-    :param unsigned long start_pfn:
+    :param start_pfn:
         *undescribed*
+    :type start_pfn: unsigned long
 
-    :param unsigned long end_pfn:
+    :param end_pfn:
         *undescribed*
+    :type end_pfn: unsigned long
 
-    :param int use_kmalloc:
+    :param use_kmalloc:
         *undescribed*
+    :type use_kmalloc: int
 
 .. _`__register_nosave_region.description`:
 
@@ -381,8 +416,9 @@ mark_nosave_pages
 
     Mark pages that should not be saved.
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         Memory bitmap.
+    :type bm: struct memory_bitmap \*
 
 .. _`mark_nosave_pages.description`:
 
@@ -401,8 +437,9 @@ create_basic_memory_bitmaps
 
     Create bitmaps to hold basic page information.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`create_basic_memory_bitmaps.description`:
 
@@ -423,8 +460,9 @@ free_basic_memory_bitmaps
 
     Free memory bitmaps holding basic information.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`free_basic_memory_bitmaps.description`:
 
@@ -444,8 +482,9 @@ snapshot_additional_pages
 
     Estimate the number of extra pages needed.
 
-    :param struct zone \*zone:
+    :param zone:
         Memory zone to carry out the computation for.
+    :type zone: struct zone \*
 
 .. _`snapshot_additional_pages.description`:
 
@@ -465,8 +504,9 @@ count_free_highmem_pages
 
     Compute the total number of free highmem pages.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`count_free_highmem_pages.description`:
 
@@ -484,11 +524,13 @@ saveable_highmem_page
 
     Check if a highmem page is saveable.
 
-    :param struct zone \*zone:
+    :param zone:
         *undescribed*
+    :type zone: struct zone \*
 
-    :param unsigned long pfn:
+    :param pfn:
         *undescribed*
+    :type pfn: unsigned long
 
 .. _`saveable_highmem_page.description`:
 
@@ -509,8 +551,9 @@ count_highmem_pages
 
     Compute the total number of saveable highmem pages.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`saveable_page`:
 
@@ -521,11 +564,13 @@ saveable_page
 
     Check if the given page is saveable.
 
-    :param struct zone \*zone:
+    :param zone:
         *undescribed*
+    :type zone: struct zone \*
 
-    :param unsigned long pfn:
+    :param pfn:
         *undescribed*
+    :type pfn: unsigned long
 
 .. _`saveable_page.description`:
 
@@ -548,8 +593,9 @@ count_data_pages
 
     Compute the total number of saveable non-highmem pages.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`safe_copy_page`:
 
@@ -560,11 +606,13 @@ safe_copy_page
 
     Copy a page in a safe way.
 
-    :param void \*dst:
+    :param dst:
         *undescribed*
+    :type dst: void \*
 
-    :param struct page \*s_page:
+    :param s_page:
         *undescribed*
+    :type s_page: struct page \*
 
 .. _`safe_copy_page.description`:
 
@@ -584,8 +632,9 @@ swsusp_free
 
     Free pages allocated for hibernation image.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`swsusp_free.description`:
 
@@ -604,11 +653,13 @@ preallocate_image_pages
 
     Allocate a number of pages for hibernation image.
 
-    :param unsigned long nr_pages:
+    :param nr_pages:
         Number of page frames to allocate.
+    :type nr_pages: unsigned long
 
-    :param gfp_t mask:
+    :param mask:
         GFP flags to use for the allocation.
+    :type mask: gfp_t
 
 .. _`preallocate_image_pages.return-value`:
 
@@ -626,14 +677,17 @@ Number of page frames actually allocated
 
     Compute (an approximation of) x \* (multiplier / base).
 
-    :param u64 x:
+    :param x:
         *undescribed*
+    :type x: u64
 
-    :param u64 multiplier:
+    :param multiplier:
         *undescribed*
+    :type multiplier: u64
 
-    :param u64 base:
+    :param base:
         *undescribed*
+    :type base: u64
 
 .. _`free_unnecessary_pages`:
 
@@ -644,8 +698,9 @@ free_unnecessary_pages
 
     Release preallocated pages not needed for the image.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`minimum_image_size`:
 
@@ -656,8 +711,9 @@ minimum_image_size
 
     Estimate the minimum acceptable size of an image.
 
-    :param unsigned long saveable:
+    :param saveable:
         Number of saveable pages in the system.
+    :type saveable: unsigned long
 
 .. _`minimum_image_size.description`:
 
@@ -684,8 +740,9 @@ hibernate_preallocate_memory
 
     Preallocate memory for hibernation image.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hibernate_preallocate_memory.description`:
 
@@ -720,8 +777,9 @@ count_pages_for_highmem
 
     Count non-highmem pages needed for copying highmem.
 
-    :param unsigned int nr_highmem:
+    :param nr_highmem:
         *undescribed*
+    :type nr_highmem: unsigned int
 
 .. _`count_pages_for_highmem.description`:
 
@@ -740,11 +798,13 @@ enough_free_mem
 
     Check if there is enough free memory for the image.
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         *undescribed*
+    :type nr_pages: unsigned int
 
-    :param unsigned int nr_highmem:
+    :param nr_highmem:
         *undescribed*
+    :type nr_highmem: unsigned int
 
 .. _`get_highmem_buffer`:
 
@@ -755,8 +815,9 @@ get_highmem_buffer
 
     Allocate a buffer for highmem pages.
 
-    :param int safe_needed:
+    :param safe_needed:
         *undescribed*
+    :type safe_needed: int
 
 .. _`get_highmem_buffer.description`:
 
@@ -775,11 +836,13 @@ alloc_highmem_pages
 
     Allocate some highmem pages for the image.
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         *undescribed*
+    :type bm: struct memory_bitmap \*
 
-    :param unsigned int nr_highmem:
+    :param nr_highmem:
         *undescribed*
+    :type nr_highmem: unsigned int
 
 .. _`alloc_highmem_pages.description`:
 
@@ -798,14 +861,17 @@ swsusp_alloc
 
     Allocate memory for hibernation image.
 
-    :param struct memory_bitmap \*copy_bm:
+    :param copy_bm:
         *undescribed*
+    :type copy_bm: struct memory_bitmap \*
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         *undescribed*
+    :type nr_pages: unsigned int
 
-    :param unsigned int nr_highmem:
+    :param nr_highmem:
         *undescribed*
+    :type nr_highmem: unsigned int
 
 .. _`swsusp_alloc.description`:
 
@@ -829,11 +895,13 @@ pack_pfns
 
     Prepare PFNs for saving.
 
-    :param unsigned long \*buf:
+    :param buf:
         Memory buffer to store the PFNs in.
+    :type buf: unsigned long \*
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         Memory bitmap.
+    :type bm: struct memory_bitmap \*
 
 .. _`pack_pfns.description`:
 
@@ -852,8 +920,9 @@ snapshot_read_next
 
     Get the address to read the next image page from.
 
-    :param struct snapshot_handle \*handle:
+    :param handle:
         Snapshot handle to be used for the reading.
+    :type handle: struct snapshot_handle \*
 
 .. _`snapshot_read_next.description`:
 
@@ -881,8 +950,9 @@ mark_unsafe_pages
 
     Mark pages that were used before hibernation.
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         *undescribed*
+    :type bm: struct memory_bitmap \*
 
 .. _`mark_unsafe_pages.description`:
 
@@ -901,8 +971,9 @@ load_header
 
     Check the image header and copy the data from it.
 
-    :param struct swsusp_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct swsusp_info \*
 
 .. _`unpack_orig_pfns`:
 
@@ -913,11 +984,13 @@ unpack_orig_pfns
 
     Set bits corresponding to given PFNs in a memory bitmap.
 
-    :param unsigned long \*buf:
+    :param buf:
         Area of memory containing the PFNs.
+    :type buf: unsigned long \*
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         Memory bitmap.
+    :type bm: struct memory_bitmap \*
 
 .. _`unpack_orig_pfns.description`:
 
@@ -936,8 +1009,9 @@ count_highmem_image_pages
 
     Compute the number of highmem pages in the image.
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         Memory bitmap.
+    :type bm: struct memory_bitmap \*
 
 .. _`count_highmem_image_pages.description`:
 
@@ -955,11 +1029,13 @@ prepare_highmem_image
 
     Allocate memory for loading highmem data from image.
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         Pointer to an uninitialized memory bitmap structure.
+    :type bm: struct memory_bitmap \*
 
-    :param unsigned int \*nr_highmem_p:
+    :param nr_highmem_p:
         Pointer to the number of highmem image pages.
+    :type nr_highmem_p: unsigned int \*
 
 .. _`prepare_highmem_image.description`:
 
@@ -988,11 +1064,13 @@ get_highmem_page_buffer
 
     Prepare a buffer to store a highmem image page.
 
-    :param struct page \*page:
+    :param page:
         *undescribed*
+    :type page: struct page \*
 
-    :param struct chain_allocator \*ca:
+    :param ca:
         *undescribed*
+    :type ca: struct chain_allocator \*
 
 .. _`get_highmem_page_buffer.description`:
 
@@ -1023,8 +1101,9 @@ copy_last_highmem_page
 
     Copy most the most recent highmem image page.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`copy_last_highmem_page.description`:
 
@@ -1044,11 +1123,13 @@ prepare_image
 
     Make room for loading hibernation image.
 
-    :param struct memory_bitmap \*new_bm:
+    :param new_bm:
         Unitialized memory bitmap structure.
+    :type new_bm: struct memory_bitmap \*
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         Memory bitmap with unsafe pages marked.
+    :type bm: struct memory_bitmap \*
 
 .. _`prepare_image.description`:
 
@@ -1074,11 +1155,13 @@ get_buffer
 
     Get the address to store the next image data page.
 
-    :param struct memory_bitmap \*bm:
+    :param bm:
         *undescribed*
+    :type bm: struct memory_bitmap \*
 
-    :param struct chain_allocator \*ca:
+    :param ca:
         *undescribed*
+    :type ca: struct chain_allocator \*
 
 .. _`get_buffer.description`:
 
@@ -1097,8 +1180,9 @@ snapshot_write_next
 
     Get the address to store the next image page.
 
-    :param struct snapshot_handle \*handle:
+    :param handle:
         Snapshot handle structure to guide the writing.
+    :type handle: struct snapshot_handle \*
 
 .. _`snapshot_write_next.description`:
 
@@ -1126,8 +1210,9 @@ snapshot_write_finalize
 
     Complete the loading of a hibernation image.
 
-    :param struct snapshot_handle \*handle:
+    :param handle:
         *undescribed*
+    :type handle: struct snapshot_handle \*
 
 .. _`snapshot_write_finalize.description`:
 
@@ -1148,8 +1233,9 @@ restore_highmem
 
     Put highmem image pages into their original locations.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`restore_highmem.description`:
 

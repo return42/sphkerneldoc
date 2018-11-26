@@ -10,8 +10,9 @@ qat_crypto_dev_config
 
     create dev config required to create crypto inst.
 
-    :param struct adf_accel_dev \*accel_dev:
+    :param accel_dev:
         Pointer to acceleration device.
+    :type accel_dev: struct adf_accel_dev \*
 
 .. _`qat_crypto_dev_config.description`:
 

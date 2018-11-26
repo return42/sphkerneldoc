@@ -10,8 +10,9 @@ irq_gc_noop
 
     NOOP function
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
 .. _`irq_gc_mask_disable_reg`:
 
@@ -22,8 +23,9 @@ irq_gc_mask_disable_reg
 
     Mask chip via disable register
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
 .. _`irq_gc_mask_disable_reg.description`:
 
@@ -42,8 +44,9 @@ irq_gc_mask_set_bit
 
     Mask chip via setting bit in mask register
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
 .. _`irq_gc_mask_set_bit.description`:
 
@@ -62,8 +65,9 @@ irq_gc_mask_clr_bit
 
     Mask chip via clearing bit in mask register
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
 .. _`irq_gc_mask_clr_bit.description`:
 
@@ -82,8 +86,9 @@ irq_gc_unmask_enable_reg
 
     Unmask chip via enable register
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
 .. _`irq_gc_unmask_enable_reg.description`:
 
@@ -102,8 +107,9 @@ irq_gc_ack_set_bit
 
     Ack pending interrupt via setting bit
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
 .. _`irq_gc_ack_clr_bit`:
 
@@ -114,8 +120,9 @@ irq_gc_ack_clr_bit
 
     Ack pending interrupt via clearing bit
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
 .. _`irq_gc_mask_disable_and_ack_set`:
 
@@ -126,8 +133,9 @@ irq_gc_mask_disable_and_ack_set
 
     Mask and ack pending interrupt
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
 .. _`irq_gc_mask_disable_and_ack_set.description`:
 
@@ -156,8 +164,9 @@ irq_gc_eoi
 
     EOI interrupt
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
 .. _`irq_gc_set_wake`:
 
@@ -168,11 +177,13 @@ irq_gc_set_wake
 
     Set/clr wake bit for an interrupt
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data
+    :type d: struct irq_data \*
 
-    :param unsigned int on:
+    :param on:
         Indicates whether the wake bit should be set or cleared
+    :type on: unsigned int
 
 .. _`irq_gc_set_wake.description`:
 
@@ -192,20 +203,25 @@ irq_alloc_generic_chip
 
     Allocate a generic chip and initialize it
 
-    :param const char \*name:
+    :param name:
         Name of the irq chip
+    :type name: const char \*
 
-    :param int num_ct:
+    :param num_ct:
         Number of irq_chip_type instances associated with this
+    :type num_ct: int
 
-    :param unsigned int irq_base:
+    :param irq_base:
         Interrupt base nr for this chip
+    :type irq_base: unsigned int
 
-    :param void __iomem \*reg_base:
+    :param reg_base:
         Register base address (virtual)
+    :type reg_base: void __iomem \*
 
-    :param irq_flow_handler_t handler:
+    :param handler:
         Default flow handler associated with this chip
+    :type handler: irq_flow_handler_t
 
 .. _`irq_alloc_generic_chip.description`:
 
@@ -224,29 +240,37 @@ __irq_alloc_domain_generic_chips
 
     Allocate generic chips for an irq domain
 
-    :param struct irq_domain \*d:
+    :param d:
         irq domain for which to allocate chips
+    :type d: struct irq_domain \*
 
-    :param int irqs_per_chip:
+    :param irqs_per_chip:
         Number of interrupts each chip handles (max 32)
+    :type irqs_per_chip: int
 
-    :param int num_ct:
+    :param num_ct:
         Number of irq_chip_type instances associated with this
+    :type num_ct: int
 
-    :param const char \*name:
+    :param name:
         Name of the irq chip
+    :type name: const char \*
 
-    :param irq_flow_handler_t handler:
+    :param handler:
         Default flow handler associated with these chips
+    :type handler: irq_flow_handler_t
 
-    :param unsigned int clr:
+    :param clr:
         IRQ_* bits to clear in the mapping function
+    :type clr: unsigned int
 
-    :param unsigned int set:
+    :param set:
         IRQ_* bits to set in the mapping function
+    :type set: unsigned int
 
-    :param enum irq_gc_flags gcflags:
+    :param gcflags:
         Generic chip specific setup flags
+    :type gcflags: enum irq_gc_flags
 
 .. _`irq_get_domain_generic_chip`:
 
@@ -257,11 +281,13 @@ irq_get_domain_generic_chip
 
     Get a pointer to the generic chip of a hw_irq
 
-    :param struct irq_domain \*d:
+    :param d:
         irq domain pointer
+    :type d: struct irq_domain \*
 
-    :param unsigned int hw_irq:
+    :param hw_irq:
         Hardware interrupt number
+    :type hw_irq: unsigned int
 
 .. _`irq_setup_generic_chip`:
 
@@ -272,20 +298,25 @@ irq_setup_generic_chip
 
     Setup a range of interrupts with a generic chip
 
-    :param struct irq_chip_generic \*gc:
+    :param gc:
         Generic irq chip holding all data
+    :type gc: struct irq_chip_generic \*
 
-    :param u32 msk:
+    :param msk:
         Bitmask holding the irqs to initialize relative to gc->irq_base
+    :type msk: u32
 
-    :param enum irq_gc_flags flags:
+    :param flags:
         Flags for initialization
+    :type flags: enum irq_gc_flags
 
-    :param unsigned int clr:
+    :param clr:
         IRQ_* bits to clear
+    :type clr: unsigned int
 
-    :param unsigned int set:
+    :param set:
         IRQ_* bits to set
+    :type set: unsigned int
 
 .. _`irq_setup_generic_chip.description`:
 
@@ -305,11 +336,13 @@ irq_setup_alt_chip
 
     Switch to alternative chip
 
-    :param struct irq_data \*d:
+    :param d:
         irq_data for this interrupt
+    :type d: struct irq_data \*
 
-    :param unsigned int type:
+    :param type:
         Flow type to be initialized
+    :type type: unsigned int
 
 .. _`irq_setup_alt_chip.description`:
 
@@ -327,17 +360,21 @@ irq_remove_generic_chip
 
     Remove a chip
 
-    :param struct irq_chip_generic \*gc:
+    :param gc:
         Generic irq chip holding all data
+    :type gc: struct irq_chip_generic \*
 
-    :param u32 msk:
+    :param msk:
         Bitmask holding the irqs to initialize relative to gc->irq_base
+    :type msk: u32
 
-    :param unsigned int clr:
+    :param clr:
         IRQ_* bits to clear
+    :type clr: unsigned int
 
-    :param unsigned int set:
+    :param set:
         IRQ_* bits to set
+    :type set: unsigned int
 
 .. _`irq_remove_generic_chip.description`:
 

@@ -10,8 +10,9 @@ llc_sap_alloc
 
     allocates and initializes sap.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`llc_sap_alloc.description`:
 
@@ -29,8 +30,9 @@ llc_sap_find
 
     searchs a SAP in station
 
-    :param unsigned char sap_value:
+    :param sap_value:
         sap to be found
+    :type sap_value: unsigned char
 
 .. _`llc_sap_find.description`:
 
@@ -51,8 +53,9 @@ llc_sap_open
 
     open interface to the upper layers.
 
-    :param unsigned char lsap:
+    :param lsap:
         SAP number.
+    :type lsap: unsigned char
 
     :param int (\*func)(struct sk_buff \*skb, struct net_device \*dev, struct packet_type \*pt, struct net_device \*orig_dev):
         rcv func for datalink protos
@@ -75,8 +78,9 @@ llc_sap_close
 
     close interface for upper layers.
 
-    :param struct llc_sap \*sap:
+    :param sap:
         SAP to be closed.
+    :type sap: struct llc_sap \*
 
 .. _`llc_sap_close.description`:
 

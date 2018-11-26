@@ -54,11 +54,13 @@ ipu_image_convert_cb_t
 
     conversion callback function prototype
 
-    :param struct ipu_image_convert_run \*run:
+    :param run:
         the completed conversion run pointer
+    :type run: struct ipu_image_convert_run \*
 
-    :param void \*ctx:
+    :param ctx:
         a private context pointer for the callback
+    :type ctx: void \*
 
 .. _`ipu_image_convert_enum_format`:
 
@@ -69,11 +71,13 @@ ipu_image_convert_enum_format
 
     enumerate the image converter's supported input and output pixel formats.
 
-    :param int index:
+    :param index:
         pixel format index
+    :type index: int
 
-    :param u32 \*fourcc:
+    :param fourcc:
         v4l2 fourcc for this index
+    :type fourcc: u32 \*
 
 .. _`ipu_image_convert_enum_format.description`:
 
@@ -93,14 +97,17 @@ ipu_image_convert_adjust
 
     adjust input/output images to IPU restrictions.
 
-    :param struct ipu_image \*in:
+    :param in:
         input image format, adjusted on return
+    :type in: struct ipu_image \*
 
-    :param struct ipu_image \*out:
+    :param out:
         output image format, adjusted on return
+    :type out: struct ipu_image \*
 
-    :param enum ipu_rotate_mode rot_mode:
+    :param rot_mode:
         rotation mode
+    :type rot_mode: enum ipu_rotate_mode
 
 .. _`ipu_image_convert_adjust.description`:
 
@@ -118,14 +125,17 @@ ipu_image_convert_verify
 
     verify that input/output image formats and rotation mode meet IPU restrictions.
 
-    :param struct ipu_image \*in:
+    :param in:
         input image format
+    :type in: struct ipu_image \*
 
-    :param struct ipu_image \*out:
+    :param out:
         output image format
+    :type out: struct ipu_image \*
 
-    :param enum ipu_rotate_mode rot_mode:
+    :param rot_mode:
         rotation mode
+    :type rot_mode: enum ipu_rotate_mode
 
 .. _`ipu_image_convert_verify.description`:
 
@@ -144,26 +154,33 @@ ipu_image_convert_prepare
 
     prepare a conversion context.
 
-    :param struct ipu_soc \*ipu:
+    :param ipu:
         the IPU handle to use for the conversions
+    :type ipu: struct ipu_soc \*
 
-    :param enum ipu_ic_task ic_task:
+    :param ic_task:
         the IC task to use for the conversions
+    :type ic_task: enum ipu_ic_task
 
-    :param struct ipu_image \*in:
+    :param in:
         input image format
+    :type in: struct ipu_image \*
 
-    :param struct ipu_image \*out:
+    :param out:
         output image format
+    :type out: struct ipu_image \*
 
-    :param enum ipu_rotate_mode rot_mode:
+    :param rot_mode:
         rotation mode
+    :type rot_mode: enum ipu_rotate_mode
 
-    :param ipu_image_convert_cb_t complete:
+    :param complete:
         run completion callback
+    :type complete: ipu_image_convert_cb_t
 
-    :param void \*complete_context:
+    :param complete_context:
         a context pointer for the completion callback
+    :type complete_context: void \*
 
 .. _`ipu_image_convert_prepare.description`:
 
@@ -185,8 +202,9 @@ ipu_image_convert_unprepare
 
     unprepare a conversion context.
 
-    :param struct ipu_image_convert_ctx \*ctx:
+    :param ctx:
         the conversion context pointer to unprepare
+    :type ctx: struct ipu_image_convert_ctx \*
 
 .. _`ipu_image_convert_unprepare.description`:
 
@@ -210,8 +228,9 @@ ipu_image_convert_queue
 
     queue a conversion run
 
-    :param struct ipu_image_convert_run \*run:
+    :param run:
         the run request pointer
+    :type run: struct ipu_image_convert_run \*
 
 .. _`ipu_image_convert_queue.description`:
 
@@ -240,8 +259,9 @@ ipu_image_convert_abort
 
     abort conversions
 
-    :param struct ipu_image_convert_ctx \*ctx:
+    :param ctx:
         the conversion context pointer
+    :type ctx: struct ipu_image_convert_ctx \*
 
 .. _`ipu_image_convert_abort.description`:
 
@@ -261,26 +281,33 @@ ipu_image_convert
 
     asynchronous image conversion request
 
-    :param struct ipu_soc \*ipu:
+    :param ipu:
         the IPU handle to use for the conversion
+    :type ipu: struct ipu_soc \*
 
-    :param enum ipu_ic_task ic_task:
+    :param ic_task:
         the IC task to use for the conversion
+    :type ic_task: enum ipu_ic_task
 
-    :param struct ipu_image \*in:
+    :param in:
         input image format
+    :type in: struct ipu_image \*
 
-    :param struct ipu_image \*out:
+    :param out:
         output image format
+    :type out: struct ipu_image \*
 
-    :param enum ipu_rotate_mode rot_mode:
+    :param rot_mode:
         rotation mode
+    :type rot_mode: enum ipu_rotate_mode
 
-    :param ipu_image_convert_cb_t complete:
+    :param complete:
         run completion callback
+    :type complete: ipu_image_convert_cb_t
 
-    :param void \*complete_context:
+    :param complete_context:
         a context pointer for the completion callback
+    :type complete_context: void \*
 
 .. _`ipu_image_convert.description`:
 
@@ -305,20 +332,25 @@ ipu_image_convert_sync
 
     synchronous single image conversion request
 
-    :param struct ipu_soc \*ipu:
+    :param ipu:
         the IPU handle to use for the conversion
+    :type ipu: struct ipu_soc \*
 
-    :param enum ipu_ic_task ic_task:
+    :param ic_task:
         the IC task to use for the conversion
+    :type ic_task: enum ipu_ic_task
 
-    :param struct ipu_image \*in:
+    :param in:
         input image format
+    :type in: struct ipu_image \*
 
-    :param struct ipu_image \*out:
+    :param out:
         output image format
+    :type out: struct ipu_image \*
 
-    :param enum ipu_rotate_mode rot_mode:
+    :param rot_mode:
         rotation mode
+    :type rot_mode: enum ipu_rotate_mode
 
 .. _`ipu_image_convert_sync.description`:
 

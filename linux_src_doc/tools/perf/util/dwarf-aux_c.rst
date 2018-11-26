@@ -10,11 +10,13 @@ cu_find_realpath
 
     Find the realpath of the target file
 
-    :param Dwarf_Die \*cu_die:
+    :param cu_die:
         A DIE(dwarf information entry) of CU(compilation Unit)
+    :type cu_die: Dwarf_Die \*
 
-    :param const char \*fname:
+    :param fname:
         The tail filename of the target file
+    :type fname: const char \*
 
 .. _`cu_find_realpath.description`:
 
@@ -32,8 +34,9 @@ cu_get_comp_dir
 
     Get the path of compilation directory
 
-    :param Dwarf_Die \*cu_die:
+    :param cu_die:
         a CU DIE
+    :type cu_die: Dwarf_Die \*
 
 .. _`cu_get_comp_dir.description`:
 
@@ -53,17 +56,21 @@ cu_find_lineinfo
 
     Get a line number and file name for given address
 
-    :param Dwarf_Die \*cu_die:
+    :param cu_die:
         a CU DIE
+    :type cu_die: Dwarf_Die \*
 
-    :param unsigned long addr:
+    :param addr:
         An address
+    :type addr: unsigned long
 
-    :param const char \*\*fname:
+    :param fname:
         a pointer which returns the file name string
+    :type fname: const char \*\*
 
-    :param int \*lineno:
+    :param lineno:
         a pointer which returns the line number
+    :type lineno: int \*
 
 .. _`cu_find_lineinfo.description`:
 
@@ -81,17 +88,20 @@ cu_walk_functions_at
 
     Walk on function DIEs at given address
 
-    :param Dwarf_Die \*cu_die:
+    :param cu_die:
         A CU DIE
+    :type cu_die: Dwarf_Die \*
 
-    :param Dwarf_Addr addr:
+    :param addr:
         An address
+    :type addr: Dwarf_Addr
 
     :param int (\*callback)(Dwarf_Die \*, void \*):
         A callback which called with found DIEs
 
-    :param void \*data:
+    :param data:
         A user data
+    :type data: void \*
 
 .. _`cu_walk_functions_at.description`:
 
@@ -110,8 +120,9 @@ die_get_linkage_name
 
     Get the linkage name of the object
 
-    :param Dwarf_Die \*dw_die:
+    :param dw_die:
         A DIE of the object
+    :type dw_die: Dwarf_Die \*
 
 .. _`die_get_linkage_name.description`:
 
@@ -130,11 +141,13 @@ die_compare_name
 
     Compare diename and tname
 
-    :param Dwarf_Die \*dw_die:
+    :param dw_die:
         a DIE
+    :type dw_die: Dwarf_Die \*
 
-    :param const char \*tname:
+    :param tname:
         a string of target name
+    :type tname: const char \*
 
 .. _`die_compare_name.description`:
 
@@ -152,11 +165,13 @@ die_match_name
 
     Match diename/linkage name and glob
 
-    :param Dwarf_Die \*dw_die:
+    :param dw_die:
         a DIE
+    :type dw_die: Dwarf_Die \*
 
-    :param const char \*glob:
+    :param glob:
         a string of target glob pattern
+    :type glob: const char \*
 
 .. _`die_match_name.description`:
 
@@ -175,8 +190,9 @@ die_get_call_lineno
 
     Get callsite line number of inline-function instance
 
-    :param Dwarf_Die \*in_die:
+    :param in_die:
         a DIE of an inlined function instance
+    :type in_die: Dwarf_Die \*
 
 .. _`die_get_call_lineno.description`:
 
@@ -195,11 +211,13 @@ die_get_type
 
     Get type DIE
 
-    :param Dwarf_Die \*vr_die:
+    :param vr_die:
         a DIE of a variable
+    :type vr_die: Dwarf_Die \*
 
-    :param Dwarf_Die \*die_mem:
+    :param die_mem:
         where to store a type DIE
+    :type die_mem: Dwarf_Die \*
 
 .. _`die_get_type.description`:
 
@@ -218,11 +236,13 @@ die_get_real_type
 
     Get a type die, but skip qualifiers and typedef
 
-    :param Dwarf_Die \*vr_die:
+    :param vr_die:
         a DIE of a variable
+    :type vr_die: Dwarf_Die \*
 
-    :param Dwarf_Die \*die_mem:
+    :param die_mem:
         where to store a type DIE
+    :type die_mem: Dwarf_Die \*
 
 .. _`die_get_real_type.description`:
 
@@ -243,8 +263,9 @@ die_is_signed_type
 
     Check whether a type DIE is signed or not
 
-    :param Dwarf_Die \*tp_die:
+    :param tp_die:
         a DIE of a type
+    :type tp_die: Dwarf_Die \*
 
 .. _`die_is_signed_type.description`:
 
@@ -263,8 +284,9 @@ die_is_func_def
 
     Ensure that this DIE is a subprogram and definition
 
-    :param Dwarf_Die \*dw_die:
+    :param dw_die:
         a DIE
+    :type dw_die: Dwarf_Die \*
 
 .. _`die_is_func_def.description`:
 
@@ -283,8 +305,9 @@ die_is_func_instance
 
     Ensure that this DIE is an instance of a subprogram
 
-    :param Dwarf_Die \*dw_die:
+    :param dw_die:
         a DIE
+    :type dw_die: Dwarf_Die \*
 
 .. _`die_is_func_instance.description`:
 
@@ -304,11 +327,13 @@ die_get_data_member_location
 
     Get the data-member offset
 
-    :param Dwarf_Die \*mb_die:
+    :param mb_die:
         a DIE of a member of a data structure
+    :type mb_die: Dwarf_Die \*
 
-    :param Dwarf_Word \*offs:
+    :param offs:
         The offset of the member in the data structure
+    :type offs: Dwarf_Word \*
 
 .. _`die_get_data_member_location.description`:
 
@@ -327,8 +352,9 @@ die_get_call_file
 
     Get callsite file name of inlined function instance
 
-    :param Dwarf_Die \*in_die:
+    :param in_die:
         a DIE of an inlined function instance
+    :type in_die: Dwarf_Die \*
 
 .. _`die_get_call_file.description`:
 
@@ -347,17 +373,20 @@ die_find_child
 
     Generic DIE search function in DIE tree
 
-    :param Dwarf_Die \*rt_die:
+    :param rt_die:
         a root DIE
+    :type rt_die: Dwarf_Die \*
 
     :param int (\*callback)(Dwarf_Die \*, void \*):
         a callback function
 
-    :param void \*data:
+    :param data:
         a user data passed to the callback function
+    :type data: void \*
 
-    :param Dwarf_Die \*die_mem:
+    :param die_mem:
         a buffer for result DIE
+    :type die_mem: Dwarf_Die \*
 
 .. _`die_find_child.description`:
 
@@ -381,14 +410,17 @@ die_find_tailfunc
 
     Search for a non-inlined function with tail call at given address
 
-    :param Dwarf_Die \*cu_die:
+    :param cu_die:
         a CU DIE which including \ ``addr``\ 
+    :type cu_die: Dwarf_Die \*
 
-    :param Dwarf_Addr addr:
+    :param addr:
         target address
+    :type addr: Dwarf_Addr
 
-    :param Dwarf_Die \*die_mem:
+    :param die_mem:
         a buffer for result DIE
+    :type die_mem: Dwarf_Die \*
 
 .. _`die_find_tailfunc.description`:
 
@@ -407,14 +439,17 @@ die_find_realfunc
 
     Search a non-inlined function at given address
 
-    :param Dwarf_Die \*cu_die:
+    :param cu_die:
         a CU DIE which including \ ``addr``\ 
+    :type cu_die: Dwarf_Die \*
 
-    :param Dwarf_Addr addr:
+    :param addr:
         target address
+    :type addr: Dwarf_Addr
 
-    :param Dwarf_Die \*die_mem:
+    :param die_mem:
         a buffer for result DIE
+    :type die_mem: Dwarf_Die \*
 
 .. _`die_find_realfunc.description`:
 
@@ -433,14 +468,17 @@ die_find_top_inlinefunc
 
     Search the top inlined function at given address
 
-    :param Dwarf_Die \*sp_die:
+    :param sp_die:
         a subprogram DIE which including \ ``addr``\ 
+    :type sp_die: Dwarf_Die \*
 
-    :param Dwarf_Addr addr:
+    :param addr:
         target address
+    :type addr: Dwarf_Addr
 
-    :param Dwarf_Die \*die_mem:
+    :param die_mem:
         a buffer for result DIE
+    :type die_mem: Dwarf_Die \*
 
 .. _`die_find_top_inlinefunc.description`:
 
@@ -461,14 +499,17 @@ die_find_inlinefunc
 
     Search an inlined function at given address
 
-    :param Dwarf_Die \*sp_die:
+    :param sp_die:
         a subprogram DIE which including \ ``addr``\ 
+    :type sp_die: Dwarf_Die \*
 
-    :param Dwarf_Addr addr:
+    :param addr:
         target address
+    :type addr: Dwarf_Addr
 
-    :param Dwarf_Die \*die_mem:
+    :param die_mem:
         a buffer for result DIE
+    :type die_mem: Dwarf_Die \*
 
 .. _`die_find_inlinefunc.description`:
 
@@ -489,14 +530,16 @@ die_walk_instances
 
     Walk on instances of given DIE
 
-    :param Dwarf_Die \*or_die:
+    :param or_die:
         an abstract original DIE
+    :type or_die: Dwarf_Die \*
 
     :param int (\*callback)(Dwarf_Die \*, void \*):
         a callback function which is called with instance DIE
 
-    :param void \*data:
+    :param data:
         user data
+    :type data: void \*
 
 .. _`die_walk_instances.description`:
 
@@ -516,14 +559,17 @@ die_walk_lines
 
     Walk on lines inside given DIE
 
-    :param Dwarf_Die \*rt_die:
+    :param rt_die:
         a root DIE (CU, subprogram or inlined_subroutine)
+    :type rt_die: Dwarf_Die \*
 
-    :param line_walk_callback_t callback:
+    :param callback:
         callback routine
+    :type callback: line_walk_callback_t
 
-    :param void \*data:
+    :param data:
         user data
+    :type data: void \*
 
 .. _`die_walk_lines.description`:
 
@@ -545,17 +591,21 @@ die_find_variable_at
 
     Find a given name variable at given address
 
-    :param Dwarf_Die \*sp_die:
+    :param sp_die:
         a function DIE
+    :type sp_die: Dwarf_Die \*
 
-    :param const char \*name:
+    :param name:
         variable name
+    :type name: const char \*
 
-    :param Dwarf_Addr addr:
+    :param addr:
         address
+    :type addr: Dwarf_Addr
 
-    :param Dwarf_Die \*die_mem:
+    :param die_mem:
         a buffer for result DIE
+    :type die_mem: Dwarf_Die \*
 
 .. _`die_find_variable_at.description`:
 
@@ -573,14 +623,17 @@ die_find_member
 
     Find a given name member in a data structure
 
-    :param Dwarf_Die \*st_die:
+    :param st_die:
         a data structure type DIE
+    :type st_die: Dwarf_Die \*
 
-    :param const char \*name:
+    :param name:
         member name
+    :type name: const char \*
 
-    :param Dwarf_Die \*die_mem:
+    :param die_mem:
         a buffer for result DIE
+    :type die_mem: Dwarf_Die \*
 
 .. _`die_find_member.description`:
 
@@ -598,11 +651,13 @@ die_get_typename
 
     Get the name of given variable DIE
 
-    :param Dwarf_Die \*vr_die:
+    :param vr_die:
         a variable DIE
+    :type vr_die: Dwarf_Die \*
 
-    :param struct strbuf \*buf:
+    :param buf:
         a strbuf for result type name
+    :type buf: struct strbuf \*
 
 .. _`die_get_typename.description`:
 
@@ -623,11 +678,13 @@ die_get_varname
 
     Get the name and type of given variable DIE
 
-    :param Dwarf_Die \*vr_die:
+    :param vr_die:
         a variable DIE
+    :type vr_die: Dwarf_Die \*
 
-    :param struct strbuf \*buf:
+    :param buf:
         a strbuf for type and variable name
+    :type buf: struct strbuf \*
 
 .. _`die_get_varname.description`:
 
@@ -645,14 +702,17 @@ die_get_var_innermost_scope
 
     Get innermost scope range of given variable DIE
 
-    :param Dwarf_Die \*sp_die:
+    :param sp_die:
         a subprogram DIE
+    :type sp_die: Dwarf_Die \*
 
-    :param Dwarf_Die \*vr_die:
+    :param vr_die:
         a variable DIE
+    :type vr_die: Dwarf_Die \*
 
-    :param struct strbuf \*buf:
+    :param buf:
         a strbuf for variable byte offset range
+    :type buf: struct strbuf \*
 
 .. _`die_get_var_innermost_scope.description`:
 
@@ -671,14 +731,17 @@ die_get_var_range
 
     Get byte offset range of given variable DIE
 
-    :param Dwarf_Die \*sp_die:
+    :param sp_die:
         a subprogram DIE
+    :type sp_die: Dwarf_Die \*
 
-    :param Dwarf_Die \*vr_die:
+    :param vr_die:
         a variable DIE
+    :type vr_die: Dwarf_Die \*
 
-    :param struct strbuf \*buf:
+    :param buf:
         a strbuf for type and variable name and byte offset range
+    :type buf: struct strbuf \*
 
 .. _`die_get_var_range.description`:
 

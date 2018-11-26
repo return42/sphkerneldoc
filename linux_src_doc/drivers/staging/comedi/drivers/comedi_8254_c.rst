@@ -10,11 +10,13 @@ comedi_8254_status
 
     return the status of a counter
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         comedi_8254 struct for the timer
+    :type i8254: struct comedi_8254 \*
 
-    :param unsigned int counter:
+    :param counter:
         the counter number
+    :type counter: unsigned int
 
 .. _`comedi_8254_read`:
 
@@ -25,11 +27,13 @@ comedi_8254_read
 
     read the current counter value
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         comedi_8254 struct for the timer
+    :type i8254: struct comedi_8254 \*
 
-    :param unsigned int counter:
+    :param counter:
         the counter number
+    :type counter: unsigned int
 
 .. _`comedi_8254_write`:
 
@@ -40,14 +44,17 @@ comedi_8254_write
 
     load a 16-bit initial counter value
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         comedi_8254 struct for the timer
+    :type i8254: struct comedi_8254 \*
 
-    :param unsigned int counter:
+    :param counter:
         the counter number
+    :type counter: unsigned int
 
-    :param unsigned int val:
+    :param val:
         the initial value
+    :type val: unsigned int
 
 .. _`comedi_8254_set_mode`:
 
@@ -58,14 +65,17 @@ comedi_8254_set_mode
 
     set the mode of a counter
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         comedi_8254 struct for the timer
+    :type i8254: struct comedi_8254 \*
 
-    :param unsigned int counter:
+    :param counter:
         the counter number
+    :type counter: unsigned int
 
-    :param unsigned int mode:
+    :param mode:
         the I8254_MODEx and I8254_BCD\|I8254_BINARY
+    :type mode: unsigned int
 
 .. _`comedi_8254_load`:
 
@@ -76,17 +86,21 @@ comedi_8254_load
 
     program the mode and initial count of a counter
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         comedi_8254 struct for the timer
+    :type i8254: struct comedi_8254 \*
 
-    :param unsigned int counter:
+    :param counter:
         the counter number
+    :type counter: unsigned int
 
-    :param unsigned int val:
+    :param val:
         the initial value
+    :type val: unsigned int
 
-    :param unsigned int mode:
+    :param mode:
         the I8254_MODEx and I8254_BCD\|I8254_BINARY
+    :type mode: unsigned int
 
 .. _`comedi_8254_pacer_enable`:
 
@@ -97,17 +111,21 @@ comedi_8254_pacer_enable
 
     set the mode and load the cascaded counters
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         comedi_8254 struct for the timer
+    :type i8254: struct comedi_8254 \*
 
-    :param unsigned int counter1:
+    :param counter1:
         the counter number for the first divisor
+    :type counter1: unsigned int
 
-    :param unsigned int counter2:
+    :param counter2:
         the counter number for the second divisor
+    :type counter2: unsigned int
 
-    :param bool enable:
+    :param enable:
         flag to enable (load) the counters
+    :type enable: bool
 
 .. _`comedi_8254_update_divisors`:
 
@@ -118,8 +136,9 @@ comedi_8254_update_divisors
 
     update the divisors for the cascaded counters
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         comedi_8254 struct for the timer
+    :type i8254: struct comedi_8254 \*
 
 .. _`comedi_8254_cascade_ns_to_timer`:
 
@@ -130,14 +149,17 @@ comedi_8254_cascade_ns_to_timer
 
     calculate the cascaded divisor values
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         comedi_8254 struct for the timer
+    :type i8254: struct comedi_8254 \*
 
-    :param unsigned int \*nanosec:
+    :param nanosec:
         the desired ns time
+    :type nanosec: unsigned int \*
 
-    :param unsigned int flags:
+    :param flags:
         comedi_cmd flags
+    :type flags: unsigned int
 
 .. _`comedi_8254_ns_to_timer`:
 
@@ -148,14 +170,17 @@ comedi_8254_ns_to_timer
 
     calculate the divisor value for nanosec timing
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         comedi_8254 struct for the timer
+    :type i8254: struct comedi_8254 \*
 
-    :param unsigned int \*nanosec:
+    :param nanosec:
         the desired ns time
+    :type nanosec: unsigned int \*
 
-    :param unsigned int flags:
+    :param flags:
         comedi_cmd flags
+    :type flags: unsigned int
 
 .. _`comedi_8254_set_busy`:
 
@@ -166,14 +191,17 @@ comedi_8254_set_busy
 
     set/clear the "busy" flag for a given counter
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         comedi_8254 struct for the timer
+    :type i8254: struct comedi_8254 \*
 
-    :param unsigned int counter:
+    :param counter:
         the counter number
+    :type counter: unsigned int
 
-    :param bool busy:
+    :param busy:
         set/clear flag
+    :type busy: bool
 
 .. _`comedi_8254_subdevice_init`:
 
@@ -184,11 +212,13 @@ comedi_8254_subdevice_init
 
     initialize a comedi_subdevice for the 8254 timer
 
-    :param struct comedi_subdevice \*s:
+    :param s:
         comedi_subdevice struct
+    :type s: struct comedi_subdevice \*
 
-    :param struct comedi_8254 \*i8254:
+    :param i8254:
         *undescribed*
+    :type i8254: struct comedi_8254 \*
 
 .. _`comedi_8254_init`:
 
@@ -199,18 +229,22 @@ comedi_8254_init
 
     allocate and initialize the 8254 device for pio access
 
-    :param unsigned long iobase:
+    :param iobase:
         *undescribed*
+    :type iobase: unsigned long
 
-    :param unsigned int osc_base:
+    :param osc_base:
         base time of the counter in ns
         OPTIONAL - only used by \ :c:func:`comedi_8254_cascade_ns_to_timer`\ 
+    :type osc_base: unsigned int
 
-    :param unsigned int iosize:
+    :param iosize:
         I/O register size
+    :type iosize: unsigned int
 
-    :param unsigned int regshift:
+    :param regshift:
         register gap shift
+    :type regshift: unsigned int
 
 .. _`comedi_8254_mm_init`:
 
@@ -221,18 +255,22 @@ comedi_8254_mm_init
 
     allocate and initialize the 8254 device for mmio access
 
-    :param void __iomem \*mmio:
+    :param mmio:
         memory mapped I/O base address
+    :type mmio: void __iomem \*
 
-    :param unsigned int osc_base:
+    :param osc_base:
         base time of the counter in ns
         OPTIONAL - only used by \ :c:func:`comedi_8254_cascade_ns_to_timer`\ 
+    :type osc_base: unsigned int
 
-    :param unsigned int iosize:
+    :param iosize:
         I/O register size
+    :type iosize: unsigned int
 
-    :param unsigned int regshift:
+    :param regshift:
         register gap shift
+    :type regshift: unsigned int
 
 .. This file was automatic generated / don't edit.
 

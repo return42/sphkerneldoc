@@ -10,11 +10,13 @@ batadv_choose_orig
 
     Return the index of the orig entry in the hash table
 
-    :param const void \*data:
+    :param data:
         mac address of the originator node
+    :type data: const void \*
 
-    :param u32 size:
+    :param size:
         the size of the hash table
+    :type size: u32
 
 .. _`batadv_choose_orig.return`:
 

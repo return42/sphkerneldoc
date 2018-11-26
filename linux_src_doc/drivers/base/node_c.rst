@@ -10,8 +10,9 @@ unregister_node
 
     unregister a node device
 
-    :param struct node \*node:
+    :param node:
         node going away
+    :type node: struct node \*
 
 .. _`unregister_node.description`:
 

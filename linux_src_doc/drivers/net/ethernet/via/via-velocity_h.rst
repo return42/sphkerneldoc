@@ -10,8 +10,9 @@ velocity_get_ip
 
     find an IP address for the device
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         Velocity to query
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_get_ip.description`:
 
@@ -32,8 +33,9 @@ velocity_update_hw_mibs
 
     fetch MIB counters from chip
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity to update
+    :type vptr: struct velocity_info \*
 
 .. _`velocity_update_hw_mibs.description`:
 
@@ -55,8 +57,9 @@ init_flow_control_register
 
     set up flow control
 
-    :param struct velocity_info \*vptr:
+    :param vptr:
         velocity to configure
+    :type vptr: struct velocity_info \*
 
 .. _`init_flow_control_register.description`:
 

@@ -121,14 +121,17 @@ hynix_get_majority
 
     get the value that is occurring the most in a given set of values
 
-    :param const u8 \*in:
+    :param in:
         the array of values to test
+    :type in: const u8 \*
 
-    :param int repeat:
+    :param repeat:
         the size of the in array
+    :type repeat: int
 
-    :param u8 \*out:
+    :param out:
         pointer used to store the output value
+    :type out: u8 \*
 
 .. _`hynix_get_majority.description`:
 

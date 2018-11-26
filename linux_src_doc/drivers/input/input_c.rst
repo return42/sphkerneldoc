@@ -10,17 +10,21 @@ input_event
 
     report new input event
 
-    :param struct input_dev \*dev:
+    :param dev:
         device that generated the event
+    :type dev: struct input_dev \*
 
-    :param unsigned int type:
+    :param type:
         type of the event
+    :type type: unsigned int
 
-    :param unsigned int code:
+    :param code:
         event code
+    :type code: unsigned int
 
-    :param int value:
+    :param value:
         value of the event
+    :type value: int
 
 .. _`input_event.description`:
 
@@ -51,17 +55,21 @@ input_inject_event
 
     send input event from input handler
 
-    :param struct input_handle \*handle:
+    :param handle:
         input handle to send event through
+    :type handle: struct input_handle \*
 
-    :param unsigned int type:
+    :param type:
         type of the event
+    :type type: unsigned int
 
-    :param unsigned int code:
+    :param code:
         event code
+    :type code: unsigned int
 
-    :param int value:
+    :param value:
         value of the event
+    :type value: int
 
 .. _`input_inject_event.description`:
 
@@ -81,8 +89,9 @@ input_alloc_absinfo
 
     allocates array of input_absinfo structs
 
-    :param struct input_dev \*dev:
+    :param dev:
         the input device emitting absolute events
+    :type dev: struct input_dev \*
 
 .. _`input_alloc_absinfo.description`:
 
@@ -101,8 +110,9 @@ input_grab_device
 
     grabs device for exclusive use
 
-    :param struct input_handle \*handle:
+    :param handle:
         input handle that wants to own the device
+    :type handle: struct input_handle \*
 
 .. _`input_grab_device.description`:
 
@@ -122,8 +132,9 @@ input_release_device
 
     release previously grabbed device
 
-    :param struct input_handle \*handle:
+    :param handle:
         input handle that owns the device
+    :type handle: struct input_handle \*
 
 .. _`input_release_device.description`:
 
@@ -144,8 +155,9 @@ input_open_device
 
     open input device
 
-    :param struct input_handle \*handle:
+    :param handle:
         handle through which device is being accessed
+    :type handle: struct input_handle \*
 
 .. _`input_open_device.description`:
 
@@ -164,8 +176,9 @@ input_close_device
 
     close input device
 
-    :param struct input_handle \*handle:
+    :param handle:
         handle through which device is being accessed
+    :type handle: struct input_handle \*
 
 .. _`input_close_device.description`:
 
@@ -184,12 +197,14 @@ input_scancode_to_scalar
 
     converts scancode in \ :c:type:`struct input_keymap_entry <input_keymap_entry>`\ 
 
-    :param const struct input_keymap_entry \*ke:
+    :param ke:
         keymap entry containing scancode to be converted.
+    :type ke: const struct input_keymap_entry \*
 
-    :param unsigned int \*scancode:
+    :param scancode:
         pointer to the location where converted scancode should
         be stored.
+    :type scancode: unsigned int \*
 
 .. _`input_scancode_to_scalar.description`:
 
@@ -209,11 +224,13 @@ input_get_keycode
 
     retrieve keycode currently mapped to a given scancode
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device which keymap is being queried
+    :type dev: struct input_dev \*
 
-    :param struct input_keymap_entry \*ke:
+    :param ke:
         keymap entry
+    :type ke: struct input_keymap_entry \*
 
 .. _`input_get_keycode.description`:
 
@@ -232,11 +249,13 @@ input_set_keycode
 
     attribute a keycode to a given scancode
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device which keymap is being updated
+    :type dev: struct input_dev \*
 
-    :param const struct input_keymap_entry \*ke:
+    :param ke:
         new keymap entry
+    :type ke: const struct input_keymap_entry \*
 
 .. _`input_set_keycode.description`:
 
@@ -255,8 +274,9 @@ input_reset_device
 
     reset/restore the state of input device
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device whose state needs to be reset
+    :type dev: struct input_dev \*
 
 .. _`input_reset_device.description`:
 
@@ -276,8 +296,9 @@ input_allocate_device
 
     allocate memory for new input device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`input_allocate_device.description`:
 
@@ -304,8 +325,9 @@ devm_input_allocate_device
 
     allocate managed input device
 
-    :param struct device \*dev:
+    :param dev:
         device owning the input device being created
+    :type dev: struct device \*
 
 .. _`devm_input_allocate_device.description`:
 
@@ -340,8 +362,9 @@ input_free_device
 
     free memory occupied by input_dev structure
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device to free
+    :type dev: struct input_dev \*
 
 .. _`input_free_device.description`:
 
@@ -372,14 +395,17 @@ input_set_capability
 
     mark device as capable of a certain event
 
-    :param struct input_dev \*dev:
+    :param dev:
         device that is capable of emitting or accepting event
+    :type dev: struct input_dev \*
 
-    :param unsigned int type:
+    :param type:
         type of the event (EV_KEY, EV_REL, etc...)
+    :type type: unsigned int
 
-    :param unsigned int code:
+    :param code:
         event code
+    :type code: unsigned int
 
 .. _`input_set_capability.description`:
 
@@ -398,14 +424,17 @@ input_enable_softrepeat
 
     enable software autorepeat
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device
+    :type dev: struct input_dev \*
 
-    :param int delay:
+    :param delay:
         repeat delay
+    :type delay: int
 
-    :param int period:
+    :param period:
         repeat period
+    :type period: int
 
 .. _`input_enable_softrepeat.description`:
 
@@ -423,8 +452,9 @@ input_register_device
 
     register device with input core
 
-    :param struct input_dev \*dev:
+    :param dev:
         device to be registered
+    :type dev: struct input_dev \*
 
 .. _`input_register_device.description`:
 
@@ -459,8 +489,9 @@ input_unregister_device
 
     unregister previously registered device
 
-    :param struct input_dev \*dev:
+    :param dev:
         device to be unregistered
+    :type dev: struct input_dev \*
 
 .. _`input_unregister_device.description`:
 
@@ -479,8 +510,9 @@ input_register_handler
 
     register a new input handler
 
-    :param struct input_handler \*handler:
+    :param handler:
         handler to be registered
+    :type handler: struct input_handler \*
 
 .. _`input_register_handler.description`:
 
@@ -500,8 +532,9 @@ input_unregister_handler
 
     unregisters an input handler
 
-    :param struct input_handler \*handler:
+    :param handler:
         handler to be unregistered
+    :type handler: struct input_handler \*
 
 .. _`input_unregister_handler.description`:
 
@@ -520,11 +553,13 @@ input_handler_for_each_handle
 
     handle iterator
 
-    :param struct input_handler \*handler:
+    :param handler:
         input handler to iterate
+    :type handler: struct input_handler \*
 
-    :param void \*data:
+    :param data:
         data for the callback
+    :type data: void \*
 
     :param int (\*fn)(struct input_handle \*, void \*):
         function to be called for each handle
@@ -549,8 +584,9 @@ input_register_handle
 
     register a new input handle
 
-    :param struct input_handle \*handle:
+    :param handle:
         handle to register
+    :type handle: struct input_handle \*
 
 .. _`input_register_handle.description`:
 
@@ -573,8 +609,9 @@ input_unregister_handle
 
     unregister an input handle
 
-    :param struct input_handle \*handle:
+    :param handle:
         handle to unregister
+    :type handle: struct input_handle \*
 
 .. _`input_unregister_handle.description`:
 
@@ -596,14 +633,17 @@ input_get_new_minor
 
     allocates a new input minor number
 
-    :param int legacy_base:
+    :param legacy_base:
         beginning or the legacy range to be searched
+    :type legacy_base: int
 
-    :param unsigned int legacy_num:
+    :param legacy_num:
         size of legacy range
+    :type legacy_num: unsigned int
 
-    :param bool allow_dynamic:
+    :param allow_dynamic:
         whether we can also take ID from the dynamic range
+    :type allow_dynamic: bool
 
 .. _`input_get_new_minor.description`:
 
@@ -624,8 +664,9 @@ input_free_minor
 
     release previously allocated minor
 
-    :param unsigned int minor:
+    :param minor:
         minor to be released
+    :type minor: unsigned int
 
 .. _`input_free_minor.description`:
 

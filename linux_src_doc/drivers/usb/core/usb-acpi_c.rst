@@ -10,11 +10,13 @@ usb_acpi_power_manageable
 
     check whether usb port has acpi power resource.
 
-    :param struct usb_device \*hdev:
+    :param hdev:
         USB device belonging to the usb hub
+    :type hdev: struct usb_device \*
 
-    :param int index:
+    :param index:
         port index based zero
+    :type index: int
 
 .. _`usb_acpi_power_manageable.description`:
 
@@ -32,14 +34,17 @@ usb_acpi_set_power_state
 
     control usb port's power via acpi power resource
 
-    :param struct usb_device \*hdev:
+    :param hdev:
         USB device belonging to the usb hub
+    :type hdev: struct usb_device \*
 
-    :param int index:
+    :param index:
         port index based zero
+    :type index: int
 
-    :param bool enable:
+    :param enable:
         power state expected to be set
+    :type enable: bool
 
 .. _`usb_acpi_set_power_state.description`:
 

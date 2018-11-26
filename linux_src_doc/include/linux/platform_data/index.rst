@@ -30,13 +30,13 @@ platform_data
     ata-samsung_cf_h
     bh1770glc_h
     brcmfmac_h
-    bt-nokia-h4p_h
     crypto-atmel_h
     dma-atmel_h
     dma-coh901318_h
     dma-dw_h
     dma-ep93xx_h
     dma-imx-sdma_h
+    dma-mcf-edma_h
     dma-s3c24xx_h
     dma-ste-dma40_h
     efm32-spi_h
@@ -44,7 +44,6 @@ platform_data
     elm_h
     emif_plat_h
     gpio-htc-egpio_h
-    gpio-ts5500_h
     hwmon-s3c_h
     i2c-gpio_h
     i2c-hid_h

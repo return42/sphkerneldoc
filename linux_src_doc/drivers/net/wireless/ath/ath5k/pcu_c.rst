@@ -62,20 +62,25 @@ ath5k_hw_get_frame_duration
 
     Get tx time of a frame
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum nl80211_band band:
+    :param band:
         *undescribed*
+    :type band: enum nl80211_band
 
-    :param int len:
+    :param len:
         Frame's length in bytes
+    :type len: int
 
-    :param struct ieee80211_rate \*rate:
+    :param rate:
         The \ ``struct``\  ieee80211_rate
+    :type rate: struct ieee80211_rate \*
 
-    :param bool shortpre:
+    :param shortpre:
         Indicate short preample
+    :type shortpre: bool
 
 .. _`ath5k_hw_get_frame_duration.description`:
 
@@ -95,8 +100,9 @@ ath5k_hw_get_default_slottime
 
     Get the default slot time for current mode
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_get_default_sifs`:
 
@@ -107,8 +113,9 @@ ath5k_hw_get_default_sifs
 
     Get the default SIFS for current mode
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_update_mib_counters`:
 
@@ -119,8 +126,9 @@ ath5k_hw_update_mib_counters
 
     Update MIB counters (mac layer statistics)
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_update_mib_counters.description`:
 
@@ -147,8 +155,9 @@ ath5k_hw_write_rate_duration
 
     Fill rate code to duration table
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_write_rate_duration.description`:
 
@@ -180,11 +189,13 @@ ath5k_hw_set_ack_timeout
 
     Set ACK timeout on PCU
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int timeout:
+    :param timeout:
         Timeout in usec
+    :type timeout: unsigned int
 
 .. _`ath5k_hw_set_cts_timeout`:
 
@@ -195,11 +206,13 @@ ath5k_hw_set_cts_timeout
 
     Set CTS timeout on PCU
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param unsigned int timeout:
+    :param timeout:
         Timeout in usec
+    :type timeout: unsigned int
 
 .. _`ath5k_hw_set_lladdr`:
 
@@ -210,11 +223,13 @@ ath5k_hw_set_lladdr
 
     Set station id
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param const u8 \*mac:
+    :param mac:
         The card's mac address (array of octets)
+    :type mac: const u8 \*
 
 .. _`ath5k_hw_set_lladdr.description`:
 
@@ -232,8 +247,9 @@ ath5k_hw_set_bssid
 
     Set current BSSID on hw
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_set_bssid.description`:
 
@@ -252,11 +268,13 @@ ath5k_hw_set_bssid_mask
 
     Filter out bssids we listen
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param const u8 \*mask:
+    :param mask:
         The BSSID mask to set (array of octets)
+    :type mask: const u8 \*
 
 .. _`ath5k_hw_set_bssid_mask.description`:
 
@@ -282,14 +300,17 @@ ath5k_hw_set_mcast_filter
 
     Set multicast filter
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 filter0:
+    :param filter0:
         Lower 32bits of muticast filter
+    :type filter0: u32
 
-    :param u32 filter1:
+    :param filter1:
         Higher 16bits of multicast filter
+    :type filter1: u32
 
 .. _`ath5k_hw_get_rx_filter`:
 
@@ -300,8 +321,9 @@ ath5k_hw_get_rx_filter
 
     Get current rx filter
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_get_rx_filter.description`:
 
@@ -323,11 +345,13 @@ ath5k_hw_set_rx_filter
 
     Set rx filter
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 filter:
+    :param filter:
         RX filter mask (see reg.h)
+    :type filter: u32
 
 .. _`ath5k_hw_set_rx_filter.description`:
 
@@ -347,8 +371,9 @@ ath5k_hw_get_tsf64
 
     Get the full 64bit TSF
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_get_tsf64.description`:
 
@@ -366,11 +391,13 @@ ath5k_hw_set_tsf64
 
     Set a new 64bit TSF
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u64 tsf64:
+    :param tsf64:
         The new 64bit TSF
+    :type tsf64: u64
 
 .. _`ath5k_hw_set_tsf64.description`:
 
@@ -388,8 +415,9 @@ ath5k_hw_reset_tsf
 
     Force a TSF reset
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_reset_tsf.description`:
 
@@ -407,14 +435,17 @@ ath5k_hw_init_beacon_timers
 
     Initialize beacon timers
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u32 next_beacon:
+    :param next_beacon:
         Next TBTT
+    :type next_beacon: u32
 
-    :param u32 interval:
+    :param interval:
         Current beacon interval
+    :type interval: u32
 
 .. _`ath5k_hw_init_beacon_timers.description`:
 
@@ -433,17 +464,21 @@ ath5k_check_timer_win
 
     Check if timer B is timer A + window
 
-    :param int a:
+    :param a:
         timer a (before b)
+    :type a: int
 
-    :param int b:
+    :param b:
         timer b (after a)
+    :type b: int
 
-    :param int window:
+    :param window:
         difference between a and b
+    :type window: int
 
-    :param int intval:
+    :param intval:
         timers are increased by this interval
+    :type intval: int
 
 .. _`ath5k_check_timer_win.description`:
 
@@ -465,11 +500,13 @@ ath5k_hw_check_beacon_timers
 
     Check if the beacon timers are correct
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param int intval:
+    :param intval:
         beacon interval
+    :type intval: int
 
 .. _`ath5k_hw_check_beacon_timers.description`:
 
@@ -519,11 +556,13 @@ ath5k_hw_set_coverage_class
 
     Set IEEE 802.11 coverage class
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param u8 coverage_class:
+    :param coverage_class:
         IEEE 802.11 coverage class number
+    :type coverage_class: u8
 
 .. _`ath5k_hw_set_coverage_class.description`:
 
@@ -541,8 +580,9 @@ ath5k_hw_start_rx_pcu
 
     Start RX engine
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_start_rx_pcu.description`:
 
@@ -568,8 +608,9 @@ ath5k_hw_stop_rx_pcu
 
     Stop RX engine
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
 .. _`ath5k_hw_stop_rx_pcu.description`:
 
@@ -587,11 +628,13 @@ ath5k_hw_set_opmode
 
     Set PCU operating mode
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum nl80211_iftype op_mode:
+    :param op_mode:
         One of enum nl80211_iftype
+    :type op_mode: enum nl80211_iftype
 
 .. _`ath5k_hw_set_opmode.description`:
 
@@ -609,11 +652,13 @@ ath5k_hw_pcu_init
 
     Initialize PCU
 
-    :param struct ath5k_hw \*ah:
+    :param ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+    :type ah: struct ath5k_hw \*
 
-    :param enum nl80211_iftype op_mode:
+    :param op_mode:
         One of enum nl80211_iftype
+    :type op_mode: enum nl80211_iftype
 
 .. _`ath5k_hw_pcu_init.description`:
 

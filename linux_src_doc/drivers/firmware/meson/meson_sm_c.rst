@@ -10,26 +10,33 @@ meson_sm_call
 
     generic SMC32 call to the secure-monitor
 
-    :param unsigned int cmd_index:
+    :param cmd_index:
         Index of the SMC32 function ID
+    :type cmd_index: unsigned int
 
-    :param u32 \*ret:
+    :param ret:
         Returned value
+    :type ret: u32 \*
 
-    :param u32 arg0:
+    :param arg0:
         SMC32 Argument 0
+    :type arg0: u32
 
-    :param u32 arg1:
+    :param arg1:
         SMC32 Argument 1
+    :type arg1: u32
 
-    :param u32 arg2:
+    :param arg2:
         SMC32 Argument 2
+    :type arg2: u32
 
-    :param u32 arg3:
+    :param arg3:
         SMC32 Argument 3
+    :type arg3: u32
 
-    :param u32 arg4:
+    :param arg4:
         SMC32 Argument 4
+    :type arg4: u32
 
 .. _`meson_sm_call.return`:
 
@@ -47,29 +54,37 @@ meson_sm_call_read
 
     retrieve data from secure-monitor
 
-    :param void \*buffer:
+    :param buffer:
         Buffer to store the retrieved data
+    :type buffer: void \*
 
-    :param unsigned int bsize:
+    :param bsize:
         Size of the buffer
+    :type bsize: unsigned int
 
-    :param unsigned int cmd_index:
+    :param cmd_index:
         Index of the SMC32 function ID
+    :type cmd_index: unsigned int
 
-    :param u32 arg0:
+    :param arg0:
         SMC32 Argument 0
+    :type arg0: u32
 
-    :param u32 arg1:
+    :param arg1:
         SMC32 Argument 1
+    :type arg1: u32
 
-    :param u32 arg2:
+    :param arg2:
         SMC32 Argument 2
+    :type arg2: u32
 
-    :param u32 arg3:
+    :param arg3:
         SMC32 Argument 3
+    :type arg3: u32
 
-    :param u32 arg4:
+    :param arg4:
         SMC32 Argument 4
+    :type arg4: u32
 
 .. _`meson_sm_call_read.return`:
 
@@ -89,29 +104,37 @@ meson_sm_call_write
 
     send data to secure-monitor
 
-    :param void \*buffer:
+    :param buffer:
         Buffer containing data to send
+    :type buffer: void \*
 
-    :param unsigned int size:
+    :param size:
         Size of the data to send
+    :type size: unsigned int
 
-    :param unsigned int cmd_index:
+    :param cmd_index:
         Index of the SMC32 function ID
+    :type cmd_index: unsigned int
 
-    :param u32 arg0:
+    :param arg0:
         SMC32 Argument 0
+    :type arg0: u32
 
-    :param u32 arg1:
+    :param arg1:
         SMC32 Argument 1
+    :type arg1: u32
 
-    :param u32 arg2:
+    :param arg2:
         SMC32 Argument 2
+    :type arg2: u32
 
-    :param u32 arg3:
+    :param arg3:
         SMC32 Argument 3
+    :type arg3: u32
 
-    :param u32 arg4:
+    :param arg4:
         SMC32 Argument 4
+    :type arg4: u32
 
 .. _`meson_sm_call_write.return`:
 

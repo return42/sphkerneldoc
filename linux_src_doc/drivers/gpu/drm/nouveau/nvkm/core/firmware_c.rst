@@ -10,14 +10,17 @@ nvkm_firmware_get
 
     load firmware from the official nvidia/chip/ directory \ ``device``\       device that will use that firmware \ ``fwname``\       name of firmware file to load \ ``fw``\           firmware structure to load to
 
-    :param struct nvkm_device \*device:
+    :param device:
         *undescribed*
+    :type device: struct nvkm_device \*
 
-    :param const char \*fwname:
+    :param fwname:
         *undescribed*
+    :type fwname: const char \*
 
-    :param const struct firmware \*\*fw:
+    :param fw:
         *undescribed*
+    :type fw: const struct firmware \*\*
 
 .. _`nvkm_firmware_get.description`:
 
@@ -36,8 +39,9 @@ nvkm_firmware_put
 
     release firmware loaded with nvkm_firmware_get
 
-    :param const struct firmware \*fw:
+    :param fw:
         *undescribed*
+    :type fw: const struct firmware \*
 
 .. This file was automatic generated / don't edit.
 

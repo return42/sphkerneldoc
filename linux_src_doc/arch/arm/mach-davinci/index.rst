@@ -7,8 +7,5 @@ mach-davinci
 .. toctree::
     :maxdepth: 1
 
-    aemif_c
     board-dm646x-evm_c
-    clock_c
     devices-da8xx_c
-    usb-da8xx_c

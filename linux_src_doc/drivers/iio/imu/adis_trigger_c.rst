@@ -10,11 +10,13 @@ adis_probe_trigger
 
     Sets up trigger for a adis device
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         The IIO device
+    :type indio_dev: struct iio_dev \*
 
 .. _`adis_probe_trigger.description`:
 
@@ -34,8 +36,9 @@ adis_remove_trigger
 
     Remove trigger for a adis devices
 
-    :param struct adis \*adis:
+    :param adis:
         The adis device
+    :type adis: struct adis \*
 
 .. _`adis_remove_trigger.description`:
 

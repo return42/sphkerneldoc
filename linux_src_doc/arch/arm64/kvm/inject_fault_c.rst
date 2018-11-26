@@ -10,11 +10,13 @@ kvm_inject_dabt
 
     inject a data abort into the guest
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU to receive the undefined exception
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long addr:
+    :param addr:
         The address to report in the DFAR
+    :type addr: unsigned long
 
 .. _`kvm_inject_dabt.description`:
 
@@ -33,11 +35,13 @@ kvm_inject_pabt
 
     inject a prefetch abort into the guest
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU to receive the undefined exception
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned long addr:
+    :param addr:
         The address to report in the DFAR
+    :type addr: unsigned long
 
 .. _`kvm_inject_pabt.description`:
 
@@ -56,8 +60,9 @@ kvm_inject_undefined
 
     inject an undefined instruction into the guest
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         *undescribed*
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_inject_undefined.description`:
 
@@ -76,8 +81,9 @@ kvm_inject_vabt
 
     inject an async abort / SError into the guest
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU to receive the exception
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`kvm_inject_vabt.description`:
 

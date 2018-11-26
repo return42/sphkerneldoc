@@ -10,8 +10,9 @@ hfi1_exp_tid_set_init
 
     initialize exp_tid_set \ ``set``\  - the set
 
-    :param struct exp_tid_set \*set:
+    :param set:
         *undescribed*
+    :type set: struct exp_tid_set \*
 
 .. _`hfi1_exp_tid_group_init`:
 
@@ -22,8 +23,9 @@ hfi1_exp_tid_group_init
 
     initialize rcd expected receive \ ``rcd``\  - the rcd
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`hfi1_alloc_ctxt_rcv_groups`:
 
@@ -34,8 +36,9 @@ hfi1_alloc_ctxt_rcv_groups
 
     initialize expected receive groups \ ``rcd``\  - the context to add the groupings to
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`hfi1_free_ctxt_rcv_groups`:
 
@@ -46,8 +49,9 @@ hfi1_free_ctxt_rcv_groups
 
     free  expected receive groups \ ``rcd``\  - the context to free
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param rcd:
         *undescribed*
+    :type rcd: struct hfi1_ctxtdata \*
 
 .. _`hfi1_free_ctxt_rcv_groups.description`:
 

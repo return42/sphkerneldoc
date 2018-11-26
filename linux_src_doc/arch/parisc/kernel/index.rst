@@ -12,3 +12,4 @@ kernel
     inventory_c
     pdc_chassis_c
     processor_c
+    ptrace_c

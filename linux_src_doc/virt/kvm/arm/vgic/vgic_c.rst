@@ -10,8 +10,9 @@ vgic_target_oracle
 
     compute the target vcpu for an irq
 
-    :param struct vgic_irq \*irq:
+    :param irq:
         The irq to route. Must be already locked.
+    :type irq: struct vgic_irq \*
 
 .. _`vgic_target_oracle.description`:
 
@@ -33,25 +34,30 @@ kvm_vgic_inject_irq
 
     Inject an IRQ from a device to the vgic
 
-    :param struct kvm \*kvm:
+    :param kvm:
         The VM structure pointer
+    :type kvm: struct kvm \*
 
-    :param int cpuid:
+    :param cpuid:
         The CPU for PPIs
+    :type cpuid: int
 
-    :param unsigned int intid:
+    :param intid:
         The INTID to inject a new state to.
+    :type intid: unsigned int
 
-    :param bool level:
+    :param level:
         Edge-triggered:  true:  to trigger the interrupt
         false: to ignore the call
         Level-sensitive  true:  raise the input signal
         false: lower the input signal
+    :type level: bool
 
-    :param void \*owner:
+    :param owner:
         The opaque pointer to the owner of the IRQ being raised to verify
         that the caller is allowed to inject this IRQ.  Userspace
         injections will have owner == NULL.
+    :type owner: void \*
 
 .. _`kvm_vgic_inject_irq.description`:
 
@@ -71,11 +77,13 @@ kvm_vgic_reset_mapped_irq
 
     Reset a mapped IRQ
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u32 vintid:
+    :param vintid:
         The INTID of the interrupt
+    :type vintid: u32
 
 .. _`kvm_vgic_reset_mapped_irq.description`:
 
@@ -95,14 +103,17 @@ kvm_vgic_set_owner
 
     Set the owner of an interrupt for a VM
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Pointer to the VCPU (used for PPIs)
+    :type vcpu: struct kvm_vcpu \*
 
-    :param unsigned int intid:
+    :param intid:
         The virtual INTID identifying the interrupt (PPI or SPI)
+    :type intid: unsigned int
 
-    :param void \*owner:
+    :param owner:
         Opaque pointer to the owner
+    :type owner: void \*
 
 .. _`kvm_vgic_set_owner.description`:
 
@@ -121,8 +132,9 @@ vgic_prune_ap_list
 
     Remove non-relevant interrupts from the list
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         The VCPU pointer
+    :type vcpu: struct kvm_vcpu \*
 
 .. _`vgic_prune_ap_list.description`:
 

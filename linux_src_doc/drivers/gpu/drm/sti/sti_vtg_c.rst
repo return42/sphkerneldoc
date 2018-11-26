@@ -8,11 +8,13 @@ sti_vtg_get_line_number
 
 .. c:function:: u32 sti_vtg_get_line_number(struct drm_display_mode mode, int y)
 
-    :param struct drm_display_mode mode:
+    :param mode:
         display mode to be used
+    :type mode: struct drm_display_mode
 
-    :param int y:
+    :param y:
         line
+    :type y: int
 
 .. _`sti_vtg_get_line_number.description`:
 
@@ -32,11 +34,13 @@ sti_vtg_get_pixel_number
 
 .. c:function:: u32 sti_vtg_get_pixel_number(struct drm_display_mode mode, int x)
 
-    :param struct drm_display_mode mode:
+    :param mode:
         display mode to be used
+    :type mode: struct drm_display_mode
 
-    :param int x:
+    :param x:
         row
+    :type x: int
 
 .. _`sti_vtg_get_pixel_number.description`:
 

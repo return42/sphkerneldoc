@@ -10,8 +10,9 @@ i2c_dw_init_slave
 
     Initialize the designware i2c slave hardware
 
-    :param struct dw_i2c_dev \*dev:
+    :param dev:
         device private data
+    :type dev: struct dw_i2c_dev \*
 
 .. _`i2c_dw_init_slave.description`:
 

@@ -10,8 +10,9 @@ crypto_aead_chunksize
 
     obtain chunk size
 
-    :param struct crypto_aead \*tfm:
+    :param tfm:
         cipher handle
+    :type tfm: struct crypto_aead \*
 
 .. _`crypto_aead_chunksize.description`:
 

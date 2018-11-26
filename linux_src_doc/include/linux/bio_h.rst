@@ -10,17 +10,21 @@ bio_next_split
 
     get next \ ``sectors``\  from a bio, splitting if necessary
 
-    :param struct bio \*bio:
+    :param bio:
         bio to split
+    :type bio: struct bio \*
 
-    :param int sectors:
+    :param sectors:
         number of sectors to split from the front of \ ``bio``\ 
+    :type sectors: int
 
-    :param gfp_t gfp:
+    :param gfp:
         gfp mask
+    :type gfp: gfp_t
 
-    :param struct bio_set \*bs:
+    :param bs:
         bio set to allocate from
+    :type bs: struct bio_set \*
 
 .. _`bio_next_split.description`:
 

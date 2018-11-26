@@ -10,8 +10,9 @@ omap44xx_prm_read_pending_irqs
 
     read pending PRM MPU IRQs into \ ``events``\ 
 
-    :param unsigned long \*events:
+    :param events:
         ptr to two consecutive u32s, preallocated by caller
+    :type events: unsigned long \*
 
 .. _`omap44xx_prm_read_pending_irqs.description`:
 
@@ -31,8 +32,9 @@ omap44xx_prm_ocp_barrier
 
     force buffered MPU writes to the PRM to complete
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap44xx_prm_ocp_barrier.description`:
 
@@ -53,8 +55,9 @@ omap44xx_prm_save_and_clear_irqen
 
     save/clear PRM_IRQENABLE_MPU\* regs
 
-    :param u32 \*saved_mask:
+    :param saved_mask:
         ptr to a u32 array to save IRQENABLE bits
+    :type saved_mask: u32 \*
 
 .. _`omap44xx_prm_save_and_clear_irqen.description`:
 
@@ -77,8 +80,9 @@ omap44xx_prm_restore_irqen
 
     set PRM_IRQENABLE_MPU\* registers from args
 
-    :param u32 \*saved_mask:
+    :param saved_mask:
         ptr to a u32 array of IRQENABLE bits saved previously
+    :type saved_mask: u32 \*
 
 .. _`omap44xx_prm_restore_irqen.description`:
 
@@ -100,8 +104,9 @@ omap44xx_prm_reconfigure_io_chain
 
     clear latches and reconfigure I/O chain
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap44xx_prm_reconfigure_io_chain.description`:
 
@@ -123,8 +128,9 @@ omap44xx_prm_enable_io_wakeup
 
     enable wakeup events from I/O wakeup latches
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap44xx_prm_enable_io_wakeup.description`:
 
@@ -145,8 +151,9 @@ omap44xx_prm_read_reset_sources
 
     return the last SoC reset source
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`omap44xx_prm_read_reset_sources.description`:
 
@@ -165,14 +172,17 @@ omap44xx_prm_was_any_context_lost_old
 
     was module hardware context lost?
 
-    :param u8 part:
+    :param part:
         PRM partition ID (e.g., OMAP4430_PRM_PARTITION)
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         PRM instance offset (e.g., OMAP4430_PRM_MPU_INST)
+    :type inst: s16
 
-    :param u16 idx:
+    :param idx:
         CONTEXT register offset
+    :type idx: u16
 
 .. _`omap44xx_prm_was_any_context_lost_old.description`:
 
@@ -192,14 +202,17 @@ omap44xx_prm_clear_context_loss_flags_old
 
     clear context loss flags
 
-    :param u8 part:
+    :param part:
         PRM partition ID (e.g., OMAP4430_PRM_PARTITION)
+    :type part: u8
 
-    :param s16 inst:
+    :param inst:
         PRM instance offset (e.g., OMAP4430_PRM_MPU_INST)
+    :type inst: s16
 
-    :param u16 idx:
+    :param idx:
         CONTEXT register offset
+    :type idx: u16
 
 .. _`omap44xx_prm_clear_context_loss_flags_old.description`:
 
@@ -219,8 +232,9 @@ omap4_pwrdm_read_prev_logic_pwrst
 
     read the previous logic powerstate
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to read the state for
+    :type pwrdm: struct powerdomain \*
 
 .. _`omap4_pwrdm_read_prev_logic_pwrst.description`:
 
@@ -245,11 +259,13 @@ omap4_pwrdm_read_prev_mem_pwrst
 
     reads the previous memory powerstate
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         struct powerdomain \* to read mem powerstate for
+    :type pwrdm: struct powerdomain \*
 
-    :param u8 bank:
+    :param bank:
         memory bank index
+    :type bank: u8
 
 .. _`omap4_pwrdm_read_prev_mem_pwrst.description`:
 
@@ -274,8 +290,9 @@ omap4_pwrdm_save_context
 
     Saves the powerdomain state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         pointer to individual powerdomain
+    :type pwrdm: struct powerdomain \*
 
 .. _`omap4_pwrdm_save_context.description`:
 
@@ -294,8 +311,9 @@ omap4_pwrdm_restore_context
 
     Restores the powerdomain state
 
-    :param struct powerdomain \*pwrdm:
+    :param pwrdm:
         pointer to individual powerdomain
+    :type pwrdm: struct powerdomain \*
 
 .. _`omap4_pwrdm_restore_context.description`:
 

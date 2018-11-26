@@ -10,14 +10,17 @@ mt7601u_bbp_r47_get
 
     read value through BBP R47/R49 pair
 
-    :param struct mt7601u_dev \*dev:
+    :param dev:
         pointer to adapter structure
+    :type dev: struct mt7601u_dev \*
 
-    :param u8 reg:
+    :param reg:
         value of BBP R47 before the operation
+    :type reg: u8
 
-    :param u8 flag:
+    :param flag:
         one of the BBP_R47_F\_\* flags
+    :type flag: u8
 
 .. _`mt7601u_bbp_r47_get.description`:
 
@@ -44,11 +47,13 @@ mt7601u_set_rx_path
 
     set rx path in BBP
 
-    :param struct mt7601u_dev \*dev:
+    :param dev:
         pointer to adapter structure
+    :type dev: struct mt7601u_dev \*
 
-    :param u8 path:
+    :param path:
         rx path to set values are 0-based
+    :type path: u8
 
 .. _`mt7601u_set_tx_dac`:
 
@@ -59,11 +64,13 @@ mt7601u_set_tx_dac
 
     set which tx DAC to use
 
-    :param struct mt7601u_dev \*dev:
+    :param dev:
         pointer to adapter structure
+    :type dev: struct mt7601u_dev \*
 
-    :param u8 dac:
+    :param dac:
         *undescribed*
+    :type dac: u8
 
 .. This file was automatic generated / don't edit.
 

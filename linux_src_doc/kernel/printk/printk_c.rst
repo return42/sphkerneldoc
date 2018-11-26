@@ -10,8 +10,9 @@ console_lock_spinning_enable
 
     mark beginning of code where another thread might safely busy wait
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`console_lock_spinning_enable.description`:
 
@@ -32,8 +33,9 @@ console_lock_spinning_disable_and_check
 
     mark end of code where another thread was able to busy wait and check if there is a waiter
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`console_lock_spinning_disable_and_check.description`:
 
@@ -65,8 +67,9 @@ console_trylock_spinning
 
     try to get console_lock by busy waiting
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`console_trylock_spinning.description`:
 
@@ -94,8 +97,9 @@ printk
 
     print a kernel message
 
-    :param const char \*fmt:
+    :param fmt:
         format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -135,14 +139,17 @@ add_preferred_console
 
     add a device to the list of preferred consoles.
 
-    :param char \*name:
+    :param name:
         device name
+    :type name: char \*
 
-    :param int idx:
+    :param idx:
         device index
+    :type idx: int
 
-    :param char \*options:
+    :param options:
         options for this console
+    :type options: char \*
 
 .. _`add_preferred_console.description`:
 
@@ -165,8 +172,9 @@ suspend_console
 
     suspend the console subsystem
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`suspend_console.description`:
 
@@ -184,8 +192,9 @@ console_cpu_notify
 
     print deferred console messages after CPU hotplug
 
-    :param unsigned int cpu:
+    :param cpu:
         unused
+    :type cpu: unsigned int
 
 .. _`console_cpu_notify.description`:
 
@@ -206,8 +215,9 @@ console_lock
 
     lock the console system for exclusive use.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`console_lock.description`:
 
@@ -228,8 +238,9 @@ console_trylock
 
     try to lock the console system for exclusive use.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`console_trylock.description`:
 
@@ -250,8 +261,9 @@ console_unlock
 
     unlock the console system
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`console_unlock.description`:
 
@@ -278,8 +290,9 @@ console_conditional_schedule
 
     yield the CPU if required
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`console_conditional_schedule.description`:
 
@@ -301,8 +314,9 @@ console_flush_on_panic
 
     flush console content on panic
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`console_flush_on_panic.description`:
 
@@ -320,11 +334,13 @@ printk_timed_ratelimit
 
     caller-controlled printk ratelimiting
 
-    :param unsigned long \*caller_jiffies:
+    :param caller_jiffies:
         pointer to caller's state
+    :type caller_jiffies: unsigned long \*
 
-    :param unsigned int interval_msecs:
+    :param interval_msecs:
         minimum interval between prints
+    :type interval_msecs: unsigned int
 
 .. _`printk_timed_ratelimit.description`:
 
@@ -344,8 +360,9 @@ kmsg_dump_register
 
     register a kernel log dumper.
 
-    :param struct kmsg_dumper \*dumper:
+    :param dumper:
         pointer to the kmsg_dumper structure
+    :type dumper: struct kmsg_dumper \*
 
 .. _`kmsg_dump_register.description`:
 
@@ -365,8 +382,9 @@ kmsg_dump_unregister
 
     unregister a kmsg dumper.
 
-    :param struct kmsg_dumper \*dumper:
+    :param dumper:
         pointer to the kmsg_dumper structure
+    :type dumper: struct kmsg_dumper \*
 
 .. _`kmsg_dump_unregister.description`:
 
@@ -385,8 +403,9 @@ kmsg_dump
 
     dump kernel log to kernel message dumpers.
 
-    :param enum kmsg_dump_reason reason:
+    :param reason:
         the reason (oops, panic etc) for dumping
+    :type reason: enum kmsg_dump_reason
 
 .. _`kmsg_dump.description`:
 
@@ -406,20 +425,25 @@ kmsg_dump_get_line_nolock
 
     retrieve one kmsg log line (unlocked version)
 
-    :param struct kmsg_dumper \*dumper:
+    :param dumper:
         registered kmsg dumper
+    :type dumper: struct kmsg_dumper \*
 
-    :param bool syslog:
+    :param syslog:
         include the "<4>" prefixes
+    :type syslog: bool
 
-    :param char \*line:
+    :param line:
         buffer to copy the line to
+    :type line: char \*
 
-    :param size_t size:
+    :param size:
         maximum size of the buffer
+    :type size: size_t
 
-    :param size_t \*len:
+    :param len:
         length of line placed into buffer
+    :type len: size_t \*
 
 .. _`kmsg_dump_get_line_nolock.description`:
 
@@ -446,20 +470,25 @@ kmsg_dump_get_line
 
     retrieve one kmsg log line
 
-    :param struct kmsg_dumper \*dumper:
+    :param dumper:
         registered kmsg dumper
+    :type dumper: struct kmsg_dumper \*
 
-    :param bool syslog:
+    :param syslog:
         include the "<4>" prefixes
+    :type syslog: bool
 
-    :param char \*line:
+    :param line:
         buffer to copy the line to
+    :type line: char \*
 
-    :param size_t size:
+    :param size:
         maximum size of the buffer
+    :type size: size_t
 
-    :param size_t \*len:
+    :param len:
         length of line placed into buffer
+    :type len: size_t \*
 
 .. _`kmsg_dump_get_line.description`:
 
@@ -484,20 +513,25 @@ kmsg_dump_get_buffer
 
     copy kmsg log lines
 
-    :param struct kmsg_dumper \*dumper:
+    :param dumper:
         registered kmsg dumper
+    :type dumper: struct kmsg_dumper \*
 
-    :param bool syslog:
+    :param syslog:
         include the "<4>" prefixes
+    :type syslog: bool
 
-    :param char \*buf:
+    :param buf:
         buffer to copy the line to
+    :type buf: char \*
 
-    :param size_t size:
+    :param size:
         maximum size of the buffer
+    :type size: size_t
 
-    :param size_t \*len:
+    :param len:
         length of line placed into buffer
+    :type len: size_t \*
 
 .. _`kmsg_dump_get_buffer.description`:
 
@@ -524,8 +558,9 @@ kmsg_dump_rewind_nolock
 
     reset the interator (unlocked version)
 
-    :param struct kmsg_dumper \*dumper:
+    :param dumper:
         registered kmsg dumper
+    :type dumper: struct kmsg_dumper \*
 
 .. _`kmsg_dump_rewind_nolock.description`:
 
@@ -547,8 +582,9 @@ kmsg_dump_rewind
 
     reset the interator
 
-    :param struct kmsg_dumper \*dumper:
+    :param dumper:
         registered kmsg dumper
+    :type dumper: struct kmsg_dumper \*
 
 .. _`kmsg_dump_rewind.description`:
 

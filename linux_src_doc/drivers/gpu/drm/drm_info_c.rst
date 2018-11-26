@@ -8,11 +8,13 @@ drm_name_info
 
 .. c:function:: int drm_name_info(struct seq_file *m, void *data)
 
-    :param struct seq_file \*m:
+    :param m:
         *undescribed*
+    :type m: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`drm_name_info.description`:
 
@@ -28,11 +30,13 @@ drm_clients_info
 
 .. c:function:: int drm_clients_info(struct seq_file *m, void *data)
 
-    :param struct seq_file \*m:
+    :param m:
         *undescribed*
+    :type m: struct seq_file \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. This file was automatic generated / don't edit.
 

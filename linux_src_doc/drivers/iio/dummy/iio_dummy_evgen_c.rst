@@ -33,8 +33,9 @@ iio_dummy_evgen_get_irq
 
     get an evgen provided irq for a device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`iio_dummy_evgen_get_irq.description`:
 
@@ -53,8 +54,9 @@ iio_dummy_evgen_release_irq
 
     give the irq back.
 
-    :param int irq:
+    :param irq:
         irq being returned to the pool
+    :type irq: int
 
 .. _`iio_dummy_evgen_release_irq.description`:
 

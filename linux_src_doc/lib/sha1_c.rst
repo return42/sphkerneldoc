@@ -10,14 +10,17 @@ sha_transform
 
     single block SHA1 transform
 
-    :param __u32 \*digest:
+    :param digest:
         160 bit digest to update
+    :type digest: __u32 \*
 
-    :param const char \*data:
+    :param data:
         512 bits of data to hash
+    :type data: const char \*
 
-    :param __u32 \*array:
+    :param array:
         16 words of workspace (see note)
+    :type array: __u32 \*
 
 .. _`sha_transform.description`:
 
@@ -47,8 +50,9 @@ sha_init
 
     initialize the vectors for a SHA1 digest
 
-    :param __u32 \*buf:
+    :param buf:
         vector to initialize
+    :type buf: __u32 \*
 
 .. This file was automatic generated / don't edit.
 

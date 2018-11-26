@@ -10,32 +10,41 @@ rdma_rw_ctx_init
 
     initialize a RDMA READ/WRITE context
 
-    :param struct rdma_rw_ctx \*ctx:
+    :param ctx:
         context to initialize
+    :type ctx: struct rdma_rw_ctx \*
 
-    :param struct ib_qp \*qp:
+    :param qp:
         queue pair to operate on
+    :type qp: struct ib_qp \*
 
-    :param u8 port_num:
+    :param port_num:
         port num to which the connection is bound
+    :type port_num: u8
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatterlist to READ/WRITE from/to
+    :type sg: struct scatterlist \*
 
-    :param u32 sg_cnt:
+    :param sg_cnt:
         number of entries in \ ``sg``\ 
+    :type sg_cnt: u32
 
-    :param u32 sg_offset:
+    :param sg_offset:
         current byte offset into \ ``sg``\ 
+    :type sg_offset: u32
 
-    :param u64 remote_addr:
+    :param remote_addr:
         remote address to read/write (relative to \ ``rkey``\ )
+    :type remote_addr: u64
 
-    :param u32 rkey:
+    :param rkey:
         remote key to operate on
+    :type rkey: u32
 
-    :param enum dma_data_direction dir:
+    :param dir:
         \ ``DMA_TO_DEVICE``\  for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
+    :type dir: enum dma_data_direction
 
 .. _`rdma_rw_ctx_init.description`:
 
@@ -54,38 +63,49 @@ rdma_rw_ctx_signature_init
 
     initialize a RW context with signature offload
 
-    :param struct rdma_rw_ctx \*ctx:
+    :param ctx:
         context to initialize
+    :type ctx: struct rdma_rw_ctx \*
 
-    :param struct ib_qp \*qp:
+    :param qp:
         queue pair to operate on
+    :type qp: struct ib_qp \*
 
-    :param u8 port_num:
+    :param port_num:
         port num to which the connection is bound
+    :type port_num: u8
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatterlist to READ/WRITE from/to
+    :type sg: struct scatterlist \*
 
-    :param u32 sg_cnt:
+    :param sg_cnt:
         number of entries in \ ``sg``\ 
+    :type sg_cnt: u32
 
-    :param struct scatterlist \*prot_sg:
+    :param prot_sg:
         scatterlist to READ/WRITE protection information from/to
+    :type prot_sg: struct scatterlist \*
 
-    :param u32 prot_sg_cnt:
+    :param prot_sg_cnt:
         number of entries in \ ``prot_sg``\ 
+    :type prot_sg_cnt: u32
 
-    :param struct ib_sig_attrs \*sig_attrs:
+    :param sig_attrs:
         signature offloading algorithms
+    :type sig_attrs: struct ib_sig_attrs \*
 
-    :param u64 remote_addr:
+    :param remote_addr:
         remote address to read/write (relative to \ ``rkey``\ )
+    :type remote_addr: u64
 
-    :param u32 rkey:
+    :param rkey:
         remote key to operate on
+    :type rkey: u32
 
-    :param enum dma_data_direction dir:
+    :param dir:
         \ ``DMA_TO_DEVICE``\  for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
+    :type dir: enum dma_data_direction
 
 .. _`rdma_rw_ctx_signature_init.description`:
 
@@ -104,20 +124,25 @@ rdma_rw_ctx_wrs
 
     return chain of WRs for a RDMA READ or WRITE operation
 
-    :param struct rdma_rw_ctx \*ctx:
+    :param ctx:
         context to operate on
+    :type ctx: struct rdma_rw_ctx \*
 
-    :param struct ib_qp \*qp:
+    :param qp:
         queue pair to operate on
+    :type qp: struct ib_qp \*
 
-    :param u8 port_num:
+    :param port_num:
         port num to which the connection is bound
+    :type port_num: u8
 
-    :param struct ib_cqe \*cqe:
+    :param cqe:
         completion queue entry for the last WR
+    :type cqe: struct ib_cqe \*
 
-    :param struct ib_send_wr \*chain_wr:
+    :param chain_wr:
         WR to append to the posted chain
+    :type chain_wr: struct ib_send_wr \*
 
 .. _`rdma_rw_ctx_wrs.description`:
 
@@ -139,20 +164,25 @@ rdma_rw_ctx_post
 
     post a RDMA READ or RDMA WRITE operation
 
-    :param struct rdma_rw_ctx \*ctx:
+    :param ctx:
         context to operate on
+    :type ctx: struct rdma_rw_ctx \*
 
-    :param struct ib_qp \*qp:
+    :param qp:
         queue pair to operate on
+    :type qp: struct ib_qp \*
 
-    :param u8 port_num:
+    :param port_num:
         port num to which the connection is bound
+    :type port_num: u8
 
-    :param struct ib_cqe \*cqe:
+    :param cqe:
         completion queue entry for the last WR
+    :type cqe: struct ib_cqe \*
 
-    :param struct ib_send_wr \*chain_wr:
+    :param chain_wr:
         WR to append to the posted chain
+    :type chain_wr: struct ib_send_wr \*
 
 .. _`rdma_rw_ctx_post.description`:
 
@@ -174,23 +204,29 @@ rdma_rw_ctx_destroy
 
     release all resources allocated by rdma_rw_ctx_init
 
-    :param struct rdma_rw_ctx \*ctx:
+    :param ctx:
         context to release
+    :type ctx: struct rdma_rw_ctx \*
 
-    :param struct ib_qp \*qp:
+    :param qp:
         queue pair to operate on
+    :type qp: struct ib_qp \*
 
-    :param u8 port_num:
+    :param port_num:
         port num to which the connection is bound
+    :type port_num: u8
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatterlist that was used for the READ/WRITE
+    :type sg: struct scatterlist \*
 
-    :param u32 sg_cnt:
+    :param sg_cnt:
         number of entries in \ ``sg``\ 
+    :type sg_cnt: u32
 
-    :param enum dma_data_direction dir:
+    :param dir:
         \ ``DMA_TO_DEVICE``\  for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
+    :type dir: enum dma_data_direction
 
 .. _`rdma_rw_ctx_destroy_signature`:
 
@@ -201,29 +237,37 @@ rdma_rw_ctx_destroy_signature
 
     release all resources allocated by rdma_rw_ctx_init_signature
 
-    :param struct rdma_rw_ctx \*ctx:
+    :param ctx:
         context to release
+    :type ctx: struct rdma_rw_ctx \*
 
-    :param struct ib_qp \*qp:
+    :param qp:
         queue pair to operate on
+    :type qp: struct ib_qp \*
 
-    :param u8 port_num:
+    :param port_num:
         port num to which the connection is bound
+    :type port_num: u8
 
-    :param struct scatterlist \*sg:
+    :param sg:
         scatterlist that was used for the READ/WRITE
+    :type sg: struct scatterlist \*
 
-    :param u32 sg_cnt:
+    :param sg_cnt:
         number of entries in \ ``sg``\ 
+    :type sg_cnt: u32
 
-    :param struct scatterlist \*prot_sg:
+    :param prot_sg:
         scatterlist that was used for the READ/WRITE of the PI
+    :type prot_sg: struct scatterlist \*
 
-    :param u32 prot_sg_cnt:
+    :param prot_sg_cnt:
         number of entries in \ ``prot_sg``\ 
+    :type prot_sg_cnt: u32
 
-    :param enum dma_data_direction dir:
+    :param dir:
         \ ``DMA_TO_DEVICE``\  for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
+    :type dir: enum dma_data_direction
 
 .. _`rdma_rw_mr_factor`:
 
@@ -234,14 +278,17 @@ rdma_rw_mr_factor
 
     return number of MRs required for a payload
 
-    :param struct ib_device \*device:
+    :param device:
         device handling the connection
+    :type device: struct ib_device \*
 
-    :param u8 port_num:
+    :param port_num:
         port num to which the connection is bound
+    :type port_num: u8
 
-    :param unsigned int maxpages:
+    :param maxpages:
         maximum payload pages per rdma_rw_ctx
+    :type maxpages: unsigned int
 
 .. _`rdma_rw_mr_factor.description`:
 

@@ -120,14 +120,17 @@ samples.
 
     magic (register) wait macro
 
-    :param  COND:
+    :param COND:
         *undescribed*
+    :type COND: 
 
-    :param  MS:
+    :param MS:
         *undescribed*
+    :type MS: 
 
-    :param  W:
+    :param W:
         *undescribed*
+    :type W: 
 
 .. _`_wait_for.description`:
 

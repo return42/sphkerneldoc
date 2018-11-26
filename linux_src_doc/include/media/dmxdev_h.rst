@@ -323,11 +323,13 @@ dvb_dmxdev_init
 
     initializes a digital TV demux and registers both demux and DVR devices.
 
-    :param struct dmxdev \*dmxdev:
+    :param dmxdev:
         pointer to \ :c:type:`struct dmxdev <dmxdev>`\ .
+    :type dmxdev: struct dmxdev \*
 
-    :param struct dvb_adapter \*adap:
+    :param adap:
         pointer to \ :c:type:`struct dvb_adapter <dvb_adapter>`\ .
+    :type adap: struct dvb_adapter \*
 
 .. _`dvb_dmxdev_release`:
 
@@ -338,8 +340,9 @@ dvb_dmxdev_release
 
     releases a digital TV demux and unregisters it.
 
-    :param struct dmxdev \*dmxdev:
+    :param dmxdev:
         pointer to \ :c:type:`struct dmxdev <dmxdev>`\ .
+    :type dmxdev: struct dmxdev \*
 
 .. This file was automatic generated / don't edit.
 

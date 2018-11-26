@@ -135,14 +135,17 @@ media_devnode_register
 
     register a media device node
 
-    :param struct media_device \*mdev:
+    :param mdev:
         struct media_device we want to register a device node
+    :type mdev: struct media_device \*
 
-    :param struct media_devnode \*devnode:
+    :param devnode:
         media device node structure we want to register
+    :type devnode: struct media_devnode \*
 
-    :param struct module \*owner:
+    :param owner:
         should be filled with \ ``THIS_MODULE``\ 
+    :type owner: struct module \*
 
 .. _`media_devnode_register.description`:
 
@@ -168,8 +171,9 @@ media_devnode_unregister_prepare
 
     clear the media device node register bit
 
-    :param struct media_devnode \*devnode:
+    :param devnode:
         the device node to prepare for unregister
+    :type devnode: struct media_devnode \*
 
 .. _`media_devnode_unregister_prepare.description`:
 
@@ -192,8 +196,9 @@ media_devnode_unregister
 
     unregister a media device node
 
-    :param struct media_devnode \*devnode:
+    :param devnode:
         the device node to unregister
+    :type devnode: struct media_devnode \*
 
 .. _`media_devnode_unregister.description`:
 
@@ -214,8 +219,9 @@ media_devnode_data
 
     returns a pointer to the \ :c:type:`struct media_devnode <media_devnode>`\ 
 
-    :param struct file \*filp:
+    :param filp:
         pointer to struct \ :c:type:`struct file <file>`\ 
+    :type filp: struct file \*
 
 .. _`media_devnode_is_registered`:
 
@@ -226,8 +232,9 @@ media_devnode_is_registered
 
     returns true if \ :c:type:`struct media_devnode <media_devnode>`\  is registered; false otherwise.
 
-    :param struct media_devnode \*devnode:
+    :param devnode:
         pointer to struct \ :c:type:`struct media_devnode <media_devnode>`\ .
+    :type devnode: struct media_devnode \*
 
 .. _`media_devnode_is_registered.note`:
 

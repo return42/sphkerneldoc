@@ -10,8 +10,9 @@ atl2_sw_init
 
     Initialize general software structures (struct atl2_adapter)
 
-    :param struct atl2_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct atl2_adapter \*
 
 .. _`atl2_sw_init.description`:
 
@@ -31,8 +32,9 @@ atl2_set_multi
 
     Multicast and Promiscuous mode set
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl2_set_multi.description`:
 
@@ -53,8 +55,9 @@ atl2_configure
 
     Configure Transmit&Receive Unit after Reset
 
-    :param struct atl2_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl2_adapter \*
 
 .. _`atl2_configure.description`:
 
@@ -72,8 +75,9 @@ atl2_setup_ring_resources
 
     allocate Tx / RX descriptor resources
 
-    :param struct atl2_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl2_adapter \*
 
 .. _`atl2_setup_ring_resources.description`:
 
@@ -91,8 +95,9 @@ atl2_irq_enable
 
     Enable default interrupt generation settings
 
-    :param struct atl2_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl2_adapter \*
 
 .. _`atl2_irq_disable`:
 
@@ -103,8 +108,9 @@ atl2_irq_disable
 
     Mask off interrupt generation on the NIC
 
-    :param struct atl2_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl2_adapter \*
 
 .. _`atl2_intr`:
 
@@ -115,11 +121,13 @@ atl2_intr
 
     Interrupt Handler
 
-    :param int irq:
+    :param irq:
         interrupt number
+    :type irq: int
 
-    :param void \*data:
+    :param data:
         pointer to a network interface device structure
+    :type data: void \*
 
 .. _`atl2_free_ring_resources`:
 
@@ -130,8 +138,9 @@ atl2_free_ring_resources
 
     Free Tx / RX descriptor Resources
 
-    :param struct atl2_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl2_adapter \*
 
 .. _`atl2_free_ring_resources.description`:
 
@@ -149,8 +158,9 @@ atl2_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl2_open.description`:
 
@@ -174,8 +184,9 @@ atl2_close
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl2_close.description`:
 
@@ -198,11 +209,13 @@ atl2_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`atl2_change_mtu.description`:
 
@@ -220,11 +233,13 @@ atl2_set_mac
 
     Change the Ethernet Address of the NIC
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         pointer to an address structure
+    :type p: void \*
 
 .. _`atl2_set_mac.description`:
 
@@ -242,8 +257,9 @@ atl2_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`atl2_watchdog`:
 
@@ -254,8 +270,9 @@ atl2_watchdog
 
     Timer Call-back
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`atl2_phy_config`:
 
@@ -266,8 +283,9 @@ atl2_phy_config
 
     Timer Call-back
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`atl2_link_chg_task`:
 
@@ -278,8 +296,9 @@ atl2_link_chg_task
 
     deal with link change event Out of interrupt context
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`atl2_probe`:
 
@@ -290,11 +309,13 @@ atl2_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in atl2_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`atl2_probe.description`:
 
@@ -316,8 +337,9 @@ atl2_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`atl2_remove.description`:
 
@@ -338,8 +360,9 @@ atl2_init_module
 
     Driver Registration Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`atl2_init_module.description`:
 
@@ -358,8 +381,9 @@ atl2_exit_module
 
     Driver Exit Cleanup Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`atl2_exit_module.description`:
 
@@ -378,8 +402,9 @@ atl2_check_options
 
     Range Checking for Command Line Parameters
 
-    :param struct atl2_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct atl2_adapter \*
 
 .. _`atl2_check_options.description`:
 

@@ -10,22 +10,27 @@ l2x0_cache_size_of_parse
 
     read cache size parameters from DT
 
-    :param const struct device_node \*np:
+    :param np:
         the device tree node for the l2 cache
+    :type np: const struct device_node \*
 
-    :param u32 \*aux_val:
+    :param aux_val:
         pointer to machine-supplied auxilary register value, to
         be augmented by the call (bits to be set to 1)
+    :type aux_val: u32 \*
 
-    :param u32 \*aux_mask:
+    :param aux_mask:
         pointer to machine-supplied auxilary register mask, to
         be augmented by the call (bits to be set to 0)
+    :type aux_mask: u32 \*
 
-    :param u32 \*associativity:
+    :param associativity:
         variable to return the calculated associativity in
+    :type associativity: u32 \*
 
-    :param u32 max_way_size:
+    :param max_way_size:
         the maximum size in bytes for the cache ways
+    :type max_way_size: u32
 
 .. This file was automatic generated / don't edit.
 

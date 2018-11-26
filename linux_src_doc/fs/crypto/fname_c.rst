@@ -10,17 +10,21 @@ fname_encrypt
 
     encrypt a filename
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param const struct qstr \*iname:
+    :param iname:
         *undescribed*
+    :type iname: const struct qstr \*
 
-    :param u8 \*out:
+    :param out:
         *undescribed*
+    :type out: u8 \*
 
-    :param unsigned int olen:
+    :param olen:
         *undescribed*
+    :type olen: unsigned int
 
 .. _`fname_encrypt.description`:
 
@@ -46,14 +50,17 @@ fname_decrypt
 
     decrypt a filename
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param const struct fscrypt_str \*iname:
+    :param iname:
         *undescribed*
+    :type iname: const struct fscrypt_str \*
 
-    :param struct fscrypt_str \*oname:
+    :param oname:
         *undescribed*
+    :type oname: struct fscrypt_str \*
 
 .. _`fname_decrypt.description`:
 
@@ -76,14 +83,17 @@ digest_encode
 
 .. c:function:: int digest_encode(const char *src, int len, char *dst)
 
-    :param const char \*src:
+    :param src:
         *undescribed*
+    :type src: const char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param char \*dst:
+    :param dst:
         *undescribed*
+    :type dst: char \*
 
 .. _`digest_encode.description`:
 
@@ -102,14 +112,17 @@ fscrypt_fname_alloc_buffer
 
     allocate a buffer for presented filenames
 
-    :param const struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: const struct inode \*
 
-    :param u32 max_encrypted_len:
+    :param max_encrypted_len:
         *undescribed*
+    :type max_encrypted_len: u32
 
-    :param struct fscrypt_str \*crypto_str:
+    :param crypto_str:
         *undescribed*
+    :type crypto_str: struct fscrypt_str \*
 
 .. _`fscrypt_fname_alloc_buffer.description`:
 
@@ -135,8 +148,9 @@ fscrypt_fname_free_buffer
 
     free the buffer for presented filenames
 
-    :param struct fscrypt_str \*crypto_str:
+    :param crypto_str:
         *undescribed*
+    :type crypto_str: struct fscrypt_str \*
 
 .. _`fscrypt_fname_free_buffer.description`:
 
@@ -154,20 +168,25 @@ fscrypt_fname_disk_to_usr
 
     converts a filename from disk space to user space
 
-    :param struct inode \*inode:
+    :param inode:
         *undescribed*
+    :type inode: struct inode \*
 
-    :param u32 hash:
+    :param hash:
         *undescribed*
+    :type hash: u32
 
-    :param u32 minor_hash:
+    :param minor_hash:
         *undescribed*
+    :type minor_hash: u32
 
-    :param const struct fscrypt_str \*iname:
+    :param iname:
         *undescribed*
+    :type iname: const struct fscrypt_str \*
 
-    :param struct fscrypt_str \*oname:
+    :param oname:
         *undescribed*
+    :type oname: struct fscrypt_str \*
 
 .. _`fscrypt_fname_disk_to_usr.description`:
 
@@ -196,26 +215,30 @@ fscrypt_setup_filename
 
     prepare to search a possibly encrypted directory
 
-    :param struct inode \*dir:
+    :param dir:
         the directory that will be searched
+    :type dir: struct inode \*
 
-    :param const struct qstr \*iname:
+    :param iname:
         the user-provided filename being searched for
+    :type iname: const struct qstr \*
 
-    :param int lookup:
+    :param lookup:
         1 if we're allowed to proceed without the key because it's
         ->lookup() or we're finding the dir_entry for deletion; 0 if we cannot
         proceed without the key because we're going to create the dir_entry.
+    :type lookup: int
 
-    :param struct fscrypt_name \*fname:
+    :param fname:
         the filename information to be filled in
+    :type fname: struct fscrypt_name \*
 
 .. _`fscrypt_setup_filename.description`:
 
 Description
 -----------
 
-Given a user-provided filename \ ``iname``\ , this function sets \ ``fname``\ ->disk_name
+Given a user-provided filename \ ``iname``\ , this function sets \ ``fname->disk_name``\ 
 to the name that would be stored in the on-disk directory entry, if possible.
 If the directory is unencrypted this is simply \ ``iname``\ .  Else, if we have the
 directory's encryption key, then \ ``iname``\  is the plaintext, so we encrypt it to

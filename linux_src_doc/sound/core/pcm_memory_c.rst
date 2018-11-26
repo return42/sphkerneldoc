@@ -10,8 +10,9 @@ snd_pcm_lib_preallocate_free
 
     release the preallocated buffer of the specified substream.
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_lib_preallocate_free.description`:
 
@@ -36,8 +37,9 @@ snd_pcm_lib_preallocate_free_for_all
 
     release all pre-allocated buffers on the pcm
 
-    :param struct snd_pcm \*pcm:
+    :param pcm:
         the pcm instance
+    :type pcm: struct snd_pcm \*
 
 .. _`snd_pcm_lib_preallocate_free_for_all.description`:
 
@@ -62,20 +64,25 @@ snd_pcm_lib_preallocate_pages
 
     pre-allocation for the given DMA type
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
-    :param int type:
+    :param type:
         DMA type (SNDRV_DMA_TYPE_*)
+    :type type: int
 
-    :param struct device \*data:
+    :param data:
         DMA type dependent data
+    :type data: struct device \*
 
-    :param size_t size:
+    :param size:
         the requested pre-allocation size in bytes
+    :type size: size_t
 
-    :param size_t max:
+    :param max:
         the max. allowed pre-allocation size
+    :type max: size_t
 
 .. _`snd_pcm_lib_preallocate_pages.description`:
 
@@ -100,20 +107,25 @@ snd_pcm_lib_preallocate_pages_for_all
 
     pre-allocation for continuous memory type (all substreams)
 
-    :param struct snd_pcm \*pcm:
+    :param pcm:
         the pcm instance
+    :type pcm: struct snd_pcm \*
 
-    :param int type:
+    :param type:
         DMA type (SNDRV_DMA_TYPE_*)
+    :type type: int
 
-    :param void \*data:
+    :param data:
         DMA type dependent data
+    :type data: void \*
 
-    :param size_t size:
+    :param size:
         the requested pre-allocation size in bytes
+    :type size: size_t
 
-    :param size_t max:
+    :param max:
         the max. allowed pre-allocation size
+    :type max: size_t
 
 .. _`snd_pcm_lib_preallocate_pages_for_all.description`:
 
@@ -139,11 +151,13 @@ snd_pcm_sgbuf_ops_page
 
     get the page struct at the given offset
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the pcm substream instance
+    :type substream: struct snd_pcm_substream \*
 
-    :param unsigned long offset:
+    :param offset:
         the buffer offset
+    :type offset: unsigned long
 
 .. _`snd_pcm_sgbuf_ops_page.description`:
 
@@ -168,11 +182,13 @@ snd_pcm_lib_malloc_pages
 
     allocate the DMA buffer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the substream to allocate the DMA buffer to
+    :type substream: struct snd_pcm_substream \*
 
-    :param size_t size:
+    :param size:
         the requested buffer size in bytes
+    :type size: size_t
 
 .. _`snd_pcm_lib_malloc_pages.description`:
 
@@ -199,8 +215,9 @@ snd_pcm_lib_free_pages
 
     release the allocated DMA buffer.
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the substream to release the DMA buffer
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_lib_free_pages.description`:
 
@@ -225,9 +242,10 @@ snd_pcm_lib_free_vmalloc_buffer
 
     free vmalloc buffer
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the substream with a buffer allocated by
         \ :c:func:`snd_pcm_lib_alloc_vmalloc_buffer`\ 
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_lib_free_vmalloc_buffer.return`:
 
@@ -245,12 +263,14 @@ snd_pcm_lib_get_vmalloc_page
 
     map vmalloc buffer offset to page struct
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the substream with a buffer allocated by
         \ :c:func:`snd_pcm_lib_alloc_vmalloc_buffer`\ 
+    :type substream: struct snd_pcm_substream \*
 
-    :param unsigned long offset:
+    :param offset:
         offset in the buffer
+    :type offset: unsigned long
 
 .. _`snd_pcm_lib_get_vmalloc_page.description`:
 

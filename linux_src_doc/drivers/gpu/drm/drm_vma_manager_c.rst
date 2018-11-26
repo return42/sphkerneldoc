@@ -45,14 +45,17 @@ drm_vma_offset_manager_init
 
     Initialize new offset-manager
 
-    :param struct drm_vma_offset_manager \*mgr:
+    :param mgr:
         Manager object
+    :type mgr: struct drm_vma_offset_manager \*
 
-    :param unsigned long page_offset:
+    :param page_offset:
         Offset of available memory area (page-based)
+    :type page_offset: unsigned long
 
-    :param unsigned long size:
+    :param size:
         Size of available address space range (page-based)
+    :type size: unsigned long
 
 .. _`drm_vma_offset_manager_init.description`:
 
@@ -77,8 +80,9 @@ drm_vma_offset_manager_destroy
 
     Destroy offset manager
 
-    :param struct drm_vma_offset_manager \*mgr:
+    :param mgr:
         Manager object
+    :type mgr: struct drm_vma_offset_manager \*
 
 .. _`drm_vma_offset_manager_destroy.description`:
 
@@ -101,14 +105,17 @@ drm_vma_offset_lookup_locked
 
     Find node in offset space
 
-    :param struct drm_vma_offset_manager \*mgr:
+    :param mgr:
         Manager object
+    :type mgr: struct drm_vma_offset_manager \*
 
-    :param unsigned long start:
+    :param start:
         Start address for object (page-based)
+    :type start: unsigned long
 
-    :param unsigned long pages:
+    :param pages:
         Size of object (page-based)
+    :type pages: unsigned long
 
 .. _`drm_vma_offset_lookup_locked.description`:
 
@@ -159,14 +166,17 @@ drm_vma_offset_add
 
     Add offset node to manager
 
-    :param struct drm_vma_offset_manager \*mgr:
+    :param mgr:
         Manager object
+    :type mgr: struct drm_vma_offset_manager \*
 
-    :param struct drm_vma_offset_node \*node:
+    :param node:
         Node to be added
+    :type node: struct drm_vma_offset_node \*
 
-    :param unsigned long pages:
+    :param pages:
         Allocation size visible to user-space (in number of pages)
+    :type pages: unsigned long
 
 .. _`drm_vma_offset_add.description`:
 
@@ -203,11 +213,13 @@ drm_vma_offset_remove
 
     Remove offset node from manager
 
-    :param struct drm_vma_offset_manager \*mgr:
+    :param mgr:
         Manager object
+    :type mgr: struct drm_vma_offset_manager \*
 
-    :param struct drm_vma_offset_node \*node:
+    :param node:
         Node to be removed
+    :type node: struct drm_vma_offset_node \*
 
 .. _`drm_vma_offset_remove.description`:
 
@@ -229,11 +241,13 @@ drm_vma_node_allow
 
     Add open-file to list of allowed users
 
-    :param struct drm_vma_offset_node \*node:
+    :param node:
         Node to modify
+    :type node: struct drm_vma_offset_node \*
 
-    :param struct drm_file \*tag:
+    :param tag:
         Tag of file to remove
+    :type tag: struct drm_file \*
 
 .. _`drm_vma_node_allow.description`:
 
@@ -268,11 +282,13 @@ drm_vma_node_revoke
 
     Remove open-file from list of allowed users
 
-    :param struct drm_vma_offset_node \*node:
+    :param node:
         Node to modify
+    :type node: struct drm_vma_offset_node \*
 
-    :param struct drm_file \*tag:
+    :param tag:
         Tag of file to remove
+    :type tag: struct drm_file \*
 
 .. _`drm_vma_node_revoke.description`:
 
@@ -296,11 +312,13 @@ drm_vma_node_is_allowed
 
     Check whether an open-file is granted access
 
-    :param struct drm_vma_offset_node \*node:
+    :param node:
         Node to check
+    :type node: struct drm_vma_offset_node \*
 
-    :param struct drm_file \*tag:
+    :param tag:
         Tag of file to remove
+    :type tag: struct drm_file \*
 
 .. _`drm_vma_node_is_allowed.description`:
 

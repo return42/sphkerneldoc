@@ -10,8 +10,9 @@ mpt_get_cb_idx
 
     obtain cb_idx for registered driver
 
-    :param MPT_DRIVER_CLASS dclass:
+    :param dclass:
         class driver enum
+    :type dclass: MPT_DRIVER_CLASS
 
 .. _`mpt_get_cb_idx.description`:
 
@@ -29,8 +30,9 @@ mpt_is_discovery_complete
 
     determine if discovery has completed
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         per adatper instance
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_is_discovery_complete.description`:
 
@@ -48,8 +50,9 @@ mpt_remove_dead_ioc_func
 
     kthread context to remove dead ioc
 
-    :param void \*arg:
+    :param arg:
         input argument, used to derive ioc
+    :type arg: void \*
 
 .. _`mpt_remove_dead_ioc_func.description`:
 
@@ -68,8 +71,9 @@ mpt_fault_reset_work
 
     work performed on workq after ioc fault
 
-    :param struct work_struct \*work:
+    :param work:
         input argument, used to derive ioc
+    :type work: struct work_struct \*
 
 .. _`mpt_interrupt`:
 
@@ -80,11 +84,13 @@ mpt_interrupt
 
     MPT adapter (IOC) specific interrupt handler.
 
-    :param int irq:
+    :param irq:
         irq number (not used)
+    :type irq: int
 
-    :param void \*bus_id:
+    :param bus_id:
         bus identifier cookie == pointer to MPT_ADAPTER structure
+    :type bus_id: void \*
 
 .. _`mpt_interrupt.description`:
 
@@ -111,14 +117,17 @@ mptbase_reply
 
     MPT base driver's callback routine
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param MPT_FRAME_HDR \*req:
+    :param req:
         Pointer to original MPT request frame
+    :type req: MPT_FRAME_HDR \*
 
-    :param MPT_FRAME_HDR \*reply:
+    :param reply:
         Pointer to MPT reply frame (NULL if TurboReply)
+    :type reply: MPT_FRAME_HDR \*
 
 .. _`mptbase_reply.description`:
 
@@ -141,14 +150,17 @@ mpt_register
 
     Register protocol-specific main callback handler.
 
-    :param MPT_CALLBACK cbfunc:
+    :param cbfunc:
         callback function pointer
+    :type cbfunc: MPT_CALLBACK
 
-    :param MPT_DRIVER_CLASS dclass:
+    :param dclass:
         Protocol driver's class (%MPT_DRIVER_CLASS enum value)
+    :type dclass: MPT_DRIVER_CLASS
 
-    :param char \*func_name:
+    :param func_name:
         call function's name
+    :type func_name: char \*
 
 .. _`mpt_register.description`:
 
@@ -183,8 +195,9 @@ mpt_deregister
 
     Deregister a protocol drivers resources.
 
-    :param u8 cb_idx:
+    :param cb_idx:
         previously registered callback handle
+    :type cb_idx: u8
 
 .. _`mpt_deregister.description`:
 
@@ -203,11 +216,13 @@ mpt_event_register
 
     Register protocol-specific event callback handler.
 
-    :param u8 cb_idx:
+    :param cb_idx:
         previously registered (via mpt_register) callback handle
+    :type cb_idx: u8
 
-    :param MPT_EVHANDLER ev_cbfunc:
+    :param ev_cbfunc:
         callback function
+    :type ev_cbfunc: MPT_EVHANDLER
 
 .. _`mpt_event_register.description`:
 
@@ -228,8 +243,9 @@ mpt_event_deregister
 
     Deregister protocol-specific event callback handler
 
-    :param u8 cb_idx:
+    :param cb_idx:
         previously registered callback handle
+    :type cb_idx: u8
 
 .. _`mpt_event_deregister.description`:
 
@@ -249,11 +265,13 @@ mpt_reset_register
 
     Register protocol-specific IOC reset handler.
 
-    :param u8 cb_idx:
+    :param cb_idx:
         previously registered (via mpt_register) callback handle
+    :type cb_idx: u8
 
-    :param MPT_RESETHANDLER reset_func:
+    :param reset_func:
         reset function
+    :type reset_func: MPT_RESETHANDLER
 
 .. _`mpt_reset_register.description`:
 
@@ -274,8 +292,9 @@ mpt_reset_deregister
 
     Deregister protocol-specific IOC reset handler.
 
-    :param u8 cb_idx:
+    :param cb_idx:
         previously registered callback handle
+    :type cb_idx: u8
 
 .. _`mpt_reset_deregister.description`:
 
@@ -295,11 +314,13 @@ mpt_device_driver_register
 
     Register device driver hooks
 
-    :param struct mpt_pci_driver \*dd_cbfunc:
+    :param dd_cbfunc:
         driver callbacks struct
+    :type dd_cbfunc: struct mpt_pci_driver \*
 
-    :param u8 cb_idx:
+    :param cb_idx:
         MPT protocol driver index
+    :type cb_idx: u8
 
 .. _`mpt_device_driver_deregister`:
 
@@ -310,23 +331,26 @@ mpt_device_driver_deregister
 
     DeRegister device driver hooks
 
-    :param u8 cb_idx:
+    :param cb_idx:
         MPT protocol driver index
+    :type cb_idx: u8
 
 .. _`mpt_get_msg_frame`:
 
 mpt_get_msg_frame
 =================
 
-.. c:function:: MPT_FRAME_HDR*mpt_get_msg_frame(u8 cb_idx, MPT_ADAPTER *ioc)
+.. c:function:: MPT_FRAME_HDR* mpt_get_msg_frame(u8 cb_idx, MPT_ADAPTER *ioc)
 
     Obtain an MPT request frame from the pool
 
-    :param u8 cb_idx:
+    :param cb_idx:
         Handle of registered MPT protocol driver
+    :type cb_idx: u8
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_get_msg_frame.description`:
 
@@ -348,14 +372,17 @@ mpt_put_msg_frame
 
     Send a protocol-specific MPT request frame to an IOC
 
-    :param u8 cb_idx:
+    :param cb_idx:
         Handle of registered MPT protocol driver
+    :type cb_idx: u8
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param MPT_FRAME_HDR \*mf:
+    :param mf:
         Pointer to MPT request frame
+    :type mf: MPT_FRAME_HDR \*
 
 .. _`mpt_put_msg_frame.description`:
 
@@ -374,14 +401,17 @@ mpt_put_msg_frame_hi_pri
 
     Send a hi-pri protocol-specific MPT request frame
 
-    :param u8 cb_idx:
+    :param cb_idx:
         Handle of registered MPT protocol driver
+    :type cb_idx: u8
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param MPT_FRAME_HDR \*mf:
+    :param mf:
         Pointer to MPT request frame
+    :type mf: MPT_FRAME_HDR \*
 
 .. _`mpt_put_msg_frame_hi_pri.description`:
 
@@ -403,11 +433,13 @@ mpt_free_msg_frame
 
     Place MPT request frame back on FreeQ.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param MPT_FRAME_HDR \*mf:
+    :param mf:
         Pointer to MPT request frame
+    :type mf: MPT_FRAME_HDR \*
 
 .. _`mpt_free_msg_frame.description`:
 
@@ -426,14 +458,17 @@ mpt_add_sge
 
     Place a simple 32 bit SGE at address pAddr.
 
-    :param void \*pAddr:
+    :param pAddr:
         virtual address for SGE
+    :type pAddr: void \*
 
-    :param u32 flagslength:
+    :param flagslength:
         SGE flags and data transfer length
+    :type flagslength: u32
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         Physical address
+    :type dma_addr: dma_addr_t
 
 .. _`mpt_add_sge.description`:
 
@@ -452,14 +487,17 @@ mpt_add_sge_64bit
 
     Place a simple 64 bit SGE at address pAddr.
 
-    :param void \*pAddr:
+    :param pAddr:
         virtual address for SGE
+    :type pAddr: void \*
 
-    :param u32 flagslength:
+    :param flagslength:
         SGE flags and data transfer length
+    :type flagslength: u32
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         Physical address
+    :type dma_addr: dma_addr_t
 
 .. _`mpt_add_sge_64bit.description`:
 
@@ -478,14 +516,17 @@ mpt_add_sge_64bit_1078
 
     Place a simple 64 bit SGE at address pAddr (1078 workaround).
 
-    :param void \*pAddr:
+    :param pAddr:
         virtual address for SGE
+    :type pAddr: void \*
 
-    :param u32 flagslength:
+    :param flagslength:
         SGE flags and data transfer length
+    :type flagslength: u32
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         Physical address
+    :type dma_addr: dma_addr_t
 
 .. _`mpt_add_sge_64bit_1078.description`:
 
@@ -504,17 +545,21 @@ mpt_add_chain
 
     Place a 32 bit chain SGE at address pAddr.
 
-    :param void \*pAddr:
+    :param pAddr:
         virtual address for SGE
+    :type pAddr: void \*
 
-    :param u8 next:
+    :param next:
         nextChainOffset value (u32's)
+    :type next: u8
 
-    :param u16 length:
+    :param length:
         length of next SGL segment
+    :type length: u16
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         Physical address
+    :type dma_addr: dma_addr_t
 
 .. _`mpt_add_chain_64bit`:
 
@@ -525,17 +570,21 @@ mpt_add_chain_64bit
 
     Place a 64 bit chain SGE at address pAddr.
 
-    :param void \*pAddr:
+    :param pAddr:
         virtual address for SGE
+    :type pAddr: void \*
 
-    :param u8 next:
+    :param next:
         nextChainOffset value (u32's)
+    :type next: u8
 
-    :param u16 length:
+    :param length:
         length of next SGL segment
+    :type length: u16
 
-    :param dma_addr_t dma_addr:
+    :param dma_addr:
         Physical address
+    :type dma_addr: dma_addr_t
 
 .. _`mpt_send_handshake_request`:
 
@@ -546,20 +595,25 @@ mpt_send_handshake_request
 
     Send MPT request via doorbell handshake method.
 
-    :param u8 cb_idx:
+    :param cb_idx:
         Handle of registered MPT protocol driver
+    :type cb_idx: u8
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int reqBytes:
+    :param reqBytes:
         Size of the request in bytes
+    :type reqBytes: int
 
-    :param u32 \*req:
+    :param req:
         Pointer to MPT request frame
+    :type req: u32 \*
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Use schedule if CAN_SLEEP else use udelay.
+    :type sleepFlag: int
 
 .. _`mpt_send_handshake_request.description`:
 
@@ -588,14 +642,17 @@ mpt_host_page_access_control
 
     control the IOC's Host Page Buffer access
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 access_control_value:
+    :param access_control_value:
         define bits below
+    :type access_control_value: u8
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`mpt_host_page_access_control.description`:
 
@@ -622,11 +679,13 @@ mpt_host_page_alloc
 
     allocate system memory for the fw
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to pointer to IOC adapter
+    :type ioc: MPT_ADAPTER \*
 
-    :param pIOCInit_t ioc_init:
+    :param ioc_init:
         Pointer to ioc init config page
+    :type ioc_init: pIOCInit_t
 
 .. _`mpt_host_page_alloc.description`:
 
@@ -645,11 +704,13 @@ mpt_verify_adapter
 
     Given IOC identifier, set pointer to its adapter structure.
 
-    :param int iocid:
+    :param iocid:
         IOC unique identifier (integer)
+    :type iocid: int
 
-    :param MPT_ADAPTER \*\*iocpp:
+    :param iocpp:
         Pointer to pointer to IOC adapter
+    :type iocpp: MPT_ADAPTER \*\*
 
 .. _`mpt_verify_adapter.description`:
 
@@ -667,18 +728,21 @@ Description
 mpt_get_product_name
 ====================
 
-.. c:function:: const char*mpt_get_product_name(u16 vendor, u16 device, u8 revision)
+.. c:function:: const char* mpt_get_product_name(u16 vendor, u16 device, u8 revision)
 
     returns product string
 
-    :param u16 vendor:
+    :param vendor:
         pci vendor id
+    :type vendor: u16
 
-    :param u16 device:
+    :param device:
         pci device id
+    :type device: u16
 
-    :param u8 revision:
+    :param revision:
         pci revision id
+    :type revision: u8
 
 .. _`mpt_get_product_name.description`:
 
@@ -697,8 +761,9 @@ mpt_mapresources
 
     map in memory mapped io
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to pointer to IOC adapter
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_attach`:
 
@@ -709,11 +774,13 @@ mpt_attach
 
     Install a PCI intelligent MPT adapter.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to pci_dev structure
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         PCI device ID information
+    :type id: const struct pci_device_id \*
 
 .. _`mpt_attach.description`:
 
@@ -741,8 +808,9 @@ mpt_detach
 
     Remove a PCI intelligent MPT adapter.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to pci_dev structure
+    :type pdev: struct pci_dev \*
 
 .. _`mpt_suspend`:
 
@@ -753,11 +821,13 @@ mpt_suspend
 
     Fusion MPT base driver suspend routine.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to pci_dev structure
+    :type pdev: struct pci_dev \*
 
-    :param pm_message_t state:
+    :param state:
         new state to enter
+    :type state: pm_message_t
 
 .. _`mpt_resume`:
 
@@ -768,8 +838,9 @@ mpt_resume
 
     Fusion MPT base driver resume routine.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to pci_dev structure
+    :type pdev: struct pci_dev \*
 
 .. _`mpt_do_ioc_recovery`:
 
@@ -780,14 +851,17 @@ mpt_do_ioc_recovery
 
     Initialize or recover MPT adapter.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u32 reason:
+    :param reason:
         Event word / reason
+    :type reason: u32
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Use schedule if CAN_SLEEP else use udelay.
+    :type sleepFlag: int
 
 .. _`mpt_do_ioc_recovery.description`:
 
@@ -822,11 +896,13 @@ mpt_detect_bound_ports
 
     Search for matching PCI bus/dev_function
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to (struct pci_dev) structure
+    :type pdev: struct pci_dev \*
 
 .. _`mpt_detect_bound_ports.description`:
 
@@ -849,8 +925,9 @@ mpt_adapter_disable
 
     Disable misbehaving MPT adapter.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_adapter_dispose`:
 
@@ -861,8 +938,9 @@ mpt_adapter_dispose
 
     Free all resources associated with an MPT adapter
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_adapter_dispose.description`:
 
@@ -881,8 +959,9 @@ MptDisplayIocCapabilities
 
     Disply IOC's capabilities.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT adapter structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`makeiocready`:
 
@@ -893,14 +972,17 @@ MakeIocReady
 
     Get IOC to a READY state, using KickStart if needed.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int force:
+    :param force:
         Force hard KickStart of IOC
+    :type force: int
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`makeiocready.return`:
 
@@ -923,11 +1005,13 @@ mpt_GetIocState
 
     Get the current state of a MPT adapter.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int cooked:
+    :param cooked:
         Request raw or cooked IOC state
+    :type cooked: int
 
 .. _`mpt_getiocstate.description`:
 
@@ -946,14 +1030,17 @@ GetIocFacts
 
     Send IOCFacts request to MPT adapter.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
-    :param int reason:
+    :param reason:
         If recovery, only update facts.
+    :type reason: int
 
 .. _`getiocfacts.description`:
 
@@ -971,14 +1058,17 @@ GetPortFacts
 
     Send PortFacts request to MPT adapter.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int portnum:
+    :param portnum:
         Port number
+    :type portnum: int
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`getportfacts.description`:
 
@@ -996,11 +1086,13 @@ SendIocInit
 
     Send IOCInit request to MPT adapter.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`sendiocinit.description`:
 
@@ -1020,14 +1112,17 @@ SendPortEnable
 
     Send PortEnable request to MPT adapter port.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int portnum:
+    :param portnum:
         Port number to enable
+    :type portnum: int
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`sendportenable.description`:
 
@@ -1047,11 +1142,13 @@ mpt_alloc_fw_memory
 
     allocate firmware memory
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int size:
+    :param size:
         total FW bytes
+    :type size: int
 
 .. _`mpt_alloc_fw_memory.description`:
 
@@ -1072,8 +1169,9 @@ mpt_free_fw_memory
 
     free firmware memory
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_free_fw_memory.description`:
 
@@ -1092,11 +1190,13 @@ mpt_do_upload
 
     Construct and Send FWUpload request to MPT adapter port.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`mpt_do_upload.description`:
 
@@ -1120,14 +1220,17 @@ mpt_downloadboot
 
     DownloadBoot code
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param MpiFwHeader_t \*pFwHeader:
+    :param pFwHeader:
         Pointer to firmware header info
+    :type pFwHeader: MpiFwHeader_t \*
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`mpt_downloadboot.description`:
 
@@ -1150,14 +1253,17 @@ KickStart
 
     Perform hard reset of MPT adapter.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int force:
+    :param force:
         Force hard reset
+    :type force: int
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`kickstart.description`:
 
@@ -1196,16 +1302,19 @@ mpt_diag_reset
 
     Perform hard reset of the adapter.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int ignore:
+    :param ignore:
         Set if to honor and clear to ignore
         the reset history bit
+    :type ignore: int
 
-    :param int sleepFlag:
+    :param sleepFlag:
         CAN_SLEEP if called in a non-interrupt thread,
         else set to NO_SLEEP (use mdelay instead)
+    :type sleepFlag: int
 
 .. _`mpt_diag_reset.description`:
 
@@ -1236,15 +1345,18 @@ SendIocReset
 
     Send IOCReset request to MPT adapter.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 reset_type:
+    :param reset_type:
         reset type, expected values are
         \ ``MPI_FUNCTION_IOC_MESSAGE_UNIT_RESET``\  or \ ``MPI_FUNCTION_IO_UNIT_RESET``\ 
+    :type reset_type: u8
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`sendiocreset.description`:
 
@@ -1264,8 +1376,9 @@ initChainBuffers
 
     Allocate memory for and initialize chain buffers
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`initchainbuffers.description`:
 
@@ -1284,8 +1397,9 @@ PrimeIocFifos
 
     Initialize IOC request and reply FIFOs.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`primeiocfifos.description`:
 
@@ -1307,26 +1421,33 @@ mpt_handshake_req_reply_wait
 
     Send MPT request to and receive reply from IOC via doorbell handshake method.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int reqBytes:
+    :param reqBytes:
         Size of the request in bytes
+    :type reqBytes: int
 
-    :param u32 \*req:
+    :param req:
         Pointer to MPT request frame
+    :type req: u32 \*
 
-    :param int replyBytes:
+    :param replyBytes:
         Expected size of the reply in bytes
+    :type replyBytes: int
 
-    :param u16 \*u16reply:
+    :param u16reply:
         Pointer to area where reply should be written
+    :type u16reply: u16 \*
 
-    :param int maxwait:
+    :param maxwait:
         Max wait time for a reply (in seconds)
+    :type maxwait: int
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`mpt_handshake_req_reply_wait.notes`:
 
@@ -1349,14 +1470,17 @@ WaitForDoorbellAck
 
     Wait for IOC doorbell handshake acknowledge
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int howlong:
+    :param howlong:
         How long to wait (in seconds)
+    :type howlong: int
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`waitfordoorbellack.description`:
 
@@ -1378,14 +1502,17 @@ WaitForDoorbellInt
 
     Wait for IOC to set its doorbell interrupt bit
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int howlong:
+    :param howlong:
         How long to wait (in seconds)
+    :type howlong: int
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`waitfordoorbellint.description`:
 
@@ -1406,14 +1533,17 @@ WaitForDoorbellReply
 
     Wait for and capture an IOC handshake reply.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int howlong:
+    :param howlong:
         How long to wait (in seconds)
+    :type howlong: int
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`waitfordoorbellreply.description`:
 
@@ -1435,8 +1565,9 @@ GetLanConfigPages
 
     Fetch LANConfig pages.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`getlanconfigpages.return`:
 
@@ -1458,11 +1589,13 @@ mptbase_sas_persist_operation
 
     Perform operation on SAS Persistent Table
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 persist_opcode:
+    :param persist_opcode:
         see below
+    :type persist_opcode: u8
 
 .. _`mptbase_sas_persist_operation.description`:
 
@@ -1491,8 +1624,9 @@ GetIoUnitPage2
 
     Retrieve BIOS version and boot order information.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`getiounitpage2.return`:
 
@@ -1514,11 +1648,13 @@ mpt_GetScsiPortSettings
 
     read SCSI Port Page 0 and 2
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to a Adapter Strucutre
+    :type ioc: MPT_ADAPTER \*
 
-    :param int portnum:
+    :param portnum:
         IOC port number
+    :type portnum: int
 
 .. _`mpt_getscsiportsettings.return`:
 
@@ -1549,11 +1685,13 @@ mpt_readScsiDevicePageHeaders
 
     save version and length of SDP1
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to a Adapter Strucutre
+    :type ioc: MPT_ADAPTER \*
 
-    :param int portnum:
+    :param portnum:
         IOC port number
+    :type portnum: int
 
 .. _`mpt_readscsidevicepageheaders.return`:
 
@@ -1572,8 +1710,9 @@ mpt_inactive_raid_list_free
 
     This clears this link list.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         pointer to per adapter structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_inactive_raid_volumes`:
 
@@ -1584,14 +1723,17 @@ mpt_inactive_raid_volumes
 
     sets up link list of phy_disk_nums for devices belonging in an inactive volume
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         pointer to per adapter structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 channel:
+    :param channel:
         volume channel
+    :type channel: u8
 
-    :param u8 id:
+    :param id:
         volume target id
+    :type id: u8
 
 .. _`mpt_raid_phys_disk_pg0`:
 
@@ -1602,14 +1744,17 @@ mpt_raid_phys_disk_pg0
 
     returns phys disk page zero
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to a Adapter Structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 phys_disk_num:
+    :param phys_disk_num:
         io unit unique phys disk num generated by the ioc
+    :type phys_disk_num: u8
 
-    :param RaidPhysDiskPage0_t \*phys_disk:
+    :param phys_disk:
         requested payload data returned
+    :type phys_disk: RaidPhysDiskPage0_t \*
 
 .. _`mpt_raid_phys_disk_pg0.return`:
 
@@ -1629,11 +1774,13 @@ mpt_raid_phys_disk_get_num_paths
 
     returns number paths associated to this phys_num
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to a Adapter Structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 phys_disk_num:
+    :param phys_disk_num:
         io unit unique phys disk num generated by the ioc
+    :type phys_disk_num: u8
 
 .. _`mpt_raid_phys_disk_get_num_paths.return`:
 
@@ -1651,14 +1798,17 @@ mpt_raid_phys_disk_pg1
 
     returns phys disk page 1
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to a Adapter Structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 phys_disk_num:
+    :param phys_disk_num:
         io unit unique phys disk num generated by the ioc
+    :type phys_disk_num: u8
 
-    :param RaidPhysDiskPage1_t \*phys_disk:
+    :param phys_disk:
         requested payload data returned
+    :type phys_disk: RaidPhysDiskPage1_t \*
 
 .. _`mpt_raid_phys_disk_pg1.return`:
 
@@ -1678,8 +1828,9 @@ mpt_findImVolumes
 
     Identify IDs of hidden disks and RAID Volumes
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to a Adapter Strucutre
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_findimvolumes.return`:
 
@@ -1699,14 +1850,17 @@ SendEventNotification
 
     Send EventNotification (on or off) request to adapter
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u8 EvSwitch:
+    :param EvSwitch:
         Event switch flags
+    :type EvSwitch: u8
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Specifies whether the process can sleep
+    :type sleepFlag: int
 
 .. _`sendeventack`:
 
@@ -1717,11 +1871,13 @@ SendEventAck
 
     Send EventAck request to MPT adapter.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param EventNotificationReply_t \*evnp:
+    :param evnp:
         Pointer to original EventNotification request
+    :type evnp: EventNotificationReply_t \*
 
 .. _`mpt_config`:
 
@@ -1732,14 +1888,16 @@ mpt_config
 
     Generic function to issue config message
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to an adapter structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param CONFIGPARMS \*pCfg:
+    :param pCfg:
         Pointer to a configuration structure. Struct contains
         action, page address, direction, physical address
         and pointer to a configuration page header
         Page header is updated.
+    :type pCfg: CONFIGPARMS \*
 
 .. _`mpt_config.description`:
 
@@ -1760,11 +1918,13 @@ mpt_ioc_reset
 
     Base cleanup for hard reset
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to the adapter structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int reset_phase:
+    :param reset_phase:
         Indicates pre- or post-reset functionality
+    :type reset_phase: int
 
 .. _`mpt_ioc_reset.description`:
 
@@ -1782,8 +1942,9 @@ procmpt_create
 
     Create \ ``MPT_PROCFS_MPTBASEDIR``\  entries.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`procmpt_create.description`:
 
@@ -1801,8 +1962,9 @@ procmpt_destroy
 
     Tear down \ ``MPT_PROCFS_MPTBASEDIR``\  entries.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`procmpt_destroy.description`:
 
@@ -1820,20 +1982,25 @@ mpt_print_ioc_summary
 
     Write ASCII summary of IOC to a buffer.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param char \*buffer:
+    :param buffer:
         Pointer to buffer where IOC summary info should be written
+    :type buffer: char \*
 
-    :param int \*size:
+    :param size:
         Pointer to number of bytes we wrote (set by this routine)
+    :type size: int \*
 
-    :param int len:
+    :param len:
         Offset at which to start writing in buffer
+    :type len: int
 
-    :param int showlan:
+    :param showlan:
         Display LAN stuff?
+    :type showlan: int
 
 .. _`mpt_print_ioc_summary.description`:
 
@@ -1852,8 +2019,9 @@ mpt_set_taskmgmt_in_progress_flag
 
     set flags associated with task management
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_set_taskmgmt_in_progress_flag.description`:
 
@@ -1873,8 +2041,9 @@ mpt_clear_taskmgmt_in_progress_flag
 
     clear flags associated with task management
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_halt_firmware`:
 
@@ -1885,8 +2054,9 @@ mpt_halt_firmware
 
     Halts the firmware if it is operational and panic the kernel
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
 .. _`mpt_softresethandler`:
 
@@ -1897,11 +2067,13 @@ mpt_SoftResetHandler
 
     Issues a less expensive reset
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Indicates if sleep or schedule must be called.
+    :type sleepFlag: int
 
 .. _`mpt_softresethandler.description`:
 
@@ -1925,11 +2097,13 @@ mpt_Soft_Hard_ResetHandler
 
     Try less expensive reset
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Indicates if sleep or schedule must be called.
+    :type sleepFlag: int
 
 .. _`mpt_soft_hard_resethandler.description`:
 
@@ -1949,11 +2123,13 @@ mpt_HardResetHandler
 
     Generic reset handler
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param int sleepFlag:
+    :param sleepFlag:
         Indicates if sleep or schedule must be called.
+    :type sleepFlag: int
 
 .. _`mpt_hardresethandler.description`:
 
@@ -1985,14 +2161,17 @@ ProcessEventNotification
 
     Route EventNotificationReply to all event handlers
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param EventNotificationReply_t \*pEventReply:
+    :param pEventReply:
         Pointer to EventNotification reply frame
+    :type pEventReply: EventNotificationReply_t \*
 
-    :param int \*evHandlers:
+    :param evHandlers:
         Pointer to integer, number of event handlers
+    :type evHandlers: int \*
 
 .. _`processeventnotification.description`:
 
@@ -2012,11 +2191,13 @@ mpt_fc_log_info
 
     Log information returned from Fibre Channel IOC.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u32 log_info:
+    :param log_info:
         U32 LogInfo reply word from the IOC
+    :type log_info: u32
 
 .. _`mpt_fc_log_info.description`:
 
@@ -2034,11 +2215,13 @@ mpt_spi_log_info
 
     Log information returned from SCSI Parallel IOC.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u32 log_info:
+    :param log_info:
         U32 LogInfo word from the IOC
+    :type log_info: u32
 
 .. _`mpt_spi_log_info.description`:
 
@@ -2056,14 +2239,17 @@ mpt_sas_log_info
 
     Log information returned from SAS IOC.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u32 log_info:
+    :param log_info:
         U32 LogInfo reply word from the IOC
+    :type log_info: u32
 
-    :param u8 cb_idx:
+    :param cb_idx:
         callback function's handle
+    :type cb_idx: u8
 
 .. _`mpt_sas_log_info.description`:
 
@@ -2081,14 +2267,17 @@ mpt_iocstatus_info_config
 
     IOCSTATUS information for config pages
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u32 ioc_status:
+    :param ioc_status:
         U32 IOCStatus word from IOC
+    :type ioc_status: u32
 
-    :param MPT_FRAME_HDR \*mf:
+    :param mf:
         Pointer to MPT request frame
+    :type mf: MPT_FRAME_HDR \*
 
 .. _`mpt_iocstatus_info_config.description`:
 
@@ -2106,14 +2295,17 @@ mpt_iocstatus_info
 
     IOCSTATUS information returned from IOC.
 
-    :param MPT_ADAPTER \*ioc:
+    :param ioc:
         Pointer to MPT_ADAPTER structure
+    :type ioc: MPT_ADAPTER \*
 
-    :param u32 ioc_status:
+    :param ioc_status:
         U32 IOCStatus word from IOC
+    :type ioc_status: u32
 
-    :param MPT_FRAME_HDR \*mf:
+    :param mf:
         Pointer to MPT request frame
+    :type mf: MPT_FRAME_HDR \*
 
 .. _`mpt_iocstatus_info.description`:
 
@@ -2131,8 +2323,9 @@ fusion_init
 
     Fusion MPT base driver initialization routine.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fusion_init.description`:
 
@@ -2150,8 +2343,9 @@ fusion_exit
 
     Perform driver unload cleanup.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`fusion_exit.description`:
 

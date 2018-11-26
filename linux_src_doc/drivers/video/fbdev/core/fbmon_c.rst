@@ -10,14 +10,17 @@ fb_create_modedb
 
     create video mode database
 
-    :param unsigned char \*edid:
+    :param edid:
         EDID data
+    :type edid: unsigned char \*
 
-    :param int \*dbsize:
+    :param dbsize:
         database size
+    :type dbsize: int \*
 
-    :param const struct fb_monspecs \*specs:
+    :param specs:
         *undescribed*
+    :type specs: const struct fb_monspecs \*
 
 .. _`fb_create_modedb.return`:
 
@@ -43,8 +46,9 @@ fb_destroy_modedb
 
     destroys mode database
 
-    :param struct fb_videomode \*modedb:
+    :param modedb:
         mode database to destroy
+    :type modedb: struct fb_videomode \*
 
 .. _`fb_destroy_modedb.description`:
 
@@ -62,11 +66,13 @@ fb_edid_add_monspecs
 
     add monitor video modes from E-EDID data
 
-    :param unsigned char \*edid:
+    :param edid:
         128 byte array with an E-EDID block
+    :type edid: unsigned char \*
 
-    :param struct fb_monspecs \*specs:
+    :param specs:
         *undescribed*
+    :type specs: struct fb_monspecs \*
 
 .. _`fb_get_vblank`:
 
@@ -77,8 +83,9 @@ fb_get_vblank
 
     get vertical blank time
 
-    :param u32 hfreq:
+    :param hfreq:
         horizontal freq
+    :type hfreq: u32
 
 .. _`fb_get_vblank.description`:
 
@@ -109,11 +116,13 @@ fb_get_hblank_by_hfreq
 
     get horizontal blank time given hfreq
 
-    :param u32 hfreq:
+    :param hfreq:
         horizontal freq
+    :type hfreq: u32
 
-    :param u32 xres:
+    :param xres:
         horizontal resolution in pixels
+    :type xres: u32
 
 .. _`fb_get_hblank_by_hfreq.description`:
 
@@ -147,11 +156,13 @@ fb_get_hblank_by_dclk
 
     get horizontal blank time given pixelclock
 
-    :param u32 dclk:
+    :param dclk:
         pixelclock in Hz
+    :type dclk: u32
 
-    :param u32 xres:
+    :param xres:
         horizontal resolution in pixels
+    :type xres: u32
 
 .. _`fb_get_hblank_by_dclk.description`:
 
@@ -186,11 +197,13 @@ fb_get_hfreq
 
     estimate hsync
 
-    :param u32 vfreq:
+    :param vfreq:
         vertical refresh rate
+    :type vfreq: u32
 
-    :param u32 yres:
+    :param yres:
         vertical resolution
+    :type yres: u32
 
 .. _`fb_get_hfreq.description`:
 
@@ -211,14 +224,17 @@ of_get_fb_videomode
 
     get a fb_videomode from devicetree
 
-    :param struct device_node \*np:
+    :param np:
         device_node with the timing specification
+    :type np: struct device_node \*
 
-    :param struct fb_videomode \*fb:
+    :param fb:
         will be set to the return value
+    :type fb: struct fb_videomode \*
 
-    :param int index:
+    :param index:
         index into the list of display timings in devicetree
+    :type index: int
 
 .. _`of_get_fb_videomode.description`:
 

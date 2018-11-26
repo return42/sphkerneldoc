@@ -21,7 +21,6 @@ Definition
         const char *supply_name;
         const char *input_supply;
         int microvolts;
-        int gpio;
         unsigned startup_delay;
         unsigned gpio_is_open_drain:1;
         unsigned enable_high:1;
@@ -42,10 +41,6 @@ input_supply
 
 microvolts
     Output voltage of regulator
-
-gpio
-    GPIO to use for enable control
-    set to -EINVAL if not used
 
 startup_delay
     Start-up time in microseconds

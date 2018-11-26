@@ -10,11 +10,13 @@ uwb_dev_get_by_devaddr
 
     get a UWB device with a specific DevAddr
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller that saw the device
+    :type rc: struct uwb_rc \*
 
-    :param const struct uwb_dev_addr \*devaddr:
+    :param devaddr:
         DevAddr of the UWB device to find
+    :type devaddr: const struct uwb_dev_addr \*
 
 .. _`uwb_dev_get_by_devaddr.description`:
 
@@ -33,11 +35,13 @@ uwb_dev_get_by_macaddr
 
     get a UWB device with a specific EUI-48
 
-    :param struct uwb_rc \*rc:
+    :param rc:
         the radio controller that saw the device
+    :type rc: struct uwb_rc \*
 
-    :param const struct uwb_mac_addr \*macaddr:
+    :param macaddr:
         *undescribed*
+    :type macaddr: const struct uwb_mac_addr \*
 
 .. _`uwbd_evt_handle_rc_bp_slot_change`:
 
@@ -48,8 +52,9 @@ uwbd_evt_handle_rc_bp_slot_change
 
     handle a BP_SLOT_CHANGE event
 
-    :param struct uwb_event \*evt:
+    :param evt:
         the BP_SLOT_CHANGE notification from the radio controller
+    :type evt: struct uwb_event \*
 
 .. _`uwbd_evt_handle_rc_bp_slot_change.description`:
 

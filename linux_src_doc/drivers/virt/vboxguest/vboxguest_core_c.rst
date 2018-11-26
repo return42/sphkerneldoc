@@ -10,8 +10,9 @@ vbg_guest_mappings_init
 
     that are floating around.
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
 .. _`vbg_guest_mappings_init.description`:
 
@@ -31,8 +32,9 @@ vbg_guest_mappings_exit
 
 .. c:function:: void vbg_guest_mappings_exit(struct vbg_dev *gdev)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
 .. _`vbg_report_guest_info`:
 
@@ -41,8 +43,9 @@ vbg_report_guest_info
 
 .. c:function:: int vbg_report_guest_info(struct vbg_dev *gdev)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
 .. _`vbg_report_guest_info.return`:
 
@@ -58,11 +61,13 @@ vbg_report_driver_status
 
 .. c:function:: int vbg_report_driver_status(struct vbg_dev *gdev, bool active)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param bool active:
+    :param active:
         Flag whether the driver is now active or not.
+    :type active: bool
 
 .. _`vbg_report_driver_status.return`:
 
@@ -78,11 +83,13 @@ vbg_balloon_inflate
 
 .. c:function:: int vbg_balloon_inflate(struct vbg_dev *gdev, u32 chunk_idx)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param u32 chunk_idx:
+    :param chunk_idx:
         Index of the chunk.
+    :type chunk_idx: u32
 
 .. _`vbg_balloon_inflate.return`:
 
@@ -98,11 +105,13 @@ vbg_balloon_deflate
 
 .. c:function:: int vbg_balloon_deflate(struct vbg_dev *gdev, u32 chunk_idx)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param u32 chunk_idx:
+    :param chunk_idx:
         Index of the chunk.
+    :type chunk_idx: u32
 
 .. _`vbg_balloon_deflate.return`:
 
@@ -120,8 +129,9 @@ vbg_balloon_work
 
     the host wants the balloon to be and adjust accordingly.
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`vbg_heartbeat_timer`:
 
@@ -130,8 +140,9 @@ vbg_heartbeat_timer
 
 .. c:function:: void vbg_heartbeat_timer(struct timer_list *t)
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`vbg_heartbeat_host_config`:
 
@@ -142,11 +153,13 @@ vbg_heartbeat_host_config
 
     and get heartbeat interval from the host.
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param bool enabled:
+    :param enabled:
         Set true to enable guest heartbeat checks on host.
+    :type enabled: bool
 
 .. _`vbg_heartbeat_host_config.return`:
 
@@ -162,8 +175,9 @@ vbg_heartbeat_init
 
 .. c:function:: int vbg_heartbeat_init(struct vbg_dev *gdev)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
 .. _`vbg_heartbeat_init.return`:
 
@@ -179,8 +193,9 @@ vbg_heartbeat_exit
 
 .. c:function:: void vbg_heartbeat_exit(struct vbg_dev *gdev)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
 .. _`vbg_track_bit_usage`:
 
@@ -189,14 +204,17 @@ vbg_track_bit_usage
 
 .. c:function:: bool vbg_track_bit_usage(struct vbg_bit_usage_tracker *tracker, u32 changed, u32 previous)
 
-    :param struct vbg_bit_usage_tracker \*tracker:
+    :param tracker:
         The bit usage tracker.
+    :type tracker: struct vbg_bit_usage_tracker \*
 
-    :param u32 changed:
+    :param changed:
         The bits to change.
+    :type changed: u32
 
-    :param u32 previous:
+    :param previous:
         The previous value of the bits.
+    :type previous: u32
 
 .. _`vbg_track_bit_usage.return`:
 
@@ -212,11 +230,13 @@ vbg_reset_host_event_filter
 
 .. c:function:: int vbg_reset_host_event_filter(struct vbg_dev *gdev, u32 fixed_events)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param u32 fixed_events:
+    :param fixed_events:
         Fixed events (init time).
+    :type fixed_events: u32
 
 .. _`vbg_reset_host_event_filter.return`:
 
@@ -232,23 +252,28 @@ vbg_set_session_event_filter
 
 .. c:function:: int vbg_set_session_event_filter(struct vbg_dev *gdev, struct vbg_session *session, u32 or_mask, u32 not_mask, bool session_termination)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param struct vbg_session \*session:
+    :param session:
         The session.
+    :type session: struct vbg_session \*
 
-    :param u32 or_mask:
+    :param or_mask:
         The events to add.
+    :type or_mask: u32
 
-    :param u32 not_mask:
+    :param not_mask:
         The events to remove.
+    :type not_mask: u32
 
-    :param bool session_termination:
+    :param session_termination:
         Set if we're called by the session cleanup code.
         This tweaks the error handling so we perform
         proper session cleanup even if the host
         misbehaves.
+    :type session_termination: bool
 
 .. _`vbg_set_session_event_filter.description`:
 
@@ -272,8 +297,9 @@ vbg_reset_host_capabilities
 
 .. c:function:: int vbg_reset_host_capabilities(struct vbg_dev *gdev)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
 .. _`vbg_reset_host_capabilities.return`:
 
@@ -289,23 +315,28 @@ vbg_set_session_capabilities
 
 .. c:function:: int vbg_set_session_capabilities(struct vbg_dev *gdev, struct vbg_session *session, u32 or_mask, u32 not_mask, bool session_termination)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param struct vbg_session \*session:
+    :param session:
         The session.
+    :type session: struct vbg_session \*
 
-    :param u32 or_mask:
+    :param or_mask:
         The capabilities to add.
+    :type or_mask: u32
 
-    :param u32 not_mask:
+    :param not_mask:
         The capabilities to remove.
+    :type not_mask: u32
 
-    :param bool session_termination:
+    :param session_termination:
         Set if we're called by the session cleanup code.
         This tweaks the error handling so we perform
         proper session cleanup even if the host
         misbehaves.
+    :type session_termination: bool
 
 .. _`vbg_set_session_capabilities.return`:
 
@@ -321,8 +352,9 @@ vbg_query_host_version
 
 .. c:function:: int vbg_query_host_version(struct vbg_dev *gdev)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
 .. _`vbg_query_host_version.return`:
 
@@ -340,12 +372,14 @@ vbg_core_init
 
     device driver is loaded.
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param u32 fixed_events:
+    :param fixed_events:
         Events that will be enabled upon init and no client
         will ever be allowed to mask.
+    :type fixed_events: u32
 
 .. _`vbg_core_init.description`:
 
@@ -373,8 +407,9 @@ vbg_core_exit
 
     up vboxguest-core managed resources.
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
 .. _`vbg_core_exit.description`:
 
@@ -391,11 +426,13 @@ vbg_core_open_session
 
 .. c:function:: struct vbg_session *vbg_core_open_session(struct vbg_dev *gdev, bool user)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param bool user:
+    :param user:
         Set if this is a session for the vboxuser device.
+    :type user: bool
 
 .. _`vbg_core_open_session.description`:
 
@@ -418,8 +455,9 @@ vbg_core_close_session
 
 .. c:function:: void vbg_core_close_session(struct vbg_session *session)
 
-    :param struct vbg_session \*session:
+    :param session:
         The session to close (and free).
+    :type session: struct vbg_session \*
 
 .. _`vbg_req_allowed`:
 
@@ -428,14 +466,17 @@ vbg_req_allowed
 
 .. c:function:: int vbg_req_allowed(struct vbg_dev *gdev, struct vbg_session *session, const struct vmmdev_request_header *req)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param struct vbg_session \*session:
+    :param session:
         The calling session.
+    :type session: struct vbg_session \*
 
-    :param const struct vmmdev_request_header \*req:
+    :param req:
         The request.
+    :type req: const struct vmmdev_request_header \*
 
 .. _`vbg_req_allowed.return`:
 
@@ -451,14 +492,17 @@ vbg_core_ioctl
 
 .. c:function:: int vbg_core_ioctl(struct vbg_session *session, unsigned int req, void *data)
 
-    :param struct vbg_session \*session:
+    :param session:
         The client session.
+    :type session: struct vbg_session \*
 
-    :param unsigned int req:
+    :param req:
         The requested function.
+    :type req: unsigned int
 
-    :param void \*data:
+    :param data:
         The i/o data buffer, minimum size sizeof(struct vbg_ioctl_hdr).
+    :type data: void \*
 
 .. _`vbg_core_ioctl.return`:
 
@@ -476,11 +520,13 @@ vbg_core_set_mouse_status
 
     features to the host.
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The Guest extension device.
+    :type gdev: struct vbg_dev \*
 
-    :param u32 features:
+    :param features:
         The set of features to report to the host.
+    :type features: u32
 
 .. _`vbg_core_set_mouse_status.return`:
 

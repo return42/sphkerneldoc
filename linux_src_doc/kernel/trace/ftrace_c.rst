@@ -1,25 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/trace/ftrace.c
 
-.. _`ftrace_nr_registered_ops`:
-
-ftrace_nr_registered_ops
-========================
-
-.. c:function:: int ftrace_nr_registered_ops( void)
-
-    return number of ops registered
-
-    :param  void:
-        no arguments
-
-.. _`ftrace_nr_registered_ops.description`:
-
-Description
------------
-
-Returns the number of ftrace_ops registered and tracing functions
-
 .. _`ftrace_lookup_ip`:
 
 ftrace_lookup_ip
@@ -29,11 +10,13 @@ ftrace_lookup_ip
 
     Test to see if an ip exists in an ftrace_hash
 
-    :param struct ftrace_hash \*hash:
+    :param hash:
         The hash to look at
+    :type hash: struct ftrace_hash \*
 
-    :param unsigned long ip:
+    :param ip:
         The instruction pointer to test
+    :type ip: unsigned long
 
 .. _`ftrace_lookup_ip.description`:
 
@@ -54,12 +37,14 @@ ftrace_location_range
 
     return the first address of a traced location if it touches the given ip range
 
-    :param unsigned long start:
+    :param start:
         start of range to search.
+    :type start: unsigned long
 
-    :param unsigned long end:
+    :param end:
         end of range to search (inclusive). \ ``end``\  points to the last byte
         to check.
+    :type end: unsigned long
 
 .. _`ftrace_location_range.description`:
 
@@ -80,8 +65,9 @@ ftrace_location
 
     return true if the ip giving is a traced location
 
-    :param unsigned long ip:
+    :param ip:
         the instruction pointer to check
+    :type ip: unsigned long
 
 .. _`ftrace_location.description`:
 
@@ -102,11 +88,13 @@ ftrace_text_reserved
 
     return true if range contains an ftrace location
 
-    :param const void \*start:
+    :param start:
         start of range to search
+    :type start: const void \*
 
-    :param const void \*end:
+    :param end:
         end of range to search (inclusive). \ ``end``\  points to the last byte to check.
+    :type end: const void \*
 
 .. _`ftrace_text_reserved.description`:
 
@@ -127,11 +115,13 @@ ftrace_bug
 
     report and shutdown function tracer
 
-    :param int failed:
+    :param failed:
         The failed type (EFAULT, EINVAL, EPERM)
+    :type failed: int
 
-    :param struct dyn_ftrace \*rec:
+    :param rec:
         The record that failed
+    :type rec: struct dyn_ftrace \*
 
 .. _`ftrace_bug.description`:
 
@@ -152,11 +142,13 @@ ftrace_update_record
 
 .. c:function:: int ftrace_update_record(struct dyn_ftrace *rec, int enable)
 
-    :param struct dyn_ftrace \*rec:
+    :param rec:
         the record to update
+    :type rec: struct dyn_ftrace \*
 
-    :param int enable:
+    :param enable:
         set to 1 if the record is tracing, zero to force disable
+    :type enable: int
 
 .. _`ftrace_update_record.description`:
 
@@ -173,11 +165,13 @@ ftrace_test_record
 
 .. c:function:: int ftrace_test_record(struct dyn_ftrace *rec, int enable)
 
-    :param struct dyn_ftrace \*rec:
+    :param rec:
         the record to test
+    :type rec: struct dyn_ftrace \*
 
-    :param int enable:
+    :param enable:
         set to 1 to check if enabled, 0 if it is disabled
+    :type enable: int
 
 .. _`ftrace_test_record.description`:
 
@@ -197,8 +191,9 @@ ftrace_get_addr_new
 
     Get the call address to set to
 
-    :param struct dyn_ftrace \*rec:
+    :param rec:
         The ftrace record descriptor
+    :type rec: struct dyn_ftrace \*
 
 .. _`ftrace_get_addr_new.description`:
 
@@ -220,8 +215,9 @@ ftrace_get_addr_curr
 
     Get the call address that is already there
 
-    :param struct dyn_ftrace \*rec:
+    :param rec:
         The ftrace record descriptor
+    :type rec: struct dyn_ftrace \*
 
 .. _`ftrace_get_addr_curr.description`:
 
@@ -241,8 +237,9 @@ ftrace_rec_iter_start
 
 .. c:function:: struct ftrace_rec_iter *ftrace_rec_iter_start( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ftrace_rec_iter_start.description`:
 
@@ -262,8 +259,9 @@ ftrace_rec_iter_next
 
 .. c:function:: struct ftrace_rec_iter *ftrace_rec_iter_next(struct ftrace_rec_iter *iter)
 
-    :param struct ftrace_rec_iter \*iter:
+    :param iter:
         The handle to the iterator.
+    :type iter: struct ftrace_rec_iter \*
 
 .. _`ftrace_rec_iter_next.description`:
 
@@ -279,8 +277,9 @@ ftrace_rec_iter_record
 
 .. c:function:: struct dyn_ftrace *ftrace_rec_iter_record(struct ftrace_rec_iter *iter)
 
-    :param struct ftrace_rec_iter \*iter:
+    :param iter:
         The current iterator location
+    :type iter: struct ftrace_rec_iter \*
 
 .. _`ftrace_rec_iter_record.description`:
 
@@ -296,8 +295,9 @@ ftrace_run_stop_machine
 
 .. c:function:: void ftrace_run_stop_machine(int command)
 
-    :param int command:
+    :param command:
         The command to tell ftrace what to do
+    :type command: int
 
 .. _`ftrace_run_stop_machine.description`:
 
@@ -314,8 +314,9 @@ arch_ftrace_update_code
 
 .. c:function:: void arch_ftrace_update_code(int command)
 
-    :param int command:
+    :param command:
         The command that needs to be done
+    :type command: int
 
 .. _`arch_ftrace_update_code.description`:
 
@@ -334,17 +335,21 @@ ftrace_regex_open
 
     initialize function tracer filter files
 
-    :param struct ftrace_ops \*ops:
+    :param ops:
         The ftrace_ops that hold the hash filters
+    :type ops: struct ftrace_ops \*
 
-    :param int flag:
+    :param flag:
         The type of filter to process
+    :type flag: int
 
-    :param struct inode \*inode:
+    :param inode:
         The inode, usually passed in to your open routine
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         The file, usually passed in to your open routine
+    :type file: struct file \*
 
 .. _`ftrace_regex_open.description`:
 
@@ -369,8 +374,9 @@ allocate_ftrace_func_mapper
 
     allocate a new ftrace_func_mapper
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`allocate_ftrace_func_mapper.description`:
 
@@ -388,11 +394,13 @@ ftrace_func_mapper_find_ip
 
     Find some data mapped to an ip
 
-    :param struct ftrace_func_mapper \*mapper:
+    :param mapper:
         The mapper that has the ip maps
+    :type mapper: struct ftrace_func_mapper \*
 
-    :param unsigned long ip:
+    :param ip:
         the instruction pointer to find the data for
+    :type ip: unsigned long
 
 .. _`ftrace_func_mapper_find_ip.description`:
 
@@ -414,14 +422,17 @@ ftrace_func_mapper_add_ip
 
     Map some data to an ip
 
-    :param struct ftrace_func_mapper \*mapper:
+    :param mapper:
         The mapper that has the ip maps
+    :type mapper: struct ftrace_func_mapper \*
 
-    :param unsigned long ip:
+    :param ip:
         The instruction pointer address to map \ ``data``\  to
+    :type ip: unsigned long
 
-    :param void \*data:
+    :param data:
         The data to map to \ ``ip``\ 
+    :type data: void \*
 
 .. _`ftrace_func_mapper_add_ip.description`:
 
@@ -439,11 +450,13 @@ ftrace_func_mapper_remove_ip
 
     Remove an ip from the mapping
 
-    :param struct ftrace_func_mapper \*mapper:
+    :param mapper:
         The mapper that has the ip maps
+    :type mapper: struct ftrace_func_mapper \*
 
-    :param unsigned long ip:
+    :param ip:
         The instruction pointer address to remove the data from
+    :type ip: unsigned long
 
 .. _`ftrace_func_mapper_remove_ip.description`:
 
@@ -464,11 +477,13 @@ free_ftrace_func_mapper
 
     free a mapping of ips and data
 
-    :param struct ftrace_func_mapper \*mapper:
+    :param mapper:
         The mapper that has the ip maps
+    :type mapper: struct ftrace_func_mapper \*
 
-    :param ftrace_mapper_func free_func:
+    :param free_func:
         A function to be called on each data item.
+    :type free_func: ftrace_mapper_func
 
 .. _`free_ftrace_func_mapper.description`:
 
@@ -487,17 +502,21 @@ ftrace_set_filter_ip
 
     set a function to filter on in ftrace by address \ ``ops``\  - the ops to set the filter with \ ``ip``\  - the address to add to or remove from the filter. \ ``remove``\  - non zero to remove the ip from the filter \ ``reset``\  - non zero to reset all filters before applying this filter.
 
-    :param struct ftrace_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct ftrace_ops \*
 
-    :param unsigned long ip:
+    :param ip:
         *undescribed*
+    :type ip: unsigned long
 
-    :param int remove:
+    :param remove:
         *undescribed*
+    :type remove: int
 
-    :param int reset:
+    :param reset:
         *undescribed*
+    :type reset: int
 
 .. _`ftrace_set_filter_ip.description`:
 
@@ -516,8 +535,9 @@ ftrace_ops_set_global_filter
 
     setup ops to use global filters \ ``ops``\  - the ops which will use the global filters
 
-    :param struct ftrace_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct ftrace_ops \*
 
 .. _`ftrace_ops_set_global_filter.description`:
 
@@ -536,17 +556,21 @@ ftrace_set_filter
 
     set a function to filter on in ftrace \ ``ops``\  - the ops to set the filter with \ ``buf``\  - the string that holds the function filter text. \ ``len``\  - the length of the string. \ ``reset``\  - non zero to reset all filters before applying this filter.
 
-    :param struct ftrace_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct ftrace_ops \*
 
-    :param unsigned char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: unsigned char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param int reset:
+    :param reset:
         *undescribed*
+    :type reset: int
 
 .. _`ftrace_set_filter.description`:
 
@@ -565,17 +589,21 @@ ftrace_set_notrace
 
     set a function to not trace in ftrace \ ``ops``\  - the ops to set the notrace filter with \ ``buf``\  - the string that holds the function notrace text. \ ``len``\  - the length of the string. \ ``reset``\  - non zero to reset all filters before applying this filter.
 
-    :param struct ftrace_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct ftrace_ops \*
 
-    :param unsigned char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: unsigned char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param int reset:
+    :param reset:
         *undescribed*
+    :type reset: int
 
 .. _`ftrace_set_notrace.description`:
 
@@ -595,14 +623,17 @@ ftrace_set_global_filter
 
     set a function to filter on with global tracers \ ``buf``\  - the string that holds the function filter text. \ ``len``\  - the length of the string. \ ``reset``\  - non zero to reset all filters before applying this filter.
 
-    :param unsigned char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: unsigned char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param int reset:
+    :param reset:
         *undescribed*
+    :type reset: int
 
 .. _`ftrace_set_global_filter.description`:
 
@@ -621,14 +652,17 @@ ftrace_set_global_notrace
 
     set a function to not trace with global tracers \ ``buf``\  - the string that holds the function notrace text. \ ``len``\  - the length of the string. \ ``reset``\  - non zero to reset all filters before applying this filter.
 
-    :param unsigned char \*buf:
+    :param buf:
         *undescribed*
+    :type buf: unsigned char \*
 
-    :param int len:
+    :param len:
         *undescribed*
+    :type len: int
 
-    :param int reset:
+    :param reset:
         *undescribed*
+    :type reset: int
 
 .. _`ftrace_set_global_notrace.description`:
 
@@ -648,8 +682,9 @@ ftrace_ops_get_func
 
     get the function a trampoline should call
 
-    :param struct ftrace_ops \*ops:
+    :param ops:
         the ops to get the function for
+    :type ops: struct ftrace_ops \*
 
 .. _`ftrace_ops_get_func.description`:
 
@@ -672,8 +707,9 @@ ftrace_kill
 
     kill ftrace
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ftrace_kill.description`:
 
@@ -691,8 +727,9 @@ ftrace_is_dead
 
 .. c:function:: int ftrace_is_dead( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`register_ftrace_function`:
 
@@ -703,8 +740,9 @@ register_ftrace_function
 
     register a function for profiling \ ``ops``\  - ops structure that holds the function for profiling.
 
-    :param struct ftrace_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct ftrace_ops \*
 
 .. _`register_ftrace_function.description`:
 
@@ -719,7 +757,7 @@ kernel.
 Note
 ----
 
-\ ``ops``\ ->func and all the functions it calls must be labeled
+\ ``ops->func``\  and all the functions it calls must be labeled
 with "notrace", otherwise it will go into a
 recursive loop.
 
@@ -732,8 +770,9 @@ unregister_ftrace_function
 
     unregister a function for profiling. \ ``ops``\  - ops structure that holds the function to unregister
 
-    :param struct ftrace_ops \*ops:
+    :param ops:
         *undescribed*
+    :type ops: struct ftrace_ops \*
 
 .. _`unregister_ftrace_function.description`:
 

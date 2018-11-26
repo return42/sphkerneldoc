@@ -10,11 +10,13 @@ module_isa_driver
 
     Helper macro for registering a ISA driver
 
-    :param  __isa_driver:
+    :param __isa_driver:
         isa_driver struct
+    :type __isa_driver: 
 
-    :param  __num_isa_dev:
+    :param __num_isa_dev:
         number of devices to register
+    :type __num_isa_dev: 
 
 .. _`module_isa_driver.description`:
 
@@ -34,8 +36,9 @@ max_num_isa_dev
 
     Maximum possible number registered of an ISA device
 
-    :param  __isa_dev_ext:
+    :param __isa_dev_ext:
         *undescribed*
+    :type __isa_dev_ext: 
 
 .. _`max_num_isa_dev.description`:
 

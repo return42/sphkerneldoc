@@ -10,23 +10,29 @@ fat_parse_long
 
     Parse extended directory entry.
 
-    :param struct inode \*dir:
+    :param dir:
         *undescribed*
+    :type dir: struct inode \*
 
-    :param loff_t \*pos:
+    :param pos:
         *undescribed*
+    :type pos: loff_t \*
 
-    :param struct buffer_head \*\*bh:
+    :param bh:
         *undescribed*
+    :type bh: struct buffer_head \*\*
 
-    :param struct msdos_dir_entry \*\*de:
+    :param de:
         *undescribed*
+    :type de: struct msdos_dir_entry \*\*
 
-    :param wchar_t \*\*unicode:
+    :param unicode:
         *undescribed*
+    :type unicode: wchar_t \*\*
 
-    :param unsigned char \*nr_slots:
+    :param nr_slots:
         *undescribed*
+    :type nr_slots: unsigned char \*
 
 .. _`fat_parse_long.description`:
 
@@ -54,17 +60,21 @@ fat_parse_short
 
     Parse MS-DOS (short) directory entry.
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
-    :param const struct msdos_dir_entry \*de:
+    :param de:
         directory entry to parse
+    :type de: const struct msdos_dir_entry \*
 
-    :param unsigned char \*name:
+    :param name:
         FAT_MAX_SHORT_SIZE array in which to place extracted name
+    :type name: unsigned char \*
 
-    :param int dot_hidden:
+    :param dot_hidden:
         Nonzero == prepend '.' to names with ATTR_HIDDEN
+    :type dot_hidden: int
 
 .. _`fat_parse_short.description`:
 

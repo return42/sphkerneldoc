@@ -10,14 +10,17 @@ vb2_create_framevec
 
     map virtual addresses to pfns
 
-    :param unsigned long start:
+    :param start:
         Virtual user address where we start mapping
+    :type start: unsigned long
 
-    :param unsigned long length:
+    :param length:
         Length of a range to map
+    :type length: unsigned long
 
-    :param bool write:
+    :param write:
         Should we map for writing into the area
+    :type write: bool
 
 .. _`vb2_create_framevec.description`:
 
@@ -39,8 +42,9 @@ vb2_destroy_framevec
 
     release vector of mapped pfns
 
-    :param struct frame_vector \*vec:
+    :param vec:
         vector of pfns / pages to release
+    :type vec: struct frame_vector \*
 
 .. _`vb2_destroy_framevec.description`:
 
@@ -59,8 +63,9 @@ vb2_common_vm_open
 
     increase refcount of the vma
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         virtual memory region for the mapping
+    :type vma: struct vm_area_struct \*
 
 .. _`vb2_common_vm_open.description`:
 
@@ -79,8 +84,9 @@ vb2_common_vm_close
 
     decrease refcount of the vma
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         virtual memory region for the mapping
+    :type vma: struct vm_area_struct \*
 
 .. _`vb2_common_vm_close.description`:
 

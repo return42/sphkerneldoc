@@ -10,8 +10,9 @@ misc_register
 
     register a miscellaneous device
 
-    :param struct miscdevice \*misc:
+    :param misc:
         device structure
+    :type misc: struct miscdevice \*
 
 .. _`misc_register.description`:
 
@@ -40,8 +41,9 @@ misc_deregister
 
     unregister a miscellaneous device
 
-    :param struct miscdevice \*misc:
+    :param misc:
         device to unregister
+    :type misc: struct miscdevice \*
 
 .. _`misc_deregister.description`:
 

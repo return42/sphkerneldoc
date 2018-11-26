@@ -178,12 +178,14 @@ stedma40_filter
 
     Provides stedma40_chan_cfg to the ste_dma40 dma driver via the dmaengine framework. does some checking of what's provided.
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dmaengine handle.
+    :type chan: struct dma_chan \*
 
-    :param void \*data:
+    :param data:
         Must be of type: struct stedma40_chan_cfg and is
         the configuration of the framework.
+    :type data: void \*
 
 .. _`stedma40_filter.description`:
 
@@ -202,20 +204,25 @@ stedma40_slave_mem
 
     Transfers a raw data buffer to or from a slave (=device)
 
-    :param struct dma_chan \*chan:
+    :param chan:
         dmaengine handle
+    :type chan: struct dma_chan \*
 
-    :param dma_addr_t addr:
+    :param addr:
         source or destination physicall address.
+    :type addr: dma_addr_t
 
-    :param unsigned int size:
+    :param size:
         bytes to transfer
+    :type size: unsigned int
 
-    :param enum dma_transfer_direction direction:
+    :param direction:
         direction of transfer
+    :type direction: enum dma_transfer_direction
 
-    :param unsigned long flags:
+    :param flags:
         is actually enum dma_ctrl_flags. See dmaengine.h
+    :type flags: unsigned long
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ nfs2_decode_dirent
 
     Decode a single NFSv2 directory entry stored in the local page cache.
 
-    :param struct xdr_stream \*xdr:
+    :param xdr:
         XDR stream where entry resides
+    :type xdr: struct xdr_stream \*
 
-    :param struct nfs_entry \*entry:
+    :param entry:
         buffer to fill in with entry data
+    :type entry: struct nfs_entry \*
 
-    :param bool plus:
+    :param plus:
         boolean indicating whether this should be a readdirplus entry
+    :type plus: bool
 
 .. _`nfs2_decode_dirent.description`:
 
@@ -49,8 +52,9 @@ nfs_stat_to_errno
 
     convert an NFS status code to a local errno
 
-    :param enum nfs_stat status:
+    :param status:
         NFS status code to convert
+    :type status: enum nfs_stat
 
 .. _`nfs_stat_to_errno.description`:
 

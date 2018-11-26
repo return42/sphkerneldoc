@@ -10,8 +10,9 @@ snd_pcm_stream_lock
 
     Lock the PCM stream
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_stream_lock.description`:
 
@@ -31,8 +32,9 @@ snd_pcm_stream_unlock
 
     Unlock the PCM stream
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_stream_unlock.description`:
 
@@ -50,8 +52,9 @@ snd_pcm_stream_lock_irq
 
     Lock the PCM stream
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_stream_lock_irq.description`:
 
@@ -71,8 +74,9 @@ snd_pcm_stream_unlock_irq
 
     Unlock the PCM stream
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_stream_unlock_irq.description`:
 
@@ -90,11 +94,13 @@ snd_pcm_stream_unlock_irqrestore
 
     Unlock the PCM stream
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param unsigned long flags:
+    :param flags:
         irq flags
+    :type flags: unsigned long
 
 .. _`snd_pcm_stream_unlock_irqrestore.description`:
 
@@ -112,11 +118,13 @@ snd_pcm_hw_params_choose
 
     choose a configuration defined by \ ``params``\ 
 
-    :param struct snd_pcm_substream \*pcm:
+    :param pcm:
         PCM instance
+    :type pcm: struct snd_pcm_substream \*
 
-    :param struct snd_pcm_hw_params \*params:
+    :param params:
         the hw_params instance
+    :type params: struct snd_pcm_hw_params \*
 
 .. _`snd_pcm_hw_params_choose.description`:
 
@@ -149,8 +157,9 @@ snd_pcm_start
 
     start all linked streams
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the PCM substream instance
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_start.return`:
 
@@ -169,11 +178,13 @@ snd_pcm_stop
 
     try to stop all running streams in the substream group
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the PCM substream instance
+    :type substream: struct snd_pcm_substream \*
 
-    :param snd_pcm_state_t state:
+    :param state:
         PCM state after stopping the stream
+    :type state: snd_pcm_state_t
 
 .. _`snd_pcm_stop.description`:
 
@@ -198,8 +209,9 @@ snd_pcm_drain_done
 
     stop the DMA only when the given stream is playback
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_drain_done.description`:
 
@@ -225,8 +237,9 @@ snd_pcm_stop_xrun
 
     stop the running streams as XRUN
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the PCM substream instance
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_stop_xrun.description`:
 
@@ -252,8 +265,9 @@ snd_pcm_suspend
 
     trigger SUSPEND to all linked streams
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the PCM substream
+    :type substream: struct snd_pcm_substream \*
 
 .. _`snd_pcm_suspend.description`:
 
@@ -279,8 +293,9 @@ snd_pcm_suspend_all
 
     trigger SUSPEND to all substreams in the given pcm
 
-    :param struct snd_pcm \*pcm:
+    :param pcm:
         the PCM instance
+    :type pcm: struct snd_pcm \*
 
 .. _`snd_pcm_suspend_all.description`:
 
@@ -305,11 +320,13 @@ snd_pcm_prepare
 
     prepare the PCM substream to be triggerable
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         the PCM substream instance
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct file \*file:
+    :param file:
         file to refer f_flags
+    :type file: struct file \*
 
 .. _`snd_pcm_prepare.return`:
 
@@ -327,14 +344,17 @@ snd_pcm_kernel_ioctl
 
     Execute PCM ioctl in the kernel-space
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param unsigned int cmd:
+    :param cmd:
         IOCTL cmd
+    :type cmd: unsigned int
 
-    :param void \*arg:
+    :param arg:
         IOCTL argument
+    :type arg: void \*
 
 .. _`snd_pcm_kernel_ioctl.description`:
 
@@ -354,11 +374,13 @@ snd_pcm_lib_default_mmap
 
     Default PCM data mmap function
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct vm_area_struct \*area:
+    :param area:
         VMA
+    :type area: struct vm_area_struct \*
 
 .. _`snd_pcm_lib_default_mmap.description`:
 
@@ -377,11 +399,13 @@ snd_pcm_lib_mmap_iomem
 
     Default PCM data mmap function for I/O mem
 
-    :param struct snd_pcm_substream \*substream:
+    :param substream:
         PCM substream
+    :type substream: struct snd_pcm_substream \*
 
-    :param struct vm_area_struct \*area:
+    :param area:
         VMA
+    :type area: struct vm_area_struct \*
 
 .. _`snd_pcm_lib_mmap_iomem.description`:
 

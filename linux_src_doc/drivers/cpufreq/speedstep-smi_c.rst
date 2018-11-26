@@ -8,8 +8,9 @@ speedstep_smi_ownership
 
 .. c:function:: int speedstep_smi_ownership( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`speedstep_smi_get_freqs`:
 
@@ -20,11 +21,13 @@ speedstep_smi_get_freqs
 
     get SpeedStep preferred & current freq.
 
-    :param unsigned int \*low:
+    :param low:
         the low frequency value is placed here
+    :type low: unsigned int \*
 
-    :param unsigned int \*high:
+    :param high:
         the high frequency value is placed here
+    :type high: unsigned int \*
 
 .. _`speedstep_smi_get_freqs.description`:
 
@@ -44,8 +47,9 @@ speedstep_set_state
 
     set the SpeedStep state
 
-    :param unsigned int state:
+    :param state:
         new processor frequency state (SPEEDSTEP_LOW or SPEEDSTEP_HIGH)
+    :type state: unsigned int
 
 .. _`speedstep_target`:
 
@@ -56,11 +60,13 @@ speedstep_target
 
     set a new CPUFreq policy
 
-    :param struct cpufreq_policy \*policy:
+    :param policy:
         new policy
+    :type policy: struct cpufreq_policy \*
 
-    :param unsigned int index:
+    :param index:
         index of new freq
+    :type index: unsigned int
 
 .. _`speedstep_target.description`:
 
@@ -78,8 +84,9 @@ speedstep_init
 
     initializes the SpeedStep CPUFreq driver
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`speedstep_init.description`:
 
@@ -99,8 +106,9 @@ speedstep_exit
 
     unregisters SpeedStep support
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`speedstep_exit.description`:
 

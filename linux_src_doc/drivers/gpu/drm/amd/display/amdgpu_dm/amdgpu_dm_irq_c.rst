@@ -10,8 +10,9 @@ dm_irq_work_func
 
     Handle an IRQ outside of the interrupt handler proper.
 
-    :param struct work_struct \*work:
+    :param work:
         work struct
+    :type work: struct work_struct \*
 
 .. _`remove_irq_handler`:
 
@@ -22,14 +23,17 @@ remove_irq_handler
 
     handler was removed.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
-    :param void \*ih:
+    :param ih:
         *undescribed*
+    :type ih: void \*
 
-    :param const struct dc_interrupt_params \*int_params:
+    :param int_params:
         *undescribed*
+    :type int_params: const struct dc_interrupt_params \*
 
 .. _`amdgpu_dm_irq_schedule_work`:
 
@@ -40,11 +44,13 @@ amdgpu_dm_irq_schedule_work
 
     schedule all work items registered for the "irq_source".
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         *undescribed*
+    :type adev: struct amdgpu_device \*
 
-    :param enum dc_irq_source irq_source:
+    :param irq_source:
         *undescribed*
+    :type irq_source: enum dc_irq_source
 
 .. _`amdgpu_dm_hpd_fini`:
 
@@ -55,8 +61,9 @@ amdgpu_dm_hpd_fini
 
     hpd tear down callback.
 
-    :param struct amdgpu_device \*adev:
+    :param adev:
         amdgpu_device pointer
+    :type adev: struct amdgpu_device \*
 
 .. _`amdgpu_dm_hpd_fini.description`:
 

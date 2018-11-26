@@ -10,11 +10,13 @@ parport_wait_event
 
     wait for an event on a parallel port
 
-    :param struct parport \*port:
+    :param port:
         port to wait on
+    :type port: struct parport \*
 
-    :param signed long timeout:
+    :param timeout:
         time to wait (in jiffies)
+    :type timeout: signed long
 
 .. _`parport_wait_event.description`:
 
@@ -40,17 +42,21 @@ parport_poll_peripheral
 
     poll status lines
 
-    :param struct parport \*port:
+    :param port:
         port to watch
+    :type port: struct parport \*
 
-    :param unsigned char mask:
+    :param mask:
         status lines to watch
+    :type mask: unsigned char
 
-    :param unsigned char result:
+    :param result:
         desired values of chosen status lines
+    :type result: unsigned char
 
-    :param int usec:
+    :param usec:
         timeout
+    :type usec: int
 
 .. _`parport_poll_peripheral.description`:
 
@@ -82,14 +88,17 @@ parport_wait_peripheral
 
     wait for status lines to change in 35ms
 
-    :param struct parport \*port:
+    :param port:
         port to watch
+    :type port: struct parport \*
 
-    :param unsigned char mask:
+    :param mask:
         status lines to watch
+    :type mask: unsigned char
 
-    :param unsigned char result:
+    :param result:
         desired values of chosen status lines
+    :type result: unsigned char
 
 .. _`parport_wait_peripheral.description`:
 
@@ -123,11 +132,13 @@ parport_negotiate
 
     negotiate an IEEE 1284 mode
 
-    :param struct parport \*port:
+    :param port:
         port to use
+    :type port: struct parport \*
 
-    :param int mode:
+    :param mode:
         mode to negotiate to
+    :type mode: int
 
 .. _`parport_negotiate.description`:
 
@@ -152,14 +163,17 @@ parport_write
 
     write a block of data to a parallel port
 
-    :param struct parport \*port:
+    :param port:
         port to write to
+    :type port: struct parport \*
 
-    :param const void \*buffer:
+    :param buffer:
         data buffer (in kernel space)
+    :type buffer: const void \*
 
-    :param size_t len:
+    :param len:
         number of bytes of data to transfer
+    :type len: size_t
 
 .. _`parport_write.description`:
 
@@ -186,14 +200,17 @@ parport_read
 
     read a block of data from a parallel port
 
-    :param struct parport \*port:
+    :param port:
         port to read from
+    :type port: struct parport \*
 
-    :param void \*buffer:
+    :param buffer:
         data buffer (in kernel space)
+    :type buffer: void \*
 
-    :param size_t len:
+    :param len:
         number of bytes of data to transfer
+    :type len: size_t
 
 .. _`parport_read.description`:
 
@@ -220,11 +237,13 @@ parport_set_timeout
 
     set the inactivity timeout for a device
 
-    :param struct pardevice \*dev:
+    :param dev:
         device on a port
+    :type dev: struct pardevice \*
 
-    :param long inactivity:
+    :param inactivity:
         inactivity timeout (in jiffies)
+    :type inactivity: long
 
 .. _`parport_set_timeout.description`:
 

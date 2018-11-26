@@ -8,8 +8,9 @@ DEFINE_MUTEX
 
 .. c:function::  DEFINE_MUTEX( pci_epf_mutex)
 
-    :param  pci_epf_mutex:
+    :param pci_epf_mutex:
         *undescribed*
+    :type pci_epf_mutex: 
 
 .. _`define_mutex.description`:
 
@@ -34,9 +35,10 @@ pci_epf_linkup
 
     Notify the function driver that EPC device has established a connection with the Root Complex.
 
-    :param struct pci_epf \*epf:
+    :param epf:
         the EPF device bound to the EPC device which has established
         the connection with the host
+    :type epf: struct pci_epf \*
 
 .. _`pci_epf_linkup.description`:
 
@@ -55,8 +57,9 @@ pci_epf_unbind
 
     Notify the function driver that the binding between the EPF device and EPC device has been lost
 
-    :param struct pci_epf \*epf:
+    :param epf:
         the EPF device which has lost the binding with the EPC device
+    :type epf: struct pci_epf \*
 
 .. _`pci_epf_unbind.description`:
 
@@ -75,8 +78,9 @@ pci_epf_bind
 
     Notify the function driver that the EPF device has been bound to a EPC device
 
-    :param struct pci_epf \*epf:
+    :param epf:
         the EPF device which has been bound to the EPC device
+    :type epf: struct pci_epf \*
 
 .. _`pci_epf_bind.description`:
 
@@ -94,14 +98,17 @@ pci_epf_free_space
 
     free the allocated PCI EPF register space
 
-    :param struct pci_epf \*epf:
+    :param epf:
         *undescribed*
+    :type epf: struct pci_epf \*
 
-    :param void \*addr:
+    :param addr:
         the virtual address of the PCI EPF register space
+    :type addr: void \*
 
-    :param enum pci_barno bar:
+    :param bar:
         the BAR number corresponding to the register space
+    :type bar: enum pci_barno
 
 .. _`pci_epf_free_space.description`:
 
@@ -119,14 +126,17 @@ pci_epf_alloc_space
 
     allocate memory for the PCI EPF register space
 
-    :param struct pci_epf \*epf:
+    :param epf:
         *undescribed*
+    :type epf: struct pci_epf \*
 
-    :param size_t size:
+    :param size:
         the size of the memory that has to be allocated
+    :type size: size_t
 
-    :param enum pci_barno bar:
+    :param bar:
         the BAR number corresponding to the allocated register space
+    :type bar: enum pci_barno
 
 .. _`pci_epf_alloc_space.description`:
 
@@ -144,8 +154,9 @@ pci_epf_unregister_driver
 
     unregister the PCI EPF driver
 
-    :param struct pci_epf_driver \*driver:
+    :param driver:
         the PCI EPF driver that has to be unregistered
+    :type driver: struct pci_epf_driver \*
 
 .. _`pci_epf_unregister_driver.description`:
 
@@ -163,11 +174,13 @@ Invoke to unregister the PCI EPF driver.
 
     register a new PCI EPF driver
 
-    :param struct pci_epf_driver \*driver:
+    :param driver:
         structure representing PCI EPF driver
+    :type driver: struct pci_epf_driver \*
 
-    :param struct module \*owner:
+    :param owner:
         the owner of the module that registers the PCI EPF driver
+    :type owner: struct module \*
 
 .. _`__pci_epf_register_driver.description`:
 
@@ -185,8 +198,9 @@ pci_epf_destroy
 
     destroy the created PCI EPF device
 
-    :param struct pci_epf \*epf:
+    :param epf:
         the PCI EPF device that has to be destroyed.
+    :type epf: struct pci_epf \*
 
 .. _`pci_epf_destroy.description`:
 
@@ -204,9 +218,10 @@ pci_epf_create
 
     create a new PCI EPF device
 
-    :param const char \*name:
+    :param name:
         the name of the PCI EPF device. This name will be used to bind the
         the EPF device to a EPF driver
+    :type name: const char \*
 
 .. _`pci_epf_create.description`:
 

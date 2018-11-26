@@ -10,8 +10,9 @@ ishtp_cl_alloc_rx_ring
 
     Allocate RX ring buffers
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_alloc_rx_ring.description`:
 
@@ -36,8 +37,9 @@ ishtp_cl_alloc_tx_ring
 
     Allocate TX ring buffers
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_alloc_tx_ring.description`:
 
@@ -62,8 +64,9 @@ ishtp_cl_free_rx_ring
 
     Free RX ring buffers
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_free_rx_ring.description`:
 
@@ -81,8 +84,9 @@ ishtp_cl_free_tx_ring
 
     Free TX ring buffers
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_cl_free_tx_ring.description`:
 
@@ -100,8 +104,9 @@ ishtp_io_rb_free
 
     Free IO request block
 
-    :param struct ishtp_cl_rb \*rb:
+    :param rb:
         IO request block
+    :type rb: struct ishtp_cl_rb \*
 
 .. _`ishtp_io_rb_free.description`:
 
@@ -119,8 +124,9 @@ ishtp_io_rb_init
 
     Allocate and init IO request block
 
-    :param struct ishtp_cl \*cl:
+    :param cl:
         client device instance
+    :type cl: struct ishtp_cl \*
 
 .. _`ishtp_io_rb_init.description`:
 
@@ -145,11 +151,13 @@ ishtp_io_rb_alloc_buf
 
     Allocate and init response buffer
 
-    :param struct ishtp_cl_rb \*rb:
+    :param rb:
         IO request block
+    :type rb: struct ishtp_cl_rb \*
 
-    :param size_t length:
+    :param length:
         length of response buffer
+    :type length: size_t
 
 .. _`ishtp_io_rb_alloc_buf.description`:
 
@@ -174,8 +182,9 @@ ishtp_cl_io_rb_recycle
 
     Recycle IO request blocks
 
-    :param struct ishtp_cl_rb \*rb:
+    :param rb:
         IO request block
+    :type rb: struct ishtp_cl_rb \*
 
 .. _`ishtp_cl_io_rb_recycle.description`:
 
@@ -190,6 +199,60 @@ Return
 ------
 
 0 on success else -EFAULT
+
+.. _`ishtp_cl_tx_empty`:
+
+ishtp_cl_tx_empty
+=================
+
+.. c:function:: bool ishtp_cl_tx_empty(struct ishtp_cl *cl)
+
+    test whether client device tx buffer is empty
+
+    :param cl:
+        Pointer to client device instance
+    :type cl: struct ishtp_cl \*
+
+.. _`ishtp_cl_tx_empty.description`:
+
+Description
+-----------
+
+Look client device tx buffer list, and check whether this list is empty
+
+.. _`ishtp_cl_tx_empty.return`:
+
+Return
+------
+
+true if client tx buffer list is empty else false
+
+.. _`ishtp_cl_rx_get_rb`:
+
+ishtp_cl_rx_get_rb
+==================
+
+.. c:function:: struct ishtp_cl_rb *ishtp_cl_rx_get_rb(struct ishtp_cl *cl)
+
+    Get a rb from client device rx buffer list
+
+    :param cl:
+        Pointer to client device instance
+    :type cl: struct ishtp_cl \*
+
+.. _`ishtp_cl_rx_get_rb.description`:
+
+Description
+-----------
+
+Check client device in-processing buffer list and get a rb from it.
+
+.. _`ishtp_cl_rx_get_rb.return`:
+
+Return
+------
+
+rb pointer if buffer list isn't empty else NULL
 
 .. This file was automatic generated / don't edit.
 

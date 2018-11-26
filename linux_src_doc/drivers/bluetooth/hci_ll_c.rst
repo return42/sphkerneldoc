@@ -10,8 +10,9 @@ download_firmware
 
     internal function which parses through the .bts firmware script file intreprets SEND, DELAY actions only as of now
 
-    :param struct ll_device \*lldev:
+    :param lldev:
         *undescribed*
+    :type lldev: struct ll_device \*
 
 .. This file was automatic generated / don't edit.
 

@@ -42,12 +42,15 @@ Definition
     #define EXECLISTS_ACTIVE_HWACK 2
         unsigned int port_mask;
         int queue_priority;
-        struct rb_root queue;
-        struct rb_node *first;
-        unsigned int fw_domains;
-        unsigned int csb_head;
-        bool csb_use_mmio;
+        struct rb_root_cached queue;
+        u32 __iomem *csb_read;
+        u32 *csb_write;
+        u32 *csb_status;
         u32 preempt_complete_status;
+        u32 csb_write_reset;
+        u8 csb_head;
+        I915_SELFTEST_DECLARE(struct st_preempt_hang preempt_hang;
+        )
     }
 
 .. _`intel_engine_execlists.members`:
@@ -101,20 +104,35 @@ queue_priority
 queue
     queue of requests, in priority lists
 
-first
-    leftmost level in priority \ ``queue``\ 
+csb_read
+    control register for Context Switch buffer
+    Note this register is always in mmio.
 
-fw_domains
-    forcewake domains for irq tasklet
+csb_write
+    control register for Context Switch buffer
+    Note this register may be either mmio or HWSP shadow.
+
+csb_status
+    status array for Context Switch buffer
+    Note these register may be either mmio or HWSP shadow.
+
+preempt_complete_status
+    expected CSB upon completing preemption
+
+csb_write_reset
+    reset value for CSB write pointer
+    As the CSB write pointer maybe either in HWSP or as a field
+    inside an mmio register, we want to reprogram it slightly
+    differently to avoid later confusion.
 
 csb_head
     context status buffer head
 
-csb_use_mmio
-    access csb through mmio, instead of hwsp
+preempt_hang
+    *undescribed*
 
-preempt_complete_status
-    expected CSB upon completing preemption
+
+    *undescribed*
 
 .. _`intel_engine_execlists.description`:
 

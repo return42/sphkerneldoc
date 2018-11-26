@@ -31,11 +31,13 @@ intel_set_memory_cxsr
 
     Configure CxSR state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
-    :param bool enable:
+    :param enable:
         Allow vs. disallow CxSR
+    :type enable: bool
 
 .. _`intel_set_memory_cxsr.description`:
 
@@ -83,14 +85,17 @@ intel_wm_method1
 
     Method 1 / "small buffer" watermark formula
 
-    :param unsigned int pixel_rate:
+    :param pixel_rate:
         Pipe pixel rate in kHz
+    :type pixel_rate: unsigned int
 
-    :param unsigned int cpp:
+    :param cpp:
         Plane bytes per pixel
+    :type cpp: unsigned int
 
-    :param unsigned int latency:
+    :param latency:
         Memory wakeup latency in 0.1us units
+    :type latency: unsigned int
 
 .. _`intel_wm_method1.description`:
 
@@ -141,20 +146,25 @@ intel_wm_method2
 
     Method 2 / "large buffer" watermark formula
 
-    :param unsigned int pixel_rate:
+    :param pixel_rate:
         Pipe pixel rate in kHz
+    :type pixel_rate: unsigned int
 
-    :param unsigned int htotal:
+    :param htotal:
         Pipe horizontal total
+    :type htotal: unsigned int
 
-    :param unsigned int width:
+    :param width:
         Plane width in pixels
+    :type width: unsigned int
 
-    :param unsigned int cpp:
+    :param cpp:
         Plane bytes per pixel
+    :type cpp: unsigned int
 
-    :param unsigned int latency:
+    :param latency:
         Memory wakeup latency in 0.1us units
+    :type latency: unsigned int
 
 .. _`intel_wm_method2.description`:
 
@@ -196,20 +206,25 @@ intel_calculate_wm
 
     calculate watermark level
 
-    :param int pixel_rate:
+    :param pixel_rate:
         pixel clock
+    :type pixel_rate: int
 
-    :param const struct intel_watermark_params \*wm:
+    :param wm:
         chip FIFO params
+    :type wm: const struct intel_watermark_params \*
 
-    :param int fifo_size:
+    :param fifo_size:
         size of the FIFO buffer
+    :type fifo_size: int
 
-    :param int cpp:
+    :param cpp:
         bytes per pixel
+    :type cpp: int
 
-    :param unsigned int latency_ns:
+    :param latency_ns:
         memory latency for the platform
+    :type latency_ns: unsigned int
 
 .. _`intel_calculate_wm.description`:
 
@@ -236,8 +251,9 @@ intel_update_watermarks
 
     update FIFO watermark values based on current modes
 
-    :param struct intel_crtc \*crtc:
+    :param crtc:
         the #intel_crtc on which to compute the WM
+    :type crtc: struct intel_crtc \*
 
 .. _`intel_update_watermarks.description`:
 
@@ -294,8 +310,9 @@ i915_read_mch_val
 
     return value for IPS use
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i915_read_mch_val.description`:
 
@@ -314,8 +331,9 @@ i915_gpu_raise
 
     raise GPU frequency limit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i915_gpu_raise.description`:
 
@@ -333,8 +351,9 @@ i915_gpu_lower
 
     lower GPU frequency limit
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i915_gpu_lower.description`:
 
@@ -353,8 +372,9 @@ i915_gpu_busy
 
     indicate GPU business to IPS
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i915_gpu_busy.description`:
 
@@ -372,8 +392,9 @@ i915_gpu_turbo_disable
 
     disable graphics turbo
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`i915_gpu_turbo_disable.description`:
 
@@ -392,8 +413,9 @@ ips_ping_for_i915_load
 
     IPS got loaded first.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ips_ping_for_i915_load.description`:
 
@@ -413,8 +435,9 @@ intel_suspend_gt_powersave
 
     suspend PM work and helper threads
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_suspend_gt_powersave.description`:
 
@@ -434,8 +457,9 @@ intel_init_clock_gating_hooks
 
     setup the clock gating hooks
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_init_clock_gating_hooks.description`:
 
@@ -456,23 +480,29 @@ skl_pcode_request
 
     send PCODE request until acknowledgment
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         device private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param u32 mbox:
+    :param mbox:
         PCODE mailbox ID the request is targeted for
+    :type mbox: u32
 
-    :param u32 request:
+    :param request:
         request ID
+    :type request: u32
 
-    :param u32 reply_mask:
+    :param reply_mask:
         mask used to check for request acknowledgment
+    :type reply_mask: u32
 
-    :param u32 reply:
+    :param reply:
         value used to check for request acknowledgment
+    :type reply: u32
 
-    :param int timeout_base_ms:
+    :param timeout_base_ms:
         timeout for polling with preemption enabled
+    :type timeout_base_ms: int
 
 .. _`skl_pcode_request.description`:
 

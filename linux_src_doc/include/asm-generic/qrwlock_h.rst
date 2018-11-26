@@ -10,8 +10,9 @@ queued_read_trylock
 
     try to acquire read lock of a queue rwlock
 
-    :param struct qrwlock \*lock:
+    :param lock:
         Pointer to queue rwlock structure
+    :type lock: struct qrwlock \*
 
 .. _`queued_read_trylock.return`:
 
@@ -29,8 +30,9 @@ queued_write_trylock
 
     try to acquire write lock of a queue rwlock
 
-    :param struct qrwlock \*lock:
+    :param lock:
         Pointer to queue rwlock structure
+    :type lock: struct qrwlock \*
 
 .. _`queued_write_trylock.return`:
 
@@ -48,8 +50,9 @@ queued_read_lock
 
     acquire read lock of a queue rwlock
 
-    :param struct qrwlock \*lock:
+    :param lock:
         Pointer to queue rwlock structure
+    :type lock: struct qrwlock \*
 
 .. _`queued_write_lock`:
 
@@ -60,8 +63,9 @@ queued_write_lock
 
     acquire write lock of a queue rwlock
 
-    :param struct qrwlock \*lock:
+    :param lock:
         Pointer to queue rwlock structure
+    :type lock: struct qrwlock \*
 
 .. _`queued_read_unlock`:
 
@@ -72,8 +76,9 @@ queued_read_unlock
 
     release read lock of a queue rwlock
 
-    :param struct qrwlock \*lock:
+    :param lock:
         Pointer to queue rwlock structure
+    :type lock: struct qrwlock \*
 
 .. _`queued_write_unlock`:
 
@@ -84,8 +89,9 @@ queued_write_unlock
 
     release write lock of a queue rwlock
 
-    :param struct qrwlock \*lock:
+    :param lock:
         Pointer to queue rwlock structure
+    :type lock: struct qrwlock \*
 
 .. This file was automatic generated / don't edit.
 

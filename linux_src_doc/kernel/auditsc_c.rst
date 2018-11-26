@@ -10,8 +10,9 @@ audit_alloc
 
     allocate an audit context block for a task
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         task
+    :type tsk: struct task_struct \*
 
 .. _`audit_alloc.description`:
 
@@ -32,8 +33,9 @@ __audit_free
 
     free a per-task audit context
 
-    :param struct task_struct \*tsk:
+    :param tsk:
         task whose audit context block to free
+    :type tsk: struct task_struct \*
 
 .. _`__audit_free.description`:
 
@@ -51,20 +53,25 @@ __audit_syscall_entry
 
     fill in an audit record at syscall entry
 
-    :param int major:
+    :param major:
         major syscall type (function)
+    :type major: int
 
-    :param unsigned long a1:
+    :param a1:
         additional syscall register 1
+    :type a1: unsigned long
 
-    :param unsigned long a2:
+    :param a2:
         additional syscall register 2
+    :type a2: unsigned long
 
-    :param unsigned long a3:
+    :param a3:
         additional syscall register 3
+    :type a3: unsigned long
 
-    :param unsigned long a4:
+    :param a4:
         additional syscall register 4
+    :type a4: unsigned long
 
 .. _`__audit_syscall_entry.description`:
 
@@ -88,11 +95,13 @@ __audit_syscall_exit
 
     deallocate audit context after a system call
 
-    :param int success:
+    :param success:
         success value of the syscall
+    :type success: int
 
-    :param long return_code:
+    :param return_code:
         return value of the syscall
+    :type return_code: long
 
 .. _`__audit_syscall_exit.description`:
 
@@ -114,8 +123,9 @@ __audit_reusename
 
     fill out filename with info from existing entry
 
-    :param const __user char \*uptr:
+    :param uptr:
         userland ptr to pathname
+    :type uptr: const __user char \*
 
 .. _`__audit_reusename.description`:
 
@@ -135,8 +145,9 @@ __audit_getname
 
     add a name to the list
 
-    :param struct filename \*name:
+    :param name:
         name to add
+    :type name: struct filename \*
 
 .. _`__audit_getname.description`:
 
@@ -155,14 +166,17 @@ __audit_inode
 
     store the inode and device from a lookup
 
-    :param struct filename \*name:
+    :param name:
         name being audited
+    :type name: struct filename \*
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         dentry being audited
+    :type dentry: const struct dentry \*
 
-    :param unsigned int flags:
+    :param flags:
         attributes for this particular entry
+    :type flags: unsigned int
 
 .. _`__audit_inode_child`:
 
@@ -173,14 +187,17 @@ __audit_inode_child
 
     collect inode info for created/removed objects
 
-    :param struct inode \*parent:
+    :param parent:
         inode of dentry parent
+    :type parent: struct inode \*
 
-    :param const struct dentry \*dentry:
+    :param dentry:
         dentry being audited
+    :type dentry: const struct dentry \*
 
-    :param const unsigned char type:
+    :param type:
         AUDIT_TYPE_* value that we're looking for
+    :type type: const unsigned char
 
 .. _`__audit_inode_child.description`:
 
@@ -204,14 +221,17 @@ auditsc_get_stamp
 
     get local copies of audit_context values
 
-    :param struct audit_context \*ctx:
+    :param ctx:
         audit_context for the task
+    :type ctx: struct audit_context \*
 
-    :param struct timespec64 \*t:
+    :param t:
         timespec64 to store time recorded in the audit_context
+    :type t: struct timespec64 \*
 
-    :param unsigned int \*serial:
+    :param serial:
         serial value that is recorded in the audit_context
+    :type serial: unsigned int \*
 
 .. _`auditsc_get_stamp.description`:
 
@@ -229,8 +249,9 @@ audit_set_loginuid
 
     set current task's audit_context loginuid
 
-    :param kuid_t loginuid:
+    :param loginuid:
         loginuid value
+    :type loginuid: kuid_t
 
 .. _`audit_set_loginuid.description`:
 
@@ -250,14 +271,17 @@ __audit_mq_open
 
     record audit data for a POSIX MQ open
 
-    :param int oflag:
+    :param oflag:
         open flag
+    :type oflag: int
 
-    :param umode_t mode:
+    :param mode:
         mode bits
+    :type mode: umode_t
 
-    :param struct mq_attr \*attr:
+    :param attr:
         queue attributes
+    :type attr: struct mq_attr \*
 
 .. _`__audit_mq_sendrecv`:
 
@@ -268,17 +292,21 @@ __audit_mq_sendrecv
 
     record audit data for a POSIX MQ timed send/receive
 
-    :param mqd_t mqdes:
+    :param mqdes:
         MQ descriptor
+    :type mqdes: mqd_t
 
-    :param size_t msg_len:
+    :param msg_len:
         Message length
+    :type msg_len: size_t
 
-    :param unsigned int msg_prio:
+    :param msg_prio:
         Message priority
+    :type msg_prio: unsigned int
 
-    :param const struct timespec64 \*abs_timeout:
+    :param abs_timeout:
         Message timeout in absolute time
+    :type abs_timeout: const struct timespec64 \*
 
 .. _`__audit_mq_notify`:
 
@@ -289,11 +317,13 @@ __audit_mq_notify
 
     record audit data for a POSIX MQ notify
 
-    :param mqd_t mqdes:
+    :param mqdes:
         MQ descriptor
+    :type mqdes: mqd_t
 
-    :param const struct sigevent \*notification:
+    :param notification:
         Notification event
+    :type notification: const struct sigevent \*
 
 .. _`__audit_mq_getsetattr`:
 
@@ -304,11 +334,13 @@ __audit_mq_getsetattr
 
     record audit data for a POSIX MQ get/set attribute
 
-    :param mqd_t mqdes:
+    :param mqdes:
         MQ descriptor
+    :type mqdes: mqd_t
 
-    :param struct mq_attr \*mqstat:
+    :param mqstat:
         MQ flags
+    :type mqstat: struct mq_attr \*
 
 .. _`__audit_ipc_obj`:
 
@@ -319,8 +351,9 @@ __audit_ipc_obj
 
     record audit data for ipc object
 
-    :param struct kern_ipc_perm \*ipcp:
+    :param ipcp:
         ipc permissions
+    :type ipcp: struct kern_ipc_perm \*
 
 .. _`__audit_ipc_set_perm`:
 
@@ -331,17 +364,21 @@ __audit_ipc_set_perm
 
     record audit data for new ipc permissions
 
-    :param unsigned long qbytes:
+    :param qbytes:
         msgq bytes
+    :type qbytes: unsigned long
 
-    :param uid_t uid:
+    :param uid:
         msgq user id
+    :type uid: uid_t
 
-    :param gid_t gid:
+    :param gid:
         msgq group id
+    :type gid: gid_t
 
-    :param umode_t mode:
+    :param mode:
         msgq mode (permissions)
+    :type mode: umode_t
 
 .. _`__audit_ipc_set_perm.description`:
 
@@ -359,11 +396,13 @@ __audit_socketcall
 
     record audit data for sys_socketcall
 
-    :param int nargs:
+    :param nargs:
         number of args, which should not be more than AUDITSC_ARGS.
+    :type nargs: int
 
-    :param unsigned long \*args:
+    :param args:
         args array
+    :type args: unsigned long \*
 
 .. _`__audit_fd_pair`:
 
@@ -374,11 +413,13 @@ __audit_fd_pair
 
     record audit data for pipe and socketpair
 
-    :param int fd1:
+    :param fd1:
         the first file descriptor
+    :type fd1: int
 
-    :param int fd2:
+    :param fd2:
         the second file descriptor
+    :type fd2: int
 
 .. _`__audit_sockaddr`:
 
@@ -389,11 +430,13 @@ __audit_sockaddr
 
     record audit data for sys_bind, sys_connect, sys_sendto
 
-    :param int len:
+    :param len:
         data length in user space
+    :type len: int
 
-    :param void \*a:
+    :param a:
         data address in kernel space
+    :type a: void \*
 
 .. _`__audit_sockaddr.description`:
 
@@ -411,11 +454,13 @@ audit_signal_info
 
     record signal info for shutting down audit subsystem
 
-    :param int sig:
+    :param sig:
         signal value
+    :type sig: int
 
-    :param struct task_struct \*t:
+    :param t:
         task being signaled
+    :type t: struct task_struct \*
 
 .. _`audit_signal_info.description`:
 
@@ -434,14 +479,17 @@ __audit_log_bprm_fcaps
 
     store information about a loading bprm and relevant fcaps
 
-    :param struct linux_binprm \*bprm:
+    :param bprm:
         pointer to the bprm being processed
+    :type bprm: struct linux_binprm \*
 
-    :param const struct cred \*new:
+    :param new:
         the proposed new credentials
+    :type new: const struct cred \*
 
-    :param const struct cred \*old:
+    :param old:
         the old credentials
+    :type old: const struct cred \*
 
 .. _`__audit_log_bprm_fcaps.description`:
 
@@ -462,11 +510,13 @@ __audit_log_capset
 
     store information about the arguments to the capset syscall
 
-    :param const struct cred \*new:
+    :param new:
         the new credentials
+    :type new: const struct cred \*
 
-    :param const struct cred \*old:
+    :param old:
         the old (current) credentials
+    :type old: const struct cred \*
 
 .. _`__audit_log_capset.description`:
 
@@ -485,8 +535,9 @@ audit_core_dumps
 
     record information about processes that end abnormally
 
-    :param long signr:
+    :param signr:
         signal value
+    :type signr: long
 
 .. _`audit_core_dumps.description`:
 
@@ -505,14 +556,17 @@ audit_seccomp
 
     record information about a seccomp action
 
-    :param unsigned long syscall:
+    :param syscall:
         syscall number
+    :type syscall: unsigned long
 
-    :param long signr:
+    :param signr:
         signal value
+    :type signr: long
 
-    :param int code:
+    :param code:
         the seccomp action
+    :type code: int
 
 .. _`audit_seccomp.description`:
 

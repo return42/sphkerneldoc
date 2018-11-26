@@ -10,11 +10,13 @@ stack_push
 
     present, Yann Collet, Facebook, Inc. All rights reserved.
 
-    :param  stack:
+    :param stack:
         *undescribed*
+    :type stack: 
 
-    :param  size:
+    :param size:
         *undescribed*
+    :type size: 
 
 .. _`stack_push.description`:
 

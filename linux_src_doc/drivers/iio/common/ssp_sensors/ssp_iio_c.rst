@@ -10,8 +10,9 @@ ssp_common_buffer_postenable
 
     generic postenable callback for ssp buffer
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         iio device
+    :type indio_dev: struct iio_dev \*
 
 .. _`ssp_common_buffer_postenable.description`:
 
@@ -29,8 +30,9 @@ ssp_common_buffer_postdisable
 
     generic postdisable callback for ssp buffer
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         iio device
+    :type indio_dev: struct iio_dev \*
 
 .. _`ssp_common_buffer_postdisable.description`:
 
@@ -48,17 +50,21 @@ ssp_common_process_data
 
     Common process data callback for ssp sensors
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         iio device
+    :type indio_dev: struct iio_dev \*
 
-    :param void \*buf:
+    :param buf:
         source buffer
+    :type buf: void \*
 
-    :param unsigned int len:
+    :param len:
         sensor data length
+    :type len: unsigned int
 
-    :param int64_t timestamp:
+    :param timestamp:
         system timestamp
+    :type timestamp: int64_t
 
 .. _`ssp_common_process_data.description`:
 

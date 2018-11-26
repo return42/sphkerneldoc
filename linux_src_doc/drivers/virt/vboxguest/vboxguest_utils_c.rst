@@ -10,18 +10,22 @@ hgcm_call_preprocess
 
     figure out how much extra storage we need for page lists.
 
-    :param const struct vmmdev_hgcm_function_parameter \*src_parm:
+    :param src_parm:
         Pointer to source function call parameters
+    :type src_parm: const struct vmmdev_hgcm_function_parameter \*
 
-    :param u32 parm_count:
+    :param parm_count:
         Number of function call parameters.
+    :type parm_count: u32
 
-    :param void \*\*\*bounce_bufs_ret:
+    :param bounce_bufs_ret:
         Where to return the allocated bouncebuffer array
+    :type bounce_bufs_ret: void \*\*\*
 
-    :param size_t \*extra:
+    :param extra:
         Where to return the extra request space needed for
         physical page lists.
+    :type extra: size_t \*
 
 .. _`hgcm_call_preprocess.return`:
 
@@ -37,8 +41,9 @@ hgcm_call_linear_addr_type_to_pagelist_flags
 
 .. c:function:: u32 hgcm_call_linear_addr_type_to_pagelist_flags(enum vmmdev_hgcm_function_parameter_type type)
 
-    :param enum vmmdev_hgcm_function_parameter_type type:
+    :param type:
         The type.
+    :type type: enum vmmdev_hgcm_function_parameter_type
 
 .. _`hgcm_call_linear_addr_type_to_pagelist_flags.return`:
 
@@ -54,23 +59,29 @@ hgcm_call_init_call
 
 .. c:function:: void hgcm_call_init_call(struct vmmdev_hgcm_call *call, u32 client_id, u32 function, const struct vmmdev_hgcm_function_parameter *src_parm, u32 parm_count, void **bounce_bufs)
 
-    :param struct vmmdev_hgcm_call \*call:
+    :param call:
         The call to initialize.
+    :type call: struct vmmdev_hgcm_call \*
 
-    :param u32 client_id:
+    :param client_id:
         The client ID of the caller.
+    :type client_id: u32
 
-    :param u32 function:
+    :param function:
         The function number of the function to call.
+    :type function: u32
 
-    :param const struct vmmdev_hgcm_function_parameter \*src_parm:
+    :param src_parm:
         Pointer to source function call parameters.
+    :type src_parm: const struct vmmdev_hgcm_function_parameter \*
 
-    :param u32 parm_count:
+    :param parm_count:
         Number of function call parameters.
+    :type parm_count: u32
 
-    :param void \*\*bounce_bufs:
+    :param bounce_bufs:
         The bouncebuffer array.
+    :type bounce_bufs: void \*\*
 
 .. _`hgcm_cancel_call`:
 
@@ -79,11 +90,13 @@ hgcm_cancel_call
 
 .. c:function:: int hgcm_cancel_call(struct vbg_dev *gdev, struct vmmdev_hgcm_call *call)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         *undescribed*
+    :type gdev: struct vbg_dev \*
 
-    :param struct vmmdev_hgcm_call \*call:
+    :param call:
         *undescribed*
+    :type call: struct vmmdev_hgcm_call \*
 
 .. _`hgcm_cancel_call.return`:
 
@@ -99,18 +112,22 @@ vbg_hgcm_do_call
 
 .. c:function:: int vbg_hgcm_do_call(struct vbg_dev *gdev, struct vmmdev_hgcm_call *call, u32 timeout_ms, bool *leak_it)
 
-    :param struct vbg_dev \*gdev:
+    :param gdev:
         The VBoxGuest device extension.
+    :type gdev: struct vbg_dev \*
 
-    :param struct vmmdev_hgcm_call \*call:
+    :param call:
         The call to execute.
+    :type call: struct vmmdev_hgcm_call \*
 
-    :param u32 timeout_ms:
+    :param timeout_ms:
         Timeout in ms.
+    :type timeout_ms: u32
 
-    :param bool \*leak_it:
+    :param leak_it:
         Where to return the leak it / free it, indicator.
         Cancellation fun.
+    :type leak_it: bool \*
 
 .. _`vbg_hgcm_do_call.return`:
 
@@ -128,17 +145,21 @@ hgcm_call_copy_back_result
 
     buffers.
 
-    :param const struct vmmdev_hgcm_call \*call:
+    :param call:
         HGCM call request.
+    :type call: const struct vmmdev_hgcm_call \*
 
-    :param struct vmmdev_hgcm_function_parameter \*dst_parm:
+    :param dst_parm:
         Pointer to function call parameters destination.
+    :type dst_parm: struct vmmdev_hgcm_function_parameter \*
 
-    :param u32 parm_count:
+    :param parm_count:
         Number of function call parameters.
+    :type parm_count: u32
 
-    :param void \*\*bounce_bufs:
+    :param bounce_bufs:
         The bouncebuffer array.
+    :type bounce_bufs: void \*\*
 
 .. _`hgcm_call_copy_back_result.return`:
 

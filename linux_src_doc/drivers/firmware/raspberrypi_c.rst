@@ -10,14 +10,17 @@ rpi_firmware_property_list
 
     Submit firmware property list
 
-    :param struct rpi_firmware \*fw:
+    :param fw:
         Pointer to firmware structure from \ :c:func:`rpi_firmware_get`\ .
+    :type fw: struct rpi_firmware \*
 
-    :param void \*data:
+    :param data:
         Buffer holding tags.
+    :type data: void \*
 
-    :param size_t tag_size:
+    :param tag_size:
         Size of tags buffer.
+    :type tag_size: size_t
 
 .. _`rpi_firmware_property_list.description`:
 
@@ -41,17 +44,21 @@ rpi_firmware_property
 
     Submit single firmware property
 
-    :param struct rpi_firmware \*fw:
+    :param fw:
         Pointer to firmware structure from \ :c:func:`rpi_firmware_get`\ .
+    :type fw: struct rpi_firmware \*
 
-    :param u32 tag:
+    :param tag:
         One of enum_mbox_property_tag.
+    :type tag: u32
 
-    :param void \*tag_data:
+    :param tag_data:
         Tag data buffer.
+    :type tag_data: void \*
 
-    :param size_t buf_size:
+    :param buf_size:
         Buffer size.
+    :type buf_size: size_t
 
 .. _`rpi_firmware_property.description`:
 
@@ -74,8 +81,9 @@ rpi_firmware_get
 
     Get pointer to rpi_firmware structure.
 
-    :param struct device_node \*firmware_node:
+    :param firmware_node:
         Pointer to the firmware Device Tree node.
+    :type firmware_node: struct device_node \*
 
 .. _`rpi_firmware_get.description`:
 

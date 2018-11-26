@@ -7,5 +7,6 @@ can
 .. toctree::
     :maxdepth: 1
 
+    usb/index
     at91_can_c
     xilinx_can_c

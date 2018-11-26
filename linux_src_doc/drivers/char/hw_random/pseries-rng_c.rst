@@ -10,8 +10,9 @@ pseries_rng_get_desired_dma
 
     Return desired DMA allocate for CMO operations
 
-    :param struct vio_dev \*vdev:
+    :param vdev:
         *undescribed*
+    :type vdev: struct vio_dev \*
 
 .. _`pseries_rng_get_desired_dma.description`:
 

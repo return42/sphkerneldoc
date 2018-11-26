@@ -1,19 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/media/cec-notifier.h
 
-.. _`cec_notifier_get`:
+.. _`cec_notifier_get_conn`:
 
-cec_notifier_get
-================
+cec_notifier_get_conn
+=====================
 
-.. c:function:: struct cec_notifier *cec_notifier_get(struct device *dev)
+.. c:function:: struct cec_notifier *cec_notifier_get_conn(struct device *dev, const char *conn)
 
-    find or create a new cec_notifier for the given device.
+    find or create a new cec_notifier for the given device and connector tuple.
 
-    :param struct device \*dev:
+    :param dev:
         device that sends the events.
+    :type dev: struct device \*
 
-.. _`cec_notifier_get.description`:
+    :param conn:
+        the connector name from which the event occurs
+    :type conn: const char \*
+
+.. _`cec_notifier_get_conn.description`:
 
 Description
 -----------
@@ -35,8 +40,9 @@ cec_notifier_put
 
     decrease refcount and delete when the refcount reaches 0.
 
-    :param struct cec_notifier \*n:
+    :param n:
         notifier
+    :type n: struct cec_notifier \*
 
 .. _`cec_notifier_set_phys_addr`:
 
@@ -47,11 +53,13 @@ cec_notifier_set_phys_addr
 
     set a new physical address.
 
-    :param struct cec_notifier \*n:
+    :param n:
         the CEC notifier
+    :type n: struct cec_notifier \*
 
-    :param u16 pa:
+    :param pa:
         the CEC physical address
+    :type pa: u16
 
 .. _`cec_notifier_set_phys_addr.description`:
 
@@ -70,11 +78,13 @@ cec_notifier_set_phys_addr_from_edid
 
     set parse the PA from the EDID.
 
-    :param struct cec_notifier \*n:
+    :param n:
         the CEC notifier
+    :type n: struct cec_notifier \*
 
-    :param const struct edid \*edid:
+    :param edid:
         the struct edid pointer
+    :type edid: const struct edid \*
 
 .. _`cec_notifier_set_phys_addr_from_edid.description`:
 
@@ -93,11 +103,13 @@ cec_notifier_register
 
     register a callback with the notifier
 
-    :param struct cec_notifier \*n:
+    :param n:
         the CEC notifier
+    :type n: struct cec_notifier \*
 
-    :param struct cec_adapter \*adap:
+    :param adap:
         the CEC adapter, passed as argument to the callback function
+    :type adap: struct cec_adapter \*
 
     :param void (\*callback)(struct cec_adapter \*adap, u16 pa):
         the callback function
@@ -111,8 +123,9 @@ cec_notifier_unregister
 
     unregister the callback from the notifier.
 
-    :param struct cec_notifier \*n:
+    :param n:
         the CEC notifier
+    :type n: struct cec_notifier \*
 
 .. _`cec_register_cec_notifier`:
 
@@ -123,11 +136,39 @@ cec_register_cec_notifier
 
     register the notifier with the cec adapter.
 
-    :param struct cec_adapter \*adap:
+    :param adap:
         the CEC adapter
+    :type adap: struct cec_adapter \*
 
-    :param struct cec_notifier \*notifier:
+    :param notifier:
         the CEC notifier
+    :type notifier: struct cec_notifier \*
+
+.. _`cec_notifier_get`:
+
+cec_notifier_get
+================
+
+.. c:function:: struct cec_notifier *cec_notifier_get(struct device *dev)
+
+    find or create a new cec_notifier for the given device.
+
+    :param dev:
+        device that sends the events.
+    :type dev: struct device \*
+
+.. _`cec_notifier_get.description`:
+
+Description
+-----------
+
+If a notifier for device \ ``dev``\  already exists, then increase the refcount
+and return that notifier.
+
+If it doesn't exist, then allocate a new notifier struct and return a
+pointer to that new struct.
+
+Return NULL if the memory could not be allocated.
 
 .. _`cec_notifier_phys_addr_invalidate`:
 
@@ -138,8 +179,9 @@ cec_notifier_phys_addr_invalidate
 
     set the physical address to INVALID
 
-    :param struct cec_notifier \*n:
+    :param n:
         the CEC notifier
+    :type n: struct cec_notifier \*
 
 .. _`cec_notifier_phys_addr_invalidate.description`:
 

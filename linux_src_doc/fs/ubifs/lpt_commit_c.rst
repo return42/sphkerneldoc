@@ -6,12 +6,17 @@
 first_dirty_cnode
 =================
 
-.. c:function:: struct ubifs_cnode *first_dirty_cnode(struct ubifs_nnode *nnode)
+.. c:function:: struct ubifs_cnode *first_dirty_cnode(const struct ubifs_info *c, struct ubifs_nnode *nnode)
 
     find first dirty cnode.
 
-    :param struct ubifs_nnode \*nnode:
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
+
+    :param nnode:
         nnode at which to start
+    :type nnode: struct ubifs_nnode \*
 
 .. _`first_dirty_cnode.description`:
 
@@ -25,12 +30,17 @@ This function returns the first dirty cnode or \ ``NULL``\  if there is not one.
 next_dirty_cnode
 ================
 
-.. c:function:: struct ubifs_cnode *next_dirty_cnode(struct ubifs_cnode *cnode)
+.. c:function:: struct ubifs_cnode *next_dirty_cnode(const struct ubifs_info *c, struct ubifs_cnode *cnode)
 
     find next dirty cnode.
 
-    :param struct ubifs_cnode \*cnode:
+    :param c:
+        UBIFS file-system description object
+    :type c: const struct ubifs_info \*
+
+    :param cnode:
         cnode from which to begin searching
+    :type cnode: struct ubifs_cnode \*
 
 .. _`next_dirty_cnode.description`:
 
@@ -48,8 +58,9 @@ get_cnodes_to_commit
 
     create list of dirty cnodes to commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`get_cnodes_to_commit.description`:
 
@@ -67,17 +78,21 @@ upd_ltab
 
     update LPT LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number
+    :type lnum: int
 
-    :param int free:
+    :param free:
         amount of free space
+    :type free: int
 
-    :param int dirty:
+    :param dirty:
         amount of dirty space to add
+    :type dirty: int
 
 .. _`alloc_lpt_leb`:
 
@@ -88,11 +103,13 @@ alloc_lpt_leb
 
     allocate an LPT LEB that is empty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int \*lnum:
+    :param lnum:
         LEB number is passed and returned here
+    :type lnum: int \*
 
 .. _`alloc_lpt_leb.description`:
 
@@ -113,8 +130,9 @@ layout_cnodes
 
     layout cnodes for commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`layout_cnodes.description`:
 
@@ -132,11 +150,13 @@ realloc_lpt_leb
 
     allocate an LPT LEB that is empty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int \*lnum:
+    :param lnum:
         LEB number is passed and returned here
+    :type lnum: int \*
 
 .. _`realloc_lpt_leb.description`:
 
@@ -161,8 +181,9 @@ write_cnodes
 
     write cnodes for commit.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`write_cnodes.description`:
 
@@ -180,11 +201,13 @@ next_pnode_to_dirty
 
     find next pnode to dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode
+    :type pnode: struct ubifs_pnode \*
 
 .. _`next_pnode_to_dirty.description`:
 
@@ -195,29 +218,6 @@ This function returns the next pnode to dirty or \ ``NULL``\  if there are no mo
 pnodes.  Note that pnodes that have never been written (lnum == 0) are
 skipped.
 
-.. _`pnode_lookup`:
-
-pnode_lookup
-============
-
-.. c:function:: struct ubifs_pnode *pnode_lookup(struct ubifs_info *c, int i)
-
-    lookup a pnode in the LPT.
-
-    :param struct ubifs_info \*c:
-        UBIFS file-system description object
-
-    :param int i:
-        pnode number (0 to (main_lebs - 1) / UBIFS_LPT_FANOUT))
-
-.. _`pnode_lookup.description`:
-
-Description
------------
-
-This function returns a pointer to the pnode on success or a negative
-error code on failure.
-
 .. _`add_pnode_dirt`:
 
 add_pnode_dirt
@@ -227,11 +227,13 @@ add_pnode_dirt
 
     add dirty space to LPT LEB properties.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode for which to add dirt
+    :type pnode: struct ubifs_pnode \*
 
 .. _`do_make_pnode_dirty`:
 
@@ -242,11 +244,13 @@ do_make_pnode_dirty
 
     mark a pnode dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_pnode \*pnode:
+    :param pnode:
         pnode to mark dirty
+    :type pnode: struct ubifs_pnode \*
 
 .. _`make_tree_dirty`:
 
@@ -257,8 +261,9 @@ make_tree_dirty
 
     mark the entire LEB properties tree dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`make_tree_dirty.description`:
 
@@ -281,8 +286,9 @@ need_write_all
 
     determine if the LPT area is running out of free space.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`need_write_all.description`:
 
@@ -301,8 +307,9 @@ lpt_tgc_start
 
     start trivial garbage collection of LPT LEBs.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`lpt_tgc_start.description`:
 
@@ -322,8 +329,9 @@ lpt_tgc_end
 
     end trivial garbage collection of LPT LEBs.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`lpt_tgc_end.description`:
 
@@ -344,8 +352,9 @@ populate_lsave
 
     fill the lsave array with important LEB numbers.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`populate_lsave.description`:
 
@@ -369,11 +378,13 @@ nnode_lookup
 
     lookup a nnode in the LPT.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int i:
+    :param i:
         nnode number
+    :type i: int
 
 .. _`nnode_lookup.description`:
 
@@ -392,17 +403,21 @@ make_nnode_dirty
 
     find a nnode and, if found, make it dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int node_num:
+    :param node_num:
         nnode number of nnode to make dirty
+    :type node_num: int
 
-    :param int lnum:
+    :param lnum:
         LEB number where nnode was written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where nnode was written
+    :type offs: int
 
 .. _`make_nnode_dirty.description`:
 
@@ -426,17 +441,21 @@ make_pnode_dirty
 
     find a pnode and, if found, make it dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int node_num:
+    :param node_num:
         pnode number of pnode to make dirty
+    :type node_num: int
 
-    :param int lnum:
+    :param lnum:
         LEB number where pnode was written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where pnode was written
+    :type offs: int
 
 .. _`make_pnode_dirty.description`:
 
@@ -460,14 +479,17 @@ make_ltab_dirty
 
     make ltab node dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number where ltab was written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where ltab was written
+    :type offs: int
 
 .. _`make_ltab_dirty.description`:
 
@@ -491,14 +513,17 @@ make_lsave_dirty
 
     make lsave node dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number where lsave was written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where lsave was written
+    :type offs: int
 
 .. _`make_lsave_dirty.description`:
 
@@ -522,20 +547,25 @@ make_node_dirty
 
     make node dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int node_type:
+    :param node_type:
         LPT node type
+    :type node_type: int
 
-    :param int node_num:
+    :param node_num:
         node number
+    :type node_num: int
 
-    :param int lnum:
+    :param lnum:
         LEB number where node was written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where node was written
+    :type offs: int
 
 .. _`make_node_dirty.description`:
 
@@ -559,11 +589,13 @@ get_lpt_node_len
 
     return the length of a node based on its type.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param int node_type:
+    :param node_type:
         LPT node type
+    :type node_type: int
 
 .. _`get_pad_len`:
 
@@ -574,14 +606,17 @@ get_pad_len
 
     return the length of padding in a buffer.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer
+    :type buf: uint8_t \*
 
-    :param int len:
+    :param len:
         length of buffer
+    :type len: int
 
 .. _`get_lpt_node_type`:
 
@@ -592,14 +627,17 @@ get_lpt_node_type
 
     return type (and node number) of a node in a buffer.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer
+    :type buf: uint8_t \*
 
-    :param int \*node_num:
+    :param node_num:
         node number is returned here
+    :type node_num: int \*
 
 .. _`is_a_node`:
 
@@ -610,14 +648,17 @@ is_a_node
 
     determine if a buffer contains a node.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer
+    :type buf: uint8_t \*
 
-    :param int len:
+    :param len:
         length of buffer
+    :type len: int
 
 .. _`is_a_node.description`:
 
@@ -635,11 +676,13 @@ lpt_gc_lnum
 
     garbage collect a LPT LEB.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number to garbage collect
+    :type lnum: int
 
 .. _`lpt_gc_lnum.description`:
 
@@ -662,8 +705,9 @@ lpt_gc
 
     LPT garbage collection.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`lpt_gc.description`:
 
@@ -682,8 +726,9 @@ ubifs_lpt_start_commit
 
     UBIFS commit starts.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_lpt_start_commit.description`:
 
@@ -705,8 +750,9 @@ free_obsolete_cnodes
 
     free obsolete cnodes for commit end.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_lpt_end_commit`:
 
@@ -717,8 +763,9 @@ ubifs_lpt_end_commit
 
     finish the commit operation.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_lpt_end_commit.description`:
 
@@ -739,8 +786,9 @@ ubifs_lpt_post_commit
 
     post commit LPT trivial GC and LPT GC.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`ubifs_lpt_post_commit.description`:
 
@@ -759,11 +807,13 @@ first_nnode
 
     find the first nnode in memory.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int \*hght:
+    :param hght:
         height of tree where nnode found is returned here
+    :type hght: int \*
 
 .. _`first_nnode.description`:
 
@@ -782,14 +832,17 @@ next_nnode
 
     find the next nnode in memory.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param struct ubifs_nnode \*nnode:
+    :param nnode:
         nnode from which to start.
+    :type nnode: struct ubifs_nnode \*
 
-    :param int \*hght:
+    :param hght:
         height of tree where nnode is, is passed and returned here
+    :type hght: int \*
 
 .. _`next_nnode.description`:
 
@@ -808,11 +861,13 @@ ubifs_lpt_free
 
     free resources owned by the LPT.
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int wr_only:
+    :param wr_only:
         free only resources used for writing
+    :type wr_only: int
 
 .. _`dbg_is_all_ff`:
 
@@ -823,11 +878,13 @@ dbg_is_all_ff
 
     determine if a buffer contains only 0xFF bytes.
 
-    :param uint8_t \*buf:
+    :param buf:
         buffer
+    :type buf: uint8_t \*
 
-    :param int len:
+    :param len:
         buffer length
+    :type len: int
 
 .. _`dbg_is_nnode_dirty`:
 
@@ -838,14 +895,17 @@ dbg_is_nnode_dirty
 
     determine if a nnode is dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number where nnode was written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where nnode was written
+    :type offs: int
 
 .. _`dbg_is_pnode_dirty`:
 
@@ -856,14 +916,17 @@ dbg_is_pnode_dirty
 
     determine if a pnode is dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number where pnode was written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where pnode was written
+    :type offs: int
 
 .. _`dbg_is_ltab_dirty`:
 
@@ -874,14 +937,17 @@ dbg_is_ltab_dirty
 
     determine if a ltab node is dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number where ltab node was written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where ltab node was written
+    :type offs: int
 
 .. _`dbg_is_lsave_dirty`:
 
@@ -892,14 +958,17 @@ dbg_is_lsave_dirty
 
     determine if a lsave node is dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number where lsave node was written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where lsave node was written
+    :type offs: int
 
 .. _`dbg_is_node_dirty`:
 
@@ -910,17 +979,21 @@ dbg_is_node_dirty
 
     determine if a node is dirty.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int node_type:
+    :param node_type:
         node type
+    :type node_type: int
 
-    :param int lnum:
+    :param lnum:
         LEB number where node was written
+    :type lnum: int
 
-    :param int offs:
+    :param offs:
         offset where node was written
+    :type offs: int
 
 .. _`dbg_check_ltab_lnum`:
 
@@ -931,11 +1004,13 @@ dbg_check_ltab_lnum
 
     check the ltab for a LPT LEB number.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number where node was written
+    :type lnum: int
 
 .. _`dbg_check_ltab_lnum.description`:
 
@@ -953,8 +1028,9 @@ dbg_check_ltab
 
     check the free and dirty space in the ltab.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_check_ltab.description`:
 
@@ -972,8 +1048,9 @@ dbg_chk_lpt_free_spc
 
     check LPT free space is enough to write entire LPT.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_chk_lpt_free_spc.description`:
 
@@ -991,14 +1068,17 @@ dbg_chk_lpt_sz
 
     check LPT does not write more than LPT size.
 
-    :param struct ubifs_info \*c:
+    :param c:
         the UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
-    :param int action:
+    :param action:
         what to do
+    :type action: int
 
-    :param int len:
+    :param len:
         length written
+    :type len: int
 
 .. _`dbg_chk_lpt_sz.description`:
 
@@ -1022,11 +1102,13 @@ dump_lpt_leb
 
     dump an LPT LEB.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
-    :param int lnum:
+    :param lnum:
         LEB number to dump
+    :type lnum: int
 
 .. _`dump_lpt_leb.description`:
 
@@ -1047,8 +1129,9 @@ ubifs_dump_lpt_lebs
 
     dump LPT lebs.
 
-    :param const struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: const struct ubifs_info \*
 
 .. _`ubifs_dump_lpt_lebs.description`:
 
@@ -1067,8 +1150,9 @@ dbg_populate_lsave
 
     debugging version of 'populate_lsave()'
 
-    :param struct ubifs_info \*c:
+    :param c:
         UBIFS file-system description object
+    :type c: struct ubifs_info \*
 
 .. _`dbg_populate_lsave.description`:
 

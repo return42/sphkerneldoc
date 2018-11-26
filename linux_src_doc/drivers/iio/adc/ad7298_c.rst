@@ -8,11 +8,13 @@ ad7298_update_scan_mode
 
 .. c:function:: int ad7298_update_scan_mode(struct iio_dev *indio_dev, const unsigned long *active_scan_mask)
 
-    :param struct iio_dev \*indio_dev:
+    :param indio_dev:
         *undescribed*
+    :type indio_dev: struct iio_dev \*
 
-    :param const unsigned long \*active_scan_mask:
+    :param active_scan_mask:
         *undescribed*
+    :type active_scan_mask: const unsigned long \*
 
 .. _`ad7298_trigger_handler`:
 
@@ -21,11 +23,13 @@ ad7298_trigger_handler
 
 .. c:function:: irqreturn_t ad7298_trigger_handler(int irq, void *p)
 
-    :param int irq:
+    :param irq:
         *undescribed*
+    :type irq: int
 
-    :param void \*p:
+    :param p:
         *undescribed*
+    :type p: void \*
 
 .. _`ad7298_trigger_handler.description`:
 

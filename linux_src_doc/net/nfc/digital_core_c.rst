@@ -8,14 +8,17 @@ digital_start_poll
 
 .. c:function:: int digital_start_poll(struct nfc_dev *nfc_dev, __u32 im_protocols, __u32 tm_protocols)
 
-    :param struct nfc_dev \*nfc_dev:
+    :param nfc_dev:
         *undescribed*
+    :type nfc_dev: struct nfc_dev \*
 
-    :param __u32 im_protocols:
+    :param im_protocols:
         *undescribed*
+    :type im_protocols: __u32
 
-    :param __u32 tm_protocols:
+    :param tm_protocols:
         *undescribed*
+    :type tm_protocols: __u32
 
 .. _`digital_start_poll.description`:
 

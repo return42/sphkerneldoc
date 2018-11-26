@@ -10,8 +10,9 @@ atomic_read
 
     read atomic variable
 
-    :param const atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: const atomic_t \*
 
 .. _`atomic_read.description`:
 
@@ -29,11 +30,13 @@ atomic_set
 
     set atomic variable
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
-    :param int i:
+    :param i:
         required value
+    :type i: int
 
 .. _`atomic_set.description`:
 
@@ -51,8 +54,9 @@ atomic_inc
 
     increment atomic variable
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`atomic_inc.description`:
 
@@ -70,8 +74,9 @@ atomic_dec_and_test
 
     decrement and test
 
-    :param atomic_t \*v:
+    :param v:
         pointer of type atomic_t
+    :type v: atomic_t \*
 
 .. _`atomic_dec_and_test.description`:
 

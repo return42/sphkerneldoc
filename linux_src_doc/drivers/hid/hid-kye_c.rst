@@ -10,8 +10,9 @@ kye_tablet_enable
 
     functional tablet mode by setting a special feature report.
 
-    :param struct hid_device \*hdev:
+    :param hdev:
         HID device
+    :type hdev: struct hid_device \*
 
 .. _`kye_tablet_enable.description`:
 

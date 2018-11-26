@@ -10,8 +10,9 @@ brcms_free
 
     device resources.
 
-    :param struct brcms_info \*wl:
+    :param wl:
         *undescribed*
+    :type wl: struct brcms_info \*
 
 .. _`brcms_free.description`:
 
@@ -35,8 +36,9 @@ brcms_attach
 
 .. c:function:: struct brcms_info *brcms_attach(struct bcma_device *pdev)
 
-    :param struct bcma_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct bcma_device \*
 
 .. _`brcms_attach.description`:
 
@@ -55,8 +57,9 @@ brcms_bcma_probe
 
 .. c:function:: int brcms_bcma_probe(struct bcma_device *pdev)
 
-    :param struct bcma_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct bcma_device \*
 
 .. _`brcms_bcma_probe.description`:
 
@@ -75,8 +78,9 @@ brcms_driver_init
 
 .. c:function:: void brcms_driver_init(struct work_struct *work)
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`brcms_driver_init.description`:
 
@@ -94,8 +98,9 @@ brcms_module_exit
 
 .. c:function:: void __exit brcms_module_exit( void)
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`brcms_module_exit.description`:
 

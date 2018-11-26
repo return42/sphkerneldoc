@@ -10,14 +10,17 @@ rproc_da_to_va
 
     lookup the kernel virtual address for a remoteproc address
 
-    :param struct rproc \*rproc:
+    :param rproc:
         handle of a remote processor
+    :type rproc: struct rproc \*
 
-    :param u64 da:
+    :param da:
         remoteproc device address to translate
+    :type da: u64
 
-    :param int len:
+    :param len:
         length of the memory region \ ``da``\  is pointing to
+    :type len: int
 
 .. _`rproc_da_to_va.description`:
 
@@ -52,6 +55,88 @@ but only on kernel direct mapped RAM memory. Instead, we're just using
 here the output of the DMA API for the carveouts, which should be more
 correct.
 
+.. _`rproc_find_carveout_by_name`:
+
+rproc_find_carveout_by_name
+===========================
+
+.. c:function:: struct rproc_mem_entry *rproc_find_carveout_by_name(struct rproc *rproc, const char *name,  ...)
+
+    lookup the carveout region by a name
+
+    :param rproc:
+        handle of a remote processor
+    :type rproc: struct rproc \*
+
+    :param name:
+        carveout name to find (standard printf format)
+    :type name: const char \*
+
+    :param ellipsis ellipsis:
+        variable arguments
+
+.. _`rproc_find_carveout_by_name.description`:
+
+Description
+-----------
+
+Platform driver has the capability to register some pre-allacoted carveout
+(physically contiguous memory regions) before rproc firmware loading and
+associated resource table analysis. These regions may be dedicated memory
+regions internal to the coprocessor or specified DDR region with specific
+attributes
+
+This function is a helper function with which we can go over the
+allocated carveouts and return associated region characteristics like
+coprocessor address, length or processor virtual address.
+
+.. _`rproc_find_carveout_by_name.return`:
+
+Return
+------
+
+a valid pointer on carveout entry on success or NULL on failure.
+
+.. _`rproc_check_carveout_da`:
+
+rproc_check_carveout_da
+=======================
+
+.. c:function:: int rproc_check_carveout_da(struct rproc *rproc, struct rproc_mem_entry *mem, u32 da, u32 len)
+
+    Check specified carveout da configuration
+
+    :param rproc:
+        handle of a remote processor
+    :type rproc: struct rproc \*
+
+    :param mem:
+        pointer on carveout to check
+    :type mem: struct rproc_mem_entry \*
+
+    :param da:
+        area device address
+    :type da: u32
+
+    :param len:
+        associated area size
+    :type len: u32
+
+.. _`rproc_check_carveout_da.description`:
+
+Description
+-----------
+
+This function is a helper function to verify requested device area (couple
+da, len) is part of specified carevout.
+
+.. _`rproc_check_carveout_da.return`:
+
+Return
+------
+
+0 if carveout match request else -ENOMEM
+
 .. _`rproc_handle_vdev`:
 
 rproc_handle_vdev
@@ -61,17 +146,21 @@ rproc_handle_vdev
 
     handle a vdev fw resource
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the remote processor
+    :type rproc: struct rproc \*
 
-    :param struct fw_rsc_vdev \*rsc:
+    :param rsc:
         the vring resource descriptor
+    :type rsc: struct fw_rsc_vdev \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param int avail:
+    :param avail:
         size of available data (for sanity checking the image)
+    :type avail: int
 
 .. _`rproc_handle_vdev.description`:
 
@@ -119,17 +208,21 @@ rproc_handle_trace
 
     handle a shared trace buffer resource
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the remote processor
+    :type rproc: struct rproc \*
 
-    :param struct fw_rsc_trace \*rsc:
+    :param rsc:
         the trace resource descriptor
+    :type rsc: struct fw_rsc_trace \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param int avail:
+    :param avail:
         size of available data (for sanity checking the image)
+    :type avail: int
 
 .. _`rproc_handle_trace.description`:
 
@@ -155,17 +248,21 @@ rproc_handle_devmem
 
     handle devmem resource entry
 
-    :param struct rproc \*rproc:
+    :param rproc:
         remote processor handle
+    :type rproc: struct rproc \*
 
-    :param struct fw_rsc_devmem \*rsc:
+    :param rsc:
         the devmem resource entry
+    :type rsc: struct fw_rsc_devmem \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param int avail:
+    :param avail:
         size of available data (for sanity checking the image)
+    :type avail: int
 
 .. _`rproc_handle_devmem.description`:
 
@@ -191,6 +288,56 @@ tell us ranges of physical addresses the firmware is allowed to request,
 and not allow firmwares to request access to physical addresses that
 are outside those ranges.
 
+.. _`rproc_alloc_carveout`:
+
+rproc_alloc_carveout
+====================
+
+.. c:function:: int rproc_alloc_carveout(struct rproc *rproc, struct rproc_mem_entry *mem)
+
+    allocated specified carveout
+
+    :param rproc:
+        rproc handle
+    :type rproc: struct rproc \*
+
+    :param mem:
+        the memory entry to allocate
+    :type mem: struct rproc_mem_entry \*
+
+.. _`rproc_alloc_carveout.description`:
+
+Description
+-----------
+
+This function allocate specified memory entry \ ``mem``\  using
+\ :c:func:`dma_alloc_coherent`\  as default allocator
+
+.. _`rproc_release_carveout`:
+
+rproc_release_carveout
+======================
+
+.. c:function:: int rproc_release_carveout(struct rproc *rproc, struct rproc_mem_entry *mem)
+
+    release acquired carveout
+
+    :param rproc:
+        rproc handle
+    :type rproc: struct rproc \*
+
+    :param mem:
+        the memory entry to release
+    :type mem: struct rproc_mem_entry \*
+
+.. _`rproc_release_carveout.description`:
+
+Description
+-----------
+
+This function releases specified memory entry \ ``mem``\  allocated via
+\ :c:func:`rproc_alloc_carveout`\  function by \ ``rproc``\ .
+
 .. _`rproc_handle_carveout`:
 
 rproc_handle_carveout
@@ -200,17 +347,21 @@ rproc_handle_carveout
 
     handle phys contig memory allocation requests
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle
+    :type rproc: struct rproc \*
 
-    :param struct fw_rsc_carveout \*rsc:
+    :param rsc:
         the resource entry
+    :type rsc: struct fw_rsc_carveout \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
-    :param int avail:
+    :param avail:
         size of available data (for image validation)
+    :type avail: int
 
 .. _`rproc_handle_carveout.description`:
 
@@ -229,6 +380,150 @@ Allocating memory this way helps utilizing the reserved physical memory
 needed to map it (in case \ ``rproc``\  is using an IOMMU). Reducing the TLB
 pressure is important; it may have a substantial impact on performance.
 
+.. _`rproc_add_carveout`:
+
+rproc_add_carveout
+==================
+
+.. c:function:: void rproc_add_carveout(struct rproc *rproc, struct rproc_mem_entry *mem)
+
+    register an allocated carveout region
+
+    :param rproc:
+        rproc handle
+    :type rproc: struct rproc \*
+
+    :param mem:
+        memory entry to register
+    :type mem: struct rproc_mem_entry \*
+
+.. _`rproc_add_carveout.description`:
+
+Description
+-----------
+
+This function registers specified memory entry in \ ``rproc``\  carveouts list.
+Specified carveout should have been allocated before registering.
+
+.. _`rproc_mem_entry_init`:
+
+rproc_mem_entry_init
+====================
+
+.. c:function:: struct rproc_mem_entry *rproc_mem_entry_init(struct device *dev, void *va, dma_addr_t dma, int len, u32 da, int (*alloc)(struct rproc *, struct rproc_mem_entry *), int (*release)(struct rproc *, struct rproc_mem_entry *), const char *name,  ...)
+
+    allocate and initialize rproc_mem_entry struct
+
+    :param dev:
+        pointer on device struct
+    :type dev: struct device \*
+
+    :param va:
+        virtual address
+    :type va: void \*
+
+    :param dma:
+        dma address
+    :type dma: dma_addr_t
+
+    :param len:
+        memory carveout length
+    :type len: int
+
+    :param da:
+        device address
+    :type da: u32
+
+    :param int (\*alloc)(struct rproc \*, struct rproc_mem_entry \*):
+        *undescribed*
+
+    :param int (\*release)(struct rproc \*, struct rproc_mem_entry \*):
+        memory carveout function
+
+    :param name:
+        carveout name
+    :type name: const char \*
+
+    :param ellipsis ellipsis:
+        variable arguments
+
+.. _`rproc_mem_entry_init.description`:
+
+Description
+-----------
+
+This function allocates a rproc_mem_entry struct and fill it with parameters
+provided by client.
+
+.. _`rproc_of_resm_mem_entry_init`:
+
+rproc_of_resm_mem_entry_init
+============================
+
+.. c:function:: struct rproc_mem_entry *rproc_of_resm_mem_entry_init(struct device *dev, u32 of_resm_idx, int len, u32 da, const char *name,  ...)
+
+    allocate and initialize rproc_mem_entry struct from a reserved memory phandle
+
+    :param dev:
+        pointer on device struct
+    :type dev: struct device \*
+
+    :param of_resm_idx:
+        reserved memory phandle index in "memory-region"
+    :type of_resm_idx: u32
+
+    :param len:
+        memory carveout length
+    :type len: int
+
+    :param da:
+        device address
+    :type da: u32
+
+    :param name:
+        carveout name
+    :type name: const char \*
+
+    :param ellipsis ellipsis:
+        variable arguments
+
+.. _`rproc_of_resm_mem_entry_init.description`:
+
+Description
+-----------
+
+This function allocates a rproc_mem_entry struct and fill it with parameters
+provided by client.
+
+.. _`rproc_alloc_registered_carveouts`:
+
+rproc_alloc_registered_carveouts
+================================
+
+.. c:function:: int rproc_alloc_registered_carveouts(struct rproc *rproc)
+
+    allocate all carveouts registered in the list
+
+    :param rproc:
+        the remote processor handle
+    :type rproc: struct rproc \*
+
+.. _`rproc_alloc_registered_carveouts.description`:
+
+Description
+-----------
+
+This function parses registered carveout list, performs allocation
+if \ :c:func:`alloc`\  ops registered and updates resource table information
+if rsc_offset set.
+
+.. _`rproc_alloc_registered_carveouts.return`:
+
+Return
+------
+
+0 on success
+
 .. _`rproc_coredump_cleanup`:
 
 rproc_coredump_cleanup
@@ -238,8 +533,9 @@ rproc_coredump_cleanup
 
     clean up dump_segments list
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the remote processor handle
+    :type rproc: struct rproc \*
 
 .. _`rproc_resource_cleanup`:
 
@@ -250,8 +546,9 @@ rproc_resource_cleanup
 
     clean up and free all acquired resources
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle
+    :type rproc: struct rproc \*
 
 .. _`rproc_resource_cleanup.description`:
 
@@ -270,14 +567,17 @@ rproc_coredump_add_segment
 
     add segment of device memory to coredump
 
-    :param struct rproc \*rproc:
+    :param rproc:
         handle of a remote processor
+    :type rproc: struct rproc \*
 
-    :param dma_addr_t da:
+    :param da:
         device address
+    :type da: dma_addr_t
 
-    :param size_t size:
+    :param size:
         size of segment
+    :type size: size_t
 
 .. _`rproc_coredump_add_segment.description`:
 
@@ -294,6 +594,50 @@ Return
 
 0 on success, negative errno on error.
 
+.. _`rproc_coredump_add_custom_segment`:
+
+rproc_coredump_add_custom_segment
+=================================
+
+.. c:function:: int rproc_coredump_add_custom_segment(struct rproc *rproc, dma_addr_t da, size_t size, void (*dumpfn)(struct rproc *rproc, struct rproc_dump_segment *segment, void *dest), void *priv)
+
+    add custom coredump segment
+
+    :param rproc:
+        handle of a remote processor
+    :type rproc: struct rproc \*
+
+    :param da:
+        device address
+    :type da: dma_addr_t
+
+    :param size:
+        size of segment
+    :type size: size_t
+
+    :param void (\*dumpfn)(struct rproc \*rproc, struct rproc_dump_segment \*segment, void \*dest):
+        custom dump function called for each segment during coredump
+
+    :param priv:
+        private data
+    :type priv: void \*
+
+.. _`rproc_coredump_add_custom_segment.description`:
+
+Description
+-----------
+
+Add device memory to the list of segments to be included in the coredump
+and associate the segment with the given custom dump function and private
+data.
+
+.. _`rproc_coredump_add_custom_segment.return`:
+
+Return
+------
+
+0 on success, negative errno on error.
+
 .. _`rproc_coredump`:
 
 rproc_coredump
@@ -303,8 +647,9 @@ rproc_coredump
 
     perform coredump
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle
+    :type rproc: struct rproc \*
 
 .. _`rproc_coredump.description`:
 
@@ -323,8 +668,9 @@ rproc_trigger_recovery
 
     recover a remoteproc
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the remote processor
+    :type rproc: struct rproc \*
 
 .. _`rproc_trigger_recovery.description`:
 
@@ -346,8 +692,9 @@ rproc_crash_handler_work
 
     handle a crash
 
-    :param struct work_struct \*work:
+    :param work:
         *undescribed*
+    :type work: struct work_struct \*
 
 .. _`rproc_crash_handler_work.description`:
 
@@ -366,8 +713,9 @@ rproc_boot
 
     boot a remote processor
 
-    :param struct rproc \*rproc:
+    :param rproc:
         handle of a remote processor
+    :type rproc: struct rproc \*
 
 .. _`rproc_boot.description`:
 
@@ -390,8 +738,9 @@ rproc_shutdown
 
     power off the remote processor
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the remote processor
+    :type rproc: struct rproc \*
 
 .. _`rproc_shutdown.description`:
 
@@ -426,8 +775,9 @@ rproc_get_by_phandle
 
     find a remote processor by phandle
 
-    :param phandle phandle:
+    :param phandle:
         phandle to the rproc
+    :type phandle: phandle
 
 .. _`rproc_get_by_phandle.description`:
 
@@ -451,8 +801,9 @@ rproc_add
 
     register a remote processor
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the remote processor handle to register
+    :type rproc: struct rproc \*
 
 .. _`rproc_add.description`:
 
@@ -489,8 +840,9 @@ rproc_type_release
 
     release a remote processor instance
 
-    :param struct device \*dev:
+    :param dev:
         the rproc's device
+    :type dev: struct device \*
 
 .. _`rproc_type_release.description`:
 
@@ -511,20 +863,25 @@ rproc_alloc
 
     allocate a remote processor handle
 
-    :param struct device \*dev:
+    :param dev:
         the underlying device
+    :type dev: struct device \*
 
-    :param const char \*name:
+    :param name:
         name of this remote processor
+    :type name: const char \*
 
-    :param const struct rproc_ops \*ops:
+    :param ops:
         platform-specific handlers (mainly start/stop)
+    :type ops: const struct rproc_ops \*
 
-    :param const char \*firmware:
+    :param firmware:
         name of firmware file to load, can be NULL
+    :type firmware: const char \*
 
-    :param int len:
+    :param len:
         length of private data needed by the rproc driver (in bytes)
+    :type len: int
 
 .. _`rproc_alloc.description`:
 
@@ -560,8 +917,9 @@ rproc_free
 
     unroll \ :c:func:`rproc_alloc`\ 
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the remote processor handle
+    :type rproc: struct rproc \*
 
 .. _`rproc_free.description`:
 
@@ -582,8 +940,9 @@ rproc_put
 
     release rproc reference
 
-    :param struct rproc \*rproc:
+    :param rproc:
         the remote processor handle
+    :type rproc: struct rproc \*
 
 .. _`rproc_put.description`:
 
@@ -604,8 +963,9 @@ rproc_del
 
     unregister a remote processor
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle to unregister
+    :type rproc: struct rproc \*
 
 .. _`rproc_del.description`:
 
@@ -628,21 +988,24 @@ Returns 0 on success and -EINVAL if \ ``rproc``\  isn't valid.
 rproc_add_subdev
 ================
 
-.. c:function:: void rproc_add_subdev(struct rproc *rproc, struct rproc_subdev *subdev, int (*probe)(struct rproc_subdev *subdev), void (*remove)(struct rproc_subdev *subdev, bool crashed))
+.. c:function:: void rproc_add_subdev(struct rproc *rproc, struct rproc_subdev *subdev)
 
     add a subdevice to a remoteproc
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle to add the subdevice to
+    :type rproc: struct rproc \*
 
-    :param struct rproc_subdev \*subdev:
+    :param subdev:
         subdev handle to register
+    :type subdev: struct rproc_subdev \*
 
-    :param int (\*probe)(struct rproc_subdev \*subdev):
-        function to call when the rproc boots
+.. _`rproc_add_subdev.description`:
 
-    :param void (\*remove)(struct rproc_subdev \*subdev, bool crashed):
-        function to call when the rproc shuts down
+Description
+-----------
+
+Caller is responsible for populating optional subdevice function pointers.
 
 .. _`rproc_remove_subdev`:
 
@@ -653,11 +1016,13 @@ rproc_remove_subdev
 
     remove a subdevice from a remoteproc
 
-    :param struct rproc \*rproc:
+    :param rproc:
         rproc handle to remove the subdevice from
+    :type rproc: struct rproc \*
 
-    :param struct rproc_subdev \*subdev:
+    :param subdev:
         subdev handle, previously registered with \ :c:func:`rproc_add_subdev`\ 
+    :type subdev: struct rproc_subdev \*
 
 .. _`rproc_get_by_child`:
 
@@ -668,8 +1033,9 @@ rproc_get_by_child
 
     acquire rproc handle of \ ``dev``\ 's ancestor
 
-    :param struct device \*dev:
+    :param dev:
         child device to find ancestor of
+    :type dev: struct device \*
 
 .. _`rproc_get_by_child.description`:
 
@@ -687,11 +1053,13 @@ rproc_report_crash
 
     rproc crash reporter function
 
-    :param struct rproc \*rproc:
+    :param rproc:
         remote processor
+    :type rproc: struct rproc \*
 
-    :param enum rproc_crash_type type:
+    :param type:
         crash type
+    :type type: enum rproc_crash_type
 
 .. _`rproc_report_crash.description`:
 

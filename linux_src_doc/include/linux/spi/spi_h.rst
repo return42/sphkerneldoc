@@ -120,10 +120,12 @@ Definition
     #define SPI_TX_QUAD 0x200
     #define SPI_RX_DUAL 0x400
     #define SPI_RX_QUAD 0x800
+    #define SPI_CS_WORD 0x1000
         int irq;
         void *controller_state;
         void *controller_data;
         char modalias[SPI_NAME_SIZE];
+        const char *driver_override;
         int cs_gpio;
         struct spi_statistics statistics;
     }
@@ -180,6 +182,9 @@ modalias
     Name of the driver to use with this device, or an alias
     for that name.  This appears in the sysfs "modalias" attribute
     for driver coldplugging, and in uevents used for hotplugging
+
+driver_override
+    *undescribed*
 
 cs_gpio
     gpio number of the chipselect line (optional, -ENOENT when
@@ -277,8 +282,9 @@ spi_unregister_driver
 
     reverse effect of spi_register_driver
 
-    :param struct spi_driver \*sdrv:
+    :param sdrv:
         the driver to unregister
+    :type sdrv: struct spi_driver \*
 
 .. _`spi_unregister_driver.context`:
 
@@ -296,8 +302,9 @@ module_spi_driver
 
     Helper macro for registering a SPI driver
 
-    :param  __spi_driver:
+    :param __spi_driver:
         spi_driver struct
+    :type __spi_driver: 
 
 .. _`module_spi_driver.description`:
 
@@ -693,6 +700,7 @@ Definition
         u8 bits_per_word;
         u16 delay_usecs;
         u32 speed_hz;
+        u16 word_delay;
         struct list_head transfer_list;
     }
 
@@ -745,6 +753,10 @@ delay_usecs
 speed_hz
     Select a speed other than the device default for this
     transfer. If 0 the default (from \ ``spi_device``\ ) is used.
+
+word_delay
+    clock cycles to inter word delay after each word size
+    (set by bits_per_word) transmission.
 
 transfer_list
     transfers are sequenced through \ ``spi_message.transfers``\ 
@@ -906,14 +918,17 @@ spi_message_init_with_transfers
 
     Initialize spi_message and append transfers
 
-    :param struct spi_message \*m:
+    :param m:
         spi_message to be initialized
+    :type m: struct spi_message \*
 
-    :param struct spi_transfer \*xfers:
+    :param xfers:
         An array of spi transfers
+    :type xfers: struct spi_transfer \*
 
-    :param unsigned int num_xfers:
+    :param num_xfers:
         Number of items in the xfer array
+    :type num_xfers: unsigned int
 
 .. _`spi_message_init_with_transfers.description`:
 
@@ -993,14 +1008,17 @@ spi_sync_transfer
 
     synchronous SPI data transfer
 
-    :param struct spi_device \*spi:
+    :param spi:
         device with which data will be exchanged
+    :type spi: struct spi_device \*
 
-    :param struct spi_transfer \*xfers:
+    :param xfers:
         An array of spi_transfers
+    :type xfers: struct spi_transfer \*
 
-    :param unsigned int num_xfers:
+    :param num_xfers:
         Number of items in the xfer array
+    :type num_xfers: unsigned int
 
 .. _`spi_sync_transfer.context`:
 
@@ -1034,14 +1052,17 @@ spi_write
 
     SPI synchronous write
 
-    :param struct spi_device \*spi:
+    :param spi:
         device to which data will be written
+    :type spi: struct spi_device \*
 
-    :param const void \*buf:
+    :param buf:
         data buffer
+    :type buf: const void \*
 
-    :param size_t len:
+    :param len:
         data buffer size
+    :type len: size_t
 
 .. _`spi_write.context`:
 
@@ -1074,14 +1095,17 @@ spi_read
 
     SPI synchronous read
 
-    :param struct spi_device \*spi:
+    :param spi:
         device from which data will be read
+    :type spi: struct spi_device \*
 
-    :param void \*buf:
+    :param buf:
         data buffer
+    :type buf: void \*
 
-    :param size_t len:
+    :param len:
         data buffer size
+    :type len: size_t
 
 .. _`spi_read.context`:
 
@@ -1114,11 +1138,13 @@ spi_w8r8
 
     SPI synchronous 8 bit write followed by 8 bit read
 
-    :param struct spi_device \*spi:
+    :param spi:
         device with which data will be exchanged
+    :type spi: struct spi_device \*
 
-    :param u8 cmd:
+    :param cmd:
         command to be written before data is read back
+    :type cmd: u8
 
 .. _`spi_w8r8.context`:
 
@@ -1151,11 +1177,13 @@ spi_w8r16
 
     SPI synchronous 8 bit write followed by 16 bit read
 
-    :param struct spi_device \*spi:
+    :param spi:
         device with which data will be exchanged
+    :type spi: struct spi_device \*
 
-    :param u8 cmd:
+    :param cmd:
         command to be written before data is read back
+    :type cmd: u8
 
 .. _`spi_w8r16.context`:
 
@@ -1191,11 +1219,13 @@ spi_w8r16be
 
     SPI synchronous 8 bit write followed by 16 bit big-endian read
 
-    :param struct spi_device \*spi:
+    :param spi:
         device with which data will be exchanged
+    :type spi: struct spi_device \*
 
-    :param u8 cmd:
+    :param cmd:
         command to be written before data is read back
+    :type cmd: u8
 
 .. _`spi_w8r16be.context`:
 

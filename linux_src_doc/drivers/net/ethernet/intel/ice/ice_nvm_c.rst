@@ -8,26 +8,33 @@ ice_aq_read_nvm
 
 .. c:function:: enum ice_status ice_aq_read_nvm(struct ice_hw *hw, u16 module_typeid, u32 offset, u16 length, void *data, bool last_command, struct ice_sq_cd *cd)
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
-    :param u16 module_typeid:
+    :param module_typeid:
         module pointer location in words from the NVM beginning
+    :type module_typeid: u16
 
-    :param u32 offset:
+    :param offset:
         byte offset from the module beginning
+    :type offset: u32
 
-    :param u16 length:
+    :param length:
         length of the section to be read (in bytes from the offset)
+    :type length: u16
 
-    :param void \*data:
+    :param data:
         command buffer (size [bytes] = length)
+    :type data: void \*
 
-    :param bool last_command:
+    :param last_command:
         tells if this is the last command in a series
+    :type last_command: bool
 
-    :param struct ice_sq_cd \*cd:
+    :param cd:
         pointer to command details structure or NULL
+    :type cd: struct ice_sq_cd \*
 
 .. _`ice_aq_read_nvm.description`:
 
@@ -45,14 +52,17 @@ ice_check_sr_access_params
 
     verify params for Shadow RAM R/W operations.
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ice_hw \*
 
-    :param u32 offset:
+    :param offset:
         offset in words from module start
+    :type offset: u32
 
-    :param u16 words:
+    :param words:
         number of words to access
+    :type words: u16
 
 .. _`ice_read_sr_aq`:
 
@@ -63,20 +73,25 @@ ice_read_sr_aq
 
     Read Shadow RAM.
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ice_hw \*
 
-    :param u32 offset:
+    :param offset:
         offset in words from module start
+    :type offset: u32
 
-    :param u16 words:
+    :param words:
         number of words to read
+    :type words: u16
 
-    :param u16 \*data:
+    :param data:
         buffer for words reads from Shadow RAM
+    :type data: u16 \*
 
-    :param bool last_command:
+    :param last_command:
         tells the AdminQ that this is the last command
+    :type last_command: bool
 
 .. _`ice_read_sr_aq.description`:
 
@@ -94,14 +109,17 @@ ice_read_sr_word_aq
 
     Reads Shadow RAM via AQ
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ice_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of the Shadow RAM word to read (0x000000 - 0x001FFF)
+    :type offset: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the Shadow RAM
+    :type data: u16 \*
 
 .. _`ice_read_sr_word_aq.description`:
 
@@ -119,11 +137,13 @@ ice_acquire_nvm
 
     Generic request for acquiring the NVM ownership
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ice_hw \*
 
-    :param enum ice_aq_res_access_type access:
+    :param access:
         NVM access type (read or write)
+    :type access: enum ice_aq_res_access_type
 
 .. _`ice_acquire_nvm.description`:
 
@@ -141,8 +161,9 @@ ice_release_nvm
 
     Generic request for releasing the NVM ownership
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ice_hw \*
 
 .. _`ice_release_nvm.description`:
 
@@ -160,14 +181,17 @@ ice_read_sr_word
 
     Reads Shadow RAM word and acquire NVM if necessary
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the HW structure
+    :type hw: struct ice_hw \*
 
-    :param u16 offset:
+    :param offset:
         offset of the Shadow RAM word to read (0x000000 - 0x001FFF)
+    :type offset: u16
 
-    :param u16 \*data:
+    :param data:
         word read from the Shadow RAM
+    :type data: u16 \*
 
 .. _`ice_read_sr_word.description`:
 
@@ -185,8 +209,9 @@ ice_init_nvm
 
     initializes NVM setting
 
-    :param struct ice_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct ice_hw \*
 
 .. _`ice_init_nvm.description`:
 

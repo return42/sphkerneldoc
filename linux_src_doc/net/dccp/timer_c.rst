@@ -10,8 +10,9 @@ dccp_write_xmitlet
 
     Workhorse for CCID packet dequeueing interface See the comments above \ ``ccid_dequeueing_decision``\  for supported modes.
 
-    :param unsigned long data:
+    :param data:
         *undescribed*
+    :type data: unsigned long
 
 .. _`dccp_timestamp`:
 
@@ -22,8 +23,9 @@ dccp_timestamp
 
     10s of microseconds time source Returns the number of 10s of microseconds since loading DCCP. This is native DCCP time difference format (RFC 4340, sec. 13).
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dccp_timestamp.please-note`:
 

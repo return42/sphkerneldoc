@@ -10,8 +10,9 @@ for_each_ip6_tunnel_rcu
 
     fetch tunnel matching the end-point addresses
 
-    :param  start:
+    :param start:
         *undescribed*
+    :type start: 
 
 .. _`for_each_ip6_tunnel_rcu.return`:
 
@@ -31,11 +32,13 @@ ip6_tnl_bucket
 
     get head of list matching given tunnel parameters
 
-    :param struct ip6_tnl_net \*ip6n:
+    :param ip6n:
         *undescribed*
+    :type ip6n: struct ip6_tnl_net \*
 
-    :param const struct __ip6_tnl_parm \*p:
+    :param p:
         parameters containing tunnel end-points
+    :type p: const struct __ip6_tnl_parm \*
 
 .. _`ip6_tnl_bucket.description`:
 
@@ -61,11 +64,13 @@ ip6_tnl_link
 
     add tunnel to hash table
 
-    :param struct ip6_tnl_net \*ip6n:
+    :param ip6n:
         *undescribed*
+    :type ip6n: struct ip6_tnl_net \*
 
-    :param struct ip6_tnl \*t:
+    :param t:
         tunnel to be added
+    :type t: struct ip6_tnl \*
 
 .. _`ip6_tnl_unlink`:
 
@@ -76,11 +81,13 @@ ip6_tnl_unlink
 
     remove tunnel from hash table
 
-    :param struct ip6_tnl_net \*ip6n:
+    :param ip6n:
         *undescribed*
+    :type ip6n: struct ip6_tnl_net \*
 
-    :param struct ip6_tnl \*t:
+    :param t:
         tunnel to be removed
+    :type t: struct ip6_tnl \*
 
 .. _`ip6_tnl_create`:
 
@@ -91,11 +98,13 @@ ip6_tnl_create
 
     create a new tunnel
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct __ip6_tnl_parm \*p:
+    :param p:
         tunnel parameters
+    :type p: struct __ip6_tnl_parm \*
 
 .. _`ip6_tnl_create.description`:
 
@@ -120,14 +129,17 @@ ip6_tnl_locate
 
     find or create tunnel matching given parameters
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct __ip6_tnl_parm \*p:
+    :param p:
         tunnel parameters
+    :type p: struct __ip6_tnl_parm \*
 
-    :param int create:
+    :param create:
         != 0 if allowed to create new tunnel if no match found
+    :type create: int
 
 .. _`ip6_tnl_locate.description`:
 
@@ -154,8 +166,9 @@ ip6_tnl_dev_uninit
 
     tunnel device uninitializer
 
-    :param struct net_device \*dev:
+    :param dev:
         the device to be destroyed
+    :type dev: struct net_device \*
 
 .. _`ip6_tnl_dev_uninit.description`:
 
@@ -173,11 +186,13 @@ ip6_tnl_parse_tlv_enc_lim
 
     handle encapsulation limit option
 
-    :param struct sk_buff \*skb:
+    :param skb:
         received socket buffer
+    :type skb: struct sk_buff \*
 
-    :param __u8 \*raw:
+    :param raw:
         *undescribed*
+    :type raw: __u8 \*
 
 .. _`ip6_tnl_parse_tlv_enc_lim.return`:
 
@@ -196,29 +211,37 @@ ip6_tnl_err
 
     tunnel error handler
 
-    :param struct sk_buff \*skb:
+    :param skb:
         *undescribed*
+    :type skb: struct sk_buff \*
 
-    :param __u8 ipproto:
+    :param ipproto:
         *undescribed*
+    :type ipproto: __u8
 
-    :param struct inet6_skb_parm \*opt:
+    :param opt:
         *undescribed*
+    :type opt: struct inet6_skb_parm \*
 
-    :param u8 \*type:
+    :param type:
         *undescribed*
+    :type type: u8 \*
 
-    :param u8 \*code:
+    :param code:
         *undescribed*
+    :type code: u8 \*
 
-    :param int \*msg:
+    :param msg:
         *undescribed*
+    :type msg: int \*
 
-    :param __u32 \*info:
+    :param info:
         *undescribed*
+    :type info: __u32 \*
 
-    :param int offset:
+    :param offset:
         *undescribed*
+    :type offset: int
 
 .. _`ip6_tnl_err.description`:
 
@@ -237,11 +260,13 @@ ip6_tnl_addr_conflict
 
     compare packet addresses to tunnel's own
 
-    :param const struct ip6_tnl \*t:
+    :param t:
         the outgoing tunnel device
+    :type t: const struct ip6_tnl \*
 
-    :param const struct ipv6hdr \*hdr:
+    :param hdr:
         IPv6 header from the incoming packet
+    :type hdr: const struct ipv6hdr \*
 
 .. _`ip6_tnl_addr_conflict.description`:
 
@@ -268,26 +293,33 @@ ip6_tnl_xmit
 
     encapsulate packet and send
 
-    :param struct sk_buff \*skb:
+    :param skb:
         the outgoing socket buffer
+    :type skb: struct sk_buff \*
 
-    :param struct net_device \*dev:
+    :param dev:
         the outgoing tunnel device
+    :type dev: struct net_device \*
 
-    :param __u8 dsfield:
+    :param dsfield:
         dscp code for outer header
+    :type dsfield: __u8
 
-    :param struct flowi6 \*fl6:
+    :param fl6:
         flow of tunneled packet
+    :type fl6: struct flowi6 \*
 
-    :param int encap_limit:
+    :param encap_limit:
         encapsulation limit
+    :type encap_limit: int
 
-    :param __u32 \*pmtu:
+    :param pmtu:
         Path MTU is stored if packet is too big
+    :type pmtu: __u32 \*
 
-    :param __u8 proto:
+    :param proto:
         next header value
+    :type proto: __u8
 
 .. _`ip6_tnl_xmit.description`:
 
@@ -315,11 +347,13 @@ ip6_tnl_change
 
     update the tunnel parameters
 
-    :param struct ip6_tnl \*t:
+    :param t:
         tunnel to be changed
+    :type t: struct ip6_tnl \*
 
-    :param const struct __ip6_tnl_parm \*p:
+    :param p:
         tunnel configuration parameters
+    :type p: const struct __ip6_tnl_parm \*
 
 .. _`ip6_tnl_change.description`:
 
@@ -337,14 +371,17 @@ ip6_tnl_ioctl
 
     configure ipv6 tunnels from userspace
 
-    :param struct net_device \*dev:
+    :param dev:
         virtual device associated with tunnel
+    :type dev: struct net_device \*
 
-    :param struct ifreq \*ifr:
+    :param ifr:
         parameters passed from userspace
+    :type ifr: struct ifreq \*
 
-    :param int cmd:
+    :param cmd:
         command to be performed
+    :type cmd: int
 
 .. _`ip6_tnl_ioctl.description`:
 
@@ -388,11 +425,13 @@ ip6_tnl_change_mtu
 
     change mtu manually for tunnel device
 
-    :param struct net_device \*dev:
+    :param dev:
         virtual device associated with tunnel
+    :type dev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         the new mtu
+    :type new_mtu: int
 
 .. _`ip6_tnl_change_mtu.return`:
 
@@ -411,8 +450,9 @@ ip6_tnl_dev_setup
 
     setup virtual tunnel device
 
-    :param struct net_device \*dev:
+    :param dev:
         virtual device associated with tunnel
+    :type dev: struct net_device \*
 
 .. _`ip6_tnl_dev_setup.description`:
 
@@ -430,8 +470,9 @@ ip6_tnl_dev_init_gen
 
     general initializer for all tunnel devices
 
-    :param struct net_device \*dev:
+    :param dev:
         virtual device associated with tunnel
+    :type dev: struct net_device \*
 
 .. _`ip6_tnl_dev_init`:
 
@@ -442,8 +483,9 @@ ip6_tnl_dev_init
 
     initializer for all non fallback tunnel devices
 
-    :param struct net_device \*dev:
+    :param dev:
         virtual device associated with tunnel
+    :type dev: struct net_device \*
 
 .. _`ip6_fb_tnl_dev_init`:
 
@@ -454,8 +496,9 @@ ip6_fb_tnl_dev_init
 
     initializer for fallback tunnel device
 
-    :param struct net_device \*dev:
+    :param dev:
         fallback device
+    :type dev: struct net_device \*
 
 .. _`ip6_fb_tnl_dev_init.return`:
 
@@ -473,8 +516,9 @@ ip6_tunnel_init
 
     register protocol and reserve needed resources
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`ip6_tunnel_init.return`:
 
@@ -492,8 +536,9 @@ ip6_tunnel_cleanup
 
     free resources and unregister protocol
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

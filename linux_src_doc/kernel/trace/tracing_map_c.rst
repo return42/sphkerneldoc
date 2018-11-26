@@ -10,14 +10,17 @@ tracing_map_update_sum
 
     Add a value to a tracing_map_elt's sum field
 
-    :param struct tracing_map_elt \*elt:
+    :param elt:
         The tracing_map_elt
+    :type elt: struct tracing_map_elt \*
 
-    :param unsigned int i:
+    :param i:
         The index of the given sum associated with the tracing_map_elt
+    :type i: unsigned int
 
-    :param u64 n:
+    :param n:
         The value to add to the sum
+    :type n: u64
 
 .. _`tracing_map_update_sum.description`:
 
@@ -37,11 +40,13 @@ tracing_map_read_sum
 
     Return the value of a tracing_map_elt's sum field
 
-    :param struct tracing_map_elt \*elt:
+    :param elt:
         The tracing_map_elt
+    :type elt: struct tracing_map_elt \*
 
-    :param unsigned int i:
+    :param i:
         The index of the given sum associated with the tracing_map_elt
+    :type i: unsigned int
 
 .. _`tracing_map_read_sum.description`:
 
@@ -69,14 +74,17 @@ tracing_map_set_var
 
     Assign a tracing_map_elt's variable field
 
-    :param struct tracing_map_elt \*elt:
+    :param elt:
         The tracing_map_elt
+    :type elt: struct tracing_map_elt \*
 
-    :param unsigned int i:
+    :param i:
         The index of the given variable associated with the tracing_map_elt
+    :type i: unsigned int
 
-    :param u64 n:
+    :param n:
         The value to assign
+    :type n: u64
 
 .. _`tracing_map_set_var.description`:
 
@@ -96,11 +104,13 @@ tracing_map_var_set
 
     Return whether or not a variable has been set
 
-    :param struct tracing_map_elt \*elt:
+    :param elt:
         The tracing_map_elt
+    :type elt: struct tracing_map_elt \*
 
-    :param unsigned int i:
+    :param i:
         The index of the given variable associated with the tracing_map_elt
+    :type i: unsigned int
 
 .. _`tracing_map_var_set.description`:
 
@@ -120,11 +130,13 @@ tracing_map_read_var
 
     Return the value of a tracing_map_elt's variable field
 
-    :param struct tracing_map_elt \*elt:
+    :param elt:
         The tracing_map_elt
+    :type elt: struct tracing_map_elt \*
 
-    :param unsigned int i:
+    :param i:
         The index of the given variable associated with the tracing_map_elt
+    :type i: unsigned int
 
 .. _`tracing_map_read_var.description`:
 
@@ -152,11 +164,13 @@ tracing_map_read_var_once
 
     Return and reset a tracing_map_elt's variable field
 
-    :param struct tracing_map_elt \*elt:
+    :param elt:
         The tracing_map_elt
+    :type elt: struct tracing_map_elt \*
 
-    :param unsigned int i:
+    :param i:
         The index of the given variable associated with the tracing_map_elt
+    :type i: unsigned int
 
 .. _`tracing_map_read_var_once.description`:
 
@@ -186,8 +200,9 @@ tracing_map_add_sum_field
 
     Add a field describing a tracing_map sum
 
-    :param struct tracing_map \*map:
+    :param map:
         The tracing_map
+    :type map: struct tracing_map \*
 
 .. _`tracing_map_add_sum_field.description`:
 
@@ -216,8 +231,9 @@ tracing_map_add_var
 
     Add a field describing a tracing_map var
 
-    :param struct tracing_map \*map:
+    :param map:
         The tracing_map
+    :type map: struct tracing_map \*
 
 .. _`tracing_map_add_var.description`:
 
@@ -246,14 +262,17 @@ tracing_map_add_key_field
 
     Add a field describing a tracing_map key
 
-    :param struct tracing_map \*map:
+    :param map:
         The tracing_map
+    :type map: struct tracing_map \*
 
-    :param unsigned int offset:
+    :param offset:
         The offset within the key
+    :type offset: unsigned int
 
-    :param tracing_map_cmp_fn_t cmp_fn:
+    :param cmp_fn:
         The comparison function that will be used to sort on the key
+    :type cmp_fn: tracing_map_cmp_fn_t
 
 .. _`tracing_map_add_key_field.description`:
 
@@ -284,11 +303,13 @@ tracing_map_insert
 
     Insert key and/or retrieve val from a tracing_map
 
-    :param struct tracing_map \*map:
+    :param map:
         The tracing_map to insert into
+    :type map: struct tracing_map \*
 
-    :param void \*key:
+    :param key:
         The key to insert
+    :type key: void \*
 
 .. _`tracing_map_insert.description`:
 
@@ -341,11 +362,13 @@ tracing_map_lookup
 
     Retrieve val from a tracing_map
 
-    :param struct tracing_map \*map:
+    :param map:
         The tracing_map to perform the lookup on
+    :type map: struct tracing_map \*
 
-    :param void \*key:
+    :param key:
         The key to look up
+    :type key: void \*
 
 .. _`tracing_map_lookup.description`:
 
@@ -378,8 +401,9 @@ tracing_map_destroy
 
     Destroy a tracing_map
 
-    :param struct tracing_map \*map:
+    :param map:
         The tracing_map to destroy
+    :type map: struct tracing_map \*
 
 .. _`tracing_map_destroy.description`:
 
@@ -401,8 +425,9 @@ tracing_map_clear
 
     Clear a tracing_map
 
-    :param struct tracing_map \*map:
+    :param map:
         The tracing_map to clear
+    :type map: struct tracing_map \*
 
 .. _`tracing_map_clear.description`:
 
@@ -425,17 +450,21 @@ tracing_map_create
 
     Create a lock-free map and element pool
 
-    :param unsigned int map_bits:
+    :param map_bits:
         The size of the map (2 \*\* map_bits)
+    :type map_bits: unsigned int
 
-    :param unsigned int key_size:
+    :param key_size:
         The size of the key for the map in bytes
+    :type key_size: unsigned int
 
-    :param const struct tracing_map_ops \*ops:
+    :param ops:
         Optional client-defined tracing_map_ops instance
+    :type ops: const struct tracing_map_ops \*
 
-    :param void \*private_data:
+    :param private_data:
         Client data associated with the map
+    :type private_data: void \*
 
 .. _`tracing_map_create.description`:
 
@@ -499,8 +528,9 @@ tracing_map_init
 
     Allocate and clear a map's tracing_map_elts
 
-    :param struct tracing_map \*map:
+    :param map:
         The tracing_map to initialize
+    :type map: struct tracing_map \*
 
 .. _`tracing_map_init.description`:
 
@@ -536,11 +566,13 @@ tracing_map_destroy_sort_entries
 
     Destroy an array of sort entries
 
-    :param struct tracing_map_sort_entry \*\*entries:
+    :param entries:
         The entries to destroy
+    :type entries: struct tracing_map_sort_entry \*\*
 
-    :param unsigned int n_entries:
+    :param n_entries:
         The number of entries in the array
+    :type n_entries: unsigned int
 
 .. _`tracing_map_destroy_sort_entries.description`:
 
@@ -558,17 +590,21 @@ tracing_map_sort_entries
 
     Sort the current set of tracing_map_elts in a map
 
-    :param struct tracing_map \*map:
+    :param map:
         The tracing_map
+    :type map: struct tracing_map \*
 
-    :param struct tracing_map_sort_key \*sort_keys:
+    :param sort_keys:
         *undescribed*
+    :type sort_keys: struct tracing_map_sort_key \*
 
-    :param unsigned int n_sort_keys:
+    :param n_sort_keys:
         *undescribed*
+    :type n_sort_keys: unsigned int
 
-    :param struct tracing_map_sort_entry \*\*\*sort_entries:
+    :param sort_entries:
         outval: pointer to allocated and sorted array of entries
+    :type sort_entries: struct tracing_map_sort_entry \*\*\*
 
 .. _`tracing_map_sort_entries.description`:
 

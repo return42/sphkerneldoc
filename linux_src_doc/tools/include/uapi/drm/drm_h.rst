@@ -68,6 +68,22 @@ Description
 
 If set to 1, the DRM core will provide aspect ratio information in modes.
 
+.. _`drm_client_cap_writeback_connectors`:
+
+DRM_CLIENT_CAP_WRITEBACK_CONNECTORS
+===================================
+
+.. c:function::  DRM_CLIENT_CAP_WRITEBACK_CONNECTORS()
+
+.. _`drm_client_cap_writeback_connectors.description`:
+
+Description
+-----------
+
+If set to 1, the DRM core will expose special connectors to be used for
+writing back to memory the scene setup in the commit. Depends on client
+also supporting DRM_CLIENT_CAP_ATOMIC
+
 .. _`drm_command_base`:
 
 DRM_COMMAND_BASE

@@ -1,22 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: lib/refcount.c
 
-.. _`refcount_add_not_zero`:
+.. _`refcount_add_not_zero_checked`:
 
-refcount_add_not_zero
-=====================
+refcount_add_not_zero_checked
+=============================
 
-.. c:function:: bool refcount_add_not_zero(unsigned int i, refcount_t *r)
+.. c:function:: bool refcount_add_not_zero_checked(unsigned int i, refcount_t *r)
 
     add a value to a refcount unless it is 0
 
-    :param unsigned int i:
+    :param i:
         the value to add to the refcount
+    :type i: unsigned int
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
-.. _`refcount_add_not_zero.description`:
+.. _`refcount_add_not_zero_checked.description`:
 
 Description
 -----------
@@ -32,29 +34,31 @@ use case in which references are taken and released one at a time.  In these
 cases, \ :c:func:`refcount_inc`\ , or one of its variants, should instead be used to
 increment a reference count.
 
-.. _`refcount_add_not_zero.return`:
+.. _`refcount_add_not_zero_checked.return`:
 
 Return
 ------
 
 false if the passed refcount is 0, true otherwise
 
-.. _`refcount_add`:
+.. _`refcount_add_checked`:
 
-refcount_add
-============
+refcount_add_checked
+====================
 
-.. c:function:: void refcount_add(unsigned int i, refcount_t *r)
+.. c:function:: void refcount_add_checked(unsigned int i, refcount_t *r)
 
     add a value to a refcount
 
-    :param unsigned int i:
+    :param i:
         the value to add to the refcount
+    :type i: unsigned int
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
-.. _`refcount_add.description`:
+.. _`refcount_add_checked.description`:
 
 Description
 -----------
@@ -70,19 +74,20 @@ use case in which references are taken and released one at a time.  In these
 cases, \ :c:func:`refcount_inc`\ , or one of its variants, should instead be used to
 increment a reference count.
 
-.. _`refcount_inc_not_zero`:
+.. _`refcount_inc_not_zero_checked`:
 
-refcount_inc_not_zero
-=====================
+refcount_inc_not_zero_checked
+=============================
 
-.. c:function:: bool refcount_inc_not_zero(refcount_t *r)
+.. c:function:: bool refcount_inc_not_zero_checked(refcount_t *r)
 
     increment a refcount unless it is 0
 
-    :param refcount_t \*r:
+    :param r:
         the refcount to increment
+    :type r: refcount_t \*
 
-.. _`refcount_inc_not_zero.description`:
+.. _`refcount_inc_not_zero_checked.description`:
 
 Description
 -----------
@@ -93,26 +98,27 @@ Provides no memory ordering, it is assumed the caller has guaranteed the
 object memory to be stable (RCU, etc.). It does provide a control dependency
 and thereby orders future stores. See the comment on top.
 
-.. _`refcount_inc_not_zero.return`:
+.. _`refcount_inc_not_zero_checked.return`:
 
 Return
 ------
 
 true if the increment was successful, false otherwise
 
-.. _`refcount_inc`:
+.. _`refcount_inc_checked`:
 
-refcount_inc
-============
+refcount_inc_checked
+====================
 
-.. c:function:: void refcount_inc(refcount_t *r)
+.. c:function:: void refcount_inc_checked(refcount_t *r)
 
     increment a refcount
 
-    :param refcount_t \*r:
+    :param r:
         the refcount to increment
+    :type r: refcount_t \*
 
-.. _`refcount_inc.description`:
+.. _`refcount_inc_checked.description`:
 
 Description
 -----------
@@ -125,22 +131,24 @@ reference on the object.
 Will WARN if the refcount is 0, as this represents a possible use-after-free
 condition.
 
-.. _`refcount_sub_and_test`:
+.. _`refcount_sub_and_test_checked`:
 
-refcount_sub_and_test
-=====================
+refcount_sub_and_test_checked
+=============================
 
-.. c:function:: bool refcount_sub_and_test(unsigned int i, refcount_t *r)
+.. c:function:: bool refcount_sub_and_test_checked(unsigned int i, refcount_t *r)
 
     subtract from a refcount and test if it is 0
 
-    :param unsigned int i:
+    :param i:
         amount to subtract from the refcount
+    :type i: unsigned int
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
-.. _`refcount_sub_and_test.description`:
+.. _`refcount_sub_and_test_checked.description`:
 
 Description
 -----------
@@ -158,26 +166,27 @@ use case in which references are taken and released one at a time.  In these
 cases, \ :c:func:`refcount_dec`\ , or one of its variants, should instead be used to
 decrement a reference count.
 
-.. _`refcount_sub_and_test.return`:
+.. _`refcount_sub_and_test_checked.return`:
 
 Return
 ------
 
 true if the resulting refcount is 0, false otherwise
 
-.. _`refcount_dec_and_test`:
+.. _`refcount_dec_and_test_checked`:
 
-refcount_dec_and_test
-=====================
+refcount_dec_and_test_checked
+=============================
 
-.. c:function:: bool refcount_dec_and_test(refcount_t *r)
+.. c:function:: bool refcount_dec_and_test_checked(refcount_t *r)
 
     decrement a refcount and test if it is 0
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
-.. _`refcount_dec_and_test.description`:
+.. _`refcount_dec_and_test_checked.description`:
 
 Description
 -----------
@@ -189,26 +198,27 @@ Provides release memory ordering, such that prior loads and stores are done
 before, and provides a control dependency such that \ :c:func:`free`\  must come after.
 See the comment on top.
 
-.. _`refcount_dec_and_test.return`:
+.. _`refcount_dec_and_test_checked.return`:
 
 Return
 ------
 
 true if the resulting refcount is 0, false otherwise
 
-.. _`refcount_dec`:
+.. _`refcount_dec_checked`:
 
-refcount_dec
-============
+refcount_dec_checked
+====================
 
-.. c:function:: void refcount_dec(refcount_t *r)
+.. c:function:: void refcount_dec_checked(refcount_t *r)
 
     decrement a refcount
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
-.. _`refcount_dec.description`:
+.. _`refcount_dec_checked.description`:
 
 Description
 -----------
@@ -228,8 +238,9 @@ refcount_dec_if_one
 
     decrement a refcount if it is 1
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
 .. _`refcount_dec_if_one.description`:
 
@@ -262,8 +273,9 @@ refcount_dec_not_one
 
     decrement a refcount if it is not 1
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
 .. _`refcount_dec_not_one.description`:
 
@@ -291,11 +303,13 @@ refcount_dec_and_mutex_lock
 
     return holding mutex if able to decrement refcount to 0
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
-    :param struct mutex \*lock:
+    :param lock:
         the mutex to be locked
+    :type lock: struct mutex \*
 
 .. _`refcount_dec_and_mutex_lock.description`:
 
@@ -326,11 +340,13 @@ refcount_dec_and_lock
 
     return holding spinlock if able to decrement refcount to 0
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         the spinlock to be locked
+    :type lock: spinlock_t \*
 
 .. _`refcount_dec_and_lock.description`:
 
@@ -361,14 +377,17 @@ refcount_dec_and_lock_irqsave
 
     return holding spinlock with disabled interrupts if able to decrement refcount to 0
 
-    :param refcount_t \*r:
+    :param r:
         the refcount
+    :type r: refcount_t \*
 
-    :param spinlock_t \*lock:
+    :param lock:
         the spinlock to be locked
+    :type lock: spinlock_t \*
 
-    :param unsigned long \*flags:
+    :param flags:
         saved IRQ-flags if the is acquired
+    :type flags: unsigned long \*
 
 .. _`refcount_dec_and_lock_irqsave.description`:
 

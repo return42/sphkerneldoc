@@ -11,7 +11,9 @@ iommu
     dma-iommu_c
     dmar_c
     fsl_pamu_c
+    intel-pasid_c
     io-pgtable_h
+    iommu-debugfs_c
     iommu_c
     iova_c
     irq_remapping_c

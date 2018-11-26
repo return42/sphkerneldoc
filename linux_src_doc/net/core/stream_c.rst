@@ -10,8 +10,9 @@ sk_stream_write_space
 
     stream socket write_space callback.
 
-    :param struct sock \*sk:
+    :param sk:
         socket
+    :type sk: struct sock \*
 
 .. _`sk_stream_write_space.description`:
 
@@ -29,11 +30,13 @@ sk_stream_wait_connect
 
     Wait for a socket to get into the connected state
 
-    :param struct sock \*sk:
+    :param sk:
         sock to wait on
+    :type sk: struct sock \*
 
-    :param long \*timeo_p:
+    :param timeo_p:
         for how long to wait
+    :type timeo_p: long \*
 
 .. _`sk_stream_wait_connect.description`:
 
@@ -51,8 +54,9 @@ sk_stream_closing
 
     Return 1 if we still have things to send in our buffers.
 
-    :param struct sock \*sk:
+    :param sk:
         socket to verify
+    :type sk: struct sock \*
 
 .. _`sk_stream_wait_memory`:
 
@@ -63,11 +67,13 @@ sk_stream_wait_memory
 
     Wait for more memory for a socket
 
-    :param struct sock \*sk:
+    :param sk:
         socket to wait for memory
+    :type sk: struct sock \*
 
-    :param long \*timeo_p:
+    :param timeo_p:
         for how long
+    :type timeo_p: long \*
 
 .. This file was automatic generated / don't edit.
 

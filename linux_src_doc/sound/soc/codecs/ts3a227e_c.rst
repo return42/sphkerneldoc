@@ -10,11 +10,13 @@ ts3a227e_enable_jack_detect
 
     Specify a jack for event reporting
 
-    :param struct snd_soc_component \*component:
+    :param component:
         component to register the jack with
+    :type component: struct snd_soc_component \*
 
-    :param struct snd_soc_jack \*jack:
+    :param jack:
         jack to use to report headset and button events on
+    :type jack: struct snd_soc_jack \*
 
 .. _`ts3a227e_enable_jack_detect.description`:
 

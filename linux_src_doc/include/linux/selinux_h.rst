@@ -10,8 +10,9 @@ selinux_is_enabled
 
     is SELinux enabled?
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

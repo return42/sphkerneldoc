@@ -8,11 +8,13 @@ hns3_pci_sriov_configure
 
 .. c:function:: int hns3_pci_sriov_configure(struct pci_dev *pdev, int num_vfs)
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         pointer to a pci_dev structure
+    :type pdev: struct pci_dev \*
 
-    :param int num_vfs:
+    :param num_vfs:
         number of VFs to allocate
+    :type num_vfs: int
 
 .. _`hns3_pci_sriov_configure.description`:
 

@@ -10,20 +10,25 @@ xgene_ahci_poll_reg_val
 
     Poll a register on a specific value.
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port of interest.
+    :type ap: struct ata_port \*
 
-    :param void __iomem \*reg:
+    :param reg:
         Register of interest.
+    :type reg: void __iomem \*
 
-    :param unsigned int val:
+    :param val:
         Value to be attained.
+    :type val: unsigned int
 
-    :param unsigned long interval:
+    :param interval:
         waiting interval for polling.
+    :type interval: unsigned long
 
-    :param unsigned long timeout:
+    :param timeout:
         timeout for achieving the value.
+    :type timeout: unsigned long
 
 .. _`xgene_ahci_restart_engine`:
 
@@ -34,8 +39,9 @@ xgene_ahci_restart_engine
 
     Restart the dma engine.
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port of interest
+    :type ap: struct ata_port \*
 
 .. _`xgene_ahci_restart_engine.description`:
 
@@ -54,8 +60,9 @@ xgene_ahci_qc_issue
 
     Issue commands to the device
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command to issue
+    :type qc: struct ata_queued_cmd \*
 
 .. _`xgene_ahci_qc_issue.description`:
 
@@ -83,14 +90,17 @@ xgene_ahci_read_id
 
     Read ID data from the specified device
 
-    :param struct ata_device \*dev:
+    :param dev:
         device
+    :type dev: struct ata_device \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         proposed taskfile
+    :type tf: struct ata_taskfile \*
 
-    :param u16 \*id:
+    :param id:
         data buffer
+    :type id: u16 \*
 
 .. _`xgene_ahci_read_id.description`:
 
@@ -109,14 +119,17 @@ xgene_ahci_do_hardreset
 
     Issue the actual COMRESET
 
-    :param struct ata_link \*link:
+    :param link:
         link to reset
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
-    :param bool \*online:
+    :param online:
         Return value to indicate if device online
+    :type online: bool \*
 
 .. _`xgene_ahci_do_hardreset.description`:
 
@@ -194,14 +207,17 @@ xgene_ahci_pmp_softreset
 
     Issue the softreset to the drives connected to Port Multiplier.
 
-    :param struct ata_link \*link:
+    :param link:
         link to reset
+    :type link: struct ata_link \*
 
-    :param unsigned int \*class:
+    :param class:
         Return value to indicate class of device
+    :type class: unsigned int \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`xgene_ahci_pmp_softreset.description`:
 
@@ -224,14 +240,17 @@ xgene_ahci_softreset
 
     Issue the softreset to the drive.
 
-    :param struct ata_link \*link:
+    :param link:
         link to reset
+    :type link: struct ata_link \*
 
-    :param unsigned int \*class:
+    :param class:
         Return value to indicate class of device
+    :type class: unsigned int \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`xgene_ahci_softreset.description`:
 
@@ -262,11 +281,13 @@ xgene_ahci_handle_broken_edge_irq
 
     Handle the broken irq.
 
-    :param struct ata_host \*host:
+    :param host:
         *undescribed*
+    :type host: struct ata_host \*
 
-    :param u32 irq_masked:
+    :param irq_masked:
         HOST_IRQ_STAT value
+    :type irq_masked: u32
 
 .. _`xgene_ahci_handle_broken_edge_irq.description`:
 

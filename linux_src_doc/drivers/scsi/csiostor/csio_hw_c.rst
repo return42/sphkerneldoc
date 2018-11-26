@@ -10,8 +10,9 @@ fwcap_to_fwspeed
 
     return highest speed in Port Capabilities
 
-    :param fw_port_cap32_t acaps:
+    :param acaps:
         advertised Port Capabilities
+    :type acaps: fw_port_cap32_t
 
 .. _`fwcap_to_fwspeed.description`:
 
@@ -30,8 +31,9 @@ fwcaps16_to_caps32
 
     convert 16-bit Port Capabilities to 32-bits
 
-    :param fw_port_cap16_t caps16:
+    :param caps16:
         a 16-bit Port Capabilities value
+    :type caps16: fw_port_cap16_t
 
 .. _`fwcaps16_to_caps32.description`:
 
@@ -39,6 +41,28 @@ Description
 -----------
 
 Returns the equivalent 32-bit Port Capabilities value.
+
+.. _`fwcaps32_to_caps16`:
+
+fwcaps32_to_caps16
+==================
+
+.. c:function:: fw_port_cap16_t fwcaps32_to_caps16(fw_port_cap32_t caps32)
+
+    convert 32-bit Port Capabilities to 16-bits
+
+    :param caps32:
+        a 32-bit Port Capabilities value
+    :type caps32: fw_port_cap32_t
+
+.. _`fwcaps32_to_caps16.description`:
+
+Description
+-----------
+
+Returns the equivalent 16-bit Port Capabilities value.  Note that
+not all 32-bit Port Capabilities can be represented in the 16-bit
+Port Capabilities and some fields/values may not make it.
 
 .. _`lstatus_to_fwcap`:
 
@@ -49,8 +73,9 @@ lstatus_to_fwcap
 
     translate old lstatus to 32-bit Port Capabilities
 
-    :param u32 lstatus:
+    :param lstatus:
         old FW_PORT_ACTION_GET_PORT_INFO lstatus value
+    :type lstatus: u32
 
 .. _`lstatus_to_fwcap.description`:
 
@@ -69,14 +94,17 @@ csio_init_link_config
 
     initialize a link's SW state
 
-    :param struct link_config \*lc:
+    :param lc:
         pointer to structure holding the link state
+    :type lc: struct link_config \*
 
-    :param fw_port_cap32_t pcaps:
+    :param pcaps:
         link Port Capabilities
+    :type pcaps: fw_port_cap32_t
 
-    :param fw_port_cap32_t acaps:
+    :param acaps:
         link current Advertised Port Capabilities
+    :type acaps: fw_port_cap32_t
 
 .. _`csio_init_link_config.description`:
 
@@ -95,8 +123,9 @@ csio_hw_start
 
     Kicks off the HW State machine
 
-    :param struct csio_hw \*hw:
+    :param hw:
         Pointer to HW module.
+    :type hw: struct csio_hw \*
 
 .. _`csio_hw_start.description`:
 
@@ -116,8 +145,9 @@ csio_hw_reset
 
     Reset the hardware
 
-    :param struct csio_hw \*hw:
+    :param hw:
         HW module.
+    :type hw: struct csio_hw \*
 
 .. _`csio_hw_reset.description`:
 
@@ -135,8 +165,9 @@ csio_hw_init
 
     Initialize HW module.
 
-    :param struct csio_hw \*hw:
+    :param hw:
         Pointer to HW module.
+    :type hw: struct csio_hw \*
 
 .. _`csio_hw_init.description`:
 
@@ -154,8 +185,9 @@ csio_hw_exit
 
     Un-initialize HW module.
 
-    :param struct csio_hw \*hw:
+    :param hw:
         Pointer to HW module.
+    :type hw: struct csio_hw \*
 
 .. This file was automatic generated / don't edit.
 

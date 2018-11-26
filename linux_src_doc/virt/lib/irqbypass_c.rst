@@ -10,8 +10,9 @@ irq_bypass_register_producer
 
     register IRQ bypass producer
 
-    :param struct irq_bypass_producer \*producer:
+    :param producer:
         pointer to producer structure
+    :type producer: struct irq_bypass_producer \*
 
 .. _`irq_bypass_register_producer.description`:
 
@@ -30,8 +31,9 @@ irq_bypass_unregister_producer
 
     unregister IRQ bypass producer
 
-    :param struct irq_bypass_producer \*producer:
+    :param producer:
         pointer to producer structure
+    :type producer: struct irq_bypass_producer \*
 
 .. _`irq_bypass_unregister_producer.description`:
 
@@ -50,8 +52,9 @@ irq_bypass_register_consumer
 
     register IRQ bypass consumer
 
-    :param struct irq_bypass_consumer \*consumer:
+    :param consumer:
         pointer to consumer structure
+    :type consumer: struct irq_bypass_consumer \*
 
 .. _`irq_bypass_register_consumer.description`:
 
@@ -70,8 +73,9 @@ irq_bypass_unregister_consumer
 
     unregister IRQ bypass consumer
 
-    :param struct irq_bypass_consumer \*consumer:
+    :param consumer:
         pointer to consumer structure
+    :type consumer: struct irq_bypass_consumer \*
 
 .. _`irq_bypass_unregister_consumer.description`:
 

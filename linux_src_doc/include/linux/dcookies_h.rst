@@ -10,8 +10,9 @@ dcookie_register
 
     register a user of dcookies
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`dcookie_register.description`:
 
@@ -29,8 +30,9 @@ dcookie_unregister
 
     unregister a user of dcookies
 
-    :param struct dcookie_user \*user:
+    :param user:
         *undescribed*
+    :type user: struct dcookie_user \*
 
 .. _`dcookie_unregister.description`:
 
@@ -49,11 +51,13 @@ get_dcookie
 
     acquire a dcookie
 
-    :param const struct path \*path:
+    :param path:
         *undescribed*
+    :type path: const struct path \*
 
-    :param unsigned long \*cookie:
+    :param cookie:
         *undescribed*
+    :type cookie: unsigned long \*
 
 .. _`get_dcookie.description`:
 

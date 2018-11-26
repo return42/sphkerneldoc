@@ -10,8 +10,9 @@ pdev_is_sata
 
     check if device is SATA
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device to check
+    :type pdev: struct pci_dev \*
 
 .. _`pdev_is_sata.description`:
 
@@ -29,8 +30,9 @@ is_sata
 
     check if hwif is SATA
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         interface to check
+    :type hwif: ide_hwif_t \*
 
 .. _`is_sata.description`:
 
@@ -48,11 +50,13 @@ siimage_selreg
 
     return register base
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         interface
+    :type hwif: ide_hwif_t \*
 
-    :param int r:
+    :param r:
         config offset
+    :type r: int
 
 .. _`siimage_selreg.description`:
 
@@ -73,11 +77,13 @@ siimage_seldev
 
     return register base
 
-    :param ide_drive_t \*drive:
+    :param drive:
         *undescribed*
+    :type drive: ide_drive_t \*
 
-    :param int r:
+    :param r:
         config offset
+    :type r: int
 
 .. _`siimage_seldev.description`:
 
@@ -97,8 +103,9 @@ sil_pata_udma_filter
 
     compute UDMA mask
 
-    :param ide_drive_t \*drive:
+    :param drive:
         IDE device
+    :type drive: ide_drive_t \*
 
 .. _`sil_pata_udma_filter.description`:
 
@@ -119,11 +126,13 @@ sil_set_pio_mode
 
     set host controller for PIO mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`sil_set_pio_mode.description`:
 
@@ -142,11 +151,13 @@ sil_set_dma_mode
 
     set host controller for DMA mode
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         port
+    :type hwif: ide_hwif_t \*
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`sil_set_dma_mode.description`:
 
@@ -164,8 +175,9 @@ siimage_mmio_dma_test_irq
 
     check we caused an IRQ
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive we are testing
+    :type drive: ide_drive_t \*
 
 .. _`siimage_mmio_dma_test_irq.description`:
 
@@ -184,8 +196,9 @@ sil_sata_reset_poll
 
     wait for SATA reset
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive we are resetting
+    :type drive: ide_drive_t \*
 
 .. _`sil_sata_reset_poll.description`:
 
@@ -204,8 +217,9 @@ sil_sata_pre_reset
 
     reset hook
 
-    :param ide_drive_t \*drive:
+    :param drive:
         IDE device being reset
+    :type drive: ide_drive_t \*
 
 .. _`sil_sata_pre_reset.description`:
 
@@ -224,8 +238,9 @@ init_chipset_siimage
 
     set up an SI device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
 .. _`init_chipset_siimage.description`:
 
@@ -244,8 +259,9 @@ init_mmio_iops_siimage
 
     set up the iops for MMIO
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         interface to set up
+    :type hwif: ide_hwif_t \*
 
 .. _`init_mmio_iops_siimage.description`:
 
@@ -268,8 +284,9 @@ sil_quirkproc
 
     post probe fixups
 
-    :param ide_drive_t \*drive:
+    :param drive:
         drive
+    :type drive: ide_drive_t \*
 
 .. _`sil_quirkproc.description`:
 
@@ -289,8 +306,9 @@ init_iops_siimage
 
     set up iops
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         interface to set up
+    :type hwif: ide_hwif_t \*
 
 .. _`init_iops_siimage.description`:
 
@@ -311,8 +329,9 @@ sil_cable_detect
 
     cable detection
 
-    :param ide_hwif_t \*hwif:
+    :param hwif:
         interface to check
+    :type hwif: ide_hwif_t \*
 
 .. _`sil_cable_detect.description`:
 
@@ -330,11 +349,13 @@ siimage_init_one
 
     PCI layer discovery entry
 
-    :param struct pci_dev \*dev:
+    :param dev:
         PCI device
+    :type dev: struct pci_dev \*
 
-    :param const struct pci_device_id \*id:
+    :param id:
         ident table entry
+    :type id: const struct pci_device_id \*
 
 .. _`siimage_init_one.description`:
 

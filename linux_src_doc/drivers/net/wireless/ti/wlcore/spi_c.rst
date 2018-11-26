@@ -10,11 +10,13 @@ wl12xx_spi_set_power
 
     power on/off the wl12xx unit
 
-    :param struct device \*child:
+    :param child:
         wl12xx device handle.
+    :type child: struct device \*
 
-    :param bool enable:
+    :param enable:
         true/false to power on/off the unit.
+    :type enable: bool
 
 .. _`wl12xx_spi_set_power.description`:
 
@@ -30,11 +32,13 @@ wl12xx_spi_set_block_size
 
 .. c:function:: void wl12xx_spi_set_block_size(struct device *child, unsigned int blksz)
 
-    :param struct device \*child:
+    :param child:
         *undescribed*
+    :type child: struct device \*
 
-    :param unsigned int blksz:
+    :param blksz:
         *undescribed*
+    :type blksz: unsigned int
 
 .. _`wl12xx_spi_set_block_size.description`:
 
@@ -54,14 +58,17 @@ wlcore_probe_of
 
     DT node parsing.
 
-    :param struct spi_device \*spi:
+    :param spi:
         SPI slave device parameters.
+    :type spi: struct spi_device \*
 
-    :param struct wl12xx_spi_glue \*glue:
+    :param glue:
         wl12xx SPI bus to slave device glue parameters.
+    :type glue: struct wl12xx_spi_glue \*
 
-    :param struct wlcore_platdev_data \*pdev_data:
+    :param pdev_data:
         wlcore device parameters
+    :type pdev_data: struct wlcore_platdev_data \*
 
 .. This file was automatic generated / don't edit.
 

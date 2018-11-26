@@ -137,8 +137,9 @@ mux_chip_priv
 
     Get the extra memory reserved by \ :c:func:`mux_chip_alloc`\ .
 
-    :param struct mux_chip \*mux_chip:
+    :param mux_chip:
         The mux-chip to get the private memory from.
+    :type mux_chip: struct mux_chip \*
 
 .. _`mux_chip_priv.return`:
 
@@ -156,8 +157,9 @@ mux_control_get_index
 
     Get the index of the given mux controller
 
-    :param struct mux_control \*mux:
+    :param mux:
         The mux-control to get the index for.
+    :type mux: struct mux_control \*
 
 .. _`mux_control_get_index.return`:
 

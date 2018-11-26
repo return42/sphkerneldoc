@@ -10,11 +10,13 @@ ipu_enable_channel
 
     enable an IPU channel.
 
-    :param struct idmac \*idmac:
+    :param idmac:
         IPU DMAC context.
+    :type idmac: struct idmac \*
 
-    :param struct idmac_channel \*ichan:
+    :param ichan:
         IDMAC channel.
+    :type ichan: struct idmac_channel \*
 
 .. _`ipu_init_channel_buffer`:
 
@@ -25,32 +27,40 @@ ipu_init_channel_buffer
 
     initialize a buffer for logical IPU channel.
 
-    :param struct idmac_channel \*ichan:
+    :param ichan:
         IDMAC channel.
+    :type ichan: struct idmac_channel \*
 
-    :param enum pixel_fmt pixel_fmt:
+    :param pixel_fmt:
         pixel format of buffer. Pixel format is a FOURCC ASCII code.
+    :type pixel_fmt: enum pixel_fmt
 
-    :param uint16_t width:
+    :param width:
         width of buffer in pixels.
+    :type width: uint16_t
 
-    :param uint16_t height:
+    :param height:
         height of buffer in pixels.
+    :type height: uint16_t
 
-    :param uint32_t stride:
+    :param stride:
         stride length of buffer in pixels.
+    :type stride: uint32_t
 
-    :param enum ipu_rotate_mode rot_mode:
+    :param rot_mode:
         rotation mode of buffer. A rotation setting other than
         IPU_ROTATE_VERT_FLIP should only be used for input buffers of
         rotation channels.
+    :type rot_mode: enum ipu_rotate_mode
 
-    :param dma_addr_t phyaddr_0:
+    :param phyaddr_0:
         buffer 0 physical address.
+    :type phyaddr_0: dma_addr_t
 
-    :param dma_addr_t phyaddr_1:
+    :param phyaddr_1:
         buffer 1 physical address. Setting this to a value other than
         NULL enables double buffering mode.
+    :type phyaddr_1: dma_addr_t
 
 .. _`ipu_select_buffer`:
 
@@ -61,11 +71,13 @@ ipu_select_buffer
 
     mark a channel's buffer as ready.
 
-    :param enum ipu_channel channel:
+    :param channel:
         channel ID.
+    :type channel: enum ipu_channel
 
-    :param int buffer_n:
+    :param buffer_n:
         buffer number to mark ready.
+    :type buffer_n: int
 
 .. _`ipu_update_channel_buffer`:
 
@@ -76,15 +88,18 @@ ipu_update_channel_buffer
 
     update physical address of a channel buffer.
 
-    :param struct idmac_channel \*ichan:
+    :param ichan:
         IDMAC channel.
+    :type ichan: struct idmac_channel \*
 
-    :param int buffer_n:
+    :param buffer_n:
         buffer number to update.
         0 or 1 are the only valid values.
+    :type buffer_n: int
 
-    :param dma_addr_t phyaddr:
+    :param phyaddr:
         buffer physical address.
+    :type phyaddr: dma_addr_t
 
 .. _`ipu_init_channel`:
 
@@ -95,12 +110,14 @@ ipu_init_channel
 
     initialize an IPU channel.
 
-    :param struct idmac \*idmac:
+    :param idmac:
         IPU DMAC context.
+    :type idmac: struct idmac \*
 
-    :param struct idmac_channel \*ichan:
+    :param ichan:
         pointer to the channel object.
         \ ``return``\       0 on success or negative error code on failure.
+    :type ichan: struct idmac_channel \*
 
 .. _`ipu_uninit_channel`:
 
@@ -111,11 +128,13 @@ ipu_uninit_channel
 
     uninitialize an IPU channel.
 
-    :param struct idmac \*idmac:
+    :param idmac:
         IPU DMAC context.
+    :type idmac: struct idmac \*
 
-    :param struct idmac_channel \*ichan:
+    :param ichan:
         pointer to the channel object.
+    :type ichan: struct idmac_channel \*
 
 .. _`ipu_disable_channel`:
 
@@ -126,15 +145,18 @@ ipu_disable_channel
 
     disable an IPU channel.
 
-    :param struct idmac \*idmac:
+    :param idmac:
         IPU DMAC context.
+    :type idmac: struct idmac \*
 
-    :param struct idmac_channel \*ichan:
+    :param ichan:
         channel object pointer.
+    :type ichan: struct idmac_channel \*
 
-    :param bool wait_for_stop:
+    :param wait_for_stop:
         flag to set whether to wait for channel end of frame or
         return immediately.
+    :type wait_for_stop: bool
 
 .. This file was automatic generated / don't edit.
 

@@ -10,11 +10,13 @@ ns_to_tim_reg
 
     boot bus timing register, based on timing multiple
 
-    :param unsigned int tim_mult:
+    :param tim_mult:
         *undescribed*
+    :type tim_mult: unsigned int
 
-    :param unsigned int nsecs:
+    :param nsecs:
         *undescribed*
+    :type nsecs: unsigned int
 
 .. _`octeon_cf_set_piomode`:
 
@@ -25,11 +27,13 @@ octeon_cf_set_piomode
 
     function programs the Octeon bootbus regions to support the timing requirements of the PIO mode.
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA port information
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*dev:
+    :param dev:
         ATA device
+    :type dev: struct ata_device \*
 
 .. _`octeon_cf_data_xfer8`:
 
@@ -38,17 +42,21 @@ octeon_cf_data_xfer8
 
 .. c:function:: unsigned int octeon_cf_data_xfer8(struct ata_queued_cmd *qc, unsigned char *buffer, unsigned int buflen, int rw)
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Queued command
+    :type qc: struct ata_queued_cmd \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         Data buffer
+    :type buffer: unsigned char \*
 
-    :param unsigned int buflen:
+    :param buflen:
         Length of the buffer.
+    :type buflen: unsigned int
 
-    :param int rw:
+    :param rw:
         True to write.
+    :type rw: int
 
 .. _`octeon_cf_data_xfer16`:
 
@@ -57,17 +65,21 @@ octeon_cf_data_xfer16
 
 .. c:function:: unsigned int octeon_cf_data_xfer16(struct ata_queued_cmd *qc, unsigned char *buffer, unsigned int buflen, int rw)
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Queued command
+    :type qc: struct ata_queued_cmd \*
 
-    :param unsigned char \*buffer:
+    :param buffer:
         Data buffer
+    :type buffer: unsigned char \*
 
-    :param unsigned int buflen:
+    :param buflen:
         Length of the buffer.
+    :type buflen: unsigned int
 
-    :param int rw:
+    :param rw:
         True to write.
+    :type rw: int
 
 .. _`octeon_cf_tf_read16`:
 
@@ -78,11 +90,13 @@ octeon_cf_tf_read16
 
     True IDE only.
 
-    :param struct ata_port \*ap:
+    :param ap:
         *undescribed*
+    :type ap: struct ata_port \*
 
-    :param struct ata_taskfile \*tf:
+    :param tf:
         *undescribed*
+    :type tf: struct ata_taskfile \*
 
 .. _`octeon_cf_tf_load16`:
 
@@ -93,11 +107,13 @@ octeon_cf_tf_load16
 
     True IDE only.  The device_addr is not loaded, we do this as part of octeon_cf_exec_command16.
 
-    :param struct ata_port \*ap:
+    :param ap:
         *undescribed*
+    :type ap: struct ata_port \*
 
-    :param const struct ata_taskfile \*tf:
+    :param tf:
         *undescribed*
+    :type tf: const struct ata_taskfile \*
 
 .. _`octeon_cf_dma_start`:
 
@@ -106,8 +122,9 @@ octeon_cf_dma_start
 
 .. c:function:: void octeon_cf_dma_start(struct ata_queued_cmd *qc)
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Information about the DMA
+    :type qc: struct ata_queued_cmd \*
 
 .. This file was automatic generated / don't edit.
 

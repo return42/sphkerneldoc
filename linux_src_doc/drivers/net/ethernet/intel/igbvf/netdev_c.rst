@@ -10,8 +10,9 @@ igbvf_desc_unused
 
     calculate if we have unused descriptors
 
-    :param struct igbvf_ring \*ring:
+    :param ring:
         *undescribed*
+    :type ring: struct igbvf_ring \*
 
 .. _`igbvf_receive_skb`:
 
@@ -22,20 +23,25 @@ igbvf_receive_skb
 
     helper function to handle Rx indications
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         pointer to sk_buff to be indicated to stack
+    :type skb: struct sk_buff \*
 
-    :param u32 status:
+    :param status:
         descriptor status field as written by hardware
+    :type status: u32
 
-    :param u16 vlan:
+    :param vlan:
         descriptor vlan field as written by hardware (no le/be conversion)
+    :type vlan: u16
 
 .. _`igbvf_alloc_rx_buffers`:
 
@@ -46,11 +52,13 @@ igbvf_alloc_rx_buffers
 
     Replace used receive buffers; packet split
 
-    :param struct igbvf_ring \*rx_ring:
+    :param rx_ring:
         address of ring structure to repopulate
+    :type rx_ring: struct igbvf_ring \*
 
-    :param int cleaned_count:
+    :param cleaned_count:
         number of buffers to repopulate
+    :type cleaned_count: int
 
 .. _`igbvf_clean_rx_irq`:
 
@@ -61,14 +69,17 @@ igbvf_clean_rx_irq
 
     Send received data up the network stack; legacy
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
-    :param int \*work_done:
+    :param work_done:
         *undescribed*
+    :type work_done: int \*
 
-    :param int work_to_do:
+    :param work_to_do:
         *undescribed*
+    :type work_to_do: int
 
 .. _`igbvf_clean_rx_irq.description`:
 
@@ -87,11 +98,13 @@ igbvf_setup_tx_resources
 
     allocate Tx resources (Descriptors)
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
-    :param struct igbvf_ring \*tx_ring:
+    :param tx_ring:
         *undescribed*
+    :type tx_ring: struct igbvf_ring \*
 
 .. _`igbvf_setup_tx_resources.description`:
 
@@ -109,11 +122,13 @@ igbvf_setup_rx_resources
 
     allocate Rx resources (Descriptors)
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
-    :param struct igbvf_ring \*rx_ring:
+    :param rx_ring:
         *undescribed*
+    :type rx_ring: struct igbvf_ring \*
 
 .. _`igbvf_setup_rx_resources.description`:
 
@@ -131,8 +146,9 @@ igbvf_clean_tx_ring
 
     Free Tx Buffers
 
-    :param struct igbvf_ring \*tx_ring:
+    :param tx_ring:
         ring to be cleaned
+    :type tx_ring: struct igbvf_ring \*
 
 .. _`igbvf_free_tx_resources`:
 
@@ -143,8 +159,9 @@ igbvf_free_tx_resources
 
     Free Tx Resources per Queue
 
-    :param struct igbvf_ring \*tx_ring:
+    :param tx_ring:
         ring to free resources from
+    :type tx_ring: struct igbvf_ring \*
 
 .. _`igbvf_free_tx_resources.description`:
 
@@ -162,8 +179,9 @@ igbvf_clean_rx_ring
 
     Free Rx Buffers per Queue
 
-    :param struct igbvf_ring \*rx_ring:
+    :param rx_ring:
         *undescribed*
+    :type rx_ring: struct igbvf_ring \*
 
 .. _`igbvf_free_rx_resources`:
 
@@ -174,8 +192,9 @@ igbvf_free_rx_resources
 
     Free Rx Resources
 
-    :param struct igbvf_ring \*rx_ring:
+    :param rx_ring:
         ring to clean the resources from
+    :type rx_ring: struct igbvf_ring \*
 
 .. _`igbvf_free_rx_resources.description`:
 
@@ -193,17 +212,21 @@ igbvf_update_itr
 
     update the dynamic ITR value based on statistics
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         pointer to adapter
+    :type adapter: struct igbvf_adapter \*
 
-    :param enum latency_range itr_setting:
+    :param itr_setting:
         current adapter->itr
+    :type itr_setting: enum latency_range
 
-    :param int packets:
+    :param packets:
         the number of packets during this measurement interval
+    :type packets: int
 
-    :param int bytes:
+    :param bytes:
         the number of bytes during this measurement interval
+    :type bytes: int
 
 .. _`igbvf_update_itr.description`:
 
@@ -226,8 +249,9 @@ igbvf_clean_tx_irq
 
     Reclaim resources after transmit completes
 
-    :param struct igbvf_ring \*tx_ring:
+    :param tx_ring:
         *undescribed*
+    :type tx_ring: struct igbvf_ring \*
 
 .. _`igbvf_clean_tx_irq.description`:
 
@@ -245,8 +269,9 @@ igbvf_configure_msix
 
     Configure MSI-X hardware
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_configure_msix.description`:
 
@@ -265,8 +290,9 @@ igbvf_set_interrupt_capability
 
     set MSI or MSI-X if supported
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_set_interrupt_capability.description`:
 
@@ -285,8 +311,9 @@ igbvf_request_msix
 
     Initialize MSI-X interrupts
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_request_msix.description`:
 
@@ -305,8 +332,9 @@ igbvf_alloc_queues
 
     Allocate memory for all rings
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_request_irq`:
 
@@ -317,8 +345,9 @@ igbvf_request_irq
 
     initialize interrupts
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_request_irq.description`:
 
@@ -337,8 +366,9 @@ igbvf_irq_disable
 
     Mask off interrupt generation on the NIC
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_irq_enable`:
 
@@ -349,8 +379,9 @@ igbvf_irq_enable
 
     Enable default interrupt generation settings
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_poll`:
 
@@ -361,11 +392,13 @@ igbvf_poll
 
     NAPI Rx polling callback
 
-    :param struct napi_struct \*napi:
+    :param napi:
         struct associated with this polling callback
+    :type napi: struct napi_struct \*
 
-    :param int budget:
+    :param budget:
         amount of packets driver is allowed to process this poll
+    :type budget: int
 
 .. _`igbvf_set_rlpml`:
 
@@ -376,8 +409,9 @@ igbvf_set_rlpml
 
     set receive large packet maximum length
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_set_rlpml.description`:
 
@@ -395,8 +429,9 @@ igbvf_configure_tx
 
     Configure Transmit Unit after Reset
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_configure_tx.description`:
 
@@ -414,8 +449,9 @@ igbvf_setup_srrctl
 
     configure the receive control registers
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         Board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_configure_rx`:
 
@@ -426,8 +462,9 @@ igbvf_configure_rx
 
     Configure Receive Unit after Reset
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_configure_rx.description`:
 
@@ -445,8 +482,9 @@ igbvf_set_multi
 
     Multicast and Promiscuous mode set
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`igbvf_set_multi.description`:
 
@@ -467,8 +505,9 @@ igbvf_set_uni
 
     Configure unicast MAC filters
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`igbvf_set_uni.description`:
 
@@ -487,8 +526,9 @@ igbvf_configure
 
     configure the hardware for Rx and Tx
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         private board structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_sw_init`:
 
@@ -499,8 +539,9 @@ igbvf_sw_init
 
     Initialize general software structures (struct igbvf_adapter)
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure to initialize
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_sw_init.description`:
 
@@ -520,8 +561,9 @@ igbvf_open
 
     Called when a network interface is made active
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`igbvf_open.description`:
 
@@ -545,8 +587,9 @@ igbvf_close
 
     Disables a network interface
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`igbvf_close.description`:
 
@@ -569,11 +612,13 @@ igbvf_set_mac
 
     Change the Ethernet Address of the NIC
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param void \*p:
+    :param p:
         pointer to an address structure
+    :type p: void \*
 
 .. _`igbvf_set_mac.description`:
 
@@ -591,8 +636,9 @@ igbvf_update_stats
 
     Update the board statistics counters
 
-    :param struct igbvf_adapter \*adapter:
+    :param adapter:
         board private structure
+    :type adapter: struct igbvf_adapter \*
 
 .. _`igbvf_watchdog`:
 
@@ -603,8 +649,9 @@ igbvf_watchdog
 
     Timer Call-back
 
-    :param struct timer_list \*t:
+    :param t:
         *undescribed*
+    :type t: struct timer_list \*
 
 .. _`igbvf_tx_timeout`:
 
@@ -615,8 +662,9 @@ igbvf_tx_timeout
 
     Respond to a Tx Hang
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
 .. _`igbvf_change_mtu`:
 
@@ -627,11 +675,13 @@ igbvf_change_mtu
 
     Change the Maximum Transfer Unit
 
-    :param struct net_device \*netdev:
+    :param netdev:
         network interface device structure
+    :type netdev: struct net_device \*
 
-    :param int new_mtu:
+    :param new_mtu:
         new value for maximum frame size
+    :type new_mtu: int
 
 .. _`igbvf_change_mtu.description`:
 
@@ -649,11 +699,13 @@ igbvf_io_error_detected
 
     called when PCI error is detected
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
-    :param pci_channel_state_t state:
+    :param state:
         The current pci connection state
+    :type state: pci_channel_state_t
 
 .. _`igbvf_io_error_detected.description`:
 
@@ -672,8 +724,9 @@ igbvf_io_slot_reset
 
     called after the pci bus has been reset.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`igbvf_io_slot_reset.description`:
 
@@ -692,8 +745,9 @@ igbvf_io_resume
 
     called when traffic can start flowing again.
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         Pointer to PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`igbvf_io_resume.description`:
 
@@ -713,11 +767,13 @@ igbvf_probe
 
     Device Initialization Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
-    :param const struct pci_device_id \*ent:
+    :param ent:
         entry in igbvf_pci_tbl
+    :type ent: const struct pci_device_id \*
 
 .. _`igbvf_probe.description`:
 
@@ -739,8 +795,9 @@ igbvf_remove
 
     Device Removal Routine
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         PCI device information struct
+    :type pdev: struct pci_dev \*
 
 .. _`igbvf_remove.description`:
 
@@ -761,8 +818,9 @@ igbvf_init_module
 
     Driver Registration Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`igbvf_init_module.description`:
 
@@ -781,8 +839,9 @@ igbvf_exit_module
 
     Driver Exit Cleanup Routine
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`igbvf_exit_module.description`:
 

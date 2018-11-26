@@ -10,8 +10,9 @@ i40e_adminq_init_regs
 
     Initialize AdminQ registers
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_adminq_init_regs.description`:
 
@@ -29,8 +30,9 @@ i40e_alloc_adminq_asq_ring
 
     Allocate Admin Queue send rings
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_alloc_adminq_arq_ring`:
 
@@ -41,8 +43,9 @@ i40e_alloc_adminq_arq_ring
 
     Allocate Admin Queue receive rings
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_free_adminq_asq`:
 
@@ -53,8 +56,9 @@ i40e_free_adminq_asq
 
     Free Admin Queue send rings
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_free_adminq_asq.description`:
 
@@ -73,8 +77,9 @@ i40e_free_adminq_arq
 
     Free Admin Queue receive rings
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_free_adminq_arq.description`:
 
@@ -93,8 +98,9 @@ i40e_alloc_arq_bufs
 
     Allocate pre-posted buffers for the receive queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_alloc_asq_bufs`:
 
@@ -105,8 +111,9 @@ i40e_alloc_asq_bufs
 
     Allocate empty buffer structs for the send queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_free_arq_bufs`:
 
@@ -117,8 +124,9 @@ i40e_free_arq_bufs
 
     Free receive queue buffer info elements
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_free_asq_bufs`:
 
@@ -129,8 +137,9 @@ i40e_free_asq_bufs
 
     Free send queue buffer info elements
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_config_asq_regs`:
 
@@ -141,8 +150,9 @@ i40e_config_asq_regs
 
     configure ASQ registers
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_config_asq_regs.description`:
 
@@ -160,8 +170,9 @@ i40e_config_arq_regs
 
     ARQ register configuration
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_config_arq_regs.description`:
 
@@ -179,8 +190,9 @@ i40e_init_asq
 
     main initialization routine for ASQ
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_init_asq.description`:
 
@@ -205,8 +217,9 @@ i40e_init_arq
 
     initialize ARQ
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_init_arq.description`:
 
@@ -231,8 +244,9 @@ i40e_shutdown_asq
 
     shutdown the ASQ
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_shutdown_asq.description`:
 
@@ -250,8 +264,9 @@ i40e_shutdown_arq
 
     shutdown ARQ
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_shutdown_arq.description`:
 
@@ -269,8 +284,9 @@ i40e_init_adminq
 
     main initialization routine for Admin Queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_init_adminq.description`:
 
@@ -293,8 +309,9 @@ i40e_shutdown_adminq
 
     shutdown routine for the Admin Queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_clean_asq`:
 
@@ -305,8 +322,9 @@ i40e_clean_asq
 
     cleans Admin send queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hardware structure
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_clean_asq.description`:
 
@@ -324,8 +342,9 @@ i40e_asq_done
 
     check if FW has processed the Admin Send Queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
 .. _`i40e_asq_done.description`:
 
@@ -344,20 +363,25 @@ i40e_asq_send_command
 
     send command to Admin Queue
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_aq_desc \*desc:
+    :param desc:
         prefilled descriptor describing the command (non DMA mem)
+    :type desc: struct i40e_aq_desc \*
 
-    :param void \*buff:
+    :param buff:
         buffer to use for indirect commands
+    :type buff: void \*
 
-    :param u16 buff_size:
+    :param buff_size:
         size of buffer for indirect commands
+    :type buff_size: u16
 
-    :param struct i40e_asq_cmd_details \*cmd_details:
+    :param cmd_details:
         pointer to command details structure
+    :type cmd_details: struct i40e_asq_cmd_details \*
 
 .. _`i40e_asq_send_command.description`:
 
@@ -376,11 +400,13 @@ i40e_fill_default_direct_cmd_desc
 
     AQ descriptor helper function
 
-    :param struct i40e_aq_desc \*desc:
+    :param desc:
         pointer to the temp descriptor (non DMA mem)
+    :type desc: struct i40e_aq_desc \*
 
-    :param u16 opcode:
+    :param opcode:
         the opcode can be used to decide which flags to turn off or on
+    :type opcode: u16
 
 .. _`i40e_fill_default_direct_cmd_desc.description`:
 
@@ -396,14 +422,17 @@ i40e_clean_arq_element
 
 .. c:function:: i40e_status i40e_clean_arq_element(struct i40e_hw *hw, struct i40e_arq_event_info *e, u16 *pending)
 
-    :param struct i40e_hw \*hw:
+    :param hw:
         pointer to the hw struct
+    :type hw: struct i40e_hw \*
 
-    :param struct i40e_arq_event_info \*e:
+    :param e:
         event info from the receive descriptor, includes any buffers
+    :type e: struct i40e_arq_event_info \*
 
-    :param u16 \*pending:
+    :param pending:
         number of events that could be left to process
+    :type pending: u16 \*
 
 .. _`i40e_clean_arq_element.description`:
 

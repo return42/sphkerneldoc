@@ -786,11 +786,13 @@ fimc_active_queue_add
 
     add buffer to the capture active buffers queue
 
-    :param struct fimc_vid_cap \*vid_cap:
+    :param vid_cap:
         *undescribed*
+    :type vid_cap: struct fimc_vid_cap \*
 
-    :param struct fimc_vid_buffer \*buf:
+    :param buf:
         buffer to add to the active buffers list
+    :type buf: struct fimc_vid_buffer \*
 
 .. _`fimc_active_queue_pop`:
 
@@ -801,8 +803,9 @@ fimc_active_queue_pop
 
     pop buffer from the capture active buffers queue
 
-    :param struct fimc_vid_cap \*vid_cap:
+    :param vid_cap:
         *undescribed*
+    :type vid_cap: struct fimc_vid_cap \*
 
 .. _`fimc_active_queue_pop.description`:
 
@@ -820,11 +823,13 @@ fimc_pending_queue_add
 
     add buffer to the capture pending buffers queue
 
-    :param struct fimc_vid_cap \*vid_cap:
+    :param vid_cap:
         *undescribed*
+    :type vid_cap: struct fimc_vid_cap \*
 
-    :param struct fimc_vid_buffer \*buf:
+    :param buf:
         buffer to add to the pending buffers list
+    :type buf: struct fimc_vid_buffer \*
 
 .. _`fimc_pending_queue_pop`:
 
@@ -835,8 +840,9 @@ fimc_pending_queue_pop
 
     pop buffer from the capture pending buffers queue
 
-    :param struct fimc_vid_cap \*vid_cap:
+    :param vid_cap:
         *undescribed*
+    :type vid_cap: struct fimc_vid_cap \*
 
 .. _`fimc_pending_queue_pop.description`:
 

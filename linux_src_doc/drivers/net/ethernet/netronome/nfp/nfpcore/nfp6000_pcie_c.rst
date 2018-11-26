@@ -70,8 +70,9 @@ nfp_cpp_from_nfp6000_pcie
 
     Build a NFP CPP bus from a NFP6000 PCI device
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         NFP6000 PCI device
+    :type pdev: struct pci_dev \*
 
 .. _`nfp_cpp_from_nfp6000_pcie.return`:
 

@@ -10,8 +10,9 @@ b43_current_band
 
     Returns the currently used band. Returns one of NL80211_BAND_2GHZ and NL80211_BAND_5GHZ.
 
-    :param struct b43_wl \*wl:
+    :param wl:
         *undescribed*
+    :type wl: struct b43_wl \*
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ nfc_genl_init
 
     Initialize netlink interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nfc_genl_init.description`:
 
@@ -29,8 +30,9 @@ nfc_genl_exit
 
     Deinitialize netlink interface
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nfc_genl_exit.description`:
 

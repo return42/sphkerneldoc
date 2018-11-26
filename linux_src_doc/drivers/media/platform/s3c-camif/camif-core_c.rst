@@ -10,14 +10,17 @@ s3c_camif_find_format
 
     lookup camif color format by fourcc or an index
 
-    :param struct camif_vp \*vp:
+    :param vp:
         video path (DMA) description (codec/preview)
+    :type vp: struct camif_vp \*
 
-    :param const u32 \*pixelformat:
+    :param pixelformat:
         fourcc to match, ignored if null
+    :type pixelformat: const u32 \*
 
-    :param int index:
+    :param index:
         index to the camif_formats array, ignored if negative
+    :type index: int
 
 .. This file was automatic generated / don't edit.
 

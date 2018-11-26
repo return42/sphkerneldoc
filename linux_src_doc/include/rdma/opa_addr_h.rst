@@ -43,8 +43,9 @@ ib_is_opa_gid
 
     Returns true if the top 24 bits of the gid contains the OPA_STL_OUI identifier. This identifies that the provided gid is a special purpose GID meant to carry extended LID information.
 
-    :param const union ib_gid \*gid:
+    :param gid:
         The Global identifier
+    :type gid: const union ib_gid \*
 
 .. _`opa_get_lid_from_gid`:
 
@@ -55,8 +56,9 @@ opa_get_lid_from_gid
 
     Returns the last 32 bits of the gid. OPA devices use one of the gids in the gid table to also store the lid.
 
-    :param const union ib_gid \*gid:
+    :param gid:
         The Global identifier
+    :type gid: const union ib_gid \*
 
 .. _`opa_is_extended_lid`:
 
@@ -67,11 +69,13 @@ opa_is_extended_lid
 
     Returns true if dlid or slid are extended.
 
-    :param __be32 dlid:
+    :param dlid:
         The DLID
+    :type dlid: __be32
 
-    :param __be32 slid:
+    :param slid:
         The SLID
+    :type slid: __be32
 
 .. This file was automatic generated / don't edit.
 

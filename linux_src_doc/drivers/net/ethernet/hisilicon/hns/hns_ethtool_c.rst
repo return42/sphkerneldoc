@@ -10,8 +10,9 @@ hns_nic_get_link
 
     get current link status \ ``net_dev``\ : net_device retuen 0 - success , negative --fail
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
 .. _`hns_nic_get_link_ksettings`:
 
@@ -22,11 +23,13 @@ hns_nic_get_link_ksettings
 
     implement ethtool get link ksettings \ ``net_dev``\ : net_device \ ``cmd``\ : ethtool_link_ksettings retuen 0 - success , negative --fail
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: struct ethtool_link_ksettings \*
 
 .. _`hns_nic_set_link_ksettings`:
 
@@ -37,11 +40,13 @@ hns_nic_set_link_ksettings
 
     implement ethtool set link ksettings \ ``net_dev``\ : net_device \ ``cmd``\ : ethtool_link_ksettings retuen 0 - success , negative --fail
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
-    :param const struct ethtool_link_ksettings \*cmd:
+    :param cmd:
         *undescribed*
+    :type cmd: const struct ethtool_link_ksettings \*
 
 .. _`__lb_run_test`:
 
@@ -52,11 +57,13 @@ hns_nic_set_link_ksettings
 
     run loopback test
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
-    :param enum hnae_loop loop_mode:
+    :param loop_mode:
         *undescribed*
+    :type loop_mode: enum hnae_loop
 
 .. _`hns_nic_self_test`:
 
@@ -67,14 +74,17 @@ hns_nic_self_test
 
     self test
 
-    :param struct net_device \*ndev:
+    :param ndev:
         *undescribed*
+    :type ndev: struct net_device \*
 
-    :param struct ethtool_test \*eth_test:
+    :param eth_test:
         test cmd
+    :type eth_test: struct ethtool_test \*
 
-    :param u64 \*data:
+    :param data:
         test result
+    :type data: u64 \*
 
 .. _`hns_nic_get_drvinfo`:
 
@@ -85,11 +95,13 @@ hns_nic_get_drvinfo
 
     get net driver info
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_drvinfo \*drvinfo:
+    :param drvinfo:
         driver info
+    :type drvinfo: struct ethtool_drvinfo \*
 
 .. _`hns_get_ringparam`:
 
@@ -100,11 +112,13 @@ hns_get_ringparam
 
     get ring parameter
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_ringparam \*param:
+    :param param:
         ethtool parameter
+    :type param: struct ethtool_ringparam \*
 
 .. _`hns_get_pauseparam`:
 
@@ -115,11 +129,13 @@ hns_get_pauseparam
 
     get pause parameter
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*param:
+    :param param:
         pause parameter
+    :type param: struct ethtool_pauseparam \*
 
 .. _`hns_set_pauseparam`:
 
@@ -130,11 +146,13 @@ hns_set_pauseparam
 
     set pause parameter
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_pauseparam \*param:
+    :param param:
         pause parameter
+    :type param: struct ethtool_pauseparam \*
 
 .. _`hns_set_pauseparam.description`:
 
@@ -152,11 +170,13 @@ hns_get_coalesce
 
     get coalesce info.
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_coalesce \*ec:
+    :param ec:
         coalesce info.
+    :type ec: struct ethtool_coalesce \*
 
 .. _`hns_get_coalesce.description`:
 
@@ -174,11 +194,13 @@ hns_set_coalesce
 
     set coalesce info.
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_coalesce \*ec:
+    :param ec:
         coalesce info.
+    :type ec: struct ethtool_coalesce \*
 
 .. _`hns_set_coalesce.description`:
 
@@ -196,11 +218,13 @@ hns_get_channels
 
     get channel info.
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_channels \*ch:
+    :param ch:
         channel info.
+    :type ch: struct ethtool_channels \*
 
 .. _`hns_get_ethtool_stats`:
 
@@ -211,14 +235,17 @@ hns_get_ethtool_stats
 
     get detail statistics.
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param struct ethtool_stats \*stats:
+    :param stats:
         statistics info.
+    :type stats: struct ethtool_stats \*
 
-    :param u64 \*data:
+    :param data:
         statistics data.
+    :type data: u64 \*
 
 .. _`hns_get_strings`:
 
@@ -229,14 +256,17 @@ hns_get_strings
 
     Return a set of strings that describe the requested objects
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param u32 stringset:
+    :param stringset:
         *undescribed*
+    :type stringset: u32
 
-    :param u8 \*data:
+    :param data:
         objects data.
+    :type data: u8 \*
 
 .. _`hns_get_sset_count`:
 
@@ -247,11 +277,13 @@ hns_get_sset_count
 
     get string set count witch returned by nic_get_strings.
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param int stringset:
+    :param stringset:
         string set index, 0: self test string; 1: statistics string.
+    :type stringset: int
 
 .. _`hns_get_sset_count.description`:
 
@@ -269,11 +301,13 @@ hns_phy_led_set
 
     set phy LED status.
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param int value:
+    :param value:
         LED state.
+    :type value: int
 
 .. _`hns_phy_led_set.description`:
 
@@ -291,11 +325,13 @@ hns_set_phys_id
 
     set phy identify LED.
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
-    :param enum ethtool_phys_id_state state:
+    :param state:
         LED state.
+    :type state: enum ethtool_phys_id_state
 
 .. _`hns_set_phys_id.description`:
 
@@ -313,14 +349,17 @@ hns_get_regs
 
     get net device register
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
-    :param struct ethtool_regs \*cmd:
+    :param cmd:
         ethtool cmd
+    :type cmd: struct ethtool_regs \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
 .. _`hns_get_regs_len`:
 
@@ -331,8 +370,9 @@ hns_get_regs_len
 
     get total register len.
 
-    :param struct net_device \*net_dev:
+    :param net_dev:
         *undescribed*
+    :type net_dev: struct net_device \*
 
 .. _`hns_get_regs_len.description`:
 
@@ -350,8 +390,9 @@ hns_nic_nway_reset
 
     nway reset
 
-    :param struct net_device \*netdev:
+    :param netdev:
         *undescribed*
+    :type netdev: struct net_device \*
 
 .. _`hns_nic_nway_reset.description`:
 

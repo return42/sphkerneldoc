@@ -10,9 +10,10 @@ alloc_fcdev
 
     Register fibre channel device
 
-    :param int sizeof_priv:
+    :param sizeof_priv:
         Size of additional driver-private structure to be allocated
         for this fibre channel device
+    :type sizeof_priv: int
 
 .. _`alloc_fcdev.description`:
 

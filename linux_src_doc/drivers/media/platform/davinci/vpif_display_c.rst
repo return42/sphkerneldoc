@@ -10,8 +10,9 @@ vpif_buffer_prepare
 
     callback function for buffer prepare
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         ptr to vb2_buffer
+    :type vb: struct vb2_buffer \*
 
 .. _`vpif_buffer_prepare.description`:
 
@@ -31,20 +32,25 @@ vpif_buffer_queue_setup
 
     Callback function for buffer setup.
 
-    :param struct vb2_queue \*vq:
+    :param vq:
         vb2_queue ptr
+    :type vq: struct vb2_queue \*
 
-    :param unsigned int \*nbuffers:
+    :param nbuffers:
         ptr to number of buffers requested by application
+    :type nbuffers: unsigned int \*
 
-    :param unsigned int \*nplanes:
+    :param nplanes:
         : contains number of distinct video planes needed to hold a frame
+    :type nplanes: unsigned int \*
 
-    :param unsigned int sizes:
+    :param sizes:
         contains the size (in bytes) of each plane.
+    :type sizes: unsigned int
 
-    :param struct device  \*alloc_devs:
+    :param alloc_devs:
         ptr to allocation context
+    :type alloc_devs: struct device  \*
 
 .. _`vpif_buffer_queue_setup.description`:
 
@@ -63,8 +69,9 @@ vpif_buffer_queue
 
     Callback function to add buffer to DMA queue
 
-    :param struct vb2_buffer \*vb:
+    :param vb:
         ptr to vb2_buffer
+    :type vb: struct vb2_buffer \*
 
 .. _`vpif_buffer_queue.description`:
 
@@ -82,11 +89,13 @@ vpif_start_streaming
 
     Starts the DMA engine for streaming
 
-    :param struct vb2_queue \*vq:
+    :param vq:
         ptr to vb2_buffer
+    :type vq: struct vb2_queue \*
 
-    :param unsigned int count:
+    :param count:
         number of buffers
+    :type count: unsigned int
 
 .. _`vpif_stop_streaming`:
 
@@ -97,8 +106,9 @@ vpif_stop_streaming
 
     Stop the DMA engine
 
-    :param struct vb2_queue \*vq:
+    :param vq:
         ptr to vb2_queue
+    :type vq: struct vb2_queue \*
 
 .. _`vpif_stop_streaming.description`:
 
@@ -117,14 +127,17 @@ vpif_querycap
 
     QUERYCAP handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_capability \*cap:
+    :param cap:
         ptr to v4l2_capability structure
+    :type cap: struct v4l2_capability \*
 
 .. _`vpif_output_to_subdev`:
 
@@ -135,14 +148,17 @@ vpif_output_to_subdev
 
     Maps output to sub device
 
-    :param struct vpif_display_config \*vpif_cfg:
+    :param vpif_cfg:
         global config ptr
+    :type vpif_cfg: struct vpif_display_config \*
 
-    :param struct vpif_display_chan_config \*chan_cfg:
+    :param chan_cfg:
         channel config ptr
+    :type chan_cfg: struct vpif_display_chan_config \*
 
-    :param int index:
+    :param index:
         Given output index from application
+    :type index: int
 
 .. _`vpif_output_to_subdev.description`:
 
@@ -162,14 +178,17 @@ vpif_set_output
 
     Select an output
 
-    :param struct vpif_display_config \*vpif_cfg:
+    :param vpif_cfg:
         global config ptr
+    :type vpif_cfg: struct vpif_display_config \*
 
-    :param struct channel_obj \*ch:
+    :param ch:
         channel
+    :type ch: struct channel_obj \*
 
-    :param int index:
+    :param index:
         Given output index from application
+    :type index: int
 
 .. _`vpif_set_output.description`:
 
@@ -187,14 +206,17 @@ vpif_enum_dv_timings
 
     ENUM_DV_TIMINGS handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_enum_dv_timings \*timings:
+    :param timings:
         input timings
+    :type timings: struct v4l2_enum_dv_timings \*
 
 .. _`vpif_s_dv_timings`:
 
@@ -205,14 +227,17 @@ vpif_s_dv_timings
 
     S_DV_TIMINGS handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_dv_timings \*timings:
+    :param timings:
         digital video timings
+    :type timings: struct v4l2_dv_timings \*
 
 .. _`vpif_g_dv_timings`:
 
@@ -223,14 +248,17 @@ vpif_g_dv_timings
 
     G_DV_TIMINGS handler
 
-    :param struct file \*file:
+    :param file:
         file ptr
+    :type file: struct file \*
 
-    :param void \*priv:
+    :param priv:
         file handle
+    :type priv: void \*
 
-    :param struct v4l2_dv_timings \*timings:
+    :param timings:
         digital video timings
+    :type timings: struct v4l2_dv_timings \*
 
 .. This file was automatic generated / don't edit.
 

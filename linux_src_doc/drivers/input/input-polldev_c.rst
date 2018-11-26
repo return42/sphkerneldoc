@@ -10,8 +10,9 @@ input_allocate_polled_device
 
     allocate memory for polled device
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`input_allocate_polled_device.description`:
 
@@ -30,8 +31,9 @@ devm_input_allocate_polled_device
 
     allocate managed polled device
 
-    :param struct device \*dev:
+    :param dev:
         device owning the polled device being created
+    :type dev: struct device \*
 
 .. _`devm_input_allocate_polled_device.description`:
 
@@ -68,8 +70,9 @@ input_free_polled_device
 
     free memory allocated for polled device
 
-    :param struct input_polled_dev \*dev:
+    :param dev:
         device to free
+    :type dev: struct input_polled_dev \*
 
 .. _`input_free_polled_device.description`:
 
@@ -88,8 +91,9 @@ input_register_polled_device
 
     register polled device
 
-    :param struct input_polled_dev \*dev:
+    :param dev:
         device to register
+    :type dev: struct input_polled_dev \*
 
 .. _`input_register_polled_device.description`:
 
@@ -111,8 +115,9 @@ input_unregister_polled_device
 
     unregister polled device
 
-    :param struct input_polled_dev \*dev:
+    :param dev:
         device to unregister
+    :type dev: struct input_polled_dev \*
 
 .. _`input_unregister_polled_device.description`:
 

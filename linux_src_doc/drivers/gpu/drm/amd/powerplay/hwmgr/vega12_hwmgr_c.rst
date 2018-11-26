@@ -8,8 +8,9 @@ vega12_init_smc_table
 
 .. c:function:: int vega12_init_smc_table(struct pp_hwmgr *hwmgr)
 
-    :param struct pp_hwmgr \*hwmgr:
+    :param hwmgr:
         *undescribed*
+    :type hwmgr: struct pp_hwmgr \*
 
 .. _`vega12_init_smc_table.description`:
 

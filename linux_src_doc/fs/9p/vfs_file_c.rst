@@ -10,11 +10,13 @@ v9fs_file_open
 
     open a file (or directory)
 
-    :param struct inode \*inode:
+    :param inode:
         inode to be opened
+    :type inode: struct inode \*
 
-    :param struct file \*file:
+    :param file:
         file being opened
+    :type file: struct file \*
 
 .. _`v9fs_file_lock`:
 
@@ -25,14 +27,17 @@ v9fs_file_lock
 
     lock a file (or directory)
 
-    :param struct file \*filp:
+    :param filp:
         file to be locked
+    :type filp: struct file \*
 
-    :param int cmd:
+    :param cmd:
         lock command
+    :type cmd: int
 
-    :param struct file_lock \*fl:
+    :param fl:
         file lock structure
+    :type fl: struct file_lock \*
 
 .. _`v9fs_file_lock.bugs`:
 
@@ -51,14 +56,17 @@ v9fs_file_lock_dotl
 
     lock a file (or directory)
 
-    :param struct file \*filp:
+    :param filp:
         file to be locked
+    :type filp: struct file \*
 
-    :param int cmd:
+    :param cmd:
         lock command
+    :type cmd: int
 
-    :param struct file_lock \*fl:
+    :param fl:
         file lock structure
+    :type fl: struct file_lock \*
 
 .. _`v9fs_file_flock_dotl`:
 
@@ -69,14 +77,17 @@ v9fs_file_flock_dotl
 
     lock a file
 
-    :param struct file \*filp:
+    :param filp:
         file to be locked
+    :type filp: struct file \*
 
-    :param int cmd:
+    :param cmd:
         lock command
+    :type cmd: int
 
-    :param struct file_lock \*fl:
+    :param fl:
         file lock structure
+    :type fl: struct file_lock \*
 
 .. _`v9fs_file_read_iter`:
 
@@ -87,11 +98,13 @@ v9fs_file_read_iter
 
     read from a file
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         *undescribed*
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*to:
+    :param to:
         *undescribed*
+    :type to: struct iov_iter \*
 
 .. _`v9fs_file_write_iter`:
 
@@ -102,11 +115,13 @@ v9fs_file_write_iter
 
     write to a file
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         *undescribed*
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*from:
+    :param from:
         *undescribed*
+    :type from: struct iov_iter \*
 
 .. _`v9fs_mmap_file_read_iter`:
 
@@ -117,11 +132,13 @@ v9fs_mmap_file_read_iter
 
     read from a file
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         *undescribed*
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*to:
+    :param to:
         *undescribed*
+    :type to: struct iov_iter \*
 
 .. _`v9fs_mmap_file_write_iter`:
 
@@ -132,11 +149,13 @@ v9fs_mmap_file_write_iter
 
     write to a file
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         *undescribed*
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*from:
+    :param from:
         *undescribed*
+    :type from: struct iov_iter \*
 
 .. This file was automatic generated / don't edit.
 

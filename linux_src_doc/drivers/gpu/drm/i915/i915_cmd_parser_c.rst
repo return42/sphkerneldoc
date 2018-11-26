@@ -70,8 +70,9 @@ intel_engine_init_cmd_parser
 
     set cmd parser related fields for an engine
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         the engine to initialize
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_engine_init_cmd_parser.description`:
 
@@ -91,8 +92,9 @@ intel_engine_cleanup_cmd_parser
 
     clean up cmd parser related fields
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         the engine to clean up
+    :type engine: struct intel_engine_cs \*
 
 .. _`intel_engine_cleanup_cmd_parser.description`:
 
@@ -111,23 +113,29 @@ intel_engine_cmd_parser
 
     parse a submitted batch buffer for privilege violations
 
-    :param struct intel_engine_cs \*engine:
+    :param engine:
         the engine on which the batch is to execute
+    :type engine: struct intel_engine_cs \*
 
-    :param struct drm_i915_gem_object \*batch_obj:
+    :param batch_obj:
         the batch buffer in question
+    :type batch_obj: struct drm_i915_gem_object \*
 
-    :param struct drm_i915_gem_object \*shadow_batch_obj:
+    :param shadow_batch_obj:
         copy of the batch buffer in question
+    :type shadow_batch_obj: struct drm_i915_gem_object \*
 
-    :param u32 batch_start_offset:
+    :param batch_start_offset:
         byte offset in the batch at which execution starts
+    :type batch_start_offset: u32
 
-    :param u32 batch_len:
+    :param batch_len:
         length of the commands in batch_obj
+    :type batch_len: u32
 
-    :param bool is_master:
+    :param is_master:
         is the submitting process the drm master?
+    :type is_master: bool
 
 .. _`intel_engine_cmd_parser.description`:
 
@@ -154,8 +162,9 @@ i915_cmd_parser_get_version
 
     get the cmd parser version number
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`i915_cmd_parser_get_version.description`:
 

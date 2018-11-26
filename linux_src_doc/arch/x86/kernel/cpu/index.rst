@@ -10,4 +10,6 @@ cpu
     microcode/index
     mtrr/index
     intel_rdt_h
+    intel_rdt_pseudo_lock_c
+    intel_rdt_rdtgroup_c
     match_c

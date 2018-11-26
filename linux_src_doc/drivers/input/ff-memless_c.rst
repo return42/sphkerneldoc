@@ -10,11 +10,13 @@ input_ff_create_memless
 
     create memoryless force-feedback device
 
-    :param struct input_dev \*dev:
+    :param dev:
         input device supporting force-feedback
+    :type dev: struct input_dev \*
 
-    :param void \*data:
+    :param data:
         driver-specific data to be passed into \ ``play_effect``\ 
+    :type data: void \*
 
     :param int (\*play_effect)(struct input_dev \*, void \*, struct ff_effect \*):
         driver-specific method for playing FF effect

@@ -10,17 +10,21 @@ il4965_rs_collect_tx_data
 
     Update the success/failure sliding win
 
-    :param struct il_scale_tbl_info \*tbl:
+    :param tbl:
         *undescribed*
+    :type tbl: struct il_scale_tbl_info \*
 
-    :param int scale_idx:
+    :param scale_idx:
         *undescribed*
+    :type scale_idx: int
 
-    :param int attempts:
+    :param attempts:
         *undescribed*
+    :type attempts: int
 
-    :param int successes:
+    :param successes:
         *undescribed*
+    :type successes: int
 
 .. _`il4965_rs_collect_tx_data.description`:
 
@@ -40,11 +44,13 @@ il4965_rs_use_green
 
     field mode is valid if the station supports it and there are no non-GF stations present in the BSS.
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
 .. _`il4965_rs_get_supported_rates`:
 
@@ -55,14 +61,17 @@ il4965_rs_get_supported_rates
 
     get the available rates
 
-    :param struct il_lq_sta \*lq_sta:
+    :param lq_sta:
         *undescribed*
+    :type lq_sta: struct il_lq_sta \*
 
-    :param struct ieee80211_hdr \*hdr:
+    :param hdr:
         *undescribed*
+    :type hdr: struct ieee80211_hdr \*
 
-    :param enum il_table_type rate_type:
+    :param rate_type:
         *undescribed*
+    :type rate_type: enum il_table_type
 
 .. _`il4965_rs_get_supported_rates.description`:
 
@@ -81,17 +90,21 @@ il4965_rs_initialize_lq
 
     Initialize a station's hardware rate table
 
-    :param struct il_priv \*il:
+    :param il:
         *undescribed*
+    :type il: struct il_priv \*
 
-    :param struct ieee80211_conf \*conf:
+    :param conf:
         *undescribed*
+    :type conf: struct ieee80211_conf \*
 
-    :param struct ieee80211_sta \*sta:
+    :param sta:
         *undescribed*
+    :type sta: struct ieee80211_sta \*
 
-    :param struct il_lq_sta \*lq_sta:
+    :param lq_sta:
         *undescribed*
+    :type lq_sta: struct il_lq_sta \*
 
 .. _`il4965_rs_initialize_lq.description`:
 

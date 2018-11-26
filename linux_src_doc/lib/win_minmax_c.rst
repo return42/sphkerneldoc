@@ -10,14 +10,17 @@ minmax_subwin_update
 
     windowed min/max tracker
 
-    :param struct minmax \*m:
+    :param m:
         *undescribed*
+    :type m: struct minmax \*
 
-    :param u32 win:
+    :param win:
         *undescribed*
+    :type win: u32
 
-    :param const struct minmax_sample \*val:
+    :param val:
         *undescribed*
+    :type val: const struct minmax_sample \*
 
 .. _`minmax_subwin_update.description`:
 

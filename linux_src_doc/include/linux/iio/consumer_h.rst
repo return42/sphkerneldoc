@@ -46,16 +46,18 @@ iio_channel_get
 
     get description of all that is needed to access channel.
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to consumer device. Device name must match
         the name of the device as provided in the iio_map
         with which the desired provider to consumer mapping
         was registered.
+    :type dev: struct device \*
 
-    :param const char \*consumer_channel:
+    :param consumer_channel:
         Unique name to identify the channel on the consumer
         side. This typically describes the channels use within
         the consumer. E.g. 'battery_voltage'
+    :type consumer_channel: const char \*
 
 .. _`iio_channel_release`:
 
@@ -66,8 +68,9 @@ iio_channel_release
 
     release channels obtained via iio_channel_get
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel to be released.
+    :type chan: struct iio_channel \*
 
 .. _`devm_iio_channel_get`:
 
@@ -78,16 +81,18 @@ devm_iio_channel_get
 
     Resource managed version of \ :c:func:`iio_channel_get`\ .
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to consumer device. Device name must match
         the name of the device as provided in the iio_map
         with which the desired provider to consumer mapping
         was registered.
+    :type dev: struct device \*
 
-    :param const char \*consumer_channel:
+    :param consumer_channel:
         Unique name to identify the channel on the consumer
         side. This typically describes the channels use within
         the consumer. E.g. 'battery_voltage'
+    :type consumer_channel: const char \*
 
 .. _`devm_iio_channel_get.description`:
 
@@ -109,12 +114,14 @@ devm_iio_channel_release
 
     Resource managed version of \ :c:func:`iio_channel_release`\ .
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to consumer device for which resource
         is allocared.
+    :type dev: struct device \*
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel to be released.
+    :type chan: struct iio_channel \*
 
 .. _`iio_channel_get_all`:
 
@@ -125,8 +132,9 @@ iio_channel_get_all
 
     get all channels associated with a client
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to consumer device.
+    :type dev: struct device \*
 
 .. _`iio_channel_get_all.description`:
 
@@ -147,8 +155,9 @@ iio_channel_release_all
 
     reverse iio_channel_get_all
 
-    :param struct iio_channel \*chan:
+    :param chan:
         Array of channels to be released.
+    :type chan: struct iio_channel \*
 
 .. _`devm_iio_channel_get_all`:
 
@@ -159,8 +168,9 @@ devm_iio_channel_get_all
 
     Resource managed version of \ :c:func:`iio_channel_get_all`\ .
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to consumer device.
+    :type dev: struct device \*
 
 .. _`devm_iio_channel_get_all.description`:
 
@@ -186,12 +196,14 @@ devm_iio_channel_release_all
 
     Resource managed version of \ :c:func:`iio_channel_release_all`\ .
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to consumer device for which resource
         is allocared.
+    :type dev: struct device \*
 
-    :param struct iio_channel \*chan:
+    :param chan:
         Array channel to be released.
+    :type chan: struct iio_channel \*
 
 .. _`iio_channel_get_all_cb`:
 
@@ -202,14 +214,16 @@ iio_channel_get_all_cb
 
     register callback for triggered capture
 
-    :param struct device \*dev:
+    :param dev:
         Pointer to client device.
+    :type dev: struct device \*
 
     :param int (\*cb)(const void \*data, void \*private):
         Callback function.
 
-    :param void \*private:
+    :param private:
         Private data passed to callback.
+    :type private: void \*
 
 .. _`iio_channel_get_all_cb.description`:
 
@@ -229,12 +243,14 @@ iio_channel_cb_set_buffer_watermark
 
     set the buffer watermark.
 
-    :param struct iio_cb_buffer \*cb_buffer:
+    :param cb_buffer:
         The callback buffer from whom we want the channel
         information.
+    :type cb_buffer: struct iio_cb_buffer \*
 
-    :param size_t watermark:
+    :param watermark:
         buffer watermark in bytes.
+    :type watermark: size_t
 
 .. _`iio_channel_cb_set_buffer_watermark.description`:
 
@@ -252,8 +268,9 @@ iio_channel_release_all_cb
 
     release and unregister the callback.
 
-    :param struct iio_cb_buffer \*cb_buffer:
+    :param cb_buffer:
         The callback buffer that was allocated.
+    :type cb_buffer: struct iio_cb_buffer \*
 
 .. _`iio_channel_start_all_cb`:
 
@@ -264,8 +281,9 @@ iio_channel_start_all_cb
 
     start the flow of data through callback.
 
-    :param struct iio_cb_buffer \*cb_buff:
+    :param cb_buff:
         The callback buffer we are starting.
+    :type cb_buff: struct iio_cb_buffer \*
 
 .. _`iio_channel_stop_all_cb`:
 
@@ -276,8 +294,9 @@ iio_channel_stop_all_cb
 
     stop the flow of data through the callback.
 
-    :param struct iio_cb_buffer \*cb_buff:
+    :param cb_buff:
         The callback buffer we are stopping.
+    :type cb_buff: struct iio_cb_buffer \*
 
 .. _`iio_channel_cb_get_channels`:
 
@@ -288,9 +307,10 @@ iio_channel_cb_get_channels
 
     get access to the underlying channels.
 
-    :param const struct iio_cb_buffer \*cb_buffer:
+    :param cb_buffer:
         The callback buffer from whom we want the channel
         information.
+    :type cb_buffer: const struct iio_cb_buffer \*
 
 .. _`iio_channel_cb_get_channels.description`:
 
@@ -311,9 +331,10 @@ iio_channel_cb_get_iio_dev
 
     get access to the underlying device.
 
-    :param const struct iio_cb_buffer \*cb_buffer:
+    :param cb_buffer:
         The callback buffer from whom we want the device
         information.
+    :type cb_buffer: const struct iio_cb_buffer \*
 
 .. _`iio_channel_cb_get_iio_dev.description`:
 
@@ -333,11 +354,13 @@ iio_read_channel_raw
 
     read from a given channel
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param int \*val:
+    :param val:
         Value read back.
+    :type val: int \*
 
 .. _`iio_read_channel_raw.description`:
 
@@ -356,11 +379,13 @@ iio_read_channel_average_raw
 
     read from a given channel
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param int \*val:
+    :param val:
         Value read back.
+    :type val: int \*
 
 .. _`iio_read_channel_average_raw.description`:
 
@@ -382,11 +407,13 @@ iio_read_channel_processed
 
     read processed value from a given channel
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param int \*val:
+    :param val:
         Value read back.
+    :type val: int \*
 
 .. _`iio_read_channel_processed.description`:
 
@@ -410,17 +437,21 @@ iio_write_channel_attribute
 
     Write values to the device attribute.
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param int val:
+    :param val:
         Value being written.
+    :type val: int
 
-    :param int val2:
+    :param val2:
         Value being written.val2 use depends on attribute type.
+    :type val2: int
 
-    :param enum iio_chan_info_enum attribute:
+    :param attribute:
         info attribute to be read.
+    :type attribute: enum iio_chan_info_enum
 
 .. _`iio_write_channel_attribute.description`:
 
@@ -438,17 +469,21 @@ iio_read_channel_attribute
 
     Read values from the device attribute.
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param int \*val:
+    :param val:
         Value being written.
+    :type val: int \*
 
-    :param int \*val2:
+    :param val2:
         Value being written.Val2 use depends on attribute type.
+    :type val2: int \*
 
-    :param enum iio_chan_info_enum attribute:
+    :param attribute:
         info attribute to be written.
+    :type attribute: enum iio_chan_info_enum
 
 .. _`iio_read_channel_attribute.description`:
 
@@ -468,11 +503,13 @@ iio_write_channel_raw
 
     write to a given channel
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param int val:
+    :param val:
         Value being written.
+    :type val: int
 
 .. _`iio_write_channel_raw.description`:
 
@@ -491,11 +528,13 @@ iio_read_max_channel_raw
 
     read maximum available raw value from a given channel, i.e. the maximum possible value.
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param int \*val:
+    :param val:
         Value read back.
+    :type val: int \*
 
 .. _`iio_read_max_channel_raw.description`:
 
@@ -514,14 +553,17 @@ iio_read_avail_channel_raw
 
     read available raw values from a given channel
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param const int \*\*vals:
+    :param vals:
         Available values read back.
+    :type vals: const int \*\*
 
-    :param int \*length:
+    :param length:
         Number of entries in vals.
+    :type length: int \*
 
 .. _`iio_read_avail_channel_raw.description`:
 
@@ -545,11 +587,13 @@ iio_get_channel_type
 
     get the type of a channel
 
-    :param struct iio_channel \*channel:
+    :param channel:
         The channel being queried.
+    :type channel: struct iio_channel \*
 
-    :param enum iio_chan_type \*type:
+    :param type:
         The type of the channel.
+    :type type: enum iio_chan_type \*
 
 .. _`iio_get_channel_type.description`:
 
@@ -567,14 +611,17 @@ iio_read_channel_offset
 
     read the offset value for a channel
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param int \*val:
+    :param val:
         First part of value read back.
+    :type val: int \*
 
-    :param int \*val2:
+    :param val2:
         Second part of value read back.
+    :type val2: int \*
 
 .. _`iio_read_channel_offset.description`:
 
@@ -594,14 +641,17 @@ iio_read_channel_scale
 
     read the scale value for a channel
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param int \*val:
+    :param val:
         First part of value read back.
+    :type val: int \*
 
-    :param int \*val2:
+    :param val2:
         Second part of value read back.
+    :type val2: int \*
 
 .. _`iio_read_channel_scale.description`:
 
@@ -621,17 +671,21 @@ iio_convert_raw_to_processed
 
     Converts a raw value to a processed value
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried
+    :type chan: struct iio_channel \*
 
-    :param int raw:
+    :param raw:
         The raw IIO to convert
+    :type raw: int
 
-    :param int \*processed:
+    :param processed:
         The result of the conversion
+    :type processed: int \*
 
-    :param unsigned int scale:
+    :param scale:
         Scale factor to apply during the conversion
+    :type scale: unsigned int
 
 .. _`iio_convert_raw_to_processed.description`:
 
@@ -660,8 +714,9 @@ iio_get_channel_ext_info_count
 
     get number of ext_info attributes connected to the channel.
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried
+    :type chan: struct iio_channel \*
 
 .. _`iio_get_channel_ext_info_count.description`:
 
@@ -679,15 +734,18 @@ iio_read_channel_ext_info
 
     read ext_info attribute from a given channel
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param const char \*attr:
+    :param attr:
         The ext_info attribute to read.
+    :type attr: const char \*
 
-    :param char \*buf:
+    :param buf:
         Where to store the attribute value. Assumed to hold
         at least PAGE_SIZE bytes.
+    :type buf: char \*
 
 .. _`iio_read_channel_ext_info.description`:
 
@@ -706,19 +764,23 @@ iio_write_channel_ext_info
 
     write ext_info attribute from a given channel
 
-    :param struct iio_channel \*chan:
+    :param chan:
         The channel being queried.
+    :type chan: struct iio_channel \*
 
-    :param const char \*attr:
+    :param attr:
         The ext_info attribute to read.
+    :type attr: const char \*
 
-    :param const char \*buf:
+    :param buf:
         The new attribute value. Strings needs to be zero-
         terminated, but the terminator should not be included
         in the below len.
+    :type buf: const char \*
 
-    :param size_t len:
+    :param len:
         The size of the new attribute value.
+    :type len: size_t
 
 .. _`iio_write_channel_ext_info.description`:
 

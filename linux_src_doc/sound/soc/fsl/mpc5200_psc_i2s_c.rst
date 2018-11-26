@@ -38,17 +38,21 @@ psc_i2s_set_sysclk
 
     set the clock frequency and direction
 
-    :param struct snd_soc_dai \*cpu_dai:
+    :param cpu_dai:
         *undescribed*
+    :type cpu_dai: struct snd_soc_dai \*
 
-    :param int clk_id:
+    :param clk_id:
         reserved, should be zero
+    :type clk_id: int
 
-    :param unsigned int freq:
+    :param freq:
         the frequency of the given clock ID, currently ignored
+    :type freq: unsigned int
 
-    :param int dir:
+    :param dir:
         SND_SOC_CLOCK_IN (clock slave) or SND_SOC_CLOCK_OUT (clock master)
+    :type dir: int
 
 .. _`psc_i2s_set_sysclk.description`:
 
@@ -71,11 +75,13 @@ psc_i2s_set_fmt
 
     set the serial format.
 
-    :param struct snd_soc_dai \*cpu_dai:
+    :param cpu_dai:
         *undescribed*
+    :type cpu_dai: struct snd_soc_dai \*
 
-    :param unsigned int format:
+    :param format:
         one of SND_SOC_DAIFMT_xxx
+    :type format: unsigned int
 
 .. _`psc_i2s_set_fmt.description`:
 

@@ -46,11 +46,13 @@ size_from_channelarray
 
     calculate the storage size of a scan
 
-    :param struct iio_channel_info \*channels:
+    :param channels:
         the channel info array
+    :type channels: struct iio_channel_info \*
 
-    :param int num_channels:
+    :param num_channels:
         number of channels
+    :type num_channels: int
 
 .. _`size_from_channelarray.description`:
 
@@ -69,16 +71,19 @@ process_scan
 
     print out the values in SI units
 
-    :param char \*data:
+    :param data:
         pointer to the start of the scan
+    :type data: char \*
 
-    :param struct iio_channel_info \*channels:
+    :param channels:
         information about the channels.
         Note: size_from_channelarray must have been called first
         to fill the location offsets.
+    :type channels: struct iio_channel_info \*
 
-    :param int num_channels:
+    :param num_channels:
         number of channels
+    :type num_channels: int
 
 .. This file was automatic generated / don't edit.
 

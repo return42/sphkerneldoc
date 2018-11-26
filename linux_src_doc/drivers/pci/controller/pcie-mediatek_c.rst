@@ -71,6 +71,7 @@ Definition
         struct phy *phy;
         u32 lane;
         u32 slot;
+        int irq;
         struct irq_domain *irq_domain;
         struct irq_domain *inner_domain;
         struct irq_domain *msi_domain;
@@ -123,6 +124,9 @@ lane
 
 slot
     port slot
+
+irq
+    GIC irq
 
 irq_domain
     legacy INTx IRQ domain

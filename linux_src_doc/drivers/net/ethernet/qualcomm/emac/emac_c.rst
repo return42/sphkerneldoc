@@ -10,8 +10,9 @@ emac_update_hw_stats
 
     read the EMAC stat registers
 
-    :param struct emac_adapter \*adpt:
+    :param adpt:
         *undescribed*
+    :type adpt: struct emac_adapter \*
 
 .. _`emac_update_hw_stats.description`:
 

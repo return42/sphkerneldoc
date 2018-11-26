@@ -10,8 +10,9 @@ fsl_ehci_drv_remove
 
     shutdown processing for FSL-based HCDs
 
-    :param struct platform_device \*pdev:
+    :param pdev:
         *undescribed*
+    :type pdev: struct platform_device \*
 
 .. _`fsl_ehci_drv_remove.context`:
 

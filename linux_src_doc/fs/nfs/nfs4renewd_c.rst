@@ -10,14 +10,17 @@ nfs4_set_lease_period
 
     Sets the lease period on a nfs_client
 
-    :param struct nfs_client \*clp:
+    :param clp:
         pointer to nfs_client
+    :type clp: struct nfs_client \*
 
-    :param unsigned long lease:
+    :param lease:
         new value for lease period
+    :type lease: unsigned long
 
-    :param unsigned long lastrenewed:
+    :param lastrenewed:
         time at which lease was last renewed
+    :type lastrenewed: unsigned long
 
 .. This file was automatic generated / don't edit.
 

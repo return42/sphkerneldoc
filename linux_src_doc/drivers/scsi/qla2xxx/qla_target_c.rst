@@ -10,17 +10,21 @@ qlt_lport_register
 
     register lport with external module
 
-    :param void \*target_lport_ptr:
+    :param target_lport_ptr:
         pointer for tcm_qla2xxx specific lport data
+    :type target_lport_ptr: void \*
 
-    :param u64 phys_wwpn:
-        *undescribed*
+    :param phys_wwpn:
+        physical port WWPN
+    :type phys_wwpn: u64
 
-    :param u64 npiv_wwpn:
-        *undescribed*
+    :param npiv_wwpn:
+        NPIV WWPN
+    :type npiv_wwpn: u64
 
-    :param u64 npiv_wwnn:
-        *undescribed*
+    :param npiv_wwnn:
+        NPIV WWNN
+    :type npiv_wwnn: u64
 
     :param int (\*callback)(struct scsi_qla_host \*, void \*, u64, u64):
         lport initialization callback for tcm_qla2xxx code
@@ -34,8 +38,9 @@ qlt_lport_deregister
 
     Degister lport
 
-    :param struct scsi_qla_host \*vha:
+    :param vha:
         Registered scsi_qla_host pointer
+    :type vha: struct scsi_qla_host \*
 
 .. This file was automatic generated / don't edit.
 

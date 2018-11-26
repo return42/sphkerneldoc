@@ -10,14 +10,17 @@ iwl_read_eeprom
 
     read EEPROM contents
 
-    :param struct iwl_trans \*trans:
+    :param trans:
         *undescribed*
+    :type trans: struct iwl_trans \*
 
-    :param u8 \*\*eeprom:
+    :param eeprom:
         *undescribed*
+    :type eeprom: u8 \*\*
 
-    :param size_t \*eeprom_size:
+    :param eeprom_size:
         *undescribed*
+    :type eeprom_size: size_t \*
 
 .. _`iwl_read_eeprom.description`:
 

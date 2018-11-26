@@ -10,8 +10,9 @@ gigaset_m10x_input
 
     process a block of data received from the device
 
-    :param struct inbuf_t \*inbuf:
+    :param inbuf:
         received data and device descriptor structure.
+    :type inbuf: struct inbuf_t \*
 
 .. _`gigaset_m10x_input.description`:
 
@@ -32,11 +33,13 @@ gigaset_m10x_send_skb
 
     queue an skb for sending
 
-    :param struct bc_state \*bcs:
+    :param bcs:
         B channel descriptor structure.
+    :type bcs: struct bc_state \*
 
-    :param struct sk_buff \*skb:
+    :param skb:
         data to send.
+    :type skb: struct sk_buff \*
 
 .. _`gigaset_m10x_send_skb.description`:
 

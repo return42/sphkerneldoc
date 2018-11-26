@@ -10,11 +10,13 @@ nfs_direct_IO
 
     NFS address space operation for direct I/O
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         target I/O control block
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         I/O buffer
+    :type iter: struct iov_iter \*
 
 .. _`nfs_direct_io.description`:
 
@@ -35,11 +37,13 @@ nfs_file_direct_read
 
     file direct read operation for NFS files
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         target I/O control block
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         vector of user buffers into which to read data
+    :type iter: struct iov_iter \*
 
 .. _`nfs_file_direct_read.description`:
 
@@ -69,11 +73,13 @@ nfs_file_direct_write
 
     file direct write operation for NFS files
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         target I/O control block
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         vector of user buffers from which to write data
+    :type iter: struct iov_iter \*
 
 .. _`nfs_file_direct_write.description`:
 
@@ -104,8 +110,9 @@ nfs_init_directcache
 
     create a slab cache for nfs_direct_req structures
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`nfs_destroy_directcache`:
 
@@ -116,8 +123,9 @@ nfs_destroy_directcache
 
     destroy the slab cache for nfs_direct_req structures
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

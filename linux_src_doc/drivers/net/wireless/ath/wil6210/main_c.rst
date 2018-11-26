@@ -10,17 +10,21 @@ wil6210_disconnect
 
     disconnect one connection
 
-    :param struct wil6210_vif \*vif:
+    :param vif:
         virtual interface context
+    :type vif: struct wil6210_vif \*
 
-    :param const u8 \*bssid:
+    :param bssid:
         peer to disconnect, NULL to disconnect all
+    :type bssid: const u8 \*
 
-    :param u16 reason_code:
+    :param reason_code:
         Reason code for the Disassociation frame
+    :type reason_code: u16
 
-    :param bool from_event:
+    :param from_event:
         whether is invoked from FW event handler
+    :type from_event: bool
 
 .. _`wil6210_disconnect.description`:
 

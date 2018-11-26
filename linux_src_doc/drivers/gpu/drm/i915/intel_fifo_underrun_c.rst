@@ -31,14 +31,17 @@ intel_set_cpu_fifo_underrun_reporting
 
     set cpu fifo underrrun reporting state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum pipe pipe:
+    :param pipe:
         (CPU) pipe to set state for
+    :type pipe: enum pipe
 
-    :param bool enable:
+    :param enable:
         whether underruns should be reported or not
+    :type enable: bool
 
 .. _`intel_set_cpu_fifo_underrun_reporting.description`:
 
@@ -64,14 +67,17 @@ intel_set_pch_fifo_underrun_reporting
 
     set PCH fifo underrun reporting state
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum pipe pch_transcoder:
+    :param pch_transcoder:
         the PCH transcoder (same as pipe on IVB and older)
+    :type pch_transcoder: enum pipe
 
-    :param bool enable:
+    :param enable:
         whether underruns should be reported or not
+    :type enable: bool
 
 .. _`intel_set_pch_fifo_underrun_reporting.description`:
 
@@ -95,11 +101,13 @@ intel_cpu_fifo_underrun_irq_handler
 
     handle CPU fifo underrun interrupt
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum pipe pipe:
+    :param pipe:
         (CPU) pipe to set state for
+    :type pipe: enum pipe
 
 .. _`intel_cpu_fifo_underrun_irq_handler.description`:
 
@@ -119,11 +127,13 @@ intel_pch_fifo_underrun_irq_handler
 
     handle PCH fifo underrun interrupt
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum pipe pch_transcoder:
+    :param pch_transcoder:
         the PCH transcoder (same as pipe on IVB and older)
+    :type pch_transcoder: enum pipe
 
 .. _`intel_pch_fifo_underrun_irq_handler.description`:
 
@@ -143,8 +153,9 @@ intel_check_cpu_fifo_underruns
 
     check for CPU fifo underruns immediately
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_check_cpu_fifo_underruns.description`:
 
@@ -165,8 +176,9 @@ intel_check_pch_fifo_underruns
 
     check for PCH fifo underruns immediately
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_check_pch_fifo_underruns.description`:
 

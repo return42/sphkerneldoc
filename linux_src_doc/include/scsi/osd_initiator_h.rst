@@ -10,15 +10,18 @@ osd_auto_detect_ver
 
     Detect the OSD version, return Unique Identification
 
-    :param struct osd_dev \*od:
+    :param od:
         OSD target lun handle
+    :type od: struct osd_dev \*
 
-    :param void \*caps:
+    :param caps:
         Capabilities authorizing OSD root read attributes access
+    :type caps: void \*
 
-    :param struct osd_dev_info \*odi:
+    :param odi:
         Retrieved information uniquely identifying the osd target lun
         Note: odi->osdname must be kfreed by caller.
+    :type odi: struct osd_dev_info \*
 
 .. _`osd_auto_detect_ver.description`:
 
@@ -41,8 +44,9 @@ osd_start_request
 
     Allocate and initialize an osd_request
 
-    :param struct osd_dev \*od:
+    :param od:
         *undescribed*
+    :type od: struct osd_dev \*
 
 .. _`osd_start_request.description`:
 
@@ -61,19 +65,23 @@ osd_finalize_request
 
     Sign request and prepare request for execution
 
-    :param struct osd_request \*or:
+    :param or:
         osd_request to prepare
+    :type or: struct osd_request \*
 
-    :param u8 options:
+    :param options:
         combination of osd_req_options bit flags or 0.
+    :type options: u8
 
-    :param const void \*cap:
+    :param cap:
         A Pointer to an OSD_CAP_LEN bytes buffer that is received from
         The security manager as capabilities for this cdb.
+    :type cap: const void \*
 
-    :param const u8 \*cap_key:
+    :param cap_key:
         The cryptographic key used to sign the cdb/data. Can be null
         if NOSEC is used.
+    :type cap_key: const u8 \*
 
 .. _`osd_finalize_request.description`:
 
@@ -93,8 +101,9 @@ osd_execute_request
 
     Execute the request synchronously through block-layer
 
-    :param struct osd_request \*or:
+    :param or:
         osd_request to Executed
+    :type or: struct osd_request \*
 
 .. _`osd_execute_request.description`:
 
@@ -112,14 +121,17 @@ osd_execute_request_async
 
     Execute the request without waitting.
 
-    :param struct osd_request \*or:
+    :param or:
         - osd_request to Executed
+    :type or: struct osd_request \*
 
-    :param osd_req_done_fn \*done:
+    :param done:
         (Optional)         - Called at end of execution
+    :type done: osd_req_done_fn \*
 
-    :param void \*private:
+    :param private:
         - Will be passed to \ ``done``\  function
+    :type private: void \*
 
 .. _`osd_execute_request_async.description`:
 
@@ -127,7 +139,7 @@ Description
 -----------
 
 Calls blk_execute_rq_nowait to queue the command. When execution is done
-optionally calls \ ``done``\  with \ ``private``\  as parameter. \ ``or``\ ->async_error will
+optionally calls \ ``done``\  with \ ``private``\  as parameter. \ ``or->async_error``\  will
 have the return code
 
 .. _`osd_end_request`:
@@ -139,8 +151,9 @@ osd_end_request
 
     return osd_request to free store
 
-    :param struct osd_request \*or:
+    :param or:
         osd_request to free
+    :type or: struct osd_request \*
 
 .. _`osd_end_request.description`:
 

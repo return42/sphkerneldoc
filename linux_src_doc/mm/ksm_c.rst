@@ -318,17 +318,21 @@ replace_page
 
     replace page in vma by new ksm page
 
-    :param struct vm_area_struct \*vma:
+    :param vma:
         vma that holds the pte pointing to page
+    :type vma: struct vm_area_struct \*
 
-    :param struct page \*page:
+    :param page:
         the page we are replacing by kpage
+    :type page: struct page \*
 
-    :param struct page \*kpage:
+    :param kpage:
         the ksm page we replace page by
+    :type kpage: struct page \*
 
-    :param pte_t orig_pte:
+    :param orig_pte:
         the original value of the pte
+    :type orig_pte: pte_t
 
 .. _`replace_page.description`:
 
@@ -346,8 +350,9 @@ ksm_do_scan
 
     the ksm scanner main worker function.
 
-    :param unsigned int scan_npages:
+    :param scan_npages:
         number of pages we want to scan before we return.
+    :type scan_npages: unsigned int
 
 .. This file was automatic generated / don't edit.
 

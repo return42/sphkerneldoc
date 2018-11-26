@@ -10,8 +10,9 @@ get_io_context_active
 
     get active reference on ioc
 
-    :param struct io_context \*ioc:
+    :param ioc:
         ioc of interest
+    :type ioc: struct io_context \*
 
 .. _`get_io_context_active.description`:
 

@@ -19,13 +19,15 @@ i915_hotplug_interrupt_update
 
     update hotplug interrupt enable
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         driver private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param uint32_t mask:
+    :param mask:
         bits to update
+    :type mask: uint32_t
 
-    :param uint32_t bits:
+    :param bits:
         bits to enable
         NOTE: the HPD enable bits are modified both inside and outside
         of an interrupt context. To avoid that read-modify-write cycles
@@ -33,6 +35,7 @@ i915_hotplug_interrupt_update
         function is usually not called from a context where the lock is
         held already, this function acquires the lock itself. A non-locking
         version is also available.
+    :type bits: uint32_t
 
 .. _`ilk_update_display_irq`:
 
@@ -43,14 +46,17 @@ ilk_update_display_irq
 
     update DEIMR
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         driver private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param uint32_t interrupt_mask:
+    :param interrupt_mask:
         mask of interrupt bits to update
+    :type interrupt_mask: uint32_t
 
-    :param uint32_t enabled_irq_mask:
+    :param enabled_irq_mask:
         mask of interrupt bits to enable
+    :type enabled_irq_mask: uint32_t
 
 .. _`ilk_update_gt_irq`:
 
@@ -61,14 +67,17 @@ ilk_update_gt_irq
 
     update GTIMR
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         driver private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param uint32_t interrupt_mask:
+    :param interrupt_mask:
         mask of interrupt bits to update
+    :type interrupt_mask: uint32_t
 
-    :param uint32_t enabled_irq_mask:
+    :param enabled_irq_mask:
         mask of interrupt bits to enable
+    :type enabled_irq_mask: uint32_t
 
 .. _`snb_update_pm_irq`:
 
@@ -79,14 +88,17 @@ snb_update_pm_irq
 
     update GEN6_PMIMR
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         driver private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param uint32_t interrupt_mask:
+    :param interrupt_mask:
         mask of interrupt bits to update
+    :type interrupt_mask: uint32_t
 
-    :param uint32_t enabled_irq_mask:
+    :param enabled_irq_mask:
         mask of interrupt bits to enable
+    :type enabled_irq_mask: uint32_t
 
 .. _`bdw_update_port_irq`:
 
@@ -97,14 +109,17 @@ bdw_update_port_irq
 
     update DE port interrupt
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         driver private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param uint32_t interrupt_mask:
+    :param interrupt_mask:
         mask of interrupt bits to update
+    :type interrupt_mask: uint32_t
 
-    :param uint32_t enabled_irq_mask:
+    :param enabled_irq_mask:
         mask of interrupt bits to enable
+    :type enabled_irq_mask: uint32_t
 
 .. _`bdw_update_pipe_irq`:
 
@@ -115,17 +130,21 @@ bdw_update_pipe_irq
 
     update DE pipe interrupt
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         driver private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param enum pipe pipe:
+    :param pipe:
         pipe whose interrupt to update
+    :type pipe: enum pipe
 
-    :param uint32_t interrupt_mask:
+    :param interrupt_mask:
         mask of interrupt bits to update
+    :type interrupt_mask: uint32_t
 
-    :param uint32_t enabled_irq_mask:
+    :param enabled_irq_mask:
         mask of interrupt bits to enable
+    :type enabled_irq_mask: uint32_t
 
 .. _`ibx_display_interrupt_update`:
 
@@ -136,14 +155,17 @@ ibx_display_interrupt_update
 
     update SDEIMR
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         driver private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param uint32_t interrupt_mask:
+    :param interrupt_mask:
         mask of interrupt bits to update
+    :type interrupt_mask: uint32_t
 
-    :param uint32_t enabled_irq_mask:
+    :param enabled_irq_mask:
         mask of interrupt bits to enable
+    :type enabled_irq_mask: uint32_t
 
 .. _`i915_enable_asle_pipestat`:
 
@@ -154,8 +176,9 @@ i915_enable_asle_pipestat
 
     enable ASLE pipestat for OpRegion
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`ivybridge_parity_work`:
 
@@ -166,8 +189,9 @@ ivybridge_parity_work
 
     Workqueue called when a parity error interrupt occurred.
 
-    :param struct work_struct \*work:
+    :param work:
         workqueue struct
+    :type work: struct work_struct \*
 
 .. _`ivybridge_parity_work.description`:
 
@@ -187,17 +211,21 @@ i915_handle_error
 
     handle a gpu error
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device private
+    :type dev_priv: struct drm_i915_private \*
 
-    :param u32 engine_mask:
+    :param engine_mask:
         mask representing engines that are hung
+    :type engine_mask: u32
 
-    :param unsigned long flags:
+    :param flags:
         control flags
+    :type flags: unsigned long
 
-    :param const char \*fmt:
+    :param fmt:
         Error message format string
+    :type fmt: const char \*
 
     :param ellipsis ellipsis:
         variable arguments
@@ -222,8 +250,9 @@ intel_irq_init
 
     initializes irq support
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_irq_init.description`:
 
@@ -242,8 +271,9 @@ intel_irq_fini
 
     deinitializes IRQ support
 
-    :param struct drm_i915_private \*i915:
+    :param i915:
         i915 device instance
+    :type i915: struct drm_i915_private \*
 
 .. _`intel_irq_fini.description`:
 
@@ -261,8 +291,9 @@ intel_irq_install
 
     enables the hardware interrupt
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_irq_install.description`:
 
@@ -285,8 +316,9 @@ intel_irq_uninstall
 
     finilizes all irq handling
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_irq_uninstall.description`:
 
@@ -305,8 +337,9 @@ intel_runtime_pm_disable_interrupts
 
     runtime interrupt disabling
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_runtime_pm_disable_interrupts.description`:
 
@@ -325,8 +358,9 @@ intel_runtime_pm_enable_interrupts
 
     runtime interrupt enabling
 
-    :param struct drm_i915_private \*dev_priv:
+    :param dev_priv:
         i915 device instance
+    :type dev_priv: struct drm_i915_private \*
 
 .. _`intel_runtime_pm_enable_interrupts.description`:
 

@@ -10,11 +10,13 @@ mbox_chan_received_data
 
     A way for controller driver to push data received from remote to the upper layer.
 
-    :param struct mbox_chan \*chan:
+    :param chan:
         Pointer to the mailbox channel on which RX happened.
+    :type chan: struct mbox_chan \*
 
-    :param void \*mssg:
+    :param mssg:
         Client specific message typecasted as void \*
+    :type mssg: void \*
 
 .. _`mbox_chan_received_data.description`:
 
@@ -34,11 +36,13 @@ mbox_chan_txdone
 
     A way for controller driver to notify the framework that the last TX has completed.
 
-    :param struct mbox_chan \*chan:
+    :param chan:
         Pointer to the mailbox chan on which TX happened.
+    :type chan: struct mbox_chan \*
 
-    :param int r:
+    :param r:
         Status of last TX - OK or ERROR
+    :type r: int
 
 .. _`mbox_chan_txdone.description`:
 
@@ -58,11 +62,13 @@ mbox_client_txdone
 
     The way for a client to run the TX state machine.
 
-    :param struct mbox_chan \*chan:
+    :param chan:
         Mailbox channel assigned to this client.
+    :type chan: struct mbox_chan \*
 
-    :param int r:
+    :param r:
         Success status of last transmission.
+    :type r: int
 
 .. _`mbox_client_txdone.description`:
 
@@ -82,8 +88,9 @@ mbox_client_peek_data
 
     A way for client driver to pull data received from remote by the controller.
 
-    :param struct mbox_chan \*chan:
+    :param chan:
         Mailbox channel assigned to this client.
+    :type chan: struct mbox_chan \*
 
 .. _`mbox_client_peek_data.description`:
 
@@ -114,11 +121,13 @@ mbox_send_message
 
     For client to submit a message to be sent to the remote.
 
-    :param struct mbox_chan \*chan:
+    :param chan:
         Mailbox channel assigned to this client.
+    :type chan: struct mbox_chan \*
 
-    :param void \*mssg:
+    :param mssg:
         Client specific message typecasted.
+    :type mssg: void \*
 
 .. _`mbox_send_message.description`:
 
@@ -157,11 +166,13 @@ mbox_request_channel
 
     Request a mailbox channel.
 
-    :param struct mbox_client \*cl:
+    :param cl:
         Identity of the client requesting the channel.
+    :type cl: struct mbox_client \*
 
-    :param int index:
+    :param index:
         Index of mailbox specifier in 'mboxes' property.
+    :type index: int
 
 .. _`mbox_request_channel.description`:
 
@@ -194,8 +205,9 @@ mbox_free_channel
 
     The client relinquishes control of a mailbox channel by this call.
 
-    :param struct mbox_chan \*chan:
+    :param chan:
         The mailbox channel to be freed.
+    :type chan: struct mbox_chan \*
 
 .. _`mbox_controller_register`:
 
@@ -206,8 +218,9 @@ mbox_controller_register
 
     Register the mailbox controller
 
-    :param struct mbox_controller \*mbox:
+    :param mbox:
         Pointer to the mailbox controller.
+    :type mbox: struct mbox_controller \*
 
 .. _`mbox_controller_register.description`:
 
@@ -225,8 +238,9 @@ mbox_controller_unregister
 
     Unregister the mailbox controller
 
-    :param struct mbox_controller \*mbox:
+    :param mbox:
         Pointer to the mailbox controller.
+    :type mbox: struct mbox_controller \*
 
 .. This file was automatic generated / don't edit.
 

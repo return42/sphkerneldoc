@@ -10,8 +10,9 @@
 
     retrieve the physical base address of the CM
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__mips_cm_phys_base.description`:
 
@@ -34,8 +35,9 @@ mips_cm_error_report
 
     Report CM cache errors
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cm_probe`:
 
@@ -46,8 +48,9 @@ mips_cm_probe
 
     probe for a Coherence Manager
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cm_probe.description`:
 
@@ -66,8 +69,9 @@ mips_cm_present
 
     determine whether a Coherence Manager is present
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cm_present.description`:
 
@@ -85,8 +89,9 @@ mips_cm_has_l2sync
 
     determine whether an L2-only sync region is present
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cm_has_l2sync.description`:
 
@@ -104,8 +109,9 @@ mips_cm_l2sync
 
     perform an L2-only sync operation
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cm_l2sync.description`:
 
@@ -124,8 +130,9 @@ mips_cm_revision
 
     return CM revision
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cm_revision.return`:
 
@@ -144,8 +151,9 @@ mips_cm_max_vp_width
 
     return the width in bits of VP indices
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cm_max_vp_width.return`:
 
@@ -164,8 +172,9 @@ mips_cm_vp_id
 
     calculate the hardware VP ID for a CPU
 
-    :param unsigned int cpu:
+    :param cpu:
         the CPU whose VP ID to calculate
+    :type cpu: unsigned int
 
 .. _`mips_cm_vp_id.description`:
 
@@ -192,17 +201,21 @@ mips_cm_lock_other
 
     lock access to redirect/other region
 
-    :param unsigned int cluster:
+    :param cluster:
         the other cluster to be accessed
+    :type cluster: unsigned int
 
-    :param unsigned int core:
+    :param core:
         the other core to be accessed
+    :type core: unsigned int
 
-    :param unsigned int vp:
+    :param vp:
         the VP within the other core to be accessed
+    :type vp: unsigned int
 
-    :param unsigned int block:
+    :param block:
         the register block to be accessed
+    :type block: unsigned int
 
 .. _`mips_cm_lock_other.description`:
 
@@ -229,8 +242,9 @@ mips_cm_unlock_other
 
     unlock access to redirect/other region
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`mips_cm_unlock_other.description`:
 
@@ -249,11 +263,13 @@ mips_cm_lock_other_cpu
 
     lock access to redirect/other region
 
-    :param unsigned int cpu:
+    :param cpu:
         the other CPU whose register we want to access
+    :type cpu: unsigned int
 
-    :param unsigned int block:
+    :param block:
         *undescribed*
+    :type block: unsigned int
 
 .. _`mips_cm_lock_other_cpu.description`:
 

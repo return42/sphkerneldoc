@@ -139,11 +139,13 @@ clocksource_khz2mult
 
     calculates mult from khz and shift
 
-    :param u32 khz:
+    :param khz:
         Clocksource frequency in KHz
+    :type khz: u32
 
-    :param u32 shift_constant:
+    :param shift_constant:
         Clocksource shift factor
+    :type shift_constant: u32
 
 .. _`clocksource_khz2mult.description`:
 
@@ -162,11 +164,13 @@ clocksource_hz2mult
 
     calculates mult from hz and shift
 
-    :param u32 hz:
+    :param hz:
         Clocksource frequency in Hz
+    :type hz: u32
 
-    :param u32 shift_constant:
+    :param shift_constant:
         Clocksource shift factor
+    :type shift_constant: u32
 
 .. _`clocksource_hz2mult.description`:
 
@@ -186,14 +190,17 @@ clocksource_cyc2ns
 
     converts clocksource cycles to nanoseconds
 
-    :param u64 cycles:
+    :param cycles:
         cycles
+    :type cycles: u64
 
-    :param u32 mult:
+    :param mult:
         cycle to nanosecond multiplier
+    :type mult: u32
 
-    :param u32 shift:
+    :param shift:
         cycle to nanosecond divisor (power of two)
+    :type shift: u32
 
 .. _`clocksource_cyc2ns.description`:
 

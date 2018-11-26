@@ -10,11 +10,13 @@ aic26_mute
 
     Mute control to reduce noise when changing audio format
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         *undescribed*
+    :type dai: struct snd_soc_dai \*
 
-    :param int mute:
+    :param mute:
         *undescribed*
+    :type mute: int
 
 .. This file was automatic generated / don't edit.
 

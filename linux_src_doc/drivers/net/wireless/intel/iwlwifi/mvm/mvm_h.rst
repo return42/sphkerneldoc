@@ -128,6 +128,42 @@ bt_coex_max_thold
 last_bt_coex_event
     rssi of the last BT coex event
 
+.. _`iwl_probe_resp_data`:
+
+struct iwl_probe_resp_data
+==========================
+
+.. c:type:: struct iwl_probe_resp_data
+
+    data for NoA/CSA updates
+
+.. _`iwl_probe_resp_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_probe_resp_data {
+        struct rcu_head rcu_head;
+        struct iwl_probe_resp_data_notif notif;
+        int noa_len;
+    }
+
+.. _`iwl_probe_resp_data.members`:
+
+Members
+-------
+
+rcu_head
+    used for freeing the data on update
+
+notif
+    notification data
+
+noa_len
+    length of NoA attribute, calculated from the notification
+
 .. _`iwl_mvm_vif`:
 
 struct iwl_mvm_vif
@@ -203,6 +239,8 @@ Definition
         u16 csa_target_freq;
         bool csa_bcn_pending;
         netdev_features_t features;
+        struct iwl_probe_resp_data __rcu *probe_resp_data;
+        struct ieee80211_key_conf *ap_wep_key;
     }
 
 .. _`iwl_mvm_vif.members`:
@@ -354,6 +392,13 @@ csa_bcn_pending
 features
     hw features active for this vif
 
+probe_resp_data
+    data from FW notification to store NOA and CSA related
+    data to be inserted into probe response.
+
+ap_wep_key
+    *undescribed*
+
 .. _`iwl_mvm_vif.vifs`:
 
 vifs
@@ -464,7 +509,7 @@ Definition
     struct iwl_mvm_reorder_buffer {
         u16 head_sn;
         u16 num_stored;
-        u8 buf_size;
+        u16 buf_size;
         int queue;
         u16 last_amsdu;
         u8 last_sub_index;

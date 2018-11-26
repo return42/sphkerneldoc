@@ -10,20 +10,25 @@ iso_packets_buffer_init
 
     allocates the memory for packets
 
-    :param struct iso_packets_buffer \*b:
+    :param b:
         the buffer structure to initialize
+    :type b: struct iso_packets_buffer \*
 
-    :param struct fw_unit \*unit:
+    :param unit:
         the device at the other end of the stream
+    :type unit: struct fw_unit \*
 
-    :param unsigned int count:
+    :param count:
         the number of packets
+    :type count: unsigned int
 
-    :param unsigned int packet_size:
+    :param packet_size:
         the (maximum) size of a packet, in bytes
+    :type packet_size: unsigned int
 
-    :param enum dma_data_direction direction:
+    :param direction:
         \ ``DMA_TO_DEVICE``\  or \ ``DMA_FROM_DEVICE``\ 
+    :type direction: enum dma_data_direction
 
 .. _`iso_packets_buffer_destroy`:
 
@@ -34,11 +39,13 @@ iso_packets_buffer_destroy
 
     frees packet buffer resources
 
-    :param struct iso_packets_buffer \*b:
+    :param b:
         the buffer structure to free
+    :type b: struct iso_packets_buffer \*
 
-    :param struct fw_unit \*unit:
+    :param unit:
         the device at the other end of the stream
+    :type unit: struct fw_unit \*
 
 .. This file was automatic generated / don't edit.
 

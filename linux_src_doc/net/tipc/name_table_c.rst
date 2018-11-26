@@ -104,26 +104,33 @@ tipc_publ_create
 
     create a publication structure
 
-    :param u32 type:
+    :param type:
         *undescribed*
+    :type type: u32
 
-    :param u32 lower:
+    :param lower:
         *undescribed*
+    :type lower: u32
 
-    :param u32 upper:
+    :param upper:
         *undescribed*
+    :type upper: u32
 
-    :param u32 scope:
+    :param scope:
         *undescribed*
+    :type scope: u32
 
-    :param u32 node:
+    :param node:
         *undescribed*
+    :type node: u32
 
-    :param u32 port:
+    :param port:
         *undescribed*
+    :type port: u32
 
-    :param u32 key:
+    :param key:
         *undescribed*
+    :type key: u32
 
 .. _`tipc_service_create`:
 
@@ -134,11 +141,13 @@ tipc_service_create
 
     create a service structure for the specified 'type'
 
-    :param u32 type:
+    :param type:
         *undescribed*
+    :type type: u32
 
-    :param struct hlist_head \*hd:
+    :param hd:
         *undescribed*
+    :type hd: struct hlist_head \*
 
 .. _`tipc_service_create.description`:
 
@@ -156,11 +165,13 @@ tipc_service_first_range
 
     find first service range in tree matching instance
 
-    :param struct tipc_service \*sc:
+    :param sc:
         *undescribed*
+    :type sc: struct tipc_service \*
 
-    :param u32 instance:
+    :param instance:
         *undescribed*
+    :type instance: u32
 
 .. _`tipc_service_first_range.description`:
 
@@ -178,14 +189,17 @@ tipc_service_remove_publ
 
     remove a publication from a service
 
-    :param struct service_range \*sr:
+    :param sr:
         *undescribed*
+    :type sr: struct service_range \*
 
-    :param u32 node:
+    :param node:
         *undescribed*
+    :type node: u32
 
-    :param u32 key:
+    :param key:
         *undescribed*
+    :type key: u32
 
 .. _`tipc_service_subscribe`:
 
@@ -196,11 +210,13 @@ tipc_service_subscribe
 
     attach a subscription, and optionally issue the prescribed number of events if there is any service range overlapping with the requested range
 
-    :param struct tipc_service \*service:
+    :param service:
         *undescribed*
+    :type service: struct tipc_service \*
 
-    :param struct tipc_subscription \*sub:
+    :param sub:
         *undescribed*
+    :type sub: struct tipc_subscription \*
 
 .. _`tipc_nametbl_translate`:
 
@@ -211,17 +227,21 @@ tipc_nametbl_translate
 
     perform service instance to socket translation
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param u32 type:
+    :param type:
         *undescribed*
+    :type type: u32
 
-    :param u32 instance:
+    :param instance:
         *undescribed*
+    :type instance: u32
 
-    :param u32 \*dnode:
+    :param dnode:
         *undescribed*
+    :type dnode: u32 \*
 
 .. _`tipc_nametbl_translate.description`:
 
@@ -254,20 +274,25 @@ tipc_nametbl_withdraw
 
     withdraw a service binding
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param u32 type:
+    :param type:
         *undescribed*
+    :type type: u32
 
-    :param u32 lower:
+    :param lower:
         *undescribed*
+    :type lower: u32
 
-    :param u32 upper:
+    :param upper:
         *undescribed*
+    :type upper: u32
 
-    :param u32 key:
+    :param key:
         *undescribed*
+    :type key: u32
 
 .. _`tipc_nametbl_subscribe`:
 
@@ -278,8 +303,9 @@ tipc_nametbl_subscribe
 
     add a subscription object to the name table
 
-    :param struct tipc_subscription \*sub:
+    :param sub:
         *undescribed*
+    :type sub: struct tipc_subscription \*
 
 .. _`tipc_nametbl_unsubscribe`:
 
@@ -290,8 +316,9 @@ tipc_nametbl_unsubscribe
 
     remove a subscription object from name table
 
-    :param struct tipc_subscription \*sub:
+    :param sub:
         *undescribed*
+    :type sub: struct tipc_subscription \*
 
 .. _`tipc_service_delete`:
 
@@ -302,11 +329,13 @@ tipc_service_delete
 
     purge all publications for a service and delete it
 
-    :param struct net \*net:
+    :param net:
         *undescribed*
+    :type net: struct net \*
 
-    :param struct tipc_service \*sc:
+    :param sc:
         *undescribed*
+    :type sc: struct tipc_service \*
 
 .. This file was automatic generated / don't edit.
 

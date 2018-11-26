@@ -10,8 +10,9 @@ pci_iov_init
 
     initialize the IOV capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_iov_init.description`:
 
@@ -29,8 +30,9 @@ pci_iov_release
 
     release resources used by the IOV capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_iov_remove`:
 
@@ -41,8 +43,9 @@ pci_iov_remove
 
     clean up SR-IOV state after PF driver is detached
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_iov_update_resource`:
 
@@ -53,11 +56,13 @@ pci_iov_update_resource
 
     update a VF BAR
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param int resno:
+    :param resno:
         the resource number
+    :type resno: int
 
 .. _`pci_iov_update_resource.description`:
 
@@ -75,11 +80,13 @@ pci_sriov_resource_alignment
 
     get resource alignment for VF BAR
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param int resno:
+    :param resno:
         the resource number
+    :type resno: int
 
 .. _`pci_sriov_resource_alignment.description`:
 
@@ -100,8 +107,9 @@ pci_restore_iov_state
 
     restore the state of the IOV capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_vf_drivers_autoprobe`:
 
@@ -112,11 +120,13 @@ pci_vf_drivers_autoprobe
 
     set PF property drivers_autoprobe for VFs
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param bool auto_probe:
+    :param auto_probe:
         set VF drivers auto probe flag
+    :type auto_probe: bool
 
 .. _`pci_iov_bus_range`:
 
@@ -127,8 +137,9 @@ pci_iov_bus_range
 
     find bus range used by Virtual Function
 
-    :param struct pci_bus \*bus:
+    :param bus:
         the PCI bus
+    :type bus: struct pci_bus \*
 
 .. _`pci_iov_bus_range.description`:
 
@@ -147,11 +158,13 @@ pci_enable_sriov
 
     enable the SR-IOV capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param int nr_virtfn:
+    :param nr_virtfn:
         number of virtual functions to enable
+    :type nr_virtfn: int
 
 .. _`pci_enable_sriov.description`:
 
@@ -169,8 +182,9 @@ pci_disable_sriov
 
     disable the SR-IOV capability
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_num_vf`:
 
@@ -181,8 +195,9 @@ pci_num_vf
 
     return number of VFs associated with a PF device_release_driver
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_num_vf.description`:
 
@@ -200,8 +215,9 @@ pci_vfs_assigned
 
     returns number of VFs are assigned to a guest
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
 .. _`pci_vfs_assigned.description`:
 
@@ -220,11 +236,13 @@ pci_sriov_set_totalvfs
 
     - reduce the TotalVFs available
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI PF device
+    :type dev: struct pci_dev \*
 
-    :param u16 numvfs:
+    :param numvfs:
         number that should be used for TotalVFs supported
+    :type numvfs: u16
 
 .. _`pci_sriov_set_totalvfs.description`:
 
@@ -248,8 +266,9 @@ pci_sriov_get_totalvfs
 
     - get total VFs supported on this device
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI PF device
+    :type dev: struct pci_dev \*
 
 .. _`pci_sriov_get_totalvfs.description`:
 
@@ -269,11 +288,13 @@ pci_sriov_configure_simple
 
     helper to configure SR-IOV
 
-    :param struct pci_dev \*dev:
+    :param dev:
         the PCI device
+    :type dev: struct pci_dev \*
 
-    :param int nr_virtfn:
+    :param nr_virtfn:
         number of virtual functions to enable, 0 to disable
+    :type nr_virtfn: int
 
 .. _`pci_sriov_configure_simple.description`:
 

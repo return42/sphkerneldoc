@@ -10,15 +10,18 @@ smc_llc_add_pending_send
 
     add LLC control message to pending WQE transmits
 
-    :param struct smc_link \*link:
+    :param link:
         Pointer to SMC link used for sending LLC control message.
+    :type link: struct smc_link \*
 
-    :param struct smc_wr_buf \*\*wr_buf:
+    :param wr_buf:
         Out variable returning pointer to work request payload buffer.
+    :type wr_buf: struct smc_wr_buf \*\*
 
-    :param struct smc_wr_tx_pend_priv \*\*pend:
+    :param pend:
         Out variable returning pointer to private pending WR tracking.
         It's the context the transmit complete handler will get.
+    :type pend: struct smc_wr_tx_pend_priv \*\*
 
 .. _`smc_llc_add_pending_send.description`:
 

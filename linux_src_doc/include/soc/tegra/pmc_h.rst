@@ -73,7 +73,8 @@ Definition
         TEGRA_IO_PAD_USB1,
         TEGRA_IO_PAD_USB2,
         TEGRA_IO_PAD_USB3,
-        TEGRA_IO_PAD_USB_BIAS
+        TEGRA_IO_PAD_USB_BIAS,
+        TEGRA_IO_PAD_AO_HV
     };
 
 .. _`tegra_io_pad.constants`:
@@ -249,6 +250,9 @@ TEGRA_IO_PAD_USB3
 TEGRA_IO_PAD_USB_BIAS
     *undescribed*
 
+TEGRA_IO_PAD_AO_HV
+    *undescribed*
+
 .. _`tegra_io_pad.description`:
 
 Description
@@ -257,38 +261,6 @@ Description
 I/O pins on Tegra SoCs are grouped into so-called I/O pads. Each such pad
 can be used to control the common voltage signal level and power state of
 the pins of the given pad.
-
-.. _`tegra_io_pad_voltage`:
-
-enum tegra_io_pad_voltage
-=========================
-
-.. c:type:: enum tegra_io_pad_voltage
-
-    voltage level of the I/O pad's source rail
-
-.. _`tegra_io_pad_voltage.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum tegra_io_pad_voltage {
-        TEGRA_IO_PAD_1800000UV,
-        TEGRA_IO_PAD_3300000UV
-    };
-
-.. _`tegra_io_pad_voltage.constants`:
-
-Constants
----------
-
-TEGRA_IO_PAD_1800000UV
-    1.8 V
-
-TEGRA_IO_PAD_3300000UV
-    3.3 V
 
 .. This file was automatic generated / don't edit.
 

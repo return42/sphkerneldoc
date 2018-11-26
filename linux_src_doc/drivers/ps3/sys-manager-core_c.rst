@@ -10,8 +10,9 @@ ps3_sys_manager_register_ops
 
     Bind ps3_sys_manager_ops to a module.
 
-    :param const struct ps3_sys_manager_ops \*ops:
+    :param ops:
         struct ps3_sys_manager_ops.
+    :type ops: const struct ps3_sys_manager_ops \*
 
 .. _`ps3_sys_manager_register_ops.description`:
 

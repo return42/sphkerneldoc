@@ -10,29 +10,37 @@ key_alloc
 
     Allocate a key of the specified type.
 
-    :param struct key_type \*type:
+    :param type:
         The type of key to allocate.
+    :type type: struct key_type \*
 
-    :param const char \*desc:
+    :param desc:
         The key description to allow the key to be searched out.
+    :type desc: const char \*
 
-    :param kuid_t uid:
+    :param uid:
         The owner of the new key.
+    :type uid: kuid_t
 
-    :param kgid_t gid:
+    :param gid:
         The group ID for the new key's group permissions.
+    :type gid: kgid_t
 
-    :param const struct cred \*cred:
+    :param cred:
         The credentials specifying UID namespace.
+    :type cred: const struct cred \*
 
-    :param key_perm_t perm:
+    :param perm:
         The permissions mask of the new key.
+    :type perm: key_perm_t
 
-    :param unsigned long flags:
+    :param flags:
         Flags specifying quota properties.
+    :type flags: unsigned long
 
-    :param struct key_restriction \*restrict_link:
+    :param restrict_link:
         Optional link restriction for new keyrings.
+    :type restrict_link: struct key_restriction \*
 
 .. _`key_alloc.description`:
 
@@ -70,11 +78,13 @@ key_payload_reserve
 
     Adjust data quota reservation for the key's payload
 
-    :param struct key \*key:
+    :param key:
         The key to make the reservation for.
+    :type key: struct key \*
 
-    :param size_t datalen:
+    :param datalen:
         The amount of data payload the caller now wants.
+    :type datalen: size_t
 
 .. _`key_payload_reserve.description`:
 
@@ -96,20 +106,25 @@ key_instantiate_and_link
 
     Instantiate a key and link it into the keyring.
 
-    :param struct key \*key:
+    :param key:
         The key to instantiate.
+    :type key: struct key \*
 
-    :param const void \*data:
+    :param data:
         The data to use to instantiate the keyring.
+    :type data: const void \*
 
-    :param size_t datalen:
+    :param datalen:
         The length of \ ``data``\ .
+    :type datalen: size_t
 
-    :param struct key \*keyring:
+    :param keyring:
         Keyring to create a link in on success (or NULL).
+    :type keyring: struct key \*
 
-    :param struct key \*authkey:
+    :param authkey:
         The authorisation token permitting instantiation.
+    :type authkey: struct key \*
 
 .. _`key_instantiate_and_link.description`:
 
@@ -133,20 +148,25 @@ key_reject_and_link
 
     Negatively instantiate a key and link it into the keyring.
 
-    :param struct key \*key:
+    :param key:
         The key to instantiate.
+    :type key: struct key \*
 
-    :param unsigned timeout:
+    :param timeout:
         The timeout on the negative key.
+    :type timeout: unsigned
 
-    :param unsigned error:
+    :param error:
         The error to return when the key is hit.
+    :type error: unsigned
 
-    :param struct key \*keyring:
+    :param keyring:
         Keyring to create a link in on success (or NULL).
+    :type keyring: struct key \*
 
-    :param struct key \*authkey:
+    :param authkey:
         The authorisation token permitting instantiation.
+    :type authkey: struct key \*
 
 .. _`key_reject_and_link.description`:
 
@@ -175,8 +195,9 @@ key_put
 
     Discard a reference to a key.
 
-    :param struct key \*key:
+    :param key:
         The key to discard a reference from.
+    :type key: struct key \*
 
 .. _`key_put.description`:
 
@@ -196,26 +217,33 @@ key_create_or_update
 
     Update or create and instantiate a key.
 
-    :param key_ref_t keyring_ref:
+    :param keyring_ref:
         A pointer to the destination keyring with possession flag.
+    :type keyring_ref: key_ref_t
 
-    :param const char \*type:
+    :param type:
         The type of key.
+    :type type: const char \*
 
-    :param const char \*description:
+    :param description:
         The searchable description for the key.
+    :type description: const char \*
 
-    :param const void \*payload:
+    :param payload:
         The data to use to instantiate or update the key.
+    :type payload: const void \*
 
-    :param size_t plen:
+    :param plen:
         The length of \ ``payload``\ .
+    :type plen: size_t
 
-    :param key_perm_t perm:
+    :param perm:
         The permissions mask for a new key.
+    :type perm: key_perm_t
 
-    :param unsigned long flags:
+    :param flags:
         The quota flags for a new key.
+    :type flags: unsigned long
 
 .. _`key_create_or_update.description`:
 
@@ -246,14 +274,17 @@ key_update
 
     Update a key's contents.
 
-    :param key_ref_t key_ref:
+    :param key_ref:
         The pointer (plus possession flag) to the key.
+    :type key_ref: key_ref_t
 
-    :param const void \*payload:
+    :param payload:
         The data to be used to update the key.
+    :type payload: const void \*
 
-    :param size_t plen:
+    :param plen:
         The length of \ ``payload``\ .
+    :type plen: size_t
 
 .. _`key_update.description`:
 
@@ -276,8 +307,9 @@ key_revoke
 
     Revoke a key.
 
-    :param struct key \*key:
+    :param key:
         The key to be revoked.
+    :type key: struct key \*
 
 .. _`key_revoke.description`:
 
@@ -298,8 +330,9 @@ key_invalidate
 
     Invalidate a key.
 
-    :param struct key \*key:
+    :param key:
         The key to be invalidated.
+    :type key: struct key \*
 
 .. _`key_invalidate.description`:
 
@@ -318,11 +351,13 @@ generic_key_instantiate
 
     Simple instantiation of a key from preparsed data
 
-    :param struct key \*key:
+    :param key:
         The key to be instantiated
+    :type key: struct key \*
 
-    :param struct key_preparsed_payload \*prep:
+    :param prep:
         The preparsed data to load.
+    :type prep: struct key_preparsed_payload \*
 
 .. _`generic_key_instantiate.description`:
 
@@ -343,8 +378,9 @@ register_key_type
 
     Register a type of key.
 
-    :param struct key_type \*ktype:
+    :param ktype:
         The new key type.
+    :type ktype: struct key_type \*
 
 .. _`register_key_type.description`:
 
@@ -364,8 +400,9 @@ unregister_key_type
 
     Unregister a type of key.
 
-    :param struct key_type \*ktype:
+    :param ktype:
         The key type.
+    :type ktype: struct key_type \*
 
 .. _`unregister_key_type.description`:
 

@@ -10,17 +10,21 @@ write_ireg
 
     write the interrupt regs
 
-    :param struct ioc4_soft \*ioc4_soft:
+    :param ioc4_soft:
         ptr to soft struct for this port
+    :type ioc4_soft: struct ioc4_soft \*
 
-    :param uint32_t val:
+    :param val:
         value to write
+    :type val: uint32_t
 
-    :param int which:
+    :param which:
         which register
+    :type which: int
 
-    :param int type:
+    :param type:
         which ireg set
+    :type type: int
 
 .. _`set_baud`:
 
@@ -31,11 +35,13 @@ set_baud
 
     Baud rate setting code
 
-    :param struct ioc4_port \*port:
+    :param port:
         port to set
+    :type port: struct ioc4_port \*
 
-    :param int baud:
+    :param baud:
         baud rate to use
+    :type baud: int
 
 .. _`get_ioc4_port`:
 
@@ -46,11 +52,13 @@ get_ioc4_port
 
     given a uart port, return the control structure
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
-    :param int set:
+    :param set:
         set this port as current
+    :type set: int
 
 .. _`port_init`:
 
@@ -61,8 +69,9 @@ port_init
 
     Initialize the sio and ioc4 hardware for a given port called per port from attach...
 
-    :param struct ioc4_port \*port:
+    :param port:
         port to initialize
+    :type port: struct ioc4_port \*
 
 .. _`handle_dma_error_intr`:
 
@@ -73,11 +82,13 @@ handle_dma_error_intr
 
     service any pending DMA error interrupts for the given port - 2nd level called via sd_intr
 
-    :param void \*arg:
+    :param arg:
         handler arg
+    :type arg: void \*
 
-    :param uint32_t other_ir:
+    :param other_ir:
         ioc4regs
+    :type other_ir: uint32_t
 
 .. _`intr_connect`:
 
@@ -88,20 +99,25 @@ intr_connect
 
     interrupt connect function
 
-    :param struct ioc4_soft \*soft:
+    :param soft:
         soft struct for this card
+    :type soft: struct ioc4_soft \*
 
-    :param int type:
+    :param type:
         interrupt type
+    :type type: int
 
-    :param uint32_t intrbits:
+    :param intrbits:
         bit pattern to set
+    :type intrbits: uint32_t
 
-    :param ioc4_intr_func_f \*intr:
+    :param intr:
         handler function
+    :type intr: ioc4_intr_func_f \*
 
-    :param void \*info:
+    :param info:
         handler arg
+    :type info: void \*
 
 .. _`ioc4_intr`:
 
@@ -112,11 +128,13 @@ ioc4_intr
 
     Top level IOC4 interrupt handler.
 
-    :param int irq:
+    :param irq:
         irq value
+    :type irq: int
 
-    :param void \*arg:
+    :param arg:
         handler arg
+    :type arg: void \*
 
 .. _`ioc4_attach_local`:
 
@@ -127,8 +145,9 @@ ioc4_attach_local
 
     Device initialization. Called at \*\_attach() time for each IOC4 with serial ports in the system.
 
-    :param struct ioc4_driver_data \*idd:
+    :param idd:
         Master module data for this IOC4
+    :type idd: struct ioc4_driver_data \*
 
 .. _`enable_intrs`:
 
@@ -139,11 +158,13 @@ enable_intrs
 
     enable interrupts
 
-    :param struct ioc4_port \*port:
+    :param port:
         port to enable
+    :type port: struct ioc4_port \*
 
-    :param uint32_t mask:
+    :param mask:
         mask to use
+    :type mask: uint32_t
 
 .. _`local_open`:
 
@@ -154,8 +175,9 @@ local_open
 
     local open a port
 
-    :param struct ioc4_port \*port:
+    :param port:
         port to open
+    :type port: struct ioc4_port \*
 
 .. _`set_rx_timeout`:
 
@@ -166,11 +188,13 @@ set_rx_timeout
 
     Set rx timeout and threshold values.
 
-    :param struct ioc4_port \*port:
+    :param port:
         port to use
+    :type port: struct ioc4_port \*
 
-    :param int timeout:
+    :param timeout:
         timeout value in ticks
+    :type timeout: int
 
 .. _`config_port`:
 
@@ -181,23 +205,29 @@ config_port
 
     config the hardware
 
-    :param struct ioc4_port \*port:
+    :param port:
         port to config
+    :type port: struct ioc4_port \*
 
-    :param int baud:
+    :param baud:
         baud rate for the port
+    :type baud: int
 
-    :param int byte_size:
+    :param byte_size:
         data size
+    :type byte_size: int
 
-    :param int stop_bits:
+    :param stop_bits:
         number of stop bits
+    :type stop_bits: int
 
-    :param int parenb:
+    :param parenb:
         parity enable ?
+    :type parenb: int
 
-    :param int parodd:
+    :param parodd:
         odd parity ?
+    :type parodd: int
 
 .. _`do_write`:
 
@@ -208,14 +238,17 @@ do_write
 
     Write bytes to the port.  Returns the number of bytes actually written. Called from transmit_chars
 
-    :param struct ioc4_port \*port:
+    :param port:
         port to use
+    :type port: struct ioc4_port \*
 
-    :param char \*buf:
+    :param buf:
         the stuff to write
+    :type buf: char \*
 
-    :param int len:
+    :param len:
         how many bytes in 'buf'
+    :type len: int
 
 .. _`disable_intrs`:
 
@@ -226,11 +259,13 @@ disable_intrs
 
     disable interrupts
 
-    :param struct ioc4_port \*port:
+    :param port:
         port to enable
+    :type port: struct ioc4_port \*
 
-    :param uint32_t mask:
+    :param mask:
         mask to use
+    :type mask: uint32_t
 
 .. _`set_notification`:
 
@@ -241,14 +276,17 @@ set_notification
 
     Modify event notification
 
-    :param struct ioc4_port \*port:
+    :param port:
         port to use
+    :type port: struct ioc4_port \*
 
-    :param int mask:
+    :param mask:
         events mask
+    :type mask: int
 
-    :param int set_on:
+    :param set_on:
         set ?
+    :type set_on: int
 
 .. _`set_mcr`:
 
@@ -259,14 +297,17 @@ set_mcr
 
     set the master control reg
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         port to use
+    :type the_port: struct uart_port \*
 
-    :param int mask1:
+    :param mask1:
         mcr mask
+    :type mask1: int
 
-    :param int mask2:
+    :param mask2:
         shadow mask
+    :type mask2: int
 
 .. _`ioc4_set_proto`:
 
@@ -277,11 +318,13 @@ ioc4_set_proto
 
     set the protocol for the port
 
-    :param struct ioc4_port \*port:
+    :param port:
         port to use
+    :type port: struct ioc4_port \*
 
-    :param int proto:
+    :param proto:
         protocol to use
+    :type proto: int
 
 .. _`transmit_chars`:
 
@@ -292,8 +335,9 @@ transmit_chars
 
     upper level write, called with ip_lock
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         port to write
+    :type the_port: struct uart_port \*
 
 .. _`ioc4_change_speed`:
 
@@ -304,14 +348,17 @@ ioc4_change_speed
 
     change the speed of the port
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         port to change
+    :type the_port: struct uart_port \*
 
-    :param struct ktermios \*new_termios:
+    :param new_termios:
         new termios settings
+    :type new_termios: struct ktermios \*
 
-    :param struct ktermios \*old_termios:
+    :param old_termios:
         old termios settings
+    :type old_termios: struct ktermios \*
 
 .. _`ic4_startup_local`:
 
@@ -322,8 +369,9 @@ ic4_startup_local
 
     Start up the serial port - returns >= 0 if no errors
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         Port to operate on
+    :type the_port: struct uart_port \*
 
 .. _`handle_intr`:
 
@@ -334,11 +382,13 @@ handle_intr
 
     service any interrupts for the given port - 2nd level called via sd_intr
 
-    :param void \*arg:
+    :param arg:
         handler arg
+    :type arg: void \*
 
-    :param uint32_t sio_ir:
+    :param sio_ir:
         ioc4regs
+    :type sio_ir: uint32_t
 
 .. _`do_read`:
 
@@ -349,14 +399,17 @@ do_read
 
     Read in bytes from the port.  Return the number of bytes actually read.
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         port to use
+    :type the_port: struct uart_port \*
 
-    :param unsigned char \*buf:
+    :param buf:
         place to put the stuff we read
+    :type buf: unsigned char \*
 
-    :param int len:
+    :param len:
         how big 'buf' is
+    :type len: int
 
 .. _`receive_chars`:
 
@@ -367,8 +420,9 @@ receive_chars
 
     upper level read. Called with ip_lock.
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         port to read from
+    :type the_port: struct uart_port \*
 
 .. _`ic4_type`:
 
@@ -379,8 +433,9 @@ ic4_type
 
     What type of console are we?
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic4_tx_empty`:
 
@@ -391,8 +446,9 @@ ic4_tx_empty
 
     Is the transmitter empty?
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic4_stop_tx`:
 
@@ -403,8 +459,9 @@ ic4_stop_tx
 
     stop the transmitter
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`null_void_function`:
 
@@ -413,8 +470,9 @@ null_void_function
 
 .. c:function:: void null_void_function(struct uart_port *the_port)
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic4_shutdown`:
 
@@ -425,8 +483,9 @@ ic4_shutdown
 
     shut down the port - free irq and disable
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic4_set_mctrl`:
 
@@ -437,11 +496,13 @@ ic4_set_mctrl
 
     set control lines (dtr, rts, etc)
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
-    :param unsigned int mctrl:
+    :param mctrl:
         Lines to set/unset
+    :type mctrl: unsigned int
 
 .. _`ic4_get_mctrl`:
 
@@ -452,8 +513,9 @@ ic4_get_mctrl
 
     get control line info
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic4_start_tx`:
 
@@ -464,8 +526,9 @@ ic4_start_tx
 
     Start transmitter, flush any output
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic4_break_ctl`:
 
@@ -476,11 +539,13 @@ ic4_break_ctl
 
     handle breaks
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
-    :param int break_state:
+    :param break_state:
         Break state
+    :type break_state: int
 
 .. _`ic4_startup`:
 
@@ -491,8 +556,9 @@ ic4_startup
 
     Start up the serial port
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
 .. _`ic4_set_termios`:
 
@@ -503,14 +569,17 @@ ic4_set_termios
 
     set termios stuff
 
-    :param struct uart_port \*the_port:
+    :param the_port:
         *undescribed*
+    :type the_port: struct uart_port \*
 
-    :param struct ktermios \*termios:
+    :param termios:
         Old
+    :type termios: struct ktermios \*
 
-    :param struct ktermios \*old_termios:
+    :param old_termios:
         *undescribed*
+    :type old_termios: struct ktermios \*
 
 .. _`ic4_request_port`:
 
@@ -521,8 +590,9 @@ ic4_request_port
 
     allocate resources for port - no op....
 
-    :param struct uart_port \*port:
+    :param port:
         port to operate on
+    :type port: struct uart_port \*
 
 .. _`ioc4_serial_remove_one`:
 
@@ -533,8 +603,9 @@ ioc4_serial_remove_one
 
     detach function
 
-    :param struct ioc4_driver_data \*idd:
+    :param idd:
         IOC4 master module data for this IOC4
+    :type idd: struct ioc4_driver_data \*
 
 .. _`ioc4_serial_core_attach`:
 
@@ -545,11 +616,13 @@ ioc4_serial_core_attach
 
     register with serial core This is done during pci probing
 
-    :param struct pci_dev \*pdev:
+    :param pdev:
         handle for this card
+    :type pdev: struct pci_dev \*
 
-    :param int port_type:
+    :param port_type:
         *undescribed*
+    :type port_type: int
 
 .. _`ioc4_serial_attach_one`:
 
@@ -560,8 +633,9 @@ ioc4_serial_attach_one
 
     register attach function called per card found from IOC4 master module.
 
-    :param struct ioc4_driver_data \*idd:
+    :param idd:
         Master module data for this IOC4
+    :type idd: struct ioc4_driver_data \*
 
 .. _`ioc4_serial_init`:
 
@@ -572,8 +646,9 @@ ioc4_serial_init
 
     module init
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. This file was automatic generated / don't edit.
 

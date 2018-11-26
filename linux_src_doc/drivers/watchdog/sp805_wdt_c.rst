@@ -22,6 +22,7 @@ Definition
         spinlock_t lock;
         void __iomem *base;
         struct clk *clk;
+        u64 rate;
         struct amba_device *adev;
         unsigned int load_val;
     }
@@ -42,6 +43,9 @@ base
 
 clk
     clock structure of wdt
+
+rate
+    *undescribed*
 
 adev
     amba device structure of wdt

@@ -440,6 +440,46 @@ cb_data_offs
     offset inside skb->cb to store transport data at, must have
     space for at least two pointers
 
+.. _`iwl_trans_rxq_dma_data`:
+
+struct iwl_trans_rxq_dma_data
+=============================
+
+.. c:type:: struct iwl_trans_rxq_dma_data
+
+    RX queue DMA data
+
+.. _`iwl_trans_rxq_dma_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_trans_rxq_dma_data {
+        u64 fr_bd_cb;
+        u32 fr_bd_wid;
+        u64 urbd_stts_wrptr;
+        u64 ur_bd_cb;
+    }
+
+.. _`iwl_trans_rxq_dma_data.members`:
+
+Members
+-------
+
+fr_bd_cb
+    DMA address of free BD cyclic buffer
+
+fr_bd_wid
+    Initial write index of the free BD cyclic buffer
+
+urbd_stts_wrptr
+    DMA address of urbd_stts_wrptr
+
+ur_bd_cb
+    DMA address of used BD cyclic buffer
+
 .. _`iwl_trans_ops`:
 
 struct iwl_trans_ops
@@ -469,8 +509,9 @@ Definition
         void (*reclaim)(struct iwl_trans *trans, int queue, int ssn, struct sk_buff_head *skbs);
         bool (*txq_enable)(struct iwl_trans *trans, int queue, u16 ssn,const struct iwl_trans_txq_scd_cfg *cfg, unsigned int queue_wdg_timeout);
         void (*txq_disable)(struct iwl_trans *trans, int queue, bool configure_scd);
-        int (*txq_alloc)(struct iwl_trans *trans,struct iwl_tx_queue_cfg_cmd *cmd,int cmd_id, int size, unsigned int queue_wdg_timeout);
+        int (*txq_alloc)(struct iwl_trans *trans,__le16 flags, u8 sta_id, u8 tid,int cmd_id, int size, unsigned int queue_wdg_timeout);
         void (*txq_free)(struct iwl_trans *trans, int queue);
+        int (*rxq_dma_data)(struct iwl_trans *trans, int queue, struct iwl_trans_rxq_dma_data *data);
         void (*txq_set_shared_mode)(struct iwl_trans *trans, u32 txq_id, bool shared);
         int (*wait_tx_queues_empty)(struct iwl_trans *trans, u32 txq_bm);
         int (*wait_txq_empty)(struct iwl_trans *trans, int queue);
@@ -494,7 +535,6 @@ Definition
         int (*suspend)(struct iwl_trans *trans);
         void (*resume)(struct iwl_trans *trans);
         struct iwl_trans_dump_data *(*dump_data)(struct iwl_trans *trans,const struct iwl_fw_dbg_trigger_tlv *trigger);
-        void (*dump_regs)(struct iwl_trans *trans);
     }
 
 .. _`iwl_trans_ops.members`:
@@ -574,6 +614,9 @@ txq_alloc
     *undescribed*
 
 txq_free
+    *undescribed*
+
+rxq_dma_data
     *undescribed*
 
 txq_set_shared_mode
@@ -661,11 +704,6 @@ dump_data
     return a vmalloc'ed buffer with debug data, maybe containing last
     TX'ed commands and similar. The buffer will be vfree'd by the caller.
     Note that the transport must fill in the proper file headers.
-
-dump_regs
-    dump using IWL_ERR configuration space and memory mapped
-    registers of the device to diagnose failure, e.g., when HW becomes
-    inaccessible.
 
 .. _`iwl_trans_ops.description`:
 
@@ -793,6 +831,41 @@ This enumeration describes the device's platform power management
 behavior when in idle mode (i.e. runtime power management) or when
 in system-wide suspend (i.e WoWLAN).
 
+.. _`iwl_dram_data`:
+
+struct iwl_dram_data
+====================
+
+.. c:type:: struct iwl_dram_data
+
+
+.. _`iwl_dram_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_dram_data {
+        dma_addr_t physical;
+        void *block;
+        int size;
+    }
+
+.. _`iwl_dram_data.members`:
+
+Members
+-------
+
+physical
+    page phy pointer
+
+block
+    pointer to the allocated block/page
+
+size
+    size of the block/page
+
 .. _`iwl_trans`:
 
 struct iwl_trans
@@ -840,7 +913,10 @@ Definition
         const struct iwl_fw_dbg_dest_tlv_v1 *dbg_dest_tlv;
         const struct iwl_fw_dbg_conf_tlv *dbg_conf_tlv[FW_DBG_CONF_MAX];
         struct iwl_fw_dbg_trigger_tlv * const *dbg_trigger_tlv;
-        u8 dbg_dest_reg_num;
+        u32 dbg_dump_mask;
+        u8 dbg_n_dest_reg;
+        int num_blocks;
+        struct iwl_dram_data fw_mon[IWL_MAX_DEBUG_ALLOCATIONS];
         enum iwl_plat_pm_mode system_pm_mode;
         enum iwl_plat_pm_mode runtime_pm_mode;
         bool suspending;
@@ -947,8 +1023,17 @@ dbg_conf_tlv
 dbg_trigger_tlv
     array of pointers to triggers TLVs for debug
 
-dbg_dest_reg_num
+dbg_dump_mask
+    *undescribed*
+
+dbg_n_dest_reg
     num of reg_ops in \ ``dbg_dest_tlv``\ 
+
+num_blocks
+    number of blocks in fw_mon
+
+fw_mon
+    address of the buffers for firmware monitor
 
 system_pm_mode
     the system-wide power management mode in use.

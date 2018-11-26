@@ -10,8 +10,9 @@ omap_irq_enable_vblank
 
     enable vblank interrupt events
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
+    :type crtc: struct drm_crtc \*
 
 .. _`omap_irq_enable_vblank.description`:
 
@@ -35,8 +36,9 @@ omap_irq_disable_vblank
 
     disable vblank interrupt events
 
-    :param struct drm_crtc \*crtc:
+    :param crtc:
         *undescribed*
+    :type crtc: struct drm_crtc \*
 
 .. _`omap_irq_disable_vblank.description`:
 

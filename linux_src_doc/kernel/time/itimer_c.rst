@@ -10,8 +10,9 @@ itimer_get_remtime
 
     get remaining time for the timer
 
-    :param struct hrtimer \*timer:
+    :param timer:
         the timer to read
+    :type timer: struct hrtimer \*
 
 .. _`itimer_get_remtime.description`:
 
@@ -30,9 +31,10 @@ alarm_setitimer
 
     set alarm in seconds
 
-    :param unsigned int seconds:
+    :param seconds:
         number of seconds until alarm
         0 disables the alarm
+    :type seconds: unsigned int
 
 .. _`alarm_setitimer.description`:
 

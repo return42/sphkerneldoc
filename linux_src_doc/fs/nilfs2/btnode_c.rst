@@ -10,8 +10,9 @@ nilfs_btnode_delete
 
     delete B-tree node buffer
 
-    :param struct buffer_head \*bh:
+    :param bh:
         buffer to be deleted
+    :type bh: struct buffer_head \*
 
 .. _`nilfs_btnode_delete.description`:
 
@@ -30,11 +31,13 @@ nilfs_btnode_prepare_change_key
 
     prepare to move contents of the block for old key to one of new key. the old buffer will not be removed, but might be reused for new buffer. it might return -ENOMEM because of memory allocation errors, and might return -EIO because of disk read errors.
 
-    :param struct address_space \*btnc:
+    :param btnc:
         *undescribed*
+    :type btnc: struct address_space \*
 
-    :param struct nilfs_btnode_chkey_ctxt \*ctxt:
+    :param ctxt:
         *undescribed*
+    :type ctxt: struct nilfs_btnode_chkey_ctxt \*
 
 .. _`nilfs_btnode_commit_change_key`:
 
@@ -45,11 +48,13 @@ nilfs_btnode_commit_change_key
 
     commit the change_key operation prepared by \ :c:func:`prepare_change_key`\ .
 
-    :param struct address_space \*btnc:
+    :param btnc:
         *undescribed*
+    :type btnc: struct address_space \*
 
-    :param struct nilfs_btnode_chkey_ctxt \*ctxt:
+    :param ctxt:
         *undescribed*
+    :type ctxt: struct nilfs_btnode_chkey_ctxt \*
 
 .. _`nilfs_btnode_abort_change_key`:
 
@@ -60,11 +65,13 @@ nilfs_btnode_abort_change_key
 
     abort the change_key operation prepared by \ :c:func:`prepare_change_key`\ .
 
-    :param struct address_space \*btnc:
+    :param btnc:
         *undescribed*
+    :type btnc: struct address_space \*
 
-    :param struct nilfs_btnode_chkey_ctxt \*ctxt:
+    :param ctxt:
         *undescribed*
+    :type ctxt: struct nilfs_btnode_chkey_ctxt \*
 
 .. This file was automatic generated / don't edit.
 

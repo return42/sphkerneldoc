@@ -76,11 +76,13 @@ freq_in_rule_band
 
     tells us if a frequency is in a frequency band
 
-    :param const struct ieee80211_freq_range \*freq_range:
+    :param freq_range:
         frequency rule we want to query
+    :type freq_range: const struct ieee80211_freq_range \*
 
-    :param u32 freq_khz:
+    :param freq_khz:
         frequency we are inquiring about
+    :type freq_khz: u32
 
 .. _`freq_in_rule_band.description`:
 
@@ -106,11 +108,13 @@ regdom_intersect
 
     do the intersection between two regulatory domains
 
-    :param const struct ieee80211_regdomain \*rd1:
+    :param rd1:
         first regulatory domain
+    :type rd1: const struct ieee80211_regdomain \*
 
-    :param const struct ieee80211_regdomain \*rd2:
+    :param rd2:
         second regulatory domain
+    :type rd2: const struct ieee80211_regdomain \*
 
 .. _`regdom_intersect.description`:
 
@@ -134,8 +138,9 @@ reg_process_hint_core
 
     process core regulatory requests
 
-    :param struct regulatory_request \*core_request:
+    :param core_request:
         *undescribed*
+    :type core_request: struct regulatory_request \*
 
 .. _`reg_process_hint_core.description`:
 
@@ -154,8 +159,9 @@ reg_process_hint_user
 
     process user regulatory requests
 
-    :param struct regulatory_request \*user_request:
+    :param user_request:
         a pending user regulatory request
+    :type user_request: struct regulatory_request \*
 
 .. _`reg_process_hint_user.description`:
 
@@ -174,11 +180,13 @@ reg_process_hint_driver
 
     process driver regulatory requests
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         *undescribed*
+    :type wiphy: struct wiphy \*
 
-    :param struct regulatory_request \*driver_request:
+    :param driver_request:
         a pending driver regulatory request
+    :type driver_request: struct regulatory_request \*
 
 .. _`reg_process_hint_driver.description`:
 
@@ -199,11 +207,13 @@ reg_process_hint_country_ie
 
     process regulatory requests from country IEs
 
-    :param struct wiphy \*wiphy:
+    :param wiphy:
         *undescribed*
+    :type wiphy: struct wiphy \*
 
-    :param struct regulatory_request \*country_ie_request:
+    :param country_ie_request:
         a regulatory request from a country IE
+    :type country_ie_request: struct regulatory_request \*
 
 .. _`reg_process_hint_country_ie.description`:
 

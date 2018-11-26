@@ -10,8 +10,9 @@ ima_inode_post_setattr
 
     reflect file metadata changes
 
-    :param struct dentry \*dentry:
+    :param dentry:
         pointer to the affected dentry
+    :type dentry: struct dentry \*
 
 .. _`ima_inode_post_setattr.description`:
 

@@ -10,17 +10,21 @@ intel_svm_bind_mm
 
     Bind the current process to a PASID
 
-    :param struct device \*dev:
+    :param dev:
         Device to be granted acccess
+    :type dev: struct device \*
 
-    :param int \*pasid:
+    :param pasid:
         Address for allocated PASID
+    :type pasid: int \*
 
-    :param int flags:
+    :param flags:
         Flags. Later for requesting supervisor mode, etc.
+    :type flags: int
 
-    :param struct svm_dev_ops \*ops:
+    :param ops:
         Callbacks to device driver
+    :type ops: struct svm_dev_ops \*
 
 .. _`intel_svm_bind_mm.description`:
 
@@ -56,11 +60,13 @@ intel_svm_unbind_mm
 
     Unbind a specified PASID
 
-    :param struct device \*dev:
+    :param dev:
         Device for which PASID was allocated
+    :type dev: struct device \*
 
-    :param int pasid:
+    :param pasid:
         PASID value to be unbound
+    :type pasid: int
 
 .. _`intel_svm_unbind_mm.description`:
 
@@ -86,11 +92,13 @@ intel_svm_is_pasid_valid
 
     check if pasid is valid
 
-    :param struct device \*dev:
+    :param dev:
         Device for which PASID was allocated
+    :type dev: struct device \*
 
-    :param int pasid:
+    :param pasid:
         PASID value to be checked
+    :type pasid: int
 
 .. _`intel_svm_is_pasid_valid.description`:
 

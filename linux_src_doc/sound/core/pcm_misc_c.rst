@@ -10,8 +10,9 @@ snd_pcm_format_signed
 
     Check the PCM format is signed linear
 
-    :param snd_pcm_format_t format:
+    :param format:
         the format to check
+    :type format: snd_pcm_format_t
 
 .. _`snd_pcm_format_signed.return`:
 
@@ -30,8 +31,9 @@ snd_pcm_format_unsigned
 
     Check the PCM format is unsigned linear
 
-    :param snd_pcm_format_t format:
+    :param format:
         the format to check
+    :type format: snd_pcm_format_t
 
 .. _`snd_pcm_format_unsigned.return`:
 
@@ -50,8 +52,9 @@ snd_pcm_format_linear
 
     Check the PCM format is linear
 
-    :param snd_pcm_format_t format:
+    :param format:
         the format to check
+    :type format: snd_pcm_format_t
 
 .. _`snd_pcm_format_linear.return`:
 
@@ -69,8 +72,9 @@ snd_pcm_format_little_endian
 
     Check the PCM format is little-endian
 
-    :param snd_pcm_format_t format:
+    :param format:
         the format to check
+    :type format: snd_pcm_format_t
 
 .. _`snd_pcm_format_little_endian.return`:
 
@@ -89,8 +93,9 @@ snd_pcm_format_big_endian
 
     Check the PCM format is big-endian
 
-    :param snd_pcm_format_t format:
+    :param format:
         the format to check
+    :type format: snd_pcm_format_t
 
 .. _`snd_pcm_format_big_endian.return`:
 
@@ -109,8 +114,9 @@ snd_pcm_format_width
 
     return the bit-width of the format
 
-    :param snd_pcm_format_t format:
+    :param format:
         the format to check
+    :type format: snd_pcm_format_t
 
 .. _`snd_pcm_format_width.return`:
 
@@ -129,8 +135,9 @@ snd_pcm_format_physical_width
 
     return the physical bit-width of the format
 
-    :param snd_pcm_format_t format:
+    :param format:
         the format to check
+    :type format: snd_pcm_format_t
 
 .. _`snd_pcm_format_physical_width.return`:
 
@@ -149,11 +156,13 @@ snd_pcm_format_size
 
     return the byte size of samples on the given format
 
-    :param snd_pcm_format_t format:
+    :param format:
         the format to check
+    :type format: snd_pcm_format_t
 
-    :param size_t samples:
+    :param samples:
         sampling rate
+    :type samples: size_t
 
 .. _`snd_pcm_format_size.return`:
 
@@ -172,8 +181,9 @@ snd_pcm_format_silence_64
 
     return the silent data in 8 bytes array
 
-    :param snd_pcm_format_t format:
+    :param format:
         the format to check
+    :type format: snd_pcm_format_t
 
 .. _`snd_pcm_format_silence_64.return`:
 
@@ -191,14 +201,17 @@ snd_pcm_format_set_silence
 
     set the silence data on the buffer
 
-    :param snd_pcm_format_t format:
+    :param format:
         the PCM format
+    :type format: snd_pcm_format_t
 
-    :param void \*data:
+    :param data:
         the buffer pointer
+    :type data: void \*
 
-    :param unsigned int samples:
+    :param samples:
         the number of samples to set silence
+    :type samples: unsigned int
 
 .. _`snd_pcm_format_set_silence.description`:
 
@@ -223,8 +236,9 @@ snd_pcm_limit_hw_rates
 
     determine rate_min/rate_max fields
 
-    :param struct snd_pcm_runtime \*runtime:
+    :param runtime:
         the runtime instance
+    :type runtime: struct snd_pcm_runtime \*
 
 .. _`snd_pcm_limit_hw_rates.description`:
 
@@ -250,8 +264,9 @@ snd_pcm_rate_to_rate_bit
 
     converts sample rate to SNDRV_PCM_RATE_xxx bit
 
-    :param unsigned int rate:
+    :param rate:
         the sample rate to convert
+    :type rate: unsigned int
 
 .. _`snd_pcm_rate_to_rate_bit.return`:
 
@@ -270,8 +285,9 @@ snd_pcm_rate_bit_to_rate
 
     converts SNDRV_PCM_RATE_xxx bit to sample rate
 
-    :param unsigned int rate_bit:
+    :param rate_bit:
         the rate bit to convert
+    :type rate_bit: unsigned int
 
 .. _`snd_pcm_rate_bit_to_rate.return`:
 
@@ -290,11 +306,13 @@ snd_pcm_rate_mask_intersect
 
     computes the intersection between two rate masks
 
-    :param unsigned int rates_a:
+    :param rates_a:
         The first rate mask
+    :type rates_a: unsigned int
 
-    :param unsigned int rates_b:
+    :param rates_b:
         The second rate mask
+    :type rates_b: unsigned int
 
 .. _`snd_pcm_rate_mask_intersect.description`:
 
@@ -322,11 +340,13 @@ snd_pcm_rate_range_to_bits
 
     converts rate range to SNDRV_PCM_RATE_xxx bit
 
-    :param unsigned int rate_min:
+    :param rate_min:
         the minimum sample rate
+    :type rate_min: unsigned int
 
-    :param unsigned int rate_max:
+    :param rate_max:
         the maximum sample rate
+    :type rate_max: unsigned int
 
 .. _`snd_pcm_rate_range_to_bits.description`:
 

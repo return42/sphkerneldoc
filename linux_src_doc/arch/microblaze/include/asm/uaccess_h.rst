@@ -10,11 +10,13 @@ get_user
 
     - Get a simple variable from user space.
 
-    :param  x:
+    :param x:
         Variable to store result.
+    :type x: 
 
-    :param  ptr:
+    :param ptr:
         Source address, in user space.
+    :type ptr: 
 
 .. _`get_user.context`:
 
@@ -48,11 +50,13 @@ put_user
 
     - Write a simple value into user space.
 
-    :param  x:
+    :param x:
         Value to copy to user space.
+    :type x: 
 
-    :param  ptr:
+    :param ptr:
         Destination address, in user space.
+    :type ptr: 
 
 .. _`put_user.context`:
 

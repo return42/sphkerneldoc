@@ -69,8 +69,9 @@ blk_mq_rq_state
 
     read the current MQ_RQ\_\* state of a request
 
-    :param struct request \*rq:
+    :param rq:
         target request.
+    :type rq: struct request \*
 
 .. This file was automatic generated / don't edit.
 

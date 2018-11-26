@@ -124,17 +124,21 @@ tee_device_alloc
 
     Allocate a new struct tee_device instance
 
-    :param const struct tee_desc \*teedesc:
+    :param teedesc:
         Descriptor for this driver
+    :type teedesc: const struct tee_desc \*
 
-    :param struct device \*dev:
+    :param dev:
         Parent device for this device
+    :type dev: struct device \*
 
-    :param struct tee_shm_pool \*pool:
+    :param pool:
         Shared memory pool, NULL if not used
+    :type pool: struct tee_shm_pool \*
 
-    :param void \*driver_data:
+    :param driver_data:
         Private driver data for this device
+    :type driver_data: void \*
 
 .. _`tee_device_alloc.description`:
 
@@ -155,8 +159,9 @@ tee_device_register
 
     Registers a TEE device
 
-    :param struct tee_device \*teedev:
+    :param teedev:
         Device to register
+    :type teedev: struct tee_device \*
 
 .. _`tee_device_register.description`:
 
@@ -177,8 +182,9 @@ tee_device_unregister
 
     Removes a TEE device
 
-    :param struct tee_device \*teedev:
+    :param teedev:
         Device to unregister
+    :type teedev: struct tee_device \*
 
 .. _`tee_device_unregister.description`:
 
@@ -347,11 +353,13 @@ tee_shm_pool_alloc
 
     Create a shared memory pool from shm managers
 
-    :param struct tee_shm_pool_mgr \*priv_mgr:
+    :param priv_mgr:
         manager for driver private shared memory allocations
+    :type priv_mgr: struct tee_shm_pool_mgr \*
 
-    :param struct tee_shm_pool_mgr \*dmabuf_mgr:
+    :param dmabuf_mgr:
         manager for dma-buf shared memory allocations
+    :type dmabuf_mgr: struct tee_shm_pool_mgr \*
 
 .. _`tee_shm_pool_alloc.description`:
 
@@ -372,8 +380,9 @@ tee_shm_pool_mgr_destroy
 
     Free a shared memory manager
 
-    :param struct tee_shm_pool_mgr \*poolm:
+    :param poolm:
         *undescribed*
+    :type poolm: struct tee_shm_pool_mgr \*
 
 .. _`tee_shm_pool_mem_info`:
 
@@ -420,11 +429,13 @@ tee_shm_pool_alloc_res_mem
 
     Create a shared memory pool from reserved memory range
 
-    :param struct tee_shm_pool_mem_info \*priv_info:
+    :param priv_info:
         Information for driver private shared memory pool
+    :type priv_info: struct tee_shm_pool_mem_info \*
 
-    :param struct tee_shm_pool_mem_info \*dmabuf_info:
+    :param dmabuf_info:
         Information for dma-buf shared memory pool
+    :type dmabuf_info: struct tee_shm_pool_mem_info \*
 
 .. _`tee_shm_pool_alloc_res_mem.description`:
 
@@ -447,8 +458,9 @@ tee_shm_pool_free
 
     Free a shared memory pool
 
-    :param struct tee_shm_pool \*pool:
+    :param pool:
         The shared memory pool to free
+    :type pool: struct tee_shm_pool \*
 
 .. _`tee_shm_pool_free.description`:
 
@@ -467,8 +479,9 @@ tee_get_drvdata
 
     Return driver_data pointer \ ``returns``\  the driver_data pointer supplied to \ :c:func:`tee_register`\ .
 
-    :param struct tee_device \*teedev:
+    :param teedev:
         *undescribed*
+    :type teedev: struct tee_device \*
 
 .. _`tee_shm_alloc`:
 
@@ -479,14 +492,17 @@ tee_shm_alloc
 
     Allocate shared memory
 
-    :param struct tee_context \*ctx:
+    :param ctx:
         Context that allocates the shared memory
+    :type ctx: struct tee_context \*
 
-    :param size_t size:
+    :param size:
         Requested size of shared memory
+    :type size: size_t
 
-    :param u32 flags:
+    :param flags:
         Flags setting properties for the requested shared memory.
+    :type flags: u32
 
 .. _`tee_shm_alloc.description`:
 
@@ -510,11 +526,13 @@ tee_shm_priv_alloc
 
     Allocate shared memory privately
 
-    :param struct tee_device \*teedev:
+    :param teedev:
         *undescribed*
+    :type teedev: struct tee_device \*
 
-    :param size_t size:
+    :param size:
         Requested size of shared memory
+    :type size: size_t
 
 .. _`tee_shm_priv_alloc.description`:
 
@@ -535,17 +553,21 @@ tee_shm_register
 
     Register shared memory buffer
 
-    :param struct tee_context \*ctx:
+    :param ctx:
         Context that registers the shared memory
+    :type ctx: struct tee_context \*
 
-    :param unsigned long addr:
+    :param addr:
         Address is userspace of the shared buffer
+    :type addr: unsigned long
 
-    :param size_t length:
+    :param length:
         Length of the shared buffer
+    :type length: size_t
 
-    :param u32 flags:
+    :param flags:
         Flags setting properties for the requested shared memory.
+    :type flags: u32
 
 .. _`tee_shm_register.description`:
 
@@ -563,9 +585,10 @@ tee_shm_is_registered
 
     Check if shared memory object in registered in TEE
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
         \ ``returns``\  true if object is registered in TEE
+    :type shm: struct tee_shm \*
 
 .. _`tee_shm_free`:
 
@@ -576,8 +599,9 @@ tee_shm_free
 
     Free shared memory
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Handle to shared memory to free
+    :type shm: struct tee_shm \*
 
 .. _`tee_shm_put`:
 
@@ -588,8 +612,9 @@ tee_shm_put
 
     Decrease reference count on a shared memory handle
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
 .. _`tee_shm_va2pa`:
 
@@ -600,15 +625,18 @@ tee_shm_va2pa
 
     Get physical address of a virtual address
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
-    :param void \*va:
+    :param va:
         Virtual address to tranlsate
+    :type va: void \*
 
-    :param phys_addr_t \*pa:
+    :param pa:
         Returned physical address
         \ ``returns``\  0 on success and < 0 on failure
+    :type pa: phys_addr_t \*
 
 .. _`tee_shm_pa2va`:
 
@@ -619,15 +647,18 @@ tee_shm_pa2va
 
     Get virtual address of a physical address
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
-    :param phys_addr_t pa:
+    :param pa:
         Physical address to tranlsate
+    :type pa: phys_addr_t
 
-    :param void \*\*va:
+    :param va:
         Returned virtual address
         \ ``returns``\  0 on success and < 0 on failure
+    :type va: void \*\*
 
 .. _`tee_shm_get_va`:
 
@@ -638,13 +669,15 @@ tee_shm_get_va
 
     Get virtual address of a shared memory plus an offset
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
-    :param size_t offs:
+    :param offs:
         Offset from start of this shared memory
         \ ``returns``\  virtual address of the shared memory + offs if offs is within
         the bounds of this shared memory, else an ERR_PTR
+    :type offs: size_t
 
 .. _`tee_shm_get_pa`:
 
@@ -655,16 +688,19 @@ tee_shm_get_pa
 
     Get physical address of a shared memory plus an offset
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
-    :param size_t offs:
+    :param offs:
         Offset from start of this shared memory
+    :type offs: size_t
 
-    :param phys_addr_t \*pa:
+    :param pa:
         Physical address to return
         \ ``returns``\  0 if offs is within the bounds of this shared memory, else an
         error code.
+    :type pa: phys_addr_t \*
 
 .. _`tee_shm_get_size`:
 
@@ -675,9 +711,10 @@ tee_shm_get_size
 
     Get size of shared memory buffer
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
         \ ``returns``\  size of shared memory
+    :type shm: struct tee_shm \*
 
 .. _`tee_shm_get_pages`:
 
@@ -688,12 +725,14 @@ tee_shm_get_pages
 
     Get list of pages that hold shared buffer
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
+    :type shm: struct tee_shm \*
 
-    :param size_t \*num_pages:
+    :param num_pages:
         Number of pages will be stored there
         \ ``returns``\  pointer to pages array
+    :type num_pages: size_t \*
 
 .. _`tee_shm_get_page_offset`:
 
@@ -704,9 +743,10 @@ tee_shm_get_page_offset
 
     Get shared buffer offset from page start
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
         \ ``returns``\  page offset of shared buffer
+    :type shm: struct tee_shm \*
 
 .. _`tee_shm_get_id`:
 
@@ -717,9 +757,10 @@ tee_shm_get_id
 
     Get id of a shared memory object
 
-    :param struct tee_shm \*shm:
+    :param shm:
         Shared memory handle
         \ ``returns``\  id
+    :type shm: struct tee_shm \*
 
 .. _`tee_shm_get_from_id`:
 
@@ -730,12 +771,171 @@ tee_shm_get_from_id
 
     Find shared memory object and increase reference count
 
-    :param struct tee_context \*ctx:
+    :param ctx:
         Context owning the shared memory
+    :type ctx: struct tee_context \*
 
-    :param int id:
+    :param id:
         Id of shared memory object
         \ ``returns``\  a pointer to 'struct tee_shm' on success or an ERR_PTR on failure
+    :type id: int
+
+.. _`tee_client_open_context`:
+
+tee_client_open_context
+=======================
+
+.. c:function:: struct tee_context *tee_client_open_context(struct tee_context *start, int (*match)(struct tee_ioctl_version_data *, const void *), const void *data, struct tee_ioctl_version_data *vers)
+
+    Open a TEE context
+
+    :param start:
+        if not NULL, continue search after this context
+    :type start: struct tee_context \*
+
+    :param int (\*match)(struct tee_ioctl_version_data \*, const void \*):
+        function to check TEE device
+
+    :param data:
+        data for match function
+    :type data: const void \*
+
+    :param vers:
+        if not NULL, version data of TEE device of the context returned
+    :type vers: struct tee_ioctl_version_data \*
+
+.. _`tee_client_open_context.description`:
+
+Description
+-----------
+
+This function does an operation similar to open("/dev/teeX") in user space.
+A returned context must be released with \ :c:func:`tee_client_close_context`\ .
+
+Returns a TEE context of the first TEE device matched by the \ :c:func:`match`\ 
+callback or an ERR_PTR.
+
+.. _`tee_client_close_context`:
+
+tee_client_close_context
+========================
+
+.. c:function:: void tee_client_close_context(struct tee_context *ctx)
+
+    Close a TEE context
+
+    :param ctx:
+        TEE context to close
+    :type ctx: struct tee_context \*
+
+.. _`tee_client_close_context.description`:
+
+Description
+-----------
+
+Note that all sessions previously opened with this context will be
+closed when this function is called.
+
+.. _`tee_client_get_version`:
+
+tee_client_get_version
+======================
+
+.. c:function:: void tee_client_get_version(struct tee_context *ctx, struct tee_ioctl_version_data *vers)
+
+    Query version of TEE
+
+    :param ctx:
+        TEE context to TEE to query
+    :type ctx: struct tee_context \*
+
+    :param vers:
+        Pointer to version data
+    :type vers: struct tee_ioctl_version_data \*
+
+.. _`tee_client_open_session`:
+
+tee_client_open_session
+=======================
+
+.. c:function:: int tee_client_open_session(struct tee_context *ctx, struct tee_ioctl_open_session_arg *arg, struct tee_param *param)
+
+    Open a session to a Trusted Application
+
+    :param ctx:
+        TEE context
+    :type ctx: struct tee_context \*
+
+    :param arg:
+        Open session arguments, see description of
+        struct tee_ioctl_open_session_arg
+    :type arg: struct tee_ioctl_open_session_arg \*
+
+    :param param:
+        Parameters passed to the Trusted Application
+    :type param: struct tee_param \*
+
+.. _`tee_client_open_session.description`:
+
+Description
+-----------
+
+Returns < 0 on error else see \ ``arg->ret``\  for result. If \ ``arg->ret``\ 
+is TEEC_SUCCESS the session identifier is available in \ ``arg->session``\ .
+
+.. _`tee_client_close_session`:
+
+tee_client_close_session
+========================
+
+.. c:function:: int tee_client_close_session(struct tee_context *ctx, u32 session)
+
+    Close a session to a Trusted Application
+
+    :param ctx:
+        TEE Context
+    :type ctx: struct tee_context \*
+
+    :param session:
+        Session id
+    :type session: u32
+
+.. _`tee_client_close_session.description`:
+
+Description
+-----------
+
+Return < 0 on error else 0, regardless the session will not be
+valid after this function has returned.
+
+.. _`tee_client_invoke_func`:
+
+tee_client_invoke_func
+======================
+
+.. c:function:: int tee_client_invoke_func(struct tee_context *ctx, struct tee_ioctl_invoke_arg *arg, struct tee_param *param)
+
+    Invoke a function in a Trusted Application
+
+    :param ctx:
+        TEE Context
+    :type ctx: struct tee_context \*
+
+    :param arg:
+        Invoke arguments, see description of
+        struct tee_ioctl_invoke_arg
+    :type arg: struct tee_ioctl_invoke_arg \*
+
+    :param param:
+        Parameters passed to the Trusted Application
+    :type param: struct tee_param \*
+
+.. _`tee_client_invoke_func.description`:
+
+Description
+-----------
+
+Returns < 0 on error else see \ ``arg->ret``\  for result.
 
 .. This file was automatic generated / don't edit.
 

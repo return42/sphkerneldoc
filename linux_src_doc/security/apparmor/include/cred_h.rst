@@ -10,8 +10,9 @@ aa_cred_raw_label
 
     obtain cred's label
 
-    :param const struct cred \*cred:
+    :param cred:
         cred to obtain label from  (NOT NULL)
+    :type cred: const struct cred \*
 
 .. _`aa_cred_raw_label.return`:
 
@@ -31,8 +32,9 @@ aa_get_newest_cred_label
 
     obtain the newest label on a cred
 
-    :param const struct cred \*cred:
+    :param cred:
         cred to obtain label from (NOT NULL)
+    :type cred: const struct cred \*
 
 .. _`aa_get_newest_cred_label.return`:
 
@@ -50,8 +52,9 @@ newest version of confining label
 
     retrieve another task's label
 
-    :param struct task_struct \*task:
+    :param task:
         task to query  (NOT NULL)
+    :type task: struct task_struct \*
 
 .. _`__aa_task_raw_label.return`:
 
@@ -71,8 +74,9 @@ aa_current_raw_label
 
     find the current tasks confining label
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`aa_current_raw_label.return`:
 
@@ -93,8 +97,9 @@ aa_get_current_label
 
     get the newest version of the current tasks label
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`aa_get_current_label.return`:
 
@@ -116,8 +121,9 @@ end_current_label_crit_section
 
     put a reference found with begin_current_label..
 
-    :param struct aa_label \*label:
+    :param label:
         label reference to put
+    :type label: struct aa_label \*
 
 .. _`end_current_label_crit_section.description`:
 
@@ -137,8 +143,9 @@ task cred may be updated
 
     current's confining label
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`__begin_current_label_crit_section.return`:
 
@@ -163,8 +170,9 @@ begin_current_label_crit_section
 
     current's confining label and update it
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`begin_current_label_crit_section.return`:
 

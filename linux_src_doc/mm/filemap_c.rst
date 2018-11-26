@@ -10,8 +10,9 @@ delete_from_page_cache
 
     delete page from page cache
 
-    :param struct page \*page:
+    :param page:
         the page which the kernel is trying to remove from page cache
+    :type page: struct page \*
 
 .. _`delete_from_page_cache.description`:
 
@@ -31,17 +32,21 @@ __filemap_fdatawrite_range
 
     start writeback on mapping dirty pages in range
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space structure to write
+    :type mapping: struct address_space \*
 
-    :param loff_t start:
+    :param start:
         offset in bytes where the range starts
+    :type start: loff_t
 
-    :param loff_t end:
+    :param end:
         offset in bytes where the range ends (inclusive)
+    :type end: loff_t
 
-    :param int sync_mode:
+    :param sync_mode:
         enable synchronous operation
+    :type sync_mode: int
 
 .. _`__filemap_fdatawrite_range.description`:
 
@@ -65,8 +70,9 @@ filemap_flush
 
     mostly a non-blocking flush
 
-    :param struct address_space \*mapping:
+    :param mapping:
         target address_space
+    :type mapping: struct address_space \*
 
 .. _`filemap_flush.description`:
 
@@ -85,14 +91,17 @@ filemap_range_has_page
 
     check if a page exists in range.
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space within which to check
+    :type mapping: struct address_space \*
 
-    :param loff_t start_byte:
+    :param start_byte:
         offset in bytes where the range starts
+    :type start_byte: loff_t
 
-    :param loff_t end_byte:
+    :param end_byte:
         offset in bytes where the range ends (inclusive)
+    :type end_byte: loff_t
 
 .. _`filemap_range_has_page.description`:
 
@@ -111,14 +120,17 @@ filemap_fdatawait_range
 
     wait for writeback to complete
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space structure to wait for
+    :type mapping: struct address_space \*
 
-    :param loff_t start_byte:
+    :param start_byte:
         offset in bytes where the range starts
+    :type start_byte: loff_t
 
-    :param loff_t end_byte:
+    :param end_byte:
         offset in bytes where the range ends (inclusive)
+    :type end_byte: loff_t
 
 .. _`filemap_fdatawait_range.description`:
 
@@ -142,14 +154,17 @@ file_fdatawait_range
 
     wait for writeback to complete
 
-    :param struct file \*file:
+    :param file:
         file pointing to address space structure to wait for
+    :type file: struct file \*
 
-    :param loff_t start_byte:
+    :param start_byte:
         offset in bytes where the range starts
+    :type start_byte: loff_t
 
-    :param loff_t end_byte:
+    :param end_byte:
         offset in bytes where the range ends (inclusive)
+    :type end_byte: loff_t
 
 .. _`file_fdatawait_range.description`:
 
@@ -173,8 +188,9 @@ filemap_fdatawait_keep_errors
 
     wait for writeback without clearing errors
 
-    :param struct address_space \*mapping:
+    :param mapping:
         address space structure to wait for
+    :type mapping: struct address_space \*
 
 .. _`filemap_fdatawait_keep_errors.description`:
 
@@ -198,14 +214,17 @@ filemap_write_and_wait_range
 
     write out & wait on a file range
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space for the pages
+    :type mapping: struct address_space \*
 
-    :param loff_t lstart:
+    :param lstart:
         offset in bytes where the range starts
+    :type lstart: loff_t
 
-    :param loff_t lend:
+    :param lend:
         offset in bytes where the range ends (inclusive)
+    :type lend: loff_t
 
 .. _`filemap_write_and_wait_range.description`:
 
@@ -226,8 +245,9 @@ file_check_and_advance_wb_err
 
     report wb error (if any) that was previously and advance wb_err to current one
 
-    :param struct file \*file:
+    :param file:
         struct file on which the error is being reported
+    :type file: struct file \*
 
 .. _`file_check_and_advance_wb_err.description`:
 
@@ -260,14 +280,17 @@ file_write_and_wait_range
 
     write out & wait on a file range
 
-    :param struct file \*file:
+    :param file:
         file pointing to address_space with pages
+    :type file: struct file \*
 
-    :param loff_t lstart:
+    :param lstart:
         offset in bytes where the range starts
+    :type lstart: loff_t
 
-    :param loff_t lend:
+    :param lend:
         offset in bytes where the range ends (inclusive)
+    :type lend: loff_t
 
 .. _`file_write_and_wait_range.description`:
 
@@ -291,14 +314,17 @@ replace_page_cache_page
 
     replace a pagecache page with a new one
 
-    :param struct page \*old:
+    :param old:
         page to be replaced
+    :type old: struct page \*
 
-    :param struct page \*new:
+    :param new:
         page to replace with
+    :type new: struct page \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         allocation mode
+    :type gfp_mask: gfp_t
 
 .. _`replace_page_cache_page.description`:
 
@@ -311,8 +337,7 @@ drops it for the old page.  Both the old and new pages must be
 locked.  This function does not add the new page to the LRU, the
 caller must do that.
 
-The remove + add is atomic.  The only way this function can fail is
-memory allocation failure.
+The remove + add is atomic.  This function cannot fail.
 
 .. _`add_to_page_cache_locked`:
 
@@ -323,17 +348,21 @@ add_to_page_cache_locked
 
     add a locked page to the pagecache
 
-    :param struct page \*page:
+    :param page:
         page to add
+    :type page: struct page \*
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the page's address_space
+    :type mapping: struct address_space \*
 
-    :param pgoff_t offset:
+    :param offset:
         page index
+    :type offset: pgoff_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         page allocation mode
+    :type gfp_mask: gfp_t
 
 .. _`add_to_page_cache_locked.description`:
 
@@ -352,11 +381,13 @@ add_page_wait_queue
 
     Add an arbitrary waiter to a page's wait queue
 
-    :param struct page \*page:
+    :param page:
         Page defining the wait queue of interest
+    :type page: struct page \*
 
-    :param wait_queue_entry_t \*waiter:
+    :param waiter:
         Waiter to add to the queue
+    :type waiter: wait_queue_entry_t \*
 
 .. _`add_page_wait_queue.description`:
 
@@ -374,8 +405,9 @@ unlock_page
 
     unlock a locked page
 
-    :param struct page \*page:
+    :param page:
         the page
+    :type page: struct page \*
 
 .. _`unlock_page.description`:
 
@@ -402,8 +434,9 @@ end_page_writeback
 
     end writeback against a page
 
-    :param struct page \*page:
+    :param page:
         the page
+    :type page: struct page \*
 
 .. _`__lock_page`:
 
@@ -414,94 +447,97 @@ __lock_page
 
     get a lock on the page, assuming we need to sleep to get it
 
-    :param struct page \*__page:
+    :param __page:
         the page to lock
+    :type __page: struct page \*
 
-.. _`page_cache_next_hole`:
+.. _`page_cache_next_miss`:
 
-page_cache_next_hole
+page_cache_next_miss
 ====================
 
-.. c:function:: pgoff_t page_cache_next_hole(struct address_space *mapping, pgoff_t index, unsigned long max_scan)
+.. c:function:: pgoff_t page_cache_next_miss(struct address_space *mapping, pgoff_t index, unsigned long max_scan)
 
-    find the next hole (not-present entry)
+    Find the next gap in the page cache.
 
-    :param struct address_space \*mapping:
-        mapping
+    :param mapping:
+        Mapping.
+    :type mapping: struct address_space \*
 
-    :param pgoff_t index:
-        index
+    :param index:
+        Index.
+    :type index: pgoff_t
 
-    :param unsigned long max_scan:
-        maximum range to search
+    :param max_scan:
+        Maximum range to search.
+    :type max_scan: unsigned long
 
-.. _`page_cache_next_hole.description`:
+.. _`page_cache_next_miss.description`:
 
 Description
 -----------
 
-Search the set [index, min(index+max_scan-1, MAX_INDEX)] for the
-lowest indexed hole.
+Search the range [index, min(index + max_scan - 1, ULONG_MAX)] for the
+gap with the lowest index.
 
-.. _`page_cache_next_hole.return`:
+This function may be called under the rcu_read_lock.  However, this will
+not atomically search a snapshot of the cache at a single point in time.
+For example, if a gap is created at index 5, then subsequently a gap is
+created at index 10, page_cache_next_miss covering both indices may
+return 10 if called under the rcu_read_lock.
+
+.. _`page_cache_next_miss.return`:
 
 Return
 ------
 
-the index of the hole if found, otherwise returns an index
-outside of the set specified (in which case 'return - index >=
-max_scan' will be true). In rare cases of index wrap-around, 0 will
-be returned.
+The index of the gap if found, otherwise an index outside the
+range specified (in which case 'return - index >= max_scan' will be true).
+In the rare case of index wrap-around, 0 will be returned.
 
-page_cache_next_hole may be called under rcu_read_lock. However,
-like radix_tree_gang_lookup, this will not atomically search a
-snapshot of the tree at a single point in time. For example, if a
-hole is created at index 5, then subsequently a hole is created at
-index 10, page_cache_next_hole covering both indexes may return 10
-if called under rcu_read_lock.
+.. _`page_cache_prev_miss`:
 
-.. _`page_cache_prev_hole`:
-
-page_cache_prev_hole
+page_cache_prev_miss
 ====================
 
-.. c:function:: pgoff_t page_cache_prev_hole(struct address_space *mapping, pgoff_t index, unsigned long max_scan)
+.. c:function:: pgoff_t page_cache_prev_miss(struct address_space *mapping, pgoff_t index, unsigned long max_scan)
 
-    find the prev hole (not-present entry)
+    Find the next gap in the page cache.
 
-    :param struct address_space \*mapping:
-        mapping
+    :param mapping:
+        Mapping.
+    :type mapping: struct address_space \*
 
-    :param pgoff_t index:
-        index
+    :param index:
+        Index.
+    :type index: pgoff_t
 
-    :param unsigned long max_scan:
-        maximum range to search
+    :param max_scan:
+        Maximum range to search.
+    :type max_scan: unsigned long
 
-.. _`page_cache_prev_hole.description`:
+.. _`page_cache_prev_miss.description`:
 
 Description
 -----------
 
-Search backwards in the range [max(index-max_scan+1, 0), index] for
-the first hole.
+Search the range [max(index - max_scan + 1, 0), index] for the
+gap with the highest index.
 
-.. _`page_cache_prev_hole.return`:
+This function may be called under the rcu_read_lock.  However, this will
+not atomically search a snapshot of the cache at a single point in time.
+For example, if a gap is created at index 10, then subsequently a gap is
+created at index 5, \ :c:func:`page_cache_prev_miss`\  covering both indices may
+return 5 if called under the rcu_read_lock.
+
+.. _`page_cache_prev_miss.return`:
 
 Return
 ------
 
-the index of the hole if found, otherwise returns an index
-outside of the set specified (in which case 'index - return >=
-max_scan' will be true). In rare cases of wrap-around, ULONG_MAX
-will be returned.
-
-page_cache_prev_hole may be called under rcu_read_lock. However,
-like radix_tree_gang_lookup, this will not atomically search a
-snapshot of the tree at a single point in time. For example, if a
-hole is created at index 10, then subsequently a hole is created at
-index 5, page_cache_prev_hole covering both indexes may return 5 if
-called under rcu_read_lock.
+The index of the gap if found, otherwise an index outside the
+range specified (in which case 'index - return >= max_scan' will be true).
+In the rare case of wrap-around, ULONG_MAX will be returned.
 
 .. _`find_get_entry`:
 
@@ -512,11 +548,13 @@ find_get_entry
 
     find and get a page cache entry
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t offset:
+    :param offset:
         the page cache index
+    :type offset: pgoff_t
 
 .. _`find_get_entry.description`:
 
@@ -540,11 +578,13 @@ find_lock_entry
 
     locate, pin and lock a page cache entry
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t offset:
+    :param offset:
         the page cache index
+    :type offset: pgoff_t
 
 .. _`find_lock_entry.description`:
 
@@ -571,17 +611,21 @@ pagecache_get_page
 
     find and get a page reference
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t offset:
+    :param offset:
         the page index
+    :type offset: pgoff_t
 
-    :param int fgp_flags:
+    :param fgp_flags:
         *undescribed*
+    :type fgp_flags: int
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         gfp mask to use for the page cache data page allocation
+    :type gfp_mask: gfp_t
 
 .. _`pagecache_get_page.description`:
 
@@ -613,20 +657,25 @@ find_get_entries
 
     gang pagecache lookup
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t start:
+    :param start:
         The starting page cache index
+    :type start: pgoff_t
 
-    :param unsigned int nr_entries:
+    :param nr_entries:
         The maximum number of entries
+    :type nr_entries: unsigned int
 
-    :param struct page \*\*entries:
+    :param entries:
         Where the resulting entries are placed
+    :type entries: struct page \*\*
 
-    :param pgoff_t \*indices:
+    :param indices:
         The cache indices corresponding to the entries in \ ``entries``\ 
+    :type indices: pgoff_t \*
 
 .. _`find_get_entries.description`:
 
@@ -657,20 +706,25 @@ find_get_pages_range
 
     gang pagecache lookup
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t \*start:
+    :param start:
         The starting page index
+    :type start: pgoff_t \*
 
-    :param pgoff_t end:
+    :param end:
         The final page index (inclusive)
+    :type end: pgoff_t
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         The maximum number of pages
+    :type nr_pages: unsigned int
 
-    :param struct page \*\*pages:
+    :param pages:
         Where the resulting pages are placed
+    :type pages: struct page \*\*
 
 .. _`find_get_pages_range.description`:
 
@@ -699,17 +753,21 @@ find_get_pages_contig
 
     gang contiguous pagecache lookup
 
-    :param struct address_space \*mapping:
+    :param mapping:
         The address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t index:
+    :param index:
         The starting page index
+    :type index: pgoff_t
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         The maximum number of pages
+    :type nr_pages: unsigned int
 
-    :param struct page \*\*pages:
+    :param pages:
         Where the resulting pages are placed
+    :type pages: struct page \*\*
 
 .. _`find_get_pages_contig.description`:
 
@@ -726,27 +784,33 @@ that the returned number of pages are guaranteed to be contiguous.
 find_get_pages_range_tag
 ========================
 
-.. c:function:: unsigned find_get_pages_range_tag(struct address_space *mapping, pgoff_t *index, pgoff_t end, int tag, unsigned int nr_pages, struct page **pages)
+.. c:function:: unsigned find_get_pages_range_tag(struct address_space *mapping, pgoff_t *index, pgoff_t end, xa_mark_t tag, unsigned int nr_pages, struct page **pages)
 
     find and return pages in given range matching \ ``tag``\ 
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t \*index:
+    :param index:
         the starting page index
+    :type index: pgoff_t \*
 
-    :param pgoff_t end:
+    :param end:
         The final page index (inclusive)
+    :type end: pgoff_t
 
-    :param int tag:
+    :param tag:
         the tag index
+    :type tag: xa_mark_t
 
-    :param unsigned int nr_pages:
+    :param nr_pages:
         the maximum number of pages
+    :type nr_pages: unsigned int
 
-    :param struct page \*\*pages:
+    :param pages:
         where the resulting pages are placed
+    :type pages: struct page \*\*
 
 .. _`find_get_pages_range_tag.description`:
 
@@ -761,27 +825,33 @@ Like find_get_pages, except we only return pages which are tagged with
 find_get_entries_tag
 ====================
 
-.. c:function:: unsigned find_get_entries_tag(struct address_space *mapping, pgoff_t start, int tag, unsigned int nr_entries, struct page **entries, pgoff_t *indices)
+.. c:function:: unsigned find_get_entries_tag(struct address_space *mapping, pgoff_t start, xa_mark_t tag, unsigned int nr_entries, struct page **entries, pgoff_t *indices)
 
     find and return entries that match \ ``tag``\ 
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the address_space to search
+    :type mapping: struct address_space \*
 
-    :param pgoff_t start:
+    :param start:
         the starting page cache index
+    :type start: pgoff_t
 
-    :param int tag:
+    :param tag:
         the tag index
+    :type tag: xa_mark_t
 
-    :param unsigned int nr_entries:
+    :param nr_entries:
         the maximum number of entries
+    :type nr_entries: unsigned int
 
-    :param struct page \*\*entries:
+    :param entries:
         where the resulting entries are placed
+    :type entries: struct page \*\*
 
-    :param pgoff_t \*indices:
+    :param indices:
         the cache indices corresponding to the entries in \ ``entries``\ 
+    :type indices: pgoff_t \*
 
 .. _`find_get_entries_tag.description`:
 
@@ -800,14 +870,17 @@ generic_file_buffered_read
 
     generic file read routine
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         the iocb to read
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         data destination
+    :type iter: struct iov_iter \*
 
-    :param ssize_t written:
+    :param written:
         already copied
+    :type written: ssize_t
 
 .. _`generic_file_buffered_read.description`:
 
@@ -829,11 +902,13 @@ generic_file_read_iter
 
     generic filesystem read routine
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         kernel I/O control block
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*iter:
+    :param iter:
         destination for the data read
+    :type iter: struct iov_iter \*
 
 .. _`generic_file_read_iter.description`:
 
@@ -852,14 +927,17 @@ page_cache_read
 
     adds requested page to the page cache if not already there
 
-    :param struct file \*file:
+    :param file:
         file to read
+    :type file: struct file \*
 
-    :param pgoff_t offset:
+    :param offset:
         page index
+    :type offset: pgoff_t
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags
+    :type gfp_mask: gfp_t
 
 .. _`page_cache_read.description`:
 
@@ -878,8 +956,9 @@ filemap_fault
 
     read in file data for page fault handling
 
-    :param struct vm_fault \*vmf:
+    :param vmf:
         struct vm_fault containing details of the fault
+    :type vmf: struct vm_fault \*
 
 .. _`filemap_fault.description`:
 
@@ -914,17 +993,20 @@ read_cache_page
 
     read into page cache, fill it if needed
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the page's address_space
+    :type mapping: struct address_space \*
 
-    :param pgoff_t index:
+    :param index:
         the page index
+    :type index: pgoff_t
 
     :param int (\*filler)(void \*, struct page \*):
         function to perform the read
 
-    :param void \*data:
+    :param data:
         first arg to filler(data, page) function, often left as NULL
+    :type data: void \*
 
 .. _`read_cache_page.description`:
 
@@ -945,14 +1027,17 @@ read_cache_page_gfp
 
     read into page cache, using specified page allocation flags.
 
-    :param struct address_space \*mapping:
+    :param mapping:
         the page's address_space
+    :type mapping: struct address_space \*
 
-    :param pgoff_t index:
+    :param index:
         the page index
+    :type index: pgoff_t
 
-    :param gfp_t gfp:
+    :param gfp:
         the page allocator flags to use if allocating
+    :type gfp: gfp_t
 
 .. _`read_cache_page_gfp.description`:
 
@@ -973,11 +1058,13 @@ __generic_file_write_iter
 
     write data to a file
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         IO state structure (file, offset, etc.)
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*from:
+    :param from:
         iov_iter with data to write
+    :type from: struct iov_iter \*
 
 .. _`__generic_file_write_iter.description`:
 
@@ -1005,11 +1092,13 @@ generic_file_write_iter
 
     write data to a file
 
-    :param struct kiocb \*iocb:
+    :param iocb:
         IO state structure
+    :type iocb: struct kiocb \*
 
-    :param struct iov_iter \*from:
+    :param from:
         iov_iter with data to write
+    :type from: struct iov_iter \*
 
 .. _`generic_file_write_iter.description`:
 
@@ -1029,11 +1118,13 @@ try_to_release_page
 
     release old fs-specific metadata on a page
 
-    :param struct page \*page:
+    :param page:
         the page which the kernel is trying to free
+    :type page: struct page \*
 
-    :param gfp_t gfp_mask:
+    :param gfp_mask:
         memory allocation flags (and I/O mode)
+    :type gfp_mask: gfp_t
 
 .. _`try_to_release_page.description`:
 

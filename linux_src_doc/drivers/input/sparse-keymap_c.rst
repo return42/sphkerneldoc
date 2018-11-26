@@ -10,11 +10,13 @@ sparse_keymap_entry_from_scancode
 
     perform sparse keymap lookup
 
-    :param struct input_dev \*dev:
+    :param dev:
         Input device using sparse keymap
+    :type dev: struct input_dev \*
 
-    :param unsigned int code:
+    :param code:
         Scan code
+    :type code: unsigned int
 
 .. _`sparse_keymap_entry_from_scancode.description`:
 
@@ -33,11 +35,13 @@ sparse_keymap_entry_from_keycode
 
     perform sparse keymap lookup
 
-    :param struct input_dev \*dev:
+    :param dev:
         Input device using sparse keymap
+    :type dev: struct input_dev \*
 
-    :param unsigned int keycode:
+    :param keycode:
         Key code
+    :type keycode: unsigned int
 
 .. _`sparse_keymap_entry_from_keycode.description`:
 
@@ -56,12 +60,14 @@ sparse_keymap_setup
 
     set up sparse keymap for an input device
 
-    :param struct input_dev \*dev:
+    :param dev:
         Input device
+    :type dev: struct input_dev \*
 
-    :param const struct key_entry \*keymap:
+    :param keymap:
         Keymap in form of array of \ :c:type:`struct key_entry <key_entry>`\  structures ending
         with \ ``KE_END``\  type entry
+    :type keymap: const struct key_entry \*
 
     :param int (\*setup)(struct input_dev \*, struct key_entry \*):
         Function that can be used to adjust keymap entries
@@ -86,19 +92,23 @@ sparse_keymap_report_entry
 
     report event corresponding to given key entry
 
-    :param struct input_dev \*dev:
+    :param dev:
         Input device for which event should be reported
+    :type dev: struct input_dev \*
 
-    :param const struct key_entry \*ke:
+    :param ke:
         key entry describing event
+    :type ke: const struct key_entry \*
 
-    :param unsigned int value:
+    :param value:
         Value that should be reported (ignored by \ ``KE_SW``\  entries)
+    :type value: unsigned int
 
-    :param bool autorelease:
+    :param autorelease:
         Signals whether release event should be emitted for \ ``KE_KEY``\ 
         entries right after reporting press event, ignored by all other
         entries
+    :type autorelease: bool
 
 .. _`sparse_keymap_report_entry.description`:
 
@@ -117,19 +127,23 @@ sparse_keymap_report_event
 
     report event corresponding to given scancode
 
-    :param struct input_dev \*dev:
+    :param dev:
         Input device using sparse keymap
+    :type dev: struct input_dev \*
 
-    :param unsigned int code:
+    :param code:
         Scan code
+    :type code: unsigned int
 
-    :param unsigned int value:
+    :param value:
         Value that should be reported (ignored by \ ``KE_SW``\  entries)
+    :type value: unsigned int
 
-    :param bool autorelease:
+    :param autorelease:
         Signals whether release event should be emitted for \ ``KE_KEY``\ 
         entries right after reporting press event, ignored by all other
         entries
+    :type autorelease: bool
 
 .. _`sparse_keymap_report_event.description`:
 

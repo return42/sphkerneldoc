@@ -10,20 +10,25 @@ regulator_register_always_on
 
     register a no-op fixed regulator
 
-    :param int id:
+    :param id:
         platform device id
+    :type id: int
 
-    :param const char \*name:
+    :param name:
         name to be used for the regulator
+    :type name: const char \*
 
-    :param struct regulator_consumer_supply \*supplies:
+    :param supplies:
         consumers for this regulator
+    :type supplies: struct regulator_consumer_supply \*
 
-    :param int num_supplies:
+    :param num_supplies:
         number of consumers
+    :type num_supplies: int
 
-    :param int uv:
+    :param uv:
         voltage in microvolts
+    :type uv: int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,14 +10,17 @@ kvm_mips_trans_replace
 
     Replace trapping instruction in guest memory.
 
-    :param struct kvm_vcpu \*vcpu:
+    :param vcpu:
         Virtual CPU.
+    :type vcpu: struct kvm_vcpu \*
 
-    :param u32 \*opc:
+    :param opc:
         PC of instruction to replace.
+    :type opc: u32 \*
 
-    :param union mips_instruction replace:
+    :param replace:
         Instruction to write
+    :type replace: union mips_instruction
 
 .. This file was automatic generated / don't edit.
 

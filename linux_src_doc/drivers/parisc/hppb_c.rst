@@ -10,8 +10,9 @@ hppb_probe
 
     Determine if the hppb driver should claim this device.
 
-    :param struct parisc_device \*dev:
+    :param dev:
         The device which has been found
+    :type dev: struct parisc_device \*
 
 .. _`hppb_probe.description`:
 
@@ -31,8 +32,9 @@ hppb_init
 
     HP-PB bus initialization procedure.
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`hppb_init.description`:
 

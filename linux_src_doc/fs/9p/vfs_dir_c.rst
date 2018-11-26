@@ -54,8 +54,9 @@ dt_type
 
     return file type
 
-    :param struct p9_wstat \*mistat:
+    :param mistat:
         mistat structure
+    :type mistat: struct p9_wstat \*
 
 .. _`v9fs_alloc_rdir_buf`:
 
@@ -66,11 +67,13 @@ v9fs_alloc_rdir_buf
 
     Allocate buffer used for read and readdir
 
-    :param struct file \*filp:
+    :param filp:
         opened file structure
+    :type filp: struct file \*
 
-    :param int buflen:
+    :param buflen:
         Length in bytes of buffer to allocate
+    :type buflen: int
 
 .. _`v9fs_dir_readdir`:
 
@@ -81,11 +84,13 @@ v9fs_dir_readdir
 
     iterate through a directory
 
-    :param struct file \*file:
+    :param file:
         opened file structure
+    :type file: struct file \*
 
-    :param struct dir_context \*ctx:
+    :param ctx:
         actor we feed the entries to
+    :type ctx: struct dir_context \*
 
 .. _`v9fs_dir_readdir_dotl`:
 
@@ -96,11 +101,13 @@ v9fs_dir_readdir_dotl
 
     iterate through a directory
 
-    :param struct file \*file:
+    :param file:
         opened file structure
+    :type file: struct file \*
 
-    :param struct dir_context \*ctx:
+    :param ctx:
         actor we feed the entries to
+    :type ctx: struct dir_context \*
 
 .. _`v9fs_dir_release`:
 
@@ -111,11 +118,13 @@ v9fs_dir_release
 
     close a directory
 
-    :param struct inode \*inode:
+    :param inode:
         inode of the directory
+    :type inode: struct inode \*
 
-    :param struct file \*filp:
+    :param filp:
         file pointer to a directory
+    :type filp: struct file \*
 
 .. This file was automatic generated / don't edit.
 

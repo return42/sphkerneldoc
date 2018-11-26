@@ -10,8 +10,9 @@ LIST_HEAD
 
     Linux filesystem encryption layer
 
-    :param  ecryptfs_msg_ctx_free_list:
+    :param ecryptfs_msg_ctx_free_list:
         *undescribed*
+    :type ecryptfs_msg_ctx_free_list: 
 
 .. _`list_head.description`:
 
@@ -43,8 +44,9 @@ ecryptfs_acquire_free_msg_ctx
 
 .. c:function:: int ecryptfs_acquire_free_msg_ctx(struct ecryptfs_msg_ctx **msg_ctx)
 
-    :param struct ecryptfs_msg_ctx \*\*msg_ctx:
+    :param msg_ctx:
         The context that was acquired from the free list
+    :type msg_ctx: struct ecryptfs_msg_ctx \*\*
 
 .. _`ecryptfs_acquire_free_msg_ctx.description`:
 
@@ -64,8 +66,9 @@ ecryptfs_msg_ctx_free_to_alloc
 
 .. c:function:: void ecryptfs_msg_ctx_free_to_alloc(struct ecryptfs_msg_ctx *msg_ctx)
 
-    :param struct ecryptfs_msg_ctx \*msg_ctx:
+    :param msg_ctx:
         The context to move from the free list to the alloc list
+    :type msg_ctx: struct ecryptfs_msg_ctx \*
 
 .. _`ecryptfs_msg_ctx_free_to_alloc.description`:
 
@@ -81,8 +84,9 @@ ecryptfs_msg_ctx_alloc_to_free
 
 .. c:function:: void ecryptfs_msg_ctx_alloc_to_free(struct ecryptfs_msg_ctx *msg_ctx)
 
-    :param struct ecryptfs_msg_ctx \*msg_ctx:
+    :param msg_ctx:
         The context to move from the alloc list to the free list
+    :type msg_ctx: struct ecryptfs_msg_ctx \*
 
 .. _`ecryptfs_msg_ctx_alloc_to_free.description`:
 
@@ -98,8 +102,9 @@ ecryptfs_find_daemon_by_euid
 
 .. c:function:: int ecryptfs_find_daemon_by_euid(struct ecryptfs_daemon **daemon)
 
-    :param struct ecryptfs_daemon \*\*daemon:
+    :param daemon:
         If return value is zero, points to the desired daemon pointer
+    :type daemon: struct ecryptfs_daemon \*\*
 
 .. _`ecryptfs_find_daemon_by_euid.description`:
 
@@ -121,11 +126,13 @@ ecryptfs_spawn_daemon
 
     Create and initialize a new daemon struct
 
-    :param struct ecryptfs_daemon \*\*daemon:
+    :param daemon:
         Pointer to set to newly allocated daemon struct
+    :type daemon: struct ecryptfs_daemon \*\*
 
-    :param struct file \*file:
+    :param file:
         File used when opening /dev/ecryptfs
+    :type file: struct file \*
 
 .. _`ecryptfs_spawn_daemon.description`:
 
@@ -146,8 +153,9 @@ ecryptfs_exorcise_daemon
 
     Destroy the daemon struct
 
-    :param struct ecryptfs_daemon \*daemon:
+    :param daemon:
         *undescribed*
+    :type daemon: struct ecryptfs_daemon \*
 
 .. _`ecryptfs_exorcise_daemon.description`:
 
@@ -164,17 +172,20 @@ ecryptfs_process_response
 
 .. c:function:: int ecryptfs_process_response(struct ecryptfs_daemon *daemon, struct ecryptfs_message *msg, u32 seq)
 
-    :param struct ecryptfs_daemon \*daemon:
+    :param daemon:
         *undescribed*
+    :type daemon: struct ecryptfs_daemon \*
 
-    :param struct ecryptfs_message \*msg:
+    :param msg:
         The ecryptfs message received; the caller should sanity check
         msg->data_len and free the memory
+    :type msg: struct ecryptfs_message \*
 
-    :param u32 seq:
+    :param seq:
         The sequence number of the message; must match the sequence
         number for the existing message context waiting for this
         response
+    :type seq: u32
 
 .. _`ecryptfs_process_response.description`:
 
@@ -202,17 +213,21 @@ ecryptfs_send_message_locked
 
 .. c:function:: int ecryptfs_send_message_locked(char *data, int data_len, u8 msg_type, struct ecryptfs_msg_ctx **msg_ctx)
 
-    :param char \*data:
+    :param data:
         The data to send
+    :type data: char \*
 
-    :param int data_len:
+    :param data_len:
         The length of data
+    :type data_len: int
 
-    :param u8 msg_type:
+    :param msg_type:
         *undescribed*
+    :type msg_type: u8
 
-    :param struct ecryptfs_msg_ctx \*\*msg_ctx:
+    :param msg_ctx:
         The message context allocated for the send
+    :type msg_ctx: struct ecryptfs_msg_ctx \*\*
 
 .. _`ecryptfs_send_message_locked.description`:
 
@@ -230,14 +245,17 @@ ecryptfs_send_message
 
 .. c:function:: int ecryptfs_send_message(char *data, int data_len, struct ecryptfs_msg_ctx **msg_ctx)
 
-    :param char \*data:
+    :param data:
         The data to send
+    :type data: char \*
 
-    :param int data_len:
+    :param data_len:
         The length of data
+    :type data_len: int
 
-    :param struct ecryptfs_msg_ctx \*\*msg_ctx:
+    :param msg_ctx:
         The message context allocated for the send
+    :type msg_ctx: struct ecryptfs_msg_ctx \*\*
 
 .. _`ecryptfs_send_message.description`:
 
@@ -255,11 +273,13 @@ ecryptfs_wait_for_response
 
 .. c:function:: int ecryptfs_wait_for_response(struct ecryptfs_msg_ctx *msg_ctx, struct ecryptfs_message **msg)
 
-    :param struct ecryptfs_msg_ctx \*msg_ctx:
+    :param msg_ctx:
         The context that was assigned when sending a message
+    :type msg_ctx: struct ecryptfs_msg_ctx \*
 
-    :param struct ecryptfs_message \*\*msg:
+    :param msg:
         The incoming message from userspace; not set if rc != 0
+    :type msg: struct ecryptfs_message \*\*
 
 .. _`ecryptfs_wait_for_response.description`:
 

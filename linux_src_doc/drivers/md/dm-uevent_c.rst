@@ -10,11 +10,13 @@ dm_send_uevents
 
     send uevents for given list
 
-    :param struct list_head \*events:
+    :param events:
         list of events to send
+    :type events: struct list_head \*
 
-    :param struct kobject \*kobj:
+    :param kobj:
         kobject generating event
+    :type kobj: struct kobject \*
 
 .. _`dm_path_uevent`:
 
@@ -25,17 +27,21 @@ dm_path_uevent
 
     called to create a new path event and queue it
 
-    :param enum dm_uevent_type event_type:
+    :param event_type:
         path event type enum
+    :type event_type: enum dm_uevent_type
 
-    :param struct dm_target \*ti:
+    :param ti:
         pointer to a dm_target
+    :type ti: struct dm_target \*
 
-    :param const char \*path:
+    :param path:
         string containing pathname
+    :type path: const char \*
 
-    :param unsigned nr_valid_paths:
+    :param nr_valid_paths:
         number of valid paths remaining
+    :type nr_valid_paths: unsigned
 
 .. This file was automatic generated / don't edit.
 

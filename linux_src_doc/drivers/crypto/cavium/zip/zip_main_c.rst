@@ -10,8 +10,9 @@ zip_get_device
 
     Get ZIP device based on node id of cpu
 
-    :param int node:
+    :param node:
         Node id of the current cpu
+    :type node: int
 
 .. _`zip_get_device.return`:
 
@@ -29,8 +30,9 @@ zip_get_node_id
 
     Get the node id of the current cpu
 
-    :param  void:
+    :param void:
         no arguments
+    :type void: 
 
 .. _`zip_get_node_id.return`:
 

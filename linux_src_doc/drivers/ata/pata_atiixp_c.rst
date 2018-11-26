@@ -10,11 +10,13 @@ atiixp_prereset
 
     perform reset handling
 
-    :param struct ata_link \*link:
+    :param link:
         ATA link
+    :type link: struct ata_link \*
 
-    :param unsigned long deadline:
+    :param deadline:
         deadline jiffies for the operation
+    :type deadline: unsigned long
 
 .. _`atiixp_prereset.description`:
 
@@ -33,14 +35,17 @@ atiixp_set_pio_timing
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
-    :param int pio:
+    :param pio:
         *undescribed*
+    :type pio: int
 
 .. _`atiixp_set_pio_timing.description`:
 
@@ -60,11 +65,13 @@ atiixp_set_piomode
 
     set initial PIO mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`atiixp_set_piomode.description`:
 
@@ -83,11 +90,13 @@ atiixp_set_dmamode
 
     set initial DMA mode data
 
-    :param struct ata_port \*ap:
+    :param ap:
         ATA interface
+    :type ap: struct ata_port \*
 
-    :param struct ata_device \*adev:
+    :param adev:
         ATA device
+    :type adev: struct ata_device \*
 
 .. _`atiixp_set_dmamode.description`:
 
@@ -106,8 +115,9 @@ atiixp_bmdma_start
 
     DMA start callback
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command in progress
+    :type qc: struct ata_queued_cmd \*
 
 .. _`atiixp_bmdma_start.description`:
 
@@ -134,8 +144,9 @@ atiixp_bmdma_stop
 
     DMA stop callback
 
-    :param struct ata_queued_cmd \*qc:
+    :param qc:
         Command in progress
+    :type qc: struct ata_queued_cmd \*
 
 .. _`atiixp_bmdma_stop.description`:
 

@@ -10,11 +10,13 @@ unixmode2p9mode
 
     convert unix mode bits to plan 9
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         v9fs session information
+    :type v9ses: struct v9fs_session_info \*
 
-    :param umode_t mode:
+    :param mode:
         mode to convert
+    :type mode: umode_t
 
 .. _`p9mode2perm`:
 
@@ -25,11 +27,13 @@ p9mode2perm
 
     convert plan9 mode bits to unix permission bits
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         v9fs session information
+    :type v9ses: struct v9fs_session_info \*
 
-    :param struct p9_wstat \*stat:
+    :param stat:
         p9_wstat from which mode need to be derived
+    :type stat: struct p9_wstat \*
 
 .. _`p9mode2unixmode`:
 
@@ -40,14 +44,17 @@ p9mode2unixmode
 
     convert plan9 mode bits to unix mode bits
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         v9fs session information
+    :type v9ses: struct v9fs_session_info \*
 
-    :param struct p9_wstat \*stat:
+    :param stat:
         p9_wstat from which mode need to be derived
+    :type stat: struct p9_wstat \*
 
-    :param dev_t \*rdev:
+    :param rdev:
         major number, minor number in case of device files.
+    :type rdev: dev_t \*
 
 .. _`v9fs_uflags2omode`:
 
@@ -58,11 +65,13 @@ v9fs_uflags2omode
 
     convert posix open flags to plan 9 mode bits
 
-    :param int uflags:
+    :param uflags:
         flags to convert
+    :type uflags: int
 
-    :param int extended:
+    :param extended:
         if .u extensions are active
+    :type extended: int
 
 .. _`v9fs_blank_wstat`:
 
@@ -73,8 +82,9 @@ v9fs_blank_wstat
 
     helper function to setup a 9P stat structure
 
-    :param struct p9_wstat \*wstat:
+    :param wstat:
         structure to initialize
+    :type wstat: struct p9_wstat \*
 
 .. _`v9fs_alloc_inode`:
 
@@ -85,8 +95,9 @@ v9fs_alloc_inode
 
     helper function to allocate an inode
 
-    :param struct super_block \*sb:
+    :param sb:
         *undescribed*
+    :type sb: struct super_block \*
 
 .. _`v9fs_i_callback`:
 
@@ -97,8 +108,9 @@ v9fs_i_callback
 
     destroy an inode
 
-    :param struct rcu_head \*head:
+    :param head:
         *undescribed*
+    :type head: struct rcu_head \*
 
 .. _`v9fs_get_inode`:
 
@@ -109,14 +121,17 @@ v9fs_get_inode
 
     helper function to setup an inode
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock
+    :type sb: struct super_block \*
 
-    :param umode_t mode:
+    :param mode:
         mode to setup inode with
+    :type mode: umode_t
 
-    :param dev_t rdev:
+    :param rdev:
         *undescribed*
+    :type rdev: dev_t
 
 .. _`v9fs_evict_inode`:
 
@@ -127,8 +142,9 @@ v9fs_evict_inode
 
     release an inode
 
-    :param struct inode \*inode:
+    :param inode:
         inode to release
+    :type inode: struct inode \*
 
 .. _`v9fs_at_to_dotl_flags`:
 
@@ -139,8 +155,9 @@ v9fs_at_to_dotl_flags
 
     convert Linux specific AT flags to plan 9 AT flag.
 
-    :param int flags:
+    :param flags:
         flags to convert
+    :type flags: int
 
 .. _`v9fs_dec_count`:
 
@@ -151,8 +168,9 @@ v9fs_dec_count
 
     helper functon to drop i_nlink.
 
-    :param struct inode \*inode:
+    :param inode:
         inode whose nlink is being dropped
+    :type inode: struct inode \*
 
 .. _`v9fs_dec_count.description`:
 
@@ -175,14 +193,17 @@ v9fs_remove
 
     helper function to remove files and directories
 
-    :param struct inode \*dir:
+    :param dir:
         directory inode that is being deleted
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry that is being deleted
+    :type dentry: struct dentry \*
 
-    :param int flags:
+    :param flags:
         removing a directory
+    :type flags: int
 
 .. _`v9fs_create`:
 
@@ -193,23 +214,29 @@ v9fs_create
 
     Create a file
 
-    :param struct v9fs_session_info \*v9ses:
+    :param v9ses:
         session information
+    :type v9ses: struct v9fs_session_info \*
 
-    :param struct inode \*dir:
+    :param dir:
         directory that dentry is being created in
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry that is being created
+    :type dentry: struct dentry \*
 
-    :param char \*extension:
+    :param extension:
         9p2000.u extension string to support devices, etc.
+    :type extension: char \*
 
-    :param u32 perm:
+    :param perm:
         create permissions
+    :type perm: u32
 
-    :param u8 mode:
+    :param mode:
         open mode
+    :type mode: u8
 
 .. _`v9fs_vfs_create`:
 
@@ -220,17 +247,21 @@ v9fs_vfs_create
 
     VFS hook to create a regular file
 
-    :param struct inode \*dir:
+    :param dir:
         directory inode that is being created
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry that is being deleted
+    :type dentry: struct dentry \*
 
-    :param umode_t mode:
+    :param mode:
         create permissions
+    :type mode: umode_t
 
-    :param bool excl:
+    :param excl:
         *undescribed*
+    :type excl: bool
 
 .. _`v9fs_vfs_create.description`:
 
@@ -249,14 +280,17 @@ v9fs_vfs_mkdir
 
     VFS mkdir hook to create a directory
 
-    :param struct inode \*dir:
+    :param dir:
         inode that is being unlinked
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry that is being unlinked
+    :type dentry: struct dentry \*
 
-    :param umode_t mode:
+    :param mode:
         mode for new directory
+    :type mode: umode_t
 
 .. _`v9fs_vfs_lookup`:
 
@@ -267,14 +301,17 @@ v9fs_vfs_lookup
 
     VFS lookup hook to "walk" to a new inode
 
-    :param struct inode \*dir:
+    :param dir:
         inode that is being walked from
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry that is being walked to?
+    :type dentry: struct dentry \*
 
-    :param unsigned int flags:
+    :param flags:
         lookup flags (unused)
+    :type flags: unsigned int
 
 .. _`v9fs_vfs_unlink`:
 
@@ -285,11 +322,13 @@ v9fs_vfs_unlink
 
     VFS unlink hook to delete an inode
 
-    :param struct inode \*i:
+    :param i:
         inode that is being unlinked
+    :type i: struct inode \*
 
-    :param struct dentry \*d:
+    :param d:
         dentry that is being unlinked
+    :type d: struct dentry \*
 
 .. _`v9fs_vfs_rmdir`:
 
@@ -300,11 +339,13 @@ v9fs_vfs_rmdir
 
     VFS unlink hook to delete a directory
 
-    :param struct inode \*i:
+    :param i:
         inode that is being unlinked
+    :type i: struct inode \*
 
-    :param struct dentry \*d:
+    :param d:
         dentry that is being unlinked
+    :type d: struct dentry \*
 
 .. _`v9fs_vfs_rename`:
 
@@ -315,20 +356,25 @@ v9fs_vfs_rename
 
     VFS hook to rename an inode
 
-    :param struct inode \*old_dir:
+    :param old_dir:
         old dir inode
+    :type old_dir: struct inode \*
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         old dentry
+    :type old_dentry: struct dentry \*
 
-    :param struct inode \*new_dir:
+    :param new_dir:
         new dir inode
+    :type new_dir: struct inode \*
 
-    :param struct dentry \*new_dentry:
+    :param new_dentry:
         new dentry
+    :type new_dentry: struct dentry \*
 
-    :param unsigned int flags:
+    :param flags:
         *undescribed*
+    :type flags: unsigned int
 
 .. _`v9fs_vfs_getattr`:
 
@@ -339,17 +385,21 @@ v9fs_vfs_getattr
 
     retrieve file metadata
 
-    :param const struct path \*path:
+    :param path:
         Object to query
+    :type path: const struct path \*
 
-    :param struct kstat \*stat:
+    :param stat:
         metadata structure to populate
+    :type stat: struct kstat \*
 
-    :param u32 request_mask:
+    :param request_mask:
         Mask of STATX_xxx flags indicating the caller's interests
+    :type request_mask: u32
 
-    :param unsigned int flags:
+    :param flags:
         AT_STATX_xxx setting
+    :type flags: unsigned int
 
 .. _`v9fs_vfs_setattr`:
 
@@ -360,11 +410,13 @@ v9fs_vfs_setattr
 
     set file metadata
 
-    :param struct dentry \*dentry:
+    :param dentry:
         file whose metadata to set
+    :type dentry: struct dentry \*
 
-    :param struct iattr \*iattr:
+    :param iattr:
         metadata assignment structure
+    :type iattr: struct iattr \*
 
 .. _`v9fs_stat2inode`:
 
@@ -375,14 +427,17 @@ v9fs_stat2inode
 
     populate an inode structure with mistat info
 
-    :param struct p9_wstat \*stat:
+    :param stat:
         Plan 9 metadata (mistat) structure
+    :type stat: struct p9_wstat \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode to populate
+    :type inode: struct inode \*
 
-    :param struct super_block \*sb:
+    :param sb:
         superblock of filesystem
+    :type sb: struct super_block \*
 
 .. _`v9fs_qid2ino`:
 
@@ -393,8 +448,9 @@ v9fs_qid2ino
 
     convert qid into inode number
 
-    :param struct p9_qid \*qid:
+    :param qid:
         qid to hash
+    :type qid: struct p9_qid \*
 
 .. _`v9fs_qid2ino.bug`:
 
@@ -412,14 +468,17 @@ v9fs_vfs_get_link
 
     follow a symlink path
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry for symlink
+    :type dentry: struct dentry \*
 
-    :param struct inode \*inode:
+    :param inode:
         inode for symlink
+    :type inode: struct inode \*
 
-    :param struct delayed_call \*done:
+    :param done:
         delayed call for when we are done with the return value
+    :type done: struct delayed_call \*
 
 .. _`v9fs_vfs_mkspecial`:
 
@@ -430,17 +489,21 @@ v9fs_vfs_mkspecial
 
     create a special file
 
-    :param struct inode \*dir:
+    :param dir:
         inode to create special file in
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry to create
+    :type dentry: struct dentry \*
 
-    :param u32 perm:
+    :param perm:
         mode to create special file
+    :type perm: u32
 
-    :param const char \*extension:
+    :param extension:
         9p2000.u format extension string representing special file
+    :type extension: const char \*
 
 .. _`v9fs_vfs_symlink`:
 
@@ -451,14 +514,17 @@ v9fs_vfs_symlink
 
     helper function to create symlinks
 
-    :param struct inode \*dir:
+    :param dir:
         directory inode containing symlink
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry for symlink
+    :type dentry: struct dentry \*
 
-    :param const char \*symname:
+    :param symname:
         symlink data
+    :type symname: const char \*
 
 .. _`v9fs_vfs_symlink.see-also`:
 
@@ -476,14 +542,17 @@ v9fs_vfs_link
 
     create a hardlink
 
-    :param struct dentry \*old_dentry:
+    :param old_dentry:
         dentry for file to link to
+    :type old_dentry: struct dentry \*
 
-    :param struct inode \*dir:
+    :param dir:
         inode destination for new link
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry for link
+    :type dentry: struct dentry \*
 
 .. _`v9fs_vfs_mknod`:
 
@@ -494,17 +563,21 @@ v9fs_vfs_mknod
 
     create a special file
 
-    :param struct inode \*dir:
+    :param dir:
         inode destination for new link
+    :type dir: struct inode \*
 
-    :param struct dentry \*dentry:
+    :param dentry:
         dentry for file
+    :type dentry: struct dentry \*
 
-    :param umode_t mode:
+    :param mode:
         mode for creation
+    :type mode: umode_t
 
-    :param dev_t rdev:
+    :param rdev:
         device associated with special file
+    :type rdev: dev_t
 
 .. This file was automatic generated / don't edit.
 

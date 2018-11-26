@@ -382,14 +382,17 @@ hw_read_id_reg
 
     reads from a identification register
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
-    :param u32 offset:
+    :param offset:
         offset from the beginning of identification registers region
+    :type offset: u32
 
-    :param u32 mask:
+    :param mask:
         bitfield mask
+    :type mask: u32
 
 .. _`hw_read_id_reg.description`:
 
@@ -407,17 +410,21 @@ hw_write_id_reg
 
     writes to a identification register
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
-    :param u32 offset:
+    :param offset:
         offset from the beginning of identification registers region
+    :type offset: u32
 
-    :param u32 mask:
+    :param mask:
         bitfield mask
+    :type mask: u32
 
-    :param u32 data:
+    :param data:
         new value
+    :type data: u32
 
 .. _`hw_read`:
 
@@ -428,14 +435,17 @@ hw_read
 
     reads from a hw register
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
-    :param enum ci_hw_regs reg:
+    :param reg:
         register index
+    :type reg: enum ci_hw_regs
 
-    :param u32 mask:
+    :param mask:
         bitfield mask
+    :type mask: u32
 
 .. _`hw_read.description`:
 
@@ -453,17 +463,21 @@ hw_write
 
     writes to a hw register
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
-    :param enum ci_hw_regs reg:
+    :param reg:
         register index
+    :type reg: enum ci_hw_regs
 
-    :param u32 mask:
+    :param mask:
         bitfield mask
+    :type mask: u32
 
-    :param u32 data:
+    :param data:
         new value
+    :type data: u32
 
 .. _`hw_test_and_clear`:
 
@@ -474,14 +488,17 @@ hw_test_and_clear
 
     tests & clears a hw register
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
-    :param enum ci_hw_regs reg:
+    :param reg:
         register index
+    :type reg: enum ci_hw_regs
 
-    :param u32 mask:
+    :param mask:
         bitfield mask
+    :type mask: u32
 
 .. _`hw_test_and_clear.description`:
 
@@ -499,17 +516,21 @@ hw_test_and_write
 
     tests & writes a hw register
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         the controller
+    :type ci: struct ci_hdrc \*
 
-    :param enum ci_hw_regs reg:
+    :param reg:
         register index
+    :type reg: enum ci_hw_regs
 
-    :param u32 mask:
+    :param mask:
         bitfield mask
+    :type mask: u32
 
-    :param u32 data:
+    :param data:
         new value
+    :type data: u32
 
 .. _`hw_test_and_write.description`:
 
@@ -527,8 +548,9 @@ ci_otg_is_fsm_mode
 
     runtime check if otg controller is in otg fsm mode.
 
-    :param struct ci_hdrc \*ci:
+    :param ci:
         chipidea device
+    :type ci: struct ci_hdrc \*
 
 .. This file was automatic generated / don't edit.
 

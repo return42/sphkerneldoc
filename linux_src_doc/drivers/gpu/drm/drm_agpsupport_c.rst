@@ -8,11 +8,13 @@ drm_agp_info
 
 .. c:function:: int drm_agp_info(struct drm_device *dev, struct drm_agp_info *info)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_agp_info \*info:
+    :param info:
         *undescribed*
+    :type info: struct drm_agp_info \*
 
 .. _`drm_agp_info.description`:
 
@@ -35,8 +37,9 @@ drm_agp_acquire
 
 .. c:function:: int drm_agp_acquire(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`drm_agp_acquire.description`:
 
@@ -56,14 +59,17 @@ drm_agp_acquire_ioctl
 
 .. c:function:: int drm_agp_acquire_ioctl(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param void \*data:
+    :param data:
         *undescribed*
+    :type data: void \*
 
-    :param struct drm_file \*file_priv:
+    :param file_priv:
         *undescribed*
+    :type file_priv: struct drm_file \*
 
 .. _`drm_agp_acquire_ioctl.description`:
 
@@ -86,8 +92,9 @@ drm_agp_release
 
 .. c:function:: int drm_agp_release(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`drm_agp_release.description`:
 
@@ -106,11 +113,13 @@ drm_agp_enable
 
 .. c:function:: int drm_agp_enable(struct drm_device *dev, struct drm_agp_mode mode)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_agp_mode mode:
+    :param mode:
         *undescribed*
+    :type mode: struct drm_agp_mode
 
 .. _`drm_agp_enable.description`:
 
@@ -131,11 +140,13 @@ drm_agp_alloc
 
 .. c:function:: int drm_agp_alloc(struct drm_device *dev, struct drm_agp_buffer *request)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_agp_buffer \*request:
+    :param request:
         *undescribed*
+    :type request: struct drm_agp_buffer \*
 
 .. _`drm_agp_alloc.description`:
 
@@ -158,11 +169,13 @@ drm_agp_lookup_entry
 
 .. c:function:: struct drm_agp_mem *drm_agp_lookup_entry(struct drm_device *dev, unsigned long handle)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param unsigned long handle:
+    :param handle:
         *undescribed*
+    :type handle: unsigned long
 
 .. _`drm_agp_lookup_entry.description`:
 
@@ -182,11 +195,13 @@ drm_agp_unbind
 
 .. c:function:: int drm_agp_unbind(struct drm_device *dev, struct drm_agp_binding *request)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_agp_binding \*request:
+    :param request:
         *undescribed*
+    :type request: struct drm_agp_binding \*
 
 .. _`drm_agp_unbind.description`:
 
@@ -209,11 +224,13 @@ drm_agp_bind
 
 .. c:function:: int drm_agp_bind(struct drm_device *dev, struct drm_agp_binding *request)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_agp_binding \*request:
+    :param request:
         *undescribed*
+    :type request: struct drm_agp_binding \*
 
 .. _`drm_agp_bind.description`:
 
@@ -237,11 +254,13 @@ drm_agp_free
 
 .. c:function:: int drm_agp_free(struct drm_device *dev, struct drm_agp_buffer *request)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct drm_agp_buffer \*request:
+    :param request:
         *undescribed*
+    :type request: struct drm_agp_buffer \*
 
 .. _`drm_agp_free.description`:
 
@@ -266,8 +285,9 @@ drm_agp_init
 
 .. c:function:: struct drm_agp_head *drm_agp_init(struct drm_device *dev)
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
 .. _`drm_agp_init.description`:
 
@@ -292,8 +312,9 @@ drm_legacy_agp_clear
 
     Clear AGP resource list
 
-    :param struct drm_device \*dev:
+    :param dev:
         DRM device
+    :type dev: struct drm_device \*
 
 .. _`drm_legacy_agp_clear.description`:
 
@@ -315,20 +336,25 @@ drm_agp_bind_pages
 
     the AGP memory structure containing them.
 
-    :param struct drm_device \*dev:
+    :param dev:
         *undescribed*
+    :type dev: struct drm_device \*
 
-    :param struct page \*\*pages:
+    :param pages:
         *undescribed*
+    :type pages: struct page \*\*
 
-    :param unsigned long num_pages:
+    :param num_pages:
         *undescribed*
+    :type num_pages: unsigned long
 
-    :param uint32_t gtt_offset:
+    :param gtt_offset:
         *undescribed*
+    :type gtt_offset: uint32_t
 
-    :param u32 type:
+    :param type:
         *undescribed*
+    :type type: u32
 
 .. _`drm_agp_bind_pages.description`:
 

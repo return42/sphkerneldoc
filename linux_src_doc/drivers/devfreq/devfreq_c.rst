@@ -10,8 +10,9 @@ find_device_devfreq
 
     find devfreq struct using device pointer
 
-    :param struct device \*dev:
+    :param dev:
         device pointer used to lookup device devfreq.
+    :type dev: struct device \*
 
 .. _`find_device_devfreq.description`:
 
@@ -30,11 +31,13 @@ devfreq_get_freq_level
 
     Lookup freq_table for the frequency
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance
+    :type devfreq: struct devfreq \*
 
-    :param unsigned long freq:
+    :param freq:
         the target frequency
+    :type freq: unsigned long
 
 .. _`devfreq_update_status`:
 
@@ -45,11 +48,13 @@ devfreq_update_status
 
     Update statistics of devfreq behavior
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance
+    :type devfreq: struct devfreq \*
 
-    :param unsigned long freq:
+    :param freq:
         the update target frequency
+    :type freq: unsigned long
 
 .. _`find_devfreq_governor`:
 
@@ -60,8 +65,9 @@ find_devfreq_governor
 
     find devfreq governor from name
 
-    :param const char \*name:
+    :param name:
         name of the governor
+    :type name: const char \*
 
 .. _`find_devfreq_governor.description`:
 
@@ -70,6 +76,30 @@ Description
 
 Search the list of devfreq governors and return the matched
 governor's pointer. devfreq_list_lock should be held by the caller.
+
+.. _`try_then_request_governor`:
+
+try_then_request_governor
+=========================
+
+.. c:function:: struct devfreq_governor *try_then_request_governor(const char *name)
+
+    Try to find the governor and request the module if is not found.
+
+    :param name:
+        name of the governor
+    :type name: const char \*
+
+.. _`try_then_request_governor.description`:
+
+Description
+-----------
+
+Search the list of devfreq governors and request the module and try again
+if is not found. This can happen when both drivers (the governor driver
+and the driver that call devfreq_add_device) are built as modules.
+devfreq_list_lock should be held by the caller. Returns the matched
+governor's pointer.
 
 .. _`update_devfreq`:
 
@@ -80,8 +110,9 @@ update_devfreq
 
     Reevaluate the device and configure frequency.
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance.
+    :type devfreq: struct devfreq \*
 
 .. _`update_devfreq.note`:
 
@@ -100,8 +131,9 @@ devfreq_monitor
 
     Periodically poll devfreq objects.
 
-    :param struct work_struct \*work:
+    :param work:
         the work struct used to run devfreq_monitor periodically.
+    :type work: struct work_struct \*
 
 .. _`devfreq_monitor_start`:
 
@@ -112,8 +144,9 @@ devfreq_monitor_start
 
     Start load monitoring of devfreq instance
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance.
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_monitor_start.description`:
 
@@ -134,8 +167,9 @@ devfreq_monitor_stop
 
     Stop load monitoring of a devfreq instance
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance.
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_monitor_stop.description`:
 
@@ -155,8 +189,9 @@ devfreq_monitor_suspend
 
     Suspend load monitoring of a devfreq instance
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance.
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_monitor_suspend.description`:
 
@@ -185,8 +220,9 @@ devfreq_monitor_resume
 
     Resume load monitoring of a devfreq instance
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance.
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_monitor_resume.description`:
 
@@ -206,11 +242,13 @@ devfreq_interval_update
 
     Update device devfreq monitoring interval
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance.
+    :type devfreq: struct devfreq \*
 
-    :param unsigned int \*delay:
+    :param delay:
         new polling interval to be set.
+    :type delay: unsigned int \*
 
 .. _`devfreq_interval_update.description`:
 
@@ -229,14 +267,17 @@ devfreq_notifier_call
 
     Notify that the device frequency requirements has been changed out of devfreq framework.
 
-    :param struct notifier_block \*nb:
+    :param nb:
         the notifier_block (supposed to be devfreq->nb)
+    :type nb: struct notifier_block \*
 
-    :param unsigned long type:
+    :param type:
         not used
+    :type type: unsigned long
 
-    :param void \*devp:
+    :param devp:
         not used
+    :type devp: void \*
 
 .. _`devfreq_notifier_call.description`:
 
@@ -254,8 +295,9 @@ devfreq_dev_release
 
     Callback for struct device to release the device.
 
-    :param struct device \*dev:
+    :param dev:
         the devfreq device
+    :type dev: struct device \*
 
 .. _`devfreq_dev_release.description`:
 
@@ -273,18 +315,22 @@ devfreq_add_device
 
     Add devfreq feature to the device
 
-    :param struct device \*dev:
+    :param dev:
         the device to add devfreq feature.
+    :type dev: struct device \*
 
-    :param struct devfreq_dev_profile \*profile:
+    :param profile:
         device-specific profile to run devfreq.
+    :type profile: struct devfreq_dev_profile \*
 
-    :param const char \*governor_name:
+    :param governor_name:
         name of the policy to choose frequency.
+    :type governor_name: const char \*
 
-    :param void \*data:
+    :param data:
         private data for the governor. The devfreq framework does not
         touch this value.
+    :type data: void \*
 
 .. _`devfreq_remove_device`:
 
@@ -295,8 +341,9 @@ devfreq_remove_device
 
     Remove devfreq feature from a device.
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance to be removed
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_remove_device.description`:
 
@@ -314,18 +361,22 @@ devm_devfreq_add_device
 
     Resource-managed \ :c:func:`devfreq_add_device`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device to add devfreq feature.
+    :type dev: struct device \*
 
-    :param struct devfreq_dev_profile \*profile:
+    :param profile:
         device-specific profile to run devfreq.
+    :type profile: struct devfreq_dev_profile \*
 
-    :param const char \*governor_name:
+    :param governor_name:
         name of the policy to choose frequency.
+    :type governor_name: const char \*
 
-    :param void \*data:
+    :param data:
         private data for the governor. The devfreq framework does not
         touch this value.
+    :type data: void \*
 
 .. _`devm_devfreq_add_device.description`:
 
@@ -345,11 +396,13 @@ devm_devfreq_remove_device
 
     Resource-managed \ :c:func:`devfreq_remove_device`\ 
 
-    :param struct device \*dev:
+    :param dev:
         the device to add devfreq feature.
+    :type dev: struct device \*
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance to be removed
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_suspend_device`:
 
@@ -360,8 +413,9 @@ devfreq_suspend_device
 
     Suspend devfreq of a device.
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance to be suspended
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_suspend_device.description`:
 
@@ -381,8 +435,9 @@ devfreq_resume_device
 
     Resume devfreq of a device.
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         the devfreq instance to be resumed
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_resume_device.description`:
 
@@ -402,8 +457,9 @@ devfreq_add_governor
 
     Add devfreq governor
 
-    :param struct devfreq_governor \*governor:
+    :param governor:
         the devfreq governor to be added
+    :type governor: struct devfreq_governor \*
 
 .. _`devfreq_remove_governor`:
 
@@ -414,8 +470,9 @@ devfreq_remove_governor
 
     Remove devfreq feature from a device.
 
-    :param struct devfreq_governor \*governor:
+    :param governor:
         the devfreq governor to be removed
+    :type governor: struct devfreq_governor \*
 
 .. _`devfreq_recommended_opp`:
 
@@ -426,14 +483,17 @@ devfreq_recommended_opp
 
     Helper function to get proper OPP for the freq value given to target callback.
 
-    :param struct device \*dev:
+    :param dev:
         The devfreq user device. (parent of devfreq)
+    :type dev: struct device \*
 
-    :param unsigned long \*freq:
+    :param freq:
         The frequency given to target function
+    :type freq: unsigned long \*
 
-    :param u32 flags:
+    :param flags:
         Flags handed from devfreq framework.
+    :type flags: u32
 
 .. _`devfreq_recommended_opp.description`:
 
@@ -452,11 +512,13 @@ devfreq_register_opp_notifier
 
     Helper function to get devfreq notified for any changes in the OPP availability changes
 
-    :param struct device \*dev:
+    :param dev:
         The devfreq user device. (parent of devfreq)
+    :type dev: struct device \*
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         The devfreq object.
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_unregister_opp_notifier`:
 
@@ -467,11 +529,13 @@ devfreq_unregister_opp_notifier
 
     Helper function to stop getting devfreq notified for any changes in the OPP availability changes anymore.
 
-    :param struct device \*dev:
+    :param dev:
         The devfreq user device. (parent of devfreq)
+    :type dev: struct device \*
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         The devfreq object.
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_unregister_opp_notifier.description`:
 
@@ -490,11 +554,13 @@ devm_devfreq_register_opp_notifier
 
     - Resource-managed \ :c:func:`devfreq_register_opp_notifier`\ 
 
-    :param struct device \*dev:
+    :param dev:
         The devfreq user device. (parent of devfreq)
+    :type dev: struct device \*
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         The devfreq object.
+    :type devfreq: struct devfreq \*
 
 .. _`devm_devfreq_unregister_opp_notifier`:
 
@@ -505,11 +571,13 @@ devm_devfreq_unregister_opp_notifier
 
     - Resource-managed \ :c:func:`devfreq_unregister_opp_notifier`\ 
 
-    :param struct device \*dev:
+    :param dev:
         The devfreq user device. (parent of devfreq)
+    :type dev: struct device \*
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         The devfreq object.
+    :type devfreq: struct devfreq \*
 
 .. _`devfreq_register_notifier`:
 
@@ -520,14 +588,17 @@ devfreq_register_notifier
 
     Register a driver with devfreq
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         The devfreq object.
+    :type devfreq: struct devfreq \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         The notifier block to register.
+    :type nb: struct notifier_block \*
 
-    :param unsigned int list:
+    :param list:
         DEVFREQ_TRANSITION_NOTIFIER.
+    :type list: unsigned int
 
 .. _`devm_devfreq_register_notifier`:
 
@@ -536,17 +607,21 @@ devm_devfreq_register_notifier
 
 .. c:function:: int devm_devfreq_register_notifier(struct device *dev, struct devfreq *devfreq, struct notifier_block *nb, unsigned int list)
 
-    :param struct device \*dev:
+    :param dev:
         The devfreq user device. (parent of devfreq)
+    :type dev: struct device \*
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         The devfreq object.
+    :type devfreq: struct devfreq \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         The notifier block to be unregistered.
+    :type nb: struct notifier_block \*
 
-    :param unsigned int list:
+    :param list:
         DEVFREQ_TRANSITION_NOTIFIER.
+    :type list: unsigned int
 
 .. _`devm_devfreq_unregister_notifier`:
 
@@ -555,17 +630,21 @@ devm_devfreq_unregister_notifier
 
 .. c:function:: void devm_devfreq_unregister_notifier(struct device *dev, struct devfreq *devfreq, struct notifier_block *nb, unsigned int list)
 
-    :param struct device \*dev:
+    :param dev:
         The devfreq user device. (parent of devfreq)
+    :type dev: struct device \*
 
-    :param struct devfreq \*devfreq:
+    :param devfreq:
         The devfreq object.
+    :type devfreq: struct devfreq \*
 
-    :param struct notifier_block \*nb:
+    :param nb:
         The notifier block to be unregistered.
+    :type nb: struct notifier_block \*
 
-    :param unsigned int list:
+    :param list:
         DEVFREQ_TRANSITION_NOTIFIER.
+    :type list: unsigned int
 
 .. This file was automatic generated / don't edit.
 

@@ -10,8 +10,9 @@ LZ4_compressBound
 
     Max. output size in worst case szenarios
 
-    :param size_t isize:
+    :param isize:
         Size of the input data
+    :type isize: size_t
 
 .. _`lz4_compressbound.return`:
 
@@ -30,22 +31,27 @@ LZ4_compress_default
 
     Compress data from source to dest
 
-    :param const char \*source:
+    :param source:
         source address of the original data
+    :type source: const char \*
 
-    :param char \*dest:
+    :param dest:
         output buffer address of the compressed data
+    :type dest: char \*
 
-    :param int inputSize:
+    :param inputSize:
         size of the input data. Max supported value is LZ4_MAX_INPUT_SIZE
+    :type inputSize: int
 
-    :param int maxOutputSize:
+    :param maxOutputSize:
         full or partial size of buffer 'dest'
         which must be already allocated
+    :type maxOutputSize: int
 
-    :param void \*wrkmem:
+    :param wrkmem:
         address of the working memory.
         This requires 'workmem' of LZ4_MEM_COMPRESS.
+    :type wrkmem: void \*
 
 .. _`lz4_compress_default.description`:
 
@@ -78,25 +84,31 @@ LZ4_compress_fast
 
     As LZ4_compress_default providing an acceleration param
 
-    :param const char \*source:
+    :param source:
         source address of the original data
+    :type source: const char \*
 
-    :param char \*dest:
+    :param dest:
         output buffer address of the compressed data
+    :type dest: char \*
 
-    :param int inputSize:
+    :param inputSize:
         size of the input data. Max supported value is LZ4_MAX_INPUT_SIZE
+    :type inputSize: int
 
-    :param int maxOutputSize:
+    :param maxOutputSize:
         full or partial size of buffer 'dest'
         which must be already allocated
+    :type maxOutputSize: int
 
-    :param int acceleration:
+    :param acceleration:
         acceleration factor
+    :type acceleration: int
 
-    :param void \*wrkmem:
+    :param wrkmem:
         address of the working memory.
         This requires 'workmem' of LZ4_MEM_COMPRESS.
+    :type wrkmem: void \*
 
 .. _`lz4_compress_fast.description`:
 
@@ -127,22 +139,27 @@ LZ4_compress_destSize
 
     Compress as much data as possible from source to dest
 
-    :param const char \*source:
+    :param source:
         source address of the original data
+    :type source: const char \*
 
-    :param char \*dest:
+    :param dest:
         output buffer address of the compressed data
+    :type dest: char \*
 
-    :param int \*sourceSizePtr:
+    :param sourceSizePtr:
         will be modified to indicate how many bytes where read
         from 'source' to fill 'dest'. New value is necessarily <= old value.
+    :type sourceSizePtr: int \*
 
-    :param int targetDestSize:
+    :param targetDestSize:
         Size of buffer 'dest' which must be already allocated
+    :type targetDestSize: int
 
-    :param void \*wrkmem:
+    :param wrkmem:
         address of the working memory.
         This requires 'workmem' of LZ4_MEM_COMPRESS.
+    :type wrkmem: void \*
 
 .. _`lz4_compress_destsize.description`:
 
@@ -173,15 +190,18 @@ LZ4_decompress_fast
 
     Decompresses data from 'source' into 'dest'
 
-    :param const char \*source:
+    :param source:
         source address of the compressed data
+    :type source: const char \*
 
-    :param char \*dest:
+    :param dest:
         output buffer address of the uncompressed data
         which must be already allocated with 'originalSize' bytes
+    :type dest: char \*
 
-    :param int originalSize:
+    :param originalSize:
         is the original and therefore uncompressed size
+    :type originalSize: int
 
 .. _`lz4_decompress_fast.description`:
 
@@ -214,18 +234,22 @@ LZ4_decompress_safe
 
     Decompression protected against buffer overflow
 
-    :param const char \*source:
+    :param source:
         source address of the compressed data
+    :type source: const char \*
 
-    :param char \*dest:
+    :param dest:
         output buffer address of the uncompressed data
         which must be already allocated
+    :type dest: char \*
 
-    :param int compressedSize:
+    :param compressedSize:
         is the precise full size of the compressed block
+    :type compressedSize: int
 
-    :param int maxDecompressedSize:
+    :param maxDecompressedSize:
         is the size of 'dest' buffer
+    :type maxDecompressedSize: int
 
 .. _`lz4_decompress_safe.description`:
 
@@ -257,22 +281,27 @@ LZ4_decompress_safe_partial
 
     Decompress a block of size 'compressedSize' at position 'source' into buffer 'dest'
 
-    :param const char \*source:
+    :param source:
         source address of the compressed data
+    :type source: const char \*
 
-    :param char \*dest:
+    :param dest:
         output buffer address of the decompressed data which must be
         already allocated
+    :type dest: char \*
 
-    :param int compressedSize:
+    :param compressedSize:
         is the precise full size of the compressed block.
+    :type compressedSize: int
 
-    :param int targetOutputSize:
+    :param targetOutputSize:
         the decompression operation will try
         to stop as soon as 'targetOutputSize' has been reached
+    :type targetOutputSize: int
 
-    :param int maxDecompressedSize:
+    :param maxDecompressedSize:
         is the size of destination buffer
+    :type maxDecompressedSize: int
 
 .. _`lz4_decompress_safe_partial.description`:
 
@@ -306,27 +335,33 @@ LZ4_compress_HC
 
     Compress data from \`src\` into \`dst\`, using HC algorithm
 
-    :param const char \*src:
+    :param src:
         source address of the original data
+    :type src: const char \*
 
-    :param char \*dst:
+    :param dst:
         output buffer address of the compressed data
+    :type dst: char \*
 
-    :param int srcSize:
+    :param srcSize:
         size of the input data. Max supported value is LZ4_MAX_INPUT_SIZE
+    :type srcSize: int
 
-    :param int dstCapacity:
+    :param dstCapacity:
         full or partial size of buffer 'dst',
         which must be already allocated
+    :type dstCapacity: int
 
-    :param int compressionLevel:
+    :param compressionLevel:
         Recommended values are between 4 and 9, although any
         value between 1 and LZ4HC_MAX_CLEVEL will work.
         Values >LZ4HC_MAX_CLEVEL behave the same as 16.
+    :type compressionLevel: int
 
-    :param void \*wrkmem:
+    :param wrkmem:
         address of the working memory.
         This requires 'wrkmem' of size LZ4HC_MEM_COMPRESS.
+    :type wrkmem: void \*
 
 .. _`lz4_compress_hc.description`:
 
@@ -348,13 +383,15 @@ LZ4_resetStreamHC
 
     Init an allocated 'LZ4_streamHC_t' structure
 
-    :param LZ4_streamHC_t \*streamHCPtr:
+    :param streamHCPtr:
         pointer to the 'LZ4_streamHC_t' structure
+    :type streamHCPtr: LZ4_streamHC_t \*
 
-    :param int compressionLevel:
+    :param compressionLevel:
         Recommended values are between 4 and 9, although any
         value between 1 and LZ4HC_MAX_CLEVEL will work.
         Values >LZ4HC_MAX_CLEVEL behave the same as 16.
+    :type compressionLevel: int
 
 .. _`lz4_resetstreamhc.description`:
 
@@ -375,14 +412,17 @@ LZ4_loadDictHC
 
     Load a static dictionary into LZ4_streamHC
 
-    :param LZ4_streamHC_t \*streamHCPtr:
+    :param streamHCPtr:
         pointer to the LZ4HC_stream_t
+    :type streamHCPtr: LZ4_streamHC_t \*
 
-    :param const char \*dictionary:
+    :param dictionary:
         dictionary to load
+    :type dictionary: const char \*
 
-    :param int dictSize:
+    :param dictSize:
         size of dictionary
+    :type dictSize: int
 
 .. _`lz4_loaddicthc.description`:
 
@@ -405,22 +445,27 @@ LZ4_compress_HC_continue
 
     Compress 'src' using data from previously compressed blocks as a dictionary using the HC algorithm
 
-    :param LZ4_streamHC_t \*streamHCPtr:
+    :param streamHCPtr:
         Pointer to the previous 'LZ4_streamHC_t' structure
+    :type streamHCPtr: LZ4_streamHC_t \*
 
-    :param const char \*src:
+    :param src:
         source address of the original data
+    :type src: const char \*
 
-    :param char \*dst:
+    :param dst:
         output buffer address of the compressed data,
         which must be already allocated
+    :type dst: char \*
 
-    :param int srcSize:
+    :param srcSize:
         size of the input data. Max supported value is LZ4_MAX_INPUT_SIZE
+    :type srcSize: int
 
-    :param int maxDstSize:
+    :param maxDstSize:
         full or partial size of buffer 'dest'
         which must be already allocated
+    :type maxDstSize: int
 
 .. _`lz4_compress_hc_continue.description`:
 
@@ -466,14 +511,17 @@ LZ4_saveDictHC
 
     Save static dictionary from LZ4HC_stream
 
-    :param LZ4_streamHC_t \*streamHCPtr:
+    :param streamHCPtr:
         pointer to the 'LZ4HC_stream_t' structure
+    :type streamHCPtr: LZ4_streamHC_t \*
 
-    :param char \*safeBuffer:
+    :param safeBuffer:
         buffer to save dictionary to, must be already allocated
+    :type safeBuffer: char \*
 
-    :param int maxDictSize:
+    :param maxDictSize:
         size of 'safeBuffer'
+    :type maxDictSize: int
 
 .. _`lz4_savedicthc.description`:
 
@@ -499,8 +547,9 @@ LZ4_resetStream
 
     Init an allocated 'LZ4_stream_t' structure
 
-    :param LZ4_stream_t \*LZ4_stream:
+    :param LZ4_stream:
         pointer to the 'LZ4_stream_t' structure
+    :type LZ4_stream: LZ4_stream_t \*
 
 .. _`lz4_resetstream.description`:
 
@@ -521,14 +570,17 @@ LZ4_loadDict
 
     Load a static dictionary into LZ4_stream
 
-    :param LZ4_stream_t \*streamPtr:
+    :param streamPtr:
         pointer to the LZ4_stream_t
+    :type streamPtr: LZ4_stream_t \*
 
-    :param const char \*dictionary:
+    :param dictionary:
         dictionary to load
+    :type dictionary: const char \*
 
-    :param int dictSize:
+    :param dictSize:
         size of dictionary
+    :type dictSize: int
 
 .. _`lz4_loaddict.description`:
 
@@ -551,14 +603,17 @@ LZ4_saveDict
 
     Save static dictionary from LZ4_stream
 
-    :param LZ4_stream_t \*streamPtr:
+    :param streamPtr:
         pointer to the 'LZ4_stream_t' structure
+    :type streamPtr: LZ4_stream_t \*
 
-    :param char \*safeBuffer:
+    :param safeBuffer:
         buffer to save dictionary to, must be already allocated
+    :type safeBuffer: char \*
 
-    :param int dictSize:
+    :param dictSize:
         size of 'safeBuffer'
+    :type dictSize: int
 
 .. _`lz4_savedict.description`:
 
@@ -584,25 +639,31 @@ LZ4_compress_fast_continue
 
     Compress 'src' using data from previously compressed blocks as a dictionary
 
-    :param LZ4_stream_t \*streamPtr:
+    :param streamPtr:
         Pointer to the previous 'LZ4_stream_t' structure
+    :type streamPtr: LZ4_stream_t \*
 
-    :param const char \*src:
+    :param src:
         source address of the original data
+    :type src: const char \*
 
-    :param char \*dst:
+    :param dst:
         output buffer address of the compressed data,
         which must be already allocated
+    :type dst: char \*
 
-    :param int srcSize:
+    :param srcSize:
         size of the input data. Max supported value is LZ4_MAX_INPUT_SIZE
+    :type srcSize: int
 
-    :param int maxDstSize:
+    :param maxDstSize:
         full or partial size of buffer 'dest'
         which must be already allocated
+    :type maxDstSize: int
 
-    :param int acceleration:
+    :param acceleration:
         acceleration factor
+    :type acceleration: int
 
 .. _`lz4_compress_fast_continue.description`:
 
@@ -632,14 +693,17 @@ LZ4_setStreamDecode
 
     Instruct where to find dictionary
 
-    :param LZ4_streamDecode_t \*LZ4_streamDecode:
+    :param LZ4_streamDecode:
         the 'LZ4_streamDecode_t' structure
+    :type LZ4_streamDecode: LZ4_streamDecode_t \*
 
-    :param const char \*dictionary:
+    :param dictionary:
         dictionary to use
+    :type dictionary: const char \*
 
-    :param int dictSize:
+    :param dictSize:
         size of dictionary
+    :type dictSize: int
 
 .. _`lz4_setstreamdecode.description`:
 
@@ -665,21 +729,26 @@ LZ4_decompress_safe_continue
 
     Decompress blocks in streaming mode
 
-    :param LZ4_streamDecode_t \*LZ4_streamDecode:
+    :param LZ4_streamDecode:
         the 'LZ4_streamDecode_t' structure
+    :type LZ4_streamDecode: LZ4_streamDecode_t \*
 
-    :param const char \*source:
+    :param source:
         source address of the compressed data
+    :type source: const char \*
 
-    :param char \*dest:
+    :param dest:
         output buffer address of the uncompressed data
         which must be already allocated
+    :type dest: char \*
 
-    :param int compressedSize:
+    :param compressedSize:
         is the precise full size of the compressed block
+    :type compressedSize: int
 
-    :param int maxDecompressedSize:
+    :param maxDecompressedSize:
         is the size of 'dest' buffer
+    :type maxDecompressedSize: int
 
 .. _`lz4_decompress_safe_continue.description`:
 
@@ -727,18 +796,22 @@ LZ4_decompress_fast_continue
 
     Decompress blocks in streaming mode
 
-    :param LZ4_streamDecode_t \*LZ4_streamDecode:
+    :param LZ4_streamDecode:
         the 'LZ4_streamDecode_t' structure
+    :type LZ4_streamDecode: LZ4_streamDecode_t \*
 
-    :param const char \*source:
+    :param source:
         source address of the compressed data
+    :type source: const char \*
 
-    :param char \*dest:
+    :param dest:
         output buffer address of the uncompressed data
         which must be already allocated with 'originalSize' bytes
+    :type dest: char \*
 
-    :param int originalSize:
+    :param originalSize:
         is the original and therefore uncompressed size
+    :type originalSize: int
 
 .. _`lz4_decompress_fast_continue.description`:
 
@@ -786,24 +859,30 @@ LZ4_decompress_safe_usingDict
 
     Same as \ :c:func:`LZ4_setStreamDecode`\  followed by \ :c:func:`LZ4_decompress_safe_continue`\ 
 
-    :param const char \*source:
+    :param source:
         source address of the compressed data
+    :type source: const char \*
 
-    :param char \*dest:
+    :param dest:
         output buffer address of the uncompressed data
         which must be already allocated
+    :type dest: char \*
 
-    :param int compressedSize:
+    :param compressedSize:
         is the precise full size of the compressed block
+    :type compressedSize: int
 
-    :param int maxDecompressedSize:
+    :param maxDecompressedSize:
         is the size of 'dest' buffer
+    :type maxDecompressedSize: int
 
-    :param const char \*dictStart:
+    :param dictStart:
         pointer to the start of the dictionary in memory
+    :type dictStart: const char \*
 
-    :param int dictSize:
+    :param dictSize:
         size of dictionary
+    :type dictSize: int
 
 .. _`lz4_decompress_safe_usingdict.description`:
 
@@ -833,21 +912,26 @@ LZ4_decompress_fast_usingDict
 
     Same as \ :c:func:`LZ4_setStreamDecode`\  followed by \ :c:func:`LZ4_decompress_fast_continue`\ 
 
-    :param const char \*source:
+    :param source:
         source address of the compressed data
+    :type source: const char \*
 
-    :param char \*dest:
+    :param dest:
         output buffer address of the uncompressed data
         which must be already allocated with 'originalSize' bytes
+    :type dest: char \*
 
-    :param int originalSize:
+    :param originalSize:
         is the original and therefore uncompressed size
+    :type originalSize: int
 
-    :param const char \*dictStart:
+    :param dictStart:
         pointer to the start of the dictionary in memory
+    :type dictStart: const char \*
 
-    :param int dictSize:
+    :param dictSize:
         size of dictionary
+    :type dictSize: int
 
 .. _`lz4_decompress_fast_usingdict.description`:
 

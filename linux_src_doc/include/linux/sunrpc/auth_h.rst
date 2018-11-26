@@ -10,8 +10,9 @@ get_rpccred_rcu
 
     get a reference to a cred using rcu-protected pointer
 
-    :param struct rpc_cred \*cred:
+    :param cred:
         cred of which to take a reference
+    :type cred: struct rpc_cred \*
 
 .. _`get_rpccred_rcu.description`:
 

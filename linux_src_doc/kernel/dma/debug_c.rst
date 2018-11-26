@@ -88,8 +88,9 @@ debug_dma_assert_idle
 
     assert that a page is not undergoing dma
 
-    :param struct page \*page:
+    :param page:
         page to lookup in the dma_active_cacheline tree
+    :type page: struct page \*
 
 .. _`debug_dma_assert_idle.description`:
 

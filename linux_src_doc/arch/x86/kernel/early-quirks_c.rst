@@ -10,14 +10,17 @@ check_dev_quirk
 
     apply early quirks to a given PCI device
 
-    :param int num:
+    :param num:
         bus number
+    :type num: int
 
-    :param int slot:
+    :param slot:
         slot number
+    :type slot: int
 
-    :param int func:
+    :param func:
         PCI function
+    :type func: int
 
 .. _`check_dev_quirk.description`:
 

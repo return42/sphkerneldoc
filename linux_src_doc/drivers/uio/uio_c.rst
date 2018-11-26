@@ -10,8 +10,9 @@ uio_event_notify
 
     trigger an interrupt event
 
-    :param struct uio_info \*info:
+    :param info:
         UIO device capabilities
+    :type info: struct uio_info \*
 
 .. _`uio_interrupt`:
 
@@ -22,11 +23,13 @@ uio_interrupt
 
     hardware interrupt handler
 
-    :param int irq:
+    :param irq:
         IRQ number, can be UIO_IRQ_CYCLIC for cyclic timer
+    :type irq: int
 
-    :param void \*dev_id:
+    :param dev_id:
         Pointer to the devices uio_device structure
+    :type dev_id: void \*
 
 .. _`__uio_register_device`:
 
@@ -37,14 +40,17 @@ __uio_register_device
 
     register a new userspace IO device
 
-    :param struct module \*owner:
+    :param owner:
         module that creates the new device
+    :type owner: struct module \*
 
-    :param struct device \*parent:
+    :param parent:
         parent device
+    :type parent: struct device \*
 
-    :param struct uio_info \*info:
+    :param info:
         UIO device capabilities
+    :type info: struct uio_info \*
 
 .. _`__uio_register_device.description`:
 
@@ -62,8 +68,9 @@ uio_unregister_device
 
     unregister a industrial IO device
 
-    :param struct uio_info \*info:
+    :param info:
         UIO device capabilities
+    :type info: struct uio_info \*
 
 .. This file was automatic generated / don't edit.
 

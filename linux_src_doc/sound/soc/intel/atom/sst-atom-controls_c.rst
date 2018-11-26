@@ -10,26 +10,33 @@ sst_fill_and_send_cmd
 
     generate the IPC message and send it to the FW
 
-    :param struct sst_data \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct sst_data \*
 
-    :param u8 ipc_msg:
+    :param ipc_msg:
         type of IPC (CMD, SET_PARAMS, GET_PARAMS)
+    :type ipc_msg: u8
 
-    :param u8 block:
+    :param block:
         *undescribed*
+    :type block: u8
 
-    :param u8 task_id:
+    :param task_id:
         *undescribed*
+    :type task_id: u8
 
-    :param u8 pipe_id:
+    :param pipe_id:
         *undescribed*
+    :type pipe_id: u8
 
-    :param void \*cmd_data:
+    :param cmd_data:
         the IPC payload
+    :type cmd_data: void \*
 
-    :param u16 len:
+    :param len:
         *undescribed*
+    :type len: u16
 
 .. _`sst_send_slot_map`:
 
@@ -40,8 +47,9 @@ sst_send_slot_map
 
     this is invoked with lock held
 
-    :param struct sst_data \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct sst_data \*
 
 .. _`sst_slot_get`:
 
@@ -52,11 +60,13 @@ sst_slot_get
 
     get the status of the interleaver/deinterleaver control
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         *undescribed*
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         *undescribed*
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`sst_slot_get.description`:
 
@@ -76,11 +86,13 @@ sst_slot_put
 
     set the status of interleaver/deinterleaver control
 
-    :param struct snd_kcontrol \*kcontrol:
+    :param kcontrol:
         *undescribed*
+    :type kcontrol: struct snd_kcontrol \*
 
-    :param struct snd_ctl_elem_value \*ucontrol:
+    :param ucontrol:
         *undescribed*
+    :type ucontrol: struct snd_ctl_elem_value \*
 
 .. _`sst_slot_put.description`:
 
@@ -106,14 +118,17 @@ sst_find_and_send_pipe_algo
 
     send all the algo parameters for a pipe
 
-    :param struct sst_data \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct sst_data \*
 
-    :param const char \*pipe:
+    :param pipe:
         *undescribed*
+    :type pipe: const char \*
 
-    :param struct sst_ids \*ids:
+    :param ids:
         *undescribed*
+    :type ids: struct sst_ids \*
 
 .. _`sst_find_and_send_pipe_algo.description`:
 
@@ -133,26 +148,32 @@ sst_send_gain_cmd
 
     send the gain algorithm IPC to the FW
 
-    :param struct sst_data \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct sst_data \*
 
-    :param struct sst_gain_value \*gv:
+    :param gv:
         the stored value of gain (also contains rampduration)
+    :type gv: struct sst_gain_value \*
 
-    :param u16 task_id:
+    :param task_id:
         *undescribed*
+    :type task_id: u16
 
-    :param u16 loc_id:
+    :param loc_id:
         *undescribed*
+    :type loc_id: u16
 
-    :param u16 module_id:
+    :param module_id:
         *undescribed*
+    :type module_id: u16
 
-    :param int mute:
+    :param mute:
         flag that indicates whether this was called from the
         digital_mute callback or directly. If called from the
         digital_mute callback, module will be muted/unmuted based on this
         flag. The flag is always 0 if called directly.
+    :type mute: int
 
 .. _`sst_send_gain_cmd.description`:
 
@@ -174,14 +195,17 @@ fill_swm_input
 
     fill in the SWM input ids given the register
 
-    :param struct snd_soc_component \*cmpnt:
+    :param cmpnt:
         *undescribed*
+    :type cmpnt: struct snd_soc_component \*
 
-    :param struct swm_input_ids \*swm_input:
+    :param swm_input:
         *undescribed*
+    :type swm_input: struct swm_input_ids \*
 
-    :param unsigned int reg:
+    :param reg:
         *undescribed*
+    :type reg: unsigned int
 
 .. _`fill_swm_input.description`:
 
@@ -198,14 +222,17 @@ sst_set_pipe_gain
 
 .. c:function:: int sst_set_pipe_gain(struct sst_ids *ids, struct sst_data *drv, int mute)
 
-    :param struct sst_ids \*ids:
+    :param ids:
         *undescribed*
+    :type ids: struct sst_ids \*
 
-    :param struct sst_data \*drv:
+    :param drv:
         *undescribed*
+    :type drv: struct sst_data \*
 
-    :param int mute:
+    :param mute:
         *undescribed*
+    :type mute: int
 
 .. _`sst_send_pipe_gains`:
 
@@ -216,14 +243,17 @@ sst_send_pipe_gains
 
     send gains for the front-end DAIs
 
-    :param struct snd_soc_dai \*dai:
+    :param dai:
         *undescribed*
+    :type dai: struct snd_soc_dai \*
 
-    :param int stream:
+    :param stream:
         *undescribed*
+    :type stream: int
 
-    :param int mute:
+    :param mute:
         *undescribed*
+    :type mute: int
 
 .. _`sst_send_pipe_gains.description`:
 
@@ -243,14 +273,17 @@ sst_fill_module_list
 
     populate the list of modules/gains for a pipe
 
-    :param struct snd_kcontrol \*kctl:
+    :param kctl:
         *undescribed*
+    :type kctl: struct snd_kcontrol \*
 
-    :param struct snd_soc_dapm_widget \*w:
+    :param w:
         *undescribed*
+    :type w: struct snd_soc_dapm_widget \*
 
-    :param int type:
+    :param type:
         *undescribed*
+    :type type: int
 
 .. _`sst_fill_module_list.description`:
 
@@ -276,11 +309,13 @@ sst_fill_widget_module_info
 
     fill list of gains/algos for the pipe
 
-    :param struct snd_soc_dapm_widget \*w:
+    :param w:
         *undescribed*
+    :type w: struct snd_soc_dapm_widget \*
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
 .. _`sst_fill_widget_module_info.description`:
 
@@ -300,11 +335,13 @@ sst_fill_linked_widgets
 
     fill the parent pointer for the linked widget
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
-    :param struct sst_ids \*ids:
+    :param ids:
         *undescribed*
+    :type ids: struct sst_ids \*
 
 .. _`sst_map_modules_to_pipe`:
 
@@ -315,8 +352,9 @@ sst_map_modules_to_pipe
 
     fill algo/gains list for all pipes
 
-    :param struct snd_soc_component \*component:
+    :param component:
         *undescribed*
+    :type component: struct snd_soc_component \*
 
 .. This file was automatic generated / don't edit.
 

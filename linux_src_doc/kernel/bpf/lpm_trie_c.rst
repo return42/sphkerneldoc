@@ -10,14 +10,17 @@ longest_prefix_match
 
     determine the longest prefix
 
-    :param const struct lpm_trie \*trie:
+    :param trie:
         The trie to get internal sizes from
+    :type trie: const struct lpm_trie \*
 
-    :param const struct lpm_trie_node \*node:
+    :param node:
         The node to operate on
+    :type node: const struct lpm_trie_node \*
 
-    :param const struct bpf_lpm_trie_key \*key:
+    :param key:
         The key to compare to \ ``node``\ 
+    :type key: const struct bpf_lpm_trie_key \*
 
 .. _`longest_prefix_match.description`:
 
